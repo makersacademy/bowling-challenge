@@ -36,5 +36,4 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 In the image below you can find some score examples.
 More about the bowling game here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-Screen Shot 2014-10-17 at 14.10.36.png
 

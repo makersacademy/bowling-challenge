@@ -19,9 +19,9 @@ Create a nice interactive animated interface with jQuery
 
 ## Strikes
 
-
 The player has a strike of he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That is the next frame, except if the player rolls a strike again.
-Spares
+
+##Spares
 
 The player has a spare if the knocks down all 10 pins with the two roles of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first role of next frame).
 10th frame

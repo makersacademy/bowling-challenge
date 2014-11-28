@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-    Test time: Friday, the entire day + the weekend if you need it
+    Test time: Friday, the entire day + the weekend if you need it.
     Feel free to use Google, your notes, and your books.
 
 Task: 

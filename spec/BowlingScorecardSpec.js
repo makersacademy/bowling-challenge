@@ -14,7 +14,7 @@ describe("Bowling Scorecard", function() {
     scorecard.bowl(6);
     scorecard.bowl(3);
     scorecard.bowl(4);
-    expect(scorecard.allFrames).toEqual( [ [6, 3] ] );
+    expect(scorecard.allFrames).toEqual( [ [9] ] );
   });
 
   it("should move onto the next frame when player bowls a strike", function() {
@@ -27,7 +27,15 @@ describe("Bowling Scorecard", function() {
     scorecard.bowl(4);
     scorecard.bowl(5);
     scorecard.bowl(6);
-    expect(scorecard.allFrames).toEqual( [ [19], [4,5] ]);
+    expect(scorecard.allFrames).toEqual( [ [19], [9] ]);
+  });
+
+  it("should add the next 1 bowl to the frame when a player bowls a spare", function() {
+    scorecard.bowl(7);
+    scorecard.bowl(3);
+    scorecard.bowl(4);
+    scorecard.bowl(2);
+    expect(scorecard.allFrames).toEqual( [ [16], [6] ]);
   });
 
 });

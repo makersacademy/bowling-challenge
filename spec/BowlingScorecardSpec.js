@@ -22,6 +22,12 @@ describe("Bowling Scorecard", function() {
     expect(scorecard.allFrames).toEqual( [ [10] ] );
   });
 
-
+  it("should add the next 2 bowls to the frame when player bowls a strike", function() {
+    scorecard.bowl(10);
+    scorecard.bowl(4);
+    scorecard.bowl(5);
+    scorecard.bowl(6);
+    expect(scorecard.allFrames).toEqual( [ [19], [4,5] ]);
+  });
 
 });

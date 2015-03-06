@@ -1,12 +1,6 @@
 language: node_js
 node_js:
 - "0.12"
-- "0.11"
-- "0.10"
-- "0.8"
-- "0.6"
-- "iojs"
-- "iojs-v1.0.4" 
 before_install:
 - "npm install grunt-cli"
 - "npm install grunt-jasmine-runner"

@@ -4,8 +4,8 @@ var Scorecard = function() {
 };
 
 Scorecard.prototype.bowl = function(result) {
-  if (this.currentFrame.length < 2) {this.currentFrame.push(result);}
-  else {this.allFrames.push(this.currentFrame); this.currentFrame = []; this.currentFrame.push(result);}
+  this.currentFrame.push(result);
+  if ((result == 10)||(this.currentFrame.length == 2)) {this.allFrames.push(this.currentFrame); this.currentFrame = [];}
 };
 
 Scorecard.prototype.currentFrame = function() {

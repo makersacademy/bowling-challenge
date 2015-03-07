@@ -18,7 +18,7 @@ describe('Ball', function() {
     expect(ball.isRolled).toBe(false);
   });
 
-  it('should change its status to rolled when a score is given', function(){
+  it('should change status to rolled when a score is given', function(){
     ball.setScore(8);
     expect(ball.isRolled).toBe(true);
   });

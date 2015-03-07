@@ -33,4 +33,13 @@ describe('Ball', function() {
     expect(ball.isStrike).toBe(false);
   });
 
+  it('should know if it is a spare', function() {
+    expect(ball.isSpare).toBe(false);
+  });
+  it('should be able to set to a spare', function() {
+    ball.spare();
+    expect(ball.isSpare).toBe(true);
+  });
+
+
 });

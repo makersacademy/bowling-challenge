@@ -4,15 +4,15 @@ var tenPin = function() {
 };
 
   tenPin.prototype.frameFirstRoll = function(frame) {
-    if (frame.rollOne < 10 ){
+    if (frame.getRollOneScore() < 10 ){
       this.isStrike = false
     } else {
       this.isStrike = true
     };
   };
 
-  tenPin.prototype.frameSecondRoll = function(roll) {
-    if ((frame.rollOne + frame.rollTwo) === 10 ) {
+  tenPin.prototype.frameSecondRoll = function(frame) {
+    if ((frame.getRollOneScore() + frame.getRollTwoScore()) === 10 ) {
       this.isSpare = true
     } else {
       this.isSpare = false

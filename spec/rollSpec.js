@@ -5,20 +5,17 @@ describe('Roll', function() {
   })
 
   it('starts each roll with a roll score of 0', function() {
-    expect(roll.rollScore).toEqual(0);
+    expect(roll.getPinsHit()).toEqual(0);
   });
 
   it('knows to count 0 when 0 pins are hit', function() {
-    roll.hits(0)
-    expect(roll.rollScore).toEqual(0);
+    roll.setPinsHit(0);
+    expect(roll.getPinsHit()).toEqual(0);
   });
 
   it('knows to count 10 if 10 pins are hit', function() {
-    roll.hits(10);
-    expect(roll.rollScore).toEqual(10)
+    roll.setPinsHit(10);
+    expect(roll.getPinsHit()).toEqual(10)
   });
-
-
-
 
 });

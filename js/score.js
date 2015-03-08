@@ -4,17 +4,15 @@ var Score = function() {
   this.totalScore = 0;
 };
 
-  Score.prototype.scoreAdder = function(rollScore) {
-      this.totalScore += rollScore
+Score.prototype.scoreAdder = function(rollScore) {
+  this.totalScore += rollScore
+};
 
+Score.prototype.checkTotal = function() {
+  console.log(this.totalScore)
+  if (this.totalScore < 301) {
+    return true
+  }else{
+    return false
   };
-
-  Score.prototype.checkTotal = function() {
-    console.log(this.totalScore)
-    if (this.totalScore < 301) {
-      2
-    }
-    else{
-      3
-    }
-  };
+};

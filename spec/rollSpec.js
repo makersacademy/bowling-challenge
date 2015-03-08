@@ -13,7 +13,11 @@ describe('Roll', function() {
     expect(roll.rollScore).toEqual(0);
   });
 
-  it('knows')
+  it('knows to count 10 if 10 pins are hit', function() {
+    roll.hits(10);
+    expect(roll.rollScore).toEqual(10)
+  });
+
 
 
 

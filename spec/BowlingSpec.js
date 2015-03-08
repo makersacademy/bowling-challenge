@@ -32,8 +32,3 @@ describe("Bowling", function(){
     });
 
 });
-
- 
-
- 
-

@@ -47,4 +47,21 @@ describe("Bowling Scorecard", function() {
     expect(scorecard.allFrames).toEqual( [ [30], [23], [17], [7] ]);
   });
 
+  it("should allow the player to have 3 bowls in the 10th frame if they bowl a strike or spare", function() {
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    expect(scorecard.allFrames.length).toEqual(10);
+    expect(scorecard.allFrames[scorecard.allFrames.length - 1]).toEqual([30]);
+  });
+
 });

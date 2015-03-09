@@ -16,6 +16,7 @@ Scorecard.prototype.bowl = function(result) {
     this.allFrames.push([this.currentFrame[0] + this.currentFrame[1]]);
     this.currentFrame = [];
   }
+  if (this.allFrames.length > 10) { this.allFrames.splice(10,1);}
   this.beforeBefore = this.before;
   this.before = result;
 };

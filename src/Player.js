@@ -1,7 +1,17 @@
 Player = function(){
-  this.pinsLeftInFrame = 10
-}
+  this.pinsLeftInFrame = 0
+};
 
 Player.prototype.roll = function() {
-  return Math.floor(Math.random() * this.pinsLeftInFrame + 1);
+  roll = Math.floor((Math.random() * this.pinsLeftInFrame) + 1);
+  this.reducePins(roll);
+  return roll;
 };
+
+Player.prototype.reducePins = function(roll){
+  return this.pinsLeftInFrame -= roll
+};
+
+Player.prototype.newFrame = function(){
+  return this.pinsLeftInFrame = 10
+}

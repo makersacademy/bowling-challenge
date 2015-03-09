@@ -19,9 +19,10 @@ Frame.prototype.getRollTwo = function(roll){
 
 Frame.prototype.getScore = function(roll){  
   this.pinsRemaining -= roll;
-  return 10 - this.pinsRemaining
+  return roll
 };
 
 Frame.prototype.checkStrike = function(){
   return this.pinsRemaining === 0;
 };
+

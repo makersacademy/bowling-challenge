@@ -2,6 +2,7 @@ var Scorecard = function() {
   this.totalScore = 0;
   this.currentFrame = 1;
   this.bowlNumber = 1;
+  this.gameOver = false;
 };
 
 Scorecard.prototype.addPoint = function(points) {
@@ -15,7 +16,14 @@ Scorecard.prototype.switchBowlNumber = function() {
 };
 
 Scorecard.prototype.updateFrame = function() {
-  if(this.bowlNumber === 1) {
+  if(this.bowlNumber === 1 && this.gameOver !== true ) {
     this.currentFrame += 1;
+    this.isGameOver();
+  }
+};
+
+Scorecard.prototype.isGameOver = function() {
+  if(this.currentFrame >= 10) {
+    this.gameOver = true;
   }
 };

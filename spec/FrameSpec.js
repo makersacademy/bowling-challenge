@@ -23,12 +23,6 @@ describe ('Frame', function(){
     expect(frame.pinsRemaining).toEqual(9)
   });
 
-  it('can return an error if the second roll is higher than the number of pins remaining', function(){
-    frame.pinsRemaining = 5
-    player.roll = 6
-    expect(frame.getRollTwo(player.roll)).toEqual("error");
-  }); 
-
   it('knows when a strike has occurred', function(){
     frame.pinsRemaining = 10
     player.roll = 10

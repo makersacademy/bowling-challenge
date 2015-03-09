@@ -1,0 +1,24 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  background-image: url(../images/bowling.jpeg);
+  background-size: 100%;
+  font-weight: bolder;
+  text-align: center;
+}
+
+header {
+  background-color: white;
+  font-size: 100px;
+  color: #6600CC;
+}
+
+table {
+  background-color: white;
+}
+
+form {
+  background-color: white;
+  width: 230px;
+}

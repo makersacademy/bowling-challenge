@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Bowling Scorecard</title>
+  <link rel="stylesheet" type="text/css" href="css/scorecard-style.css">
+</head>
+
+<body>
+  <header>
+    <a>BOWLING SCORECARD</a>
+  </header>
+  <br>
+  <table border="1" style="width:100%">
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td id="1">-</td>
+      <td id="2">-</td>
+      <td id="3">-</td>
+      <td id="4">-</td>
+      <td id="5">-</td>
+      <td id="6">-</td>
+      <td id="7">-</td>
+      <td id="8">-</td>
+      <td id="9">-</td>
+      <td id="10">-</td>
+    </tr>
+  </table>
+  <br>
+  <form action="">
+    Pins knocked down: <input type="number" name="bowl" max="10" min="0">
+    <input type="submit" value="Submit">
+  </form>
+
+<script type="text/javascript" src="jquery.js"></script>
 <script src="js/BowlingScorecard.js"></script>
+<script>
+  var scorecard = new Scorecard();
+  $(document).ready(function() {
+
+    $('form').submit(function() {
+      scorecard.bowl(+$('input:first').val());
+      return false;
+      $('#1').text(scorecard.allFrames[0][0]);
+
+    });
+
+
+
+  });
+</script>
+</body>
+
+</html>

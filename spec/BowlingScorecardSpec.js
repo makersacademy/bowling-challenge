@@ -35,7 +35,16 @@ describe("Bowling Scorecard", function() {
     scorecard.bowl(3);
     scorecard.bowl(4);
     scorecard.bowl(2);
-    expect(scorecard.allFrames).toEqual( [ [16], [6] ]);
+    expect(scorecard.allFrames).toEqual( [ [14], [6] ]);
+  });
+
+  it("should be able to calculate score when there are successive strikes", function() {
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(3);
+    scorecard.bowl(4);
+    expect(scorecard.allFrames).toEqual( [ [30], [23], [17], [7] ]);
   });
 
 });

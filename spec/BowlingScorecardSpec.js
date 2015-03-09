@@ -60,6 +60,9 @@ describe("Bowling Scorecard", function() {
     scorecard.bowl(10);
     scorecard.bowl(10);
     scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
     expect(scorecard.allFrames.length).toEqual(10);
     expect(scorecard.allFrames[scorecard.allFrames.length - 1]).toEqual([30]);
   });

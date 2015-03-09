@@ -10,12 +10,21 @@ describe('Bowling', function() {
   });
 
   it('should have a total score of 0 when a gutter game is bowled', function() {
-    expect(bowling.gutterGame).toEqual(0);
+    bowling.rolls(20);
+    bowling.pinsHit(0);
+    expect(bowling.currentScore).toEqual(0);
+  });
+
+  it('should know that one point is scored when one pin is knocked down', function() {
+    bowling.rolls(1);
+    bowling.pinsHit(1);
+    expect(bowling.currentScore).toEqual(1);
   });
 
   it('should have a total score of 20 when all ones are bowled', function() {
-    bowling.roll(20);
-    expect(bowling.currentScore).toEqual(20)
+    bowling.rolls(20);
+    bowling.pinsHit(20);
+    expect(bowling.currentScore).toEqual(20);
   });
 
 });

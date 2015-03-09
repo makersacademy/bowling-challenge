@@ -1,16 +1,11 @@
 var Bowling = function() {
   this.currentScore = 0;
-  this.gutterGame = 0
 };
 
-Bowling.prototype.currentScore = function() {
-  this.currentScore;
+Bowling.prototype.rolls = function(number) {
+  number += this.pinsHit;
 };
 
-Bowling.prototype.gutterGame = function() {
-  this.gutterGame;
-};
-
-Bowling.prototype.roll = function(pins){
+Bowling.prototype.pinsHit = function(pins) {
   this.currentScore += pins;
 };

@@ -1,24 +1,49 @@
 describe('ScoreBoard', function(){
 
   var scoreboard 
-  var frame
   var player
+  var frame1
+  var frame2
+  var frame3
+  var frame4
+  var frame5
+  var frame6
+  var frame7
+  var frame8
+  var frame9
+  var frame10
 
   beforeEach(function(){
-    scoreboard = new ScoreBoard
-    frame = new Frame
+    scoreboard = new ScoreBoard();
+    frame1 = new Frame(1)
+    frame2 = new Frame(2)
+    frame3 = new Frame(3)
+    frame4 = new Frame(4)
+    frame5 = new Frame(5)
+    frame6 = new Frame(6)
+    frame7 = new Frame(7)
+    frame8 = new Frame(8)
+    frame9 = new Frame(9)
+    frame10 = new Frame(10)
   });
 
-  it('can add a frame', function(){
-    scoreboard.getFrame(frame)
-    expect(scoreboard.gameFrames.length).toEqual(1);
+  function fillBoard(){
+    scoreboard.addFrame(frame1)
+    scoreboard.addFrame(frame2)
+    scoreboard.addFrame(frame3)
+    scoreboard.addFrame(frame4)
+    scoreboard.addFrame(frame5)
+    scoreboard.addFrame(frame6)
+    scoreboard.addFrame(frame7)
+    scoreboard.addFrame(frame8)
+    scoreboard.addFrame(frame9)
+    scoreboard.addFrame(frame10)
+  };
+    
+  it('can add frames', function(){
+    fillBoard();
+    expect(scoreboard.gameFrames.length).toEqual(10);
   });
-
-  it('can determine if a frame was a strike', function(){
-    frame.isStrike = true
-    expect(scoreboard.isStrike(frame)).toEqual(true);
-  });
-
 
 
 });

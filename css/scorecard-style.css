@@ -9,16 +9,17 @@ body {
 }
 
 header {
-  background-color: white;
   font-size: 100px;
   color: #6600CC;
 }
 
 table {
   background-color: white;
+  font-size: 20px;
 }
 
 form {
-  background-color: white;
-  width: 230px;
+  background-color: black;
+  color: white;
+  font-size: 20px;
 }

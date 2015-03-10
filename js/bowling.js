@@ -1,9 +1,7 @@
 var Bowling = function() {
   this.currentScore = 0;
-};
-
-Bowling.prototype.rolls = function(number) {
-  number += this.pinsHit;
+  this.firstRoll = 0;
+  this.secondRoll = 0;
 };
 
 Bowling.prototype.pinsHit = function(pins) {

@@ -38,6 +38,7 @@ describe('ScoreBoard', function(){
     scoreboard.addFrame(frame8)
     scoreboard.addFrame(frame9)
     scoreboard.addFrame(frame10)
+    scoreboard.scoreProcess();
   };
     
   it('can add frames', function(){
@@ -50,10 +51,23 @@ describe('ScoreBoard', function(){
     frame2.isStrike = true
     frame3.isStrike = true
     fillBoard();
-    scoreboard.scoreProcess();
     expect(scoreboard.frameScores[0]).toEqual(30);
   });
 
-  
+  it('add 20 to the first frame score when a half strike follows a strike', function(){
+    frame1.isStrike = true
+    frame2.isHalfStrike = true
+    fillBoard();
+    expect(scoreboard.frameScores[0]).toEqual(20);
+  });
+
+  it('adds the scores normally when no strikes are recorded', function(){
+    frame1.rollOneScore = 4;
+    frame1.rollTwoScore = 3;
+    fillBoard();
+    expect(scoreboard.frameScores[0]).toEqual(7);
+  });
+
+
 
 });

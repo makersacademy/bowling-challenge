@@ -16,9 +16,9 @@ ScoreBoard.prototype.scoreProcess = function(){
           this.frameScores[i] = 30;
         }else if(this.gameFrames[i+1].isHalfStrike){
           this.frameScores[i] = 20;
-        }else{
-          this.frameScores[i] = this.gameFrames[i].rollOneScore + this.gameFrames[i].rollTwoScore 
-        };            
+        };      
+      }else{
+        this.frameScores[i] = this.gameFrames[i].rollOneScore + this.gameFrames[i].rollTwoScore;
       };  
     };  
   };

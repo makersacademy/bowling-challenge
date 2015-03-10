@@ -10,7 +10,25 @@ ScoreBoard.prototype.addFrame = function(frame){
 
 ScoreBoard.prototype.scoreProcess = function(){
   for (var i = this.gameFrames.length - 1; i >= 0; i--) {
-    if(this.gameFrames[i+1] !== undefined || this.gameFrames[i+2] !== undefined){
+    if(typeof this.gameFrames[i+1]=='undefined' || typeof this.gameFrames[i+2]=='undefined'){
+      if(typeof this.gameFrames[i+1]!==undefined){
+        if(this.gameFrames[i].isStrike){
+          if(this.gameFrames[i+1].isStrike){
+            this.frameScores[i] = 20
+          }else{
+            this.frameScores[i] = this.gameFrames[i+1].rollOneScore + this.gameFrames[i+1].rollTwoScore;
+          }; 
+        }else if(this.gameFrames[i].isHalfStrike){
+          this.frameScores[i] = this.gameFrames[i+1].rollOneScore;  
+        };  
+      }else{
+        if(this.gameFrames[i].isStrike){
+          this.frameScores[i] = 10;
+        }else{
+          this.frameScores[i]=this.gameFrames[i].rollOneScore + this.gameFrames[i].rollTwoScore;
+        }
+      };   
+    }else{
       if(this.gameFrames[i].isStrike){
         if(this.gameFrames[i+1].isStrike && this.gameFrames[i+2].isStrike){
           this.frameScores[i] = 30;
@@ -27,8 +45,8 @@ ScoreBoard.prototype.scoreProcess = function(){
         }                     
       }else{
         this.frameScores[i] = this.gameFrames[i].rollOneScore + this.gameFrames[i].rollTwoScore;
-      };  
-    };  
+      };        
+    }; 
   };
 };
 

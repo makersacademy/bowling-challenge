@@ -91,5 +91,11 @@ describe('ScoreBoard', function(){
     expect(scoreboard.frameScores[0]).toEqual(13);
   });
 
+  it('will add 20 for the 9th frame and 10 for the 10th on a strike', function(){
+    frame9.isStrike = true
+    frame10.isStrike = true
+    fillBoard();
+    expect(scoreboard.frameScores[9]).toEqual(10);  
+  });
 
 });

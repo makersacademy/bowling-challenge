@@ -45,5 +45,15 @@ describe('ScoreBoard', function(){
     expect(scoreboard.gameFrames.length).toEqual(10);
   });
 
+  it('add 30 to the first frame score when there are 3 consectutive strikes', function(){
+    frame1.isStrike = true
+    frame2.isStrike = true
+    frame3.isStrike = true
+    fillBoard();
+    scoreboard.scoreProcess();
+    expect(scoreboard.frameScores[0]).toEqual(30);
+  });
+
+  
 
 });

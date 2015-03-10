@@ -19,4 +19,12 @@ describe('Bowling', function() {
     expect(bowling.strike).toBe(true);
   });
 
+  it('can have one player', function() {
+    expect(bowling.player).toEqual(1);
+  });
+
+  it('player can start a frame', function() {
+    expect(bowling.frame).toBe(bowling.player);
+  });
+
 });

@@ -16,7 +16,7 @@ describe('Bowling', function() {
 
   it('can have a strike', function() {
     bowling.pinsHit(10);
-    expect(bowling.strike).toBe(true);
+    expect(bowling.strike).toBe(1);
   });
 
   it('can have one player', function() {
@@ -24,7 +24,19 @@ describe('Bowling', function() {
   });
 
   it('player can start a frame', function() {
-    expect(bowling.frame).toBe(bowling.player);
+    expect(bowling.rollNumber).toBe(bowling.player);
+  });
+
+  it('player can have two rolls in one frame', function(){
+    expect(bowling.rollNumber).toEqual(1);
+    bowling.pinsHit(9);
+    expect(bowling.rollNumber).toEqual(2);
+  });
+
+  it('player can move to the next frame when hitting a strike', function() {
+    expect(bowling.rollNumber).toEqual(1);
+    bowling.pinsHit(10);
+    expect(bowling.rollNumber).toEqual(2);
   });
 
 });

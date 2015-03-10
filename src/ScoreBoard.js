@@ -23,7 +23,7 @@ ScoreBoard.prototype.scoreProcess = function(){
         if(this.gameFrames[i+1].isStrike){
           this.frameScores[i] = 20;
         }else{
-          this.frameScores[i] = this.gameFrames[i].rollOneScore;
+          this.frameScores[i] = this.gameFrames[i+1].rollOneScore + 10;
         }                     
       }else{
         this.frameScores[i] = this.gameFrames[i].rollOneScore + this.gameFrames[i].rollTwoScore;

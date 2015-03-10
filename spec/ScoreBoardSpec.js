@@ -83,6 +83,13 @@ describe('ScoreBoard', function(){
     expect(scoreboard.frameScores[0]).toEqual(20);
   });
 
+  it('following a half strike, and the next roll is not a strike, it will add the value of the next roll', function(){
+    frame1.isHalfStrike = true;
+    frame2.rollOneScore = 3;
+    frame2.rollTwoScore = 3;
+    fillBoard();
+    expect(scoreboard.frameScores[0]).toEqual(13);
+  });
 
 
 });

@@ -5,15 +5,18 @@ describe('Bowling', function() {
     bowling = new Bowling();
   });
 
-  it('should have a total score of 0 when started', function() {
-    expect(bowling.currentScore).toEqual(0);
+  it('starts with 10 pins standing', function() {
+    expect(bowling.pins).toEqual(10);
   });
 
-  it('should have a total score of 0 when a gutter game is bowled', function() {
-    bowling.firstRoll;
-    bowling.secondRoll;
-    bowling.pinsHit(0);
-    expect(bowling.currentScore).toEqual(0);
+  it('pins can be knocked down', function() {
+    bowling.pinsHit(2);
+    expect(bowling.pins).toEqual(8);
+  });
+
+  it('can have a strike', function() {
+    bowling.pinsHit(10);
+    expect(bowling.strike).toBe(true);
   });
 
 });

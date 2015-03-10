@@ -1,9 +1,13 @@
 var Bowling = function() {
-  this.currentScore = 0;
-  this.firstRoll = 0;
-  this.secondRoll = 0;
+  this.pins = 10;
 };
 
-Bowling.prototype.pinsHit = function(pins) {
-  this.currentScore += pins;
+Bowling.prototype.pinsHit = function(number) {
+  if(number === 10)
+  {
+    this.strike = true
+    this.pins = 0
+  } else {
+    this.pins = (this.pins -= number);
+  }
 };

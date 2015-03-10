@@ -68,6 +68,21 @@ describe('ScoreBoard', function(){
     expect(scoreboard.frameScores[0]).toEqual(7);
   });
 
+  it('following a strike, if there are no subsequent strikes or half strikes, it will add the next two rolls to 10', function(){
+    frame1.isStrike = true
+    frame2.rollOneScore = 4;
+    frame2.rollTwoScore = 3;
+    fillBoard();
+    expect(scoreboard.frameScores[0]).toEqual(17);
+  });
+
+  it('following a half strike, if there is a strike adds 20 points', function(){
+    frame1.isHalfStrike = true;
+    frame2.isStrike = true;
+    fillBoard();
+    expect(scoreboard.frameScores[0]).toEqual(20);
+  });
+
 
 
 });

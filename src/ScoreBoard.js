@@ -16,7 +16,15 @@ ScoreBoard.prototype.scoreProcess = function(){
           this.frameScores[i] = 30;
         }else if(this.gameFrames[i+1].isHalfStrike){
           this.frameScores[i] = 20;
-        };      
+        }else if(this.gameFrames[i+1].isStrike === false && this.gameFrames[i+1].isHalfStrike === false){
+          this.frameScores[i] = this.gameFrames[i+1].rollOneScore + this.gameFrames[i+1].rollTwoScore + 10;
+        }; 
+      }else if(this.gameFrames[i].isHalfStrike){
+        if(this.gameFrames[i+1].isStrike){
+          this.frameScores[i] = 20;
+        }else{
+          this.frameScores[i] = this.gameFrames[i].rollOneScore;
+        }                     
       }else{
         this.frameScores[i] = this.gameFrames[i].rollOneScore + this.gameFrames[i].rollTwoScore;
       };  

@@ -48,14 +48,3 @@ Bowling.prototype.scoreTotal = function() {
   else if(this.strike != 0) {(this.currentScore = (10 * this.strike) + this.currentScore);}
   else{(this.currentScore = (10 - this.pins) + this.currentScore);}
 };
-
-
-
-
-
-
-
-
-
-
-

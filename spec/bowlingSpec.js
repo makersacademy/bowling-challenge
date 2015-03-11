@@ -59,4 +59,10 @@ describe('Bowling', function() {
     expect(bowling.currentScore).toEqual(5);
   });
 
+  // it('should add the score for a strike to the next frame score', function() {
+  //   bowling.pinsHit(10);
+  //   expect(bowling.strike).toBe(1);
+  //   expect(bowling.currentScore).toEqual(0);
+  // });
+
 });

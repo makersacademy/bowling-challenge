@@ -77,22 +77,18 @@ ScoreBoard.prototype.standardStrikeFrame = function(frame){
 
 ScoreBoard.prototype.frameTen = function(frame){
   i = this.getFrameIndex(frame);
-  if(this.isStrike(frame)){
-    this.frameScores[i] = 10
-  }else{
-    this.addFrameScores(frame);
-  };
+  if(this.isStrike(frame)) return this.frameScores[i] = 10
+  return this.addFrameScores(frame);
 };
 
 ScoreBoard.prototype.frameNine = function(frame){
   i = this.getFrameIndex(frame);
-  if(this.isStrike(frame) || this.isHalfStrike(frame)){
-    if(this.isStrike(this.gameFrames[i+1])){
-      this.frameScores[i] = 20;
-    }else{
-      this.frameScores[i] = 10 + this.getNextFrameScores(frame);
-    };
-  }else{
-    this.addFrameScores(frame);
-  };
+  if(this.isStrike(frame) || this.isHalfStrike(frame)) return this.frameNineStrikes(frame);
+  return this.addFrameScores(frame);
+};
+
+ScoreBoard.prototype.frameNineStrikes = function(frame){
+  i = this.getFrameIndex(frame);
+  if(this.isStrike(this.gameFrames[i+1])) return this.frameScores[i] = 20;
+  return this.frameScores[i] = 10 + this.getNextFrameScores(frame);
 };

@@ -38,7 +38,6 @@ describe('ScoreBoard', function(){
     scoreboard.addFrame(frame8)
     scoreboard.addFrame(frame9)
     scoreboard.addFrame(frame10)
-    scoreboard.scoreProcess();
   };
     
   it('can add frames', function(){
@@ -46,56 +45,29 @@ describe('ScoreBoard', function(){
     expect(scoreboard.gameFrames.length).toEqual(10);
   });
 
-  it('add 30 to the first frame score when there are 3 consectutive strikes', function(){
-    frame1.isStrike = true
-    frame2.isStrike = true
-    frame3.isStrike = true
-    fillBoard();
-    expect(scoreboard.frameScores[0]).toEqual(30);
+  it('knows when a frame scored a strike', function(){
+    frame1.rollOneScore = 10;
+    expect(scoreboard.isStrike(frame1)).toEqual(true);
   });
 
-  it('add 20 to the first frame score when a half strike follows a strike', function(){
-    frame1.isStrike = true
-    frame2.isHalfStrike = true
-    fillBoard();
-    expect(scoreboard.frameScores[0]).toEqual(20);
+  it('knows when a frame has scored a half strike', function(){
+    frame1.rollOneScore = 5;
+    frame1.rollTwoScore = 5;
+    expect(scoreboard.isHalfStrike(frame1)).toEqual(true); 
   });
 
-  it('adds the scores normally when no strikes are recorded', function(){
-    frame1.rollOneScore = 4;
-    frame1.rollTwoScore = 3;
+  it('can return the index of a frame from the gameFrames array', function(){
     fillBoard();
-    expect(scoreboard.frameScores[0]).toEqual(7);
+    expect(scoreboard.getFrameIndex(frame1)).toEqual(0);
+    expect(scoreboard.getFrameIndex(frame2)).toEqual(1);
+    expect(scoreboard.getFrameIndex(frame3)).toEqual(2);
+    expect(scoreboard.getFrameIndex(frame4)).toEqual(3);
   });
 
-  it('following a strike, if there are no subsequent strikes or half strikes, it will add the next two rolls to 10', function(){
-    frame1.isStrike = true
-    frame2.rollOneScore = 4;
-    frame2.rollTwoScore = 3;
+  it('knows when a frame does not have an item one or two places above it in the array', function(){
     fillBoard();
-    expect(scoreboard.frameScores[0]).toEqual(17);
-  });
-
-  it('following a half strike, if there is a strike adds 20 points', function(){
-    frame1.isHalfStrike = true;
-    frame2.isStrike = true;
-    fillBoard();
-    expect(scoreboard.frameScores[0]).toEqual(20);
-  });
-
-  it('following a half strike, and the next roll is not a strike, it will add the value of the next roll', function(){
-    frame1.isHalfStrike = true;
-    frame2.rollOneScore = 3;
-    frame2.rollTwoScore = 3;
-    fillBoard();
-    expect(scoreboard.frameScores[0]).toEqual(13);
-  });
-
-  it('will add 20 for the 9th frame and 10 for the 10th on a strike', function(){
-    frame9.isStrike = true
-    frame10.isStrike = true
-    fillBoard();
-    expect(scoreboard.frameScores[9]).toEqual(10);  
+    expect(scoreboard.canCheck(frame8)).toEqual(true)
+    expect(scoreboard.canCheck(frame9)).toEqual(false)
   });
 
 });

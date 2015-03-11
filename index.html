@@ -7,7 +7,7 @@
   <!-- include source files here... -->
   <script src="src/Frame.js"></script>
   <script src="src/Player.js"></script>
-
+  <script src="src/ScoreBoard.js"></script>
 
 </head>
 
@@ -15,9 +15,38 @@
 
   <h1>Bowling!</h1>
 
+  <h2>Pins Remaining in Frame</h2>
   <h2 id="pins-remaining"></h2>
-
   <section><a id="take-roll" href="#"></a></section>
+
+  <table>
+    <tr>
+      <th>Frame 1</th>
+      <th>Frame 2</th> 
+      <th>Frame 3</th>
+      <th>Frame 4</th>
+      <th>Frame 5</th>
+      <th>Frame 6</th>
+      <th>Frame 7</th>
+      <th>Frame 8</th>
+      <th>Frame 9</th>
+      <th>Frame 10</th>
+      <th>Total Score</th>
+    </tr>
+    <tr>
+      <td id="frame1" class="frame"></td>
+      <td id="frame2" class="frame"></td> 
+      <td id="frame3" class="frame"></td>
+      <td id="frame4" class="frame"></td>
+      <td id="frame5" class="frame"></td> 
+      <td id="frame6" class="frame"></td>
+      <td id="frame7" class="frame"></td>
+      <td id="frame8" class="frame"></td> 
+      <td id="frame9" class="frame"></td>
+      <td id="frame10" class="frame"></td>
+      <td id="total-score"></td>
+    </tr>
+  </table>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="src/BowlingController.js"></script>

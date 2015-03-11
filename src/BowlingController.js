@@ -1,6 +1,7 @@
 $('document').ready(function(){
   
   var player = new Player;
+  var scoreboard = new ScoreBoard
   var frame; 
 
   rackupFrame();
@@ -23,11 +24,16 @@ $('document').ready(function(){
   $('#take-roll').click(function(e){
     e.preventDefault();
     if(frame.rollTwoDone === true){
+      scoreboard.addFrame(frame);
+      scoreboard.processScores();
+      scoreboard.totalUpGame();
+      totalScore();
       rackupFrame();  
     }else{
       var roll = getRoll();
       takeShot(roll);
     };
+    populateTable();
   });
 
   function takeShot(roll){
@@ -40,6 +46,17 @@ $('document').ready(function(){
       displayPins();
       $('#take-roll').text("Next frame!");
     }
+  };
+
+  function populateTable(){
+    $('.frame').each(function(index){
+      if(typeof scoreboard.frameScores[index]!='undefined') return $(this).text(scoreboard.frameScores[index]);
+      return $(this).text("-");
+    });  
+  };
+
+  function totalScore(){
+    $('#total-score').text(scoreboard.currentScore);
   };
 
 });

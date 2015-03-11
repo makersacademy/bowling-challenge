@@ -157,7 +157,7 @@ describe('ScoreBoard', function(){
     expect(scoreboard.frameScores[8]).toEqual(13);       
   });
 
-  it('if frame 9 is a half strike it can add the next roll of frame 10', function(){
+  it('if frame 9 is not a half strike it can add its own frame scores', function(){
     frame9.rollOneScore = 5;
     frame9.rollTwoScore = 3;
     frame10.rollOneScore = 3;

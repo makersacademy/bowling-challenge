@@ -1,13 +1,15 @@
 ScoreBoard = function(){
   this.gameFrames = [];
   this.frameScores = [];
-  this.totalGameScore = 0;
+  this.currentScore = 0;
 };
 
 ScoreBoard.prototype.totalUpGame = function(){
-  for (var i = 0; i < this.frameScores.length; i++) {
-    this.totalGameScore += this.frameScores[i]
+  var total = 0;
+  for (var i = 0; i < this.frameScores.length; i++) { 
+    total += this.frameScores[i];
   };
+  return this.currentScore = total;
 };
 
 ScoreBoard.prototype.addFrame = function(frame){
@@ -85,7 +87,7 @@ ScoreBoard.prototype.standardStrikeFrame = function(frame){
 
 ScoreBoard.prototype.standardHalfStrikeFrame = function(frame){
   i = this.getFrameIndex(frame);
-  if(this.isStrike(this.gameFrames[i+1])) this.frameScores[i] = 20;
+  if(this.isStrike(this.gameFrames[i+1])) return this.frameScores[i] = 20;
   return this.frameScores[i] = 10 + this.gameFrames[i+1].rollOneScore  
 }
 

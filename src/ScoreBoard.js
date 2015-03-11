@@ -39,19 +39,16 @@ ScoreBoard.prototype.processScores = function(){
   };
 };
 
+ScoreBoard.prototype.standardFrameCheck = function(frame){
+  if(this.isStrike(frame)) this.standardStrikeFrame(frame)
+
+};
+
 ScoreBoard.prototype.accumulator = function(frame){
   i = this.getFrameIndex(frame);
-  if(this.canCheck(frame)){
-    if(this.isStrike(frame)){
-      this.standardStrikeFrame(frame);
-    };  
-  }else{
-    if(typeof this.gameFrames[i+1]=='undefined'){
-      this.frameTen(frame);
-    }else if(typeof this.gameFrames[i+2]=='undefined'){
-      this.frameNine(frame);  
-    };
-  }; 
+  if(this.canCheck(frame)) this.standardFrameCheck(frame) 
+  if(typeof this.gameFrames[i+1]=='undefined') return this.frameTen(frame);  
+  if(typeof this.gameFrames[i+2]=='undefined') return this.frameNine(frame);  
 };
 
 ScoreBoard.prototype.isTurkey = function(frame){

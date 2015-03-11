@@ -46,6 +46,22 @@ ScoreBoard.prototype.accumulator = function(frame){
         this.frameScores[i] = 10 + this.getNextFrameScores(frame);
       };
     };  
+  }else{
+    if(typeof this.gameFrames[i+1]=='undefined'){
+      if(this.isStrike(frame)){
+        this.frameScores[i] = 10
+      }else{
+        this.frameScores[i] = frame.rollOneScore + frame.rollTwoScore;
+      };
+    }else if(typeof this.gameFrames[i+2]=='undefined'){
+      if(this.isStrike(frame)){
+        if(this.isStrike(this.gameFrames[i+1])){
+          this.frameScores[i] = 20;
+        }else{
+          this.frameScores[i] = 10 + this.getNextFrameScores(frame);
+        }
+      };
+    }
   }; 
 };
 

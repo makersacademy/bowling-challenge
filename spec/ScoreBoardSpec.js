@@ -98,6 +98,36 @@ describe('ScoreBoard', function(){
     expect(scoreboard.frameScores[0]).toEqual(18)
   });
 
-  
+  it('can check frame 10 is a strike', function(){
+    frame10.rollOneScore = 10;
+    fillBoard();
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[9]).toEqual(10);    
+  });
+
+  it('can check frame 10', function(){
+    frame10.rollOneScore = 5;
+    frame10.rollTwoScore = 1;
+    fillBoard();
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[9]).toEqual(6);    
+  });
+
+  it('can confirm if frame 9 is a double strike', function(){
+    frame9.rollOneScore = 10;
+    frame10.rollOneScore = 10;
+    fillBoard();
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[8]).toEqual(20);       
+  });
+
+  it('if frame 9 is a strike can add the next two roles of frame 10', function(){
+    frame9.rollOneScore = 10;
+    frame10.rollOneScore = 3;
+    frame10.rollTwoScore = 4;
+    fillBoard();
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[8]).toEqual(17);       
+  });
 
 });

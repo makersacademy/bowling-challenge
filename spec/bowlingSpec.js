@@ -33,6 +33,12 @@ describe('Bowling', function() {
     expect(bowling.rollNumber).toEqual(2);
   });
 
+  it('player can roll a spare', function() {
+    bowling.pinsHit(5);
+    bowling.pinsHit(5);
+    expect(bowling.spare).toEqual(1);
+  });
+
   it('player can move to the next frame after roll 2', function() {
     expect(bowling.rollNumber).toEqual(1);
     bowling.pinsHit(9);
@@ -45,6 +51,12 @@ describe('Bowling', function() {
     expect(bowling.rollNumber).toEqual(1);
     bowling.pinsHit(10);
     expect(bowling.rollNumber).toEqual(2);
+  });
+
+  it('player can have a total score after each frame', function() {
+    bowling.pinsHit(2);
+    bowling.pinsHit(3);
+    expect(bowling.currentScore).toEqual(5);
   });
 
 });

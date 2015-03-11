@@ -139,4 +139,13 @@ describe('ScoreBoard', function(){
     expect(scoreboard.frameScores[8]).toEqual(13);       
   });
 
+  it('if frame 9 is a half strike it can add the next roll of frame 10', function(){
+    frame9.rollOneScore = 5;
+    frame9.rollTwoScore = 3;
+    frame10.rollOneScore = 3;
+    fillBoard();
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[8]).toEqual(8);       
+  });
+
 });

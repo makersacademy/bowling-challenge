@@ -58,8 +58,10 @@ ScoreBoard.prototype.accumulator = function(frame){
         if(this.isStrike(this.gameFrames[i+1])){
           this.frameScores[i] = 20;
         }else{
-          this.frameScores[i] = this.getNextFrameScores(frame) + 10 
+          this.frameScores[i] = 10 + this.getNextFrameScores(frame);
         };
+      }else{
+        this.frameScores[i] = frame.rollOneScore + frame.rollTwoScore;
       };
     };
   }; 

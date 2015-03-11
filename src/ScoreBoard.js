@@ -40,8 +40,9 @@ ScoreBoard.prototype.processScores = function(){
 };
 
 ScoreBoard.prototype.standardFrameCheck = function(frame){
-  if(this.isStrike(frame)) this.standardStrikeFrame(frame)
-
+  if(this.isStrike(frame)) return this.standardStrikeFrame(frame);
+  if(this.isHalfStrike(frame)) return this.standardHalfStrikeFrame(frame);
+  return this.addFrameScores(frame);
 };
 
 ScoreBoard.prototype.accumulator = function(frame){
@@ -74,6 +75,12 @@ ScoreBoard.prototype.standardStrikeFrame = function(frame){
   if(this.isDoubleStrike(frame)) return this.frameScores[i] = 20 + this.gameFrames[i+2].rollOneScore;
   return this.frameScores[i] = 10 + this.getNextFrameScores(frame);
 };
+
+ScoreBoard.prototype.standardHalfStrikeFrame = function(frame){
+  i = this.getFrameIndex(frame);
+  if(this.isStrike(this.gameFrames[i+1])) this.frameScores[i] = 20;
+  return this.frameScores[i] = 10 + this.gameFrames[i+1].rollOneScore  
+}
 
 ScoreBoard.prototype.frameTen = function(frame){
   i = this.getFrameIndex(frame);

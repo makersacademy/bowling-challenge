@@ -98,6 +98,24 @@ describe('ScoreBoard', function(){
     expect(scoreboard.frameScores[0]).toEqual(18)
   });
 
+  it('can accumulate after a half strike if the next roll is a strike', function(){
+    frame1.rollOneScore = 5;
+    frame1.rollTwoScore = 5;
+    frame2.rollOneScore = 10;
+    fillBoard();
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[0]).toEqual(20);
+  });
+
+  it('can accumulate after a half strike if the next roll isnt a strike', function(){
+    frame1.rollOneScore = 5;
+    frame1.rollTwoScore = 5;
+    frame2.rollOneScore = 8;
+    fillBoard();
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[0]).toEqual(18);
+  });
+
   it('can check frame 10 is a strike', function(){
     frame10.rollOneScore = 10;
     fillBoard();

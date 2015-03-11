@@ -70,13 +70,9 @@ ScoreBoard.prototype.getNextFrameScores = function(frame){
 
 ScoreBoard.prototype.standardStrikeFrame = function(frame){
   i = this.getFrameIndex(frame);
-  if(this.isTurkey(frame)){
-    this.frameScores[i] = 30;
-  }else if(this.isDoubleStrike(frame)){
-    this.frameScores[i] = 20 + this.gameFrames[i+2].rollOneScore;
-  }else{
-    this.frameScores[i] = 10 + this.getNextFrameScores(frame);
-  }; 
+  if(this.isTurkey(frame)) return this.frameScores[i] = 30;
+  if(this.isDoubleStrike(frame)) return this.frameScores[i] = 20 + this.gameFrames[i+2].rollOneScore;
+  return this.frameScores[i] = 10 + this.getNextFrameScores(frame);
 };
 
 ScoreBoard.prototype.frameTen = function(frame){

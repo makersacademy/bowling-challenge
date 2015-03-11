@@ -64,10 +64,17 @@ describe('ScoreBoard', function(){
     expect(scoreboard.getFrameIndex(frame4)).toEqual(3);
   });
 
-  it('knows when a frame does not have an item one or two places above it in the array', function(){
+  it('knows that it cant check an item if it doesnt have an item one or two places above it in the array', function(){
     fillBoard();
     expect(scoreboard.canCheck(frame8)).toEqual(true)
     expect(scoreboard.canCheck(frame9)).toEqual(false)
+  });
+
+  it('can loop through frames and tell if it is a strike', function(){
+    frame1.rollOneScore = 10;
+    fillBoard();
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[0]).toEqual(10)
   });
 
 });

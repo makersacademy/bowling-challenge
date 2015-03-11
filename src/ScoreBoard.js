@@ -27,4 +27,14 @@ ScoreBoard.prototype.canCheck = function(frame){
   return true;
 };
 
+ScoreBoard.prototype.processScores = function(){
+  for (var i = 0; i < this.gameFrames.length; i++) {
+    frame = this.gameFrames[i]  
+    if(this.canCheck(frame)){
+      if(this.isStrike(frame)){
+        this.frameScores[i] = 10;
+      };
+    };  
+  };
+};
 

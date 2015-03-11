@@ -29,12 +29,39 @@ ScoreBoard.prototype.canCheck = function(frame){
 
 ScoreBoard.prototype.processScores = function(){
   for (var i = 0; i < this.gameFrames.length; i++) {
-    frame = this.gameFrames[i]  
-    if(this.canCheck(frame)){
-      if(this.isStrike(frame)){
-        this.frameScores[i] = 10;
-      };
-    };  
+    frame = this.gameFrames[i];
+    this.accumulator(frame);   
   };
 };
 
+ScoreBoard.prototype.accumulator = function(frame){
+  i = this.getFrameIndex(frame);
+  if(this.canCheck(frame)){
+    if(this.isStrike(frame)){
+      if(this.isTurkey(frame)){
+        this.frameScores[i] = 30;
+      }else if(this.isDoubleStrike(frame)){
+        this.frameScores[i] = 20 + this.gameFrames[i+2].rollOneScore;
+      }else{
+        this.frameScores[i] = 10 + this.getNextFrameScores(frame);
+      };
+    };  
+  }; 
+};
+
+ScoreBoard.prototype.isTurkey = function(frame){
+  i = this.getFrameIndex(frame);
+  if(this.isStrike(this.gameFrames[i+1]) && this.isStrike(this.gameFrames[i+2])) return true
+  return false;  
+}
+
+ScoreBoard.prototype.isDoubleStrike = function(frame){
+  i = this.getFrameIndex(frame);
+  if(this.isStrike(this.gameFrames[i+1]) && !this.isStrike(this.gameFrames[i+2])) return true;
+  return false;
+};
+
+ScoreBoard.prototype.getNextFrameScores = function(frame){
+  i = this.getFrameIndex(frame);
+  return this.gameFrames[i+1].rollOneScore + this.gameFrames[i+1].rollTwoScore;
+};

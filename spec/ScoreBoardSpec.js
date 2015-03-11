@@ -70,11 +70,34 @@ describe('ScoreBoard', function(){
     expect(scoreboard.canCheck(frame9)).toEqual(false)
   });
 
-  it('can loop through frames and tell if it is a strike', function(){
+  it('knows when a player scores a turkey', function(){
     frame1.rollOneScore = 10;
+    frame2.rollOneScore = 10;
+    frame3.rollOneScore = 10;
     fillBoard();
     scoreboard.processScores();
-    expect(scoreboard.frameScores[0]).toEqual(10)
+    expect(scoreboard.frameScores[0]).toEqual(30);  
   });
+
+  it('knows when a player scores a double strike', function(){
+    frame1.rollOneScore = 10;
+    frame2.rollOneScore = 10;
+    frame3.rollOneScore = 5;
+    frame3.rollTwoScore = 3;
+    fillBoard();
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[0]).toEqual(25);
+  });
+
+  it('can accumulate scores after a strike', function(){
+    frame1.rollOneScore = 10;
+    frame2.rollOneScore = 5;
+    frame2.rollTwoScore = 3;
+    fillBoard();
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[0]).toEqual(18)
+  });
+
+  
 
 });

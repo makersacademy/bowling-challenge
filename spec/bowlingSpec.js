@@ -27,10 +27,18 @@ describe('Bowling', function() {
     expect(bowling.rollNumber).toBe(bowling.player);
   });
 
-  it('player can have two rolls in one frame', function(){
+  it('player can have two rolls in one frame', function() {
     expect(bowling.rollNumber).toEqual(1);
     bowling.pinsHit(9);
     expect(bowling.rollNumber).toEqual(2);
+  });
+
+  it('player can move to the next frame after roll 2', function() {
+    expect(bowling.rollNumber).toEqual(1);
+    bowling.pinsHit(9);
+    expect(bowling.rollNumber).toEqual(2);
+    bowling.pinsHit(1);
+    expect(bowling.frameNumber).toEqual(2);
   });
 
   it('player can move to the next frame when hitting a strike', function() {

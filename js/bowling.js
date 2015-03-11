@@ -1,6 +1,7 @@
 var Bowling = function() {
   this.pins = 10;
   this.player = 1;
+  this.frameNumber = 1;
   this.rollNumber = 1;
   this.strike = 0;
 };
@@ -26,7 +27,20 @@ Bowling.prototype.nextFrame = function() {
   }
   else if(this.rollNumber === 2)
   {
-    this.rollNumber -= 1
-    this.pins = 10
+    this.rollNumber -= 1;
+    this.frameTotal();
+    this.pins = 10;
+  }
+};
+
+Bowling.prototype.frameTotal = function() {
+  if(this.frameNumber === 10)
+  {
+    this.frameNumber = 1;
+    return "Game over";
+  }
+  else
+  {
+    this.frameNumber += 1;
   }
 };

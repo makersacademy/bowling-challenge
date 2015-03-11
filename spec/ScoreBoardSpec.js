@@ -121,13 +121,22 @@ describe('ScoreBoard', function(){
     expect(scoreboard.frameScores[8]).toEqual(20);       
   });
 
-  it('if frame 9 is a strike can add the next two roles of frame 10', function(){
+  it('if frame 9 is a strike can add the next two rolls of frame 10', function(){
     frame9.rollOneScore = 10;
     frame10.rollOneScore = 3;
     frame10.rollTwoScore = 4;
     fillBoard();
     scoreboard.processScores();
     expect(scoreboard.frameScores[8]).toEqual(17);       
+  });
+
+  it('if frame 9 is a half strike it can add the next roll of frame 10', function(){
+    frame9.rollOneScore = 5;
+    frame9.rollTwoScore = 5;
+    frame10.rollOneScore = 3;
+    fillBoard();
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[8]).toEqual(13);       
   });
 
 });

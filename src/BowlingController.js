@@ -33,6 +33,7 @@ $('document').ready(function(){
       var roll = getRoll();
       takeShot(roll);
     };
+    populateRoll();
     populateTable();
   });
 
@@ -46,6 +47,17 @@ $('document').ready(function(){
       displayPins();
       $('#take-roll').text("Next frame!");
     }
+  };
+
+  function populateRoll(){
+    var rollsArray = []  
+    for (var i = 0; i < scoreboard.gameFrames.length; i++) {
+      rollsArray.push(scoreboard.gameFrames[i].rollOneScore)
+      rollsArray.push(scoreboard.gameFrames[i].rollTwoScore) 
+    }; 
+    $('.roll').each(function(i){
+      $(this).text(rollsArray[i]);
+    });  
   };
 
   function populateTable(){

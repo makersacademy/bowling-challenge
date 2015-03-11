@@ -1,6 +1,13 @@
 ScoreBoard = function(){
   this.gameFrames = [];
   this.frameScores = [];
+  this.totalGameScore = 0;
+};
+
+ScoreBoard.prototype.totalUpGame = function(){
+  for (var i = 0; i < this.frameScores.length; i++) {
+    this.totalGameScore += this.frameScores[i]
+  };
 };
 
 ScoreBoard.prototype.addFrame = function(frame){

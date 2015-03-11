@@ -166,4 +166,26 @@ describe('ScoreBoard', function(){
     expect(scoreboard.frameScores[8]).toEqual(8);       
   });
 
+  it('can calculate a game', function(){
+    frame1.rollOneScore = 5
+    frame1.rollTwoScore = 3
+    frame2.rollOneScore = 10
+    frame3.rollOneScore = 3
+    frame3.rollTwoScore = 7
+    frame4.rollOneScore = 4
+    frame4.rollTwoScore = 5
+    frame5.rollOneScore = 10
+    frame6.rollOneScore = 3
+    frame6.rollTwoScore = 5
+    frame7.rollOneScore = 4
+    frame7.rollTwoScore = 6
+    frame8.rollOneScore = 10
+    frame9.rollOneScore = 10
+    frame10.rollOneScore = 10
+    fillBoard();
+    scoreboard.processScores();
+    scoreboard.totalUpGame();
+    expect(scoreboard.totalGameScore).toEqual(157)
+  });
+
 });

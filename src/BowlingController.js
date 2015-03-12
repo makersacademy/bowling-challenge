@@ -1,10 +1,21 @@
 $('document').ready(function(){
   
-  var player = new Player;
-  var scoreboard = new ScoreBoard
+  var player
+  var scoreboard
   var frame; 
+  var rollsArray
 
+
+  newGame();
   rackupFrame();
+  
+
+  function newGame(){
+    player = new Player
+    scoreboard = new ScoreBoard
+    unpopulateTable();
+    unpopulateRollArray();
+  }
 
   function rackupFrame(){
     player.newFrame();
@@ -21,6 +32,10 @@ $('document').ready(function(){
     return player.roll();
   };
 
+  function whichRoll(){
+
+  };
+
   $('#take-roll').click(function(e){
     e.preventDefault();
     if(frame.rollTwoDone === true){
@@ -34,7 +49,7 @@ $('document').ready(function(){
       takeShot(roll);
     };
     populateRoll();
-    populateTable();
+    populateTable(); 
   });
 
   function takeShot(roll){
@@ -44,20 +59,30 @@ $('document').ready(function(){
     }else{
       roll = getRoll();
       frame.getRollTwo(roll);
-      displayPins();
+      displayPins(); 
       $('#take-roll').text("Next frame!");
     }
   };
 
   function populateRoll(){
-    var rollsArray = []  
+    rollsArray = []  
     for (var i = 0; i < scoreboard.gameFrames.length; i++) {
       rollsArray.push(scoreboard.gameFrames[i].rollOneScore)
       rollsArray.push(scoreboard.gameFrames[i].rollTwoScore) 
     }; 
+    populateRollArray(); 
+  };
+
+  function populateRollArray(){
     $('.roll').each(function(i){
       $(this).text(rollsArray[i]);
-    });  
+    }); 
+  };
+
+  function unpopulateRollArray(){
+    $('.roll').each(function(i){
+      $(this).text("-");
+    });     
   };
 
   function populateTable(){
@@ -65,6 +90,12 @@ $('document').ready(function(){
       if(typeof scoreboard.frameScores[index]!='undefined') return $(this).text(scoreboard.frameScores[index]);
       return $(this).text("-");
     });  
+  };
+
+  function unpopulateTable(){
+    $('.frame').each(function(index){
+      return $(this).text("-");
+    }); 
   };
 
   function totalScore(){

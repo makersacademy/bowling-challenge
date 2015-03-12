@@ -4,6 +4,7 @@ $('document').ready(function(){
   var scoreboard
   var frame; 
   var rollsArray
+  var clicks
 
   newGame();
   rackupFrame();
@@ -11,6 +12,7 @@ $('document').ready(function(){
   function newGame(){
     player = new Player
     scoreboard = new ScoreBoard
+    clicks = 0
     unpopulateTable();
     unpopulateRollTable();
   }
@@ -19,12 +21,24 @@ $('document').ready(function(){
     player.newFrame();
     frame = new Frame;
     displayPins();
-    $('#take-roll').text("Take a roll!");
+    textTakeARoll();
   };  
 
   function displayPins(){
     $('#pins-remaining').text(frame.pinsRemaining);
   };
+
+  function textTakeARoll(){
+    $('#take-roll').text("Take a roll!");
+  }
+
+  function textNextFrame(){
+    $('#take-roll').text("Next frame!");
+  }
+
+  function textNewGame(){
+    $('#take-roll').text("New Game!");
+  }
 
   function getRoll(){
     return player.roll();
@@ -40,9 +54,16 @@ $('document').ready(function(){
 
   $('#take-roll').click(function(e){
     e.preventDefault();
+    clicksCounter();    
     if(!isRollOneDone()) return rollOne();
     if(!isRollTwoDone()) return rollTwo();
   });
+
+  function clicksCounter(){
+    clicks++;
+    if(clicks===21) textNewGame();
+    if(clicks===22) location.reload();
+  }
 
   function rollOne(){
     roll = getRoll();
@@ -64,7 +85,7 @@ $('document').ready(function(){
   function onClickDo(){
     populateRollArray();
     populateTable();
-    if(isRollOneDone() && isRollTwoDone()) closeFrame(); 
+    if(isRollOneDone() && isRollTwoDone()) closeFrame();
   }
 
   function closeFrame(){

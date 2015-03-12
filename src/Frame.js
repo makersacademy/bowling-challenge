@@ -13,7 +13,8 @@ Frame.prototype.getRollOne = function(roll) {
 };
 
 Frame.prototype.getRollTwo = function(roll){
-  this.rollTwoScore = this.getScore(roll);
+  if(this.rollOneScore===10) this.rollTwoScore === 0
+  if(this.rollOneScore!==10) this.rollTwoScore = this.getScore(roll);
   this.rollTwoDone = true;
 };
 

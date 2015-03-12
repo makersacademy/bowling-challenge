@@ -5,16 +5,14 @@ $('document').ready(function(){
   var frame; 
   var rollsArray
 
-
   newGame();
   rackupFrame();
   
-
   function newGame(){
     player = new Player
     scoreboard = new ScoreBoard
     unpopulateTable();
-    unpopulateRollArray();
+    unpopulateRollTable();
   }
 
   function rackupFrame(){
@@ -32,54 +30,71 @@ $('document').ready(function(){
     return player.roll();
   };
 
-  function whichRoll(){
+  function isRollOneDone(){
+    return frame.rollOneDone;
+  };
 
+  function isRollTwoDone(){
+    return frame.rollTwoDone;
   };
 
   $('#take-roll').click(function(e){
     e.preventDefault();
-    if(frame.rollTwoDone === true){
-      scoreboard.addFrame(frame);
-      scoreboard.processScores();
-      scoreboard.totalUpGame();
-      totalScore();
-      rackupFrame();  
-    }else{
-      var roll = getRoll();
-      takeShot(roll);
-    };
-    populateRoll();
-    populateTable(); 
+    if(!isRollOneDone()) return rollOne();
+    if(!isRollTwoDone()) return rollTwo();
   });
 
-  function takeShot(roll){
-    if(frame.rollOneDone === false){
-      frame.getRollOne(roll);
-      displayPins();
-    }else{
-      roll = getRoll();
-      frame.getRollTwo(roll);
-      displayPins(); 
-      $('#take-roll').text("Next frame!");
-    }
+  function rollOne(){
+    roll = getRoll();
+    frame.getRollOne(roll);
+    postRollDo();
   };
 
-  function populateRoll(){
+  function rollTwo(){
+    roll = getRoll();
+    frame.getRollTwo(roll);
+    postRollDo();
+  };
+    
+  function postRollDo(){
+    displayPins();
+    onClickDo(); 
+  }
+
+  function onClickDo(){
+    populateRollArray();
+    populateTable();
+    if(isRollOneDone() && isRollTwoDone()) closeFrame(); 
+  }
+
+  function closeFrame(){
+    doScoreBoardCloseFrame();
+    totalScore();
+    rackupFrame();   
+  }
+
+  function doScoreBoardCloseFrame(){
+    scoreboard.addFrame(frame);
+    scoreboard.processScores();
+    scoreboard.totalUpGame();  
+  };
+
+  function populateRollArray(){
     rollsArray = []  
     for (var i = 0; i < scoreboard.gameFrames.length; i++) {
       rollsArray.push(scoreboard.gameFrames[i].rollOneScore)
       rollsArray.push(scoreboard.gameFrames[i].rollTwoScore) 
     }; 
-    populateRollArray(); 
+    populateRollTable(); 
   };
 
-  function populateRollArray(){
+  function populateRollTable(){
     $('.roll').each(function(i){
       $(this).text(rollsArray[i]);
     }); 
   };
 
-  function unpopulateRollArray(){
+  function unpopulateRollTable(){
     $('.roll').each(function(i){
       $(this).text("-");
     });     

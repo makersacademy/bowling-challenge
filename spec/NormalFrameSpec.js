@@ -39,7 +39,7 @@ describe('Frame', function() {
     expect(normalframe.isOver).toBe(true);
   });
 
-  it('should not accept another ball if it is over', function(){
+  xit('should not accept another ball if it is over', function(){
     spyOn(ball, "score").and.returnValue(10);
     ball.setScore(10);
     normalframe.bowl(ball);

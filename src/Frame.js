@@ -1,5 +1,4 @@
-Frame = function(n) {
-  this.frameNumber = n
+Frame = function() {
   this.pinsRemaining = 10
   this.rollOneScore = 0
   this.rollTwoScore = 0

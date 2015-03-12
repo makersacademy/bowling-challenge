@@ -185,7 +185,7 @@ describe('ScoreBoard', function(){
     fillBoard();
     scoreboard.processScores();
     scoreboard.totalUpGame();
-    expect(scoreboard.totalGameScore).toEqual(157)
+    expect(scoreboard.currentScore).toEqual(157)
   });
 
 });

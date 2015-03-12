@@ -4,10 +4,6 @@ ScoreBoard = function(){
   this.currentScore = 0;
 };
 
-ScoreBoard.prototype.isFull = function(){
-  return this.frameScores.length === 10;
-};
-
 ScoreBoard.prototype.totalUpGame = function(){
   var total = 0;
   for (var i = 0; i < this.frameScores.length; i++) { 

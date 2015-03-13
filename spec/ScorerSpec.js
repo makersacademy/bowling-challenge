@@ -35,8 +35,18 @@ describe('Scorer', function() {
     expect(scorer.total()).toEqual(35);
   });
 
-  xit('gives a score of 10 with 1 strike', function() {
+  it('gives a score of 10 with 1 strike', function() {
+    scorer.roll(10);
+    multiRoll(18,0);
+    expect(scorer.total()).toEqual(10);
+  });
 
+  it('gives a score of 20 after a strike a 2 and a 3', function() {
+    scorer.roll(10);
+    scorer.roll(2);
+    scorer.roll(3);
+    multiRoll(16,0);
+    expect(scorer.total()).toEqual(20);
   });
 
 

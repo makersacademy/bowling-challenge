@@ -9,6 +9,7 @@ describe("Bowling Game", function() {
     // frames = [frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10];
     game = new BowlingGame();
     game.hold(frames);
+    game.holdBonusFrame(frame);
   };
 
   describe("Taking and saving rolls", function() {
@@ -52,9 +53,45 @@ describe("Bowling Game", function() {
       game.roll(10);
       game.roll(4); game.roll(2);
       game.roll(5); game.roll(5);
-      game.roll(1); game.roll(5);
+      game.roll(4); expect(game.isOver).toEqual(false); game.roll(4);
       expect(game.isOver).toEqual(true);
     });
+
+    it("adds a bonus roll, when last roll in 10th frame was strike", function() {
+      game.roll(7); game.roll(2);
+      game.roll(10);
+      game.roll(2); game.roll(8);
+      game.roll(0); game.roll(5);
+      game.roll(4); game.roll(3);
+      game.roll(7); game.roll(3);
+      game.roll(10);
+      game.roll(4); game.roll(2);
+      game.roll(5); game.roll(5);
+      game.roll(10);
+      expect(game.isOver).toEqual(false);
+      game.roll(4);
+      expect(game.isOver).toEqual(true);
+    });
+
+    xit("adds only one more bonus roll, when first bonus roll for 10th frame was strike too", function() {
+      game.roll(7); game.roll(2);
+      game.roll(10);
+      game.roll(2); game.roll(8);
+      game.roll(0); game.roll(5);
+      game.roll(4); game.roll(3);
+      game.roll(7); game.roll(3);
+      game.roll(10);
+      game.roll(4); game.roll(2);
+      game.roll(5); game.roll(5);
+      game.roll(10);
+      expect(game.isOver).toEqual(false);
+      game.roll(10);
+      expect(game.isOver).toEqual(false);
+      game.roll(10);
+      expect(game.isOver).toEqual(true);
+    });
+
+
 
   });
 });

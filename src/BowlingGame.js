@@ -2,25 +2,30 @@ BowlingGame = function(){
   this.currentFrame;
   this.scoreCard = [];
   this.freshFrames = [];
+  this.bonusFrame = [];
   this.isOver = false;
 };
+
 
 BowlingGame.prototype.roll = function(pins) {
   if(this.currentFrame == undefined){
     this.nextFrame();
     this.currentFrame.saveRoll(pins);
     if(this.isStrike(pins)){this.finishFrame()};
+    if(this.isStrike(pins) && this.scoreCard.length == 10){
+      this.freshFrames = this.bonusFrame};
   }else{
     this.currentFrame.saveRoll(pins);
     this.finishFrame();
   };
-  this.checkIfOver()
+  this.checkIfOver();
 };
 
 
 BowlingGame.prototype.finishFrame = function() {
   this.scoreCard.push(this.currentFrame)
   this.currentFrame = undefined;
+
 };
 
 
@@ -42,6 +47,11 @@ BowlingGame.prototype.nextFrame = function () {
 BowlingGame.prototype.isStrike = function (pins) {
   return pins == 10;
 };
+
+BowlingGame.prototype.holdBonusFrame = function (frame) {
+  this.bonusFrame.push(frame);
+};
+
 
 BowlingGame.prototype.checkIfOver = function () {
   if(this.freshFrames.length == 0){

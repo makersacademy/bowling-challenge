@@ -49,6 +49,37 @@ describe('Scorer', function() {
     expect(scorer.total()).toEqual(20);
   });
 
+  it('gives a score of 65 following 3 strikes and 2 singles', function() {
+    multiRoll(3,10);
+    multiRoll(2,1);
+    multiRoll(12,0);
+    expect(scorer.total()).toEqual(65);
+  });
+
+  it('gives a score of a 300 following a perfect game', function() {
+    multiRoll(12,10);
+    expect(scorer.total()).toEqual(300);
+  });
+
+  it('returns a score of 172 following the described game', function() {
+    multiRoll(2,5);
+    scorer.roll(10);
+    multiRoll(2,4);
+    scorer.roll(3);
+    scorer.roll(7);
+    scorer.roll(10);
+    scorer.roll(0);
+    scorer.roll(5);
+    multiRoll(2,10);
+    scorer.roll(8);
+    scorer.roll(2);
+    scorer.roll(10);
+    scorer.roll(7);
+    scorer.roll(1);
+    expect(scorer.total()).toEqual(172);
+  });
+
+
 
 
 });

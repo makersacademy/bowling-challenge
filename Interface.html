@@ -2,73 +2,102 @@
 
 <html>
 
-<head>
-  <title>Bowling Scoreboard</title>
-  <link rel="stylesheet" href="css/interface_styling.css">
-</head>
+  <head>
+    <title>Bowling Scoreboard</title>
+    <link rel="stylesheet" href="css/interface_styling.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </head>
 
-<body>
-  <header>
-    <img src="images/bowling-pins.jpg" height="210" width="375" >
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  </header>
-    <div class="separator">
-      <h1>10 Pin Bowling Scoreboard</h1>
-    </div>
-    <h2> Please click on the number of pins that have been knocked out:</h2>
-    <div class="button">
-      <button type="button" class="btn">0</button>
-      <button type="button" class="btn">1</button>
-      <button type="button" class="btn">2</button>
-      <button type="button" class="btn">3</button>
-      <button type="button" class="btn">4</button>
-      <button type="button" class="btn">5</button>
-      <button type="button" class="btn">6</button>
-      <button type="button" class="btn">7</button>
-      <button type="button" class="btn">8</button>
-      <button type="button" class="btn">9</button>
-      <button type="button" class="btn">10</button>
-    </div>
-    <br>
-    <br>
-     <table border="1" style="width:100%">
-    <tr class="topline">
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
-      <td>7</td>
-      <td>8</td>
-      <td>9</td>
-      <td>10</td>
-      <td>TOTAL</td>
-    </tr>
-    <tr class="bottomline">
-      <td>Eve</td>
-      <td>Eve</td>
-      <td>Eve</td>
-      <td>Eve</td>
-      <td>Eve</td>
-      <td>Eve</td>
-      <td>Eve</td>
-      <td>Eve</td>
-      <td>Eve</td>
-      <td>Eve</td>
-      <td>Eve</td>
-  </tr>
-</table>
+  <body>
+    <header>
+      <img src="images/bowling-pins.jpg" height="210" width="375" >
+    </header>
+      <div class="separator">
+        <h1>10 Pin Bowling Scoreboard</h1>
+      </div>
+      <h2> Please click on the number of pins that have been knocked out:</h2>
+      <div class="pins">
+        <a href="#" class="0"> 0 </a>
+        <a href="#" class="1"> 1 </a>
+        <a href="#" class="2"> 2 </a>
+        <a href="#" class="3"> 3 </a>
+        <a href="#" class="4"> 4 </a>
+        <a href="#" class="5"> 5 </a>
+        <a href="#" class="6"> 6 </a>
+        <a href="#" class="7"> 7 </a>
+        <a href="#" class="8"> 8 </a>
+        <a href="#" class="9"> 9 </a>
+        <a href="#" class="10"> 10 </a>
+      </div>
+      <br>
+      <br>
+       <table border="1" style="width:100%">
+      <tr class="topline">
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>TOTAL</td>
+      </tr>
+      <tr class="bottomline">
+        <td class="frame1">Eve</td>
+        <td class="frame2">Eve</td>
+        <td>Eve</td>
+        <td>Eve</td>
+        <td>Eve</td>
+        <td>Eve</td>
+        <td>Eve</td>
+        <td>Eve</td>
+        <td>Eve</td>
+        <td>Eve</td>
+        <td>Eve</td>
+      </tr>
+    </table>
+    <script>
+      $(".0").click(function() {
+        alert("0")
+      });
+      $(".1").click(function() {
+        alert("1")
+      });
+      $(".2").click(function() {
+        alert("2")
+      });
+      $(".3").click(function() {
+        alert("3")
+      });
+      $(".4").click(function() {
+        alert("4")
+      });
+      $(".5").click(function() {
+        alert("5")
+      });
+      $(".6").click(function() {
+        alert("6")
+      });
+      $(".7").click(function() {
+        alert("7")
+      });
+      $(".8").click(function() {
+        alert("8")
+      });
+      $(".9").click(function() {
+        alert("9")
+      });
+      $(".10").click(function() {
+        alert("10")
+      });
 
-<script>
-  var score = 0
-  var frame = 0
-
-  for(score = 0; frame < 11; frame++)
-
-</script>
-
-
-</body>
-
+      function ReplaceCellContent(find, replace) {
+        $("#table_headers td:contains('" + find + "')").html(replace);
+      }
+    </script>
+    <script type="text/javascript" src="src/Game.js"></script>
+  </body>
 </html>

@@ -2,16 +2,19 @@ BowlingGame = function(){
   this.currentFrame;
   this.scoreCard = [];
   this.freshFrames = [];
+  this.isOver = false;
 };
 
 BowlingGame.prototype.roll = function(pins) {
   if(this.currentFrame == undefined){
     this.nextFrame();
     this.currentFrame.saveRoll(pins);
+    if(this.isStrike(pins)){this.finishFrame()};
   }else{
     this.currentFrame.saveRoll(pins);
     this.finishFrame();
   };
+  this.checkIfOver()
 };
 
 
@@ -33,4 +36,14 @@ BowlingGame.prototype.hold = function (frame) {
 
 BowlingGame.prototype.nextFrame = function () {
   this.currentFrame = this.freshFrames.shift();
+};
+
+
+BowlingGame.prototype.isStrike = function (pins) {
+  return pins == 10;
+};
+
+BowlingGame.prototype.checkIfOver = function () {
+  if(this.freshFrames.length == 0){
+    this.isOver = true;}
 };

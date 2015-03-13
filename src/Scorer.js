@@ -7,13 +7,19 @@ Scorer.prototype.roll = function(score) {
 };
 
 Scorer.prototype.total = function(first_argument) {
-  var numberOfRolls = this.rolls.length;
   var runningTotal = 0;
-  for (var i = 0; i < numberOfRolls; i++) {
-    if (this.rolls[i]+this.rolls[i+1] ===10){
-      runningTotal = runningTotal + this.rolls[i+2];
-    };
-    runningTotal = runningTotal + this.rolls[i];
+  var rollNumber = 0;
+  var frameNumber = 1
+  for (var i = frameNumber; i < 11; i++) {
+
+    if (this.rolls[rollNumber] + this.rolls[rollNumber+1] === 10) {
+      runningTotal = runningTotal + this.rolls[rollNumber] + this.rolls[rollNumber+1]+ this.rolls[rollNumber+2];
+      rollNumber = rollNumber+2;
+    }
+    else {
+      runningTotal = runningTotal + this.rolls[rollNumber] + this.rolls[rollNumber+1];
+      rollNumber = rollNumber+2;
+    }
   };
   return runningTotal;
 

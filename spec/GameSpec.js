@@ -8,14 +8,11 @@ describe("game", function() {
     expect(game.fallenPins).toEqual(0);
   });
 
-  it('can have 3 pins down after the first try', function(){
+  it('can have 3 pins down after the first try', function() {
     game.hitPins(3);
     expect(game.fallenPins).toEqual(3);
   });
 
-  // it ('can have 5 pins down after the first try', function() {
-  //   game.hitPins()
-  //   expect(game.fallenPins).toEqual(5);
-  // });
+
 
 });

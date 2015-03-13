@@ -1,10 +1,14 @@
 describe('Scorer', function() {
-  var scorer;
+  var scorer = new Scorer();
 
-  describe('start of a game', function() {
-
-
+  it('gives a score of 0 if no pins are hit', function() {
+    for (var i = 0; i < 20; i++) {
+      scorer.roll(0)
+    };
+    expect(scorer.total).toEqual(0);
   });
+
+  it('',)
 
 
 

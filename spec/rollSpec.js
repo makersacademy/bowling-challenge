@@ -18,4 +18,9 @@ describe('Roll', function() {
     expect(roll.getPinsHit()).toEqual(10)
   });
 
+  it('cannot have a score greater than 10, 0 is returned', function(){
+    roll.setPinsHit(11)
+    expect(roll.getPinsHit()).toEqual(0)
+  });
+
 });

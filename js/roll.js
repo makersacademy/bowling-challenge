@@ -3,7 +3,11 @@ var Roll = function() {
 };
 
 Roll.prototype.setPinsHit = function(pinsHit) {
-  this.rollScore = pinsHit;
+  if (pinsHit < 11){
+    this.rollScore = pinsHit;
+  }else{
+    this.rollScore = 0
+  }
 };
 
 Roll.prototype.getPinsHit = function() {

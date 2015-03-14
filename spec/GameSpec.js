@@ -27,14 +27,14 @@ describe("game", function() {
 
   it ('doesn\'t move to the second frame if the first try is not a strike', function(){
     game.hitPinsFirstTry(5);
-    expect(frameNumber).toEqual(1);
+    expect(game.frameNumber).toEqual(1);
   });
 
   it ('can move to the second frame after the 2nd try', function(){
      game.hitPinsFirstTry(3);
      game.hitPinsSecondTry(4);
-
-  // });
+     expect(game.frameNumber).toEqual(2);
+  });
 
 
 

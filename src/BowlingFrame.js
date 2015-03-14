@@ -1,5 +1,5 @@
-BowlingFrame = function(pins){
-  this.rolls = [pins];
+BowlingFrame = function(){
+  this.rolls = [];
   this.bonus;
 };
 

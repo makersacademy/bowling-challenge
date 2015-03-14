@@ -64,5 +64,4 @@ describe('Bowling', function() {
   //   expect(bowling.strike).toBe(1);
   //   expect(bowling.currentScore).toEqual(0);
   // });
-
 });

@@ -1,51 +1,85 @@
-describe('tenPin', function() {
+describe('TenPin', function() {
+
+    var rollSpare1;
+    var rollSpare2;
 
   beforeEach(function(){
-    tenP = new tenPin;
     frame = new Frame();
-  });
-
-    it('sets strike to false when created', function() {
-      expect(tenP.isStrike).toBe(false);
-    });
-
-    it('sets strike to false when created', function() {
-      expect(tenP.isSpare).toBe(false);
-    });
-
-  describe('first roll of a frame', function() {
-
-    it('is less than 10 it will set strike to false', function() {
-      spyOn(frame, "getRollOneScore").and.returnValue(3)
-      tenP.frameFirstRoll(frame);
-      expect(tenP.isStrike).toBe(false);
-    });
-
-    it('has a roll of 10 then strike will be true', function() {
-      spyOn(frame, "getRollOneScore").and.returnValue(10)
-      tenP.frameFirstRoll(frame);
-      expect(tenP.isStrike).toBe(true);
-    });
+    tenP = new TenPin(Frame);
+    roll1 = new Roll;
+    roll2 = new Roll;
+    rollSpare1 = jasmine.createSpyObj('rollSpare1', ['getPinsHit']);
+    rollSpare1.getPinsHit(4);
+    rollSpare2 = jasmine.createSpyObj('rollSpare2', ['getPinsHit']);
+    rollSpare2.getPinsHit(6);
 
   });
 
-  describe('second roll of a frame', function() {
+  describe('game begins', function() {
 
-    it('will set spare to false when roll 1 + roll 2 is less than 10', function() {
+    it('Creates a max frame constant of 10', function() {
+      expect(tenP.FRAMES).toEqual(10)
+    })
 
-      spyOn(frame, "getRollOneScore").and.returnValue(3)
-      spyOn(frame, "getRollTwoScore").and.returnValue(4)
-      tenP.frameSecondRoll(frame);
-      expect(tenP.isSpare).toBe(false);
-    });
+    it('Creates the first frame', function() {
+      expect(tenP.framesCreated.length).toEqual(1)
+    })
 
-    it('will set spare to false when roll 1 + roll 2 is less than 10', function() {
-      spyOn(frame, "getRollOneScore").and.returnValue(5)
-      spyOn(frame, "getRollTwoScore").and.returnValue(5)
-      tenP.frameSecondRoll(frame);
-      expect(tenP.isSpare).toBe(true);
-    });
+    it('Sets the current frame to 0', function() {
+      expect(tenP.currentFrame).toEqual(0)
+    })
 
   })
+
+  describe('frame is not a strike or spare.', function() {
+
+    it('Scores the first roll of 7 for the frame 1', function() {
+      spyOn(tenP.framesCreated[0], 'framesCreated')
+      tenP.frameFirstRoll(roll1)
+      expect(tenP.framesCreated[0].setRollOneScore()).toHaveBeenCalled()
+    })
+
+    it('Scores the second roll of 2 for the frame 1', function() {
+      spyOn(tenP.framesCreated[0], 'setRollTwoScore')
+      tenP.frameSecondRoll(roll2)
+      expect(tenP.framesCreated[0].setRollTwoScore()).toHaveBeenCalled()
+    })
+
+    it('Moves to the next frame after the second roll', function() {
+      tenP.playFrame(roll1, roll2)
+      expect(tenP.currentFrame).toEqual(1)
+     })
+
+  })
+
+  describe('frame is a spare', function() {
+
+    it('is confirmed when roll 1 and roll 2 equals 10', function() {
+      spyOn(roll1, 'getPinsHit').and.returnValue(4)
+      spyOn(roll2, 'getPinsHit').and.returnValue(6)
+      expect(tenP.checkForSpare(roll1, roll2)).toEqual(true)
+    })
+
+    it('creates the next frame set the bonus roll to the first roll of the next frame', function() {
+      spyOn(roll1, 'getPinsHit').and.returnValue(4)
+      spyOn(roll2, 'getPinsHit').and.returnValue(6)
+      tenP.playFrame(roll1, roll2)
+    })
+
+  })
+
+
+
+  describe('first roll is a strike.', function() {
+
+    it('Tells the frame to score 10 for the first roll', function() {
+
+    })
+
+    it('Creates the second frame', function() {
+
+    })
+
+   })
 
 });

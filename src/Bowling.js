@@ -21,3 +21,13 @@ Scorecard.prototype.updateFrameNumber = function() {
 Scorecard.prototype.updateBowlNumber = function() {
   this.currentBowl === 0 ? this.currentBowl = 1 : this.currentBowl = 0;
 };
+
+Scorecard.prototype.calculateTotalScore = function() {
+  var totalScore = 0;
+  this.frames.forEach(function(frame) {
+    frame.forEach(function(bowl) {
+      totalScore += bowl;
+    });
+  });
+  return totalScore;
+};

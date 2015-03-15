@@ -31,5 +31,12 @@ describe("Bowling Scorecard", function() {
     expect(scorecard.currentFrame).toBe(1);
   });
 
+  it("keeps a running total of the score across all frames", function() {
+    scorecard.addPoints(4);
+    scorecard.addPoints(4);
+    scorecard.addPoints(10);
+    expect(scorecard.calculateTotalScore()).toBe(18);
+  });
+
 
 });

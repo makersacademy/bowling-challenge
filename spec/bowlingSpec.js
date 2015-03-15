@@ -71,4 +71,20 @@ it("can be a gutter game", function(){
   expect(bowling.score).toEqual(0)
 })
 
+it("can give a score after every round", function(){
+  bowling.roll1(6);
+  bowling.roll2(3);
+  bowling.roll1(2);
+  bowling.roll2(4);
+  expect(bowling.score).toEqual(15);
+})
+
+it("can provide a score when there have been strikes", function(){
+  bowling.roll1(10);
+  bowling.roll1(10);
+  bowling.roll1(3);
+  bowling.roll2(3);
+  expect(bowling.score).toEqual(66)
+})
+
 });

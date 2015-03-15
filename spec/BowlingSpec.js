@@ -111,26 +111,28 @@ describe("Bowling Scorecard", function() {
   });
 
   it("final tests", function() {
-    scorecard.addPoints(7);
-    scorecard.addPoints(2);
-    scorecard.addPoints(2);
-    scorecard.addPoints(3);
-    scorecard.addPoints(5);
-    scorecard.addPoints(2);
-    scorecard.addPoints(2);
-    scorecard.addPoints(7);
-    scorecard.addPoints(8);
-    scorecard.addPoints(2);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(0);
     scorecard.addPoints(10);
-    scorecard.addPoints(10);
-    scorecard.addPoints(4);
-    scorecard.addPoints(3);
-    scorecard.addPoints(3);
-    scorecard.addPoints(1);
-    scorecard.addPoints(10);
-    scorecard.addPoints(9);
-    scorecard.addPoints(1);
-    expect(scorecard.calculateTotalScore()).toBe(0);
+    scorecard.addPoints(0);
+    scorecard.addPoints(2);
+    expect(scorecard.calculateTotalScore()).toBe(1);
     expect(scorecard.isTheGameOver).toBe(true);
   });
 

@@ -28,7 +28,6 @@ Frame.prototype.getRollTwoIndex = function() {
     return this.rollTwo.index
 }
 
-
 Frame.prototype.setBonusRollScore = function(rollIndex) {
   return this.bonusRoll.score = rollIndex
 };

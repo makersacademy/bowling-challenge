@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+
+  <title>Bowlarama</title>
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+
+</head>
+
+<header>
+  <h1>Barney&#39;s Bowlarama</h1>
+  <button onclick="Score()">Start Game</button>
+</header>
+
+
+<body>
+  <form>
+    <p>Roll One:<input type="text" name="rollOne"></p>
+    <p>Roll Two:<input type="text" name="rollTwo"></p>
+    <button onclick="setRolls()">Submit</button>
+  </form>
+
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="js/frame.js"></script>
+<script src="js/tenPin.js"></script>
+<script src="js/roll.js"></script>
+<script>
+  var Score = function() {
+    tenPin = new TenPin(Frame)
+    roll1 = new Roll;
+    roll2 = new Roll;
+  };
+</script>
+
+</body>
+</html>
+

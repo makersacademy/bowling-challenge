@@ -1,3 +1,0 @@
-var Score = function() {
-
-};

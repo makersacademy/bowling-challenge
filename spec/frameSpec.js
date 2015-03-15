@@ -55,5 +55,4 @@ describe('Frame', function() {
     })
 
   })
-
 });

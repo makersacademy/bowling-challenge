@@ -5,26 +5,26 @@ describe('TenPin', function() {
     tenP = new TenPin(Frame);
     roll1 = new Roll;
     roll2 = new Roll;
+    rollBonus = new Roll;
   });
 
   describe('game begins.', function() {
 
-    it('Creates a max frame constant of 10', function() {
-      expect(tenP.FRAMES).toEqual(10)
+    it('The final frame variable is set to fasle', function() {
+      expect(tenP.finalFrame).toEqual(false)
     });
 
     it('Sets the current frame to 0', function() {
       expect(tenP.currentFrame).toEqual(0)
     });
 
+     it('Sets the max frame to 10', function() {
+      expect(tenP.maxFrame).toEqual(10)
+    });
+
     it('Creates the first frame object in the framesCreated array', function() {
       expect(tenP.framesCreated.length).toEqual(1)
     });
-
-    // xit('Creates the first frame object and also sets its index to the current frame which is 0', function() {
-    //   spyOn that the frame uppdate index is set
-    //   expect(tenP.framesCreated.length).toEqual(1)
-    // })
 
     it('Once a frame is played it sets the current frame to the next frame', function() {
       tenP.createMoveFrame()
@@ -37,6 +37,20 @@ describe('TenPin', function() {
     });
 
   });
+
+  describe('final frame.', function() {
+
+    it('Knows that frame 9 is not the final frame', function() {
+      tenP.currentFrame = 8
+      expect(tenP.isFinalFrame()).toEqual(false)
+    });
+
+    it('Knows that when in the max frame it is the final frame', function() {
+      tenP.currentFrame = 9
+      expect(tenP.isFinalFrame()).toEqual(true)
+    });
+
+  })
 
   describe('frame is not a strike or spare.', function() {
 
@@ -129,5 +143,30 @@ describe('TenPin', function() {
      })
 
    });
+
+  describe('tenth and final frame.', function() {
+
+    it('First roll is a strike then the current frame continues to play out',function() {
+      tenP.currentFrame = 9
+      spyOn(roll1, 'getPinsHit').and.returnValue(10)
+      spyOn(roll2, 'getPinsHit').and.returnValue(0)
+      spyOn(tenP, 'playBonusLast')
+      tenP.playFrame(roll1, roll2, rollBonus)
+      expect(tenP.playBonusLast()).toHaveBeenCalled()
+      expect(tenP.currentFrame).toEqual(9)
+    })
+
+
+    it('First and second roll adds to a spare then the current frame continues to play out',function() {
+      tenP.currentFrame = 9
+      spyOn(roll1, 'getPinsHit').and.returnValue(8)
+      spyOn(roll2, 'getPinsHit').and.returnValue(2)
+      spyOn(tenP, 'playBonusLast')
+      tenP.playFrame(roll1, roll2, rollBonus)
+      expect(tenP.playBonusLast()).toHaveBeenCalled()
+      expect(tenP.currentFrame).toEqual(9)
+    })
+
+  })
 
 });

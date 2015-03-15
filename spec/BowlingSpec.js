@@ -110,56 +110,18 @@ describe("Bowling Scorecard", function() {
     expect(scorecard.calculateTotalScore()).toBe(30);
   });
 
-  it("final tests", function() {
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(0);
-    scorecard.addPoints(10);
-    scorecard.addPoints(0);
-    scorecard.addPoints(2);
-    expect(scorecard.calculateTotalScore()).toBe(12);
+  
+  it("gives a total score of 150 when all bowls are 5 points", function() {
+    for(i = 1; i < 22; i++) {
+      scorecard.addPoints(5);  
+    };
+    expect(scorecard.calculateTotalScore()).toBe(150);
     expect(scorecard.isTheGameOver).toBe(true);
   });
 
-    it("all 5s", function() {
+  it("can calculate the remaining points needed for a spare", function() {
     scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    scorecard.addPoints(5);
-    expect(scorecard.calculateTotalScore()).toBe(150);
-    expect(scorecard.isTheGameOver).toBe(true);
+    expect(scorecard.pointsNeededForSpare()).toBe(5);
   });
 
 });

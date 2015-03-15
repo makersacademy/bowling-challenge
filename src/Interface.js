@@ -56,6 +56,11 @@ $("#strike").click(function() {
   updateAllScores();
 });
 
+$("#spare").click(function() {
+  scorecard.addPoints(scorecard.pointsNeededForSpare());
+  updateAllScores();
+});
+
 updateFrame1 = function() {
   $("#frame1-1").text(function() {
     return scorecard.frames[0][0];

@@ -98,3 +98,7 @@ Scorecard.prototype.finalFrame = function(points) {
   }
 
 };
+
+Scorecard.prototype.pointsNeededForSpare = function() {
+  return (10 - this.frames[this.currentFrame]);
+};

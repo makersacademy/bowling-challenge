@@ -83,13 +83,16 @@ describe("Bowling Scorecard", function() {
     expect(scorecard.calculateTotalScore()).toBe(139);
   });
 
-  it("three balls can be rolled in the tenth frame when there's a strike", function() {
+  it("a maximum of three balls can be rolled in the tenth frame when there's a strike", function() {
     scorecard.currentFrame = 9;
     scorecard.addPoints(10);
     expect(scorecard.currentFrame).toBe(9);
     expect(scorecard.currentBowl).toEqual(1);
     scorecard.addPoints(4);
     expect(scorecard.currentBowl).toEqual(2);
+    scorecard.addPoints(4);
+    expect(scorecard.currentBowl).toEqual(3);
+    expect(scorecard.isTheGameOver).toEqual(true);
   });
 
 });

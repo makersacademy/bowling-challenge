@@ -4,10 +4,11 @@ var Scorecard = function() {
   this.currentBowl = 0;
   this.ballNumber = 1;
   this.allBalls = {};
+  this.isTheGameOver = false;
 };
 
 Scorecard.prototype.addPoints = function(points) {
-  if(this.currentFrame === 9) {
+  if (this.currentFrame === 9) {
     this.finalFrame(points);
   } else {
     this.updateStrikePoints(points);
@@ -75,4 +76,7 @@ Scorecard.prototype.finalFrame = function(points) {
   this.recordBallNumber();
   this.currentBowl += 1;
   this.ballNumber += 1;
+  if (this.currentBowl >= 3) {
+    this.isTheGameOver = true;
+  }
 };

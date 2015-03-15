@@ -136,20 +136,29 @@ describe("Bowling Scorecard", function() {
     expect(scorecard.isTheGameOver).toBe(true);
   });
 
-    it("another test", function() {
-    scorecard.addPoints(10);
-    scorecard.addPoints(10);
-    scorecard.addPoints(10);
-    scorecard.addPoints(10);
-    scorecard.addPoints(10);
-    scorecard.addPoints(10);
-    scorecard.addPoints(10);
-    scorecard.addPoints(10);
-    scorecard.addPoints(10);
-    scorecard.addPoints(10);
-    scorecard.addPoints(10);
-    scorecard.addPoints(10);
-    expect(scorecard.calculateTotalScore()).toBe(300);
+    it("all 5s", function() {
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    scorecard.addPoints(5);
+    expect(scorecard.calculateTotalScore()).toBe(150);
     expect(scorecard.isTheGameOver).toBe(true);
   });
 

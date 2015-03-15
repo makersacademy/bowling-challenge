@@ -73,7 +73,7 @@ Scorecard.prototype.updateSparePoints = function(points) {
 };
 
 Scorecard.prototype.finalFrame = function(points) {
-  if (this.currentBowl == 0) {
+  if (this.currentBowl === 0 || this.currentBowl === 1) {
     this.updateStrikePoints(points);
     this.updateSparePoints(points);
   }

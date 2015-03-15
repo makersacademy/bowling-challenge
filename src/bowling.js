@@ -7,6 +7,7 @@ var Bowling = function () {
 }
 
 Bowling.prototype.roll1 = function(score) {
+  this.pins = 10;
   if(score === 10){
     this.strikes = this.strikes + 1;
     this.score = this.score + 30;
@@ -24,8 +25,9 @@ Bowling.prototype.roll1 = function(score) {
 Bowling.prototype.roll2 = function(score) {
   this.score = this.score + score;
   this.pins = this.pins - score
+  this.frame = this.frame + 1
   if(this.pins === 0){
     this.spares = this.spares + 1;
   }
-  this.frame = this.frame + 1
+
 };

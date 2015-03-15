@@ -29,7 +29,9 @@ it("knows when there is a strike", function(){
 it("knows when there is a spare", function(){
   bowling.roll1(5);
   bowling.roll2(5);
-  expect(bowling.spares).toEqual(1);
+  bowling.roll1(3);
+  bowling.roll2(7);
+  expect(bowling.spares).toEqual(2);
 })
 
 it("knows when a frame is over", function(){

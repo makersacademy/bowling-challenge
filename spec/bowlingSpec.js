@@ -39,12 +39,6 @@ describe('Bowling', function() {
     expect(bowling.frameNumber).toEqual(2);
   });
 
-  it('can move to the next frame when hitting a strike', function() {
-    expect(bowling.rollNumber).toEqual(1);
-    bowling.pinsHit(10);
-    expect(bowling.rollNumber).toEqual(2);
-  });
-
   it('can have a total score after each frame', function() {
     bowling.pinsHit(2);
     bowling.pinsHit(3);

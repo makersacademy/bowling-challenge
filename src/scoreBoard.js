@@ -4,6 +4,9 @@ var ScoreBoard = function (){
 };
 
 ScoreBoard.prototype.addFrame = function(frame) {
+  if(this.frames.length === 10) {
+      throw new Error("Game can only have 10 frames")
+    };
     this.totalScore = frame.frameScore() + this.totalScore;
     this.frames.push(frame);
     return this.totalScore;

@@ -32,4 +32,11 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.nextFrame(frame2)).toBe(frame3)
   })
 
+  it("can have a total of 10 frames", function(){
+    for(var i = 0; i < 10; i++) {
+      scoreBoard.addFrame(frame1)
+    }
+    expect(function(){ scoreBoard.addFrame(frame1) }).toThrow(new Error("Game can only have 10 frames"));
+  })
+
 });

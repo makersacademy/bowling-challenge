@@ -45,7 +45,7 @@ describe("Bowling Scorecard", function() {
     expect(scorecard.allBalls).toEqual({1:[0, 0], 2:[1, 0], 3:[1, 1]});
   });
 
-  xit("adds the score of the next two bowls to a strike", function() {
+  it("adds the score of the next two bowls to a strike", function() {
     scorecard.addPoints(10);
     scorecard.addPoints(4);
     scorecard.addPoints(4);

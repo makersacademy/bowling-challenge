@@ -8,6 +8,7 @@ var Scorecard = function() {
 
 Scorecard.prototype.addPoints = function(points) {
   this.frames[this.currentFrame][this.currentBowl] = points;
+  this.recordBallNumber();
   this.updateBowlNumber();
   this.updateFrameNumber();
   this.ballNumber += 1;
@@ -37,9 +38,9 @@ Scorecard.prototype.calculateTotalScore = function() {
   return totalScore;
 };
 
-// Scorecard.prototype.recordBallNumber = function() {
-//   this.allBalls[this.ballNumber] = [this.currentFrame, this.currentBowl];
-// };
+Scorecard.prototype.recordBallNumber = function() {
+  this.allBalls[this.ballNumber] = [this.currentFrame, this.currentBowl];
+};
 
 // Scorecard.prototype.updateStrikePoints = function() {
 //   if 

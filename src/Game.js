@@ -16,6 +16,7 @@ Game.prototype.hitPinsFirstTry = function(n) {
   var firstTry = this.fallenPins;
   if (this.fallenPins == 10) {
     this.frameNumber ++;
+    return "Strike";
   }
 };
 
@@ -24,6 +25,9 @@ Game.prototype.hitPinsSecondTry = function(n) {
   }
   var secondTry = this.fallenPins;
   this.frameNumber ++;
+  if (this.fallenPins == 10) {
+    return "Spare";
+  }
 };
 
 Game.prototype.sumFirstSecondTries = function(firstTry,secondTry) {

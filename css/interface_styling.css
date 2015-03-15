@@ -39,15 +39,19 @@ table, th, td {
     border: 2px solid black;
     border-collapse: collapse;
     height: 30px;
+    width: 30px;
 }
 
-th, td {
+.bottomline {
   text-align: center;
   width: 30px;
+  height: 100px;
 }
 
 .topline {
   font-weight: bold;
+  text-align: center;
+  width: 30px;
 }
 
 

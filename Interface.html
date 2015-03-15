@@ -16,19 +16,16 @@
         <h1>10 Pin Bowling Scoreboard</h1>
       </div>
       <h2> Please click on the number of pins that have been knocked out:</h2>
-      <div class="pins">
-        <a href="#" class="0"> 0 </a>
-        <a href="#" class="1"> 1 </a>
-        <a href="#" class="2"> 2 </a>
-        <a href="#" class="3"> 3 </a>
-        <a href="#" class="4"> 4 </a>
-        <a href="#" class="5"> 5 </a>
-        <a href="#" class="6"> 6 </a>
-        <a href="#" class="7"> 7 </a>
-        <a href="#" class="8"> 8 </a>
-        <a href="#" class="9"> 9 </a>
-        <a href="#" class="10"> 10 </a>
-      </div>
+        <button id="button-1" class="button" value="1"> 1 </button>
+        <button id="button-2" class="button"> 2 </button>
+        <button id="button-3" class="button"> 3 </button>
+        <button id="button-4" class="button"> 4 </button>
+        <button id="button-5" class="button"> 5 </button>
+        <button id="button-6" class="button" value="6"> 6 </button>
+        <button id="button-7" class="button"> 7 </button>
+        <button id="button-8" class="button"> 8 </button>
+        <button id="button-9" class="button"> 9 </button>
+        <button id="button-10" class="button"> 10 </button>
       <br>
       <br>
        <table border="1" style="width:100%">
@@ -46,58 +43,21 @@
         <td>TOTAL</td>
       </tr>
       <tr class="bottomline">
-        <td class="frame1">Eve</td>
-        <td class="frame2">Eve</td>
-        <td>Eve</td>
-        <td>Eve</td>
-        <td>Eve</td>
-        <td>Eve</td>
-        <td>Eve</td>
-        <td>Eve</td>
-        <td>Eve</td>
-        <td>Eve</td>
-        <td>Eve</td>
+        <td class="frame-1"></td>
+        <td class="frame-2"></td>
+        <td class="frame-3"></td>
+        <td class="frame-4"></td>
+        <td class="frame-5"></td>
+        <td class="frame-6"></td>
+        <td class="frame-7"></td>
+        <td class="frame-8"></td>
+        <td class="frame-9"></td>
+        <td class="frame-10"></td>
+        <td class="frame-total"></td>
       </tr>
     </table>
-    <script>
-      $(".0").click(function() {
-        alert("0")
-      });
-      $(".1").click(function() {
-        alert("1")
-      });
-      $(".2").click(function() {
-        alert("2")
-      });
-      $(".3").click(function() {
-        alert("3")
-      });
-      $(".4").click(function() {
-        alert("4")
-      });
-      $(".5").click(function() {
-        alert("5")
-      });
-      $(".6").click(function() {
-        alert("6")
-      });
-      $(".7").click(function() {
-        alert("7")
-      });
-      $(".8").click(function() {
-        alert("8")
-      });
-      $(".9").click(function() {
-        alert("9")
-      });
-      $(".10").click(function() {
-        alert("10")
-      });
 
-      function ReplaceCellContent(find, replace) {
-        $("#table_headers td:contains('" + find + "')").html(replace);
-      }
-    </script>
     <script type="text/javascript" src="src/Game.js"></script>
+    <script type="text/javascript" src="src/Interface.js"></script>
   </body>
 </html>

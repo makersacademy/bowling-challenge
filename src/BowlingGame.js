@@ -4,16 +4,17 @@ BowlingGame = function(){
   this.freshFrames = [];
   this.bonusFrame = [];
   this.isOver = false;
-  this.isFinalRound = false;
+  // this.isFinalRound = false;
 };
 
 
+
 BowlingGame.prototype.roll = function(pins) {
-  if(this.isFinalRound){this.rollFinal(pins)}
+  if(this.isFinal()){this.rollFinal(pins)}
   else {
     if(this.currentFrame == undefined){
       this.nextFrame();
-      console.log(this.currentFrame)
+
       this.currentFrame.saveRoll(pins);
       if(this.isStrike(pins)){this.finishFrame()};
     }else{
@@ -30,7 +31,6 @@ BowlingGame.prototype.finishFrame = function() {
   this.currentFrame = undefined;
 
 };
-
 
 BowlingGame.prototype.hold = function (frame) {
   if(Array.isArray(frame))
@@ -56,12 +56,19 @@ BowlingGame.prototype.holdBonusFrame = function (frame) {
 
 
 BowlingGame.prototype.checkIfOver = function () {
-  if(this.freshFrames.length == 0){
+  index = this.scoreCard.length-1;
+  if(this.freshFrames.length == 0 && this.scoreCard[index].rolls.length == 2){
     this.isOver = true;}
-var  index = this.scoreCard.length-1
-  console.log(this.scoreCard[index].rolls);
 };
 
 BowlingGame.prototype.rollFinal = function (pins) {
   console.log("FINALE ohohohoh")
+};
+
+BowlingGame.prototype.isFinal = function () {
+  if(this.scoreCard.length == 10 && this.scoreCard[9].spare){
+    return true
+  }else if(this.scoreCard.length == 10 && this.scoreCard[9].strike){
+    return true
+  }else{ return false };
 };

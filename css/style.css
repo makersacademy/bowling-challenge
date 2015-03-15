@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-opacity: 0.2;
+  background-position: center;
+}
+
+h1 {
+font-size: 10em;
+}
+
+span {
+    display: inline-block;
+    padding: 30px;
+    line-height: 100%;
+
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 5em;
+    position: fixed;
+    bottom: 30px;
+    right: 100px;
+}
+
+.button {
+    padding: 10px 15px;
+    background: black;
+    color: white;
+    border-radius: 4px;
+    border: solid 1px;  
+    position: fixed;
+    bottom: 30px;
+    left: 100px;
+}
+.button:hover {
+    background: white;
+    color: black;
+}

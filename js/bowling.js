@@ -1,50 +1,50 @@
 var Bowling = function() {
-  this.rolls = [];
-  this.frameNumber = 0;
-  this.score = 0;
+  this.pins = 10;
+  this.player = 1;
+  this.frameNumber = 1;
+  this.rollNumber = 1;
+  this.strike = 0;
+  this.spare = 0;
+  this.currentScore = 0;
 };
 
-Bowling.prototype.gameRolls = function(pins, number) {
-  for( var i = 0; i < number; i += 1) {
-    this.roll(pins);
+Bowling.prototype.pinsHit = function(number) {
+  if(number === 10)
+  {
+    this.strike += 1;
+    this.rollNumber + 1;
+    this.scoreTotal();
+    this.nextFrame();
+  }
+  else{this.pins = (this.pins -= number);
+    this.rollSpare();
+    this.nextFrame();
   }
 };
 
-Bowling.prototype.roll = function(pins) {
-  this.rolls.push(pins);
+Bowling.prototype.rollSpare = function() {
+  if(this.pins === 0) {this.spare += 1;}
 };
 
-Bowling.prototype.currentScore = function() {
-  var rollNumber = 0;
-  var bowl = this;
-
-  for(this.frameNumber = 0; this.frameNumber < 10; this.frameNumber += 1) {
-    if(rollStrike()) {
-      this.score += strikeScore();
-      rollNumber += 1;
-    }
-    else if(rollSpare()) {
-      this.score += spareScore();
-      rollNumber += 2;
-    } else {
-      this.score += normalScore();
-      rollNumber += 2;
-    }
+Bowling.prototype.nextFrame = function() {
+  if(this.rollNumber === 1) {this.rollNumber += 1;}
+  else if(this.rollNumber === 2)
+  {
+    this.rollNumber -= 1;
+    this.scoreTotal();
+    this.frameTotal();
+    this.pins = 10;
   }
-  return this.score;
+};
 
-  function rollStrike() {
-    return bowl.rolls[rollNumber] == 10;}
+Bowling.prototype.frameTotal = function() {
+  if(this.frameNumber === 10){this.frameNumber = 1;
+    return "Game over";}
+  else{this.frameNumber += 1;}
+};
 
-  function rollSpare() {
-    return bowl.rolls[rollNumber] + bowl.rolls[rollNumber + 1] == 10;}
-
-  function strikeScore() {
-    return bowl.rolls[rollNumber] + bowl.rolls[rollNumber + 1] + bowl.rolls[rollNumber + 2];}
-
-  function spareScore() {
-    return bowl.rolls[rollNumber] + bowl.rolls[rollNumber + 1] + bowl.rolls[rollNumber + 2];}
-
-  function normalScore() {
-    return bowl.rolls[rollNumber] + bowl.rolls[rollNumber + 1];}
+Bowling.prototype.scoreTotal = function() {
+  if(this.spare != 0) {(this.currentScore = (10 * this.spare) + this.currentScore);}
+  else if(this.strike != 0) {(this.currentScore = (10 * this.strike) + this.currentScore);}
+  else{(this.currentScore = (10 - this.pins) + this.currentScore);}
 };

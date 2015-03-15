@@ -46,11 +46,23 @@ describe("Bowling Scorecard", function() {
   });
 
   it("adds the score of the next two bowls to a strike", function() {
+    scorecard.addPoints(1);
+    scorecard.addPoints(1);
+    scorecard.addPoints(10);
+    scorecard.addPoints(10);
     scorecard.addPoints(10);
     scorecard.addPoints(4);
-    scorecard.addPoints(4);
-    expect(scorecard.calculateTotalScore()).toBe(26);
+    scorecard.addPoints(3);
+    scorecard.addPoints(2);
+    scorecard.addPoints(0);
+    expect(scorecard.calculateTotalScore()).toBe(82);
   });
 
+  it("adds the score of the next one bowl to a spare", function() {
+    scorecard.addPoints(4);
+    scorecard.addPoints(6);
+    scorecard.addPoints(4);
+    expect(scorecard.calculateTotalScore()).toBe(18);
+  });
 
 });

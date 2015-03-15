@@ -7,8 +7,9 @@ var Scorecard = function() {
 };
 
 Scorecard.prototype.addPoints = function(points) {
-  this.frames[this.currentFrame][this.currentBowl] = points;
   this.updateStrikePoints(points);
+  this.updateSparePoints(points);
+  this.frames[this.currentFrame][this.currentBowl] = points;
   this.recordBallNumber();
   this.updateBowlNumber();
   this.updateFrameNumber();
@@ -51,5 +52,14 @@ Scorecard.prototype.updateStrikePoints = function(points) {
   } else if (this.frames[twoBowlsAgo[0]][twoBowlsAgo[1]] === 10) {
     this.frames[twoBowlsAgo[0]][twoBowlsAgo[1]] += points;
     this.frames[twoBowlsAgo[0]][twoBowlsAgo[1]] += this.frames[oneBowlAgo[0]][oneBowlAgo[1]];
+  }
+};
+
+Scorecard.prototype.updateSparePoints = function(points) {
+  var oneBowlAgo = this.allBalls[this.ballNumber - 1];
+  if (oneBowlAgo === undefined) {
+    return;
+  } else if (this.frames[oneBowlAgo[0]][0] + this.frames[oneBowlAgo[0]][1] === 10) {
+    this.frames[oneBowlAgo[0]][oneBowlAgo[1]] += points;
   }
 };

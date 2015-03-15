@@ -13,19 +13,34 @@ Frame.prototype.getRollOneScore = function() {
 };
 
 Frame.prototype.setRollTwoScore = function(roll) {
-  return this.rollTwo = roll.getPinsHit()
+  return this.rollTwo.score = roll.getPinsHit()
 };
 
 Frame.prototype.getRollTwoScore = function() {
-  return this.rollTwo
+  return this.rollTwo.score
 };
+
+Frame.prototype.setRollTwoIndex = function(index) {
+  return this.rollTwo.index = index
+}
+
+Frame.prototype.getRollTwoIndex = function() {
+    return this.rollTwo.index
+}
 
 
 Frame.prototype.setBonusRollScore = function(rollIndex) {
-  return this.bonusRoll = rollIndex
+  return this.bonusRoll.score = rollIndex
 };
 
 Frame.prototype.getBonusRollScore = function() {
-  return this.bonusRoll
+  return this.bonusRoll.score
 };
 
+Frame.prototype.setBonusRollIndex = function(index) {
+  return this.bonusRoll.index = index
+}
+
+Frame.prototype.getBonusRollIndex = function() {
+    return this.bonusRoll.index
+}

@@ -12,11 +12,11 @@ describe('Frame', function() {
     })
 
     it('a roll two object having an index of 0 and a score of 0', function() {
-      expect(frame.getRollTwoScore()).toEqual({ index: 0, score: 0 })
+      expect(frame.getRollTwoScore()).toEqual(0)
     })
 
     it('a bonus roll object having an index of 0 and a score of 0', function() {
-      expect(frame.getBonusRollScore()).toEqual({ index: 0, score: 0 })
+      expect(frame.getBonusRollScore()).toEqual(0)
     })
   })
 
@@ -38,6 +38,20 @@ describe('Frame', function() {
       spyOn(frame, 'getBonusRollScore').and.returnValue('next first roll')
       frame.setBonusRollScore(frame)
       expect(frame.getBonusRollScore()).toEqual('next first roll')
+    })
+
+  })
+
+  describe('setting the frame index in the frame array for spare and strike logic', function() {
+
+    it('for roll two set the index to the second frame in the array.', function() {
+      frame.setRollTwoIndex(1)
+      expect(frame.getRollTwoIndex()).toEqual(1)
+    })
+
+    it('for the bonus roll set the index to the third frame in the array.', function() {
+      frame.setBonusRollIndex(2)
+      expect(frame.getBonusRollIndex()).toEqual(2)
     })
 
   })

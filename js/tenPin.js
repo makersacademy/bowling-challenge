@@ -20,43 +20,82 @@ var TenPin = function(frame) {
 
   TenPin.prototype.moveToNextFrame = function() {
     this.currentFrame += 1
-  }
+  };
 
   TenPin.prototype.checkForSpare = function(roll1, roll2) {
     if (roll1.getPinsHit() + roll2.getPinsHit() == 10){
       return true
     }else{
       return false
-    }
-  }
+    };
+  };
+
+  TenPin.prototype.checkForStrike = function(roll1) {
+    if (roll1.getPinsHit() == 10){
+      return true
+    }else{
+      return false
+    };
+  };
 
   TenPin.prototype.frameSetters = function(roll1, roll2) {
     this.frameFirstRoll(roll1);
     this.frameSecondRoll(roll2);
-  }
+  };
 
-  TenPin.prototype.plainFrame = function(roll1, roll2) {
+  TenPin.prototype.standardFrame = function(roll1, roll2) {
     this.frameSetters(roll1, roll2);
-    this.moveToNextFrame();
-  }
+    this.createMoveFrame()
+  };
 
   TenPin.prototype.createMoveFrame = function() {
     this.moveToNextFrame();
     this.createFrame(this.newFrame);
-  }
+  };
 
-  TenPin.prototype.playSpare = function(roll1, roll2){
+  TenPin.prototype.playSpare = function(roll1, roll2) {
     this.frameSetters(roll1, roll2);
     this.createMoveFrame()
-    this.framesCreated[this.currentFrame - 1].setBonusRollScore(this.framesCreated[this.currentFrame].getRollOneScore())
-  }
+    this.framesCreated[this.currentFrame - 1].setBonusRollIndex(this.currentFrame)
+  };
+
+   TenPin.prototype.playStrike = function(roll1) {
+    this.frameFirstRoll(roll1);
+    this.createMoveFrame()
+    this.framesCreated[this.currentFrame - 1].setRollTwoIndex(this.currentFrame)
+    this.framesCreated[this.currentFrame - 1].setBonusRollIndex(this.currentFrame)
+  };
+
+  TenPin.prototype.updateScores = function() {
+    for(var i = 0; i < this.framesCreated.length; i++) {
+      this.rollTwoUpdate(i)
+      this.bonusRollUpdate(i)
+    };
+  };
+
+  TenPin.prototype.rollTwoUpdate = function(index) {
+    console.log(index)
+    if (this.framesCreated[index].getRollTwoIndex() > index){
+      this.framesCreated[index].setRollTwoScore(this.framesCreated[this.framesCreated[index].getRollOneIndex()].getRollOneScore())
+    };
+  };
+
+  TenPin.prototype.bonusRollUpdate = function(index) {
+    if (this.framesCreated[index].getBonusRollIndex() > index && this.framesCreated[index].getRollTwoIndex() > index){
+      this.framesCreated[index].setBonusRollScore(this.framesCreated[this.framesCreated[index].getBonusRollIndex()].getRollTwoScore())
+    }else if ( this.framesCreated[index].getBonusRollIndex() > index ){
+      this.framesCreated[index].setBonusRollScore(this.framesCreated[this.framesCreated[index].getBonusRollIndex()].getRollOneScore())
+    };
+  };
 
   TenPin.prototype.playFrame = function(roll1, roll2) {
-    if (this.checkForSpare(roll1, roll2) == true ){
-        this.playSpare(roll1, roll2)
-      }else{
-        this.plainFrame(roll1, roll2)
-    }
-  }
+    if ( this.checkForStrike(roll1) == true ) {
+      this.playStrike(roll1)
+    }else if ( this.checkForSpare(roll1, roll2) == true ) {
+      this.playSpare(roll1, roll2)
+    }else{
+      this.standardFrame(roll1, roll2)
+    };
+  };
 
 

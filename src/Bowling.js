@@ -57,7 +57,7 @@ Scorecard.prototype.updateStrikePoints = function(points) {
   var oneBowlAgo = this.allBalls[this.ballNumber - 1];
   if (twoBowlsAgo === undefined) {
     return;
-  } else if (this.frames[twoBowlsAgo[0]][twoBowlsAgo[1]] === 10) {
+  } else if (this.frames[twoBowlsAgo[0]][0] === 10) {
     this.frames[twoBowlsAgo[0]][twoBowlsAgo[1]] += points;
     this.frames[twoBowlsAgo[0]][twoBowlsAgo[1]] += this.frames[oneBowlAgo[0]][oneBowlAgo[1]];
   }

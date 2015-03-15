@@ -8,7 +8,9 @@ var Scorecard = function() {
 };
 
 Scorecard.prototype.addPoints = function(points) {
-  if (this.currentFrame === 9) {
+  if (this.isTheGameOver === true) {
+    return;
+  } else if (this.currentFrame === 9) {
     this.finalFrame(points);
   } else {
     this.updateStrikePoints(points);
@@ -76,7 +78,11 @@ Scorecard.prototype.finalFrame = function(points) {
   this.recordBallNumber();
   this.currentBowl += 1;
   this.ballNumber += 1;
-  if (this.currentBowl >= 3) {
+
+  if (!(this.currentBowl === 2) && !(this.frames[9][0] === 10 || this.frames[9][0] + this.frames[9][1] === 10)) {
     this.isTheGameOver = true;
-  }
+  } else if (this.currentBowl >= 3) {
+    this.isTheGameOver = true;
+  };
+
 };

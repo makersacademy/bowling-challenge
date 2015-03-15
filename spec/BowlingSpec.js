@@ -95,4 +95,13 @@ describe("Bowling Scorecard", function() {
     expect(scorecard.isTheGameOver).toEqual(true);
   });
 
+  it("doesn't allow three balls in the tenth frame if there were no spares or strikes", function() {
+    scorecard.currentFrame = 9;
+    scorecard.addPoints(4);
+    expect(scorecard.currentFrame).toBe(9);
+    expect(scorecard.currentBowl).toEqual(1);
+    scorecard.addPoints(4);
+    expect(scorecard.isTheGameOver).toEqual(true);
+  });
+
 });

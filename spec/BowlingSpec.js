@@ -87,6 +87,9 @@ describe("Bowling Scorecard", function() {
     scorecard.currentFrame = 9;
     scorecard.addPoints(10);
     expect(scorecard.currentFrame).toBe(9);
+    expect(scorecard.currentBowl).toEqual(1);
+    scorecard.addPoints(4);
+    expect(scorecard.currentBowl).toEqual(2);
   });
 
 });

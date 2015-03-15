@@ -73,6 +73,6 @@ Scorecard.prototype.finalFrame = function(points) {
   this.updateSparePoints(points);
   this.frames[this.currentFrame][this.currentBowl] = points;
   this.recordBallNumber();
-  this.updateBowlNumber();
+  this.currentBowl += 1;
   this.ballNumber += 1;
 };

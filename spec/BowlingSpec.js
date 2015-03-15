@@ -83,7 +83,7 @@ describe("Bowling Scorecard", function() {
     expect(scorecard.calculateTotalScore()).toBe(139);
   });
 
-  it("a maximum of three balls can be rolled in the tenth frame when there's a strike", function() {
+  it("a maximum of three balls can be rolled in the tenth frame when there's a strike or spare", function() {
     scorecard.currentFrame = 9;
     scorecard.addPoints(10);
     expect(scorecard.currentFrame).toBe(9);
@@ -98,10 +98,40 @@ describe("Bowling Scorecard", function() {
   it("doesn't allow three balls in the tenth frame if there were no spares or strikes", function() {
     scorecard.currentFrame = 9;
     scorecard.addPoints(4);
-    expect(scorecard.currentFrame).toBe(9);
-    expect(scorecard.currentBowl).toEqual(1);
     scorecard.addPoints(4);
     expect(scorecard.isTheGameOver).toEqual(true);
+  });
+
+  it("only adds the bonus points for additional rolls in the final frame, they don't count as extra frames themselves", function() {
+    scorecard.currentFrame = 9;
+    scorecard.addPoints(10);
+    scorecard.addPoints(10);
+    scorecard.addPoints(10);
+    expect(scorecard.calculateTotalScore()).toBe(30);
+  });
+
+  it("final tests", function() {
+    scorecard.addPoints(7);
+    scorecard.addPoints(2);
+    scorecard.addPoints(2);
+    scorecard.addPoints(3);
+    scorecard.addPoints(5);
+    scorecard.addPoints(2);
+    scorecard.addPoints(2);
+    scorecard.addPoints(7);
+    scorecard.addPoints(8);
+    scorecard.addPoints(2);
+    scorecard.addPoints(10);
+    scorecard.addPoints(10);
+    scorecard.addPoints(4);
+    scorecard.addPoints(3);
+    scorecard.addPoints(3);
+    scorecard.addPoints(1);
+    scorecard.addPoints(10);
+    scorecard.addPoints(9);
+    scorecard.addPoints(1);
+    expect(scorecard.calculateTotalScore()).toBe(0);
+    expect(scorecard.isTheGameOver).toBe(true);
   });
 
 });

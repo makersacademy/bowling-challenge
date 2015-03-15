@@ -74,12 +74,18 @@ Scorecard.prototype.updateSparePoints = function(points) {
 Scorecard.prototype.finalFrame = function(points) {
   this.updateStrikePoints(points);
   this.updateSparePoints(points);
-  this.frames[this.currentFrame][this.currentBowl] = points;
+
+  if (this.frames[9][0] !== 10 && this.frames[9][0] + this.frames[9][1] !== 10) {
+    this.frames[this.currentFrame][this.currentBowl] = points;
+  } else {
+    this.frames[this.currentFrame][this.currentBowl] = 0;
+  };
+
   this.recordBallNumber();
   this.currentBowl += 1;
   this.ballNumber += 1;
 
-  if (!(this.currentBowl === 2) && !(this.frames[9][0] === 10 || this.frames[9][0] + this.frames[9][1] === 10)) {
+  if ((this.currentBowl === 2) && !(this.frames[9][0] === 10 || this.frames[9][0] + this.frames[9][1] === 10)) {
     this.isTheGameOver = true;
   } else if (this.currentBowl >= 3) {
     this.isTheGameOver = true;

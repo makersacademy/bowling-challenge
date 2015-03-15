@@ -8,11 +8,11 @@ describe ("Bowl", function() {
 
   describe ("Starting a game", function() {
 
-    it("should have a roll 1 with a score of 0 when created", function() {
+    xit("should have a roll 1 with a score of 0 when created", function() {
       expect(bowl.roll1).toEqual(0);
     });
 
-    it("should have a roll 2 with a score of 0 when created", function() {
+    xit("should have a roll 2 with a score of 0 when created", function() {
       expect(bowl.roll2).toEqual(0);
     });
 
@@ -45,18 +45,37 @@ describe ("Bowl", function() {
     });
 
     it("should let rolls hit pins", function() {
-      bowl.pinHit(roll1);
+      bowl.roll1(1);
       expect(bowl.pins).toEqual(9);
     });
 
+    it("should move to the next frame when a strike is scored", function() {
+      bowl.roll1(10)
+      expect(bowl.frameNumber).toEqual(2);
+    });
+
+  });
+
+  describe("Scoring", function() {
+
     it("should increase the roll score when a roll hits a pin", function() {
-      bowl.roll(10);
+      bowl.roll1(10);
       expect(bowl.roll1).toEqual(10);
     });
 
-    it("should only let the roll have a maximum of 10", function() {
-      bowl.roll(15);
+    it("should only let the roll have a maximum score of 10", function() {
+      bowl.roll1(15);
       expect(bowl.roll1).toEqual(10)
+    });
+
+    it("should know that a strike is equal to 10 pins being hit", function() {
+      bowl.roll1(10);
+      expect(bowl.strikes).toEqual(1)
+    });
+
+    xit("should have a maximum frame score of 10", function() {
+      bowl.frameScore(10);
+      expect(bowl.frameScore).toEqual(10);
     });
 
   });

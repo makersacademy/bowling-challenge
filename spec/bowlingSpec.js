@@ -6,8 +6,13 @@ describe('Bowling', function() {
   });
 
   it('should be able to roll a gutter game', function() {
-    bowling.roll(20, 0);
-    expect(bowling.currentScore).toEqual(0);
+    bowling.gameRolls(0, 20);
+    expect(bowling.currentScore()).toBe(0);
+  });
+
+   it('should score 20 when all ones are rolled', function() {
+    bowling.gameRolls(1, 20);
+    expect(bowling.currentScore()).toBe(20);
   });
 
 });

@@ -1,13 +1,23 @@
 var Scorecard = function() {
   this.frames = [[],[],[],[],[],[],[],[],[],[]];
-  this.current_frame = 0;
-  this.current_bowl = 0;
+  this.currentFrame = 0;
+  this.currentBowl = 0;
 };
 
-Scorecard.prototype.add_points = function(points) {
-  this.frames[this.current_frame][this.current_bowl] = points;
-  this.current_bowl === 0 ? this.current_bowl = 1 : this.current_bowl = 0;
-  if (this.frames[this.current_frame].length === 2) {
-    this.current_frame += 1;
+Scorecard.prototype.addPoints = function(points) {
+  this.frames[this.currentFrame][this.currentBowl] = points;
+  this.updateBowlNumber();
+  this.updateFrameNumber();
+};
+
+Scorecard.prototype.updateFrameNumber = function() {
+  if (this.frames[this.currentFrame].length === 2) {
+    this.currentFrame += 1;
+  } else if (this.frames[this.currentFrame][0] === 10) {
+    this.currentFrame += 1;
   }
+};
+
+Scorecard.prototype.updateBowlNumber = function() {
+  this.currentBowl === 0 ? this.currentBowl = 1 : this.currentBowl = 0;
 };

@@ -14,8 +14,12 @@ Bowling ScoreCard
 
 ###Bowling Rules
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares.
 
 ###TO DO:
 
 - Implement 10th frame strike and spare scoring
+- Fix certain style features:
+    - remove "pinsHit" from input field
+    - set restrictions on input field (currently any value can be inputted)
+    - resize input field

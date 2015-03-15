@@ -10,40 +10,70 @@ body {
   background-repeat: no-repeat;
   background-opacity: 0.2;
   background-position: center;
+  width: 100%;
+  height: 100%;
 }
 
 h1 {
-font-size: 10em;
+  font-size: 10em;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 15px;
 }
 
 span {
-    display: inline-block;
-    padding: 30px;
-    line-height: 100%;
+  display: inline-block;
+  padding: 30px;
+  line-height: 100%;
 
-    -moz-border-radius: 50%;
-    border-radius: 50%;
+  border-radius: 4px;
 
-    background-color: black;
-    color: white;
-    text-align: center;
-    font-size: 5em;
-    position: fixed;
-    bottom: 30px;
-    right: 100px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 5em;
+  position: fixed;
+  bottom: 30px;
+  right: 100px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 0 auto;
+  top: 100px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+table.center {
+  margin-top: 30px; 
+}
+
+th,td {
+  padding: 15px;
+}
+
+input {
+  position: absolute;
+  bottom: 30px;
+  left: 200px;
 }
 
 .button {
-    padding: 10px 15px;
-    background: black;
-    color: white;
-    border-radius: 4px;
-    border: solid 1px;  
-    position: fixed;
-    bottom: 30px;
-    left: 100px;
+  padding: 10px 15px;
+  background: black;
+  color: white;
+  border-radius: 4px;
+  border: solid 1px;  
+  position: fixed;
+  bottom: 30px;
+  left: 100px;
 }
+
 .button:hover {
-    background: white;
-    color: black;
+  background: white;
+  color: black;
 }

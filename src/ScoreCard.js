@@ -38,6 +38,7 @@ ScoreCard.prototype.changeFrame = function(){
 };
 
 ScoreCard.prototype.tallyFrameScore = function(){
+  this.clearFrameScore();
   for (frameIndex=1; frameIndex <= this.totalFrames; frameIndex +=1) {
     this.frames[frameIndex].score += (this.frames[frameIndex].bowl1 + this.frames[frameIndex].bowl2);
     if (this.frames[frameIndex].spare === true) {
@@ -63,5 +64,11 @@ ScoreCard.prototype.tallyTotalScore = function(){
   return this.score;
 };
 
+ScoreCard.prototype.clearFrameScore = function(){
+    for (frameIndex=1; frameIndex <= this.totalFrames; frameIndex +=1) {
+    this.frames[frameIndex].score = 0;
+  }
+
+}
 
 

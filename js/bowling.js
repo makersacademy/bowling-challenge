@@ -9,16 +9,13 @@ var Bowling = function() {
 
 Bowling.prototype.pinsHit = function(number) {
   if(number === 10)
-  {
-    this.strikes += 1;
-    this.rollNumber + 1;
+    {this.strikes += 1;
+    this.rollNumber += 1;
     this.scoreTotal();
-    this.nextFrame();
-  }
+    this.frameNumber += 1;}
   else{this.pins = (this.pins -= number);
     this.rollSpare();
-    this.nextFrame();
-  }
+    this.nextFrame();}
 };
 
 Bowling.prototype.rollSpare = function() {
@@ -28,17 +25,14 @@ Bowling.prototype.rollSpare = function() {
 Bowling.prototype.nextFrame = function() {
   if(this.rollNumber === 1) {this.rollNumber += 1;}
   else if(this.rollNumber === 2)
-  {
-    this.rollNumber -= 1;
+    {this.rollNumber -= 1;
     this.scoreTotal();
     this.frameTotal();
-    this.pins = 10;
-  }
+    this.pins = 10;}
 };
 
 Bowling.prototype.frameTotal = function() {
-  if(this.frameNumber === 10){this.frameNumber = 1;
-    return "Game over";}
+  if(this.frameNumber === 10) {this.frameNumber == 1;}
   else{this.frameNumber += 1;}
 };
 

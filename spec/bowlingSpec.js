@@ -1,58 +1,72 @@
-describe("Player", function() {
-  var player;
-  var song;
+describe("Bowling", function() {
 
   beforeEach(function() {
-    player = new Player();
-    song = new Song();
+    bowling = new Bowling();
   });
 
-  it("should be able to play a Song", function() {
-    player.play(song);
-    expect(player.currentlyPlayingSong).toEqual(song);
+it("has 10 pins before each frame", function(){
+  expect(bowling.pins).toEqual(10)
+});
 
-    //demonstrates use of custom matcher
-    expect(player).toBePlaying(song);
-  });
+it("can knock down pins", function(){
+  bowling.roll1(2);
+  bowling.roll2(4);
+  expect(bowling.pins).toEqual(4);
+})
 
-  describe("when song has been paused", function() {
-    beforeEach(function() {
-      player.play(song);
-      player.pause();
-    });
+it("can add up score of two shots", function(){
+  bowling.roll1(2);
+  bowling.roll2(3);
+  expect(bowling.score).toEqual(5)
+})
 
-    it("should indicate that the song is currently paused", function() {
-      expect(player.isPlaying).toBeFalsy();
+it("knows when there is a strike", function(){
+  bowling.roll1(10);
+  bowling.roll1(10);
+  expect(bowling.strikes).toEqual(2)
+})
 
-      // demonstrates use of 'not' with a custom matcher
-      expect(player).not.toBePlaying(song);
-    });
+it("knows when there is a spare", function(){
+  bowling.roll1(5);
+  bowling.roll2(5);
+  expect(bowling.spares).toEqual(1);
+})
 
-    it("should be possible to resume", function() {
-      player.resume();
-      expect(player.isPlaying).toBeTruthy();
-      expect(player.currentlyPlayingSong).toEqual(song);
-    });
-  });
+it("knows when a frame is over", function(){
+  bowling.roll1(3);
+  bowling.roll2(5);
+  bowling.roll1(2);
+  bowling.roll2(6);
+  expect(bowling.frame).toEqual(2)
+})
 
-  // demonstrates use of spies to intercept and test method calls
-  it("tells the current song if the user has made it a favorite", function() {
-    spyOn(song, 'persistFavoriteStatus');
+it("cannot have more than 10 frames", function(){
+  for (var i = 0; i <= 10; i++) {
+    bowling.roll1(3);
+    bowling.roll2(2);
+  };
+    expect( function(){ bowling.roll1(3); }).toThrow(new Error("There are only ten frames"));
+})
 
-    player.play(song);
-    player.makeFavorite();
+it("gives 30 points for a strike", function(){
+  bowling.roll1(10);
+  bowling.roll1(10);
+  expect(bowling.score).toEqual(60)
+})
 
-    expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
-  });
+it("can be a perfect game", function(){
+  for (var i = 0; i < 10; i++) {
+    bowling.roll1(10)
+  };
+  expect(bowling.score).toEqual(300)
+})
 
-  //demonstrates use of expected exceptions
-  describe("#resume", function() {
-    it("should throw an exception if song is already playing", function() {
-      player.play(song);
+it("can be a gutter game", function(){
+  for (var i = 0; i < 10; i++) {
+    bowling.roll1(0);
+    bowling.roll2(0);
+  };
+  expect(bowling.score).toEqual(0)
+})
 
-      expect(function() {
-        player.resume();
-      }).toThrowError("song is already playing");
-    });
-  });
 });

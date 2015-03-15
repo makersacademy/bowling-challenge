@@ -1,17 +1,16 @@
 var Bowling = function() {
   this.pins = 10;
-  this.player = 1;
   this.frameNumber = 1;
   this.rollNumber = 1;
-  this.strike = 0;
-  this.spare = 0;
+  this.strikes = 0;
+  this.spares = 0;
   this.currentScore = 0;
 };
 
 Bowling.prototype.pinsHit = function(number) {
   if(number === 10)
   {
-    this.strike += 1;
+    this.strikes += 1;
     this.rollNumber + 1;
     this.scoreTotal();
     this.nextFrame();
@@ -23,7 +22,7 @@ Bowling.prototype.pinsHit = function(number) {
 };
 
 Bowling.prototype.rollSpare = function() {
-  if(this.pins === 0) {this.spare += 1;}
+  if(this.pins === 0) {this.spares += 1;}
 };
 
 Bowling.prototype.nextFrame = function() {
@@ -44,7 +43,7 @@ Bowling.prototype.frameTotal = function() {
 };
 
 Bowling.prototype.scoreTotal = function() {
-  if(this.spare != 0) {(this.currentScore = (10 * this.spare) + this.currentScore);}
-  else if(this.strike != 0) {(this.currentScore = (10 * this.strike) + this.currentScore);}
+  if(this.spares != 0) {(this.currentScore = (10 * this.spares) + this.currentScore);}
+  else if(this.strikes != 0) {(this.currentScore = (10 * this.strikes) + this.currentScore);}
   else{(this.currentScore = (10 - this.pins) + this.currentScore);}
 };

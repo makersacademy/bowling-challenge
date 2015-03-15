@@ -5,6 +5,21 @@ describe('Frame', function() {
     frame = new Frame;
   });
 
+  describe('created with',function() {
+
+    it('a roll one score of 0', function() {
+      expect(frame.getRollOneScore()).toEqual(0)
+    })
+
+    it('a roll two object having an index of 0 and a score of 0', function() {
+      expect(frame.getRollTwoScore()).toEqual({ index: 0, score: 0 })
+    })
+
+    it('a bonus roll object having an index of 0 and a score of 0', function() {
+      expect(frame.getBonusRollScore()).toEqual({ index: 0, score: 0 })
+    })
+  })
+
   describe('setting the scores.', function() {
 
     it('With a first roll of 8 the frame will score 8 for roll one', function() {

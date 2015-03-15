@@ -15,21 +15,36 @@ describe('TenPin', function() {
 
   });
 
-  describe('game begins', function() {
+  describe('game begins.', function() {
 
     it('Creates a max frame constant of 10', function() {
       expect(tenP.FRAMES).toEqual(10)
-    })
-
-    it('Creates the first frame', function() {
-      expect(tenP.framesCreated.length).toEqual(1)
-    })
+    });
 
     it('Sets the current frame to 0', function() {
       expect(tenP.currentFrame).toEqual(0)
+    });
+
+    it('Creates the first frame object in the framesCreated array', function() {
+      expect(tenP.framesCreated.length).toEqual(1)
+    });
+
+    xit('Creates the first frame object and also sets its index to the current frame which is 0', function() {
+      spyOn that the frame uppdate index is set
+      expect(tenP.framesCreated.length).toEqual(1)
     })
 
-  })
+    it('Once a frame is played it sets the current frame to the next frame', function() {
+      tenP.createMoveFrame()
+      expect(tenP.currentFrame).toEqual(1)
+    });
+
+     it('Once a frame is played it creates the next frame object', function() {
+      tenP.createMoveFrame()
+      expect(tenP.framesCreated.length).toEqual(2)
+    });
+
+  });
 
   describe('frame is not a strike or spare.', function() {
 

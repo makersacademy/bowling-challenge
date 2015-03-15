@@ -1,7 +1,7 @@
 var Frame = function() {
   this.rollOne = 0;
-  this.rollTwo = 0;
-  this.bonusRoll = 0;
+  this.rollTwo = {index: 0, score: 0};
+  this.bonusRoll = {index: 0, score: 0};
 };
 
 Frame.prototype.setRollOneScore = function(roll) {

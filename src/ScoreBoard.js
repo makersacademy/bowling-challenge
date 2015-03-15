@@ -4,6 +4,20 @@ ScoreBoard = function(){
   this.currentScore = 0;
 };
 
+ScoreBoard.prototype.processScores = function(){
+  for (var i = 0; i < this.gameFrames.length; i++) {
+    frame = this.gameFrames[i];
+    this.accumulator(frame);   
+  };
+};
+
+ScoreBoard.prototype.accumulator = function(frame){
+  i = this.getFrameIndex(frame);
+  if(this.canCheck(frame)) this.standardFrameCheck(frame) 
+  if(typeof this.gameFrames[i+1]=='undefined') return this.frameTen(frame);  
+  if(typeof this.gameFrames[i+2]=='undefined') return this.frameNine(frame);  
+};
+
 ScoreBoard.prototype.totalUpGame = function(){
   var total = 0;
   for (var i = 0; i < this.frameScores.length; i++) { 
@@ -41,24 +55,10 @@ ScoreBoard.prototype.canCheck = function(frame){
   return true;
 };
 
-ScoreBoard.prototype.processScores = function(){
-  for (var i = 0; i < this.gameFrames.length; i++) {
-    frame = this.gameFrames[i];
-    this.accumulator(frame);   
-  };
-};
-
 ScoreBoard.prototype.standardFrameCheck = function(frame){
   if(this.isStrike(frame)) return this.standardStrikeFrame(frame);
   if(this.isHalfStrike(frame)) return this.standardHalfStrikeFrame(frame);
   return this.addFrameScores(frame);
-};
-
-ScoreBoard.prototype.accumulator = function(frame){
-  i = this.getFrameIndex(frame);
-  if(this.canCheck(frame)) this.standardFrameCheck(frame) 
-  if(typeof this.gameFrames[i+1]=='undefined') return this.frameTen(frame);  
-  if(typeof this.gameFrames[i+2]=='undefined') return this.frameNine(frame);  
 };
 
 ScoreBoard.prototype.isTurkey = function(frame){

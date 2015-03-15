@@ -8,14 +8,6 @@ describe ("Bowl", function() {
 
   describe ("Starting a game", function() {
 
-    xit("should have a roll 1 with a score of 0 when created", function() {
-      expect(bowl.roll1).toEqual(0);
-    });
-
-    xit("should have a roll 2 with a score of 0 when created", function() {
-      expect(bowl.roll2).toEqual(0);
-    });
-
     it("should have 10 pins when created", function() {
       expect(bowl.pins).toEqual(10);
     });
@@ -73,9 +65,9 @@ describe ("Bowl", function() {
       expect(bowl.strikes).toEqual(1)
     });
 
-    xit("should have a maximum frame score of 10", function() {
-      bowl.frameScore(10);
-      expect(bowl.frameScore).toEqual(10);
+    it("should know a spare is equal to no pins left at the end of roll2", function() {
+      bowl.roll2(10);
+      expect(bowl.spares).toEqual(1);
     });
 
   });

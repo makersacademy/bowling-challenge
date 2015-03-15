@@ -2,7 +2,7 @@
 Bowling ScoreCard
 =================
 
-#How to Run
+##How to Run
 `git clone https://github.com/c-christenson/bowling-challenge.git`
 `cd bowling-challenge`
 

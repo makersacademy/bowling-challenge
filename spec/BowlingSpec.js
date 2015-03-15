@@ -83,4 +83,10 @@ describe("Bowling Scorecard", function() {
     expect(scorecard.calculateTotalScore()).toBe(139);
   });
 
+  it("three balls can be rolled in the tenth frame when there's a strike", function() {
+    scorecard.currentFrame = 9;
+    scorecard.addPoints(10);
+    expect(scorecard.currentFrame).toBe(9);
+  });
+
 });

@@ -93,11 +93,16 @@ BowlingGame.prototype.bonusCalculator = function () {
 for(i=0; i<this.scoreCard.length; i++){
   previous = this.scoreCard[i-1]
   current = this.scoreCard[i]
+  nextFirstRoll = this.scoreCard[i+1] && this.scoreCard[i+1].rolls[0]
+  secondroll = current.rolls[1]
     if(previous != undefined && previous.spare == true){
       previous.bonus = current.rolls[0]
     };
-    if(previous != undefined && previous.strike == true){
-      previous.bonus = current.rolls[0] + current.rolls[1]
+    if(previous != undefined && previous.strike == true && secondroll != undefined){
+      previous.bonus = current.rolls[0] + secondroll
+    };
+    if(previous != undefined && previous.strike == true && secondroll == undefined){
+      previous.bonus = current.rolls[0] + nextFirstRoll
     };
   };
 };

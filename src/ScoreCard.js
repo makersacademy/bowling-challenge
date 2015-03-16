@@ -18,7 +18,7 @@ function ScoreCard(frames) {
     var nextFrame = this.openFrames[1];
     var thirdFrame = this.openFrames[2];
 
-    if (frame.isSprike) {
+    if (nextFrame && frame.isSprike) {
       if (nextFrame.isSprike) {
         thirdFrame.addScore(pinsHit);
       }
@@ -29,7 +29,7 @@ function ScoreCard(frames) {
 
     if (frame.isClosed) {
       this.frames.push(this.openFrames.shift());
-      if (nextFrame.isClosed) {
+      if (nextFrame && nextFrame.isClosed) {
         this.frames.push(this.openFrames.shift());
       }
     }

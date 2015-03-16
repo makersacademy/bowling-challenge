@@ -14,7 +14,6 @@ BowlingGame.prototype.roll = function(pins) {
   else {
     if(this.currentFrame == undefined){
       this.nextFrame();
-
       this.currentFrame.saveRoll(pins);
       if(this.isStrike(pins)){this.finishFrame()};
     }else{
@@ -62,7 +61,7 @@ BowlingGame.prototype.checkIfOver = function () {
 };
 
 BowlingGame.prototype.rollFinal = function (pins) {
-  if(this.isStrike(pins)){
+  if(this.scoreCard[9].strike){
     if(this.currentFrame == undefined){
       this.nextFrame();
       this.currentFrame.saveRoll(pins);

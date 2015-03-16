@@ -1,6 +1,5 @@
 describe("Bowl", function() {
 
-  var roll1;
   var bowl;
 
   beforeEach(function() {

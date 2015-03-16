@@ -81,10 +81,10 @@ $(document).ready(function() {
       currentBall +=1;
     };
 
-
   $('#zerobutton').on('click', function(e) {
     e.preventDefault();
     scorer.roll(0);
+    console.log(scorer.frameNumber());
     enterScore();
   });
 

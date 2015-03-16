@@ -5,9 +5,9 @@ describe('Scorer', function() {
     scorer = new Scorer();
   });
 
-  function multiRoll(numberOfRolls,RollScore){
+  function multiRoll(numberOfRolls,rollScore){
     for (var i = 0; i < numberOfRolls; i++) {
-      scorer.roll(RollScore)
+      scorer.roll(rollScore)
     };
   };
 
@@ -83,7 +83,32 @@ describe('Scorer', function() {
 
   });
 
-  describe('helper methods to help refactor the code', function() {
+  describe('helper methods', function() {
+
+    it('knows it is in the first frame after 1 rolls', function() {
+      scorer.roll(8);
+      expect(scorer.frameNumber()).toEqual(1);
+    });
+
+    it('knows it is in the first frame after 2 rolls', function() {
+      multiRoll(2,2);
+      expect(scorer.frameNumber()).toEqual(1)
+    });
+
+    it('knows it is in the second frame frame after 1 strike and a non strike', function() {
+      scorer.roll(10);
+      scorer.roll(8);
+      expect(scorer.frameNumber()).toEqual(2)
+    });
+
+    it('knows that it is in the third frame after 3 strikes', function() {
+      multiRoll(3,10);
+      expect(scorer.frameNumber()).toEqual(3);
+    });
+    it('allows for a 3rd ball in the tenth frame', function() {
+      multiRoll(12,10);
+      expect(scorer.frameNumber()).toEqual(10);
+    });
 
   });
 

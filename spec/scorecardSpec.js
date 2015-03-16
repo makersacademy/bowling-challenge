@@ -24,7 +24,7 @@ describe('Scorecard', function() {
     it('knows the current frame', function() {
       scorecard.bowl(1);
       scorecard.bowl(6);
-      expect(scorecard.getCurrentFrame()).toEqual(1)
+      expect(scorecard.currentFrame).toEqual(1)
     });
 
     it('stores the total for the first frame', function() {

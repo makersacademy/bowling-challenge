@@ -1,30 +1,35 @@
 var Frame = function() {
   this.firstBowl = null;
-  this.secondBowl = 0;
-  this.result;
   this.spare = false;
   this.strike = false;
 };
  
 Frame.prototype.receiveBowl = function(pinsKnockedOver) {
-  if (this.firstBowl === null && pinsKnockedOver === 10) {
-    this.firstBowl = pinsKnockedOver;
-    this.secondBowl = 0;
-    this.calculateResult();
+  if (this.isBowlStrike(pinsKnockedOver)) {
+    this.receiveFirstBowl(pinsKnockedOver);
+    this.receiveSecondBowl(0);
   } else if (this.firstBowl != null) {
-    this.secondBowl += pinsKnockedOver;
-    this.calculateResult();
+    this.receiveSecondBowl(pinsKnockedOver);
   } else {
-    this.firstBowl = pinsKnockedOver;
+    this.receiveFirstBowl(pinsKnockedOver);
   };
 };
 
 Frame.prototype.calculateResult = function() {
-  if (this.firstBowl === 10) {
-    this.strike = true;
-  } else if (this.firstBowl + this.secondBowl === 10) {
-    this.spare = true;
-  } else {
-    this.result = this.firstBowl + this.secondBowl;
-  };
+  if (this.firstBowl === 10) this.strike = true;
+  if (this.firstBowl + this.secondBowl === 10) this.spare = true;
+  this.result = this.firstBowl + this.secondBowl;
 };
+
+Frame.prototype.receiveSecondBowl = function(pinsKnockedOver) {
+  this.secondBowl = pinsKnockedOver;
+  this.calculateResult();
+}
+
+Frame.prototype.receiveFirstBowl = function(pinsKnockedOver) {
+  this.firstBowl = pinsKnockedOver;
+}
+
+Frame.prototype.isBowlStrike = function(pinsKnockedOver) {
+  if (this.firstBowl === null && pinsKnockedOver === 10) return true;
+}

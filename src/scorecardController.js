@@ -10,8 +10,8 @@ $('document').ready(function() {
   });
 
   function updateButtons() {
-    var limit = scorecard.frameRecord[scorecard.getCurrentFrame()].firstBowl;
-    if (limit === null) {
+    var limit = scorecard.frameRecord[scorecard.currentFrame].firstBowl;
+    if (limit === null || limit === 10) {
       $('#buttons > li').show();
     } else {
       for (var i = 10; i >= (10 - limit); i--) {

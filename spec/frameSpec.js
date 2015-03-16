@@ -36,6 +36,14 @@ describe('Frame', function() {
       expect(frame.strike).toEqual(true);
     });
 
+    it('knows its result is a spare when the second bowl is a 10', function() {
+      frame.receiveBowl(0);
+      frame.receiveBowl(10);
+      expect(frame.strike).toEqual(false);
+      expect(frame.spare).toEqual(true);
+      console.log(frame);
+    });
+
     it('skips the second bowl if the first bowl is a strike', function() {
       frame.receiveBowl(10);
       expect(frame.firstBowl).toBe(10);

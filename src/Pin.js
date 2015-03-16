@@ -6,7 +6,6 @@ var Pin = function (){
     this.standing = false;
   };
 
-
   Pin.prototype.state = function() {
     if (this.standing === false) {
       return 'knocked down';

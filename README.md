@@ -3,18 +3,11 @@ Bowling Score Card
 
 Makers Academy Week 5 Challenge
 
-Challenges (incomplete)
+Task (incomplete)
 ----
--  has 10 frames
--  a strike waits for next score to be tallied
--  a spare waits for next score to be tallied
--  after a strike the next two rolls are added
--  after a spare the next one roll is added
--  can score a gutter game
--  two strikes in a row
--  two spares in a row
--  can score a perfect game (300)
--  can play a full game with strikes and spares
+Count and sum the scores of a bowling game for one player (in JavaScript).
+
+A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
 Technologies used
 ----

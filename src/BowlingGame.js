@@ -96,5 +96,8 @@ for(i=0; i<this.scoreCard.length; i++){
     if(previous != undefined && previous.spare == true){
       previous.bonus = current.rolls[0]
     };
+    if(previous != undefined && previous.strike == true){
+      previous.bonus = current.rolls[0] + current.rolls[1]
+    };
   };
 };

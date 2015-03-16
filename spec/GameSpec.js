@@ -63,6 +63,10 @@ describe ("Game", function() {
   });
 
   it("can calculate the score of the given example", function() {
+
+    // I know I'm not meant to have comments, sorry :).
+    // If I had time I would have merged the creation of frames and the roll fucntion into one line.
+
     testFrame1 = new Frame;
     testFrame2 = new Frame;
     testFrame3 = new Frame;
@@ -74,6 +78,7 @@ describe ("Game", function() {
     testFrame9 = new Frame;
     testFrame10 = new Frame;
     testSpareBonus = new Frame;
+
     testFrame1.roll(1, 4);
     testFrame2.roll(4, 5);
     testFrame3.roll(6, 4);
@@ -85,6 +90,7 @@ describe ("Game", function() {
     testFrame9.roll(10);
     testFrame10.roll(2, 8);
     testSpareBonus.roll(6, 0);
+
     game.addFrame(testFrame1);
     game.addFrame(testFrame2);
     game.addFrame(testFrame3);

@@ -15,11 +15,12 @@ describe("Bowling Game", function() {
     frame7 = new BowlingFrame();
     frame8 = new BowlingFrame();
     frame9 = new BowlingFrame();
+    bonusFrame = new BowlingFrame();
     frames = [frame, frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9];
     fakeframe = new BowlingFrame();
     fakeframe.rolls = [3]
     game.hold(frames);
-    game.holdBonusFrame(frame);
+    game.holdBonusFrame(bonusFrame);
   };
 
 
@@ -67,6 +68,7 @@ describe("Bowling Game", function() {
 
   describe("Final round", function() {
     beforeEach(function() {setupGame(); });
+
     it("adds a bonus roll, when last roll in 10th frame was strike", function() {
       game.roll(7); game.roll(2);
       game.roll(10);
@@ -80,10 +82,12 @@ describe("Bowling Game", function() {
       game.roll(10);
       expect(game.isOver).toEqual(false);
       game.roll(4);
+      expect(game.isOver).toEqual(false);
+      game.roll(10)
       expect(game.isOver).toEqual(true);
     });
 
-    xit("adds only one more bonus roll, when first bonus roll for 10th frame was strike too", function() {
+    it("adds only one more bonus roll, when first bonus roll for 10th frame was strike too", function() {
       game.roll(7); game.roll(2);
       game.roll(10);
       game.roll(2); game.roll(8);

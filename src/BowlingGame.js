@@ -62,13 +62,29 @@ BowlingGame.prototype.checkIfOver = function () {
 };
 
 BowlingGame.prototype.rollFinal = function (pins) {
-  console.log("FINALE ohohohoh")
+  if(this.isStrike(pins)){
+    if(this.currentFrame == undefined){
+      this.nextFrame();
+      this.currentFrame.saveRoll(pins);
+    }else{
+      this.currentFrame.saveRoll(pins);
+      this.finishFrame()
+      this.isOver = true;
+    };
+  }else{
+    this.nextFrame();
+    this.currentFrame.saveRoll(pins);
+    this.finishFrame()
+    this.isOver = true;
+  };
 };
 
 BowlingGame.prototype.isFinal = function () {
   if(this.scoreCard.length == 10 && this.scoreCard[9].spare){
+    this.freshFrames = this.bonusFrame;
     return true
   }else if(this.scoreCard.length == 10 && this.scoreCard[9].strike){
+    this.freshFrames = this.bonusFrame;
     return true
   }else{ return false };
 };

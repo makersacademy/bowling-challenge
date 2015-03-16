@@ -68,6 +68,9 @@ updateFrame1 = function() {
   $("#frame1-2").text(function() {
     return scorecard.frames[0][1];
   });
+  $("#frame1").text(function() {
+    return scorecard.frames[0][0] + scorecard.frames[0][1];
+  });
 };
 
 updateFrame2 = function() {
@@ -76,6 +79,9 @@ updateFrame2 = function() {
   });
   $("#frame2-2").text(function() {
     return scorecard.frames[1][1];
+  });
+  $("#frame2").text(function() {
+    return scorecard.frames[1][0] + scorecard.frames[1][1];
   });
 };
 
@@ -86,6 +92,9 @@ updateFrame3 = function() {
   $("#frame3-2").text(function() {
     return scorecard.frames[2][1];
   });
+  $("#frame3").text(function() {
+    return scorecard.frames[2][0] + scorecard.frames[2][1];
+  });
 };
 
 updateFrame4 = function() {
@@ -94,6 +103,9 @@ updateFrame4 = function() {
   });
   $("#frame4-2").text(function() {
     return scorecard.frames[3][1];
+  });
+  $("#frame4").text(function() {
+    return scorecard.frames[3][0] + scorecard.frames[3][1];
   });
 };
 
@@ -104,6 +116,9 @@ updateFrame5 = function() {
   $("#frame5-2").text(function() {
     return scorecard.frames[4][1];
   });
+  $("#frame5").text(function() {
+    return scorecard.frames[4][0] + scorecard.frames[4][1];
+  });
 };
 
 updateFrame6 = function() {
@@ -112,6 +127,9 @@ updateFrame6 = function() {
   });
   $("#frame6-2").text(function() {
     return scorecard.frames[5][1];
+  });
+  $("#frame6").text(function() {
+    return scorecard.frames[5][0] + scorecard.frames[5][1];
   });
 };
 
@@ -122,6 +140,9 @@ updateFrame7 = function() {
   $("#frame7-2").text(function() {
     return scorecard.frames[6][1];
   });
+  $("#frame7").text(function() {
+    return scorecard.frames[6][0] + scorecard.frames[6][1];
+  });
 };
 
 updateFrame8 = function() {
@@ -131,6 +152,9 @@ updateFrame8 = function() {
   $("#frame8-2").text(function() {
     return scorecard.frames[7][1];
   });
+  $("#frame8").text(function() {
+    return scorecard.frames[7][0] + scorecard.frames[7][1];
+  });
 };
 
 updateFrame9 = function() {
@@ -139,6 +163,9 @@ updateFrame9 = function() {
   });
   $("#frame9-2").text(function() {
     return scorecard.frames[8][1];
+  });
+  $("#frame9").text(function() {
+    return scorecard.frames[8][0] + scorecard.frames[8][1];
   });
 };
 
@@ -151,6 +178,9 @@ updateFrame10 = function() {
   });
   $("#frame10-3").text(function() {
     return scorecard.frames[9][2];
+  });
+  $("#frame10").text(function() {
+    return scorecard.frames[9][0] + scorecard.frames[9][1] + scorecard.frames[9][2];
   });
 };
 

@@ -20,7 +20,7 @@ FrameTen.prototype.getRollOne = function(roll, player) {
 
 FrameTen.prototype.getRollTwo = function(roll, player){
   if(roll === 10) {
-    this.rollOneScore = 10
+    this.rollTwoScore = 10
     player.newFrame()
   }else if(roll !== 10) {
     this.rollTwoScore = this.getScore(roll)   
@@ -40,7 +40,11 @@ FrameTen.prototype.isRollThree = function(){
 };
 
 FrameTen.prototype.getRollThree = function(roll){
-  this.rollThreeScore = roll
+  if(this.isRollThree()){
+    this.rollThreeScore = roll
+  }else{
+    this.rollThreeScore = 0;
+  }  
   this.rollThreeDone = true
 };
 

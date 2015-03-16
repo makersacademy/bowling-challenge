@@ -24,7 +24,7 @@ describe('ScoreBoard', function(){
     frame7 = new Frame(7)
     frame8 = new Frame(8)
     frame9 = new Frame(9)
-    frame10 = new Frame(10)
+    frame10 = new FrameTen(10)
   });
 
   function fillBoard(){
@@ -116,29 +116,6 @@ describe('ScoreBoard', function(){
     expect(scoreboard.frameScores[0]).toEqual(18);
   });
 
-  it('can check frame 10 is a strike', function(){
-    frame10.rollOneScore = 10;
-    fillBoard();
-    scoreboard.processScores();
-    expect(scoreboard.frameScores[9]).toEqual(10);    
-  });
-
-  it('can check frame 10', function(){
-    frame10.rollOneScore = 5;
-    frame10.rollTwoScore = 1;
-    fillBoard();
-    scoreboard.processScores();
-    expect(scoreboard.frameScores[9]).toEqual(6);    
-  });
-
-  it('can confirm if frame 9 is a double strike', function(){
-    frame9.rollOneScore = 10;
-    frame10.rollOneScore = 10;
-    fillBoard();
-    scoreboard.processScores();
-    expect(scoreboard.frameScores[8]).toEqual(20);       
-  });
-
   it('if frame 9 is a strike can add the next two rolls of frame 10', function(){
     frame9.rollOneScore = 10;
     frame10.rollOneScore = 3;
@@ -166,8 +143,45 @@ describe('ScoreBoard', function(){
     expect(scoreboard.frameScores[8]).toEqual(8);       
   });
 
+  it('can confirm if frame 9 is a turkey', function(){
+    frame9.rollOneScore = 10;
+    frame10.rollOneScore = 10;
+    frame10.rollTwoScore = 10
+    fillBoard();
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[8]).toEqual(30);       
+  });
+
+  it('can calculate frame 10', function(){
+    frame10.rollOneScore = 10
+    frame10.rollTwoScore = 10
+    frame10.rollThreeScore = 10
+    fillBoard()
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[9]).toEqual(30)  
+  });
+
+  it('can calculate frame 10', function(){
+    frame10.rollOneScore = 5
+    frame10.rollTwoScore = 5
+    frame10.rollThreeScore = 10
+    fillBoard()
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[9]).toEqual(20)  
+  });
+
+  it('can calculate frame 10', function(){
+    frame10.rollOneScore = 3
+    frame10.rollTwoScore = 3
+    frame10.rollThreeScore = 0
+    fillBoard()
+    scoreboard.processScores();
+    expect(scoreboard.frameScores[9]).toEqual(6)  
+  });
+
+
   it('can calculate a game', function(){
-    frame1.rollOneScore = 5
+    frame1.rollOneScore = 7
     frame1.rollTwoScore = 3
     frame2.rollOneScore = 10
     frame3.rollOneScore = 3
@@ -182,10 +196,12 @@ describe('ScoreBoard', function(){
     frame8.rollOneScore = 10
     frame9.rollOneScore = 10
     frame10.rollOneScore = 10
+    frame10.rollTwoScore = 10
+    frame10.rollThreeScore = 10
     fillBoard();
     scoreboard.processScores();
     scoreboard.totalUpGame();
-    expect(scoreboard.currentScore).toEqual(157)
+    expect(scoreboard.currentScore).toEqual(199)
   });
 
 });

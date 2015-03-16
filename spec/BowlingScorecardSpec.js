@@ -67,4 +67,20 @@ describe("Bowling Scorecard", function() {
     expect(scorecard.allFrames[scorecard.allFrames.length - 1]).toEqual([30]);
   });
 
+  it("should return the total score", function() {
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    scorecard.bowl(10);
+    expect(scorecard.scoreTotal).toEqual(300);
+  });
+
 });

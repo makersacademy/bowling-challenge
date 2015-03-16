@@ -118,6 +118,13 @@ describe("Bowling Game", function() {
       expect(game.scoreCard[0].bonus).toEqual(3);
     });
 
+    it("adds next frames rolls as bonus to strike", function() {
+      game.roll(10);
+      game.roll(5);
+      game.roll(4);
+      expect(game.scoreCard[0].bonus).toEqual(9);
+    });
+
   });
 
 });

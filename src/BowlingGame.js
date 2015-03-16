@@ -41,6 +41,7 @@ BowlingGame.prototype.hold = function (frame) {
 
 BowlingGame.prototype.nextFrame = function () {
   this.currentFrame = this.freshFrames.shift();
+
 };
 
 
@@ -89,5 +90,11 @@ BowlingGame.prototype.isFinal = function () {
 
 
 BowlingGame.prototype.bonusCalculator = function () {
-  
+for(i=0; i<this.scoreCard.length; i++){
+  previous = this.scoreCard[i-1]
+  current = this.scoreCard[i]
+    if(previous != undefined && previous.spare == true){
+      previous.bonus = current.rolls[0]
+    };
+  };
 };

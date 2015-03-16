@@ -7,9 +7,9 @@ var Pin = function (){
   };
 
 
-  Pin.prototype.qwerty = function() {
+  Pin.prototype.state = function() {
     if (this.standing === false) {
-      return 'not standing';
+      return 'knocked down';
     } else {
       return 'standing';
     }

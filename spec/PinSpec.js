@@ -16,12 +16,12 @@ describe('Pin', function() {
   });
 
   it ('should know when is standing', function () {
-    expect(pin.qwerty()).toBe('standing');
+    expect(pin.state()).toBe('standing');
   });
 
-  it ('should know when is not standing', function () {
+  it ('should know when it has been knocked down', function () {
     pin.fall();
-    expect(pin.qwerty()).toBe('not standing');
+    expect(pin.state()).toBe('knocked down');
   });
 
 });

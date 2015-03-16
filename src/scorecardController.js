@@ -5,8 +5,8 @@ $('document').ready(function() {
   $('.bowl').click(function() {
     var pins = parseInt($(this).attr("value"));
     scorecard.bowl(pins);
-    update();
     updateButtons();
+    update();
   });
 
   function updateButtons() {

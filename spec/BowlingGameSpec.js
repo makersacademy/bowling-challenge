@@ -109,6 +109,15 @@ describe("Bowling Game", function() {
 
   describe("Bonus calculations", function() {
     beforeEach(function() {setupGame(); });
+
+    it("adds next frames first roll as bonus to spares", function() {
+      game.roll(4);
+      game.roll(6);
+      game.roll(3);
+      game.roll(2);
+      expect(game.scoreCard[0].bonus).toEqual(3);
+    });
+
   });
 
 });

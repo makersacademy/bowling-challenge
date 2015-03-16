@@ -4,7 +4,6 @@ BowlingGame = function(){
   this.freshFrames = [];
   this.bonusFrame = [];
   this.isOver = false;
-  // this.isFinalRound = false;
 };
 
 
@@ -28,7 +27,7 @@ BowlingGame.prototype.roll = function(pins) {
 BowlingGame.prototype.finishFrame = function() {
   this.scoreCard.push(this.currentFrame)
   this.currentFrame = undefined;
-
+  this.bonusCalculator();
 };
 
 BowlingGame.prototype.hold = function (frame) {
@@ -86,4 +85,9 @@ BowlingGame.prototype.isFinal = function () {
     this.freshFrames = this.bonusFrame;
     return true
   }else{ return false };
+};
+
+
+BowlingGame.prototype.bonusCalculator = function () {
+  
 };

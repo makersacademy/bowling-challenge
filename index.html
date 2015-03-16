@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling Score Keeper</title>
+    <link rel="stylesheet" href="css/stylesheet.css">
+  </head>
+  <body>
+      <div class="icon">
+        <img src="images/bowling.jpg">
+      </div>
+      <span class="addPlayers"></span>
+      <br>
+      <form class="playerNames" action=# method="post">
+          <input type="text" placeholder="Name">
+          <input type="submit" value="submit">
+      </form><br>
+      <span class="names"></span><br>
+      <br>
+      <form method="get" action="scores.html">
+          <button id="button2" type="click">Let's roll</button>
+      </form>
+      <button onclick="clearPlayers()">Clear players</button>
+
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="src/ScoreCard.js"></script>
+    <script src="src/ScoreTables.js"></script>
+    <script src="src/Setup.js"></script>
+  </body>
+</html>

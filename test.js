@@ -1,0 +1,1 @@
+scorecard = new ScoreCard("Yannick");

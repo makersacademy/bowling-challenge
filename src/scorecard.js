@@ -17,29 +17,43 @@ Scorecard.prototype.updateTotal = function() {
   };
 };
 
+Scorecard.prototype.checkLastFrameForStrike = function() {
+  if (this.getCurrentFrame() > 0 && this.frameRecord[this.getCurrentFrame() - 1].strike === true) return true;
+};
+
+Scorecard.prototype.checkLastFrameForSpare = function() {
+  if (this.getCurrentFrame() > 0 && this.frameRecord[this.getCurrentFrame() - 1].spare === true && this.frameRecord[this.getCurrentFrame()].firstBowl === null) return true;
+}
+
+Scorecard.prototype.checkTwoLastFramesForStrike = function() {
+  if (this.getCurrentFrame() > 1 && this.frameRecord[this.getCurrentFrame() - 2].strike === true && this.frameRecord[this.getCurrentFrame()].firstBowl === null) return true;
+}
+
+Scorecard.prototype.checkCurrentFrameForStrikeWith = function(pinsKnockedOver) {
+  if (this.checkEven(this.currentTurn) === true && pinsKnockedOver === 10) this.currentTurn +=1;
+}
+
+Scorecard.prototype.checkIfFrameIsOver = function() {
+  if (this.checkEven(this.currentTurn) != true) this.updateTotal();
+}
+
 Scorecard.prototype.bowl = function(pinsKnockedOver) {
   if (this.currentTurn === 20 && this.totals[this.getCurrentFrame()] === 10) {
     this.totals[this.getCurrentFrame()] += pinsKnockedOver;
-    if (this.frameRecord[this.getCurrentFrame() - 1].strike === true) {
-      this.totals[this.getCurrentFrame() - 1] += pinsKnockedOver;
-    }
+    if (this.checkLastFrameForStrike() === true) this.totals[this.getCurrentFrame() - 1] += pinsKnockedOver;
     this.currentTurn ++
   } else if (this.currentTurn === 21 && this.frameRecord[this.getCurrentFrame()].strike === true) {
     this.totals[this.getCurrentFrame()] += pinsKnockedOver;
     this.currentTurn ++
   } else if (this.currentTurn < this.maxTurns) {
-    if (this.checkEven(this.currentTurn) === true && pinsKnockedOver === 10) this.currentTurn +=1;
-    if (this.getCurrentFrame() > 0 && this.frameRecord[this.getCurrentFrame() - 1].strike === true) {
+    this.checkCurrentFrameForStrikeWith(pinsKnockedOver);
+    if (this.checkLastFrameForStrike() === true) {
         this.totals[this.getCurrentFrame() - 1] += pinsKnockedOver;
-        if (this.getCurrentFrame() > 1 && this.frameRecord[this.getCurrentFrame() - 2].strike === true) {
-          if (this.frameRecord[this.getCurrentFrame()].firstBowl === null) this.totals[this.getCurrentFrame() - 2] += pinsKnockedOver;
-        }
+        if (this.checkTwoLastFramesForStrike() === true) this.totals[this.getCurrentFrame() - 2] += pinsKnockedOver;
     }
-    if (this.getCurrentFrame() > 0 && this.frameRecord[this.getCurrentFrame() - 1].spare === true) {
-      if (this.frameRecord[this.getCurrentFrame()].firstBowl === null) this.totals[this.getCurrentFrame() - 1] += pinsKnockedOver;
-    }
+    if (this.checkLastFrameForSpare() === true) this.totals[this.getCurrentFrame() - 1] += pinsKnockedOver;
     this.frameRecord[this.getCurrentFrame()].receiveBowl(pinsKnockedOver);
-    if (this.checkEven(this.currentTurn) != true) this.updateTotal();
+    this.checkIfFrameIsOver();
     this.currentTurn += 1;
   };
 };

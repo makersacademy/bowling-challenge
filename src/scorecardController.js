@@ -1,7 +1,6 @@
 $('document').ready(function() {
 
   var scorecard = new Scorecard(Frame);
-  updateButtons();
 
   $('.bowl').click(function() {
     var pins = parseInt($(this).attr("value"));
@@ -11,18 +10,18 @@ $('document').ready(function() {
   });
 
   function updateButtons() {
-    // var limit = scorecard.frameRecord[scorecard.getCurrentFrame()].firstBowl;
-    // if (limit === null) {
-    //   limit = 10;
-    // } else {
-    //   limit = 10 - limit
-    // }
 
-    // for (var i = 1; i <= limit; i++) {
-    //   $("#buttons").append('<li><a href="#" class="bowl" value="' + i + '">' + i + '</a></li>');
-    // };
+    var limit = scorecard.frameRecord[scorecard.getCurrentFrame()].firstBowl;
 
-    // console.log(limit)
+    if (limit === null) {
+      $('#buttons > li').show();
+    } else {
+      for (var i = 10; i >= (10 - limit); i--) {
+        $('#buttons > li').eq(i).hide();
+      };
+    }
+
+    console.log(limit)
 
   };
 

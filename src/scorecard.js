@@ -18,14 +18,14 @@ Scorecard.prototype.updateTotal = function() {
 };
 
 Scorecard.prototype.bowl = function(pinsKnockedOver) {
-  if (this.currentTurn === 20 && this.totals[9] === 10) {
-    this.totals[9] += pinsKnockedOver;
+  if (this.currentTurn === 20 && this.totals[this.getCurrentFrame()] === 10) {
+    this.totals[this.getCurrentFrame()] += pinsKnockedOver;
     if (this.frameRecord[this.getCurrentFrame() - 1].strike === true) {
       this.totals[this.getCurrentFrame() - 1] += pinsKnockedOver;
     }
     this.currentTurn ++
   } else if (this.currentTurn === 21 && this.frameRecord[this.getCurrentFrame()].strike === true) {
-    this.totals[9] += pinsKnockedOver;
+    this.totals[this.getCurrentFrame()] += pinsKnockedOver;
     this.currentTurn ++
   } else if (this.currentTurn < this.maxTurns) {
     if (this.checkEven(this.currentTurn) === true && pinsKnockedOver === 10) this.currentTurn +=1;

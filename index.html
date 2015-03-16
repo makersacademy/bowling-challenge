@@ -11,15 +11,15 @@
 
 <header>
   <h1>Barney&#39;s Bowlarama</h1>
-  <button onclick="Score()">Start Game</button>
+  <button id="startGame" onclick="startGame()">Start Game</button>
 </header>
 
 
 <body>
   <form>
-    <p>Roll One:<input type="text" name="rollOne"></p>
-    <p>Roll Two:<input type="text" name="rollTwo"></p>
-    <button onclick="setRolls()">Submit</button>
+    <p>Roll One:<input id="rollOne" type="text" name="rollOne"></p>
+    <p>Roll Two:<input id="rollTwo" type="text" name="rollTwo"></p>
+    <input type="submit" onclick="setRoll()">Submit</button>
   </form>
 
 
@@ -28,10 +28,25 @@
 <script src="js/tenPin.js"></script>
 <script src="js/roll.js"></script>
 <script>
+
+  function startGame() {
+    Session("game") = Score()
+  }
+$("#startGame").on('',function(e) {
+  e.preventDefault();
+
+})
+
   var Score = function() {
     tenPin = new TenPin(Frame)
     roll1 = new Roll;
     roll2 = new Roll;
+  };
+
+  function setRoll(e) {
+    e.preventDefault();
+    roll1.setPinsHit(document.getElementById("rollOne").value)
+    roll2.setPinsHit(document.getElementById("rollTwo").value)
   };
 </script>
 

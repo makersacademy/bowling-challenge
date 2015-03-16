@@ -58,13 +58,13 @@ describe('TenPin', function() {
       //trouble setting a spyOn to see that an object in the framesCreated array was alled. Any pointers would be great
       spyOn(frame, 'setRollOneScore')
       tenP.frameFirstRoll(roll1)
-      expect(frame.setRollOneScore()).toHaveBeenCalled()
+      expect(frame.setRollOneScore).toHaveBeenCalled()
     });
 
     it('Scores the second roll of 2 for the frame 1', function() {
       spyOn(frame, 'setRollTwoScore')
       tenP.frameSecondRoll(roll2)
-      expect(frame.setRollTwoScore()).toHaveBeenCalled()
+      expect(frame.setRollTwoScore).toHaveBeenCalled()
     });
 
     it('Sets to the current frame after the second roll to the next frame', function() {
@@ -92,7 +92,7 @@ describe('TenPin', function() {
       spyOn(roll2, 'getPinsHit').and.returnValue(6)
       spyOn(tenP, 'playSpare')
       tenP.playFrame(roll1, roll2)
-      expect(tenP.playSpare()).toHaveBeenCalled()
+      expect(tenP.playSpare).toHaveBeenCalled()
     });
 
   });
@@ -103,8 +103,8 @@ describe('TenPin', function() {
       spyOn(tenP, 'rollTwoUpdate')
       spyOn(tenP, 'bonusRollUpdate')
       tenP.updateScores()
-      expect(tenP.rollTwoUpdate()).toHaveBeenCalled()
-      expect(tenP.bonusRollUpdate()).toHaveBeenCalled()
+      expect(tenP.rollTwoUpdate).toHaveBeenCalled()
+      expect(tenP.bonusRollUpdate).toHaveBeenCalled()
     });
 
   });
@@ -119,7 +119,7 @@ describe('TenPin', function() {
     it('Scores the first roll as 10', function() {
       spyOn(tenP, 'frameFirstRoll')
       tenP.playStrike(roll1)
-      expect(tenP.frameFirstRoll(roll1)).toHaveBeenCalled()
+      expect(tenP.frameFirstRoll).toHaveBeenCalled()
     });
 
      it('Creates and moves to the next frame', function() {

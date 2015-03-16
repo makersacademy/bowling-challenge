@@ -18,7 +18,6 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 ###To Do:
 
-- Implement 10th frame strike and spare scoring
 - Fix certain style features:
     - remove "pinsHit" from input field
     - set restrictions on input field (currently any value can be inputted)

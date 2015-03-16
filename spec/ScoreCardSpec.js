@@ -51,9 +51,17 @@ describe("ScoreCard", function() {
       expect(scorecard.currentFrame).toEqual(2);
     });
 
+    it("should total up the game's score", function(){
+      scorecard.hitPins(10);
+      scorecard.hitPins(10);
+      scorecard.tallyFrameScore();
+      expect(scorecard.tallyTotalScore()).toEqual(30);
+    });
+
     it("should know that the game is over", function(){
       scorecard.currentFrame = 10;
-      scorecard.changeFrame()
+      scorecard.hitPins(4);
+      scorecard.hitPins(4);
       expect(scorecard.isGameOver).toEqual(true);
     });
 
@@ -87,12 +95,71 @@ describe("ScoreCard", function() {
       scorecard.tallyFrameScore();
       expect(scorecard.frames[1].score).toEqual(20);
     });
+  });
 
-    it("should total up the game's score", function(){
+  describe('10th frame scoring', function(){
+
+    it("should know that the game is not over if a stike occured in the 10th frame", function(){
+      scorecard.currentFrame = 10;
+      scorecard.hitPins(10);
+      expect(scorecard.isGameOver).toEqual(false);
+    });
+
+    it("should know that the game is not over if two stikes occured in the 10th frame", function(){
+      scorecard.currentFrame = 10;
+      scorecard.hitPins(10);
+      scorecard.hitPins(10);
+      expect(scorecard.isGameOver).toEqual(false);
+    });
+
+    it("should know that the game is not over if a spare occured in the 10th frame", function(){
+      scorecard.currentFrame = 10;
+      scorecard.hitPins(5);
+      scorecard.hitPins(5);
+      expect(scorecard.isGameOver).toEqual(false);
+    });
+
+    it("should konw the game is over after three strikes in the 10th frame", function(){
+      scorecard.currentFrame = 10;
+      scorecard.hitPins(10);
+      scorecard.hitPins(10);
+      scorecard.hitPins(10);
+      expect(scorecard.isGameOver).toEqual(true);
+    });
+
+    it("should know the game is over after a spare in the 10th and then one extra ball is thrown", function(){
+      scorecard.currentFrame = 10;
+      scorecard.hitPins(5);
+      scorecard.hitPins(5);
+      scorecard.hitPins(10);
+      expect(scorecard.isGameOver).toEqual(true);
+    });
+
+    it("should know the game is over after a strike in the 10th and then a spare is thrown", function(){
+      scorecard.currentFrame = 10;
+      scorecard.hitPins(10);
+      scorecard.hitPins(5);
+      scorecard.hitPins(5);
+      expect(scorecard.isGameOver).toEqual(true);
+    });
+
+    it("should know a perfect game is 300 and the game is over", function(){
+      scorecard.hitPins(10);
+      scorecard.hitPins(10);
+      scorecard.hitPins(10);
+      scorecard.hitPins(10);
+      scorecard.hitPins(10);
+      scorecard.hitPins(10);
+      scorecard.hitPins(10);
+      scorecard.hitPins(10);
+      scorecard.hitPins(10);
+      scorecard.hitPins(10);
       scorecard.hitPins(10);
       scorecard.hitPins(10);
       scorecard.tallyFrameScore();
-      expect(scorecard.tallyTotalScore()).toEqual(30);
+      scorecard.tallyTotalScore();
+      expect(scorecard.score).toEqual(300);
+      expect(scorecard.isGameOver).toEqual(true);
     });
 
   });

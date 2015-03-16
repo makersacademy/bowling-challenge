@@ -1,0 +1,56 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>Bowling ScoreCard</title>
+    <meta charset='utf8'>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+    <body background="images/bowling.jpg">
+  </head>
+
+  <body>
+
+    <h2> Let's Play 10-Pin Bowling! </h2>
+
+    <span id='score'></span>
+
+    <table class="center">
+      <tr>
+        <th>Frame 1</th>
+        <th>Frame 2</th> 
+        <th>Frame 3</th>
+        <th>Frame 4</th>
+        <th>Frame 5</th> 
+        <th>Frame 6</th>
+        <th>Frame 7</th>
+        <th>Frame 8</th> 
+        <th>Frame 9</th>
+        <th>Frame 10</th>
+      </tr>
+      <tr>
+        <td id="frame1"></td>
+        <td id="frame2"></td>
+        <td id="frame3"></td>
+        <td id="frame4"></td>
+        <td id="frame5"></td>
+        <td id="frame6"></td>
+        <td id="frame7"></td>
+        <td id="frame8"></td>
+        <td id="frame9"></td>
+        <td id="frame10"></td>
+      </tr>   
+    </table>
+
+
+    <p>
+      <a href="#" class='HitPins button'>Hit Pins!</a>
+      <input id="userPins" type="text" value="pinsHit"/>
+    </p>
+
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src='src/ScoreCard.js'></script>
+    <script src='src/interface.js'></script>
+
+  </body>
+</html>

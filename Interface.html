@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>Bowling Scoreboard</title>
+    <link rel="stylesheet" href="css/interface_styling.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <img src="images/bowling-pins.jpg" height="210" width="375" >
+    </header>
+      <div class="separator">
+        <h1>10 Pin Bowling Scoreboard</h1>
+      </div>
+
+
+      <h2> Please click on the number of pins that have been knocked out:</h2>
+        <button id="button-1" class="button" value="1"> 1 </button>
+        <button id="button-2" class="button"> 2 </button>
+        <button id="button-3" class="button"> 3 </button>
+        <button id="button-4" class="button"> 4 </button>
+        <button id="button-5" class="button"> 5 </button>
+        <button id="button-6" class="button" value="6"> 6 </button>
+        <button id="button-7" class="button"> 7 </button>
+        <button id="button-8" class="button"> 8 </button>
+        <button id="button-9" class="button"> 9 </button>
+        <button id="button-10" class="button"> 10 </button>
+      <br>
+      <br>
+       <table border="1" style="width:100%">
+      <tr class="topline">
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>TOTAL</td>
+      </tr>
+      <tr class="bottomline">
+        <td class="frame-1"></td>
+        <td class="frame-2"></td>
+        <td class="frame-3"></td>
+        <td class="frame-4"></td>
+        <td class="frame-5"></td>
+        <td class="frame-6"></td>
+        <td class="frame-7"></td>
+        <td class="frame-8"></td>
+        <td class="frame-9"></td>
+        <td class="frame-10"></td>
+        <td class="frame-total"></td>
+      </tr>
+    </table>
+
+    <script type="text/javascript" src="src/Game.js"></script>
+    <script type="text/javascript" src="src/Interface.js"></script>
+  </body>
+</html>

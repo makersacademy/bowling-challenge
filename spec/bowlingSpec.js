@@ -24,4 +24,12 @@ describe('Bowling', function() {
     expect(bowling.currentScore()).toEqual(13);
   });
 
+  it('should roll a strike', function() {
+    bowling.roll(10);
+    bowling.roll(4);
+    bowling.roll(3);
+    bowling.gameRolls(0, 16);
+    expect(bowling.currentScore()).toEqual(24);
+  });
+
 });

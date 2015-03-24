@@ -6,7 +6,7 @@ Makers Academy Week 5 Challenge
 Requirements
 ----
 -  [x] has 10 frames
--  [x] after a spare the next one roll is added
+-  [x] after a spare the next roll is added
 -  [x] can score a gutter game
 -  [x] a strike waits for next score to be tallied
 -  [x] a spare waits for next score to be tallied

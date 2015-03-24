@@ -1,10 +1,21 @@
 var Bowling = function() {
-  this.currentScore = 0;
+  this.rolls = [];
 };
 
-Bowling.prototype.roll = function(number, pins) {
-  var i;
-  for (i = 0; i < number; i++) {
+Bowling.prototype.gameRolls = function(pins, number) {
+  for ( var i = 0; i < number; i++) {
     this.roll(pins);
   }
+};
+
+Bowling.prototype.roll = function(pins) {
+  this.rolls.push(pins);
+};
+
+Bowling.prototype.currentScore = function() {
+  var score = 0;
+  for (var i = 0; i < 20; i++) {
+    score += this.rolls[i];
+  }
+  return score;
 };

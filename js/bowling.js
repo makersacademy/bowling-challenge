@@ -14,8 +14,15 @@ Bowling.prototype.roll = function(pins) {
 
 Bowling.prototype.currentScore = function() {
   var score = 0;
-  for (var i = 0; i < 20; i++) {
-    score += this.rolls[i];
+  var rollNumber = 0;
+
+  for (var frameNumber = 0; frameNumber < 10; frameNumber++) {
+    if(this.rolls[rollNumber] + this.rolls[rollNumber + 1] == 10) {
+      score += this.rolls[rollNumber] + this.rolls[rollNumber + 1] + this.rolls[rollNumber + 2];
+    } else {
+      score += this.rolls[rollNumber] + this.rolls[rollNumber + 1];
+    }
+    rollNumber += 2;
   }
   return score;
 };

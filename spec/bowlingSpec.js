@@ -32,4 +32,9 @@ describe('Bowling', function() {
     expect(bowling.currentScore()).toEqual(24);
   });
 
+  it('should roll a perfect score', function() {
+    bowling.gameRolls(10, 12);
+    expect(bowling.currentScore()).toEqual(300);
+  });
+
 });

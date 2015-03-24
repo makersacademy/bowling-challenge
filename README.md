@@ -1,17 +1,24 @@
-Bowling Score Card
+Bowling Score Card    [![Build Status](https://travis-ci.org/kevinlanzon/bowling-challenge.svg?branch=master)](https://travis-ci.org/kevinlanzon/bowling-challenge)
 ==========
 
 Makers Academy Week 5 Challenge
 
-Task (incomplete)
+Requirements
 ----
-Count and sum the scores of a bowling game for one player (in JavaScript).
-
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+-  [x] has 10 frames
+-  [x] after a spare the next one roll is added
+-  [x] can score a gutter game
+-  [x] a strike waits for next score to be tallied
+-  [x] a spare waits for next score to be tallied
+-  [x] after a strike the next two rolls are added
+-  [x] after a spare the next one roll is added
+-  [x] two strikes in a row
+-  [x] two spares in a row
+-  [x] can score a perfect game (300 points)
 
 Technologies used
 ----
-- Javascript
+- JavaScript
 - Jasmine
 - Git
 - Sublime Text

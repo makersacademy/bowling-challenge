@@ -5,6 +5,6 @@ before_install:
 - "npm install grunt-cli"
 - "npm install grunt"
 - "npm install grunt-contrib-jasmine"
-- "echo \"module.exports=function(grunt){grunt.initConfig({jasmine:{src:'src/**/*.js',options:{specs:'spec/**/*.js'}}});grunt.loadNpmTasks('grunt-contrib-jasmine');grunt.registerTask('default',['jasmine']);};\" > Gruntfile.js"
+- "echo \"module.exports=function(grunt){grunt.initConfig({jasmine:{src:'js/**/*.js',options:{specs:'spec/**/*.js'}}});grunt.loadNpmTasks('grunt-contrib-jasmine');grunt.registerTask('default',['jasmine']);};\" > Gruntfile.js"
 script:
 - "grunt"

@@ -1,11 +1,13 @@
 var Bowling = function(){
   this._score = 0;
   this._frame = 1;
+  this._rollScore = 0;
   this._rollsThisFrame = 0;
 };
 
 Bowling.prototype.roll = function(rollScore){
   if (rollScore <= 10){
+    this._rollScore = rollScore;
     this._score += rollScore;
     this._rollsThisFrame ++;
     this.rollRegistered();
@@ -23,7 +25,9 @@ Bowling.prototype.frame = function(){
 };
 
 Bowling.prototype.rollRegistered = function(){
-  if (this._rollsThisFrame < 2){
+  if (this._rollScore === 10){
+    this._frame ++;
+  } else if (this._rollsThisFrame < 2){
     this._rollsThisFrame ++;
   } else {
     this._frame ++;

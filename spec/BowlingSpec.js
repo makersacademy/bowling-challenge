@@ -15,9 +15,14 @@ describe('Bowling scoresheet', function(){
     expect(function(){bowling.roll(11)}).toThrow('Illegal score');
   });
 
-  it('can know it has incremented frame', function(){
+  it('can increment frame', function(){
     bowling.roll(5);
     bowling.roll(5);
+    expect(bowling.frame()).toBe(2);
+  });
+
+  it('can increment frame on a strike', function(){
+    bowling.roll(10);
     expect(bowling.frame()).toBe(2);
   });
 

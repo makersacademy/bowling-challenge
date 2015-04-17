@@ -6,6 +6,6 @@ describe('BowlingInterface',function(){
   });
 
   it('starts with a zero score',function(){
-    expect('#score').toHaveContent('0');
+    expect('#score').toContainText('0');
   });
 });

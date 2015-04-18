@@ -18,15 +18,12 @@ Game.prototype.score = function() {
     total.push(frames[i].knockedDown());
 
     if (frames[i].isSpare()) {
-      console.log("SPARE");
       if (frames[i +1]) total.push(frames[i +1].bowled[0]);
     } else if (frames[i].isStrike() && i === 9) {
-      console.log("final frame");
       total.push(frames[10].bowled[0]);
       if (frames[10].bowled[1])
         total.push(frames[10].bowled[1]);
     } else if (frames[i].isStrike() && frames[i + 1].isStrike()) {
-        console.log("strike");
         total.push(frames[i + 1].bowled[0]);
         total.push(frames[i + 2].bowled[0]);
     } else if ( frames[i].isStrike() ) {

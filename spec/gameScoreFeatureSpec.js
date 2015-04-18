@@ -1,14 +1,50 @@
 describe("FEATURE: Game", function() {
 
-  it("totals ten frames with bonuses", function() {
+  it("totals the sample game provided", function() {
     game = new Game()
-    for (i = 1; i < 11; i++) {
-      eval("frame" + i + "= new Frame()");
-      eval("frame" + i + ".add_bowl(1)");
-      eval("frame" + i + ".add_bowl(0)");
-    };
-    game.addFrames(frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10);
-    expect(game.score()).toEqual(10);
+    frame1 = new Frame();
+    frame1.add_bowl(1);
+    frame1.add_bowl(4);
+
+    frame2 = new Frame();
+    frame2.add_bowl(4);
+    frame2.add_bowl(5);
+
+    frame3 = new Frame();
+    frame3.add_bowl(6);
+    frame3.add_bowl(4);
+
+    frame4 = new Frame();
+    frame4.add_bowl(5);
+    frame4.add_bowl(5);
+
+    frame5 = new Frame();
+    frame5.add_bowl(10);
+
+    frame6 = new Frame();
+    frame6.add_bowl(0);
+    frame6.add_bowl(1);
+
+    frame7 = new Frame();
+    frame7.add_bowl(7);
+    frame7.add_bowl(3);
+
+    frame8 = new Frame();
+    frame8.add_bowl(6);
+    frame8.add_bowl(4);
+
+    frame9 = new Frame();
+    frame9.add_bowl(10);
+
+    frame10 = new Frame();
+    frame10.add_bowl(2);
+    frame10.add_bowl(8);
+
+    bonuses = new Frame();
+    bonuses.add_bowl(6);
+
+    game.addFrames(frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10, bonuses);
+    expect(game.score()).toEqual(133);
   });
 
 });

@@ -1,30 +1,5 @@
 describe('Bowling scoresheet', function(){
 
-  describe('can increment frame', function(){
-
-    var bowling;
-    beforeEach(function(){
-      bowling = new Bowling
-    });
-
-    it('with a non-strike/non-spare', function(){
-      bowling.roll(5);
-      bowling.roll(2);
-      expect(bowling.frame()).toBe(2);
-    });
-
-    it('with a strike', function(){
-      bowling.roll(10);
-      expect(bowling.frame()).toBe(2);
-    });
-
-    it('with a spare', function(){
-      bowling.roll(5);
-      bowling.roll(5);
-      expect(bowling.frame()).toBe(2);
-    });
-  });
-
   describe('knows the cumulative score', function(){
 
     var bowling;
@@ -32,10 +7,21 @@ describe('Bowling scoresheet', function(){
       bowling = new Bowling
     });
 
-    it('from a single roll', function(){
-      bowling.roll(5);
-      expect(bowling.cumulativeScore()).toBe(5);
+    function helper(rolls, pinsEachRoll){
+      for (var i = 0; i < rolls; i ++){
+        bowling.roll(pinsEachRoll);
+      };
+    };
+
+    it('a', function(){
+      helper(20, 4);
+      expect(bowling.cumulativeScore()).toBe(80);
     });
+
+    // it('from a single roll', function(){
+    //   bowling.roll(5);
+    //   expect(bowling.cumulativeScore()).toBe(5);
+    // });
 
     it('from two non-spare/non-strike rolls', function(){
       bowling.roll(5);
@@ -62,23 +48,4 @@ describe('Bowling scoresheet', function(){
       expect(function(){bowling.roll(11)}).toThrow('Illegal score');
     });
   });
-
-  // describe('knows the frame score', function(){
-  //
-  //   var bowling;
-  //   beforeEach(function(){
-  //     bowling = new Bowling
-  //   });
-  //
-  //   it('from a single roll', function(){
-  //     bowling.roll(5);
-  //     expect(bowling.frameScore(1)).toBe(5);
-  //   });
-  //
-  //   it('from two non-spare/non-strike rolls', function(){
-  //     bowling.roll(5);
-  //     bowling.roll(2);
-  //     expect()
-  //   });
-  // });
 });

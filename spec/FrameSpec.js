@@ -13,11 +13,14 @@ describe('Frame', function() {
   // outputs is framescore(array) and score(sum)
 
   it('starts with a score of 0', function(){
-    expect(frame.score()).toEqual(0);
+    expect(frame.score).toEqual(0);
   });
 
-  xit('knows which frame we are at when playing', function(){
-
+  it('knows which frame we are at when playing', function(){
+    expect(frame.number).toEqual(1);
+    frame.rollBall();
+    frame.rollBall();
+    expect(frame.number).toEqual(3);  
   });
 
   xit('knows that the game ends after the 10th frame is done playing', function(){

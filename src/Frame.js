@@ -5,7 +5,7 @@ var Frame = function(){
 
 
 Frame.prototype.score = function(score) {
-  return score;
+  return this.score;
 };
 
 // Frame.prototype.number = function(number) {
@@ -13,5 +13,8 @@ Frame.prototype.score = function(score) {
 // };
 
 Frame.prototype.rollBall = function(){
+if (this.number >= 11) {
+  throw new Error('The game is over');
+  };
   return this.number+=1;
 };

@@ -23,8 +23,11 @@ describe('Frame', function() {
     expect(frame.number).toEqual(3);  
   });
 
-  xit('knows that the game ends after the 10th frame is done playing', function(){
-
+  it('knows that the game ends after the 10th frame is done playing', function(){
+    for (x=0; x < 10; x++){
+    frame.rollBall();
+    };
+    expect(function() { frame.rollBall() }).toThrow(new Error('The game is over'));
   });
 
   xit('writes the score of x+y(+z) in the framescore if the sum differs from 10', function(){

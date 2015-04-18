@@ -1,9 +1,9 @@
-describe('Frame', function() {
+describe('Game', function() {
 
-  var frame;
+  var game;
 
   beforeEach(function() {
-    frame = new Frame();
+    game = new Game();
   });
 
   // inputs and outputs
@@ -13,25 +13,32 @@ describe('Frame', function() {
   // outputs is framescore(array) and score(sum)
 
   it('starts with a score of 0', function(){
-    expect(frame.score).toEqual(0);
+    expect(game.score).toEqual(0);
+  });
+
+  it('has a framescore sheet to enter 10 frames results', function(){
+    expect(game.framescore).toEqual([]);
   });
 
   it('knows which frame we are at when playing', function(){
-    expect(frame.number).toEqual(1);
-    frame.rollBall();
-    frame.rollBall();
-    expect(frame.number).toEqual(3);  
+    expect(game.number).toEqual(1);
+    game.rollBall();
+    game.rollBall();
+    expect(game.number).toEqual(3);  
   });
 
   it('knows that the game ends after the 10th frame is done playing', function(){
     for (x=0; x < 10; x++){
-    frame.rollBall();
+    game.rollBall();
     };
-    expect(function() { frame.rollBall() }).toThrow(new Error('The game is over'));
+    expect(function() { game.rollBall() }).toThrow(new Error('The game is over'));
   });
 
-  xit('writes the score of x+y(+z) in the framescore if the sum differs from 10', function(){
-
+  it('writes the score of x+y(+z) in the framescore if the sum differs from 10', function(){
+    game.rollBall(3, 5);
+    game.rollBall(1, 0);
+    game.rollBall(10, 0)
+    expect(game.framescore).toEqual([8, 1]);
   });
 
   xit('returns STRIKE! if we knock 10 pins in the first shot', function() {

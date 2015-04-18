@@ -35,4 +35,282 @@ describe('Frame', function(){
     expect(frameOneInfo[2]).toEqual('spare');
   });
 
+  // NOW JUST REPEATING UNTIL FRAME 10, HOW DO I DRY IT OUT?!
+
+  it('can record a frame two', function(){
+    expect(frame.frameTwo).toBeDefined();
+  });
+
+  it('frameTwo can take scores', function(){
+    frame.frameTwo(5, 5);
+    expect(frameTwoInfo[0]).toEqual(5);
+  });
+
+  it('frameTwo can also record a strike', function(){
+    frame.frameTwo(10, 0);
+    expect(frameTwoInfo[2]).toEqual('strike');
+  });
+
+  it('frameTwo does not record a strike if the first score is not a 10', function(){
+    frame.frameTwo(5, 5);
+    expect(frameTwoInfo[2]).not.toEqual('strike');
+  });
+
+  it('frameTwo records a strike if the first score is a 10', function(){
+    frame.frameTwo(10, 0);
+    expect(frameTwoInfo[2]).toEqual('strike');
+  });
+
+  it('frameTwo can record a spare if the first score is not 10 but the total is 10', function(){
+    frame.frameTwo(1, 9);
+    expect(frameTwoInfo[2]).toEqual('spare');
+  });
+
+
+  it('can record a frame three', function(){
+    expect(frame.frameThree).toBeDefined();
+  });
+
+  it('frameThree can take scores', function(){
+    frame.frameThree(5, 5);
+    expect(frameThreeInfo[0]).toEqual(5);
+  });
+
+  it('frameThree can also record a strike', function(){
+    frame.frameThree(10, 0);
+    expect(frameThreeInfo[2]).toEqual('strike');
+  });
+
+  it('frameThree does not record a strike if the first score is not a 10', function(){
+    frame.frameThree(5, 5);
+    expect(frameThreeInfo[2]).not.toEqual('strike');
+  });
+
+  it('frameThree records a strike if the first score is a 10', function(){
+    frame.frameThree(10, 0);
+    expect(frameThreeInfo[2]).toEqual('strike');
+  });
+
+  it('frameThree can record a spare if the first score is not 10 but the total is 10', function(){
+    frame.frameThree(1, 9);
+    expect(frameThreeInfo[2]).toEqual('spare');
+  });
+
+
+  it('can record a frame four', function(){
+    expect(frame.frameFour).toBeDefined();
+  });
+
+  it('frameFour can take scores', function(){
+    frame.frameFour(5, 5);
+    expect(frameFourInfo[0]).toEqual(5);
+  });
+
+  it('frameFour can also record a strike', function(){
+    frame.frameFour(10, 0);
+    expect(frameFourInfo[2]).toEqual('strike');
+  });
+
+  it('frameFour does not record a strike if the first score is not a 10', function(){
+    frame.frameFour(5, 5);
+    expect(frameFourInfo[2]).not.toEqual('strike');
+  });
+
+  it('frameFour records a strike if the first score is a 10', function(){
+    frame.frameFour(10, 0);
+    expect(frameFourInfo[2]).toEqual('strike');
+  });
+
+  it('frameFour can record a spare if the first score is not 10 but the total is 10', function(){
+    frame.frameFour(1, 9);
+    expect(frameFourInfo[2]).toEqual('spare');
+  });
+
+
+  it('can record a frame five', function(){
+    expect(frame.frameFive).toBeDefined();
+  });
+
+  it('frameFive can take scores', function(){
+    frame.frameFive(5, 5);
+    expect(frameFiveInfo[0]).toEqual(5);
+  });
+
+  it('frameFive can also record a strike', function(){
+    frame.frameFive(10, 0);
+    expect(frameFiveInfo[2]).toEqual('strike');
+  });
+
+  it('frameFive does not record a strike if the first score is not a 10', function(){
+    frame.frameFive(5, 5);
+    expect(frameFiveInfo[2]).not.toEqual('strike');
+  });
+
+  it('frameFive records a strike if the first score is a 10', function(){
+    frame.frameFive(10, 0);
+    expect(frameFiveInfo[2]).toEqual('strike');
+  });
+
+  it('frameFive can record a spare if the first score is not 10 but the total is 10', function(){
+    frame.frameFive(1, 9);
+    expect(frameFiveInfo[2]).toEqual('spare');
+  });
+
+
+
+  it('can record a frame six', function(){
+    expect(frame.frameSix).toBeDefined();
+  });
+
+  it('frameSix can take scores', function(){
+    frame.frameSix(5, 5);
+    expect(frameSixInfo[0]).toEqual(5);
+  });
+
+  it('frameSix can also record a strike', function(){
+    frame.frameSix(10, 0);
+    expect(frameSixInfo[2]).toEqual('strike');
+  });
+
+  it('frameSix does not record a strike if the first score is not a 10', function(){
+    frame.frameSix(5, 5);
+    expect(frameSixInfo[2]).not.toEqual('strike');
+  });
+
+  it('frameSix records a strike if the first score is a 10', function(){
+    frame.frameSix(10, 0);
+    expect(frameSixInfo[2]).toEqual('strike');
+  });
+
+  it('frameSix can record a spare if the first score is not 10 but the total is 10', function(){
+    frame.frameSix(1, 9);
+    expect(frameSixInfo[2]).toEqual('spare');
+  });
+
+
+  it('can record a frame seven', function(){
+    expect(frame.frameSeven).toBeDefined();
+  });
+
+  it('frameSeven can take scores', function(){
+    frame.frameSeven(5, 5);
+    expect(frameSevenInfo[0]).toEqual(5);
+  });
+
+  it('frameSeven can also record a strike', function(){
+    frame.frameSeven(10, 0);
+    expect(frameSevenInfo[2]).toEqual('strike');
+  });
+
+  it('frameSeven does not record a strike if the first score is not a 10', function(){
+    frame.frameSeven(5, 5);
+    expect(frameSevenInfo[2]).not.toEqual('strike');
+  });
+
+  it('frameSeven records a strike if the first score is a 10', function(){
+    frame.frameSeven(10, 0);
+    expect(frameSevenInfo[2]).toEqual('strike');
+  });
+
+  it('frameSeven can record a spare if the first score is not 10 but the total is 10', function(){
+    frame.frameSeven(1, 9);
+    expect(frameSevenInfo[2]).toEqual('spare');
+  });
+
+
+
+  it('can record a frame eight', function(){
+    expect(frame.frameEight).toBeDefined();
+  });
+
+  it('frameEight can take scores', function(){
+    frame.frameEight(5, 5);
+    expect(frameEightInfo[0]).toEqual(5);
+  });
+
+  it('frameEight can also record a strike', function(){
+    frame.frameEight(10, 0);
+    expect(frameEightInfo[2]).toEqual('strike');
+  });
+
+  it('frameEight does not record a strike if the first score is not a 10', function(){
+    frame.frameEight(5, 5);
+    expect(frameEightInfo[2]).not.toEqual('strike');
+  });
+
+  it('frameEight records a strike if the first score is a 10', function(){
+    frame.frameEight(10, 0);
+    expect(frameEightInfo[2]).toEqual('strike');
+  });
+
+  it('frameEight can record a spare if the first score is not 10 but the total is 10', function(){
+    frame.frameEight(1, 9);
+    expect(frameEightInfo[2]).toEqual('spare');
+  });
+
+
+  it('can record a frame nine', function(){
+    expect(frame.frameNine).toBeDefined();
+  });
+
+  it('frameNine can take scores', function(){
+    frame.frameNine(5, 5);
+    expect(frameNineInfo[0]).toEqual(5);
+  });
+
+  it('frameNine can also record a strike', function(){
+    frame.frameNine(10, 0);
+    expect(frameNineInfo[2]).toEqual('strike');
+  });
+
+  it('frameNine does not record a strike if the first score is not a 10', function(){
+    frame.frameNine(5, 5);
+    expect(frameNineInfo[2]).not.toEqual('strike');
+  });
+
+  it('frameNine records a strike if the first score is a 10', function(){
+    frame.frameNine(10, 0);
+    expect(frameNineInfo[2]).toEqual('strike');
+  });
+
+  it('frameNine can record a spare if the first score is not 10 but the total is 10', function(){
+    frame.frameNine(1, 9);
+    expect(frameNineInfo[2]).toEqual('spare');
+  });
+
+
+  it('can record a frame ten', function(){
+    expect(frame.frameTen).toBeDefined();
+  });
+
+  it('frameTen can take scores', function(){
+    frame.frameTen(5, 5);
+    expect(frameTenInfo[0]).toEqual(5);
+  });
+
+  it('frameTen can also record a strike', function(){
+    frame.frameTen(10, 0);
+    expect(frameTenInfo[2]).toEqual('strike');
+  });
+
+  it('frameTen does not record a strike if the first score is not a 10', function(){
+    frame.frameTen(5, 5);
+    expect(frameTenInfo[2]).not.toEqual('strike');
+  });
+
+  it('frameTen records a strike if the first score is a 10', function(){
+    frame.frameTen(10, 0);
+    expect(frameTenInfo[2]).toEqual('strike');
+  });
+
+  it('frameTen can record a spare if the first score is not 10 but the total is 10', function(){
+    frame.frameTen(1, 9);
+    expect(frameTenInfo[2]).toEqual('spare');
+  });
+
+  it('frameTen can accept a third score', function(){
+    frame.frameTen(10, 10, 5);
+    expect(frameTenInfo[3]).toEqual(5);
+  });
+
 });

@@ -15,15 +15,15 @@ Bowling.prototype.cumulativeScore = function(){
   var score = this._cumulativeScore;
 
   function frameTotal(){
-    return rolls[frameStart] + rolls[frameStart + 1];
+    return rolls[frameStart] + rolls[frameStart + 1] || 0;
   };
 
   function spareBonus() {
-    return rolls[frameStart + 2];
+    return rolls[frameStart + 2] || 0;
   };
 
   function strikeBonus() {
-    return rolls[frameStart + 1] + rolls[frameStart + 2];
+    return rolls[frameStart + 1] + rolls[frameStart + 2] || 0;
   };
 
   for (var i = 0; i < 10; i ++){
@@ -38,7 +38,7 @@ Bowling.prototype.cumulativeScore = function(){
       frameStart += 2;
     };
   };
-  console.log('a ' + score);
+  console.log('---' + score);
 
   return score;
 };

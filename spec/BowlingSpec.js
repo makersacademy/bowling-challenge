@@ -1,6 +1,6 @@
 describe('Bowling scoresheet', function(){
 
-  describe('knows the cumulative score', function(){
+  describe('knows the cumulative score for', function(){
 
     var bowling;
     beforeEach(function(){
@@ -13,9 +13,19 @@ describe('Bowling scoresheet', function(){
       };
     };
 
-    it('a', function(){
+    it('a typical game', function(){
       helper(20, 4);
       expect(bowling.cumulativeScore()).toBe(80);
+    });
+
+    it('a gutter game', function(){
+      helper(20, 0);
+      expect(bowling.cumulativeScore()).toBe(0);
+    });
+
+    it('a perfect game', function(){
+      helper(21, 10);
+      expect(bowling.cumulativeScore()).toBe(300);
     });
 
     // it('from a single roll', function(){

@@ -18,6 +18,12 @@ Development Blog:
 - [Day 1]()
 - [Day 2]()
 
+How To Run:
+-----------
+- You can follow the Heroku link at the top of this Readme for a live version of this app
+- You can run the tests locally by typing `open SpecRunner.html` in the application's root folder
+- You can launch a local version of the app by typing `ruby server.rb` in the application's root folder
+
 Tests:
 ------
 ```sh

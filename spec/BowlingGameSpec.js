@@ -74,7 +74,12 @@ describe("BowlingGame", function() {
       });
 
       it('game does not take strike bonus after two rolls', function() {
-        //code
+        game.enterScore(10);
+        game.enterScore(5);
+        game.enterScore(3);
+        expect(game.currentFrame).toEqual(3);
+        expect(game.takingStrikeBonus).toEqual(false);
+        expect(game.strikeFrame).toEqual(null);
       });
 
 

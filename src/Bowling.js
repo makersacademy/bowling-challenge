@@ -11,32 +11,34 @@ Bowling.prototype.roll = function(rollScore){
 
 Bowling.prototype.cumulativeScore = function(){
   var frameStart = 0;
+  var rolls = this._rolls;
+  var score = this._cumulativeScore;
 
   function frameTotal(){
-    return this._rolls[frameStart] + this._rolls[frameStart + 1];
+    return rolls[frameStart] + rolls[frameStart + 1];
   };
 
   function spareBonus() {
-    return this._rolls[frameStart + 2];
-  }
-
-  function strikeBonus() {
-    return this._rolls[frameStart + 1] + this._rolls[frameStart + 2];
-  }
-
-  for (var i = 0; i < 10; i ++){
-    if (this._rolls[frameStart] === 10){
-      this._cumulativeScore += 10 + strikeBonus();
-      frameStart ++;
-    } else if (this._rolls[frameStart] + this._rolls[frameStart + 1] === 10){
-      this._cumulativeScore += 10 + spareBonus();
-      frameStart ++;
-    } else {
-      this._cumulativeScore += frameTotal();
-      frameStart += 2;
-    };
-    console.log(this._cumulativeScore);
+    return rolls[frameStart + 2];
   };
 
-  return this._cumulativeScore;
+  function strikeBonus() {
+    return rolls[frameStart + 1] + rolls[frameStart + 2];
+  };
+
+  for (var i = 0; i < 10; i ++){
+    if (rolls[frameStart] === 10){
+      score += 10 + strikeBonus();
+      frameStart ++;
+    } else if (rolls[frameStart] + rolls[frameStart + 1] === 10){
+      score += 10 + spareBonus();
+      frameStart ++;
+    } else {
+      score += frameTotal();
+      frameStart += 2;
+    };
+  };
+  console.log('a ' + score);
+
+  return score;
 };

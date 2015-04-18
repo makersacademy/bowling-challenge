@@ -1,35 +1,34 @@
 var Bowling = function(){
-  this._score = 0;
-  this._frame = 1;
-  this._rollScore = 0;
-  this._rollsThisFrame = 0;
+  this._cumulativeScore = 0;
+
+  this._rolls = [];
+  this._scores = [];
 };
 
 Bowling.prototype.roll = function(rollScore){
-  if (rollScore <= 10){
-    this._rollScore = rollScore;
-    this._score += rollScore;
-    this._rollsThisFrame ++;
-    this.rollRegistered();
-  } else {
-    throw 'Illegal score';
-  };
+  if (rollScore > 10) throw 'Illegal score';
+  this._rolls.push(rollScore);
+  this.rollRegistered(rollScore);
 };
 
-Bowling.prototype.score = function(){
-  return this._score;
+Bowling.prototype.cumulativeScore = function(){
+  return this._cumulativeScore;
 };
 
 Bowling.prototype.frame = function(){
-  return this._frame;
+  return this._scores.length + 1;
 };
 
-Bowling.prototype.rollRegistered = function(){
-  if (this._rollScore === 10){
-    this._frame ++;
-  } else if (this._rollsThisFrame < 2){
-    this._rollsThisFrame ++;
+Bowling.prototype.rollRegistered = function(rollScore){
+  console.log(this._rolls[this._rolls.length - 1]);
+  /* not strike */
+  if (rollScore < 10){
+
+  /* spare */
+  } else if (rollScore + this._rolls[this._rolls.length] === 10){
+    this._scores.push(rollScore);
+  /* strike */
   } else {
-    this._frame ++;
+    this._scores.push(rollScore);
   };
 };

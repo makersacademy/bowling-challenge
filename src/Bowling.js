@@ -12,7 +12,14 @@ Bowling.prototype.roll = function(rollScore){
 };
 
 Bowling.prototype.cumulativeScore = function(){
-  return this._cumulativeScore;
+  // for (var i = 0; i < this._scores.length; i++) {
+  //   this._cumulativeScore += this._scores[i];
+  // };
+  // return this._cumulativeScore;
+  var total = this._scores.reduce(function(a, b) {
+    return a + b;
+  });
+  return total;
 };
 
 Bowling.prototype.frame = function(){
@@ -20,15 +27,22 @@ Bowling.prototype.frame = function(){
 };
 
 Bowling.prototype.rollRegistered = function(rollScore){
-  console.log(this._rolls[this._rolls.length - 1]);
-  /* not strike */
-  if (rollScore < 10){
-
-  /* spare */
-  } else if (rollScore + this._rolls[this._rolls.length] === 10){
-    this._scores.push(rollScore);
   /* strike */
-  } else {
+  if (rollScore === 10){
     this._scores.push(rollScore);
+  /* spare */
+  } else if (rollScore + this._scores[this._scores.length - 1] === 10){
+      this._scores[this._scores.length - 1] = 10;
+  /* not strike or spare */
+  } else if (this._scores.length > 0){
+      this._scores[this._scores.length - 1] += rollScore;
+  } else {
+      this._scores.push(rollScore);
   };
+  console.log('rollScore ' + rollScore);
+  console.log('rolls array ' + this._rolls);
+  console.log('this._scores ' + this._scores);
+  console.log('cumve ' + this.cumulativeScore());
+  console.log('this._scores.length ' + this._scores.length);
+  console.log('last score ' + this._scores[this._scores.length - 1]);
 };

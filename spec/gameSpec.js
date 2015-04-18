@@ -9,7 +9,8 @@ describe('Game', function(){
 
     inputArray = [];
     inputArray.push(roll1,roll2);
-    console.log(inputArray);
     var game = new Game(inputArray);
+
+    expect(game.output()).to equal
   });
 });

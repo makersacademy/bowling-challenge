@@ -10,10 +10,9 @@ class Roll
 end
 
 class Frame
-  attr_accessor :score, :split, :strike, :r1
+  attr_accessor :score, :split, :strike, :r1, :id
   def initialize(r1,r2)
     @r1 = r1
-    p r1.score, r2.score
     @score = r1.score + r2.score
     @score == 10 && !r1.strike ? @split = true : @split = false
     @strike = r1.strike
@@ -25,15 +24,19 @@ class SetFrames
   attr_reader :frames
 
   def initialize rolls
+    @id = 0
     @frames = []
     set_frames rolls
   end
 
   def set_frames rolls
+    @id += 1
     curr_roll = rolls.shift
     # strike
     if curr_roll.strike == true
-      @frames << (Frame.new(curr_roll, Roll.new(0)))
+      new_frame =  (Frame.new(curr_roll, Roll.new(0)))
+      new_frame.id = @id
+      @frames << new_frame
     else
     # wait for next roll
      @frames << Frame.new(curr_roll, rolls.shift)
@@ -41,31 +44,58 @@ class SetFrames
 
     if rolls.size > 0
       set_frames rolls
-    else
-      p @frames
     end
   end
 
 end
 
 class ScoreFrames
+  attr_reader :updatedframes
   def initialize frames
-    @score = 0
+    @updatedframes = []
+    update_scores frames
+    @frames = frames
+    @updatedframes.each do |frame|
+      puts "frame #{frame.id}  has score #{frame.score}"
+    end
 
-    frames.each_with_index do |frame, i|
-      if frame.strike == true
-        frame.score += frames[i + 1].score
-      elsif frame.split == true
-         frame.score += frames[i + 1].r1.score
-      else
-      end
-    end
-    frames.each do |frame|
-      @score += frame.score
-    end
-    p @score
   end
 
+  def update_scores frames
+  #quite good approach, works for 3 strikes
+    curr_frame = frames.shift
+    if curr_frame.strike
+      p curr_frame.score
+      curr_frame.score += (update_scores frames).score
+    end
+    if curr_frame.split
+      curr_frame.score += (update_scores frames).r1.score
+    end
+    @updatedframes << curr_frame
+    if curr_frame.score > 30
+      curr_frame.score = 30
+    end
+      curr_frame
+  end
+  # if strike
+  # current frames score += next frames score
+
+
+end
+
+class TotalScore
+  def initialize frames
+    @score = 0
+    score frames
+  end
+
+  def score frames
+    frames.reverse.each do |frame|
+      @score += frame.score
+      # puts "frame score = #{frame.score}"
+      puts "frame #{frame.id}'s score = #{frame.score}   total score = #{@score}"
+    end
+  end
 end
 
 
@@ -73,13 +103,13 @@ class Game
 
   def initialize(total_pins = [])
     rolls = []
-    p total_pins
     total_pins.each do |pins|
       roll = Roll.new(pins)
       rolls << roll
     end
     frames = SetFrames.new rolls
-    p ScoreFrames.new frames.frames
+    udf = ScoreFrames.new frames.frames
+    TotalScore.new udf.updatedframes
   end
 
 end

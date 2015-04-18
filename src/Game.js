@@ -13,12 +13,18 @@ Game.prototype.score = function () {
 };
 
 Game.prototype.rollBall = function(x, y, z){
-if (this.number >= 11) {
-  throw new Error('The game is over');
+  if (this.number >= 11) {
+    throw new Error('The game is over');
   };
   this.number+=1;
 
-if (((x+y) !== 10) && (x !== 10)) {
-  this.framescore.push(x+y);
+  if (x === 10) { 
+    throw 'STRIKE!';
+  }
+
+  else if (((x+y) !== 10) && (x !== 10)) {
+    this.framescore.push(x+y);
   };
+
+  
 };

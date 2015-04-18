@@ -37,15 +37,16 @@ describe('Game', function() {
   it('writes the score of x+y(+z) in the framescore if the sum differs from 10', function(){
     game.rollBall(3, 5);
     game.rollBall(1, 0);
-    game.rollBall(10, 0)
-    expect(game.framescore).toEqual([8, 1]);
+    game.rollBall(8, 0);
+    expect(game.framescore).toEqual([8, 1, 8]);
   });
 
-  xit('returns STRIKE! if we knock 10 pins in the first shot', function() {
-
+  it('returns the word STRIKE! if a player knocks 10 pins in the first shot', function() {
+    expect(function() { game.rollBall(10) }).toThrow('STRIKE!');
   });
 
-  xit('returns SPARE! if we knock 10 pins in the first shot', function() {
+  xit('returns the word SPARE! if a player knocks 10 pins in the first shot', function() {
+    // expect(function() { game.rollBall(6, 4) }).toThrow('SPARE!');
     // x+y but x!=0
   });
 

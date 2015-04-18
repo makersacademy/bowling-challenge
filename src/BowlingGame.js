@@ -5,6 +5,8 @@ function BowlingGame() {
   this.frames = [0,0,0,0,0,0,0,0,0,0]; //is frames a keyword?
   this.strikeFrame = null;
   this.takingStrikeBonus = false;
+  this.spareFrame = null;
+  this.takingSpareBonus = false;
 }
 
 // todo refactor
@@ -17,12 +19,22 @@ BowlingGame.prototype.enterScore = function(score) {
     };
   };
 
-  this.frames[this.currentFrame-1] += score;
+  if(this.takingSpareBonus) {
+    this.frames[this.spareFrame-1] += score;
+    this.takingSpareBonus = false;
+    this.spareFrame = null;
+  };
+
   if(score===10) {
     this.secondRollOnFrame = true; //skip second roll
     this.takingStrikeBonus = true;
     this.strikeFrame = this.currentFrame;
     };
+  if(this.frame(this.currentFrame) + score === 10 && score<10) {
+    this.takingSpareBonus = true;
+    this.spareFrame = this.currentFrame;
+    };
+  this.frames[this.currentFrame-1] += score;
   if(this.secondRollOnFrame === true) { this.currentFrame++; };
   this.secondRollOnFrame = !this.secondRollOnFrame;
 
@@ -31,19 +43,3 @@ BowlingGame.prototype.enterScore = function(score) {
 BowlingGame.prototype.frame = function(frame) {
   return this.frames[frame-1];
 };
-
-// Player.prototype.pause = function() {
-//   this.isPlaying = false;
-// };
-//
-// Player.prototype.resume = function() {
-//   if (this.isPlaying) {
-//     throw new Error("song is already playing");
-//   }
-//
-//   this.isPlaying = true;
-// };
-//
-// Player.prototype.makeFavorite = function() {
-//   this.currentlyPlayingSong.persistFavoriteStatus(true);
-// };

@@ -49,7 +49,7 @@ describe("BowlingGame", function() {
         expect(game.currentFrame).toEqual(2);
       });
 
-      it('game is waiting for bonus from next frames', function() {
+      it('game is waiting for bonus from next frame', function() {
         game.enterScore(10);
         expect(game.takingStrikeBonus).toEqual(true);
       });
@@ -59,7 +59,7 @@ describe("BowlingGame", function() {
         expect(game.strikeFrame).toEqual(1);
       });
 
-      it('game adds bonus to strike frame from next two frames', function() {
+      it('game adds bonus to strike frame from next two rolls', function() {
         game.enterScore(10);
         game.enterScore(5);
         game.enterScore(3);
@@ -81,7 +81,51 @@ describe("BowlingGame", function() {
         expect(game.takingStrikeBonus).toEqual(false);
         expect(game.strikeFrame).toEqual(null);
       });
+    });
 
+      describe("spare", function(){
+        it('is on the second frame when first frame got a spare', function() {
+          game.enterScore(6);
+          game.enterScore(4);
+          expect(game.currentFrame).toEqual(2);
+        });
+
+        it('game is waiting for bonus from next frame', function() {
+          game.enterScore(6);
+          game.enterScore(4);
+          expect(game.takingSpareBonus).toEqual(true);
+        });
+
+        it('game is waiting for bonus to add to frame with spare', function() {
+          game.enterScore(6);
+          game.enterScore(4);
+          expect(game.spareFrame).toEqual(1);
+        });
+
+        it('game adds bonus to strike frame from next roll', function() {
+          game.enterScore(6);
+          game.enterScore(4);
+          game.enterScore(5);
+          expect(game.frame(1)).toEqual(15);
+        });
+
+        it('game adds normal score to frames while adding bonus score to previous frame', function() {
+          game.enterScore(6);
+          game.enterScore(4);
+          game.enterScore(5);
+          game.enterScore(3);
+          expect(game.frame(2)).toEqual(8);
+        });
+
+        it('game does not take spare bonus after first roll of next frame', function() {
+          game.enterScore(6);
+          game.enterScore(4);
+          game.enterScore(5);
+          game.enterScore(3);
+          expect(game.currentFrame).toEqual(3);
+          expect(game.takingSpareBonus).toEqual(false);
+          expect(game.spareFrame).toEqual(null);
+        });
 
 
     });

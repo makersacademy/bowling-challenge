@@ -19,4 +19,19 @@ describe('Ball', function() {
     expect(ball.isRolled).toBe(false);
   });
 
+  it('should change it\'s status to rolled when a score is given', function() {
+    ball.setScore(1);
+    expect(ball.isRolled).toBe(true);
+  });
+
+  it('should know if it is a strike', function() {
+    ball.setScore(10);
+    expect(ball.isStrike).toBe(true);
+  });
+
+  it('should know if it is not a strike', function() {
+    ball.setScore(1);
+    expect(ball.isStrike).toBe(false);
+  });
+
 });

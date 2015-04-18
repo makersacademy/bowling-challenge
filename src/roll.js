@@ -1,6 +1,6 @@
 var Roll = function(pins){
   this.pins = pins;
-  this.output = [];
+  this.outputs = [];
   this.input();
 };
 
@@ -8,9 +8,13 @@ var Roll = function(pins){
 
 Roll.prototype.input = function() {
   if(this.pins == 10){
-    this.output = [10, 'x']
+    this.outputs = [10, 'x']
   }else{
-    this.output.push(this.pins);
+    this.outputs.push(this.pins);
   };
 
+};
+
+Roll.prototype.output = function() {
+  return this.outputs;
 };

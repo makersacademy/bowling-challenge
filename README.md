@@ -5,14 +5,66 @@ Bowling Challenge
     Test time: Friday, the entire day and the weekend if you need it.
     Feel free to use Google, your notes, and your books.
 
-Task: 
+User Stories Extracted From Brief:
+-----
+
+MVp1:
+
+As a bowler
+So that I can play a frame
+I would like to play a frame, and know if i get a strike or spare
+
+As a bowler
+So that I can play a frame fairly
+I would like to receive an error if i bowl too many times.
+
+MVp2:
+
+As a bowler
+So that i can play a complete game
+I'd like to be able to get the total of 10 frames
+
+As a bowler
+So that i can play a complete game
+I'd like to be to add bonus bowls if i strike or spare in the final frame
+
+
+As a bowler
+So that i can play a complete game
+I'd like to see an error if i have added too many or too little frames to a game
+
+As a bowler
+So that i can get satisfaction
+I'd like to be see gutter or perfect if i roll my stones in a 0 or top score situation
+
+
+
+Classes:
+
+Frame
+  - Knows if spare or strike
+  - knows result of rolls
+  - errors if try to follow ten with another roll.
+
+Game:
+  - Can add scores for every frame
+  - Returns error if too many or too little frames
+  - If ten rolled in final frame will allow bonus roll.
+  - Will return 'Gutter or Perfect' if either applies, else returns score.
+
+MVP:
+
+Complete game via jquery, game requests frames until complete.
+
+
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
 * Forking this repo

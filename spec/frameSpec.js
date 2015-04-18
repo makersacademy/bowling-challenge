@@ -18,31 +18,38 @@ describe("Frame", function() {
     frame = new Frame();
     frame.add_bowl(5);
     frame.add_bowl(5);
-    expect(frame.result()).toContain("Spare!");
+    expect(frame.isSpare()).toBe(true);
 
     frame = new Frame();
     frame.add_bowl(6);
     frame.add_bowl(4);
-    expect(frame.result()).toContain("Spare!");
+    expect(frame.isSpare()).toBe(true);
   });
 
   it("Can tell a strike", function() {
     frame = new Frame();
     frame.add_bowl(10);
     frame.add_bowl(0);
-    expect(frame.result()).toEqual('Strike!');
+    expect(frame.isStrike()).toBe(true);
+  });
+
+  it("does not return spare if strike", function() {
+    frame = new Frame();
+    frame.add_bowl(10);
+    frame.add_bowl(0);
+    expect(frame.isSpare()).toBe(false);
   });
 
   it("Can tell if no spare", function() {
     frame = new Frame();
     frame.add_bowl(4);
     frame.add_bowl(4);
-    expect(frame.result()).toBeNull();
+    expect(frame.isSpare()).toBe(false);
 
     frame = new Frame();
     frame.add_bowl(0);
     frame.add_bowl(9);
-    expect(frame.result()).toBeNull();
+    expect(frame.isSpare()).toBe(false);
   });
 
   it("returns an error if i bowl too many times", function() {
@@ -52,6 +59,13 @@ describe("Frame", function() {
     expect(function() {
       frame.add_bowl(2)
     }).toThrowError("You've bowled twice already this frame!");
+  });
+
+  it("returns the total number of pins knocked down", function() {
+    frame = new Frame();
+    frame.add_bowl(4);
+    frame.add_bowl(4);
+    expect(frame.knockedDown()).toEqual(8);
   });
 
 });

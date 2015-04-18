@@ -9,15 +9,25 @@ Frame.prototype.add_bowl = function(pins) {
   this.bowled.push(pins);
 };
 
-Frame.prototype.result = function() {
+Frame.prototype.isStrike = function() {
+  if (this.bowled.indexOf(10) == 0) {
+    return true;
+  } else {
+    return false;
+  };
+};
+
+Frame.prototype.isSpare = function() {
+  if ( this.bowled[0] !== 10 && this.knockedDown() === 10 ) {
+    return true;
+  } else {
+    return false;
+  };
+};
+
+Frame.prototype.knockedDown = function()  {
   var sum = this.bowled.reduce(function(a, b) {
     return a + b;
   });
-  if (this.bowled.indexOf(10) == 0) {
-    return "Strike!";
-  } else if ( sum === 10 ) {
-    return "Spare!";
-  } else {
-    return null;
-  };
+  return sum;
 };

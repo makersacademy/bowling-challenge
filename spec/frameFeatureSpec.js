@@ -1,4 +1,4 @@
-describe("MVp1: Can play a frame", function() {
+describe("FEATURE: Can play a frame", function() {
 
   it("Can play a frame and persist score", function() {
     frame = new Frame();
@@ -11,14 +11,14 @@ describe("MVp1: Can play a frame", function() {
     frame = new Frame();
     frame.add_bowl(5);
     frame.add_bowl(5);
-    expect(frame.result()).toContain("Spare!");
+    expect(frame.isSpare()).toBe(true);
   });
 
   it("Can tell a strike", function() {
     frame = new Frame();
     frame.add_bowl(10);
     frame.add_bowl(0);
-    expect(frame.result()).toEqual('Strike!');
+    expect(frame.isStrike()).toBe(true);
   });
 
   it("returns an error if i bowl too many times", function() {

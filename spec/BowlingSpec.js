@@ -1,16 +1,16 @@
 describe('Bowling scoresheet', function(){
 
-  // describe('rejects', function(){
-  //
-  //   var bowling;
-  //   beforeEach(function(){
-  //     bowling = new Bowling();
-  //   });
-  //
-  //   it('an illegal score', function(){
-  //     expect(function(){bowling.roll(11)}).toThrow('Illegal score');
-  //   });
-  // });
+  describe('rejects', function(){
+
+    var bowling;
+    beforeEach(function(){
+      bowling = new Bowling();
+    });
+
+    it('an illegal score', function(){
+      expect(function(){bowling.roll(11)}).toThrow('Illegal score');
+    });
+  });
 
   describe('knows the cumulative score for', function(){
 
@@ -24,11 +24,6 @@ describe('Bowling scoresheet', function(){
         bowling.roll(pinsEachRoll);
       };
     };
-
-    // it('a single roll', function(){
-    //   helper(1, 5);
-    //   expect(bowling.cumulativeScore()).toBe(5);
-    // });
 
     it('two non-spare/non-strike rolls', function(){
       helper(1, 5);

@@ -62,6 +62,20 @@ describe('Game', function() {
     expect(function() { game.rollBall(10, 2) }).toThrow(new Error('This frame is not over! Roll a ball'));
   }); 
 
+  it('keeps track of every throw (pins knocked out)', function() {
+    game.rollBall(3, 5);
+    game.rollBall(1, 0);
+    game.rollBall(10);
+    game.rollBall(8, 2);
+    game.rollBall(6, 2);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(2, 5);
+    game.rollBall(0, 5);
+    game.rollBall(10, 1, 3);
+    expect(game.pinsko).toEqual([3, 5, 1, 0, 10, 8, 2, 6, 2, 10, 10, 2, 5, 0, 5, 10, 1, 3]);
+  });
+
   xit('keeps the score by adding each frame (but waits for strikes and spares)', function(){
 
   });

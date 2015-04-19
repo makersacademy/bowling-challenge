@@ -2,6 +2,7 @@ var Game = function(){
   this.score = 0;
   this.framenumber = 0;
   this.framescore = [];
+  this.pinsko = [];
 };
 
 
@@ -18,6 +19,8 @@ Game.prototype.rollBall = function(x, y, z){
     throw new Error('The game is over');
   };
 
+  this.pinsko.push(x); 
+
   if (x === 10) {
     if (this.framenumber !== 10) {
       if ((y != undefined ) || (z != undefined )) {
@@ -30,11 +33,14 @@ Game.prototype.rollBall = function(x, y, z){
       };
     } else {
       if ((y === undefined ) || (z === undefined )) {
-      throw new Error('This frame is not over! Roll a ball');
+        throw new Error('This frame is not over! Roll a ball');
       };
+    this.pinsko.push(y);
+    this.pinsko.push(z);
     };
   }
   else {
+    this.pinsko.push(y);
     if ((x+y) ===10) {
     // throw 'SPARE!';
     this.framescore.push('/');

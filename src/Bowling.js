@@ -2,6 +2,7 @@ var Bowling = function(){
   this.rollsArray = [];
   this.scoresArray = [];
   this.rollCounter = 0;
+  this.frameCounter = 1;
 };
 
 Bowling.prototype.roll = function(rollScore){
@@ -12,25 +13,24 @@ Bowling.prototype.roll = function(rollScore){
 };
 
 Bowling.prototype.registerRoll = function(rollScore){
-  var self = this;
-  var frameStart = 0;
 
   if (rollScore === 10){
-    self.scoresArray.push(rollScore);
-    self.scoresArray.push('X');
-  } else if ((rollScore + self.rollsArray[self.rollCounter - 1] || 0) === 10){
-    console.log(rollScore + self.rollsArray[self.rollCounter - 1] || 0);
-    console.log(rollScore + self.rollsArray[self.rollCounter]);
-    console.log(rollScore);
-    console.log(self.rollsArray[self.rollCounter]);
-    self.scoresArray.push(self.rollsArray[self.rollCounter - 1]);
-    self.scoresArray.push('/');
+    this.scoresArray.push(rollScore);
+    this.scoresArray.push('X');
+  } else if ((rollScore + this.rollsArray[this.rollCounter - 1] || 0) === 10){
+    console.log('1 ' + (rollScore + this.rollsArray[this.rollCounter - 1] || 0));
+    console.log('2 ' + (rollScore + this.rollsArray[this.rollCounter - 1]));
+    console.log('3 ' + (rollScore));
+    console.log('4 ' + (this.rollsArray[this.rollCounter - 1]));
+    this.scoresArray.push('/');
   } else {
-    self.scoresArray.push(rollScore);
+    this.scoresArray.push(rollScore);
   };
 
-  self.rollCounter ++;
-  console.log(self.scoresArray);
+  this.rollCounter ++;
+  this.frameCounter ++;
+  this.rollCounter ++;
+  console.log('5 ' + this.scoresArray);
 };
 
 Bowling.prototype.cumulativeScore = function(){

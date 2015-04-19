@@ -43,7 +43,7 @@ describe('Bowling scoresheet', function(){
     });
 
     it('a perfect game', function(){
-      helper(21, 10);
+      helper(12, 10);
       expect(bowling.cumulativeScore()).toBe(300);
     });
 
@@ -107,7 +107,7 @@ describe('Bowling scoresheet', function(){
     });
 
     xit('a perfect game', function(){
-      helper(21, 10);
+      helper(12, 10);
       expect(bowling.scoresArray).toEqual([10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,10,10]);
     });
 
@@ -136,7 +136,7 @@ describe('Bowling scoresheet', function(){
       bowling.roll(2);
       bowling.roll(8);
       bowling.roll(6);
-      expect(bowling.scoreTally).toBe(133);
+      expect(bowling.scoreTally).toEqual([1,4,4,5,6,'/',5,'/',10,'X',0,1,7,'/',6,'/',10,'X',2,'/',6]);
     });
   });
 });

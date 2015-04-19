@@ -4,7 +4,7 @@ $(document).ready(function(){
 
   var afterRoll = function(){
     $('#finalScore').text(bowling.cumulativeScore());
-      $('#scoreTally').text(bowling.scoreTally);
+      $('#scoreTally').text(bowling.scoresArray);
   };
 
   $('#btn0').click(function(){

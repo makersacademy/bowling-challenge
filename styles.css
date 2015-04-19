@@ -4,6 +4,8 @@ body {
 
 #score {
   font-size: 5em;
+  text-align: center;
+  margin-top: 0.5em;
 }
 
 .frame {

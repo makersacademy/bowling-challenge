@@ -11,4 +11,26 @@ describe('Frame', function() {
 		expect(normalframe.pinsStanding).toEqual(10);
 	});
 
+	it('not over when it is started', function() {
+		expect(normalframe.isOver).toBe(false);
+	});
+
+	it('should know when it is over', function() {
+		normalframe.Over();
+		expect(normalframe.isOver).toBe(true);
+
+	});
+
+	it('', function() {
+
+	});
+
+	it('', function() {
+
+	});
+
+	it('', function() {
+
+	});
+
 });

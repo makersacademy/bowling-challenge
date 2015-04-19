@@ -12,19 +12,29 @@ Game.prototype.score = function () {
   return this.score
 };
 
-Game.prototype.rollBall = function(x, y, z){
+Game.prototype.rollBall = function(x, y){
   if (this.number >= 11) {
     throw new Error('The game is over');
   };
   this.number+=1;
 
-  if (x === 10) { 
-    throw 'STRIKE!';
+  if (x === 10) {
+    if (y != null) {
+    throw new Error('CHEATER!');
+    }
+    else {
+    // It works but stops the code from running. so have to by pass.
+    // throw 'STRIKE!';
+    this.framescore.push('X');
+    };
   }
-
-  else if (((x+y) !== 10) && (x !== 10)) {
+  else {
+    if ((x+y) ===10) {
+    // throw 'SPARE!';
+    this.framescore.push('/');
+    }
+    else {
     this.framescore.push(x+y);
+    };
   };
-
-  
 };

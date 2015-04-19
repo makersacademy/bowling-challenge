@@ -56,28 +56,12 @@ describe("WEB APP", function() {
       $('#2').click();
       $('#pins_hit').val(2);
       $('#confirm').click();
-      $('#pins_hit').val(2);
-      $('#confirm').click();
-
-      $('#4').click();
       $('#pins_hit').val(4);
       $('#confirm').click();
 
-      $('#9').click();
-      $('#pins_hit').val(9);
-      $('#confirm').click();
-
-      $('#6').click();
-      $('#pins_hit').val(6);
-      $('#confirm').click();
-
-      expect(function() {
-        frames[0].knockedDown()
-      }).toThrow();
-      expect(frames[1].knockedDown()).toBe(4);
-      expect(frames[3].knockedDown()).toBe(4);
-      expect(frames[8].knockedDown()).toBe(9);
-      expect(frames[5].knockedDown()).toBe(6);
+      expect($("#2 > .first_roll").text()).toEqual("2");
+      expect($("#2 > .second_roll").text()).toEqual("4");
+      expect($("#2 > .total").text()).toEqual("6");
    });
 
 

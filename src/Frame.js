@@ -1,6 +1,10 @@
 var Frame = function(){
+  this.runningScore = 0
 };
 
+Frame.prototype.runningScore = function () {
+  return runningScore
+};
 
 Frame.prototype.frameOne = function (x, y) {
   frameOneInfo = [];    // Told not to do this but test fails with var in front?!
@@ -14,13 +18,14 @@ Frame.prototype.frameOne = function (x, y) {
   frameOneInfo.push('spare')
 }
 
-  return frameOneInfo;
+  this.runningScore += frameOneInfo[0]
+  this.runningScore += frameOneInfo[1]
+  return this.runningScore;
 };
 
-  // NOW JUST REPEATING UNTIL FRAME 10, HOW DO I DRY IT OUT?!
 
 Frame.prototype.frameTwo = function (x, y) {
-  frameTwoInfo = [];    // Told not to do this but test fails with var in front?!
+  frameTwoInfo = [];
 
   frameTwoInfo.push(x);
   frameTwoInfo.push(y);
@@ -31,8 +36,26 @@ Frame.prototype.frameTwo = function (x, y) {
   frameTwoInfo.push('spare')
 }
 
-  return frameTwoInfo;
+  this.runningScore += frameOneInfo[0]
+  this.runningScore += frameOneInfo[1]
+  return this.runningScore;
+  
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Frame.prototype.frameThree = function (x, y) {

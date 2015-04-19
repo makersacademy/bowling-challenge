@@ -23,8 +23,16 @@ Game.prototype.rollBall = function(x, y, z){
 
   if (this.framescore.indexOf('/') > -1) {
     this.framescore.pop();
-    this.score+=(x+10);
+    this.score += (10+x);
     this.framescore.push(this.score);
+  };
+
+  if (this.framescore.indexOf('X') > -1) {
+    if (x!== 10) {
+      this.framescore.pop();
+      this.score += (10+x+y);
+      this.framescore.push(this.score);
+    };
   };
 
   if (x === 10) {
@@ -43,6 +51,8 @@ Game.prototype.rollBall = function(x, y, z){
       };
     this.pinsko.push(y);
     this.pinsko.push(z);
+    this.score += (10+y+z);
+    this.framescore.push(this.score);
     };
   }
   else {
@@ -61,6 +71,8 @@ Game.prototype.rollBall = function(x, y, z){
         throw new Error('This frame is not over! Roll a ball');
         } else {
         this.pinsko.push(z);
+        this.score += (10+z);
+        this.framescore.push(this.score);
         };
       };
     };

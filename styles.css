@@ -4,13 +4,38 @@ body {
 
 .frame {
   display: inline-block;
-  width: 9.3%;
-  height: 5em;
+  width: 9%;
+  height: 8em;
   background-color: #FDF3E7;
   margin-top: 2em;
   margin-bottom: 2em;
+  vertical-align:top;
 }
 
+.first_roll {
+  float: left;
+  text-align: center;
+}
+
+.second_roll {
+  float: right;
+  border: 0.1em solid black;
+  border-top: none;
+  border-right: none;
+  width: 50%;
+  height: 2.5em;
+}
+
+.frame_title {
+  border-bottom: 0.1em solid black;
+
+}
+
+.total {
+  clear: both;
+  text-align: center;
+  padding-top: 1em;
+}
 input {
   display: block;
   margin: auto;

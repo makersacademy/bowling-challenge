@@ -11,4 +11,5 @@ NormalFrame.prototype.Over = function() {
 
 NormalFrame.prototype.bowl = function(ball) {
 	this.balls.push(ball);
+	this.pinsStanding = this.pinsStanding - ball.score;
 };

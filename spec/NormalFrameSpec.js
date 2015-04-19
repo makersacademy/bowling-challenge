@@ -26,4 +26,10 @@ describe('Frame', function() {
 		expect(normalframe.balls).toEqual([ball]);
 	});
 
+	it('should know how many pins are left after ball is bowled', function() {
+		ball.setScore(6);
+		normalframe.bowl(ball);
+		expect(normalframe.pinsStanding).toEqual(4);
+	});
+
 });

@@ -2,59 +2,64 @@ var bowling = new Bowling();
 
 $(document).ready(function(){
 
+  var afterRoll = function(){
+    $('#finalScore').text(bowling.cumulativeScore());
+      $('#scoreTally').text(bowling.scoreTally);
+  };
+
   $('#btn0').click(function(){
     bowling.roll(0);
-    $('#finalScore').text(bowling.cumulativeScore());
+      afterRoll();
   });
 
   $('#btn1').click(function(){
     bowling.roll(1);
-    $('#finalScore').text(bowling.cumulativeScore());
+      afterRoll();
   });
 
   $('#btn2').click(function(){
     bowling.roll(2);
-    $('#finalScore').text(bowling.cumulativeScore());
+      afterRoll();
   });
 
   $('#btn3').click(function(){
     bowling.roll(3);
-    $('#finalScore').text(bowling.cumulativeScore());
+      afterRoll();
   });
 
   $('#btn4').click(function(){
     bowling.roll(4);
-    $('#finalScore').text(bowling.cumulativeScore());
+      afterRoll();
   });
 
   $('#btn5').click(function(){
     bowling.roll(5);
-    $('#finalScore').text(bowling.cumulativeScore());
+      afterRoll();
   });
 
   $('#btn6').click(function(){
     bowling.roll(6);
-    $('#finalScore').text(bowling.cumulativeScore());
+      afterRoll();
   });
 
   $('#btn7').click(function(){
     bowling.roll(7);
-    $('#finalScore').text(bowling.cumulativeScore());
+      afterRoll();
   });
 
   $('#btn8').click(function(){
     bowling.roll(8);
-    $('#finalScore').text(bowling.cumulativeScore());
+      afterRoll();
   });
 
   $('#btn9').click(function(){
     bowling.roll(9);
-    $('#finalScore').text(bowling.cumulativeScore());
+      afterRoll();
   });
 
   $('#btn10').click(function(){
     bowling.roll(10);
-    $('#finalScore').text(bowling.cumulativeScore());
+      afterRoll();
   });
 
 });

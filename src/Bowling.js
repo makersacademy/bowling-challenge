@@ -1,23 +1,36 @@
 var Bowling = function(){
-  this.rolls = [];
-  this.scoreTally = [];
+  this.rollsArray = [];
+  this.scoresArray = [];
   this.rollCounter = 0;
 };
 
 Bowling.prototype.roll = function(rollScore){
 
   if (rollScore > 10) throw 'Illegal score';
-  this.rolls.push(rollScore);
+  this.rollsArray.push(rollScore);
+  this.registerRoll(rollScore);
+};
+
+Bowling.prototype.registerRoll = function(rollScore){
+  var self = this;
+  var frameStart = 0;
 
   if (rollScore === 10){
-    this.rollCounter += 2;
+    self.scoresArray.push(rollScore);
+    self.scoresArray.push('X');
+  } else if ((rollScore + self.rollsArray[self.rollCounter - 1] || 0) === 10){
+    console.log(rollScore + self.rollsArray[self.rollCounter - 1] || 0);
+    console.log(rollScore + self.rollsArray[self.rollCounter]);
+    console.log(rollScore);
+    console.log(self.rollsArray[self.rollCounter]);
+    self.scoresArray.push(self.rollsArray[self.rollCounter - 1]);
+    self.scoresArray.push('/');
   } else {
-    this.rollCounter ++;
+    self.scoresArray.push(rollScore);
   };
 
-  if (this.rollCounter % 2 === 0){
-    this.cumulativeScore();
-  };
+  self.rollCounter ++;
+  console.log(self.scoresArray);
 };
 
 Bowling.prototype.cumulativeScore = function(){
@@ -26,49 +39,36 @@ Bowling.prototype.cumulativeScore = function(){
   var frameStart = 0;
 
   function isStrike (){
-    return self.rolls[frameStart] === 10;
+    return self.rollsArray[frameStart] === 10;
   };
 
   function isSpare (){
-    return self.rolls[frameStart] + self.rolls[frameStart + 1] === 10;
+    return self.rollsArray[frameStart] + self.rollsArray[frameStart + 1] === 10;
   };
 
   function frameTotal (){
-    return self.rolls[frameStart] + self.rolls[frameStart + 1] || 0;
+    return self.rollsArray[frameStart] + self.rollsArray[frameStart + 1] || 0;
   };
 
   function strikeBonus (){
-    return self.rolls[frameStart + 1] + self.rolls[frameStart + 2];
+    return self.rollsArray[frameStart + 1] + self.rollsArray[frameStart + 2];
   };
 
   function spareBonus (){
-    return self.rolls[frameStart + 2] || 0;
+    return self.rollsArray[frameStart + 2] || 0;
   };
 
   for (var i = 0; i < 10; i ++){
     if(isStrike()){
       score += 10 + strikeBonus();
-      self.scoreTally.push(10);
-      self.scoreTally.push('X');
       frameStart ++;
     } else if (isSpare()){
       score += 10 + spareBonus();
-      self.scoreTally.push(self.rolls[frameStart]);
-      self.scoreTally.push('/');
       frameStart += 2;
     } else {
       score += frameTotal();
-      self.scoreTally.push(self.rolls[frameStart]);
-      self.scoreTally.push(self.rolls[frameStart + 1]);
       frameStart += 2;
     };
   };
-  console.log(self.scoreTally);
   return score;
 };
-
-// Bowling.prototype.scoreTally = function(){
-//   // var self = this;
-//
-//   return this.scoreTally;
-// };

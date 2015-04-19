@@ -76,7 +76,7 @@ describe('Bowling scoresheet', function(){
     });
   });
 
-  describe('knows the running score tally', function(){
+  describe('knows the running score tally for', function(){
 
     var bowling;
     beforeEach(function(){
@@ -92,31 +92,31 @@ describe('Bowling scoresheet', function(){
     it('two non-spare/non-strike rolls', function(){
       helper(1, 5);
       helper(1, 2);
-      expect(bowling.scoreTally).toContain([5, 2]);
+      expect(bowling.scoresArray).toEqual([5,2]);
     });
 
-    it('a strike and a spare', function(){
+    xit('a strike and a spare', function(){
       helper(1, 10);
       helper(2, 5);
-      expect(bowling.scoreTally).toBe(30);
+      expect(bowling.scoresArray).toEqual([10,'X',5,'/']);
     });
 
-    it('an unremarkable game', function(){
+    it('a game of all fours', function(){
       helper(20, 4);
-      expect(bowling.scoreTally).toBe(80);
+      expect(bowling.scoresArray).toEqual([4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]);
     });
 
-    it('a perfect game', function(){
+    xit('a perfect game', function(){
       helper(21, 10);
-      expect(bowling.scoreTally).toBe(300);
+      expect(bowling.scoresArray).toEqual([10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,10,10]);
     });
 
     it('a gutter game', function(){
       helper(20, 0);
-      expect(bowling.scoreTally).toBe(0);
+      expect(bowling.scoresArray).toEqual([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
     });
 
-    it('an example game', function(){
+    xit('an example game', function(){
       bowling.roll(1);
       bowling.roll(4);
       bowling.roll(4);

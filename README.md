@@ -30,7 +30,7 @@ I'd like to be to add bonus bowls if i strike or spare in the final frame
 
 
 As a bowler
-So that i can play a complete game
+So that i can worry less if drunk
 I'd like to see an error if i have added too many frames to a game
 
 As a bowler
@@ -43,12 +43,11 @@ Classes:
 
 Frame
   - Knows if spare or strike
-  - knows result of rolls
-  - errors if try to follow ten with another roll.
+  - persists result of rolls
 
 Game:
   - Can add scores for every frame
-  - Returns error if too many or too little frames
+  - Returns error if too many frames
   - If ten rolled in final frame will allow bonus roll.
   - Will return 'Gutter or Perfect' if either applies, else returns score.
 

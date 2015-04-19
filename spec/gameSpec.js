@@ -97,7 +97,7 @@ it("totals 12 strikes", function() {
 
     game.addFrames( strikeDouble, strikeDouble, strikeDouble, strikeDouble, strikeDouble, strikeDouble, strikeDouble, strikeDouble, strikeDouble, strikeDouble, bonusRolls);
 
-    expect(game.score()).toEqual(300);
+    expect(game.score()).toEqual("PERFECT GAME!");
   });
 
 it("throws error if given bonuses which arent expected", function() {
@@ -124,5 +124,32 @@ it("throws error if given bonuses which arent expected", function() {
   expect(function() {
         game.score() } ).toThrowError("You cannot add bonuses as you did not strike or spare in your final frame!");
 });
+
+it("returns GUTTER if no pins hit", function() {
+
+
+    game = new Game();
+
+    spareDouble = jasmine.createSpyObj(['isSpare', 'knockedDown', 'bowled', 'isStrike']);
+
+    spareDouble.isSpare.and.callFake(function() {
+      return false;
+    });
+
+    spareDouble.isStrike.and.callFake(function() {
+      return false;
+    });
+
+    spareDouble.bowled = [0,0];
+
+    spareDouble.knockedDown.and.callFake(function() {
+      return 0;
+    });
+
+    game.addFrames( spareDouble, spareDouble, spareDouble, spareDouble, spareDouble, spareDouble, spareDouble, spareDouble, spareDouble, spareDouble );
+
+    expect(game.score()).toEqual("GUTTER GAME!");
+  });
+
 
 });

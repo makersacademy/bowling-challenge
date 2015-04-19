@@ -10,8 +10,17 @@ Game.prototype.addFrames = function(frame1, frame2, frame3, frame4, frame5, fram
 Game.prototype.score = function() {
 
   this.FailIfBonusIncorrectlyGiven();
+  return this.getWinMessage(this.calculateScore());
+};
 
-  var total = [];
+Game.prototype.getWinMessage = function(score) {
+  if (score == 300) return "PERFECT GAME!";
+  if (score === 0) return "GUTTER GAME!";
+  return score;
+};
+
+Game.prototype.calculateScore = function() {
+    var total = [];
   for (i = 0; i < 10; i++) {
     currentFrame = this.frames[ i ];
     nextFrame = this.frames[ i + 1 ];
@@ -21,12 +30,21 @@ Game.prototype.score = function() {
 
     if (currentFrame.isSpare()) {
       total.push(nextFrame.bowled[0]);
-    } else if (currentFrame.isStrike() && isFinalFrame) {
+      continue;
+    };
+
+    if (currentFrame.isStrike() && isFinalFrame) {
       total.push(this.bonusRollsTotal());
-    } else if (currentFrame.isStrike() && nextFrame.isStrike()) {
+      continue;
+    };
+
+    if (currentFrame.isStrike() && nextFrame.isStrike()) {
         total.push(nextFrame.bowled[0]);
         total.push(this.frames[i + 2].bowled[0]);
-    } else if ( currentFrame.isStrike() ) {
+        continue;
+    };
+
+    if ( currentFrame.isStrike() ) {
         total.push( nextFrame.knockedDown());
     };
   };

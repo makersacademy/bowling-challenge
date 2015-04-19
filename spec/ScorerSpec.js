@@ -18,16 +18,25 @@ describe('Scorer', function() {
 			expect(scorer.totalScore).toEqual(0);
 		});
 
+		it('should accept a ball', function() {
+			ball = new Ball();
+			ball.setScore(3)
+			scorer.bowl(ball);
+			expect(scorer.frameOneScore).toEqual(3);
+			expect(scorer.totalScore).toEqual(3);
+		});
+
 	});
 
 	describe('frames one to nine', function() {
 
 		describe('scoring a game with no strikes or spares', function() {
 
-			it('accepts a ball', function() {
+			xit('accepts a ball', function() {
 				ballOne = new Ball();
 				ballOne.setScore(3);
 
+				Scorer()
 				expect(totalScore);
 			});
 

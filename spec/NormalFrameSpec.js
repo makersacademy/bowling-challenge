@@ -1,4 +1,5 @@
 describe('Frame', function() {
+	
 	var normalframe;
 	var ball;
 
@@ -18,19 +19,11 @@ describe('Frame', function() {
 	it('should know when it is over', function() {
 		normalframe.Over();
 		expect(normalframe.isOver).toBe(true);
-
 	});
 
-	it('', function() {
-
-	});
-
-	it('', function() {
-
-	});
-
-	it('', function() {
-
+	it('should allow a ball to be bowled', function() {
+		normalframe.bowl(ball);
+		expect(normalframe.balls).toEqual([ball]);
 	});
 
 });

@@ -14,23 +14,41 @@ Bowling.prototype.roll = function(rollScore){
 
 Bowling.prototype.registerRoll = function(rollScore){
 
-  if (rollScore === 10){
+  var self = this;
+
+  function tenthFrame (){
+    if (self.frameCounter > 9){
+      return true;
+    } else {
+      return false;
+    };
+  };
+
+  if (tenthFrame()){
+    self.scoresArray.push(rollScore);
+
+  } else if (rollScore === 10){
     this.scoresArray.push(rollScore);
     this.scoresArray.push('X');
-  } else if ((rollScore + this.rollsArray[this.rollCounter - 1] || 0) === 10){
-    console.log('1 ' + (rollScore + this.rollsArray[this.rollCounter - 1] || 0));
-    console.log('2 ' + (rollScore + this.rollsArray[this.rollCounter - 1]));
-    console.log('3 ' + (rollScore));
-    console.log('4 ' + (this.rollsArray[this.rollCounter - 1]));
+
+  } else if ((rollScore + parseInt(this.rollsArray[this.rollCounter - 1]) || 0) === 10){
+    // console.log('AA ' + (rollScore + this.rollsArray[this.rollCounter - 1] || 0));
+    // console.log('BB ' + (rollScore + this.rollsArray[this.rollCounter - 1]));
+    // console.log('CC ' + (this.scoresArray[this.rollCounter - 1]));
+    // console.log('DD ' + (rollScore));
+    // console.log('EE ' + (this.rollsArray[this.rollCounter - 1]));
     this.scoresArray.push('/');
+
   } else {
     this.scoresArray.push(rollScore);
   };
 
   this.rollCounter ++;
+
   this.frameCounter ++;
-  this.rollCounter ++;
-  console.log('5 ' + this.scoresArray);
+  console.log('FF ' + this.scoresArray);
+  console.log(tenthFrame());
+  console.log(this.frameCounter);
 };
 
 Bowling.prototype.cumulativeScore = function(){

@@ -95,7 +95,7 @@ describe('Bowling scoresheet', function(){
       expect(bowling.scoresArray).toEqual([5,2]);
     });
 
-    xit('a strike and a spare', function(){
+    it('a strike and a spare', function(){
       helper(1, 10);
       helper(2, 5);
       expect(bowling.scoresArray).toEqual([10,'X',5,'/']);
@@ -106,9 +106,9 @@ describe('Bowling scoresheet', function(){
       expect(bowling.scoresArray).toEqual([4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]);
     });
 
-    xit('a perfect game', function(){
+    it('a perfect game', function(){
       helper(12, 10);
-      expect(bowling.scoresArray).toEqual([10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,10,10]);
+      expect(bowling.scoresArray).toEqual([10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,10,10]);
     });
 
     it('a gutter game', function(){
@@ -136,7 +136,7 @@ describe('Bowling scoresheet', function(){
       bowling.roll(2);
       bowling.roll(8);
       bowling.roll(6);
-      expect(bowling.scoreTally).toEqual([1,4,4,5,6,'/',5,'/',10,'X',0,1,7,'/',6,'/',10,'X',2,'/',6]);
+      expect(bowling.scoresArray).toEqual([1,4,4,5,6,'/',5,'/',10,'X',0,1,7,'/',6,'/',10,'X',2,'/',6]);
     });
   });
 });

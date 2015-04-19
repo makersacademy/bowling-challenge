@@ -6,14 +6,19 @@ Scorer.prototype.roll = function(score) {
 	this.rolls.push(score)
 };
 
-Scorer.prototype.total = function() {
-	var numberOfRolls = this.rolls.length;
+Scorer.prototype.total = function(argument) {
 	var runningTotal = 0;
-	for (var i = 0; i < numberOfRolls; i ++) {
-		if (this.rolls[i] + this.rolls[i+1] === 10) {
-			runningTotal = runningTotal + this.rolls[i + 2];
-		};
-		runningTotal = runningTotal + this.rolls[i];
+	var rollNumber = 0;
+	var frameNumber = 1;
+
+	for (var i = frameNumber; i < 11; i ++) {
+		if (this.rolls[rollNumber] + this.rolls[rollNumber + 1] === 10) {
+			runningTotal = runningTotal + this.rolls[rollNumber] + this.rolls[rollNumber + 1] +  this.rolls[rollNumber + 2];
+			rollNumber = rollNumber + 2;
+		} else {
+			runningTotal = runningTotal + this.rolls[rollNumber] + this.rolls[rollNumber + 1];
+			rollNumber = rollNumber + 2;
+		}
 	};
 	return runningTotal;
 };

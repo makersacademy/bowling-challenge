@@ -1,6 +1,6 @@
 var Game = function(){
   this.score = 0;
-  this.number = 1;
+  this.framenumber = 0;
   this.framescore = [];
 };
 
@@ -12,20 +12,26 @@ Game.prototype.score = function () {
   return this.score
 };
 
-Game.prototype.rollBall = function(x, y){
-  if (this.number >= 11) {
+Game.prototype.rollBall = function(x, y, z){
+  this.framenumber+=1;
+  if (this.framenumber >= 11) {
     throw new Error('The game is over');
   };
-  this.number+=1;
 
   if (x === 10) {
-    if (y != null) {
-    throw new Error('CHEATER!');
-    }
-    else {
-    // It works but stops the code from running. so have to by pass.
-    // throw 'STRIKE!';
-    this.framescore.push('X');
+    if (this.framenumber !== 10) {
+      if ((y != undefined ) || (z != undefined )) {
+      throw new Error('CHEATER!');
+      }
+      else {
+      // It works but stops the code from running. so have to by pass.
+      // throw 'STRIKE!';
+      this.framescore.push('X');
+      };
+    } else {
+      if ((y === undefined ) || (z === undefined )) {
+      throw new Error('This frame is not over! Roll a ball');
+      };
     };
   }
   else {

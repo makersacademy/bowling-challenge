@@ -21,10 +21,11 @@ describe('Game', function() {
   });
 
   it('knows which frame we are at when playing', function(){
-    expect(game.number).toEqual(1);
+    game.rollBall();
+    expect(game.framenumber).toEqual(1);
     game.rollBall();
     game.rollBall();
-    expect(game.number).toEqual(3);  
+    expect(game.framenumber).toEqual(3);  
   });
 
   it('knows that the game ends after the 10th frame is done playing', function(){
@@ -53,6 +54,13 @@ describe('Game', function() {
   it('from frame 1 to 9, doesnt accept a 2nd ball to be thrown on a frame if there was a strike on the 1st', function(){
     expect(function() { game.rollBall(10, 3) }).toThrow(new Error('CHEATER!'));
   });
+
+  it('knows that on the 10th frame, a strike on the 1st ball means at least 2 additional rolls', function(){
+    for (x=1; x<10; x++) {
+      game.rollBall()
+    };
+    expect(function() { game.rollBall(10, 2) }).toThrow(new Error('This frame is not over! Roll a ball'));
+  }); 
 
   xit('keeps the score by adding each frame (but waits for strikes and spares)', function(){
 

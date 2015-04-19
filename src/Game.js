@@ -41,12 +41,21 @@ Game.prototype.rollBall = function(x, y, z){
   }
   else {
     this.pinsko.push(y);
-    if ((x+y) ===10) {
-    // throw 'SPARE!';
-    this.framescore.push('/');
-    }
-    else {
-    this.framescore.push(x+y);
+    if (this.framenumber !== 10) {
+      if ((x+y) ===10) {
+      // throw 'SPARE!';
+      this.framescore.push('/');
+      } else {
+      this.framescore.push(x+y);
+      };
+    } else {
+      if ((x+y) === 10) {
+        if (z === undefined ) {
+        throw new Error('This frame is not over! Roll a ball');
+        } else {
+        this.pinsko.push(z);
+        };
+      };
     };
   };
 };

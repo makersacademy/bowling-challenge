@@ -11,17 +11,29 @@
 
         $('.frame').click(function() {
           currentFrame = $(this).attr('id');
-          console.log(currentFrame);
         });
 
         $('#confirm').click( function() {
-          console.log(currentFrame);
+
+          if (currentFrame == "bonus_one") {
+          bonus_one = new Frame();
+          bonus_one.bowled[0] = (Number($('#pins_hit').val()));
+          frames.push(bonus_one);
+          // $("#bonus_one").text(frames[10].bowled[0]);
+          return;
+          };
           frames[currentFrame - 1].add_bowl(Number($('#pins_hit').val()));
           updateFirstRoll(currentFrame);
           updateSecondRoll(currentFrame);
           updateTotal(currentFrame);
-
+          if (currentFrame == "10" && frames[9].knockedDown() === 10) {
+            showBonusRoll();
+            };
         });
+
+        var showBonusRoll = function() {
+          $('#bonus_one').show()
+        };
 
         var updateFirstRoll = function(currentFrame) {
           currentFrameDiv = "#" + currentFrame.toString() + " > .first_roll";
@@ -38,14 +50,14 @@
           $(currentFrameDiv).text(frames[currentFrame - 1].knockedDown());
         };
 
-
+        $('#bonus_one').hide();
       });
 
   </script>
 </head>
 <body>
   <div id="welcome"><h1>Score Your Own!</h1></div>
-  <h2> The Website Helping You Drink And Bowl...   </h2>
+  <h2> The Website Dat Help You Drink And Bowl...   </h2>
   <p> Simply click a frame then enter a number and click submit: </p>
   <div id="1" class="frame">
     <div class='frame_title'> FRAME 1</div>
@@ -103,6 +115,12 @@
   </div>
   <div id="10" class="frame">
     <div class='frame_title'> FRAME 10</div>
+    <div class='first_roll'></div>
+    <div class='second_roll'></div>
+    <div class='total'></div>
+  </div>
+  <div id="bonus_one" class="frame">
+    <div class='frame_title'> Bonus Roll</div>
     <div class='first_roll'></div>
     <div class='second_roll'></div>
     <div class='total'></div>

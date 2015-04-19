@@ -20,8 +20,6 @@ describe("WEB APP", function() {
 
    it("allows user to click on a frame and set values for that frame", function() {
 
-      console.log(frames);
-
       $('#2').click();
       $('#pins_hit').val(2);
       $('#confirm').click();
@@ -51,8 +49,6 @@ describe("WEB APP", function() {
 
    it("user can see values they have set for each frame", function() {
 
-      console.log(frames);
-
       $('#2').click();
       $('#pins_hit').val(2);
       $('#confirm').click();
@@ -64,5 +60,48 @@ describe("WEB APP", function() {
       expect($("#2 > .total").text()).toEqual("6");
    });
 
+   it("brings bonus frame into view if get spare in final round", function() {
 
+      expect($('#bonus_one')).toBeHidden();
+      $('#10').click();
+      $('#pins_hit').val(5);
+      $('#confirm').click();
+      $('#pins_hit').val(5);
+      $('#confirm').click();
+      expect($('#bonus_one')).toBeVisible();
+
+   });
+
+   it("allows user to add only bonus roll if spare", function() {
+
+      $('#10').click();
+      $('#pins_hit').val(5);
+      $('#confirm').click();
+      $('#pins_hit').val(5);
+      $('#confirm').click();
+      expect($('#bonus_one')).toBeVisible();
+      $('#bonus_one').click();
+      $('#pins_hit').val(5);
+      $('#confirm').click();
+      expect(bonus_one.bowled).toEqual([5]);
+      $('#bonus_one').click();
+      $('#pins_hit').val(5);
+      $('#confirm').click();
+      expect(bonus_one.bowled).toEqual([5]);
+   });
+
+   it("displays total and value of bonus roll 1", function() {
+
+      $('#10').click();
+      $('#pins_hit').val(5);
+      $('#confirm').click();
+      $('#pins_hit').val(5);
+      $('#confirm').click();
+      $('#bonus_one').click();
+      $('#pins_hit').val(5);
+      $('#confirm').click();
+      expect($("bonus_one > first_roll").text()).toEqual(5);
+      expect($("bonus_one > total").text()).toEqual(5);
 });
+
+   });

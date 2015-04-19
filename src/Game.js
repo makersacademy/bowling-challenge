@@ -21,6 +21,12 @@ Game.prototype.rollBall = function(x, y, z){
 
   this.pinsko.push(x); 
 
+  if (this.framescore.indexOf('/') > -1) {
+    this.framescore.pop();
+    this.score+=(x+10);
+    this.framescore.push(this.score);
+  };
+
   if (x === 10) {
     if (this.framenumber !== 10) {
       if ((y != undefined ) || (z != undefined )) {
@@ -46,7 +52,8 @@ Game.prototype.rollBall = function(x, y, z){
       // throw 'SPARE!';
       this.framescore.push('/');
       } else {
-      this.framescore.push(x+y);
+      this.score += (x+y)
+      this.framescore.push(this.score);
       };
     } else {
       if ((x+y) === 10) {

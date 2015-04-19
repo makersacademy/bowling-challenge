@@ -39,7 +39,7 @@ describe('Game', function() {
     game.rollBall(3, 5);
     game.rollBall(1, 0);
     game.rollBall(3, 0);
-    expect(game.framescore).toEqual([8, 1, 3]);
+    expect(game.framescore).toEqual([8, 9, 12]);
   });
 
   xit('returns the word STRIKE! if a player knocks 10 pins in the first shot', function() {
@@ -69,7 +69,7 @@ describe('Game', function() {
     });
 
     it('knows that a spare on the 2nd ball means one additional roll', function(){
-      expect( function(){ game.rollBall(7,3)}).toThrow(new Error('This frame is not over! Roll a ball'));
+      expect(function(){ game.rollBall(7,3)}).toThrow(new Error('This frame is not over! Roll a ball'));
     });
   });
 
@@ -92,7 +92,7 @@ describe('Game', function() {
     });
 
     xit('writes the total score that a player is at, at each of the 10 frames', function(){
-
+      expect(game.framescore).toEqual([5, 14, 29, 49, 60, 61, 77, 97, 117, 133]);
     });
   });
 });

@@ -31,7 +31,7 @@ I'd like to be to add bonus bowls if i strike or spare in the final frame
 
 As a bowler
 So that i can play a complete game
-I'd like to see an error if i have added too many or too little frames to a game
+I'd like to see an error if i have added too many frames to a game
 
 As a bowler
 So that i can get satisfaction

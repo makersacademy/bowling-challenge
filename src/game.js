@@ -1,35 +1,50 @@
 Game = function() {
-  frames = [];
+  this.frames = [];
 };
 
 Game.prototype.addFrames = function(frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10, optionalframe) {
-  frames.push(frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10, optionalframe)
+  this.frames.push(frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10);
+  if (optionalframe) { this.frames.push(optionalframe)};
 };
 
 Game.prototype.score = function() {
 
-  function add(a, b) {
-    return a + b;
-  };
+  this.FailIfBonusIncorrectlyGiven();
 
   var total = [];
-
   for (i = 0; i < 10; i++) {
-    total.push(frames[i].knockedDown());
+    currentFrame = this.frames[ i ];
+    nextFrame = this.frames[ i + 1 ];
+    isFinalFrame = i === 9;
 
-    if (frames[i].isSpare()) {
-      if (frames[i +1]) total.push(frames[i +1].bowled[0]);
-    } else if (frames[i].isStrike() && i === 9) {
-      total.push(frames[10].bowled[0]);
-      if (frames[10].bowled[1])
-        total.push(frames[10].bowled[1]);
-    } else if (frames[i].isStrike() && frames[i + 1].isStrike()) {
-        total.push(frames[i + 1].bowled[0]);
-        total.push(frames[i + 2].bowled[0]);
-    } else if ( frames[i].isStrike() ) {
-        total.push( frames[i + 1].knockedDown()
-      );
+    total.push(currentFrame.knockedDown());
+
+    if (currentFrame.isSpare()) {
+      total.push(nextFrame.bowled[0]);
+    } else if (currentFrame.isStrike() && isFinalFrame) {
+      total.push(this.bonusRollsTotal());
+    } else if (currentFrame.isStrike() && nextFrame.isStrike()) {
+        total.push(nextFrame.bowled[0]);
+        total.push(this.frames[i + 2].bowled[0]);
+    } else if ( currentFrame.isStrike() ) {
+        total.push( nextFrame.knockedDown());
     };
   };
-  return total.reduce(add);
+  return total.reduce(this.add);
+};
+
+Game.prototype.add = function(a, b) {
+    return a + b;
+};
+
+Game.prototype.bonusRollsTotal = function() {
+  if (this.frames[10].bowled[1]) {
+    return this.frames[10].knockedDown();
+  };
+  return this.frames[10].bowled[0];
+};
+
+Game.prototype.FailIfBonusIncorrectlyGiven = function() {
+
+  if ((this.frames.length === 11) && (this.frames[9].knockedDown() !== 10)) throw new Error("You cannot add bonuses as you did not strike or spare in your final frame!");
 };

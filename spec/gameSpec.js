@@ -3,7 +3,7 @@ describe("game", function() {
 it("totals ten frames with ten spares", function() {
 
 
-    game = new Game()
+    game = new Game();
 
     spareDouble = jasmine.createSpyObj(['isSpare', 'knockedDown', 'bowled']);
 
@@ -23,7 +23,7 @@ it("totals ten frames with ten spares", function() {
   });
 
 it("totals ten frames with different ten spares", function() {
-    game = new Game()
+    game = new Game();
 
     spareDouble = jasmine.createSpyObj(['isSpare', 'knockedDown', 'bowled']);
 
@@ -43,7 +43,7 @@ it("totals ten frames with different ten spares", function() {
   });
 
 it("totals a game with no bonuses", function() {
-  game = new Game()
+  game = new Game();
 
   frameDouble = jasmine.createSpyObj(['isSpare', 'knockedDown', 'bowled', 'isStrike']);
 
@@ -63,6 +63,7 @@ it("totals a game with no bonuses", function() {
 
     game.addFrames( frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble );
 
+  console.log(game.frames);
   expect(game.score()).toEqual(40);
 });
 
@@ -86,7 +87,11 @@ it("totals 12 strikes", function() {
       return 10;
     });
 
-    bonusRolls = jasmine.createSpyObj(['bowled']);
+    bonusRolls = jasmine.createSpyObj(['bowled', 'knockedDown']);
+
+    bonusRolls.knockedDown.and.callFake(function() {
+      return 20;
+    });
 
     bonusRolls.bowled = [10,10];
 
@@ -94,5 +99,30 @@ it("totals 12 strikes", function() {
 
     expect(game.score()).toEqual(300);
   });
+
+it("throws error if given bonuses which arent expected", function() {
+  game = new Game()
+
+  frameDouble = jasmine.createSpyObj(['isSpare', 'knockedDown', 'bowled', 'isStrike']);
+
+    frameDouble.isSpare.and.callFake(function() {
+      return false;
+    });
+
+    frameDouble.isStrike.and.callFake(function() {
+      return false;
+    });
+
+    frameDouble.bowled = [2,2];
+
+    frameDouble.knockedDown.and.callFake(function() {
+      return 4;
+    });
+
+    game.addFrames( frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble );
+
+  expect(function() {
+        game.score() } ).toThrowError("You cannot add bonuses as you did not strike or spare in your final frame!");
+});
 
 });

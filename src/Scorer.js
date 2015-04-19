@@ -1,9 +1,19 @@
 var Scorer = function() {
 	this.rolls = [];
+	this.frameCounter = 0;
 };
 
 Scorer.prototype.roll = function(score) {
 	this.rolls.push(score);
+	if (this.frameCounter < 10) {
+		if (score === 10) {
+			this.frameCounter +=1;
+		} else {
+			this.frameCounter +=0.5;
+		};
+	} else {
+		this.frameCounter +=0;
+	}
 };
 
 Scorer.prototype.total = function() {
@@ -23,4 +33,8 @@ Scorer.prototype.total = function() {
 		}
 	};
 	return runningTotal;
+};
+
+Scorer.prototype.frameNumber = function() {
+	return Math.ceil(this.frameCounter);
 };

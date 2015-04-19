@@ -2,6 +2,10 @@ body {
   background-color: #C63D0F;
 }
 
+#score {
+  font-size: 5em;
+}
+
 .frame {
   display: inline-block;
   width: 9%;

@@ -1,0 +1,24 @@
+body {
+  background-color: #C63D0F;
+}
+
+.frame {
+  display: inline-block;
+  width: 9.3%;
+  height: 5em;
+  background-color: #FDF3E7;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+input {
+  display: block;
+  margin: auto;
+  margin-top: 2em;
+  height: 2em;
+  width: 20em;
+}
+
+h1, h2 {
+  text-align: center;
+}

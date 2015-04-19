@@ -1,4 +1,4 @@
-describe("FEATURE: Game", function() {
+describe("INTEGRATION: Game", function() {
 
   it("totals the sample game provided", function() {
     game = new Game()

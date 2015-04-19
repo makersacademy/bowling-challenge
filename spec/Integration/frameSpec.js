@@ -1,4 +1,4 @@
-describe("FEATURE: Can play a frame", function() {
+describe("INTEGRATION: Can play a frame", function() {
 
   it("Can play a frame and persist score", function() {
     frame = new Frame();

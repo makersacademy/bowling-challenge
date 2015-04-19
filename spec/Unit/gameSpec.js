@@ -62,8 +62,6 @@ it("totals a game with no bonuses", function() {
     });
 
     game.addFrames( frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble, frameDouble );
-
-  console.log(game.frames);
   expect(game.score()).toEqual(40);
 });
 
@@ -150,6 +148,5 @@ it("returns GUTTER if no pins hit", function() {
 
     expect(game.score()).toEqual("GUTTER GAME!");
   });
-
 
 });

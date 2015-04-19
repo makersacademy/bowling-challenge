@@ -20,8 +20,11 @@ Game.prototype.getWinMessage = function(score) {
 };
 
 Game.prototype.calculateScore = function() {
-    var total = [];
+
+  var total = [];
+
   for (i = 0; i < 10; i++) {
+
     currentFrame = this.frames[ i ];
     nextFrame = this.frames[ i + 1 ];
     isFinalFrame = i === 9;

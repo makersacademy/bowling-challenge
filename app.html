@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="./src/frame.js"></script>
+  <link rel="stylesheet" type="text/css" href="./styles.css">
+  <script>
+    $(document).ready(function() {
+
+        frames = [new Frame(),new Frame(),new Frame(), new Frame(),new Frame(),new Frame(), new Frame(),new Frame(),new Frame(), new Frame()];
+
+        $('.frame').click(function() {
+          currentFrame = $(this).attr('id');
+          console.log(currentFrame);
+        });
+
+        $('#confirm').click( function() {
+          console.log(currentFrame);
+          frames[currentFrame - 1].add_bowl(Number($('#pins_hit').val()));
+        });
+      });
+
+  </script>
+</head>
+<body>
+  <div id="welcome"><h1>Score Your Own!</h1></div>
+  <h2> The Website Helping You Drink And Bowl...   </h2>
+  <p> Simply click a frame then enter a number and click submit: </p>
+  <div id="1" class="frame">FRAME 1</div>
+  <div id="2" class="frame">FRAME 2</div>
+  <div id="3" class="frame">FRAME 3</div>
+  <div id="4" class="frame">FRAME 4</div>
+  <div id="5" class="frame">FRAME 5</div>
+  <div id="6" class="frame">FRAME 6</div>
+  <div id="7" class="frame">FRAME 7</div>
+  <div id="8" class="frame">FRAME 8</div>
+  <div id="9" class="frame">FRAME 9</div>
+  <div id="10" class="frame">FRAME 10</div>
+  <input id="pins_hit" type='number'></input>
+  <input id="confirm" type='submit'></input>
+</body>
+</html>

@@ -87,12 +87,25 @@ describe('Game', function() {
     game.rollBall(2, 8, 6);
     });
 
-    it('keeps track of every throw (pins knocked out)', function() {
+    it('keeps track of every throw (pins knocked out per throw)', function() {
       expect(game.pinsko).toEqual([1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6]);
     });
 
     it('writes the total score that a player is at, at each of the 10 frames', function(){
       expect(game.framescore).toEqual([5, 14, 29, 49, 60, 61, 77, 97, 117, 133]);
+    });
+  });
+
+  describe('can deal with these 2 types of games', function(){
+    it('returns 0 if someone plays a gutter game', function(){
+      for (x=1; x<11; x++) {
+        game.rollBall(0, 0)
+      };
+      expect(game.score).toEqual(0);
+    });
+
+    it('returns 300 if someone plays a perfect game', function(){
+      
     });
   });
 });

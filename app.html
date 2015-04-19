@@ -15,13 +15,31 @@
 
         $('#confirm').click( function() {
 
-          if (currentFrame == "bonus_one") {
+          if (currentFrame == "bonus_one" && frames[9].bowled[0] !== 10) {
           bonus_one = new Frame();
           bonus_one.bowled[0] = (Number($('#pins_hit').val()));
           frames.push(bonus_one);
-          // $("#bonus_one").text(frames[10].bowled[0]);
+          $("#bonus_one > .first_roll").text(frames[10].bowled[0]);
+          $("#bonus_one > .total").text(frames[10].knockedDown());
           return;
           };
+
+          if (currentFrame == "bonus_one" && frames[9].bowled[0] === 10) {
+          if (frames[10]) {
+            bonus_one.add_bowl((Number($('#pins_hit').val())));
+            $("#bonus_one > .first_roll").text(frames[10].bowled[0]);
+            $("#bonus_one > .second_roll").text(frames[10].bowled[0]);
+            $("#bonus_one > .total").text(frames[10].knockedDown());
+            return;
+          };
+          bonus_one = new Frame();
+          bonus_one.add_bowl((Number($('#pins_hit').val())));
+          frames.push(bonus_one);
+          $("#bonus_one > .first_roll").text(frames[10].bowled[0]);
+          $("#bonus_one > .total").text(frames[10].knockedDown());
+          return;
+        };
+
           frames[currentFrame - 1].add_bowl(Number($('#pins_hit').val()));
           updateFirstRoll(currentFrame);
           updateSecondRoll(currentFrame);

@@ -100,8 +100,27 @@ describe("WEB APP", function() {
       $('#bonus_one').click();
       $('#pins_hit').val(5);
       $('#confirm').click();
-      expect($("bonus_one > first_roll").text()).toEqual(5);
-      expect($("bonus_one > total").text()).toEqual(5);
+      expect($("#bonus_one > .first_roll").text()).toEqual("5");
+      expect($("#bonus_one > .total").text()).toEqual("5");
 });
+
+   it("allows user to add two bonus roll if roll strike in frame 10", function() {
+
+      $('#10').click();
+      $('#pins_hit').val(10);
+      $('#confirm').click();
+      expect($('#bonus_one')).toBeVisible();
+      $('#bonus_one').click();
+      $('#pins_hit').val(5);
+      $('#confirm').click();
+      expect(bonus_one.bowled).toEqual([5]);
+      $('#bonus_one').click();
+      $('#pins_hit').val(5);
+      $('#confirm').click();
+      expect(bonus_one.bowled).toEqual([5, 5]);
+      expect($("#bonus_one > .first_roll").text()).toEqual("5");
+      expect($("#bonus_one > .second_roll").text()).toEqual("5");
+      expect($("#bonus_one > .total").text()).toEqual("10");
+   });
 
    });

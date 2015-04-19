@@ -104,8 +104,12 @@ describe('Game', function() {
       expect(game.score).toEqual(0);
     });
 
-    it('returns 300 if someone plays a perfect game', function(){
-      
+    xit('returns 300 if someone plays a perfect game', function(){
+      for (x=1; x<10; x++) {
+        game.rollBall(10)
+      };
+      game.rollBall(10, 10, 10)
+      expect(game.score).toEqual(300); 
     });
   });
 });

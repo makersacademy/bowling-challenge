@@ -27,12 +27,27 @@ Game.prototype.rollBall = function(x, y, z){
     this.framescore.push(this.score);
   };
 
-  if (this.framescore.indexOf('X') > -1) {
+
+  var count = 0;
+  for(var i = 0; i < this.framescore.length; ++i){
+    if(this.framescore[i] == 'X')
+        count++;
+  };
+
+  if (count === 1) {
     if (x!== 10) {
       this.framescore.pop();
       this.score += (10+x+y);
       this.framescore.push(this.score);
     };
+  };
+
+  if (count === 2) {
+      this.framescore.pop();
+      this.framescore.pop();
+      this.score += (20+x);
+      this.framescore.push(this.score);
+      this.framescore.push('X');
   };
 
   if (x === 10) {

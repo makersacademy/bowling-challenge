@@ -1,29 +1,4 @@
-body {
-  background-color: red;
-}
 
-li {
-  list-style-type: none; /*Removes bullet points*/
-  float:left; /*Moves div to next row if the window is too narrow*/
-  background:red; border:2px #000 solid; /*For demo*/
-  width: 80px;
-}
-
-/* -------------------------------------------*/
-/*    Copyright 2014 Bowlinggenius            */
-/*    You are not allowed or permitted to     */
-/*    copy or modify this file in anyway.     */
-/* -------------------------------------------*/
-
-.col-centered{
-    float: none;
-    margin: 0 auto;
-}
-.hdcp_font {
-    font-size:1em;
-    color:black;
-    font-weight:bold;
-}
 /* ------------------------------------------- */
 /*    special class for Frame 1                */
 /* ------------------------------------------- */
@@ -64,59 +39,6 @@ div.framebox {
 
 
 /* ------------------------------------------- */
-/*    special classes for Frame 10             */
-/* ------------------------------------------- */
-/* is a for ball 3 in frames 10 */
-div.strikebox10 {
-    box-sizing: border-box;
-    width: 33%;
-    height:100%;
-    padding-top: 3px;
-    border-left:solid thin Black;
-    border-bottom:solid thin Black;
-    float: right;
-}
-
-/* is a for ball 1 in frames 10 */
-div.ball1box10 {
-    box-sizing: border-box;
-    width: 33%;
-    height:100% ;
-    padding-top: 3px;
-    margin: 0;
-    float: left;
-}
-
-/* is a for ball 2 in frames 10 */
-div.ball2box10 {
-    box-sizing: border-box;
-    width: 33%;
-    height:100% ;
-    padding-top: 3px;
-    border-left:solid thin Black;
-    border-bottom:solid thin Black;
-    margin: 0;
-    float: left;
-}
-
-/* ------------------------------------------- */
-/*    Classes used by most frames             */
-/* ------------------------------------------- */
-
-/* displays name and hdcp info */
-.frameinfo {
-    box-sizing: border-box;
-    background-color:#DEDEDE;
-    height:20%;
-}
-.frameInforRegFormStyle{
-  border-width:1px;
-  border-style: solid;
-  border-color: black;
-  margin-bottom:2px;
-}
-
-/* ------------------------------------------- */
 /*  Holds the little frame number - not score */
 /* ------------------------------------------- */
 .framename {
@@ -125,41 +47,12 @@ div.ball2box10 {
     height: 25%;
     margin: 0pt 0pt 0pt 0pt;
     border-bottom:solid thin Black;
-    background-color:#BBBB9D;
+    background-color: orange;
     text-align:center;
-    font-size:80%;  /* will be overloaded for smaller screens*/
-    padding-top:3px;
+    font-size:100%;  /* will be overloaded for smaller screens*/
+    padding-top:6px;
 }
 
-/* is a shell container to hold border-box for  ball 1  ball 2 and ball 3 */
-/* you need this as an outer box to hold the smaller ball boxes    */
-div.outerbox {
-    box-sizing: border-box;
-    width: 100%;
-    height: 40%;
-    margin: 0pt 0pt 0pt 0pt;
-    float: left;
-}
-
-/* is a for ball 2 in frames 1 thru 9 */
-div.strikebox {
-    box-sizing: border-box;
-    width: 50%;
-    height:100%;
-    padding-top: 6px;
-    border-left:solid thin Black;
-    border-bottom:solid thin Black;
-    float: right;
-}
-
-div.ball1box {
-    box-sizing: border-box;
-    width: 50%;
-    height:100% ;
-    padding-top: 6px;
-    margin: 0;
-    float: left;
-}
 div.framescorebox {
     box-sizing: border-box;
     width: 100%;
@@ -171,246 +64,38 @@ div.framescorebox {
 }
 
 .panel-body {
-  border:2px #C0C0C0 solid;
-  padding: 0px;
-  height:110px;
+  font-size: 24px;
+  /*border:2px #C0C0C0 solid;*/
+  padding: 20px;
+  height:50px;
   margin:2.0px ;
 }
 
 body {
- background: #ffffff url('images/bg_blue-min.png') repeat-x;
+  background: grey;
   padding: 10px 10px 10px 10px;
   line-height: 100%;
 }
-/*
-.footer {
-  padding: 10px 10px 10px 10px;
-}
-*/
-.header_wayne
-{
-/*position: relative;*/
-width: 100%;
-/*background: #fff url('images/bg_10-min.png') repeat-x;*/
-background: #fff url('images/lane3-min.png') repeat-x;
-vertical-align:middle;
+
+.btn {
+  display: inline;
+  padding: 10px;
+  color: red;
 }
 
-
-.btn-group{
-  margin-bottom: 10px;
-}
-
-.btn-toolbar > .btn + .btn
-{
-  margin-left: 0px;
-}
-
-
-.btn-default:hover,
-/*.btn-default:focus,*/
-.btn-default.active,
-.btn-default:active,
-.open .dropdown-toggle.btn-default {
+.btn:hover {
   color: #333333;
   background-color: #829db6;
-  border-color: #000000;
 }
 
-
-.col-md-9
- {
-  padding-left: 15px;
+.scoresheet_container {
 }
 
-.jumbotron {
-  margin-bottom: 5px;
-  color: inherit;
-  background-color: #eeeeee;
+.frameScoreFontSize {
+  font-size: 20px;
+  padding: 10px;
 }
 
-.container .jumbotron {
-  border-radius: 6px;
-  padding:5px;
-  height:94px;
-}
-
-.navbar-brand {
-  padding: 10px 10px;
-  font-size: 14px;
-  line-height: 100%;
-}
-
-.navbar {
-  min-height: 30px;
-  margin-bottom: 5px;
-  text-align:center;
-}
-
-.navbar-nav > li > a {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  line-height: 100%;
-}
-
-.container {
-  padding-right: 10px;
-  padding-left: 10px;
-}
-
-
-
-.infobutton {
-    float:left;
-}
-.threebutton {
-    height:90%;
-}
-.gamehidden {
-    display:none;
-}
-
-/* below 320 here */
-  .tooSmallgoAway {
-     display: none;
-  }
-  .imageSize {
-    vertical-align: middle;
-  }
-  .pinButtons > .btn {
-    padding: 1px 5px;
-    font-size: 12px;
-    line-height: 1.5;
-    border-radius: 3px;
-  }
-  .frameFontSize{
-    font-size:xx-small;
-  }
-  .frameScoreFontSize{
-    font-size:xx-small;
-  }
-
- .container {
-        width: 100%;
-    }
-
-.navbar {
-  min-height:25px;
-}
-
-
-
-/* order of Media Queries very important ------ */
-/* iPhone, etc portrait ---- */
-@media only screen and (min-width: 320px) {
-/*  body { background: orange; }
-  body:before { content: "Between 320 and 480"; }
-*/
-  .tooSmallgoAway {
-     display: none;
-  }
-  .frameFontSize{
-    font-size:xx-small;
-  }
-  .frameScoreFontSize{
-    font-size:x-small;
-  }
-
-
-  .pinButtons > .btn {
-    padding: 1px 5px;
-    font-size: 12px;
-    line-height: 1.5;
-    border-radius: 3px;
-  }
-
-}
-/* iPhone, etc landscape ---- */
-@media only screen and (min-width: 480px) {
-/*    body { background: purple; }
-    body:before { content: "Between 480 and 768"; }
-*/
-    .tooSmallgoAway {
-        display: none;
-    }
-    .frameFontSize{
-        font-size:xx-small;
-    }
-    .frameScoreFontSize{
-        font-size:x-small;
-    }
-
-  .pinButtons > .btn {
-    padding: 1px 5px;
-    font-size: 12px;
-    line-height: 1.5;
-    border-radius: 3px;
-  }
-
-}
-/* iPad, tablets etc portrait ---- */
-@media only screen and (min-width: 768px) {
-/*    body {background: blue; }
-    body:before { content: "Between 768 and 900"; }
-*/
-    .tooSmallgoAway {
-        display: none;
-    }
-    .frameFontSize{
-        font-size:small;
-    }
-    .frameScoreFontSize{
-        font-size:small;
-    }
-
-    .pinButtons > .btn {
-      padding: 5px 10px;
-      font-size: 12px;
-      line-height: 1.5;
-      border-radius: 3px;
-    }
-}
-
-/* Laptops, Desktops, etc ---- */
-@media only screen and (min-width: 1024px) {
-/*    body { background: yellow; }
-    body:before { content: "Between 1024 and 1200";}
-*/
-
-    .tooSmallgoAway {
-        display: inline;
-    }
-    .frameFontSize{
-        font-size:small ;
-    }
-    .frameScoreFontSize{
-        font-size:medium;
-    }
-    .pinButtons > .btn{
-        padding: 6px 12px;
-        font-size: 14px;
-        line-height: 1.428571429;
-        border-radius: 4px;
-    }
-}
-@media only screen and (min-width: 1200px) {
-/*    body { background: green; }
-    body:before { content: "Greater than 1200";}
-*/
-
-    .tooSmallgoAway {
-        display: inline;
-    }
-    .frameFontSize{
-        font-size:medium;
-    }
-    .frameScoreFontSize{
-        font-size:medium;
-    }
-    .pinButtons > .btn{
-        padding: 6px 12px;
-        font-size: 14px;
-        line-height: 1.428571429;
-        border-radius: 4px;
-    }
+.frameFontSize {
+  font-size: 20px;
 }

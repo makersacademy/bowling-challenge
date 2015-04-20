@@ -1,10 +1,59 @@
+.ribbon {
+ font-size: 26px !important;
+ /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
+
+ width: 50%;
+
+ position: relative;
+ background: #ba89b6;
+ color: #fff;
+ text-align: center;
+ padding: 1em 2em; /* Adjust to suit */
+ margin: 2em auto 3em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
+}
+.ribbon:before, .ribbon:after {
+ content: "";
+ position: absolute;
+ display: block;
+ bottom: -1em;
+ border: 1.5em solid #986794;
+ z-index: -1;
+}
+.ribbon:before {
+ left: -2em;
+ border-right-width: 1.5em;
+ border-left-color: transparent;
+}
+.ribbon:after {
+ right: -2em;
+ border-left-width: 1.5em;
+ border-right-color: transparent;
+}
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+ content: "";
+ position: absolute;
+ display: block;
+ border-style: solid;
+ border-color: #804f7c transparent transparent transparent;
+ bottom: -1em;
+}
+.ribbon .ribbon-content:before {
+ left: 0;
+ border-width: 1em 0 0 1em;
+}
+.ribbon .ribbon-content:after {
+ right: 0;
+ border-width: 1em 1em 0 0;
+}
+
+
 
 /* ------------------------------------------- */
 /*    special class for Frame 1                */
 /* ------------------------------------------- */
 div.frameboxFrameone {
     box-sizing: border-box;
-    width: 8.333%;
+    width: 10%;
     height: 80%;
     border:solid thin Black ;
     float: left;
@@ -21,7 +70,7 @@ div.frameboxFrameone {
 /* ------------------------------------------- */
 div.framebox {
     box-sizing: border-box;
-    width: 8.333%;
+    width: 10%;
     height: 80%;
     margin: 0pt 0pt 0pt 0pt;
     border-left:none;
@@ -63,17 +112,21 @@ div.framescorebox {
     text-align:center;
 }
 
-.panel-body {
+div.panel-body {
   font-size: 24px;
+  color: white;
   /*border:2px #C0C0C0 solid;*/
-  padding: 20px;
+  padding-bottom: 40px;
   height:50px;
-  margin:2.0px ;
+  margin-left: auto;
+  margin-right: auto;
+  align-content: middle;
 }
 
 body {
-  background: grey;
-  padding: 10px 10px 10px 10px;
+  background-image: url("/public/bowling.jpg");
+  background-repeat: no-repeat;
+  padding: 30px;
   line-height: 100%;
 }
 
@@ -81,6 +134,9 @@ body {
   display: inline;
   padding: 10px;
   color: red;
+  width: 37px;
+  height: 37px;
+  border-radius: 4px;
 }
 
 .btn:hover {
@@ -88,14 +144,7 @@ body {
   background-color: #829db6;
 }
 
-.scoresheet_container {
-}
-
 .frameScoreFontSize {
   font-size: 20px;
   padding: 10px;
-}
-
-.frameFontSize {
-  font-size: 20px;
 }

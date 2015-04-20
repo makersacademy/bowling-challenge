@@ -136,7 +136,7 @@ describe('Bowling scoresheet', function(){
       bowling.roll(2);
       bowling.roll(8);
       bowling.roll(6);
-      expect(bowling.scoresArray).toEqual([1,4,4,5,6,'/',5,'/',10,'X',0,1,7,'/',6,'/',10,'X',2,'/',6]);
+      expect(bowling.scoresArray).toEqual([1,4,4,5,6,'/',5,'/',10,'X',0,1,7,'/',6,'/',10,'X',2,8,6]);
     });
   });
 });

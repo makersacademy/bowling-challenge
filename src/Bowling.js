@@ -7,9 +7,19 @@ var Bowling = function(){
 
 Bowling.prototype.roll = function(rollScore){
 
-  if (rollScore > 10) throw 'Illegal score';
-  this.rollsArray.push(rollScore);
-  this.registerRoll(rollScore);
+  function throwAlert(){
+    alert("Illegal score");
+    throw("Illegal score");
+  };
+
+  if (rollScore > 10) {
+    throwAlert();
+  } else if (this.frameCounter % 2 === 0 && (rollScore + this.scoresArray[this.scoresArray.length - 1] > 10)){
+    throwAlert();
+  } else {
+    this.rollsArray.push(rollScore);
+    this.registerRoll(rollScore);
+  };
 };
 
 Bowling.prototype.registerRoll = function(rollScore){

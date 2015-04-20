@@ -31,15 +31,12 @@ Bowling.prototype.registerRoll = function(rollScore){
 
   if (tenthFrame()){
     self.scoresArray.push(rollScore);
-
   } else if (rollScore === 10){
     this.scoresArray.push(rollScore);
     this.scoresArray.push('X');
     this.frameCounter += 2;
-
   } else if (this.frameCounter % 2 === 0){
     if (rollScore + this.scoresArray[this.scoresArray.length - 1] === 10){
-      // console.log(rollScore + this.scoresArray[this.scoresArray.length - 1]);
       this.scoresArray.push('/');
       this.frameCounter ++;
     } else {
@@ -50,7 +47,6 @@ Bowling.prototype.registerRoll = function(rollScore){
     this.scoresArray.push(rollScore);
     this.frameCounter ++;
   };
-
   this.rollCounter ++;
 };
 
@@ -72,7 +68,7 @@ Bowling.prototype.cumulativeScore = function(){
   };
 
   function strikeBonus (){
-    return self.rollsArray[frameStart + 1] + self.rollsArray[frameStart + 2];
+    return self.rollsArray[frameStart + 1] + self.rollsArray[frameStart + 2] || 0;
   };
 
   function spareBonus (){

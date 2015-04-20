@@ -4,7 +4,19 @@ $(document).ready(function(){
 
   var afterRoll = function(){
     $('#finalScore').text(bowling.cumulativeScore());
-      $('#scoreTally').text(bowling.scoresArray);
+    for (var i = 1; i <= 21; i ++){
+      $('.outerbox' + i).text(bowling.scoresArray[i - 1]);
+    };
+    for (var i = 1; i <= 22; i ++){
+
+    };
+    if (bowling.frameCounter - 1 <= 17 && bowling.frameCounter - 1 % 2 === 0){
+      $('#fsSymbol0_' + bowling.frameCounter - 1).text(bowling.cumulativeScore());
+    } else if (bowling.frameCounter - 1 > 17){
+      $('#fsSymbol0_' + bowling.frameCounter - 1).text(bowling.cumulativeScore());
+    } else {
+
+    };
   };
 
   $('#btn0').click(function(){

@@ -7,9 +7,9 @@ describe('Bowling scoresheet', function(){
       bowling = new Bowling();
     });
 
-    xit('an illegal score', function(){
-      expect(function(){bowling.roll(11)}).toThrow('Illegal score');
-    });
+    // it('an illegal score', function(){
+    //   expect(function(){bowling.roll(11)}).toThrow('Illegal score');
+    // });
   });
 
   describe('knows the cumulative score for', function(){

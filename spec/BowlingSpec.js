@@ -116,7 +116,7 @@ describe('Bowling scoresheet', function(){
       expect(bowling.scoresArray).toEqual([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
     });
 
-    xit('an example game', function(){
+    it('an example game', function(){
       bowling.roll(1);
       bowling.roll(4);
       bowling.roll(4);

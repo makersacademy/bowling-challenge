@@ -18,14 +18,55 @@ describe('Bowling', function(){
       expect(bowling.bowlingFrame).toEqual(1);
     });
 
-    it('knows how many pins are left', function() {
-      expect(bowling.pinsLeft).toEqual(10);
+    it('can read back the scores for all frames', function() {
+      array = bowling.allFramesScore();
+      expect(array).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     });
 
-    it('can hit some pins', function() {
-      bowling.bowl(6);
-      expect(bowling.pinsLeft).toEqual(4);
-      expect(bowling.score).toEqual(6);
+  });
+
+  describe('Frames', function() {
+    it('there should be ten frames made', function() {
+      var framesNumber = Object.keys(bowling.frames).length
+      var failures = 0
+      for (i = 1; i <= framesNumber; i++) {
+        if(bowling.frames[i] instanceof Frame){
+          continue;
+        } else {
+          failures++;
+        };
+      };
+      expect(failures).toEqual(0);
+      expect(framesNumber).toEqual(10);
+    });
+
+    it('should be able to bowl twice and have the score returned', function() {
+      bowling.bowl(5);
+      bowling.bowl(4);
+      expect(bowling.score).toEqual(5);
+    });
+
+    it('should be able to move on to the next frame when there have been two rolls', function() {
+      for (i = 0; i <= 3; i++) {
+        bowling.bowl(4);
+      }
+      expect(bowling.bowlingFrame).toEqual(2)
+    });
+
+    xit('should be able to take two scores sequentially', function() {
+      bowling.frame(2);
+      bowling.frame(3);
+      expect(bowling.score).toEqual(5);
+    });
+
+  });
+
+  describe('Final Scores', function() {
+    xit('can end the game when there have been 10 frames', function() {
+      for (i = 0; i < 18; i++) {
+        bowling.bowl(3);
+      };
+      expect( function(){ bowling.bowl(1); } ).toThrow(new Error('it is the end of the game'));
     });
 
   });

@@ -29,3 +29,12 @@ Frame.prototype.spare = function() {
   this.score = 'spare';
   this.frameTally++;
 };
+
+Frame.prototype.bonus = function(score, previousScore) {
+  if(previousScore === 'strike'){
+    
+  };
+  if(previousScore === 'spare'){
+
+  };
+};

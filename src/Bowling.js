@@ -13,11 +13,6 @@ Bowling.prototype.bowl = function(score) {
   };
   if(this.bowlingFrame <= 10) {
     this.frames[this.bowlingFrame].bowl(score);
-    // if(this.frames[this.bowlingFrame].score === 'strike') {
-    //   if(this.nextFrame(){
-        
-    //   };
-    // };
   };
   if(this.nextFrame()) {
     this.bowlingFrame += 1;

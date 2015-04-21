@@ -11,11 +11,16 @@ Bowling.prototype.bowl = function(score) {
   if(this.bowlingFrame > 10) {
     throw new Error('it is the end of the game');
   };
-  if(this.nextFrame()) {
-    this.bowlingFrame += 1;
-  };
   if(this.bowlingFrame <= 10) {
     this.frames[this.bowlingFrame].bowl(score);
+    // if(this.frames[this.bowlingFrame].score === 'strike') {
+    //   if(this.nextFrame(){
+        
+    //   };
+    // };
+  };
+  if(this.nextFrame()) {
+    this.bowlingFrame += 1;
   };
 };
 

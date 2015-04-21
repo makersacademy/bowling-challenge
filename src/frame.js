@@ -6,10 +6,26 @@ var Frame = function() {
 
 Frame.prototype.bowl = function(score) {
   this.pinsLeft -= score;
-  this.scoring(score);
+  if(this.pinsLeft === 0 && this.frameTally === 0) {
+    this.strike();
+  } else if (this.pinsLeft === 0) {
+    this.spare();
+  } else {
+    this.normalScore(score);
+  }
 };
 
-Frame.prototype.scoring = function(score) {
+Frame.prototype.normalScore = function(score) {
   this.score += score;
+  this.frameTally++;
+};
+
+Frame.prototype.strike = function() {
+  this.score = 'strike'
+  this.frameTally = 2;
+};
+
+Frame.prototype.spare = function() {
+  this.score = 'spare';
   this.frameTally++;
 };

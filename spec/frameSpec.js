@@ -24,4 +24,15 @@ describe('Frame', function() {
     expect(frame.frameTally).toEqual(1);
   });
 
+  it('can bowl a strike', function(){
+    frame.bowl(10);
+    expect(frame.score).toEqual('strike');
+  });
+
+  it('can bowl a spare', function() {
+    frame.bowl(5);
+    frame.bowl(5);
+    expect(frame.score).toEqual('spare');
+  });
+
 });

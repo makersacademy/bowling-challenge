@@ -53,6 +53,13 @@ describe('Bowling', function(){
       expect(bowling.bowlingFrame).toEqual(2);
     });
 
+    it('can record a bonus score when the last frame was a spare', function() {
+      bowling.bowl(5);
+      bowling.bowl(5);
+      bowling.bowl(3);
+      expect(bowling.frames[1].score).toEqual(13);
+    });
+
   });
 
   describe('Final Scores', function() {

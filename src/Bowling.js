@@ -14,6 +14,9 @@ Bowling.prototype.bowl = function(score) {
   if(this.bowlingFrame <= 10) {
     this.frames[this.bowlingFrame].bowl(score);
   };
+  if(this.bowlingFrame > 1) {
+    this.bonus();
+  };
   if(this.nextFrame()) {
     this.bowlingFrame += 1;
   };
@@ -35,4 +38,12 @@ Bowling.prototype.allFramesScore = function() {
     thing.push(this.frames[i].score);
   };
   return thing;
+};
+
+Bowling.prototype.bonus = function() {
+  var lastFrame = this.bowlingFrame - 1
+  if(this.frames[lastFrame].score === 'spare') {
+    bonus = this.frames[this.bowlingFrame].score;
+    this.frames[lastFrame].score = 10 + bonus;
+  };
 };

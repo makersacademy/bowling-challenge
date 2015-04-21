@@ -9,11 +9,6 @@ describe('Bowling', function(){
       expect(bowling.score).toEqual(0);
     });
 
-    it('should be able to increment the score by a given number', function() {
-      bowling.scoreUp(2);
-      expect(bowling.score).toEqual(2);
-    });
-
     it('knows which frame it is on', function() {
       expect(bowling.bowlingFrame).toEqual(1);
     });
@@ -40,10 +35,11 @@ describe('Bowling', function(){
       expect(framesNumber).toEqual(10);
     });
 
-    it('should be able to bowl twice and have the score returned', function() {
+    it('should be able to bowl thrice and incorporate the score', function() {
       bowling.bowl(5);
       bowling.bowl(4);
-      expect(bowling.score).toEqual(5);
+      bowling.bowl(3);
+      expect(bowling.score).toEqual(9);
     });
 
     it('should be able to move on to the next frame when there have been two rolls', function() {
@@ -53,20 +49,22 @@ describe('Bowling', function(){
       expect(bowling.bowlingFrame).toEqual(2)
     });
 
-    xit('should be able to take two scores sequentially', function() {
-      bowling.frame(2);
-      bowling.frame(3);
-      expect(bowling.score).toEqual(5);
-    });
-
   });
 
   describe('Final Scores', function() {
-    xit('can end the game when there have been 10 frames', function() {
-      for (i = 0; i < 18; i++) {
+    it('can end the game when there have been 10 frames', function() {
+      for (i = 1; i < 22; i++) {
         bowling.bowl(3);
       };
       expect( function(){ bowling.bowl(1); } ).toThrow(new Error('it is the end of the game'));
+    });
+
+    it('can play a game without any spares or strikes', function() {
+      for (i = 1; i < 22; i++) {
+        bowling.bowl(4);
+      };
+      expect( function(){ bowling.bowl(1); } ).toThrow(new Error('it is the end of the game'));
+      expect(bowling.score).toEqual(80);
     });
 
   });

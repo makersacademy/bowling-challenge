@@ -19,4 +19,9 @@ describe('Frame', function() {
     expect(frame.score).toEqual(9);
   });
 
+  it('should be able to record the number of bowls made', function() {
+    frame.bowl(3);
+    expect(frame.frameTally).toEqual(1);
+  });
+
 });

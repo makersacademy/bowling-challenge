@@ -7,22 +7,24 @@ var Bowling = function() {
   };
 };
 
-Bowling.prototype.scoreUp = function(score) {
-  this.score += score;
-};
-
-Bowling.prototype.bowl = function(hit) {
-  if(this.bowlingFrame === 10) {
+Bowling.prototype.bowl = function(score) {
+  if(this.bowlingFrame > 10) {
     throw new Error('it is the end of the game');
   };
   if(this.nextFrame()) {
     this.bowlingFrame += 1;
   };
-  this.frames[this.bowlingFrame].bowl(hit);
+  if(this.bowlingFrame <= 10) {
+    this.frames[this.bowlingFrame].bowl(score);
+  };
 };
 
+// this needs to be called in a different way, not just be tied to
+// bowling as it doesn't do the final score properly otherwise.
+// (Though with spares etc, this might be different.)
 Bowling.prototype.nextFrame = function() {
   if(this.frames[this.bowlingFrame].frameTally === 2) {
+    this.score += this.frames[this.bowlingFrame].score
     return true;
   };
 };

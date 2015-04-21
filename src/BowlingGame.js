@@ -28,7 +28,7 @@ BowlingGame.prototype.enterScore = function(score) {
   if(this.currentFrame === 10) { this.tenthFrame(score); }
   else{
     if(this.takingStrikeBonus) { this.addStrikeBonus(score); };
-    if(score===10) { this.toggleStrikeBonus(); };
+    if(score===10 && !this.takingStrikeBonus) { this.toggleStrikeBonus(); }; //#######
 
     this.addSpareBonus(score);
     if(this.frame(this.currentFrame) + score === 10 && score<10) { this.toggleSpareBonus(); };
@@ -42,21 +42,26 @@ BowlingGame.prototype.enterScore = function(score) {
 };
 
 BowlingGame.prototype.tenthFrame = function(score) {
-    if(score===10) { this.takingStrikeBonus = true }
-    if(this.frames[9] + score === 10 && score<10) { this.takingSpareBonus = true }
-    this.frames[9] += score;
-    this.tenthFrameRollCount++;
-
-    if(this.tenthFrameRollCount === 3 && (this.takingStrikeBonus || this.takingSpareBonus)){ this.currentFrame++ }
-    else if(this.tenthFrameRollCount===2 && this.frames[9] < 10){ this.currentFrame++ }
+  if(this.addToFrame9 === true) {
+    this.frames[this.strikeFrame-1] += score;
+    this.addToFrame9 = false;
   };
+  if(this.tenthFrameRollCount === 0 && this.takingStrikeBonus) {
+    this.frames[this.strikeFrame-1] += score;
+    if(this.takingStrikeBonus2) {
+      this.frames[this.strikeFrame2-1] += score;
+      this.addToFrame9 = true;
+      };
+  }
+  if(score===10) { this.takingStrikeBonus = true }
+  if(this.frames[9] + score === 10 && score<10) { this.takingSpareBonus = true }
+  this.frames[9] += score;
+  this.tenthFrameRollCount++;
 
-BowlingGame.prototype.toggleStrikeBonus = function() {
-  this.secondRollOnFrame = true; //skip second roll
-  this.takingStrikeBonus = true;
-  this.strikeBonusRolls = 0;
-  this.strikeFrame = this.currentFrame;
+  if(this.tenthFrameRollCount === 3 && (this.takingStrikeBonus || this.takingSpareBonus)){ this.currentFrame++ }
+  else if(this.tenthFrameRollCount===2 && this.frames[9] < 10){ this.currentFrame++ }
 };
+
 
 BowlingGame.prototype.addStrikeBonus = function(score) {
   if(this.takingStrikeBonus){
@@ -82,10 +87,18 @@ BowlingGame.prototype.addStrikeBonus = function(score) {
   };
 };
 
-BowlingGame.prototype.toggleDoubleStrikeBonus = function() {
-  this.strikeFrame2 = this.currentFrame-1;
+BowlingGame.prototype.toggleStrikeBonus = function() {
+  this.secondRollOnFrame = true; //skip second roll
+  this.takingStrikeBonus = true;
+  this.strikeBonusRolls = 0;
   this.strikeFrame = this.currentFrame;
+};
+
+BowlingGame.prototype.toggleDoubleStrikeBonus = function() {
+  this.toggleStrikeBonus();
+  this.strikeFrame2 = this.currentFrame-1;
   this.takingStrikeBonus2 = true;
+  this.strikeBonusRolls2 = 1;
 };
 
 BowlingGame.prototype.addSpareBonus = function(score) {

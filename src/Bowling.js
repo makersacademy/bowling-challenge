@@ -40,10 +40,28 @@ Bowling.prototype.allFramesScore = function() {
   return thing;
 };
 
+// this is going to have a lot of trouble once we get into multiple spares
+// and multiple strikes etc.
 Bowling.prototype.bonus = function() {
   var lastFrame = this.bowlingFrame - 1
   if(this.frames[lastFrame].score === 'spare') {
     bonus = this.frames[this.bowlingFrame].score;
     this.frames[lastFrame].score = 10 + bonus;
   };
+  if(this.frames[lastFrame].score === 'strike' && this.frames[this.bowlingFrame].frameTally === 2) {
+    bonus = this.frames[this.bowlingFrame].score;
+    this.frames[lastFrame].score = 10 + bonus;
+  };
 };
+
+
+
+
+
+
+
+
+
+
+
+

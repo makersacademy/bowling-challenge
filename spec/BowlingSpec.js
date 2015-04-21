@@ -60,6 +60,21 @@ describe('Bowling', function(){
       expect(bowling.frames[1].score).toEqual(13);
     });
 
+    it('can record a bonus score when the last frame was a strike', function() {
+      bowling.bowl(10);
+      bowling.bowl(3);
+      bowling.bowl(4);
+      expect(bowling.frames[1].score).toEqual(17);
+    });
+
+    it('records the correct bonus when multiple strikes are strung together', function(){
+      bowling.bowl(10);
+      bowling.bowl(10);
+      bowling.bowl(3);
+      bowling.bowl(3);
+      expect(bowling.frames[1].score).toEqual(23);
+    });
+
   });
 
   describe('Final Scores', function() {

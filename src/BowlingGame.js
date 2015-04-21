@@ -8,7 +8,7 @@ function BowlingGame() {
   this.strikeBonusRolls = 0;
   this.strikeFrame2 = null;
   this.takingStrikeBonus2 = false;
-  this.strikeBonusRolls2 = 0;
+  this.strikeBonusRolls2 = 1;
   this.spareFrame = null;
   this.takingSpareBonus = false;
   this.gameOver = false;
@@ -27,8 +27,8 @@ BowlingGame.prototype.enterScore = function(score) {
 
   if(this.currentFrame === 10) { this.tenthFrame(score); }
   else{
-    if(score===10) { this.toggleStrikeBonus(); }; // NOT IF STRIKE IN 10th FRAME
     if(this.takingStrikeBonus) { this.addStrikeBonus(score); };
+    if(score===10) { this.toggleStrikeBonus(); };
 
     this.addSpareBonus(score);
     if(this.frame(this.currentFrame) + score === 10 && score<10) { this.toggleSpareBonus(); };
@@ -59,38 +59,33 @@ BowlingGame.prototype.toggleStrikeBonus = function() {
 };
 
 BowlingGame.prototype.addStrikeBonus = function(score) {
-  if(this.strikeBonusRolls < 2 && this.currentFrame != this.strikeFrame) {
+  if(this.takingStrikeBonus){
     this.frames[this.strikeFrame-1] += score;
     this.strikeBonusRolls++;
   }
-  if(this.strikeBonusRolls>=2) {
-    this.strikeBonusRolls = 0;
+  if(this.takingStrikeBonus2) {
+    this.frames[this.strikeFrame2-1] += score;
+    this.strikeBonusRolls2++;
+  }
+
+  if(score === 10) { this.toggleDoubleStrikeBonus(); };
+
+  if(this.strikeBonusRolls === 2) {
     this.takingStrikeBonus = false;
     this.strikeFrame = null;
+    this.strikeBonusRolls = 0;
   };
+  if(this.strikeBonusRolls2 === 2) {
+    this.takingStrikeBonus2 = false;
+    this.strikeFrame2 = null;
+    this.strikeBonusRolls2 = 1;
+  };
+};
 
-    // if(score==10) {
-    //   this.strikeFrame2 = this.currentFrame-1;
-    //   this.takingStrikeBonus2 = true;
-    //   this.toggleStrikeBonus();
-    // };
-    // if(this.strikeFrame != this.currentFrame) {
-    //   this.frames[this.strikeFrame-1] += score;
-    //   this.strikeBonusRolls++;
-    // }
-    // if(this.strikeBonusRolls2 === 2) {
-    //   this.takingStrikeBonus2 = false;
-    //   this.strikeFrame2 = null;
-    //   this.strikeBonusRolls2 = 0;
-    // };
-    // if(this.takingStrikeBonus2 === true) {
-    //   this.frames[this.strikeFrame2-1] += score;
-    //   this.strikeBonusRolls2++;
-    // };
-    // if(this.strikeBonusRolls === 2) {
-    //   this.takingStrikeBonus = false;
-    //   this.strikeFrame = null;
-    // };
+BowlingGame.prototype.toggleDoubleStrikeBonus = function() {
+  this.strikeFrame2 = this.currentFrame-1;
+  this.strikeFrame = this.currentFrame;
+  this.takingStrikeBonus2 = true;
 };
 
 BowlingGame.prototype.addSpareBonus = function(score) {

@@ -3,4 +3,8 @@ describe("BowlingGame Front End", function() {
     jasmine.getFixtures().fixturesPath = '../';
     loadFixtures('index.html')
     });
+
+  it('test', function() {
+
+  });
 });

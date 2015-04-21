@@ -87,7 +87,10 @@ describe("BowlingGame Back End", function() {
     it('has the correct total score when the game is over(two strikes)', function() {
       for(i=0;i<8;i++){ game.enterScore(4); };
       for(i=0;i<2;i++){ game.enterScore(10); };
+      expect(game.strikeFrame).toEqual(6);
+      expect(game.strikeFrame2).toEqual(5);
       for(i=0;i<11;i++){ game.enterScore(4); };
+      console.log(game);
       expect(game.totalScore()).toEqual(106);
       expect(game.gameOver).toEqual(true);
     });

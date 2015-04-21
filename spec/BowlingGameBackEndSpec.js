@@ -54,14 +54,75 @@ describe("BowlingGame Back End", function() {
       expect(game.enterScore(5)).toEqual('Game is over, can not add score');
     });
 
-    it('has the correct total score when the game is over', function() {
+    it('has the correct total score when the game is over (no strikes or spares)', function() {
       for(i=0;i<20;i++){ game.enterScore(4); };
       expect(game.totalScore()).toEqual(80);
+      expect(game.gameOver).toEqual(true);
+    });
+
+    it('has the correct total score when the game is over (one spare)', function() {
+      game.enterScore(6)
+      for(i=0;i<19;i++){ game.enterScore(4); };
+      expect(game.totalScore()).toEqual(86);
+      expect(game.gameOver).toEqual(true);
+    });
+
+    it('has the correct total score when the game is over (four spares)', function() {
+      for(i=0; i<4; i++){
+        game.enterScore(6);
+        game.enterScore(4);
+      }
+      for(i=0;i<12;i++){ game.enterScore(4); };
+      expect(game.totalScore()).toEqual(110);
+      expect(game.gameOver).toEqual(true);
+    });
+
+    it('has the correct total score when the game is over(one strike)', function() {
+      game.enterScore(10);
+      for(i=0;i<18;i++){ game.enterScore(4); };
+      expect(game.totalScore()).toEqual(90);
+      expect(game.gameOver).toEqual(true);
+    });
+
+    it('has the correct total score when the game is over(two strikes)', function() {
+      for(i=0;i<8;i++){ game.enterScore(4); };
+      for(i=0;i<2;i++){ game.enterScore(10); };
+      for(i=0;i<11;i++){ game.enterScore(4); };
+      expect(game.totalScore()).toEqual(106);
+      expect(game.gameOver).toEqual(true);
+    });
+
+    it('has the correct total score when the game is over(three strike in 10th frame)', function() {
+      for(i=0;i<18;i++){ game.enterScore(4); };
+      game.enterScore(10);
+      game.enterScore(10);
+      game.enterScore(10);
+      expect(game.totalScore()).toEqual(102);
+      expect(game.gameOver).toEqual(true);
+    });
+
+    it('has the correct total score when the game is over(spare in 10th frame)', function() {
+      for(i=0;i<18;i++){ game.enterScore(4); };
+      game.enterScore(6);
+      game.enterScore(4);
+      game.enterScore(4);
+      expect(game.totalScore()).toEqual(86);
+      expect(game.gameOver).toEqual(true);
+    });
+
+
+    it('has the correct total score when the game is over(four strikes)', function() {
+      for(i=0;i<8;i++){ game.enterScore(4); };
+      for(i=0;i<2;i++){ game.enterScore(10); };
+      for(i=0;i<11;i++){ game.enterScore(4); };
+      expect(game.totalScore()).toEqual(106);
+      expect(game.gameOver).toEqual(true);
     });
 
     it('has the correct total score for a perfect game', function() {
       for(i=0;i<20;i++){ game.enterScore(10); };
       expect(game.totalScore()).toEqual(300);
+      expect(game.gameOver).toEqual(true);
     });
 
     describe("strike", function(){

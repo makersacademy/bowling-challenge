@@ -1,8 +1,6 @@
 describe("BowlingGame Front End", function() {
-  beforEach(function() {
+  beforeEach(function() {
     jasmine.getFixtures().fixturesPath = '../';
     loadFixtures('index.html')
     });
-
-
 });

@@ -4,10 +4,20 @@ refreshCookie(game);
 
 function inputScore(){
   // if input is not number tell user
+
   //Limit to score 0-10 (make text red otherwise and disable button)
+  if(parseInt($('#score-input-field').val())<0
+  ||  parseInt($('#score-input-field').val())>10
+  ||  parseInt($('#score-input-field').val()) + game.frames[game.currentFrame-1] > 10
+  ||  isNaN(parseInt($('#score-input-field').val()))) {
+      $('#score-input-field').css( "color", "red" );
+  }
+  else{
+  $('#score-input-field').css( "color", "black" );
   game.enterScore(parseInt($('#score-input-field').val()));
   $('#score-input-field').val('');
   refreshTable();
+  };
 };
 
 function refreshTable() {

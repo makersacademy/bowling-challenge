@@ -1,0 +1,9 @@
+body {
+  font-family: Century Gothic, sans-serif;
+}
+table {
+  background: gray;
+}
+#score-input-field {
+  margin-bottom: 5px;
+}

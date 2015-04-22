@@ -1,5 +1,4 @@
 function BowlingGame() {
-  this.score = 0;
   this.currentFrame = 1;
   this.secondRollOnFrame = false;
   this.frames = [0,0,0,0,0,0,0,0,0,0]; //is frames a keyword?

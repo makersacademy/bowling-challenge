@@ -6,7 +6,7 @@ describe("BowlingGame Back End", function() {
   });
 
   it("is initialized with a total score of 0", function() {
-    expect(game.score).toEqual(0);
+    expect(game.totalScore()).toEqual(0);
   });
 
   it("is initialized with an array of 10 frames, each with score 0", function() {
@@ -123,7 +123,6 @@ describe("BowlingGame Back End", function() {
 
     it('has the correct total score for a perfect game', function() {
       for(i=0;i<20;i++){ game.enterScore(10); };
-      console.log(game);
       expect(game.totalScore()).toEqual(300);
       expect(game.gameOver).toEqual(true);
     });

@@ -14,11 +14,6 @@ describe("BowlingGame Front End", function() {
     expect($('#game-overview')).toContainText('10');
   });
 
-  it('should see an form for inputting score', function() {
-    expect($('#score-input')).toBeInDOM();
-    expect($('#score-input')).toEqual('form');
-  });
-
   it('should see an input field for score', function() {
     expect($('#score-input-field')).toBeInDOM();
     expect($('#score-input-field')).toEqual('input');

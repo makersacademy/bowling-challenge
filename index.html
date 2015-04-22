@@ -6,10 +6,8 @@
   <script src="src/BowlingGameFrontEnd.js"></script>
 </head>
 <body>
-  <form id='score-input' onsubmit='enterScore()'>
     <input type='text' id='score-input-field'>
-    <input type='submit' id='enter-score' value='Enter Score'>
-  </form>
+    <input type='submit' id='enter-score' value='Enter Score' onclick='inputScore()'>
   <table id='game-overview' border='red'>
     <tr><td id='table-header'>Frames</td></tr>
     <tr> <td>1</td> <td id='frame-1'>0</td> </tr>

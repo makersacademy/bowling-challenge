@@ -12,6 +12,11 @@ describe('Game', function() {
     
     it('each frame contains 2 rolls', function(){
       expect(game.rolls).toEqual(2);
-    })
+    });
 
+    it('every go the rolls should decrease by 1', function() {
+    expect(game.rolls).toEqual(2);
+    game.go();
+    expect(game.rolls).toEqual(1);
+  });
   });

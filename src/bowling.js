@@ -4,3 +4,6 @@ var Game = function(){
   this.rolls = 2;
 };
 
+Game.prototype.go = function() {
+  this.rolls -= 1;
+};

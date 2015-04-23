@@ -22,9 +22,6 @@ Bowling.prototype.bowl = function(score) {
   };
 };
 
-// this needs to be called in a different way, not just be tied to
-// bowling as it doesn't do the final score properly otherwise.
-// (Though with spares etc, this might be different.)
 Bowling.prototype.nextFrame = function() {
   if(this.frames[this.bowlingFrame].frameTally === 2) {
     this.score += this.frames[this.bowlingFrame].score
@@ -33,11 +30,11 @@ Bowling.prototype.nextFrame = function() {
 };
 
 Bowling.prototype.allFramesScore = function() {
-  var thing = []
+  var allScore = []
   for (i = 1; i<= 10; i++) {
-    thing.push(this.frames[i].score);
+    allScore.push(this.frames[i].score);
   };
-  return thing;
+  return allScore;
 };
 
 // this is going to have a lot of trouble once we get into multiple spares

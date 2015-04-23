@@ -1,9 +1,10 @@
 
-var Game = function(){
-  this.frame = 10;
+var Frame = function(){
+  this.frame_start = 1;
   this.rolls = 2;
 };
 
-Game.prototype.go = function() {
+
+Frame.prototype.go = function() {
   this.rolls -= 1;
 };

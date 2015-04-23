@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/GJMcGowan/bowling_challenge.svg?branch=master)](https://travis-ci.org/makersacademy/bowling_challenge)
+[![Build Status](https://travis-ci.org/makersacademy/bowling-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/bowling-challenge)
 
 Task: 
 -----
@@ -14,7 +14,7 @@ To use it, you make a bowling object and use object.bowl(score) to record what y
 
 Testing was done using jasmine. To run tests:
   * Run bundle install in the root directory
-  * Run rackup and navigate to localhost:9292
+  * Run rackup and navigate to localhost:9292/SpecRunner.html
 
 ### Ongoing
 

@@ -37,10 +37,22 @@ Bowling.prototype.allFramesScore = function() {
   return allScore;
 };
 
+Bowling.prototype.finalScore = function() {
+  var newArray = this.allFramesScore().reduce(function(a, b) {
+    return a + b;
+  });
+  return newArray;
+};
+
 // this is going to have a lot of trouble once we get into multiple spares
 // and multiple strikes etc.
-Bowling.prototype.bonus = function() {
-  var lastFrame = this.bowlingFrame - 1
+Bowling.prototype.bonus = function(minus) {
+  if (typeof minus === 'undefined') { minus = 1; }
+  var lastFrame = this.bowlingFrame - minus
+  // Probably need to use recursion for the bonuses, first attempt.
+  // if (this.frames[lastFrame - 1] === 'spare' || this.frames[lastFrame - 1] === 'strike') {
+  //   this.bonus(minus + 1);
+  // };
   if(this.frames[lastFrame].score === 'spare') {
     bonus = this.frames[this.bowlingFrame].score;
     this.frames[lastFrame].score = 10 + bonus;

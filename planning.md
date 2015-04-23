@@ -27,3 +27,7 @@ If spare:
 Perfect game:
   - 12 strikes (10 regular, 2 bonus)
   - 300 points
+
+Bonus problem solutions:
+  - Have a variable that allows each frame to track if it is being used to calculate a bonus from a previous frame.
+  - 

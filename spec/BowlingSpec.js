@@ -18,6 +18,10 @@ describe('Bowling', function(){
       expect(array).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     });
 
+    it('can give a final score', function(){
+      expect(bowling.finalScore()).toEqual(0);
+    });
+
   });
 
   describe('Frames', function() {
@@ -57,7 +61,7 @@ describe('Bowling', function(){
       bowling.bowl(5);
       bowling.bowl(5);
       bowling.bowl(3);
-      expect(bowling.frames[1].score).toEqual(13);
+      expect(bowling.allFramesScore()).toEqual([13, 3, 0, 0, 0, 0, 0, 0, 0, 0])
     });
 
     it('can record a bonus score when the last frame was a strike', function() {
@@ -72,6 +76,7 @@ describe('Bowling', function(){
       bowling.bowl(10);
       bowling.bowl(3);
       bowling.bowl(3);
+      expect(bowling.bowlingFrame).toEqual(3);
       expect(bowling.frames[1].score).toEqual(23);
     });
 
@@ -91,6 +96,19 @@ describe('Bowling', function(){
       };
       expect( function(){ bowling.bowl(1); } ).toThrow(new Error('it is the end of the game'));
       expect(bowling.score).toEqual(80);
+    });
+
+    it('can play a game with a strike and a spare, non-sequential', function() {
+      bowling.bowl(10);
+      for (i = 1; i < 15; i++) {
+        bowling.bowl(4);
+      };
+      bowling.bowl(5);
+      bowling.bowl(5);
+      bowling.bowl(4);
+      bowling.bowl(4);
+      expect( function(){ bowling.bowl(1); } ).toThrow(new Error('it is the end of the game'));
+      expect(bowling.finalScore()).toEqual(96)
     });
 
   });

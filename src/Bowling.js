@@ -13,9 +13,6 @@ Bowling.prototype.bowl = function(score) {
   if(this.bowlingFrame <= 10) {
     this.frames[this.bowlingFrame].bowl(score);
   };
-  if(this.bowlingFrame > 1) {
-    this.bonus(1);
-  };
   if(this.nextFrame()) {
     this.bowlingFrame += 1;
   };

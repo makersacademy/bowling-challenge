@@ -49,6 +49,9 @@ Bonus problem solutions:
           - This is not what I want to happen. I want the strike to know that it is ten plus ten, but that it should wait for the next score before it records it's score properly.
           - Ideas:
             - Strike object's score is an array. First item in the array is 10. When there is another 10, add to the array. When there is another score, add to the array. At every step, measure the array's length and collapse it down to an integer if it is 3 items long.
+            - I want it to do ten, if strike 10, also next thing. It needs to know to call bonus on this
+            part again (it will call bonus automatically, so that's fine?))
+              - Another variable that says 'strike'? Erased only after the third time through? Enforced through a counter variable?
 4 - frame 3
   - frame score records as 3
   - bonus is called:

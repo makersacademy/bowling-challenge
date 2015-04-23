@@ -8,7 +8,7 @@ Count and sum the scores of a bowling game for one player (in JavaScript).
 My Solution: 
 -----
 
-I used two class constructors to make a frame and a bowling object.
+I used two class constructors to make a frame and a bowling object in different files.
 
 To use it, you make a bowling object and use object.bowl(score) to record what your bowl scored. If you want to know your total score you run finalScore. If you want to know the score of every frame you have bowled, you run allFramesScore.
 

@@ -1,8 +1,9 @@
-var Frame = function() {
+var Frame = function(last) {
   this.score = 0;
   this.pinsLeft = 10;
   this.frameTally = 0;
   this.counter = 3;
+  this.last = last;
 };
 
 Frame.prototype.bowl = function(score) {
@@ -25,10 +26,18 @@ Frame.prototype.strike = function() {
   this.score = 10;
   this.frameTally = 2;
   this.counter = 0;
+  if(this.last > 0) {
+    this.frameTally = 0;
+    this.last--;
+  }
 };
 
 Frame.prototype.spare = function() {
   this.score = 10;
   this.frameTally++;
   this.counter = 1;
+  if(this.last === 2) {
+    this.frameTally--;
+    this.last = 0;
+  }
 };

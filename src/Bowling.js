@@ -1,9 +1,10 @@
 var Bowling = function() {
   this.bowlingFrame = 1;
   this.frames = {};
-  for (i = 1; i <= 10; i++) {
-    this.frames[i] = new Frame();
+  for (i = 1; i <= 9; i++) {
+    this.frames[i] = new Frame(0);
   };
+  this.frames[10] = new Frame(2)
   this.bowls = 0;
 };
 
@@ -46,16 +47,11 @@ Bowling.prototype.finalScore = function() {
 };
 
 Bowling.prototype.bonus = function(minus) {
-  var lastFrame = this.bowlingFrame - minus;
-  if(this.frames[lastFrame] === undefined) {
-  } else {
-    if(this.frames[lastFrame].counter < 2) {
-      this.frames[lastFrame].score += this.bowls;
-      this.frames[lastFrame].counter += 1;
+  var lastFrame = this.frames[this.bowlingFrame - minus]
+  if(lastFrame === undefined) {
+  } else { if(lastFrame.counter < 2) {
+      lastFrame.score += this.bowls;
+      lastFrame.counter += 1;
     };
   };
 };
-
-
-
-

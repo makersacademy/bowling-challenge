@@ -1,7 +1,7 @@
 describe('Frame', function() {
 
   beforeEach(function() {
-    frame = new Frame();
+    frame = new Frame(0);
   });
 
   it('should have its own score', function() {
@@ -35,6 +35,15 @@ describe('Frame', function() {
     frame.bowl(5);
     expect(frame.score).toEqual(10);
     expect(frame.counter).toEqual(1);
+  });
+
+  it('knows when it is not last', function() {
+    expect(frame.last).toEqual(0);
+  });
+
+  it('knows when it is last', function() {
+    frame = new Frame(2);
+    expect(frame.last).toEqual(2);
   });
 
 });

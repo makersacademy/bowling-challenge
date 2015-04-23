@@ -5,4 +5,4 @@ describe('Interface', function() {
     loadFixtures('index.html');
   });
 
-};
+});

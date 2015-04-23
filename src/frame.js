@@ -1,5 +1,5 @@
 var Frame = function() {
-  this.score = 0
+  this.score = 0;
   this.pinsLeft = 10;
   this.frameTally = 0;
 };
@@ -30,11 +30,9 @@ Frame.prototype.spare = function() {
   this.frameTally++;
 };
 
-Frame.prototype.bonus = function(score, previousScore) {
-  if(previousScore === 'strike'){
-    
-  };
-  if(previousScore === 'spare'){
-
-  };
-};
+// Frame.prototype.bonus = function(score, previousScore) {
+//   if(previousScore === 'strike'){
+//   };
+//   if(previousScore === 'spare'){
+//   };
+// };

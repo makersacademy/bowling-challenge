@@ -1,11 +1,17 @@
-describe('Bowling', function() {
+describe('Game', function() {
 
-  var bowling;
+  var game;
 });
 
-  describe('Game start', function() {
+  describe('Game start setup', function() {
+
     it('starts with 10 frames', function(){
-      bowling = new Bowling();
-      expect(bowling.frame).toEqual(10);
+      game = new Game();
+      expect(game.frame).toEqual(10);
     });
+    
+    it('each frame contains 2 rolls', function(){
+      expect(game.rolls).toEqual(2);
+    })
+
   });

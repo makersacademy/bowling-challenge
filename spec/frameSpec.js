@@ -26,13 +26,15 @@ describe('Frame', function() {
 
   it('can bowl a strike', function(){
     frame.bowl(10);
-    expect(frame.score).toEqual('strike');
+    expect(frame.score).toEqual(10);
+    expect(frame.counter).toEqual(0);
   });
 
   it('can bowl a spare', function() {
     frame.bowl(5);
     frame.bowl(5);
-    expect(frame.score).toEqual('spare');
+    expect(frame.score).toEqual(10);
+    expect(frame.counter).toEqual(1);
   });
 
 });

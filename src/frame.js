@@ -2,6 +2,7 @@ var Frame = function() {
   this.score = 0;
   this.pinsLeft = 10;
   this.frameTally = 0;
+  this.counter = 0;
 };
 
 Frame.prototype.bowl = function(score) {
@@ -21,11 +22,12 @@ Frame.prototype.normalScore = function(score) {
 };
 
 Frame.prototype.strike = function() {
-  this.score = 'strike'
+  this.score = 10;
   this.frameTally = 2;
 };
 
 Frame.prototype.spare = function() {
-  this.score = 'spare';
+  this.score = 10;
   this.frameTally++;
+  this.counter = 1;
 };

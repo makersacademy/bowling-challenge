@@ -110,7 +110,7 @@ describe('Bowling', function(){
       expect(bowling.finalScore()).toEqual(96)
     });
 
-    xit('can play a game with all spares except for last round', function() {
+    it('can play a game with all spares except for last round', function() {
       for(i = 1; i < 19; i++) {
         bowling.bowl(5);
       };

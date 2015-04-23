@@ -1,16 +1,6 @@
 describe('Frame', function() {
-
-  var game;
   var frame;
 });
-
-describe('Game start setup', function() {
-
-    it('starts with 10 frames', function(){
-      game = new Game();
-      expect(game.frame_start).toEqual(10);
-    });
-  });
 
   describe('Each Frame', function() {
 

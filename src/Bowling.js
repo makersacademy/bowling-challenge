@@ -4,6 +4,7 @@ var Bowling = function() {
   for (i = 1; i <= 10; i++) {
     this.frames[i] = new Frame();
   };
+  this.bowls = 0;
 };
 
 Bowling.prototype.bowl = function(score) {
@@ -12,9 +13,11 @@ Bowling.prototype.bowl = function(score) {
   };
   if(this.bowlingFrame <= 10) {
     this.frames[this.bowlingFrame].bowl(score);
+    this.bowls = score;
   };
   if(this.bowlingFrame > 1){
-    this.bonus();
+    this.bonus(1);
+    this.bonus(2);
   };
   if(this.nextFrame()) {
     this.bowlingFrame += 1;
@@ -42,24 +45,17 @@ Bowling.prototype.finalScore = function() {
   return newArray;
 };
 
-Bowling.prototype.bonus = function() {
-  var lastFrame = this.bowlingFrame - 1;
-  if(this.frames[lastFrame].counter >= 1) {
-    bonus = this.frames[this.bowlingFrame].score;
-    this.frames[lastFrame].score += bonus;
-    this.frames[lastFrame].counter += 1;
+Bowling.prototype.bonus = function(minus) {
+  var lastFrame = this.bowlingFrame - minus;
+  if(this.frames[lastFrame] === undefined) {
+  } else {
+    if(this.frames[lastFrame].counter < 2) {
+      this.frames[lastFrame].score += this.bowls;
+      this.frames[lastFrame].counter += 1;
+    };
   };
 };
 
-// The last thing was a strike. So this method will be called.
-// Works for everything where it wasn't a strike called next.
-// Bowling.prototype.strike = function() {
-//   var lastFrame = this.bowlingFrame - 1;
-//   if(this.frames[this.bowlingFrame].frameTally === 2 && this.frames[lastFrame].score !== 'strike') {
-//     bonus = this.frames[this.bowlingFrame].score;
-//     this.frames[lastFrame].score = 10 + bonus;
-//   };
-// };
 
 
 

@@ -24,24 +24,17 @@ describe('Bowling', function () {
 
     it('can add scores in the game', function () {
         bowling.roll(8);
+        bowling.roll(1);       
         bowling.addUpFrame();
         bowling.addUpGame();
-        expect(bowling.total).toEqual(8);
+        expect(bowling.total).toEqual(9);
     });
 
-    it('knows the previous number in the frame', function () {
+    it('allows two rolls per frame', function () {
         bowling.roll(7);
         bowling.roll(2);
-        expect(bowling.previousRoll).toEqual(9);
-    });
-
-    xit('allows two rolls per frame', function () {
-        bowling.roll(6);
         bowling.roll(3);
-        bowling.roll(1);
-        expect(bowling.game).toEqual([0,6,3]);
+        expect(bowling.bFrame).toEqual([7,2]);
     });
-
-    // is this right? really, it's more about knowing the total of the frame.
 
 });

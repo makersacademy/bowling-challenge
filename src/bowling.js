@@ -8,10 +8,11 @@ var Bowling = function () {
 };
 
 Bowling.prototype.roll = function(roll) {
-    // go negative on the array to find previous
-    // will game still add up in the same way with nested arrays?
-    // var bFrame = roll;
-    this.bFrame.push(roll);
+    if (this.bFrame.length < 2) {
+        this.bFrame.push(roll);
+    } else {
+        // don't know yet
+    }
 };
 
 Bowling.prototype.addUpFrame = function() {

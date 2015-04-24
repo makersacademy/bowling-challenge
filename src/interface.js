@@ -8,33 +8,33 @@ $(document).ready(function(){
     update();
   });
 
-  // Reach into button and wipe what is in it.
-  $('#submit').click(function() {
-    scorecard.bowl(parseInt($('#scoring').val()));
-    $('#scoring').val('');
+  $('.buttons').click(function() {
+    scorecard.bowl(Number($(this).val()));
+    buttonManage();
     update();
   });
 
-  // save for later
-  // $( "input" )
-  // .keyup(function() {
-  //   var value = $( this ).val();
-  //   $( "p" ).text( value );
-  // })
-  // .keyup();
+  var buttonManage = function() {
+    // Hacky fix for buttons disappearing on last round
+    // Buttons disappear due to pinsLeft being 0, however
+    // the frame function can't be updated without breaking 
+    // everything.
+    if(scorecard.bowlingFrame >= 10){
+    } else {
+      var left = scorecard.frames[scorecard.bowlingFrame].pinsLeft;
+      for(var i = 10; i > left; i--) {
+        $('.buttons[value = ' + i + ']').hide();
+      };
+      for(var i = 1; i <= left; i++) {
+        $('.buttons[value = ' + i + ']').show();
+      };      
+    };
+  };
 
-  var update = function(){
-    var allFrames = scorecard.allFramesScore();
-    $('#frame1_1').text(scorecard.frames[1].score);
-    $('#frame2_1').text(scorecard.frames[2].score);
-    $('#frame3_1').text(scorecard.frames[3].score);
-    $('#frame4_1').text(scorecard.frames[4].score);
-    $('#frame5_1').text(scorecard.frames[5].score);
-    $('#frame6_1').text(scorecard.frames[6].score);
-    $('#frame7_1').text(scorecard.frames[7].score);
-    $('#frame8_1').text(scorecard.frames[8].score);
-    $('#frame9_1').text(scorecard.frames[9].score);
-    $('#frame10_1').text(scorecard.frames[10].score);
+  var update = function() {
+    for (var i = 1; i <= 10; i++) {
+      $('#frame' + String(i) + '_1').text(scorecard.frames[i].score);
+    };
     $('#finalscore').text(scorecard.finalScore());
   };
 

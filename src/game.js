@@ -19,7 +19,8 @@ Game.prototype.asignInputToFrames = function() {
   };
 };
 
-// could extract into own class?
+// could extract into own class? if passed an array. might need to set a 
+//var to the length of this.arrayOfRolls and deciment it for the while loop.
 Game.prototype.putRollIn = function(frame) {
   var currRoll = this.arrayOfRolls.shift();
   frame.roll(currRoll)
@@ -31,6 +32,9 @@ Game.prototype.scoreForFrame = function(n) {
   var cumulativeScore = 0;
 
   for(var i=0;i<upToN.length;i++){
+    if (this.allFrames[i].spare){
+      cumulativeScore += this.allFrames[i + 1].rolls[0]
+    }
     cumulativeScore += this.allFrames[i].score
   }
 

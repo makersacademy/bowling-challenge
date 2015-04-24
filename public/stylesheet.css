@@ -1,9 +1,8 @@
+/* main front bit */
 .ribbon {
  font-size: 26px !important;
  /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
-
  width: 50%;
-
  position: relative;
  background: #ba89b6;
  color: #fff;
@@ -112,28 +111,27 @@ div.framescorebox {
     text-align:center;
 }
 
-div.panel-body {
+.panel-body {
   font-size: 24px;
-  color: white;
-  /*border:2px #C0C0C0 solid;*/
+  color: blue;
   padding-bottom: 40px;
   height:50px;
+  width: 50%;
   margin-left: auto;
   margin-right: auto;
-  align-content: middle;
+  margin-bottom: 50px;
+  text-align: center;
 }
 
 body {
-  background-image: url("/public/bowling.jpg");
-  background-repeat: no-repeat;
-  padding: 30px;
+  background-color: #F3F1F5;
   line-height: 100%;
 }
 
 .btn {
   display: inline;
   padding: 10px;
-  color: red;
+  color: black;
   width: 37px;
   height: 37px;
   border-radius: 4px;
@@ -147,4 +145,31 @@ body {
 .frameScoreFontSize {
   font-size: 20px;
   padding: 10px;
+}
+
+table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 0.5em;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: orange;
+    color: white;
+}
+
+tbody {
+    background-color: lightgrey;
+}
+
+tfoot {
+    background-color: lightblue;
+}
+
+th, td {
+    border: 5px solid white;
+    text-align: center;
+    padding: 8px;
 }

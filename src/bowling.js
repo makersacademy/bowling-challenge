@@ -8,6 +8,6 @@ Bowling.prototype.roll = function(pins) {
 };
 
 Bowling.prototype.frameNumber = function(roll) {
-  this.frameNumber += 1
-  if 
+  this.frameNumber += 1;
+  // if 
 };

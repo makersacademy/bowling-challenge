@@ -10,9 +10,10 @@ class Roll
 end
 
 class Frame
-  attr_accessor :score, :split, :strike, :r1, :id
+  attr_accessor :score, :split, :strike, :r1,:r2, :id
   def initialize(r1,r2)
     @r1 = r1
+    @r2 = r2
     @score = r1.score + r2.score
     @score == 10 && !r1.strike ? @split = true : @split = false
     @strike = r1.strike
@@ -39,7 +40,9 @@ class SetFrames
       @frames << new_frame
     else
     # wait for next roll
-     @frames << Frame.new(curr_roll, rolls.shift)
+     new_frame = Frame.new(curr_roll, rolls.shift)
+     new_frame.id = @id
+     @frames << new_frame
    end
 
     if rolls.size > 0
@@ -53,32 +56,32 @@ class ScoreFrames
   attr_reader :updatedframes
   def initialize frames
     @updatedframes = []
-    update_scores frames
     @frames = frames
+    check_frames
     @updatedframes.each do |frame|
       puts "frame #{frame.id}  has score #{frame.score}"
     end
-
   end
 
-  def update_scores frames
-  #quite good approach, works for 3 strikes
-    curr_frame = frames.shift
+  def check_frames
+    curr_frame = @frames.shift
     if curr_frame.strike
-      p curr_frame.score
-      curr_frame.score += (update_scores frames).score
-    end
-    if curr_frame.split
-      curr_frame.score += (update_scores frames).r1.score
+      add_value_of_next_frame_to curr_frame
     end
     @updatedframes << curr_frame
-    if curr_frame.score > 30
-      curr_frame.score = 30
-    end
-      curr_frame
+    curr_frame.score
   end
-  # if strike
-  # current frames score += next frames score
+
+  def add_value_of_next_frame_to frame
+      frame.score += check_frames
+  end
+
+  def calc_value_of_next_frame
+  end
+
+  def add_value_of_next_roll
+  end
+
 
 
 end

@@ -1,13 +1,8 @@
-var Frame = function(roll1, roll2){
-  this.roll1 = roll1;
-  this.roll2 = roll2;
-  this.score = roll1.output()[0] + roll2.output()[0];
-  this.checkForSpare();
+var Frame = function(){
+  this.pins = 7;
 };
-Frame.prototype.checkForSpare = function() {
-  if(this.score == 10){
-    this.spare = true
-  } else {
-    this.spare = false
-  }
+
+Frame.prototype.roll = function(pins_hit) {
+  // body...
 };
+

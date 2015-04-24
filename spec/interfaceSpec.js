@@ -5,4 +5,12 @@ describe('Interface', function() {
     loadFixtures('index.html');
   });
 
+  it('displays the frame scores', function() {
+    expect('.frames').toContainText('1')
+  });
+
+  xit('bowls and updates a score', function() {
+
+  });
+
 });

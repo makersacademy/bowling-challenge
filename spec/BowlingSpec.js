@@ -15,6 +15,12 @@ describe('Bowling', function(){
       expect(array).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     });
 
+    it('can make one bowl and have the correct array returned', function() {
+      bowling.bowl(3);
+      array = bowling.allFramesScore();
+      expect(array).toEqual([3, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    });
+
     it('can give a final score', function(){
       expect(bowling.finalScore()).toEqual(0);
     });

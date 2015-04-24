@@ -4,14 +4,19 @@ $(document).ready(function(){
 
   $('#begin').click(function() {
     $('.mainCard').fadeTo('slow', 2, function(){});
-    $('#begin').hide();
-    update();
+    $('#start').hide();
+    updateScores();
   });
 
   $('.buttons').click(function() {
-    scorecard.bowl(Number($(this).val()));
+    var bowl = Number($(this).val())
+    try {
+      scorecard.bowl(bowl);
+    } catch(err) {
+      alert(err);
+    };
     buttonManage();
-    update();
+    updateScores();
   });
 
   var buttonManage = function() {
@@ -19,7 +24,11 @@ $(document).ready(function(){
     // Buttons disappear due to pinsLeft being 0, however
     // the frame function can't be updated without breaking 
     // everything.
-    if(scorecard.bowlingFrame >= 10){
+    // The 'fix' allows illegal numbers to be entered however.
+    if(scorecard.bowlingFrame >= 10) {
+      for(var i = 1; i <= 10; i++) {
+        $('.buttons[value = ' + i + ']').show();
+      };
     } else {
       var left = scorecard.frames[scorecard.bowlingFrame].pinsLeft;
       for(var i = 10; i > left; i--) {
@@ -27,11 +36,11 @@ $(document).ready(function(){
       };
       for(var i = 1; i <= left; i++) {
         $('.buttons[value = ' + i + ']').show();
-      };      
+      };
     };
   };
 
-  var update = function() {
+  var updateScores = function() {
     for (var i = 1; i <= 10; i++) {
       $('#frame' + String(i) + '_1').text(scorecard.frames[i].score);
     };

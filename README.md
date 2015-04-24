@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/makersacademy/bowling-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/bowling-challenge)
+[![Build Status](https://travis-ci.org/GJMcGowan/bowling-challenge.svg)](https://travis-ci.org/GJMcGowan/bowling-challenge)
 
 Task: 
 -----

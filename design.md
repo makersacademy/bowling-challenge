@@ -11,7 +11,7 @@ Expanded design:
   - Buttons instead of boxes for entering the current score. 
     - Complete
   - Disappearing buttons for score validation
-    - Incomplete, last round has some weirdness.
+    - Incomplete, last round has some weirdness to do with pinsLeft markers in the frame and so had to be removed.
   - Keep track of all scores as you go along by adding the bowl to the page.
     - Try to make it look a bit more like actual bowling looks.
   - CSS styling.

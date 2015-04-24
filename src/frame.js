@@ -1,8 +1,8 @@
 var Frame = function(){
-  this.pins = 7;
+  this.pins = 10;
 };
 
 Frame.prototype.roll = function(pins_hit) {
-  // body...
+  this.pins -= pins_hit
 };
 

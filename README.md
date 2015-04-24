@@ -14,8 +14,7 @@ Count and sum the scores of a bowling game for one player (in JavaScript).
 Logic plan: 
 -----------
 
-* the game has an array of ten frames
-* each frame has an array of two rolls
+* the game has an array of frames
 * if roll1 = 10, add next roll1 + roll2
   * if the next roll1 = 10, add next roll1
 * if roll1 + roll2 = 10, add next roll1

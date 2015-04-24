@@ -3,7 +3,7 @@ Bowling Challenge
 
 [Use the app on Heroku - coming soon]()
 
-![Bowling]()
+![Bowling](https://github.com/sanjsanj/sanjsanj.github.io/blob/master/images/week6_bowling.png?raw=true)
 
 Task:
 -----
@@ -23,13 +23,14 @@ For Apllication Code:
 
 Other:
 - Sinatra
+- PHP
 
 Development Blog:
 -----------------
 - [Day 1](http://sanjsanj.github.io/Week%205,%20Day%206/)
 - [Day 2](http://sanjsanj.github.io/Week%205,%20Day%207/)
 - [Day 3](http://sanjsanj.github.io/Week%206,%20Day%201/)
-- [Day 4]()
+- [Day 4](http://sanjsanj.github.io/Week%206,%20Day%205/)
 
 How To Run:
 -----------

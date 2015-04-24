@@ -6,7 +6,6 @@ var bowling = new Bowling();
     for (var i = 1; i <= 10; i ++){
       $('#f' + i + 'score').text(bowling.cumulativeScore(i));
     };
-    // $('#f10score').text(bowling.cumulativeScore());
     for (var i = 1; i <= 21; i ++){
       $('.outerbox' + i).text(bowling.scoresArray[i - 1]);
     };

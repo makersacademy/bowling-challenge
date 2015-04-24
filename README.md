@@ -1,7 +1,7 @@
 Bowling Challenge
 =================
 
-[Use the app on Heroku - coming soon]()
+###[Click Here - To use the app on Heroku](http://sanjbowl.herokuapp.com)
 
 ![Bowling](https://github.com/sanjsanj/sanjsanj.github.io/blob/master/images/week6_bowling.png?raw=true)
 
@@ -26,7 +26,7 @@ Development Blog:
 
 How To Run:
 -----------
-- You can follow the Heroku link at the top of this Readme for a live version of this app
+- You can follow the Heroku link at the top of the README for a live version of this app
 - You can launch a local version of the app by typing `ruby server.rb` in the application's root folder
 - You can run the tests locally by typing `open SpecRunner.html` in the application's root folder after starting the Ruby server
 
@@ -53,4 +53,35 @@ Interface knows the running score tally for
   a perfect game
   a gutter game
   an example game
+```
+
+File Structure:
+---------------
+```sh
+.
+├── README.md
+├── SpecRunner.html
+├── home.html
+├── index.php
+├── lib
+│   ├── jasmine-2.2.0
+│   │   ├── boot.js
+│   │   ├── console.js
+│   │   ├── jasmine-html.js
+│   │   ├── jasmine.css
+│   │   ├── jasmine.js
+│   │   └── jasmine_favicon.png
+│   ├── jasmine-jquery.js
+│   └── jquery.js
+├── public
+│   ├── bowling.jpg
+│   ├── reset.css
+│   └── stylesheet.css
+├── server.rb
+├── spec
+│   ├── BowlingSpec.js
+│   └── InterfaceSpec.js
+└── src
+    ├── Bowling.js
+    └── Interface.js
 ```

@@ -38,6 +38,10 @@ describe('Frame', function(){
     });
 
     it('a strike', function(){
+      frame = new Frame();
+      expect(frame.is_over).toEqual(false);
+      frame.roll(10);
+      expect(frame.is_over).toEqual(true);
       
     });
 

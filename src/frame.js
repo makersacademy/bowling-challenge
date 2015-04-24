@@ -11,7 +11,11 @@ Frame.prototype.roll = function(pins_hit) {
 };
 
 Frame.prototype.check_if_over = function() {
+  // refactor this with if or
   if (this.rolls.length == 2){
+    this.is_over = true;
+  }
+  if (this.pins == 0){
     this.is_over = true;
   }
 };

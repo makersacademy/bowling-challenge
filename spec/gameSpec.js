@@ -31,6 +31,20 @@ describe('Game', function(){
       expect(game.scoreForFrame(10)).toEqual(150);
     });
 
+    it('', function(){
+      game = new Game([10,10,10,10,10,10,10,10,10,10,10,10])
+      expect(game.scoreForFrame(1)).toEqual(30);
+      expect(game.scoreForFrame(2)).toEqual(60);
+      expect(game.scoreForFrame(3)).toEqual(90);
+      expect(game.scoreForFrame(4)).toEqual(120);
+      expect(game.scoreForFrame(5)).toEqual(150);
+      expect(game.scoreForFrame(6)).toEqual(180);
+      expect(game.scoreForFrame(7)).toEqual(210);
+      expect(game.scoreForFrame(8)).toEqual(240);
+      expect(game.scoreForFrame(9)).toEqual(270);
+      expect(game.scoreForFrame(10)).toEqual(300);
+    });
+
   });
   
 });

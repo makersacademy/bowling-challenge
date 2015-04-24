@@ -10,6 +10,7 @@ describe('Bowling Frames', function() {
   });
 
   it('the game is on the 2nd frame when the 1st frame is finished', function() {
+    frame.
     expect(frame.frameNumber).toEqual(2)
   });
 

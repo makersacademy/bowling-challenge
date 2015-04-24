@@ -47,6 +47,26 @@ describe('Frame', function(){
 
   });
 
+  describe('knows if there has been', function(){
+    
+    it('a strike', function(){
+      frame = new Frame();
+      expect(frame.strike).toEqual(false);
+      frame.roll(10);
+      expect(frame.strike).toEqual(true);
+    });
+
+    it('a spare', function(){
+      frame = new Frame();
+      expect(frame.spare).toEqual(false);
+      frame.roll(5);
+      expect(frame.spare).toEqual(false);
+      frame.roll(5);
+      expect(frame.spare).toEqual(true);
+    });
+
+  });
+
 
 
 

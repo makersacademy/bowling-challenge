@@ -1,4 +1,5 @@
 var Frame = function(){
+  console.log('here');
   this.pins = 10;
   this.is_over = false;
   this.rolls = [];
@@ -22,6 +23,7 @@ Frame.prototype.checkIfOver = function() {
   if (this.pins == 0){
     this.is_over = true;
   }
+  this.score = (10 - this.pins)
 };
 
  Frame.prototype.checkIfStrike = function() {

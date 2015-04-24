@@ -65,6 +65,14 @@ describe('Frame', function(){
       expect(frame.spare).toEqual(true);
     });
 
+    it('a non bonus roll', function(){
+      frame = new Frame();
+      frame.roll(3);
+      frame.roll(4);
+      expect(frame.strike).toEqual(false);
+      expect(frame.spare).toEqual(false);
+    });
+
   });
 
 

@@ -20,6 +20,14 @@ describe('Bowling Game', function() {
     expect(bowling.score).toEqual(10);
   });
 
-  it('')
+  it('the game is on the 1st frame when it starts', function() {
+    expect(bowling.frameNumber).toEqual(1);
+  });
+
+  it('the game is on the 3rd frame after the first two frames', function() {
+    bowling.roll(1)
+    bowling.roll(1)
+    expect(bowling.frameNumber).toEqual(3);
+  });
 
 });

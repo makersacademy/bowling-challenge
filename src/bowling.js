@@ -5,5 +5,9 @@ var Bowling = function () {
 
 Bowling.prototype.roll = function(pins) {
   this.score += pins;
-  this.frameNumber += 1;
+};
+
+Bowling.prototype.frameNumber = function(roll) {
+  this.frameNumber += 1
+  if 
 };

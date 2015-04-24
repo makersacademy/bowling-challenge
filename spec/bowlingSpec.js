@@ -24,6 +24,12 @@ describe('Bowling Game', function() {
     expect(bowling.frameNumber).toEqual(1);
   });
 
+  it('the frame is over when the player has rolled twice', function() {
+    bowling.roll(1)
+    bowling.roll(1)
+    expect(bowling.frameNumber).toEqual(3);
+  });
+
   it('the game is on the 3rd frame after the first two frames', function() {
     bowling.roll(1)
     bowling.roll(1)

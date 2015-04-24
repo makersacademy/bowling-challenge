@@ -29,12 +29,13 @@ Development Blog:
 - [Day 1](http://sanjsanj.github.io/Week%205,%20Day%206/)
 - [Day 2](http://sanjsanj.github.io/Week%205,%20Day%207/)
 - [Day 3](http://sanjsanj.github.io/Week%206,%20Day%201/)
+- [Day 4]()
 
 How To Run:
 -----------
 - You can follow the Heroku link at the top of this Readme for a live version of this app
-- You can run the tests locally by typing `open SpecRunner.html` in the application's root folder
 - You can launch a local version of the app by typing `ruby server.rb` in the application's root folder
+- You can run the tests locally by typing `open SpecRunner.html` in the application's root folder
 
 Tests:
 ------

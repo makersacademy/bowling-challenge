@@ -28,28 +28,28 @@ describe('Bowling scoresheet', function(){
     it('two non-spare/non-strike rolls', function(){
       helper(1, 5);
       helper(1, 2);
-      expect(bowling.cumulativeScore()).toBe(7);
+      expect(bowling.cumulativeScore(1)).toBe(7);
     });
 
     it('a strike and a spare', function(){
       helper(1, 10);
       helper(2, 5);
-      expect(bowling.cumulativeScore()).toBe(30);
+      expect(bowling.cumulativeScore(2)).toBe(30);
     });
 
     it('an unremarkable game', function(){
       helper(20, 4);
-      expect(bowling.cumulativeScore()).toBe(80);
+      expect(bowling.cumulativeScore(10)).toBe(80);
     });
 
     it('a perfect game', function(){
       helper(12, 10);
-      expect(bowling.cumulativeScore()).toBe(300);
+      expect(bowling.cumulativeScore(10)).toBe(300);
     });
 
     it('a gutter game', function(){
       helper(20, 0);
-      expect(bowling.cumulativeScore()).toBe(0);
+      expect(bowling.cumulativeScore(10)).toBe(0);
     });
 
     it('an example game', function(){
@@ -72,7 +72,7 @@ describe('Bowling scoresheet', function(){
       bowling.roll(2);
       bowling.roll(8);
       bowling.roll(6);
-      expect(bowling.cumulativeScore()).toBe(133);
+      expect(bowling.cumulativeScore(10)).toBe(133);
     });
   });
 });

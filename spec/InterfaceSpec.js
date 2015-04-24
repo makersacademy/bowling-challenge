@@ -11,7 +11,7 @@ describe('Interface', function() {
   });
 
   it('has a title message', function(){
-    expect('.title').toHaveText('Bowling Scoresheet')
+    expect('title').toContainText('Bowling Scoresheet')
   });
 
   it('has buttons to enter pins scored', function(){

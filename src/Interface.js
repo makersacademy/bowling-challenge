@@ -3,12 +3,13 @@ $(document).ready(function(){
 var bowling = new Bowling();
 
   var afterRoll = function(){
-    $('#finalScore').text(bowling.cumulativeScore());
+    for (var i = 1; i <= 10; i ++){
+      $('#f' + i + 'score').text(bowling.cumulativeScore(i));
+    };
+    // $('#f10score').text(bowling.cumulativeScore());
     for (var i = 1; i <= 21; i ++){
       $('.outerbox' + i).text(bowling.scoresArray[i - 1]);
     };
-    $('#fsSymbol0_' + (bowling.frameCounter - 1)).text(bowling.cumulativeScore());
-    $('#fsSymbol0_20').text(bowling.cumulativeScore());
   };
 
   $('#btn0').click(function(){

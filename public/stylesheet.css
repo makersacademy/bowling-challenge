@@ -1,14 +1,12 @@
-/* main front bit */
 .ribbon {
  font-size: 26px !important;
- /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
  width: 50%;
  position: relative;
  background: #ba89b6;
  color: #fff;
  text-align: center;
- padding: 1em 2em; /* Adjust to suit */
- margin: 2em auto 3em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
+ padding: 1em 2em;
+ margin: 2em auto 3em;
 }
 .ribbon:before, .ribbon:after {
  content: "";
@@ -45,91 +43,25 @@
  border-width: 1em 1em 0 0;
 }
 
-
-
-/* ------------------------------------------- */
-/*    special class for Frame 1                */
-/* ------------------------------------------- */
-div.frameboxFrameone {
-    box-sizing: border-box;
-    width: 10%;
-    height: 80%;
-    border:solid thin Black ;
-    float: left;
-    background-color:#FAFAD2 ;
-    text-align:center;
-    vertical-align: middle;
-    font:'Times New Roman', 'Arial Black', times, Serif ;
-    font-weight: bold;
-    font-size:large;
-}
-
-/* ------------------------------------------- */
-/*    general classes for Frame 2 thru 9      */
-/* ------------------------------------------- */
-div.framebox {
-    box-sizing: border-box;
-    width: 10%;
-    height: 80%;
-    margin: 0pt 0pt 0pt 0pt;
-    border-left:none;
-    border-bottom:solid thin Black ;
-    border-right:solid thin Black ;
-    border-top:solid thin Black ;
-    float: left;
-    background-color:#FAFAD2 ;
-    text-align:center;
-    vertical-align: middle;
-    font:'Times New Roman', 'Arial Black', times, Serif ;
-    font-weight: bold;
-    font-size:large;
-}
-
-
-/* ------------------------------------------- */
-/*  Holds the little frame number - not score */
-/* ------------------------------------------- */
-.framename {
-    box-sizing: border-box;
-    width: 100%;
-    height: 25%;
-    margin: 0pt 0pt 0pt 0pt;
-    border-bottom:solid thin Black;
-    background-color: orange;
-    text-align:center;
-    font-size:100%;  /* will be overloaded for smaller screens*/
-    padding-top:6px;
-}
-
-div.framescorebox {
-    box-sizing: border-box;
-    width: 100%;
-    height:75%;
-    margin:0;
-    border-top:1px #000 solid;
-    padding-top: 36px;
-    text-align:center;
+body {
+  font-family: "Arial Black", Gadget, sans-serif;
+  background-color: #F3F1F5;
+  line-height: 100%;
 }
 
 .panel-body {
   font-size: 24px;
-  color: blue;
+  color: #63A5C7;
   padding-bottom: 40px;
-  height:50px;
-  width: 50%;
+  height: 50px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
   text-align: center;
 }
 
-body {
-  background-color: #F3F1F5;
-  line-height: 100%;
-}
-
 .btn {
-  display: inline;
   padding: 10px;
   color: black;
   width: 37px;
@@ -140,11 +72,6 @@ body {
 .btn:hover {
   color: #333333;
   background-color: #829db6;
-}
-
-.frameScoreFontSize {
-  font-size: 20px;
-  padding: 10px;
 }
 
 table {
@@ -162,6 +89,7 @@ thead {
 
 tbody {
     background-color: lightgrey;
+    font-weight: thin;
 }
 
 tfoot {

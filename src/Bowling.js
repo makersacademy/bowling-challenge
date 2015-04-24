@@ -9,12 +9,9 @@ Bowling.prototype.roll = function(rollScore){
 
   function throwAlert(){
     alert("Illegal score");
-    throw("Illegal score");
   };
 
-  if (rollScore > 10) {
-    throwAlert();
-  } else if (this.frameCounter % 2 === 0 && (rollScore + this.scoresArray[this.scoresArray.length - 1] > 10)){
+  if (this.frameCounter % 2 === 0 && (rollScore + this.scoresArray[this.scoresArray.length - 1] > 10)){
     throwAlert();
   } else {
     this.rollsArray.push(rollScore);
@@ -50,7 +47,7 @@ Bowling.prototype.registerRoll = function(rollScore){
   this.rollCounter ++;
 };
 
-Bowling.prototype.cumulativeScore = function(){
+Bowling.prototype.cumulativeScore = function(frameNumber){
   var self = this;
   var score = 0;
   var frameStart = 0;
@@ -75,7 +72,7 @@ Bowling.prototype.cumulativeScore = function(){
     return self.rollsArray[frameStart + 2] || 0;
   };
 
-  for (var i = 0; i < 10; i ++){
+  for (var i = 0; i < frameNumber; i ++){
     if(isStrike()){
       score += 10 + strikeBonus();
       frameStart ++;

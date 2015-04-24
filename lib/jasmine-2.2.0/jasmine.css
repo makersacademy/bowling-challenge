@@ -1,6 +1,6 @@
 body { overflow-y: scroll; background-color: #333333; }
 
-.jasmine_html-reporter { background-color: #DDDDDD; padding: 5px; margin: -8px; font-size: 12px; font-family: Monaco, "Ubuntu Mono", "Lucida Console", monospace; line-height: 14px; color: #333; }
+.jasmine_html-reporter { background-color: #DDDDDD; padding: 5px; margin: -8px; font-size: 16px; font-family: Monaco, "Ubuntu Mono", "Lucida Console", monospace; line-height: 18px; color: #333; }
 .jasmine_html-reporter a { text-decoration: none; }
 .jasmine_html-reporter a:hover { text-decoration: underline; }
 .jasmine_html-reporter p, .jasmine_html-reporter h1, .jasmine_html-reporter h2, .jasmine_html-reporter h3, .jasmine_html-reporter h4, .jasmine_html-reporter h5, .jasmine_html-reporter h6 { margin: 0; line-height: 14px; }
@@ -22,11 +22,11 @@ body { overflow-y: scroll; background-color: #333333; }
 .jasmine_html-reporter .symbol-summary li.disabled { font-size: 14px; }
 .jasmine_html-reporter .symbol-summary li.disabled:before { color: #999999; content: "\02022"; }
 .jasmine_html-reporter .symbol-summary li.pending { line-height: 17px; }
-.jasmine_html-reporter .symbol-summary li.pending:before { color: #B3911D; content: "*"; }
+.jasmine_html-reporter .symbol-summary li.pending:before { color: #B3911D; content: "\02023"; }
 .jasmine_html-reporter .symbol-summary li.empty { font-size: 14px; }
 .jasmine_html-reporter .symbol-summary li.empty:before { color: #B3911D; content: "\02022"; }
 .jasmine_html-reporter .exceptions { color: #fff; float: right; margin-top: 5px; margin-right: 5px; }
-.jasmine_html-reporter .bar { line-height: 28px; font-size: 14px; display: block; color: #eee; }
+.jasmine_html-reporter .bar { line-height: 28px; font-size: 16px; display: block; color: #eee; }
 .jasmine_html-reporter .bar.failed { background-color: #972323; }
 .jasmine_html-reporter .bar.passed { background-color: #71993D; }
 .jasmine_html-reporter .bar.skipped { background-color: #999999; }

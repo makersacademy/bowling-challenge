@@ -7,9 +7,13 @@ $(document).ready(function(){
       $('#f' + i + 'score').text(bowling.cumulativeScore(i));
     };
     for (var i = 1; i <= 21; i ++){
-      $('.outerbox' + i).text(bowling.scoresArray[i - 1]);
+      $('.box' + i).text(bowling.scoresArray[i - 1]);
     };
   };
+
+  $('#newgame').click(function() {
+    location.reload();
+  });
 
   $('#btn0').click(function(){
     bowling.roll(0);

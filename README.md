@@ -11,19 +11,11 @@ Count and sum the scores of a bowling game for one player (in JavaScript)
 
 Tools:
 ------
-For Testing:
-- Jasmine
-- Jasmine-Jquery
+Testing:  Jasmine and Jasmine-JQuery
 
-For Apllication Code:
-- Javascript
-- Jquery
-- HTML
-- CSS
+Application Code:  Javascript, JQuery, HTML and CSS
 
-Other:
-- Sinatra
-- PHP
+Other:  Sinatra and PHP
 
 Development Blog:
 -----------------
@@ -36,7 +28,7 @@ How To Run:
 -----------
 - You can follow the Heroku link at the top of this Readme for a live version of this app
 - You can launch a local version of the app by typing `ruby server.rb` in the application's root folder
-- You can run the tests locally by typing `open SpecRunner.html` in the application's root folder
+- You can run the tests locally by typing `open SpecRunner.html` in the application's root folder after starting the Ruby server
 
 Tests:
 ------

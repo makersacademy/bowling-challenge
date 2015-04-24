@@ -45,8 +45,8 @@
 
 body {
   font-family: "Arial Black", Gadget, sans-serif;
-  background-color: #F3F1F5;
-  line-height: 100%;
+  /*line-height: 100%;*/
+  background-color: #EDDDD8;
 }
 
 .panel-body {
@@ -100,4 +100,22 @@ th, td {
     border: 5px solid white;
     text-align: center;
     padding: 8px;
+}
+
+#newgame {
+  font-size: 12px;
+  color: grey;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+  padding: 5px;
+}
+
+#bgMiddle {
+  position: fixed;
+  background-color: white;
+  width: 50%;
+  height: 100%;
+  z-index: -10;
+  margin-left: 25%;
 }

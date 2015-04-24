@@ -13,20 +13,24 @@ BowlingContest.prototype.isOver = function() {
 return true
 };
 
-BowlingContest.prototype.numberOfPlayers = function() {
+BowlingContest.prototype.playerArray = function() {
   playerArray = []
   for(i = 0; i < Object.keys(this.players).length; i ++) {
     playerArray.push(this.players[Object.keys(this.players)[i]]);
   }
-  return playerArray.length
+  return playerArray;
+};
+
+BowlingContest.prototype.numberOfPlayers = function() {
+  return this.playerArray().length;
 };
 
 BowlingContest.prototype.winner = function() {
-  highScorer = this.players["player1"]
+  highScorer = this.players["player1"];
   for(i = 0; i < Object.keys(this.players).length; i ++) {
     if(this.players[Object.keys(this.players)[i]].score() > highScorer.score()) {
-      highScorer = this.players[Object.keys(this.players)[i]]
+      highScorer = this.players[Object.keys(this.players)[i]];
     }
   }
-  return highScorer
+  return highScorer;
 };

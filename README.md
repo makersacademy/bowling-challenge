@@ -7,7 +7,7 @@ Bowling Challenge
 
 Task:
 -----
-Count and sum the scores of a bowling game for one player (in JavaScript).
+Count and sum the scores of a bowling game for one player (in JavaScript)
 
 Tools:
 ------

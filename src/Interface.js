@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-var bowling = new Bowling();
+  var bowling = new Bowling();
 
   var afterRoll = function(){
     for (var i = 1; i <= 10; i ++){
@@ -65,5 +65,4 @@ var bowling = new Bowling();
     bowling.roll(10);
       afterRoll();
   });
-
 });

@@ -6,16 +6,21 @@ var Bowling = function(){
 };
 
 Bowling.prototype.roll = function(rollScore){
+  var self = this;
 
   function throwAlert(){
     alert("Illegal score");
   };
 
-  if (this.frameCounter % 2 === 0 && (rollScore + this.scoresArray[this.scoresArray.length - 1] > 10)){
+  function isIllegalScore(){
+    return self.frameCounter % 2 === 0 && (rollScore + self.scoresArray[self.scoresArray.length - 1] > 10);
+  };
+
+  if (isIllegalScore()){
     throwAlert();
   } else {
-    this.rollsArray.push(rollScore);
-    this.registerRoll(rollScore);
+    self.rollsArray.push(rollScore);
+    self.registerRoll(rollScore);
   };
 };
 
@@ -23,28 +28,48 @@ Bowling.prototype.registerRoll = function(rollScore){
   var self = this;
 
   function tenthFrame (){
-    return (self.frameCounter > 18);
+    return self.frameCounter > 18;
+  };
+
+  function isStrike(){
+    return rollScore === 10;
+  };
+
+  function isFrameEnd(){
+    return self.frameCounter % 2 === 0;
+  };
+
+  function isSpare(){
+    return rollScore + self.scoresArray[self.scoresArray.length - 1] === 10;
+  };
+
+  function decideSpare(){
+    if (isSpare()){
+      self.scoresArray.push('/');
+      self.frameCounter ++;
+    } else {
+      self.scoresArray.push(rollScore);
+      self.frameCounter ++;
+    };
+  };
+
+  function pushScore(){
+    self.scoresArray.push(rollScore);
   };
 
   if (tenthFrame()){
-    self.scoresArray.push(rollScore);
-  } else if (rollScore === 10){
-    this.scoresArray.push(rollScore);
-    this.scoresArray.push('X');
-    this.frameCounter += 2;
-  } else if (this.frameCounter % 2 === 0){
-    if (rollScore + this.scoresArray[this.scoresArray.length - 1] === 10){
-      this.scoresArray.push('/');
-      this.frameCounter ++;
-    } else {
-      this.scoresArray.push(rollScore);
-      this.frameCounter ++;
-    };
+    pushScore();
+  } else if (isStrike()){
+    pushScore();
+    self.scoresArray.push('X');
+    self.frameCounter += 2;
+  } else if (isFrameEnd()){
+    decideSpare();
   } else {
-    this.scoresArray.push(rollScore);
-    this.frameCounter ++;
+    pushScore();
+    self.frameCounter ++;
   };
-  this.rollCounter ++;
+  self.rollCounter ++;
 };
 
 Bowling.prototype.cumulativeScore = function(frameNumber){

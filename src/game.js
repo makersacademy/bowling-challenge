@@ -1,5 +1,4 @@
 var Game = function(arrayOfRolls){
-  console.log('---')
   this.arrayOfRolls = arrayOfRolls
   this.allFrames = []
   this.rolls = []
@@ -8,9 +7,7 @@ var Game = function(arrayOfRolls){
 
 Game.prototype.asignInputToFrames = function() {
   while(this.arrayOfRolls.length > 0){
-    console.log(this.arrayOfRolls.length)
     var frame = new Frame();
-    // console.log(frame)
     this.putRollIn(frame);
     if (!frame.is_over){
       this.putRollIn(frame);
@@ -19,8 +16,6 @@ Game.prototype.asignInputToFrames = function() {
   };
 };
 
-// could extract into own class? if passed an array. might need to set a 
-//var to the length of this.arrayOfRolls and deciment it for the while loop.
 Game.prototype.putRollIn = function(frame) {
   var currRoll = this.arrayOfRolls.shift();
   frame.roll(currRoll)
@@ -28,43 +23,38 @@ Game.prototype.putRollIn = function(frame) {
 };
 
 Game.prototype.scoreForFrame = function(n) {
-  var upToN = new Array(n);
-  var cumulativeScore = 0;
-
-  for(var i=0;i<upToN.length;i++){
-    if (this.allFrames[i].spare){
-      cumulativeScore += this.allFrames[i + 1].rolls[0]
-    }
-    if (this.allFrames[i].strike){
-      cumulativeScore += this.strikeBonus(i);
-
-    }
-    cumulativeScore += this.allFrames[i].score
-  }
-
-  return cumulativeScore;
+  var scorecard = new ScoreCard(n, this.allFrames)
+  return scorecard.score;
 };
 
-Game.prototype.strikeBonus = function(i) {
-    if(this.allFrames[i + 1]){
-      return (this.allFrames[i + 1].score + this.allFrames[i + 2].rolls[0]);
-    }else{
-      return this.allFrames[i + 1].score;
-    }
-};
+// could I split below here into a score card class
+// and above into a frame sorting class
 
+//score card class would take an int n and an array of frames with rolls in
 
-  // def score_for_frame(n)
-  //   cumulative_score = 0
-  //   (0..n - 1).each do |i|
-  //     name_frames_in_english i
-  //     cumulative_score += @next_frame.first_roll if @current_frame.spare
-  //     cumulative_score += strike_bonus if @current_frame.strike
-  //     cumulative_score += @current_frame.score
-  //   end
-  //   cumulative_score
-  // end
+// Game.prototype.scoreForFrame = function(n) {
+//   var upToN = new Array(n);
+//   var cumulativeScore = 0;
 
+//   for(var i=0;i<upToN.length;i++){
+//     if (this.allFrames[i].spare){
+//       cumulativeScore += this.allFrames[i + 1].rolls[0]
+//     }
+//     if (this.allFrames[i].strike){
+//       cumulativeScore += this.strikeBonus(i);
 
+//     }
+//     cumulativeScore += this.allFrames[i].score
+//   }
+//   return cumulativeScore;
+// };
+
+// Game.prototype.strikeBonus = function(i) {
+//     if(this.allFrames[i + 1]){
+//       return (this.allFrames[i + 1].score + this.allFrames[i + 2].rolls[0]);
+//     }else{
+//       return this.allFrames[i + 1].score;
+//     }
+// };
 
 

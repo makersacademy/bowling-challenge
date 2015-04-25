@@ -18,6 +18,11 @@ body {
   vertical-align:top;
 }
 
+.frame--selected {
+  webkit-box-shadow:0 0 20px white;
+  moz-box-shadow: 0 0 20px white;  box-shadow:0 0 20px yellow;
+}
+
 .first_roll {
   float: left;
   text-align: center;

@@ -4,167 +4,103 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script type="text/javascript" src="./src/frame.js"></script>
   <script type="text/javascript" src="./src/game.js"></script>
+  <script type="text/javascript" src="./src/app.js"></script>
   <link rel="stylesheet" type="text/css" href="./styles.css">
-  <script>
-    $(document).ready(function() {
-
-        frames = [new Frame(),new Frame(),new Frame(), new Frame(),new Frame(),new Frame(), new Frame(),new Frame(),new Frame(), new Frame()];
-
-        $('.frame').click(function() {
-          currentFrame = $(this).attr('id');
-        });
-
-        var bonuses = false;
-
-        $('#calculate_score').click(function() {
-          if (bonuses) {
-            game = new Game()
-            game.addFrames(frames[0],frames[1],frames[2],frames[3],frames[4],frames[5],frames[6],frames[7],frames[8],frames[9],frames[10]);
-            console.log(game);
-          $('#score').text(game.score());
-          return;
-          };
-
-            game = new Game()
-            game.addFrames(frames[0],frames[1],frames[2],frames[3],frames[4],frames[5],frames[6],frames[7],frames[8],frames[9]);
-          $('#score').text(game.score());
-        });
-
-        $('#confirm').click( function() {
-
-          if (currentFrame == "bonus_one" && frames[9].bowled[0] !== 10) {
-          bonus_one = new Frame();
-          bonus_one.bowled[0] = (Number($('#pins_hit').val()));
-          frames.push(bonus_one);
-          $("#bonus_one > .first_roll").text(frames[10].bowled[0]);
-          $("#bonus_one > .total").text(frames[10].knockedDown());
-          bonuses = true;
-          return;
-          };
-
-          if (currentFrame == "bonus_one" && frames[9].bowled[0] === 10) {
-          if (frames[10]) {
-            bonus_one.add_bowl((Number($('#pins_hit').val())));
-            $("#bonus_one > .first_roll").text(frames[10].bowled[0]);
-            $("#bonus_one > .second_roll").text(frames[10].bowled[0]);
-            $("#bonus_one > .total").text(frames[10].knockedDown());
-            bonuses = true;
-            return;
-          };
-          bonus_one = new Frame();
-          bonus_one.add_bowl((Number($('#pins_hit').val())));
-          frames.push(bonus_one);
-          $("#bonus_one > .first_roll").text(frames[10].bowled[0]);
-          $("#bonus_one > .total").text(frames[10].knockedDown());
-          return;
-        };
-
-          frames[currentFrame - 1].add_bowl(Number($('#pins_hit').val()));
-          updateFirstRoll(currentFrame);
-          updateSecondRoll(currentFrame);
-          updateTotal(currentFrame);
-          if (currentFrame == "10" && frames[9].knockedDown() === 10) {
-            showBonusRoll();
-            };
-        });
-
-        var showBonusRoll = function() {
-          $('#bonus_one').show()
-        };
-
-        var updateFirstRoll = function(currentFrame) {
-          currentFrameDiv = "#" + currentFrame.toString() + " > .first_roll";
-          $(currentFrameDiv).text(frames[currentFrame - 1].bowled[0]);
-        };
-
-        var updateSecondRoll = function(currentFrame) {
-          currentFrameDiv = "#" + currentFrame.toString() + " > .second_roll";
-          $(currentFrameDiv).text(frames[currentFrame - 1].bowled[1]);
-        };
-
-        var updateTotal = function(currentFrame) {
-          currentFrameDiv = "#" + currentFrame.toString() + " > .total";
-          $(currentFrameDiv).text(frames[currentFrame - 1].knockedDown());
-        };
-
-        $('#bonus_one').hide();
-      });
-
-  </script>
 </head>
+
 <body>
-  <div id="welcome"><h1>Score Your Own!</h1></div>
+  <div>
+    <h1 id="welcome">Score Your Own!</h1>
+  </div>
+
   <h2> The Website Dat Help You Drink And Bowl...   </h2>
+
   <p> Simply click a frame then enter a number and click submit: </p>
+
   <div id="1" class="frame">
     <div class='frame_title'> FRAME 1</div>
     <div class='first_roll'></div>
     <div class='second_roll'></div>
     <div class='total'></div>
   </div>
+
   <div id="2" class="frame">
     <div class='frame_title'> FRAME 2</div>
     <div class='first_roll'></div>
     <div class='second_roll'></div>
     <div class='total'></div>
   </div>
+
   <div id="3" class="frame">
     <div class='frame_title'> FRAME 3</div>
     <div class='first_roll'></div>
     <div class='second_roll'></div>
     <div class='total'></div>
   </div>
+
   <div id="4" class="frame">
     <div class='frame_title'> FRAME 4</div>
     <div class='first_roll'></div>
     <div class='second_roll'></div>
     <div class='total'></div>
   </div>
+
   <div id="5" class="frame">
     <div class='frame_title'> FRAME 5</div>
     <div class='first_roll'></div>
     <div class='second_roll'></div>
     <div class='total'></div>
   </div>
+
   <div id="6" class="frame">
     <div class='frame_title'> FRAME 6</div>
     <div class='first_roll'></div>
     <div class='second_roll'></div>
     <div class='total'></div>
   </div>
+
   <div id="7" class="frame">
     <div class='frame_title'> FRAME 7</div>
     <div class='first_roll'></div>
     <div class='second_roll'></div>
     <div class='total'></div>
   </div>
+
   <div id="8" class="frame">
     <div class='frame_title'> FRAME 8</div>
     <div class='first_roll'></div>
     <div class='second_roll'></div>
     <div class='total'></div>
   </div>
+
   <div id="9" class="frame">
     <div class='frame_title'> FRAME 9</div>
     <div class='first_roll'></div>
     <div class='second_roll'></div>
     <div class='total'></div>
   </div>
+
   <div id="10" class="frame">
     <div class='frame_title'> FRAME 10</div>
     <div class='first_roll'></div>
     <div class='second_roll'></div>
     <div class='total'></div>
   </div>
-  <div id="bonus_one" class="frame">
+
+  <div id="bonus" class="frame">
     <div class='frame_title'> Bonus Roll</div>
     <div class='first_roll'></div>
     <div class='second_roll'></div>
     <div class='total'></div>
   </div>
+
   <input id="pins_hit" type='number'></input>
+
   <input id="confirm" type='submit'></input>
+
   <input id="calculate_score" type='submit' value='SCORE MY GAME!'></input>
+
   <div id='score'></div>
+
 </body>
 </html>

@@ -8,7 +8,6 @@ Game.prototype.addFrames = function(frame1, frame2, frame3, frame4, frame5, fram
 };
 
 Game.prototype.score = function() {
-
   this.FailIfBonusIncorrectlyGiven();
   return this.getWinMessage(this.calculateScore());
 };

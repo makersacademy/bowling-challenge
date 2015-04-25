@@ -63,7 +63,7 @@ describe("FEATURE: Full Games online!", function() {
     $('#pins_hit').val(8);
     $('#confirm').click();
 
-    $('#bonus_one').click();
+    $('#bonus').click();
     $('#pins_hit').val(6);
     $('#confirm').click();
 
@@ -114,7 +114,7 @@ describe("FEATURE: Full Games online!", function() {
     $('#pins_hit').val(10);
     $('#confirm').click();
 
-    $('#bonus_one').click();
+    $('#bonus').click();
     $('#pins_hit').val(10);
     $('#confirm').click();
     $('#pins_hit').val(10);
@@ -183,7 +183,7 @@ describe("FEATURE: Full Games online!", function() {
     $('#pins_hit').val(8);
     $('#confirm').click();
 
-    $('#bonus_one').click();
+    $('#bonus').click();
     $('#pins_hit').val(6);
     $('#confirm').click();
 

@@ -5,7 +5,7 @@ describe("WEB APP", function() {
       loadFixtures('app.html');
     });
 
-   it("displays Hello world", function() {
+   it("homepage displays header", function() {
     expect($('#welcome').text()).toEqual('Score Your Own!');
   });
 
@@ -62,13 +62,13 @@ describe("WEB APP", function() {
 
    it("brings bonus frame into view if get spare in final round", function() {
 
-      expect($('#bonus_one')).toBeHidden();
+      expect($('#bonus')).toBeHidden();
       $('#10').click();
       $('#pins_hit').val(5);
       $('#confirm').click();
       $('#pins_hit').val(5);
       $('#confirm').click();
-      expect($('#bonus_one')).toBeVisible();
+      expect($('#bonus')).toBeVisible();
 
    });
 
@@ -79,15 +79,15 @@ describe("WEB APP", function() {
       $('#confirm').click();
       $('#pins_hit').val(5);
       $('#confirm').click();
-      expect($('#bonus_one')).toBeVisible();
-      $('#bonus_one').click();
+      expect($('#bonus')).toBeVisible();
+      $('#bonus').click();
       $('#pins_hit').val(5);
       $('#confirm').click();
-      expect(bonus_one.bowled).toEqual([5]);
-      $('#bonus_one').click();
+      expect(bonusFrame.bowled).toEqual([5]);
+      $('#bonus').click();
       $('#pins_hit').val(5);
       $('#confirm').click();
-      expect(bonus_one.bowled).toEqual([5]);
+      expect(bonusFrame.bowled).toEqual([5]);
    });
 
    it("displays total and value of bonus roll 1", function() {
@@ -97,11 +97,11 @@ describe("WEB APP", function() {
       $('#confirm').click();
       $('#pins_hit').val(5);
       $('#confirm').click();
-      $('#bonus_one').click();
+      $('#bonus').click();
       $('#pins_hit').val(5);
       $('#confirm').click();
-      expect($("#bonus_one > .first_roll").text()).toEqual("5");
-      expect($("#bonus_one > .total").text()).toEqual("5");
+      expect($("#bonus > .first_roll").text()).toEqual("5");
+      expect($("#bonus > .total").text()).toEqual("5");
 });
 
    it("allows user to add two bonus roll if roll strike in frame 10", function() {
@@ -109,18 +109,18 @@ describe("WEB APP", function() {
       $('#10').click();
       $('#pins_hit').val(10);
       $('#confirm').click();
-      expect($('#bonus_one')).toBeVisible();
-      $('#bonus_one').click();
+      expect($('#bonus')).toBeVisible();
+      $('#bonus').click();
       $('#pins_hit').val(5);
       $('#confirm').click();
-      expect(bonus_one.bowled).toEqual([5]);
-      $('#bonus_one').click();
+      expect(bonusFrame.bowled).toEqual([5]);
+      $('#bonus').click();
       $('#pins_hit').val(5);
       $('#confirm').click();
-      expect(bonus_one.bowled).toEqual([5, 5]);
-      expect($("#bonus_one > .first_roll").text()).toEqual("5");
-      expect($("#bonus_one > .second_roll").text()).toEqual("5");
-      expect($("#bonus_one > .total").text()).toEqual("10");
+      expect(bonusFrame.bowled).toEqual([5, 5]);
+      expect($("#bonus > .first_roll").text()).toEqual("5");
+      expect($("#bonus > .second_roll").text()).toEqual("5");
+      expect($("#bonus > .total").text()).toEqual("10");
    });
 
    });

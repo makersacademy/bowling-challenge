@@ -24,43 +24,44 @@ describe('Bowling', function() {
           expect(bowling.ballOne()).toBe(0);
         });
 
-        it('roll is Strike and frame is over', function(){
+        it('roll is Strike and score is 10', function(){
           spyOn(bowling, 'ballOne').and.returnValue(0);
-          expect(bowling.gameFrame()).toEqual("Strike, frame is over");
+          expect(bowling.firstPart()).toEqual("Strike, frame is over");
           expect(bowling.frameScore()).toEqual(10);
         });
       });
 
-      describe('and number of pins down is less than 10', function(){
-
-        // it('the frames continues', function(){
-        //   spyOn(bowling, 'ballOne').and.returnValue(6);
-        //   expect(bowling.gameFrame()).toEqual("Frame continues");
-        // });
-
-        it('then pins left are 10 minus pins knocked down', function(){
-          spyOn(bowling, 'pinsKnocked').and.returnValue(6);
-          expect(bowling.ballOne()).toBe(4);
+      describe('and number of pins down is 10', function(){
+        it('the frame continues', function(){
+            spyOn(bowling, 'ballOne').and.returnValue(5);
+            expect(bowling.firstPart()).toEqual("Frame continues, go for next ball");
         });
       });
     });
 
     describe('is 2', function() {
-      it('then number of pins knocked down has to be less than pins left in ball 1', function() {
+
+      beforeEach(function(){
         spyOn(bowling, 'ballOne').and.returnValue(6);
+      });
+
+      it('then number of pins knocked down has to be less than pins left in ball 1', function() {
         pinsLeft = 10 - bowling.ballOne();
         expect(bowling.pinsKnocked(pinsLeft)).toBeLessThan(5);
+      });
+
+      beforeEach(function(){
+        spyOn(bowling, 'firstPart').and.returnValue("Frame continues, go for next ball");
       });
 
       describe('and number of pins knocked down plus number of pins knocked by ball 1 is 10,', function(){
 
         beforeEach(function() {
-          spyOn(bowling, 'ballOne').and.returnValue(6);
-          spyOn(bowling, 'ballTwo').and.returnValue(0);
+          spyOn(bowling, 'secondPart').and.returnValue(0);
         });
 
         it('roll is a Spare', function() {
-          expect(bowling.gameFrame()).toEqual("Spare, frame is over");
+          expect(bowling.thirdPart()).toEqual("Spare, frame is over");
         });
 
         it('frame score is 10', function() {
@@ -71,18 +72,15 @@ describe('Bowling', function() {
       describe('and number of pins knocked down plus number of pins knocked by ball 1, is less than 10', function(){
 
         beforeEach(function() {
-          spyOn(bowling, 'ballOne').and.returnValue(7);
-          spyOn(bowling, 'ballTwo').and.returnValue(3);
+          spyOn(bowling, 'secondPart').and.returnValue(3);
         });
 
         it('roll is open frame', function(){
-          expect(bowling.gameFrame()).toEqual("Open Frame, frame is over");
+          expect(bowling.thirdPart()).toEqual("Open Frame, frame is over");
         });
 
         it('frame score is the sum of pins knocked down in both balls', function(){
-          spyOn(bowling, 'ballOne').and.returnValue(7);
-          spyOn(bowling, 'ballTwo').and.returnValue(3);
-          expect(bowling.frameScore()).toEqual("7");
+          expect(bowling.frameScore()).toEqual(7);
         });
       });
     });

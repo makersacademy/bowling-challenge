@@ -12,6 +12,7 @@ Bowling.prototype.pinsKnocked = function(pins) {
 
 Bowling.prototype.ballOne = function() {
   var pinsDown = this.pinsKnocked(this.startPins);
+  console.log(pinsDown);
   if (pinsDown === 10){
     this.pinsLeft = 0;
   } else {

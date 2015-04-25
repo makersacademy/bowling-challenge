@@ -11,23 +11,22 @@ Count and sum the scores of a bowling game for one player (in JavaScript)
 
 Tools:
 ------
-Testing:  Jasmine and Jasmine-JQuery
-
-Application Code:  Javascript, JQuery, HTML and CSS
-
-Other:  Sinatra and PHP
+Testing:  **Jasmine and Jasmine-JQuery**  
+Application Code:  **Javascript, JQuery, HTML and CSS**  
+Other:  **Sinatra and PHP**
 
 Development Blog:
 -----------------
-- [Day 1](http://sanjsanj.github.io/Week%205,%20Day%206/)
-- [Day 2](http://sanjsanj.github.io/Week%205,%20Day%207/)
-- [Day 3](http://sanjsanj.github.io/Week%206,%20Day%201/)
-- [Day 4](http://sanjsanj.github.io/Week%206,%20Day%205/)
+- [Day 1 - Setting up tests, some backend](http://sanjsanj.github.io/Week%205,%20Day%206/)
+- [Day 2 - Finish off core backend](http://sanjsanj.github.io/Week%205,%20Day%207/)
+- [Day 3 - Start looking at frontend](http://sanjsanj.github.io/Week%206,%20Day%201/)
+- [Day 4 - Styling and refactoring](http://sanjsanj.github.io/Week%206,%20Day%205/)
+- [Day 5 - CSS table breakdown](http://sanjsanj.github.io/Week%206,%20Day%206/)
 
 How To Run:
 -----------
 - You can follow the Heroku link at the top of the README for a live version of this app
-- You can launch a local version of the app by typing `ruby server.rb` in the application's root folder
+- You can launch a local version of the app by typing `ruby server.rb` in the application's root folder and then navigate to localhost:4567/home.html in your browser
 - You can run the tests locally by typing `open SpecRunner.html` in the application's root folder after starting the Ruby server
 
 Tests:

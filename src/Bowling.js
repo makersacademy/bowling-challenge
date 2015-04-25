@@ -46,11 +46,10 @@ Bowling.prototype.registerRoll = function(rollScore){
   function decideSpare(){
     if (isSpare()){
       self.scoresArray.push('/');
-      self.frameCounter ++;
     } else {
       self.scoresArray.push(rollScore);
-      self.frameCounter ++;
     };
+    self.frameCounter ++;
   };
 
   function pushScore(){

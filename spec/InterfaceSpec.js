@@ -7,7 +7,7 @@ describe('Interface', function() {
     jasmine.getStyleFixtures().fixturesPath = './public';
     loadStyleFixtures('stylesheet.css');
     jasmine.getFixtures().fixturesPath = '.';
-    loadFixtures('index.html');
+    loadFixtures('home.html');
   });
 
   it('has a title message', function(){

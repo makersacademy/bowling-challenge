@@ -66,4 +66,48 @@ describe('Calculates a bowling score', function () {
     expect(game.totalScore).toBe(24);
   });
 
+  it('adds bonus from next balls after a spare', function () {
+    game.roll(9);
+    game.roll(1);
+    game.roll(3);
+    game.roll(2);
+    expect(game.totalScore).toBe(18);
+  });
+
+  it('prevents rolls after 10 frames', function () {
+    for (i = 0; i < 20; i ++) {
+      game.roll(3);
+    }
+    expect(game.roll(2)).toBe('Game Over')
+    expect(game.totalScore).toBe(60);
+  });
+
+  it('allows an extra bonus roll on last frame if it\'s a strike', function () {
+    for (i = 0; i < 18; i ++) {
+      game.roll(3);
+    }
+    game.roll(10);
+    game.roll(3);
+    expect(game.totalScore).toBe(67);
+  });
+
+  it('calculates bonuses correctly with strike on ninth frame', function () {
+    for (i = 0; i < 16; i ++) {
+      game.roll(1);
+    }
+    game.roll(10);
+    game.roll(3);
+    game.roll(3);
+    expect(game.totalScore).toBe(38);
+  });
+
+  it('allows exactly two bonus rolls on last frame if it\s a strike', function () {
+    for (i = 0; i < 18; i ++) {
+      game.roll(3);
+    }
+    game.roll(10);
+    game.roll(10);
+    game.roll(3);
+    expect(game.totalScore).toBe(74);
+  });
 });

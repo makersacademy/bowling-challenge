@@ -1,4 +1,4 @@
-var describe, Bowling
+var describe, Bowling;
 
 describe('Bowling', function () {
     beforeEach(function () {
@@ -37,12 +37,13 @@ describe('Bowling', function () {
         expect(bowling.game).toEqual([0, [7,2], [3, 4]]);
     });
 
-    xit('can add scores in the game', function () {
+    it('can add scores in the game', function () {
         bowling.roll(8);
-        bowling.roll(1);       
-        bowling.addUpFrame();
+        bowling.roll(1);
+        bowling.roll(2);
+        bowling.roll(5);  
         bowling.addUpGame();
-        expect(bowling.total).toEqual(9);
+        expect(bowling.total).toEqual(16);
     });
 
 

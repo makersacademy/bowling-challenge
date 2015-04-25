@@ -8,9 +8,19 @@ var Bowling = function () {
 };
 
 Bowling.prototype.roll = function(roll) {
-    if (this.bFrame.length < 2) {
+    // if (this.bFrame.length === 2) {
+    //     this.bFrame = [roll];
+    // }
+    if (this.bFrame.length === 1) {
         this.bFrame.push(roll);
-    } else {
+        var frameToStore = this.bFrame;
+        this.bFrame = []
+        return this.game.push(frameToStore);
+    } 
+    if (this.bFrame.length === 0) {
+        this.bFrame.push(roll);
+    }
+     else {
         // don't know yet
     }
 };

@@ -2,53 +2,63 @@
 Bowling Challenge
 =================
 
-    Test time: Friday, the entire day and the weekend if you need it.
-    Feel free to use Google, your notes, and your books.
+Makers Academy week 6 challenge to create a bowling score console application in javascript, in a TDD approach using Jasmine.
 
-Task: 
------
+##User Stories##
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+As a Bowler
+So that I can be shown my total score
+I want to be able to submit the pins knocked down per bowl
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+As a bowler
+So that I can get a strike
+I want the frame to be over when I knock all the pins down in the first bowl
 
-As usual please start by 
+As a Bowler
+So that I get my strike bonus points
+I want to recieve 10 for the frame + the points from the next two bowls
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
+As a Bowler
+So that I get my spare bonus points
+I want to recieve 10 for the frame + the points from the next bowl
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+As a Bowler
+So that I can play extra frames on a spare or strike on the 10th frame
+I want to be able to play a maximum of 1 extra frame after a spare and 2 after a strike
+
+As a Bowler
+So that I can know I've has a bad game
+I want the score to be "Gutter Game" if I hit no pins
+
+As a Bowler
+So that I can know I'm awesome
+I want the score to be "Perfect Game" if I get 12 strikes.
+
+##MVP##
+
+A javascript console based game scorecard for one player with the ability to handle all rules of the game.
+
+##Setup##
+
+A sinatra server is setup with a rackup config file, therefore from the terminal you can run `rackup` and then navigate to localhost:9292/SpecRunner.html, where you will be presented with the Jasmine tests. From the console start a new game by running:
+
+`game = new Game` to create a new game
+
+'game.frame' will return the current frame
+
+'game.ball' will return the current ball
+
+`game.bowl(8)` per bowl with the number of pins knocked down as the argument (i.e. 8 in this example)
+
+`game.frame_scores` will return scores per set
+
+`game.score` will return the total current score for the game
+
+##Contribution##
+
+This is a challenge set to identify progress in Wk6 at Makers Academy, therefore is designed to be tackled individually.
+
+However comment on the quality of the code and it's implementation would be very welcome.
 
 
-### Optional Extra
 
-Create a nice interactive animated interface with jQuery.
-
-## Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-## Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-## 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-## Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-## Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)

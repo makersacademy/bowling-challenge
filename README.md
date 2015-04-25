@@ -40,7 +40,7 @@ A javascript console based game scorecard for one player with the ability to han
 
 ##Setup##
 
-A sinatra server is setup with a rackup config file, therefore from the terminal you can run `rackup` and then navigate to localhost:9292/SpecRunner.html, where you will be presented with the Jasmine tests. From the console start a new game by running:
+A sinatra server (`gem install sinatra` if you have not got the gem) is setup with a rackup config file, therefore from the terminal you can run `rackup` and then navigate to localhost:9292/, where you will be presented with the Jasmine tests. From the console start a new game by running:
 
 `game = new Game` to create a new game
 

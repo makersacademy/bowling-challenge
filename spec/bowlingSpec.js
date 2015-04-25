@@ -30,7 +30,7 @@ describe("Bowling Game", function(){
     var knockedDown = 2
     game.bowl(knockedDown)
     game.bowl(knockedDown)
-    expect(game.ball).toEqual(2);
+    expect(game.ball).toEqual(1);
     expect(game.frame).toEqual(2);
   });
 

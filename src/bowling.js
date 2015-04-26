@@ -17,6 +17,12 @@ Game.prototype.bowl = function(knockedDown) {
     }
   }
 
+  if (this.frame === 11 && self.scorePerBowl[self.scorePerBowl.length-1] !== 'X') {
+    return "Game Over you scored " + this.score();
+  } else if (this.frame === 12 && self.scorePerBowl[self.scorePerBowl.length-1] !== 'X') {
+    return "Game Over you scored " + this.score();
+  }
+
   this.scorePerBowl.push(formatInput());
 
   if(this.ball === 2) { this.frame += 1 };

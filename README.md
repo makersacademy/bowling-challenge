@@ -1,9 +1,16 @@
+[![Build Status](https://travis-ci.org/DanBlakeman/bowling-challenge.svg)](https://travis-ci.org/DanBlakeman/bowling-challenge)
+
 
 Bowling Challenge
 =================
 
-    Test time: Friday, the entire day and the weekend if you need it.
-    Feel free to use Google, your notes, and your books.
+A one weekend challenge to create a calculator to work out the total of a bowling game using javascript and html!
+
+Screenshot:
+-----
+
+![Screenshot](images/ScreenShot.png)
+
 
 User Stories Extracted From Brief:
 -----
@@ -28,9 +35,8 @@ As a bowler
 So that i can play a complete game
 I'd like to be to add bonus bowls if i strike or spare in the final frame
 
-
 As a bowler
-So that i can worry less if drunk
+So that i can worry less
 I'd like to see an error if i have added too many frames to a game
 
 As a bowler
@@ -38,40 +44,32 @@ So that i can get satisfaction
 I'd like to be see gutter or perfect if i roll my stones in a 0 or top score situation
 
 
+MVP:
 
-Classes:
+Complete game via jquery, game requests frames until complete.
+
+
+Classes & Responsibilities:
+-----
 
 Frame
   - Knows if spare or strike
   - persists result of rolls
 
 Game:
-  - Can add scores for every frame
+  - Can total scores for every frame
   - Returns error if too many frames
   - If ten rolled in final frame will allow bonus roll.
   - Will return 'Gutter or Perfect' if either applies, else returns score.
 
-MVP:
 
-Complete game via jquery, game requests frames until complete.
-
-
-Task:
+Given Tasks:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
-
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-
-### Optional Extra
 
 Create a nice interactive animated interface with jQuery.
 
@@ -98,8 +96,18 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
-In the image below you can find some score examples.
+How to use:
+-----
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+Simply download then open app.html!
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+To run the jasmine tests, start the sinatra server by typing rackup, then visit: localhost:9292/SpecRunner.html
+
+:)
+
+How to contribute:
+-----
+
+As this was a challenge to test my comfort with developing and testing using JS. I'm not anticipating any contributions.
+
+However as ever any feedback, suggestions or comment is welcome, just leave a comment, or create a pull request!

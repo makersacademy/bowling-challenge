@@ -1,6 +1,7 @@
 describe('Game', function(){
 
   var game
+ 
   describe('can correctly increment its score', function(){
 
     it('for ordinary rolls', function(){
@@ -31,7 +32,7 @@ describe('Game', function(){
       expect(game.scoreForFrame(10)).toEqual(150);
     });
 
-    it('', function(){
+    it('for a perfect game', function(){
       game = new Game([10,10,10,10,10,10,10,10,10,10,10,10])
       expect(game.scoreForFrame(1)).toEqual(30);
       expect(game.scoreForFrame(2)).toEqual(60);

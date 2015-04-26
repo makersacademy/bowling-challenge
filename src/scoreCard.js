@@ -17,11 +17,11 @@ ScoreCard.prototype.scoreFrames = function(n) {
   for(var i=0;i<upToN.length;i++){
     if (this.allFrames[i].spare){
       cumulativeScore += this.allFrames[i + 1].rolls[0]
-    }
+    };
     if (this.allFrames[i].strike){
       cumulativeScore += this.strikeBonus(i);
-    }
+    };
     cumulativeScore += this.allFrames[i].score
-  };
+  }
   this.score = cumulativeScore
 };

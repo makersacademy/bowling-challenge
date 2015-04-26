@@ -4,7 +4,7 @@ var ScoreCard = function(n, frames){
 }; 
 
 ScoreCard.prototype.strikeBonus = function(i) {
-    if(this.allFrames[i + 1]){
+    if(this.allFrames[i + 1].strike){
       return (this.allFrames[i + 1].score + this.allFrames[i + 2].rolls[0]);
     }else{
       return this.allFrames[i + 1].score;

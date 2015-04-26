@@ -46,6 +46,11 @@ describe('Game', function(){
       expect(game.scoreForFrame(10)).toEqual(300);
     });
 
+    it('for a mix of strikes spares and normal rolls', function(){
+      game = new Game([5,4,6,4,10,7,3,2,1,5,5,7,1,10,3,2,10,10,10])
+      expect(game.scoreForFrame(10)).toEqual(139);
+    });
+
   });
   
 });

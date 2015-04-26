@@ -65,6 +65,38 @@ describe('Game', function() {
     expect(game.score()).toEqual(270);
   });
 
+  it('can indicate whether it is the first roll', function() {
+    expect(game.firstRoll).toEqual(true);
+  });
+
+  it('can indicate whether it is the second roll', function() {
+    game.roll(1);
+    expect(game.firstRoll).toEqual(false);
+  });
+
+  it('can take as first throw only 0 to 10', function() {
+    expect(function() {
+      game.roll(11);
+    }).toThrow(new Error('Max first roll score is 10'));    
+   
+  });
+
+  it('can take as second throw only scores that adds to 10', function() {
+    game.roll(5);
+
+    expect(function() {
+      game.roll(8);
+    }).toThrow(new Error('Max second roll score is between 0 and 5'));    
+   
+  });
+
+  it('does not take scores smaller than 0', function() {
+
+    expect(function() {
+      game.roll(-2);
+    }).toThrow(new Error('Min roll score is 0'));    
+   
+  });
 
   var rollMany = function(pins, times){
 

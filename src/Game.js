@@ -1,12 +1,44 @@
 var Game = function() {
 
   this.rolls = [];
+  this.firstRoll = true;
+  this.firstRollScore = 0;
 
 };
 
 Game.prototype.roll = function(pins) {
+  var game = this;
+  pinsError();
   this.rolls.push(pins);
+  rollOrder();
+
+  function rollOrder() {
+    if (game.firstRoll == true && pins < 10) {
+      game.firstRoll = false;
+      game.firstRollScore = pins;
+    } else {
+      game.firstRoll = true;
+      game.firstRollScore = 0;
+    }    
+  };
+
+  function pinsError() {
+    var a = "Max second roll score is between 0 and "
+    var b = (10 - game.firstRollScore).toString();
+    if (pins < 0) {
+      throw new Error("Min roll score is 0")
+    } else if (game.firstRoll == true && pins > 10) {
+      throw new Error("Max first roll score is 10")
+    } else if (game.firstRoll == false && pins > (10 - game.firstRollScore)) {
+      throw new Error(a += b)
+    }
+
+  };
+
 };
+
+
+
 
 Game.prototype.score = function() {
   

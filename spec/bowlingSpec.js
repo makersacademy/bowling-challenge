@@ -47,7 +47,7 @@ describe('Bowling', function () {
         expect(bowling.total).toEqual(11);
     });
 
-    it('adds bonus first roll of next frame if spare', function () {
+    it('adds bonus of next roll if spare', function () {
         bowling.roll(8);
         bowling.roll(2);
         bowling.roll(6);
@@ -55,7 +55,7 @@ describe('Bowling', function () {
         expect(bowling.total).toEqual(22);
     });
 
-    it('does not add bonus second roll of next frame if spare', function () {
+    it('only adds bonus of next roll if spare', function () {
         bowling.roll(8);
         bowling.roll(2);
         bowling.roll(6);
@@ -67,8 +67,24 @@ describe('Bowling', function () {
     it('fills second roll of frame with null if strike', function () {
         bowling.roll(10);
         expect(bowling.game).toEqual([[10, null]]);
-
     });
+
+    it('adds bonus of next two rolls if strike, if next frame is not a strike', function () {
+        bowling.roll(10);
+        bowling.roll(6);
+        bowling.roll(3);
+        bowling.addUpGame();
+        expect(bowling.total).toEqual(28);
+    });
+
+    it('adds bonus of next two rolls if strike, if next frame is a strike', function () {
+        bowling.roll(10);
+        bowling.roll(10);
+        bowling.roll(3);
+        bowling.addUpGame();
+        expect(bowling.total).toEqual(39);
+    });
+
 });
 
 

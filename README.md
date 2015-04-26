@@ -1,6 +1,3 @@
-[![Build Status](https://travis-ci.org/DanBlakeman/bowling-challenge.svg)](https://travis-ci.org/DanBlakeman/bowling-challenge)
-
-
 Bowling Challenge
 =================
 

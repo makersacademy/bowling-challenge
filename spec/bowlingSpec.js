@@ -13,34 +13,35 @@ describe("Bowling Game", function(){
   });
 
   it("will record the knocked down pins of a ball", function(){
-    var knockedDown = 8
-    game.bowl(knockedDown)
-    expect(game.score).toEqual(knockedDown);
+    game.bowl(8)
+    expect(game.score()).toEqual(8);
   });
 
   it("will record the knocked down pins of a frame", function(){
-    var knockedDownBall1 = 5
-    var knockedDownBall2 = 2
-    game.bowl(knockedDownBall1)
-    game.bowl(knockedDownBall2)
-    expect(game.score).toEqual(knockedDownBall1 + knockedDownBall2);
+    game.bowl(5)
+    game.bowl(2)
+    expect(game.score()).toEqual(7);
   });
 
   it("knows the next ball and frame to be played", function(){
-    var knockedDown = 2
-    game.bowl(knockedDown)
-    game.bowl(knockedDown)
+    game.bowl(2)
+    game.bowl(2)
     expect(game.ball).toEqual(1);
     expect(game.frame).toEqual(2);
   });
 
   it("moves to the next frame if a strike is scored", function(){
-    var knockedDown = 10
-    game.bowl(knockedDown)
+    game.bowl(10)
     expect(game.ball).toEqual(1);
     expect(game.frame).toEqual(2);
   });
 
-
+  it("adds the scores of the next two bowls if a strike is made", function(){
+    game.bowl(10)
+    game.bowl(10)
+    game.bowl(5)
+    game.bowl(5)
+    expect(game.score()).toEqual(55);
+  });
 
 });

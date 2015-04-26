@@ -4,6 +4,7 @@ describe('Bowling score', function(){
 
   beforeEach(function(){
     bowling = new bowlingScore();
+    $.holdReady(true);
   });
 
   it('can keep record of rolls', function(){

@@ -4,15 +4,16 @@ function bowlingScore() {
 };
 
 bowlingScore.prototype.roll = function(pins) {
-  var check_roll = $.extend( [], this.rolls );
+  check_roll = this.rolls.filter(isNotStrike)
   if (checkRoll(pins)) throw new Error('Roll not allowed')
-  this.rolls.push(pins);
+  if (!this.game_over) this.rolls.push(pins);
   this.framesScore();
 
-  function checkRoll(pins){
-  for (i=0; i<=check_roll.length-1; i++){
-    if (check_roll[i] === 10) delete check_roll[i];
+  function isNotStrike(value) {
+    return value != 10;
   }
+
+  function checkRoll(pins){
   return isSecondRoll() && isNotAllowed();
   }
 
@@ -25,9 +26,9 @@ bowlingScore.prototype.roll = function(pins) {
   }
 };
 
-bowlingScore.prototype.score = function() {
+bowlingScore.prototype.score = function(frame) {
   var score = 0;
-  for(i=0; i<=this.frames.length; i++) {
+  for(i=0; i<=frame; i++) {
     if(!isNaN(this.frames[i])) score += this.frames[i];
   }
   return score;
@@ -50,7 +51,10 @@ bowlingScore.prototype.framesScore = function() {
       } else {
         getNormalScore();
       };
-      if (gameIsOver()) break;
+      if (gameIsOver()) {
+        self.game_over = true;
+        break;
+      }
     }
   }
 

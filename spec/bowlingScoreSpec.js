@@ -14,9 +14,9 @@ describe('Bowling score', function(){
     expect(bowling.frames[0]).toEqual(6);
   });
 
-  it('knows the score', function(){
+  it('knows the score for each frame', function(){
     rollTimes(4, 3)
-    expect(bowling.score()).toEqual(12);
+    expect(bowling.score(1)).toEqual(12);
   });
 
   it('can roll a spare', function(){
@@ -32,13 +32,13 @@ describe('Bowling score', function(){
 
   it('can roll a perfect game', function(){
     rollTimes(12, 10)
-    expect(bowling.score()).toEqual(300);
+    expect(bowling.score(10)).toEqual(300);
   });
 
   it('can roll a spare on the last frame', function(){
     rollTimes(18, 0)
     rollTimes(3, 5)
-    expect(bowling.score()).toEqual(15);
+    expect(bowling.score(10)).toEqual(15);
   });
 
   it('cannot hit more than 10 pins each frame', function(){
@@ -49,14 +49,14 @@ describe('Bowling score', function(){
   it('cannot roll third time on last frame if no spare or strike', function(){
     rollTimes(18, 0)
     rollTimes(3, 3)
-    expect(bowling.score()).toEqual(6);
+    expect(bowling.score(10)).toEqual(6);
   });
 
   it('cannot roll fourth time on last frame after bonus', function(){
     rollTimes(18, 0)
     bowling.roll(10);
     rollTimes(3, 2)
-    expect(bowling.score()).toEqual(14);
+    expect(bowling.score(10)).toEqual(14);
   });
 
   function rollTimes(times, rolls){

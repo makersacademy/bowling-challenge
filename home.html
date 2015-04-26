@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bowling Score Calculator</title>
+
+    <link href="public/css/normalize.css" rel="stylesheet">
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <link href="public/css/style.css" rel="stylesheet" type="text/css">
+
+    <script src="lib/jquery-2.1.3.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
+    <script src="public/src/bowlingScore.js"></script>
+    <script src="public/src/bowlingScoreInterface.js"></script>
+
+  </head>
+  <body>
+    <div class="container-fluid">
+
+      <section id="title">
+        <h1>Bowling Score Calculator</h1>
+      </section>
+
+      <section id="pins">
+        <button id="1" class="pin" value="1">1</button>
+        <button id="2" class="pin" value="2">2</button>
+        <button id="3" class="pin" value="3">3</button>
+        <button id="4" class="pin" value="4">4</button>
+        <button id="5" class="pin" value="5">5</button>
+        <button id="6" class="pin" value="6">6</button>
+        <button id="7" class="pin" value="7">7</button>
+        <button id="8" class="pin" value="8">8</button>
+        <button id="9" class="pin" value="9">9</button>
+        <button id="10" class="pin" value="10">10</button>
+      </section>
+
+      <div id="error"></div>
+
+      <section id="scoreboard" class="row">
+
+        <div class="col-xs-4 col-md-1 col-xs-offset-2 col-md-offset-1 frame">
+          <span class="frame_number">1</span>
+          <div class="row">
+            <div id="roll1" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
+            <div id="roll2" class="col-xs-4 col-md-6 roll empty">-</div>
+          </div>
+          <div class="row score total1"></div>
+        </div>
+
+        <div class="col-md-1 col-xs-4 frame">
+          <span class="frame_number">2</span>
+          <div class="row">
+            <div id="roll3" class="col-xs-4 col-md-6  col-xs-offset-4 col-md-offset-0 roll empty">-</div>
+            <div id="roll4" class="col-xs-4 col-md-6 roll empty">-</div>
+          </div>
+          <div class="row score total2"></div>
+        </div>
+
+        <div class="col-xs-4 col-md-1 col-md-offset-0 col-xs-offset-2 frame">
+          <span class="frame_number">3</span>
+          <div class="row">
+            <div id="roll5" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
+            <div id="roll6" class="col-xs-4 col-md-6 roll empty">-</div>
+          </div>
+          <div class="row score total3"></div>
+        </div>
+
+        <div class="col-xs-4 col-md-1 frame">
+          <span class="frame_number">4</span>
+          <div class="row">
+            <div id="roll7" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
+            <div id="roll8" class="col-xs-4 col-md-6 roll empty">-</div>
+          </div>
+          <div class="row score total4"></div>
+        </div>
+
+        <div class="col-xs-4 col-md-1 col-xs-offset-2 col-md-offset-0 frame">
+          <span class="frame_number">5</span>
+          <div class="row">
+            <div id="roll9" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
+            <div id="roll10" class="col-xs-4 col-md-6 roll empty">-</div>
+          </div>
+          <div class="row score total5"></div>
+        </div>
+
+        <div class="col-xs-4 col-md-1 frame">
+          <span class="frame_number">6</span>
+          <div class="row">
+            <div id="roll11" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
+            <div id="roll12" class="col-xs-4 col-md-6 roll empty">-</div>
+          </div>
+          <div class="row score total6"></div>
+        </div>
+
+        <div class="col-xs-4 col-md-1 col-md-offset-0 col-xs-offset-2 frame">
+          <span class="frame_number">7</span>
+          <div class="row">
+            <div id="roll13" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
+            <div id="roll14" class="col-xs-4 col-md-6 roll empty">-</div>
+          </div>
+          <div class="row score total7"></div>
+        </div>
+
+        <div class="col-xs-4 col-md-1 frame">
+          <span class="frame_number">8</span>
+          <div class="row">
+            <div id="roll15" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
+            <div id="roll16" class="col-xs-4 col-md-6 roll empty">-</div>
+          </div>
+          <div class="row score total8"></div>
+        </div>
+
+        <div class="col-xs-4 col-md-1 col-xs-offset-2 col-md-offset-0 frame">
+          <span class="frame_number">9</span>
+          <div class="row">
+            <div id="roll17" class="col-xs-4 col-md-6 col-xs-offset-4 col-md-offset-0 roll empty">-</div>
+            <div id="roll18" class="col-xs-4 col-md-6 roll empty">-</div>
+          </div>
+          <div class="row score total9"></div>
+        </div>
+
+        <div class="col-xs-4 col-md-1 frame">
+          <span class="frame_number">10</span>
+          <div class="row">
+            <div id="roll19" class="col-xs-3 col-md-4 col-xs-offset-3 col-md-offset-0 last_frame_roll empty">-</div>
+            <div id="roll20" class="col-xs-3 col-md-4 last_frame_roll empty">-</div>
+            <div id="roll21" class="col-xs-3 col-md-4 last_frame_roll empty">-</div>
+          </div>
+          <div class="row score total10"></div>
+        </div>
+
+      </section>
+    </div>
+  </body>
+</html>

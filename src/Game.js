@@ -7,5 +7,6 @@ Game.prototype.runningScore = function () {
 };
 
 Game.prototype.frame1 = function (frame) {
-  return frame.frameOne();
+
+
 };

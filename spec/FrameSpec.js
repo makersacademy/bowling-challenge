@@ -1,13 +1,7 @@
 describe('Frame', function(){
 
-  var frame;
-
   beforeEach(function(){
     frame = new Frame();
-  });
-
-  it('can record a running score', function(){
-    expect(frame.runningScore).toEqual(0);
   });
 
   it('can record a frame one', function(){
@@ -15,87 +9,157 @@ describe('Frame', function(){
   });
 
   it('frameOne can take scores', function(){
-    frame.frameOne(5, 5);
-    expect(frameOneInfo[0]).toEqual(5);
-  });
-
-  it('frameOne can also record a strike', function(){
-    frame.frameOne(10, 0);
-    expect(frameOneInfo[2]).toEqual('strike');
-  });
-
-  it('frameOne does not record a strike if the first score is not a 10', function(){
-    frame.frameOne(5, 5);
-    expect(frameOneInfo[2]).not.toEqual('strike');
-  });
-
-  it('frameOne records a strike if the first score is a 10', function(){
-    frame.frameOne(10, 0);
-    expect(frameOneInfo[2]).toEqual('strike');
-  });
-
-  it('frameOne can record a spare if the first score is not 10 but the total is 10', function(){
-    frame.frameOne(1, 9);
-    expect(frameOneInfo[2]).toEqual('spare');
-  });
-
-  it('can return a score after the first frame', function(){
     frame.frameOne(5, 4);
-    expect(frame.runningScore).toEqual(9)
+    expect(frame.score.f1r1).toEqual(5);
+    expect(frame.score.f1r2).toEqual(4);
   });
 
-
-
-  it('can record a frame two', function(){
-    expect(frame.frameTwo).toBeDefined();
+  it('frameOne can return a running score', function(){
+    frame.frameOne(5, 4);
+    expect(frame.score.s1).toEqual(9);
   });
 
-  it('frameTwo can take scores', function(){
-    frame.frameTwo(5, 5);
-    expect(frameTwoInfo[0]).toEqual(5);
+  it('frameOne returns no score if a spare or a strike', function(){
+    expect(frame.frameOne(5, 5)).toEqual(' ')
   });
 
-  it('frameTwo can also record a strike', function(){
-    frame.frameTwo(10, 0);
-    expect(frameTwoInfo[2]).toEqual('strike');
-  });
-
-  it('frameTwo does not record a strike if the first score is not a 10', function(){
-    frame.frameTwo(5, 5);
-    expect(frameTwoInfo[2]).not.toEqual('strike');
-  });
-
-  it('frameTwo records a strike if the first score is a 10', function(){
-    frame.frameTwo(10, 0);
-    expect(frameTwoInfo[2]).toEqual('strike');
-  });
-
-  it('frameTwo can record a spare if the first score is not 10 but the total is 10', function(){
-    frame.frameTwo(1, 9);
-    expect(frameTwoInfo[2]).toEqual('spare');
-  });
-
-  it('frame can return a score from frame one had no strike or spare', function(){
+  it('frameTwo can return a running score', function(){
     frame.frameOne(5, 4);
     frame.frameTwo(5, 4);
     expect(frame.runningScore).toEqual(18);
   });
 
-  it('frame can return the correct score if there was a strike in the previous frame', function(){
+  it('frameTwo can return the correct score if frameOne was a spare', function(){
+    frame.frameOne(5, 5);
+    expect(frame.frameTwo(5, 4)).toEqual(24)
+  });
+
+  it('frameTwo can return the correct score if frameOne was a strike', function(){
     frame.frameOne(10, 0);
     frame.frameTwo(5, 4);
     expect(frame.runningScore).toEqual(28);
   });
 
+  it('frameThree can return the correct score if frameTwo was a spare', function(){
+    frame.frameOne(5, 4);
+    frame.frameTwo(5, 5);
+    frame.frameThree(5, 4);
+    expect(frame.runningScore).toEqual(33)
+  });
+
+  it('frameThree can return the correct score if frameTwo was a strike', function(){
+    frame.frameOne(5, 4);
+    frame.frameTwo(10, 0);
+    frame.frameThree(5, 4);
+    expect(frame.runningScore).toEqual(37);
+  });
+
+  // it('frameThree can return the correct score if frameOne and frameTwo were strikes', function(){
+  //   frame.frameOne(10, 0);
+  //   frame.frameTwo(10, 0);
+  //   frame.frameThree(5, 4);
+  //   expect(frame.runningScore).toEqual(53);
+  // });
 
 
 
 
 
-
-
-
-
+  //
+  // it('frameOne can also record a strike', function(){
+  //   frame.frameOne(10, 0);
+  //   expect(frameOneInfo[2]).toEqual('strike');
+  // });
+  //
+  // it('frameOne does not record a strike if the first score is not a 10', function(){
+  //   frame.frameOne(5, 5);
+  //   expect(frameOneInfo[2]).not.toEqual('strike');
+  // });
+  //
+  // it('frameOne records a strike if the first score is a 10', function(){
+  //   frame.frameOne(10, 0);
+  //   expect(frameOneInfo[2]).toEqual('strike');
+  // });
+  //
+  // it('frameOne can record a spare if the first score is not 10 but the total is 10', function(){
+  //   frame.frameOne(1, 9);
+  //   expect(frameOneInfo[2]).toEqual('spare');
+  // });
+  //
+  // it('can return a score after the first frame', function(){
+  //   frame.frameOne(5, 4);
+  //   expect(frame.runningScore).toEqual(9)
+  // });
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  // it('can record a frame two', function(){
+  //   expect(frame.frameTwo).toBeDefined();
+  // });
+  //
+  // it('frameTwo can take scores', function(){
+  //   frame.frameTwo(5, 5);
+  //   expect(frameTwoInfo[0]).toEqual(5);
+  // });
+  //
+  // it('frameTwo can also record a strike', function(){
+  //   frame.frameTwo(10, 0);
+  //   expect(frameTwoInfo[2]).toEqual('strike');
+  // });
+  //
+  // it('frameTwo does not record a strike if the first score is not a 10', function(){
+  //   frame.frameTwo(5, 5);
+  //   expect(frameTwoInfo[2]).not.toEqual('strike');
+  // });
+  //
+  // it('frameTwo records a strike if the first score is a 10', function(){
+  //   frame.frameTwo(10, 0);
+  //   expect(frameTwoInfo[2]).toEqual('strike');
+  // });
+  //
+  // it('frameTwo can record a spare if the first score is not 10 but the total is 10', function(){
+  //   frame.frameTwo(1, 9);
+  //   expect(frameTwoInfo[2]).toEqual('spare');
+  // });
+  //
+  // it('frame can return a score from frame one had no strike or spare', function(){
+  //   frame.frameOne(5, 4);
+  //   frame.frameTwo(5, 4);
+  //   expect(frame.runningScore).toEqual(18);
+  // });
+  //
+  // it('frame can return the correct score if there was a strike in the previous frame', function(){
+  //   frame.frameOne(10, 0);
+  //   frame.frameTwo(5, 4);
+  //   expect(frame.runningScore).toEqual(28);
+  // });
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
 
 });
 

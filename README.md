@@ -1,54 +1,97 @@
-
 Bowling Challenge
 =================
 
-    Test time: Friday, the entire day and the weekend if you need it.
-    Feel free to use Google, your notes, and your books.
+###[Click Here - To use the app on Heroku](http://sanjbowl.herokuapp.com)
 
-Task: 
+![Bowling](https://github.com/sanjsanj/sanjsanj.github.io/blob/master/images/week6_bowling.png?raw=true)
+
+Task:
 -----
+Count and sum the scores of a bowling game for one player (in JavaScript)
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+Tools:
+------
+Testing:  **Jasmine and Jasmine-JQuery**  
+Application Code:  **Javascript, JQuery, HTML and CSS**  
+Other:  **Sinatra and PHP**
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+Development Blog:
+-----------------
+- [Day 1 - Setting up tests, some backend](http://sanjsanj.github.io/Week%205,%20Day%206/)
+- [Day 2 - Finish off core backend](http://sanjsanj.github.io/Week%205,%20Day%207/)
+- [Day 3 - Start looking at frontend](http://sanjsanj.github.io/Week%206,%20Day%201/)
+- [Day 4 - Styling and refactoring](http://sanjsanj.github.io/Week%206,%20Day%205/)
+- [Day 5 - CSS table breakdown](http://sanjsanj.github.io/Week%206,%20Day%206/)
 
-As usual please start by 
+How To Run:
+-----------
+- You can follow the **Heroku** link at the top of the README for a live version of this app
+- You can launch a local version of the app by typing `ruby server.rb` in the application's root folder and then navigate to localhost:4567/home.html in your browser
+- You can run the tests locally by typing `open SpecRunner.html` in the application's root folder after starting the Ruby server
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
+Tests:
+------
+```sh
+Bowling scoresheet
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+  knows the scores to display for
+    two non-spare/non-strike rolls
+    a strike and a spare
+    a game of all fours
+    a perfect game
+    a gutter game
+    an example game
 
+  knows the cumulative score for
+    two non-spare/non-strike rolls
+    a strike and a spare
+    an unremarkable game
+    a perfect game
+    a gutter game
+    an example game
 
-### Optional Extra
+Interface has
+    a title message
+    buttons to enter pins scored
 
-Create a nice interactive animated interface with jQuery.
+Interface knows the cumulative score for
+    two non-spare/non-strike rolls
+    a strike and a spare
+    an unremarkable game
+    a perfect game
+    a gutter game
+    an example game
 
-## Strikes
+20 specs, 0 failures
+```
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-## Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-## 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-## Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-## Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+File Structure:
+---------------
+```sh
+.
+├── README.md
+├── SpecRunner.html
+├── home.html
+├── index.php
+├── lib
+│   ├── jasmine-2.2.0
+│   │   ├── boot.js
+│   │   ├── console.js
+│   │   ├── jasmine-html.js
+│   │   ├── jasmine.css
+│   │   ├── jasmine.js
+│   │   └── jasmine_favicon.png
+│   ├── jasmine-jquery.js
+│   └── jquery.js
+├── public
+│   ├── bowling.jpg
+│   ├── reset.css
+│   └── stylesheet.css
+├── server.rb
+├── spec
+│   ├── BowlingSpec.js
+│   └── InterfaceSpec.js
+└── src
+    ├── Bowling.js
+    └── Interface.js
+```

@@ -15,16 +15,24 @@ Bowling.prototype.roll = function(roll) {
             this.scoring.push(roll);         
         }
         else { // this is the first roll of a new frame
-            this.game.push([roll]);
-            this.scoring.push(roll);
-                if(this.game[this.game.length - 2][0] + this.game[this.game.length - 2][1] == 10) {
-                    this.scoring.push(roll);                    
-                }
+            if(roll == 10) {
+                this.game.push([10, null]);
+            } else {
+                this.game.push([roll]);
+                this.scoring.push(roll);
+                    if(this.game[this.game.length - 2][0] + this.game[this.game.length - 2][1] == 10) {
+                        this.scoring.push(roll);                    
+                    }
+            }
         }
     }
     else { // this is the first roll of the game
-        this.game.push([roll]);
-        this.scoring.push(roll);  
+        if(roll == 10) {
+                this.game.push([10, null]);
+            } else {
+                this.game.push([roll]);
+                this.scoring.push(roll);
+        }
     }
 
 };

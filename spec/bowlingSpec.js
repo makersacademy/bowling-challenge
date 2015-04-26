@@ -63,6 +63,12 @@ describe('Bowling', function () {
         bowling.addUpGame();
         expect(bowling.total).toEqual(25);
     });
+
+    it('fills second roll of frame with null if strike', function () {
+        bowling.roll(10);
+        expect(bowling.game).toEqual([[10, null]]);
+
+    });
 });
 
 

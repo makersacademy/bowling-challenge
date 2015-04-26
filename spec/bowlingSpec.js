@@ -40,8 +40,16 @@ describe("Bowling Game", function(){
     game.bowl(10)
     game.bowl(10)
     game.bowl(5)
+    game.bowl(3)
+    expect(game.score()).toEqual(51);
+  });
+
+    it("adds the scores of the bowls if a spare is made", function(){
+    game.bowl(8)
+    game.bowl(2)
     game.bowl(5)
-    expect(game.score()).toEqual(55);
+    game.bowl(3)
+    expect(game.score()).toEqual(23);
   });
 
 });

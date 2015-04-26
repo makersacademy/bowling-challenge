@@ -27,7 +27,7 @@ So that I can play extra frames on a spare or strike on the 10th frame
 I want to be able to play a maximum of 1 extra frame after a spare and 2 after a strike
 
 As a Bowler
-So that I can know I've has a bad game
+So that I can know I've had a bad game
 I want the score to be "Gutter Game" if I hit no pins
 
 As a Bowler

@@ -1,5 +1,7 @@
 describe('Bowling score', function(){
   
+  var bowling;
+
   beforeEach(function(){
     bowling = new bowlingScore();
   });

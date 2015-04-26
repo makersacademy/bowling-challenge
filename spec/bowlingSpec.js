@@ -43,8 +43,28 @@ describe('Bowling', function () {
         bowling.roll(8);
         bowling.roll(1);
         bowling.roll(2);
-        bowling.roll(5);  
         bowling.addUpGame();
-        expect(bowling.total).toEqual(16);
+        expect(bowling.total).toEqual(11);
+    });
+
+    it('adds bonus first roll of next frame if spare', function () {
+        bowling.roll(8);
+        bowling.roll(2);
+        bowling.roll(6);
+        bowling.addUpGame();
+        expect(bowling.total).toEqual(22);
+    });
+
+    it('does not add bonus second roll of next frame if spare', function () {
+        bowling.roll(8);
+        bowling.roll(2);
+        bowling.roll(6);
+        bowling.roll(3);
+        bowling.addUpGame();
+        expect(bowling.total).toEqual(25);
     });
 });
+
+
+
+

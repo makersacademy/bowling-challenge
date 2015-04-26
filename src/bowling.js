@@ -10,16 +10,19 @@ var Bowling = function () {
 Bowling.prototype.roll = function(roll) {
     
     if(this.game.length > 0) {
-        if(this.game[this.framePlace()].length == 1){
+        if(this.game[this.framePlace()].length == 1) { // this is the second roll of a frame
             this.game[this.framePlace()].push(roll); 
             this.scoring.push(roll);         
         }
-        else {
+        else { // this is the first roll of a new frame
             this.game.push([roll]);
-            this.scoring.push(roll);  
+            this.scoring.push(roll);
+                if(this.game[this.game.length - 2][0] + this.game[this.game.length - 2][1] == 10) {
+                    this.scoring.push(roll);                    
+                }
         }
     }
-    else {
+    else { // this is the first roll of the game
         this.game.push([roll]);
         this.scoring.push(roll);  
     }
@@ -28,10 +31,6 @@ Bowling.prototype.roll = function(roll) {
 
 Bowling.prototype.framePlace = function() {
     return this.game.length - 1;
-};
-
-Bowling.prototype.frameSize = function() {
-    return this.game[(this.game.length - 1)].length;
 };
 
 Bowling.prototype.addUpGame = function() {

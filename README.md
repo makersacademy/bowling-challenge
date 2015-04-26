@@ -2,8 +2,7 @@
 Bowling Challenge
 =================
 
-    Test time: Friday, the entire day and the weekend if you need it.
-    Feel free to use Google, your notes, and your books.
+###[Try it on Heroku!](https://morning-journey-8609.herokuapp.com/)
 
 Task: 
 -----

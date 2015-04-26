@@ -1,0 +1,115 @@
+body {
+  font-family: 'Indie Flower', cursive;
+  background-color: #F0E68C;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+#title {
+  font-size: 2em;
+  margin-top: 60px;
+  text-align: center;
+}
+
+#pins {
+  margin-top:60px;
+  text-align: center;
+}
+
+
+.pin {
+  color: #FFD700;
+  padding: 10px;
+  border-radius: 25px;
+  width: 51px;
+  background-color: #B22222;
+  font-size: 1.4em;
+  border: 0.2em solid #FFD700;
+}
+
+.pin:hover {
+  background-color: #8B0000;
+}
+
+.pin:focus {
+  outline: 0;
+}
+
+#error {
+  text-align: center;
+  font-size: 1.5em;
+  color: #B22222;
+  height: 60px;
+  padding-top: 40px;
+}
+
+#scoreboard {
+  margin-top: 50px;
+  vertical-align: middle;
+}
+
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.frame {
+  background-color: #8B0000;
+  font-size: 1.4em;
+  color: #FFD700;
+  height: 180px;
+  text-align: right;
+  padding: 10px 3px;
+  border: 2px solid #FFD700;
+  box-shadow: 1px 1px 1px #1e1e1e
+}
+
+.frame_number {
+  font-size: 1.6em;
+  padding-right: 5px;
+}
+
+.roll,
+.last_frame_roll {
+  color: #1e1e1e;
+  background-color: #FFD700;
+  border: 1px solid #8B0000;
+  text-align: right;
+  padding: 5px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.score {
+  font-size: 1.4em;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 568px) {
+  h1 {
+    font-size:1.2em;
+  }
+
+  .pin {
+    padding: 5px;
+    width: 40px;
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (min-width: 569px) and (max-width: 768px) {
+  h1 {
+    font-size:1.5em;
+  }
+
+  .pin {
+    padding: 7px;
+    width: 45px;
+    font-size: 1.3em;
+  }
+}
+

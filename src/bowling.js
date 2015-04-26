@@ -3,34 +3,34 @@ var bFrame, game, scoring, total;
 var Bowling = function () {
     "use strict";
     this.bFrame = [];
-    this.game = [0];
+    this.game = [];
     this.scoring = [];
     this.total = 0
 };
 
 Bowling.prototype.roll = function(roll) {
-    if (this.bFrame.length === 1) {
-        this.bFrame.push(roll);
-        this.scoring.push(this.bFrame[0] + this.bFrame[1]);
-        var frameToStore = this.bFrame;
-        this.bFrame = []
-        return this.game.push(frameToStore);
-    } 
-    if (this.bFrame.length === 0) {
-        this.bFrame.push(roll);
+    
+    if(this.game.length > 0){
+        if(this.game[this.framePlace()].length == 1){
+            this.game[this.framePlace()].push(roll);            
+        }
+        else {
+            this.game.push([roll]); 
+        }
     }
     else {
-        // don't know yet
+        this.game.push([roll]);
     }
+
 };
 
-// Bowling.prototype.addUpFrame = function() {
-//     var frameTotal = this.bFrame.reduce(function(a, b) {
-//         return a + b;
-//     });
+Bowling.prototype.framePlace = function() {
+    return this.game.length - 1;
+};
 
-//     return this.game.push(frameTotal);
-// };
+Bowling.prototype.frameSize = function() {
+    return this.game[(this.game.length - 1)].length;
+};
 
 Bowling.prototype.addUpGame = function() {
     var newTotal = this.scoring.reduce(function(a, b) {
@@ -39,4 +39,3 @@ Bowling.prototype.addUpGame = function() {
 
     return this.total = newTotal;
 };
-

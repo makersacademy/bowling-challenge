@@ -1,7 +1,7 @@
 function Roll(pinsknockedtotal) {
-  this.pinsknockedtotal = null;
+  this.pinsknockedtotal = 0;
 }
 
-Roll.prototype.play = function(pinsKnockedDown) {
+Roll.prototype.ball = function(pinsKnockedDown) {
   this.pinsknockedtotal = pinsKnockedDown;
 };

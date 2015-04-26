@@ -1,12 +1,12 @@
-describe('Bowling Game', function() {
+// describe('Bowling Game', function() {
 
-  var bowling
-  beforeEach(function() {
-    bowling = new Bowling;
-  });
+//   var bowling
+//   beforeEach(function() {
+//     bowling = new Bowling;
+//   });
 
-  it('has a score of nil when the game starts', function() {
-    expect(bowling.score).toEqual(0);
-  });
+//   it('has a score of nil when the game starts', function() {
+//     expect(bowling.score).toEqual(0);
+//   });
 
-});
+// });

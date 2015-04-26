@@ -6,7 +6,7 @@ describe('Bowling Game Interface', function() {
   });
 
   it('there is a bowl button on the screen', function() {
-    expect($('#bowlbutton')).toExist();
+    expect($('#rollbutton')).toExist();
   });
 
 });

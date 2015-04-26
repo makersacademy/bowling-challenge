@@ -1,3 +1,3 @@
-// var function frame() {
-//  this.scoreboard = 0;
-// };
+function Frame() {
+ this.framenumber = [];
+};

@@ -1,17 +1,21 @@
-// describe("Frame", function(){
+describe("Frame", function(){
 
-//   var roll;
-//   var score;
+  var roll;
+  var score;
   
-//   beforeEach(function(){
-//     frame = new Frame();
-//   });
+  beforeEach(function(){
+    frame = new Frame();
+  });
 
-//   describe('Frame', function(){
-//     it('defaults to a score of zero', function(){
-//       expect(frame.scoreboard).toEqual(0);
-//     });
-//   });
-// });
+  describe('Frame', function(){
+    it('defaults to zero frames', function(){
+      frame = new Frame;
+      expect(frame.framenumber).toEqual([]);
+    });
+    it('can total score', function(){
+      frame = new Frame;
+    });
+  });
+});
 
 

@@ -9,7 +9,7 @@ describe('Game', function () {
     	expect(game.frame_total).toEqual(10);
   	});
 
-  it('can all gutter balls', function (){
+  it('can roll all gutter balls', function (){
     var game = new Game();
     for (var i = 0; i < 20; i++) {
       game.roll(0);
@@ -25,4 +25,10 @@ describe('Game', function () {
   	expect(game.score()).toBe(20);
   });
 
-	});
+  // it('can roll a spare', function(){
+  //  game.roll(3);
+  //  game.roll(7);
+  //  game.roll(2);
+  //  expect(frame.rolls[0]).toEqual(12);
+  // });
+});

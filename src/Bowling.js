@@ -1,5 +1,5 @@
 function Bowling() {
-  this.frameNumber = 1;
+  this.frameNumbers = 1;
   this.startPins = 10;
   this.score = 0;
   this.totalPinsDown = 0;
@@ -13,7 +13,6 @@ Bowling.prototype.pinsKnocked = function(pins) {
 
 Bowling.prototype.ballOne = function() {
   var pinsDown = this.pinsKnocked(this.startPins);
-  console.log(pinsDown);
   if (pinsDown === 10){
     this.pinsLeft = 0;
   } else {

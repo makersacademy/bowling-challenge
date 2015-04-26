@@ -1,0 +1,71 @@
+.clear {
+  clear: both;
+}
+
+#container{
+  width: 100%;
+  padding: 20px;
+}
+
+#frame{
+  width: 100%;
+  display: block;
+  overflow: hidden:
+}
+
+#frame h2{
+  width: 100px;
+  display: block;
+  float: left;
+}
+
+#frame ul{
+  width: 90%;
+  float: right;
+}
+
+#frame ul li{
+  float: left;
+  text-align: center;
+}
+
+#score{
+  display: block;
+  padding-top: 20px;
+}
+
+#balls-scores{
+  width: 100%;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+#balls-scores .ball-number{
+  width: 100%;
+  overflow: hidden;
+}
+
+#balls-scores .ball-number h4{
+  width: 80px;
+  float: left;
+}
+
+#balls-scores .ball-number ul{
+  width: 91.1%;
+  float: right;
+}
+
+#balls-scores .ball-number ul li{
+  width: 100px;
+  float: left;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.show{
+  display: block;
+}

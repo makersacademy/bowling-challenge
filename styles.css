@@ -1,0 +1,61 @@
+body {
+  background-color: #C63D0F;
+}
+
+#score {
+  font-size: 5em;
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+.frame {
+  display: inline-block;
+  width: 9%;
+  height: 8em;
+  background-color: #FDF3E7;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  vertical-align:top;
+}
+
+.frame--selected {
+  webkit-box-shadow:0 0 20px white;
+  moz-box-shadow: 0 0 20px white;  box-shadow:0 0 20px yellow;
+}
+
+.first_roll {
+  float: left;
+  text-align: center;
+}
+
+.second_roll {
+  float: right;
+  border: 0.1em solid black;
+  border-top: none;
+  border-right: none;
+  width: 50%;
+  height: 2.5em;
+}
+
+.frame_title {
+  border-bottom: 0.1em solid black;
+  text-align: center;
+
+}
+
+.total {
+  clear: both;
+  text-align: center;
+  padding-top: 1em;
+}
+input {
+  display: block;
+  margin: auto;
+  margin-top: 2em;
+  height: 2em;
+  width: 20em;
+}
+
+h1, h2 {
+  text-align: center;
+}

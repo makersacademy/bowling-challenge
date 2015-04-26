@@ -5,10 +5,6 @@ describe('Bowling', function () {
         bowling = new Bowling();
     });
 
-    it('has a frame', function () {
-        expect(bowling.bFrame).toEqual([]);
-    });
-
     it('has a game', function () {
         expect(bowling.game).toEqual([]);
     });
@@ -51,7 +47,4 @@ describe('Bowling', function () {
         bowling.addUpGame();
         expect(bowling.total).toEqual(16);
     });
-
-
-
 });

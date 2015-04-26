@@ -1,8 +1,7 @@
-var bFrame, game, scoring, total;
+var game, scoring, total;
 
 var Bowling = function () {
     "use strict";
-    this.bFrame = [];
     this.game = [];
     this.scoring = [];
     this.total = 0
@@ -10,16 +9,19 @@ var Bowling = function () {
 
 Bowling.prototype.roll = function(roll) {
     
-    if(this.game.length > 0){
+    if(this.game.length > 0) {
         if(this.game[this.framePlace()].length == 1){
-            this.game[this.framePlace()].push(roll);            
+            this.game[this.framePlace()].push(roll); 
+            this.scoring.push(roll);         
         }
         else {
-            this.game.push([roll]); 
+            this.game.push([roll]);
+            this.scoring.push(roll);  
         }
     }
     else {
         this.game.push([roll]);
+        this.scoring.push(roll);  
     }
 
 };

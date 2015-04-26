@@ -34,6 +34,13 @@ describe("Bowling Game", function(){
     expect(game.frame).toEqual(2);
   });
 
+  it("moves to the next frame if a strike is scored", function(){
+    var knockedDown = 10
+    game.bowl(knockedDown)
+    expect(game.ball).toEqual(1);
+    expect(game.frame).toEqual(2);
+  });
+
 
 
 });

@@ -1,4 +1,4 @@
-describe('Interface', function() {
+describe('Interface has', function() {
 
   var bowling;
 
@@ -10,11 +10,11 @@ describe('Interface', function() {
     loadFixtures('home.html');
   });
 
-  it('has a title message', function(){
+  it('a title message', function(){
     expect('title').toContainText('Bowling Scoresheet')
   });
 
-  it('has buttons to enter pins scored', function(){
+  it('buttons to enter pins scored', function(){
     for (var i = 0; i <= 10; i ++){
       expect('#btn' + i).toContain(i);
     };
@@ -26,66 +26,72 @@ describe('Interface', function() {
   // });
 });
 
-describe('Interface knows the running score tally for', function(){
+describe('Interface knows the cumulative score for', function(){
 
   var bowling;
+
   beforeEach(function(){
     bowling = new Bowling();
+    jasmine.getStyleFixtures().fixturesPath = './public';
+    loadStyleFixtures('stylesheet.css');
+    jasmine.getFixtures().fixturesPath = '.';
+    loadFixtures('home.html');
+    $.holdReady(false);
   });
 
-  function helper(rolls, pinsEachRoll){
+  function helper(rolls, score){
     for (var i = 0; i < rolls; i ++){
-      bowling.roll(pinsEachRoll);
+      $("#btn" + score).click();
     };
   };
 
   it('two non-spare/non-strike rolls', function(){
-    helper(1, 5);
-    helper(1, 2);
-    expect(bowling.scoresArray).toEqual([5,2]);
+    $("#btn5").click();
+    $("#btn2").click();
+    expect("#f10score").toContainText('7');
   });
 
   it('a strike and a spare', function(){
     helper(1, 10);
     helper(2, 5);
-    expect(bowling.scoresArray).toEqual([10,'X',5,'/']);
+    expect("#f10score").toContainText('30');
   });
 
-  it('a game of all fours', function(){
+  it('an unremarkable game', function(){
     helper(20, 4);
-    expect(bowling.scoresArray).toEqual([4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]);
+    expect("#f10score").toContainText('80');
   });
 
   it('a perfect game', function(){
     helper(12, 10);
-    expect(bowling.scoresArray).toEqual([10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,10,10]);
+    expect("#f10score").toContainText('300');
   });
 
   it('a gutter game', function(){
     helper(20, 0);
-    expect(bowling.scoresArray).toEqual([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+    expect("#f10score").toContainText('0');
   });
 
   it('an example game', function(){
-    bowling.roll(1);
-    bowling.roll(4);
-    bowling.roll(4);
-    bowling.roll(5);
-    bowling.roll(6);
-    bowling.roll(4);
-    bowling.roll(5);
-    bowling.roll(5);
-    bowling.roll(10);
-    bowling.roll(0);
-    bowling.roll(1);
-    bowling.roll(7);
-    bowling.roll(3);
-    bowling.roll(6);
-    bowling.roll(4);
-    bowling.roll(10);
-    bowling.roll(2);
-    bowling.roll(8);
-    bowling.roll(6);
-    expect(bowling.scoresArray).toEqual([1,4,4,5,6,'/',5,'/',10,'X',0,1,7,'/',6,'/',10,'X',2,8,6]);
+    $("#btn1").click();
+    $("#btn4").click();
+    $("#btn4").click();
+    $("#btn5").click();
+    $("#btn6").click();
+    $("#btn4").click();
+    $("#btn5").click();
+    $("#btn5").click();
+    $("#btn10").click();
+    $("#btn0").click();
+    $("#btn1").click();
+    $("#btn7").click();
+    $("#btn3").click();
+    $("#btn6").click();
+    $("#btn4").click();
+    $("#btn10").click();
+    $("#btn2").click();
+    $("#btn8").click();
+    $("#btn6").click();
+    expect("#f10score").toContainText('133');
   });
 });

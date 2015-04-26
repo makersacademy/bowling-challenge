@@ -25,7 +25,7 @@ Development Blog:
 
 How To Run:
 -----------
-- You can follow the Heroku link at the top of the README for a live version of this app
+- You can follow the **Heroku** link at the top of the README for a live version of this app
 - You can launch a local version of the app by typing `ruby server.rb` in the application's root folder and then navigate to localhost:4567/home.html in your browser
 - You can run the tests locally by typing `open SpecRunner.html` in the application's root folder after starting the Ruby server
 
@@ -33,6 +33,15 @@ Tests:
 ------
 ```sh
 Bowling scoresheet
+
+  knows the scores to display for
+    two non-spare/non-strike rolls
+    a strike and a spare
+    a game of all fours
+    a perfect game
+    a gutter game
+    an example game
+
   knows the cumulative score for
     two non-spare/non-strike rolls
     a strike and a spare
@@ -41,17 +50,19 @@ Bowling scoresheet
     a gutter game
     an example game
 
-Interface
-  has a title message
-  has buttons to enter pins scored
+Interface has
+    a title message
+    buttons to enter pins scored
 
-Interface knows the running score tally for
-  two non-spare/non-strike rolls
-  a strike and a spare
-  a game of all fours
-  a perfect game
-  a gutter game
-  an example game
+Interface knows the cumulative score for
+    two non-spare/non-strike rolls
+    a strike and a spare
+    an unremarkable game
+    a perfect game
+    a gutter game
+    an example game
+
+20 specs, 0 failures
 ```
 
 File Structure:

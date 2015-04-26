@@ -1,4 +1,4 @@
-var bowlingScore = new bowlingScore()
+var bowlingScore = new BowlingScore()
 
 $(document).ready(function(){
 

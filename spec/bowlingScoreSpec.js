@@ -3,7 +3,7 @@ describe('Bowling score', function(){
   var bowling;
   
   beforeEach(function(){
-    bowling = new bowlingScore();
+    bowling = new BowlingScore();
   });
 
   it('can keep record of rolls', function(){

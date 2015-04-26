@@ -1,9 +1,9 @@
-function bowlingScore() {
+function BowlingScore() {
   this.rolls = [];
   this.frames = [];
 };
 
-bowlingScore.prototype.roll = function(pins) {
+BowlingScore.prototype.roll = function(pins) {
   check_roll = this.rolls.filter(isNotStrike)
   if (checkRoll(pins)) throw new Error('Roll not allowed')
   if (!this.game_over) this.rolls.push(pins);
@@ -26,7 +26,7 @@ bowlingScore.prototype.roll = function(pins) {
   }
 };
 
-bowlingScore.prototype.score = function(frame) {
+BowlingScore.prototype.score = function(frame) {
   var score = 0;
   for(i=0; i<=frame; i++) {
     if(!isNaN(this.frames[i])) score += this.frames[i];
@@ -34,7 +34,7 @@ bowlingScore.prototype.score = function(frame) {
   return score;
 };
 
-bowlingScore.prototype.framesScore = function() {
+BowlingScore.prototype.framesScore = function() {
   var self = this;
   this.frames = []
   lastFrameRoll = 1;

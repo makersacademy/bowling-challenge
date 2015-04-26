@@ -20,27 +20,18 @@ Bowling.prototype.roll = function (roll) {
             if (roll === 10) {
                 this.game.push([10, null]);
                 this.scoring.push(roll);
-                if ((this.game[this.game.length - 2][1] !== null) && (this.game[this.game.length - 2][0] + this.game[this.game.length - 2][1] === 10)) {
-                    this.scoring.push(roll);
-                }
-                if ((this.game.length > 1) && this.game[this.game.length - 2][1] === null) {
-                    this.scoring.push(roll);
-                }
-                if ((this.game.length > 2) && this.game[this.game.length - 3][1] === null) {
-                    this.scoring.push(roll);
-                }
             } else {
                 this.game.push([roll]);
                 this.scoring.push(roll);
-                if ((this.game[this.game.length - 2][1] !== null) && (this.game[this.game.length - 2][0] + this.game[this.game.length - 2][1] === 10)) {
-                    this.scoring.push(roll);
-                }
-                if ((this.game.length > 1) && this.game[this.game.length - 2][1] === null) {
-                    this.scoring.push(roll);
-                }
-                if ((this.game.length > 2) && this.game[this.game.length - 3][1] === null) {
-                    this.scoring.push(roll);
-                }
+            }
+            if ((this.game[this.game.length - 2][1] !== null) && (this.game[this.game.length - 2][0] + this.game[this.game.length - 2][1] === 10)) {
+                this.scoring.push(roll);
+            }
+            if ((this.game.length > 1) && this.game[this.game.length - 2][1] === null) {
+                this.scoring.push(roll);
+            }
+            if ((this.game.length > 2) && this.game[this.game.length - 3][1] === null) {
+                this.scoring.push(roll);
             }
         }
     } else { // this is the first roll of the game

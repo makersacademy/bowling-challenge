@@ -9,13 +9,21 @@ h1 {
 
 #title {
   font-size: 2em;
-  margin-top: 50px;
+  margin-top: 60px;
   text-align: center;
 }
 
 #pins {
   margin-top:60px;
   text-align: center;
+}
+
+.left-pins {
+
+}
+
+.right-pins {
+
 }
 
 .pin {
@@ -87,3 +95,16 @@ h1 {
   padding: 10px 0;
   margin-top: 10px;
 }
+
+@media screen and (max-width: 568px) {
+  h1 {
+    font-size:1.2em;
+  }
+}
+
+@media screen and (min-width: 569px) and (max-width: 768px) {
+  h1 {
+    font-size:1.5em;
+  }
+}
+

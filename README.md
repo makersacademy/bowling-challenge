@@ -2,8 +2,6 @@
 Bowling Challenge
 =================
 
-[![Build Status](https://travis-ci.org/james-miller/bowling-challenge.svg?branch=master)](https://travis-ci.org/james-miller/bowling-challenge)
-
 Url for this site on Heroku: http://javabowl.herokuapp.com/index.html
 
 Code needs significant refactoring, particularly in the interface functionality.

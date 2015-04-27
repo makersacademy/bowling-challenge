@@ -1,0 +1,17 @@
+.mainCard{
+    display:none;
+    opacity:0.0;
+    filter:alpha(opacity=0);
+}
+
+td, th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+
+/*td:nth-child(1) { background: hsl(150, 50%, 50%); }
+td:nth-child(2) { background: hsl(160, 60%, 50%); }
+td:nth-child(3) { background: hsl(170, 70%, 50%); }
+td:nth-child(4) { background: hsl(180, 80%, 50%); }
+td:nth-child(5) { background: hsl(190, 90%, 50%); }
+td:nth-child(6) { background: hsl(200, 99%, 50%); }*/

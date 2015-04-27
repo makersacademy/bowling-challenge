@@ -7,6 +7,7 @@ before_install:
 - "npm install grunt-contrib-jasmine"
 - "npm install jquery"
 - "npm install jsdom"
+- "npm install jasmine-node"
 - "npm install jasmine-jquery"
 - "echo \"module.exports=function(grunt){grunt.initConfig({jasmine:{src:'src/**/*.js',options:{specs:'spec/**/*.js'}}});grunt.loadNpmTasks('grunt-contrib-jasmine');grunt.registerTask('default',['jasmine']);};\" > Gruntfile.js"
 script:

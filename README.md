@@ -2,6 +2,11 @@
 Bowling Challenge
 =================
 
+Code needs significant refactoring, particularly in the interface functionality.
+Additional functionality which would have been good to implement given enough time:
+* Current player's row is indicated with a symbol or by colour
+* Strikes and spares are indicated by their icon rather than their score
+
 Task: 
 -----
 

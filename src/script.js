@@ -12,6 +12,9 @@ var onReady = function(){
       $('#ball2').removeClass("hidden");
     };
   });
+  $("#ball2").click(function(){
+
+  });
 };
 
 $(document).ready(function(){

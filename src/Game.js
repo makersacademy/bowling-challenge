@@ -33,6 +33,13 @@ Game.prototype.currentFrame = function() {
   }
 };
 
+Game.prototype.currentFrameNumber = function() {
+  if (this.frames[0].isOver() === false) return 0;
+  for(var i = 9; i >= 0; i--) {
+    if (this.frames[i].isOver() === true) return (i + 1);
+  }
+};
+
 Game.prototype.isOver = function() {
   return this.frames[9].isOver();
 };

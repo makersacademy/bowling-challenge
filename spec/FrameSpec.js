@@ -13,6 +13,15 @@ describe('Frame', function() {
     expect(frame.rolls.length).toEqual(3);
   });
 
+  it('knows what its maximum possible score is - regular frame', function() {
+    expect(frame.maxScore).toEqual(10);
+  });
+
+  it('knows what its maximum possible score is - regular frame', function() {
+    frame = new Frame(isLastFrame = true);
+    expect(frame.maxScore).toEqual(30);
+  });
+
   it('has a total score of 0 when created', function() {
     expect(frame.rollTotal()).toEqual(0);
   });

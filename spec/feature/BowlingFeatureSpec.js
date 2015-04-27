@@ -1,4 +1,4 @@
-describe('Bowling pandemonium', function() {
+describe('Bowling pandemonium (feature test)', function() {
 
   var gameRoller = function(rollArray) {
     
@@ -34,6 +34,7 @@ describe('Bowling pandemonium', function() {
     bowlBonanza.addPlayer(player2);
     bowlBonanza.addPlayer(player3);
     bowlBonanza.addPlayer(player4);
+    bowlBonanza.setToReady();
 
   });
 

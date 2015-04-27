@@ -1,16 +1,17 @@
 var Frame = function(isLastFrame) {
   this.rolls = [];
   this.isLastFrame = isLastFrame || false;
+  this.maxScore = (isLastFrame ? 30 : 10);
   this.totalRolls = (isLastFrame ? 3 : 2);
   for(var i = 0; i < this.totalRolls; i++) {
-    this.rolls.push('x');
+    this.rolls.push('-');
   }
 };
 
 Frame.prototype.rollTotal = function() {
   var total = 0;
   for(var i = 0; i < this.totalRolls; i++){
-    total += (this.rolls[i] === 'x' ? 0 : this.rolls[i]);
+    total += (this.rolls[i] === '-' ? 0 : this.rolls[i]);
   }
   return total;
 };
@@ -29,7 +30,7 @@ Frame.prototype.isSpare = function() {
 
 Frame.prototype.roll = function(pinsKnockedDown) {
   for(var i = 0; i < this.totalRolls; i++) {
-    if (this.rolls[i] === 'x') {
+    if (this.rolls[i] === '-') {
       this.rolls[i] = pinsKnockedDown;
       break;
     }
@@ -39,7 +40,7 @@ Frame.prototype.roll = function(pinsKnockedDown) {
 Frame.prototype.rollsTaken = function() {
   var rollsTaken = 0
   for(var i = 0; i < this.totalRolls; i++) {
-    if(this.rolls[i] === 'x') break;
+    if(this.rolls[i] === '-') break;
     rollsTaken ++
   }
   return rollsTaken;
@@ -49,7 +50,7 @@ Frame.prototype.isOver = function() {
   for(var i = 0; i < this.totalRolls; i++) {
     if (this.rolls[i] === 10 && this.isLastFrame === false) return true;
     if (this.isLastFrame && this.rollsTaken() === 2 && this.rollTotal() < 10) return true;
-    if (this.rolls[i] === 'x') return false;
+    if (this.rolls[i] === '-') return false;
   }
   return true;
 };

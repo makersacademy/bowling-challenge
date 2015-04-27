@@ -10,3 +10,7 @@ Player.prototype.roll = function(pinsKnockedDown) {
 Player.prototype.score = function() {
   return this.game.runningScore();
 };
+
+Player.prototype.currentFrameNumber = function() {
+  return this.game.currentFrameNumber();
+};

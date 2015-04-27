@@ -1,16 +1,23 @@
 var BowlingContest = function() {
   this.players = {}
+  this.isReady = false
 };
 
 BowlingContest.prototype.addPlayer = function(player) {
   this.players["player" + (this.numberOfPlayers() + 1)] = player;
 };
 
+BowlingContest.prototype.setToReady = function() {
+  if(this.numberOfPlayers() <= 0) throw new Error("Please add a player first");
+  this.isReady = true
+};
+
 BowlingContest.prototype.isOver = function() {
-  for (i = 0; i < this.numberOfPlayers; i++) {
-    if (!(this.players["player" + i].game.isOver())) return false
+  if (!this.isReady) return false;
+  for (var i = 0; i < this.numberOfPlayers(); i++) {
+    if (!(this.playerArray()[i].game.isOver())) return false;
   }
-return true
+return true;
 };
 
 BowlingContest.prototype.playerArray = function() {
@@ -21,16 +28,28 @@ BowlingContest.prototype.playerArray = function() {
   return playerArray;
 };
 
+BowlingContest.prototype.currentPlayer = function() {
+  var latestFrame = this.playerArray()[0].currentFrameNumber();
+  for(var i = 0; i < this.numberOfPlayers(); i ++) {
+    if (this.playerArray()[i].currentFrameNumber() < latestFrame) return this.playerArray()[i];
+  }
+  return this.playerArray()[0];
+};
+
 BowlingContest.prototype.numberOfPlayers = function() {
   return this.playerArray().length;
 };
 
 BowlingContest.prototype.winner = function() {
-  highScorer = this.players["player1"];
-  for(i = 0; i < Object.keys(this.players).length; i ++) {
+  var isDraw = false;
+  var highScorer = this.players["player1"];
+  //debugger;
+  for(i = 1; i < Object.keys(this.players).length; i ++) {
     if(this.players[Object.keys(this.players)[i]].score() > highScorer.score()) {
       highScorer = this.players[Object.keys(this.players)[i]];
+    } else if (this.players[Object.keys(this.players)[i]].score() === highScorer.score()) {
+      isDraw = true;
     }
   }
-  return highScorer;
+  return (isDraw ? "Draw" : highScorer);
 };

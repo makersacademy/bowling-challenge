@@ -24,6 +24,12 @@ describe('Game', function() {
     expect(game.currentFrame()).toBe(game.frames[1]);
   });
 
+  it('knows the index number of the current frame', function() {
+    game.roll(5);
+    game.roll(4);
+    expect(game.currentFrameNumber()).toEqual(1);
+  });
+
   it('knows when it is over', function() {
     rollHelper([10, 3, 7, 6, 1, 10, 10, 10, 2, 8, 9, 0, 7, 3, 10, 10, 10]);
     expect(game.isOver()).toEqual(true);

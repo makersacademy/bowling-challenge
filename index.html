@@ -9,21 +9,46 @@
   <script src="src/Game.js"></script>
   <script src="src/BowlingContest.js"></script>
   <script src="src/BowlingInterface.js"></script>
+  <link rel="stylesheet" href="public/css/reset.css">
+  <link rel="stylesheet" href="public/css/style.css">
 </head>
 
 <body>
 
-  <h1 id="greeting">Welcome to the bowling game</h1>
+  <section id = "bowling-game">
 
-  <p class="Add player">
-    Add a player
-    <form class="inputform" id="frm-add-player">
-      <input id="new-player-name" type="text" placeholder="Player name">
-      <input id="btn-add-player" type="submit" value="Add player">
-    </form>
-  </p>
+    <h1 id="greeting">javaBowl</h1>
 
-  <section class="play-container" id="game-container">
+    <section class="add-player">
+      <form class="input-form" id="frm-add-player">
+        Add a player
+        <input id="new-player-name" type="text" placeholder="Player name">
+        <input class="btn" id="btn-add-player" type="submit" value="Add player">
+      </form>
+      <button class="btn" id="btn-ready" type="submit">Ready to bowl</button>
+    </section>
+
+    <section class="player-indicator">
+      <p id="current-player">Current player</p>
+    </section>
+
+    <section class="roll-buttons" id="roll-buttons">
+      <button class="btn roll" type="submit" id="roll-0" value=0>0</button>
+      <button class="btn roll" type="submit" id="roll-1" value=1>1</button>
+      <button class="btn roll" type="submit" id="roll-2" value=2>2</button>
+      <button class="btn roll" type="submit" id="roll-3" value=3>3</button>
+      <button class="btn roll" type="submit" id="roll-4" value=4>4</button>
+      <button class="btn roll" type="submit" id="roll-5" value=5>5</button>
+      <button class="btn roll" type="submit" id="roll-6" value=6>6</button>
+      <button class="btn roll" type="submit" id="roll-7" value=7>7</button>
+      <button class="btn roll" type="submit" id="roll-8" value=8>8</button>
+      <button class="btn roll" type="submit" id="roll-9" value=9>9</button>
+      <button class="btn roll" type="submit" id="roll-10" value=10>10</button>
+    </section>
+
+    <section class="play-container" id="game-container">
+
+    </section>
 
   </section>
 

@@ -2,8 +2,12 @@
 Bowling Challenge
 =================
 
-    Test time: Friday, the entire day and the weekend if you need it.
-    Feel free to use Google, your notes, and your books.
+Url for this site on Heroku: http://javabowl.herokuapp.com/index.html
+
+Code needs significant refactoring, particularly in the interface functionality.
+Additional functionality which would have been good to implement given enough time:
+* Current player's row is indicated with a symbol or by colour
+* Strikes and spares are indicated by their icon rather than their score
 
 Task: 
 -----
@@ -12,17 +16,26 @@ Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+```
+As a bowling afficionado
+In order to keep track of my progress
+I would like to know what my score is based on the rolls I have thrown.
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
+As a competitive bowling afficionado
+In order to demonstrate my prowess at the game
+I would like to compete against (and ideally beat) other players.
+```
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+
+Classes implemented
+-------------------
+
+* BowlingContest has a certain number of Players who are competing
+* Player has a Game which is individual to them and their progress
+* Game is comprised of 10 Frames
+* Frame can receive a certain number of rolls
 
 
-### Optional Extra
-
-Create a nice interactive animated interface with jQuery.
 
 ## Strikes
 
@@ -46,9 +59,3 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 ## Perfect Game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)

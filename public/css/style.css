@@ -1,0 +1,124 @@
+body {
+  font-family: "Helvetica", sans-serif;
+  background-image: url('../images/bowling.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: bolder;
+  clear: left;
+}
+
+.btn {
+  width: 100px;
+  color: firebrick;
+}
+
+.roll {
+  float: left;
+  width: 30px;
+  height: 25px;
+  outline: 1px solid black;
+}
+
+.btn.roll {
+  width: 40px;
+  border-radius: 100%;
+  color: black;
+  background-color: firebrick;
+  outline: none;
+  height: 40px;
+  font-size: 1em;
+}
+
+.btn.roll[disabled] {
+  background-color: lightgray;
+}
+
+.btn.roll:hover {
+  border: 2px solid white;
+}
+
+#btn-ready {
+  margin-top: 20px;
+}
+
+#new-player-name {
+  width: 250px;
+  font-size: 20px;
+  margin-left: 20px;
+  padding-left: 10px;
+  height: 30px;
+}
+
+.input-form {
+  margin-top: 20px;
+}
+
+#bowling-game {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 80px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  background-color: white;
+  opacity: 0.6;
+}
+
+#bowling-game > * {
+  opacity: 1.0;
+}
+
+.player-row {
+  padding-top: 30px;
+  clear: left;
+  background-color: white;
+  opacity: 1.0;
+}
+
+.player-name {
+  font-weight: bold;
+  float: left;
+}
+
+.score-container {
+  margin-left: 10px;
+  clear: left;
+}
+
+.frame {
+  float: left;
+  font-size: 20px;
+  width: 90px;
+  height: 50px;
+  outline: 1px solid black;
+}
+
+
+.frame-total {
+  display: block;
+  clear: left;
+  text-align: center;
+}
+
+#current-player {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.roll-buttons {
+  margin-top: 15px;
+  outline: none;
+}
+
+.player-total {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+}

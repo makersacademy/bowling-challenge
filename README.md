@@ -16,6 +16,8 @@ Testing was done using jasmine. To run tests:
   * Run bundle install in the root directory
   * Run rackup and navigate to localhost:9292/SpecRunner.html
 
+To view the website (still in progress) clone the repo, run bundle install in the cloned directory and then run rackup.
+
 ### Ongoing
 
 Creation of a nice user interface in jquery/css.

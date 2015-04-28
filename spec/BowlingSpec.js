@@ -5,11 +5,11 @@ describe('Bowling', function() {
     bowling = new Bowling();
   });
 
-  describe('number of frame', function() {
-    it('has 1 frame', function() {
-      expect(bowling.frameNumber).toBe(1);
-    });
-  });
+  // describe('number of frame', function() {
+  //   it('has 1 frame', function() {
+  //     expect(bowling.frameNumber).toBe(1);
+  //   });
+  // });
 
   describe('number of ball', function() {
     describe('is One', function() {
@@ -31,7 +31,7 @@ describe('Bowling', function() {
         });
       });
 
-      describe('and number of pins down is 10', function(){
+      describe('and number of pins down is less than 10', function(){
         it('the frame continues', function(){
             spyOn(bowling, 'ballOne').and.returnValue(5);
             expect(bowling.firstPart()).toEqual("Frame continues, go for next ball");

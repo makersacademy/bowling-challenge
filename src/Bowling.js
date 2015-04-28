@@ -2,7 +2,6 @@ function Bowling() {
   this.frameNumbers = 1;
   this.startPins = 10;
   this.score = 0;
-  this.totalPinsDown = 0;
   this.pinsLeft = 10;
 }
 
@@ -13,23 +12,12 @@ Bowling.prototype.pinsKnocked = function(pins) {
 
 Bowling.prototype.ballOne = function() {
   var pinsDown = this.pinsKnocked(this.startPins);
-  if (pinsDown === 10){
-    this.pinsLeft = 0;
-  } else {
-    this.pinsLeft = this.startPins - pinsDown;
-  };
-  return this.pinsLeft;
+  return this.pinsLeft = this.startPins - pinsDown;
 };
 
 Bowling.prototype.ballTwo = function() {
-  var pinsDown = this.pinsKnocked(this.ballOne());
-  this.totalPinsDown = this.ballOne() + pinsDown;
-  if (this.totalPinsDown === 10){
-     this.pinsLeft = 0;
-  } else {
-    this.pinsLeft = this.startPins - this.totalPinsDown;
-  };
-  return this.pinsLeft;
+  var pinsDown = this.pinsKnocked(this.pinsLeft);
+  return this.pinsLeft = this.pinsLeft - pinsDown;
 };
 
 Bowling.prototype.firstPart = function(){

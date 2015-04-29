@@ -11,13 +11,15 @@ Task:
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 
-Logic plan: 
------------
+Logic: 
+------
 
 * the game is an array, with each frame its own array
-* if roll1 = 10, add next roll1 + roll2
-  * if the next roll1 = 10, add next roll1
-* if roll1 + roll2 = 10, add next roll1
+* logic for adding spare and strike bonus scores works retrospectively
+* if previous frame contains a spare, add this roll again
+* if previous frame contains a strike, add this roll again
+* if previous frame by two contains a strike, add this roll again
+
 * if frame10, if either roll1 or roll1 + roll2 = 10, roll3
 
 

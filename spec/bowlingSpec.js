@@ -24,7 +24,7 @@ describe('Bowling', function () {
         expect(bowling.game).toEqual([[8, 1]]);
     });
 
-    it('pushes this roll into new frame', function () {
+    it('pushes third roll into new frame', function () {
         bowling.roll(7);
         bowling.roll(2);
         bowling.roll(3);
@@ -83,6 +83,40 @@ describe('Bowling', function () {
         bowling.roll(3);
         bowling.addUpGame();
         expect(bowling.total).toEqual(39);
+    });
+
+    it('handles lots of strikes correctly', function () {
+        for (var i = 0; i < 9; i++) {
+            bowling.roll(10);
+        }
+        bowling.addUpGame();
+        expect(bowling.total).toEqual(240);       
+    });
+
+    it('only allows ten frames', function () {
+        for (var i = 0; i < 11; i++) {
+            bowling.roll(10);
+        }
+        expect(bowling.game.length).toEqual(10);
+    });
+
+    it('allows three rolls in tenth frame, if strike or spare in first two rolls', function () {
+        for (var i = 0; i < 10; i++) {
+            bowling.roll(10);
+        }
+        bowling.roll(2);
+        bowling.roll(2);
+        expect(bowling.game).toEqual([[10, null],[10, null],[10, null],[10, null],[10, null],[10, null],[10, null],[10, null],[10, null],[10, 2, 2]]);
+    });
+
+    it('scores a game correctly, with three frames in last bowl', function () {
+        for (var i = 0; i < 10; i++) {
+            bowling.roll(10);
+        }
+        bowling.roll(2);
+        bowling.roll(2);
+        bowling.addUpGame();
+        expect(bowling.total).toEqual(292); 
     });
 
 });

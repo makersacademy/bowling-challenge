@@ -9,21 +9,33 @@ var Bowling = function () {
 
 Bowling.prototype.roll = function (roll) {
     "use strict";
-    if (this.game.length > 0) {
-        if (this.game[this.framePlace()].length === 1) { // this is the second roll of a frame, you've added an equals
+
+    if (this.game.length > 0 && this.game.length < 10) {
+        if (this.game[this.framePlace()].length === 1) { // this is the second roll of a frame
             this.game[this.framePlace()].push(roll);
-            this.scoring.push(roll);
             if ((this.game.length > 1) && this.game[this.game.length - 2][1] === null) {
                 this.scoring.push(roll);
             }
-        } else { // this is the first roll of a new frame
+            return this.scoring.push(roll);
+        }
+        else { // this is the first roll of a new frame, makes index 1, length 2
             if (roll === 10) {
-                this.game.push([10, null]);
-                this.scoring.push(roll);
+                if (this.game.length === 9) { // this is the first roll of the tenth frame
+                    this.game.push([10]);
+                    this.scoring.push(roll);
+                    if ((this.game[8][1] !== null) && (this.game[8][0] + this.game[8][1] === 10)) {
+                    this.scoring.push(roll);
+                    }
+                }
+                else { // this is a strike
+                    this.game.push([10, null]);
+                    this.scoring.push(roll);
+                }
             } else {
                 this.game.push([roll]);
                 this.scoring.push(roll);
             }
+
             if ((this.game[this.game.length - 2][1] !== null) && (this.game[this.game.length - 2][0] + this.game[this.game.length - 2][1] === 10)) {
                 this.scoring.push(roll);
             }
@@ -33,8 +45,22 @@ Bowling.prototype.roll = function (roll) {
             if ((this.game.length > 2) && this.game[this.game.length - 3][1] === null) {
                 this.scoring.push(roll);
             }
+
         }
-    } else { // this is the first roll of the game
+    } else if (this.game.length === 10) {
+            this.game[9].push(roll);
+            this.scoring.push(roll);
+            if (this.game[8][1] === null) {
+                this.scoring.push(roll);
+            }
+            if (this.game[9][0] === 10) {
+                this.scoring.push(roll);
+            }
+            if (this.game[9].length === 2 && this.game[9][0] === 10 ) {
+                this.scoring.push(roll);                
+            }
+
+    } else if (this.game.length < 1) { // this is the first roll of the game, makes index 0, length 1
         if (roll === 10) {
             this.game.push([10, null]);
             this.scoring.push(roll);
@@ -43,7 +69,6 @@ Bowling.prototype.roll = function (roll) {
             this.scoring.push(roll);
         }
     }
-
 };
 
 Bowling.prototype.framePlace = function () {

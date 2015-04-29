@@ -47,7 +47,7 @@ Bowling.prototype.roll = function (roll) {
             }
 
         }
-    } else if (this.game.length === 10) {
+    } else if (this.game.length === 10) { // this is the second and third bowls of tenth frame
             this.game[9].push(roll);
             this.scoring.push(roll);
             if (this.game[8][1] === null) {

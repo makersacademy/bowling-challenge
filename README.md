@@ -22,6 +22,10 @@ Logic:
 
 * if frame10, if either roll1 or roll1 + roll2 = 10, roll3
 
+* code is not DRY
+* which is probably why my scoring is not working
+* still, I am proud of how close I am to full functionality
+
 
 ### Optional Extra
 

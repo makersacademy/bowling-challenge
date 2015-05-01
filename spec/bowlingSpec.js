@@ -7,7 +7,7 @@ describe('Bowling', function () {
     });
 
     it('is a game with a maximum of twenty-one bowls', function () {
-        expect(bowling.game).toEqual(['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-']);
+        expect(bowling.game).toEqual(['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']);
     });
 
     it('finds appropriate frame position for first bowl', function () {
@@ -21,11 +21,11 @@ describe('Bowling', function () {
         expect(bowling.game[1]).toEqual(1);
     });
 
-    xit('can add scores in the game', function () {
+    it('can add scores in the game', function () {
         bowling.roll(8);
         bowling.roll(1);
         bowling.roll(2);
-        expect(bowling.total).toEqual(11);
+        expect(bowling.total()).toEqual(11);
     });
 
     xit('adds bonus of next roll if spare', function () {

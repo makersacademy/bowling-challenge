@@ -6,7 +6,7 @@ describe('Bowling', function () {
     });
 
     it('has a game', function () {
-        expect(bowling.game).toEqual([]);
+        expect(bowling.game).toEqual([[],[],[],[],[],[],[],[],[],[]]);
     });
 
     it('has a total', function () {

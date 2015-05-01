@@ -10,15 +10,8 @@ var Bowling = function () {
 Bowling.prototype.roll = function (roll) {
     "use strict";
 
-    if (this.game.length > 0 && this.game.length < 10) {
-        if (this.game[this.framePlace()].length === 1) { // this is the second roll of a frame
-            this.game[this.framePlace()].push(roll);
-            if ((this.game.length > 1) && this.game[this.game.length - 2][1] === null) {
-                this.scoring.push(roll);
-            }
-            return this.scoring.push(roll);
-        }
-        else { // this is the first roll of a new frame, makes index 1, length 2
+    if (this.game.length > 0 && this.game.length < 10) { // frame 2 - frame 9
+        if (this.game[this.framePlace()] === undefined) {
             if (roll === 10) {
                 if (this.game.length === 9) { // this is the first roll of the tenth frame
                     this.game.push([10]);
@@ -47,6 +40,13 @@ Bowling.prototype.roll = function (roll) {
             }
 
         }
+        else { // this is the first roll of a new frame, makes index 1, length 2
+            this.game[this.framePlace()].push(roll);
+            if ((this.game.length > 1) && this.game[this.game.length - 2][1] === null) {
+                this.scoring.push(roll);
+            }
+            return this.scoring.push(roll);
+        }
     } else if (this.game.length === 10) { // this is the second and third bowls of tenth frame
             this.game[9].push(roll);
             this.scoring.push(roll);
@@ -73,7 +73,8 @@ Bowling.prototype.roll = function (roll) {
 
 Bowling.prototype.framePlace = function () {
     "use strict";
-    return this.game.length - 1;
+    //return this.game.length - 1;
+    return this.game.length;
 };
 
 Bowling.prototype.addUpGame = function () {

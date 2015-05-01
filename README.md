@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/Gwasanaethau/bowling-challenge.svg?branch=master)](https://travis-ci.org/Gwasanaethau/bowling-challenge)
-[![Coverage Status](https://coveralls.io/repos/Gwasanaethau/bowling-challenge/badge.svg?branch=master)](https://coveralls.io/r/Gwasanaethau/bowling-challenge?branch=master)
 
 ###Bowling Challenge###
 

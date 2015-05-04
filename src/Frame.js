@@ -3,11 +3,14 @@ var Frame = function() {
   this.skittlesRemaining = 10;
 };
 
-// Frame.prototype.play = function() {
-//   score = bowl();
-//   this.frameScore += score;
-//   this.skittlesRemaining -= score;
-// };
+Frame.prototype.play = function() {
+  score = this.bowl();
+  this.frameScore += score;
+  this.skittlesRemaining -= score;
+  if(this.skittlesRemaining === 0) {
+    return 'Strike';
+  }
+};
 
 Frame.prototype.bowl = function() {
   score = Math.floor(Math.random() * (this.skittlesRemaining + 1));

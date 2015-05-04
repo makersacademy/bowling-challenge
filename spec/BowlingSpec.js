@@ -5,7 +5,7 @@ describe('Bowling Scorecard', function() {
     frame = new Frame();
   });
 
-  describe('can play a game of a single standard frame –', function() {
+  describe('can bowl a single ball and –', function() {
     describe('keeps track of the frame’s score, which:', function() {
       it('is initally 0', function() {
         expect(frame.frameScore).toEqual(0);
@@ -37,6 +37,24 @@ describe('Bowling Scorecard', function() {
         frame.bowl();
         expect(frame.skittlesRemaining >= 0).toBeTruthy();
       });
+    });
+  });
+
+  describe('plays a single standard frame –', function() {
+    it('knocks down all skittles on first bowl', function() {
+      spyOn(frame, 'bowl').and.returnValue(10);
+      expect(frame.play()).toEqual('Strike');
+      expect(frame.frameScore).toEqual(10);
+      expect(frame.skittlesRemaining).toEqual(0);
+    });
+
+    xit('knocks down all skittles with two bowls', function() {
+    });
+
+    xit('knocks down some skittles with two bowls', function() {
+    });
+
+    xit('fails to knock down any skittles with two bowls', function() {
     });
   });
 });

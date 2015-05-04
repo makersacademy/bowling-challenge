@@ -5,7 +5,7 @@ describe('Bowling Scorecard', function() {
     frame = new Frame();
   });
 
-  describe('can bowl a single ball and –', function() {
+  describe('bowls a single ball and –', function() {
     describe('keeps track of the frame’s score, which:', function() {
       it('is initally 0', function() {
         expect(frame.frameScore).toEqual(0);

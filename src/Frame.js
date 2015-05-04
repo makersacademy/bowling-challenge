@@ -3,14 +3,15 @@ var Frame = function() {
   this.skittlesRemaining = 10;
 };
 
-Frame.prototype.play = function() {
-  score = bowl();
-  this.frameScore += score;
-  this.skittlesRemaining -= score;
-};
+// Frame.prototype.play = function() {
+//   score = bowl();
+//   this.frameScore += score;
+//   this.skittlesRemaining -= score;
+// };
 
 Frame.prototype.bowl = function() {
-  bowlScore = Math.floor(Math.random() * (skittlesRemaining + 1));
-  this.frameScore += bowlScore;
-  return bowlScore;
+  score = Math.floor(Math.random() * (this.skittlesRemaining + 1));
+  this.frameScore += score;
+  this.skittlesRemaining -= score;
+  return score;
 };

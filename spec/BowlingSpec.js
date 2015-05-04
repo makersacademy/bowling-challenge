@@ -48,7 +48,11 @@ describe('Bowling Scorecard', function() {
       expect(frame.skittlesRemaining).toEqual(0);
     });
 
-    xit('knocks down all skittles with two bowls', function() {
+    it('knocks down all skittles with two bowls', function() {
+      spyOn(frame, 'bowl').and.returnValue(5);
+      expect(frame.play()).toEqual('Spare');
+      expect(frame.frameScore).toEqual(10);
+      expect(frame.skittlesRemaining).toEqual(0);
     });
 
     xit('knocks down some skittles with two bowls', function() {

@@ -17,9 +17,9 @@ describe('Bowling Scorecard', function() {
       });
 
       it('does not exceed the initial number of skittles', function() {
-        numberOfSkittles = frame.skittlesRemaining;
+        initialNumberOfSkittles = frame.skittlesRemaining;
         frame.bowl();
-        expect(frame.frameScore <= numberOfSkittles).toBeTruthy();
+        expect(frame.frameScore <= initialNumberOfSkittles).toBeTruthy();
       });
     });
 
@@ -27,11 +27,16 @@ describe('Bowling Scorecard', function() {
       it('is initally 10', function() {
         expect(frame.skittlesRemaining).toEqual(10);
       });
-    });
 
-    it('can bowl a ball and knock down some/all skittles (but no more than that!)', function() {
-      frame.bowl();
-      expect(frame.skittlesRemaining).toBeGreaterThan(-1);
+      it('(potentially) decreases as balls are bowled', function() {
+        frame.bowl();
+        expect(frame.skittlesRemaining <= 10).toBeTruthy();
+      });
+
+      it('does not ‘subceed’ 0 (i.e. cannot knock down more skittles than were there to start with!)', function() {
+        frame.bowl();
+        expect(frame.skittlesRemaining >= 0).toBeTruthy();
+      });
     });
   });
 });

@@ -3,7 +3,7 @@ describe("Bowl", function() {
   var bowl;
 
   beforeEach(function() {
-    bowl = new Bowl;
+    bowl = new Bowl();
   });
 
   describe("Starting a game", function() {
@@ -42,7 +42,7 @@ describe("Bowl", function() {
 
     it("should move to the next frame when a strike is scored",
       function() {
-        bowl.roll1(10)
+        bowl.roll1(10);
         expect(bowl.frameNumber).toEqual(2);
       });
   });
@@ -57,13 +57,13 @@ describe("Bowl", function() {
 
     it("should only let the roll have a maximum score of 10", function() {
       bowl.roll1(15);
-      expect(bowl.roll1).toEqual(10)
+      expect(bowl.roll1).toEqual(10);
     });
 
     it("should know that a strike is equal to 10 pins being hit",
       function() {
         bowl.roll1(10);
-        expect(bowl.strikes).toEqual(1)
+        expect(bowl.strikes).toEqual(1);
       });
 
     it(

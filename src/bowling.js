@@ -7,48 +7,40 @@ function Player() {
 };
 
 Player.prototype.firstBowl = function(pins) {
-  if(this.errorHandle(pins) == null) {
-    this.firstHit = pins;
-  }
-
-  if(pins == 10) {
-    this.firstHit = pins;
-    this.secondHit = 0;
-  }
+  if(this.errorHandle(pins) == null) { this.firstHit = pins };
+  if(pins == 10) { this.secondHit = 0 };
 };
 
 Player.prototype.secondBowl = function(pins) {
-  if(this.errorHandle(pins) == null) {
-    this.secondHit = pins;
-  }
+  if(this.errorHandle(pins) == null) { this.secondHit = pins };
 };
 
-Player.prototype.calculate = function() {
-  this.calculateBonus();
+Player.prototype.calculateScore = function() {
   this.score += this.firstHit + this.secondHit;
-  this.isABonus();
+  this.calculateBonus();
+  this.isNextABonus();
   this.resetHits();
 };
 
-Player.prototype.isABonus = function() {
-  if(this.firstHit + this.secondHit == 10) {
-    if(this.firstHit != 10) {
-      this.isSpare = true;
-    }
-    else if(this.firstHit == 10) {
-      this.isStrike = true;
-    }
-  }
-};
 
 Player.prototype.calculateBonus = function() {
   if(this.isSpare == true) {
     this.score += this.firstHit;
     this.isSpare = false;
   }
-  else if(this.isStrike == true)
+  else if(this.isStrike == true) {
     this.score += this.firstHit + this.secondHit;
-  this.isStrike = false;
+    this.isStrike = false;
+  }
+};
+
+Player.prototype.isNextABonus = function() {
+  if(this.firstHit == 10) {
+    this.isStrike = true;
+  }
+  else if (this.firstHit + this.secondHit == 10) {
+    this.isSpare = true;
+  }
 };
 
 Player.prototype.resetHits = function() {

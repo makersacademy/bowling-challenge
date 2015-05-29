@@ -8,27 +8,27 @@ describe('In the first frame, the player', function() {
     it('a 3 and a 2', function (){
       player.firstBowl(3);
       player.secondBowl(2);
-      player.calculate();
+      player.calculateScore();
       expect(player.score).toEqual(5);
     });
 
     it('a 7 and a 1', function (){
       player.firstBowl(7);
       player.secondBowl(1);
-      player.calculate();
+      player.calculateScore();
       expect(player.score).toEqual(8);
     });
 
     it('a spare', function () {
       player.firstBowl(9);
       player.secondBowl(1);
-      player.calculate();
+      player.calculateScore();
       expect(player.score).toEqual(10);
     });
 
     it('a strike', function () {
       player.firstBowl(10);
-      player.calculate();
+      player.calculateScore();
       expect(player.score).toEqual(10);
     });
   });
@@ -61,10 +61,10 @@ describe('In the second frame, the player', function() {
     it('and scores more points', function() {
       player.firstBowl(4);
       player.secondBowl(3);
-      player.calculate();
+      player.calculateScore();
       player.firstBowl(5);
       player.secondBowl(4);
-      player.calculate();
+      player.calculateScore();
       expect(player.score).toEqual(16);
     });
 
@@ -72,19 +72,19 @@ describe('In the second frame, the player', function() {
     it('for scoring a spare in the previous frame', function() {
       player.firstBowl(4);
       player.secondBowl(6);
-      player.calculate();
+      player.calculateScore();
       player.firstBowl(5);
       player.secondBowl(4);
-      player.calculate();
+      player.calculateScore();
       expect(player.score).toEqual(24);
     });
 
     it('for scoring a strike in the previous frame', function() {
       player.firstBowl(10);
-      player.calculate();
+      player.calculateScore();
       player.firstBowl(5);
       player.secondBowl(4);
-      player.calculate();
+      player.calculateScore();
       expect(player.score).toEqual(28);
     });
   });

@@ -24,18 +24,19 @@ Player.prototype.calculateScore = function() {
 };
 
 Player.prototype.addBonus = function() {
+  x = this.score.length
   if(this.isStrike == true) {
-
+    this.score[(x - 2)] += this.firstHit + this.secondHit;
+    this.isStrike = false;
   }
   else if(this.isSpare == true) {
-    x = this.score.length
     this.score[(x - 2)] += this.firstHit;
     this.isSpare = false;
   }
 };
 
 Player.prototype.isNextABonus = function() {
-  if(this.first == 10) {
+  if(this.firstHit == 10) {
     this.isStrike = true
   }
   else if(this.firstHit + this.secondHit == 10) {

@@ -5,6 +5,7 @@ function Player() {
   this.isSpare = false;
   this.strikeCount = 0;
   this.tenthFrame = false;
+  this.extraGo = false;
 };
 
 Player.prototype.firstBowl = function(pins) {
@@ -17,15 +18,25 @@ Player.prototype.secondBowl = function(pins) {
   if(this.errorHandle(pins) == null) { this.secondHit = pins };
 };
 
+Player.prototype.extraBowl = function(pins) {
+  if(this.extraGo == false) {
+    throw Error("Game has ended")
+  }
+  else {
+    x = this.score.length
+    this.score[(x - 1)] += pins
+  }
+};
+
 Player.prototype.calculateScore = function() {
-  result = this.firstHit + this.secondHit;
-  this.score.push(result);
-  this.addBonus();
-  this.isNextABonus();
-  this.resetHits();
-  if(this.score.length == 10) {
-    this.tenthFrame = true;
-   };
+    result = this.firstHit + this.secondHit;
+    this.score.push(result);
+    this.addBonus();
+    this.isNextABonus();
+    this.resetHits();
+    if(this.score.length == 10 && this.isSpare == true) {
+      this.extraGo = true;
+    }
 };
 
 Player.prototype.addBonus = function() {
@@ -61,25 +72,25 @@ Player.prototype.resetHits = function() {
   this.secondHit = 0;
 };
 
-// Player.prototype.tenthFrame = function() {
-//   x = this.score.length
-//   if(this.strikeCount == 1) {
-//     this.score[(x - 2)] += this.firstHit + this.secondHit;
-//   }
-//   else if(this.strikeCount == 2) {
-//     this.score[(x - 2)] += this.firstHit + this.secondHit;
-//     this.score[(x - 3)] += this.firstHit;
-//     this.strikeCount -= 1;
-//   }
-//   else if(this.isSpare == true) {
-//     this.firstBowl(x);
-//     this.score[(x - 2)] += this.firstHit;
-//     this.isSpare = false
-//   }
-// };
+Player.prototype.finalFrameScore = function() {
+  x = this.score.length
+  // if(this.strikeCount == 1) {
+  //   this.score[(x - 2)] += this.firstHit + this.secondHit;
+  // }
+  // else if(this.strikeCount == 2) {
+  //   this.score[(x - 2)] += this.firstHit + this.secondHit;
+  //   this.score[(x - 3)] += this.firstHit;
+  //   this.strikeCount -= 1;
+  // }
+  if(this.isSpare == true) {
+    this.firstBowl(x);
+    this.score[(x - 2)] += this.firstHit;
+    this.isSpare = false
+  }
+};
 
 Player.prototype.errorHandle = function(pins) {
-  if(this.tenthFrame == true) {
+  if(this.score.length == 10) {
     if(this.isSpare == false && this.strikeCount == 0) {
       throw new Error("Game has ended")
     }

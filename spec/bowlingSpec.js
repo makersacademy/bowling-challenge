@@ -137,14 +137,16 @@ describe('The player gets correct bonus points', function() {
 
   it('for scoring a perfect game', function () {
     for(i = 1; i < 11; i ++ ) {
+      // Strike ten frames in a row
       player.firstBowl(10);
       player.calculateScore();
     };
+    // plays two bonus bowls and strike on both
       player.firstBowl(10);
       player.calculateScore();
       player.firstBowl(10);
       player.calculateScore();
-      expect(player.score).toEqual([30, 30, 30, 30, 30, 30, 30, 30, 40, 30])
+      expect(player.score).toEqual([30, 30, 30, 30, 30, 30, 30, 30, 30, 30])
   });
 
 });
@@ -169,15 +171,17 @@ describe('On the tenth frame', function() {
   describe('a player scores a spare', function() {
     it('and gets one more bowl, with correct bonuses', function () {
     for(i = 1; i < 10; i ++ ) {
+      // plays 9 frames
       player.firstBowl(5);
       player.secondBowl(5);
       player.calculateScore();
     };
+    // plays the tenth frame and gets a spare
     player.firstBowl(8);
     player.secondBowl(2);
     player.calculateScore();
-    player.firstBowl(5);
-    player.calculateScore();
+    // get the bonus bowl
+    player.extraBowl(5);
     expect(player.score).toEqual([15, 15, 15, 15, 15, 15, 15, 15, 18, 15])
     });
   });
@@ -185,12 +189,15 @@ describe('On the tenth frame', function() {
   describe('a player scores a strike', function() {
     it('and gets two more bowls, with correct bonuses', function () {
     for(i = 1; i < 10; i ++ ) {
+      // plays 9 frames
       player.firstBowl(5);
       player.secondBowl(5);
       player.calculateScore();
     };
+    // plays the tenth frame and gets a strike
     player.firstBowl(10);
     player.calculateScore();
+    // get two bonus bowls
     player.firstBowl(5);
     player.secondBowl(2);
     player.calculateScore();

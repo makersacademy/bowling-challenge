@@ -1,5 +1,5 @@
 function Player() {
-  this.score = 0;
+  this.score = [];
   this.firstHit = 0;
   this.secondHit = 0;
   this.isSpare = false;
@@ -16,36 +16,37 @@ Player.prototype.secondBowl = function(pins) {
 };
 
 Player.prototype.calculateScore = function() {
-  this.score += this.firstHit + this.secondHit;
-  this.calculateBonus();
+  result = this.firstHit + this.secondHit;
+  this.score.push(result);
+  this.addBonus();
   this.isNextABonus();
   this.resetHits();
 };
 
+Player.prototype.addBonus = function() {
+  if(this.isStrike == true) {
 
-Player.prototype.calculateBonus = function() {
-  if(this.isSpare == true) {
-    this.score += this.firstHit;
-    this.isSpare = false;
   }
-  else if(this.isStrike == true) {
-    this.score += this.firstHit + this.secondHit;
-    this.isStrike = false;
+  else if(this.isSpare == true) {
+    x = this.score.length
+    this.score[(x - 2)] += this.firstHit;
+    this.isSpare = false;
   }
 };
 
 Player.prototype.isNextABonus = function() {
-  if(this.firstHit == 10) {
-    this.isStrike = true;
+  if(this.first == 10) {
+    this.isStrike = true
   }
-  else if (this.firstHit + this.secondHit == 10) {
+  else if(this.firstHit + this.secondHit == 10) {
     this.isSpare = true;
   }
 };
 
+
 Player.prototype.resetHits = function() {
-  this.firstHit = 0
-  this.secondHit = 0
+  this.firstHit = 0;
+  this.secondHit = 0;
 };
 
 Player.prototype.errorHandle = function(pins) {

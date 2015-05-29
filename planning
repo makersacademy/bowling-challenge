@@ -1,0 +1,35 @@
+The key rules that applies across individual frame scores
+  Basic >> a + b
+  Half strike >> a = 10 + b = the first roll from the next frame
+  Strike >> a = 10 + b = the next 2 rolls from the next frames (e.g. could carry over frames if 2 strikes in a row)
+
+MVP
+  - have a scorecard object/ function class
+  - have a method that takes in rolls and adds to an array (Rolls >> [[1,2], [10,0], [3,4], [5,5]])
+  - have a method that stops each array element from being over 10
+  - have a method that calculates the total score for basic [0,1] combination
+    >> some sort of reduce method
+
+Scorecard specs
+  >> I want to have a scorecard
+  >> I want to be able to store all my individual roll scores by frame
+  >> I want to be able to score a basic game (no strikes or half strikes)
+  >> I want to be able to score an advanced game with half strikes
+  >> I want to be able to score a more advanced game with strikes
+  >> I want to be able to score a full game with a 10th frame
+  >> I want to be able to see my total cumulative score in a UI
+  >> I want to be able to see my individual frame scores in a UI
+  >> I want to be able to see my cumulative frame scores in a UI
+
+Scorecard.prototype.frameScore = function(a, b) {
+  a + b
+}
+
+Rolls >> [[1,2], [10,0], [3,4], [5,5]]
+  >>
+
+Plan
+  >> File structure
+  >> Set-up first test
+  >> Set-up basic object
+  >>

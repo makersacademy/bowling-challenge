@@ -14,6 +14,8 @@ Scorecard specs
   >> I want to have a scorecard
   >> I want to be able to store all my individual roll scores by frame
   >> I want to be able to score a basic game (no strikes or half strikes)
+  >> if frame = 10
+  >> Throws error if frame is over 10
   >> I want to be able to score an advanced game with half strikes
   >> I want to be able to score a more advanced game with strikes
   >> I want to be able to score a full game with a 10th frame

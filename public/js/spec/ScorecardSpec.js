@@ -11,26 +11,43 @@ describe('Scorecard', function(){
 
 
   it('has an array of individual scores when initialized', function() {
-    expect(scorecard.rolls).toEqual([]);
+    expect(scorecard.bowls).toEqual([]);
   });
 
-  it('can store individual rolls in an array', function (){
-    scorecard.oneFrame(2,3);
-    expect(scorecard.rolls).toEqual([[2,3]]);
+  it('can store individual bowls in an array', function (){
+    scorecard.runFrame(2,3);
+    expect(scorecard.bowls).toEqual([[2,3]]);
   });
 
-  it('can track all 10 frames of 20 rolls with no spares or half strikes', function(){
+  it('can calculate the total frame score', function(){
+    scorecard.runFrame(2,3);
+    expect(scorecard.frameScore).toEqual(5);
+  });
+
+  it('can track all 10 frames of 20 bowls with no spares or half strikes', function(){
       for (var i = 0; i < 10; i++){
-        scorecard.oneFrame(2,3);
+        scorecard.runFrame(2,3);
       }
       expect(scorecard.totalScore).toEqual(50);
   });
 
   it('can calculate the score of a game with no spares or half strikes', function(){
       for (var i = 0; i < 10; i++){
-        scorecard.oneFrame(2,3);
+        scorecard.runFrame(2,3);
       }
-      expect(scorecard.rolls).toEqual([[2,3],[2,3],[2,3],[2,3],[2,3],[2,3],[2,3],[2,3],[2,3],[2,3]])
+      expect(scorecard.bowls).toEqual([[2,3],[2,3],[2,3],[2,3],[2,3],[2,3],[2,3],[2,3],[2,3],[2,3]])
   });
 
+  it('can calculate a bonus score for a half strike', function(){
+    scorecard.runFrame(3,7)
+    scorecard.runFrame(2,3)
+    expect(scorecard.totalScore).toEqual(17);
+  });
+
+  it('can calculate a bonus score for multiple half strikes in sequence',function(){
+    scorecard.runFrame(3,7)
+    scorecard.runFrame(3,7)
+    scorecard.runFrame(2,3)
+    expect(scorecard.totalScore).toEqual(30);
+  });
 });

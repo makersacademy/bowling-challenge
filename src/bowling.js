@@ -36,38 +36,21 @@ Player.prototype.calculateScore = function() {
       this.addBonus();
     }
     // for the tenth frame
-    if(this.score.length == 10) {
-      this.finalFrame();
-    }
+
     this.resetHits();
 };
 
 Player.prototype.addBonus = function() {
   x = this.score.length;
-  if(this.strikeCount == 1) {
-    this.score[(x - 1)] += this.firstHit;
-    this.score[(x - 1)] += this.secondHit;
-  }
-  else if(this.strikeCount == 2) {
-    this.score[(x - 1)] += this.firstHit + this.secondHit;
-    this.score[(x - 2)] += this.firstHit;
-    this.strikeCount -= 1;
-  }
-  else if(this.isSpare == true) {
-    this.score[(x - 1)] += this.firstHit;
+  if(this.isSpare == true) {
+    this.score[x - 2] += this.firstHit;
     this.isSpare = false;
   }
 };
 
 Player.prototype.calculateBonus = function() {
-  if(this.firstHit == 10) {
-    this.strikeCount += 1;
-  }
-  else if(this.firstHit + this.secondHit == 10) {
+  if(this.firstHit + this.secondHit == 10) {
     this.isSpare = true;
-  }
-  else {
-    this.strikeCount = 0;
   }
 };
 

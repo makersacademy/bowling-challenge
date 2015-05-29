@@ -1,39 +1,93 @@
-describe('In the first frame, player bowls twice', function() {
+describe('In the first frame, the player', function() {
 
-  player = new Player
-
-  it('and scores a 3 and a 2', function (){
-    player.firstBowl(3);
-    player.secondBowl(2);
-    player.calculate();
-    expect(player.score).toEqual(5);
+  beforeEach(function() {
+    player = new Player
   });
 
-  it('and scores a 7 and a 1', function (){
-    player.firstBowl(7);
-    player.secondBowl(1);
-    player.calculate();
-    expect(player.score).toEqual(8);
+  describe('can score', function() {
+    it('a 3 and a 2', function (){
+      player.firstBowl(3);
+      player.secondBowl(2);
+      player.calculate();
+      expect(player.score).toEqual(5);
+    });
+
+    it('a 7 and a 1', function (){
+      player.firstBowl(7);
+      player.secondBowl(1);
+      player.calculate();
+      expect(player.score).toEqual(8);
+    });
+
+    it('a spare', function () {
+      player.firstBowl(9);
+      player.secondBowl(1);
+      player.calculate();
+      expect(player.score).toEqual(10);
+    });
+
+    it('a strike', function () {
+      player.firstBowl(10);
+      player.calculate();
+      expect(player.score).toEqual(10);
+    });
   });
 
-  it('and scores a spare', function () {
-    player.firstBowl(9);
-    player.secondBowl(1);
-    player.calculate();
-    expect(player.score).toEqual(10);
-  })
+  describe('cannot', function () {
 
-  it('but cannot hit more than 10 pins in one bowl', function() {
-    expect( function(){ player.firstBowl(11); } ).toThrow(new Error("Cannot hit more than 10 pins"));
+    it('hit more than 10 pins in one bowl', function() {
+      expect( function(){ player.firstBowl(11); } ).toThrow(new Error("Cannot hit more than 10 pins"));
+    });
+
+    it('hit more than 10 pins over two bowls', function() {
+      player.firstBowl(3);
+      expect( function() { player.secondBowl(8); } ).toThrow(new Error("Cannot hit more than 10 pins"));
+    });
+
+    it('bowl twice if a strike is scored', function() {
+      player.firstBowl(10);
+      expect( function() { player.secondBowl(1); } ).toThrow(new Error("Cannot bowl twice on a strike"));
+    });
+  });
+});
+
+describe('In the second frame, the player', function() {
+
+  beforeEach(function() {
+    player = new Player
   });
 
-  it('but cannot hit more than 10 pins over two bowls', function() {
-    player.firstBowl(3);
-    expect( function() { player.secondBowl(8); } ).toThrow(new Error("Cannot hit more than 10 pins"));
+  describe('keeps score from previous frame', function() {
+    it('and scores more points', function() {
+      player.firstBowl(4);
+      player.secondBowl(3);
+      player.calculate();
+      player.firstBowl(5);
+      player.secondBowl(4);
+      player.calculate();
+      expect(player.score).toEqual(16);
+    });
+
+  describe('gets bonus points', function() {
+    it('for scoring a spare in the previous frame', function() {
+      player.firstBowl(4);
+      player.secondBowl(6);
+      player.calculate();
+      player.firstBowl(5);
+      player.secondBowl(4);
+      player.calculate();
+      expect(player.score).toEqual(24);
+    });
+
+    it('for scoring a strike in the previous frame', function() {
+      player.firstBowl(10);
+      player.calculate();
+      player.firstBowl(5);
+      player.secondBowl(4);
+      player.calculate();
+      expect(player.score).toEqual(28);
+    });
   });
 
-  it('but cannot bowl twice if a strike is scored', function() {
-    player.firstBowl(10);
-    expect( function() { player.secondBowl(1); } ).toThrow(new Error("Cannot bowl twice on a strike"));
   });
 });

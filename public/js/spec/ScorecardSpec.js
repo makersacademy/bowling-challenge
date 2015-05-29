@@ -50,4 +50,24 @@ describe('Scorecard', function(){
     scorecard.runFrame(2,3)
     expect(scorecard.totalScore).toEqual(30);
   });
+
+  it('can calculate a bonus score for a strike', function(){
+    scorecard.runFrame(10,0)
+    scorecard.runFrame(2,3)
+    expect(scorecard.totalScore).toEqual(20);
+  });
+
+  it('can calculate a strike and a half strike together', function(){
+    scorecard.runFrame(10,0)
+    scorecard.runFrame(3,7)
+    scorecard.runFrame(2,3)
+    expect(scorecard.totalScore).toEqual(37);
+  });
+
+  it('can calculate 2 strikes in a row', function(){
+    scorecard.runFrame(10,0)
+    scorecard.runFrame(10,0)
+    scorecard.runFrame(2,3)
+    expect(scorecard.totalScore).toEqual(42);
+  });
 });

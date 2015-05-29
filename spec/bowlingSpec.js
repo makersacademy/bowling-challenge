@@ -87,6 +87,7 @@ describe('In the second frame, the player', function() {
     it('for scoring a strike in the previous frame', function() {
       player.firstBowl(10);
       player.calculateScore();
+      // player.resetHits();
       player.firstBowl(5);
       player.secondBowl(4);
       player.calculateScore();
@@ -123,6 +124,20 @@ describe('The player gets correct bonus points', function() {
     player.calculateScore();
     expect(player.score).toEqual([30, 20, 19, 9])
   });
+
+  it('for scoring three strikes, but not in a row', function () {
+    for(i = 1; i < 3; i ++ ) {
+      // strike two frames in a row
+      player.firstBowl(10);
+      player.calculateScore();
+    };
+    player.firstBowl(4);
+    player.secondBowl(2);
+    player.calculateScore();
+    player.firstBowl(10);
+    player.calculateScore();
+    expect(player.score).toEqual([24, 16, 16, 10])
+  })
 
   it('for scoring four strikes in a row', function () {
     for(i = 1; i < 5; i ++ ) {
@@ -178,7 +193,7 @@ describe('On the tenth frame', function() {
     player.firstBowl(8);
     player.secondBowl(2);
     player.calculateScore();
-    // get the bonus bowl
+    // get one bonus bowl
     player.extraBowl(5);
     expect(player.score).toEqual([15, 15, 15, 15, 15, 15, 15, 15, 18, 15])
     });

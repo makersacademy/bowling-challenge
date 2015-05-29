@@ -30,40 +30,38 @@ Player.prototype.extraBowl = function(pins) {
 Player.prototype.calculateScore = function() {
     result = this.firstHit + this.secondHit;
     this.score.push(result);
-    this.addBonus();
-    this.isNextABonus();
-    if(this.score.length == 10 && this.isSpare == true) {
-      this.extraGo = 1;
+    this.calculateBonus();
+    if(this.score.length > 1) {
+      // for the first frame
+      this.addBonus();
     }
-    else if(this.score.length == 10 && this.strikeCount == 1) {
-      this.extraGo = 2;
-    }
-    else if(this.score.length == 10 && this.strikeCount == 2) {
-      this.score[(x - 2)] += this.firstHit + this.secondHit;
-      this.extraGo = 2;
+    // for the tenth frame
+    if(this.score.length == 10) {
+      this.finalFrame();
     }
     this.resetHits();
 };
 
 Player.prototype.addBonus = function() {
-  x = this.score.length
+  x = this.score.length;
   if(this.strikeCount == 1) {
-    this.score[(x - 2)] += this.firstHit + this.secondHit;
+    this.score[(x - 1)] += this.firstHit;
+    this.score[(x - 1)] += this.secondHit;
   }
   else if(this.strikeCount == 2) {
-    this.score[(x - 2)] += this.firstHit + this.secondHit;
-    this.score[(x - 3)] += this.firstHit;
+    this.score[(x - 1)] += this.firstHit + this.secondHit;
+    this.score[(x - 2)] += this.firstHit;
     this.strikeCount -= 1;
   }
   else if(this.isSpare == true) {
-    this.score[(x - 2)] += this.firstHit;
+    this.score[(x - 1)] += this.firstHit;
     this.isSpare = false;
   }
 };
 
-Player.prototype.isNextABonus = function() {
+Player.prototype.calculateBonus = function() {
   if(this.firstHit == 10) {
-    this.strikeCount += 1
+    this.strikeCount += 1;
   }
   else if(this.firstHit + this.secondHit == 10) {
     this.isSpare = true;
@@ -78,21 +76,21 @@ Player.prototype.resetHits = function() {
   this.secondHit = 0;
 };
 
-Player.prototype.finalFrameScore = function() {
-  x = this.score.length
-  // if(this.strikeCount == 1) {
-  //   this.score[(x - 2)] += this.firstHit + this.secondHit;
-  // }
-  // else if(this.strikeCount == 2) {
-  //   this.score[(x - 2)] += this.firstHit + this.secondHit;
-  //   this.score[(x - 3)] += this.firstHit;
-  //   this.strikeCount -= 1;
-  // }
-  if(this.isSpare == true) {
-    this.firstBowl(x);
-    this.score[(x - 2)] += this.firstHit;
-    this.isSpare = false
-  }
+Player.prototype.finalFrame = function() {
+    if(this.score.length == 10 && this.isSpare == true) {
+      // if you score a spare on 10th frame, you get 1 extra bowl
+      this.extraGo = 1;
+    }
+    else if(this.score.length == 10 && this.strikeCount == 1) {
+      // if you score a strike on the 10th frame, you get 2 extra bowls
+      this.extraGo = 2;
+    }
+    else if(this.score.length == 10 && this.strikeCount == 2) {
+      // if you scored a strike on the 9th and 10th frame, you get
+      // 2 extra bowls, and it updates the score on the 9th as per normal
+      this.score[(x - 2)] += this.firstHit + this.secondHit;
+      this.extraGo = 2;
+    }
 };
 
 Player.prototype.errorHandle = function(pins) {
@@ -107,7 +105,4 @@ Player.prototype.errorHandle = function(pins) {
   else if(pins + this.firstHit > 10){
     throw new Error('Cannot hit more than 10 pins');
   }
-  // if(this.score.length == 10 && (this.strikeCount == 0 || this.isSpare == false)) {
-  //   throw new Error('Game has ended');
-  // }
 };

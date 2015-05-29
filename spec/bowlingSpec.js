@@ -96,44 +96,105 @@ describe('In the second frame, the player', function() {
 
 });
 
-describe('The player', function() {
+describe('The player gets correct bonus points', function() {
 
   beforeEach(function() {
     player = new Player
   });
 
-  describe('gets correct bonus points', function () {
-    it('for scoring a double strike', function () {
-      for(i = 1; i < 3; i ++ ) {
-        player.firstBowl(10);
-        player.calculateScore();
-      };
-      player.firstBowl(4);
-      player.secondBowl(2);
+  it('for scoring a double strike', function () {
+    for(i = 1; i < 3; i ++ ) {
+      player.firstBowl(10);
       player.calculateScore();
-      expect(player.score).toEqual([24, 16, 6])
-    });
+    };
+    player.firstBowl(4);
+    player.secondBowl(2);
+    player.calculateScore();
+    expect(player.score).toEqual([24, 16, 6])
+  });
 
-    it('for scoring three strikes in a row', function () {
-      for(i = 1; i < 4; i ++ ) {
-        player.firstBowl(10);
-        player.calculateScore();
-      };
-      player.firstBowl(0);
-      player.secondBowl(9);
+  it('for scoring three strikes in a row', function () {
+    for(i = 1; i < 4; i ++ ) {
+      player.firstBowl(10);
       player.calculateScore();
-      expect(player.score).toEqual([30, 20, 19, 9])
-    });
+    };
+    player.firstBowl(0);
+    player.secondBowl(9);
+    player.calculateScore();
+    expect(player.score).toEqual([30, 20, 19, 9])
+  });
 
-    it('for scoring four strikes in a row', function () {
-      for(i = 1; i < 5; i ++ ) {
-        player.firstBowl(10);
+  it('for scoring four strikes in a row', function () {
+    for(i = 1; i < 5; i ++ ) {
+      player.firstBowl(10);
+      player.calculateScore();
+    };
+    player.firstBowl(2);
+    player.secondBowl(1);
+    player.calculateScore();
+    expect(player.score).toEqual([30, 30, 22, 13, 3])
+  });
+
+  it('for scoring a perfect game', function () {
+    for(i = 1; i < 11; i ++ ) {
+      player.firstBowl(10);
+      player.calculateScore();
+    };
+      player.firstBowl(10);
+      player.calculateScore();
+      player.firstBowl(10);
+      player.calculateScore();
+      expect(player.score).toEqual([30, 30, 30, 30, 30, 30, 30, 30, 40, 30])
+  });
+
+});
+
+describe('On the tenth frame', function() {
+
+  beforeEach(function() {
+    player = new Player
+  });
+
+  describe('a player does not score spare/strike', function () {
+    it('and gets no more bowls', function () {
+      for(i = 1; i < 11; i ++ ) {
+        player.firstBowl(5);
+        player.secondBowl(3);
         player.calculateScore();
       };
-      player.firstBowl(2);
-      player.secondBowl(1);
+      expect( function(){ player.firstBowl(2); } ).toThrow(new Error("Game has ended"));
+    });
+  });
+
+  describe('a player scores a spare', function() {
+    it('and gets one more bowl, with correct bonuses', function () {
+    for(i = 1; i < 10; i ++ ) {
+      player.firstBowl(5);
+      player.secondBowl(5);
       player.calculateScore();
-      expect(player.score).toEqual([30, 30, 22, 13, 3])
+    };
+    player.firstBowl(8);
+    player.secondBowl(2);
+    player.calculateScore();
+    player.firstBowl(5);
+    player.calculateScore();
+    expect(player.score).toEqual([15, 15, 15, 15, 15, 15, 15, 15, 18, 15])
+    });
+  });
+
+  describe('a player scores a strike', function() {
+    it('and gets two more bowls, with correct bonuses', function () {
+    for(i = 1; i < 10; i ++ ) {
+      player.firstBowl(5);
+      player.secondBowl(5);
+      player.calculateScore();
+    };
+    player.firstBowl(10);
+    player.calculateScore();
+    player.firstBowl(5);
+    player.secondBowl(2);
+    player.calculateScore();
+    expect(player.score).toEqual([15, 15, 15, 15, 15, 15, 15, 15, 20, 17])
     });
   });
 

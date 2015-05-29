@@ -5,19 +5,34 @@ Bowling Challenge
     Test time: Friday, the entire day and the weekend if you need it.
     Feel free to use Google, your notes, and your books.
 
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+## User Stories
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
+Game of bowling
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+================
+
+* As a bowler
+So that I can have a competitive game
+I would like to be able to keep score of my game
+
+* As a bowler
+So that my scoring can be as full-featured as possible
+I would like to incorporate gutter games and perfect games into my scoring
+
+* As a bowler
+So that I can have a more realistic scoring for my bowling game
+I would like to incorporate spikes and spares into my scoring
+
+* As a bowler
+So that I can have even more realistic scoring for my game of bowling
+I would like to be able to do the stuff that real bowlers do on the 10th frame
 
 
 ### Optional Extra

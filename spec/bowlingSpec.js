@@ -93,4 +93,48 @@ describe('In the second frame, the player', function() {
       expect(player.score).toEqual([19, 9]);
     });
   });
+
+});
+
+describe('The player', function() {
+
+  beforeEach(function() {
+    player = new Player
+  });
+
+  describe('gets correct bonus points', function () {
+    it('for scoring a double strike', function () {
+      for(i = 1; i < 3; i ++ ) {
+        player.firstBowl(10);
+        player.calculateScore();
+      };
+      player.firstBowl(4);
+      player.secondBowl(2);
+      player.calculateScore();
+      expect(player.score).toEqual([24, 16, 6])
+    });
+
+    it('for scoring three strikes in a row', function () {
+      for(i = 1; i < 4; i ++ ) {
+        player.firstBowl(10);
+        player.calculateScore();
+      };
+      player.firstBowl(0);
+      player.secondBowl(9);
+      player.calculateScore();
+      expect(player.score).toEqual([30, 20, 19, 9])
+    });
+
+    it('for scoring four strikes in a row', function () {
+      for(i = 1; i < 5; i ++ ) {
+        player.firstBowl(10);
+        player.calculateScore();
+      };
+      player.firstBowl(2);
+      player.secondBowl(1);
+      player.calculateScore();
+      expect(player.score).toEqual([30, 30, 22, 13, 3])
+    });
+  });
+
 });

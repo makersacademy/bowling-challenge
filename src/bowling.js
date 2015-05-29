@@ -3,7 +3,7 @@ function Player() {
   this.firstHit = 0;
   this.secondHit = 0;
   this.isSpare = false;
-  this.isStrike = false;
+  this.strikeCount = 0;
 };
 
 Player.prototype.firstBowl = function(pins) {
@@ -25,9 +25,13 @@ Player.prototype.calculateScore = function() {
 
 Player.prototype.addBonus = function() {
   x = this.score.length
-  if(this.isStrike == true) {
+  if(this.strikeCount == 1) {
     this.score[(x - 2)] += this.firstHit + this.secondHit;
-    this.isStrike = false;
+  }
+  else if(this.strikeCount == 2) {
+    this.score[(x - 2)] += this.firstHit + this.secondHit;
+    this.score[(x - 3)] += this.firstHit;
+    this.strikeCount -= 1;
   }
   else if(this.isSpare == true) {
     this.score[(x - 2)] += this.firstHit;
@@ -37,10 +41,13 @@ Player.prototype.addBonus = function() {
 
 Player.prototype.isNextABonus = function() {
   if(this.firstHit == 10) {
-    this.isStrike = true
+    this.strikeCount += 1
   }
   else if(this.firstHit + this.secondHit == 10) {
     this.isSpare = true;
+  }
+  else {
+    this.strikeCount = 0;
   }
 };
 

@@ -142,10 +142,8 @@ describe('The player gets correct bonus points', function() {
       player.calculateScore();
     };
     // plays two bonus bowls and strike on both
-      player.firstBowl(10);
-      player.calculateScore();
-      player.firstBowl(10);
-      player.calculateScore();
+      player.extraBowl(10);
+      player.extraBowl(10);
       expect(player.score).toEqual([30, 30, 30, 30, 30, 30, 30, 30, 30, 30])
   });
 
@@ -198,9 +196,8 @@ describe('On the tenth frame', function() {
     player.firstBowl(10);
     player.calculateScore();
     // get two bonus bowls
-    player.firstBowl(5);
-    player.secondBowl(2);
-    player.calculateScore();
+    player.extraBowl(5);
+    player.extraBowl(2);
     expect(player.score).toEqual([15, 15, 15, 15, 15, 15, 15, 15, 20, 17])
     });
   });

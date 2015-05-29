@@ -4,8 +4,7 @@ function Player() {
   this.secondHit = 0;
   this.isSpare = false;
   this.strikeCount = 0;
-  this.tenthFrame = false;
-  this.extraGo = false;
+  this.extraGo = 0;
 };
 
 Player.prototype.firstBowl = function(pins) {
@@ -19,10 +18,10 @@ Player.prototype.secondBowl = function(pins) {
 };
 
 Player.prototype.extraBowl = function(pins) {
-  if(this.extraGo == false) {
+  if(this.extraGo == 0) {
     throw Error("Game has ended")
   }
-  else {
+  else if(this.extraGo = 1) {
     x = this.score.length
     this.score[(x - 1)] += pins
   }
@@ -33,10 +32,17 @@ Player.prototype.calculateScore = function() {
     this.score.push(result);
     this.addBonus();
     this.isNextABonus();
-    this.resetHits();
     if(this.score.length == 10 && this.isSpare == true) {
-      this.extraGo = true;
+      this.extraGo = 1;
     }
+    else if(this.score.length == 10 && this.strikeCount == 1) {
+      this.extraGo = 2;
+    }
+    else if(this.score.length == 10 && this.strikeCount == 2) {
+      this.score[(x - 2)] += this.firstHit + this.secondHit;
+      this.extraGo = 2;
+    }
+    this.resetHits();
 };
 
 Player.prototype.addBonus = function() {

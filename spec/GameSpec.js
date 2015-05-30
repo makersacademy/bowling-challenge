@@ -64,5 +64,9 @@ describe("Bowling Score Card", function() {
 		}).toThrow();
 	});
 
-  
+  it("should skip to next frame on spare", function(){
+    game = new Game();
+    game.roll(10);
+    expect(game.frame).toEqual(2);
+  });
 });

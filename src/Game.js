@@ -16,14 +16,18 @@ Game.prototype.roll = function(pinsDown) {
 	}
 
 	if (this.frameRoll == 1) {
-		this.frameRoll += 1;
     this.rolls.push([pinsDown]);
     this.score += pinsDown;
+    if (pinsDown == 10) {
+      this.frame += 1;
+    } else {
+		this.frameRoll += 1;
+  }
 	} else {
 
     if (this.rolls[this.frame - 1][0] + pinsDown > 10) {
       throw "Invalid roll (over 10 per frame)";
-    } else {
+    }  else  {
 
     this.rolls[this.frame - 1].push(pinsDown);
 		this.frame += 1;

@@ -80,21 +80,22 @@ describe("Basic bowling Score Card", function() {
 
 
 describe("Bonus points: spares, strikes, 10th frame", function() {
+
   it("should score next roll for a spare", function(){
     game = new Game();
     game.roll(6);
     game.roll(4);
     game.roll(3);
-    game.roll(3);
-    expect(game.score).toEqual(19);
+    game.roll(5);
+    expect(game.score).toEqual(21);
   });
 
-  xit("should score next 2 rolls for a strike", function(){
+  it("should score next 2 rolls for a strike", function(){
     game = new Game();
     game.roll(10);
     game.roll(3);
-    game.roll(1);
-    expect(game.score).toEqual(18);
+    game.roll(3);
+    expect(game.score).toEqual(22);
   });
 
 });

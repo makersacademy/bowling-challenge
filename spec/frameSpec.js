@@ -16,7 +16,7 @@ describe('Bowling game frame structure', function(){
 
     bowling.pinsHit(4);
 
-    bowling.framer();
+    bowling._framer();
 
     expect(bowling.scoresFrame).toEqual([[3,4],[5,1],[4]]);
 

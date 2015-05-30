@@ -15,9 +15,12 @@ Bowling.prototype.pinsHit = function(arg) {
   } else {
     this.scores.push(arg);
   }
+
+  this._bonusChecker();
+  this._calculateScore();
 }
 
-Bowling.prototype.bonus_checker = function(){
+Bowling.prototype._bonusChecker = function(){
 
   if(this.bonus && this.scores[index+2]){
     var bonus = this.scores[index+1] + this.scores[index+2];
@@ -25,13 +28,13 @@ Bowling.prototype.bonus_checker = function(){
     }
 }
 
-Bowling.prototype.calculateScore = function(){
+Bowling.prototype._calculateScore = function(){
   this.score = this.scores.reduce(function(prev_score, curr_score){
     return prev_score + curr_score;
   });
 }
 
-Bowling.prototype.framer = function(){
+Bowling.prototype._framer = function(){
 
   for (e in this.scores){
 

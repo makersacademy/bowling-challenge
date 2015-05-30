@@ -13,7 +13,7 @@ describe('Bowling Scorecard', function(){
       bowling.pinsHit(7);
       bowling.pinsHit(1);
 
-      bowling.calculateScore();
+      // bowling.calculateScore();
 
       expect(bowling.score).toEqual(8);
 
@@ -28,9 +28,9 @@ describe('Bowling Scorecard', function(){
       bowling.pinsHit(5);
       bowling.pinsHit(2); //frame2
 
-      bowling.bonus_checker();
+      // bowling.bonus_checker();
 
-      bowling.calculateScore();
+      // bowling.calculateScore();
 
       expect(bowling.score).toEqual(24); //as opposed to 17
 

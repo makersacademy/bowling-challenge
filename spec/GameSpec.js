@@ -85,8 +85,16 @@ describe("Bonus points: spares, strikes, 10th frame", function() {
     game.roll(6);
     game.roll(4);
     game.roll(3);
-    expect(game.score).toEqual(16);
+    game.roll(3);
+    expect(game.score).toEqual(19);
   });
 
+  xit("should score next 2 rolls for a strike", function(){
+    game = new Game();
+    game.roll(10);
+    game.roll(3);
+    game.roll(1);
+    expect(game.score).toEqual(18);
+  });
 
 });

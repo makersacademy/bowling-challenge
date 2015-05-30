@@ -44,7 +44,7 @@ Game.prototype.calculateScore = function (pinsDown) {
     if (this.frame == 1) {
       this.score += pinsDown;
     } else {
-      if (this.rolls[this.frame - 2].reduce(function(a, b){return a+b;}) == 10){
+      if (this.rolls[this.frame - 2].reduce(function(a, b){return a+b;}) == 10 && this.frameRoll == 1){
       this.score += 2 * pinsDown;
     } else {
       this.score += pinsDown;

@@ -5,7 +5,11 @@ function Game() {
 };
 
 Game.prototype.roll = function(pinsDown) {
-	if (this.frame > 10) {
+	if (pinsDown > 10) {
+    throw "Invalid roll (over 10)";
+  }
+
+  if (this.frame > 10) {
 		throw "Game Over";
 	}
 	this.score += pinsDown;

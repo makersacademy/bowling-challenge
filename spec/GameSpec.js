@@ -19,6 +19,13 @@ describe("Bowling Score Card", function() {
 		expect(game.score).toEqual(15);
 	});
 
+  it("doesn't allow rolls over 10", function(){
+    game = new Game();
+    expect(function(){
+      game.roll(11);
+    }).toThrow();
+  });
+
 	it("limits the game to 10 frames", function() {
 		game = new Game();
 		for (i = 0; i < 20; i++) {

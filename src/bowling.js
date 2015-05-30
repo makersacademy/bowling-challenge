@@ -35,14 +35,19 @@ Bowling.prototype.framer = function(){
 
   for (e in this.scores){
 
+    var next_space = this.scoresFrame.length-1;
+    var next_score = this.scores[e];
+
     if(e == 0){
-      this.scoresFrame.push([]); //create a new array for frame 1
-      this.scoresFrame[0].push(this.scores[e]); //push the first roll in
+      this.scoresFrame.push([]);
+      this.scoresFrame[0].push(next_score);
+      console.log(next_space);
     } else if( e % 2 == 0) {
-      this.scoresFrame.push([]); //new nested array
-      this.scoresFrame[this.scoresFrame.length-1].push(this.scores[e]); //put the
+      this.scoresFrame.push([]);
+      this.scoresFrame[this.scoresFrame.length-1].push(next_score);
+      //for some reason next_space doesn't work here
     } else {
-    this.scoresFrame[this.scoresFrame.length-1].push(this.scores[e]);
+      this.scoresFrame[next_space].push(next_score);
     }
   }
 }

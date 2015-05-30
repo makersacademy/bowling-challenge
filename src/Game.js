@@ -6,7 +6,7 @@ function Game() {
 };
 
 Game.prototype.roll = function(pinsDown) {
-  var count = this.frame;
+
 	if (pinsDown > 10) {
     throw "Invalid roll (over 10)";
   }
@@ -17,7 +17,7 @@ Game.prototype.roll = function(pinsDown) {
 
 	if (this.frameRoll == 1) {
     this.rolls.push([pinsDown]);
-    this.score += pinsDown;
+    this.calculateScore(pinsDown);
     if (pinsDown == 10) {
       this.frame += 1;
     } else {
@@ -30,10 +30,24 @@ Game.prototype.roll = function(pinsDown) {
     }  else  {
 
     this.rolls[this.frame - 1].push(pinsDown);
+    this.calculateScore(pinsDown);
 		this.frame += 1;
 		this.frameRoll = 1;
-    this.score += pinsDown;
+
   };
 	};
   return "Frame: " + this.frame + " Roll: " + this.frameRoll + " Score: " + this.score;
 };
+
+
+Game.prototype.calculateScore = function (pinsDown) {
+    if (this.frame == 1) {
+      this.score += pinsDown;
+    } else {
+      if (this.rolls[this.frame - 2].reduce(function(a, b){return a+b;}) == 10){
+      this.score += 2 * pinsDown;
+    } else {
+      this.score += pinsDown;
+    }
+    }
+  };

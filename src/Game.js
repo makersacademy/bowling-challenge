@@ -1,12 +1,18 @@
-function Game(){
-  this.score = 0;
-  this.rollCount = 0;
+function Game() {
+	this.frame = 1;
+	this.rollCount = 1;
+	this.score = 0;
 };
 
 Game.prototype.roll = function(pinsDown) {
-  this.score += pinsDown;
-  if (this.rollCount >= 20)  {
-    throw "Game Over";
-  }
-  this.rollCount += 1;
+	if (this.frame > 10) {
+		throw "Game Over";
+	}
+	this.score += pinsDown;
+	if (this.rollCount == 1) {
+		this.rollCount += 1;
+	} else {
+		this.frame += 1;
+		this.rollCount = 1;
+	};
 };

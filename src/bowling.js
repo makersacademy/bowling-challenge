@@ -2,9 +2,12 @@ function Bowling(){
   this.score;
   this.scores = [];
   this.bonus = 0;
+
+  this.scoresFrame = [];
 }
 
 Bowling.prototype.pinsHit = function(arg) {
+
   if(arg==10){
     this.bonus++ //increment the bonus count
     this.scores.push(arg);
@@ -12,12 +15,13 @@ Bowling.prototype.pinsHit = function(arg) {
   } else {
     this.scores.push(arg);
   }
+}
 
-  console.log(this.bonus);
+Bowling.prototype.bonus_checker = function(){
 
   if(this.bonus && this.scores[index+2]){
     var bonus = this.scores[index+1] + this.scores[index+2];
-    this.scores.push(bonus);
+    this.scores.push(bonus); //this handles the bonus for a strike
     }
 }
 
@@ -25,5 +29,21 @@ Bowling.prototype.calculateScore = function(){
   this.score = this.scores.reduce(function(prev_score, curr_score){
     return prev_score + curr_score;
   });
+}
+
+Bowling.prototype.framer = function(){
+
+  for (e in this.scores){
+
+    if(e == 0){
+      this.scoresFrame.push([]); //create a new array for frame 1
+      this.scoresFrame[0].push(this.scores[e]); //push the first roll in
+    } else if( e % 2 == 0) {
+      this.scoresFrame.push([]); //new nested array
+      this.scoresFrame[this.scoresFrame.length-1].push(this.scores[e]); //put the
+    } else {
+    this.scoresFrame[this.scoresFrame.length-1].push(this.scores[e]);
+    }
+  }
 }
 

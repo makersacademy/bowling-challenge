@@ -15,9 +15,28 @@ describe("Bowling Score Card", function() {
 		game.roll(5);
 		game.roll(5);
 		expect(game.frame).toEqual(3);
-		expect(game.rollCount).toEqual(1);
+		expect(game.frameRoll).toEqual(1);
 		expect(game.score).toEqual(15);
 	});
+
+  it("tracks score correctly with invalid rolls", function() {
+		game = new Game();
+		game.roll(3);
+    expect(function(){game.roll(8);}).toThrow();
+		game.roll(5);
+		expect(game.rolls).toEqual([[3,5]]);
+    expect(game.score).toEqual(8);
+	});
+
+  it("tracks pins down per frame", function() {
+		game = new Game();
+		game.roll(1);
+		game.roll(4);
+		game.roll(5);
+		game.roll(5);
+		expect(game.rolls).toEqual([[1,4],[5,5]]);
+	});
+
 
   it("doesn't allow rolls over 10", function(){
     game = new Game();
@@ -25,6 +44,15 @@ describe("Bowling Score Card", function() {
       game.roll(11);
     }).toThrow();
   });
+
+  it("doesn't allow over 10 points per frame", function(){
+    game = new Game();
+    game.roll(6);
+    expect(function(){
+      game.roll(5);
+    }).toThrow();
+  });
+
 
 	it("limits the game to 10 frames", function() {
 		game = new Game();
@@ -36,6 +64,5 @@ describe("Bowling Score Card", function() {
 		}).toThrow();
 	});
 
-
-
+  
 });

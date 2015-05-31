@@ -36,13 +36,21 @@ describe('Bowling', function() {
 
   describe('in the second frame...', function() {
 
-    // it('scores anything other than a spare or strike', function() {
-    //   bowling.firstBowl(2);
-    //   bowling.secondBowl(3);
-    //   bowling.firstBowl(4);
-    //   bowling.secondBowl(5);
-    //   expect(bowling.totalScore).toEqual([5,9]);
-    // });
+    it('scores anything other than a spare or strike', function() {
+      bowling.firstBowl(2);
+      bowling.secondBowl(3);
+      bowling.firstBowl(4);
+      bowling.secondBowl(5);
+      expect(bowling.totalScore).toEqual([5,9]);
+    });
+
+    it('scores a spare', function() {
+      bowling.firstBowl(5);
+      bowling.secondBowl(5);
+      bowling.firstBowl(4);
+      bowling.secondBowl(3);
+      expect(bowling.totalScore).toEqual([14,7]);
+    });
 
 
 

@@ -27,5 +27,37 @@ Plan
   >> Work through double strike complexity
   >> Get final frame working properly
   >> Build in some UI components
+    >> add in CSS files (bootstrap)
+    >> structure the basic 1 page
+      >> Button
+      >> Frame list (table?)
+      >> Total Score
+    >> Work on button to generate numbers populating table (use dummy data)
+    >> Work on button to generate actual random numbers when clicked (e.g. run method randomNumbers)
+    >> Sort out final frame issue (changes input)
+    >> Sort out basic formatting
+
+  Nice to haves
+  >> make the list of frames churn out horizontally
+  >> can show individual scores with each roll
+  >> adds in a '/' and a 'X' for those scores
+  >> add in a 'You got a half strike, or you got a Strike! congratulations message'
+  >> add dynamically generated text for frames e.g. frame 1, frame 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

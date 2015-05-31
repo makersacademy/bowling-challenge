@@ -131,6 +131,19 @@ describe('Scorecard', function(){
     scorecard.runFrame(10,10,6)
     expect(scorecard.totalScore).toEqual(146);
   });
+
+  it('can stop a game after 10 frames', function(){
+    for (var i = 0; i < 10; i++) {
+        scorecard.runFrame(10,0)
+      }
+    expect(function(){
+      scorecard.runFrame(10,0);}).toThrow("The Game is over");
+  });
+
+  it('can validate that two bowls cannot knock over more than 10 pins', function(){
+    expect(function(){
+      scorecard.runFrame(10,10);}).toThrow("Oops, try again");
+  });
 });
 
 

@@ -1,17 +1,20 @@
 player = new Player;
+var frames = 1;
 
 $(document).ready( function () {
-  $('#button-group input').click(function () {
-    var pins = $("form input[type=radio]:checked").val()
+  $('#button-group1 input').click(function () {
+    var pins1 = $("form input[type=radio]:checked").val();
     $("input:radio").removeAttr("checked");
-    // player.firstBowl(pins);
-
-
-
-    // player.secondBowl($('#bowl2').val());
-    $('#score1').html(pins);
-    // $('#score1').after().html('<input type="text" id="bowl1of2" placeholder="Did it!">');
-    // $('#score1').after().html('<input type="text" placeholder="And again!">');
+    player.firstBowl(pins1);
+    $('#hits').html(pins1);
+  });
+    $('#button-group2 input').click(function () {
+    var pins2 = $("form input[type=radio]:checked").val();
+    player.secondBowl(pins2);
+    $('#hits').html(pins2);
+    $('#score1').html(player.score.toString());
+    frames = player.score.length + 1;
+    $('#frames').html('Frame ' + frames);
   });
 
 });

@@ -70,4 +70,24 @@ describe('Scorecard', function(){
     scorecard.runFrame(2,3)
     expect(scorecard.totalScore).toEqual(42);
   });
+
+  it('can calculate 4 strikes in a row', function(){
+    for (var i = 0; i < 4; i++) {
+        scorecard.runFrame(10,0)
+      }
+    scorecard.runFrame(2,3)
+    expect(scorecard.totalScore).toEqual(102);
+  });
+
+  it('can calculate 9 strikes in a row up to final frame', function() {
+      for (var i = 0; i < 9; i++) {
+        scorecard.runFrame(10,0)
+      }
+      scorecard.runFrame(2,3)
+      expect(scorecard.totalScore).toEqual(252);
+  });
 });
+
+
+
+

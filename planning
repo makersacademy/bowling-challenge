@@ -23,15 +23,9 @@ Scorecard specs
   >> I want to be able to see my individual frame scores in a UI
   >> I want to be able to see my cumulative frame scores in a UI
 
-Scorecard.prototype.frameScore = function(a, b) {
-  a + b
-}
-
-Rolls >> [[1,2], [10,0], [3,4], [5,5]]
-  >>
-
 Plan
-  >> File structure
-  >> Set-up first test
-  >> Set-up basic object
-  >>
+  >> Work through double strike complexity
+  >> Get final frame working properly
+  >> Build in some UI components
+
+

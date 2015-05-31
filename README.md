@@ -39,3 +39,11 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
 Interactive Scorecard: https://docs.google.com/spreadsheets/d/1MlpsjrKHkKiQnLaMZhlZOcej9qEkbt7tXDd8V_tZnJA/edit?usp=sharing
+
+## Core Functionality (thoughts):
+
+- Each frame an array of two elements, can be [X,nil], [n,S], [n,n] - S = spare, n = number from 0-9
+- Spare = 10 + next go
+- Strike = 10 + next two goes (go ends)
+- Strike or Spare in 10th frame rewards one extra ball
+- 

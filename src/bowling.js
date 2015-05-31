@@ -8,7 +8,7 @@ function Player() {
 };
 
 Player.prototype.firstBowl = function(pins) {
-
+  pins = parseInt(pins)
   if(this.errorHandle(pins) == null) { this.firstHit = pins };
   if(pins == 10) {
     this.secondHit = 0;
@@ -17,8 +17,9 @@ Player.prototype.firstBowl = function(pins) {
 };
 
 Player.prototype.secondBowl = function(pins) {
+  pins = parseInt(pins)
   if(this.errorHandle(pins) == null) { this.secondHit = pins };
-  this.calculateScore(  );
+  this.calculateScore();
 };
 
 Player.prototype.extraBowl = function(pins) {
@@ -66,7 +67,7 @@ Player.prototype.addBonus = function() {
   // adds correct bonus if player has scored a spare
   else if(this.isSpare == true) {
     this.score[(x - 2)] += this.firstHit;
-    this.gisSpare = false;
+    this.isSpare = false;
   }
 };
 

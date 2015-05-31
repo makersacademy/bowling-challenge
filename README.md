@@ -43,16 +43,13 @@ Bowling has a unique scoring system which keeps track not only of the current pi
  - Tests will be creates as a player bowling
       FIRST SET OF TESTS
       Feature: I would like to bowl a ten pin bowling game
-      [/]  Test - there are 10 pins set up
-      []  Test - I can bowl a 1 (card logs the score)
-      []  Test - I can bowl a 3 (card logs the score)
-      []  Test - I can bowl a 5 (card logs the score)
-      []  Test - I can  bowl a 9 (card logs the score)
+      [/]  Test - There are 10 pins set up
+      [/]  Test - There is an empty scorecard
+      [/]  Test - I can bowl a 5 (card logs the score as 5)
+      [/]  Test - I can bowl a 3 (card logs the score 8)
+      [/]  Test - I can bowl 2 games and card calculates the score
+      [/]  Test - I cannot bowl more than 10
       []  Test - I can bowl a strike
-      []  Test - I can bowl 2 games and card calculates the score
-      []  Test - I bowl 1 and a 5
-      []  Test - I bowl 2 and a 7
-      []  Test - I bowl a 6 and a 2
       []  Test - I bowl a spare
 
 

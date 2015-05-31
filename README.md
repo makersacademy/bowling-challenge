@@ -1,54 +1,48 @@
-
 Bowling Challenge
 =================
 
-    Test time: Friday, the entire day and the weekend if you need it.
-    Feel free to use Google, your notes, and your books.
+Summary
+=================
 
-Task: 
------
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
+* Create a scoreboard that can count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+[Live Bowling Game](https://peaceful-sierra-7402.herokuapp.com/)
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
+How to run
+----
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+* For web viewing, simply follow the link to the website hosted on heroku
+* For local use, clone or fork the repo to your local machine
+* Install sinatra and shotgun gems to view on your local host
+* Tests can be run by installing jasmine and opening the SpecRunner.html in your local browser
 
 
-### Optional Extra
+Checklist
+----
 
-Create a nice interactive animated interface with jQuery.
+- [x] Scores a basic 10 frame, 20 roll game (no half strikes or strikes)
+- [x] Handles scoring for half strikes
+- [x] Handles scoring for strikes
+- [x] Handles additional rolls in final frame
+- [x] Calculates a perfect score
+- [x] Provides a simple, tabular UI where user can bowl with a randomised number of pins knocked down with each click and have score tracked
 
-## Strikes
+Technologies used
+----
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+* Production - Javascript, jQuery, Ruby, CSS (using Bootstrap),HTML, Sinatra, Heroku
+* Testing - Jasmine, Rubocop, Coveralls
 
-## Spares
+Screenshots
+----
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+![Front Page](https://github.com/AlexHandy1/bowling-challenge/blob/master/public/images/Bowling-challenge-front-page.png)
 
-## 10th frame
+Further Features
+----
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-## Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-## Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+* Implement full front-end feature testing - currently just unit testing underlying system
+* Include more advanced graphical interface for tracking score e.g. X for a strike, / for half strike, individual roll scores etc
+* Develop a more robust random score generator allowing greater probability for high scoring

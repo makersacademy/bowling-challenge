@@ -66,7 +66,7 @@ Player.prototype.addBonus = function() {
   // adds correct bonus if player has scored a spare
   else if(this.isSpare == true) {
     this.score[(x - 2)] += this.firstHit;
-    this.isSpare = false;
+    this.gisSpare = false;
   }
 };
 

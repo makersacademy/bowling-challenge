@@ -16,6 +16,11 @@ describe('board can record points for',function(){
     expect(game.frameScore()).toEqual(10);
    });
 
+   it('a spare', function(){
+    game.spare();
+    expect(game.frameScore()).toEqual(10);
+   });
+
     });
 });
 

@@ -35,8 +35,16 @@ describe('Bowling', function () {
       for(var i = 0; i < arrLength; i++) {
         game.rollResult(testResults[i]);
       };
-      expect(game.scoresheet['Frame 10']['Roll 2']).toBe(0);
       expect(game.score).toBe(0);
+    });
+
+    it('roll a strike, then a 2 then 3, and receive bonus of 5 on former frame', function() {
+      var testResults = [10,2,3];
+      var arrLength = testResults.length;
+      for(var i = 0; i < arrLength; i++) {
+        game.rollResult(testResults[i]);
+      };
+      expect(game.scoresheet['Frame 1']['Bonus']).toBe(5);
     });
   });
 

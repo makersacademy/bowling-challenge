@@ -15,7 +15,7 @@ $(document).ready( function(){
     } else
       scorecard.runFrame(bowl1,bowl2);
 
-    $('#frames').append('<li>' + scorecard.frameScore + '</li>');
+    $('#frames').append('<tr> <td>' + scorecard.frameCounter + '</td>' + '<td>' + scorecard.frameScore + '</td></tr>');
     $('#total').html(scorecard.totalScore);
   });
 });

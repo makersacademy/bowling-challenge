@@ -9,15 +9,25 @@
 
  <body>
 
-     <div class='container'>
-        <input id='bowl' type='button' value='Lets Bowl!'>
+     <div class='container' id='top'>
+       <div class='header clearfix'>
+          <div class='jumbotron'>
+            <p id='centre'> <input id='bowl' class='btn btn-lg btn-success'type='button' value='Lets Bowl!'> </p>
+            <br>
 
-        <ol id='frames'>
-        </ol>
+            <table id='frames'class="table table-condensed">
+            <th> Frame </th>
+            <th> Score </th>
+            </table>
 
-        <div> Your score is...</div>
-        <div id='total'></div>
-     </div>
+            <p> Your total score is...</p>
+            <p id='total'></p>
+            <br>
+            <br>
+            <p> <a class='btn btn-success'href='/'> Click to play again</a>
+          </div>
+      </div>
+    </div>
 
     <script src='js/src/Scorecard.js'></script>
     <script src='js/src/ScorecardUI.js'></script>

@@ -7,6 +7,7 @@ function Scorecard(){
   this.halfStrike = false;
   this.Strike = false;
   this.doubleStrike = false;
+  this.frameCounter = 0;
 };
 
 Scorecard.prototype.runFrame = function(bowl1, bowl2, extraBowl) {
@@ -25,6 +26,7 @@ Scorecard.prototype.runFrame = function(bowl1, bowl2, extraBowl) {
   (this.bowls).push([bowl1, bowl2]);
   this.bonusScore = 0;
   this.extraBonus = 0;
+  this.frameCounter += 1;
 };
 
 Scorecard.prototype.calcFrame = function(bowl1, bowl2) {

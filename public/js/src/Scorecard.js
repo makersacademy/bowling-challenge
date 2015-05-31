@@ -9,14 +9,15 @@ function Scorecard(){
   this.doubleStrike = false;
 };
 
-Scorecard.prototype.runFrame = function(bowl1, bowl2) {
+Scorecard.prototype.runFrame = function(bowl1, bowl2, extraBowl) {
+  extraBowl = typeof extraBowl !== 'undefined' ? extraBowl : 0;
   if(this.doubleStrike) this.calcDoubleStrike(bowl1);
   if(this.halfStrike) this.calcHalfStrike(bowl1);
   if(this.Strike) this.calcStrike(bowl1, bowl2);
   this.frameScore = this.calcFrame(bowl1, bowl2);
   if(this.frameScore == 10) this.halfStrike = true;
   if(bowl1 == 10) this.Strike = true;
-  this.totalScore += this.frameScore + this.bonusScore + this.extraBonus;
+  this.totalScore += this.frameScore + this.bonusScore + this.extraBonus + extraBowl;
   (this.bowls).push([bowl1, bowl2]);
   this.bonusScore = 0;
   this.extraBonus = 0;

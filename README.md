@@ -17,6 +17,10 @@ My submission for the bowling challenge. This follows all the point scoring rule
 - Clone the repo, run bundle
 - Run rackup in the terminal
 - Open http://localhost:9292 in the browser
+- To run the tests, open SpecRunner.html
+
+Also available at https://intense-depths-5128.herokuapp.com/
+
 
 ## Job List
 

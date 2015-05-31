@@ -1,4 +1,4 @@
-BOWLING CHALLENGE
+## BOWLING CHALLENGE
 =================
 
 I am making a scorecard in Javascript which handles the tricky task of scoring a game of tenpin bowling using TDD and OOP techniques.
@@ -6,14 +6,12 @@ I am making a scorecard in Javascript which handles the tricky task of scoring a
 ![men of bowling image](http://okcmod.com/wp-content/uploads/2012/10/Men-Bowling-vintage.jpg)
 
 # Design up front
-=================
 
 The scorecard will be built much like a game of bowling itself; a series of frames, adding to a running total. Once I've made one frame, I will aim to build logic for scoring a strike or a spare. Next up will be the running total functionality, to enable multiple frames to be played.
 
 After this I figure I'll add separate logic to leep the total accurate based on the separate rules for a spare and a strike (they're complicated, go here: http://en.wikipedia.org/wiki/Ten-pin_bowling#Scoring)
 
 ## USER STORIES
-===============
 ```
 - As a bowling person
 - In order to keep score

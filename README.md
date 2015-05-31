@@ -3,40 +3,22 @@ Bowling Challenge
 
 ## Synopsis
 
-My submission for the bowling challenge.
-
-![NAME_OF_IMAGE](http://ENTER_URL)
+My submission for the bowling challenge. This follows all the point scoring rules, apart from handling the tenth frame. It works in my javascript, but I did not have enough time to implement it into the UI. It is TTD with Jasmine on the unit side. However, I did not manage to find out how to use Jasmine with the UI, so there are no feature tests.
 
 ## Technologies Used
 
-- LANGUAGE_ONE
-- LANGUAGE_TWO
-- FRAMEWORK
-- TESTING SUITES
+- Javascript, jQuery
+- HTML, CSS
+- Sinatra
+- Jasmine
+
+## To Run
+
+- Clone the repo, run bundle
+- Run rackup in the terminal
+- Open http://localhost:9292 in the browser
 
 ## Job List
 
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-
-## Favourite Code Snippet
-
-~~~
- TODO: paste code here
-~~~
-
-## Collaborators
-
-- NAME_ONE (http://www.github.com/USERNAME)
-- NAME_TWO (http://www.github.com/USERNAME)
-
-## Still to complete/refactor
-
-- [ ]
-- [ ]
-
-## Takeaway
-
-TODO: Enter a personal reflection and/or things you learnt
+- Still need to test the UI
+- Implement the tenth frame bonuses

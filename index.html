@@ -1,31 +1,31 @@
+<!DOCTYPE html>
 <html>
 <head>
   <script src='./lib/jquery-1.11.3.min.js'></script>
   <script src='src/bowling.js'></script>
   <script src='src/application.js'></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://bootswatch.com/slate/bootstrap.min.css">
 </head>
-<body>
-  <center>
-
-<h1><div id='frames'>
-  Frame 1
-</div></h1>
-<br>
-Bowl!
-<form id ='button-group1'>
-  <input type="radio" value="0">0</button>
-  <input type="radio" value="1">1</button>
-  <input type="radio" value="2">2</button>
-  <input type="radio" value="3">3</button>
-  <input type="radio" value="4">4</button>
-  <input type="radio" value="5">5</button>
-  <input type="radio" value="6">6</button>
-  <input type="radio" value="7">7</button>
-  <input type="radio" value="8">8</button>
-  <input type="radio" value="9">9</button>
-  <input type="radio" value="10">10</button>
-</form>
+<header>
+<h1><center>Bowling Challenge</center></h1>
+</header>
+<body><center>
+<h2><div id='frames'>Frame 1</div></h2>
+<fieldset style="background-color:#999999; width:300px; border: solid 10px #080808;">
+  <h2><form id ='button-group1'>
+    <input type="radio" value="0"> 0</button>
+    <input type="radio" value="1"> 1</button>
+    <input type="radio" value="2"> 2</button>
+    <input type="radio" value="3"> 3</button>
+    <input type="radio" value="4"> 4</button>
+    <input type="radio" value="5"> 5</button>
+    <input type="radio" value="6"> 6</button>
+    <input type="radio" value="7"> 7</button>
+    <input type="radio" value="8"> 8</button>
+    <input type="radio" value="9"> 9</button>
+    <input type="radio" value="10"> 10</button>
+  </form></h2>
+</fieldset>
 <br>
 <form class='form-inline'>
   <input type='text' id='hits0' size='2'>
@@ -49,6 +49,7 @@ Bowl!
   <input type='text' id='hits18' size='2'>
   <input type='text' id='hits19' size='2'>
 </form>
+<br>
 <form class='form-inline'>
   <input type='text' id='score0' size='2'>--
   <input type='text' id='score1' size='2'>--
@@ -61,9 +62,10 @@ Bowl!
   <input type='text' id='score8' size='2'>--
   <input type='text' id='score9' size='2'>
 </form>
-Total Score
+<h4>Total Score</h4>
 <input type='text' id='total' size='3'>
-<a href="/"><button>New Game</button></a>
-</center>
-</body>
+<br>
+<br>
+<a href="/"><button class="btn btn-success">New Game</button></a>
+</center></body>
 </html>

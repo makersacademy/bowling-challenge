@@ -21,7 +21,7 @@ function calculateTotalPoints() {
 $(document).ready( function () {
   var x = 0;
   var frames = 0;
-
+  $("input:text").attr('disabled',true);
   $('#button-group1 input').click(function () {
     var pins = $("form input[type=radio]:checked").val();
     if(player.firstHit == null) {

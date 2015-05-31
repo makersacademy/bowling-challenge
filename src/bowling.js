@@ -1,7 +1,7 @@
 function Player() {
   this.score = [];
-  this.firstHit = 0;
-  this.secondHit = 0;
+  this.firstHit = null;
+  this.secondHit = null;
   this.extraGo = 0;
   this.isSpare = false;
   this.strikeCount = 0;
@@ -84,8 +84,8 @@ Player.prototype.nextRoundBonus = function() {
 };
 
 Player.prototype.resetHits = function() {
-  this.firstHit = 0;
-  this.secondHit = 0;
+  this.firstHit = null;
+  this.secondHit = null;
 };
 
 Player.prototype.tenthFrame = function() {

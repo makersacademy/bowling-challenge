@@ -29,7 +29,7 @@ describe('Bowling', function () {
       expect(game.frameCount).toBe(2);
     });
 
-    it('roll only gutterballs and receive final score of 0', function() {
+    it('roll 20 gutterballs (total: 0)', function() {
       var testResults = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
       var arrLength = testResults.length;
       for(var i = 0; i < arrLength; i++) {
@@ -75,6 +75,69 @@ describe('Bowling', function () {
         game.rollResult(testResults[i]);
       };
       expect(game.score).toBe(300);
+    });
+
+    it('roll all strikes but 1, 9 and 10 in final frame (total: 271)', function() {
+      var testResults = [10,10,10,10,10,10,10,10,10,1,9,10];
+      var arrLength = testResults.length;
+      for(var i = 0; i < arrLength; i++) {
+        game.rollResult(testResults[i]);
+      };
+      expect(game.score).toBe(271);
+    });
+
+    it('roll all strikes but 1 and 1 in final frame (total: 245)', function() {
+      var testResults = [10,10,10,10,10,10,10,10,10,1,1];
+      var arrLength = testResults.length;
+      for(var i = 0; i < arrLength; i++) {
+        game.rollResult(testResults[i]);
+      };
+      expect(game.score).toBe(245);
+    });
+
+    it('roll nine frames and see game is not yet over', function() {
+      var testResults = [10,10,10,10,10,10,10,10,10];
+      var arrLength = testResults.length;
+      for(var i = 0; i < arrLength; i++) {
+        game.rollResult(testResults[i]);
+      };
+      expect(game.end).toBe(false);
+    });
+
+    it('roll nine frames and then 5 and 5 in final frame and see game is not yet over', function() {
+      var testResults = [10,10,10,10,10,10,10,10,10,5,5];
+      var arrLength = testResults.length;
+      for(var i = 0; i < arrLength; i++) {
+        game.rollResult(testResults[i]);
+      };
+      expect(game.end).toBe(false);
+    });
+
+    it('roll ten frames (1 and 1 in final frame) and see game is over', function () {
+      var testResults = [10,10,10,10,10,10,10,10,10,1,1];
+      var arrLength = testResults.length;
+      for(var i = 0; i < arrLength; i++) {
+        game.rollResult(testResults[i]);
+      };
+      expect(game.end).toBe(true);
+    });
+
+    it('roll ten frames (5, 5 and 10 in final frame) and see game is over', function() {
+      var testResults = [10,10,10,10,10,10,10,10,10,5,5,10];
+      var arrLength = testResults.length;
+      for(var i = 0; i < arrLength; i++) {
+        game.rollResult(testResults[i]);
+      };
+      expect(game.end).toBe(true);
+    });
+
+    it('roll ten frames (10, 10 and 10 in final frame) and see game is over', function () {
+      var testResults = [10,10,10,10,10,10,10,10,10,10,10,10];
+      var arrLength = testResults.length;
+      for(var i = 0; i < arrLength; i++) {
+        game.rollResult(testResults[i]);
+      };
+      expect(game.end).toBe(true);
     });
 
   });

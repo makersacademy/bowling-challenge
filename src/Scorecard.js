@@ -1,6 +1,6 @@
 function Player (){
   this.scorecard = [];
-  this.points = 0;
+  this.points = [];
   this.bonus = 0;
   this.firstbowl = 0;
   this.secondbowl = 0;
@@ -14,7 +14,6 @@ Player.prototype.bowl1 = function(pins) {
   this.frames ++;
   if (pins == 10) {
     this.strike = true;
-    this.bonus += pins;
   };
   this.tracker();
 };
@@ -35,18 +34,17 @@ Player.prototype.tracker = function() {
 
   if (this.strike) {
     this.strike = false;
-    this.bonus += this.firstbowl + this.secondbowl;
+    this.points.push([this.firstbowl, 0]);
     if ((this.frames == 1) || (this.frames == 2)) {
       this.scorecard[position] = 0;
-
     } else {
-        this.scorecard[this.frames - 3] = this.bonus;
+        this.scorecard[this.frames - 3] = this.points[0];
       };
 
   } else if (this.spare) {
     this.spare = false;
+    this.points.push([this.firstbowl, this.secondbowl]);
     if (this.frames == 1) {
-      this.bonus =+ this.firstbowl + this.secondbowl;
       this.scorecard[position] = 0;
     } else {
       this.bonus =+ this.firstbowl + this.secondbowl;

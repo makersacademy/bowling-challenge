@@ -12,31 +12,42 @@ Game.prototype.rollResult = function(pinsKnocked) {
     }
     else if(this.rollCount === 2) {
       this.logRoll2(pinsKnocked);
+    } else {
+      this.logRoll3(pinsKnocked);
     };
   };
 };
 
 Game.prototype.logRoll1 = function(pinsKnocked) {
   this.scoresheet[this.frameCount] = [];
-  this.scoresheet[this.frameCount]['Bonus'] = null;
+  if(this.frameCount < 10) {
+    this.scoresheet[this.frameCount]['Bonus'] = null;
+  }
   this.score += pinsKnocked;
   this.scoresheet[this.frameCount][this.rollCount] = pinsKnocked;
   this.spareBonus();
-  if(pinsKnocked < 10) {
-    this.rollCount = 2;
-  }
-  else {
-    this.rollCount = 2;
+  this.rollCount = 2;
+  if((pinsKnocked === 10) && (this.frameCount < 10)) {
     this.logRoll2(null);
-  }
+  };
 };
 
 Game.prototype.logRoll2 = function(pinsKnocked) {
   this.scoresheet[this.frameCount][this.rollCount] = pinsKnocked;
   this.score += pinsKnocked;
   this.strikeBonus();
-  this.rollCount = 1;
-  this.frameCount += 1;
+  if(this.frameCount < 10) {
+    this.rollCount = 1;
+    this.frameCount += 1;
+  } else {
+    this.rollCount = 3;
+  };
+};
+
+Game.prototype.logRoll3 = function(pinsKnocked) {
+  this.scoresheet[this.frameCount][this.rollCount] = pinsKnocked;
+  this.score += pinsKnocked;
+  console.log(this.scoresheet);
 };
 
 Game.prototype.spareBonus = function() {
@@ -56,6 +67,18 @@ Game.prototype.strikeBonus = function() {
     this.score += bonus;
   }
   else if((this.frameCount > 1) && (this.scoresheet[currFrame-1][1] === 10) && (this.scoresheet[currFrame][1] < 10)) {
+    var bonus = this.scoresheet[currFrame][1] + this.scoresheet[currFrame][2];
+    this.scoresheet[currFrame-1]['Bonus'] = bonus;
+    this.score += bonus;
+  };
+  if(this.frameCount === 10) {
+    this.tenthFrameStrikeBonus();
+  };
+};
+
+Game.prototype.tenthFrameStrikeBonus = function() {
+  var currFrame = this.frameCount;
+  if((this.scoresheet[currFrame-1][1] === 10)) {
     var bonus = this.scoresheet[currFrame][1] + this.scoresheet[currFrame][2];
     this.scoresheet[currFrame-1]['Bonus'] = bonus;
     this.score += bonus;

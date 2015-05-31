@@ -68,6 +68,15 @@ describe('Bowling', function () {
       expect(game.score).toBe(50);
     });
 
+    it('roll a perfect game (total: 300)', function() {
+      var testResults = [10,10,10,10,10,10,10,10,10,10,10,10];
+      var arrLength = testResults.length;
+      for(var i = 0; i < arrLength; i++) {
+        game.rollResult(testResults[i]);
+      };
+      expect(game.score).toBe(300);
+    });
+
   });
 
 });

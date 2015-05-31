@@ -1,7 +1,20 @@
+BOWLING CHALLENGE
+=================
+
+I am making a scorecard in Javascript which handles the tricky task of scoring a game of tenpin bowling using TDD and OOP techniques.
+
+![men of bowling image](http://okcmod.com/wp-content/uploads/2012/10/Men-Bowling-vintage.jpg)
+
+# Design up front
+=================
+
+The scorecard will be built much like a game of bowling itself; a series of frames, adding to a running total. Once I've made one frame, I will aim to build logic for scoring a strike or a spare. Next up will be the running total functionality, to enable multiple frames to be played.
+
+After this I figure I'll add separate logic to leep the total accurate based on the separate rules for a spare and a strike (they're complicated, go here: http://en.wikipedia.org/wiki/Ten-pin_bowling#Scoring)
+
+## USER STORIES
+===============
 ```
-~ User stories
-
-
 - As a bowling person
 - In order to keep score
 - I want the game to register how many skittles I've knocked down after 2 bowls
@@ -15,8 +28,20 @@
 - I want to be able to register a strike
 
 - As a bowling person
+- So I can kep playing
+- I want to start a new frame after the first
+
+- As a bowling person
+- In order to keep score
+- I want to keep a running total of each frame
+
+- As a bowling person
+- So I finish my game before the bowling alley closes
+- I Want to play a maximum of 10 frames
+
+- As a bowling person
 - In order to keep the score in the event of a spare
-- i want to add a bonus score of up to 10 from the next bowl
+- i want to add a bonus score of up to 10 to the running total from the next bowl
 
 - As a bowling person
 - In order to keep the score in the event of a strike
@@ -26,6 +51,11 @@
 - To finish the game properly
 - I want to have another frame
 ```
+
+
+
+
+_(original challenge text follows below)_
 
 Bowling Challenge
 =================

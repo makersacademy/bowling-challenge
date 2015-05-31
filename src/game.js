@@ -4,6 +4,7 @@ function Game(){
   this.sparePoints = 0;
   this.stikePresent = false;
   this.sparePresent = false;
+  this.frameBonus = 0
 };
 
 Game.prototype.roll = function(bowl1, bowl2) {
@@ -21,8 +22,14 @@ Game.prototype.roll = function(bowl1, bowl2) {
     this.sparePresent = true;
   };
 
-  Game.prototype.frameScore = function() {
-    if(this.rollPoints > 0) return this.rollPoints;
-    if(this.strikePresent == true) return this.strikePoints;
-    if(this.sparePresent == true) return this.sparePoints;
+  Game.prototype.rollBonus = function(bowl1) {
+    if(this.rollPoints == 10) return this.frameBonus = bowl1;
+  };
+
+  Game.prototype.strikeBonus = function(bowl1, bowl2) {
+    if(this.strikePresent == true) return this.frameBonus = bowl1 + bowl2;
+  };
+
+  Game.prototype.spareBonus = function(bowl1) {
+    if(this.sparePresent == true) return this.frameBonus = bowl1;
   };

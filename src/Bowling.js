@@ -1,28 +1,35 @@
 var Bowling = function() {
   this.score1 = 0;
   this.score2 = 0;
-  this.totalScore = 0;
+  this.totalScore = [];
 
 
 };
 
 Bowling.prototype.firstBowl = function(pins) {
-  this.score1 += pins;
-  console.log(this.score1);
-  this.score2 = 0;
-  this.calculateScore();
+  pins = parseInt(pins);
+  this.score1 = pins;
+  if (pins === 10) {
+    this.score2 = 0;
+    this.calculateScore();
+  }
 
 
 };
 
 Bowling.prototype.secondBowl = function(pins) {
-  this.score2 += pins;
+  pins = parseInt(pins);
+  this.score2 = pins;
   this.calculateScore();
+
 
 };
 
 
-Bowling.prototype.calculateScore = function(num1,num2) {
-  this.totalScore = (this.score1 + this.score2);
-
+Bowling.prototype.calculateScore = function() {
+  var result = (this.score1 + this.score2);
+  console.log("what is result: " + result);
+  this.totalScore.push(result);
+  this.score1 = 0;
+  this.score2 = 0;
 };

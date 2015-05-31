@@ -1,3 +1,29 @@
+~ User stories
+
+
+- As a bowling person
+- In order to keep score
+- I want the game to register how many skittles I've knocked down after 2 bowls
+
+- As a bowling person
+- So I can keep the score
+- I want to be able to knock down all the pins in 2 and get a spare
+
+- As a bowling person
+- So I can keep the score when I knock down all the pins in 1
+- I want to be able to register a strike
+
+- As a bowling person
+- In order to keep the score in the event of a spare
+- i want to add a bonus score of up to 10 from the next bowl
+
+- As a bowling person
+- In order to keep the score in the event of a strike
+- i want to add a bonus score of up to 10 from the next 2 bowls
+
+- As a bowling person
+- To finish the game properly
+- I want to have another frame
 
 Bowling Challenge
 =================
@@ -5,14 +31,14 @@ Bowling Challenge
     Test time: Friday, the entire day and the weekend if you need it.
     Feel free to use Google, your notes, and your books.
 
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
 * Forking this repo

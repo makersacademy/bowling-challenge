@@ -17,6 +17,8 @@ describe('Bowling Scorecard', function(){
 
     });
 
+  });
+
   describe('more complicated scoring', function(){
 
     it('can give bonuses for spikes', function(){
@@ -26,9 +28,9 @@ describe('Bowling Scorecard', function(){
       bowling.pinsHit(5);
       bowling.pinsHit(2); //frame2
 
-      expect(bowling.score).toEqual(24); //as opposed to 17
+      console.log(bowling.score);
 
-    });
+      expect(bowling.score).toEqual(24); //as opposed to 17
 
     });
 

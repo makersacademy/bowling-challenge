@@ -11,7 +11,7 @@ Bowling.prototype.pinsHit = function(arg) {
   if(arg==10){
     this.bonus++ //increment the bonus count
     this.scores.push(arg);
-    index = this.scores.indexOf(arg);
+    index = this.scores.length - 1; //current location of the array
   } else {
     this.scores.push(arg);
   }
@@ -26,6 +26,7 @@ Bowling.prototype._bonusChecker = function(){
   if(this.bonus && this.scores[index+2]){
     var bonus = this.scores[index+1] + this.scores[index+2];
     this.scores.push(bonus); //this handles the bonus for a strike
+    this.bonus = 0;
     }
 }
 

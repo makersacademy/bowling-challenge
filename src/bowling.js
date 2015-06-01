@@ -18,6 +18,7 @@ Bowling.prototype.pinsHit = function(arg) {
 
   this._bonusChecker();
   this._calculateScore();
+  this._framer();
 }
 
 Bowling.prototype._bonusChecker = function(){
@@ -36,22 +37,18 @@ Bowling.prototype._calculateScore = function(){
 
 Bowling.prototype._framer = function(){
 
-  for (e in this.scores){
+  var i;
+  var k;
 
-    var next_space = this.scoresFrame.length-1;
-    var next_score = this.scores[e];
-
-    if(e == 0){
-      this.scoresFrame.push([]);
-      this.scoresFrame[0].push(next_score);
-      console.log(next_space);
-    } else if( e % 2 == 0) {
-      this.scoresFrame.push([]);
-      this.scoresFrame[this.scoresFrame.length-1].push(next_score);
-      //for some reason next_space doesn't work here
-    } else {
-      this.scoresFrame[next_space].push(next_score);
+  for (i = 0, k = -1; i < this.scores.length; i++) {
+    if (i % 2 === 0) {
+        k++;
+        this.scoresFrame[k] = [];
     }
+
+    this.scoresFrame[k].push(this.scores[i]);
   }
+
+  return this.scoresFrame;
 }
 

@@ -16,6 +16,8 @@ describe('Bowling game frame structure', function(){
 
     bowling.pinsHit(4);
 
+    bowling.scoreGame(); //ugh so yucky
+
     expect(bowling.scoresFrame).toEqual([[3,4],[5,1],[4]]);
 
   })

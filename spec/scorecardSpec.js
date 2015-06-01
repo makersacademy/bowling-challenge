@@ -13,6 +13,8 @@ describe('Bowling Scorecard', function(){
       bowling.pinsHit(7);
       bowling.pinsHit(1);
 
+      bowling.scoreGame();
+
       expect(bowling.score).toEqual(8);
 
     });
@@ -28,11 +30,25 @@ describe('Bowling Scorecard', function(){
       bowling.pinsHit(5);
       bowling.pinsHit(2); //frame2
 
-      console.log(bowling.score);
+      bowling.scoreGame();
 
       expect(bowling.score).toEqual(24); //as opposed to 17
 
     });
+
+    it('can also give bonuses for spares', function(){
+
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+
+
+      bowling.pinsHit(6);
+      bowling.pinsHit(1);
+
+      bowling.scoreGame();
+
+      expect(bowling.score).toEqual(23); //as opposed to 17
+    })
 
   });
 

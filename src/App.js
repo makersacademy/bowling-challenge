@@ -12,21 +12,19 @@ function press(n) {
     var currFrame = (scoresheet.frames.length - 1);
     var rowRoll1 = document.getElementsByTagName('tr')[2];
     rowRoll1.getElementsByTagName('td')[currFrame+1].innerHTML = n;
-//------------------------------------------------------------------------------------
     var accumulator = 0;
     for(var i = 0; i < (currFrame+1); i++) {
-      var rowMonkey = document.getElementsByTagName('tr')[5];
+      var rowGameTotal = document.getElementsByTagName('tr')[6];
       accumulator += scoresheet.frameScoreDisplay(i)
       if(scoresheet.frameScoreDisplay(i) != null) {
-        rowMonkey.getElementsByTagName('td')[i+1].innerHTML = accumulator;
+        rowGameTotal.getElementsByTagName('td')[i+1].innerHTML = accumulator;
       } else {
-        rowMonkey.getElementsByTagName('td')[i+1].innerHTML = null;
+        rowGameTotal.getElementsByTagName('td')[i+1].innerHTML = null;
         console.log('enter null 1');
       }
     }
-//------------------------------------------------------------------------------------
     for(var i = 0; i < (currFrame+1); i++) {
-      var rowFrameTotal = document.getElementsByTagName('tr')[6];
+      var rowFrameTotal = document.getElementsByTagName('tr')[5];
       rowFrameTotal.getElementsByTagName('td')[i+1].innerHTML = scoresheet.frameScoreDisplay(i);
     }
     if(scoresheet.currFrameOver()) {
@@ -40,32 +38,25 @@ function press(n) {
     var rowRoll2 = document.getElementsByTagName('tr')[3];
     rowRoll2.getElementsByTagName('td')[currFrame+1].innerHTML = n;
     buttons(0);
-//------------------------------------------------------------------------------------
     var accumulator = 0;
     for(var i = 0; i < (currFrame+1); i++) {
-      var rowMonkey = document.getElementsByTagName('tr')[5];
+      var rowGameTotal = document.getElementsByTagName('tr')[6];
       accumulator += scoresheet.frameScoreDisplay(i)
       console.log(i);
       console.log(scoresheet.frameScoreDisplay(i));
       if(scoresheet.frameScoreDisplay(i) != null) {
-        rowMonkey.getElementsByTagName('td')[i+1].innerHTML = accumulator;
+        rowGameTotal.getElementsByTagName('td')[i+1].innerHTML = accumulator;
         console.log('enter accumulator 2');
       } else {
-        rowMonkey.getElementsByTagName('td')[i+1].innerHTML = null;
+        rowGameTotal.getElementsByTagName('td')[i+1].innerHTML = null;
         console.log('enter null 2');
       }
     }
-//------------------------------------------------------------------------------------
     for(var i = 0; i < (currFrame+1); i++) {
-      var rowFrameTotal = document.getElementsByTagName('tr')[6];
+      var rowFrameTotal = document.getElementsByTagName('tr')[5];
       rowFrameTotal.getElementsByTagName('td')[i+1].innerHTML = scoresheet.frameScoreDisplay(i);
     }
   }
-
-  // if(scoresheet.currFrameOver()) {
-  //   var rowDisplayTotal = document.getElementsByTagName('tr')[5];
-  //   rowDisplayTotal.getElementsByTagName('td')[currFrame+1].innerHTML = scoresheet.displayTotal();
-  // }
 
   if(scoresheet.gameOver()) {
     document.getElementById('gameOver').innerHTML = 'GAME OVER!';

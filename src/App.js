@@ -12,17 +12,7 @@ function press(n) {
     var currFrame = (scoresheet.frames.length - 1);
     var rowRoll1 = document.getElementsByTagName('tr')[2];
     rowRoll1.getElementsByTagName('td')[currFrame+1].innerHTML = n;
-    var accumulator = 0;
-    for(var i = 0; i < (currFrame+1); i++) {
-      var rowGameTotal = document.getElementsByTagName('tr')[6];
-      accumulator += scoresheet.frameScoreDisplay(i)
-      if(scoresheet.frameScoreDisplay(i) != null) {
-        rowGameTotal.getElementsByTagName('td')[i+1].innerHTML = accumulator;
-      } else {
-        rowGameTotal.getElementsByTagName('td')[i+1].innerHTML = null;
-        console.log('enter null 1');
-      }
-    }
+    updateFrameScoreDisplay(currFrame);
     for(var i = 0; i < (currFrame+1); i++) {
       var rowFrameTotal = document.getElementsByTagName('tr')[5];
       rowFrameTotal.getElementsByTagName('td')[i+1].innerHTML = scoresheet.frameScoreDisplay(i);
@@ -37,25 +27,12 @@ function press(n) {
     var currFrame = (scoresheet.frames.length - 1);
     var rowRoll2 = document.getElementsByTagName('tr')[3];
     rowRoll2.getElementsByTagName('td')[currFrame+1].innerHTML = n;
-    buttons(0);
-    var accumulator = 0;
-    for(var i = 0; i < (currFrame+1); i++) {
-      var rowGameTotal = document.getElementsByTagName('tr')[6];
-      accumulator += scoresheet.frameScoreDisplay(i)
-      console.log(i);
-      console.log(scoresheet.frameScoreDisplay(i));
-      if(scoresheet.frameScoreDisplay(i) != null) {
-        rowGameTotal.getElementsByTagName('td')[i+1].innerHTML = accumulator;
-        console.log('enter accumulator 2');
-      } else {
-        rowGameTotal.getElementsByTagName('td')[i+1].innerHTML = null;
-        console.log('enter null 2');
-      }
-    }
+    updateFrameScoreDisplay(currFrame);
     for(var i = 0; i < (currFrame+1); i++) {
       var rowFrameTotal = document.getElementsByTagName('tr')[5];
       rowFrameTotal.getElementsByTagName('td')[i+1].innerHTML = scoresheet.frameScoreDisplay(i);
     }
+    buttons(0);
   }
 
   if(scoresheet.gameOver()) {
@@ -69,4 +46,17 @@ function buttons(n) {
     buttonStr += '<button type="button" onclick="press(' + i + ')">' + i + '</button>';
   }
   document.getElementById('buttons').innerHTML = buttonStr;
+}
+
+function updateFrameScoreDisplay(currFrame) {
+  var accumulator = 0;
+  for(var i = 0; i < (currFrame+1); i++) {
+    var rowGameTotal = document.getElementsByTagName('tr')[6];
+    accumulator += scoresheet.frameScoreDisplay(i)
+    if(scoresheet.frameScoreDisplay(i) != null) {
+      rowGameTotal.getElementsByTagName('td')[i+1].innerHTML = accumulator;
+    } else {
+      rowGameTotal.getElementsByTagName('td')[i+1].innerHTML = null;
+    }
+  }
 }

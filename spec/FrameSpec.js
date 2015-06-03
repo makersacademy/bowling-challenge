@@ -21,6 +21,18 @@ describe("Frame", function() {
     expect(frame.remainingPins()).toEqual(3);
   });
 
+  it("can register a strike", function(){
+    frame.registerGo(10);
+    expect(frame.isStrike()).toEqual("X");
+  });
+
+  it("knows when a spare has been scored", function(){
+    frame.registerGo(1);
+    frame.registerGo(9);
+    expect(frame.isSpare()).toEqual("/");
+  });
+
+
   describe('knows when it is over', function() {
 
     it("after 2 rolls", function(){
@@ -42,6 +54,12 @@ describe("Frame", function() {
       frame.registerGo(3);
       frame.registerGo(4);
       expect(frame.total()).toEqual(7);
+    });
+
+    it("won't allow another roll after two rolls per frame", function(){
+      frame.registerGo(2);
+      frame.registerGo(4);
+      expect(frame.registerGo).toThrow();
     });
 
   });

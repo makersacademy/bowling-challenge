@@ -5,8 +5,13 @@ function Frame() {
 }
 
 Frame.prototype.registerGo = function(rollScore) {
+  if(this.isOver()){
+    throw("Frame is over")
+  }
+  else {
   this.goCount += 1;
   this.standingPins -= rollScore;
+  }
 };
 
 Frame.prototype.remainingPins = function() {
@@ -21,7 +26,17 @@ Frame.prototype.total = function() {
   return this.startingPins - this.standingPins;
 };
 
+Frame.prototype.isStrike = function() {
+  if(this.goCount === 1 && this.standingPins === 0) {
+    return "X";
+  };
+};
 
+Frame.prototype.isSpare = function() {
+  if(this.goCount === 2 && this.standingPins === 0){
+    return "/";
+  };
+};
 
 
 

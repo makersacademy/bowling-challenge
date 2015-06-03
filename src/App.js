@@ -39,7 +39,7 @@ function updateButtons(pinsKnocked) {
 function buttons(pinsKnocked) {
   var buttonStr = '';
   for(var i = 0; i < (11-pinsKnocked); i++) {
-    buttonStr += '<button type="button" onclick="press(' + i + ')">' + i + '</button>';
+    buttonStr += '<button type="button" class="myButton" onclick="press(' + i + ')">' + i + '</button>';
   }
   document.getElementById('buttons').innerHTML = buttonStr;
 }
@@ -100,7 +100,8 @@ function updateGameScoreDisplay(currFrame) {
 
 function gameOver() {
   if(scoresheet.gameOver()) {
-    document.getElementById('gameOver').innerHTML = 'GAME OVER!';
+    document.getElementById('gameOver').className = 'game_over';
+    document.getElementById('gameOver').innerHTML = '<h1>GAME OVER!</h1>';
     buttons(11);
   }
 }

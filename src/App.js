@@ -14,23 +14,32 @@ function press(n) {
     rowRoll1.getElementsByTagName('td')[currFrame+1].innerHTML = n;
     updateFrameScoreDisplay(currFrame);
     updateGameScoreDisplay(currFrame);
-    if(scoresheet.currFrameOver()) {
-      buttons(0);
-    } else {
-      buttons(n);
-    }
+    updateButtons(n);
   } else {
     frame.logRollResult(n);
     var currFrame = (scoresheet.frames.length - 1);
-    var rowRoll2 = document.getElementsByTagName('tr')[3];
-    rowRoll2.getElementsByTagName('td')[currFrame+1].innerHTML = n;
+    if(scoresheet.frames[currFrame].rolls.length < 3) {
+      var rowRoll2 = document.getElementsByTagName('tr')[3];
+      rowRoll2.getElementsByTagName('td')[currFrame+1].innerHTML = n;
+    } else {
+      var rowRoll3 = document.getElementsByTagName('tr')[4];
+      rowRoll3.getElementsByTagName('td')[currFrame+1].innerHTML = n;
+    }
     updateFrameScoreDisplay(currFrame);
     updateGameScoreDisplay(currFrame);
-    buttons(0);
+    updateButtons(n);
   }
 
   if(scoresheet.gameOver()) {
     document.getElementById('gameOver').innerHTML = 'GAME OVER!';
+  }
+}
+
+function updateButtons(n) {
+  if(scoresheet.currFrameOver() || scoresheet.frames.length === scoresheet.framesLimit) {
+    buttons(0);
+  } else {
+    buttons(n);
   }
 }
 

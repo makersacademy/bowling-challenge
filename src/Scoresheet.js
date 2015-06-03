@@ -26,25 +26,25 @@ Scoresheet.prototype.frameScoreDisplay = function(n) {
   return display;
 };
 
-Scoresheet.prototype.displayTotal = function() {
-  var runningDisplayTotal = 0;
-  for(var i = 0; i < this.frames.length; i++) {
-    runningDisplayTotal += this.frameScoreDisplay(i);
-  }
-  return runningDisplayTotal;
-};
+// Scoresheet.prototype.displayTotal = function() {
+//   var runningDisplayTotal = 0;
+//   for(var i = 0; i < this.frames.length; i++) {
+//     runningDisplayTotal += this.frameScoreDisplay(i);
+//   }
+//   return runningDisplayTotal;
+// };
 
-Scoresheet.prototype.actualTotal = function() {
-  var runningActualTotal = 0;
-  for(var i = 0; i < this.frames.length; i++) {
-    if(scoresheet.frameScoreDisplay(i) != null) {
-      runningActualTotal += this.frameScoreDisplay(i);
-    } else {
-      runningActualTotal += this.frames[i].total();
-    }
-  }
-  return runningActualTotal;
-};
+// Scoresheet.prototype.actualTotal = function() {
+//   var runningActualTotal = 0;
+//   for(var i = 0; i < this.frames.length; i++) {
+//     if(scoresheet.frameScoreDisplay(i) != null) {
+//       runningActualTotal += this.frameScoreDisplay(i);
+//     } else {
+//       runningActualTotal += this.frames[i].total();
+//     }
+//   }
+//   return runningActualTotal;
+// };
 
 Scoresheet.prototype.currFrameOver = function() {
   var currFrame = (this.frames.length - 1);

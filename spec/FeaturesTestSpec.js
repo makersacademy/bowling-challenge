@@ -5,46 +5,10 @@ describe('Features', function() {
   });
 
   describe('Play a game', function() {
-    it('logs two frames and reads total', function() {
-      logRollResults([3,6])
-      expect(scoresheet.actualTotal()).toEqual(9);
-    });
-
     it('displays result of a given frame/roll', function() {
       logRollResults([3,6])
       expect(scoresheet.frames[0].rolls[0]).toEqual(3);
       expect(scoresheet.frames[0].rolls[1]).toEqual(6);
-    });
-  });
-
-  describe('Receive a strike or spare bonus', function() {
-    it('logs results that include strike bonuses', function() {
-      logRollResults([10])
-      logRollResults([3,6])
-      expect(scoresheet.actualTotal()).toEqual(28);
-    });
-
-    it('logs results that include spare bonuses', function() {
-      logRollResults([6,4])
-      logRollResults([3,6])
-      expect(scoresheet.actualTotal()).toEqual(22);
-    });
-
-    it('will not handle strike bonus if no subsequent rolls played', function() {
-      logRollResults([10])
-      expect(scoresheet.actualTotal()).toEqual(10);
-    });
-
-    it('will not handle strike bonus if only one subsequent roll played', function() {
-      logRollResults([10])
-      logRollResults([3])
-      expect(scoresheet.actualTotal()).toEqual(13);
-    });
-
-    it('will not handle strike bonus if only one subsequent roll played', function() {
-      logRollResults([10])
-      logRollResults([3])
-      expect(scoresheet.actualTotal()).toEqual(13);
     });
   });
 
@@ -143,28 +107,6 @@ describe('Features', function() {
       };
       logRollResults([7,3,4])
       expect(scoresheet.frameScoreDisplay(9)).toEqual(14);
-    });
-  });
-
-  describe('Output display score of frames (accumulatively)', function() {
-    it('will display 210 for seventh frame', function() {
-      for(var i = 0; i < 9; i++) {
-        logRollResults([10]);
-      };
-      expect(scoresheet.displayTotal()).toEqual(210);
-    });
-
-    it('will display 210 for seventh frame', function() {
-      for(var i = 0; i < 4; i++) {
-        logRollResults([10]);
-      };
-      logRollResults([2,4]);
-      expect(scoresheet.displayTotal()).toEqual(104);
-    });
-
-    it('will display 9 for first frame (roll: 4, 5)', function() {
-      logRollResults([4,5]);
-      expect(scoresheet.displayTotal()).toEqual(9);
     });
   });
 

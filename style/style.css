@@ -1,4 +1,22 @@
-body {background: #FFFF66;}
+body {
+  background-image: url("http://thebowlingtechnique.com/wp-content/uploads/2014/06/Bowling-Lanes.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+table.scoresheet {width:100%; font-size:12px; border:1px solid; text-align: center;}
+table.scoresheet th, tr, td {padding: 0;}
+table.scoresheet th {border-bottom:1px solid; background-color:red; height:30px;}
+table.scoresheet th:not(:last-child) {border-right:1px solid;}
+table.scoresheet td {height:30px;}
+table.scoresheet tr td:not(:last-child) {border-right:1px solid;}
+table.scoresheet tr:nth-child(2) td:nth-child(even) {border-bottom:1px solid;}
+table.scoresheet tr:nth-child(2) td:last-child {border-bottom:1px solid;}
+
+/*------------------------------------------------------------------------------------------
+
+/*body {background: #FFFF66;}
 
 table {border-collapse: collapse; margin-left: 6px; margin-top: 20px; margin-bottom: 0px; border-collapse: separate; border-spacing: 0;}
 
@@ -14,4 +32,4 @@ table tr:last-child td:first-child {border-bottom-left-radius: 5px;}
 
 table tr:last-child td:last-child {border-bottom-right-radius: 5px;}
 
-table tr:last-child td {border-bottom: 2px solid #949494;}
+table tr:last-child td {border-bottom: 2px solid #949494;}*/

@@ -4,56 +4,81 @@ window.onload = function WindowLoad(event) {
   buttons(0);
 }
 
-function press(n) {
+function press(pinsKnocked) {
   if(scoresheet.frames.length === 0 || scoresheet.currFrameOver()) {
     frame = new Frame;
     scoresheet.addFrame(frame);
-    frame.logRollResult(n);
-    var currFrame = (scoresheet.frames.length - 1);
-    if(n === frame.pins && scoresheet.frames.length < scoresheet.framesLimit) {
-      updateRollDislay(3, currFrame, 'X');
-    } else if (n === frame.pins && scoresheet.frames.length === scoresheet.framesLimit) {
-      updateRollDislay(2, currFrame, 'X');
-    } else {
-      updateRollDislay(2, currFrame, n);
-    }
-    updateFrameScoreDisplay(currFrame);
-    updateGameScoreDisplay(currFrame);
-    updateButtons(n);
+    update(pinsKnocked, 1);
   } else {
-    frame.logRollResult(n);
-    var currFrame = (scoresheet.frames.length - 1);
-    if(n === frame.pins) {displayContent = 'X';} else {displayContent = n;}
-    if(scoresheet.frames[currFrame].rolls.length < 3) {
-      updateRollDislay(3, currFrame, displayContent);
-    } else {
-      updateRollDislay(4, currFrame, displayContent);
-    }
-    updateFrameScoreDisplay(currFrame);
-    updateGameScoreDisplay(currFrame);
-    updateButtons(n);
+    update(pinsKnocked, 2);
   }
-
-  if(scoresheet.gameOver()) {
-    document.getElementById('gameOver').innerHTML = 'GAME OVER!';
-    buttons(11);
-  }
+  gameOver();
 }
 
-function updateButtons(n) {
+function update(pinsKnocked, rollNo) {
+  frame.logRollResult(pinsKnocked);
+  var currFrame = (scoresheet.frames.length - 1);
+  if(rollNo === 1) {
+    selectRollDisplayContent1(pinsKnocked, currFrame);
+  }
+  else {
+    selectRollDisplayContent2(pinsKnocked, currFrame);
+  }
+  updateFrameScoreDisplay(currFrame);
+  updateGameScoreDisplay(currFrame);
+  updateButtons(pinsKnocked);
+}
+
+function updateButtons(pinsKnocked) {
   if(scoresheet.currFrameOver() || scoresheet.frames.length === scoresheet.framesLimit) {
     buttons(0);
   } else {
-    buttons(n);
+    buttons(pinsKnocked);
   }
 }
 
-function buttons(n) {
+function buttons(pinsKnocked) {
   var buttonStr = '';
-  for(var i = 0; i < (11-n); i++) {
+  for(var i = 0; i < (11-pinsKnocked); i++) {
     buttonStr += '<button type="button" onclick="press(' + i + ')">' + i + '</button>';
   }
   document.getElementById('buttons').innerHTML = buttonStr;
+}
+
+function strike(pinsKnocked) {
+  return (pinsKnocked === frame.pins);
+}
+
+function spare(currFrame) {
+  return (scoresheet.frames[currFrame].rolls[0] + scoresheet.frames[currFrame].rolls[1] === 10);
+}
+
+function selectRollDisplayContent1(pinsKnocked, currFrame) {
+  if(strike(pinsKnocked) && scoresheet.frames.length < scoresheet.framesLimit) {
+    updateRollDislay(3, currFrame, 'X');
+  } else if (strike(pinsKnocked) && scoresheet.frames.length === scoresheet.framesLimit) {
+    updateRollDislay(2, currFrame, 'X');
+  } else {
+    updateRollDislay(2, currFrame, pinsKnocked);
+  }
+}
+
+function selectRollDisplayContent2(pinsKnocked, currFrame) {
+  if(strike(pinsKnocked)) {
+    displayContent = 'X';
+  }
+  else if(spare(currFrame) && scoresheet.frames[currFrame].rolls.length < 3) {
+    displayContent = '/';
+  }
+  else {
+    displayContent = pinsKnocked;
+  }
+
+  if(scoresheet.frames[currFrame].rolls.length < 3) {
+    updateRollDislay(3, currFrame, displayContent);
+  } else {
+    updateRollDislay(4, currFrame, displayContent);
+  }
 }
 
 function updateRollDislay(rowNo, currFrame, displayContent) {
@@ -76,5 +101,12 @@ function updateGameScoreDisplay(currFrame) {
     if(scoresheet.frameScoreDisplay(i) != null) {
       rowGameTotal.getElementsByTagName('td')[i+1].innerHTML = accumulator;
     }
+  }
+}
+
+function gameOver() {
+  if(scoresheet.gameOver()) {
+    document.getElementById('gameOver').innerHTML = 'GAME OVER!';
+    buttons(11);
   }
 }

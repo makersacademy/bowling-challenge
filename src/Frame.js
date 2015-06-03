@@ -1,22 +1,50 @@
-function Player() {
+function Frame() {
+  this.goCount = 2;
+  this.standingPins = 10;
 }
-Player.prototype.play = function(song) {
-  this.currentlyPlayingSong = song;
-  this.isPlaying = true;
+
+Frame.prototype.registerGo = function(rollScore) {
+  this.goCount -= 1;
+  this.standingPins -= rollScore;
 };
 
-Player.prototype.pause = function() {
-  this.isPlaying = false;
+Frame.prototype.remainingPins = function() {
+  return this.standingPins;
 };
 
-Player.prototype.resume = function() {
-  if (this.isPlaying) {
-    throw new Error("song is already playing");
-  }
-
-  this.isPlaying = true;
+Frame.prototype.isOver = function() {
+  return this.goCount === 0;
 };
 
-Player.prototype.makeFavorite = function() {
-  this.currentlyPlayingSong.persistFavoriteStatus(true);
-};
+
+
+
+
+
+
+
+
+
+
+
+
+// Player.prototype.play = function(song) {
+//   this.currentlyPlayingSong = song;
+//   this.isPlaying = true;
+// };
+
+// Player.prototype.pause = function() {
+//   this.isPlaying = false;
+// };
+
+// Player.prototype.resume = function() {
+//   if (this.isPlaying) {
+//     throw new Error("song is already playing");
+//   }
+
+//   this.isPlaying = true;
+// };
+
+// Player.prototype.makeFavorite = function() {
+//   this.currentlyPlayingSong.persistFavoriteStatus(true);
+// };

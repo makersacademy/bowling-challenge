@@ -50,7 +50,7 @@ describe("Frame", function() {
       expect(frame.isOver()).toEqual(false);
     });
 
-    it("knows the total score", function(){
+    it("knows the total frame score", function(){
       frame.registerGo(3);
       frame.registerGo(4);
       expect(frame.total()).toEqual(7);
@@ -59,7 +59,7 @@ describe("Frame", function() {
     it("won't allow another roll after two rolls per frame", function(){
       frame.registerGo(2);
       frame.registerGo(4);
-      expect(frame.registerGo).toThrow();
+      expect(function() { frame.registerGo() }).toThrowError("Frame is over");
     });
 
   });

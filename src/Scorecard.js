@@ -9,7 +9,7 @@ Scorecard.prototype.addFrame = function(frame) {
 Scorecard.prototype.total = function() {
   var runningTotal = 0;
   for(var i = 0; i < this.frames.length; i ++) {
-  //   // if this.frames[i].isStrike(){
+  //   // if this.frames[i].isSpare(){
   //   //   this.frames[i+1]
   //   }
     runningTotal += this.frames[i].total();

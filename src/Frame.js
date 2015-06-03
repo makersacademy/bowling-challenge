@@ -6,7 +6,7 @@ function Frame() {
 
 Frame.prototype.registerGo = function(rollScore) {
   if(this.isOver()){
-    throw("Frame is over")
+    throw "Frame is over";
   }
   else {
   this.goCount += 1;

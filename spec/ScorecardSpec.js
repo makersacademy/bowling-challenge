@@ -16,5 +16,7 @@ describe("Scorecard", function() {
       expect(scorecard.total()).toEqual(6);
     });
 
+    // it("can handle a spare")
+
 
 });

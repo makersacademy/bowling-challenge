@@ -2,15 +2,17 @@ function Frame() {
   this.goCount = 0;
   this.startingPins = 10;
   this.standingPins = 10;
+  this.rolls = [];
 }
 
 Frame.prototype.registerGo = function(rollScore) {
   if(this.isOver()){
-    throw "Frame is over";
+    throw new Error("Frame is over");
   }
   else {
   this.goCount += 1;
   this.standingPins -= rollScore;
+  this.rolls.push(rollScore)
   }
 };
 

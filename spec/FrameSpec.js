@@ -5,33 +5,36 @@ describe("Frame", function() {
     frame = new Frame();
   });
 
-  it("registers a gutter ball", function() {
-    frame.registerGo(0);
-    expect(frame.remainingPins()).toEqual(10); //count pins knocked down?//
-  });
+  describe('playing', function(){
 
-  it("registers a successful roll", function(){
-    frame.registerGo(5);
-    expect(frame.remainingPins()).toEqual(5);
-  });
+    it("registers a gutter ball", function() {
+      frame.registerGo(0);
+      expect(frame.remainingPins()).toEqual(10); //count pins knocked down?//
+    });
 
-  it("can register 2 rolls", function(){
-    frame.registerGo(3);
-    frame.registerGo(4);
-    expect(frame.remainingPins()).toEqual(3);
-  });
+    it("registers a successful roll", function(){
+      frame.registerGo(5);
+      expect(frame.remainingPins()).toEqual(5);
+    });
 
-  it("can register a strike", function(){
-    frame.registerGo(10);
-    expect(frame.isStrike()).toEqual("X");
-  });
+    it("can register 2 rolls", function(){
+      frame.registerGo(3);
+      frame.registerGo(4);
+      expect(frame.remainingPins()).toEqual(3);
+    });
 
-  it("knows when a spare has been scored", function(){
-    frame.registerGo(1);
-    frame.registerGo(9);
-    expect(frame.isSpare()).toEqual("/");
-  });
+    it("can register a strike", function(){
+      frame.registerGo(10);
+      expect(frame.isStrike()).toEqual("X");
+    });
 
+    it("knows when a spare has been scored", function(){
+      frame.registerGo(1);
+      frame.registerGo(9);
+      expect(frame.isSpare()).toEqual("/");
+    });
+
+  });
 
   describe('knows when it is over', function() {
 
@@ -50,19 +53,29 @@ describe("Frame", function() {
       expect(frame.isOver()).toEqual(false);
     });
 
+    it("won't allow another roll after two rolls per frame", function(){
+      frame.registerGo(2);
+      frame.registerGo(4);
+      expect(function() { frame.registerGo(1) }).toThrowError("Frame is over");
+    });
+
+  });
+
+  describe("scoring", function(){
+
+    // it("knows the score from roll 1", function(){
+    //   frame.registerGo(3);
+    //   expect(frame.rollOne()).toEqual(3);
+    // })
+
     it("knows the total frame score", function(){
       frame.registerGo(3);
       frame.registerGo(4);
       expect(frame.total()).toEqual(7);
     });
 
-    it("won't allow another roll after two rolls per frame", function(){
-      frame.registerGo(2);
-      frame.registerGo(4);
-      expect(function() { frame.registerGo() }).toThrowError("Frame is over");
-    });
-
   });
+    
 
 });
 

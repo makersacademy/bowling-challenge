@@ -10,20 +10,24 @@ function press(n) {
     scoresheet.addFrame(frame);
     frame.logRollResult(n);
     var currFrame = (scoresheet.frames.length - 1);
-    var rowRoll1 = document.getElementsByTagName('tr')[2];
-    rowRoll1.getElementsByTagName('td')[currFrame+1].innerHTML = n;
+    if(n === frame.pins && scoresheet.frames.length < scoresheet.framesLimit) {
+      updateRollDislay(3, currFrame, 'X');
+    } else if (n === frame.pins && scoresheet.frames.length === scoresheet.framesLimit) {
+      updateRollDislay(2, currFrame, 'X');
+    } else {
+      updateRollDislay(2, currFrame, n);
+    }
     updateFrameScoreDisplay(currFrame);
     updateGameScoreDisplay(currFrame);
     updateButtons(n);
   } else {
     frame.logRollResult(n);
     var currFrame = (scoresheet.frames.length - 1);
+    if(n === frame.pins) {displayContent = 'X';} else {displayContent = n;}
     if(scoresheet.frames[currFrame].rolls.length < 3) {
-      var rowRoll2 = document.getElementsByTagName('tr')[3];
-      rowRoll2.getElementsByTagName('td')[currFrame+1].innerHTML = n;
+      updateRollDislay(3, currFrame, displayContent);
     } else {
-      var rowRoll3 = document.getElementsByTagName('tr')[4];
-      rowRoll3.getElementsByTagName('td')[currFrame+1].innerHTML = n;
+      updateRollDislay(4, currFrame, displayContent);
     }
     updateFrameScoreDisplay(currFrame);
     updateGameScoreDisplay(currFrame);
@@ -32,6 +36,7 @@ function press(n) {
 
   if(scoresheet.gameOver()) {
     document.getElementById('gameOver').innerHTML = 'GAME OVER!';
+    buttons(11);
   }
 }
 
@@ -49,6 +54,11 @@ function buttons(n) {
     buttonStr += '<button type="button" onclick="press(' + i + ')">' + i + '</button>';
   }
   document.getElementById('buttons').innerHTML = buttonStr;
+}
+
+function updateRollDislay(rowNo, currFrame, displayContent) {
+  var rowRollDisplay = document.getElementsByTagName('tr')[rowNo];
+  rowRollDisplay.getElementsByTagName('td')[currFrame+1].innerHTML = displayContent;
 }
 
 function updateFrameScoreDisplay(currFrame) {

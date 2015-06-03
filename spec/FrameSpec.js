@@ -21,17 +21,30 @@ describe("Frame", function() {
     expect(frame.remainingPins()).toEqual(3);
   });
 
-  it("knows when it is over", function(){
-    frame.registerGo(4);
-    frame.registerGo(5);
-    expect(frame.isOver()).toEqual(true);
-  });
+  describe('knows when it is over', function() {
 
-  it("knows when it is not over", function(){
-    expect(frame.isOver()).toEqual(false);
-  });
+    it("after 2 rolls", function(){
+      frame.registerGo(4);
+      frame.registerGo(5);
+      expect(frame.isOver()).toEqual(true);
+    });
 
-  
+    it("after all the pins have been knocked down", function(){
+      frame.registerGo(10);
+      expect(frame.isOver()).toEqual(true);
+    });
+
+    it("knows when it is not over after less than 2 rolls", function(){
+      expect(frame.isOver()).toEqual(false);
+    });
+
+    it("knows the total score", function(){
+      frame.registerGo(3);
+      frame.registerGo(4);
+      expect(frame.total()).toEqual(7);
+    });
+
+  });
 
 });
 

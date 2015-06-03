@@ -1,10 +1,11 @@
 function Frame() {
-  this.goCount = 2;
+  this.goCount = 0;
+  this.startingPins = 10;
   this.standingPins = 10;
 }
 
 Frame.prototype.registerGo = function(rollScore) {
-  this.goCount -= 1;
+  this.goCount += 1;
   this.standingPins -= rollScore;
 };
 
@@ -13,9 +14,12 @@ Frame.prototype.remainingPins = function() {
 };
 
 Frame.prototype.isOver = function() {
-  return this.goCount === 0;
+  return (this.goCount === 2 || this.standingPins === 0);
 };
 
+Frame.prototype.total = function() {
+  return this.startingPins - this.standingPins;
+};
 
 
 

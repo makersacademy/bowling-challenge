@@ -16,7 +16,10 @@ describe("Scorecard", function() {
       expect(scorecard.total()).toEqual(6);
     });
 
-    // it("can handle a spare")
-
+    xit("knows the score of a particular ball in a particular frame", function() {
+      scorecard.addFrame({total : function() { return 1} });
+      scorecard.addFrame({total : function() { return 1} });
+      expect(scorecard.frames[0].rolls[0]).toEqual(1);
+    });
 
 });

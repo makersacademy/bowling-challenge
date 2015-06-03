@@ -44,7 +44,7 @@ describe("Frame", function() {
       expect(frame.isOver()).toEqual(true);
     });
 
-    it("after all the pins have been knocked down", function(){
+    it("after a strike", function(){
       frame.registerGo(10);
       expect(frame.isOver()).toEqual(true);
     });
@@ -53,26 +53,38 @@ describe("Frame", function() {
       expect(frame.isOver()).toEqual(false);
     });
 
-    it("won't allow another roll after two rolls per frame", function(){
+    it("won't allow another roll after two rolls", function(){
       frame.registerGo(2);
       frame.registerGo(4);
-      expect(function() { frame.registerGo(1) }).toThrowError("Frame is over");
+      expect(function() { frame.registerGo(0) }).toThrowError("Frame is over");
+    });
+
+    it("won't allow another roll after a strike", function(){
+      frame.registerGo(10);
+      expect(function() { frame.registerGo(0) }).toThrowError("Frame is over");
     });
 
   });
 
   describe("scoring", function(){
 
-    // it("knows the score from roll 1", function(){
-    //   frame.registerGo(3);
-    //   expect(frame.rollOne()).toEqual(3);
-    // })
+    it("knows the score from roll 1", function(){
+      frame.registerGo(3);
+      expect(frame.rolls[0]).toEqual(3);
+    });
+
+    it("knows the score from roll 2", function(){
+      frame.registerGo(3);
+      frame.registerGo(4);
+      expect(frame.rolls[1]).toEqual(4);
+    });
 
     it("knows the total frame score", function(){
       frame.registerGo(3);
       frame.registerGo(4);
       expect(frame.total()).toEqual(7);
     });
+
 
   });
     

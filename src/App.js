@@ -1,6 +1,9 @@
 scoresheet = new Scoresheet;
+var pintopple = new Audio('http://www.wavsource.com/snds_2015-05-31_8624371456817846/sfx/bowling.wav');
+var cheer = new Audio('http://www.wavsource.com/snds_2015-05-31_8624371456817846/sfx/cheering.wav');
 
 $(document).ready(function() {
+  pintopple.play();
   $('#title').hide();
   $('#buttons').hide();
   $('#scoresheet').hide();
@@ -108,6 +111,7 @@ function updateGameScoreDisplay(currFrame) {
 
 function gameOver() {
   if(scoresheet.gameOver()) {
+    cheer.play();
     $('.button').prop('onclick',null).off('click');
     $('#gameOver').hide().addClass('game_over').html('<h1>GAME OVER!</h1>').fadeIn(1000);
     $('.button').fadeOut(1000);

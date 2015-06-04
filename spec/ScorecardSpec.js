@@ -54,4 +54,12 @@ describe("Scorecard", function() {
       scorecard.addFrame(frameDouble);
       expect(scorecard.total()).toEqual(18);
     });
+
+    it("can handle multiple strikes", function(){
+      scorecard.addFrame(strikeDouble);
+      scorecard.addFrame(strikeDouble);
+      scorecard.addFrame(strikeDouble);
+      expect(scorecard.total()).toEqual(30);
+    });
+    
 });

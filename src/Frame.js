@@ -6,7 +6,7 @@ function Frame() {
 }
 
 Frame.prototype.registerGo = function(rollScore) {
-  if(!this.isOver()){   //add function for this.notOver?? 
+  if(!this.isOver()){  
     this.goCount += 1;
   this.standingPins -= rollScore;
   this.rolls.push(rollScore)

@@ -56,12 +56,12 @@ describe("Frame", function() {
     it("won't allow another roll after two rolls", function(){
       frame.registerGo(2);
       frame.registerGo(4);
-      expect(function() { frame.registerGo(0) }).toThrowError("Frame is over");
+      expect(function() { frame.registerGo(0) }).toThrow("Frame is over");
     });
 
     it("won't allow another roll after a strike", function(){
       frame.registerGo(10);
-      expect(function() { frame.registerGo(0) }).toThrowError("Frame is over");
+      expect(function() { frame.registerGo(0) }).toThrow("Frame is over");
     });
 
   });

@@ -15,16 +15,10 @@ Scorecard.prototype.total = function() {
   for(var i = 0; i < this.frames.length; i ++) {
     if (this.frames[i].isSpare()){
       runningTotal += this.getRollScore(i + 1, 0)
-    }
+    } else if (this.frames[i].isStrike()){
+      runningTotal += this.getRollScore(i + 1, 0) + this.getRollScore(i + 1, 1)
+    } 
     runningTotal += this.frames[i].total();
   }
   return runningTotal;
 };
-
-
-// //* new method
-// if (this.frames[i].isSpare()){
-//       runningTotal += this.getRollScore(i + 1, 0)
-//     }
-
-//     //

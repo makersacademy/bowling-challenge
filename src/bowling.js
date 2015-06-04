@@ -1,13 +1,21 @@
 function Bowling(){
   this.score;
   this.scores = [];
+
   this.spike_count = 0;
+  this.roll_count = 0;
+
   this.bonus = 0;
 
   this.scoresFrame = [];
 }
 
 Bowling.prototype.pinsHit = function(arg) {
+  this.roll_count++
+
+  if(this.roll_count >= 20){
+    return "You have exceeded max number of rolls"
+  }
 
   if(arg===10){
     this.spike_count++ //increment the bonus count
@@ -78,4 +86,3 @@ function array_total(arr){
     return prev_score + curr_score;
   });
 }
-

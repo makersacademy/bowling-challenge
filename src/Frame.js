@@ -30,13 +30,13 @@ Frame.prototype.total = function() {
 
 Frame.prototype.isStrike = function() {
   if(this.goCount === 1 && this.standingPins === 0) {
-    return "X";
+    return true;
   };
 };
 
 Frame.prototype.isSpare = function() {
   if(this.goCount === 2 && this.standingPins === 0){
-    return "/";
+    return true;
   };
 };
 

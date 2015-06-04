@@ -10,6 +10,10 @@ Scorecard.prototype.getRollScore = function(frame, roll) {
   return this.frames[frame].rolls[roll];
 };
 
+Scorecard.prototype.getFrameScore = function(frame) {
+  return this.frames[frame].rolls[0] + this.frames[frame].rolls[1];
+};
+
 Scorecard.prototype.total = function() {
   var runningTotal = 0;
   for(var i = 0; i < this.frames.length; i ++) {

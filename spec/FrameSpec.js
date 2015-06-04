@@ -25,13 +25,13 @@ describe("Frame", function() {
 
     it("can register a strike", function(){
       frame.registerGo(10);
-      expect(frame.isStrike()).toEqual("X");
+      expect(frame.isStrike()).toEqual(true);
     });
 
     it("knows when a spare has been scored", function(){
       frame.registerGo(1);
       frame.registerGo(9);
-      expect(frame.isSpare()).toEqual("/");
+      expect(frame.isSpare()).toEqual(true);
     });
 
   });

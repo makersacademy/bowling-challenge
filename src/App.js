@@ -109,10 +109,7 @@ function updateGameScoreDisplay(currFrame) {
 function gameOver() {
   if(scoresheet.gameOver()) {
     $('.button').prop('onclick',null).off('click');
-    $('#gameOver').hide();
-    document.getElementById('gameOver').className = 'game_over';
-    document.getElementById('gameOver').innerHTML = '<h1>GAME OVER!</h1>';
-    $('#gameOver').fadeIn(1000);
+    $('#gameOver').hide().addClass('game_over').html('<h1>GAME OVER!</h1>').fadeIn(1000);
     $('.button').fadeOut(1000);
   }
 }

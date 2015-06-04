@@ -59,7 +59,7 @@ describe("Scorecard", function() {
       scorecard.addFrame(strikeDouble);
       scorecard.addFrame(strikeDouble);
       scorecard.addFrame(strikeDouble);
-      expect(scorecard.total()).toEqual(30);
+      expect(scorecard.total()).toEqual(60);
     });
-    
+
 });

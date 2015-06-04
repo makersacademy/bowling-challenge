@@ -1,24 +1,34 @@
 function Bowling(){
   this.score;
   this.scores = [];
-
-  this.spike_count = 0;
-  this.roll_count = 0;
-
-  this.bonus = 0;
-
   this.scoresFrame = [];
+
+  spike_count = 0;
+  roll_count = 0;
+
+  previous_roll = 0;
+  bonus = 0;
 }
 
 Bowling.prototype.pinsHit = function(arg) {
-  this.roll_count++
+  roll_count++
 
-  if(this.roll_count >= 20){
+  if(roll_count % 2 != 0){
+    previous_roll = arg;
+  } else {
+    var isMoreThanTen = previous_roll + arg;
+  }
+
+  if(roll_count >= 20){
     return "You have exceeded max number of rolls"
+  } else if(isMoreThanTen > 10){
+    return "invalid"
   }
 
   if(arg===10){
-    this.spike_count++ //increment the bonus count
+    roll_count++
+
+    spike_count++ //increment the bonus count
 
     this.scores.push(arg);
     this.scores.push(0);
@@ -35,22 +45,22 @@ Bowling.prototype._bonusChecker = function(){
   for(var i = 0; i < this.scoresFrame.length; i++){
 
     if(array_total(this.scoresFrame[i]) == 10 && this.scoresFrame[i][0] != 10 && this.scoresFrame[i+1]) {
-      this.bonus += this.scoresFrame[i+1][0];
+      bonus += this.scoresFrame[i+1][0];
     } //checks for spares
 
   }
 
-  if(this.spike_count && this.scores[index+2]){
-    this.bonus = this.scores[index+1] + this.scores[index+2];
-    this.spike_count = 0;
+  if(spike_count && this.scores[index+2]){
+    bonus = this.scores[index+1] + this.scores[index+2];
+    spike_count = 0;
     } //checks for spikes
 }
 
 Bowling.prototype._calculateScore = function(){
   this.score = array_total(this.scores)
 
-  if(this.bonus){
-    return this.score += this.bonus;
+  if(bonus){
+    return this.score += bonus;
   } else {
     return this.score;
   }

@@ -1,8 +1,16 @@
 scoresheet = new Scoresheet;
 
-window.onload = function WindowLoad(event) {
+$(document).ready(function() {
+  $('#title').hide();
+  $('#buttons').hide();
+  $('#scoresheet').hide();
   buttons(0);
-}
+  $('#title').hide().fadeIn(500, function() {
+    $('#buttons').fadeIn(500, function() {
+      $('#scoresheet').hide().fadeIn(500);
+    });
+  });
+});
 
 function press(pinsKnocked) {
   if(scoresheet.frames.length === 0 || scoresheet.currFrameOver()) {
@@ -100,8 +108,10 @@ function updateGameScoreDisplay(currFrame) {
 
 function gameOver() {
   if(scoresheet.gameOver()) {
+    $('#gameOver').hide();
     document.getElementById('gameOver').className = 'game_over';
     document.getElementById('gameOver').innerHTML = '<h1>GAME OVER!</h1>';
+    $('#gameOver').fadeIn(1000);
     buttons(11);
   }
 }

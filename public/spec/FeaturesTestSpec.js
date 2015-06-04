@@ -111,7 +111,7 @@ describe('Features', function() {
   });
 
   describe('End a frame', function() {
-    it('will not end frame after one rolls if strike is not achieved', function() {
+    it('will not end frame after one roll if strike is not achieved', function() {
       logRollResults([3])
       expect(scoresheet.currFrameOver()).toBe(false);
     });

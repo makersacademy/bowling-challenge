@@ -10,17 +10,21 @@ Scorecard.prototype.getRollScore = function(frame, roll) {
   return this.frames[frame].rolls[roll];
 };
 
-Scorecard.prototype.getFrameScore = function(frame) {
-  return this.frames[frame].rolls[0] + this.frames[frame].rolls[1];
-};
-
 Scorecard.prototype.total = function() {
   var runningTotal = 0;
   for(var i = 0; i < this.frames.length; i ++) {
-  //   if (this.frame[i].isSpare()){
-  //     this.frames.total += this.frame[i + 1]
-  //   }
+    if (this.frames[i].isSpare()){
+      runningTotal += this.getRollScore(i + 1, 0)
+    }
     runningTotal += this.frames[i].total();
   }
   return runningTotal;
 };
+
+
+// //* new method
+// if (this.frames[i].isSpare()){
+//       runningTotal += this.getRollScore(i + 1, 0)
+//     }
+
+//     //

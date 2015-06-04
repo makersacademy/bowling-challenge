@@ -7,11 +7,13 @@ describe("Scorecard", function() {
     scorecard = new Scorecard();
     frameDouble = { 
       rolls: [2,2],
-      total : function() { return 4}
+      total : function() { return 4 },
+      isSpare : function() { return false }
     }
     spareDouble = { 
       rolls: [4,6],
-      total : function() { return 10}
+      total : function() { return 10},
+      isSpare : function() { return true }
     }
   });
 
@@ -21,11 +23,9 @@ describe("Scorecard", function() {
     });
 
     it("can calculate a total of a series of frames", function(){
-      var frame1Double = {total : function() { return 3} }
-      var frame2Double = {total : function() { return 3} }
-      scorecard.addFrame(frame1Double);
-      scorecard.addFrame(frame2Double);
-      expect(scorecard.total()).toEqual(6);
+      scorecard.addFrame(frameDouble);
+      scorecard.addFrame(frameDouble);
+      expect(scorecard.total()).toEqual(8);
     });
 
     it("knows the score of a particular ball in a particular frame", function() {

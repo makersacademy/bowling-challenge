@@ -18,8 +18,7 @@ Technologies Used:
 Next Steps:
 -------
 
-- Final frame choices: 10 buttons if strike, else remaining pins from previous roll.
-- Refactor Scoresheet.js.
+- Refactor Scoresheet.js and App.js to make more readable.
 - Option to start another game at end of each finished game (via link).
 
 

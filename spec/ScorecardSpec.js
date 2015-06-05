@@ -43,6 +43,11 @@ describe("Scorecard", function() {
       expect(scorecard.getRollScore(0, 1)).toEqual(6);
     });
 
+    it("knows the score of a particular frame", function() {
+      scorecard.addFrame(frameDouble);
+      expect(scorecard.getFrameScore(0,0,1)).toEqual(4);
+    });
+
     it("accumulates bonus points from spare frames", function(){
       scorecard.addFrame(spareDouble);
       scorecard.addFrame(frameDouble);

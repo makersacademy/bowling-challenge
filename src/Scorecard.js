@@ -14,14 +14,29 @@ Scorecard.prototype.getRollScore = function(frameIndex, roll) {
   }
 };
 
+Scorecard.prototype.getFrameScore = function(frameIndex, roll1, roll2) {
+  if (frameIndex < this.frames.length){
+    return this.frames[frameIndex].rolls[roll1] + this.frames[frameIndex].rolls[roll2];
+  } else {
+    return 0;
+  }
+};
+
 Scorecard.prototype.total = function() {
   var runningTotal = 0;
   for(var i = 0; i < this.frames.length; i ++) {
     runningTotal += this.bonusFromSpare(i);
+    console.log(runningTotal);
     runningTotal += this.bonusFromStrike(i);
+     console.log(runningTotal);
     runningTotal += this.frames[i].total();
+     console.log(runningTotal);
   }
   return runningTotal;
+};
+
+Scorecard.prototype.isCurrentFrameSpare = function(frameIndex) {
+  return (this.frames[frameIndex].isSpare())
 };
 
 Scorecard.prototype.bonusFromSpare = function(frameIndex) {
@@ -31,8 +46,12 @@ Scorecard.prototype.bonusFromSpare = function(frameIndex) {
   else { return 0 }
 };
 
-Scorecard.prototype.isCurrentFrameSpare = function(frameIndex) {
-  return (this.frames[frameIndex].isSpare())
+Scorecard.prototype.isCurrentFrameStrike = function(frameIndex) {
+  return (this.frames[frameIndex].isStrike())
+};
+
+Scorecard.prototype.isNextFrameStrike = function(frameIndex) {
+  return (this.frames[frameIndex + 1] && this.frames[frameIndex + 1].isStrike())
 };
 
 Scorecard.prototype.bonusFromStrike = function(frameIndex) {
@@ -48,10 +67,3 @@ Scorecard.prototype.bonusFromStrike = function(frameIndex) {
   return bonusTotal;
 };
 
-Scorecard.prototype.isCurrentFrameStrike = function(frameIndex) {
-  return (this.frames[frameIndex].isStrike())
-};
-
-Scorecard.prototype.isNextFrameStrike = function(frameIndex) {
-  return (this.frames[frameIndex + 1] && this.frames[frameIndex + 1].isStrike())
-};

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+      <title> Bowling challenge </title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="src/bowling.js"></script>
+    </head>
+
+    <body>
+      <div class="container">
+        <div class="buttons">
+        </div>
+
+        <div class="roll1">
+        Roll 1:
+        </div>
+
+        <div class="roll2">
+        Roll 2:
+        </div>
+
+        <div class="result">
+        Result:
+        </div>
+
+      </div>
+    </body>
+
+    <script>
+
+      var game = new Bowling();
+      var j = 0;
+
+      for(i=0; i<=10; i++){
+
+        $('.buttons').append("<button class='button' value="+i+">"+i+"</button>")
+      }
+
+      $('.button').click(function(){
+        numPins = parseInt(($(this).attr("value")));
+        displayRoll();
+        displayResult(numPins)
+      });
+
+      function displayRoll(){
+        if (j % 2 === 0){
+          $('.roll1').append(numPins)
+          j++;
+        } else {
+          $('.roll2').append(numPins)
+          j++;
+        }
+      }
+
+      function displayResult(arg){
+        game.pinsHit(arg);
+        game.scoreGame();
+        $('.result').append(game.score)
+      }
+
+
+
+    </script>
+
+</html>
+
+
+

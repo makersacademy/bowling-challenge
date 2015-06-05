@@ -37,7 +37,7 @@ function update(pinsKnocked, rollNo) {
 }
 
 function updateButtons(pinsKnocked) {
-  if(scoresheet.currFrameOver() || scoresheet.frames.length === scoresheet.framesLimit) {
+  if(scoresheet.currFrameOver() || (scoresheet.frames.length === scoresheet.framesLimit && !(scoresheet.frames[scoresheet.framesLimit-1].rolls.length === 1 && scoresheet.frames[scoresheet.framesLimit-1].rolls[0] < 10))) {
     buttons(0);
   } else {
     buttons(pinsKnocked);

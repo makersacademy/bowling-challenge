@@ -11,9 +11,9 @@ function Bowling() {
       this.score;
     };
 
-  this.frame = (this.frame - number);
+    this.frame = (this.frame - number);
 
-  };
+    };
 
   Bowling.prototype.reset = function() {
     this.frame =10;

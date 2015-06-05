@@ -55,7 +55,17 @@ describe('Bowling', function() {
     bowling.strike(10);
     expect(bowling.score).toEqual(10)
   });
-  //Need to add scorecard and the double points on next go
+
+  it('can bowl a spare', function(){
+    var bowling = new Bowling();
+    bowling.bowl(5);
+    bowling.bowl(5);
+    expect(bowling.score).toEqual(10)
+
+  });
+  //Need to add scorecard.js? and then add the double points on next go???
+
+  // test together what frame looks like and points on scorecard
 
 });
 

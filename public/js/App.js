@@ -47,11 +47,11 @@ function update(pinsKnocked, rollNo) {
     selectRollDisplayContent2(pinsKnocked, currFrame);
   }
   updateGameScoreDisplay(currFrame);
-  updateButtons(pinsKnocked);
+  updateButtons(pinsKnocked, currFrame);
 }
 
-function updateButtons(pinsKnocked) {
-  if(scoresheet.currFrameOver() || (scoresheet.frames.length === scoresheet.framesLimit && !(scoresheet.frames[scoresheet.framesLimit-1].rolls.length === 1 && scoresheet.frames[scoresheet.framesLimit-1].rolls[0] < 10))) {
+function updateButtons(pinsKnocked, currFrame) {
+  if(scoresheet.currFrameOver() || (scoresheet.frames.length === scoresheet.framesLimit && !(scoresheet.frames[scoresheet.framesLimit-1].rolls.length === 1 && scoresheet.frames[scoresheet.framesLimit-1].rolls[0] < scoresheet.frames[currFrame].pins))) {
     buttons(0);
   } else {
     buttons(pinsKnocked);
@@ -71,7 +71,7 @@ function strike(pinsKnocked) {
 }
 
 function spare(currFrame) {
-  return (scoresheet.frames[currFrame].rolls[0] + scoresheet.frames[currFrame].rolls[1] === 10);
+  return (scoresheet.frames[currFrame].rolls[0] + scoresheet.frames[currFrame].rolls[1] === scoresheet.frames[currFrame].pins);
 }
 
 function selectRollDisplayContent1(pinsKnocked, currFrame) {

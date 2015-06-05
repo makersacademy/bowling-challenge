@@ -1,16 +1,30 @@
-scoresheet = new Scoresheet;
-
 $(document).ready(function() {
+  scoresheet = new Scoresheet;
   $('#title').hide();
   $('#buttons').hide();
   $('#scoresheet').hide();
   buttons(0);
-  $('#title').hide().fadeIn(500, function() {
+  $('#title').fadeIn(500, function() {
     $('#buttons').fadeIn(500, function() {
-      $('#scoresheet').hide().fadeIn(500);
+      $('#scoresheet').fadeIn(500);
     });
   });
 });
+
+function playAgain() {
+  $('#gameOver').fadeOut(1000, function() {
+    $('#scoresheet').fadeOut(1000, function() {
+      scoresheet = new Scoresheet;
+      $("#scoresheetTable td").html('');
+      $('#buttons').hide( function() {
+          buttons(0);
+        $('#buttons').fadeIn(500, function () {
+          $('#scoresheet').fadeIn(500);
+        });
+      });
+    });
+  });
+}
 
 function press(pinsKnocked) {
   if(scoresheet.frames.length === 0 || scoresheet.currFrameOver()) {
@@ -49,7 +63,7 @@ function buttons(pinsKnocked) {
   for(var i = 0; i < (11-pinsKnocked); i++) {
     buttonStr += '<button type="button" class="button" onclick="press(' + i + ')">' + i + '</button>';
   }
-  document.getElementById('buttons').innerHTML = buttonStr;
+  $('#buttons').html(buttonStr);
 }
 
 function strike(pinsKnocked) {
@@ -89,19 +103,15 @@ function selectRollDisplayContent2(pinsKnocked, currFrame) {
 }
 
 function updateRollDislay(position, currFrame, displayContent) {
-  console.log(currFrame);
-  console.log(position);
-  var rowRollDisplay = document.getElementsByTagName('tr')[1];
-  rowRollDisplay.getElementsByTagName('td')[(currFrame*2)+position].innerHTML = displayContent;
+  $('#scoresheetTable tr:eq(1) td:eq(' + ((currFrame*2)+position) + ')').html(displayContent);
 }
 
 function updateGameScoreDisplay(currFrame) {
   var accumulator = 0;
   for(var i = 0; i < (currFrame+1); i++) {
-    var rowGameTotal = document.getElementsByTagName('tr')[2];
     accumulator += scoresheet.frameScoreDisplay(i)
     if(scoresheet.frameScoreDisplay(i) != null) {
-      rowGameTotal.getElementsByTagName('td')[i].innerHTML = accumulator;
+      $('#scoresheetTable tr:eq(2) td:eq(' + (i) + ')').html(accumulator);
     }
   }
 }
@@ -109,7 +119,9 @@ function updateGameScoreDisplay(currFrame) {
 function gameOver() {
   if(scoresheet.gameOver()) {
     $('.button').prop('onclick',null).off('click');
-    $('#gameOver').hide().addClass('game_over').html('<h1>GAME OVER!</h1>').fadeIn(1000);
     $('.button').fadeOut(1000);
+    $('#gameOver').hide().addClass('game_over').html('<h1>Game Over!</h1>').fadeIn(1000).fadeOut(1000, function () {
+      $('#gameOver').html('<h1><a id="playAgain" href="#" onclick="playAgain();return false;">Play Again?</a></h1>').fadeIn(1000);
+    });
   }
 }

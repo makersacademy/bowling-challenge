@@ -19,8 +19,6 @@ Next Steps:
 -------
 
 - Refactor Scoresheet.js and App.js to make more readable.
-- Option to start another game at end of each finished game (via link).
-
 
 Live demo on Heroku:
 -------

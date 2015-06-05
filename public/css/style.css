@@ -17,6 +17,14 @@ h1 {
   font-size: 100px;
 }
 
+a {
+  text-decoration:none;
+}
+
+a:visited {
+  color:red;
+}
+
 .title {
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.5);

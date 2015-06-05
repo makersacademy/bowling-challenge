@@ -22,6 +22,7 @@ Bowling.prototype.pinsHit = function(arg) {
   if(roll_count >= 20){
     return "You have exceeded max number of rolls"
   } else if(isMoreThanTen > 10){
+    //roll_count-- what is happening here o!
     return "invalid"
   }
 
@@ -56,8 +57,17 @@ Bowling.prototype._bonusChecker = function(){
     } //checks for spikes
 }
 
+Bowling.prototype._isPerfectGame = function(){
+
+  if(this.score == 100){
+    bonus += 200
+  }
+}
+
 Bowling.prototype._calculateScore = function(){
   this.score = array_total(this.scores)
+
+  this._isPerfectGame();
 
   if(bonus){
     return this.score += bonus;

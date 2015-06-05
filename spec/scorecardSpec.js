@@ -41,7 +41,6 @@ describe('Bowling Scorecard', function(){
       bowling.pinsHit(5);
       bowling.pinsHit(5);
 
-
       bowling.pinsHit(6);
       bowling.pinsHit(1);
 
@@ -49,6 +48,20 @@ describe('Bowling Scorecard', function(){
 
       expect(bowling.score).toEqual(23); //as opposed to 17
     })
+
+    it('can score a perfect game',function(){
+
+      for(var i=0; i<10; i++){
+
+        bowling.pinsHit(10);
+
+      }
+
+      bowling.scoreGame();
+
+      expect(bowling.score).toEqual(300);
+
+    });
 
   });
 

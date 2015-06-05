@@ -1,56 +1,27 @@
-function Player (){
-  this.scorecard = [];
-  this.points = [];
-  this.bonus = 0;
-  this.firstbowl = 0;
-  this.secondbowl = 0;
-  this.frames = 0;
-  this.strike = false;
-  this.spare = false;
+function Scorecard (){
+  this.total = 0;
+  this.frame = [];
 };
 
-Player.prototype.bowl1 = function(pins) {
-  this.firstbowl = pins;
-  this.frames ++;
-  if (pins == 10) {
-    this.strike = true;
-  };
-  this.tracker();
+
+Scorecard.prototype.addFrame = function(frame) {
+  this.frame.push(frame);
+  this.calcTots();
 };
 
-Player.prototype.bowl2 = function(pins) {
-  this.secondbowl = pins;
-  if(this.firstbowl == 10) throw 'Strike, wait for next frame!'
-  if(this.firstbowl + pins == 10) {
-    this.spare = true;
-    this.bonus = pins + this.firstbowl;
+Scorecard.prototype.calcTots = function() {
+  var rounds = this.frame.length;
+  var that = this;
+
+  for (var i = 0; i < this.frame.length; i++) {
+    this.total += this.frame[i].total
+    }
   }
-  this.tracker();
 };
 
-Player.prototype.tracker = function() {
-  var position = (this.frames -1);
-  var total = (this.firstbowl + this.secondbowl + this.bonus);
 
-  if (this.strike) {
-    this.strike = false;
-    this.points.push([this.firstbowl, 0]);
-    if ((this.frames == 1) || (this.frames == 2)) {
-      this.scorecard[position] = 0;
-    } else {
-        this.scorecard[this.frames - 3] = this.points[0];
-      };
 
-  } else if (this.spare) {
-    this.spare = false;
-    this.points.push([this.firstbowl, this.secondbowl]);
-    if (this.frames == 1) {
-      this.scorecard[position] = 0;
-    } else {
-      this.bonus =+ this.firstbowl + this.secondbowl;
-      this.scorecard[position] = this.bonus;
-    };
-  } else {
-    this.scorecard[position] = total;
-  };
-};
+
+
+
+

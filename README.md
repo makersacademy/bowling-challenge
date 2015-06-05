@@ -18,8 +18,10 @@ Technologies Used:
 Next Steps:
 -------
 
+- Final frame choices: 10 buttons if strike, else remaining pins from previous roll.
+- Refactor Scoresheet.js.
 - Option to start another game at end of each finished game (via link).
-- Add favicon.
+
 
 Live demo on Heroku:
 -------

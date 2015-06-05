@@ -51,7 +51,7 @@ describe('Bowling Scorecard', function(){
 
     it('can score a perfect game',function(){
 
-      for(var i=0; i<10; i++){
+      for(var i=0; i<12; i++){
 
         bowling.pinsHit(10);
 

@@ -8,6 +8,9 @@ function Bowling(){
 
   previous_roll = 0;
   bonus = 0;
+
+
+  index = 0;
 }
 
 Bowling.prototype.pinsHit = function(arg) {
@@ -22,8 +25,8 @@ Bowling.prototype.pinsHit = function(arg) {
   if(roll_count >= 20){
     return "You have exceeded max number of rolls"
   } else if(isMoreThanTen > 10){
-    //roll_count-- what is happening here o!
-    return "invalid"
+    roll_count--
+    return "invalid, enter "+(10-previous_roll)+" or below"
   }
 
   if(arg===10){
@@ -34,7 +37,12 @@ Bowling.prototype.pinsHit = function(arg) {
     this.scores.push(arg);
     this.scores.push(0);
 
-    index = this.scores.length - 1; //current location of the array
+    if(index){
+      this._bonusChecker();
+      index = this.scores.length - 1;
+    } else {
+      index = this.scores.length - 1;
+    }
   } else {
     this.scores.push(arg);
   }
@@ -51,23 +59,15 @@ Bowling.prototype._bonusChecker = function(){
 
   }
 
-  if(spike_count && this.scores[index+2]){
-    bonus = this.scores[index+1] + this.scores[index+2];
+  if(spike_count && (this.scores[index+2] || this.scores[index+2] === 0)) {
+    bonus += this.scores[index+1] + this.scores[index+2];
     spike_count = 0;
     } //checks for spikes
 }
 
-Bowling.prototype._isPerfectGame = function(){
-
-  if(this.score == 100){
-    bonus += 200
-  }
-}
 
 Bowling.prototype._calculateScore = function(){
   this.score = array_total(this.scores)
-
-  this._isPerfectGame();
 
   if(bonus){
     return this.score += bonus;

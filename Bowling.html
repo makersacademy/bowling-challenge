@@ -43,23 +43,31 @@
 
       $('.button').click(function(){
         numPins = parseInt(($(this).attr("value")));
+        hitPins = game.pinsHit(numPins);
+
         displayRoll();
-        displayResult(numPins)
+        displayResult()
       });
 
       function displayRoll(){
-        if (j % 2 === 0){
+        //when hitPins is successful it is eq to undefined
+        if (j % 2 === 0 && hitPins === undefined){
           $('.roll1').append(numPins)
           j++;
-        } else {
+        } else if(hitPins === undefined) {
           $('.roll2').append(numPins)
           j++;
         }
       }
 
-      function displayResult(arg){
-        game.pinsHit(arg);
+      function displayResult(){
+        if(hitPins != undefined){
+          alert(hitPins)
+          return;
+        }
+
         game.scoreGame();
+        console.log(bonus)
         $('.result').text(game.score)
       }
 

@@ -22,7 +22,7 @@ describe('Bowl', function(){
 
     bowling.pinsHit(5);
 
-    expect(bowling.pinsHit(6)).toEqual("invalid");
+    expect(bowling.pinsHit(6)).toEqual("invalid, enter 5 or below");
 
   })
 })

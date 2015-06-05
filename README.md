@@ -29,6 +29,7 @@ Links:
 -------
 
 [Bowling Genius (useful guide)](http://www.bowlinggenius.com/)
+
 [Creating Static Sites in Ruby with Rack](https://devcenter.heroku.com/articles/static-sites-ruby)
 
 Images:

@@ -1,5 +1,7 @@
 function Player (){
   this.frames = [];
+  this.xtra1 = null;
+  this.xtra2 = null;
   for (var i = 0; i < 10; i++) {
     this.frames.push(new Frame());
   };
@@ -10,6 +12,14 @@ Player.prototype.play = function(i, pins) {
   frame.bowl(pins);
   return 10 - pins;
 };
+
+Player.prototype.playXtra = function(pins) {
+  if (this.xtra1 == null) {
+    this.xtra1 = pins;
+  } else if (this.extra2 == null) {
+    this.xtra2 = pins;
+  } else throw 'Game Over'
+}
 
 
 Player.prototype.game = function() {
@@ -24,9 +34,17 @@ Player.prototype.score = function(i) {
   for (var y = 0; y <= i; y++) {
     var current = this.frames[y];
     if (current.strike) {
-      score += this.calcStrike(y + 1);
+      if ((y+1) >= 9) {
+          score += 10 + this.xtra1 + this.xtra2;
+        } else {
+          score += this.calcStrike(y + 1);
+        }
     } else if (current.isSpare()) {
-      score += this.calcSpare(y+1);
+        if ((y+1) > 9) {
+          score += 10 + this.xtra1;
+        } else {
+          score += this.calcSpare(y+1);
+        };
     } else {
       score += current.go1 + current.go2;
     };

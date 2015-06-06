@@ -76,6 +76,25 @@ describe('Player', function(){
       player.play(1,4);
       expect(player.score(1)).toEqual(20);
   });
+
+
+     it('returns the score of frame up to position 2 with 2 spares ', function (){
+
+      player.play(0,10);
+      player.play(1,10);
+      player.play(2,10);
+      player.play(3,10);
+      player.play(4,10);
+      player.play(5,10);
+      player.play(6,10);
+      player.play(7,10);
+      player.play(8,10);
+      player.play(9,10);
+      // player.play(9,5);
+      player.playXtra(10);
+      player.playXtra(10);
+      expect(player.score(9)).toEqual(300);
+  });
 });
 
 

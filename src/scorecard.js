@@ -36,7 +36,7 @@ Scorecard.prototype.spareBonus = function(index) {
 
 Scorecard.prototype.strikeBonus = function(index) {
   if(this.isItStrike(index)) {
-    if(this.nextIsStrike(index) && !this.lastFrame(index +1)) {
+    if(this.nextIsStrike(index)) {
       return (this.allFrames[index + 1].totalFrameScore() + this.allFrames[index + 2].bothRolls[0]);
      } else {
       return this.allFrames[index + 1].totalFrameScore();
@@ -51,7 +51,6 @@ Scorecard.prototype.totalScore = function() {
   score += this.allFrames[i].totalFrameScore();
   score += this.spareBonus(i);
   score += this.strikeBonus(i);
-  // score +=
   };
   return score;
 };

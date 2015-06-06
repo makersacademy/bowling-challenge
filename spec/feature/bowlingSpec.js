@@ -25,7 +25,7 @@ it('can record total score for a game without a bonus', function(){
   expect(scorecard.totalScore()).toEqual(30);
 });
 
-it('can record total score of game without a bonus for last frame', function(){
+it('can record total score of a game with strikes but without a bonus for last frame', function(){
   for(var i = 0; i < 9; i++) {
     var frame = new Frame;
     scorecard.addFrame(frame);
@@ -36,6 +36,20 @@ it('can record total score of game without a bonus for last frame', function(){
   frame.bowl(2);
   frame.bowl(3);
   expect(scorecard.totalScore()).toEqual(252);
+});
+
+it('can record total score of a game with strikes but without a bonus for last frame', function(){
+  for(var i = 0; i < 9; i++) {
+    var frame = new Frame;
+    scorecard.addFrame(frame);
+    frame.bowl(0);
+    frame.bowl(10);
+  }
+  var frame = new Frame;
+  scorecard.addFrame(frame);
+  frame.bowl(2);
+  frame.bowl(3);
+  expect(scorecard.totalScore()).toEqual(97);
 });
 
 it('can record total score for perfect game', function(){

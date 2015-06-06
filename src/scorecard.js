@@ -27,3 +27,9 @@ Scorecard.prototype.spareBonus = function(index) {
     return this.allFrames[index + 1].bothRolls[0];
   }
 };
+
+Scorecard.prototype.strikeBonus = function(index) {
+  if(this.isItStrike && !this.allFrames[index + 1].isItStrike) {
+    return this.allFrames[index + 1].totalFrameScore();
+  }
+};

@@ -21,3 +21,9 @@ Scorecard.prototype.isItSpare = function(index) {
 Scorecard.prototype.isItStrike = function(index) {
   return this.allFrames[index].frameStrike();
 };
+
+Scorecard.prototype.spareBonus = function(index) {
+  if(this.isItSpare) {
+    return this.allFrames[index + 1].bothRolls[0];
+  }
+};

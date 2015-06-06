@@ -48,6 +48,12 @@ describe('Scorecard', function(){
     expect(scorecard.isItStrike(0)).toEqual(true);
   });
 
+  it('can calculalate spare bonus', function(){
+    scorecard.addFrame(spareDouble);
+    scorecard.addFrame(frameDouble);
+    expect(scorecard.spareBonus(0)).toEqual(3);
+  });
+
 });
 
 

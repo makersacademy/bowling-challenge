@@ -1,11 +1,17 @@
-describe('Frame', function() {
-  var Frame = [10];
-  describe('Can register 2 bowls', function() {
-    it('of 3', function() {
-      frame = new Frame();
-      frame.bowl(3)
-      frame.bowl(3)
-      expect(frame.score).toEqual([new F3,3]);
-    });
+describe("Frame", function() {
+  var frame;
+
+  beforeEach(function() {
+    frame = new Frame();
+  });
+
+  it("registers a score", function() {
+    frame.registerScore(3);
+    expect(frame.pinsLeft()).toEqual(7);
+  });
+
+  it("registers a second score", function() {
+    frame.registerScore(2)
+    expect(frame.pinsLeft()).toEqual(1);
   });
 });

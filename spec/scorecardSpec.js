@@ -48,18 +48,29 @@ describe('Scorecard', function(){
     expect(scorecard.isItStrike(0)).toEqual(true);
   });
 
+  it('checks if next frame is a strike',function(){
+    scorecard.addFrame(strikeDouble);
+    scorecard.addFrame(strikeDouble);
+    expect(scorecard.nextIsStrike(0)).toEqual(true);
+  })
+
   it('can calculalate a spare bonus', function(){
     scorecard.addFrame(spareDouble);
     scorecard.addFrame(frameDouble);
     expect(scorecard.spareBonus(0)).toEqual(3);
   });
 
-  it('can calculate a strike bonus', function(){
+  it('can calculate a single strike bonus', function(){
     scorecard.addFrame(strikeDouble);
     scorecard.addFrame(frameDouble);
     expect(scorecard.strikeBonus(0)).toEqual(6);
+  });
 
-
+  it('can calculate a double strike bonus', function(){
+    scorecard.addFrame(strikeDouble);
+    scorecard.addFrame(strikeDouble);
+    scorecard.addFrame(frameDouble);
+    expect(scorecard.strikeBonus(0)).toEqual(13);
   });
 
 });

@@ -32,12 +32,6 @@ describe('Scorecard', function(){
     expect(scorecard.allFrames).toEqual([{}]);
   });
 
-  it('can calculate a total of frames without a bonus', function(){
-    scorecard.addFrame(frameDouble);
-    scorecard.addFrame(frameDouble);
-    expect(scorecard.totalScore()).toEqual(12);
-  });
-
   it('can identify a spare', function(){
     scorecard.addFrame(spareDouble);
     expect(scorecard.isItSpare(0)).toEqual(true);
@@ -71,6 +65,19 @@ describe('Scorecard', function(){
     scorecard.addFrame(strikeDouble);
     scorecard.addFrame(frameDouble);
     expect(scorecard.strikeBonus(0)).toEqual(13);
+  });
+
+  it('can calculate a total score without a bonus', function(){
+    scorecard.addFrame(frameDouble);
+    scorecard.addFrame(frameDouble);
+    expect(scorecard.totalScore()).toEqual(12);
+  });
+
+  it('can calculate a total score with spare bonus', function(){
+    scorecard.addFrame(spareDouble);
+    scorecard.addFrame(frameDouble);
+    expect(scorecard.totalScore()).toEqual(19);
+
   });
 
 });

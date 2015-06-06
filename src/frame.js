@@ -14,10 +14,6 @@ Frame.prototype.bowl = function(pins) {
   this.bothRolls.push(pins)
 };
 
-Frame.prototype.outstandingPins= function() {
-  return this.standingPins;
-};
-
 Frame.prototype.isOver = function() {
   return (this.rollNumber === 2 || this.standingPins === 0);
 };

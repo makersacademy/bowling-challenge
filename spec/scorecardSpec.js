@@ -92,6 +92,14 @@ describe('Scorecard', function(){
     expect(scorecard.totalScore()).toEqual(45);
   });
 
+  it('can calculate a total score with combination of spare and double strike bonus', function(){
+    scorecard.addFrame(strikeDouble);
+    scorecard.addFrame(strikeDouble);
+    scorecard.addFrame(spareDouble);
+    scorecard.addFrame(frameDouble);
+    expect(scorecard.totalScore()).toEqual(59);
+  });
+
 });
 
 

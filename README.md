@@ -18,7 +18,7 @@ Technologies Used:
 Next Steps:
 -------
 
-- Refactor Scoresheet.js and App.js to make more readable.
+- UI tests (inc. App.js updateGameScoreDisplay function (test whether correct game total is displayed for perfect game, game of gutterballs, etc.)).
 
 Live demo on Heroku:
 -------

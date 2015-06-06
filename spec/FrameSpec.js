@@ -34,14 +34,20 @@ describe('Frame', function() {
     expect(frame.isOver).toEqual(true);
   });
 
-  // });
+  it('can score a strike', function(){
+    frame.knockPins(10);
+    expect(frame.rollCount).toEqual(1);
+    expect(frame.isOver).toEqual(true);
+  });
 
-// if KnockPins.count = 0-2
+  it('can score a spare', function(){
+    frame.knockPins(9);
+    frame.knockPins(1);
+    expect(frame.pinCount).toEqual(0);
+    expect(frame.rollCount).toEqual(2);
 
-// else
-//   it('can go bowl no higher than 10 on first game', function(){
-//     expect(function () {frame.knockPins(11)}).toThrow("There are only 10 pins to knock down!");
-//   });
+  });
+
 
 });
 

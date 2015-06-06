@@ -85,6 +85,13 @@ describe('Scorecard', function(){
     expect(scorecard.totalScore()).toEqual(22);
   });
 
+  it('can calculate a total score with double strike bonus', function(){
+    scorecard.addFrame(strikeDouble);
+    scorecard.addFrame(strikeDouble);
+    scorecard.addFrame(frameDouble);
+    expect(scorecard.totalScore()).toEqual(45);
+  });
+
 });
 
 

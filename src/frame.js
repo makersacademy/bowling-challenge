@@ -1,11 +1,11 @@
-function Frame (){
-  // this
+function Frame() {
+  this.standingPins = 10
 }
 
-Frame.prototype.registerScore = function(pinsLeft) {
-
+Frame.prototype.registerScore = function(knockedDown) {
+  this.standingPins -= knockedDown;
 };
 
-Frame.prototype.pinsLeft= function() {
-  return 7
-}
+Frame.prototype.pinsLeft = function() {
+  return this.standingPins
+};

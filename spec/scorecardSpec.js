@@ -77,7 +77,12 @@ describe('Scorecard', function(){
     scorecard.addFrame(spareDouble);
     scorecard.addFrame(frameDouble);
     expect(scorecard.totalScore()).toEqual(19);
+  });
 
+  it('can calculate a total score with single strike bonus', function(){
+    scorecard.addFrame(strikeDouble);
+    scorecard.addFrame(frameDouble);
+    expect(scorecard.totalScore()).toEqual(22);
   });
 
 });

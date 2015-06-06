@@ -43,6 +43,7 @@ Scorecard.prototype.totalScore = function() {
   for(var i = 0; i <this.allFrames.length; i++) {
   score += this.allFrames[i].totalFrameScore();
   score += this.spareBonus(i);
+  score += this.strikeBonus(i);
   };
   return score;
 };

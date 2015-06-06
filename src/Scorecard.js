@@ -3,7 +3,16 @@ function Scorecard() {
 }
 
 Scorecard.prototype.addFrame = function(frame) {
-  this.frames.push(frame)
+  if(!this.gameOver()){
+    this.frames.push(frame);
+  }
+  else {
+    throw ("Game Over");
+  }
+};
+
+Scorecard.prototype.gameOver = function() {
+  return this.frames.length === 10;
 };
 
 Scorecard.prototype.getRollScore = function(frameIndex, roll) {
@@ -26,11 +35,8 @@ Scorecard.prototype.total = function() {
   var runningTotal = 0;
   for(var i = 0; i < this.frames.length; i ++) {
     runningTotal += this.bonusFromSpare(i);
-    console.log(runningTotal);
     runningTotal += this.bonusFromStrike(i);
-     console.log(runningTotal);
     runningTotal += this.frames[i].total();
-     console.log(runningTotal);
   }
   return runningTotal;
 };

@@ -31,6 +31,14 @@ describe("Scorecard", function() {
       expect(scorecard.frames).toEqual([{}]);
     });
 
+    it("can only take 10 frames", function(){
+      for(var i = 0; i < 10; i ++) {
+        var frame = new Frame;
+        scorecard.addFrame(frame);
+      };
+      expect(scorecard.gameOver()).toEqual(true);
+    });
+
     it("can calculate a total of a series of frames", function(){
       scorecard.addFrame(frameDouble);
       scorecard.addFrame(frameDouble);
@@ -66,5 +74,6 @@ describe("Scorecard", function() {
       scorecard.addFrame(strikeDouble);
       expect(scorecard.total()).toEqual(60);
     });
+
 
 });

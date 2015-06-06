@@ -22,6 +22,7 @@ describe("Playing a game", function() {
       for(var i = 0; i < 10; i ++) {
         var frame = new Frame;
         frame.registerGo(0);
+        frame.registerGo(0);
         scorecard.addFrame(frame);
       };
       expect(scorecard.total()).toEqual(0);

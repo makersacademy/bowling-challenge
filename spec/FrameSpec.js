@@ -85,8 +85,12 @@ describe("Frame", function() {
       expect(frame.total()).toEqual(7);
     });
 
-
   });
+
+  // describe("10th frame logic", function(){
+
+  //   it("")
+  // })
     
 
 });

@@ -6,7 +6,7 @@ function Frame() {
 };
 
 Frame.prototype.bowl = function(pins) {
-  if(this.isOver()){
+  if(this.isOver()) {
     return "This frame is over"
   };
   this.rollNumber += 1
@@ -28,4 +28,8 @@ Frame.prototype.frameSpare = function() {
 
 Frame.prototype.totalFrameScore = function() {
   return (this.startingPins - this.standingPins);
+};
+
+Frame.prototype.lastFrame = function() {
+
 };

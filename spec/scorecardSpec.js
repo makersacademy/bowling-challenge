@@ -19,6 +19,12 @@ describe('Scorecard', function(){
     frameSpare : function() { return true },
     frameStrike : function() { return false }
    }
+   secondSpareDouble = {
+    bothRolls: [4, 6],
+    totalFrameScore : function() { return 10},
+    frameSpare : function() { return true },
+    frameStrike : function() { return false }
+   }
    strikeDouble = {
     bothRolls: [10],
     totalFrameScore : function() { return 10},
@@ -92,12 +98,22 @@ describe('Scorecard', function(){
     expect(scorecard.totalScore()).toEqual(45);
   });
 
-  it('can calculate a total score with combination of spare and double strike bonus', function(){
+  it('can calculate a total score with combination of spare[0, 10] and double strike bonus', function(){
     scorecard.addFrame(strikeDouble);
     scorecard.addFrame(strikeDouble);
     scorecard.addFrame(spareDouble);
     scorecard.addFrame(frameDouble);
     expect(scorecard.totalScore()).toEqual(59);
+  });
+
+  it('can calculate a total score with combination of spare[0, 10], spare[4, 6] and double strike bonuses', function(){
+    scorecard.addFrame(spareDouble);
+    scorecard.addFrame(strikeDouble);
+    scorecard.addFrame(strikeDouble);
+    scorecard.addFrame(secondSpareDouble);
+    scorecard.addFrame(frameDouble);
+    expect(scorecard.totalScore()).toEqual(83);
+
   });
 
 });

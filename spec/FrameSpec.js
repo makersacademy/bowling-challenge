@@ -15,9 +15,20 @@ describe("Frame", function() {
     expect(frame.pinsLeft()).toEqual(8);
   });
 
-  it("resgisters 2 scores", function() {
+  it("registers 2 scores", function() {
     frame.registerScore(4)
     frame.registerScore(4)
     expect(frame.pinsLeft()).toEqual(2);
   });
+
+  it("knows when it's over", function() {
+    frame.registerScore(4)
+    frame.registerScore(4)
+    expect(frame.isOver()).toEqual(true);
+  });
+
+  it("knows when there is another turn", function() {
+    expect(frame.isOver()).toEqual(false);
+  })
+
 });

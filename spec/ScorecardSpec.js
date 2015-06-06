@@ -31,7 +31,7 @@ describe("Scorecard", function() {
       expect(scorecard.frames).toEqual([{}]);
     });
 
-    it("can only take 10 frames", function(){
+    it("can only have 10 frames", function(){
       for(var i = 0; i < 10; i ++) {
         var frame = new Frame;
         scorecard.addFrame(frame);

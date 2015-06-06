@@ -6,7 +6,7 @@ describe("Playing a game", function() {
 
   describe("Perfect game", function(){
 
-    it("has a score of 300", function(){
+    xit("has a score of 300", function(){
       for(var i = 0; i < 10; i ++) {
         var frame = new Frame;
         frame.registerGo(10);
@@ -46,7 +46,7 @@ describe("Playing a game", function() {
 
   describe("All 5s game", function(){
 
-    it("has a score of 150", function(){
+    xit("has a score of 150", function(){
       for(var i = 0; i < 10; i ++) {
         var frame = new Frame;
         frame.registerGo(5);

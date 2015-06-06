@@ -10,14 +10,14 @@ describe("Frame", function() {
     expect(frame.pinsLeft()).toEqual(10);
   });
 
-  it("registers a proper go", function() {
+  it("registers a score", function() {
     frame.registerScore(2)
     expect(frame.pinsLeft()).toEqual(8);
   });
 
-  // it("knows when it's over", function() {
-  //   frame.registerScore(4)
-  //   frame.registerScore(4)
-  //   expect(frame.registerScore(4)).toThrow(new Error("Frame over!"));
-  // });
+  it("resgisters 2 scores", function() {
+    frame.registerScore(4)
+    frame.registerScore(4)
+    expect(frame.pinsLeft()).toEqual(2);
+  });
 });

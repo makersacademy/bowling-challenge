@@ -24,4 +24,14 @@ describe("Scorecard", function() {
     expect(function() { scorecard.bowl(11); }).toThrow();
   });
 
+  it ("should start on the first frame", function() {
+    expect(scorecard.currentFrame()).toEqual(1);
+  });
+
+  it("should move to the second frame after two bowls", function() {
+    scorecard.bowl(1);
+    scorecard.bowl(5);
+    expect(scorecard.currentFrame()).toEqual(2);
+  });
+
 });

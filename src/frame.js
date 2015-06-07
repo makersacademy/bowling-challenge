@@ -29,7 +29,3 @@ Frame.prototype.frameSpare = function() {
 Frame.prototype.totalFrameScore = function() {
   return (this.startingPins - this.standingPins);
 };
-
-Frame.prototype.lastFrame = function() {
-
-};

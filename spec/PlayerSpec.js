@@ -9,20 +9,13 @@ describe('Player', function(){
     expect(player.frames.length).toEqual(10);
   });
 
-  it('returns the number of remaining pins', function(){
-    var pins = player.play(0, 8);
-    expect(pins).toEqual(2);
-  });
-
-
-  it('returns the score of frame up to position 1', function (){
-
+  it('returns the score of frame up to position 1 with one strike', function (){
       player.play(0,10);
       player.play(1,1);
       player.play(1,2);
       expect(player.score(1)).toEqual(16);
   });
-    it('returns the score of frame up to position 1 (b)', function (){
+    it('returns the score of frame up to position 1 with 2 gutter balls', function (){
 
       player.play(0,10);
       player.play(1,0);
@@ -30,7 +23,7 @@ describe('Player', function(){
       expect(player.score(1)).toEqual(10);
   });
 
-    it('returns the score of frame up to position 1 (c)', function (){
+    it('returns the score of frame up to position 1 with neither strikes nor spares', function (){
 
       player.play(0,2);
       player.play(0,1);
@@ -39,10 +32,9 @@ describe('Player', function(){
       expect(player.score(1)).toEqual(11);
   });
 
-    it('returns the score of frame up to position 2', function (){
-
-      player.play(0,10);
-      player.play(1,10);
+    it('returns the score of frame up to position 2 with 2 strikes', function (){
+      var times = 2;
+      bowlStrike(times);
       player.play(2,3);
       player.play(2,5);
       expect(player.score(2)).toEqual(49);
@@ -50,9 +42,8 @@ describe('Player', function(){
 
      it('returns the score of frame up to position 3 with 3 strikes ', function (){
 
-      player.play(0,10);
-      player.play(1,10);
-      player.play(2,10);
+      var times = 3;
+      bowlStrike(times);
       player.play(3,5);
       player.play(3,1);
       expect(player.score(3)).toEqual(77);
@@ -78,23 +69,23 @@ describe('Player', function(){
   });
 
 
-     it('returns the score of frame up to position 2 with 2 spares ', function (){
-
-      player.play(0,10);
-      player.play(1,10);
-      player.play(2,10);
-      player.play(3,10);
-      player.play(4,10);
-      player.play(5,10);
-      player.play(6,10);
-      player.play(7,10);
-      player.play(8,10);
-      player.play(9,10);
-      // player.play(9,5);
+     it('returns the score of a perfect match', function (){
+      var lastFrame = 9;
+      var times = 10;
+      bowlStrike(times);
       player.playXtra(10);
       player.playXtra(10);
-      expect(player.score(9)).toEqual(300);
+      expect(player.score(lastFrame)).toEqual(300);
   });
+
+  function bowlStrike(times) {
+    var score = 0;
+    for (var i = 0; i < times; i++) {
+      score = player.play(i,10);
+    };
+    return score;
+  };
 });
+
 
 

@@ -1,10 +1,7 @@
-describe('Scorecard', function(){
-  var scorecard;
+describe('Frame', function(){
   var frame;
 
-
   beforeEach(function() {
-    scorecard = new Scorecard;
     frame = new Frame;
   });
 
@@ -44,23 +41,4 @@ describe('Scorecard', function(){
     frame.bowl(10);
     expect(function(){ frame.bowl(1);}).toThrow('Cannot exceed 10 pins');
   });
-
-
-  // function bowlFrame() {
-  //   frame = new Frame;
-  //   frame.bowl(4);
-  //   frame.bowl2(3);
-  //   scorecard.addFrame(frame);
-  // }
-
-  // function bowlStrike() {
-  //   frame = new Frame;
-  //   frame.bowl1(10);
-  //   scorecard.addFrame(frame);
-  // }
-  // function bowler(func, times) {
-  //   for (var i = 0; i < times; i++) {
-  //     func();
-  //   };
-  // };
 });

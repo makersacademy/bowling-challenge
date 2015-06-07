@@ -21,22 +21,26 @@ describe("Frame", function() {
     expect(frame.pinsLeft()).toEqual(2);
   });
 
-  it("Knows when it's over", function() {
-    frame.registerScore(4)
-    frame.registerScore(4)
-    expect(frame.isOver()).toEqual(true);
+  describe ("Knows when it's over", function(){
+
+    it("After 2 bowls", function() {
+      frame.registerScore(4)
+      frame.registerScore(4)
+      expect(frame.isOver()).toEqual(true);
+    });
+
+    it("When there are no pins left standing", function() {
+      frame.registerScore(10)
+      expect(frame.isOver()).toEqual(true);
+    });
+
   });
 
-  it("Knows when there is another turn", function() {
+// describe ("Knows when it's not over"), function() {
+
+  it("After less than 2 bowls", function() {
     expect(frame.isOver()).toEqual(false);
-  })
-
-  it("Understands when there are no pins left standing", function() {
-    frame.registerScore(10)
-    expect(frame.isOver()).toEqual(true);
   });
 
-  // it("cannot score more than 10")
-  //   frame.register
-  // });
+
 });

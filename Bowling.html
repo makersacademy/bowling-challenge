@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+      <title> Bowling challenge </title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="src/bowling.js"></script>
+      <style>
+        body {font-family: Helvetica}
+      </style>
+    </head>
+
+    <body>
+      <div class="container">
+        <div class="buttons">
+        </div>
+
+        <div class="roll1">
+        Roll 1:
+        </div>
+
+        <div class="roll2">
+        Roll 2:
+        </div>
+
+        <div class="result">
+        Result:
+        </div>
+
+      </div>
+    </body>
+
+    <script>
+
+      var game = new Bowling();
+      var j = 0;
+
+      for(var i=0; i<=10; i++){
+
+        $('.buttons').append("<button class='button' value="+i+">"+i+"</button>")
+      }
+
+      $('.button').click(function(){
+        numPins = parseInt(($(this).attr("value")));
+        hitPins = game.pinsHit(numPins);
+
+        displayRoll();
+        displayResult()
+      });
+
+      function displayRoll(){
+        //when hitPins is successful it is eq to undefined
+        if (j % 2 === 0 && hitPins === undefined){
+          $('.roll1').append(numPins)
+          j++;
+        } else if(hitPins === undefined) {
+          $('.roll2').append(numPins)
+          j++;
+        }
+      }
+
+      function displayResult(){
+        if(hitPins != undefined){
+          alert(hitPins)
+          return;
+        }
+
+        game.scoreGame();
+        console.log(bonus)
+        $('.result').text(game.score)
+      }
+
+
+
+    </script>
+
+</html>
+
+
+

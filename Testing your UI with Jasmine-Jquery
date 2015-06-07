@@ -1,0 +1,10 @@
+Testing your UI with Jasmine-Jquery
+
+Jasmine-Jquery is a handy little tool which provides a set of custom matchers for UI testing, much like Capybara does. To get started, download the Jasmine-Jquery source code from here: https://github.com/velesin/jasmine-jquery and save it in a file in lib/jasmine-2.3.4 called jasmine-jquery.js.
+
+Include the file in the head of your SpecRunner file: <script src="lib/jasmine-2.3.4/jasmine-jquery.js"></script>. You are now ready to write some killer tests.
+
+
+/*About Fixtures*/
+The Fixture module of jasmine-jquery allows you to load HTML content to be used by your tests. The overall workflow is as follows
+

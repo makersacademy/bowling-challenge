@@ -9,6 +9,11 @@ Scorecard.prototype.bowl = function (pins) {
 };
 
 Scorecard.prototype.score = function () {
+  // Return score 0 if array is empty
+  if (this.shots.length == 0) {
+    return 0;
+  };
+  // Otherwise iterate through each element and summate them
   var score = this.shots.reduce((a, b) => a + b);
   return score;
 };

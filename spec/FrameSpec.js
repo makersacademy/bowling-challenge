@@ -42,5 +42,10 @@ describe("Frame", function() {
     expect(frame.isOver()).toEqual(false);
   });
 
+  it("Knows what the total is", function() {
+    frame.registerScore(4)
+    frame.registerScore(4)
+    expect(frame.total()).toEqual(8);
+  });
 
 });

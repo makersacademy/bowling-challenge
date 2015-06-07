@@ -13,5 +13,9 @@ Frame.prototype.pinsLeft = function() {
 };
 
 Frame.prototype.isOver = function() {
-    return (this.bowlsRecorded === 2 || this.standingPins === 0 );
+  return (this.bowlsRecorded === 2 || this.standingPins === 0 );
+};
+
+Frame.prototype.total = function() {
+  return 10 - this.standingPins
 };

@@ -1,0 +1,24 @@
+<html>
+
+<script type="text/javascript" src="src/bowling.js"></script>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  <H2> Tim's Bowling ScoreCard </H2>
+  <div>
+    The temperature is <span id="temp"> 999 </span> &deg;C <br>
+  </div>
+  <input id="down"  type="button" value="down"  onclick="webClick('down');" />
+  <input id="up"    type="button" value="up"    onclick="webClick('up');" />
+  <input id="reset" type="button" value="reset" onclick="webClick('reset');" /> <br>
+  <input id="powerSave" type="checkbox" onclick="webPowerSave();" checked> Power save
+
+<script>
+
+window.onload = function WindowLoad(event) {
+    webBowlingScorecard = new BowlingScorecard();
+};
+
+
+</script>
+
+</html>

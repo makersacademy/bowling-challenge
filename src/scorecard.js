@@ -44,3 +44,4 @@ Scorecard.prototype.totalScore = function() {
   };
   return score;
 };
+

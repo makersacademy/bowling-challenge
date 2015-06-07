@@ -12,7 +12,7 @@ it('can record total score for gutter game', function(){
     frame.bowl(0);
     frame.bowl(0);
   }
-   expect(scorecard.totalScore()).toEqual(0);
+  expect(scorecard.totalScore()).toEqual(0);
 });
 
 it('can record total score for a game without a bonus', function(){
@@ -38,7 +38,7 @@ it('can record total score of a game with strikes but without a bonus for last f
   expect(scorecard.totalScore()).toEqual(252);
 });
 
-it('can record total score of a game with strikes but without a bonus for last frame', function(){
+it('can record total score of a game with spares but without a bonus for last frame', function(){
   for(var i = 0; i < 9; i++) {
     var frame = new Frame;
     scorecard.addFrame(frame);

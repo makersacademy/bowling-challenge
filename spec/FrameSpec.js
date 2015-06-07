@@ -34,6 +34,12 @@ describe("Frame", function() {
       expect(frame.isOver()).toEqual(true);
     });
 
+    // it("Throws an error when trying to bowl a third time", function() {
+    //   frame.registerScore(4)
+    //   frame.registerScore(4)
+    //   expect( function(){ frame.registerScore(4); } ).toThrow(new Error("Frame Over!"));
+    // });
+
   });
 
 // describe ("Knows when it's not over"), function() {

@@ -5,9 +5,12 @@ function Frame() {
 }
 
 Frame.prototype.registerScore = function(knockedDown, bowlsLeft) {
+  if (this.isOver == true){
+    throw("Frame Over!")
+  };
   this.remainingPins -= knockedDown;
   this.bowlsRecorded += 1;
-};
+  };
 
 Frame.prototype.pinsLeft = function() {
   return this.remainingPins

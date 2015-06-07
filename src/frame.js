@@ -1,11 +1,11 @@
 function Frame() {
   this.standingPins = 10
-  this.bowlsLeft = 2
+  this.bowlsRecorded = 0
 }
 
 Frame.prototype.registerScore = function(knockedDown, bowlsLeft) {
   this.standingPins -= knockedDown;
-  this.bowlsLeft -= 1;
+  this.bowlsRecorded += 1;
 };
 
 Frame.prototype.pinsLeft = function() {
@@ -13,5 +13,5 @@ Frame.prototype.pinsLeft = function() {
 };
 
 Frame.prototype.isOver = function() {
-    return (this.bowlsLeft === 0);
+    return (this.bowlsRecorded === 2 || this.standingPins === 0 );
 };

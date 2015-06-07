@@ -1,5 +1,6 @@
 function Player (){
   this.frames = [];
+  this.round = 0;
   this.xtra1 = null;
   this.xtra2 = null;
   for (var i = 0; i < 10; i++) {
@@ -7,27 +8,45 @@ function Player (){
   };
 };
 
-Player.prototype.play = function(i, pins) {
+Player.prototype.bowl = function(i, pins) {
+  console.log(this.round);
   var frame = this.frames[i];
   frame.bowl(pins);
-  this.isBonusPlay
-
 };
 
-Player.prototype.playXtra = function(pins) {
-  if (this.xtra1 == null) {
+Player.prototype.bowlXtra = function(pins) {
+  var xtra = this.xtra1 && this.xtra2;
+  if (xtra != null) {
+    throw "Game Over!"
+  } else if (this.xtra1 == null) {
     this.xtra1 = pins;
   } else if (this.extra2 == null) {
     this.xtra2 = pins;
   } else throw 'Game Over'
-}
+};
 
+Player.prototype.play = function(pins) {
+  var i = this.round;
+  var strike = 10;
+  var lastFrame = this.frames[9];
+  var lastSum = lastFrame.go1 + lastFrame.go2;
 
-Player.prototype.isBonusPlay = function() {
-  this.play(0, 9);
-  this.play(0, 1);
-  var score = this.score(0);
-  return score;
+  if (i <= 9) {
+    if (pins == 10) {
+      this.bowl(i,pins);
+      this.round ++;
+    } else if (this.frames[i].go1 != null) {
+      this.bowl(i,pins);
+      this.round ++;
+    } else {
+      this.bowl(i,pins);
+    };
+  } else if (lastFrame.strike) {
+    this.bowlXtra(pins);
+  } else if (lastSum == 10){
+    this.bowlXtra(pins);
+    this.xtra2 = 0;
+  } else throw 'Game Over!'
 };
 
 Player.prototype.score = function(i) {

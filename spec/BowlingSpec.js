@@ -1,3 +1,5 @@
+// Leaving this code in place pending creation of first test
+
 describe("Player", function() {
   var player;
   var song;

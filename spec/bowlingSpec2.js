@@ -104,7 +104,7 @@ describe('Stream', function() {
     });
   });
 
-    describe('when you get a strike, you get more ', function() {
+  describe('when you get a strike, you get more ', function() {
     it('set at 78', function() {
       stream.nextball(10);
       stream.nextball(10);
@@ -115,5 +115,38 @@ describe('Stream', function() {
     });
   });
 
+  describe('when you get a strike, you get more ', function() {
+    it('set at 78', function() {
+      stream.nextball(10);
+      stream.nextball(10);
+      stream.nextball(10);
+      stream.nextball(10);
+      stream.nextball(10);
+      stream.nextball(10);
+      stream.nextball(10);
+      stream.nextball(10);
+      stream.nextball(10);
+      stream.nextball(10);
+      stream.nextball(10);
+      stream.nextball(10);
+      expect(stream.totalScore).toEqual(300);
+    });
+  });
+
+  describe('when you get a score the score is displayed', function() {
+    it('sets to X- 7/ 42', function() {
+      stream.nextball(10);
+      stream.nextball(7);
+      stream.nextball(3);
+      stream.nextball(4);
+      stream.nextball(2);
+      expect(stream.display(1,1)).toEqual("X");
+      expect(stream.display(1,2)).toEqual("-");
+      expect(stream.display(2,1)).toEqual("7");
+      expect(stream.display(2,2)).toEqual("/");
+      expect(stream.display(3,1)).toEqual("4");
+      expect(stream.display(3,2)).toEqual("2");
+    });
+  });
 
 });

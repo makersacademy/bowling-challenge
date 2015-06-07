@@ -14,10 +14,14 @@ describe("Scorecard", function() {
     expect(scorecard.score()).toEqual(0);
   });
 
-  it("should score 5 when 3 and then 2 pins knocked over", function() {
+  it("should score 5 when 3 then 2 pins knocked over", function() {
     scorecard.bowl(3);
     scorecard.bowl(2);
     expect(scorecard.score()).toEqual(5);
+  });
+
+  it("should not accept 11 pins being knocked over in 1 bowl", function() {
+    expect(function() { scorecard.bowl(11); }).toThrow();
   });
 
 });

@@ -5,6 +5,11 @@ function Scorecard(){
 };
 
 Scorecard.prototype.bowl = function (pins) {
+  // Simple sanity check. Better version checks for max 10 in a frame
+  if(pins > 10) {
+    throw new Error("You bowled more pins than were set out");
+  };
+
   this.shots.push(pins);
 };
 

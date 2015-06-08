@@ -49,4 +49,25 @@ describe("Scorecard", function() {
     expect(scorecard.score()).toEqual(74);
   });
 
+  it("should have a gutter game score 0 from 20 lots of 0", function() {
+    scorecard.multibowl(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+    expect(scorecard.finalScore()).toEqual(0);
+  });
+
+  it("should have a perfect game score 300 from 12 lots of 10", function() {
+    scorecard.multibowl(10,10,10,10,10,10,10,10,10,10,10,10);
+    expect(scorecard.finalScore()).toEqual(300);
+  });
+
+  // This is a dubious test as it checks an internal variable
+  it("should have 3 bowls in frame 10 if a spare is scored", function() {
+    scorecard.multibowl(10,10,10,10,10,10,10,10,10,6,4);
+    expect(scorecard.currentFrame).toEqual(10);
+  });
+
+  it("should throw a fault trying to bowl 11th frame", function() {
+    scorecard.multibowl(10,10,10,10,10,10,10,10,10,6,4,5);
+    expect(function() { scorecard.bowl(6); }).toThrow();
+  });
+
 });

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" ng-app="BowlingCalc">
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling calculator</title>
+<!--     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"> -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/frameService.js"></script>
+    <script src="js/bowlingCalcController.js"></script>
+  </head>
+
+  <body ng-controller="BowlingCalcController as bowlCtrl">
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10]">
+         <button type="button" id="{{i}}" ng-click="bowlCtrl.addRoll(i)">{{i}}</button>
+        </li>
+      </ul>
+    </div>
+    {{bowlCtrl.value}}
+  </body>
+</html>

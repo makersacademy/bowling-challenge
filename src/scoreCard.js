@@ -12,9 +12,8 @@ ScoreCard.prototype.strikeBonus = function(i) {
 };
 
 ScoreCard.prototype.scoreFrames = function(n) {
-  var upToN = new Array(n);
   var cumulativeScore = 0;
-  for(var i=0;i<upToN.length;i++){
+  for(var i = 0; i< n; i++){
     if (this.allFrames[i].spare){
       cumulativeScore += this.allFrames[i + 1].rolls[0]
     };

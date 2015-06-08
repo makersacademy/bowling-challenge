@@ -39,5 +39,9 @@ describe("Scorecard", function() {
     expect(scorecard.whichFrame()).toEqual(2);
   });
 
+  it("should be on frame 8 after 12 bowls, inc. 2 strikes", function() {
+    scorecard.multibowl(5,4,3,4,10,5,4,7,3,10,0,0);
+    expect(scorecard.whichFrame()).toEqual(8);
+  });
 
 });

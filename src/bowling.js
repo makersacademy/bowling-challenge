@@ -60,3 +60,10 @@ Scorecard.prototype.score = function () {
   };
   return score;
 };
+
+Scorecard.prototype.multibowl = function () {
+  var args = Array.prototype.slice.call(arguments);
+  for (var i = 0, len = args.length; i < len; i++) {
+    this.bowl(args[i]);
+  }
+};

@@ -44,4 +44,9 @@ describe("Scorecard", function() {
     expect(scorecard.whichFrame()).toEqual(8);
   });
 
+  it("should have score 74 from 5,4,3,4,10,5,4,7,3,10,0,0", function() {
+    scorecard.multibowl(5,4,3,4,10,5,4,7,3,10,0,0);
+    expect(scorecard.score()).toEqual(74);
+  });
+
 });

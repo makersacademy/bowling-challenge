@@ -7,6 +7,7 @@
 
   <H2> Tim's Bowling ScoreCard </H2>
   <div>
+    <button class="btn btn-primary" onclick="addScore(0)">Zero</button>
     <button class="btn btn-primary" onclick="addScore(1)">One</button>
     <button class="btn btn-primary" onclick="addScore(2)">Two</button>
     <button class="btn btn-primary" onclick="addScore(3)">Three</button>
@@ -54,16 +55,16 @@
         <td id="102"> - </td>
         <td id="103"> - </td>
       </tr><tr>
-        <td colspan="2"> - </td>
-        <td colspan="2"> - </td>
-        <td colspan="2"> - </td>
-        <td colspan="2"> - </td>
-        <td colspan="2"> - </td>
-        <td colspan="2"> - </td>
-        <td colspan="2"> - </td>
-        <td colspan="2"> - </td>
-        <td colspan="2"> - </td>
-        <td colspan="2"> - </td>
+        <td id="f1" colspan="2"> - </td>
+        <td id="f2" colspan="2"> - </td>
+        <td id="f3" colspan="2"> - </td>
+        <td id="f4" colspan="2"> - </td>
+        <td id="f5" colspan="2"> - </td>
+        <td id="f6" colspan="2"> - </td>
+        <td id="f7" colspan="2"> - </td>
+        <td id="f8" colspan="2"> - </td>
+        <td id="f9" colspan="2"> - </td>
+        <td id="f10" colspan="2"> - </td>
       </tr>
     </table>
 
@@ -84,8 +85,9 @@ function addScore(score) {
 
 function updateScores() {
   for (var frame = 1; frame < 11; frame++) {
+    document.getElementById( "f" + String(frame) ).innerHTML = stream.displayFrameScore(frame);
+    document.getElementById( "103" ).innerHTML = stream.display(10,3);
     for (var go = 1; go < 3; go++) {
-      console.log( parseInt(String(frame) + String(go)) );
       document.getElementById( parseInt(String(frame) + String(go)) ).innerHTML = stream.display(frame,go);
     };
   };

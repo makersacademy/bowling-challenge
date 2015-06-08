@@ -116,19 +116,10 @@ describe('Stream', function() {
   });
 
   describe('when you get a strike, you get more ', function() {
-    it('set at 78', function() {
-      stream.nextball(10);
-      stream.nextball(10);
-      stream.nextball(10);
-      stream.nextball(10);
-      stream.nextball(10);
-      stream.nextball(10);
-      stream.nextball(10);
-      stream.nextball(10);
-      stream.nextball(10);
-      stream.nextball(10);
-      stream.nextball(10);
-      stream.nextball(10);
+    it('set at 300', function() {
+      for(var i = 0; i < 12; i++) {
+        stream.nextball(10);
+      }
       expect(stream.totalScore).toEqual(300);
     });
   });

@@ -34,13 +34,13 @@ describe('Frame', function() {
     expect(frame.isOver).toEqual(true);
   });
 
-  it('can score a strike', function(){
+  it('can play a strike', function(){
     frame.knockPins(10);
     expect(frame.rollCount).toEqual(1);
     expect(frame.isOver).toEqual(true);
   });
 
-  it('can score a spare', function(){
+  it('can play a spare', function(){
     frame.knockPins(9);
     frame.knockPins(1);
     expect(frame.pinCount).toEqual(0);
@@ -51,11 +51,3 @@ describe('Frame', function() {
 
 });
 
-
-
-
-// Frame ends after 2 bowls/rolls
-//frame can strike
-
-//frame can spare
-//

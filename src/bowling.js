@@ -8,10 +8,18 @@ function Scorecard(){
 // Mark the result of a single bowl
 // Missing: bonus points, 3 bowls on 10th, 10 pin limit on frame
 Scorecard.prototype.bowl = function (pins) {
-  // Simple sanity check
-  if(pins > 10) {
-    throw new Error("You bowled more pins than were set out");
+  // Limit the current frame to 10 pins
+  // Note this conflicts with 10th frame special
+  if (this.currentFrame.length == 1) {
+    if((pins + this.currentFrame[0]) > 10) {
+      throw new Error("You bowled more pins than were set out");
+    };
+  } else {
+    if(pins > 10) {
+      throw new Error("You bowled more pins than were set out");
+    };
   };
+
   // Add the pins to the currentFrame array
   this.currentFrame.push(pins);
   // If the currentFrame is over, move to the next one
@@ -45,12 +53,10 @@ Scorecard.prototype.score = function () {
       };
     };
   };
-
   // Now add the current frame pins bowled
   if (this.currentFrame.length > 0) {
     score += this.currentFrame.reduce((a, b) => a + b);
     // console.log(score);
   };
-
   return score;
 };

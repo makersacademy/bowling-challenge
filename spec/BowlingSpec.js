@@ -24,6 +24,11 @@ describe("Scorecard", function() {
     expect(function() { scorecard.bowl(11); }).toThrow();
   });
 
+  it("should not accept 5 then 6 pins in 1 frame", function() {
+    scorecard.bowl(5);
+    expect(function() { scorecard.bowl(6); }).toThrow();
+  });
+
   it ("should start on the first frame", function() {
     expect(scorecard.whichFrame()).toEqual(1);
   });
@@ -33,5 +38,6 @@ describe("Scorecard", function() {
     scorecard.bowl(5);
     expect(scorecard.whichFrame()).toEqual(2);
   });
+
 
 });

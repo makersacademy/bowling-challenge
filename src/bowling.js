@@ -39,12 +39,17 @@ Scorecard.prototype.score = function () {
   var score = 0;
   // iterate through each stored score and summate them
   if (this.shots.length > 0) {
-    score += this.shots.reduce((a, b) => a + b);
+    for (var i=0;i<this.shots.length;i++) {
+      for (var j=0;j<this.shots[i].length;j++) {
+        score += this.shots[i][j];
+      };
+    };
   };
 
   // Now add the current frame pins bowled
   if (this.currentFrame.length > 0) {
     score += this.currentFrame.reduce((a, b) => a + b);
+    // console.log(score);
   };
 
   return score;

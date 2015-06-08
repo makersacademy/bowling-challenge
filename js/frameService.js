@@ -1,4 +1,3 @@
-
 bowlingCalc.factory('Frame', function(){
   
   var Frame = function(){

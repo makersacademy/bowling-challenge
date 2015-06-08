@@ -1,0 +1,10 @@
+.frame {
+	display: inline-block;
+	list-style-type: none;
+}
+
+.list-group-item {
+	display: inline-block;
+	list-style-type: none;
+}
+

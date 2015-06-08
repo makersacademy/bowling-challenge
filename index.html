@@ -3,22 +3,42 @@
   <head>
     <meta charset="utf-8">
     <title>Bowling calculator</title>
-<!--     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"> -->
+    <link rel="stylesheet" href="public/stylesheet.css">
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="js/app.js"></script>
     <script src="js/frameService.js"></script>
+    <script src="js/gameService.js"></script>
+    <script src="js/scoreCardService.js"></script>
     <script src="js/bowlingCalcController.js"></script>
   </head>
 
   <body ng-controller="BowlingCalcController as bowlCtrl">
-    <div>
+     <div>
       <ul class="list-group">
-        <li class="list-group-item" ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10]">
+        <li class="list-group-item" ng-repeat="i in bowlCtrl.rollButtons">
          <button type="button" id="{{i}}" ng-click="bowlCtrl.addRoll(i)">{{i}}</button>
         </li>
       </ul>
     </div>
-    {{bowlCtrl.value}}
+
+    <ul class="frame" ng-repeat="frame in bowlCtrl.framesBowled | limitTo:10">
+        <div>
+        <li>
+          <table>
+            <tr>
+              {{frame.roll1}}
+            </tr>
+            <tr ng-if="frame.roll2">
+              {{frame.roll2}}
+            </tr>
+            <td ng-if="frame.score">
+              score
+              {{frame.score}}
+            </td>
+          </table>
+        </li>
+      </div>
+    </ul>
   </body>
 </html>

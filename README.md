@@ -11,6 +11,6 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 Interactive Scorecard: https://docs.google.com/spreadsheets/d/1MlpsjrKHkKiQnLaMZhlZOcej9qEkbt7tXDd8V_tZnJA/edit?usp=sharing
 
-
+![Jasmine Specs](/images/jasmine.png)
 
 

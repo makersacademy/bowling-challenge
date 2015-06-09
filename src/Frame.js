@@ -3,12 +3,14 @@ function Frame() {
   this.startingPins = 10;
   this.standingPins = 10;
   this.rolls = [];
+  this.score = 0;
 }
 
 Frame.prototype.registerGo = function(rollScore) {
   if(!this.isOver()){  
     this.goCount += 1;
   this.standingPins -= rollScore;
+  this.score += rollScore;
   this.rolls.push(rollScore)
   }
   else {
@@ -25,7 +27,7 @@ Frame.prototype.isOver = function() {
 };
 
 Frame.prototype.total = function() {
-  return this.startingPins - this.standingPins;
+  return this.score;
 };
 
 Frame.prototype.isStrike = function() {
@@ -39,33 +41,3 @@ Frame.prototype.isSpare = function() {
     return true;
   };
 };
-
-
-
-
-
-
-
-
-
-
-// Player.prototype.play = function(song) {
-//   this.currentlyPlayingSong = song;
-//   this.isPlaying = true;
-// };
-
-// Player.prototype.pause = function() {
-//   this.isPlaying = false;
-// };
-
-// Player.prototype.resume = function() {
-//   if (this.isPlaying) {
-//     throw new Error("song is already playing");
-//   }
-
-//   this.isPlaying = true;
-// };
-
-// Player.prototype.makeFavorite = function() {
-//   this.currentlyPlayingSong.persistFavoriteStatus(true);
-// };

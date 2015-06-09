@@ -25,7 +25,7 @@ Scorecard.prototype.getRollScore = function(frameIndex, roll) {
 
 Scorecard.prototype.getFrameScore = function(frameIndex, roll1, roll2) {
   if (frameIndex < this.frames.length){
-    return this.frames[frameIndex].rolls[roll1] + this.frames[frameIndex].rolls[roll2];
+    return this.frames[frameIndex].total();
   } else {
     return 0;
   }

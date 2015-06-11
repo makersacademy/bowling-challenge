@@ -9,21 +9,13 @@ bowlingCalc.controller('BowlingCalcController', ['Frame', 'Game', 'ScoreCard',fu
   self.addRoll = function(roll){
     if (self.frameFull) {
       self.framesBowled.push({roll1: roll})
-      if (roll === 10) {
-        self.frameFull = true
-        checkIfValid()
-      } else {
-        self.frameFull = false
-      }
+      setFrameFull(roll);
     } else {
       if (roll + self.framesBowled[self.framesBowled.length -1].roll1 > 10){
         console.log('error')
         return
       }
-      var curFrame = self.framesBowled[self.framesBowled.length -1];
-      curFrame.roll2 = roll
-      self.frameFull = true
-      checkIfValid()
+      setFramesSecondRoll(roll);
     }
   }
 
@@ -32,15 +24,30 @@ bowlingCalc.controller('BowlingCalcController', ['Frame', 'Game', 'ScoreCard',fu
     return game.scoreForFrame(n)
   }
 
+  setFrameFull = function(roll){
+    if (roll === 10) {
+      self.frameFull = true
+      checkIfValid()
+    } else {
+      self.frameFull = false
+    }
+  }
+
+  setFramesSecondRoll = function(roll){
+    var curFrame = self.framesBowled[self.framesBowled.length -1];
+      curFrame.roll2 = roll
+      self.frameFull = true
+      checkIfValid()
+  }
+
   makeArrayOfRolls = function(){
+    console.log(self.framesBowled)
     var array = []
     for (var i = 0; i < self.framesBowled.length; i++) {
       array.push(self.framesBowled[i].roll1)
-
-      if (self.framesBowled[i].roll2) {
+      if (self.framesBowled[i].roll2 != undefined) {
          array.push(self.framesBowled[i].roll2)
       }
-
     };
     return array
   }
@@ -54,7 +61,6 @@ bowlingCalc.controller('BowlingCalcController', ['Frame', 'Game', 'ScoreCard',fu
     } else {
       curFrame.score = (self.scoreGame(self.framesBowled.length))
     }
-
     if (prevFrame){
       if (prevFrame.roll1 + prevFrame.roll2 === 10){
         prevFrame.score = (self.scoreGame(self.framesBowled.length -1))

@@ -1,10 +1,66 @@
+
 .frame {
+	text-align: center;
 	display: inline-block;
 	list-style-type: none;
+	font-family: monospace;
 }
 
+.table-box	{
+	border: 1px solid black;
+	border-radius: 5px;
+	min-height: 67px;
+	min-width: 75px;
+	padding-top: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    padding-left: 1px;
+	text-align: center;
+}
+.list-holder{
+	position: relative;
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    width: 44%;
+}
 .list-group-item {
 	display: inline-block;
 	list-style-type: none;
 }
 
+.list-group {
+/*	margin-left: auto;
+    margin-right: auto;*/
+}
+
+.btn {
+	width: 60px;
+    height: 60px;
+}
+
+.btn-div {
+	/*background-color: blue;	*/
+	position: relative;
+	margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+}
+
+.title {
+	position: relative;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: monospace;
+    font-size: 40px;
+}
+
+.inst {
+	position: relative;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: monospace;
+}

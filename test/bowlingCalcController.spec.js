@@ -1,15 +1,15 @@
 describe('BowlingCalcController', function() {
   beforeEach(module('BowlingCalc'));
 
-  var ctrl;
+  var bowl;
 
   beforeEach(inject(function($controller) {
-    ctrl = $controller('BowlingCalcController');
+    bowl = $controller('BowlingCalcController');
   }));
 
   it('initialises with an empty array of frames', function() {
-	  expect(ctrl.searchResult).toBeUndefined();
-	  expect(ctrl.searchTerm).toBeUndefined();
+	  expect(bowl.searchResult).toBeUndefined();
+	  expect(bowl.searchTerm).toBeUndefined();
 	});
 
 

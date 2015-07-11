@@ -12,7 +12,9 @@ describe('BowlingScoreCard', function() {
     });
 
     it('has two rolls per frame', function() {
-      expect(bowlingScoreCard.allFrames[0].length).toEqual(2);
+      for (var i=0; i < bowlingScoreCard.allFrames.length; i++) {
+        expect(bowlingScoreCard.allFrames[i].length).toEqual(2);
+      }
     });
 
     it('starts with a total score of 0', function() {

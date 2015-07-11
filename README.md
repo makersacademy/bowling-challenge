@@ -1,23 +1,41 @@
-
 Bowling Challenge
 =================
 
-    Test time: Friday, the entire day and the weekend if you need it.
-    Feel free to use Google, your notes, and your books.
+## Synopsis
 
-Task: 
------
+Using JavaScript count and sum the scores of a bowling game for one player.
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+* 10 frames per game
+* 2 throws in each frame (except the 10th where there is a possibility of 3 throws if a strike or spare was thrown in the 9th)
+* 1 - 9 frames
+* strike - if all 10 pins are knocked down on the 1st throw (throw1) - second throw is disabled
+* spare - if 10 pins are knocked down on the 2nd throw (throw2)
+* score if total pins knocked down in a frame is less than 10, the num of pins knocked down is throw1 + throw2 (returns a numeric score rather than a spare / or strike X)
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+# Scoring
+* strike - add 10, plus the number of pins knocked down by the next two balls to the score of the previous frame
+* spare - add 10, plus the number of pins knocked down by the next ball to the score of the previous frame
+* regular - add the total of pins knocked down by the two throws to the previous frame. If no pins knocked down = gutter ball = zero points
 
-As usual please start by 
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
+will need to hold the result of the ball throw somewhere - where?
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+
+--------------------
+
+* 1 - 9 frames
+* 10th frame - if strike or spare thrown in previous go - 3 throws, if not - disable third throw
+
+
+frameScore = number of pins knocked down, pluc bonuses for strikes and spares
+
+frameNumber = 10;
+
+NOTE: after every frame the 10 pins are reset.
+
+Game - has 10 Frames
+Frame - can have 2 or 3 rolls, depending on the frame
+
 
 
 ### Optional Extra
@@ -50,5 +68,3 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 In the image below you can find some score examples.
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)

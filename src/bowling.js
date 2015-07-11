@@ -23,13 +23,10 @@ BowlingScoreCard.prototype.roll = function(pinsHit) {
     this.allFrames[currentFrame] = [10, '-'];
   }
   else if (currentRoll[0] === null) {
-    currentRoll[0] = pinsHit;
-    this.allFrames[currentFrame] = currentRoll;
-    // console.log('The current frame is '+ currentFrame + ' and the current roll is ' + currentRoll);
-  } else {
-    currentRoll[1] = pinsHit;
-    this.allFrames[currentFrame] = currentRoll;
-    // console.log('The current frame is '+ currentFrame + ' and the current roll is ' + currentRoll);
+    this.allFrames[currentFrame][0] = pinsHit;
+  }
+  else {
+    this.allFrames[currentFrame][1] = pinsHit;
   }
   return pinsHit;
 };

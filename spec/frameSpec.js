@@ -26,6 +26,23 @@ describe('bowlingScore', function (){
         frame1.scoreInput(10);
         expect(frame1.strike).toBe(true);
       });
+
+      it('wont allow any more than two scores to be entered', function(){
+        frame1.scoreInput(4);
+        frame1.scoreInput(5);
+        expect( function(){ frame1.scoreInput(6); } ).toThrow(new Error("You have already entered two scores"));      
+      });
+
+      it('records the scores in the frame', function() {
+        frame1.scoreInput(4);
+        frame1.scoreInput(5);
+        expect(frame1.scores).toEqual([4,5]);
+      });
+
+      it ('is full if a strike occurs', function() {
+        frame1.scoreInput(10);
+        expect(frame1.full).toBe(true);
+      })
     });
 
 });

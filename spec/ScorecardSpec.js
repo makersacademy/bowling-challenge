@@ -12,6 +12,16 @@ describe ('BowlingScorecard', function() {
     expect(scorecard.framerolls.length).toEqual(10)
   });
 
+  it('calculates score for each frame (no strikes or spares)', function() {
+    scorecard.roll(3)
+    scorecard.roll(4)
+    scorecard.roll(6)
+    scorecard.roll(2)
+    expect(scorecard.framescore[0]).toEqual(7)
+    expect(scorecard.framescore[1]).toEqual(8)
+    expect(scorecard.score).toEqual(15)
+  });
+
   describe('Player', function() {
     it('can roll a ball', function() {
       scorecard.roll(4)
@@ -45,8 +55,8 @@ describe ('BowlingScorecard', function() {
       scorecard.roll(10)
       scorecard.roll(4)
       scorecard.roll(3)
-      expect(scorecard.framerolls[0]).toEqual([10,0])
-      expect(scorecard.framerolls[1]).toEqual([4,3])
+      expect(scorecard.framerolls[0]).toEqual([10, 0])
+      expect(scorecard.framerolls[1]).toEqual([4, 3])
     });
 
     it('only accepts hits less than 10', function() {

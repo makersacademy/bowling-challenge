@@ -10,26 +10,43 @@ var Game = function(){
 };
 
 Game.prototype.newRoll = function(rollScore) {
-  this.countScore(rollScore);
+  this.countFrameScore(rollScore);
+  this.countGameScore(rollScore);
   this.countRoll(rollScore);
+  this.lastroll = rollScore;
   this.bonusCheck();
   console.log(this);
 };
 
 Game.prototype.countRoll = function(rollScore) {
-  if (this.rollcount != 1 || this.lastroll == 10) {
+  if(this.framecount === 10 && this.rollcount === 2){
+    this.rollcount = 3;
+  } else if(this.framecount === 10 && this.lastroll === 10) {
+    this.rollcount = 2;
+  } else if( this.lastroll === 10 || this.rollcount !== 1) {
     this.rollcount = 1;
     this.framecount += 1;
-    this.framescore = rollScore;
   } else {
     this.rollcount = 2;
-    this.framescore += rollScore;
   }
-  this.lastroll = rollScore;
+  // this.lastroll = rollScore;
 };
 
-Game.prototype.countScore = function(rollScore) {
-  if(this.strikebonus1 === true && this.strikebonus2 === true){
+Game.prototype.countFrameScore = function(rollScore) {
+  // if(this.framecount === 10 && this.rollcount === 2 && this.lastroll === 10);
+  //   this.framescore += rollScore;
+  // if(this.framecount === 10 && this.rollcount === 2 && this.lastroll === 10);
+  //   this.framescore += rollScore;
+  if (this.rollcount != 1 || this.lastroll == 10) {
+    this.framescore = rollScore;
+  } else {
+    this.framescore += rollScore;
+  }
+  // this.lastroll = rollScore;
+};
+
+Game.prototype.countGameScore = function(rollScore) {
+  if(this.strikebonus1 === true && this.strikebonus2 === true && this.framecount !== 10){
     this.score += rollScore*3;
   } else if(this.sparebonus === true || this.strikebonus1 === true || this.strikebonus2 === true) {
     this.score += rollScore*2;
@@ -45,7 +62,10 @@ Game.prototype.bonusCheck = function() {
 };
 
 Game.prototype.strikebonus1check = function() {
-  if(this.lastroll == 10) {
+  if(this.framecount === 10 && this.rollcount === 2) {
+    this.strikebonus1 = false;
+  }
+  else if(this.lastroll == 10) {
     this.strikebonus1 = true;
   } else {
     this.strikebonus1 = false;
@@ -53,14 +73,20 @@ Game.prototype.strikebonus1check = function() {
 };
 
 Game.prototype.strikebonus2check = function() {
-  if(this.strikebonus1 === true) {
+  if(this.framecount === 10 && this.rollcount === 2) {
+    this.strikebonus2 = false;
+  } else if(this.strikebonus1 === true) {
     this.strikebonus2 = true;
+  } else {
+    this.strikebonus2 = false;
   }
 };
 
 Game.prototype.sparebonuscheck = function() {
-  if(this.framescore === 10 && this.rollcount === 2) {
+  if(this.framescore === 10 && this.rollcount === 2 && this.framecount !== 10) {
     this.sparebonus = true;
+  } else {
+    this.sparebonus = false;
   }
 };
 

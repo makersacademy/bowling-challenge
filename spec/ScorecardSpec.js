@@ -50,12 +50,6 @@ describe ('BowlingScorecard', function() {
     });
 
     it('only accepts hits less than 10', function() {
-      // try {
-      //   scorecard.roll(11)
-      // }
-      // catch(e) {
-      //   expect(e).toEqual("Illegal throw!")
-      // }
       expect(function() { scorecard.roll(11) }).toThrow(new Error ("Illegal throw!"))
       expect(scorecard.score).toEqual(0)
       expect(scorecard.frame).toEqual(0)

@@ -5,7 +5,7 @@ var BowlingScorecard = function() {
 
 };
 
-BowlingScorecard.prototype.roll = function (numberOfPinsHit) {
+BowlingScorecard.prototype.roll = function(numberOfPinsHit) {
   if ( numberOfPinsHit > 10 ) {
      throw new Error("Illegal throw!")
   }

@@ -223,10 +223,40 @@ describe("Game", function() {
     
     it("should have a score of 300", function() {
       spyOn(Math, 'floor').and.returnValue(10);
-      for (i = 0; i < 12; i++) {
+      for (i = 0; i < 13; i++) {
         game.bowl();
       }
       expect(game.score).toBe(300);
+    });
+  });
+
+  describe("all 3s", function() {
+    
+    it("should have a score of 60", function() {
+      spyOn(Math, 'floor').and.returnValue(3);
+      for (i = 0; i < 20; i++) {
+        game.bowl();
+      }
+      expect(game.score).toBe(60);
+    });
+
+    it("should exit after 10th frame", function() {
+      spyOn(Math, 'floor').and.returnValue(3);
+      for (i = 0; i < 22; i++) {
+        game.bowl();
+      }
+      expect(game.score).toBe(60);
+    });
+  });
+
+  describe("spare in 10th round", function() {
+
+    it("should exit after 11th frame", function() {
+      spyOn(Math, 'floor').and.returnValue(5);
+      for (i = 0; i < 23; i++) {
+        game.bowl();
+      }
+      expect(game.score).toBe(155);
     });
   });
 });

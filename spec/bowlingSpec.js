@@ -1,4 +1,4 @@
-describe ('BowlingCalc', function() {
+describe ('Bowling Calculator', function() {
 
   var game;
 
@@ -6,9 +6,14 @@ describe ('BowlingCalc', function() {
     game = new Game();
   });
 
-  describe('game supports', function(){
+  describe('game scoring', function(){
 
-    it('spares', function(){
+    it('limits frame score to 10', function(){
+      game.newRoll(5);
+      expect(game.newRoll(6)).toMatch("Number of pins hit cannot exceed 10");
+    });
+
+    it('supports spares', function(){
       game.newRoll(5);
       game.newRoll(5);
       game.newRoll(3);
@@ -16,7 +21,7 @@ describe ('BowlingCalc', function() {
       expect(game.score).toEqual(18);
     });
 
-    it("double's pinfall", function(){
+    it("supports double's pinfall", function(){
       game.newRoll(10);
       game.newRoll(10);
       game.newRoll(7);
@@ -24,7 +29,7 @@ describe ('BowlingCalc', function() {
       expect(game.score).toEqual(53);
     });
 
-    it("triple", function(){
+    it("supports triple", function(){
       game.newRoll(10);
       game.newRoll(10);
       game.newRoll(10);
@@ -34,23 +39,24 @@ describe ('BowlingCalc', function() {
       expect(game.score).toEqual(90);
     });
 
-    it("8 strikes and spare", function(){
+    it("supports 8 strikes and spare", function(){
       for (var i=1; i<9; ++i){
         game.newRoll(10);
       }
       game.newRoll(3);
       game.newRoll(7);
+      game.newRoll(0);
       expect(game.score).toEqual(233);
     });
 
-    it("perfect game", function(){
+    it("supports perfect game", function(){
       for (var i=1; i<13; ++i){
         game.newRoll(10);
       }
       expect(game.score).toEqual(300);
     });
 
-    it("spare in 10th frame", function(){
+    it("supports spare in 10th frame", function(){
       for (var i=1; i<10; ++i){
         game.newRoll(10);
       }

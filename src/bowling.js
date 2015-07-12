@@ -10,6 +10,9 @@ var Game = function(){
 };
 
 Game.prototype.newRoll = function(rollScore) {
+  if((this.framescore + rollScore > 10) && (this.lastroll != 10) && (this.rollcount === 1)) {
+    return "Number of pins hit cannot exceed 10";
+  }
   this.countFrameScore(rollScore);
   this.countGameScore(rollScore);
   this.countRoll(rollScore);
@@ -17,6 +20,12 @@ Game.prototype.newRoll = function(rollScore) {
   this.bonusCheck();
   console.log(this);
 };
+
+// Game.prototype.errorCheck = function(rollScore) {
+//   if(this.framescore + rollScore > 10) {
+//     return "Number of pins hit cannot exceed 10";
+//   }
+// };
 
 Game.prototype.countRoll = function(rollScore) {
   if(this.framecount === 10 && this.rollcount === 2){
@@ -89,6 +98,8 @@ Game.prototype.sparebonuscheck = function() {
     this.sparebonus = false;
   }
 };
+
+
 
 //
 //

@@ -6,34 +6,47 @@ describe("Game", function() {
     game = new Game();
   });
 
-  it ("should start at a score of zero", function() {
+  it ("should with at a score of zero", function() {
     expect(game.score).toBe(0);
   });
 
-  describe("first bowl of frame", function() {
-    it("should bowl a number between 1 and 10", function() {
-      game.bowl();
-      expect(game.score).toBeLessThan(11);
-      expect(game.score).toBeTrue;
-    });
+  it ("should with ten pins", function() {
+    expect(game.pins).toBe(10);
   });
 
-  // it("should be able to play a Song", function() {
-  //   player.play(song);
-  //   expect(player.currentlyPlayingSong).toEqual(song);
+  describe("first bowl of frame", function() {
+    it("should bowl a number between 0 and 10", function() {
+      game.bowl(10);
+      expect(game.score).toBeLessThan(11);
+      expect(game.score).toBeGreaterThan(0);
+    });
 
-  //   //demonstrates use of custom matcher
-  //   expect(player).toBePlaying(song);
-  // });
+    describe("0 is bowled", function() {
+      it("should leave 10 pins standing", function() {
+        spyOn(Math, 'floor').and.returnValue(0);
+        game.bowl(10);
+        expect(game.pins).toBe(10);
+      });
 
-  // describe("when song has been paused", function() {
-  //   beforeEach(function() {
-  //     player.play(song);
-  //     player.pause();
-  //   });
+      it("should have a score of 0", function() {
+        spyOn(Math, 'floor').and.returnValue(0);
+        game.bowl(10);
+        expect(game.score).toBe(0);
+      });
+    });
 
-  //   it("should indicate that the song is currently paused", function() {
-  //     expect(player.isPlaying).toBeFalsy();
+    describe("10 is bowled", function() {
+      it("should leave 0 pins standing", function() {
+        spyOn(Math, 'floor').and.returnValue(10);
+        game.bowl(10);
+        expect(game.pins).toBe(0);
+      });
 
-
+      it("should have a score of 10", function() {
+        spyOn(Math, 'floor').and.returnValue(10);
+        game.bowl(10);
+        expect(game.score).toBe(10);
+      });
+    });
+  });
 });

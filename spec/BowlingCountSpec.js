@@ -4,7 +4,7 @@ describe('BowlingCounter', function () {
     bowlingCounter = new BowlingCounter(); 
   });
 
-  xdescribe('The counting of one ball', function () {
+  describe('The counting of one ball', function () {
     it('gets the correct result', function () {
       bowlingCounter.getPinsPerBalls(5)
 
@@ -13,7 +13,7 @@ describe('BowlingCounter', function () {
     });
   });
 
-  xdescribe('The counting of two balls', function () {
+  describe('The counting of two balls', function () {
     xit('gets the correct result', function () {
 
       bowlingCounter.getPinsPerBalls(5,2)
@@ -23,7 +23,7 @@ describe('BowlingCounter', function () {
     });
   });
 
- describe('The counting of three balls', function () {
+ xdescribe('The counting of three balls', function () {
     it('gets the correct result with an strike', function () {
       
       bowlingCounter.getPinsPerBalls(10,5,2)
@@ -43,11 +43,22 @@ describe('BowlingCounter', function () {
     it('gets the correct result', function () {
       bowlingCounter.getPinsPerBalls(10,5,2,10,5,2,8,2,8,0,2,3,5,5,2,4,10)
 
-      expect(bowlingCounter.score()).toEqual(107)  
+      expect(bowlingCounter.score()).toEqual(107) 
+      // expect(bowlingCounter.ballCounter).toEqual(20) 
     });
 
-    xit('' ,function() {
-      
+    it('gets the correct result with 21 balls', function () {
+      bowlingCounter.getPinsPerBalls(10,5,2,10,5,2,8,2,8,0,2,3,5,5,2,4,10,3)
+
+      expect(bowlingCounter.score()).toEqual(113) 
+      // expect(bowlingCounter.ballCounter).toEqual(21) 
+    });
+
+    xit('gets the correct result', function () {
+      bowlingCounter.getPinsPerBalls(10,5,2,10,5,2,8,2,8,0,2,3,5,5,2,4,10)
+
+      expect(bowlingCounter.score()).toEqual(107) 
+      // expect(bowlingCounter.ballCounter).toEqual(20) 
     });
   });
 

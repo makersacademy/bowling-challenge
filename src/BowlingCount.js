@@ -13,10 +13,9 @@ BowlingCounter.prototype.getPinsPerBalls = function () {
   
   this.operator()
 };
-
+// pq es modifica savedRecord
 BowlingCounter.prototype.operator = function () {
   while(this.arrayPinsPerBall.length > 0 ){
-     // resetFrameSum()
     this.arrayOfFrames.push(this.makeFrameSum(this.getFrameValues()));
   }
 };
@@ -35,15 +34,17 @@ BowlingCounter.prototype.getFrameValues = function () {
 
 BowlingCounter.prototype.makeFrameSum = function (value) {
   var concatValue = []
-  this.increaseBallCounterByTwo();
+  // this.increaseBallCounterByTwo();
   
   if(this.isPairOfBalls(value)) {
     this.frameSum = this.reduceFrame(value);
     this.spareDetector()
+    // this.increaseBallCounter(value)
   }
   else {
     concatValue = value.concat(this.arrayPinsPerBall.slice(0,2))
     this.frameSum = this.reduceFrame(concatValue);
+    // this.increaseBallCounter(concatValue)
   }
   return this.frameSum;
 };
@@ -59,15 +60,11 @@ BowlingCounter.prototype.flattenArray = function (arr) {
 };
 
 BowlingCounter.prototype.score = function () {
+  this.validate()
   return this.arrayOfFrames.reduce(function (a,b) {
     return a + b;
   });
 };
-
-BowlingCounter.prototype.increaseBallCounterByTwo = function () {
-  this.ballCounter += 2
-};
-
 
 BowlingCounter.prototype.resetFrameSum = function () {
    this.frameSum.length = 0
@@ -91,5 +88,28 @@ BowlingCounter.prototype.strike = function () {
 BowlingCounter.prototype.isPairOfBalls = function (value) {
   return value.length === 2;
 };
+
+BowlingCounter.prototype.validate = function () {
+  
+
+  if(this.ballCounter > 22){
+    throw "invalid game"
+  }
+}
+
+BowlingCounter.prototype.increaseBallCounter = function (value) {
+  console.log(value)
+  console.log(this.ballCounter)
+  if(value.length === 2){
+    this.ballCounter += 2
+  }
+  else if(this.ballCounter === 20 && value === [10 + value]){
+    
+  }
+  else{
+    this.ballCounter += 1
+  }
+};
+
 
 

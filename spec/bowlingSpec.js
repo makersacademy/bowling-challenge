@@ -66,6 +66,30 @@ describe ('Bowling Calculator', function() {
       expect(game.score).toEqual(275);
     });
 
+    it("supports random game", function(){
+        game.newRoll(1);
+        game.newRoll(4);
+        game.newRoll(4);
+        game.newRoll(5);
+        game.newRoll(6);
+        game.newRoll(4);
+        game.newRoll(5);
+        game.newRoll(5);
+        game.newRoll(10);
+        game.newRoll(0);
+        game.newRoll(1);
+        game.newRoll(7);
+        game.newRoll(3);
+        game.newRoll(6);
+        game.newRoll(4);
+        game.newRoll(10);
+        game.newRoll(2);
+        game.newRoll(8);
+        game.newRoll(6);
+      expect(game.score).toEqual(133);
+    });
+
+
 
   });
 });

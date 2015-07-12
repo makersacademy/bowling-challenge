@@ -1,44 +1,75 @@
 function Bowling(){
   this.framesTally = [];
-
+  this.playing = true;
+  this.framesNumber = 0;
 }
 
 
-Bowling.prototype.total = function(){
-    
-  this.roll_review(); //should this be a function (instead of on a prototype?)
+//if roll 9 times, then strike, then one more game then
+//playing = !playing
 
-  var framesTally = this.framesTally;
-  //flatten the framesTally - an array of array
-  var unpackedTally = framesTally.reduce(function(a,b){
-  a.concat(b); 
-  return a.concat(b);
-  });
 
-  console.log(unpackedTally);
-  //add all scores in the framesTally together
-  var total = 0;
+Bowling.prototype.checkPlaying = function(){
+  var lastFrame10 = this.framesTally[9][0] + this.framesTally[9][1];
+  var lastFrame11 = this.framesTally[10][0] + this.framesTally[10][1];
+  var lastFrame12 = this.framesTally[11][0] + this.framesTally[11][1];
+ 
 
-  for(i=0; i<unpackedTally.length; i++){
-    total += unpackedTally[i];
+  if (lastFrame10 < 10){
+    this.playing = false;
+  } else if (lastFrame11 < 10){
+    this.playing = false;
+  } else if (lastFrame12 < 10){
+    this.playing = false; 
+  } else if (this.FramesNumber === 13) {
+    this.playing = false;
   }
 
-  return total;
+};
+
+
+
+Bowling.prototype.total = function(){
+  
+    this.roll_review(); //should this be a function (instead of on a prototype?)
+
+    //flatten the framesTally - an array of array
+    var framesTally = this.framesTally;
+    
+    var unpackedTally = framesTally.reduce(function(a,b){
+    a.concat(b); 
+    return a.concat(b);
+    });
+
+    console.log(unpackedTally);
+    
+    //add all scores in the framesTally together
+    var total = 0;
+
+    for(i=0; i<unpackedTally.length; i++){
+      total += unpackedTally[i];
+    };
+
+    return total;
+
 };
 
 
 Bowling.prototype.roll = function(bowlOne,bowlTwo){
   this.framesTally.push([bowlOne,bowlTwo]);
+  this.framesNumber += 1;
+
   console.log(this.framesTally);
 };
 
 Bowling.prototype.roll_review = function(){
   var framesTally = this.framesTally;  
-  //if the second last frame knocked over 10 pins
+  //if a strike occured in second last frame, repeat the last frame in frameTally
   if((framesTally[framesTally.length - 2][0]) === 10){
-
-    // this.framesTally.push(this.framesTally.(this.framesTally.length)-1);
-    return framesTally.push(framesTally[framesTally.length-1]);
+      return framesTally.push(framesTally[framesTally.length-1]);
+  //if a spare happend in second last frame, repeat first bowl of last frame
+  } else if ((framesTally[framesTally.length - 2][0])+(framesTally[framesTally.length - 2][1]) === 10){
+      return framesTally.push(framesTally[framesTally.length-1][0]);
   }
 };
 

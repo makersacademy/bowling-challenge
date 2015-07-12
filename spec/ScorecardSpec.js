@@ -40,5 +40,25 @@ describe ('BowlingScorecard', function() {
       expect(scorecard.framerolls[0]).toEqual([3, 4])
       expect(scorecard.framerolls[1]).toEqual([6, 2])
     });
+
+    it('moves on if first roll is a strike', function() {
+      scorecard.roll(10)
+      scorecard.roll(4)
+      scorecard.roll(3)
+      expect(scorecard.framerolls[0]).toEqual([10,0])
+      expect(scorecard.framerolls[1]).toEqual([4,3])
+    });
+
+    it('only accepts hits less than 10', function() {
+      // try {
+      //   scorecard.roll(11)
+      // }
+      // catch(e) {
+      //   expect(e).toEqual("Illegal throw!")
+      // }
+      expect(function() { scorecard.roll(11) }).toThrow(new Error ("Illegal throw!"))
+      expect(scorecard.score).toEqual(0)
+      expect(scorecard.frame).toEqual(0)
+    });
   });
 });

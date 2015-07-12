@@ -16,6 +16,21 @@ var Bowling = function() {
       new Frame(),
     ];
     this.totalScore = null;
+    this.holdingBonus = [];
+  };
+
+  Game.prototype.runner = function() {
+    for (var i = 0; i < this.framez.length; i++) {
+      this.framez[i].tallyRolls();
+
+      if (this.framez[i].isStrike()) {
+        this.framez[i].addBonus(this.framez[i+1].totalRollScore)
+      } else if (this.framez[i].isSpare) {
+        this.framez[i].addBonus(this.framez[i+1].roll[0].rollScore)
+      } else {
+        this.framez[i].tallyAll();
+      }
+    };
   };
 
     var Frame = function() {

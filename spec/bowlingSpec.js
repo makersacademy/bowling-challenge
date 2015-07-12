@@ -115,7 +115,19 @@ describe('Bowling', function() {
     });
 
     describe('Games', function() {
-
+      it('runs the show', function() {
+        bowling.games[0].framez[0].rolls[0].knockedDown(0);
+        bowling.games[0].framez[0].tallyRolls();
+        bowling.games[0].framez[0].rolls[0].knockedDown(10);
+        bowling.games[0].framez[0].tallyRolls();
+        bowling.games[0].framez[0].isSpare();
+        bowling.games[0].framez[1].rolls[0].knockedDown(5);
+        bowling.games[0].framez[1].tallyRolls();
+        bowling.games[0].framez[1].rolls[1].knockedDown(4);
+        bowling.games[0].framez[1].tallyRolls();
+        bowling.games[0].framez[0].addBonus(5);
+        expect(bowling.games[0].framez[0].bonus).toEqual(5);
+      });
     });
   });
 });

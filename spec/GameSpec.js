@@ -33,7 +33,7 @@ describe("Game", function() {
 
       beforeEach(function() {
         spyOn(Math, 'floor').and.returnValue(0);
-        game.bowl(10);
+        game.bowl();
       });
 
       it("should leave 10 pins standing", function() {
@@ -57,7 +57,7 @@ describe("Game", function() {
     describe("10 is bowled", function() {
       beforeEach(function() {
         spyOn(Math, 'floor').and.returnValue(10);
-        game.bowl(10);
+        game.bowl();
       });
 
       it("should have a score of 10", function() {
@@ -83,33 +83,37 @@ describe("Game", function() {
   });
 
   describe("second bowl of frame", function() {
+    beforeEach(function() {
+      spyOn(Math, 'floor').and.returnValue(4);
+      game.bowl();
+    });
     it ("should start with at a score of less than 10", function() {
-      game.bowl(9);
       expect(game.score).toBeLessThan(10);
     });
 
     it ("should have more than 0 pins", function() {
-      game.bowl(9);
       expect(game.pins).toBeGreaterThan(0);
     });
 
     it ("should be on roll 2", function() {
-      game.bowl(9);
       expect(game.roll).toBe(2);
     });
 
-      describe("split", function() {
+      describe("spare", function() {
         beforeEach(function() {
-          spyOn(Math, 'floor').and.returnValue(5);
-          game.bowl(5);
-          game.bowl(5);
+          game.score = 6;
+          game.pins = 4;
+          game.scorecard = [[6,],[]];
+          game.frame = 1;
+          game.roll = 2;
+          game.bowl();
         });
 
         it("should have a score of 10", function() {
           expect(game.score).toBe(10);
         });
 
-        it("should record a split", function() {
+        it("should record a spare", function() {
           expect(game.scorecard[0][1]).toBe('/');
         });
 
@@ -126,11 +130,14 @@ describe("Game", function() {
         });        
       });
 
-      describe("frame score 8 ", function() {
+      describe("frame score 8", function() {
         beforeEach(function() {
-          spyOn(Math, 'floor').and.returnValue(4);
-          game.bowl(10);
-          game.bowl(6);
+          game.score = 3;
+          game.pins = 7;
+          game.scorecard = [[3,],[]];
+          game.frame = 1;
+          game.roll = 2;
+          game.bowl();
         });
 
         it("should move onto the next frame", function() {
@@ -150,4 +157,76 @@ describe("Game", function() {
         });
       });
     });
+
+  describe("frame after a spare", function() {
+    
+    beforeEach(function() {
+        spyOn(Math, 'floor').and.returnValue(5);
+        game.bowl();
+        game.bowl();
+    });
+
+    describe("rolls 5", function() {
+      beforeEach(function() {
+        game.bowl();
+      });
+
+      it("should have a score of 20", function() {
+        expect(game.score).toBe(20);
+      });
+    });
+  });
+
+  describe("frame after a strike", function() {
+    
+    describe("rolls 4 then 4", function() {
+      it("should have a score of 26", function() {
+        game.score = 10;
+        game.pins = 10;
+        game.scorecard = [['X'],[]];
+        game.frame = 2;
+        game.roll = 1;
+        spyOn(Math, 'floor').and.returnValue(4);
+        game.bowl();
+        game.bowl();
+        expect(game.score).toBe(26);
+      });
+    });
+  });
+
+  describe("after a strike", function() {
+    
+    describe("another strike", function() {
+      it("should have a score of 30", function() {
+        game.score = 10;
+        game.pins = 10;
+        game.scorecard = [['X'],[]];
+        game.frame = 2;
+        game.roll = 1;
+        spyOn(Math, 'floor').and.returnValue(10);
+        game.bowl();
+        expect(game.score).toBe(30);
+      });
+    });
+    describe("another two strikes", function() {
+      it("should have a score of 60", function() {
+        spyOn(Math, 'floor').and.returnValue(10);
+        game.bowl();
+        game.bowl();
+        game.bowl();
+        expect(game.score).toBe(60);
+      });
+    });
+  });
+
+  describe("perfect game", function() {
+    
+    it("should have a score of 300", function() {
+      spyOn(Math, 'floor').and.returnValue(10);
+      for (i = 0; i < 12; i++) {
+        game.bowl();
+      }
+      expect(game.score).toBe(300);
+    });
+  });
 });

@@ -5,15 +5,18 @@ function Bowling(){
 
 
 Bowling.prototype.total = function(){
-  var framesTally = this.framesTally
-  
+    
+  this.roll_review(); //should this be a function (instead of on a prototype?)
+
+  var framesTally = this.framesTally;
+  //flatten the framesTally - an array of array
   var unpackedTally = framesTally.reduce(function(a,b){
   a.concat(b); 
   return a.concat(b);
   });
 
   console.log(unpackedTally);
-
+  //add all scores in the framesTally together
   var total = 0;
 
   for(i=0; i<unpackedTally.length; i++){
@@ -23,75 +26,21 @@ Bowling.prototype.total = function(){
   return total;
 };
 
-  
-  // unpacked.reduce(function(a,b){
-  //   return a + b;
-  // });
-
 
 Bowling.prototype.roll = function(bowlOne,bowlTwo){
   this.framesTally.push([bowlOne,bowlTwo]);
   console.log(this.framesTally);
 };
 
+Bowling.prototype.roll_review = function(){
+  var framesTally = this.framesTally;  
+  //if the second last frame knocked over 10 pins
+  if((framesTally[framesTally.length - 2][0]) === 10){
 
-
-//Only three frames are being played.  All of the rolls in the frames are added up.
-//
-
-
-//while the total franes are under 4
-//receive the results for the 1st and 2nd attempt for a frame
-//upon the third attempt, return the sum of all attemps
-
-//the results are saved in an object
-
-// while (frameNumber < 4){
-          
-//   Bowling.prototype.bowl = function(a,b){
-
-//     var score_tally = {bowl1: a, bowl2: b} 
-
-//     var result = a + b;
-//     console.log(result);
-//     total += result;
-//     console.log(total);
-    
-//   };
-//   frameNumber ++;
-  
-// };
-
-
-// var counter = 1; 
-// var frameNumber = 0;
-// var total = 0;
-
-          
-// Bowling.prototype.frame = function(a,b) {
-//   // body...
-// };
-
-
-
-
-
-
-  // Bowling.prototype.bowl = function(a,b){
-
-  //   while (frameNumber < 4){
-    
-  //     var score_tally = {bowl1: a, bowl2: b} 
-
-  //     var result = a + b;
-  //     console.log(result);
-  //     total += result;
-  //     console.log(total);
-      
-  //     frameNumber ++;
-  //   };
-  // };
-  
+    // this.framesTally.push(this.framesTally.(this.framesTally.length)-1);
+    return framesTally.push(framesTally[framesTally.length-1]);
+  }
+};
 
 
 

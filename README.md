@@ -2,4 +2,6 @@
 Bowling Challenge
 =================
 
-Currently allows the user to bowl a full game, without strike/spare bonus's
+A few tests broken
+wont skip to next frame after strikes
+could be part of the problem?

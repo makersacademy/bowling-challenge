@@ -2,7 +2,9 @@ describe("Bowling", function(){
 
   var bowling;
 
-  // #add before#
+  // beforeEach(function(){
+      // bowling = new Bowling();
+  // })
 
 
   describe("game function",function(){

@@ -17,7 +17,7 @@ Bowling.prototype.checkPlaying = function(){
     if ((this.framesTally[9][0] + this.framesTally[9][1]) < 10){
       this.playing = false;
     }
-  };
+  }
 
   if (this.framesNumber === 11){
     if ((this.framesTally[10][0] + this.framesTally[10][1]) < 10){
@@ -57,7 +57,7 @@ Bowling.prototype.total = function(){
 
     for(i=0; i<unpackedTally.length; i++){
       total += unpackedTally[i];
-    };
+    }
 
     return total;
 
@@ -75,12 +75,10 @@ Bowling.prototype.roll_review = function(){
   var framesTally = this.framesTally;  
   //if a strike occured in second last frame, repeat the last frame in frameTally
   if((framesTally[framesTally.length - 2][0]) === 10){
-      return framesTally.push(framesTally[framesTally.length-1]);
+      framesTally.push(framesTally[framesTally.length-1]);
   //if a spare happend in second last frame, push another array with the first bowl of last frame repeated
   } else if ((framesTally[framesTally.length - 2][0])+(framesTally[framesTally.length - 2][1]) === 10){
-      return framesTally.push(framesTally[framesTally.length-1][0]);
-  } else {
-    return 0
+      framesTally.push([framesTally[framesTally.length-1][0],0]);
   }
 };
 

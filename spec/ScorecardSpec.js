@@ -22,6 +22,26 @@ describe ('BowlingScorecard', function() {
     expect(scorecard.score).toEqual(15)
   });
 
+  it('applies bonus to a frame where a strike was scored', function() {
+    scorecard.roll(10)
+    scorecard.roll(3)
+    scorecard.roll(4)
+    expect(scorecard.score).toEqual(24)
+    expect(scorecard.framescore[0]).toEqual(17)
+    expect(scorecard.framescore[1]).toEqual(7)
+  });
+
+  it('applies bonuses when 2 strikes have been scored', function() {
+    scorecard.roll(10)
+    scorecard.roll(10)
+    scorecard.roll(3)
+    scorecard.roll(4)
+    expect(scorecard.score).toEqual(47)
+    expect(scorecard.framescore[0]).toEqual(23)
+    expect(scorecard.framescore[1]).toEqual(17)
+    expect(scorecard.framescore[2]).toEqual(7)
+  });
+
   describe('Player', function() {
     it('can roll a ball', function() {
       scorecard.roll(4)

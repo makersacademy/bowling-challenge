@@ -10,23 +10,24 @@ function Bowling(){
 
 
 Bowling.prototype.checkPlaying = function(){
-  console.log(this.framesTally[9][0] + this.framesTally[9][1]);
   
+  lastFrame = this.framesTally[this.framesTally.length-1];
+
 
   if (this.framesNumber === 10){
-    if ((this.framesTally[9][0] + this.framesTally[9][1]) < 10){
+    if ((lastFrame[0] + lastFrame[1]) < 10){
       this.playing = false;
     }
   }
 
   if (this.framesNumber === 11){
-    if ((this.framesTally[10][0] + this.framesTally[10][1]) < 10){
+    if ((lastFrame[0] + lastFrame[1]) < 10){
       this.playing = false;
     }
   }
 
   if (this.framesNumber === 12){
-    if ((this.framesTally[11][0] + this.framesTally[11][1]) < 10){
+    if ((lastFrame[0] + lastFrame[1]) < 10){
       this.playing = false;
     }
   }
@@ -40,7 +41,7 @@ Bowling.prototype.checkPlaying = function(){
 
 Bowling.prototype.total = function(){
   
-    this.roll_review(); //should this be a function (instead of on a prototype?)
+    this.bonus_review(); //should this be a function (instead of on a prototype?)
 
     //flatten the framesTally - an array of array
     var framesTally = this.framesTally;
@@ -71,14 +72,16 @@ Bowling.prototype.roll = function(bowlOne,bowlTwo){
   console.log(this.framesTally);
 };
 
-Bowling.prototype.roll_review = function(){
+Bowling.prototype.bonus_review = function(){
   var framesTally = this.framesTally;  
   //if a strike occured in second last frame, repeat the last frame in frameTally
-  if((framesTally[framesTally.length - 2][0]) === 10){
+  if (this.framesNumber > 1){
+    if((framesTally[framesTally.length - 2][0]) === 10){
       framesTally.push(framesTally[framesTally.length-1]);
-  //if a spare happend in second last frame, push another array with the first bowl of last frame repeated
-  } else if ((framesTally[framesTally.length - 2][0])+(framesTally[framesTally.length - 2][1]) === 10){
-      framesTally.push([framesTally[framesTally.length-1][0],0]);
+    //if a spare happend in second last frame, push another array with the first bowl of last frame repeated
+    } else if ((framesTally[framesTally.length - 2][0])+(framesTally[framesTally.length - 2][1]) === 10){
+        framesTally.push([framesTally[framesTally.length-1][0],0]);
+    }
   }
 };
 

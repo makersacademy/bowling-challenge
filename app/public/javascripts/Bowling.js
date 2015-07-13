@@ -33,12 +33,4 @@ function Bowling() {
     this.turns += 1;
   };
 
-  Bowling.prototype.getCurrentFrame = function () {
-    if (this.turns % 2 !== 0) {
-      return (this.turns / 2) + 0.5;
-    } else {
-      return this.turns / 2;
-    }
-  };
-
 }

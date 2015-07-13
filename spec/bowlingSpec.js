@@ -2,6 +2,9 @@ describe("Bowling", function(){
 
   var bowling;
 
+  // #add before#
+
+
   describe("game function",function(){
     
     it("can record the first frame'",function(){
@@ -35,8 +38,8 @@ describe("Bowling", function(){
       for (i = 0; i < 10; i++){
         bowling.roll(1,1);}
         bowling.roll(1,1);
-        bowling.roll(1,1);
-      expect(bowling.playing).toBe(false);
+        bowling.checkPlaying();
+        expect(bowling.playing).toBe(false);
     });
   });
 });

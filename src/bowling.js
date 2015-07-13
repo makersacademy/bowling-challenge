@@ -10,23 +10,32 @@ function Bowling(){
 
 
 Bowling.prototype.checkPlaying = function(){
-  var lastFrame10 = this.framesTally[9][0] + this.framesTally[9][1];
-  var lastFrame11 = this.framesTally[10][0] + this.framesTally[10][1];
-  var lastFrame12 = this.framesTally[11][0] + this.framesTally[11][1];
- 
+  console.log(this.framesTally[9][0] + this.framesTally[9][1]);
+  
 
-  if (lastFrame10 < 10){
-    this.playing = false;
-  } else if (lastFrame11 < 10){
-    this.playing = false;
-  } else if (lastFrame12 < 10){
-    this.playing = false; 
-  } else if (this.FramesNumber === 13) {
+  if (this.framesNumber === 10){
+    if ((this.framesTally[9][0] + this.framesTally[9][1]) < 10){
+      this.playing = false;
+    }
+  };
+
+  if (this.framesNumber === 11){
+    if ((this.framesTally[10][0] + this.framesTally[10][1]) < 10){
+      this.playing = false;
+    }
+  }
+
+  if (this.framesNumber === 12){
+    if ((this.framesTally[11][0] + this.framesTally[11][1]) < 10){
+      this.playing = false;
+    }
+  }
+
+  if (this.framesNumber === 13){
     this.playing = false;
   }
 
 };
-
 
 
 Bowling.prototype.total = function(){
@@ -67,9 +76,11 @@ Bowling.prototype.roll_review = function(){
   //if a strike occured in second last frame, repeat the last frame in frameTally
   if((framesTally[framesTally.length - 2][0]) === 10){
       return framesTally.push(framesTally[framesTally.length-1]);
-  //if a spare happend in second last frame, repeat first bowl of last frame
+  //if a spare happend in second last frame, push another array with the first bowl of last frame repeated
   } else if ((framesTally[framesTally.length - 2][0])+(framesTally[framesTally.length - 2][1]) === 10){
       return framesTally.push(framesTally[framesTally.length-1][0]);
+  } else {
+    return 0
   }
 };
 

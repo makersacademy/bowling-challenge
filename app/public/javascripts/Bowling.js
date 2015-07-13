@@ -1,16 +1,16 @@
 function Bowling() {
   this.score = 0;
   this.turns = 0;
-  this.bowlingFrame = [[null, null],
-                    [null, null],
-                    [null, null],
-                    [null, null],
-                    [null, null],
-                    [null, null],
-                    [null, null],
-                    [null, null],
-                    [null, null],
-                    [null, null]];
+  this.bowlingFrames = [[null, null],
+                        [null, null],
+                        [null, null],
+                        [null, null],
+                        [null, null],
+                        [null, null],
+                        [null, null],
+                        [null, null],
+                        [null, null],
+                        [null, null]];
 
   Bowling.prototype.roll = function (pins) {
     if(pins > 10 || pins < 0) {
@@ -18,6 +18,16 @@ function Bowling() {
     }
     this.score += pins;
     this.turns += 1;
+    for (i = 0; i < this.bowlingFrames.length; i++) {
+      if (this.bowlingFrames[i][0] === null) {
+        this.bowlingFrames[i][0] = pins;
+        break;
+      }
+      else if (this.bowlingFrames[i][1] === null) {
+        this.bowlingFrames[i][1] = pins;
+        break;
+      }
+    }
   };
 
   Bowling.prototype.getCurrentFrame = function () {
@@ -26,6 +36,10 @@ function Bowling() {
     } else {
       return this.turns / 2;
     }
+  };
+
+  Bowling.prototype.checkOverTen = function () {
+    
   };
 
 }

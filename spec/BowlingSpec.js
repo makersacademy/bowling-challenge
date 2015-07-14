@@ -50,4 +50,52 @@ describe('Bowling', function (){
     bowling.roll(1);
     expect(bowling.score).toBe(21);
   });
+
+  it('if a spare is thrown in the tenth frame, the user gets another roll', function() {
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(3);
+    bowling.roll(7);
+    bowling.roll(1);
+    expect(bowling.score).toBe(264);
+  });
+
+  it('if a strike is thrown in the tenth frame, they get another roll', function() {
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(4);
+    expect(bowling.score).toBe(274);
+  });
+
+  it('if two strikes are thrown in the tenth frame, they get a final roll', function() {
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    expect(bowling.score).toBe(300);
+  });
+
 });

@@ -15,14 +15,19 @@ function Bowling() {
     if(pins > 10 || pins < 0) {
       throw new Error("invalid roll");
     }
-    if(this.bowlingFrames[this.getCurrentFrame()][0]===10) {
+    if(this.checkStrike()) {
       this.bowlingFrames[this.getCurrentFrame()][1] = 0;
     }
     for (i = 0; i < this.bowlingFrames.length; i++) {
       if (this.bowlingFrames[i][0] === null) {
         this.bowlingFrames[i][0] = pins;
-        if (this.checkSpare) {
+        if (this.checkSpare()) {
           this.score += pins;
+        }
+        if (this.getCurrentFrame > 0) {
+          if (this.bowlingFrames[this.getCurrentFrame()-2][0] === 10) {
+            this.score += this.bowlingFrames[this.getCurrentFrame()-1][1];
+          }
         }
         break;
       }
@@ -31,9 +36,8 @@ function Bowling() {
           throw new Error("invalid roll");
         }
         this.bowlingFrames[i][1] = pins;
-        if (this.checkStrike) {
+        if (this.bowlingFrames[this.getCurrentFrame()-1][0] === 10) {
           this.score += this.bowlingFrames[this.getCurrentFrame()][0];
-          this.score += this.bowlingFrames[this.getCurrentFrame()][1];
         }
         break;
       }
@@ -42,7 +46,7 @@ function Bowling() {
   };
 
   Bowling.prototype.checkSpare = function () {
-    if (this.getCurrentFrame > 0) {
+    if (this.getCurrentFrame() > 0) {
       return (this.bowlingFrames[this.getCurrentFrame()-1][0] + this.bowlingFrames[this.getCurrentFrame()-1][1] === 10);
     }
     return false;

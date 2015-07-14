@@ -57,11 +57,16 @@ function Bowling() {
   };
 
   Bowling.prototype.getCurrentFrame = function() {
-  for (i=0; i < this.bowlingFrames.length; i++){
-    if (this.bowlingFrames[i][1] === null) {
-      return i;
+    for (i=0; i < this.bowlingFrames.length; i++){
+      if (this.bowlingFrames[i][1] === null) {
+        return i;
+      }
     }
-  }
-};
+  };
+
+  Bowling.prototype.checkTenthFrame = function () {
+    return(this.getCurrentFrame() === 9);
+  };
+
 
 }

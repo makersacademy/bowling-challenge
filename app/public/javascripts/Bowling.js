@@ -9,7 +9,7 @@ function Bowling() {
                         [null, null],
                         [null, null],
                         [null, null],
-                        [null, null]];
+                        [null, null, null]];
 
   Bowling.prototype.roll = function (pins) {
     if(pins > 10 || pins < 0) {
@@ -18,6 +18,7 @@ function Bowling() {
     if(this.checkStrike()) {
       this.bowlingFrames[this.getCurrentFrame()][1] = 0;
     }
+    this.tenthFrameLogic();
     for (i = 0; i < this.bowlingFrames.length; i++) {
       if (this.bowlingFrames[i][0] === null) {
         this.bowlingFrames[i][0] = pins;
@@ -66,6 +67,25 @@ function Bowling() {
 
   Bowling.prototype.checkTenthFrame = function () {
     return(this.getCurrentFrame() === 9);
+  };
+
+  Bowling.prototype.tenthFrameLogic = function () {
+    if(this.checkTenthFrame()){
+      if (this.bowlingFrames[9][0] === null) {
+
+      }
+      if (this.bowlingFrames[9][1] === null) {
+
+      }
+      if (this.bowlingFrames[9][2] === null) {
+        if (this.bowlingFrames[9][0]+this.bowlingFrames[9][1] === 10) {
+          return "you can bowl";
+        } else {
+          this.bowlingFrames[9][2] = 0;
+          return 'Game over';
+        }
+      }
+    }
   };
 
 

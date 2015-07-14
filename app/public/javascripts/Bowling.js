@@ -24,8 +24,10 @@ function Bowling() {
         if (this.checkSpare()) {
           this.score += pins;
         }
-        if (this.getCurrentFrame > 0) {
+        if (this.getCurrentFrame() > 1) {
+          console.log("test");
           if (this.bowlingFrames[this.getCurrentFrame()-2][0] === 10) {
+            console.log("test1");
             this.score += this.bowlingFrames[this.getCurrentFrame()-1][1];
           }
         }

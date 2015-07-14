@@ -2,4 +2,4 @@
 Bowling Challenge
 =================
 
-Error at line 27-31 - strikes not adding value for second frame
+Need an update score at the end of roll, not on a new roll (i.e. strike bonus)

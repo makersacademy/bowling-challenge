@@ -167,12 +167,17 @@ describe("Game", function() {
     });
 
     describe("rolls 5", function() {
-      beforeEach(function() {
-        game.bowl();
-      });
-
       it("should have a score of 20", function() {
+        game.bowl();
         expect(game.score).toBe(20);
+      });
+    });
+    describe("rolls another spare frame then 5", function() {
+      it("should have a score of 35", function() {
+        game.bowl();
+        game.bowl();
+        game.bowl();
+        expect(game.score).toBe(35);
       });
     });
   });

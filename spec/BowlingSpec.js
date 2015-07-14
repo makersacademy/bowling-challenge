@@ -47,6 +47,7 @@ describe('Bowling', function (){
     bowling.roll(10);
     bowling.roll(3);
     bowling.roll(2);
-    expect(bowling.score).toBe(20);
+    bowling.roll(1);
+    expect(bowling.score).toBe(21);
   });
 });

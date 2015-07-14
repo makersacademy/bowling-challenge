@@ -12,16 +12,28 @@ thead {
 }
 
 tbody {
-    background-color: lightgrey;
-    font-weight: thin;
+    background-color: lightblue;
 }
 
 tfoot {
     background-color: lightblue;
+    text-align: center;
 }
 
 th, td {
     border: 5px solid white;
     text-align: center;
     padding: 8px;
+}
+
+#inputPins {
+  text-align: center;
+}
+
+h2 {
+  color: lightblue;
+}
+
+#totalScore {
+  text-align: center;
 }

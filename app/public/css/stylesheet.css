@@ -1,0 +1,27 @@
+table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 0.5em;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: lightblue;
+    color: white;
+}
+
+tbody {
+    background-color: lightgrey;
+    font-weight: thin;
+}
+
+tfoot {
+    background-color: lightblue;
+}
+
+th, td {
+    border: 5px solid white;
+    text-align: center;
+    padding: 8px;
+}

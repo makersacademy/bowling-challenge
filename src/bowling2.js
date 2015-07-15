@@ -8,7 +8,7 @@ var Frame = function(){
 }
 
 Frame.prototype.is_strike = function() {
-    return this.roll1 == 10
+    return this.roll1 == 10 && this.bonus_roll == 0
 }
 
 Frame.prototype.is_spare = function() {
@@ -55,7 +55,7 @@ ScoreCard.prototype.roll = function(pins) {
     } else if (this.frames[this.currentFrame].roll_count == 2 ) {
         // Bonus roll, this must be the last
         this.frames[this.currentFrame].bonus_roll = pins
-        this.currentFrame += 1
+
     }
 }
 
@@ -76,18 +76,103 @@ ScoreCard.prototype.rolling_scores = function() {
 
     var total = 0
     var api = []
-    for (var i = 0; i < this.currentFrame; i++ ) {
+    for (var i = 0; i < this.currentFrame + 1; i++ ) {
         total += this.frames[i].score()
+        var info
         console.log((i+1) + ":" + this.frames[i].to_string() + " === " + total)
-        var commentary = ''
-        if (this.frames[i].is_strike()) { commentary = "Strike!" }
-        if (this.frames[i].is_spare()) { commentary = "Spare" }
-        var info = {frame: i+1,
-                    rolls: [this.frames[i].roll1, this.frames[i].roll2, this.frames[i].bonus_roll],
-                    bonus: this.frames[i].bonus_score,
+        /// Strike not on last frame
+        if (this.frames[i].is_strike()) {
+          info = {frame: i+1,
+                  rollNum: 1,
+                  roll: this.frames[i].roll1,
+                  bonus: this.frames[i].bonus_score,
+                  score: total,
+                  comments: "Strike!"}
+          api.push(info)
+
+          /// Bonus round
+        } else if (i === 9) {
+          /// Hit a strike
+          if (this.frames[i].roll1 === 10){
+            info = {frame: i+1,
+                    rollNum: 1,
+                    roll: this.frames[i].roll1,
+                    bonus: "",
+                    score: "",
+                    comments: "Strike! Two bonus rolls"}
+            api.push(info)
+            info = {frame: i+1,
+                    rollNum: 2,
+                    roll: this.frames[i].roll2,
+                    bonus: "",
+                    score: "",
+                    comments: ""}
+            api.push(info)
+            info = {frame: i+1,
+                    rollNum: 3,
+                    roll: this.frames[i].roll3,
+                    bonus: "",
                     score: total,
-                    comments: commentary}
-        api.push(info)
+                    comments: ""}
+            api.push(info)
+          /// Hits a spare
+          } else if (this.frames[i].roll1 + this.frames[i].roll2 === 10){
+            info = {frame: i+1,
+                    rollNum: 1,
+                    roll: this.frames[i].roll1,
+                    bonus: "",
+                    score: "",
+                    comments: ""}
+            api.push(info)
+            info = {frame: i+1,
+                    rollNum: 2,
+                    roll: this.frames[i].roll2,
+                    bonus: "",
+                    score: "",
+                    comments: "Spare! One bonus roll"}
+            api.push(info)
+            info = {frame: i+1,
+                    rollNum: 3,
+                    roll: this.frames[i].roll3,
+                    bonus: "",
+                    score: total,
+                    comments: ""}
+            api.push(info)
+          }
+          /// Hits a spare
+        } else if (this.frames[i].is_spare()){
+          info = {frame: i+1,
+                  rollNum: 1,
+                  roll: this.frames[i].roll1,
+                  bonus: "",
+                  score: "",
+                  comments: ""}
+          api.push(info)
+          info = {frame: i+1,
+                  rollNum: 2,
+                  roll: this.frames[i].roll2,
+                  bonus: this.frames[i].bonus_score,
+                  score: total,
+                  comments: "Spare!"}
+          api.push(info)
+        /// Regular frame
+        } else {
+          info = {frame: i+1,
+                  rollNum: 1,
+                  roll: this.frames[i].roll1,
+                  bonus: "",
+                  score: "",
+                  comments: ""}
+          api.push(info)
+          info = {frame: i+1,
+                  rollNum: 2,
+                  roll: this.frames[i].roll2,
+                  bonus: "",
+                  score: total,
+                  comments: ""}
+          api.push(info)
+        }
+
     }
     return api
 }

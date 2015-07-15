@@ -44,6 +44,18 @@ describe('BowlingScoreCard', function() {
       expect(bowlingScoreCard.getCurrentFrame()).toEqual(1)
     });
 
+    it('has additional rolls in the 10th frame if a strike', function() {
+      bowlingScoreCard.allFrames[9] = [10, null];
+      bowlingScoreCard.lastFrame();
+      expect(bowlingScoreCard.allFrames.length).toEqual(11)
+    });
+
+    it('has additional rolls in the 10th frame if a spare', function() {
+      bowlingScoreCard.allFrames[9] = [9, 1];
+      bowlingScoreCard.lastFrame();
+      expect(bowlingScoreCard.allFrames.length).toEqual(11)
+    });
+
   });
 
 });

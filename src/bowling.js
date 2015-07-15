@@ -12,10 +12,6 @@ var BowlingScoreCard = function() {
   this.totalScore = 0;
 };
 
-BowlingScoreCard.prototype.showScore = function() {
-  return this.totalScore;
-};
-
 BowlingScoreCard.prototype.roll = function(pinsHit) {
   var currentFrame = this.getCurrentFrame();
   var currentRoll = this.getCurrentRoll();
@@ -28,6 +24,7 @@ BowlingScoreCard.prototype.roll = function(pinsHit) {
   else {
     this.allFrames[currentFrame][1] = pinsHit;
   }
+  // this.lastFrame();
   return pinsHit;
 };
 
@@ -44,3 +41,53 @@ BowlingScoreCard.prototype.getCurrentRoll = function() {
   var currentFrame = this.getCurrentFrame();
   return this.allFrames[currentFrame]
 };
+
+BowlingScoreCard.prototype.calculateScore = function() {
+  this.totalScore = 0;
+  // if (this.getCurrentFrame() !== 10) {
+    var framesToCalculate = this.allFrames.slice(0, this.getCurrentFrame());
+    for (var rollIndex = 0; rollIndex < framesToCalculate.length; rollIndex++){
+      if (framesToCalculate[rollIndex][0] === 10 && framesToCalculate[rollIndex + 1]) {
+        this.totalScore = this.totalScore + 10 + eval(framesToCalculate[rollIndex + 1].join('+'));
+      }
+      else if ( framesToCalculate[rollIndex][0] + framesToCalculate[rollIndex][1] === 10 && framesToCalculate[rollIndex + 1]) {
+        this.totalScore = this.totalScore + 10 + framesToCalculate[rollIndex + 1][0];
+      }
+      else {
+        this.totalScore = this.totalScore + eval(framesToCalculate[rollIndex].join('+'));
+      };
+    };
+
+  // } else if (this.allFrames[10]) {
+  //   this.totalScore = this.totalScore + eval(this.allFrames[10].join('+'));
+  // };
+  return this.totalScore
+}
+//
+// BowlingScoreCard.prototype.lastFrame = function() {
+//   if (this.allFrames[9] === [10, null]) {
+//     this.allFrames.push([null, null]);
+//   } else if ( this.allFrames[9][0] + this.allFrames[9][1] === 10 ) {
+//     this.allFrames.push([null]);
+//   };
+// }
+
+bowlingScoreCard.roll(1)
+bowlingScoreCard.roll(4)
+bowlingScoreCard.roll(4)
+bowlingScoreCard.roll(5)
+bowlingScoreCard.roll(6)
+bowlingScoreCard.roll(4)
+bowlingScoreCard.roll(5)
+bowlingScoreCard.roll(5)
+bowlingScoreCard.roll(10)
+bowlingScoreCard.roll(0)
+bowlingScoreCard.roll(1)
+bowlingScoreCard.roll(7)
+bowlingScoreCard.roll(3)
+bowlingScoreCard.roll(6)
+bowlingScoreCard.roll(4)
+bowlingScoreCard.roll(10)
+bowlingScoreCard.roll(2)
+bowlingScoreCard.roll(8)
+bowlingScoreCard.roll(6)

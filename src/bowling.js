@@ -52,9 +52,9 @@ BowlingScoreCard.prototype.calculateScore = function() {
     var framesToCalculate = this.allFrames.slice(0, this.getCurrentFrame());
     this._rollingScore(framesToCalculate);
   } else  {
-    var framesToCalculate = this.allFrames.slice(0, 9);
+    var framesToCalculate = this.allFrames.slice(0, 10);
     this._rollingScore(framesToCalculate);
-    this.totalScore = this.totalScore + 10 + eval(this.allFrames[10].join('+'));
+    this.totalScore = this.totalScore + eval(this.allFrames[10].join('+'));
   };
   return this.totalScore
 }

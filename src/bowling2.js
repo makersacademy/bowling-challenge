@@ -1,18 +1,18 @@
 var Frame = function(){
-    this.roll1 = 0
-    this.roll2 = 0
-    this.bonus_roll = 0   // Used for 10th frame
+    this.roll1 = null
+    this.roll2 = null
+    this.bonus_roll = null   // Used for 10th frame
     this.roll_count = 0   // Number of rolls taken
 
     this.bonus_score = 0  // Points earned from following frames
 }
 
 Frame.prototype.is_strike = function() {
-    return this.roll1 == 10 && this.bonus_roll == 0
+    return this.roll1 == 10 && this.bonus_roll == null
 }
 
 Frame.prototype.is_spare = function() {
-    return !this.is_strike() && (this.roll1 + this.roll2 == 10) && this.bonus_roll == 0
+    return !this.is_strike() && (this.roll1 + this.roll2 == 10) && this.bonus_roll == null
 }
 
 Frame.prototype.score = function() {

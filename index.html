@@ -2,20 +2,24 @@
 <html>
   <head>
     <script type="text/javascript" src="src/bowling2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="src/app.js"></script>
+
   	<meta charset="utf-8">
     <title>Bowling Score Card</title>
   </head>
   <body>
     How many pins did you hit?<input type="text" />
     <input type="submit" value="Pins"/>
-    <table id="score-card">
+    <table>
       <th>Frame</th>
       <th>Roll</th>
       <th>Pins</th>
       <th>Bonus</th>
       <th>Score</th>
       <th>Comments</th>
+      <span id="score_card">
+      </span>
     </table>
 
   </body>

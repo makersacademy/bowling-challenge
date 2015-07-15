@@ -80,8 +80,8 @@ ScoreCard.prototype.rolling_scores = function() {
         total += this.frames[i].score()
         console.log((i+1) + ":" + this.frames[i].to_string() + " === " + total)
         var commentary = ''
-        if (this.frames[i].is_strike()) { commentary = "Strike!"}
-        if (this.frames[i].is_spare()) { commentary = "Spare"}
+        if (this.frames[i].is_strike()) { commentary = "Strike!" }
+        if (this.frames[i].is_spare()) { commentary = "Spare" }
         var info = {frame: i+1,
                     rolls: [this.frames[i].roll1, this.frames[i].roll2, this.frames[i].bonus_roll],
                     bonus: this.frames[i].bonus_score,
@@ -94,44 +94,44 @@ ScoreCard.prototype.rolling_scores = function() {
 
 
 
-bowlingScoreCard = new ScoreCard();
-// Frame 0 - 5
-bowlingScoreCard.roll(1);
-bowlingScoreCard.roll(4);
-
-// Frame 1
-bowlingScoreCard.roll(4);
-bowlingScoreCard.roll(5);
-
-// Frame 2
-bowlingScoreCard.roll(6);
-bowlingScoreCard.roll(4);
-
-// Frame 3
-bowlingScoreCard.roll(5);
-bowlingScoreCard.roll(5);
-
-// Frame 4
-bowlingScoreCard.roll(10);
-
-// Frame 5
-bowlingScoreCard.roll(0);
-bowlingScoreCard.roll(1);
-
-// Frame 6
-bowlingScoreCard.roll(7);
-bowlingScoreCard.roll(3);
-
-// Frame 7
-bowlingScoreCard.roll(6);
-bowlingScoreCard.roll(4);
-
-// Frame 8
-bowlingScoreCard.roll(10);
-
-// Frame 9
-bowlingScoreCard.roll(10);
-bowlingScoreCard.roll(8);
-bowlingScoreCard.roll(6);
-
-bowlingScoreCard.rolling_scores()
+// bowlingScoreCard = new ScoreCard();
+// // Frame 0 - 5
+// bowlingScoreCard.roll(1);
+// bowlingScoreCard.roll(4);
+//
+// // Frame 1
+// bowlingScoreCard.roll(4);
+// bowlingScoreCard.roll(5);
+//
+// // Frame 2
+// bowlingScoreCard.roll(6);
+// bowlingScoreCard.roll(4);
+//
+// // Frame 3
+// bowlingScoreCard.roll(5);
+// bowlingScoreCard.roll(5);
+//
+// // Frame 4
+// bowlingScoreCard.roll(10);
+//
+// // Frame 5
+// bowlingScoreCard.roll(0);
+// bowlingScoreCard.roll(1);
+//
+// // Frame 6
+// bowlingScoreCard.roll(7);
+// bowlingScoreCard.roll(3);
+//
+// // Frame 7
+// bowlingScoreCard.roll(6);
+// bowlingScoreCard.roll(4);
+//
+// // Frame 8
+// bowlingScoreCard.roll(10);
+//
+// // Frame 9
+// bowlingScoreCard.roll(10);
+// bowlingScoreCard.roll(8);
+// bowlingScoreCard.roll(6);
+//
+// bowlingScoreCard.rolling_scores()

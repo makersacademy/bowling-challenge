@@ -29,6 +29,13 @@ var ScoreCard = function() {
     this.currentFrame = 0
 
     this.roll = function(pins) {
+
+        if (this.currentFrame === 9 && pins === 10 && this.frames[this.currentFrame].roll_count == 0) {
+          this.frames[this.currentFrame].roll1 = pins
+          this.frames[this.currentFrame].roll_count += 1
+          return
+        }
+
         if ( this.frames[this.currentFrame].roll_count == 0 ) {
             this.frames[this.currentFrame].roll1 = pins
             this.frames[this.currentFrame].roll_count = 1
@@ -37,7 +44,7 @@ var ScoreCard = function() {
             }
         } else if (this.frames[this.currentFrame].roll_count == 1) {
             this.frames[this.currentFrame].roll2 = pins
-            if (this.currentFrame == 9 && this.frames[this.currentFrame-1].is_strike()) {
+            if (this.currentFrame == 9 && (this.frames[this.currentFrame].is_spare() || this.frames[this.currentFrame].is_strike()) ) {
                 // We are allowed another roll on the last frame
                 this.frames[this.currentFrame].roll_count += 1
             } else {
@@ -110,8 +117,8 @@ bowlingScoreCard.roll(4);
 bowlingScoreCard.roll(10);
 
 // Frame 9
-bowlingScoreCard.roll(2);
+bowlingScoreCard.roll(10);
 bowlingScoreCard.roll(8);
 bowlingScoreCard.roll(6);
 
-console.log(bowlingScoreCard.rolling_scores())
+bowlingScoreCard.rolling_scores()

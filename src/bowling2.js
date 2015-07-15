@@ -64,11 +64,11 @@ ScoreCard.prototype.rolling_scores = function() {
             if ( this.frames[i].is_spare()) {
                 // If this frame is a spare, then our bonus is the first roll on
                 // the next frame.
-                this.frames[i].bonus_score += this.frames[i+1].roll1
+                this.frames[i].bonus_score = this.frames[i+1].roll1
             } else if (this.frames[i].is_strike()) {
                 // If this current frame is a strike then our score should include the next
                 // frames roll1 and roll2 (but not the next frame's bonus)
-                this.frames[i].bonus_score += (this.frames[i+1].roll1 + this.frames[i+1].roll2)
+                this.frames[i].bonus_score = (this.frames[i+1].roll1 + this.frames[i+1].roll2)
             }
         }
     }

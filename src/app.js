@@ -11,6 +11,7 @@ $(document).ready(function() {
       api.forEach(function(obj) {
         // console.log(obj)
         html += tableRow(obj)
+        html = html.replace('null', '-')
       })
 
     }

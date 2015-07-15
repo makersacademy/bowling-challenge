@@ -4,7 +4,7 @@ var Frame = function(){
     this.bonus_roll = null   // Used for 10th frame
     this.roll_count = 0   // Number of rolls taken
 
-    this.bonus_score = 0  // Points earned from following frames
+    this.bonus_score = null  // Points earned from following frames
 }
 
 Frame.prototype.is_strike = function() {
@@ -72,7 +72,9 @@ ScoreCard.prototype.rolling_scores = function() {
           } else if (this.frames[i].is_strike()) {
               // If this current frame is a strike then our score should include the next
               // frames roll1 and roll2 (but not the next frame's bonus)
-              if (!this.frames[i+1].roll2 && this.frames[i+2]) {
+              if (!this.frames[i+1].roll2 && !this.frames[i+1].roll1 && !this.frames[i+2].roll1) {
+                this.frames[i].bonus_score = null
+              } else if (!this.frames[i+1].roll2 && this.frames[i+2]) {
                 this.frames[i].bonus_score = (this.frames[i+1].roll1 + this.frames[i+2].roll1)
               } else {
                 this.frames[i].bonus_score = (this.frames[i+1].roll1 + this.frames[i+1].roll2)

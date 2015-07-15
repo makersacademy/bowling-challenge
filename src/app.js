@@ -5,7 +5,7 @@ $(document).ready(function() {
   $('input[type="submit"]').click(function() {
     var pins = $('input[type="text"]').val()
     bowlingScoreCard.roll(parseInt(pins))
-    var api = bowlingScoreCard.rolling_scores()
+    var api = bowlingScoreCard.api()
     var html = ''
     if (api.length > 0) {
       api.forEach(function(obj) {

@@ -13,10 +13,14 @@ var BowlingScoreCard = function() {
 };
 
 BowlingScoreCard.prototype.roll = function(pinsHit) {
+  if ((this.allFrames[9][0] + this.allFrames[9][1] === 10)) {
+    this.allFrames[10][0] = pinsHit;
+    return pinsHit
+    };
   var currentFrame = this.getCurrentFrame();
   var currentRoll = this.getCurrentRoll();
   if (pinsHit === 10) {
-    this.allFrames[currentFrame] = [10, '-'];
+    this.allFrames[currentFrame] = [10, 0];
   }
   else if (currentRoll[0] === null) {
     this.allFrames[currentFrame][0] = pinsHit;
@@ -84,22 +88,22 @@ BowlingScoreCard.prototype._hasBonusFrame = function() {
 }
 
 bowlingScoreCard = new BowlingScoreCard();
-bowlingScoreCard.roll(1)
-bowlingScoreCard.roll(4)
-bowlingScoreCard.roll(4)
-bowlingScoreCard.roll(5)
-bowlingScoreCard.roll(6)
-bowlingScoreCard.roll(4)
-bowlingScoreCard.roll(5)
-bowlingScoreCard.roll(5)
-bowlingScoreCard.roll(10)
-bowlingScoreCard.roll(0)
-bowlingScoreCard.roll(1)
-bowlingScoreCard.roll(7)
-bowlingScoreCard.roll(3)
-bowlingScoreCard.roll(6)
-bowlingScoreCard.roll(4)
-bowlingScoreCard.roll(10)
-bowlingScoreCard.roll(2)
-bowlingScoreCard.roll(8)
-bowlingScoreCard.roll(6)
+bowlingScoreCard.roll(1);
+bowlingScoreCard.roll(4);
+bowlingScoreCard.roll(4);
+bowlingScoreCard.roll(5);
+bowlingScoreCard.roll(6);
+bowlingScoreCard.roll(4);
+bowlingScoreCard.roll(5);
+bowlingScoreCard.roll(5);
+bowlingScoreCard.roll(10);
+bowlingScoreCard.roll(0);
+bowlingScoreCard.roll(1);
+bowlingScoreCard.roll(7);
+bowlingScoreCard.roll(3);
+bowlingScoreCard.roll(6);
+bowlingScoreCard.roll(4);
+bowlingScoreCard.roll(10);
+bowlingScoreCard.roll(2);
+bowlingScoreCard.roll(8);
+bowlingScoreCard.roll(6);

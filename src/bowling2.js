@@ -8,11 +8,11 @@ var Frame = function(){
 }
 
 Frame.prototype.is_strike = function() {
-    return this.roll1 == 10 && this.bonus_roll == null
+    return this.roll1 === 10 && this.bonus_roll === null
 }
 
 Frame.prototype.is_spare = function() {
-    return !this.is_strike() && (this.roll1 + this.roll2 == 10) && this.bonus_roll == null
+    return !this.is_strike() && (this.roll1 + this.roll2 === 10) && this.bonus_roll === null
 }
 
 Frame.prototype.score = function() {
@@ -32,30 +32,30 @@ var ScoreCard = function() {
 
 ScoreCard.prototype.roll = function(pins) {
 
-    if (this.currentFrame === 9 && pins === 10 && this.frames[this.currentFrame].roll_count == 0) {
+    if (this.currentFrame === 9 && pins === 10 && this.frames[this.currentFrame].roll_count === 0) {
       this.frames[this.currentFrame].roll1 = pins
       this.frames[this.currentFrame].roll_count += 1
       return
     }
 
-    if ( this.frames[this.currentFrame].roll_count == 0 ) {
+    if ( this.frames[this.currentFrame].roll_count === 0 ) {
         this.frames[this.currentFrame].roll1 = pins
         this.frames[this.currentFrame].roll_count = 1
-        if (pins == 10) {
+        if (pins === 10) {
             this.currentFrame += 1
         }
-    } else if (this.frames[this.currentFrame].roll_count == 1) {
+    } else if (this.frames[this.currentFrame].roll_count === 1) {
         this.frames[this.currentFrame].roll2 = pins
-        if (this.currentFrame == 9 && (this.frames[this.currentFrame].is_spare() || this.frames[this.currentFrame].is_strike()) ) {
+        if (this.currentFrame === 9 && (this.frames[this.currentFrame].is_spare() || this.frames[this.currentFrame].is_strike()) ) {
             // We are allowed another roll on the last frame
             this.frames[this.currentFrame].roll_count += 1
-        } else if (this.currentFrame == 9) {
+        } else if (this.currentFrame === 9) {
           /// We don't want to move to another frame
           return
         }else {
             this.currentFrame += 1
         }
-    } else if (this.frames[this.currentFrame].roll_count == 2 ) {
+    } else if (this.frames[this.currentFrame].roll_count === 2 ) {
         // Bonus roll, this must be the last
         this.frames[this.currentFrame].bonus_roll = pins
 
@@ -72,7 +72,7 @@ ScoreCard.prototype.rolling_scores = function() {
           } else if (this.frames[i].is_strike()) {
               // If this current frame is a strike then our score should include the next
               // frames roll1 and roll2 (but not the next frame's bonus)
-              if (!this.frames[i+1].roll2 && !this.frames[i+1].roll1 && !this.frames[i+2].roll1) {
+              if (!this.frames[i+1].roll2 && !this.frames[i+1].roll1 && (!this.frames[i+2] || !this.frames[i+2].roll1)) {
                 this.frames[i].bonus_score = null
               } else if (!this.frames[i+1].roll2 && this.frames[i+2]) {
                 this.frames[i].bonus_score = (this.frames[i+1].roll1 + this.frames[i+2].roll1)

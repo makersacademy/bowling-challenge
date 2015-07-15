@@ -110,7 +110,7 @@ ScoreCard.prototype.rolling_scores = function() {
             api.push(info)
             info = {frame: i+1,
                     rollNum: 3,
-                    roll: this.frames[i].roll3,
+                    roll: this.frames[i].bonus_roll,
                     bonus: "",
                     score: total,
                     comments: ""}
@@ -133,7 +133,22 @@ ScoreCard.prototype.rolling_scores = function() {
             api.push(info)
             info = {frame: i+1,
                     rollNum: 3,
-                    roll: this.frames[i].roll3,
+                    roll: this.frames[i].bonus_roll,
+                    bonus: "",
+                    score: total,
+                    comments: ""}
+            api.push(info)
+          } else {
+            info = {frame: i+1,
+                    rollNum: 1,
+                    roll: this.frames[i].roll1,
+                    bonus: "",
+                    score: "",
+                    comments: ""}
+            api.push(info)
+            info = {frame: i+1,
+                    rollNum: 2,
+                    roll: this.frames[i].roll2,
                     bonus: "",
                     score: total,
                     comments: ""}

@@ -6,14 +6,17 @@ $(document).ready(function() {
     var pins = $('input[type="text"]').val()
     bowlingScoreCard.roll(parseInt(pins))
     var api = bowlingScoreCard.rolling_scores()
+    var html = ''
     if (api.length > 0) {
       api.forEach(function(obj) {
         // console.log(tableRow(obj, 1, null))
         // console.log(tableRow(obj, 2, obj.score))
-          $('#score_card').html(tableRow(obj, 1, '') + tableRow(obj, 2, obj.score) )
+          html += tableRow(obj, 1, '') + tableRow(obj, 2, obj.score)
           // if (obj.frame === 10) {$('#score_card').html(tableRow(obj, 3))}
       })
+
     }
+    $('#score_card').find('tbody').html(html)
   })
 
   var tableRow = function(obj, rollNumber, score) {

@@ -9,22 +9,20 @@ $(document).ready(function() {
     var html = ''
     if (api.length > 0) {
       api.forEach(function(obj) {
-        console.log(obj)
-        // console.log(tableRow(obj, 2, obj.score))
-          // html += tableRow(obj, 1, '') + tableRow(obj, 2, obj.score)
-          // if (obj.frame === 10) {$('#score_card').html(tableRow(obj, 3))}
+        // console.log(obj)
+        html += tableRow(obj)
       })
 
     }
-    // $('#score_card').find('tbody').html(html)
+    $('#score_card').find('tbody').html(html)
   })
 
-  var tableRow = function(obj, rollNumber, score) {
+  var tableRow = function(obj) {
     return '<tr><td>   ' + obj.frame +'   </td><td>   '
-                      + rollNumber + '   </td><td>   '
-                      + obj.rolls[rollNumber -1] +'   </td><td>   '
+                      + obj.rollNum + '   </td><td>   '
+                      + obj.roll +'   </td><td>   '
                       + obj.bonus + '   </td><td>   '
-                      + score + '   </td><td>   '
+                      + obj.score + '   </td><td>   '
                       + obj.comments +
           '</td></tr>'
   }

@@ -81,7 +81,7 @@ ScoreCard.prototype.rolling_scores = function() {
         var info
         console.log((i+1) + ":" + this.frames[i].to_string() + " === " + total)
         /// Strike not on last frame
-        if (this.frames[i].is_strike()) {
+        if (this.frames[i].is_strike() && i!== 9) {
           info = {frame: i+1,
                   rollNum: 1,
                   roll: this.frames[i].roll1,

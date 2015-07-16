@@ -47,3 +47,10 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+
+## Lessons Learnt
+
+* `null + null` is evaluated to `0`. If you force `null` to be interpreted in a numeric context then it is treated like `0`
+* Never use `eval()`. It will bite you in the butt.
+* Try and incorporate as much knowledge into objects rather than trying to build it all out as functions. See [bowling.js](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/bowling.js) versus [bowling2.js](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/bowling2.js)
+* JavaScript functions can get unwieldy long pretty quickly, especially if there are a lot of control flow statements.

@@ -4,6 +4,7 @@ $(document).ready(function() {
 
   $('input[type="submit"]').click(function() {
     var pins = $('input[type="text"]').val()
+    if (typeof pins === 'string' || parseInt(pins) < 0 || parseInt(pins) > 10) { alert("You can only knock down 0-10 pins"); return}
     bowlingScoreCard.roll(parseInt(pins))
     var api = bowlingScoreCard.api()
     var html = ''

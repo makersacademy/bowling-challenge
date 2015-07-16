@@ -5,7 +5,7 @@ Bowling Score Card
 Getting started
 ---------------
 
-Open [index.html](https://github.com/DataMinerUK/bowling-challenge/blob/master/index.html) in your browser. Enter the number of pins you hit per roll.
+Open [index.html](https://github.com/DataMinerUK/bowling-challenge/blob/master/index.html) in your browser. Enter the number of pins you hit per roll. Or you can use the hosted version [here](http://datamineruk.github.io/bowling-challenge/).
 
 Technologies
 ------------

@@ -1,0 +1,69 @@
+body {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  background-image: url('../images/bowling-pins.jpg');
+  background-position: center center fixed;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#wrapper {
+  position:fixed;
+  top: 30%;
+  left: 40%;
+  width:45em;
+  height:33em;
+  margin-top: -9em;
+  margin-left: -15em;
+  border: 1px solid #ccc;
+  background-color: white;
+  opacity: 0.85;
+  border-radius: 25px;
+}
+
+.submission {
+  float: right;
+  margin-top: 23%;
+  margin-right: 85px;
+  width: 200px;
+  font-size: 23px;
+  text-align: center;
+}
+.submission input {
+  top: 45%;
+}
+
+.submission input[type='text'] {
+  float: left;
+  margin-top: 13px;
+  margin-left: 20px;
+  font-size: 15px;
+}
+
+.submission input[type='submit'] {
+  position: fixed;
+  margin-top: 15px;
+  margin-left: -65px;
+  font-size: 16px;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+}
+
+
+table {
+  margin-top: 10px;
+  margin-left: 15px;
+  border: 1px solid gray;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 5px;
+}
+
+th, tr {
+  border: 1px solid gray;
+}

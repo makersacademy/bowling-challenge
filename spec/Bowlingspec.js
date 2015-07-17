@@ -4,24 +4,24 @@ var scoresheet;
 
   describe('Scoresheet', function() {
 
-    it('can store scores', function(){
+    it('can store scores', function() {
       scoresheet = new Scoresheet();
       var frame = [1,2]
-      scoresheet.score(frame);
+      scoresheet.addFrame(frame);
       expect(scoresheet.board[0]).toBe(frame);
     });
 
-    it('can store multiple scores', function(){
+    it('can store multiple scores', function() {
       scoresheet = new Scoresheet();
       var frame_1 = [1,2];
       var frame_2 = [2,3];
-      scoresheet.score(frame_1);
-      scoresheet.score(frame_2);
+      scoresheet.addFrame(frame_1);
+      scoresheet.addFrame(frame_2);
       expect(scoresheet.board[0]).toBe(frame_1);
       expect(scoresheet.board[1]).toBe(frame_2);
     });
 
-    it('can score a whole board', function(){
+    it('can score a whole board', function() {
       scoresheet = new Scoresheet();
       scoresheet.board = [[1,1], [1,1],
                           [1,1], [1,1],
@@ -32,6 +32,32 @@ var scoresheet;
       scoresheet.sum();
       expect(scoresheet.total).toBe(21)
     });
-  });
 
+    it('can score a single strike correctly', function() {
+      scoresheet = new Scoresheet();
+      scoresheet.board = [[10,0], [1,1],
+                          [1,1], [1,1],
+                          [1,1], [1,1],
+                          [1,1], [1,1],
+                          [1,1], [1,1,1]];
+      scoresheet.scoreFrames();
+      scoresheet.strikeCalc();
+      scoresheet.sum();
+      expect(scoresheet.total).toBe(31)
+    });
+
+    it('can score a single spare correctly', function() {
+      scoresheet = new Scoresheet();
+      scoresheet.board = [[1,9], [5,3],
+                          [1,1], [1,1],
+                          [1,1], [1,1],
+                          [1,1], [1,1],
+                          [1,1], [1,1,1]];
+      scoresheet.scoreFrames();
+      scoresheet.strikeCalc();
+      scoresheet.sum();
+      expect(scoresheet.total).toBe(40)
+    });
+
+  });
 });

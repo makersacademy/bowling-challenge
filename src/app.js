@@ -17,6 +17,8 @@ $(document).ready(function() {
 
     }
     $('#score_card').find('tbody').html(html)
+    makeSparesGreen()
+    makeStrikesRed()
   })
 
   var tableRow = function(obj) {
@@ -27,6 +29,18 @@ $(document).ready(function() {
                       + obj.score + '   </td><td>   '
                       + obj.comments +
           '</td></tr>'
+  }
+
+  var makeSparesGreen = function() {
+    $('td:contains("Spare!")').each(function() {
+      $(this).css("color", "green").wrap('<em></em>')
+    })
+  }
+
+  var makeStrikesRed = function() {
+    $('td:contains("Strike!")').each(function() {
+      $(this).css("color", "red").wrap('<strong></strong>')
+    })
   }
 
 })

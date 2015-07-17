@@ -1,5 +1,6 @@
 var game = function() {
   this.frameNumber = 0;
+  this.prevFrame = this.frameNumber-1;
   this.frames = [frame1 = new frame,
                  frame2 = new frame,
                  frame3 = new frame,
@@ -18,12 +19,18 @@ var game = function() {
     catch(e){
       alert("You have already entered two scores")
     }
+    
   };
+  
 
   game.prototype.nextFrame = function() {
     this.frameNumber += 1;
     return "Frame Number " + (this.frameNumber + 1);
   };
 
+ game.prototype.prevFrame = function() {
+    this.frameNumber -= 1;
+    return "Frame Number " + (this.frameNumber + 1);
+  };
 
 };

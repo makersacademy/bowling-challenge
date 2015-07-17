@@ -43,6 +43,8 @@ describe('bowlingScore', function (){
         frame1.scoreInput(10);
         expect(frame1.full).toBe(true);
       })
+
+      
     });
 
 });

@@ -25,18 +25,14 @@ Scoresheet.prototype.strikeCalc = function() {
   n = 0;
   while ( n < 10 ) {
     if (this.tally[n] === 10) {
-      this.tally[n] = this.tally[n] + this.tally[n + 1];
+      if (this.board[n][0] === 10)
+        { this.tally[n] = this.tally[n] + this.tally[n + 1] }
+      else
+        { this.tally[n] = this.tally[n] + this.board[n + 1][0] }
     };
   n += 1;
   };
 };
-
-// Scoresheet.prototype.scoreFrames = function() {
-//   this.tally =
-//     this.board.map(function(frame) {
-//       return frame.push(scoreFrame(frame))
-//     });
-// };
 
 Scoresheet.prototype.sum = function() {
   localSum = 0;

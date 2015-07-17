@@ -30,6 +30,30 @@ describe('game', function()
       expect(game1.frames[1].total).toBe(23);
     })
 
+    it(' two strikes in a row will add to additional points in the previoue frames',function(){
+    game1.addScore(10);
+    game1.nextFrame();
+    game1.addScore(10);
+    game1.nextFrame();
+    game1.addScore(9);
+    game1.addScore(0);
+    expect(game1.frames[0].total).toBe(29);
+    expect(game1.frames[1].total).toBe(19);
+    expect(game1.frames[2].total).toBe(9);
+  })
+
+    it('a frame with a spare will have additional points added equal to the next ball', function(){
+      game1.addScore(9);
+      game1.addScore(1);
+      game1.nextFrame();
+      game1.addScore(4);
+      game1.addScore(3);
+      expect(game1.frames[0].spare).toBe(true);
+      expect(game1.frames[0].total).toBe(14);
+    })
+
+
+
 
 
 

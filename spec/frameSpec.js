@@ -13,8 +13,8 @@ describe('bowlingScore', function (){
 
       it('can keep track of multiple scores', function() {
         frame1.scoreInput(3);
-        frame1.scoreInput(7);
-        expect(frame1.total).toBe(10);
+        frame1.scoreInput(6);
+        expect(frame1.total).toBe(9);
       });
 
       it('returns "strike" when a score of 10 is entered', function(){
@@ -43,6 +43,15 @@ describe('bowlingScore', function (){
         frame1.scoreInput(10);
         expect(frame1.full).toBe(true);
       })
+
+      it(' if all pins are knocked down in two balls, the spare status is true', function(){
+        frame1.scoreInput(9);
+        frame1.scoreInput(1);
+        expect(frame1.strike).toBe(false);
+        expect(frame1.spare).toBe(true);
+
+    })
+     
 
       
     });

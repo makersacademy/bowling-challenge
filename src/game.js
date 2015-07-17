@@ -1,6 +1,5 @@
 var game = function() {
-  this.frameNumber = 0;
-  this.prevFrame = this.frameNumber-1;
+  var frameNumber = 0;
   this.frames = [frame1 = new frame,
                  frame2 = new frame,
                  frame3 = new frame,
@@ -14,23 +13,31 @@ var game = function() {
 
   game.prototype.addScore = function(score) {
     try{
-    this.frames[this.frameNumber].scoreInput(score);
+    this.frames[frameNumber].scoreInput(score);
     }
     catch(e){
       alert("You have already entered two scores")
     }
+    var prevFrame = frameNumber-1;
+    if(prevFrame > 0){
+    if(this.frames[frameNumber].full){
+      if(this.frames[prevFrame].strike){
+        this.frames[prevFrame].total += this.frames[frameNumber].total
+      }
+    }
+  }
     
   };
   
 
   game.prototype.nextFrame = function() {
-    this.frameNumber += 1;
-    return "Frame Number " + (this.frameNumber + 1);
+    frameNumber += 1;
+    return "Frame Number " + (frameNumber + 1);
   };
 
  game.prototype.prevFrame = function() {
-    this.frameNumber -= 1;
-    return "Frame Number " + (this.frameNumber + 1);
+    frameNumber -= 1;
+    return "Frame Number " + (frameNumber + 1);
   };
 
 };

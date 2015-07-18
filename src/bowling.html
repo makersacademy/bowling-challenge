@@ -10,28 +10,77 @@
   <h1>Let's Play Bowls!</h1>
 
   <div id="rollForm">
-    <form>  
-      <label for="Bowl 1">First Bowl</label>
-      <input name="Bowl 1" type="text">
-      <label for="Bowl 2">Second Bowl</label>
-      <input name="Bowl 2" type="text">
+    <form id="bowlsform">
+      <label for="bowl_1">First Bowl</label>
+      <input name="bowl_1" id="bowl_1" type="text" size=4>
+      <label for="bowl_2" id="second_label">Second Bowl</label>
+      <input name="bowl_2" id="bowl_2" type="text" size=4>
       <input name="Hit to register bowls!" type="submit">
 
     </form>
 
-    
+  <h2 id="score_heading">Total Score</h2>
+
+    <p id="score"><p>
+
+  <table class="box" id="score_box">
+    <tbody class="box">
+      <tr class="box">
+        <td class="first_score box score1"></td>
+        <td class="second_score box score2"></td>
+        <td class="first_score box score3"></td>
+        <td class="second_score box score4"></td>
+        <td class="first_score box score5"></td>
+        <td class="second_score box score6"></td>
+        <td class="first_score box score7"></td>
+        <td class="second_score box score8"></td>
+        <td class="first_score box score9"></td>
+        <td class="second_score box score10"></td>
+        <td class="first_score box score11"></td>
+        <td class="second_score box score12"></td>
+        <td class="first_score box score13"></td>
+        <td class="second_score box score14"></td>
+        <td class="first_score box score15"></td>
+        <td class="second_score box score16"></td>
+        <td class="first_score box score17"></td>
+        <td class="second_score box score18"></td>
+        <td class="first_score box score19"></td>
+        <td class="second_score box score20"></td>
+        <td class="first_score box score21"></td>
+        <td rowspan="2" class="game-result"></td>
+      </tr>
+      <tr>
+        <td class="frame_score" colspan="2"></td>
+        <td class="frame_score" colspan="2"></td>
+        <td class="frame_score" colspan="2"></td>
+        <td class="frame_score" colspan="2"></td>
+        <td class="frame_score" colspan="2"></td>
+        <td class="frame_score" colspan="2"></td>
+        <td class="frame_score" colspan="2"></td>
+        <td class="frame_score" colspan="2"></td>
+        <td class="frame_score" colspan="2"></td>
+        <td class="frame_score" colspan="3"></td>
+      </tr>
+
+
+
+    </tbody>
+
+  </table>
+
+
+
+  <h2 id="frames_played_heading">Frames played</h2>
+
+    <p id="frames_played"></p>
+
   </div>
-
-
-
-
-
-
-
-
-
 
 <i class="pin"></i>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="bowling.js"></script>
+<script type="text/javascript" src="bowlingjquery.js"></script>
 </body>
 </html>

@@ -9,8 +9,7 @@ h1{
 
 #rollForm{
   text-align: center;
-  margin-top: 60px;
-
+  margin-top: 24px;
 }
 
 form{
@@ -18,6 +17,55 @@ form{
   margin: auto 0;
   font-family: 'Paytone One', sans-serif;
   font-size: 20px;
+}
+
+h2{
+  font-family: 'Paytone One', sans-serif;
+}
+
+#second_label{
+  margin-left: 10px;
+}
+
+.test123{
+  border: 2px solid black;
+  height: 20px;
+  width: 30px;
+}
+
+/*styling for bowling score boxes*/
+#score_box{
+  border: 1px solid black;
+  margin: auto;
+  width: 75%;
+}
+
+
+.box{
+  border: 2px solid black;
+  height: 20px;
+  width: 30px;
+}
+
+.first_score{
+  height: 20px;
+  width: 65px;
+}
+
+.second_score{
+  height: 20px;
+  width: 65px;
+}
+
+.frame_score{
+  border: 2px solid black;
+  height: 40px;
+  width: 130px;
+}
+
+.game-result{
+  border: 2px solid black;
+  width: 200px;
 
 }
 
@@ -40,9 +88,21 @@ html,body{
 
 }
 
+#score_heading{
+  font-family: 'Paytone One', sans-serif;
+  margin-top: 40px;
+
+}
+
+#frames_heading{
+  font-family: 'Paytone One', sans-serif;
+  margin-top: 55px;
+}
+
+
 .pin:before {
   content:"";
- 
+
   position:absolute;
   z-index:0;
   top:-26px;
@@ -68,7 +128,7 @@ html,body{
 .pin{
   margin:90px auto 0 auto;
   display:block;
-  
+
   position:relative;
   width:40px;
    height:112px;
@@ -97,9 +157,9 @@ html,body{
   border-radius:100%;
   box-shadow:inset 2px 0px 10px rgba(0,0,0,0.3),
             inset -2px 0 10px rgba(0,0,0,0.3);
- 
-  
-  
+
+
+
 }
 
 

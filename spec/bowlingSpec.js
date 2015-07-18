@@ -38,6 +38,19 @@ describe("Bowling", function(){
         bowling.roll(1,1);}
         expect(bowling.playing).toBe(false);
     });
+
+    // it("can select a specific frame",function(){
+    //     bowling.roll(1,1);
+    //     bowling.roll(2,3);
+    //     expect(bowling.frameSelect(2)).toEqual([2,3]);
+    // });
+
+    it("can sum a specific frame when it is not a spare or strike",function(){
+        bowling.roll(1,1);
+        bowling.roll(2,3);
+        expect(bowling.frameSum(2)).toEqual(5);
+    });
+
   });
 });
 

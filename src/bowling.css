@@ -37,7 +37,7 @@ h2{
 #score_box{
   border: 1px solid black;
   margin: auto;
-  width: 75%;
+  width: 85%;
 }
 
 
@@ -63,9 +63,9 @@ h2{
   width: 130px;
 }
 
-.game-result{
+#game-result{
   border: 2px solid black;
-  width: 200px;
+  width: 180px;
 
 }
 

@@ -1,3 +1,15 @@
+// *** GREAT DIFFICULTY SAVING AN ARRAY TO VARIABLE
+// var play = b.frameSelect(2);
+// [3, 6]
+// undefined
+//
+// play
+// console.log(play)
+// undefined
+// ***
+
+
+
 function Bowling(){
   this.framesTally = []; //record of all scores
   this.playing = true;
@@ -38,9 +50,7 @@ Bowling.prototype.checkPlaying = function(){
     this.playing = false;
     // return 'Last frame played';
   }
-
 };
-
 
 Bowling.prototype.total = function(){
 
@@ -68,10 +78,9 @@ Bowling.prototype.total = function(){
 
 Bowling.prototype.roll = function(bowlOne,bowlTwo){
 
-  if(this.playing == false){
+  if(this.playing === false){
     throw new Error('The game has ended');
   }
-
 
   this.framesTally.push([bowlOne,bowlTwo]); //this pushes the next two bowls onto an array
 
@@ -80,6 +89,7 @@ Bowling.prototype.roll = function(bowlOne,bowlTwo){
   this.total();
 
   this.checkPlaying();
+
 
 };
 
@@ -94,4 +104,20 @@ Bowling.prototype.bonus_review = function(){
         framesTally.push([framesTally[framesTally.length-1][0],0]);
     }
   }
+};
+
+
+Bowling.prototype.frameSum = function(frame){
+  var frameNo = frame-1;
+
+  var selectedFrame = this.framesTally[frameNo];
+
+  console.log(selectedFrame);
+
+  var result = selectedFrame.reduce(function(x,y){
+    return x + y;
+  });
+
+  return result;
+
 };

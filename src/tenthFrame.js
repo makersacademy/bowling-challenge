@@ -5,7 +5,7 @@ var tenthFrame = function () {
   this.spare = false;
   this.full = false;
 
-frame.prototype.scoreInput = function(score) {
+tenthFrame.prototype.scoreInput = function(score) {
   if (this.full == true){
     throw new Error("You have already entered two scores");
   }

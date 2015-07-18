@@ -1,14 +1,3 @@
-// *** GREAT DIFFICULTY SAVING AN ARRAY TO VARIABLE
-// var play = b.frameSelect(2);
-// [3, 6]
-// undefined
-//
-// play
-// console.log(play)
-// undefined
-// ***
-
-
 
 function Bowling(){
   this.framesTally = []; //record of all scores
@@ -112,12 +101,9 @@ Bowling.prototype.frameSum = function(frame){
 
   var selectedFrame = this.framesTally[frameNo];
 
-  console.log(selectedFrame);
-
   var result = selectedFrame.reduce(function(x,y){
     return x + y;
   });
 
   return result;
-
 };

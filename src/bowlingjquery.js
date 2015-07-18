@@ -29,15 +29,15 @@ $("#bowlsform").submit(function(e){
 
   game.roll(bowl1,bowl2);
 
-
-  //
-  // var frame1 = $("#frameresult1").html(game.total());
-
-  // $("#game_result_val").html(frame1);
-
   runningTotal();
 
+  if (clickCount >= 2){
+  checkFrameBefore();
+  }
+
   frameTotalVal();
+
+
 
 });
 
@@ -47,7 +47,14 @@ function runningTotal(){
 
 function frameTotalVal(){
   $("#frameOutcome"+clickCount).html(game.frameSum(clickCount));
+}
 
+function checkFrameBefore(){
+  if(game.framesTally[clickCount-2][0]===10){
+    // $("#frameOutcome"+clickCount-1).html(10+game.framesTally[clickCount-1][0]);
+    $("#frameOutcome1").htm(12345);
+
+  }
 }
 
 //

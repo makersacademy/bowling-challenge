@@ -51,6 +51,14 @@ describe("Bowling", function(){
         expect(bowling.frameSum(2)).toEqual(5);
     });
 
+    it("can sum a frame when a stike occurs",function(){
+      bowling.roll(10,0);
+      bowling.roll(2,3);
+      expect(bowling.frameSum(1)).toEqual(15);
+
+
+    });
+
   });
 });
 

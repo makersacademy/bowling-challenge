@@ -30,7 +30,7 @@ describe('bowlingScore', function (){
       it('wont allow any more than two scores to be entered', function(){
         frame1.scoreInput(4);
         frame1.scoreInput(5);
-        expect( function(){ frame1.scoreInput(6); } ).toThrow(new Error("You have already entered two scores"));      
+        expect( function(){ frame1.scoreInput(6); } ).toThrow(new Error("The Frame is Full"));      
       });
 
       it('records the scores in the frame', function() {
@@ -51,6 +51,8 @@ describe('bowlingScore', function (){
         expect(frame1.spare).toBe(true);
 
     })
+
+    
      
 
       

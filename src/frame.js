@@ -7,7 +7,7 @@ var frame = function () {
 
 frame.prototype.scoreInput = function(score) {
   if (this.full == true){
-    throw new Error("You have already entered two scores");
+    throw new Error("The Frame is Full");
   }
   this.scores.push(score);
   this.total += score;

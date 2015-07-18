@@ -13,15 +13,15 @@ var game = function() {
                  frame10 = new tenthFrame];
 
   game.prototype.addScore = function(score) {
-    // try{
+    try{
       console.log(frameNumber)
     this.frames[frameNumber].scoreInput(score);
     console.log(this.frames[frameNumber])
     console.log(this.frames[frameNumber].scores)
-    // }
-    // catch(e){
-    //   alert("You have already entered two scores")
-    // }
+    }
+    catch(e){
+      alert("This Frame is Full")
+    }
     var prevFrame = frameNumber-1;
     if(prevFrame >= 0){
       if(this.frames[frameNumber].strike == false && this.frames[frameNumber].full && this.frames[prevFrame].strike == true){

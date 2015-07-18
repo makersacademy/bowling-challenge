@@ -13,18 +13,23 @@ var game = function() {
                  frame10 = new tenthFrame];
 
   game.prototype.addScore = function(score) {
-    try{
+    // try{
+      console.log(frameNumber)
     this.frames[frameNumber].scoreInput(score);
-    }
-    catch(e){
-      alert("You have already entered two scores")
-    }
+    console.log(this.frames[frameNumber])
+    console.log(this.frames[frameNumber].scores)
+    // }
+    // catch(e){
+    //   alert("You have already entered two scores")
+    // }
     var prevFrame = frameNumber-1;
     if(prevFrame >= 0){
       if(this.frames[frameNumber].strike == false && this.frames[frameNumber].full && this.frames[prevFrame].strike == true){
+      
         for(n = frameNumber; n > 0 ; n--){
-          if(this.frames[n-1].stike == false) {break;}
-          this.frames[n-1].total += this.frames[n].total;
+          if(this.frames[n-1].strike == false) {break;}
+          this.frames[n-1].total += this.frames[n].total
+
         }
       }
 
@@ -39,11 +44,6 @@ var game = function() {
 
   game.prototype.totalCalc = function() {
     for(n = 0; n < 10; n ++){
-      console.log("Frame Number:" + (n+1));
-      console.log(this.frames[n].total)
-      console.log(this.frames[n].spare)
-      console.log(this.frames[n].full)
-      console.log(this.frames[n].strike)
       this.gameTotal += this.frames[n].total
     }
   };

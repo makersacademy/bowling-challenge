@@ -1,5 +1,6 @@
 var tenthFrame = function () {
   this.scores=[];
+  this.capacity = 2;
   this.total = null;
   this.strike = false;
   this.spare = false;
@@ -16,14 +17,13 @@ tenthFrame.prototype.scoreInput = function(score) {
       this.full = true;
       return "strike!"
       }
-    if (this.total == 10 && this.scores.length == 2){
+    if (this.total == 10 && this.scores.length == this.capacity ){
       this.spare = true
     }
-    if (this.scores.length == 2 && this.spare == false ){
-      this.full = true;
+     if (this.stike || this.spare){
+    this.capacity = 3  
     }
-
-    if(this.scores.length == 3 && this.spare == true ){
+    if (this.scores.length == this.capacity ){
       this.full = true;
     }
   };

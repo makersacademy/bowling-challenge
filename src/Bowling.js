@@ -23,21 +23,27 @@ Scoresheet.prototype.scoreFrames = function() {
 
 Scoresheet.prototype.strikeCalc = function() {
   n = 0;
-  while ( n < 10 ) {
+
+  while ( n < 8 ) {
     if (this.tally[n] === 10) {
+
       if (this.board[n][0] === 10) {
         if (this.board[n + 1][0] === 10)
-          { this.tally[n] = 20 + this.tally[n + 2] }
-        else if (this.tally[n + 1] === 10)
           { this.tally[n] = 20 + this.board[n + 2][0] }
         else
           { this.tally[n] = 10 + this.tally[n + 1] };
       }
-      else
-        { this.tally[n] = 10 + this.board[n+1][0] };
+
+      else { this.tally[n] = 10 + this.board[n+1][0] };
+
     };
-  n += 1;
+    n += 1;
   };
+
+  if (this.board[8][0] === 10)
+    { this.tally[8] = this.tally[8] + this.board[9][0] + this.board[9][1] };
+  if (this.tally[8] === 10 && this.board[8][0] != 10)
+    { this.tally[8] = this.tally[8] + this.board[9][0] };
 };
 
 

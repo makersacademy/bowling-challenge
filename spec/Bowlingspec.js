@@ -108,7 +108,20 @@ var scoresheet;
       scoresheet.scoreFrames();
       scoresheet.strikeCalc();
       scoresheet.sum();
-      expect(scoresheet.total).toBe(53)
+      expect(scoresheet.total).toBe(48)
+    });
+
+    it('can score a perfect game correctly', function() {
+      scoresheet = new Scoresheet();
+      scoresheet.board = [[10,0], [10,0],
+                          [10,0], [10,0],
+                          [10,0], [10,0],
+                          [10,0], [10,0],
+                          [10,0], [10,10,10]];
+      scoresheet.scoreFrames();
+      scoresheet.strikeCalc();
+      scoresheet.sum();
+      expect(scoresheet.total).toBe(300)
     });
 
   });

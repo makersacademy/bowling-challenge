@@ -25,7 +25,6 @@ Game.prototype.calculateBonuses = function() {
     this.bonusForSpare();
     this.bonusForStrike();
     this.bonusForStrikeStrike();
-    this.bonusForStrikeStrikeStrike();
   };
 };
 
@@ -36,22 +35,15 @@ Game.prototype.bonusForSpare = function(first_argument) {
 };
 
 Game.prototype.bonusForStrike = function(first_argument) {
-  if (this.previousFrame() && this.previousFrame().isStrike() && !this.currentFrame().isStrike()) {
-    this.previousFrame().scoreBonus.push(this.currentFrame().totalScore());
+  if (this.previousFrame() && this.previousFrame().isStrike()) {
+    var bonus = this.currentFrame().scoreRecord.slice(0,2);
+    this.previousFrame().scoreBonus = this.previousFrame().scoreBonus.concat(bonus);
   };
 };
 
 Game.prototype.bonusForStrikeStrike = function(first_argument) {
-  if (this.frameBeforeLast() && this.frameBeforeLast().isStrike() && this.previousFrame().isStrike() && !this.currentFrame().isStrike()) {
+  if (this.frameBeforeLast() && this.frameBeforeLast().isStrike() && this.frameBeforeLast().scoreBonus.length != 2) {
     this.frameBeforeLast().scoreBonus.push(this.currentFrame().scoreRecord[0]);
-    this.frameBeforeLast().scoreBonus.push(this.previousFrame().totalScore());
-  };
-};
-
-Game.prototype.bonusForStrikeStrikeStrike = function(first_argument) {
-  if (this.frameBeforeLast() && this.frameBeforeLast().isStrike() && this.previousFrame().isStrike() && this.currentFrame().isStrike()) {
-    this.frameBeforeLast().scoreBonus.push(this.currentFrame().totalScore());
-    this.frameBeforeLast().scoreBonus.push(this.previousFrame().totalScore());
   };
 };
 

@@ -6,262 +6,154 @@ describe("Game", function() {
     game = new Game();
   });
 
-  it ("should start with at a score of zero", function() {
-    expect(game.score).toBe(0);
+  it ("should start on frame 1", function() {
+    expect(game.frameNo).toBe(1);
   });
 
-  it ("should have ten pins", function() {
-    expect(game.pins).toBe(10);
-  });
-
-  it ("should be on roll 1", function() {
-    expect(game.roll).toBe(1);
-  });
-
-  it ("should be on frame 1", function() {
-    expect(game.frame).toBe(1);
-  });
-
-  describe("first bowl of frame", function() {
-    it("should bowl a number between 0 and 10", function() {
-      game.bowl(10);
-      expect(game.score).toBeLessThan(11);
-      expect(game.score).toBeGreaterThan(-1);
-    });
-
-    describe("0 is bowled", function() {
-
-      beforeEach(function() {
-        spyOn(Math, 'floor').and.returnValue(0);
-        game.bowl();
-      });
-
-      it("should leave 10 pins standing", function() {
-        expect(game.pins).toBe(10);
-      });
-
-      it("should have a score of 0", function() {
-        expect(game.score).toBe(0);
-        expect(game.scorecard[0][0]).toBe(0);
-      });
-
-      it("should record score", function() {
-        expect(game.scorecard[0][0]).toBe(0);
-      });
-
-      it("should move to roll 2", function() {
-        expect(game.roll).toBe(2);
-      });
-    });
-
-    describe("10 is bowled", function() {
-      beforeEach(function() {
-        spyOn(Math, 'floor').and.returnValue(10);
-        game.bowl();
-      });
-
-      it("should have a score of 10", function() {
-        expect(game.score).toBe(10);
-      });
-
-      it("should record a strike", function() {
-        expect(game.scorecard[0][0]).toBe('X');
-      });
-
-      it("should move onto the next frame", function() {
-        expect(game.frame).toBe(2);
-      });
-
-      it("should keep the roll number as 1", function() {
-        expect(game.roll).toBe(1);
-      });
-
-      it("should put 10 pins back up", function() {
-        expect(game.pins).toBe(10);
-      });
-    });
-  });
-
-  describe("second bowl of frame", function() {
-    beforeEach(function() {
-      spyOn(Math, 'floor').and.returnValue(4);
-      game.bowl();
-    });
-    it ("should start with at a score of less than 10", function() {
-      expect(game.score).toBeLessThan(10);
-    });
-
-    it ("should have more than 0 pins", function() {
-      expect(game.pins).toBeGreaterThan(0);
-    });
-
-    it ("should be on roll 2", function() {
-      expect(game.roll).toBe(2);
-    });
-
-      describe("spare", function() {
-        beforeEach(function() {
-          game.score = 6;
-          game.pins = 4;
-          game.scorecard = [[6,],[]];
-          game.frame = 1;
-          game.roll = 2;
-          game.bowl();
-        });
-
-        it("should have a score of 10", function() {
-          expect(game.score).toBe(10);
-        });
-
-        it("should record a spare", function() {
-          expect(game.scorecard[0][1]).toBe('/');
-        });
-
-        it("should move onto the next frame", function() {
-          expect(game.frame).toBe(2);
-        });
-
-        it("should change the roll number to 1", function() {
-          expect(game.roll).toBe(1);
-        });
-
-        it("should put 10 pins back up", function() {
-          expect(game.pins).toBe(10);
-        });        
-      });
-
-      describe("frame score 8", function() {
-        beforeEach(function() {
-          game.score = 3;
-          game.pins = 7;
-          game.scorecard = [[3,],[]];
-          game.frame = 1;
-          game.roll = 2;
-          game.bowl();
-        });
-
-        it("should move onto the next frame", function() {
-          expect(game.frame).toBe(2);
-        });
-
-        it("should change the roll number to 1", function() {
-          expect(game.roll).toBe(1);
-        });
-
-        it("should put 10 pins back up", function() {
-          expect(game.pins).toBe(10);
-        });
-
-        it("should record the score", function() {
-          expect(game.scorecard[0][1]).toBe(4);
-        });
-      });
-    });
-
-  describe("frame after a spare", function() {
+  describe("adds scores correctly", function() {
     
-    beforeEach(function() {
-        spyOn(Math, 'floor').and.returnValue(5);
-        game.bowl();
-        game.bowl();
-    });
-
-    describe("rolls 5", function() {
-      it("should have a score of 20", function() {
-        game.bowl();
-        expect(game.score).toBe(20);
-      });
-    });
-    describe("rolls another spare frame then 5", function() {
-      it("should have a score of 35", function() {
-        game.bowl();
-        game.bowl();
-        game.bowl();
-        expect(game.score).toBe(35);
-      });
-    });
-  });
-
-  describe("frame after a strike", function() {
-    
-    describe("rolls 4 then 4", function() {
-      it("should have a score of 26", function() {
-        game.score = 10;
-        game.pins = 10;
-        game.scorecard = [['X'],[]];
-        game.frame = 2;
-        game.roll = 1;
-        spyOn(Math, 'floor').and.returnValue(4);
-        game.bowl();
-        game.bowl();
-        expect(game.score).toBe(26);
-      });
-    });
-  });
-
-  describe("after a strike", function() {
-    
-    describe("another strike", function() {
-      it("should have a score of 30", function() {
-        game.score = 10;
-        game.pins = 10;
-        game.scorecard = [['X'],[]];
-        game.frame = 2;
-        game.roll = 1;
-        spyOn(Math, 'floor').and.returnValue(10);
-        game.bowl();
-        expect(game.score).toBe(30);
-      });
-    });
-    describe("another two strikes", function() {
-      it("should have a score of 60", function() {
-        spyOn(Math, 'floor').and.returnValue(10);
-        game.bowl();
-        game.bowl();
-        game.bowl();
-        expect(game.score).toBe(60);
-      });
-    });
-  });
-
-  describe("perfect game", function() {
-    
-    it("should have a score of 300", function() {
-      spyOn(Math, 'floor').and.returnValue(10);
-      for (i = 0; i < 13; i++) {
-        game.bowl();
-      }
-      expect(game.score).toBe(300);
-    });
-  });
-
-  describe("all 3s", function() {
-    
-    it("should have a score of 60", function() {
-      spyOn(Math, 'floor').and.returnValue(3);
+    it("all 3s", function() {
       for (i = 0; i < 20; i++) {
-        game.bowl();
+        game.recordBowl(3);
       }
-      expect(game.score).toBe(60);
+      expect(game.calculateTotalScore()).toBe(60);
     });
 
-    it("should exit after 10th frame", function() {
-      spyOn(Math, 'floor').and.returnValue(3);
-      for (i = 0; i < 22; i++) {
-        game.bowl();
+    it("all gutterballs ", function() {
+      for (i = 0; i < 20; i++) {
+        game.recordBowl(0);
       }
-      expect(game.score).toBe(60);
+      expect(game.calculateTotalScore()).toBe(0);
+    });
+
+    it("after a strike", function() {
+      game.recordBowl(10);
+      game.recordBowl(4);
+      game.recordBowl(4);
+      expect(game.calculateTotalScore()).toBe(26);
+    });
+
+    it("after two strikes", function() {
+      game.recordBowl(10);
+      game.recordBowl(10);
+      expect(game.calculateTotalScore()).toBe(30);
+    });
+
+    it("after three strikes", function() {
+      game.recordBowl(10);
+      game.recordBowl(10);
+      game.recordBowl(10);
+      expect(game.calculateTotalScore()).toBe(60);
+    });
+
+    it("after a spare", function() {
+      for (i = 0; i < 3; i++) {
+        game.recordBowl(5);
+      }
+      game.recordBowl(0);
+      expect(game.calculateTotalScore()).toBe(20);
+    });
+
+    it("after two spares in a row", function() {
+      for (i = 0; i < 5; i++) {
+        game.recordBowl(5);
+      }
+      game.recordBowl(0);
+      expect(game.calculateTotalScore()).toBe(35);
     });
   });
 
-  describe("spare in 10th round", function() {
+  describe("adds bonuses correctly", function() {
 
-    it("should exit after 11th frame", function() {
-      spyOn(Math, 'floor').and.returnValue(5);
-      for (i = 0; i < 23; i++) {
-        game.bowl();
+    it("spare in 10th round", function() {
+      for (i = 0; i < 21; i++) {
+        game.recordBowl(5);
       }
-      expect(game.score).toBe(155);
+      expect(game.calculateTotalScore()).toBe(150);
+    });
+
+    it("spare in 10th round then 10", function() {
+      for (i = 0; i < 20; i++) {
+        game.recordBowl(5);
+      }
+      game.recordBowl(10);
+      expect(game.calculateTotalScore()).toBe(155);
+    });
+
+    it("strike in 10th round", function() {
+      for (i = 0; i < 18; i++) {
+        game.recordBowl(4);
+      }
+      game.recordBowl(10);
+      game.recordBowl(4);
+      game.recordBowl(4);
+      expect(game.calculateTotalScore()).toBe(90);
+    });
+
+    it("strike in 10th and 11th round", function() {
+      for (i = 0; i < 18; i++) {
+        game.recordBowl(4);
+      }
+      game.recordBowl(10);
+      game.recordBowl(10);
+      game.recordBowl(4);
+      expect(game.calculateTotalScore()).toBe(96);
+    });
+
+    it("strike in 10th and 11th round then 10", function() {
+      for (i = 0; i < 18; i++) {
+        game.recordBowl(4);
+      }
+      game.recordBowl(10);
+      game.recordBowl(10);
+      game.recordBowl(10);
+      expect(game.calculateTotalScore()).toBe(102);
+    });
+
+    it("perfect game (12 strikes)", function() {
+      for (i = 0; i < 13; i++) {
+        game.recordBowl(10);
+      }
+      expect(game.calculateTotalScore()).toBe(300);
+    });
+  });
+
+  describe("knows when game is over", function() {
+    
+    it ("after 10th round if strike or spare not rolled", function() {
+      for (i = 0; i < 20; i++) {
+        game.recordBowl(3);
+      }
+      expect(game.isGameOver()).toBe(true);
+    });
+    it ("after 11th round if spare rolled in 10th", function() {
+      for (i = 0; i < 21; i++) {
+        game.recordBowl(5);
+      }
+      expect(game.isGameOver()).toBe(true);
+    });
+    it ("after 12th round if strike rolled in 10th and 11th", function() {
+      for (i = 0; i < 12; i++) {
+        game.recordBowl(10);
+      }
+      expect(game.isGameOver()).toBe(true);
+    });
+  });
+
+  describe("knows when game is still playing", function() {
+
+    it ("after 10th round if spare rolled in 10th", function() {
+      for (i = 0; i < 20; i++) {
+        game.recordBowl(5);
+      }
+      expect(game.isGameOver()).toBe(false);
+    });
+
+    it ("after 11th round if strike rolled in 10th and 11th", function() {
+      for (i = 0; i < 11; i++) {
+        game.recordBowl(10);
+      }
+      expect(game.isGameOver()).toBe(false);
     });
   });
 });

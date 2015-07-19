@@ -1,86 +1,116 @@
 function Game() {
-  this.score = 0;
-  this.pins = 10;
-  this.scorecard = [[],[],[],[],[],[],[],[],[],[],[],[],[]];
-  this.frame = 1;
-  this.roll = 1;
-  this.playing = true;
+  this.frameNo = 1;
+  this.frame = new Frame;  
+  this.totalScores = [];
 }
 
-Game.prototype.bowl = function() {
-  if (this.playing) {
-    hit = Math.floor(Math.random() * (this.pins + 1));
-    this.score += hit;
-    this.pins -= hit;
-    this.checkLastStrike();
-    if (this.pins == 0) {
-      if (hit == 10) {
-        this.strike();
-      }
-      else {
-        this.spare();
-      }
-      this.frameReset();
-    }
-    else {
-      this.checkRound();
-    }
+Game.prototype.recordBowl = function(pinsKnockedOver) {
+  if (this.isGameOver()) {
+    return;
+  }
+  this.adjustRolls();
+  this.frame.registerRoll(pinsKnockedOver);
+  this.totalScores[this.currentFrameIndex()] = this.frame.totalScoreRecord;
+  if (!this.frame.isInProgress()) {
+    this.concludeFrame();
   }
 };
 
-Game.prototype.strike = function() {
-  this.scorecard[this.frame - 1][0] = 'X';
-  if (this.frame == 12) {
-  	this.playing = false;
+Game.prototype.isGameOver = function() {
+  if (this.frameNo > 12) {
+    return true;
   }
-};
-
-Game.prototype.spare = function() {
-  this.scorecard[this.frame - 1][1] = '/';
-  if (this.frame == 11) {
-  	this.playing = false;
+  else if ((this.frameNo > 11) && !(this.isLastFrameStrike() || this.isFrameBeforeLastStrike())) {
+    return true;
   }
-};
-
-Game.prototype.checkRound = function() {
-  
-  if (this.roll == 2) {
-  	this.scorecard[this.frame - 1][1] = hit;
-  	this.frameReset();
-  	if (this.frame == 11) {
-  	  this.playing = false;
-  	}
+  else if ((this.frameNo > 10) && !((this.isLastFrameSpare()) || (this.isLastFrameStrike()))) {
+    return true;
   }
   else {
-  	this.checkLastSpare();
-    this.roll = 2;
-    if (this.frame == 11) {
-  	  this.playing = false;
-  	}
+    return false;
   }
 };
 
-Game.prototype.checkLastStrike = function() {
-  if ((this.frame > 1) && (this.frame < 12) && (this.scorecard[this.frame - 2][0] == 'X')) {
-    this.score += hit;
+Game.prototype.adjustRolls = function() {
+  if (this.frameNo > 10 && this.isLastFrameSpare()) {
+    this.frame.rollsRemaining = 1;
   }
-  if ((this.frame > 2) && (this.frame < 11) && (this.scorecard[this.frame - 3][0] == 'X')) {
-    this.score += hit;
+  if (this.frameNo > 11 && this.isLastFrameStrike()) {
+    this.frame.rollsRemaining = 1;
   }
 };
 
-Game.prototype.checkLastSpare = function() {
-  if ((this.frame > 1) && (this.scorecard[this.frame - 2][1] == '/')) {
-    this.scorecard[this.frame - 1][0] = 2 * hit;
-    this.score += hit;
+Game.prototype.calculateTotalScore = function() {
+  var sumOfScores = 0;
+  for (var i = 0; i < Math.min(10, this.totalScores.length); i++) {
+    sumOfScores += (this.totalScores[i][2] || 0)
   }
-  else {
-   this.scorecard[this.frame - 1][0] = hit;
+  return sumOfScores;
+}
+
+Game.prototype.isLastFrameStrike = function() {
+  return ((this.frameNo > 1) && (this.totalScores[this.lastFrameIndex()][0] === 10));
+};
+
+Game.prototype.isFrameBeforeLastStrike = function() {
+  return ((this.frameNo > 2) && (this.totalScores[this.lastFrameIndex() - 1][0] === 10));
+};
+
+Game.prototype.isLastFrameSpare = function() {
+  return ((this.frameNo > 1) && (this.totalScores[this.lastFrameIndex()][2] === 10) && !(this.totalScores[this.lastFrameIndex()][0] === 10));
+};
+
+Game.prototype.currentFrameIndex = function() {
+  return this.frameNo - 1;
+};
+
+Game.prototype.lastFrameIndex = function() {
+  return this.frameNo - 2;
+};
+
+Game.prototype.frameBeforeLastIndex = function() {
+  return this.frameNo - 3;
+};
+
+Game.prototype.isBonusRound = function() {
+  return this.frameNo > 2;
+};
+
+Game.prototype.concludeFrame = function(first_argument) {
+  this.totalScores[this.currentFrameIndex()][2] = this.frame.totalScore();
+  this.addBonuses();
+  this.frameNo ++;
+  this.frame = new Frame();
+};
+
+Game.prototype.recordStrike = function() {
+  this.scorecard[this.frameNo - 1][0] = 'X';
+  if (this.frameNo == 12) {
+    this.playing = false;
+  }
+};
+
+Game.prototype.recordSpare = function() {
+  this.scorecard[this.frameNo - 1][1] = '/';
+  if (this.frameNo == 11) {
+    this.playing = false;
+  }
+};
+
+Game.prototype.addBonuses = function() {
+  if (this.isLastFrameSpare()) {
+    this.totalScores[this.lastFrameIndex()][2] += this.totalScores[this.currentFrameIndex()][0];
+  }
+  if (this.isLastFrameStrike()) {
+    this.totalScores[this.lastFrameIndex()][2] += this.totalScores[this.currentFrameIndex()][2];
+  }
+  if (this.isLastFrameStrike() && this.isFrameBeforeLastStrike()) {
+    this.totalScores[this.frameBeforeLastIndex()][2] += this.totalScores[this.currentFrameIndex()][2];
   }
 };
 
 Game.prototype.frameReset = function() {
-  this.frame += 1;
-  this.pins = 10;
-  this.roll = 1;
+  this.frameNo += 1;
+  this.pins   = 10;
+  this.roll   = 1;
 };

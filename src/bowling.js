@@ -49,33 +49,32 @@ Bowling.prototype.total = function(){
 
 
 //flatten array of arrays.  concat function needed due to array of array.
-  var flattenedFirstTime = this.framesTally.reduce(function(x,y){
-    return x.concat(y);
-  });
-  console.log(flattenedFirstTime);
-//this is to sum the flattened array
-  var flattenedFinal = flattenedFirstTime.reduce(function(c,d){
-    return c + d;
-  });
-  console.log(flattenedFinal);
 
-//flatten bonus array
+    var flattenedFirstTime = this.framesTally.reduce(function(x,y){
+      return x.concat(y);
+    });
 
-  this.bonus_review();
+  //this is to sum the flattened array
+    var flattenedFinal = flattenedFirstTime.reduce(function(c,d){
+      return c + d;
+    });
 
-  var bonusFlattened = this.bonusTally.reduce(function(p,q){
-    return p.concat(y);
-  });
+  //flatten bonus array
 
-  var bonusFlattenedFinal = bonusFlattened.reduce(function(f,g){
-    return f + g;
-  })
+    this.bonus_review();
 
-  console.log(bonusFlattenedFinal);
+    var bonusFlattened = this.bonusTally.reduce(function(p,q){
+      return p.concat(y);
+    });
 
-  gameTotal = flattenedFinal+bonusFlattenedFinal;
+    var bonusFlattenedFinal = bonusFlattened.reduce(function(f,g){
+      return f + g;
+    })
 
-  return gameTotal;
+    gameTotal = flattenedFinal+bonusFlattenedFinal;
+
+    return gameTotal;
+
 
 };
 
@@ -162,7 +161,7 @@ Bowling.prototype.frameSum = function(frame){
       this.secondLastFrameTotal = 10 + selectedFrame[0];
       console.log(this.secondLastFrameTotal);
     } else {
-      this.secondLastFrameTotal = thisframesTally[frameNo-1][0] + thisframesTally[frameNo-1][1];
+      this.secondLastFrameTotal = this.framesTally[frameNo-1][0] + this.framesTally[frameNo-1][1];
 
     }
   }

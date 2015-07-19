@@ -1,20 +1,21 @@
 var TenthFrame = function() {
-  this.rollsRemaining = 4;
+  this.rollsRemaining = 2;
   this.scoreRecord = [];
 };
 
 TenthFrame.prototype.roll = function(numberOfPins) { 
-  if (this.isSpare()) {
-    this.rollsRemaining += 1;
-  };
   if (!this.isInProgress()) {throw 'the frame is complete'}; 
 
-  if (this.isStrike()) {
+  if (this.scoreRecord.length == 0 && numberOfPins == 10) {
+    this.rollsRemaining += 1;
+  };
+
+  if (!this.isStrike() && this.scoreRecord.length == 1 && (numberOfPins + this.scoreRecord[0]) == 10) {
     this.rollsRemaining += 1;
   };
 
   this.scoreRecord.push(numberOfPins);
-  this.rollsRemaining -= 2;
+  this.rollsRemaining --;
 };
 
 TenthFrame.prototype.totalScoreWithBonus = function() {          

@@ -4,7 +4,8 @@ var scoreFrame = function(frame) {
 };
 
 var Scoresheet = function() {
-  this.board = [];
+  this.board = [[0,0],[0,0],[0,0],[0,0],[0,0],
+                [0,0],[0,0],[0,0],[0,0],[0,0,0]]
   this.tally = [];
   this.round = 0;
   this.total = 0;
@@ -23,7 +24,6 @@ Scoresheet.prototype.scoreFrames = function() {
 
 Scoresheet.prototype.strikeCalc = function() {
   n = 0;
-
   while ( n < 8 ) {
     if (this.tally[n] === 10) {
 
@@ -33,7 +33,6 @@ Scoresheet.prototype.strikeCalc = function() {
         else
           { this.tally[n] = 10 + this.tally[n + 1] };
       }
-
       else { this.tally[n] = 10 + this.board[n+1][0] };
 
     };

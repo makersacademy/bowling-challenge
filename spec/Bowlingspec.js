@@ -124,5 +124,21 @@ var scoresheet;
       expect(scoresheet.total).toBe(300)
     });
 
+    it('can score a running tally', function() {
+      scoresheet = new Scoresheet();
+      var frame_1 = [10,0];
+      var frame_2 = [2,3];
+      scoresheet.addFrame(frame_1);
+      scoresheet.scoreFrames();
+      scoresheet.strikeCalc();
+      scoresheet.sum();
+      expect(scoresheet.total).toBe(10)
+      scoresheet.addFrame(frame_2);
+      scoresheet.scoreFrames();
+      scoresheet.strikeCalc();
+      scoresheet.sum();
+      expect(scoresheet.total).toBe(20)
+    });
+
   });
 });

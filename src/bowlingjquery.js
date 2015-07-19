@@ -12,13 +12,6 @@ $("#bowlsform").submit(function(e){
   e.preventDefault();
 
   console.log(clickCount ++);
-//
-// - receive bowl1 and bowl2
-// - update score1 and score2
-//
-// - receive bowl3 and bowl4
-// - update score3 and score4
-
 
   bowl1 = parseInt($("#bowl_1").val());
   bowl2 = parseInt($("#bowl_2").val());
@@ -37,8 +30,6 @@ $("#bowlsform").submit(function(e){
 
   frameTotalVal();
 
-
-
 });
 
 function runningTotal(){
@@ -56,10 +47,3 @@ function checkFrameBefore(){
 
   }
 }
-
-//
-// function output(){
-//
-//   $("#score"+game.clickCount).html();
-//
-// }

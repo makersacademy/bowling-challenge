@@ -6,9 +6,8 @@ function Bowling(){
   this.bonusTally = [];
   this.gameTotal = 0;
   this.secondLastFrameTotal = 0;
-
+  this.bonusFlattenedTotal = 0;
 }
-
 
 //if roll 9 times, then strike, then one more game then
 //playing = !playing
@@ -16,7 +15,6 @@ function Bowling(){
 Bowling.prototype.checkPlaying = function(){
 
   lastFrame = this.framesTally[this.framesTally.length-1];
-
 
   if (this.framesNumber === 10){
     if ((lastFrame[0] + lastFrame[1]) < 10){
@@ -47,38 +45,38 @@ Bowling.prototype.checkPlaying = function(){
 
 Bowling.prototype.total = function(){
 
-
 //flatten array of arrays.  concat function needed due to array of array.
-
     var flattenedFirstTime = this.framesTally.reduce(function(x,y){
       return x.concat(y);
     });
 
+    console.log(flattenedFirstTime);
   //this is to sum the flattened array
     var flattenedFinal = flattenedFirstTime.reduce(function(c,d){
       return c + d;
     });
 
+    console.log(flattenedFinal);
+
   //flatten bonus array
 
     this.bonus_review();
 
-    var bonusFlattened = this.bonusTally.reduce(function(p,q){
-      return p.concat(y);
-    });
+    if (this.bonusTally.length > 0){
 
-    var bonusFlattenedFinal = bonusFlattened.reduce(function(f,g){
-      return f + g;
-    })
+      var bonusFlattened = this.bonusTally.reduce(function(p,q){
+        return p.concat(q);
+      });
 
-    gameTotal = flattenedFinal+bonusFlattenedFinal;
+      this.bonusFlattenedTotal = bonusFlattened.reduce(function(f,g){
+        return f + g;
+      });
+    }
+
+    gameTotal = flattenedFinal+this.bonusFlattenedTotal;
 
     return gameTotal;
-
-
 };
-
-
 
 
 
@@ -128,8 +126,6 @@ Bowling.prototype.roll = function(bowlOne,bowlTwo){
   // this.total();
 
   this.checkPlaying();
-
-
 };
 
 Bowling.prototype.bonus_review = function(){
@@ -162,10 +158,8 @@ Bowling.prototype.frameSum = function(frame){
       console.log(this.secondLastFrameTotal);
     } else {
       this.secondLastFrameTotal = this.framesTally[frameNo-1][0] + this.framesTally[frameNo-1][1];
-
     }
   }
-
 
   //result is sum of frame just bowled - does not call bonus
   var result = selectedFrame.reduce(function(x,y){

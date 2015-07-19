@@ -4,6 +4,9 @@ function Bowling(){
   this.playing = true;
   this.framesNumber = 0; //number of frames played
   this.bonusTally = [];
+  this.gameTotal = 0;
+  this.secondLastFrameTotal = 0;
+
 }
 
 
@@ -55,6 +58,24 @@ Bowling.prototype.total = function(){
     return c + d;
   });
   console.log(flattenedFinal);
+
+//flatten bonus array
+
+  this.bonus_review();
+
+  var bonusFlattened = this.bonusTally.reduce(function(p,q){
+    return p.concat(y);
+  });
+
+  var bonusFlattenedFinal = bonusFlattened.reduce(function(f,g){
+    return f + g;
+  })
+
+  console.log(bonusFlattenedFinal);
+
+  gameTotal = flattenedFinal+bonusFlattenedFinal;
+
+  return gameTotal;
 
 };
 
@@ -132,14 +153,17 @@ Bowling.prototype.frameSum = function(frame){
 
   var selectedFrame = this.framesTally[frameNo];
 
-  //calculates the 2nd
+  //calculates the 2nd last frame it was a strike or spare
   if (frameNo >= 1){
     if ((this.framesTally[frameNo-1][0])===10){
-      secondLastFrameTotal = 10 + selectedFrame[0] + selectedFrame[1];
-      console.log(secondLastFrameTotal);
+      this.secondLastFrameTotal = 10 + selectedFrame[0] + selectedFrame[1];
+      console.log(this.secondLastFrameTotal);
     } else if ((this.framesTally[frameNo-1][0]+this.framesTally[frameNo-1][1])===10){
-      secondLastFrameTotal = 10 + selectedFrame[0];
-      console.log(secondLastFrameTotal);
+      this.secondLastFrameTotal = 10 + selectedFrame[0];
+      console.log(this.secondLastFrameTotal);
+    } else {
+      this.secondLastFrameTotal = thisframesTally[frameNo-1][0] + thisframesTally[frameNo-1][1];
+
     }
   }
 

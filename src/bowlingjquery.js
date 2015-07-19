@@ -24,10 +24,6 @@ $("#bowlsform").submit(function(e){
 
   runningTotal();
 
-  if (clickCount >= 2){
-  checkFrameBefore();
-  }
-
   frameTotalVal();
 
 });
@@ -37,13 +33,10 @@ function runningTotal(){
 }
 
 function frameTotalVal(){
-  $("#frameOutcome"+clickCount).html(game.frameSum(clickCount));
-}
-
-function checkFrameBefore(){
-  if(game.framesTally[clickCount-2][0]===10){
-    // $("#frameOutcome"+clickCount-1).html(10+game.framesTally[clickCount-1][0]);
-    $("#frameOutcome1").htm(12345);
-
+  if(clickCount === 1){
+    $("#frameOutcome"+clickCount).html(game.frameSum(clickCount));
+  } else {
+    $("#frameOutcome"+clickCount).html(game.frameSum(clickCount));
+    $("#frameOutcome"+(clickCount-1)).html(game.secondLastFrameTotal);
   }
 }

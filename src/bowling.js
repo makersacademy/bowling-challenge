@@ -78,45 +78,12 @@ Bowling.prototype.total = function(){
     return gameTotal;
 };
 
-
-
-
-// Bowling.prototype.total = function(){
-//
-//     this.bonus_review(); //this calculates the bonus
-//
-//     var bonusTally = this.bonusTally;
-//
-//     var unpackedBonusTally = bonusTally.reduce(function(x,y){
-//
-//
-//     })
-//
-//
-//     //flatten the framesTally - an array of array
-//     var framesTally = this.framesTally;
-//
-//     var unpackedTally = framesTally.reduce(function(a,b){
-//     a.concat(b);
-//     return a.concat(b);
-//     });
-//
-//     //add all scores in the framesTally together
-//     var total = 0;
-//
-//     for(var i=0; i<unpackedTally.length; i++){
-//       total += unpackedTally[i];
-//     }
-//
-//     return total;
-//
-// };
-
-
 Bowling.prototype.roll = function(bowlOne,bowlTwo){
 
   if(this.playing === false){
     throw new Error('The game has ended');
+  } else if ((bowlOne + bowlTwo) > 10) {
+    throw new Error('Maximum pins are 10');
   }
 
   this.framesTally.push([bowlOne,bowlTwo]); //this pushes the next two bowls onto an array

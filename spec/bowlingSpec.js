@@ -39,12 +39,6 @@ describe("Bowling", function(){
         expect(bowling.playing).toBe(false);
     });
 
-    // it("can select a specific frame",function(){
-    //     bowling.roll(1,1);
-    //     bowling.roll(2,3);
-    //     expect(bowling.frameSelect(2)).toEqual([2,3]);
-    // });
-
     it("can sum a specific frame when it is not a spare or strike",function(){
         bowling.roll(1,1);
         bowling.roll(2,3);
@@ -56,8 +50,24 @@ describe("Bowling", function(){
       bowling.roll(2,3);
       bowling.frameSum(2);
       expect(bowling.secondLastFrameTotal).toEqual(15);
+    });
 
+    it("maximum pins bowled are 10",function(){
+      expect( function(){ bowling.roll(4,7); }).toThrow(new Error('Maximum pins are 10'));
+    });
 
+    // it("can register a perfect score",function(){
+    //   for (var i = 0; i < 14; i++){
+    //     bowling.roll(10,0);}
+    //     expect(bowling.total()).toBe(300);
+    // });
+
+    it("when strike occurs, player bonus equal to next two rolls)",function(){
+
+      bowling.roll(10,0);
+      bowling.roll(10,0);
+      bowling.roll(10,0);
+      expect(bowling.total()).toEqual(90);
     });
 
   });

@@ -30,12 +30,11 @@ Frame.prototype.calculateScore = function() {
 };
 
 Frame.prototype.isStrike = function () {
-  return (this.calculateScore() === 10 && this.throwScores.length < 2);
-  // if(this.calculateScore() === 10 && this.throwScores.length < 2) {
-  //   return true;
-  // };
+  return (this.throwScores[0] === 10);
+  // return (this.calculateScore() === 10 && this.throwScores.length < 2);
 };
 
 Frame.prototype.isSpare = function () {
-  return (this.calculateScore() === 10 && this.throwScores.length === 2);
+  return (this.throwScores[0] < 10) && (this.calculateScore() === 10);
+  // return (this.calculateScore() === 10 && this.throwScores.length === 2);
 };

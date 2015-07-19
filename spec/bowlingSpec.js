@@ -146,6 +146,38 @@ describe('Bowling', function() {
           expect(bowling.games[0].currentFrame).toEqual(bowling.games[0].framez[1]);
         })
       })
+      describe('bonusController', function() {
+        describe('strikes', function() {
+          it('adds bonuses from next 2 rolls regular', function() {
+            bowling.games[0].framez[0].rolls[0].knockedDown(10);
+            bowling.games[0].framez[0].tallyRolls();
+            bowling.games[0].frameController();
+            bowling.games[0].framez[1].rolls[0].knockedDown(5);
+            bowling.games[0].framez[1].tallyRolls();
+            bowling.games[0].framez[1].rolls[1].knockedDown(4);
+            bowling.games[0].framez[1].tallyRolls();
+            bowling.games[0].bonusController();
+            expect(bowling.games[0].framez[0].bonus).toEqual(9);
+          })
+        })
+
+        describe('spares', function() {
+          it('adds bonuses from the next 1 roll', function() {
+            bowling.games[0].framez[0].rolls[0].knockedDown(0);
+            bowling.games[0].framez[0].tallyRolls();
+            bowling.games[0].framez[0].rolls[1].knockedDown(10);
+            bowling.games[0].framez[0].tallyRolls();
+            bowling.games[0].frameController();
+            bowling.games[0].framez[1].rolls[0].knockedDown(5);
+            bowling.games[0].framez[1].tallyRolls();
+            bowling.games[0].framez[1].rolls[1].knockedDown(4);
+            bowling.games[0].framez[1].tallyRolls();
+            bowling.games[0].bonusController();
+            expect(bowling.games[0].framez[0].bonus).toEqual(5);
+
+          })
+        })
+      })
     })
   })
 })

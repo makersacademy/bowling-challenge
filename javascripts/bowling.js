@@ -17,21 +17,28 @@ var Bowling = function() {
     ];
     this.totalScore = null;
     this.holdingBonus = [];
-    this.i = 0
-    this.currentFrame = this.framez[this.i];
+    this.frameNumber = 0
+    this.currentFrame = this.framez[this.frameNumber];
   }
 
   Game.prototype.frameController = function() {
     if (this.currentFrame.isStrike()) {
       this.currentFrame.rolls[1].rollScore = ""
-      this.i ++
-      this.currentFrame = this.framez[this.i];
+      this.frameNumber ++
+      this.currentFrame = this.framez[this.frameNumber];
     } else if ((this.currentFrame.rolls[0] != null) && (this.currentFrame.rolls[1] != null)) {
-      this.i ++
-      this.currentFrame = this.framez[this.i];
+      this.frameNumber ++
+      this.currentFrame = this.framez[this.frameNumber];
     };
-
   }
+
+  Game.prototype.bonusController = function() {
+    if (this.framez[this.frameNumber-1].isStrike()) {
+      this.framez[this.frameNumber-1].addBonus(this.currentFrame.rolls[0].rollScore + this.currentFrame.rolls[1].rollScore);
+    } else if (this.framez[this.frameNumber-1].isSpare()) {
+      this.framez[this.frameNumber-1].addBonus(this.currentFrame.rolls[0].rollScore);
+    };
+  };
 
     var Frame = function() {
       this.rolls = [

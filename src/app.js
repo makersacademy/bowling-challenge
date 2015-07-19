@@ -57,12 +57,32 @@ $(document).ready(function() {
   }
 
   var checkForCheats = function(pins) {
-    if (bowlingScoreCard.currentFrame !== 9 || (bowlingScoreCard.currentFrame === 9 && (!bowlingScoreCard.frames[9].isStrike() && !bowlingScoreCard.frames[9].isSpare()) ) ) {
-      if (bowlingScoreCard.frames[bowlingScoreCard.currentFrame].roll1 + pins > 10) {
+    if ( !isLastFrame() || lastFrameNotStrikeOrSpare() || strikeOnLastFrameNotOnSecondRoll() ) {
+      if ( checkForCheatsAllButLastFrame(pins) || checkForCheatsLastFrameStrike(pins) ) {
         alert('Stop cheating!')
         return true
       }
     }
+  }
+
+  var lastFrameNotStrikeOrSpare = function() {
+    return (bowlingScoreCard.currentFrame === 9 && (!bowlingScoreCard.frames[9].isStrike() && !bowlingScoreCard.frames[9].isSpare()) )
+  }
+
+  var strikeOnLastFrameNotOnSecondRoll = function() {
+    return (bowlingScoreCard.frames[9].roll1 === 10 && bowlingScoreCard.frames[9].roll2 !== 10)
+  }
+
+  var isLastFrame = function() {
+    return bowlingScoreCard.currentFrame === 9
+  }
+
+  var checkForCheatsAllButLastFrame = function(pins) {
+    return (!isLastFrame() && bowlingScoreCard.frames[bowlingScoreCard.currentFrame].roll1 + pins > 10)
+  }
+
+  var checkForCheatsLastFrameStrike = function(pins) {
+    return bowlingScoreCard.frames[9].roll2 + pins > 10
   }
 
 })

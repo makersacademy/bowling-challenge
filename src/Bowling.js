@@ -29,11 +29,11 @@ Scoresheet.prototype.strikeCalc = function() {
 
       if (this.board[n][0] === 10) {
         if (this.board[n + 1][0] === 10)
-          { this.tally[n] = 20 + this.board[n + 2][0] }
+          { this.tally[n] = 20 + this.board[n + 2][0] } //two strikes
         else
-          { this.tally[n] = 10 + this.tally[n + 1] };
+          { this.tally[n] = 10 + this.tally[n + 1] }; //strike
       }
-      else { this.tally[n] = 10 + this.board[n+1][0] };
+      else { this.tally[n] = 10 + this.board[n+1][0] }; //spare
 
     };
     n += 1;

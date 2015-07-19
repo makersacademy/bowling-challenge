@@ -1,14 +1,18 @@
 function Game() {
   this.frameNo = 1;
   this.frame = new Frame;  
-  this.totalScores = [];
+  this.totalScores = [[],[],[],[],[],[],[],[],[],[],[]];
+  this.cummulativeScore = [null,null,null,null,null,null,null,null,null,null,null];
+  this.pinsStanding = 10;
 }
 
 Game.prototype.recordBowl = function(pinsKnockedOver) {
   if (this.isGameOver()) {
+    alert('Game over!');
     return;
   }
   this.adjustRolls();
+  this.pinsStanding -= pinsKnockedOver;
   this.frame.registerRoll(pinsKnockedOver);
   this.totalScores[this.currentFrameIndex()] = this.frame.totalScoreRecord;
   if (!this.frame.isInProgress()) {
@@ -78,22 +82,19 @@ Game.prototype.isBonusRound = function() {
 
 Game.prototype.concludeFrame = function(first_argument) {
   this.totalScores[this.currentFrameIndex()][2] = this.frame.totalScore();
+  this.addCummulativeScore();
   this.addBonuses();
   this.frameNo ++;
   this.frame = new Frame();
+  this.pinsStanding = 10;
 };
 
-Game.prototype.recordStrike = function() {
-  this.scorecard[this.frameNo - 1][0] = 'X';
-  if (this.frameNo == 12) {
-    this.playing = false;
-  }
-};
-
-Game.prototype.recordSpare = function() {
-  this.scorecard[this.frameNo - 1][1] = '/';
-  if (this.frameNo == 11) {
-    this.playing = false;
+Game.prototype.addCummulativeScore = function() {
+  this.cummulativeScore = [null,null,null,null,null,null,null,null,null,null,null];
+  for (var i = 0; i < this.frameNo; i++) {
+    for (var j = 0; j < (i + 1); j++) {
+      this.cummulativeScore[i] += this.totalScores[j][2];
+    }
   }
 };
 

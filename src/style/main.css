@@ -1,0 +1,66 @@
+body {
+  margin:0;
+}
+
+.wrapper {
+  text-align: center;
+  width:100%;
+  background-color: #B5DAFF;
+  position: absolute;
+  font-family: Arial;
+}
+
+header {
+  background-color: #cc0066;
+  font-size: 36px;
+  padding: 15px;
+  color: #ffffff;
+}
+
+.score-section {
+  margin: auto;
+  padding: 10px;
+}
+
+.score-table {
+  padding: 10px 25%;
+}
+
+table {
+  width:100%;
+}
+
+table, td {
+  border: 1px solid #000000;
+}
+
+.scores td {
+  width:20px;
+  height: 20px;
+}
+
+/*.container {
+  width: 100%;
+  background-image: url('https://pixabay.com/static/uploads/photo/2014/04/03/11/47/bowling-pins-312135__180.png');
+  background-position: right;
+  background-repeat: no-repeat;
+}*/
+
+.lane {
+  text-align: left;
+  position: absolute;
+  height: 200px;
+}
+
+.buttons {
+  text-align: left;
+  padding: 0 25%;
+}
+
+.notification {
+  background-color: #ccff66;
+  padding: 10px;
+  font-size: 30px;
+  color: #000000;
+  display: none;
+}

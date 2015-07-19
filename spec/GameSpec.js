@@ -63,7 +63,7 @@ describe("Game", function() {
     });
   });
 
-  describe("adds bonuses correctly", function() {
+  describe("adds bonus rounds correctly", function() {
 
     it("spare in 10th round", function() {
       for (i = 0; i < 21; i++) {

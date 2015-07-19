@@ -20,19 +20,21 @@ $(document).ready(function() {
   showField();
 
   function showField() { 
-    if (game.currentFrame().isInProgress()) {
+    if (game.isComplete()) {
+      $("#primary").html('The game is complete!');
+    } 
+    else if (game.currentFrame().isInProgress()) {
       $("#primary").html(generateScoreEntry());
-    } else {
+    } 
+    else {
       $("#primary").html(generateNextFrame());
     };
   }
 
   function generateScoreEntry() { 
     return ' \
-    <form> \
-      Enter Score: <input name="score" type="text"> \
-      <input type="submit" value="Submit"> \
-    </form>';
+      Enter Score: <input id="inputscore" type="text"> \
+      <button id="submitscore" type="button">Enter</button>';
   };
 
   function generateNextFrame() { 
@@ -41,12 +43,28 @@ $(document).ready(function() {
     <button id="nextframe" type="button">Next Frame</button>';
   };
 
+  function generateTable() { 
+    var content = '';
+    game.frameRecord.forEach(function(frame){
+      var firstRoll = game.currentFrame().scoreRecord[0].toString();
+    });
+  };
+
 
   $("#nextframe").click(function() {
+    game.calculateBonuses();
     selector ++;
     game.newFrame(frameArray[selector]);
     showField();
   });
+
+  $("#submitscore").click(function() {
+    var input = $('#inputscore').val();
+    game.currentFrame().roll(parseInt(input));  
+    showField();
+    generateTable();
+  });
+
 
   // $("#down").click(function(){
   //   thermostat.decrease();

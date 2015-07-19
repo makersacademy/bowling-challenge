@@ -23,7 +23,7 @@ describe('Bowling Game Score', function() {
     game.frames[2].roll(4);
     game.frames[2].rollAgain(6);
     game.addBonus();
-    game.AddFrameScore();
+    game.addFrameScore();
     expect(game.frames[1].totalScore).toEqual(20);
   });
 
@@ -33,9 +33,25 @@ describe('Bowling Game Score', function() {
     game.frames[4].roll(2);
     game.frames[4].rollAgain(2);
     game.addBonus();
-    game.AddFrameScore();
+    game.addFrameScore();
     expect(game.frames[3].totalScore).toEqual(12);
   });
+
+  it('adds total of frames', function(){
+    game.addBonus();
+    game.addFrameScore();
+    game.addTotalScore();
+    expect(game.gameTotalScore).toEqual(18);
+  });
+
+  it('adds a bonus frame', function(){
+    game.frames[9].roll(10);
+    game.frames[9].addRolls();
+    game.checkLastFrame();
+    expect(game.frames[10]).toEqual(game.frames[10]);
+  });
+
+
 
 
 });

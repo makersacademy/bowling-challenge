@@ -25,12 +25,16 @@ BowlingGame.prototype.addBonus = function () {
       }
 };
 
-BowlingGame.prototype.AddFrameScore = function () {
+BowlingGame.prototype.addFrameScore = function () {
   this.addBonus();
 };
 
-BowlingGame.prototype.totalScore = function () {
-  for (var i = 0; i < this.frames.length; i++) { this.gameTtotalScore += this.frames[i].totalScore; }
+BowlingGame.prototype.addTotalScore = function () {
+  for (var i = 0; i < this.frames.length; i++) { this.gameTotalScore += this.frames[i].totalScore; }
+};
+
+BowlingGame.prototype.checkLastFrame = function () {
+  if (this.frames[9].isStrike === true || this.frames[9].isSpare === true) { this.frames.push(new Frame ());}
 };
 
 

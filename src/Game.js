@@ -30,20 +30,20 @@ Game.prototype.calculateBonuses = function() {
 
 Game.prototype.bonusForSpare = function(first_argument) {
   if (this.previousFrame() && this.previousFrame().isSpare()) {
-    this.previousFrame().scoreBonus.push(this.currentFrame().scoreRecord[0]);
+    this.previousFrame().bonusRecord.push(this.currentFrame().scoreRecord[0]);
   };
 };
 
 Game.prototype.bonusForStrike = function(first_argument) {
   if (this.previousFrame() && this.previousFrame().isStrike()) {
     var bonus = this.currentFrame().scoreRecord.slice(0,2);
-    this.previousFrame().scoreBonus = this.previousFrame().scoreBonus.concat(bonus);
+    this.previousFrame().bonusRecord = this.previousFrame().bonusRecord.concat(bonus);
   };
 };
 
 Game.prototype.bonusForStrikeStrike = function(first_argument) {
-  if (this.frameBeforeLast() && this.frameBeforeLast().isStrike() && this.frameBeforeLast().scoreBonus.length != 2) {
-    this.frameBeforeLast().scoreBonus.push(this.currentFrame().scoreRecord[0]);
+  if (this.frameBeforeLast() && this.frameBeforeLast().isStrike() && this.frameBeforeLast().bonusRecord.length != 2) {
+    this.frameBeforeLast().bonusRecord.push(this.currentFrame().scoreRecord[0]);
   };
 };
 

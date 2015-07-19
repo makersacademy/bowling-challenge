@@ -17,6 +17,13 @@ describe('Frame', function() {
       frame.roll(4);
       expect(frame.scoreRecord).toEqual([5,4]);
     });
+
+    it('rolls only when the game is in progress', function() {
+      frame.roll(5);
+      frame.roll(4);
+      expect(function() {frame.roll(1)}).toThrow('the frame is over');
+    });
+
   });
 
   describe('is in progress', function() {
@@ -43,6 +50,29 @@ describe('Frame', function() {
     });
   });
 
+   describe('total score', function() {
+    it('is zero for a new frame', function() {
+      expect(frame.totalScore()).toEqual(0);
+    });
+
+    it('is additive the score record array ', function() {
+      frame.roll(5);
+      frame.roll(5);
+      expect(frame.totalScore()).toEqual(10);
+    });
+  });
+
+  describe('bonus score', function() {
+    it('is zero for a new frame', function() {
+      expect(frame.totalBonus()).toEqual(0);
+    });
+
+    it('is additive the score record array ', function() {
+      frame.bonusRecord.push(5);
+      frame.bonusRecord.push(5);
+      expect(frame.totalBonus()).toEqual(10);
+    });
+  });
 
   describe('knows', function() {
     it('when there has been a strike', function() {
@@ -67,16 +97,10 @@ describe('Frame', function() {
       expect(frame.isSpare()).toBe(false);
     });
 
-    it('its own score', function() {
-      frame.roll(3);
-      frame.roll(6);
-      expect(frame.totalScore()).toEqual(9);
-    });
-
     it('its total score plus any bonus', function() {
       frame.roll(3);
       frame.roll(7);
-      frame.scoreBonus.push(10);
+      frame.bonusRecord.push(10);
       expect(frame.totalScoreWithBonus()).toEqual(20);
     });
 

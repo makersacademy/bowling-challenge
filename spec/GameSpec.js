@@ -59,7 +59,7 @@ describe('Game', function() {
       frame2.roll(4);
       frame2.roll(4);
       game.calculateBonuses();
-      expect(frame1.scoreBonus).toEqual([4]);
+      expect(frame1.bonusRecord).toEqual([4]);
     });
 
     it('a strike', function() {
@@ -70,7 +70,7 @@ describe('Game', function() {
       frame2.roll(4);
       frame2.roll(4);
       game.calculateBonuses();
-      expect(frame1.scoreBonus).toEqual([4,4]);
+      expect(frame1.bonusRecord).toEqual([4,4]);
     });
 
     it('two strikes', function() {
@@ -85,8 +85,8 @@ describe('Game', function() {
       frame3.roll(2);
       frame3.roll(2);
       game.calculateBonuses();
-      expect(frame1.scoreBonus).toEqual([10, 2]);
-      expect(frame2.scoreBonus).toEqual([2, 2]);
+      expect(frame1.bonusRecord).toEqual([10, 2]);
+      expect(frame2.bonusRecord).toEqual([2, 2]);
     });
 
     it('three strikes', function() {
@@ -100,8 +100,8 @@ describe('Game', function() {
       game.newFrame(frame3);
       frame3.roll(10);
       game.calculateBonuses();
-      expect(frame1.scoreBonus).toEqual([10, 10]);
-      expect(frame2.scoreBonus).toEqual([10]);
+      expect(frame1.bonusRecord).toEqual([10, 10]);
+      expect(frame2.bonusRecord).toEqual([10]);
     });
   });
    // knowing when the whole game is complete is untested yet

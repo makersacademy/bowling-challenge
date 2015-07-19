@@ -14,6 +14,7 @@ describe('Frame', function() {
   });
 
   describe('detects when a normal frame is over/in progress', function() {
+
     it('is a new frame', function() {
       expect(frame.isOver()).toBe(false);
     });
@@ -25,6 +26,7 @@ describe('Frame', function() {
   });
 
   describe('number of throws per frame', function() {
+
     it('2 throws as default', function() {
       frame.trackThrow();
       frame.trackThrow();
@@ -35,6 +37,7 @@ describe('Frame', function() {
       frame = new Frame(isFinalFrame = true);
       expect(frame.throwCount).toEqual(3);
     });
+
   });
 
   describe('detects when frame is over', function() {
@@ -53,6 +56,21 @@ describe('Frame', function() {
       frame.trackThrow(5);
       frame.trackThrow(5);
       expect(frame.isOver()).toBe(true);
+    });
+
+    xit('knows if it is completed in final frame with spares thrown', function() {
+      frame = new Frame(isFinalFrame = true);
+      frame.trackThrow(5);
+      frame.throwThrow(5);
+      frame.throwThrow(5);
+      expect(frame.isOver()).toBe(true);
+    });
+
+    xit('knows when final frame is not complete', function() {
+      frame = new Frame(isFinalFrame = true);
+      frame.trackThrow(10);
+      frame.throwThrow(10);
+      expect(frame.isOver()).toBe(false);
     });
 
   });
@@ -93,6 +111,16 @@ describe('Frame', function() {
       frame.trackThrow(0);
       frame.trackThrow(10);
       expect(frame.isSpare()).toBe(true);
+    });
+
+  });
+
+  describe('detects bonuses', function() {
+
+    it('knows bonus will be added to score', function() {
+      frame.trackThrow(5);
+      frame.trackThrow(5);
+      expect(frame.addBonus()).toBe(true);
     });
 
   });

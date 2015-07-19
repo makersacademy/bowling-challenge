@@ -51,7 +51,7 @@ describe('A bowling game', function() {
 
 		it('calculates score array for first throw/bowl', function() {
 			game.bowl(3);
-			expect(game.runningTotal()).toEqual(3);
+			expect(game.cumulativeScore()).toEqual(3);
 		});
 
 		it('calculates score for multiple bowls/throws', function() {
@@ -59,7 +59,7 @@ describe('A bowling game', function() {
 			game.bowl(3);
 			game.bowl(5);
 			game.bowl(3);
-			expect(game.runningTotal()).toEqual(12);
+			expect(game.cumulativeScore()).toEqual(12);
 		});
 
 	});
@@ -71,14 +71,14 @@ describe('A bowling game', function() {
 			for(var i = 0; i < 20; i++) {
 				game.bowl(0)
 			}
-			expect(game.runningTotal()).toEqual(0);
+			expect(game.cumulativeScore()).toEqual(0);
 		});
 
 		xit('perfect game', function() {
 			for(var i = 0; i < 20; i++) {
 				game.bowl(10)
 			}
-			expect(game.runningTotal()).toEqual(300);
+			expect(game.cumulativeScore()).toEqual(300);
 		});
 
 	});

@@ -17,7 +17,7 @@ var Game = function(frame) {
   // this.score = 0;
 };
 
-Game.prototype.runningTotal = function() {
+Game.prototype.cumulativeScore = function() {
   var trackBowl = 0
   var total = 0;
 

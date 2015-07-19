@@ -58,7 +58,7 @@ describe('Frame', function() {
       expect(frame.isOver()).toBe(true);
     });
 
-    xit('knows if it is completed in final frame with spares bowln', function() {
+    xit('knows if it is completed in final frame with spares bowl', function() {
       frame = new Frame(isFinalFrame = true);
       frame.trackBowl(5);
       frame.bowlbowl(5);

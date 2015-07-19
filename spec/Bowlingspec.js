@@ -59,5 +59,57 @@ var scoresheet;
       expect(scoresheet.total).toBe(40)
     });
 
+    it('can score a two strikes correctly', function() {
+      scoresheet = new Scoresheet();
+      scoresheet.board = [[10,0], [10,0],
+                          [2,0], [1,0],
+                          [1,0], [1,0],
+                          [1,0], [1,0],
+                          [1,0], [1,0,0]];
+      scoresheet.scoreFrames();
+      scoresheet.strikeCalc();
+      scoresheet.sum();
+      expect(scoresheet.total).toBe(43)
+    });
+
+    it('can score a three strikes correctly', function() {
+      scoresheet = new Scoresheet();
+      scoresheet.board = [[10,0], [10,0],
+                          [10,0], [2,0],
+                          [1,0], [1,0],
+                          [1,0], [1,0],
+                          [1,0], [1,0,0]];
+      scoresheet.scoreFrames();
+      scoresheet.strikeCalc();
+      scoresheet.sum();
+      expect(scoresheet.total).toBe(72)
+    });
+
+    it('can score a four strikes correctly', function() {
+      scoresheet = new Scoresheet();
+      scoresheet.board = [[10,0], [10,0],
+                          [10,0], [10,0],
+                          [2,0], [1,0],
+                          [1,0], [1,0],
+                          [1,0], [1,0,0]];
+      scoresheet.scoreFrames();
+      scoresheet.strikeCalc();
+      scoresheet.sum();
+      expect(scoresheet.total).toBe(101)
+    });
+
+    it('can score a strike spare combination correctly', function() {
+      scoresheet = new Scoresheet();
+      scoresheet.board = [[10,0], [1,9],
+                          [5,1], [1,0],
+                          [1,0], [1,0],
+                          [1,0], [1,0],
+                          [1,0], [1,0,0]];
+      scoresheet.scoreFrames();
+      scoresheet.strikeCalc();
+      scoresheet.sum();
+      expect(scoresheet.total).toBe(53)
+    });
+
   });
 });

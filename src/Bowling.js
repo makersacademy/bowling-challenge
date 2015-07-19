@@ -25,14 +25,21 @@ Scoresheet.prototype.strikeCalc = function() {
   n = 0;
   while ( n < 10 ) {
     if (this.tally[n] === 10) {
-      if (this.board[n][0] === 10)
-        { this.tally[n] = this.tally[n] + this.tally[n + 1] }
+      if (this.board[n][0] === 10) {
+        if (this.board[n + 1][0] === 10)
+          { this.tally[n] = 20 + this.tally[n + 2] }
+        else if (this.tally[n + 1] === 10)
+          { this.tally[n] = 20 + this.board[n + 2][0] }
+        else
+          { this.tally[n] = 10 + this.tally[n + 1] };
+      }
       else
-        { this.tally[n] = this.tally[n] + this.board[n + 1][0] }
+        { this.tally[n] = 10 + this.board[n+1][0] };
     };
   n += 1;
   };
 };
+
 
 Scoresheet.prototype.sum = function() {
   localSum = 0;

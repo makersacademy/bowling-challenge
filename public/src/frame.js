@@ -1,32 +1,34 @@
-function Frame() {
-  this.throwCount = 0;
-  this.throwScores = [];
-  this.isFinalFrame = false;
-
+function Frame(isFinalFrame) {
+  this.bowlCount = 0;
+  this.bowlScores = [];
+  //if no parameter passed in, isFinalFrame will be set to default of false
+  this.isFinalFrame = isFinalFrame || false;
 }
 
-Frame.prototype.trackThrow = function(pinsDown) {
+Frame.prototype.trackBowl = function(pinsDown) {
   if(pinsDown === 10) {
-    this.throwCount += 2;
+    this.bowlCount += 2;
   }
-  this.throwScores.push(pinsDown)
-  this.throwCount ++;
+  this.bowlScores.push(pinsDown)
+  this.bowlCount ++;
 };
+
+// rollTotal = calculateScore
 
 Frame.prototype.calculateScore = function() {
   var cumulativeScore = 0;
-  for(var i =0; i < this.throwScores.length; i++ ) {
-    cumulativeScore += this.throwScores[i];
+  for(var i =0; i < this.bowlScores.length; i++ ) {
+    cumulativeScore += this.bowlScores[i];
   }
   return cumulativeScore;
 };
 
 Frame.prototype.isStrike = function() {
-  return (this.throwScores[0] === 10);
+  return (this.bowlScores[0] === 10);
 };
 
 Frame.prototype.isSpare = function() {
-  return (this.throwScores[0] < 10) && (this.calculateScore() === 10);
+  return (this.bowlScores[0] < 10) && (this.calculateScore() === 10);
 };
 
 Frame.prototype.addBonus = function() {
@@ -37,17 +39,17 @@ Frame.prototype.addBonus = function() {
   // return false;
 };
 
-Frame.prototype.throwsPerFrame = function() {
+Frame.prototype.bowlsPerFrame = function() {
   if(isFinalFrame === true) {
-    return throwCount === 3;
+    return bowlCount === 3;
   }
   else {
-    return throwCount === 2;
+    return bowlCount === 2;
   }
 };
 
 Frame.prototype.isOver = function() {
-  if(this.throwCount < 2)
+  if(this.bowlCount < 2)
     return false;
   else {
     return true;

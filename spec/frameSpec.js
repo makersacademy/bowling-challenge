@@ -13,14 +13,27 @@ describe('Frame', function() {
     frame = new Frame;
   });
 
-  describe('detects when a frame is in progress', function() {
+  describe('detects when a normal frame is over/in progress', function() {
     it('is a new frame', function() {
-      expect(frame.inProgress()).toBe(true);
+      expect(frame.isOver()).toBe(false);
     });
 
-    it('after 1  throw', function() {
+    it('after 1 throw', function() {
       frame.trackThrow(1);
-      expect(frame.inProgress()).toBe(true);
+      expect(frame.isOver()).toBe(false);
+    });
+  });
+
+  describe('number of throws per frame', function() {
+    it('2 throws as default', function() {
+      frame.trackThrow();
+      frame.trackThrow();
+      expect(frame.throwCount).toEqual(2);
+    });
+
+    xit('3 throws in final frame', function() {
+      frame = new Frame(isFinalFrame = true);
+      expect(frame.throwCount).toEqual(3);
     });
   });
 
@@ -28,18 +41,18 @@ describe('Frame', function() {
     it('after 2 throws', function() {
       frame.trackThrow();
       frame.trackThrow();
-      expect(frame.inProgress()).toBe(false);
+      expect(frame.isOver()).toBe(true);
     });
 
     it('after strike', function() {
       frame.trackThrow(10);
-      expect(frame.inProgress()).toBe(false);
+      expect(frame.isOver()).toBe(true);
     });
 
     it('after spare', function() {
       frame.trackThrow(5);
       frame.trackThrow(5);
-      expect(frame.inProgress()).toBe(false);
+      expect(frame.isOver()).toBe(true);
     });
 
   });

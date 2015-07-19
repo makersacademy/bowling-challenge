@@ -1,15 +1,16 @@
 function Frame() {
   this.throwCount = 0;
   this.throwScores = [];
-  // this.score = 0;
-  // this.inProgress = true;
+  // this.isFinalFrame = isFinalFrame || false
+  // this.totalThrows = (isFinalFrame ? 3 : 2);
+
 }
 
-Frame.prototype.inProgress = function () {
+Frame.prototype.isOver = function () {
   if(this.throwCount < 2)
-    return true;
-  else {
     return false;
+  else {
+    return true;
   };
 };
 
@@ -29,6 +30,10 @@ Frame.prototype.calculateScore = function() {
   return cumulativeScore;
 };
 
+Frame.prototype.throwsPerFrame = function() {
+
+};
+
 Frame.prototype.isStrike = function () {
   return (this.throwScores[0] === 10);
   // return (this.calculateScore() === 10 && this.throwScores.length < 2);
@@ -38,3 +43,14 @@ Frame.prototype.isSpare = function () {
   return (this.throwScores[0] < 10) && (this.calculateScore() === 10);
   // return (this.calculateScore() === 10 && this.throwScores.length === 2);
 };
+
+
+
+// Frame.prototype.isOver = function() {
+//   for(var i = 0; i < this.totalRolls; i++) {
+//     if (this.rolls[i] === 10 && this.isLastFrame === false) return true;
+//     if (this.isLastFrame && this.rollsTaken() === 2 && this.rollTotal() < 10) return true;
+//     if (this.rolls[i] === '-') return false;
+//   }
+//   return true;
+// };

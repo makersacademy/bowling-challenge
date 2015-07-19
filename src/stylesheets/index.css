@@ -1,0 +1,32 @@
+
+h1 {
+  color: Green;
+  size: 50px;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+th, td {
+    padding: 2px;
+}
+
+th {
+    border: 1px solid black;
+}
+
+.space {
+  border-left: 1px solid black;
+}
+
+.col1 {
+  border: 1px solid black;
+}
+
+.total {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}

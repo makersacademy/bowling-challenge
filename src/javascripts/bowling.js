@@ -10,7 +10,7 @@ var Game = function(){
 };
 
 Game.prototype.newRoll = function(rollScore) {
-  if((this.framescore + rollScore > 10) && (this.lastroll != 10) && (this.rollcount === 1)) {
+  if(rollScore > 10 || (this.framescore + rollScore > 10) && (this.lastroll != 10) && (this.rollcount === 1)) {
     return "Number of pins hit cannot exceed 10";
   }
   this.countFrameScore(rollScore);
@@ -20,12 +20,6 @@ Game.prototype.newRoll = function(rollScore) {
   this.bonusCheck();
   console.log(this);
 };
-
-// Game.prototype.errorCheck = function(rollScore) {
-//   if(this.framescore + rollScore > 10) {
-//     return "Number of pins hit cannot exceed 10";
-//   }
-// };
 
 Game.prototype.countRoll = function(rollScore) {
   if(this.framecount === 10 && this.rollcount === 2){
@@ -38,20 +32,14 @@ Game.prototype.countRoll = function(rollScore) {
   } else {
     this.rollcount = 2;
   }
-  // this.lastroll = rollScore;
 };
 
 Game.prototype.countFrameScore = function(rollScore) {
-  // if(this.framecount === 10 && this.rollcount === 2 && this.lastroll === 10);
-  //   this.framescore += rollScore;
-  // if(this.framecount === 10 && this.rollcount === 2 && this.lastroll === 10);
-  //   this.framescore += rollScore;
   if (this.rollcount != 1 || this.lastroll == 10) {
     this.framescore = rollScore;
   } else {
     this.framescore += rollScore;
   }
-  // this.lastroll = rollScore;
 };
 
 Game.prototype.countGameScore = function(rollScore) {
@@ -98,36 +86,3 @@ Game.prototype.sparebonuscheck = function() {
     this.sparebonus = false;
   }
 };
-
-
-
-//
-//
-//   } else if(this.strikeroll1 === true) {
-//     this.strikeroll2 = true;
-//     this.strikeroll1 = false;
-//   } else {
-//     this.strikeroll1 = false;
-//     this.strikeroll2 = false;
-//   }
-// };
-
-
-// if (this.rollcount == 1) {
-//   this.rollcount = 2;
-//   this.framescore += rollScore;
-// } else if(this.rollcount != 1 || this.lastroll == 10) {
-//   this.rollcount = 1;
-//   this.framecount += 1;
-//   this.framescore = rollScore;
-
-// this.score += rollScore;
-
-
-
-//   if(this.rollcount = 2) {this.framecount += 1};
-//   this.rollcount = 1 ? this.rollcount = 2 : this.rollcount = 1;
-//   this.score += rollScore;
-//   this.lastroll = rollScore;
-//   console.log(this);
-// };

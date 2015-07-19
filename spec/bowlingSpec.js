@@ -13,6 +13,11 @@ describe ('Bowling Calculator', function() {
       expect(game.newRoll(6)).toMatch("Number of pins hit cannot exceed 10");
     });
 
+    it('limits roll score to 10', function(){
+      expect(game.newRoll(11)).toMatch("Number of pins hit cannot exceed 10");
+    });
+
+
     it('supports spares', function(){
       game.newRoll(5);
       game.newRoll(5);

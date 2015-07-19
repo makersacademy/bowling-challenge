@@ -11,8 +11,6 @@ var clickCount = 0;
 $("#bowlsform").submit(function(e){
   e.preventDefault();
 
-  console.log(clickCount ++);
-
   bowl1 = parseInt($("#bowl_1").val());
   bowl2 = parseInt($("#bowl_2").val());
 
@@ -38,5 +36,6 @@ function frameTotalVal(){
   } else {
     $("#frameOutcome"+clickCount).html(game.frameSum(clickCount));
     $("#frameOutcome"+(clickCount-1)).html(game.secondLastFrameTotal);
+    $("#frameOutcome"+(clickCount-2)).html(game.thirdLastFrameTota);
   }
 }

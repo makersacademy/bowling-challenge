@@ -6,6 +6,7 @@ function Bowling(){
   this.bonusTally = [];
   this.gameTotal = 0;
   this.secondLastFrameTotal = 0;
+  this.thirdLastFrameTotal = 0;
   this.bonusFlattenedTotal = 0;
 }
 
@@ -106,6 +107,17 @@ Bowling.prototype.bonus_review = function(){
       this.bonusTally.push([framesTally[framesTally.length-1][0],0]);
     }
   }
+
+  if (this.framesNumber > 2){
+    if ((framesTally[framesTally.length - 1][0]) === 10  && (framesTally[framesTally.length - 2][0]) === 10 && (framesTally[framesTally.length - 3][0]) === 10 ){
+        this.thirdLastFrameTotal = 30;
+        this.bonusTally.push(10);
+        console.log(this.bonusTally);
+
+
+        console.log("3 tens occured");
+    }
+  }
 };
 
 
@@ -119,7 +131,7 @@ Bowling.prototype.frameSum = function(frame){
   if (frameNo >= 1){
     if ((this.framesTally[frameNo-1][0])===10){
       this.secondLastFrameTotal = 10 + selectedFrame[0] + selectedFrame[1];
-      console.log(this.secondLastFrameTotal);
+
     } else if ((this.framesTally[frameNo-1][0]+this.framesTally[frameNo-1][1])===10){
       this.secondLastFrameTotal = 10 + selectedFrame[0];
       console.log(this.secondLastFrameTotal);

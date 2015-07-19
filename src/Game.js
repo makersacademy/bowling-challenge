@@ -15,9 +15,11 @@ Game.prototype.isComplete = function() {
 };
 
 Game.prototype.newFrame = function(frame) {
-  if (!this.currentFrame().isInProgress()) {
-    this.frameRecord.push(frame);
-  };
+  if (this.isComplete()) {throw 'the game is complete'}
+
+  if (this.currentFrame().isInProgress()) {throw 'the frame is still in progress'}
+
+  this.frameRecord.push(frame);
 };
 
 Game.prototype.calculateBonuses = function() {
@@ -62,5 +64,9 @@ Game.prototype.frameBeforeLast = function() {
     return this.frameRecord.slice(-3)[0];
   };
 };
+
+// Calculate bonuses and the methods it calls only work when the frame is complete. They/it mus
+// be called before the new frame method.
+// Currently, these methods could be run multiple times if user is interacting with the naked code (exploit).
 
 

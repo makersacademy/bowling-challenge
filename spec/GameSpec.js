@@ -35,8 +35,7 @@ describe('Game', function() {
 
   it('cannot add new frames when in progress', function() {
     var frame2 = new Frame();
-    game.newFrame(frame2);
-    expect(game.currentFrame()).toEqual(frame1);
+    expect(function() {game.newFrame(frame2)}).toThrow('the frame is still in progress');
   });
 
    it('knows the overall score', function() {
@@ -104,7 +103,7 @@ describe('Game', function() {
       expect(frame2.bonusRecord).toEqual([10]);
     });
   });
-   // knowing when the whole game is complete is untested yet
+   // knowing when the whole game is complete is untested as of yet - and its used in new frame method.
    // havent tested the calculate bonuses function although it is called in tests.
 });
 

@@ -57,7 +57,7 @@ $(document).ready(function() {
   }
 
   var checkForCheats = function(pins) {
-    if (bowlingScoreCard.currentFrame !== 9 || (bowlingScoreCard.currentFrame === 9 && bowlingScoreCard.frames[9].roll1 !== 10) ) {
+    if (bowlingScoreCard.currentFrame !== 9 || (bowlingScoreCard.currentFrame === 9 && (!bowlingScoreCard.frames[9].isStrike() && !bowlingScoreCard.frames[9].isSpare()) ) ) {
       if (bowlingScoreCard.frames[bowlingScoreCard.currentFrame].roll1 + pins > 10) {
         alert('Stop cheating!')
         return true

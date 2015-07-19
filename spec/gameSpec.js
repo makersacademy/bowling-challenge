@@ -1,11 +1,5 @@
 // 10 frames per game
-// * 2 throws in each frame (except the 10th where there is a possibility of 3 throws if a strike or spare was thrown in the 9th)
-// * 1 - 9 frames
-// * strike - if all 10 pins are knocked down on the 1st throw (throw1) - second throw is disabled
-// * spare - if 10 pins are knocked down on the 2nd throw (throw2)
-// * score if total pins knocked down in a frame is less than 10, the num of pins knocked down is throw1 + throw2 (returns a numeric score rather than a spare / or strike X)
-// * 1 - 9 frames
-// * 10th frame - if strike or spare thrown in previous go - 3 throws, if not - disable third throw
+
 //
 // # Scoring
 // * strike - add 10, plus the number of pins knocked down by the next two balls to the score of the previous frame
@@ -18,7 +12,7 @@
 
 
 
-describe('A game of bowling', function() {
+describe('A bowling game', function() {
 	var game;
 
 	beforeEach(function() {
@@ -32,11 +26,12 @@ describe('A game of bowling', function() {
 		expect(game.frameCount).toEqual(10);
 	});
 
-	it('does not contain 11 frames', function(){
+	xit('does not contain 11 frames', function(){
 		game.frameCount = 10;
 		game.nextFrame();
 		expect(game.frameCount).toEqual(10);
 	});
+
 
 	//test for max 2 throws per frame
 
@@ -51,11 +46,6 @@ describe('A game of bowling', function() {
 			expect(game.frameScore).toEqual([1,3])
 		});
 
-		it('calculates cumulative score when throw is not spare or strike', function() {
-			game.throw1(1);
-			game.throw2(3);
-			expect(game.cumulativeScore).toEqual(4)
-		});
 
 		// it('detects a spare', function() {
 		// 	game.throw1(5);
@@ -85,11 +75,21 @@ describe('A game of bowling', function() {
 	});
 
 
-// describe('scoring', function() {
-// it('knows what its max/perfect score is', function() {
-// 	expect(game.maxScore).toEqual(300);
-// });
-// });
+
+describe('scoring', function() {
+	// it('knows what its max/perfect score is', function() {
+	// 	expect(game.maxScore).toEqual(300);
+	// });
+
+	xit('gutter game', function() {
+		for(var i = 0; i < 20; i++) {
+			game.throw(0)
+		}
+
+		expect(game.score).toEqual(0);
+	});
+
+});
 
 
 

@@ -2,7 +2,7 @@ var Game = function() {
   this.frameCount = 1;
   // this.throwCount = 0; // do you need this?
   this.frameScore = [];
-  this.cumulativeScore = 0;
+  this.score = 0;
 };
 
 Game.prototype.throw1 = function(pinsDown) {
@@ -31,8 +31,8 @@ Game.prototype.calculateScore = function() {
 Game.prototype.calculateTotalScore = function() {
     total = this.score1 + this.score2;
     // this.cumulativeScore.push(total);
-    this.cumulativeScore += total;
-    return this.cumulativeScore;
+    this.score += total;
+    return this.score;
 };
 
 // add something to end game when 10 frames reached

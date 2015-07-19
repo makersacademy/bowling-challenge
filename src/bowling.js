@@ -3,6 +3,7 @@ function Bowling(){
   this.framesTally = []; //record of all scores
   this.playing = true;
   this.framesNumber = 0; //number of frames played
+  this.bonusTally = [];
 }
 
 
@@ -43,26 +44,55 @@ Bowling.prototype.checkPlaying = function(){
 
 Bowling.prototype.total = function(){
 
-    this.bonus_review(); //this calculates the bonus
 
-    //flatten the framesTally - an array of array
-    var framesTally = this.framesTally;
-
-    var unpackedTally = framesTally.reduce(function(a,b){
-    a.concat(b);
-    return a.concat(b);
-    });
-
-    //add all scores in the framesTally together
-    var total = 0;
-
-    for(var i=0; i<unpackedTally.length; i++){
-      total += unpackedTally[i];
-    }
-
-    return total;
+//flatten array of arrays.  concat function needed due to array of array.
+  var flattenedFirstTime = this.framesTally.reduce(function(x,y){
+    return x.concat(y);
+  });
+  console.log(flattenedFirstTime);
+//this is to sum the flattened array
+  var flattenedFinal = flattenedFirstTime.reduce(function(c,d){
+    return c + d;
+  });
+  console.log(flattenedFinal);
 
 };
+
+
+
+
+
+
+// Bowling.prototype.total = function(){
+//
+//     this.bonus_review(); //this calculates the bonus
+//
+//     var bonusTally = this.bonusTally;
+//
+//     var unpackedBonusTally = bonusTally.reduce(function(x,y){
+//
+//
+//     })
+//
+//
+//     //flatten the framesTally - an array of array
+//     var framesTally = this.framesTally;
+//
+//     var unpackedTally = framesTally.reduce(function(a,b){
+//     a.concat(b);
+//     return a.concat(b);
+//     });
+//
+//     //add all scores in the framesTally together
+//     var total = 0;
+//
+//     for(var i=0; i<unpackedTally.length; i++){
+//       total += unpackedTally[i];
+//     }
+//
+//     return total;
+//
+// };
 
 
 Bowling.prototype.roll = function(bowlOne,bowlTwo){
@@ -75,7 +105,7 @@ Bowling.prototype.roll = function(bowlOne,bowlTwo){
 
   this.framesNumber += 1;
 
-  this.total();
+  // this.total();
 
   this.checkPlaying();
 
@@ -84,23 +114,37 @@ Bowling.prototype.roll = function(bowlOne,bowlTwo){
 
 Bowling.prototype.bonus_review = function(){
   var framesTally = this.framesTally;
-  //if a strike occured in second last frame, repeat the last frame in frameTally
+  //if a strike occured in second last frame, repeat the last frame in bonusTally
   if (this.framesNumber > 1){
     if((framesTally[framesTally.length - 2][0]) === 10){
-      framesTally.push(framesTally[framesTally.length-1]);
+      this.bonusTally.push(framesTally[framesTally.length-1]);
     //if a spare happend in second last frame, push another array with the first bowl of last frame repeated
     } else if ((framesTally[framesTally.length - 2][0])+(framesTally[framesTally.length - 2][1]) === 10){
-        framesTally.push([framesTally[framesTally.length-1][0],0]);
+      this.bonusTally.push([framesTally[framesTally.length-1][0],0]);
     }
   }
 };
 
 
+//code to identify individual frame and sum
 Bowling.prototype.frameSum = function(frame){
   var frameNo = frame-1;
 
   var selectedFrame = this.framesTally[frameNo];
 
+  //calculates the 2nd
+  if (frameNo >= 1){
+    if ((this.framesTally[frameNo-1][0])===10){
+      secondLastFrameTotal = 10 + selectedFrame[0] + selectedFrame[1];
+      console.log(secondLastFrameTotal);
+    } else if ((this.framesTally[frameNo-1][0]+this.framesTally[frameNo-1][1])===10){
+      secondLastFrameTotal = 10 + selectedFrame[0];
+      console.log(secondLastFrameTotal);
+    }
+  }
+
+
+  //result is sum of frame just bowled - does not call bonus
   var result = selectedFrame.reduce(function(x,y){
     return x + y;
   });

@@ -14,10 +14,7 @@ var game = function() {
 
   game.prototype.addScore = function(score) {
     try{
-      console.log(frameNumber)
     this.frames[frameNumber].scoreInput(score);
-    console.log(this.frames[frameNumber])
-    console.log(this.frames[frameNumber].scores)
     }
     catch(e){
       alert("This Frame is Full")

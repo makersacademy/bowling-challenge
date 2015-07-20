@@ -14,17 +14,18 @@ Optional Extra: Create a nice interactive animated interface with jQuery.
 
 ## Tools:
 
-Testing: Jasmine
-Application Code: Javascript, JQuery, HTML and CSS
+Testing: Jasmine<br>
+Application Code: Javascript, JQuery, HTML and CSS<br>
 Other: PHP
 
 ## How To Run:
 
-You can follow the Heroku link at the top of the README for a live version of this app, or type open src/home.html at the applications' root folder.
+You can follow the Heroku link at the top of the README for a live version of this app, or type open src/home.html at the application's root folder.
 You can run the tests locally by typing open SpecRunner.html in the application's root folder.
 
 Tests:
 
+<poem>
 Game
  should start on frame 1
  
@@ -66,33 +67,34 @@ Frame
   after a strike
   knows the total score
   after two rolls
-  after a strike
+  after a strikes
+</poem>
 
 ## File Structure:
 
-.
-├── README.md
-├── SpecRunner.html
-├── images
-│   └── example_ten_pin_scoring.png
-├── index.php
-├── lib
-│   └── jasmine-2.3.4
-│       ├── boot.js
-│       ├── console.js
-│       ├── jasmine-html.js
-│       ├── jasmine.css
-│       ├── jasmine.js
-│       └── jasmine_favicon.png
-├── spec
-│   ├── FrameSpec.js
-│   └── GameSpec.js
-└── src
-    ├── home.html
-    ├── scripts
-    │   ├── Frame.js
-    │   ├── Game.js
-    │   ├── interface.js
-    │   └── jquery-2.1.4.min.js
-    └── style
-        └── main.css
+	.
+	├── README.md
+	├── SpecRunner.html
+	├── images
+	│   └── example_ten_pin_scoring.png
+	├── index.php
+	├── lib
+	│   └── jasmine-2.3.4
+	│       ├── boot.js
+	│       ├── console.js
+	│       ├── jasmine-html.js
+	│       ├── jasmine.css
+	│       ├── jasmine.js
+	│       └── jasmine_favicon.png
+	├── spec
+	│   ├── FrameSpec.js
+	│   └── GameSpec.js
+	└── src
+	    ├── home.html
+	    ├── scripts
+	    │   ├── Frame.js
+	    │   ├── Game.js
+	    │   ├── interface.js
+	    │   └── jquery-2.1.4.min.js
+	    └── style
+	        └── main.css

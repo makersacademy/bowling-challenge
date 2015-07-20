@@ -33,8 +33,8 @@ $(document).ready(function() {
     $("#f9-r2").html(game.totalScores[8][1]);
     $("#f9-total").html(game.cummulativeScore[8]);
     $("#f10-r1").html(game.totalScores[9][0]);
-    $("#f10-r2").html(game.totalScores[9][1]);
-    $("#f11-r1").html(game.totalScores[10][0]);
+    $("#f10-r2").html(game.totalScores[10][0] || game.totalScores[9][1]);
+    $("#f11-r1").html(game.totalScores[10][1] || game.totalScores[10][0]);
     $("#f10-total").html(game.cummulativeScore[9]);
     $(".buttons").html(buttonBuilder());
   }

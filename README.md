@@ -15,12 +15,12 @@ Optional Extra: Create a nice interactive animated interface with jQuery.
 ## Tools:
 
 Testing: Jasmine<br>
-Application Code: Javascript, JQuery, HTML and CSS<br>
+Application Code: Javascript, JQuery, HTML & CSS<br>
 Other: PHP
 
 ## How To Run:
 
-You can follow the Heroku link at the top of the README for a live version of this app, or type open src/home.html at the application's root folder.
+You can follow the Heroku link at the top of the README for a live version of this app, or type open home.html at the application's root folder.
 You can run the tests locally by typing open SpecRunner.html in the application's root folder.
 
 Tests:

@@ -1,0 +1,14 @@
+table {
+  border: none;
+}
+
+th, td {
+  border: none;
+  background-color: #dddddd;
+  padding: 8px;
+  width: 100px;
+}
+
+h1 {
+  text-align: center;
+}

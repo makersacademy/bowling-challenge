@@ -1,0 +1,42 @@
+.container {
+  position: relative;
+  max-width: 900px;
+  top: 80px;
+  height: 550px;
+  background-color: #FFA500;
+}
+
+.heading {
+  position: relative;
+  top: 100px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 350%;
+
+}
+
+.button-container {
+  position: relative;
+  top: 150px;
+  max-width: 100px;
+  height: 50px;
+}
+
+.text {
+  position: relative;
+  top: 180px;
+  max-width: 300px;
+  height: 80px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.scorecard {
+  position: relative;
+  top: 200px;
+  max-width: 300px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+#running_total {
+  padding-top: 15px;
+}

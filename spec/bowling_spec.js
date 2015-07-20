@@ -20,12 +20,12 @@ describe('Bowling Game', function() {
 
     it('and if you roll 10, you get a STRIKE', function(){
       spyOn(Math, 'random').and.returnValue(1);
-      expect(bowlingGame.startFrame()).toMatch('You got a STRIKE!');
+      expect(bowlingGame.startFrame()).toMatch('STRIKE!');
     });
 
     it('and if you roll a number below 10, you are told to roll again', function(){
       spyOn(Math, 'random').and.returnValue(0.2);
-      expect(bowlingGame.startFrame()).toMatch('You knocked down 2 pins. You can roll again!');
+      expect(bowlingGame.startFrame()).toMatch('You knocked down 2 pins. You can roll again.');
     });
 
   });
@@ -39,7 +39,7 @@ describe('Bowling Game', function() {
 
     it('returns SPARE if the total of your two rolls is 10', function(){
       spyOn(Math, 'random').and.returnValue(0.8);
-      expect(bowlingGame.rollAgain(bowlingGame.roll())).toMatch('Your first roll knocked down 8 pins. Your second roll knocked down 2 pins. You got a SPARE!')
+      expect(bowlingGame.rollAgain(bowlingGame.roll())).toMatch('Your first roll knocked down 8 pins. Your second roll knocked down 2 pins. SPARE!')
     });
   });
 
@@ -52,11 +52,13 @@ describe('Bowling Game', function() {
     });
   });
 
-  // describe ('end of game', function(){
+  describe ('end of game', function(){
 
-  //   it('when the frame count reaches 10, the game will be ended', function(){
-  //     spyOn(BowlingGame, 'frameCount').and.returnValue(10)
-  //     expect(bowlingGame.end).toEqual('That was your last frame - here\'s your final total'});
-  // });
+    it('when the frame count reaches 10, the game will be ended', function(){
+      bowlingGame.frameCount = 9;
+      bowlingGame.rollAgain(bowlingGame.roll());
+      expect(bowlingGame.isEnded).toBe(true);
+    });
+  });
 
 });

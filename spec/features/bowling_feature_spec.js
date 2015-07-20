@@ -5,9 +5,4 @@ describe('BowlingGame', function(){
     loadFixtures('bowling.html');
   });
 
-  it('displays welcome message', function(){
-    expect('#welcome').toContainText('Hi there, ready to start bowling?');
-  });
-
-
 });

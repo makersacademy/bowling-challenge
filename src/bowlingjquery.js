@@ -11,6 +11,9 @@ var clickCount = 0;
 $("#bowlsform").submit(function(e){
   e.preventDefault();
 
+  console.log(clickCount ++);
+
+
   bowl1 = parseInt($("#bowl_1").val());
   bowl2 = parseInt($("#bowl_2").val());
 
@@ -39,3 +42,15 @@ function frameTotalVal(){
     $("#frameOutcome"+(clickCount-2)).html(game.thirdLastFrameTota);
   }
 }
+
+$.get("http://api.openweathermap.org/data/2.5/find?q=London&units=metric",function(data){
+  $("#weather").html(data.list[0].main.temp);
+});
+
+//
+// // AJAX request for London temp
+//   $.get("http://api.openweathermap.org/data/2.5/find?q=London&units=metric", function(data) {
+//     $(".weather").html(data.list[0].main.temp);
+//       // // $('.city').html(data.list[0].name);
+//       // $('.temp').html(data.list[0].main.temp);
+//   });

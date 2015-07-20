@@ -123,6 +123,7 @@ Bowling.prototype.bonus_review = function(){
 
 //code to identify individual frame and sum
 Bowling.prototype.frameSum = function(frame){
+
   var frameNo = frame-1;
 
   var selectedFrame = this.framesTally[frameNo];
@@ -141,6 +142,7 @@ Bowling.prototype.frameSum = function(frame){
   }
 
   //result is sum of frame just bowled - does not call bonus
+
   var result = selectedFrame.reduce(function(x,y){
     return x + y;
   });

@@ -19,10 +19,11 @@ $(document).ready(function() {
 
     /// Add pins to the score card and show to user
     bowlingScoreCard.roll(pinsNum)
-    var api = bowlingScoreCard.api()
+    var api = new API(bowlingScoreCard)
+    var json = api.call()
     var html = ''
-    if (api.length > 0) {
-      api.forEach(function(obj) {
+    if (json.length > 0) {
+      json.forEach(function(obj) {
         // console.log(obj)
         html += tableRow(obj)
         html = html.replace('null', '-')

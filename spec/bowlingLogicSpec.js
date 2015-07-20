@@ -51,7 +51,4 @@ describe('Bowling Game Score', function() {
     expect(game.frames[10]).toEqual(game.frames[10]);
   });
 
-
-
-
 });

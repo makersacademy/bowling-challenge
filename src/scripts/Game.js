@@ -8,7 +8,7 @@ function Game() {
 
 Game.prototype.recordBowl = function(pinsKnockedOver) {
   if (this.isGameOver()) {
-    alert('Game over!');
+    alert('Game over! Score: ' + this.cummulativeScore[9]);
     return;
   }
   this.adjustRolls();
@@ -82,8 +82,8 @@ Game.prototype.isBonusRound = function() {
 
 Game.prototype.concludeFrame = function(first_argument) {
   this.totalScores[this.currentFrameIndex()][2] = this.frame.totalScore();
-  this.addCummulativeScore();
   this.addBonuses();
+  this.addCummulativeScore();
   this.frameNo ++;
   this.frame = new Frame();
   this.pinsStanding = 10;

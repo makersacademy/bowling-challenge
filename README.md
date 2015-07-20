@@ -2,53 +2,97 @@
 Bowling Challenge
 =================
 
-    Test time: Friday, the entire day and the weekend if you need it.
-    Feel free to use Google, your notes, and your books.
+[View app on Heroku](https://serene-island-1376.herokuapp.com/)
 
-Task: 
------
+![](/images/screenshot.png)
+
+## Task: 
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+Optional Extra: Create a nice interactive animated interface with jQuery.
 
-As usual please start by 
+## Tools:
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
+Testing: Jasmine
+Application Code: Javascript, JQuery, HTML and CSS
+Other: PHP
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+## How To Run:
 
+You can follow the Heroku link at the top of the README for a live version of this app, or type open src/home.html at the applications' root folder.
+You can run the tests locally by typing open SpecRunner.html in the application's root folder.
 
-### Optional Extra
+Tests:
 
-Create a nice interactive animated interface with jQuery.
+Game
+ should start on frame 1
+ 
+ adds scores correctly
+  all 3s
+  all gutterballs
+  after a strike
+  after two strikes
+  after three strikes
+  after a spare
+  after two spares in a row
+ 
+ adds bonus rounds correctly
+  spare in 10th round
+  spare in 10th round then 10
+  strike in 10th round
+  strike in 10th and 11th round
+  strike in 10th and 11th round then 10
+  perfect game (12 strikes)
+ 
+ knows when game is over
+  after 10th round if strike or spare not rolled
+  after 11th round if spare rolled in 10th
+  after 12th round if strike rolled in 10th and 11th
 
-## Strikes
+ knows when game is still playing
+  after 10th round if spare rolled in 10th
+  after 11th round if strike rolled in 10th and 11th
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+Frame
+ should start with default of 2 rolls remaining
+ 
+ knows when the frame is in progress
+  on a new frame
+  after a first roll that is not a strike
+ 
+ knows when the frame has ended
+  after two rolls
+  after a strike
+  knows the total score
+  after two rolls
+  after a strike
 
-## Spares
+## File Structure:
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-## 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-## Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-## Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+.
+├── README.md
+├── SpecRunner.html
+├── images
+│   └── example_ten_pin_scoring.png
+├── index.php
+├── lib
+│   └── jasmine-2.3.4
+│       ├── boot.js
+│       ├── console.js
+│       ├── jasmine-html.js
+│       ├── jasmine.css
+│       ├── jasmine.js
+│       └── jasmine_favicon.png
+├── spec
+│   ├── FrameSpec.js
+│   └── GameSpec.js
+└── src
+    ├── home.html
+    ├── scripts
+    │   ├── Frame.js
+    │   ├── Game.js
+    │   ├── interface.js
+    │   └── jquery-2.1.4.min.js
+    └── style
+        └── main.css

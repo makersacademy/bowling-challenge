@@ -19,11 +19,12 @@ header {
 
 .score-section {
   margin: auto;
-  padding: 10px;
+  padding: 25px;
+  font-size: 24px;
 }
 
 .score-table {
-  padding: 10px 25%;
+  padding: 10px 20%;
 }
 
 table {
@@ -37,14 +38,21 @@ table, td {
 .scores td {
   width:20px;
   height: 20px;
+  font-size: 12px;
 }
 
-/*.container {
-  width: 100%;
-  background-image: url('https://pixabay.com/static/uploads/photo/2014/04/03/11/47/bowling-pins-312135__180.png');
-  background-position: right;
-  background-repeat: no-repeat;
-}*/
+.frame-titles {
+  color: #ffffff;
+  background-color: #cc0066;
+}
+
+.running-scores, .total-scores {
+  font-weight: bold;
+}
+
+.total-scores td {
+  font-size: 16px;
+}
 
 .lane {
   text-align: left;
@@ -55,6 +63,15 @@ table, td {
 .buttons {
   text-align: left;
   padding: 0 25%;
+}
+
+button {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  margin-top: 15px;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .notification {

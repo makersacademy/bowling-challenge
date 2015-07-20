@@ -2,27 +2,8 @@
 <html>
 
   <head>
-
-    <title>Bowling Scoreboard</title>
-    <style>
-    table, th, td {
-      border: 1px solid black;
-      border-collapse: collapse;
-    }
-    td {
-      padding: 30px;
-      text-align: center;
-    }
-
-    th {
-      padding: 5px;
-      font-size: 20px;
-    }
-
-    input[type="number"] {
-      width: 40px;
-    }
-    </style>
+    <title>Bowling Scorecard</title>
+    <link rel='stylesheet' type='text/css' href='stylesheets/index.css'>
   </head>
 
   <body>
@@ -38,10 +19,10 @@
         <th colspan="2">8</th>
         <th colspan="2">9</th>
         <th colspan="2">10</th>
-        <th>Total</th>
+        <th id="total">Total</th>
       </tr>
 
-      <tr>
+      <tr class="rollScore">
         <td id="f1r1"></td>
         <td id="f1r2"></td>
 
@@ -93,10 +74,10 @@
     <div style="text-align: center">
         Number of pins knocked down:
         <br><br>
-        <form>
+
           <input id="textField" type="number" name="roll_score" min="0" max="10" autofocus required>
           <input id="submitButton" type="submit" value="submit">
-        </form>
+
         <p id="errorMessenger"></p>
     </div>
 

@@ -52,6 +52,25 @@ describe('Bowling', function() {
         expect(bowling.games[0].framez[0].frameScore).toEqual(19);
       })
 
+      it('various tests', function() {
+        bowling.games[0].framez[0].rolls[0].knockedDown(5);
+        bowling.games[0].framez[0].tallyRolls();
+        bowling.games[0].framez[0].rollController();
+        bowling.games[0].frameController();
+        bowling.games[0].bonusController();
+        expect(bowling.games[0].frameNumber).toEqual(0)
+        expect(bowling.games[0].currentFrame.rollNumber).toEqual(1)
+        expect(bowling.games[0].currentFrame.bonus).toEqual(null)
+        bowling.games[0].framez[0].rolls[1].knockedDown(4);
+        bowling.games[0].framez[0].tallyRolls();
+        bowling.games[0].framez[0].rollController();
+        expect(bowling.games[0].currentFrame.rollNumber).toEqual(1)
+        bowling.games[0].frameController();
+        expect(bowling.games[0].frameNumber).toEqual(1)
+        bowling.games[0].bonusController();
+        expect(bowling.games[0].previousFrame.bonus).toEqual(0)
+      })
+
       describe('rollController', function() {
         it('has a currentRoll rolls[0]', function() {
           expect(bowling.games[0].framez[0].currentRoll).toEqual(bowling.games[0].framez[0].rolls[0])
@@ -149,6 +168,8 @@ describe('Bowling', function() {
         it('changes currentFrame after 2 rolls', function() {
           bowling.games[0].framez[0].rolls[0].knockedDown(5);
           bowling.games[0].framez[0].tallyRolls();
+          bowling.games[0].framez[0].rollController();
+          bowling.games[0].bonusController();
           bowling.games[0].framez[0].rolls[1].knockedDown(5);
           bowling.games[0].framez[0].tallyRolls();
           bowling.games[0].frameController();

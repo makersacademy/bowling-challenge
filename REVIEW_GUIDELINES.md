@@ -7,7 +7,7 @@
 - Methods have a single responsibility
 - Appropriate semi-colon use
 - No nested conditionals
-- Code free of comments
+- Code free of unnecessary comments and commented-out sections
 - Consistent indentation
 
 ## Testing

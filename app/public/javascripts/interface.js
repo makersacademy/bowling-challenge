@@ -1,5 +1,7 @@
 var bowling = new Bowling();
 
+$('span.score').text(bowling.score);
+
 $("#submit_0").click(function(){
   bowling.roll(0);
 });

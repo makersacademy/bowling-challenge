@@ -1,4 +1,4 @@
-var bowlingScoreCard = new ScoreCard();
+var bowlingScoreCardInterface = new BowlingScoreCardInterface()
 
 $(document).ready(function() {
 
@@ -15,11 +15,11 @@ $(document).ready(function() {
     if ( pinsNum < 0 || pinsNum > 10) { alert("You can only knock down 0-10 pins"); return}
 
     /// Check user is not trying to knock down more than 10 pins in first 9 frames
-    if ( checkForCheats(pinsNum) ) {return}
+    if ( bowlingScoreCardInterface.checkForCheats(pinsNum) ) {return}
 
     /// Add pins to the score card and show to user
-    bowlingScoreCard.roll(pinsNum)
-    var api = new API(bowlingScoreCard)
+    bowlingScoreCardInterface.bowlingScoreCard.roll(pinsNum)
+    var api = new API(bowlingScoreCardInterface.bowlingScoreCard)
     var json = api.call()
     var html = ''
     if (json.length > 0) {
@@ -57,33 +57,37 @@ $(document).ready(function() {
     })
   }
 
-  var checkForCheats = function(pins) {
-    if ( !isLastFrame() || lastFrameNotStrikeOrSpare() || strikeOnLastFrameNotOnSecondRoll() ) {
-      if ( checkForCheatsAllButLastFrame(pins) || checkForCheatsLastFrameStrike(pins) ) {
-        alert('Stop cheating!')
-        return true
-      }
+})
+
+function BowlingScoreCardInterface() {
+  this.bowlingScoreCard = new ScoreCard();
+}
+
+BowlingScoreCardInterface.prototype.checkForCheats = function(pins) {
+  if ( !this.isLastFrame() || this.lastFrameNotStrikeOrSpare() || this.strikeOnLastFrameNotOnSecondRoll() ) {
+    if ( this.checkForCheatsAllButLastFrame(pins) || this.checkForCheatsLastFrameStrike(pins) ) {
+      alert('Stop cheating!')
+      return true
     }
   }
+}
 
-  var lastFrameNotStrikeOrSpare = function() {
-    return (bowlingScoreCard.currentFrame === 9 && (!bowlingScoreCard.frames[9].isStrike() && !bowlingScoreCard.frames[9].isSpare()) )
-  }
+BowlingScoreCardInterface.prototype.lastFrameNotStrikeOrSpare = function() {
+  return (this.bowlingScoreCard.currentFrame === 9 && (!this.bowlingScoreCard.frames[9].isStrike() && !this.bowlingScoreCard.frames[9].isSpare()) )
+}
 
-  var strikeOnLastFrameNotOnSecondRoll = function() {
-    return (bowlingScoreCard.frames[9].roll1 === 10 && bowlingScoreCard.frames[9].roll2 !== 10)
-  }
+BowlingScoreCardInterface.prototype.strikeOnLastFrameNotOnSecondRoll = function() {
+  return (this.bowlingScoreCard.frames[9].roll1 === 10 && this.bowlingScoreCard.frames[9].roll2 !== 10)
+}
 
-  var isLastFrame = function() {
-    return bowlingScoreCard.currentFrame === 9
-  }
+BowlingScoreCardInterface.prototype.isLastFrame = function() {
+  return this.bowlingScoreCard.currentFrame === 9
+}
 
-  var checkForCheatsAllButLastFrame = function(pins) {
-    return (!isLastFrame() && bowlingScoreCard.frames[bowlingScoreCard.currentFrame].roll1 + pins > 10)
-  }
+BowlingScoreCardInterface.prototype.checkForCheatsAllButLastFrame = function(pins) {
+  return (!this.isLastFrame() && this.bowlingScoreCard.frames[this.bowlingScoreCard.currentFrame].roll1 + pins > 10)
+}
 
-  var checkForCheatsLastFrameStrike = function(pins) {
-    return bowlingScoreCard.frames[9].roll2 + pins > 10
-  }
-
-})
+BowlingScoreCardInterface.prototype.checkForCheatsLastFrameStrike = function(pins) {
+  return this.bowlingScoreCard.frames[9].roll2 + pins > 10
+}

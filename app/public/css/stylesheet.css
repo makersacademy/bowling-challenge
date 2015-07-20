@@ -1,3 +1,7 @@
+body {
+  background: #6e6e6e;
+}
+
 table {
     width: 80%;
     margin-left: auto;
@@ -7,17 +11,13 @@ table {
 }
 
 thead {
-    background-color: lightblue;
+    background-color: #103b6a;
     color: white;
 }
 
 tbody {
-    background-color: lightblue;
-}
-
-tfoot {
-    background-color: lightblue;
-    text-align: center;
+    background-color: #103b6a;
+    color: white;
 }
 
 th, td {
@@ -30,8 +30,16 @@ th, td {
   text-align: center;
 }
 
+input {
+  background-color: #103b6a;
+  color: white;
+  width: 50px;
+  height: 30px;
+  font-size: 125%;
+}
+
 h2 {
-  color: lightblue;
+  color: #103b6a;
 }
 
 #totalScore {

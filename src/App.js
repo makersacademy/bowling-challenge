@@ -17,6 +17,8 @@ $(document).ready(function() {
 
   var game = new Game(frameArray[selector]);
 
+  var content = '';
+
   showField();
 
   function showField() { 
@@ -24,7 +26,12 @@ $(document).ready(function() {
       $("#primary").html('The game is complete!');
     } 
     else if (game.currentFrame().isInProgress()) {
+      // var primary   = document.getElementById("primary");
+      // while (primary.firstChild) {
+      //   primary.removeChild(primary.firstChild);
+      // };
       $("#primary").html(generateScoreEntry());
+      generateScoreEntry();
     } 
     else {
       $("#primary").html(generateNextFrame());
@@ -37,6 +44,23 @@ $(document).ready(function() {
       <button id="submitscore" type="button">Enter</button>';
   };
 
+  // function generateScoreEntry() {
+  //   var primary   = document.getElementById("primary"),
+  //       node      = document.createTextNode('Enter Score: '),
+  //       input     = document.createElement('input'),
+  //       button    = document.createElement('button');
+
+  //   button.type  = 'button';
+  //   button.value = 'Enter';
+  //   button.id    = 'submitscore';
+  //   input.type   = 'text';
+  //   input.id     = 'inputscore';
+      
+  //   primary.appendChild(node);
+  //   primary.appendChild(input);
+  //   primary.appendChild(button);
+  // };
+
   function generateNextFrame() { 
     return ' \
     <p>The frame is complete!</p> \
@@ -44,10 +68,21 @@ $(document).ready(function() {
   };
 
   function generateTable() { 
-    var content = '';
+    content += '(Frame ' + (selector + 1).toString() +') ';
     game.frameRecord.forEach(function(frame){
-      var firstRoll = game.currentFrame().scoreRecord[0].toString();
+      content += 'First Roll: ' + game.currentFrame().scoreRecord[0].toString() + ', ';
+
+      if (game.currentFrame().scoreRecord[1]) {
+        content += 'Second Roll: ' + game.currentFrame().scoreRecord[1].toString() + ', ';
+      };
+
+      if (game.currentFrame().scoreRecord[2]) {
+        content += 'Third Roll: ' + game.currentFrame().scoreRecord[2].toString() + ', ';
+      };
+
+      content += 'Total score with bonus: ' + game.currentFrame().totalScoreWithBonus().toString() + '<br>';
     });
+    $("#scoring").html(content);
   };
 
 
@@ -64,23 +99,6 @@ $(document).ready(function() {
     showField();
     generateTable();
   });
-
-
-  // $("#down").click(function(){
-  //   thermostat.decrease();
-  //   showTemperature();
-  // });
-
-  // $("#powersave").click(function() {
-  //   thermostat.powerSaveToggle();
-  //   showTemperature();
-  // });
-  
-  // $("#reset").click(function() {
-  //   thermostat.resetTemperature();
-  //   showTemperature();
-  // });
-
 });
 
 

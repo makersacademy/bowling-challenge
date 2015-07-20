@@ -10,7 +10,7 @@ Open [index.html](https://github.com/DataMinerUK/bowling-challenge/blob/master/i
 Technologies
 ------------
 
-JavaScript [backend](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/bowling2.js) (because I enjoy pulling out my hair). Tests using [Jasmine](https://github.com/DataMinerUK/bowling-challenge/blob/master/spec/bowlingSpec.js). [Application](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/app.js) using a mixture of JQuery and vanilla JavaScript. [Web page](https://github.com/DataMinerUK/bowling-challenge/blob/master/index.html) made with basic HTML.
+JavaScript backend (because I enjoy pulling out my hair). Tests using [Jasmine](https://github.com/DataMinerUK/bowling-challenge/blob/master/spec/bowlingSpec.js). [Application](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/app.js) using a mixture of JQuery and vanilla JavaScript. [Web page](https://github.com/DataMinerUK/bowling-challenge/blob/master/index.html) made with basic HTML.
 
 Functionality
 -------------
@@ -52,6 +52,6 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 * `null + null` is evaluated to `0`. If you force `null` to be interpreted in a numeric context then it is treated like `0`
 * Never use `eval()`. It will bite you in the butt.
-* Try and incorporate as much knowledge into objects rather than trying to build it all out as functions. See [bowling.js](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/bowling.js) versus [bowling2.js](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/bowling2.js)
+* Try and incorporate as much knowledge into objects rather than trying to build it all out as functions. See [bowling.js](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/bowling.js) versus [frame.js](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/frame.js) and [scoreCard.js](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/scoreCard.js)
 * JavaScript functions can get unwieldy long pretty quickly, especially if there are a lot of control flow statements
-* When selecting more than one element from the page, use `$(this)` within the `.each()` JQuery function to apply JQuery to each elements. See [this](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/app.js#L34-L38)
+* When selecting more than one element from the page, use `$(this)` within the `.each()` JQuery function to apply JQuery to each elements. See [this](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/app.js#L49-L51)

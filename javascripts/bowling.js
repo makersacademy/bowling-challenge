@@ -17,28 +17,42 @@ var Bowling = function() {
     ];
     this.totalScore = null;
     this.holdingBonus = [];
-    this.frameNumber = 0
+    this.frameNumber = 0;
     this.currentFrame = this.framez[this.frameNumber];
+    this.previousFrame = this.framez[this.frameNumber-1];
+    this.frameBeforePrevious = this.framez[this.frameNumber-2];
   }
 
   Game.prototype.frameController = function() {
     if (this.currentFrame.isStrike()) {
-      this.currentFrame.rolls[1].rollScore = ""
-      this.frameNumber ++
+      this.frameNumber ++;
       this.currentFrame = this.framez[this.frameNumber];
+      this.previousFrame = this.framez[this.frameNumber-1];
+      this.frameBeforePrevious = this.framez[this.frameNumber-2];
     } else if ((this.currentFrame.rolls[0] != null) && (this.currentFrame.rolls[1] != null)) {
-      this.frameNumber ++
+      this.frameNumber ++;
       this.currentFrame = this.framez[this.frameNumber];
-    };
+      this.previousFrame = this.framez[this.frameNumber-1];
+      this.frameBeforePrevious = this.framez[this.frameNumber-2];
+    }
   }
 
   Game.prototype.bonusController = function() {
-    if (this.framez[this.frameNumber-1].isStrike()) {
-      this.framez[this.frameNumber-1].addBonus(this.currentFrame.rolls[0].rollScore + this.currentFrame.rolls[1].rollScore);
-    } else if (this.framez[this.frameNumber-1].isSpare()) {
-      this.framez[this.frameNumber-1].addBonus(this.currentFrame.rolls[0].rollScore);
-    };
-  };
+    if (this.previousFrame.isStrike()) {
+      if (this.currentFrame.isStrike()) {
+        this.previousFrame.addBonus(this.currentFrame.rolls[0].rollScore);
+          if (this.frameBeforePrevious != undefined) {
+            this.frameBeforePrevious.addBonus(this.currentFrame.rolls[0].rollScore)
+          }
+      }
+      else {
+        this.previousFrame.addBonus(this.currentFrame.rolls[0].rollScore + this.currentFrame.rolls[1].rollScore);
+      }
+    }
+    else if (this.previousFrame.isSpare()) {
+      this.previousFrame.addBonus(this.currentFrame.rolls[0].rollScore);
+    }
+  }
 
     var Frame = function() {
       this.rolls = [
@@ -48,6 +62,8 @@ var Bowling = function() {
       this.totalRollScore = this.rolls[0].rollScore + this.rolls[1].rollScore;
       this.bonus = null;
       this.frameScore = null;
+      this.rollNumber = 0;
+      this.currentRoll = this.rolls[this.rollNumber]
     }
 
     Frame.prototype.tallyRolls = function() {
@@ -69,12 +85,22 @@ var Bowling = function() {
     }
 
     Frame.prototype.addBonus = function(bonus) {
-      this.bonus = bonus;
+      this.bonus += bonus;
     }
 
     Frame.prototype.tallyAll = function() {
       this.frameScore = this.totalRollScore + this.bonus
     }
+
+    Frame.prototype.rollController = function() {
+      if (this.isStrike()) {
+        this.rolls[1].rollScore = ""
+      }
+      if (this.rolls[0].rollScore != null) {
+        this.rollNumber ++
+        this.currentRoll = this.rolls[this.rollNumber]
+      };
+    };
 
       var Roll = function() {
         this.rollScore = null;

@@ -24,7 +24,7 @@ describe('Bowling', function() {
   describe('Scoring', function() {
 
     describe('Rolls', function() {
-      it('saving roll scores through through the knockedDown function', function() {
+      it('saves roll scores through through the knockedDown function', function() {
         bowling.games[0].framez[0].rolls[0].knockedDown(5)
         expect(bowling.games[0].framez[0].rolls[0].rollScore).toEqual(5);
       })
@@ -50,6 +50,26 @@ describe('Bowling', function() {
         bowling.games[0].framez[0].addBonus(9);
         bowling.games[0].framez[0].tallyAll();
         expect(bowling.games[0].framez[0].frameScore).toEqual(19);
+      })
+
+      describe('rollController', function() {
+        it('has a currentRoll rolls[0]', function() {
+          expect(bowling.games[0].framez[0].currentRoll).toEqual(bowling.games[0].framez[0].rolls[0])
+        })
+
+        it('moves to 2nd roll after first roll regular', function() {
+          bowling.games[0].framez[0].rolls[0].knockedDown(0);
+          bowling.games[0].framez[0].tallyRolls();
+          bowling.games[0].framez[0].rollController();
+          expect(bowling.games[0].framez[0].currentRoll).toEqual(bowling.games[0].framez[0].rolls[1])
+        })
+
+        it('assigns "" to 2nd roll if first roll is a strike', function() {
+          bowling.games[0].framez[0].rolls[0].knockedDown(10);
+          bowling.games[0].framez[0].tallyRolls();
+          bowling.games[0].framez[0].rollController();
+          expect(bowling.games[0].framez[0].rolls[1].rollScore).toEqual("")
+        })
       })
 
       describe('bonuses', function() {
@@ -82,10 +102,6 @@ describe('Bowling', function() {
         })
 
         describe('Strikes', function() {
-          xit('moves to the next frame on strike', function() {
-
-          })
-
           it('adds the scores from the next 2 rolls', function() {
             bowling.games[0].framez[0].rolls[0].knockedDown(10);
             bowling.games[0].framez[0].tallyRolls();
@@ -130,13 +146,6 @@ describe('Bowling', function() {
           expect(bowling.games[0].currentFrame).toEqual(bowling.games[0].framez[1]);
         })
 
-        it('assigns roll 2 of a frame to "" on strike', function() {
-          bowling.games[0].framez[0].rolls[0].knockedDown(10);
-          bowling.games[0].framez[0].tallyRolls();
-          bowling.games[0].frameController();
-          expect(bowling.games[0].framez[0].rolls[1].rollScore).toEqual("");
-        })
-
         it('changes currentFrame after 2 rolls', function() {
           bowling.games[0].framez[0].rolls[0].knockedDown(5);
           bowling.games[0].framez[0].tallyRolls();
@@ -159,6 +168,32 @@ describe('Bowling', function() {
             bowling.games[0].bonusController();
             expect(bowling.games[0].framez[0].bonus).toEqual(9);
           })
+
+          it('adds bonuses from next 2 rolls strike', function() {
+            bowling.games[0].framez[0].rolls[0].knockedDown(10);
+            bowling.games[0].framez[0].tallyRolls();
+            bowling.games[0].frameController();
+            bowling.games[0].framez[1].rolls[0].knockedDown(10);
+            bowling.games[0].framez[1].tallyRolls();
+            bowling.games[0].bonusController();
+            bowling.games[0].frameController();
+            bowling.games[0].framez[2].rolls[0].knockedDown(10);
+            bowling.games[0].framez[2].tallyRolls();
+            bowling.games[0].bonusController();
+            expect(bowling.games[0].framez[0].bonus).toEqual(20);
+          })
+
+          it('adds bonuses from next 2 rolls spare', function() {
+            bowling.games[0].framez[0].rolls[0].knockedDown(10);
+            bowling.games[0].framez[0].tallyRolls();
+            bowling.games[0].frameController();
+            bowling.games[0].framez[1].rolls[0].knockedDown(0);
+            bowling.games[0].framez[1].tallyRolls();
+            bowling.games[0].framez[1].rolls[0].knockedDown(10);
+            bowling.games[0].framez[1].tallyRolls();
+            bowling.games[0].bonusController();
+            expect(bowling.games[0].framez[0].bonus).toEqual(10)
+          })
         })
 
         describe('spares', function() {
@@ -174,7 +209,30 @@ describe('Bowling', function() {
             bowling.games[0].framez[1].tallyRolls();
             bowling.games[0].bonusController();
             expect(bowling.games[0].framez[0].bonus).toEqual(5);
+          })
 
+          it('adds bonuses from next 1 roll strike', function() {
+            bowling.games[0].framez[0].rolls[0].knockedDown(0);
+            bowling.games[0].framez[0].tallyRolls();
+            bowling.games[0].framez[0].rolls[1].knockedDown(10);
+            bowling.games[0].framez[0].tallyRolls();
+            bowling.games[0].frameController();
+            bowling.games[0].framez[1].rolls[0].knockedDown(10);
+            bowling.games[0].framez[1].tallyRolls();
+            bowling.games[0].bonusController();
+            expect(bowling.games[0].framez[0].bonus).toEqual(10);
+          })
+
+          it('adds bonuses from next 1 rolls spare', function() {
+            bowling.games[0].framez[0].rolls[0].knockedDown(0);
+            bowling.games[0].framez[0].tallyRolls();
+            bowling.games[0].framez[0].rolls[1].knockedDown(10);
+            bowling.games[0].framez[0].tallyRolls();
+            bowling.games[0].frameController();
+            bowling.games[0].framez[1].rolls[0].knockedDown(0);
+            bowling.games[0].framez[1].tallyRolls();
+            bowling.games[0].bonusController();
+            expect(bowling.games[0].framez[0].bonus).toEqual(0);
           })
         })
       })

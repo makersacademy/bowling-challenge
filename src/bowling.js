@@ -20,27 +20,27 @@ Bowling.prototype.checkPlaying = function(){
   if (this.framesNumber === 10){
     if ((lastFrame[0] + lastFrame[1]) < 10){
       this.playing = false;
-      // return 'Last frame played'; this BREAKS THE TEST
+      // return 'Last frame played'
     }
   }
 
   if (this.framesNumber === 11){
     if ((lastFrame[0] + lastFrame[1]) < 10){
       this.playing = false;
-      // return 'Last frame played';
+      // return 'Last frame played'
     }
   }
 
   if (this.framesNumber === 12){
     if ((lastFrame[0] + lastFrame[1]) < 10){
       this.playing = false;
-      // return 'Last frame played';
+      // return 'Last frame played'
     }
   }
 
   if (this.framesNumber === 13){
     this.playing = false;
-    // return 'Last frame played';
+    // return 'Last frame played'
   }
 };
 
@@ -91,8 +91,6 @@ Bowling.prototype.roll = function(bowlOne,bowlTwo){
 
   this.framesNumber += 1;
 
-  // this.total();
-
   this.checkPlaying();
 };
 
@@ -113,7 +111,6 @@ Bowling.prototype.bonus_review = function(){
         this.thirdLastFrameTotal = 30;
         this.bonusTally.push(10);
         console.log(this.bonusTally);
-
 
         console.log("3 tens occured");
     }

@@ -46,11 +46,3 @@ function frameTotalVal(){
 $.get("http://api.openweathermap.org/data/2.5/find?q=London&units=metric",function(data){
   $("#weather").html(data.list[0].main.temp);
 });
-
-//
-// // AJAX request for London temp
-//   $.get("http://api.openweathermap.org/data/2.5/find?q=London&units=metric", function(data) {
-//     $(".weather").html(data.list[0].main.temp);
-//       // // $('.city').html(data.list[0].name);
-//       // $('.temp').html(data.list[0].main.temp);
-//   });

@@ -49,17 +49,21 @@ API.prototype.regularRoll2 = function (i, api, total) {
   api.push(this.info(i+1, 2, this.bowlingScoreCard.frames[i].roll2, '', total, ''))
 };
 
+API.prototype.roll3 = function (i, api, total) {
+  api.push(this.info(i+1, 3, this.bowlingScoreCard.frames[i].bonusRoll, '', total, ''))
+};
+
 API.prototype.bounsRoundLogic = function (i, api, total) {
   /// Hit a strike
   if (this.bowlingScoreCard.frames[i].roll1 === 10){
     api.push(this.info(i+1, 1, this.bowlingScoreCard.frames[i].roll1, '', '', "Strike! Two bonus rolls"))
     api.push(this.info(i+1, 2, this.bowlingScoreCard.frames[i].roll2, '', '', ''))
-    api.push(this.info(i+1, 3, this.bowlingScoreCard.frames[i].bonusRoll, '', total, ''))
+    this.roll3(i, api, total)
   /// Hits a spare
 } else if (this.bowlingScoreCard.frames[i].roll1 + this.bowlingScoreCard.frames[i].roll2 === 10){
     this.regularRoll1(i, api)
     api.push(this.info(i+1, 2, this.bowlingScoreCard.frames[i].roll2, '', '', "Spare! One bonus roll"))
-    api.push(this.info(i+1, 3, this.bowlingScoreCard.frames[i].bonusRoll, '', total, ''))
+    this.roll3(i, api, total)
   /// Nothing special
   } else {
     this.regularRoll1(i, api)

@@ -92,7 +92,7 @@ var Bowling = function() {
     }
 
     Frame.prototype.tallyAll = function() {
-      if (this.bonus != null || this.isBonus === true) {
+      if (this.bonus != null || this.isBonus) {
         this.frameScore = this.totalRollScore + this.bonus
       }
     }

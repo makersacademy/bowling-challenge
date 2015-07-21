@@ -1,7 +1,7 @@
 bowling = new Bowling();
 
 $("#submitButton").click(function() {
-  try {
+  try {git
     if ($("#textField").val() === null) throw  "nothing entered";
     if ($("#textField").val() > 10) throw "greater than 10"
     if ($("#textField").val() < 0) throw "smaller than 0";
@@ -17,6 +17,7 @@ $("#submitButton").click(function() {
   bowling.games[0].frameController();
   bowling.games[0].bonusController();
   bowling.games[0].currentFrame.tallyAll();
+
   $("#f1r1").html(bowling.games[0].framez[0].rolls[0].rollScore)
   $("#f1r2").html(bowling.games[0].framez[0].rolls[1].rollScore)
   $("#f2r1").html(bowling.games[0].framez[1].rolls[0].rollScore)

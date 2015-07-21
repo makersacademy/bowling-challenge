@@ -1,6 +1,16 @@
 var API = function(scoreCard) {
   this.bowlingScoreCard = scoreCard;
 }
+
+API.prototype.info = function (frame, rollNum, roll, bonus, score, comments) {
+  return {frame: frame,
+          rollNum: rollNum,
+          roll: roll,
+          bonus: bonus,
+          score: score,
+          comments: comments}
+};
+
 API.prototype.call = function () {
   this.bowlingScoreCard.rollingScores()
 
@@ -12,13 +22,7 @@ API.prototype.call = function () {
       // console.log((i+1) + ":" + this.frames[i]._toString() + " === " + total)
       /// Strike not on last frame
       if (this.bowlingScoreCard.frames[i].isStrike() && i!== 9) {
-        info = {frame: i+1,
-                rollNum: 1,
-                roll: this.bowlingScoreCard.frames[i].roll1,
-                bonus: this.bowlingScoreCard.frames[i].bonusScore,
-                score: total,
-                comments: "Strike!"}
-        api.push(info)
+        api.push(this.info(i+1, 1, this.bowlingScoreCard.frames[i].roll1, this.bowlingScoreCard.frames[i].bonusScore, total, "Strike!"))
 
         /// Bonus round
       } else if (i === 9) {
@@ -26,13 +30,7 @@ API.prototype.call = function () {
         /// Hits a spare not on last frame
       } else if (this.bowlingScoreCard.frames[i].isSpare()){
         this.regularRoll1(i, api, total)
-        info = {frame: i+1,
-                rollNum: 2,
-                roll: this.bowlingScoreCard.frames[i].roll2,
-                bonus: this.bowlingScoreCard.frames[i].bonusScore,
-                score: total,
-                comments: "Spare!"}
-        api.push(info)
+        api.push(this.info(i+1, 2, this.bowlingScoreCard.frames[i].roll2, this.bowlingScoreCard.frames[i].bonusScore, total, "Spare!"))
       /// Regular frame
       } else {
         this.regularRoll1(i, api, total)
@@ -43,70 +41,28 @@ API.prototype.call = function () {
   return api
 };
 
-API.prototype.regularRoll1 = function (i, api, total) {
-  info = {frame: i+1,
-          rollNum: 1,
-          roll: this.bowlingScoreCard.frames[i].roll1,
-          bonus: "",
-          score: "",
-          comments: ""}
-  api.push(info)
+API.prototype.regularRoll1 = function (i, api) {
+  api.push(this.info(i+1, 1, this.bowlingScoreCard.frames[i].roll1, '', '', ''))
 };
 
 API.prototype.regularRoll2 = function (i, api, total) {
-  info = {frame: i+1,
-          rollNum: 2,
-          roll: this.bowlingScoreCard.frames[i].roll2,
-          bonus: "",
-          score: total,
-          comments: ""}
-  api.push(info)
+  api.push(this.info(i+1, 2, this.bowlingScoreCard.frames[i].roll2, '', total, ''))
 };
 
 API.prototype.bounsRoundLogic = function (i, api, total) {
   /// Hit a strike
   if (this.bowlingScoreCard.frames[i].roll1 === 10){
-    info = {frame: i+1,
-            rollNum: 1,
-            roll: this.bowlingScoreCard.frames[i].roll1,
-            bonus: "",
-            score: "",
-            comments: "Strike! Two bonus rolls"}
-    api.push(info)
-    info = {frame: i+1,
-            rollNum: 2,
-            roll: this.bowlingScoreCard.frames[i].roll2,
-            bonus: "",
-            score: "",
-            comments: ""}
-    api.push(info)
-    info = {frame: i+1,
-            rollNum: 3,
-            roll: this.bowlingScoreCard.frames[i].bonusRoll,
-            bonus: "",
-            score: total,
-            comments: ""}
-    api.push(info)
+    api.push(this.info(i+1, 1, this.bowlingScoreCard.frames[i].roll1, '', '', "Strike! Two bonus rolls"))
+    api.push(this.info(i+1, 2, this.bowlingScoreCard.frames[i].roll2, '', '', ''))
+    api.push(this.info(i+1, 3, this.bowlingScoreCard.frames[i].bonusRoll, '', total, ''))
   /// Hits a spare
 } else if (this.bowlingScoreCard.frames[i].roll1 + this.bowlingScoreCard.frames[i].roll2 === 10){
-    this.regularRoll1(i, api, total)
-    info = {frame: i+1,
-            rollNum: 2,
-            roll: this.bowlingScoreCard.frames[i].roll2,
-            bonus: "",
-            score: "",
-            comments: "Spare! One bonus roll"}
-    api.push(info)
-    info = {frame: i+1,
-            rollNum: 3,
-            roll: this.bowlingScoreCard.frames[i].bonusRoll,
-            bonus: "",
-            score: total,
-            comments: ""}
-    api.push(info)
+    this.regularRoll1(i, api)
+    api.push(this.info(i+1, 2, this.bowlingScoreCard.frames[i].roll2, '', '', "Spare! One bonus roll"))
+    api.push(this.info(i+1, 3, this.bowlingScoreCard.frames[i].bonusRoll, '', total, ''))
   /// Nothing special
   } else {
-    this.regularRoll1(i, api, total)
+    this.regularRoll1(i, api)
     this.regularRoll2(i, api, total)
   }
 };

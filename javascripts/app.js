@@ -16,7 +16,8 @@ $("#submitButton").click(function() {
   bowling.games[0].currentFrame.rollController();
   bowling.games[0].frameController();
   bowling.games[0].bonusController();
-  bowling.games[0].currentFrame.tallyAll();
+  bowling.games[0].framez[0].tallyAll();
+
 
   $("#f1r1").html(bowling.games[0].framez[0].rolls[0].rollScore)
   $("#f1r2").html(bowling.games[0].framez[0].rolls[1].rollScore)
@@ -39,7 +40,7 @@ $("#submitButton").click(function() {
   $("#f10r1").html(bowling.games[0].framez[9].rolls[0].rollScore)
   $("#f10r2").html(bowling.games[0].framez[9].rolls[1].rollScore)
 
-  $("#f1").html(bowling.games[0].framez[0].totalRollScore)
+  $("#f1").html(bowling.games[0].framez[0].frameScore)
   $("#f2").html(bowling.games[0].framez[1].frameScore)
   $("#f3").html(bowling.games[0].framez[2].frameScore)
   $("#f4").html(bowling.games[0].framez[3].frameScore)

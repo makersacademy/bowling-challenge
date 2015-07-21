@@ -3,6 +3,9 @@ $( document ).ready(function() {
 
   var showRollScores = function() {
     $("#rolls").html(b.rollArray);
+    $("#frameScores").html(b.frameScores);
+    $("#totalScore").html(b.scoreTotal);
+
   };
 
   $("#0").click(function() {

@@ -58,11 +58,17 @@ Bowling.prototype.checkEnd = function() {
 };
 
 Bowling.prototype.totalScore = function() {
-
+  // var checkStrikes = 0;
+  // for (var i = 0; i < 21; i += 2) {
+  //   checkStrikes += this.frameScores[i]};
+  //
+  // if (checkStrikes == 110) {
+  //   this.scoreTotal = 300;
   if (this.rollArray[0] + this.rollArray[2] + this.rollArray[4] + this.rollArray[6] + this.rollArray[8] + this.rollArray[10] + this.rollArray[12] + this.rollArray[14] + this.rollArray[16] + this.rollArray[18] + this.rollArray[20] == 110) {
     this.scoreTotal = 300;
   } else if (this.frameCount == 10) {
-    this.scoreTotal = this.frameScores[0] + this.frameScores[1] + this.frameScores[2] + this.frameScores[3] + this.frameScores[4] + this.frameScores[5] + this.frameScores[6] + this.frameScores[7] + this.frameScores[8] + this.frameScores[9];
+    for(var i in this.frameScores) {
+      this.scoreTotal += this.frameScores[i]; }
   };
 };
 

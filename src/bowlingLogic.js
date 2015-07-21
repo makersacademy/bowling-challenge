@@ -14,7 +14,7 @@ this.frames = [
 this.gameTotalScore = 0;
 };
 
-BowlingGame.prototype.addRolls = function () {
+BowlingGame.prototype.addGameRolls = function () {
   for ( var i = 0; i < this.frames.length; i++) {
     this.frames[i].addRolls();
   }
@@ -25,25 +25,24 @@ BowlingGame.prototype.addBonus = function () {
   for ( var i = 0; i < this.frames.length; i++) {
 
     if (this.frames[i] != this.frames[10] && this.frames[i].isStrike) {
-
-      if (this.frames[i].isStrike && this.frames[i + 1].isStrike) {
-          this.frames[i].bonus = (this.frames[i].rollScore + this.frames[i + 1].rollScore); this.frames[i].addScore();
-      }
-
-      if (this.frames[i].isStrike && this.frames[i + 1].isStrike  && this.frames[i + 2].isStrike) {
-        this.frames[i].bonus = (this.frames[i + 1].rollScore + this.frames[i + 2].rollScore); this.frames[i].addScore();
-      }
-
-      if (this.frames[i].isStrike) {
-          this.frames[i].bonus = this.frames[i + 1].rollScore; this.frames[i].addScore();
-      }
+      
+          this.frames[i].bonus = this.frames[i + 1].rollScore;
+          this.frames[i].addScore();
+      
+      
+      if (this.frames[i + 1].isStrike) {
+          this.frames[i].bonus = 10 + this.frames[i + 2].roll1;
+          this.frames[i].addScore();
+      } 
     }
 
-    if (this.frames[i].isSpare && this.frames[i] != this.frames[10]) {
+    if (this.frames[i].isSpare === true && this.frames[i] != this.frames[10]) {
       this.frames[i].bonus = this.frames[i + 1].roll1; this.frames[i].addScore();
     }
 
-    this.frames[i].addScore();
+    else {
+      this.frames[i].addScore();
+    }
   }
 };
 

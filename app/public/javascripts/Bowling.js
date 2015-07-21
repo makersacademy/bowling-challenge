@@ -1,5 +1,6 @@
 function Bowling() {
   this.score = 0;
+  this.lastRoll = 0;
   this.bowlingFrames = [[null, null],
                         [null, null],
                         [null, null],
@@ -21,6 +22,7 @@ function Bowling() {
     for (i = 0; i < this.bowlingFrames.length; i++) {
       if (this.bowlingFrames[i][0] === null) {
         this.bowlingFrames[i][0] = pins;
+        this.lastRoll = pins;
         if (this.checkSpare()) {
           this.score += pins;
         }
@@ -36,6 +38,7 @@ function Bowling() {
           throw new Error("invalid roll");
         }
         this.bowlingFrames[i][1] = pins;
+        this.lastRoll = pins;
         if (this.bowlingFrames[this.getCurrentFrame()-1][0] === 10) {
           this.score += this.bowlingFrames[this.getCurrentFrame()][0];
         }

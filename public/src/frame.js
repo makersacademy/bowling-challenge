@@ -34,11 +34,11 @@ Frame.prototype.addBonus = function() {
 };
 
 Frame.prototype.throwsPerFrame = function() {
-  if(isFinalFrame === true) {
-    return throwCount === 3;
+  if(this.isFinalFrame === true) {
+    return this.throwCount === 3;
   }
   else {
-    return throwCount === 2;
+    return this.throwCount === 2;
   }
 };
 

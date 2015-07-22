@@ -15,7 +15,7 @@ var Game = function(frame) {
 };
 
 Game.prototype.runningTotal = function() {
-  var trackThrow = 0;
+  // var trackThrow = 0;
   var total = 0;
 
   for (var i = 0; i < this.frameList.length; i++) {
@@ -27,7 +27,7 @@ Game.prototype.runningTotal = function() {
     // if (this.frameList[i].isStrike() === true) {
     //   total += ..........
     // }
-    trackThrow += this.frameList[i].throwCount;
+    // trackThrow += this.frameList[i].throwCount;
   }
   return total;
 };

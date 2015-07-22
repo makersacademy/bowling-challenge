@@ -23,13 +23,13 @@ describe('A throwBalling game', function() {
 			expect(game.frameList[9].isFinalFrame).toBe(true);
 		});
 
-		it('knows the current frame index', function() {
+		it('knows the current frame is frame 1', function() {
 			game.throwBall(1);
 		// 	expect(game.frameCounter()).toEqual(1);
 			expect(game.currentFrame()).toEqual(game.frameList[0]);
 		});
 
-		it('knows the current frame index', function() {
+		it('knows the current frame is frame 2', function() {
 			game.throwBall(1);
 			game.throwBall(3);
 			game.throwBall(4);
@@ -60,7 +60,7 @@ describe('A throwBalling game', function() {
 			expect(game.runningTotal()).toEqual(12);
 		});
 
-		it('strike in 1st frame and 7 + 1 in 2nd frame', function() {
+		xit('strike in 1st frame and 7 + 1 in 2nd frame', function() {
 	  	game.throwBall(10);
 			game.throwBall(7);
 			game.throwBall(1);

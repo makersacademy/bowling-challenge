@@ -10,8 +10,8 @@ describe('A throwBalling game', function() {
 	var game;
 
 	beforeEach(function() {
-    game = new Game();
-  });
+		game = new Game();
+	});
 
 	describe('frames', function() {
 
@@ -25,7 +25,7 @@ describe('A throwBalling game', function() {
 
 		it('knows the current frame is frame 1', function() {
 			game.throwBall(1);
-		// 	expect(game.frameCounter()).toEqual(1);
+			// 	expect(game.frameCounter()).toEqual(1);
 			expect(game.currentFrame()).toEqual(game.frameList[0]);
 		});
 
@@ -61,10 +61,10 @@ describe('A throwBalling game', function() {
 		});
 
 		xit('strike in 1st frame and 7 + 1 in 2nd frame', function() {
-	  	game.throwBall(10);
+			game.throwBall(10);
 			game.throwBall(7);
 			game.throwBall(1);
-		  expect(game.runningTotal()).toEqual(26);
+			expect(game.runningTotal()).toEqual(26);
 		});
 
 	});

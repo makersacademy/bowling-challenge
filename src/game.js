@@ -9,7 +9,7 @@ function Game() {
 
 Game.prototype.bowl = function() {
   if (this.playing) {
-    hit = Math.floor(Math.random() * (this.pins + 1));
+    var hit = Math.floor(Math.random() * (this.pins + 1));
     this.score = hit + this.score;
     this.pins -= hit;
     this.checkLastStrike();

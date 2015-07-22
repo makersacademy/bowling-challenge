@@ -47,8 +47,15 @@ describe('Bowling', function (){
     bowling.roll(10);
     bowling.roll(3);
     bowling.roll(2);
-    bowling.roll(1);
-    expect(bowling.score).toBe(21);
+    expect(bowling.score).toBe(20);
+  });
+
+  it('accounts for multiple strikes in a row', function () {
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(4);
+    bowling.roll(5);
+    expect(bowling.score).toBe(52);
   });
 
 });

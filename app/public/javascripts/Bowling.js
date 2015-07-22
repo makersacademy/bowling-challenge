@@ -1,5 +1,7 @@
 function Bowling() {
   this.score = 0;
+  this.lastRoll = 0;
+  this.strikeBonus = ['',''];
   this.bowlingFrames = [['', ''],
                         ['', ''],
                         ['', ''],
@@ -21,32 +23,45 @@ function Bowling() {
     }
     for (i = 0; i < 21; i++) {
       if (this.getCurrentRoll() === 0) {
-        if (this.checkSpare()) {
+        if (this.getCurrentFrame() === 0) {
+          this.bowlingFrames[0][0] = pins;
+          this.score += pins;
+          this.lastRoll = pins;
+          break;
+        } else if (this.checkSpare()) {
           this.score += (pins * 2);
           this.bowlingFrames[this.getCurrentFrame()][0] = pins;
+          this.lastRoll = pins;
           break;
-        } else if (!this.checkStrike()){
+        } else if (this.bowlingFrames[this.getCurrentFrame()-1][0] !== 10){
           this.score += pins;
           this.bowlingFrames[this.getCurrentFrame()][0] = pins;
+          this.lastRoll = pins;
           break;
         } else {
           this.bowlingFrames[this.getCurrentFrame()][this.getCurrentRoll()] = pins;
+          this.lastRoll = pins;
           break;
         }
       } else if (this.getCurrentRoll() === 1) {
         if (pins + this.firstRollCurrentFrame() > 10) {
           throw new Error('invalid roll');
-        } else if (this.checkStrike()) {
-          this.score += (pins * 2 + this.bowlingFrames[this.getCurrentFrame()][0] * 2);
-          this.bowlingFrames[this.getCurrentFrame()][1] = pins;
-          break;
+        } else if (this.getCurrentFrame() > 0) {
+          if (this.bowlingFrames[this.getCurrentFrame()-1][0] === 10) {
+            this.score += (pins * 2 + this.firstRollCurrentFrame() * 2);
+            this.bowlingFrames[this.getCurrentFrame()][1] = pins;
+            this.lastRoll = pins;
+            break;
+          }
         } else {
           this.score += pins;
           this.bowlingFrames[this.getCurrentFrame()][1] = pins;
+          this.lastRoll = pins;
           break;
         }
       } else {
         this.bowlingFrames[9][2] = pins;
+        this.lastRoll = pins;
         break;
       }
     }
@@ -83,7 +98,7 @@ function Bowling() {
   };
 
   Bowling.prototype.checkSpare = function () {
-    if (this.getCurrentFrame() > 0) {
+    if (this.getCurrentFrame() > 0 && this.bowlingFrames[this.getCurrentFrame()-1][0] !== 10) {
       return (this.bowlingFrames[this.getCurrentFrame()-1][0] + this.bowlingFrames[this.getCurrentFrame()-1][1] === 10);
     }
     return false;

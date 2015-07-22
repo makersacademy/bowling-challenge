@@ -10,7 +10,7 @@ describe("Game", function() {
     expect(game.score).toBe(0);
   });
 
-  it ("should have 10 pins", function() {
+  it ("should have ten pins", function() {
     expect(game.pins).toBe(10);
   });
 

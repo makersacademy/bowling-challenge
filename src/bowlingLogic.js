@@ -24,22 +24,24 @@ BowlingGame.prototype.addBonus = function () {
 
   for ( var i = 0; i < this.frames.length; i++) {
 
-    if (this.frames[i] != this.frames[10] && this.frames[i].isStrike) {
-      
-          this.frames[i].bonus = this.frames[i + 1].rollScore;
-          this.frames[i].addScore();
-      
+    if (this.frames[i].isStrike && this.frames[i] != this.frames[9]) {
+        this.frames[i].bonus = this.frames[i + 1].rollScore;
+        this.frames[i].addScore();
       
       if (this.frames[i + 1].isStrike) {
-          this.frames[i].bonus = 10 + this.frames[i + 2].roll1;
-          this.frames[i].addScore();
+        this.frames[i].bonus = 10 + this.frames[i + 2].roll1;
+        this.frames[i].addScore();
       } 
     }
-
-    if (this.frames[i].isSpare === true && this.frames[i] != this.frames[10]) {
-      this.frames[i].bonus = this.frames[i + 1].roll1; this.frames[i].addScore();
+    
+    if (this.frames[9].isStrike) {
+      this.frames[9].bonus = this.frames[9].roll3;
     }
 
+    if (this.frames[i].isSpare === true && !this.frames[9]) {
+      this.frames[i].bonus = this.frames[i + 1].roll1; this.frames[i].addScore();
+    }
+    
     else {
       this.frames[i].addScore();
     }
@@ -57,8 +59,8 @@ BowlingGame.prototype.addTotalScore = function () {
 };
 
 BowlingGame.prototype.checkLastFrame = function () {
-  if (this.frames[9].isStrike && this.frames.length < 11) {
-    this.frames.push(new Frame());
+  if (this.frames[9].isStrike) {
+    this.frames[9].bonusRoll();
   }
   if (this.frames[9].isSpare && this.frames.length < 11) {
     this.frames.push(new Frame()); this.frames[10].roll2 = 0;
@@ -84,6 +86,7 @@ Frame.prototype.rollAgain = function (pins) {
 };
 
 Frame.prototype.addRolls = function () {
+  // if (this.roll3) {this.rollScore = this.roll1 + this.roll2 + this.roll3;}
   this.rollScore = this.roll1 + this.roll2;
   if (this.roll1 === 10 && this.roll2 === 0) { this.isStrike = true;}
   if (this.roll1 + this.roll2 === 10 && this.roll1 != 10) {this.isSpare = true;}
@@ -92,3 +95,8 @@ Frame.prototype.addRolls = function () {
 Frame.prototype.addScore = function() {
   this.totalScore = this.rollScore + this.bonus;
 };
+
+Frame.prototype.bonusRoll = function (pins) {
+  this.roll3 = pins;
+};
+

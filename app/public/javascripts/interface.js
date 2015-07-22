@@ -4,6 +4,9 @@ var updateDisplay = function () {
   $('#score').html(bowling.score);
   var num = checkTable();
   $('#box' + num).html(bowling.lastRoll);
+  if (bowling.lastRoll === 10) {
+    $('#box' + (num+1)).html('-');
+  }
 };
 
 var checkTable = function () {
@@ -14,7 +17,7 @@ var checkTable = function () {
                $('#box17'), $('#box18'), $('#box19'), $('#box20'),
                $('#box21')];
  for (i = 0; i < table.length; i++) {
-   if (table[i].html() === '-') {
+   if (table[i].html() === '') {
      return i+1;
    }
  }

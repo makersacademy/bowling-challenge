@@ -10,7 +10,7 @@ describe('Bowling', function (){
   });
 
   it('starts at 0 frames', function() {
-    expect(bowling.bowlingFrames[0][0]).toBe(null);
+    expect(bowling.bowlingFrames[0][0]).toBe('');
   });
 
   it('increases the total score for a roll by the roll amount', function() {
@@ -50,5 +50,5 @@ describe('Bowling', function (){
     bowling.roll(1);
     expect(bowling.score).toBe(21);
   });
-  
+
 });

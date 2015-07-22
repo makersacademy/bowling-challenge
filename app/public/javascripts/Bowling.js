@@ -13,7 +13,7 @@ function Bowling() {
 }
 
   Bowling.prototype.roll = function (pins) {
-    if (this.bowlingFrames[9][2] !== '') {
+    if (this.bowlingFrames[9][2] !== '' || pins > 10 || pins < 0) {
       throw new Error('invalid roll');
     }
     if (this.checkStrike()) {
@@ -34,7 +34,9 @@ function Bowling() {
           break;
         }
       } else if (this.getCurrentRoll() === 1) {
-        if (this.checkStrike()) {
+        if (pins + this.firstRollCurrentFrame() > 10) {
+          throw new Error('invalid roll');
+        } else if (this.checkStrike()) {
           this.score += (pins * 2 + this.bowlingFrames[this.getCurrentFrame()][0] * 2);
           this.bowlingFrames[this.getCurrentFrame()][1] = pins;
           break;
@@ -58,6 +60,10 @@ function Bowling() {
         return i;
       }
     }
+  };
+
+  Bowling.prototype.firstRollCurrentFrame = function () {
+    return this.bowlingFrames[this.getCurrentFrame()][0];
   };
 
   Bowling.prototype.getCurrentRoll = function () {

@@ -23,23 +23,29 @@ function Bowling() {
       if (this.getCurrentRoll() === 0) {
         if (this.checkSpare()) {
           this.score += (pins * 2);
-          this.bowlingFrames[this.getCurrentFrame()][this.getCurrentRoll()] = pins;
-        } else if (this.checkStrike() === false){
+          this.bowlingFrames[this.getCurrentFrame()][0] = pins;
+          break;
+        } else if (!this.checkStrike()){
           this.score += pins;
-          this.bowlingFrames[this.getCurrentFrame()][this.getCurrentRoll()] = pins;
+          this.bowlingFrames[this.getCurrentFrame()][0] = pins;
+          break;
         } else {
           this.bowlingFrames[this.getCurrentFrame()][this.getCurrentRoll()] = pins;
+          break;
         }
       } else if (this.getCurrentRoll() === 1) {
         if (this.checkStrike()) {
-          this.score += (pins * 2 + this.bowlingFrames[this.getCurrentFrame()-1][0] * 2);
-          this.bowlingFrames[this.getCurrentFrame()][this.getCurrentRoll()] = pins;
+          this.score += (pins * 2 + this.bowlingFrames[this.getCurrentFrame()][0] * 2);
+          this.bowlingFrames[this.getCurrentFrame()][1] = pins;
+          break;
         } else {
           this.score += pins;
-          this.bowlingFrames[this.getCurrentFrame()][this.getCurrentRoll()] = pins;
+          this.bowlingFrames[this.getCurrentFrame()][1] = pins;
+          break;
         }
       } else {
-        return "last roll";
+        this.bowlingFrames[9][2] = pins;
+        break;
       }
     }
   };

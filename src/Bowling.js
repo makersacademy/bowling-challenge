@@ -3,6 +3,14 @@ var scoreFrame = function(frame) {
   if (frame.length === 2) { return (frame[0] + frame[1]) };
 };
 
+var isStrike = function(frame) {
+  return (frame[0] === 10)
+};
+
+var isSpare = function(frame) {
+  return ( (frame[0] + frame[1]) === 10 &&  frame[0] != 10 )
+};
+
 var Scoresheet = function() {
   this.board = [[0,0],[0,0],[0,0],[0,0],[0,0],
                 [0,0],[0,0],[0,0],[0,0],[0,0,0]]
@@ -25,24 +33,23 @@ Scoresheet.prototype.scoreFrames = function() {
 Scoresheet.prototype.strikeCalc = function() {
   n = 0;
   while ( n < 8 ) {
-    if (this.tally[n] === 10) {
 
-      if (this.board[n][0] === 10) {
-        if (this.board[n + 1][0] === 10)
-          { this.tally[n] = 20 + this.board[n + 2][0] } //two strikes
-        else
-          { this.tally[n] = 10 + this.tally[n + 1] }; //strike
-      }
-      else { this.tally[n] = 10 + this.board[n+1][0] }; //spare
-
+    if (isStrike(this.board[n])) {
+      if (isStrike(this.board[n + 1]))
+        { this.tally[n] = 20 + this.board[n + 2][0] } // two strikes
+      else
+        { this.tally[n] = 10 + this.tally[n + 1] }; // strike
     };
+
+    if (isSpare(this.board[n])) { this.tally[n] = 10 + this.board[n+1][0] }; // spare
+
     n += 1;
   };
 
-  if (this.board[8][0] === 10)
-    { this.tally[8] = this.tally[8] + this.board[9][0] + this.board[9][1] };
-  if (this.tally[8] === 10 && this.board[8][0] != 10)
-    { this.tally[8] = this.tally[8] + this.board[9][0] };
+  if (isStrike(this.board[8])) // strike
+    { this.tally[8] = 10 + this.board[9][0] + this.board[9][1] };
+  if (isSpare(this.board[8])) // spare
+    { this.tally[8] = 10 + this.board[9][0] };
 };
 
 

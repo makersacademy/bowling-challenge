@@ -1,6 +1,7 @@
 var scoreFrame = function(frame) {
-  if (frame.length === 3) { return (frame[0] + frame[1] + frame[2]) };
-  if (frame.length === 2) { return (frame[0] + frame[1]) };
+  return frame.reduce(function(roll, currentVal) {
+    return roll + currentVal;
+  });
 };
 
 var isStrike = function(frame) {
@@ -30,8 +31,9 @@ Scoresheet.prototype.scoreFrames = function() {
     });
 };
 
+  // this.normalFrames.forEach instead of while loop
 Scoresheet.prototype.strikeCalc = function() {
-  n = 0;
+  var n = 0;
   while ( n < 8 ) {
 
     if (isStrike(this.board[n])) {
@@ -41,22 +43,26 @@ Scoresheet.prototype.strikeCalc = function() {
         { this.tally[n] = 10 + this.tally[n + 1] }; // strike
     };
 
-    if (isSpare(this.board[n])) { this.tally[n] = 10 + this.board[n+1][0] }; // spare
+    if (isSpare(this.board[n])) { this.tally[n] = 10 + this.board[n + 1][0] };
 
     n += 1;
   };
 
-  if (isStrike(this.board[8])) // strike
+  //You could make a helper method for accessing frame rolls
+  if (isStrike(this.board[8]))
     { this.tally[8] = 10 + this.board[9][0] + this.board[9][1] };
-  if (isSpare(this.board[8])) // spare
+  if (isSpare(this.board[8]))
     { this.tally[8] = 10 + this.board[9][0] };
 };
 
-
 Scoresheet.prototype.sum = function() {
-  localSum = 0;
-  this.tally.forEach(function(points){
-    localSum += points;
+  this.total = this.tally.reduce(function(roll, currentVal) {
+    return roll + currentVal
   });
-  this.total = localSum;
+};
+
+Scoresheet.prototype.update = function () {
+  this.scoreFrames();
+  this.strikeCalc();
+  this.sum();
 };

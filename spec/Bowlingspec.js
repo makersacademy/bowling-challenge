@@ -40,9 +40,7 @@ var scoresheet;
                           [1,1], [1,1],
                           [1,1], [1,1],
                           [1,1], [1,1,1]];
-      scoresheet.scoreFrames();
-      scoresheet.strikeCalc();
-      scoresheet.sum();
+      scoresheet.update();
       expect(scoresheet.total).toBe(31)
     });
 
@@ -53,9 +51,7 @@ var scoresheet;
                           [1,1], [1,1],
                           [1,1], [1,1],
                           [1,1], [1,1,1]];
-      scoresheet.scoreFrames();
-      scoresheet.strikeCalc();
-      scoresheet.sum();
+      scoresheet.update();
       expect(scoresheet.total).toBe(40)
     });
 

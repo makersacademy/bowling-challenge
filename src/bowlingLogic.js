@@ -1,4 +1,5 @@
 var BowlingGame = function(){
+
 this.frames = [
   new Frame(),
   new Frame(),
@@ -23,33 +24,30 @@ BowlingGame.prototype.addGameRolls = function () {
 BowlingGame.prototype.addBonus = function () {
 
   for ( var i = 0; i < this.frames.length; i++) {
+    this.frames[i].addRolls();
 
     if (this.frames[i].isStrike && this.frames[i] != this.frames[9]) {
         this.frames[i].bonus = this.frames[i + 1].rollScore;
         this.frames[i].addScore();
       
-      if (this.frames[i + 1].isStrike) {
+      if (this.frames[i + 1].isStrike && this.frames[i] != this.frames[8]) {
         this.frames[i].bonus = 10 + this.frames[i + 2].roll1;
         this.frames[i].addScore();
       } 
     }
-    
-    if (this.frames[9].isStrike) {
-      this.frames[9].bonus = this.frames[9].roll3;
-    }
 
-    if (this.frames[i].isSpare === true && !this.frames[9]) {
+    if (this.frames[i].isSpare && this.frames[i] != this.frames[9]) {
       this.frames[i].bonus = this.frames[i + 1].roll1; this.frames[i].addScore();
+    }
+    
+    if (this.frames[8].isStrike || this.frames[8].isSpare) {
+      this.frames[8].bonus = this.frames[9].bonus;
     }
     
     else {
       this.frames[i].addScore();
     }
   }
-};
-
-BowlingGame.prototype.addFrameScore = function () {
-  this.addBonus();
 };
 
 BowlingGame.prototype.addTotalScore = function () {
@@ -61,42 +59,13 @@ BowlingGame.prototype.addTotalScore = function () {
 BowlingGame.prototype.checkLastFrame = function () {
   if (this.frames[9].isStrike) {
     this.frames[9].bonusRoll();
+    this.frames[9].bonusRollAgain();
   }
-  if (this.frames[9].isSpare && this.frames.length < 11) {
-    this.frames.push(new Frame()); this.frames[10].roll2 = 0;
+  if (this.frames[9].isSpare) {
+    this.frames[9].bonusRoll();
   }
 };
 
-var Frame = function(){
-this.roll1 = 0;
-this.roll2 = 0;
-this.rollScore = 0;
-this.bonus = 0;
-this.totalScore = 0;
+BowlingGame.prototype.addLastFrame = function () {
+  this.frames[9].totalScore = this.frames[9].bonus + this.frames[9].roll1;
 };
-
-Frame.prototype.roll = function (pins) {
-  if (this.roll1 === 0) {this.roll1 = pins; return this.roll1;}
-  if (this.roll1 === (1-10)) {throw new Error('Roll not allowed');}
-};
-
-Frame.prototype.rollAgain = function (pins) {
-  if (this.roll2 === 0 && this.roll1 != 10) {this.roll2 = pins;  return this.roll2;}
-  if (this.roll2 === (1-10)) {throw new Error('Roll not allowed');}
-};
-
-Frame.prototype.addRolls = function () {
-  // if (this.roll3) {this.rollScore = this.roll1 + this.roll2 + this.roll3;}
-  this.rollScore = this.roll1 + this.roll2;
-  if (this.roll1 === 10 && this.roll2 === 0) { this.isStrike = true;}
-  if (this.roll1 + this.roll2 === 10 && this.roll1 != 10) {this.isSpare = true;}
-};
-
-Frame.prototype.addScore = function() {
-  this.totalScore = this.rollScore + this.bonus;
-};
-
-Frame.prototype.bonusRoll = function (pins) {
-  this.roll3 = pins;
-};
-

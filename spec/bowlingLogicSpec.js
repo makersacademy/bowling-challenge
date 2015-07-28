@@ -4,11 +4,11 @@ describe('Bowling Game Score', function() {
 
   beforeEach(function(){
       game = new BowlingGame();
-      game.frames[4].roll(3);
-      game.frames[4].rollAgain(5);
   });
 
   it('adds total of frame', function(){
+    game.frames[4].roll(3);
+    game.frames[4].rollAgain(5);
     game.addGameRolls();
     game.addBonus();
     expect(game.frames[4].totalScore).toEqual(8);
@@ -37,7 +37,7 @@ describe('Bowling Game Score', function() {
 
 
   it('adds two bonus rolls if last frame strike', function(){
-    game.frames[9].isStrik = true;
+    game.frames[9].isStrike = true;
     game.checkLastFrame();
     game.frames[9].bonusRoll(10);
     game.frames[9].bonusRollAgain(5);
@@ -71,6 +71,6 @@ describe('Bowling Game Score', function() {
     game.addBonus();
     game.addTotalScore();
     expect(game.gameTotalScore).toEqual(300);
-  })
+  });
 
 });

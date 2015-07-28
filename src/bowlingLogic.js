@@ -42,6 +42,7 @@ BowlingGame.prototype.addBonus = function () {
     
     if (this.frames[8].isStrike || this.frames[8].isSpare) {
       this.frames[8].bonus = this.frames[9].bonus;
+      this.frames[i].addScore();
     }
     
     else {

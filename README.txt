@@ -1,0 +1,6 @@
+- A ten pin bowling scorecard - designed to take in pin numbers and generate the scorecard, rather than generate random rolls like a game would.
+- Works for all of the ten pin bowling rules (as I understand them...). You roll, with the number of pins as an argument, and you can call scoreArray or frameScores at any time to see the individual roll scores or the score for each frame. The frame scores update with bonuses as you go along. The total score comes out at the end.
+- Had difficulty refactoring. Not happy with how the code looks but ran out of time.
+- Done as static html page with very basic ui that isn't quite finished yet. The plan is to have a button for each possible number of pins. Those can be pushed to record rolls and the scores pop up automatically.
+- One quirk is that you have to tell it to roll again after you roll at strike, so that it will record a 10 and a 0 for that frame. This could be fixed but wanted to refactor first.
+- One more thing to fix is that it's currently an honour system...you can roll more than 10 in one frame if you want to. Maximum roll and frame scores need to be built in, and some kind of error/notification for the UI so the user knows they are trying to record an impossible score.

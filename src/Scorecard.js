@@ -1,5 +1,9 @@
-
-
+var ScoreCard = function() {
+  this.totalScore = 0;
+}
+ScoreCard.prototype.totalScore = function() {
+  return 0
+};
 
 
 // function Player() {

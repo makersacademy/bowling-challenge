@@ -21,6 +21,11 @@ describe("ScoreCard", function() {
       expect(scorecard.totalScore).toBe(0)
     });
   });
+  describe('it shows each frame score', function() {
+    it('assumes the default frame score is zero', function() {
+      expect(scorecard.frameScore).toBe(0)
+    })
+  });
 
 });
 

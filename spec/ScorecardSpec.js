@@ -15,6 +15,11 @@ describe("ScoreCard", function() {
       expect(scorecard.totalScore).toBe(1)
     });
 
+    it('can be reset to 0', function() {
+      scorecard.addPoints(10)
+      scorecard.resetPoints()
+      expect(scorecard.totalScore).toBe(0)
+    });
   });
 
 });

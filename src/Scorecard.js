@@ -9,7 +9,9 @@ ScoreCard.prototype.addPoints = function(number) {
   return this.totalScore = this.totalScore + number
 };
 
-
+ScoreCard.prototype.resetPoints = function() {
+  return this.totalScore = 0
+};
 
 // function Player() {
 // }

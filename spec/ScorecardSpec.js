@@ -15,10 +15,6 @@ describe("ScoreCard", function() {
       expect(scorecard.totalScore).toBe(1)
     });
 
-    it('cannot have a total score higher than 300', function() {
-      scorecard.addPoints(301)
-      expect(scorecard.totalScore).toBe(300)
-    });
   });
 
 });

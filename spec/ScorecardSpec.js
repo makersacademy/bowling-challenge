@@ -24,7 +24,12 @@ describe("ScoreCard", function() {
   describe('it shows each frame score', function() {
     it('assumes the default frame score is zero', function() {
       expect(scorecard.frameScore).toBe(0)
-    })
+    });
+
+    it('can have a frame score that can be modified', function() {
+      scorecard.addFramePoints(10)
+      expect(scorecard.frameScore).toBe(10)
+    });
   });
 
 });

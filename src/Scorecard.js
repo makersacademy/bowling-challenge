@@ -16,7 +16,10 @@ ScoreCard.prototype.resetPoints = function() {
 
 ScoreCard.prototype.frameScore = function() {
   return this.frameScore
+};
 
+ScoreCard.prototype.addFramePoints = function(number) {
+  return this.frameScore = this.frameScore + number
 };
 
 // function Player() {

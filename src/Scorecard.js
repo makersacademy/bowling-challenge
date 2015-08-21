@@ -1,9 +1,14 @@
 var ScoreCard = function() {
-  this.totalScore = 0;
+  this.totalScore = 0
 }
 ScoreCard.prototype.totalScore = function() {
-  return 0
+  return this.totalScore
 };
+
+ScoreCard.prototype.addPoints = function(number) {
+  return this.totalScore = this.totalScore + number
+};
+
 
 
 // function Player() {

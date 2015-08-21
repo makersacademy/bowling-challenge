@@ -1,13 +1,23 @@
 describe("ScoreCard", function() {
   var scorecard;
-  
+
   beforeEach(function() {
     scorecard = new ScoreCard();
   });
 
-  describe('shows current score', function () {
-    it('assumes the default score is zero', function() {
+  describe('shows current total score', function() {
+    it('assumes the default total score is zero', function() {
       expect(scorecard.totalScore).toBe(0);
+    });
+
+    it('has a total score that can be modified', function() {
+      scorecard.addPoints(1)
+      expect(scorecard.totalScore).toBe(1)
+    });
+
+    it('cannot have a total score higher than 300', function() {
+      scorecard.addPoints(301)
+      expect(scorecard.totalScore).toBe(300)
     });
   });
 

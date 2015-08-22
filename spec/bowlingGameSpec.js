@@ -5,12 +5,21 @@ describe('BowlingGame', function() {
   });
 
   describe('basic game rules', function() {
-    xit('starts with a frame score of 0', function() {
-      expect(bowlingGame.frameScore).toEqual(0);
+    it('starts with a total score of 0', function() {
+      expect(bowlingGame.totalScore()).toBe(0);
     });
 
-    xit('starts with a total score of 0', function() {
-      expect(bowlingGame.score).toEqual(0);
+    it('a perfect game has a score of 300', function() {
+      for (var i = 0; i < 12; i++) { bowlingGame.roll(10); }
+      var total = bowlingGame.totalScore();
+      expect(total).toEqual(300);
+    });
+
+    it('calculates the total for a frame', function() {
+      bowlingGame.roll(5);
+      bowlingGame.roll(4);
+      var total = bowlingGame.frameTotal(1);
+      expect(total).toEqual(9);
     });
 
     it('starts with frame number 1', function() {
@@ -36,50 +45,29 @@ describe('BowlingGame', function() {
       for (var i = 0; i < 12; i++) { bowlingGame.roll(10); }
       expect(function(){ bowlingGame.roll(4); }).toThrow(new Error('Game Over'));
     });
-
-    it('keeps track of the score if it is a spare in frame number 10', function() {
-      bowlingGame.frameNumber = 10;
-      bowlingGame.roll(6);
-      bowlingGame.roll(4);
-      bowlingGame.roll(10);
-      expect(bowlingGame.score.frame[10]).toEqual([6, 4, 10]);
-    });
-
-    it('does not keep track of frame number 11 if it is a spare in the 10th frame', function() {
-      bowlingGame.frameNumber = 10;
-      bowlingGame.roll(6);
-      bowlingGame.roll(4);
-      bowlingGame.roll(10);
-      expect(bowlingGame.score.frame[11]).toBe(undefined);
-    });
-
-    it('does not keep track of frame number 11 if you roll three strikes in the 10th frame', function() {
-      for (var i = 0; i < 12; i++) { bowlingGame.roll(10); }
-        expect(bowlingGame.score.frame[11]).toBe(undefined);
-    });
-
-    it('does not keep track of frame number 12 if you roll three strikes in the 10th frame', function() {
-      for (var i = 0; i < 12; i++) { bowlingGame.roll(10); }
-        expect(bowlingGame.score.frame[12]).toBe(undefined);
-    });
   });
 
   describe('each frame', function() {
-    it('goes to the next frame if you roll a strike', function() {
+    it('increases the roll number in the event of no strike', function() {
+      bowlingGame.roll(5);
+      expect(bowlingGame.rollNumber).toEqual(1);
+    });
+
+    it('resets the roll number when it is the next frame', function() {
+      bowlingGame.roll(4);
+      bowlingGame.roll(4);
+      expect(bowlingGame.rollNumber).toEqual(0);
+    });
+
+    it('goes to the next frame in the event of a strike', function() {
       bowlingGame.roll(10);
       expect(bowlingGame.frameNumber).toEqual(2);
     });
 
-    it('goes to next frame if you roll twice', function() {
+    it('goes to the next frame after two rolls', function() {
       bowlingGame.roll(4);
       bowlingGame.roll(4);
       expect(bowlingGame.frameNumber).toEqual(2);
-    });
-
-    it('resets the roll number when you go to the next frame', function() {
-      bowlingGame.roll(4);
-      bowlingGame.roll(4);
-      expect(bowlingGame.rollNumber).toEqual(0);
     });
   });
 
@@ -139,6 +127,45 @@ describe('BowlingGame', function() {
       bowlingGame.roll(10);
       bowlingGame.roll(6);
       expect(bowlingGame.numberOfBonus).toEqual(1);
+    });
+  });
+
+  describe('scoring for frame number 10', function() {
+    it('keeps track of the score in the event of a spare', function() {
+      bowlingGame.frameNumber = 10;
+      bowlingGame.roll(6);
+      bowlingGame.roll(4);
+      bowlingGame.roll(10);
+      expect(bowlingGame.score.frame[10]).toEqual([6, 4, 10]);
+    });
+
+    it('keeps track of frame number 9 in the event of a strike', function() {
+      for (var i = 0; i < 9; i++) { bowlingGame.roll(10); }
+      bowlingGame.roll(10);
+      bowlingGame.roll(10);
+      bowlingGame.roll(4);
+      expect(bowlingGame.score.frame[9]).toEqual([10, 10, 10]);
+    });
+
+    it('keeps track of frame number 10 in the event of a strike', function() {
+      for (var i = 0; i < 9; i++) { bowlingGame.roll(10); }
+      bowlingGame.roll(10);
+      bowlingGame.roll(10);
+      bowlingGame.roll(4);
+      expect(bowlingGame.score.frame[10]).toEqual([10, 10 ,4]);
+    });
+
+    it('does not keep track of frame number 11 in the event of a spare', function() {
+      bowlingGame.frameNumber = 10;
+      bowlingGame.roll(6);
+      bowlingGame.roll(4);
+      bowlingGame.roll(10);
+      expect(bowlingGame.score.frame[11]).toBe(undefined);
+    });
+
+    it('does not keep track of frame number 11 in the event of three strikes', function() {
+      for (var i = 0; i < 12; i++) { bowlingGame.roll(10); }
+        expect(bowlingGame.score.frame[11]).toBe(undefined);
     });
   });
 });

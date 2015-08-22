@@ -5,12 +5,25 @@ function BowlingGame() {
   this.score = {frame: {}};
 }
 
-BowlingGame.prototype.roll = function(pins) {
-  this.rollNumber ++;
-  this.checkProcedure(pins);
+BowlingGame.prototype.frameTotal = function(frameNum) {
+  if (this.frameNumber === 1 && this.rollNumber === 0) return 0;
+  return this.score.frame[frameNum].reduce(function(score1, score2) {
+    return score1 + score2;
+  });
 };
 
-BowlingGame.prototype.checkProcedure = function(pins) {
+BowlingGame.prototype.gameTotal = function() {
+  var total = 0;
+  for (var i = 1; i < 11; i++) { total += this.frameTotal(i); }
+  return total;
+};
+
+BowlingGame.prototype.roll = function(pins) {
+  this.rollNumber ++;
+  this._checkProcedure(pins);
+};
+
+BowlingGame.prototype._checkProcedure = function(pins) {
   this._isGameFinished();
   this._calculateScore(pins);
   if (this.frameNumber < 10) this._goesToNextFrame(pins);
@@ -67,17 +80,4 @@ BowlingGame.prototype._isSpare = function() {
   return this.score.frame[this.frameNumber].reduce(function(score1, score2) {
     return score1 + score2;
   }) === 10;
-};
-
-BowlingGame.prototype.frameTotal = function(frameNum) {
-  if (this.frameNumber === 1 && this.rollNumber === 0) return 0;
-  return this.score.frame[frameNum].reduce(function(score1, score2) {
-    return score1 + score2;
-  });
-};
-
-BowlingGame.prototype.totalScore = function() {
-  var total = 0;
-  for (var i = 1; i < 11; i++) { total += this.frameTotal(i); }
-  return total;
 };

@@ -6,12 +6,12 @@ describe('BowlingGame', function() {
 
   describe('basic game rules', function() {
     it('starts with a total score of 0', function() {
-      expect(bowlingGame.totalScore()).toBe(0);
+      expect(bowlingGame.gameTotal()).toBe(0);
     });
 
     it('a perfect game has a score of 300', function() {
       for (var i = 0; i < 12; i++) { bowlingGame.roll(10); }
-      var total = bowlingGame.totalScore();
+      var total = bowlingGame.gameTotal();
       expect(total).toEqual(300);
     });
 

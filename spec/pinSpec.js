@@ -1,4 +1,4 @@
-describe('Pins', function() {
+describe('Pin', function() {
   var pin;
 
   beforeEach(function() {

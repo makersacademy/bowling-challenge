@@ -9,7 +9,7 @@ describe('Bowling', function() {
     it ('increases roll number when throwing a ball', function() {
       var rollTest = bowling.rollNb;
       bowling.throw();
-      expect(bowling.rollNb).toEqual(rollTest+1);
+      expect(bowling.rollNb).toEqual(rollTest+2);
     });
 
     it ('returns a number of points', function() {
@@ -18,6 +18,13 @@ describe('Bowling', function() {
 
     it ('adds the number of points to the total score', function() {
       expect(bowling.UpdateScore()).toEqual(bowling.totalScore);
+    });
+  });
+
+  describe('play a game', function() {
+    it ('can simulate a 10-frame-game', function() {
+      bowling.play();
+      expect(bowling.frameNb).toEqual(10);
     });
 
   });

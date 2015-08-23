@@ -8,8 +8,11 @@ var Bowling = function() {
 
 
 Bowling.prototype.throw = function() {
-  this.rollNb += 1;
-  this.points = this.rollScore();
+  while(this.rollNb < 2) {
+    this.rollNb += 1;
+    this.points = this.rollScore();
+    this.UpdateScore();
+  };
   return this.points;
 };
 
@@ -18,6 +21,14 @@ Bowling.prototype.rollScore = function() {
 };
 
 Bowling.prototype.UpdateScore = function() {
-    return this.totalScore += this.points
+  return this.totalScore += this.points
 };
 
+Bowling.prototype.play = function() {
+  while(this.frameNb < 10) {
+    this.rollNb = 0;
+    this.throw();
+    this.frameNb += 1;
+  };
+  return this.frameNb;
+};

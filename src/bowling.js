@@ -15,6 +15,9 @@ Bowling.prototype.firstRoll = function(number) {
 };
 
 Bowling.prototype.secondRoll = function(number) {
+  if(number + this.firstRollScore > 10) {
+    throw new Error('That is an invalid number')
+  }
   this._updatePins(number);
   this.secondRollScore = number
   this._countsTotalScore();

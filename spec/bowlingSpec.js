@@ -58,6 +58,13 @@ describe('Bowling', function() {
         bowling.secondRoll(2);
         expect(bowling.pins).toEqual(10);
       });
+
+      it('displays error message if user inputs inapproapriate number', function() {
+        bowling.firstRoll(6);
+        expect(function() {
+          bowling.secondRoll(9);
+        }).toThrowError('That is an invalid number')
+      });
     });
 
 

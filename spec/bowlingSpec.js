@@ -41,15 +41,10 @@ describe('Bowling', function() {
     });
 
     describe('Second Roll', function() {
-      it('displays the second roll score', function() {
-        bowling.secondRoll(2);
-        expect(bowling.secondRollScore).toEqual(2);
-      });
-
-      it('also updates the number of pins', function() {
+      it('should automatically call new frame appropriately', function() {
         bowling.firstRoll(6);
         bowling.secondRoll(2);
-        expect(bowling.pins).toEqual(2);
+        expect(bowling.pins).toEqual(10);
       });
     });
 
@@ -65,6 +60,20 @@ describe('Bowling', function() {
         bowling.secondRoll(2);
         bowling.newFrame();
         expect(bowling.pins).toEqual(10);
+      });
+
+      it('brings first roll score back to 0', function() {
+        bowling.firstRoll(6);
+        bowling.secondRoll(2);
+        bowling.newFrame();
+        expect(bowling.firstRollScore).toEqual(0);
+      });
+
+      it('brings second roll score back to 0', function() {
+        bowling.firstRoll(6);
+        bowling.secondRoll(2);
+        bowling.newFrame();
+        expect(bowling.secondRollScore).toEqual(0);
       });
 
       it('totals up the scores for the old frame', function() {

@@ -13,12 +13,13 @@ Bowling.prototype.firstRoll = function(number) {
 
 Bowling.prototype.secondRoll = function(number) {
   this._updatePins(number);
-  return this.secondRollScore = number
+  this.secondRollScore = number
+  this._countsTotalScore();
+  this.newFrame();
 };
 
 Bowling.prototype.newFrame = function() {
   this._countsFrame();
-  this._countsTotalScore();
   return this.pins = 10
 };
 
@@ -32,4 +33,6 @@ Bowling.prototype._countsFrame = function() {
 
 Bowling.prototype._countsTotalScore = function() {
   this.totalScore = this.firstRollScore + this.secondRollScore
+  this.firstRollScore = 0
+  this.secondRollScore = 0
 };

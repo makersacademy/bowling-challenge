@@ -21,10 +21,10 @@ Scorecard.prototype.recordRollB = function(rollB) {
 };
 
 Scorecard.prototype.recordTurn = function(rollA, rollB) {
-  if (rollA + rollB > 10 || rollA + rollB < 0) {
+  if (+rollA + +rollB > 10 || +rollA + +rollB < 0) {
     return "Invalid pin amount";
   }
   else {
-    return rollA + rollB;
+    return +rollA + +rollB;
   }
 };

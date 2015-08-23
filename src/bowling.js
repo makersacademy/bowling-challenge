@@ -7,6 +7,9 @@ var Bowling = function Bowling() {
 };
 
 Bowling.prototype.firstRoll = function(number) {
+  if(number < 0 || number > 10) {
+    throw new Error('That is an invalid number')
+  }
   this._updatePins(number);
   return this.firstRollScore = number
 };

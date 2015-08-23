@@ -38,6 +38,18 @@ describe('Bowling', function() {
         bowling.firstRoll(6);
         expect(bowling.pins).toEqual(4);
       });
+
+      it('displays error message if user inputs inapproapriate number', function() {
+        expect(function() {
+          bowling.firstRoll(11);
+        }).toThrowError('That is an invalid number')
+      });
+
+      it('displays error message if user inputs inapproapriate number', function() {
+        expect(function() {
+          bowling.firstRoll(-1);
+        }).toThrowError('That is an invalid number')
+      });
     });
 
     describe('Second Roll', function() {

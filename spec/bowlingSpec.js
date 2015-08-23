@@ -25,6 +25,14 @@ describe('Bowling', function() {
     it('track of total score', function() {
       expect(bowling.totalScore).toEqual(0);
     });
+
+    it('bonus points', function() {
+      expect(bowling.bonusPoints).toEqual(0);
+    });
+
+    it('tracks spares', function() {
+      expect(bowling.spare).toEqual(0);
+    });
   });
 
   describe('Methods', function() {
@@ -64,6 +72,12 @@ describe('Bowling', function() {
         expect(function() {
           bowling.secondRoll(9);
         }).toThrowError('That is an invalid number')
+      });
+
+      it('spare count increase when player gets a spare', function() {
+        bowling.firstRoll(4);
+        bowling.secondRoll(6);
+        expect(bowling.spare).toEqual(1)
       });
     });
 

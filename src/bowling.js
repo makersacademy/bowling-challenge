@@ -4,6 +4,8 @@ var Bowling = function Bowling() {
   this.secondRollScore = 0
   this.frameNumber = 0
   this.totalScore = 0
+  this.bonusPoints = 0
+  this.spare = 0
 };
 
 Bowling.prototype.firstRoll = function(number) {
@@ -17,6 +19,9 @@ Bowling.prototype.firstRoll = function(number) {
 Bowling.prototype.secondRoll = function(number) {
   if(number + this.firstRollScore > 10) {
     throw new Error('That is an invalid number')
+  }
+  if (this.firstRollScore + number === 10) {
+    this._updateSpare();
   }
   this._updatePins(number);
   this.secondRollScore = number
@@ -38,8 +43,13 @@ Bowling.prototype._countsFrame = function() {
 };
 
 Bowling.prototype._countsTotalScore = function() {
+
   this.totalScore = this.firstRollScore + this.secondRollScore
   this.firstRollScore = 0
   this.secondRollScore = 0
   this.pins = 10
+};
+
+Bowling.prototype._updateSpare = function() {
+  this.spare += 1
 };

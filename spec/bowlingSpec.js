@@ -17,28 +17,54 @@ describe('Bowling', function() {
     it('the second roll score', function() {
       expect(bowling.secondRollScore).toEqual(0);
     });
+
+    it('the frame number', function() {
+      expect(bowling.frameNumber).toEqual(0);
+    });
   });
 
   describe('Methods', function() {
-    it('displays the first roll score', function() {
-      bowling.firstRoll(6);
-      expect(bowling.firstRollScore).toEqual(6);
+    describe('First Roll', function() {
+      it('displays the first roll score', function() {
+        bowling.firstRoll(6);
+        expect(bowling.firstRollScore).toEqual(6);
+      });
+
+      it('automatically updates the number of pins', function() {
+        bowling.firstRoll(6);
+        expect(bowling.pins).toEqual(4);
+      });
     });
 
-    it('automatically updates the number of pins', function() {
-      bowling.firstRoll(6);
-      expect(bowling.pins).toEqual(4);
+    describe('Second Roll', function() {
+      it('displays the second roll score', function() {
+        bowling.secondRoll(2);
+        expect(bowling.secondRollScore).toEqual(2);
+      });
+
+      it('also updates the number of pins', function() {
+        bowling.firstRoll(6);
+        bowling.secondRoll(2);
+        expect(bowling.pins).toEqual(2);
+      });
     });
 
-    it('displays the second roll score', function() {
-      bowling.secondRoll(2);
-      expect(bowling.secondRollScore).toEqual(2);
+
+    describe('New Frame', function() {
+      it('moves onto a new frame', function() {
+        bowling.newFrame();
+        expect(bowling.frameNumber).toEqual(1)
+      });
+
+      it('brings pins back to 10 for new frame', function() {
+        bowling.firstRoll(6);
+        bowling.secondRoll(2);
+        bowling.newFrame();
+        expect(bowling.pins).toEqual(10);
+      });
     });
 
-    it('also updates the number of pins', function() {
-      bowling.firstRoll(6);
-      bowling.secondRoll(2);
-      expect(bowling.pins).toEqual(2);
-    });
+
+
   });
 });

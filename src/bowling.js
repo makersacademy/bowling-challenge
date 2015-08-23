@@ -59,13 +59,17 @@ Bowling.prototype._countsFrame = function() {
 
 Bowling.prototype._countsTotalScore = function() {
   this.totalScore += (this.firstRollScore + this.secondRollScore + this.spareBonusPoints + this.strikeBonusPoints)
+  this._reset();
+};
+
+Bowling.prototype._updateSpare = function() {
+  this.spare += 1
+};
+
+Bowling.prototype._reset = function() {
   this.spareBonusPoints = 0
   this.strikeBonusPoints = 0
   this.firstRollScore = 0
   this.secondRollScore = 0
   this.pins = 10
-};
-
-Bowling.prototype._updateSpare = function() {
-  this.spare += 1
 };

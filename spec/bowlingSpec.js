@@ -21,6 +21,10 @@ describe('Bowling', function() {
     it('the frame number', function() {
       expect(bowling.frameNumber).toEqual(0);
     });
+
+    it('track of total score', function() {
+      expect(bowling.totalScore).toEqual(0);
+    });
   });
 
   describe('Methods', function() {
@@ -61,6 +65,13 @@ describe('Bowling', function() {
         bowling.secondRoll(2);
         bowling.newFrame();
         expect(bowling.pins).toEqual(10);
+      });
+
+      it('totals up the scores for the old frame', function() {
+        bowling.firstRoll(6);
+        bowling.secondRoll(2);
+        bowling.newFrame();
+        expect(bowling.totalScore).toEqual(8);
       });
     });
 

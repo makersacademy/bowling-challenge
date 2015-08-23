@@ -91,29 +91,50 @@ describe('Bowling', function() {
       it('brings pins back to 10 for new frame', function() {
         bowling.firstRoll(6);
         bowling.secondRoll(2);
-        bowling.newFrame();
         expect(bowling.pins).toEqual(10);
       });
 
       it('brings first roll score back to 0', function() {
         bowling.firstRoll(6);
         bowling.secondRoll(2);
-        bowling.newFrame();
         expect(bowling.firstRollScore).toEqual(0);
       });
 
       it('brings second roll score back to 0', function() {
         bowling.firstRoll(6);
         bowling.secondRoll(2);
-        bowling.newFrame();
         expect(bowling.secondRollScore).toEqual(0);
       });
 
       it('totals up the scores for the old frame', function() {
         bowling.firstRoll(6);
         bowling.secondRoll(2);
-        bowling.newFrame();
         expect(bowling.totalScore).toEqual(8);
+      });
+    });
+
+    describe('Spares', function() {
+      it('bonus points are given for spares', function() {
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(4);
+        expect(bowling.bonusPoints).toEqual(4);
+      });
+
+      it('bonus points are totalled', function() {
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(4);
+        bowling.secondRoll(2);
+        expect(bowling.totalScore).toEqual(20);
+      });
+
+      it('reverts bonus points back to 0', function() {
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(4);
+        bowling.secondRoll(2);
+        expect(bowling.bonusPoints).toEqual(0);
       });
     });
 

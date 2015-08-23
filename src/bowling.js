@@ -6,6 +6,7 @@ var Bowling = function Bowling() {
   this.totalScore = 0
   this.bonusPoints = 0
   this.spare = 0
+  this.strike = 0
 };
 
 Bowling.prototype.firstRoll = function(number) {
@@ -14,6 +15,7 @@ Bowling.prototype.firstRoll = function(number) {
   }
   if(this.spare > 0) {
     this.bonusPoints = number
+    this.spare = 0
   }
   this._updatePins(number);
   return this.firstRollScore = number

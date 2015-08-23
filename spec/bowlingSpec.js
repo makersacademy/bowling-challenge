@@ -33,6 +33,10 @@ describe('Bowling', function() {
     it('tracks spares', function() {
       expect(bowling.spare).toEqual(0);
     });
+
+    it('tracks strikes', function() {
+      expect(bowling.strike).toEqual(0);
+    });
   });
 
   describe('Methods', function() {
@@ -135,6 +139,14 @@ describe('Bowling', function() {
         bowling.firstRoll(4);
         bowling.secondRoll(2);
         expect(bowling.bonusPoints).toEqual(0);
+      });
+
+      it('reverts spares back to 0', function() {
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(4);
+        bowling.secondRoll(2);
+        expect(bowling.spare).toEqual(0);
       });
     });
 

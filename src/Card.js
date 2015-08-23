@@ -1,12 +1,14 @@
 function Card () {
   this.totalRolls = 20;
   this.scoreArray=[];
-  this.currentRoll = 1; 
-
 }
 
 Card.prototype.isGameOver = function() {
-  return (this.currentRoll === this.totalRolls)
+  return (this.getCurrentRoll() === this.totalRolls)
+  };
+
+  Card.prototype.getCurrentRoll = function() {
+    return this.scoreArray.length;
   };
 
 Card.prototype.updateScoreArray = function(smashedPins) {

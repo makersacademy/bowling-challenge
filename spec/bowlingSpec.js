@@ -159,7 +159,25 @@ describe('Bowling', function() {
       it('moves onto new frame when it happens', function() {
         bowling.firstRoll(10);
         expect(bowling.frameNumber).toEqual(2);
+      });
+
+      it('counts the scores for that round', function() {
+        bowling.firstRoll(10);
         expect(bowling.totalScore).toEqual(10);
+      });
+
+      it('totals up strikes bonuses', function() {
+        bowling.firstRoll(10);
+        bowling.firstRoll(6);
+        bowling.secondRoll(3);
+        expect(bowling.totalScore).toEqual(28);
+      });
+
+      it('strikes revert back to 0 after toalling bonus', function() {
+        bowling.firstRoll(10);
+        bowling.firstRoll(6);
+        bowling.secondRoll(3);
+        expect(bowling.strike).toEqual(0);
       });
 
     });

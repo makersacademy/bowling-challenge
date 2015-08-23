@@ -34,6 +34,10 @@ Bowling.prototype.secondRoll = function(number) {
   if (this.firstRollScore + number === 10) {
     this._updateSpare();
   }
+  if(this.strike > 0) {
+    this.bonusPoints = this.firstRollScore + number
+    this.strike = 0
+  }
   this.secondRollScore = number
   this._updatePins(number);
   this._countsTotalScore();

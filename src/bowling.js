@@ -20,7 +20,7 @@ Bowling.prototype.secondRoll = function(number) {
 
 Bowling.prototype.newFrame = function() {
   this._countsFrame();
-  return this.pins = 10
+  return "Please wait while we set up the next frame"
 };
 
 Bowling.prototype._updatePins = function(number) {
@@ -35,4 +35,5 @@ Bowling.prototype._countsTotalScore = function() {
   this.totalScore = this.firstRollScore + this.secondRollScore
   this.firstRollScore = 0
   this.secondRollScore = 0
+  this.pins = 10
 };

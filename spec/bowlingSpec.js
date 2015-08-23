@@ -83,10 +83,6 @@ describe('Bowling', function() {
 
 
     describe('New Frame', function() {
-      it('informs users to wait', function() {
-        expect(bowling.newFrame()).toEqual('Please wait while we set up the next frame')
-      });
-
       it('moves onto a new frame', function() {
         bowling.newFrame();
         expect(bowling.frameNumber).toEqual(1)

@@ -31,7 +31,6 @@ Bowling.prototype.secondRoll = function(number) {
 
 Bowling.prototype.newFrame = function() {
   this._countsFrame();
-  return "Please wait while we set up the next frame"
 };
 
 Bowling.prototype._updatePins = function(number) {

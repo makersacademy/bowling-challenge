@@ -4,7 +4,8 @@ var Bowling = function Bowling() {
   this.secondRollScore = 0
   this.frameNumber = 1
   this.totalScore = 0
-  this.bonusPoints = 0
+  this.spareBonusPoints = 0
+  this.strikeBonusPoints = 0
   this.spare = 0
   this.strike = 0
 };
@@ -20,7 +21,7 @@ Bowling.prototype.firstRoll = function(number) {
     this._countsTotalScore();
   }
   if(this.spare > 0) {
-    this.bonusPoints = number
+    this.spareBonusPoints = number
     this.spare = 0
   }
   this._updatePins(number);
@@ -35,7 +36,7 @@ Bowling.prototype.secondRoll = function(number) {
     this._updateSpare();
   }
   if(this.strike > 0) {
-    this.bonusPoints = this.firstRollScore + number
+    this.strikeBonusPoints = this.firstRollScore + number
     this.strike = 0
   }
   this.secondRollScore = number
@@ -57,8 +58,9 @@ Bowling.prototype._countsFrame = function() {
 };
 
 Bowling.prototype._countsTotalScore = function() {
-  this.totalScore += (this.firstRollScore + this.secondRollScore + this.bonusPoints)
-  this.bonusPoints = 0
+  this.totalScore += (this.firstRollScore + this.secondRollScore + this.spareBonusPoints + this.strikeBonusPoints)
+  this.spareBonusPoints = 0
+  this.strikeBonusPoints = 0
   this.firstRollScore = 0
   this.secondRollScore = 0
   this.pins = 10

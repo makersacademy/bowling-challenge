@@ -26,8 +26,8 @@ describe('Bowling', function() {
       expect(bowling.totalScore).toEqual(0);
     });
 
-    it('bonus points', function() {
-      expect(bowling.bonusPoints).toEqual(0);
+    it('tracks spare bonus points', function() {
+      expect(bowling.spareBonusPoints).toEqual(0);
     });
 
     it('tracks spares', function() {
@@ -36,6 +36,10 @@ describe('Bowling', function() {
 
     it('tracks strikes', function() {
       expect(bowling.strike).toEqual(0);
+    });
+
+    it('tracks strike bonus points', function() {
+      expect(bowling.strikeBonusPoints).toEqual(0);
     });
   });
 
@@ -122,7 +126,7 @@ describe('Bowling', function() {
         bowling.firstRoll(6);
         bowling.secondRoll(4);
         bowling.firstRoll(4);
-        expect(bowling.bonusPoints).toEqual(4);
+        expect(bowling.spareBonusPoints).toEqual(4);
       });
 
       it('bonus points are totalled', function() {
@@ -138,7 +142,7 @@ describe('Bowling', function() {
         bowling.secondRoll(4);
         bowling.firstRoll(4);
         bowling.secondRoll(2);
-        expect(bowling.bonusPoints).toEqual(0);
+        expect(bowling.spareBonusPoints).toEqual(0);
       });
 
       it('reverts spares back to 0', function() {
@@ -179,6 +183,14 @@ describe('Bowling', function() {
         bowling.secondRoll(3);
         expect(bowling.strike).toEqual(0);
       });
+
+      it('strikes bonus points revert back to 0 after toalling bonus', function() {
+        bowling.firstRoll(10);
+        bowling.firstRoll(6);
+        bowling.secondRoll(3);
+        expect(bowling.strikeBonusPoints).toEqual(0);
+      });
+
 
     });
 

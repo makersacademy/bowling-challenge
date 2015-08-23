@@ -4,3 +4,11 @@ var Roll = function Roll() {
   this.firstRoundScore = 0
 };
 
+Roll.prototype.getRandomNumber = function() {
+  var roll = new Roll();
+  return roll.potentialHits[Math.floor(Math.random() * roll.potentialHits.length)];
+};
+
+Roll.prototype.firstRound = function() {
+  return this.firstRoundScore = this.getRandomNumber();
+};

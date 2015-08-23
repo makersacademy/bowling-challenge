@@ -19,6 +19,13 @@ describe('Roll', function() {
     });
   });
 
+  describe('practice', function() {
+    it('practice', function() {
+      spyOn(roll, 'getRandomNumber').and.returnValue(6);
+      expect(roll.firstRound()).toEqual(6)
+    });
+  });
+
 
 
 });

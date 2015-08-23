@@ -190,8 +190,17 @@ describe('Bowling', function() {
         bowling.secondRoll(3);
         expect(bowling.strikeBonusPoints).toEqual(0);
       });
+    });
 
-
+    describe('Checks', function() {
+      it('totals up strikes and spares correctly', function() {
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(10);
+        bowling.firstRoll(4);
+        bowling.secondRoll(4);
+        expect(bowling.totalScore).toEqual(46);
+      });
     });
 
 

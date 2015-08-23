@@ -2,7 +2,7 @@ var Bowling = function Bowling() {
   this.pins = 10
   this.firstRollScore = 0
   this.secondRollScore = 0
-  this.frameNumber = 0
+  this.frameNumber = 1
   this.totalScore = 0
   this.bonusPoints = 0
   this.spare = 0
@@ -12,6 +12,12 @@ var Bowling = function Bowling() {
 Bowling.prototype.firstRoll = function(number) {
   if(number < 0 || number > 10) {
     throw new Error('That is an invalid number')
+  }
+  if(number === 10) {
+    this.strike += 1
+    this.newFrame();
+    this.firstRollScore = 10
+    this._countsTotalScore();
   }
   if(this.spare > 0) {
     this.bonusPoints = number

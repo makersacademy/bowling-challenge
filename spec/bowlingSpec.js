@@ -19,7 +19,7 @@ describe('Bowling', function() {
     });
 
     it('the frame number', function() {
-      expect(bowling.frameNumber).toEqual(0);
+      expect(bowling.frameNumber).toEqual(1);
     });
 
     it('track of total score', function() {
@@ -89,7 +89,7 @@ describe('Bowling', function() {
     describe('New Frame', function() {
       it('moves onto a new frame', function() {
         bowling.newFrame();
-        expect(bowling.frameNumber).toEqual(1)
+        expect(bowling.frameNumber).toEqual(2)
       });
 
       it('brings pins back to 10 for new frame', function() {
@@ -148,6 +148,20 @@ describe('Bowling', function() {
         bowling.secondRoll(2);
         expect(bowling.spare).toEqual(0);
       });
+    });
+
+    describe('Strikes', function() {
+      it('strike counter increases when it happens', function() {
+        bowling.firstRoll(10);
+        expect(bowling.strike).toEqual(1);
+      });
+
+      it('moves onto new frame when it happens', function() {
+        bowling.firstRoll(10);
+        expect(bowling.frameNumber).toEqual(2);
+        expect(bowling.totalScore).toEqual(10);
+      });
+
     });
 
 

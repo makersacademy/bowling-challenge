@@ -44,6 +44,21 @@ describe('Game', function() {
       expect(game.pinsInPlay).toContain(1, 3, 5, 6, 8, 9, 10)
       expect(game.knockedDown).toContain(2, 4, 7)
     });
-  }); 
-  
+ 
+    it('can calculate a players score', function() {
+      game.hitPin(2);
+      game.hitPin(4);
+      game.hitPin(7);
+      expect(game.frameScore).toEqual(3)
+    });
+    
+    it('knows if player has rolled a gutter ball', function() {
+      game.hitPin(2);
+      game.hitPin(4);
+      game.hitPin(7);
+      expect(game.frameScore).toEqual(3)
+      game.hitPin(0);
+      expect(game.frameScore).toEqual(3)
+    });    
+  });   
 });

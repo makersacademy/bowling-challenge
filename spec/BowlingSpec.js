@@ -31,11 +31,19 @@ describe('Game', function() {
     });     
   });  
   
-  describe('play', function () {
-    it('lets player roll a ball', function() {
- 
+  describe('when playing', function () {
+    it('player can roll a ball', function() {
+      game.rollBall();
+      expect(game.rolls).toEqual(21);
     });  
    
+    it('knows how many pins have been knocked down', function() {
+      game.hitPin(2);
+      game.hitPin(4);
+      game.hitPin(7);
+      expect(game.pinsInPlay).toContain(1, 3, 5, 6, 8, 9, 10)
+      expect(game.knockedDown).toContain(2, 4, 7)
+    });
   }); 
   
 });

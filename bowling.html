@@ -8,20 +8,20 @@
 <body>
   <div style='width: 400px; border: 3px solid #93d628; padding: 10px; text-align:center; margin:0 auto; '>
   <div id="bowling"><h1>Bowling</h1></div>
-   Your Score is<div id="score" />
+    Your Score is<div id="score"></div>
+    The frame being played is<div id="frame"></div>
   <script>
     var game = new Game();
       document.getElementById("score").innerHTML = game.score;
- //   function upClick() {
- //     therm.up();
-  //    document.getElementById("temp").innerHTML = therm.temp;
- //   };
-
-//    function psmCheck() {
-//      therm.psmSwitch();
-//    };
+      document.getElementById("frame").innerHTML = game.frame;
+    function playGame() {
+     game.play();
+     document.getElementById("score").innerHTML = game.score;
+     document.getElementById("frame").innerHTML = game.frame; 
+   };
   </script>
-    
+  <div><p><button type="button" onclick="playGame()" > PLAY </button></p></div>    
   </div>
+
 </body>
 </html>

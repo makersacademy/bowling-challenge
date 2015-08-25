@@ -1,7 +1,7 @@
 var Game = function() {
   this.score = 0;
   this.frame = 1;
-  this.ball = 1;
+  this.frameBall = 1;
   this.rolls = 22;
   this.frameScore = 0;
   this.knockedDown = [];
@@ -10,6 +10,7 @@ var Game = function() {
 
 Game.prototype.rollBall = function() {
   this.rolls = this.rolls-1;
+  this.frameBall = this.frameBall+1;
 };
 
 Game.prototype.hitPin = function(pin) {
@@ -17,5 +18,5 @@ Game.prototype.hitPin = function(pin) {
   this.knockedDown.push(pin);
   if(pin != 0) {
     this.frameScore = this.frameScore + 1    
-  }
+  } 
 };

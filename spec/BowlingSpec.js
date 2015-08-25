@@ -19,6 +19,14 @@ describe('Bowling', function() {
     it ('adds the number of points to the total score', function() {
       expect(bowling.UpdateScore()).toEqual(bowling.totalScore);
     });
+
+    it ('records scores history', function() {
+      bowling.frameHist = [];
+      bowling.throw();
+      bowling.UpdateHist();
+      expect(bowling.frameHist.pop()).toEqual(bowling.points);
+    });
+
   });
 
   describe('play a game', function() {

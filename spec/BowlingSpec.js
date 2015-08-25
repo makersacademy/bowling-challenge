@@ -31,7 +31,7 @@ describe('Game', function() {
     });     
   });  
   
-  describe('when playing', function () {
+  describe('when playing a game', function () {
     it('player can roll a ball', function() {
       game.rollBall();
       expect(game.rolls).toEqual(21);
@@ -93,6 +93,12 @@ describe('Game', function() {
       game.hitPin(9);
       game.hitPin(10);
       expect(game.frameScore).toEqual(10)
+    });  
+    
+    it('knows what frame is being played', function() {
+      game.rollBall();
+      game.rollBall();
+      expect(game.frame).toEqual(2);
     });     
   });   
 });

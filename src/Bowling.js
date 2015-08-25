@@ -11,6 +11,7 @@ var Game = function() {
 Game.prototype.rollBall = function() {
   this.rolls = this.rolls-1;
   this.frameBall = this.frameBall+1;
+  this.frame = this.frame+0.5;
 };
 
 Game.prototype.hitPin = function(pin) {

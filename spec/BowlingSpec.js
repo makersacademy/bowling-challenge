@@ -22,9 +22,15 @@ describe('Bowling', function() {
 
     it ('records scores history', function() {
       bowling.frameHist = [];
-      bowling.throw();
+      bowling.points = bowling.rollScore();
       bowling.UpdateHist();
       expect(bowling.frameHist.pop()).toEqual(bowling.points);
+    });
+
+    it ('returns true when there is a strike', function() {
+      bowling.points = 10;
+      bowling.isStrike();
+      expect(bowling.strike).toBe(true);
     });
 
   });

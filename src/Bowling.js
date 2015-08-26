@@ -6,6 +6,8 @@ var Bowling = function() {
   this.frameHist = [];
   this.scoreHist = [];
   this.totalScore = 0;
+  this.strike = false;
+  this.strike = false;
 };
 
 
@@ -13,6 +15,7 @@ Bowling.prototype.throw = function() {
   while(this.rollNb < 2) {
     this.rollNb += 1;
     this.points = this.rollScore();
+    this.isStrike();
     this.UpdateHist();
     this.UpdateScore();
   };
@@ -23,12 +26,28 @@ Bowling.prototype.rollScore = function() {
   return Math.floor(Math.random()*11);
 };
 
+Bowling.prototype.isStrike = function() {
+  if(this.points === this.pins) {
+    return this.strike = true;
+  } else {
+    return this.strike = false;
+  };
+};
+
 Bowling.prototype.UpdateHist = function() {
-  return this.frameHist.push(this.points);
+  if (strike === true) {
+    return this.frameHist.push(2*this.points);
+  } else {
+    return this.frameHist.push(this.points);
+  };
 };
 
 Bowling.prototype.UpdateScore = function() {
-  return this.totalScore += this.points
+  if (strike === true) {
+    return this.totalScore += 2*(this.points);
+  } else {
+    return this.totalScore += this.points;
+  };
 };
 
 Bowling.prototype.play = function() {

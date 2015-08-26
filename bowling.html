@@ -6,12 +6,16 @@
   <script type="text/javascript" src="src/Bowling.js"></script>
 </head>
 <body>
-  <div style='width: 400px; border: 3px solid #93d628; padding: 10px; text-align:center; margin:0 auto; '>
+  <div style='width: 400px; border: 3px solid blue; padding: 10px; text-align:center; margin:0 auto; '>
   <div id="bowling"><h1>Bowling</h1></div>
     Your Score is<div id="score"></div>
     The frame being played is<div id="frame"></div>
     You have knocked down<div id="knockedDown"></div>   
     Scorecard<div id="scoreCard"></div>  
+    Strike Bonus A<div id="strikeBonusA"></div>  
+    Spare Bonus A<div id="spareBonusA"></div>  
+    Strike Bonus B<div id="strikeBonusB"></div>  
+    Spare Bonus B<div id="spareBonusB"></div>      
   <script>
     var game = new Game();
       document.getElementById("score").innerHTML = game.score;
@@ -21,6 +25,10 @@
      document.getElementById("score").innerHTML = game.score;
      document.getElementById("frame").innerHTML = game.frame;
      document.getElementById("knockedDown").innerHTML = game.knockedDown; 
+     document.getElementById("strikeBonusA").innerHTML = game.strikeBonusA; 
+     document.getElementById("spareBonusA").innerHTML = game.spareBonusA;
+     document.getElementById("strikeBonusB").innerHTML = game.strikeBonusB; 
+     document.getElementById("spareBonusB").innerHTML = game.spareBonusB;      
      document.getElementById("scoreCard").innerHTML = game.scoreCard;      
    };
   </script>

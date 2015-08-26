@@ -7,7 +7,7 @@ var Bowling = function() {
   this.scoreHist = [];
   this.totalScore = 0;
   this.strike = false;
-  this.strike = false;
+  this.spare = false;
 };
 
 
@@ -35,16 +35,16 @@ Bowling.prototype.isStrike = function() {
 };
 
 Bowling.prototype.UpdateHist = function() {
-  if (strike === true) {
-    return this.frameHist.push(2*this.points);
+  if (this.strike === true) {
+    return this.frameHist.push(this.points);
   } else {
     return this.frameHist.push(this.points);
   };
 };
 
 Bowling.prototype.UpdateScore = function() {
-  if (strike === true) {
-    return this.totalScore += 2*(this.points);
+  if (this.strike === true) {
+    return this.totalScore += this.points;
   } else {
     return this.totalScore += this.points;
   };

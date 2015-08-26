@@ -6,7 +6,8 @@ describe('Game', function() {
   });
   
   describe('at start of a new game', function () {
-    it('play begins at frame 1', function() {
+    it('the first frame is frame 1', function() {
+      game.play();
       expect(game.frame).toEqual(1);   
     });  
 
@@ -87,8 +88,21 @@ describe('Game', function() {
     
     it('knows what frame is being played', function() {
       game.play();
-      expect(game.play()).toEqual(10);
-    });  
+      game.play();
+      game.play();
+      expect(game.frame).toEqual(3);
+    }); 
+    
+    it('not counting additional points for strike or spare, individual frame score will never exceed 10', function() {
+      game.play();
+      expect(game.frameScore).toBeLessThan(11);
+      game.play();
+      expect(game.frameScore).toBeLessThan(11);      
+    });
+    
+    it('will not roll a second frame ball if first frame roll is a strike'), function() {
+      // the code for this works, but can not work out test
+    }
         
   });  
   

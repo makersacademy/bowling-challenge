@@ -10,6 +10,8 @@
   <div id="bowling"><h1>Bowling</h1></div>
     Your Score is<div id="score"></div>
     The frame being played is<div id="frame"></div>
+    You have knocked down<div id="knockedDown"></div>   
+    Scorecard<div id="scoreCard"></div>  
   <script>
     var game = new Game();
       document.getElementById("score").innerHTML = game.score;
@@ -17,10 +19,12 @@
     function playGame() {
      game.play();
      document.getElementById("score").innerHTML = game.score;
-     document.getElementById("frame").innerHTML = game.frame; 
+     document.getElementById("frame").innerHTML = game.frame;
+     document.getElementById("knockedDown").innerHTML = game.knockedDown; 
+     document.getElementById("scoreCard").innerHTML = game.scoreCard;      
    };
   </script>
-  <div><p><button type="button" onclick="playGame()" > PLAY </button></p></div>    
+  <div><p><button type="button" onclick="playGame()" > PLAY A FRAME </button></p></div>     
   </div>
 
 </body>

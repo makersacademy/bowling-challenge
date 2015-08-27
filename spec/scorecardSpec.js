@@ -23,5 +23,17 @@ describe('Scorecard', function(){
       scorecard.regRolls(1, 1)
       expect(scorecard.frameTotal).toBe(2);
     });
+
+    it('first roll must be under 10', function(){
+        expect(function() { scorecard.regRolls(11, 0) }).toThrow(new Error("wrong number!"));
+    });
+
+    it('second roll must be under 10', function(){
+        expect(function() { scorecard.regRolls(0, 11) }).toThrow(new Error("wrong number!"));
+    });
+
+    it('sum of each roll in a round cannot exceed 10', function() {
+      expect(function() { scorecard.regRolls(2, 9) }).toThrow(new Error("that is too much!"));
+    });
   });
 });

@@ -30,3 +30,9 @@ BowlingFrame.prototype.rollTwo = function(input) {
     return this.totalFrame;
   };
 };
+
+BowlingFrame.prototype.submitFrame = function() {
+  number = this.number;
+  console.log(this.totalFrame[number]);
+  game.newGame[number] = this.totalFrame[number];
+};

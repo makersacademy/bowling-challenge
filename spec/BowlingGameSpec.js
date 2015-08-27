@@ -1,11 +1,12 @@
-// describe('Bowling Game', function() {
-//   var bowlingGame;
+describe('Bowling Game', function() {
 
-//   beforeEach(function() {
-//     bowlingGame = new BowlingGame();
-//   });
+  beforeEach(function() {
+    bowlingGame = new BowlingGame();
+  });
 
-//   describe('bowling game', function() {
+  it('can create a new game', function() {
+    expect(bowlingGame.newGame).toBeDefined();
+  });
 
-//   });
-// });
+  
+});

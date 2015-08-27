@@ -3,7 +3,7 @@ describe("A card", function(){
   var card;
 
   beforeEach(function(){
-    card=new Card();
+    card = new Card();
   });
 
   describe("at initialization should", function(){
@@ -56,22 +56,60 @@ describe("A card", function(){
 
   });
 
-  xdescribe("can update total rolls", function(){
+  describe("can update total rolls", function(){
 
     it("by increasing them to 22 if roll 19 is a strike", function(){
+      spyOn(card, 'getScoreArray').and.returnValue(10);
+      card.setTotalRolls();
+      expect(card.totalRolls).toEqual(22);
     });
 
     it("by increasing them to 21 if roll 19 and 20 represent a spare", function(){
+      for (i = 0; i < 19; i++) { card.updateScoreArray(1); }
+      card.updateScoreArray(5);
+      card.updateScoreArray(5);
+      card.setTotalRolls();
+      expect(card.totalRolls).toEqual(21);
     });
 
     it("but leave them unchanged if 19 + 20 is less than 10", function(){
+      for (i = 0; i < 19; i++) { card.updateScoreArray(1); }
+      card.updateScoreArray(4);
+      card.updateScoreArray(5);
+      card.setTotalRolls();
+      expect(card.totalRolls).toEqual(20);
     });
 
   });
 
-  xdescribe("can calculate the current score", function(){
+  describe("can calculate the current score", function(){
 
-    it("", function(){
+    it("can accept scoreArray and calculate base score (with no bonuses)", function(){
+      for (i = 0; i < 20; i++) { card.updateScoreArray(3); };
+      expect(card.getBasicScore(card.scoreArray)).toEqual(60);
+    });
+
+    it("can calculate strike bonuses in scoreArray", function(){
+      for (i = 0; i < 20; i++) { card.updateScoreArray(3); };
+      card.scoreArray[10] = 10;
+      expect(card.getStrikeBonuses(card.scoreArray)).toEqual(6);
+    });
+
+    it("can calculate spare bonuses in scoreArray", function(){
+      for (i = 0; i < 20; i++) { card.updateScoreArray(3); };
+      card.scoreArray[0] = 3;
+      card.scoreArray[1] = 7;
+      expect(card.getSpareBonuses(card.scoreArray)).toEqual(3);
+    });
+
+    it("can calculate total score", function(){
+      for (i = 0; i < 22; i++) { card.updateScoreArray(3); };
+      card.scoreArray[4] = 10;
+      card.scoreArray[8] = 6;
+      card.scoreArray[9] = 4;
+      card.scoreArray[18] = 10;
+      card.setTotalRolls();
+      expect(card.getTotalScore(card.scoreArray)).toEqual(99);
     });
 
   });

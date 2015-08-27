@@ -20,8 +20,8 @@ describe('Scorecard', function(){
     });
 
     it('can reqister rolls', function(){
-      scorecard.regRolls(1)
-      expect(scorecard.frameTotal).toBe(1);
+      scorecard.regRolls(1, 1)
+      expect(scorecard.frameTotal).toBe(2);
     });
   });
 });

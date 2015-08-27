@@ -3,3 +3,7 @@ var ScoreCard = function(){
   this.indRoll = 0;
   this.frameTotal = 0;
 };
+
+ScoreCard.prototype.regRolls = function(num){
+  this.frameTotal += num;
+}

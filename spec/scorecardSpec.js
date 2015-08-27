@@ -7,16 +7,21 @@ describe('Scorecard', function(){
 
   describe('scorecard', function(){
 
-    it('roll score should be zero at the begining', function(){
+    it('roll score is zero at the begining', function(){
       expect(scorecard.indRoll).toBe(0);
     });
 
-    it('sum of rolls should be zero at the begining', function(){
+    it('sum of rolls is zero at the begining', function(){
       expect(scorecard.frameTotal).toBe(0);
     });
 
-    it('sum of all frames should be zero at the begining', function(){
+    it('sum of all frames is zero at the begining', function(){
       expect(scorecard.sumTotal).toBe(0);
+    });
+
+    it('can reqister rolls', function(){
+      scorecard.regRolls(1)
+      expect(scorecard.frameTotal).toBe(1);
     });
   });
 });

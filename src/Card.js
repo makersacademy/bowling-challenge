@@ -25,11 +25,11 @@ Card.prototype.getScoreArray = function(roll) {
 };
 
 Card.prototype.setTotalRolls = function() {
-  if (this.getScoreArray(19) === 10){
-    this.totalRolls = 22;
+  if (this.getScoreArray(17) === 10){
+    this.totalRolls = 21;
   } else if 
-    (this.getScoreArray(19)+this.getScoreArray(20) === 10) {
-      this.totalRolls = 21;
+    (this.getScoreArray(18)+this.getScoreArray(19) === 10) {
+      this.totalRolls = 20;
   }
 };
 

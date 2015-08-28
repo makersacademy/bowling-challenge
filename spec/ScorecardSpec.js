@@ -9,7 +9,7 @@ describe('Scorecard', function(){
   describe('can see scores but no totals', function(){
 
     it('running total starts at zero', function(){
-      expect(scorecard.runningTotal).toBeNull();
+      expect(scorecard.Total).toBeNull();
     });
 
     it('cannot score more than 10 points for first roll', function(){
@@ -56,6 +56,17 @@ describe('Scorecard', function(){
       scorecard.roll(10,0);  // this is roll 2 - 17
       scorecard.roll(3,4);   // this is roll 3 - 7
       expect(scorecard.frameTotal(1)).toBe(23);
+    });
+
+  });
+
+  describe('calculates running total', function(){
+
+    it('collates frame totals within running total', function(){
+      expect(scorecard.frameTotals.length).toBe(0);
+      scorecard.roll(2,0);
+      scorecard.runningTotal(1);
+      expect(scorecard.frameTotals.length).toBe(1);
     });
 
   });

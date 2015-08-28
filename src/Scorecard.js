@@ -1,5 +1,5 @@
 var Scorecard = function(){
-this.runningTotal = null;
+this.Total = null;
 this.rolls = [];
 this.frameTotals = []
 };
@@ -28,15 +28,20 @@ Scorecard.prototype.frameTotal = function(i){
 
   var total = (f1r1 + f1r2);
 
-  // this is function when we get spare & strike
   if((f1r1 || f1r2 === 10) && (f2r1) === 10){
     return total += (f2r1 + f2r2 + f3r1);
   } else if((f1r1 || f1r2) === 10) {
-      return total += (f2r1 + f2r2);
-    } else if(total === 10) {
-        return total += f2r1;
+    return total += (f2r1 + f2r2);
+  } else if(total === 10) {
+    return total += f2r1;
   } else {
     return total;
   }
 
 };
+
+Scorecard.prototype.runningTotal = function(i){
+
+  this.frameTotals.push(this.frameTotal(1));
+
+}

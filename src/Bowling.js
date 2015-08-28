@@ -50,12 +50,8 @@ Game.prototype.rollScore = function() {
     }
     return this.firstRoll
    } else { 
-     this.secondRoll = Math.floor(Math.random()*11);  
+     this.secondRoll = Math.floor(Math.random()*(11-this.firstRoll));  
      this.rollTotal = (this.frameScore+this.secondRoll)     
-     while(this.rollTotal>10) {
-       this.secondRoll-=1
-       this.rollTotal = (this.frameScore+this.secondRoll)
-     }   
      if(this.rollTotal==10) {
        if(this.spareBonusA==1) {
         this.spareBonusB=2;

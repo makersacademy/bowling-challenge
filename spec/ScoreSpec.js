@@ -1,12 +1,19 @@
-describe('score logic', function() {
-  var scorecard;
+describe('game logic', function() {
+  var game;
 
-  beforeEach(function () {
-    scorecard = new Scorecard();
+  beforeEach(function() {
+    game = new Game();
   });
 
-    it('can add new row to table', function() {
-        scoreboard.addScore(2);
-        expect(scoreboard.totalscore).toEqual(2);
-        });
-    });
+  it('gutter', function() {
+      game.roll(0);
+      expect(game.rolls[0]).toEqual(0);
+  });
+
+  it('can add normal scores', function() {
+       game.roll(2);
+       game.roll(2);
+       expect(game.rolls[0] + game.rolls[1]).toEqual(4);
+  });
+
+});

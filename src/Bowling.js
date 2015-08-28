@@ -22,7 +22,10 @@ Game.prototype.play = function() {
     this.spareBonusA-=1; 
     this.spareBonusB-=1;
     this.scoreCard.push(this.knockedDown);   
-    this.frame += 1;      
+    this.frame += 1;   
+    if(this.frame==10){
+    this.eleventhFrame();        
+    };
   };
   return this.frame; 
 };
@@ -90,6 +93,10 @@ Game.prototype.bonusPoints = function() {
     return this.score += this.firstRoll
   };   
  };
+
+Game.prototype.eleventhFrame = function() {
+  
+};
 
 Game.prototype.hitPin = function(pin) {
   this.pinsInPlay.splice(pin);

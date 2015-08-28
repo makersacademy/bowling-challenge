@@ -6,32 +6,32 @@
   <script type="text/javascript" src="src/Bowling.js"></script>
 </head>
 <body>
-  <div style='width: 400px; border: 3px solid blue; text-align:center; margin:0 auto; '>
-  <div style="font-size:46px; border-bottom: 1px outset blue">Ten Pin Bowling</div>
-    <div style="border-bottom: 1px outset blue; padding: 10px"><button type="button" onclick="playGame()" > PLAY A FRAME </button></div>     
-    <div style="font-size:26px; padding: 10px">Frame <class id="frame"></class></div>
-    <div>Roll 1 - You knocked down <class id="knockedDown1"></class> pin(s).</div>
-    <div style="font-size:16px; border-bottom: 1px outset blue; padding-bottom: 10px">Roll 2 - You knocked down <class id="knockedDown2"></class> pin(s).</div>  
-    <div style="font-size:26px; padding: 10px">Scorecard</div>
-    <div style="font-size:20px" id="scoreCard"></div>
-    <div id="bonusRolls" style="border-bottom: 1px outset blue; padding-bottom: 10px"><class id="bonusRoll1"></class> <class id="bonusRoll2"></class></div>
-    <div style="font-size:30px; padding: 10px">Your Total Score is <class id="score"></class></div>   
-        <div style="padding: 10px"><button type="button" onclick="reloadPage()" > NEW GAME </button></div>    
+  <div style='width: 400px; border: 3px solid blue; text-align:center; margin:0 auto'>
+    <div style='font-size:46px; border-bottom: 1px outset blue'>Ten Pin Bowling</div>
+    <div style='border-bottom: 1px outset blue; padding: 10px'><button type="button" onclick="playGame()" > PLAY A FRAME </button></div>
+    <div style='font-size:26px; padding: 10px'>Frame <class id="frame"></class></div>
+    <div>Roll 1 - You knocked down <class id='knockedDown1'></class> pin(s).</div>
+    <div style='font-size:16px; border-bottom: 1px outset blue; padding-bottom: 10px'>Roll 2 - You knocked down <class id="knockedDown2"></class> pin(s).</div>
+    <div style='font-size:26px; padding: 10px'>Scorecard</div>
+    <div style='font-size:20px' id='scoreCard'></div>
+    <div style='border-bottom: 1px outset blue; padding-bottom: 10px'><class id="bonusRoll1"></class> <class id="bonusRoll2"></class></div>
+    <div style='font-size:30px; padding: 10px'>Your Total Score is <class id="score"></class></div>
+    <div style='padding: 10px'><button type="button" onclick="reloadPage()" > NEW GAME </button></div>
     <script>
-    var game = new Game();
-      document.getElementById("score").innerHTML = game.score;
-      document.getElementById("frame").innerHTML = game.frame;
-    function playGame() {
-     game.play();
-     document.getElementById("score").innerHTML = game.score;
-     document.getElementById("frame").innerHTML = game.frame;
-     document.getElementById("knockedDown1").innerHTML = game.knockedDown[0]; 
-     document.getElementById("knockedDown2").innerHTML = game.knockedDown[1];   
-     document.getElementById("scoreCard").innerHTML = game.scoreCard;  
-     document.getElementById("bonusRoll1").innerHTML = game.bonusRoll1;  
-     document.getElementById("bonusRoll2").innerHTML = game.bonusRoll2;
-   };
-  </script>
-    </div>  
+      var game = new Game();
+        document.getElementById("score").innerHTML = game.score;
+        document.getElementById("frame").innerHTML = game.frame;
+      function playGame() {
+        game.play();
+        document.getElementById("score").innerHTML = game.score;
+        document.getElementById("frame").innerHTML = game.frame;
+        document.getElementById("knockedDown1").innerHTML = game.knockedDown[0];
+        document.getElementById("knockedDown2").innerHTML = game.knockedDown[1];
+        document.getElementById("scoreCard").innerHTML = game.scoreCard;
+        document.getElementById("bonusRoll1").innerHTML = game.bonusRoll1;
+        document.getElementById("bonusRoll2").innerHTML = game.bonusRoll2;
+      };
+    </script>
+  </div>
 </body>
 </html>

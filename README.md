@@ -4,7 +4,7 @@ Bowling Challenge
 
 ![alt text](public/images/tenpin.jpg "Basic JavScript HTML page")
 
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).

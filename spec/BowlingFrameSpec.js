@@ -1,12 +1,13 @@
 describe('Bowling Frame', function() {
 
   beforeEach(function() {
-    bowlingFrame = new BowlingFrame('one');
+    bowlingFrame = new BowlingFrame(1);
+    game = new BowlingGame();
   });
 
   it('allows you to enter your first bowling score', function() {
     bowlingFrame.rollOne(7);
-    expect(bowlingFrame.totalFrame).toEqual({one: [7,0]});
+    expect(bowlingFrame.totalFrame).toEqual({1: [7,0]});
   });
 
   it('raises an error if score is above 10', function() {
@@ -20,7 +21,7 @@ describe('Bowling Frame', function() {
   it('allows you to enter your second bowling score', function() {
     bowlingFrame.rollOne(7);
     bowlingFrame.rollTwo(2);
-    expect(bowlingFrame.totalFrame).toEqual({one: [7,2]});
+    expect(bowlingFrame.totalFrame).toEqual({1: [7,2]});
   });
 
   it('raises an error if second score plus first score is above 10', function() {
@@ -37,8 +38,24 @@ describe('Bowling Frame', function() {
     bowlingFrame.rollOne(7);
     bowlingFrame.rollTwo(2);
     bowlingFrame.submitFrame();
-    console.log(game.newGame);
-    expect(game.newGame).toEqual({one: [7,2]});
+    expect(game.newGame).toEqual({1: [7,2]});
+  });
+
+  it('raises error if you submit same frame twice', function() {
+    bowlingFrame.submitFrame();
+    console.log(Object.keys(game.newGame).slice(-1)[0]);
+    expect(function() { bowlingFrame.submitFrame(); } ).toThrow(new Error("You cannot submit the same frame twice"));
+  });
+
+  it('raises error if frames are not submitted in order', function() {
+    bowlingFrame.submitFrame();
+    bowlingFrameThree = new BowlingFrame(3);
+    expect(function() { bowlingFrameThree.submitFrame(); } ).toThrow(new Error("You must submit frames in order"));
+  });
+
+  it('raises error if first frame submitted is not one', function() {
+    bowlingFrameTwo = new BowlingFrame(2);
+    expect(function() { bowlingFrameTwo.submitFrame(); } ).toThrow(new Error("You must submit frame one first"));
   });
 
 });

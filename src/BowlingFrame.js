@@ -33,6 +33,14 @@ BowlingFrame.prototype.rollTwo = function(input) {
 
 BowlingFrame.prototype.submitFrame = function() {
   number = this.number;
-  console.log(this.totalFrame[number]);
+  if ( Object.keys(game.newGame).length === 0 && number !== 1) {
+    throw new Error("You must submit frame one first");
+  };
+  if (game.newGame[number] != null ) {
+    throw new Error("You cannot submit the same frame twice");
+  };
+  if ( Object.keys(game.newGame).length !== 0 && Object.keys(game.newGame).slice(-1)[0] !== (number - 1) ) {
+    throw new Error("You must submit frames in order");
+  };
   game.newGame[number] = this.totalFrame[number];
 };

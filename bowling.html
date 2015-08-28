@@ -11,7 +11,10 @@
     <div style="font-size:26px; padding: 10px">Frame <class id="frame"></class></div>
     <div>Roll 1 - You knocked down <class id="knockedDown1"></class> pin(s).</div>
     <div style="font-size:16px; border-bottom: 1px outset blue; padding-bottom: 10px">Roll 2 - You knocked down <class id="knockedDown2"></class> pin(s).</div>
-    <div style="font-size:16px; border-bottom: 1px outset blue; padding: 10px">Scorecard<div id="scoreCard"></div></div>
+    
+    <div style="font-size:26px; padding: 10px">Scorecard</div>
+    <div style="font-size:20px" id="scoreCard"></div>
+    <div id="bonusRolls" style="border-bottom: 1px outset blue; padding-bottom: 10px"><class id="bonusRoll1"></class> <class id="bonusRoll2"></class></div>
     <div style="font-size:30px; border-bottom: 1px outset blue; padding: 10px">Your Total Score is <class id="score"></class></div>    
     Strike Bonus A<div id="strikeBonusA"></div>  
     Spare Bonus A<div id="spareBonusA"></div>  
@@ -31,7 +34,9 @@
      document.getElementById("spareBonusA").innerHTML = game.spareBonusA;
      document.getElementById("strikeBonusB").innerHTML = game.strikeBonusB; 
      document.getElementById("spareBonusB").innerHTML = game.spareBonusB;      
-     document.getElementById("scoreCard").innerHTML = game.scoreCard;      
+     document.getElementById("scoreCard").innerHTML = game.scoreCard;  
+     document.getElementById("bonusRoll1").innerHTML = game.bonusRoll1;  
+     document.getElementById("bonusRoll2").innerHTML = game.bonusRoll2;        
    };
   </script>
   <div><p><button type="button" onclick="playGame()" > PLAY A FRAME </button></p></div>     

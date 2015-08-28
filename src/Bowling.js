@@ -9,6 +9,7 @@ var Game = function() {
   this.strikeBonusB = 0;
   this.spareBonusA = 0;
   this.spareBonusB = 0;
+  this.knockedDown = [];  
 };
 
 Game.prototype.play = function() {
@@ -95,7 +96,16 @@ Game.prototype.bonusPoints = function() {
  };
 
 Game.prototype.eleventhFrame = function() {
-  
+  if(this.strikeBonusA==1 || this.strikeBonusB==1) {
+    this.bonusRoll1 = Math.floor(Math.random()*11);
+    this.score += this.bonusRoll1;    
+    this.bonusRoll2 = Math.floor(Math.random()*11);
+    return this.score += this.bonusRoll2;    
+  };
+  if(this.spareBonusA==1 || this.spareBonusB==1) {
+    this.bonusRoll1 = Math.floor(Math.random()*11);
+    return this.score += this.bonusRoll1;
+  };  
 };
 
 Game.prototype.hitPin = function(pin) {

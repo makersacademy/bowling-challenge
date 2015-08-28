@@ -65,8 +65,14 @@ describe('Scorecard', function(){
     it('collates frame totals within running total', function(){
       expect(scorecard.frameTotals.length).toBe(0);
       scorecard.roll(2,0);
-      scorecard.runningTotal(1);
+      scorecard.runningTotal();
       expect(scorecard.frameTotals.length).toBe(1);
+    });
+
+    it('returns the running total value', function(){
+      scorecard.roll(2,0);
+      scorecard.roll(2,0);
+      expect(scorecard.runningTotal()).toBe (4);
     });
 
   });

@@ -16,12 +16,12 @@ Scorecard.prototype.frameTotal = function(i){
   var f1r1 = (this.rolls[i-1][0]);  // f = frame , r = roll
   var f1r2 = (this.rolls[i-1][1]);  // for initial frame
 
-  if(this.rolls.length > 1) {       // Assigns r1 & r2 for subsequent frame
+  if(this.rolls.length > i) {       // Assigns r1 & r2 for subsequent frame
     var f2r1 = (this.rolls[i][0]);
     var f2r2 = (this.rolls[i][1]);
   }
 
-  if(this.rolls.length > 2) {       // Assigns r1 & r2 for 3rd frame in case of double strike
+  if(this.rolls.length > i+1) {       // Assigns r1 & r2 for 3rd frame in case of double strike
     var f3r1 = (this.rolls[i+1][0]);
     var f3r2 = (this.rolls[i+1][1]);
   }
@@ -40,8 +40,28 @@ Scorecard.prototype.frameTotal = function(i){
 
 };
 
-Scorecard.prototype.runningTotal = function(i){
+Scorecard.prototype.runningTotal = function(){
+  var total = 0;
 
-  this.frameTotals.push(this.frameTotal(1));
+  for(var i = 1; i < this.rolls.length +1; i++){
+    this.frameTotals.push(this.frameTotal(i));
+  }
 
+  for ( var i = 0; i < this.frameTotals.length ; i++ ){
+    total += this.frameTotals[i];
+  }
+
+  return total;
 }
+
+
+
+
+
+
+
+
+
+
+
+//h

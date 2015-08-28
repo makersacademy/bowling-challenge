@@ -47,21 +47,10 @@ Scorecard.prototype.runningTotal = function(){
     this.frameTotals.push(this.frameTotal(i));
   }
 
-  for ( var i = 0; i < this.frameTotals.length ; i++ ){
-    total += this.frameTotals[i];
+  for( var i = 0; i < this.frameTotals.length; i++ ){
+      total += (this.frameTotals[i] || 0);
   }
 
   return total;
+
 }
-
-
-
-
-
-
-
-
-
-
-
-//h

@@ -72,7 +72,12 @@ describe('Scorecard', function(){
     it('returns the running total value', function(){
       scorecard.roll(2,0);
       scorecard.roll(2,0);
-      expect(scorecard.runningTotal()).toBe (4);
+      expect(scorecard.runningTotal()).toBe(4);
+    });
+
+    it('does not update running total if expecting a bonus roll', function(){
+      scorecard.roll(2,8);
+      expect(scorecard.runningTotal()).toBe(0);
     });
 
   });

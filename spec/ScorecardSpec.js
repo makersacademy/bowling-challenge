@@ -39,6 +39,11 @@ describe('Scorecard', function(){
       expect(scorecard.frameTotal(1)).toBe(8);
     });
 
+    it('shows the frame score', function(){
+      scorecard.roll(1,9);
+      expect(scorecard.frameTotal(1)).toBeNaN();
+    });
+
     it('adds additional bonus points for spares and shows score', function(){
       scorecard.roll(3,7); // this is roll 1 - We get a spare!
       scorecard.roll(5,4); // this is roll 2
@@ -56,6 +61,12 @@ describe('Scorecard', function(){
       scorecard.roll(10,0);  // this is roll 2 - 17
       scorecard.roll(3,4);   // this is roll 3 - 7
       expect(scorecard.frameTotal(1)).toBe(23);
+    });
+
+    it('adds additional bonus points for spares and followed by a strike and shows score', function(){
+      scorecard.roll(1,9); // this is roll 1 - We get a spare!
+      scorecard.roll(10,0); // this is roll 2
+      expect(scorecard.frameTotal(1)).toBe(20);
     });
 
   });

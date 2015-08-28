@@ -28,7 +28,7 @@ Scorecard.prototype.frameTotal = function(i){
 
   var total = (f1r1 + f1r2);
 
-  if((f1r1 || f1r2 === 10) && (f2r1) === 10){
+  if(((f1r1 || f1r2) === 10) && (f2r1) === 10){
     return total += (f2r1 + f2r2 + f3r1);
   } else if((f1r1 || f1r2) === 10) {
     return total += (f2r1 + f2r2);
@@ -43,12 +43,15 @@ Scorecard.prototype.frameTotal = function(i){
 Scorecard.prototype.runningTotal = function(){
   var total = 0;
 
-  for(var i = 1; i < this.rolls.length +1; i++){
-    this.frameTotals.push(this.frameTotal(i));
+  for(var i = 1; i < (this.rolls.length)+1; i++){
+    if(isNaN(this.frameTotal(i))){
+    } else {
+      this.frameTotals.push((this.frameTotal(i)));
+    }
   }
 
   for( var i = 0; i < this.frameTotals.length; i++ ){
-      total += (this.frameTotals[i] || 0);
+      total += (this.frameTotals[i]);
   }
 
   return total;

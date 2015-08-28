@@ -42,7 +42,7 @@ Scorecard.prototype.frameTotal = function(i){
 
 Scorecard.prototype.runningTotal = function(){
   var total = 0;
-
+  this.frameTotals = [];
   for(var i = 1; i < (this.rolls.length)+1; i++){
     if(isNaN(this.frameTotal(i))){
     } else {
@@ -50,7 +50,7 @@ Scorecard.prototype.runningTotal = function(){
     }
   }
 
-  for( var i = 0; i < this.frameTotals.length; i++ ){
+  for( var i = 0; i < (this.frameTotals.length); i++ ){
       total += (this.frameTotals[i]);
   }
 

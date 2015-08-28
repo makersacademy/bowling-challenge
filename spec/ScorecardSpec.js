@@ -39,7 +39,7 @@ describe('Scorecard', function(){
       expect(scorecard.frameTotal(1)).toBe(8);
     });
 
-    it('shows the frame score', function(){
+    it('shows the frame score as NaN when pending a roll due to a spare', function(){
       scorecard.roll(1,9);
       expect(scorecard.frameTotal(1)).toBeNaN();
     });
@@ -89,6 +89,30 @@ describe('Scorecard', function(){
     it('does not update running total if expecting a bonus roll', function(){
       scorecard.roll(2,8);
       expect(scorecard.runningTotal()).toBe(0);
+    });
+
+    it('rolls the following: 1,3,1,9,10,0 and expect running score of 24', function(){
+      scorecard.roll(1,3);
+      scorecard.roll(1,9);
+      scorecard.roll(10,0);
+      expect(scorecard.runningTotal()).toBe(24);
+    });
+
+    it('rolls 3 consecutive strikes and a spare & expects running score of 40', function(){
+      scorecard.roll(10,0); // 30
+      scorecard.roll(10,0); // 29
+      scorecard.roll(10,0); // 20
+      scorecard.roll(9,1);  //      --- total is 79
+      expect(scorecard.runningTotal()).toBe(79);
+    });
+
+    describe('calculates 10th frame total', function(){
+      xit('it does not allow player to score more than 30', function(){
+
+        scorecard.rollTenth(10,10,10);
+        expect(scorecard.frameTotalTenth()).toBe(30);
+      });
+
     });
 
   });

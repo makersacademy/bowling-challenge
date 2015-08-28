@@ -18,6 +18,10 @@ describe('Bowling', function() {
       expect(bowling.secondRollScore).toEqual(0);
     });
 
+    it('the third roll score', function() {
+      expect(bowling.thirdRollScore).toEqual(0);
+    });
+
     it('the frame number', function() {
       expect(bowling.frameNumber).toEqual(1);
     });
@@ -203,7 +207,32 @@ describe('Bowling', function() {
       });
     });
 
-
+    describe('10th frame', function() {
+      it('totals up strike correctly', function() {
+        bowling.firstRoll(0);
+        bowling.secondRoll(0);
+        bowling.firstRoll(0);
+        bowling.secondRoll(0);
+        bowling.firstRoll(0);
+        bowling.secondRoll(0);
+        bowling.firstRoll(0);
+        bowling.secondRoll(0);
+        bowling.firstRoll(0);
+        bowling.secondRoll(0);
+        bowling.firstRoll(0);
+        bowling.secondRoll(0);
+        bowling.firstRoll(0);
+        bowling.secondRoll(0);
+        bowling.firstRoll(0);
+        bowling.secondRoll(0);
+        bowling.firstRoll(4);
+        bowling.secondRoll(6);
+        bowling.firstRoll(10);
+        bowling.secondRoll(10);
+        bowling.thirdRoll(8);
+        expect(bowling.totalScore).toEqual(48);
+      });
+    });
 
   });
 });

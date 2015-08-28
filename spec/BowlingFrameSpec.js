@@ -62,7 +62,6 @@ describe('Bowling Frame', function() {
     for (i = 2; i < 11; i ++) {
       bowlingFrame[i] = new BowlingFrame(i);
       bowlingFrame[i].submitFrame();
-      console.log(game.newGame)
     };
     bowlingFrameEleven = new BowlingFrame(11);
     expect(function() { bowlingFrameEleven.submitFrame(); } ).toThrow(new Error("You can only submit ten frames"));

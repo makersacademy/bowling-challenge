@@ -15,4 +15,8 @@ describe('Bowling Game', function() {
     bowlingFrame.submitFrame();
     expect(game.currentScore()).toEqual(9);
   });
+
+  // it('current score should start at 0', function() {
+
+  // });
 });

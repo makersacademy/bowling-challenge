@@ -39,8 +39,11 @@ BowlingFrame.prototype.submitFrame = function() {
   if (game.newGame[number] != null ) {
     throw new Error("You cannot submit the same frame twice");
   };
-  if ( Object.keys(game.newGame).length !== 0 && Object.keys(game.newGame).slice(-1)[0] !== (number - 1) ) {
+  if ( Object.keys(game.newGame).length !== 0 && parseInt(Object.keys(game.newGame).slice(-1)[0]) !== (number - 1)) {
     throw new Error("You must submit frames in order");
+  };
+  if ( Object.keys(game.newGame).length === 10) {
+    throw new Error("You can only submit ten frames");
   };
   game.newGame[number] = this.totalFrame[number];
 };

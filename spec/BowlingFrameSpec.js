@@ -43,7 +43,6 @@ describe('Bowling Frame', function() {
 
   it('raises error if you submit same frame twice', function() {
     bowlingFrame.submitFrame();
-    console.log(Object.keys(game.newGame).slice(-1)[0]);
     expect(function() { bowlingFrame.submitFrame(); } ).toThrow(new Error("You cannot submit the same frame twice"));
   });
 
@@ -56,6 +55,17 @@ describe('Bowling Frame', function() {
   it('raises error if first frame submitted is not one', function() {
     bowlingFrameTwo = new BowlingFrame(2);
     expect(function() { bowlingFrameTwo.submitFrame(); } ).toThrow(new Error("You must submit frame one first"));
+  });
+
+  it('raises error if more than ten frames are added', function() {
+    bowlingFrame.submitFrame();
+    for (i = 2; i < 11; i ++) {
+      bowlingFrame[i] = new BowlingFrame(i);
+      bowlingFrame[i].submitFrame();
+      console.log(game.newGame)
+    };
+    bowlingFrameEleven = new BowlingFrame(11);
+    expect(function() { bowlingFrameEleven.submitFrame(); } ).toThrow(new Error("You can only submit ten frames"));
   });
 
 });

@@ -9,33 +9,30 @@ describe('Scorecard', function(){
   describe('can see scores', function(){
 
     it('running total starts at zero', function(){
-        expect(scorecard.runningTotal).toBeNull();
+      expect(scorecard.runningTotal).toBeNull();
     });
 
     it('frame total starts at zero', function(){
-        expect(scorecard.frameTotal).toBeNull();
-    });
-
-    it('frame total can be updated', function(){
-        scorecard.roll(1, 1)
-        expect(scorecard.frameTotal).toBe(2);
+      expect(scorecard.frameTotal).toBeNull();
     });
 
     it('cannot score more than 10 points for first roll', function(){
-        expect(function() { scorecard.roll(11, 0) }).toThrow(new Error("can't score more than 10!"));
+      expect(function() { scorecard.roll(11, 0) }).toThrow(new Error("can't score more than 10!"));
     });
 
     it('cannot score more than 10 points for second roll', function(){
-        expect(function() { scorecard.roll(0, 11) }).toThrow(new Error("can't score more than 10!"));
+      expect(function() { scorecard.roll(0, 11) }).toThrow(new Error("can't score more than 10!"));
     });
 
-    it('frame total is null if player roll total is 10 or player has a strike', function(){
-        scorecard.roll(1, 9)
-        expect(scorecard.frameTotal).toBeNull();
+    it('cannot score more than 10 points based on two rolls', function(){
+      expect(function() { scorecard.roll(5, 6) }).toThrow(new Error("You cannot score more than 10 from two rolls!"));
     });
 
-    it('', function(){
-
+    it('should allow only 10 frames', function(){
+      for(i=0; i < 11; i++) {
+        scorecard.roll(2,4);
+      }
+      expect(function() { scorecard.roll(5, 4) }).toThrow(new Error("You cannot play more than 10 frames!"));
     });
   });
 });

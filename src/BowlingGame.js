@@ -41,12 +41,24 @@ BowlingGame.prototype.currentScore = function() {
     if (game.newGame[i][0] === 10 && game.newGame[nextFrame][0] !== 10 && game.newGame[nextFrame][0] != null && game.newGame[nextFrame][1] != null) {
       this.scoreGrid[i] = game.newGame[i][0] + game.newGame[nextFrame][0] + game.newGame[nextFrame][1];
     };
-    if (game.newGame[i][0] === 10 && game.newGame[nextFrame][0] === 10 && game.newGame[nextNextFrame][0] !== 10 && game.newGame[nextNextFrame][0] != null) {
-      this.scoreGrid[i] = game.newGame[i][0] + game.newGame[nextFrame][0] + game.newGame[nextNextFrame][0];
-    }
-    if (game.newGame[i][0] === 10 && game.newGame[nextFrame][0] === 10 && game.newGame[nextNextFrame][0] === 10) {
-      this.scoreGrid[i] = game.newGame[i][0] + game.newGame[nextFrame][0] + game.newGame[nextNextFrame][0];
-    }
+
+    if (i === 9) {
+        if (game.newGame[i][0] === 10 && game.newGame[nextFrame][0] === 10 && game.newGame[nextFrame][1] != null) {
+          this.scoreGrid[i] = game.newGame[i][0] + game.newGame[nextFrame][0] + game.newGame[nextFrame][1];
+        };
+    } else {
+        if (game.newGame[i][0] === 10 && game.newGame[nextFrame][0] === 10 && game.newGame[nextNextFrame][0] != null) {
+          this.scoreGrid[i] = game.newGame[i][0] + game.newGame[nextFrame][0] + game.newGame[nextNextFrame][0];
+        };
+    };
+
+
+    if (game.newGame[10][0] != null && game.newGame[10][1] != null && (game.newGame[10][0] + game.newGame[10][1]) < 10) {
+      this.scoreGrid[10] = game.newGame[10][0] + game.newGame[10][1];
+    };
+    if (game.newGame[10][0] != null && game.newGame[10][1] != null && game.newGame[10][2] != null ) {
+      this.scoreGrid[10] = game.newGame[10][0] + game.newGame[10][1] + game.newGame[10][2];
+    };
   };
 
   this.score = 0;

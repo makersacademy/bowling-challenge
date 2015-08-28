@@ -34,13 +34,22 @@ BowlingFrame.prototype.rollTwo = function(input) {
   if (game.newGame[number][1] != null ) {
     throw new Error("You already have a score here");
   };
-  if (game.newGame[number][0] === 10) {
+  if (game.newGame[number][0] === 10 && number !== 10) {
     throw new Error("You got a strike in this frame, well done!");
-  } else if (input > (10 - game.newGame[number][0]) || input < 0) {
+  } else if ( number !== 10 && (input > (10 - game.newGame[number][0]) || input < 0)) {
     throw new Error("Roll must be between 0 and " + (10 - game.newGame[number][0]));
   } else {
     game.newGame[number][1] = input;
     game.currentScore();
   };
 };
+
+BowlingFrame.prototype.bonusRoll = function(input) {
+  number = this.number;
+  if ((game.newGame[number][0] + game.newGame[number][1]) < 10 || number !== 10 ) {
+    throw new Error("You cannot use the bonus roll");
+  };
+  game.newGame[number][2] = input;
+  game.currentScore();
+}
 

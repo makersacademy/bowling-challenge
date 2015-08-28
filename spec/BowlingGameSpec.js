@@ -12,9 +12,7 @@ describe('Bowling Game', function() {
   it('adds up first frames score', function() {
     bowlingFrame.rollOne(7);
     bowlingFrame.rollTwo(2);
-    console.log(game.scoreGrid);
     expect(game.currentScore()).toEqual(9);
-    console.log(game.scoreGrid);
   });
 
   it('adds up frame scores', function() {
@@ -84,6 +82,82 @@ describe('Bowling Game', function() {
       bowlingFrameThree.rollOne(10);
       expect(game.scoreGrid[1]).toEqual(30);
     });
+  });
 
+  describe('Bonus Roll Logic', function() {
+    it('should add bonus roll to score if first two rolls are greater or equal to ten', function() {
+      bowlingFrame.rollOne(10);
+      bowlingFrameTwo = new BowlingFrame(2);
+      bowlingFrameTwo.rollOne(10);
+      bowlingFrameThree = new BowlingFrame(3);
+      bowlingFrameThree.rollOne(10);
+      bowlingFrameFour = new BowlingFrame(4);
+      bowlingFrameFour.rollOne(10);
+      bowlingFrameFive = new BowlingFrame(5);
+      bowlingFrameFive.rollOne(10);
+      bowlingFrameSix = new BowlingFrame(6);
+      bowlingFrameSix.rollOne(10);
+      bowlingFrameSeven = new BowlingFrame(7);
+      bowlingFrameSeven.rollOne(10);
+      bowlingFrameEight = new BowlingFrame(8);
+      bowlingFrameEight.rollOne(10);
+      bowlingFrameNine = new BowlingFrame(9);
+      bowlingFrameNine.rollOne(10);
+      bowlingFrameTen = new BowlingFrame(10);
+      bowlingFrameTen.rollOne(1);
+      bowlingFrameTen.rollTwo(9);
+      bowlingFrameTen.bonusRoll(4);
+      expect(game.scoreGrid[10]).toEqual(14);
+    });
+
+    it('should not add bonus roll to score if first two rolls are less than ten', function() {
+      bowlingFrame.rollOne(10);
+      bowlingFrameTwo = new BowlingFrame(2);
+      bowlingFrameTwo.rollOne(10);
+      bowlingFrameThree = new BowlingFrame(3);
+      bowlingFrameThree.rollOne(10);
+      bowlingFrameFour = new BowlingFrame(4);
+      bowlingFrameFour.rollOne(10);
+      bowlingFrameFive = new BowlingFrame(5);
+      bowlingFrameFive.rollOne(10);
+      bowlingFrameSix = new BowlingFrame(6);
+      bowlingFrameSix.rollOne(10);
+      bowlingFrameSeven = new BowlingFrame(7);
+      bowlingFrameSeven.rollOne(10);
+      bowlingFrameEight = new BowlingFrame(8);
+      bowlingFrameEight.rollOne(10);
+      bowlingFrameNine = new BowlingFrame(9);
+      bowlingFrameNine.rollOne(10);
+      bowlingFrameTen = new BowlingFrame(10);
+      bowlingFrameTen.rollOne(1);
+      bowlingFrameTen.rollTwo(3);
+      expect(game.scoreGrid[10]).toEqual(4);
+    });
+  });
+
+  it('should accurately calculate the score', function() {
+    bowlingFrame.rollOne(10);
+    console.log(game.score);
+    bowlingFrameTwo = new BowlingFrame(2);
+    bowlingFrameTwo.rollOne(10);
+    bowlingFrameThree = new BowlingFrame(3);
+    bowlingFrameThree.rollOne(10);
+    bowlingFrameFour = new BowlingFrame(4);
+    bowlingFrameFour.rollOne(10);
+    bowlingFrameFive = new BowlingFrame(5);
+    bowlingFrameFive.rollOne(10);
+    bowlingFrameSix = new BowlingFrame(6);
+    bowlingFrameSix.rollOne(10);
+    bowlingFrameSeven = new BowlingFrame(7);
+    bowlingFrameSeven.rollOne(10);
+    bowlingFrameEight = new BowlingFrame(8);
+    bowlingFrameEight.rollOne(10);
+    bowlingFrameNine = new BowlingFrame(9);
+    bowlingFrameNine.rollOne(10);
+    bowlingFrameTen = new BowlingFrame(10);
+    bowlingFrameTen.rollOne(10);
+    bowlingFrameTen.rollTwo(10);
+    bowlingFrameTen.bonusRoll(10);
+    expect(game.score).toEqual(300);
   });
 });

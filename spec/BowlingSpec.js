@@ -93,14 +93,14 @@ describe('Game', function() {
       expect(game.frame).toEqual(3);
     });
 
-    it('not counting additional points for strike or spare, individual frame score will never exceed 10', function() {
+    it('a non Spare or Strike frame score will never exceed 10', function() {
       game.play();
       expect(game.frameScore).toBeLessThan(11);
       game.play();
       expect(game.frameScore).toBeLessThan(11);
     });
 
-    it('will not roll a second frame ball if first frame roll is a strike'), function() {
+    it('will not roll a second frame ball if first is a strike'), function() {
       // the code for this works, but can not work out test
     }
 

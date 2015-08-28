@@ -115,3 +115,7 @@ Game.prototype.hitPin = function(pin) {
     this.frameScore = this.frameScore + 1    
   };
 };
+
+function reloadPage(){
+   window.location.reload();
+}

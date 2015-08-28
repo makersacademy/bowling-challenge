@@ -9,9 +9,6 @@ var BowlingFrame = function(number) {
   if ( number !== 1 && game.newGame[number - 1][0] == null ) {
     throw new Error("You must add to frames in order");
   };
-  if ( number > 10 ) {
-    throw new Error("There are only ten frames");
-  };
 };
 
 BowlingFrame.prototype.rollOne = function(input) {
@@ -25,6 +22,7 @@ BowlingFrame.prototype.rollOne = function(input) {
     rollIndex = this.rollIndex;
     game.newGame[number][0] = input;
   };
+    game.currentScore();
 };
 
 BowlingFrame.prototype.rollTwo = function(input) {
@@ -42,6 +40,7 @@ BowlingFrame.prototype.rollTwo = function(input) {
     throw new Error("Roll must be between 0 and " + (10 - game.newGame[number][0]));
   } else {
     game.newGame[number][1] = input;
+    game.currentScore();
   };
 };
 

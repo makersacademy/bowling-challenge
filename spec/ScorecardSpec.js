@@ -39,16 +39,23 @@ describe('Scorecard', function(){
       expect(scorecard.frameTotal(1)).toBe(8);
     });
 
-    it('adds additional points for bonuses for spares and shows score', function(){
+    it('adds additional bonus points for spares and shows score', function(){
       scorecard.roll(3,7); // this is roll 1 - We get a spare!
       scorecard.roll(5,4); // this is roll 2
       expect(scorecard.frameTotal(1)).toBe(15);
     });
 
-    it('adds additional points for bonuses for a strike and shows score', function(){
+    it('adds additional bonus points for a strike and shows score', function(){
       scorecard.roll(10,0); // this is roll 1 - We get a strike!
       scorecard.roll(5,4);  // this is roll 2
       expect(scorecard.frameTotal(1)).toBe(19);
+    });
+
+    it('adds additional bonus points for two consecutive strikes and shows score', function(){
+      scorecard.roll(10,0);  // this is roll 1 - We get a strike! - 23
+      scorecard.roll(10,0);  // this is roll 2 - 17
+      scorecard.roll(3,4);   // this is roll 3 - 7
+      expect(scorecard.frameTotal(1)).toBe(23);
     });
 
   });

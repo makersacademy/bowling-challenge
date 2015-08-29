@@ -20,12 +20,16 @@ describe('Scorecard', function(){
       expect(function() { scorecard.roll(0, 11) }).toThrow(new Error("can't score more than 10!"));
     });
 
+    it('cannot score more than 10 points for third roll', function(){
+      expect(function() { scorecard.roll(0,0,11) }).toThrow(new Error("can't score more than 10!"));
+    });
+
     it('cannot score more than 10 points based on two rolls', function(){
       expect(function() { scorecard.roll(5, 6) }).toThrow(new Error("You cannot score more than 10 from two rolls!"));
     });
 
     it('should allow only 10 frames', function(){
-      for(i=0; i < 11; i++) {
+      for(i=0; i < 10; i++) {
         scorecard.roll(2,4);
       }
       expect(function() { scorecard.roll(5, 4) }).toThrow(new Error("You cannot play more than 10 frames!"));
@@ -35,7 +39,7 @@ describe('Scorecard', function(){
       for(i=0; i < 9; i++) {
         scorecard.roll(2,4);
       }
-      expect(function() { scorecard.roll(5, 4, 3) }).toThrow(new Error("Cannot use 3rd roll as you did not have spare or strike"));
+      expect(function() { scorecard.roll(5, 4, 3) }).toThrow(new Error("Cannot use 3rd roll as you did not have a strike"));
     });
 
   });
@@ -77,6 +81,17 @@ describe('Scorecard', function(){
       expect(scorecard.frameTotal(1)).toBe(20);
     });
 
+    describe('calculates 10th frame total', function(){
+      xit('does not allow player to score more than 30', function(){
+        for(i=0; i < 9; i++) {
+          scorecard.roll(0,0);
+        }
+        scorecard.roll(10,10,10);
+        expect(scorecard.frameTotal(10)).toBe(30);
+      });
+
+    });
+
   });
 
   describe('calculates running total', function(){
@@ -112,15 +127,6 @@ describe('Scorecard', function(){
       scorecard.roll(10,0); // 20
       scorecard.roll(9,1);  //      --- total is 79
       expect(scorecard.runningTotal()).toBe(79);
-    });
-
-    describe('calculates 10th frame total', function(){
-      xit('it does not allow player to score more than 30', function(){
-
-        scorecard.rollTenth(10,10,10);
-        expect(scorecard.frameTotalTenth()).toBe(30);
-      });
-
     });
 
   });

@@ -8,15 +8,16 @@ Scorecard.prototype.roll = function(roll1, roll2, roll3){
   if (typeof roll3 === 'undefined') { roll3 = 0; }
   if(roll1 > 10){throw new Error("can't score more than 10!");};
   if(roll2 > 10){throw new Error("can't score more than 10!");};
-  if((roll1+roll2) > 10) {throw new Error("You cannot score more than 10 from two rolls!");};
+  if(roll3 > 10){throw new Error("can't score more than 10!");};
+  if(((roll1+roll2) > 10) && (this.rolls.length != 9)) {throw new Error("You cannot score more than 10 from two rolls!");};
   if (this.rolls.length === 9){
-    if((this.rolls[8][0] + this.rolls[8][1]) < 10){
-      if(roll3 > 0){throw new Error("Cannot use 3rd roll as you did not have spare or strike");};
+    if(((this.rolls[8][0] || this.rolls[8][1]) != 10) && ((roll1 !=10) || (roll2 !=10))){
+      if(roll3 > 0){throw new Error("Cannot use 3rd roll as you did not have a strike");};
     } else {
       return this.rolls.push([roll1,roll2, roll3]);
     }
   }
-  if (this.rolls.length > 10){throw new Error("You cannot play more than 10 frames!");};
+  if (this.rolls.length === 10){throw new Error("You cannot play more than 10 frames!");};
   this.rolls.push([roll1,roll2]);
 };
 
@@ -35,16 +36,27 @@ Scorecard.prototype.frameTotal = function(i){
   }
 
   var total = (f1r1 + f1r2);
-
-  if(((f1r1 || f1r2) === 10) && (f2r1) === 10){
-    return total += (f2r1 + f2r2 + f3r1);
-  } else if((f1r1 || f1r2) === 10) {
-    return total += (f2r1 + f2r2);
-  } else if(total === 10) {
-    return total += f2r1;
-  } else {
-    return total;
-  }
+  if (i === (9 || 10)){
+      if(((f1r1 || f1r2) === 10) && (f2r1) === 10){
+        return total += (f2r1 + f2r2 + f3r1);
+      } else if((f1r1 || f1r2) === 10) {
+        return total += (f2r1 + f2r2);
+      } else if(total === 10) {
+        return total += f2r1;
+      } else {
+        return total;
+      }
+    } else {
+      if(((f1r1 || f1r2) === 10) && (f2r1) === 10){
+        return total += (f2r1 + f2r2 + f3r1);
+      } else if((f1r1 || f1r2) === 10) {
+        return total += (f2r1 + f2r2);
+      } else if(total === 10) {
+        return total += f2r1;
+      } else {
+        return total;
+      }
+    }
 
 };
 

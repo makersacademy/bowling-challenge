@@ -19,13 +19,19 @@ describe('Scorecard', function() {
 
   describe('it errors', function(){
     it("when 11 has been 'rolled' for roll a", function() {
-      expect(scorecard.verifyRollA(11)).toEqual("Invalid pin amount");
-    });
-    it("when the sums of 2 rolls are greater than 10", function() {
-      expect(scorecard.verifyTurn(6,5)).toEqual("Invalid pin amount");
+      expect( function() {scorecard.verifyRollA(11); }).toThrow("Rolls can only score 0 to 10 inclusive");
     });
     it("when 11 has been 'rolled' for roll b", function() {
-      expect(scorecard.verifyRollB(11)).toEqual("Invalid pin amount");
+      expect( function() {scorecard.verifyRollB(11); }).toThrow("Rolls can only score 0 to 10 inclusive");
+    });
+    it("when the sums of 2 rolls are greater than 10", function() {
+      expect( function() {scorecard.verifyTurn(6,5); }).toThrow("Rolls can only score 0 to 10 inclusive");
+    });
+    it("when a negative number of pins is recorded for roll a", function() {
+      expect( function() {scorecard.verifyRollA(-1); }).toThrow("Rolls can only score 0 to 10 inclusive");
+    });
+    it("when a negative number of pins is recorded for roll b", function() {
+      expect( function() {scorecard.verifyRollB(-1); }).toThrow("Rolls can only score 0 to 10 inclusive");
     });
   });
 

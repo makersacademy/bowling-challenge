@@ -8,7 +8,7 @@ Scorecard.prototype.verifyRollA = function(rollA) {
     return rollA;
   }
   else {
-    return "Invalid pin amount";
+    throw "Rolls can only score 0 to 10 inclusive";
   }
 };
 
@@ -17,13 +17,13 @@ Scorecard.prototype.verifyRollB = function(rollB) {
     return rollB;
   }
   else {
-    return "Invalid pin amount";
+    throw "Rolls can only score 0 to 10 inclusive";
   }
 };
 
 Scorecard.prototype.verifyTurn = function(rollA, rollB) {
   if (+rollA + +rollB > 10 || +rollA + +rollB < 0) {
-    return "Invalid pin amount";
+    throw "Rolls can only score 0 to 10 inclusive";
   }
   else {
     return +rollA + +rollB;

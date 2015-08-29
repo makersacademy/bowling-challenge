@@ -15,15 +15,43 @@ describe('Bowling', function() {
     bowling = new Bowling();
     bowling.roll(4);
     bowling.roll(4);
+    bowling.roll(0);
+    bowling.roll(0);
     expect(bowling.score).toEqual(8);
   });
 
   it("ends after 10 frames", function() {
     bowling = new Bowling();
     for (var i = 1; i <= 10; i++) {
-      bowling.roll(10);
+      bowling.roll(2);
+      bowling.roll(4);
     };
-    expect(bowling.gameInPlay).toEqual(false)
+    expect(bowling.isGameInPlay()).toEqual(false)
+  });
+
+  it("perfect game score is 300", function() {
+    bowling = new Bowling();
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(0);
+    bowling.roll(0);
+    expect(bowling.score).toEqual(300);
+  });
+
+  it("is still active after 10 frames if last ball is strike", function() {
+    bowling = new Bowling();
+    this.scorecard = [[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[10,0]];
+    expect(bowling.isGameInPlay()).toEqual(true)
   });
 
   describe("frame", function() {
@@ -58,6 +86,8 @@ describe('Bowling', function() {
       bowling.roll(10);
       bowling.roll(2);
       bowling.roll(4);
+      bowling.roll(0);
+      bowling.roll(0);
       expect(bowling.score).toEqual(22);
     });
 
@@ -66,7 +96,35 @@ describe('Bowling', function() {
       bowling.roll(4);
       bowling.roll(6);
       bowling.roll(4);
+      bowling.roll(0);
+      bowling.roll(0);
+      bowling.roll(0);
       expect(bowling.score).toEqual(18);
+    });
+
+    it("incurs multiple bonuses for 2 strikes", function() {
+      bowling = new Bowling();
+      bowling.roll(10);
+      bowling.roll(10);
+      bowling.roll(4);
+      bowling.roll(0);
+      bowling.roll(0);
+      bowling.roll(0);
+      bowling.roll(0);
+      bowling.roll(0);
+      expect(bowling.score).toEqual(42);
+    });
+
+    it("incurs multiple bonuses for 3 strikes", function() {
+      bowling = new Bowling();
+      bowling.roll(10);
+      bowling.roll(10);
+      bowling.roll(10);
+      bowling.roll(4);
+      bowling.roll(2);
+      bowling.roll(0);
+      bowling.roll(0);
+      expect(bowling.score).toEqual(76);
     });
 
   });
@@ -74,7 +132,7 @@ describe('Bowling', function() {
 
 
 
-  // describe('',function() {
+  describe('',function() {
 
-  // });
+  });
 });

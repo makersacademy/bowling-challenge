@@ -99,7 +99,29 @@ describe('Scorecard', function(){
         expect(scorecard.frameTotal(10)).toBe(30);
       });
 
+      it('calculates correct total if player has no strike or spare', function(){
+        for(i=0; i < 9; i++) {
+          scorecard.roll(0,0);
+        }
+        scorecard.roll(1,1);
+        expect(scorecard.frameTotal(10)).toBe(2);
+      });
 
+      it('calculates correct total if player has a spare', function(){
+        for(i=0; i < 9; i++) {
+          scorecard.roll(0,0);
+        }
+        scorecard.roll(9,1,2);
+        expect(scorecard.frameTotal(10)).toBe(12);
+      });
+
+      it('calculates correct total if player has a spare & a strike(on 3rd roll)', function(){
+        for(i=0; i < 9; i++) {
+          scorecard.roll(0,0);
+        }
+        scorecard.roll(9,1,10);
+        expect(scorecard.frameTotal(10)).toBe(20);
+      });
 
     });
 

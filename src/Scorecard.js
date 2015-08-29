@@ -11,7 +11,7 @@ Scorecard.prototype.roll = function(roll1, roll2, roll3){
   if(roll3 > 10){throw new Error("can't score more than 10!");};
   if(((roll1+roll2) > 10) && (this.rolls.length != 9)) {throw new Error("You cannot score more than 10 from two rolls!");};
   if (this.rolls.length === 9){
-    if((((roll1) || (roll2)) < 10)){
+    if(((roll1 || roll2) < 10) && ((roll1+roll2) < 10)){
       if(roll3 > 0){throw new Error("Cannot use 3rd roll as you did not have a strike");};
     } else {
       return this.rolls.push([roll1,roll2, roll3]);
@@ -38,7 +38,7 @@ Scorecard.prototype.frameTotal = function(i){
   }
 
   var total = (f1r1 + f1r2);
-  if ((i === 9) || (i === 10)) {
+  if ((i === 9) || (i === 10)){
     if (i === (9)) {
       if (((f1r1 || f1r2) === 10) && (f2r1) === 10) {
         return total += (f2r1 + f2r2);

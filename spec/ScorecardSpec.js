@@ -30,6 +30,14 @@ describe('Scorecard', function(){
       }
       expect(function() { scorecard.roll(5, 4) }).toThrow(new Error("You cannot play more than 10 frames!"));
     });
+
+    it('cannot use 3rd roll for 10th frame if no strike/spare in frame 9', function(){
+      for(i=0; i < 9; i++) {
+        scorecard.roll(2,4);
+      }
+      expect(function() { scorecard.roll(5, 4, 3) }).toThrow(new Error("Cannot use 3rd roll as you did not have spare or strike"));
+    });
+
   });
 
   describe('can calculate frame total', function(){

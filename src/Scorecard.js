@@ -4,11 +4,19 @@ this.rolls = [];
 this.frameTotals = []
 };
 
-Scorecard.prototype.roll = function(roll1, roll2){
-  if (this.rolls.length > 10){throw new Error("You cannot play more than 10 frames!");};
+Scorecard.prototype.roll = function(roll1, roll2, roll3){
+  if (typeof roll3 === 'undefined') { roll3 = 0; }
   if(roll1 > 10){throw new Error("can't score more than 10!");};
   if(roll2 > 10){throw new Error("can't score more than 10!");};
   if((roll1+roll2) > 10) {throw new Error("You cannot score more than 10 from two rolls!");};
+  if (this.rolls.length === 9){
+    if((this.rolls[8][0] + this.rolls[8][1]) < 10){
+      if(roll3 > 0){throw new Error("Cannot use 3rd roll as you did not have spare or strike");};
+    } else {
+      return this.rolls.push([roll1,roll2, roll3]);
+    }
+  }
+  if (this.rolls.length > 10){throw new Error("You cannot play more than 10 frames!");};
   this.rolls.push([roll1,roll2]);
 };
 

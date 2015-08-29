@@ -35,7 +35,7 @@ describe('Scorecard', function(){
       expect(function() { scorecard.roll(5, 4) }).toThrow(new Error("You cannot play more than 10 frames!"));
     });
 
-    it('cannot use 3rd roll for 10th frame if no strike/spare in frame 9', function(){
+    it('cannot use 3rd roll for 10th frame if no strike/spare in frame 10', function(){
       for(i=0; i < 9; i++) {
         scorecard.roll(2,4);
       }
@@ -81,14 +81,25 @@ describe('Scorecard', function(){
       expect(scorecard.frameTotal(1)).toBe(20);
     });
 
+    it('should take total frame 9 to 30 if frame 9 and subsequent 2 rolls are strikes', function(){
+      for(i=0; i < 8; i++) {
+        scorecard.roll(0,0);
+      }
+      scorecard.roll(10,0);
+      scorecard.roll(10,10,10);
+      expect(scorecard.frameTotal(9)).toBe(30);
+    });
+
     describe('calculates 10th frame total', function(){
-      xit('does not allow player to score more than 30', function(){
+      it('gives a total of 30 if player has 3 consecutive strikes', function(){
         for(i=0; i < 9; i++) {
           scorecard.roll(0,0);
         }
         scorecard.roll(10,10,10);
         expect(scorecard.frameTotal(10)).toBe(30);
       });
+
+
 
     });
 

@@ -27,7 +27,7 @@ describe("A card", function(){
 
   });  
 
-  describe("can log a roll", function(){ // ** these tests do not read well
+describe("can log a roll", function(){ // ** these tests do not read well
     
     beforeEach(function(){
       preArraySize = card.scoreArray.length;
@@ -50,27 +50,27 @@ describe("A card", function(){
 
     it("which will register 10 and 0 pins smashed in scoreArray after a roll of 10", function(){
       card.updateScoreArray(10);
-      expect(card.scoreArray.pop()).toEqual(0);
+      expect(card.scoreArray.pop()).toEqual('X');
       expect(card.scoreArray.pop()).toEqual(10); 
     });
 
   });
 
-  describe("can update total rolls", function(){
+describe("can update total rolls", function(){
 
-    it("by increasing them to 21 if roll 18 is a strike", function(){
-      spyOn(card, 'getScoreArray').and.returnValue(10);
-      card.setTotalRolls();
-      expect(card.totalRolls).toEqual(21);
-    });
+      it("by increasing them to 21 if roll 18 is a strike", function(){
+        spyOn(card, 'getScoreArray').and.returnValue(10);
+        card.setTotalRolls();
+        expect(card.totalRolls).toEqual(21);
+      });
 
-    it("by increasing them to 20 if roll 18 and 19 represent a spare", function(){
-      for (i = 0; i < 18; i++) { card.updateScoreArray(1); }
-      card.updateScoreArray(5);
-      card.updateScoreArray(5);
-      card.setTotalRolls();
-      expect(card.totalRolls).toEqual(20);
-    });
+      it("by increasing them to 20 if roll 18 and 19 represent a spare", function(){
+        for (i = 0; i < 18; i++) { card.updateScoreArray(1); }
+        card.updateScoreArray(5);
+        card.updateScoreArray(5);
+        card.setTotalRolls();
+        expect(card.totalRolls).toEqual(20);
+      });
 
     it("but leave them unchanged if 19 + 20 is less than 10", function(){
       for (i = 0; i < 19; i++) { card.updateScoreArray(1); }
@@ -99,7 +99,9 @@ describe("A card", function(){
       for (i = 0; i < 20; i++) { card.updateScoreArray(3); };
       card.scoreArray[0] = 3;
       card.scoreArray[1] = 7;
-      expect(card.getSpareBonuses(card.scoreArray)).toEqual(3);
+      card.scoreArray[2] = 4;
+      card.scoreArray[3] = 6;
+      expect(card.getSpareBonuses(card.scoreArray)).toEqual(7);
     });
 
     it("can calculate total score", function(){
@@ -112,19 +114,27 @@ describe("A card", function(){
       expect(card.getTotalScore(card.scoreArray)).toEqual(99);
     });
 
-    it("total score of xx", function(){
+    it("total score of 106", function(){
       for (i = 0; i < 22; i++) { card.updateScoreArray(3); };
       card.scoreArray[4] = 10;
       card.scoreArray[8] = 6;
       card.scoreArray[9] = 4;
+      card.scoreArray[10] = 3;
+      card.scoreArray[11] = 7;
       card.scoreArray[18] = 10;
       card.setTotalRolls();
-      expect(card.getTotalScore(card.scoreArray)).toEqual(99);
+      expect(card.getTotalScore(card.scoreArray)).toEqual(106);
     });
 
-
+    it("perfect game", function(){
+      for (i = 0; i < 22; i+=2) { 
+        card.updateScoreArray(10);
+      };
+      card.setTotalRolls();
+      console.log(card.scoreArray);
+      expect(card.getTotalScore(card.scoreArray)).toEqual(300);
+    });
 
   });
-
 
 });

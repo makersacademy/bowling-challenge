@@ -3,39 +3,25 @@ describe('Scorecard', function() {
   var scorecard = new Scorecard()
 
   describe('it returns', function(){
-    it("0 when 0 has been rolled for roll a", function() {
-      expect(scorecard.verifyRollA(0)).toEqual(0);
+    it("0 when 0 has been rolled", function() {
+      expect(scorecard.verifyRoll(0)).toEqual(0);
     });
-    it("1 when 1 has been rolled for roll a", function() {
-      expect(scorecard.verifyRollA(1)).toEqual(1);
-    });
-    it("0 when 0 has been rolled for roll b", function() {
-      expect(scorecard.verifyRollB(0)).toEqual(0);
-    });
-    it("1 when 1 has been rolled for roll b", function() {
-      expect(scorecard.verifyRollB(1)).toEqual(1);
+    it("1 when 1 has been rolled", function() {
+      expect(scorecard.verifyRoll(1)).toEqual(1);
     });
   });
 
   describe('it errors', function(){
-    it("when 11 has been 'rolled' for roll a", function() {
-      expect( function() {scorecard.verifyRollA(11); }).toThrow("Rolls can only score 0 to 10 inclusive");
-    });
-    it("when 11 has been 'rolled' for roll b", function() {
-      expect( function() {scorecard.verifyRollB(11); }).toThrow("Rolls can only score 0 to 10 inclusive");
+    it("when 11 has been 'rolled'", function() {
+      expect( function() {scorecard.verifyRoll(11); }).toThrow("Rolls can only score 0 to 10 inclusive");
     });
     it("when the sums of 2 rolls are greater than 10", function() {
       expect( function() {scorecard.verifyTurn(6,5); }).toThrow("Rolls can only score 0 to 10 inclusive");
     });
-    it("when a negative number of pins is recorded for roll a", function() {
-      expect( function() {scorecard.verifyRollA(-1); }).toThrow("Rolls can only score 0 to 10 inclusive");
-    });
-    it("when a negative number of pins is recorded for roll b", function() {
-      expect( function() {scorecard.verifyRollB(-1); }).toThrow("Rolls can only score 0 to 10 inclusive");
+    it("when a negative number of pins has been 'rolled'", function() {
+      expect( function() {scorecard.verifyRoll(-1); }).toThrow("Rolls can only score 0 to 10 inclusive");
     });
   });
-
-
 
   describe('it keeps track of which turn it is', function(){
     it("at the beginning", function(){

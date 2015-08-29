@@ -3,18 +3,9 @@ var Scorecard = function() {
   this.turnNumber = 1;
 };
 
-Scorecard.prototype.verifyRollA = function(rollA) {
-  if (rollA <= 10 && rollA >= 0) {
-    return rollA;
-  }
-  else {
-    throw "Rolls can only score 0 to 10 inclusive";
-  }
-};
-
-Scorecard.prototype.verifyRollB = function(rollB) {
-  if (rollB <= 10 && rollB >= 0) {
-    return rollB;
+Scorecard.prototype.verifyRoll = function(roll) {
+  if (roll <= 10 && roll >= 0) {
+    return roll;
   }
   else {
     throw "Rolls can only score 0 to 10 inclusive";

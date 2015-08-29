@@ -37,14 +37,6 @@ describe('game logic', function() {
     expect(game.currentFrameScore()).toEqual(3);
   });
 
-  it('cannot roll more than 10 points per frame', function() {
-    spyOn(window, 'alert');
-    gameRoll(2,6);
-    expect(window.alert).toHaveBeenCalledWith('Not Possible');
-    expect(game.allRolls.length).toEqual(1);
-    expect(game.allFrame[game.currentFrame].length).toEqual(1);
-  });
-
   it('recognises spare', function() {
     gameRoll(2,5);
     expect(game.isSpare()).toEqual(true);
@@ -56,8 +48,24 @@ describe('game logic', function() {
   });
 
   it('recognises a strike', function () {
-    game.roll(10);
+    gameRoll(1,10);
     expect(game.isStrike()).toEqual(true);
+  });
+
+  it('gutter game', function() {
+    gameRoll(20,0);
+    expect(game.basicScore()).toEqual(0);
+  });
+
+  it('normal game with no spares or strikes', function() {
+    gameRoll(20,1);
+    expect(game.basicScore()).toEqual(20);
+  });
+
+  it('perfect game', function() {
+    gameRoll(12,10);
+    game.scoreWithBonus();
+    expect(game.totalScore).toEqual(300);
   });
 
 });

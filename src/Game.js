@@ -3,28 +3,17 @@ var Game = function() {
   this.currentFrame = 1;
   this.allRolls = []
   this.allFrame = {}
+  this.totalScore = 0
 };
 
 Game.prototype.roll = function(pins) {
-  if ((this.currentFrameScore() + pins) > 10) {
-    alert('Not Possible')
-  } else {
     this.allRolls[this.currentRoll++] = pins;
-    this.calcFrame();
     this.addToFrame(pins);
-  };
 };
 
-Game.prototype.calcFrame = function() {
-  this.currentFrame = (Math.ceil(this.currentRoll / 2));
-}
-
 Game.prototype.addToFrame = function(pins) {
-  if (this.allFrame[this.currentFrame] === undefined) {
-    this.allFrame[this.currentFrame] = [pins];
-  } else {
-    this.allFrame[this.currentFrame].push(pins);
-  };
+  if this.allFrame[this.currentFrame] === undefined 
+  this.allFrame[this.currentFrame] = [pins]
 };
 
 Game.prototype.currentFrameScore = function() {
@@ -41,6 +30,25 @@ Game.prototype.isSpare = function() {
   return this.currentFrameScore() === 10 && this.allFrame[this.currentFrame].length === 2;
 };
 
-Game.prototype.isStrike = function () {
+Game.prototype.isStrike = function() {
+  return this.currentFrameScore() === 10;
+};
 
+Game.prototype.scoreWithBonus = function() {
+  this.basicScore();
+  this.strikeBonus();
+};
+
+Game.prototype.strikeBonus = function() {
+  for (var i = 0; i < this.allFrame.length; i++) {
+    if (this.allFrame[i] === 10) {
+      return this.totalScore + this.allRolls[i + 1] + this.allRolls[i + 2];
+    };
+  };
+};
+
+Game.prototype.basicScore = function() {
+  return this.totalScore + this.allRolls.reduce(function(a, b) {
+    return (a + b);
+  });
 };

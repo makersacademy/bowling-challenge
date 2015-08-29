@@ -8,10 +8,6 @@ describe('Scorecard', function(){
 
   describe('can see scores but no totals', function(){
 
-    it('running total starts at zero', function(){
-      expect(scorecard.Total).toBeNull();
-    });
-
     it('cannot score more than 10 points for first roll', function(){
       expect(function() { scorecard.roll(11, 0) }).toThrow(new Error("can't score more than 10!"));
     });
@@ -129,6 +125,10 @@ describe('Scorecard', function(){
 
   describe('calculates running total', function(){
 
+    it('running total starts at zero', function(){
+      expect(scorecard.runningTotal()).toBe(0);
+    });
+
     it('collates frame totals within running total', function(){
       expect(scorecard.frameTotals.length).toBe(0);
       scorecard.roll(2,0);
@@ -160,6 +160,14 @@ describe('Scorecard', function(){
       scorecard.roll(10,0); // 20
       scorecard.roll(9,1);  //      --- total is 79
       expect(scorecard.runningTotal()).toBe(79);
+    });
+
+    it('expects to score 300 for perfect game', function(){
+      for(i=0; i < 9; i++) {
+        scorecard.roll(10,0);
+      }
+      scorecard.roll(10,10,10);
+      expect(scorecard.runningTotal()).toBe(300);
     });
 
   });

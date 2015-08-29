@@ -1,14 +1,35 @@
 var Scorecard = function() {
-  this.storage = [];
+  this.gameStorage = [];
   this.turnNumber = 1;
+  this.currentTurnStorage = [];
+  this.currentStageOfTurn = 1;
 };
 
-Scorecard.prototype.verifyRoll = function(roll) {
-  if (roll <= 10 && roll >= 0) {
-    return roll;
+Scorecard.prototype.roll = function (pinsHit) {
+  this.verifyRoll(pinsHit);
+  this.currentTurnStorage.push(pinsHit);
+  this.moveToNextStageOfTurn();
+};
+
+Scorecard.prototype.moveToNextStageOfTurn = function () {
+  if (this.currentStageOfTurn === 1) {
+    this.currentStageOfTurn ++ ;
   }
   else {
+    this.verifyTurn();
+    this.updateGameStorageWithTurn(this.currentTurnStorage);
+    this.currentStageOfTurn = 1;
+    this.currentTurnStorage = [];
+  }
+};
+
+
+Scorecard.prototype.verifyRoll = function(roll) {
+  if (roll > 10 || roll < 0) {
     throw "Rolls can only score 0 to 10 inclusive";
+  }
+  else {
+    return roll;
   }
 };
 
@@ -23,13 +44,14 @@ Scorecard.prototype.verifyTurn = function(rollA, rollB) {
 
 Scorecard.prototype.increaseTurnCount = function () {
   this.turnNumber ++
-};
-
-
-Scorecard.prototype.updateStorageWithTurn = function(turnResult) {
-  this.storage.push(turnResult);
-  this.increaseTurnCount();
   if (this.turnNumber > 10) {
     throw "You only get 10 turns";
   };
+};
+
+
+Scorecard.prototype.updateGameStorageWithTurn = function(turnResult) {
+  this.gameStorage.push(turnResult);
+  this.increaseTurnCount();
+
 };

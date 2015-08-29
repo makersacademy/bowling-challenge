@@ -1,4 +1,4 @@
-describe("BowlingFrames", function() {
+describe("scorecard with bowling frames", function() {
 
   describe('when game starts', function(){
     var game;
@@ -11,11 +11,11 @@ describe("BowlingFrames", function() {
     });
 
     it("it is prepared with 10 frames", function() {
-      expect(BowlingFrames.list.length).toEqual(10);
+      expect(Scorecard.list.length).toEqual(10);
     });
 
-    it("each Frame has a subframe with two values of 0", function() {
-      expect(Object.keys(bowlingFrame.subFrame).length).toEqual(2);
+    it("each Frame has a subframe with two values of 0 and current starts at 'one'", function() {
+      expect(bowlingFrame.subFrame['current']).toEqual('one');
       expect(bowlingFrame.subFrame['one']).toEqual(0);
       expect(bowlingFrame.subFrame['two']).toEqual(0);
     });

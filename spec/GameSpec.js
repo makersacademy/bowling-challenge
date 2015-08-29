@@ -1,6 +1,5 @@
 describe("Game", function() {
   var game;
-
   beforeEach(function() {
     game = new Game();
   });
@@ -9,9 +8,11 @@ describe("Game", function() {
     expect(game.isStarted).toEqual(false);
   });
 
-  it("isStarted changes after #start",function (){
+  it("changes to True after clicking on #start",function (){
     game.start();
     expect(game.isStarted).toEqual(true);
   });
+
+
 
 });

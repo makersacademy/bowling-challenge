@@ -12,13 +12,23 @@ var array = [];
 
     var i = array.length;
 
-    if((i>0) && ((array[0]+array[1]) > 10)){
+    if((i>0) && (rowID < 19) && ((array[0]) === 10) && ((array.length) < 2)){
+      $('#' + (rowID+1)).text("X");
+      rowID += 1;
+      array.push(0);
+    }
+
+    if((i>0) && (rowID < 19) && ((array[0]+array[1]) === 10) && ((array.length) < 3)){
+      $('#' + (rowID)).text("/");
+    }
+
+    if((i>0) && (rowID < 19) && ((array[0]+array[1]) > 10)){
       $('#' + (rowID)).text("");
       array.pop();
       alert("You cannot knock down more than 10 pins!!")
       return
     }
-
+    var i = array.length;
     if((i > 0) && ((i)%2 == 0) && (rowID < 19)){
       roll2 = array.pop();
       roll1 = array.pop();
@@ -39,8 +49,11 @@ var array = [];
     $('#f' + frameID).text(scorecard.frameTotals[(frameID-1)]);
     $('#runningTotal').text(scorecard.runningTotal());
 
-    // alert(scorecard.frameTotals);
+    if((i>0) && (rowID < 19) && ((array[0]) === 10) && ((array.length) < 3)){
+    }else{
     rowID += 1;
+    }
+
   });
 
   $('#reset').click(function(){

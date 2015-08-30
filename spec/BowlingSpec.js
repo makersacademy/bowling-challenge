@@ -101,6 +101,21 @@ describe('BowlingScore', function(){
       bowlingScore.recordRoll(10);
       expect(bowlingScore.score).toEqual(60);
     });
+
+    it('does not add to score if spare', function(){
+      bowlingScore.recordRoll(1);
+      bowlingScore.recordRoll(9);
+      expect(bowlingScore.score).toEqual(0);
+    });
+
+    it('calculates a spare score after non strike bonus balls rolled', function(){
+      bowlingScore.recordRoll(9);
+      bowlingScore.recordRoll(1);
+      bowlingScore.recordRoll(1);
+      bowlingScore.recordRoll(1);
+      expect(bowlingScore.score).toEqual(13);
+    });
+
   });
 
 });

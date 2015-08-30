@@ -64,39 +64,5 @@ If you don't follow the usual Jasmine convention of having your tests in `spec` 
 4. Done.
 
 
------Domain--------
-
-A card object that:
-  maintains state with the following variables:
-    scoreArray (hash of 10 arrays? or Array of rolls = total_rolls?) 
-    currentRoll
-  can act with the following methods:
-    calculateScore
-    updateScoreArray
-    calculateTotalRoles
-    isGameOver?
-
-----ALGORITHIM-----
-
-Is the 10th frame a strike > yes > total rolls = 22 etc.etc [calculateTotalRolls]
-  Have we played total frames [isGameOver ]
-    Yes
-      Game Over  
-    No.Roll. 
-        update card
-        calculate score [take card as input, and update score]
-        increment roll
-
-----Methods----
-calculateScore(scoreArray)
-  if odd and 10 then score = roll(n)+roll(n+1)+roll(n+2)
-  if even, not zero and roll(n)+roll(n-1)=10 then score = roll(n)+roll(n+1)
-  otherwise score = roll(n)
-incrementRoll
-  if roll(n) = 10; roll +2; else roll++
-calculateTotalRolls
-  if roll(19) = 10 totalRolls = 22; else if roll 20 is greater 0 and 19+20 = 10 then totalRolls = 21
-isGameOver?
-  if rolls.size=totalRolls yes; no
 
 

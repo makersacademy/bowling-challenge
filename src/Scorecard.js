@@ -37,6 +37,10 @@ Scorecard.prototype.roll = function(pinsHit) {
     this.sumArray(this.previousTurnStorage) === 10 ) {
     this.previousTurnStorage.push(pinsHit);
   };
+  if (this.currentStageOfTurn === 2 && this.turnNumber > 1 &&
+    this.isAStrike(this.previousTurnStorage)) {
+    this.previousTurnStorage.push(pinsHit);
+  };
   this.moveToNextStageOfTurn();
 };
 

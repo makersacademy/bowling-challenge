@@ -122,6 +122,14 @@ describe('Scorecard', function() {
     it("what a strike isn't", function(){
       expect(scorecard.isAStrike([5,5])).toBe(false);
     });
+    it("that 'strikes' have the next 2 rolls added to them", function(){
+      scorecard.roll(10);
+      scorecard.roll(0);
+      scorecard.roll(5);
+      scorecard.roll(3);
+      expect(scorecard.gameStorage).toEqual([[10,0,5,3],[5,3]]);
+    });
+
   });
 
 });

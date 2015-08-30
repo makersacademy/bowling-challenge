@@ -12,6 +12,15 @@ describe('Scorecard', function() {
     it("1 when 1 has been rolled", function() {
       expect(scorecard.verifyRoll(1)).toEqual(1);
     });
+    it("a total score when requested", function(){
+      scorecard.roll(2);
+      scorecard.roll(3);
+      scorecard.roll(4);
+      scorecard.roll(5);
+      scorecard.roll(2);
+      scorecard.roll(1);
+      expect(scorecard.cumulativeScore).toEqual(17);
+    });
   });
 
   describe('it errors when', function(){
@@ -22,7 +31,7 @@ describe('Scorecard', function() {
       expect( function() {scorecard.verifyRoll(-1); }).toThrow("Rolls can only score 0 to 10 inclusive");
     });
     it("the total for a turn is greater than 10", function() {
-      expect( function() {scorecard.verifyTurn(6,5); }).toThrow("Before bonses, two rolls can only score 0 to 10 inclusive");
+      expect( function() {scorecard.verifyTurn(6,5); }).toThrow("Before bonuses, two rolls can only score 0 to 10 inclusive");
     });
     it("you try to take a turn past the 10th", function(){
       for (turn = 1; turn < 10; turn++) {scorecard.updateGameStorageWithTurn([1,1])};
@@ -122,12 +131,27 @@ describe('Scorecard', function() {
     it("what a strike isn't", function(){
       expect(scorecard.isAStrike([5,5])).toBe(false);
     });
-    it("that 'strikes' have the next 2 rolls added to them", function(){
+    it("that 'strikes' have both rolls of the next turn added", function(){
       scorecard.roll(10);
       scorecard.roll(0);
       scorecard.roll(5);
       scorecard.roll(3);
       expect(scorecard.gameStorage).toEqual([[10,0,5,3],[5,3]]);
+    });
+    it("that 'strikes' have the next 2 rolls added to even if there's another strike", function(){
+      scorecard.roll(10);
+      scorecard.roll(0);
+      scorecard.roll(10);
+      scorecard.roll(0);
+      scorecard.roll(5);
+      scorecard.roll(3);
+      expect(scorecard.gameStorage).toEqual([[10,0,10,0,5],[10,0,5,3],[5,3]]);
+    });
+    it("that a string of 'strikes' can give you a 3rd ball on round 10, and not a 4th", function(){
+      for (turn = 1; turn < 9; turn++) {scorecard.roll(10); scorecard.roll(0)};
+      expect(scorecard.gameStorage).toEqual([[10,0,10,0,10],[10,0,10,0,10],
+        [10,0,10,0,10],[10,0,10,0,10],[10,0,10,0,10],[10,0,10,0,10],
+        [10,0,10,0,10],[10,0,10,0,10],[10,0,10,0,10],[10,0,10,0,10]]);
     });
 
   });

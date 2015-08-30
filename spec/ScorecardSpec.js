@@ -99,13 +99,28 @@ describe('Scorecard', function() {
     });
   });
 
-  describe("it understands bowling's bonus system including that", function() {
-    it("'spares' have the next roll added to them", function(){
+  describe("it understands bowling's bonus system including", function() {
+    it("what a spare is", function(){
+      expect(scorecard.isASpare([4,6])).toBe(true);
+    });
+    it("what a spare isn't", function(){
+      expect(scorecard.isASpare([4,5])).toBe(false);
+    });
+    it("what a spare isn't, even when it's a strike", function(){
+      expect(scorecard.isASpare([10,0])).toBe(false);
+    });
+    it("that 'spares' have the next roll added to them", function(){
       scorecard.roll(4);
       scorecard.roll(6);
       scorecard.roll(5);
       scorecard.roll(3);
       expect(scorecard.gameStorage).toEqual([[4,6,5],[5,3]]);
+    });
+    it("what a strike is", function(){
+      expect(scorecard.isAStrike([10,0])).toBe(true);
+    });
+    it("what a strike isn't", function(){
+      expect(scorecard.isAStrike([5,5])).toBe(false);
     });
   });
 

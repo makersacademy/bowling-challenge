@@ -6,16 +6,35 @@ var Scorecard = function() {
   this.currentStageOfTurn = 1;
 };
 
-Scorecard.prototype.sumTurn = function(array) {
+Scorecard.prototype.sumArray = function(array) {
   return array.reduce(function(a, b) {
   return a + b;
 })};
 
-Scorecard.prototype.roll = function (pinsHit) {
+Scorecard.prototype.isASpare = function(turn){
+  if (turn[0] < 10 && this.sumArray(turn) === 10){
+      return true;
+  }
+  else {
+    return false;
+  }
+;}
+
+Scorecard.prototype.isAStrike = function(turn){
+  if (turn[0] === 10){
+    return true;
+  }
+  else {
+    return false;
+  }
+;}
+
+
+Scorecard.prototype.roll = function(pinsHit) {
   this.verifyRoll(pinsHit);
   this.currentTurnStorage.push(pinsHit);
   if (this.currentStageOfTurn === 1 && this.turnNumber > 1 &&
-    this.sumTurn(this.previousTurnStorage)===10){
+    this.sumArray(this.previousTurnStorage) === 10 ) {
     this.previousTurnStorage.push(pinsHit);
   };
   this.moveToNextStageOfTurn();

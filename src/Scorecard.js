@@ -16,7 +16,7 @@ Scorecard.prototype.moveToNextStageOfTurn = function () {
     this.currentStageOfTurn ++ ;
   }
   else {
-    this.verifyTurn();
+    this.verifyTurn(this.currentTurnStorage[0],this.currentTurnStorage[1]);
     this.updateGameStorageWithTurn(this.currentTurnStorage);
     this.currentStageOfTurn = 1;
     this.currentTurnStorage = [];
@@ -35,7 +35,7 @@ Scorecard.prototype.verifyRoll = function(roll) {
 
 Scorecard.prototype.verifyTurn = function(rollA, rollB) {
   if (+rollA + +rollB > 10 || +rollA + +rollB < 0) {
-    throw "Rolls can only score 0 to 10 inclusive";
+    throw "Before bonses, two rolls can only score 0 to 10 inclusive";
   }
   else {
     return +rollA + +rollB;
@@ -53,5 +53,4 @@ Scorecard.prototype.increaseTurnCount = function () {
 Scorecard.prototype.updateGameStorageWithTurn = function(turnResult) {
   this.gameStorage.push(turnResult);
   this.increaseTurnCount();
-
 };

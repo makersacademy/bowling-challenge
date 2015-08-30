@@ -1,7 +1,5 @@
 describe('Scorecard', function() {
 
-  // var scorecard = new Scorecard()
-
   var scorecard;
   beforeEach(function() {
       scorecard = new Scorecard();
@@ -20,11 +18,11 @@ describe('Scorecard', function() {
     it("when 11 has been 'rolled'", function() {
       expect( function() {scorecard.verifyRoll(11); }).toThrow("Rolls can only score 0 to 10 inclusive");
     });
-    it("when the total for a turn is greater than 10", function() {
-      expect( function() {scorecard.verifyTurn(6,5); }).toThrow("Rolls can only score 0 to 10 inclusive");
-    });
     it("when a negative number of pins has been 'rolled'", function() {
       expect( function() {scorecard.verifyRoll(-1); }).toThrow("Rolls can only score 0 to 10 inclusive");
+    });
+    it("when the total for a turn is greater than 10", function() {
+      expect( function() {scorecard.verifyTurn(6,5); }).toThrow("Before bonses, two rolls can only score 0 to 10 inclusive");
     });
   });
 
@@ -72,7 +70,6 @@ describe('Scorecard', function() {
       expect( function() {scorecard.updateGameStorageWithTurn([1,1]); }).toThrow("You only get 10 turns");
     });
   });
-
 
   describe('it records', function() {
     it("two rolls as a turn", function(){

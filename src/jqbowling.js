@@ -42,6 +42,7 @@ $( document ).ready(function() {
         $("#frame10shot1").text(scored)
       } else {
         $("#frame"+(scoreBoard.frameNo)+"shot1").text(scored);
+      }
     } else {
       if(scoreBoard.spare) { scored = "/" }
       $("#frame"+(scoreBoard.frameNo-1)+"shot2").text(scored);

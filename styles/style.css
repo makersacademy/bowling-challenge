@@ -1,6 +1,13 @@
 .hidden {
   display: none;
 }
+body {
+  text-align: center;
+  display: block;
+  width: 1000px ;
+  margin: 0 auto;
+  padding-top: 20px;
+}
 .throws {
   float: left;
   text-align: center;
@@ -23,7 +30,7 @@
   height: 100%;
 }
 .throw {
-  vertical-align: middle;
+  vertical-align: text-middle;
   float: right;
   text-align: center;
   margin: auto;
@@ -43,7 +50,8 @@
   height: 100%;
 }
 .name {
-  vertical-align: middle;
+  float: inherit;
+  width: 20%;
   height: 100%;
 }
 .scores {
@@ -68,7 +76,7 @@
 }
 .outline {
   text-align:center;
-  width: 85%;
+  width: 1000px;
   height: 75px;
   border-left:solid thin Black;
   border-bottom:solid thin Black ;
@@ -88,4 +96,7 @@
   font:'Times New Roman', 'Arial Black', times, Serif ;
   font-weight: bold; 
   font-size:large;
+}
+.inputs {
+  padding-top: 15px;
 }

@@ -8,7 +8,6 @@
   <script type="text/javascript" src="src/jqbowling.js"></script>
 </head>
 <body>
-  <center>
   <div class="outline" id="outline">
     <span class="name" id="name"></span>
     <span class="scores" id="scores">
@@ -86,15 +85,16 @@
       <span class="total" id="total">0</span>
     </span>
   </div>
-  <div id="nameselect">Please enter player name:
-    <input type="text" id="playername">
-    <button type="button" id="namebutton">Submit</button>
+  <div class="inputs">
+    <div id="nameselect">Please enter player name:
+      <input type="text" id="playername">
+      <button type="button" id="namebutton">Submit</button>
+    </div>
+    <div id="inputscores" class="hidden">
+      Enter the score from your throw:
+      <input type="text" id="score">
+      <button type="button" id="submitscore">Submit</button>
+    </div>
   </div>
-  <div id="inputscores" class="hidden">
-    Enter the score from your throw:
-    <input type="text" id="score">
-    <button type="button" id="submitscore">Submit</button>
-  </div>
-</center>
 </body>
 </html>

@@ -6,21 +6,17 @@ var Game = function() {
 };
 
 Game.prototype.roll = function(pins) {
-  if ((this.currentFrameScore(this.currentFrame) + pins) > 10) {
-    alert('Not Possible')
-  } else {
-    this.allRolls[this.currentRoll++] = pins;
-    this.addToFrame(pins);
-  };
+  this.allRolls[this.currentRoll++] = pins;
+  this.addToFrame(pins);
 };
 
 Game.prototype.addToFrame = function(pins) {
   if (this.allFrame[this.currentFrame] === undefined) {
     this.allFrame[this.currentFrame] = [pins];
-  } else if (this.allFrame[this.currentFrame].length === 1) {
+  } else if (this.allFrame[this.currentFrame].length === 1 && !this.isStrike(this.currentFrame)) {
     this.allFrame[this.currentFrame].push(pins);
   } else {
-    this.allFrame[this.currentFrame++] = [pins];
+    this.allFrame[this.currentFrame += 1] = [pins];
   };
 };
 

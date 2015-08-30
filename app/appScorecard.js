@@ -12,6 +12,13 @@ var array = [];
 
     var i = array.length;
 
+    if((i>0) && ((array[0]+array[1]) > 10)){
+      $('#' + (rowID)).text("");
+      array.pop();
+      alert("You cannot knock down more than 10 pins!!")
+      return
+    }
+
     if((i > 0) && ((i)%2 == 0) && (rowID < 19)){
       roll2 = array.pop();
       roll1 = array.pop();
@@ -30,6 +37,7 @@ var array = [];
     $('#f' + (frameID-2)).text(scorecard.frameTotals[(frameID-3)]);
     $('#f' + (frameID-1)).text(scorecard.frameTotals[(frameID-2)]);
     $('#f' + frameID).text(scorecard.frameTotals[(frameID-1)]);
+    $('#runningTotal').text(scorecard.runningTotal());
 
     // alert(scorecard.frameTotals);
     rowID += 1;

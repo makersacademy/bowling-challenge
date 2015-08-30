@@ -27,12 +27,11 @@
   <button class="pins" type="button" id="p10">10</button>
 </div>
   <br>
-  <br>
-
+<h3></h3>
   <div class=container>
 
   <!-- <button type="button" id="submit">Submit</button> -->
-  <button type="button" id="reset">reset</button>
+  <button class="reset" type="button" id="reset">reset</button>
   </div>
   <br>
 
@@ -48,6 +47,8 @@
       <th class="framenames" colspan="2">Frame 8<br></th>
       <th class="framenames" colspan="2">Frame 9<br></th>
       <th class="framenames" colspan="3">Frame 10<br></th>
+      <th class="total" colspan="3">Total<br></th>
+
     </tr>
     <tr>
       <td class="roll" id="1"></td>
@@ -71,6 +72,7 @@
       <td class="roll" id="19"></td>
       <td class="roll" id="20"></td>
       <td class="roll" id="21"></td>
+      <td class="roll" colspan="3" rowspan="2" id="runningTotal"></td>
     </tr>
     <tr>
       <td class="frameTotal" colspan="2" id="f1"></td>
@@ -86,7 +88,7 @@
     </tr>
   </table>
 
-  <h3></h3>
+
 </body>
 <script type="text/javascript" src="src/Scorecard.js"></script>
 <script type="text/javascript" src="app/appScorecard.js"></script>

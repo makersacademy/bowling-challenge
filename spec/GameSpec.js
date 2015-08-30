@@ -34,7 +34,7 @@ describe('game logic', function() {
 
   it('calculates the score of current frame', function() {
     gameRoll(1,3);
-    expect(game.currentFrameScore()).toEqual(3);
+    expect(game.currentFrameScore(game.currentFrame)).toEqual(3);
   });
 
   it('cannot roll more than 10 points per frame', function() {
@@ -47,17 +47,17 @@ describe('game logic', function() {
 
   it('recognises spare', function() {
     gameRoll(2,5);
-    expect(game.isSpare()).toEqual(true);
+    expect(game.isSpare(game.currentFrame)).toEqual(true);
   });
 
   it('recognises non spare', function() {
     gameRoll(2,4);
-    expect(game.isSpare()).toEqual(false);
+    expect(game.isSpare(game.currentFrame)).toEqual(false);
   });
 
   it('recognises a strike', function () {
     game.roll(10);
-    expect(game.isStrike()).toEqual(true);
+    expect(game.isStrike(game.currentFrame)).toEqual(true);
   });
 
 });

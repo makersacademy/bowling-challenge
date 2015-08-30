@@ -22,33 +22,85 @@ describe('BowlingScore', function(){
     expect(bowlingScore.currentBall).toBe(1);
   });
 
+
   describe('roll', function(){
 
     it('increments currentBall ', function(){
-      bowlingScore.roll(1);
+      bowlingScore.recordRoll(1);
       expect(bowlingScore.currentBall).toBe(2);
     });
 
     it('adds frame to frame after 2 ball rolled', function(){
-      bowlingScore.roll(1);
-      bowlingScore.roll(1);
+      bowlingScore.recordRoll(1);
+      bowlingScore.recordRoll(1);
       expect(bowlingScore.bowlingFrames).toEqual([[1,1]]);
     });
 
     it('reduces framePinCount', function(){
-      bowlingScore.roll(1);
+      bowlingScore.recordRoll(1);
       expect(bowlingScore.framePinCount).toEqual(9);
     });
 
     it('reduces framePinCount', function(){
-      bowlingScore.roll(5);
+      bowlingScore.recordRoll(5);
       expect(bowlingScore.framePinCount).toEqual(5);
     });
 
     it('does not allow > 10 pins per frame', function(){
-      expect(function() {bowlingScore.roll(11)} ).toThrow(new Error("only 10 pins per frame"));
+      expect(function() {bowlingScore.recordRoll(11)} ).toThrow(new Error("only 10 pins per frame"));
     });
 
+    it('moves onto next frame after 2 balls', function(){
+      bowlingScore.recordRoll(5);
+      bowlingScore.recordRoll(5);
+      expect(bowlingScore.currentFrameNumber()).toBe(1);
+    });
+
+    it('moves onto next frame if strike', function(){
+      bowlingScore.recordRoll(10);
+      expect(bowlingScore.currentFrameNumber()).toBe(1);
+    });
+
+    it('calculates score with no strike or spare', function(){
+      bowlingScore.recordRoll(5);
+      bowlingScore.recordRoll(4);
+      expect(bowlingScore.score).toEqual(9);
+    });
+
+    it('does not add to score if strike', function(){
+      bowlingScore.recordRoll(10);
+      expect(bowlingScore.score).toEqual(0);
+    });
+
+    it('calculates a strikes score after non strike bonus balls rolled', function(){
+      bowlingScore.recordRoll(10);
+      bowlingScore.recordRoll(1);
+      bowlingScore.recordRoll(1);
+      expect(bowlingScore.score).toEqual(14);
+    });
+
+    it('calculates a strikes score after 2nd strike rolled', function(){
+      bowlingScore.recordRoll(10);
+      bowlingScore.recordRoll(10);
+      bowlingScore.recordRoll(1);
+      bowlingScore.recordRoll(1);
+      expect(bowlingScore.score).toEqual(23);
+    });
+
+    it('calculates a strikes score after 3rd strike rolled', function(){
+      bowlingScore.recordRoll(10);
+      bowlingScore.recordRoll(10);
+      bowlingScore.recordRoll(10);
+      expect(bowlingScore.score).toEqual(30);
+    });
+
+    it('calculates a strikes score after 4th strike rolled', function(){
+      bowlingScore.recordRoll(10);
+      bowlingScore.recordRoll(10);
+      bowlingScore.recordRoll(10);
+      bowlingScore.recordRoll(10);
+      expect(bowlingScore.score).toEqual(60);
+    });
   });
 
 });

@@ -39,7 +39,7 @@ describe('game logic', function() {
 
   it('calculates the score of current frame', function() {
     gameRoll(2,3);
-    expect(game.currentFrameScore(game.currentFrame)).toEqual(6);
+    expect(game.frameScore(game.currentFrame)).toEqual(6);
   });
 
   it('recognises spare', function() {
@@ -57,20 +57,28 @@ describe('game logic', function() {
     expect(game.isStrike(game.currentFrame)).toEqual(true);
   });
 
-  // it('gutter game', function() {
-  //   gameRoll(20,0);
-  //   expect(game.basicScore()).toEqual(0);
-  // });
-  //
-  // it('normal game with no spares or strikes', function() {
-  //   gameRoll(20,1);
-  //   expect(game.basicScore()).toEqual(20);
-  // });
-  //
-  // it('perfect game', function() {
-  //   gameRoll(12,10);
-  //   game.scoreWithBonus();
-  //   expect(game.totalScore).toEqual(300);
-  // });
+  it('add spare bonus', function() {
+    gameRoll(2,5);
+    gameRoll(1,3);
+    gameRoll(17,0 )
+    expect(game.score()).toEqual(16);
+  });
+
+  it('gutter game', function() {
+    gameRoll(20,0);
+    expect(game.score()).toEqual(0);
+  });
+
+  it('normal game with no spares or strikes', function() {
+    gameRoll(20,1);
+    expect(game.score()).toEqual(20);
+  });
+
+  it('handles a strike', function() {
+    gameRoll(1,10);
+    gameRoll(2,3);
+    gameRoll(16,0);
+    expect(game.score()).toEqual(22);
+  });
 
 });

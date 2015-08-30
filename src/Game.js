@@ -20,7 +20,7 @@ Game.prototype.addToFrame = function(pins) {
   };
 };
 
-Game.prototype.currentFrameScore = function(frame) {
+Game.prototype.frameScore = function(frame) {
   if (this.allFrame[frame] === undefined) {
     return 0
   } else {
@@ -31,9 +31,31 @@ Game.prototype.currentFrameScore = function(frame) {
 };
 
 Game.prototype.isSpare = function(frame) {
-  return this.currentFrameScore(frame) === 10 && this.allFrame[frame].length === 2;
+  return this.frameScore(frame) === 10 && this.allFrame[frame].length === 2;
 };
 
 Game.prototype.isStrike = function(frame) {
-  return this.currentFrameScore(frame) === 10;
+  return this.frameScore(frame) === 10;
+};
+
+Game.prototype.spareBonus = function(frame) {
+  return this.allFrame[frame + 1][0];
+};
+
+Game.prototype.strikeBonus = function(frame) {
+  return this.frameScore(frame + 1);
+};
+
+Game.prototype.score = function() {
+  var score = 0;
+  for (var frame = 1; frame < 11; frame++) {
+    if (this.isStrike(frame)) {
+      score += 10 + this.strikeBonus(frame);
+    } else if (this.isSpare(frame)) {
+      score += 10 + this.spareBonus(frame);
+    } else {
+      score += this.frameScore(frame);
+    };
+  };
+  return score;
 };

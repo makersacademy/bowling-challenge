@@ -14,15 +14,19 @@ describe('Scorecard', function() {
     });
   });
 
-  describe('it errors', function(){
-    it("when 11 has been 'rolled'", function() {
+  describe('it errors when', function(){
+    it("a number over 10 has been 'rolled'", function() {
       expect( function() {scorecard.verifyRoll(11); }).toThrow("Rolls can only score 0 to 10 inclusive");
     });
-    it("when a negative number of pins has been 'rolled'", function() {
+    it("a negative number of pins has been 'rolled'", function() {
       expect( function() {scorecard.verifyRoll(-1); }).toThrow("Rolls can only score 0 to 10 inclusive");
     });
-    it("when the total for a turn is greater than 10", function() {
+    it("the total for a turn is greater than 10", function() {
       expect( function() {scorecard.verifyTurn(6,5); }).toThrow("Before bonses, two rolls can only score 0 to 10 inclusive");
+    });
+    it("you try to take a turn past the 10th", function(){
+      for (turn = 1; turn < 10; turn++) {scorecard.updateGameStorageWithTurn([1,1])};
+      expect( function() {scorecard.updateGameStorageWithTurn([1,1]); }).toThrow("You only get 10 turns");
     });
   });
 
@@ -68,6 +72,7 @@ describe('Scorecard', function() {
     it("and it knows when the game is over", function(){
       for (turn = 1; turn < 10; turn++) {scorecard.updateGameStorageWithTurn([1,1])};
       expect( function() {scorecard.updateGameStorageWithTurn([1,1]); }).toThrow("You only get 10 turns");
+      expect(scorecard.turnNumber).toEqual("Game Over");
     });
   });
 
@@ -91,6 +96,16 @@ describe('Scorecard', function() {
       scorecard.updateGameStorageWithTurn([2,2]);
       scorecard.updateGameStorageWithTurn([1,1]);
       expect(scorecard.gameStorage).toEqual([[3,3],[2,2],[1,1]]);
+    });
+  });
+
+  describe("it understands bowling's bonus system including that", function() {
+    it("'spares' have the next roll added to them", function(){
+      scorecard.roll(4);
+      scorecard.roll(6);
+      scorecard.roll(5);
+      scorecard.roll(3);
+      expect(scorecard.gameStorage).toEqual([[4,6,5],[5,3]]);
     });
   });
 

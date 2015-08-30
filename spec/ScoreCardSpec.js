@@ -46,9 +46,9 @@ describe("ScoreCard", function() {
     expect(scorecard.scores[1]).toEqual([4, 5]);
   });
 
-  it("moves straight to next frame after a strike", function() {
+  it("moves straight to next roll after a strike", function() {
     scorecard.scoreForRoll(10);
-    expect(scorecard.frame).toEqual(2);
+    expect(scorecard.roll).toEqual(2);
   });
 
   it("adds 10 to the scores object after a strike", function() {
@@ -58,6 +58,7 @@ describe("ScoreCard", function() {
 
   it("adds next frame's points as bonus after a strike", function() {
     scorecard.scoreForRoll(10);
+    scorecard.nextFrame();
     scorecard.scoreForRoll(3);
     scorecard.scoreForRoll(2);
     scorecard.bonusForStrike();
@@ -80,6 +81,29 @@ describe("ScoreCard", function() {
     scorecard.scoreForRoll(2);
     scorecard.scoreForRoll(4);
     expect(scorecard.grandTotal()).toEqual(14);
-  })
+  });
 
+  it("should know how many pins are left to be knocked down", function() {
+    scorecard.scoreForRoll(3);
+    expect(scorecard.pinsLeft(3)).toEqual(7);
+  });
+
+  it("can reset the number of pins", function() {
+    scorecard.pinsLeft(4);
+    scorecard.resetPins();
+    expect(scorecard.pins).toEqual(10);
+  });
+
+  it("can tell if previous frame was a strike", function() {
+    scorecard.scoreForRoll(10);
+    scorecard.nextFrame();
+    expect(scorecard.isPreviousFrameStrike()).toBe(true);
+  });
+
+  it("can tell if previous frame was a spare", function() {
+    scorecard.scoreForRoll(6);
+    scorecard.scoreForRoll(4);
+    scorecard.nextFrame();
+    expect(scorecard.isPreviousFrameSpare()).toBe(true);
+  })
 });

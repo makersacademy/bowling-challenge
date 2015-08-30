@@ -15,13 +15,13 @@ ScoreCard.prototype.nextRoll = function() {
 
 ScoreCard.prototype.strike = function() {
   this.scores[this.frame].push(10);
-  this.nextFrame();
+  this.nextRoll();
   return "X";
 }
 
 ScoreCard.prototype.scoreForRoll = function(pinsKnockedDown) {
   if (pinsKnockedDown === 10) {
-    this.strike();
+    return this.strike();
   }
   else {
     this.scores[this.frame].push(pinsKnockedDown);
@@ -49,3 +49,21 @@ ScoreCard.prototype.grandTotal = function(frame) {
   return sum;
 }
 
+ScoreCard.prototype.pinsLeft = function(pinsKnockedDown) {
+  this.pins = 10 - pinsKnockedDown;
+  return this.pins;
+}
+
+ScoreCard.prototype.resetPins = function() {
+  this.pins = 10;
+}
+
+ScoreCard.prototype.isPreviousFrameStrike = function() {
+  return this.scores[this.frame - 1][0] === 10;
+}
+
+ScoreCard.prototype.isPreviousFrameSpare = function() {
+  if (this.scores[this.frame - 1].length === 2 && this.scoreForFrame(this.frame - 1)) {
+    return true;
+  }
+}

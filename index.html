@@ -9,7 +9,8 @@
 </head>
 
 <body>
-  <button data-pins="20">0</button>
+<div id="buttons">
+  <button data-pins="0">0</button>
   <button data-pins="1">1</button>
   <button data-pins="2">2</button>
   <button data-pins="3">3</button>
@@ -20,7 +21,7 @@
   <button data-pins="8">8</button>
   <button data-pins="9">9</button>
   <button data-pins="10">10</button>
-
+</div>
   <table border="2">
     <tr>
       <td>1</td>
@@ -49,13 +50,10 @@
     </tr>
     <tr id="totals"></tr>
   </table>
-  <table>
-  <tr>
-    <td>Total</td>
-  </tr>
-  <tr id="running_total">
-  </tr>
-  </table>
+  <div id="running_total">
+    <h2>Total</h2>
+    <h2 id="total"></h2>
+  </div>
 </body>
 
 <script src="lib/jquery-2.1.4.min.js"></script>

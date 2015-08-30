@@ -65,15 +65,14 @@ BowlingScore.prototype.calculateBonusScore = function(first_argument) {
 
 BowlingScore.prototype.calculateStrikeScore = function() {
   for (var i = 0; i < this.strikes.length; i++) {
-      if (this.bowlingFrames[this.strikes[i] + 1] !== undefined && this.bowlingFrames[this.strikes[i] + 1].length === 2 ) {
-        var frameScores = this.bowlingFrames[this.strikes[i]].concat(this.bowlingFrames[this.strikes[i] + 1]);
-        var score = frameScores.reduce(function(a, b) {
+      if (this.bowlingFrames[this.strikes[i] + 1]  && this.bowlingFrames[this.strikes[i] + 1].length === 2 ) {
+        var score = this.bowlingFrames[this.strikes[i] + 1].reduce(function(a, b) {
           return a + b;
         });
-        this.score += score;
+        this.score += (score + 10);
         this.strikes.splice(i, 1);
     };
-      if (this.bowlingFrames[this.strikes[i] + 1] !== undefined && this.bowlingFrames[this.strikes[i] + 2] !== undefined) {
+      if (this.bowlingFrames[this.strikes[i] + 1]  && this.bowlingFrames[this.strikes[i] + 2]) {
         var frameScores = this.bowlingFrames[this.strikes[i] + 1].concat(this.bowlingFrames[this.strikes[i] + 2][0]);
         var score = frameScores.reduce(function(a, b) {
           return a + b;

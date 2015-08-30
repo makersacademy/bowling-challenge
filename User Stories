@@ -1,0 +1,29 @@
+As a bowler,
+So that I can play,
+I want to be able to start a new game.
+- [x] Completed
+
+Only play 10 frames
+- [x] Completed
+
+As a bowling noob,
+So that I learn the rules correctly,
+I want to be prevented from entering a score that isn't possible.
+- [] Completed
+
+As a playing bowler,
+So that I can satisfy my competitive spirit,
+I want to be able to see  my Current Score.
+- [] Completed
+
+As a terrible bowler,
+So that I am made aware of my lack of skill,
+I should be made aware if I complete a Gutter Game.
+- [] Completed
+
+Correctly score spare bonuses
+- [] Completed
+
+
+Correctly score strike bonuses
+- [] Completed

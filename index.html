@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"></meta>
+    <link rel="stylesheet" type="text/css" href="css/bowling.css"></link>
+  </head>
+  <body>
+    <nav class="GameOptions">
+      <button class="NewGame">Start a New Game</button>
+    </nav><br>
+
+    <section class="ScoreCard">
+      <table class='scoreCardTable'>
+        <tr>
+          <th colspan='6'>Frame 1</th>
+          <th colspan='6'>Frame 2</th>
+          <th colspan='6'>Frame 3</th>
+          <th colspan='6'>Frame 4</th>
+          <th colspan='6'>Frame 5</th>
+          <th colspan='6'>Frame 6</th>
+          <th colspan='6'>Frame 7</th>
+          <th colspan='6'>Frame 8</th>
+          <th colspan='6'>Frame 9</th>
+          <th colspan='6'>Frame 10</th>
+        </tr>
+        <tr>
+          <td frame=1 roll=1 colspan='3'></td><td frame=1 roll=2 colspan='3'></td>
+          <td frame=2 roll=1 colspan='3'></td><td frame=2 roll=2 colspan='3'></td>
+          <td frame=3 roll=1 colspan='3'></td><td frame=3 roll=2 colspan='3'></td>
+          <td frame=4 roll=1 colspan='3'></td><td frame=4 roll=2 colspan='3'></td>
+          <td frame=5 roll=1 colspan='3'></td><td frame=5 roll=2 colspan='3'></td>
+          <td frame=6 roll=1 colspan='3'></td><td frame=6 roll=2 colspan='3'></td>
+          <td frame=7 roll=1 colspan='3'></td><td frame=7 roll=2 colspan='3'></td>
+          <td frame=8 roll=1 colspan='3'></td><td frame=8 roll=2 colspan='3'></td>
+          <td frame=9 roll=1 colspan='3'></td><td frame=9 roll=2 colspan='3'></td>
+          <td frame=10 roll=1 colspan='2'></td><td frame=10 roll=2 colspan='2'></td><td frame=10 roll=3 colspan='2'></td>
+        </tr>
+        <tr>
+          <td colspan='6'></td>
+          <td colspan='6'></td>
+          <td colspan='6'></td>
+          <td colspan='6'></td>
+          <td colspan='6'></td>
+          <td colspan='6'></td>
+          <td colspan='6'></td>
+          <td colspan='6'></td>
+          <td colspan='6'></td>
+          <td colspan='6'></td>
+        </tr>
+      </table>
+    </section><br><br>
+
+    <section class='Scoring'>
+      <article class="CurrentScore"></article>
+        <button class='scoring' id='0'>GUTTER BALL!!!</button><br>
+        <button class='scoring' id='1'>1</button>
+        <button class='scoring' id='2'>2</button>
+        <button class='scoring' id='3'>3</button><br>
+        <button class='scoring' id='4'>4</button>
+        <button class='scoring' id='5'>5</button>
+        <button class='scoring' id='6'>6</button><br>
+        <button class='scoring' id='7'>7</button>
+        <button class='scoring' id='8'>8</button>
+        <button class='scoring' id='9'>9</button><br>
+        <button class='scoring' id='10'>STRIKE!!!!!</button>
+    </section><br>
+
+    <section class='ScoreDisplay'>
+      Pins sent to meet their maker:<article class="pins"></article>
+      Brucey bonus:<article class="bonus"></article>
+      Total points:<article class="total"></article>
+    </section>
+
+  </body>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="src/scoreCard.js"></script>
+  <script src="src/app.js"></script>
+</html>

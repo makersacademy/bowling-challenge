@@ -1,0 +1,64 @@
+body {
+  background-image: url("../images/BowlingImage.jpg");
+  background-size: cover;
+  text-align: center;
+}
+
+button.NewGame {
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
+  background-color: rgb(200, 22, 75);
+  color: white;
+  font-size: 30px;
+}
+
+table, td, th, tr {
+  color: rgb(200 ,200, 200);
+  border: 2px white;
+  margin: auto;
+  background-color: rgba(50, 50, 50, .75);
+  font-size: 120%;
+}
+
+section.ScoreDisplay {
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
+  font-size: 250%;
+  font-family: cursive;
+  color: rgb(200, 22, 75);
+  background-color: rgba(50, 50, 50, 0.75);
+}
+
+section.Scoring {
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
+  font-size: 150%;
+  background-color: rgba(50, 50, 50, .75);
+}
+
+button.scoring {
+    background-color: rgb(210, 140, 160);
+    border-radius:6px;
+    color: #fff;
+    font-family: 'Oswald';
+    font-size: 100%;
+}
+
+button.scoring:hover {
+    background-color: rgb(200, 22, 75);
+    border-radius:6px;
+    color: white;
+}
+
+div.ending {
+  margin-left: 35%;
+  margin-right: 35%;
+  text-align: center;
+  font-size: 350%;
+  font-family: cursive;
+  color: rgb(200, 22, 75);
+  background-color: rgba(50, 50, 50, 0.9);
+}

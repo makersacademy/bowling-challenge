@@ -6,11 +6,17 @@ var BowlingScorer = function() {
   this.strike = false;
   this.doubleStrike = false;
   this.frameNo = 1;
+  this.semifinalShot = null;
 };
 
 BowlingScorer.prototype.addPins = function(pins,frameNo) {
   this.total += pins;
-  this.runningTotals[frameNo] += pins;
+  if(frameNo > 9) {
+    frameNo=9
+    this.runningTotals[frameNo] += pins;
+  } else {
+    this.runningTotals[frameNo] = pins;
+  }
 };
 
 BowlingScorer.prototype.spareAdd = function(pins) {
@@ -46,7 +52,6 @@ BowlingScorer.prototype.bowl = function(pins) {
       this.firstshot = null;
       return pins;
     }
-    this.firstshot = null;
   } else if(pins>=0&&pins<=10&&(pins%1===0)&&(this.frameNo<=10)) {
     if(this.spare) {
       this.spareAdd(pins);
@@ -69,19 +74,24 @@ BowlingScorer.prototype.bowl = function(pins) {
     if(this.doubleStrike) {
       this.doubleStrikeAdd(pins)
     }
+
     if(this.spare) {
       this.spareAdd(pins);
       this.frameNo += 2;
     } else if(this.strike) {
       if(pins===10) {
         this.doubleStrike = true;
+        this.strikeAdd(pins)
+        this.frameNo += 1;
+      } else if(this.semifinalShot) {
+        if(pins+this.semifinalShot===10) { this.spare = true }
+        this.strikeAdd(pins+this.semifinalShot,(this.frameNo-2));
+        this.frameNo += 1;
       }
-      this.strikeAdd(pins)
-      this.frameNo += 1;
     }
-    return pins
+    return this.semifinalShot = pins
   } else if(pins>=0&&pins<=10&&(pins%1===0)&&(this.frameNo<=12)&&(this.doubleStrike)) {
-    this.addPins(pins,this.frameNo-3);
+    this.addPins(pins,this.frameNo-2);
     this.frameNo += 1;
     return pins;
   }

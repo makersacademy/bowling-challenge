@@ -117,5 +117,20 @@ describe("BowlingScorer", function() {
       bowlingscorer.bowl(10);
       expect(bowlingscorer.total).toEqual(162)
     });
+    it("can end with strike, not strike, not strike", function() {
+      bowlingscorer.bowl(10);
+      bowlingscorer.bowl(10);
+      bowlingscorer.bowl(10);
+      bowlingscorer.bowl(10);
+      bowlingscorer.bowl(10);
+      bowlingscorer.bowl(10);
+      bowlingscorer.bowl(10);
+      bowlingscorer.bowl(10);
+      bowlingscorer.bowl(10);
+      bowlingscorer.bowl(10);
+      bowlingscorer.bowl(5);
+      bowlingscorer.bowl(5);
+      expect(bowlingscorer.total).toEqual(285)
+    });
   });
 });

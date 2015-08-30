@@ -1,3 +1,91 @@
 .hidden {
   display: none;
 }
+.throws {
+  float: left;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  height: 40%;
+}
+.throw1 {
+  vertical-align: middle;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  height: 100%;
+}
+.throw1f10 {
+  vertical-align: middle;
+  text-align: center;
+  margin: auto;
+  width: 33%;
+  height: 100%;
+}
+.throw {
+  vertical-align: middle;
+  float: right;
+  text-align: center;
+  margin: auto;
+  border-left: solid thin Black;
+  border-bottom: solid thin Black;
+  width: 50%;
+  height: 100%;
+}
+.throwf10 {
+  vertical-align: middle;
+  float: right;
+  text-align: center;
+  margin: auto;
+  border-left: solid thin Black;
+  border-bottom: solid thin Black;
+  width: 33%;
+  height: 100%;
+}
+.name {
+  vertical-align: middle;
+  height: 100%;
+}
+.scores {
+  float: right;
+  width: 80%;
+  height: 100%;
+  border-left: solid thin Black ;
+}
+.frame {
+    width: 8.9481%;
+    height: 100%;
+    margin: 0pt 0pt 0pt 0pt;
+    border-left:none;
+    border-bottom:none ;
+    border-right:solid thin Black ;
+    border-top:none ;
+    float: left;
+    vertical-align: middle;
+    font:'Times New Roman', 'Arial Black', times, Serif ;
+    font-weight: bold; 
+    font-size:large;
+}
+.outline {
+  text-align:center;
+  width: 85%;
+  height: 75px;
+  border-left:solid thin Black;
+  border-bottom:solid thin Black ;
+  border-right:solid thin Black ;
+  border-top:solid thin Black ;
+}
+.total {
+  width: 8.9481%;
+  height: 100%;
+  margin: 0pt 0pt 0pt 0pt;
+  border-left:none;
+  border-bottom:none ;
+  border-right:none;
+  border-top:none ;
+  float: left;
+  vertical-align: middle;
+  font:'Times New Roman', 'Arial Black', times, Serif ;
+  font-weight: bold; 
+  font-size:large;
+}

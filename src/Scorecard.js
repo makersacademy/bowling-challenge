@@ -84,14 +84,13 @@ Scorecard.prototype.moveToNextStageOfTurn = function () {
   else if (this.turnNumber < 10) {
     this.resetTurn();
   }
-  else if (this.turnNumber === 10
-    && this.isASpareOrStrike(this.currentTurnStorage)
-    && this.currentStageOfTurn === 2) {
-    this.currentStageOfTurn = 3;
+  else if (this.currentStageOfTurn === 3) {
+    this.resetTurn();
   }
   else if (this.turnNumber === 10
-    && this.currentStageOfTurn == 3) {
-    this.resetTurn();
+    && this.currentTurnStorage[0] === 10
+    && this.currentStageOfTurn === 2) {
+    this.currentStageOfTurn = 3;
   };
 };
 
@@ -116,7 +115,7 @@ Scorecard.prototype.verifyRoll = function(roll) {
 };
 
 Scorecard.prototype.verifyTurn = function(rollA, rollB) {
-  if (+rollA + +rollB > 10 || +rollA + +rollB < 0) {
+  if ((+rollA + +rollB > 10 || +rollA + +rollB < 0)  && this.turnNumber < 10) {
     throw "Before bonuses, two rolls can only score 0 to 10 inclusive";
   }
   else {
@@ -126,7 +125,7 @@ Scorecard.prototype.verifyTurn = function(rollA, rollB) {
 
 Scorecard.prototype.increaseTurnCount = function () {
   this.turnNumber ++
-  if (this.turnNumber > 10) {
+  if (this.turnNumber > 11) {
     this.turnNumber = "Game Over";
     throw "You only get 10 turns";
   };

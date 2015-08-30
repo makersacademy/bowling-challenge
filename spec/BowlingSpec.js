@@ -116,6 +116,28 @@ describe('BowlingScore', function(){
       expect(bowlingScore.score).toEqual(13);
     });
 
+    it('calculates a spare with strikes', function(){
+      bowlingScore.recordRoll(1);
+      bowlingScore.recordRoll(9);
+      bowlingScore.recordRoll(10);
+      bowlingScore.recordRoll(10);
+      bowlingScore.recordRoll(10);
+      expect(bowlingScore.score).toEqual(50);
+    });
+
+    it('stops game after 10 frames', function(){
+        for (var i = 0; i < 20; i++) {
+          bowlingScore.recordRoll(1);
+      }
+      expect(function() {bowlingScore.recordRoll(1);} ).toThrow(new Error("game over 10 frames bowled"));
+    });
+
+    it('calculates perfect game', function(){
+        for (var i = 0; i < 12; i++) {
+          bowlingScore.recordRoll(10);
+        }
+        expect(bowlingScore.score).toEqual(300);
+    });
   });
 
 });

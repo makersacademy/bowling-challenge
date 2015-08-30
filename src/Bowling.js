@@ -9,6 +9,7 @@ var BowlingScore = function(){
 };
 
 BowlingScore.prototype.recordRoll = function(pinsHit) {
+  this.checkifGameOver();
   this.checkValidRoll(pinsHit);
   this.framePinCount = this.framePinCount - pinsHit;
   this.currentFrame.push(pinsHit);
@@ -26,7 +27,13 @@ BowlingScore.prototype.recordRoll = function(pinsHit) {
 BowlingScore.prototype.checkValidRoll = function(pinsHit) {
   if (pinsHit > this.framePinCount) {
     throw new Error("only 10 pins per frame");
-  }
+  };
+};
+
+BowlingScore.prototype.checkifGameOver = function() {
+  if (this.currentFrameNumber() >= 10) {
+    throw new Error("game over 10 frames bowled");
+  };
 };
 
 BowlingScore.prototype.currentFrameNumber = function() {
@@ -65,20 +72,14 @@ BowlingScore.prototype.calculateBonusScore = function(first_argument) {
 
 BowlingScore.prototype.calculateStrikeScore = function() {
   for (var i = 0; i < this.strikes.length; i++) {
-      if (this.bowlingFrames[this.strikes[i] + 1]  && this.bowlingFrames[this.strikes[i] + 1].length === 2 ) {
-        var score = this.bowlingFrames[this.strikes[i] + 1].reduce(function(a, b) {
-          return a + b;
-        });
-        this.score += (score + 10);
-        this.strikes.splice(i, 1);
+      if (this.bowlingFrames[this.strikes[i] + 1] && this.bowlingFrames[this.strikes[i] + 1].length === 2 ) {
+        var score = this.bowlingFrames[this.strikes[i] + 1].reduce(function(a, b) { return a + b; });
+        this.updateBonusScore(score, this.strikes, i);
     };
       if (this.bowlingFrames[this.strikes[i] + 1]  && this.bowlingFrames[this.strikes[i] + 2]) {
         var frameScores = this.bowlingFrames[this.strikes[i] + 1].concat(this.bowlingFrames[this.strikes[i] + 2][0]);
-        var score = frameScores.reduce(function(a, b) {
-          return a + b;
-        });
-        this.score += (score + 10);
-        this.strikes.splice(i, 1);
+        var score = frameScores.reduce(function(a, b) { return a + b; });
+        this.updateBonusScore(score, this.strikes, i);
      };
   };
 };
@@ -86,11 +87,15 @@ BowlingScore.prototype.calculateStrikeScore = function() {
 BowlingScore.prototype.calculateSpareScore = function(first_argument) {
   for (var i = 0; i < this.spares.length; i++) {
       if (this.bowlingFrames[this.spares[i] + 1] !== undefined) {
-        var frameScore = (10 + this.bowlingFrames[this.spares[i] + 1][0]);
-        this.score += frameScore;
-        this.spares.splice(i, 1);
+        var score = (this.bowlingFrames[this.spares[i] + 1][0]);
+        this.updateBonusScore(score, this.spares, i);
     };
   };
+};
+
+BowlingScore.prototype.updateBonusScore = function(score, bonusArray, position) {
+        this.score += (score + 10);
+        bonusArray.splice(position, 1);
 };
 
 //to implement

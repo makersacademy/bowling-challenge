@@ -24,14 +24,6 @@ Scorecard.prototype.cumulativeScore = function(arrayOfArrays){
   return totalScore;
 };
 
-// Scorecard.prototype.cumulativeScore = function(arrayOfArrays){
-//   var allScoresFlatArray = this.flatten(arrayOfArrays);
-//   totalScore = this.sumArray(allScoresFlatArray);
-//   return totalScore;
-// };
-
-
-
 Scorecard.prototype.isASpareOrStrike = function(turn){
   if (this.isASpare(turn) || this.isAStrike(turn)){
     return true;
@@ -90,11 +82,7 @@ Scorecard.prototype.moveToNextStageOfTurn = function () {
     this.currentStageOfTurn = 2 ;
   }
   else if (this.turnNumber < 10) {
-    this.updateGameStorageWithTurn(this.currentTurnStorage);
-    this.twoTurnsAgoStorage = this.previousTurnStorage;
-    this.previousTurnStorage = this.currentTurnStorage;
-    this.currentTurnStorage = [];
-    this.currentStageOfTurn = 1;
+    this.resetTurn();
   }
   else if (this.turnNumber === 10
     && this.isASpareOrStrike(this.currentTurnStorage)
@@ -103,13 +91,20 @@ Scorecard.prototype.moveToNextStageOfTurn = function () {
   }
   else if (this.turnNumber === 10
     && this.currentStageOfTurn == 3) {
+    this.resetTurn();
+  };
+};
+
+Scorecard.prototype.resetTurn = function () {
     this.updateGameStorageWithTurn(this.currentTurnStorage);
     this.twoTurnsAgoStorage = this.previousTurnStorage;
     this.previousTurnStorage = this.currentTurnStorage;
     this.currentTurnStorage = [];
     this.currentStageOfTurn = 1;
-  };
 };
+
+
+
 
 Scorecard.prototype.verifyRoll = function(roll) {
   if (roll > 10 || roll < 0) {

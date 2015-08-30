@@ -20,9 +20,17 @@ Scorecard.prototype.sumArray = function(array) {
 
 Scorecard.prototype.cumulativeScore = function(arrayOfArrays){
   var allScoresFlatArray = this.flatten(arrayOfArrays);
-  totalScore = this.sumArray(allScoresFlatArray);
+  var totalScore = this.sumArray(allScoresFlatArray);
   return totalScore;
 };
+
+// Scorecard.prototype.cumulativeScore = function(arrayOfArrays){
+//   var allScoresFlatArray = this.flatten(arrayOfArrays);
+//   totalScore = this.sumArray(allScoresFlatArray);
+//   return totalScore;
+// };
+
+
 
 Scorecard.prototype.isASpareOrStrike = function(turn){
   if (this.isASpare(turn) || this.isAStrike(turn)){

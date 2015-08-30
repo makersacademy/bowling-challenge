@@ -12,14 +12,12 @@ describe('Scorecard', function() {
     it("1 when 1 has been rolled", function() {
       expect(scorecard.verifyRoll(1)).toEqual(1);
     });
+    it("a flattened array when requested", function(){
+      expect(scorecard.flatten([[2,3],[4,5]])).toEqual([2,3,4,5]);
+    });
     it("a total score when requested", function(){
-      scorecard.roll(2);
-      scorecard.roll(3);
-      scorecard.roll(4);
-      scorecard.roll(5);
-      scorecard.roll(2);
-      scorecard.roll(1);
-      expect(scorecard.cumulativeScore).toEqual(17);
+      this.gameStorage = [[1,2],[3,4]];
+      expect(scorecard.cumulativeScore(this.gameStorage)).toEqual(10);
     });
   });
 

@@ -7,19 +7,22 @@ var Scorecard = function() {
   this.currentStageOfTurn = 1;
 };
 
-Scorecard.prototype.cumulativeScore = function(){
-  var flattened = this.gameStorage.reduce(function(a, b) {
-    return a.concat(b);
-  });
-  score = this.sumArray(flattened);
-  return score;
+Scorecard.prototype.flatten = function(arrayOfArrays){
+  var flattened = [];
+  flattened = flattened.concat.apply(flattened, arrayOfArrays);
+  return flattened;
 };
-
 
 Scorecard.prototype.sumArray = function(array) {
   return array.reduce(function(a, b) {
   return a + b;
 })};
+
+Scorecard.prototype.cumulativeScore = function(arrayOfArrays){
+  var allScoresFlatArray = this.flatten(arrayOfArrays);
+  totalScore = this.sumArray(allScoresFlatArray);
+  return totalScore;
+};
 
 Scorecard.prototype.isASpareOrStrike = function(turn){
   if (this.isASpare(turn) || this.isAStrike(turn)){
@@ -86,7 +89,7 @@ Scorecard.prototype.moveToNextStageOfTurn = function () {
     this.currentStageOfTurn = 1;
   }
   else if (this.turnNumber === 10
-    && this.isASpareOrStrike(this.previousTurnStorage)
+    && this.isASpareOrStrike(this.currentTurnStorage)
     && this.currentStageOfTurn === 2) {
     this.currentStageOfTurn = 3;
   }

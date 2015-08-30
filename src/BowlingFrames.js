@@ -1,20 +1,27 @@
 Scorecard = {
   list: [],
+  currentSum: 0,
+  currentFrameIndex: 0,
 
   sum: function(){
-    var result = 0;
-    for (var i = this.list.length - 1; i >= 0; i--) {
-      result += this.list[i].score();
+    this.currentSum = 0;
+    for (var i = this.currentFrameIndex; i >= 0; i--) {
+      if(this.list[i].subFrame['current']==='two' && i === this.currentFrameIndex) { continue; }
+      this.currentSum += this.list[i].score();
     };
-    return result;
+    //return currentSum;
   },
 
-  currentFrame: 0,
-
   updateList: function(NumberOfPins) {
-    this.currentFrame = this.list[this.currentFrame];
-    this.currentFrame.subFrame[this.currentFrame.subFrame['current']] = NumberOfPins;
-    this.currentFrame.subFrame['current'] = 'two';
+
+    if(this.list[this.currentFrameIndex].subFrame['current']==='two' || isStrike(NumberOfPins) === true) {
+      this.list[this.currentFrameIndex].subFrame['two'] = NumberOfPins;
+      this.list[this.currentFrameIndex].subFrame['current'] = 'two';
+      this.currentFrameIndex += 1;
+    }else {
+      this.list[this.currentFrameIndex].subFrame['one'] = NumberOfPins;
+      this.list[this.currentFrameIndex].subFrame['current'] = 'two';
+    }
     //this.currentFrame = this.list[this.list.indexOf(this.currentFrame)+1];
   }
 };

@@ -1,6 +1,6 @@
 var Player = function() {
   this.points = function() {
-    return Scorecard.sum();
+    return Scorecard.currentSum;
   };
 };
 

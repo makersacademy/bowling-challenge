@@ -29,10 +29,6 @@ Bowling.prototype.thirdRoll = function(number) {
   this._countsTotalScore();
 };
 
-Bowling.prototype._calculatesBonuses = function(number) {
-  this.bonusPoints = ((this.strike - 1) * 2 - 1) * 10 + this.firstRollScore * 2 + number
-};
-
 Bowling.prototype._countsTotalScore = function() {
   this.totalScore += (this.firstRollScore + this.secondRollScore + this.bonusPoints + this.thirdRollScore)
   this._reset();
@@ -44,7 +40,7 @@ Bowling.prototype._calculatesOneStrike = function(number) {
 };
 
 Bowling.prototype._calculatesAllStrikes = function(number) {
-  this._calculatesBonuses(number);
+  this.bonusPoints = ((this.strike - 1) * 2 - 1) * 10 + this.firstRollScore * 2 + number
   this.strike = 0
 };
 

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bowling Scorer</title>
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <script type="text/javascript" src="src/BowlingScorer.js"></script>
+  <script type="text/javascript" src="lib/jquery.js"></script>
+  <script type="text/javascript" src="src/jqbowling.js"></script>
+</head>
+<body>
+  <div class="outline" id="outline">
+    <span class="name" id="name"></span>
+    <span class="scores" id="scores">
+      <span class="frame" id="frame1">
+        <span class="throws">
+          <span class="throw1" id="frame1shot1"></span>
+          <span class="throw" id="frame1shot2"></span>
+        </span>
+        <div class="frametotal" id="frame1total"></div>
+      </span>
+      <span class="frame" id="frame2">
+        <span class="throws">
+          <span class="throw1" id="frame2shot1"></span>
+          <span class="throw" id="frame2shot2"></span>
+        </span>
+        <div id="frame2total"></div>
+      </span>
+      <span class="frame" id="frame3">
+        <span class="throws">
+          <span class="throw1" id="frame3shot1"></span>
+          <span class="throw" id="frame3shot2"></span>
+        </span>
+        <div id="frame3total"></div>
+      </span>
+      <span class="frame" id="frame4">
+        <span class="throws">
+          <span class="throw1" id="frame4shot1"></span>
+          <span class="throw" id="frame4shot2"></span>
+        </span>
+        <div id="frame4total"></div>
+      </span>
+      <span class="frame" id="frame5">
+        <span class="throws">
+          <span class="throw1" id="frame5shot1"></span>
+          <span class="throw" id="frame5shot2"></span>
+        </span>
+        <div id="frame5total"></div>
+      </span>
+      <span class="frame" id="frame6">
+        <span class="throws">
+          <span class="throw1" id="frame6shot1"></span>
+          <span class="throw" id="frame6shot2"></span>
+        </span>
+        <div id="frame6total"></div>
+      </span>
+      <span class="frame" id="frame7">
+        <span class="throws">
+          <span class="throw1" id="frame7shot1"></span>
+          <span class="throw" id="frame7shot2"></span>
+        </span>
+        <div id="frame7total"></div>
+      </span>
+      <span class="frame" id="frame8">
+        <span class="throws">
+          <span class="throw1" id="frame8shot1"></span>
+          <span class="throw" id="frame8shot2"></span>
+        </span>
+        <div id="frame8total"></div>
+      </span>
+      <span class="frame" id="frame9">
+        <span class="throws">
+          <span class="throw1" id="frame9shot1"></span>
+          <span class="throw" id="frame9shot2"></span>
+        </span>
+        <div id="frame9total"></div>
+      </span>
+      <span class="frame" id="frame10">
+        <span class="throws">
+          <span class="throw1f10" id="frame10shot1"></span>
+          <span class="throwf10" id="frame10shot3"></span>
+          <span class="throwf10" id="frame10shot2"></span>
+        </span>
+        <div id="frame10total"></div>
+      </span>
+      <span class="total" id="total">0</span>
+    </span>
+  </div>
+  <div class="inputs">
+    <div id="nameselect">Please enter player name:
+      <input type="text" id="playername">
+      <button type="button" id="namebutton">Submit</button>
+    </div>
+    <div id="inputscores" class="hidden">
+      Enter the score from your throw:
+      <input type="text" id="score">
+      <button type="button" id="submitscore">Submit</button>
+    </div>
+  </div>
+</body>
+</html>

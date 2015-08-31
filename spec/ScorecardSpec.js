@@ -5,8 +5,8 @@ describe("ScoreCard", function() {
     scorecard = new ScoreCard();
   });
 
-  describe('shows current total score', function() {
-    it('assumes the default total score is zero', function() {
+  describe('shows current score', function() {
+    it('assumes the default score is zero', function() {
       expect(scorecard.totalScore).toBe(0);
     });
 
@@ -34,7 +34,3 @@ describe("ScoreCard", function() {
   });
 
 });
-
-
-
-   

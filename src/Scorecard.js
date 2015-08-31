@@ -101,7 +101,8 @@ Scorecard.prototype.isASpareOrStrike = function(turn){
 };
 
 Scorecard.prototype.isASpare = function(turn){
-  return turn[0] < this.numberOfPins && this.sumArray(turn) === this.numberOfPins;
+  return turn[0] < this.numberOfPins
+    && this.sumArray(turn) === this.numberOfPins;
 ;}
 
 Scorecard.prototype.isAStrike = function(turn){

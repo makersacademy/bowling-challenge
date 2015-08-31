@@ -232,6 +232,18 @@ describe('Bowling', function() {
         bowling.secondRoll(3);
         expect(bowling.totalScore).toEqual(102);
       });
+
+      it('10th frame', function() {
+        for ( var i = 0; i < 8; i++ ) {
+          bowling.firstRoll(0);
+          bowling.secondRoll(0);
+        }
+        bowling.firstRoll(10);
+        bowling.firstRoll(10);
+        bowling.secondRoll(10);
+        bowling.thirdRoll(10);
+        expect(bowling.totalScore).toEqual(60);
+      });
     });
   });
 });

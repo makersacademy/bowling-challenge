@@ -60,7 +60,6 @@ $(document).ready(function() {
 
       //check if frame is a spare
       if (scorecard.scoreForFrame(frame) === 10 && score !== "X") {
-        console.log("spare");
         $("td[id='" + frame + "'] td:last").text("/");
         $("#totals").append('<td></td>');
         if (frame === 10) {
@@ -69,7 +68,6 @@ $(document).ready(function() {
         else {
           scorecard.nextFrame();
         }
-        console.log(frame);
         $("button").show();
       }
 

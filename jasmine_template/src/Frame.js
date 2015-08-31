@@ -5,6 +5,7 @@ var Frame = function() {
   this.rollTwoScore = 0;
   this.totalFrameScore = 0;
   this.totalGameScore = 0;
+  this.strike = 10;
 };
 
 Frame.prototype.newGame = function() {
@@ -13,6 +14,8 @@ Frame.prototype.newGame = function() {
 
 Frame.prototype.rollOne = function(number) {
   if (this.totalTurns <= 0 ) {
+    if (this.strike === true) {
+      return 'STRIKE!'}
   } else {
     this.totalTurns --;
     this.rollOneScore = number;

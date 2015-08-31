@@ -5,7 +5,7 @@ describe('Frame', function() {
     frame = new Frame();
   });
 
-  describe('amount of pins', function() {
+  describe('pins', function() {
     it('begins each new frame with 10 pins', function() {
       expect(frame.pins).toEqual(10);
     });
@@ -15,7 +15,7 @@ describe('Frame', function() {
     });
   });
 
-  describe('turns per frame', function() {
+  describe('frames', function() {
     it('a player can have 2 turns within a frame', function() {
       expect(frame.totalTurns).toEqual(2);
     });
@@ -49,11 +49,10 @@ describe('Frame', function() {
         expect(frame.totalFrameScore).toEqual(4);
       });
 
-      // it('keeps a total score of the amount of points for the game', function() {
-      //   frame.totalFrameScore = frame.rollOne(3); + frame.rollTwo(2);
-      //   // frame.totalFrameScore(4);
-      //   expect(frame.totalGameScore).toEqual(5);
-      // });
+      it('is a strike when all pins are hit in one go', function() {
+        frame.rollOne(10);
+        expect(frame.strike).toEqual(10);
+      });
     });
   });
 });

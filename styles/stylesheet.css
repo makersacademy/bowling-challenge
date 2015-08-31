@@ -1,0 +1,62 @@
+.scorecard {
+  width: 1000px;
+  height: 130px;
+  background-color: blue;
+  font-size: 0;
+}
+
+.frame {
+  width: 100px;
+  height:inherit;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  display: inline-block;
+}
+
+.label {
+  height: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  box-sizing: border-box;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+/*.rolls {
+  height: 50%;
+  display: inline;
+}*/
+
+.first-roll {
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
+  border-bottom-width: 1px;
+
+}
+
+input{
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  padding: 0;
+  border: none;
+  background-color: blue;
+}
+
+.second-roll {
+    box-sizing: border-box;
+    display: inline;
+    float: left;
+    width: 50%;
+    border-style: solid;
+    border-bottom-width: 2px;
+    border-top-width: 0;
+    border-right-width: 0;
+
+}

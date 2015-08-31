@@ -1,5 +1,13 @@
 source 'https://rubygems.org'
 ruby '2.2.2'
 
-gem 'sinatra'
+
+group :test do
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'rspec'
+end
+
 gem 'rack'
+gem 'selenium-webdriver'
+gem 'sinatra'

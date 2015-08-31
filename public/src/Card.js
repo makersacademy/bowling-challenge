@@ -1,18 +1,15 @@
 function Card () {
-  this.totalRolls = 20;
+  this.numberOfIndividualRolls = 20;
   this.scoreArray=[];
 }
  
 Card.prototype.isGameOver = function() {
-  return (this.getCurrentRoll() === this.totalRolls)
+  return (this.scoreArray.length === this.numberOfIndividualRolls)
   };
 
-  Card.prototype.getCurrentRoll = function() {
-    return this.scoreArray.length;
-  };
 
 Card.prototype.updateScoreArray = function(smashedPins) {
-  if (smashedPins === 10){
+  if ((smashedPins === 10) && (((this.scoreArray.length+1)%2) > 0)) {
     this.scoreArray.push(smashedPins);
     this.scoreArray.push('X');
   } else {
@@ -24,22 +21,26 @@ Card.prototype.getScoreArray = function(roll) {
   return this.scoreArray[roll];
 };
 
-Card.prototype.setTotalRolls = function() {
+Card.prototype.setNumberOfIndividualRolls = function() {
+  
   if (this.getScoreArray(18) === 10){
-    this.totalRolls = 21;
+    this.numberOfIndividualRolls = 21;
   } else if 
     (this.getScoreArray(18)+this.getScoreArray(19) === 10) {
-      this.totalRolls = 20;
+      this.numberOfIndividualRolls = 20;
   }
 };
 
 
-Card.prototype.getBasicScore = function(array) {
+Card.prototype.getBasicScore = function(rolls) {
   var basicScore = 0;
-  for (i = 0; i < array.length; i++) {
-    if (typeof array[i] === 'number'){
-    basicScore += array[i];
+  var counter = 0;
+  for (i = 0; i < rolls.length; i++) {
+    if (typeof rolls[i] === 'number'){
+    basicScore += rolls[i];
     }
+    counter ++;
+    if (this.numberOfIndividualRolls > 20 && counter >= 20){ break; }
   }
   return basicScore;
 };
@@ -47,17 +48,22 @@ Card.prototype.getBasicScore = function(array) {
 Card.prototype.getStrikeBonuses = function(array) {
   var strikeBonuses = 0;
   var size = array.length;
-  for (i=0; i < size; i+=2){
+  var counter2 =0;
+
+  for (i=0; i < 20; i+=2){
     if (array[i] === 10){
         var counter = 0; 
-      for(j=(i+1); j < size; j++){ 
+      for(j=(i+1); j < 23; j++){ 
         if(typeof array[j] === 'number'){
           strikeBonuses += array[j];
+          console.log(strikeBonuses);
           counter++;
+          if (counter >= 2) { break; }
         }
-        if (counter >= 2 || j > size) { break; }
       }
     }
+    counter2 ++;
+    if (this.numberOfIndividualRolls > 20 && counter2 >= 20){ break; }
   }    
   return strikeBonuses;
 };
@@ -66,7 +72,7 @@ Card.prototype.getStrikeBonuses = function(array) {
 Card.prototype.getSpareBonuses = function(array) {
   var spareBonuses = 0
 
-  for (i=0; i < array.length; i+=2){
+  for (i=0; i < 20; i+=2){
     if ((array[i] + array[i+1]) === 10 && !(isNaN(array[i+2]))){
       spareBonuses += array[i+2];
     } 
@@ -75,8 +81,24 @@ Card.prototype.getSpareBonuses = function(array) {
 };
 
 Card.prototype.getTotalScore = function(array) {
+  // console.log(this.getBasicScore(array));
+  // console.log(this.getSpareBonuses(array));
+  // console.log(this.getStrikeBonuses(array));
+
   var totalScore = this.getBasicScore(array)+this.getSpareBonuses(array)+this.getStrikeBonuses(array);
   return totalScore;
+};
+
+Card.prototype.currentFrame = function(array) {
+  return Math.floor(array.length/2)+1;
+};
+
+Card.prototype.currentRoll = function(array) {
+  return (array.length%2) > 0 ? 2 : 1
+};
+
+Card.prototype.pinsStanding = function(array) {
+  return array.length%2 === 0? 10 : 10 - array[array.length-1];
 };
 
 

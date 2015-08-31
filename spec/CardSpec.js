@@ -9,7 +9,7 @@ describe("A card", function(){
   describe("at initialization should", function(){
     
     it("have 20 rolls", function(){
-      expect(card.totalRolls).toEqual(20);
+      expect(card.numberOfIndividualRolls).toEqual(20);
     });
 
   });
@@ -17,7 +17,7 @@ describe("A card", function(){
   describe("can check if a game is over", function(){
     
     it("returning true if score array size = totalRolls", function(){
-      spyOn(card, 'getCurrentRoll').and.returnValue(20);
+      for (i = 0; i < 20; i++) { card.updateScoreArray(3); };
       expect(card.isGameOver()).toEqual(true);
     });
 
@@ -27,7 +27,7 @@ describe("A card", function(){
 
   });  
 
-describe("can log a roll", function(){ // ** these tests do not read well
+describe("can log a roll", function(){ 
     
     beforeEach(function(){
       preArraySize = card.scoreArray.length;
@@ -40,15 +40,17 @@ describe("can log a roll", function(){ // ** these tests do not read well
     });
 
     it("which will register pins smashed in scoreArray", function(){
-      expect(card.scoreArray.pop()).toEqual(9); 
+      expect(card.scoreArray.pop()).toEqual(9);
     });
 
-    it("which will increase the size of scoreArray by 2 after a roll of 10", function(){
+    it("which will increase the size of scoreArray by 2 after a roll of 10 on first roll", function(){
+      card.updateScoreArray(9);
       card.updateScoreArray(10);
-      expect(card.scoreArray.length).toEqual(preArraySize+3);
+      expect(card.scoreArray.length).toEqual(preArraySize+4);
     });
 
-    it("which will register 10 and 0 pins smashed in scoreArray after a roll of 10", function(){
+    it("which will register 10 and X pins smashed in scoreArray after a roll of 10", function(){
+      card.updateScoreArray(9);
       card.updateScoreArray(10);
       expect(card.scoreArray.pop()).toEqual('X');
       expect(card.scoreArray.pop()).toEqual(10); 
@@ -60,24 +62,24 @@ describe("can update total rolls", function(){
 
       it("by increasing them to 21 if roll 18 is a strike", function(){
         spyOn(card, 'getScoreArray').and.returnValue(10);
-        card.setTotalRolls();
-        expect(card.totalRolls).toEqual(21);
+        card.setNumberOfIndividualRolls();
+        expect(card.numberOfIndividualRolls).toEqual(21);
       });
 
       it("by increasing them to 20 if roll 18 and 19 represent a spare", function(){
         for (i = 0; i < 18; i++) { card.updateScoreArray(1); }
         card.updateScoreArray(5);
         card.updateScoreArray(5);
-        card.setTotalRolls();
-        expect(card.totalRolls).toEqual(20);
+        card.setNumberOfIndividualRolls();
+        expect(card.numberOfIndividualRolls).toEqual(20);
       });
 
     it("but leave them unchanged if 19 + 20 is less than 10", function(){
       for (i = 0; i < 19; i++) { card.updateScoreArray(1); }
       card.updateScoreArray(4);
       card.updateScoreArray(5);
-      card.setTotalRolls();
-      expect(card.totalRolls).toEqual(20);
+      card.setNumberOfIndividualRolls();
+      expect(card.numberOfIndividualRolls).toEqual(20);
     });
 
   });
@@ -104,37 +106,49 @@ describe("can update total rolls", function(){
       expect(card.getSpareBonuses(card.scoreArray)).toEqual(7);
     });
 
-    it("can calculate total score", function(){
-      for (i = 0; i < 22; i++) { card.updateScoreArray(3); };
-      card.scoreArray[4] = 10;
-      card.scoreArray[8] = 6;
-      card.scoreArray[9] = 4;
-      card.scoreArray[18] = 10;
-      card.setTotalRolls();
-      expect(card.getTotalScore(card.scoreArray)).toEqual(99);
-    });
-
-    it("total score of 106", function(){
-      for (i = 0; i < 22; i++) { card.updateScoreArray(3); };
-      card.scoreArray[4] = 10;
-      card.scoreArray[8] = 6;
-      card.scoreArray[9] = 4;
-      card.scoreArray[10] = 3;
-      card.scoreArray[11] = 7;
-      card.scoreArray[18] = 10;
-      card.setTotalRolls();
-      expect(card.getTotalScore(card.scoreArray)).toEqual(106);
-    });
-
     it("perfect game", function(){
-      for (i = 0; i < 22; i+=2) { 
+      for (i = 0; i <= 22; i+=2) { 
         card.updateScoreArray(10);
       };
-      card.setTotalRolls();
-      console.log(card.scoreArray);
+      card.setNumberOfIndividualRolls();
       expect(card.getTotalScore(card.scoreArray)).toEqual(300);
+    });
+
+  });
+  
+  describe("can caluclate current frame and roll", function(){
+    
+    it("(frame) at the beginning of a game", function(){
+      expect(card.currentFrame(card.scoreArray)).toEqual(1);
+    });
+
+    it("(roll) at the beginning of a game", function(){
+      expect(card.currentRoll(card.scoreArray)).toEqual(1);
+    });
+
+    it("in the middle of a game", function(){
+      for (i = 0; i < 11; i++) { card.updateScoreArray(3); };
+      expect(card.currentFrame(card.scoreArray)).toEqual(6);
+      expect(card.currentRoll(card.scoreArray)).toEqual(2);
+    });
+    
+  });
+
+  describe("knows how many pins are standing", function(){
+
+    it("at the begining of a frame", function() {
+      expect(card.pinsStanding(card.scoreArray)).toEqual(10);
+    });
+
+    it("roll 2 after roll 1 was not a strike", function() {
+      card.updateScoreArray(3);
+      expect(card.pinsStanding(card.scoreArray)).toEqual(7);
     });
 
   });
 
 });
+
+
+
+

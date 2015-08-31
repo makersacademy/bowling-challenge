@@ -72,25 +72,41 @@ BowlingScore.prototype.calculateBonusScore = function(first_argument) {
 
 BowlingScore.prototype.calculateStrikeScore = function() {
   for (var i = 0; i < this.strikes.length; i++) {
-      if (this.bowlingFrames[this.strikes[i] + 1] && this.bowlingFrames[this.strikes[i] + 1].length === 2 ) {
+    if (this.nextBallNonStrike(i)) {
         var score = this.bowlingFrames[this.strikes[i] + 1].reduce(function(a, b) { return a + b; });
         this.updateBonusScore(score, this.strikes, i);
     };
-      if (this.bowlingFrames[this.strikes[i] + 1]  && this.bowlingFrames[this.strikes[i] + 2]) {
+    if (this.nextBallStrike(i)) {
         var frameScores = this.bowlingFrames[this.strikes[i] + 1].concat(this.bowlingFrames[this.strikes[i] + 2][0]);
         var score = frameScores.reduce(function(a, b) { return a + b; });
         this.updateBonusScore(score, this.strikes, i);
-     };
+    };
   };
+};
+
+BowlingScore.prototype.nextBallNonStrike = function(strike) {
+  return this.bowlingFrames[this.strikes[strike] + 1] && this.bowlingFrames[this.strikes[strike] + 1].length === 2
+};
+
+BowlingScore.prototype.nextBallStrike = function(strike) {
+  return this.bowlingFrames[this.strikes[strike] + 1]  && this.bowlingFrames[this.strikes[strike] + 2]
+};
+
+BowlingScore.prototype.method_name = function(first_argument) {
+  // body...
 };
 
 BowlingScore.prototype.calculateSpareScore = function(first_argument) {
   for (var i = 0; i < this.spares.length; i++) {
-      if (this.bowlingFrames[this.spares[i] + 1] !== undefined) {
+      if (this.nextBallRolled(i)) {
         var score = (this.bowlingFrames[this.spares[i] + 1][0]);
         this.updateBonusScore(score, this.spares, i);
     };
   };
+};
+
+BowlingScore.prototype.nextBallRolled = function(spare) {
+  return this.bowlingFrames[this.spares[spare] + 1] !== undefined;
 };
 
 BowlingScore.prototype.updateBonusScore = function(score, bonusArray, position) {

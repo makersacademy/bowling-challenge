@@ -162,6 +162,16 @@ describe('Scorecard', function() {
         [10,0,10,0,10],[10,0,10,0,10],[10,0,10,10],[10,10,10]]);
       expect(scorecard.cumulativeScore(scorecard.gameStorage)).toEqual(300);
     });
+    it("that a string of 'spares' can give you a 3rd ball on round 10", function(){
+      for (turn = 1; turn <= 9; turn++) {scorecard.roll(5); scorecard.roll(5)};
+      scorecard.roll(5);
+      scorecard.roll(5);
+      scorecard.roll(5);
+      expect(scorecard.gameStorage).toEqual([[5,5,5],[5,5,5],
+        [5,5,5],[5,5,5],[5,5,5],[5,5,5],
+        [5,5,5],[5,5,5],[5,5,5],[5,5,5]]);
+      expect(scorecard.cumulativeScore(scorecard.gameStorage)).toEqual(150);
+    });
     it("that a string of 'strikes' won't give you a 4th ball on round 10", function(){
       for (turn = 1; turn <= 9; turn++) {scorecard.roll(10); scorecard.roll(0)};
       scorecard.roll(10);

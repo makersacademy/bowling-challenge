@@ -1,13 +1,5 @@
 "Turn" is used in place of the more common bowling parlance of "frame" as "frame" is a reserved word in JS.
 
-
-
-
-
-
-
-
-
 Bowling Challenge
 =================
 

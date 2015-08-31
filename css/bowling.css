@@ -35,6 +35,11 @@ button {
   height: 50px;
 }
 
+button:hover {
+  border: 4px solid #96CCCC;
+  cursor: pointer;
+}
+
 #buttons {
   display: block;
   margin-left: 20px;
@@ -43,4 +48,9 @@ button {
 
 #game_over {
   display: none;
+}
+
+#play_again {
+  font-family: 'Armata', sans-serif;
+  width: 150px;
 }

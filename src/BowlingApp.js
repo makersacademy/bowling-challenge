@@ -1,6 +1,11 @@
 $(document).ready(function() {
   var scorecard = new ScoreCard();
 
+  $("#play_again").click(function() {
+    $("#game_over").hide();
+    location.reload();
+  });
+
   $("button").click(function(event) {
     if (scorecard.frame === 11) {
       gameOver();
@@ -27,11 +32,9 @@ $(document).ready(function() {
 
     //deal with strike - tenth frame - allows extra roll
     if (score === "X" && frame === 10) {
-
       if (scorecard.roll === 1) {
         $("#totals").append('<td id="strike"></td>');
       }
-
       if (scorecard.roll === 3) {
         $("#totals td:last").text(scorecard.scoreForFrame(frame));
         $("#total").text(scorecard.grandTotal());
@@ -78,8 +81,7 @@ $(document).ready(function() {
       }
 
       //a normal score and moving on
-      if (scorecard.scoreForFrame(frame) !== 10) {
-        console.log("else");
+      if (scorecard.scoreForFrame(frame) !== 10 && scorecard.frame !== 10) {
         $("#totals").append('<td>' + scorecard.scoreForFrame(frame) + '</td>');
         scorecard.nextFrame();
         $("button").show();
@@ -105,11 +107,6 @@ $(document).ready(function() {
 
   function gameOver() {
     $("#game_over").show();
-  }
-
-  function playAgain() {
-    $("game_over").hide();
-    scorecard.scores.clear();
   }
 
 });

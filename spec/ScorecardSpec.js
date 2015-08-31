@@ -152,15 +152,23 @@ describe('Scorecard', function() {
       scorecard.roll(3);
       expect(scorecard.gameStorage).toEqual([[10,0,10,0,5],[10,0,5,3],[5,3]]);
     });
-    it("that a string of 'strikes' can give you a 3rd ball on round 10, and not a 4th", function(){
+    it("that a string of 'strikes' can give you a 3rd ball on round 10", function(){
       for (turn = 1; turn <= 9; turn++) {scorecard.roll(10); scorecard.roll(0)};
-      scorecard.roll(10); scorecard.roll(10); scorecard.roll(10);
+      scorecard.roll(10);
+      scorecard.roll(10);
+      scorecard.roll(10);
       expect(scorecard.gameStorage).toEqual([[10,0,10,0,10],[10,0,10,0,10],
         [10,0,10,0,10],[10,0,10,0,10],[10,0,10,0,10],[10,0,10,0,10],
         [10,0,10,0,10],[10,0,10,0,10],[10,0,10,10],[10,10,10]]);
       expect(scorecard.cumulativeScore(scorecard.gameStorage)).toEqual(300);
     });
-
+    it("that a string of 'strikes' won't give you a 4th ball on round 10", function(){
+      for (turn = 1; turn <= 9; turn++) {scorecard.roll(10); scorecard.roll(0)};
+      scorecard.roll(10);
+      scorecard.roll(10);
+      scorecard.roll(10);
+      scorecard.roll(10);
+      expect( function() {scorecard.updateGameStorageWithTurn([1,1]); }).toThrow("You only get 10 turns");
+    });
   });
-
 });

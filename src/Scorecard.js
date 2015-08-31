@@ -7,6 +7,34 @@ var Scorecard = function() {
   this.currentStageOfTurn = 1;
 };
 
+Scorecard.prototype.roll = function(pinsHit) {
+  this.verifyRoll(pinsHit);
+  this.currentTurnStorage.push(pinsHit);
+  if (this.shouldAddSpareBonus()) {
+    this.previousTurnStorage.push(pinsHit);
+  };
+  if (this.shouldAddStrikeBonus()) {
+    this.previousTurnStorage.push(pinsHit);
+  };
+  if (this.shouldAddCumulativeStrikeBonus()) {
+    this.twoTurnsAgoStorage.push(pinsHit);
+  };
+  this.moveToNextStageOfTurn();
+};
+
+Scorecard.prototype.moveToNextStageOfTurn = function () {
+  if (this.isRollOne()) {
+    this.currentStageOfTurn = 2 ;
+  }
+  else if (this.shouldReset()) {
+    this.resetTurn();
+  }
+  else if (this.thereWillBeAThirdRoll()) {
+    this.currentStageOfTurn = 3;
+  };
+};
+
+
 Scorecard.prototype.flatten = function(arrayOfArrays){
   var flattened = [];
   flattened = flattened.concat.apply(flattened, arrayOfArrays);
@@ -15,8 +43,9 @@ Scorecard.prototype.flatten = function(arrayOfArrays){
 
 Scorecard.prototype.sumArray = function(array) {
   return array.reduce(function(a, b) {
-  return a + b;
-})};
+    return a + b;
+  })
+};
 
 Scorecard.prototype.cumulativeScore = function(arrayOfArrays){
   var allScoresFlatArray = this.flatten(arrayOfArrays);
@@ -51,48 +80,106 @@ Scorecard.prototype.isAStrike = function(turn){
   }
 ;}
 
-
-Scorecard.prototype.roll = function(pinsHit) {
-  this.verifyRoll(pinsHit);
-  this.currentTurnStorage.push(pinsHit);
-  // spare bonus
+Scorecard.prototype.shouldAddSpareBonus = function(){
   if (this.currentStageOfTurn === 1
     && this.turnNumber > 1
     && this.isASpareOrStrike(this.previousTurnStorage)) {
-    this.previousTurnStorage.push(pinsHit);
-  };
-  // strike bonus
+      return true;
+    }
+  else {
+    return false;
+  }
+};
+
+Scorecard.prototype.shouldAddStrikeBonus = function(){
   if (this.currentStageOfTurn === 2
     && this.turnNumber > 1
     && this.isAStrike(this.previousTurnStorage)) {
-    this.previousTurnStorage.push(pinsHit);
-  };
-  // double strike bonus
+      return true;
+    }
+  else {
+    return false;
+  }
+};
+
+Scorecard.prototype.shouldAddCumulativeStrikeBonus = function(){
   if (this.currentStageOfTurn !== 2
     && this.turnNumber > 2
     && this.isAStrike(this.previousTurnStorage)
     && this.isAStrike(this.twoTurnsAgoStorage)) {
-    this.twoTurnsAgoStorage.push(pinsHit);
-  };
-  this.moveToNextStageOfTurn();
+      return true;
+    }
+  else {
+    return false;
+  }
 };
 
-Scorecard.prototype.moveToNextStageOfTurn = function () {
-  if (this.currentStageOfTurn === 1) {
-    this.currentStageOfTurn = 2 ;
+Scorecard.prototype.shouldReset = function () {
+  if (this.isNotLastTurn() || this.isRollThree()){
+    return true;
   }
-  else if (this.turnNumber < 10) {
-    this.resetTurn();
+  else {
+    return false;
   }
-  else if (this.currentStageOfTurn === 3) {
-    this.resetTurn();
-  }
-  else if (this.turnNumber === 10
-    && this.currentTurnStorage[0] === 10
-    && this.currentStageOfTurn === 2) {
-    this.currentStageOfTurn = 3;
-  };
 };
+
+Scorecard.prototype.isRollOne = function () {
+  if (this.currentStageOfTurn === 1){
+    return true;
+  }
+  else {
+    return false;
+  }
+};
+
+Scorecard.prototype.isRollTwo = function () {
+  if (this.currentStageOfTurn === 2){
+    return true;
+  }
+  else {
+    return false;
+  }
+};
+
+
+Scorecard.prototype.thereWillBeAThirdRoll = function () {
+  if (this.isLastTurn() && this.isAStrike && this.isRollTwo()){
+    return true;
+  }
+  else {
+    return false;
+  }
+};
+
+Scorecard.prototype.isRollThree = function () {
+  if (this.currentStageOfTurn === 3){
+    return true;
+  }
+  else {
+    return false;
+  }
+};
+
+
+Scorecard.prototype.isLastTurn = function () {
+  if (this.turnNumber === 10){
+    return true;
+  }
+  else {
+    return false;
+  }
+};
+
+Scorecard.prototype.isNotLastTurn = function () {
+  if (this.turnNumber < 10){
+    return true;
+  }
+  else {
+    return false;
+  }
+};
+
+
 
 Scorecard.prototype.resetTurn = function () {
     this.updateGameStorageWithTurn(this.currentTurnStorage);

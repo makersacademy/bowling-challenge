@@ -16,12 +16,11 @@ describe('Scorecard', function() {
       expect(scorecard.flatten([[2,3],[4,5]])).toEqual([2,3,4,5]);
     });
     it("a total score when requested", function(){
-      // scorecard.roll(1);
-      // scorecard.roll(2);
-      // scorecard.roll(3);
-      // scorecard.roll(4);
-      this.gameStorage = ([[1,2],[3,4]]);
-      expect(scorecard.cumulativeScore(this.gameStorage)).toEqual(10);
+      scorecard.roll(1);
+      scorecard.roll(2);
+      scorecard.roll(3);
+      scorecard.roll(4);
+      expect(scorecard.cumulativeScore(scorecard.gameStorage)).toEqual(10);
     });
   });
 
@@ -36,7 +35,7 @@ describe('Scorecard', function() {
       expect( function() {scorecard.verifyTurn(6,5); }).toThrow("Before bonuses, two rolls can only score 0 to 10 inclusive");
     });
     it("you try to take a turn past the 10th", function(){
-      for (turn = 1; turn < 10; turn++) {scorecard.updateGameStorageWithTurn([1,1])};
+      for (turn = 1; turn < 11; turn++) {scorecard.updateGameStorageWithTurn([1,1])};
       expect( function() {scorecard.updateGameStorageWithTurn([1,1]); }).toThrow("You only get 10 turns");
     });
   });
@@ -81,9 +80,13 @@ describe('Scorecard', function() {
       expect(scorecard.turnNumber).toEqual(10);
     });
     it("and it knows when the game is over", function(){
-      for (turn = 1; turn < 10; turn++) {scorecard.updateGameStorageWithTurn([1,1])};
+      for (turn = 1; turn < 11; turn++) {scorecard.updateGameStorageWithTurn([1,1])};
       expect( function() {scorecard.updateGameStorageWithTurn([1,1]); }).toThrow("You only get 10 turns");
       expect(scorecard.turnNumber).toEqual("Game Over");
+    });
+    it("can play an entire, non bonus game", function(){
+      for (turn = 1; turn < 11; turn++) {scorecard.updateGameStorageWithTurn([1,1])};
+      expect(scorecard.cumulativeScore(scorecard.gameStorage)).toEqual(20);
     });
   });
 
@@ -154,7 +157,7 @@ describe('Scorecard', function() {
       scorecard.roll(10); scorecard.roll(10); scorecard.roll(10);
       expect(scorecard.gameStorage).toEqual([[10,0,10,0,10],[10,0,10,0,10],
         [10,0,10,0,10],[10,0,10,0,10],[10,0,10,0,10],[10,0,10,0,10],
-        [10,0,10,0,10],[10,0,10,0,10],[10,0,10,0,10],[10,0,10,0,10]]);
+        [10,0,10,0,10],[10,0,10,0,10],[10,0,10,10],[10,10,10]]);
       expect(scorecard.cumulativeScore(scorecard.gameStorage)).toEqual(300);
     });
 

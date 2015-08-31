@@ -11,9 +11,7 @@ var Bowling = function Bowling() {
 };
 
 Bowling.prototype.firstRoll = function(number) {
-  if (number < 0 || number > 10) {
-    throw new Error('That is an invalid number')
-  }
+  if (this._isInvalid(number)) throw new Error('That is an invalid number');
   if (number === 10 && this.frameNumber < 10) {
     this.strike += 1
     this.frameNumber += 1
@@ -28,9 +26,7 @@ Bowling.prototype.firstRoll = function(number) {
 };
 
 Bowling.prototype.secondRoll = function(number) {
-  if ((number + this.firstRollScore > 10) && (this.frameNumber < 10)) {
-    throw new Error('That is an invalid number')
-  }
+  if ((number + this.firstRollScore > 10) && (this.frameNumber < 10)) throw new Error('That is an invalid number');
   if (this.firstRollScore + number === 10) {
     this.spare += 1
   }
@@ -52,6 +48,10 @@ Bowling.prototype.secondRoll = function(number) {
 Bowling.prototype.thirdRoll = function(number) {
   this.thirdRollScore = number
   this._countsTotalScore();
+};
+
+Bowling.prototype._isInvalid = function(number) {
+  return number < 0 || number > 10
 };
 
 Bowling.prototype._calculatesConsecutiveBonusPoints = function(number) {

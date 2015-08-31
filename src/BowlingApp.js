@@ -2,6 +2,10 @@ $(document).ready(function() {
   var scorecard = new ScoreCard();
 
   $("button").click(function(event) {
+    if (scorecard.frame === 11) {
+      gameOver();
+    }
+
     var score = scorecard.scoreForRoll($(this).data("pins"));
     var frame = scorecard.frame;
     $("td[id='" + frame + "']").append('<td>' + score +'</td>');
@@ -53,11 +57,16 @@ $(document).ready(function() {
 
       //check if frame is a spare
       if (scorecard.scoreForFrame(frame) === 10 && score !== "X") {
+        console.log("spare");
         $("td[id='" + frame + "'] td:last").text("/");
         $("#totals").append('<td></td>');
-
-        (frame === 10) ? scorecard.nextRoll() : scorecard.nextFrame();
-
+        if (frame === 10) {
+          scorecard.nextRoll();
+          }
+        else {
+          scorecard.nextFrame();
+        }
+        console.log(frame);
         $("button").show();
       }
 
@@ -69,7 +78,8 @@ $(document).ready(function() {
       }
 
       //a normal score and moving on
-      else {
+      if (scorecard.scoreForFrame(frame) !== 10) {
+        console.log("else");
         $("#totals").append('<td>' + scorecard.scoreForFrame(frame) + '</td>');
         scorecard.nextFrame();
         $("button").show();

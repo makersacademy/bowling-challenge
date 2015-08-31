@@ -22,8 +22,8 @@ describe("ScoreCard", function() {
     expect(scorecard.frame).toEqual(2);
   });
 
-  it("is limited to 10 frames", function() {
-    for(var i = 0; i < 10; i++) {
+  it("is limited to 11 frames", function() {
+    for(var i = 0; i < 11; i++) {
       scorecard.nextFrame();
     }
     expect(scorecard.nextFrame()).toEqual("End of game!");

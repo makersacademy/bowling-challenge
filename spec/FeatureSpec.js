@@ -4,6 +4,7 @@ describe('BowlingApp',function(){
     jasmine.getFixtures().fixturesPath = '.';
     loadFixtures('index.html');
     $.holdReady(false);
+    scorecard = new ScoreCard();
   });
 
   it("displays score in table when a button is clicked", function() {
@@ -88,4 +89,5 @@ describe('BowlingApp',function(){
     expect("td[id=2]").toContainText(7);
     expect("#running_total").toContainText(24);
   });
+
 });

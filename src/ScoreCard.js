@@ -7,7 +7,7 @@ function ScoreCard() {
 
 ScoreCard.prototype.nextFrame = function() {
 
-  return this.frame < 11 ? this.frame += 1 : "End of game!";
+  return this.frame < 12 ? this.frame += 1 : "End of game!";
 }
 
 ScoreCard.prototype.nextRoll = function() {

@@ -6,22 +6,49 @@ var BowlingScore = function(){
   this.currentBall = 1;
   this.strikes = [];
   this.spares = [];
+  this.finalFrameBallCount = 2
+  this.defaultGamelength = 10
 };
 
 BowlingScore.prototype.recordRoll = function(pinsHit) {
   this.checkifGameOver();
   this.checkValidRoll(pinsHit);
+  this.processRoll(pinsHit);
+  this.currentBall++;
+  if (this.bowlingFrames.length === 10 && this.currentBall === 2) {
+    this.processFinalScore()
+  };
+};
+
+BowlingScore.prototype.processFinalScore = function() {
+  if (this.spares[0] === 9) {
+    console.log(this.bowlingFrames[9][0] + this.bowlingFrames[9][1]);
+    this.score += (this.bowlingFrames[9][0] + this.bowlingFrames[9][1] + 1);
+  };
+
+};
+
+BowlingScore.prototype.processRoll = function(pinsHit) {
   this.framePinCount = this.framePinCount - pinsHit;
   this.currentFrame.push(pinsHit);
-  //put check here at some point for 10th frame.
-  //move the below method into it's own for normal frame and have one for 10th frame
   if (this.currentBall === 2 || pinsHit === 10) {
     this.bowlingFrames.push(this.currentFrame);
     this.resetFrame();
     this.calculateScore();
   };
-  this.currentBall++;
   this.calculateBonusScore();
+};
+
+
+BowlingScore.prototype.resetFrame = function() {
+  this.currentFrame = [];
+  this.currentBall = 0;
+  this.framePinCount = 10;
+};
+
+
+BowlingScore.prototype.isLastFrame = function() {
+  return this.bowlingFrames.length === 9;
 };
 
 BowlingScore.prototype.checkValidRoll = function(pinsHit) {
@@ -31,7 +58,7 @@ BowlingScore.prototype.checkValidRoll = function(pinsHit) {
 };
 
 BowlingScore.prototype.checkifGameOver = function() {
-  if (this.currentFrameNumber() >= 10) {
+  if (this.bowlingFrames.length > this.defaultGamelength) {
     throw new Error("game over 10 frames bowled");
   };
 };
@@ -40,11 +67,7 @@ BowlingScore.prototype.currentFrameNumber = function() {
   return this.bowlingFrames.length;
 };
 
-BowlingScore.prototype.resetFrame = function() {
-  this.currentFrame = [];
-  this.currentBall = 0;
-  this.framePinCount = 10;
-};
+
 
 BowlingScore.prototype.calculateScore = function() {
   var frameScore = this.bowlingFrames[this.bowlingFrames.length -1].reduce(function(a, b) {
@@ -54,15 +77,23 @@ BowlingScore.prototype.calculateScore = function() {
 };
 
 BowlingScore.prototype.recordBonus = function() {
-  (this.bowlingFrames[this.bowlingFrames.length - 1][1] === undefined) ? this.recordStrike() : this.recordSpare();
+    (this.bowlingFrames[this.bowlingFrames.length - 1][1] === undefined) ? this.recordStrike() : this.recordSpare();
+    if (this.bowlingFrames.length === 10
+      && this.bowlingFrames[this.bowlingFrames.length - 1][0] < 10
+      && (this.bowlingFrames[this.bowlingFrames.length - 1][0] + this.bowlingFrames[this.bowlingFrames.length - 1][1] === 10) ) {
+      this.recordSpare();
+    }
+
 };
 
 BowlingScore.prototype.recordStrike = function() {
   this.strikes.push(this.bowlingFrames.length -1);
+  if (this.isLastFrame()) { this.defaultGamelength++};
 };
 
 BowlingScore.prototype.recordSpare = function() {
   this.spares.push(this.bowlingFrames.length -1);
+  if (this.isLastFrame()) { this.defaultGamelength++};
 };
 
 BowlingScore.prototype.calculateBonusScore = function(first_argument) {
@@ -73,14 +104,22 @@ BowlingScore.prototype.calculateBonusScore = function(first_argument) {
 BowlingScore.prototype.calculateStrikeScore = function() {
   for (var i = 0; i < this.strikes.length; i++) {
     if (this.nextBallNonStrike(i)) {
-        var score = this.addFrames(i);
-        this.updateBonusScore(score, this.strikes, i);
+        this.scoreNextBallNonStrike(i);
     };
     if (this.nextBallStrike(i)) {
-        var score = this.addStrikes(i);
-        this.updateBonusScore(score, this.strikes, i);
+        this.scoreNextBallStrike(i);
     };
   };
+};
+
+BowlingScore.prototype.scoreNextBallNonStrike = function(strike) {
+  var score = this.addFrames(strike);
+  this.updateBonusScore(score, this.strikes, strike);
+};
+
+BowlingScore.prototype.scoreNextBallStrike = function(strike) {
+  var score = this.addStrikes(strike);
+  this.updateBonusScore(score, this.strikes, strike);
 };
 
 BowlingScore.prototype.nextBallNonStrike = function(strike) {
@@ -103,10 +142,14 @@ BowlingScore.prototype.addStrikes = function(strike) {
 BowlingScore.prototype.calculateSpareScore = function(first_argument) {
   for (var i = 0; i < this.spares.length; i++) {
       if (this.nextBallRolled(i)) {
-        var score = (this.bowlingFrames[this.spares[i] + 1][0]);
+        var score = this.addNextRoll(i);
         this.updateBonusScore(score, this.spares, i);
     };
   };
+};
+
+BowlingScore.prototype.addNextRoll = function(spare) {
+  return this.bowlingFrames[this.spares[spare] + 1][0]
 };
 
 BowlingScore.prototype.nextBallRolled = function(spare) {
@@ -114,11 +157,7 @@ BowlingScore.prototype.nextBallRolled = function(spare) {
 };
 
 BowlingScore.prototype.updateBonusScore = function(score, bonusArray, position) {
-        this.score += (score + 10);
-        bonusArray.splice(position, 1);
+  this.score += (score + 10);
+  bonusArray.splice(position, 1);
 };
 
-//to implement
-//when 2 balls rolled we move onto next
-//maybe have a running score array that is checked every roll and calced if required
-//flatten an array var flat_arr = [].concat.apply([],arr);

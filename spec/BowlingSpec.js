@@ -135,9 +135,52 @@ describe('BowlingScore', function(){
     it('calculates perfect game', function(){
         for (var i = 0; i < 12; i++) {
           bowlingScore.recordRoll(10);
-        }
+        };
         expect(bowlingScore.score).toEqual(300);
     });
+
+    it('calculates game with spare in 10th frame', function(){
+        for (var i = 0; i < 9; i++) {
+          bowlingScore.recordRoll(10);
+        };
+          bowlingScore.recordRoll(1);
+          bowlingScore.recordRoll(9);
+          bowlingScore.recordRoll(1);
+        expect(bowlingScore.score).toEqual(262);
+
+    });
+
+    it('calculates game with no spare or strike', function(){
+        for (var i = 0; i < 20; i++) {
+          bowlingScore.recordRoll(1);
+        };
+        expect(bowlingScore.score).toEqual(20);
+
+    });
+
+    it('calculates game with spare in 9th frame', function (){
+        for (var i = 0; i < 8; i++) {
+          bowlingScore.recordRoll(10);
+        };
+          bowlingScore.recordRoll(1);
+          bowlingScore.recordRoll(9);
+          bowlingScore.recordRoll(1);
+          bowlingScore.recordRoll(1);
+          expect(bowlingScore.score).toEqual(234);
+
+    });
+
+    describe('is last Frame', function(){
+
+      it('is true after 10 stikes', function(){
+        for (var i = 0; i < 9; i++) {
+          bowlingScore.recordRoll(10);
+        };
+        expect(bowlingScore.isLastFrame()).toBe(true);
+      });
+
+    });
+
   });
 
 });

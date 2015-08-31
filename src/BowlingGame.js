@@ -9,7 +9,7 @@ BowlingGame.prototype.roll = function(pins) {
   if (pins > 10) {
     throw new Error("Illegal throw");
   };
-
+  
   if(this.frame > 0 && this.allFrames[(this.frame - 1)][0] == 10) {
     this.addBonus(pins);
   };

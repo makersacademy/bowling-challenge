@@ -11,21 +11,22 @@ var BowlingScore = function(){
 };
 
 BowlingScore.prototype.recordRoll = function(pinsHit) {
-  this.checkifGameOver();
   this.checkValidRoll(pinsHit);
   this.processRoll(pinsHit);
   this.currentBall++;
-  if (this.bowlingFrames.length === 10 && this.currentBall === 2) {
-    this.processFinalScore()
-  };
+  this.ifFinalScoreProcess();
 };
 
 BowlingScore.prototype.processFinalScore = function() {
   if (this.spares[0] === 9) {
-    console.log(this.bowlingFrames[9][0] + this.bowlingFrames[9][1]);
     this.score += (this.bowlingFrames[9][0] + this.bowlingFrames[9][1] + 1);
   };
+};
 
+BowlingScore.prototype.ifFinalScoreProcess = function() {
+  if (this.bowlingFrames.length === 10 && this.currentBall === 2) {
+    this.processFinalScore()
+  };
 };
 
 BowlingScore.prototype.processRoll = function(pinsHit) {
@@ -57,17 +58,9 @@ BowlingScore.prototype.checkValidRoll = function(pinsHit) {
   };
 };
 
-BowlingScore.prototype.checkifGameOver = function() {
-  if (this.bowlingFrames.length > this.defaultGamelength) {
-    throw new Error("game over 10 frames bowled");
-  };
-};
-
 BowlingScore.prototype.currentFrameNumber = function() {
   return this.bowlingFrames.length;
 };
-
-
 
 BowlingScore.prototype.calculateScore = function() {
   var frameScore = this.bowlingFrames[this.bowlingFrames.length -1].reduce(function(a, b) {

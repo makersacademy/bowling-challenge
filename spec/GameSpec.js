@@ -97,4 +97,18 @@ describe('game logic', function() {
     expect(game.score()).toEqual(300);
   });
 
+  it('handles spare followed by strike', function() {
+    gameRoll(2,5);
+    gameRoll(1,10);
+    gameRoll(16,0);
+    expect(game.score()).toEqual(30);
+  });
+
+  it('handles strike followed by spare', function() {
+    gameRoll(1,10);
+    gameRoll(2,5);
+    gameRoll(16,0);
+    expect(game.score()).toEqual(30);
+  });
+
 });

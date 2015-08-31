@@ -278,7 +278,9 @@ describe('Bowling', function() {
         bowling.secondRoll(3);
         bowling.firstRoll(10);
         bowling.secondRoll(10);
-        bowling.thirdRoll(10);
+        expect(function() {
+          bowling.thirdRoll(10);
+        }).toThrowError('Game is over')
         expect(bowling.totalScore).toEqual(36);
       });
 
@@ -291,7 +293,9 @@ describe('Bowling', function() {
         bowling.secondRoll(7);
         bowling.firstRoll(10);
         bowling.secondRoll(10);
-        bowling.thirdRoll(10);
+        expect(function() {
+          bowling.thirdRoll(10);
+        }).toThrowError('Game is over')
         expect(bowling.totalScore).toEqual(50);
       });
 
@@ -304,9 +308,29 @@ describe('Bowling', function() {
         bowling.firstRoll(10);
         bowling.firstRoll(10);
         bowling.secondRoll(10);
-        bowling.thirdRoll(10);
+        expect(function() {
+          bowling.thirdRoll(10);
+        }).toThrowError('Game is over')
         expect(bowling.totalScore).toEqual(90);
       });
     });
+
+    describe('Game is over', function() {
+      it('checks if game is over', function() {
+        for ( var i = 0; i < 8; i++ ) {
+          bowling.firstRoll(0);
+          bowling.secondRoll(0);
+        }
+        bowling.firstRoll(3);
+        bowling.secondRoll(3);
+        bowling.firstRoll(3);
+        expect(function() {
+          bowling.secondRoll(3);
+        }).toThrowError('Game is over')
+        expect(bowling.totalScore).toEqual(12);
+      });
+    });
+
+
   });
 });

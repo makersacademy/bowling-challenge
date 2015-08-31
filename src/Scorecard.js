@@ -26,6 +26,12 @@ Scorecard.prototype.roll = function(pinsHit) {
   this.moveToNextStageOfTurn();
 };
 
+Scorecard.prototype.cumulativeScore = function(arrayOfArrays){
+  var allScoresFlatArray = this.flatten(arrayOfArrays);
+  var totalScore = this.sumArray(allScoresFlatArray);
+  return totalScore;
+};
+
 Scorecard.prototype.moveToNextStageOfTurn = function () {
   if (this.isRollOne()) {
     this.currentStageOfTurn = this.normalNumberOfRollsPerTurn ;
@@ -76,12 +82,6 @@ Scorecard.prototype.increaseTurnCount = function () {
     this.turnNumber = "Game Over";
     throw "You only get "+this.numberOfTurns+" turns";
   };
-};
-
-Scorecard.prototype.cumulativeScore = function(arrayOfArrays){
-  var allScoresFlatArray = this.flatten(arrayOfArrays);
-  var totalScore = this.sumArray(allScoresFlatArray);
-  return totalScore;
 };
 
 Scorecard.prototype.flatten = function(arrayOfArrays){

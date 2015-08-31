@@ -154,9 +154,7 @@ describe('Scorecard', function() {
     });
     it("that a string of 'strikes' can give you a 3rd ball on round 10", function(){
       for (turn = 1; turn <= 9; turn++) {scorecard.roll(10); scorecard.roll(0)};
-      scorecard.roll(10);
-      scorecard.roll(10);
-      scorecard.roll(10);
+      scorecard.roll(10); scorecard.roll(10); scorecard.roll(10);
       expect(scorecard.gameStorage).toEqual([[10,0,10,0,10],[10,0,10,0,10],
         [10,0,10,0,10],[10,0,10,0,10],[10,0,10,0,10],[10,0,10,0,10],
         [10,0,10,0,10],[10,0,10,0,10],[10,0,10,10],[10,10,10]]);

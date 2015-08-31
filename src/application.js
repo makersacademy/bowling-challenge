@@ -3,13 +3,13 @@ $(document).ready(function() {
 
   var buildGUI = function() {
     var row;
-    for (var i = 0; i < 3; ++i){
+    for (var rowID = 0; rowID < 3; rowID++) {
       row=$('<tr>');
       $('.scorecard').append(row);
-      for (var j = 1; j < 12; ++j) {
-        if (i === 0) { row.append($('<th>').text('Frame' + j).attr('colspan', 2)); }
-        if (i === 1) { row.append('<td>&nbsp;'); row.append('<td>&nbsp;'); }
-        if (i === 2) { row.append($('<td>&nbsp;').attr('colspan', 2)); }
+      for (var colID = 1; colID < 12; colID++) {
+        if (rowID === 0) { row.append($('<th>').text('Frame' + colID).attr('colspan', 2)); }
+        if (rowID === 1) { row.append('<td>&nbsp;'); row.append('<td>&nbsp;'); }
+        if (rowID === 2) { row.append($('<td>&nbsp;').attr('colspan', 2)); }
       }
     }
     $('.scorecard th:last').html('Total');
@@ -17,8 +17,8 @@ $(document).ready(function() {
   };
 
   var buildButtons = function() {
-    for (i =0; i <= 10; i++) {
-      var input = $('<input type="submit">').val(i)
+    for (rowID =0; rowID <= 10; rowID++) {
+      var input = $('<input type="submit">').val(rowID)
         .on('click', $.proxy(registerValue, this));
       var li = $('<li>').append(input);
       $('.buttons').append(li);
@@ -47,9 +47,9 @@ $(document).ready(function() {
   var updateScore = function() {
     var endCounter = bowlingGame.frameNumber;
     var startCounter = Math.max(1, endCounter - 2);
-    for (var j = startCounter; j <= endCounter; j++) {
-      $('.scorecard tr:last td').eq(j - 1).html(bowlingGame.gameTotal(j));
-      $('.scorecard tr:last td').eq(10).html(bowlingGame.gameTotal(j));
+    for (var i = startCounter; i <= endCounter; i++) {
+      $('.scorecard tr:last td').eq(i - 1).html(bowlingGame.gameTotal(i));
+      $('.scorecard tr:last td').eq(10).html(bowlingGame.gameTotal(i));
     }
   };
 

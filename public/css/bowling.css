@@ -13,13 +13,17 @@ h1{
   margin-bottom: 20px;
 }
 
-table {
+table.scorecard {
   position: relative;
   top: 7.5%;
   left: 50%;
-  width: 50%;
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
+  border: 3px solid black;
+}
+
+table.scorecard tr:nth-child(2) td:nth-last-child(1) {
+  border-right: 3px solid black;
 }
 
 table, td, th {
@@ -27,6 +31,10 @@ table, td, th {
   padding: 5px;
   margin-bottom: 100px;
   height: 25px;
+}
+
+table.scorecard th {
+  width: 75px;
 }
 
 .buttons {

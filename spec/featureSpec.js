@@ -1,10 +1,8 @@
 describe('bowlingGame', function() {
-  var bowlingGame;
 
   beforeEach(function() {
     jasmine.getFixtures().fixturesPath = '.';
     loadFixtures('index.html');
-    bowlingGame = new BowlingGame();
   });
 
   it('shows the scorecard correctly', function() {

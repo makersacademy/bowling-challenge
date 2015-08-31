@@ -10,6 +10,7 @@ function Game() {
 var prepareGame = function() {
   for(var i=0; i < 10; i++){
     Scorecard.list[i] = new BowlingFrame();
+    if(i===9) {Scorecard.list[i].subFrame['three'] = 0;}
   };
 };
 

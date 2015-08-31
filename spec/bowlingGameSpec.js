@@ -22,8 +22,7 @@ describe('BowlingGame', function() {
     it('calculates the total for a frame', function() {
       bowlingGame.register(5);
       bowlingGame.register(4);
-      var total = bowlingGame._frameTotal(1);
-      expect(total).toEqual(9);
+      expect(bowlingGame.score.frame[1]).toEqual(9);
     });
 
     it('each frame must not be greater than 10', function() {
@@ -109,8 +108,8 @@ describe('BowlingGame', function() {
       bowlingGame.register(4);
       bowlingGame.register(5);
       bowlingGame.register(3);
-      bowlingGame.register(6);
-      expect(bowlingGame.roll.frame[2]).toEqual([3, 6]);
+      bowlingGame.register(5);
+      expect(bowlingGame.roll.frame[2]).toEqual([3, 5]);
     });
 
     it('keeps track of a strike of the frame', function() {
@@ -130,7 +129,7 @@ describe('BowlingGame', function() {
     it('keeps track of the score of the rolls of the frame', function() {
       bowlingGame.register(4);
       bowlingGame.register(5);
-      expect(bowlingGame.score.frame[1]).toEqual([4, 5]);
+      expect(bowlingGame.score.frame[1]).toEqual(9);
     });
 
     it('keeps track of the score of the rolls of the next frame', function() {
@@ -138,7 +137,7 @@ describe('BowlingGame', function() {
       bowlingGame.register(5);
       bowlingGame.register(2);
       bowlingGame.register(7);
-      expect(bowlingGame.score.frame[2]).toEqual([2, 7]);
+      expect(bowlingGame.score.frame[2]).toEqual(9);
     });
 
     it('increases bonus by 1 in the event of a spare', function() {
@@ -156,7 +155,7 @@ describe('BowlingGame', function() {
       bowlingGame.register(7);
       bowlingGame.register(3);
       bowlingGame.register(5);
-      expect(bowlingGame.score.frame[1]).toEqual([7, 3, 5]);
+      expect(bowlingGame.score.frame[1]).toEqual(15);
     });
 
     it('decreases bonus to 0 after next roll', function() {
@@ -170,14 +169,14 @@ describe('BowlingGame', function() {
       bowlingGame.register(10);
       bowlingGame.register(6);
       bowlingGame.register(3);
-      expect(bowlingGame.score.frame[1]).toEqual([10, 6, 3]);
+      expect(bowlingGame.score.frame[1]).toEqual(19);
     });
 
     it('keeps track of the score in the event of two strikes', function() {
       bowlingGame.register(10);
       bowlingGame.register(10);
       bowlingGame.register(3);
-      expect(bowlingGame.score.frame[1]).toEqual([10, 10, 3]);
+      expect(bowlingGame.score.frame[1]).toEqual(23);
     });
 
     it('decreases bonus to 1 after next roll', function() {
@@ -193,7 +192,7 @@ describe('BowlingGame', function() {
       bowlingGame.register(6);
       bowlingGame.register(4);
       bowlingGame.register(10);
-      expect(bowlingGame.score.frame[10]).toEqual([6, 4, 10]);
+      expect(bowlingGame.score.frame[10]).toEqual(20);
     });
 
     it('keeps track of frame number 9 in the event of a strike', function() {
@@ -201,7 +200,7 @@ describe('BowlingGame', function() {
       bowlingGame.register(10);
       bowlingGame.register(10);
       bowlingGame.register(4);
-      expect(bowlingGame.score.frame[9]).toEqual([10, 10, 10]);
+      expect(bowlingGame.score.frame[9]).toEqual(30);
     });
 
     it('keeps track of frame number 10 in the event of a strike', function() {
@@ -209,20 +208,7 @@ describe('BowlingGame', function() {
       bowlingGame.register(10);
       bowlingGame.register(10);
       bowlingGame.register(4);
-      expect(bowlingGame.score.frame[10]).toEqual([10, 10 ,4]);
-    });
-
-    it('does not keep track of frame number 11 in the event of a spare', function() {
-      for (var i = 0; i < 9; i++) { bowlingGame.register(10); }
-      bowlingGame.register(6);
-      bowlingGame.register(4);
-      bowlingGame.register(10);
-      expect(bowlingGame.score.frame[11]).toBe(undefined);
-    });
-
-    it('does not keep track of frame number 11 in the event of three strikes', function() {
-      for (var i = 0; i < 12; i++) { bowlingGame.register(10); }
-        expect(bowlingGame.score.frame[11]).toBe(undefined);
+      expect(bowlingGame.score.frame[10]).toEqual(24);
     });
   });
 });

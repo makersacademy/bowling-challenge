@@ -6,10 +6,6 @@ describe('Bowling', function() {
   });
 
   describe('Initialized stage contains', function() {
-    it('the number of pins', function() {
-      expect(bowling.pins).toEqual(10);
-    })
-
     it('the first roll score', function() {
       expect(bowling.firstRollScore).toEqual(0);
     });
@@ -54,11 +50,6 @@ describe('Bowling', function() {
         expect(bowling.firstRollScore).toEqual(6);
       });
 
-      it('automatically updates the number of pins', function() {
-        bowling.firstRoll(6);
-        expect(bowling.pins).toEqual(4);
-      });
-
       it('displays error message if user inputs inapproapriate number', function() {
         expect(function() {
           bowling.firstRoll(11);
@@ -73,12 +64,6 @@ describe('Bowling', function() {
     });
 
     describe('Second Roll', function() {
-      it('should automatically call new frame appropriately', function() {
-        bowling.firstRoll(6);
-        bowling.secondRoll(2);
-        expect(bowling.pins).toEqual(10);
-      });
-
       it('displays error message if user inputs inapproapriate number', function() {
         bowling.firstRoll(6);
         expect(function() {
@@ -98,12 +83,6 @@ describe('Bowling', function() {
       it('moves onto a new frame', function() {
         bowling.newFrame();
         expect(bowling.frameNumber).toEqual(2)
-      });
-
-      it('brings pins back to 10 for new frame', function() {
-        bowling.firstRoll(6);
-        bowling.secondRoll(2);
-        expect(bowling.pins).toEqual(10);
       });
 
       it('brings first roll score back to 0', function() {

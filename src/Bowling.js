@@ -77,8 +77,7 @@ BowlingScore.prototype.calculateStrikeScore = function() {
         this.updateBonusScore(score, this.strikes, i);
     };
     if (this.nextBallStrike(i)) {
-        var frameScores = this.bowlingFrames[this.strikes[i] + 1].concat(this.bowlingFrames[this.strikes[i] + 2][0]);
-        var score = frameScores.reduce(function(a, b) { return a + b; });
+        var score = this.addStrikes(i);
         this.updateBonusScore(score, this.strikes, i);
     };
   };
@@ -95,6 +94,10 @@ BowlingScore.prototype.nextBallStrike = function(strike) {
 BowlingScore.prototype.addFrames = function(strike) {
   return this.bowlingFrames[this.strikes[strike] + 1].reduce(function(a, b)
     { return a + b; });
+};
+
+BowlingScore.prototype.addStrikes = function(strike) {
+  return this.bowlingFrames[this.strikes[strike] + 1].concat(this.bowlingFrames[this.strikes[strike] + 2][0]).reduce(function(a, b) { return a + b; });;
 };
 
 BowlingScore.prototype.calculateSpareScore = function(first_argument) {

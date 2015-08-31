@@ -139,9 +139,9 @@
 \\  eg.                                                                                                       \\
 \\      scorecard.roll(5);                                                                                    \\
 \\                                                                                                            \\
-\\  To check the score, call the cumulativeScore function on the gameStorage array:                           \\
+\\  To check the score, call the cumulativeScore function:                                                    \\
 \\                                                                                                            \\
-\\    scorecard.cumulativeScore(this.gameStorage);                                                            \\
+\\    scorecard.cumulativeScore();                                                                            \\
 \\                                                                                                            \\
 \\  In order to maintain consistency of two rolls per turn across the game, the entry of a 10 for a strike    \\
 \\  needs to be followed up with a 0, aside from the final turn, which necessarily behaves differently with   \\

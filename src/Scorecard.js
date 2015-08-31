@@ -26,10 +26,10 @@ Scorecard.prototype.roll = function(pinsHit) {
   this.moveToNextStageOfTurn();
 };
 
-Scorecard.prototype.cumulativeScore = function(arrayOfArrays){
-  var allScoresFlatArray = this.flatten(arrayOfArrays);
-  var totalScore = this.sumArray(allScoresFlatArray);
-  return totalScore;
+Scorecard.prototype.cumulativeScore = function(){
+  var allScoresFlatArray = this.flatten(this.gameStorage);
+  var totalScoreSoFar = this.sumArray(allScoresFlatArray);
+  return totalScoreSoFar;
 };
 
 Scorecard.prototype.moveToNextStageOfTurn = function () {

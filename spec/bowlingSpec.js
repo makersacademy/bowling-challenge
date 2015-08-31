@@ -80,11 +80,6 @@ describe('Bowling', function() {
 
 
     describe('New Frame', function() {
-      it('moves onto a new frame', function() {
-        bowling.newFrame();
-        expect(bowling.frameNumber).toEqual(2)
-      });
-
       it('brings first roll score back to 0', function() {
         bowling.firstRoll(6);
         bowling.secondRoll(2);

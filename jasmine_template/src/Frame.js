@@ -6,6 +6,7 @@ var Frame = function() {
   this.totalFrameScore = 0;
   this.totalGameScore = 0;
   this.strike = 10;
+  this.frameNumber = 1;
 };
 
 Frame.prototype.newGame = function() {
@@ -30,6 +31,7 @@ Frame.prototype.rollTwo = function(number) {
     this.totalTurns --;
     this.rollTwoScore = number;
     this.totalFrameScore = this.rollOneScore + this.rollTwoScore;
+    this.frameNumber ++;
   };
 };
 

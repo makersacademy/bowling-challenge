@@ -14,10 +14,6 @@ describe('Game', function() {
     it('has 1 player', function() {
       expect(game.player).toEqual(1);
     });
-
-    it('the score starts from 0', function() {
-      expect(game.score).toEqual(0);
-    })
   });
 
 });

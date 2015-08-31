@@ -1,3 +1,0 @@
-describe("description", function () {
-
-});

@@ -197,7 +197,37 @@ describe('Bowling', function() {
     });
 
     describe('Tests for totalling scores', function() {
-      it('totals up strikes and spares correctly', function() {
+      it('when there are no spares or strikes', function() {
+        bowling.firstRoll(3);
+        bowling.secondRoll(6);
+        expect(bowling.totalScore).toEqual(9);
+      });
+
+      it('when there are spares', function() {
+        bowling.firstRoll(4);
+        bowling.secondRoll(6);
+        bowling.firstRoll(4);
+        bowling.secondRoll(3);
+        expect(bowling.totalScore).toEqual(21);
+      });
+
+      it('when there are strikes', function() {
+        bowling.firstRoll(10);
+        bowling.firstRoll(6);
+        bowling.secondRoll(3);
+        expect(bowling.totalScore).toEqual(28);
+      });
+
+      it('when there is a strike then a spare', function() {
+        bowling.firstRoll(10);
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(4);
+        bowling.secondRoll(4);
+        expect(bowling.totalScore).toEqual(42);
+      });
+
+      it('when there is a spare then a strike', function() {
         bowling.firstRoll(6);
         bowling.secondRoll(4);
         bowling.firstRoll(10);
@@ -206,7 +236,7 @@ describe('Bowling', function() {
         expect(bowling.totalScore).toEqual(46);
       });
 
-      it('2 consecutive strikes', function() {
+      it('two consecutive strikes', function() {
         bowling.firstRoll(10);
         bowling.firstRoll(10);
         bowling.firstRoll(2);
@@ -214,7 +244,7 @@ describe('Bowling', function() {
         expect(bowling.totalScore).toEqual(42);
       });
 
-      it('3 consecutive strikes', function() {
+      it('three consecutive strikes', function() {
         bowling.firstRoll(10);
         bowling.firstRoll(10);
         bowling.firstRoll(10);
@@ -223,7 +253,7 @@ describe('Bowling', function() {
         expect(bowling.totalScore).toEqual(72);
       });
 
-      it('4 consecutive strikes', function() {
+      it('four consecutive strikes', function() {
         bowling.firstRoll(10);
         bowling.firstRoll(10);
         bowling.firstRoll(10);
@@ -233,16 +263,79 @@ describe('Bowling', function() {
         expect(bowling.totalScore).toEqual(102);
       });
 
-      it('10th frame', function() {
+      it('two consecutive spares', function() {
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(3);
+        bowling.secondRoll(3);
+        expect(bowling.totalScore).toEqual(35);
+      });
+
+      it('three consecutive spares', function() {
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(3);
+        bowling.secondRoll(3);
+        expect(bowling.totalScore).toEqual(51);
+      });
+
+      it('four consecutive spares', function() {
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(6);
+        bowling.secondRoll(4);
+        bowling.firstRoll(3);
+        bowling.secondRoll(3);
+        expect(bowling.totalScore).toEqual(67);
+      });
+
+      it('calculates 10th frame without strikes or spares', function() {
         for ( var i = 0; i < 8; i++ ) {
+          bowling.firstRoll(0);
+          bowling.secondRoll(0);
+        }
+        bowling.firstRoll(3);
+        bowling.secondRoll(3);
+        bowling.firstRoll(10);
+        bowling.secondRoll(10);
+        bowling.thirdRoll(10);
+        expect(bowling.totalScore).toEqual(36);
+      });
+
+      it('calculates 10th frame with spares', function() {
+        for ( var i = 0; i < 8; i++ ) {
+          bowling.firstRoll(0);
+          bowling.secondRoll(0);
+        }
+        bowling.firstRoll(3);
+        bowling.secondRoll(7);
+        bowling.firstRoll(10);
+        bowling.secondRoll(10);
+        bowling.thirdRoll(10);
+        expect(bowling.totalScore).toEqual(50);
+      });
+
+      it('calculates 10th frame with strikes', function() {
+        for ( var i = 0; i < 7; i++ ) {
           bowling.firstRoll(0);
           bowling.secondRoll(0);
         }
         bowling.firstRoll(10);
         bowling.firstRoll(10);
+        bowling.firstRoll(10);
         bowling.secondRoll(10);
         bowling.thirdRoll(10);
-        expect(bowling.totalScore).toEqual(60);
+        expect(bowling.totalScore).toEqual(90);
       });
     });
   });

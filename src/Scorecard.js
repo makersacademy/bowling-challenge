@@ -1,3 +1,27 @@
+// _______     ______    __   __  ___  ___        __    _____  ___    _______
+// |   _  "\   /    " \  |"  |/  \|  "||"  |      |" \  (\"   \|"  \  /" _   "|
+// (. |_)  :) // ____  \ |'  /    \:  |||  |      ||  | |.\\   \    |(: ( \___)
+// |:     \/ /  /    ) :)|: /'        ||:  |      |:  | |: \.   \\  | \/ \
+// (|  _  \\(: (____/ //  \//  /\'    | \  |___   |.  | |.  \    \. | //  \ ___
+// |: |_)  :)\        /   /   /  \\   |( \_|:  \  /\  |\|    \    \ |(:   _(  _|
+// (_______/  \"_____/   |___/    \___| \_______)(__\_|_)\___|\____\) \_______)
+//
+//  __      ________
+// |" \    /"       )
+// ||  |  (:   \___/
+// |:  |   \___  \
+// |.  |    __/  \\
+// /\  |\  /" \   :)
+// (__\_|_)(_______/
+//
+//  _______  ____  ____  _____  ___
+// /"     "|("  _||_ " |(\"   \|"  \
+// (: ______)|   (  ) : ||.\\   \    |
+// \/    |  (:  |  | . )|: \.   \\  |
+// // ___)   \\ \__/ // |.  \    \. |
+// (:  (      /\\ __ //\ |    \    \ |
+// \__/     (__________) \___|\____\)
+
 var Scorecard = function() {
   this.gameStorage = [];
   this.turnNumber = 1;
@@ -34,6 +58,39 @@ Scorecard.prototype.moveToNextStageOfTurn = function () {
   };
 };
 
+Scorecard.prototype.resetTurn = function () {
+    this.updateGameStorageWithTurn(this.currentTurnStorage);
+    this.twoTurnsAgoStorage = this.previousTurnStorage;
+    this.previousTurnStorage = this.currentTurnStorage;
+    this.currentTurnStorage = [];
+    this.currentStageOfTurn = 1;
+};
+
+Scorecard.prototype.verifyTurn = function(firstRoll, secondRoll) {
+  if ((+firstRoll + +secondRoll > 10 || +firstRoll + +secondRoll < 0)  && this.turnNumber < 10) {
+    throw "Before bonuses, two rolls can only score 0 to 10 inclusive";
+  }
+  else {
+    return +firstRoll + +secondRoll;
+  }
+};
+
+Scorecard.prototype.updateGameStorageWithTurn = function(turnResult) {
+  this.verifyTurn(this.currentTurnStorage[0],this.currentTurnStorage[1]);
+  this.gameStorage.push(turnResult);
+  if (this.turnNumber === 10 && this.currentStageOfTurn === 3){
+    this.twoTurnsAgoStorage.pop();
+  };
+  this.increaseTurnCount();
+};
+
+Scorecard.prototype.increaseTurnCount = function () {
+  this.turnNumber ++
+  if (this.turnNumber > 11) {
+    this.turnNumber = "Game Over";
+    throw "You only get 10 turns";
+  };
+};
 
 Scorecard.prototype.flatten = function(arrayOfArrays){
   var flattened = [];
@@ -54,143 +111,65 @@ Scorecard.prototype.cumulativeScore = function(arrayOfArrays){
 };
 
 Scorecard.prototype.isASpareOrStrike = function(turn){
-  if (this.isASpare(turn) || this.isAStrike(turn)){
-    return true;
-  }
-  else {
-    return false;
-  }
+  return this.isASpare(turn) || this.isAStrike(turn);
 };
 
 Scorecard.prototype.isASpare = function(turn){
-  if (turn[0] < 10 && this.sumArray(turn) === 10){
-      return true;
-  }
-  else {
-    return false;
-  }
+  return turn[0] < 10 && this.sumArray(turn) === 10;
 ;}
 
 Scorecard.prototype.isAStrike = function(turn){
-  if (turn[0] === 10){
-    return true;
-  }
-  else {
-    return false;
-  }
+  return turn[0] === 10;
 ;}
 
 Scorecard.prototype.shouldAddSpareBonus = function(){
-  if (this.currentStageOfTurn === 1
+  return this.currentStageOfTurn === 1
     && this.turnNumber > 1
-    && this.isASpareOrStrike(this.previousTurnStorage)) {
-      return true;
-    }
-  else {
-    return false;
-  }
+    && this.isASpareOrStrike(this.previousTurnStorage)
 };
 
 Scorecard.prototype.shouldAddStrikeBonus = function(){
-  if (this.currentStageOfTurn === 2
+  return this.currentStageOfTurn === 2
     && this.turnNumber > 1
-    && this.isAStrike(this.previousTurnStorage)) {
-      return true;
-    }
-  else {
-    return false;
-  }
+    && this.isAStrike(this.previousTurnStorage);
 };
 
 Scorecard.prototype.shouldAddCumulativeStrikeBonus = function(){
-  if (this.currentStageOfTurn !== 2
+  return this.currentStageOfTurn !== 2
     && this.turnNumber > 2
     && this.isAStrike(this.previousTurnStorage)
-    && this.isAStrike(this.twoTurnsAgoStorage)) {
-      return true;
-    }
-  else {
-    return false;
-  }
+    && this.isAStrike(this.twoTurnsAgoStorage);
 };
 
 Scorecard.prototype.shouldReset = function () {
-  if (this.isNotLastTurn() || this.isRollThree()){
-    return true;
-  }
-  else {
-    return false;
-  }
+  return this.isNotLastTurn() || this.isRollThree();
 };
 
 Scorecard.prototype.isRollOne = function () {
-  if (this.currentStageOfTurn === 1){
-    return true;
-  }
-  else {
-    return false;
-  }
+  return this.currentStageOfTurn === 1;
 };
 
 Scorecard.prototype.isRollTwo = function () {
-  if (this.currentStageOfTurn === 2){
-    return true;
-  }
-  else {
-    return false;
-  }
+  return this.currentStageOfTurn === 2;
 };
 
 
 Scorecard.prototype.thereWillBeAThirdRoll = function () {
-  if (this.isLastTurn() && this.isAStrike && this.isRollTwo()){
-    return true;
-  }
-  else {
-    return false;
-  }
+  return this.isLastTurn() && this.isAStrike && this.isRollTwo();
 };
 
 Scorecard.prototype.isRollThree = function () {
-  if (this.currentStageOfTurn === 3){
-    return true;
-  }
-  else {
-    return false;
-  }
+  return this.currentStageOfTurn === 3;
 };
 
 
 Scorecard.prototype.isLastTurn = function () {
-  if (this.turnNumber === 10){
-    return true;
-  }
-  else {
-    return false;
-  }
+  return this.turnNumber === 10
 };
 
 Scorecard.prototype.isNotLastTurn = function () {
-  if (this.turnNumber < 10){
-    return true;
-  }
-  else {
-    return false;
-  }
+  return this.turnNumber < 10;
 };
-
-
-
-Scorecard.prototype.resetTurn = function () {
-    this.updateGameStorageWithTurn(this.currentTurnStorage);
-    this.twoTurnsAgoStorage = this.previousTurnStorage;
-    this.previousTurnStorage = this.currentTurnStorage;
-    this.currentTurnStorage = [];
-    this.currentStageOfTurn = 1;
-};
-
-
-
 
 Scorecard.prototype.verifyRoll = function(roll) {
   if (roll > 10 || roll < 0) {
@@ -199,30 +178,4 @@ Scorecard.prototype.verifyRoll = function(roll) {
   else {
     return roll;
   }
-};
-
-Scorecard.prototype.verifyTurn = function(rollA, rollB) {
-  if ((+rollA + +rollB > 10 || +rollA + +rollB < 0)  && this.turnNumber < 10) {
-    throw "Before bonuses, two rolls can only score 0 to 10 inclusive";
-  }
-  else {
-    return +rollA + +rollB;
-  }
-};
-
-Scorecard.prototype.increaseTurnCount = function () {
-  this.turnNumber ++
-  if (this.turnNumber > 11) {
-    this.turnNumber = "Game Over";
-    throw "You only get 10 turns";
-  };
-};
-
-Scorecard.prototype.updateGameStorageWithTurn = function(turnResult) {
-  this.verifyTurn(this.currentTurnStorage[0],this.currentTurnStorage[1]);
-  this.gameStorage.push(turnResult);
-  if (this.turnNumber === 10 && this.currentStageOfTurn === 3){
-    this.twoTurnsAgoStorage.pop();
-  };
-  this.increaseTurnCount();
 };

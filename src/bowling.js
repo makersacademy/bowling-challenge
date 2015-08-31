@@ -36,8 +36,14 @@ Bowling.prototype.secondRoll = function(number) {
   if (this.firstRollScore + number === 10) {
     this._updateSpare();
   }
-  if (this.strike > 0 && this.frameNumber < 10) {
-    this.strikeBonusPoints = this.firstRollScore + number
+  if (this.strike === 1 && this.frameNumber < 10) {
+    this.strikeBonusPoints += (this.firstRollScore + number)
+    this.strike = 0
+  }
+  if (this.strike > 1) {
+    var consecutiveStrikes = (this.strike - 1)
+    this.strikeBonusPoints = ((consecutiveStrikes * 2) - 1) * 10
+    this.strikeBonusPoints += ((this.firstRollScore * 2) + number)
     this.strike = 0
   }
   this.secondRollScore = number
@@ -49,9 +55,6 @@ Bowling.prototype.secondRoll = function(number) {
 };
 
 Bowling.prototype.thirdRoll = function(number) {
-  // if(number < 0 || number > 10) {
-  //   throw new Error('That is an invalid number')
-  // }
   this.thirdRollScore = number
   this._countsTotalScore();
 };

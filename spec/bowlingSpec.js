@@ -196,7 +196,7 @@ describe('Bowling', function() {
       });
     });
 
-    describe('Checks', function() {
+    describe('Tests for totalling scores', function() {
       it('totals up strikes and spares correctly', function() {
         bowling.firstRoll(6);
         bowling.secondRoll(4);
@@ -205,34 +205,33 @@ describe('Bowling', function() {
         bowling.secondRoll(4);
         expect(bowling.totalScore).toEqual(46);
       });
-    });
 
-    describe('10th frame', function() {
-      it('totals up strike correctly', function() {
-        bowling.firstRoll(0);
-        bowling.secondRoll(0);
-        bowling.firstRoll(0);
-        bowling.secondRoll(0);
-        bowling.firstRoll(0);
-        bowling.secondRoll(0);
-        bowling.firstRoll(0);
-        bowling.secondRoll(0);
-        bowling.firstRoll(0);
-        bowling.secondRoll(0);
-        bowling.firstRoll(0);
-        bowling.secondRoll(0);
-        bowling.firstRoll(0);
-        bowling.secondRoll(0);
-        bowling.firstRoll(0);
-        bowling.secondRoll(0);
-        bowling.firstRoll(4);
-        bowling.secondRoll(6);
+      it('2 consecutive strikes', function() {
         bowling.firstRoll(10);
-        bowling.secondRoll(10);
-        bowling.thirdRoll(8);
-        expect(bowling.totalScore).toEqual(48);
+        bowling.firstRoll(10);
+        bowling.firstRoll(2);
+        bowling.secondRoll(3);
+        expect(bowling.totalScore).toEqual(42);
+      });
+
+      it('3 consecutive strikes', function() {
+        bowling.firstRoll(10);
+        bowling.firstRoll(10);
+        bowling.firstRoll(10);
+        bowling.firstRoll(2);
+        bowling.secondRoll(3);
+        expect(bowling.totalScore).toEqual(72);
+      });
+
+      it('4 consecutive strikes', function() {
+        bowling.firstRoll(10);
+        bowling.firstRoll(10);
+        bowling.firstRoll(10);
+        bowling.firstRoll(10);
+        bowling.firstRoll(2);
+        bowling.secondRoll(3);
+        expect(bowling.totalScore).toEqual(102);
       });
     });
-
   });
 });

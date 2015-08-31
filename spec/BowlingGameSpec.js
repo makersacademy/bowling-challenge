@@ -6,7 +6,7 @@ describe('Bowling Game', function() {
   });
 
   it('can create a new game', function() {
-    expect(game.newGame).toBeDefined();
+    expect(game.currentGame).toBeDefined();
   });
 
   it('adds up first frames score', function() {
@@ -137,7 +137,6 @@ describe('Bowling Game', function() {
 
   it('should accurately calculate the score', function() {
     bowlingFrame.rollOne(10);
-    console.log(game.score);
     bowlingFrameTwo = new BowlingFrame(2);
     bowlingFrameTwo.rollOne(10);
     bowlingFrameThree = new BowlingFrame(3);

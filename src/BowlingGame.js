@@ -1,6 +1,6 @@
 var BowlingGame = function() {
 
-  this.newGame = {1: [null,null], 
+  this.currentGame = {1: [null,null], 
                   2: [null,null],
                   3: [null,null],
                   4: [null,null],
@@ -27,37 +27,37 @@ var BowlingGame = function() {
 };
 
 BowlingGame.prototype.currentScore = function() {
-  newGame = this.newGame;
+  currentGame = this.currentGame;
   scoreGrid = this.scoreGrid;
   for (i = 1; i <= 9; i ++) {
     nextFrame = i + 1;
     nextNextFrame = i + 2;
-    if ((game.newGame[i][0] + game.newGame[i][1]) !== 10 && game.newGame[i][0] !== 10 && game.newGame[i][1] != null ) {
-      this.scoreGrid[i] = game.newGame[i][0] + game.newGame[i][1];
+    if (game.isNotSpareOrStrike(i) && game.currentGame[i][1] != null ) {
+      this.scoreGrid[i] = game.currentGame[i][0] + game.currentGame[i][1];
     };
-    if ((game.newGame[i][0] + game.newGame[i][1]) === 10 && game.newGame[nextFrame][0] != null && game.newGame[i][0] !== 10) {
-      this.scoreGrid[i] = game.newGame[i][0] + game.newGame[i][1] + game.newGame[nextFrame][0];
+    if (game.isSpare(i) && game.currentGame[nextFrame][0] != null) {
+      this.scoreGrid[i] = game.currentGame[i][0] + game.currentGame[i][1] + game.currentGame[nextFrame][0];
     };
-    if (game.newGame[i][0] === 10 && game.newGame[nextFrame][0] !== 10 && game.newGame[nextFrame][0] != null && game.newGame[nextFrame][1] != null) {
-      this.scoreGrid[i] = game.newGame[i][0] + game.newGame[nextFrame][0] + game.newGame[nextFrame][1];
+    if (game.isSingleStrike(i) && game.currentGame[nextFrame][0] != null && game.currentGame[nextFrame][1] != null) {
+      this.scoreGrid[i] = game.currentGame[i][0] + game.currentGame[nextFrame][0] + game.currentGame[nextFrame][1];
     };
 
     if (i === 9) {
-        if (game.newGame[i][0] === 10 && game.newGame[nextFrame][0] === 10 && game.newGame[nextFrame][1] != null) {
-          this.scoreGrid[i] = game.newGame[i][0] + game.newGame[nextFrame][0] + game.newGame[nextFrame][1];
+        if (game.isDoubleStrike(i) && game.currentGame[nextFrame][1] != null) {
+          this.scoreGrid[i] = game.currentGame[i][0] + game.currentGame[nextFrame][0] + game.currentGame[nextFrame][1];
         };
     } else {
-        if (game.newGame[i][0] === 10 && game.newGame[nextFrame][0] === 10 && game.newGame[nextNextFrame][0] != null) {
-          this.scoreGrid[i] = game.newGame[i][0] + game.newGame[nextFrame][0] + game.newGame[nextNextFrame][0];
+        if (game.isDoubleStrike(i) && game.currentGame[nextNextFrame][0] != null) {
+          this.scoreGrid[i] = game.currentGame[i][0] + game.currentGame[nextFrame][0] + game.currentGame[nextNextFrame][0];
         };
     };
 
 
-    if (game.newGame[10][0] != null && game.newGame[10][1] != null && (game.newGame[10][0] + game.newGame[10][1]) < 10) {
-      this.scoreGrid[10] = game.newGame[10][0] + game.newGame[10][1];
+    if (game.currentGame[10][0] != null && game.currentGame[10][1] != null && (game.currentGame[10][0] + game.currentGame[10][1]) < 10) {
+      this.scoreGrid[10] = game.currentGame[10][0] + game.currentGame[10][1];
     };
-    if (game.newGame[10][0] != null && game.newGame[10][1] != null && game.newGame[10][2] != null ) {
-      this.scoreGrid[10] = game.newGame[10][0] + game.newGame[10][1] + game.newGame[10][2];
+    if (game.currentGame[10][0] != null && game.currentGame[10][1] != null && game.currentGame[10][2] != null ) {
+      this.scoreGrid[10] = game.currentGame[10][0] + game.currentGame[10][1] + game.currentGame[10][2];
     };
   };
 
@@ -68,6 +68,26 @@ BowlingGame.prototype.currentScore = function() {
   return this.score;
 };
 
-BowlingGame.prototype.isSpare = function(i, a, b) {
+BowlingGame.prototype.isNotSpareOrStrike = function(i) {
+ if ((game.currentGame[i][0] + game.currentGame[i][1]) !== 10 && game.currentGame[i][0] !== 10) {
+  return true;
+ };
+};
 
+BowlingGame.prototype.isSpare = function(i) {
+  if ((game.currentGame[i][0] + game.currentGame[i][1]) === 10 && game.currentGame[i][0] !== 10) {
+    return true;
+  };
+};
+
+BowlingGame.prototype.isSingleStrike = function(i) {
+  if (game.currentGame[i][0] === 10 && game.currentGame[nextFrame][0] !== 10) {
+    return true;
+  };
+};
+
+BowlingGame.prototype.isDoubleStrike = function(i) {
+  if (game.currentGame[i][0] === 10 && game.currentGame[nextFrame][0] === 10) {
+    return true;
+  };
 };

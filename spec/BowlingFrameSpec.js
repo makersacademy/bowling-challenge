@@ -7,7 +7,7 @@ describe('Bowling Frame', function() {
 
   it('allows you to enter your first bowling score', function() {
     bowlingFrame.rollOne(7);
-    expect(game.newGame[1]).toEqual([7,null]);
+    expect(game.currentGame[1]).toEqual([7,null]);
   });
 
   it('raises an error if score is above 10', function() {
@@ -21,7 +21,7 @@ describe('Bowling Frame', function() {
   it('allows you to enter your second bowling score', function() {
     bowlingFrame.rollOne(7);
     bowlingFrame.rollTwo(2);
-    expect(game.newGame[1]).toEqual([7,2]);
+    expect(game.currentGame[1]).toEqual([7,2]);
   });
 
   it('raises an error if second score plus first score is above 10', function() {
@@ -69,7 +69,7 @@ describe('Bowling Frame', function() {
       bowlingFrameTen.rollOne(1);
       bowlingFrameTen.rollTwo(9);
       bowlingFrameTen.bonusRoll(4);
-      expect(game.newGame[10]).toEqual([1,9,4]);
+      expect(game.currentGame[10]).toEqual([1,9,4]);
     });
 
   it('should raise an error if you are unable to use the bonus roll', function() {

@@ -1,137 +1,78 @@
 Bowling = function() {
   this.scorecard = []
-  this.previousFrame = []
   this.currentFrame = []
-  this.frame = 1
+  this.frameNumber = 1
   this.pinCount = 10
   this.score = 0
-  this.holdingScore = 0
-  this.frameRoll = 1
   this.gameInPlay = true
-  this.bonusRounds = 0
   this.bonusScore = 0
+  this.framesIncurringStrikes = []
+  this.framesIncurringSpares = []
 };
 
 Bowling.prototype.roll = function(num) {
-  this.currentFrame.push(num)
-  if(num === 10 && this.frameRoll === 1) {
-    // this.currentFrame.push(0);
+  if(num > this.pinCount) {
+    num = this.pinCount;
   }
+  this.currentFrame.push(num);
+  this.pinCount -= num;
   if (this.currentFrame.length === 2 || this.currentFrame[0] === 10) {
     this.reset();
-  } else {
-    this.frameRoll++
   };
-  this.isGameInPlay();
 }
 
 Bowling.prototype.reset = function() {
-  this.bonusCalc();
-  this.bonusSetter();
-  this.scorecard.push(this.previousFrame);
-  this.previousFrame = this.currentFrame;
+  this.scorecard.push(this.currentFrame);
+  this.updateFramesIncurringBonus();
+  this.bonusCalculator();
   this.currentFrame = [];
-  this.frameRoll = 1;
-  this.frame++
+  this.frameNumber++;
+  this.pinCount = 10;
+  this.calculateScore();
+};
+
+
+Bowling.prototype.updateFramesIncurringBonus = function() {
+  if(this.frameNumber <= 10) {
+    if(this.currentFrame[0] === 10) {
+      this.framesIncurringStrikes.push(this.frameNumber);
+    } else if(this.currentFrame[0] + this.currentFrame[1] === 10) {
+      this.framesIncurringSpares.push(this.frameNumber)
+    };
+  };
+};
+
+Bowling.prototype.bonusCalculator = function() {
+  if(this.framesIncurringSpares.indexOf(this.frameNumber - 1) !== -1) {
+    this.bonusScore += this.currentFrame[0];
+    this.framesIncurringSpares.splice(0, 1);
+  };
+  if(this.scorecard.length > 0 && this.framesIncurringStrikes.indexOf(this.frameNumber - 2) !== -1) {
+    this.bonusScore += this.scorecard[this.frameNumber - 2][0];
+    this.bonusScore += this.currentFrame[0];
+    this.framesIncurringStrikes.splice(0, 1);
+  };
+  if(this.framesIncurringStrikes.indexOf(this.frameNumber - 1) !== -1 && this.currentFrame.length === 2) {
+    this.bonusScore += this.currentFrame[0];
+    this.bonusScore += this.currentFrame[1];
+    this.framesIncurringStrikes.splice(0, 1);
+  };
+};
+Bowling.prototype.calculateScore = function() {
+  if(this.scorecard.length > 10) {
+    this.scorecard.splice(10,2)
+  };
+  var combinedStrikes = this.framesIncurringStrikes.concat(this.framesIncurringSpares)
+  combinedStrikes.sort
+  this.completedFrames = this.scorecard.slice();
+  for (var i =(combinedStrikes.length - 1); i >= 0; i--) {
+    this.completedFrames.splice((combinedStrikes[i] - 1), 1);
+  };
   var scoreArray = []
-  scoreArray = scoreArray.concat.apply(scoreArray, this.scorecard);
+  scoreArray = scoreArray.concat.apply(scoreArray, this.completedFrames);
   if(scoreArray.length > 0) {
     this.score = (scoreArray.reduce(function(a,b) {
         return a + b;
       })) + this.bonusScore;
   }
 };
-
-Bowling.prototype.isGameInPlay = function() {
-  if(this.scorecard.length === 10 && (this.scorecard[9][0] + this.scorecard[9][1] !== 10)) {
-    return false;
-  } else {
-    return true;
-  };
-};
-
-Bowling.prototype.bonusCalc = function() {
-  var framesForBonus = this.previousFrame.concat(this.currentFrame);
-
-  for( var i = 0; i < this.bonus; i++ ) {
-    this.bonusScore += framesForBonus[i]
-  }
-};
-
-Bowling.prototype.bonusSetter = function() {
-  if(this.previousFrame[0] === 10) {
-    this.bonus = 2;
-  } else if(this.previousFrame[0] + this.previousFrame[1] === 10) {
-    this.bonus = 1;
-  } else {
-    this.bonus = 0;
-  };
-  if(this.scorecard.length > 9) {
-    this.bonus = 0
-  }
-};
-
-
-// Bowling = function() {
-//   this.scorecard = []
-//   this.currentFrame = []
-//   this.frame = 1
-//   this.pinCount = 10
-//   this.score = 0
-//   this.holdingScore = 0
-//   this.frameRoll = 1
-//   this.gameInPlay = true
-//   this.bonusRounds = 0
-//   this.bonusScore = 0
-// };
-
-// Bowling.prototype.roll = function(num) {
-//   this.currentFrame.push(num)
-//   if(num === 10 && this.frameRoll === 1) {
-//     this.currentFrame.push(0);
-//   }
-//   if (this.currentFrame.length === 2) {
-//     this.reset();
-//   } else {
-//     this.frameRoll++
-//   };
-//   this.isGameInPlay();
-// }
-
-// Bowling.prototype.reset = function() {
-//   this.bonusCalc();
-//   this.bonusSetter();
-//   this.scorecard.push(this.currentFrame);
-//   this.currentFrame = [];
-//   this.frameRoll = 1;
-//   this.frame++
-//   var scoreArray = []
-//   scoreArray = scoreArray.concat.apply(scoreArray, this.scorecard);
-//   this.score = (scoreArray.reduce(function(a,b) {
-//       return a + b;
-//     })) + this.bonusScore
-// };
-
-// Bowling.prototype.isGameInPlay = function() {
-//   if(this.scorecard.length === 10 && (this.scorecard[9][0] + this.scorecard[9][1] !== 10)) {
-//     return false;
-//   } else {
-//     return true;
-//   };
-// };
-
-// Bowling.prototype.bonusCalc = function() {
-//   for( var i = 0; i < this.bonus; i++ ) {
-//     this.bonusScore += this.currentFrame[i]
-//   }
-// };
-
-// Bowling.prototype.bonusSetter = function() {
-//   if(this.currentFrame[0] === 10) {
-//     this.bonus = 2
-//   } else if(this.currentFrame[0] + this.currentFrame[1] === 10) {
-//     this.bonus = 1
-//   } else {
-//     this.bonus = 0
-//   };
-// };

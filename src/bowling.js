@@ -4,8 +4,7 @@ var Bowling = function Bowling() {
   this.thirdRollScore = 0
   this.frameNumber = 1
   this.totalScore = 0
-  this.spareBonusPoints = 0
-  this.strikeBonusPoints = 0
+  this.bonusPoints = 0
   this.spare = 0
   this.strike = 0
 };
@@ -13,7 +12,7 @@ var Bowling = function Bowling() {
 Bowling.prototype.firstRoll = function(number) {
   if (this._isInvalid(number)) throw new Error('That is an invalid number');
   if (this._strikes(number)) this._processStrikes();
-  if (this._spares()) this._processSpares(number);
+  if (this._sparesExist()) this._processSpares(number);
   this.firstRollScore = number
 };
 
@@ -23,7 +22,7 @@ Bowling.prototype.secondRoll = function(number) {
     this.spare += 1
   }
   if (this.strike === 1) {
-    this.strikeBonusPoints += (this.firstRollScore + number)
+    this.bonusPoints += (this.firstRollScore + number)
     this.strike = 0
   }
   if (this.strike > 1) {
@@ -43,17 +42,16 @@ Bowling.prototype.thirdRoll = function(number) {
 };
 
 Bowling.prototype._calculatesConsecutiveBonusPoints = function(number) {
-  this.strikeBonusPoints = ((this.strike - 1) * 2 - 1) * 10 + this.firstRollScore * 2 + number
+  this.bonusPoints = ((this.strike - 1) * 2 - 1) * 10 + this.firstRollScore * 2 + number
 };
 
 Bowling.prototype._countsTotalScore = function() {
-  this.totalScore += (this.firstRollScore + this.secondRollScore + this.spareBonusPoints + this.strikeBonusPoints + this.thirdRollScore)
+  this.totalScore += (this.firstRollScore + this.secondRollScore + this.bonusPoints + this.thirdRollScore)
   this._reset();
 };
 
 Bowling.prototype._reset = function() {
-  this.spareBonusPoints = 0
-  this.strikeBonusPoints = 0
+  this.bonusPoints = 0
   this.firstRollScore = 0
   this.secondRollScore = 0
   this.thirdRollScore = 0
@@ -71,7 +69,7 @@ Bowling.prototype._strikes = function(number) {
   return number === 10 && this.frameNumber < 10
 };
 
-Bowling.prototype._spares = function() {
+Bowling.prototype._sparesExist = function() {
   return this.spare > 0
 };
 
@@ -83,6 +81,6 @@ Bowling.prototype._processStrikes = function() {
 };
 
 Bowling.prototype._processSpares = function(number) {
-  this.spareBonusPoints += number
+  this.bonusPoints += number
   this.spare = 0
 };

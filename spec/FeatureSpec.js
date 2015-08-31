@@ -67,4 +67,25 @@ describe('BowlingApp',function(){
     expect("#totals td:nth-child(2)").toContainText(5);
     expect("#running_total").toContainText(20);
   });
+
+  it("shows / for a spare", function() {
+    $("button[data-pins=4]").click();
+    $("button[data-pins=6]").click();
+    expect("td[id=1]").toContainText("/");
+  });
+
+  it("does not display frame total immediately after a spare", function() {
+    $("button[data-pins=3]").click();
+    $("button[data-pins=7]").click();
+    expect("#totals td:first").toBeEmpty();
+  });
+
+  it("adds bonus to spare score and displays correct totals", function() {
+    $("button[data-pins=8]").click();
+    $("button[data-pins=2]").click();
+    $("button[data-pins=7]").click();
+    expect("#totals td:first").toContainText(17);
+    expect("td[id=2]").toContainText(7);
+    expect("#running_total").toContainText(24);
+  });
 });

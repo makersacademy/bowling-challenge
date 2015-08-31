@@ -100,10 +100,60 @@ describe("ScoreCard", function() {
     expect(scorecard.isPreviousFrameStrike()).toBe(true);
   });
 
+  it("can tell that a previous frame was not a strike", function() {
+    scorecard.scoreForRoll(2);
+    scorecard.scoreForRoll(7);
+    scorecard.nextFrame();
+    expect(scorecard.isPreviousFrameStrike()).toBe(false);
+  });
+
   it("can tell if previous frame was a spare", function() {
     scorecard.scoreForRoll(6);
     scorecard.scoreForRoll(4);
     scorecard.nextFrame();
     expect(scorecard.isPreviousFrameSpare()).toBe(true);
-  })
+  });
+
+  it("can tell that a previous frame was not a spare", function() {
+    scorecard.scoreForRoll(5);
+    scorecard.scoreForRoll(3);
+    scorecard.nextFrame();
+    expect(scorecard.isPreviousFrameSpare()).toBe(false);
+  });
+
+  it("can give a third roll on the tenth frame - spare", function() {
+    scorecard.frame = 10;
+    scorecard.scoreForRoll(4);
+    scorecard.nextRoll();
+    scorecard.scoreForRoll(6);
+    scorecard.nextRoll();
+    expect(scorecard.roll).toEqual(3);
+  });
+
+  it("can give a third roll on the tenth frame - one strike", function() {
+    scorecard.frame = 10;
+    scorecard.scoreForRoll(10);
+    scorecard.nextRoll();
+    scorecard.scoreForRoll(6);
+    scorecard.nextRoll();
+    expect(scorecard.roll).toEqual(3);
+  });
+
+  it("can give a third roll on the tenth frame - two strikes", function() {
+    scorecard.frame = 10;
+    scorecard.scoreForRoll(10);
+    scorecard.nextRoll();
+    scorecard.scoreForRoll(10);
+    scorecard.nextRoll();
+    expect(scorecard.roll).toEqual(3);
+  });
+
+  it("only gives a third roll after a spare or strike in the tenth frame", function() {
+    scorecard.frame = 10;
+    scorecard.scoreForRoll(4);
+    scorecard.nextRoll();
+    scorecard.scoreForRoll(3);
+    scorecard.nextRoll();
+    expect(scorecard.roll).toEqual(1);
+  });
 });

@@ -6,16 +6,24 @@ function ScoreCard() {
 }
 
 ScoreCard.prototype.nextFrame = function() {
+
   return this.frame < 11 ? this.frame += 1 : "End of game!";
 }
 
 ScoreCard.prototype.nextRoll = function() {
+  if (this.frame === 10 && this.scores[10].length > 0) {
+    if (this.scores[10][0] + this.scores[10][1] >= 10) {
+      return this.roll = 3;
+    }
+  }
   return this.roll === 1 ? this.roll = 2: this.roll = 1;
 }
 
 ScoreCard.prototype.strike = function() {
   this.scores[this.frame].push(10);
-  this.nextRoll();
+  if (this.frame !== 10) {
+    this.nextRoll();
+  }
   return "X";
 }
 
@@ -63,7 +71,7 @@ ScoreCard.prototype.isPreviousFrameStrike = function() {
 }
 
 ScoreCard.prototype.isPreviousFrameSpare = function() {
-  if (this.scores[this.frame - 1].length === 2 && this.scoreForFrame(this.frame - 1)) {
-    return true;
-  }
+  return (this.scores[this.frame - 1].length === 2 && this.scoreForFrame(this.frame - 1) === 10)
 }
+
+

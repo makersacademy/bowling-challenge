@@ -7,6 +7,12 @@ function Game() {
   };
 };
 
+var prepareGame = function() {
+  for(var i=0; i < 10; i++){
+    Scorecard.list[i] = new BowlingFrame();
+  };
+};
+
 // $('#NewGame').click(function(){
 //   var game = new Game();
 //   game.start();

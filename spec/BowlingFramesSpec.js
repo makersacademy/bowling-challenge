@@ -31,7 +31,8 @@ describe("scorecard with bowling frames", function() {
     it('adds up for each subframe', function() {
       bowlingFrame.subFrame['one'] = 5;
       bowlingFrame.subFrame['two'] = 3;
-      expect(bowlingFrame.score()).toEqual(8);
+      bowlingFrame.score();
+      expect(bowlingFrame.currentScore).toEqual(8);
     });
 
     it("throws an error when 'subFrame TWO' is out of range", function(){

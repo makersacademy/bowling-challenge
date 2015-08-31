@@ -10,8 +10,8 @@ describe("scorecard with bowling frames", function() {
       bowlingFrame = new BowlingFrame();
     });
 
-    it("it is prepared with 10 frames", function() {
-      expect(Scorecard.list.length).toEqual(10);
+    it("it is prepared with 11 frames", function() {
+      expect(Scorecard.list.length).toEqual(12);
     });
 
     it("each Frame has a subframe with two values of 0 and current starts at 'one'", function() {
@@ -46,6 +46,10 @@ describe("scorecard with bowling frames", function() {
       bowlingFrame.subFrame['one'] = 12;
       expect(function(){ bowlingFrame.score();
       }).toThrow();
+    });
+    it('if strike adds up 2 points in last frame', function(){
+      for(var i=0;i<18;i++){ Scorecard.updateList(4); }
+        expect(Scorecard.list[9].subFrame['current']).toEqual('one');
     });
   });
 

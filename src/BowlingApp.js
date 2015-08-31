@@ -24,12 +24,10 @@ $(document).ready(function() {
     //deal with strike - tenth frame - allows extra roll
     if (score === "X" && frame === 10) {
 
-      //on roll 1
       if (scorecard.roll === 1) {
         $("#totals").append('<td id="strike"></td>');
       }
 
-      //on roll 3
       if (scorecard.roll === 3) {
         $("#totals td:last").text(scorecard.scoreForFrame(frame));
         $("#total").text(scorecard.grandTotal());
@@ -63,21 +61,25 @@ $(document).ready(function() {
         $("button").show();
       }
 
+      //tenth frame
+      if (frame === 10) {
+        if (score === "X") {
+          $("button").show();
+        }
+      }
+
       //a normal score and moving on
       else {
         $("#totals").append('<td>' + scorecard.scoreForFrame(frame) + '</td>');
         scorecard.nextFrame();
         $("button").show();
       }
-
     }
 
     //third roll in tenth frame - end game after this
     if (frame === 10 && scorecard.scores[10].length === 3) {
-      if (score === 10) {
         $("#totals td:last").text(scorecard.scoreForFrame(frame));
         $("#total").text(scorecard.grandTotal());
-      }
       scorecard.nextFrame();
     }
 
@@ -92,7 +94,12 @@ $(document).ready(function() {
   }
 
   function gameOver() {
-    if ()
+    $("#game_over").show();
+  }
+
+  function playAgain() {
+    $("game_over").hide();
+    scorecard.scores.clear();
   }
 
 });

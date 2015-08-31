@@ -168,7 +168,30 @@ describe('BowlingScore', function(){
           bowlingScore.recordRoll(0);
         };
         expect(bowlingScore.score).toEqual(0);
-    })
+    });
+
+    it('calculates example game', function(){
+      bowlingScore.recordRoll(1);
+      bowlingScore.recordRoll(4);
+      bowlingScore.recordRoll(4);
+      bowlingScore.recordRoll(5);
+      bowlingScore.recordRoll(6);
+      bowlingScore.recordRoll(4);
+      bowlingScore.recordRoll(5);
+      bowlingScore.recordRoll(5);
+      bowlingScore.recordRoll(10);
+      bowlingScore.recordRoll(0);
+      bowlingScore.recordRoll(1);
+      bowlingScore.recordRoll(7);
+      bowlingScore.recordRoll(3);
+      bowlingScore.recordRoll(6);
+      bowlingScore.recordRoll(4);
+      bowlingScore.recordRoll(10);
+      bowlingScore.recordRoll(2);
+      bowlingScore.recordRoll(8);
+      bowlingScore.recordRoll(6);
+      expect(bowlingScore.score).toEqual(133);
+    });
 
     describe('is last Frame', function(){
 

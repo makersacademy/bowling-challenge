@@ -68,7 +68,7 @@ describe('Bowling', function() {
         bowling.firstRoll(6);
         expect(function() {
           bowling.secondRoll(9);
-        }).toThrowError('That is an invalid number')
+        }).toThrowError('There are only 10 pins')
       });
 
       it('spare count increase when player gets a spare', function() {

@@ -12,21 +12,13 @@ var Bowling = function Bowling() {
 
 Bowling.prototype.firstRoll = function(number) {
   if (this._isInvalid(number)) throw new Error('That is an invalid number');
-  if (number === 10 && this.frameNumber < 10) {
-    this.strike += 1
-    this.frameNumber += 1
-    this.firstRollScore = 10
-    this._countsTotalScore();
-  }
-  if (this.spare > 0) {
-    this.spareBonusPoints += number
-    this.spare = 0
-  }
-  return this.firstRollScore = number
+  if (this._strikes(number)) this._processStrikes();
+  if (this._spares()) this._processSpares(number);
+  this.firstRollScore = number
 };
 
 Bowling.prototype.secondRoll = function(number) {
-  if ((number + this.firstRollScore > 10) && (this.frameNumber < 10)) throw new Error('That is an invalid number');
+  if (this._exceedsTenPins(number)) throw new Error('There are only 10 pins');
   if (this.firstRollScore + number === 10) {
     this.spare += 1
   }
@@ -50,10 +42,6 @@ Bowling.prototype.thirdRoll = function(number) {
   this._countsTotalScore();
 };
 
-Bowling.prototype._isInvalid = function(number) {
-  return number < 0 || number > 10
-};
-
 Bowling.prototype._calculatesConsecutiveBonusPoints = function(number) {
   this.strikeBonusPoints = ((this.strike - 1) * 2 - 1) * 10 + this.firstRollScore * 2 + number
 };
@@ -69,4 +57,32 @@ Bowling.prototype._reset = function() {
   this.firstRollScore = 0
   this.secondRollScore = 0
   this.thirdRollScore = 0
+};
+
+Bowling.prototype._isInvalid = function(number) {
+  return number < 0 || number > 10
+};
+
+Bowling.prototype._exceedsTenPins = function(number) {
+  return (number + this.firstRollScore > 10) && (this.frameNumber < 10)
+};
+
+Bowling.prototype._strikes = function(number) {
+  return number === 10 && this.frameNumber < 10
+};
+
+Bowling.prototype._spares = function() {
+  return this.spare > 0
+};
+
+Bowling.prototype._processStrikes = function() {
+  this.strike += 1
+  this.frameNumber += 1
+  this.firstRollScore = 10
+  this._countsTotalScore();
+};
+
+Bowling.prototype._processSpares = function(number) {
+  this.spareBonusPoints += number
+  this.spare = 0
 };

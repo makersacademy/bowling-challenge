@@ -6,21 +6,21 @@ function BowlingGame() {
   this.score = {frame: {}};
 }
 
-BowlingGame.prototype.frameTotal = function(frameNum) {
+BowlingGame.prototype.gameTotal = function(frameNum) {
+  var total = 0;
+  for (var i = 1; i < frameNum + 1; i++) { total += this._frameTotal(i); }
+  return total;
+};
+
+BowlingGame.prototype._frameTotal = function(frameNum) {
   if (this.frameNumber === 1 && this.rollNumber === 0) return 0;
   return this.score.frame[frameNum].reduce(function(score1, score2) {
     return score1 + score2;
   });
 };
 
-BowlingGame.prototype.gameTotal = function(frameNum) {
-  var total = 0;
-  for (var i = 1; i < frameNum + 1; i++) { total += this.frameTotal(i); }
-  return total;
-};
-
 BowlingGame.prototype.register = function(pins) {
-  if (this.frameNumber < 10) this._goesToNextFrame(pins);
+  if (this.frameNumber < 10) this._checkIfNextFrame(pins);
   if (this.rollNumber === 1 && pins !== 10) this._checkValidRoll(pins);
   this._checkProcedure(pins);
 };
@@ -49,7 +49,7 @@ BowlingGame.prototype._calculateScore = function(pins) {
   this._logBonus(pins);
 };
 
-BowlingGame.prototype._goesToNextFrame = function() {
+BowlingGame.prototype._checkIfNextFrame = function() {
   var condition1 = this.rollNumber === 2;
   var condition2 = this.rollNumber === 1 && this.roll.frame[this.frameNumber][0] === 10;
   if (condition1 || condition2) {

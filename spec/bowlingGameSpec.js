@@ -22,7 +22,7 @@ describe('BowlingGame', function() {
     it('calculates the total for a frame', function() {
       bowlingGame.register(5);
       bowlingGame.register(4);
-      var total = bowlingGame.frameTotal(1);
+      var total = bowlingGame._frameTotal(1);
       expect(total).toEqual(9);
     });
 

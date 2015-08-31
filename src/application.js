@@ -1,13 +1,7 @@
 $(document).ready(function() {
   var bowlingGame = new BowlingGame();
 
-  $(function() {
-      for (i =0; i <= 10; i++){
-        $(".list").append($('<option></option>').val(i).html(i));
-      }
-  });
-
-  $(function() {
+  var buildGUI = function() {
     var row;
     for (var i = 0; i < 3; ++i){
       row=$('<tr>');
@@ -20,13 +14,22 @@ $(document).ready(function() {
     }
     $('.scorecard th:last').html('Total');
     $('.scorecard tr:nth-child(2) td:last').remove();
-  });
+  };
 
-  $('.button').click(function() {
-    var pins = $('.list option:selected').val();
-    bowlingGame.register(parseInt(pins));
+  var buildButtons = function() {
+    for (i =0; i <= 10; i++) {
+      var input = $('<input type="submit">').val(i)
+        .on('click', $.proxy(registerValue, this));
+      var li = $('<li>').append(input);
+      $('.buttons').append(li);
+    }
+  };
+
+  var registerValue = function(cell) {
+    var value = parseInt($(cell.currentTarget).val());
+    bowlingGame.register(value);
     update();
-  });
+  };
 
   var update = function() {
     updateRoll();
@@ -45,7 +48,7 @@ $(document).ready(function() {
     var endCounter = bowlingGame.frameNumber;
     var startCounter = Math.max(1, endCounter - 2);
     for (var j = startCounter; j <= endCounter; j++) {
-      $('.scorecard tr:last td').eq(j - 1).html(bowlingGame.frameTotal(j));
+      $('.scorecard tr:last td').eq(j - 1).html(bowlingGame.gameTotal(j));
       $('.scorecard tr:last td').eq(10).html(bowlingGame.gameTotal(j));
     }
   };
@@ -58,4 +61,7 @@ $(document).ready(function() {
       $('.scorecard tr:nth-child(2) td:nth-last-child(2)').html(bowlingGame.roll.frame[10][2]);
     }
   };
+
+  buildGUI();
+  buildButtons();
 });

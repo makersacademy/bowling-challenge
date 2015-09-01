@@ -7,7 +7,8 @@ var Bowling = function Bowling() {
   this.bonusPoints = 0
   this.spare = 0
   this.strike = 0
-  this.lastStrikeOrSpare = 0
+  this.lastStrike = 0
+  this.lastSpare = 0
   this.rollCounter = 1
 };
 
@@ -15,7 +16,7 @@ Bowling.prototype.firstRoll = function(number) {
   this._isGameOver();
   if (this._isInvalid(number)) throw new Error('That is an invalid number');
   if (this._isAStrike(number)) this._processStrikes();
-  if (this.frameNumber === 10 && number === 10) this.lastStrikeOrSpare += 1;
+  if (this.frameNumber === 10 && number === 10) this.lastStrike += 1;
   if (this._sparesExist()) this._processSpares(number);
   if (number < 10) this.rollCounter += 1;
   this.firstRollScore = number
@@ -25,10 +26,10 @@ Bowling.prototype.secondRoll = function(number) {
   this._isGameOver();
   if (this._exceedsTenPins(number)) throw new Error('There are only 10 pins');
   if (this._isASpare(number)) this.spare += 1;
-  if (this.frameNumber === 10 && this.firstRollScore + number === 10) this.lastStrikeOrSpare += 1;
+  if (this.frameNumber === 10 && this.firstRollScore + number === 10) this.lastSpare += 1;
   if (this._hasJustOneStrike()) this._calculatesOneStrike(number);
   if (this._hasConsecutiveStrikes()) this._calculatesAllStrikes(number);
-  this.lastStrikeOrSpare > 0 ? this._tenthBonus(number) : this._processFrame(number);
+  this.lastStrike + this.lastSpare > 0 ? this._tenthBonus(number) : this._processFrame(number);
 };
 
 Bowling.prototype.thirdRoll = function(number) {

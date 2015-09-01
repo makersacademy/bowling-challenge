@@ -34,10 +34,17 @@ $(document).ready(function() {
       bowling.rollCounter += 1;
     }
 
-    if (bowling.lastStrikeOrSpare !== 0 && count < 19) {
+
+    if (bowling.lastStrike !== 0 && count < 19) {
       $('.bowling_scores th').eq(9).attr('colspan', 3);
       $('.bowling_scores tr:nth-child(2)').append('<td>');
-      $('.bowling_scores tr:last td:nth-last-child(2)').attr('colspan', 3);;
+      $('.bowling_scores tr:last td:nth-last-child(2)').attr('colspan', 3);
+    }
+
+    if (bowling.lastSpare !== 0 && count < 20) {
+      $('.bowling_scores th').eq(9).attr('colspan', 3);
+      $('.bowling_scores tr:nth-child(2)').append('<td>');
+      $('.bowling_scores tr:last td:nth-last-child(2)').attr('colspan', 3);
     }
 
 

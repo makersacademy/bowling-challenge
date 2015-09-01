@@ -8,6 +8,7 @@ var Bowling = function Bowling() {
   this.spare = 0
   this.strike = 0
   this.lastStrikeOrSpare = 0
+  this.rollCounter = 1
 };
 
 Bowling.prototype.firstRoll = function(number) {
@@ -15,6 +16,7 @@ Bowling.prototype.firstRoll = function(number) {
   if (this._isAStrike(number)) this._processStrikes();
   if (this.frameNumber === 10 && number === 10) this.lastStrikeOrSpare += 1;
   if (this._sparesExist()) this._processSpares(number);
+  if (number < 10) this.rollCounter += 1;
   this.firstRollScore = number
 };
 
@@ -24,7 +26,7 @@ Bowling.prototype.secondRoll = function(number) {
   if (this.frameNumber === 10 && this.firstRollScore + number === 10) this.lastStrikeOrSpare += 1;
   if (this._hasJustOneStrike()) this._calculatesOneStrike(number);
   if (this._hasConsecutiveStrikes()) this._calculatesAllStrikes(number);
-  this.lastStrikeOrSpare > 0 ? this.secondRollScore = number : this._processFrame(number);
+  this.lastStrikeOrSpare > 0 ? this._tenthBonus(number) : this._processFrame(number);
 };
 
 Bowling.prototype.thirdRoll = function(number) {
@@ -72,6 +74,7 @@ Bowling.prototype._reset = function() {
   this.firstRollScore = 0
   this.secondRollScore = 0
   this.thirdRollScore = 0
+  this.rollCounter = 1
 };
 
 Bowling.prototype._isInvalid = function(number) {
@@ -100,4 +103,9 @@ Bowling.prototype._hasJustOneStrike = function() {
 
 Bowling.prototype._hasConsecutiveStrikes = function() {
   return this.strike > 1
+};
+
+Bowling.prototype._tenthBonus = function(number) {
+  this.secondRollScore = number
+  this.rollCounter += 1
 };

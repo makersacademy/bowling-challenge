@@ -1,15 +1,16 @@
 function Card () {
-  this.numberOfIndividualRolls = 20;
+  this.totalRolls = 20;
   this.scoreArray=[];
 }
  
 Card.prototype.isGameOver = function() {
-  return (this.scoreArray.length === this.numberOfIndividualRolls)
+  this.calculatetotalRolls();
+  return (this.scoreArray.length === this.totalRolls)
   };
 
 
 Card.prototype.updateScoreArray = function(smashedPins) {
-  if ((smashedPins === 10) && (((this.scoreArray.length+1)%2) > 0)) {
+  if ((smashedPins === 10) && (((this.scoreArray.length+1)%2) > 0) && (this.scoreArray.length <=19)) {
     this.scoreArray.push(smashedPins);
     this.scoreArray.push('X');
   } else {
@@ -21,13 +22,13 @@ Card.prototype.getScoreArray = function(roll) {
   return this.scoreArray[roll];
 };
 
-Card.prototype.setNumberOfIndividualRolls = function() {
+Card.prototype.calculatetotalRolls = function() {
   
   if (this.getScoreArray(18) === 10){
-    this.numberOfIndividualRolls = 21;
+    this.totalRolls = 22;
   } else if 
     (this.getScoreArray(18)+this.getScoreArray(19) === 10) {
-      this.numberOfIndividualRolls = 20;
+      this.totalRolls = 21;
   }
 };
 
@@ -40,7 +41,7 @@ Card.prototype.getBasicScore = function(rolls) {
     basicScore += rolls[i];
     }
     counter ++;
-    if (this.numberOfIndividualRolls > 20 && counter >= 20){ break; }
+    if (this.totalRolls > 20 && counter >= 20){ break; }
   }
   return basicScore;
 };
@@ -56,14 +57,13 @@ Card.prototype.getStrikeBonuses = function(array) {
       for(j=(i+1); j < 23; j++){ 
         if(typeof array[j] === 'number'){
           strikeBonuses += array[j];
-          console.log(strikeBonuses);
           counter++;
           if (counter >= 2) { break; }
         }
       }
     }
     counter2 ++;
-    if (this.numberOfIndividualRolls > 20 && counter2 >= 20){ break; }
+    if (this.totalRolls > 20 && counter2 >= 20){ break; }
   }    
   return strikeBonuses;
 };
@@ -81,12 +81,7 @@ Card.prototype.getSpareBonuses = function(array) {
 };
 
 Card.prototype.getTotalScore = function(array) {
-  // console.log(this.getBasicScore(array));
-  // console.log(this.getSpareBonuses(array));
-  // console.log(this.getStrikeBonuses(array));
-
-  var totalScore = this.getBasicScore(array)+this.getSpareBonuses(array)+this.getStrikeBonuses(array);
-  return totalScore;
+  return this.getBasicScore(array)+this.getSpareBonuses(array)+this.getStrikeBonuses(array);
 };
 
 Card.prototype.currentFrame = function(array) {
@@ -98,7 +93,12 @@ Card.prototype.currentRoll = function(array) {
 };
 
 Card.prototype.pinsStanding = function(array) {
-  return array.length%2 === 0? 10 : 10 - array[array.length-1];
+  if (array.length < 21) {
+    return array.length%2 === 0? 10 : 10 - array[array.length-1];
+  } else if(array[20] === 10) {
+    return 10;
+  }
+    return 10 - array[array.length-1];
 };
 
 

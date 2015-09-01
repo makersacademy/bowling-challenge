@@ -9,7 +9,7 @@ describe("A card", function(){
   describe("at initialization should", function(){
     
     it("have 20 rolls", function(){
-      expect(card.numberOfIndividualRolls).toEqual(20);
+      expect(card.totalRolls).toEqual(20);
     });
 
   });
@@ -60,26 +60,27 @@ describe("can log a roll", function(){
 
 describe("can update total rolls", function(){
 
-      it("by increasing them to 21 if roll 18 is a strike", function(){
-        spyOn(card, 'getScoreArray').and.returnValue(10);
-        card.setNumberOfIndividualRolls();
-        expect(card.numberOfIndividualRolls).toEqual(21);
+      it("by increasing them to 24 if roll 19 is a strike", function(){
+        for (i = 0; i < 18; i++) { card.updateScoreArray(1); }
+        card.updateScoreArray(10);
+        card.calculatetotalRolls();
+        expect(card.totalRolls).toEqual(22);
       });
 
-      it("by increasing them to 20 if roll 18 and 19 represent a spare", function(){
+      it("by increasing them to 21 if roll 19 and 20 represent a spare", function(){
         for (i = 0; i < 18; i++) { card.updateScoreArray(1); }
         card.updateScoreArray(5);
         card.updateScoreArray(5);
-        card.setNumberOfIndividualRolls();
-        expect(card.numberOfIndividualRolls).toEqual(20);
+        card.calculatetotalRolls();
+        expect(card.totalRolls).toEqual(21);
       });
 
     it("but leave them unchanged if 19 + 20 is less than 10", function(){
       for (i = 0; i < 19; i++) { card.updateScoreArray(1); }
       card.updateScoreArray(4);
       card.updateScoreArray(5);
-      card.setNumberOfIndividualRolls();
-      expect(card.numberOfIndividualRolls).toEqual(20);
+      card.calculatetotalRolls();
+      expect(card.totalRolls).toEqual(20);
     });
 
   });
@@ -110,7 +111,7 @@ describe("can update total rolls", function(){
       for (i = 0; i <= 22; i+=2) { 
         card.updateScoreArray(10);
       };
-      card.setNumberOfIndividualRolls();
+      card.calculatetotalRolls();
       expect(card.getTotalScore(card.scoreArray)).toEqual(300);
     });
 

@@ -10,30 +10,28 @@ $(document).ready(function(){
   $('#pins').change(function(){
     var score = parseInt($('#pins').val());
     card.updateScoreArray(score);
-    console.log(score);
+    if (card.isGameOver()) { return finalstuff(); }
     $("#scoreCard").html(generateScoreCard());
     setFrameRoll();
     setPinsLeft();
   });
 
   function generateScoreCard(){
-    var scoreCard = "<p>SCORE CARD</p><br></br>"
-    console.log('Score Card: ' + card.scoreArray);
-    console.log('Total Score: '+ card.getTotalScore(card.scoreArray));
+    var scoreCard = "<br></br>Total Score: " + card.getTotalScore(card.scoreArray);
+    scoreCard += "<br></br>Score Card: " + card.scoreArray;
     return scoreCard;
   }
 
   function setFrameRoll(){
-    var currentFrame = "Current Frame: " + card.currentFrame(card.scoreArray);
-    var currentRoll = "Current Roll: " + card.currentRoll(card.scoreArray);
+    var currentFrame = "Frame: " + card.currentFrame(card.scoreArray);
+    var currentRoll = "Roll: " + card.currentRoll(card.scoreArray);
     $('#currentFrame').text(currentFrame);
     $('#currentRoll').text(currentRoll);
   }
 
   function setPinsLeft(){
 
-    var pinsLeft = card.pinsStanding(card.scoreArray);
-    console.log("Pins Left: " +   pinsLeft);
+    var pinsLeft = card.pinsStanding(card.scoreArray);  
     var pinsSelector = "<option selected='selected', disabled='disabled'>Pins knocked down</option>"
     for (i=0; i <= pinsLeft; i++){
       var temp = "<option value='"+i
@@ -43,26 +41,19 @@ $(document).ready(function(){
     $('#pins').html(pinsSelector);
   }
 
+  function finalstuff(){
+    $("#scoreCard").html(generateScoreCard());
+    $('#goodbye').text("Game Over");
+    $('#pins').remove();
+    $('#currentFrame').remove();
+    $('#currentRoll').remove();
 
+  }
 
 });
 
 
 
 
-  // var currentFrame = "Current Frame: " + card.currentFrame(card.scoreArray);
-  // var currentRoll = "Current Roll: " + card.currentRoll(card.scoreArray);
-  // var pinsLeft = card.pinsStanding(card.scoreArray);
 
-  // var pinsSelector = "<select id='pins'>";
-  // pinsSelector += "<option selected='selected', disabled='disabled'>Pins knocked down</option>"
-  // for (i=0; i <= pinsLeft; i++){
-  //   var temp = "<option value='"+i
-  //   temp+="'>"
-  //   pinsSelector+=temp + i;
-  // }
-
-  // $('#currentFrame').text(currentFrame);
-  // $('#currentRoll').text(currentRoll);
-  // $('#pinsLeft').append(pinsSelector);
 

@@ -31,12 +31,12 @@ Bowling.prototype.secondRoll = function(number) {
 
 Bowling.prototype.thirdRoll = function(number) {
   this.thirdRollScore = number
-  this.frameNumber += 1
   this._countsTotalScore();
 };
 
 Bowling.prototype._countsTotalScore = function() {
   this.totalScore += (this.firstRollScore + this.secondRollScore + this.bonusPoints + this.thirdRollScore)
+  this.frameNumber += 1
   if (this.frameNumber > 10) throw new Error('Game is over');
   this._reset();
 };
@@ -53,7 +53,6 @@ Bowling.prototype._calculatesAllStrikes = function(number) {
 
 Bowling.prototype._processStrikes = function() {
   this.strike += 1
-  this.frameNumber += 1
   this.firstRollScore = 10
   this._countsTotalScore();
 };
@@ -65,7 +64,6 @@ Bowling.prototype._processSpares = function(number) {
 
 Bowling.prototype._processFrame = function(number) {
   this.secondRollScore = number
-  this.frameNumber += 1
   this._countsTotalScore();
 };
 

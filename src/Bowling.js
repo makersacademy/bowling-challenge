@@ -18,7 +18,6 @@ BowlingScore.prototype.recordRoll = function(pinsHit) {
 BowlingScore.prototype.processFinalScore = function() {
   if (this.spares[0] === 9) {
     this.score += (this.bowlingFrames[9][0] + this.currentFrame[0] + this.bowlingFrames[9][1]);
-    console.log(this.currentFrame)
   };
 };
 

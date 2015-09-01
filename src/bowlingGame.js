@@ -2,12 +2,13 @@ function BowlingGame() {
   this.rollNumber = 0;
   this.frameNumber = 1;
   this.numberOfBonus = 0;
+  this.remainingPins = 10;
   this.roll = {frame: {}};
   this.score = {frame: {}};
-  this.buildStoringArrays();
+  this._buildStoringArrays();
 }
 
-BowlingGame.prototype.buildStoringArrays = function() {
+BowlingGame.prototype._buildStoringArrays = function() {
   for (counter = 1; counter <= 10; counter++) {
     this.roll.frame[counter] = [];
     this.score.frame[counter] = 0;
@@ -20,14 +21,19 @@ BowlingGame.prototype.gameTotal = function(frameNum) {
   return total;
 };
 
+BowlingGame.prototype.rerack = function () {
+  this.remainingPins = 10;
+};
+
 BowlingGame.prototype.register = function(pins) {
   if (this.frameNumber < 10) this._checkIfNextFrame(pins);
-  if (this.rollNumber === 1 && pins !== 10) this._checkValidRoll(pins);
+  this._checkValidRoll(pins);
   this._checkProcedure(pins);
 };
 
 BowlingGame.prototype._checkProcedure = function(pins) {
   this.rollNumber ++;
+  this.removePins(pins);
   this._logRoll(pins);
   this._isGameFinished();
   this._calculateScore(pins);
@@ -35,7 +41,12 @@ BowlingGame.prototype._checkProcedure = function(pins) {
 
 BowlingGame.prototype._isGameFinished = function() {
   if (this.rollNumber > 3) this.numberOfBonus = 0;
-  if (this.rollNumber >= 3 && this.numberOfBonus === 0) throw new Error('Game Over');
+  if (this.rollNumber >= 3 && this.numberOfBonus === 0) throw new Error('Not possbile');
+  };
+
+  BowlingGame.prototype.removePins = function (pins) {
+    this.remainingPins -= pins;
+    if (this.remainingPins === 0) this.rerack();
   };
 
 BowlingGame.prototype._logRoll = function(pins) {
@@ -52,11 +63,11 @@ BowlingGame.prototype._calculateScore = function(pins) {
 BowlingGame.prototype._checkIfNextFrame = function() {
   var condition1 = this.rollNumber === 2;
   var condition2 = this.rollNumber === 1 && this.roll.frame[this.frameNumber][0] === 10;
-  if (condition1 || condition2) { this.frameNumber ++; this.rollNumber = 0; }
+  if (condition1 || condition2) { this.frameNumber ++; this.rollNumber = 0; this.rerack(); }
 };
 
 BowlingGame.prototype._checkValidRoll = function(pins) {
-  if (pins + this.roll.frame[this.frameNumber][0] > 10) throw new Error('Not possbile');
+  if (pins > this.remainingPins) throw new Error('Not possbile');
 };
 
 BowlingGame.prototype._logScoreCurrentFrame = function(pins) {

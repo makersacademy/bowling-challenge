@@ -25,16 +25,21 @@ describe('BowlingGame', function() {
       expect(bowlingGame.score.frame[1]).toEqual(9);
     });
 
-    it('each frame must not be greater than 10', function() {
+    it('each frame must not be greater than 10, scenario 1', function() {
       bowlingGame.register(5);
       expect(function(){ bowlingGame.register(6); }).toThrow(new Error('Not possbile'));
+    });
+
+    it('each frame must not be greater than 10, scenario 2', function() {
+      bowlingGame.register(5);
+      expect(function(){ bowlingGame.register(10); }).toThrow(new Error('Not possbile'));
     });
 
     it('is over after frame number 10 is done, scenario 1', function() {
       for (var i = 0; i < 9; i++) { bowlingGame.register(10); }
       bowlingGame.register(5);
       bowlingGame.register(4);
-      expect(function(){ bowlingGame.register(4); }).toThrow(new Error('Game Over'));
+      expect(function(){ bowlingGame.register(4); }).toThrow(new Error('Not possbile'));
     });
 
     it('is over after frame number 10 is done, scenario 2', function() {
@@ -42,12 +47,12 @@ describe('BowlingGame', function() {
       bowlingGame.register(6);
       bowlingGame.register(4);
       bowlingGame.register(10);
-      expect(function(){ bowlingGame.register(4); }).toThrow(new Error('Game Over'));
+      expect(function(){ bowlingGame.register(4); }).toThrow(new Error('Not possbile'));
     });
 
     it('is over after frame number 10 is done, scenario 3', function() {
       for (var i = 0; i < 12; i++) { bowlingGame.register(10); }
-      expect(function(){ bowlingGame.register(4); }).toThrow(new Error('Game Over'));
+      expect(function(){ bowlingGame.register(4); }).toThrow(new Error('Not possbile'));
     });
   });
 

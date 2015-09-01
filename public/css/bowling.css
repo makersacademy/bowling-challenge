@@ -1,14 +1,14 @@
-html{
+html {
   height: 100%;
   text-align: center;
   background-color: rgba(240, 255, 255, 0.75);
 }
 
-body{
+body {
   height: 100%;
 }
 
-h1{
+h1 {
   margin-top: 60px;
   margin-bottom: 20px;
 }
@@ -46,7 +46,7 @@ table.scorecard th {
   display: inline;
 }
 
-.buttons input{
+.buttons input {
   position: relative;
   height: 30px;
   width: 50px;
@@ -63,7 +63,7 @@ table.scorecard th {
   box-shadow: 2px 3px 0px grey;
 }
 
-input:active{
+input:active {
   position: relative;
   -webkit-box-shadow: 0px 0px 0px;
   -moz-box-shadow: 0px 0px 0px;

@@ -6,8 +6,6 @@ var BowlingScore = function(){
   this.currentBall = 1;
   this.strikes = [];
   this.spares = [];
-  this.finalFrameBallCount = 2
-  this.defaultGamelength = 10
 };
 
 BowlingScore.prototype.recordRoll = function(pinsHit) {

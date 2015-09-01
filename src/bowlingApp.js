@@ -2,11 +2,6 @@ $(document).ready(function() {
   var bowling = new Bowling();
   var count = 0;
   var counter = 0;
-  // $(".button").submit(function(){
-  //   count++;
-  //   console.log(count)
-  // });
-  //
 
 
   $('.button').click(function() {
@@ -23,31 +18,26 @@ $(document).ready(function() {
       $('.bowling_scores tr td').eq(count).html(number);
       updateTotalScore();
     } else {
-      // Problem with Frame Number
       bowling.thirdRoll(number);
       $('.bowling_scores tr td').eq(count).html(number);
       updateTotalScore();
     }
 
-    // if (number === 10 && bowling.frameNumber === 10) {
-    //   $('.bowling_scores tr:last td').eq(counter).html('X');
-    //   $('.bowling_scores tr:last td').eq(10).html(bowling.totalScore);
-    //   counter++;
-    // }
-
-    if (number === 10) {
+    if (number === 10 && count < 18) {
       $('.bowling_scores tr:last td').eq(counter).html('X');
       $('.bowling_scores tr:last td').eq(10).html(bowling.totalScore);
       counter++;
       count++;
     }
 
-    // Problem with strikes
-    if (bowling.lastStrikeOrSpare !== 0) {
+    if (number === 10 && count === 18) {
+      bowling.rollCounter += 1;
+    }
+
+    if (bowling.lastStrikeOrSpare !== 0 && count < 19) {
       $('.bowling_scores th').eq(9).attr('colspan', 3);
       $('.bowling_scores tr:nth-child(2)').append('<td>');
-      $('.bowling_scores tr:last td:nth-last-child(2)').attr('colspan', 3);
-      // $('.bowling_scores tr:nth-child(2) td:nth-last-child(2)').html(bowlingGame.roll.frame[10][2]);
+      $('.bowling_scores tr:last td:nth-last-child(2)').attr('colspan', 3);;
     }
 
 
@@ -58,6 +48,7 @@ $(document).ready(function() {
   var updateTotalScore = function() {
     $('.bowling_scores tr:last td').eq(counter).html(bowling.totalScore);
     $('.bowling_scores tr:last td').eq(10).html(bowling.totalScore);
+    bowling._isGameOver();
     counter++;
   };
 

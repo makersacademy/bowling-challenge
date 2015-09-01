@@ -12,6 +12,7 @@ var Bowling = function Bowling() {
 };
 
 Bowling.prototype.firstRoll = function(number) {
+  this._isGameOver();
   if (this._isInvalid(number)) throw new Error('That is an invalid number');
   if (this._isAStrike(number)) this._processStrikes();
   if (this.frameNumber === 10 && number === 10) this.lastStrikeOrSpare += 1;
@@ -21,6 +22,7 @@ Bowling.prototype.firstRoll = function(number) {
 };
 
 Bowling.prototype.secondRoll = function(number) {
+  this._isGameOver();
   if (this._exceedsTenPins(number)) throw new Error('There are only 10 pins');
   if (this._isASpare(number)) this.spare += 1;
   if (this.frameNumber === 10 && this.firstRollScore + number === 10) this.lastStrikeOrSpare += 1;
@@ -37,7 +39,6 @@ Bowling.prototype.thirdRoll = function(number) {
 Bowling.prototype._countsTotalScore = function() {
   this.totalScore += (this.firstRollScore + this.secondRollScore + this.bonusPoints + this.thirdRollScore)
   this.frameNumber += 1
-  if (this.frameNumber > 10) throw new Error('Game is over');
   this._reset();
 };
 
@@ -106,4 +107,8 @@ Bowling.prototype._hasConsecutiveStrikes = function() {
 Bowling.prototype._tenthBonus = function(number) {
   this.secondRollScore = number
   this.rollCounter += 1
+};
+
+Bowling.prototype._isGameOver = function() {
+  if (this.frameNumber > 10) throw new Error('Game is over');
 };

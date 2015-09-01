@@ -278,9 +278,7 @@ describe('Bowling', function() {
         bowling.secondRoll(3);
         bowling.firstRoll(10);
         bowling.secondRoll(10);
-        expect(function() {
-          bowling.thirdRoll(10);
-        }).toThrowError('Game is over')
+        bowling.thirdRoll(10);
         expect(bowling.totalScore).toEqual(36);
       });
 
@@ -293,9 +291,7 @@ describe('Bowling', function() {
         bowling.secondRoll(7);
         bowling.firstRoll(10);
         bowling.secondRoll(10);
-        expect(function() {
-          bowling.thirdRoll(10);
-        }).toThrowError('Game is over')
+        bowling.thirdRoll(10);
         expect(bowling.totalScore).toEqual(50);
       });
 
@@ -308,9 +304,7 @@ describe('Bowling', function() {
         bowling.firstRoll(10);
         bowling.firstRoll(10);
         bowling.secondRoll(10);
-        expect(function() {
-          bowling.thirdRoll(10);
-        }).toThrowError('Game is over')
+        bowling.thirdRoll(10);
         expect(bowling.totalScore).toEqual(90);
       });
     });
@@ -324,9 +318,7 @@ describe('Bowling', function() {
         bowling.firstRoll(3);
         bowling.secondRoll(3);
         bowling.firstRoll(3);
-        expect(function() {
-          bowling.secondRoll(3);
-        }).toThrowError('Game is over')
+        bowling.secondRoll(3);
         expect(bowling.totalScore).toEqual(12);
       });
     });

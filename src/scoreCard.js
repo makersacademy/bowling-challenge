@@ -54,6 +54,10 @@ ScoreCard.prototype.currentBonus = function() {
   var bonus = 0
   for(var i=1; i<=10; i++) {
     var thisFrame = this.framesMap.get(i)
+    if(thisFrame.length ===3) {
+      bonus += thisFrame[1];
+      bonus += thisFrame[2];
+    }
     // handle strikes
     if(thisFrame.length === 1 && thisFrame[0] === 10) {
       var nextFrame = this.framesMap.get(i+1);
@@ -80,9 +84,6 @@ ScoreCard.prototype.currentBonus = function() {
           bonus += nextFrame[0];
         }
       }
-    }
-    if(thisFrame.length ===3) {
-      bonus += thisFrame[2];
     }
   }
   return bonus;

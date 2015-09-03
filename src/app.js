@@ -6,20 +6,21 @@ $(document).ready(function(){
 
   $('button.NewGame').click(function() {
     if($('div.ending').is(':visible')) {
-      $('div.ending').remove()
-;    }
+      $('div.ending').remove();
+    }
     scoreCard = new ScoreCard();
     scoreCard.setUp();
     $('section.ScoreCard').fadeIn(500);
     $('section.Scoring').fadeIn(500);
     $('section.ScoreDisplay').fadeIn(500);
     clearDisplay();
+    clearInvalidPins(0);
     updateScores();
   });
 
   $('button.scoring').click(function(event) {
     var et = event.target;
-    var pinsDown = Number(et.id)
+    var pinsDown = Number(et.id);
     scoreCard.takeTurn(pinsDown);
     displayPins();
     updateScores();
@@ -38,16 +39,16 @@ $(document).ready(function(){
   function displayPins() {
     var frame = 1
     for (var val of scoreCard.framesMap.values()) {
-      if(val.length === 1) { $('td[frame='+String(frame)+'][roll=1]').html(val[0]);
-                           }
-      if(val.length === 2) { $('td[frame='+String(frame)+'][roll=1]').html(val[0]);
-                            $('td[frame='+String(frame)+'][roll=2]').html(val[1]);
-                          }
-      if(val.length === 3) { $('td[frame='+String(frame)+'][roll=1]').html(val[0]);
-                            $('td[frame='+String(frame)+'][roll=2]').html(val[1]);
-                            $('td[frame='+String(frame)+'][roll=3]').html(val[2]);
-                          }
-      frame ++
+      if(val.length === 1) { $('td[frame='+frame+'][roll=1]').html(val[0]);
+      }
+      if(val.length === 2) { $('td[frame='+frame+'][roll=1]').html(val[0]);
+                            $('td[frame='+frame+'][roll=2]').html(val[1]);
+      }
+      if(val.length === 3) { $('td[frame='+frame+'][roll=1]').html(val[0]);
+                            $('td[frame='+frame+'][roll=2]').html(val[1]);
+                            $('td[frame='+frame+'][roll=3]').html(val[2]);
+      }
+      frame++
     }
   };
 
@@ -70,11 +71,14 @@ $(document).ready(function(){
 
   function isEndGame() {
     var tenthFrame = scoreCard.framesMap.get(10)
-    if(tenthFrame.length === 2 || (tenthFrame.length === 3 && (tenthFrame[0] + tenthFrame[1] === 10 || tenthFrame[0] === 10 ))) {
+    if(tenthFrame.length === 3 || (tenthFrame.length === 2 && (tenthFrame[0] + tenthFrame[1] < 10 && tenthFrame[0] < 10 ))) {
       if(scoreCard.currentScore() === 0){
         gutterGame();
       }
-      else { endTheGame(); }
+      else {
+        endTheGame();
+        updateScores();
+      }
     }
   };
 

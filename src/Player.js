@@ -1,16 +1,10 @@
 var Player = function() {
+  this.scorecard = new Scorecard();
   this.points = function() {
-    return Scorecard.currentSum;
+    return this.scorecard.currentSum;
   };
 };
 
 Player.prototype.notesPinsDown = function(pinsDownNumber) {
-  // var isStrike = function(pinsDown){
-  //   return pinsDown === 10;
-  // };
-
-  // if(isStrike(pinsDownNumber) === true){
-  //   Scorecard.updateList(pinsDownNumber);
-  // };
-
+  updateScorecardList(pinsDownNumber);
 };

@@ -1,15 +1,16 @@
 function Game() {
   this.isStarted = false;
+  this.player = new Player();
 
   this.start = function() {
     this.isStarted = true;
-    prepareGame();
+    prepareGame(this.player.scorecard);
   };
 };
 
-var prepareGame = function() {
+var prepareGame = function(scorecard) {
   for(var i=0; i < 12; i++){
-    Scorecard.list[i] = new BowlingFrame();
+    scorecard.list[i] = new BowlingFrame();
   };
 };
 

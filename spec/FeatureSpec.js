@@ -8,8 +8,5 @@ describe('Feature tests',function(){
     $.holdReady(false);
   });
 
-  it('???', function() {
-    expect('__field__').toContainText('________');
-  });
 
 });

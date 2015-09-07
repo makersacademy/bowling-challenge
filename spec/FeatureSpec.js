@@ -1,6 +1,6 @@
 describe('Feature tests',function(){
 
-  var scorecard = new scorecard();
+  var scorecard = new Scorecard();
 
   beforeEach(function(){
     jasmine.getFixtures().fixturesPath = '.';

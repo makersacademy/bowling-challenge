@@ -47,11 +47,12 @@ In terminal:
 ````
 open SpecRunner.html
 ````
-In the browser `inspect element`
-Select console, type `frame = new Frame`
+* In the browser `inspect element`
+* Select console, type `frame = new Frame`
 
 ## Testing
 
+Jasmine:
 ````
 open SpecRunner.html
 ````

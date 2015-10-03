@@ -7,19 +7,22 @@ function Game() {
   this.frames = array
 };
 
-Game.prototype.countFallenPins = function(pins) {
-  this.total += pins
-};
+// Game.prototype.countFallenPins = function(pins) {
+//   this.total += pins
+// };
 
 Game.prototype.countFrameScores = function(nth) {
-  var sum, spareBonus, strikeBonus;
-  spareBonus = this.frames[nth][0];
-  strikeBonus = spareBonus + this.frames[nth][1];
+  var sum;
   sum = this.frames[nth-1][0] + this.frames[nth-1][1];
+  return sum + this.bonusScores(nth);
+}
+
+Game.prototype.bonusScores = function(nth) {
+  var currentScores, spareBonus, strikeBonus;
+  currentScores = this.frames[nth-1][0] + this.frames[nth-1][1]
   if (this.frames[nth-1][0] === 10) {
-    sum += strikeBonus;
-  } else if (sum === 10) {
-    sum += spareBonus;
+    return strikeBonus = this.frames[nth][0] + this.frames[nth][1];
+  } else if ( currentScores === 10) {
+    return spareBonus = this.frames[nth][0];
   }
-  return sum;
 }

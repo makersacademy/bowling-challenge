@@ -30,3 +30,10 @@ Game.prototype.bonusScores = function(nth) {
     return spareBonus = this.frames[nth][0];
   }
 }
+
+Game.prototype.addScores = function(nth) {
+  for (var i=0; i<nth; i++) {
+    this.total += this.countFrameScores(i+1);
+  }
+  return this.total;
+}

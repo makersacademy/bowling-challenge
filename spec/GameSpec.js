@@ -66,13 +66,15 @@ describe ('Game', function() {
     expect(game.countFrameScores(10)).toBe(17);
   })
 
-  // it ('sums the scores', function() {
-  //   game.frames[0][0] = 10;
-  //   game.frames[0][1] = 0;
-  //   game.frames[1][0] = ;
-  //   game.frames[1][1] = ;
-  //   game.frames[2][0] = ;
-  //   game.frames[2][1] = ;
-  // });
-
+  it ('sums the scores', function() {
+    game.frames[0][0] = 10;
+    game.frames[0][1] = 0;
+    game.frames[1][0] = 3;
+    game.frames[1][1] = 4;
+    game.frames[2][0] = 8;
+    game.frames[2][1] = 2;
+    game.frames[3][0] = 7;
+    game.frames[3][1] = 2;
+    expect(game.addScores(3)).toBe(41);
+  });
 });

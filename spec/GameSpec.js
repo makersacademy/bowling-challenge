@@ -42,12 +42,21 @@ describe ('Game', function() {
     expect(game.countFrameScores(5)).toBe(18);
   });
 
-  // it ('can have 3 rolls in 10th frame', function() {
-  //   game.frames[10][0] = 9;
-  //   game.frames[10][1] = 1;
-  //   game.frames[10][2] = 8;
-  //   expect(game.countFrameScores(10)).toBe(18);
-  // })
+  it ('can have a bonus roll in 10th frame when you spare', function() {
+    game.frames[9][0] = 9;
+    game.frames[9][1] = 1;
+    game.frames[10][0] = 8;
+    game.frames[10][1] = 0;
+    expect(game.countFrameScores(10)).toBe(18);
+  })
 
+  it ('can have a bonus roll in 10th frame when you strike', function() {
+    game.frames[9][0] = 9;
+    game.frames[9][1] = 1;
+    game.frames[10][0] = 7;
+    // set frames[10][1] to 0!!!
+    game.frames[10][1] = 0;
+    expect(game.countFrameScores(10)).toBe(17);
+  })
 
 });

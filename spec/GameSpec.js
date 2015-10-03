@@ -42,6 +42,13 @@ describe ('Game', function() {
     expect(game.countFrameScores(5)).toBe(18);
   });
 
+  it ('has no bonus when the frame score is less than 10', function() {
+    game.frames[4][0] = 7;
+    game.frames[4][1] = 2;
+    game.frames[5][0] = 4;
+    expect(game.countFrameScores(5)).toBe(9);
+  })
+
   it ('can have a bonus roll in 10th frame when you spare', function() {
     game.frames[9][0] = 9;
     game.frames[9][1] = 1;
@@ -58,5 +65,14 @@ describe ('Game', function() {
     game.frames[10][1] = 0;
     expect(game.countFrameScores(10)).toBe(17);
   })
+
+  // it ('sums the scores', function() {
+  //   game.frames[0][0] = 10;
+  //   game.frames[0][1] = 0;
+  //   game.frames[1][0] = ;
+  //   game.frames[1][1] = ;
+  //   game.frames[2][0] = ;
+  //   game.frames[2][1] = ;
+  // });
 
 });

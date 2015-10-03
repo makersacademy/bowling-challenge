@@ -14,7 +14,11 @@ function Game() {
 Game.prototype.countFrameScores = function(nth) {
   var sum;
   sum = this.frames[nth-1][0] + this.frames[nth-1][1];
-  return sum + this.bonusScores(nth);
+  if (this.bonusScores(nth) === undefined) {
+    return sum;
+  } else {
+    return sum + this.bonusScores(nth);
+  }
 }
 
 Game.prototype.bonusScores = function(nth) {

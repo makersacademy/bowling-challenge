@@ -13,8 +13,8 @@ describe ('Game', function() {
   //   expect(game.total).toBe(8);
   // });
 
-  it ('has 10 frames', function() {
-    expect(game.frames.length).toBe(10);
+  it ('has 11 frames', function() {
+    expect(game.frames.length).toBe(11);
   });
 
   it ('has 2 rolls in each frame', function() {

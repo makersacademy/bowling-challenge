@@ -1,7 +1,7 @@
 function Game() {
   this.total = 0;
   var array = new Array();
-  for (var i=0; i<10; i++) {
+  for (var i=0; i<11; i++) {
     array.push(new Array(2));
   }
   this.frames = array

@@ -1,4 +1,4 @@
-describe("Bowling Game", function() {
+describe("Game", function() {
   var game;
 
   beforeEach(function() {
@@ -12,13 +12,15 @@ describe("Bowling Game", function() {
   }
 
   it("can roll down pins for each frame", function() {
-    rollMany(2, 5);
-    expect(game.frameScores).toEqual([5,5]);
+    rollMany(1, 5);
+    rollMany(1, 2);
+    expect(game.scoreBoard[0]).toEqual({roll1: 5, roll2: 2, frameTotal: 7})
   });
 
   it("can roll a gutter game", function() {
-    game.roll(20, 0);
-    expect(game.totalScore).toEqual(0);
+    rollMany(20, 0);
+    expect(game.totalScore()).toEqual(0);
   });
+
 
 });

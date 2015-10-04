@@ -1,4 +1,4 @@
 function Game() {
   this.score = 0
-  this.framers = 10
+  this.player_frames = 10
 };

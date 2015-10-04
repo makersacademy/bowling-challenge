@@ -1,0 +1,83 @@
+table, tr, td {
+  border: 1px solid black;
+}
+td {
+  width: 80px;
+  height: 80px;
+}
+td.firstRow {
+  height: 30px;
+  text-align: center;
+}
+/*td.secondRow tr td {
+  position: relative;
+  top: -17px;
+}*/
+
+.secondRow div {
+  text-align: center;
+  height: 40px;
+  display: table-cell;
+}
+#first {
+  width: 33px;
+}
+#second {
+  width: 45px;
+  position: relative;
+  top: -3px;
+  left: 4px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+#third {
+  width: 80px;
+  display: block;
+}
+.secondRow:last-child #second {
+
+}
+#tenth2, #tenth3 {
+  width: 22px;
+  height: 36px;
+}
+#tenth2 {
+  border-right: 1px solid black;
+}
+/*td.secondRow tr td:first-child {
+  width: 40px;
+  height: 40px;
+  border: 0px;
+
+}
+td.secondRow tr td:last-child {
+  width: 40px;
+  height: 40px;
+}*/
+#fallenPins div {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid black;
+  display: inline-block;
+  margin: 3px 3px 3px 3px;
+  text-align: center;
+}
+
+/*.tenth {
+  background-color: red;
+}*/
+/*.tenth div {
+  width: 18px;
+  height: 40px;
+  margin: 0 0 0 0;
+  position: relative;
+
+  border-right: 1px solid black;
+}*/
+/*.tenth td {
+  position: relative;
+  top: 29px
+
+  border: 1px solid black;
+}*/

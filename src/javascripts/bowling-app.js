@@ -1,9 +1,8 @@
 function Game() {
   this.score = 0;
   this.frameOver = false;
-  this.rolls = {1:[],
-                2:[],
-                3:[]};
+  this.rolls = {1:[], 2:[], 3:[], 4:[], 5:[],
+                6:[], 7:[], 8:[], 9:[],10:[]};
   this.currentFrame = 1;
 };
 

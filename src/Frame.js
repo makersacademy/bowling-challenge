@@ -2,6 +2,10 @@ function Frame() {
   this.score = 0;
 }
 
+Frame.prototype.roll = function() {
+  this.score = Math.floor(Math.random()*11);
+};
+
 
 
 

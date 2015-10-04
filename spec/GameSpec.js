@@ -42,6 +42,16 @@ describe ('Game', function() {
     expect(game.countFrameScores(5)).toBe(18);
   });
 
+  it ('has more bonus when you strik consecutively', function() {
+    game.frames[4][0] = 10;
+    game.frames[4][1] = 0;
+    game.frames[5][0] = 10;
+    game.frames[5][1] = 0;
+    game.frames[6][0] = 10;
+    game.frames[6][1] = 0;
+    expect(game.countFrameScores(5)).toBe(30);
+  });
+
   it ('has no bonus when the frame score is less than 10', function() {
     game.frames[4][0] = 7;
     game.frames[4][1] = 2;
@@ -77,5 +87,18 @@ describe ('Game', function() {
     game.frames[3][1] = 2;
     expect(game.addScores(3)).toBe(41);
   });
+
+  it ('sums the scores correctly when there are consecutive strikes', function() {
+    game.frames[0][0] = 10;
+    game.frames[0][1] = 0;
+    game.frames[1][0] = 10;
+    game.frames[1][1] = 0;
+    game.frames[2][0] = 10;
+    game.frames[2][1] = 0;
+    game.frames[3][0] = 9;
+    game.frames[3][1] = 1;
+    expect(game.addScores(3)).toBe(79);
+  })
+
 
 });

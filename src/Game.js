@@ -25,7 +25,12 @@ Game.prototype.bonusScores = function(nth) {
   var currentScores, spareBonus, strikeBonus;
   currentScores = this.frames[nth-1][0] + this.frames[nth-1][1]
   if (this.frames[nth-1][0] === 10) {
-    return strikeBonus = this.frames[nth][0] + this.frames[nth][1];
+    if (this.frames[nth][0] === 10) {
+      return strikeBonus = this.frames[nth][0] + this.frames[nth+1][0];
+
+    } else {
+      return strikeBonus = this.frames[nth][0] + this.frames[nth][1];
+    }
   } else if ( currentScores === 10) {
     return spareBonus = this.frames[nth][0];
   }

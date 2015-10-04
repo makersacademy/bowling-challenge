@@ -77,4 +77,5 @@ describe ('Game', function() {
     game.frames[3][1] = 2;
     expect(game.addScores(3)).toBe(41);
   });
+
 });

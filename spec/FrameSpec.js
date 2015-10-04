@@ -16,4 +16,11 @@ describe("Frame", function() {
     expect(frame.score).toEqual(5);
   });
 
+  it("the score accumulates for each successive roll (rolls stubbed to 6)", function(){
+    spyOn(Math, 'random').and.returnValue(0.6);
+    frame.roll();
+    frame.roll();
+    expect(frame.score).toEqual(12);
+  });
+
 });

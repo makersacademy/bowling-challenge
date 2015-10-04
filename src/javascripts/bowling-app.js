@@ -7,6 +7,9 @@ function Game() {
 
 Game.prototype.roll = function(pins) {
   this.rolls.push(pins);
-  if (pins === 10 || this.frameOver === true) {this.currentFrame++};
-  this.frameOver = !this.frameOver
+  if (pins === 10 || this.frameOver === true) {this.currentFrame++ ; this.frameOver = !this.frameOver}
+  else this.frameOver = !this.frameOver;
 };
+
+
+ // if (this.frameOver === false) { this.leftPins = 10 - pins; } else { this.leftPins = 10; }

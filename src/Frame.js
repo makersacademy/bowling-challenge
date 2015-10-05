@@ -22,7 +22,7 @@ Frame.prototype.secondRoll = function() {
   this.postRollUpdate(this.secondRollScore);
   if (this.isLastFrame && this.isStrike && this.secondRollScore === 10) {
     return "Strike!";
-  } else if (this.totalScore === 10) {
+  } else if (this.totalScore === 10 && this.secondRollScore > 0) {
     this.isSpare = true;
     return "Spare!";
   };
@@ -33,8 +33,11 @@ Frame.prototype.secondRoll = function() {
 Frame.prototype.thirdRoll = function() {
   this.checkRollAllowed(3);
   this.thirdRollScore = this.rollRandom();
+  this.postRollUpdate(this.thirdRollScore);
   if (this.thirdRollScore === 10) {
     return "Strike!";
+  } else if (this.totalScore === 20 && this.thirdRollScore > 0) {
+    return "Spare!";
   };
 
   return this.thirdRollScore;

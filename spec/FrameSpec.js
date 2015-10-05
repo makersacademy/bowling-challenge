@@ -168,6 +168,11 @@ describe("Frame", function() {
           expect(frame.secondRoll()).toEqual("Strike!");
         });
 
+        it("returns zero when no pins knocked down", function(){
+          spyOn(Math, 'random').and.returnValue(0.01);
+          expect(frame.secondRoll()).toEqual(0);
+        });
+
         it("resets pins if a strike is registered", function(){
           spyOn(Math, 'random').and.returnValue(0.99);
           frame.secondRoll();
@@ -228,7 +233,7 @@ describe("Frame", function() {
           expect(frame.thirdRoll()).toEqual(4);
         });
 
-        xit("updates total score", function(){
+        it("updates total score", function(){
           spyOn(Math, 'random').and.returnValue(0.4);
           frame.thirdRoll();
           expect(frame.totalScore).toEqual(24);
@@ -237,6 +242,11 @@ describe("Frame", function() {
         it("registers a strike if ten pins knocked down", function(){
           spyOn(Math, 'random').and.returnValue(0.99);
           expect(frame.thirdRoll()).toEqual("Strike!");
+        });
+
+        it("returns zero when no pins knocked down", function(){
+          spyOn(Math, 'random').and.returnValue(0.01);
+          expect(frame.thirdRoll()).toEqual(0);
         });
 
       });
@@ -258,6 +268,12 @@ describe("Frame", function() {
           expect(frame.thirdRoll()).toEqual(4);
         });
 
+        it("updates total score", function(){
+          spyOn(Math, 'random').and.returnValue(0.4);
+          frame.thirdRoll();
+          expect(frame.totalScore).toEqual(14);
+        });
+
         it("registers a strike if ten pins knocked down", function(){
           spyOn(Math, 'random').and.returnValue(0.99);
           expect(frame.thirdRoll()).toEqual("Strike!");
@@ -265,7 +281,7 @@ describe("Frame", function() {
 
       });
 
-      xdescribe("when going for a spare", function(){
+      describe("when going for a spare", function(){
 
         beforeEach(function(){
           frame.rollsTaken = 2;

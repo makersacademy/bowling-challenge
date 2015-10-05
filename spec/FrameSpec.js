@@ -5,6 +5,7 @@ describe("Frame", function() {
   var frameNotSpare;
   var frameStrike;
   var frameNotStrike;
+  var ErrorMessage = "Illegal roll"
 
   beforeEach(function() {
     frame = new Frame();
@@ -44,7 +45,7 @@ describe("Frame", function() {
     it("doesn't allow repeated rolls", function(){
       spyOn(Math, 'random').and.returnValue(0.6);
       frame.firstRoll();
-      expect(function() { frame.firstRoll(); }).toThrowError("Already rolled or rolling out of turn");
+      expect(function() { frame.firstRoll(); }).toThrowError(ErrorMessage);
     });
 
     it("returns the number of pins knocked down", function(){
@@ -85,11 +86,11 @@ describe("Frame", function() {
       spyOn(Math, 'random').and.returnValue(0.3);
       frame.firstRoll();
       frame.secondRoll();
-      expect(function() { frame.secondRoll(); }).toThrowError("Already rolled or rolling out of turn");
+      expect(function() { frame.secondRoll(); }).toThrowError(ErrorMessage);
     });
 
     it("can't be taken before the first roll", function(){
-      expect(function() { frame.secondRoll(); }).toThrowError("Already rolled or rolling out of turn");
+      expect(function() { frame.secondRoll(); }).toThrowError(ErrorMessage);
     });
 
     it("returns the number of pins knocked down", function(){
@@ -114,7 +115,7 @@ describe("Frame", function() {
     it("can't be taken following a strike", function() {
       spyOn(Math, 'random').and.returnValue(0.99);
       frame.firstRoll();
-      expect(function() { frame.secondRoll(); }).toThrowError("Already rolled or rolling out of turn");
+      expect(function() { frame.secondRoll(); }).toThrowError(ErrorMessage);
     });
 
   });
@@ -223,20 +224,20 @@ describe("Frame", function() {
     describe("#thirdRoll", function(){
 
       it("can't be taken before the first roll", function(){
-        expect(function() { frame.thirdRoll(); }).toThrowError("Already rolled or rolling out of turn");
+        expect(function() { frame.thirdRoll(); }).toThrowError(ErrorMessage);
       });
 
       it("can't be taken before the second roll", function(){
         spyOn(Math, 'random').and.returnValue(0.99);
         frame.firstRoll();
-        expect(function() { frame.thirdRoll(); }).toThrowError("Already rolled or rolling out of turn");
+        expect(function() { frame.thirdRoll(); }).toThrowError(ErrorMessage);
       });
 
-      xit("can't be taken if neither a spare nor strike are rolled", function(){
+      it("can't be taken if neither a spare nor strike are rolled", function(){
         spyOn(Math, 'random').and.returnValue(0.3);
         frame.firstRoll();
         frame.secondRoll();
-        expect(function() { frame.thirdRoll(); }).toThrowError("Already rolled or rolling out of turn");
+        expect(function() { frame.thirdRoll(); }).toThrowError(ErrorMessage);
       });
 
       xit("can't be taken if frame isn't the last frame", function(){

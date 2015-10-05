@@ -50,13 +50,15 @@ Frame.prototype.postRollUpdate = function(rollScore) {
 };
 
 Frame.prototype.checkRollAllowed = function(rollNumber){
-  if (this.isLastFrame && this.rollsTaken === rollNumber - 1) {
-    return true;
-  } else if (this.rollsTaken != rollNumber - 1 || this.isStrike) {
-    throw new Error("Already rolled or rolling out of turn")
+  this.checkCorrectTurn(rollNumber);
+  if (this.isLastFrame) {
+    this.checkAllowedLastFrame(rollNumber);
+  } else {
+    this.checkAllowedNotLast(rollNumber);
   };
 
 };
+
 
 Frame.prototype.spareUpdate = function(rollScore) {
   if (this.isSpare) {
@@ -81,6 +83,29 @@ Frame.prototype.setLastFrame = function() {
 Frame.prototype.lastFrameUpdate = function() {
   if (this.pinsRemaining === 0) {
     this.pinsRemaining = 10;
+  };
+
+};
+
+Frame.prototype.checkCorrectTurn = function(rollNumber) {
+  if (this.rollsTaken != rollNumber - 1) {
+    throw new Error("Illegal roll");
+  };
+
+};
+
+Frame.prototype.checkAllowedLastFrame = function(rollNumber) {
+  if (rollNumber === 3 && !(this.isStrike || this.isSpare)) {
+    throw new Error("Illegal roll");
+  };
+
+};
+
+Frame.prototype.checkAllowedNotLast = function(rollNumber) {
+  if (rollNumber === 3) {
+    throw new Error("Illegal roll");
+  } else if (rollNumber === 2 && this.isStrike) {
+    throw new Error("Illegal roll");
   };
 
 };

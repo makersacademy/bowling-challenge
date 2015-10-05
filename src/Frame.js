@@ -6,30 +6,26 @@ function Frame() {
 };
 
 Frame.prototype.receiveRoll = function(hits) {
-  this._rollCountCheck(hits);
   if(this.firstRoll != null) {
-    this.secondRoll = hits;
-  } else if (hits == 10) {
-    this.strike = true;
+    this.secondRoll = hits;  
+  } else if (this._isAStrike(hits)) {
+    this.firstRoll = hits;
+    this.secondRoll = 0;
   } else {
     this.firstRoll = hits;
   };
-  this._frameCountCheckAndScoreCalculate(this.firstRoll, this.secondRoll)
+  this._calculateScore();
 };
 
-Frame.prototype._rollCountCheck = function(hits) {
-  if(hits > 10) {
-    throw "Can not hit more than ten pins";
+Frame.prototype._isAStrike = function(hits) {
+  if(hits == 10){
+    this.strike = true;
   };
 };
 
-Frame.prototype._frameCountCheckAndScoreCalculate = function(firstRoll, secondRoll) {
-  if((firstRoll + secondRoll) > 10) {
-    throw "Can not hit more than ten pins";
-  } else {
-    this.totalScore = firstRoll + secondRoll;
-  };
-  if(this.totalScore == 10) {
+Frame.prototype._calculateScore = function() {
+  this.totalScore = this.firstRoll + this.secondRoll;
+  if(this.firstBowl == null && this.totalScore == 10) {
     this.spare = true;
   };
 };

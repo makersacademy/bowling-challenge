@@ -268,6 +268,49 @@ describe("Frame", function() {
 
       });
 
+      describe("following a spare", function(){
+
+        beforeEach(function(){
+          spyOn(Math, 'random').and.returnValue(0.8);
+          frame.firstRoll();
+          frame.secondRoll();
+        });
+
+        it("returns the number of pins knocked down", function(){
+          spyOn(Math, 'floor').and.returnValue(4);
+          expect(frame.thirdRoll()).toEqual(4);
+        });
+
+        it("registers a strike if ten pins knocked down", function(){
+          spyOn(Math, 'floor').and.returnValue(10);
+          expect(frame.thirdRoll()).toEqual("Strike!");
+        });
+
+      });
+
+      xdescribe("when going for a spare", function(){
+
+        beforeEach(function(){
+          spyOn(Math, 'random').and.returnValue(0.99);
+          frame.firstRoll();
+          frame.secondRoll();
+          // Math.random().isSpy = false;
+        });
+
+        it("returns the number of pins knocked down", function(){
+          // Math.random.isSpy = false;
+          console.log(jasmine.isSpy(Math.random));
+          spyOn(Math, 'random').and.returnValue(0.5);
+          expect(frame.thirdRoll()).toEqual("Strike!");
+        });
+
+        xit("registers a strike if ten pins knocked down", function(){
+          spyOn(Math, 'floor').and.returnValue(10);
+          expect(frame.thirdRoll()).toEqual("Strike!");
+        });
+
+      });
+
     });
 
   });

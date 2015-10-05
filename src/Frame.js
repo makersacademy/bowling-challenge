@@ -44,7 +44,9 @@ Frame.prototype.afterRollUpdate = function(rollScore) {
 };
 
 Frame.prototype.checkRollAllowed = function(rollNumber){
-  if (this.rollsTaken != rollNumber - 1 || this.isStrike) {
+  if (this.isLastFrame && this.rollsTaken === rollNumber - 1) {
+    return true;
+  } else if (this.rollsTaken != rollNumber - 1 || this.isStrike) {
     throw new Error("Already rolled or rolling out of turn")
   };
 

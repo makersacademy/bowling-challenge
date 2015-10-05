@@ -191,6 +191,12 @@ describe("Frame", function() {
       expect(frame.pinsRemaining).toEqual(10);
     });
 
+    it("allows a second roll following a strike", function(){
+      spyOn(Math, 'random').and.returnValue(0.99);
+      frame.firstRoll();
+      expect(function(){ frame.secondRoll(); }).not.toThrowError();
+    });
+
   });
 
 });

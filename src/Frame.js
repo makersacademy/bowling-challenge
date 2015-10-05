@@ -6,13 +6,9 @@ function Frame() {
 
 Frame.prototype.firstRoll = function() {
   this.checkRollAllowed(1);
-  this.firstRollScore = this.roll();
-  this.afterRollUpdate(this.firstRollScore);
-  if (this.isLastFrame && this.pinsRemaining === 0) {
-    this.isStrike = true;
-    this.pinsRemaining = 10;
-    return "Strike!";
-  } else if (this.pinsRemaining === 0) {
+  this.firstRollScore = this.rollRandom();
+  this.postRollUpdate(this.firstRollScore);
+  if (this.firstRollScore === 10) {
     this.isStrike = true;
     return "Strike!";
   };
@@ -22,9 +18,11 @@ Frame.prototype.firstRoll = function() {
 
 Frame.prototype.secondRoll = function() {
   this.checkRollAllowed(2);
-  this.secondRollScore = this.roll();
-  this.afterRollUpdate(this.secondRollScore);
-  if (this.pinsRemaining === 0) {
+  this.secondRollScore = this.rollRandom();
+  this.postRollUpdate(this.secondRollScore);
+  if (this.isLastFrame && this.isStrike && this.secondRollScore === 10) {
+    return "Strike!";
+  } else if (this.totalScore === 10) {
     this.isSpare = true;
     return "Spare!";
   };
@@ -32,15 +30,23 @@ Frame.prototype.secondRoll = function() {
   return this.secondRollScore;
 };
 
-Frame.prototype.roll = function() {
+Frame.prototype.thirdRoll = function() {
+  this.checkRollAllowed(3);
+};
+
+Frame.prototype.rollRandom = function() {
   n = this.pinsRemaining + 1;
   return Math.floor( Math.random() * n );
 };
 
-Frame.prototype.afterRollUpdate = function(rollScore) {
+Frame.prototype.postRollUpdate = function(rollScore) {
   this.totalScore += rollScore;
   this.pinsRemaining -= rollScore;
-  this.rollsTaken++
+  this.rollsTaken++;
+  if (this.isLastFrame) {
+    this.lastFrameUpdate();
+  };
+
 };
 
 Frame.prototype.checkRollAllowed = function(rollNumber){
@@ -70,4 +76,11 @@ Frame.prototype.strikeUpdate = function(frameScore) {
 
 Frame.prototype.setLastFrame = function() {
   this.isLastFrame = true;
+};
+
+Frame.prototype.lastFrameUpdate = function() {
+  if (this.pinsRemaining === 0) {
+    this.pinsRemaining = 10;
+  };
+
 };

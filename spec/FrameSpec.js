@@ -42,6 +42,7 @@ describe("Frame", function() {
     });
 
     it("doesn't allow repeated rolls", function(){
+      spyOn(Math, 'random').and.returnValue(0.6);
       frame.firstRoll();
       expect(function() { frame.firstRoll(); }).toThrowError("Already rolled or rolling out of turn");
     });
@@ -81,6 +82,7 @@ describe("Frame", function() {
     });
 
     it("doesn't allow repeated rolls", function(){
+      spyOn(Math, 'random').and.returnValue(0.3);
       frame.firstRoll();
       frame.secondRoll();
       expect(function() { frame.secondRoll(); }).toThrowError("Already rolled or rolling out of turn");
@@ -185,16 +187,70 @@ describe("Frame", function() {
       frame.setLastFrame();
     });
 
-    it("resets the pins if a strike is registered", function(){
-      spyOn(Math, 'random').and.returnValue(0.99);
-      frame.firstRoll();
-      expect(frame.pinsRemaining).toEqual(10);
+    describe("#firstRoll", function(){
+
+      it("resets the pins if a strike is registered", function(){
+        spyOn(Math, 'random').and.returnValue(0.99);
+        frame.firstRoll();
+        expect(frame.pinsRemaining).toEqual(10);
+      });
+
     });
 
-    it("allows a second roll following a strike", function(){
-      spyOn(Math, 'random').and.returnValue(0.99);
-      frame.firstRoll();
-      expect(function(){ frame.secondRoll(); }).not.toThrowError();
+    describe("#secondRoll", function(){
+
+      it("allows a second roll following a strike", function(){
+        spyOn(Math, 'random').and.returnValue(0.99);
+        frame.firstRoll();
+        expect(function(){ frame.secondRoll(); }).not.toThrowError();
+      });
+
+      it("resets the pins if a spare is registered", function(){
+        spyOn(Math, 'random').and.returnValue(0.8);
+        frame.firstRoll();
+        frame.secondRoll();
+        expect(frame.pinsRemaining).toEqual(10);
+      });
+
+      it("can register a strike following a strike on first roll", function(){
+        spyOn(Math, 'random').and.returnValue(0.99);
+        frame.firstRoll();
+        expect(frame.secondRoll()).toEqual("Strike!");
+      });
+
+    });
+
+    describe("#thirdRoll", function(){
+
+      it("can't be taken before the first roll", function(){
+        expect(function() { frame.thirdRoll(); }).toThrowError("Already rolled or rolling out of turn");
+      });
+
+      it("can't be taken before the second roll", function(){
+        spyOn(Math, 'random').and.returnValue(0.99);
+        frame.firstRoll();
+        expect(function() { frame.thirdRoll(); }).toThrowError("Already rolled or rolling out of turn");
+      });
+
+      xit("can't be taken if neither a spare nor strike are rolled", function(){
+        spyOn(Math, 'random').and.returnValue(0.3);
+        frame.firstRoll();
+        frame.secondRoll();
+        expect(function() { frame.thirdRoll(); }).toThrowError("Already rolled or rolling out of turn");
+      });
+
+      xit("can't be taken if frame isn't the last frame", function(){
+        var frameNotLast = new Frame();
+        frameNotLast
+      });
+
+      xit("allows a third roll following two strikes", function(){
+        spyOn(Math, 'random').and.returnValue(0.99);
+        frame.firstRoll();
+        frame.secondRoll();
+        expect(function(){ frame.thirdRoll(); }).not.toThrowError();
+      });
+
     });
 
   });

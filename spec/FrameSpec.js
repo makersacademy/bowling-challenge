@@ -1,18 +1,10 @@
 describe("Frame", function() {
 
   var frame;
-  var frameSpare;
-  var frameNotSpare;
-  var frameStrike;
-  var frameNotStrike;
   var ErrorMessage = "Illegal roll"
 
   beforeEach(function() {
     frame = new Frame();
-    frameSpare = new Frame();
-    frameNotSpare = new Frame();
-    frameStrike = new Frame();
-    frameNotStrike = new Frame();
   });
 
   it("starts with 10 pins", function() {
@@ -55,13 +47,30 @@ describe("Frame", function() {
 
     it("registers a strike if ten pins knocked down", function(){
       spyOn(Math, 'random').and.returnValue(0.99);
-      expect(frame.firstRoll()).toEqual("Strike!")
+      expect(frame.firstRoll()).toEqual("Strike!");
+    });
+
+    it("registers a strike if ten pins knocked down (part 2)", function(){
+      spyOn(Math, 'random').and.returnValue(0.99);
+      frame.firstRoll();
+      expect(frame.isStrike).toBe(true);
     });
 
     it("updates total score", function(){
       spyOn(Math, 'random').and.returnValue(0.6);
       frame.firstRoll();
       expect(frame.totalScore).toEqual(6);
+    });
+
+    describe("in last frame", function(){
+
+      it("resets the pins if a strike is registered", function(){
+        frame.setLastFrame();
+        spyOn(Math, 'random').and.returnValue(0.99);
+        frame.firstRoll();
+        expect(frame.pinsRemaining).toEqual(10);
+      });
+
     });
 
   });
@@ -105,6 +114,13 @@ describe("Frame", function() {
       expect(frame.secondRoll()).toEqual("Spare!")
     });
 
+    it("registers a spare if ten pins knocked down (part 2)", function(){
+      spyOn(Math, 'random').and.returnValue(0.8);
+      frame.firstRoll();
+      frame.secondRoll();
+      expect(frame.isSpare).toBe(true)
+    });
+
     it("updates total score", function(){
       spyOn(Math, 'random').and.returnValue(0.6);
       frame.firstRoll();
@@ -118,171 +134,132 @@ describe("Frame", function() {
       expect(function() { frame.secondRoll(); }).toThrowError(ErrorMessage);
     });
 
-  });
+    describe("in last frame", function(){
 
-  describe("#spareUpdate", function(){
-
-    it("adds the number given to the total score of the frame", function(){
-      spyOn(Math, 'random').and.returnValue(0.8);
-      frameSpare.firstRoll();
-      frameSpare.secondRoll();
-      var number = 6;
-      frameSpare.spareUpdate(number);
-      expect(frameSpare.totalScore).toEqual(16);
-    });
-
-    it("does nothing if called on a frame that didn't register a spare", function(){
-      spyOn(Math, 'random').and.returnValue(0.3);
-      frameNotSpare.firstRoll();
-      frameNotSpare.secondRoll();
-      var number = 6;
-      frameNotSpare.spareUpdate(number);
-      expect(frameNotSpare.totalScore).toEqual(5);
-    });
-
-    it("does nothing if called on a frame that has already been updated", function(){
-      spyOn(Math, 'random').and.returnValue(0.8);
-      frameSpare.firstRoll();
-      frameSpare.secondRoll();
-      var number = 6;
-      frameSpare.spareUpdate(number);
-      frameSpare.spareUpdate(number);
-      expect(frameSpare.totalScore).toEqual(16);
-    });
-
-  });
-
-  describe("#strikeUpdate", function(){
-
-    it("adds the number given to the total score of the frame", function(){
-      spyOn(Math, 'random').and.returnValue(0.99);
-      frameStrike.firstRoll();
-      var number = 6;
-      frameStrike.strikeUpdate(number);
-      expect(frameStrike.totalScore).toEqual(16);
-    });
-
-    it("does nothing if called on a frame that didn't register a strike", function(){
-      spyOn(Math, 'random').and.returnValue(0.3);
-      frameNotStrike.firstRoll();
-      frameNotStrike.secondRoll();
-      var number = 6;
-      frameNotStrike.strikeUpdate(number);
-      expect(frameNotStrike.totalScore).toEqual(5);
-    });
-
-    it("does nothing if called on a frame that has already been updated", function(){
-      spyOn(Math, 'random').and.returnValue(0.99);
-      frameStrike.firstRoll();
-      var number = 6;
-      frameStrike.strikeUpdate(number);
-      frameStrike.strikeUpdate(number);
-      expect(frameStrike.totalScore).toEqual(16);
-    });
-
-  });
-
-  describe("Last Frame", function(){
-
-    beforeEach(function() {
-      frame.setLastFrame();
-    });
-
-    describe("#firstRoll", function(){
-
-      it("resets the pins if a strike is registered", function(){
-        spyOn(Math, 'random').and.returnValue(0.99);
-        frame.firstRoll();
-        expect(frame.pinsRemaining).toEqual(10);
-      });
-
-    });
-
-    describe("#secondRoll", function(){
-
-      it("allows a second roll following a strike", function(){
-        spyOn(Math, 'random').and.returnValue(0.99);
-        frame.firstRoll();
-        expect(function(){ frame.secondRoll(); }).not.toThrowError();
+      beforeEach(function(){
+        frame.setLastFrame();
+        frame.rollsTaken = 1;
+        frame.firstRollScore = 6
+        frame.totalScore = 6
+        frame.pinsRemaining = 4
       });
 
       it("resets the pins if a spare is registered", function(){
         spyOn(Math, 'random').and.returnValue(0.8);
-        frame.firstRoll();
         frame.secondRoll();
         expect(frame.pinsRemaining).toEqual(10);
       });
 
-      it("can register a strike following a strike on first roll", function(){
-        spyOn(Math, 'random').and.returnValue(0.99);
-        frame.firstRoll();
-        expect(frame.secondRoll()).toEqual("Strike!");
+      describe("following a strike", function(){
+
+        beforeEach(function(){
+          frame.firstRollScore = 10
+          frame.totalScore = 10
+          frame.pinsRemaining = 10
+          frame.isStrike = true
+        });
+
+        it("allows a second roll", function(){
+          expect(function(){ frame.secondRoll(); }).not.toThrowError();
+        });
+
+        it("can register a strike", function(){
+          spyOn(Math, 'random').and.returnValue(0.99);
+          expect(frame.secondRoll()).toEqual("Strike!");
+        });
+
+        it("resets pins if a strike is registered", function(){
+          spyOn(Math, 'random').and.returnValue(0.99);
+          frame.secondRoll();
+          expect(frame.pinsRemaining).toEqual(10);
+        });
+
       });
 
     });
 
-    describe("#thirdRoll", function(){
+  });
 
-      it("can't be taken before the first roll", function(){
-        expect(function() { frame.thirdRoll(); }).toThrowError(ErrorMessage);
+  describe("#thirdRoll", function(){
+
+    it("can't be taken before the first roll", function(){
+      expect(function() { frame.thirdRoll(); }).toThrowError(ErrorMessage);
+    });
+
+    it("can't be taken before the second roll", function(){
+      spyOn(Math, 'random').and.returnValue(0.99);
+      frame.firstRoll();
+      expect(function() { frame.thirdRoll(); }).toThrowError(ErrorMessage);
+    });
+
+    it("can't be taken if frame isn't the last frame", function(){
+      spyOn(Math, 'random').and.returnValue(0.8);
+      frame.firstRoll();
+      frame.secondRoll();
+      expect(function() { frame.thirdRoll(); }).toThrowError(ErrorMessage);
+    });
+
+    describe("in last frame", function(){
+
+      beforeEach(function(){
+        frame.setLastFrame();
       });
 
-      it("can't be taken before the second roll", function(){
-        spyOn(Math, 'random').and.returnValue(0.99);
-        frame.firstRoll();
-        expect(function() { frame.thirdRoll(); }).toThrowError(ErrorMessage);
-      });
-
-      it("can't be taken if neither a spare nor strike are rolled", function(){
+      it("can't be taken if neither a spare nor strike are rolled first", function(){
         spyOn(Math, 'random').and.returnValue(0.3);
         frame.firstRoll();
         frame.secondRoll();
         expect(function() { frame.thirdRoll(); }).toThrowError(ErrorMessage);
       });
 
-      it("can't be taken if frame isn't the last frame", function(){
-        var frameNotLast = new Frame();
-        spyOn(Math, 'random').and.returnValue(0.8);
-        frameNotLast.firstRoll();
-        frameNotLast.secondRoll();
-        expect(function() { frameNotLast.thirdRoll(); }).toThrowError(ErrorMessage);
-      });
-
       describe("following two strikes", function(){
 
         beforeEach(function(){
-          spyOn(Math, 'random').and.returnValue(0.99);
-          frame.firstRoll();
-          frame.secondRoll();
+          frame.rollsTaken = 2;
+          frame.firstRollScore = 10
+          frame.secondRollScore = 10
+          frame.totalScore = 20
+          frame.pinsRemaining = 10
+          frame.isStrike = true
         });
 
         it("returns the number of pins knocked down", function(){
-          spyOn(Math, 'floor').and.returnValue(4);
+          spyOn(Math, 'random').and.returnValue(0.4);
           expect(frame.thirdRoll()).toEqual(4);
         });
 
+        xit("updates total score", function(){
+          spyOn(Math, 'random').and.returnValue(0.4);
+          frame.thirdRoll();
+          expect(frame.totalScore).toEqual(24);
+        });
+
         it("registers a strike if ten pins knocked down", function(){
-          spyOn(Math, 'floor').and.returnValue(10);
+          spyOn(Math, 'random').and.returnValue(0.99);
           expect(frame.thirdRoll()).toEqual("Strike!");
         });
 
       });
 
+
       describe("following a spare", function(){
 
         beforeEach(function(){
-          spyOn(Math, 'random').and.returnValue(0.8);
-          frame.firstRoll();
-          frame.secondRoll();
+          frame.rollsTaken = 2;
+          frame.firstRollScore = 8
+          frame.secondRollScore = 2
+          frame.totalScore = 10
+          frame.pinsRemaining = 10
+          frame.isSpare = true
         });
 
         it("returns the number of pins knocked down", function(){
-          spyOn(Math, 'floor').and.returnValue(4);
+          spyOn(Math, 'random').and.returnValue(0.4);
           expect(frame.thirdRoll()).toEqual(4);
         });
 
         it("registers a strike if ten pins knocked down", function(){
-          spyOn(Math, 'floor').and.returnValue(10);
+          spyOn(Math, 'random').and.returnValue(0.99);
           expect(frame.thirdRoll()).toEqual("Strike!");
         });
 
@@ -291,26 +268,88 @@ describe("Frame", function() {
       xdescribe("when going for a spare", function(){
 
         beforeEach(function(){
-          spyOn(Math, 'random').and.returnValue(0.99);
-          frame.firstRoll();
-          frame.secondRoll();
-          // Math.random().isSpy = false;
+          frame.rollsTaken = 2;
+          frame.firstRollScore = 10
+          frame.secondRollScore = 4
+          frame.totalScore = 14
+          frame.pinsRemaining = 6
+          frame.isStrike = true
         });
 
         it("returns the number of pins knocked down", function(){
-          // Math.random.isSpy = false;
-          console.log(jasmine.isSpy(Math.random));
           spyOn(Math, 'random').and.returnValue(0.5);
-          expect(frame.thirdRoll()).toEqual("Strike!");
+          expect(frame.thirdRoll()).toEqual(3);
         });
 
-        xit("registers a strike if ten pins knocked down", function(){
-          spyOn(Math, 'floor').and.returnValue(10);
-          expect(frame.thirdRoll()).toEqual("Strike!");
+        it("registers a spare if remaining pins knocked down", function(){
+          spyOn(Math, 'random').and.returnValue(0.9);
+          expect(frame.thirdRoll()).toEqual("Spare!");
         });
 
       });
 
+    });
+
+  });
+
+  describe("#spareUpdate", function(){
+
+    it("adds the number given to the total score of the frame", function(){
+      spyOn(Math, 'random').and.returnValue(0.8);
+      frame.firstRoll();
+      frame.secondRoll();
+      var number = 6;
+      frame.spareUpdate(number);
+      expect(frame.totalScore).toEqual(16);
+    });
+
+    it("does nothing if called on a frame that didn't register a spare", function(){
+      spyOn(Math, 'random').and.returnValue(0.3);
+      frame.firstRoll();
+      frame.secondRoll();
+      var number = 6;
+      frame.spareUpdate(number);
+      expect(frame.totalScore).toEqual(5);
+    });
+
+    it("does nothing if called on a frame that has already been updated", function(){
+      spyOn(Math, 'random').and.returnValue(0.8);
+      frame.firstRoll();
+      frame.secondRoll();
+      var number = 6;
+      frame.spareUpdate(number);
+      frame.spareUpdate(number);
+      expect(frame.totalScore).toEqual(16);
+    });
+
+  });
+
+  describe("#strikeUpdate", function(){
+
+    it("adds the number given to the total score of the frame", function(){
+      spyOn(Math, 'random').and.returnValue(0.99);
+      frame.firstRoll();
+      var number = 6;
+      frame.strikeUpdate(number);
+      expect(frame.totalScore).toEqual(16);
+    });
+
+    it("does nothing if called on a frame that didn't register a strike", function(){
+      spyOn(Math, 'random').and.returnValue(0.3);
+      frame.firstRoll();
+      frame.secondRoll();
+      var number = 6;
+      frame.strikeUpdate(number);
+      expect(frame.totalScore).toEqual(5);
+    });
+
+    it("does nothing if called on a frame that has already been updated", function(){
+      spyOn(Math, 'random').and.returnValue(0.99);
+      frame.firstRoll();
+      var number = 6;
+      frame.strikeUpdate(number);
+      frame.strikeUpdate(number);
+      expect(frame.totalScore).toEqual(16);
     });
 
   });

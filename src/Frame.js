@@ -8,7 +8,11 @@ Frame.prototype.firstRoll = function() {
   this.checkRollAllowed(1);
   this.firstRollScore = this.roll();
   this.afterRollUpdate(this.firstRollScore);
-  if (this.pinsRemaining === 0) {
+  if (this.isLastFrame && this.pinsRemaining === 0) {
+    this.isStrike = true;
+    this.pinsRemaining = 10;
+    return "Strike!";
+  } else if (this.pinsRemaining === 0) {
     this.isStrike = true;
     return "Strike!";
   };
@@ -40,7 +44,7 @@ Frame.prototype.afterRollUpdate = function(rollScore) {
 };
 
 Frame.prototype.checkRollAllowed = function(rollNumber){
-  if (this.rollsTaken != rollNumber - 1) {
+  if (this.rollsTaken != rollNumber - 1 || this.isStrike) {
     throw new Error("Already rolled or rolling out of turn")
   };
 
@@ -60,4 +64,8 @@ Frame.prototype.strikeUpdate = function(frameScore) {
     this.isStrike = false;
   };
 
+};
+
+Frame.prototype.setLastFrame = function() {
+  this.isLastFrame = true;
 };

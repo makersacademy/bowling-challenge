@@ -1,9 +1,17 @@
 describe("Frame", function() {
 
   var frame;
+  var frameSpare;
+  var frameNotSpare;
+  var frameStrike;
+  var frameNotStrike;
 
   beforeEach(function() {
     frame = new Frame();
+    frameSpare = new Frame();
+    frameNotSpare = new Frame();
+    frameStrike = new Frame();
+    frameNotStrike = new Frame();
   });
 
   it("starts with 10 pins", function() {
@@ -12,6 +20,11 @@ describe("Frame", function() {
 
   it("has a total score starting at zero", function() {
     expect(frame.totalScore).toEqual(0);
+  });
+
+  it("can be set as the last frame", function(){
+    frame.setLastFrame();
+    expect(frame.isLastFrame).toBe(true);
   });
 
   describe("#firstRoll", function() {
@@ -96,17 +109,15 @@ describe("Frame", function() {
       expect(frame.totalScore).toEqual(9);
     });
 
+    it("can't be taken following a strike", function() {
+      spyOn(Math, 'random').and.returnValue(0.99);
+      frame.firstRoll();
+      expect(function() { frame.secondRoll(); }).toThrowError("Already rolled or rolling out of turn");
+    });
+
   });
 
   describe("#spareUpdate", function(){
-
-    var frameSpare;
-    var frameNotSpare;
-
-    beforeEach(function() {
-      frameSpare = new Frame();
-      frameNotSpare = new Frame();
-    });
 
     it("adds the number given to the total score of the frame", function(){
       spyOn(Math, 'random').and.returnValue(0.8);
@@ -140,14 +151,6 @@ describe("Frame", function() {
 
   describe("#strikeUpdate", function(){
 
-    var frameStrike;
-    var frameNotStrike;
-
-    beforeEach(function() {
-      frameStrike = new Frame();
-      frameNotStrike = new Frame();
-    });
-
     it("adds the number given to the total score of the frame", function(){
       spyOn(Math, 'random').and.returnValue(0.99);
       frameStrike.firstRoll();
@@ -172,6 +175,20 @@ describe("Frame", function() {
       frameStrike.strikeUpdate(number);
       frameStrike.strikeUpdate(number);
       expect(frameStrike.totalScore).toEqual(16);
+    });
+
+  });
+
+  describe("Last Frame", function(){
+
+    beforeEach(function() {
+      frame.setLastFrame();
+    });
+
+    it("resets the pins if a strike is registered", function(){
+      spyOn(Math, 'random').and.returnValue(0.99);
+      frame.firstRoll();
+      expect(frame.pinsRemaining).toEqual(10);
     });
 
   });

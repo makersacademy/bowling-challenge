@@ -22,12 +22,13 @@ Game.prototype.throwBall = function() {
 	this.addThrowToScoreCard();
 	this.isStrike();
 	this.changeFrameNumber();
-	this.firstThrow = !this.firstThrow;
+	// this.firstThrow = !this.firstThrow;
 };
 
 Game.prototype.changeFrameNumber = function() {
 	if ((this.firstThrow) == false) {
 		this.frameNumber += 1;
+		this.firstThrow = true;
 		this.isSpare();
 	};
 };
@@ -37,7 +38,7 @@ Game.prototype.addThrowToScoreCard = function() {
 };
 
 Game.prototype.isSpare = function() {
-	var sum = this.scoreCard[1].reduce((a,b) => a+b);
+	var sum = this.scoreCard[this.frameNumber].reduce((a,b) => a+b);
 	if (sum = 10) {
 		this.lastFrame = '/';
 	};

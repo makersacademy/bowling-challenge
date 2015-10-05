@@ -87,6 +87,20 @@ describe("Frame", function() {
     expect(frame.totalHitInFrame()).toEqual(5);
   });
 
+  it ('can be played', function(){
+    spyOn(Math, 'random').and.returnValue(0.3);
+    frame.play();
+    expect(frame.pinsHitByFirstRoll).toEqual(3);
+    expect(frame.pinsHitBySecondRoll).toEqual(2);
+  });
+
+  it ('can be played when strike', function(){
+    spyOn(Math, 'random').and.returnValue(0.999);
+    frame.play();
+    expect(frame.pinsHitByFirstRoll).toEqual(10);
+    expect(frame.pinsHitBySecondRoll).toEqual(null);
+  });
+
 });
 
 

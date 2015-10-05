@@ -15,6 +15,11 @@ Frame.prototype.roll = function(){
   };
 };
 
+Frame.prototype.play = function(){
+  this.roll();
+  this.roll();
+};
+
 Frame.prototype.pinsHit = function(){
   return Math.floor(Math.random()*(this.pinsLeft + this.zeroOption))
 };

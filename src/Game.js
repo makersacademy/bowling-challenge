@@ -11,8 +11,11 @@ function Game(frame) {
 
 Game.prototype.bowl = function(hits) {
   this._isAStrike(hits);
+  if(this.currentFrame > 0 && this._isPreviousFrameStrike() == true) {
+    this._recalculateFrameScore(hits);
+  };
   if(this.currentFrame > 0 && this._isPreviousFrameSpare() == true && this.frames[this.currentFrame].firstRoll == null) {
-    this._recalculateSpareFrameScore(hits);
+    this._recalculateFrameScore(hits);
   };
   this.frames[this.currentFrame].receiveRoll(hits);
   this.currentRoll++;
@@ -64,9 +67,9 @@ Game.prototype._addScoreAndIncrement = function() {
   };
 }
 
-Game.prototype._recalculateSpareFrameScore = function(hits) {
-  var frame = (this.currentRoll / 2) - 1;
-  this.frameScores[frame] = this.frameScores[frame] + hits;
+Game.prototype._recalculateFrameScore = function(hits) {
+  var frame = Math.floor((this.currentRoll - 2) / 2);
+  this.frameScores[frame]+=hits;
 };
 
 

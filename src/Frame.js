@@ -20,12 +20,15 @@ Frame.prototype.receiveRoll = function(hits) {
 Frame.prototype._isAStrike = function(hits) {
   if(hits == 10){
     this.strike = true;
+    return true;
+  } else {
+    return false;
   };
 };
 
 Frame.prototype._calculateScore = function() {
   this.totalScore = this.firstRoll + this.secondRoll;
-  if(this.firstBowl == null && this.totalScore == 10) {
+  if(this.totalScore == 10 && this.secondRoll != 0) {
     this.spare = true;
   };
 };

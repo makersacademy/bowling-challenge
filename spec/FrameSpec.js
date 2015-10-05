@@ -240,16 +240,32 @@ describe("Frame", function() {
         expect(function() { frame.thirdRoll(); }).toThrowError(ErrorMessage);
       });
 
-      xit("can't be taken if frame isn't the last frame", function(){
+      it("can't be taken if frame isn't the last frame", function(){
         var frameNotLast = new Frame();
-        frameNotLast
+        spyOn(Math, 'random').and.returnValue(0.8);
+        frameNotLast.firstRoll();
+        frameNotLast.secondRoll();
+        expect(function() { frameNotLast.thirdRoll(); }).toThrowError(ErrorMessage);
       });
 
-      xit("allows a third roll following two strikes", function(){
-        spyOn(Math, 'random').and.returnValue(0.99);
-        frame.firstRoll();
-        frame.secondRoll();
-        expect(function(){ frame.thirdRoll(); }).not.toThrowError();
+      describe("following two strikes", function(){
+
+        beforeEach(function(){
+          spyOn(Math, 'random').and.returnValue(0.99);
+          frame.firstRoll();
+          frame.secondRoll();
+        });
+
+        it("returns the number of pins knocked down", function(){
+          spyOn(Math, 'floor').and.returnValue(4);
+          expect(frame.thirdRoll()).toEqual(4);
+        });
+
+        it("registers a strike if ten pins knocked down", function(){
+          spyOn(Math, 'floor').and.returnValue(10);
+          expect(frame.thirdRoll()).toEqual("Strike!");
+        });
+
       });
 
     });

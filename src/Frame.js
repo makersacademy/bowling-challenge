@@ -32,6 +32,12 @@ Frame.prototype.secondRoll = function() {
 
 Frame.prototype.thirdRoll = function() {
   this.checkRollAllowed(3);
+  this.thirdRollScore = this.rollRandom();
+  if (this.thirdRollScore === 10) {
+    return "Strike!";
+  };
+
+  return this.thirdRollScore;
 };
 
 Frame.prototype.rollRandom = function() {

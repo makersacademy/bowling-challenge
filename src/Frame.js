@@ -20,6 +20,7 @@ Frame.prototype.secondRoll = function() {
   this.secondRollScore = this.roll();
   this.afterRollUpdate(this.secondRollScore);
   if (this.pinsRemaining === 0) {
+    this.isSpare = true;
     return "Spare!";
   };
 
@@ -40,6 +41,14 @@ Frame.prototype.afterRollUpdate = function(rollScore) {
 Frame.prototype.checkRollAllowed = function(rollNumber){
   if (this.rollsTaken != rollNumber - 1) {
     throw new Error("Already rolled or rolling out of turn")
+  };
+
+};
+
+Frame.prototype.spareUpdate = function(rollScore) {
+  if (this.isSpare) {
+    this.totalScore += rollScore;
+    this.isSpare = false;
   };
 
 };

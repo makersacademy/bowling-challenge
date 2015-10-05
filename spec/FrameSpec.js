@@ -98,4 +98,44 @@ describe("Frame", function() {
 
   });
 
+  describe("#spareUpdate", function(){
+
+    var frameSpare;
+    var frameNotSpare;
+
+    beforeEach(function() {
+      frameSpare = new Frame();
+      frameNotSpare = new Frame();
+    });
+
+    it("adds the number given to the total score of the frame", function(){
+      spyOn(Math, 'random').and.returnValue(0.8);
+      frameSpare.firstRoll();
+      frameSpare.secondRoll();
+      var number = 6;
+      frameSpare.spareUpdate(number);
+      expect(frameSpare.totalScore).toEqual(16);
+    });
+
+    it("does nothing if called on a frame that didn't register a spare", function(){
+      spyOn(Math, 'random').and.returnValue(0.3);
+      frameNotSpare.firstRoll();
+      frameNotSpare.secondRoll();
+      var number = 6;
+      frameNotSpare.spareUpdate(number);
+      expect(frameNotSpare.totalScore).toEqual(5);
+    });
+
+    it("does nothing if called on a frame that has already been updated", function(){
+      spyOn(Math, 'random').and.returnValue(0.8);
+      frameSpare.firstRoll();
+      frameSpare.secondRoll();
+      var number = 6;
+      frameSpare.spareUpdate(number);
+      frameSpare.spareUpdate(number);
+      expect(frameSpare.totalScore).toEqual(16);
+    });
+
+  });
+
 });

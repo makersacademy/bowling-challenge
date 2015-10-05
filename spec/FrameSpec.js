@@ -73,6 +73,12 @@ describe("Frame", function() {
       expect(frame.secondRoll()).toEqual(3);
     });
 
+    it("registers a spare if ten pins knocked down", function(){
+      spyOn(Math, 'random').and.returnValue(0.8);
+      frame.firstRoll();
+      expect(frame.secondRoll()).toEqual("Spare!")
+    });
+
   });
 
 

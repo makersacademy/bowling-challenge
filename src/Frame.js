@@ -29,7 +29,11 @@ Frame.prototype.secondRoll = function() {
   this.secondRollScore = Math.floor(Math.random()*(this.pinsRemaining+1));
   this.pinsRemaining -= this.secondRollScore;
   this.rollsTaken++
-  return this.secondRollScore
+  if (this.pinsRemaining === 0) {
+    return "Spare!";
+  };
+
+  return this.secondRollScore;
 };
 
 

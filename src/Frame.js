@@ -1,6 +1,7 @@
 function Frame() {
   this.pinsRemaining = 10;
   this.rollsTaken = 0;
+  this.totalScore = 0;
 };
 
 Frame.prototype.firstRoll = function() {
@@ -31,6 +32,7 @@ Frame.prototype.roll = function() {
 };
 
 Frame.prototype.afterRollUpdate = function(rollScore) {
+  this.totalScore += rollScore;
   this.pinsRemaining -= rollScore;
   this.rollsTaken++
 };

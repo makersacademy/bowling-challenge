@@ -10,6 +10,10 @@ describe("Frame", function() {
     expect(frame.pinsRemaining).toEqual(10);
   })
 
+  it("has a total score starting at zero", function() {
+    expect(frame.totalScore).toEqual(0);
+  });
+
   describe("#firstRoll", function() {
 
     it("knocks down pins and retains the value (stubbed to 6)", function(){
@@ -37,6 +41,12 @@ describe("Frame", function() {
     it("registers a strike if ten pins knocked down", function(){
       spyOn(Math, 'random').and.returnValue(0.99);
       expect(frame.firstRoll()).toEqual("Strike!")
+    });
+
+    it("updates total score", function(){
+      spyOn(Math, 'random').and.returnValue(0.6);
+      frame.firstRoll();
+      expect(frame.totalScore).toEqual(6);
     });
 
   });
@@ -77,6 +87,13 @@ describe("Frame", function() {
       spyOn(Math, 'random').and.returnValue(0.8);
       frame.firstRoll();
       expect(frame.secondRoll()).toEqual("Spare!")
+    });
+
+    it("updates total score", function(){
+      spyOn(Math, 'random').and.returnValue(0.6);
+      frame.firstRoll();
+      frame.secondRoll();
+      expect(frame.totalScore).toEqual(9);
     });
 
   });

@@ -5,13 +5,33 @@ function Frame() {
   // this.rollsAllowed = 2
 };
 
-Frame.prototype.rollOne = function() {
+Frame.prototype.firstRoll = function() {
   if (this.rollsTaken >= 1) {
-    throw Error("Already rolled")
+    throw new Error("Already rolled")
   }
-  this.rollOne = Math.floor(Math.random()*11)
-  this.pinsRemaining -= this.rollOne;
+  this.firstRollScore = Math.floor(Math.random()*11)
+  this.pinsRemaining -= this.firstRollScore;
+  this.rollsTaken++
+  if (this.firstRollScore === 10) {
+    return "Strike!";
+  };
+
+  return this.firstRollScore;
 };
+
+Frame.prototype.secondRoll = function() {
+  if (this.rollsTaken >= 2) {
+    throw new Error("Already rolled");
+  } else if (this.rollsTaken < 1) {
+    throw new Error("Awaiting first roll");
+  };
+
+  this.secondRollScore = Math.floor(Math.random()*(this.pinsRemaining+1));
+  this.pinsRemaining -= this.secondRollScore;
+  this.rollsTaken++
+  return this.secondRollScore
+};
+
 
 // Frame.prototype.roll = function(number) {
 //   if (this.rollsTaken >= number) {

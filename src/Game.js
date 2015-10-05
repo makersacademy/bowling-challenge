@@ -17,8 +17,9 @@ Game.prototype.rollBall = function(pinsHit) {
 Game.prototype.changeFrame = function() {
   if(this.firstThrow === false) {
     this.frameNumber +=1;
+      // game.isSpare();
   };
-  // game.isSpare();
+
 };
 
 Game.prototype.addRollToScoreCard = function(rollPoints) {
@@ -28,8 +29,10 @@ Game.prototype.addRollToScoreCard = function(rollPoints) {
 
 Game.prototype.isSpare = function(){
   var sum = this.scoreCard[(this.frameNumber - 1)].reduce((a, b) => a+b );
+  console.log(this.lastFrame);
   if(sum === 10) {
     this.lastFrame = "Spare!";
+  console.log(this.lastFrame);  
   };
 };
 // Player.prototype.play = function(song) {

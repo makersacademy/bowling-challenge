@@ -38,7 +38,8 @@ describe("Game", function() {
   it("It knows when the last frame is a spare", function(){
     game.rollBall(5);
     game.rollBall(5);
-    expect(game.lastFrame).toEqual("Spare!"); 
+    game.isSpare();
+    expect(game.lastFrame).toEqual("Spare!");
   });
 //   describe("when song has been paused", function() {
 //     beforeEach(function() {

@@ -138,4 +138,42 @@ describe("Frame", function() {
 
   });
 
+  describe("#strikeUpdate", function(){
+
+    var frameStrike;
+    var frameNotStrike;
+
+    beforeEach(function() {
+      frameStrike = new Frame();
+      frameNotStrike = new Frame();
+    });
+
+    it("adds the number given to the total score of the frame", function(){
+      spyOn(Math, 'random').and.returnValue(0.99);
+      frameStrike.firstRoll();
+      var number = 6;
+      frameStrike.strikeUpdate(number);
+      expect(frameStrike.totalScore).toEqual(16);
+    });
+
+    it("does nothing if called on a frame that didn't register a strike", function(){
+      spyOn(Math, 'random').and.returnValue(0.3);
+      frameNotStrike.firstRoll();
+      frameNotStrike.secondRoll();
+      var number = 6;
+      frameNotStrike.strikeUpdate(number);
+      expect(frameNotStrike.totalScore).toEqual(5);
+    });
+
+    it("does nothing if called on a frame that has already been updated", function(){
+      spyOn(Math, 'random').and.returnValue(0.99);
+      frameStrike.firstRoll();
+      var number = 6;
+      frameStrike.strikeUpdate(number);
+      frameStrike.strikeUpdate(number);
+      expect(frameStrike.totalScore).toEqual(16);
+    });
+
+  });
+
 });

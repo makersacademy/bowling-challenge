@@ -9,6 +9,7 @@ Frame.prototype.firstRoll = function() {
   this.firstRollScore = this.roll();
   this.afterRollUpdate(this.firstRollScore);
   if (this.pinsRemaining === 0) {
+    this.isStrike = true;
     return "Strike!";
   };
 
@@ -49,6 +50,14 @@ Frame.prototype.spareUpdate = function(rollScore) {
   if (this.isSpare) {
     this.totalScore += rollScore;
     this.isSpare = false;
+  };
+
+};
+
+Frame.prototype.strikeUpdate = function(frameScore) {
+  if (this.isStrike) {
+    this.totalScore += frameScore;
+    this.isStrike = false;
   };
 
 };

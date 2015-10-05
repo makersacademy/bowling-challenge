@@ -61,10 +61,24 @@ describe("Game", function() {
 
   it("It knows when we hit a strike", function(){
     game.rollBall(10);
-    // game.isStrike();
     expect(game.lastFrame).toEqual("Strike!");
   });
 
+  it("It changes frame when you roll a strike", function(){
+     game.rollBall(10);
+     expect(game.frameNumber).toEqual(2);
+  });
+
+  it("It adds ten points to the score card when you roll strike", function() {
+    game.rollBall(10);
+    expect(game.scoreCard[1]).toEqual([10]);
+  });
+
+  it("adds bonus points to the appropriate frame in the bonus array when you roll a strike", function() {
+    game.rollBall(10);
+    game.rollBall(3);
+    expect(game.bonusPoints[2]).toEqual(3);
+  });
 //   describe("when song has been paused", function() {
 //     beforeEach(function() {
 //       player.play(song);

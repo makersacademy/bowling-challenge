@@ -10,10 +10,16 @@ var Game = function() {
 
 Game.prototype.rollBall = function(pinsHit) {
   this.isStrike(pinsHit);
-  this.score += pinsHit;
-  this.addRollToScoreCard(pinsHit);
-  this.changeFrame();
-  this.firstThrow = !this.firstThrow;
+  if(this.lastFrame === "Strike!") {
+    this.addRollToScoreCard(pinsHit);
+    // this.scoreCard[this.frameNumber].push(pinsHit);
+    this.frameNumber +=1;
+  } else {
+    this.score += pinsHit;
+    this.addRollToScoreCard(pinsHit);
+    this.changeFrame();
+    this.firstThrow = !this.firstThrow;
+  };
 };
 
 Game.prototype.changeFrame = function() {
@@ -27,9 +33,14 @@ Game.prototype.addRollToScoreCard = function(rollPoints) {
   this.scoreCard[this.frameNumber].push(rollPoints);
   if(this.lastFrame === "Spare!") {
     this.addBonusPoints(rollPoints);
-    // this.scoreCard[this.frameNumber].push((rollPoints));
     this.lastFrame = "";
-  };
+  } else if((this.lastFrame === "Strike!") && (this.firstThrow === false)){
+    this.addBonusPoints(rollPoints);
+    this.lastFrame = "";
+  } else if((this.lastFrame === "Strike!") && (this.firstThrow === true)) {
+    this.addBonusPoints(rollPoints);
+
+  }
 };
 
 
@@ -43,7 +54,7 @@ Game.prototype.isSpare = function(){
 };
 
 Game.prototype.addBonusPoints = function(points) {
-  if(this.lastFrame === "Spare!") {
+  if((this.lastFrame === "Spare!") || (this.lastFrame === "Strike!")) {
     this.bonusPoints[this.frameNumber] = points;
   };
 };

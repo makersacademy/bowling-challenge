@@ -41,6 +41,30 @@ describe("Game", function() {
     game.isSpare();
     expect(game.lastFrame).toEqual("Spare!");
   });
+
+  it("sets the last frame to an empty string after the last frame was a spare", function() {
+    game.rollBall(5);
+    game.rollBall(5);
+    game.rollBall(2);
+    game.rollBall(2);
+    expect(game.lastFrame).toEqual("");
+  });
+
+  it("adds spare bonus points to the appropriate frame in the bonus array", function() {
+    game.rollBall(5);
+    game.rollBall(5);
+    game.rollBall(5);
+    game.rollBall(5);
+    game.rollBall(5);
+    expect(game.bonusPoints[3]).toEqual(5);
+  });
+
+  it("It knows when we hit a strike", function(){
+    game.rollBall(10);
+    // game.isStrike();
+    expect(game.lastFrame).toEqual("Strike!");
+  });
+
 //   describe("when song has been paused", function() {
 //     beforeEach(function() {
 //       player.play(song);

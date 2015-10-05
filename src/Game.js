@@ -21,6 +21,7 @@ Game.prototype.throwBall = function() {
 	this.totalScore += this.pinsHit;
 	this.addThrowToScoreCard();
 	this.isStrike();
+	this.isSpare();
 	this.changeFrameNumber();
 	// this.firstThrow = !this.firstThrow;
 };

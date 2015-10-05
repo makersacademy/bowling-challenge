@@ -26,7 +26,7 @@ describe("Frame", function() {
 
     it("doesn't allow repeated rolls", function(){
       frame.firstRoll();
-      expect(function() { frame.firstRoll(); }).toThrowError("Already rolled");
+      expect(function() { frame.firstRoll(); }).toThrowError("Already rolled or rolling out of turn");
     });
 
     it("returns the number of pins knocked down", function(){
@@ -60,11 +60,11 @@ describe("Frame", function() {
     it("doesn't allow repeated rolls", function(){
       frame.firstRoll();
       frame.secondRoll();
-      expect(function() { frame.secondRoll(); }).toThrowError("Already rolled");
+      expect(function() { frame.secondRoll(); }).toThrowError("Already rolled or rolling out of turn");
     });
 
     it("can't be taken before the first roll", function(){
-      expect(function() { frame.secondRoll(); }).toThrowError("Awaiting first roll");
+      expect(function() { frame.secondRoll(); }).toThrowError("Already rolled or rolling out of turn");
     });
 
     it("returns the number of pins knocked down", function(){
@@ -80,40 +80,5 @@ describe("Frame", function() {
     });
 
   });
-
-
-
-
-  // it("score accumulates for each successive roll (rolls stubbed to 6)", function(){
-  //   spyOn(Math, 'random').and.returnValue(0.6);
-  //   frame.roll(1);
-  //   frame.roll(2);
-  //   expect(frame.score).toEqual(12);
-  // });
-
-  // describe("number of rolls allowed", function(){
-
-  //   it("restricted to 2 by default (rolls stubbed to 4)", function(){
-  //     spyOn(Math, 'random').and.returnValue(0.4);
-  //     frame.roll(1);
-  //     frame.roll(2);
-  //     expect(function(){ frame.roll(3); }).toThrowError("Frame is over")
-  //   });
-
-  //   it("restricted to 1 if a strike is rolled", function(){
-  //     spyOn(Math, 'random').and.returnValue(0.99);
-  //     frame.roll(1);
-  //     expect(function(){ frame.roll(2); }).toThrowError("Frame is over")
-  //   });
-
-  //   xit("is 3 in final frame if a strike is rolled first", function(){
-  //     frame.isLastFrame = true
-  //     spyOn(Math, 'random').and.returnValue(0.99);
-  //     frame.rollOne();
-  //     frame.rollTwo();
-  //     frame.rollThree();
-  //   });
-
-  // });
 
 });

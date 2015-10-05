@@ -16,22 +16,49 @@ describe('Frame', function() {
     expect(frame.second).toBe(5);
   });
 
-  it('recognises a strike', function() {
-    frame.setShots(10);
-    expect(frame.isStrike()).toBe(true);
-    expect(frame.isSpare()).toBe(false);
+  describe('recognises when it is', function() {
+    it('a strike', function() {
+      frame.setShots(10);
+      expect(frame.isStrike()).toBe(true);
+      expect(frame.isSpare()).toBe(false);
+    });
+    it('a spare', function() {
+      frame.setShots(7, 3);
+      expect(frame.isStrike()).toBe(false);
+      expect(frame.isSpare()).toBe(true);
+    });
+    it('neither strike nor spare', function() {
+      frame.setShots(6, 3);
+      expect(frame.isStrike()).toBe(false);
+      expect(frame.isSpare()).toBe(false);
+    });
   });
 
-  it('recognises a spare', function() {
-    frame.setShots(7, 3);
-    expect(frame.isStrike()).toBe(false);
-    expect(frame.isSpare()).toBe(true);
-  });
-
-  it('recognises ordinary frames', function() {
-    frame.setShots(6, 3);
-    expect(frame.isStrike()).toBe(false);
-    expect(frame.isSpare()).toBe(false);
+  describe('raises an error when', function() {
+    it('first argument is not an integer', function() {
+      expect(function() { frame.setShots(); }).toThrowError(
+        'Integer argument required');
+      expect(function() { frame.setShots(0.5); }).toThrowError(
+        'Integer argument required');
+    });
+    it('first argument is out of range', function() {
+      expect(function() { frame.setShots(11); }).toThrowError(
+        'Argument out of range');
+      expect(function() { frame.setShots(-1); }).toThrowError(
+        'Argument out of range');
+    });
+    it('first < 10 but second not an integer', function() {
+      expect(function() { frame.setShots(9); }).toThrowError(
+        'Two integer arguments required');
+      expect(function() { frame.setShots(9, 0.5); }).toThrowError(
+        'Two integer arguments required');
+    });
+    it('first < 10 but second out of range', function() {
+      expect(function() { frame.setShots(9, 2); }).toThrowError(
+        'Second argument out of range');
+      expect(function() { frame.setShots(9, -1); }).toThrowError(
+        'Second argument out of range');
+    });
   });
 
 });

@@ -75,7 +75,6 @@ describe("Game", function() {
     for(i = 0; i < 12; i++) {
       game.bowl(10);
     };
-    console.log(game.frameScores);
     expect(game.calculateScore()).toEqual(300);
   });
 
@@ -99,7 +98,6 @@ describe("Game", function() {
     game.bowl(2);
     game.bowl(8);
     game.bowl(6);
-    console.log(game.frameScores);
     expect(game.calculateScore()).toEqual(133);
   });
 

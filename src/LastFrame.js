@@ -4,9 +4,7 @@ function LastFrame() {
 };
 
 LastFrame.prototype.receiveLastFrameRoll = function(hits) {
-  if((this.frameScore[0] + this.frameScore[1]) < 10){
-    throw "Not allowed";
-  };
+  this._thirdRollCheck();
   if(this.frameScore.length < 2) {
     this.frameScore.push(hits);
   } else if (this.frameScore[0] == 10 || (this.frameScore[0] + this.frameScore[1]) == 10 ) {
@@ -34,6 +32,12 @@ LastFrame.prototype._calculateLastFrameScore = function() {
   }
   this.totalScore = toAdd;
 };
+
+LastFrame.prototype._thirdRollCheck = function() {
+  if((this.frameScore[0] + this.frameScore[1]) < 10){
+    throw "Not allowed";
+  };
+}
 
 
 

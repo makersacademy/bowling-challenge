@@ -26,11 +26,6 @@ describe('Game', function() {
     expect(game.frameCount).toEqual(2);
   });
 
-  it('adds the sum of the current frame as a bonus if the prevous frame was a strike', function() {
-    game.score(10, 0);
-    frame = new Frame;
-    game.score(1, 2);
-    expect(game.totalGameScore).toEqual(16);
-  });
+
 
 });

@@ -7,9 +7,9 @@ function Frame() {
   this.Spare = false;
 }
 
-Frame.prototype.frameNumber = function() {
-  return this.number;
-};
+// Frame.prototype.frameNumber = function() {
+//   return this.number;
+// };
 
 Frame.prototype.firstRoll = function(score) {
   this.OneScore = score;
@@ -20,11 +20,12 @@ Frame.prototype.firstRoll = function(score) {
   } else {
     return this.OneScore;
   }
-
 };
 
 Frame.prototype.secondRoll = function(score) {
-   this.TwoScore = score;
-   this.TotalScore = this.OneScore + this.TwoScore;
-
- };
+  this.TwoScore = score;
+  this.TotalScore = this.OneScore + this.TwoScore;
+  if (this.TotalScore === 10 && this.Strike === false) {
+    this.Spare = true;
+  }
+};

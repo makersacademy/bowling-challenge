@@ -9,10 +9,10 @@ describe('Frame', function() {
     frame = new Frame();
   });
 
-  it('gives you the frame number', function() {
-    expect(frame.number).toEqual(1);
-
-  });
+  // it('gives you the frame number', function() {
+  //   expect(frame.number).toEqual(1);
+  //
+  // });
 
   it('adds a score for the first roll', function() {
     frame.firstRoll(5);
@@ -43,7 +43,19 @@ describe('Frame', function() {
 
   it('adds a total frame score for both rolls ', function() {
     frame.firstRoll(5);
+    frame.secondRoll(4);
+    expect(frame.TotalScore).toEqual(9);
+  });
+
+  it('records a spare if the total of the first and second rolls are 10', function(){
+    frame.firstRoll(5);
     frame.secondRoll(5);
-    expect(frame.TotalScore).toEqual(10);
+    expect(frame.Spare).toEqual(true);
+  });
+
+  it('does not record a spare if the first roll is a strike', function(){
+    frame.firstRoll(10);
+    frame.secondRoll(0)
+    expect(frame.Spare).toEqual(false);
   });
 });

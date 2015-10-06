@@ -279,6 +279,11 @@ describe("Frame", function() {
           expect(frame.thirdRoll()).toEqual("Strike!");
         });
 
+        it("returns zero when no pins knocked down", function(){
+          spyOn(Math, 'random').and.returnValue(0.01);
+          expect(frame.thirdRoll()).toEqual(0);
+        });
+
       });
 
       describe("when going for a spare", function(){

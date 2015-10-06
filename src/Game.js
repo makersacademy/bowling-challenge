@@ -13,4 +13,4 @@ Game.prototype.score = function(num1, num2) {
   this.frameCount += 1;
 };
 
-function strike(frame)
+// function strike(frame)

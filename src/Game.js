@@ -11,16 +11,24 @@ function Game(frame, lastFrame) {
 };
 
 Game.prototype.bowl = function(hits) {
-  this._isAStrike(hits);
-  if(this.currentFrame > 0 && this._isPreviousFrameStrike() == true) {
-    this._recalculatePreviousFrameScore(hits);
+  if(this.currentRoll < 18){
+    this._isAStrike(hits);
+    if(this.currentFrame > 0 && this._isPreviousFrameStrike() == true) {
+      this._recalculatePreviousFrameScore(hits);
+    };
+    if(this.currentFrame > 0 && this._isPreviousFrameSpare() == true && this.frames[this.currentFrame].firstRoll == null) {
+      this._recalculatePreviousFrameScore(hits);
+    }
+    if(this.currentFrame > 1 && this._isTwoPreviousFrameStrike() == true && this.frames[this.currentFrame].firstRoll == null) {
+      this._recalculatePreviousFrameScore(hits);
+    }
+    this.frames[this.currentFrame].receiveRoll(hits);
+    this.currentRoll++;
+    this._addScoreAndIncrement();
+  } else {
+    this.frames[this.currentFrame].receiveLastFrameRoll(hits);
+    this.frameScores.push(this.frames[this.currentFrame].totalScore)
   };
-  if(this.currentFrame > 0 && this._isPreviousFrameSpare() == true && this.frames[this.currentFrame].firstRoll == null) {
-    this._recalculatePreviousFrameScore(hits);
-  }
-  this.frames[this.currentFrame].receiveRoll(hits);
-  this.currentRoll++;
-  this._addScoreAndIncrement();
 };
 
 Game.prototype.calculateScore = function() {
@@ -31,16 +39,16 @@ Game.prototype.calculateScore = function() {
   return totalScore;
 };
 
-// Game.prototype._isCurrentFrameSpare = function () {
-//   return this.frames[this.currentFrame].spare;
-// };
-
 Game.prototype._isPreviousFrameSpare = function() {
   return this.frames[this.currentFrame - 1].spare;
 };
 
 Game.prototype._isPreviousFrameStrike = function() {
   return this.frames[this.currentFrame - 1].strike;
+};
+
+Game.prototype._isTwoPreviousFrameStrike = function() {
+  return this.frames[this.currentFrame - 2].strike;
 };
 
 Game.prototype._isAStrike = function(hits) {

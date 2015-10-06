@@ -40,7 +40,7 @@ describe("Game", function() {
     expect(game.currentFrame).toEqual(1);
   });
 
-  it("should increment the frame after a strike", function () {
+  it("should increment the frame after a strike", function() {
     game.bowl(10);
     expect(game.currentFrame).toEqual(1);
   });
@@ -70,6 +70,15 @@ describe("Game", function() {
     game.bowl(2);
     expect(game.frameScores[0]).toEqual(13)
   });
+
+  it("should be able to roll a perfect game", function() {
+    for(i = 0; i < 12; i++) {
+      game.bowl(10);
+    };
+    expect(game.calculateScore()).toEqual(300);
+  });
+
+  
 
 
 });

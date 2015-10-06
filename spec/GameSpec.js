@@ -75,10 +75,33 @@ describe("Game", function() {
     for(i = 0; i < 12; i++) {
       game.bowl(10);
     };
+    console.log(game.frameScores);
     expect(game.calculateScore()).toEqual(300);
   });
 
-  
+  it("should correctly calculate the example game score", function() {
+    game.bowl(1);
+    game.bowl(4);
+    game.bowl(4);
+    game.bowl(5);
+    game.bowl(6);
+    game.bowl(4);
+    game.bowl(5);
+    game.bowl(5);
+    game.bowl(10);
+    game.bowl(0);
+    game.bowl(1);
+    game.bowl(7);
+    game.bowl(3);
+    game.bowl(6);
+    game.bowl(4);
+    game.bowl(10);
+    game.bowl(2);
+    game.bowl(8);
+    game.bowl(6);
+    console.log(game.frameScores);
+    expect(game.calculateScore()).toEqual(133);
+  });
 
 
 });

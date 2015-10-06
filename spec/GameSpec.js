@@ -4,9 +4,25 @@ describe("Game", function(){
   var genericFrame;
   var firstFrame;
   var secondFrame;
+  var thirdFrame;
 
   beforeEach(function() {
     genericFrame = jasmine.createSpy('genericFrame');
+    firstFrame = jasmine.createSpyObj('firstFrame', ['firstRoll',
+      'secondRoll',
+      'spareUpdate',
+      'strikeUpdate']);
+
+    secondFrame = jasmine.createSpyObj('secondFrame', ['firstRoll',
+      'secondRoll',
+      'spareUpdate',
+      'strikeUpdate']);
+
+    thirdFrame = jasmine.createSpyObj('thirdFrame', ['firstRoll',
+      'secondRoll',
+      'spareUpdate',
+      'strikeUpdate']);
+
     game = new Game(genericFrame);
   });
 
@@ -21,7 +37,6 @@ describe("Game", function(){
   describe("#bowl", function(){
 
     beforeEach(function(){
-      firstFrame = jasmine.createSpyObj('firstFrame', ['firstRoll','secondRoll', 'spareUpdate']);
       firstFrame.rollsTaken = 0
       game.frameArray[0] = firstFrame
 
@@ -75,7 +90,6 @@ describe("Game", function(){
       describe("spare NOT thrown", function(){
 
         beforeEach(function(){
-          secondFrame = jasmine.createSpyObj('secondFrame', ['firstRoll']);
           secondFrame.rollsTaken = 0;
           game.frameArray[1] = secondFrame;
           game.frameIndex = 1
@@ -91,20 +105,17 @@ describe("Game", function(){
       describe("spare thrown", function(){
 
         beforeEach(function(){
-          firstFrame.isSpare = true;
-          secondFrame = jasmine.createSpyObj('secondFrame', ['firstRoll']);
-          secondFrame.firstRoll.and.returnValue(4)
           secondFrame.rollsTaken = 0;
           game.frameArray[1] = secondFrame;
           game.frameIndex = 1
         });
 
-        it("calls the next frames firstRoll function", function(){
+        it("calls the second frames firstRoll function", function(){
           game.bowl();
           expect(game.frameArray[1].firstRoll).toHaveBeenCalled();
         });
 
-        it("calls the previous frame's spareUpdate with the value of this frame's first roll", function(){
+        it("calls the first frame's spareUpdate with the value of second frame's first roll", function(){
           secondFrame.firstRollScore = 4;
           game.bowl();
           expect(game.frameArray[0].spareUpdate).toHaveBeenCalledWith(4);
@@ -114,19 +125,12 @@ describe("Game", function(){
 
     });
 
-    xdescribe("strike IS thrown on frist roll", function(){
+    describe("strike IS thrown on frist roll", function(){
 
       beforeEach(function(){
-        firstFrame = jasmine.createSpyObj('firstFrame', ['secondRoll', 'spareUpdate']);
-        firstFrame.firstRollScore = 10;
-        firstFrame.rollsTaken = 1;
-        firstFrame.pinsRemaining = 0;
-        firstFrame.isStrike = true;
-        firstFrame.totalScore = 10
-        // firstFrame.secondRoll.and.returnValue(2)
-        secondFrame = jasmine.createSpyObj('secondFrame', ['firstRoll']);
-        game.frameArray[0] = firstFrame;
+        secondFrame.rollsTaken = 0;
         game.frameArray[1] = secondFrame;
+        game.frameIndex = 1
       });
 
       it("calls the second frame's #firstRoll function", function(){
@@ -134,15 +138,51 @@ describe("Game", function(){
         expect(game.frameArray[1].firstRoll).toHaveBeenCalled();
       });
 
-      xit("returns the result of the second roll", function(){
-        expect(game.bowl()).toEqual(2);
+    });
+
+    describe("strike bonus", function(){
+
+      describe("first frame strike", function(){
+
+        beforeEach(function() {
+          secondFrame.rollsTaken = 0;
+          game.frameArray[1] = secondFrame;
+          game.frameIndex = 1;
+        });
+
+        it("first roll of second frame doesn't call first frame's #strikeUpdate function", function(){
+          game.bowl();
+          expect(game.frameArray[0].strikeUpdate).not.toHaveBeenCalledWith()
+        });
+
+        it("second roll calls first frame's #strikeUpdate function with second's total", function(){
+          secondFrame.rollsTaken = 1;
+          secondFrame.totalScore = 8
+          game.bowl();
+          expect(game.frameArray[0].strikeUpdate).toHaveBeenCalledWith(8)
+        });
+
       });
 
-      xit("frame index increases by one following frame's second roll", function(){
-        game.bowl();
-        expect(game.frameIndex).toEqual(1);
-      });
+      describe("first frame strike, second frame strike", function(){
 
+        beforeEach(function() {
+          firstFrame.isStrike = true
+          secondFrame.totalScore = 10;
+          secondFrame.isStrike = true;
+          thirdFrame.rollsTaken = 0;
+          game.frameArray[1] = secondFrame;
+          game.frameArray[2] = thirdFrame;
+          game.frameIndex = 2;
+        });
+
+        it("third frame's first roll calls first frame's #strikeUpdate function with roll total plus 10", function(){
+          thirdFrame.firstRollScore = 6
+          game.bowl();
+          expect(game.frameArray[0].strikeUpdate).toHaveBeenCalledWith(16)
+        });
+
+      });
 
     });
 

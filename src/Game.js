@@ -22,8 +22,15 @@ Game.prototype.bowl = function() {
       this.frameIndex++;
     };
 
+    if (this.frameIndex > 1 && this.frameArray[this.frameIndex-1].isStrike && this.frameArray[this.frameIndex-2].isStrike) {
+      this.frameArray[this.frameIndex-2].strikeUpdate(this.currentFrame().firstRollScore + 10);
+    };
+
   } else {
     returnVal = this.currentFrame().secondRoll();
+    if (this.frameIndex > 0) {
+      this.frameArray[this.frameIndex-1].strikeUpdate(this.currentFrame().totalScore);
+    };
     this.frameIndex++;
   };
 

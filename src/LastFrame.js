@@ -4,6 +4,7 @@ function LastFrame() {
 };
 
 LastFrame.prototype.receiveLastFrameRoll = function(hits) {
+  this._pinCountCheck(hits);
   this._thirdRollCheck();
   if(this.frameScore.length < 2) {
     this.frameScore.push(hits);
@@ -38,6 +39,18 @@ LastFrame.prototype._thirdRollCheck = function() {
     throw "Not allowed";
   };
 }
+
+LastFrame.prototype._pinCountCheck = function(hits) {
+  if(hits>10){
+    throw "Must be less than ten";
+  } else if(hits < 0){
+    throw "Must be a positive number";
+  } else if(this.frameScore[0] == 10 && this.frameScore[1] < 10 && (this.frameScore[1] + hits) > 10 ){
+    throw "Too many pins";
+  } else if(this.frameScore[0] < 10 && this.frameScore[1] == null && (this.frameScore[0] + hits) > 10) {
+    throw "Too many pins";
+  };
+};
 
 
 

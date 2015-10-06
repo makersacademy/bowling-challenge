@@ -25,4 +25,23 @@ describe("LastFrame", function() {
     expect(lastFrame.totalScore).toEqual(17);
   });
 
+  it("should not be able to receive a roll of more than ten", function() {
+    expect(function(){lastFrame.receiveLastFrameRoll(11);}).toThrow("Must be less than ten");
+  });
+
+  it("should not be able to receive two rolls adding up to more than ten", function() {
+    lastFrame.receiveLastFrameRoll(3);
+    expect(function(){lastFrame.receiveLastFrameRoll(8);}).toThrow("Too many pins");
+  });
+
+  it("should not be able to receive two rolls adding up to more than ten after a strike", function() {
+    lastFrame.receiveLastFrameRoll(10);
+    lastFrame.receiveLastFrameRoll(3);
+    expect(function(){lastFrame.receiveLastFrameRoll(8);}).toThrow("Too many pins");
+  });
+
+  it("should not be able to receive a roll of more than ten", function() {
+    expect(function(){lastFrame.receiveLastFrameRoll(-1);}).toThrow("Must be a positive number");
+  });
+
 });

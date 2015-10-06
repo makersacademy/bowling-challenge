@@ -34,5 +34,17 @@ describe("Frame", function() {
     expect(frame.spare).toBe(true);
   });
 
+  it("should not be able to receive a roll of more than ten", function() {
+    expect(function(){frame.receiveRoll(11);}).toThrow("Must be less than ten");
+  });
+
+  it("should not be able to receive two rolls adding up to more than ten", function() {
+    frame.receiveRoll(3);
+    expect(function(){frame.receiveRoll(8);}).toThrow("Too many pins");
+  });
+
+  it("should not be a able to receive a number lower than 0", function() {
+    expect(function(){frame.receiveRoll(-1);}).toThrow("Must be a positive number");
+  });
 
 });

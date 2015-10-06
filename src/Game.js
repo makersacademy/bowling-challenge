@@ -66,14 +66,14 @@ Game.prototype._addToFrameScore = function() {
 
 Game.prototype._finalFrameStrikeAndSpareCheck = function() {
   if(this._isPreviousFrameStrike()) { 
-    this.frameScores[8] += this.frames[this.currentFrame].frameScore[0]; 
-    this.frameScores[8] += this.frames[this.currentFrame].frameScore[1]; 
+    this.frameScores[this.defaultValue - 2] += this.frames[this.currentFrame].frameScore[0]; 
+    this.frameScores[this.defaultValue - 2] += this.frames[this.currentFrame].frameScore[1]; 
   };
   if(this._isPreviousFrameSpare()) {
-    this.frameScores[8] += this.frames[this.currentFrame].frameScore[0];
+    this.frameScores[this.defaultValue - 2] += this.frames[this.currentFrame].frameScore[0];
   };
   if(this._isTwoPreviousFrameStrike()) {
-    this.frameScores[7] += this.frames[this.currentFrame].frameScore[0];
+    this.frameScores[this.defaultValue - 3] += this.frames[this.currentFrame].frameScore[0];
   };
 };
 

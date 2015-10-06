@@ -6,6 +6,7 @@ function Frame() {
 };
 
 Frame.prototype.receiveRoll = function(hits) {
+  this._pinCountCheck(hits);
   if(this.firstRoll != null) {
     this.secondRoll = hits;  
   } else if (this._isAStrike(hits)) {
@@ -31,4 +32,14 @@ Frame.prototype._calculateScore = function() {
   if(this.totalScore == 10 && this.secondRoll != 0) {
     this.spare = true;
   };
+};
+
+Frame.prototype._pinCountCheck = function(hits) {
+  if(hits>10){
+    throw "Must be less than ten";
+  } else if(hits < 0){
+    throw "Must be a positive number";
+  } else if(this.firstRoll != null && (this.firstRoll + hits) > 10) {
+    throw "Too many pins";
+  }
 };

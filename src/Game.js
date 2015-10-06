@@ -1,22 +1,23 @@
-function Game(frame) {
+function Game(frame, lastFrame) {
   this.frames = [];
   this.defaultValue = 10;
   this.frameScores = [];
   this.currentFrame = 0;
   this.currentRoll = 0;
-  for(i = 0; i < this.defaultValue; i++) {
-      this.frames.push(new frame);
-    }
+  for(i = 0; i < (this.defaultValue-1); i++) {
+    this.frames.push(new frame);
+  };
+  this.frames.push(new lastFrame);
 };
 
 Game.prototype.bowl = function(hits) {
   this._isAStrike(hits);
   if(this.currentFrame > 0 && this._isPreviousFrameStrike() == true) {
-    this._recalculateFrameScore(hits);
+    this._recalculatePreviousFrameScore(hits);
   };
   if(this.currentFrame > 0 && this._isPreviousFrameSpare() == true && this.frames[this.currentFrame].firstRoll == null) {
-    this._recalculateFrameScore(hits);
-  };
+    this._recalculatePreviousFrameScore(hits);
+  }
   this.frames[this.currentFrame].receiveRoll(hits);
   this.currentRoll++;
   this._addScoreAndIncrement();
@@ -30,28 +31,16 @@ Game.prototype.calculateScore = function() {
   return totalScore;
 };
 
-Game.prototype._isCurrentFrameSpare = function () {
-  if(this.frames[this.currentFrame].spare) {
-    return true;
-  } else {
-    return false;
-  };
-};
+// Game.prototype._isCurrentFrameSpare = function () {
+//   return this.frames[this.currentFrame].spare;
+// };
 
 Game.prototype._isPreviousFrameSpare = function() {
-  if(this.frames[this.currentFrame - 1].spare) {
-    return true;
-  } else {
-    return false;
-  };
+  return this.frames[this.currentFrame - 1].spare;
 };
 
 Game.prototype._isPreviousFrameStrike = function() {
-  if(this.frames[this.currentFrame - 1].strike) {
-    return true;
-  } else {
-    return false;
-  };
+  return this.frames[this.currentFrame - 1].strike;
 };
 
 Game.prototype._isAStrike = function(hits) {
@@ -67,7 +56,7 @@ Game.prototype._addScoreAndIncrement = function() {
   };
 }
 
-Game.prototype._recalculateFrameScore = function(hits) {
+Game.prototype._recalculatePreviousFrameScore = function(hits) {
   var frame = Math.floor((this.currentRoll - 2) / 2);
   this.frameScores[frame]+=hits;
 };

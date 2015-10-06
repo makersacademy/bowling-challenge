@@ -11,13 +11,23 @@ Game.prototype.frameArrayGenerator = function(frameConstructor) {
 };
 
 Game.prototype.bowl = function() {
+  var returnVal;
   if (this.currentFrame().rollsTaken === 0) {
-    this.currentFrame().firstRoll();
+    returnVal = this.currentFrame().firstRoll();
+    if (this.frameIndex > 0) {
+      this.frameArray[this.frameIndex-1].spareUpdate(this.currentFrame().firstRollScore);
+    };
+
+    if (returnVal === "Strike!") {
+      this.frameIndex++;
+    };
+
   } else {
-    this.currentFrame().secondRoll();
+    returnVal = this.currentFrame().secondRoll();
     this.frameIndex++;
   };
 
+return returnVal
 };
 
 Game.prototype.currentFrame = function() {

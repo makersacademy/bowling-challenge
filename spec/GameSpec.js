@@ -12,6 +12,13 @@ describe('Game', function() {
     expect(game.totalGameScore).toEqual(10);
   });
 
+  it('keeps a track of the total score', function() {
+    game.score(5, 5);
+    frame = new Frame();
+    game.score(5, 5);
+    expect(game.totalGameScore).toEqual(20);
+  });
+
   it('counts the number of frames', function() {
     game.score(5, 5);
     frame = new Frame;

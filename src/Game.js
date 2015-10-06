@@ -1,13 +1,11 @@
 Game = function(){
   this.Frames = []
-  this.rolls = []
   this.total = 0
 };
 
 Game.prototype.playFrame = function(frame){
   frame.play();
   this.Frames.push(frame);
-  this.rolls.push(frame.pinsHitByFirstRoll, frame.pinsHitBySecondRoll)
 };
 
 Game.prototype.nextFrame = function(frame){
@@ -16,11 +14,45 @@ Game.prototype.nextFrame = function(frame){
 };
 
 Game.prototype.frameResult = function(frame){
-  if (!frame.isStrike() && !frame.isSpare()) {
-    return frame.totalHitInFrame();
-  } else if (frame.isSpare()) {
-    return frame.totalHitInFrame() + game.nextFrame(frame).pinsHitByFirstRoll()
+  if (frame.isSpare()) {
+    return this.resultIfSpare(frame);
   } else if (frame.isStrike()) {
-    return frame.totalHitInFrame() + this.nextFrame(frame).totalHitInFrame()
+    return this.resultIfStrike(frame);
+  } else {
+    return frame.totalHitInFrame()
   };
 };
+
+Game.prototype.resultIfSpare = function(frame){
+  if (this.nextFrame(frame) == undefined) {
+    return "Play the next frame"
+  } else {
+    return frame.totalHitInFrame() + this.bonusIfSpare(frame)
+  };
+};
+
+Game.prototype.bonusIfSpare = function(frame){
+  return this.nextFrame(frame).pinsHitByFirstRoll()
+};
+
+Game.prototype.resultIfStrike = function(frame){
+  next = this.nextFrame(frame)
+  nextnext = this.nextFrame(next)
+  if ((next == undefined) || (next.isStrike() && nextnext == undefined)) {
+    return "Play the next frame"
+  } else {
+    return frame.totalHitInFrame() + this.bonusIfStrike(frame)
+  };
+};
+
+Game.prototype.bonusIfStrike = function(frame){
+  next = this.nextFrame(frame)
+  nextnext = this.nextFrame(next)
+  if (next.isStrike()) {
+    return next.totalHitInFrame() + nextnext.pinsHitByFirstRoll;
+  } else {
+    return next.totalHitInFrame();
+  }
+};
+
+

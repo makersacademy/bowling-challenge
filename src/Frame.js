@@ -2,7 +2,6 @@ Frame = function(){
   this.pinsHitByFirstRoll = null
   this.pinsHitBySecondRoll = null
   this.pinsLeft = 10
-  this.zeroOption = 1
 };
 
 Frame.prototype.roll = function(){
@@ -21,7 +20,7 @@ Frame.prototype.play = function(){
 };
 
 Frame.prototype.pinsHit = function(){
-  return Math.floor(Math.random()*(this.pinsLeft + this.zeroOption))
+  return Math.floor(Math.random()*(this.pinsLeft + 1))
 };
 
 Frame.prototype.isStrike = function(){

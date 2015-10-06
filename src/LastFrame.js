@@ -17,15 +17,6 @@ LastFrame.prototype.receiveLastFrameRoll = function(hits) {
   };
 };
 
-LastFrame.prototype._isAStrike = function(hits) {
-  if(hits == 10){
-    this.strike = true;
-    return true;
-  } else {
-    return false;
-  };
-};
-
 LastFrame.prototype._calculateLastFrameScore = function() {
   var toAdd = this.frameScore.reduce(add, 0);
   function add(a, b) {

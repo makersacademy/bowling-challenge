@@ -53,13 +53,13 @@ describe("Game", function(){
     });
 
     it("frame index doesn't change when a strike isn't thrown", function(){
-      firstFrame.firstRoll.and.returnValue(6);
+      firstFrame.firstRollScore = 6
       game.bowl();
       expect(game.frameIndex).toEqual(0);
     });
 
     it("frame index increases by one when a strike is thrown", function(){
-      firstFrame.firstRoll.and.returnValue("Strike!");
+      firstFrame.firstRollScore = 10;
       game.bowl();
       expect(game.frameIndex).toEqual(1);
     });
@@ -183,6 +183,12 @@ describe("Game", function(){
         });
 
       });
+
+    });
+
+    describe("Last Frame", function(){
+
+
 
     });
 

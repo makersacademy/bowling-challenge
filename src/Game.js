@@ -11,33 +11,63 @@ Game.prototype.frameArrayGenerator = function(frameConstructor) {
 };
 
 Game.prototype.bowl = function() {
-  var returnVal;
+  var returnValue;
   if (this.currentFrame().rollsTaken === 0) {
-    returnVal = this.currentFrame().firstRoll();
-    if (this.frameIndex > 0) {
-      this.frameArray[this.frameIndex-1].spareUpdate(this.currentFrame().firstRollScore);
-    };
-
-    if (returnVal === "Strike!") {
-      this.frameIndex++;
-    };
-
-    if (this.frameIndex > 1 && this.frameArray[this.frameIndex-1].isStrike && this.frameArray[this.frameIndex-2].isStrike) {
-      this.frameArray[this.frameIndex-2].strikeUpdate(this.currentFrame().firstRollScore + 10);
-    };
-
+    returnValue = this.currentFrame().firstRoll();
+    this.firstBowlUpdate();
   } else {
-    returnVal = this.currentFrame().secondRoll();
-    if (this.frameIndex > 0) {
-      this.frameArray[this.frameIndex-1].strikeUpdate(this.currentFrame().totalScore);
-    };
-    this.frameIndex++;
+    returnValue = this.currentFrame().secondRoll();
+    this.secondBowlUpdate();
   };
 
-return returnVal
+return returnValue
 };
 
 Game.prototype.currentFrame = function() {
   var i = this.frameIndex;
   return this.frameArray[i];
 };
+
+Game.prototype.oneFramePrevious = function() {
+  var i = this.frameIndex;
+  return this.frameArray[i-1];
+};
+
+Game.prototype.twoFramePrevious = function() {
+  var i = this.frameIndex;
+  return this.frameArray[i-2];
+};
+
+Game.prototype.isPreviousTwoStrikes = function() {
+  var i = this.frameIndex;
+  if (i < 2) return false;
+  return (this.oneFramePrevious().isStrike && this.twoFramePrevious().isStrike)
+};
+
+Game.prototype.firstBowlUpdate = function() {
+  var i = this.frameIndex
+  var rollScore = this.currentFrame().firstRollScore
+  if (i > 0) {
+    this.oneFramePrevious().spareUpdate(rollScore);
+  };
+
+  if (this.isPreviousTwoStrikes()) {
+    this.twoFramePrevious().strikeUpdate(rollScore + 10);
+  };
+
+  if (rollScore === 10) {
+    this.frameIndex++;
+  };
+
+};
+
+Game.prototype.secondBowlUpdate = function() {
+  var i = this.frameIndex
+  if (i > 0) {
+      this.oneFramePrevious().strikeUpdate(this.currentFrame().totalScore);
+    };
+
+  this.frameIndex++;
+};
+
+

@@ -12,7 +12,20 @@ describe("Game", function(){
     expect(game.frameArray.length).toEqual(10);
   });
 
-  xdescribe("#bowl", function(){
+  describe("#bowl", function(){
+
+    beforeEach(function(){
+      frame = jasmine.createSpyObj('frame', ['firstRoll'])
+      for (var i = 0; i < 10; i++) {
+        game.frameArray[i] = frame;
+      };
+
+    });
+
+    it("selects the first frame and calls its #firstRoll function", function(){
+      game.bowl();
+      expect(game.frameArray[0].firstRoll).toHaveBeenCalled();
+    });
 
 
   });

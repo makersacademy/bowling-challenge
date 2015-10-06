@@ -8,3 +8,7 @@ Game.prototype.frameGenerator = function(frameConstructor) {
     this.frameArray[i] = new frameConstructor;
   };
 };
+
+Game.prototype.bowl = function() {
+  this.frameArray[0].firstRoll();
+};

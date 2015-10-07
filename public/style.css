@@ -4,12 +4,11 @@
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 10%;
-  border: dashed red;
 }
 
 .frame_box {
   display: inline-block;
-  width: 9.5%;
+  width: 9%;
   height: 95%
 }
 

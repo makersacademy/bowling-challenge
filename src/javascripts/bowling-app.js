@@ -34,6 +34,7 @@ Game.prototype.bonusChecker = function(pins) {
   });
   if (total === 10) {
     this.nextOneBonus;
+    this.score += pins
   }
   this.score += pins
 };

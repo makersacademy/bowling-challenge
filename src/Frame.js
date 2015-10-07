@@ -1,3 +1,6 @@
+
+
+
 function Frame() {
   this.number = 1;
   this.OneScore = 0;

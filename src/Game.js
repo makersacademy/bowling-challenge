@@ -9,8 +9,14 @@ Game.prototype.score = function(num1, num2) {
   frame = new Frame;
   frame.firstRoll(num1);
   frame.secondRoll(num2);
+  console.log(frame);
   this.totalGameScore = this.totalGameScore + frame.TotalScore;
   this.frameCount += 1;
+  if (frame.strike === true ) {
+    this._strike
+  }
 };
 
-// function strike(frame)
+// Game.prototype._strike = function() {
+//   this.previousFrameWasStrike = true
+// };

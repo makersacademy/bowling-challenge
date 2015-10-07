@@ -10,28 +10,52 @@ function Game() {
 };
 
 Game.prototype.rollBall =  function(hit) {
-  
-  if (this.strikeBall === true) {
-    this.scoreBoard[this.frameNumber].push(hit*2);
-    this.strikeBall = false;
-  } else if (this.spareBall === true) {
-    this.scoreBoard[this.frameNumber].push(hit*2);
-    this.spareBall = false;
-  } else {
-    this.scoreBoard[this.frameNumber].push(hit);
-  };
 
-  this.score += hit;
-  this.frameScore += hit;
-  this.isSpare(hit);
-  if (this.firstThrow === false) {
-    this.frameNumber +=1;
-    this.frameScore = 0;
-    this.firstThrow = true;
+  if (this.frameNumber != 10) {
+    if (this.strikeBall === true) {
+      this.scoreBoard[this.frameNumber].push(hit*2);
+      this.strikeBall = false;
+    } else if (this.spareBall === true) {
+      this.scoreBoard[this.frameNumber].push(hit*2);
+      this.spareBall = false;
+    } else {
+      this.scoreBoard[this.frameNumber].push(hit);
+    };
+
+    this.score += hit;
+    this.frameScore += hit;
+    this.isSpare(hit);
+    if (this.firstThrow === false) {
+      this.frameNumber +=1;
+      this.frameScore = 0;
+      this.firstThrow = true;
+    } else {
+      this.firstThrow = false;
+    };
+    this.isStrike(hit);
   } else {
-    this.firstThrow = false;
-  };
-  this.isStrike(hit);
+    if (this.strikeBall === true) {
+      this.scoreBoard[this.frameNumber].push(hit*2);
+      this.strikeBall = false;
+    } else if (this.spareBall === true) {
+      this.scoreBoard[this.frameNumber].push(hit*2);
+      this.spareBall = false;
+    } else {
+      this.scoreBoard[this.frameNumber].push(hit);
+    };
+
+    this.score += hit;
+    this.frameScore += hit;
+    this.isSpare(hit);
+    if (this.firstThrow === false) {
+      this.frameNumber +=1;
+      this.frameScore = 0;
+      this.firstThrow = true;
+    } else {
+      this.firstThrow = false;
+    };
+    this.isStrike(hit);
+  }
 };
 
 Game.prototype.isStrike = function(hit) {

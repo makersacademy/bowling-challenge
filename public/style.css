@@ -1,0 +1,34 @@
+#scorecard {
+  height: 150px;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 10%;
+  border: dashed red;
+}
+
+.frame_box {
+  display: inline-block;
+  width: 9.5%;
+  height: 100%
+}
+
+.frame_name {
+  width: 100%;
+  height: 30%;
+  display: block;
+}
+
+.score_box {
+  float: right;
+  width: 35%;
+  height:25%;
+  display: block;
+}
+
+.frame_score {
+  float: right;
+  width: 100%;
+  height:30%;
+  display: block;
+}

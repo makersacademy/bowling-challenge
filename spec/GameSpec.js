@@ -43,10 +43,11 @@ describe("Game", function() {
     expect(game.scoreBoard[3][0]).toEqual(10);
   });
 
-  it("can tell when a spare is scored", function() {
+  it("can double score on next roll if spare", function() {
     game.rollBall(6);
     game.rollBall(4);
-    expect(game.spareBall).toEqual(true);
+    game.rollBall(4);
+    expect(game.scoreBoard[2][0]).toEqual(8);
   });
 
   // beforeEach(function() {

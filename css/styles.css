@@ -1,0 +1,79 @@
+table {
+  border: 3px;
+  cellpadding: 10px;
+  cellspacing: 10px;
+}
+
+  .frame-table {
+    width: 100px;
+    height: 90px;
+    border: 1px;
+    border: solid;
+  }
+
+  .roll {
+    float: left;
+    display: inline-block;
+    width: 15px;
+    height: 30px;
+    border: 1px;
+    margin: 1px;
+    border: solid;
+  }
+
+div {
+  border: 4px;
+  border: solid;
+  height: 200px;
+  margin: 2px;
+}
+
+/*  #top {
+    height: 30%;
+  }*/
+
+  #bottom {
+    display: flex;
+    border: none;
+  }
+
+  #bottom-left {
+    width: 50%;
+  }
+
+  #bottom-right {
+    width: 50%;
+  }
+
+ /* #top {
+    height: 30%;
+  }
+
+  #bottom {
+    height: 60%;
+  }
+
+  #bottom-left {
+    display: inline-block;
+    float: left;
+  }
+
+  #bottom-right {
+    display: inline-block;
+    float: left;
+  }*/
+
+  #frame-display {
+    position: absolute;
+    margin-left: 10%;
+    margin-top: 10px;
+    height: 130px;
+  }
+
+button#bowl {
+  width: 80%;
+  height: 90%;
+  float: left;
+  margin: 5px;
+  font-size: -webkit-xxx-large;
+}

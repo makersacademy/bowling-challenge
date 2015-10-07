@@ -19,8 +19,8 @@ scoreRefresh = function(){
 }
 
 
-createFrameTable = function(){
-  var htmlString = tableHeadingGenerator() + tableDataGenerator()
+createHTMLTable = function(){
+  var htmlString = tableHeadingGenerator() + tableContentGenerator()
   $('#frame-display').html(htmlString);
 };
 
@@ -34,23 +34,23 @@ tableHeadingGenerator = function(){
   return htmlString;
 };
 
-tableDataGenerator = function(){
+tableContentGenerator = function(){
   var htmlString = '<tr>'
   for (var i = 0; i <= 9; i++) {
     var forLastFrame = "";
-    if (i === 9) forLastFrame = "<td id='third-9'></td>";
+    if (i === 9) forLastFrame = "<td class='roll' id='third-9'></td>";
 
-    var data = "<td><table class='frame-table'><tr><td id='first-" + String(i) + "'></td><td id='second-" + String(i) + "'></td>" +
+    var content = "<td><table class='frame-table'><tr><td class='roll' id='first-" + String(i) + "'></td><td class='roll' id='second-" + String(i) + "'></td>" +
       forLastFrame + "</tr>" +
       "<tr><td>Total:</td><td id='total-" + String(i) + "'></td></tr></table></td>"
 
 
-    htmlString += data
+    htmlString += content
   };
 
   htmlString += "<td><table><td id='game-total'></td></tr></table>"
   return htmlString;
 };
 
-createFrameTable();
+createHTMLTable();
 

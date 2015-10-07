@@ -1,40 +1,85 @@
+body {
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+}
+
 #scorecard {
   height: 150px;
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  margin-top: 10%;
+  /*margin-top: 10%;*/
 }
 
 .frame_box {
+  border: solid black;
   display: inline-block;
   width: 9%;
   height: 95%
 }
 
 .frame_name {
-  width: 95%;
+  border: solid black;
+  border-width: 0 0 2px;
+  font-weight: 100;
+  text-align: center;
+  line-height: 175%;
+  font-size: 150%;
+  font-style: italic;
+  width: 100%;
   height: 30%;
   display: block;
 }
 
 .score_box {
+  border: solid black;
+  border-width: 0 0 0 2px;
   float: right;
+  line-height: 200%;
+  font-size: 100%;
+  text-align: center;
   width: 35%;
   height: 25%;
   display: block;
 }
 
 .score_box_final {
+  border: solid black;
+  border-width: 0 0 0 2px;
   float: right;
+  line-height: 200%;
+  font-size: 100%;
+  text-align: center;
   width: 25%;
   height: 25%;
   display: block;
 }
 
 .frame_score {
+  border: solid black;
+  border-width: 2px 0 0 0;
+  font-weight: 300;
+  text-align: center;
+  line-height: 200%;
+  font-size: 180%;
+  font-style: italic;
   float: right;
-  width: 95%;
-  height: 33%;
+  width: 100%;
+  height: 40%;
   display: block;
 }
+
+#score_text {
+  font-weight: 200;
+  margin-left: 40%;
+  margin-right: 50%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size: 200%;
+  font-style: italic;
+}
+
+
+
+
+
+

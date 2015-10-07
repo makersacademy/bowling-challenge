@@ -1,7 +1,6 @@
 $(document).ready(function() {
 game = new Game(Frame, LastFrame);
 
-  $('#score_btn').hide();
   $('#game_score').text(game.gameScore);
 
   $('#pin_btn').click(function() {
@@ -29,15 +28,14 @@ game = new Game(Frame, LastFrame);
         };
       };
     };
+    game.calculateScore();
     if(game.isGameOver()) {
       $('#score_box').hide(500);
-      $('#score_btn').show(500);
+      // $('#game_score').text(game.gameScore);
+      $('#score_text').text("Final score:");
     };
-  });
-
-  $('#score_btn').click(function() {
-    game.calculateScore();
     $('#game_score').text(game.gameScore);
   });
+
 
 });

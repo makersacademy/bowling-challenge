@@ -65,5 +65,18 @@ describe("Bowlarama", function(){
 
   });
 
+  describe("THE PERFECT GAME", function(){
+
+    it("can score the perfect game", function(){
+      spyOn(Math, 'random').and.returnValue(0.99);
+      for (var i = 12; i > 0; i--) {
+        $('#bowl').click();
+      };
+
+      expect('#game-total').toContainText('300');
+    });
+
+  });
+
 
 });

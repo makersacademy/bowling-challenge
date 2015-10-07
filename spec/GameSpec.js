@@ -7,7 +7,9 @@ describe("Game", function(){
   var thirdFrame;
 
   beforeEach(function() {
-    genericFrame = jasmine.createSpy('genericFrame');
+    genericFrame = jasmine.createSpy('genericFrame')
+    genericFrame.prototype.setLastFrame = jasmine.createSpy('setLastFrame');
+
     firstFrame = jasmine.createSpyObj('firstFrame', ['firstRoll',
       'secondRoll',
       'spareUpdate',
@@ -34,12 +36,22 @@ describe("Game", function(){
     expect(game.frameIndex).toEqual(0);
   });
 
+  it("calls the last frame's setLastFrame function", function(){
+    newGame = new Game(genericFrame);
+    expect(newGame.frameArray[9].setLastFrame).toHaveBeenCalled();
+  });
+
+  it("only calls the setLastFrame function on one frame", function(){
+    genericFrame.prototype.setLastFrame.calls.reset();
+    newGame = new Game(genericFrame);
+    expect(newGame.frameArray[9].setLastFrame.calls.count()).toEqual(1);
+  });
+
   describe("#bowl", function(){
 
     beforeEach(function(){
-      firstFrame.rollsTaken = 0
-      game.frameArray[0] = firstFrame
-
+      firstFrame.rollsTaken = 0;
+      game.frameArray[0] = firstFrame;
     });
 
     it("selects the first frame and calls its #firstRoll function", function(){
@@ -188,10 +200,65 @@ describe("Game", function(){
 
     describe("Last Frame", function(){
 
+      beforeEach(function(){
+        previousFrame = jasmine.createSpyObj('previousFrame', ['spareUpdate', 'strikeUpdate']);
 
+        lastFrame = jasmine.createSpyObj('lastFrame', ['firstRoll',
+          'secondRoll',
+          'thirdRoll',
+          'spareUpdate',
+          'strikeUpdate']);
+        game.frameArray[8] = previousFrame;
+        game.frameArray[9] = lastFrame;
+        game.frameIndex = 9;
+      });
+
+      it("throwing a strike with first roll doesn't change the frame index", function() {
+        lastFrame.rollsTaken = 0;
+        lastFrame.firstRollScore = 10;
+        game.bowl();
+        expect(game.frameIndex).toEqual(9);
+      })
+
+      it("the second roll doesn't change the frame index", function() {
+        lastFrame.rollsTaken = 1;
+        game.bowl();
+        expect(game.frameIndex).toEqual(9);
+      })
+
+      it("calls third roll function if a strike was thrown", function() {
+        lastFrame.rollsTaken = 2;
+        lastFrame.isStrike = true;
+        game.bowl();
+        expect(game.frameArray[9].thirdRoll).toHaveBeenCalled();
+      });
+
+      it("calls third roll function if a spare was thrown", function() {
+        lastFrame.rollsTaken = 2;
+        lastFrame.isSpare = true;
+        game.bowl();
+        expect(game.frameArray[9].thirdRoll).toHaveBeenCalled();
+      });
 
     });
 
   });
+
+  describe("#totalAllFrames", function(){
+
+    beforeEach(function() {
+      frameScoreSeven = jasmine.createSpy('frameScoreSeven');
+      frameScoreSeven.totalScore = 7
+      for (var i = 0; i < 10; i++) {
+        game.frameArray[i] = frameScoreSeven;
+      };
+
+    })
+
+    it("returns the sum of each frame's total score", function(){
+      expect(game.totalAllFrames()).toEqual(70);
+    });
+
+  })
 
 });

@@ -8,11 +8,15 @@ Game.prototype.frameArrayGenerator = function(frameConstructor) {
   for (var i = 0; i < 10; i++) {
     this.frameArray[i] = new frameConstructor;
   };
+
+  this.frameArray[9].setLastFrame();
 };
 
 Game.prototype.bowl = function() {
   var returnValue;
-  if (this.currentFrame().rollsTaken === 0) {
+  if (this.currentFrame().rollsTaken === 2 && this.currentFrameStrikeOrSpare()) {
+    returnValue = this.currentFrame().thirdRoll();
+  } else if (this.currentFrame().rollsTaken === 0) {
     returnValue = this.currentFrame().firstRoll();
     this.firstBowlUpdate();
   } else {
@@ -20,7 +24,7 @@ Game.prototype.bowl = function() {
     this.secondBowlUpdate();
   };
 
-return returnValue
+  return returnValue
 };
 
 Game.prototype.currentFrame = function() {
@@ -55,7 +59,7 @@ Game.prototype.firstBowlUpdate = function() {
     this.twoFramePrevious().strikeUpdate(rollScore + 10);
   };
 
-  if (rollScore === 10) {
+  if (rollScore === 10 && i < 9) {
     this.frameIndex++;
   };
 
@@ -67,7 +71,19 @@ Game.prototype.secondBowlUpdate = function() {
       this.oneFramePrevious().strikeUpdate(this.currentFrame().totalScore);
     };
 
-  this.frameIndex++;
+  if (i < 9) this.frameIndex++;
 };
 
+Game.prototype.currentFrameStrikeOrSpare = function() {
+  return this.currentFrame().isStrike || this.currentFrame().isSpare
+};
+
+Game.prototype.totalAllFrames = function() {
+  var total = 0;
+  for (var i = this.frameArray.length - 1; i >= 0; i--) {
+    total += this.frameArray[i].totalScore
+  };
+
+  return total;
+};
 

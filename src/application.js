@@ -2,21 +2,34 @@ $(document).ready(function() {
 game = new Game(Frame, LastFrame);
 
   $('#score_btn').hide();
+  $('#game_score').text(game.gameScore);
 
   $('#pin_btn').click(function() {
     var pins = parseInt($('#pin_count').val());
     game.bowl(pins);
-    var currentFrame = game.currentFrame;
-    $('#score_box_' + currentFrame + '_1').text(game.frames[currentFrame].firstRoll);
-    // if(game.currentFrame > 0) {
-    //   $('#score_box_' + (currentFrame - 1) + '_2').text(game.frames[currentFrame -1].secondRoll);
-    // };
-    for(i = 0; i <= currentFrame; i++) {
+    for(i = 0; i <= game.currentFrame; i++) {
       $('#score_box_' + i + '_1').text(game.frames[i].firstRoll);
+      if(game.frames[i].strike){
+        $('#score_box_' + i + '_1').text("X");
+        $('#score_box_' + i + '_2').hide();
+      }
       $('#score_box_' + i + '_2').text(game.frames[i].secondRoll);
+      if(game.frames[i].spare){
+        $('#score_box_' + i + '_2').text("/");
+      }
       $('#frame_score_' + i).text(game.frameScores[i]);
-    }
-    if(game.isGameOver()){
+    };
+    if(game.currentFrame == 9) {
+      for(i = 0; i <= game.currentFrame; i++) {
+        $('#score_box_9_' + (i + 1)).text(game.frames[9].frameScore[i]);
+        if(game.frames[9].frameScore[i] == 10){
+          $('#score_box_9_' + (i + 1)).text("X");
+        } else if(game.frames[9].frameScore[0] + game.frames[9].frameScore[1] == 10){
+          $('#score_box_9_2').text("/");
+        };
+      };
+    };
+    if(game.isGameOver()) {
       $('#score_box').hide(500);
       $('#score_btn').show(500);
     };

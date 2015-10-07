@@ -4,27 +4,33 @@ function Game() {
   this.rolls = {1:[], 2:[], 3:[], 4:[], 5:[],
                 6:[], 7:[], 8:[], 9:[],10:[]};
   this.currentFrame = 1;
-  this.bonusManager = [];
+  this.bonusManager = null;
   this.bonusCounter = 0
 };
 
 Game.prototype.roll = function(pins) {
-  this.score = this.score + pins;
-  this.bonusChecker(pins)
+  this.score += pins;
+  this.bonusChecker(pins);
   this.rolls[this.currentFrame].push(pins);
+  this.bonusDistributor(pins);
+  this.frameChecker(pins);
+};
+
+Game.prototype.frameChecker = function(pins) {
   if (pins === 10 || this.frameOver === true) {
     this.currentFrame++; this.frameOver = !this.frameOver
-  };
-  else this.frameOver = !this.frameOver;
+  } else {
+  this.frameOver = !this.frameOver;
+  }
 };
 
 Game.prototype.bonusChecker = function(pins) {
   if (pins === 10) {
-    this.nextTwoBonus;
+    this.nextTwoBonus
   };
   var total = 0;
     $.each(this.rolls[this.currentFrame],function() {
-    total += this;
+    total += this
   });
   if (total === 10) {
     this.nextOneBonus;
@@ -32,11 +38,18 @@ Game.prototype.bonusChecker = function(pins) {
 };
 
 Game.prototype.nextTwoBonus = function() {
-  this.bonusCounter = 2
-  this.bonusManager.push(this.rolls[this.currentFrame])
+  this.bonusCounter = 2;
+  this.bonusManager = this.rolls[this.currentFrame]
 };
 
 Game.prototype.nextOneBonus = function() {
-  this.bonusCounter = 1
-  this.bonusManager.push(this.rolls[this.currentFrame])
+  this.bonusCounter = 1;
+  this.bonusManager = this.rolls[this.currentFrame]
+};
+
+Game.prototype.bonusDistributor = function(pins) {
+  if (this.bonusCounter != 0) {
+    this.bonusManager += pins;
+    this.bonusCounter--;
+  };
 };

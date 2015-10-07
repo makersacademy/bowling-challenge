@@ -10,7 +10,8 @@ describe("Game", function() {
   });
 
   it("should have initial score 0", function() {
-    expect(game.calculateScore()).toEqual(0);
+    game.calculateScore()
+    expect(game.gameScore).toEqual(0);
   });
 
   it("should start at frame 1", function() {
@@ -30,7 +31,8 @@ describe("Game", function() {
   it("should update record the score after each frame", function() {
     game.bowl(1);
     game.bowl(2);
-    expect(game.calculateScore()).toEqual(3);
+    game.calculateScore()
+    expect(game.gameScore).toEqual(3);
   });
 
   it("should increment the frame count after the frame is finished", function() {
@@ -71,11 +73,26 @@ describe("Game", function() {
     expect(game.frameScores[0]).toEqual(13)
   });
 
+  it("can check when the game is over with three rolls in final round", function() {
+    for(i = 0; i < 12; i++) {
+      game.bowl(10);
+    };
+    expect(game.isGameOver()).toBe(true);
+  });
+
+  it("can check when the game is over with two rolls in final round", function() {
+    for(i = 0; i < 20; i++) {
+      game.bowl(3);
+    };
+    expect(game.isGameOver()).toBe(true);
+  });
+
   it("should be able to roll a perfect game", function() {
     for(i = 0; i < 12; i++) {
       game.bowl(10);
     };
-    expect(game.calculateScore()).toEqual(300);
+    game.calculateScore()
+    expect(game.gameScore).toEqual(300);
   });
 
   it("should correctly calculate the example game score", function() {
@@ -98,7 +115,15 @@ describe("Game", function() {
     game.bowl(2);
     game.bowl(8);
     game.bowl(6);
-    expect(game.calculateScore()).toEqual(133);
+    game.calculateScore()
+    expect(game.gameScore).toEqual(133);
+  });
+
+  it("should not accept any more rolls when game is over", function() {
+    for(i = 0; i < 20; i++) {
+      game.bowl(3);
+    };
+    expect(function(){game.bowl(3);}).toThrow("Game is already over");
   });
 
 

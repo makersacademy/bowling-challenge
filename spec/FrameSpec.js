@@ -35,7 +35,7 @@ describe("Frame", function() {
   });
 
   it("should not be able to receive a roll of more than ten", function() {
-    expect(function(){frame.receiveRoll(11);}).toThrow("Must be less than ten");
+    expect(function(){frame.receiveRoll(11);}).toThrow("Must be a number between 0 and 10");
   });
 
   it("should not be able to receive two rolls adding up to more than ten", function() {
@@ -44,7 +44,11 @@ describe("Frame", function() {
   });
 
   it("should not be a able to receive a number lower than 0", function() {
-    expect(function(){frame.receiveRoll(-1);}).toThrow("Must be a positive number");
+    expect(function(){frame.receiveRoll(-1);}).toThrow("Must be a number between 0 and 10");
+  });
+
+  it("should not be able to receive anything other than a number", function() {
+    expect(function(){frame.receiveRoll("a");}).toThrow("Must be a number between 0 and 10");
   });
 
 });

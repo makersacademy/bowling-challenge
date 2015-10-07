@@ -26,7 +26,7 @@ describe("LastFrame", function() {
   });
 
   it("should not be able to receive a roll of more than ten", function() {
-    expect(function(){lastFrame.receiveLastFrameRoll(11);}).toThrow("Must be less than ten");
+    expect(function(){lastFrame.receiveLastFrameRoll(11);}).toThrow("Must be a number between 0 and 10");
   });
 
   it("should not be able to receive two rolls adding up to more than ten", function() {
@@ -40,8 +40,12 @@ describe("LastFrame", function() {
     expect(function(){lastFrame.receiveLastFrameRoll(8);}).toThrow("Too many pins");
   });
 
-  it("should not be able to receive a roll of more than ten", function() {
-    expect(function(){lastFrame.receiveLastFrameRoll(-1);}).toThrow("Must be a positive number");
+  it("should not be able to receive a number lower than 0", function() {
+    expect(function(){lastFrame.receiveLastFrameRoll(-1);}).toThrow("Must be a number between 0 and 10");
+  });
+
+  it("should not be able to receive anything other than a number", function() {
+    expect(function(){lastFrame.receiveLastFrameRoll("a");}).toThrow("Must be a number between 0 and 10");
   });
 
 });

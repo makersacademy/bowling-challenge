@@ -4,6 +4,7 @@ function Game(frame, lastFrame) {
   this.frameScores = [];
   this.currentFrame = 0;
   this.currentRoll = 0;
+  this.gameScore = null;
   for(i = 0; i < (this.defaultValue-1); i++) {
     this.frames.push(new frame);
   };
@@ -11,6 +12,7 @@ function Game(frame, lastFrame) {
 };
 
 Game.prototype.bowl = function(hits) {
+  this._gameOverCheck();
   if(this.currentRoll < 18){
     this._bowlNormalRound(hits);
   } else {
@@ -23,7 +25,21 @@ Game.prototype.calculateScore = function() {
   function add(a, b) {
       return a + b;
   }
-  return totalScore;
+  this.gameScore = totalScore;
+};
+
+Game.prototype.isGameOver = function() {
+  if(this.frameScores.length == 10) {
+    return true;
+  } else {
+    return false;
+  };
+};
+
+Game.prototype._gameOverCheck = function() {
+  if(this.isGameOver()){
+    throw "Game is already over";
+  }
 };
 
 Game.prototype._bowlNormalRound = function(hits) {

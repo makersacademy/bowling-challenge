@@ -35,10 +35,8 @@ Frame.prototype._calculateScore = function() {
 };
 
 Frame.prototype._pinCountCheck = function(hits) {
-  if(hits>10){
-    throw "Must be less than ten";
-  } else if(hits < 0){
-    throw "Must be a positive number";
+  if(typeof(hits) != "number" || hits > 10 || hits < 0){
+    throw "Must be a number between 0 and 10";
   } else if(this.firstRoll != null && (this.firstRoll + hits) > 10) {
     throw "Too many pins";
   }

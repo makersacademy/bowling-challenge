@@ -4,6 +4,10 @@ describe('Player', function() {
     player = new Player();
   });
 
+  it('should start with 10 pins', function() {
+    expect(player.pinCount).toEqual(10);
+  });
+
   it('should start with 0 points', function() {
     expect(player.scoresheet).toEqual(0);
   });
@@ -12,9 +16,15 @@ describe('Player', function() {
     expect(player.throwGenerator()).toBeLessThan(11);
   });
 
-  it('should throw Miss if you hit nothing', function() {
-    spyOn(Math, 'random').and.returnValue(0);
-    expect(function() {player.throwBall(); }).toThrow('Miss!');
+  it('pinCount should remain at 10 if player misses', function() {
+    expect(player.pinCount).toEqual(10);
   });
+
+  it('pinCount should be 5 if player hits 5 pins', function() {
+    spyOn(Math, 'floor').and.returnValue(5);
+    player.throwBall();
+    expect(player.pinCount).toEqual(5);
+  });
+
 
 });

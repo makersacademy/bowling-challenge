@@ -8,8 +8,8 @@ function BowlingScoreUpdater() {
   this.prevPrevFrameTotal = 0;
   this.prevPrevFrameBonusRounds = 0;
   this.frameRoundsLeft = 2;
-  this.GameTotal = 0;
-  this.roundNumber = 0;
+  // this.GameTotal = 0;
+  // this.roundNumber = 0;
 };
 
 BowlingScoreUpdater.prototype.shiftFrames = function() {
@@ -26,27 +26,24 @@ BowlingScoreUpdater.prototype.shiftFrames = function() {
 
 BowlingScoreUpdater.prototype.updateBonus = function(score) {
   if (this.prevPrevFrameBonusRounds === 1) {
-    this.GameTotal += score;
+    // this.GameTotal += score;
     this.prevPrevFrameTotal += score;
     this.prevPrevFrameBonusRounds -= 1;
   };
   if (this.prevFrameBonusRounds > 0) {
-    this.GameTotal += score;
+    // this.GameTotal += score;
     this.prevFrameTotal += score;
     this.prevFrameBonusRounds -= 1;
   };
 };
 
 BowlingScoreUpdater.prototype.newRound = function(score) {
-  if (this.frameRoundsLeft === 1 && this.currentFrameTotal + score > 10) {
-    return;
-  };
-  this.GameTotal += score;
+  // this.GameTotal += score;
   if (this.frameRoundsLeft === 0) {
     this.shiftFrames();
   };
   if (score === 10){
-    this.roundNumber += 1;
+    // this.roundNumber += 1;
     this.frameRoundsLeft = 0;
     this.currentFrameBonusRounds = 2;
     this.currentFrameTotal = 10;
@@ -58,7 +55,7 @@ BowlingScoreUpdater.prototype.newRound = function(score) {
     this.frameRoundsLeft -= 1;
     this.currentFrameTotal += score;
   };
-  this.roundNumber += 1;
+  // this.roundNumber += 1;
   this.updateBonus(score);
 };
 

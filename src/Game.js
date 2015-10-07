@@ -38,33 +38,18 @@ Game.prototype.addRollToScoreCard = function(rollPoints) {
     this.addBonusPoints(rollPoints);
     this.lastFrame = "";
     this.firstThrow = true;
-  } else if ((this.lastFrame === "Strike!"  ) && (this.firstThrow === true)){
-    console.log(this.frameNumber);
-    // if(this.scoreCard[this.frameNumber-1] === [10]) {
-    //   this.addBonusPoints(rollPoints);
-    //   this.frameNumber +=1;
-    //   this.firstThrow = true;
-    // } else {
-      this.addBonusPoints(rollPoints);
-      this.firstThrow = false;
-    // };
+  } else if((this.lastFrame === "Strike!"  ) && (this.firstThrow === true)){
+         if(this.scoreCard[this.frameNumber - 1] === [10]) {
+            this.addBonusPoints(rollPoints);
+            this.firstThrow = true;
+            this.frameNumber +=1;
+         } else {
+            this.addBonusPoints(rollPoints);
+            this.firstThrow = false;
+         }
+
   };
 };
-
-// } else if((this.lastFrame === "Strike!"  ) && (this.firstThrow === true) && (this.scoreCard[this.frameNumber - 1] === [10])) {
-//   this.addBonusPoints(rollPoints);
-//   this.firstThrow = true;
-//   this.frameNumber +=1;
-// } else if((this.lastFrame === "Strike!"  ) && (this.firstThrow === true)) {
-//   this.addBonusPoints(rollPoints);
-//   this.firstThrow = false;
-// };
-
-
-
-
-
-
 
 Game.prototype.isSpare = function(){
   var sum = this.scoreCard[(this.frameNumber - 1)].reduce((a, b) => a+b );
@@ -88,23 +73,3 @@ Game.prototype.isStrike = function(points){
     this.firstThrow = true;
   };
 };
-// Player.prototype.play = function(song) {
-//   this.currentlyPlayingSong = song;
-//   this.isPlaying = true;
-// };
-
-// Player.prototype.pause = function() {
-//   this.isPlaying = false;
-// };
-//
-// Player.prototype.resume = function() {
-//   if (this.isPlaying) {
-//     throw new Error("song is already playing");
-//   }
-//
-//   this.isPlaying = true;
-// };
-//
-// Player.prototype.makeFavorite = function() {
-//   this.currentlyPlayingSong.persistFavoriteStatus(true);
-// };

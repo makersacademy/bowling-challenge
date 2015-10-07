@@ -6,9 +6,11 @@ game = new Game(Frame, LastFrame);
   $('#pin_btn').click(function() {
     var pins = parseInt($('#pin_count').val());
     game.bowl(pins);
-    $('#score_box_' + game.currentFrame + '_1').text(game.frames[game.currentFrame].firstRoll);
+    var currentFrame = game.currentFrame;
+    $('#score_box_' + currentFrame + '_1').text(game.frames[currentFrame].firstRoll);
     if(game.currentFrame > 0) {
-      $('#score_box_' + (game.currentFrame - 1) + '_2').text(game.frames[game.currentFrame -1].secondRoll);
+      $('#score_box_' + (currentFrame - 1) + '_2').text(game.frames[currentFrame -1].secondRoll);
+      $('#frame_score_' + (currentFrame - 1)).text(game.frameScores[currentFrame - 1])
     };
     if(game.isGameOver()){
       $('#score_box').hide(500);

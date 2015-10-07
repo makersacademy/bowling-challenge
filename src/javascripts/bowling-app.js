@@ -9,7 +9,6 @@ function Game() {
 };
 
 Game.prototype.roll = function(pins) {
-  this.score += pins;
   this.bonusChecker(pins);
   this.rolls[this.currentFrame].push(pins);
   this.bonusDistributor(pins);
@@ -26,7 +25,8 @@ Game.prototype.frameChecker = function(pins) {
 
 Game.prototype.bonusChecker = function(pins) {
   if (pins === 10) {
-    this.nextTwoBonus
+    this.nextTwoBonus;
+    this.score +=10
   };
   var total = 0;
     $.each(this.rolls[this.currentFrame],function() {
@@ -35,6 +35,7 @@ Game.prototype.bonusChecker = function(pins) {
   if (total === 10) {
     this.nextOneBonus;
   }
+  this.score += pins
 };
 
 Game.prototype.nextTwoBonus = function() {

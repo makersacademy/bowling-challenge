@@ -38,11 +38,32 @@ Game.prototype.addRollToScoreCard = function(rollPoints) {
     this.addBonusPoints(rollPoints);
     this.lastFrame = "";
     this.firstThrow = true;
-  } else if((this.lastFrame === "Strike!") && (this.firstThrow === true)) {
-    this.addBonusPoints(rollPoints);
-    this.firstThrow = false;
-  }
+  } else if ((this.lastFrame === "Strike!"  ) && (this.firstThrow === true)){
+    console.log(this.frameNumber);
+    // if(this.scoreCard[this.frameNumber-1] === [10]) {
+    //   this.addBonusPoints(rollPoints);
+    //   this.frameNumber +=1;
+    //   this.firstThrow = true;
+    // } else {
+      this.addBonusPoints(rollPoints);
+      this.firstThrow = false;
+    // };
+  };
 };
+
+// } else if((this.lastFrame === "Strike!"  ) && (this.firstThrow === true) && (this.scoreCard[this.frameNumber - 1] === [10])) {
+//   this.addBonusPoints(rollPoints);
+//   this.firstThrow = true;
+//   this.frameNumber +=1;
+// } else if((this.lastFrame === "Strike!"  ) && (this.firstThrow === true)) {
+//   this.addBonusPoints(rollPoints);
+//   this.firstThrow = false;
+// };
+
+
+
+
+
 
 
 Game.prototype.isSpare = function(){

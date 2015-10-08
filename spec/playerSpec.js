@@ -10,4 +10,9 @@ describe("Player", function() {
     expect(player.turn).toBe(1)
   });
 
+  it('can bowl and return number of downed pins', function(){
+    player.bowl(3);
+    expect(player.downedPins).toBe(3)
+  });
+
 });

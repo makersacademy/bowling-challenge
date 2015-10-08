@@ -46,4 +46,25 @@ describe('Player', function() {
     expect(player.score).toEqual(8);
   });
 
+  it('should not be able to score more than 10 points per frame (not including strikes/half strikes)', function() {
+    spyOn(Math, 'floor').and.returnValue(6);
+    expect(function() {player.takeTurn(); }).toThrow('HALF STRIKE!');
+    expect(player.score).toEqual(10);
+  });
+
+  it('strike should be true if player hits a strike', function() {
+    spyOn(Math, 'floor').and.returnValue(10);
+    expect(function() {player.takeTurn(); }).toThrow('STRIKE!');
+    expect(player.strike).toEqual(true);
+  });
+
+  it('strike should be true if player hits a strike', function() {
+    spyOn(Math, 'floor').and.returnValue(5);
+    expect(function() {player.takeTurn(); }).toThrow('HALF STRIKE!');
+    expect(player.halfStrike).toEqual(true);
+  });
+
+
+
+
 });

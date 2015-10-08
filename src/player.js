@@ -1,6 +1,6 @@
 function Player() {
   this.score = 0;
-  this.scoreSheet = 0;
+  this.scoreSheet = 0; // is this needed?
   this.pinCount = 10;
   this.frameCount = 0;
   this.strike = false;
@@ -14,6 +14,7 @@ Player.prototype.takeTurn = function() {
   this.score = this.score + firstShot; // this might need editing
   if (firstShot == 10) {
     this.pinCount = 0;
+    this.strike = true
     throw('STRIKE!');
   } else if (firstShot == 0) {
     console.log('Your first throw didn\'t hit anything!');
@@ -31,6 +32,7 @@ Player.prototype.takeTurn = function() {
 
   if (this.pinCount - secondShot <= 0) {
     this.pinCount = 0;
+    this.halfStrike = true;
     throw('HALF STRIKE!');
   } else if (secondShot == 0) {
     console.log('MISS!! You didn\'t hit a thing!');

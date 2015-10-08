@@ -38,7 +38,7 @@ a {
   border: solid black;
   border-width: 0 0 2px 2px;
   float: right;
-  line-height: 200%;
+  line-height: 225%;
   font-size: 100%;
   text-align: center;
   width: 35%;
@@ -50,7 +50,7 @@ a {
   border: solid black;
   border-width: 0 0 2px 2px;
   float: right;
-  line-height: 200%;
+  line-height: 225%;
   font-size: 100%;
   text-align: center;
   width: 25%;
@@ -63,7 +63,7 @@ a {
   border-width: 0 0 0 0;
   font-weight: 300;
   text-align: center;
-  line-height: 200%;
+  line-height: 215%;
   font-size: 180%;
   font-style: italic;
   float: right;
@@ -100,14 +100,14 @@ a {
 }
 
 .pin_stripe_1 {
-  width: 91%;
+  width: 90%;
   margin-top: 52%;
   border: solid black;
   border-width: 4.5px;
 }
 
 .pin_stripe_2 {
-  width: 91%;
+  width: 90%;
   margin-top: 8%;
   border: solid black;
   border-width: 4.5px;

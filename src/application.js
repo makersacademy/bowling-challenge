@@ -25,6 +25,15 @@ game = new Game(Frame, LastFrame);
     $('#score_text').text("Score: ")
     var pins = parseInt($.trim($(this).text()));
     game.bowl(pins);
+    if(game.frames[game.currentFrame].firstRoll != null){
+      for(i = 10; i > (10 - pins); i--){
+        $('#number_' + i).hide();
+      };
+    } else {
+      for(i = 0; i <= 10; i++){
+        $('#number_' + i).show();
+      };
+    }
     for(i = 0; i <= game.currentFrame; i++) {
       $('#score_box_' + i + '_1').text(game.frames[i].firstRoll);
       if(game.frames[i].strike){

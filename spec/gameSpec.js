@@ -1,5 +1,6 @@
 describe('Game', function (){
   var game;
+  var player;
 
   beforeEach(function(){
     game = new Game;
@@ -53,6 +54,15 @@ describe('Game', function (){
       game.nextFrame();
       game.nextFrame();
       expect(game.frame).toBe(3)
+    });
+  });
+
+  describe('#updateFrame', function(){
+
+    it('goes to next frame after two bowls', function(){
+      player.turn = 0;
+      game.updateFrame(player);
+      expect(game.frame).toBe(2);
     });
   });
 });

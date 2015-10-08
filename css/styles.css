@@ -120,5 +120,6 @@ button#bowl {
 #header-image {
   position: relative;
   height: 60%;
+  margin-top: 20px;
 }
 

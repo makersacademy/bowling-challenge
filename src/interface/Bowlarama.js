@@ -25,7 +25,7 @@ createHTMLTable = function(){
 };
 
 tableHeadingGenerator = function(){
-  var htmlString = '<table><tr>'
+  var htmlString = "<table id='score'><tr>"
   for (var i = 1; i <= 10; i++) {
     var heading = '<th>Frame ' + String(i) + '</th>'
     htmlString += heading
@@ -40,15 +40,16 @@ tableContentGenerator = function(){
     var forLastFrame = "";
     if (i === 9) forLastFrame = "<td class='roll' id='third-9'></td>";
 
-    var content = "<td><table class='frame-table'><tr><td class='roll' id='first-" + String(i) + "'></td><td class='roll' id='second-" + String(i) + "'></td>" +
-      forLastFrame + "</tr>" +
-      "<tr><td>Total:</td><td id='total-" + String(i) + "'></td></tr></table></td>"
+    var content = "<td><table class='frame-table'><tr>" + forLastFrame +
+      "<td class='roll' id='second-" + String(i) +
+      "'></td><td class='roll' id='first-" + String(i) +
+      "'></td></tr><tr><td class='individual-total' id='total-" + String(i) + "'></td></tr></table></td>"
 
 
     htmlString += content
   };
 
-  htmlString += "<td><table><td id='game-total'></td></tr></table>"
+  htmlString += "<td><table class='frame-table'><td id='game-total'></td></tr></table>"
   return htmlString;
 };
 

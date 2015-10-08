@@ -5,8 +5,8 @@ describe("Bowlarama", function(){
     loadFixtures('bowlarama.html');
   })
 
-  it("displays 10 frame score containers", function(){
-    expect($('.frame-table').length).toEqual(10);
+  it("displays 11 frame score containers (10 frames plus total score)", function(){
+    expect($('.frame-table').length).toEqual(11);
   });
 
   it("click bowl and displays result of first roll", function(){

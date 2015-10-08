@@ -1,24 +1,58 @@
-table {
-  border: 3px;
-  cellpadding: 10px;
-  cellspacing: 10px;
+body {
+  text-align: center;
+  font-family: monospace;
+  font-size: x-large;
 }
 
-  .frame-table {
-    width: 100px;
-    height: 90px;
-    border: 1px;
-    border: solid;
+header {
+  position: relative;
+  height: 200px;
+}
+
+table {
+  empty-cells: show;
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+}
+
+  #score {
+    width: 90%;
+    height: 90%;
+    position: relative;
+    left: 5%;
+    right: 5%
+
   }
 
-  .roll {
-    float: left;
-    display: inline-block;
-    width: 15px;
-    height: 30px;
-    border: 1px;
-    margin: 1px;
+  .frame-table {
+    width: 95%;
+    height: 95%;
+    border: 0.5px;
     border: solid;
+    margin: 2px;
+  }
+
+    #game-total {
+      font-size: -webkit-xxx-large;
+    }
+
+  .roll {
+    float: right;
+    position: relative;
+    display: inline;
+    width: 22%;
+    height: 30px;
+    font-weight: bold;
+    border-style: dashed;
+    margin: 1px;
+  }
+
+  .individual-total {
+    float: left;
+    position: relative;
+    margin-left: 5%;
+    font-size: xx-large;
   }
 
 div {
@@ -28,52 +62,34 @@ div {
   margin: 2px;
 }
 
-/*  #top {
-    height: 30%;
-  }*/
-
   #bottom {
     display: flex;
+    position: relative;
     border: none;
+    height: 300px;
   }
 
   #bottom-left {
     width: 50%;
+    height: 100%;
   }
 
   #bottom-right {
     width: 50%;
+    height: 100%;
   }
-
- /* #top {
-    height: 30%;
-  }
-
-  #bottom {
-    height: 60%;
-  }
-
-  #bottom-left {
-    display: inline-block;
-    float: left;
-  }
-
-  #bottom-right {
-    display: inline-block;
-    float: left;
-  }*/
 
   #frame-display {
-    position: absolute;
-    margin-left: 10%;
-    margin-top: 10px;
-    height: 130px;
+    position: relative;
+    margin: 1% 5%;
+    height: 80%;
   }
 
 button#bowl {
+  position: relative;
   width: 80%;
   height: 90%;
-  float: left;
-  margin: 5px;
+  margin: 12px;
   font-size: -webkit-xxx-large;
+  border-radius: 4px;
 }

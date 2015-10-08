@@ -18,6 +18,12 @@ describe('ScoreCard', function() {
       expect(scorecard.currentFrame).toEqual(2);
     });
 
+    // it('moves to next frame after two rolls', function() {
+    //   scorecard.rollScore(2);
+    //   scorecard.rollScore(3);
+    //   expect(scorecard.currentFrame).toEqual(2);
+    // });
+
     it('has a maximum of 10 frames', function() {
       scorecard.currentFrame = 10;
       expect(scorecard.nextFrame()).toEqual("End of game");
@@ -42,6 +48,28 @@ describe('ScoreCard', function() {
       scorecard.rollScore(5);
       scorecard.rollScore(4);
       expect(scorecard.frameTotal(1)).toEqual(9);
+    });
+
+    it('moves to next frame after a strike', function() {
+      scorecard.rollScore(10);
+      expect(scorecard.currentFrame).toEqual(2);
+    });
+
+    it('adds a bonus of next two roll scores if strike', function() {
+      scorecard.rollScore(10);
+      scorecard.rollScore(3);
+      scorecard.rollScore(4);
+      scorecard.strikeBonus();
+      expect(scorecard.frameTotal(1)).toEqual(17);
+    });
+
+    it('adds a bonus of next roll score if spare', function() {
+      scorecard.rollScore(4);
+      scorecard.rollScore(6);
+      scorecard.nextFrame();
+      scorecard.rollScore(3);
+      scorecard.spareBonus();
+      expect(scorecard.frameTotal(1)).toEqual(13);
     });
 
 

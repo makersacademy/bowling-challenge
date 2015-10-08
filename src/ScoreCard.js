@@ -6,7 +6,7 @@ function ScoreCard() {
 };
 
 ScoreCard.prototype.nextFrame = function() {
-    return this.currentFrame < 10 ? this.currentFrame += 1 : "End of game";
+  return this.currentFrame < 10 ? this.currentFrame += 1 : "End of game";
 };
 
 ScoreCard.prototype.nextRoll = function() {
@@ -15,7 +15,11 @@ ScoreCard.prototype.nextRoll = function() {
 
 ScoreCard.prototype.rollScore = function(score) {
   this.score[this.currentFrame].push(score);
-  this.nextRoll();
+  if (score === 10) {
+    this.nextFrame();
+  } else {
+    this.nextRoll();
+  };
 };
 
 ScoreCard.prototype.frameTotal = function(frame) {
@@ -24,4 +28,12 @@ ScoreCard.prototype.frameTotal = function(frame) {
     total += this.score[frame][i];
   };
   return total;
+};
+
+ScoreCard.prototype.strikeBonus = function() {
+  return this.score[this.currentFrame - 1].push(this.frameTotal(this.currentFrame));
+};
+
+ScoreCard.prototype.spareBonus = function() {
+  return this.score[this.currentFrame - 1].push(this.score[this.currentFrame][0]);
 };

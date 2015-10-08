@@ -8,6 +8,10 @@ describe('Player', function() {
     expect(player.pinCount).toEqual(10);
   });
 
+  it('should start with a frame count of 0', function() {
+    expect(player.frameCount).toEqual(0);
+  });
+
   it('should start with 0 points', function() {
     expect(player.scoresheet).toEqual(0);
   });
@@ -20,10 +24,10 @@ describe('Player', function() {
     expect(player.pinCount).toEqual(10);
   });
 
-  it('should throw hit if you hit something', function() {
-    spyOn(Math, 'floor').and.returnValue(5);
+  it('should have a pin count of 6 if you hit a total of 4 pins', function() {
+    spyOn(Math, 'floor').and.returnValue(2);
     player.takeTurn();
-    expect(player.pinCount).toEqual(5);
+    expect(player.pinCount).toEqual(6);
   });
 
   it('should throw Strike if you hit 10 pins', function() {

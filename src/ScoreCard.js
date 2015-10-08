@@ -15,9 +15,10 @@ ScoreCard.prototype.nextRoll = function() {
 
 ScoreCard.prototype.rollScore = function(score) {
   this.score[this.currentFrame].push(score);
-  if (score === 10) {
+  if (score === 10 || this.score[this.currentFrame].length === 2) {
     this.nextFrame();
-  } else {
+  }
+  else {
     this.nextRoll();
   };
 };
@@ -31,7 +32,7 @@ ScoreCard.prototype.frameTotal = function(frame) {
 };
 
 ScoreCard.prototype.strikeBonus = function() {
-  return this.score[this.currentFrame - 1].push(this.frameTotal(this.currentFrame));
+  return this.score[this.currentFrame - 2].push(this.frameTotal(this.currentFrame - 1));
 };
 
 ScoreCard.prototype.spareBonus = function() {

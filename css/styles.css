@@ -4,12 +4,6 @@ body {
   font-size: x-large;
 }
 
-header {
-  position: relative;
-  height: 200px;
-  font-size: -webkit-xxx-large;
-}
-
 table {
   empty-cells: show;
   position: relative;
@@ -32,6 +26,7 @@ table {
     border: 0.5px;
     border: solid;
     margin: 2px;
+    background-color: #F1F18F;
   }
 
     #game-total {
@@ -54,6 +49,7 @@ table {
     position: relative;
     margin-left: 5%;
     font-size: xx-large;
+    min-height: 32px;
   }
 
 div {
@@ -62,6 +58,19 @@ div {
   height: 200px;
   margin: 2px;
 }
+
+  #logo {
+    background-color: #D2F390;
+    /*background-image: url("images/bowl-a-rama.jpg");*/
+    position: relative;
+    height: 200px;
+    font-size: 140px;
+    font-style: italic;
+  }
+
+  #top {
+    background-color: #C0FFFF;
+  }
 
   #bottom {
     display: flex;
@@ -84,6 +93,7 @@ div {
     position: relative;
     margin: 1% 5%;
     height: 80%;
+    background-color: white;
   }
 
 button#bowl {
@@ -94,3 +104,21 @@ button#bowl {
   font-size: -webkit-xxx-large;
   border-radius: 4px;
 }
+
+.face {
+  position: relative;
+  height: 60%;
+  float: right;
+  margin-right: 10%;
+  bottom: 10px;
+}
+
+  #happy-face {
+    margin-top: 5%;
+  }
+
+#header-image {
+  position: relative;
+  height: 60%;
+}
+

@@ -28,22 +28,21 @@ describe("Bowlarama", function(){
 
   it("displays individual frame totals", function(){
     spyOn(Math, 'random').and.returnValue(0.5);
-    for (var i = 5; i > 0; i--) {
+    for (var i = 4; i > 0; i--) {
       $('#bowl').click();
     };
 
     expect('#total-0').toContainText('8');
     expect('#total-1').toContainText('8');
-    expect('#total-2').toContainText('5');
   })
 
   it("displays current game total", function(){
     spyOn(Math, 'random').and.returnValue(0.5);
-    for (var i = 5; i > 0; i--) {
+    for (var i = 4; i > 0; i--) {
       $('#bowl').click();
     };
 
-    expect('#game-total').toContainText('21');
+    expect('#game-total').toContainText('16');
   });
 
   it("strike is represented with an X rather than 10", function(){

@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>
+    BOWLARAMA!
+  </title>
   <script src="lib/jquery-2.1.4.js"></script>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link rel="shortcut icon" href="/images/bowling.ico" />
 </head>
 
 
 
 <body >
   <header>
-    BOWLARAMA!
+    <div id='logo'>
+      BOWLARAMA! <img id='header-image' src="images/bowling.png"/>
+    </div>
   </header>
 
   <div id='top'>
@@ -20,7 +26,11 @@
 
   <div id='bottom'>
     <div id='bottom-left'>
-      <button id='bowl' >Bowl!</button>
+      <button id='bowl' >
+        Bowl!
+        <img class='face' id='sad-face' src="images/Sad-face.png"/>
+        <img class='face' id='happy-face' src="images/Happy_face.png" hidden/>
+      </button>
     </div>
     <div id='bottom-right'>
       SOMETHING

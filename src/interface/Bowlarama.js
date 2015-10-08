@@ -5,7 +5,20 @@ $('#bowl').click(function(){
   scoreRefresh();
 });
 
+$('#bowl').hover(
+  function() {
+    $('#bowl').attr('style', 'font-size: 200px');
+    $('#sad-face').hide();
+    $('#happy-face').show();
+  }, function() {
+    $('#bowl').attr('style', 'font-size: -webkit-xxx-large');
+    $('#sad-face').show();
+    $('#happy-face').hide();
+});
+
 scoreRefresh = function(){
+  var gameTotal = 0
+
   game.frameArray.forEach(function(frame, index) {
     var firstRoll = firstRollDisplay(frame);
     var secondRoll = secondRollDisplay(frame);
@@ -13,12 +26,21 @@ scoreRefresh = function(){
     var total = totalDisplay(frame);
 
     $('#first-' + String(index)).text(firstRoll);
+    if (firstRoll === 'X') $('#first-' + String(index)).attr('style', 'background-color: #FFAAAA');
+
     $('#second-' + String(index)).text(secondRoll);
+    if (secondRoll === 'X' || secondRoll === '/') $('#second-' + String(index)).attr('style', 'background-color: #FFAAAA');
+
+    if (index === 9) {
+      $('#third-9').text(thirdRoll);
+      if (thirdRoll === 'X' || thirdRoll === '/') $('#third-9').attr('style', 'background-color: #FFAAAA');
+    };
+
     $('#total-' + String(index)).text(total);
-    if (index === 9) $('#third-9').text(thirdRoll);
+
+    if (total > 0) gameTotal += total;
   });
 
-  var gameTotal = game.totalAllFrames();
   $('#game-total').text(gameTotal);
 }
 

@@ -4,7 +4,6 @@ function Player() {
 
 Player.prototype.bowl = function(downedPins){
   this.downedPins = downedPins;
-  this.updateTurn()
 };
 
 Player.prototype.nextTurn = function(){

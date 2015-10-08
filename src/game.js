@@ -14,8 +14,18 @@ function Game() {
   this.frame = 1;
 };
 
+Game.prototype.tallyScore = function(){
+  for( i=1; i < 10; i++){
+    for( j = 0; j < 2; j++){
+    this.totalScore += (this.frames[i][j])
+    };
+  };
+};
+
 Game.prototype.updateScore = function(player){
-  this.frames[this.frame][player.turn()] = (player.downedPins())
+  this.frames[this.frame][player.turn] = (player.downedPins);
+  this.tallyScore();
+  player.updateTurn()
 };
 
 Game.prototype.nextFrame = function(){

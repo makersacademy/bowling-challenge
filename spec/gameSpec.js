@@ -3,6 +3,7 @@ describe('Game', function (){
 
   beforeEach(function(){
     game = new Game;
+    player = new Player;
   });
 
   describe('Initializing', function(){
@@ -21,21 +22,28 @@ describe('Game', function (){
 
   describe('#updateScore', function(){
 
-    player = {downedPins: function() {
-                return 8 } ,
-              turn: function() {
-                return 1 }
-             };
-
     it('updates frame based on player\'s downed pins and turn', function(){
+      player.bowl(8);
       game.updateScore(player);
-      expect(game.frames[1]).toEqual([0,8])
+      player.bowl(9);
+      game.updateScore(player);
+      expect(game.frames[1]).toEqual([8,9])
     });
 
     it('updates the correct frame', function(){
       game.frame = 8
+      player.bowl(8)
       game.updateScore(player);
-      expect(game.frames[8]).toEqual([0,8])
+      expect(game.frames[8]).toEqual([8,0])
+    });
+  });
+
+  describe('#totalScore', function(){
+
+    it('Tally\'s the total score', function(){
+      player.bowl(9)
+      game.updateScore(player);
+      expect(game.totalScore).toBe(9)
     });
   });
 
@@ -44,8 +52,7 @@ describe('Game', function (){
     it('Moves the game to the next frame', function(){
       game.nextFrame();
       game.nextFrame();
-      expect(game.frame).toEqual(3)
+      expect(game.frame).toBe(3)
     });
   });
-
 });

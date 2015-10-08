@@ -24,22 +24,18 @@ describe('Game', function (){
     player = {downedPins: function() {
                 return 8 } ,
               turn: function() {
-                return 0 }
+                return 1 }
              };
 
-    it('updates frame based on players downed pins', function(){
-      game.updateScore(player);
-      expect(game.frames[1]).toEqual([8,0])
-    });
-
-    it('updates the correct turn in frame', function(){
-      player = {downedPins: function() {
-                  return 8 } ,
-                turn: function() {
-                  return 1 }
-               };
+    it('updates frame based on players downed pins and turn', function(){
       game.updateScore(player);
       expect(game.frames[1]).toEqual([0,8])
+    });
+
+    it('updates the correct frame', function(){
+      game.frame = 8
+      game.updateScore(player);
+      expect(game.frames[8]).toEqual([0,8])
     });
   });
 });

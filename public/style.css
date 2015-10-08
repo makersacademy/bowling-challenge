@@ -1,5 +1,9 @@
 body {
-  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-family: Helvetica, Arial, 'Lucida Grande', sans-serif;
+}
+
+a {
+  text-decoration: none;
 }
 
 #scorecard {
@@ -7,17 +11,18 @@ body {
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  /*margin-top: 10%;*/
 }
 
 .frame_box {
   border: solid black;
   display: inline-block;
   width: 9%;
-  height: 95%
+  height: 95%;
+  /*border-radius: 5px;*/
 }
 
 .frame_name {
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue';
   border: solid black;
   border-width: 0 0 2px;
   font-weight: 100;
@@ -32,7 +37,7 @@ body {
 
 .score_box {
   border: solid black;
-  border-width: 0 0 0 2px;
+  border-width: 0 0 2px 2px;
   float: right;
   line-height: 200%;
   font-size: 100%;
@@ -44,7 +49,7 @@ body {
 
 .score_box_final {
   border: solid black;
-  border-width: 0 0 0 2px;
+  border-width: 0 0 2px 2px;
   float: right;
   line-height: 200%;
   font-size: 100%;
@@ -56,7 +61,7 @@ body {
 
 .frame_score {
   border: solid black;
-  border-width: 2px 0 0 0;
+  border-width: 0 0 0 0;
   font-weight: 300;
   text-align: center;
   line-height: 200%;
@@ -68,15 +73,64 @@ body {
   display: block;
 }
 
-#score_text {
+#running_score_box {
   font-weight: 200;
-  margin-left: 40%;
+  margin-left: 41%;
   margin-right: 50%;
   margin-top: 5%;
   margin-bottom: 5%;
   font-size: 200%;
   font-style: italic;
+  width: 300px;
 }
+
+#pin_box {
+  height: 169px;
+  width: 80%;
+  margin-left: 9.5%;
+  margin-right: 10%;
+  margin-top: 6%;
+  /*border: dashed red;*/
+}
+
+.pin_outline {
+  display: inline-block;
+  height: 97%;
+  width: 8%;
+  border: solid #c80002;
+  border-radius: 10px;
+}
+
+.pin_stripe_1 {
+  width: 91%;
+  margin-top: 52%;
+  border: solid #c80002;
+  border-width: 4.5px;
+}
+
+.pin_stripe_2 {
+  width: 91%;
+  margin-top: 8%;
+  border: solid #c80002;
+  border-width: 4.5px;
+}
+
+.pin_number_box {
+  color: #c80002;
+  font-size: 250%;
+  font-style: italic;
+  font-weight: 100;
+  /*border: dashed black;*/
+  text-align: center;
+  width: 92%;
+  height: 40%;
+  margin-left: 0%;
+  margin-top: 19%;
+  line-height: 163%;
+}
+
+
+
 
 
 

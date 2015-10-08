@@ -17,3 +17,7 @@ function Game() {
 Game.prototype.updateScore = function(player){
   this.frames[this.frame][player.turn()] = (player.downedPins())
 };
+
+Game.prototype.nextFrame = function(){
+  this.frame += 1
+};

@@ -38,4 +38,14 @@ describe('Game', function (){
       expect(game.frames[8]).toEqual([0,8])
     });
   });
+
+  describe('#nextFrame', function(){
+
+    it('Moves the game to the next frame', function(){
+      game.nextFrame();
+      game.nextFrame();
+      expect(game.frame).toEqual(3)
+    });
+  });
+
 });

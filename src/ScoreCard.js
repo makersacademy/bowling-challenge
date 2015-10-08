@@ -15,4 +15,13 @@ ScoreCard.prototype.nextRoll = function() {
 
 ScoreCard.prototype.rollScore = function(score) {
   this.score[this.currentFrame].push(score);
+  this.nextRoll();
+};
+
+ScoreCard.prototype.frameTotal = function(frame) {
+  var total = 0;
+  for (var i=0; i<this.score[frame].length; i++) {
+    total += this.score[frame][i];
+  };
+  return total;
 };

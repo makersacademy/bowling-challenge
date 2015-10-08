@@ -34,7 +34,15 @@ describe('ScoreCard', function() {
 
     it('can store a score for each roll', function() {
       scorecard.rollScore(5);
-      expect(scorecard.score[1]).toEqual([5]);
+      scorecard.rollScore(4);
+      expect(scorecard.score[1]).toEqual([5, 4]);
     });
+
+    it('returns total score for a frame', function() {
+      scorecard.rollScore(5);
+      scorecard.rollScore(4);
+      expect(scorecard.frameTotal(1)).toEqual(9);
+    });
+
 
 });

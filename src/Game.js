@@ -11,7 +11,7 @@ function Game() {
 
 Game.prototype.rollBall =  function(hit) {
 
-  if (this.frameNumber != 10) {
+  if (this.frameNumber < 10) {
 
     this.addToScoreBoard(hit);
     this.score += hit;
@@ -19,12 +19,13 @@ Game.prototype.rollBall =  function(hit) {
     this.isSpare(hit);
     this.isFirstThrow();
     this.isStrike(hit);
-  } else {
+  } else if ((this.frameNumber === 10)) {
     this.addToScoreBoard(hit);
     this.score += hit;
     this.frameScore += hit;
     this.isSpare();
     this.isStrike();
+    this.frameNumber = 'Game Over'
   };
 };
 

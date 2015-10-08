@@ -22,15 +22,34 @@ Game.prototype.moveRoll = function(){
   }
 };
 
+
+
 Game.prototype.scoreRoll = function(score){
   this.scores[this.frame].push(score);
-  this.moveRoll();
+  if (score === 10) {
+    this.moveFrame();
+  }
+  else {
+    this.moveRoll();
+  }
 };
 
-Game.prototype.currentScore = function(frame){
+Game.prototype.strikeBonus = function(){
+  return this.scores[this.frame - 2].push(this.frameScore(this.frame - 1))
+};
+
+
+Game.prototype.frameScore = function(frame){
   var total = 0;
   for (var i=0; i<this.scores[frame].length; i++) {
     total += this.scores[frame][i];
   };
+  return total;
+};
+
+Game.prototype.currentScore = function(){
+  var total = 0;
+  total += this.frameScore(1);
+  total += this.frameScore(2);
   return total;
 };

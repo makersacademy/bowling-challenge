@@ -46,6 +46,20 @@ describe ('game', function(){
   it('can return the current score', function(){
     game.scoreRoll(1);
     game.scoreRoll(2);
-    expect(game.currentScore(1)).toEqual(3);
+    expect(game.frameScore(1)).toEqual(3);
   });
+
+  it('moves to the next frame if a strike', function(){
+    game.scoreRoll(10);
+    expect(game.frame).toEqual(2);
+  });
+
+  it('adds the bonus of the next frame after a strike', function(){
+    game.scoreRoll(10);
+    game.scoreRoll(3);
+    game.scoreRoll(2);
+    game.strikeBonus();
+    expect(game.frameScore(1)).toEqual(15);
+  });
+
 });

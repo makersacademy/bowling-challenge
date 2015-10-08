@@ -59,6 +59,15 @@ describe("Bowlarama", function(){
     expect('#second-0').toContainText('/');
   });
 
+  it("doesn't display individual totals until bonuses are received", function(){
+    spyOn(Math, 'random').and.returnValue(0.99);
+    $('#bowl').click();
+    $('#bowl').click();
+    expect($('#total-0').text()).toEqual('');
+    $('#bowl').click();
+    expect($('#total-0').text()).toEqual('30');
+  });
+
   describe("Last Frame", function(){
 
     beforeEach(function(){

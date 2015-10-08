@@ -10,10 +10,11 @@ scoreRefresh = function(){
     var firstRoll = firstRollDisplay(frame);
     var secondRoll = secondRollDisplay(frame);
     var thirdRoll = thirdRollDisplay(frame);
+    var total = totalDisplay(frame);
 
     $('#first-' + String(index)).text(firstRoll);
     $('#second-' + String(index)).text(secondRoll);
-    $('#total-' + String(index)).text(frame.totalScore);
+    $('#total-' + String(index)).text(total);
     if (index === 9) $('#third-9').text(thirdRoll);
   });
 
@@ -36,6 +37,14 @@ thirdRollDisplay = function(frame) {
   if (frame.thirdRollScore === 10 && frame.secondRollScore > 0) return 'X';
   if (frame.totalScore === 20 && frame.thirdRollScore > 0) return '/';
   return frame.thirdRollScore;
+};
+
+totalDisplay = function(frame) {
+  if (frame.rollsTaken === 3) return frame.totalScore;
+  if (frame.rollsTaken === 2 && frame.totalScore < 10) return frame.totalScore;
+  if (frame.rollsTaken === 0 || (frame.rollsTaken === 1 && frame.totalScore < 10)) return '';
+  if (frame.isStrike || frame.isSpare) return '';
+  return frame.totalScore;
 };
 
 createHTMLTable = function(){

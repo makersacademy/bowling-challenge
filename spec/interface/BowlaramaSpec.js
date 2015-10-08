@@ -46,6 +46,19 @@ describe("Bowlarama", function(){
     expect('#game-total').toContainText('21');
   });
 
+  it("strike is represented with an X rather than 10", function(){
+    spyOn(Math, 'random').and.returnValue(0.99);
+    $('#bowl').click();
+    expect('#first-0').toContainText('X');
+  });
+
+  it("spare is represented by '/' rather than the second roll score", function(){
+    spyOn(Math, 'random').and.returnValue(0.8);
+    $('#bowl').click();
+    $('#bowl').click();
+    expect('#second-0').toContainText('/');
+  });
+
   describe("Last Frame", function(){
 
     beforeEach(function(){
@@ -61,6 +74,59 @@ describe("Bowlarama", function(){
       $('#bowl').click();
       $('#bowl').click();
       expect('#third-9').toContainText('8')
+    });
+
+  });
+
+  describe("Last frame second roll strike", function() {
+
+    beforeEach(function(){
+      spyOn(Math, 'random').and.returnValue(0.99);
+      for (var i = 10; i > 0; i--) {
+        $('#bowl').click();
+      };
+
+    });
+
+    it("is represented by an 'X'", function(){
+      $('#bowl').click();
+      expect('#second-9').toContainText('X');
+    });
+
+  });
+
+  describe("Last frame third roll strike", function() {
+
+    beforeEach(function(){
+      spyOn(Math, 'random').and.returnValue(0.99);
+      for (var i = 11; i > 0; i--) {
+        $('#bowl').click();
+      };
+
+    });
+
+    it("is represented by an 'X'", function(){
+      $('#bowl').click();
+      expect('#third-9').toContainText('X');
+    });
+
+  });
+
+  describe("Last frame third roll spare", function() {
+
+    beforeEach(function(){
+      spyOn(Math, 'random').and.returnValue(0.99);
+      for (var i = 10; i > 0; i--) {
+        $('#bowl').click();
+      };
+
+    });
+
+    it("is represented by '/'", function(){
+      spyOn(Math, 'floor').and.returnValue(5);
+      $('#bowl').click();
+      $('#bowl').click();
+      expect('#third-9').toContainText('/');
     });
 
   });

@@ -7,6 +7,7 @@ body {
 header {
   position: relative;
   height: 200px;
+  font-size: -webkit-xxx-large;
 }
 
 table {

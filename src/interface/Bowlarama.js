@@ -5,19 +5,38 @@ $('#bowl').click(function(){
   scoreRefresh();
 });
 
-
 scoreRefresh = function(){
   game.frameArray.forEach(function(frame, index) {
-    $('#first-' + String(index)).text(frame.firstRollScore);
-    $('#second-' + String(index)).text(frame.secondRollScore);
+    var firstRoll = firstRollDisplay(frame);
+    var secondRoll = secondRollDisplay(frame);
+    var thirdRoll = thirdRollDisplay(frame);
+
+    $('#first-' + String(index)).text(firstRoll);
+    $('#second-' + String(index)).text(secondRoll);
     $('#total-' + String(index)).text(frame.totalScore);
-    if (index === 9) $('#third-9').text(frame.thirdRollScore);
+    if (index === 9) $('#third-9').text(thirdRoll);
   });
 
   var gameTotal = game.totalAllFrames();
   $('#game-total').text(gameTotal);
 }
 
+firstRollDisplay = function(frame) {
+  if (frame.firstRollScore === 10) return 'X';
+  return frame.firstRollScore;
+};
+
+secondRollDisplay = function(frame) {
+  if (frame.firstRollScore + frame.secondRollScore === 10 && frame.secondRollScore > 0) return '/';
+  if (frame.isLastFrame && frame.secondRollScore === 10) return 'X';
+  return frame.secondRollScore;
+};
+
+thirdRollDisplay = function(frame) {
+  if (frame.thirdRollScore === 10 && frame.secondRollScore > 0) return 'X';
+  if (frame.totalScore === 20 && frame.thirdRollScore > 0) return '/';
+  return frame.thirdRollScore;
+};
 
 createHTMLTable = function(){
   var htmlString = tableHeadingGenerator() + tableContentGenerator()

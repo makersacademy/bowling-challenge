@@ -46,15 +46,8 @@ Game.prototype.rollBall =  function(hit) {
 
     this.score += hit;
     this.frameScore += hit;
-    this.isSpare(hit);
-    if (this.firstThrow === false) {
-      this.frameNumber +=1;
-      this.frameScore = 0;
-      this.firstThrow = true;
-    } else {
-      this.firstThrow = false;
-    };
-    this.isStrike(hit);
+    this.isLastFrameSpare(hit);
+    this.isLastFrameStrike(hit);
   }
 };
 
@@ -66,7 +59,19 @@ Game.prototype.isStrike = function(hit) {
   };
 };
 
+Game.prototype.isLastFrameStrike = function(hit) {
+  if (hit === 10) {
+    this.strikeBall = true;
+  };
+};
+
 Game.prototype.isSpare = function(hit) {
+  if (this.frameScore === 10) {
+      this.spareBall = true;
+  };
+};
+
+Game.prototype.isLastFrameSpare = function(hit) {
   if (this.frameScore === 10) {
       this.spareBall = true;
   };

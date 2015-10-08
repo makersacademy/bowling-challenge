@@ -73,4 +73,20 @@ describe("Game", function() {
     game.rollBall(10);
     expect(game.scoreBoard[10][1]).toEqual(20);
   });
+
+  it("can only roll one additional ball if spare on last frame", function() {
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(5);
+    game.rollBall(5);
+    game.rollBall(5);
+    expect(game.scoreBoard[10][2]).toEqual(5);
+  });
 });

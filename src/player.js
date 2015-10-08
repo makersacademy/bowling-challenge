@@ -1,24 +1,29 @@
 function Player() {
   this.score = 0;
-  this.scoreSheet = 0; // is this needed?
+  this.totalScore = 0; // is this needed?
   this.pinCount = 10;
   this.frameCount = 0;
   this.strike = false;
   this.halfStrike = false;
+  this.scoreSheet = [];
 }
 
 Player.prototype.takeTurn = function() {
   this.frameCount += 1;
   this.pinCount = 10;
   var firstShot = this.throwBall();
-  this.score = this.score + firstShot; // this might need editing
+  this.score = this.score + firstShot;
   if (firstShot == 10) {
     this.pinCount = 0;
-    this.strike = true
+    this.strike = true;
+    this.scoreSheet.push('X');
+    this.scoreTracker(); // score tracker
     throw('STRIKE!');
   } else if (firstShot == 0) {
+    this.scoreTracker(); // score tracker
     console.log('Your first throw didn\'t hit anything!');
   } else if (firstShot > 0) {
+    this.scoreTracker(); // score tracker
     this.pinCount = this.pinCount - firstShot;
     console.log('You hit ' + firstShot + ' pins on your first throw!');
   }
@@ -33,10 +38,16 @@ Player.prototype.takeTurn = function() {
   if (this.pinCount - secondShot <= 0) {
     this.pinCount = 0;
     this.halfStrike = true;
+    this.scoreSheet.push('/');
+    this.scoreTracker(); // score tracker
     throw('HALF STRIKE!');
   } else if (secondShot == 0) {
+    this.scoreSheet.push(this.score);
+    this.scoreTracker(); // score tracker
     console.log('MISS!! You didn\'t hit a thing!');
   } else if (secondShot > 0) {
+    this.scoreSheet.push(this.score);
+    this.scoreTracker(); // score tracker
     this.pinCount = this.pinCount - secondShot;
     console.log('You hit ' + secondShot + ' pins on your second throw!');
   }
@@ -45,4 +56,14 @@ Player.prototype.takeTurn = function() {
 
 Player.prototype.throwBall = function() {
   return Math.floor(Math.random() * (11 - 0)) + 0;
+};
+
+Player.prototype.scoreTracker = function() {
+  console.log('testing');
+  // if (this.strike = false) {
+  //   this.totalScore = this.totalScore + this.score
+  // } else if (this.strike = true) {
+  //   this.totalScore =
+  // }
+
 };

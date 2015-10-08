@@ -13,7 +13,7 @@ describe('Player', function() {
   });
 
   it('should start with 0 points', function() {
-    expect(player.scoreSheet).toEqual(0);
+    expect(player.score).toEqual(0);
   });
 
   it('throw generator should return a number that is less than 11', function() {
@@ -63,8 +63,5 @@ describe('Player', function() {
     expect(function() {player.takeTurn(); }).toThrow('HALF STRIKE!');
     expect(player.halfStrike).toEqual(true);
   });
-
-
-
 
 });

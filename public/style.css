@@ -89,38 +89,36 @@ a {
   width: 80%;
   margin-left: 9.5%;
   margin-right: 10%;
-  margin-top: 6%;
-  /*border: dashed red;*/
+  margin-top: 7%;
 }
 
 .pin_outline {
   display: inline-block;
   height: 97%;
   width: 8%;
-  border: solid #c80002;
+  border: solid black;
   border-radius: 10px;
 }
 
 .pin_stripe_1 {
   width: 91%;
   margin-top: 52%;
-  border: solid #c80002;
+  border: solid black;
   border-width: 4.5px;
 }
 
 .pin_stripe_2 {
   width: 91%;
   margin-top: 8%;
-  border: solid #c80002;
+  border: solid black;
   border-width: 4.5px;
 }
 
 .pin_number_box {
-  color: #c80002;
+  color: black;
   font-size: 250%;
   font-style: italic;
   font-weight: 100;
-  /*border: dashed black;*/
   text-align: center;
   width: 92%;
   height: 40%;
@@ -128,6 +126,7 @@ a {
   margin-top: 19%;
   line-height: 163%;
 }
+
 
 
 

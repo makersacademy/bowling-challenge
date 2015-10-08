@@ -25,7 +25,8 @@ Game.prototype.tallyScore = function(player){
 Game.prototype.updateScore = function(player){
   this.frames[this.frame][player.turn] = (player.downedPins);
   this.tallyScore(player);
-  player.updateTurn()
+  player.updateTurn();
+  this.updateFrame(player);
 };
 
 Game.prototype.nextFrame = function(){

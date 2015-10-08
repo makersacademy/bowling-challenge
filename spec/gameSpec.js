@@ -32,11 +32,16 @@ describe('Game', function (){
     });
 
     it('updates the correct frame', function(){
-      game.frame = 8
+      player.bowl(9)
+      game.updateScore(player);
       player.bowl(8)
       game.updateScore(player);
-      expect(game.frames[8]).toEqual([8,0])
+      player.bowl(7)
+      game.updateScore(player);
+      expect(game.frames[1]).toEqual([9,8])
+      expect(game.frames[2]).toEqual([7,0])
     });
+
   });
 
   describe('#totalScore', function(){

@@ -27,7 +27,7 @@ describe('Game', function (){
                 return 1 }
              };
 
-    it('updates frame based on players downed pins and turn', function(){
+    it('updates frame based on player\'s downed pins and turn', function(){
       game.updateScore(player);
       expect(game.frames[1]).toEqual([0,8])
     });

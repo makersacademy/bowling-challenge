@@ -7,6 +7,19 @@ Player.prototype.bowl = function(downedPins){
   this.updateTurn()
 };
 
+Player.prototype.nextTurn = function(){
+  this.turn += 1
+};
+
+Player.prototype.resetTurn = function(){
+  this.turn = 0
+};
+
 Player.prototype.updateTurn = function(){
-  this.turn = 1
+  if(this.turn == 0){
+    this.nextTurn()
+  }
+  else {
+    this.resetTurn()
+  }
 };

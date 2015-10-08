@@ -64,4 +64,12 @@ describe('Player', function() {
     expect(player.halfStrike).toEqual(true);
   });
 
+  it('scoresheet should include an X if player hits a strike', function() {
+    spyOn(Math, 'floor').and.returnValue(10);
+    expect(function() {player.takeTurn(); }).toThrow('STRIKE!');
+    expect(player.scoreSheet).toContain('X');
+  });
+
+
+
 });

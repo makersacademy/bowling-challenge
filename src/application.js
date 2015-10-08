@@ -2,6 +2,7 @@ $(document).ready(function() {
 game = new Game(Frame, LastFrame);
 
   $('#game_score').text(game.gameScore);
+  $('#new_game').hide();
 
   $(".pin").hover(
     function () {
@@ -21,6 +22,7 @@ game = new Game(Frame, LastFrame);
   );
 
   $('.pin').click(function() {
+    $('#score_text').text("Score: ")
     var pins = parseInt($.trim($(this).text()));
     game.bowl(pins);
     for(i = 0; i <= game.currentFrame; i++) {
@@ -47,8 +49,10 @@ game = new Game(Frame, LastFrame);
     };
     game.calculateScore();
     if(game.isGameOver()) {
-      $('#score_box').hide(500);
+      $('#pin_selection_message').fadeOut("slow");
+      $('#pin_box').fadeOut("slow");
       $('#score_text').text("Final score:");
+      $('#new_game').fadeIn("slow");
     };
     $('#game_score').text(game.gameScore);
   });

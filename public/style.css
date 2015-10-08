@@ -18,7 +18,6 @@ a {
   display: inline-block;
   width: 9%;
   height: 95%;
-  /*border-radius: 5px;*/
 }
 
 .frame_name {
@@ -85,11 +84,11 @@ a {
 }
 
 #pin_box {
+  float: left;
   height: 169px;
   width: 80%;
   margin-left: 9.5%;
   margin-right: 10%;
-  margin-top: 7%;
 }
 
 .pin_outline {
@@ -125,6 +124,25 @@ a {
   margin-left: 0%;
   margin-top: 19%;
   line-height: 163%;
+}
+
+#pin_selection_message {
+  margin-top: 5%;
+  margin-left: 9.5%;
+  font-size: 120%;
+  font-weight: 100;
+  font-style: italic;
+  margin-bottom: 0.4%;
+}
+
+#new_game {
+  margin-top: 8%;
+  margin-left: 45%;
+  font-size: 150%;
+  font-weight: 100;
+  font-style: italic;
+  padding-top: 0%;
+  display: block;
 }
 
 

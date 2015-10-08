@@ -6,13 +6,17 @@ describe('Game', function (){
   });
 
   describe('Initializing', function(){
-    it('initiated with a frame hash of length 10', function(){
-      expect(Object.keys(game.frame).length).toBe(10)
+    it('initiated with a frames hash of length 10', function(){
+      expect(Object.keys(game.frames).length).toBe(10)
     });
 
     it('initiated with a total score of 0', function(){
       expect(game.totalScore).toBe(0)
     });
+
+    it('initiated on the first frame', function(){
+      expect(game.frame).toBe(1)
+    })
   });
 
   describe('#updateScore', function(){

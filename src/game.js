@@ -15,8 +15,8 @@ function Game() {
 };
 
 Game.prototype.tallyScore = function(){
-  for( i=1; i < 10; i++){
-    for( j = 0; j < 2; j++){
+  for( i=1; i < (Object.keys(this.frames).length); i++){
+    for( j = 0; j < (Object.keys(this.frames[i]).length); j++){
     this.totalScore += (this.frames[i][j])
     };
   };

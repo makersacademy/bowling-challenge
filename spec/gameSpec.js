@@ -6,12 +6,12 @@ describe('Game', function (){
   });
 
   describe('Initializing', function(){
-    it('initiated on the first frame', function(){
-      expect(game.frame).toBe(1)
+    it('initiated with a frame hash of length 10', function(){
+      expect(Object.keys(game.frame).length).toBe(10)
     });
 
-    it('initiated with a score of 0', function(){
-      expect(game.score).toBe(0)
+    it('initiated with a total score of 0', function(){
+      expect(game.totalScore).toBe(0)
     });
   });
 
@@ -23,7 +23,7 @@ describe('Game', function (){
 
     it('updates score based on players downed pins', function(){
       game.updateScore(player);
-      expect(game.score).toBe(8)
+      expect(game.totalScore).toBe(8)
     });
   });
 });

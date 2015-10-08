@@ -13,7 +13,7 @@ describe('Player', function() {
   });
 
   it('should start with 0 points', function() {
-    expect(player.scoresheet).toEqual(0);
+    expect(player.scoreSheet).toEqual(0);
   });
 
   it('throw generator should return a number that is less than 11', function() {
@@ -33,6 +33,17 @@ describe('Player', function() {
   it('should throw Strike if you hit 10 pins', function() {
     spyOn(Math, 'floor').and.returnValue(10);
     expect(function() {player.takeTurn(); }).toThrow('STRIKE!');
+  });
+
+  it('should throw half strike if you knock down all your pins on your second go', function() {
+    spyOn(Math, 'floor').and.returnValue(5);
+    expect(function() {player.takeTurn(); }).toThrow('HALF STRIKE!');
+  });
+
+  it('should have a score of 8 if total pins knocked down is 8', function() {
+    spyOn(Math, 'floor').and.returnValue(4);
+    player.takeTurn();
+    expect(player.score).toEqual(8);
   });
 
 });

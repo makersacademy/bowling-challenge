@@ -15,5 +15,5 @@ function Game() {
 };
 
 Game.prototype.updateScore = function(player){
-  this.totalScore += (player.downedPins())
+  this.frames[this.frame][player.turn()] = (player.downedPins())
 };

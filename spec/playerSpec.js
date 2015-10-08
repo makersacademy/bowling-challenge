@@ -7,7 +7,7 @@ describe('Player', function() {
   });
 
   it('is initiated on his first throw of frame', function(){
-    expect(player.turn).toBe(1)
+    expect(player.turn).toBe(0)
   });
 
   it('can bowl and return number of downed pins', function(){

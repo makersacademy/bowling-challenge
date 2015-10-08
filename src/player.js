@@ -5,7 +5,8 @@ function Player() {
   this.frameCount = 0;
   this.strike = false;
   this.halfStrike = false;
-  this.multiStrikeCount = 0;
+  this.strikeCount = 0;
+  this.halfStrikeCount = 0;
   this.scoreSheet = [];
 }
 
@@ -18,7 +19,7 @@ Player.prototype.takeTurn = function() {
     this.pinCount = 0;
     this.strike = true;
     this.scoreSheet.push('X');
-    this.multiStrikeCount = this.multiStrikeCount + this.score;
+    this.strikeCount += 1;
     this.scoreTracker(); // score tracker
     throw('STRIKE!');
   } else if (firstShot == 0) {
@@ -31,6 +32,8 @@ Player.prototype.takeTurn = function() {
   }
 
   var secondShot = this.throwBall();
+  this.strikeCount = 0;
+
   if (this.score + secondShot > 10) {
     this.score = 10;
   } else if (this.score + secondShot < 10) {
@@ -42,18 +45,18 @@ Player.prototype.takeTurn = function() {
     this.halfStrike = true;
     this.scoreSheet.push('/');
     this.scoreTracker(); // score tracker
-    this.multiStrikeCount = this.multiStrikeCount + this.score;
+    this.halfStrikeCount += 1;
     throw('HALF STRIKE!');
   } else if (secondShot == 0) {
     this.scoreSheet.push(this.score);
     this.scoreTracker(); // score tracker
-    this.multiStrikeCount = 0;
+    this.halfStrikeCount = 0;
     console.log('MISS!! You didn\'t hit a thing!');
   } else if (secondShot > 0) {
     this.scoreSheet.push(this.score);
     this.scoreTracker(); // score tracker
     this.pinCount = this.pinCount - secondShot;
-    this.multiStrikeCount = 0;
+    this.halfStrikeCount = 0;
     console.log('You hit ' + secondShot + ' pins on your second throw!');
   }
 
@@ -64,7 +67,9 @@ Player.prototype.throwBall = function() {
 };
 
 Player.prototype.scoreTracker = function() {
+
   console.log('testing');
+
   // if (this.strike = false) {
   //   this.totalScore = this.totalScore + this.score
   // } else if (this.strike = true) {

@@ -70,6 +70,16 @@ describe('Player', function() {
     expect(player.scoreSheet).toContain('X');
   });
 
+  it('strike count should be 1 if player hits a strike', function() {
+    spyOn(Math, 'floor').and.returnValue(10);
+    expect(function() {player.takeTurn(); }).toThrow('STRIKE!');
+    expect(player.strikeCount).toEqual(1);
+  });
 
+  it('half strike count should be 1 if player hits a strike', function() {
+    spyOn(Math, 'floor').and.returnValue(5);
+    expect(function() {player.takeTurn(); }).toThrow('HALF STRIKE!');
+    expect(player.halfStrikeCount).toEqual(1);
+  });
 
 });

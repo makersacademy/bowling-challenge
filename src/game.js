@@ -11,8 +11,9 @@ function Game() {
                   10: [0,0,0]
                 };
   this.totalScore = 0;
-  this.bonusPoints = 0
+  this.bonusPoints = 0;
   this.frame = 1;
+  this.tenthTurn = 0;
 };
 
 Game.prototype.tallyScore = function(player){
@@ -29,15 +30,16 @@ Game.prototype.updateScore = function(player){
   this.addScoreToFrame(player);
   if(this.frame > 1){this.addBonuses(player)};
   this.tallyScore(player);
-  player.updateTurn(this);
+  player.updateTurn();
   this.strikeCheck(this.frame);
   this.updateFrame(player)
 };
 
 Game.prototype.updateScoreOnTenthFrame = function(player){
-  this.addScoreToFrame(player);
-  this.tallyScore(player)
-  player.updateTurn(this);
+  this.addScoreToTenthFrame(player);
+  this.tallyScore(player);
+  this.isGameOver();
+  this.updateTenthTurn()
 };
 
 Game.prototype.nextFrame = function(){
@@ -54,6 +56,10 @@ Game.prototype.strikeCheck = function(frame) {
 
 Game.prototype.addScoreToFrame = function(player) {
   this.frames[this.frame][player.turn] = (player.downedPins)
+};
+
+Game.prototype.addScoreToTenthFrame = function(player) {
+  this.frames[this.frame][this.tenthTurn] = (player.downedPins)
 };
 
 Game.prototype.addBonuses = function(player) {
@@ -75,8 +81,12 @@ Game.prototype.spareBonus = function(player) {
   }
 };
 
-Game.prototype.isGameOver = function(player) {
-  if(player.turn == 3){return true};
+Game.prototype.updateTenthTurn = function(){
+  this.tenthTurn += 1
+};
+
+Game.prototype.isGameOver = function() {
+  if(this.tenthTurn == 3){return true};
   if ((this.frames[10][0] + this.frames[10][1]) < 10){
     return true
   }

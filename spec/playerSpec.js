@@ -3,8 +3,7 @@ describe('Player', function() {
 
   beforeEach(function() {
 
-    player = new Player();
-    game = {frame: function(){1}}
+    player = new Player()
   });
 
   describe('Initializing', function() {
@@ -30,9 +29,9 @@ describe('Player', function() {
 
   describe('#updateTurn', function(){
     it('updates players turn correctly', function(){
-      player.updateTurn(game);
+      player.updateTurn();
       expect(player.turn).toBe(1)
-      player.updateTurn(game);
+      player.updateTurn();
       expect(player.turn).toBe(0)
     });
 

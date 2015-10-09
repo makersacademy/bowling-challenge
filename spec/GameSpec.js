@@ -59,6 +59,14 @@ describe("Game", function() {
     expect(game.scoreBoard[3][0]).toEqual(8);
   });
 
+  it("frame score resets when new frame starts", function() {
+    game.rollBall(6);
+    game.rollBall(4);
+    game.rollBall(4);
+    game.rollBall(6);
+    expect(game.frameScore).toEqual(0);
+  });
+
   it("can roll upto two additional balls if strike on last frame", function() {
     game.rollBall(10);
     game.rollBall(10);
@@ -71,9 +79,25 @@ describe("Game", function() {
     game.rollBall(10);
     game.rollBall(10);
     game.rollBall(10);
-    expect(game.scoreBoard[10][1]).toEqual(10);
+    game.rollBall(10);
+    expect(game.scoreBoard[10][2]).toEqual(10);
   });
 
+  it("can roll one additional ball if spare on last frame", function() {
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(5);
+    game.rollBall(5);
+    game.rollBall(4);
+    expect(game.scoreBoard[10][2]).toEqual(4);
+  });
 
   it("can only roll one additional ball if spare on last frame", function() {
     game.rollBall(10);
@@ -87,11 +111,12 @@ describe("Game", function() {
     game.rollBall(10);
     game.rollBall(5);
     game.rollBall(5);
-    game.rollBall(5);
-    expect(game.scoreBoard[10][2]).toEqual(5);
+    game.rollBall(4);
+    game.rollBall(4);
+    expect(game.scoreBoard[10][3]).toEqual(undefined);
   });
 
-  it("frameNumber says game over at the end of game", function() {
+  it("over at the end of the game", function() {
     game.rollBall(10);
     game.rollBall(10);
     game.rollBall(10);
@@ -105,5 +130,21 @@ describe("Game", function() {
     game.rollBall(10);
     game.rollBall(10);
     expect(game.gameOver).toEqual(true);
+  });
+
+  it("only allows two balls on 10th frame if no strike or spare", function() {
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(1);
+    game.rollBall(1);
+    game.rollBall(1);
+    expect(game.scoreBoard[10][2]).toEqual(undefined);
   });
 });

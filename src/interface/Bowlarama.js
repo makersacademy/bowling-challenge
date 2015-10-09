@@ -132,5 +132,18 @@ tableContentGenerator = function(){
   return htmlString;
 };
 
+insertPinImages = function(){
+  $('.manual-input').each(function(index) {
+    for (var i = index; i > 0; i--) {
+      console.log(index);
+      $('#' + index).append("<img class='pin-image' src='images/bowlingpin.png'/>")
+    };
+  });
+};
+
+insertPinImages();
+
+
+
 createHTMLTable();
 

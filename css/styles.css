@@ -154,9 +154,17 @@ button#bowl {
     height: 8%;
     display: list-item;
     margin-left: 10%;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    margin-top: 3px;
+    margin-bottom: 3px;
     text-align: left;
+    background-color: #6666CC;
+    color: white;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-radius: 5px;
+    border: 1px solid white;
+    font-size: large;
+    text-shadow: 0 0 2px rgba(0,0,0,0.4);
   }
 
   .game-buttons {
@@ -198,5 +206,11 @@ img.face {
     position: relative;
     height: 60%;
     margin-top: 20px;
+  }
+
+  .pin-image {
+    position: relative;
+    float: right;
+    height: 80%;
   }
 

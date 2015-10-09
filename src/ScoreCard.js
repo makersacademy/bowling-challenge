@@ -10,19 +10,35 @@ ScoreCard.prototype.nextFrame = function() {
 };
 
 ScoreCard.prototype.nextRoll = function() {
-  return this.roll === 1 ? this.roll = 2 : this.roll = 1;
+  return this.roll += 1;
+  if (this.roll >= 3) {
+    this.nextFrame();
+  }
 };
 
 ScoreCard.prototype.rollScore = function(score) {
   this.score[this.currentFrame].push(score);
-  if (score === 10 || this.score[this.currentFrame].length === 2) {
+  if (this.currentFrame === 10) {
+    this.frameTen();
+  }
+  else if (score === 10 || this.score[this.currentFrame].length === 2) {
     this.pins = 10;
     this.nextFrame();
   }
   else {
-    this.pins = this.pins - score;
     this.nextRoll();
-  };
+    this.pins = this.pins - score;
+  }
+};
+
+ScoreCard.prototype.frameTen = function() {
+  this.currentFrame = 10;
+  if (this.score[10][0] + this.score[10][1] >= 10) {
+    this.nextRoll();
+  }
+  else {
+    this.nextRoll();
+  }
 };
 
 ScoreCard.prototype.frameTotal = function(frame) {

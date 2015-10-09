@@ -82,4 +82,35 @@ describe('ScoreCard', function() {
       expect(scorecard.pins).toEqual(4);
     });
 
+    it('gives an additional roll and correct score in the 10th frame for a strike', function() {
+      scorecard.currentFrame = 10;
+      scorecard.rollScore(10);
+      scorecard.rollScore(3);
+      scorecard.rollScore(1);
+      expect(scorecard.frameTotal(10)).toEqual(14);
+    });
+
+    it('gives an additional roll and correct score in the 10th frame for a spare', function() {
+      scorecard.currentFrame = 10;
+      scorecard.rollScore(4);
+      scorecard.rollScore(6);
+      scorecard.rollScore(3);
+      expect(scorecard.frameTotal(10)).toEqual(13);
+    });
+
+    it('is on roll 3 after two rolls of frame 10', function() {
+      scorecard.currentFrame = 10;
+      scorecard.rollScore(10);
+      scorecard.rollScore(4);
+      expect(scorecard.roll).toEqual(3);
+    });
+
+    // it('returns end of game message at the end of tenth frame', function() {
+    //   scorecard.currentFrame = 10;
+    //   scorecard.rollScore(10);
+    //   scorecard.rollScore(4);
+    //   scorecard.rollScore(2);
+    //   expect(scorecard.rollScore(5)).toEqual("End of game");
+    //   console.log(scorecard.currentFrame);
+    // });
 });

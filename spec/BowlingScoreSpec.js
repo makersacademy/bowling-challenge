@@ -32,24 +32,24 @@ describe ("BowlingScore", function() {
 
     it("knows if frame is a spare", function () {
       game.frameScores = [[7,3],[4,1]];
-      expect(game.isASpare()).toBe(true);
+      expect(game.isSpare()).toBe(true);
     });
 
     it("if previous frame scores total is 10, push next rawScore into BonusScores", function (){
       game.frameScores = [[7,3],[4,1]];
-      game.isSpare();
+      game.Spare();
       expect(game.bonusScores).toEqual([4]);
     });
 
     it("if previous frame total is not 10, do not push next rawScore into bonusScores", function() {
       game.frameScores = [[7,2],[4,1]];
-      game.isSpare();
+      game.Spare();
       expect(game.bonusScores).toEqual([]);
     });
 
-    it("if second rawScore is 10, push only the next rawScore into BonusScores", function() {
+    it("if second score in frame is 10, push only the next rawScore into BonusScores", function() {
       game.frameScores = [[0,10],[3,5]];
-      game.isSpare();
+      game.Spare();
       expect(game.bonusScores).toEqual([3])
     });
 
@@ -59,12 +59,12 @@ describe ("BowlingScore", function() {
 
     it("knows if frame is a strike", function () {
       game.frameScores = [[10,null],[4,1]];
-      expect(game.isAStrike()).toBe(true);
+      expect(game.isStrike()).toBe(true);
     });
 
     it("if first score of frame is 10, push next two rawScore's into bonusScores", function (){
       game.frameScores = [[10,null],[3,5],[10,null],[7,1]];
-      game.isStrike();
+      game.Strike();
       expect(game.bonusScores).toEqual([3,5,7,1]);
     });
 

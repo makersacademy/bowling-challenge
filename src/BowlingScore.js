@@ -3,7 +3,11 @@ function BowlingScore() {
 };
 
 BowlingScore.prototype.addNewRoundScore = function(score) {
-  this.rawScores.push(score);
+  if (score === 10) {
+    this.rawScores.push(score, 0);
+  } else {
+    this.rawScores.push(score);
+  };
 };
 
 BowlingScore.prototype.makeFrameScores = function() {

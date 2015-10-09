@@ -74,7 +74,7 @@ describe("Bowlarama", function(){
     };
 
     $('#reset').click();
-    expect('#first-0').toEqual('');
+    expect($('#first-0').is(':empty')).toBe(true);
   });
 
   describe("Last Frame", function(){

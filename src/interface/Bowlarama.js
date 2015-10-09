@@ -40,9 +40,9 @@ styleReset = function(){
 }
 
 scoreReset = function(){
-  $('.roll').text('');
-  $('.individual-total').text('');
-  $('#game-total').text('');
+  $('.roll').empty();
+  $('.individual-total').empty();
+  $('#game-total').empty();
 }
 
 scoreRefresh = function(){

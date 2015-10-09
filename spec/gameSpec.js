@@ -52,6 +52,26 @@ describe('Game', function (){
 
   });
 
+  describe('#updateScoreOnTenthFrame', function(){
+
+    it('adds score to frame ten', function(){
+      game.frame = 10;
+      player.bowl(8);
+      game.updateScoreOnTenthFrame(player);
+      player.bowl(1);
+      game.updateScoreOnTenthFrame(player);
+      expect(game.frames[10]).toEqual([8,1,0]);
+    });
+
+    it('adds score to total score', function(){
+      game.frame = 10;
+      player.bowl(10);
+      game.updateScoreOnTenthFrame(player);
+      expect(game.totalScore).toBe(10);
+    });
+
+  });
+
   describe('#tallyScore', function(){
 
     it('Tally\'s the total score', function(){
@@ -114,23 +134,15 @@ describe('Game', function (){
     });
   });
 
-  describe('#updateScoreTen', function(){
+  describe('#isGameOver', function(){
 
-    it('adds score to frame ten', function(){
+    it('returns true if game is over', function(){
       game.frame = 10;
       player.bowl(8);
-      game.updateScoreTen(player);
+      game.updateScoreOnTenthFrame;
       player.bowl(1);
-      game.updateScoreTen(player);
-      expect(game.frames[10]).toEqual([8,1,0]);
+      game.updateScoreOnTenthFrame;
+      expect(game.isGameOver(player)).toBe(true)
     });
-
-    it('adds score to total score', function(){
-      game.frame = 10;
-      player.bowl(10);
-      game.updateScoreTen(player);
-      expect(game.totalScore).toBe(10);
-    });
-
   });
 });

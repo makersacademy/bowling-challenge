@@ -29,15 +29,15 @@ Game.prototype.updateScore = function(player){
   this.addScoreToFrame(player);
   if(this.frame > 1){this.addBonuses(player)};
   this.tallyScore(player);
-  player.updateTurn();
+  player.updateTurn(this);
   this.strikeCheck(this.frame);
   this.updateFrame(player)
 };
 
-Game.prototype.updateScoreTen = function(player){
+Game.prototype.updateScoreOnTenthFrame = function(player){
   this.addScoreToFrame(player);
   this.tallyScore(player)
-  player.updateTurn();
+  player.updateTurn(this);
 };
 
 Game.prototype.nextFrame = function(){
@@ -49,7 +49,7 @@ Game.prototype.updateFrame = function(player){
 };
 
 Game.prototype.strikeCheck = function(frame) {
-  if(this.frames[frame] == 10){ this.nextFrame() }
+  if(this.frames[frame] == [10,0]){ this.nextFrame() }
 };
 
 Game.prototype.addScoreToFrame = function(player) {
@@ -73,4 +73,12 @@ Game.prototype.spareBonus = function(player) {
   if(player.turn == 0 && this.frames[(this.frame)-1][0] != 10) {
     this.bonusPoints += (player.downedPins)
   }
+};
+
+Game.prototype.isGameOver = function(player) {
+  if(player.turn == 3){return true};
+  if ((this.frames[10][0] + this.frames[10][1]) < 10){
+    return true
+  }
+  return false
 };

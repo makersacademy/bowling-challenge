@@ -14,8 +14,8 @@ Player.prototype.resetTurn = function(){
   this.turn = 0
 };
 
-Player.prototype.updateTurn = function(){
-  if(this.turn == 1 || this.isStrike()){
+Player.prototype.updateTurn = function(game){
+  if(this.turn == 1 || this.isStrike() && game.frame != 10){
     this.resetTurn()
   }
   else {

@@ -4,6 +4,7 @@ describe('Player', function() {
   beforeEach(function() {
 
     player = new Player();
+    game = {frame: function(){1}}
   });
 
   describe('Initializing', function() {
@@ -29,9 +30,9 @@ describe('Player', function() {
 
   describe('#updateTurn', function(){
     it('updates players turn correctly', function(){
-      player.updateTurn();
+      player.updateTurn(game);
       expect(player.turn).toBe(1)
-      player.updateTurn();
+      player.updateTurn(game);
       expect(player.turn).toBe(0)
     });
 

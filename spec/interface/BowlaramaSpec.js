@@ -2,7 +2,7 @@ describe("Bowlarama", function(){
 
   beforeEach(function(){
     jasmine.getFixtures().fixturesPath = '.';
-    loadFixtures('bowlarama.html');
+    loadFixtures('home.html');
   })
 
   it("displays 11 frame score containers (10 frames plus total score)", function(){

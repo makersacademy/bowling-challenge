@@ -17,20 +17,36 @@ Game.prototype.moveFrame = function(){
 
 Game.prototype.moveRoll = function(){
   this.roll += 1
-  if (this.roll === 3) {
+  if (this.roll >= 3){
     this.moveFrame();
   }
 };
 
 Game.prototype.scoreRoll = function(score){
   this.scores[this.frame].push(score);
-  if (score === 10 || this.scores[this.frame].length === 2) {
+  if (this.frame === 10) {
+    this.tenthFrameStrike();
+  }
+  else if (score === 10 || this.scores[this.frame].length === 2) {
     this.pins = 10;
     this.moveFrame();
   }
   else {
     this.moveRoll();
     return this.pins = this.pins - score;
+  }
+};
+
+Game.prototype.tenthFrameStrike = function(){
+  if (this.score === 10) {
+    this.pins = 10;
+    this.moveRoll();
+  }
+  else if (this.frameScore(10) > 9 && this.roll === 2) {
+    this.roll += 1;
+  }
+  else {
+    this.moveRoll();
   }
 };
 
@@ -51,7 +67,7 @@ Game.prototype.frameScore = function(frame){
   return total;
 };
 
-Game.prototype.currentScore = function(){
+Game.prototype.totalScore = function(){
   var total = 0;
   var i=1;
   do {

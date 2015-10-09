@@ -53,7 +53,11 @@ Game.prototype.frameScore = function(frame){
 
 Game.prototype.currentScore = function(){
   var total = 0;
-  total += this.frameScore(1);
-  total += this.frameScore(2);
+  var i=1;
+  do {
+    total += this.frameScore(i);
+    i++;
+  }
+  while (i < 10);
   return total;
 };

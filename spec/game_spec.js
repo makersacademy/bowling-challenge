@@ -90,4 +90,14 @@ describe ('game', function(){
     expect(game.frameScore(10)).toEqual(14);
   });
 
+  it('can return the total score of a game', function(){
+    game.scoreRoll(10);
+    game.scoreRoll(4);
+    game.scoreRoll(5);
+    game.strikeBonus();
+    game.scoreRoll(3);
+    game.scoreRoll(4);
+    expect(game.currentScore()).toEqual(35)
+  });
+
 });

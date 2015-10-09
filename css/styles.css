@@ -52,14 +52,10 @@ table {
     min-height: 32px;
   }
 
-div {
-  border: 4px;
-  border: solid;
-  height: 200px;
-  margin: 2px;
-}
-
-  #logo {
+div#logo {
+    border: 4px;
+    border: solid;
+    margin: 2px;
     background-color: #D2F390;
     position: relative;
     height: 200px;
@@ -68,6 +64,10 @@ div {
   }
 
   #top {
+    border: 4px;
+    border: solid;
+    height: 200px;
+    margin: 2px;
     background-color: #C0FFFF;
   }
 
@@ -75,37 +75,65 @@ div {
     display: flex;
     position: relative;
     border: none;
-    height: 300px;
+    height: 700px;
   }
 
   #bottom-left {
-    width: 50%;
+    border: 4px;
+    border: solid;
+    margin: 2px;
+    width: 40%;
     height: 100%;
     background-color: #380202;
   }
 
   #bottom-right {
-    width: 50%;
+    width: 60%;
     height: 100%;
+    margin: 2px;
+    border: 4px;
+    border: solid;
   }
 
+    #map {
+      position: relative;
+      width: 90%;
+      height: 90%;
+      margin-left: 5%;
+      margin-top: 10px;
+    }
+
   #frame-display {
+    border: 4px;
+    border: solid;
     position: relative;
     margin: 1% 5%;
     height: 80%;
     background-color: white;
   }
 
-.bowling-buttons {
-  float: left;
-  position: relative;
-  width: 80%;
-  height: 90%;
-  border: none;
-  margin: 12px;
-}
+  .bowling-controls {
+    float: left;
+    position: relative;
+    width: 70%;
+    height: 90%;
+    border: none;
+    margin-top: 7%;
+    margin-left: 1%;
+  }
 
-  #bowl {
+  .game-controls {
+    float: right;
+    display: inline-block;
+    position: relative;
+    width: 20%;
+    height: 40%;
+    margin-right: 5%;
+    margin-top: 7%;
+    border: none;
+  }
+
+button#bowl {
     position: relative;
     width: 80%;
     height: 90%;
@@ -120,21 +148,55 @@ div {
     text-shadow: 0 0 2px rgba(0,0,0,0.4);
   }
 
-.face {
+  .manual-input {
+    position: relative;
+    width: 80%;
+    height: 8%;
+    display: list-item;
+    margin-left: 10%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    text-align: left;
+  }
+
+  .game-buttons {
+    position: relative;
+    width: 80%;
+    height: 90%;
+    display: list-item;
+    margin-top: 20%;
+    border-radius: 5px;
+    border: 10px solid white;
+    text-shadow: 0 0 2px rgba(0,0,0,0.4);
+    text-align: center;
+    cursor: pointer;
+    background-color: #6666CC;
+    font-size: inherit;
+    color: white;
+  }
+
+  #reset {
+    background-color: #FF4660;
+  }
+
+  #game-switch {
+    background-color: #509843;
+  }
+
+img.face {
   position: relative;
   height: 60%;
-  float: right;
-  margin-right: 10%;
+  margin-left: 1%;
   bottom: 10px;
 }
 
   #happy-face {
-    margin-top: 5%;
+
   }
 
-#header-image {
-  position: relative;
-  height: 60%;
-  margin-top: 20px;
-}
+  #header-image {
+    position: relative;
+    height: 60%;
+    margin-top: 20px;
+  }
 

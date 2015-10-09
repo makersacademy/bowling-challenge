@@ -67,6 +67,16 @@ describe("Bowlarama", function(){
     expect($('#total-0').text()).toEqual('30');
   });
 
+  it("has a reset button that resets the frame without reloading the page", function(){
+    spyOn(Math, 'random').and.returnValue(0.5);
+    for (var i = 4; i > 0; i--) {
+      $('#bowl').click();
+    };
+
+    $('#reset').click();
+    expect('#first-0').toEqual('');
+  });
+
   describe("Last Frame", function(){
 
     beforeEach(function(){

@@ -7,7 +7,7 @@ $('#bowl').click(function(){
 
 $('#bowl').hover(
   function() {
-    $('#bowl').attr('style', 'font-size: 200px');
+    $('#bowl').attr('style', 'font-size: 100px');
     $('#sad-face').hide();
     $('#happy-face').show();
   }, function() {
@@ -17,7 +17,7 @@ $('#bowl').hover(
 });
 
 $('#game-switch').click(function(){
-  $('.bowling-buttons').toggle();
+  $('.bowling-controls').toggle();
   game.toggleManualRandomInput();
 });
 
@@ -27,6 +27,23 @@ $('.manual-input').click(function(){
   game.bowl(roll);
   scoreRefresh();
 });
+
+$('#reset').click(function(){
+  if (game.isManualGame) $('.bowling-controls').toggle();
+  game = new Game(Frame);
+  scoreReset();
+  styleReset();
+});
+
+styleReset = function(){
+  $('.roll').attr('style', 'background-color: none')
+}
+
+scoreReset = function(){
+  $('.roll').text('');
+  $('.individual-total').text('');
+  $('#game-total').text('');
+}
 
 scoreRefresh = function(){
   var gameTotal = 0

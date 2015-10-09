@@ -21,6 +21,7 @@ function Bowling() {
   Bowling.prototype.bowl = function(val1,val2) {
     this.frames[this.frameCount][0] = val1;
     this.frames[this.frameCount][1] = val2;
+    if(this.isTenthFrame() == true){this.tenthFrameBowl(val1,val2)};
     this.updateScore(val1,val2);
     this.updateFrame();
   };
@@ -28,8 +29,7 @@ function Bowling() {
   Bowling.prototype.tenthFrameBowl = function(val1,val2,val3) {
     this.frames[this.frameCount][0] = val1;
     this.frames[this.frameCount][1] = val2;
-    this.frames[this.frameCount][2] = val3;
-    this.score += val1 + val2 + val3;
+    this.score += val1 + val2;
   };
 
   Bowling.prototype.isTenthFrame = function() {

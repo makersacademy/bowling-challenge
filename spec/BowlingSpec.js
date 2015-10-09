@@ -63,8 +63,14 @@ describe("Bowling", function() {
 
     it("adds two scores to the 10th frame array when it is the 10th frame but no bonus", function() {
       bowling.frameCount = 10;
-      bowling.tenthFrameBowl(2,3,0);
+      bowling.tenthFrameBowl(2,3);
       expect(bowling.score).toEqual(5);
+    });
+
+    it("checks for a bonus roll if a strike occurs in tenth frame", function() {
+      bowling.frameCount = 10;
+      bowling.tenthFrameBowl(10);
+      
     });
   });
 

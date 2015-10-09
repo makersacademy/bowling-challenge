@@ -88,4 +88,19 @@ describe('Game', function (){
       expect(game.frame).toBe(2)
     });
   });
+
+  describe('#addBonuses', function(){
+
+    it('adds bonus scores to previous frame', function(){
+      game.frames[1] = [10,0];
+      game.frame = 2;
+      player.downedPins = 9;
+      game.addBonuses(player);
+      game.updateScore;
+      player.downedPins = 2;
+      game.addBonuses(player);
+      expect(game.frames[1]).toEqual([10,11])
+
+    });
+  });
 });

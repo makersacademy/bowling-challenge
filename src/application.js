@@ -27,11 +27,11 @@ game = new Game(Frame, LastFrame);
     game.bowl(pins);
     if(game.frames[game.currentFrame].firstRoll != null){
       for(i = 10; i > (10 - pins); i--){
-        $('#number_' + i).hide();
+        $('#pin_outline_' + i).hide();
       };
     } else {
       for(i = 0; i <= 10; i++){
-        $('#number_' + i).show();
+        $('#pin_outline_' + i).show();
       };
     }
     for(i = 0; i <= game.currentFrame; i++) {

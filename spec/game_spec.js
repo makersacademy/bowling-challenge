@@ -8,6 +8,10 @@ describe ('game', function(){
     expect(game.pins).toEqual(10);
   });
 
+  it('should know how many pins are left after first roll', function(){
+    expect(game.scoreRoll(6)).toEqual('4 pins left');
+  });
+
   it('starts on frame 1', function(){
     expect(game.frame).toEqual(1);
   });
@@ -59,6 +63,14 @@ describe ('game', function(){
     game.scoreRoll(3);
     game.scoreRoll(2);
     game.strikeBonus();
+    expect(game.frameScore(1)).toEqual(15);
+  });
+
+  it('adds the bonus of the next roll after a spare', function(){
+    game.scoreRoll(7);
+    game.scoreRoll(3);
+    game.scoreRoll(5);
+    game.spareBonus();
     expect(game.frameScore(1)).toEqual(15);
   });
 

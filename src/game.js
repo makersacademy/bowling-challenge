@@ -24,12 +24,13 @@ Game.prototype.moveRoll = function(){
 
 Game.prototype.scoreRoll = function(score){
   this.scores[this.frame].push(score);
-  if (score === 10) {
+  if (score === 10 || this.scores[this.frame].length === 2) {
+    this.pins = 10;
     this.moveFrame();
   }
   else {
     this.moveRoll();
-    return this.pinsLeft(score);
+    return this.pins = this.pins - score;
   }
 };
 
@@ -55,8 +56,4 @@ Game.prototype.currentScore = function(){
   total += this.frameScore(1);
   total += this.frameScore(2);
   return total;
-};
-
-Game.prototype.pinsLeft = function(score){
-  return 10 - score + ' pins left'
 };

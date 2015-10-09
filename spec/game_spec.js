@@ -9,7 +9,7 @@ describe ('game', function(){
   });
 
   it('should know how many pins are left after first roll', function(){
-    expect(game.scoreRoll(6)).toEqual('4 pins left');
+    expect(game.scoreRoll(6)).toEqual(4);
   });
 
   it('starts on frame 1', function(){

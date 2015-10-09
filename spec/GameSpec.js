@@ -51,6 +51,42 @@ describe("Game", function() {
     expect(game.score()).toEqual(20);
   });
 
+  it("can determine if each frame game has a strike", function() {
+    rollMany(1, 10);
+    rollMany(2,4);
+    expect(game.isStrike(0)).toEqual(true);
+  });
+
+  it("can determine if each frame game does not have a strike", function() {
+    rollMany(2,5);
+    rollMany(2,4);
+    expect(game.isStrike(0)).toEqual(false);
+  });
+
+  it("can calculate the correct strike bonus", function() {
+    rollMany(1, 10);
+    rollMany(2,4);
+    expect(game.strikeBonus(0)).toEqual(8);
+  });
+
+  it("can determine if each frame game has a spare", function() {
+    rollMany(2,5);
+    rollMany(2,4);
+    expect(game.isSpare(0)).toEqual(true);
+  });
+
+  it("can determine if each frame game does not have a spare", function() {
+    rollMany(2,3);
+    rollMany(2,4);
+    expect(game.isSpare(0)).toEqual(false);
+  });
+
+  it("can calculate the correct spare bonus", function() {
+    rollMany(2,5);
+    rollMany(2,4);
+    expect(game.spareBonus(0)).toEqual(4);
+  });
+
   it("can calculate the score for a game with some strikes", function() {
     rollMany(1,10);
     rollMany(1,1);
@@ -60,7 +96,7 @@ describe("Game", function() {
     expect(game.score()).toEqual(60);
   });
 
-  it("can calculate the current total in the middle of a game", function() {
+  it("can calculate the current total score of a game", function() {
     rollMany(1,10);
     rollMany(1,2);
     rollMany(1,8);

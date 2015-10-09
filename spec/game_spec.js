@@ -74,4 +74,20 @@ describe ('game', function(){
     expect(game.frameScore(1)).toEqual(15);
   });
 
+  it('gives the bonus rolls for strikes on the 10th frame', function(){
+    game.frame = 10
+    game.scoreRoll(10);
+    game.scoreRoll(10);
+    game.scoreRoll(10);
+    expect(game.frameScore(10)).toEqual(30);
+  });
+
+  it('gives the bonus roll for spares on the 10th frame', function(){
+    game.frame = 10
+    game.scoreRoll(4);
+    game.scoreRoll(6);
+    game.scoreRoll(4);
+    expect(game.frameScore(10)).toEqual(14);
+  });
+
 });

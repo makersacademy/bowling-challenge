@@ -20,7 +20,7 @@ describe("Game", function() {
 
   it("should be able receive a roll", function() {
     game.bowl(1);
-    expect(game.frames[0].firstRoll).toEqual(1);
+    expect(game.frames[0].frameRolls[0]).toEqual(1);
   });
 
   it("should increment the current turn by one after each roll", function() {

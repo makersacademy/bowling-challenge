@@ -59,16 +59,17 @@ Game.prototype._previousFrameStrikeAndSpareCheck = function(hits) {
   if(this.currentFrame > 0 && this._isPreviousFrameStrike()) {
     this._recalculatePreviousFrameScore(hits);
   };
-  if(this.currentFrame > 0 && this._isPreviousFrameSpare() && this.frames[this.currentFrame].firstRoll == null) {
+  if(this.currentFrame > 0 && this._isPreviousFrameSpare() && this.frames[this.currentFrame].frameRolls[0] == null) {
     this._recalculatePreviousFrameScore(hits);
   }
-  if(this.currentFrame > 1 && this._isTwoPreviousFrameStrike() && this.frames[this.currentFrame].firstRoll == null) {
+  if(this.currentFrame > 1 && this._isTwoPreviousFrameStrike() && this.frames[this.currentFrame].frameRolls[0] == null) {
     this._recalculateTwoPreviousFrameScore(hits);
   }
 };
 
 Game.prototype._bowlLastRound = function(hits) {
   this.frames[this.currentFrame].receiveLastFrameRoll(hits);
+  this.currentRoll++;
   if(this.frames[this.currentFrame].totalScore != null) {
     this._addToFrameScore();
     this._finalFrameStrikeAndSpareCheck();
@@ -82,14 +83,14 @@ Game.prototype._addToFrameScore = function() {
 
 Game.prototype._finalFrameStrikeAndSpareCheck = function() {
   if(this._isPreviousFrameStrike()) { 
-    this.frameScores[this.defaultValue - 2] += this.frames[this.currentFrame].frameScore[0]; 
-    this.frameScores[this.defaultValue - 2] += this.frames[this.currentFrame].frameScore[1]; 
+    this.frameScores[this.defaultValue - 2] += this.frames[this.currentFrame].frameRolls[0]; 
+    this.frameScores[this.defaultValue - 2] += this.frames[this.currentFrame].frameRolls[1]; 
   };
   if(this._isPreviousFrameSpare()) {
-    this.frameScores[this.defaultValue - 2] += this.frames[this.currentFrame].frameScore[0];
+    this.frameScores[this.defaultValue - 2] += this.frames[this.currentFrame].frameRolls[0];
   };
   if(this._isTwoPreviousFrameStrike()) {
-    this.frameScores[this.defaultValue - 3] += this.frames[this.currentFrame].frameScore[0];
+    this.frameScores[this.defaultValue - 3] += this.frames[this.currentFrame].frameRolls[0];
   };
 };
 

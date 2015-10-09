@@ -146,7 +146,20 @@ a {
 }
 
 
-
+/* if(game.frames[i].spare && game.currentRoll == ((2*i) + 2)) {
+        console.log("spare hide");
+        $('#frame_score_' + i).hide();
+      } else {
+        console.log("spare show");
+        $('#frame_score_' + i).show();
+      };
+      if(game.frames[i].strike && (game.currentRoll == ((2*i) + 2) || game.currentRoll == ((2*i) + 3))) {
+        console.log("strike hide");
+        $('#frame_score_' + i).hide();
+      } else {
+        console.log("strike show");
+        $('#frame_score_' + i).show();
+      };*/
 
 
 

@@ -7,13 +7,13 @@ describe("Frame", function() {
 
   it("can receive the first roll and records score", function() {
     frame.receiveRoll(1);
-    expect(frame.firstRoll).toEqual(1);
+    expect(frame.frameRolls[0]).toEqual(1);
   });
 
   it("can receive a second hit and record the score", function() {
     frame.receiveRoll(1);
     frame.receiveRoll(2);
-    expect(frame.secondRoll).toEqual(2);
+    expect(frame.frameRolls[1]).toEqual(2);
   });
 
   it("can return the total score for the frame", function() {

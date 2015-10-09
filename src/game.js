@@ -37,6 +37,7 @@ Game.prototype.updateScore = function(player){
 Game.prototype.updateScoreTen = function(player){
   this.addScoreToFrame(player);
   this.tallyScore(player)
+  player.updateTurn();
 };
 
 Game.prototype.nextFrame = function(){

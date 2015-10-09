@@ -118,9 +118,11 @@ describe('Game', function (){
 
     it('adds score to frame ten', function(){
       game.frame = 10;
-      player.bowl(10);
+      player.bowl(8);
       game.updateScoreTen(player);
-      expect(game.frames[10]).toEqual([10,0,0]);
+      player.bowl(1);
+      game.updateScoreTen(player);
+      expect(game.frames[10]).toEqual([8,1,0]);
     });
 
     it('adds score to total score', function(){
@@ -128,7 +130,6 @@ describe('Game', function (){
       player.bowl(10);
       game.updateScoreTen(player);
       expect(game.totalScore).toBe(10);
-      console.log(game.frames[10])
     });
 
   });

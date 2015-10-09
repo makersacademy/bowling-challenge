@@ -17,6 +17,11 @@ describe("Bowling", function() {
       bowling.updateFrame();
       expect(bowling.frameCount).toEqual(2);
     });
+
+    it("returns true when it is the 10th frame", function() {
+      bowling.frameCount = 10;
+      expect(bowling.isTenthFrame()).toBe(true);
+    });
   });
 
   describe("Score", function() {
@@ -36,28 +41,30 @@ describe("Bowling", function() {
 
     it("returns true if previous frame was a strike", function() {
       bowling.bowl(10,0);
-      bowling.updateFrame();
       expect(bowling.isStrike()).toBe(true);
     });
 
     it("returns true if previous frame was a spare", function() {
       bowling.bowl(5,5);
-      bowling.updateFrame();
       expect(bowling.isSpare()).toBe(true);
     });
 
     it("adds the strike bonus to the current frame", function() {
       bowling.bowl(10,0);
-      bowling.updateFrame();
       bowling.bowl(5,4);
       expect(bowling.score).toEqual(28);
     });
 
     it("adds the spare bonus to the current frame", function() {
       bowling.bowl(5,5);
-      bowling.updateFrame();
       bowling.bowl(5,4);
       expect(bowling.score).toEqual(24);
+    });
+
+    it("adds two scores to the 10th frame array when it is the 10th frame but no bonus", function() {
+      bowling.frameCount = 10;
+      bowling.tenthFrameBowl(2,3,0);
+      expect(bowling.score).toEqual(5);
     });
   });
 

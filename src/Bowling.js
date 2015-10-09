@@ -22,7 +22,19 @@ function Bowling() {
     this.frames[this.frameCount][0] = val1;
     this.frames[this.frameCount][1] = val2;
     this.updateScore(val1,val2);
+    this.updateFrame();
   };
+
+  Bowling.prototype.tenthFrameBowl = function(val1,val2,val3) {
+    this.frames[this.frameCount][0] = val1;
+    this.frames[this.frameCount][1] = val2;
+    this.frames[this.frameCount][2] = val3;
+    this.score += val1 + val2 + val3;
+  };
+
+  Bowling.prototype.isTenthFrame = function() {
+    if(this.frameCount == 10){return true};
+  }
 
   Bowling.prototype.updateScore = function(val1,val2) {
     if(this.isStrike() == true){

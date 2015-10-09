@@ -1,14 +1,9 @@
-
-var game = new BowlingScore();
+  beforeEach(function() {
+    game = new BowlingScore();
+  });
 describe ("BowlingScore", function() {
 
   describe ("addNewRoundScore", function () {
-
-    // it("pushes score into rawScores", function() {
-    //   game.addNewRoundScore(6);
-    //   game.addNewRoundScore(3);
-    //   expect(game.rawScores).toEqual([6,3]);
-    // });
 
     it("pushes score into rawScores", function() {
       game.addNewRoundScore(7);
@@ -20,28 +15,25 @@ describe ("BowlingScore", function() {
 
     it("pushes 10 into own array in rawScore", function() {
       game.addNewRoundScore(10);
-      expect(game.rawScores).toEqual([7,2,4,5,10,0]);
+      expect(game.rawScores).toEqual([10,null]);
     });
   });
 
   describe ("makeFrameScores", function(){
     it("restructures rawScores into frameScores", function() {
+      game.rawScores = [7,2,4,5]
       game.makeFrameScores();
-      expect(game.frameScores).toEqual([[7,2],[4,5],[10,0]]);
+      expect(game.frameScores).toEqual([[7,2],[4,5]]);
     });
   });
 
-});
-
-describe ("BonusScore", function() {
-
-  describe ("spareBonus", function() {
-    it("adds next rawScore to bonusScore", function() {
-      game.addNewRoundScore(3);
-      game.addNewRoundScore(7);
-      game.addNewRoundScore(6);
-      expect(game.bonusScores).toEqual(6);
+  describe ("makeBonusScores", function() {
+    it("if previous frame scores total is 10, push last rawScore into BonusScores", function (){
+      game.rawScores = [7,3,4]
+      game.makeFrameScores();
+      game.addNewBonusScore();
+      expect(game.bonusScores).toEqual([4]);
     });
-
   });
+
 });

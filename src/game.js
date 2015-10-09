@@ -24,6 +24,7 @@ Game.prototype.tallyScore = function(player){
 
 Game.prototype.updateScore = function(player){
   this.frames[this.frame][player.turn] = (player.downedPins);
+  this.strikeCheck(player);
   this.tallyScore(player);
   player.updateTurn();
   this.updateFrame(player)
@@ -37,6 +38,6 @@ Game.prototype.updateFrame = function(player){
   if( player.turn == 0 ){ this.nextFrame() }
 };
 
-Game.prototype.strikeCheck = function(player) {
-  if(player.isStrike){ this.nextFrame() }
+Game.prototype.strikeCheck = function() {
+  if(this.frames[this.frame] == 10){ this.nextFrame() }
 };

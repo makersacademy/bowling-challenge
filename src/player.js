@@ -15,14 +15,17 @@ Player.prototype.resetTurn = function(){
 };
 
 Player.prototype.updateTurn = function(){
-  if(this.turn == 0){
-    this.nextTurn()
+  if(this.turn == 1 || this.isStrike()){
+    this.resetTurn()
   }
   else {
-    this.resetTurn()
+    this.nextTurn()
   }
 };
 
 Player.prototype.isStrike = function(){
-  if( this.downedPins == 10){ return true }
+  if(this.downedPins == 10)
+    { return true }
+  else
+    { return false }
 };

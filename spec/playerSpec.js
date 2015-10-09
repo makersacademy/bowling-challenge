@@ -34,6 +34,11 @@ describe('Player', function() {
       player.updateTurn();
       expect(player.turn).toBe(0)
     });
+
+    it('resets turn if bowl is a strike', function(){
+      player.bowl(10);
+      expect(player.turn).toBe(0)
+    });
   });
 
   describe('#bowl', function(){

@@ -42,6 +42,14 @@ describe('Game', function (){
       expect(game.frames[2]).toEqual([7,0])
     });
 
+    it('adds 2nd turn\'s score to next frame if 1st turn is a strike', function(){
+      player.bowl(10);
+      game.updateScore(player);
+      player.bowl(9);
+      game.updateScore(player);
+      expect(game.frames[2]).toEqual([9,0])
+    });
+
   });
 
   describe('#totalScore', function(){
@@ -75,7 +83,8 @@ describe('Game', function (){
 
     it('goes to next frame if strike is scored', function(){
       player.bowl(10);
-      game.strikeCheck(player);
+      game.updateScore(player);
+      game.strikeCheck();
       expect(game.frame).toBe(2)
     });
   });

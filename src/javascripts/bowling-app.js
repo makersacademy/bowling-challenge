@@ -13,6 +13,7 @@ Game.prototype.roll = function(pins) {
   this.rolls[this.currentFrame].push(pins);
   this.bonusDistributor(pins);
   this.frameChecker(pins);
+  this.scoreUpdate();
 };
 
 Game.prototype.frameChecker = function(pins) {
@@ -54,4 +55,14 @@ Game.prototype.bonusDistributor = function(pins) {
     this.bonusManager += pins;
     this.bonusCounter--;
   };
+};
+
+Game.prototype.scoreUpdate = function() {
+  var sum = 0;
+  for (var k in this.rolls) {
+    vals = this.rolls[k];
+  for (var i=0; i<vals.length; i++) {
+    sum += vals[i] || 0;
+  }
+  }
 };

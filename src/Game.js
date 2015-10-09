@@ -11,16 +11,10 @@ Game.prototype.randomRoll = function() {
 
 Game.prototype.roll = function(pins) {
   if (this.frameNum === 9) {
-    if (this.rollNum === 1 && pins === 10) {
+    if (this.rollNum === 1) {
       this.scoreBoard[this.frameNum].rolls[0] = pins;
       this.rollNum++;
-    } else if (this.rollNum === 1 && pins < 10) {
-      this.scoreBoard[this.frameNum].rolls[0] = pins;
-      this.rollNum++;
-    } else if (this.rollNum === 2 && pins === 10) {
-      this.scoreBoard[this.frameNum].rolls[1] = pins;
-      this.rollNum++;
-    } else if (this.rollNum === 2 && pins < 10) {
+    } else if (this.rollNum === 2) {
       this.scoreBoard[this.frameNum].rolls[1] = pins;
       this.rollNum++;
     } else if (this.rollNum === 3) {
@@ -52,12 +46,10 @@ Game.prototype.score = function() {
     if (this.isStrike(frameIndex)) {
       score += 10 + this.strikeBonus(frameIndex);
       frameIndex++;
-    }
-    else if (this.isSpare(frameIndex)) {
+    } else if (this.isSpare(frameIndex)) {
       score += 10 + this.spareBonus(frameIndex);
       frameIndex++;
-    }
-    else {
+    } else {
       score += this.rollsScore(frameIndex);
       frameIndex++;
     }

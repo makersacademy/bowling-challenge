@@ -6,38 +6,40 @@ function Game() {
   this.firstThrow = true;
   this.spareBall = false;
   this.strikeBall = false;
+  this.gameOver = false;
   this.scoreBoard = {1:[], 2:[], 3:[], 4:[], 5:[], 6:[], 7:[], 8:[], 9:[], 10:[]}
 };
 
 Game.prototype.rollBall =  function(hit) {
 
-  if (this.frameNumber < 10) {
+  if (this.frameNumber < 10 && this.gameOver === false) {
 
     this.addToScoreBoard(hit);
-    this.score += hit;
     this.frameScore += hit;
     this.isSpare(hit);
     this.isFirstThrow();
     this.isStrike(hit);
-  } else if ((this.frameNumber === 10)) {
+  } else if (this.frameNumber === 10 && this.gameOver === false) {
     this.addToScoreBoard(hit);
-    this.score += hit;
     this.frameScore += hit;
     this.isSpare();
     this.isStrike();
-    this.frameNumber = 'Game Over'
+    this.game();
   };
 };
 
 Game.prototype.addToScoreBoard = function(hit) {
   if (this.strikeBall === true) {
     this.scoreBoard[this.frameNumber].push(hit*2);
+    this.score += (hit*2);
     this.strikeBall = false;
   } else if (this.spareBall === true) {
     this.scoreBoard[this.frameNumber].push(hit*2);
+    this.score += (hit*2);
     this.spareBall = false;
   } else {
     this.scoreBoard[this.frameNumber].push(hit);
+    this.score += (hit);
   };
 };
 
@@ -56,15 +58,17 @@ Game.prototype.isStrike = function(hit) {
     this.frameNumber += 1;
     this.strikeBall = true;
     this.firstThrow = true;
-  } else if (hit === 10) {
-    this.strikeBall = true;
   };
 };
 
 Game.prototype.isSpare = function(hit) {
-  if (this.frameScore === 10 && this.frameNumber != 10) {
+  if (this.frameScore === 10 && this.frameNumber != 10 && this.firstThrow === false) {
       this.spareBall = true;
-  } else if (this.frameScore === 10) {
-    this.spareBall = true;
+  };
+};
+
+Game.prototype.game = function() {
+  if (this.scoreBoard[10][2] != null) {
+    this.gameOver = true;
   };
 };

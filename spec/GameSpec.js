@@ -135,6 +135,11 @@ describe("Game", function() {
     expect(game.frameScore(9)).toEqual(14);
   });
 
+  it("can roll a game of spares", function() {
+    rollMany(21,5);
+    expect(game.score()).toEqual(150);
+  });
+
   it("can play a perfect game", function() {
     rollMany(12,10);
     expect(game.score()).toEqual(300);

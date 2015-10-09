@@ -7,14 +7,47 @@ $('#bowl').click(function(){
 
 $('#bowl').hover(
   function() {
-    $('#bowl').attr('style', 'font-size: 100px');
+    $('#bowl').css({
+      'font-size': '100px',
+      'border': '10px solid #E6D830'
+    });
     $('#sad-face').hide();
     $('#happy-face').show();
   }, function() {
-    $('#bowl').attr('style', 'font-size: -webkit-xxx-large');
+    $('#bowl').css({
+      'font-size': '-webkit-xxx-large',
+      'border': '10px solid white'
+    });
     $('#sad-face').show();
     $('#happy-face').hide();
 });
+
+$('#reset').hover(
+  function() {
+    $('#reset').css({
+      'font-size': '30px',
+      'border': '10px solid #E6D830'
+    });
+  }, function() {
+    $('#reset').css({
+      'font-size': 'inherit',
+      'border': '10px solid white'
+    });
+});
+
+$('#game-switch').hover(
+  function() {
+    $('#game-switch').css({
+      'font-size': '30px',
+      'border': '10px solid #E6D830'
+    });
+  }, function() {
+    $('#game-switch').css({
+      'font-size': 'inherit',
+      'border': '10px solid white'
+    });
+});
+
 
 $('#game-switch').click(function(){
   $('.bowling-controls').toggle();

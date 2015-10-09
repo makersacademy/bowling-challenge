@@ -41,6 +41,13 @@ describe("Game", function() {
     expect(game.rollNum).toEqual(1);
   });
 
+  it("can calculate the roll total of each frame", function() {
+    rollMany(2, 5);
+    rollMany(2, 2);
+    expect(game.rollsScore(0)).toEqual(10);
+    expect(game.rollsScore(1)).toEqual(4);
+  });
+
   it("can roll a gutter game", function() {
     rollMany(20, 0);
     expect(game.score()).toEqual(0);
@@ -85,6 +92,12 @@ describe("Game", function() {
     rollMany(2,5);
     rollMany(2,4);
     expect(game.spareBonus(0)).toEqual(4);
+  });
+
+  it("can calculate the frame score", function() {
+    rollMany(2,5);
+    rollMany(2,4);
+    expect(game.frameScore(0)).toEqual(14);
   });
 
   it("can calculate the score for a game with some strikes", function() {

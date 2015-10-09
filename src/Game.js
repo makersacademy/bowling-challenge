@@ -1,6 +1,6 @@
 function Game() {
   this.scoreBoard = [];
-  for(i=0; i<10; i++) this.scoreBoard[i]={rolls: []};
+  for(i=0; i<10; i++) this.scoreBoard[i]={rolls: [], frameTotal: 0};
   this.frameNum = 0;
   this.rollNum = 1;
 }
@@ -55,6 +55,19 @@ Game.prototype.rollsScore = function(frameIndex) {
   return this.scoreBoard[frameIndex].rolls.reduce( function(a,b) {
     return a + b;
   });
+};
+
+Game.prototype.frameScore = function(frameIndex) {
+  if (this.isStrike(frameIndex)) {
+    this.scoreBoard[frameIndex].frameTotal = this.rollsScore(frameIndex) + this.strikeBonus(frameIndex);
+    return this.scoreBoard[frameIndex].frameTotal
+  } else if (this.isSpare(frameIndex)) {
+    this.scoreBoard[frameIndex].frameTotal = this.rollsScore(frameIndex) + this.spareBonus(frameIndex);
+    return this.scoreBoard[frameIndex].frameTotal
+  } else {
+    this.scoreBoard[frameIndex].frameTotal = this.rollsScore(frameIndex)
+    return this.scoreBoard[frameIndex].frameTotal
+  }
 };
 
 Game.prototype.strikeBonus = function(frameIndex) {

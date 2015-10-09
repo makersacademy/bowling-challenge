@@ -22,3 +22,7 @@ Player.prototype.updateTurn = function(){
     this.resetTurn()
   }
 };
+
+Player.prototype.isStrike = function(){
+  if( this.downedPins == 10){ return true }
+};

@@ -44,4 +44,12 @@ describe('Player', function() {
     });
   });
 
+  describe('#isStrike', function(){
+
+    it('returns true if a strike occurs', function(){
+      player.bowl(10);
+      expect(player.isStrike()).toBe(true)
+    });
+  });
+
 });

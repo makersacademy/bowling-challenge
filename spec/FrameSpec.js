@@ -97,4 +97,17 @@ describe('Frame', function() {
     frame.bowl(2);
     expect(function() {frame.bowl(7);}).toThrow('Game is over!');
   });
+
+  it('should know if score is under ten', function() {
+    expect(frame.isUnderTen(7)).toEqual(true);
+  });
+
+  it('should know if score is a strike', function() {
+    expect(frame.isAStrike(10)).toEqual(true);
+  });
+
+  it('should add bowl to current frame', function() {
+    frame.addToFrame(7);
+    expect(frame.currentFrame[0]).toEqual(7);
+  });
 });

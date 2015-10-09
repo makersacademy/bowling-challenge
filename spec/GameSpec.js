@@ -1,4 +1,4 @@
-describe('Frame', function() {
+describe('Game', function() {
 
   beforeEach(function() {
     frame = new Frame();
@@ -151,6 +151,70 @@ describe('Frame', function() {
     frame.bowl(4);
     frame.bowl(7);
     expect(game.totalScore).toEqual(164);
+  });
+
+  it('should calculate a game score 6', function() {
+    frame.bowl(5);
+    frame.bowl(5);
+    frame.bowl(10);
+    frame.bowl(4);
+    frame.bowl(6);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(4);
+    frame.bowl(0);
+    frame.bowl(0);
+    frame.bowl(9);
+    frame.bowl(6);
+    frame.bowl(4);
+    frame.bowl(6);
+    frame.bowl(4);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    expect(game.totalScore).toEqual(177);
+  });
+
+  it('should calculate a game score 7', function() {
+    frame.bowl(7);
+    frame.bowl(2);
+    frame.bowl(6);
+    frame.bowl(3);
+    frame.bowl(10);
+    frame.bowl(6);
+    frame.bowl(4);
+    frame.bowl(2);
+    frame.bowl(7);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(4);
+    frame.bowl(3);
+    frame.bowl(7);
+    frame.bowl(3);
+    frame.bowl(10);
+    frame.bowl(7);
+    frame.bowl(3);
+    expect(game.totalScore).toEqual(147);
+  });
+
+  it('should calculate a game score 8', function() {
+    frame.bowl(7);
+    frame.bowl(3);
+    frame.bowl(6);
+    frame.bowl(4);
+    frame.bowl(10);
+    frame.bowl(6);
+    frame.bowl(4);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(7);
+    frame.bowl(3);
+    frame.bowl(10);
+    frame.bowl(7);
+    frame.bowl(3);
+    expect(game.totalScore).toEqual(223);
   });
 
 });

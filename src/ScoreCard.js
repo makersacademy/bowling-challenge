@@ -16,9 +16,11 @@ ScoreCard.prototype.nextRoll = function() {
 ScoreCard.prototype.rollScore = function(score) {
   this.score[this.currentFrame].push(score);
   if (score === 10 || this.score[this.currentFrame].length === 2) {
+    this.pins = 10;
     this.nextFrame();
   }
   else {
+    this.pins = this.pins - score;
     this.nextRoll();
   };
 };

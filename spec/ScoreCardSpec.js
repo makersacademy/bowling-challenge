@@ -71,5 +71,15 @@ describe('ScoreCard', function() {
       expect(scorecard.frameTotal(1)).toEqual(13);
     });
 
+    it('resets pins to 10 in a new frame', function() {
+      scorecard.rollScore(6);
+      scorecard.rollScore(3);
+      expect(scorecard.pins).toEqual(10);
+    });
+
+    it('decreases the number of pins after each roll', function() {
+      scorecard.rollScore(6);
+      expect(scorecard.pins).toEqual(4);
+    });
 
 });

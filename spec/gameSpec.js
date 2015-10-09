@@ -70,4 +70,13 @@ describe('Game', function (){
       expect(game.frame).toBe(2);
     });
   });
+
+  describe('#strikeCheck', function(){
+
+    it('goes to next frame if strike is scored', function(){
+      player.bowl(10);
+      game.strikeCheck(player);
+      expect(game.frame).toBe(2)
+    });
+  });
 });

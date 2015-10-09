@@ -36,3 +36,7 @@ Game.prototype.nextFrame = function(){
 Game.prototype.updateFrame = function(player){
   if( player.turn == 0 ){ this.nextFrame() }
 };
+
+Game.prototype.strikeCheck = function(player) {
+  if(player.isStrike){ this.nextFrame() }
+};

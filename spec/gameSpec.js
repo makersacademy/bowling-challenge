@@ -94,13 +94,10 @@ describe('Game', function (){
     it('adds bonus scores to bonusPoints for strike', function(){
       player.bowl(10);
       game.updateScore(player);
-      console.log(game.bonusPoints);
       player.bowl(6);
       game.updateScore(player);
-      console.log(game.bonusPoints);
       player.bowl(2);
       game.updateScore(player);
-      console.log(game.bonusPoints);
       expect(game.bonusPoints).toEqual(8)
     });
 

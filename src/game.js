@@ -17,8 +17,8 @@ function Game() {
 
 Game.prototype.tallyScore = function(player){
   this.totalScore = 0;
-  for( i = 1; i < (Object.keys(this.frames).length); i++){
-    for( j = 0; j < (Object.keys(this.frames[i]).length); j++){
+  for( i = 1; i < 11; i++){
+    for( j = 0; j < 2; j++){
     this.totalScore += (this.frames[i][j])
     };
   };
@@ -36,6 +36,7 @@ Game.prototype.updateScore = function(player){
 
 Game.prototype.updateScoreTen = function(player){
   this.addScoreToFrame(player);
+  this.tallyScore(player)
 };
 
 Game.prototype.nextFrame = function(){

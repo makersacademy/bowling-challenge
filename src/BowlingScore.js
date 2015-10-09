@@ -36,11 +36,13 @@ BowlingScore.prototype.isSpare = function () {
 
 };
 
-// BowlingScore.prototype.isStrike = function () {
-//   for (i = 0; i < this.rawScores.length; i++) {
-//     if (this.rawScores[i] === 10) {
-//       this.bonusScores.push(this.rawScores[i+2]);
-//       this.bonusScores.push(this.rawScores[i+3]);
-//     };
-//   };
-// };
+BowlingScore.prototype.isStrike = function () {
+
+  for (i = 0; i < this.frameScores.length; i++) {
+    if (this.frameScores[i][0] === 10) {
+      this.bonusScores.push(this.frameScores[i+1][0]);
+      this.bonusScores.push(this.frameScores[i+1][1]);
+    };
+  };
+
+};

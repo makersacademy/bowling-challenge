@@ -61,7 +61,6 @@ div {
 
   #logo {
     background-color: #D2F390;
-    /*background-image: url("images/bowl-a-rama.jpg");*/
     position: relative;
     height: 200px;
     font-size: 140px;
@@ -82,6 +81,7 @@ div {
   #bottom-left {
     width: 50%;
     height: 100%;
+    background-color: #380202;
   }
 
   #bottom-right {
@@ -96,14 +96,29 @@ div {
     background-color: white;
   }
 
-button#bowl {
+.bowling-buttons {
+  float: left;
   position: relative;
   width: 80%;
   height: 90%;
+  border: none;
   margin: 12px;
-  font-size: -webkit-xxx-large;
-  border-radius: 4px;
 }
+
+  #bowl {
+    position: relative;
+    width: 80%;
+    height: 90%;
+    margin: 12px;
+    font-size: -webkit-xxx-large;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #6666CC;
+    border: 10px solid white;
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 2px rgba(0,0,0,0.4);
+  }
 
 .face {
   position: relative;

@@ -1,6 +1,16 @@
 function Game(frameConstructor) {
   this.frameArrayGenerator(frameConstructor);
   this.frameIndex = 0;
+  this.isManualGame = false
+};
+
+Game.prototype.toggleManualRandomInput = function() {
+  this.isManualGame = !this.isManualGame
+
+  this.frameArray.forEach(function(frame) {
+    frame.switchRandomManual();
+  });
+
 };
 
 Game.prototype.frameArrayGenerator = function(frameConstructor) {
@@ -12,15 +22,15 @@ Game.prototype.frameArrayGenerator = function(frameConstructor) {
   this.frameArray[9].setLastFrame();
 };
 
-Game.prototype.bowl = function() {
+Game.prototype.bowl = function(number) {
   var returnValue;
   if (this.currentFrame().rollsTaken === 2 && this.currentFrameStrikeOrSpare()) {
-    returnValue = this.currentFrame().thirdRoll();
+    returnValue = this.currentFrame().thirdRoll(number);
   } else if (this.currentFrame().rollsTaken === 0) {
-    returnValue = this.currentFrame().firstRoll();
+    returnValue = this.currentFrame().firstRoll(number);
     this.firstBowlUpdate();
   } else {
-    returnValue = this.currentFrame().secondRoll();
+    returnValue = this.currentFrame().secondRoll(number);
     this.secondBowlUpdate();
   };
 

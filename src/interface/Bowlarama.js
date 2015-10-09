@@ -16,6 +16,18 @@ $('#bowl').hover(
     $('#happy-face').hide();
 });
 
+$('#game-switch').click(function(){
+  $('.bowling-buttons').toggle();
+  game.toggleManualRandomInput();
+});
+
+$('.manual-input').click(function(){
+  var elementID = this.id;
+  var roll = parseInt(elementID);
+  game.bowl(roll);
+  scoreRefresh();
+});
+
 scoreRefresh = function(){
   var gameTotal = 0
 

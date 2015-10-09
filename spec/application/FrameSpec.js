@@ -375,4 +375,40 @@ describe("Frame", function() {
 
   });
 
+  describe("MANUAL ROLL", function(){
+
+    it("can be set to manual roll input", function(){
+      frame.switchRandomManual();
+      expect(frame.isManualRolls).toBe(true);
+    });
+
+    it("is set with random rolls by default", function(){
+      expect(frame.isManualRolls).toBe(false);
+    });
+
+    it("switches back to random when toggled twice", function(){
+      frame.switchRandomManual();
+      frame.switchRandomManual();
+      expect(frame.isManualRolls).toBe(false);
+    });
+
+    it("takes the roll score given when set to manual", function(){
+      spyOn(Math, 'random').and.returnValue(0.1);
+      frame.switchRandomManual();
+      frame.firstRoll(5);
+      frame.secondRoll(3);
+      expect(frame.firstRollScore).toEqual(5);
+      expect(frame.secondRollScore).toEqual(3);
+    });
+
+
+    it("raises error if roll score given is greater than the number of pins remaining", function(){
+      spyOn(Math, 'random').and.returnValue(0.1);
+      frame.switchRandomManual();
+      frame.firstRoll(7);
+      expect(function() { frame.secondRoll(5); }).toThrowError(ErrorMessage);
+    });
+
+  })
+
 });

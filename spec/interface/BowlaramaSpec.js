@@ -152,5 +152,15 @@ describe("Bowlarama", function(){
 
   });
 
+  describe("Manual input", function(){
+
+    it("allows the user to input specific roll scores", function(){
+      spyOn(Math, 'random').and.returnValue(0.1);
+      $('#game-switch').click();
+      $('#7').click();
+      expect('#first-0').toContainText('7');
+    });
+
+  });
 
 });

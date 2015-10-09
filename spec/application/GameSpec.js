@@ -13,7 +13,8 @@ describe("Game", function(){
     firstFrame = jasmine.createSpyObj('firstFrame', ['firstRoll',
       'secondRoll',
       'spareUpdate',
-      'strikeUpdate']);
+      'strikeUpdate',
+      'switchRandomManual']);
 
     secondFrame = jasmine.createSpyObj('secondFrame', ['firstRoll',
       'secondRoll',
@@ -260,5 +261,49 @@ describe("Game", function(){
     });
 
   })
+
+  describe("MANUAL GAME", function(){
+
+    beforeEach(function(){
+      genericFrame.prototype.switchRandomManual = jasmine.createSpy('switchRandomManual');
+    });
+
+    it("can create a manual input game", function(){
+      game.toggleManualRandomInput();
+      expect(game.isManualGame).toBe(true);
+    });
+
+    it("is set as random game by default", function(){
+      expect(game.isManualGame).toBe(false);
+    });
+
+    it("switches back to random when toggled twice", function(){
+      game.toggleManualRandomInput();
+      game.toggleManualRandomInput();
+      expect(game.isManualGame).toBe(false);
+    });
+
+    it("calls the switchRandomManual function on all frames when made manual", function(){
+      genericFrame.prototype.switchRandomManual.calls.reset();
+      game.toggleManualRandomInput();
+      expect(genericFrame.prototype.switchRandomManual.calls.count()).toEqual(10);
+    });
+
+    describe("#bowl", function(){
+
+      beforeEach(function(){
+        firstFrame.rollsTaken = 0;
+        game.frameArray[0] = firstFrame;
+        game.toggleManualRandomInput();
+      });
+
+      it("selects the first frame and calls its #firstRoll function with the score given", function(){
+        game.bowl(7);
+        expect(game.frameArray[0].firstRoll).toHaveBeenCalledWith(7);
+      });
+
+    });
+
+  });
 
 });

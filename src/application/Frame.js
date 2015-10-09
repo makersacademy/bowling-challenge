@@ -2,11 +2,16 @@ function Frame() {
   this.pinsRemaining = 10;
   this.rollsTaken = 0;
   this.totalScore = 0;
+  this.isManualRolls = false;
 };
 
-Frame.prototype.firstRoll = function() {
+Frame.prototype.switchRandomManual = function() {
+  this.isManualRolls = !this.isManualRolls
+};
+
+Frame.prototype.firstRoll = function(number) {
   this.checkRollAllowed(1);
-  this.firstRollScore = this.rollRandom();
+  this.firstRollScore = this.roll(number);
   this.postRollUpdate(this.firstRollScore);
   if (this.firstRollScore === 10) {
     this.isStrike = true;
@@ -16,9 +21,9 @@ Frame.prototype.firstRoll = function() {
   return this.firstRollScore;
 };
 
-Frame.prototype.secondRoll = function() {
+Frame.prototype.secondRoll = function(number) {
   this.checkRollAllowed(2);
-  this.secondRollScore = this.rollRandom();
+  this.secondRollScore = this.roll(number);
   this.postRollUpdate(this.secondRollScore);
   if (this.isLastFrame && this.isStrike && this.secondRollScore === 10) {
     return "Strike!";
@@ -30,9 +35,9 @@ Frame.prototype.secondRoll = function() {
   return this.secondRollScore;
 };
 
-Frame.prototype.thirdRoll = function() {
+Frame.prototype.thirdRoll = function(number) {
   this.checkRollAllowed(3);
-  this.thirdRollScore = this.rollRandom();
+  this.thirdRollScore = this.roll(number);
   this.postRollUpdate(this.thirdRollScore);
   if (this.thirdRollScore === 10) {
     return "Strike!";
@@ -43,9 +48,15 @@ Frame.prototype.thirdRoll = function() {
   return this.thirdRollScore;
 };
 
-Frame.prototype.rollRandom = function() {
-  n = this.pinsRemaining + 1;
-  return Math.floor( Math.random() * n );
+Frame.prototype.roll = function(number) {
+  var n = this.pinsRemaining;
+
+  if (this.isManualRolls) {
+    if (number > n) throw new Error("Illegal roll");
+    return number;
+  };
+
+  return Math.floor( Math.random() * (n+1) );
 };
 
 Frame.prototype.postRollUpdate = function(rollScore) {

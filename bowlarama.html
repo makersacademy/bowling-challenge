@@ -6,7 +6,7 @@
   </title>
   <script src="lib/jquery-2.1.4.js"></script>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <link rel="shortcut icon" href="/images/bowling.ico" />
+  <!-- <link rel="shortcut icon" href="/images/bowling.ico" /> -->
 </head>
 
 
@@ -26,11 +26,33 @@
 
   <div id='bottom'>
     <div id='bottom-left'>
-      <button id='bowl' >
-        Bowl!
-        <img class='face' id='sad-face' src="images/Sad-face.png"/>
-        <img class='face' id='happy-face' src="images/Happy_face.png" hidden/>
+
+      <div class='bowling-buttons'>
+        <button id='bowl' >
+          Bowl!
+          <img class='face' id='sad-face' src="images/Sad-face.png"/>
+          <img class='face' id='happy-face' src="images/Happy_face.png" hidden/>
+        </button>
+      </div>
+
+      <div class='bowling-buttons' hidden>
+        <button class='manual-input' id='0' >0</button>
+        <button class='manual-input' id='1' >1</button>
+        <button class='manual-input' id='2' >2</button>
+        <button class='manual-input' id='3' >3</button>
+        <button class='manual-input' id='4' >4</button>
+        <button class='manual-input' id='5' >5</button>
+        <button class='manual-input' id='6' >6</button>
+        <button class='manual-input' id='7' >7</button>
+        <button class='manual-input' id='8' >8</button>
+        <button class='manual-input' id='9' >9</button>
+        <button class='manual-input' id='10' >10</button>
+      </div>
+
+      <button id='game-switch'>
+        Manual / Random Switch
       </button>
+
     </div>
     <div id='bottom-right'>
       SOMETHING

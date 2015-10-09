@@ -48,6 +48,20 @@ $('#game-switch').hover(
     });
 });
 
+$('.manual-input').hover(
+  function(id) {
+    var elementID = this.id;
+    $('#' + elementID).css({
+      'font-size': '30px',
+      'border': '1px solid #E6D830'
+    });
+  }, function(id) {
+    var elementID = this.id;
+    $('#' + elementID).css({
+      'font-size': 'large',
+      'border': '1px solid white'
+    });
+});
 
 $('#game-switch').click(function(){
   $('.bowling-controls').toggle();
@@ -174,6 +188,5 @@ insertPinImages = function(){
 };
 
 insertPinImages();
-
 createHTMLTable();
 

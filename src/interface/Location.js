@@ -1,36 +1,3 @@
-// var userLocation = {latitude: 0, longitude: 0}
-
-// function setLocation() {
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(showPosition);
-//     } else {
-//         $("#position-coords").append("Geolocation is not supported by this browser.");
-//     };
-// };
-
-// function showPosition(position) {
-//   console.log(position);
-//   userLocation.latitude = position.coords.latitude
-//   userLocation.longitude = position.coords.longitude
-//   console.log(userLocation);
-//   // $("#map").html("<br>Latitude: " + position.coords.latitude.toFixed(2) +
-//   // "<br>Longitude: " + position.coords.longitude.toFixed(2));
-// };
-
-
-// function showStuff(latitude, longitude) {
-//   console.log(userLocation);
-//   $("#map").html("<br>Latitude: " + latitude.toFixed(2) +
-//     "<br>Longitude: " + longitude.toFixed(2));
-// }
-
-// setLocation();
-// console.log(userLocation);
-// showStuff(userLocation.latitude, userLocation.longitude);
-
-
-//---------=====
-
 var map;
 var infowindow;
 
@@ -41,25 +8,24 @@ function initMap() {
   var browserSupportFlag = new Boolean();
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: initialLocation,
     zoom: 15
   });
 
   infowindow = new google.maps.InfoWindow();
-
-  // var service = new google.maps.places.PlacesService(map);
-  // service.nearbySearch({
-  //   location: initialLocation,
-  //   // location: {lat: makersAcademy.J, lng: makersAcademy.M},
-  //   radius: 1000,
-  //   types: ['bowling_alley']
-  // }, callback);
 
   if (navigator.geolocation) {
     browserSupportFlag = true;
     navigator.geolocation.getCurrentPosition(function(position) {
       initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       map.setCenter(initialLocation);
+
+      var service = new google.maps.places.PlacesService(map);
+      service.nearbySearch({
+        location: initialLocation,
+        radius: 1000,
+        types: ['bowling_alley']
+      }, callback);
+
     }, function() {
       handleNoGeolocation(browserSupportFlag);
     });
@@ -78,8 +44,6 @@ function initMap() {
     }
     map.setCenter(initialLocation);
   };
-
-
 
 }
 

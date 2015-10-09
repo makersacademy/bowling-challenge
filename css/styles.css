@@ -93,6 +93,7 @@ div#logo {
     margin: 2px;
     border: 4px;
     border: solid;
+    font-size: -webkit-xxx-large;
   }
 
     #map {
@@ -100,7 +101,7 @@ div#logo {
       width: 90%;
       height: 90%;
       margin-left: 5%;
-      margin-top: 10px;
+      margin-top: 3px;
     }
 
   #frame-display {

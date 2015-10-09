@@ -7,24 +7,15 @@ describe('Frame', function() {
   });
 
   function nineFrames() {
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
-    frame.bowl(5);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
   };
 
   it('should be able to bowl', function() {
@@ -51,11 +42,11 @@ describe('Frame', function() {
 
   it('should not allow a throw of more than 10', function() {
     frame.bowl(7),
-    expect(function() {frame.bowl(7)} ).toThrow('Cannot exceed the maximum of ten pins!');
+    expect(function() {frame.bowl(7);}).toThrow('Cannot exceed the maximum of ten pins!');
   });
 
   it('should not allow a throw of more than 10', function() {
-    expect(function() {frame.bowl(11)} ).toThrow('Cannot exceed the maximum of ten pins!');
+    expect(function() {frame.bowl(11);}).toThrow('Cannot exceed the maximum of ten pins!');
   });
 
   it('should allow nine bowls', function() {
@@ -97,6 +88,13 @@ describe('Frame', function() {
   it('should not allow a throw of more than 10', function() {
     nineFrames();
     frame.bowl(7),
-    expect(function() {frame.bowl(7)} ).toThrow('Cannot exceed the maximum of ten pins!');
+    expect(function() {frame.bowl(7);}).toThrow('Cannot exceed the maximum of ten pins!');
+  });
+
+  it('should not allow more than 10 frames', function() {
+    nineFrames();
+    frame.bowl(7);
+    frame.bowl(2);
+    expect(function() {frame.bowl(7);}).toThrow('Game is over!');
   });
 });

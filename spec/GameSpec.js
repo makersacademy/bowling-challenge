@@ -33,4 +33,124 @@ describe('Frame', function() {
     frame.bowl(4);
     expect(game.totalScore).toEqual(9);
   });
+
+  it('should calculate a perfect game score', function() {
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    expect(game.totalScore).toEqual(300);
+  });
+
+  it('should calculate a game score 1', function() {
+    frame.bowl(10);
+    frame.bowl(5);
+    frame.bowl(5);
+    frame.bowl(10);
+    frame.bowl(3);
+    frame.bowl(4);
+    frame.bowl(2);
+    frame.bowl(3);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(5);
+    expect(game.totalScore).toEqual(214);
+  });
+
+  it('should calculate a game score 2', function() {
+    frame.bowl(10);
+    frame.bowl(5);
+    frame.bowl(5);
+    frame.bowl(10);
+    frame.bowl(3);
+    frame.bowl(4);
+    frame.bowl(2);
+    frame.bowl(3);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(2);
+    frame.bowl(8);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(5);
+    expect(game.totalScore).toEqual(186);
+  });
+
+  it('should calculate a game score 3', function() {
+    frame.bowl(10);
+    frame.bowl(5);
+    frame.bowl(5);
+    frame.bowl(10);
+    frame.bowl(3);
+    frame.bowl(4);
+    frame.bowl(2);
+    frame.bowl(3);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(2);
+    frame.bowl(8);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(5);
+    expect(game.totalScore).toEqual(186);
+  });
+
+  it('should calculate a game score 4', function() {
+    frame.bowl(5);
+    frame.bowl(3);
+    frame.bowl(8);
+    frame.bowl(1);
+    frame.bowl(6);
+    frame.bowl(4);
+    frame.bowl(5);
+    frame.bowl(4);
+    frame.bowl(0);
+    frame.bowl(9);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(6);
+    frame.bowl(4);
+    frame.bowl(6);
+    frame.bowl(3);
+    frame.bowl(7);
+    frame.bowl(3);
+    frame.bowl(4);
+    expect(game.totalScore).toEqual(135);
+  });
+
+  it('should calculate a game score 5', function() {
+    frame.bowl(5);
+    frame.bowl(5);
+    frame.bowl(10);
+    frame.bowl(4);
+    frame.bowl(6);
+    frame.bowl(10);
+    frame.bowl(10);
+    frame.bowl(4);
+    frame.bowl(0);
+    frame.bowl(0);
+    frame.bowl(9);
+    frame.bowl(10);
+    frame.bowl(6);
+    frame.bowl(4);
+    frame.bowl(6);
+    frame.bowl(4);
+    frame.bowl(7);
+    expect(game.totalScore).toEqual(164);
+  });
+
 });

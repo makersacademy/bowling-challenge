@@ -52,7 +52,7 @@ describe('Game', function (){
 
   });
 
-  describe('#totalScore', function(){
+  describe('#tallyScore', function(){
 
     it('Tally\'s the total score', function(){
       player.bowl(9)
@@ -91,16 +91,29 @@ describe('Game', function (){
 
   describe('#addBonuses', function(){
 
-    it('adds bonus scores to previous frame', function(){
-      game.frames[1] = [10,0];
-      game.frame = 2;
-      player.downedPins = 9;
-      game.addBonuses(player);
-      game.updateScore;
-      player.downedPins = 2;
-      game.addBonuses(player);
-      expect(game.frames[1]).toEqual([10,11])
+    it('adds bonus scores to bonusPoints for strike', function(){
+      player.bowl(10);
+      game.updateScore(player);
+      console.log(game.bonusPoints);
+      player.bowl(6);
+      game.updateScore(player);
+      console.log(game.bonusPoints);
+      player.bowl(2);
+      game.updateScore(player);
+      console.log(game.bonusPoints);
+      expect(game.bonusPoints).toEqual(8)
+    });
 
+    it('adds bonus scores to bonusPoints for spare', function(){
+      player.bowl(4);
+      game.updateScore(player);
+      player.bowl(6);
+      game.updateScore(player);
+      player.bowl(2);
+      game.updateScore(player);
+      player.bowl(5);
+      game.updateScore(player);
+      expect(game.bonusPoints).toEqual(2)
     });
   });
 });

@@ -9,16 +9,16 @@ Bowling.prototype.getRandomInt = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-// Bowling.prototype.getRandomFrame = function() {
-//   var roll1 = this.getRandomInt(0,10);
+Bowling.prototype.getRandomFrame = function() {
+  var roll1 = this.getRandomInt(0,10);
 
-//   if ( roll1 == 10 ) {
-//     roll2 = null;
-//   } else {
-//     var roll2 = this.getRandomInt(0, (10 - roll1));
-//   }
-//   return [roll1, roll2];
-// };
+  if ( roll1 == 10 ) {
+    roll2 = null;
+  } else {
+    var roll2 = this.getRandomInt(0, (10 - roll1));
+  }
+  return [roll1, roll2];
+};
 
 // Bowling.prototype.getFrameTotal = function(frame) {
 //   return ()
@@ -26,9 +26,9 @@ Bowling.prototype.getRandomInt = function(min, max) {
 
 Bowling.prototype.getStandaloneFramesGame = function() {
   var framesArray = [];
-  framesArray[10] = [null,null];
+  framesArray[9] = [null,null];
 
-  for (var i = 0; i < (framesArray.length - 1); i++) {
+  for (var i = 0; i < framesArray.length; i++) {
     var newFrame = this.getRandomFrame();
     framesArray[i] = newFrame;
   }
@@ -46,10 +46,13 @@ Bowling.prototype.isSpare = function(frame) {
 };
 
 Bowling.prototype.findBonusRolls = function(frame) {
-  // if
+  if ( this.isStrike(frame) ) { return 2 };
+  if ( this.isSpare(frame) ) { return 1 };
+  return 0;
 };
 
-Bowling.prototype.findAllBonuses = function(frame) {
-  // return ( frame.map() )
-};
+// Bowling.prototype.findAllBonuses = function(frame) {
+//   var bonuses = frame.map(this.findBonusRolls) );
+//   return var;
+// };
 

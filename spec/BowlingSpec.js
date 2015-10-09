@@ -46,11 +46,10 @@ describe('Bowling',function() {
     expect(bowling.isSpare(notSpareFrame)).toBe(false);
   });
 
-  it('', function() {
-    var spareFrame = [5, 5];
-    var notSpareFrame = [10, 0];
-    expect(bowling.isSpare(spareFrame)).toBe(true);
-    expect(bowling.isSpare(notSpareFrame)).toBe(false);
+  it('identifies the number of bonus rolls on a frame', function() {
+    expect(bowling.findBonusRolls([9,0])).toEqual (0);
+    expect(bowling.findBonusRolls([9,1])).toEqual (1);
+    expect(bowling.findBonusRolls([10,null])).toEqual (2);
   });
 
   // it('identifies the number of bonus rolls given ten standalone frames',
@@ -67,7 +66,7 @@ describe('Bowling',function() {
   //                          [ 5, 2 ] ];
   //     var exampleResult = [0, 2, 2, 1, 0, 0, 0, 0, 2, 0];
 
-  //     expect(bowling.findBonus(exampleFrame)).toEqual(exampleResult);
+  //     expect(bowling.findAllBonuses(exampleFrame)).toEqual(exampleResult);
   // });
 
 });

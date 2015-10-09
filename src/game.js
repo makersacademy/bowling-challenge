@@ -34,6 +34,10 @@ Game.prototype.updateScore = function(player){
   this.updateFrame(player)
 };
 
+Game.prototype.updateScoreTen = function(player){
+  this.addScoreToFrame(player);
+};
+
 Game.prototype.nextFrame = function(){
   this.frame += 1
 };

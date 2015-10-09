@@ -113,4 +113,15 @@ describe('Game', function (){
       expect(game.bonusPoints).toEqual(2)
     });
   });
+
+  describe('#updateScoreTen', function(){
+
+    it('adds score to frame ten', function(){
+      game.frame = 10;
+      player.bowl(10);
+      game.updateScoreTen(player);
+      expect(game.frames[10]).toEqual([10,0,0]);
+    })
+
+  });
 });

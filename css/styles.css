@@ -169,7 +169,7 @@ button#bowl {
 
   .game-buttons {
     position: relative;
-    width: 80%;
+    width: 100%;
     height: 90%;
     display: list-item;
     margin-top: 20%;
@@ -178,6 +178,7 @@ button#bowl {
     text-shadow: 0 0 2px rgba(0,0,0,0.4);
     text-align: center;
     cursor: pointer;
+    padding: 2px;
     background-color: #6666CC;
     font-size: inherit;
     color: white;
@@ -194,6 +195,7 @@ button#bowl {
 img.face {
   position: relative;
   height: 60%;
+  width: 80%;
   margin-left: 1%;
   bottom: 10px;
 }

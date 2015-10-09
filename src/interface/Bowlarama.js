@@ -142,7 +142,5 @@ insertPinImages = function(){
 
 insertPinImages();
 
-
-
 createHTMLTable();
 

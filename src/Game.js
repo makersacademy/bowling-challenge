@@ -1,37 +1,38 @@
 function Game() {
+  this.fallenPins = 0
   this.total = 0;
   var array = new Array();
-  for (var i=0; i<11; i++) {
-    array.push(new Array(2));
+  for (var i=0; i<12; i++) {
+    array.push([0, 0]);
   }
   this.frames = array
 };
 
-// Game.prototype.countFallenPins = function(pins) {
-//   this.total += pins
-// };
+Game.prototype.setScores = function(nth, rolls, fallenPins) {
+  this.frames[nth-1][rolls-1] = fallenPins;
+}
 
 Game.prototype.countFrameScores = function(nth) {
-  var sum;
-  sum = this.frames[nth-1][0] + this.frames[nth-1][1];
-  if (this.bonusScores(nth) === undefined) {
-    return sum;
+  var sum = 0;
+  var frameScores = this.frames[nth-1][0] + this.frames[nth-1][1]
+  if (this.frames[nth-1][0] === 10) {
+    return sum = frameScores + this.strikeBonusScores(nth);
+  } else if (frameScores === 10) {
+    return sum = frameScores + this.spareBonusScores(nth);
   } else {
-    return sum + this.bonusScores(nth);
+    return sum = frameScores;
   }
 }
 
-Game.prototype.bonusScores = function(nth) {
-  var currentScores, spareBonus, strikeBonus;
-  currentScores = this.frames[nth-1][0] + this.frames[nth-1][1]
-  if (this.frames[nth-1][0] === 10) {
-    if (this.frames[nth][0] === 10) {
-      return strikeBonus = this.frames[nth][0] + this.frames[nth+1][0];
-    } else {
-      return strikeBonus = this.frames[nth][0] + this.frames[nth][1];
-    }
-  } else if ( currentScores === 10) {
-    return spareBonus = this.frames[nth][0];
+Game.prototype.spareBonusScores = function(nth) {
+  return this.frames[nth][0]
+}
+
+Game.prototype.strikeBonusScores = function(nth) {
+  if (this.frames[nth][0] === 10) {
+    return this.frames[nth][0] + this.frames[nth+1][0]
+  } else {
+    return this.frames[nth][0] + this.frames[nth][1]
   }
 }
 

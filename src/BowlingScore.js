@@ -13,7 +13,6 @@ BowlingScore.prototype.addNewRoundScore = function(score) {
 
 BowlingScore.prototype.makeFrameScores = function() {
   this.frameScores = [[this.rawScores[0]]];
-
   for (i = 1; i < this.rawScores.length; i++) {
     if (this.frameScores[this.frameScores.length -1].length < 2) {
       this.frameScores[this.frameScores.length -1].push(this.rawScores[i])
@@ -22,27 +21,38 @@ BowlingScore.prototype.makeFrameScores = function() {
       currentFrame.push(this.rawScores[i])
       this.frameScores.push(currentFrame);
     };
-
   };
 };
 
 BowlingScore.prototype.isSpare = function () {
-
   for (i = 0; i < this.frameScores.length; i++) {
     if (this.frameScores[i][0] + this.frameScores[i][1] === 10) {
       this.bonusScores.push(this.frameScores[i+1][0]);
     };
   };
+};
 
+BowlingScore.prototype.isASpare = function () {
+  for (i = 0; i < this.frameScores.length; i++) {
+    if (this.frameScores[i][0] + this.frameScores[i][1] === 10) {
+      return true;
+    };
+  };
 };
 
 BowlingScore.prototype.isStrike = function () {
-
   for (i = 0; i < this.frameScores.length; i++) {
     if (this.frameScores[i][0] === 10) {
       this.bonusScores.push(this.frameScores[i+1][0]);
       this.bonusScores.push(this.frameScores[i+1][1]);
     };
   };
+};
 
+BowlingScore.prototype.isAStrike = function () {
+  for (i = 0; i < this.frameScores.length; i++) {
+    if (this.frameScores[i][1] === null) {
+      return true;
+    };
+  };
 };

@@ -30,6 +30,11 @@ describe ("BowlingScore", function() {
 
   describe ("isSpare", function() {
 
+    it("knows if frame is a spare", function () {
+      game.frameScores = [[7,3],[4,1]];
+      expect(game.isASpare()).toBe(true);
+    });
+
     it("if previous frame scores total is 10, push next rawScore into BonusScores", function (){
       game.frameScores = [[7,3],[4,1]];
       game.isSpare();
@@ -51,6 +56,11 @@ describe ("BowlingScore", function() {
   });
 
   describe ("isStrike", function () {
+
+    it("knows if frame is a strike", function () {
+      game.frameScores = [[10,null],[4,1]];
+      expect(game.isAStrike()).toBe(true);
+    });
 
     it("if first score of frame is 10, push next two rawScore's into bonusScores", function (){
       game.frameScores = [[10,null],[3,5],[10,null],[7,1]];

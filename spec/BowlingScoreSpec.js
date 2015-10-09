@@ -1,6 +1,7 @@
   beforeEach(function() {
     game = new BowlingScore();
   });
+
 describe ("BowlingScore", function() {
 
   describe ("addNewRoundScore", function () {
@@ -27,13 +28,44 @@ describe ("BowlingScore", function() {
     });
   });
 
-  describe ("makeBonusScores", function() {
+  describe ("isSpare", function() {
+
     it("if previous frame scores total is 10, push last rawScore into BonusScores", function (){
-      game.rawScores = [7,3,4]
-      game.makeFrameScores();
-      game.addNewBonusScore();
+      game.frameScores = [[7,3],[4,1]];
+      game.isSpare();
       expect(game.bonusScores).toEqual([4]);
     });
+
+    it("if previous frame total is not 10, do not push rawScore into bonusScores", function() {
+      game.frameScores = [[7,2],[4,1]];
+      game.isSpare();
+      expect(game.bonusScores).toEqual([]);
+    });
+
+    it("if second rawScore is 10, pust only the last rawScore into BonusScores", function() {
+      game.frameScores = [[0,10],[3,5]];
+      game.isSpare();
+      expect(game.bonusScores).toEqual([3])
+    });
+
   });
+
+  // describe ("isStrike", function (){
+  //
+    // it("if first score of frame is 10, push next two rawScore's into bonusScores", function (){
+    //   game.rawScores = [2,3,10,null,7,6,3,4]
+    //   game.makeFrameScores();
+    //   game.isStrike();
+    //   expect(game.bonusScores).toEqual([7,6])
+    // });
+
+    // it("if first score of frame is not 10, do not push rawScore into bonusScores", function() {
+    //   game.rawScores = [2,3,10,null,7,6,3,4]
+    //   game.makeFrameScores();
+    //   game.isStrike();
+    //   expect(game.bonusScores).toEqual([])
+    // });
+    //
+  // });
 
 });

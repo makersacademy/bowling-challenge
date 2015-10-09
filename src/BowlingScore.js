@@ -26,37 +26,21 @@ BowlingScore.prototype.makeFrameScores = function() {
   };
 };
 
-BowlingScore.prototype.addNewBonusScore = function () {
-  console.log(this.rawScores);
-  console.log(this.frameScores);
+BowlingScore.prototype.isSpare = function () {
 
-  for (i = 0; i < this.rawScores.length; i++) {
-    if (this.rawScores[i] + this.rawScores[i+1] === 10) {
-      this.bonusScores.push(this.rawScores[i+2]);
+  for (i = 0; i < this.frameScores.length; i++) {
+    if (this.frameScores[i][0] + this.frameScores[i][1] === 10) {
+      this.bonusScores.push(this.frameScores[i+1][0]);
     };
   };
-  console.log(this.bonusScores);
 
 };
 
-// BowlingScore.prototype.addNewBonusScore = function () {
-//
+// BowlingScore.prototype.isStrike = function () {
 //   for (i = 0; i < this.rawScores.length; i++) {
-//     console.log(this.frameScores)
-//     if (this.frameScores[this.frameScores[0] + this.frameScores[1]] === 10) {
-//       this.bonusScores.push(this.frameScores[i])
-//     };
-//   };
-// };
-
-// BowlingScore.prototype.addNewBonusScore = function() {
-//
-//   for (i = 0; i < this.rawScores.length; i++) {
-//     // if (this.frameScores[i][0] + this.frameScores[i][1] === 10) {
-//     if (this.rawScores[0] + this.rawScores[1] === 10) {
-//     // console.log(this.rawScores);
-//       // this.bonusScores.push(this.frameScores[i+1])
-//       // console.log(this.bonusScores);
+//     if (this.rawScores[i] === 10) {
+//       this.bonusScores.push(this.rawScores[i+2]);
+//       this.bonusScores.push(this.rawScores[i+3]);
 //     };
 //   };
 // };

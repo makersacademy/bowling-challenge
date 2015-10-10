@@ -26,6 +26,7 @@ Game.prototype.logRoll = function(pinsKnocked) {
   } else { // its on its second roll
     this.currentFrameObject.secondRoll(pinsKnocked); // updates frame with the results of the second roll
     this.scoreSheet.push(this.currentFrameObject); // frame finished add the frame to scoreSheet:
+    this.calculateScore();
     this.gameOver();
     this.currentFrameObject = null; // DOES this go in here or at end of second roll?
   }
@@ -42,6 +43,12 @@ Game.prototype.gameOver = function() {
     this.isGameOver = true;
   }
 };
+
+Game.prototype.calculateScore = function() {
+  if (this.frameIndex == 0) {
+    this.totalScore = (this.currentFrameObject.firstRollScore + this.currentFrameObject.firstRollScore);
+  }
+}
 
 // game.prototype.resetGame = function() {
 //

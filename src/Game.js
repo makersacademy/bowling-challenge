@@ -73,11 +73,9 @@ Game.prototype.isSpare = function(hit) {
 };
 
 Game.prototype.game = function() {
-  if ((this.scoreBoard[10][2] === 10)) {
+  if ((this.scoreBoard[10][2] != null)) {
     this.gameOver = true;
-  } else if (this.frameScore < 10 && this.scoreBoard[10][1] != null) {
-    this.gameOver = true;
-  } else if (this.scoreBoard[10][0]+this.scoreBoard[10][1] === 10) {
+  } else if (this.scoreBoard[10][0] + this.scoreBoard[10][1] < 10) {
     this.gameOver = true;
 };
 };

@@ -180,4 +180,20 @@ describe ('Game', function() {
     expect(game.addScores(10)).toBe(157);
   })
 
+  it ('has max scores of 300', function() {
+    game.setScores(1, 1, 10);
+    game.setScores(2, 1, 10);
+    game.setScores(3, 1, 10);
+    game.setScores(4, 1, 10);
+    game.setScores(5, 1, 10);
+    game.setScores(6, 1, 10);
+    game.setScores(7, 1, 10);
+    game.setScores(8, 1, 10);
+    game.setScores(9, 1, 10);
+    game.setScores(10, 1, 10);
+    game.setScores(11, 1, 10);
+    game.setScores(12, 1, 10);
+    expect(game.addScores(10)).toBe(300);
+  })
+
 });

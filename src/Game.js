@@ -1,5 +1,4 @@
 function Game() {
-  this.fallenPins = 0
   this.total = 0;
   var array = new Array();
   for (var i=0; i<12; i++) {
@@ -9,7 +8,7 @@ function Game() {
 };
 
 Game.prototype.setScores = function(nth, rolls, fallenPins) {
-  this.frames[nth-1][rolls-1] = fallenPins;
+  return this.frames[nth-1][rolls-1] = fallenPins;
 }
 
 Game.prototype.countFrameScores = function(nth) {

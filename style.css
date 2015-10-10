@@ -1,28 +1,46 @@
-table, tr, td {
+#table, #firstRow, #secondRow {
+  width: 1200px;
+}
+
+#firstRow div {
+  height: 80px;
+  width: 100px;
+  display: inline-block;
   border: 1px solid black;
 }
-td {
+#secondRow div.scores {
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+  border: 1px solid black;
+}
+.first {
+  display: inline-block;
+  border: 1px solid red;
+  height: 44px;
+  width: 44px;
+}
+.second {
+  display: inline-block;
+  border: 1px solid blue;
+  height: 44px;
+  width: 44px;
+}
+.third {
+  border: 1px solid green;
+  height: 44px;
   width: 80px;
-  height: 80px;
 }
-td.firstRow {
-  height: 30px;
-  text-align: center;
-}
-/*td.secondRow tr td {
-  position: relative;
-  top: -17px;
-}*/
-
-.secondRow div {
+/*.secondRow div {
   text-align: center;
   height: 40px;
   display: table-cell;
-}
-#first {
+  border: 1px solid black;
+}*/
+/*.first {
   width: 33px;
 }
-#second {
+.second {
   width: 45px;
   position: relative;
   top: -3px;
@@ -30,7 +48,7 @@ td.firstRow {
   border-left: 1px solid black;
   border-bottom: 1px solid black;
 }
-#third {
+.third {
   width: 80px;
   display: block;
 }
@@ -43,7 +61,7 @@ td.firstRow {
 }
 #tenth2 {
   border-right: 1px solid black;
-}
+}*/
 /*td.secondRow tr td:first-child {
   width: 40px;
   height: 40px;
@@ -64,6 +82,28 @@ td.secondRow tr td:last-child {
   text-align: center;
 }
 
+#leftPins div {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+
+  display: inline-block;
+  margin: 3px 3px 3px 3px;
+  text-align: center;
+
+}
+.invisible {
+  border: 0px solid white;
+  color: white;
+}
+
+.visible {
+  border: 1px solid black;
+  background-color: red;
+  border: 1px solid black;
+  background-color: red;
+
+}
 /*.tenth {
   background-color: red;
 }*/

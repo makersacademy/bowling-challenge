@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"></meta>
+  <title>Bowling Score Sheet</title>
+
+  <!-- include source files here... -->
+  <script src="jquery-2.1.4.js"></script>
+  <script src="src/player.js"></script>
+  <script src="src/game.js"></script>
+  <script src="application.js"></script>
+  <link rel="stylesheet" href="public/css/bootstrap.css"/>
+  <!-- include spec files here... -->
+</head>
+  <body>
+    <div style = 'margin-top: 8%'>
+      <div class="col-md-12a text-center">
+        <div id="background">
+          <img src="public/images/bowling.jpg" class="stretch" alt="" />
+        </div>
+        <h1 style= 'color: white'>Score Sheet<h1>
+      </div>
+    </div>
+    <div class="col-md-2 col-md-offset-5 text-center">
+      <form>
+        <input class="form-control" name="pins" placeholder="Pins knocked down">
+        <button type="button" class="btn btn-default" id="score" >Submit</button>
+      </form>
+    </div>
+    <div style = 'margin-top: 10%'>
+      <table class = 'table-bordered'>
+        <tr>
+          <td>Frame 1</td>
+          <td>Frame 2</td>
+          <td>Frame 3</td>
+          <td>Frame 4</td>
+          <td>Frame 5</td>
+          <td>Frame 6</td>
+          <td>Frame 7</td>
+          <td>Frame 8</td>
+          <td>Frame 9</td>
+          <td>Frame 10</td>
+        </tr>
+        <tr>
+          <td><span id = 'frame1'></span></td>
+          <td><span id = 'frame2'></span></td>
+          <td><span id = 'frame3'></span></td>
+          <td><span id = 'frame4'></span></td>
+          <td><span id = 'frame5'></span></td>
+          <td><span id = 'frame6'></span></td>
+          <td><span id = 'frame7'></span></td>
+          <td><span id = 'frame7'></span></td>
+          <td><span id = 'frame9'></span></td>
+          <td><span id = 'frame10'></span></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

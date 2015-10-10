@@ -74,6 +74,22 @@ describe ("BowlingScore", function() {
       expect(game.bonusScores).toEqual([10,7,7,1]);
     });
 
+    it("if strikes are hit multiple times in a row, keep pushing 10's into bonusScores", function () {
+      game.frameScores = [[10,null],[10,null],[10,null],[10,null],[2,3]];
+      game.Strike();
+      expect(game.bonusScores).toEqual([10,10,10,10,10,2,2,3]);
+    });
+
+  });
+
+  describe ("testing isSpare and isStrike", function () {
+
+    it("runs test games", function () {
+      game.frameScores = [[6,2],[9,1],[7,1],[10,null],[10,null],[7,3],[6,1],[10,null],[8,2],[5,1]];
+      game.Strike();
+      game.Spare();
+      expect(game.bonusScores).toEqual([7,10,7,7,3,6,8,2,5]);
+    });
   });
 
 });

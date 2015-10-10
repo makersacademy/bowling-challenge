@@ -22,7 +22,7 @@ function initMap() {
       var service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
         location: initialLocation,
-        radius: 1000,
+        radius: 10000,
         types: ['bowling_alley']
       }, callback);
 

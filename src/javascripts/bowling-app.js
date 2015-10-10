@@ -10,18 +10,35 @@ function Game() {
 };
 
 Game.prototype.roll = function(pins) {
-  this.bonusDistributor(pins)
+  this.strikeChecker(pins);
+  this.bonusDistributor(pins);
   this.bonusChecker(pins);
   this.rolls[this.currentFrame].push(pins);
-  this.scoreUpdate(pins);
+  this.scoreUpdater(pins);
   this.frameHandler(pins)
+};
+
+// --------------------------------------------------
+
+Game.prototype.strikeChecker = function(pins) {  
+  if (pins === 10) {
+    this.isStrike = true
+  };
+};
+
+// --------------------------------------------------
+
+Game.prototype.bonusDistributor = function(pins) {
+  // push to last frame if last frame was strike and make lastlast true
+  if(this.lastFrameStrike === true) { this.addToLast(pins) ; this.lastLastFrameStrike = true };
+  if(this.lastFrameStrike === false && this.lastLastFrameStrike === true) { this.addToLastAgain(pins) ; this.lastLastFrameStrike = false };
+  // if(this.lastFrameSpare === true) { this.addToLast(pins) ; this.lastFrameSpare = false }
 };
 
 // --------------------------------------------------
 
 Game.prototype.bonusChecker = function(pins) {
   if (pins === 10) {
-    this.isStrike = true
     this.lastFrameStrike = true
   };
   var total = 0;
@@ -31,16 +48,6 @@ Game.prototype.bonusChecker = function(pins) {
   if (total === 10) {
     this.lastFrameSpare = true
   };
-  this.isStrike = false
-};
-
-// --------------------------------------------------
-
-Game.prototype.bonusDistributor = function(pins) {
-  // push to last frame if last frame was strike and make lastlast true
-  if(this.lastFrameStrike === true) { this.addToLast(pins) ; this.lastLastFrameStrike = true };
-  if(this.lastFrameStrike === false && this.lastLastFrameStrike === true) { this.addToLastAgain(pins) ; this.lastLastFrameStrike = false };
-  if(this.lastFrameSpare === true) { this.addToLast(pins) ; this.lastFrameSpare = false }
 };
 
 // --------------------------------------------------
@@ -50,13 +57,13 @@ Game.prototype.addToLast = function(pins) {
 };
 
 Game.prototype.addToLastAgain = function(pins) {
-  if (this.isStrike === true) {this.rolls[this.currentFrame - 2].push(pins)};
+  if (this.isStrike === true) { this.rolls[this.currentFrame - 2].push(pins)};
   this.rolls[this.currentFrame - 1].push(pins)
 };
 
 // --------------------------------------------------
 
-Game.prototype.scoreUpdate = function(pins) {
+Game.prototype.scoreUpdater = function(pins) {
   this.score += pins
   var sum = 0;
   for (var k in this.rolls) {
@@ -65,6 +72,7 @@ Game.prototype.scoreUpdate = function(pins) {
       sum += vals[i] || 0;
     }
   }
+  this.score = sum
 };
 
 Game.prototype.frameHandler = function(pins) {

@@ -2,12 +2,23 @@ var express = require('express');
 var app = express();
 var root = __dirname;
 var path = require('path');
+var session = require('express-session');
+var flash = require('express-flash');
 
-app.use(express.static(root + '/public'));
+app.set('views', 'app/views');
+app.set('view engine', 'jade');
+app.use(express.static(root + '/app/public'));
+app.use(session({secret: 'session secret key'}));
+app.use(flash());
 
 app.get('/', function(req, res) {
-  console.log(require('path'));
-  res.sendFile(path.join(root + '/index.html'));
+  res.render('index', {
+  });
+});
+
+app.get('/score_card', function(req, res) {
+  res.render('score_card', {
+  });
 });
 
 var server = app.listen(3000, function() {

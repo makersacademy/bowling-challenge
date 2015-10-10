@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/danielstpaul/bowling-challenge#readme",
   "dependencies": {
-    "express": "^4.13.3"
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "express-flash": "0.0.2",
+    "express-session": "^1.11.3",
+    "jade": "^1.11.0"
   }
 }

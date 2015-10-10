@@ -50,8 +50,9 @@ function Bowling() {
 
   Bowling.prototype.updateScoreTenth = function(val1,val2) {
     if(this.isStrike() == true && val1 == 10){
+      var orig = this.frames[this.frameCount - 1][0];
       this.frames[this.frameCount - 1][0] += val1 * 2;
-      this.score += this.frames[this.frameCount - 1][0]
+      this.score += this.frames[this.frameCount - 1][0] - orig;
       this.score += val1 + val2;
     }
     else if(this.isSpare()){

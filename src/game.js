@@ -21,6 +21,7 @@ Game.prototype.logRoll = function(pinsKnocked) {
   } else { // its on its second roll
 
     this.scoreSheet.push(this.currentFrameObject); // frame finished add the frame to scoreSheet:
+    this.currentFrameObject = null; // DOES this go in here or at end of second roll?
 
   }
 

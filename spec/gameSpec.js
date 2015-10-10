@@ -27,5 +27,10 @@ describe('Player', function() {
     expect(game.scoreSheet[0]).toEqual(jasmine.any(Frame));
   });
 
+  it('should reset currentFrameObject to null after second roll of frame', function() {
+    game.rollBall(2);
+    game.rollBall(2);
+    expect(game.currentFrameObject).toEqual(null);
+  })
 
 });

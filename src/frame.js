@@ -16,3 +16,8 @@ Frame.prototype.secondRoll = function(pinsKnocked) {
   this.secondRollScore = pinsKnocked; //updates second roll score
   this.spare = ((this.firstRollScore + this.secondRollScore) == 10 ? true : false); // spare?
 };
+
+// second roll which adds pins to score so this will remain at 0 which is fine as its a strike as will spare
+// pushes scoreSheet
+// checks game over
+// resets current frame object to null

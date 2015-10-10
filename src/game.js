@@ -13,32 +13,37 @@ Game.prototype.logRoll = function(pinsKnocked) {
   }
 
   if (this.currentFrameObject == null) {
-    //create the frame object for every new frame(round)
-    this.currentFrameObject = new Frame();
+    this.currentFrameObject = new Frame(); //create the frame object for every new frame(round)
     this.frameIndex += 1;//
   }
 
-  //if its on its first roll:
-  if (this.currentFrameObject.rollIndex == 0) {
-    //update the frame with firstRoll score
-    this.currentFrameObject.firstRoll(pinsKnocked);
-
-  } else { // its on its second roll
+  if (this.currentFrameObject.rollIndex == 0) { //if its on its first roll:
+    this.currentFrameObject.firstRoll(pinsKnocked); //update the frame with firstRoll score
+    this.strike();
+  } else {// if its on its second roll
     this.currentFrameObject.secondRoll(pinsKnocked); // updates frame with the results of the second roll
     this.scoreSheet.push(this.currentFrameObject); // frame finished add the frame to scoreSheet:
-    this.calculateScore();
-    this.gameOver();
-    this.currentFrameObject = null; // DOES this go in here or at end of second roll?
+    this.calculateScore(); // calculates score at end of the frame
+    this.gameOver(); // checks if the game is over
+    this.currentFrameObject = null; //resets current frame
   }
-
 };
 
 Game.prototype.rollBall = function(pinsKnocked) {
   this.logRoll(pinsKnocked);
 };
 
+Game.prototype.strike = function() {
+  if (this.currentFrameObject.strike == true) {
+    this.scoreSheet.push(this.currentFrameObject);
+    this.calculateScore();
+    this.gameOver();
+    this.currentFrameObject = null;
+    return;
+  }
+};
+
 Game.prototype.gameOver = function() {
-  // this probably needs to go at end of frame 9
   if (this.frameIndex == 9 && this.currentFrameObject.strike == false) {
     this.isGameOver = true;
   }

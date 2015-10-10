@@ -31,6 +31,16 @@ describe('Player', function() {
     game.rollBall(2);
     game.rollBall(2);
     expect(game.currentFrameObject).toEqual(null);
-  })
+  });
+
+  it('should start with game over set to false', function() {
+    expect(game.isGameOver).toEqual(false);
+  });
+
+  it('should set game over to true at the end of round 9 if player does not have a strike', function() {
+    for (var i = 0; i <= 19; i++)
+    game.rollBall(2);
+    expect(game.isGameOver).toEqual(true);
+  });
 
 });

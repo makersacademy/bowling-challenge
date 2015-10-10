@@ -1,8 +1,6 @@
 function Game() {
   this.frameIndex = -1; // -1 as 0 needs to be first index
   this.currentFrameObject = null; // this will be refreshed every frame to the newly created Frame
-  this.previousStrike = false;
-  this.previousSpare = false;
   this.scoreSheet = []; //[Frame, Frame]
   this.totalScore = 0;
 }
@@ -20,8 +18,7 @@ Game.prototype.logRoll = function(pinsKnocked) {
     //if its on its first roll:
     if (this.currentFrameObject.rollIndex == 0) {
 
-        //update the roll index on CURRENT frame
-        this.currentFrameObject.rollIndex = 1;
+
         //update the frame
         this.currentFrameObject.firstRoll(pinsKnocked);
 
@@ -30,6 +27,7 @@ Game.prototype.logRoll = function(pinsKnocked) {
 
             // frame finished add the frame to scoreSheet:
             this.scoreSheet.push(this.currentFrameObject);
+            this.currentFrameObject == null
       }
 }
 
@@ -50,7 +48,7 @@ function Frame(){
 Frame.prototype.firstRoll = function(pinsKnocked){
   this.firstRollScore = pinsKnocked;
   this.strike = (pinsKnocked == 10 ? true : false); //etc (although is there anythng else?)
-  // this.rollIndex = 1;
+  this.rollIndex = 1;
 }
 
 Frame.prototype.secondRoll = function (pinsKnocked){

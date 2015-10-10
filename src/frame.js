@@ -7,12 +7,12 @@ function Frame() {
 }
 
 Frame.prototype.firstRoll = function(pinsKnocked) {
-  this.firstRollScore = pinsKnocked;
-  this.strike = (pinsKnocked == 10 ? true : false);
+  this.firstRollScore = pinsKnocked; //updates first roll score
+  this.strike = (pinsKnocked == 10 ? true : false); // strike?
   this.rollIndex = 1;
 };
 
 Frame.prototype.secondRoll = function(pinsKnocked) {
-  this.secondRollScore = pinsKnocked;
-  this.spare = ((this.firstRollScore + this.secondRollScore) == 10 ? true : false);
+  this.secondRollScore = pinsKnocked; //updates second roll score
+  this.spare = ((this.firstRollScore + this.secondRollScore) == 10 ? true : false); // spare?
 };

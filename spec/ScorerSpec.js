@@ -57,7 +57,7 @@ describe('ScoreCard', function() {
   });
 
   it('should stop at round 10 and score equal score', function() {
-    for (i = 0; i < 9; i++) {
+    for (i = 0; i < 10; i++) {
       scoreCard.ball1 = 3;
       scoreCard.ball2 = 2;
       scoreCard.scoreRound();
@@ -67,6 +67,30 @@ describe('ScoreCard', function() {
     scoreCard.ball2 = 2;
     expect(scoreCard.scoreRound()).toEqual('Game over');
     expect(scoreCard.currentScore).toEqual(50);
+    console.log(scoreCard.scoreArray);
+  });
+
+  it('should correctly score a spare', function() {
+    scoreCard.ball1 = 5;
+    scoreCard.ball2 = 5;
+    scoreCard.scoreRound();
+    scoreCard.ball1 = 9;
+    scoreCard.ball2 = 0;
+    scoreCard.scoreRound();
+    expect(scoreCard.currentScore).toEqual(28);
+  });
+
+  xit('should score 10 spares', function() {
+    for (i = 0; i < 10; i++) {
+      scoreCard.ball1 = 9;
+      scoreCard.ball2 = 1;
+      scoreCard.scoreRound();
+    }
+
+    scoreCard.ball1 = 9;
+    scoreCard.ball2 = 1;
+    expect(scoreCard.scoreRound()).toEqual('Game over');
+    expect(scoreCard.currentScore).toEqual(190);
     console.log(scoreCard.scoreArray);
   });
 

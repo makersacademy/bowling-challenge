@@ -1,7 +1,7 @@
 function ScoreCard() {
   this.currentScore = 0;
   this.currentRound = 1;
-  this.numberofRounds = 10;
+  this.numberOfRounds = 10;
   this.scoreArray = [];
   this.ball1 = 0;
   this.ball2 = 0;
@@ -10,36 +10,45 @@ function ScoreCard() {
 }
 
 ScoreCard.prototype.scoreRound = function() {
+  if (this.currentRound > this.numberOfRounds) {
+    return 'Game over';
+  };
+
   this.checkScore();
-  if (this.stat === 0) {
+  if (this.stat != 1) {
     this.simpleScore();
+    this.checkPreviousSpare();
+    if (this.stat ===3 && this.currentRound === 10) {
+      //get bonus ball
+    };
+    this.currentRound += 1;
   };
 
-  if (this.stat === 1) {
-    return this.currentRound;
-  };
-
-  if (this.stat === 2) {
-    this.simpleScore();
-
-    // this.strikeScore();
-  };
-
-  if (this.stat === 3) {
-    this.simpleScore();
-
-    // this.spareScore();
-  };
-
-  this.currentRound += 1;
+  //console.log(this.message);
   return this.checkRound();
+};
+
+ScoreCard.prototype.checkPreviousSpare = function() {
+  num = this.currentRound;
+  if (num > 1) {
+    for (i = 1; i < num; i++) {
+      stat = (this.scoreArray[i][3]);
+      if (stat == 3) {
+        this.scoreArray[i][2] += this.scoreArray[i + 1][0];
+        this.scoreArray[i + 1][2] += this.scoreArray[i + 1][0];
+        this.scoreArray[i][3] = 0;
+        this.currentScore = this.scoreArray[i + 1][2];
+      };
+    }
+  };
 };
 
 ScoreCard.prototype.simpleScore = function() {
   this.currentScore += this.addBalls(this.ball1, this.ball2);
   this.scoreArray[this.currentRound] = [this.ball1,
                                         this.ball2,
-                                        this.currentScore,];
+                                        this.currentScore,
+                                        this.stat,];
 };
 
 ScoreCard.prototype.checkScore = function() {
@@ -56,6 +65,7 @@ ScoreCard.prototype.checkScore = function() {
 
   if (this.ball1 === 10) {
     this.stat = 2;
+    this.ball2 = undefined;
     return this.message = 'Strike';
   };
 
@@ -78,11 +88,15 @@ ScoreCard.prototype.ball2 = function(ball2) {
 };
 
 ScoreCard.prototype.addBalls = function(ball1, ball2) {
+  if (ball2 === undefined) {
+    return ball1;
+  };
+
   return (ball1 + ball2);
 };
 
 ScoreCard.prototype.checkRound = function() {
-  if (this.currentRound > this.numberofRounds) {
+  if (this.currentRound > this.numberOfRounds) {
     return 'Game over';
   } else {
     return this.currentRound;

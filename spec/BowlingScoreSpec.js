@@ -82,15 +82,37 @@ describe ("BowlingScore", function() {
 
   });
 
-  describe ("testing isSpare and isStrike", function () {
+  describe ("example frames", function () {
 
-    it("runs test games", function () {
+    it("test if strike and spare work", function () {
       // game.frameScores = [[6,2],[9,1],[7,1],[10,null],[10,null],[7,3],[6,1],[10,null],[8,1],[5,1]];
-      game.frameScores = [[10,null],[10,null],[8,1],[10,null],[5,1],[6,4],[6,2]];
+      game.frameScores = [[10,null],[10,null],[8,1],[10,null],[5,1],[6,4],[6,2],[5,5],[7,3],[5,2]];
+      // game.frameScores = [[8,1],[7,3],[10,null],[10,null],[3,2],[10,null],[10,null],[10,null],[6,4],[2,3]];
       game.frameBonus();
-      // expect(game.bonusScores).toEqual([7,10,7,7,3,6,8,2,5]);
-      expect(game.bonusScores).toEqual([10,8,8,1,5,1,6]);
+      // expect(game.bonusScores).toEqual([7,10,7,7,3,6,8,1]);
+      expect(game.bonusScores).toEqual([10,8,8,1,5,1,6,7,5]);
+      // expect(game.bonusScores).toEqual([10,10,3,3,2,10,10,10,6,6,4,2]);
     });
+  });
+
+  describe ("frameTotals", function () {
+
+    it("logs individual frame total", function () {
+      game.frameScores = [[6,2],[8,1],[5,4]];
+      game.frameTotal();
+      expect(game.frameTotals).toEqual([8,9,9]);
+    });
+
+  });
+
+  describe ("testing game whole", function () {
+    it("test all features", function (){
+      game.frameScores = [[7,2],[4,1],[10,null],[8,2],[3,6],[2,4],[6,4],[10,null],[10,null],[3,6]];
+      game.frameBonus();
+      expect(game.bonusScores).toEqual([8,2,3,10,10,3,3,6]);
+      game.frameTotal();
+      expect(game.frameTotals).toEqual([9,5,10,10,9,6,10,10,10,9]);
+    })
   });
 
 });

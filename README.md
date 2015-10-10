@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/anitacanita/bowling-challenge.svg)](https://travis-ci.org/anitacanita/bowling-challenge)
 
 Bowling Challenge
 =================

@@ -18,27 +18,49 @@ function Bowling() {
     this.frameCount++;
   };
 
-  Bowling.prototype.bowl = function(val1,val2) {
+  Bowling.prototype.bowl = function(val1,val2,val3) {
     this.frames[this.frameCount][0] = val1;
     this.frames[this.frameCount][1] = val2;
-    if(this.isTenthFrame() == true){this.tenthFrameBowl(val1,val2)};
-    this.updateScore(val1,val2);
-    this.updateFrame();
+    if(this.isTenthFrame() == true){
+      this.tenthFrameBowl(val1,val2,val3)
+    }
+    else {
+      this.updateScore(val1,val2);
+      this.updateFrame();
+    };
   };
 
   Bowling.prototype.tenthFrameBowl = function(val1,val2,val3) {
     this.frames[this.frameCount][0] = val1;
     this.frames[this.frameCount][1] = val2;
-    this.score += val1 + val2;
+    this.frames[this.frameCount][2] = val3;
+    this.updateScoreTenth(val1,val2);
+    if(this.finalRoll()){this.score += val3};
+  };
+
+  Bowling.prototype.finalRoll = function() {
+    if(this.frames[10][0] == 10 || this.frames[10][0] + this.frames[10][1] == 10){
+      return true;
+    };
   };
 
   Bowling.prototype.isTenthFrame = function() {
     if(this.frameCount == 10){return true};
   }
 
+  Bowling.prototype.updateScoreTenth = function(val1,val2) {
+    if(this.isStrike() == true && val1 == 10){
+      this.frames[this.frameCount - 1][0] += val1 * 2;
+      this.score += this.frames[this.frameCount - 1][0]
+    }
+    else{
+      this.updateScore(val1,val2)
+    };
+  }
   Bowling.prototype.updateScore = function(val1,val2) {
     if(this.isStrike() == true){
-      this.score += (val1 + val2) * 2;
+      this.frames[this.frameCount - 1][0] += (val1 + val2) * 2;
+      this.score += this.frames[this.frameCount - 1][0]
     }
     else if(this.isSpare() == true){
       this.score += (val1 * 2) + val2;

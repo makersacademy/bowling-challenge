@@ -52,7 +52,7 @@ describe("Bowling", function() {
     it("adds the strike bonus to the current frame", function() {
       bowling.bowl(10,0);
       bowling.bowl(5,4);
-      expect(bowling.score).toEqual(28);
+      expect(bowling.score).toEqual(38);
     });
 
     it("adds the spare bonus to the current frame", function() {
@@ -67,10 +67,10 @@ describe("Bowling", function() {
       expect(bowling.score).toEqual(5);
     });
 
-    it("checks for a bonus roll if a strike occurs in tenth frame", function() {
+    it("adds three scores to the 10th frame array if a strike is scored in last frame", function() {
       bowling.frameCount = 10;
-      bowling.tenthFrameBowl(10);
-      
+      bowling.tenthFrameBowl(10,5,6);
+      expect(bowling.score).toEqual(21);
     });
   });
 

@@ -55,6 +55,8 @@ Game.prototype.calculateScore = function() {
 
 };
 
+// need to fix logic for when a strike happens! :)
+
 // game.prototype.resetGame = function() {
 //
 // }

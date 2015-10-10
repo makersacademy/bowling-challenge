@@ -43,4 +43,16 @@ describe('Player', function() {
     expect(game.isGameOver).toEqual(true);
   });
 
+  it('should add the score of the first frame to totalScore', function() {
+    game.rollBall(2);
+    game.rollBall(2);
+    expect(game.totalScore).toEqual(4);
+  });
+
+  it('should add the score of the second frame to totalScore if there is no strike/spare', function() {
+    for (var i = 0; i <= 3; i++)
+    game.rollBall(2);
+    expect(game.totalScore).toEqual(8);
+  });
+
 });

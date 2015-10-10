@@ -8,10 +8,8 @@ Score a game of bowling
 
 ## Technologies Used
 
-- LANGUAGE_ONE
-- LANGUAGE_TWO
-- FRAMEWORK
-- TESTING SUITES
+- Javascript
+- Jasmine
 
 ## Job List
 
@@ -24,7 +22,3 @@ Score a game of bowling
 
 - [ ]
 - [ ]
-
-## Takeaway
-
-TODO: Enter a personal reflection and/or things you learnt

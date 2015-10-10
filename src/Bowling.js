@@ -19,6 +19,7 @@ function Bowling() {
   };
 
   Bowling.prototype.bowl = function(val1,val2,val3) {
+    this.checkScores(val1,val2);
     this.frames[this.frameCount][0] = val1;
     this.frames[this.frameCount][1] = val2;
     if(this.isTenthFrame() == true){
@@ -36,6 +37,7 @@ function Bowling() {
     this.frames[this.frameCount][2] = val3;
     this.updateScoreTenth(val1,val2);
     if(this.finalRoll()){this.score += val3};
+    return "game over";
   };
 
   Bowling.prototype.finalRoll = function() {
@@ -92,4 +94,8 @@ function Bowling() {
       }
       else{return false};
     };
+  };
+
+  Bowling.prototype.checkScores = function(val1,val2) {
+    if(val1 + val2 > 10){throw "frame score cannot exceed 10"};
   };

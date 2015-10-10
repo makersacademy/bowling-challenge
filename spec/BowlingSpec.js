@@ -22,6 +22,11 @@ describe("Bowling", function() {
       bowling.frameCount = 10;
       expect(bowling.isTenthFrame()).toBe(true);
     });
+
+    it("returns 'game over' when tenth frame is over", function() {
+      bowling.frameCount = 10;
+      expect(bowling.tenthFrameBowl(5,4)).toEqual("game over");
+    });
   });
 
   describe("Score", function() {
@@ -77,6 +82,10 @@ describe("Bowling", function() {
       bowling.frameCount = 10;
       bowling.tenthFrameBowl(5,5,5);
       expect(bowling.score).toEqual(15);
+    });
+
+    it("throws error if inputted values are higher than 10", function() {
+      expect( function() {bowling.bowl(5,6); } ).toThrow(new Error("frame score cannot exceed 10"));
     });
   });
 

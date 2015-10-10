@@ -10,7 +10,7 @@ function Frame() {
 Frame.prototype.firstRoll = function(pinsKnocked) {
   this.firstRollScore = pinsKnocked; //updates first roll score
   this.totalFrameScore += pinsKnocked;
-  this.strike = (pinsKnocked == 10 ? true : false); // strike?
+  this.strike = (pinsKnocked == 10 ? true : false); // strike
   this.rollIndex = 1;
 };
 

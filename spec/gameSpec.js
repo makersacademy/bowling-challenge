@@ -60,4 +60,16 @@ describe('Player', function() {
     expect(game.scoreSheet[0]).toEqual(jasmine.any(Frame));
   });
 
+  it('should increase strike count by one in the event of a strike', function() {
+    game.rollBall(10);
+    expect(game.strikeCount).toEqual(1);
+  });
+
+  it('should reset strike count to 0 when there is no strike', function() {
+    game.rollBall(10);
+    game.rollBall(5);
+    game.rollBall(5);
+    expect(game.strikeCount).toEqual(0);
+  });
+
 });

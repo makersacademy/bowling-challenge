@@ -4,6 +4,7 @@ function Game() {
   this.scoreSheet = []; //[Frame, Frame] stores individual frames
   this.totalScore = 0; // is this needed? if so -- does it belong in Frame?
   this.isGameOver = false;
+  this.strikeCount = 0;
 }
 
 Game.prototype.rollBall = function(pinsKnocked) {
@@ -25,6 +26,7 @@ Game.prototype.logRoll = function(pinsKnocked) {
     this.currentFrameObject.firstRoll(pinsKnocked); //update the frame with firstRoll score
     this.checkStrike(); // checks if there was a strike
   } else { // if its on its second roll and there was no strike
+    this.strikeCount = 0; // resets strike count to 0 
     this.currentFrameObject.secondRoll(pinsKnocked); // updates frame with the results of the second roll
     this.scoreSheet.push(this.currentFrameObject); // frame finished add the frame to scoreSheet:
     this.calculateScore(); // calculates score at end of the frame
@@ -39,26 +41,25 @@ Game.prototype.checkStrike = function() {
     this.calculateScore();
     this.gameOver();
     this.currentFrameObject = null;
+    this.strikeCount += 1;
     return;
   }
 };
 
 Game.prototype.calculateScore = function() {
-  // if (this.frameIndex == 0) { // if its the first frame, no strikes/half strikes will have happened.
-  //   this.totalScore = this.currentFrameObject.totalFrameScore;
+  // if on first frame or if there were no strikes/spares
+  // if ((this.frameIndex != 0 || this.frameIndex == 0) && (this.currentFrameObject.strike == false && this.currentFrameObject.spare == false)) {
   // }
 
-  if ((this.frameIndex != 0 || this.frameIndex == 0) && (this.currentFrameObject.strike == false && this.currentFrameObject.spare == false)) {
-    this.totalScore += this.currentFrameObject.totalFrameScore;
-
-  }
-  // if (this.currentFrameObject.strike == true && this.scoreSheet[this.frameIndex - 1].strike == false) { // checking if previous frame was a strike
-  //   this.totalScore += this.currentFrameObject
+  // if (this.scoreSheet[this.frameIndex - 1].strike == true && this.currentFrameObject.strike == false) { // checking if previous frame was a strike
+  //   this.totalScore +=
   //
+  // } else {
+    this.totalScore += this.currentFrameObject.totalFrameScore;
   // }
-
-
-
+  //
+  // get a variable/property that stores the roll of strikes we're on like in old code. when strike happens + 1, when it doesnt reset it.
+  // could there be an accumulating variable that stores the points
 };
 
 Game.prototype.gameOver = function() {

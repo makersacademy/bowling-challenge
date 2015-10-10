@@ -31,4 +31,15 @@ describe('Frame', function() {
     expect(frame.rollIndex).toEqual(1);
   });
 
+  it('should record strike as true if pinsKnocked is 10', function() {
+    frame.firstRoll(10);
+    expect(frame.strike).toEqual(true);
+  });
+
+  it('should record spare as true if pinsKnocked is 10', function() {
+    frame.firstRoll(5);
+    frame.secondRoll(5);
+    expect(frame.spare).toEqual(true);
+  });
+
 });

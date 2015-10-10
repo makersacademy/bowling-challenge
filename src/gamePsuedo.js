@@ -14,13 +14,14 @@ Game.prototype.logRoll = function(pinsKnocked) {
 
     //create the frame
     this.currentFrameObject = new Frame();
-    this.frameIndex += 1; // THIS NEEDS to be below as well
-
+    this.frameIndex += 1;
   }
 
     //if its on its first roll:
     if (this.currentFrameObject.rollIndex == 0) {
 
+        //update the roll index on CURRENT frame
+        this.currentFrameObject.rollIndex = 1;
         //update the frame
         this.currentFrameObject.firstRoll(pinsKnocked);
 
@@ -43,18 +44,18 @@ function Frame(){
   this.firstRollScore = 0;
   this.secondRollScore = 0;
   this.strike = false;
-  this.split = false;
+  this.spare = false;
 }
 
 Frame.prototype.firstRoll = function(pinsKnocked){
   this.firstRollScore = pinsKnocked;
   this.strike = (pinsKnocked == 10 ? true : false); //etc (although is there anythng else?)
-  this.rollIndex = 1;
+  // this.rollIndex = 1;
 }
 
 Frame.prototype.secondRoll = function (pinsKnocked){
   this.firstRollScore = pinsKnocked;
-  this.split = ((this.firstRollScore + this.secondRollScore) == 10 ? true : false);
+  this.spare = ((this.firstRollScore + this.secondRollScore) == 10 ? true : false);
   this.currentFrameObject = null;
 }
 

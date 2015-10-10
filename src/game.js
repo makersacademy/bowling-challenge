@@ -29,7 +29,7 @@ Game.prototype.logRoll = function(pinsKnocked) {
     this.currentFrameObject.secondRoll(pinsKnocked); // updates frame with the results of the second roll
     this.scoreSheet.push(this.currentFrameObject); // frame finished add the frame to scoreSheet:
     this.calculateScore(); // calculates score at end of the frame
-    // this.strikeCount = 0; // resets strike count to 0
+    this.strikeCount = 0; // resets strike count to 0
     this.gameOver(); // checks if the game is over
     this.currentFrameObject = null; //resets current frame
   }
@@ -46,18 +46,27 @@ Game.prototype.checkStrike = function() {
   }
 };
 
-Game.prototype.calculateScore = function() {
-if (this.frameIndex != 0 && this.scoreSheet[this.frameIndex - 1].strike == true && this.scoreSheet[this.frameIndex].strike == false) {
-    console.log('wee') // checking if previous frame was a strike
-    this.totalScore += ((this.strikeCount * 10 + this.currentFrameObject.totalFrameScore) + this.currentFrameObject.totalFrameScore);
+Game.prototype.strikeCalculator = function() {
+  var i = 1
+  while (this.scoreSheet[this.frameIndex - i].strike == true && this.strikeCount > 1) {
+    this.totalScore += (this.strikeCount * 10); // X X 6 - 0
+    this.strikeCount - 1; // 20 + 30 + 12
+    i -= 1
+    console.log(this.totalScore)
+  }
 
+  this.totalScore += 10 + (2 * this.currentFrameObject.totalFrameScore); // 42 but should be 45
+};
+
+Game.prototype.calculateScore = function() {
+  if (this.frameIndex != 0 && this.scoreSheet[this.frameIndex - 1].strike == true && this.scoreSheet[this.frameIndex].strike == false) {
+    console.log('wee');
+    this.strikeCalculator();
   }  // if on first frame or if there were no strikes/spares
-  else  if ((this.frameIndex != 0 || this.frameIndex == 0) && (this.scoreSheet[this.frameIndex].strike == false && this.scoreSheet[this.frameIndex].spare == false )) {
-      this.totalScore += this.currentFrameObject.totalFrameScore;
-    }
-  // //
-  // get a variable/property that stores the roll of strikes we're on like in old code. when strike happens + 1, when it doesnt reset it.
-  // could there be an accumulating variable that stores the points
+  else if ((this.frameIndex != 0 || this.frameIndex == 0) && (this.scoreSheet[this.frameIndex].strike == false && this.scoreSheet[this.frameIndex].spare == false)) {
+    this.totalScore += this.currentFrameObject.totalFrameScore;
+  }
+
 };
 
 Game.prototype.gameOver = function() {

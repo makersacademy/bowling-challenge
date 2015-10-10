@@ -8,6 +8,7 @@ function bowling() {
 }
 
 $(function() {
+  var scores1, scores2;
   for (var i=1; i<11; i++) {
     $('#fallenPins').append('<div id="pins' + i + '">' + i + '</div>')
   }
@@ -30,11 +31,21 @@ $(function() {
       var scores1 = parseInt(e.target.textContent);
       // console.log(parseInt(e.target.textContent));
       game.setScores(frameNumber, 1, scores1);
-      console.log('first' + game.frames);
-      $('#fallenPins').hide();
-      $('#leftPins div').show();
-      $('#leftPins div').removeClass('invisible');
-      $('#leftPins div').addClass('visible');
+      console.log(game.frames);
+
+      if (scores1 === 10) {
+        $('#fallenPins').show();
+        $('#leftPins div').hide();
+
+        $('#frame' + frameNumber.toString() + ' .second').text('X');
+        frameNumber++
+      } else {
+        $('#fallenPins').hide();
+        $('#leftPins div').show();
+        $('#leftPins div').removeClass('invisible');
+        $('#leftPins div').addClass('visible');
+        $('#frame' + frameNumber.toString() + ' .first').text(scores1);
+      }
     });
 
     $('#leftPins div').on('click', function(e) {
@@ -43,8 +54,21 @@ $(function() {
       $('#fallenPins').show();
       $('#leftPins div').hide();
       game.setScores(frameNumber, 2, scores2);
-      console.log('second' + game.frames);
-      frameNumber++
+      console.log(game.frames);
+      var frameSelector = '#frame' + frameNumber.toString() + ' .second'
+      var num = $('#frame' + frameNumber.toString() + ' .first').text();
+
+
+      if (parseInt($('#frame' + frameNumber.toString() + ' .first').text()) + scores2 === 10) {
+        $(frameSelector).text('/')
+      } else {
+        $(frameSelector).text(scores2)
+      }
+
+      $('#frame' + frameNumber.toString() + ' .third').text(game.countFrameScores(frameNumber))
+      frameNumber++;
+      game.total = 0;
+      $('#frame11 .third').text(game.addScores(frameNumber));
     });
 
 

@@ -105,6 +105,17 @@ describe ("BowlingScore", function() {
 
   });
 
+  describe ("runningTotals", function () {
+
+    it("updates runningTotals as game is played", function () {
+      game.frameScores = [[6,2],[8,1],[5,4]];
+      game.frameTotal();
+      game.runningTotal();
+      expect(game.runningTotals).toEqual([8,17,26]);
+    });
+  });
+
+
   describe ("testing game whole", function () {
     it("test all features", function (){
       game.frameScores = [[7,2],[4,1],[10,null],[8,2],[3,6],[2,4],[6,4],[10,null],[10,null],[3,6]];
@@ -112,6 +123,8 @@ describe ("BowlingScore", function() {
       expect(game.bonusScores).toEqual([8,2,3,10,10,3,3,6]);
       game.frameTotal();
       expect(game.frameTotals).toEqual([9,5,10,10,9,6,10,10,10,9]);
+      game.runningTotal();
+      expect(game.runningTotals).toEqual([9,14,24,34,43,49,59,69,79,88]);
     })
   });
 

@@ -2,6 +2,7 @@ function BowlingScore() {
   this.rawScores = [];
   this.bonusScores = [];
   this.frameTotals = [];
+  this.runningTotals = [];
 };
 
 BowlingScore.prototype.addNewRoundScore = function(score) {
@@ -80,5 +81,12 @@ BowlingScore.prototype.frameBonus = function () {
 BowlingScore.prototype.frameTotal = function () {
   for (i = 0; i < this.frameScores.length; i++) {
     this.frameTotals.push(this.frameScores[i][0] + this.frameScores[i][1]);
+  };
+};
+
+BowlingScore.prototype.runningTotal = function () {
+  this.runningTotals.push(this.frameTotals[0]);
+  for (i = 0; i < this.frameTotals.length -1; i++) {
+    this.runningTotals.push(this.runningTotals[i] + this.frameTotals[i+1]);
   };
 };

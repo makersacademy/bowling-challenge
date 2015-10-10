@@ -54,6 +54,7 @@ Game.prototype.score = function() {
       frameIndex++;
     }
   };
+  this.scoreBoard[9].frameTotal = score;
   return score;
 };
 
@@ -69,15 +70,22 @@ Game.prototype.rollsScore = function(frameIndex) {
 
 Game.prototype.frameScore = function(frameIndex) {
   if (this.isStrike(frameIndex)) {
-    this.scoreBoard[frameIndex].frameTotal += this.rollsScore(frameIndex) + this.strikeBonus(frameIndex);
+    return this.rollsScore(frameIndex) + this.strikeBonus(frameIndex);
   } else if (frameIndex === 9 && this.isSpare(frameIndex)) {
-    this.scoreBoard[frameIndex].frameTotal += this.rollsScore(frameIndex);
+    return this.rollsScore(frameIndex);
   } else if (this.isSpare(frameIndex)) {
-    this.scoreBoard[frameIndex].frameTotal += this.rollsScore(frameIndex) + this.spareBonus(frameIndex);
+    return this.rollsScore(frameIndex) + this.spareBonus(frameIndex);
   } else {
-    this.scoreBoard[frameIndex].frameTotal += this.rollsScore(frameIndex)
+    return this.rollsScore(frameIndex);
   }
-  return this.scoreBoard[frameIndex].frameTotal
+};
+
+Game.prototype.updateFrameScore = function(frameIndex) {
+  if (frameIndex === 0) {
+    this.scoreBoard[frameIndex].frameTotal = this.frameScore(frameIndex);
+  } else if (frameIndex < 9) {
+    this.scoreBoard[frameIndex].frameTotal = this.frameScore(frameIndex) + this.scoreBoard[frameIndex-1].frameTotal;
+  }
 };
 
 Game.prototype.strikeBonus = function(frameIndex) {
@@ -114,93 +122,3 @@ Game.prototype.spareBonus = function(frameIndex) {
     return this.scoreBoard[9].rolls[2];
   }
 };
-
-
-game = new Game();
-
-// game.roll(2);
-// game.roll(8);
-// game.roll(10);
-// game.roll(4);
-// game.roll(5);
-// console.log(game.frameScore(0));
-// console.log(game.frameScore(1));
-// console.log(game.frameScore(2));
-// game.roll(10);
-// game.roll(4);
-// game.roll(6);
-// game.roll(4);
-// game.roll(4);
-// console.log(game.frameScore(3));
-// console.log(game.frameScore(4));
-// console.log(game.frameScore(5));
-// game.roll(4);
-// game.roll(2);
-// console.log(game.frameScore(6));
-// game.roll(2);
-// game.roll(2);
-// console.log(game.frameScore(7));
-// game.roll(10);
-// /// game.roll(4);
-// /// game.roll(4);
-// game.roll(10);
-// game.roll(4);
-// game.roll(5);
-
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-// game.roll(5);
-
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(2);
-game.roll(3);
-game.roll(7);
-game.roll(4);
-console.log(game.frameScore(0));
-console.log(game.frameScore(1));
-console.log(game.frameScore(2));
-console.log(game.frameScore(3));
-console.log(game.frameScore(4));
-console.log(game.frameScore(5));
-console.log(game.frameScore(6));
-console.log(game.frameScore(7));
-console.log(game.strikeBonus(8));
-
-console.log(game.score());
-console.log(game.rollsScore(9));
-console.log(game.frameScore(9));
-console.log(game.scoreBoard);

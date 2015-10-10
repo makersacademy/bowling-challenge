@@ -100,6 +100,15 @@ describe("Game", function() {
     expect(game.frameScore(0)).toEqual(14);
   });
 
+  it("can update the current frame score during the game", function() {
+    rollMany(2,5);
+    rollMany(2,4);
+    game.updateFrameScore(0);
+    game.updateFrameScore(1);
+    expect(game.scoreBoard[0].frameTotal).toEqual(14);
+    expect(game.scoreBoard[1].frameTotal).toEqual(22);
+  });
+
   it("can calculate the score for a game with some strikes", function() {
     rollMany(1,10);
     rollMany(1,1);
@@ -124,6 +133,7 @@ describe("Game", function() {
     rollMany(1,3);
     rollMany(1,4);
     expect(game.scoreBoard[9].rolls).toEqual([10,3,4]);
+    expect(game.score()).toEqual(53);
   });
 
   it("registers three rolls in the last frame if there's a spare", function() {
@@ -133,16 +143,19 @@ describe("Game", function() {
     rollMany(1,4);
     expect(game.scoreBoard[9].rolls).toEqual([3,7,4]);
     expect(game.frameScore(9)).toEqual(14);
+    expect(game.score()).toEqual(50);
   });
 
   it("can roll a game of spares", function() {
     rollMany(21,5);
     expect(game.score()).toEqual(150);
+    expect(game.scoreBoard[9].frameTotal).toEqual(150);
   });
 
   it("can play a perfect game", function() {
     rollMany(12,10);
     expect(game.score()).toEqual(300);
+    expect(game.scoreBoard[9].frameTotal).toEqual(300);
   });
 
 });

@@ -58,7 +58,7 @@ describe("Bowling", function() {
     it("adds the spare bonus to the current frame", function() {
       bowling.bowl(5,5);
       bowling.bowl(5,4);
-      expect(bowling.score).toEqual(24);
+      expect(bowling.score).toEqual(29);
     });
 
     it("adds two scores to the 10th frame array when it is the 10th frame but no bonus", function() {
@@ -71,6 +71,12 @@ describe("Bowling", function() {
       bowling.frameCount = 10;
       bowling.tenthFrameBowl(10,5,6);
       expect(bowling.score).toEqual(21);
+    });
+
+    it("adds three scores to the 10th frame array if there is a spare in the last frame", function() {
+      bowling.frameCount = 10;
+      bowling.tenthFrameBowl(5,5,5);
+      expect(bowling.score).toEqual(15);
     });
   });
 

@@ -52,9 +52,14 @@ function Bowling() {
     if(this.isStrike() == true && val1 == 10){
       this.frames[this.frameCount - 1][0] += val1 * 2;
       this.score += this.frames[this.frameCount - 1][0]
+      this.score += val1 + val2;
+    }
+    else if(this.isSpare()){
+      this.score += val1 + val2;
+      this.updateScore(val1,val2);
     }
     else{
-      this.updateScore(val1,val2)
+      this.updateScore(val1,val2);
     };
   }
   Bowling.prototype.updateScore = function(val1,val2) {
@@ -63,7 +68,8 @@ function Bowling() {
       this.score += this.frames[this.frameCount - 1][0]
     }
     else if(this.isSpare() == true){
-      this.score += (val1 * 2) + val2;
+      this.frames[this.frameCount - 1][1] += (val1 * 2);
+      this.score += this.frames[this.frameCount - 1][1] + val2;
     }
     else{
       this.score += val1 + val2;

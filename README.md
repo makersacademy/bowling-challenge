@@ -12,8 +12,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 Still to do:
 -----
 
-* include logic for 10th frame
-* perfect game scoring
+* refactoring
 * create a nice interactive animated interface with jQuery.
 
 Game rules:

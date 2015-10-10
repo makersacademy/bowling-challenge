@@ -2,7 +2,6 @@ describe('Player', function() {
 
   beforeEach(function() {
     game = new Game();
-    frame = new Frame();
   });
 
   it('should start with a frame index of -1', function() {
@@ -15,22 +14,26 @@ describe('Player', function() {
   });
 
   it('rollBoll should created a new frame if currentFrameObject is null', function() {
-    game.rollBall(1);
-    expect(game.scoreSheet).toContain(new Frame);
-  })
-
+    game.rollBall(0);
+    expect(game.scoreSheet[0]).toEqual(jasmine.any(Frame));
+  });
 
   it('should start with an empty scoreSheet', function() {
     expect(game.scoreSheet).toEqual([]);
   });
 
   it('logRoll should store a new Frame object in scoreSheet if currentFrameObject is null', function() {
-    game.logRoll(1);
-    expect(game.scoreSheet).toContain(new Frame);
+    game.logRoll(0);
+    expect(game.scoreSheet[0]).toEqual(jasmine.any(Frame));
   });
 
   it('currentFrameObject should be null upon creation of game', function() {
     expect(game.currentFrameObject).toEqual(null);
   });
+
+  // it('should only run the secondRoll if roll index is 1', function() {
+  //
+  // })
+
 
 });

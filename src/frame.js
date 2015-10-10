@@ -6,6 +6,7 @@ function Frame() {
 
 Frame.prototype.firstRoll = function(pinsKnocked) {
   this.firstRollScore = pinsKnocked;
+  this.rollIndex = 1;
 };
 
 Frame.prototype.secondRoll = function(pinsKnocked) {

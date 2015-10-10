@@ -26,4 +26,9 @@ describe('Frame', function() {
     expect(frame.secondRollScore).toEqual(1);
   });
 
+  it('firstRoll should update rollIndex to 1 when it is called', function() {
+    frame.firstRoll(1);
+    expect(frame.rollIndex).toEqual(1);
+  });
+
 });

@@ -45,10 +45,15 @@ Game.prototype.gameOver = function() {
 };
 
 Game.prototype.calculateScore = function() {
-  if (this.frameIndex == 0) {
-    this.totalScore = (this.currentFrameObject.firstRollScore + this.currentFrameObject.firstRollScore);
+  if (this.frameIndex == 0) { // if its the first frame, no strikes/half strikes will have happened.
+    this.totalScore = (this.currentFrameObject.firstRollScore + this.currentFrameObject.firstRollScore); // bit long
   }
-}
+
+  if (this.frameIndex != 0 && (this.currentFrameObject.strike == false && this.currentFrameObject.spare == false)) {
+    this.totalScore = this.totalScore + ((this.currentFrameObject.firstRollScore + this.currentFrameObject.firstRollScore));
+  }
+
+};
 
 // game.prototype.resetGame = function() {
 //

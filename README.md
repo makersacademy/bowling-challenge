@@ -62,15 +62,3 @@ Progress
 
 Instructions to open
 ------
-
-```
-Clone the repository:
-
-$ git clone https://github.com/catherinestevenson/bowling-challenge
-```
-
-Change into the directory and run the tests in your browser:
-```
-$ cd bowling_challenge
-$ open SpecRunner.html
-```

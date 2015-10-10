@@ -55,4 +55,9 @@ describe('Player', function() {
     expect(game.totalScore).toEqual(8);
   });
 
+  it('should immediately push the frame in in the event of a strike', function() {
+    game.rollBall(10);
+    expect(game.scoreSheet[0]).toEqual(jasmine.any(Frame));
+  });
+
 });

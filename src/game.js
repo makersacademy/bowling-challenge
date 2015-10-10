@@ -6,6 +6,10 @@ function Game() {
   this.isGameOver = false;
 }
 
+Game.prototype.rollBall = function(pinsKnocked) {
+  this.logRoll(pinsKnocked);
+};
+
 Game.prototype.logRoll = function(pinsKnocked) {
 
   if (this.isGameOver == true) {
@@ -19,8 +23,8 @@ Game.prototype.logRoll = function(pinsKnocked) {
 
   if (this.currentFrameObject.rollIndex == 0) { //if its on its first roll:
     this.currentFrameObject.firstRoll(pinsKnocked); //update the frame with firstRoll score
-    this.strike();
-  } else {// if its on its second roll
+    this.checkStrike(); // checks if there was a strike
+  } else { // if its on its second roll and there was no strike
     this.currentFrameObject.secondRoll(pinsKnocked); // updates frame with the results of the second roll
     this.scoreSheet.push(this.currentFrameObject); // frame finished add the frame to scoreSheet:
     this.calculateScore(); // calculates score at end of the frame
@@ -29,11 +33,7 @@ Game.prototype.logRoll = function(pinsKnocked) {
   }
 };
 
-Game.prototype.rollBall = function(pinsKnocked) {
-  this.logRoll(pinsKnocked);
-};
-
-Game.prototype.strike = function() {
+Game.prototype.checkStrike = function() {
   if (this.currentFrameObject.strike == true) {
     this.scoreSheet.push(this.currentFrameObject);
     this.calculateScore();
@@ -43,24 +43,31 @@ Game.prototype.strike = function() {
   }
 };
 
+Game.prototype.calculateScore = function() {
+  // if (this.frameIndex == 0) { // if its the first frame, no strikes/half strikes will have happened.
+  //   this.totalScore = this.currentFrameObject.totalFrameScore;
+  // }
+
+  if ((this.frameIndex != 0 || this.frameIndex == 0) && (this.currentFrameObject.strike == false && this.currentFrameObject.spare == false)) {
+    this.totalScore += this.currentFrameObject.totalFrameScore;
+
+  }
+  // if (this.currentFrameObject.strike == true && this.scoreSheet[this.frameIndex - 1].strike == false) { // checking if previous frame was a strike
+  //   this.totalScore += this.currentFrameObject
+  //
+  // }
+
+
+
+};
+
 Game.prototype.gameOver = function() {
   if (this.frameIndex == 9 && this.currentFrameObject.strike == false) {
     this.isGameOver = true;
   }
 };
 
-Game.prototype.calculateScore = function() {
-  if (this.frameIndex == 0) { // if its the first frame, no strikes/half strikes will have happened.
-    this.totalScore = (this.currentFrameObject.firstRollScore + this.currentFrameObject.firstRollScore); // bit long
-  }
-
-  if (this.frameIndex != 0 && (this.currentFrameObject.strike == false && this.currentFrameObject.spare == false)) {
-    this.totalScore = this.totalScore + ((this.currentFrameObject.firstRollScore + this.currentFrameObject.firstRollScore));
-  }
-
-};
-
-// need to fix logic for when a strike happens! :)
+// what happens when there is a half strike?
 
 // game.prototype.resetGame = function() {
 //

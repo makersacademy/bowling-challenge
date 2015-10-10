@@ -23,5 +23,9 @@ describe('Player', function() {
     expect(game.scoreSheet).toContain(new Frame);
   });
 
+  it('currentFrameObject should be null upon creation of game', function() {
+    expect(game.currentFrameObject).toEqual(null);
+  })
+
 
 });

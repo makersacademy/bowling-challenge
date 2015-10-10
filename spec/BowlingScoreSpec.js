@@ -68,6 +68,12 @@ describe ("BowlingScore", function() {
       expect(game.bonusScores).toEqual([3,5,7,1]);
     });
 
+    it("if strikes are hit in a row, push next two rawScores into bonusScores", function () {
+      game.frameScores = [[10,null], [10,null], [7,1]];
+      game.Strike();
+      expect(game.bonusScores).toEqual([10,7,7,1]);
+    });
+
   });
 
 });

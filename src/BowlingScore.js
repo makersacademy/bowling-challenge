@@ -40,14 +40,6 @@ BowlingScore.prototype.isSpare = function () {
   };
 };
 
-BowlingScore.prototype.Strike = function () {
-  for (i = 0; i < this.frameScores.length; i++) {
-    if (this.frameScores[i][0] === 10) {
-      this.bonusScores.push(this.frameScores[i+1][0]);
-      this.bonusScores.push(this.frameScores[i+1][1]);
-    };
-  };
-};
 
 BowlingScore.prototype.isStrike = function () {
   for (i = 0; i < this.frameScores.length; i++) {
@@ -55,4 +47,18 @@ BowlingScore.prototype.isStrike = function () {
       return true;
     };
   };
+};
+
+BowlingScore.prototype.Strike = function () {
+  for (i = 0; i < this.frameScores.length; i++) {
+    if (this.frameScores[i][0] === 10) {
+      if (this.frameScores[i+1][0] === 10) {
+        this.bonusScores.push(this.frameScores[i+1][0]);
+        this.bonusScores.push(this.frameScores[i+2][0]);
+      } else {
+        this.bonusScores.push(this.frameScores[i+1][0]);
+        this.bonusScores.push(this.frameScores[i+1][1]);
+      };
+    };
+  }
 };

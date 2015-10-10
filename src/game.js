@@ -2,15 +2,16 @@ function Game() {
   this.frameIndex = -1; // -1 as 0 needs to be first index
   this.currentFrameObject = null; // this will be refreshed every frame to the newly created Frame
   this.scoreSheet = []; //[Frame, Frame] stores individual frames
-  this.totalScore = 0; // is this needed?
+  this.totalScore = 0; // is this needed? if so -- does it belong in Frame?
   this.isGameOver = false;
 }
 
 Game.prototype.logRoll = function(pinsKnocked) {
 
   if (this.isGameOver == true) {
-    fail("Game Over, please reset the game")
+    fail('Game Over, please reset the game');
   }
+
   if (this.currentFrameObject == null) {
     //create the frame object for every new frame(round)
     this.currentFrameObject = new Frame();

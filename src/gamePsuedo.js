@@ -40,21 +40,21 @@ Game.prototype.rollBall = function(pinsKnocked) {
 
 function Frame(){
   this.rollIndex = 0;
-  this.FirstRollScore = 0;
-  this.SecondRollScore = 0;
+  this.firstRollScore = 0;
+  this.secondRollScore = 0;
   this.strike = false;
   this.split = false;
 }
 
 Frame.prototype.firstRoll = function(pinsKnocked){
-  this.FirstRollScore = pinsKnocked;
+  this.firstRollScore = pinsKnocked;
   this.strike = (pinsKnocked == 10 ? true : false); //etc (although is there anythng else?)
   this.rollIndex = 1;
 }
 
 Frame.prototype.secondRoll = function (pinsKnocked){
-  this.FirstRollScore = pinsKnocked;
-  this.split = ((this.FirstRollScore + this.SecondRollScore) == 10 ? true : false);
+  this.firstRollScore = pinsKnocked;
+  this.split = ((this.firstRollScore + this.secondRollScore) == 10 ? true : false);
   this.currentFrameObject = null;
 }
 

@@ -22,5 +22,5 @@ Game.prototype.logRoll = function(pinsKnocked) {
 };
 
 Game.prototype.rollBall = function(pinsKnocked) {
-  this.logRoll(pinsKnocked)
+  this.logRoll(pinsKnocked);
 }

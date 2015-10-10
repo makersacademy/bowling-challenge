@@ -14,7 +14,7 @@ describe('Player', function() {
     expect(game.frameIndex).toEqual(0);
   });
 
-  it('rollBoll should created a new frame', function() {
+  it('rollBoll should created a new frame if currentFrameObject is null', function() {
     game.rollBall(1);
     expect(game.scoreSheet).toContain(new Frame);
   })

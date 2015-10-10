@@ -14,17 +14,17 @@ Game.prototype.logRoll = function(pinsKnocked) {
 
   //if its on its first roll:
   if (this.currentFrameObject.rollIndex == 0) {
-
+    console.log(this.currentFrameObject)
     //update the frame with firstRoll score
     this.currentFrameObject.firstRoll(pinsKnocked);
+    console.log(this.currentFrameObject)
 
   } else { // its on its second roll
 
+    this.scoreSheet.push(this.currentFrameObject); // frame finished add the frame to scoreSheet:
 
   }
 
-
-  this.scoreSheet.push(this.currentFrameObject); // frame finished add the frame to scoreSheet:
 
 };
 

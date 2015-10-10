@@ -13,27 +13,19 @@ describe('Player', function() {
     expect(game.frameIndex).toEqual(0);
   });
 
-  it('rollBoll should created a new frame if currentFrameObject is null', function() {
-    game.rollBall(0);
-    expect(game.scoreSheet[0]).toEqual(jasmine.any(Frame));
-  });
-
   it('should start with an empty scoreSheet', function() {
     expect(game.scoreSheet).toEqual([]);
-  });
-
-  it('logRoll should store a new Frame object in scoreSheet if currentFrameObject is null', function() {
-    game.logRoll(0);
-    expect(game.scoreSheet[0]).toEqual(jasmine.any(Frame));
   });
 
   it('currentFrameObject should be null upon creation of game', function() {
     expect(game.currentFrameObject).toEqual(null);
   });
 
-  // it('should only run the secondRoll if roll index is 1', function() {
-  //
-  // })
+  it('should only run the secondRoll and store it in scoreSheet if roll index is 1', function() {
+    game.rollBall(0);
+    game.rollBall(0);
+    expect(game.scoreSheet[0]).toEqual(jasmine.any(Frame));
+  });
 
 
 });

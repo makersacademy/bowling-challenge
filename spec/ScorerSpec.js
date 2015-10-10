@@ -5,22 +5,69 @@ describe('ScoreCard', function() {
   });
 
   it('should be able to score 2 balls', function() {
-    scoreCard.scoreRound(3, 2);
+    scoreCard.ball1 = 3;
+    scoreCard.ball2 = 2;
+    scoreCard.scoreRound();
     expect(scoreCard.currentScore).toEqual(5);
   });
 
-  it('should know how many more balls are possible', function() {
-    expect(scoreCard.possibleBalls).toEqual(20);
+  it('should be able to score 2 rounds', function() {
+    scoreCard.ball1 = 3;
+    scoreCard.ball2 = 2;
+    scoreCard.scoreRound();
+    scoreCard.ball1 = 9;
+    scoreCard.ball2 = 0;
+    scoreCard.scoreRound();
+    expect(scoreCard.currentScore).toEqual(14);
   });
 
-  it('should reduce the number of possible balls after each round', function() {
-    scoreCard.scoreRound(3, 4);
-    expect(scoreCard.possibleBalls).toEqual(18);
+  it('should inc the number of round ', function() {
+    scoreCard.ball1 = 3;
+    scoreCard.ball2 = 2;
+    scoreCard.scoreRound();
+    expect(scoreCard.currentRound).toEqual(2);
   });
 
-  it ('should recognise a strike', function() {
-    scoreCard.scoreRound(10, 0);
+  it('should not allow a ball to score over 10', function() {
+    scoreCard.ball1 = 11;
+    scoreCard.ball2 = 3;
+    scoreCard.scoreRound();
+    expect(scoreCard.message).toEqual('Ball value too great');
+  });
+
+  it('should not allow a two balls to score over 10', function() {
+    scoreCard.ball1 = 9;
+    scoreCard.ball2 = 3;
+    scoreCard.scoreRound();
+    expect(scoreCard.message).toEqual('Not a valid score');
+  });
+
+  it('should recognise a strike', function() {
+    scoreCard.ball1 = 10;
+    scoreCard.ball2 = 0;
+    scoreCard.scoreRound();
     expect(scoreCard.message).toEqual('Strike');
+  });
+
+  it('should recognise a spare', function() {
+    scoreCard.ball1 = 9;
+    scoreCard.ball2 = 1;
+    scoreCard.scoreRound();
+    expect(scoreCard.message).toEqual('Spare');
+  });
+
+  it('should stop at round 10 and score equal score', function() {
+    for (i = 0; i < 9; i++) {
+      scoreCard.ball1 = 3;
+      scoreCard.ball2 = 2;
+      scoreCard.scoreRound();
+    }
+
+    scoreCard.ball1 = 3;
+    scoreCard.ball2 = 2;
+    expect(scoreCard.scoreRound()).toEqual('Game over');
+    expect(scoreCard.currentScore).toEqual(50);
+    console.log(scoreCard.scoreArray);
   });
 
 });

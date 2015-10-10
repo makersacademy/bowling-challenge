@@ -3,7 +3,7 @@ var app = express();
 var root = __dirname;
 var path = require('path');
 
-app.use(express.static(root + '/src'));
+app.use(express.static(root + '/public'));
 
 app.get('/', function(req, res) {
   console.log(require('path'));

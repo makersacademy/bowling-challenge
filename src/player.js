@@ -2,7 +2,7 @@ function Player() {
   this.score = 0;
   this.totalScore = 0; // is this needed?
   this.pinCount = 10;
-  this.frameCount = -1;
+ // this is -1 because framecount is being used to index scoresheet
   this.strike = false;
   this.halfStrike = false;
   this.strikeCount = 0;
@@ -11,10 +11,10 @@ function Player() {
 }
 
 Player.prototype.takeTurn = function() {
-  this.frameCount += 1;
+  this.frameCount += 1; // this needs to be moved ELSEWHERE!!
   this.pinCount = 10;
   var firstShot = this.throwBall();
-  this.score = this.score + firstShot; // WTF IS THIS?
+  this.score = this.score + firstShot; // Tracking the score
   if (firstShot == 10) {
     this.pinCount = 0;
     this.strike = true;
@@ -33,7 +33,7 @@ Player.prototype.takeTurn = function() {
 
   if (this.score + secondShot > 10) {
     this.score = 10;
-  } else if (this.score + secondShot < 10) {
+  } else {
     this.score = this.score + secondShot;
   }
 
@@ -62,16 +62,14 @@ Player.prototype.takeTurn = function() {
 };
 
 Player.prototype.throwBall = function() {
-  return Math.floor(Math.random() * (11 - 0)) + 0;
+  return Math.floor(Math.random() * 11);
 };
 
 Player.prototype.scoreTracker = function() {
-
-
-    this.totalScore = this.totalScore + this.score;
-    // this.score = 0
-
-
+    // if (this.strike === true) {
+    //   this.scoreBoard[this.frameNumber].push(hit*2); // Scoreboard (4)
+    //   this.score += (hit*2);
+    // }
 };
 
 // // if (this.strike == false && this.halfStrike == false) {

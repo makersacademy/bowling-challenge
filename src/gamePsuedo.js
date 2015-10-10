@@ -14,7 +14,7 @@ Game.prototype.logRoll = function(pinsKnocked) {
 
     //create the frame
     this.currentFrameObject = new Frame();
-    this.frameIndex += 1;
+    this.frameIndex += 1; // THIS NEEDS to be below as well
 
   }
 
@@ -43,7 +43,7 @@ function Frame(){
   this.FirstRollScore = 0;
   this.SecondRollScore = 0;
   this.strike = false;
-  this.otherSpecials = false;
+  this.split = false;
 }
 
 Frame.prototype.firstRoll = function(pinsKnocked){

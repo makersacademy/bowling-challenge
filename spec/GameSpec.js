@@ -8,7 +8,7 @@ describe ('Game', function() {
     expect(game.total).toBe(0);
   });
 
-  it ('has 11 frames', function() {
+  it ('has internally 12 frames', function() {
     expect(game.frames.length).toBe(12);
   });
 
@@ -19,6 +19,23 @@ describe ('Game', function() {
   it ('stores the number of fallen pins in each roll', function() {
     game.setScores(1, 1, 7);
     expect(game.frames[0][0]).toBe(7);
+  })
+
+  it ('can check if you spare', function() {
+    game.setScores(1, 1, 8);
+    game.setScores(1, 2, 2);
+    expect(game.isSpare(1)).toBe(true);
+  })
+
+  it ('can check if you spare', function() {
+    game.setScores(1, 1, 8);
+    game.setScores(1, 2, 1);
+    expect(game.isSpare(1)).toBe(false);
+  })
+
+  it ('can check if you strike', function() {
+    game.setScores(1, 1, 10);
+    expect(game.isStrike(1)).toBe(true);
   })
 
   it ('counts scores in each frame', function() {

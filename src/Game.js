@@ -14,17 +14,25 @@ Game.prototype.setScores = function(nth, rolls, fallenPins) {
 Game.prototype.countFrameScores = function(nth) {
   var sum = 0;
   var frameScores = this.frames[nth-1][0] + this.frames[nth-1][1]
-  if (this.frames[nth-1][0] === 10) {
+  if (this.isStrike(nth)) {
     return sum = frameScores + this.strikeBonusScores(nth);
-  } else if (frameScores === 10) {
+  } else if (this.isSpare(nth)) {
     return sum = frameScores + this.spareBonusScores(nth);
   } else {
     return sum = frameScores;
   }
 }
 
+Game.prototype.isSpare = function(nth) {
+  return (this.frames[nth-1][0] + this.frames[nth-1][1] === 10)
+}
+
 Game.prototype.spareBonusScores = function(nth) {
   return this.frames[nth][0]
+}
+
+Game.prototype.isStrike = function(nth) {
+  return (this.frames[nth-1][0] === 10)
 }
 
 Game.prototype.strikeBonusScores = function(nth) {

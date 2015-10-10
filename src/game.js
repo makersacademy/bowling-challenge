@@ -4,11 +4,23 @@ function Game() {
   this.scoreSheet = []; //[Frame, Frame] stores individual frames
 }
 
-Game.prototype.logRoll = function() {
+Game.prototype.logRoll = function(pinsKnocked) {
 
-  this.currentFrameObject = new Frame();
-  this.frameIndex += 1;
+  if (this.currentFrameObject == null) {
+    //create the frame object for every new frame(round)
+    this.currentFrameObject = new Frame();
+    this.frameIndex += 1;//
+  }
+
+  //if its on its first roll:
+  if (this.currentFrameObject.rollIndex == 0) {
+
+  }
 
   this.scoreSheet.push(this.currentFrameObject); // frame finished add the frame to scoreSheet:
 
+};
+
+Game.prototype.rollBall = function(pinsKnocked) {
+  this.logRoll(pinsKnocked)
 }

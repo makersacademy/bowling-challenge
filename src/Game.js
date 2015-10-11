@@ -13,14 +13,17 @@ function Game() {
 
 Game.prototype.rollBall =  function(hit) {
 
-  if (this.frameNumber < 10 && this.gameOver === false) {
+  if ((this.frameNumber < 10) && (this.firstThrow === false) && (this.frameScore + hit > 10)) {
+    throw Error("Not enough pins left");
 
-    this.addToScoreBoard(hit);
-    this.frameScore += hit;
-    this.isSpare(hit);
-    this.isFirstThrow();
-    this.isStrike(hit);
-    this.resetFrameScore();
+  } else if (this.frameNumber < 10) {
+      this.addToScoreBoard(hit);
+      this.frameScore += hit;
+      this.isSpare(hit);
+      this.isFirstThrow();
+      this.isStrike(hit);
+      this.resetFrameScore();
+
   } else if (this.frameNumber === 10 && this.gameOver === false) {
     this.addToScoreBoard(hit);
     this.frameScore += hit;
@@ -74,8 +77,8 @@ Game.prototype.isSpare = function(hit) {
 
 Game.prototype.game = function() {
   if ((this.scoreBoard[10][2] != null)) {
-    this.gameOver = true;
-  } else if (this.scoreBoard[10][0] + this.scoreBoard[10][1] < 10) {
+    this.gameOver = true
+;  } else if (this.scoreBoard[10][0] + this.scoreBoard[10][1] < 10) {
     this.gameOver = true;
 };
 };

@@ -15,8 +15,14 @@ describe("Game", function() {
   });
 
   it("should change frame after two rolls", function() {
-    game.rollBall(4);
-    game.rollBall(4);
+    game.rollBall(8);
+    expect(function() { game.rollBall(4);
+  }).toThrowError("Not enough pins left");
+  });
+
+  it("should change frame after two rolls", function() {
+    game.rollBall(8);
+    game.rollBall(2);
     expect(game.frameNumber).toEqual(2);
   });
 

@@ -4,14 +4,14 @@ var htmlRoundNumber = 1;
 
 var htmlWriter = function(score){
 
-  if ((updater.frameRoundsLeft === 1 && updater.currentFrameTotal + score > 10) || htmlRoundNumber > 21) {
+  if ((updater.game.frameRoundsLeft === 1 && updater.game.currentFrameTotal + score > 10) || htmlRoundNumber > 21) {
     return;
   };
 
-  if (score === 10 && updater.frameRoundsLeft === 0){
+  if (score === 10 && updater.game.frameRoundsLeft === 0){
     if (htmlRoundNumber < 19) {htmlRoundNumber += 1};
     document.getElementById('round'+ htmlRoundNumber.toString()).innerHTML = 'X';
-  } else if (updater.currentFrameTotal + score === 10 && updater.frameRoundsLeft === 1) {
+  } else if (updater.game.currentFrameTotal + score === 10 && updater.game.frameRoundsLeft === 1) {
     document.getElementById('round'+ htmlRoundNumber.toString()).innerHTML = '/';
   } else {
     document.getElementById('round'+ htmlRoundNumber.toString()).innerHTML = score;
@@ -20,23 +20,23 @@ var htmlWriter = function(score){
 
   updater.newRound(score);
 
-  var currentFrameNumber = updater.currentFrameNumber;
-  var prevFrameNumber = updater.currentFrameNumber - 1;
-  var prevPrevFrameNumber = updater.currentFrameNumber - 2;
+  var currentFrameNumber = updater.game.currentFrameNumber;
+  var prevFrameNumber = updater.game.currentFrameNumber - 1;
+  var prevPrevFrameNumber = updater.game.currentFrameNumber - 2;
 
   if (currentFrameNumber >= 1 && currentFrameNumber <= 10){
     document.getElementById('f'+ currentFrameNumber.toString()).innerHTML
-      = updater.currentFrameTotal;
+      = updater.game.currentFrameTotal;
   };
 
   if (prevFrameNumber >= 1 && prevFrameNumber <= 10){
     document.getElementById('f'+ prevFrameNumber.toString()).innerHTML
-      = updater.prevFrameTotal;
+      = updater.game.prevFrameTotal;
   };
 
   if (prevPrevFrameNumber >= 1 && prevPrevFrameNumber <= 10){
     document.getElementById('f'+prevPrevFrameNumber.toString()).innerHTML
-      = updater.prevPrevFrameTotal;
+      = updater.game.prevPrevFrameTotal;
   };
 
   var scoreTotal = 0;
@@ -54,23 +54,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   };
 });
-
-
-
-
-
-
-
-
-
-// function bowlingScore() {
-//   this.rawScores = []
-// };
-//
-// bowlingScore.prototype.addNewRoundScore= function(score) {
-//   this.rawScore.push(score);
-// };
-//
-// var test = new bowlingScore();
-// test.addNewRoundScore(7);
-// test.addNewRoundScore(7);

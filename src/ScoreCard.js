@@ -6,13 +6,21 @@ function ScoreCard() {
 };
 
 ScoreCard.prototype.nextFrame = function() {
-  return this.currentFrame < 10 ? this.currentFrame += 1 : "End of game";
+  if (this.currentFrame === 10) {
+      throw new Error('End of game');
+  }
+  else {
+    this.currentFrame += 1;
+    this.roll = 1;
+  }
 };
 
 ScoreCard.prototype.nextRoll = function() {
-  return this.roll += 1;
-  if (this.roll >= 3) {
+  if (this.roll >= 4) {
     this.nextFrame();
+  }
+  else {
+    return this.roll += 1;
   }
 };
 
@@ -32,9 +40,8 @@ ScoreCard.prototype.rollScore = function(score) {
 };
 
 ScoreCard.prototype.frameTen = function() {
-  this.currentFrame = 10;
-  if (this.score[10][0] + this.score[10][1] >= 10) {
-    this.nextRoll();
+  if (this.score[10][0] + this.score[10][1] < 10) {
+    this.nextFrame();
   }
   else {
     this.nextRoll();

@@ -26,7 +26,7 @@ describe('ScoreCard', function() {
 
     it('has a maximum of 10 frames', function() {
       scorecard.currentFrame = 10;
-      expect(scorecard.nextFrame()).toEqual("End of game");
+      expect(function(){scorecard.nextFrame();}).toThrow(new Error('End of game'));
     });
 
     it('begins game on roll 1', function () {
@@ -105,12 +105,7 @@ describe('ScoreCard', function() {
       expect(scorecard.roll).toEqual(3);
     });
 
-    // it('returns end of game message at the end of tenth frame', function() {
-    //   scorecard.currentFrame = 10;
-    //   scorecard.rollScore(10);
-    //   scorecard.rollScore(4);
-    //   scorecard.rollScore(2);
-    //   expect(scorecard.rollScore(5)).toEqual("End of game");
-    //   console.log(scorecard.currentFrame);
+    // it('returns the total score for the whole game', function() {
+    //
     // });
 });

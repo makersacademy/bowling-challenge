@@ -16,10 +16,14 @@ BowlingGame.prototype.score = function() {
   for (var i = 0; i < 10; i++) {
     if (isSpare()) {
       sum += spareScore();
+      totalIndex += 2;
+    } else if (ifStrike()) {
+      sum += strikeScore();
+      totalIndex ++;
     } else {
       sum += normalScore();
+      totalIndex += 2
     }
-    totalIndex += 2
   }
   return sum
 
@@ -36,5 +40,12 @@ BowlingGame.prototype.score = function() {
     return arry.total[totalIndex] + arry.total[totalIndex + 1];
   }
 
+  function ifStrike () {
+    return arry.total[totalIndex] === 10;
+  }
+
+  function strikeScore () {
+    return arry.total[totalIndex] + arry.total[totalIndex + 1] + arry.total[totalIndex + 2];
+  }
 
 };

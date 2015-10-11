@@ -9,6 +9,10 @@ describe ("bowling game", function() {
 
   });
 
+  it('should be able to roll a gutter game', function() {
+    multiRoll(0, 20)
+    expect(game.score()).toEqual(0)
+  });
 
   it('should be able to have a score of 5 after one frame', function() {
     game.roll(2);
@@ -37,14 +41,19 @@ describe ("bowling game", function() {
 
   });
 
-  // it('should be able to roll a strike', function() {
-  //   game.roll(10);
-  //   game.roll(4);
-  //   game.roll(2);
-  //   multiRoll(0,16)
-  //   expect(game.score()).toEqual(22)
-  //
-  // });
+  it('should be able to roll a strike', function() {
+    game.roll(10);
+    game.roll(4);
+    game.roll(2);
+    multiRoll(0,16)
+    expect(game.score()).toEqual(22)
+
+  });
+
+  it('should be able to roll a perfect game', function () {
+    multiRoll(10, 12);
+    expect(game.score()).toEqual(300)
+  });
 
 
   var multiRoll = function(pins, rolls) {

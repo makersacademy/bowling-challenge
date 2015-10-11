@@ -21,7 +21,8 @@ function updateRollsInTable(rolls){
     if (i<20) {
       element.textContent = rolls[i-1]
     } else {
-      element.textContent = rolls.slice(i-1)
+      content = rolls.slice(i-1).join(" ")
+      element.textContent = content
     }
   };
 };

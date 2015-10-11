@@ -36,47 +36,17 @@
   width: 98px;
   vertical-align:top;
 }
-/*.secondRow div {
-  text-align: center;
-  height: 40px;
-  display: table-cell;
-  border: 1px solid black;
-}*/
-/*.first {
-  width: 33px;
-}
-.second {
-  width: 45px;
-  position: relative;
-  top: -3px;
-  left: 4px;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
-}
-.third {
-  width: 80px;
-  display: block;
-}
-.secondRow:last-child #second {
 
+#tenth1, #tenth2 {
+  display: inline-block;
+
+  width: 24px;
+  height: 48px;
 }
-#tenth2, #tenth3 {
-  width: 22px;
-  height: 36px;
-}
-#tenth2 {
+#tenth1 {
   border-right: 1px solid black;
-}*/
-/*td.secondRow tr td:first-child {
-  width: 40px;
-  height: 40px;
-  border: 0px;
-
 }
-td.secondRow tr td:last-child {
-  width: 40px;
-  height: 40px;
-}*/
+
 #fallenPins div {
   width: 30px;
   height: 30px;
@@ -109,20 +79,3 @@ td.secondRow tr td:last-child {
   background-color: red;
 
 }
-/*.tenth {
-  background-color: red;
-}*/
-/*.tenth div {
-  width: 18px;
-  height: 40px;
-  margin: 0 0 0 0;
-  position: relative;
-
-  border-right: 1px solid black;
-}*/
-/*.tenth td {
-  position: relative;
-  top: 29px
-
-  border: 1px solid black;
-}*/

@@ -46,14 +46,12 @@ $(function() {
     $('#leftPins').append('<div id="leftPins' + i + '">' + i + '</div>')
   }
 
-  for (var i=1; i<12; i++) {
+  for (var i=1; i<11; i++) {
     $('#firstRow').append('<div>' + i + '</div>')
     $('#secondRow').append('<div class="scores" id="frame' + i +
       '"><div class="first"></div><div class="second"></div><div class="third"></div></div>')
   }
-  $('#firstRow :last-child').text('Total');
-  $('#secondRow')
-
+  $('#frame10 .second').html('<div id="tenth1"></div><div id="tenth2"></div>')
   gameSetting();
   var frameNumber = frameNumber || 1;
     $('#fallenPins div').on('click', function(e) {

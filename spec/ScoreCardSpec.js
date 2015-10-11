@@ -65,6 +65,15 @@ describe("ScoreCard", function() {
     expect(scorecard.scores[1]).toEqual([10, 5]);
   });
 
+  it("adds bonus points from next round after a spare", function() {
+    scorecard.scoreForRoll(2);
+    scorecard.scoreForRoll(8);
+    scorecard.nextFrame();
+    scorecard.scoreForRoll(5);
+    scorecard.bonusForSpare();
+    expect(scorecard.scores[1]).toEqual([2, 8, 5]);
+  });
+
 
 
 

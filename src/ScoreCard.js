@@ -43,6 +43,10 @@ ScoreCard.prototype.bonusForStrike = function() {
   return this.scores[this.frame - 1].push(this.scores[this.frame].reduce(function(a, b) { return a + b; }));
 }
 
+ScoreCard.prototype.bonusForSpare = function() {
+  return this.scores[this.frame - 1].push(this.scores[this.frame][0]);
+}
+
 
 
 // Player.prototype.pause = function() {

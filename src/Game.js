@@ -17,10 +17,16 @@ Game.prototype.throwBall = function(pinsDown) {
 };
 
 Game.prototype.nextRoll = function() {
+  if (this.frame === 10 && this.scorecard[10].length > 0){
+    if ( (this.scorecard[10][0] + this.scorecard[10][1]) >= 10) {
+      return this.rollTurn = 3
+    }
+  } else {
   if (this.rollTurn === 1) {
     return this.rollTurn = 2
   } else {
     return this.rollTurn = 1
+    }
   }
 };
 

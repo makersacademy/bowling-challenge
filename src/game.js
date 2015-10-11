@@ -18,12 +18,21 @@ function Game() {
 
 Game.prototype.tallyScore = function(player){
   this.totalScore = 0;
-  for( i = 1; i < 11; i++){
-    for( j = 0; j < 2; j++){
-    this.totalScore += (this.frames[i][j])
+  for( i = 1; i < (Object.keys(this.frames).length + 1); i++){
+    for( j = 0; j < (Object.keys(this.frames[i]).length); j++){
+    this.totalScore += this.frames[i][j]
     };
   };
   this.totalScore += this.bonusPoints
+};
+
+Game.prototype.update = function(player){
+  if(this.frame == 10){
+    this.updateScoreOnTenthFrame(player)
+  }
+  else {
+    this.updateScore(player)
+  }
 };
 
 Game.prototype.updateScore = function(player){
@@ -71,7 +80,12 @@ Game.prototype.addBonuses = function(player) {
 
 Game.prototype.strikeBonus = function(player) {
   if(this.frames[(this.frame)-1][0] == 10) {
+    if(player.downedPins == 10){
+      this.bonusPoints += 20
+    }
+    else{
     this.bonusPoints += (player.downedPins)
+    }
   }
 };
 

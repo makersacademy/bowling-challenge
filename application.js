@@ -3,7 +3,7 @@ $( document ).ready (function() {
   var player = new Player;
   var game = new Game;
 
-  var update = function(){
+  var updateFrames = function(){
     $( "#frame1" ).text(game.frames[1][0]);
     $( "#frame1t2" ).text(game.frames[1][1]);
 
@@ -34,11 +34,12 @@ $( document ).ready (function() {
     $( "#frame10" ).text(game.frames[10][0]);
     $( "#frame10t2" ).text(game.frames[10][1]);
     $( "#frame10t3" ).text(game.frames[10][2]);
-  }
+
+  };
 
   $( "#score" ).click(function( event ) {
     player.bowl($(".form-control").val());
-    game.updateScore(player);
-    update();
+    game.update(player);
+    updateFrames();
   });
 });

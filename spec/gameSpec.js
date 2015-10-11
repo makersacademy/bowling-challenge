@@ -25,28 +25,28 @@ describe('Game', function (){
 
     it('updates frame based on player\'s downed pins and turn', function(){
       player.bowl(8);
-      game.updateScore(player);
+      game.update(player);
       player.bowl(9);
-      game.updateScore(player);
+      game.update(player);
       expect(game.frames[1]).toEqual([8,9])
     });
 
     it('updates the correct frame', function(){
       player.bowl(9)
-      game.updateScore(player);
+      game.update(player);
       player.bowl(8)
-      game.updateScore(player);
+      game.update(player);
       player.bowl(7)
-      game.updateScore(player);
+      game.update(player);
       expect(game.frames[1]).toEqual([9,8])
       expect(game.frames[2]).toEqual([7,0])
     });
 
     it('adds 2nd turn\'s score to next frame if 1st turn is a strike', function(){
       player.bowl(10);
-      game.updateScore(player);
+      game.update(player);
       player.bowl(9);
-      game.updateScore(player);
+      game.update(player);
       expect(game.frames[2]).toEqual([9,0])
     });
 
@@ -57,16 +57,16 @@ describe('Game', function (){
     it('adds score to frame ten', function(){
       game.frame = 10;
       player.bowl(8);
-      game.updateScoreOnTenthFrame(player);
+      game.update(player);
       player.bowl(1);
-      game.updateScoreOnTenthFrame(player);
+      game.update(player);
       expect(game.frames[10]).toEqual([8,1,0]);
     });
 
     it('adds score to total score', function(){
       game.frame = 10;
       player.bowl(10);
-      game.updateScoreOnTenthFrame(player);
+      game.update(player);
       expect(game.totalScore).toBe(10);
     });
 
@@ -76,7 +76,7 @@ describe('Game', function (){
 
     it('Tally\'s the total score', function(){
       player.bowl(9)
-      game.updateScore(player);
+      game.update(player);
       expect(game.totalScore).toBe(9)
     });
   });
@@ -103,7 +103,7 @@ describe('Game', function (){
 
     it('goes to next frame if strike is scored', function(){
       player.bowl(10);
-      game.updateScore(player);
+      game.update(player);
       game.strikeCheck();
       expect(game.frame).toBe(2)
     });
@@ -113,23 +113,23 @@ describe('Game', function (){
 
     it('adds bonus scores to bonusPoints for strike', function(){
       player.bowl(10);
-      game.updateScore(player);
+      game.update(player);
       player.bowl(6);
-      game.updateScore(player);
+      game.update(player);
       player.bowl(2);
-      game.updateScore(player);
+      game.update(player);
       expect(game.bonusPoints).toEqual(8)
     });
 
     it('adds bonus scores to bonusPoints for spare', function(){
       player.bowl(4);
-      game.updateScore(player);
+      game.update(player);
       player.bowl(6);
-      game.updateScore(player);
+      game.update(player);
       player.bowl(2);
-      game.updateScore(player);
+      game.update(player);
       player.bowl(5);
-      game.updateScore(player);
+      game.update(player);
       expect(game.bonusPoints).toEqual(2)
     });
   });
@@ -139,9 +139,9 @@ describe('Game', function (){
     it('returns true if game is over', function(){
       game.frame = 10;
       player.bowl(8);
-      game.updateScoreOnTenthFrame;
+      game.update(player);
       player.bowl(1);
-      game.updateScoreOnTenthFrame;
+      game.update(player);
       expect(game.isGameOver(player)).toBe(true)
     });
   });

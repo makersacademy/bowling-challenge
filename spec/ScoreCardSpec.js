@@ -56,6 +56,15 @@ describe("ScoreCard", function() {
     expect(scorecard.scores[1]).toEqual([10]);
   });
 
+  it("adds next frame's points as bonus after a strike", function() {
+    scorecard.scoreForRoll(10);
+    scorecard.nextFrame();
+    scorecard.scoreForRoll(3);
+    scorecard.scoreForRoll(2);
+    scorecard.bonusForStrike();
+    expect(scorecard.scores[1]).toEqual([10, 5]);
+  });
+
 
 
 

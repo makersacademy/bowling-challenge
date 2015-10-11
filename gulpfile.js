@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var gulp = require('gulp-jasmine');
+var jasmine = require('gulp-jasmine');
 var Game = require("./src/javascripts/bowling-app");
 
 gulp.task('default', function () {

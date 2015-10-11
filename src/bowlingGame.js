@@ -11,16 +11,30 @@ BowlingGame.prototype.roll = function(pins) {
 BowlingGame.prototype.score = function() {
   var sum = 0;
   var totalIndex = 0;
+  var arry = this;
 
   for (var i = 0; i < 10; i++) {
-    if(this.total[totalIndex] + this.total[totalIndex + 1] === 10) {
-      sum += this.total[totalIndex] + this.total[totalIndex + 1] + this.total[totalIndex + 2];
+    if (isSpare()) {
+      spareScore();
     } else {
-      sum += this.total[totalIndex] + this.total[totalIndex + 1];
+      normalScore();
     }
     totalIndex += 2
   }
   return sum
+
+
+  function isSpare() {
+    return arry.total[totalIndex] + arry.total[totalIndex + 1] === 10;
+  }
+
+  function spareScore() {
+    return sum += arry.total[totalIndex] + arry.total[totalIndex + 1] + arry.total[totalIndex + 2];
+  }
+
+  function normalScore() {
+    return sum += arry.total[totalIndex] + arry.total[totalIndex + 1];
+  }
 };
 
 

@@ -1,6 +1,8 @@
-body {
+head, body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
   background: #191919;
 }
 
@@ -11,11 +13,17 @@ h1 {
   color: #DDBB22;
 }
 
-#content {
+table {
+  border: 1px solid white;
+  display: inline-block;
+  position: relative;
   text-align: center;
-  font-size: 40;
-  font-family: 'Rancho';
-  color: #DDBB22;
+  color: white;
+}
+
+table td {
+  border: 5px solid white;
+  width: 55px;
 }
 
 .loader-container {
@@ -149,4 +157,86 @@ h1 {
   margin-top: 15px;
   font-family: 'Rancho';
   margin-left: 14px;
+}
+
+#pin:before {
+  content:"";
+  display: inline-block;
+  position:absolute;
+  z-index:0;
+  top:-26px;
+  left:3px;
+  width:34px;
+  height:44px;
+  background-color:transparent;
+  background-image:-webkit-linear-gradient(
+    top, white 0%, whitesmoke 100%
+    );
+  background-image:-moz-linear-gradient(
+    top, white 0%, whitesmoke 100%
+    );
+  background-image:linear-gradient(
+    top, white 0%, whitesmoke 100%
+    );
+  clip:rect(0px,100px,38px,0px);
+  border-radius:100%;
+ box-shadow:inset 2px 0px 10px rgba(0,0,0,0.3),
+            inset -2px 0 10px rgba(0,0,0,0.3);
+}
+
+#pin {
+  margin: 90px auto 0 auto;
+  display: inline-block;
+
+  position:relative;
+  width: 40px;
+  height: 112px;
+  background-color: whitesmoke;
+  background-image: -webkit-linear-gradient(
+    top, whitesmoke, whitesmoke 12px,
+          red 12px, red 19px,
+          whitesmoke 19px, whitesmoke 25px,
+          red 25px, red 32px,
+          whitesmoke 32px
+    );
+  background-image: -moz-linear-gradient(
+    top, whitesmoke, whitesmoke 12px,
+          red 12px, red 19px,
+          whitesmoke 19px, whitesmoke 25px,
+          red 25px, red 32px,
+          whitesmoke 32px
+    );
+  background-image: linear-gradient(
+    top, whitesmoke, whitesmoke 12px,
+          red 12px, red 19px,
+          whitesmoke 19px, whitesmoke 25px,
+          red 25px, red 32px,
+          whitesmoke 32px
+    );
+  border-radius: 100%;
+  box-shadow:inset 2px 0px 10px rgba(0,0,0,0.3),
+             inset -2px 0 10px rgba(0,0,0,0.3);
+}
+
+#pin:after {
+  content:"";
+  display: inline-block;
+  z-index:10;
+  position:absolute;
+  width:14px;
+  height:2px;
+  left:13px;
+  bottom:0px;
+  background-color: Black;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0);
+}
+
+#pins {
+  text-align: center;
+}
+
+#game_over {
+  /*display: none;*/
+  text-align: center;
+  color: white;
 }

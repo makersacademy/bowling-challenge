@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var root = __dirname;
-var path = require('path');
 var session = require('express-session');
 var flash = require('express-flash');
 
@@ -25,5 +24,5 @@ var server = app.listen(3000, function() {
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
+  console.log('Bowling app listening at http://%s:%s', host, port);
 });

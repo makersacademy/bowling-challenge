@@ -3,10 +3,48 @@ html
   head
     meta(charset='utf-8')
     title Ten Pin Bowling
-    link(href='style.css', type='text/css', rel='stylesheet')
+    link(href='stylesheets/style.css', type='text/css', rel='stylesheet')
     link(href='https://fonts.googleapis.com/css?family=Rancho', type='text/css', rel='stylesheet')
   body
     h1 Score Card
-  script(src='lib/jquery-2.1.4.js')
-  script(src='app/src/ScoreCard.js')
-  script(src='app/src/app.js')
+    table
+      tr#frames
+        td 1
+        td 2
+        td 3
+        td 4
+        td 5
+        td 6
+        td 7
+        td 8
+        td 9
+        td 10
+      tr#scores
+        td#1
+        td#2
+        td#3
+        td#4
+        td#5
+        td#6
+        td#7
+        td#8
+        td#9
+        td#10
+      tr#totals
+    #pins
+      button#pin(value=1) 1
+      button#pin(value=2) 2
+      button#pin(value=3) 3
+      button#pin(value=4) 4
+      button#pin(value=5) 5
+      button#pin(value=6) 6
+      button#pin(value=7) 7
+      button#pin(value=8) 8
+      button#pin(value=9) 9
+      button#pin(value=10) 10
+    #game_over
+      h2 Game Over!
+      button#reload Play Again!
+  script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+  script(src='javascripts/ScoreCard.js')
+  script(src='javascripts/app.js')

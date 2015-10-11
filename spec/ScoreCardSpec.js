@@ -16,10 +16,10 @@ describe("ScoreCard", function() {
     });
 
     it("has a limit of 10 frames", function() {
-      for(var i = 0; i < 10; i++) {
+      for(var i = 0; i < 9; i++) {
         scorecard.moveFrame();
       }
-      expect(scorecard.moveFrame()).toEqual("Game Over!");
+      expect(function(){scorecard.moveFrame();}).toThrow(new Error("Game Over!"));
     });
   });
 
@@ -88,9 +88,28 @@ describe("ScoreCard", function() {
       expect(scorecard.frameScore(1)).toEqual(14);
     });
 
+    it("can check if previous frame was a strike", function() {
+      scorecard.scoreBowl(10);
+      expect(scorecard.checkStrike()).toEqual(true);
+    });
+
+    it("can check if previous frame was a spare", function() {
+      scorecard.scoreBowl(5);
+      scorecard.scoreBowl(5);
+      expect(scorecard.checkSpare()).toEqual(true);
+    });
+
+    it("total can be added up at any point in the game", function() {
+      scorecard.scoreBowl(5);
+      scorecard.scoreBowl(4);
+      scorecard.scoreBowl(4);
+      scorecard.scoreBowl(5);
+      expect(scorecard.runningTotal(scorecard.frame)).toEqual(18);
+    });
+
     describe("10th Frame", function() {
       it("allows a bonus bowl if a strike or spare is scored", function() {
-        for(var i = 0; i < 10; i++) {
+        for(var i = 0; i < 9; i++) {
           scorecard.moveFrame();
         }
         scorecard.scoreBowl(5);

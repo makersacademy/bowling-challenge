@@ -3,7 +3,7 @@ html
   head
     meta(charset='utf-8')
     title Ten Pin Bowling
-    link(href='style.css', type='text/css', rel='stylesheet')
+    link(href='stylesheets/style.css', type='text/css', rel='stylesheet')
     link(href='https://fonts.googleapis.com/css?family=Rancho', type='text/css', rel='stylesheet')
   body
     h1 Ten Pin Bowling
@@ -16,8 +16,8 @@ html
           .hole
       .shadow
       div
-        a.loader-text(,='', href='/score_card')
+        a.loader-text(href='/score_card')
           | Play
-  script(src='lib/jquery-2.1.4.js')
-  script(src='app/src/ScoreCard.js')
-  script(src='app/src/app.js')
+  script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+  script(src='javascripts/ScoreCard.js')
+  script(src='javascripts/app.js')

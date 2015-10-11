@@ -6,15 +6,20 @@ function ScoreCard() {
 };
 
 ScoreCard.prototype.moveFrame = function() {
-  this.pins = 10;
-  this.bowl = 1;
-  return this.frame < 10 ? this.frame += 1 : 'Game Over!';
+  if (this.frame === 10) {
+    throw new Error('Game Over!');
+  } else {
+    this.frame += 1;
+    this.pins = 10;
+    this.bowl = 1;
+  }
 };
 
 ScoreCard.prototype.nextBowl = function() {
-  this.bowl += 1;
-  if (this.bowl > 3) {
+  if (this.bowl >= 4) {
     this.moveFrame();
+  } else {
+    this.bowl += 1;
   }
 };
 
@@ -38,12 +43,28 @@ ScoreCard.prototype.frameScore = function(frame) {
   return total;
 };
 
+ScoreCard.prototype.runningTotal = function(frame) {
+  var total = 0;
+  for (var i = 1; i <= this.frame; i++) {
+    total += this.frameScore(i);
+  }
+  return total;
+}
+
 ScoreCard.prototype.bonusForSpare = function() {
   this.score[this.frame - 2].push(this.score[this.frame - 1][0]);
 };
 
 ScoreCard.prototype.bonusForStrike = function() {
   this.score[this.frame - 2].push(this.frameScore(this.frame - 1));
+};
+
+ScoreCard.prototype.checkStrike = function() {
+  return this.score[this.frame -1][0] === 10;
+};
+
+ScoreCard.prototype.checkSpare = function() {
+  return (this.score[this.frame - 1].length === 2 && this.frameScore(this.frame - 1) === 10);
 };
 
 ScoreCard.prototype._tenthFrame = function() {

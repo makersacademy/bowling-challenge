@@ -3,12 +3,42 @@ function gameSetting() {
   $('#fallenPins').show();
   $('#leftPins').addClass('invisible')
 }
-function isPrevStrike(nth) {
-  if (game.frames[nth-2] != undefined) {
-    game.isStrike(nth-1);
-  }
-}
+
 $(function() {
+  function finish() {
+    var tenthFrame = game.frames[9]
+    var eleventhFrame = game.frames[10]
+    if (frameNumber > 10) {
+      if (tenthFrame[0] + tenthFrame[1] < 10) {
+        console.log('less than 10')
+        $('#fallenPins').hide();
+        $('#leftPins').hide();
+      } else if (game.frames[9][0] === 10) {
+        console.log('strike')
+        if (eleventhFrame[0] === 10) {
+          $('#fallenPins div').click(function() {
+            $('#fallenPins').hide();
+            $('#leftPins').hide();
+          })
+        } else {
+          $('#leftPins div').click(function() {
+            $('#fallenPins').hide();
+            $('#leftPins').hide();
+          })
+        }
+
+
+      } else {
+        if (frameNumber > 10) {
+          console.log('spare')
+          $('#fallenPins div').click(function() {
+            $('#fallenPins').hide();
+            $('#leftPins').hide();
+          })
+        }
+      }
+    }
+  }
 
   for (var i=1; i<11; i++) {
     $('#fallenPins').append('<div id="pins' + i + '">' + i + '</div>')
@@ -58,6 +88,7 @@ $(function() {
           $(prevThirdBox).text(game.addScores(frameNumber - 1))
         }
       }
+      finish();
     });
 
     $('#leftPins div').on('click', function(e) {
@@ -84,5 +115,6 @@ $(function() {
         }
       }
       frameNumber++;
-    });
+      finish();
+    })
 });

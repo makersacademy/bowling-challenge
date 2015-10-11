@@ -1,64 +1,46 @@
-
 Bowling Challenge
-=================
+======================
 
-    Test time: Friday, the entire day and the entire of lab week if you need it.
-    Feel free to use Google, your notes, and your books.
-
-Task: 
+Synopsis
 -----
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+The task set was to build a scoreboard which would record the scores of a bowling game. Each bowling game consists of 10 frames. For each frame there are two balls to be rolled. The game has special rules which are explained below:
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by 
-
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_september2015 (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-
-### Optional Extra
-
-Create a nice interactive animated interface with jQuery.
-
-## Strikes
-
+Strike:
 The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
 
-## Spares
-
+Spares:
 The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
 
-## 10th frame
-
+10th frame:
 If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
 
-## Gutter Game
+Approach towards solving the challenge
+--------------------------------------
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+This challenge was difficult to start because I had to understand the rules of bowling. I firstly went over the rules and understood how the strike, spare and 10th frame effected the scoreboard. Once I had understood this, it made it much easier to execute the challenge.
 
-## Perfect Game
+I used Jasmine to carry out TDD. This allowed me to progress quicker through the production of the scoreboard and also reduced the likliness of any bugs.
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+The bowling scoreboard is fully functional; however if you feel that there are any errors please let me know.
 
-In the image below you can find some score examples.
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+Tests passed
+---------------------------------
+```
+11 specs, 0 failures
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-CI
---
-
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
-
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.
+Game -
+should start with zero points
+should be able to increase the score when ball is rolled
+should change frame after two rolls
+should be able to tell how many pins were hit on each ball
+frame changes after a strike
+doubles score on next throw after a strike
+doubles score if multiple stikes in a row
+can double score on next roll if spare
+can double score if spare is hit twice
+can only roll one additional ball if strike on last frame
+can only roll one additional ball if spare on last frame
+```

@@ -24,7 +24,9 @@ Game.prototype.countFrameScores = function(nth) {
 }
 
 Game.prototype.isSpare = function(nth) {
-  return (this.frames[nth-1][0] + this.frames[nth-1][1] === 10)
+  if (this.frames[nth-1] != undefined) {
+    return (this.frames[nth-1][0] + this.frames[nth-1][1] === 10)
+  }
 }
 
 Game.prototype.spareBonusScores = function(nth) {
@@ -32,7 +34,9 @@ Game.prototype.spareBonusScores = function(nth) {
 }
 
 Game.prototype.isStrike = function(nth) {
-  return (this.frames[nth-1][0] === 10)
+  if (this.frames[nth-1] != undefined) {
+    return (this.frames[nth-1][0] === 10)
+  }  
 }
 
 Game.prototype.strikeBonusScores = function(nth) {

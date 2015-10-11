@@ -3,14 +3,12 @@ function gameSetting() {
   $('#fallenPins').show();
   $('#leftPins').addClass('invisible')
 }
-
-function getScores(nth, rolls) {
-  return game.frames[nth-1][rolls-1];
+function isPrevStrike(nth) {
+  if (game.frames[nth-2] != undefined) {
+    game.isStrike(nth-1);
+  }
 }
-
-
 $(function() {
-
 
   for (var i=1; i<11; i++) {
     $('#fallenPins').append('<div id="pins' + i + '">' + i + '</div>')
@@ -31,23 +29,20 @@ $(function() {
       var scores1 = parseInt(e.target.textContent);
       game.setScores(frameNumber, 1, scores1);
       game.total = 0;
-
-      // console.log(parseInt(e.target.textContent));
-
-      console.log(game.frames);
+      var firstBox = '#frame' + frameNumber.toString() + ' .first'
+      var secondBox = '#frame' + frameNumber.toString() + ' .second'
+      var prevThirdBox = '#frame' + (frameNumber -1).toString() + ' .third'
+      var prevThirdBox2 = '#frame' + (frameNumber -2).toString() + ' .third'
 
       if (game.isStrike(frameNumber)) {
         $('#fallenPins').show();
         $('#leftPins div').hide();
-        $('#frame' + frameNumber.toString() + ' .second').text('X');
-        console.log(frameNumber + 'strike')
-        if (game.frames[frameNumber-2] != undefined && game.frames[frameNumber-2][0] === 10) {
-            console.log(frameNumber + 'what?')
-            $('#frame' + (frameNumber -2).toString() + ' .third').text(game.addScores(frameNumber - 2))
-        } else if (game.frames[frameNumber-2] != undefined && game.frames[frameNumber-2][0] + game.frames[frameNumber-2][1] === 10) {
-          $('#frame' + (frameNumber -1).toString() + ' .third').text(game.addScores(frameNumber - 1))
-        }  else {
-          console.log('hello world')
+        $(secondBox).text('X');
+
+        if (game.isStrike(frameNumber-1)) {
+          $(prevThirdBox2).text(game.addScores(frameNumber - 2))
+        } else if (game.isSpare(frameNumber -1)) {
+          $(prevThirdBox).text(game.addScores(frameNumber - 1))
         }
         frameNumber++
       } else {
@@ -55,71 +50,39 @@ $(function() {
         $('#leftPins div').show();
         $('#leftPins div').removeClass('invisible');
         $('#leftPins div').addClass('visible');
-        $('#frame' + frameNumber.toString() + ' .first').text(scores1);
+        $(firstBox).text(scores1);
 
-        if (game.frames[frameNumber-2] != undefined) {
-          if (game.frames[frameNumber-2][0] === 10) {
-            console.log(frameNumber + 'strike')
-            $('#frame' + (frameNumber -2).toString() + ' .third').text(game.addScores(frameNumber - 2))
-          } else if (game.frames[frameNumber-2][0] + game.frames[frameNumber-2][1] === 10) {
-
-            $('#frame' + (frameNumber -1).toString() + ' .third').text(game.addScores(frameNumber - 1))
-          }
+        if (game.isStrike(frameNumber-1)) {
+          $(prevThirdBox2).text(game.addScores(frameNumber - 2))
+        } else if (game.isSpare(frameNumber-1)) {
+          $(prevThirdBox).text(game.addScores(frameNumber - 1))
         }
       }
     });
 
     $('#leftPins div').on('click', function(e) {
       var scores2 = parseInt(e.target.textContent);
-      // console.log(parseInt(e.target.textContent));
       $('#fallenPins').show();
       $('#leftPins div').hide();
       game.setScores(frameNumber, 2, scores2);
-      console.log(game.frames);
       game.total = 0;
-      var frameSelector = '#frame' + frameNumber.toString() + ' .second'
-      var num = $('#frame' + frameNumber.toString() + ' .first').text();
-
-
-      // if (parseInt($('#frame' + frameNumber.toString() + ' .first').text()) + scores2 === 10) {
+      var secondBox = '#frame' + frameNumber.toString() + ' .second'
+      var currentThirdBox = '#frame' + frameNumber.toString() + ' .third'
+      var prevThirdBox = '#frame' + (frameNumber -1).toString() + ' .third'
 
       if (game.isSpare(frameNumber)) {
-        $(frameSelector).text('/')
-        if (game.frames[frameNumber-2] != undefined && game.frames[frameNumber-2][0] + game.frames[frameNumber-2][1] === 10) {
-            console.log('hi')
-          $('#frame' + (frameNumber -1).toString() + ' .third').text(game.addScores(frameNumber - 1))
+        $(secondBox).text('/')
+        if (game.isSpare(frameNumber-1)) {
+          $(prevThirdBox).text(game.addScores(frameNumber - 1))
         }
       } else {
-        console.log(frameNumber);
-        $(frameSelector).text(scores2)
-        $('#frame' + frameNumber.toString() + ' .third').text(game.addScores(frameNumber))
-        if (game.frames[frameNumber-2] != undefined) {
-          if (game.frames[frameNumber-2][0] === 10) {
+        $(secondBox).text(scores2)
+        $(currentThirdBox).text(game.addScores(frameNumber))
+        if (game.isStrike(frameNumber-1)) {
           game.total = 0;
-          $('#frame' + (frameNumber-1).toString() + ' .third').text(game.addScores(frameNumber-1))
+          $(prevThirdBox).text(game.addScores(frameNumber-1))
         }
-
-        } else {
-
-        }
-
-
       }
-
-
       frameNumber++;
-
-
     });
-
-
-
-    // game.total = 0;
-    // $('#frame11 .third').text(game.addScores(12))
-    //
-
-
-
-
-
 });

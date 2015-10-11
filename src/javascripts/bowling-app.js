@@ -4,61 +4,53 @@ function Game() {
   this.rolls = {1:[], 2:[], 3:[], 4:[], 5:[],
                 6:[], 7:[], 8:[], 9:[],10:[]};
   this.currentFrame = 1;
-  this.lastFrameStrike = false;
-  this.lastFrameSpare = false;
-  this.isStrike = false
+  // this.lastFrameStrike = false;
+  // this.lastFrameSpare = false;
+  // this.isStrike = false
 };
 
 Game.prototype.roll = function(pins) {
-  this.strikeChecker(pins);
+  this.strikeOrSpare(pins);
   this.bonusDistributor(pins);
-  this.bonusChecker(pins);
   this.rolls[this.currentFrame].push(pins);
   this.scoreUpdater(pins);
-  this.frameHandler(pins)
+  this.frameHandler(pins);
+  this.nextFrameBonus(pins)
 };
 
 // --------------------------------------------------
 
-Game.prototype.strikeChecker = function(pins) {  
+Game.prototype.strikeOrSpare = function(pins) {
   if (pins === 10) {
-    this.isStrike = true
+    this.isStrike = true;
+  };
+  if (pins != 10) {
+    var total = 0;
+      $.each(this.rolls[this.currentFrame],function() {
+      total += this
+    });
+    if (total === 10) {
+      this.isSpare = true
+    };
   };
 };
 
 // --------------------------------------------------
 
 Game.prototype.bonusDistributor = function(pins) {
-  // push to last frame if last frame was strike and make lastlast true
-  if(this.lastFrameStrike === true) { this.addToLast(pins) ; this.lastLastFrameStrike = true };
-  if(this.lastFrameStrike === false && this.lastLastFrameStrike === true) { this.addToLastAgain(pins) ; this.lastLastFrameStrike = false };
-  // if(this.lastFrameSpare === true) { this.addToLast(pins) ; this.lastFrameSpare = false }
-};
+  if(this.wasStrike) { this.addToLast(pins) };
+  if(this.wasStrike2 && this.currentFrame > 1) { this.addToLastAgain(pins) };
 
-// --------------------------------------------------
-
-Game.prototype.bonusChecker = function(pins) {
-  if (pins === 10) {
-    this.lastFrameStrike = true
-  };
-  var total = 0;
-    $.each(this.rolls[this.currentFrame],function() {
-    total += this
-  });
-  if (total === 10) {
-    this.lastFrameSpare = true
-  };
 };
 
 // --------------------------------------------------
 
 Game.prototype.addToLast = function(pins) {
-  this.rolls[this.currentFrame - 1].push(pins)
+  this.rolls[this.currentFrame - 1][0] += pins
 };
 
 Game.prototype.addToLastAgain = function(pins) {
-  if (this.isStrike === true) { this.rolls[this.currentFrame - 2].push(pins)};
-  this.rolls[this.currentFrame - 1].push(pins)
+  this.rolls[this.currentFrame - 2][0] += pins
 };
 
 // --------------------------------------------------
@@ -69,18 +61,33 @@ Game.prototype.scoreUpdater = function(pins) {
   for (var k in this.rolls) {
   vals = this.rolls[k];
     for (var i=0; i<vals.length; i++) {
-      sum += vals[i] || 0;
-    }
-  }
+      sum += vals[i] || 0
+    };
+  };
   this.score = sum
 };
 
 Game.prototype.frameHandler = function(pins) {
-  if (pins === 10 || this.frameOver === true) {
+  if (this.isStrike || this.frameOver) {
     this.currentFrame++; this.frameOver = !this.frameOver
   } else {
   this.frameOver = !this.frameOver;
-  }
+  };
+};
+
+// Why was this breaking???
+Game.prototype.nextFrameBonus = function(pins) {
+  if (this.isStrike && this.wasStrike) {
+    this.wasStrike2 = true
+  } else if (this.isStrike) {
+    this.isStrike = false;
+    this.wasStrike = true
+  } else if (this.wasStrike) {
+    this.wasStrike = false;
+    this.wasStrike2 = true
+  } else if (this.wasStrike2) {
+    this.wasStrike2 = false
+  };
 };
 
 // --------------------------------------------------

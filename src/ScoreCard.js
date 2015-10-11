@@ -31,6 +31,14 @@ ScoreCard.prototype.scoreForFrame = function(frame) {
   return this.scores[frame].reduce(function(a, b) { return a + b; });
 }
 
+ScoreCard.prototype.strike = function() {
+  this.scores[this.frame].push(10);
+  if (this.frame !== 10) {
+    this.nextRoll();
+  }
+  return "X";
+}
+
 
 
 // Player.prototype.pause = function() {

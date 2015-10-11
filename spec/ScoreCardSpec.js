@@ -46,6 +46,11 @@ describe("ScoreCard", function() {
     expect(scorecard.scores[1]).toEqual([4,5])
   });
 
+  it("moves straight to the next roll after a strike", function() {
+    scorecard.scoreForRoll(10);
+    expect(scorecard.roll).toEqual(2);
+  });
+
 
 
 

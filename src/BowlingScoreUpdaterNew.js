@@ -5,10 +5,26 @@ function BowlingScoreUpdater() {
 };
 
 BowlingScoreUpdater.prototype.shiftFrames = function() {
+  if (this.game.frameRoundsLeft === 0){
   this._shiftPrevFrame();
   this._shiftCurrentFrame();
   this._resetCurrentFrame();
+  };
 };
+
+BowlingScoreUpdater.prototype.updateBonus = function(score) {
+  this._updatePrevPrevFrameBonus(score);
+  this._updatePrevFrameBonus(score);
+};
+
+BowlingScoreUpdater.prototype.newRound = function(score) {
+  this.shiftFrames();
+  this._strikeNewRound(score);
+  this._spareNewRound(score);
+  this._nonSpareStrikeNewRound(score);
+  this.updateBonus(score);
+};
+
 
 BowlingScoreUpdater.prototype._shiftPrevFrame = function() {
   this.game.prevPrevFrameTotal = this.game.prevFrameTotal;
@@ -27,12 +43,6 @@ BowlingScoreUpdater.prototype._resetCurrentFrame = function() {
   this.game.frameRoundsLeft = 2;
 };
 
-
-BowlingScoreUpdater.prototype.updateBonus = function(score) {
-  this._updatePrevPrevFrameBonus(score);
-  this._updatePrevFrameBonus(score);
-};
-
 BowlingScoreUpdater.prototype._updatePrevFrameBonus = function(score) {
   if (this.game.prevFrameBonusRounds > 0) {
     this.game.prevFrameTotal += score;
@@ -47,21 +57,37 @@ BowlingScoreUpdater.prototype._updatePrevPrevFrameBonus = function(score) {
   };
 };
 
-BowlingScoreUpdater.prototype.newRound = function(score) {
-  if (this.game.frameRoundsLeft === 0) {
-    this.shiftFrames();
-  };
-  if (score === 10 && this.game.frameRoundsLeft === 2){
+BowlingScoreUpdater.prototype._strikeNewRound = function(score) {
+  if (this._isStrike(score)){
     this.game.frameRoundsLeft = 0;
     this.game.currentFrameBonusRounds = 2;
     this.game.currentFrameTotal = 10;
-  } else if (this.game.currentFrameTotal + score === 10){
+  };
+};
+
+BowlingScoreUpdater.prototype._isStrike = function(score) {
+  return score === 10 && this.game.frameRoundsLeft === 2
+};
+
+BowlingScoreUpdater.prototype._spareNewRound = function(score) {
+  if (this._isSpare(score)){
     this.game.frameRoundsLeft = 0;
     this.game.currentFrameBonusRounds = 1;
     this.game.currentFrameTotal += score;
-  } else if (this.game.currentFrameTotal + score < 10){
+  };
+};
+
+BowlingScoreUpdater.prototype._isSpare = function(score) {
+  return this.game.currentFrameTotal + score === 10
+};
+
+BowlingScoreUpdater.prototype._nonSpareStrikeNewRound = function(score) {
+  if (this._isNonSpareStrike(score)){
     this.game.frameRoundsLeft -= 1;
     this.game.currentFrameTotal += score;
   };
-  this.updateBonus(score);
+};
+
+BowlingScoreUpdater.prototype._isNonSpareStrike = function(score) {
+  return this.game.currentFrameTotal + score < 10
 };

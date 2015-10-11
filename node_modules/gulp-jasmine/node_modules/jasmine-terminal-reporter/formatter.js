@@ -1,0 +1,43 @@
+'use strict';
+
+var indent = require('indent-string');
+var pluralize = require('pluralize');
+
+module.exports = function (options) {
+    options = options || {};
+
+    var defaultStackFilter = function (string) {
+        return string;
+    };
+
+    var defaultPrint = function (str) {
+        process.stdout.write(str);
+    };
+
+    var ansi = {
+        green: '\x1B[32m',
+        red: '\x1B[31m',
+        yellow: '\x1B[33m',
+        none: '\x1B[0m'
+    };
+
+    this.showColors = options.showColors === undefined ? true : options.showColors;
+    this.formatStack = options.stackFilter || defaultStackFilter;
+    this.print =  options.print || defaultPrint;
+
+    this.printNewline = function () {
+        this.print('\n');
+    };
+
+    this.colorize = function (color, str) {
+        return this.showColors ? (ansi[color] + str + ansi.none) : str;
+    };
+
+    this.pluralize = function (str, count) {
+        return pluralize(str, count);
+    };
+
+    this.indent = function (str, spaces) {
+        return spaces <= 0 ? str : indent(str, ' ', spaces);
+    };
+};

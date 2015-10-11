@@ -1,0 +1,71 @@
+jasmine-terminal-reporter
+=========================
+
+A simple terminal reporter for Jasmine, inspired by [juliemr/minijasminenode](https://github.com/juliemr/minijasminenode).
+
+installation
+------------
+
+Get the library with
+
+    npm install jasmine-terminal-reporter
+
+usage
+-----
+
+Depends on your jasmine spec runner, but to import and instantiate the reporter:
+
+```javascript
+    var Reporter = require('jasmine-terminal-reporter');
+    var reporter = new Reporter(options)
+```
+
+output
+------
+
+By default, the output will be fairly compact. Each test is represented by a green dot (passed), a red F (failed) or a yellow * (pending). Every failed test and expectation will be detailed, and a summary will be printed at the end:
+
+```
+.....................F..*..*....*.....
+
+Failures:
+1) A suite with a test will fail
+1.1) Expected true to be false.
+
+38 specs, 1 failures, 3 pending
+Finished in 0.5 seconds
+```
+
+If verbose mode is selected, each suite and spec is detailed:
+```
+Running 38 specs.
+
+A suite
+  nested in another
+      has a test that passes: passed
+      has a test that fails: failed
+
+[...]
+
+Failures:
+1) A suite nested in another has a test that fails
+1.1) Expected true to be false.
+
+38 specs, 1 failure
+Finished in 0.5 seconds
+```
+
+options
+-------
+* **`isVerbose`**: see above.
+
+* **`includeStackTrace`**: (Default: false) Displays the stack trace on failed tests
+
+* **`showColors`**: (Default: true) 
+
+* **`done`**: Optional method to call when jasmine is done. First argument is true if all tests have passed
+ or are pending.
+
+* **`formatStack`**: Optional method called to format the stack trace. Receives a string as the first parameter and returns the formatted stack trace.
+
+* **`print`**: Optionnal method used to display the output. By default, will write to process.stdout.

@@ -43,7 +43,7 @@ describe("ScoreCard", function() {
   it("adds points to score each roll", function() {
     scorecard.scoreForRoll(4);
     scorecard.scoreForRoll(5);
-    expect(scorecard.scores[1]).toEqual([4,5])
+    expect(scorecard.scores[1]).toEqual([4,5]);
   });
 
   it("moves straight to the next roll after a strike", function() {
@@ -83,28 +83,47 @@ describe("ScoreCard", function() {
     expect(scorecard.grandTotal()).toEqual(14);
   });
 
+  it("should know how many pins are left to be knocked down", function() {
+    scorecard.scoreForRoll(3);
+    expect(scorecard.pinsleft(3)).toEqual(7);
+  });
 
-
-
-  //
-  // // demonstrates use of spies to intercept and test method calls
-  // it("tells the current song if the user has made it a favorite", function() {
-  //   spyOn(song, 'persistFavoriteStatus');
-  //
-  //   player.play(song);
-  //   player.makeFavorite();
-  //
-  //   expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
+  // it("can reset the number of pins", function() {
+  //   scorecard.pinsLeft(4);
+  //   scorecard.resetPins();
+  //   expect(scorecard.pins).toEqual(10);
   // });
   //
-  // //demonstrates use of expected exceptions
-  // describe("#resume", function() {
-  //   it("should throw an exception if song is already playing", function() {
-  //     player.play(song);
-  //
-  //     expect(function() {
-  //       player.resume();
-  //     }).toThrowError("song is already playing");
-  //   });
+  // it("it can tell if previous frame was a strike", function() {
+  //   scorecard.scoreForRoll(10);
+  //   scorecard.nextFrame();
+  //   expect(scorecard.isPreviousFrameStrike).toBe(true);
   // });
+  //
+  // it("it can tell if previous frame was not a strike ", function() {
+  //   scorecard.scoreForRoll(2);
+  //   scorecard.scoreForRoll(7);
+  //   scorecard.nextFrame();
+  //   expect(scorecard.isPreviousFrameStrike).toBe(false);
+  // });
+  //
+  // it("can tell if previous frame was a spare", function() {
+  //   scorecard.scoreForRoll(6);
+  //   scorecard.scoreForRoll(4);
+  //   scorecard.nextFrame();
+  //   expect(scorecard.isPreviousFrameSpare).toBe(true);
+  // });
+  //
+  // it("can tell if previous frame was not a spare", function() {
+  //   scorecard.scoreForRoll(5);
+  //   scorecard.scoreForRoll(3);
+  //   scorecard.nextFrame();
+  //   expect(scorecard.isPreviousFrameSpare).toBe(false);
+  // });
+  //
+  // it(" ", function() {
+  //
+  // });
+
+
 });

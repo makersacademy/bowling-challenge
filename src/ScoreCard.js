@@ -29,7 +29,7 @@ ScoreCard.prototype.nextRoll = function() {
 
 ScoreCard.prototype.scoreForFrame = function(frame) {
   return this.scores[frame].reduce(function(a, b) { return a + b; });
-}
+};
 
 ScoreCard.prototype.strike = function() {
   this.scores[this.frame].push(10);
@@ -37,15 +37,15 @@ ScoreCard.prototype.strike = function() {
     this.nextRoll();
   }
   return "X";
-}
+};
 
 ScoreCard.prototype.bonusForStrike = function() {
   return this.scores[this.frame - 1].push(this.scores[this.frame].reduce(function(a, b) { return a + b; }));
-}
+};
 
 ScoreCard.prototype.bonusForSpare = function() {
   return this.scores[this.frame - 1].push(this.scores[this.frame][0]);
-}
+};
 
 ScoreCard.prototype.grandTotal = function() {
   var sum = 0;
@@ -53,22 +53,21 @@ ScoreCard.prototype.grandTotal = function() {
     sum += this.scoreForFrame(i);
   }
   return sum;
-}
+};
 
+ScoreCard.prototype.pinsLeft = function(pinsKnockedDown) {
+  this.pins = 10 - pinsKnockedDown;
+  return this.pins;
+};
 
-
-// Player.prototype.pause = function() {
-//   this.isPlaying = false;
+// Scorecard.prototype.resetPins = function() {
+//   this.pins = 10;
 // };
 //
-// Player.prototype.resume = function() {
-//   if (this.isPlaying) {
-//     throw new Error("song is already playing");
-//   }
-//
-//   this.isPlaying = true;
+// Scorecard.prototype.isPreviousFrameStrike = function() {
+//   return this.scores[this.frame - 1][10] === 10;
 // };
 //
-// Player.prototype.makeFavorite = function() {
-//   this.currentlyPlayingSong.persistFavoriteStatus(true);
+// Scorecard.prototype.isPreviousFrameSpare = function() {
+//   return (this.scores[this.frame - 1].length === 2 && this.scoreForRoll(this.frame - 1) === 10);
 // };

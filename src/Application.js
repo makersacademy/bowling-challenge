@@ -7,13 +7,15 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    game.addNewBonusScore();
-    console.log('bonus', game.bonusScores);
-    game.makeRoundScores();
-    console.log('round', game.roundScores);
-    game.makeGameScore();
-    console.log('game', game.gameScore);
-    $('#round1').text('0');
+    // game.addNewBonusScore();
+    // console.log('bonus', game.bonusScores);
+    // game.makeRoundScores();
+    // console.log('round', game.roundScores);
+    // game.makeGameScore();
+    // console.log('game', game.gameScore);
+    for (var i = 1; i <= 21; i += 1) {
+      $('#round' + i).text(game.rawScores[i-1]);
+    };
   });
 
   $('#btn1').click(function() {
@@ -21,13 +23,15 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    game.addNewBonusScore();
-    console.log('bonus', game.bonusScores);
-    game.makeRoundScores();
-    console.log('round', game.roundScores);
-    game.makeGameScore();
-    console.log('game', game.gameScore);
-    $('#round1').text('1');
+    // game.addNewBonusScore();
+    // console.log('bonus', game.bonusScores);
+    // game.makeRoundScores();
+    // console.log('round', game.roundScores);
+    // game.makeGameScore();
+    // console.log('game', game.gameScore);
+    for (var i = 1; i < 21; i += 1) {
+      $('#round' + i).text(game.rawScores[i-1]);
+    };
   });
 
   $('#btn2').click(function() {
@@ -35,12 +39,15 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    game.addNewBonusScore();
-    console.log('bonus', game.bonusScores);
-    game.makeRoundScores();
-    console.log('round', game.roundScores);
-    game.makeGameScore();
-    console.log('game', game.gameScore);
+    // game.addNewBonusScore();
+    // console.log('bonus', game.bonusScores);
+    // game.makeRoundScores();
+    // console.log('round', game.roundScores);
+    // game.makeGameScore();
+    // console.log('game', game.gameScore);
+    for (var i = 1; i < 21; i += 1) {
+      $('#round' + i).text(game.rawScores[i-1]);
+    };
   });
 
   $('#btn3').click(function() {
@@ -48,12 +55,15 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    game.addNewBonusScore();
-    console.log('bonus', game.bonusScores);
-    game.makeRoundScores();
-    console.log('round', game.roundScores);
-    game.makeGameScore();
-    console.log('game', game.gameScore);
+    // game.addNewBonusScore();
+    // console.log('bonus', game.bonusScores);
+    // game.makeRoundScores();
+    // console.log('round', game.roundScores);
+    // game.makeGameScore();
+    // console.log('game', game.gameScore);
+    for (var i = 1; i < 21; i += 1) {
+      $('#round' + i).text(game.rawScores[i-1]);
+    };
   });
 
   $('#btn4').click(function() {
@@ -61,12 +71,15 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    game.addNewBonusScore();
-    console.log('bonus', game.bonusScores);
-    game.makeRoundScores();
-    console.log('round', game.roundScores);
-    game.makeGameScore();
-    console.log('game', game.gameScore);
+    // game.addNewBonusScore();
+    // console.log('bonus', game.bonusScores);
+    // game.makeRoundScores();
+    // console.log('round', game.roundScores);
+    // game.makeGameScore();
+    // console.log('game', game.gameScore);
+    for (var i = 1; i < 21; i += 1) {
+      $('#round' + i).text(game.rawScores[i-1]);
+    };
   });
 
   $('#btn5').click(function() {
@@ -74,12 +87,15 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    game.addNewBonusScore();
-    console.log('bonus', game.bonusScores);
-    game.makeRoundScores();
-    console.log('round', game.roundScores);
-    game.makeGameScore();
-    console.log('game', game.gameScore);
+    // game.addNewBonusScore();
+    // console.log('bonus', game.bonusScores);
+    // game.makeRoundScores();
+    // console.log('round', game.roundScores);
+    // game.makeGameScore();
+    // console.log('game', game.gameScore);
+    for (var i = 1; i < 21; i += 1) {
+      $('#round' + i).text(game.rawScores[i-1]);
+    };
   });
 
   $('#btn6').click(function() {
@@ -87,12 +103,15 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    game.addNewBonusScore();
-    console.log('bonus', game.bonusScores);
-    game.makeRoundScores();
-    console.log('round', game.roundScores);
-    game.makeGameScore();
-    console.log('game', game.gameScore);
+    // game.addNewBonusScore();
+    // console.log('bonus', game.bonusScores);
+    // game.makeRoundScores();
+    // console.log('round', game.roundScores);
+    // game.makeGameScore();
+    // console.log('game', game.gameScore);
+    for (var i = 1; i < 21; i += 1) {
+      $('#round' + i).text(game.rawScores[i-1]);
+    };
   });
 
   $('#btn7').click(function() {
@@ -100,25 +119,31 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    game.addNewBonusScore();
-    console.log('bonus', game.bonusScores);
-    game.makeRoundScores();
-    console.log('round', game.roundScores);
-    game.makeGameScore();
-    console.log('game', game.gameScore);
+    // game.addNewBonusScore();
+    // console.log('bonus', game.bonusScores);
+    // game.makeRoundScores();
+    // console.log('round', game.roundScores);
+    // game.makeGameScore();
+    // console.log('game', game.gameScore);
+    for (var i = 1; i < 21; i += 1) {
+      $('#round' + i).text(game.rawScores[i-1]);
+    };
   });
 
   $('#btn8').click(function() {
     game.addNewRollScore(8);
     console.log('raw', game.rawScores);
     game.makeFrameScores();
-    console.log('frame', game.frameScores);
-    game.addNewBonusScore();
-    console.log('bonus', game.bonusScores);
-    game.makeRoundScores();
-    console.log('round', game.roundScores);
-    game.makeGameScore();
-    console.log('game', game.gameScore);
+    // console.log('frame', game.frameScores);
+    // game.addNewBonusScore();
+    // console.log('bonus', game.bonusScores);
+    // game.makeRoundScores();
+    // console.log('round', game.roundScores);
+    // game.makeGameScore();
+    // console.log('game', game.gameScore);
+    for (var i = 1; i < 21; i += 1) {
+      $('#round' + i).text(game.rawScores[i-1]);
+    };
   });
 
   $('#btn9').click(function() {
@@ -126,12 +151,15 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    game.addNewBonusScore();
-    console.log('bonus', game.bonusScores);
-    game.makeRoundScores();
-    console.log('round', game.roundScores);
-    game.makeGameScore();
-    console.log('game', game.gameScore);
+    // game.addNewBonusScore();
+    // console.log('bonus', game.bonusScores);
+    // game.makeRoundScores();
+    // console.log('round', game.roundScores);
+    // game.makeGameScore();
+    // console.log('game', game.gameScore);
+    for (var i = 1; i < 21; i += 1) {
+      $('#round' + i).text(game.rawScores[i-1]);
+    };
   });
 
   $('#btn10').click(function() {
@@ -139,12 +167,15 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    game.addNewBonusScore();
-    console.log('bonus', game.bonusScores);
-    game.makeRoundScores();
-    console.log('round', game.roundScores);
-    game.makeGameScore();
-    console.log('game', game.gameScore);
+    // game.addNewBonusScore();
+    // console.log('bonus', game.bonusScores);
+    // game.makeRoundScores();
+    // console.log('round', game.roundScores);
+    // game.makeGameScore();
+    // console.log('game', game.gameScore);
+    for (var i = 1; i < 21; i += 1) {
+      $('#round' + i).text(game.rawScores[i-1]);
+    };
   });
 
 });

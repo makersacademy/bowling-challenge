@@ -1,11 +1,19 @@
 var game = new Game()
 
-function updateResults(results){
-    document.getElementById("results").textContent = results;
-};
-function updateRolls(rolls){
-    document.getElementById("rolls").textContent = rolls;
-};
+document.getElementById("new-game").addEventListener("click", function(){
+  game = new Game()
+  cleanTable()
+});
+
+document.getElementById("action").addEventListener("click", function(){
+  game.playRoll();
+  updateRollsInTable(game.rolls)
+  updateTotalsInTable(game.total)
+});
+
+createTable();
+
+
 
 function updateRollsInTable(rolls){
   for (var i = 1; i < 21; i++){
@@ -24,16 +32,6 @@ function updateTotalsInTable(totals){
     element.textContent = totals[i-1]
   };
 };
-
-createTable();
-
-document.getElementById("action").addEventListener("click", function(){
-  game.playRoll();
-  updateRollsInTable(game.rolls)
-  updateTotalsInTable(game.total)
-  updateRolls(game.rolls);
-  updateResults(game.results);
-});
 
 function createTable() {
   var table = document.createElement('table');
@@ -94,3 +92,14 @@ function createTable() {
   document.body.appendChild(table);
 
 };
+
+function cleanTable(){
+  for (var i = 1; i < 11; i++){
+    element = document.getElementById("total" + i)
+    element.textContent = ' '
+  };
+  for (var i = 1; i < 21; i++){
+    element = document.getElementById("roll" + i)
+    element.textContent = ' '
+  };
+}

@@ -3,10 +3,12 @@
 }
 
 #firstRow div {
-  height: 80px;
+  height: 30px;
   width: 100px;
+  margin-top: 20px;
   display: inline-block;
   border: 1px solid black;
+  border-bottom: 1px solid white;
 }
 #secondRow div.scores {
   height: 100px;
@@ -16,21 +18,23 @@
 }
 .first {
   display: inline-block;
-  border: 1px solid red;
-  height: 44px;
-  width: 44px;
+  height: 48px;
+  width: 50px;
+  vertical-align:top;
 }
 .second {
   display: inline-block;
-
-  border: 1px solid blue;
-  height: 44px;
-  width: 44px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  height: 48px;
+  width: 49px;
+  vertical-align:top;
 }
 .third {
-  border: 1px solid green;
-  height: 44px;
-  width: 80px;
+  display: inline-block;
+  height: 45px;
+  width: 98px;
+  vertical-align:top;
 }
 /*.secondRow div {
   text-align: center;

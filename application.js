@@ -52,6 +52,7 @@ $(function() {
       '"><div class="first"></div><div class="second"></div><div class="third"></div></div>')
   }
   $('#firstRow :last-child').text('Total');
+  $('#secondRow')
 
   gameSetting();
   var frameNumber = frameNumber || 1;

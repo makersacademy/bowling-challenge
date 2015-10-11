@@ -4,25 +4,25 @@ beforeEach(function() {
 
 describe ("BowlingScore", function() {
 
-  describe ("addNewRoundScore", function () {
+  describe ("new roll", function () {
 
-    it("pushes score into rawScores", function() {
-      game.addNewRoundScore(7);
-      game.addNewRoundScore(2);
-      game.addNewRoundScore(4);
-      game.addNewRoundScore(5);
-      expect(game.rawScores).toEqual([7,2,4,5]);
+    it("pushes score into rolls", function() {
+      game.roll(7);
+      game.roll(2);
+      game.roll(4);
+      game.roll(5);
+      expect(game.rolls).toEqual([7,2,4,5]);
     });
 
     it("pushes 10 into own array in rawScore", function() {
-      game.addNewRoundScore(10);
-      expect(game.rawScores).toEqual([10,null]);
+      game.roll(10);
+      expect(game.rolls).toEqual([10,null]);
     });
   });
 
   describe ("makeFrameScores", function(){
-    it("restructures rawScores into frameScores", function() {
-      game.rawScores = [7,2,4,5]
+    it("restructures rolls into frameScores", function() {
+      game.rolls = [7,2,4,5]
       game.makeFrameScores();
       expect(game.frameScores).toEqual([[7,2],[4,5]]);
     });
@@ -58,7 +58,7 @@ describe ("BowlingScore", function() {
       expect(game.bonusScores).toEqual([3,5,0,7,1,0]);
     });
 
-    it("if strikes are hit in a row, push next two rawScores into bonusScores", function () {
+    it("if strikes are hit in a row, push next two rolls into bonusScores", function () {
       game.frameScores = [[10,null], [10,null], [7,1]];
       game.frameBonus();
       expect(game.bonusScores).toEqual([10,7,7,1,0]);
@@ -72,25 +72,14 @@ describe ("BowlingScore", function() {
 
   });
 
+  describe ("Score", function () {
 
-  describe ("frameTotals", function () {
-
-    it("logs individual frame total", function () {
-      game.frameScores = [[6,2],[8,1],[5,4]];
-      game.frameTotal();
-      expect(game.frameTotals).toEqual([8,9,9]);
-    });
-
-  });
-
-  describe ("runningTotals", function () {
-
-    it("updates runningTotals when frameTotals === 10", function () {
-      game.frameScores = [[1,2],[6,4],[5,4]];
+    it("score is the fum of frameTotals and frameBonus", function () {
+      game.frameScores = [[10,null],[9,0],[5,5],[6,2],[7,3],[4,6],[2,6],[7,1],[8,1],[6,2]];
       game.frameTotal();
       game.frameBonus();
-      game.runningTotal();
-      expect(game.runningTotals).toEqual([3,18,27]);
+      game.scores();
+      expect(game.score).toEqual(111);
     });
 
     // it("updates runningTotals when frameTotals[i][0] === 10", function () {
@@ -105,15 +94,16 @@ describe ("BowlingScore", function() {
 
   });
 
-
-  describe ("testing game whole", function () {
-    it("test all features", function (){
-      game.frameScores = [[7,2],[4,1],[10,null],[8,2],[3,6],[2,4],[6,4],[10,null],[10,null],[3,6]];
-      game.frameBonus();
-      expect(game.bonusScores).toEqual([0,0,8,2,3,0,0,10,10,3,3,6,0]);
-      game.frameTotal();
-      expect(game.frameTotals).toEqual([9,5,10,10,9,6,10,10,10,9]);
-    })
-  });
+  // describe ("testing game whole", function () {
+  //   it("test all features", function (){
+  //     game.frameScores = [[7,2],[4,1],[10,null],[8,2],[3,6],[2,4],[6,4],[10,null],[10,null],[3,6]];
+  //     game.frameBonus();
+  //     expect(game.bonusScores).toEqual([0,0,8,2,3,0,0,10,10,3,3,6,0]);
+  //     game.frameTotal();
+  //     expect(game.frameTotals).toEqual([9,5,10,10,9,6,10,10,10,9]);
+  //     game.scores();
+  //     expect(game.score).toEqual(133);
+  //   })
+  // });
 
 });

@@ -86,7 +86,7 @@ div#logo {
   #bottom {
     display: flex;
     position: relative;
-    margin: 2px;
+    /*margin: 2px;*/
     border: none;
     height: 550px;
   }
@@ -95,16 +95,16 @@ div#logo {
       float: left;
       border: 4px;
       border: solid;
-      width: 637px;
-      margin-right: 1px;
+      width: 40%;
+      /*margin-right: 1px;*/
       height: 100%;
       background-color: #380202;
     }
 
     #bottom-right {
       float: right;
-      width: 957px;
-      margin-left: 1px;
+      width: 60%;
+      /*margin-left: 1px;*/
       height: 100%;
       border: 4px;
       padding: 2px;

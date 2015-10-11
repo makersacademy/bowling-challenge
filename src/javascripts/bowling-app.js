@@ -2,7 +2,8 @@ function Game() {
   this.score = 0;
   this.frameOver = false;
   this.rolls = {1:[], 2:[], 3:[], 4:[], 5:[],
-                6:[], 7:[], 8:[], 9:[],10:[]};
+                6:[], 7:[], 8:[], 9:[],10:[],
+                11:[], 12:[]};
   this.currentFrame = 1;
   // this.lastFrameStrike = false;
   // this.lastFrameSpare = false;
@@ -13,9 +14,9 @@ Game.prototype.roll = function(pins) {
   this.strikeOrSpare(pins);
   this.bonusDistributor(pins);
   this.rolls[this.currentFrame].push(pins);
-  this.scoreUpdater(pins);
   this.frameHandler(pins);
   this.nextFrameBonus(pins)
+  this.scoreUpdater();
 };
 
 // --------------------------------------------------
@@ -34,9 +35,9 @@ Game.prototype.strikeOrSpare = function(pins) {
 // --------------------------------------------------
 
 Game.prototype.bonusDistributor = function(pins) {
-  if(this.wasSpare) { this.addToLastSpare(pins) };
-  if(this.wasStrike) { this.addToLast(pins) };
-  if(this.wasStrike2 && this.currentFrame > 1) { this.addToLastAgain(pins) };
+  if (this.wasSpare) { this.addToLastSpare(pins) };
+  if (this.wasStrike) { this.addToLast(pins) };
+  if (this.wasStrike2 && this.currentFrame > 1) { this.addToLastAgain(pins) };
 };
 
 // --------------------------------------------------
@@ -56,8 +57,7 @@ Game.prototype.addToLastSpare = function(pins) {
 
 // --------------------------------------------------
 
-Game.prototype.scoreUpdater = function(pins) {
-  this.score += pins
+Game.prototype.scoreUpdater = function() {
   var sum = 0;
   for (var k in this.rolls) {
   vals = this.rolls[k];
@@ -65,7 +65,7 @@ Game.prototype.scoreUpdater = function(pins) {
       sum += vals[i] || 0
     };
   };
-  this.score = sum
+  this.score = (sum - this.rolls[11] - this.rolls[12])
 };
 
 Game.prototype.frameHandler = function(pins) {

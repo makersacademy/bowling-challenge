@@ -91,6 +91,7 @@ div#logo {
   }
 
     #bottom-left {
+      float: left;
       border: 4px;
       border: solid;
       margin: 2px;
@@ -100,6 +101,7 @@ div#logo {
     }
 
     #bottom-right {
+      float: right;
       width: 60%;
       height: 100%;
       margin: 2px;

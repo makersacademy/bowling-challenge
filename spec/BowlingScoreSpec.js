@@ -14,7 +14,7 @@ describe ("BowlingScore", function() {
       expect(game.rolls).toEqual([7,2,4,5]);
     });
 
-    it("pushes 10 into own array in rawScore", function() {
+    it("if roll == 10, push null into rawScore", function() {
       game.roll(10);
       expect(game.rolls).toEqual([10,null]);
     });
@@ -30,16 +30,16 @@ describe ("BowlingScore", function() {
 
   describe ("Spare", function() {
 
-    it("if previous frame scores total is 10, push next rawScore into BonusScores", function (){
-      game.frameScores = [[7,3],[4,1]];
-      game.frameBonus();
-      expect(game.bonusScores).toEqual([4,0]);
-    });
-
-    it("if previous frame total is not 10, do not push next rawScore into bonusScores", function() {
+    it("if frameTotal < 10, do not push anything into bonusScores", function() {
       game.frameScores = [[7,2],[4,1]];
       game.frameBonus();
       expect(game.bonusScores).toEqual([0,0]);
+    });
+
+    it("if frameTotal === 10, push next rawScore into BonusScores", function (){
+      game.frameScores = [[7,3],[4,1]];
+      game.frameBonus();
+      expect(game.bonusScores).toEqual([4,0]);
     });
 
     it("if second score in frame is 10, push only the next rawScore into BonusScores", function() {
@@ -56,12 +56,6 @@ describe ("BowlingScore", function() {
       game.frameScores = [[10,null],[3,5],[10,null],[7,1]];
       game.frameBonus();
       expect(game.bonusScores).toEqual([3,5,0,7,1,0]);
-    });
-
-    it("if strikes are hit in a row, push next two rolls into bonusScores", function () {
-      game.frameScores = [[10,null], [10,null], [7,1]];
-      game.frameBonus();
-      expect(game.bonusScores).toEqual([10,7,7,1,0]);
     });
 
     it("if strikes are hit multiple times in a row, keep pushing 10's into bonusScores", function () {
@@ -81,29 +75,6 @@ describe ("BowlingScore", function() {
       game.scores();
       expect(game.score).toEqual(111);
     });
-
-    // it("updates runningTotals when frameTotals[i][0] === 10", function () {
-    //   game.frameScores = [[10,null],[7,1]];
-    //   game.frameTotal();
-    //   // game.frameTotals = [10,8,10,9];
-    //   game.frameBonus();
-    //   // game.bonusScores = [7,1,0,8,1,0];
-    //   game.runningTotal();
-    //   expect(game.runningTotals).toEqual([10,18]);
-    // })
-
   });
-
-  // describe ("testing game whole", function () {
-  //   it("test all features", function (){
-  //     game.frameScores = [[7,2],[4,1],[10,null],[8,2],[3,6],[2,4],[6,4],[10,null],[10,null],[3,6]];
-  //     game.frameBonus();
-  //     expect(game.bonusScores).toEqual([0,0,8,2,3,0,0,10,10,3,3,6,0]);
-  //     game.frameTotal();
-  //     expect(game.frameTotals).toEqual([9,5,10,10,9,6,10,10,10,9]);
-  //     game.scores();
-  //     expect(game.score).toEqual(133);
-  //   })
-  // });
 
 });

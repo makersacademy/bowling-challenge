@@ -13,7 +13,7 @@ BowlingScore.prototype.roll = function(score) {
   };
 };
 
-BowlingScore.prototype.makeFrameScores = function() {
+BowlingScore.prototype.makeFrame = function() {
   this.frameScores = [[this.rolls[0]]];
   for (i = 1; i < this.rolls.length; i++) {
     if (this.frameScores[this.frameScores.length -1].length < 2) {

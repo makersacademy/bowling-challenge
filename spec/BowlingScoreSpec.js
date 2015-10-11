@@ -20,10 +20,10 @@ describe ("BowlingScore", function() {
     });
   });
 
-  describe ("makeFrameScores", function(){
+  describe ("makeFrame", function(){
     it("restructures rolls into frameScores", function() {
       game.rolls = [7,2,4,5]
-      game.makeFrameScores();
+      game.makeFrame();
       expect(game.frameScores).toEqual([[7,2],[4,5]]);
     });
   });

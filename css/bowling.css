@@ -1,0 +1,46 @@
+body {
+  width: 50%;
+  margin: auto;
+  margin-top: 10%;
+  font-family: 'Armata', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+}
+
+table {
+  display: inline-block;
+  text-align: center;
+  width: 600px;
+}
+
+table td {
+  width: 40px;
+}
+
+div {
+  display: block;
+  text-align: center;
+}
+
+button {
+  font-size: 10pt;
+  border-radius: 4px;
+  background-color: #EEEEEE;
+  border: 2px solid #96CDCD;
+  width: 30px;
+  height: 30px;
+}
+
+button:hover {
+  border: 4px solid #96CCCC;
+  cursor: pointer;
+}
+
+#buttons {
+  display: block;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}

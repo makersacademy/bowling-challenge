@@ -4,7 +4,7 @@ function Frame() {
   this.totalOfRolls = [];
 }
 
-Frame.prototype.knockDown = function(numberOfPins) {
+Frame.prototype.removePins = function(numberOfPins) {
   if (this.pinCount <= 0) {
     throw new Error('All the pins are down!');
   }

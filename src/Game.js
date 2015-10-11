@@ -4,23 +4,15 @@ function Game() {
   this.currentScore = 0;
 }
 
-Game.prototype.nextFrame = function() {
+Game.prototype.knockDown = function(numberOfPins) {
   if (this.frames.length === 0 ||
     this.frames[this.frames.length - 1].pinCount === 0) {
     this.frames.push(new Frame());
   } else if (this.frames[this.frames.length - 1].totalOfRolls.length >= 2) {
     this.frames.push(new Frame());
   }
-};
 
-Game.prototype.knockDown = function(numberOfPins) {
-  if (this.frames.length === 0) {
-    this.nextFrame();
-  } else if (this.frames[this.frames.length - 1].totalOfRolls.length >= 2) {
-    this.nextFrame();
-  }
-
-  this.frames[this.frames.length - 1].knockDown(numberOfPins);
+  this.frames[this.frames.length - 1].removePins(numberOfPins);
 };
 
 Game.prototype.totalScore = function() {

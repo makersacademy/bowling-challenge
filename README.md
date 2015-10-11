@@ -2,17 +2,44 @@
 Bowling Challenge
 =================
 
+Current Status
+--------------
+
+Back-end logic to do the following:  (JavaScript)
+- #addNewRollScore creates a single array of individual throws named rawScores
+- #makeFrameScores creates an array of arrays named frameScores, where each
+  nested array represents the two throws of a frame
+- #addNewBonusScore creates an array named bonusScores that contains the bonus
+  points for scoring strikes and spares
+- #makeRoundScores adds the frame total to the corresponding bouns points to
+  calculate a score for each round
+- #makeGameScores calculates the total score for the game
+
+Front-end functionality: (JQuery, HTML, CSS)
+- clicking on points buttons adds corresponding score to the relevant space on
+  the scorecard
+
+To Do
+-----
+- rework #addNewBonusScore, #makeRoundScores, #makeGameScores.  Suspect 'for'
+  loop is causing duplicate figures.  Unnecessary complexity.  Also need to
+  include functionality to calculate scores for first frame before bonuses can
+  be calculated
+- functionality required to limit max frame score to 10 points
+- functionality required to calculate scores in 10th frame
+- rework styling of index.html
+
     Test time: Friday, the entire day and the entire of lab week if you need it.
     Feel free to use Google, your notes, and your books.
 
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_september2015 (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
 * Forking this repo

@@ -1,12 +1,16 @@
 Game = function(){
+  this.FramesInGame = 10
+  this.TotalPinsInGame = 10
   this.rolls = []
   this.results = []
-  this.pins = 10
+  this.pins = this.TotalPinsInGame
   this.hitByFirstRoll = null
   this.hitBySecondRoll = null
   this.total = []
   this.frameNumber = 1
   this.tempArray = []
+  this.rollsNeededToCalculateRegularFrame = 2
+  this.rollsNeededToCalculateStrikeOrSpareFrame = 3
 };
 
 Game.prototype.firstRoll= function(){
@@ -15,9 +19,13 @@ Game.prototype.firstRoll= function(){
 };
 
 Game.prototype.secondRoll= function(){
-  if (this.hitByFirstRoll != 10){
+  if (!this._isCurrentFrameStrike()){
     this.hitBySecondRoll = this._hit()
   };
+};
+
+Game.prototype._isCurrentFrameStrike = function(){
+  return this.hitByFirstRoll == this.TotalPinsInGame
 };
 
 Game.prototype._hit = function(){
@@ -31,13 +39,21 @@ Game.prototype._addPinsHitByFirstRollToTable= function(){
 
 Game.prototype._addPinsHitBySecondRollToTable= function(){
   this.rolls.push(this.hitBySecondRoll);
-  if (this.hitBySecondRoll !==null) {
+  if (this._isSecondRollPlayed()) {
     this.tempArray.push(this.hitBySecondRoll)
   };
 };
 
+Game.prototype._isFirstRollPlayed = function(){
+  return (this.hitByFirstRoll!==null)
+};
+
+Game.prototype._isSecondRollPlayed = function(){
+  return (this.hitBySecondRoll!==null)
+};
+
 Game.prototype.nextFrame = function(){
-  if (this.frameNumber <10) {
+  if (this.frameNumber <this.FramesInGame) {
     this.frameNumber+=1
   };
 };
@@ -45,7 +61,7 @@ Game.prototype.nextFrame = function(){
 Game.prototype.playFirstRoll = function(){
   this.firstRoll();
   this._addPinsHitByFirstRollToTable();
-  if (this.hitByFirstRoll == 10) {
+  if (this._isCurrentFrameStrike()) {
     this._addPinsHitBySecondRollToTable()
     this.endFrame()
     this.nextFrame()
@@ -60,7 +76,7 @@ Game.prototype.playSecondRoll = function(){
 Game.prototype.endFrame= function(){
   this.hitByFirstRoll = null
   this.hitBySecondRoll = null
-  this.pins = 10
+  this.pins = this.TotalPinsInGame
 };
 
 Game.prototype._calculate = function(){
@@ -74,7 +90,7 @@ Game.prototype._addResultToTable = function(){
 };
 
 Game.prototype._deleteRollsThatWereCalculated = function(){
-  if (this.tempArray[0] == 10) {
+  if (this._isFrameBeingCalculatedStrike()) {
     this.tempArray.shift()
   } else {
     this.tempArray.shift()
@@ -82,14 +98,23 @@ Game.prototype._deleteRollsThatWereCalculated = function(){
   };
 };
 
+
 Game.prototype.isCalculationPossible = function(){
-  if (((this.tempArray[0]+this.tempArray[1]) < 10)&&(this.tempArray.length==2)){
+  if ((this._isFrameBeingCalculatedRegular()) && (this.tempArray.length==this.rollsNeededToCalculateRegularFrame)){
     return true
-  } else if (this.tempArray.length ==3) {
+  } else if (this.tempArray.length == this.rollsNeededToCalculateStrikeOrSpareFrame) {
     return true
   } else {
     return false
   };
+};
+
+Game.prototype._isFrameBeingCalculatedRegular = function(){
+  return ((this.tempArray[0]+this.tempArray[1]) < this.TotalPinsInGame)
+};
+
+Game.prototype._isFrameBeingCalculatedStrike = function(){
+  return (this.tempArray[0] == this.TotalPinsInGame)
 };
 
 Game.prototype.calculateIfPossible = function(){
@@ -118,10 +143,10 @@ Game.prototype.playRoll = function(){
 };
 
 Game.prototype.playRegularRoll = function(){
-  if (this.hitByFirstRoll==null) {
+  if (!this._isFirstRollPlayed()) {
     this.playFirstRoll();
     this.calculateIfPossible()
-  } else if (this.hitByFirstRoll!=null){
+  } else if (this._isFirstRollPlayed()){
     this.playSecondRoll();
     this.calculateIfPossible()
     this.calculateIfPossible()
@@ -131,10 +156,10 @@ Game.prototype.playRegularRoll = function(){
 };
 
 Game.prototype.playExtra = function(){
-  if (this.hitByFirstRoll==null) {
+  if (!this._isFirstRollPlayed()) {
     this.playFirstRoll();
     this.calculateIfPossible()
-  } else if (this.hitByFirstRoll!=null){
+  } else if (this._isFirstRollPlayed()){
     this.playSecondRoll();
     this.calculateIfPossible()
   };

@@ -2,7 +2,7 @@
  font-size: 26px !important;
  width: 50%;
  position: relative;
- background: #ba89b6;
+ background: lightblue;
  color: #fff;
  text-align: center;
  padding: 1em 2em;
@@ -13,7 +13,7 @@
  position: absolute;
  display: block;
  bottom: -1em;
- border: 1.5em solid #986794;
+ border: 1.5em solid lightblue;
  z-index: -1;
 }
 .ribbon:before {
@@ -31,7 +31,7 @@
  position: absolute;
  display: block;
  border-style: solid;
- border-color: #804f7c transparent transparent transparent;
+ border-color: lightblue transparent transparent transparent;
  bottom: -1em;
 }
 .ribbon .ribbon-content:before {
@@ -83,12 +83,12 @@ table {
 }
 
 thead {
-    background-color: orange;
+    background-color: lightblue;
     color: white;
 }
 
 tbody {
-    background-color: lightgrey;
+    background-color: lightblue;
     font-weight: thin;
 }
 

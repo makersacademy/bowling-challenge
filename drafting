@@ -58,3 +58,9 @@ If fifth roll 10,
 - Because strike > 0, frame 2 score +10 = 30
 - Because strike > 0, game score +10 = 50
 - COUNT strike -1 = 2
+
+
+Input:
+- log score
+- if end of frame, update frameScore
+-

@@ -23,4 +23,17 @@ describe ('Scorecard', function(){
     scorecard.updateFrameScore();
     expect(scorecard.calculateTotalScore()).toEqual(3);
   });
+
+  it ('can refresh the scores', function(){
+    scorecard.logScore(1);
+    scorecard.refreshScores(2);
+    expect(scorecard.rollScore[1]).toEqual(2);
+    expect(scorecard.frameScore[0]).toEqual(3);
+  });
+
+  it ('can start a new frame after two rolls, no strike', function(){
+    scorecard.refreshScores(1);
+    scorecard.refreshScores(2);
+    expect(scorecard.frame).toEqual(2);
+  });
 });

@@ -1,10 +1,12 @@
 var Scorecard = function(){
   this.rollScore = [];
   this.frameScore = [];
+  this.frame = 2;
 };
 
 Scorecard.prototype.logScore = function(score){
   this.rollScore.push(score);
+  this._oneRollDown();
 };
 
 Scorecard.prototype.updateFrameScore = function(){
@@ -20,4 +22,24 @@ Scorecard.prototype.calculateTotalScore = function(){
     totalScore += i;
   });
   return totalScore;
+};
+
+Scorecard.prototype.refreshScores = function(score){
+  this.logScore(score);
+  if (this._isEndOfFrame) {
+    this.updateFrameScore();
+  };
+  this._startsNewFrame();
+};
+
+Scorecard.prototype._oneRollDown = function(){
+  this.frame -= 1;
+};
+
+Scorecard.prototype._isEndOfFrame = function(){
+  this.frame === 0;
+};
+
+Scorecard.prototype._startsNewFrame = function(){
+  this.frame = 2;
 };

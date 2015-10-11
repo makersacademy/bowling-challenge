@@ -90,28 +90,35 @@ describe('Game', function() {
   describe('calculates', function() {
     beforeEach(function() {
       game.throwBall(5);
-      game.throwBall(4);
+      game.throwBall(5);
+      game.nextFrame();
     });
 
     it('a frame\'s score', function() {
-      expect(game.frameScore(1)).toEqual(9);
+      expect(game.frameScore(1)).toEqual(10);
     });
 
     it('total score after a completed roll', function() {
-      expect(game.totalScore()).toEqual(9);
+      game.throwBall(5);
+      game.throwBall(4);
+      expect(game.totalScore()).toEqual(19);
     });
 
     it('a strike bonus', function() {
-      game.nextFrame();
       game.throwBall(10);
       game.nextFrame();
       game.throwBall(5);
       game.throwBall(1);
       game.strikeBonus();
-      expect(game.totalScore()).toEqual(31)
+      expect(game.totalScore()).toEqual(32)
     });
 
-    it();
+    it('a spare bonus', function() {
+      game.throwBall(4);
+      game.throwBall(0);
+      game.spareBonus();
+      expect(game.totalScore()).toEqual(18);
+    });
 
 
   });

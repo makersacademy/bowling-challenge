@@ -112,4 +112,27 @@ describe('ScoreCard', function() {
       scorecard.rollScore(2);
       expect(scorecard.runningScore(2)).toEqual(13);
     });
+
+    it('returns true if the previous frame is a strike', function() {
+      scorecard.rollScore(10);
+      expect(scorecard.isPreviousFrameStrike()).toEqual(true);
+    });
+
+    it('returns true if the previous frame is a spare', function() {
+      scorecard.rollScore(4);
+      scorecard.rollScore(6);
+      expect(scorecard.isPreviousFrameSpare()).toEqual(true);
+    });
+
+    it('returns false if previous frame is not a strike', function() {
+      scorecard.rollScore(3);
+      scorecard.rollScore(2);
+      expect(scorecard.isPreviousFrameStrike()).toEqual(false);
+    });
+
+    it('returns false if previous frame is not a spare', function() {
+      scorecard.rollScore(3);
+      scorecard.rollScore(2);
+      expect(scorecard.isPreviousFrameSpare()).toEqual(false);
+    });
 });

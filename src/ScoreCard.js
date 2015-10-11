@@ -71,3 +71,11 @@ ScoreCard.prototype.runningScore = function(frame) {
   }
   return sum;
 }
+
+ScoreCard.prototype.isPreviousFrameStrike = function() {
+  return this.score[this.currentFrame - 1][0] === 10;
+}
+
+ScoreCard.prototype.isPreviousFrameSpare = function() {
+  return (this.score[this.currentFrame - 1].length === 2 && this.frameTotal(this.currentFrame - 1) === 10);
+}

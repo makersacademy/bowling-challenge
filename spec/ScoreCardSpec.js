@@ -51,6 +51,11 @@ describe("ScoreCard", function() {
     expect(scorecard.roll).toEqual(2);
   });
 
+  it("adds 10 to the scores object after a strike", function() {
+    scorecard.scoreForRoll(10);
+    expect(scorecard.scores[1]).toEqual([10]);
+  });
+
 
 
 

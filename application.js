@@ -51,7 +51,8 @@ $(function() {
     $('#secondRow').append('<div class="scores" id="frame' + i +
       '"><div class="first"></div><div class="second"></div><div class="third"></div></div>')
   }
-  $('#frame10 .second').html('<div id="tenth1"></div><div id="tenth2"></div>')
+  $('#frame10 .second').after('<div id="frame11"></div>')
+
   gameSetting();
   var frameNumber = frameNumber || 1;
     $('#fallenPins div').on('click', function(e) {
@@ -66,7 +67,15 @@ $(function() {
       if (game.isStrike(frameNumber)) {
         $('#fallenPins').show();
         $('#leftPins div').hide();
-        $(secondBox).text('X');
+        if (frameNumber === 10)  {
+          $(firstBox).text('X');
+        } else if (frameNumber === 11) {
+          $('#frame10 .second').text('X');
+        } else if (frameNumber === 12) {
+            $('#frame11').text('X');
+        } else {
+          $(secondBox).text('X');
+        }
 
         if (game.isStrike(frameNumber-1)) {
           $(prevThirdBox2).text(game.addScores(frameNumber - 2))
@@ -82,8 +91,16 @@ $(function() {
         $(firstBox).text(scores1);
 
         if (game.isStrike(frameNumber-1)) {
+          if (frameNumber === 11) {
+            $('#frame10 .second').text(scores1)
+          } else if (frameNumber === 12) {
+            $('#frame11').text(scores1)
+          }
           $(prevThirdBox2).text(game.addScores(frameNumber - 2))
         } else if (game.isSpare(frameNumber-1)) {
+          if (frameNumber === 11) {
+            $('#frame11').text(scores1)
+          }
           $(prevThirdBox).text(game.addScores(frameNumber - 1))
         }
       }
@@ -101,11 +118,18 @@ $(function() {
       var prevThirdBox = '#frame' + (frameNumber -1).toString() + ' .third'
 
       if (game.isSpare(frameNumber)) {
-        $(secondBox).text('/')
+        if (frameNumber === 11) {
+          $('#frame11').text('/');
+        } else {
+          $(secondBox).text('/')
+        }
         if (game.isSpare(frameNumber-1)) {
           $(prevThirdBox).text(game.addScores(frameNumber - 1))
         }
       } else {
+        if (frameNumber === 11) {
+          $('#frame11').text(scores2);
+        }
         $(secondBox).text(scores2)
         $(currentThirdBox).text(game.addScores(frameNumber))
         if (game.isStrike(frameNumber-1)) {

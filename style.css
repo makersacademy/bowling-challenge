@@ -37,14 +37,32 @@
   vertical-align:top;
 }
 
-#tenth1, #tenth2 {
+#frame10 .second {
   display: inline-block;
-
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  height: 48px;
   width: 24px;
+  vertical-align:top;
+}
+
+#frame11 {
+  /*background-color: red;*/
+  border-bottom: 1px solid black;
+  display: inline-block;
+  width: 23px;
   height: 48px;
 }
-#tenth1 {
-  border-right: 1px solid black;
+#frame11 .second {
+  border-bottom: 1px solid red;
+  padding-bottom: 20px;
+  display: inline-block;
+  hegith: 48px;
+
+  width: 20px;
+
+  vertical-align:top;
 }
 
 #fallenPins div {

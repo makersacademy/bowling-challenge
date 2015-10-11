@@ -217,4 +217,27 @@ describe('Game', function() {
     expect(game.totalScore).toEqual(223);
   });
 
+  it('should calculate a game score 8', function() {
+    frame.bowl(5);
+    frame.bowl(4);
+    frame.bowl(3);
+    frame.bowl(4);
+    frame.bowl(4);
+    frame.bowl(3);
+    frame.bowl(10);
+    frame.bowl(6);
+    frame.bowl(4);
+    frame.bowl(8);
+    frame.bowl(2);
+    frame.bowl(1);
+    frame.bowl(2);
+    frame.bowl(4);
+    frame.bowl(4);
+    frame.bowl(10);
+    frame.bowl(6);
+    frame.bowl(4);
+    frame.bowl(10);
+    expect(game.totalScore).toEqual(123);
+  });
+
 });

@@ -4,6 +4,9 @@ describe('Frame', function() {
     frame = new Frame();
     game = new Game();
     game.totalScore = 0;
+    jasmine.getFixtures().fixturesPath = './lib/views';
+    loadFixtures('index.erb');
+    $.holdReady(false);
   });
 
   function nineFrames() {
@@ -109,5 +112,10 @@ describe('Frame', function() {
   it('should add bowl to current frame', function() {
     frame.addToFrame(7);
     expect(frame.currentFrame[0]).toEqual(7);
+  });
+
+  it('place a bowling score', function() {
+    $('#button0').click();
+    expect('#bowl1').toContainText('0');
   });
 });

@@ -30,70 +30,48 @@ describe ("BowlingScore", function() {
 
   describe ("Spare", function() {
 
-    // it("knows if frame is a spare", function () {
-    //   game.frameScores = [[7,3],[4,1]];
-    //   expect(game.isSpare()).toBe(true);
-    // });
-
     it("if previous frame scores total is 10, push next rawScore into BonusScores", function (){
       game.frameScores = [[7,3],[4,1]];
       game.frameBonus();
-      expect(game.bonusScores).toEqual([4]);
+      expect(game.bonusScores).toEqual([4,0]);
     });
 
     it("if previous frame total is not 10, do not push next rawScore into bonusScores", function() {
       game.frameScores = [[7,2],[4,1]];
       game.frameBonus();
-      expect(game.bonusScores).toEqual([]);
+      expect(game.bonusScores).toEqual([0,0]);
     });
 
     it("if second score in frame is 10, push only the next rawScore into BonusScores", function() {
       game.frameScores = [[0,10],[3,5]];
       game.frameBonus();
-      expect(game.bonusScores).toEqual([3])
+      expect(game.bonusScores).toEqual([3,0])
     });
 
   });
 
   describe ("Strike", function () {
 
-    // it("knows if frame is a strike", function () {
-    //   game.frameScores = [[10,null],[4,1]];
-    //   expect(game.isStrike()).toBe(true);
-    // });
-
     it("if first score of frame is 10, push next two rawScore's into bonusScores", function (){
       game.frameScores = [[10,null],[3,5],[10,null],[7,1]];
       game.frameBonus();
-      expect(game.bonusScores).toEqual([3,5,7,1]);
+      expect(game.bonusScores).toEqual([3,5,0,7,1,0]);
     });
 
     it("if strikes are hit in a row, push next two rawScores into bonusScores", function () {
       game.frameScores = [[10,null], [10,null], [7,1]];
       game.frameBonus();
-      expect(game.bonusScores).toEqual([10,7,7,1]);
+      expect(game.bonusScores).toEqual([10,7,7,1,0]);
     });
 
     it("if strikes are hit multiple times in a row, keep pushing 10's into bonusScores", function () {
       game.frameScores = [[10,null],[10,null],[10,null],[10,null],[2,3]];
       game.frameBonus();
-      expect(game.bonusScores).toEqual([10,10,10,10,10,2,2,3]);
+      expect(game.bonusScores).toEqual([10,10,10,10,10,2,2,3,0]);
     });
 
   });
 
-  describe ("example frames", function () {
-
-    it("test if strike and spare work", function () {
-      // game.frameScores = [[6,2],[9,1],[7,1],[10,null],[10,null],[7,3],[6,1],[10,null],[8,1],[5,1]];
-      game.frameScores = [[10,null],[10,null],[8,1],[10,null],[5,1],[6,4],[6,2],[5,5],[7,3],[5,2]];
-      // game.frameScores = [[8,1],[7,3],[10,null],[10,null],[3,2],[10,null],[10,null],[10,null],[6,4],[2,3]];
-      game.frameBonus();
-      // expect(game.bonusScores).toEqual([7,10,7,7,3,6,8,1]);
-      expect(game.bonusScores).toEqual([10,8,8,1,5,1,6,7,5]);
-      // expect(game.bonusScores).toEqual([10,10,3,3,2,10,10,10,6,6,4,2]);
-    });
-  });
 
   describe ("frameTotals", function () {
 
@@ -107,12 +85,14 @@ describe ("BowlingScore", function() {
 
   describe ("runningTotals", function () {
 
-    it("updates runningTotals as game is played", function () {
-      game.frameScores = [[6,2],[8,1],[5,4]];
+    it("updates runningTotals from frameTotals", function () {
+      game.frameScores = [[6,2],[8,2],[5,4]];
       game.frameTotal();
+      game.frameBonus();
       game.runningTotal();
-      expect(game.runningTotals).toEqual([8,17,26]);
+      expect(game.runningTotals).toEqual([8,23,32]);
     });
+
   });
 
 
@@ -120,11 +100,11 @@ describe ("BowlingScore", function() {
     it("test all features", function (){
       game.frameScores = [[7,2],[4,1],[10,null],[8,2],[3,6],[2,4],[6,4],[10,null],[10,null],[3,6]];
       game.frameBonus();
-      expect(game.bonusScores).toEqual([8,2,3,10,10,3,3,6]);
+      expect(game.bonusScores).toEqual([0,0,8,2,3,0,0,10,10,3,3,6,0]);
       game.frameTotal();
       expect(game.frameTotals).toEqual([9,5,10,10,9,6,10,10,10,9]);
       game.runningTotal();
-      expect(game.runningTotals).toEqual([9,14,24,34,43,49,59,69,79,88]);
+      expect(game.runningTotals).toEqual([9,14,34,45]);
     })
   });
 

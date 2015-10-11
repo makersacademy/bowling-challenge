@@ -1,0 +1,26 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "bowling-challenge: desktop version 1.0.0",
+  "main": "src/javascripts/bowling-app.js",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "phantomjs": "^1.9.18",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jasmine": "^0.9.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harryandrew/bowling-challenge.git"
+  },
+  "author": "Harry Dix",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Harryandrew/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/Harryandrew/bowling-challenge#readme"
+}

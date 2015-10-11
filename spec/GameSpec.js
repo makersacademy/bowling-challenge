@@ -16,6 +16,16 @@ describe('Game', function() {
       expect(game.rollTurn).toBe(1);
     });
 
+    it('can change turn', function() {
+      game.nextRoll();
+      expect(game.rollTurn).toBe(2);
+    });
+
+    it('can change frame', function() {
+      game.nextFrame();
+      expect(game.frame).toBe(2);
+    });
+
     it('has score card', function() {
       var scorecard = {1: [], 2: [], 3: [], 4: [], 5: [],
                      6: [], 7: [], 8: [], 9: [], 10: []};
@@ -30,22 +40,20 @@ describe('Game', function() {
     beforeEach(function() {
       game.throwBall(5);
       game.throwBall(4);
+      game.nextFrame();
     });
 
     it('be able to throw a ball', function() {
       expect(game.throwBall(8)).toEqual(8);
     });
 
-    it('record a throw', function() {
-      expect(game.scorecard[1]).toEqual([5, 4]);
-    });
-
-    it('record two throws', function() {
+    it('record throws', function() {
       expect(game.scorecard[1]).toEqual([5, 4]);
     });
 
     it('change roll turn after a throw', function() {
       game.throwBall(7);
+      game.nextRoll();
       expect(game.rollTurn).toBe(2);
     });
 
@@ -57,18 +65,24 @@ describe('Game', function() {
       expect(game.frame).toBe(2);
     });
 
-    it('record a strike', function() {
+    it('know previous frame was a strike', function() {
       game.throwBall(10);
-      expect(game.scorecard[2]).toEqual([10])
-      expect(game.rollTurn).toBe(1);
-      expect(game.frame).toBe(3);
+      game.nextFrame();
+      expect(game.isPreviousStrike()).toBe(true);
     });
 
-    it('give a strike bonus', function() {
+    it('record a strike', function() {
       game.throwBall(10);
-      game.throwBall(5);
-      game.throwBall(1);
+      expect(game.scorecard[2]).toEqual([10]);
     });
+
+    it('know previous frame was a spare', function() {
+      game.throwBall(5);
+      game.throwBall(5);
+      game.nextFrame();
+      expect(game.isPreviousSpare()).toBe(true);
+    });
+
 
   });
 
@@ -80,12 +94,24 @@ describe('Game', function() {
     });
 
     it('a frame\'s score', function() {
-      expect(game._frameScore(1)).toEqual(9);
+      expect(game.frameScore(1)).toEqual(9);
     });
 
     it('total score after a completed roll', function() {
       expect(game.totalScore()).toEqual(9);
     });
+
+    it('a strike bonus', function() {
+      game.nextFrame();
+      game.throwBall(10);
+      game.nextFrame();
+      game.throwBall(5);
+      game.throwBall(1);
+      game.strikeBonus();
+      expect(game.totalScore()).toEqual(31)
+    });
+
+    it();
 
 
   });

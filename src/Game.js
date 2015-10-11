@@ -1,28 +1,37 @@
 function Game() {
   this.pins = 0;
   this.frames = [
-    {firstRoll:0, secondRoll:0},
-    {firstRoll:0, secondRoll:0},
-    {firstRoll:0, secondRoll:0},
-    {firstRoll:0, secondRoll:0},
-    {firstRoll:0, secondRoll:0},
-    {firstRoll:0, secondRoll:0},
-    {firstRoll:0, secondRoll:0},
-    {firstRoll:0, secondRoll:0},
-    {firstRoll:0, secondRoll:0},
-    {firstRoll:0, secondRoll:0}
+    {firstRoll:false, secondRoll:false},
+    {firstRoll:false, secondRoll:false},
+    {firstRoll:false, secondRoll:false},
+    {firstRoll:false, secondRoll:false},
+    {firstRoll:false, secondRoll:false},
+    {firstRoll:false, secondRoll:false},
+    {firstRoll:false, secondRoll:false},
+    {firstRoll:false, secondRoll:false},
+    {firstRoll:false, secondRoll:false},
+    {firstRoll:false, secondRoll:false}
   ]
 }
 
 Game.prototype.roll = function(pins) {
   this.pins += pins;
   for (i = 0; i < this.frames.length; i++) {
-    if (this.frames[i].firstRoll === 0) {
+    if (this.frames[i].firstRoll === false) {
       this.frames[i].firstRoll = pins;
+      if (pins > 10) {
+        throw new Error("No more pins");
+      } else if (pins === 10) {
+        this.frames[i].secondRoll = 0;
+      }
       return;
-    } else if (this.frames[i].secondRoll === 0) {
-      this.frames[i].secondRoll = pins;
-      return;
+    } else if (this.frames[i].secondRoll === false) {
+      if (this.frames[i].firstRoll + pins > 10) {
+        throw new Error("No more pins");
+      } else {
+        this.frames[i].secondRoll = pins;
+        return;
+      }
     }
   }
 };
@@ -34,4 +43,3 @@ Game.prototype.getTotalScore = function() {
   };
   return totalScore;
 };
-

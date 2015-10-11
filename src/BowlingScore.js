@@ -3,7 +3,6 @@ function BowlingScore() {
   this.bonusScores = [];
   this.frameTotals = [];
   this.runningTotals = [];
-  this.runningTotalsWithBonus = [];
 };
 
 BowlingScore.prototype.addNewRoundScore = function(score) {
@@ -24,6 +23,29 @@ BowlingScore.prototype.makeFrameScores = function() {
       currentFrame.push(this.rawScores[i])
       this.frameScores.push(currentFrame);
     };
+  };
+};
+
+
+BowlingScore.prototype.frameBonus = function () {
+  for (i = 0; i < this.frameScores.length; i++) {
+    if (this.frameScores[i][0] === 10 && this.frameScores[i+1][0] != 10) {
+      this.bonusScores.push(this.frameScores[i+1][0]);
+      this.bonusScores.push(this.frameScores[i+1][1]);
+    } else if (this.frameScores[i][0] == 10 && this.frameScores[i+1][0] === 10) {
+      this.bonusScores.push(this.frameScores[i+1][0]);
+      this.bonusScores.push(this.frameScores[i+2][0]);
+    } else if (this.frameScores[i][0] + this.frameScores[i][1] === 10) {
+      this.bonusScores.push(this.frameScores[i+1][0]);
+    } else {
+      this.bonusScores.push(0)
+    };
+  };
+};
+
+BowlingScore.prototype.frameTotal = function () {
+  for (i = 0; i < this.frameScores.length; i++) {
+    this.frameTotals.push(this.frameScores[i][0] + this.frameScores[i][1]);
   };
 };
 
@@ -49,39 +71,3 @@ BowlingScore.prototype.makeFrameScores = function() {
 //     };
 //   };
 // };
-
-BowlingScore.prototype.frameBonus = function () {
-  for (i = 0; i < this.frameScores.length; i++) {
-    if (this.frameScores[i][0] === 10 && this.frameScores[i+1][0] != 10) {
-      this.bonusScores.push(this.frameScores[i+1][0]);
-      this.bonusScores.push(this.frameScores[i+1][1]);
-    } else if (this.frameScores[i][0] == 10 && this.frameScores[i+1][0] === 10) {
-      this.bonusScores.push(this.frameScores[i+1][0]);
-      this.bonusScores.push(this.frameScores[i+2][0]);
-    } else if (this.frameScores[i][0] + this.frameScores[i][1] === 10) {
-      this.bonusScores.push(this.frameScores[i+1][0]);
-    } else {
-      this.bonusScores.push(0)
-    };
-  };
-};
-
-BowlingScore.prototype.frameTotal = function () {
-  for (i = 0; i < this.frameScores.length; i++) {
-    this.frameTotals.push(this.frameScores[i][0] + this.frameScores[i][1]);
-  };
-};
-
-BowlingScore.prototype.runningTotal = function () {
-  this.runningTotals.push(this.frameTotals[0]);
-  for (i = 0; i < this.frameTotals.length -1; i++) {
-    if (this.frameScores[i][1] === null) {
-      this.runningTotals.push(this.runningTotals[i] + this.frameTotals[i+1][0] + this.bonusScores[i+1]);
-    } else {
-      this.runningTotals.push(this.runningTotals[i] + this.frameTotals[i+1] + this.bonusScores[i+1]);
-    };
-  };
-// console.log(this.bonusScores);
-// console.log(this.frameTotals);
-// console.log(this.runningTotals);
-};

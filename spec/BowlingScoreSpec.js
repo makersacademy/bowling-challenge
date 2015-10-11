@@ -85,13 +85,23 @@ describe ("BowlingScore", function() {
 
   describe ("runningTotals", function () {
 
-    it("updates runningTotals from frameTotals", function () {
-      game.frameScores = [[6,2],[8,2],[5,4]];
+    it("updates runningTotals when frameTotals === 10", function () {
+      game.frameScores = [[1,2],[6,4],[5,4]];
       game.frameTotal();
       game.frameBonus();
       game.runningTotal();
-      expect(game.runningTotals).toEqual([8,23,32]);
+      expect(game.runningTotals).toEqual([3,18,27]);
     });
+
+    // it("updates runningTotals when frameTotals[i][0] === 10", function () {
+    //   game.frameScores = [[10,null],[7,1]];
+    //   game.frameTotal();
+    //   // game.frameTotals = [10,8,10,9];
+    //   game.frameBonus();
+    //   // game.bonusScores = [7,1,0,8,1,0];
+    //   game.runningTotal();
+    //   expect(game.runningTotals).toEqual([10,18]);
+    // })
 
   });
 
@@ -103,8 +113,6 @@ describe ("BowlingScore", function() {
       expect(game.bonusScores).toEqual([0,0,8,2,3,0,0,10,10,3,3,6,0]);
       game.frameTotal();
       expect(game.frameTotals).toEqual([9,5,10,10,9,6,10,10,10,9]);
-      // game.runningTotal();
-      // expect(game.runningTotals).toEqual([9,14,34,45]);
     })
   });
 

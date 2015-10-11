@@ -1,7 +1,8 @@
 var Scorecard = function(){
   this.rollScore = [];
   this.frameScore = [];
-  this.frame = 2;
+  this.rollLeftInFrame = 2;
+  this.isSpare = false;
 };
 
 Scorecard.prototype.logScore = function(score){
@@ -11,9 +12,12 @@ Scorecard.prototype.logScore = function(score){
 
 Scorecard.prototype.updateFrameScore = function(){
   var numScore = this.rollScore.length;
-  var firstScore = this.rollScore.slice(numScore-1)[0];
-  var secondScore = this.rollScore.slice(numScore-2)[0];
+  var firstScore = this.rollScore.slice(numScore-2)[0];
+  var secondScore = this.rollScore.slice(numScore-1)[0];
   this.frameScore.push(firstScore + secondScore);
+  if ((firstScore + secondScore) === 10) {
+    this._switchSpare();
+  };
 };
 
 Scorecard.prototype.calculateTotalScore = function(){
@@ -26,20 +30,28 @@ Scorecard.prototype.calculateTotalScore = function(){
 
 Scorecard.prototype.refreshScores = function(score){
   this.logScore(score);
-  if (this._isEndOfFrame) {
-    this.updateFrameScore();
+  if (this.isSpare) {
+    this.frameScore[this.frameScore.length-1] += score;
+    this._switchSpare();
   };
-  this._startsNewFrame();
+  if (this._isEndOfFrame()) {
+    this.updateFrameScore();
+    this._startsNewFrame();
+  };
 };
 
 Scorecard.prototype._oneRollDown = function(){
-  this.frame -= 1;
+  this.rollLeftInFrame -= 1;
 };
 
 Scorecard.prototype._isEndOfFrame = function(){
-  this.frame === 0;
+  return this.rollLeftInFrame === 0;
 };
 
 Scorecard.prototype._startsNewFrame = function(){
-  this.frame = 2;
+  this.rollLeftInFrame = 2;
+};
+
+Scorecard.prototype._switchSpare = function(){
+  this.isSpare = !this.isSpare;
 };

@@ -44,6 +44,11 @@ describe('Frame', function() {
       expect(function() { frame.removePins(2); }).toThrowError('All the pins are down!');
     });
 
+    it('knows if a player hit a strike', function() {
+      frame.removePins(10);
+      expect(frame.isStrike()).toBe(true);
+    });
+
   });
 
 });

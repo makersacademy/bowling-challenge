@@ -2,6 +2,7 @@ function Frame() {
   this.pinCount = 10;
   this.score = 0;
   this.totalOfRolls = [];
+
 }
 
 Frame.prototype.removePins = function(numberOfPins) {
@@ -16,4 +17,8 @@ Frame.prototype.removePins = function(numberOfPins) {
   this.pinCount -= numberOfPins;
   this.score += numberOfPins;
   this.totalOfRolls.push(numberOfPins);
+};
+
+Frame.prototype.isStrike = function() {
+  return this.totalOfRolls[0] === 10;
 };

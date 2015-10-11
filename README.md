@@ -3,9 +3,7 @@
 Bowling Challenge
 =================
 
-    Test time: Friday, the entire day and the entire of lab week if you need it.
-    Feel free to use Google, your notes, and your books.
-
+  
 Task:
 -----
 

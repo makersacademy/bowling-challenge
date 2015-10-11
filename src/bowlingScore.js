@@ -25,16 +25,16 @@ BowlingScore.prototype.makeFrameScores = function() {
 };
 
 BowlingScore.prototype.addNewBonusScore = function() {
-  for (var i = 0; i < this.rawScores.length; i += 2) {
-    if (this.rawScores[i] === 10) {
+  for (var i = 3; i < (this.rawScores.length + 3); i += 2) {
+    if (this.rawScores[i - 3] === 10) {
       // console.log('strike');
-      this.bonusScores.push(this.rawScores[i + 2] + (this.rawScores[i + 3]));
-    } else if (this.rawScores[i] + this.rawScores[i + 1] === 10) {
+      this.bonusScores.push((this.rawScores[i - 1]) + (this.rawScores[i]));
+    } else if ((this.rawScores[i - 3] + this.rawScores[i - 2]) === 10) {
       // console.log('spare');
-      this.bonusScores.push(this.rawScores[i + 2]);
+      this.bonusScores.push(this.rawScores[i - 1]);
     } else {
       // console.log('no bonus');
-      this.bonusScores.push(0);
+      this.bonusScores.push('0');
     };
   };
 };

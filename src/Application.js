@@ -7,14 +7,8 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    // game.addNewBonusScore();
-    // console.log('bonus', game.bonusScores);
-    // game.makeRoundScores();
-    // console.log('round', game.roundScores);
-    // game.makeGameScore();
-    // console.log('game', game.gameScore);
     for (var i = 1; i <= 21; i += 1) {
-      $('#round' + i).text(game.rawScores[i-1]);
+      $('#round' + i).text(game.rawScores[i - 1]);
     };
   });
 
@@ -23,14 +17,8 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    // game.addNewBonusScore();
-    // console.log('bonus', game.bonusScores);
-    // game.makeRoundScores();
-    // console.log('round', game.roundScores);
-    // game.makeGameScore();
-    // console.log('game', game.gameScore);
     for (var i = 1; i < 21; i += 1) {
-      $('#round' + i).text(game.rawScores[i-1]);
+      $('#round' + i).text(game.rawScores[i - 1]);
     };
   });
 
@@ -39,14 +27,8 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    // game.addNewBonusScore();
-    // console.log('bonus', game.bonusScores);
-    // game.makeRoundScores();
-    // console.log('round', game.roundScores);
-    // game.makeGameScore();
-    // console.log('game', game.gameScore);
     for (var i = 1; i < 21; i += 1) {
-      $('#round' + i).text(game.rawScores[i-1]);
+      $('#round' + i).text(game.rawScores[i - 1]);
     };
   });
 
@@ -55,14 +37,8 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    // game.addNewBonusScore();
-    // console.log('bonus', game.bonusScores);
-    // game.makeRoundScores();
-    // console.log('round', game.roundScores);
-    // game.makeGameScore();
-    // console.log('game', game.gameScore);
     for (var i = 1; i < 21; i += 1) {
-      $('#round' + i).text(game.rawScores[i-1]);
+      $('#round' + i).text(game.rawScores[i - 1]);
     };
   });
 
@@ -71,14 +47,8 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    // game.addNewBonusScore();
-    // console.log('bonus', game.bonusScores);
-    // game.makeRoundScores();
-    // console.log('round', game.roundScores);
-    // game.makeGameScore();
-    // console.log('game', game.gameScore);
     for (var i = 1; i < 21; i += 1) {
-      $('#round' + i).text(game.rawScores[i-1]);
+      $('#round' + i).text(game.rawScores[i - 1]);
     };
   });
 
@@ -87,14 +57,8 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    // game.addNewBonusScore();
-    // console.log('bonus', game.bonusScores);
-    // game.makeRoundScores();
-    // console.log('round', game.roundScores);
-    // game.makeGameScore();
-    // console.log('game', game.gameScore);
     for (var i = 1; i < 21; i += 1) {
-      $('#round' + i).text(game.rawScores[i-1]);
+      $('#round' + i).text(game.rawScores[i - 1]);
     };
   });
 
@@ -103,14 +67,8 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    // game.addNewBonusScore();
-    // console.log('bonus', game.bonusScores);
-    // game.makeRoundScores();
-    // console.log('round', game.roundScores);
-    // game.makeGameScore();
-    // console.log('game', game.gameScore);
     for (var i = 1; i < 21; i += 1) {
-      $('#round' + i).text(game.rawScores[i-1]);
+      $('#round' + i).text(game.rawScores[i - 1]);
     };
   });
 
@@ -119,14 +77,8 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    // game.addNewBonusScore();
-    // console.log('bonus', game.bonusScores);
-    // game.makeRoundScores();
-    // console.log('round', game.roundScores);
-    // game.makeGameScore();
-    // console.log('game', game.gameScore);
     for (var i = 1; i < 21; i += 1) {
-      $('#round' + i).text(game.rawScores[i-1]);
+      $('#round' + i).text(game.rawScores[i - 1]);
     };
   });
 
@@ -134,15 +86,9 @@ $(document).ready(function() {
     game.addNewRollScore(8);
     console.log('raw', game.rawScores);
     game.makeFrameScores();
-    // console.log('frame', game.frameScores);
-    // game.addNewBonusScore();
-    // console.log('bonus', game.bonusScores);
-    // game.makeRoundScores();
-    // console.log('round', game.roundScores);
-    // game.makeGameScore();
-    // console.log('game', game.gameScore);
+    console.log('frame', game.frameScores);
     for (var i = 1; i < 21; i += 1) {
-      $('#round' + i).text(game.rawScores[i-1]);
+      $('#round' + i).text(game.rawScores[i - 1]);
     };
   });
 
@@ -151,14 +97,8 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    // game.addNewBonusScore();
-    // console.log('bonus', game.bonusScores);
-    // game.makeRoundScores();
-    // console.log('round', game.roundScores);
-    // game.makeGameScore();
-    // console.log('game', game.gameScore);
     for (var i = 1; i < 21; i += 1) {
-      $('#round' + i).text(game.rawScores[i-1]);
+      $('#round' + i).text(game.rawScores[i - 1]);
     };
   });
 
@@ -167,14 +107,8 @@ $(document).ready(function() {
     console.log('raw', game.rawScores);
     game.makeFrameScores();
     console.log('frame', game.frameScores);
-    // game.addNewBonusScore();
-    // console.log('bonus', game.bonusScores);
-    // game.makeRoundScores();
-    // console.log('round', game.roundScores);
-    // game.makeGameScore();
-    // console.log('game', game.gameScore);
     for (var i = 1; i < 21; i += 1) {
-      $('#round' + i).text(game.rawScores[i-1]);
+      $('#round' + i).text(game.rawScores[i - 1]);
     };
   });
 

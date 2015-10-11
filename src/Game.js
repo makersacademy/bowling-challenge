@@ -13,7 +13,22 @@ Game.prototype.nextFrame = function() {
   }
 };
 
+Game.prototype.knockDown = function(numberOfPins) {
+  if (this.frames.length === 0) {
+    this.nextFrame();
+  } else if (this.frames[this.frames.length - 1].totalOfRolls.length >= 2) {
+    this.nextFrame();
+  }
+
+  this.frames[this.frames.length - 1].knockDown(numberOfPins);
+};
+
 Game.prototype.totalScore = function() {
-  this.currentScore += this.frames[this.frames.length - 1].score;
+  for (var i = 0; i < this.frames.length; i++) {
+    if (this.frames[i].totalOfRolls.length >= 2) {
+      this.currentScore += this.frames[i].score;
+    }
+  }
+
   return this.currentScore;
 };

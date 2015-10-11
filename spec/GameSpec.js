@@ -48,13 +48,36 @@ describe('Game', function() {
       expect(game.frames.length).toEqual(2);
     });
 
-    it('when knocks 1 pin then 2 pins the game score is 3', function() {
+    it('when player knocks 1 pin then 2 pins the game score is 3', function() {
       game.nextFrame();
       game.frames[0].knockDown(1);
       game.frames[0].knockDown(2);
       expect(game.totalScore()).toEqual(3);
     });
 
+    it('when player rolls once, the game score is still 0', function() {
+      game.nextFrame();
+      game.frames[0].knockDown(1);
+      expect(game.totalScore()).toEqual(0);
+    });
+
+    it('the game score accumulates frame scores', function() {
+      game.nextFrame();
+      game.frames[0].knockDown(1);
+      game.frames[0].knockDown(2);
+      game.nextFrame();
+      game.frames[1].knockDown(3);
+      game.frames[1].knockDown(4);
+      expect(game.totalScore()).toEqual(10);
+    });
+
+    it('the game score accumulates frame scores', function() {
+      game.knockDown(1);
+      game.knockDown(2);
+      game.knockDown(3);
+      game.knockDown(4);
+      expect(game.totalScore()).toEqual(10);
+    });
   });
 
 });

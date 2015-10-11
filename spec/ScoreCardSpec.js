@@ -105,7 +105,9 @@ describe('ScoreCard', function() {
       expect(scorecard.roll).toEqual(3);
     });
 
-    // it('returns the total score for the whole game', function() {
-    //
-    // });
+    it('returns the total score', function() {
+      scorecard.rollScore(4);
+      scorecard.rollScore(5);
+      expect(scorecard.totalScore()).toEqual(9);
+    });
 });

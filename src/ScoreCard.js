@@ -63,3 +63,11 @@ ScoreCard.prototype.strikeBonus = function() {
 ScoreCard.prototype.spareBonus = function() {
   return this.score[this.currentFrame - 1].push(this.score[this.currentFrame][0]);
 };
+
+ScoreCard.prototype.totalScore = function(frame) {
+  var sum = 0;
+  for(var i=1; i <= this.currentFrame; i++) {
+    sum += this.frameTotal(i);
+  }
+  return sum;
+}

@@ -60,10 +60,10 @@ ScoreCard.prototype.pinsLeft = function(pinsKnockedDown) {
   return this.pins;
 };
 
-// Scorecard.prototype.resetPins = function() {
-//   this.pins = 10;
-// };
-//
+Scorecard.prototype.resetPins = function() {
+  this.pins = 10;
+};
+
 // Scorecard.prototype.isPreviousFrameStrike = function() {
 //   return this.scores[this.frame - 1][10] === 10;
 // };

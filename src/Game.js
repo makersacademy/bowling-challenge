@@ -6,19 +6,19 @@ var Game = function() {
 };
 
 Game.prototype.throwBall = function(pinsDown) {
-
+  var result = pinsDown;
   if (pinsDown === 10 && this.rollTurn === 1) {
-    return this._strike();
+    result = this._strike();
+  // ths.rollTurn check made twice, merge with ^
   } else if (this.rollTurn === 1) {
     this.scorecard[this.frame].push(pinsDown)
     this._nextRoll();
-    return pinsDown;
   } else {
     this.scorecard[this.frame].push(pinsDown)
     this._nextRoll();
     this._nextFrame();
-    return pinsDown;
   }
+  return result;
 };
 
 Game.prototype._nextRoll = function() {
@@ -48,9 +48,6 @@ Game.prototype._strikeBonus = function() {
     this.scorecard[this.frame - 1].push(this._frameScore[this.frame])
   }
 };
-
-
-
 
 Game.prototype._frameScore = function(frame) {
   return this.scorecard[frame].reduce(function(sum, element) {

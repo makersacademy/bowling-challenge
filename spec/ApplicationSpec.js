@@ -24,6 +24,8 @@ describe('Application of Bowling Score Updater', function() {
   });
 
 });
+
+
 //
 // describe('Interface knows the cumulative score for', function(){
 //

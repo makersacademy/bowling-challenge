@@ -1,6 +1,8 @@
 function BowlingScoreUpdater() {
+  // this.infoContainer = {currentFrameNumber: }
+
+
   this.currentFrameNumber = 1;
-  // this.prevFrameNumber = 0;
   this.currentFrameTotal = 0;
   this.currentFrameBonusRounds = 0;
   this.prevFrameTotal = 0;
@@ -15,7 +17,6 @@ BowlingScoreUpdater.prototype.shiftFrames = function() {
   this.prevPrevFrameBonusRounds = this.prevFrameBonusRounds;
   this.prevFrameTotal = this.currentFrameTotal;
   this.prevFrameBonusRounds = this.currentFrameBonusRounds;
-  // this.prevFrameNumber = this.currentFrameNumber;
   this.currentFrameNumber += 1;
   this.currentFrameTotal = 0;
   this.currentFrameBonusRounds = 0;
@@ -51,3 +52,9 @@ BowlingScoreUpdater.prototype.newRound = function(score) {
   };
   this.updateBonus(score);
 };
+
+function testConstructor() {
+  this.containerObject = {score:[4,'hello'], frameNumber:2, lastFrame:1,somethingElse: 'hi'}
+};
+
+test = new testConstructor();

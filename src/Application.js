@@ -54,3 +54,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   };
 });
+
+
+
+
+
+
+
+
+
+// function bowlingScore() {
+//   this.rawScores = []
+// };
+//
+// bowlingScore.prototype.addNewRoundScore= function(score) {
+//   this.rawScore.push(score);
+// };
+//
+// var test = new bowlingScore();
+// test.addNewRoundScore(7);
+// test.addNewRoundScore(7);

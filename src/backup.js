@@ -328,3 +328,175 @@ document.addEventListener('DOMContentLoaded', function() {
 //   this.updateBonus(score);
 // };
 //
+
+
+/////////Friday
+
+
+function BowlingScoreUpdater() {
+  this.currentFrameNumber = 1;
+  // this.prevFrameNumber = 0;
+  this.currentFrameTotal = 0;
+  this.currentFrameBonusRounds = 0;
+  this.prevFrameTotal = 0;
+  this.prevFrameBonusRounds = 0;
+  this.prevPrevFrameTotal = 0;
+  this.prevPrevFrameBonusRounds = 0;
+  this.frameRoundsLeft = 2;
+};
+
+BowlingScoreUpdater.prototype.shiftFrames = function() {
+  this.prevPrevFrameTotal = this.prevFrameTotal;
+  this.prevPrevFrameBonusRounds = this.prevFrameBonusRounds;
+  this.prevFrameTotal = this.currentFrameTotal;
+  this.prevFrameBonusRounds = this.currentFrameBonusRounds;
+  // this.prevFrameNumber = this.currentFrameNumber;
+  this.currentFrameNumber += 1;
+  this.currentFrameTotal = 0;
+  this.currentFrameBonusRounds = 0;
+  this.frameRoundsLeft = 2;
+};
+
+BowlingScoreUpdater.prototype.updateBonus = function(score) {
+  if (this.prevPrevFrameBonusRounds === 1) {
+    this.prevPrevFrameTotal += score;
+    this.prevPrevFrameBonusRounds -= 1;
+  };
+  if (this.prevFrameBonusRounds > 0) {
+    this.prevFrameTotal += score;
+    this.prevFrameBonusRounds -= 1;
+  };
+};
+
+BowlingScoreUpdater.prototype.newRound = function(score) {
+  if (this.frameRoundsLeft === 0) {
+    this.shiftFrames();
+  };
+  if (score === 10 && this.frameRoundsLeft === 2){
+    this.frameRoundsLeft = 0;
+    this.currentFrameBonusRounds = 2;
+    this.currentFrameTotal = 10;
+  } else if (this.currentFrameTotal + score === 10){
+    this.frameRoundsLeft = 0;
+    this.currentFrameBonusRounds = 1;
+    this.currentFrameTotal += score;
+  } else if (this.currentFrameTotal + score < 10){
+    this.frameRoundsLeft -= 1;
+    this.currentFrameTotal += score;
+  };
+  this.updateBonus(score);
+};
+
+
+////application
+
+updater = new BowlingScoreUpdater();
+
+var htmlRoundNumber = 1;
+
+var htmlWriter = function(score){
+
+  if ((updater.frameRoundsLeft === 1 && updater.currentFrameTotal + score > 10) || htmlRoundNumber > 21) {
+    return;
+  };
+
+  if (score === 10 && updater.frameRoundsLeft === 0){
+    if (htmlRoundNumber < 19) {htmlRoundNumber += 1};
+    document.getElementById('round'+ htmlRoundNumber.toString()).innerHTML = 'X';
+  } else if (updater.currentFrameTotal + score === 10 && updater.frameRoundsLeft === 1) {
+    document.getElementById('round'+ htmlRoundNumber.toString()).innerHTML = '/';
+  } else {
+    document.getElementById('round'+ htmlRoundNumber.toString()).innerHTML = score;
+  };
+  htmlRoundNumber += 1;
+
+  updater.newRound(score);
+
+  var currentFrameNumber = updater.currentFrameNumber;
+  var prevFrameNumber = updater.currentFrameNumber - 1;
+  var prevPrevFrameNumber = updater.currentFrameNumber - 2;
+
+  if (currentFrameNumber >= 1 && currentFrameNumber <= 10){
+    document.getElementById('f'+ currentFrameNumber.toString()).innerHTML
+      = updater.currentFrameTotal;
+  };
+
+  if (prevFrameNumber >= 1 && prevFrameNumber <= 10){
+    document.getElementById('f'+ prevFrameNumber.toString()).innerHTML
+      = updater.prevFrameTotal;
+  };
+
+  if (prevPrevFrameNumber >= 1 && prevPrevFrameNumber <= 10){
+    document.getElementById('f'+prevPrevFrameNumber.toString()).innerHTML
+      = updater.prevPrevFrameTotal;
+  };
+
+  var scoreTotal = 0;
+  for(i = 1; i < 11; i++){
+    scoreTotal += Number(document.getElementById('f' + i.toString()).innerHTML);
+  };
+  document.getElementById('total_score').innerHTML = scoreTotal;
+
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  for(i = 0; i < 11; i++){
+    document.getElementById('btn' + i.toString()).addEventListener("click", function() {
+      htmlWriter(Number(this.id.replace('btn', '')));
+    });
+  };
+});
+
+
+
+function BowlingScoreUpdater() {
+  this.currentFrameNumber = 1;
+  this.currentFrameTotal = 0;
+  this.currentFrameBonusRounds = 0;
+  this.prevFrameTotal = 0;
+  this.prevFrameBonusRounds = 0;
+  this.prevPrevFrameTotal = 0;
+  this.prevPrevFrameBonusRounds = 0;
+  this.frameRoundsLeft = 2;
+};
+
+BowlingScoreUpdater.prototype.shiftFrames = function() {
+  this.prevPrevFrameTotal = this.prevFrameTotal;
+  this.prevPrevFrameBonusRounds = this.prevFrameBonusRounds;
+  this.prevFrameTotal = this.currentFrameTotal;
+  this.prevFrameBonusRounds = this.currentFrameBonusRounds;
+  this.currentFrameNumber += 1;
+  this.currentFrameTotal = 0;
+  this.currentFrameBonusRounds = 0;
+  this.frameRoundsLeft = 2;
+};
+
+BowlingScoreUpdater.prototype.updateBonus = function(score) {
+  if (this.prevPrevFrameBonusRounds === 1) {
+    this.prevPrevFrameTotal += score;
+    this.prevPrevFrameBonusRounds -= 1;
+  };
+  if (this.prevFrameBonusRounds > 0) {
+    this.prevFrameTotal += score;
+    this.prevFrameBonusRounds -= 1;
+  };
+};
+
+BowlingScoreUpdater.prototype.newRound = function(score) {
+  if (this.frameRoundsLeft === 0) {
+    this.shiftFrames();
+  };
+  if (score === 10 && this.frameRoundsLeft === 2){
+    this.frameRoundsLeft = 0;
+    this.currentFrameBonusRounds = 2;
+    this.currentFrameTotal = 10;
+  } else if (this.currentFrameTotal + score === 10){
+    this.frameRoundsLeft = 0;
+    this.currentFrameBonusRounds = 1;
+    this.currentFrameTotal += score;
+  } else if (this.currentFrameTotal + score < 10){
+    this.frameRoundsLeft -= 1;
+    this.currentFrameTotal += score;
+  };
+  this.updateBonus(score);
+};

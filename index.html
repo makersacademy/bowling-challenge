@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css'>
+    <link href="public/css/custom.css" rel="stylesheet">
+    <script src='https://code.jquery.com/jquery-2.1.4.js'></script>
+    <script src='src/jquery.js'></script>
+    <script src='src/Game.js'></script>
+    <title>
+      Bowling Challenge
+    </title>
+
+</head>
+  <body>
+
+
+    <div class="container">
+
+
+
+      <div class="row">
+        <div class=".col-md-6 .col-md-offset-3">
+
+      </div>
+    </div>
+
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-3">
+  <h2> Bowling Score Card </h2>
+
+
+</div>
+<div class="col-md-4 col-md-offset-2">
+<div class="row">
+        <form action="#">
+
+            <div class="col-xs-2">
+
+                        <div class="form-group">
+                            <label form="roll1">Frame1</label>
+                        <select id="selectbasic" name="selectbasic" id="frame1roll1" class="form-control">
+                          <option value="" selected disabled>Roll 1</option>
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                             <input type="submit" >
+                        </select>
+
+
+
+
+            </div>
+
+
+                <div class="form-group">
+                    <label for="roll1">Frame2</label>
+                    <input type="text" class="form-control" id="frame2roll1" placeholder="Roll 1">
+                <!-- </div>
+
+
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                  <label form="roll1">Frame1</label>
+                <select id="selectbasic" name="selectbasic" id="frame1roll1" class="form-control">
+                <option value="" selected disabled>Roll 2</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                  <button id="btn1">Hint</button>
+                </select>
+
+
+
+
+
+                    <label for="frame1roll2">Frame1</label>
+                    <input type="text" class="form-control" id="frame1roll2" placeholder="Roll 2">
+
+
+
+
+
+
+                </div>
+                <div class="form-group">
+                    <label for="frame2roll2">Frame 2</label>
+                    <input type="text" class="form-control" id="frame2roll2" placeholder="Roll 2">
+                </div>
+            </div>
+
+
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label form="frame3roll1">Frame 3</label>
+                    <input type="text" class="form-control" id="frame3roll1" placeholder="Roll 1">
+                </div>
+                <div class="form-group">
+                    <label for="frame4roll1">Frame 4</label>
+                    <input type="text" class="form-control" id="frame4roll1" placeholder="Roll 1">
+                </div>
+
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="frame3roll2">Frame 3</label>
+                    <input type="text" class="form-control" id="frame3roll2" placeholder="Roll 2">
+                </div>
+                <div class="form-group">
+                    <label for="frame4roll2">Frame 4</label>
+                    <input type="text" class="form-control" id="frame4roll2" placeholder="Roll 2">
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label form="frame5roll1">Frame 5</label>
+                    <input type="text" class="form-control" id="frame5roll1" placeholder="Roll 1">
+                </div>
+                <div class="form-group">
+                    <label for="frame6roll1">Frame 6</label>
+                    <input type="text" class="form-control" id="frame6roll1" placeholder="Roll 1">
+                </div>
+
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="frame5roll2">Frame 5</label>
+                    <input type="text" class="form-control" id="frame5roll2" placeholder="Roll 2">
+                </div>
+                <div class="form-group">
+                    <label for="frame6roll2">Frame 6</label>
+                    <input type="text" class="form-control" id="frame6roll2" placeholder="Roll 2">
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label form="frame3roll1">Frame 7</label>
+                    <input type="text" class="form-control" id="frame3roll1" placeholder="Roll 1">
+                </div>
+                <div class="form-group">
+                    <label for="frame4roll1">Frame 8</label>
+                    <input type="text" class="form-control" id="frame4roll1" placeholder="Roll 1">
+                </div>
+
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="frame3roll2">Frame 7</label>
+                    <input type="text" class="form-control" id="frame3roll2" placeholder="Roll 2">
+                </div>
+                <div class="form-group">
+                    <label for="frame4roll2">Frame 8</label>
+                    <input type="text" class="form-control" id="frame4roll2" placeholder="Roll 2">
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label form="frame3roll1">Frame 9</label>
+                    <input type="text" class="form-control" id="frame3roll1" placeholder="Roll 1">
+                </div>
+                <div class="form-group">
+                    <label for="frame4roll1">Frame 10</label>
+                    <input type="text" class="form-control" id="frame4roll1" placeholder="Roll 1">
+                </div>
+
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="frame3roll2">Frame 9</label>
+                    <input type="text" class="form-control" id="frame3roll2" placeholder="Roll 2">
+                </div>
+                <div class="form-group">
+                    <label for="frame4roll2">Frame 10</label>
+                    <input type="text" class="form-control" id="frame4roll2" placeholder="Roll 2">
+                </div>
+            </div>
+
+
+
+          </body>
+          </html>
+
+
+
+        </form>
+
+
+
+    </div>
+</div>
+ </body>
+
+
+  /

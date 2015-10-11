@@ -15,9 +15,9 @@ BowlingGame.prototype.score = function() {
 
   for (var i = 0; i < 10; i++) {
     if (isSpare()) {
-      spareScore();
+      sum += spareScore();
     } else {
-      normalScore();
+      sum += normalScore();
     }
     totalIndex += 2
   }
@@ -29,46 +29,12 @@ BowlingGame.prototype.score = function() {
   }
 
   function spareScore() {
-    return sum += arry.total[totalIndex] + arry.total[totalIndex + 1] + arry.total[totalIndex + 2];
+    return arry.total[totalIndex] + arry.total[totalIndex + 1] + arry.total[totalIndex + 2];
   }
 
   function normalScore() {
-    return sum += arry.total[totalIndex] + arry.total[totalIndex + 1];
+    return arry.total[totalIndex] + arry.total[totalIndex + 1];
   }
+
+
 };
-
-
-
-
-
-//
-//   }
-//
-// };
-
-// BowlingGame.prototype.score = function() {
-//   return 0;
-// };
-
-// function Player() {
-// }
-// Player.prototype.play = function(song) {
-//   this.currentlyPlayingSong = song;
-//   this.isPlaying = true;
-// };
-//
-// Player.prototype.pause = function() {
-//   this.isPlaying = false;
-// };
-//
-// Player.prototype.resume = function() {
-//   if (this.isPlaying) {
-//     throw new Error("song is already playing");
-//   }
-//
-//   this.isPlaying = true;
-// };
-//
-// Player.prototype.makeFavorite = function() {
-//   this.currentlyPlayingSong.persistFavoriteStatus(true);
-// };

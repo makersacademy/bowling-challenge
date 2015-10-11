@@ -22,8 +22,9 @@ The application logic then uses the _updater_ to update the html scoreboard as a
 
 ## To Do
 * Fix the display of 10th frame to sometimes show 2 rounds, sometimes show 3.  Currently always show 3, so it does not show rounds correctly when not scoring a strike or spare for the last frame.  However, frame totals and game totals are correctly shown.
-* Update the frontend html and css.
+* Update the front-end html and css.
 * More jasmine-jquery feature tests.
+* Refactor the application method.
 * Rewrite my initial _ruby verision_ in javascript.
 
 CI

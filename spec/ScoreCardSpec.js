@@ -34,6 +34,12 @@ describe("ScoreCard", function() {
     expect(scorecard.roll).toEqual(2);
   });
 
+  it("can return the points for a frame", function() {
+    scorecard.scoreForRoll(4);
+    scorecard.scoreForRoll(3);
+    expect(scorecard.scoreForFrame(1)).toEqual(7);
+  });
+
 
 
 

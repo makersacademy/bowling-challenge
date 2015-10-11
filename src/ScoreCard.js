@@ -27,6 +27,12 @@ ScoreCard.prototype.nextRoll = function() {
   return this.roll === 1 ? this.roll = 2: this.roll = 1;
 };
 
+ScoreCard.prototype.scoreForFrame = function(frame) {
+  return this.scores[frame].reduce(function(a, b) { return a + b; });
+}
+
+
+
 // Player.prototype.pause = function() {
 //   this.isPlaying = false;
 // };

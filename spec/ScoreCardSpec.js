@@ -108,6 +108,8 @@ describe('ScoreCard', function() {
     it('returns the total score', function() {
       scorecard.rollScore(4);
       scorecard.rollScore(5);
-      expect(scorecard.totalScore()).toEqual(9);
+      scorecard.rollScore(2);
+      scorecard.rollScore(2);
+      expect(scorecard.runningScore(2)).toEqual(13);
     });
 });

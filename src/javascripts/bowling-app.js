@@ -23,24 +23,20 @@ Game.prototype.roll = function(pins) {
 Game.prototype.strikeOrSpare = function(pins) {
   if (pins === 10) {
     this.isStrike = true;
-  };
-  if (pins != 10) {
-    var total = 0;
-      $.each(this.rolls[this.currentFrame],function() {
-      total += this
-    });
-    if (total === 10) {
-      this.isSpare = true
-    };
+    this.frameOver = true
+  }
+  else if (this.rolls[this.currentFrame][0] + pins === 10) {
+    this.isSpare = true;
+    this.frameOver = true
   };
 };
 
 // --------------------------------------------------
 
 Game.prototype.bonusDistributor = function(pins) {
+  if(this.wasSpare) { this.addToLastSpare(pins) };
   if(this.wasStrike) { this.addToLast(pins) };
   if(this.wasStrike2 && this.currentFrame > 1) { this.addToLastAgain(pins) };
-
 };
 
 // --------------------------------------------------
@@ -51,6 +47,11 @@ Game.prototype.addToLast = function(pins) {
 
 Game.prototype.addToLastAgain = function(pins) {
   this.rolls[this.currentFrame - 2][0] += pins
+};
+
+Game.prototype.addToLastSpare = function(pins) {
+  this.rolls[this.currentFrame - 1][1] += pins;
+  this.wasSpare = false
 };
 
 // --------------------------------------------------
@@ -68,16 +69,22 @@ Game.prototype.scoreUpdater = function(pins) {
 };
 
 Game.prototype.frameHandler = function(pins) {
-  if (this.isStrike || this.frameOver) {
+  if (this.frameOver) {
     this.currentFrame++; this.frameOver = !this.frameOver
   } else {
   this.frameOver = !this.frameOver;
   };
 };
 
-// Why was this breaking???
 Game.prototype.nextFrameBonus = function(pins) {
-  if (this.isStrike && this.wasStrike) {
+  if (this.isSpare) {
+    this.wasSpare = true;
+    this.isSpare = false
+    if (this.wasStrike) {
+      this.wasStrike = false;
+      this.wasStrike2 = true
+    }
+  } else if (this.isStrike && this.wasStrike) {
     this.wasStrike2 = true
   } else if (this.isStrike) {
     this.isStrike = false;

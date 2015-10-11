@@ -74,6 +74,15 @@ describe("ScoreCard", function() {
     expect(scorecard.scores[1]).toEqual([2, 8, 5]);
   });
 
+  it("adds scores to the running total", function() {
+    scorecard.scoreForRoll(3);
+    scorecard.scoreForRoll(5);
+    scorecard.nextFrame();
+    scorecard.scoreForRoll(2);
+    scorecard.scoreForRoll(4);
+    expect(scorecard.grandTotal()).toEqual(14);
+  });
+
 
 
 

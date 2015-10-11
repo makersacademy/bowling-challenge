@@ -47,6 +47,14 @@ ScoreCard.prototype.bonusForSpare = function() {
   return this.scores[this.frame - 1].push(this.scores[this.frame][0]);
 }
 
+ScoreCard.prototype.grandTotal = function() {
+  var sum = 0;
+  for (var i = 1; i <= this.frame; i++) {
+    sum += this.scoreForFrame(i);
+  }
+  return sum;
+}
+
 
 
 // Player.prototype.pause = function() {

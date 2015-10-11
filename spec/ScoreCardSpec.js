@@ -40,6 +40,12 @@ describe("ScoreCard", function() {
     expect(scorecard.scoreForFrame(1)).toEqual(7);
   });
 
+  it("adds points to score each roll", function() {
+    scorecard.scoreForRoll(4);
+    scorecard.scoreForRoll(5);
+    expect(scorecard.scores[1]).toEqual([4,5])
+  });
+
 
 
 

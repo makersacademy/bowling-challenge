@@ -35,9 +35,10 @@ Game.prototype.strikeOrSpare = function(pins) {
 // --------------------------------------------------
 
 Game.prototype.bonusDistributor = function(pins) {
+  if (this.isSpare && this.wasStrike2) {this.addToLast(pins)};
   if (this.wasSpare) { this.addToLastSpare(pins) };
   if (this.wasStrike) { this.addToLast(pins) };
-  if (this.wasStrike2 && this.currentFrame > 1) { this.addToLastAgain(pins) };
+  if (this.wasStrike2 && this.currentFrame > 2) { this.addToLastAgain(pins) };
 };
 
 // --------------------------------------------------
@@ -52,7 +53,8 @@ Game.prototype.addToLastAgain = function(pins) {
 
 Game.prototype.addToLastSpare = function(pins) {
   this.rolls[this.currentFrame - 1][1] += pins;
-  this.wasSpare = false
+  this.wasSpare = false;
+  this.wasStrike2 = false
 };
 
 // --------------------------------------------------

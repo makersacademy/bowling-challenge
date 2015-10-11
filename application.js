@@ -3,7 +3,10 @@ function gameSetting() {
   $('#fallenPins').show();
   $('#leftPins').addClass('invisible')
 }
-
+function endGame() {
+  $('#fallenPins').hide();
+  $('#leftPins').hide();
+}
 $(function() {
   function finish() {
     var tenthFrame = game.frames[9]
@@ -11,19 +14,16 @@ $(function() {
     if (frameNumber > 10) {
       if (tenthFrame[0] + tenthFrame[1] < 10) {
         console.log('less than 10')
-        $('#fallenPins').hide();
-        $('#leftPins').hide();
+        endGame();
       } else if (game.frames[9][0] === 10) {
         console.log('strike')
         if (eleventhFrame[0] === 10) {
           $('#fallenPins div').click(function() {
-            $('#fallenPins').hide();
-            $('#leftPins').hide();
+            endGame();
           })
         } else {
           $('#leftPins div').click(function() {
-            $('#fallenPins').hide();
-            $('#leftPins').hide();
+            endGame();
           })
         }
 
@@ -32,18 +32,17 @@ $(function() {
         if (frameNumber > 10) {
           console.log('spare')
           $('#fallenPins div').click(function() {
-            $('#fallenPins').hide();
-            $('#leftPins').hide();
+            endGame();
           })
         }
       }
     }
   }
 
-  for (var i=1; i<11; i++) {
+  for (var i=0; i<11; i++) {
     $('#fallenPins').append('<div id="pins' + i + '">' + i + '</div>')
   }
-  for (var i=1; i<11; i++) {
+  for (var i=0; i<11; i++) {
     $('#leftPins').append('<div id="leftPins' + i + '">' + i + '</div>')
   }
 
@@ -52,6 +51,7 @@ $(function() {
     $('#secondRow').append('<div class="scores" id="frame' + i +
       '"><div class="first"></div><div class="second"></div><div class="third"></div></div>')
   }
+  $('#firstRow :last-child').text('Total');
 
   gameSetting();
   var frameNumber = frameNumber || 1;

@@ -17,6 +17,25 @@ describe("ScoreCard", function() {
     expect(scorecard.scoreForRoll(5)).toEqual(5);
   });
 
+  it("can move to the next frame", function() {
+    scorecard.nextFrame();
+    expect(scorecard.frame).toEqual(2);
+  });
+
+  it("is limited to 11 frames", function() {
+    for(var i = 0; i < 11; i++) {
+      scorecard.nextFrame();
+    }
+    expect(scorecard.nextFrame()).toEqual("End of game!");
+  });
+
+  it("can move to the next roll", function() {
+    scorecard.nextRoll();
+    expect(scorecard.roll).toEqual(2);
+  });
+
+
+
 
   //
   // // demonstrates use of spies to intercept and test method calls

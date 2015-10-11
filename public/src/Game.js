@@ -3,6 +3,7 @@ var Game = function() {
  this.currentRoll = 0;
  this.lastHits = [];
  this.sum = 0;
+ this.score = 0;
 };
 
 Game.prototype.roll = function(hits) {
@@ -14,7 +15,8 @@ Game.prototype.roll = function(hits) {
 };
 
 Game.prototype._totalGameScore = function() {
- return this._findSpares() + this._findStrikes() + this._findTwoStrikes() + this._totalScores();
+ this.score = this._findSpares() + this._findStrikes() + this._findTwoStrikes() + this._totalScores();
+ return this.score;
 };
 
 Game.prototype._totalScores = function() {

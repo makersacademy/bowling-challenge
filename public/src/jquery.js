@@ -4,9 +4,9 @@ $(document).ready(function()
 
     game = new Game();
 
-        $("#frame1roll1").change(function() {
 
-            console.log(game);
-
-        })
+    var displayTemp = (function() {
+      $('#output').html(game.score);
     });
+      displayTemp();
+});

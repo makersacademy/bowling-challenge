@@ -10,8 +10,15 @@ BowlingGame.prototype.roll = function(pins) {
 
 BowlingGame.prototype.score = function() {
   var sum = 0;
-  for (var i = 0; i < 20; i++) {
-    sum += this.total[i];
+  var totalIndex = 0;
+
+  for (var i = 0; i < 10; i++) {
+    if(this.total[totalIndex] + this.total[totalIndex + 1] === 10) {
+      sum += this.total[totalIndex] + this.total[totalIndex + 1] + this.total[totalIndex + 2];
+    } else {
+      sum += this.total[totalIndex] + this.total[totalIndex + 1];
+    }
+    totalIndex += 2
   }
   return sum
 };

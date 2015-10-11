@@ -10,17 +10,6 @@ describe ("bowling game", function() {
   });
 
 
-  // it('should be able to start a new game', function() {
-  //   var newGame = new BowlingGame();
-  // });
-
-  // it('should be able to have a gutter game', function() {
-  //   var game = new BowlingGame();
-  //   multiRoll(0, 20)
-  //   expect(game.score()).toEqual(0)
-  // });
-
-
   it('should be able to have a score of 5 after one frame', function() {
     game.roll(2);
     game.roll(3);
@@ -38,14 +27,13 @@ describe ("bowling game", function() {
     expect(game.score()).toEqual(12)
 });
 //
-//   it('should be able to roll a spare', function () {
-//     var game = new BowlingGame;
-//     game.roll(6);
-//     game.roll(4);
-//     game.roll(2);
-//     // multiRoll(0, 17)
-//     expect(game.score()).toEqual(14)
-// });
+  it('should be able to roll a spare', function () {
+    game.roll(6);
+    game.roll(4);
+    game.roll(2);
+    multiRoll(0, 17)
+    expect(game.score()).toEqual(14)
+});
 //
 //
 //

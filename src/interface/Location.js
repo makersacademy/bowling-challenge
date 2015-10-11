@@ -8,7 +8,7 @@ function initMap() {
   var browserSupportFlag = new Boolean();
 
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15
+    zoom: 14
   });
 
   infowindow = new google.maps.InfoWindow();

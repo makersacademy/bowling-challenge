@@ -9,17 +9,17 @@ $('#bowl').hover(
   function() {
     $('#bowl').css({
       'font-size': '100px',
-      'border': '10px solid #E6D830'
+      'border': '10px solid #E6D830',
+      'padding-bottom': '10%'
     });
-    $('#sad-face').hide();
-    $('#happy-face').show();
+    $('.face').toggle();
   }, function() {
     $('#bowl').css({
       'font-size': '-webkit-xxx-large',
-      'border': '10px solid white'
+      'border': '10px solid white',
+      'padding-bottom': '0'
     });
-    $('#sad-face').show();
-    $('#happy-face').hide();
+    $('.face').toggle();
 });
 
 $('#reset').hover(
@@ -52,14 +52,14 @@ $('.manual-input').hover(
   function(id) {
     var elementID = this.id;
     $('#' + elementID).css({
-      'font-size': '30px',
-      'border': '1px solid #E6D830'
+      'font-size': '25px',
+      'border': '3px solid #E6D830'
     });
   }, function(id) {
     var elementID = this.id;
     $('#' + elementID).css({
       'font-size': 'large',
-      'border': '1px solid white'
+      'border': '3px solid white'
     });
 });
 

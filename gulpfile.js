@@ -1,6 +1,5 @@
 var gulp = require('gulp');
-var jasmine = require('gulp-jasmine');
-var Game = require("./src/javascripts/bowling-app");
+var jasmine = require('gulp-jasmine-phantom');
 
 gulp.task('default', function () {
     return gulp.src('lib/spec/bowlingSpec.js')

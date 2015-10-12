@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/Harryandrew/bowling-challenge.svg?branch=master)](https://travis-ci.org/Harryandrew/bowling-challenge)
-[![David Status for Harryandrew/bowling-challenge](https://david-dm.org/harryandrew/bowling-challenge.svg](https://codeship.com/projects/108105)     
+[![Dependency Status](https://david-dm.org/harryandrew/bowling-challenge.svg)](https://david-dm.org/alanshaw/david-www)
+[![Inline docs](http://inch-ci.org/github/harryandrew/bowling-challenge.svg?branch=master)](http://inch-ci.org/github/harryandrew/bowling-challenge)         
 [![Codeship Status for Harryandrew/bowling-challenge](https://codeship.com/projects/9040f940-528a-0133-d3c9-26effc6ffe4b/status?branch=master)](https://codeship.com/projects/108105)
 
 **Bowling Challenge**

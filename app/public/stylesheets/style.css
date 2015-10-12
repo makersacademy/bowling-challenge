@@ -236,7 +236,7 @@ table td {
 }
 
 #game_over {
-  /*display: none;*/
+  display: none;
   text-align: center;
   color: white;
 }

@@ -29,8 +29,6 @@ To Do
 - functionality required to calculate scores in 10th frame
 - rework styling of index.html
 
-    Test time: Friday, the entire day and the entire of lab week if you need it.
-    Feel free to use Google, your notes, and your books.
 
 Task:
 -----

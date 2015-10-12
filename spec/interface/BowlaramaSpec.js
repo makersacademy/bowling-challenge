@@ -171,6 +171,13 @@ describe("Bowlarama", function(){
       expect('#first-0').toContainText('7');
     });
 
+    it("allows the user to input a zero (added due to user test fail)", function(){
+      spyOn(Math, 'random').and.returnValue(0.7);
+      $('#game-switch').click();
+      $('#0').click();
+      expect('#first-0').toContainText('0');
+    });
+
   });
 
 });

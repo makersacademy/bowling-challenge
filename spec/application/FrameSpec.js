@@ -45,11 +45,6 @@ describe("Frame", function() {
       expect(function() { frame.roll(ball, 11) }).toThrowError(ErrorMessage);
     });
 
-    it("calls the ball's isRolled function", function(){
-      frame.roll(ballOne, 6);
-      expect(ballOne.rolled).toHaveBeenCalled();
-    });
-
     it("when no score is given, generates random score based on pins remaining", function(){
       spyOn(Math, 'random').and.returnValue(0.6);
       frame.roll(ballOne);

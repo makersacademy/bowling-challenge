@@ -8,9 +8,9 @@ describe("Ball", function(){
     expect(ball.score).toEqual(0);
   });
 
-  it("knows when it has been rolled", function(){
-    ball.rolled();
-    expect(ball.isRolled).toBe(true);
+  it("score can be reset", function(){
+    ball.score = 6;
+    expect(ball.score).toEqual(6);
   });
 
 });

@@ -9,12 +9,17 @@ Frame.prototype.setLastFrame = function() {
 };
 
 Frame.prototype.roll = function(ball, number) {
-  var rollScore = number || this.randomRoll();
+  var rollScore;
+  if (number >= 0) {
+    rollScore = number
+  } else {
+    rollScore = this.randomRoll();
+  };
+
   if (!this.rollAllowed(rollScore)) throw new Error("Illegal roll");
   ball.score = rollScore;
   this.pinsRemaining -= ball.score;
   if (this.isLastFrame && this.pinsRemaining == 0) this.pinsRemaining = 10;
-  ball.rolled();
   this.balls.push(ball);
   return rollScore;
 };
@@ -38,11 +43,7 @@ Frame.prototype.isComplete = function() {
 };
 
 Frame.prototype.ballsRolled = function() {
-  var number = 0;
-  this.balls.forEach(function(ball) {
-    if (ball.isRolled) number++;
-  });
-  return number;
+  return this.balls.length;
 };
 
 Frame.prototype.isLastFrameComplete = function() {

@@ -12,11 +12,11 @@ ScoreCard.prototype.scoreForRoll = function(pinsKnockedDown) {
     this.scores[this.frame].push(pinsKnockedDown);
     return pinsKnockedDown;
   }
-};
+}
 
 ScoreCard.prototype.nextFrame = function() {
   return this.frame < 12 ? this.frame += 1 : "End of game!";
-};
+}
 
 ScoreCard.prototype.nextRoll = function() {
   if (this.frame === 10 && this.scores[10].length > 0) {
@@ -25,11 +25,11 @@ ScoreCard.prototype.nextRoll = function() {
     }
   }
   return this.roll === 1 ? this.roll = 2: this.roll = 1;
-};
+}
 
 ScoreCard.prototype.scoreForFrame = function(frame) {
   return this.scores[frame].reduce(function(a, b) { return a + b; });
-};
+}
 
 ScoreCard.prototype.strike = function() {
   this.scores[this.frame].push(10);
@@ -37,15 +37,15 @@ ScoreCard.prototype.strike = function() {
     this.nextRoll();
   }
   return "X";
-};
+}
 
 ScoreCard.prototype.bonusForStrike = function() {
   return this.scores[this.frame - 1].push(this.scores[this.frame].reduce(function(a, b) { return a + b; }));
-};
+}
 
 ScoreCard.prototype.bonusForSpare = function() {
   return this.scores[this.frame - 1].push(this.scores[this.frame][0]);
-};
+}
 
 ScoreCard.prototype.grandTotal = function() {
   var sum = 0;
@@ -53,21 +53,13 @@ ScoreCard.prototype.grandTotal = function() {
     sum += this.scoreForFrame(i);
   }
   return sum;
-};
+}
 
 ScoreCard.prototype.pinsLeft = function(pinsKnockedDown) {
   this.pins = 10 - pinsKnockedDown;
   return this.pins;
-};
+}
 
 Scorecard.prototype.resetPins = function() {
   this.pins = 10;
-};
-
-// Scorecard.prototype.isPreviousFrameStrike = function() {
-//   return this.scores[this.frame - 1][10] === 10;
-// };
-//
-// Scorecard.prototype.isPreviousFrameSpare = function() {
-//   return (this.scores[this.frame - 1].length === 2 && this.scoreForRoll(this.frame - 1) === 10);
-// };
+}

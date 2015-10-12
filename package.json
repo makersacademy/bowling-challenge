@@ -13,7 +13,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "gulp",
-    "coveralls": "npm run-script coverage && node bin/coveralls.js < coverage/lcov.info",
+    "coveralls": "npm run-script coverage && node bin/coveralls.js < coverage/lcov.info"
   },
   "repository": {
     "type": "git",

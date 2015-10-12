@@ -86,48 +86,71 @@ describe ('Game', function(){
 
   describe('10th frame', function(){
 
-    it('gives the bonus rolls for strikes on the 10th frame', function(){
-      game.frame = 10
-      game.scoreRoll(10);
-      game.scoreRoll(10);
-      game.scoreRoll(10);
-      expect(game.frameScore(10)).toEqual(30);
+    describe('if strike', function(){
+
+      it('gives the bonus points for strikes on the 10th frame', function(){
+        game.frame = 10
+        game.scoreRoll(10);
+        game.scoreRoll(4);
+        game.scoreRoll(3);
+        expect(game.frameScore(10)).toEqual(17);
+      });
+
+      it('should allow a 2nd roll if strike on 10th frame', function(){
+        game.frame = 10
+        game.scoreRoll(10);
+        expect(game.roll).toEqual(2);
+      });
+
+      it('should allow a 3rd roll if strike on 10th frame', function(){
+        game.frame = 10
+        game.scoreRoll(10);
+        game.scoreRoll(4);
+        expect(game.roll).toEqual(3);
+      });
+
+      it('should NOT allow a 4th roll if strike on 10th frame', function(){
+        game.frame = 10
+        game.scoreRoll(10);
+        game.scoreRoll(4);
+        game.scoreRoll(2);
+        expect(game.roll).toEqual(1);
+      });
+
+      it('should NOT allow a 3rd roll if no strike on 10th frame', function(){
+        game.frame = 10
+        game.scoreRoll(4);
+        game.scoreRoll(2);
+        expect(game.roll).toEqual(1);
+      });
+
     });
 
-    it('gives the bonus roll for spares on the 10th frame', function(){
-      game.frame = 10
-      game.scoreRoll(4);
-      game.scoreRoll(6);
-      game.scoreRoll(4);
-      expect(game.frameScore(10)).toEqual(14);
-    });
+    describe('if spare', function(){
 
-    it('should allow a 2nd roll if strike on 10th frame', function(){
-      game.frame = 10
-      game.scoreRoll(10);
-      expect(game.roll).toEqual(2);
-    });
+      it('gives the bonus points for spares on the 10th frame', function(){
+        game.frame = 10
+        game.scoreRoll(4);
+        game.scoreRoll(6);
+        game.scoreRoll(4);
+        expect(game.frameScore(10)).toEqual(14);
+      });
 
-    it('should allow a 3rd roll if strike on 10th frame', function(){
-      game.frame = 10
-      game.scoreRoll(10);
-      game.scoreRoll(4);
-      expect(game.roll).toEqual(3);
-    });
+      it('should allow a 3rd roll if spare on 10th frame', function(){
+        game.frame = 10
+        game.scoreRoll(4);
+        game.scoreRoll(6);
+        expect(game.roll).toEqual(3);
+      });
 
-    it('should NOT allow a 4th roll if strike on 10th frame', function(){
-      game.frame = 10
-      game.scoreRoll(10);
-      game.scoreRoll(4);
-      game.scoreRoll(2);
-      expect(game.roll).toEqual(1);
-    });
+      it('should NOT allow a 4th roll if spare on 10th frame', function(){
+        game.frame = 10
+        game.scoreRoll(4);
+        game.scoreRoll(6);
+        game.scoreRoll(2);
+        expect(game.roll).toEqual(1);
+      });
 
-    it('should NOT allow a 3rd roll if no strike on 10th frame', function(){
-      game.frame = 10
-      game.scoreRoll(4);
-      game.scoreRoll(2);
-      expect(game.roll).toEqual(1);
     });
 
   });

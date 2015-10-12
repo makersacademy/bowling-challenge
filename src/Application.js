@@ -8,7 +8,7 @@ var htmlWriter = function(score){
     return;
   };
 
-  if (score === 10 && updater.game.frameRoundsLeft === 0){
+  if ((score === 10 && updater.game.frameRoundsLeft === 0) || (score === 10 && updater.game.currentFrameNumber === 1 && updater.game.frameRoundsLeft === 2)) {
     if (htmlRoundNumber < 19) {htmlRoundNumber += 1};
     document.getElementById('round'+ htmlRoundNumber.toString()).innerHTML = 'X';
   } else if (updater.game.currentFrameTotal + score === 10 && updater.game.frameRoundsLeft === 1) {
@@ -43,7 +43,7 @@ var htmlWriter = function(score){
   for(i = 1; i < 11; i++){
     scoreTotal += Number(document.getElementById('f' + i.toString()).innerHTML);
   };
-  document.getElementById('total_score').innerHTML = scoreTotal;
+  document.getElementById('total_score').innerHTML = "Total Score "+ scoreTotal.toString();
 
 };
 

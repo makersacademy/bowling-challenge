@@ -6,6 +6,8 @@
 =================
 Week 5 Makers Academy - Bowling Challenge.
 
+![Bowling](https://github.com/harryandrew/chitter-challenge/blob/master/images/bowling-img.png)
+
 Description
 ------------
 
@@ -23,4 +25,7 @@ Installation/Dependencies
 - Built with Javascript running in the browser
 - Tested with Jasmine v2.0 
 
-The front end is still in development. To view tests and check current state in the browser `git clone` this repo and `open SpecRunner.html`.
+The front end is still in development. To view tests and check current state in the browser `git clone` this repo and `open SpecRunner.html`.    
+
+
+![Scoring Example](https://github.com/harryandrew/chitter-challenge/blob/master/images/example_ten_pin_scoring.png)

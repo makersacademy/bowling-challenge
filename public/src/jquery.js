@@ -5,8 +5,8 @@ $(document).ready(function()
     game = new Game();
 
 
-    var displayTemp = (function() {
+    var displayScore = (function() {
       $('#output').html(game.score);
     });
-      displayTemp();
+      displayScore();
 });

@@ -1,0 +1,28 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "bowling-challenge: desktop version 1.0.0",
+  "main": "src/javascripts/bowling-app.js",
+  "dependencies": {
+    "coveralls": "^2.11.4",
+    "gulp": "^3.9.0",
+    "gulp-jasmine": "^2.1.0",
+    "gulp-jasmine-phantom": "^2.0.1",
+    "phantomjs": "^1.9.18"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "gulp",
+    "coveralls": "npm run-script coverage && node bin/coveralls.js < coverage/lcov.info"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harryandrew/bowling-challenge.git"
+  },
+  "author": "Harry Dix",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Harryandrew/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/Harryandrew/bowling-challenge#readme"
+}

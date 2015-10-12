@@ -1,8 +1,27 @@
 var game = new Game(Frame);
 
 $('#bowl').click(function(){
-  game.bowl();
+  var ball = new Ball();
+  game.bowl(ball);
   scoreRefresh();
+});
+
+$('#game-switch').click(function(){
+  $('.bowling-controls').toggle();
+});
+
+$('.manual-input').click(function(){
+  var elementID = this.id;
+  var roll = parseInt(elementID);
+  var ball = new Ball();
+  game.bowl(ball, roll);
+  scoreRefresh();
+});
+
+$('#reset').click(function(){
+  game = new Game(Frame);
+  scoreReset();
+  styleReset();
 });
 
 $('#bowl').hover(
@@ -63,25 +82,6 @@ $('.manual-input').hover(
     });
 });
 
-$('#game-switch').click(function(){
-  $('.bowling-controls').toggle();
-  game.toggleManualRandomInput();
-});
-
-$('.manual-input').click(function(){
-  var elementID = this.id;
-  var roll = parseInt(elementID);
-  game.bowl(roll);
-  scoreRefresh();
-});
-
-$('#reset').click(function(){
-  if (game.isManualGame) $('.bowling-controls').toggle();
-  game = new Game(Frame);
-  scoreReset();
-  styleReset();
-});
-
 styleReset = function(){
   $('.roll').attr('style', 'background-color: none')
 }
@@ -121,28 +121,30 @@ scoreRefresh = function(){
 }
 
 firstRollDisplay = function(frame) {
-  if (frame.firstRollScore === 10) return 'X';
-  return frame.firstRollScore;
+  if (frame.ballsRolled() < 1) return '';
+  if (frame.balls[0].score === 10) return 'X';
+  return frame.balls[0].score;
 };
 
 secondRollDisplay = function(frame) {
-  if (frame.firstRollScore + frame.secondRollScore === 10 && frame.secondRollScore > 0) return '/';
-  if (frame.isLastFrame && frame.secondRollScore === 10) return 'X';
-  return frame.secondRollScore;
+  if (frame.ballsRolled() < 2) return '';
+  if (frame.isSpare()) return '/';
+  if (frame.isLastFrame && frame.balls[1].score === 10) return 'X';
+  return frame.balls[1].score;
 };
 
 thirdRollDisplay = function(frame) {
-  if (frame.thirdRollScore === 10 && frame.secondRollScore > 0) return 'X';
-  if (frame.totalScore === 20 && frame.thirdRollScore > 0) return '/';
-  return frame.thirdRollScore;
+  if (frame.ballsRolled() < 3) return '';
+  if (frame.balls[2].score === 10 && frame.balls[1].score > 0) return 'X';
+  if (frame.totalScore() === 20 && frame.balls[2].score > 0) return '/';
+  return frame.balls[2].score;
 };
 
 totalDisplay = function(frame) {
-  if (frame.rollsTaken === 3) return frame.totalScore;
-  if (frame.rollsTaken === 2 && frame.totalScore < 10) return frame.totalScore;
-  if (frame.rollsTaken === 0 || (frame.rollsTaken === 1 && frame.totalScore < 10)) return '';
-  if (frame.isStrike || frame.isSpare) return '';
-  return frame.totalScore;
+  if (frame.ballsRolled() === 3) return frame.totalScore();
+  if (!frame.isComplete()) return '';
+  if (frame.isAwaitingBonus()) return '';
+  return frame.totalScore();
 };
 
 createHTMLTable = function(){

@@ -1,131 +1,80 @@
 function Frame() {
   this.pinsRemaining = 10;
-  this.rollsTaken = 0;
-  this.totalScore = 0;
-  this.isManualRolls = false;
-};
-
-Frame.prototype.switchRandomManual = function() {
-  this.isManualRolls = !this.isManualRolls
-};
-
-Frame.prototype.firstRoll = function(number) {
-  this.checkRollAllowed(1);
-  this.firstRollScore = this.roll(number);
-  this.postRollUpdate(this.firstRollScore);
-  if (this.firstRollScore === 10) {
-    this.isStrike = true;
-    return "Strike!";
-  };
-
-  return this.firstRollScore;
-};
-
-Frame.prototype.secondRoll = function(number) {
-  this.checkRollAllowed(2);
-  this.secondRollScore = this.roll(number);
-  this.postRollUpdate(this.secondRollScore);
-  if (this.isLastFrame && this.isStrike && this.secondRollScore === 10) {
-    return "Strike!";
-  } else if (this.totalScore === 10 && this.secondRollScore > 0) {
-    this.isSpare = true;
-    return "Spare!";
-  };
-
-  return this.secondRollScore;
-};
-
-Frame.prototype.thirdRoll = function(number) {
-  this.checkRollAllowed(3);
-  this.thirdRollScore = this.roll(number);
-  this.postRollUpdate(this.thirdRollScore);
-  if (this.thirdRollScore === 10) {
-    return "Strike!";
-  } else if (this.totalScore === 20 && this.thirdRollScore > 0) {
-    return "Spare!";
-  };
-
-  return this.thirdRollScore;
-};
-
-Frame.prototype.roll = function(number) {
-  var n = this.pinsRemaining;
-
-  if (this.isManualRolls) {
-    if (number > n) throw new Error("Illegal roll");
-    return number;
-  };
-
-  return Math.floor( Math.random() * (n+1) );
-};
-
-Frame.prototype.postRollUpdate = function(rollScore) {
-  this.totalScore += rollScore;
-  this.pinsRemaining -= rollScore;
-  this.rollsTaken++;
-  if (this.isLastFrame) {
-    this.lastFrameUpdate();
-  };
-
-};
-
-Frame.prototype.checkRollAllowed = function(rollNumber){
-  this.checkCorrectTurn(rollNumber);
-  if (this.isLastFrame) {
-    this.checkAllowedLastFrame(rollNumber);
-  } else {
-    this.checkAllowedNotLast(rollNumber);
-  };
-
-};
-
-
-Frame.prototype.spareUpdate = function(rollScore) {
-  if (this.isSpare) {
-    this.totalScore += rollScore;
-    this.isSpare = false;
-  };
-
-};
-
-Frame.prototype.strikeUpdate = function(frameScore) {
-  if (this.isStrike) {
-    this.totalScore += frameScore;
-    this.isStrike = false;
-  };
-
+  this.balls = [];
+  this.bonuses = [];
 };
 
 Frame.prototype.setLastFrame = function() {
   this.isLastFrame = true;
 };
 
-Frame.prototype.lastFrameUpdate = function() {
-  if (this.pinsRemaining === 0) {
-    this.pinsRemaining = 10;
-  };
-
+Frame.prototype.roll = function(ball, number) {
+  var rollScore = number || this.randomRoll();
+  if (!this.rollAllowed(rollScore)) throw new Error("Illegal roll");
+  ball.score = rollScore;
+  this.pinsRemaining -= ball.score;
+  if (this.isLastFrame && this.pinsRemaining == 0) this.pinsRemaining = 10;
+  ball.rolled();
+  this.balls.push(ball);
+  return rollScore;
 };
 
-Frame.prototype.checkCorrectTurn = function(rollNumber) {
-  if (this.rollsTaken != rollNumber - 1) {
-    throw new Error("Illegal roll");
-  };
-
+Frame.prototype.rollAllowed = function(rollScore) {
+  if (this.isComplete()) return false;
+  if (rollScore > this.pinsRemaining) return false;
+  return true;
 };
 
-Frame.prototype.checkAllowedLastFrame = function(rollNumber) {
-  if (rollNumber === 3 && !(this.isStrike || this.isSpare)) {
-    throw new Error("Illegal roll");
-  };
-
+Frame.prototype.randomRoll = function() {
+  var pins = this.pinsRemaining;
+  return Math.floor( Math.random() * (pins+1) );
 };
 
-Frame.prototype.checkAllowedNotLast = function(rollNumber) {
-  if (rollNumber === 3) {
-    throw new Error("Illegal roll");
-  } else if (rollNumber === 2 && this.isStrike) {
-    throw new Error("Illegal roll");
-  };
+Frame.prototype.isComplete = function() {
+  if (this.isLastFrame) return this.isLastFrameComplete();
+  if (this.pinsRemaining == 0) return true;
+  if (this.ballsRolled() == 2) return true;
+  return false;
+};
 
+Frame.prototype.ballsRolled = function() {
+  var number = 0;
+  this.balls.forEach(function(ball) {
+    if (ball.isRolled) number++;
+  });
+  return number;
+};
+
+Frame.prototype.isLastFrameComplete = function() {
+  if (this.ballsRolled() === 3) return true;
+  if (this.ballsRolled() === 2 && this.totalScore() < 10) return true;
+  return false;
+};
+
+Frame.prototype.totalScore = function() {
+  var number = 0;
+  this.balls.forEach(function(ball) {
+    number += ball.score;
+  });
+  this.bonuses.forEach(function(bonus) {
+    number += bonus;
+  });
+
+  return number;
+};
+
+Frame.prototype.isStrike = function() {
+  if (this.ballsRolled() < 1) return false;
+  return (this.balls[0].score === 10);
+};
+
+Frame.prototype.isSpare = function() {
+  if (this.ballsRolled() < 2) return false;
+  return (this.balls[0].score < 10 && this.balls[0].score + this.balls[1].score === 10);
+};
+
+Frame.prototype.isAwaitingBonus = function() {
+  if (this.isStrike() && this.bonuses.length < 2) return true;
+  if (this.isSpare() && this.bonuses.length < 1) return true;
+  return false;
 };

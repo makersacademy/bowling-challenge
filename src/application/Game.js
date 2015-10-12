@@ -1,16 +1,6 @@
 function Game(frameConstructor) {
   this.frameArrayGenerator(frameConstructor);
   this.frameIndex = 0;
-  this.isManualGame = false
-};
-
-Game.prototype.toggleManualRandomInput = function() {
-  this.isManualGame = !this.isManualGame
-
-  this.frameArray.forEach(function(frame) {
-    frame.switchRandomManual();
-  });
-
 };
 
 Game.prototype.frameArrayGenerator = function(frameConstructor) {
@@ -22,24 +12,36 @@ Game.prototype.frameArrayGenerator = function(frameConstructor) {
   this.frameArray[9].setLastFrame();
 };
 
-Game.prototype.bowl = function(number) {
-  var returnValue;
-  if (this.currentFrame().rollsTaken === 2 && this.currentFrameStrikeOrSpare()) {
-    returnValue = this.currentFrame().thirdRoll(number);
-  } else if (this.currentFrame().rollsTaken === 0) {
-    returnValue = this.currentFrame().firstRoll(number);
-    this.firstBowlUpdate();
+Game.prototype.bowl = function(ball, number) {
+  var rollValue;
+  if (isNaN(number)) {
+    rollValue = this.currentFrame().roll(ball);
   } else {
-    returnValue = this.currentFrame().secondRoll(number);
-    this.secondBowlUpdate();
+    rollValue = this.currentFrame().roll(ball, number);
   };
 
-  return returnValue
+  this.bonusUpdate(rollValue);
+
+  if (this.currentFrame().isComplete()) this.frameIndex++;
+
+  return rollValue;
 };
 
 Game.prototype.currentFrame = function() {
   var i = this.frameIndex;
   return this.frameArray[i];
+};
+
+Game.prototype.bonusUpdate = function(bonus) {
+  var i = this.frameIndex;
+  if (i > 1 && this.twoFramePrevious().isAwaitingBonus()) {
+    this.twoFramePrevious().bonuses.push(bonus);
+  };
+
+  if (i > 0 && this.oneFramePrevious().isAwaitingBonus()) {
+    this.oneFramePrevious().bonuses.push(bonus);
+  };
+
 };
 
 Game.prototype.oneFramePrevious = function() {
@@ -52,48 +54,11 @@ Game.prototype.twoFramePrevious = function() {
   return this.frameArray[i-2];
 };
 
-Game.prototype.isPreviousTwoStrikes = function() {
-  var i = this.frameIndex;
-  if (i < 2) return false;
-  return (this.oneFramePrevious().isStrike && this.twoFramePrevious().isStrike)
-};
-
-Game.prototype.firstBowlUpdate = function() {
-  var i = this.frameIndex
-  var rollScore = this.currentFrame().firstRollScore
-  if (i > 0) {
-    this.oneFramePrevious().spareUpdate(rollScore);
-  };
-
-  if (this.isPreviousTwoStrikes()) {
-    this.twoFramePrevious().strikeUpdate(rollScore + 10);
-  };
-
-  if (rollScore === 10 && i < 9) {
-    this.frameIndex++;
-  };
-
-};
-
-Game.prototype.secondBowlUpdate = function() {
-  var i = this.frameIndex
-  if (i > 0) {
-      this.oneFramePrevious().strikeUpdate(this.currentFrame().totalScore);
-    };
-
-  if (i < 9) this.frameIndex++;
-};
-
-Game.prototype.currentFrameStrikeOrSpare = function() {
-  return this.currentFrame().isStrike || this.currentFrame().isSpare
-};
-
 Game.prototype.totalAllFrames = function() {
   var total = 0;
   for (var i = this.frameArray.length - 1; i >= 0; i--) {
-    total += this.frameArray[i].totalScore
+    total += this.frameArray[i].totalScore();
   };
 
   return total;
 };
-

@@ -5,28 +5,30 @@ describe('ScoreCard', function() {
       scorecard = new ScoreCard();
     });
 
-    it('starts each frame with 10 pins', function () {
-      expect(scorecard.pins).toEqual(10);
-    });
+    describe('Frames', function () {
+      it('starts each frame with 10 pins', function () {
+        expect(scorecard.pins).toEqual(10);
+      });
 
-    it('begins game on frame 1', function () {
-      expect(scorecard.currentFrame).toEqual(1);
-    });
+      it('begins game on frame 1', function () {
+        expect(scorecard.currentFrame).toEqual(1);
+      });
 
-    it('can move to next frame', function() {
-      scorecard.nextFrame();
-      expect(scorecard.currentFrame).toEqual(2);
-    });
+      it('can move to next frame', function() {
+        scorecard.nextFrame();
+        expect(scorecard.currentFrame).toEqual(2);
+      });
 
-    it('moves to next frame after two rolls if not strike', function() {
-      scorecard.rollScore(2);
-      scorecard.rollScore(3);
-      expect(scorecard.currentFrame).toEqual(2);
-    });
+      it('moves to next frame after two rolls if not strike', function() {
+        scorecard.rollScore(2);
+        scorecard.rollScore(3);
+        expect(scorecard.currentFrame).toEqual(2);
+      });
 
-    it('has a maximum of 10 frames', function() {
-      scorecard.currentFrame = 10;
-      expect(function(){scorecard.nextFrame();}).toThrow(new Error('End of game'));
+      it('has a maximum of 10 frames', function() {
+        scorecard.currentFrame = 10;
+        expect(function(){scorecard.nextFrame();}).toThrow(new Error('End of game'));
+      });
     });
 
     it('begins game on roll 1', function () {

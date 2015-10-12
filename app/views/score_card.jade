@@ -1,0 +1,39 @@
+doctype html
+html
+ head
+   meta(charset='utf-8')
+   title Ten Pin Bowling
+   link(href='stylesheets/style.css', type='text/css', rel='stylesheet')
+   link(href='https://fonts.googleapis.com/css?family=Rancho', type='text/css', rel='stylesheet')
+ body
+   h1 Score Card
+   table
+     tr#frames
+       td 1
+       td 2
+       td 3
+       td 4
+       td 5
+       td 6
+       td 7
+       td 8
+       td 9
+       td 10
+     tr#scores
+       td#1 0
+       td#2 0
+       td#3 0
+       td#4 0
+       td#5 0
+       td#6 0
+       td#7 0
+       td#8 0
+       td#9 0
+       td#10 0
+     tr#totals
+   #game_over
+     h2 Game Over!
+     button#reload Play Again!
+ script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+ script(src='javascripts/ScoreCard.js')
+ script(src='javascripts/app.js')

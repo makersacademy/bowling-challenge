@@ -50,7 +50,15 @@ describe("Game", function() {
       game.roll(1);
       expect( function(){ game.roll(10) }).toThrow(new Error("No more pins"));
     });
-
   });
+
+  // describe("strike", function() {
+  //   it("adds a bonus consisting of the number of pins knocked down by the next two rolls unless the player rolls another strike", function() {
+  //     game = new Game;
+  //     game.roll(10);
+
+  //   });
+
+  // });
 
 });

@@ -80,7 +80,7 @@ describe('ScoreCard', function() {
     expect(scoreCard.currentScore).toEqual(28);
   });
 
-  xit('should score 10 spares', function() {
+  it('should score 10 spares', function() {
     for (i = 0; i < 10; i++) {
       scoreCard.ball1 = 9;
       scoreCard.ball2 = 1;
@@ -89,8 +89,28 @@ describe('ScoreCard', function() {
 
     scoreCard.ball1 = 9;
     scoreCard.ball2 = 1;
-    expect(scoreCard.scoreRound()).toEqual('Game over');
+    scoreCard.scoreRound();
+    scoreCard.ball1 = 9;
+    scoreCard.ball2 = 0;
+    scoreCard.scoreRound();
     expect(scoreCard.currentScore).toEqual(190);
+    console.log(scoreCard.scoreArray);
+  });
+
+  xit('should score 10 strikes', function() {
+    for (i = 0; i < 10; i++) {
+      scoreCard.ball1 = 10;
+      scoreCard.ball2 = 0;
+      scoreCard.scoreRound();
+    }
+
+    scoreCard.ball1 = 10;
+    scoreCard.ball2 = 0;
+    scoreCard.scoreRound();
+    scoreCard.ball1 = 10;
+    scoreCard.ball2 = 0;
+    scoreCard.scoreRound();
+    expect(scoreCard.currentScore).toEqual(300);
     console.log(scoreCard.scoreArray);
   });
 

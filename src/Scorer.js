@@ -10,21 +10,17 @@ function ScoreCard() {
 }
 
 ScoreCard.prototype.scoreRound = function() {
-  if (this.currentRound > this.numberOfRounds) {
-    return 'Game over';
-  };
 
   this.checkScore();
   if (this.stat != 1) {
     this.simpleScore();
     this.checkPreviousSpare();
-    if (this.stat ===3 && this.currentRound === 10) {
-      //get bonus ball
-    };
+    this.checkPreviousStrike();
     this.currentRound += 1;
   };
 
-  //console.log(this.message);
+  this.ball1 = 0;
+  this.ball2 = 0;
   return this.checkRound();
 };
 
@@ -32,10 +28,38 @@ ScoreCard.prototype.checkPreviousSpare = function() {
   num = this.currentRound;
   if (num > 1) {
     for (i = 1; i < num; i++) {
+      if (num > 10) { num = 10; };
+
       stat = (this.scoreArray[i][3]);
       if (stat == 3) {
         this.scoreArray[i][2] += this.scoreArray[i + 1][0];
         this.scoreArray[i + 1][2] += this.scoreArray[i + 1][0];
+        this.scoreArray[i][3] = 0;
+        this.currentScore = this.scoreArray[i + 1][2];
+      };
+    }
+  };
+};
+
+ScoreCard.prototype.checkPreviousStrike = function() {
+  num = this.currentRound;
+  if (num > 113) {
+    for (i = 1; i < (num - 1); i++) {
+      if (num > 10) { num = 10; };
+
+      stat = (this.scoreArray[i][3]);
+      if (stat == 2) {
+        this.scoreArray[i][2] += this.scoreArray[i + 1][0];
+        this.scoreArray[i + 1][2] += this.scoreArray[i + 1][0];
+        if (this.scoreArray[i + 1][3] === 2) {
+          this.scoreArray[i][2] += this.scoreArray[i + 2][0];
+          this.scoreArray[i + 1][2] += this.scoreArray[i + 2][0];
+        } else {
+          this.scoreArray[i][2] += this.scoreArray[i + 1][1];
+          this.scoreArray[i + 1][2] += this.scoreArray[i + 1][1];
+        };
+
+
         this.scoreArray[i][3] = 0;
         this.currentScore = this.scoreArray[i + 1][2];
       };
@@ -96,7 +120,7 @@ ScoreCard.prototype.addBalls = function(ball1, ball2) {
 };
 
 ScoreCard.prototype.checkRound = function() {
-  if (this.currentRound > this.numberOfRounds) {
+  if (this.currentRound > this.numberOfRounds && this.stat < 2) {
     return 'Game over';
   } else {
     return this.currentRound;

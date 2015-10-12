@@ -15,16 +15,13 @@ Our challenge for week 5 of Makers Academy was to create a bowling scorecard app
 The rules follow traditional ten-pin rules, as follows;
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins.
-In every frame the player can roll one or two times (or 3 in the last frame).
+In every frame the player can roll one or two times ( 3 in the last frame).
+The bonus for a strike is 2 additional rolls. The bonus for a spare is 1 extra roll.
 The actual score of each frame is the number of pins knocked down plus bonuses for strikes and spares.
-The bonus for a strike is 2 extra roll. The bonus for a spare is 1 extra roll.
-After every frame the 10 pins are reset.
-The last frame behaves differently and a maximum of 3 rolls can be made if a strike or a spare happens.
 
 Installation/Dependencies
 --------------------------
 - Built with Javascript & jQuery running in the browser
 - Tested with Jasmine v2.0 
 
-Other Info:
-------------
+The front end is still in development. To view tests and check current state in the browser `git clone` this repo and `open SpecRunner.html`.

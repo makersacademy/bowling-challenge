@@ -13,7 +13,7 @@ LastFrame.prototype.receiveLastFrameRoll = function(hits) {
     this._calculateLastFrameScore();
   };
   if(this.frameRolls.length == 2 && (this.frameRolls[0] + this.frameRolls[1]) < 10 ) {
-    this._calculateLastFrameScore(); 
+    this._calculateLastFrameScore();
   };
 };
 

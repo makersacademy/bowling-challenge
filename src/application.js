@@ -1,5 +1,5 @@
 $(document).ready(function() {
-game = new Game(Frame, LastFrame);
+  game = new Game(Frame, LastFrame);
 
   $('#game_score').text(game.gameScore);
   $('#new_game').hide();
@@ -22,6 +22,7 @@ game = new Game(Frame, LastFrame);
   );
 
   $('.pin').click(function() {
+
     $('#score_text').text("Score: ")
     var pins = parseInt($.trim($(this).text()));
     game.bowl(pins);
@@ -137,7 +138,6 @@ game = new Game(Frame, LastFrame);
   updateGameScore = function() {
     $('#game_score').text(game.gameScore);
   }
-
 
 
 

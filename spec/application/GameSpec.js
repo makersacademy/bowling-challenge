@@ -5,20 +5,10 @@ describe("Game", function(){
   var firstFrame;
   var secondFrame;
   var thirdFrame;
-  var ballOne;
-  var ballTwo;
-  var ballThree;
 
   beforeEach(function() {
     genericFrame = jasmine.createSpy('genericFrame')
     genericFrame.prototype.setLastFrame = jasmine.createSpy('setLastFrame');
-
-    ballOne = jasmine.createSpyObj('ballOne', ['rolled']);
-    ballOne.isRolled = true
-    ballTwo = jasmine.createSpyObj('ballTwo', ['rolled']);
-    ballTwo.isRolled = true
-    ballThree = jasmine.createSpyObj('ballThree', ['rolled']);
-    ballThree.isRolled = true
 
     frame = jasmine.createSpyObj('frame', ['roll',
       'isComplete',
@@ -73,35 +63,35 @@ describe("Game", function(){
       game.frameArray[0] = firstFrame;
     });
 
-    it("selects the first frame and calls its #roll function with two arguments given", function(){
-      game.bowl(ballOne, 6);
-      expect(game.frameArray[0].roll).toHaveBeenCalledWith(ballOne, 6);
+    it("selects the first frame and calls its #roll function with argument given", function(){
+      game.bowl(6);
+      expect(game.frameArray[0].roll).toHaveBeenCalledWith(6);
     });
 
-    it("selects the first frame and calls its #roll function with one argument given", function(){
-      game.bowl(ballOne);
-      expect(game.frameArray[0].roll).toHaveBeenCalledWith(ballOne);
+    it("selects the first frame and calls its #roll function when no argument given", function(){
+      game.bowl();
+      expect(game.frameArray[0].roll).toHaveBeenCalled();
     });
 
     it("returns the result of the roll", function(){
       firstFrame.roll.and.returnValue(6)
-      expect(game.bowl(ballOne, 6)).toEqual(6);
+      expect(game.bowl(6)).toEqual(6);
     });
 
     it("calls the frame's isComplete function after each roll", function(){
-      game.bowl(ballOne);
+      game.bowl();
       expect(game.frameArray[0].isComplete).toHaveBeenCalled();
     });
 
     it("frame index increases by one if frame complete", function(){
       firstFrame.isComplete.and.returnValue(true)
-      game.bowl(ballOne, 10);
+      game.bowl(10);
       expect(game.frameIndex).toEqual(1);
     });
 
     it("frame index doesn't change if frame NOT complete", function(){
       firstFrame.isComplete.and.returnValue(false)
-      game.bowl(ballOne, 6);
+      game.bowl(6);
       expect(game.frameIndex).toEqual(0);
     });
 
@@ -118,7 +108,7 @@ describe("Game", function(){
         firstFrame.isAwaitingBonus.and.returnValue(true);
         game.frameIndex = 1;
         secondFrame.roll.and.returnValue(6);
-        game.bowl(ballOne, 6);
+        game.bowl(6);
         expect(game.frameArray[0].bonuses).toEqual([6]);
       });
 
@@ -129,7 +119,7 @@ describe("Game", function(){
         secondFrame.bonuses = [];
         game.frameIndex = 2;
         thirdFrame.roll.and.returnValue(6);
-        game.bowl(ballOne, 6);
+        game.bowl(6);
         expect(game.frameArray[0].bonuses).toEqual([10, 6]);
         expect(game.frameArray[1].bonuses).toEqual([6]);
       });
@@ -141,7 +131,7 @@ describe("Game", function(){
         secondFrame.bonuses = [];
         game.frameIndex = 2;
         thirdFrame.roll.and.returnValue(6);
-        game.bowl(ballOne, 6);
+        game.bowl(6);
         expect(game.frameArray[0].bonuses).toEqual([6, 3]);
         expect(game.frameArray[1].bonuses).toEqual([]);
       });

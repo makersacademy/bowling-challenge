@@ -12,13 +12,9 @@ Game.prototype.frameArrayGenerator = function(frameConstructor) {
   this.frameArray[9].setLastFrame();
 };
 
-Game.prototype.bowl = function(ball, number) {
+Game.prototype.bowl = function(number) {
   var rollValue;
-  if (isNaN(number)) {
-    rollValue = this.currentFrame().roll(ball);
-  } else {
-    rollValue = this.currentFrame().roll(ball, number);
-  };
+  rollValue = this.currentFrame().roll(number);
 
   this.bonusUpdate(rollValue);
 

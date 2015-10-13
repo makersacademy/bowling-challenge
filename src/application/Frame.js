@@ -8,19 +8,18 @@ Frame.prototype.setLastFrame = function() {
   this.isLastFrame = true;
 };
 
-Frame.prototype.roll = function(ball, number) {
+Frame.prototype.roll = function(number) {
   var rollScore;
-  if (number >= 0) {
-    rollScore = number
-  } else {
+  if (isNaN(number)) {
     rollScore = this.randomRoll();
+  } else {
+    rollScore = number;
   };
 
   if (!this.rollAllowed(rollScore)) throw new Error("Illegal roll");
-  ball.score = rollScore;
-  this.pinsRemaining -= ball.score;
+  this.pinsRemaining -= rollScore;
   if (this.isLastFrame && this.pinsRemaining == 0) this.pinsRemaining = 10;
-  this.balls.push(ball);
+  this.balls.push(rollScore);
   return rollScore;
 };
 
@@ -55,7 +54,7 @@ Frame.prototype.isLastFrameComplete = function() {
 Frame.prototype.totalScore = function() {
   var number = 0;
   this.balls.forEach(function(ball) {
-    number += ball.score;
+    number += ball;
   });
   this.bonuses.forEach(function(bonus) {
     number += bonus;
@@ -66,12 +65,12 @@ Frame.prototype.totalScore = function() {
 
 Frame.prototype.isStrike = function() {
   if (this.ballsRolled() < 1) return false;
-  return (this.balls[0].score === 10);
+  return (this.balls[0] === 10);
 };
 
 Frame.prototype.isSpare = function() {
   if (this.ballsRolled() < 2) return false;
-  return (this.balls[0].score < 10 && this.balls[0].score + this.balls[1].score === 10);
+  return (this.balls[0] < 10 && this.balls[0] + this.balls[1] === 10);
 };
 
 Frame.prototype.isAwaitingBonus = function() {

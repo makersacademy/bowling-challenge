@@ -1,8 +1,7 @@
 var game = new Game(Frame);
 
 $('#bowl').click(function(){
-  var ball = new Ball();
-  game.bowl(ball);
+  game.bowl();
   scoreRefresh();
 });
 
@@ -13,8 +12,7 @@ $('#game-switch').click(function(){
 $('.manual-input').click(function(){
   var elementID = this.id;
   var roll = parseInt(elementID);
-  var ball = new Ball();
-  game.bowl(ball, roll);
+  game.bowl(roll);
   scoreRefresh();
 });
 
@@ -122,22 +120,22 @@ scoreRefresh = function(){
 
 firstRollDisplay = function(frame) {
   if (frame.ballsRolled() < 1) return '';
-  if (frame.balls[0].score === 10) return 'X';
-  return frame.balls[0].score;
+  if (frame.balls[0] === 10) return 'X';
+  return frame.balls[0];
 };
 
 secondRollDisplay = function(frame) {
   if (frame.ballsRolled() < 2) return '';
   if (frame.isSpare()) return '/';
-  if (frame.isLastFrame && frame.balls[1].score === 10) return 'X';
-  return frame.balls[1].score;
+  if (frame.isLastFrame && frame.balls[1] === 10) return 'X';
+  return frame.balls[1];
 };
 
 thirdRollDisplay = function(frame) {
   if (frame.ballsRolled() < 3) return '';
-  if (frame.balls[2].score === 10 && frame.balls[1].score > 0) return 'X';
-  if (frame.totalScore() === 20 && frame.balls[2].score > 0) return '/';
-  return frame.balls[2].score;
+  if (frame.balls[2] === 10 && frame.balls[1] > 0) return 'X';
+  if (frame.totalScore() === 20 && frame.balls[2] > 0) return '/';
+  return frame.balls[2];
 };
 
 totalDisplay = function(frame) {

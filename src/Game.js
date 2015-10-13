@@ -1,24 +1,25 @@
 function Game() {
   this.TOTAL_FRAMES = 10;
-  this.frames = [];
+  this.gameFrames = [];
   this.currentScore = 0;
 }
 
 Game.prototype.knockDown = function(numberOfPins) {
-  if (this.frames.length === 0 ||
-    this.frames[this.frames.length - 1].pinCount === 0) {
-    this.frames.push(new Frame());
-  } else if (this.frames[this.frames.length - 1].totalOfRolls.length >= 2) {
-    this.frames.push(new Frame());
+  if (this.gameFrames.length === 0 ||
+    this.gameFrames[this.gameFrames.length - 1].pinCount === 0) {
+    this.gameFrames.push(new Frame(this.gameFrames.length));
+  } else if (this.gameFrames[this.gameFrames.length - 1].totalOfRolls >= 2) {
+    this.gameFrames.push(new Frame(this.gameFrames.length));
   }
 
-  this.frames[this.frames.length - 1].removePins(numberOfPins);
+  this.gameFrames[this.gameFrames.length - 1].removePins(numberOfPins);
+  console.log(this.gameFrames);
 };
 
 Game.prototype.totalScore = function() {
-  for (var i = 0; i < this.frames.length; i++) {
-    if (this.frames[i].totalOfRolls.length >= 2) {
-      this.currentScore += this.frames[i].score;
+  for (var i = 0; i < this.gameFrames.length; i++) {
+    if (this.gameFrames[i].totalOfRolls >= 2) {
+      this.currentScore += this.gameFrames[i].score();
     }
   }
 

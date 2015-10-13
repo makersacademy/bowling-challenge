@@ -3,7 +3,7 @@ describe('Frame', function() {
   var frame;
 
   beforeEach(function() {
-    frame = new Frame();
+    frame = new Frame(0);
   });
 
   it('starts with 10 pins standing', function() {
@@ -13,12 +13,12 @@ describe('Frame', function() {
   it('has 2 rolls per frame', function() {
     frame.removePins(7);
     frame.removePins(2);
-    expect(frame.totalOfRolls).toEqual([7, 2]);
+    expect(frame.totalOfRolls).toEqual(2);
   });
 
   it('each roll has a number of knocked down pins', function() {
     frame.removePins(9);
-    expect(frame.totalOfRolls[0]).toEqual(9);
+    expect(frame.totalOfRolls).toEqual(1);
   });
 
   it('doesn\'t allow more than 2 rolls', function() {
@@ -36,7 +36,7 @@ describe('Frame', function() {
 
     it('scores 10 points', function() {
       frame.removePins(10);
-      expect(frame.score).toEqual(10);
+      expect(frame.score()).toEqual(10);
     });
 
     it('they are only allowed one roll', function() {

@@ -46,27 +46,40 @@ Game.prototype.checkStrike = function() {
   }
 };
 
-Game.prototype.strikeCalculator = function() {
-  var i = 1
-  while (this.scoreSheet[this.frameIndex - i].strike == true && this.strikeCount > 1) {
-    this.totalScore += (this.strikeCount * 10); // X X 6 - 0
-    this.strikeCount - 1; // 20 + 30 + 12
-    i -= 1
-    console.log(this.totalScore)
+Game.prototype.strikeCalculator = function()
+{
+  var strikeCounter = this.strikeCount; // 7   -- 30 / 20 / 10 / 60 + 3 * 4 / 72 + 6
+  while (this.strikeCount > 0)
+  {
+    // this.totalScore += this.strikeCount-- * 10; // X X X X X X X 2-2 = 190 /// 290 // needs to be max of 30
+      var frameCalc = this.strikeCount-- * 10;
+        if (frameCalc > 30) {
+          frameCalc = 30;
+        }
+      this.totalScore += frameCalc
   }
 
-  this.totalScore += 10 + (2 * this.currentFrameObject.totalFrameScore); // 42 but should be 45
+  if (strikeCounter > 2) {
+    strikeCounter = 2
+  }
+
+  this.totalScore += (strikeCounter * this.currentFrameObject.totalFrameScore) + this.currentFrameObject.firstRollScore; // 42 but should be 48
 };
 
-Game.prototype.calculateScore = function() {
-  if (this.frameIndex != 0 && this.scoreSheet[this.frameIndex - 1].strike == true && this.scoreSheet[this.frameIndex].strike == false) {
+Game.prototype.calculateScore = function()
+{
+  if (this.frameIndex != 0 &&
+      this.scoreSheet[this.frameIndex - 1].strike == true &&
+      this.scoreSheet[this.frameIndex].strike == false)
+  {
     console.log('wee');
     this.strikeCalculator();
   }  // if on first frame or if there were no strikes/spares
-  else if ((this.frameIndex != 0 || this.frameIndex == 0) && (this.scoreSheet[this.frameIndex].strike == false && this.scoreSheet[this.frameIndex].spare == false)) {
+  else if (this.scoreSheet[this.frameIndex].strike == false &&
+           this.scoreSheet[this.frameIndex].spare == false)
+  {
     this.totalScore += this.currentFrameObject.totalFrameScore;
   }
-
 };
 
 Game.prototype.gameOver = function() {

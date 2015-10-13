@@ -81,3 +81,12 @@ Player.prototype.scoreTracker = function() {
 // // } else if (this.strike == true) {
 // //   this.totalScore = (this.totalScore + ((this.strikeCount * 10) + this.scoreSheet[this.frameCount]));
 // // }
+//
+// Game.prototype.strikeCalculator = function() {
+//   var i = 1;
+//   while (this.scoreSheet[this.frameIndex - i].strike == true && this.strikeCount > 1) {
+//     this.totalScore += (this.strikeCount * 10); // X X 6 - 0
+//     this.strikeCount - 1; // 20 + 30 + 12
+//     i += 1;
+//     console.log(this.totalScore)
+//   }

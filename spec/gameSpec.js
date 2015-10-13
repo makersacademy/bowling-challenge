@@ -72,4 +72,14 @@ describe('Player', function() {
     expect(game.strikeCount).toEqual(0);
   });
 
+  it('should calculate the score correctly if previous four frames were a strike', function() {
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(2);
+    game.rollBall(2);
+    expect(game.totalScore).toEqual(100);
+  });
+
 });

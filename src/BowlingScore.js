@@ -3,7 +3,7 @@ function BowlingScore() {
   this.rolls = [];
   // this.frameScores = [];
   this.bonusScores = [];
-  this.frameTotals = [];
+  this.allFrames = [];
   this.frameTotalScores = 0;
   this.bonusTotalScores = 0;
 };
@@ -32,18 +32,27 @@ BowlingScore.prototype.makeFrame = function() {
 
 BowlingScore.prototype.isStrike = function () {
   for (i = 0; i < this.frameScores.length; i++) {
-    if (this.frameScores[i][1] === null) {
-      return true;
+    if (this.frameScores[i][0] === 10) {
+      if (this.frameScores[i+1][0] === 10) {
+        var total = this.frameScores[i+1][0] + this.frameScores[i+2][0];
+        this.bonusTotalScores += total;
+      } else {
+        var total = this.frameScores[i+1][0] + this.frameScores[i+1][1];
+      this.bonusTotalScores += total;
+      };
     };
   };
+  return false;
 };
 
 BowlingScore.prototype.isSpare = function () {
   for (i = 0; i < this.frameScores.length; i++) {
     if (this.frameScores[i][0] + this.frameScores[i][1] === 10) {
-      return true;
+      var total = this.frameScores[i+1][0];
+      this.bonusTotalScores += total;
     };
   };
+  return false;
 };
 
 BowlingScore.prototype.frameBonus = function () {
@@ -64,20 +73,20 @@ BowlingScore.prototype.frameBonus = function () {
 };
 
 BowlingScore.prototype.frameTotal = function () {
-  for (i = 0; i < this.frameTotals.length; i++) {
-    this.frameTotals.push(this.frameScores[i][0] + this.frameScores[i][1]);
+  for (i = 0; i < this.frameScores.length; i++) {
+    var total = this.frameScores[i][0] + this.frameScores[i][1]
+    this.frameTotalScores += total;
   };
 };
 
-BowlingScore.prototype.frameTotalScore = function () {
-  var total = this.frameTotals.reduce(function(x,y){return (x + y)}, 0);
-  this.frameTotalScores = total;
-};
-
-BowlingScore.prototype.bonusTotalScore = function () {
-  var total = this.bonusScores.reduce(function(x,y){return (x + y)})
-  this.bonusTotalScores = total;
-};
+// BowlingScore.prototype.frameTotalScore = function () {
+//   this.frameTotalScores = this.frameScores.reduce(function(x,y){return (x + y)});
+// };
+//
+// BowlingScore.prototype.bonusTotalScore = function () {
+//   var total = this.bonusScores.reduce(function(x,y){return (x + y)})
+//   this.bonusTotalScores = total;
+// };
 
 
 BowlingScore.prototype.scores = function () {
@@ -89,51 +98,3 @@ BowlingScore.prototype.scores = function () {
   console.log(this.bonusTotalScores);
   return (this.frameTotalScores + this.bonusTotalScores);
 };
-
-// BowlingScore.prototype.update = function (newRoll) {
-//   this.roll(newRoll);
-//   this.makeFrame();
-//   this.frameBonus();
-//   this.frameTotal();
-//   this.frameTotalScore()
-//   this.bonusTotalScore();
-//   this.scores();
-// };
-
-// BowlingScore.prototype.isStrike = function () {
-//   for (i = 0; i < this.frameScores.length; i++) {
-//     if (this.frameScores[i][1] === null) {
-//       return true;
-//     };
-//   };
-// };
-
-// BowlingScore.prototype.isSpare = function () {
-//   for (i = 0; i < this.frameScores.length; i++) {
-//     if (this.frameScores[i][0] + this.frameScores[i][1] === 10) {
-//       return true;
-//     };
-//   };
-// };
-
-// BowlingScore.prototype.Strike = function () {
-//   for (i = 0; i < this.frameScores.length; i++) {
-//     if (this.frameScores[i][0] === 10) {
-//       if (this.frameScores[i+1][0] === 10) {
-//         this.bonusScores.push(this.frameScores[i+1][0]);
-//         this.bonusScores.push(this.frameScores[i+2][0]);
-//       } else {
-//         this.bonusScores.push(this.frameScores[i+1][0]);
-//         this.bonusScores.push(this.frameScores[i+1][1]);
-//       };
-//     };
-//   }
-// };
-//
-// BowlingScore.prototype.Spare = function () {
-//   for (i = 0; i < this.frameScores.length; i++) {
-//     if (this.frameScores[i][0] + this.frameScores[i][1] === 10) {
-//       this.bonusScores.push(this.frameScores[i+1][0]);
-//     };
-//   };
-// };

@@ -38,21 +38,20 @@ BowlingScore.prototype.isStrike = function () {
         this.bonusTotalScores += total;
       } else {
         var total = this.frameScores[i+1][0] + this.frameScores[i+1][1];
-      this.bonusTotalScores += total;
-      };
+        this.bonusTotalScores += total;
+      }
     };
+    return true;
   };
-  return false;
 };
 
 BowlingScore.prototype.isSpare = function () {
-  for (i = 0; i < this.frameScores.length; i++) {
+  for (i = 0; i < this.frameScores.length -1; i++) {
     if (this.frameScores[i][0] + this.frameScores[i][1] === 10) {
       var total = this.frameScores[i+1][0];
       this.bonusTotalScores += total;
     };
-  };
-  return false;
+  }; return true;
 };
 
 BowlingScore.prototype.frameBonus = function () {

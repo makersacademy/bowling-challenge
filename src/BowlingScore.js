@@ -35,7 +35,7 @@ BowlingScore.prototype.createFrameTotals = function() {
 
 BowlingScore.prototype.createGameTotal = function() {
   this.gameTotal = 0;
-  if (this.frameTotals.length < 10) {var limit = this.frameTotals.length} else {var limit = 10};
+  var limit = this.frameTotals.length < 10 ? this.frameTotals.length : 10;
   for(var i = 0; i < limit; i+=1) {
     this.gameTotal += this.frameTotals[i];
   };
@@ -91,25 +91,4 @@ var _flattenArray = function(array) {
 
 var _sumArray = function(array) {
     return array.reduce(function(a, b) {return a + b;})
-};
-
-
-
-
-BowlingScore.prototype._isStrikeOld = function(i) {
-  return this.frameScores[i][0] === 10;
-};
-
-BowlingScore.prototype._isSpareOld = function(i) {
-  return (this._isStrike(i) === false) && (this.frameScores[i][0] + this.frameScores[i][1] === 10);
-};
-
-BowlingScore.prototype._addFrameBonus_Old = function(i,bonusPool) {
-  if (this._isStrikeOld(i)) {
-    this.frameBonus.push(bonusPool[0] + bonusPool[1]);
-  } else if (this._isSpareOld(i)) {
-    this.frameBonus.push(bonusPool[0]);
-  } else {
-    this.frameBonus.push(0);
-  };
 };

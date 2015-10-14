@@ -12,7 +12,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 ## Two methods
 I have ended up writing two completely different _solutions_ to this challenge (yes I loved this challenge _that_ much!). The first solution I will refer to as _first version_ or _updater version_. The second solution I will refer to as _second version_ or _writer version_.
 
-## Idea the _first version_ or _updater version_
+## Idea of the _first version_ or _updater version_
 I started to explore the scoring mechanism by first writing the scoring logic in ruby, where the scoring is done in three stages.
 
 * Collecting frame rounds in a hash of frame arrays.
@@ -23,7 +23,7 @@ The initial mocking up in ruby helped me to formulate the somewhat different app
 
 The application logic then uses the _updater_ to update the html scoreboard as a game progress, frame10 is deal with as if it is a normal frame, only difference is that application logic does not display frame11, frame12 etc.  This feature means the _updater_ to be used to update a game scoreboard of any number of frames other than 10.
 
-## Idea the _second version_ or _writer version_
+## Idea of the _second version_ or _writer version_
 
 The main feature of the first version is to be as _efficient_ as possible in terms of storing as a few things as possible from one round to the next.  Imagine we had a bowling game of 10000 frames, and imagine we already had the similar html score card to accept those frame scores as they come in, this is where the _updater version_ will do very well, since it will still only be updating up-to three frames each round.  Where as with my initial ruby mockup, we will be passing around unwieldy large hashes with thousands of key value pairs.  _However_, in our normal world, a game of bowling consists of 10 frames only! So I thought, the first ruby mockup seemed more elegant, so why not give it life by writing it in javascript!
 

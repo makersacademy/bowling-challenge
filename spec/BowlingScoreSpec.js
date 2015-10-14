@@ -38,6 +38,7 @@ describe ("BowlingScore", function() {
     it("knows if frame is not a spare", function () {
       game.frameScores = [[6,3]];
       expect(game.isSpare(game.frameScores[0])).toBe(false);
+      expect(game.isNothing(game.frameScores[0])).toBe(true);
     });
 
     it("adds current bonus", function () {
@@ -46,21 +47,6 @@ describe ("BowlingScore", function() {
       expect(game.bonusTotalScores).toEqual(7);
     });
 
-    // it("adds current total", function () {
-    //   game.frameScores = [[7,3],[3,3]];
-    //   game.frameTotal();
-    //   expect(frameTotal.toEqual(16));
-    // });
-    // it("adds current total", function () {
-    //   game.frameScores = [[7,3],[3,3]];
-    //   game.frameTotal();
-    //   expect(frameTotal.toEqual(16));
-    // });
-    // it("adds current total", function () {
-    //   game.frameScores = [[7,3],[3,3]];
-    //   game.frameTotal();
-    //   expect(game.frameTotal).toEqual(16);
-    // });
     it("adds current total", function () {
       // game.frameScores = [[7,3],[3,3]];
       game.rolls = [7,2,4,5]
@@ -80,6 +66,7 @@ describe ("BowlingScore", function() {
      it("knows if frame is not a strike", function () {
        game.frameScores = [[4,1]];
        expect(game.isStrike(game.frameScores[0])).toBe(false);
+       expect(game.isNothing(game.frameScores[0])).toBe(true);
      });
 
      it("adds current bonus", function () {
@@ -108,8 +95,9 @@ describe ("BowlingScore", function() {
 
     it("bonusTotalScore is the sum of the bonus scores", function () {
       game.frameScores = [[10,null],[9,0],[5,5],[6,2],[7,3],[4,6],[2,6],[7,1],[8,1],[6,2]];
-      game.whenSpare();
-      game.whenStrike();
+      // game.whenSpare();
+      // game.whenStrike();
+      game.addBonus();
       expect(game.bonusTotalScores).toEqual(30);
     });
 

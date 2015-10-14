@@ -1,8 +1,20 @@
 var game = new Game(Frame);
 
 $('#bowl').click(function(){
-  game.bowl();
+   var i = game.frameIndex;
+  var ballIndex = game.frameArray[i].ballsRolled();
+  var pins = game.frameArray[i].pinsRemaining;
+  var currentFrame = game.frameArray[i];
+
+  var score = game.bowl();
   scoreRefresh();
+
+  if (score === pins && i == 9) {
+    celebrateLastFrame(ballIndex, currentFrame);
+  } else if (score === pins) {
+    celebrate(ballIndex);
+  };
+
 });
 
 $('#game-switch').click(function(){
@@ -12,8 +24,21 @@ $('#game-switch').click(function(){
 $('.manual-input').click(function(){
   var elementID = this.id;
   var roll = parseInt(elementID);
-  game.bowl(roll);
+
+  var i = game.frameIndex;
+  var ballIndex = game.frameArray[i].ballsRolled();
+  var pins = game.frameArray[i].pinsRemaining;
+  var currentFrame = game.frameArray[i];
+
+  var score = game.bowl(roll);
   scoreRefresh();
+
+  if (score === pins && i == 9) {
+    celebrateLastFrame(ballIndex, currentFrame);
+  } else if (score === pins) {
+    celebrate(ballIndex);
+  };
+
 });
 
 $('#reset').click(function(){
@@ -143,6 +168,34 @@ totalDisplay = function(frame) {
   if (!frame.isComplete()) return '';
   if (frame.isAwaitingBonus()) return '';
   return frame.totalScore();
+};
+
+celebrate = function(ballIndex) {
+  var shout = "SPARE!";
+  if (ballIndex === 0) {
+    shout = "STRIKE!";
+  };
+
+  $('#celebration').text(shout);
+  $('#celebration').animate({'font-size': '200px'},'slow');
+  $('#celebration').animate({'font-size': '0'},'slow')
+};
+
+celebrateLastFrame = function(ballIndex, frame) {
+  var shout = "SPARE!";
+  if (ballIndex === 0) {
+    shout = "STRIKE!";
+  } else if (ballIndex === 1 && frame.balls[0] === 10) {
+    shout = "STRIKE!"
+  } else if (ballIndex === 2 && (frame.balls[0] + frame.balls[1])%10 ===0) {
+    shout = "STRIKE!"
+  };
+
+  if (game.totalAllFrames() === 300) shout = "PERFECT GAME!"
+
+  $('#celebration').text(shout);
+  $('#celebration').animate({'font-size': '200px'},'slow');
+  $('#celebration').animate({'font-size': '0'},'slow')
 };
 
 createHTMLTable = function(){

@@ -138,6 +138,12 @@ div#logo {
         border: none;
       }
 
+  #celebration {
+    position: relative;
+    z-index: 10;
+    font-size: 0;
+  }
+
 button#bowl {
     position: relative;
     width: 80%;

@@ -167,7 +167,7 @@ describe("BowlingScore",function() {
     it("computes total for a normal game", function() {
       expect(game3.gameTotal).toEqual(149);
     });
-    
+
   });
 
 });

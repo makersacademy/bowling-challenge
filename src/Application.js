@@ -40,15 +40,15 @@ var htmlWriter = function(score){
   };
 
   var scoreTotal = 0;
-  for(i = 1; i < 11; i++){
+  for(var i = 1; i < 11; i++){
     scoreTotal += Number(document.getElementById('f' + i.toString()).innerHTML);
   };
   document.getElementById('total_score').innerHTML = "Total Score "+ scoreTotal.toString();
 
 };
 
-document.addEventListener('DOMContentLoaded', function() {
-  for(i = 0; i < 11; i++){
+$(document).ready(function() {
+  for(var i = 0; i < 11; i++){
     document.getElementById('btn' + i.toString()).addEventListener("click", function() {
       htmlWriter(Number(this.id.replace('btn', '')));
     });

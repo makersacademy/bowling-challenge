@@ -2,7 +2,7 @@ describe('Application of Bowling Score Updater', function() {
 
   beforeEach(function(){
     jasmine.getFixtures().fixturesPath = '.';
-    loadFixtures('index.html');
+    loadFixtures('index2.html');
     $.holdReady(false);
   });
 
@@ -38,13 +38,13 @@ describe('Application of Bowling Score Updater', function() {
     $("#btn10").click();
     $("#btn10").click();
     $("#btn6").click();
-    expect('#round4').toContainText('X');
+    expect('#f2r2').toContainText('X');
   });
 
   it('displays spare / after a spare', function(){
     $("#btn4").click();
     $("#btn6").click();
-    expect('#round2').toContainText('/');
+    expect('#f1r2').toContainText('/');
   });
 
   it('ignores input score which is more than pins avaible', function(){

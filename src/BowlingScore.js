@@ -9,7 +9,7 @@ BowlingScore.prototype.addRoundToRawScores = function(score) {
 BowlingScore.prototype.createFrameScores = function() {
   this.frameScores = [];
   if (this.frameScores.length === 0) {this.frameScores.push([this.rawScores[0]])};
-  for(i = 1; i < this.rawScores.length; i+=1) {
+  for(var i = 1; i < this.rawScores.length; i+=1) {
     if ((this.frameScores[this.frameScores.length - 1]).length === 1 && this.frameScores[this.frameScores.length - 1][0] !== 10) {
       (this.frameScores[this.frameScores.length - 1]).push(this.rawScores[i]);
     } else {
@@ -20,7 +20,7 @@ BowlingScore.prototype.createFrameScores = function() {
 
 BowlingScore.prototype.createFrameBonus = function() {
   this.frameBonus = [];
-  for(i = 0; i < this.frameScores.length; i+=1) {
+  for(var i = 0; i < this.frameScores.length; i+=1) {
     if (this.frameScores[i+1] === undefined) {
       var bonus_pool = [0,0];
     } else if (this.frameScores[i+2] === undefined) {
@@ -41,7 +41,7 @@ BowlingScore.prototype.createFrameBonus = function() {
 
 BowlingScore.prototype.createFrameTotals = function() {
   this.frameTotals = [];
-  for(i = 0; i < this.frameScores.length; i+=1) {
+  for(var i = 0; i < this.frameScores.length; i+=1) {
     var total = [].concat.apply([], [this.frameScores[i],this.frameBonus[i]]);
     this.frameTotals.push(total.reduce(function(a, b) {return a + b;}));
   };
@@ -50,7 +50,7 @@ BowlingScore.prototype.createFrameTotals = function() {
 BowlingScore.prototype.createGameTotal = function() {
   this.gameTotal = 0;
   if (this.frameTotals.length < 10) {var limit = this.frameTotals.length} else {var limit = 10};
-  for(i = 0; i < limit; i+=1) {
+  for(var i = 0; i < limit; i+=1) {
     this.gameTotal += this.frameTotals[i];
   };
 };

@@ -79,32 +79,17 @@ describe("BowlingScore",function() {
     });
   });
 
-  // describe("newRound", function() {
-  //   var newGame = new BowlingScore();
-  //   newGame.newRound(9);
-  //   newGame.newRound(1);
-  //   newGame.newRound(2);
-  //   newGame.newRound(3);
-  //   newGame.newRound(10);
-  //   newGame.newRound(0);
-  //   newGame.newRound(10);
-  //   newGame.newRound(10);
-  //   newGame.newRound(3);
-  //   it("computes frame scores", function() {
-  //
-  //   });
-  //
-  //   it("computes frame bonuses", function() {
-  //
-  //   });
-  //
-  //   it("computes frame totals", function() {
-  //
-  //   });
-  //
-  //   it("computes game total", function() {
-  //
-  //   });
-  // });
+  describe("newRound", function() {
+    it("computes total for a perfect game", function() {
+      var newGame = new BowlingScore();
+      for(var i = 1; i < 13; i+=1) {newGame.newRound(10);};
+      expect(newGame.gameTotal).toEqual(300);
+    });
+    it("computes total for a gutter game", function() {
+      var newGame = new BowlingScore();
+      for(var i = 1; i < 21; i+=1) {newGame.newRound(0);};
+      expect(newGame.gameTotal).toEqual(0);
+    });
+  });
 
 });

@@ -7,15 +7,19 @@ BowlingScore.prototype.addRoundToRawScores = function(score) {
 };
 
 BowlingScore.prototype.createFrameScores = function() {
-  this.frameScores = [];
-  if (this.frameScores.length === 0) {this.frameScores.push([this.rawScores[0]])};
+  this.frameScores = [[this.rawScores[0]]];
   for(var i = 1; i < this.rawScores.length; i+=1) {
-    if ((this.frameScores[this.frameScores.length - 1]).length === 1 && this.frameScores[this.frameScores.length - 1][0] !== 10) {
+    if (this._isItOneRoundPlayedAndNotStrike()) {
       (this.frameScores[this.frameScores.length - 1]).push(this.rawScores[i]);
     } else {
       this.frameScores.push([this.rawScores[i]]);
     };
   };
+};
+
+BowlingScore.prototype._isItOneRoundPlayedAndNotStrike = function() {
+  return (this.frameScores[this.frameScores.length - 1]).length === 1 &&
+          this.frameScores[this.frameScores.length - 1][0] !== 10
 };
 
 BowlingScore.prototype.createFrameBonus = function() {

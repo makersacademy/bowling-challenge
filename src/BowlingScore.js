@@ -17,29 +17,11 @@ BowlingScore.prototype.createFrameScores = function() {
   };
 };
 
-BowlingScore.prototype._isItOneRoundPlayedAndNotStrike = function() {
-  return (this.frameScores[this.frameScores.length - 1]).length === 1 &&
-          this.frameScores[this.frameScores.length - 1][0] !== 10
-};
-
 BowlingScore.prototype.createFrameBonus = function() {
   this.frameBonus = [];
   for(var i = 0; i < this.frameScores.length; i+=1) {
-    if (this.frameScores[i+1] === undefined) {
-      var bonus_pool = [0,0];
-    } else if (this.frameScores[i+2] === undefined) {
-      var bonus_pool = [this.frameScores[i+1],0];
-      bonus_pool = [].concat.apply([], bonus_pool);
-    } else {
-      var bonus_pool = [].concat.apply([],[this.frameScores[i+1],this.frameScores[i+2]]);
-    };
-    if (this.frameScores[i][0] === 10) {
-      this.frameBonus.push(bonus_pool[0] + bonus_pool[1]);
-    } else if (this.frameScores[i][0] + this.frameScores[i][1] === 10) {
-      this.frameBonus.push(bonus_pool[0]);
-    } else {
-      this.frameBonus.push(0);
-    };
+    var bonusPool = this._frameBonusPool(i);
+    this._addFrameBonus(i,bonusPool);
   };
 };
 
@@ -67,9 +49,63 @@ BowlingScore.prototype.newRound = function(score) {
   this.createGameTotal();
 };
 
-//
-// [2,4,2,3,6,2]
-//
-// {f1:[2,4],f2:[2,3]}
-//
-// [[2,4],[2,3],[10]]
+BowlingScore.prototype._isItOneRoundPlayedAndNotStrike = function() {
+  return (this.frameScores[this.frameScores.length - 1]).length === 1 &&
+          this.frameScores[this.frameScores.length - 1][0] !== 10
+};
+
+BowlingScore.prototype._frameBonusPool = function(i) {
+  if (this.frameScores[i+1] === undefined) {
+    return [0,0];
+  } else if (this.frameScores[i+2] === undefined) {
+    return _flattenArray([this.frameScores[i+1],0]);
+  } else {
+    return _flattenArray([this.frameScores[i+1],this.frameScores[i+2]]);
+  };
+};
+
+BowlingScore.prototype._addFrameBonus = function(i,bonusPool) {
+  if (this._isStrike(i)) {this.frameBonus.push(bonusPool[0] + bonusPool[1]);};
+  if (this._isSpare(i)) {this.frameBonus.push(bonusPool[0]);};
+  if (this._isNoBonus(i)) {this.frameBonus.push(0);};
+};
+
+BowlingScore.prototype._isStrike = function(i) {
+  return this.frameScores[i][0] === 10;
+};
+
+BowlingScore.prototype._isSpare = function(i) {
+  if (this._isStrike(i) || this.frameScores[i].length === 1) {return false;};
+  if (this.frameScores[i][0] + this.frameScores[i][1] === 10) {return true;};
+  return false;
+};
+
+BowlingScore.prototype._isNoBonus = function(i) {
+  if (this._isStrike(i) || this._isSpare(i)) {return false;};
+  return true;
+};
+
+var _flattenArray = function(array) {
+  return [].concat.apply([], array);
+};
+
+
+
+
+BowlingScore.prototype._isStrikeOld = function(i) {
+  return this.frameScores[i][0] === 10;
+};
+
+BowlingScore.prototype._isSpareOld = function(i) {
+  return (this._isStrike(i) === false) && (this.frameScores[i][0] + this.frameScores[i][1] === 10);
+};
+
+BowlingScore.prototype._addFrameBonus_Old = function(i,bonusPool) {
+  if (this._isStrikeOld(i)) {
+    this.frameBonus.push(bonusPool[0] + bonusPool[1]);
+  } else if (this._isSpareOld(i)) {
+    this.frameBonus.push(bonusPool[0]);
+  } else {
+    this.frameBonus.push(0);
+  };
+};

@@ -49,9 +49,9 @@ $ ruby server.rb
 * On Chrome go to URL http://localhost:4567/SpecRunner.html to see the tests.
 
 * Current test results
-![Current test result page1](images/test1)
-![Current test result page2](images/test2)
-![Current test result page3](images/test3)
+![Current test result page1](images/test1.png)
+![Current test result page2](images/test2.png)
+![Current test result page3](images/test3.png)
 
 ## To Do
 * Refactor the _updater version_ 's application methods.

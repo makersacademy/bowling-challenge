@@ -44,7 +44,7 @@ describe ("BowlingScore", function() {
 
     it("adds current bonus", function () {
       game.frameScores = [[7,3],[4,6],[3,3]];
-      game.isSpare();
+      game.spareBonusAndFrame();
       expect(game.bonusTotalScores).toEqual(7);
     });
 
@@ -88,7 +88,7 @@ describe ("BowlingScore", function() {
 
      it("adds current bonus", function () {
        game.frameScores = [[10,null],[10,null],[3,3]];
-       game.isStrike();
+       game.strikeBonusAndFrame();
        expect(game.bonusTotalScores).toEqual(19);
      });
 

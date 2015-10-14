@@ -34,6 +34,19 @@ BowlingScore.prototype.isStrike = function () {
   for (i = 0; i < this.frameScores.length; i++) {
     if (this.frameScores[i][0] === 10) {
       if (this.frameScores[i+1][0] === 10) {
+        return true;
+      } else {
+        return true;
+      };
+    };
+    return false;
+  };
+};
+
+BowlingScore.prototype.strikeBonusAndFrame = function () {
+  for (i = 0; i < this.frameScores.length; i++) {
+    if (this.frameScores[i][0] === 10) {
+      if (this.frameScores[i+1][0] === 10) {
         var total = this.frameScores[i+1][0] + this.frameScores[i+2][0];
         this.bonusTotalScores += total;
       } else {
@@ -41,17 +54,25 @@ BowlingScore.prototype.isStrike = function () {
         this.bonusTotalScores += total;
       }
     };
-    return true;
   };
 };
 
 BowlingScore.prototype.isSpare = function () {
   for (i = 0; i < this.frameScores.length -1; i++) {
     if (this.frameScores[i][0] + this.frameScores[i][1] === 10) {
+      return true;
+    };
+    return false;
+  };
+};
+
+BowlingScore.prototype.spareBonusAndFrame = function () {
+  for (i = 0; i < this.frameScores.length -1; i++) {
+    if (this.frameScores[i][0] + this.frameScores[i][1] === 10) {
       var total = this.frameScores[i+1][0];
       this.bonusTotalScores += total;
     };
-  }; return true;
+  };
 };
 
 BowlingScore.prototype.frameBonus = function () {
@@ -77,16 +98,6 @@ BowlingScore.prototype.frameTotal = function () {
     this.frameTotalScores += total;
   };
 };
-
-// BowlingScore.prototype.frameTotalScore = function () {
-//   this.frameTotalScores = this.frameScores.reduce(function(x,y){return (x + y)});
-// };
-//
-// BowlingScore.prototype.bonusTotalScore = function () {
-//   var total = this.bonusScores.reduce(function(x,y){return (x + y)})
-//   this.bonusTotalScores = total;
-// };
-
 
 BowlingScore.prototype.scores = function () {
   return game.frameBonus() + game.frameTotal();

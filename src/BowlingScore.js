@@ -28,8 +28,8 @@ BowlingScore.prototype.createFrameBonus = function() {
 BowlingScore.prototype.createFrameTotals = function() {
   this.frameTotals = [];
   for(var i = 0; i < this.frameScores.length; i+=1) {
-    var total = [].concat.apply([], [this.frameScores[i],this.frameBonus[i]]);
-    this.frameTotals.push(total.reduce(function(a, b) {return a + b;}));
+    var total = _flattenArray([this.frameScores[i],this.frameBonus[i]]);
+    this.frameTotals.push(_sumArray(total));
   };
 };
 
@@ -87,6 +87,10 @@ BowlingScore.prototype._isNoBonus = function(i) {
 
 var _flattenArray = function(array) {
   return [].concat.apply([], array);
+};
+
+var _sumArray = function(array) {
+    return array.reduce(function(a, b) {return a + b;})
 };
 
 

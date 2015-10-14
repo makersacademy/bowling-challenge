@@ -41,13 +41,9 @@ Application2.js uses this engine to populate _everything_ each time a new scores
 * Refactor the _updater version_ 's application methods.
 * Fix the display of 10th frame for _updater version_ to sometimes show 2 rounds, sometimes show 3.  Currently always show 3, so it does not show rounds correctly when not scoring a strike or spare for the last frame.  However, frame totals and game totals are correctly shown.
 * Continue with on a front-end that uses divs rather than tables (indexdivs.html).
+* Fix CI configurations.
 
 CI
 --
 
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
-
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.
+Having problems configuring CI, since the order in which the model files and spec files are load matters a great deal.  I could rename them to force the ordering the way I want it, but I prefer to find a more _proper solution_ - load them in one file at a time (not sure how to do that).

@@ -37,6 +37,22 @@ Thus the _second version_ or _writer version_ was born (BowlingScore.js and Appl
 
 Application2.js uses this engine to populate _everything_ each time a new scores for a new round comes in.  Validation of new score occurs in application, the new score is immediately checked for validation (need to be less than or equal to number of pins left of a frame), if invalid, the function terminates immediately - before the score goes into the game engine.
 
+## Tests
+To run the tests:
+* clone the repo
+* change into the repo directory
+* run
+```sh
+$ bundle install
+$ ruby server.rb
+```
+* On Chrome go to URL http://localhost:4567/SpecRunner.html to see the tests.
+
+* Current test results
+![Current test result page1](images/test1)
+![Current test result page2](images/test2)
+![Current test result page3](images/test3)
+
 ## To Do
 * Refactor the _updater version_ 's application methods.
 * Fix the display of 10th frame for _updater version_ to sometimes show 2 rounds, sometimes show 3.  Currently always show 3, so it does not show rounds correctly when not scoring a strike or spare for the last frame.  However, frame totals and game totals are correctly shown.

@@ -70,17 +70,43 @@ describe('Application of Bowling Score Updater', function() {
   });
 
   it('displays game total of 0 after a gutter game', function(){
-    for(var i = 1; i < 21; i++){
-      $("#btn0").click();
-    };
+    for(var i = 1; i < 21; i++){$("#btn0").click();};
     expect('#total_score').toContainText('0');
   });
 
   it('displays game total of 300 after a perfect game', function(){
-    for(var i = 1; i < 13; i++){
-      $("#btn10").click();
-    };
+    for(var i = 1; i < 13; i++){$("#btn10").click();};
     expect('#total_score').toContainText('300');
+  });
+
+  it('displays tenth frame spare round 2 correctly', function(){
+    for(var i = 1; i < 10; i++){$("#btn10").click();};
+    $("#btn6").click();
+    $("#btn4").click();
+    expect('#f10r2').toContainText('/');
+  });
+
+  it('displays tenth frame spare round 3 correctly', function(){
+    for(var i = 1; i < 10; i++){$("#btn10").click();};
+    $("#btn6").click();
+    $("#btn4").click();
+    $("#btn7").click();
+    expect('#f10r3').toContainText('7');
+  });
+
+  it('displays tenth frame strike round 1 correctly', function(){
+    for(var i = 1; i < 13; i++){$("#btn10").click();};
+    expect('#f10r1').toContainText('X');
+  });
+
+  it('displays tenth frame strike round 2 correctly', function(){
+    for(var i = 1; i < 13; i++){$("#btn10").click();};
+    expect('#f10r2').toContainText('10');
+  });
+
+  it('displays tenth frame strike round 3 correctly', function(){
+    for(var i = 1; i < 13; i++){$("#btn10").click();};
+    expect('#f10r3').toContainText('10');
   });
 
 });

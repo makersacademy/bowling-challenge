@@ -55,9 +55,9 @@ BowlingScore.prototype._isItOneRoundPlayedAndNotStrike = function() {
 };
 
 BowlingScore.prototype._frameBonusPool = function(i) {
-  if (this.frameScores[i+1] === undefined) {
+  if (!this.frameScores[i+1]) {
     return [0,0];
-  } else if (this.frameScores[i+2] === undefined) {
+  } else if (!this.frameScores[i+2]) {
     return _flattenArray([this.frameScores[i+1],0]);
   } else {
     return _flattenArray([this.frameScores[i+1],this.frameScores[i+2]]);

@@ -1,0 +1,124 @@
+#container {
+  margin-top: auto;
+  background-color: white;
+  color: lightgrey;
+  height: 180px;
+  width: 1150px;
+  margin-left: auto;
+  margin-right: auto;
+  /*margin-bottom: auto;*/
+  text-align: center;
+}
+
+#title1 {
+  padding-bottom: 50px;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 40px;
+  color: lightblue;
+}
+
+#total_score {
+  padding-bottom: 50px;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 40px;
+  color: lightblue;
+}
+
+.buttons {
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 20px;
+  color: black;
+  padding-bottom: 40px;
+  height: 120px;
+  width: 100%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.btn {
+  font-size: 30px;
+  background-color: lightblue;
+  padding: 10px;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  color: grey;
+  background-color: lightgrey;
+}
+
+.frames {
+  font-family: "Arial Black", Gadget, sans-serif;
+  display: inline-block;
+  border: solid 2px white;
+  line-height:50px;
+  font-size: 18px;
+  color: white;
+  background-color: lightblue;
+  height: 50px;
+  width: 100px;
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.frames_total {
+  font-family: "Arial Black", Gadget, sans-serif;
+  display: inline-block;
+  border: solid 2px white;
+  line-height:50px;
+  font-size: 18px;
+  color: white;
+  background-color: lightblue;
+  height: 50px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.frame_container {
+  display: inline-block;
+  background-color: lightblue;
+  height: 175px;
+  width: 110px;
+}
+
+.rounds {
+  font-family: "Arial Black", Gadget, sans-serif;
+  display: inline-block;
+  border: solid 2px white;
+  line-height:50px;
+  font-size: 18px;
+  color: white;
+  background-color: lightblue;
+  height: 50px;
+  width: 46px;
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.last_rounds {
+  font-family: "Arial Black", Gadget, sans-serif;
+  display: inline-block;
+  border: solid 2px white;
+  line-height:50px;
+  font-size: 18px;
+  color: white;
+  background-color: lightblue;
+  height: 50px;
+  width: 28px;
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}

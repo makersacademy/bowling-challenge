@@ -26,6 +26,7 @@ BowlingScore.prototype.createFrameBonus = function() {
 };
 
 BowlingScore.prototype.createFrameTotals = function() {
+  // turn this into reduce
   this.frameTotals = [];
   for(var i = 0; i < this.frameScores.length; i+=1) {
     var total = _flattenArray([this.frameScores[i],this.frameBonus[i]]);

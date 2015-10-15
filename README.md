@@ -58,6 +58,8 @@ __Current test results__
 * Fix the display of 10th frame for _updater version_ to sometimes show 2 rounds, sometimes show 3.  Currently always show 3, so it does not show rounds correctly when not scoring a strike or spare for the last frame.  However, frame totals and game totals are correctly shown.
 * Continue with on a front-end that uses divs rather than tables (indexdivs.html).
 * Fix CI configurations.
+* Use reduce method to refactor _writer version_
+* Write a middle layer that returns the precise display output for _writer version_ before the display data is passed onto the html writer.
 
 CI
 --

@@ -36,7 +36,7 @@ describe("BowlingScoreUpdater", function() {
         prevPrevFrameTotal:24, prevPrevFrameBonusRounds:0, frameRoundsLeft:1});
     });
   });
-  //
+
   describe("newRound", function(){
     it("correctly calculates scores after 1 round",function(){
       newUpdater = new BowlingScoreUpdater();

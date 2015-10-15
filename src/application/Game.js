@@ -15,46 +15,37 @@ Game.prototype.frameArrayGenerator = function(frameConstructor) {
 Game.prototype.bowl = function(number) {
   var rollValue;
   rollValue = this.currentFrame().roll(number);
-
   this.bonusUpdate(rollValue);
-
   if (this.currentFrame().isComplete()) this.frameIndex++;
-
   return rollValue;
 };
 
 Game.prototype.currentFrame = function() {
-  var i = this.frameIndex;
-  return this.frameArray[i];
+  return this.frameArray[this.frameIndex ];
+};
+
+Game.prototype.secondToLastFrame = function() {
+  return this.frameArray[8];
 };
 
 Game.prototype.bonusUpdate = function(bonus) {
   var i = this.frameIndex;
-  if (i > 1 && this.twoFramePrevious().isAwaitingBonus()) {
-    this.twoFramePrevious().bonuses.push(bonus);
-  };
-
-  if (i > 0 && this.oneFramePrevious().isAwaitingBonus()) {
-    this.oneFramePrevious().bonuses.push(bonus);
-  };
+  this.frameArray.forEach(function(frame, index){
+    if (frame.isAwaitingBonus() && index != i) frame.bonuses.push(bonus);
+  });
 
 };
 
 Game.prototype.oneFramePrevious = function() {
-  var i = this.frameIndex;
-  return this.frameArray[i-1];
+  return this.frameArray[this.frameIndex-1];
 };
 
 Game.prototype.twoFramePrevious = function() {
-  var i = this.frameIndex;
-  return this.frameArray[i-2];
+  return this.frameArray[this.frameIndex-2];
 };
 
 Game.prototype.totalAllFrames = function() {
-  var total = 0;
-  for (var i = this.frameArray.length - 1; i >= 0; i--) {
-    total += this.frameArray[i].totalScore();
-  };
-
-  return total;
+  return this.frameArray.reduce(function(a, b){
+    return a + b.totalScore()
+  }, 0);
 };

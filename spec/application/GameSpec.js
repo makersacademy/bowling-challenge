@@ -9,6 +9,7 @@ describe("Game", function(){
   beforeEach(function() {
     genericFrame = jasmine.createSpy('genericFrame')
     genericFrame.prototype.setLastFrame = jasmine.createSpy('setLastFrame');
+    genericFrame.prototype.isAwaitingBonus = jasmine.createSpy('isAwaitingBonus');
 
     frame = jasmine.createSpyObj('frame', ['roll',
       'isComplete',

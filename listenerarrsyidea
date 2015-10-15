@@ -1,0 +1,6 @@
+listenerArray = [[ball#, number of extra balls],..]
+
+
+for i in listenerArray - 2;
+  if i[1] > 0
+    

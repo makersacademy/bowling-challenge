@@ -10,7 +10,7 @@ Frame.prototype.setLastFrame = function() {
 
 Frame.prototype.roll = function(number) {
   var rollScore = (number >= 0) ? number : this.randomRoll()
-  if (!this.rollAllowed(rollScore)) throw new Error("Illegal roll");
+  if (this.rollNotAllowed(rollScore)) throw new Error("Illegal roll");
   return this.registerRoll(rollScore);
 };
 
@@ -21,8 +21,8 @@ Frame.prototype.registerRoll = function(pinCount){
   return pinCount;
 };
 
-Frame.prototype.rollAllowed = function(rollScore) {
-  return !(this.isComplete()) && !(rollScore > this.pinsRemaining)
+Frame.prototype.rollNotAllowed = function(rollScore) {
+  return (this.isComplete()) || (rollScore > this.pinsRemaining)
 };
 
 Frame.prototype.randomRoll = function() {
@@ -44,14 +44,11 @@ Frame.prototype.isLastFrameComplete = function() {
 };
 
 Frame.prototype.totalScore = function() {
-  return this.calculate(this.bonuses.concat(this.balls))
-};
+  return this.balls.concat(this.bonuses).reduce(function(memo, value){
+    return memo + value;
+  });
 
-Frame.prototype.calculate = function(rolls){
-  return rolls.reduce(function(memo, bonus) {
-    return memo + bonus;
-  }, 0);
-}
+};
 
 Frame.prototype.isStrike = function() {
   return (this.balls[0] === 10);

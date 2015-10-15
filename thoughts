@@ -1,0 +1,16 @@
+Thoughts:
+
+10 round game; Max score is 300,
+
+Frames 1-9
+for i in 1..9;
+can score up to 10 from 2 balls;
+
+  10 in 1 = strike
+  10 in 2 = spare
+
+for i = 10
+
+Max 3 balls
+
+if Strike or spare

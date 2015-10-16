@@ -9,7 +9,7 @@ Frame.prototype.setLastFrame = function() {
 };
 
 Frame.prototype.roll = function(number) {
-  var rollScore = (number >= 0) ? number : this.randomRoll()
+  var rollScore = (number >= 0) ? number : this.randomRoll();
   if (this.rollNotAllowed(rollScore)) throw new Error("Illegal roll");
   return this.registerRoll(rollScore);
 };
@@ -26,13 +26,12 @@ Frame.prototype.rollNotAllowed = function(rollScore) {
 };
 
 Frame.prototype.randomRoll = function() {
-  var pins = this.pinsRemaining;
-  return Math.floor( Math.random() * (pins+1) );
+  return Math.floor( Math.random() * (this.pinsRemaining+1) );
 };
 
 Frame.prototype.isComplete = function() {
   if (this.isLastFrame) return this.isLastFrameComplete();
-  return (this.pinsRemaining == 0) || (this.ballsRolled() == 2)
+  return (this.pinsRemaining == 0) || (this.ballsRolled() == 2);
 };
 
 Frame.prototype.ballsRolled = function() {
@@ -40,14 +39,13 @@ Frame.prototype.ballsRolled = function() {
 };
 
 Frame.prototype.isLastFrameComplete = function() {
-  return (this.ballsRolled() === 3) || (this.ballsRolled() === 2 && this.totalScore() < 10)
+  return (this.ballsRolled() === 3) || (this.ballsRolled() === 2 && this.totalScore() < 10);
 };
 
 Frame.prototype.totalScore = function() {
   return this.balls.concat(this.bonuses).reduce(function(memo, value){
     return memo + value;
   });
-
 };
 
 Frame.prototype.isStrike = function() {
@@ -55,7 +53,7 @@ Frame.prototype.isStrike = function() {
 };
 
 Frame.prototype.isSpare = function() {
-  return this.ballsRolled() == 2 && (this.balls[0] + this.balls[1] === 10)
+  return this.ballsRolled() == 2 && (this.balls[0] + this.balls[1] === 10);
 };
 
 Frame.prototype.isAwaitingBonus = function() {

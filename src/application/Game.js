@@ -8,7 +8,6 @@ Game.prototype.frameArrayGenerator = function(frameConstructor) {
   for (var i = 0; i < 10; i++) {
     this.frameArray[i] = new frameConstructor;
   };
-
   this.frameArray[9].setLastFrame();
 };
 
@@ -29,11 +28,10 @@ Game.prototype.bonusUpdate = function(bonus) {
   this.frameArray.forEach(function(frame, index){
     if (frame.isAwaitingBonus() && index != i) frame.bonuses.push(bonus);
   });
-
 };
 
 Game.prototype.totalAllFrames = function() {
   return this.frameArray.reduce(function(memo, frame){
-    return memo + frame.totalScore()
+    return memo + frame.totalScore();
   }, 0);
 };

@@ -1,0 +1,59 @@
+body {
+  background-image: url("http://playcasper.com/images/venue/Stock_bowling_photo.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+td {
+  padding: 8px;
+}
+
+.roll-box {
+  width: 25px;
+  height: 25px;
+  font-size: 20px;
+}
+
+#page-heading {
+  position: absolute;
+  bottom: 200px;
+  left: 50px;
+  font-family: calibri;
+}
+
+#button {
+  position: absolute;
+  background-color: red;
+  bottom: 50px;
+  font-family: calibri;
+  font-weight: bold;
+  left: 50px;
+  padding: 10px;
+}
+
+.container {
+  position: absolute;
+  bottom: 120px;
+  left: 50px;
+  background-color: black;
+}
+
+.score_table {
+  border: 1px;
+}
+
+.frame-score {
+  background-color: white;
+}
+
+.row-text {
+  font-family: calibri;
+  color: white;
+  text-align: center;
+}
+
+.final-score {
+  background-color: blue;
+  color: white;
+  font-family: calibri;
+}

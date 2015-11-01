@@ -3,6 +3,7 @@ function Game() {
   for(i=0; i<10; i++) this.scoreBoard[i]={rolls: [], frameTotal: 0};
   this.frameNum = 0;
   this.rollNum = 1;
+  this.LAST_FRAME = 9;
 }
 
 Game.prototype.randomRoll = function() {
@@ -10,29 +11,37 @@ Game.prototype.randomRoll = function() {
 };
 
 Game.prototype.roll = function(pins) {
-  if (this.frameNum === 9) {
-    if (this.rollNum === 1) {
-      this.scoreBoard[this.frameNum].rolls[0] = pins;
-      this.rollNum++;
-    } else if (this.rollNum === 2) {
-      this.scoreBoard[this.frameNum].rolls[1] = pins;
-      this.rollNum++;
-    } else if (this.rollNum === 3) {
-      this.scoreBoard[this.frameNum].rolls[2] = pins;
-    }
-  } else if (this.frameNum < 9) {
-    if (pins === 10) {
-      this.scoreBoard[this.frameNum].rolls[0] = pins;
-      this.nextFrame();
-    } else if (this.rollNum === 1 && pins < 10) {
-      this.scoreBoard[this.frameNum].rolls[0] = pins;
-      this.rollNum = 2;
-    } else if (this.rollNum === 2 && pins < 10) {
-      this.scoreBoard[this.frameNum].rolls[1] = pins;
-      this.nextFrame();
-    }
+  if (this.isLastFrame(this.frameNum)) {
+    this.rollLastFrame(pins)
+  } else  {
+    this.rollFrame(pins);
   }
 };
+
+Game.prototype.rollLastFrame = function(pins){
+  if (this.rollNum === 1) {
+    this.scoreBoard[this.frameNum].rolls[0] = pins;
+    this.rollNum++;
+  } else if (this.rollNum === 2) {
+    this.scoreBoard[this.frameNum].rolls[1] = pins;
+    this.rollNum++;
+  } else if (this.rollNum === 3) {
+    this.scoreBoard[this.frameNum].rolls[2] = pins;
+  }
+}
+
+Game.prototype.rollFrame = function(pins){
+  if (pins === 10) {
+    this.scoreBoard[this.frameNum].rolls[0] = pins;
+    this.nextFrame();
+  } else if (this.rollNum === 1 && pins < 10) {
+    this.scoreBoard[this.frameNum].rolls[0] = pins;
+    this.rollNum = 2;
+  } else if (this.rollNum === 2 && pins < 10) {
+    this.scoreBoard[this.frameNum].rolls[1] = pins;
+    this.nextFrame();
+  }
+}
 
 Game.prototype.nextFrame = function() {
   this.frameNum++;
@@ -54,7 +63,7 @@ Game.prototype.score = function() {
       frameIndex++;
     }
   };
-  this.scoreBoard[9].frameTotal = score;
+  this.scoreBoard[this.LAST_FRAME].frameTotal = score;
   return score;
 };
 
@@ -71,7 +80,7 @@ Game.prototype.rollsScore = function(frameIndex) {
 Game.prototype.frameScore = function(frameIndex) {
   if (this.isStrike(frameIndex)) {
     return this.rollsScore(frameIndex) + this.strikeBonus(frameIndex);
-  } else if (frameIndex === 9 && this.isSpare(frameIndex)) {
+  } else if (frameIndex === this.LAST_FRAME && this.isSpare(frameIndex)) {
     return this.rollsScore(frameIndex);
   } else if (this.isSpare(frameIndex)) {
     return this.rollsScore(frameIndex) + this.spareBonus(frameIndex);
@@ -83,7 +92,7 @@ Game.prototype.frameScore = function(frameIndex) {
 Game.prototype.updateFrameScore = function(frameIndex) {
   if (frameIndex === 0) {
     this.scoreBoard[frameIndex].frameTotal = this.frameScore(frameIndex);
-  } else if (frameIndex < 9) {
+  } else if (frameIndex < this.LAST_FRAME) {
     this.scoreBoard[frameIndex].frameTotal = this.frameScore(frameIndex) + this.scoreBoard[frameIndex-1].frameTotal;
   }
 };
@@ -91,22 +100,18 @@ Game.prototype.updateFrameScore = function(frameIndex) {
 Game.prototype.strikeBonus = function(frameIndex) {
   if (frameIndex === 8) {
     if (this.scoreBoard[8].rolls.length === 1) {
-      return this.scoreBoard[9].rolls[0] + this.scoreBoard[9].rolls[1];
+      return this.scoreBoard[this.LAST_FRAME].rolls[0] + this.scoreBoard[9].rolls[1];
     } else
-      return this.scoreBoard[frameIndex + 1].rolls.reduce( function(a,b) {
-        return a + b;
-      });
+      return this.calcNextFrame(frameIndex + 1);
   }
   else if (frameIndex < 8) {
     if (this.scoreBoard[frameIndex + 1].rolls.length >= 2) {
-      return this.scoreBoard[frameIndex + 1].rolls.reduce( function(a,b) {
-        return a + b;
-      });
+      return this.calcNextFrame(frameIndex + 1);
     } else {
       return this.scoreBoard[frameIndex + 1].rolls[0] + this.scoreBoard[frameIndex + 2].rolls[0];
     }
-  } else if (frameIndex === 9) {
-    return this.scoreBoard[9].rolls[1] + this.scoreBoard[9].rolls[2];
+  } else if (this.isLastFrame(frameIndex)) {
+    return this.scoreBoard[this.LAST_FRAME].rolls[1] + this.scoreBoard[9].rolls[2];
   }
 };
 
@@ -115,10 +120,20 @@ Game.prototype.isSpare = function(frameIndex) {
 };
 
 Game.prototype.spareBonus = function(frameIndex) {
-  if (frameIndex < 9) {
+  if (!this.isLastFrame(frameIndex)) {
     return this.scoreBoard[frameIndex + 1].rolls[0];
   }
-  else if (frameIndex === 9 && this.scoreBoard[9].rolls.length === 3) {
-    return this.scoreBoard[9].rolls[2];
+  else if (this.isLastFrame(frameIndex) && this.scoreBoard[this.LAST_FRAME].rolls.length === 3) {
+    return this.scoreBoard[this.LAST_FRAME].rolls[2];
   }
+};
+
+Game.prototype.isLastFrame = function(frameIndex) {
+  return frameIndex === this.LAST_FRAME;
+};
+
+Game.prototype.calcNextFrame = function(frameIndex) {
+  return this.scoreBoard[frameIndex].rolls.reduce( function(a,b) {
+    return a + b;
+  });
 };

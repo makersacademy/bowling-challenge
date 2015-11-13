@@ -47,6 +47,7 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
+<<<<<<< HEAD
 ## Lessons Learnt
 
 * `null + null` is evaluated to `0`. If you force `null` to be interpreted in a numeric context then it is treated like `0`
@@ -54,3 +55,14 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 * Try and incorporate as much knowledge into objects rather than trying to build it all out as functions. See [bowling.js](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/bowling.js) versus [frame.js](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/frame.js) and [scoreCard.js](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/scoreCard.js)
 * JavaScript functions can get unwieldy long pretty quickly, especially if there are a lot of control flow statements
 * When selecting more than one element from the page, use `$(this)` within the `.each()` JQuery function to apply JQuery to each elements. See [this](https://github.com/DataMinerUK/bowling-challenge/blob/master/src/app.js#L49-L51)
+=======
+CI
+--
+
+If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
+
+1. Open up your `.travis.yml`
+2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
+3. Adjust these to point to the correct directories
+4. Done.
+>>>>>>> 139_add_jshint_ci

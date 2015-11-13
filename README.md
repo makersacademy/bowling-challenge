@@ -56,6 +56,8 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 CI
 --
 
+We are running JSHint on our CI server - save yourself having to wait for a build to happen by linting your code on your machine first. [Here are installations for most popular editors](http://jshint.com/install/). Grab the `.jshint` from this repo and have better JS!
+
 If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
 
 1. Open up your `.travis.yml`

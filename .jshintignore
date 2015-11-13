@@ -1,0 +1,4 @@
+vendor/*
+lib/*
+spec/*
+*.md

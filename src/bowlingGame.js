@@ -1,12 +1,16 @@
 function BowlingGame() {
-  this._maxFrames = 10;
-  this._strike = 10;
-  this._spare = 10;
+
+  this.STRIKE = 10;
+  this.SPARE = 10;
+  this.PINS = 10;
+  this.MAXFRAMES = 10;
+
   this._score = 0;
-  this._frame = 0;
-  this._bowlsRemaining  = 0;
+  this._frame = 1;
+  this._bowlsRemaining  = 2;
   this._bonusBalls = 0;
-  this._pinsStanding = 0;
+  this._pinsKnockedDown = 0;
+  this._pinsStanding = 10;
 }
 
 BowlingGame.prototype.newGame = function() {
@@ -14,26 +18,32 @@ BowlingGame.prototype.newGame = function() {
   this._frame = 1;
   this._bowlsRemaining = 2;
   this._bonusBalls = 0;
+  this._pinsKnockedDown = 0;
   this._pinsStanding = 10;
 }
 
 BowlingGame.prototype.bowl = function() {
   if (this.isLastFrame()) {
-    // this.playLastFrame();
+    this.playLastFrame();
   } else {
     this.playRegularFrame();
   }
 
   if (this.isEndOfGame()) {
-    this.finishGame();
+     this.finishGame();
   } else if (this.isEndOfFrame()) {
-    this.nextFrame();
+      this.nextFrame();
   }
 };
 
 BowlingGame.prototype.playRegularFrame = function() {
+  this._pinsKnockedDown = this.generateRandomPins();
+  this._pinsStanding -= this._pinsKnockedDown;
+  this._bowlsRemaining -= 1;
+
   if (this.isStrike()) {
     this.addStrikeToScore();
+    this._bowlsRemaining = 0;
   } else if (this.isSpare()) {
     this.addSpareToScore();
   } else {
@@ -41,56 +51,75 @@ BowlingGame.prototype.playRegularFrame = function() {
   }
 };
 
-BowlingGame.prototype.addRegularBowlToScore = function(pinsKnockedDown)  {
-  if (this.bonusBalls > 0) {
-    this.score += pinsKnockedDown;
-    this.bonusBalls -= 1;
+BowlingGame.prototype.playLastFrame = function() {
+  this._pinsKnockedDown = this.generateRandomPins();
+  this._pinsStanding -= this._pinsKnockedDown;
+  this._bowlsRemaining -= 1;
+
+  if (this.isStrike()) {
+    this.addStrikeToScore();
+    this._bowlsRemaining = 2
+  } else if (this.isSpare()) {
+    this.addSpareToScore();
+  } else {
+    this.addRegularBowlToScore();
   }
-  this.score += pinsKnockedDown;
-  this.bowlsRemaining -= 1;
+};
+
+BowlingGame.prototype.addRegularBowlToScore = function()  {
+  if (this._bonusBalls > 0) {
+    this._score += this._pinsKnockedDown;
+    this._bonusBalls -= 1;
+  }
+  this._score += this._pinsKnockedDown;
 };
 
 BowlingGame.prototype.addStrikeToScore = function()  {
-  if (this.bonusBalls > 0) {
-    this.score += this._strike;
-    this.bonusBalls -= 1;
+  if (this._bonusBalls > 0) {
+    this._score += this._pinsKnockedDown;
+    this._bonusBalls -= 1;
+    console.log('add bonus')
   }
-  this.score += this._strike;
-  this.bowlsRemaining = 0
+  this._score += this._pinsKnockedDown;
+  this._bonusBalls += 2;
 };
 
 BowlingGame.prototype.addSpareToScore = function()  {
-  if (this.bonusBalls > 0) {
-    this.score += this._spare;
-    this.bonusBalls -= 1;
+  if (this._bonusBalls > 0) {
+    this._score += this._pinsKnockedDown;
+    this._bonusBalls -= 1;
   }
-  this.score += this._spare;
-  this.bowlsRemaining = 0;
+  this._score += this._pinsKnockedDown;
+  this._bonusBalls += 1;
 };
 
 BowlingGame.prototype.isStrike = function() {
-  return ((this._pinsStanding === 0) && (this.bowlsRemaining === 1));
+  return ( (this._pinsKnockedDown === this.STRIKE) &&
+           (this._pinsStanding === 0) &&
+           (this._bowlsRemaining === 1));
 };
 
 BowlingGame.prototype.isSpare = function() {
-  return ((this._pinsStanding === 0) && (this.bowlsRemaining === 0));
+  return ((this._pinsStanding === 0) && (this._bowlsRemaining === 0));
 };
 
 BowlingGame.prototype.nextFrame = function() {
-  this.frame += 1;
-  this.bowlsRemaining = 2;
+  this._frame += 1;
+  this._bowlsRemaining = 2;
+  this._pinsKnockedDown = 0;
+  this._pinsStanding = 10
 };
 
-BowlingGame.prototype.isEndofFrame = function() {
-  return (this.bowlsRemaining === 0);
+BowlingGame.prototype.isEndOfFrame = function() {
+  return (this._bowlsRemaining === 0);
 };
 
 BowlingGame.prototype.isLastFrame = function() {
-  return (this._frame === this._maxFrame)
+  return (this._frame === this.MAXFRAMES)
 };
 
 BowlingGame.prototype.isEndOfGame = function() {
-  return (this.isLastGame() && (this._bowlsRemaining === 0))
+  return (this.isLastFrame() && (this._bowlsRemaining === 0))
 };
 
 BowlingGame.prototype.getScore = function() {
@@ -109,6 +138,10 @@ BowlingGame.prototype.getBonusBalls = function() {
   return this._bonusBalls;
 };
 
+BowlingGame.prototype.getPinsKnockedDown = function() {
+  return this._pinsKnockedDown;
+};
+
 BowlingGame.prototype.getPinsStanding = function() {
   return this._pinsStanding;
 };
@@ -116,4 +149,8 @@ BowlingGame.prototype.getPinsStanding = function() {
 BowlingGame.prototype.finishGame = function() {
   // disable bowl button
   // display Game Over
+};
+
+BowlingGame.prototype.generateRandomPins = function() {
+  return Math.floor(Math.random() * (this._pinsStanding + 1));
 };

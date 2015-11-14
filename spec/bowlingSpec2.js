@@ -18,8 +18,8 @@ describe("Bowling", function(){
     });
 
   it('can roll al 2', function(){
-    manyRolls(2, 20);
-    expect(game.score()).toBe(40);
+    manyRolls(2, 8);
+    expect(game.score()).toBe(16);
   });
 
   it('can roll a spare', function(){
@@ -51,11 +51,9 @@ describe("Bowling", function(){
     game.roll(5);
     game.roll(5);
     game.roll(1);
-    game.roll(10);
     game.roll(1);
     game.roll(1);
     game.roll(1);
-    game.roll(1);
-    expect(game.score()).toBe(35);
+    expect(game.score()).toBe(17);
   });
 });

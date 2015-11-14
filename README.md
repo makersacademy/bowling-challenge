@@ -2,17 +2,81 @@
 Bowling Challenge
 =================
 
+See below (Makers Academy Bowling Challenge) for details of epic user story.
+
+Epic
+----
+
+As a tutor at Makers Academy I want to use a user online ten pin bowling score board to record a normal two player game.
+
+
+Backlog
+-------
+
+As a bowler I want to see score for two or more players so that I can see who wins or loses for a game of 10 frames per player.
+
+As a bowler I want to see the score per frame, one to ten, for each player.
+
+As a bowler I want to see the score per roll, one and two (except for frame upto three rolls), for each player per frame.
+
+As a bowler I want to score the sum of pins down for my two rolls in an open game.
+
+As a bowler I want to score pins down in first roll (max of 9), plus spare bonus of 10 (pinfall on second roll), plus the score of my next roll (maximum of 10),  after a spare game (pinfall in two rolls) giving a maximum of 29 points.
+
+As a bowler I want to score bonus of 10 , plus the score of my next two rolls (max of 20) after a strike game (pinfall in first roll) giving maximum of 30 points.
+
+As a bowler I want frame 10 to have a maximum of 3 rolls to take account of strike on first roll.
+
+As a bowler I want score board to show a strike ('X'), in roll 2, for frame when I bowl a strike (pinfall on first roll).
+
+As a bowler I want score board to show a spare ('/'), in roll 2, for frame when I bowl a spare (pinfall on second ball).
+
+As a bowler I want score board to show a miss ('-'), in roll 1 or 2 , for frame when no pins knocked down on roll.
+
+As a bowler I want score board to show a foul ('F'), in roll 1 or 2, for frame when lane fouled by bowlers body went over foul line.
+
+As a bowler I want score board to show a split ('(score)'), in roll 1, for frame when pins left standing after roll 1 have 'split' formation.
+
+As a bowler I want score board to show the cumulative score for frames complete for each frame. So the score for frame can be calculated by:
+ 1. Adding roll 1 and 2 for open game;
+ 2. Adding roll 1 score and spare bonus of 10 and roll 1 score for next frame for a spare and,
+ 3.  Adding strike bonus of 10 and roll 1 and 2 score of next frame for a strike.
+
+As a player I want score board to show a "double" for two strikes in a row and a "turkey" for three in a row.
+
+At the end of game the score board should show the winner and position of other players.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**Makers Academy Bowling Challenge**
+
     Test time: Friday, the entire day and the entire of lab week if you need it.
     Feel free to use Google, your notes, and your books.
 
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_september2015 (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
 * Forking this repo

@@ -42,9 +42,31 @@ As a bowler I want score board to show the cumulative score for frames complete 
  2. Adding roll 1 score and spare bonus of 10 and roll 1 score for next frame for a spare and,
  3.  Adding strike bonus of 10 and roll 1 and 2 score of next frame for a strike.
 
-As a player I want score board to show a "double" for two strikes in a row and a "turkey" for three in a row.
+As a player I want score board to show a "double" for two strikes in a row; a "turkey" for three in a row, and a "perfect game" for 12 strikes in a row.
 
 At the end of game the score board should show the winner and position of other players.
+
+
+Domain Model
+------------
+1. tournament has 3 games.
+2. a game can have up to 6 players.
+3. a player has 10 frames; players has name, photo and cumulative score for game; and tournament score.
+3. a frame has normally 2 rolls and maximum of 3 for frame 10.
+4. roll: can be  number 1, 2 or 3 in frame 10 if 1 is a strike;
+5. roll[1]: can be "miss", "split" or score; max score is 10; min is 0.
+6. roll[2]: can be "spare" or "strike"
+7. roll[1] or roll[2]: can be a "foul", score 0.
+8. frame: can be number 1 to 10.
+9. frame[number] normally has roll[1] and roll[2].
+10. frame[10] has can have roll[3] as well if roll[1] is a strike
+11. score for frame[number] if roll[1] is a strike, and not frame[10], then roll[2] records stike and score is bonus of 10 plus score of frame[number]roll[2] plus frame[number+1]roll[1].
+12. score for frame[10] if roll[1] is a strike, and frame[10], then roll[1] records stike and score is bonus of 10 plus score of frame[10]roll[2] plus frame[10]roll[3]; If strike scored on roll[2] or roll[3] then these can also record strike as well as roll[1].
+13. score for frame[number] if roll[2] is a spare, then roll[2] records spare and roll[1] a score and score is roll[1] score plus bonus of 10 plus score of frame[number+1] roll[1], unless frame[10] when there is no frame[11] so plus score of frame[10]roll[3].
+14. score for frame[number] if roll[1] is not a strike AND roll[2] is a not spare, is sum of frame[number]roll[1] and frame[number]roll[2] scores.
+players take turns to play frames.
+
+Write feature  tests and then unit tests and code to make them pass for smalles to biggest object for user stories.
 
 
 

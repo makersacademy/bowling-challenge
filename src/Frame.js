@@ -11,8 +11,11 @@ Frame.prototype.STARTING_PINS = 10;
 Frame.prototype.STRIKE = 10;
 
 Frame.prototype.recordPinsHit = function(num) {
+  if(num > this.remainingPins) throw(new Error("Cannot hit more than 10 pins"));
+  else {
   this.remainingPins -= num;
   this.frameHistory.push(num);
+}
 };
 
 Frame.prototype.remainingPins = function() {

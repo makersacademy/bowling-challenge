@@ -38,7 +38,7 @@ describe("Frame:", function() {
   it("throws an error if there is an attempt to record more pins hit than\
      there are pins remaining", function() {
     frame.recordPinsHit(7);
-    expect(frame.recordPinsHit(4)).toThrowError("Cannot hit more than 10 pins");
+    expect(function() {frame.recordPinsHit(4);} ).toThrow(new Error ("Cannot hit more than 10 pins"));
   });
 
   it("resets after the game is over", function() {

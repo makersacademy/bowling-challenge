@@ -66,6 +66,29 @@ Domain Model
 14. score for frame[number] if roll[1] is not a strike AND roll[2] is a not spare, is sum of frame[number]roll[1] and frame[number]roll[2] scores.
 players take turns to play frames.
 
+object(model):
+
+tournament{
+  [game
+  {[
+    {player{frame{roll{[{rollscore},{rollscore},{rollscore}],number},{framescore}},{currentframe}},
+    {player{frame{roll{[{rollscore},{rollscore},{rollscore}],number},{framescore}},{currentframe}]}
+  ]},
+},
+game
+  {[
+    {player{frame{roll{[{rollscore},{rollscore},{rollscore}],number},{framescore}},{currentframe}},
+    {player{frame{roll{[{rollscore},{rollscore},{rollscore}],number},{framescore}},{currentframe}]}
+  ]},
+},
+game
+  {[
+    {player{frame{roll{[{rollscore},{rollscore},{rollscore}],number},{framescore}},{currentframe}},
+    {player{frame{roll{[{rollscore},{rollscore},{rollscore}],number},{framescore}},{currentframe}]}
+  ]},
+}]
+
+
 Write feature  tests and then unit tests and code to make them pass for smalles to biggest object for user stories.
 
 

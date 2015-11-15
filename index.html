@@ -2,16 +2,54 @@
 <html>
   <head>
     <title>Bowling</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <section>
-      <h1 id="temperature"></h1>
-      <p>
-        <button id="bowl">Bowl</button>
+    <div id="wrapper">
+      <div id="header"> Bowling </div>
+      <div id="content">
+        <div id="content-title">
+          <div id="content-title-frame">Frame</div>
+          <div id="content-title-roll">Roll</div>
+          <div id="content-title-pins">Pins Down</div>
+          <div id="content-title-score">Score</div>
+        </div>
+        <div id="content-cell">
+          <div id="content-cell-frame">Frame</div>
+          <div id="content-cell-roll">Roll</div>
+          <div id="content-cell-pins">Pins Down</div>
+          <div id="content-cell-score">Score</div>
+        </div>
+      </div>
+      <div id="bottom">
+        <button id="bowl-ball">Bowl</button>
         <button id="new-game">New Game</button>
-        Score <span id="current-score">is</span>
-      </p>
-    </section>
+      </div>
+    </div>
+    <script src="jquery.js"></script>
     <script src="src/bowlingGame.js"></script>
+    <script>
+      $( document ).ready(function() {
+        var bowlingGame = new BowlingGame();
+        $("#content-cell-frame").html(bowlingGame.getFrame());
+        $("#content-cell-roll").html(bowlingGame.getBowlsBowled());
+        $("#content-cell-pins").html(bowlingGame.getPinsKnockedDown());
+        $("#content-cell-score").html(bowlingGame.getScore());
+        $( "#bowl-ball" ).click(function( event ) {
+          bowlingGame.bowl();
+          $("#content-cell-frame").html(bowlingGame.getFrame());
+          $("#content-cell-roll").html(bowlingGame.getBowlsBowled());
+          $("#content-cell-pins").html(bowlingGame.getPinsKnockedDown());
+          $("#content-cell-score").html(bowlingGame.getScore());
+        });
+        $( "#new-game" ).click(function( event ) {
+          bowlingGame.newGame();
+          $("#content-cell-frame").html(bowlingGame.getFrame());
+          $("#content-cell-roll").html(bowlingGame.getBowlsBowled());
+          $("#content-cell-pins").html(bowlingGame.getPinsKnockedDown());
+          $("#content-cell-score").html(bowlingGame.getScore());
+        });
+      });
+    </script>
   </body>
 </html>

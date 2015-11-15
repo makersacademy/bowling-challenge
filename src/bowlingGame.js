@@ -8,6 +8,7 @@ function BowlingGame() {
   this._score = 0;
   this._frame = 1;
   this._bowlsRemaining  = 2;
+  this._bowlsBowled = 0;
   this._bonusBalls = 0;
   this._pinsKnockedDown = 0;
   this._pinsStanding = 10;
@@ -17,6 +18,7 @@ BowlingGame.prototype.newGame = function() {
   this._score = 0;
   this._frame = 1;
   this._bowlsRemaining = 2;
+  this._bowlsBowled = 0;
   this._bonusBalls = 0;
   this._pinsKnockedDown = 0;
   this._pinsStanding = 10;
@@ -40,6 +42,7 @@ BowlingGame.prototype.playRegularFrame = function() {
   this._pinsKnockedDown = this.generateRandomPins();
   this._pinsStanding -= this._pinsKnockedDown;
   this._bowlsRemaining -= 1;
+  this._bowlsBowled += 1;
 
   if (this.isStrike()) {
     this.addStrikeToScore();
@@ -55,6 +58,7 @@ BowlingGame.prototype.playLastFrame = function() {
   this._pinsKnockedDown = this.generateRandomPins();
   this._pinsStanding -= this._pinsKnockedDown;
   this._bowlsRemaining -= 1;
+  this._bowlsBowled += 1;
 
   if (this.isStrike()) {
     this.addStrikeToScore();
@@ -106,6 +110,7 @@ BowlingGame.prototype.isSpare = function() {
 BowlingGame.prototype.nextFrame = function() {
   this._frame += 1;
   this._bowlsRemaining = 2;
+  this._bowlsBowled += 0;
   this._pinsKnockedDown = 0;
   this._pinsStanding = 10
 };
@@ -132,6 +137,10 @@ BowlingGame.prototype.getFrame = function() {
 
 BowlingGame.prototype.getBowlsRemaining = function() {
   return this._bowlsRemaining;
+};
+
+BowlingGame.prototype.getBowlsBowled = function() {
+  return this._bowlsBowled;
 };
 
 BowlingGame.prototype.getBonusBalls = function() {

@@ -54,4 +54,10 @@ describe("Game is over:", function() {
     expect(frame.isOver()).toEqual(true);
   });
 
+  it("resets the frame history", function() {
+    frame.recordPinsHit(2);
+    frame.recordPinsHit(3);
+    expect(frame.gameHistory).toEqual([2, 3])
+  });
+
 });

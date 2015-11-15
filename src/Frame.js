@@ -26,5 +26,16 @@ Frame.prototype.isOver = function() {
 };
 
 Frame.prototype.totalScore = function() {
-  return this.frameHistory.reduce((a, b) => a + b);
+  var frameScore = 0;
+  for (var i = 0; i < this.frameHistory.length; i++) {
+    frameScore += this.frameHistory[i];
+  }
+  return frameScore;
+  // return this.STARTING_PINS - this.remainingPins
+  // return this.frameHistory.reduce((a, b) => a + b);
+};
+
+Frame.prototype.reset = function() {
+  this.gameHistory.push(this.frameHistory);
+  this.frameHistory = [];
 };

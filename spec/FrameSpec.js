@@ -7,6 +7,10 @@ describe("Frame:", function() {
     frame = new Frame();
   });
 
+  it("has ten pins before a ball is bowled", function() {
+    expect(frame.STARTING_PINS).toEqual(10);
+  });
+
   it("records the number of pins knocked down by a player's throw", function()
    {
     frame.recordPinsHit(5);
@@ -23,6 +27,12 @@ describe("Frame:", function() {
     throw", function() {
     frame.recordPinsHit(10);
     expect(frame.remainingPins).toEqual(0);
+  });
+
+  it("records its score", function() {
+    frame.recordPinsHit(2);
+    frame.recordPinsHit(6);
+    expect(frame.totalScore()).toEqual(8);
   });
 })
 

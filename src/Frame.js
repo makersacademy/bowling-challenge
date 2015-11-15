@@ -2,12 +2,17 @@
 
 var Frame = function() {
   this.remainingPins = 10;
-  this.frameScore = [];
+  this.frameHistory = [];
+  this.gameHistory = [];
 };
+
+Frame.prototype.STARTING_PINS = 10;
+
+Frame.prototype.STRIKE = 10;
 
 Frame.prototype.recordPinsHit = function(num) {
   this.remainingPins -= num;
-  this.frameScore.push(num);
+  this.frameHistory.push(num);
 };
 
 Frame.prototype.remainingPins = function() {
@@ -15,7 +20,11 @@ Frame.prototype.remainingPins = function() {
 };
 
 Frame.prototype.isOver = function() {
-  if(this.frameScore.length === 2 || this.frameScore[0] === 10) {
+  if(this.frameHistory.length === 2 || this.frameHistory[0] === this.STRIKE) {
     return true;
   }
+};
+
+Frame.prototype.totalScore = function() {
+  return this.frameHistory.reduce((a, b) => a + b);
 };

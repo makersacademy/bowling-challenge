@@ -15,5 +15,7 @@ Frame.prototype.remainingPins = function() {
 };
 
 Frame.prototype.isOver = function() {
-  return true;
+  if(this.frameScore.length === 2 || this.frameScore[0] === 10) {
+    return true;
+  }
 };

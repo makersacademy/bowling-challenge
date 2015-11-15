@@ -11,7 +11,7 @@ describe("Bowling Score", () => {
   })
 
   it("pinCheck will check whether the sum of any frames is greater than 10", () => {
-    expect(sumOfPinsCheck([[4,4],[4,7]])).toBe(true);
+    expect(pinCheck([[4,4],[4,7]])).toBe(true);
   })
 
   it("totalPinsPerFrame will reduce the scorecard to total pins per frame", () => {

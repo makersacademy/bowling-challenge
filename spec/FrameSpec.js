@@ -17,6 +17,12 @@ describe("Frame:", function() {
     expect(frame.remainingPins).toEqual(5);
   });
 
+  it("records its score", function() {
+    frame.recordPinsHit(2);
+    frame.recordPinsHit(6);
+    expect(frame.totalScore()).toEqual(8);
+  });
+
   it("records a gutter ball when a player doesn't knock down any pins",
   function() {
     frame.recordPinsHit(0);
@@ -29,17 +35,18 @@ describe("Frame:", function() {
     expect(frame.remainingPins).toEqual(0);
   });
 
-  it("records its score", function() {
-    frame.recordPinsHit(2);
-    frame.recordPinsHit(6);
-    expect(frame.totalScore()).toEqual(8);
+  it("throws an error if there is an attempt to record more pins hit than\
+     there are pins remaining", function() {
+    frame.recordPinsHit(7);
+    expect(frame.recordPinsHit(4)).toThrowError("Cannot hit more than 10 pins");
   });
 
   it("resets after the game is over", function() {
     frame.recordPinsHit(2);
     frame.recordPinsHit(3);
+    frame.resetFrame();
     expect(frame.gameHistory).toEqual([[2, 3]]);
-    exect(frame.frameHistory.length).toEqual(0);
+    expect(frame.frameHistory.length).toEqual(0);
   });
 })
 

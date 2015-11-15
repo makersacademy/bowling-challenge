@@ -35,7 +35,7 @@ Frame.prototype.totalScore = function() {
   // return this.frameHistory.reduce((a, b) => a + b);
 };
 
-Frame.prototype.reset = function() {
+Frame.prototype.resetFrame = function() {
   this.gameHistory.push(this.frameHistory);
   this.frameHistory = [];
 };

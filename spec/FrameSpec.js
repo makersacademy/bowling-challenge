@@ -34,6 +34,13 @@ describe("Frame:", function() {
     frame.recordPinsHit(6);
     expect(frame.totalScore()).toEqual(8);
   });
+
+  it("resets after the game is over", function() {
+    frame.recordPinsHit(2);
+    frame.recordPinsHit(3);
+    expect(frame.gameHistory).toEqual([[2, 3]]);
+    exect(frame.frameHistory.length).toEqual(0);
+  });
 })
 
 describe("Game is over:", function() {
@@ -53,11 +60,4 @@ describe("Game is over:", function() {
     frame.recordPinsHit(10);
     expect(frame.isOver()).toEqual(true);
   });
-
-  it("resets the frame history", function() {
-    frame.recordPinsHit(2);
-    frame.recordPinsHit(3);
-    expect(frame.gameHistory).toEqual([2, 3])
-  });
-
 });

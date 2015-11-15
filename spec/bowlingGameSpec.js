@@ -5,17 +5,7 @@ describe('bowlingGame', function(){
     bowlingGame = new BowlingGame();
   });
 
-  it ('intialises a new game', function(){
-    bowlingGame.newGame();
-    expect(bowlingGame.getScore()).toEqual(0);
-    expect(bowlingGame.getFrame()).toEqual(1);
-    expect(bowlingGame.getBowlsRemaining()).toEqual(2);
-    expect(bowlingGame.getBonusBalls()).toEqual(0);
-    expect(bowlingGame.getPinsKnockedDown()).toEqual(0);
-    expect(bowlingGame.getPinsStanding()).toEqual(10);
-  });
-
-  it('generates random pins between 1 and 10', function(){
+  it('generates random pins between 0 and 10', function(){
     expect(['0','1','2','3','4','5','6','7','8','9','10']).toContain(bowlingGame.generateRandomPins().toString());
   });
 

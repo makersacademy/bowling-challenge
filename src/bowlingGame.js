@@ -1,4 +1,4 @@
-function BowlingGame() {
+function BowlingGame(scoreSheet) {
 
   this.STRIKE = 10;
   this.SPARE = 10;
@@ -12,9 +12,11 @@ function BowlingGame() {
   this._bonusBalls = 0;
   this._pinsKnockedDown = 0;
   this._pinsStanding = 10;
+  this._scoreSheet = typeof scoreSheet !== 'undefined' ? scoreSheet : new ScoreSheet();
+  this._gameOver = false;
 }
 
-BowlingGame.prototype.newGame = function() {
+BowlingGame.prototype.newGame = function(scoreSheet) {
   this._score = 0;
   this._frame = 1;
   this._bowlsRemaining = 2;
@@ -22,6 +24,8 @@ BowlingGame.prototype.newGame = function() {
   this._bonusBalls = 0;
   this._pinsKnockedDown = 0;
   this._pinsStanding = 10;
+  this._scoreSheet = typeof scoreSheet !== 'undefined' ? scoreSheet : new ScoreSheet();
+  this._gameOver = false;
 }
 
 BowlingGame.prototype.bowl = function() {
@@ -31,8 +35,11 @@ BowlingGame.prototype.bowl = function() {
     this.playRegularFrame();
   }
 
+  this._scoreSheet.update(this._frame, this._bowlsBowled,
+                            this._pinsKnockedDown, this._score);
+
   if (this.isEndOfGame()) {
-     this.finishGame();
+     this._gameOver = true;
   } else if (this.isEndOfFrame()) {
       this.nextFrame();
   }
@@ -55,6 +62,7 @@ BowlingGame.prototype.playRegularFrame = function() {
 };
 
 BowlingGame.prototype.playLastFrame = function() {
+  //This is not implementing the last frame rules correctly yet.
   this._pinsKnockedDown = this.generateRandomPins();
   this._pinsStanding -= this._pinsKnockedDown;
   this._bowlsRemaining -= 1;
@@ -110,7 +118,7 @@ BowlingGame.prototype.isSpare = function() {
 BowlingGame.prototype.nextFrame = function() {
   this._frame += 1;
   this._bowlsRemaining = 2;
-  this._bowlsBowled += 0;
+  this._bowlsBowled = 0;
   this._pinsKnockedDown = 0;
   this._pinsStanding = 10
 };
@@ -155,9 +163,8 @@ BowlingGame.prototype.getPinsStanding = function() {
   return this._pinsStanding;
 };
 
-BowlingGame.prototype.finishGame = function() {
-  // disable bowl button
-  // display Game Over
+BowlingGame.prototype.isGameOver = function() {
+  return this._gameOver;
 };
 
 BowlingGame.prototype.generateRandomPins = function() {

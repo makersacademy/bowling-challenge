@@ -30,8 +30,14 @@ describe("Game", function() {
       expect(game.isOver()).toEqual(true);
     });
 
-    it("after all the pins have been knocked down", function() {
+    it("after a strike", function() {
       game.registerRoll(10);
+      expect(game.isOver()).toEqual(true);
+    });
+
+    it("after a spare", function() {
+      game.registerRoll(7);
+      game.registerRoll(3);
       expect(game.isOver()).toEqual(true);
     });
   });
@@ -40,5 +46,19 @@ describe("Game", function() {
     it("after less than 2 rolls", function() {
       expect(game.isOver()).toEqual(false);
     });
+  });
+
+  it("has the total score for one frame", function() {
+    game.registerRoll(2);
+    game.registerRoll(6);
+    expect(game.totalFrame()).toEqual(8);
+  });
+
+  it("has the total score for several frames", function() {
+    var frameOne = { total : function() { return 7 } };
+    var frameTwo = { total : function() { return 6 } };
+    game.addFrame(frameOne);
+    game.addFrame(frameTwo);
+    expect(game.totalScore()).toEqual(13)
   });
 });

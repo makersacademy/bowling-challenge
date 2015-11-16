@@ -1,6 +1,8 @@
 function Game () {
+  this.startingPins = 10;
   this.pins = 10;
   this.rollCount = 0;
+  this.frames = [];
 }
 
 Game.prototype.registerRoll = function(knockingDownPins) {
@@ -14,4 +16,20 @@ Game.prototype.remainingPins = function() {
 
 Game.prototype.isOver = function() {
   return (this.rollCount === 2 || this.pins === 0);
+};
+
+Game.prototype.totalFrame = function() {
+  return this.startingPins - this.pins;
+};
+
+Game.prototype.addFrame = function(frame) {
+  this.frames.push(frame);
+};
+
+Game.prototype.totalScore = function() {
+  var runningTotal = 0;
+  for (var i = 0; i < this.frames.length; i++) {
+    runningTotal += this.frames[i].total();
+  }
+  return runningTotal;
 };

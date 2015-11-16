@@ -30,4 +30,9 @@ describe("Frame", function() {
       newFrame.roll(10);
       expect(function(){ newFrame.roll(); }).toThrow("Can not roll ball, frame is over!");
     });
+
+    it("should know when a frame is over", function() {
+      newFrame.roll(10);
+      expect(newFrame.isOver()).toEqual(true);
+    });
 })

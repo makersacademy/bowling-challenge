@@ -13,3 +13,7 @@ Frame.prototype.roll = function(pinsDown) {
     this.pins -= pinsDown;
   };
 }
+
+Frame.prototype.isOver = function() {
+  return (this.pins === 0);
+}

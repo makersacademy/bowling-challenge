@@ -1,14 +1,19 @@
 describe("Bowling", function() {
 
   var gameFrames;
+  var gameFramesCount;
 
   beforeEach( function() {
-  bowlingGame = new Bowling();
+  gameFramesCount = 2;
+  bowlingGame = new Bowling(Frame, gameFramesCount);
   });
 
-  it("each game begins with 10 frames", function() {
-    expect(bowlingGame.gameFrames).toEqual(10);
+  it("each game begins with n frames", function() {
+    expect(bowlingGame.gameFrames.length).toEqual(2);
   });
 
+  it("the first frame is not over", function() {
+    expect(bowlingGame.gameFrames[0].isOver()).toEqual(false);
+  });
 
 })

@@ -31,11 +31,11 @@ Frame.prototype.isSpare = function() {
   return ((this.currentBall > 1) && (this.total() === 10))
 }
 
-Frame.prototype.strikeBonus = function() {
+Frame.prototype.firstTwoBalls = function() {
   return (this.balls[0] + this.balls[1]);
 }
 
-Frame.prototype.spareBonus = function() {
+Frame.prototype.firstBall = function() {
   return this.balls[0];
 }
 
@@ -43,4 +43,3 @@ Frame.prototype.total = function() {
   return this.balls.reduce(function(a, b) { return a + b; });
 }
 
-module.exports = Frame;

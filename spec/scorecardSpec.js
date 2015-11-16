@@ -1,5 +1,4 @@
 describe('ScoreCard', function() {
-  ScoreCard = require('../src/scorecard.js');
   var scoreCard;
 
   beforeEach( function() {
@@ -16,7 +15,7 @@ describe('ScoreCard', function() {
     scoreCard.mark(2);
     scoreCard.mark(3);
     scoreCard.mark(4);
-    expect(scoreCard.totalForFrame()).toNotEqual(9);
+    expect(scoreCard.totalForFrame()).not.toEqual(9);
   })
 
   it('Returns a score card with one entry', function() {
@@ -32,9 +31,16 @@ describe('ScoreCard', function() {
     expect(scoreCard.card()).toEqual([5, null]);
   });
 
-  it('Creates a new frame when a stike occurs', function() {
+  it('Creates a new frame when a strike occurs', function() {
     scoreCard.mark(10);
     expect(scoreCard.card()).toEqual([null, null]);
+  });
+
+  it('marks a score of 30 for three strikes in a row', function() {
+    scoreCard.mark(10);
+    scoreCard.mark(10);
+    scoreCard.mark(10);
+    expect(scoreCard.card()).toEqual([30, null, null, null]);
   });
 
   it('Does not mark a spare as a strike', function() {

@@ -1,5 +1,3 @@
-Frame = require('../src/frame');
-
 describe('Frame', function() {
   it ('Can recognise a strike when it sees one', function() {
     frame = new Frame(1);
@@ -53,7 +51,7 @@ describe('Frame', function() {
   it ('does not have a total for frame when a strike', function() {
     frame = new Frame(1);
     frame.setBall(1,10);
-    expect(frame.totalForFrame).toEqual(undefined);
+    expect(frame.totalForFrame).toEqual(null);
   });
   it ('knows a score cannot be finalised when a spare', function() {
     frame = new Frame(1);
@@ -65,6 +63,6 @@ describe('Frame', function() {
     frame = new Frame(1);
     frame.setBall(1,5);
     frame.setBall(2,5);
-    expect(frame.totalForFrame).toEqual(undefined)
+    expect(frame.totalForFrame).toEqual(null)
   });
 });

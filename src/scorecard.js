@@ -1,4 +1,3 @@
-var Frame = require('../src/frame.js');
 function ScoreCard() {
   this.currentFrame = 1;
   this.currentBallInFrame = 1;
@@ -29,22 +28,31 @@ ScoreCard.prototype.checkForUnfinalisedFrames = function() {
 
 ScoreCard.prototype.finaliseStrike = function(frame) {
   if (!this.frames[frame].isStrike()) {return;}
+  if (!this.frames[frame+1].scoreCalculated &&
+      !this.frames[frame+1].isStrike()) {return;}
+  this.checkStrikeBonus(frame);
+  this.checkTripleStrike(frame);
+}
+
+ScoreCard.prototype.checkStrikeBonus = function(frame) {
   if (!this.frames[frame+1].isStrike()) {
     this.frames[frame].finalise(this.frames[frame].total() +
-                                this.frames[frame+1].strikeBonus());
+                                this.frames[frame+1].firstTwoBalls());
 
-  }
-  else {
-    this.frames[frame].finalise(this.frames[frame].total() +
-                                this.frames[frame+1].spareBonus() +
-                                this.frames[frame+2].spareBonus());
   }
 }
 
+ScoreCard.prototype.checkTripleStrike = function(frame) {
+  if (this.frames[frame+1].isStrike() && this.frames[frame+2].isStrike()) {
+    this.frames[frame].finalise(this.frames[frame].total() +
+                                this.frames[frame+1].firstBall() +
+                                this.frames[frame+2].firstBall());
+  }
+}
 ScoreCard.prototype.finaliseSpare = function(frame) {
   if (!this.frames[frame].isSpare()) {return;}
   this.frames[frame].finalise(this.frames[frame].total() +
-                              this.frames[frame+1].spareBonus());
+                              this.frames[frame+1].firstBall());
 }
 
 
@@ -83,4 +91,3 @@ ScoreCard.prototype.getFrame = function(frame) {
   //
   return this.frames[frame-1];
 }
-module.exports = ScoreCard;

@@ -2,23 +2,80 @@
 Bowling Challenge
 =================
 
-    Test time: Friday, the entire day and the entire of lab week if you need it.
-    Feel free to use Google, your notes, and your books.
+### Key features of a bowling game
 
-Task: 
------
+*A frame allows:
+ -2 rolls
+ -1 roll when the player makes a strike
+*A frame has 10 pins
+*Score increases with:
+ -the number of pins down for each frame
+ -plus the number of pins down in the next roll in case of spare (maximum bonus of 10)
+ -plus the number of pins down in the next two rolls in case of strike (maximum bonus of 20)
+ *A game has:
+  -10 frames
+  -11th bonus frame when the player makes a spare in 10th frame
+  -11th and 12th bonus frames when the player makes a strike in last frame
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+### My approach:
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+3 objects will be designed to track score of a game
 
-As usual please start by 
+*Player whose responsibilities include:
+  -assigning a level: beginner, intermediate, confirmed, professional
+  -determining number of pins down at each roll depending on level
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_september2015 (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
+*Frame whose responsibilities include:
+  -keeping track of frame#
+  -keeping track of pins down
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+*Game
+-keeping track of score
+-indicating when game is over
 
+### User story:
+
+```
+As a player,
+in order to play bowling
+I can start the game by making a first roll
+```
+
+```
+As a player,
+in order to earn points
+I can knock down pins with my first roll
+```
+
+```
+As a player,
+in order to earn more points
+I can make a second roll to knock down remaining pins, if any
+```
+
+```
+As a player,
+in order to make progress in the game
+I can start a new frame after two rolls or when I knocked down all the pins after one roll
+```
+
+describe('it can start a new frame', function(){
+
+  it('after two rolls', function(){
+    spyOn(Math,'random').and.returnValue(0.13)
+    player.makeRoll(game,roll);
+    spyOn(Math,'random').and.returnValue(0);
+    spyOn(rollTwo, 'secondRollRandomizer').and.returnValue(2)
+    player.makeRoll(game,rollTwo);
+    expect(game.frameNumber()).toEqual(2);
+  });
+
+  it('after one roll when making a strike', function(){
+    spyOn(Math,'random').and.returnValue(0.80)
+    player.makeRoll(game,roll);
+    expect(game.frameNumber()).toEqual(2);
+  });
+});
 
 ### Optional Extra
 

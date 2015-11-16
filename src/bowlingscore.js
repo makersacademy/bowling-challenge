@@ -11,9 +11,7 @@ function bowlingScore(scorecard) {
 
 
 function greaterThan10Check(scorecard) {
-  return scorecard.reduce( (head, tail) => {
-    return head.concat(tail);
-  }, []).map( (pins) => {
+  return flatten(scorecard).map( (pins) => {
     return pins > 10;
   }).reduce( (head, tail) => {
     return head || tail;
@@ -34,12 +32,9 @@ function totalPinsPerFrame(scorecard) {
 function pointsPerFrame(scorecard) {
   var points = []
   for (var index = 0; index < scorecard.length; index++) {
-    if (scorecard[index][0] === 10 && index != 9) {
-      var strike = []
-      strike.push(scorecard[index + 1])
-      strike.push(scorecard[index + 2])
-      points.push(10 + flatten(strike)[0] + flatten(strike)[1])
-    } else if (scorecard[index].reduce( sumOfElements ) === 10 && index != 9) {
+    if (isStrike(scorecard, index)) {
+      points.push(10 + flatten([scorecard[index + 1], scorecard[index + 2]]).slice(0,2).reduce(sumOfElements));
+    } else if (isSpare(scorecard,index)) {
       points.push(10 + scorecard[index + 1][0]);
     } else {
       points.push(scorecard[index]);
@@ -48,16 +43,13 @@ function pointsPerFrame(scorecard) {
   return flatten(points);
 };
 
+function isStrike(scorecard, index) {
+  return scorecard[index][0] === 10 && index != 9;
+};
 
-// function strikePoints(scorecard) {
-//   var points = []
-//   for (var index = 0; index < scorecard.length; index++) {
-//     if (scorecard[index] === 10) {
-//       points.push()
-//       scorecard[index + 1]
-//     }
-//   }
-// };
+function isSpare(scorecard, index) {
+  return scorecard[index].reduce (sumOfElements ) === 10 && index != 9;
+};
 
 function flatten(array) {
   return array.reduce( (head, tail) => { return head.concat(tail); }, [] )

@@ -32,11 +32,7 @@ Game.prototype.flattenFrames = function(frames) {
 };
 
 Game.prototype.isCompleted = function() {
-  if (this.currentFrame === 10 && this.frames[9].outcome === 'O') {
-    this.frames.push({firstBowl: firstBowl,
-                    secondBowl: secondBowl});
-    return true;
-  } else if (this.currentFrame > 10 && this.frames[10].outcome !== 'X') return true;
+
 };
 
 Game.prototype.strikeBonus = function(index) {

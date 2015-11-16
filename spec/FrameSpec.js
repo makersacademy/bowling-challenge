@@ -1,7 +1,5 @@
 describe("Frame", function() {
 
-  var pins;
-  var rolls;
 
   beforeEach( function() {
   newFrame = new Frame();
@@ -20,6 +18,16 @@ describe("Frame", function() {
     it("should let you roll the ball twice", function() {
       newFrame.roll();
       newFrame.roll();
+      expect(function(){ newFrame.roll(); }).toThrow("Can not roll ball, frame is over!");
+    });
+
+    it("should reduce the number of pins per roll", function() {
+      newFrame.roll(2);
+      expect(newFrame.pins).toEqual(8);
+    });
+
+    it("should not let you roll if there are no pins", function() {
+      newFrame.roll(10);
       expect(function(){ newFrame.roll(); }).toThrow("Can not roll ball, frame is over!");
     });
 })

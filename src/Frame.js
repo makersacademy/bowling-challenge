@@ -5,10 +5,11 @@ function Frame() {
 
 };
 
-Frame.prototype.roll = function () {
-  if (this.rolls > 0) {
-    this.rolls -= 1;
-  } else {
+Frame.prototype.roll = function(pinsDown) {
+  if (this.rolls === 0 || this.pins === 0 ) {
     throw "Can not roll ball, frame is over!";
+  } else {
+    this.rolls -= 1;
+    this.pins -= pinsDown;
   };
 }

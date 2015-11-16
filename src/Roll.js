@@ -33,14 +33,15 @@ Roll.prototype.knockedDownPinsFirstRoll = function(){
   if (randomizer > 0.20 && randomizer <= 0.43) {this._knockedDownPins = 8;}
   if (randomizer > 0.43 && randomizer <= 0.66) {this._knockedDownPins = 9;}
   if (randomizer > 0.66) {this._knockedDownPins = 10;}
-  if (this._knockedDownPins != 10) {this._rollNumber = 2;}
-  if (this._knockedDownPins === 10) {this._rollNumber = 1;}
-  this._remainingPins -= this._knockedDownPins;
+  if (this._knockedDownPins != 10) {this._rollNumber = 2; this._remainingPins -= this._knockedDownPins;}
+  if (this._knockedDownPins === 10) {this._rollNumber = 1; this._remainingPins = 10;}
+
 };
 
 Roll.prototype.knockedDownPinsSecondRoll = function(){
   this._knockedDownPins = this.secondRollRandomizer();
-  this._remainingPins -= this._knockedDownPins;
+  this._remainingPins = 10;
+  this._rollNumber = 1;
 };
 
 Roll.prototype.secondRollRandomizer = function(){

@@ -1,8 +1,8 @@
 'use strict';
 
 function Game(){
-  this._rollNumber = 0;
-  this._frameNumber = 0;
+  this._rollNumber = 1;
+  this._frameNumber = 1;
   this._score=0;
 }
 
@@ -20,7 +20,7 @@ Game.prototype.score = function(){
 };
 
 Game.prototype.increaseScore = function(roll){
+  this._score += roll.knockedDownPins();
   this._rollNumber = roll.rollNumber();
   if (this._rollNumber === 1) { this._frameNumber += 1;}
-  this._score += roll.knockedDownPins();
 };

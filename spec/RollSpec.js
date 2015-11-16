@@ -29,6 +29,14 @@ describe('Roll', function(){
       expect(roll.rollNumber()).toEqual(1);
     });
 
+    it('roll number reset at 1 after second roll', function(){
+      spyOn(Math,'random').and.returnValue(0.50);
+      roll.knockedDownPins();
+      spyOn(roll, 'secondRollRandomizer').and.returnValue(2)
+      roll.knockedDownPins();
+      expect(roll.rollNumber()).toEqual(1);
+    });
+
   });
 
   describe('when a professional is playing first roll', function(){

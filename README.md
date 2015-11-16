@@ -59,6 +59,36 @@ in order to make progress in the game
 I can start a new frame after two rolls or when I knocked down all the pins after one roll
 ```
 
+```
+As a player,
+in order to earn more points
+I can make a spare
+```
+
+```
+As a player,
+in order to earn more points
+I can make a strike
+```
+
+```
+As a player,
+in order to finish the game
+I can play 10 frames if I don't do a spare or a strike at 10th frame
+```
+
+```
+As a player,
+in order to finish the game
+I can play an 11th frame with one roll if I do a spare at the 10th frame
+```
+
+```
+As a player,
+in order to finish the game
+I can play an 11th frame with two rolls if I do a strike at the 10th frame
+```
+
 describe('it can start a new frame', function(){
 
   it('after two rolls', function(){

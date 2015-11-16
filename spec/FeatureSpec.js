@@ -18,9 +18,9 @@ beforeEach(function(){
 // I can start the game by making a first roll
 
   it('player can start game by making a first roll', function(){
+    spyOn(Math,'random').and.returnValue(0.13)
     player.makeRoll(game,roll);
-    expect(game.frameNumber()).toEqual(1);
-    expect(game.rollNumber()).toEqual(1);
+    expect(game.rollNumber()).toEqual(2);
   });
 
   // As a player,
@@ -61,6 +61,20 @@ beforeEach(function(){
   // in order to make progress in the game
   // I can start a new frame after two rolls or when I knocked down all the pins after one roll
 
-  
+  describe('it can start a new frame', function(){
+
+    it('after two rolls', function(){
+      spyOn(Math,'random').and.returnValue(0.13);
+      player.makeRoll(game,roll);
+      player.makeRoll(game,roll);
+      expect(game.frameNumber()).toEqual(2);
+    });
+
+    it('after one roll when making a strike', function(){
+      spyOn(Math,'random').and.returnValue(0.80)
+      player.makeRoll(game,roll);
+      expect(game.frameNumber()).toEqual(2);
+    });
+  });
 
 });

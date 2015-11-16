@@ -44,10 +44,11 @@ describe("Frame:", function() {
   it("resets after the game is over", function() {
     frame.recordPinsHit(2);
     frame.recordPinsHit(3);
-    frame.resetFrame();
+    frame.recordPinsHit(4);
     expect(frame.gameHistory).toEqual([[2, 3]]);
-    expect(frame.frameHistory.length).toEqual(0);
+    expect(frame.frameHistory.length).toEqual(1);
   });
+
 })
 
 describe("Game is over:", function() {

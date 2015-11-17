@@ -72,6 +72,13 @@ function BowlingGame() {
 
   BowlingGame.prototype.lastFrame = function(pins) {
     if ( this.currentRoll === 0 || this.currentRoll === 1) {
+      if (this.consecutiveStrikes === 2 && this.isStrike) {
+        this.totalScore += 30;
+      }
+      else if (this.consecutiveStrikes === 2) {
+        this.totalScore += 20 + pins;
+        this.consecutiveStrikes = 0;
+      }
       this.currentRoll +=1;
       this.currentScore += pins;
     }
@@ -122,9 +129,9 @@ BowlingGame.prototype.strikeScoring = function(pins) {
           this.currentScore += pins;
           this.totalScore += this.strikeScore + this. currentScore;
           this.isStrike = false;
-          this.consecutiveStrikes = 0
-          this.strikeScore = 0
-          this.currentScore = 0
+          this.consecutiveStrikes = 0;
+          this.strikeScore = 0;
+          this.currentScore = 0;
           this.strikeCount = 0;
         }
       }
@@ -132,6 +139,7 @@ BowlingGame.prototype.strikeScoring = function(pins) {
     else if (this.consecutiveStrikes === 2) {
       if (pins === this.STRIKE) {
         this.totalScore += 30;
+        this.framesLeft -= 1;
       }
       else {
         this.consecutiveStrikes -= 1;

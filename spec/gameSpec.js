@@ -26,4 +26,26 @@ describe('Game', function() {
 		});
 	});
 
+	describe('#score', function() {
+		it('should return the sum of array at the end of the frame', function() {
+			game.rollBall(1);
+			game.rollBall(2);
+			expect(game.currentScore).toEqual([3]);
+		});
+	});
+
+	describe('#spare', function() {
+		it('is a spare if the sum of the last two rolls is 10', function() {
+			game.rollBall(6);
+			game.rollBall(4);
+			expect(game.spare()).toEqual(true);
+		});
+		it('is not a spare if the sum of the last two rolls is different to 10', function() {
+			game.rollBall(4);
+			game.rollBall(2);
+			expect(game.spare()).toEqual(false);
+		});
+	});
+
+
 });

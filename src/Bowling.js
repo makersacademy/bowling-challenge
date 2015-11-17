@@ -12,34 +12,38 @@ function Bowling(frame, numberOfFrames) {
 
 Bowling.prototype.roll = function (number) {
   this.rolls.push(number);
-  var frameToHit = this.gameFrames.filter( function(frame) { return !frame.isOver() })[0]
-  frameToHit.hit(number);
-  if(frameToHit.isStrike()){
-    this.bonusIndexes.push(this.rolls.length);
-    this.bonusIndexes.push(this.rolls.length + 1);
-  } else if(frameToHit.isSpare()){
-    this.bonusIndexes.push(this.rolls.length);
-  };
+  var currentFrame = this.currentFrame()
+  currentFrame.hit(number);
+  if(currentFrame.isStrike()) {this.applyStrikeBonus();}
+  if(currentFrame.isSpare()){this.applySpareBonus(); };
+};
+
+Bowling.prototype.currentFrame = function(){
+  return this.gameFrames.filter( function(frame) { return !frame.isOver() })[0]
+};
+
+Bowling.prototype.applyStrikeBonus = function() {
+  this.bonusIndexes.push(this.rolls.length);
+  this.bonusIndexes.push(this.rolls.length + 1);
+};
+
+Bowling.prototype.applySpareBonus = function() {
+  this.bonusIndexes.push(this.rolls.length);
 };
 
 Bowling.prototype.bonusScore = function () {
-  x = this.bonusIndexes.map(function(item){
-    return this.rolls[item];
-  });
-  x.reduce(function(item, sum){
+  var rolls = this.rolls;
+  return this.bonusIndexes.map(function(item){return rolls[item]}).reduce(function(item, sum){
     return item + sum;
-  });
+  },0);
+};
+
+Bowling.prototype.rollScore = function(){
+  return this.rolls.reduce( function(item, sum) {
+    return item + sum;
+  },0);
 };
 
 Bowling.prototype.score = function() {
-
-  var rolls = this.rolls;
-  var bonusTotal = this.bonusIndexes.map(function(item){return rolls[item]}).reduce(function(item, sum){
-    return item + sum;
-  },0);
-
-  var rollTotal = this.rolls.reduce( function(item, sum) {
-    return item + sum;
-  },0);
-  return(bonusTotal + rollTotal);
+  return(this.bonusScore() + this.rollScore());
 };

@@ -41,18 +41,9 @@ describe("Bowling", function() {
 
   it("can score a perfect game of 300", function() {
     var perfectGame = new Bowling(Frame, 10);
-    perfectGame.roll(10);
-    perfectGame.roll(10);
-    perfectGame.roll(10);
-    perfectGame.roll(10);
-    perfectGame.roll(10);
-    perfectGame.roll(10);
-    perfectGame.roll(10);
-    perfectGame.roll(10);
-    perfectGame.roll(10);
-    perfectGame.roll(10);
-    perfectGame.roll(10);
-    perfectGame.roll(10);
+    for (var i= 0; i < 12; i++) {
+      perfectGame.roll(10);
+    };
     expect(perfectGame.score()).toEqual(300);
   });
 })

@@ -85,4 +85,25 @@ describe("Bowling Challenge", function() {
       });
 
     });
+
+    describe("functionality of strikes & spares", function(){
+      it('scoring is appropriate with one #strike in game', function() {
+        game.bowl(3);
+        game.bowl(4);
+        game.bowl(10);
+        for( i = 1; i < 17; i++) {
+          game.bowl(3);
+          }
+          expect(game.totalScore).toEqual(71);
+      });
+      it('scoring is appropriate with one #spare in game', function() {
+        game.bowl(3);
+        game.bowl(7);
+        game.bowl(6);
+        for( i = 1; i < 18; i++) {
+          game.bowl(3);
+          }
+          expect(game.totalScore).toEqual(73);
+      });
+    });
 });

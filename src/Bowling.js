@@ -47,7 +47,7 @@ function BowlingGame() {
           this.strikeScoring(pins);
         }
         else if ( this.isSpare ) {
-          this.spare(pins);
+          this.spareScoring(pins);
         }
           else { this.currentGo = 0;
           this.currentScore += pins;
@@ -56,25 +56,6 @@ function BowlingGame() {
           this.frames -= 1; }
         };
   };
-
-BowlingGame.prototype.spare = function(pins) {
-
-  if (this.spareCount === 1) {
-    this.spareScore += pins
-    this.currentScore += pins + this.spareScore;
-    this.currentGo += 1;
-    this.isSpare = false;
-    this.spareScore = 0;
-    this.spareCount = 0;
-    this.frames -= 1;
-  }
-  else {
-    this.spareScore = 10;
-    this.currentScore = 0;
-    this.spareCount = 1;
-    this.currentGo = 0;
-  }
-}
 
   BowlingGame.prototype.lastFrameCheck = function(pins) {
     if (this.lastFrameExtra != true) {
@@ -96,6 +77,28 @@ BowlingGame.prototype.spare = function(pins) {
       this.frames -= 1;
     }
   };
+
+BowlingGame.prototype.spareScoring = function(pins) {
+    if (this.spareCount === 0) {
+      this.spareScore = pins;
+      this.spareCount += 1;
+      this.totalScore += this.currentScore;
+      this.currentScore = 0;
+      this.frames -= 1;
+    }
+    else {
+      this.spareScore += pins;
+      this.currentScore = pins;
+      this.totalScore += this.spareScore;
+      this.spareScore = 0;
+      this.spareCount = 0;
+      this.isSpare = false;
+    }
+
+};
+
+
+
 
 
 

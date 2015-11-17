@@ -5,7 +5,7 @@ describe("Bowling Challenge", function() {
     });
 
     it('can roll a gutter game', function() {
-      for (i=0; i < 20; i++) {
+      for (i=1; i < 21; i++) {
         game.bowl(0);
       }
       expect(game.totalScore).toEqual(0);
@@ -52,9 +52,36 @@ describe("Bowling Challenge", function() {
       });
 
       it('allows 3 turns if you get a #spare or #strike in #frame 10', function() {
-        
+        for( i = 1; i < 20; i++) {
+          game.bowl(4);
+        }
+          game.bowl(10);
+          expect(game.lastFrameExtra).toEqual(true);
       });
 
+      it('can calculate a maximum score with #isStrike', function() {
+        for( i = 1; i < 12; i++) {
+          game.bowl(10);
+        }
+          game.bowl(10);
+          expect(game.totalScore).toEqual(300);
+      });
+
+      it('can calculate a a correct #totalscore', function() {
+        game.bowl(4)
+        for( i = 1; i < 19; i++) {
+          game.bowl(3);
+          }
+          game.bowl(4);
+          expect(game.totalScore).toEqual(62);
+      });
+
+      it('throws error if you bowl 3 times in final frame', function() {
+        for( i = 1; i < 21; i++) {
+          game.bowl(3);
+          }
+        expect(function() {game.bowl(3)}).toThrow(new Error (game.GAMEOVER_ERROR));
+      });
 
     });
 });

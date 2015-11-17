@@ -39,6 +39,9 @@ function BowlingGame() {
         if ( this.isStrike ) {
           this.strikeScoring(pins);
         }
+        else if ( this.isSpare ) {
+          this.spareScoring(pins);
+        }
         else { this.currentGo +=1;
         this.currentScore += pins; }
       }
@@ -84,6 +87,7 @@ BowlingGame.prototype.spareScoring = function(pins) {
       this.spareCount += 1;
       this.totalScore += this.currentScore;
       this.currentScore = 0;
+      this.currentGo = 0;
       this.frames -= 1;
     }
     else {
@@ -93,6 +97,7 @@ BowlingGame.prototype.spareScoring = function(pins) {
       this.spareScore = 0;
       this.spareCount = 0;
       this.isSpare = false;
+      this.currentGo += 1;
     }
 
 };
@@ -108,6 +113,13 @@ BowlingGame.prototype.strikeScoring = function(pins) {
         this.consecutiveStrikes += 1;
         this.strikeScore = 10;
         this.frames -= 1;
+        if (this.isSpare) {
+          this.spareScore += pins;
+          this.totalScore += this.spareScore + this.currentScore;
+          this.spareScore = 0;
+          this.spareCount = 0;
+          this.isSpare = false;
+        }
       }
 
     }

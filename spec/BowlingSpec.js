@@ -105,5 +105,14 @@ describe("Bowling Challenge", function() {
           }
           expect(game.totalScore).toEqual(73);
       });
+      it('scoring is appropriate with a #spare followed by a #strike', function() {
+        game.bowl(3);
+        game.bowl(7);
+        game.bowl(10);
+        for( i = 1; i < 17; i++) {
+          game.bowl(3);
+          }
+          expect(game.totalScore).toEqual(84);
+      });
     });
 });

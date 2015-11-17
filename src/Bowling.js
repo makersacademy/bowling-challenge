@@ -37,8 +37,9 @@ Bowling.prototype.applySpareBonus = function() {
 
 Bowling.prototype.bonusScore = function () {
   var rolls = this.rolls;
-  return this.bonusIndexes.map(function(item){return rolls[item]}).reduce(function(item, sum){
-    return item + sum;
+  return this.bonusIndexes.map(function(item){
+      return rolls[item]}).reduce(function(item, sum){
+        return item + sum;
   },0);
 };
 

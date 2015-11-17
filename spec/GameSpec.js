@@ -8,18 +8,18 @@ describe("Game", function() {
   describe("consists of frames", function() {
     it("with a gutter game", function() {
       game.registerRoll(0);
-      expect(game.remainingPins()).toEqual(10);
+      expect(game.totalFrame()).toEqual(0);
     });
 
     it("with one registered roll", function() {
       game.registerRoll(7);
-      expect(game.remainingPins()).toEqual(3);
+      expect(game.totalFrame()).toEqual(7);
     });
 
     it("with two registered rolls", function() {
       game.registerRoll(3);
       game.registerRoll(5);
-      expect(game.remainingPins()).toEqual(2);
+      expect(game.totalFrame()).toEqual(8);
     });
   });
 
@@ -61,7 +61,7 @@ describe("Game", function() {
       var frameTwo = { total : function() { return 6 } };
       game.addFrame(frameOne);
       game.addFrame(frameTwo);
-      expect(game.totalScore()).toEqual(13)
+      expect(game.totalScore()).toEqual(13);
     });
   });
 

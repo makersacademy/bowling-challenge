@@ -14,8 +14,12 @@ Bowling.prototype.roll = function (number) {
   this.rolls.push(number);
   var currentFrame = this.currentFrame()
   currentFrame.hit(number);
-  if(currentFrame.isStrike()) {this.applyStrikeBonus();}
-  if(currentFrame.isSpare()){this.applySpareBonus(); };
+  this.applyBonus(currentFrame);
+};
+
+Bowling.prototype.applyBonus = function(frame) {
+  if(frame.isStrike()) {this.applyStrikeBonus();}
+  if(frame.isSpare()) {this.applySpareBonus(); };
 };
 
 Bowling.prototype.currentFrame = function(){

@@ -52,4 +52,32 @@ describe("Frame", function() {
       newFrame.hit(5);
       expect(newFrame.isSpare()).toEqual(true);
     });
+
+    it("should allow to roll 3 times in last frame if strike", function() {
+      newFrame.isLastFrame = true;
+      newFrame.hit(10);
+      expect(newFrame.isOver()).toEqual(false);
+    });
+
+    it("should be over with 2 rolls with pins left over in last frame", function () {
+      newFrame.isLastFrame = true;
+      newFrame.hit(1);
+      newFrame.hit(2);
+      expect(newFrame.isOver()).toEqual(true);
+    });
+
+    it("should allow to roll 3 times in last frame if spare", function() {
+      newFrame.isLastFrame = true;
+      newFrame.hit(5);
+      newFrame.hit(5);
+      expect(newFrame.isOver()).toEqual(false);
+    });
+
+    it("if you've rolled three times then the game should be over", function () {
+      newFrame.isLastFrame = true;
+      newFrame.hit(10);
+      newFrame.hit(10);
+      newFrame.hit(10);
+      expect(newFrame.isOver()).toEqual(true);
+    });
 })

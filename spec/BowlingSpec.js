@@ -4,12 +4,12 @@ describe("Bowling", function() {
   var gameFramesCount;
 
   beforeEach( function() {
-  gameFramesCount = 2;
+  gameFramesCount = 3;
   bowlingGame = new Bowling(Frame, gameFramesCount);
   });
 
   it("each game begins with n frames", function() {
-    expect(bowlingGame.gameFrames.length).toEqual(2);
+    expect(bowlingGame.gameFrames.length).toEqual(3);
   });
 
   it("the first frame is not over", function() {
@@ -37,5 +37,22 @@ describe("Bowling", function() {
     bowlingGame.roll(5);
     bowlingGame.roll(2);
     expect(bowlingGame.score()).toEqual(24);
+  });
+
+  it("can score a perfect game of 300", function() {
+    var perfectGame = new Bowling(Frame, 10);
+    perfectGame.roll(10);
+    perfectGame.roll(10);
+    perfectGame.roll(10);
+    perfectGame.roll(10);
+    perfectGame.roll(10);
+    perfectGame.roll(10);
+    perfectGame.roll(10);
+    perfectGame.roll(10);
+    perfectGame.roll(10);
+    perfectGame.roll(10);
+    perfectGame.roll(10);
+    perfectGame.roll(10);
+    expect(perfectGame.score()).toEqual(300);
   });
 })

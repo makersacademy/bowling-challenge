@@ -6,8 +6,8 @@ function Game () {
 }
 
 Game.prototype.registerRoll = function(knockingDownPins) {
-  this.rollCount += 1;
   this.pins -= knockingDownPins;
+  this.rollCount += 1;
 };
 
 Game.prototype.remainingPins = function() {
@@ -32,4 +32,12 @@ Game.prototype.totalScore = function() {
     runningTotal += this.frames[i].total();
   }
   return runningTotal;
+};
+
+Game.prototype.isStrike = function() {
+  return (this.rollCount === 1 && this.pins === 0);
+};
+
+Game.prototype.isSpare = function() {
+  return (this.rollCount === 2 && this.pins === 0);
 };

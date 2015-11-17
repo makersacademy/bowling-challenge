@@ -24,7 +24,7 @@ describe("Game", function() {
   });
 
   describe("is over", function() {
-    it("after 2 rolls", function() {
+    it("after two rolls", function() {
       game.registerRoll(3);
       game.registerRoll(2);
       expect(game.isOver()).toEqual(true);
@@ -43,22 +43,36 @@ describe("Game", function() {
   });
 
   describe("is not over", function() {
-    it("after less than 2 rolls", function() {
+    it("after less than two rolls", function() {
+      game.registerRoll(4);
       expect(game.isOver()).toEqual(false);
     });
   });
 
-  it("has the total score for one frame", function() {
-    game.registerRoll(2);
-    game.registerRoll(6);
-    expect(game.totalFrame()).toEqual(8);
+  describe("has the total score", function() {
+    it("for one frame", function() {
+      game.registerRoll(2);
+      game.registerRoll(6);
+      expect(game.totalFrame()).toEqual(8);
+    });
+
+    it("for several frames", function() {
+      var frameOne = { total : function() { return 7 } };
+      var frameTwo = { total : function() { return 6 } };
+      game.addFrame(frameOne);
+      game.addFrame(frameTwo);
+      expect(game.totalScore()).toEqual(13)
+    });
   });
 
-  it("has the total score for several frames", function() {
-    var frameOne = { total : function() { return 7 } };
-    var frameTwo = { total : function() { return 6 } };
-    game.addFrame(frameOne);
-    game.addFrame(frameTwo);
-    expect(game.totalScore()).toEqual(13)
+  it("has a strike in a frame", function() {
+    game.registerRoll(10);
+    expect(game.isStrike()).toEqual(true);
+  });
+
+  it("has a spare in a frame", function() {
+    game.registerRoll(8);
+    game.registerRoll(2);
+    expect(game.isSpare()).toEqual(true);
   });
 });

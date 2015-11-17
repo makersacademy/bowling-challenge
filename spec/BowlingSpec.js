@@ -68,12 +68,13 @@ describe("Bowling Challenge", function() {
       });
 
       it('can calculate a a correct #totalscore', function() {
-        game.bowl(4)
-        for( i = 1; i < 19; i++) {
+        game.bowl(10);
+        game.bowl(10);
+        for( i = 1; i < 18; i++) {
           game.bowl(3);
           }
           game.bowl(4);
-          expect(game.totalScore).toEqual(62);
+          expect(game.totalScore).toEqual(94);
       });
 
       it('throws error if you bowl 3 times in final frame', function() {

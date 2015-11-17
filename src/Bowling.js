@@ -13,6 +13,7 @@ function BowlingGame() {
   this.spareCount = 0;
   this.spareScore = 0;
   this.lastFrameExtra = false;
+  this.consecutiveStrikes = 0;
   this.GAMEOVER_ERROR = "The game is over you cannot bowl again";
 
   };
@@ -36,14 +37,14 @@ function BowlingGame() {
   BowlingGame.prototype.currentMove = function(pins) {
     if ( this.currentGo === 0 ) {
         if ( this.isStrike ) {
-          this.strike(pins);
+          this.strikeScoring(pins);
         }
         else { this.currentGo +=1;
         this.currentScore += pins; }
       }
     else {
         if ( this.isStrike ) {
-          this.strike(pins);
+          this.strikeScoring(pins);
         }
         else if ( this.isSpare ) {
           this.spare(pins);
@@ -75,33 +76,6 @@ BowlingGame.prototype.spare = function(pins) {
   }
 }
 
-BowlingGame.prototype.strike = function(pins) {
-
-      if (this.strikeCount === 1) {
-        this.strikeScore += pins;
-        this.strikeCount += 1;
-        this.currentScore += pins;
-      }
-      else if (this.strikeCount === 2) {
-        this.strikeScore += pins;
-        this.currentScore += pins;
-        this.totalScore += this.strikeScore + this.currentScore;
-        this.currentScore = 0;
-        this.currentGo = 0;
-        this.isSrike = false;
-        this.strikeScore = 0;
-        this.strikeCount = 0;
-        this.frames -= 1
-      }
-      else {
-        this.strikeCount = 1;
-        this.currentScore += pins;
-        this.strikeScore += pins;
-        this.frames -= 1;
-      }
-
-}
-
   BowlingGame.prototype.lastFrameCheck = function(pins) {
     if (this.lastFrameExtra != true) {
       if (this.isStrike || this.isSpare) {
@@ -122,3 +96,51 @@ BowlingGame.prototype.strike = function(pins) {
       this.frames -= 1;
     }
   };
+
+
+
+BowlingGame.prototype.strikeScoring = function(pins) {
+    if (this.consecutiveStrikes === 0) {
+      if (pins === 10) {
+        this.consecutiveStrikes += 1;
+        this.strikeScore = 10;
+        this.frames -= 1;
+      }
+
+    }
+    else if (this.consecutiveStrikes === 1) {
+      if (pins === 10) {
+        this.consecutiveStrikes += 1;
+        this.frames -= 1;
+      }
+      else {
+        if (this.strikeCount === 0) {
+          this.strikeCount += 1;
+          this.strikeScore += pins;
+          this.currentScore += pins;
+        }
+        else {
+          this.strikeScore += pins;
+          this.currentScore += pins;
+          this.totalScore += this.strikeScore + this. currentScore;
+          this.isStrike = false;
+          this.consecutiveStrikes = 0
+          this.strikeScore = 0
+          this.currentScore = 0
+          this.strikeCount = 0;
+        }
+      }
+    }
+    else if (this.consecutiveStrikes === 2) {
+      if (pins === 10) {
+        this.totalScore += 30;
+      }
+      else {
+        this.consecutiveStrikes -= 1;
+        this.strikeCount += 1;
+        this.strikeScore += pins;
+        this.currentScore += pins;
+        this.totalScore += 20 + pins;
+      }
+    }
+};

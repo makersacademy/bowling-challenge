@@ -1,11 +1,15 @@
 
 body {
-    font-family:arial,helvetica,sans-serif;
+    font-family: "Helvetica Neue",
+                  helvetica,
+                  arial,
+                  sans-serif;
     font-size:12px;
 }
 
 #wrapper {
-  width:900px;
+  /* width:900px; */
+  max-width: 540px;
   margin:0px auto;
   border:1px solid #bbb;
   padding:10px;
@@ -15,6 +19,9 @@ body {
   border:1px solid #bbb;
   height:80px;
   padding:10px;
+  text-align: center;
+  font-family: serif;
+  font-size:30px;
 }
 
 #content {
@@ -30,47 +37,79 @@ body {
 
 #content-title-frame {
   width:100px;
+  text-align: center;
+  font-size:18px;
 }
 
 #content-title-roll {
   margin-left:10px;
   width:100px;
+  text-align: center;
+  font-size:18px;
 }
 
 #content-title-pins {
   margin-left:10px;
-    width:100px;
+  width:100px;
+  text-align: center;
+  font-size:18px;
 }
 
 #content-title-score {
   margin-left:10px;
-    width:100px;
+  width:100px;
+  text-align: center;
+  font-size:18px;
 }
 
 #content-cell-frame {
   width:100px;
+  text-align: center;
+  font-size:14px;
 }
 
 #content-cell-roll {
   margin-left:10px;
   width:100px;
+  text-align: center;
+  font-size:14px;
 }
 
 #content-cell-pins {
   margin-left:10px;
-    width:100px;
+  width:100px;
+  text-align: center;
+  font-size:14px;
 }
 
 #content-cell-score {
   margin-left:10px;
-    width:100px;
+  width:100px;
+  text-align: center;
+  font-size:14px;
 }
 
 #bottom {
     float:left;
+    /*
     margin-top:10px;
     margin-bottom:10px;
+    */
+    margin: 10px auto;
     padding:10px;
     border:1px solid #bbb;
-    width:880px;
+    /* width:880px; */
+    max-width: 400px;
+}
+
+#bowl-ball {
+  background-color: green;
+  font-size:14px;
+  margin: 0px 80px;
+}
+
+#new-game {
+  background-color: red;
+  font-size:14px;
+
 }

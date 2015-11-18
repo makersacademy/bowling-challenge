@@ -157,6 +157,80 @@ describe('example bowlingGame', function(){
     bowlingGame.bowl();
     expect(bowlingGame._score).toEqual(133);
   });
+});
 
+describe('maximum score bowlingGame', function(){
+  var bowlingGame = new BowlingGame();
 
+  it('frame 1, roll 1, pins 10', function() {
+    spyOn(bowlingGame, "generateRandomPins").and.returnValue(10);
+    bowlingGame.bowl();
+    expect(bowlingGame._score).toEqual(10);
+  });
+
+  it('frame 2, roll 1, pins 10', function() {
+    spyOn(bowlingGame, "generateRandomPins").and.returnValue(10);
+    bowlingGame.bowl();
+    expect(bowlingGame._score).toEqual(30);
+  });
+
+  it('frame 3, roll 1, pins 10', function() {
+    spyOn(bowlingGame, "generateRandomPins").and.returnValue(10);
+    bowlingGame.bowl();
+    expect(bowlingGame._score).toEqual(60);
+  });
+
+  it('frame 4, roll 1, pins 10 ', function() {
+    spyOn(bowlingGame, "generateRandomPins").and.returnValue(10);
+    bowlingGame.bowl();
+    expect(bowlingGame._score).toEqual(90);
+  });
+
+  it('frame 5, roll 1, pins 10 ', function() {
+    spyOn(bowlingGame, "generateRandomPins").and.returnValue(10);
+    bowlingGame.bowl();
+    expect(bowlingGame._score).toEqual(120);
+  });
+
+  it('frame 6, roll 1, pins 1 ', function() {
+    spyOn(bowlingGame, "generateRandomPins").and.returnValue(10);
+    bowlingGame.bowl();
+    expect(bowlingGame._score).toEqual(150);
+  });
+
+  it('frame 7, roll 1, pins 10 ', function() {
+    spyOn(bowlingGame, "generateRandomPins").and.returnValue(10);
+    bowlingGame.bowl();
+    expect(bowlingGame._score).toEqual(180);
+  });
+
+  it('frame 8, roll 1, pins 10 ', function() {
+    spyOn(bowlingGame, "generateRandomPins").and.returnValue(10);
+    bowlingGame.bowl();
+    expect(bowlingGame._score).toEqual(210);
+  });
+
+  it('frame 9, roll 1, pins 10 ', function() {
+    spyOn(bowlingGame, "generateRandomPins").and.returnValue(10);
+    bowlingGame.bowl();
+    expect(bowlingGame._score).toEqual(240);
+  });
+
+  it('frame 10, roll 1, pins 10 ', function() {
+    spyOn(bowlingGame, "generateRandomPins").and.returnValue(10);
+    bowlingGame.bowl();
+    expect(bowlingGame._score).toEqual(270);
+  });
+
+  it('frame 10, roll 2, pins 10 ', function() {
+    spyOn(bowlingGame, "generateRandomPins").and.returnValue(10);
+    bowlingGame.bowl();
+    expect(bowlingGame._score).toEqual(290);
+  });
+
+  it('frame 10, roll 3, pins 10 ', function() {
+    spyOn(bowlingGame, "generateRandomPins").and.returnValue(10);
+    bowlingGame.bowl();
+    expect(bowlingGame._score).toEqual(300);
+  });
 });

@@ -13,7 +13,6 @@ describe('bowlingGame', function(){
     spyOn(bowlingGame, "generateRandomPins").and.returnValue(bowlingGame.STRIKE);
     bowlingGame.bowl();
     expect(bowlingGame._score).toEqual(10);
-    expect(bowlingGame._bonusBalls).toEqual(2);
   });
 
   it('first frame, score SPARE', function() {
@@ -21,7 +20,6 @@ describe('bowlingGame', function(){
     bowlingGame.bowl();
     bowlingGame.bowl();
     expect(bowlingGame._score).toEqual(10);
-    expect(bowlingGame._bonusBalls).toEqual(1);
   });
 
   it('first frame, score regular', function() {
@@ -29,7 +27,6 @@ describe('bowlingGame', function(){
     bowlingGame.bowl();
     bowlingGame.bowl();
     expect(bowlingGame._score).toEqual(8);
-    expect(bowlingGame._bonusBalls).toEqual(0);
   });
 
   it('first frame STRIKE, second frame STRIKE', function() {
@@ -37,7 +34,6 @@ describe('bowlingGame', function(){
     bowlingGame.bowl();
     bowlingGame.bowl();
     expect(bowlingGame._score).toEqual(30);
-    expect(bowlingGame._bonusBalls).toEqual(3);
   });
 });
 

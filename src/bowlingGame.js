@@ -1,22 +1,24 @@
 function BowlingGame(scoreSheet) {
-
   this.STRIKE = 10;
   this.SPARE = 10;
   this.PINS = 10;
   this.MAXFRAMES = 10;
+  this.MAXBOWLSBOWLED = 23
 
   this._score = 0;
   this._frame = 1;
   this._bowlsRemaining = 2;
   this._bowlsBowled = 0;
   this._bowlsBowledTotal = 0;
-  this._bonusBalls = 0;
   this._bonuses = [];
   this._pinsKnockedDown = 0;
   this._pinsStanding = 10;
   this._scoreSheet = typeof scoreSheet !== 'undefined' ? scoreSheet : new ScoreSheet();
   this._gameOver = false;
+
+  this.initBonuses(this._bonuses);
 }
+
 
 BowlingGame.prototype.newGame = function(scoreSheet) {
   this._score = 0;
@@ -24,12 +26,13 @@ BowlingGame.prototype.newGame = function(scoreSheet) {
   this._bowlsRemaining = 2;
   this._bowlsBowled = 0;
   this._bowlsBowledTotal = 0;
-  this._bonusBalls = 0;
   this._bonuses = [];
   this._pinsKnockedDown = 0;
   this._pinsStanding = 10;
   this._scoreSheet = typeof scoreSheet !== 'undefined' ? scoreSheet : new ScoreSheet();
   this._gameOver = false;
+
+  this.initBonuses(this._pinsKnockedDown);
 }
 
 BowlingGame.prototype.bowl = function() {
@@ -73,46 +76,40 @@ BowlingGame.prototype.playLastFrame = function() {
   this._bowlsRemaining -= 1;
   this._bowlsBowled += 1;
   this._bowlsBowledTotal += 1;
+   console.log('last frame, regular');
+    console.log(this._score);
 
-  if (this.isStrike()) {
-    this.addStrikeToScore();
+  if ((this._bowlsBowled === 1) && (this._pinsStanding === 0)) {
+    // strike add two extra bowls
     this._bowlsRemaining = 2;
-  } else if (this.isSpare()) {
-    this.addSpareToScore();
+    this._score += this._pinsKnockedDown * (this.getBonus(this._bowlsBowledTotal) +1);
+  } else if ((this._bowlsBowled === 2) && (this._pinsStanding === 0)) {
+    // strike or a spare add one extra bowl
     this._bowlsRemaining = 1;
+    this._score += this._pinsKnockedDown * (this.getBonus(this._bowlsBowledTotal) +1);
   } else {
-    this.addRegularBowlToScore();
+    this._score += this._pinsKnockedDown * (this.getBonus(this._bowlsBowledTotal) +1);
   }
 };
 
 BowlingGame.prototype.addRegularBowlToScore = function()  {
-  if (this._bonusBalls > 0) {
-    this._score += this._pinsKnockedDown;
-    this._bonusBalls -= 1;
-  }
-  this._score += this._pinsKnockedDown;
+  this._score += this._pinsKnockedDown * (this.getBonus(this._bowlsBowledTotal) +1);
 };
 
 BowlingGame.prototype.addStrikeToScore = function()  {
-  if (this._bonusBalls > 0) {
-    this._score += this._pinsKnockedDown;
-    this._bonusBalls -= 1;
-  }
-  this._score += this._pinsKnockedDown;
+  this._score += this._pinsKnockedDown * (this.getBonus(this._bowlsBowledTotal) +1);
 
   if (this.isLastFrame() === false) {
-    this._bonusBalls += 2;
+    this.setBonus(this._bowlsBowledTotal+1);
+    this.setBonus(this._bowlsBowledTotal + 2);
   }
 };
 
 BowlingGame.prototype.addSpareToScore = function()  {
-  if (this._bonusBalls > 0) {
-    this._score += this._pinsKnockedDown;
-    this._bonusBalls -= 1;
-  }
-  this._score += this._pinsKnockedDown;
+  this._score += this._pinsKnockedDown * (this.getBonus(this._bowlsBowledTotal) +1);
+
   if (this.isLastFrame() === false) {
-    this._bonusBalls += 1;
+    this.setBonus(this._bowlsBowledTotal+1);
   }
 };
 
@@ -181,3 +178,18 @@ BowlingGame.prototype.isGameOver = function() {
 BowlingGame.prototype.generateRandomPins = function() {
   return Math.floor(Math.random() * (this._pinsStanding + 1));
 };
+
+BowlingGame.prototype.initBonuses = function() {
+  for (var i = 0; i < this.MAXBOWLSBOWLED; i++) {
+    this._bonuses[i] = 0;
+  }
+}
+
+BowlingGame.prototype.setBonus = function(bowl) {
+  this._bonuses[(bowl - 1)] += 1;
+}
+
+BowlingGame.prototype.getBonus = function(bowl) {
+  return this._bonuses[(bowl - 1)];
+}
+

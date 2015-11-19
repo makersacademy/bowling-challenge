@@ -10,7 +10,7 @@ describe('bowlingGame', function(){
   });
 
   it('first frame, score STRIKE', function() {
-    spyOn(bowlingGame, "generateRandomPins").and.returnValue(bowlingGame.STRIKE);
+    spyOn(bowlingGame, "generateRandomPins").and.returnValue(10);
     bowlingGame.bowl();
     expect(bowlingGame._score).toEqual(10);
   });
@@ -30,7 +30,7 @@ describe('bowlingGame', function(){
   });
 
   it('first frame STRIKE, second frame STRIKE', function() {
-    spyOn(bowlingGame, "generateRandomPins").and.returnValue(bowlingGame.STRIKE);
+    spyOn(bowlingGame, "generateRandomPins").and.returnValue(10);
     bowlingGame.bowl();
     bowlingGame.bowl();
     expect(bowlingGame._score).toEqual(30);

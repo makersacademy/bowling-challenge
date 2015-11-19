@@ -3,8 +3,7 @@ function ScoreSheet() {
 }
 
 ScoreSheet.prototype.update = function(frame, roll, pinsDown, score) {
-  var entry = {
-                frame: frame,
+  var entry = { frame: frame,
                 roll: roll,
                 pinsDown: pinsDown,
                 score: score

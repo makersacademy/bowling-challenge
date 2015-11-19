@@ -14,7 +14,8 @@ BowlingGame.prototype.newGame = function(scoreSheet) {
   this._bonuses = [];
   this._pinsKnockedDown = 0;
   this._pinsStanding = 10;
-  this._scoreSheet = typeof scoreSheet !== 'undefined' ? scoreSheet : new ScoreSheet();
+  this._scoreSheet = typeof scoreSheet !== 'undefined' ?
+                            scoreSheet : new ScoreSheet();
 
   this.initBonuses();
 }
@@ -26,7 +27,8 @@ BowlingGame.prototype.bowl = function() {
   this._bowlsBowled += 1;
   this._bowlsBowledTotal += 1;
 
-  this._score += this._pinsKnockedDown * (this.getBonus(this._bowlsBowledTotal) +1);
+  this._score += this._pinsKnockedDown *
+                  (this.getBonus(this._bowlsBowledTotal) +1);
 
   if (this.isLastFrame()) {
     this.addLastFrameBonus();

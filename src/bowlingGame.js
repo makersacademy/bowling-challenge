@@ -61,7 +61,6 @@ BowlingGame.prototype.addLastFrameBonus = function() {
   }
 };
 
-
 BowlingGame.prototype.addStrikeBonus = function()  {
   this.setBonus(this._bowlsBowledTotal+1);
   this.setBonus(this._bowlsBowledTotal + 2);

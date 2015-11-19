@@ -1,4 +1,42 @@
 
+Status of project
+=================
+
+The logic for implementing ten pin bowling game is mostly implmented.
+The player can 
+* bowl up to 10 frames
+* view their score
+* bowl button is disabled at the end of the 10th frame
+* restart a game
+
+Limitations
+===========
+
+I have run out of time to 
+* implement correctly the rules for the 10th frame
+* improve the layout of the screen with more sophisticated CSS.
+
+I have implemented a wrapper element to "contain" all the game's display elements such as
+* header
+* score
+* buttons
+
+Unfortunalety the wrapper object doesn't appear to be calculating it's size correctly which is
+apparent from the screen shots.
+
+![Start screen](images/startGame.png)
+![Frame 1](images/frame1.png)
+![End of Game Frame 10](images/endGame.png)
+
+
+Instructions for running BDD jasmine scripts
+============================================
+Open SpecRunner.html in the browser
+
+Instructions for running the game
+============================================
+Open index.html in the browser
+
 Bowling Challenge
 =================
 

@@ -48,4 +48,17 @@ describe('Frame', function(){
       expect(frame.isFinished()).toBe(false);
     });
   });
+
+  describe('#isStrike', function() {
+    it('knows when it is a strike', function() {
+      frame.addRoll(10);
+      expect(frame.isStrike()).toBe(true);
+    });
+
+    it('knows when is is not a strike', function() {
+      frame.addRoll(1);
+      frame.addRoll(1);
+      expect(frame.isStrike()).toBe(false);
+    });
+});
 });

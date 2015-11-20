@@ -20,7 +20,8 @@ Game.prototype.score = function(){
 };
 
 Game.prototype.increaseScore = function(roll){
-  this._score += roll.knockedDownPins();
+  if (roll.isSpare === true) {this._score += roll.knockedDownPins() * 2; roll._isSpare = false;}
+  else {this._score += roll.knockedDownPins();}
   this._rollNumber = roll.rollNumber();
   if (this._rollNumber === 1) { this._frameNumber += 1;}
 };

@@ -2,9 +2,10 @@
 
 describe('Game', function(){
   var game;
+  var roll;
   var rollOneWithSevenPins;
   var rollTwoWithTwoPins;
-
+  var rollTwoWithThreePins;
 
   beforeEach(function(){
     game = new Game();
@@ -24,6 +25,19 @@ describe('Game', function(){
       },
       knockedDownPins: function() {
         return 2;
+      },
+      isSpare: function() {
+        return: true
+      }
+
+    }
+
+    rollTwoWithThreePins = {
+      rollNumber: function() {
+        return 1;
+      },
+      knockedDownPins: function() {
+        return 3;
       }
     }
 
@@ -59,8 +73,16 @@ describe('Game', function(){
 
   it('can increase the score at second roll', function(){
     game.increaseScore(rollOneWithSevenPins);
+    game.increaseScore(rollTwoWithThreePins);
+    expect(game.score()).toEqual(10);
+  });
+
+  it('can account for a spare', function() {
+    game.increaseScore(rollOneWithSevenPins);
+    game.increaseScore(rollTwoWithThreePins);
+    spyOn(rollTwoWithTwoPins,'isSpare').and.returnValue(true);
     game.increaseScore(rollTwoWithTwoPins);
-    expect(game.score()).toEqual(9);
+    expect(game.score()).toEqual(14);
   });
 
 });

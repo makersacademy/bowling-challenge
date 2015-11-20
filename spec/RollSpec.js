@@ -11,6 +11,14 @@ describe('Roll', function(){
     expect(roll.pinNumber()).toEqual(10);
   });
 
+  it('can track spares', function(){
+    spyOn(Math, 'random').and.returnValue(0.05)
+    roll.knockedDownPins();
+    spyOn(Math, 'floor').and.returnValue(5)
+    roll.knockedDownPins();
+    expect(roll.isSpare()).toEqual(true);
+  });
+
   describe('roll number', function(){
 
     it('roll number set at 1 by default', function(){

@@ -77,4 +77,17 @@ beforeEach(function(){
     });
   });
 
+  // As a player,
+  // in order to earn more points
+  // I can make a spare
+
+  it('can make a spare', function(){
+    spyOn(roll,'knockedDownPins').and.returnValue(5)
+    player.makeRoll(game,roll);
+    player.makeRoll(game,roll);
+    spyOn(roll;'isSpare').and.returnValue(true);
+    player.makeRoll(game,roll);
+    expect(game.score()).toEqual(20);
+  });
+
 });

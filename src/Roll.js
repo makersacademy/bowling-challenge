@@ -4,6 +4,7 @@ function Roll(){
   this._remainingPins = 10;
   this._knockedDownPins = 0;
   this._rollNumber = 1;
+  this._isSpare = false;
 }
 
 Roll.prototype.pinNumber = function(){
@@ -12,6 +13,10 @@ Roll.prototype.pinNumber = function(){
 
 Roll.prototype.rollNumber = function(){
   return this._rollNumber;
+};
+
+Roll.prototype.isSpare = function(){
+  return this._isSpare;
 };
 
 Roll.prototype.knockedDownPins = function(){
@@ -40,6 +45,7 @@ Roll.prototype.knockedDownPinsFirstRoll = function(){
 
 Roll.prototype.knockedDownPinsSecondRoll = function(){
   this._knockedDownPins = this.secondRollRandomizer();
+  if (this._knockedDownPins === this._remainingPins) {this._isSpare = true;}
   this._remainingPins = 10;
   this._rollNumber = 1;
 };

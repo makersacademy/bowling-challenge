@@ -4,6 +4,7 @@ function Game() {
 	this.currentScore = [];
 	this.halfStrike = false;
 	this.bonus = 0;
+	this.strikeBonus = 0;
 };
 
 Game.prototype.rollBall = function(pinsDown) {
@@ -16,9 +17,10 @@ Game.prototype.rollBall = function(pinsDown) {
 	} else {
 			this.rollsArray.push(pinsDown);
 	}
-	console.log(this.rollsArray);
-	console.log(this.spare());
-	console.log(this.currentScore);
+	//console.log(this.rollsArray);
+	//console.log(this.spare());
+	//console.log(this.currentScore);
+	console.log(this.bonus);
 
 	this.spare();
 	this.isSecondRoll();
@@ -37,7 +39,11 @@ Game.prototype.isSecondRoll = function() {
 Game.prototype.score = function() {
 
 	if (this.secondRoll) {
-		return this.currentScore.push(this.bonus + this.rollsArray.reduce(function(a,b){return a+b;}));
+		if (this.rollsArray.length >=4 && parseInt(this.rollsArray.slice(-4), 10) === 10) {
+			this.strikeBonus = this.strikeBonus + parseInt(this.rollsArray.slice(-2), 10) + parseInt(this.rollsArray.slice(-1), 10);
+			this.currentScore.splice(-1, 1, parseInt(this.currentScore.slice(-1), 10) + this.strikeBonus);
+		} 
+		return this.currentScore.push(this.bonus + this.strikeBonus + this.rollsArray.reduce(function(a,b){return a+b;}));
 	} else {
 		return this.currentScore;
 	}

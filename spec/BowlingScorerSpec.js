@@ -32,6 +32,11 @@ describe('BowlingScorer',function(){
     expect(scorer.score()).toEqual(15);
   });
 
+  it('can score multiple frames with a spare', function(){
+    scorer.addFrame(7,3);
+    scorer.addFrame(4,2);
+    expect(scorer.score()).toEqual(20);
+  });
 });
 
 

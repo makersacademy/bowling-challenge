@@ -1,17 +1,13 @@
 function Frame(frameNumber) {
   this.frameNumber = frameNumber;
   this.totalForFrame = null;
-  this.currentBall = 1;
+  this.lastBallRolled = 0;
   this.balls = [0,0,0];
   this.scoreCalculated = false;
 }
 
-Frame.prototype.setBall = function(ball, pins) {
-  this.balls[ball-1] = pins;
-  this.currentBall = ball;
-  if (this.scoreCanBeFinalised()) {
-    this.finalise(this.total(this.total()));
-  }
+Frame.prototype.setBall = function(pins) {
+  this.balls[this.lastBallRolled++] = pins;
 }
 
 Frame.prototype.finalise = function(total) {
@@ -20,7 +16,7 @@ Frame.prototype.finalise = function(total) {
 }
 
 Frame.prototype.scoreCanBeFinalised = function() {
-  return ((this.currentBall > 1) && (this.total() < 10))
+  return ((this.lastBallRolled > 1) && (this.total() < 10))
 }
 
 Frame.prototype.isStrike = function() {
@@ -28,7 +24,7 @@ Frame.prototype.isStrike = function() {
 }
 
 Frame.prototype.isSpare = function() {
-  return ((this.currentBall > 1) && (this.total() === 10))
+  return ((this.lastBallRolled > 1) && (this.total() === 10))
 }
 
 Frame.prototype.firstTwoBalls = function() {

@@ -1,10 +1,10 @@
 describe('Bowling Game Features', function() {
-  var game;
-  var perfectGame;
-  var gutterGame;
-  var exampleGame1;
-  var exampleGame2;
-  var exampleGame3;
+  var game,
+      perfectGame,
+      gutterGame,
+      exampleGame1,
+      exampleGame2,
+      exampleGame3;
 
   beforeEach(function() {
     perfectGame = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];

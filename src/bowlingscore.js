@@ -18,16 +18,18 @@ function greaterThan10Check(scorecard) {
   });
 };
 
-function pinCheck(scorecard){
-  return greaterThan10Check(totalPinsPerFrame(scorecard).slice(0, 9))
-  || totalPinsPerFrame(scorecard)[9] > 30;
-};
 
 function totalPinsPerFrame(scorecard) {
   return scorecard.map( (frame) => {
     return frame.reduce( sumOfElements );
   });
 };
+
+function pinCheck(scorecard){
+  return greaterThan10Check(totalPinsPerFrame(scorecard).slice(0, 9))
+  || totalPinsPerFrame(scorecard)[9] > 30;
+};
+
 
 function pointsPerFrame(scorecard) {
   var points = []

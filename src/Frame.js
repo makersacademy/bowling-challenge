@@ -9,6 +9,11 @@ Frame.prototype.score = function(){
   if(this._isASpare()){
     currentScore += this._nextFrame._firstRoll();
   }
+  if(this._isAStrike()){
+    if(this._nextFrame) {
+      currentScore += this._nextFrame._nextTwoRolls();
+    }
+  }
   if(this._nextFrame){
     currentScore += this._nextFrame.score();
   }
@@ -29,6 +34,23 @@ Frame.prototype._isASpare = function(){
   return this._roll1 !== 10 && (this._roll1 + this._roll2 === 10);
 }
 
+Frame.prototype._isAStrike = function(){
+  return this._roll1 === 10;
+}
+
 Frame.prototype._firstRoll = function(){
   return this._roll1;
 }
+
+Frame.prototype._nextTwoRolls = function(){
+  if(!this._isAStrike()) {
+    return this._roll1 + this._roll2;
+  } else {
+    var r = this._roll1;
+    if(this._nextFrame) {
+      r += this._nextFrame._roll1;
+    }
+    return r;
+  }
+}
+

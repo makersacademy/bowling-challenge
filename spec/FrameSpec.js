@@ -18,9 +18,15 @@ describe('Frame',function(){
     expect(frame.score()).toEqual(9);
   });
 
-  it('can take space scoring into account',function(){
+  it('can take spare scoring into account',function(){
     frame = new Frame(7,3);
     frame.addNextFrame(new Frame(4,2)); 
     expect(frame.score()).toEqual(20);
+  });
+
+  it('can take strike scoring into account',function(){
+    frame = new Frame(10,0);
+    frame.addNextFrame(new Frame(4,2)); 
+    expect(frame.score()).toEqual(22);
   });
 });

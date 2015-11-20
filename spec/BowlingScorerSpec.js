@@ -38,12 +38,26 @@ describe('BowlingScorer',function(){
     expect(scorer.score()).toEqual(20);
   });
 
+  it('can score multiple frames with a strike', function(){
+    scorer.addFrame(10,0);
+    scorer.addFrame(4,2);
+    expect(scorer.score()).toEqual(22);
+  });
+
   it('can score multiple frames with multiple spares', function(){
     scorer.addFrame(7,3);
     scorer.addFrame(4,6);
     scorer.addFrame(4,2);
-    expect(scorer.score()).toEqual(34); // 14 + 14 + 6
+    expect(scorer.score()).toEqual(34); 
   });
+
+  it('can score a perfect game', function(){
+    for(var i=0;i<12;i++){
+      scorer.addFrame(10,0);
+    }
+    expect(scorer.score()).toEqual(300);
+  });
+
 });
 
 

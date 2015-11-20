@@ -16,7 +16,13 @@ Frame.prototype.score = function(){
 }
 
 Frame.prototype.addNextFrame = function(frame){
-  this._nextFrame = frame;
+  var currentFrame = this;
+  var nextFrame = currentFrame._nextFrame;
+  while(nextFrame){
+    currentFrame = nextFrame;
+    nextFrame = currentFrame._nextFrame
+  }
+  currentFrame._nextFrame = frame;
 }
 
 Frame.prototype._isASpare = function(){

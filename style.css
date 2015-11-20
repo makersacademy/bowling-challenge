@@ -11,12 +11,10 @@ body {
   /* width:900px; */
   max-width: 540px;
   margin:0px auto;
-  border:1px solid #bbb;
   padding:10px;
 }
 
 #header {
-  border:1px solid #bbb;
   height:80px;
   padding:10px;
   color : #f0f0f0;
@@ -33,7 +31,6 @@ body {
 
 #content div {
   padding:10px;
-  border:1px solid #bbb;
   float:left;
 }
 
@@ -103,7 +100,6 @@ body {
     float:left;
     margin: 10px auto;
     padding: 10px;
-    border:1px solid #bbb;
     max-width: 400px;
 }
 

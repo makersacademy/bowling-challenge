@@ -52,6 +52,10 @@ function Game() {
   };
 
   Game.prototype.score = function(iframe) {
+
+    if (this.isOpen(iframe)) {
+      this._score = this.frame[iframe].frameScore();
+    }
     if(this.isSpare(iframe)) {
       this._score = this.spareScore(iframe);
     }
@@ -60,9 +64,6 @@ function Game() {
     }
     if (this.isStrike(iframe) && this.isStrike(iframe + 1)) {
       this._score = this.twoStrikeScore(iframe);
-    }
-    if (this.isOpen(iframe)) {
-      this._score = this.frame[iframe].frameScore();
     }
     return this._score;
   };

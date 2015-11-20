@@ -19,4 +19,12 @@ describe("Game", function() {
     });
   });
 
+  describe("roll", function() {
+    it("Should return a number from 0 - 10", function() {
+      spyOn(game, 'roll');
+      game.roll = 10;
+      expect(game.roll).toEqual(10);
+    });
+  });
+
 });

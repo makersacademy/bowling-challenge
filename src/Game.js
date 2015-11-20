@@ -9,6 +9,10 @@ function Game() {
     return this.currentFrame;
   }
 
+  Game.prototype.roll = function() {
+    return Math.floor(Math.random() * 11);
+  }
+
 
 
 }

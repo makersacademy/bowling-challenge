@@ -4,7 +4,7 @@ function BowlingScorer(frameFactory) {
 }
 
 BowlingScorer.prototype.score = function() {
-  if(!this._firstFrame) { return 0 };
+  if(!this._firstFrame) { return 0; }
   return this._firstFrame.score();
 };
 

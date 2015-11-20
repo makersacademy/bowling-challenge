@@ -69,18 +69,18 @@ describe("Game", function() {
       expect(game.currentRoll).toEqual(1);
     });
 
-  //   it("Should add a bonus to your next roll upon getting a spare", function() {
-  //     spyOn(Math, 'floor').and.callFake(function() {
-  //       if (game.currentFrame === 1 && game.currentRoll === 1) return 1;
-  //       if (game.currentFrame === 1 && game.currentRoll === 2) return 9;
-  //       if (game.currentFrame === 2) return 9;
-  //     })
-  //     game.roll();
-  //     game.roll();
-  //     game.roll();
-  //     expect(game.score).toEqual(28);
-  //   });
-  // });
+    it("Should add a bonus to your next roll upon getting a spare", function() {
+      spyOn(Math, 'floor').and.callFake(function() {
+        if (game.currentFrame === 1 && game.currentRoll === 1) return 1;
+        if (game.currentFrame === 1 && game.currentRoll === 2) return 9;
+        if (game.currentFrame === 2) return 8;
+      })
+      game.roll();
+      game.roll();
+      game.roll();
+      expect(game.score).toEqual(26);
+    });
+  });
 
 
 

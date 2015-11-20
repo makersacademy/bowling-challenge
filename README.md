@@ -1,4 +1,37 @@
 
+Status of project
+=================
+
+The game implements the rules of Ten Pin Bowling as described in the challenge brief.
+The player can 
+* bowl up to 10 frames
+* view their score
+* bowl button is disabled at the end of the 10th frame
+* restart a game
+
+I have tested the game using Jasmine with the example from the challenge brief.
+
+Also I have test the game in jasmine using a perfect game of 12 strikes which scores 300 points.
+
+Limitations
+===========
+
+I would have liked to display, in a table, the result after each bowl but I didn't have sufficient knowledge how to
+append rows using javascript.
+
+![Start screen](images/startGame.png)
+![Frame 1](images/frame1.png)
+![End of Game Frame 10](images/endGame.png)
+
+
+Instructions for running BDD jasmine scripts
+============================================
+Open SpecRunner.html in the browser
+
+Instructions for running the game
+============================================
+Open index.html in the browser
+
 Bowling Challenge
 =================
 
@@ -15,7 +48,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 As usual please start by 
 
 * Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_september2015 (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
+* Forking this repo 
 
 * Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
 

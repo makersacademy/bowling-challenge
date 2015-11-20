@@ -1,0 +1,119 @@
+
+body {
+    font-family: "Helvetica Neue",
+                  helvetica,
+                  arial,
+                  sans-serif;
+    font-size:12px;
+}
+
+#wrapper {
+  /* width:900px; */
+  max-width: 540px;
+  margin:0px auto;
+  padding:10px;
+}
+
+#header {
+  height:80px;
+  padding:10px;
+  color : #f0f0f0;
+  background-color: #555;
+  text-align: center;
+  font-family: serif;
+  font-size:30px;
+}
+
+#content {
+  margin-top:10px;
+  padding-bottom:10px;
+}
+
+#content div {
+  padding:10px;
+  float:left;
+}
+
+#content-title-frame {
+  color : #f0f0f0;
+  background-color: #555;
+  width:100px;
+  text-align: center;
+  font-size:18px;
+}
+
+#content-title-roll {
+  color : #f0f0f0;
+  background-color: #555;
+  margin-left:10px;
+  width:100px;
+  text-align: center;
+  font-size:18px;
+}
+
+#content-title-pins {
+  color : #f0f0f0;
+  background-color: #555;
+  margin-left:10px;
+  width:100px;
+  text-align: center;
+  font-size:18px;
+}
+
+#content-title-score {
+  color : #f0f0f0;
+  background-color: #555;
+  margin-left:10px;
+  width:100px;
+  text-align: center;
+  font-size:18px;
+}
+
+.content-row-frame {
+  width:100px;
+  text-align: center;
+  font-size:14px;
+}
+
+.content-row-roll {
+  margin-left:10px;
+  width:100px;
+  text-align: center;
+  font-size:14px;
+}
+
+.content-row-pins {
+  margin-left:10px;
+  width:100px;
+  text-align: center;
+  font-size:14px;
+}
+
+.content-row-score {
+  margin-left:10px;
+  width:100px;
+  text-align: center;
+  font-size:14px;
+}
+
+#bottom {
+    float:left;
+    margin: 10px auto;
+    padding: 10px;
+    max-width: 400px;
+}
+
+#bowl-ball {
+  color : #f0f0f0;
+  background-color: #555;
+  font-size:14px;
+  margin: 0px 130px;
+  height: 30px;
+}
+
+#new-game {
+  color : #f0f0f0;
+  background-color: #555;
+  font-size:14px;
+  height: 30px;
+}

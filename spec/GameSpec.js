@@ -9,6 +9,10 @@ describe("Game", function() {
     expect(Object.keys(game.frames).length).toEqual(10);
   });
 
+  it("Should return the current roll", function() {
+    expect(game.currentRoll).toEqual(1);
+  });
+
   describe("frames", function() {
     it("Should store the current frame", function() {
       expect(game.currentFrame).toEqual(1);
@@ -20,6 +24,13 @@ describe("Game", function() {
   });
 
   describe("roll", function() {
+
+    it("Should change the currentRoll", function() {
+      game.roll();
+      game.roll();
+      expect(game.currentRoll).toEqual(1);
+    });
+
     it("Should return a number from 0 - 10", function() {
       spyOn(game, 'roll');
       game.roll = 10;

@@ -5,11 +5,18 @@ function Game() {
 
   Game.prototype.currentFrame = 1;
 
+  Game.prototype.currentRoll = 1;
+
   Game.prototype.returnCurrentFrame = function() {
     return this.currentFrame;
   }
 
   Game.prototype.roll = function() {
+    if (this.currentRoll === 1) {
+      this.currentRoll ++;
+    } else {
+      this.currentRoll --;
+    }
     return Math.floor(Math.random() * 11);
   }
 

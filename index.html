@@ -14,11 +14,11 @@
           <div id="content-title-pins">Pins Down</div>
           <div id="content-title-score">Score</div>
         </div>
-        <div id="content-cell">
-          <div id="content-cell-frame">Frame</div>
-          <div id="content-cell-roll">Roll</div>
-          <div id="content-cell-pins">Pins Down</div>
-          <div id="content-cell-score">Score</div>
+        <div id="content-row">
+          <div id="content-row-frame">Frame</div>
+          <div id="content-row-roll">Roll</div>
+          <div id="content-row-pins">Pins Down</div>
+          <div id="content-row-score">Score</div>
         </div>
       </div>
       <div id="bottom">
@@ -34,16 +34,16 @@
       $( document ).ready(function() {
         var scoreSheet = new ScoreSheet();
         var bowlingGame = new BowlingGame(scoreSheet);
-        $("#content-cell-frame").html(0);
-        $("#content-cell-roll").html(0);
-        $("#content-cell-pins").html(0);
-        $("#content-cell-score").html(0);
+        $("#content-row-frame").html(0);
+        $("#content-row-roll").html(0);
+        $("#content-row-pins").html(0);
+        $("#content-row-score").html(0);
         $( "#bowl-ball" ).click(function( event ) {
           bowlingGame.bowl();
-          $("#content-cell-frame").html(scoreSheet.lastEntry().frame);
-          $("#content-cell-roll").html(scoreSheet.lastEntry().roll);
-          $("#content-cell-pins").html(scoreSheet.lastEntry().pinsDown);
-          $("#content-cell-score").html(scoreSheet.lastEntry().score);
+          $("#content-row-frame").html(scoreSheet.lastEntry().frame);
+          $("#content-row-roll").html(scoreSheet.lastEntry().roll);
+          $("#content-row-pins").html(scoreSheet.lastEntry().pinsDown);
+          $("#content-row-score").html(scoreSheet.lastEntry().score);
           if (bowlingGame.isEndOfGame()) {
             $('#bowl-ball').prop('disabled', true);
           };
@@ -51,10 +51,10 @@
         $( "#new-game" ).click(function( event ) {
           scoreSheet.erase();
           bowlingGame.newGame(scoreSheet);
-          $("#content-cell-frame").html(0);
-          $("#content-cell-roll").html(0);
-          $("#content-cell-pins").html(0);
-          $("#content-cell-score").html(0);
+          $("#content-row-frame").html(0);
+          $("#content-row-roll").html(0);
+          $("#content-row-pins").html(0);
+          $("#content-row-score").html(0);
           $('#bowl-ball').prop('disabled', false);
         });
       });

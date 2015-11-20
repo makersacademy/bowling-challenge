@@ -62,27 +62,27 @@ body {
   font-size:18px;
 }
 
-#content-cell-frame {
+#content-row-frame {
   width:100px;
   text-align: center;
   font-size:14px;
 }
 
-#content-cell-roll {
+#content-row-roll {
   margin-left:10px;
   width:100px;
   text-align: center;
   font-size:14px;
 }
 
-#content-cell-pins {
+#content-row-pins {
   margin-left:10px;
   width:100px;
   text-align: center;
   font-size:14px;
 }
 
-#content-cell-score {
+#content-row-score {
   margin-left:10px;
   width:100px;
   text-align: center;

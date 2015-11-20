@@ -10,5 +10,9 @@ describe('Game', function() {
     it('registers a roll', function() {
       expect(game.gameRolls[0]).toEqual(3);
     });
+
+    it('adds a frame', function() {
+      expect(game.frames.length).toEqual(1);
+    });
   });
 });

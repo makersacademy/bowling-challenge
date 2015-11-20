@@ -51,9 +51,24 @@ describe('BowlingScorer',function(){
     expect(scorer.score()).toEqual(34); 
   });
 
+  it('can score a double', function(){
+    scorer.addFrame(10);
+    scorer.addFrame(10);
+    scorer.addFrame(9,0);
+    expect(scorer.score()).toEqual(57); 
+  });
+
+  it('can score a turkey', function(){
+    scorer.addFrame(10);
+    scorer.addFrame(10);
+    scorer.addFrame(10);
+    scorer.addFrame(0,9);
+    expect(scorer.score()).toEqual(78); 
+  });
+
   it('can score a perfect game', function(){
     for(var i=0;i<9;i++){
-      scorer.addFrame(10,0);
+      scorer.addFrame(10);
     }
     scorer.addFrame(10,10,10);
     expect(scorer.score()).toEqual(300);

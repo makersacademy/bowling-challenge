@@ -5,6 +5,10 @@ function Frame(roll1, roll2, roll3){
   this._nextFrame = null;
 }
 
+Frame.create = function(roll1, roll2, roll3){
+  return new Frame(roll1, roll2, roll3);
+}
+
 Frame.prototype.score = function(){
   var currentScore = this._roll1 + this._roll2;
   if(this._isASpare()){

@@ -1,5 +1,5 @@
-function BowlingScorer() {
-  this._score = 0;
+function BowlingScorer(frameFactory) {
+  this._frameFactory = frameFactory || Frame;
   this._firstFrame = null;
 }
 
@@ -9,9 +9,10 @@ BowlingScorer.prototype.score = function() {
 };
 
 BowlingScorer.prototype.addFrame = function(roll1, roll2, roll3) {
+  var frame = this._frameFactory.create(roll1, roll2, roll3);
   if(!this._firstFrame) {
-    this._firstFrame = new Frame(roll1, roll2);
+    this._firstFrame = frame;
   } else { 
-    this._firstFrame.addNextFrame(new Frame(roll1, roll2, roll3));
+    this._firstFrame.addNextFrame(frame);
   }
 };

@@ -39,6 +39,13 @@ Frame.prototype.firstBall = function() {
   return this.balls[0];
 }
 
+Frame.prototype.secondBall = function() {
+  return this.balls[1];
+}
+Frame.prototype.thirdBall = function() {
+  return this.balls[2];
+}
+
 Frame.prototype.total = function() {
   return this.balls.reduce(function(a, b) { return a + b; });
 }

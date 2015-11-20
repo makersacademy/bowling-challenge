@@ -100,6 +100,35 @@ describe('ScoreCard', function() {
       scoreCard.mark(10);
       expect(scoreCard.card()).toEqual([30, 60, 90, 120, 150, 180, 210, 240, null, null]);
     });
+    it('marks nine scores for eleven strikes in a row', function() {
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      expect(scoreCard.card()).toEqual([30, 60, 90, 120, 150, 180, 210, 240, 270, null]);
+    });
+    it('marks ten scores for twelve strikes in a row', function() {
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      scoreCard.mark(10);
+      expect(scoreCard.card()).toEqual([30, 60, 90, 120, 150, 180, 210, 240, 270, 300]);
+    });
   })
   it('Does not mark a spare as a strike', function() {
     scoreCard.mark(5);

@@ -8,11 +8,11 @@ function ScoreCard() {
 }
 
 ScoreCard.prototype.mark = function(pins) {
-  this.getFrame(this.currentFrame).setBall(this.currentBallInFrame, pins);
-  this.currentBallInFrame++;
-  this.checkIfNewFrameNeeded(this.currentFrame);
-  this.checkForUnfinalisedFrames();
-}
+    this.getFrame(this.currentFrame).setBall(this.currentBallInFrame, pins);
+    this.currentBallInFrame++;
+    this.checkIfNewFrameNeeded(this.currentFrame);
+    this.checkForUnfinalisedFrames();
+  }
 
 ScoreCard.prototype.totalForFrame = function() {
   return this.getFrame(this.currentFrame).totalForFrame;
@@ -21,22 +21,9 @@ ScoreCard.prototype.totalForFrame = function() {
 ScoreCard.prototype.checkForUnfinalisedFrames = function() {
   for (var f = 0; f < this.frames.length; f++) {
     if (!this.frames[f].scoreCalculated) {
-      this.finaliseScoreUnderTen(f);
       this.finaliseStrike(f);
-      this.finaliseSpare(f)
+      this.finaliseSpare(f);
     }
-  }
-}
-
-ScoreCard.prototype.finaliseScoreUnderTen = function(frame) {
-  if (this.frames[frame].isStrike()) {
-    return;
-  }
-  if (this.frames[frame].isSpare()) {
-    return;
-  }
-  if (this.frames[frame].scoreCanBeFinalised()) {
-    this.finalise(frame, this.frames[frame.total()]);
   }
 }
 
@@ -44,6 +31,10 @@ ScoreCard.prototype.finaliseStrike = function(frame) {
   if (!this.frames[frame].isStrike()) {
     return;
   }
+  if (this.frames[frame].frameNumber === this.maxFrames) {
+    return;
+  }
+
   if (!this.frames[frame + 1].scoreCalculated &&
     !this.frames[frame + 1].isStrike()) {
     return;
@@ -53,33 +44,23 @@ ScoreCard.prototype.finaliseStrike = function(frame) {
 }
 
 ScoreCard.prototype.checkStrikeBonus = function(frame) {
-  this.checkStrikeBonusNotLastFrame(frame);
-  this.checkStrikeBonusLastFrame(frame);
-}
-
-ScoreCard.prototype.checkStrikeBonusNotLastFrame = function(frame) {
-  if (this.frameNumber === 10) {return;}
-  if (!this.frames[frame + 1].isStrike()) {
-    this.finalise(frame, this.frames[frame].total() +
-      this.frames[frame + 1].firstTwoBalls())
-  }
-}
-
-ScoreCard.prototype.checkStrikeBonusLastFrame = function(frame) {
-  if (this.frameNumber !== 10) {return;}
-  if (!this.frames[frame + 1].isStrike()) {
+  if (!this.frames[frame + 1].isStrike() ||
+    (this.frames[frame + 1].frameNumber === this.maxFrames &&
+      this.frames[frame + 1].currentBall > 1)) {
     this.finalise(frame, this.frames[frame].total() +
       this.frames[frame + 1].firstTwoBalls())
   }
 }
 
 ScoreCard.prototype.checkTripleStrike = function(frame) {
-  this.checkTripleStrikeNotLastFrame();
-  this.checkTripleStrikeLastFrame();
+  this.checkTripleStrikeNotInvolvingLastFrame(frame);
+  this.checkTripleStrikePenultimateFrame(frame);
 }
 
-ScoreCard.prototype.checkTripleStrikeNotLastFrame = function(frame) {
-  if (this.frameNumber === 10) {return;}
+ScoreCard.prototype.checkTripleStrikeNotInvolvingLastFrame = function(frame) {
+  if (this.frames[frame].frameNumber > this.maxFrames - 2) {
+    return;
+  }
   if (this.frames[frame + 1].isStrike() && this.frames[frame + 2].isStrike()) {
     this.finalise(frame, this.frames[frame].total() +
       this.frames[frame + 1].firstBall() +
@@ -87,15 +68,17 @@ ScoreCard.prototype.checkTripleStrikeNotLastFrame = function(frame) {
   }
 }
 
-ScoreCard.prototype.checkTripleStrikeLastFrame = function(frame) {
-  if (this.frameNumber !== 10) {return;}
-  if (this.frames[frame + 1].isStrike() && this.frames[frame + 2].isStrike()) {
+ScoreCard.prototype.checkTripleStrikePenultimateFrame = function(frame) {
+  if (this.frames[frame].frameNumber !== this.maxFrames - 1) {
+    return;
+  }
+  if (this.frames[frame + 1].currentBallInFrame > 2) {
     this.finalise(frame, this.frames[frame].total() +
       this.frames[frame + 1].firstBall() +
-      this.frames[frame + 2].firstBall());
+      this.frames[frame + 1].secondBall());
+
   }
 }
-
 ScoreCard.prototype.finaliseSpare = function(frame) {
   if (!this.frames[frame].isSpare()) {
     return;
@@ -112,7 +95,9 @@ ScoreCard.prototype.finalise = function(frame, totalForFrame) {
 }
 
 ScoreCard.prototype.checkIfNewFrameNeeded = function(frame) {
-  if (this.frames.length >= this.maxFrames) {return;}
+  if (this.frames.length >= this.maxFrames) {
+    return;
+  }
   //
   // Case where it is not the final frame and two rolls have already
   // taken place. Create a new one and make it current.

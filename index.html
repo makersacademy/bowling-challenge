@@ -6,7 +6,7 @@
   </head>
   <body>
     <div id="wrapper">
-      <div id="header"> Bowling </div>
+      <div id="header"> Ten Pin Bowling </div>
       <div id="content">
         <div id="content-title">
           <div id="content-title-frame">Frame</div>
@@ -14,11 +14,11 @@
           <div id="content-title-pins">Pins Down</div>
           <div id="content-title-score">Score</div>
         </div>
-        <div id="content-row">
-          <div id="content-row-frame">Frame</div>
-          <div id="content-row-roll">Roll</div>
-          <div id="content-row-pins">Pins Down</div>
-          <div id="content-row-score">Score</div>
+        <div class="content-row">
+          <div class="content-row-frame">Frame</div>
+          <div class="content-row-roll">Roll</div>
+          <div class="content-row-pins">Pins Down</div>
+          <div class="content-row-score">Score</div>
         </div>
       </div>
       <div id="bottom">
@@ -34,16 +34,16 @@
       $( document ).ready(function() {
         var scoreSheet = new ScoreSheet();
         var bowlingGame = new BowlingGame(scoreSheet);
-        $("#content-row-frame").html(0);
-        $("#content-row-roll").html(0);
-        $("#content-row-pins").html(0);
-        $("#content-row-score").html(0);
+        $(".content-row-frame").html(0);
+        $(".content-row-roll").html(0);
+        $(".content-row-pins").html(0);
+        $(".content-row-score").html(0);
         $( "#bowl-ball" ).click(function( event ) {
           bowlingGame.bowl();
-          $("#content-row-frame").html(scoreSheet.lastEntry().frame);
-          $("#content-row-roll").html(scoreSheet.lastEntry().roll);
-          $("#content-row-pins").html(scoreSheet.lastEntry().pinsDown);
-          $("#content-row-score").html(scoreSheet.lastEntry().score);
+          $(".content-row-frame").html(scoreSheet.lastEntry().frame);
+          $(".content-row-roll").html(scoreSheet.lastEntry().roll);
+          $(".content-row-pins").html(scoreSheet.lastEntry().pinsDown);
+          $(".content-row-score").html(scoreSheet.lastEntry().score);
           if (bowlingGame.isEndOfGame()) {
             $('#bowl-ball').prop('disabled', true);
           };
@@ -51,10 +51,10 @@
         $( "#new-game" ).click(function( event ) {
           scoreSheet.erase();
           bowlingGame.newGame(scoreSheet);
-          $("#content-row-frame").html(0);
-          $("#content-row-roll").html(0);
-          $("#content-row-pins").html(0);
-          $("#content-row-score").html(0);
+          $(".content-row-frame").html(0);
+          $(".content-row-roll").html(0);
+          $(".content-row-pins").html(0);
+          $(".content-row-score").html(0);
           $('#bowl-ball').prop('disabled', false);
         });
       });

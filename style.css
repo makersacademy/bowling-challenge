@@ -19,6 +19,8 @@ body {
   border:1px solid #bbb;
   height:80px;
   padding:10px;
+  color : #f0f0f0;
+  background-color: #555;
   text-align: center;
   font-family: serif;
   font-size:30px;
@@ -36,12 +38,16 @@ body {
 }
 
 #content-title-frame {
+  color : #f0f0f0;
+  background-color: #555;
   width:100px;
   text-align: center;
   font-size:18px;
 }
 
 #content-title-roll {
+  color : #f0f0f0;
+  background-color: #555;
   margin-left:10px;
   width:100px;
   text-align: center;
@@ -49,6 +55,8 @@ body {
 }
 
 #content-title-pins {
+  color : #f0f0f0;
+  background-color: #555;
   margin-left:10px;
   width:100px;
   text-align: center;
@@ -56,33 +64,35 @@ body {
 }
 
 #content-title-score {
+  color : #f0f0f0;
+  background-color: #555;
   margin-left:10px;
   width:100px;
   text-align: center;
   font-size:18px;
 }
 
-#content-row-frame {
+.content-row-frame {
   width:100px;
   text-align: center;
   font-size:14px;
 }
 
-#content-row-roll {
+.content-row-roll {
   margin-left:10px;
   width:100px;
   text-align: center;
   font-size:14px;
 }
 
-#content-row-pins {
+.content-row-pins {
   margin-left:10px;
   width:100px;
   text-align: center;
   font-size:14px;
 }
 
-#content-row-score {
+.content-row-score {
   margin-left:10px;
   width:100px;
   text-align: center;
@@ -91,25 +101,23 @@ body {
 
 #bottom {
     float:left;
-    /*
-    margin-top:10px;
-    margin-bottom:10px;
-    */
     margin: 10px auto;
-    padding:10px;
+    padding: 10px;
     border:1px solid #bbb;
-    /* width:880px; */
     max-width: 400px;
 }
 
 #bowl-ball {
-  background-color: green;
+  color : #f0f0f0;
+  background-color: #555;
   font-size:14px;
-  margin: 0px 80px;
+  margin: 0px 130px;
+  height: 30px;
 }
 
 #new-game {
-  background-color: red;
+  color : #f0f0f0;
+  background-color: #555;
   font-size:14px;
-
+  height: 30px;
 }

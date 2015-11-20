@@ -4,6 +4,7 @@ function Game() {
 }
 
 Game.prototype.roll = function(roll) {
+  if(this.isGameOver()) { return 'Game Over. Final score: ' + this.score(); }
   this.currentFrame().addRoll(roll);
   this.gameRolls.push(roll);
 }
@@ -21,8 +22,9 @@ Game.prototype.currentFrame = function() {
 }
 
 Game.prototype.addFrame = function() {
-  var rollIndex = this.gameRolls.length;
-  this.frames.push(new Frame(rollIndex));
+  var options = { rollIndex: this.gameRolls.length,
+                  frameIndex: this.frames.length };
+  this.frames.push(new Frame(options));
 }
 
 Game.prototype.lastFrame = function() {
@@ -33,8 +35,11 @@ Game.prototype.lastFrame = function() {
 }
 
 Game.prototype.isLastFrameFinished = function() {
-  var lastFrame = this.lastFrame();
-  return lastFrame.isFinished();
+  return this.lastFrame().isFinished();
+}
+
+Game.prototype.isGameOver = function() {
+  return this.frames.length === 10 && this.frames[9].isFinished();
 }
 
 Game.prototype.rollsTotal = function() {

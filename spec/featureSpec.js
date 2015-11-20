@@ -17,7 +17,7 @@ describe('Bowling Game Features', function() {
   });
 
   describe('allows to play a normal game', function() {
-    it('exampleGame1 with spares and strikes but not in frame 10', function() {
+    it('exampleGame1 with spare in last frame', function() {
       exampleGame1.forEach(function(ball) {
         game.roll(ball);
       });

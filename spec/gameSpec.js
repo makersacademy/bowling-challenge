@@ -42,6 +42,6 @@ describe('Game', function() {
       game.roll(3);
       game.roll(5);
       expect(game.score()).toEqual(40);
-  });
+    });
   });
 });

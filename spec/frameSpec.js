@@ -2,7 +2,7 @@ describe('Frame', function(){
   var frame;
 
   beforeEach(function() {
-    frame = new Frame(0);
+    frame = new Frame({rollIndex: 0, frameIndex: 0});
   });
 
   describe('#addRoll', function() {
@@ -95,4 +95,23 @@ describe('Frame', function(){
     });
   });
 
+  describe('#isLastFrame', function() {
+    it('knows it is not the last frame', function() {
+      frame.frameIndex = 5;
+      expect(frame.isLastFrame()).toEqual(false)
+    });
+
+    it('knows it is the last frame', function() {
+      frame.frameIndex = 9;
+      expect(frame.isLastFrame()).toEqual(true);
+    });
+  });
+
+  describe('#isLastFrameOver', function() {
+    it('knows the last frame is over', function() {
+      frame.frameIndex = 9;
+      frame.turns = 3;
+      expect(frame.isLastFrameOver()).toEqual(true);
+    })
+  });
 });

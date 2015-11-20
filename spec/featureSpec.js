@@ -13,7 +13,7 @@ describe('Bowling Game Features', function() {
     exampleGame2 = [ 10, 3, 7, 6, 1, 10, 10, 10, 2, 8, 9, 0, 7, 3, 10, 10, 10];
     exampleGame3 = [ 9, 0, 3, 5, 6, 1, 3, 6, 8, 1, 5, 3, 2, 5, 8, 0, 7, 1, 8, 1 ];
     game = new Game();
-    
+
   });
 
   describe('allows to play a normal game', function() {
@@ -25,14 +25,14 @@ describe('Bowling Game Features', function() {
     })
 
     it('exampleGame2', function() {
-      exampleGame1.forEach(function(ball) {
+      exampleGame2.forEach(function(ball) {
         game.roll(ball);
       });
       expect(game.score()).toEqual(193);
     })
 
     it('exampleGame3', function() {
-      exampleGame1.forEach(function(ball) {
+      exampleGame3.forEach(function(ball) {
         game.roll(ball);
       });
       expect(game.score()).toEqual(82);

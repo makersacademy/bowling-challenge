@@ -4,8 +4,8 @@ function Game() {
     6:[1,2], 7:[1,2], 8:[1,2], 9:[1,2], 10:[1,2]};
 
   Game.prototype.currentFrame = 1;
-
   Game.prototype.currentRoll = 1;
+  Game.prototype.pins = 10;
 
   Game.prototype.returnCurrentFrame = function() {
     return this.currentFrame;

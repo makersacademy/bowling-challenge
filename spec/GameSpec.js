@@ -9,6 +9,10 @@ describe("Game", function() {
     expect(Object.keys(game.frames).length).toEqual(10);
   });
 
+  it("Should start a game with 10 pins", function() {
+    expect(game.pins).toEqual(10);
+  });
+
   it("Should return the current roll", function() {
     expect(game.currentRoll).toEqual(1);
   });
@@ -24,7 +28,6 @@ describe("Game", function() {
   });
 
   describe("roll", function() {
-
     it("Should change the currentRoll", function() {
       game.roll();
       game.roll();
@@ -38,10 +41,11 @@ describe("Game", function() {
     });
 
     it("Should return a number from 0 - 10", function() {
-      spyOn(game, 'roll');
-      game.roll = 10;
-      expect(game.roll).toEqual(10);
+      spyOn(Math, 'floor').and.returnValue(10);
+      expect(game.roll()).toEqual(10);
     });
   });
+
+
 
 });

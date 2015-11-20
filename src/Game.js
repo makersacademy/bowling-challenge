@@ -14,14 +14,12 @@ function Game() {
 
   Game.prototype.roll = function() {
     var roll = Math.floor(Math.random() * 11);
-    this.pins -= roll;
-    this.score += roll;
+    this.adjustScoreAndPins(roll);
 
     if (this.currentRoll === 1) {
       this.isStrike(roll);
     } else {
-      this.currentRoll --;
-      this.currentFrame ++;
+      this.switchFrame();
     }
     return roll;
   }
@@ -33,6 +31,16 @@ function Game() {
     } else {
       this.currentRoll ++;
     }
+  }
+
+  Game.prototype.adjustScoreAndPins = function(roll) {
+    this.pins -= roll;
+    this.score += roll;
+  }
+
+  Game.prototype.switchFrame = function() {
+    this.currentRoll --;
+    this.currentFrame ++;
   }
 
 

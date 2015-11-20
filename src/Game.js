@@ -15,6 +15,7 @@ function Game() {
     if (this.currentRoll === 1) {
       this.currentRoll ++;
     } else {
+      this.currentFrame ++;
       this.currentRoll --;
     }
     return Math.floor(Math.random() * 11);

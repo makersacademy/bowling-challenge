@@ -31,6 +31,12 @@ describe("Game", function() {
       expect(game.currentRoll).toEqual(1);
     });
 
+    it("Should change the currentFrame on the second roll", function() {
+      game.roll();
+      game.roll();
+      expect(game.currentFrame).toEqual(2);
+    });
+
     it("Should return a number from 0 - 10", function() {
       spyOn(game, 'roll');
       game.roll = 10;

@@ -2,27 +2,22 @@
 Status of project
 =================
 
-The logic for implementing ten pin bowling game is mostly implmented.
+The game implements the rules of Ten Pin Bowling as described in the challenge brief.
 The player can 
 * bowl up to 10 frames
 * view their score
 * bowl button is disabled at the end of the 10th frame
 * restart a game
 
+I have tested the game using Jasmine with the example from the challenge brief.
+
+Also I have test the game in jasmine using a perfect game of 12 strikes which scores 300 points.
+
 Limitations
 ===========
 
-I have run out of time to 
-* implement correctly the rules for the 10th frame
-* improve the layout of the screen with more sophisticated CSS.
-
-I have implemented a wrapper element to "contain" all the game's display elements such as
-* header
-* score
-* buttons
-
-Unfortunalety the wrapper object doesn't appear to be calculating it's size correctly which is
-apparent from the screen shots.
+I would have liked to display, in a table, the result after each bowl but I didn't have sufficient knowledge how to
+append rows using javascript.
 
 ![Start screen](images/startGame.png)
 ![Frame 1](images/frame1.png)

@@ -28,7 +28,7 @@ describe('Game', function() {
       game.roll(4);
       game.roll(5);
       game.roll(3);
-      expect(game.score()).toEqual(17);
+      expect(game.score()).toEqual(17g);
     });
   });
 });

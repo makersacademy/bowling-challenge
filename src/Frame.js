@@ -45,15 +45,18 @@ Frame.prototype._firstRoll = function(){
   return this._roll1;
 }
 
+Frame.prototype._nextFrameFirstRoll = function(){
+  if(this._nextFrame) {
+    return this._nextFrame._firstRoll();
+  }
+  return 0;
+}
+
 Frame.prototype._nextTwoRolls = function(){
   if(!this._isAStrike()) {
     return this._roll1 + this._roll2;
   } else {
-    var r = this._roll1;
-    if(this._nextFrame) {
-      r += this._nextFrame._roll1;
-    }
-    return r;
+    return this._roll1 + this._nextFrameFirstRoll();
   }
 }
 

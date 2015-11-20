@@ -11,7 +11,7 @@ BowlingScorer.prototype.score = function() {
 BowlingScorer.prototype.addFrame = function(roll1, roll2, roll3) {
   if(!this._firstFrame) {
     this._firstFrame = new Frame(roll1, roll2);
-  } else {
+  } else { 
     this._firstFrame.addNextFrame(new Frame(roll1, roll2, roll3));
   }
 };

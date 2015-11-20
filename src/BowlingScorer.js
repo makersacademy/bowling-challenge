@@ -8,10 +8,10 @@ BowlingScorer.prototype.score = function() {
   return this._firstFrame.score();
 };
 
-BowlingScorer.prototype.addFrame = function(roll1, roll2) {
+BowlingScorer.prototype.addFrame = function(roll1, roll2, roll3) {
   if(!this._firstFrame) {
     this._firstFrame = new Frame(roll1, roll2);
   } else {
-    this._firstFrame.addNextFrame(new Frame(roll1, roll2));
+    this._firstFrame.addNextFrame(new Frame(roll1, roll2, roll3));
   }
 };

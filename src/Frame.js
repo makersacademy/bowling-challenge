@@ -1,6 +1,7 @@
-function Frame(roll1, roll2){
+function Frame(roll1, roll2, roll3){
   this._roll1 = roll1;
-  this._roll2 = roll2;
+  this._roll2 = roll2 || 0;
+  this._roll3 = roll3 || 0;
   this._nextFrame = null;
 }
 
@@ -12,6 +13,8 @@ Frame.prototype.score = function(){
   if(this._isAStrike()){
     if(this._nextFrame) {
       currentScore += this._nextFrame._nextTwoRolls();
+    } else {
+      currentScore += (this._roll2 + this._roll3);
     }
   }
   if(this._nextFrame){

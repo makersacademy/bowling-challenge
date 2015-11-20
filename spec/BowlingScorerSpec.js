@@ -52,9 +52,10 @@ describe('BowlingScorer',function(){
   });
 
   it('can score a perfect game', function(){
-    for(var i=0;i<12;i++){
+    for(var i=0;i<9;i++){
       scorer.addFrame(10,0);
     }
+    scorer.addFrame(10,10,10);
     expect(scorer.score()).toEqual(300);
   });
 

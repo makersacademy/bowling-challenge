@@ -2,7 +2,7 @@
 
 Welcome to the code review for the Bowling Challenge!  Again, don't worry - you are not expected to have all the answers. The following is a code-review scaffold for Bowling Challenge that you can follow if you want to.  These are common issues to look out for in this challenge - but you may decide to take your own route.
 
-If you can please use this form to tick off where your reviewee has successfully has successfully incorporated these guidelines!  This form helps us get an overall picture of how the whole cohort is doing - it's not an assessment of an individual student.
+If you can please use this [form](http://goo.gl/forms/cuObDCzC4v) to tick off where your reviewee has successfully has successfully incorporated these guidelines!  This form helps us get an overall picture of how the whole cohort is doing - it's not an assessment of an individual student.
 
 # Step 0: Checkout and Run tests
 

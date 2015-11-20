@@ -52,7 +52,7 @@ Watch out for things like having any unnecessary files, e.g. your Bowling.js in 
 
 ## Following Style Guidelines
 
-Hound uses jshint to point out important style violations.  Having your code follow style conventions is essential if you want to pass a tech test in order to get an interview with a company for a job, so look over the hound comments for issues like:
+Hound uses [jshint](http://jshint.com/about/) to point out important style violations.  Having your code follow style conventions is essential if you want to pass a tech test in order to get an interview with a company for a job, so look over the hound comments for issues like:
 
 - Inappropriate semi-colon use
 - Deeply nested conditionals
@@ -60,19 +60,13 @@ Hound uses jshint to point out important style violations.  Having your code fol
 
 # Step 3: Tests (\*Spec.js files)
 
-## Testing
+## Ensure tests are comprehensible and laid out correctly
 
-- Tests organized under appropriate `describe` blocks.
-- Are the tests descriptive?
-- Can you understand exactly how to use the solution solely by reading the tests?
-
-## Ensure tests are laid out correctly
-
-Tests should be organized under appropriate `describe` blocks, with descriptive titles and should be DRY.  They are unDry if they are repeating themselves in the test in a way that could be extracted)
+Tests should be organized under appropriate `describe` blocks, with descriptive titles and should be DRY.  They are unDry if they are repeating themselves in the test in a way that could be extracted). Can you understand exactly how to use the solution solely by reading the tests?
 
 ## Little or no testing of edge cases
 
-Many solutions rely on a 'virtuous consumer' - i.e. they do not validate inputs or check for out of range values etc.
+Many solutions rely on a 'virtuous consumer' - i.e. they do not validate inputs or check for out of range values etc.  In the bowling challenge this includes checking for odd corner cases such as the gutter game and the perfect game, and odd combinations of strikes and spares.  But also defending against non-numeric or meaningless values being passed in to the engine.
 
 # Step 4: Application code (\*.js files)
 
@@ -134,7 +128,7 @@ In particular you should avoid having a single monolithic object that does every
 Throw exceptions for exceptional behaviour, not for normal activity.  E.g.
 
 ```javascript
-if ( this.framesLeft === 0 ) throw Error(this.GAMEOVER_ERROR);
+if(this.noFramesLeft()) { throw Error(this.GAMEOVER_ERROR); }
 ```
 
 A game ending is a normal event, rather than an exceptional one.
@@ -223,11 +217,9 @@ BowlingGame.prototype.currentMove = function(pins) {
 };
 ```
 
-## Working to the specification
-
-Remember that the specification for this challenge is to create a bowling scorer, not to create a bowling game itself.  Great if someone has gone above and beyond, but is that acknowledged in the README and has the base spareScoring functionality been implemented?
-
 ## Duck Punch carefully
+
+If you are adding new function to existing JavaScript objects then do check you are not overwriting an existing function.
 
 ```javascript
 if (!Array.prototype.last){

@@ -1,3 +1,5 @@
+/*global Frame */
+
 function Game() {
   this.frames = [];
   this.gameRolls = [];

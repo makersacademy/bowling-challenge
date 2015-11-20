@@ -8,6 +8,10 @@ Game.prototype.roll = function(roll) {
   this.gameRolls.push(roll);
 }
 
+Game.prototype.score = function() {
+  return this.rollsTotal();
+}
+
 // PRIVATE METHODS
 Game.prototype.currentFrame = function() {
   if(this.isLastFrameFinished()) {
@@ -30,4 +34,8 @@ Game.prototype.lastFrame = function() {
 Game.prototype.isLastFrameFinished = function() {
   var lastFrame = this.lastFrame();
   return lastFrame.isFinished();
+}
+
+Game.prototype.rollsTotal = function() {
+  return this.gameRolls.reduce(function(a, b) { return a + b; }, 0);
 }

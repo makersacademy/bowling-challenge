@@ -21,4 +21,14 @@ describe('Game', function() {
       expect(game.frames.length).toEqual(2);
     });
   });
+
+  describe('#score', function() {
+    it('shows score for a simple no bonus frames', function() {
+      game.roll(2);
+      game.roll(4);
+      game.roll(5);
+      game.roll(3);
+      expect(game.score()).toEqual(17);
+    });
+  });
 });

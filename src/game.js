@@ -21,7 +21,8 @@ Game.prototype.currentFrame = function() {
 }
 
 Game.prototype.addFrame = function() {
-  this.frames.push(new Frame());
+  var rollIndex = this.gameRolls.length;
+  this.frames.push(new Frame(rollIndex));
 }
 
 Game.prototype.lastFrame = function() {

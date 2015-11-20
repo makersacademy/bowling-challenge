@@ -5,26 +5,28 @@ function Frame(roll1, roll2, roll3){
   this._nextFrame = null;
 }
 
+Frame.MAX_PINS = 10;
+
 Frame.create = function(roll1, roll2, roll3){
-  return new Frame(roll1, roll2, roll3);
+  var frameType = Frame;
+  if(roll1 == Frame.MAX_PINS){
+    frameType = StrikeFrame;
+  } else if(roll1 + roll2 == Frame.MAX_PINS) {
+    frameType = SpareFrame;
+  }
+  return new frameType(roll1, roll2, roll3);
 }
 
 Frame.prototype.score = function(){
   var currentScore = this._roll1 + this._roll2;
-  if(this._isASpare()){
-    currentScore += this._nextFrame._firstRoll();
-  }
-  if(this._isAStrike()){
-    if(this._nextFrame) {
-      currentScore += this._nextFrame._nextTwoRolls();
-    } else {
-      currentScore += (this._roll2 + this._roll3);
-    }
-  }
   if(this._nextFrame){
     currentScore += this._nextFrame.score();
   }
-  return currentScore;
+  return currentScore + this._bonus();
+}
+
+Frame.prototype._bonus = function(){
+  return 0;
 }
 
 Frame.prototype.addNextFrame = function(frame){
@@ -35,14 +37,6 @@ Frame.prototype.addNextFrame = function(frame){
     nextFrame = currentFrame._nextFrame
   }
   currentFrame._nextFrame = frame;
-}
-
-Frame.prototype._isASpare = function(){
-  return this._roll1 !== 10 && (this._roll1 + this._roll2 === 10);
-}
-
-Frame.prototype._isAStrike = function(){
-  return this._roll1 === 10;
 }
 
 Frame.prototype._firstRoll = function(){
@@ -57,10 +51,6 @@ Frame.prototype._nextFrameFirstRoll = function(){
 }
 
 Frame.prototype._nextTwoRolls = function(){
-  if(!this._isAStrike()) {
-    return this._roll1 + this._roll2;
-  } else {
-    return this._roll1 + this._nextFrameFirstRoll();
-  }
+  return this._roll1 + this._roll2;
 }
 

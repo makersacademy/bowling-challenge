@@ -33,6 +33,7 @@ describe("Game", function() {
 
   describe("roll", function() {
     it("Should change the currentRoll", function() {
+      spyOn(Math, 'floor').and.returnValue(5);
       game.roll();
       game.roll();
       expect(game.currentRoll).toEqual(1);
@@ -59,6 +60,13 @@ describe("Game", function() {
       spyOn(Math, 'floor').and.returnValue(6);
       game.roll();
       expect(game.score).toEqual(6);
+    });
+
+    it("Should move to the next frame upon a strike", function() {
+      spyOn(Math, 'floor').and.returnValue(10);
+      game.roll();
+      expect(game.currentFrame).toEqual(2);
+      expect(game.currentRoll).toEqual(1);
     });
   });
 

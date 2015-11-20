@@ -13,18 +13,27 @@ function Game() {
   }
 
   Game.prototype.roll = function() {
+    var roll = Math.floor(Math.random() * 11);
+    this.pins -= roll;
+    this.score += roll;
+
     if (this.currentRoll === 1) {
-      this.currentRoll ++;
+      this.isStrike(roll);
     } else {
       this.currentRoll --;
       this.currentFrame ++;
     }
-    var roll = Math.floor(Math.random() * 11);
-    this.pins -= roll;
-    this.score += roll;
     return roll;
   }
 
+  Game.prototype.isStrike = function(roll) {
+    if (roll === 10) {
+      this.currentFrame++;
+      this.currentRoll = 1;
+    } else {
+      this.currentRoll ++;
+    }
+  }
 
 
 }

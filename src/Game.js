@@ -6,6 +6,7 @@ function Game() {
   Game.prototype.currentFrame = 1;
   Game.prototype.currentRoll = 1;
   Game.prototype.pins = 10;
+  Game.prototype.score = 0;
 
   Game.prototype.returnCurrentFrame = function() {
     return this.currentFrame;
@@ -20,6 +21,7 @@ function Game() {
     }
     var roll = Math.floor(Math.random() * 11);
     this.pins -= roll;
+    this.score += roll;
     return roll;
   }
 

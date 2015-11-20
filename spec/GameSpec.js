@@ -17,6 +17,10 @@ describe("Game", function() {
     expect(game.currentRoll).toEqual(1);
   });
 
+  it("Should start with a score of 0", function() {
+    expect(game.score).toEqual(0);
+  })
+
   describe("frames", function() {
     it("Should store the current frame", function() {
       expect(game.currentFrame).toEqual(1);
@@ -49,6 +53,12 @@ describe("Game", function() {
       spyOn(Math, 'floor').and.returnValue(5);
       game.roll();
       expect(game.pins).toEqual(5);
+    });
+
+    it("Should increase the score by the amount rolled", function() {
+      spyOn(Math, 'floor').and.returnValue(6);
+      game.roll();
+      expect(game.score).toEqual(6);
     });
   });
 

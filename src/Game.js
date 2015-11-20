@@ -8,14 +8,15 @@ function Game() {
   Game.prototype.pins = 10;
   Game.prototype.score = 0;
 
+
+
   Game.prototype.returnCurrentFrame = function() {
     return this.currentFrame;
   }
 
   Game.prototype.roll = function() {
-    var roll = Math.floor(Math.random() * 11);
+    var roll = Math.floor(Math.random() * (this.pins));
     this.adjustScoreAndPins(roll);
-
     if (this.currentRoll === 1) {
       this.isStrike(roll);
     } else {
@@ -25,13 +26,18 @@ function Game() {
   }
 
   Game.prototype.isStrike = function(roll) {
-    if (roll === 10) {
+    if (roll === 10 && this.currentRoll === 1) {
       this.currentFrame++;
       this.currentRoll = 1;
+      this.pins = 10;
     } else {
       this.currentRoll ++;
     }
   }
+
+  // Game.prototype.isSpare = function(roll) {
+  //   if (this.currentRoll === 2 && );
+  // }
 
   Game.prototype.adjustScoreAndPins = function(roll) {
     this.pins -= roll;
@@ -41,6 +47,7 @@ function Game() {
   Game.prototype.switchFrame = function() {
     this.currentRoll --;
     this.currentFrame ++;
+    this.pins = 10;
   }
 
 

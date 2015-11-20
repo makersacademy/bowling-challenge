@@ -62,13 +62,25 @@ describe("Game", function() {
       expect(game.score).toEqual(6);
     });
 
-    it("Should move to the next frame upon a strike", function() {
+    it("Should move to the next frame upon getting a strike", function() {
       spyOn(Math, 'floor').and.returnValue(10);
       game.roll();
       expect(game.currentFrame).toEqual(2);
       expect(game.currentRoll).toEqual(1);
     });
-  });
+
+  //   it("Should add a bonus to your next roll upon getting a spare", function() {
+  //     spyOn(Math, 'floor').and.callFake(function() {
+  //       if (game.currentFrame === 1 && game.currentRoll === 1) return 1;
+  //       if (game.currentFrame === 1 && game.currentRoll === 2) return 9;
+  //       if (game.currentFrame === 2) return 9;
+  //     })
+  //     game.roll();
+  //     game.roll();
+  //     game.roll();
+  //     expect(game.score).toEqual(28);
+  //   });
+  // });
 
 
 

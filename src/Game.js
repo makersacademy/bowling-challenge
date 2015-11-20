@@ -15,10 +15,12 @@ function Game() {
     if (this.currentRoll === 1) {
       this.currentRoll ++;
     } else {
-      this.currentFrame ++;
       this.currentRoll --;
+      this.currentFrame ++;
     }
-    return Math.floor(Math.random() * 11);
+    var roll = Math.floor(Math.random() * 11);
+    this.pins -= roll;
+    return roll;
   }
 
 

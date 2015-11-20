@@ -44,6 +44,12 @@ describe("Game", function() {
       spyOn(Math, 'floor').and.returnValue(10);
       expect(game.roll()).toEqual(10);
     });
+
+    it("Should reduce the number of pins by the amount rolled", function() {
+      spyOn(Math, 'floor').and.returnValue(5);
+      game.roll();
+      expect(game.pins).toEqual(5);
+    });
   });
 
 

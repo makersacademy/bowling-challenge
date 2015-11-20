@@ -14,5 +14,11 @@ describe('Game', function() {
     it('adds a frame', function() {
       expect(game.frames.length).toEqual(1);
     });
+
+    it('adds a new frame when frame finished', function() {
+      game.roll(2);
+      game.roll(4);
+      expect(game.frames.length).toEqual(2);
+    });
   });
 });

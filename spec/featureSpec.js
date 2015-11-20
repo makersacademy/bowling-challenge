@@ -17,21 +17,21 @@ describe('Bowling Game Features', function() {
   });
 
   describe('allows to play a normal game', function() {
-    it('exampleGame1', function() {
+    it('exampleGame1 with spares and strikes but not in frame 10', function() {
       exampleGame1.forEach(function(ball) {
         game.roll(ball);
       });
       expect(game.score()).toEqual(131);
     })
 
-    it('exampleGame2', function() {
+    it('exampleGame2 with three strikes in frame 10', function() {
       exampleGame2.forEach(function(ball) {
         game.roll(ball);
       });
       expect(game.score()).toEqual(193);
     })
 
-    it('exampleGame3', function() {
+    it('exampleGame3 no spares or strikes', function() {
       exampleGame3.forEach(function(ball) {
         game.roll(ball);
       });

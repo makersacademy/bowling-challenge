@@ -2,7 +2,7 @@ describe('Frame', function(){
   var frame;
 
   beforeEach(function() {
-    frame = new Frame();
+    frame = new Frame(0);
   });
 
   describe('#addRoll', function() {
@@ -60,5 +60,39 @@ describe('Frame', function(){
       frame.addRoll(1);
       expect(frame.isStrike()).toBe(false);
     });
-});
+  });
+
+  describe('#isSpare', function() {
+    it('knows when it is a spare', function() {
+      frame.addRoll(4);
+      frame.addRoll(6);
+      expect(frame.isSpare()).toBe(true);
+    });
+
+    it('knows when is is not a spare', function() {
+      frame.addRoll(1);
+      frame.addRoll(1);
+      expect(frame.isSpare()).toBe(false);
+    });
+  });
+
+  describe('#bonus', function () {
+    it('returns the index to the next two rolls in case of a strike', function() {
+      frame.addRoll(10);
+      expect(frame.bonus()).toEqual([1, 2]);
+    });
+
+    it('returns the index to the next roll in case of a spare', function() {
+      frame.addRoll(4);
+      frame.addRoll(6);
+      expect(frame.bonus()).toEqual([2])
+    });
+
+    it('returns nothing when no bonus frame', function() {
+      frame.addRoll(3);
+      frame.addRoll(3);
+      expect(frame.bonus()).not.toBeDefined();
+    });
+  });
+
 });

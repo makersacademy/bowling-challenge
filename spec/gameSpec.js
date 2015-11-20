@@ -3,10 +3,13 @@ describe('Game', function() {
 
   beforeEach(function() {
     game = new Game();
-    game.roll(3);
   })
 
   describe('#roll', function() {
+    beforeEach(function() {
+      game.roll(3);
+    })
+
     it('registers a roll', function() {
       expect(game.gameRolls[0]).toEqual(3);
     });
@@ -23,12 +26,22 @@ describe('Game', function() {
   });
 
   describe('#score', function() {
-    it('shows score for a simple no bonus frames', function() {
+    beforeEach(function() {
       game.roll(2);
       game.roll(4);
       game.roll(5);
       game.roll(3);
-      expect(game.score()).toEqual(17);
+    });
+
+    it('shows score for a simple no bonus frames', function() {
+      expect(game.score()).toEqual(14);
+    });
+
+    it('shows score for a game with a strike', function() {
+      game.roll(10);
+      game.roll(3);
+      game.roll(5);
+      expect(game.score()).toEqual(40);
     });
   });
 });

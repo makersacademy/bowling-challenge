@@ -9,7 +9,7 @@ Game.prototype.roll = function(roll) {
 }
 
 Game.prototype.score = function() {
-  return this.rollsTotal();
+  return this.rollsTotal() + this.calculateBonus();
 }
 
 // PRIVATE METHODS
@@ -38,4 +38,25 @@ Game.prototype.isLastFrameFinished = function() {
 
 Game.prototype.rollsTotal = function() {
   return this.gameRolls.reduce(function(a, b) { return a + b; }, 0);
+}
+
+Game.prototype.getBonuses = function() {
+  return this.frames.filter(function(frame) {
+    if(frame.bonus()) {return frame.bonus() }
+  }).map(function(frame) {
+    return frame.bonus();
+  });
+}
+
+Game.prototype.calculateBonus = function() {
+  var bonusTotal = 0;
+  var rolls = this.gameRolls;
+
+  var bonusIndexes = this.getBonuses().reduce(function(a, b) {
+    return a.concat(b);
+  }, []);
+
+  bonusIndexes.forEach(function(i) { bonusTotal += rolls[i]; });
+
+  return bonusTotal;
 }

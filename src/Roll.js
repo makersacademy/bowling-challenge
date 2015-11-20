@@ -18,12 +18,4 @@ Roll.prototype.rollScore = function() {
   return this._pins;
 };
 
-Roll.prototype.rollBonus = function() {
-  if (this._pins === 10) {
-    this._rollBonus = 10;
-  } else {
-    this._rollBonus = 0;
-  }
-  return this._rollBonus;
-};
 

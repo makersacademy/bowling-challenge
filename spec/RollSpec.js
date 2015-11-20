@@ -22,9 +22,6 @@
       it('5 on roll 0; scores 5',function() {
         expect(roll[0].rollScore()).toEqual(5);
       });
-      it('5 on roll 0; bonus 0',function() {
-        expect(roll[0].rollBonus()).toEqual(0);
-      });
 
     });
 
@@ -38,15 +35,9 @@
       it('10 on roll 0; scores 10',function() {
         expect(roll[0].rollScore()).toEqual(10);
       });
-      it('10 on roll 0; bonus 10',function() {
-        expect(roll[0].rollBonus()).toEqual(10);
-      });
 
       it('10 on roll 1; scores 10',function() {
         expect(roll[1].rollScore()).toEqual(10);
-      });
-      it('10 on roll 1; bonus 10',function() {
-        expect(roll[1].rollBonus()).toEqual(10);
       });
 
     });

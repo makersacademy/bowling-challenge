@@ -20,7 +20,7 @@ Frame.prototype.rollPins = function(i,pins) {
 };
 
 Frame.prototype.frameScore = function() {
-      this._frameScore = this.roll[0].rollScore() + this.roll[1].rollScore() + this.roll[2].rollScore();
+      this._frameScore = this.roll[0].rollScore() + this.roll[1].rollScore();
   return this._frameScore;
 };
 

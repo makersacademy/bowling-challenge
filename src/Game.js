@@ -17,6 +17,8 @@ function Game() {
     this.frame[i] = new Frame();
   }
 
+}
+
   Game.prototype.setPinsPerRoll = function(iframe,iroll,ipins) {
     this.frame[iframe].rollPins(iroll,ipins);
   };
@@ -104,4 +106,4 @@ function Game() {
     return this._frameResultThree;
   };
 
-}
+// }

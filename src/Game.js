@@ -7,7 +7,10 @@ function Game() {
   this.lastFrame = this.frames[this.frames.length - 1];
 
   Game.prototype.roll = function() {
-    return Math.floor(Math.random() * (this.lastFrame.standingPins));
+    var pinsKnockedDown = Math.floor(Math.random() * (this.lastFrame.standingPins));
+    this.lastFrame.standingPins -= pinsKnockedDown;
+    this.lastFrame.rolls.push(pinsKnockedDown);
+    return pinsKnockedDown;
   }
 
 

@@ -17,6 +17,10 @@ Game.prototype.score = function() {
   return this.rollsTotal() + this.calculateBonus();
 }
 
+Game.prototype.intermediateScore = function() {
+  return '';
+}
+
 // PRIVATE METHODS
 
 Game.prototype.currentFrame = function() {

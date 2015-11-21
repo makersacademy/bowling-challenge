@@ -25,6 +25,15 @@ describe('Game', function() {
     });
   });
 
+  describe('#intermediateScore', function() {
+    it('shows intermediate score after a strike', function() {
+      game.roll(2);
+      game.roll(4);
+      game.roll(10);
+      expect(game.intermediateScore(2)).toEqual('');
+    });
+  });
+
   describe('#score', function() {
     beforeEach(function() {
       game.roll(2);

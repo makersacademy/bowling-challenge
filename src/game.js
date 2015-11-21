@@ -13,19 +13,49 @@ Game.prototype.roll = function( roll ) {
   this.gameRolls.push( roll );
 }
 
-Game.prototype.score = function() {
-  return this.rollsTotal() + this.calculateBonus();
-}
-
-Game.prototype.intermediateScore = function( frameNumber ) {
-  var rolls; 
-
-  if( this.frames[frameNumber-1].isStrike() ) { 
-    return '';
+Game.prototype.score = function( frameNumber ) {
+  frameNumber = frameNumber !== undefined ? frameNumber : this.frames.length;
+  if(this.isNotReadyForScoring( frameNumber ) ) { 
+    return ''; 
   }
   
-  rolls = this.rollsTillFrame( frameNumber );
-  return this.gameRolls.slice(0, rolls).reduce(function( a, b ) {
+  return  this.bonus( frameNumber ) + this.rollsTotal( frameNumber );
+}
+
+Game.prototype.isNotReadyForScoring = function( frameNumber ) {
+  var current_frame = this.frames[frameNumber - 1];
+
+ return  ( ( this.gameRolls.length - current_frame.rollIndex < 3 ) &&
+     ( current_frame.isStrike() || current_frame.isSpare() ) ) 
+}
+
+Game.prototype.bonusArray = function ( frameNumber ) {
+  return this.frames.slice(0, frameNumber).filter( function( frame ) {
+    if( frame.bonus() ) {
+      return frame.bonus()
+    }
+  }).map( function( frame ) {
+    return frame.bonus();
+  }).reduce( function( a, b ) { return a.concat( b ); }, [] );
+
+}
+
+Game.prototype.bonus = function( frameNumber ) {
+  var rolls = this.gameRolls;
+  var bonus = 0;
+  
+  this.bonusArray( frameNumber ).forEach( function( i ) {
+    bonus += rolls[ i ];
+  });
+
+  return bonus;
+}
+
+Game.prototype.rollsTotal = function( frameNumber ) {
+  var rolls = this.rollsTillFrame( frameNumber );
+  var slicedRoll = this.gameRolls.slice( 0, rolls );
+
+  return slicedRoll.reduce(function( a, b ) {
     return a + b;
   });
 }
@@ -71,28 +101,3 @@ Game.prototype.isGameOver = function() {
   return this.frames.length === 10 && this.frames[9].isFinished();
 }
 
-Game.prototype.rollsTotal = function( ) {
-  return this.gameRolls.reduce( function( a, b ) { return a + b; }, 0 );
-}
-
-Game.prototype.getBonuses = function() {
-  return this.frames.filter( function( frame ) {
-    if( frame.bonus() ) {
-      return frame.bonus()
-    }
-  }).map( function( frame ) {
-    return frame.bonus();
-  });
-}
-
-Game.prototype.calculateBonus = function() {
-  var bonusTotal = 0,
-      rolls = this.gameRolls,
-      bonusIndexes = this.getBonuses().reduce( function( a, b ) {
-        return a.concat( b );
-      }, [] );
-
-  bonusIndexes.forEach( function( i ) { bonusTotal += rolls[ i ]; });
-
-  return bonusTotal;
-}

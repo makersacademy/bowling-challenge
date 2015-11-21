@@ -18,6 +18,7 @@ Game.prototype.score = function() {
 }
 
 // PRIVATE METHODS
+
 Game.prototype.currentFrame = function() {
   if( this.isLastFrameFinished() ) {
     this.addFrame();

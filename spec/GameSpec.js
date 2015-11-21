@@ -24,4 +24,19 @@ describe("Game", function() {
       expect(game.finalScore()).toEqual(20);
     });
   });
+
+  describe("A spare is scored in the first frame", function() {
+    it("a spare is scored as '/' in the scores array", function() {
+      game.bowl(9);
+      game.bowl(1);
+      expect(game.scores).toEqual([9,'/']);  
+    });
+  });
+
+  describe("A strike is scored in the first frame", function() {
+    it("a strike is scored as 'X' in the scores array", function() {
+      game.bowl(10);
+      expect(game.scores).toEqual(['X']);  
+    });
+  });
 });

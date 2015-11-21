@@ -114,4 +114,5 @@ describe('Frame', function(){
       expect(frame.isLastFrameOver()).toEqual(true);
     })
   });
+
 });

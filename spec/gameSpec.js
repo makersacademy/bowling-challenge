@@ -25,7 +25,7 @@ describe('Game', function() {
     });
   });
 
-  describe('#score', function() {
+describe('#score', function() {
     beforeEach(function() {
       game.roll(2);
       game.roll(4);

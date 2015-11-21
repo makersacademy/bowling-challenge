@@ -16,30 +16,15 @@ Frame.prototype.finalise = function(total) {
 }
 
 Frame.prototype.scoreCanBeFinalised = function() {
-  return ((this.lastBallRolled > 1) && (this.total() < 10))
+  return ((this.lastBallRolled > 1) && (this.total() < 10));
 }
 
 Frame.prototype.isStrike = function() {
-  return this.balls[0] === 10;
+  return ((this.lastBallRolled === 1) && (this.total() === 10));
 }
 
 Frame.prototype.isSpare = function() {
-  return ((this.lastBallRolled > 1) && (this.total() === 10))
-}
-
-Frame.prototype.firstTwoBalls = function() {
-  return (this.balls[0] + this.balls[1]);
-}
-
-Frame.prototype.firstBall = function() {
-  return this.balls[0];
-}
-
-Frame.prototype.secondBall = function() {
-  return this.balls[1];
-}
-Frame.prototype.thirdBall = function() {
-  return this.balls[2];
+  return ((this.lastBallRolled === 2) && (this.total() === 10));
 }
 
 Frame.prototype.total = function() {

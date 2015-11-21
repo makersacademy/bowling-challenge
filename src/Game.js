@@ -15,7 +15,7 @@ Game.prototype.resetPins = function() {
 }
 
 Game.prototype.updateFrame = function() {
-  if (this.ball === 1) {
+  if ((this.ball === 1) && (this.pinsStanding !== 0)) {
     this.ball = 2;
   } else {
     this.ball = 1;

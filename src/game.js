@@ -24,6 +24,10 @@ Game.prototype.intermediateScore = function( frameNumber ) {
     return '';
   }
   
+  if( this.frames[frameNumber - 1].isSpare() ) {
+    return '';
+  }
+
   rolls = this.rollsTillFrame( frameNumber );
   return this.gameRolls.slice(0, rolls).reduce(function( a, b ) {
     return a + b;

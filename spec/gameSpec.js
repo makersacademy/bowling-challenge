@@ -26,15 +26,23 @@ describe('Game', function() {
   });
 
   describe('#intermediateScore', function() {
-    it('shows empty score after a strike', function() {
+    beforeEach(function() {
       game.roll(2);
       game.roll(4);
+    });
+
+    it('shows empty score after a strike', function() {
       game.roll(10);
       expect(game.intermediateScore(2)).toEqual('');
     });
-    it('shows score after normal frame', function() {
-      game.roll(2);
+
+    it('shows empty score after a spare', function() {
       game.roll(4);
+      game.roll(6);
+      expect(game.intermediateScore(2)).toEqual('');
+    });
+
+    it('shows score after normal frame', function() {
       expect(game.intermediateScore(1)).toEqual(6);
     });
   });

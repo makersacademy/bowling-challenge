@@ -3,6 +3,8 @@ function Game() {
   this.ball = 1
   this.pinsStanding = 10;
   this.scores = [];
+  this.bonus = 0;
+  this.frameScores = [];
   this.calcScore = 0;
 }
 
@@ -37,6 +39,37 @@ Game.prototype.addScore = function(pins) {
     pins = '/';
   }
   this.scores.push(pins);  
+};
+
+Game.prototype.totalFirstFrame = function() {
+  for (var i = 0; i < 2; i++) {
+    if (this.scores[i] === 'X') {
+      return (this.frameScores.push((10 + this.addBonus(2, i))));
+    } 
+    if (this.scores[i] === '/') {
+      return (this.frameScores.push((10 + this.addBonus(1, i))));
+    } 
+  }
+  if (this.frameScores.length === 0) {
+      this.frameScores.push((this.scores[0]) + (this.scores[1]));
+  }
+};
+
+Game.prototype.numerical = function(toNumerical) {
+  if ((toNumerical === 'X') || (toNumerical === '/')) {
+    return 10;
+  } else {
+    return toNumerical;
+  }
+};
+
+Game.prototype.addBonus = function(numberOfBonusBowls, ballNumber) {
+  var x = ballNumber
+  for (var i = 0; i < numberOfBonusBowls; i++) {
+    this.bonus += ((this.numerical(this.scores[x+1])));
+    x++
+  }
+  return this.bonus
 };
 
 Game.prototype.finalScore = function() {

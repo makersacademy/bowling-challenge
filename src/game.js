@@ -17,8 +17,28 @@ Game.prototype.score = function() {
   return this.rollsTotal() + this.calculateBonus();
 }
 
-Game.prototype.intermediateScore = function() {
-  return '';
+Game.prototype.intermediateScore = function( frameNumber ) {
+  var rolls; 
+
+  if( this.frames[frameNumber-1].isStrike() ) { 
+    return '';
+  }
+  
+  rolls = this.rollsTillFrame( frameNumber );
+  return this.gameRolls.slice(0, rolls).reduce(function( a, b ) {
+    return a + b;
+  });
+}
+
+Game.prototype.rollsTillFrame = function( frameNumber ) {
+  var i,
+      rolls = 0;
+
+  for(i = 0; i < frameNumber; i++ ) {
+    rolls += this.frames[i].turns; 
+  }
+
+  return rolls;
 }
 
 // PRIVATE METHODS
@@ -51,7 +71,7 @@ Game.prototype.isGameOver = function() {
   return this.frames.length === 10 && this.frames[9].isFinished();
 }
 
-Game.prototype.rollsTotal = function() {
+Game.prototype.rollsTotal = function( ) {
   return this.gameRolls.reduce( function( a, b ) { return a + b; }, 0 );
 }
 

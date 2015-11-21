@@ -64,17 +64,26 @@ describe('Play a game',function() {
   });
 
   describe('when get a open game in frame 10',function() {
-    it('no strike or spare in 10th frame highest current frame is 10',function() {
+    it('no strike or spare in 10th ',function() {
       gamePlay.pinsBowled(7,2,7,2,7,2,7,2,7,2,7,2,7,2,7,2,7,2,7,2,7,2)
       expect(gamePlay.currentFrame()).toEqual(10)
+      expect(gamePlay.cumScore()).toEqual(90)
+    });
+    it('if get spare in frame 10 can have one extra throw',function() {
+      gamePlay.pinsBowled(7,2,7,2,7,2,7,2,7,2,7,2,7,2,7,2,7,2,7,3,6,4,8)
+      expect(gamePlay.currentFrame()).toEqual(11)
+      expect(gamePlay.cumScore()).toEqual(97)
+    });
+    it('if get spare in frame 10 can have one extra throw',function() {
+      gamePlay.pinsBowled(7,2,7,2,7,2,7,2,7,2,7,2,7,2,7,2,7,2,7,3,10,10,8)
+      expect(gamePlay.currentFrame()).toEqual(12)
+      expect(gamePlay.cumScore()).toEqual(101)
+    });
+    it('perfect game',function() {
+      gamePlay.pinsBowled(10,10,10,10,10,10,10,10,10,10,10,10,2,4)
+      expect(gamePlay.currentFrame()).toEqual(12)
+      expect(gamePlay.cumScore()).toEqual(300)
     });
   });
-  describe('when get a spare in frame 10',function() {
-
-  });
-  describe('when get a strike in frame 10',function() {
-
-  });
-
 
 });

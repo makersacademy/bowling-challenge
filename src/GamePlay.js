@@ -40,10 +40,17 @@ GamePlay.prototype.frameHistory = function() {
     }
   }
 
-  if (j > 10){return 10
-    } else {
-    return j;
+  if(j > 11 && this._game.isStrike(10) && (this._game.isSpare(9) || this._game.isStrike(9))){
+    return 12;
   }
+  if( j > 10 && (this._game.isSpare(9) || this._game.isStrike(9)) ){
+    return 11;
+  }
+  if( j > 10) {
+    return 10;
+  }
+  return j;
+
 };
 
 GamePlay.prototype.currentFrame = function() {

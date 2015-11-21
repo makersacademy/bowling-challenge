@@ -13,7 +13,7 @@ function Game() {
   this._frameResultThree = '';
   this._score = 0;
 
-  for (var i = 0; i <= 11; i++) {
+  for (var i = 0; i <= 12; i++) {
     this.frame[i] = new Frame();
   }
 
@@ -54,6 +54,14 @@ function Game() {
   };
 
   Game.prototype.score = function(iframe) {
+    if(iframe === 10){
+      return 0;
+      // return this.frame[iframe].getRollPins(0);
+    }
+    if(iframe === 11){
+      return 0;
+      // return this.frame[iframe].getRollPins(0);
+    }
 
     if (this.isOpen(iframe)) {
       this._score = this.frame[iframe].frameScore();
@@ -103,6 +111,9 @@ function Game() {
   };
 
   Game.prototype.frameResultThree = function(iframe) {
+    if(this.frame[iframe].getRollPins(0) === 10) {
+      this._frameResultTwo = 'X';
+    }
     return this._frameResultThree;
   };
 

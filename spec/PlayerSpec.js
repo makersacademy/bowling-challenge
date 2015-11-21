@@ -2,7 +2,7 @@ describe ('Bowling',function(){
   var player;
   beforeEach(function(){
     player = new Player();
-    game = new Game();
+    game = game;
   });
 
   it('starts the game',function(){

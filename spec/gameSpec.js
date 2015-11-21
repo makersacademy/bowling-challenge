@@ -45,6 +45,13 @@ describe('Game', function() {
     it('shows score after normal frame', function() {
       expect(game.intermediateScore(1)).toEqual(6);
     });
+
+    it('shows score after a normal frame and counts previous bonuses', function() {
+      game.roll(10);
+      game.roll(3);
+      game.roll(5);
+      expect(game.intermediateScore(3)).toEqual(32);
+    });
   });
 
   describe('#score', function() {

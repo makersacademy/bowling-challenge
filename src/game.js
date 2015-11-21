@@ -18,8 +18,6 @@ Game.prototype.score = function() {
 }
 
 Game.prototype.intermediateScore = function( frameNumber ) {
-  var rolls; 
-
   if( this.frames[frameNumber-1].isStrike() ) { 
     return '';
   }
@@ -28,7 +26,36 @@ Game.prototype.intermediateScore = function( frameNumber ) {
     return '';
   }
 
-  rolls = this.rollsTillFrame( frameNumber );
+  return  this.intermediateBonus( frameNumber) + 
+          this.intermediateRollsTotal( frameNumber );
+}
+
+Game.prototype.intermediateBonusArray = function ( frameNumber ) {
+  return this.frames.slice(0, frameNumber - 1).filter( function( frame ) {
+    if( frame.bonus() ) {
+      return frame.bonus()
+    }
+  }).map( function( frame ) {
+    return frame.bonus();
+  }).reduce( function( a, b ) { return a.concat( b ); }, [] );
+
+}
+
+Game.prototype.intermediateBonus = function( frameNumber ) {
+  var rollsCutOff = this.rollsTillFrame( frameNumber ); 
+  var rolls = this.gameRolls.slice(0, rollsCutOff);
+  var bonus = 0;
+  
+  this.intermediateBonusArray( frameNumber ).forEach( function( i ) {
+    bonus += rolls[ i ];
+  });
+
+  return bonus;
+}
+
+Game.prototype.intermediateRollsTotal = function( frameNumber ) {
+  var rolls = this.rollsTillFrame( frameNumber );
+
   return this.gameRolls.slice(0, rolls).reduce(function( a, b ) {
     return a + b;
   });

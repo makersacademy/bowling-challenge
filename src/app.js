@@ -32,9 +32,18 @@ $(document).ready(function() {
   }
 
   function drawButtons() {
-    var i, btn, numButtons;
+    var i, btn, numButtons,
+        currentFrame = game.currentFrame();
+    
+    if( currentFrame.isLastFrame() && 
+       ( currentFrame.isStrike() || 
+         currentFrame.pins === 20 ||
+         currentFrame.isSpare() ) ) {
+      numButtons = 10; 
+    } else {
+      numButtons = 10 - currentFrame.pins;
+    }
 
-    numButtons = 10 - game.currentFrame().pins;
     $( '#buttonList' ).empty();
 
     for( i = 0; i <= numButtons; i++ ) {

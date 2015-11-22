@@ -24,5 +24,11 @@ describe("Frame", function() {
     expect(frame.isOver()).toBe(true)
   })
 
+  it("Indicates when a player scores a spare", function() {
+    frame.updateFrame(5)
+    frame.updateFrame(5)
+    expect(frame.isSpare()).toBe(true)
+  })
+
 
 })

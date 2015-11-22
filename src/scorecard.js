@@ -1,3 +1,5 @@
+/* global Frame */
+
 function ScoreCard() {
   this.currentFrame = 1;
   this.maxFrames = 10;

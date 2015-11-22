@@ -61,7 +61,7 @@ describe ('Bowling', function() {
          bowling.rolls(10, 0, 10);
          bowling.rolls(10, 0, 11);
          bowling.rolls(10, 0, 12);
-         expect(bowling.addScores(12)).toBe(120);
+         expect(bowling.allFrameScores(12)).toEqual(120);
        })
 
        it ('has a gutter game', function() {

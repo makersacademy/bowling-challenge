@@ -2,17 +2,22 @@
 Bowling Challenge
 =================
 
+instructions:
+
+i have managed to calculate scores for total, spare, strike, and gutter game.
+i have not managed to work out how to add extra 2 bonus rounds on the 10th round if you rolled 10 strikes. so cant calculate a perfect game. i also ran out of time to work on the interface, being such a busy week. but it is somthing i will complete when i get the time. 
+
     Test time: Friday, the entire day and the entire of lab week if you need it.
     Feel free to use Google, your notes, and your books.
 
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_september2015 (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
 * Forking this repo

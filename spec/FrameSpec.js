@@ -19,5 +19,10 @@ describe("Frame", function() {
     expect(frame.isOver()).toBe(true)
   })
 
+  it("Ends after a strike", function() {
+    frame.updateFrame(10)
+    expect(frame.isOver()).toBe(true)
+  })
+
 
 })

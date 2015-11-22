@@ -1,9 +1,9 @@
 function Frame(options) {
   this.frameIndex = options.frameIndex;
   this.rollIndex = options.rollIndex;
+  this.rolls = [];
   this.turns = 0;
   this.pins = 0;
-  this.rolls = [];
 }
 
 Frame.prototype.isFinished = function() {

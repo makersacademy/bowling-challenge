@@ -15,10 +15,10 @@ Game.prototype.roll = function( roll ) {
 
 Game.prototype.score = function( frameNumber ) {
   frameNumber = frameNumber !== undefined ? frameNumber : this.frames.length;
-  if(this.isNotReadyForScoring( frameNumber ) ) { 
-    return ''; 
+  if(this.isNotReadyForScoring( frameNumber ) ) {
+    return '';
   }
-  
+
   return  this.bonus( frameNumber ) + this.rollsTotal( frameNumber );
 }
 
@@ -26,7 +26,7 @@ Game.prototype.isNotReadyForScoring = function( frameNumber ) {
   var current_frame = this.frames[frameNumber - 1];
 
   if( current_frame.isStrike() || current_frame.isSpare() ) {
-    return this.gameRolls.length - current_frame.rollIndex < 3; 
+    return this.gameRolls.length - current_frame.rollIndex < 3;
   } else {
     return  !current_frame.isFinished();
   }
@@ -46,7 +46,7 @@ Game.prototype.bonusArray = function ( frameNumber ) {
 Game.prototype.bonus = function( frameNumber ) {
   var rolls = this.gameRolls;
   var bonus = 0;
-  
+
   this.bonusArray( frameNumber ).forEach( function( i ) {
     bonus += rolls[ i ];
   });
@@ -64,17 +64,9 @@ Game.prototype.rollsTotal = function( frameNumber ) {
 }
 
 Game.prototype.rollsTillFrame = function( frameNumber ) {
-  var i,
-      rolls = 0;
-
-  for(i = 0; i < frameNumber; i++ ) {
-    rolls += this.frames[i].turns; 
-  }
-
-  return rolls;
+  var currentFrame = this.frames[frameNumber - 1];
+  return currentFrame.rollIndex + currentFrame.turns;
 }
-
-// PRIVATE METHODS
 
 Game.prototype.currentFrame = function() {
   if( this.isLastFrameFinished() ) {
@@ -103,4 +95,3 @@ Game.prototype.isLastFrameFinished = function() {
 Game.prototype.isGameOver = function() {
   return this.frames.length === 10 && this.frames[9].isFinished();
 }
-

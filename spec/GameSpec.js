@@ -34,6 +34,6 @@ describe("Bowling Game", function() {
 		for (var i = 0; i < 12; i++) {
 			game.bowl(10);
 		}
-		expect(game.currentScore).toEqual(300);
+		expect(game.currentScore()).toEqual(300);
 	});
 });

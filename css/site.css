@@ -32,12 +32,12 @@ button:focus {
 }
 
 #userInterface {
-  height: 100px;
+  height: 60px;
 }
 
 #userInterface > p {
   font-weight: bold;
-  font-size: 2em;  
+  color: #444;;
 }
 
 .scoreCard  {
@@ -52,7 +52,7 @@ ul.scoreCard  {
 .scoreCard > li {
   list-style-type: none;
   float: left;
-  background: #f0f0f0; 
+  background: #f0f0f0;
   border-bottom: 1px #444 solid;
   border-right: 1px #444 solid;
   width: 80px;
@@ -60,15 +60,23 @@ ul.scoreCard  {
 }
 
 .scoreCard > li:first-child {
-  border-radius: 0.5em 0 0 0.5em; 
+  border-radius: 0.5em 0 0 0.5em;
 }
 
 .scoreCard > li:last-child {
   border-radius: 0 0.5em 0.5em 0;
 }
 
+.frameNumber.first {
+  border-top-left-radius: 0.5em;
+}
+
+.frameNumber.last {
+  border-top-right-radius: 0.5em;
+}
+
 .frameNumber {
-  border-bottom: 1px solid #444; 
+  border-bottom: 1px solid #444;
   color: #f0f0f0;
   font-weight: bold;
   text-align: center;
@@ -125,6 +133,10 @@ ul.scoreCard  {
   color: #f0f0f0;
   background-color: #3276b1;
   border-color: #285e8e;
+}
+
+.game-btn {
+  height: 35px;
 }
 
 .btn {

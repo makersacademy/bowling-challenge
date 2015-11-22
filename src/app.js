@@ -29,8 +29,8 @@ $(document).ready(function() {
   function startNewGame() {
     var newGame = '<button id="startNewGame" class="game-btn" type="button" ' +
                   'data-value="Play a new Game">Play a new Game</button>';
-   $( '#buttonList' ).empty();
-   $( '#userInterface > p' ).html(newGame);
+   $( '#userInterface > p' ).html('&nbsp;');
+   $( '#buttonList' ).html(newGame);
   }
 
   function drawButtons() {
@@ -120,9 +120,8 @@ $(document).ready(function() {
   function drawScoreCard() {
 
     var scoreCard = "<ul id='game" + gameNumber + "' class='scoreCard' >" +
-    "      <li class='player1'></li>" +
     "      <li class='frame1'>" +
-    "        <div class='frameNumber'>1</div>" +
+    "        <div class='frameNumber first'>1</div>" +
     "        <div class='rolls'>" +
     "          <div class='emptyDiv'></div>" +
     "          <div class='roll1'></div>" +
@@ -203,7 +202,7 @@ $(document).ready(function() {
     "        <div class='frameScore'></div>" +
     "      </li>" +
     "      <li class='frame10'>" +
-    "        <div class='frameNumber'>10</div>" +
+    "        <div class='frameNumber last'>10</div>" +
     "        <div class='rolls'>" +
     "          <div class='roll1'></div>" +
     "          <div class='roll2'></div>" +

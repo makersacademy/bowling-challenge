@@ -29,4 +29,11 @@ describe("Bowling Game", function() {
 		game.bowl(10)
 		expect(game.currentFrame).toEqual(2);
 	});
+
+	it("can bowl a perfect game", function() {
+		for (var i = 0; i < 12; i++) {
+			game.bowl(10);
+		}
+		expect(game.currentScore).toEqual(300);
+	});
 });

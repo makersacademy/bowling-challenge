@@ -10,15 +10,16 @@ function Game(){
   this.TOTALFRAME = 10;
 }
 
-Game.prototype.turn = function(points){
+Game.prototype.turn = function(){
+  var firstRollPoints = this.randomPoints(10);
+  var secondRollPoints = this.randomPoints(10 - firstRollPoints);
   if (this.frame >= this.TOTALFRAME) {
-    return;
+    throw("End of the game");
   } else if (this.bowlTurn === 0){
-    this.firstRoll(points);
+    this.firstRoll(firstRollPoints);
   } else {
-    this.secondRoll(points);
+    this.secondRoll(secondRollPoints);
   }
-    console.log('End of the game')
 }
 
 Game.prototype.firstRoll = function(points){
@@ -40,20 +41,16 @@ Game.prototype.bonusRoll = function(points) {
 }
 
 Game.prototype.firstRollCalcStrike = function(points){
+
   if ( points === this.MAXPOINTS ){
     this.strike();
-    this.bonusRoll(10);
-    this.bonusRoll(10);
+    this.bonusRoll(points);
+    this.bonusRoll(points);
     this.score += this.scoreFrame;
     this.scoreFrame = 0;
   }
 }
 
-Game.prototype.calcBonus = function(points){
-  if (points === 'bonus') {
-    this.bonus();
-  }
-}
 
 Game.prototype.firstRollCalcNormalPoints = function(points){
   if (points < this.MAXPOINTS ){
@@ -91,4 +88,9 @@ Game.prototype.endFrame = function(){
   this.turnScore = 0;
   this.bowlTurn = 0;
   this.frame += 1;
+}
+
+Game.prototype.randomPoints = function(max){
+  var num = (Math.random()*(max - 0) + 0);
+  return Math.round(num);
 }

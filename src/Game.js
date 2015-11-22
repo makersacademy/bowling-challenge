@@ -13,21 +13,33 @@ Game.prototype.finalScore = function() {
   var game = this;
 
   for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    if (isSpare()) {
+    if (isStrike()) {
+      (strikeScore());
+      pinsHitIndex += 1;
+    } else if (isSpare()) {
       (spareScore());
+      pinsHitIndex += 2;
     } else {
       (standardScore());
+      pinsHitIndex += 2;
     }
-    pinsHitIndex += 2;
   }
   return calcScore;
+
+  function isStrike() {
+    return ((game.pinsHit[pinsHitIndex]) === 10);
+  }
 
   function isSpare() {
     return ((game.pinsHit[pinsHitIndex]) + (game.pinsHit[pinsHitIndex]) === 10);
   }
 
+  function strikeScore() {
+    return calcScore += ((game.pinsHit[pinsHitIndex]) + (game.pinsHit[pinsHitIndex + 1]) + (game.pinsHit[pinsHitIndex + 2]));
+  }
+
   function spareScore() {
-    return calcScore += ((game.pinsHit[pinsHitIndex]) + (game.pinsHit[pinsHitIndex + 1])) + (game.pinsHit[pinsHitIndex + 2]);
+    return calcScore += ((game.pinsHit[pinsHitIndex]) + (game.pinsHit[pinsHitIndex + 1]) + (game.pinsHit[pinsHitIndex + 2]));
   }
 
   function standardScore() {

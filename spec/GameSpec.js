@@ -26,10 +26,18 @@ describe("Game", function() {
   });
 
   describe("A spare.", function() {
-    it("a spare on first frame, then a 5 and all 0 rolls. Final score should be 20", function() {
-      bowlHelper(3, 5);
-      bowlHelper(17,0);
-      expect(game.finalScore()).toEqual(20);
+    it("a spare on first frame, then all 1's. Final score should be 29", function() {
+      bowlHelper(2, 5);
+      bowlHelper(18,1);
+      expect(game.finalScore()).toEqual(29);
+    });
+  });
+
+  describe("A strike.", function() {
+    it("a strike on first frame, then all 1's. Final score should be 30", function() {
+      bowlHelper(1, 10);
+      bowlHelper(18, 1);
+      expect(game.finalScore()).toEqual(30);
     });
   });
 });

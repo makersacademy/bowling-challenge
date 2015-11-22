@@ -29,13 +29,76 @@ button:focus {
   font-family: Caslon, Georgia, Times, serif;
 }
 
+#scoreCard {
+  margin: 10px;
+}
+
 #scoreCard > li {
   list-style-type: none;
   float: left;
-  background: red; 
-  border: 2px #000 solid;
+  background: #f0f0f0; 
+  border-bottom: 1px #444 solid;
+  border-right: 1px #444 solid;
   width: 80px;
-  height: 50px;
+  height: 80px;
+}
+
+.frameNumber {
+  border-bottom: 2px solid #444; 
+  text-align: center;
+  border-bottom
+}
+
+.roll1 {
+  position: relative;
+  float: right;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  height: 25px;
+  font-weight: bold;
+  width: 30px;
+}
+
+.roll2 {
+  position: relative;
+  float: right;
+  border-left: 1px solid black;
+  height: 26px;
+  font-weight: bold;
+  width: 30px;
+}
+
+.frameScore {
+  position: relative;
+  float: left;
+  font-size: 1.5em;
+  height: 62px;
+  width: 49px;
+}
+
+
+.roll1, .roll2, .frameScore  > p {
+  text-align: center;
+  padding-top: 5px;
+}
+
+.frameScore > p {
+  padding-top: 20px;
+}
+
+.btn {
+  width: 35px;
+  height: 35px;
+  border-radius: 4px;
+  background-color: #428bca;
+  border-color: #357ebd;
+  color: #f0f0f0;
+}
+
+.btn:hover, .btn:focus {
+  color: #f0f0f0;
+  background-color: #3276b1;
+  border-color: #285e8e;
 }
 
 #thermostat {

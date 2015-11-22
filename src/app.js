@@ -8,31 +8,26 @@ $(document).ready(function() {
 
   drawButtons();
 
-  $( '.btn' ).click( function(event) {
-    console.log('button clicked');
-    event.preventDefault();
+  $( 'body' ).on('click', '.btn', function(event) {
     rollValue = $(this).attr('data-value');
-    console.log('rollValue= ' + rollValue)
+
     game.roll( parseInt(rollValue) );
     updateScore();
     drawButtons();
+    event.preventDefault();
   })
 
   function drawButtons() {
-    var i,
-        btn,
-        numButtons;
+    var i, btn, numButtons;
 
     numButtons = 10 - game.currentFrame().pins;
     $( '#buttonList' ).empty();
-    console.log(numButtons);
+
     for( i = 0; i <= numButtons; i++ ) {
       btn  = "<button id='btn" + i + "' type='button' class='btn' " + 
         "data-value='" + i + "'>" + i + "</button>";
       $( '#buttonList' ).append(btn);
-      console.log('drawing button ' + i);
     }
-    console.log('drawing buttons done!;');
   }
 
   function updateScore() {

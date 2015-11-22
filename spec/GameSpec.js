@@ -51,7 +51,7 @@ describe('Game',function(){
     };
     expect(game.frame).toEqual(10);
   })
-  it('the total frame remains 10 if 10 frames are played',function(){
+  it('throw error if the frame is more than 10',function(){
     spyOn(Math, "round").and.returnValue(10);
     for(var i=1; i < 11; i++){
       game.turn(10)

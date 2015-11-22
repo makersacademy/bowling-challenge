@@ -1,6 +1,16 @@
 function Player(){}
 
+var game;
+
 Player.prototype.startGame = function(){
-  var game = new Game();
+  game = new Game();
   return game;
 };
+
+Player.prototype.score = function(){
+  return game.score;
+};
+
+Player.prototype.throwBall = function(pointsTipe){
+  game.firstTurn(pointsTipe);
+}

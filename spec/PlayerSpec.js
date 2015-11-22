@@ -1,9 +1,8 @@
-describe ('Bowling',function(){
+describe ('Player',function(){
   var player;
   beforeEach(function(){
     player = new Player();
-    game = game;
-    score = 0;
+    game = new Game();
   });
 
   it('starts the game',function(){
@@ -12,5 +11,10 @@ describe ('Bowling',function(){
 
   it("the player can see the score",function(){
     expect(player.score()).toEqual(0)
+  });
+
+  it('when the user throws the ball and does 3 strike score = 30',function(){
+    player.throwBall('strike')
+    expect(player.score()).toEqual(30)
   })
 });

@@ -10,4 +10,13 @@ describe('Game',function(){
       expect(game.NO_OF_ROUNDS).toEqual(10);
     });
   });
+
+  describe('when the ball is rolled',function(){
+    it('will move on to the next round after 2 rolls',function(){
+      for(i=0;i<=2;i++){
+        game.roll();
+      }
+      expect(game.round).toEqual(2);
+    });
+  });
 });

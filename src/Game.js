@@ -32,4 +32,10 @@ Game.prototype.applyBonus = function(frame) {
   if (frame.isSpare()) {
     this.bonusIndexes.push(this.rolls.length);
   }
+
+  Game.prototype.rollScore = function() {
+    return this.rolls.reduce(function(roll, memo) {
+      return roll + memo;
+    }, 0);
+  }
 };

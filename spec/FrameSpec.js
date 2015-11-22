@@ -29,6 +29,4 @@ describe("Frame", function() {
     frame.updateFrame(5)
     expect(frame.isSpare()).toBe(true)
   })
-
-
 })

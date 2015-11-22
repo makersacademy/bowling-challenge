@@ -1,102 +1,125 @@
 /*global $:false, Game, Frame */
 
 $(document).ready(function() {
-  var game,
-      gameNumber = 0,
-      rollValue;
+  var game, gameNumber, rollValue;
 
+  gameNumber = 0;
   startNewGame();
 
-  $( 'body' ).on( 'click', '#startNewGame', function(event) {
-   $( '#userInterface > p' ).html( 'Click the number of pins to knock down' ); 
+  $( 'body' ).on( 'click', '#startNewGame', function() {
+   $( '#userInterface > p' ).html( 'Click the number of pins to knock down' );
    game = new Game();
    gameNumber++;
    drawButtons();
    drawScoreCard();
   });
 
-  $( 'body' ).on('click', '.btn', function(event) {
+  $( 'body' ).on( 'click', '.btn', function() {
     rollValue = $(this).attr('data-value');
-
     game.roll( parseInt(rollValue) );
     updateScore();
-    game.isGameOver() ? startNewGame() : drawButtons();
-  })
 
+    if( game.isGameOver() ) {
+      startNewGame();
+    } else {
+      drawButtons();
+    }
+  })
 
   function startNewGame() {
     var newGame = '<button id="startNewGame" class="game-btn" type="button" ' +
                   'data-value="Play a new Game">Play a new Game</button>';
    $( '#buttonList' ).empty();
-   $( '#userInterface > p' ).html(newGame); 
+   $( '#userInterface > p' ).html(newGame);
   }
 
   function drawButtons() {
-    var i, btn, numButtons,
-        currentFrame = game.currentFrame();
-    
-    if( currentFrame.isLastFrame() && 
-       ( currentFrame.isStrike() || 
-         currentFrame.pins === 20 ||
-         currentFrame.isSpare() ) ) {
-      numButtons = 10; 
+    var i,
+        btn,
+        numButtons,
+        currentFrame = game.currentFrame(),
+        pins = currentFrame.pins;
+
+    if( isLastFrameReset() ) {
+      numButtons = 10;
     } else {
-      numButtons = 10 - currentFrame.pins;
+      numButtons = pins < 10 ? 10 - pins : 20 - pins;
     }
 
     $( '#buttonList' ).empty();
-
     for( i = 0; i <= numButtons; i++ ) {
-      btn  = "<button id='btn" + i + "' type='button' class='btn' " + 
-        "data-value='" + i + "'>" + i + "</button>";
+      btn  =  "<button id='btn" + i + "' type='button' class='btn' " +
+              "data-value='" + i + "'>" + i + "</button>";
       $( '#buttonList' ).append(btn);
     }
   }
 
+  function isLastFrameReset() {
+    var currentFrame = game.currentFrame();
+
+    return currentFrame.isLastFrame() && ( currentFrame.isStrike() ||
+           currentFrame.pins === 20 || currentFrame.isSpare() );
+  }
+
   function updateScore() {
-    game.frames.forEach( function( frame, index ) {   
-      var i = frame.frameIndex + 1,
-      roll1 = game.gameRolls[frame.rollIndex],
-      roll2 = '',
-      roll3 = '', 
-      identifier = '#game' + gameNumber + ' .frame' + i;
+    game.frames.forEach( function( frame, index ) {
+      var startRoll   = frame.rollIndex,
+          roll1       = game.gameRolls[startRoll],
+          roll2       = '',
+          roll3       = '',
+          frameNumber = index + 1,
+          identifier  = '#game' + gameNumber + ' .frame' + frameNumber;
 
       if(frame.isLastFrame()) {
         roll1 = roll1 === 10 ? 'X' : roll1;
-
-        switch(frame.turns) {
-          case 2:
-            roll2 = game.gameRolls[frame.rollIndex + 1];
-            roll2 = roll2 === 10 ? 'X' : roll2;
-            roll2 = frame.isSpare() ? '/' : roll2; 
-            break;
-          case 3:
-            roll2 = game.gameRolls[frame.rollIndex + 1];
-            roll2 = roll2 === 10 ? 'X' : roll2;
-            roll2 = roll1 + roll2 === 10 ? '/' : roll2; 
-            roll3 = game.gameRolls[frame.rollIndex + 2]; 
-            roll3 = roll3 === 10 ? 'X' : roll3;
-            break;
+        if(frame.turns > 1) {
+          roll2 = valueRollTwo(frame, roll1, startRoll);
         }
+        if(frame.turns > 2) {
+          roll3 = valueRollThree(frame, roll1, startRoll);
+        }
+
       } else if(frame.isFinished()) {
           if(frame.isStrike()) {
             roll1 = '';
             roll2 = 'X';
           } else {
-            roll2 = frame.isSpare() ? '/' : game.gameRolls[frame.rollIndex + 1];
+            roll2 = frame.isSpare() ? '/' : game.gameRolls[startRoll + 1];
           }
         }
 
       $( identifier + ' .roll1' ).html('<p>' +  roll1 + '</p>');
       $( identifier + ' .roll2' ).html('<p>' +  roll2 + '</p>');
       $( identifier + ' .roll3' ).html('<p>' +  roll3 + '</p>');
-      $( identifier + ' .frameScore' ).html('<p>' +  game.score(i) + '</p>' );
+      $( identifier + ' .frameScore' ).html('<p>' +
+         game.score(frameNumber) + '</p>' );
     });
   }
-  
+
+  function valueRollTwo(frame, roll1, startRoll) {
+    var roll2 = game.gameRolls[startRoll + 1];
+
+    if(roll1 === 0 && roll2 === 10) { roll2 = '/'; }
+    else if( roll1 + roll2 === 10 ) { roll2 = '/' }
+    else if(roll1 === 'X' && roll2 === 10) { roll2 = 'X' }
+
+    return roll2;
+  }
+
+  function valueRollThree(frame, roll1, startRoll) {
+    var roll2 = game.gameRolls[startRoll + 1];
+    var roll3 = game.gameRolls[startRoll + 2];
+
+    if(roll2 === 0 && roll3 === 10) { roll3 = '/'; }
+    else if( roll2 + roll3 === 10 ) { roll3 = '/' }
+    else if(roll2 !== 0 && roll3 === 10) { roll3 = 'X' }
+
+    return roll3;
+  }
+
   function drawScoreCard() {
-  
-    var scoreCard = "<ul id='game" + gameNumber + "' class='scoreCard' >" + 
+
+    var scoreCard = "<ul id='game" + gameNumber + "' class='scoreCard' >" +
     "      <li class='player1'></li>" +
     "      <li class='frame1'>" +
     "        <div class='frameNumber'>1</div>" +
@@ -188,7 +211,7 @@ $(document).ready(function() {
     "        </div>" +
     "        <div class='frameScore'></div>" +
     "      </li>" +
-    "    </ul>"; 
+    "    </ul>";
 
     $( '#scoreCardContainer' ).append(scoreCard);
   }

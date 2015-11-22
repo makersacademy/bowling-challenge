@@ -12,6 +12,7 @@ describe('Bowling Game Features', function() {
     exampleGame1 = [ 9, 0, 3, 7, 6, 1, 3, 7, 8, 1, 5, 5, 0, 10, 8, 0, 7, 3, 8, 2, 8 ];
     exampleGame2 = [ 10, 3, 7, 6, 1, 10, 10, 10, 2, 8, 9, 0, 7, 3, 10, 10, 10];
     exampleGame3 = [ 9, 0, 3, 5, 6, 1, 3, 6, 8, 1, 5, 3, 2, 5, 8, 0, 7, 1, 8, 1 ];
+    exampleGame4 = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 5, 4];
     game = new Game();
 
   });
@@ -36,6 +37,13 @@ describe('Bowling Game Features', function() {
         game.roll(ball);
       });
       expect(game.score()).toEqual(82);
+    })
+
+    it('exampleGame4 final frame strike/5/4', function() {
+      exampleGame4.forEach(function(ball) {
+        game.roll(ball);
+      });
+      expect(game.score()).toEqual(284);
     })
   });
 

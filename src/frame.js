@@ -3,6 +3,7 @@ function Frame(options) {
   this.rollIndex = options.rollIndex;
   this.turns = 0;
   this.pins = 0;
+  this.rolls = [];
 }
 
 Frame.prototype.isFinished = function() {
@@ -16,6 +17,7 @@ Frame.prototype.isFinished = function() {
 Frame.prototype.addRoll = function( roll ) {
   this.pins += roll;
   this.turns ++;
+  this.rolls.push( roll );
 }
 
 Frame.prototype.isStrike = function() {
@@ -40,6 +42,6 @@ Frame.prototype.isLastFrame = function () {
 }
 
 Frame.prototype.isLastFrameOver = function() {
-  return ( this.turns === 2 && !this.isSpare() ) && this.pins !== 20 ||
-           this.turns === 3;
+  return (  this.turns === 2 && this.rolls[0] + this.rolls[1] < 10 ) ||
+            this.turns === 3;
 }

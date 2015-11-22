@@ -11,6 +11,48 @@ describe("Game", function() {
     }
   } 
 
+  describe("#isStrike", function() {
+    it("recognises a strike", function() {
+      expect(isStrike(10)).toBe(true);
+    });
+  });
+
+  describe("#isSpare", function() {
+    it("recognises a spare", function() {
+      expect(isSpare(5,5)).toBe(true);
+    });
+  });
+
+  describe("#standardScore", function() {
+    it("frame score is correctly calculated when no strike or spare", function() {
+      game.standardScore(1,1);
+      expect(game.calcScore).toEqual(2);
+    });
+    it("advances score checking properly through to the next frame", function() {
+      game.standardScore(1,1);
+      expect(game.logPinsHitIndex).toEqual(2);
+    });
+  });
+
+  describe("#bonusScore", function() {
+    it("frame score is correctly calculated if there is a strike", function() {
+      game.bonusScore(10,1,1);
+      expect(game.calcScore).toEqual(12);
+    });
+    it("frame score is correctly calculated if there is a spare", function() {
+      game.bonusScore(5,5,1);
+      expect(game.calcScore).toEqual(11);
+    });
+    it("advances score checking properly through to the next frame after a strike", function() {
+      game.bonusScore(10,1,1);
+      expect(game.logPinsHitIndex).toEqual(1);
+    });
+    it("advances score checking properly through to the next frame after a spare", function() {
+      game.bonusScore(5,5,1);
+      expect(game.logPinsHitIndex).toEqual(2);
+    });
+  });
+
   describe("No pins are hit - gutter game.", function() {
     it("The final score should be zero", function() {
       bowlHelper(20,0);
@@ -25,35 +67,26 @@ describe("Game", function() {
     });
   });
 
-  describe("A spare is scored in the first frame.", function() {
-    it("A spare is marked as '/' in the scores array", function() {
-      game.bowl(9);
-      game.bowl(1);
-      expect(game.scores).toEqual([9,'/']);  
+  describe("All strikes - perfect game.", function() {
+    it("The final score should be 300", function() {
+      bowlHelper(12, 10);
+      expect(game.finalScore()).toEqual(300);
     });
-
-    it("If a 5 and 1 are bowled next the first frame will receive a bonus of 5", function() {
-      game.bowl(9);
-      game.bowl(1);
-      game.bowl(5);
-      game.bowl(1);
-      game.totalFirstFrame();
-      expect(game.frameScores[0]).toEqual(15);
-    });  
   });
 
-  describe("A strike is scored in the first frame.", function() {
-    it("A strike is marked as 'X' in the scores array", function() {
-      game.bowl(10);
-      expect(game.scores).toEqual(['X']);  
+  describe("A spare.", function() {
+    it("A spare on first frame, then all 1's. Final score should be 29", function() {
+      bowlHelper(2, 5);
+      bowlHelper(18,1);
+      expect(game.finalScore()).toEqual(29);
     });
+  });
 
-    it("If a 5 and 1 are bowled next the first frame will receive a bonus of 6", function() {
-      game.bowl(10);
-      game.bowl(5);
-      game.bowl(1);
-      game.totalFirstFrame();
-      expect(game.frameScores[0]).toEqual(16);
-    });  
+  describe("A strike.", function() {
+    it("A strike on first frame, then all 1's. Final score should be 30", function() {
+      bowlHelper(1, 10);
+      bowlHelper(18, 1);
+      expect(game.finalScore()).toEqual(30);
+    });
   });
 });

@@ -9,7 +9,6 @@ function Game() {
 }
 
 Game.prototype.roll = function(number) {
-  // var pinsKnockedDown = Math.floor(Math.random() * (this.currentFrame().standingPins));
   var currentFrame = this.currentFrame();
   currentFrame.updateFrame(number);
   this.rolls.push(number);
@@ -37,5 +36,14 @@ Game.prototype.applyBonus = function(frame) {
     return this.rolls.reduce(function(roll, memo) {
       return roll + memo;
     }, 0);
+  }
+
+  Game.prototype.bonusScore = function() {
+    var rolls = this.rolls;
+    return this.bonusIndexes.map(function(index) {
+      return rolls[index];
+    }).reduce(function(roll, memo) {
+      return roll + memo;
+    })
   }
 };

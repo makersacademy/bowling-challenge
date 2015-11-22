@@ -24,6 +24,7 @@ describe("Game", function() {
     expect(game.bonusIndexes).toEqual([1,2])
   })
 
+
   it("Calculates the score for a perfect game", function() {
     for(i=0; i < 12; i++) {
       game.roll(10);
@@ -31,21 +32,25 @@ describe("Game", function() {
     expect(game.rollScore()).toEqual(120);
   })
 
+  it("Calculates the bonus score for a perfect game", function() {
+    for(i=0; i < 12; i++) {
+      game.roll(10);
+    }
+    expect(game.bonusScore()).toEqual(180);
+  })
+
   describe("#roll", function() {
     it("Returns a number between 0 and the number of standing pins from the existing frame", function() {
-      // spyOn(Math, 'floor').and.returnValue(5)
       game.roll(5)
       expect(game.rolls).toEqual([5])
     })
 
     it("Reduces the number of standing pins in the current frame", function() {
-      // spyOn(Math, 'floor').and.returnValue(5)
       game.roll(5)
       expect(game.currentFrame().standingPins).toEqual(5)
     })
 
     it("Adds the score to the current Frame", function() {
-      // spyOn(Math, 'floor').and.returnValue(5)
       game.roll(5)
       expect(game.currentFrame().rolls.length).toEqual(1)
     })

@@ -12,5 +12,5 @@ Player.prototype.score = function(){
 };
 
 Player.prototype.throwBall = function(pointsTipe){
-  game.firstTurn(pointsTipe);
+  game.turn(pointsTipe);
 }

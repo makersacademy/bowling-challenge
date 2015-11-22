@@ -14,7 +14,8 @@ describe ('Player',function(){
   });
 
   it('when the user throws the ball and does 3 strike score = 30',function(){
-    player.throwBall('strike')
+    player.throwBall(10)
     expect(player.score()).toEqual(30)
   })
+
 });

@@ -1,48 +1,48 @@
 function Game() {
   "use strict";
-  this.pinsHit = [];
+  this.logPinsHit = [];
+  this.logPinsHitIndex = 0;
+  this.calcScore = 0;
+}
+
+function isStrike(firstBowl) {
+  return ((firstBowl) === 10);
+}
+
+function isSpare(firstBowl, secondBowl) {
+  return ((firstBowl) + (secondBowl) === 10);
 }
 
 Game.prototype.bowl = function(pins) {
-  this.pinsHit.push(pins);
+  this.logPinsHit.push(pins);
+};
+
+Game.prototype.standardScore = function(firstBowl, secondBowl) {
+  this.calcScore += ((firstBowl) + (secondBowl));
+  this.logPinsHitIndex += 2;
+};
+
+Game.prototype.bonusScore = function(firstBowl, secondBowl, thirdBowl) {
+  this.calcScore += ((firstBowl) + (secondBowl) + (thirdBowl));
+  if (isStrike(firstBowl)) {
+    this.logPinsHitIndex += 1;
+  } else {
+    this.logPinsHitIndex += 2;
+  }
 };
 
 Game.prototype.finalScore = function() {
-  var calcScore = 0;
-  var pinsHitIndex = 0;
   var game = this;
 
   for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    if (isStrike()) {
-      (strikeScore());
-      pinsHitIndex += 1;
-    } else if (isSpare()) {
-      (spareScore());
-      pinsHitIndex += 2;
+    var firstBowl = game.logPinsHit[game.logPinsHitIndex];
+    var secondBowl = game.logPinsHit[game.logPinsHitIndex + 1];
+    var thirdBowl = game.logPinsHit[game.logPinsHitIndex + 2]; 
+    if ((isStrike(firstBowl)) || (isSpare(firstBowl, secondBowl))) {
+      game.bonusScore(firstBowl, secondBowl, thirdBowl);  
     } else {
-      (standardScore());
-      pinsHitIndex += 2;
+      game.standardScore(firstBowl, secondBowl);
     }
   }
-  return calcScore;
-
-  function isStrike() {
-    return ((game.pinsHit[pinsHitIndex]) === 10);
-  }
-
-  function isSpare() {
-    return ((game.pinsHit[pinsHitIndex]) + (game.pinsHit[pinsHitIndex]) === 10);
-  }
-
-  function strikeScore() {
-    return calcScore += ((game.pinsHit[pinsHitIndex]) + (game.pinsHit[pinsHitIndex + 1]) + (game.pinsHit[pinsHitIndex + 2]));
-  }
-
-  function spareScore() {
-    return calcScore += ((game.pinsHit[pinsHitIndex]) + (game.pinsHit[pinsHitIndex + 1]) + (game.pinsHit[pinsHitIndex + 2]));
-  }
-
-  function standardScore() {
-    return calcScore += ((game.pinsHit[pinsHitIndex]) + (game.pinsHit[pinsHitIndex + 1]));
-  }
+  return this.calcScore;
 };

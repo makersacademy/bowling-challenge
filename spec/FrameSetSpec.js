@@ -27,4 +27,4 @@ describe("FrameSet", function() {
       expect(frameSet.currentFrame).toEqual("frame2");
     });
   });
-})
+});

@@ -17,4 +17,4 @@ describe("Player", function() {
       expect(player.score).toEqual(score);
     });
   });
-})
+});

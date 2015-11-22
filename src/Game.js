@@ -1,5 +1,6 @@
 function Game() {
 	this.score = [];
+  this.currentFrame = 1;
 }
 
 Game.prototype.currentScore = function() {
@@ -9,9 +10,11 @@ Game.prototype.currentScore = function() {
     total += this.score[i]
   }
   return total;
-
 };
 //
 Game.prototype.bowl = function(inputScore) {
   this.score.push(inputScore)
+	if (inputScore === 10) {
+		this.currentFrame++
+	}
 };

@@ -13,4 +13,20 @@ describe("Bowling Game", function() {
     game.bowl(2);
     expect(game.currentScore()).toEqual(2);
   });
+
+  it("can bowl a guttttter", function() {
+    for (var i = 0; i < 20; i++) {
+      game.bowl(0);
+    }
+    expect(game.currentScore()).toEqual(0);
+  });
+
+  it("starts with frame 1", function() {
+     expect(game.currentFrame).toEqual(1);
+  });
+
+	it("ends the frame with a strike", function() {
+		game.bowl(10)
+		expect(game.currentFrame).toEqual(2);
+	});
 });

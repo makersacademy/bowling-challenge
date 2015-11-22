@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 
   function startNewGame() {
-    var newGame = '<button id="startNewGame" type="button" ' +
+    var newGame = '<button id="startNewGame" class="game-btn" type="button" ' +
                   'data-value="Play a new Game">Play a new Game</button>';
    $( '#buttonList' ).empty();
    $( '#userInterface > p' ).html(newGame); 

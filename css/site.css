@@ -3,6 +3,7 @@ html, body {
   height:100%;
   background-color: #ddd;
   font-size: 100%;
+  font-family: Garamond, Georgia, sans-serif;
 }
 
 main {
@@ -10,6 +11,7 @@ main {
   height: 80%;
   background-image: url(../images/background.jpg);
   background-size: cover;
+  padding: 20px 40px;
 }
 
 button:focus {
@@ -20,7 +22,7 @@ button:focus {
   height: 50px;
   background-image: url(../images/banner.jpg);
   background-size: cover;
-  padding: 20px;
+  padding: 20px 40px;
 }
 
 #header > h1 {
@@ -29,11 +31,21 @@ button:focus {
   font-family: Caslon, Georgia, Times, serif;
 }
 
+#userInterface {
+  height: 100px;
+}
+
+#userInterface > p {
+  font-weight: bold;
+  font-size: 2em;  
+}
+
 .scoreCard  {
-  margin: 10px;
+  margin: 10px 0;
 }
 
 ul.scoreCard  {
+  clear: left;
   float: left;
 }
 
@@ -57,7 +69,10 @@ ul.scoreCard  {
 
 .frameNumber {
   border-bottom: 1px solid #444; 
+  color: #f0f0f0;
+  font-weight: bold;
   text-align: center;
+  background-color: #444;
 }
 
 .rolls {
@@ -72,6 +87,7 @@ ul.scoreCard  {
   position: relative;
   float: left;
   font-weight: bold;
+  font-size: 1.2em;
   height: 36px;
   width: 100%;
 }
@@ -98,20 +114,24 @@ ul.scoreCard  {
   padding-top: 10px;
 }
 
-.btn {
-  width: 35px;
-  height: 35px;
+.game-btn, .btn {
   border-radius: 4px;
   background-color: #428bca;
   border-color: #357ebd;
   color: #f0f0f0;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover, .btn:focus, .game-btn:hover, .game-btn:focus {
   color: #f0f0f0;
   background-color: #3276b1;
   border-color: #285e8e;
 }
+
+.btn {
+  width: 35px;
+  height: 35px;
+}
+
 
 /* Footer
  * ---------------------------------------------------------------------------*/

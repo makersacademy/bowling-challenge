@@ -1,5 +1,6 @@
 
 Bowling Challenge
+[![Coverage Status](https://coveralls.io/repos/hsheikhm/bowling-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/hsheikhm/bowling-challenge?branch=master)
 =================
 
     Test time: Friday, the entire day and the entire of lab week if you need it.

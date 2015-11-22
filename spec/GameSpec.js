@@ -11,6 +11,48 @@ describe("Game", function() {
     }
   } 
 
+  describe("#isStrike", function() {
+    it("recognises a strike", function() {
+      expect(isStrike(10)).toBe(true);
+    });
+  });
+
+  describe("#isSpare", function() {
+    it("recognises a spare", function() {
+      expect(isSpare(5,5)).toBe(true);
+    });
+  });
+
+  describe("#standardScore", function() {
+    it("frame score is correctly calculated when no strike or spare", function() {
+      game.standardScore(1,1);
+      expect(game.calcScore).toEqual(2);
+    });
+    it("advances score checking properly through to the next frame", function() {
+      game.standardScore(1,1);
+      expect(game.logPinsHitIndex).toEqual(2);
+    });
+  });
+
+  describe("#bonusScore", function() {
+    it("frame score is correctly calculated if there is a strike", function() {
+      game.bonusScore(10,1,1);
+      expect(game.calcScore).toEqual(12);
+    });
+    it("frame score is correctly calculated if there is a spare", function() {
+      game.bonusScore(5,5,1);
+      expect(game.calcScore).toEqual(11);
+    });
+    it("advances score checking properly through to the next frame after a strike", function() {
+      game.bonusScore(10,1,1);
+      expect(game.logPinsHitIndex).toEqual(1);
+    });
+    it("advances score checking properly through to the next frame after a spare", function() {
+      game.bonusScore(5,5,1);
+      expect(game.logPinsHitIndex).toEqual(2);
+    });
+  });
+
   describe("No pins are hit - gutter game.", function() {
     it("The final score should be zero", function() {
       bowlHelper(20,0);

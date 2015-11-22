@@ -13,10 +13,15 @@ describe("Game", function() {
     expect(game.frames[game.frames.length - 1].isLastFrame).toBe(true)
   })
 
-  it("Keeps track of the bonuses associated with a spare", function() {
+  it("Keeps track of the bonus index associated with a spare", function() {
     game.roll(6)
     game.roll(4)
     expect(game.bonusIndexes).toEqual([2])
+  })
+
+  it("Keeps track of the bonus index associated with a strike", function() {
+    game.roll(10)
+    expect(game.bonusIndexes).toEqual([1,2])
   })
 
   describe("#roll", function() {

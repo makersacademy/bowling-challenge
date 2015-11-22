@@ -25,6 +25,10 @@ Game.prototype.currentFrame = function() {
 }
 
 Game.prototype.applyBonus = function(frame) {
+  if (frame.isStrike()) {
+    this.bonusIndexes.push(this.rolls.length);
+    this.bonusIndexes.push(this.rolls.length + 1);
+  }
   if (frame.isSpare()) {
     this.bonusIndexes.push(this.rolls.length);
   }

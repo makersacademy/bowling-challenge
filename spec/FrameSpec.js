@@ -6,28 +6,28 @@ describe("Frame", function() {
   })
 
   it("Starts with 10 pins", function() {
-    expect(frame.standingPins).toEqual(10)
+    expect(frame.standingPins).toEqual(10);
   })
 
   it("Is not over at the point of initialisation", function() {
-    expect(frame.isOver()).toBe(false)
+    expect(frame.isOver()).toBe(false);
   })
 
   it("Ends after 2 consecutive rolls", function() {
-    frame.updateFrame(5)
-    frame.updateFrame(5)
-    expect(frame.isOver()).toBe(true)
+    frame.updateFrame(5);
+    frame.updateFrame(5);
+    expect(frame.isOver()).toBe(true);
   })
 
   it("Ends after a strike", function() {
-    frame.updateFrame(10)
-    expect(frame.isOver()).toBe(true)
+    frame.updateFrame(10);
+    expect(frame.isOver()).toBe(true);
   })
 
   it("Indicates when a player scores a spare", function() {
-    frame.updateFrame(5)
-    frame.updateFrame(5)
-    expect(frame.isSpare()).toBe(true)
+    frame.updateFrame(5);
+    frame.updateFrame(5);
+    expect(frame.isSpare()).toBe(true);
   })
 
   describe("Last frame", function() {

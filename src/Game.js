@@ -1,20 +1,16 @@
 function Game() {
   this.frames = [];
-  for (var i = 0; i < 10; i++) {
-    this.frames.push(new Frame());
-  }
+  for (var i = 0; i < 10; i++) { this.frames.push(new Frame()); }
   this.frames[this.frames.length - 1].isLastFrame = true;
   this.rolls = [];
   this.bonusIndexes = [];
 }
 
-Game.prototype.roll = function(number) {
+Game.prototype.roll = function(pinsKnockedDown) {
   var currentFrame = this.currentFrame();
-  currentFrame.updateFrame(number);
-  this.rolls.push(number);
-  if (!currentFrame.isLastFrame) {
-    this.applyBonus(currentFrame);
-  }
+  currentFrame.updateFrame(pinsKnockedDown);
+  this.rolls.push(pinsKnockedDown);
+  if (!currentFrame.isLastFrame) { this.applyBonus(currentFrame);}
 };
 
 Game.prototype.currentFrame = function() {

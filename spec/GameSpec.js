@@ -125,4 +125,29 @@ describe("Game", function() {
       expect(game.finalScore()).toEqual(30);
     });
   });
+
+  describe("Example score from challenge.", function() {
+    it("Should result in 133 points", function() {
+    game.bowl(1);
+    game.bowl(4);
+    game.bowl(4);
+    game.bowl(5);
+    game.bowl(6);
+    game.bowl(4);
+    game.bowl(5);
+    game.bowl(5);
+    game.bowl(10);
+    game.bowl(0);
+    game.bowl(1);
+    game.bowl(7);
+    game.bowl(3);
+    game.bowl(6);
+    game.bowl(4);
+    game.bowl(10);
+    game.bowl(2);
+    game.bowl(8);
+    game.bowl(6);
+    expect(game.finalScore()).toEqual(133);
+    });
+  });
 });

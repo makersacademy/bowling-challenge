@@ -1,7 +1,12 @@
 function Game() {
-	this.currentScore = 0;
+	this.score = [];
 }
 
-Game.prototype.score = function() {
-	return this.currentScore;
+Game.prototype.currentScore = function() {
+	return this.score.reduce((a + b) => a + b)
+};
+
+Game.prototype.bowl = function(inputScore) {
+  this.score.push(inputScore)
+  return this.currentScore;
 };

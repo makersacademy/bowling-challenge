@@ -46,4 +46,8 @@ Game.prototype.applyBonus = function(frame) {
       return roll + memo;
     })
   }
+
+  Game.prototype.score = function() {
+    return this.rollScore() + this.bonusScore();
+  }
 };

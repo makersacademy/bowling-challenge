@@ -25,7 +25,7 @@ describe("Game", function() {
   })
 
 
-  it("Calculates the score for a perfect game", function() {
+  it("Calculates the roll score for a perfect game", function() {
     for(i=0; i < 12; i++) {
       game.roll(10);
     }
@@ -37,6 +37,13 @@ describe("Game", function() {
       game.roll(10);
     }
     expect(game.bonusScore()).toEqual(180);
+  })
+
+  it("Calculates the score for a perfect game", function() {
+    for(i=0; i < 12; i++) {
+      game.roll(10);
+    }
+    expect(game.score()).toEqual(300);
   })
 
   describe("#roll", function() {

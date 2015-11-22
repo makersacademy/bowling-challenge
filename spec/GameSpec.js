@@ -36,4 +36,11 @@ describe("Bowling Game", function() {
 		}
 		expect(game.currentScore()).toEqual(300);
 	});
+
+	it("can bowl a spare", function() {
+		for (var i = 0; i < 3; i++) {
+			game.bowl(5);
+		}
+		expect(game.currentScore).toEqual(20)
+	});
 });

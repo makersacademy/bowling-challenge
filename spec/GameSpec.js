@@ -11,6 +11,42 @@ describe("Game", function() {
     }
   } 
 
+  describe("The number of pins standing is tracked.", function() {
+    it("10 pins are standing at beginning of the game", function() {
+      expect(game.pinsStanding).toEqual(10);
+    });
+    it("after 5 pins are knocked down, 5 are left standing", function() {
+      bowlHelper(1,5);
+      expect(game.pinsStanding).toEqual(5);
+    });
+    it("after 2 standard bowls the pins are reset", function() {
+      bowlHelper(2,1);
+      expect(game.pinsStanding).toEqual(10);
+    });
+    it("after a strike the pins are reset", function() {
+      bowlHelper(1,10);
+      expect(game.pinsStanding).toEqual(10);
+    });
+  });
+
+  describe("The number of balls bowled in the frame are tracked.", function() {
+    it("A new game starts on ball #1", function() {
+      expect(game.frameBall).toEqual(1);
+    });
+    it("First bowl hits 1 pin and sets the frame to ball #2", function() {
+      bowlHelper(1,1)
+      expect(game.frameBall).toEqual(2);
+    });
+    it("Two bowls hits 1 pin each and the next frame starts at ball #1", function() {
+      bowlHelper(2,1)
+      expect(game.frameBall).toEqual(1);
+    });
+    it("A strike starts the next frame starts at ball #1", function() {
+      bowlHelper(1,10)
+      expect(game.frameBall).toEqual(1);
+    });
+  });
+
   describe("#isStrike", function() {
     it("recognises a strike", function() {
       expect(isStrike(10)).toBe(true);

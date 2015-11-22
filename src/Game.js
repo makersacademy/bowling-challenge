@@ -1,5 +1,7 @@
 function Game() {
   "use strict";
+  this.frameBall = 1;
+  this.pinsStanding = 10;
   this.logPinsHit = [];
   this.logPinsHitIndex = 0;
   this.calcScore = 0;
@@ -14,8 +16,30 @@ function isSpare(firstBowl, secondBowl) {
 }
 
 Game.prototype.bowl = function(pins) {
+  if (pins > this.pinsStanding) {
+    throw "There are only " + this.pinsStanding + " pins standing!";
+  }
+  this.updatePinsStanding(pins);
   this.logPinsHit.push(pins);
+  this.updateFrame();
 };
+
+Game.prototype.updateFrame = function() {
+  if ((this.frameBall === 1) && (this.pinsStanding !== 0)) {
+    this.frameBall = 2;
+  } else {
+    this.frameBall = 1;
+    this.resetPins();
+  }
+};
+
+Game.prototype.updatePinsStanding = function(pins) {
+    this.pinsStanding -= pins;
+};
+
+Game.prototype.resetPins = function() {
+  this.pinsStanding = 10
+}
 
 Game.prototype.standardScore = function(firstBowl, secondBowl) {
   this.calcScore += (firstBowl + secondBowl);

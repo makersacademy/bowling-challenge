@@ -18,13 +18,13 @@ describe("Game", function() {
     it("Reduces the number of standing pins in the current frame", function() {
       spyOn(Math, 'floor').and.returnValue(5)
       game.roll()
-      expect(game.lastFrame.standingPins).toEqual(5)
+      expect(game.currentFrame().standingPins).toEqual(5)
     })
 
     it("Adds the score to the current Frame", function() {
       spyOn(Math, 'floor').and.returnValue(5)
       game.roll()
-      expect(game.lastFrame.rolls.length).toEqual(1)
+      expect(game.currentFrame().rolls.length).toEqual(1)
     })
 
   })

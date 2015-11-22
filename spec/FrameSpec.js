@@ -9,5 +9,15 @@ describe("Frame", function() {
     expect(frame.standingPins).toEqual(10)
   })
 
+  it("Is not over at the point of initialisation", function() {
+    expect(frame.isOver()).toBe(false)
+  })
+
+  it("Ends after 2 consecutive rolls", function() {
+    frame.updateFrame(5)
+    frame.updateFrame(5)
+    expect(frame.isOver()).toBe(true)
+  })
+
 
 })

@@ -1,0 +1,37 @@
+{
+  "name": "MEAN_MVC_3rdTutorial",
+  "version": "1.0.0",
+  "description": "Code acompanying the [third blog post](not yet published)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hitman666/MEAN_MVC_3rdTutorial.git"
+  },
+  "keywords": [
+    "MEAN",
+    "MVC"
+  ],
+  "author": "Nikola Brežnjak <nikola.breznjak@gmail.com> (http://www.nikola-breznjak.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hitman666/MEAN_MVC_3rdTutorial/issues"
+  },
+  "homepage": "https://github.com/Hitman666/MEAN_MVC_3rdTutorial",
+  "dependencies": {
+    "body-parser": "^1.10.1",
+    "connect-flash": "^0.1.1",
+    "ejs": "^2.0.6",
+    "express": "^4.10.7",
+    "express-session": "^1.10.1",
+    "kerberos": "0.0.17",
+    "mongodb": "^2.0.48",
+    "mongoose": "^4.0",
+    "passport": "^0.2.1",
+    "passport-facebook": "^1.0.3",
+    "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.2"
+  }
+}

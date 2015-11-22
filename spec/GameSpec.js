@@ -18,5 +18,17 @@ describe('Game',function(){
       }
       expect(game.round).toEqual(2);
     });
+
+    it('the game should score on the amount of pins hit', function(){
+      game.roll();
+      expect(game.score).toEqual(10 - game._noOfPins());
+    });
+
+    it('resets the frame after each round', function(){
+      for(i=0;i<=1;i++){
+        game.roll();
+      }
+      expect(game._noOfPins()).toEqual(10);
+    });
   });
 });

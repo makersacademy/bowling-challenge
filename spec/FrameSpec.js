@@ -16,4 +16,10 @@ describe('Frame',function(){
       expect(frame.pins).toEqual(8);
     });
   });
+
+  it('can be reset',function(){
+    frame.removePins(5);
+    frame.resetPins();
+    expect(frame.pins).toEqual(10);
+  })
 });

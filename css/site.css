@@ -29,11 +29,15 @@ button:focus {
   font-family: Caslon, Georgia, Times, serif;
 }
 
-#scoreCard  {
+.scoreCard  {
   margin: 10px;
 }
 
-#scoreCard > li {
+ul.scoreCard  {
+  float: left;
+}
+
+.scoreCard > li {
   list-style-type: none;
   float: left;
   background: #f0f0f0; 
@@ -43,11 +47,11 @@ button:focus {
   height: 80px;
 }
 
-#scoreCard > li:first-child {
+.scoreCard > li:first-child {
   border-radius: 0.5em 0 0 0.5em; 
 }
 
-#scoreCard > li:last-child {
+.scoreCard > li:last-child {
   border-radius: 0 0.5em 0.5em 0;
 }
 

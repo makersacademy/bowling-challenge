@@ -24,4 +24,12 @@ describe("Game", function() {
       expect(game.finalScore()).toEqual(20);
     });
   });
+
+  describe("A spare.", function() {
+    it("a spare on first frame, then a 5 and all 0 rolls. Final score should be 20", function() {
+      bowlHelper(3, 5);
+      bowlHelper(17,0);
+      expect(game.finalScore()).toEqual(20);
+    });
+  });
 });

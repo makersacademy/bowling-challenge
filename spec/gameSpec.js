@@ -42,6 +42,12 @@ describe('#score', function() {
       expect(game.score(2)).toEqual('');
     });
 
+    it('shows empty score after a strike followed by one roll', function() {
+      game.roll(10);
+      game.roll(4);
+      expect(game.score(3)).toEqual('');
+    })
+
     it('shows score after normal frame', function() {
       expect(game.score(1)).toEqual(6);
     });

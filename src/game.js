@@ -25,8 +25,11 @@ Game.prototype.score = function( frameNumber ) {
 Game.prototype.isNotReadyForScoring = function( frameNumber ) {
   var current_frame = this.frames[frameNumber - 1];
 
- return  ( ( this.gameRolls.length - current_frame.rollIndex < 3 ) &&
-     ( current_frame.isStrike() || current_frame.isSpare() ) ) 
+  if( current_frame.isStrike() || current_frame.isSpare() ) {
+    return this.gameRolls.length - current_frame.rollIndex < 3; 
+  } else {
+    return  !current_frame.isFinished();
+  }
 }
 
 Game.prototype.bonusArray = function ( frameNumber ) {

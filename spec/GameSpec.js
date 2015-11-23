@@ -12,32 +12,39 @@ describe('Game', function(){
 
     rollOneWithSevenPins = {
       rollNumber: function() {
-        return 2;
+        return 1;
       },
       knockedDownPins: function() {
         return 7;
+      },
+      isSpare: function() {
+        return false;
       }
     }
 
     rollTwoWithTwoPins = {
       rollNumber: function() {
-        return 1;
+        return 2;
       },
       knockedDownPins: function() {
         return 2;
       },
       isSpare: function() {
-        return: true
+        return true;
       }
 
     }
 
     rollTwoWithThreePins = {
       rollNumber: function() {
-        return 1;
+        return 2;
       },
       knockedDownPins: function() {
         return 3;
+
+      },
+      isSpare: function() {
+        return false;
       }
     }
 
@@ -56,7 +63,7 @@ describe('Game', function(){
   });
 
   it('tracks the roll number', function(){
-    game.increaseScore(rollOneWithSevenPins);
+    game.increaseScore(rollTwoWithThreePins);
     expect(game.rollNumber()).toEqual(2);
   });
 
@@ -80,8 +87,10 @@ describe('Game', function(){
   it('can account for a spare', function() {
     game.increaseScore(rollOneWithSevenPins);
     game.increaseScore(rollTwoWithThreePins);
-    spyOn(rollTwoWithTwoPins,'isSpare').and.returnValue(true);
+    console.log(game._score)
+    console.log(rollTwoWithTwoPins.isSpare())
     game.increaseScore(rollTwoWithTwoPins);
+    console.log(game._score)
     expect(game.score()).toEqual(14);
   });
 

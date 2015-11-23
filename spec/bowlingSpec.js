@@ -3,6 +3,7 @@ describe('Bowling', function() {
 	var bowling; 
 	var numFrames = 10;
 	var smallFrames = 2;
+	var smallBowling;
 
 	beforeEach(function() {
 		bowling = new Bowling(numFrames);
@@ -72,15 +73,7 @@ describe('Bowling', function() {
 			expect(bowling.bonus).toEqual(2);
 		});
 	});
-
-	// describe('#prevScore', function() {
-	// 	it('logs the previous score', function() {
-	// 		spyOn(Math, 'random').and.returnValue(0.5);
-
-	// 		expect(bowling.previousScore).toEqual([5,3]);
-	// 	});
-	// });
-
+	
 	describe('#addTotal', function() {
 		it('logs the previous score', function() {
 			spyOn(Math, 'random').and.returnValue(0.5);

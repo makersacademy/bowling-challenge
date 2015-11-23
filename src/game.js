@@ -8,40 +8,40 @@ Game.prototype.bowl = function(pins) {
 
 Game.prototype.score = function() {
   var result = 0;
-  var bowlIndex = 0;
+  var bowlNum = 0;
   var game = this;
 
-  for(var frameIndex = 0; frameIndex < 10; frameIndex++ ) {
+  for(var frameNum = 0; frameNum < 10; frameNum++ ) {
     if (isStrike()) {
-      result += getStrikeScore();
-      bowlIndex += 1
+      result += calcStrike();
+      bowlNum += 1
     } else if (isSpare()) {
-      result += getSpareScore();
-      bowlIndex += 2;
+      result += calcSpare();
+      bowlNum += 2;
     } else {
-      result += getNormalScore();
-      bowlIndex += 2;
+      result += calcOpen();
+      bowlNum += 2;
     }
   };
   return result;
 
   function isSpare() {
-    return game.bowls[bowlIndex] + game.bowls[bowlIndex+1] === 10
+    return game.bowls[bowlNum] + game.bowls[bowlNum+1] === 10
   };
 
-  function getSpareScore() {
-    return game.bowls[bowlIndex] + game.bowls[bowlIndex+1] + game.bowls[bowlIndex+2];
+  function calcSpare() {
+    return game.bowls[bowlNum] + game.bowls[bowlNum+1] + game.bowls[bowlNum+2];
   };
 
-  function getNormalScore() {
-    return game.bowls[bowlIndex] + game.bowls[bowlIndex+1];
+  function calcOpen() {
+    return game.bowls[bowlNum] + game.bowls[bowlNum+1];
   };
 
   function isStrike() {
-    return game.bowls[bowlIndex] == 10;
+    return game.bowls[bowlNum] == 10;
   };
 
-  function getStrikeScore() {
-    return game.bowls[bowlIndex] + game.bowls[bowlIndex+1] + game.bowls[bowlIndex+2];
+  function calcStrike() {
+    return game.bowls[bowlNum] + game.bowls[bowlNum+1] + game.bowls[bowlNum+2];
   };
 };

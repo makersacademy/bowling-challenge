@@ -12,7 +12,8 @@ This bowling challenge was built using TDD. The testing framework used is Jasmin
 
 ### Usage
 
-There is no GUI so usage is 100% from the command line.
+There is no GUI so usage is 100% from the console. Copy the code into the Chrome DevTools console or use your own preferred method.
+
 To start a new game:
 
 ``` game = new Game(); ```

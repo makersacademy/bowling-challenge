@@ -3,7 +3,7 @@
 function Game() {
   this.frames = [];
   this.gameRolls = [];
-  this.scoreCard = new ScoreCard(this, this.frames);
+  this.scoreCard = new ScoreCard( this );
 }
 
 Game.prototype.roll = function( roll ) {

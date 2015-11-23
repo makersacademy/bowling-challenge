@@ -30,15 +30,20 @@ The game won't let you knock down pins that are already knocked down (it will th
 
 ### TODO
 
-* More explicit end of game handling
-* Frontend GUI
-* Deploy to Heroku
+* Proper encapsulation.
+* Use SpecHelper.
+* Split out feature tests and unit tests into separate files.
+* Separate responisbilities into multiple objects.
+* More explicit end-of-game handling.
+* Frontend GUI.
 
 
 ### Technologies used
 
 * JavaScript
 * TDD (via Jasmine)
+
+
 
 
 # Original instructions

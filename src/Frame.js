@@ -15,7 +15,11 @@ Frame.prototype.registerRoll = function(knockingDownPins) {
 };
 
 Frame.prototype.isOver = function() {
-  return (this.rollCount === 2 || this.pins === 10);
+  if (this.isLastFrame()) {
+    return this.isLastFrameCompleted();
+  } else {
+    return (this.rollCount === 2 || this.pins === 10);
+  }
 };
 
 Frame.prototype.isStrike = function() {
@@ -42,3 +46,10 @@ Frame.prototype.bonus = function() {
 Frame.prototype.isLastFrame = function() {
   return this.frameIndex === 9;
 };
+
+Frame.prototype.isLastFrameCompleted = function() {
+  return ((this.rollCount === 2 && this.pins < 10) || (this.rollCount === 3));
+};
+
+
+

@@ -56,6 +56,19 @@ describe("Frame", function() {
       frame.registerRoll(4);
       expect(frame.isOver()).toBe(false);
     });
+
+    it("is not completed after a strike in the last frame", function() {
+      var frame = new Frame(9);
+      frame.registerRoll(10);
+      expect(frame.isOver()).toBe(false);
+    });
+
+    it("is not completed after two strikes in the last frame", function() {
+      var frame = new Frame(9);
+      frame.registerRoll(10);
+      frame.registerRoll(10);
+      expect(frame.isOver()).toBe(false);
+    });
   });
 
   describe("#isStrike", function() {
@@ -94,18 +107,18 @@ describe("Frame", function() {
   });
 
   describe("#bonus", function() {
-    it('receives bonus points for a strike', function() {
+    it("receives bonus points for a strike", function() {
       frame.registerRoll(10);
       expect(frame.bonus()).toEqual([2, 3]);
     });
 
-    it('receives bonus points for a spare', function() {
+    it("receives bonus points for a spare", function() {
       frame.registerRoll(7);
       frame.registerRoll(3);
       expect(frame.bonus()).toEqual([2])
     });
 
-    it('receives nothing for an ordinary frame', function() {
+    it("receives nothing for an ordinary frame", function() {
       frame.registerRoll(5);
       frame.registerRoll(2);
       expect(frame.bonus()).not.toBeDefined();
@@ -121,6 +134,21 @@ describe("Frame", function() {
     it("knows when it is not the last frame", function() {
       var frame = new Frame(6);
       expect(frame.isLastFrame()).toBe(false);
+    });
+  });
+
+  describe("#isLastFrameCompleted", function() {
+    it("is completed after two rolls", function() {
+      frame.registerRoll(3);
+      frame.registerRoll(1);
+      expect(frame.isLastFrameCompleted()).toBe(true);
+    })
+
+    it("is completed after a spare and the third throw", function() {
+      frame.registerRoll(9);
+      frame.registerRoll(1);
+      frame.registerRoll(4);
+      expect(frame.isLastFrameCompleted()).toBe(true);
     });
   });
 

@@ -1,7 +1,8 @@
 "use strict";
 
-function Frame(rollIndex) {
-  this.rollIndex = rollIndex;
+function Frame(number) {
+  this.rollIndex = number;
+  this.frameIndex = number;
   this.pins = 0;
   this.rollCount = 0;
   this.rolls = [];
@@ -36,4 +37,8 @@ Frame.prototype.bonus = function() {
   if (this.isSpare()) {
     return [this.rollIndex + 1];
   }
+};
+
+Frame.prototype.isLastFrame = function() {
+  return this.frameIndex === 9;
 };

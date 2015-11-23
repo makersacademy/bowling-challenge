@@ -112,5 +112,17 @@ describe("Frame", function() {
     });
   });
 
+  describe("#isLastFrame", function() {
+    it("knows when it is the last frame", function() {
+      var frame = new Frame(9);
+      expect(frame.isLastFrame()).toBe(true);
+    });
+
+    it("knows when it is not the last frame", function() {
+      var frame = new Frame(6);
+      expect(frame.isLastFrame()).toBe(false);
+    });
+  });
+
 
 });

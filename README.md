@@ -15,15 +15,15 @@ This bowling challenge was built using TDD. The testing framework used is Jasmin
 There is no GUI so usage is 100% from the command line.
 To start a new game:
 
-```game = new Game();```
+``` game = new Game(); ```
 
 To bowl and hit ```n``` number of pins:
 
-```game.bowl(n)```
+``` game.bowl(n); ```
 
 To calculate the final score:
 
-```game.calcScore();```
+``` game.calcScore(); ```
 
 The game won't let you knock down pins that are already knocked down (it will throw an error) and it will reset the pins after each frame is complete.
 

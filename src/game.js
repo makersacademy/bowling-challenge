@@ -3,7 +3,7 @@
 function Game() {
   this.frames = [];
   this.gameRolls = [];
-  this.score = new ScoreCard(this.frames);
+  this.scoreCard = new ScoreCard(this, this.frames);
 }
 
 Game.prototype.roll = function( roll ) {
@@ -12,6 +12,10 @@ Game.prototype.roll = function( roll ) {
   }
   this.currentFrame().addRoll( roll );
   this.gameRolls.push( roll );
+}
+
+Game.prototype.score = function( frameNumber ) {
+  return this.scoreCard.score ( frameNumber )
 }
 
 Game.prototype.currentFrame = function() {

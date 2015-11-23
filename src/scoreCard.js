@@ -1,6 +1,6 @@
-function ScoreCard( frames ) {
-  this.frames = frames;
-  //gameRolls
+function ScoreCard( game ) {
+  this.frames = game.frames;
+  this.gameRolls = game.gameRolls;
 }
 
 ScoreCard.prototype.score = function( frameNumber ) {
@@ -12,16 +12,11 @@ ScoreCard.prototype.score = function( frameNumber ) {
   return this.bonus( frameNumber ) + this.rollsTotal( frameNumber );
 }
 
-ScoreCard.prototype.rollsPlayed = function() {
-  return this.frames.map( function( frame ) { return frame.turns; })
-                    .reduce( function( a, b ) { return a + b; });
-}
-
 ScoreCard.prototype.isNotReadyForScoring = function( frameNumber ) {
   var current_frame = this.frames[frameNumber - 1];
 
   if( current_frame.isStrike() || current_frame.isSpare() ) {
-    return this.rollsPlayed() - current_frame.rollIndex < 3;
+    return this.gameRolls.length - current_frame.rollIndex < 3;
   } else {
     return  !current_frame.isFinished();
   }

@@ -1,3 +1,25 @@
+My Approach
+===========
+
+This is my attempt at Uncle Bobs Bowling Game kata. It works as expected in all aspects of the challenge.
+
+* It can score a gutter game.
+* It can score a perfect game.
+* It can score the correct score after each frame.
+* Strike bonuses are calculated correctly after each frame.
+* Spare bonuses are calculated after each frame.
+
+Instructions
+============
+
+In order to run the tests, you will need to: 
+
+* Clone this repo.
+* Download the Standalone version of the Jasmine test framework and copy it to a lib folder. This can be found at https://github.com/jasmine/jasmine/releases.
+* Load SpecRunner.html into your browser.
+
+The original challenge instructions can be seen below.
+
 
 Bowling Challenge
 =================

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bowling Challenge</title>
+	<link rel="stylesheet" type="text/css" href="./css/application.css">
+</head>
+	<body>
+	<header>Bowling Challenge</header>
+	<main>
+		<section>
+			<h1>Score</h1>
+			<p id='score'></p>
+			<ul id='start'> <button id="begin">Begin Game</button></ul>
+			<p id='game'>
+				<ul id='frame'></ul>
+				<ul id='score_sheet'></ul>
+			</p>
+		</section>
+		<section>
+			<ul id='controls' style="display: none">
+				<button id="one">1st Go</button>
+				<button id="two">2nd Go</button>
+			</ul>
+		</section>
+		<section>
+			<ul id='last_go' style="display: none">
+				<button id="last">Last Go</button>
+			</ul>
+		</section>
+		<section>
+			<h2 id='finish' style="display: none">Game Over</h2>
+		</section>
+	<script src="./vendor/jquery.js"></script>
+	<script src="./js/interface.js"></script>
+	<script src="./src/bowling.js"></script>
+	</main>
+	</body>
+</html>

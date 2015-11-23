@@ -92,7 +92,7 @@ $(document).ready(function() {
       $( identifier + ' .roll2' ).html('<p>' +  roll2 + '</p>');
       $( identifier + ' .roll3' ).html('<p>' +  roll3 + '</p>');
       $( identifier + ' .frameScore' ).html('<p>' +
-         game.score(frameNumber) + '</p>' );
+         game.score( frameNumber ) + '</p>' );
     });
   }
 
@@ -109,17 +109,21 @@ $(document).ready(function() {
   function valueRollThree(frame, roll1, startRoll) {
     var roll2 = game.gameRolls[startRoll + 1];
     var roll3 = game.gameRolls[startRoll + 2];
+    roll1 = game.gameRolls[startRoll];
 
     if(roll2 === 0 && roll3 === 10) { roll3 = '/'; }
-    else if( roll2 + roll3 === 10 ) { roll3 = '/' }
-    else if(roll2 !== 0 && roll3 === 10) { roll3 = 'X' }
+    else if( roll2 + roll3 === 10 && roll1 + roll2 !== 10 ) { roll3 = '/' }
+    else if( roll2 !== 0 && roll3 === 10) { roll3 = 'X' }
 
     return roll3;
   }
 
   function drawScoreCard() {
-
-    var scoreCard = "<ul id='game" + gameNumber + "' class='scoreCard' >" +
+    var scoreCard = $.get('scoreCard.html', function(data) {
+      return data;
+    });
+    console.log( scoreCard );
+    scoreCard = "<ul id='game" + gameNumber + "' class='scoreCard' >" +
     "      <li class='frame1'>" +
     "        <div class='frameNumber first'>1</div>" +
     "        <div class='rolls'>" +

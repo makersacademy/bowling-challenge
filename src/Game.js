@@ -34,21 +34,20 @@ Game.prototype.secondRoll = function(points){
   this.endFrame();
 }
 
-Game.prototype.bonusRoll = function(points) {
-  this.bonusPoints += 10;
-  this.scoreFrame += this.bonusPoints;
-  this.bonusPoints = 0;
-}
-
 Game.prototype.firstRollCalcStrike = function(points){
-
   if ( points === this.MAXPOINTS ){
     this.strike();
-    this.bonusRoll(points);
-    this.bonusRoll(points);
+    this.bonusRoll(this.randomPoints(10));
+    this.bonusRoll(this.randomPoints(10));
     this.score += this.scoreFrame;
     this.scoreFrame = 0;
   }
+}
+
+Game.prototype.bonusRoll = function(points) {
+  this.bonusPoints += points;
+  this.scoreFrame += this.bonusPoints;
+  this.bonusPoints = 0;
 }
 
 

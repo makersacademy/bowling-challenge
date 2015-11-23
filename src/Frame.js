@@ -1,5 +1,7 @@
-function Frame(frameNumber) {
-  this.frameNumber = frameNumber;
+"use strict";
+
+function Frame(rollIndex) {
+  this.rollIndex = rollIndex;
   this.pins = 0;
   this.rollCount = 0;
   this.rolls = [];
@@ -25,4 +27,13 @@ Frame.prototype.isSpare = function() {
 
 Frame.prototype.totalFrame = function() {
   return this.pins;
+};
+
+Frame.prototype.bonus = function() {
+  if (this.isStrike()) {
+    return [this.rollIndex + 1, this.rollIndex + 2];
+  }
+  if (this.isSpare()) {
+    return [this.rollIndex + 1];
+  }
 };

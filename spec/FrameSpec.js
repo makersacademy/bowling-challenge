@@ -2,7 +2,7 @@ describe("Frame", function() {
   var frame;
 
   beforeEach(function() {
-    frame = new Frame({ frameNumber: 1 });
+    frame = new Frame(1);
   });
 
   describe("#registerRoll", function() {
@@ -92,4 +92,25 @@ describe("Frame", function() {
       expect(frame.totalFrame()).toEqual(8);
     });
   });
+
+  describe("#bonus", function() {
+    it('receives bonus points for a strike', function() {
+      frame.registerRoll(10);
+      expect(frame.bonus()).toEqual([2, 3]);
+    });
+
+    it('receives bonus points for a spare', function() {
+      frame.registerRoll(7);
+      frame.registerRoll(3);
+      expect(frame.bonus()).toEqual([2])
+    });
+
+    it('receives nothing for an ordinary frame', function() {
+      frame.registerRoll(5);
+      frame.registerRoll(2);
+      expect(frame.bonus()).not.toBeDefined();
+    });
+  });
+
+
 });

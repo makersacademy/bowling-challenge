@@ -19,7 +19,7 @@ To start a new game:
 
 To bowl and hit ```n``` number of pins:
 
-```game.bowl(n);```
+```game.bowl(n)```
 
 To calculate the final score:
 

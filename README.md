@@ -22,6 +22,7 @@ To bowl and hit ```n``` number of pins:
 ```game.bowl(n);```
 
 To calculate the final score:
+
 ```game.calcScore();```
 
 The game won't let you knock down pins that are already knocked down (it will throw an error) and it will reset the pins after each frame is complete.

@@ -5,13 +5,11 @@ function Frame(number) {
   this.frameIndex = number;
   this.pins = 0;
   this.rollCount = 0;
-  this.rolls = [];
 }
 
 Frame.prototype.registerRoll = function(knockingDownPins) {
   this.pins += knockingDownPins;
   this.rollCount ++;
-  this.rolls.push(knockingDownPins);
 };
 
 Frame.prototype.isOver = function() {

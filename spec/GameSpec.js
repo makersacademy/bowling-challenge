@@ -5,6 +5,13 @@ describe("Game", function() {
     game = new Game();
   });
 
+  describe("#addRoll", function() {
+    it("has one registered roll", function() {
+      game.addRoll(6);
+      expect(game.rolls[0]).toEqual(6);
+    });
+  });
+
   describe("#addFrame", function() {
     it("adds a frame", function() {
       var frame = { total: function() { return [8, 2] } };

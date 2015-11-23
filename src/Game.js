@@ -1,6 +1,13 @@
+"use strict";
+
 function Game () {
   this.frames = [];
+  this.rolls = [];
 }
+
+Game.prototype.addRoll = function(knockingDownPins) {
+  this.rolls.push(knockingDownPins);
+};
 
 Game.prototype.addFrame = function(frame) {
   this.frames.push(frame);

@@ -104,6 +104,8 @@ describe("Frame", function() {
       frame.registerRoll(6);
       expect(frame.totalFrame()).toEqual(8);
     });
+
+    it("")
   });
 
   describe("#bonus", function() {

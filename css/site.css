@@ -1,0 +1,168 @@
+html, body {
+  margin: 0px;
+  height:100%;
+  background-color: #ddd;
+  font-size: 100%;
+  font-family: Garamond, Georgia, sans-serif;
+}
+
+main {
+  width: 100%;
+  height: 80%;
+  background-image: url(../images/background.jpg);
+  background-size: cover;
+  padding: 20px 40px;
+}
+
+button:focus {
+  outline: none;
+}
+
+#header {
+  height: 50px;
+  background-image: url(../images/banner.jpg);
+  background-size: cover;
+  padding: 20px 40px;
+}
+
+#header > h1 {
+  color: #f0f0f0;
+  font-size: 3em;
+  font-family: Caslon, Georgia, Times, serif;
+}
+
+#userInterface {
+  height: 60px;
+}
+
+#userInterface > p {
+  font-weight: bold;
+  color: #444;;
+}
+
+.scoreCard  {
+  margin: 10px 0;
+}
+
+ul.scoreCard  {
+  clear: left;
+  float: left;
+}
+
+.scoreCard > li {
+  list-style-type: none;
+  float: left;
+  background: #f0f0f0;
+  border-bottom: 1px #444 solid;
+  border-right: 1px #444 solid;
+  width: 80px;
+  height: 80px;
+}
+
+.scoreCard > li:first-child {
+  border-radius: 0.5em 0 0 0.5em;
+}
+
+.scoreCard > li:last-child {
+  border-radius: 0 0.5em 0.5em 0;
+}
+
+.frameNumber.first {
+  border-top-left-radius: 0.5em;
+}
+
+.frameNumber.last {
+  border-top-right-radius: 0.5em;
+}
+
+.frameNumber {
+  border-bottom: 1px solid #444;
+  color: #f0f0f0;
+  font-weight: bold;
+  text-align: center;
+  background-color: #444;
+}
+
+.rolls {
+  position: relative;
+  float: left;
+  text-align: right;
+  width: 100%;
+  height: 26px;
+}
+
+.frameScore {
+  position: relative;
+  float: left;
+  font-weight: bold;
+  font-size: 1.2em;
+  height: 36px;
+  width: 100%;
+}
+
+.roll1, .roll2, .emptyDiv, .roll3 {
+  position: relative;
+  float: left;
+  height: 25px;
+  font-weight: bold;
+  width: 32.5%;
+}
+
+.roll2, .roll3 {
+ border-left: 1px solid #444;
+ border-bottom: 1px solid #444;
+}
+
+.roll1, .roll2, .emptyDiv, .roll3, .frameScore  > p {
+  text-align: center;
+  padding-top: 5px;
+}
+
+.frameScore > p {
+  padding-top: 10px;
+}
+
+.game-btn, .btn {
+  border-radius: 4px;
+  background-color: #428bca;
+  border-color: #357ebd;
+  color: #f0f0f0;
+}
+
+.btn:hover, .btn:focus, .game-btn:hover, .game-btn:focus {
+  color: #f0f0f0;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+
+.game-btn {
+  height: 35px;
+}
+
+.btn {
+  width: 35px;
+  height: 35px;
+}
+
+
+/* Footer
+ * ---------------------------------------------------------------------------*/
+  footer {
+    height: 5%;
+    min-height: 40px;
+    background-color: rgba(248, 248, 248, 1);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-width: 1px;
+    border-top: 1px solid black;
+  }
+
+  footer > p {
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  footer > a {
+    color: black;
+  }

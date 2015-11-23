@@ -1,4 +1,4 @@
-describe('Bowling', function() {
+describe(Bowling, function() {
 
 	var bowling; 
 	var numFrames = 10;
@@ -16,7 +16,8 @@ describe('Bowling', function() {
 			bowling.randomScore();
 			expect(bowling.score).toEqual(9);
 		});
-		it('determines how many pins a user knocks down on second go', function() {
+		it('determines how many pins a user knocks down on second go', 
+			function() {
 			spyOn(Math, 'random').and.returnValue(0.3);
 			bowling.addRound();
 			bowling.randomScore();
@@ -36,7 +37,7 @@ describe('Bowling', function() {
 			bowling.addRound();
 			bowling.randomScore();
 			bowling.scoreString();
-			expect(bowling.string).toEqual('05|__')
+			expect(bowling.string).toEqual('05|__');
 		});
 	});
 
@@ -53,7 +54,7 @@ describe('Bowling', function() {
 			for (var i = 0; i < 2; i++) {
 				bowling.randomScore();
 				bowling.addRound();
-			};
+			}
 			bowling.addScore();
 			expect(bowling.scoreCard).toEqual({0: [5,3]});
 		});
@@ -65,7 +66,7 @@ describe('Bowling', function() {
 			for (var i = 0; i < 2; i++) {
 				bowling.randomScore();
 				bowling.addRound();
-			};
+			}
 			bowling.addScore();
 			bowling.prevScore();
 			bowling.newFrame();
@@ -73,7 +74,7 @@ describe('Bowling', function() {
 			expect(bowling.bonus).toEqual(2);
 		});
 	});
-	
+
 	describe('#addTotal', function() {
 		it('logs the previous score', function() {
 			spyOn(Math, 'random').and.returnValue(0.5);

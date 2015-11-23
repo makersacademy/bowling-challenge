@@ -26,6 +26,7 @@ Download this repo:
 Running tests:
 
 From the root project directory you can run
+
 `open SpecRunner.html`
 
 

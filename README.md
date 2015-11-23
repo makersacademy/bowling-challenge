@@ -18,6 +18,7 @@ To start a new game:
 ```game = new Game();```
 
 To bowl and hit ```n``` number of pins:
+
 ```game.bowl(n);```
 
 To calculate the final score:

@@ -1,5 +1,5 @@
 
-Bowling Challenge
+Week 6 Weekend Challenge: Bowling Challenge
 =================
 
 Task: 

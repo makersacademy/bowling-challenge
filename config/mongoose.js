@@ -6,6 +6,7 @@ module.exports = function() {
 
 	require('../app/models/user.server.model');
   require('../app/models/gameplayer.server.model');
+  require('../app/models/pinsBowled.server.model');
 
 	return db;
 };

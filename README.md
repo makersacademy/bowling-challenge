@@ -44,8 +44,11 @@ As a bowler I want score board to show the cumulative score for frames complete 
 
 As a player I want score board to show a "double" for two strikes in a row; a "turkey" for three in a row, and a "perfect game" for 12 strikes in a row.
 
-At the end of game the score board should show the winner and position of other players.
+For a one player game add JS bowling game that takes up part of the page and automatically updates scoreboard after each bowl.
 
+Allow users to login and save progress.
+
+Allo user to login and retrieve progress.
 
 Domain Model
 ------------

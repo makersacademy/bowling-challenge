@@ -1,0 +1,60 @@
+@font-face { font-family: Digital-style; src: url('digital-7.ttf'); }
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: blue;
+  height: 100%;
+  background-size: 100%;
+  /*background-position: 80%;
+  background-repeat: no-repeat;*/
+}
+
+#bowlingGame {
+  position: fixed;
+  top: 20%;
+  bottom: 45%;
+  left: 32%;
+  right: 32%;
+  margin: 0 auto;
+  /*width: 36%;*/
+  /*height: 50  %;*/
+  padding: 10px;
+  background-color: green;
+  /*background-size: */
+  /*overflow: auto;*/
+
+}
+#title {
+  /*margin-left: 50px;
+  margin-top: 180px;*/
+  /*margin-right: auto;*/
+  font-family: Digital-style, Courier;
+  font-size: 60px;
+  text-align: center;
+  background-color: yellow;
+  /*max-width: 100%;*/
+  /*width: 400px; */
+}
+
+#scoresTable{
+  font-weight: bold;
+  color: white;
+  margin-left: 60px;
+  width: 350px;
+  font-size: 24px;
+  text-align: center;
+}
+
+#table{
+  position: relative;
+  left: auto;
+  border-color: black;
+  background-color: red;
+
+}
+
+.buttons {
+  font-weight: bold;
+  font-size: 14px;
+  width: 200px;
+  font-family: "Courier New", Courier, monospace;
+}

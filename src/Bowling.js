@@ -2,6 +2,7 @@ console.log("testtest");
 function BowlingGame() {
   this.framesLeft = 10;
   this.STRIKE = 10;
+  this.allScores = [];
 
   this.currentRoll = 0;
   this.currentScore = 0;
@@ -24,6 +25,7 @@ function BowlingGame() {
 
   BowlingGame.prototype.bowl = function(pins) {
     if ( this.framesLeft === 0 ) throw Error(this.GAMEOVER_ERROR);
+      this.allScores.push(pins);
 
     if (pins === this.STRIKE) { this.isStrike = true;}
     if (((this.currentScore + pins) === 10) && this.currentRoll === 1) { this.isSpare = true;}
@@ -74,15 +76,13 @@ function BowlingGame() {
     if ( this.currentRoll === 0 || this.currentRoll === 1) {
       if (this.consecutiveStrikes === 2 && this.isStrike) {
         this.totalScore += 30;
-      }
-      else if (this.consecutiveStrikes === 2) {
+      } else if (this.consecutiveStrikes === 2) {
         this.totalScore += 20 + pins;
         this.consecutiveStrikes = 0;
       }
-      this.currentRoll +=1;
-      this.currentScore += pins;
-    }
-    else {
+        this.currentRoll +=1;
+        this.currentScore += pins;
+    } else {
       this.currentScore += pins;
       this.resetFrame(pins);
     }
@@ -117,14 +117,12 @@ BowlingGame.prototype.strikeScoring = function(pins) {
       if (pins === this.STRIKE) {
         this.consecutiveStrikes += 1;
         this.framesLeft -= 1;
-      }
-      else {
+      } else {
         if (this.strikeCount === 0) {
           this.strikeCount += 1;
           this.strikeScore += pins;
           this.currentScore += pins;
-        }
-        else {
+        } else {
           this.strikeScore += pins;
           this.currentScore += pins;
           this.totalScore += this.strikeScore + this. currentScore;
@@ -140,8 +138,7 @@ BowlingGame.prototype.strikeScoring = function(pins) {
       if (pins === this.STRIKE) {
         this.totalScore += 30;
         this.framesLeft -= 1;
-      }
-      else {
+      } else {
         this.consecutiveStrikes -= 1;
         this.strikeCount += 1;
         this.strikeScore += pins;

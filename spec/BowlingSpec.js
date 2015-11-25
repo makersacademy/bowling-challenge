@@ -11,6 +11,14 @@ describe("Bowling Challenge", function() {
       expect(game.totalScore).toEqual(0);
     });
 
+    it('can record all individual scores', function() {
+      game.bowl(3);
+      game.bowl(4);
+      game.bowl(6);
+      game.bowl(3);
+      expect(game.allScores).toEqual([3,4,6,3]);
+    });
+
     describe("scoring mechanism for game", function() {
 
       it('allows you to roll once & store #currentScore', function() {

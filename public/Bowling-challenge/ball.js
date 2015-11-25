@@ -80,15 +80,15 @@ pc.script.create('ball', function (context) {
              this.speedIndicator.setLocalScale(this.speed, .1, .1);
         },
 
-        reportTo: function(numAry) {
-            pinsBowled: function() {
-                $.ajax({url: '/pinsBowleds',
-                        type: 'post',
-                        dataType: 'json',
-                        data: {pinsBowled: NumAry}
-                });
-            }
+
+        pinsBowled: function(NumAry) {
+            $.ajax({url: '/pinsBowleds',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {pinsBowled: NumAry}
+            });
         },
+
 
         launch: function() {
             if(this.ballLaunched === false) {

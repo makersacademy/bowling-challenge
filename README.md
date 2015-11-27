@@ -2,27 +2,12 @@
 Bowling Challenge
 =================
 
-    Test time: Friday, the entire day and the entire of lab week if you need it.
-    Feel free to use Google, your notes, and your books.
-
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by 
-
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_september2015 (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-
-### Optional Extra
-
-Create a nice interactive animated interface with jQuery.
 
 ## Strikes
 
@@ -51,16 +36,26 @@ In the image below you can find some score examples.
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+Project Tasks Complete
+-------------------------
 
-CI
---
+* Player Object that can bowl knocking down between 0 and 10 pins.
 
-We are running JSHint on our CI server - save yourself having to wait for a build to happen by linting your code on your machine first. [Here are installations for most popular editors](http://jshint.com/install/). Grab the `.jshintrc` from this repo and have better JS!
+Project to do list
+------------------
 
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
+* Create Bowling Alley Object.
+* Score a single round of bowling
+* Score Multiple rounds of bowling
+* Score a whole game
 
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.
+Technologies used
+-----------------
+Written in Javascript, HTML and CSS, also using JQuery and the Jasmine testing framework.
+
+Lessons Learnt
+--------------
+* How to use Math.random to produce the exact set of number I require when dealing with an inclusive or exclusive range of values.
+*
+*
+*

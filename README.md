@@ -1,66 +1,36 @@
-
 Bowling Challenge
-=================
+===============
 
-    Test time: Friday, the entire day and the entire of lab week if you need it.
-    Feel free to use Google, your notes, and your books.
+This was my weekend challenge submission for Week 6 at Makers Academy; we were asked to code a program in Javascript that could calculate the score of a ten-pin bowling game.
 
-Task: 
------
+I worked as part of a team of three; all of us were new to Javascript (we had been working with the language for a week and a half) and we found solving the bowling puzzle very challenging. The scoring logic is still not perfect; if the player keeps rolling strikes (unlikely as the score is generated randomly) the score will not currently reach 300. Makers Academy will soon release an exemplar video which I will  study closely in order to properly understand the logic required for the scoring to work perfectly.
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+I learned a lot in working on this project, not least the basics of object-oriented programming with Javascript (the program uses a Game constructor, a Frame constructor and a Player constructor), and the use of Jasmine to thoroughly test the structure and outcomes. I will be putting this experience to good use in the coming weeks, particularly as we move towards using Angular Javascript in the course.
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+This project also represented my first time using a more professional git flow within a team: we used development and master branches, along with individual branches for each new feature. This is not reflected in this specific repository as I had to re-fork the original challenge repository in order to make my own individual submission to Makers Academy (all three of members our team had to submit something). The original project can be found [here](https://github.com/ALRW/bowling_challenge).
 
-As usual please start by 
+Notes
+------
+* The program uses arrays to represent individual frames; these start off within the Frame object, and then at the end of each bowling frame they are moved into a larger two-dimensional array within the Game object.
+* When the player rolls the ball a random number of pins are knocked down.
+* As mentioned above, there is an issue with the calculation of bonus scores; if a player repeatedly bowls consecutive strikes this will not be reflected accurately. The problem owes to the design of the arrays and the algorithm that handles them.
+* You will not be able to bowl more than ten frames. New frame arrays will no longer be created following the tenth.
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_september2015 (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-
-### Optional Extra
-
-Create a nice interactive animated interface with jQuery.
-
-## Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-## Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-## 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-## Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-## Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-CI
---
-
-We are running JSHint on our CI server - save yourself having to wait for a build to happen by linting your code on your machine first. [Here are installations for most popular editors](http://jshint.com/install/). Grab the `.jshintrc` from this repo and have better JS!
-
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
-
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.
+How to use
+----------
+1. Fork this repository and then clone it using `git clone <url>`
+2. The program can be run via Chrome's Developer Tools console. To do so, open the `SpecRunner.html` file from the root directory in Chrome, and then open your console.
+3. Run the following commands to create the required objects:
+```
+game = new Game()
+frame = new Frame(game)
+player = new Player(frame)
+```
+4. To bowl the ball:
+```
+player.roll()
+```
+5. To return the score:
+```
+game.calculateTotalScore()
+```

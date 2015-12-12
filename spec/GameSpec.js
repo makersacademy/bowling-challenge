@@ -6,6 +6,9 @@ describe('Game', function(){
   var rollOneWithSevenPins;
   var rollTwoWithTwoPins;
   var rollTwoWithThreePins;
+  var rollOneWithTenPins;
+  var rollOneWithOnePin;
+  var rollTwoWithFourPins;
 
   beforeEach(function(){
     game = new Game();
@@ -19,6 +22,24 @@ describe('Game', function(){
       },
       isSpare: function() {
         return false;
+      },
+      isStrike: function() {
+        return false;
+      }
+    }
+
+    rollTwoWithThreePins = {
+      rollNumber: function() {
+        return 2;
+      },
+      knockedDownPins: function() {
+        return 3;
+      },
+      isSpare: function() {
+        return false;
+      },
+      isStrike: function() {
+        return false;
       }
     }
 
@@ -31,19 +52,53 @@ describe('Game', function(){
       },
       isSpare: function() {
         return true;
+      },
+      isStrike: function() {
+        return false;
       }
-
     }
 
-    rollTwoWithThreePins = {
+    rollTwoWithFourPins = {
       rollNumber: function() {
         return 2;
       },
       knockedDownPins: function() {
-        return 3;
-
+        return 4;
       },
       isSpare: function() {
+        return false;
+      },
+      isStrike: function() {
+        return true;
+      }
+    }
+
+    rollOneWithOnePin = {
+      rollNumber: function() {
+        return 1;
+      },
+      knockedDownPins: function() {
+        return 1;
+      },
+      isSpare: function() {
+        return false;
+      },
+      isStrike: function() {
+        return true;
+      }
+    }
+
+    rollOneWithTenPins = {
+      rollNumber: function() {
+        return 1;
+      },
+      knockedDownPins: function() {
+        return 10;
+      },
+      isSpare: function() {
+        return false;
+      },
+      isStrike: function() {
         return false;
       }
     }
@@ -92,6 +147,15 @@ describe('Game', function(){
     game.increaseScore(rollTwoWithTwoPins);
     console.log(game._score)
     expect(game.score()).toEqual(14);
+  });
+
+  it('can account for a strike', function() {
+    game.increaseScore(rollOneWithTenPins);
+    console.log(game._score)
+    game.increaseScore(rollOneWithOnePin);
+    game.increaseScore(rollTwoWithFourPins);
+    console.log(game._score)
+    expect(game.score()).toEqual(20);
   });
 
 });

@@ -1,28 +1,14 @@
 
-Bowling Challenge
+Bowling Challenge [![Build Status](https://travis-ci.org/mariann013/bowling-challenge.svg)](https://travis-ci.org/mariann013/bowling-challenge)
 =================
 
-    Test time: Friday, the entire day and the entire of lab week if you need it.
-    Feel free to use Google, your notes, and your books.
 
-Task: 
+Description
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by 
-
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_september2015 (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-
-### Optional Extra
-
-Create a nice interactive animated interface with jQuery.
 
 ## Strikes
 
@@ -53,14 +39,12 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-CI
---
+This application was written in Javascript and tested in Jasmine. 
 
-We are running JSHint on our CI server - save yourself having to wait for a build to happen by linting your code on your machine first. [Here are installations for most popular editors](http://jshint.com/install/). Grab the `.jshintrc` from this repo and have better JS!
+Instalation:
+    - Clone git repo
+    - To run tests open SpecRunner.html
+    - To interact with the application open chrome console log 
+    
 
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
 
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.

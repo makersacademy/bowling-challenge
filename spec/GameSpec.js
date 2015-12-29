@@ -3,44 +3,41 @@ describe('Game',function(){
     game = new Game();
   })
 
-  it('if user does strike in the turn and the bonus rolls the score is changed by 30',function(){
-    spyOn(Math, "round").and.returnValue(10);
-    game.turn();
+  it('if user does strike in the current frame and strike in the next frame the score changes by 30',function(){
+    game.turn(10);
+    game.turn(10);
+    game.turn(10);
     expect(game.score).toEqual(30);
   })
 
   it('counts the frames',function(){
-    game.turn();
-    game.turn();
-    expect(game.frame).toEqual(1);
+    game.turn(3);
+    game.turn(3);
+    expect(game.frame).toEqual(2);
   })
 
   it('it ads the score of the frame to the total if no spare',function(){
-    spyOn(Math, "round").and.returnValue(4);
-    game.turn();
-    game.turn();
+    game.turn(4);
+    game.turn(4);
     expect(game.score).toEqual(8);
   })
 
   it('if spare the total score is not changing at the end of the frame',function(){
-    spyOn(Math, "round").and.returnValue(5);
-    game.turn();
-    game.turn();
+    game.turn(8);
+    game.turn(2);
     expect(game.score).toEqual(0);
   })
 
   it('if spare it ads the points of the first roll in the next fram to the frame before',function(){
-    spyOn(Math, "round").and.returnValue(5);
-    game.turn();
-    game.turn();
-    game.turn();
+    game.turn(5);
+    game.turn(5);
+    game.turn(5);
     expect(game.score).toEqual(15);
   })
 
   it('the score is 300 if a perfect game is played',function(){
-    spyOn(Math, "round").and.returnValue(10);
     for(var i=1; i < 11; i++){
-      game.turn()
+      game.turn(10)
     };
     expect(game.score).toEqual(300);
   })

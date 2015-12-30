@@ -13,10 +13,11 @@ describe ('Player',function(){
     expect(player.score()).toEqual(0)
   });
 
-  it('when the user throws the ball and does 3 strike score = 30',function(){
-    spyOn(Math, "round").and.returnValue(10);
-    player.throwBall()
-    expect(player.score()).toEqual(30)
+  it('when the user throws the ball and does 3 strike score = 50',function(){
+    player.throwBall(10)
+    player.throwBall(10)
+    player.throwBall(10)
+    expect(player.score()).toEqual(50)
   })
 
 });

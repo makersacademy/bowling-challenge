@@ -7,7 +7,7 @@ describe('Game',function(){
     game.turn(10);
     game.turn(10);
     game.turn(10);
-    expect(game.score).toEqual(30);
+    expect(game.scoreArray[0]).toEqual(30);
   })
 
   it('counts the frames',function(){
@@ -19,6 +19,7 @@ describe('Game',function(){
   it('it ads the score of the frame to the total if no spare',function(){
     game.turn(4);
     game.turn(4);
+    game.calcScore();
     expect(game.score).toEqual(8);
   })
 
@@ -32,27 +33,28 @@ describe('Game',function(){
     game.turn(5);
     game.turn(5);
     game.turn(5);
+    game.calcScore();
     expect(game.score).toEqual(15);
   })
 
   it('the score is 300 if a perfect game is played',function(){
-    for(var i=1; i < 11; i++){
+    for(var i=1; i < 13; i++){
       game.turn(10)
     };
     expect(game.score).toEqual(300);
   })
+
   it('the total frame remains 10 if 10 frames are played',function(){
-    spyOn(Math, "round").and.returnValue(10);
-    for(var i=1; i < 11; i++){
-      game.turn()
+    for(var i=1; i < 20; i++){
+      game.turn(4)
     };
     expect(game.frame).toEqual(10);
   })
+
   it('throw error if the frame is more than 10',function(){
-    spyOn(Math, "round").and.returnValue(10);
-    for(var i=1; i < 11; i++){
-      game.turn(10)
+    for(var i=1; i < 21; i++){
+      game.turn(4)
     };
-    expect(function() {game.turn(10)}).toThrow('End of the game');
+    expect(game.turn(4)).toEqual('End of the game');
   })
 })

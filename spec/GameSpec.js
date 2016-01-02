@@ -19,7 +19,6 @@ describe('Game',function(){
   it('it ads the score of the frame to the total if no spare',function(){
     game.turn(4);
     game.turn(4);
-    game.calcScore();
     expect(game.score).toEqual(8);
   })
 
@@ -33,7 +32,6 @@ describe('Game',function(){
     game.turn(5);
     game.turn(5);
     game.turn(5);
-    game.calcScore();
     expect(game.score).toEqual(15);
   })
 

@@ -49,18 +49,18 @@ Game.prototype.turn = function(points){
 Game.prototype.bonusStrike = function(points){
   if(this.bonusPointsCount !== 0){
     this.bonusPoints += points;
-    this.consecutiveStrike();
+    this.consecutiveStrike(points);
     this.nonConsecutiveStrike();
   };
 }
 
-Game.prototype.consecutiveStrike = function(){
+Game.prototype.consecutiveStrike = function(points){
   if ( this.scoreArray[this.frame - 3] === true ){
-    this.scoreArray[this.frame - 3] = (this.bonusPoints);
+    this.scoreArray[this.frame - 3] = this.bonusPoints;
     this.bonusPointsCount -= 1;
     if( this.scoreArray[this.frame - 2] === true ){
-      this.scoreArray[this.frame - 3] += (this.strikePoints);
-      this.bonusPoints = this.MAXPOINTS;
+      this.scoreArray[this.frame - 3] += this.strikePoints;
+      this.bonusPoints = points;
     } else {
       this.bonusPoints = 0;
     }
@@ -69,7 +69,7 @@ Game.prototype.consecutiveStrike = function(){
 
 Game.prototype.nonConsecutiveStrike = function(){
   if (this.scoreArray[this.frame - 2] && this.bowlTurn === 1){
-    this.scoreArray[this.frame - 2] = this.strikePoints + this.bonusPoints;
+    this.scoreArray[this.frame - 2] =  this.bonusPoints + this.strikePoints;
     this.bonusPoints = 0;
     this.bonusPointsCount -= 1;
   };

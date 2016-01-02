@@ -35,6 +35,14 @@ describe('Game',function(){
     expect(game.score).toEqual(15);
   })
 
+  it('if spare it ads the points of the first roll in the next fram to the frame before',function(){
+    game.turn(10);
+    game.turn(10);
+    game.turn(8);
+    game.turn(2);
+    expect(game.score).toEqual(48);
+  })
+
   it('the score is 300 if a perfect game is played',function(){
     for(var i=1; i < 13; i++){
       game.turn(10)
@@ -44,9 +52,11 @@ describe('Game',function(){
 
   it('the total frame remains 10 if 10 frames are played',function(){
     for(var i=1; i < 20; i++){
-      game.turn(4)
+      game.turn(4);
     };
-    expect(game.frame).toEqual(10);
+    game.turn(4);
+    game.turn(4);
+    expect(game.frame).toEqual(11);
   })
 
   it('throw error if the frame is more than 10',function(){

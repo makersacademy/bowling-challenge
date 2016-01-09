@@ -6,6 +6,10 @@ As a player
 So I know how well I'm doing
 I want to be able to check my score
 
+As a player,
+So I know how far through the game I am,
+I want to know what frame I'm playing.
+
 As a player
 So i know when the game has finished
 I want to know when I have finished the 10th frame

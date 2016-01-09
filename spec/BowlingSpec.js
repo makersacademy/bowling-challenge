@@ -13,7 +13,7 @@ describe("Bowling", function() {
 
     it('after the frame has been played, current frame is cleared', function() {
       bowling.play(1,5);
-      bowling.calculateFrame();
+      bowling.calculateFrameScore();
       expect(bowling.currentFrame).toEqual([]);
     });
 
@@ -27,14 +27,17 @@ describe("Bowling", function() {
   describe('Scoring', function() {
     it('calculates the score of a frame', function() {
       bowling.play(1,5);
-      bowling.calculateFrame();
-      expect(bowling.totalScore).toEqual(6);
+      bowling.calculateFrameScore();
+      expect(bowling.currentFrameScore).toEqual(6);
     });
 
     it('gives a total score', function() {
       bowling.play(1,5);
-      bowling.calculateFrame();
-      expect(bowling.totalScore).toEqual(1+5);
+      bowling.calculateFrameScore();
+      bowling.play(3,6);
+      bowling.calculateFrameScore();
+      bowling.calculateTotalScore();
+      expect(bowling.totalScore).toEqual(15);
     });
   });
 

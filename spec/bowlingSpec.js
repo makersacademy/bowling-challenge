@@ -13,37 +13,37 @@ describe('Game', function() {
   it('raises an error if play continues after the 10th frame', function(){
     var n
     for (n=0; n<20; n++) {
-      game.knockDownPins(4);
+      game.bowlA(4);
     }
     expect(function(){
-      game.knockDownPins(9);
+      game.bowlA(9);
     }).toThrowError('Game over: The 10th frame has finished')
   });
 
   describe('#pinsKnockedDown', function() {
     it('adds the number of pins to the score', function() {
-      game.knockDownPins(9);
+      game.bowlA(9);
       expect(game.score).toEqual(9);
     });
 
     it('doesn\'t allow more than 10 pins per frame', function () {
-      game.knockDownPins(9);
+      game.bowlA(9);
       expect(function() {
-        game.knockDownPins(2);
+        game.bowlA(2);
       }).toThrowError('Not possible: Only 10 pins per frame')
     })
 
     it('doesn\t allow a single score of more than 10', function() {
       expect(function() {
-        game.knockDownPins(11);
+        game.bowlA(11);
       }).toThrowError('Not possible: Max score in one go is 10')
     })
   });
 
   describe('#getScore', function() {
     it('returns the current score', function() {
-      game.knockDownPins(4);
-      game.knockDownPins(5);
+      game.bowlA(4);
+      game.bowlA(5);
       expect(game.getScore()).toEqual(9);
     });
   });
@@ -54,15 +54,15 @@ describe('Game', function() {
     });
 
     it('returns the correct frame after 2 balls', function () {
-      game.knockDownPins(4);
-      game.knockDownPins(5);
+      game.bowlA(4);
+      game.bowlA(5);
       expect(game.getFrame()).toEqual(2);
     });
 
     it('returns the correct frame after 15 balls', function() {
       var n
       for (n = 0; n <=14; n++) {
-        game.knockDownPins(4);
+        game.bowlA(4);
       }
       expect(game.getFrame()).toEqual(8)
     });

@@ -41,6 +41,9 @@ describe('Integration Tests', function() {
   });
 
   it('A gutter game should score 0', function() {
-
+    for (var i = 0; i < 20; i ++) {
+      game.logRoll(0);
+    }
+    expect(game.getScore()).toEqual(0);
   });
 });

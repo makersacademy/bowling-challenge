@@ -30,9 +30,9 @@ Functionalities requested
 
 - In every frame the player can roll one or two times.
 
--The actual number depends on strikes and spares.
+- The actual number depends on strikes and spares.
 
--The score of a frame is the number of knocked down pins plus bonuses for
+- The score of a frame is the number of knocked down pins plus bonuses for
 strikes and spares. After every frame the 10 pins are reset.
 
 

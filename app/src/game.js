@@ -5,6 +5,9 @@ function Game(frame) {
 }
 
 Game.prototype.logRoll = function(roll) {
+  if (this._gameComplete()) {
+    throw 'Game is complete, cannot log more!';
+  }
   this._currentFrame.addRoll(roll);
   this._addBonuses(roll);
   if (this._currentFrame.isComplete()) {
@@ -29,12 +32,16 @@ Game.prototype._logFrame = function() {
 
 Game.prototype._addBonuses = function(roll) {
   var totalBonus = 0;
-  this._frameLog.forEach(function(frame) {
-    if (frame.bonus > 0) {
+  this._frameLog.forEach(function(frame, index) {
+    if (frame.bonus > 0 && index < 9) {
       frame.total += roll;
       totalBonus += roll;
       frame.bonus -= 1;
     }
   });
   this._currentScore += totalBonus;
+};
+
+Game.prototype._gameComplete = function() {
+  return this._frameLog[9] && this._frameLog[9].bonus === 0;
 };

@@ -32,4 +32,15 @@ describe('Integration Tests', function() {
     expect(game.getFrame(1).bonus).toEqual(0);
     expect(game.getFrame(1).total).toEqual(19);
   });
+
+  it('A perfect game should score 300', function() {
+    for (var i = 0; i < 12; i ++) {
+      game.logRoll(10);
+    }
+    expect(game.getScore()).toEqual(300);
+  });
+
+  it('A gutter game should score 0', function() {
+
+  });
 });

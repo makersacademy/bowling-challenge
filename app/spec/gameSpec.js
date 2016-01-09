@@ -53,5 +53,14 @@ describe('Game', function() {
       game.logRoll(8);
       expect(game.getFrame(1)).toEqual({rolls: [0, 10], total: 18, bonus: 0});
     });
+
+    it('should throw game over once 10 frames are complete', function() {
+      for (var i = 0; i < 10; i ++) {
+        game._frameLog.push({bonus: 0});
+      }
+      expect(function() {
+        game.logRoll(5);
+      }).toThrow('Game is complete, cannot log more!');
+    });
   });
 });

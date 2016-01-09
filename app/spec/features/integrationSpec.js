@@ -11,5 +11,4 @@ describe('Integration Tests', function() {
     expect(game.getScore()).toEqual(9);
     expect(game.getFrame(1)).toEqual({rolls: [4, 5], total: 9});
   });
-
 });

@@ -45,5 +45,4 @@ describe('Game', function() {
       expect(game.getScore()).toEqual(6)
     });
   });
-
 });

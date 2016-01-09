@@ -23,4 +23,5 @@ Game.prototype._logFrame = function() {
   var frame = this._currentFrame.getFrameData()
   this._frameLog.push(frame);
   this._currentScore += frame.total;
+  this._currentFrame = new Frame();
 }

@@ -17,7 +17,7 @@ describe('Frame', function() {
       expect(frame.getFrameData().rolls).toEqual([5]);
     });
 
-    it('should calculate the total for this frame after both rolls', function() {
+    it('should calculate the total after both rolls', function() {
       frame.addRoll(3);
       frame.addRoll(6);
       expect(frame.getFrameData().total).toEqual(9);
@@ -36,5 +36,4 @@ describe('Frame', function() {
       expect(frame.isComplete()).toBe(false);
     });
   });
-
 });

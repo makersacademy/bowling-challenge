@@ -5,6 +5,9 @@ var Bowling = function() {
 };
 
 Bowling.prototype.play = function(score1, score2) {
+  if(this.frames.length === 10) {
+    throw new Error("You have already played 10 frames.")
+  }
   this.currentFrame.push(score1, score2)
   this.frames.push(this.currentFrame)
 };

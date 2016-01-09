@@ -5,8 +5,11 @@ function Game() {
 }
 
 Game.prototype.knockDownPins = function(number) {
+  if (number > 10) {
+    throw new Error('Not possible: Max score in one go is 10');
+  };
   if (this.getFrame() > 10) {
-    throw new Error('Game over: The 10th frame has finished')
+    throw new Error('Game over: The 10th frame has finished');
   }
   if (((this.ballcount+1) % 2 === 0) && (this.previousBall + number > 10)) {
     throw new Error('Not possible: Only 10 pins per frame')

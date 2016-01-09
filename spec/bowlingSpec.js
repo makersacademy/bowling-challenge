@@ -32,6 +32,12 @@ describe('Game', function() {
         game.knockDownPins(2);
       }).toThrowError('Not possible: Only 10 pins per frame')
     })
+
+    it('doesn\t allow a single score of more than 10', function() {
+      expect(function() {
+        game.knockDownPins(11);
+      }).toThrowError('Not possible: Max score in one go is 10')
+    })
   });
 
   describe('#getScore', function() {

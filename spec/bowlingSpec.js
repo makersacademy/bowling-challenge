@@ -17,6 +17,12 @@ describe('Game', function() {
     });
   });
 
-
+  describe('#getScore', function() {
+    it('returns the current score', function() {
+      game.knockDownPins(9);
+      game.knockDownPins(8);
+      expect(game.getScore()).toEqual(17);
+    });
+  });
 
 });

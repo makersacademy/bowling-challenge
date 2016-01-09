@@ -5,3 +5,7 @@ function Game() {
 Game.prototype.knockDownPins = function(number) {
   this.score += number;
 };
+
+Game.prototype.getScore = function() {
+  return this.score;
+};

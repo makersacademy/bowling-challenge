@@ -1,3 +1,4 @@
-function Game() {
-  this.score = 0;
+function Game(frame) {
+  this.tot_score = 0;
+  this.playedFrames = [];
 }

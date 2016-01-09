@@ -16,10 +16,10 @@ describe("Ball", function() {
   describe("without randomised result", function() {
     describe("#roll", function() {
       beforeEach(function() {
-        spyOn(Math, "random").and.returnValue(0.46);
+        spyOn(Math, "random").and.returnValue(0.39);
       })
       it("returns a random number of pins hit from 0 to 10", function() {
-        expect(ball.roll()).toEqual(5);
+        expect(ball.roll()).toEqual(4);
       })
     })
   })

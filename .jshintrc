@@ -89,5 +89,5 @@
     "yui"           : false,    // Yahoo User Interface
 
     // Custom Globals
-    "globals"       : { "Bowling": true}        // additional predefined global variables
+    "globals"       : { "Bowling": true, "Frame": true }        // additional predefined global variables
 }

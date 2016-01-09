@@ -3,4 +3,3 @@ vendor/*
 **/*.html
 *.LICENSE
 lib/*
-spec/*

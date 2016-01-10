@@ -1,9 +1,10 @@
 describe('Game', function(){
 
-  var game
+  var game;
+  var frame;
 
   beforeEach(function(){
-    game = new Game();
+    game = new Game(frame);
   });
 
   describe('scorecard', function(){
@@ -12,11 +13,25 @@ describe('Game', function(){
     });
   });
 
+  describe('frame', function(){
+    it('should have a frame', function(){
+        expect(game.currentFrame).toBeTruthy();
+    });
+  });
+
   describe('#addFrame', function(){
     it('should add a frame to the scorecard', function(){
-        game.addFrame([5,3]);
-        expect(game.scorecard).toContain([5,3]);
-      });
+      game.addFrame([5,3]);
+      expect(game.scorecard).toContain([5,3]);
+    });
+  });
+
+  xdescribe('#bowl', function(){
+    it('should tell the frame how many pins fell', function(){
+      game.bowl(3);
+      game.bowl(4);
+      expect(game.scorecard).toContain([3,4]);
+   });
   });
 
   describe('#calculateScore', function(){
@@ -25,7 +40,7 @@ describe('Game', function(){
       expect(game.calculateScore()).toEqual(8);
     });
 
-    it('should add the results of mulitple frames', function(){
+    xit('should add the results of multiple frames', function(){
       game.addFrame([5,3]);
       game.addFrame([6,2]);
       expect(game.calculateScore()).toEqual(16);

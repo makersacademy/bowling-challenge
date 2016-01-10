@@ -87,7 +87,8 @@
     "worker"        : false,    // Web Workers
     "wsh"           : false,    // Windows Scripting Host
     "yui"           : false,    // Yahoo User Interface
+    "jasmine"       : true,     // true:
 
     // Custom Globals
-    "globals"       : {}        // additional predefined global variables
+    "globals"       : { "CurrentFrame": true, "Game": true, "Score": true }
 }

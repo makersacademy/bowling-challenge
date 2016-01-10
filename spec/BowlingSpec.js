@@ -102,9 +102,16 @@ describe("Bowling", function() {
       (new Error ('Cannot play 3rd roll: this is not the 10th frame'));
     });
 
-    xit('throws an error if player attempts 3rd roll and has not scored' +
+    it('throws an error if player attempts 3rd roll and has not scored' +
     ' a spare or strike', function() {
-
+      spyOn(frame, 'record').and.returnValue(frame.rolls = [1,2]);
+      var i=0
+      for(i=0; i<10; i++) {
+        bowling.play(1,2);
+        bowling.calculateFrameScore();
+      }
+      expect(function(){bowling.thirdRoll();}).toThrow(new Error
+        ('Cannot play 3rd roll: you have not scored a spare or strike'));
     });
   });
 

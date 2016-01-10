@@ -21,6 +21,9 @@ Bowling.prototype.thirdRoll = function(score3) {
   if(this.frames.length !== 10) {
     throw new Error("Cannot play 3rd roll: this is not the 10th frame")
   }
+  if(this.frame.score !== 10) {
+    throw new Error("Cannot play 3rd roll: you have not scored a spare or strike")
+  }
   this.frame.addThirdRoll(score3);
 };
 

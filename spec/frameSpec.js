@@ -135,7 +135,6 @@ describe("Frame", function(){
 			});
 		});
 
-		it
 
 		describe("When didSpare true", function(){
 
@@ -160,31 +159,7 @@ describe("Frame", function(){
 			it("didStrike is false", function(){
 				expect(frame.didStrike).toBe(false);
 			});
-
 		});
 
 	});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });

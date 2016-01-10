@@ -5,42 +5,40 @@ function Game(){
 
 	this.bowlingFrames = [];
 	this.score = 0;
-	this.frame1 = new Frame;
-	this.frame2 = new Frame;
-	
+	this.scoresArray = [];	
 
 };
 
 
-// Game.prototype.playFrame = function() {
-// 	let frame = new Frame;
-// 	frame.firstRoll();
-// 	if(frame.strike){
-		
-		
-		
-// 	} else {
-// 		frame.secondRoll();
-// 		if(frame.spare){
-// 			bowlingFrames.push(frame);
-// 		}
-// 	}
-// };
-
-
-
-// strike
-// 	this.score += this.frame1.frameScore;
-// 	bonus1 = frame2.rollOne;
-// 	bonus2 = frame2.rollTwo;
-// 	this.score=bonus1+bonus2
-
 Game.prototype.playFrame = function() {
-	frame1.firstRoll();
-	frame1.secondRoll();
-	frame2.firstRoll();
-	frame2.secondRoll();
-	if(frame1.strike){
-		frame1.frameScore+=frame2.frameScore*2
+	let frame = new Frame;
+	if(this.scoresArray.length===8){
+		this._totalScore();
+	} else if (this.bowlingFrames.length===2){
+	this._bonusCheck();
+	this.scoresArray.push(this.bowlingFrames[0].frameScore);
+	this.bowlingFrames.shift();
+	this.playFrame();
+	} else {
+		frame.firstRoll();
+		frame.secondRoll();
+		this.bowlingFrames.push(frame);
 	}
-}
+};	
+
+
+Game.prototype._bonusCheck = function() {
+	if(this.bowlingFrames[0].didStrike){
+		this.bowlingFrames[0].frameScore+=this.bowlingFrames[1].frameScore*2;
+	} else if(this.bowlingFrames[0].didSpare){
+		this.bowlingFrames[0].frameScore+=this.bowlingFrames[1].rollOne;
+	} else {
+		this.bowlingFrames[0].frameScore=this.bowlingFrames[0].frameScore;
+	}
+};
+
+Game.prototype._totalScore = function() {
+	this.scoresArray.push(this.bowlingFrames[0].frameScore);
+	this.scoresArray.push(this.bowlingFrames[0].frameScore);
+	this.score = this.scoresArray.reduce(function(a, b){ return a + b });
+};

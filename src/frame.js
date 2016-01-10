@@ -24,7 +24,7 @@ Frame.prototype.firstRoll = function(){
 		console.log("You scored " + this.rollOne + ", roll again!");
 	} else {
 		this.rollOne = 10;
-		this.frameScoreUpdate();
+		this._frameScoreUpdate();
 		this.didStrike = true;
 		console.log("STRIKE!");
 	}
@@ -39,15 +39,15 @@ Frame.prototype.secondRoll = function() {
 	 this.pinsLeft -= this.rollTwo;
 	 if(this.pinsLeft<1){
 	 	this.didSpare = true;
-	 	this.frameScoreUpdate();
+	 	this._frameScoreUpdate();
 	 	console.log("SPARE!");
 	 } else {
 	 	console.log("You scored " + this.rollTwo + ", next Frame...");
-	 	this.frameScoreUpdate();
+	 	this._frameScoreUpdate();
 	 }
 	}
 };
 
-Frame.prototype.frameScoreUpdate = function() {
+Frame.prototype._frameScoreUpdate = function() {
 	this.frameScore = this.rollOne + this.rollTwo;
 };

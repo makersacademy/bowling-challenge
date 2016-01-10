@@ -6,6 +6,7 @@ function Pin (initialPins) {
 
 Pin.prototype.pinsHit = function (number) {
   if (number > this._pinsThere) {throw "cannot exceed pin number"; }
+  this._pinsThere--; 
   return number;
 };
 

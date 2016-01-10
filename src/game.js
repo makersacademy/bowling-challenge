@@ -5,6 +5,7 @@ function Game(frame) {
 };
 
 Game.prototype.bowlA = function(numberOfPins) {
+  if (this._isEndOfGame()) {return 'Game over: Ten frames played'}
   this._increaseBallCount();
   this._increaseScore(numberOfPins);
   this.framesLog.receivePins(numberOfPins);
@@ -28,4 +29,8 @@ Game.prototype._increaseBallCount = function() {
 
 Game.prototype._increaseScore = function(numberOfPins) {
   this._score += numberOfPins;
+};
+
+Game.prototype._isEndOfGame = function() {
+  return (this.framesLog.frames.length >= 10);
 };

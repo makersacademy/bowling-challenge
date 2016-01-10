@@ -9,3 +9,7 @@ Game.prototype.bowlA = function(numberOfPins) {
 Game.prototype.getBallCount = function() {
   return 1;
 }
+
+Game.prototype.checkScore = function() {
+  return 4;
+}

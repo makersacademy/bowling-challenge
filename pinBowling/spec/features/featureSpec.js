@@ -6,22 +6,26 @@ describe("Feature Tests", function () {
     game = new Game ();
   });
 
-  it ("next frame if all pins hit", function () {
-    expect(game.pin.frame.giveFrame()).toEqual(1);
-    game.pin.pinsHit(game.pin._initialPinsThere);
-    expect(game.pin.frame.giveFrame()).toEqual(2);
-  });
+  describe ('frames progress correctly', function () {
+    it ("next frame if all pins hit", function () {
+      expect(game.frame.giveFrame()).toEqual(1);
+      game.pinsHit(game.pin._initialPinsThere);
+      expect(game.frame.giveFrame()).toEqual(2);
+    });
 
-  it("maximum two rounds per frame", function () {
-    expect(game.pin.frame.giveFrame()).toEqual(game.pin.frame._firstFrame);
-    game.pin.pinsHit(0);
-    game.pin.pinsHit(0);
-    expect(game.pin.frame.giveFrame()).toEqual(game.pin.frame._firstFrame + 1);
+    it("maximum two rounds per frame", function () {
+      expect(game.frame.giveFrame()).toEqual(game.frame._firstFrame);
+      game.pinsHit(0);
+      game.pinsHit(0);
+      expect(game.frame.giveFrame()).toEqual(game.frame._firstFrame + 1);
+    });
+
   });
 
   it("a new frame resets the number of pins to default", function () {
-    game.pin.pinsHit(1);
-    game.pin.pinsHit(1);
+    game.pinsHit(1);
+    game.pinsHit(1);
     expect(game.pin._pinsThere).toEqual(game.pin._initialPinsThere)
   });
+
 });

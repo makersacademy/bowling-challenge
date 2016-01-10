@@ -17,16 +17,16 @@ describe(".Frame", function () {
 
   describe ("#upFrame", function () {
     it ("increments the frame number", function () {
-      frame.upFrame(pin);
+      frame.upFrame();
       expect(frame.giveFrame()).toEqual(frame._firstFrame + 1);
     });
     it ("resets the round number", function () {
-      frame.upFrameOrRound(pin);
-      frame.upFrame(pin);
+      frame.upFrameOrRound();
+      frame.upFrame();
       expect(frame.giveRound()).toEqual(frame._initialRound);
     });
     it ("causes pin number to be #reset", function () {
-      frame.upFrame(pin);
+      frame.upFrame();
       expect(pin.reset).toHaveBeenCalled();
     });
   });
@@ -45,8 +45,8 @@ describe(".Frame", function () {
     });
 
     it ("increments the frame when second round", function () {
-      frame.upFrameOrRound(pin);
-      frame.upFrameOrRound(pin);
+      frame.upFrameOrRound();
+      frame.upFrameOrRound();
       expect(frame.giveFrame()).toEqual(frame._firstFrame + 1);
     });
 

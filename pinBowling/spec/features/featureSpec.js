@@ -24,6 +24,6 @@ describe("Feature Tests", function () {
   it("new frame resets #pinsThere to default value", function () {
     pin.pinsHit(1);
     pin.pinsHit(1);
-    expect(pin.pin.countPinsThere()).toEqual(pin.pin._initialPinsThere)
+    expect(pin.countPinsThere()).toEqual(pin._initialPinsThere)
   });
 });

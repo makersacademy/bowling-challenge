@@ -9,12 +9,8 @@ Pin.prototype.pinsHit = function (number) {
   if (number > this._pinsThere) {throw "cannot exceed pin number"; }
   if(number < this._initialPinsThere) {this.frame.upFrameOrRound();}
   else {this.frame.upFrame();}
-  this._pinsThere--;
+  this._pinsThere -= number;
   return number;
-};
-
-Pin.prototype.countPinsThere = function () {
-  return this._pinsThere;
 };
 
 Pin.prototype.reset = function (first_argument) {

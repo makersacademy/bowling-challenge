@@ -1,14 +1,12 @@
 function Game() {
-  this.currentFrame = { firstRoll: null, secondRoll: null }
+  this.currentFrame = new Frame();
   this.frames = []
   this.totScore = 0;
 }
 
 Game.prototype.play = function (ball) {
   if (this.currentFrame.firstRoll === null) {
-    // NEW FRAME EXTRACTION
     this.currentFrame.firstRoll = ball;
-    this.currentFrame.secondRoll = null;
     return this.currentFrame.firstRoll+" hit / Tot score "+this.getTotScore();
   } else {
     this.currentFrame.secondRoll = ball;

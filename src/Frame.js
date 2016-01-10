@@ -1,6 +1,7 @@
 var Frame = function() {
   this.rolls = []
   this.score = 0
+  this.bonus = 0
 }
 
 Frame.prototype.record = function(roll1, roll2){

@@ -6,6 +6,7 @@
 
   <link href="css/main.css" rel="stylesheet">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="src/frame.js"></script>
   <script src="src/game.js"></script>
   <script src="src/interface.js"></script>
@@ -13,19 +14,19 @@
 <body>
   <h1>Bowling Scorecard</h1>
   <section class="score-buttons">
-    <button id="one">1</button>
-    <button id="two">2</button>
-    <button id="three">3</button>
-    <button id="four">4</button>
-    <button id="five">5</button>
-    <button id="six">6</button>
-    <button id="seven">7</button>
-    <button id="eight">8</button>
-    <button id="nine">9</button>
-    <button id="ten">10</button>
+    <button id="B1">1</button>
+    <button id="B2">2</button>
+    <button id="B3">3</button>
+    <button id="B4">4</button>
+    <button id="B5">5</button>
+    <button id="B6">6</button>
+    <button id="B7">7</button>
+    <button id="B8">8</button>
+    <button id="B9">9</button>
+    <button id="B10">10</button>
   </section>
   <section class="scorecard">
-    <table border="1" style="width:80%; height:100px">
+    <table border="1" style="width:80%; height:200px">
       <tr class="scorecard-headings">
         <th></th>
         <th colspan="2">Frame 1</th>
@@ -76,7 +77,7 @@
         <td colspan="2" id="total8"></td>
         <td colspan="2" id="total9"></td>
         <td colspan="3" id="total10"></td>
-        <td id="totalscore"></td>
+        <td id="totalscore">0</td>
       </tr>
     </table>
   </section>

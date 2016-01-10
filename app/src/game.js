@@ -23,6 +23,10 @@ Game.prototype.getFrame = function(frame) {
   return this._frameLog[frame - 1];
 };
 
+Game.prototype.getFrames = function() {
+  return this._frameLog;
+};
+
 Game.prototype._logFrame = function() {
   var frame = this._currentFrame.getFrameData();
   this._frameLog.push(frame);
@@ -37,11 +41,14 @@ Game.prototype._addBonuses = function(roll) {
       frame.total += roll;
       totalBonus += roll;
       frame.bonus -= 1;
+    } else if (index === 9) {
+      frame.bonus -= 1;
     }
   });
   this._currentScore += totalBonus;
 };
 
 Game.prototype._gameComplete = function() {
-  return this._frameLog[9] && this._frameLog[9].bonus === 0;
+  return this._frameLog[9] &&
+         this._frameLog[8].bonus === 0 && this._frameLog[9].bonus === 0;
 };

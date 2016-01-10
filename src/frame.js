@@ -36,7 +36,7 @@ Frame.prototype.secondRoll = function() {
 		this.rollTwo = 0;
 	} else {
 	 this.rollTwo = this.getScore(0, this.pinsLeft);
-	 this.pinsLeft = this.pinsLeft - this.rollTwo;
+	 this.pinsLeft -= this.rollTwo;
 	 if(this.pinsLeft<1){
 	 	this.didSpare = true;
 	 	this.frameScoreUpdate();

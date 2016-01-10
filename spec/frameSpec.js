@@ -133,11 +133,35 @@ describe("Frame", function(){
 			it("pinsLeft equals 10 - rollOne - rollTwo", function(){
 				expect(frame.pinsLeft).toEqual(4);
 			});
-
-
 		});
 
+		it
 
+		describe("When didSpare true", function(){
+
+			beforeEach(function(){
+				spyOn(Math, "random").and.returnValues(0.3, 0.9);
+				frame.firstRoll();
+				frame.secondRoll();
+			});
+
+			it("didSpare is true", function(){
+				expect(frame.didSpare).toBe(true);
+			});
+
+			it("frameScore equals 10", function(){
+				expect(frame.frameScore).toEqual(10);
+			});
+
+			it("rollTwo plus rollOne equals 10", function(){
+				expect(frame.rollTwo).toEqual(7);
+			});
+
+			it("didStrike is false", function(){
+				expect(frame.didStrike).toBe(false);
+			});
+
+		});
 
 	});
 

@@ -1,35 +1,51 @@
 function Game() {
-  this.currentFrame = new Frame();
+  this.currentFrame = null;
   this.frames = []
   this.totScore = 0;
 }
 
 Game.prototype.play = function (ball) {
-  if (this.currentFrame.firstRoll === null) {
-    this.currentFrame.firstRoll = ball;
-    return this.currentFrame.firstRoll+" hit / Tot score "+this.getTotScore();
+  if (!this.currentFrame || this.currentFrame.isCompleted()) {
+    this.currentFrame = new Frame(ball);
+    if (ball === 10) {
+      this.frames.push(this.currentFrame);
+      return "Strike! / Tot score "+this.temporaryTotScore();
+    } else {
+      return ball+" hit / Tot score "+this.temporaryTotScore();
+    }
   } else {
-    this.currentFrame.secondRoll = ball;
+    this.currentFrame.setSecondRoll(ball);
     this.frames.push(this.currentFrame);
-    return this.currentFrame.secondRoll+" hit / Tot score "+this.getTotScore();
+    return ball+" hit / Tot score "+this.temporaryTotScore();
   }
 };
 
 Game.prototype.getTotScore = function () {
-  if (this.currentFrame.secondRoll === null) {
-    return this.totScore+" (pending)"
-  } else if (this.currentFrameScore() === 10) {
-    return this.totScore+" (pending)"
+  return this.totScore;
+};
+
+Game.prototype.temporaryTotScore = function () {
+  if (this.currentFrame.readyToCalculateScore()) {
+    return this.updateTotScore();
   } else {
-    this.updateTotScore();
-    return this.totScore;
+    return this.totScore+" (pending)"
   }
 };
 
 Game.prototype.updateTotScore = function () {
-  return (this.totScore = this.currentFrameScore());
+  var sum;
+  if (this.prevFrame() && (this.prevFrame().pendingBonusPoints === 'spare')) {
+    sum = this.prevFrame().getScore() + this.currentFrame.getScore() + this.currentFrame.firstRoll;
+    this.totScore += sum
+  } else if (this.prevFrame() && (this.prevFrame().pendingBonusPoints === 'strike')) {
+    sum = this.prevFrame().getScore() + 2*this.currentFrame.getScore();
+    this.totScore += sum
+  } else {
+    this.totScore += this.currentFrame.getScore();
+  }
+  return this.totScore;
 };
 
-Game.prototype.currentFrameScore = function () {
-  return this.currentFrame.firstRoll + this.currentFrame.secondRoll;
+Game.prototype.prevFrame = function () {
+  return this.frames[this.frames.indexOf(this.currentFrame)-1]
 };

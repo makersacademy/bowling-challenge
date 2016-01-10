@@ -17,16 +17,18 @@ describe("Game", function() {
       })
     })
 
-    describe("#getTotScore", function() {
+    describe("#temporaryTotScore", function() {
       it("returns score pending if only first roll has been played", function() {
         game.play(6)
-        expect(game.getTotScore()).toEqual("0 (pending)")
+        expect(game.temporaryTotScore()).toEqual("0 (pending)")
       })
 
-      it("returns total score after first roll", function() {
-        game.play(6)
-        game.play(3)
-        expect(game.getTotScore()).toEqual(9)
+      describe("#getTotScore", function() {
+        it("returns total score after second roll", function() {
+          game.play(6)
+          game.play(3)
+          expect(game.getTotScore()).toEqual(9)
+        })
       })
     })
 	})
@@ -38,26 +40,28 @@ describe("Game", function() {
         expect(game.play(4)).toEqual("4 hit / Tot score 0 (pending)")
       })
 
-      xit("2nd frame returns the total score with the bonus of previous frame", function() {
+      it("2nd frame returns the total score with the bonus of previous frame", function() {
         game.play(6);
         game.play(4);
         game.play(2);
         expect(game.play(3)).toEqual("3 hit / Tot score 17")
       })
 
-      describe("#getTotScore", function() {
+      describe("#temporaryTotScore", function() {
         it("returns pending when there is a spare", function() {
           game.play(6)
           game.play(4)
-          expect(game.getTotScore()).toEqual("0 (pending)")
+          expect(game.temporaryTotScore()).toEqual("0 (pending)")
         })
+      })
 
+      describe("#getTotScore", function() {
         it("returns the score with the bonus after a spare frame", function() {
           game.play(6)
           game.play(4)
           game.play(2)
           game.play(3)
-          expect(game.getTotScore()).toEqual("17")
+          expect(game.getTotScore()).toEqual(17)
         })
       })
     })
@@ -65,11 +69,11 @@ describe("Game", function() {
 
 	describe("When strike", function() {
     describe("#play", function() {
-      xit ("returns the number of hit pins and total score when spare", function() {
+      it ("returns the number of hit pins and total score when spare", function() {
         expect(game.play(10)).toEqual("Strike! / Tot score 0 (pending)")
       })
 
-      xit("2nd frame returns the total score with the bonus of previous frame", function() {
+      it("2nd frame returns the total score with the bonus of previous frame", function() {
         game.play(10);
         game.play(2);
         expect(game.play(3)).toEqual("3 hit / Tot score 20")

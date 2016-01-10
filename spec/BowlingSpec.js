@@ -128,5 +128,17 @@ describe("Bowling", function() {
       bowling.play(1,2);
       expect(bowling.frames[0].bonus).toEqual(1);
     });
+
+    it('if a player scores two consecutive strikes,' +
+    ' the correct bonus is calculated', function() {
+      spyOn(frame, 'record').and.returnValue(frame.rolls = [10,0]);
+      spyOn(frame, 'calculateScore');
+      bowling.play(10,0);
+      bowling.calculateFrameScore();
+      bowling.play(10,0);
+      bowling.calculateFrameScore();
+      bowling.play(1,2);
+      expect(bowling.frames[0].bonus).toEqual(10+1);
+    });
   });
 });

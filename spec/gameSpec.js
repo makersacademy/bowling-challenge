@@ -5,7 +5,7 @@ describe('Game', function() {
   var frame;
 
   beforeEach(function() {
-    frame = jasmine.createSpyObj('frame', ['getFrameResults', 'receivePins', 'frames'])
+    frame = jasmine.createSpyObj('frame', ['getFrameResults', 'receivePins', 'frames', 'getFrameScores'])
     frame.frames = [1];
     game = new Game(frame);
   });
@@ -49,6 +49,13 @@ describe('Game', function() {
     it('returns an end of game message after 10 frames', function() {
       frame.frames = [1,2,3,4,5,6,7,8,9,10];
       expect(game.bowlA(4)).toEqual('Game over: Ten frames played');
+    });
+  });
+
+  describe('#seeFrameScores', function() {
+    it('calls to frame', function() {
+      game.seeFrameScores();
+      expect(frame.getFrameScores).toHaveBeenCalled();
     });
   });
 

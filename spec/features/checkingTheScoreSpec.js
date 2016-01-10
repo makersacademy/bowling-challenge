@@ -34,5 +34,13 @@ describe ('FEATURE TEST :Checking the score', function () {
       game.bowlA(4);
       expect(game.seeFrameResults()).toEqual([[4,5],[3,4]])
     });
+
+    it('allows you to see the overall score for each frame', function() {
+      game.bowlA(4);
+      game.bowlA(5);
+      game.bowlA(3);
+      game.bowlA(4);
+      expect(game.seeFrameScores()).toEqual([[9],[7]])
+    });
   });
 });

@@ -24,4 +24,16 @@ describe('Frame', function() {
     });
 
   })
+
+  describe('#getFrameScores', function() {
+
+    it('returns the results of frames', function() {
+      frame.receivePins(5);
+      frame.receivePins(4);
+      frame.receivePins(2);
+      frame.receivePins(3);
+      expect(frame.getFrameScores()).toEqual([[9],[5]])
+    });
+
+  })
 });

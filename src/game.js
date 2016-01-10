@@ -23,6 +23,10 @@ Game.prototype.seeFrameResults = function() {
   return this.framesLog.getFrameResults();
 }
 
+Game.prototype.seeFrameScores = function() {
+  return this.framesLog.getFrameScores();
+}
+
 Game.prototype._increaseBallCount = function() {
   this._ballcount += 1;
 }

@@ -4,8 +4,7 @@ function Frame() {
 }
 
 Frame.prototype.play = function() {
-  // var firstShot = Math.floor((Math.random() * 11));
-  var firstShot = 10
+  var firstShot = Math.floor((Math.random() * 11));
   if(firstShot < 10) {
     this.shots.push(firstShot)
     var secondShot = Math.floor((Math.random() * (11 - firstShot)))

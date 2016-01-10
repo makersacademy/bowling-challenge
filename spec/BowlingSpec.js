@@ -3,7 +3,11 @@ describe("Bowling", function() {
   var frame;
 
   beforeEach(function() {
-    frame = {rolls: [1,2], record: null, calculateScore: 3, score: 3, bonus: 1};
+    frame = {
+      record: function() {},
+      calculateScore: function() {},
+    }
+    // {rolls: [1,2], record: null, calculateScore: 3, score: 3, bonus: 1};
     bowling = new Bowling(frame);
   });
 
@@ -23,32 +27,40 @@ describe("Bowling", function() {
 
   describe('Scoring', function() {
     it('gives a total score', function() {
-      spyOn(frame, 'record');
-      spyOn(frame, 'calculateScore');
+      spyOn(frame, 'record').and.returnValue(frame.rolls = [1,2]);
+      spyOn(frame, 'calculateScore').and.returnValue(frame.score = (1+2));
       bowling.play(1,2);
       bowling.calculateFrameScore();
       bowling.calculateTotalScore();
+      console.log(bowling.frames);
       expect(bowling.totalScore).toEqual(3);
     });
   });
 
   describe('Playing', function() {
     it('prevents a player from playing more than 10 frames', function() {
-      spyOn(frame, 'record');
+      spyOn(frame, 'record').and.returnValue(frame.rolls = [1,5]);
+      var i = 0;
       for(i=0; i<10; i++) {
         bowling.play(1,5);
+        bowling.calculateFrameScore();
       }
-      expect(function(){bowling.play(1,5);}).toThrow(new Error("You have already played 10 frames."));
+      expect(function(){bowling.play(1,5);}).toThrow
+      (new Error("You have already played 10 frames."));
     });
 
-    xit('allows a player to get a bonus if they score a strike', function() {
-
+    it('allows a player to get a bonus if they score a strike', function() {
+      spyOn(frame, 'record').and.returnValue(frame.rolls = [10,0]);
+      spyOn(frame, 'calculateScore');
+      bowling.play(10,0);
+      bowling.calculateFrameScore();
+      bowling.play(1,2);
+      expect(bowling.frames[0].bonus).toEqual(3);
     });
 
     it('allows a player to get a bonus if they score a spare', function() {
-      spyOn(frame, 'record').and.returnValue([7,3],[1,2]);
-      spyOn(frame, 'calculateScore').and.returnValue(10);
-      spyOn(frame, 'score').and.returnValue(10);
+      spyOn(frame, 'record').and.returnValue(frame.rolls = [7,3]);
+      spyOn(frame, 'calculateScore').and.returnValue(frame.score=(7+3));
       bowling.play(7,3);
       bowling.calculateFrameScore();
       bowling.play(1,2);

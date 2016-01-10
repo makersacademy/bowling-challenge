@@ -6,6 +6,7 @@ var Frame = function() {
 
 Frame.prototype.record = function(roll1, roll2){
   this.rolls = [roll1, roll2]
+  this.calculateScore();
 }
 
 Frame.prototype.calculateScore = function() {

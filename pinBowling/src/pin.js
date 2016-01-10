@@ -7,8 +7,8 @@ function Pin (frameRules, initialPins) {
 
 Pin.prototype.pinsHit = function (number) {
   if (number > this._pinsThere) {throw "cannot exceed pin number"; }
+  this.frame.upFrameOrRound();
   this._pinsThere--;
-  this.frame.upRound();
   return number;
 };
 

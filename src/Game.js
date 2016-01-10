@@ -1,32 +1,39 @@
 function Game() {
+  this.N_FRAMES = 10;
   this.totalPoints = 0;
   this.playedFrames = [];
-  this.currentFrame = null;
 }
 
 Game.prototype.play = function (frame) {
-  if (this.currentFrame === null || this.currentFrame.isCompleted()) {
+  if (!this.currentFrame || this.currentFrame.isCompleted()) {
     return (this.currentFrame = frame || new Frame());
-  } else {
+  }
+  if (!this.currentFrame.isCompleted()) {
     this.currentFrame.play();
     this.playedFrames.push(this.currentFrame);
-    this.currentFrame = null;
-    if (this.playedFrames.length === 10) {
+    if (this.isOver()) {
       return "Well done! Your total points is "+this.getTotalPoints();
-    } else {
-      return this.previousFrame();
     }
+    return this.currentFrame;
   }
 };
 
-Game.prototype.previousFrame = function () {
-  return this.playedFrames[this.playedFrames.length-1];
+Game.prototype.gameOver = function () {
+  return "Well done! Your total points are "+this.getTotalPoints();
 };
 
 Game.prototype.getTotalPoints = function () {
-  for (var i = 0; i <= 10; i++) {
-    console.log(this.playedFrames[i])
-    this.totalPoints += this.playedFrames[i].totalPoints;
+  this.totalPoints = 0;
+  for (var i = 0; i < this.N_FRAMES; i++) {
+    this.totalPoints += this.playedFrames[i].getFramePoints();
   }
   return this.totalPoints;
 };
+
+Game.prototype.isOver = function () {
+  if (this.playedFrames.length === this.N_FRAMES) {
+    return true;
+  } else {
+    return false;
+  }
+}

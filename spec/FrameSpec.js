@@ -32,8 +32,12 @@ describe("Frame", function(){
       frame.play()
       expect(frame.isCompleted()).toBeTruthy();
     })
-    it("it returns false when the frame isn't completed", function() {
+    it("it returns false when the second roll hasn't yet happened", function() {
       expect(frame.isCompleted()).toBeFalsy();
+    })
+    it("it returns pending when there is a spare", function() {
+      frame.secondRoll = 4;
+      expect(frame.isCompleted()).toEqual('points pending');
     })
     it("returns true when the first roll was a strike", function () {
       frame.firstRoll = 10;
@@ -41,10 +45,10 @@ describe("Frame", function(){
     })
   })
 
-  describe("#calcPoints", function() {
+  describe("#getFramePoints", function() {
     it("returns the total score of the current frame", function() {
       frame.play()
-      expect(frame.calcPoints()).toEqual(12);
+      expect(frame.getFramePoints()).toEqual(12);
     })
   })
 

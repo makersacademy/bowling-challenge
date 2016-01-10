@@ -5,6 +5,11 @@ describe('Game', function(){
 
   beforeEach(function(){
     game = new Game(frame);
+    frame = {
+      getScore: function(){},
+      roll: function(){},
+      rerack: function(){}
+    };
   });
 
   describe('scorecard', function(){
@@ -21,30 +26,69 @@ describe('Game', function(){
 
   describe('#addFrame', function(){
     it('should add a frame to the scorecard', function(){
-      game.addFrame([5,3]);
+      spyOn(game.currentFrame, 'getScore').and.returnValue([5,3])
+      game.addFrame();
       expect(game.scorecard).toContain([5,3]);
     });
   });
 
-  xdescribe('#bowl', function(){
+  describe('#bowl', function(){
     it('should tell the frame how many pins fell', function(){
+      spyOn(game.currentFrame, 'roll');
       game.bowl(3);
       game.bowl(4);
-      expect(game.scorecard).toContain([3,4]);
-   });
+      expect(game.currentFrame.roll).toHaveBeenCalledWith(3);
+      expect(game.currentFrame.roll).toHaveBeenCalledWith(4);
+    });
+    it('should check if the frame is complete', function(){
+      spyOn(game.currentFrame, 'checkComplete');
+      game.bowl(3);
+      game.bowl(2);
+      expect(game.currentFrame.checkComplete).toHaveBeenCalled();
+    });
+    it('should finalise if frame is complete', function(){
+      game.bowl(3);
+      game.bowl(2);
+      game.bowl(4);
+      game.bowl(2);
+      expect(game.scorecard).toEqual([5, 6]);
+    });
   });
 
-  describe('#calculateScore', function(){
-    it('should add the results of a single frame', function(){
-      game.addFrame([5,3]);
-      expect(game.calculateScore()).toEqual(8);
-    });
-
-    xit('should add the results of multiple frames', function(){
-      game.addFrame([5,3]);
-      game.addFrame([6,2]);
-      expect(game.calculateScore()).toEqual(16);
+  describe('_newFrame', function(){
+    it('should refresh the frame', function(){
+      spyOn(game.currentFrame, 'rerack');
+      game._newFrame();
+      expect(game.currentFrame.rerack).toHaveBeenCalled();
     });
   });
+
+  describe('_complete', function(){
+    it('should be complete when 10 scored are submitted', function(){
+      game.bowl(3);
+      game.bowl(2);
+      game.bowl(4);
+      game.bowl(2);
+      game.bowl(3);
+      game.bowl(2);
+      game.bowl(4);
+      game.bowl(2);
+      game.bowl(3);
+      game.bowl(2);
+      game.bowl(4);
+      game.bowl(2);
+      game.bowl(3);
+      game.bowl(2);
+      game.bowl(4);
+      game.bowl(2);
+      game.bowl(3);
+      game.bowl(2);
+      game.bowl(4);
+      game.bowl(2);
+      expect(game._complete()).toEqual(true);
+    });
+  });
+
+
 
 })

@@ -1,32 +1,36 @@
 function Frame() {
-
-  this.currentScore = [];
+  this.results = [];
   this.pins = 10;
   this.currentRoll = 1;
+  this.score = 0;
 }
 
-  Frame.prototype.getPins = function(){
-    return this.pins;
+  Frame.prototype.getScore = function(){
+    return this.score;
   };
 
-  Frame.prototype.roll = function(num){
-    if(this.pins - num < 0){throw ('Frame score may not exceed 10')}
-    this.pins = this.pins - num;
-    if(this.currentRoll === 1 && num === 10)
-      {this.strike();}
+  Frame.prototype.roll = function(score){
+    if(this.pins - score < 0){throw ('Frame score may not exceed 10')}
+    this.pins -= score;
+    if(this.currentRoll === 1 && score === 10)
+      {this.results.push(score, 0);}
     else {
     this._addRoll();
-    this.currentScore.push(num);}
-    if(this._checkComplete()){ this.completeFrame();}
+    this.results.push(score);}
+    if(this.checkComplete) { this.calculateScore()}
   }
 
   Frame.prototype.strike = function(){
-    this.currentScore.push(10, 0);
-    this.completeFrame();
+    this.results.push(10, 0);
+    this.calculateScore();
   }
 
-  Frame.prototype._checkComplete = function(){
-  if(this.currentRoll > 2)
+  Frame.prototype.calculateScore = function(){
+    this.score = (this.results[0] + this.results[1]);
+  }
+
+  Frame.prototype.checkComplete = function(){
+  if(this.currentRoll === 3 || this.pins === 0)
     {return true;}
   else
     {return false;}
@@ -36,6 +40,9 @@ function Frame() {
     this.currentRoll++;
   }
 
-  Frame.prototype.completeFrame = function(){
-    // send this.currentScore to game;
+  Frame.prototype.rerack = function(){
+    this.results = [];
+    this.pins = 10;
+    this.currentRoll = 1;
+    this.score = 0;
   }

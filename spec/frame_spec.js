@@ -4,12 +4,16 @@ describe('Frame', function(){
 
   beforeEach(function(){
     frame = new Frame();
-    spyOn(frame, 'completeFrame');
   });
 
-  describe('#currentScore', function(){
+  describe('#results', function(){
     it('should be empty array', function(){
-      expect(frame.currentScore).toEqual([]);
+      expect(frame.results).toEqual([]);
+    });
+    describe('#getScore', function(){
+      it('should return the current score', function(){
+        expect(frame.getScore()).toEqual(frame.score);
+      });
     });
   });
 
@@ -32,64 +36,68 @@ describe('Frame', function(){
   });
 
   describe('#pins', function(){
-    it('each frame should start with 10 pins', function(){
+    it('should start with 10 pins', function(){
       expect(frame.pins).toEqual(10);
-    });
-    describe('#getPins', function(){
-      it('getPins should return number of standing pins', function(){
-        expect(frame.getPins()).toEqual(frame.pins);
-      });
     });
   });
 
   describe('#roll', function(){
     it('should reduce the number of standing pins', function(){
         frame.roll(4);
-        expect(frame.getPins()).toEqual(6);
-        expect(frame.currentScore).toContain(4);
+        expect(frame.results).toContain(4);
     });
 
     it('should not allow more than 10 pins to fall', function(){
       frame.roll(8);
       expect(function() { frame.roll(3); }).toThrow('Frame score may not exceed 10');
-      expect(frame.currentScore).toEqual([8]);
+      expect(frame.results).toEqual([8]);
     });
 
     it('should record 0 pins', function(){
       frame.roll(0);
       frame.roll(0);
-      expect(frame.currentScore).toContain(0,0)
+      expect(frame.results).toContain(0,0)
+      expect(frame.score).toEqual(0);
     });
   });
 
   describe('#checkComplete', function(){
-    it('should call completeFrame if two balls have rolled have rolled', function(){
-        frame.roll(0);
-        frame.roll(0);
-        expect(frame.completeFrame).toHaveBeenCalled();
-    });
     it('should return false if the frame is ongoing', function(){
       frame.roll(4);
-      expect(frame._checkComplete()).toEqual(false);
+      expect(frame.checkComplete()).toEqual(false);
     });
   });
 
   describe('#strike', function(){
     it('should end the frame if roll 1 hits 10', function(){
       frame.roll(10);
-      expect(frame.completeFrame).toHaveBeenCalled();
+      expect(frame.checkComplete()).toEqual(true);
     });
+
     it('should add 0 to the score', function(){
       frame.roll(10);
-      expect(frame.currentScore).toEqual([10,0]);
+      expect(frame.score).toEqual(10);
     });
   });
 
-  // describe('#frameComplete', function(){
-  //   it('should reset the frame', function(){
-  //     frame.roll(6);
-  //     frame.roll(3);
-  //     expect(frame.currentScore).
-  // });
+  describe('#calculateScore', function(){
+    it('should add the results of a single frame', function(){
+      frame.roll(3);
+      frame.roll(2);
+      expect(frame.score).toEqual(5)
+    });
+  });
+
+  describe('#rerack', function(){
+    it('should reset the frame', function(){
+      frame.roll(6);
+      frame.roll(2);
+      frame.rerack();
+      expect(frame.results).toEqual([]);
+      expect(frame.pins).toEqual(10);
+      expect(frame.currentRoll).toEqual(1);
+      expect(frame.score).toEqual(0);
+    });
+  });
 
 })

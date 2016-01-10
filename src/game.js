@@ -4,14 +4,21 @@
   this.currentFrame = new Frame();
 }
 
-Game.prototype.addFrame = function(frame){
-  this.scorecard.push(frame);
-};
+Game.prototype.addFrame = function(){
+  this.scorecard.push(this.currentFrame.getScore());
+  this.currentFrame = new Frame();
 
-Game.prototype.calculateScore = function(){
-  return this.scorecard[0][0] + this.scorecard[0][1];
-}
+};
 
 Game.prototype.bowl = function(num){
   this.currentFrame.roll(num);
+  if(this.currentFrame.checkComplete()){this.addFrame()}
+}
+
+Game.prototype._newFrame = function(){
+  this.currentFrame.rerack();
+}
+
+Game.prototype._complete = function(){
+  this.scorecard.length === 10;
 }

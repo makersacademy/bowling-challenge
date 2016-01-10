@@ -10,17 +10,18 @@ Frame.prototype.giveFrame = function () {
   return this._frame;
 };
 
-Frame.prototype.upFrame = function () {
+Frame.prototype.upFrame = function (pin) {
   this._frame++;
   this._round = this._initialRound;
+  pin.reset();
 };
 
 Frame.prototype.giveRound = function () {
   return this._round;
 };
 
-Frame.prototype.upFrameOrRound = function () {
-  if (this._isSecondRound()) {this.upFrame(); } else {this._upRound();}
+Frame.prototype.upFrameOrRound = function (pin) {
+  if (this._isSecondRound()) {this.upFrame(pin); } else {this._upRound();}
 };
 
 

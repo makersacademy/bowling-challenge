@@ -1,6 +1,6 @@
 describe("Feature Tests", function () {
 
-  var game, pin, frame;
+  var pin, frame;
 
   beforeEach ( function () {
     pin = new Pin ();
@@ -24,6 +24,6 @@ describe("Feature Tests", function () {
   it("new frame resets #pinsThere to default value", function () {
     pin.pinsHit(1);
     pin.pinsHit(1);
-    expect(pin.countPinsThere()).toEqual(pin._initialPinsThere)
+    expect(pin._pinsThere).toEqual(pin._initialPinsThere)
   });
 });

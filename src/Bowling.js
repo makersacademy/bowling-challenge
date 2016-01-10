@@ -1,6 +1,6 @@
 var Bowling = function(frame) {
   this.frame = frame || new Frame();
-  this._totalScore = 0;
+  this.totalScore = 0;
   this.frames = [];
 };
 
@@ -35,11 +35,14 @@ Bowling.prototype.calculateFrameScore = function() {
 };
 
 Bowling.prototype.calculateTotalScore = function() {
-  this.totalScore = this.frames.reduce(function
-    (previousValue,currentValue,currentIndex)
-  {
-    return previousValue.score + currentValue.score;
-  });
+  Array.prototype.sum = function(prop) {
+    var total = 0
+    for(var i=0, _len = this.length; i < _len; i++){
+      total += this[i][prop]
+    }
+    return total
+  }
+  this.totalScore = this.frames.sum("score")
 }
 
 Bowling.prototype.checkBonus = function(score1, score2) {

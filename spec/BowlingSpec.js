@@ -55,6 +55,11 @@ describe("Bowling", function() {
       expect(function(){bowling.play(1,5);}).toThrow
       (new Error("You have already played 10 frames."));
     });
+
+    it('prevents a player from inputing a combined score > 10', function() {
+      expect(function(){bowling.play(5,6);}).toThrow
+      (new Error('Not a valid score: sum must be 10 or less'));
+    });
   });
 
   describe('#thirdRoll', function() {

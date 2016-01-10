@@ -5,6 +5,9 @@ var Bowling = function(frame) {
 };
 
 Bowling.prototype.play = function(score1, score2) {
+  if(!this.isValidTotal(score1, score2)) {
+    throw new Error("Not a valid score: sum must be 10 or less")
+  }
   if(this.frames.length === 10) {
     throw new Error("You have already played 10 frames.")
   }
@@ -47,3 +50,7 @@ Bowling.prototype.checkBonus = function(score1, score2) {
     previousFrame.bonus = score1
   }
 }
+
+Bowling.prototype.isValidTotal = function(score1, score2) {
+  return (score1 + score2) <= 10
+};

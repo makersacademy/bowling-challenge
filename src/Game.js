@@ -31,9 +31,5 @@ Game.prototype.getTotalPoints = function () {
 };
 
 Game.prototype.isOver = function () {
-  if (this.playedFrames.length === this.N_FRAMES) {
-    return true;
-  } else {
-    return false;
-  }
+  return ((this.playedFrames.length === this.N_FRAMES) ? true : false);
 }

@@ -18,7 +18,7 @@ describe("Frame", function(){
 
   describe("#play", function() {
     it("creates a second roll and adds it's score to the frame", function() {
-      expect(frame.play()).toEqual("6 pins hit!");
+      expect(frame.play()).toEqual(6);
     })
 
     it("the score of the second roll is stored", function() {

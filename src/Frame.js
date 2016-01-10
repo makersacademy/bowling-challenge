@@ -8,13 +8,14 @@ function Frame(ball) {
 Frame.prototype.play = function () {
   this.secondRoll = this.ball.roll();
   this.framePoints += this.secondRoll;
-  return this.secondRoll+" pins hit!";
+  return this.secondRoll;
 };
 
 Frame.prototype.isCompleted = function () {
   if (this.firstRoll + this.secondRoll === 10) {
     return 'points pending'
-  } else if ((this.firstRoll === 10) || (this.secondRoll !== null)) {
+  }
+  if ((this.firstRoll === 10) || (this.secondRoll !== null)) {
     return true
   }
   return false

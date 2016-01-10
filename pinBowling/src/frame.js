@@ -19,14 +19,15 @@ Frame.prototype.giveRound = function () {
   return this._round;
 };
 
-Frame.prototype.upRound = function () {
+Frame.prototype.upFrameOrRound = function () {
+  if (this._isSecondRound()) {this.upFrame(); } else {this._upRound();}
+};
+
+
+Frame.prototype._upRound = function () {
   this._round++;
 };
 
-Frame.prototype.isSecondRound = function () {
+Frame.prototype._isSecondRound = function () {
   return this._round > this._initialRound
-};
-
-Frame.prototype.upFrameOrRound = function () {
-  if (this.isSecondRound()) {this.upFrame(); } else {this.upRound();}
 };

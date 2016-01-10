@@ -33,4 +33,12 @@ describe("UserStories", function() {
     expect(game.frames[0]).toEqual([5, 3])
   })
 
+  it("allows players to calculate the correct score", function(){
+    spyOn(Math, "random").and.returnValue(0.5)
+    for (var i=0; i<10; i++) {
+      game.playFrame();
+    }
+    expect(game.calculateScore()).toEqual(80);
+  });
+
 });

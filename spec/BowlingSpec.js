@@ -7,11 +7,10 @@ describe("Bowling", function() {
       record: function() {},
       calculateScore: function() {},
     }
-    // {rolls: [1,2], record: null, calculateScore: 3, score: 3, bonus: 1};
     bowling = new Bowling(frame);
   });
 
-  describe('Frames', function() {
+  describe('#frames', function() {
     it('stores the player\'s frames', function() {
       spyOn(frame, 'record');
       bowling.play(1,2);
@@ -25,7 +24,7 @@ describe("Bowling", function() {
     });
   });
 
-  describe('Scoring', function() {
+  describe('#totalScore', function() {
     it('gives a total score', function() {
       spyOn(frame, 'record').and.returnValue(frame.rolls = [1,2]);
       spyOn(frame, 'calculateScore').and.returnValue(frame.score = (1+2));
@@ -37,7 +36,7 @@ describe("Bowling", function() {
     });
   });
 
-  describe('Playing', function() {
+  describe('#play', function() {
     it('prevents a player from playing more than 10 frames', function() {
       spyOn(frame, 'record').and.returnValue(frame.rolls = [1,5]);
       var i = 0;
@@ -67,12 +66,36 @@ describe("Bowling", function() {
       expect(bowling.frames[0].bonus).toEqual(1);
     });
 
-    xit('allows a player to play a third roll in the 10th frame if they have scored a strike', function() {
+  describe('', function() {
+    it('allows a player to play a third roll in the 10th frame if they have' +
+    ' scored a strike', function() {
+      spyOn(frame, 'record').and.returnValue(frame.rolls = [10,0,5]);
+      var i = 0;
+      for(i=0; i<9; i++) {
+        bowling.play(1,2);
+        bowling.calculateFrameScore();
+      }
+      bowling.play(10,0);
+      bowling.thirdRoll(5);
+      bowling.calculateFrameScore();
+      expect(bowling.frames[bowling.frames.length-1].rolls[2]).toEqual(5);
+    });
+
+    xit('allows a player to play a third roll in the 10th frame if they have' +
+    ' scored a spare', function() {
 
     });
 
-    xit('allows a player to play a third roll in the 10th frame if they have scored a spare', function() {
+    xit('throws an error if player attempts 3rd roll if not in' +
+    ' 10th frame', function() {
 
     });
+
+    xit('throws an error if player attempts 3rd roll and has not scored' +
+    ' a spare or strike', function() {
+
+    });
+  });
+
   });
 });

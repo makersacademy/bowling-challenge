@@ -17,6 +17,10 @@ Bowling.prototype.play = function(score1, score2) {
   this.frames.push(this.frame)
 };
 
+Bowling.prototype.thirdRoll = function(score3) {
+  this.frame.addThirdRoll(score3);
+};
+
 Bowling.prototype.calculateFrameScore = function() {
   this.frame.calculateScore();
   this.frame = new Frame();

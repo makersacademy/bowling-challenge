@@ -20,25 +20,28 @@ describe(".Frame", function () {
       frame.upFrame(pin);
       expect(frame.giveFrame()).toEqual(frame._firstFrame + 1);
     });
+
     it ("resets the round number", function () {
       frame.upFrameOrRound(pin);
       frame.upFrame(pin);
       expect(frame.giveRound()).toEqual(frame._initialRound);
     });
+
     it ("causes pin number to be #reset", function () {
       frame.upFrame(pin);
       expect(pin.reset).toHaveBeenCalled();
     });
+
   });
 
   describe ("#giveRound", function () {
     it ("has default value", function () {
       expect(frame.giveRound()).toEqual(frame._initialRound);
     });
+
   });
 
   describe ("#upFrameOrRound", function () {
-
     it ("increments the round when first round", function () {
       frame.upFrameOrRound(pin);
       expect(frame.giveRound()).toEqual(frame._initialRound + 1);

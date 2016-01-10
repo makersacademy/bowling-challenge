@@ -36,7 +36,7 @@ describe("Frame", function(){
 	describe("#firstRoll", function(){
 		describe("#strike", function(){
 			beforeEach(function(){
-				spyOn(Math, "random").and.returnValue(1);
+				spyOn(Math, "random").and.returnValue(0.95);
 				frame.firstRoll();
 			});
 
@@ -52,7 +52,7 @@ describe("Frame", function(){
 				expect(frame.didSpare).toBe(false);
 			});
 
-			xit("if player gets a strike, pinsLeft equals 0", function(){
+			it("if player gets a strike, pinsLeft equals 0", function(){
 				expect(frame.pinsLeft).toEqual(0);
 			});
 

@@ -8,9 +8,8 @@ describe("Game", function(){
   });
 
   it("allows me to play a frame", function(){
+    spyOn(Math, "random").and.returnValue(0.5)
     game.playFrame();
-    expect(game.frames).toEqual([new Frame]);
+    expect(game.frames[0]).toEqual(new Frame().shots);
   });
-
-
 });

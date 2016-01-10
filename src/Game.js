@@ -1,35 +1,37 @@
 function Game() {
-  this.N_FRAMES = 10;
-  this.totalPoints = 0;
-  this.playedFrames = [];
+  this.currentFrame = { firstRoll: null, secondRoll: null }
+  this.frames = []
+  this.totScore = 0;
 }
 
-Game.prototype.play = function (frame) {
-  if (!this.currentFrame || this.currentFrame.isCompleted()) {
-    return (this.currentFrame = frame || new Frame());
-  }
-  if (!this.currentFrame.isCompleted()) {
-    this.currentFrame.play();
-    this.playedFrames.push(this.currentFrame);
-    if (this.isOver()) {
-      return "Well done! Your total points is "+this.getTotalPoints();
-    }
-    return this.currentFrame;
+Game.prototype.play = function (ball) {
+  if (this.currentFrame.firstRoll === null) {
+    // NEW FRAME EXTRACTION
+    this.currentFrame.firstRoll = ball;
+    this.currentFrame.secondRoll = null;
+    return this.currentFrame.firstRoll+" hit / Tot score "+this.getTotScore();
+  } else {
+    this.currentFrame.secondRoll = ball;
+    this.frames.push(this.currentFrame);
+    return this.currentFrame.secondRoll+" hit / Tot score "+this.getTotScore();
   }
 };
 
-Game.prototype.gameOver = function () {
-  return "Well done! Your total points are "+this.getTotalPoints();
-};
-
-Game.prototype.getTotalPoints = function () {
-  this.totalPoints = 0;
-  for (var i = 0; i < this.N_FRAMES; i++) {
-    this.totalPoints += this.playedFrames[i].getFramePoints();
+Game.prototype.getTotScore = function () {
+  if (this.currentFrame.secondRoll === null) {
+    return this.totScore+" (pending)"
+  } else if (this.currentFrameScore() === 10) {
+    return this.totScore+" (pending)"
+  } else {
+    this.updateTotScore();
+    return this.totScore;
   }
-  return this.totalPoints;
 };
 
-Game.prototype.isOver = function () {
-  return ((this.playedFrames.length === this.N_FRAMES) ? true : false);
-}
+Game.prototype.updateTotScore = function () {
+  return (this.totScore = this.currentFrameScore());
+};
+
+Game.prototype.currentFrameScore = function () {
+  return this.currentFrame.firstRoll + this.currentFrame.secondRoll;
+};

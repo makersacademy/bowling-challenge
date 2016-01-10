@@ -5,33 +5,39 @@ describe("Playing bowling", function (){
 		game = new Game();
 	})
 
-	// START
-	describe("User can create a new game of bowling", function(){
-
+	describe("When not spare nor strike", function() {
+		xit("1st roll it returns the number of hit pins and pending score", function () {
+			expect(game.play(6)).toEqual("6 hit / Tot score 0 (pending)")
+		})
+		xit("2nd roll it returns the number of hit pins and tot score", function() {
+			expect(game.play(3)).toEqual("3 hit / Tot score 9")
+		})
 	})
 
-	describe("The initial score is 0", function(){
+	describe("When spare", function() {
+		xit ("returns the number of hit pins and total score when spare", function() {
+			game.play(6);
+			expect(game.play(4)).toEqual("4 hit / Tot score 0 (pending)")
+		})
 
+		xit("2nd frame returns the total score with the bonus of previous frame", function() {
+			game.play(6);
+			game.play(4);
+			game.play(2);
+			expect(game.play(3)).toEqual("3 hit / Tot score 17")
+		})
 	})
 
-	// STRIKE
-	describe("If the first roll is a strike, the score is 10, left pins are 0", function() {
+	describe("When strike", function() {
+		xit ("returns the number of hit pins and total score when spare", function() {
+			expect(game.play(10)).toEqual("Strike! / Tot score 0 (pending)")
+		})
 
+		xit("2nd frame returns the total score with the bonus of previous frame", function() {
+			game.play(10);
+			game.play(2);
+			expect(game.play(3)).toEqual("3 hit / Tot score 20")
+		})
 	})
-
-	describe("If the first roll is a strike, there is no second roll", function(){
-
-	})
-
-	// SPARE
-	describe("If there is a spare, the score is only temporary", function() {
-
-	})
-
-	describe("If there is a spare, the bonus is calculated only after the first roll of the next frame", function() {
-
-	})
-
-	// 10th FRAME
 
 })

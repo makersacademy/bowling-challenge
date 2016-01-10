@@ -2,61 +2,79 @@ describe("Game", function() {
   var game;
 
   beforeEach(function() {
-    frame = {
-      firstRoll: 6,
-      secondRoll: 3,
-      framePoints: 9,
-      isCompleted: function() {
-        return false
-      },
-      play: function() {
-        return 3
-      }
-    }
-    spyOn(Math, "random").and.returnValue(0.39);
     game = new Game();
-  });
-
-  describe("#init", function(){
-    it("starts with total score 0", function() {
-      expect(game.totalPoints).toEqual(0);
-    })
-    it("starts with a number of playedFrames of 0", function() {
-      expect(game.playedFrames.length).toBe(0);
-    })
   })
 
-  describe("#play", function() {
-    it("adds the current frame to the list of played frames on 2nd roll", function() {
-      game.play(frame)
-      game.play()
-      expect(game.playedFrames).toContain(frame)
+
+	describe("When not spare nor strike", function() {
+    describe("#play", function() {
+      it("1st roll it returns the number of hit pins and pending score", function () {
+        expect(game.play(6)).toEqual("6 hit / Tot score 0 (pending)")
+      })
+      it("2nd roll it returns the number of hit pins and tot score", function() {
+        game.play(6)
+        expect(game.play(3)).toEqual("3 hit / Tot score 9")
+      })
     })
 
-    it("returns game with the total score when user ends 10th frame", function() {
-      for (var i = 0; i < 19; i++) {
-        game.play()
-      }
-      expect(game.play()).toEqual("Well done! Your total points is 80")
-    })
-  })
+    describe("#getTotScore", function() {
+      it("returns score pending if only first roll has been played", function() {
+        game.play(6)
+        expect(game.getTotScore()).toEqual("0 (pending)")
+      })
 
-  describe("#isOver", function() {
-    it("returns true if the number of played frames is 10", function() {
-      for (var i = 0; i < 20; i++) {
-        game.play()
-      }
-      expect(game.isOver()).toEqual(true);
+      it("returns total score after first roll", function() {
+        game.play(6)
+        game.play(3)
+        expect(game.getTotScore()).toEqual(9)
+      })
     })
-  })
+	})
 
-  describe("#getTotalPoints", function() {
-    it("calculates the total points at the end of the game", function() {
-      for (var i = 0; i < 20; i++) {
-        game.play()
-      }
-      expect(game.getTotalPoints()).toEqual(80)
+	describe("When spare", function() {
+    describe("#play", function() {
+      it ("returns the number of hit pins and total score when spare", function() {
+        game.play(6);
+        expect(game.play(4)).toEqual("4 hit / Tot score 0 (pending)")
+      })
+
+      xit("2nd frame returns the total score with the bonus of previous frame", function() {
+        game.play(6);
+        game.play(4);
+        game.play(2);
+        expect(game.play(3)).toEqual("3 hit / Tot score 17")
+      })
+
+      describe("#getTotScore", function() {
+        it("returns pending when there is a spare", function() {
+          game.play(6)
+          game.play(4)
+          expect(game.getTotScore()).toEqual("0 (pending)")
+        })
+
+        it("returns the score with the bonus after a spare frame", function() {
+          game.play(6)
+          game.play(4)
+          game.play(2)
+          game.play(3)
+          expect(game.getTotScore()).toEqual("17")
+        })
+      })
     })
-  })
+	})
+
+	describe("When strike", function() {
+    describe("#play", function() {
+      xit ("returns the number of hit pins and total score when spare", function() {
+        expect(game.play(10)).toEqual("Strike! / Tot score 0 (pending)")
+      })
+
+      xit("2nd frame returns the total score with the bonus of previous frame", function() {
+        game.play(10);
+        game.play(2);
+        expect(game.play(3)).toEqual("3 hit / Tot score 20")
+      })
+    })
+	})
 
 })

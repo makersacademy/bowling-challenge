@@ -12,6 +12,7 @@ Frame.prototype.giveFrame = function () {
 
 Frame.prototype.upFrame = function () {
   this._frame++;
+  this._round = this._initialRound;
 };
 
 Frame.prototype.giveRound = function () {
@@ -20,4 +21,5 @@ Frame.prototype.giveRound = function () {
 
 Frame.prototype.upRound = function () {
   this._round++;
+  if (this._round > (this._initialRound + 1)) {this.upFrame();}
 };

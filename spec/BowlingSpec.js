@@ -6,6 +6,7 @@ describe("Bowling", function() {
     frame = {
       record: function() {},
       calculateScore: function() {},
+      addThirdRoll: function() {}
     }
     bowling = new Bowling(frame);
   });
@@ -81,14 +82,24 @@ describe("Bowling", function() {
       expect(bowling.frames[bowling.frames.length-1].rolls[2]).toEqual(5);
     });
 
-    xit('allows a player to play a third roll in the 10th frame if they have' +
+    it('allows a player to play a third roll in the 10th frame if they have' +
     ' scored a spare', function() {
-
+      spyOn(frame, 'record').and.returnValue(frame.rolls = [3,7,5]);
+      var i =0
+      for(i=0; i<9; i++) {
+        bowling.play(1,2);
+        bowling.calculateFrameScore();
+      }
+      bowling.play(3,7);
+      bowling.thirdRoll(5);
+      bowling.calculateFrameScore();
+      expect(bowling.frames[bowling.frames.length-1].rolls[2]).toEqual(5);
     });
 
-    xit('throws an error if player attempts 3rd roll if not in' +
+    it('throws an error if player attempts 3rd roll if not in' +
     ' 10th frame', function() {
-
+      expect(function(){bowling.thirdRoll();}).toThrow
+      (new Error ('Cannot play 3rd roll: this is not the 10th frame'));
     });
 
     xit('throws an error if player attempts 3rd roll and has not scored' +

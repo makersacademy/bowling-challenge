@@ -18,6 +18,9 @@ Bowling.prototype.play = function(score1, score2) {
 };
 
 Bowling.prototype.thirdRoll = function(score3) {
+  if(this.frames.length !== 10) {
+    throw new Error("Cannot play 3rd roll: this is not the 10th frame")
+  }
   this.frame.addThirdRoll(score3);
 };
 

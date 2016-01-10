@@ -5,5 +5,9 @@ function Frame (firstFrame) {
 }
 
 Frame.prototype.giveFrame = function () {
-  return this._firstFrame;
+  return this._frame;
+};
+
+Frame.prototype.switchFrame = function () {
+  this._frame++;
 };

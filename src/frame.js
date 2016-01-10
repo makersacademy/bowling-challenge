@@ -1,36 +1,51 @@
+"use strict"
+
 function Frame(){
 
 	this.rollOne = 0;
 	this.rollTwo = 0;
 	this.pinsLeft = 10;
 	this.frameScore = 0;
+	this.didStrike = false;
+	this.didSpare = false;
+
 };
 
 
+Frame.prototype.getScore = function(min, max) {
+  return Math.floor(Math.random() * ((max - min) + 1)) + min;
+};
+
 
 Frame.prototype.firstRoll = function(){
-	this.rollOne = Math.floor((Math.random() * 11));
+	this.rollOne = this.getScore(0, 10)
 	this.pinsLeft = (10-this.rollOne);
 	if(this.pinsLeft>0) {
 		console.log("You scored " + this.rollOne + ", roll again!");
 	} else {
 		this.rollOne = 10;
 		this.frameScoreUpdate();
+		this.didStrike = true;
 		console.log("STRIKE!");
 	}
 };
 
 
 Frame.prototype.secondRoll = function() {
-	 this.rollTwo = Math.floor((Math.random() * (this.pinsLeft+1)));
-	 this.pinsLeft -= this.rollTwo
+	if(this.didStrike) {
+		this.rollTwo = 0;
+	} else {
+	 this.rollTwo = this.getScore(0, this.pinsLeft);
+	 this.pinsLeft = this.pinsLeft - this.rollTwo;
 	 if(this.pinsLeft<1){
-	 	console.log("SPARE!");
+	 	this.didSpare = true;
 	 	this.frameScoreUpdate();
+	 	console.log("SPARE!");
 	 } else {
 	 	console.log("You scored " + this.rollTwo + ", next Frame...");
 	 	this.frameScoreUpdate();
 	 }
+	}
 };
 
 Frame.prototype.frameScoreUpdate = function() {

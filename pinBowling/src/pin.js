@@ -16,3 +16,7 @@ Pin.prototype.pinsHit = function (number) {
 Pin.prototype.countPinsThere = function () {
   return this._pinsThere;
 };
+
+Pin.prototype.reset = function (first_argument) {
+  this._pinsThere = this._initialPinsThere;
+};

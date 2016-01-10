@@ -1,19 +1,25 @@
+
+
 describe('Game', function() {
+  var game;
+  var frame;
 
-  it('is defined', function() {
-    expect(game = new Game()).toBeDefined();
-  });
-
-  describe('#bowlA', function() {
-    it('is defined', function() {
-      expect(game.bowlA(5)).toBeDefined();
-    });
+  beforeEach(function() {
+    frame = jasmine.createSpyObj('frame', ['getFrameResults', 'receivePins'])
+    game = new Game(frame);
   });
 
   describe('#getBallCount', function() {
-    it('can return the current number of balls bowled', function() {
+    it('can return the current number (1) of balls bowled', function() {
       game.bowlA(5);
       expect(game.getBallCount()).toEqual(1);
+    });
+
+    it('can return the current number (5) of balls bowled', function() {
+      for (n = 0; n <5; n ++) {
+        game.bowlA(5);
+      }
+      expect(game.getBallCount()).toEqual(5);
     });
   });
 
@@ -21,6 +27,21 @@ describe('Game', function() {
     it('is defined', function() {
       expect(game.checkScore()).toBeDefined();
     });
+
+    it('can return the correct score after multiple balls', function () {
+      game.bowlA(4);
+      game.bowlA(5);
+      game.bowlA(4);
+      expect(game.checkScore()).toEqual(13);
+    });
+
+  });
+
+  describe('#seeFrameResults', function() {
+    it('calls out to frame', function() {
+      game.seeFrameResults(frame);
+      expect(frame.getFrameResults).toHaveBeenCalled();
+    })
   });
 
 });

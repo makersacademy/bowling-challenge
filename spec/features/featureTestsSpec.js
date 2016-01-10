@@ -5,7 +5,13 @@ describe("Feature tests", function() {
     game = new Game();
   });
 
-  it("allows a user to start a new game", function() {
-    expect(game).toBeDefined();
+  it("calculates the player's score", function() {
+    game.enterPins(5);
+    expect(game.checkScore()).toEqual(5);
+  });
+
+  it("the game has an end", function() {
+    game.enterPins(4);
+    expect(function() {game.enterPins(5);}).toThrow("The game is over");
   });
 });

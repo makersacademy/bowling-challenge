@@ -14,7 +14,8 @@ describe(".Game", function () {
 
     it ('depends on number of pins hit', function () {
       game.pinsHit(1);
-      expect(game.getScore()).toEqual(1);
+      game.pinsHit(1);
+      expect(game.getScore()).toEqual(2);
     });
 
   });
@@ -27,10 +28,11 @@ describe(".Game", function () {
 
     describe ("when 'strike'", function () {
       it ('the bonus is the scores of the two subsequent rounds', function () {
-        game.pinsHit(game._initialPinsThere);
+        game.pinsHit(10);
         game.pinsHit(1);
         game.pinsHit(1);
-        expect(game.getScore()).toEqual(game._initialPinsThere + 4);
+        game.pinsHit(1);
+        expect(game.getScore()).toEqual(15);
       });
     });
   });

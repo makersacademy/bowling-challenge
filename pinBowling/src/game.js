@@ -7,11 +7,18 @@ function Game (pin, defaultScore) {
   this._loopLimit = 0;
   this._initialPinsThere = this.pin._initialPinsThere;
   this._strikeBonusTime = 0;
+  this._bonusCollection = [];
 }
 
 Game.prototype.pinsHit = function (number) {
   this.pin.pinsHit(number);
   this._increaseScore(number);
+  if (this._bonusCollection.length !== 0) {
+  for (var bonus in this._bonusCollection) {bonus.reduceTimeLimit();}
+  this._loopLimit =
+    this._bonusCollection.reduce(function(previousValue, currentValue) {
+    return previousValue.loopLimit + currentValue.loopLimit;
+  });}
   // if (this._strikeBonusTime > 0){this._strikeBonusTime--;}
   // this._strikeEffectOnLoopLimit(number);
 };

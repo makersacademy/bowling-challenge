@@ -27,13 +27,20 @@ describe("Bowling", function() {
 
   describe('#totalScore', function() {
     it('gives a total score', function() {
-      spyOn(frame, 'record').and.returnValue(frame.rolls = [1,2]);
-      spyOn(frame, 'calculateScore').and.returnValue(frame.score = (1+2));
+      spyOn(frame, 'record').and.returnValue
+      (frame.rolls = [1,2], frame.rolls = [3,4]);
+      spyOn(frame, 'calculateScore').and.callFake(function() {
+        var alreadyCalled = false;
+        if(alreadyCalled) {frame.score = (3+4)}
+        alreadyCalled = true;
+        return frame.score = (1+2);
+      });
       bowling.play(1,2);
       bowling.calculateFrameScore();
+      bowling.play(3,4);
+      bowling.calculateFrameScore();
       bowling.calculateTotalScore();
-      console.log(bowling.frames);
-      expect(bowling.totalScore).toEqual(3);
+      expect(bowling.totalScore).toEqual(1+2+3+4);
     });
   });
 

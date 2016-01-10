@@ -32,7 +32,11 @@ Bowling.prototype.calculateFrameScore = function() {
 };
 
 Bowling.prototype.calculateTotalScore = function() {
-  this.totalScore = this.frames[0].score;
+  this.totalScore = this.frames.reduce(function
+    (previousValue,currentValue,currentIndex)
+  {
+    return previousValue.score + currentValue.score;
+  });
 }
 
 Bowling.prototype.checkBonus = function(score1, score2) {

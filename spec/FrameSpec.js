@@ -45,6 +45,7 @@ describe("Frame", function(){
         expect(frame.readyToCalculateScore()).toBeFalsy();
       })
     })
+    
     describe("#anyBonusPoints", function() {
       it("returns spare if spare", function() {
         frame.setSecondRoll(7)
@@ -54,18 +55,20 @@ describe("Frame", function(){
   })
 
   describe("When strike", function() {
+    var frame_strike;
+
+    beforeEach(function() {
+      frame_strike = new Frame(10);
+    })
+
     describe("#readyToCalculateScore", function() {
       it("returns false if it's a strike", function() {
-        var frame_strike;
-        frame_strike = new Frame(10);
         expect(frame_strike.readyToCalculateScore()).toBeFalsy();
       })
     })
 
     describe("#anyBonusPoints", function() {
       it("returns strike if it's a strike", function() {
-        var frame_strike;
-        frame_strike = new Frame(10);
         expect(frame_strike.anyBonusPoints()).toEqual('strike')
       })
     })

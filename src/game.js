@@ -13,6 +13,9 @@ function Game(){
 Game.prototype.playFrame = function() {
 	let frame = new Frame;
 	if(this.scoresArray.length===8){
+		frame.firstRoll();
+		frame.secondRoll();
+		this.bowlingFrames.push(frame);
 		this._totalScore();
 	} else if (this.bowlingFrames.length===2){
 	this._bonusCheck();
@@ -39,6 +42,8 @@ Game.prototype._bonusCheck = function() {
 
 Game.prototype._totalScore = function() {
 	this.scoresArray.push(this.bowlingFrames[0].frameScore);
+	this.bowlingFrames.shift();
 	this.scoresArray.push(this.bowlingFrames[0].frameScore);
+	this.bowlingFrames.shift();
 	this.score = this.scoresArray.reduce(function(a, b){ return a + b });
 };

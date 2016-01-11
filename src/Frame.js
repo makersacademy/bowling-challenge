@@ -36,5 +36,5 @@ Frame.prototype._isStrike = function () {
 };
 
 Frame.prototype._isSpare = function () {
-  return (this.getScore() === 10)
+  return (this.getScore() === 10);
 };

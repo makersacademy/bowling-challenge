@@ -2,7 +2,8 @@ describe("Game", function() {
 
   beforeEach(function() {
     game = new Game();
-    frame = new Frame()
+    frame = new Frame();
+    secondFrame = new Frame();
   });
 
   describe("addFrame", function() {
@@ -17,6 +18,15 @@ describe("Game", function() {
       game.addFrame(frame);
       expect(game._score).toEqual(8);
     });
+
+    it("should add a bonus for a spare the frame after", function() {
+      frame.bowlSpare();
+      game.addFrame(frame);
+      secondFrame.bowl(5);
+      secondFrame.bowl(2);
+      game.addFrame(secondFrame);
+      expect(game._score).toEqual(22);
+    });
   });
 });
 
@@ -24,7 +34,7 @@ describe("Frame", function() {
   var game;
 
   beforeEach(function() {
-    frame = new Frame()
+    frame = new Frame();
   });
 
   describe("bowl", function() {
@@ -41,11 +51,10 @@ describe("Frame", function() {
       }).toThrowError("You have used all your rolls in this frame");
     });
 
-    it("should not add a score immediately if a spare is scored", function() {
-      frame.bowl(7)
-      frame.bowl(3)
-      expect(frame._frameScore).toEqual(7);
-    });
+    // it("should not add a score immediately if a spare is scored", function() {
+    //   frame.bowlSpare();
+    //   expect(frame._frameScore).toEqual(7);
+    // });
 
     // it("should add the correct score if a spare has been scored in the previous frame")
   });
@@ -56,6 +65,8 @@ describe("Frame", function() {
       expect(frame.isSpare()).toEqual(true);
     });
   });
+
+
 });
 
 //Helper Methods//

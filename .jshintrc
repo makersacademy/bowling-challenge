@@ -89,5 +89,5 @@
     "yui"           : false,    // Yahoo User Interface
 
     // Custom Globals
-    "globals"       : {"Game" : true}        // additional predefined global variables
+    "globals"       : {"Game" : true, "Round" : true}        // additional predefined global variables
 }

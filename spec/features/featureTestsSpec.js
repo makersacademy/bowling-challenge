@@ -1,8 +1,14 @@
-xdescribe("Feature tests", function() {
+describe("Feature tests", function() {
   var game;
 
   beforeEach(function() {
     game = new Game();
+  });
+
+  it("allows the player to enter the number of pins knocked down", function() {
+    game.enterPins(1);
+    game.enterPins(7);
+    expect(game.checkScore()).toEqual(8);
   });
 
   it("calculates the player's score", function() {

@@ -10,9 +10,9 @@ describe('Frame', function(){
     it('should be empty array', function(){
       expect(frame.results).toEqual([]);
     });
-    describe('#getScore', function(){
+    describe('#getResults', function(){
       it('should return the current score', function(){
-        expect(frame.getScore()).toEqual(frame.score);
+        expect(frame.getResults()).toEqual(frame.results);
       });
     });
   });
@@ -56,8 +56,7 @@ describe('Frame', function(){
     it('should record 0 pins', function(){
       frame.roll(0);
       frame.roll(0);
-      expect(frame.results).toContain(0,0)
-      expect(frame.score).toEqual(0);
+      expect(frame.results).toEqual([0,0]);
     });
   });
 
@@ -76,15 +75,7 @@ describe('Frame', function(){
 
     it('should add 0 to the score', function(){
       frame.roll(10);
-      expect(frame.score).toEqual(10);
-    });
-  });
-
-  describe('#calculateScore', function(){
-    it('should add the results of a single frame', function(){
-      frame.roll(3);
-      frame.roll(2);
-      expect(frame.score).toEqual(5)
+      expect(frame.results).toContain(10, 0);
     });
   });
 

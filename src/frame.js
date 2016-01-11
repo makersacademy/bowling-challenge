@@ -2,11 +2,10 @@ function Frame() {
   this.results = [];
   this.pins = 10;
   this.currentRoll = 1;
-  this.score = 0;
 }
 
-  Frame.prototype.getScore = function(){
-    return this.score;
+  Frame.prototype.getResults = function(){
+    return this.results;
   };
 
   Frame.prototype.roll = function(score){
@@ -17,17 +16,17 @@ function Frame() {
     else {
     this._addRoll();
     this.results.push(score);}
-    if(this.checkComplete) { this.calculateScore()}
+    // if(this.checkComplete) { this.calculateScore()}
   }
 
   Frame.prototype.strike = function(){
     this.results.push(10, 0);
-    this.calculateScore();
+    // this.calculateScore();
   }
 
-  Frame.prototype.calculateScore = function(){
-    this.score = (this.results[0] + this.results[1]);
-  }
+  // Frame.prototype.calculateScore = function(){
+  //   this.score = (this.results[0] + this.results[1]);
+  // }
 
   Frame.prototype.checkComplete = function(){
   if(this.currentRoll === 3 || this.pins === 0)

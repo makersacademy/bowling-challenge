@@ -1,12 +1,12 @@
 describe('Game', function(){
 
   var game;
-  var frame;
+  var testframe;
 
   beforeEach(function(){
-    game = new Game(frame);
-    frame = {
-      getScore: function(){},
+    game = new Game(testframe);
+    testframe = {
+      getResults: function(){},
       roll: function(){},
       rerack: function(){}
     };
@@ -26,7 +26,7 @@ describe('Game', function(){
 
   describe('#addFrame', function(){
     it('should add a frame to the scorecard', function(){
-      spyOn(game.currentFrame, 'getScore').and.returnValue([5,3])
+      spyOn(game.currentFrame, 'getResults').and.returnValue([5,3])
       game.addFrame();
       expect(game.scorecard).toContain([5,3]);
     });
@@ -51,7 +51,7 @@ describe('Game', function(){
       game.bowl(2);
       game.bowl(4);
       game.bowl(2);
-      expect(game.scorecard).toEqual([5, 6]);
+      expect(game.scorecard).toContain([3, 2],[4,2]);
     });
   });
 
@@ -63,29 +63,13 @@ describe('Game', function(){
     });
   });
 
-  describe('_complete', function(){
-    it('should be complete when 10 scored are submitted', function(){
-      game.bowl(3);
-      game.bowl(2);
-      game.bowl(4);
-      game.bowl(2);
-      game.bowl(3);
-      game.bowl(2);
-      game.bowl(4);
-      game.bowl(2);
-      game.bowl(3);
-      game.bowl(2);
-      game.bowl(4);
-      game.bowl(2);
-      game.bowl(3);
-      game.bowl(2);
-      game.bowl(4);
-      game.bowl(2);
-      game.bowl(3);
-      game.bowl(2);
-      game.bowl(4);
-      game.bowl(2);
-      expect(game._complete()).toEqual(true);
+  describe('#over', function(){
+    it('should announce game over when 10 scores are submitted', function(){
+      for (var i = 0; i < 10; i++){
+        game.bowl(3);
+        game.bowl(2);
+      }
+      expect(function() { game.over; }).toThrow('Game Over!');
     });
   });
 

@@ -5,9 +5,9 @@
 }
 
 Game.prototype.addFrame = function(){
-  this.scorecard.push(this.currentFrame.getScore());
+  this.scorecard.push(this.currentFrame.getResults());
+  this.over();
   this.currentFrame = new Frame();
-
 };
 
 Game.prototype.bowl = function(num){
@@ -19,6 +19,6 @@ Game.prototype._newFrame = function(){
   this.currentFrame.rerack();
 }
 
-Game.prototype._complete = function(){
-  this.scorecard.length === 10;
+Game.prototype.over = function(){
+  if(this.scorecard.length === 10){throw('Game Over!')}
 }

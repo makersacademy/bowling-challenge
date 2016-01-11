@@ -4,6 +4,7 @@ describe("Game", function() {
     game = new Game();
     frame = new Frame();
     secondFrame = new Frame();
+    thirdFrame = new Frame();
   });
 
   describe("addFrame", function() {
@@ -26,6 +27,26 @@ describe("Game", function() {
       secondFrame.bowl(2);
       game.addFrame(secondFrame);
       expect(game._score).toEqual(22);
+    });
+
+    it("should add a bonus for a strike the frame after unless two strikes in a row are scored", function() {
+      frame.bowl(10);
+      game.addFrame(frame);
+      secondFrame.bowl(5);
+      secondFrame.bowl(2);
+      game.addFrame(secondFrame);
+      expect(game._score).toEqual(24);
+    });
+
+    it("should add a bonus for a strike the frame after next if two strikes in a row are scored", function() {
+      frame.bowl(10);
+      game.addFrame(frame);
+      secondFrame.bowl(10);
+      game.addFrame(secondFrame);
+      thirdFrame.bowl(5);
+      thirdFrame.bowl(2);
+      game.addFrame(thirdFrame);
+      expect(game._score).toEqual(49);
     });
   });
 });
@@ -63,6 +84,13 @@ describe("Frame", function() {
     it("should return true when there are 0 pins remaining after 2 rolls of a frame", function() {
       frame.bowlSpare();
       expect(frame.isSpare()).toEqual(true);
+    });
+  });
+
+  describe("isStrike", function() {
+    it("should return true when there are 0 pins remaining after 1 roll of a frame", function() {
+      frame.bowl(10);
+      expect(frame.isStrike()).toEqual(true);
     });
   });
 

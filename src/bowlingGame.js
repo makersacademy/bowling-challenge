@@ -6,9 +6,22 @@ function Game() {
 Game.prototype.addFrame = function(frame){
   this._frames.push(frame);
   this._score += frame._rolls[0];
-  this._score += frame._rolls[1];
+  if(frame._rolls[0] != 10) {
+    this._score += frame._rolls[1];
+  }
   if(this._frames.length > 1) {
     if((this._frames[this._frames.length - 2]).isSpare()){
+      this._score += frame._rolls[0];
+    }
+    if((this._frames[this._frames.length - 2]).isStrike()) {
+      this._score += frame._rolls[0];
+      if(frame._rolls[0] != 10) {
+        this._score += frame._rolls[1];
+      }
+    }
+  }
+  if(this._frames.length > 2) {
+    if((this._frames[this._frames.length - 3]).isStrike &&  (this._frames[this._frames.length - 2]).isStrike) {
       this._score += frame._rolls[0];
     }
   }
@@ -22,9 +35,12 @@ function Frame() {
 }
 
 Frame.prototype.bowl = function(pinsdowned){
-  if(this._rolls.length >= 2){
+  if(this._rolls.length >= 2) {
     throw new TypeError("You have used all your rolls in this frame");
-  } else {
+  }
+  if(this._rolls.length === 1 && this._rolls[0] === 10){
+    throw new TypeError("You have used all your rolls in this frame");
+    } else {
     this._pins -= pinsdowned;
     this._rolls.push(pinsdowned);
   }
@@ -39,6 +55,14 @@ Frame.prototype.bowl = function(pinsdowned){
 
 Frame.prototype.isSpare = function(){
   if(this._pins === 0 && this._rolls.length === 2){
+    return true;
+  } else {
+    return false;
+  }
+};
+
+Frame.prototype.isStrike = function() {
+  if(this._pins === 0 && this._rolls.length === 1) {
     return true;
   } else {
     return false;

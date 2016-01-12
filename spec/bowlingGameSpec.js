@@ -5,6 +5,7 @@ describe("Game", function() {
     frame = new Frame();
     secondFrame = new Frame();
     thirdFrame = new Frame();
+    tenthFrame = new Frame(true);
   });
 
   describe("addFrame", function() {
@@ -48,6 +49,22 @@ describe("Game", function() {
       game.addFrame(thirdFrame);
       expect(game._score).toEqual(49);
     });
+
+    it("should add the correct score if a spare is scored in the 10th frame", function() {
+      tenthFrame.bowl(7);
+      tenthFrame.bowl(3);
+      tenthFrame.bowl(4);
+      game.addFrame(tenthFrame);
+      expect(game._score).toEqual(14);
+    });
+
+    it("should add the correct score if a strike is scored with the first roll of the 10th frame", function() {
+      tenthFrame.bowl(10);
+      tenthFrame.bowl(5);
+      tenthFrame.bowl(5);
+      game.addFrame(tenthFrame);
+      expect(game._score).toEqual(20);
+    });
   });
 });
 
@@ -56,6 +73,7 @@ describe("Frame", function() {
 
   beforeEach(function() {
     frame = new Frame();
+    tenthFrame = new Frame();
   });
 
   describe("bowl", function() {
@@ -69,6 +87,14 @@ describe("Frame", function() {
       frame.bowl(1);
       expect(function(){
         frame.bowl(9);
+      }).toThrowError("You have used all your rolls in this frame");
+    });
+
+    it("without a spare or strike, users should get 2 rolls in the 10th frame", function() {
+      tenthFrame.bowl(7);
+      tenthFrame.bowl(1);
+      expect(function(){
+        tenthFrame.bowl(9);
       }).toThrowError("You have used all your rolls in this frame");
     });
 

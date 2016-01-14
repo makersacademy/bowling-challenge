@@ -1,48 +1,53 @@
 function Round() {
   this.rollOne = null;
   this.rollTwo = null;
-  this.roundScore = 0;
   this.result = [];
   this.isInProgress = true;
+  this.ROLL_TOTAL = 10;
 }
 
-Round.prototype.trackPins = function(pins) {
+Round.prototype.acceptPins = function(pins) {
+  if(!this._isPinsEnteredValid(pins)) {throw "Invalid pin entry";}
+  this._logPins(pins);
+  this._updateProgress();
+}
+
+Round.prototype.isFull = function() {
+  this._updateProgress();
+  return !(this.isInProgress);
+}
+
+Round.prototype._isPinsEnteredValid = function(pins) {
+  if(typeof(pins) === 'number' && pins >= 0 && pins < 11) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+Round.prototype._logPins = function(pins) {
   if(this.rollOne === null) {
     this.rollOne = pins;
     this.result.push(pins);
   } else if(this.rollTwo === null) {
+    if(!this._isRoundTotalValid(pins)) {throw "Invalid pin entry";}
     this.rollTwo = pins;
     this.result.push(pins);
   }
-  console.log("trackPins is running");
-  this.updateProgress();
 }
 
-Round.prototype.updateProgress = function() {
-  if(this.rollOne === null || this.rollTwo === null) {
-    console.log("updateProgress is running & will set isInProgress to true");
-    return (this.isInProgress = true);
+Round.prototype._isRoundTotalValid = function(pins) {
+  if(this.rollOne + pins > this.ROLL_TOTAL) {
+    return false;
   } else {
-    console.log("updateProgress is running & will set isInProgress to false");
-    return (this.isInProgress = false);
+    return true;
   }
 }
 
-Round.prototype.isFull = function() {
-  console.log("isFull is running");
-  this.updateProgress();
-  return !(this.isInProgress);
-}
-
-Round.prototype.giveScore = function() {
-  this._calculateScore();
-  return this.roundScore;
-}
-
-Round.prototype.giveResult = function() {
-  return this.result;
-}
-
-Round.prototype._calculateScore = function() {
-  this.roundScore = this.rollOne + this.rollTwo;
+Round.prototype._updateProgress = function() {
+  if(this.rollOne === null || this.rollTwo === null) {
+    return (this.isInProgress = true);
+  } else {
+    return (this.isInProgress = false);
+  }
 }

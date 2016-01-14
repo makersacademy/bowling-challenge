@@ -50,6 +50,17 @@ describe("Game", function() {
       expect(game._score).toEqual(49);
     });
 
+    it("should correctly score consecutive strikes", function() {
+      frame.bowl(10);
+      game.addFrame(frame);
+      secondFrame.bowl(10);
+      game.addFrame(secondFrame);
+      thirdFrame.bowl(5);
+      thirdFrame.bowl(2);
+      game.addFrame(thirdFrame);
+      expect(game._score).toEqual(49);
+    });
+
     it("should add the correct score if a spare is scored in the 10th frame", function() {
       tenthFrame.bowl(7);
       tenthFrame.bowl(3);
@@ -66,14 +77,76 @@ describe("Game", function() {
       expect(game._score).toEqual(20);
     });
   });
+
+    it("should add the correct score to the frame score", function() {
+      frame.bowl(7);
+      frame.bowl(2);
+      game.updateFrameScores(frame);
+      expect(frame._frameScore).toEqual(9);
+    });
+
+    it("should add the correct score to the frame if a spare is bowled", function() {
+      frame.bowlSpare();
+      game.addFrame(frame);
+      secondFrame.bowl(5);
+      secondFrame.bowl(2);
+      game.addFrame(secondFrame);
+      expect(game._frames[0]._frameScore).toEqual(15);
+    });
+
+    it("should add the correct score to the frame if a strike is scored", function() {
+      frame.bowl(10);
+      game.addFrame(frame);
+      secondFrame.bowl(5);
+      secondFrame.bowl(2);
+      game.addFrame(secondFrame);
+      expect(game._frames[0]._frameScore).toEqual(17);
+    });
+
+    it("should add the correct score to the frame if consecutive strikes are scored", function() {
+      frame.bowl(10);
+      game.addFrame(frame);
+      secondFrame.bowl(10);
+      game.addFrame(secondFrame);
+      thirdFrame.bowl(5);
+      thirdFrame.bowl(2);
+      game.addFrame(thirdFrame);
+      expect(game._frames[0]._frameScore).toEqual(25);
+    });
+
+    it("should add the correct frame score if a spare is scored in the 10th frame", function() {
+      tenthFrame.bowl(7);
+      tenthFrame.bowl(3);
+      tenthFrame.bowl(4);
+      game.addFrame(tenthFrame);
+      expect(game._frames[0]._frameScore).toEqual(14);
+    });
+
+    it("should add the correct frame score if a strike is scored in the 10th frame", function() {
+      tenthFrame.bowl(10);
+      tenthFrame.bowl(5);
+      tenthFrame.bowl(5);
+      game.addFrame(tenthFrame);
+      expect(game._frames[0]._frameScore).toEqual(20);
+    });
+
+    it("should add total score at the end of each frame unless a spare or strike is scored", function() {
+      frame.bowl(10);
+      game.addFrame(frame);
+      secondFrame.bowl(10);
+      game.addFrame(secondFrame);
+      thirdFrame.bowl(5);
+      thirdFrame.bowl(2);
+      game.addFrame(thirdFrame);
+      expect(game._score).toEqual(49);
+    });
 });
 
 describe("Frame", function() {
-  var game;
 
   beforeEach(function() {
     frame = new Frame();
-    tenthFrame = new Frame();
+    tenthFrame = new Frame(true);
   });
 
   describe("bowl", function() {
@@ -96,6 +169,11 @@ describe("Frame", function() {
       expect(function(){
         tenthFrame.bowl(9);
       }).toThrowError("You have used all your rolls in this frame");
+    });
+
+    it("should reset pins to 10 for third roll if a spare is scored in 10th frame", function() {
+      tenthFrame.bowlSpare();
+      expect(tenthFrame._pins).toEqual(10);
     });
 
     // it("should not add a score immediately if a spare is scored", function() {

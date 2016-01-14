@@ -5,9 +5,10 @@ describe('Frame', function() {
   beforeEach(function() {
     frame = new Frame();
     spyOn(Math, 'random').and.returnValue(0.4);
+
   });
 
-  describe( 'new game parameters', function() {
+  describe('new game parameters', function() {
 
     it('starts with no pins hit', function() {
       expect(frame.pinsHit).toEqual(0);
@@ -27,6 +28,16 @@ describe('Frame', function() {
     });
   });
 
+  describe('#secondRole', function() {
+    beforeEach(function() {
+      frame.firstRole();
+      frame.secondRole();
+    });
+
+    it('ensures max pins that can be hit are the pins left from firstRole', function() {
+      expect(frame.pinsLeft).toEqual(4);
+    });
+  });
 
   describe('#resetFrame', function() {
 

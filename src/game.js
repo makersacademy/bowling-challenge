@@ -8,12 +8,17 @@ function Game(frameKlass, gameLength) {
   this.frames = [];
   this.totalScore = null;
   this.currentFrame = 0;
+  this.currentFrameNum = 0;
 
   this._setGame();
 }
 
 Game.prototype.bowl = function(num) {
-  this.currentFrame.bowl(num);
+  if (this.currentFrame.isComplete) {
+    this.currentFrameNum += 1;
+    this._setCurrentFrame();
+  }
+    this.currentFrame.bowl(num);
 }
 
 Game.prototype.getTotalScore = function() {
@@ -31,5 +36,9 @@ Game.prototype._setGame = function() {
   for(var i=0; i < this.gameLength; i++) {
     this.frames.push(new this.frameKlass());
   }
-  this.currentFrame = this.frames[0];
+  this._setCurrentFrame();
+}
+
+Game.prototype._setCurrentFrame = function() {
+  this.currentFrame = this.frames[this.currentFrameNum];
 }

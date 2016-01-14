@@ -6,10 +6,12 @@ function Frame() {
   this.spare = false
   this.strike = false
   this.game_over = false
+  this.points = 0
 }
 
-Frame.prototype.bowl = function(number) {
-  var x = number//(Math.round(Math.random() * this.pins ))
+Frame.prototype.bowl = function() {
+  var x = (Math.round(Math.random() * this.pins ))
+  this.points = x
   this.pins -= x
   this.turnCount += 1
     if (this.strike){
@@ -45,9 +47,10 @@ Frame.prototype._isStrikeorSpare = function() {
   } else {this.spare = true}
 }
 
-Frame.prototype.lastFrame_bowl = function(bowl) {
+Frame.prototype.lastFrame_bowl = function() {
   if(this.game_over === false){
-  var y = bowl
+  var y = (Math.round(Math.random() * this.pins ))
+  this.points = y
   if (this.strike && this.currentFrame.length === 0)
   {this.frameScores.slice(-2)[0].push(y)}
   if (this.strike && this.currentFrame.length < 2)

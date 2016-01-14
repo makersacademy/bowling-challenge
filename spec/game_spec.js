@@ -4,12 +4,7 @@ describe('Game', function(){
   var testframe;
 
   beforeEach(function(){
-    game = new Game(testframe);
-    testframe = {
-      getResults: function(){},
-      roll: function(){},
-      rerack: function(){}
-    };
+    game = new Game();
   });
 
   describe('scorecard', function(){
@@ -55,24 +50,25 @@ describe('Game', function(){
     });
   });
 
-  describe('_newFrame', function(){
-    it('should refresh the frame', function(){
-      spyOn(game.currentFrame, 'rerack');
-      game._newFrame();
-      expect(game.currentFrame.rerack).toHaveBeenCalled();
-    });
-  });
-
-  describe('#over', function(){
-    it('should announce game over when 10 scores are submitted', function(){
+  describe('#checkOver', function(){
+    it('should recognise a game over when 10 frames submitted', function(){
       for (var i = 0; i < 10; i++){
         game.bowl(3);
         game.bowl(2);
       }
-      expect(function() { game.over; }).toThrow('Game Over!');
+      expect(function() {game.bowl(3)}).toThrow('Game over!');
+      // expect(game.checkOver()).toReturn(true);
     });
   });
 
-
+  describe('#scoreCalculator', function(){
+    it('should add up the accumulated score', function(){
+      game.bowl(5);
+      game.bowl(2);
+      game.bowl(8);
+      game.bowl(2);
+      expect(game.scoreCalculator()).toEqual(17);
+    })
+  })
 
 })

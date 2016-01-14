@@ -44,13 +44,19 @@ describe('Frame', function(){
   describe('#roll', function(){
     it('should reduce the number of standing pins', function(){
         frame.roll(4);
-        expect(frame.results).toContain(4);
+        expect(frame.pins).toEqual(6);
     });
 
     it('should not allow more than 10 pins to fall', function(){
       frame.roll(8);
       expect(function() { frame.roll(3); }).toThrow('Frame score may not exceed 10');
       expect(frame.results).toEqual([8]);
+    });
+
+    it('should not allow more than 2 bowls', function(){
+      frame.roll(8);
+      frame.roll(1);
+      expect(function() { frame.roll(3); }).toThrow('Only two bowls per frame');
     });
 
     it('should record 0 pins', function(){
@@ -68,10 +74,6 @@ describe('Frame', function(){
   });
 
   describe('#strike', function(){
-    it('should end the frame if roll 1 hits 10', function(){
-      frame.roll(10);
-      expect(frame.checkComplete()).toEqual(true);
-    });
 
     it('should add 0 to the score', function(){
       frame.roll(10);
@@ -79,16 +81,18 @@ describe('Frame', function(){
     });
   });
 
-  describe('#rerack', function(){
-    it('should reset the frame', function(){
-      frame.roll(6);
-      frame.roll(2);
-      frame.rerack();
-      expect(frame.results).toEqual([]);
-      expect(frame.pins).toEqual(10);
-      expect(frame.currentRoll).toEqual(1);
-      expect(frame.score).toEqual(0);
-    });
+  describe('#isStrike', function(){
+    it('should report a frame as a strike', function(){
+      expect(frame.isStrike(10)).toEqual(true);
+    })
+  });
+
+  describe('#isSpare', function(){
+    it('should report a frame as a spare', function(){
+      frame.roll(5);
+      frame.roll(5);
+      expect(frame.isSpare()).toEqual(true);
+    })
   });
 
 })

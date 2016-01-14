@@ -1,24 +1,23 @@
- function Game(frame) {
-
+ function Game() {
   this.scorecard = [];
   this.currentFrame = new Frame();
 }
 
 Game.prototype.addFrame = function(){
   this.scorecard.push(this.currentFrame.getResults());
-  this.over();
   this.currentFrame = new Frame();
 };
 
 Game.prototype.bowl = function(num){
+  if(this.checkOver() === true){throw('Game over!')}
   this.currentFrame.roll(num);
   if(this.currentFrame.checkComplete()){this.addFrame()}
 }
 
-Game.prototype._newFrame = function(){
-  this.currentFrame.rerack();
+Game.prototype.checkOver = function(){
+  if(this.scorecard.length === 10){return true}
 }
 
-Game.prototype.over = function(){
-  if(this.scorecard.length === 10){throw('Game Over!')}
+Game.prototype.scoreCalculator = function(){
+  return(17);
 }

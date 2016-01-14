@@ -6,30 +6,21 @@ function Frame() {
 
   Frame.prototype.getResults = function(){
     return this.results;
-  };
+  }
 
   Frame.prototype.roll = function(score){
-    if(this.pins - score < 0){throw ('Frame score may not exceed 10')}
+    if(this.currentRoll > 2) {throw ('Only two bowls per frame');}
+    if(this.pins - score < 0){throw ('Frame score may not exceed 10');}
     this.pins -= score;
-    if(this.currentRoll === 1 && score === 10)
+    if(this.isStrike(score))
       {this.results.push(score, 0);}
     else {
     this._addRoll();
     this.results.push(score);}
-    // if(this.checkComplete) { this.calculateScore()}
   }
-
-  Frame.prototype.strike = function(){
-    this.results.push(10, 0);
-    // this.calculateScore();
-  }
-
-  // Frame.prototype.calculateScore = function(){
-  //   this.score = (this.results[0] + this.results[1]);
-  // }
 
   Frame.prototype.checkComplete = function(){
-  if(this.currentRoll === 3 || this.pins === 0)
+  if(this.currentRoll >= 3 || this.pins === 0)
     {return true;}
   else
     {return false;}
@@ -39,9 +30,13 @@ function Frame() {
     this.currentRoll++;
   }
 
-  Frame.prototype.rerack = function(){
-    this.results = [];
-    this.pins = 10;
-    this.currentRoll = 1;
-    this.score = 0;
-  }
+  Frame.prototype.isStrike = function(score){
+    if(this.currentRoll === 1 && score === 10){return true}
+ }
+
+  Frame.prototype.isSpare = function(){
+    if(this.results[0] + this.results[1] === 10)
+      {return true}
+    else
+      {return false}
+}

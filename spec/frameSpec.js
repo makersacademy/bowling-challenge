@@ -36,4 +36,13 @@ describe('Frame', function() {
     });
 
   })
+
+  describe('#isTooManyPinsInOneFrame', function() {
+
+    it('returns true if more than 10 pins in 2 ball frame', function() {
+      frame.receivePins(9);
+      expect(frame.isTooManyPinsInOneFrame(3)).toBe(true)
+    });
+
+  })
 });

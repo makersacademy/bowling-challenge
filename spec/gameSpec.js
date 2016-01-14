@@ -5,9 +5,20 @@ describe('Game', function() {
   var frame;
 
   beforeEach(function() {
-    frame = jasmine.createSpyObj('frame', ['getFrameResults', 'receivePins', 'frames', 'getFrameScores'])
-    frame.frames = [1];
+    frame = jasmine.createSpyObj('frame',
+    ['getFrameResults', 'receivePins', 'frames', 'getFrameScores', 'currentFrame', 'isTooManyPinsInOneFrame'])
     game = new Game(frame);
+  });
+
+
+  describe ('#bowlA', function() {
+    it('returns error if more than 10 pins knocked down per frame', function() {
+        game.framesLog = {isTooManyPinsInOneFrame: function() {}}
+        game.framesLog.frames = {length: function() {}}
+        spyOn(game.framesLog, 'isTooManyPinsInOneFrame').and.returnValue(true)
+        spyOn(game.framesLog.frames, 'length').and.returnValue(1)
+        expect(function() {game.bowlA(3)}).toThrowError('Nope. Ten pins max per frame')
+    });
   });
 
   describe('#getBallCount', function() {
@@ -17,11 +28,13 @@ describe('Game', function() {
     });
 
     it('can return the current number (5) of balls bowled', function() {
+      var n;
       for (n = 0; n <5; n ++) {
         game.bowlA(5);
       }
       expect(game.getBallCount()).toEqual(5);
     });
+
   });
 
   describe('#checkScore', function() {

@@ -9,8 +9,8 @@ Frame.prototype.receivePins = function(pins) {
     if (this.currentFrame.length === 2) {
       this.frames.push(this.currentFrame);
       this.currentFrame = [];
-    };
-  };
+    }
+  }
 
 Frame.prototype.getFrameResults = function() {
   return this.frames;
@@ -25,6 +25,14 @@ Frame.prototype.getFrameScores = function() {
   });
   return output;
 };
+
+Frame.prototype.isTooManyPinsInOneFrame = function(numberOfPins) {
+  if (this.currentFrame[0]) {
+    return ((this.currentFrame[0] + numberOfPins) > 10)
+  } else {
+    return (numberOfPins > 10)
+  }
+}
 
 
 }

@@ -6,6 +6,7 @@ describe ('FEATURE TEST : End of Game', function () {
   });
 
   it('prevents play and lets you know when the tenth frame is over', function(){
+    var n
     for (n=0; n<20; n++) {
       game.bowlA(4);
     }

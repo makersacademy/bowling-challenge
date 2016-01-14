@@ -1,7 +1,21 @@
-function Song() {
+function Game(frame) {
+  this.frames = [];
 }
 
-Song.prototype.persistFavoriteStatus = function(value) {
-  // something complicated
-  throw new Error("not yet implemented");
-};
+
+
+// Game.prototype.pause = function() {
+//   this.isPlaying = false;
+// };
+//
+// Game.prototype.resume = function() {
+//   if (this.isPlaying) {
+//     throw new Error("song is already playing");
+//   }
+//
+//   this.isPlaying = true;
+// };
+//
+// Game.prototype.makeFavorite = function() {
+//   this.currentlyPlayingSong.persistFavoriteStatus(true);
+// };

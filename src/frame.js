@@ -1,22 +1,26 @@
-function Player() {
+function Frame(pinsHit, pinsLeft) {
+  this.pinsHit = pinsHit || 0;
+  this.MAX_PINS = 10;
+  this.pinsLeft = pinsLeft || this.MAX_PINS;
 }
-Player.prototype.play = function(song) {
-  this.currentlyPlayingSong = song;
-  this.isPlaying = true;
+
+Frame.prototype.firstRole = function() {
+  this.pinsHit = Math.floor((Math.random()*10));
+  this.pinsLeft = this.MAX_PINS - this.pinsHit;
 };
 
-Player.prototype.pause = function() {
-  this.isPlaying = false;
-};
+// getRollpinsHit = function() {
+//   return Math.floor((Math.random()*10));
+  // return this.pins.pop(this.pinsHit);
+// };
 
-Player.prototype.resume = function() {
-  if (this.isPlaying) {
-    throw new Error("song is already playing");
-  }
+// Frame.prototype.getRollpinsLeft = function() {
+  // this.getRollpinsHit();
+  // return this.MAX_PINS - this.pinsHit;
+  // return this.pinsLeft.splice(1, this.pinsHit);
+// };
 
-  this.isPlaying = true;
-};
-
-Player.prototype.makeFavorite = function() {
-  this.currentlyPlayingSong.persistFavoriteStatus(true);
+Frame.prototype.resetFrame = function() {
+  this.pinsHit =  0;
+  this.pinsLeft = this.MAX_PINS;
 };

@@ -16,7 +16,11 @@ describe("Feature tests", function() {
     expect(game.checkScore()).toEqual(5);
   });
 
-  it("the game ends after 1 round", function() {
+  it("the game ends after 3 rounds", function() {
+    game.enterPins(4);
+    game.enterPins(1);
+    game.enterPins(4);
+    game.enterPins(1);
     game.enterPins(4);
     game.enterPins(1);
     expect(function() {game.enterPins(2);}).toThrow("The game is over");

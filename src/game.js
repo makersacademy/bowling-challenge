@@ -1,5 +1,6 @@
 function Game() {
   this.round = new Round();
+  this.score = new Score();
   this.NUMBER_OF_ROUNDS = 10;
   this.rounds = [];
 }
@@ -18,9 +19,13 @@ Game.prototype.isGameInProgress = function() {
   }
 };
 
+Game.prototype.getScore = function() {
+  return this.score.giveScore(this.rounds);
+};
+
 Game.prototype._updateRounds = function() {
   if(this._isRoundFull()) {
-    this.rounds.push(this.round);
+    this.rounds.push(this.round.result);
     this.round = new Round();
   }
 };

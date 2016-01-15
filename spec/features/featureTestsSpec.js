@@ -11,4 +11,16 @@ describe("Feature tests", function() {
     }
     expect(function() {game.enterPins(2);}).toThrow("The game is over");
   });
+
+  describe("getting the score", function() {
+    it("returns the running totals for each round", function() {
+      game.enterPins(1);
+      game.enterPins(8);
+      game.enterPins(2);
+      game.enterPins(3);
+      game.enterPins(5);
+      game.enterPins(3);
+    expect(game.getScore()).toEqual([9, 14, 22]);
+    });
+  });
 });

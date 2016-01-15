@@ -33,4 +33,16 @@ describe("Game", function() {
       expect(game.rounds.length).toEqual(2);
     });
   });
+
+  describe("getting the score", function() {
+    it("returns the running totals for each round", function() {
+      game.enterPins(1);
+      game.enterPins(2);
+      game.enterPins(5);
+      game.enterPins(3);
+      game.enterPins(6);
+      game.enterPins(3);
+      expect(game.getScore()).toEqual([3, 11, 20]);
+    });
+  });
 });

@@ -11,16 +11,17 @@ FinalFrame.prototype.addRoll = function(roll) {
   }
   this._frameRolls.push(roll);
   this._remainingPins -= roll;
-  if (this.isComplete()) {
-    this._finaliseFrame();
-  }
   if (this._isBonusBalls()) {
     this._remainingPins = 10;
   }
-}
+  if (this.isComplete()) {
+    this._finaliseFrame();
+  }
+};
 
 FinalFrame.prototype.isComplete = function() {
-  return this._frameRolls.length === 2 && this._remainingPins !== 0 ||
+  return this._frameRolls.length === 2 &&
+         this._remainingPins !== 10 ||
          this._frameRolls.length === 3;
 };
 
@@ -33,4 +34,4 @@ FinalFrame.prototype._finaliseFrame = function() {
 FinalFrame.prototype._isBonusBalls = function() {
   return this._remainingPins === 0 &&
          this._frameRolls.length < 3;
-}
+};

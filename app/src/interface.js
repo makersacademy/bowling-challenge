@@ -4,6 +4,7 @@ $(document).ready(function() {
   function updateData() {
     $('#totalscore').text(game.getScore());
     var gameData = game.getFrames();
+    var frameNum = gameData.length + 1;
     gameData.forEach(function(frame, index) {
       var currentFrame = index + 1;
       if (frame.bonus === 0) {
@@ -12,6 +13,10 @@ $(document).ready(function() {
       frame.rolls.forEach(function(roll, index) {
         $('#ball' + currentFrame + '-' + (index + 1)).text(roll);
       });
+    });
+    var currentFrame = game.getCurrentFrame();
+    currentFrame.rolls.forEach(function(roll, index) {
+      $('#ball' + frameNum + '-' + (index + 1)).text(roll);
     });
   }
 

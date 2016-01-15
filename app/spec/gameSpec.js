@@ -11,17 +11,17 @@ describe('Game', function() {
     game = new Game(frame);
   });
 
-  describe('#getFrame', function() {
-    it('returns the score for frame specified as argument', function() {
-      game._frameLog.push('random data');
-      game._frameLog.push('data random');
-      expect(game.getFrame(1)).toEqual('random data');
-    });
-  });
-
   describe('#getScore', function() {
     it('returns 0 at start', function() {
       expect(game.getScore()).toEqual(0);
+    });
+  });
+
+  describe('#getCurrentFrame', function() {
+    it('calls getFrameData on the current frame', function() {
+      spyOn(frame, 'getFrameData');
+      game.getCurrentFrame();
+      expect(frame.getFrameData).toHaveBeenCalled();
     });
   });
 
@@ -36,7 +36,7 @@ describe('Game', function() {
       spyOn(frame, 'getFrameData').and.returnValue('frame data');
       spyOn(frame, 'isComplete').and.returnValue(true);
       game.logRoll(0);
-      expect(game.getFrame(1)).toEqual('frame data');
+      expect(game.getFrames()).toEqual(['frame data']);
     });
 
     it('should ensure score gets logged when it is complete', function() {
@@ -51,7 +51,7 @@ describe('Game', function() {
       spyOn(frame, 'getFrameData').and.returnValue(frameData);
       game._logFrame();
       game.logRoll(8);
-      expect(game.getFrame(1)).toEqual({rolls: [0, 10], total: 18, bonus: 0});
+      expect(game.getFrames()).toEqual([{rolls: [0, 10], total: 18, bonus: 0}]);
     });
 
     it('should throw game over once 10 frames are complete', function() {

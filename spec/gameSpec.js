@@ -40,7 +40,17 @@ describe("Game", function() {
       });
     });
 
+    describe("scores a strike in the first frame", function() {
+      beforeEach(function() {
+        game.bowl(10);
+      });
+
+      it("triggers a bonus for the first frame", function() {
+        expect(game.frames[0].bonus).not.toBe(null);
+      });
+    });
+
+
 
   });
-
 });

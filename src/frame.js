@@ -25,6 +25,10 @@ Frame.prototype.getScore = function() {
   return this.scoreCard.reduce(function(a, b) { return a + b; }, 0);
 }
 
+Frame.prototype.triggerBonus = function(bonusKlass) {
+  this.bonus = new bonusKlass(2);
+};
+
 Frame.prototype._isValidScore = function(numberOfPins) {
   return (numberOfPins <= this.standingPins) && (numberOfPins >= 0);
 }

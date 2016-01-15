@@ -1,9 +1,8 @@
-function Game(frameKlass, gameLength) {
+function Game(frameKlass, gameLength, bonusKlass) {
   var DEFAULT_LENGTH = 10;
-  var DEFAULT_FRAME_KLASS = Frame;
-
   this.gameLength = gameLength || DEFAULT_LENGTH;
-  this.frameKlass = frameKlass || DEFAULT_FRAME_KLASS;
+  this.frameKlass = frameKlass || Frame;
+  this.bonusKlass = bonusKlass || Bonus;
 
   this.frames = [];
   this.totalScore = null;
@@ -23,9 +22,13 @@ Game.prototype.bowl = function(num) {
     this.currentFrameNum += 1;
     this._setCurrentFrame();
   }
-    this.currentFrame.bowl(num);
-    this.isGameFinished()
+
+  this.currentFrame.bowl(num);
+  this._setBonus();
+  this.isGameFinished()
 }
+
+
 
 Game.prototype.getTotalScore = function() {
   for (var i = 0; i < this.frames.length; i++) {
@@ -54,6 +57,18 @@ Game.prototype._setGame = function() {
 
 Game.prototype._setCurrentFrame = function() {
   this.currentFrame = this.frames[this.currentFrameNum];
+}
+
+Game.prototype._setBonus = function() {
+  var bonusType
+  if (this.currentFrame.standingPins > 0) {
+    return "No bonus";
+  } else if (this.currentFrame.length === 1) {
+    bonusType = "strike";
+  } else {
+    bonusType = "spare";
+  }
+  this.currentFrame.triggerBonus(this.bonusKlass, bonusType);
 }
 
 Game.prototype._isFinalFrame = function() {

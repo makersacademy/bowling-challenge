@@ -3,6 +3,7 @@ describe("Frame", function() {
 
   beforeEach(function() {
     frame = new Frame();
+    bonusKlass = Bonus;
   });
 
   describe("standard frame scoring", function(){
@@ -48,5 +49,13 @@ describe("Frame", function() {
               ("You already finished this frame"));
     });
   });
+
+  describe("scoring a strike", function() {
+    it("can be given a bonus", function() {
+      frame.triggerBonus(bonusKlass);
+      expect(frame.bonus).not.toBe(null);
+    });
+  });
+
 
 });

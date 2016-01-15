@@ -21,6 +21,12 @@ Frame.prototype.roll = function (pinsKnocked) {
   }
 };
 
+Frame.prototype.setDefaultValues = function () {
+  this._rolls = [];
+  this._score = 0;
+  this._bonus = null;
+};
+
 Frame.prototype._storeRoll = function (pinsKnocked) {
   this._rolls.push(pinsKnocked);
   this._score += pinsKnocked;

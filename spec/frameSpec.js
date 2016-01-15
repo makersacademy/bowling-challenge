@@ -1,5 +1,4 @@
-
-describe ('frame', function() {
+describe ('Frame', function() {
   var frame;
 
   beforeEach(function() {
@@ -47,10 +46,12 @@ describe ('frame', function() {
       });
     });
   });
+
+  describe('#setDefaultValues', function () {
+    it('change all values to default', function () {
+      frame.roll(10);
+      frame.setDefaultValues();
+      expect(frame.getFrameInfo()).toEqual({rolls: [], score: 0, bonus: null});
+    });
+  });
 });
-
-
-// describe('', function() {
-//   it('', function(){
-//   });
-// });

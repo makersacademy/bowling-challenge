@@ -15,18 +15,22 @@ describe("Game", function() {
     });
   });
 
-  it("ends after 10 rounds", function() {
-    for(var i = 0; i < 20; i++) {
-      game.enterPins(5);
-    }
-    expect(game.isGameInProgress()).toBe(false);
-    expect(function() {game.enterPins(5);}).toThrow("The game is over");
+  describe("ending the game", function() {
+    it("ends after 10 rounds", function() {
+      for(var i = 0; i < 20; i++) {
+        game.enterPins(5);
+      }
+      expect(game.isGameInProgress()).toBe(false);
+      expect(function() {game.enterPins(5);}).toThrow("The game is over");
+    });
   });
 
-  it("stores a completed round in rounds", function() {
-    for(var i = 0; i < 4; i++) {
-      game.enterPins(1);
-    }
-    expect(game.rounds.length).toEqual(2);
+  describe("keeping track of the rounds", function() {
+    it("stores the completed rounds in the rounds array", function() {
+      for(var i = 0; i < 4; i++) {
+        game.enterPins(1);
+      }
+      expect(game.rounds.length).toEqual(2);
+    });
   });
 });

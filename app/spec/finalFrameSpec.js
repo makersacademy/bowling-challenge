@@ -26,9 +26,9 @@ describe('FinalFrame', function() {
 
     it('should calculate the total after three rolls for strike', function() {
       finalFrame.addRoll(10);
-      finalFrame.addRoll(9);
       finalFrame.addRoll(10);
-      expect(finalFrame.getFrameData().total).toEqual(29);
+      finalFrame.addRoll(1);
+      expect(finalFrame.getFrameData().total).toEqual(21);
     });
 
     it('throws error if more than 10 pins used', function() {
@@ -40,7 +40,7 @@ describe('FinalFrame', function() {
   });
 
   describe('#isComplete', function() {
-    it('should return true if 2 rolls have been done in frame', function() {
+    it('should return true if 2 rolls have been done in frame with no strike or spare', function() {
       finalFrame.addRoll(5);
       finalFrame.addRoll(3);
       expect(finalFrame.isComplete()).toBe(true);
@@ -49,6 +49,20 @@ describe('FinalFrame', function() {
     it('should return false if frame is not complete', function() {
       finalFrame.addRoll(5);
       expect(finalFrame.isComplete()).toBe(false);
+    });
+
+    it('should return true after 3 rolls done with a spare', function() {
+      finalFrame.addRoll(9);
+      finalFrame.addRoll(1);
+      finalFrame.addRoll(10);
+      expect(finalFrame.isComplete()).toBe(true);
+    });
+
+    it('should return true after 3 rolls done with a strike', function() {
+      finalFrame.addRoll(10);
+      finalFrame.addRoll(1);
+      finalFrame.addRoll(9);
+      expect(finalFrame.isComplete()).toBe(true);
     });
   });
 });

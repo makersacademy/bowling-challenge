@@ -14,10 +14,14 @@ FinalFrame.prototype.addRoll = function(roll) {
   if (this.isComplete()) {
     this._finaliseFrame();
   }
+  if (this._isBonusBalls()) {
+    this._remainingPins = 10;
+  }
 }
 
 FinalFrame.prototype.isComplete = function() {
-  return this._frameRolls.length === 2 || this._remainingPins === 0;
+  return this._frameRolls.length === 2 && this._remainingPins !== 0 ||
+         this._frameRolls.length === 3;
 };
 
 FinalFrame.prototype._finaliseFrame = function() {
@@ -25,3 +29,8 @@ FinalFrame.prototype._finaliseFrame = function() {
     return a + b;
   });
 };
+
+FinalFrame.prototype._isBonusBalls = function() {
+  return this._remainingPins === 0 &&
+         this._frameRolls.length < 3;
+}

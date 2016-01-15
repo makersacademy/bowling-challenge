@@ -42,5 +42,30 @@ describe ('FEATURE TEST :Checking the score', function () {
       game.bowlA(4);
       expect(game.seeFrameScores()).toEqual([[9],[7]])
     });
+
+    it('records the result of strikes correctly', function() {
+      game.bowlA(10)
+      game.bowlA(3)
+      game.bowlA(4)
+      expect(game.seeFrameResults()).toEqual([[10],[3,4]])
+    });
+  });
+
+  describe ('Bonus points', function() {
+    it('scores a spare correctly if last complete frame', function() {
+      game.bowlA(8);
+      game.bowlA(2);
+      game.bowlA(5);
+      expect(game.seeFrameScores()).toEqual([[15]])
+    });
+
+    it('scores a spare correctly if the next frame is complete', function() {
+      game.bowlA(8);
+      game.bowlA(2);
+      game.bowlA(5);
+      game.bowlA(4);
+      game.bowlA(4);
+      expect(game.seeFrameScores()[0]).toEqual([15])
+    });
   });
 });

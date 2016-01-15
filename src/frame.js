@@ -12,7 +12,6 @@ Frame.prototype.roll = function (pinsKnocked) {
   if (this._rolls.length === 0) {
     this._storeRoll(pinsKnocked);
     if (pinsKnocked === 10) {
-      this._storeRoll(0);
       this._bonus = 'strike';
     }
   } else {
@@ -33,7 +32,7 @@ Frame.prototype._storeRoll = function (pinsKnocked) {
 };
 
 Frame.prototype._isSpare = function () {
-  if (this._score === 10) {
+  if (this._score === 10 && this._rolls[0] < 10) {
     this._bonus = 'spare';
   }
 };

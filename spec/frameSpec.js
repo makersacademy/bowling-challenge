@@ -39,6 +39,7 @@ describe ('Frame', function() {
         describe('as a strike', function() {
           it('with all pins knocked in the first round', function(){
             frame.roll(10);
+            frame.roll(0);
             expect(frame.getFrameInfo()).toEqual({rolls: [10, 0],
                                                   score: 10, bonus: 'strike'});
           });

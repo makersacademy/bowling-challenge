@@ -60,3 +60,11 @@ body {
   height: 40%;
   border: solid thin black;
 }
+
+.totalscorebox {
+  background: #0066CC;
+  box-sizing: border-box;
+  width: 40%;
+  height:100px;
+  color: white;
+}

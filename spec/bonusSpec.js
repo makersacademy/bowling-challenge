@@ -2,23 +2,52 @@ describe("Bonus", function() {
   var bonus;
 
   beforeEach(function() {
-    bonusForSpare = new Bonus(1);
-    bonusForStrike = new Bonus(2);
+    bonus = new Bonus();
   });
 
   describe("calculates the extra points for a strike", function() {
-      it("adds points from the next two bowls", function() {
-        bonusForStrike.addPoints(4);
-        bonusForStrike.addPoints(7);
-        expect(bonusForStrike.getTotal()).toEqual(11);
-      });
+    beforeEach(function() {
+      bonus.set("strike");
+    })
 
-      it("does not add more than two bowls", function() {
-        bonusForStrike.addPoints(4);
-        bonusForStrike.addPoints(5);
-        bonusForStrike.addPoints(3);
-        expect(bonusForStrike.getTotal()).toEqual(9);
-      });
+    it("sets the number of bowls to be added to two", function() {
+      expect(bonus.numberOfBowls).toEqual(2);
     });
+
+    it("adds points from the next two bowls", function() {
+      bonus.addPoints(4);
+      bonus.addPoints(7);
+      expect(bonus.getTotal()).toEqual(11);
+    });
+
+    it("does not add more than two bowls", function() {
+      bonus.addPoints(4);
+      bonus.addPoints(5);
+      bonus.addPoints(3);
+      expect(bonus.getTotal()).toEqual(9);
+    });
+  });
+
+  describe("calculates the extra points for a spare", function() {
+    beforeEach(function() {
+      bonus.set("spare");
+    })
+
+    it("sets the number of bowls to be added to one", function() {
+      expect(bonus.numberOfBowls).toEqual(1);
+    });
+
+    it("adds points from the next bowl", function() {
+      bonus.addPoints(4);
+      expect(bonus.getTotal()).toEqual(4);
+    });
+
+    it("does not add more than one bowl", function() {
+      bonus.addPoints(4);
+      bonus.addPoints(5);
+      expect(bonus.getTotal()).toEqual(4);
+    });
+  });
+
 
 });

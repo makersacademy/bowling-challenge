@@ -19,8 +19,8 @@ describe("features", function() {
       game.bowl(10);
     });
 
-    it("awards a bonus", function() {
-      expect(game.frames[0].bonus).not.toBe(null);
+    it("awards a bonus of 2 bowls", function() {
+      expect(game.frames[0].bonus.numberOfBowls).toBe(2);
     });
 
     it("adds the bowling score of the next frame to the bonus", function() {
@@ -42,7 +42,25 @@ describe("features", function() {
     });
   });
 
+  describe("scoring a spare", function() {
+    beforeEach(function() {
+      game.bowl(2);
+      game.bowl(8);
+    });
 
+    it("awards a bonus of 1 bowl", function() {
+      expect(game.frames[0].bonus.numberOfBowls).toBe(1);
+    });
 
+    it("adds the bowling score of the next frame to the bonus", function() {
+      game.bowl(1)
+      expect(game.frames[0].bonus.getTotal()).toEqual(1);
+    });
 
+    it("does not add more than 1 bowl to the bonus", function() {
+      game.bowl(1);
+      game.bowl(2);
+      expect(game.frames[0].bonus.getTotal()).toEqual(1);
+    });
+  });
 });

@@ -42,8 +42,8 @@ Frame.prototype._setBonusScore = function() {
   return bonusScore;
 }
 
-Frame.prototype.triggerBonus = function(bonusKlass) {
-  this.bonus = new bonusKlass(2);
+Frame.prototype.setBonus = function(bonusType) {
+  this.bonus.set(bonusType);
 };
 
 Frame.prototype._isValidScore = function(numberOfPins) {

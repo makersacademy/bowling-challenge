@@ -67,13 +67,13 @@ Game.prototype._setCurrentFrame = function() {
 Game.prototype._setBonus = function() {
   var bonusType
   if (this.currentFrame.standingPins > 0) {
-    return "No bonus";
-  } else if (this.currentFrame.length === 1) {
+    bonusType = "none";
+  } else if (this.currentFrame.scoreCard.length === 1) {
     bonusType = "strike";
   } else {
     bonusType = "spare";
   }
-  this.currentFrame.triggerBonus(this.bonusKlass);
+  this.currentFrame.setBonus(bonusType);
 }
 
 Game.prototype._isFinalFrame = function() {

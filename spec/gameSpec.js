@@ -45,8 +45,8 @@ describe("Game", function() {
         game.bowl(10);
       });
 
-      it("triggers a bonus for the first frame", function() {
-        expect(game.frames[0].bonus).not.toBe(null);
+      it("sets a bonus for the first frame", function() {
+        expect(game.frames[0].bonus.numberOfBowls).toBe(2);
       });
 
       it("adds the bowling score of the next frame to the bonus", function() {
@@ -54,9 +54,9 @@ describe("Game", function() {
         expect(game.frames[0].getScore()).toEqual(11);
       })
 
-      it("does not return a total score until bonus is complete", function() {
-        // expect(game.getTotalScore()).
-      })
+      // it("does not return a total score until bonus is complete", function() {
+      //   // expect(game.getTotalScore()).
+      // })
     });
 
 

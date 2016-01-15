@@ -52,7 +52,7 @@ describe("Frame", function() {
 
   describe("scoring a strike", function() {
     it("can be given a bonus", function() {
-      frame.triggerBonus(bonusKlass);
+      frame.setBonus("strike");
       expect(frame.bonus).not.toBe(null);
     });
   });

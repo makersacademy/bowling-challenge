@@ -15,11 +15,16 @@ function Game(frameKlass, gameLength) {
 }
 
 Game.prototype.bowl = function(num) {
+  if (this.isFinished === true) {
+    throw new Error("You already finished this game");
+  }
+
   if (this.currentFrame.isComplete) {
     this.currentFrameNum += 1;
     this._setCurrentFrame();
   }
     this.currentFrame.bowl(num);
+    this.isGameFinished()
 }
 
 Game.prototype.getTotalScore = function() {
@@ -34,7 +39,7 @@ Game.prototype.getCurrentFrame = function() {
 }
 
 Game.prototype.isGameFinished = function() {
-  if (this.currentFrameNum >= this.gameLength -1) {
+  if (this._isFinalFrame() && this.currentFrame.isComplete) {
     this.isFinished = true;
     return this.isFinished;
   }
@@ -48,6 +53,9 @@ Game.prototype._setGame = function() {
 }
 
 Game.prototype._setCurrentFrame = function() {
-  this.isGameFinished()
   this.currentFrame = this.frames[this.currentFrameNum];
+}
+
+Game.prototype._isFinalFrame = function() {
+  return this.currentFrameNum >= this.gameLength -1
 }

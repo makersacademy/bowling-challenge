@@ -21,14 +21,26 @@ describe("Game", function() {
         game.bowl(1);
       }
       expect(game.getTotalScore()).toEqual(20);
-    })
-
-    it("ends the game", function() {
-      for (var i = 0; i < 20; i++) {
-        game.bowl(1);
-      }
-      expect(game.isGameFinished()).toEqual(true);
     });
+
+    describe("ends the game", function() {
+      beforeEach(function() {
+        for (var i = 0; i < 20; i++) {
+          game.bowl(1);
+        }
+      });
+
+      it("marks the game as finished", function() {
+        expect(game.isGameFinished()).toEqual(true);
+      });
+
+      it("does not allow any more bowls to be added", function() {
+        expect(function(){ game.bowl(1); } ).toThrow(new Error
+                ("You already finished this game"));
+      });
+    });
+
+
   });
 
 });

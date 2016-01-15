@@ -25,18 +25,19 @@ describe('Game', function() {
                                                 bonus: null}});
       });
 
-      xit('with a strike', function () {
+      it('with a strike', function () {
         game.firstRoll = 10;
         game.storeFrame();
-        expect(game.getGameInfo()).toEqual({frames: {1: [10,0,'strike']},
-          accumulator: [10]});
+        expect(game.getGameInfo()).toEqual({1: {rolls: [10,0],
+                                                accumulator: 10,
+                                                bonus: 'strike'}});
       });
     });
   });
 
   describe('#getTotal', function () {
     describe('returns total score when no bonus at any frame', function () {
-      xit('with gutter at both rolls', function () {
+      it('with gutter at both rolls', function () {
         for (var i = 1; i <= 10 ; i++) {
           game.firstRoll  = 0;
           game.secondRoll = 0;
@@ -45,7 +46,7 @@ describe('Game', function() {
         expect(game.getTotal()).toEqual(0);
       });
 
-      xit('without gutter', function () {
+      it('without gutter', function () {
         for (var i = 1; i <= 10 ; i++) {
           game.firstRoll  = 4;
           game.secondRoll = 3;

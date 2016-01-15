@@ -16,7 +16,12 @@ Frame.prototype.getFrameScores = function() {
   var output = [];
   var arrayLength = this.frames.length;
   for (var i = 0; i < arrayLength; i++) {
-    output.push([this._reduceFrameToScore(i)]);
+    var score = this._reduceFrameToScore(i);
+    if (score === 'N/A') {
+      return output
+    }
+    output.push([score]);
+    // output.push([this._reduceFrameToScore(i)]);
   }
   return output;
 };
@@ -44,22 +49,25 @@ Frame.prototype._reduceFrameToScore = function(i) {
   var nextFrame = this.frames[i+1];
   var nextNextFrame = this.frames[i+2];
   var score = frame.reduce((a, b) => a + b, 0);
-  return this._addBonusOrSetScoreToZero(score, frame, nextFrame, nextNextFrame);
+  if (score === 10) {
+    return this._addBonusOrSetScoreToZero(score, frame, nextFrame, nextNextFrame);
+  }
+  return score;
 };
 
 Frame.prototype._addBonusOrSetScoreToZero = function(score, frame, nextFrame, nextNextFrame) {
-  var bonus_score = score
-  if (frame.length === 2 && score === 10 && typeof nextFrame === 'undefined') {
+  var bonus_score = 'N/A'
+  if (frame.length === 2 && typeof nextFrame === 'undefined') {
       bonus_score = this.currentFrame.length === 0 ? (0) : (score += this.currentFrame[0])
   } else if (frame.length === 2 && score === 10 && typeof nextFrame === 'object') {
-      bonus_score += nextFrame[0];
+      bonus_score = score + nextFrame[0];
   }
-  // if (this._isEnoughDataToCalcStrike()) {};
-  if (frame.length === 1 && score === 10 && typeof nextFrame === 'object' && typeof nextNextFrame === 'object') {
+  if (frame.length === 1 && typeof nextFrame === 'object' && typeof nextNextFrame === 'object') {
+    // if (this._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)) {return bonus_score = 0}
     var bonus
     bonus = nextFrame.length === 1 ? (nextFrame[0] + nextNextFrame[0]) : nextFrame.reduce((a, b) => a + b, 0);
     bonus_score = score + bonus;
-  } else if (frame.length === 1 && score === 10 && typeof nextFrame === 'object' && typeof nextNextFrame === 'undefined') {
+  } else if (frame.length === 1 && typeof nextFrame === 'object' && nextNextFrame === undefined) {
       var bonus
       bonus = nextFrame.length === 1 ? (nextFrame[0] + this.currentFrame[0]) : nextFrame.reduce((a, b) => a + b, 0);
       bonus_score = score + bonus;
@@ -67,14 +75,9 @@ Frame.prototype._addBonusOrSetScoreToZero = function(score, frame, nextFrame, ne
   return bonus_score;
 }
 
-Frame.prototype._isEnoughDataToCalcStrike = function(nextFrame, nextNextFrame) {
-  // if ((nextFrame.length === 2) || (typeof nextNextFrame === 'object') || ((nextFrame.length === 1) && (typeof this.currentFrame[0] === 'number'))) {
-  //   return true;
-  // }
-  // return false;
-  if ((typeof nextFrame === 'undefined') || (nextFrame.length === 1 && nextNextFrame === undefined && this.currentFrame[0] === undefined)) {
-    return false;
+Frame.prototype._isNotEnoughDataToCalcStrike = function(nextFrame, nextNextFrame) {
+  if ((nextFrame === undefined) || (nextFrame.length === 1 && nextNextFrame === undefined && this.currentFrame[0] === undefined)) {
+    return true;
   }
-
-  return true;
+  return false;
 }

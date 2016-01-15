@@ -29,6 +29,10 @@ Round.prototype._logPins = function(pins) {
   if(this.rollOne === null) {
     this.rollOne = pins;
     this.result.push(pins);
+    if(pins === 10) {
+      this.rollTwo = 0;
+      this.result.push(this.rollTwo);
+    }
   } else if(this.rollTwo === null) {
     if(!this._isRoundTotalValid(pins)) {throw "Invalid pin entry";}
     this.rollTwo = pins;

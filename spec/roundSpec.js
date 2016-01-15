@@ -63,5 +63,10 @@ describe("Round", function() {
       expect(round.rollOne).toEqual(8);
       expect(round.rollTwo).not.toEqual(5);
     });
+
+    it("skips rollTwo if 10 is entered for rollOne", function() {
+      round.acceptPins(10);
+      expect(function(){round.acceptPins(7);}).not.toThrow("Invalid pin entry");
+    });
   });
 });

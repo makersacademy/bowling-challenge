@@ -9,6 +9,7 @@ function Game(frameKlass, gameLength) {
   this.totalScore = null;
   this.currentFrame = 0;
   this.currentFrameNum = 0;
+  this.isFinished = false;
 
   this._setGame();
 }
@@ -32,6 +33,13 @@ Game.prototype.getCurrentFrame = function() {
   return this.currentFrame
 }
 
+Game.prototype.isGameFinished = function() {
+  if (this.currentFrameNum >= this.gameLength -1) {
+    this.isFinished = true;
+    return this.isFinished;
+  }
+}
+
 Game.prototype._setGame = function() {
   for(var i=0; i < this.gameLength; i++) {
     this.frames.push(new this.frameKlass());
@@ -40,5 +48,6 @@ Game.prototype._setGame = function() {
 }
 
 Game.prototype._setCurrentFrame = function() {
+  this.isGameFinished()
   this.currentFrame = this.frames[this.currentFrameNum];
 }

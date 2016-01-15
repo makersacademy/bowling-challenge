@@ -1,9 +1,10 @@
-function Frame(){
+function Frame(bonusKlass){
   var DEFAULT_PINS = 10;
+  this.bonusKlass = bonusKlass || Bonus;
   this.standingPins = DEFAULT_PINS;
   this.scoreCard = [];
   this.isComplete = false;
-  this.bonus = null;
+  this.bonus = new this.bonusKlass();
 }
 
 Frame.prototype.bowl = function(numberOfPins) {
@@ -22,7 +23,23 @@ Frame.prototype.getScoreCard = function() {
 }
 
 Frame.prototype.getScore = function() {
-  return this.scoreCard.reduce(function(a, b) { return a + b; }, 0);
+  var directScore = sumtotal(this.scoreCard);
+  if(this.bonus === null) {
+    return directScore;
+  } else if (this.bonus) {
+    var bonusScore = this._setBonusScore();
+    return directScore + bonusScore;
+  }
+}
+
+Frame.prototype._setBonusScore = function() {
+  var bonusScore
+  if (this.bonus === null) {
+    bonusScore = 0;
+  } else {
+    bonusScore = this.bonus.getTotal();
+  }
+  return bonusScore;
 }
 
 Frame.prototype.triggerBonus = function(bonusKlass) {
@@ -39,4 +56,8 @@ Frame.prototype._addToFrameScore = function(numberOfPins) {
   if (this.standingPins === 0 || this.scoreCard.length === 2) {
     this.isComplete = true;
   }
+}
+
+function sumtotal(scoreArray) {
+  return scoreArray.reduce(function(a, b) { return a + b; }, 0);
 }

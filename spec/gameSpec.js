@@ -16,11 +16,11 @@ describe("Game", function() {
       expect(game.getCurrentFrame()).toBe(game.frames[1]);
     });
 
-    it("registers the score", function() {
+    it("sums the score", function() {
       for (var i = 0; i < 20; i++) {
         game.bowl(1);
       }
-      expect(game.getTotalScore()).toEqual(20);
+      expect(game.calcTotalScore()).toEqual(20);
     });
 
     describe("ends the game", function() {
@@ -48,6 +48,15 @@ describe("Game", function() {
       it("triggers a bonus for the first frame", function() {
         expect(game.frames[0].bonus).not.toBe(null);
       });
+
+      it("adds the bowling score of the next frame to the bonus", function() {
+        game.bowl(1);
+        expect(game.frames[0].getScore()).toEqual(11);
+      })
+
+      it("does not return a total score until bonus is complete", function() {
+        // expect(game.getTotalScore()).
+      })
     });
 
 

@@ -3,8 +3,8 @@ describe("features", function() {
 
   beforeEach(function() {
     bonusKlass = Bonus;
-    frame = new Frame();
-    game = new Game();
+    frameKlass = Frame;
+    game = new Game(frameKlass, 10, bonusKlass);
   });
 
   it("records additional bowls in individual frames", function() {
@@ -22,6 +22,27 @@ describe("features", function() {
     it("awards a bonus", function() {
       expect(game.frames[0].bonus).not.toBe(null);
     });
+
+    it("adds the bowling score of the next frame to the bonus", function() {
+      game.bowl(1);
+      expect(game.frames[0].bonus.getTotal()).toEqual(1);
+    });
+
+    it("adds the bowling score of the next 2 frames to the bonus", function() {
+      game.bowl(1);
+      game.bowl(3);
+      expect(game.frames[0].bonus.getTotal()).toEqual(4);
+    });
+
+    it("does not add more than 2 bowls to the bonus", function() {
+      game.bowl(1);
+      game.bowl(2);
+      game.bowl(3);
+      expect(game.frames[0].bonus.getTotal()).toEqual(3);
+    });
   });
+
+
+
 
 });

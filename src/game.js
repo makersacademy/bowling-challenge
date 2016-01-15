@@ -24,13 +24,12 @@ Game.prototype.bowl = function(num) {
   }
 
   this.currentFrame.bowl(num);
+  this.addToBonuses(num);
   this._setBonus();
-  this.isGameFinished()
+  this.isGameFinished();
 }
 
-
-
-Game.prototype.getTotalScore = function() {
+Game.prototype.calcTotalScore = function() {
   for (var i = 0; i < this.frames.length; i++) {
       this.totalScore += this.frames[i].getScore();
   }
@@ -39,6 +38,12 @@ Game.prototype.getTotalScore = function() {
 
 Game.prototype.getCurrentFrame = function() {
   return this.currentFrame
+}
+
+Game.prototype.addToBonuses = function(num){
+  this.frames.forEach(function(frame) {
+    frame.bonus.addPoints(num);
+  });
 }
 
 Game.prototype.isGameFinished = function() {
@@ -68,7 +73,7 @@ Game.prototype._setBonus = function() {
   } else {
     bonusType = "spare";
   }
-  this.currentFrame.triggerBonus(this.bonusKlass, bonusType);
+  this.currentFrame.triggerBonus(this.bonusKlass);
 }
 
 Game.prototype._isFinalFrame = function() {

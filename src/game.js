@@ -18,16 +18,24 @@ Game.prototype.bowl = function(num) {
     throw new Error("You already finished this game");
   }
 
+  if(this._isFinalFrame() && this.currentFrame.isComplete) {
+    this.addToBonuses(num);
+    this._completeSelf();
+  } else {
+    this.regularBowl(num);
+  }
+}
+
+Game.prototype.regularBowl = function (num) {
   if (this.currentFrame.isComplete) {
-    this.currentFrameNum += 1;
-    this._setCurrentFrame();
+    this._changeFrame();
   }
 
   this.currentFrame.bowl(num);
   this.addToBonuses(num);
   this._setBonus();
-  this.isGameFinished();
-}
+  this._completeSelf();
+};
 
 Game.prototype.calcTotalScore = function() {
   for (var i = 0; i < this.frames.length; i++) {
@@ -46,8 +54,8 @@ Game.prototype.addToBonuses = function(num){
   });
 }
 
-Game.prototype.isGameFinished = function() {
-  if (this._isFinalFrame() && this.currentFrame.isComplete) {
+Game.prototype._completeSelf = function() {
+  if (this._isFinalFrame() && this.currentFrame.isFinalised) {
     this.isFinished = true;
     return this.isFinished;
   }
@@ -64,6 +72,11 @@ Game.prototype._setCurrentFrame = function() {
   this.currentFrame = this.frames[this.currentFrameNum];
 }
 
+Game.prototype._changeFrame = function() {
+  this.currentFrameNum += 1;
+  this._setCurrentFrame();
+}
+
 Game.prototype._setBonus = function() {
   var bonusType
   if (this.currentFrame.standingPins > 0) {
@@ -77,5 +90,5 @@ Game.prototype._setBonus = function() {
 }
 
 Game.prototype._isFinalFrame = function() {
-  return this.currentFrameNum >= this.gameLength -1
+  return (this.currentFrameNum >= this.gameLength -1);
 }

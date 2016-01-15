@@ -8,6 +8,8 @@ describe("Bonus", function() {
   describe("calculates the extra points for a strike", function() {
     beforeEach(function() {
       bonus.set("strike");
+      bonus.addPoints(4);
+      bonus.addPoints(7);
     })
 
     it("sets the number of bowls to be added to two", function() {
@@ -15,16 +17,16 @@ describe("Bonus", function() {
     });
 
     it("adds points from the next two bowls", function() {
-      bonus.addPoints(4);
-      bonus.addPoints(7);
       expect(bonus.getTotal()).toEqual(11);
     });
 
     it("does not add more than two bowls", function() {
-      bonus.addPoints(4);
-      bonus.addPoints(5);
       bonus.addPoints(3);
-      expect(bonus.getTotal()).toEqual(9);
+      expect(bonus.getTotal()).toEqual(11);
+    });
+
+    it("marks itself as complete", function() {
+      expect(bonus.isComplete).toEqual(true);
     });
   });
 

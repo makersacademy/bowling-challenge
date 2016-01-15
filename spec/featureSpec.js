@@ -63,4 +63,11 @@ describe("features", function() {
       expect(game.frames[0].bonus.getTotal()).toEqual(1);
     });
   });
+
+  describe("a top scoring game", function() {
+    it("returns a total score of 300", function() {
+      for (var i = 0; i < 12; i++) { game.bowl(10) };
+      expect(game.calcTotalScore()).toEqual(300);
+    })
+  });
 });

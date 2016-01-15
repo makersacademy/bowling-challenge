@@ -31,7 +31,7 @@ describe("Game", function() {
       });
 
       it("marks the game as finished", function() {
-        expect(game.isGameFinished()).toEqual(true);
+        expect(game.isFinished).toEqual(true);
       });
 
       it("does not allow any more bowls to be added", function() {
@@ -53,13 +53,6 @@ describe("Game", function() {
         game.bowl(1);
         expect(game.frames[0].getScore()).toEqual(11);
       })
-
-      // it("does not return a total score until bonus is complete", function() {
-      //   // expect(game.getTotalScore()).
-      // })
     });
-
-
-
   });
 });

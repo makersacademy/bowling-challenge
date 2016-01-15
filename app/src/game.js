@@ -50,5 +50,6 @@ Game.prototype._addBonuses = function(roll) {
 
 Game.prototype._gameComplete = function() {
   return this._frameLog[9] &&
-         this._frameLog[8].bonus === 0 && this._frameLog[9].bonus === 0;
+         this._frameLog[8].bonus === 0 &&
+         this._frameLog[9].bonus === 0;
 };

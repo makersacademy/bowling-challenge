@@ -6,7 +6,7 @@ describe('Game', function() {
 
   beforeEach(function() {
     frame = jasmine.createSpyObj('frame',
-    ['getFrameResults', 'receivePins', 'frames', 'getFrameScores', 'currentFrame', 'isTooManyPinsInOneFrame'])
+    ['getFrameResults', 'receivePins', 'frames', 'getFrameScores', 'currentFrame', 'isTooManyPinsInOneFrame', 'totalScore'])
     game = new Game(frame);
   });
 
@@ -63,12 +63,24 @@ describe('Game', function() {
       frame.frames = [1,2,3,4,5,6,7,8,9,10];
       expect(game.bowlA(4)).toEqual('Game over: Ten frames played');
     });
+
+    it('allows another ball if last frame was spare', function() {
+      frame.frames = [[1],[1],[1],[1],[1],[1],[1],[1],[1],[8, 2]]
+      expect(game.bowlA(4)).not.toEqual('Game over: Ten frames played');
+    });
   });
 
   describe('#seeFrameScores', function() {
     it('calls to frame', function() {
       game.seeFrameScores();
       expect(frame.getFrameScores).toHaveBeenCalled();
+    });
+  });
+
+  describe('#totalScore', function() {
+    it('calls to frame', function() {
+      game.totalScore();
+      expect(frame.totalScore).toHaveBeenCalled();
     });
   });
 

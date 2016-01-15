@@ -28,6 +28,10 @@ Game.prototype.seeFrameScores = function() {
   return this.framesLog.getFrameScores();
 }
 
+Game.prototype.totalScore = function() {
+  return this.framesLog.totalScore()
+};
+
 Game.prototype._increaseBallCount = function() {
   this._ballcount += 1;
 }
@@ -37,6 +41,9 @@ Game.prototype._increaseScore = function(numberOfPins) {
 };
 
 Game.prototype._isEndOfGame = function() {
+  if ((typeof this.framesLog.frames[9] !== 'undefined') && (this.framesLog.frames[9].reduce((a, b) => a + b, 0) === 10)) {
+    return false;
+  }
   return (this.framesLog.frames.length >= 10);
 };
 

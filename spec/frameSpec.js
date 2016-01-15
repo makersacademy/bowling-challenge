@@ -60,70 +60,79 @@ describe('Frame', function() {
 
   })
 
-  describe('#_isNotEnoughDataToCalcStrike', function() {
-    describe('returns true if', function() {
-      it('strike is followed by a strike then one more ball', function() {
-        frame.receivePins(10);
-        frame.receivePins(10);
-        frame.receivePins(5);
-        var nextFrame = frame.frames[1];
-        var nextNextFrame = frame.frames[2];
-        expect(frame._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)).toEqual(false)
-      });
-
-      it('strike is followed by two strikes', function() {
-        frame.receivePins(10);
-        frame.receivePins(10);
-        frame.receivePins(10);
-        var nextFrame = frame.frames[1];
-        var nextNextFrame = frame.frames[2];
-        expect(frame._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)).toEqual(false)
-      });
-
-      it('strike is followed by two non strikes', function() {
-        frame.receivePins(10);
-        frame.receivePins(10);
-        frame.receivePins(3);
-        frame.receivePins(3);
-        var nextFrame = frame.frames[1];
-        var nextNextFrame = frame.frames[2];
-        expect(frame._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)).toEqual(false)
-      });
-
-      it('strike is followed by 2 non strikes', function() {
-        frame.receivePins(10);
-        frame.receivePins(3);
-        frame.receivePins(3);
-        var nextFrame = frame.frames[1];
-        var nextNextFrame = frame.frames[2];
-        expect(frame._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)).toEqual(false)
-      });
+  describe('#totalScores', function() {
+    it('returns the total of all complete frames', function() {
+      frame.receivePins(5);
+      frame.receivePins(4);
+      frame.receivePins(2);
+      frame.receivePins(3);
+      expect(frame.totalScore()).toEqual(14)
     });
+  });
 
-    describe('returns false if', function() {
-      it('strike is the last frame', function() {
-        frame.receivePins(10);
-        var nextFrame = frame.frames[1];
-        var nextNextFrame = frame.frames[2];
-        expect(frame._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)).toEqual(true);
-      });
+  // describe('#_isNotEnoughDataToCalcStrike', function() {
+  //   describe('returns true if', function() {
+  //     it('strike is followed by a strike then one more ball', function() {
+  //       frame.receivePins(10);
+  //       frame.receivePins(10);
+  //       frame.receivePins(5);
+  //       var nextFrame = frame.frames[1];
+  //       var nextNextFrame = frame.frames[2];
+  //       expect(frame._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)).toEqual(false)
+  //     });
+  //
+  //     it('strike is followed by two strikes', function() {
+  //       frame.receivePins(10);
+  //       frame.receivePins(10);
+  //       frame.receivePins(10);
+  //       var nextFrame = frame.frames[1];
+  //       var nextNextFrame = frame.frames[2];
+  //       expect(frame._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)).toEqual(false)
+  //     });
+  //
+  //     it('strike is followed by two non strikes', function() {
+  //       frame.receivePins(10);
+  //       frame.receivePins(10);
+  //       frame.receivePins(3);
+  //       frame.receivePins(3);
+  //       var nextFrame = frame.frames[1];
+  //       var nextNextFrame = frame.frames[2];
+  //       expect(frame._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)).toEqual(false)
+  //     });
+  //
+  //     it('strike is followed by 2 non strikes', function() {
+  //       frame.receivePins(10);
+  //       frame.receivePins(3);
+  //       frame.receivePins(3);
+  //       var nextFrame = frame.frames[1];
+  //       var nextNextFrame = frame.frames[2];
+  //       expect(frame._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)).toEqual(false)
+  //     });
+  //   });
 
-      it('strike is followed by one non strike ball', function() {
-        frame.receivePins(10);
-        frame.receivePins(3);
-        var nextFrame = frame.frames[1];
-        var nextNextFrame = frame.frames[2];
-        expect(frame._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)).toEqual(true);
-      });
-
-      it('strike is followed by one strike', function() {
-        frame.receivePins(10);
-        frame.receivePins(10);
-        var nextFrame = frame.frames[1];
-        var nextNextFrame = frame.frames[2];
-        expect(frame._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)).toEqual(true);
-      });
-
-    });
-  })
+    // describe('returns false if', function() {
+    //   it('strike is the last frame', function() {
+    //     frame.receivePins(10);
+    //     var nextFrame = frame.frames[1];
+    //     var nextNextFrame = frame.frames[2];
+    //     expect(frame._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)).toEqual(true);
+    //   });
+    //
+    //   it('strike is followed by one non strike ball', function() {
+    //     frame.receivePins(10);
+    //     frame.receivePins(3);
+    //     var nextFrame = frame.frames[1];
+    //     var nextNextFrame = frame.frames[2];
+    //     expect(frame._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)).toEqual(true);
+    //   });
+    //
+    //   it('strike is followed by one strike', function() {
+    //     frame.receivePins(10);
+    //     frame.receivePins(10);
+    //     var nextFrame = frame.frames[1];
+    //     var nextNextFrame = frame.frames[2];
+    //     expect(frame._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)).toEqual(true);
+    //   });
+    //
+    // });
 });

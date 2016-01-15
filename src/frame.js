@@ -37,6 +37,10 @@ Frame.prototype.isTooManyPinsInOneFrame = function(numberOfPins) {
   }
 }
 
+Frame.prototype.totalScore = function() {
+  return twoDArrayTotal(this.getFrameScores());
+};
+
 Frame.prototype._storeCurrentFrameIfCompleted = function(pins) {
   if (pins === 10 || this.currentFrame.length === 2) {
     this.frames.push(this.currentFrame);
@@ -63,7 +67,6 @@ Frame.prototype._addBonusOrSetScoreToZero = function(score, frame, nextFrame, ne
       bonus_score = score + nextFrame[0];
   }
   if (frame.length === 1 && typeof nextFrame === 'object' && typeof nextNextFrame === 'object') {
-    // if (this._isNotEnoughDataToCalcStrike(nextFrame, nextNextFrame)) {return bonus_score = 0}
     var bonus
     bonus = nextFrame.length === 1 ? (nextFrame[0] + nextNextFrame[0]) : nextFrame.reduce((a, b) => a + b, 0);
     bonus_score = score + bonus;
@@ -75,9 +78,20 @@ Frame.prototype._addBonusOrSetScoreToZero = function(score, frame, nextFrame, ne
   return bonus_score;
 }
 
-Frame.prototype._isNotEnoughDataToCalcStrike = function(nextFrame, nextNextFrame) {
-  if ((nextFrame === undefined) || (nextFrame.length === 1 && nextNextFrame === undefined && this.currentFrame[0] === undefined)) {
-    return true;
+function twoDArrayTotal(array) {
+  var length = array.length > 10 ? 10 : array.length;
+  var sum = 0;
+  var n;
+  for (n=0; n<length; n++) {
+    sum += array[n].reduce((a, b) => a + b, 0)
   }
-  return false;
+  return sum;
 }
+
+
+// Frame.prototype._isNotEnoughDataToCalcStrike = function(nextFrame, nextNextFrame) {
+//   if ((nextFrame === undefined) || (nextFrame.length === 1 && nextNextFrame === undefined && this.currentFrame[0] === undefined)) {
+//     return true;
+//   }
+//   return false;
+// }

@@ -19,21 +19,21 @@ describe('Game', function() {
         game.firstRoll  = 4;
         game.secondRoll = 3;
         game.storeFrame();
-        expect(game.getGameInfo()).toEqual({frames: {1: [4,3]},
+        expect(game.getGameInfo()).toEqual({frames: {1: [4,3, null]},
           accumulator: [7]});
       });
 
       it('with a strike', function () {
         game.firstRoll = 10;
         game.storeFrame();
-        expect(game.getGameInfo()).toEqual({frames: {1: [10,0]},
+        expect(game.getGameInfo()).toEqual({frames: {1: [10,0,'strike']},
           accumulator: [10]});
       });
     });
   });
 
   describe('#getTotal', function () {
-    describe('when no bonus at any frame', function () {
+    describe('returns total score when no bonus at any frame', function () {
       it('with gutter at both rolls', function () {
         for (var i = 1; i <= 10 ; i++) {
           game.firstRoll  = 0;
@@ -50,6 +50,22 @@ describe('Game', function() {
           game.storeFrame();
         }
         expect(game.getTotal()).toEqual(70);
+      });
+    });
+
+    describe('returns total score when bonus with', function () {
+      describe('spare', function () {
+        it('at first frame',function () {
+          game.firstRoll = 5;
+          game.firstRoll = 5;
+          game.storeFrame();
+          for (var i = 2; i <= 10; i++) {
+            game.firstRoll = 4;
+            game.firstRoll = 3;
+            game.storeFrame();
+          }
+          expect(game.getTotal()).toEqual(77);
+        });
       });
     });
   });

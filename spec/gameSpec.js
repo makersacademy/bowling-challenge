@@ -58,11 +58,40 @@ describe('Game', function() {
 
     describe('returns total score when bonus with', function () {
       describe('spare', function () {
-        xit('at first frame',function () {
+        it('at first frame',function () {
           game.firstRoll = 5;
           game.secondRoll = 5;
           game.storeFrame();
           for (var i = 2; i <= 10; i++) {
+            game.firstRoll = 4;
+            game.secondRoll = 3;
+            game.storeFrame();
+          }
+          expect(game.getTotal()).toEqual(77);
+        });
+
+        it('at first two frames',function () {
+          for (var i = 1; i <= 2; i++) {
+            game.firstRoll = 5;
+            game.secondRoll = 5;
+            game.storeFrame();
+          }
+          for (var x = 3; x <= 10; x++) {
+            game.firstRoll = 4;
+            game.secondRoll = 3;
+            game.storeFrame();
+          }
+          expect(game.getTotal()).toEqual(85);
+        });
+
+        it('at second frame',function () {
+          game.firstRoll = 4;
+          game.secondRoll = 3;
+          game.storeFrame();
+          game.firstRoll = 5;
+          game.secondRoll = 5;
+          game.storeFrame();
+          for (var i = 3; i <= 10; i++) {
             game.firstRoll = 4;
             game.secondRoll = 3;
             game.storeFrame();

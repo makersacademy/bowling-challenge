@@ -42,18 +42,39 @@ Frame.prototype._storeCurrentFrameIfCompleted = function(pins) {
 Frame.prototype._reduceFrameToScore = function(i) {
   var frame = this.frames[i];
   var nextFrame = this.frames[i+1];
-  var score = frame.reduce((a, b) => a + b, 0)
-  return this._addBonusOrSetScoreToZero(score, frame, nextFrame);
+  var nextNextFrame = this.frames[i+2];
+  var score = frame.reduce((a, b) => a + b, 0);
+  return this._addBonusOrSetScoreToZero(score, frame, nextFrame, nextNextFrame);
 };
 
-Frame.prototype._addBonusOrSetScoreToZero = function(score, frame, nextFrame) {
+Frame.prototype._addBonusOrSetScoreToZero = function(score, frame, nextFrame, nextNextFrame) {
   var bonus_score = score
-  if (frame.length === 2 && score === 10) {
-    if (typeof nextFrame === 'undefined') {
+  if (frame.length === 2 && score === 10 && typeof nextFrame === 'undefined') {
       bonus_score = this.currentFrame.length === 0 ? (0) : (score += this.currentFrame[0])
-    } else if (typeof nextFrame === 'object') {
+  } else if (frame.length === 2 && score === 10 && typeof nextFrame === 'object') {
       bonus_score += nextFrame[0];
-    }
+  }
+  // if (this._isEnoughDataToCalcStrike()) {};
+  if (frame.length === 1 && score === 10 && typeof nextFrame === 'object' && typeof nextNextFrame === 'object') {
+    var bonus
+    bonus = nextFrame.length === 1 ? (nextFrame[0] + nextNextFrame[0]) : nextFrame.reduce((a, b) => a + b, 0);
+    bonus_score = score + bonus;
+  } else if (frame.length === 1 && score === 10 && typeof nextFrame === 'object' && typeof nextNextFrame === 'undefined') {
+      var bonus
+      bonus = nextFrame.length === 1 ? (nextFrame[0] + this.currentFrame[0]) : nextFrame.reduce((a, b) => a + b, 0);
+      bonus_score = score + bonus;
   }
   return bonus_score;
+}
+
+Frame.prototype._isEnoughDataToCalcStrike = function(nextFrame, nextNextFrame) {
+  // if ((nextFrame.length === 2) || (typeof nextNextFrame === 'object') || ((nextFrame.length === 1) && (typeof this.currentFrame[0] === 'number'))) {
+  //   return true;
+  // }
+  // return false;
+  if ((typeof nextFrame === 'undefined') || (nextFrame.length === 1 && nextNextFrame === undefined && this.currentFrame[0] === undefined)) {
+    return false;
+  }
+
+  return true;
 }

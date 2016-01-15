@@ -67,6 +67,16 @@ Game.prototype.updateFrameScores = function() {
   }
 };
 
+// Game.prototype.updateGameScore = function() {
+//   if(typeof this._frames[this._currentFrame-1]._rolls[1] === 'undefined') {
+//
+//   }
+//   if(this.currentFrame().isSpare() === false && this.currentFrame().isStrike()) {
+//     this._score += this.currentFrame().firstRoll();
+//     this._score += this.currentFrame().secondRoll();
+//   }
+// };
+
 Game.prototype.activeFrame = function() {
   return this._frames[this._currentFrame-1];
 };

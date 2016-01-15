@@ -3,31 +3,27 @@ function Game(frame) {
   this.firstRoll = 0;
   this.secondRoll = 0;
   this._frames = {};
-  this._accumulator = [];
 }
 
 Game.prototype.getGameInfo = function () {
-  return {frames: this._frames, accumulator: this._accumulator};
+  return this._frames;
 };
 
 Game.prototype.storeFrame = function () {
   if (this.firstRoll === 10) {
-    this.frame.roll(this.firstRoll);
-    this.frame.roll(this.secondRoll);
+    this._setFrame();
   } else {
       if (this._isSpare()) {
         this.frame.roll(this.firstRoll);
-        this._accumulator[this._accumulator.length-1] +=
-                                            this.frame.getFrameInfo().rolls[0];
+        this._accumulator[this._accumulator.length-1] += this.firstRoll;
       } else {
-        this.frame.roll(this.firstRoll);
-        this.frame.roll(this.secondRoll);
+        this._setFrame();
       }
   }
-  this._frames[Object.keys(this._frames).length+1] =
-                                            [this.firstRoll, this.secondRoll,
-                                            this.frame.getFrameInfo().bonus];
-  this._accumulator.push(this.frame.getFrameInfo().score);
+  this._frames[this._framesSize()+1] = {rolls: [this.firstRoll,this.secondRoll],
+                                   accumulator: this.frame.getFrameInfo().score,
+                                   bonus: this.frame.getFrameInfo().bonus};
+
   this.frame.setDefaultValues();
 };
 
@@ -35,7 +31,15 @@ Game.prototype.getTotal = function () {
   return this._accumulator.reduce((a,b) => a+b);
 };
 
+Game.prototype._setFrame = function () {
+  this.frame.roll(this.firstRoll);
+  this.frame.roll(this.secondRoll);
+};
+
 Game.prototype._isSpare = function () {
   return false;
-  // return (this._frames[Object.keys(this._frames).length])[2] === 'spare';
+};
+
+Game.prototype._framesSize = function () {
+  return Object.keys(this._frames).length;
 };

@@ -8,7 +8,7 @@ Github: https://github.com/emmabeynon
 Email: emma.beynon@gmail.com
 
 
-This is my submission for the Makers Academy Week 4 Weekend Challenge: https://github.com/makersacademy/bowling-challenge
+This is my submission for the Makers Academy Week 5 Weekend Challenge: https://github.com/makersacademy/bowling-challenge
 
 
 Overview
@@ -48,10 +48,10 @@ Instructions
 4. Enter your bowling scores are per below:
 ```
 > game = new Bowling();
-> game.play(score1, score2); # adds your score to the frame. In case of a strike, add score as (10, 0).
+> game.play(score1, score2); # adds your score to the frame. In the case of a strike, add score as (10, 0).
 > game.completeFrame(); # completes a frame and creates a new one
 ```
-5. Repeat until you have completed 9 frames.  Enter your scores as usual for the 10th frame ```> game.play(3,4);``` however if you score a spare or strike, do not complete the frame yet.  
+5. Repeat until you have completed 9 frames.  Enter your scores as usual for the 10th frame e.g. ``` game.play(3,4);``` however if you score a spare or strike, do not complete the frame yet.  
 6. If you have scored a strike:
 ```
 > game.bonusRoll(bonus); # plays your first bonus roll
@@ -67,6 +67,20 @@ Instructions
 ```
 > game.calculateTotalScore();
 ```
+
+Approach
+---------
+This project was built in JavaScript and test-driven using Jasmine.  I started by creating a Bowling object constructor function which has a totalScore variable and an empty frames array.  A play function allows the player to enter their scores, which are pushed into the currentFrame array, and then stored in the frames array.  I later added an error which is thrown if the player enters scores of which the sum is greater than 10. The score of the current frame is then added to the totalScore variable.  However this approach didn't allow for bonuses, which were an important requirement when scoring strikes and spares, and it didn't allow us to calculate a score for individual frames, so I extracted a Frame object constructor function into a new file.  The Frame function now contained an array to store the scores for each roll, and I created a function to calculate the score of the frame.  I also created a function for Bowling to call the frame's score calculation function, and reset to an empty frame ready for the next roll.  A function was created to sum the scores of each frame. The Frame objects are stored in Bowling's frames array, and an error is raised if the player tries to enter scores for more than 10 frames.  
+
+In order to deal with strikes and spares, I added a bonus variable to the Frame function.  I then created a checkBonus function for Bowling which checks if the previous frame has scored 10, in which case it is assigned a bonus from the first score of the current frame.  This was then edited to differentiate between strikes and spares, with the correct bonus assigned depending on what was scored.
+
+I then looked at the 10th frame, which required a 3rd roll if a strike or spare was scored during it.  I decided to create a thirdRoll function in Bowling to call an addThirdRoll function in Frame to add the roll to the rolls array.  I later realised that the 3rd roll was meant to be a bonus, so I changed it to be added to the bonus variable instead.  In order to ensure that the 3rd roll was played appropriately, I created errors that are thrown if a player attempts a third roll when not in the 10th frame, or if they have not scored a strike or spare.  Additionally, I realised that when a player scores a strike in the 10th frame, the second roll is also a bonus, so I created a bonusRoll function to deal with that - it throws and error if a player attempts it when not in the 10th frame or if they have not scored a strike, an adds the score as a bonus to the frame.  In order to better deal with a number of bonuses, I changed the bonus variable to an array.
+
+I then decided that the responsibility for assigning bonuses should lie with the Frame rather than the game, as the Frame is where the bonus is held.  I created an addBonus function which adds the bonuses to the bonus array.  
+
+An important edge case that arose was when a player scores two consecutive strikes.  In this case, the frame should be assigned a bonus from the strike scored in the next frame, and a bonus from the first roll of the frame after that.  I created a function to check for this each time the scores are entered, and assign the appropriate bonuses.  
+
+Finally, in order to refactor the Bowling function I added strike and spare variables to the Frame function which are set to true when they are scored.  This helped clean up some of the logic in Bowling and delegated responsibility for declaring a strike or spare to Frame.
 
 Further Work
 -------------

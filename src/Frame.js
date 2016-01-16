@@ -9,39 +9,34 @@ function Frame() {
 
 Frame.prototype.rollBall = function (ball) {
   this.setMessage(ball);
-  if (this.firstRoll === null) {
-    return (this.firstRoll = ball);
-  } else {
-    return (this.secondRoll = ball);
-  }
-};
-
-Frame.prototype.getFirstRoll = function () {
-  return this.firstRoll;
-};
-
-Frame.prototype.getSecondRoll = function () {
-  return this.secondRoll;
+  this.score += ball;
+  return ((this.firstRoll !== null) ? (this.secondRoll = ball) : (this.firstRoll = ball));
 };
 
 Frame.prototype.getScore = function () {
-  if (this.secondRoll || this.isStrike()) {
-    return (this.score = this.firstRoll + this.secondRoll);
-  } else {
-    return 0
-  }
+  return this.score;
 }
+
+Frame.prototype.updateScore = function (nextFrame) {
+  if (this.isStrike() && nextFrame.isCompleted()) {
+    return this.score += nextFrame.getScore();
+  } else if (this.isSpare()) {
+    return this.score += nextFrame.firstRoll;
+  } else {
+    return this.score
+  }
+};
 
 Frame.prototype.getMessage = function () {
   return this.message;
 };
 
 Frame.prototype.isCompleted = function () {
-  return ((this.isStrike()) || (this.secondRoll !== null));
+  return (this.isStrike() || this.secondRoll);
 };
 
 Frame.prototype.isStrike = function () {
-  return (this.firstRoll === 10);
+  return (this.firstRoll === 10)
 };
 
 Frame.prototype.isSpare = function () {

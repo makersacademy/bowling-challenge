@@ -33,3 +33,9 @@ td {
   border: 1px solid #cecfd5;
   padding: 10px 15px;
 }
+
+#message {
+  font-size: 4em;
+  color: white;
+  text-align: center;
+}

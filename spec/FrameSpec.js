@@ -1,13 +1,20 @@
 describe("Frame", function(){
   var frame;
+  var nextFrame;
 
   beforeEach(function() {
     frame = new Frame();
     frame.rollBall(3)
+    nextFrame = {
+      getScore: function() {
+        return 6
+      },
+      firstRoll: 3
+    }
   })
 
   describe("#rollBall", function() {
-    it("returns the value of the second roll", function() {
+    it("returns the value of the rolled ball", function() {
       frame.rollBall(3)
       expect(frame.rollBall(4)).toEqual(4);
     })
@@ -32,11 +39,20 @@ describe("Frame", function(){
     })
 
     describe("#getMessage", function() {
-      it("returns the total score of the frame", function() {
+      it("returns the number of last hit pins", function() {
         frame.rollBall(3)
         expect(frame.getMessage()).toEqual('3 hit')
       })
     })
+
+    describe("#updateScore", function() {
+      it("returns the total score of the frame unchanged", function() {
+        frame.rollBall(3)
+        expect(frame.getScore()).toEqual(6)
+        expect(frame.updateScore(nextFrame)).toEqual(6)
+      })
+    })
+
   })
 
   describe("When spare", function() {
@@ -61,6 +77,14 @@ describe("Frame", function(){
         expect(frame.getMessage()).toEqual('7 hit, spare!')
       })
     })
+
+    describe("#updateScore", function() {
+      it("returns the total score of the frame changed", function() {
+        frame.rollBall(7)
+        expect(frame.getScore()).toEqual(10)
+        expect(frame.updateScore(nextFrame)).toEqual(13)
+      })
+    })
   })
 
   describe("When strike", function() {
@@ -69,6 +93,15 @@ describe("Frame", function(){
     beforeEach(function() {
       frame_strike = new Frame();
       frame_strike.rollBall(10);
+      nextFrame = {
+        getScore: function() {
+          return 6
+        },
+        firstRoll: 3,
+        isCompleted: function() {
+          return true
+        }
+      }
     })
 
     describe("#isCompleted", function() {
@@ -86,6 +119,13 @@ describe("Frame", function(){
     describe("#getMessage", function() {
       it("returns the total score of the frame", function() {
         expect(frame_strike.getMessage()).toEqual('Strike!')
+      })
+    })
+
+    describe("#updateScore", function() {
+      it("returns the total score of the frame changed", function() {
+        expect(frame_strike.getScore()).toEqual(10)
+        expect(frame_strike.updateScore(nextFrame)).toEqual(16)
       })
     })
   })

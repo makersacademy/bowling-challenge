@@ -145,6 +145,34 @@ describe('Game', function() {
           expect(game.getTotal()).toEqual(55);
         });
       });
+
+      describe('10th frame', function () {
+        it('Perfect game', function () {
+          for (var x = 1; x <= 9; x++) {
+            game.firstRoll = 10;
+            game.secondRoll = 0;
+            game.storeFrame();
+          }
+          game.firstRoll = 10;
+          game.secondRoll = 10;
+          game.thirdRoll = 10;
+          game.storeFrame();
+          expect(game.getTotal()).toEqual(300);
+        });
+
+        it('no bonus', function () {
+          for (var x = 1; x <= 9; x++) {
+            game.firstRoll = 10;
+            game.secondRoll = 0;
+            game.storeFrame();
+          }
+          game.firstRoll = 4;
+          game.secondRoll = 3;
+          game.thirdRoll = 0;
+          game.storeFrame();
+          expect(game.getTotal()).toEqual(258);
+        });
+      });
     });
   });
 });

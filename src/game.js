@@ -2,6 +2,7 @@ function Game(frame) {
   this.frame = new Frame();
   this.firstRoll = 0;
   this.secondRoll = 0;
+  this.thirdRoll = 0;
   this._frames = {};
 }
 
@@ -16,12 +17,28 @@ Game.prototype.storeFrame = function () {
       accumulator: this._frameScore(),
       bonus: this.frame.getFrameInfo().bonus};
   }else {
-    if (this._isBonus()) {
-      this._setFrame();
-      this._addBonus();
-    }else {
-      this._setFrame();
-      this._addNoBonus();
+    if ((this._framesSize()+1) < 10 ) {
+      if (this._isBonus()) {
+        this._setFrame();
+        this._addBonus();
+      }else {
+        this._setFrame();
+        this._addNoBonus();
+      }
+    } else {
+        if (this.firstRoll === 10 || this._frameScore() === 10) {
+          this._setFrame();
+          this._addBonus();
+          this._frames[this._framesSize()].accumulator += this.thirdRoll;
+        } else {
+          if (this._frames[this._framesSize()-1].bonus !== null || this._frames[this._framesSize()].bonus !== null) {
+            this._setFrame();
+            this._addBonus();
+          } else {
+            this._setFrame();
+            this._addNoBonus();
+          }
+        }
     }
   }
   this.frame.setDefaultValues();

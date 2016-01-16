@@ -48,14 +48,17 @@ describe("Bowling", function() {
     function() {
       spyOn(frame, 'record').and.returnValue
       (frame.rolls = [10,0])
-      spyOn(frame, 'calculateScore').and.returnValue(frame.score = 10)
+      spyOn(frame, 'calculateScore').and.returnValue(frame.score = 30)
       for(var i=0; i<9; i++) {
         bowling.play(10,0);
         bowling.completeFrame();
       }
       bowling.play(10,0);
+      bowling.bonusRoll(10);
       bowling.thirdRoll(10);
+      bowling.completeFrame();
       bowling.calculateTotalScore();
+      console.log(bowling.frames);
       expect(bowling.totalScore).toEqual(300);
     });
   });
@@ -121,9 +124,7 @@ describe("Bowling", function() {
       }
       bowling.play(10,0);
       bowling.bonusRoll(5);
-      bowling.thirdRoll(5);
-      bowling.completeFrame();
-      expect(bowling.frames[bowling.frames.length-1].rolls[2]).toEqual(5);
+      expect(function(){bowling.thirdRoll(5);}).not.toThrow();
     });
 
     it('allows a player to play a third roll in the 10th frame if they have' +
@@ -135,9 +136,7 @@ describe("Bowling", function() {
         bowling.completeFrame();
       }
       bowling.play(3,7);
-      bowling.thirdRoll(5);
-      bowling.completeFrame();
-      expect(bowling.frames[bowling.frames.length-1].rolls[2]).toEqual(5);
+      expect(function(){bowling.thirdRoll(5);}).not.toThrow();
     });
 
     it('throws an error if player attempts 3rd roll if not in' +

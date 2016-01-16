@@ -26,9 +26,13 @@ Bowling.prototype.bonusRoll = function(bonus1) {
     throw new Error('Cannot play bonus roll: you have not scored a strike')
   }
   this.frame.addBonus(bonus1);
+  var previousFrame = this.frames[this.frames.length -2]
+  if(this.isStrike(previousFrame)) {
+    previousFrame.addBonus(bonus1)
+  }
 }
 
-Bowling.prototype.thirdRoll = function(score3) {
+Bowling.prototype.thirdRoll = function(bonus) {
   if(!this.gameFinished()) {
     throw new Error("Cannot play 3rd roll: this is not the 10th frame")
   }
@@ -36,7 +40,7 @@ Bowling.prototype.thirdRoll = function(score3) {
     throw new Error
     ("Cannot play 3rd roll: you have not scored a spare or strike")
   }
-  this.frame.addThirdRoll(score3);
+  this.frame.addBonus(bonus);
 };
 
 Bowling.prototype.completeFrame = function() {

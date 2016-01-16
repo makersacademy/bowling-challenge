@@ -1,4 +1,4 @@
-Bowling Challenge
+Makers Weekend Challenge: Bowling Score Calculator
 =================
 
 This is a solution to a challenge given by Makers Academy on week 5, part of Learn

@@ -5,7 +5,7 @@ describe("Score", function() {
     score = new Score();
   });
 
-  xdescribe("returning the score", function() {
+  describe("returning the score", function() {
     it("returns an array of scores", function() {
       expect(score.giveScore([[1, 2]])).toEqual([3]);
     });
@@ -20,12 +20,27 @@ describe("Score", function() {
       score.giveScore([[7, 3], [2, 6], [0, 0], [9, 1], [0, 5], [3, 3], [4, 6], [1, 0], [2, 7], [8, 1]]);
       expect(score.scores.pop()).toEqual(71);
     });
+
+    xit("deals with multiple spares", function() {
+      score.giveScore([[5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]);
+      expect(score.scores.pop()).toEqual(150);
+    });
   });
 
   describe("there is a strike(s) in the game", function() {
     it("calculates the bonus correctly", function() {
-      score.giveScore([[7, 3], [2, 6], [10, 0], [3, 1], [0, 10], [3, 3], [4, 2], [1, 0], [2, 7], [8, 1]]);
+      score.giveScore([[7, 3], [2, 6], [10], [3, 1], [0, 10], [3, 3], [4, 2], [1, 0], [2, 7], [8, 1]]);
       expect(score.scores.pop()).toEqual(82);
     });
+
+    it("deals with multiple strikes", function() {
+      score.giveScore([[10], [10], [10], [10], [10], [10], [10], [10], [10], [9, 0]]);
+      expect(score.scores.pop()).toEqual(267);
+    });
+  });
+
+  it("my temporary debugging cases", function() {
+    score.giveScore([[2, 2], [10], [1, 2], [3, 4]]);
+    expect(score.scores.pop()).toEqual(27);
   });
 });

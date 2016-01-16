@@ -9,11 +9,11 @@ function Round() {
 Round.prototype.acceptPins = function(pins) {
   if(!this._isPinsEnteredValid(pins)) {throw "Invalid pin entry";}
   this._logPins(pins);
-  this._updateProgress();
+  //this._updateProgress();
 }
 
 Round.prototype.isFull = function() {
-  this._updateProgress();
+  //this._updateProgress();
   return !(this.isInProgress);
 }
 
@@ -30,13 +30,13 @@ Round.prototype._logPins = function(pins) {
     this.rollOne = pins;
     this.result.push(pins);
     if(pins === 10) {
-      this.rollTwo = 0;
-      this.result.push(this.rollTwo);
+      this.isInProgress = false;
     }
   } else if(this.rollTwo === null) {
     if(!this._isRoundTotalValid(pins)) {throw "Invalid pin entry";}
     this.rollTwo = pins;
     this.result.push(pins);
+    this.isInProgress = false;
   }
 }
 
@@ -48,10 +48,26 @@ Round.prototype._isRoundTotalValid = function(pins) {
   }
 }
 
-Round.prototype._updateProgress = function() {
-  if(this.rollOne === null || this.rollTwo === null) {
-    return (this.isInProgress = true);
-  } else {
-    return (this.isInProgress = false);
-  }
-}
+// Round.prototype._logPins = function(pins) {
+//   if(this.rollOne === null) {
+//     this.rollOne = pins;
+//     this.result.push(pins);
+//     if(pins === 10) {
+//       // this.rollTwo = 0;
+//       this.rollTwo = "skip";
+//       this.result.push(this.rollTwo);
+//     }
+//   } else if(this.rollTwo === null) {
+//     if(!this._isRoundTotalValid(pins)) {throw "Invalid pin entry";}
+//     this.rollTwo = pins;
+//     this.result.push(pins);
+//   }
+// }
+
+// Round.prototype._updateProgress = function() {
+//   if(this.rollOne === null || this.rollTwo === null) {
+//     return (this.isInProgress = true);
+//   } else {
+//     return (this.isInProgress = false);
+//   }
+// }

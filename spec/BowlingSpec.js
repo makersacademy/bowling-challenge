@@ -21,7 +21,7 @@ describe("Bowling", function() {
 
     it('after the frame has been played, current frame is cleared', function() {
       spyOn(frame, 'calculateScore');
-      bowling.calculateFrameScore();
+      bowling.completeFrame();
       expect(bowling.frame.rolls).toEqual([]);
     });
   });
@@ -37,9 +37,9 @@ describe("Bowling", function() {
         return frame.score = (1+2);
       });
       bowling.play(1,2);
-      bowling.calculateFrameScore();
+      bowling.completeFrame();
       bowling.play(3,4);
-      bowling.calculateFrameScore();
+      bowling.completeFrame();
       bowling.calculateTotalScore();
       expect(bowling.totalScore).toEqual(1+2+3+4);
     });
@@ -49,11 +49,12 @@ describe("Bowling", function() {
       spyOn(frame, 'record').and.returnValue
       (frame.rolls = [10,0])
       spyOn(frame, 'calculateScore').and.returnValue(frame.score = 10)
-      for(var i=0; i<10; i++) {
+      for(var i=0; i<9; i++) {
         bowling.play(10,0);
-        bowling.calculateFrameScore();
+        bowling.completeFrame();
       }
-      bowling.thirdRoll(10,0);
+      bowling.play(10,0);
+      bowling.thirdRoll(10);
       bowling.calculateTotalScore();
       expect(bowling.totalScore).toEqual(300);
     });
@@ -65,7 +66,7 @@ describe("Bowling", function() {
       var i = 0;
       for(i=0; i<10; i++) {
         bowling.play(1,5);
-        bowling.calculateFrameScore();
+        bowling.completeFrame();
       }
       expect(function(){bowling.play(1,5);}).toThrow
       (new Error("You have already played 10 frames."));
@@ -77,6 +78,38 @@ describe("Bowling", function() {
     });
   });
 
+  describe('#bonusRoll', function() {
+    it('allows a player to play a bonus roll in the 10th frame if they have' +
+    ' scored a strike', function() {
+      spyOn(frame, 'record').and.returnValue(frame.rolls = [10,0]);
+      var i = 0;
+      for(i=0; i<9; i++) {
+        bowling.play(1,2);
+        bowling.completeFrame();
+      }
+      bowling.play(10,0);
+      expect(function(){bowling.bonusRoll(5);}).not.toThrow();
+    });
+
+    it('prevents a player from playing a bonus roll if they have not scored' +
+    ' a strike', function() {
+      spyOn(frame, 'record').and.returnValue(frame.rolls = [3,7]);
+      var i = 0;
+      for(i=0; i<10; i++) {
+        bowling.play(3,7);
+        bowling.completeFrame();
+      }
+      expect(function(){bowling.bonusRoll(1);}).toThrow
+      (new Error('Cannot play bonus roll: you have not scored a strike'));
+    });
+
+    it('prevents a player from playing a bonus roll if they are not in the' +
+    ' 10th frame', function() {
+      expect(function(){bowling.bonusRoll(1);}).toThrow
+      (new Error('Cannot play bonus roll: this is not the 10th frame'));
+    });
+  });
+
   describe('#thirdRoll', function() {
     it('allows a player to play a third roll in the 10th frame if they have' +
     ' scored a strike', function() {
@@ -84,11 +117,12 @@ describe("Bowling", function() {
       var i = 0;
       for(i=0; i<9; i++) {
         bowling.play(1,2);
-        bowling.calculateFrameScore();
+        bowling.completeFrame();
       }
       bowling.play(10,0);
+      bowling.bonusRoll(5);
       bowling.thirdRoll(5);
-      bowling.calculateFrameScore();
+      bowling.completeFrame();
       expect(bowling.frames[bowling.frames.length-1].rolls[2]).toEqual(5);
     });
 
@@ -98,11 +132,11 @@ describe("Bowling", function() {
       var i =0
       for(i=0; i<9; i++) {
         bowling.play(1,2);
-        bowling.calculateFrameScore();
+        bowling.completeFrame();
       }
       bowling.play(3,7);
       bowling.thirdRoll(5);
-      bowling.calculateFrameScore();
+      bowling.completeFrame();
       expect(bowling.frames[bowling.frames.length-1].rolls[2]).toEqual(5);
     });
 
@@ -118,7 +152,7 @@ describe("Bowling", function() {
       var i=0
       for(i=0; i<10; i++) {
         bowling.play(1,2);
-        bowling.calculateFrameScore();
+        bowling.completeFrame();
       }
       expect(function(){bowling.thirdRoll();}).toThrow(new Error
         ('Cannot play 3rd roll: you have not scored a spare or strike'));
@@ -131,7 +165,7 @@ describe("Bowling", function() {
       spyOn(frame, 'calculateScore');
       spyOn(frame, 'addBonus').and.returnValue(frame.bonus = 1+2);
       bowling.play(10,0);
-      bowling.calculateFrameScore();
+      bowling.completeFrame();
       bowling.play(1,2);
       expect(bowling.frames[0].bonus).toEqual(3);
     });
@@ -141,7 +175,7 @@ describe("Bowling", function() {
       spyOn(frame, 'calculateScore').and.returnValue(frame.score=(7+3));
       spyOn(frame, 'addBonus').and.returnValue(frame.bonus = 1);
       bowling.play(7,3);
-      bowling.calculateFrameScore();
+      bowling.completeFrame();
       bowling.play(1,2);
       expect(bowling.frames[0].bonus).toEqual(1);
     });
@@ -152,9 +186,9 @@ describe("Bowling", function() {
       spyOn(frame, 'calculateScore');
       spyOn(frame, 'addBonus').and.returnValue(frame.bonus = 10+1);
       bowling.play(10,0);
-      bowling.calculateFrameScore();
+      bowling.completeFrame();
       bowling.play(10,0);
-      bowling.calculateFrameScore();
+      bowling.completeFrame();
       bowling.play(1,2);
       expect(bowling.frames[0].bonus).toEqual(10+1);
     });

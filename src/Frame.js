@@ -42,7 +42,7 @@ Frame.prototype.addThirdRoll = function(roll3) {
 
 Frame.prototype.addBonus = function(bonus1, bonus2) {
   this.bonus.push(bonus1)
-  if (bonus2 !== undefined) {
+  if (bonus2 !== undefined && bonus2 !== 0) {
     this.bonus.push(bonus2)
   }
   this.calculateScore();

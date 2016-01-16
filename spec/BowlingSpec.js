@@ -34,7 +34,7 @@ describe("Bowling", function() {
         var alreadyCalled = false;
         if(alreadyCalled) {frame.score = (3+4)}
         alreadyCalled = true;
-        return frame.score = (1+2);
+        frame.score = (1+2);
       });
       bowling.play(1,2);
       bowling.completeFrame();
@@ -46,8 +46,7 @@ describe("Bowling", function() {
 
     it('returns 300 if 10 consecutive strikes are scored',
     function() {
-      spyOn(frame, 'record').and.returnValue
-      (frame.rolls = [10,0])
+      spyOn(frame, 'record').and.returnValue(frame.rolls = [10,0])
       spyOn(frame, 'calculateScore').and.returnValue(frame.score = 30)
       for(var i=0; i<9; i++) {
         bowling.play(10,0);
@@ -62,8 +61,7 @@ describe("Bowling", function() {
     });
 
     it('returns 0 if no pins are ever hit', function() {
-      spyOn(frame, 'record').and.returnValue
-      (frame.rolls = [0,0])
+      spyOn(frame, 'record').and.returnValue(frame.rolls = [0,0])
       for(var i=0; i<10; i++) {
         bowling.play(0,0);
         bowling.completeFrame();

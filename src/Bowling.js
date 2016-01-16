@@ -22,12 +22,12 @@ Bowling.prototype.bonusRoll = function(bonus1) {
   if(!this.gameFinished()) {
     throw new Error('Cannot play bonus roll: this is not the 10th frame')
   }
-  if(!this.isStrike(this.frame)) {
+  if(!this.frame.strike) {
     throw new Error('Cannot play bonus roll: you have not scored a strike')
   }
   this.frame.addBonus(bonus1);
   var previousFrame = this.frames[this.frames.length -2]
-  if(this.isStrike(previousFrame)) {
+  if(previousFrame.strike) {
     previousFrame.addBonus(bonus1)
   }
 }
@@ -62,19 +62,19 @@ Bowling.prototype.calculateTotalScore = function() {
 Bowling.prototype.checkBonus = function(score1, score2) {
   var previousFrame = this.frames[this.frames.length -1]
 
-  if(this.isStrike(previousFrame)) {
+  if(previousFrame.strike) {
     previousFrame.addBonus(score1, score2);
-  } else if(this.isSpare(previousFrame)) {
+  }
+  if(previousFrame.spare) {
     previousFrame.addBonus(score1);
   }
-  if(this.frames.length > 1) {
-    if(this.twoConsecutiveStrikes) {
+  if(this.frames.length > 1 && this.twoConsecutiveStrikes()) {
       this.frames[this.frames.length-2].addBonus(score1);
-    }
   }
 }
 
 Bowling.prototype.isValidTotal = function(score1, score2) {
+  score2 = typeof score2 !== undefined ? score2 : 0
   return (score1 + score2) <= 10;
 };
 
@@ -82,18 +82,10 @@ Bowling.prototype.gameFinished = function() {
   return this.frames.length === 10
 }
 
-Bowling.prototype.isStrike = function(frame) {
-  return frame.rolls[0] === 10
-}
-
-Bowling.prototype.isSpare = function(frame) {
-  return frame.score === 10 && frame.rolls[0] !== 10
-}
-
 Bowling.prototype.twoConsecutiveStrikes = function() {
   var previousFrame = this.frames[this.frames.length-1]
   var secondToLastFrame = this.frames[this.frames.length-2]
-  if(previousFrame.rolls[0] === 10 && secondToLastFrame.rolls[0] === 10) {
+  if(previousFrame.strike && secondToLastFrame.strike) {
     return true;
   }
 };

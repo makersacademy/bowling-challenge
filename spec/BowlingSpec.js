@@ -58,8 +58,17 @@ describe("Bowling", function() {
       bowling.thirdRoll(10);
       bowling.completeFrame();
       bowling.calculateTotalScore();
-      console.log(bowling.frames);
       expect(bowling.totalScore).toEqual(300);
+    });
+
+    it('returns 0 if no pins are ever hit', function() {
+      spyOn(frame, 'record').and.returnValue
+      (frame.rolls = [0,0])
+      for(var i=0; i<10; i++) {
+        bowling.play(0,0);
+        bowling.completeFrame();
+        expect(bowling.totalScore).toEqual(0);
+      }
     });
   });
 

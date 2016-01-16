@@ -12,6 +12,22 @@ describe('Frame', function() {
     });
   });
 
+  describe('#checkIfSpareOrStrike', function() {
+    it('marks the frame as having scored a spare if score is 10 and first '+
+    'roll is not 10', function() {
+      frame.record(5,5);
+      expect(frame.strike).toBe(false);
+      expect(frame.spare).toBe(true);
+    });
+
+    it('marks the frame as having scored strike if score is 10 and first '+
+    'roll is 10', function() {
+      frame.record(10,0);
+      expect(frame.strike).toBe(true);
+      expect(frame.spare).toBe(false);
+    });
+  });
+
   describe('#calculateScore', function() {
     it('calculates the score of a frame', function() {
       frame.record(1,5);

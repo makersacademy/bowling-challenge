@@ -57,6 +57,7 @@ Bowling.prototype.calculateTotalScore = function() {
     return total
   }
   this.totalScore = this.frames.sum("score")
+  return this.totalScore;
 }
 
 Bowling.prototype.checkBonus = function(score1, score2) {

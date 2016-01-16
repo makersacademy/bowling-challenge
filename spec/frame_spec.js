@@ -35,6 +35,17 @@ describe('Frame', function(){
     });
   });
 
+  describe('#bonus', function(){
+    it('should initialize with a bonus of 0', function(){
+      expect(frame.bonus).toEqual(0);
+    });
+    describe('#getBonus', function(){
+      it('should return the current bonus', function(){
+        expect(frame.getBonus()).toEqual(frame.bonus);
+      });
+    });
+  });
+
   describe('#pins', function(){
     it('should start with 10 pins', function(){
       expect(frame.pins).toEqual(10);
@@ -81,17 +92,20 @@ describe('Frame', function(){
     });
   });
 
-  describe('#isStrike', function(){
+  describe('#_isStrike', function(){
     it('should report a frame as a strike', function(){
-      expect(frame.isStrike(10)).toEqual(true);
+      frame.roll(10);
+      expect(frame.getBonus()).toEqual(2);
+      expect(frame._isSpare()).toEqual(false);
     })
   });
 
-  describe('#isSpare', function(){
+  describe('#_isSpare', function(){
     it('should report a frame as a spare', function(){
       frame.roll(5);
       frame.roll(5);
-      expect(frame.isSpare()).toEqual(true);
+      expect(frame.getBonus()).toEqual(1);
+      expect(frame._isStrike()).toEqual(false);
     })
   });
 

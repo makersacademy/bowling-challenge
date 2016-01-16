@@ -2,21 +2,25 @@ function Frame() {
   this.results = [];
   this.pins = 10;
   this.currentRoll = 1;
+  this.bonus = 0;
 }
 
   Frame.prototype.getResults = function(){
     return this.results;
   }
 
+  Frame.prototype.getBonus = function(){
+    return this.bonus;
+  }
+
   Frame.prototype.roll = function(score){
     if(this.currentRoll > 2) {throw ('Only two bowls per frame');}
     if(this.pins - score < 0){throw ('Frame score may not exceed 10');}
     this.pins -= score;
-    if(this.isStrike(score))
-      {this.results.push(score, 0);}
-    else {
+    this.results.push(score);
+    this._isStrike();
     this._addRoll();
-    this.results.push(score);}
+    this._isSpare();
   }
 
   Frame.prototype.checkComplete = function(){
@@ -30,13 +34,17 @@ function Frame() {
     this.currentRoll++;
   }
 
-  Frame.prototype.isStrike = function(score){
-    if(this.currentRoll === 1 && score === 10){return true}
+  Frame.prototype._isStrike = function(){
+    if(this.currentRoll === 1 && this.results[0] === 10)
+      {this.bonus = 2 && this.results.push(0)}
+    else {
+      {return false}
+    }
  }
 
-  Frame.prototype.isSpare = function(){
-    if(this.results[0] + this.results[1] === 10)
-      {return true}
+  Frame.prototype._isSpare = function(){
+    if(this.results[0] + this.results[1] === 10 && this.currentRoll > 2)
+      {this.bonus = 1}
     else
       {return false}
 }

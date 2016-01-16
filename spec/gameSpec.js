@@ -99,6 +99,52 @@ describe('Game', function() {
           expect(game.getTotal()).toEqual(77);
         });
       });
+
+      describe('strike', function () {
+        it('at first frame', function () {
+          game.firstRoll = 10;
+          game.secondRoll = 0;
+          game.storeFrame();
+          for (var i = 2; i <= 10; i++) {
+            game.firstRoll = 4;
+            game.secondRoll = 3;
+            game.storeFrame();
+          }
+          expect(game.getTotal()).toEqual(80);
+        });
+
+        it('at first two frames',function () {
+          for (var i = 1; i <= 2; i++) {
+            game.firstRoll = 10;
+            game.secondRoll = 0;
+            game.storeFrame();
+          }
+          for (var x = 3; x <= 10; x++) {
+            game.firstRoll = 4;
+            game.secondRoll = 3;
+            game.storeFrame();
+          }
+          expect(game.getTotal()).toEqual(97);
+        });
+
+        it('at 2nd and 3rd frames',function () {
+          for (var i = 1; i <= 1; i++) {
+            game.firstRoll = 4;
+            game.secondRoll = 3;
+            game.storeFrame();
+          }
+          for (var x = 2; x <= 3; x++) {
+            game.firstRoll = 10;
+            game.secondRoll = 0;
+            game.storeFrame();
+          }
+
+            game.firstRoll = 4;
+            game.secondRoll = 3;
+            game.storeFrame();
+          expect(game.getTotal()).toEqual(55);
+        });
+      });
     });
   });
 });

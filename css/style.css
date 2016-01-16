@@ -1,5 +1,6 @@
 body {
   background: pink;
+  font-family: futura, helvetica, sans-serif;
 }
 
 .score {
@@ -61,10 +62,40 @@ body {
   border: solid thin black;
 }
 
-.totalscorebox {
-  background: #0066CC;
+.bottombox {
+  background: grey;
   box-sizing: border-box;
   width: 40%;
   height:100px;
   color: white;
+}
+
+.totalscorebox {
+  background: #0066CC;
+  box-sizing: border-box;
+  width: 100%;
+  height:50%;
+  color: white;
+}
+
+.errorbox {
+  background: red;
+  box-sizing: border-box;
+  width: 100%;
+  height:50%;
+  color: white;
+}
+
+#frame10roll1 {
+  width: 33.33%;
+}
+
+#frame10roll2 {
+  width: 33.33%;
+  float: left;
+}
+#frame10roll3 {
+  width: 33.33%;
+  float: left;
+  background: gold;
 }

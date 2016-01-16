@@ -1,40 +1,63 @@
-function Frame(ball) {
-  this.firstRoll = ball;
+function Frame() {
+  this.firstRoll = null;
   this.secondRoll = null;
-  this.pendingBonusPoints = null;
-  this.score = 0;
+  this.score = null;
+  this.message = '';
 }
 
-Frame.prototype.setSecondRoll = function (ball) {
-  this.secondRoll = ball;
+// PUBLIC
+
+Frame.prototype.rollBall = function (ball) {
+  this.setMessage(ball);
+  if (this.firstRoll === null) {
+    return (this.firstRoll = ball);
+  } else {
+    return (this.secondRoll = ball);
+  }
+};
+
+Frame.prototype.getFirstRoll = function () {
+  return this.firstRoll;
+};
+
+Frame.prototype.getSecondRoll = function () {
   return this.secondRoll;
 };
 
-Frame.prototype.readyToCalculateScore = function () {
-  return ((!this.isCompleted() || this.anyBonusPoints()) ? false:true)
-};
-
-Frame.prototype.anyBonusPoints = function () {
-  if (this._isStrike()) {
-    this.pendingBonusPoints = 'strike';
-  } else if (this._isSpare()) {
-    this.pendingBonusPoints = 'spare';
+Frame.prototype.getScore = function () {
+  if (this.secondRoll || this.isStrike()) {
+    return (this.score = this.firstRoll + this.secondRoll);
+  } else {
+    return 0
   }
-  return this.pendingBonusPoints;
+}
+
+Frame.prototype.getMessage = function () {
+  return this.message;
 };
 
 Frame.prototype.isCompleted = function () {
-  return ((this._isStrike()) || (this.secondRoll !== null));
+  return ((this.isStrike()) || (this.secondRoll !== null));
 };
 
-Frame.prototype.getScore = function () {
-  return (this.score = this.firstRoll + this.secondRoll);
-}
-
-Frame.prototype._isStrike = function () {
+Frame.prototype.isStrike = function () {
   return (this.firstRoll === 10);
 };
 
-Frame.prototype._isSpare = function () {
+Frame.prototype.isSpare = function () {
   return (this.getScore() === 10);
+};
+
+// PRIVATE
+
+Frame.prototype.setMessage = function (ball) {
+  if (ball === 10) {
+    this.message = 'Strike!'
+  } else if (ball === 0) {
+    this.message = 'Miss!'
+  } else if ((this.firstRoll + ball) === 10) {
+    this.message = ball+' hit, spare!'
+  } else {
+    this.message = ball+' hit'
+  }
 };

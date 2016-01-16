@@ -1,0 +1,35 @@
+html {
+  font-family: arial, sans-serif;
+  width: 100%;
+  background: url(../images/BowlingPins1600.jpg) no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  text-align: center;
+  background-color: white;
+}
+
+section#play-btn {
+  padding-top: 30px;
+  margin: 0 auto;
+  display: table;
+}
+
+button {
+  padding: 10px 25px;
+  font-size: 1.5em;
+  border-radius: 6px;
+  margin: 10px;
+}
+
+th,
+td {
+  border: 1px solid #cecfd5;
+  padding: 10px 15px;
+}

@@ -36,4 +36,22 @@ describe('Frame', function() {
     });
   });
 
+  describe('#addBonus', function() {
+    it('adds correct bonus to the total score after a strike has been scored',
+     function() {
+      frame.record(10,0);
+      frame.calculateScore();
+      frame.addBonus(10, 3);
+      expect(frame.score).toEqual(10+0+10+3);
+    });
+
+    it('adds correct bonus to the total score after a spare has been scored',
+     function() {
+       frame.record(3,7);
+       frame.calculateScore();
+       frame.addBonus(5);
+       expect(frame.score).toEqual(3+7+5);
+    });
+  });
+
 });

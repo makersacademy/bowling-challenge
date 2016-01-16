@@ -6,7 +6,8 @@ describe("Bowling", function() {
     frame = {
       record: function() {},
       calculateScore: function() {},
-      addThirdRoll: function() {}
+      addThirdRoll: function() {},
+      addBonus: function() {}
     }
     bowling = new Bowling(frame);
   });
@@ -41,6 +42,20 @@ describe("Bowling", function() {
       bowling.calculateFrameScore();
       bowling.calculateTotalScore();
       expect(bowling.totalScore).toEqual(1+2+3+4);
+    });
+
+    it('returns 300 if 10 consecutive strikes are scored',
+    function() {
+      spyOn(frame, 'record').and.returnValue
+      (frame.rolls = [10,0])
+      spyOn(frame, 'calculateScore').and.returnValue(frame.score = 10)
+      for(var i=0; i<10; i++) {
+        bowling.play(10,0);
+        bowling.calculateFrameScore();
+      }
+      bowling.thirdRoll(10,0);
+      bowling.calculateTotalScore();
+      expect(bowling.totalScore).toEqual(300);
     });
   });
 
@@ -114,6 +129,7 @@ describe("Bowling", function() {
     it('allows a player to get a bonus if they score a strike', function() {
       spyOn(frame, 'record').and.returnValue(frame.rolls = [10,0]);
       spyOn(frame, 'calculateScore');
+      spyOn(frame, 'addBonus').and.returnValue(frame.bonus = 1+2);
       bowling.play(10,0);
       bowling.calculateFrameScore();
       bowling.play(1,2);
@@ -123,6 +139,7 @@ describe("Bowling", function() {
     it('allows a player to get a bonus if they score a spare', function() {
       spyOn(frame, 'record').and.returnValue(frame.rolls = [7,3]);
       spyOn(frame, 'calculateScore').and.returnValue(frame.score=(7+3));
+      spyOn(frame, 'addBonus').and.returnValue(frame.bonus = 1);
       bowling.play(7,3);
       bowling.calculateFrameScore();
       bowling.play(1,2);
@@ -133,6 +150,7 @@ describe("Bowling", function() {
     ' the correct bonus is calculated', function() {
       spyOn(frame, 'record').and.returnValue(frame.rolls = [10,0]);
       spyOn(frame, 'calculateScore');
+      spyOn(frame, 'addBonus').and.returnValue(frame.bonus = 10+1);
       bowling.play(10,0);
       bowling.calculateFrameScore();
       bowling.play(10,0);

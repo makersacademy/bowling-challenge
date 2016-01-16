@@ -49,13 +49,13 @@ Bowling.prototype.checkBonus = function(score1, score2) {
   var previousFrame = this.frames[this.frames.length -1]
 
   if(this.isStrike(previousFrame)) {
-    previousFrame.bonus = (score1 + score2);
+    previousFrame.addBonus(score1, score2);
   } else if(this.isSpare(previousFrame)) {
-    previousFrame.bonus = score1
+    previousFrame.addBonus(score1);
   }
   if(this.frames.length > 1) {
     if(this.twoConsecutiveStrikes) {
-      this.frames[this.frames.length-2].bonus += score1
+      this.frames[this.frames.length-2].addBonus(score1);
     }
   }
 }

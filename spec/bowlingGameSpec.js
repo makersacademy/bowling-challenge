@@ -58,6 +58,36 @@ describe("Game", function() {
       }
       expect(game._frames[9]._frameScore).toEqual(30);
     });
+    it("should add the total score after each frame", function() {
+      game.nextBowl(7);
+      game.nextBowl(1);
+      expect(game._score).toEqual(8);
+    });
+    it("should add a bonus to the total score for the spare the roll after", function() {
+      game.nextBowl(7);
+      game.nextBowl(3);
+      game.nextBowl(4);
+      expect(game._score).toEqual(18);
+    });
+    it("should add a bonus to the total score for the strike the next two rolls", function() {
+      game.nextBowl(10);
+      game.nextBowl(3);
+      game.nextBowl(4);
+      expect(game._score).toEqual(24);
+    });
+    it("should add a bonus to the total score for the next two rolls, even with consecutive strikes", function() {
+      game.nextBowl(10);
+      game.nextBowl(10);
+      game.nextBowl(3);
+      game.nextBowl(4);
+      expect(game._score).toEqual(47);
+    });
+    it("should give a bonus when there is a strike in the 9th frame and 10th frame", function() {
+      for (i=0; i < 12; i++) {
+        game.nextBowl(10);
+      }
+      expect(game._score).toEqual(300);
+    });
   });
 });
 

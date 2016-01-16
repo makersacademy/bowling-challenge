@@ -1,21 +1,22 @@
 function Score() {
-  this.result = [];
-  this.runningTotals = [];
+  this.scores = [];
 }
 
-Score.prototype.giveScore = function(completedRounds) {
-  for(var i = 0; i < completedRounds.length; i++) {
-    this.result.push(completedRounds[i][0] + completedRounds[i][1]);
+Score.prototype.giveScore = function(pins) {
+  var total = 0;
+  for(var i = 0; i < (pins.length - 1); i++) {
+    if(pins[i][0] === 10) {
+      total += (10 + pins[i+1][0] + pins[i+1][1])
+      this.scores.push(total);
+    } else if(pins[i][0] + pins[i][1] === 10) {
+      total += (10 + pins[i+1][0])
+      this.scores.push(total);
+    } else {
+      total += (pins[i][0] + pins[i][1])
+      this.scores.push(total);
+    }
   }
-  this._returnRunningTotal(this.result);
-  return this.runningTotals;
-};
-
-Score.prototype._returnRunningTotal = function(inputArray) {
-  var sum = 0;
-  for(var i = 0; i < inputArray.length; i++) {
-    sum += inputArray[i];
-    this.runningTotals.push(sum);
-  }
-  return this.runningTotals;
+  total += pins[pins.length -1][0] + pins[pins.length -1][1];
+  this.scores.push(total);
+  return this.scores;
 };

@@ -1,4 +1,4 @@
-describe("Feature tests", function() {
+xdescribe("Feature tests", function() {
   var game;
 
   beforeEach(function() {

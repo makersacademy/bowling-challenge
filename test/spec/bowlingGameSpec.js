@@ -1,5 +1,4 @@
 describe('bowlingGame', function() {
-  var bowlingGame;
 
   beforeEach(function() {
       bowlingGame = new BowlingGame
@@ -18,9 +17,16 @@ describe('bowlingGame', function() {
 
   it('can roll a one point game', function() {
     customInput(20, 1);
-    expect(bowlingGame.score()).toBe(1)
+    expect(bowlingGame.score()).toBe(20)
   });
 
+
+
+  var customInput = function(inputAmount, score) {
+      for( i = 0; i < inputAmount; i++) {
+        bowlingGame.scoreInput(score);
+      }
+    }
 
 
 });

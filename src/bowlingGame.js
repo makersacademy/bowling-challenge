@@ -4,9 +4,13 @@ var BowlingGame = function() {
 };
 
 BowlingGame.prototype.scoreInput = function(pins) {
-  // this.scoreInput.push(pins);
+  this.gameScores.push(pins);
 };
 
 BowlingGame.prototype.score = function() {
-  return 0
+  var result = 0;
+  for( var i = 0; i < 20; i++) {
+    result += this.gameScores[i];
+  }
+  return result
 }

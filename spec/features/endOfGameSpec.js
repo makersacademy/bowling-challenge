@@ -1,4 +1,4 @@
-describe ('FEATURE TEST : Final Frame', function () {
+describe ('FEATURE TEST: Final Frame', function () {
 
   var game;
   beforeEach(function() {

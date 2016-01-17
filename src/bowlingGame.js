@@ -82,6 +82,13 @@ return 'strike!';
 
 // private methods
 //
+//
+
+BowlingGame.prototype.incrementRoll = function() {
+  console.log("increments roll called");
+  this.roll=1;
+};
+
 BowlingGame.prototype.calcTotalScore = function() {
  this.totalScore = this.totalScore + this.PinsKnockedDown;
 

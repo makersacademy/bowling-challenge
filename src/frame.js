@@ -3,7 +3,7 @@ function frame(){
   this.isSpare = false;
   this.isStrike = false;
   this.bonus = 0;
-  this.finalFrameScore = 0;
+  this.finalFrameScore = null;
 }
 
 frame.prototype.setFirstRollScore = function(score) {

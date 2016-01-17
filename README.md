@@ -22,7 +22,7 @@ var game = new Game();
 When a player hits `n` pins in a round:
 
 ```
-game.pinsHit(number);
+game.pinsHit(n);
 ```
 
 To determine the score:

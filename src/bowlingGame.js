@@ -15,7 +15,7 @@ Game.prototype.nextBowl = function(pinsdowned) {
     throw new TypeError("Don't cheat!!!");
   }
   var frame;
-  if(typeof this._frames[this._currentFrame-1] === 'undefined') {
+  if(typeof this.activeFrame() === 'undefined') {
     frame = new Frame();
     frame.bowl(pinsdowned);
     this._frames.push(frame);
@@ -34,13 +34,13 @@ Game.prototype.nextBowl = function(pinsdowned) {
         }
       }
     }
-    this._frames[this._currentFrame-1].bowl(pinsdowned);
+    this.activeFrame().bowl(pinsdowned);
     this.updateFrameScores();
   }
 };
 
 Game.prototype.updateCurrentFrame = function() {
-  if(typeof this.activeFrame()._rolls[1] === 'undefined') {
+  if(typeof this.activeFrame().secondRoll() === 'undefined') {
     this._currentRoll += 1;
     if(this._currentFrame != 10) {
       if(this.activeFrame().isStrike()) {
@@ -65,7 +65,7 @@ Frame.prototype.bowl = function(pinsdowned) {
 };
 
 Game.prototype.updateFrameScores = function() {
-  if(typeof this._frames[this._currentFrame-1]._rolls[1] === 'undefined') {
+  if(typeof this.activeFrame().secondRoll() === 'undefined') {
     this.activeFrame()._frameScore += this.activeFrame().firstRoll();
     this._score += this.activeFrame().firstRoll();
       if(this._frames.length > 1) {
@@ -85,7 +85,7 @@ Game.prototype.updateFrameScores = function() {
         }
       }
   } else {
-    if(typeof this.activeFrame()._rolls[2] === 'undefined') {
+    if(typeof this.activeFrame().thirdRoll() === 'undefined') {
       this.activeFrame()._frameScore += this.activeFrame().secondRoll();
       this._score += this.activeFrame().secondRoll();
         if(this._frames.length > 1 && this.previousFrame().isStrike()) {

@@ -21,13 +21,13 @@ Game.prototype.nextBowl = function(pinsdowned) {
     this._frames.push(frame);
     this.updateFrameScores();
   } else {
-    if(this._currentFrame != 10) {
+    if(this._currentFrame !== 10) {
       if(this.activeFrame().firstRoll() + pinsdowned > 10) {
         throw new TypeError("Don't cheat!!!");
       }
     } else {
-      if(typeof this.activeFrame().secondRoll() != 'undefined') {
-        if(this.activeFrame().secondRoll() != 10) {
+      if(typeof this.activeFrame().secondRoll() !== 'undefined') {
+        if(this.activeFrame().secondRoll() !== 10) {
           if(this.activeFrame().secondRoll() + pinsdowned > 10) {
             throw new TypeError("Don't cheat!!!");
           }
@@ -42,14 +42,14 @@ Game.prototype.nextBowl = function(pinsdowned) {
 Game.prototype.updateCurrentFrame = function() {
   if(typeof this.activeFrame().secondRoll() === 'undefined') {
     this._currentRoll += 1;
-    if(this._currentFrame != 10) {
+    if(this._currentFrame !== 10) {
       if(this.activeFrame().isStrike()) {
         this._currentFrame += 1;
         this._currentRoll = 1;
       }
     }
   } else {
-    if(this._currentFrame != 10) {
+    if(this._currentFrame !== 10) {
       this._currentFrame += 1;
       this._currentRoll = 1;
     } else {

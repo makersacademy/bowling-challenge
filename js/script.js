@@ -1,9 +1,16 @@
 $( document ).ready(function() {
   var game = new Game();
 
+  $(".bg").interactive_bg({
+   strength: 25,
+   scale: 1.05,
+   animationSpeed: "100ms",
+   contain: true,
+   wrapContent: false
+  });
+
   $('button').click('on', function() {
-    var pins = parseInt($(this).text())
-    var pinsHit = game.play(pins);
+    var pinsHit = game.play();
     var idRollScore = '#frame'+game.currentFrameNumber()+'-roll'+game.currentRoll()
     var idFrameScore = '#frame'+game.currentFrameNumber()+'-score'
     var idPrevFrameScore = '#frame'+game.prevFrameNumber()+'-score'
@@ -12,15 +19,21 @@ $( document ).ready(function() {
     checkIfGameOver();
   });
 
+  $('button').hover(function() {
+    $(this).toggleClass('animated bounce')
+  });
+
   var updateMessage = function() {
+    // $( "#message" ).addClass('show tada animated');
+    // $( "#message" ).addClass('hide').delay( 1800 ).fadeOut( 100 );
     $('#message').text(game.currentFrame.getMessage());
   }
 
-  var updateScores = function(idRoll, idFrame, idPrevFrame, pinsHit) {
-    $(idRoll).text(pinsHit);
-    $(idFrame).text(game.currentFrame.getScore());
+  var updateScores = function(idRollScore, idFrameScore, idPrevFrameScore, pinsHit) {
+    $(idRollScore).text(pinsHit);
+    $(idFrameScore).text(game.currentFrame.getScore());
     if (game.currentFrameNumber() > 1) {
-      $(idPrevFrame).text(game.prevFrame().getScore());
+      $(idPrevFrameScore).text(game.prevFrame().getScore());
     }
     $('#tot-score').text(game.getTotScore());
   }
@@ -31,5 +44,11 @@ $( document ).ready(function() {
       location.reload()
     }
   }
-
 });
+
+$(window).resize(function() {
+    $(".bg > .ibg-bg").css({
+      width: $(window).outerWidth(),
+      height: $(window).outerHeight()
+    })
+  })

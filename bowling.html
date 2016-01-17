@@ -2,31 +2,34 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.css">
   <script src="js/jquery.js"></script>
+  <script src="js/interactive_background.js"></script>
   <script src="js/script.js"></script>
   <script src="src/Ball.js"></script>
   <script src="src/Frame.js"></script>
   <script src="src/Game.js"></script>
 </head>
-<body>
+<body >
+  <div class="bg" data-ibg-bg="images/bowling.jpg">
     <table id="score-table">
       <thead>
         <tr>
-          <th scope="col" colspan="2">1st</th>
-          <th scope="col" colspan="2">2nd</th>
-          <th scope="col" colspan="2">3rd</th>
-          <th scope="col" colspan="2">4th</th>
-          <th scope="col" colspan="2">5th</th>
-          <th scope="col" colspan="2">6th</th>
-          <th scope="col" colspan="2">7th</th>
-          <th scope="col" colspan="2">8th</th>
-          <th scope="col" colspan="2">9th</th>
-          <th scope="col" colspan="2">10th</th>
+          <th scope="col" colspan="2">1<span class="notation">st</span></th>
+          <th scope="col" colspan="2">2<span class="notation">nd</span></th>
+          <th scope="col" colspan="2">3<span class="notation">rd</span></th>
+          <th scope="col" colspan="2">4<span class="notation">th</span></th>
+          <th scope="col" colspan="2">5<span class="notation">th</span></th>
+          <th scope="col" colspan="2">6<span class="notation">th</span></th>
+          <th scope="col" colspan="2">7<span class="notation">th</span></th>
+          <th scope="col" colspan="2">8<span class="notation">th</span></th>
+          <th scope="col" colspan="2">9<span class="notation">th</span></th>
+          <th scope="col" colspan="2">10<span class="notation">th</span></th>
           <th scope="col" colspan="2">Tot score</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr class="frame-rolls">
           <td id="frame1-roll1">-</td>
           <td id="frame1-roll2">-</td>
 
@@ -57,9 +60,9 @@
           <td id="frame10-roll1">-</td>
           <td id="frame10-roll2">-</td>
 
-          <td colspan="2" rowspan="2" id="tot-score">-</td>
+          <td rowspan="2" id="tot-score">-</td>
         </tr>
-        <tr>
+        <tr class="frame-score">
           <td colspan="2" id="frame1-score"></td>
           <td colspan="2" id="frame2-score"></td>
           <td colspan="2" id="frame3-score"></td>
@@ -73,21 +76,10 @@
         </tr>
       </tbody>
     </table>
-<section>
-  <h1 id="message"></h1>
-</section>
-<section id="play-btn">
-    <button id="0">0</button>
-    <button id="1">1</button>
-    <button id="2">2</button>
-    <button id="3">3</button>
-    <button id="4">4</button>
-    <button id="5">5</button>
-    <button id="6">6</button>
-    <button id="7">7</button>
-    <button id="8">8</button>
-    <button id="9">9</button>
-    <button id="10">10</button>
-  </section>
+    <section id="message-and-button">
+    <h1 id="message" class="">Play Bowling!</h1>
+    <button id="play" class="bounce animated">Roll</button>
+    </section>
+  </div>
 </body>
 </html>

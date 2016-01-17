@@ -8,7 +8,7 @@ describe("Ball", function() {
   describe("with randomised result", function() {
     describe("#roll", function() {
       it("returns a random number of pins hit from 0 to 10", function() {
-        expect(ball.roll()).not.toEqual(null);
+        expect(ball.roll(10)).not.toEqual(null);
       })
     })
   })
@@ -19,7 +19,7 @@ describe("Ball", function() {
         spyOn(Math, "random").and.returnValue(0.39);
       })
       it("returns a random number of pins hit from 0 to 10", function() {
-        expect(ball.roll()).toEqual(4);
+        expect(ball.roll(10)).toEqual(4);
       })
     })
   })

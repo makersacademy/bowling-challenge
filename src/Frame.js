@@ -1,26 +1,42 @@
-function Frame() {
+function Frame(ball) {
   this.firstRoll = null;
   this.secondRoll = null;
   this.score = null;
   this.message = '';
+  this.ball = ball || new Ball();
+  this.scoreIsUpdated = false;
 }
 
-// PUBLIC
-
-Frame.prototype.rollBall = function (ball) {
-  this.setMessage(ball);
+Frame.prototype.rollBall = function () {
+  var ball = this.ball.roll(10-this.firstRoll);
+  this._setMessage(ball);
   this.score += ball;
-  return ((this.firstRoll !== null) ? (this.secondRoll = ball) : (this.firstRoll = ball));
-};
+  if (this.firstRoll !== null) {
+    this.secondRoll = ball
+    return this.secondRoll
+  } else {
+    this.firstRoll = ball
+    return this.firstRoll
+  }
+}
 
-Frame.prototype.getScore = function () {
+Frame.prototype.getTempScore = function () {
   return this.score;
 }
 
+Frame.prototype.getScore = function () {
+  if ((this.isCompleted() && !this._isSpare() && !this._isStrike()) || this.scoreIsUpdated) {
+    return this.score;
+  } else {
+    return ''
+  }
+}
+
 Frame.prototype.updateScore = function (nextFrame) {
-  if (this.isStrike() && nextFrame.isCompleted()) {
-    return this.score += nextFrame.getScore();
-  } else if (this.isSpare()) {
+  this.scoreIsUpdated = true;
+  if (this._isStrike() && nextFrame.isCompleted()) {
+    return this.score += nextFrame.getTempScore();
+  } else if (this._isSpare()) {
     return this.score += nextFrame.firstRoll;
   } else {
     return this.score
@@ -32,20 +48,19 @@ Frame.prototype.getMessage = function () {
 };
 
 Frame.prototype.isCompleted = function () {
-  return (this.isStrike() || this.secondRoll);
+  return (this._isStrike() || this.secondRoll !== null);
 };
 
-Frame.prototype.isStrike = function () {
+
+Frame.prototype._isStrike = function () {
   return (this.firstRoll === 10)
 };
 
-Frame.prototype.isSpare = function () {
-  return (this.getScore() === 10);
+Frame.prototype._isSpare = function () {
+  return (this.getTempScore() === 10);
 };
 
-// PRIVATE
-
-Frame.prototype.setMessage = function (ball) {
+Frame.prototype._setMessage = function (ball) {
   if (ball === 10) {
     this.message = 'Strike!'
   } else if (ball === 0) {

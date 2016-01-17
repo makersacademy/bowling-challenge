@@ -49,31 +49,60 @@ Frame.prototype._storeCurrentFrameIfCompleted = function(pins) {
 
 Frame.prototype._reduceFrameToScore = function(i) {
   var frame = this.frames[i];
-  var nextFrame = this.frames[i+1];
-  var nextNextFrame = this.frames[i+2];
+  var nFrame = this.frames[i+1];
+  var nNFrame = this.frames[i+2];
   var score = frame.reduce((a, b) => a + b, 0);
   if (score === 10) {
-    return this._addBonusOrSetScoreToZero(score, frame, nextFrame, nextNextFrame);
+    return this._BonusOrSetToZero(score, frame, nFrame, nNFrame);
   }
   return score;
 };
 
-Frame.prototype._addBonusOrSetScoreToZero = function(score, frame, nextFrame, nextNextFrame) {
-  var bonus_score = 'N/A'
-  if (frame.length === 2 && typeof nextFrame === 'undefined') {
-      bonus_score = this.currentFrame.length === 0 ? (0) : (score += this.currentFrame[0])
-  } else if (frame.length === 2 && score === 10 && typeof nextFrame === 'object') {
-      bonus_score = score + nextFrame[0];
+Frame.prototype._BonusOrSetToZero = function(score, frame, nFrame, nNFrame) {
+  var bonusScore = 'N/A'
+  if (_isSpareAndNextFrameIncomplete(frame, nFrame)) {
+      bonusScore = this._spareCalcIfNoNextFrame(score);
   }
-  if (frame.length === 1 && typeof nextFrame === 'object' && typeof nextNextFrame === 'object') {
-    var bonus = nextFrame.length === 1 ? (nextFrame[0] + nextNextFrame[0]) : nextFrame.reduce((a, b) => a + b, 0);
-    bonus_score = score + bonus;
-  } else if (frame.length === 1 && typeof nextFrame === 'object' && nextNextFrame === undefined) {
-      var bonus = nextFrame.length === 1 ? (nextFrame[0] + this.currentFrame[0]) : nextFrame.reduce((a, b) => a + b, 0);
-      bonus_score = score + bonus;
+  if (_isSpareAndNextFrameComplete(score, frame, nFrame)) {
+      bonusScore = score + nFrame[0];
   }
-  return bonus_score;
+  if (_isStrikeAndTwoMoreCompleteFrames(frame, nFrame, nNFrame)) {
+    bonusScore = score + _calcBonusForStrikeWithTwoFrames(nFrame, nNFrame);
+  }
+  if (_isStrikeAndOneMoreCompleteFrame(frame, nFrame, nNFrame)) {
+      bonusScore = score + this._calcBonusForStrikeWithOneFrame(nFrame);
+  }
+  return bonusScore;
 }
+
+
+Frame.prototype._spareCalcIfNoNextFrame = function(score) {
+  return this.currentFrame.length === 0 ? (0) : (score += this.currentFrame[0]);
+};
+
+function _isSpareAndNextFrameIncomplete(frame, nFrame) {
+  return (frame.length === 2 && typeof nFrame === 'undefined')
+}
+
+function _isSpareAndNextFrameComplete(score, frame, nFrame) {
+  return frame.length === 2 && score === 10 && typeof nFrame === 'object'
+}
+
+function _isStrikeAndTwoMoreCompleteFrames(frame, nFrame, nNFrame) {
+  return frame.length === 1 && typeof nFrame === 'object' && typeof nNFrame === 'object';
+}
+
+function _isStrikeAndOneMoreCompleteFrame(frame, nFrame, nNFrame) {
+  return frame.length === 1 && typeof nFrame === 'object' && nNFrame === undefined;
+}
+
+function _calcBonusForStrikeWithTwoFrames(nFrame, nNFrame) {
+  return nFrame.length === 1 ? (nFrame[0] + nNFrame[0]) : nFrame.reduce((a, b) => a + b, 0);
+}
+
+Frame.prototype._calcBonusForStrikeWithOneFrame = function(nFrame) {
+  return nFrame.length === 1 ? (nFrame[0] + this.currentFrame[0]) : nFrame.reduce((a, b) => a + b, 0);
+};
 
 function twoDArrayTotal(array) {
   var length = array.length > 10 ? 10 : array.length;

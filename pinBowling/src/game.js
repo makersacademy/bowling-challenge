@@ -15,14 +15,14 @@ Game.prototype.getScore = function () {
 };
 
 Game.prototype.pinsHit = function (number) {
-  this.setRound();
+  this._setRound();
   this.pin.pinsHit(number);
   this.score += number;
   this._bonus(number);
   this._prevRoundScore += number;
 };
 
-Game.prototype.setRound = function () {
+Game.prototype._setRound = function () {
   if (this._round === 1){
     this._round++;
     this._prevRoundScore = 0;

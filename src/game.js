@@ -41,25 +41,45 @@ Game.prototype._increaseScore = function(numberOfPins) {
 };
 
 Game.prototype._isEndOfGame = function() {
-  if ((typeof this.framesLog.frames[9] !== 'undefined') && (this.framesLog.frames[9].reduce((a, b) => a + b, 0) === 10) && (this.framesLog.frames[9].length === 2)) {
-    if (this.framesLog.currentFrame.length === 1) {
-      return true;
-    } else {
-      return false;
-    }
+  if (this._isLastFrameSpare()) {
+    return this._isSpareComplete();
   }
-  if ((typeof this.framesLog.frames[9] !== 'undefined') && (this.framesLog.frames[9].reduce((a, b) => a + b, 0) === 10) && (this.framesLog.frames[9].length === 1)) {
-    if ((typeof this.framesLog.frames[10] !== 'undefined') && (this.framesLog.frames[10].length === 2)) {
-      return true;
-    }
-    if ((typeof this.framesLog.frames[10] !== 'undefined') && (this.framesLog.frames[10].length === 1) && (typeof this.framesLog.frames[11] !== 'undefined')) {
-      return true;
-    }
-    return false;
+  if (this._isLastFrameStrike()) {
+    return this._isStrikeComplete();
   }
-  return (this.framesLog.frames.length >= 10);
+  return this._isNoBonusBallsAndTenCompleteFrames();
 };
 
 Game.prototype._isTooManyPins = function(numberOfPins) {
   return (this.framesLog.isTooManyPinsInOneFrame(numberOfPins));
+};
+
+Game.prototype._isLastFrameSpare = function() {
+  return (typeof this.framesLog.frames[9] !== 'undefined') && (this.framesLog.frames[9].reduce((a, b) => a + b, 0) === 10) && (this.framesLog.frames[9].length === 2);
+};
+
+Game.prototype._isLastFrameStrike = function() {
+  return (typeof this.framesLog.frames[9] !== 'undefined') && (this.framesLog.frames[9].reduce((a, b) => a + b, 0) === 10) && (this.framesLog.frames[9].length === 1);
+}
+
+Game.prototype._isSpareComplete = function() {
+  if (this.framesLog.currentFrame.length === 1) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+Game.prototype._isStrikeComplete = function() {
+  if ((typeof this.framesLog.frames[10] !== 'undefined') && (this.framesLog.frames[10].length === 2)) {
+    return true;
+  }
+  if ((typeof this.framesLog.frames[10] !== 'undefined') && (this.framesLog.frames[10].length === 1) && (typeof this.framesLog.frames[11] !== 'undefined')) {
+    return true;
+  }
+  return false;
+};
+
+Game.prototype._isNoBonusBallsAndTenCompleteFrames = function () {
+  return this.framesLog.frames.length >= 10
 };

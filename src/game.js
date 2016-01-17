@@ -18,7 +18,11 @@ Game.prototype.addFrame = function(){
   this._addBonus();
   this.frameCount ++;
   this.frameScore();
-  this.currentFrame = new Frame();
+  if(this.checkLastFrame !== true)
+    {this.currentFrame = new Frame()}
+  else {
+    this.currentFrame = new FinalFrame()
+    }
 };
 
 Game.prototype._addBonus = function(){
@@ -28,6 +32,10 @@ Game.prototype._addBonus = function(){
 Game.prototype._addScore = function(){
   this.scorecard.push(this.currentFrame.getResults());
 };
+
+Game.prototype.checkLastFrame = function(){
+  if(this.frameCount === 8){return true}
+}
 
 Game.prototype.checkOver = function(){
   if(this.frameCount === 9){return true}
@@ -41,6 +49,7 @@ Game.prototype.frameScore = function(){
   if(this.bonusList[this.frameCount] === 2)
     {this.results.push(10)}
     this.calcBonus();
+    this.calcTotalScore();
 }
 
 Game.prototype.calcTotalScore = function(){

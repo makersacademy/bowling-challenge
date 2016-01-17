@@ -47,4 +47,4 @@ function Frame() {
       {this.bonus = 1}
     else
       {return false}
-}
+  }

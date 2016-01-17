@@ -83,6 +83,16 @@ describe('Game', function(){
     });
   });
 
+  describe('#checkLastFrame', function(){
+    it('should recognise final frame needed when 9 frames submitted', function(){
+      for (var i = 0; i < 9; i++){
+        game.bowl(3);
+        game.bowl(2);
+      }
+      expect(game.checkLastFrame()).toEqual(true);
+    });
+  });
+
   describe('scoring', function(){
     it('should add a standard frame', function(){
       game.bowl(3);

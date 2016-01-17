@@ -21,8 +21,8 @@ describe("Score", function() {
       expect(score.scores.pop()).toEqual(71);
     });
 
-    xit("deals with multiple spares", function() {
-      score.giveScore([[5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5]]);
+    it("deals with multiple spares", function() {
+      score.giveScore([[5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5], [5, 5, 5]]);
       expect(score.scores.pop()).toEqual(150);
     });
   });
@@ -38,9 +38,3 @@ describe("Score", function() {
       expect(score.scores.pop()).toEqual(267);
     });
   });
-
-  it("my temporary debugging cases", function() {
-    score.giveScore([[2, 2], [10], [1, 2], [3, 4]]);
-    expect(score.scores.pop()).toEqual(27);
-  });
-});

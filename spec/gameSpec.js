@@ -6,18 +6,20 @@ describe('Game', function() {
 
   beforeEach(function() {
     frame = jasmine.createSpyObj('frame',
-    ['getFrameResults', 'receivePins', 'frames', 'getFrameScores', 'currentFrame', 'isTooManyPinsInOneFrame', 'totalScore'])
+    ['getFrameResults', 'receivePins', 'frames', 'getFrameScores',
+    'currentFrame', 'isTooManyPinsInOneFrame', 'totalScore'])
     game = new Game(frame);
   });
 
 
   describe ('#bowlA', function() {
     it('returns error if more than 10 pins knocked down per frame', function() {
+        var error = 'Nope. Ten pins max per frame';
         game.framesLog = {isTooManyPinsInOneFrame: function() {}}
         game.framesLog.frames = {length: function() {}}
         spyOn(game.framesLog, 'isTooManyPinsInOneFrame').and.returnValue(true)
         spyOn(game.framesLog.frames, 'length').and.returnValue(1)
-        expect(function() {game.bowlA(3)}).toThrowError('Nope. Ten pins max per frame')
+        expect(function() {game.bowlA(3)}).toThrowError(error)
     });
   });
 
@@ -40,7 +42,7 @@ describe('Game', function() {
       expect(game.bowlA(4)).not.toEqual('Game over: Ten frames played');
     });
 
-    it('prevents another ball if last frame was spare and the bonus ball has been bowled', function() {
+    it('prevents another ball if spare has bonus ball already', function() {
       game.framesLog.frames = [[1],[1],[1],[1],[1],[1],[1],[1],[1],[8, 2]]
       game.framesLog.currentFrame = [4];
       expect(game.bowlA(4)).toEqual('Game over: Ten frames played');
@@ -57,7 +59,7 @@ describe('Game', function() {
       expect(game.bowlA(4)).not.toEqual('Game over: Ten frames played');
     });
 
-    it('prevents another ball if last frame was strike and two bonus balls have been bowled', function() {
+    it('prevents another ball if strike already has bonus balls', function() {
       game.framesLog.frames = [[1],[1],[1],[1],[1],[1],[1],[1],[1],[10],[4, 4]];
       expect(game.bowlA(4)).toEqual('Game over: Ten frames played');
     });

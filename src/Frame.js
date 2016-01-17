@@ -3,30 +3,17 @@ function Frame(ball) {
   this.firstRoll = null;
   this.secondRoll = null;
   this.score = null;
-  this.message = '';
   this.scoreNeedsUpdating = false;
+  this.TOTPINS = 10
 }
 
 Frame.prototype.rollBall = function () {
-  var rolledBall = this.ball.roll(this.pinsLeft());
-  this._setMessage(rolledBall);
-  this.writeScore(rolledBall);
-  if (this.firstRoll !== null) {
-    return (this.secondRoll = rolledBall)
-  } else {
-    return (this.firstRoll = rolledBall)
-  }
+  var rollValue = this.ball.roll(this._pinsLeft());
+  this.score += rollValue;
+  ((this.firstRoll !== null) ? (this.secondRoll = rollValue) : (this.firstRoll = rollValue))
+  if (this._isStrike() || this._isSpare()) { this.scoreNeedsUpdating = true }
+  return rollValue
 }
-
-Frame.prototype.pinsLeft = function () {
-  return (10-this.firstRoll)
-};
-
-Frame.prototype.writeScore = function (ball) {
-  this.score += ball;
-  if (this.score === 10) { this.scoreNeedsUpdating = true }
-  return this.score
-};
 
 Frame.prototype.getTempScore = function () {
   return this.score;
@@ -37,42 +24,44 @@ Frame.prototype.getFinalScore = function () {
 }
 
 Frame.prototype.updateScore = function (nextFrame) {
-  if (this._isStrike() && nextFrame.bothBallThrown() && this.scoreNeedsUpdating ) {
+  if (this._isStrike() && nextFrame.bothBallThrown() && this.scoreNeedsUpdating){
     this.scoreNeedsUpdating = false;
     return this.score += nextFrame.getTempScore();
   } else if (this._isSpare() && this.scoreNeedsUpdating) {
     this.scoreNeedsUpdating = false;
     return this.score += nextFrame.firstRoll;
-  } else {
-    return this.score
   }
+  return this.score
 };
 
 Frame.prototype.getMessage = function () {
-  return this.message;
+  if (this._isStrike()) {
+    return 'Strike!'
+  } else if (this._lastBall() === 0) {
+    return 'Miss!'
+  } else if (this._isSpare()) {
+    return this._lastBall()+' hit, spare!'
+  } else {
+    return this._lastBall()+' hit'
+  }
 };
 
 Frame.prototype.bothBallThrown = function () {
   return (this._isStrike() || this.secondRoll !== null);
 };
 
+Frame.prototype._pinsLeft = function () {
+  return (this.TOTPINS-this.firstRoll)
+};
+
+Frame.prototype._lastBall = function () {
+  return ( this.bothBallThrown() ? this.secondRoll : this.firstRoll )
+};
 
 Frame.prototype._isStrike = function () {
-  return (this.firstRoll === 10)
+  return (this.firstRoll === this.TOTPINS)
 };
 
 Frame.prototype._isSpare = function () {
-  return ((this.secondRoll !== null) && (this.getTempScore() === 10));
-};
-
-Frame.prototype._setMessage = function (ball) {
-  if (ball === 10) {
-    this.message = 'Strike!'
-  } else if (ball === 0) {
-    this.message = 'Miss!'
-  } else if ((this.firstRoll + ball) === 10) {
-    this.message = ball+' hit, spare!'
-  } else {
-    this.message = ball+' hit'
-  }
+  return ((this.secondRoll !== null) && (this.getTempScore() === this.TOTPINS));
 };

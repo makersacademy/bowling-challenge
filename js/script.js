@@ -14,8 +14,8 @@ $( document ).ready(function() {
     var idRollScore = '#frame'+game.currentFrameNumber()+'-roll'+game.currentRoll()
     var idFrameScore = '#frame'+game.currentFrameNumber()+'-score'
     var idPrevFrameScore = '#frame'+game.prevFrameNumber()+'-score'
-    updateMessage();
     updateScores(idRollScore, idFrameScore, idPrevFrameScore, pinsHit);
+    updateMessage();
     checkIfGameOver();
   });
 

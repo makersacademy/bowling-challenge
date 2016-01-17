@@ -1,5 +1,6 @@
-function Game() {
-  this.currentFrame = new Frame();
+function Game(frame) {
+  this.frameKlass = frame || Frame
+  this.currentFrame = new this.frameKlass()
   this.frames = [];
   this.totScore = 0;
 }
@@ -7,13 +8,12 @@ function Game() {
 Game.prototype.play = function () {
   if (this.currentFrame.bothBallThrown()) {
     this.frames.push(this.currentFrame);
-    this.currentFrame = new Frame()
+    this.currentFrame = new this.frameKlass()
   }
   var rollValue = this.currentFrame.rollBall()
   if (this.prevFrame()) {
     this.prevFrame().updateScore(this.currentFrame);
   }
-  this._setTotScore();
   return rollValue;
 };
 
@@ -34,17 +34,13 @@ Game.prototype.currentRoll = function () {
 };
 
 Game.prototype.getTotScore = function () {
-  return this.totScore;
+  var totScore = 0;
+  for (var i = 0; i < this.frames.length; i++) {
+    totScore += this.frames[i].getTempScore()
+  }
+  return (this.totScore = totScore + this.currentFrame.getTempScore());
 };
 
 Game.prototype.isOver = function () {
   return (this.frames.length === 9 && this.currentFrame.bothBallThrown())
-};
-
-Game.prototype._setTotScore = function () {
-  this.totScore = 0;
-  for (var i = 0; i < this.frames.length; i++) {
-    this.totScore += this.frames[i].getTempScore()
-  }
-  return this.totScore += this.currentFrame.getTempScore();
 };

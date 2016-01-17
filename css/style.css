@@ -6,6 +6,7 @@ body {
 h1 {
   max-width: 800px;
   margin: 40px auto;
+  text-align: center;
 }
 
 #page-wrap {
@@ -111,5 +112,12 @@ th, .second {
 
 #enter-scores {
   max-width: 513px;
+  margin: 40px auto;
+}
+
+.total-score {
+  max-width: 513px;
   margin: auto;
+  text-align: center;
+  font-size: 50px;
 }

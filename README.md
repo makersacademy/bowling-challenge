@@ -1,32 +1,39 @@
 Bowling Challenge
 =================
 This program is written by Sara Tateno in response to the Makers Academy Weekend
-Challenge #5. It is written in JavaScript and uses jQuery, HTML and CSS on the front-end. It is fully test-driven using Jasmine and aims to follow SOLID principles.
+Challenge #5. It is written in JavaScript and uses jQuery, HTML and CSS. It has been test-driven using Jasmine.
 
-It uses three classes: Game, Frame and Bonus.
+It has three classes: Game, Frame and Bonus.
 
-The Game initialises with a frame class and the number of frames to be played. Either of these defaults can be changed by entering them as arguments: `new Game(frameKlass, gameLength)`.
+The Game initialises with a frame class and the number of frames to be played as optional arguments.
 
-The Game class tracks the frame the player is currently bowling in and passes scores in to that frame. 
+The Game class tracks the frame the player is currently bowling in. It passes a submitted score in to the current frame as well as to any outstanding bonuses.
 
-The Frame class is responsible for tracking the score of each frame within its `scoreCard` array.
+The Frame class tracks any points scored in that particular frame. If a strike or a spare is scored, it initialises a bonus object which accepts either 1 or 2 additional bowls. The bonus object marks itself as complete when all bonus bowls have been awarded. This triggers the frame object to mark itself as finalised.
 
-It awards a bonus to a frame when it is complete (i.e. by marking a frame as being a "strike" or "spare").
+This design avoids the need for a separate 'lastFrame' class. Instead, the final frame operates the same as any other frame - a strike scored in the final frame simple needs two additional bowls to be passed in to its bonus before the frame can be marked as complete. It also avoids any complexity around a strike potentially needing to know about the following two frames (i.e. if a strike is scored in the next frame).
+
+To install this program:-
+```
+$ git clone git@github.com:saratateno/bowling-challenge.git
+$ cd bowling-challenge
+$ open bowling.html
+```
 
 
 Builds
------------
-* Use Spies to fully isolate the unit tests
-* Return running total for the game at each frame
-* Extract a 'score calculator' class that returns a total for the finalised frames that are passed in to it.
-* Extract 'bonus award' logic from the Game class to determine the type of bonus on the basis of the frame results passed in to it. This would then instantiate the bonus class with the correct number of bowls.
+-----
+* Implement Spies to isolate the unit tests
+* Return the running total for the game at each frame
+* Add a 'Game Complete' message.
 
 
 
 
+------
+Original Challenge Instructions:
+---------------------
 
-
---
 * Challenge time: rest of the day and weekend, and the entire of lab week if you need it, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README

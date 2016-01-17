@@ -28,6 +28,8 @@ Frame.prototype.getScore = function() {
   if(this.isFinalised) {
     var directScore = this.scoreCard.reduce(function(a, b) { return a + b; },0);
     return directScore + this._getBonusScore();
+  } else {
+    return null;
   }
 }
 

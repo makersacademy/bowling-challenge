@@ -6,6 +6,7 @@ function Game (pin, defaultScore) {
   this.score = this._DEFAULT_SCORE;
   this._initialPinsThere = this.pin._initialPinsThere;
   this._strikeReserve = 0;
+  this._strikeValue = 10;
 }
 
 Game.prototype.pinsHit = function (number) {
@@ -19,6 +20,8 @@ Game.prototype.getScore = function () {
 };
 
 Game.prototype._bonus = function (number) {
-  if (this._strikeReserve >= 10) {this.score += number; this._strikeReserve -= 10}
-  if (number === 10) {this._strikeReserve += 10*2}
+  if (this._strikeReserve >= 1) {
+    this.score += number; this._strikeReserve -= 1;
+  }
+  if (number === 10) {this._strikeReserve += 2}
 };

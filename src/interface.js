@@ -98,7 +98,7 @@ Game.prototype.resultMessage = function(number) {
 
 Game.prototype.gutterGameMessage = function() {
   if(this.gutterGame()) {
-    $("#errorbox").text("GAME OVER!! OH NO GUTTER GAME");
+    $("#errorbox").text("GAME OVER!! OH NO, GUTTER GAME");
     $('.endpicture').prepend('<img id="mourinho" class="pictures" src="./images/upset_mourinho.jpg" />');
   }
 };

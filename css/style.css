@@ -1,10 +1,18 @@
 body {
-  background: pink;
+  background: #F2EEEA;
   font-family: futura, helvetica, sans-serif;
+  align-items: center;
 }
 
-.buttons {
+h1 {
+  font-size: 250%;
+}
+
+.button {
   float: left;
+  border-radius: 50%;
+  font-size: 100%;
+  margin: .1%;
 
 }
 
@@ -13,7 +21,7 @@ body {
   box-sizing: border-box;
   width: 100%;
   height: 100px;
-  border: solid thin black;
+  border: solid thin #292929;
 }
 
 .framebox {
@@ -21,61 +29,62 @@ body {
   box-sizing: border-box;
   width: 10%;
   height: 100%;
-  border: solid thin black;
+  border: solid thin #292929;
   float: left;
 }
 
 .framenumber {
-  background: green;
+  background: #84989D;
   box-sizing: border-box;
   width: 100%;
-  height: 20%;
-  border: solid thin black;
+  height: 24%;
+  border: solid thin #292929;
 }
 
 .rollsscore {
   background: gold;
   box-sizing: border-box;
   width: 100%;
-  height: 40%;
-  border: solid thin black;
+  height: 38%;
+  border: solid thin #292929;
 }
 
 .roll1 {
-  background: beige;
+  background: #F1D59E;
   box-sizing: border-box;
   width: 50%;
   height: 100%;
-  border: solid thin black;
+  border: solid thin #292929;
   float: left;
 }
 
 .roll2 {
-  background: purple;
+  background: #D1C1A9;
   box-sizing: border-box;
   width: 50%;
   height: 100%;
-  border: solid thin black;
+  border: solid thin #292929;
   float: right;
 }
 
 .framescore {
-  background: grey;
+  background: #E87162;
   box-sizing: border-box;
   width: 100%;
-  height: 40%;
-  border: solid thin black;
+  height: 38%;
+  border: solid thin #292929;
 }
 
 .bottombox {
   box-sizing: border-box;
   width: 100%;
   height:400px;
-  color: white;
+  color: #F2EEEA;
+  font-size: 200%;
 }
 
 .totalscorebox {
-  background: #0066CC;
+  background: #4574CC;
   box-sizing: border-box;
   width: 40%;
   height:20%;
@@ -84,7 +93,7 @@ body {
 }
 
 #errorbox {
-  background: red;
+  background: #84989D;
   box-sizing: border-box;
   width: 40%;
   height:20%;
@@ -96,7 +105,7 @@ body {
   box-sizing: border-box;
   width:58.536585%;
   height:100%;
-  margin:0 auto;
+  margin: auto;
   float: right;
 }
 
@@ -105,6 +114,9 @@ body {
   height: 100%;
   border-radius: 2%;
   opacity: 0.9;
+  margin: auto;
+  float: none;
+
 }
 
 #frame10roll1 {
@@ -118,5 +130,5 @@ body {
 #frame10roll3 {
   width: 33.33%;
   float: left;
-  background: gold;
+  background: #F9D83F;
 }

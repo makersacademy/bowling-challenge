@@ -32,6 +32,8 @@ A Gutter Game is when the player never hits a pin (20 zero scores). Try it for a
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points. Try it for a bonus 'feature'.
 
+[alt text](./images/bowling_screen1.png "Bowling Scorecard screenshot1")
+[alt text](./images/bowling_screen2.png "Bowling Scorecard screenshot2")
 
 ##Installation:
 

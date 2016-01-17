@@ -64,3 +64,5 @@ Contributors
 ------------
 
 * [William Bautista](https://github.com/Willibaur)
+* [Richard Moss](https://github.com/ric9176)
+* [Tony](https://github.com/TY231618)

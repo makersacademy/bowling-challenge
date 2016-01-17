@@ -10,11 +10,22 @@ frame.prototype.setFirstRollScore = function(score) {
   this.framesScores[0] = score;
   this.isStrikeScored();
 }
+frame.prototype.setSecondRollScore = function(score) {
+  this.framesScores[1] = score;
+  this.isSpareScored();
+  this.setFinalFrameScore();
+}
 
 frame.prototype.isStrikeScored = function() {
   if (this.framesScores[0] === 10) {this.isStrike = true;
     this.setFinalFrameScore();
     console.log("STRIKE!");
+  }
+}
+
+frame.prototype.isSpareScored = function() {
+  if (this.framesScores[0] + this.framesScores[1] === 10) {this.isSpare = true;
+    console.log("SPARE!");
   }
 }
 

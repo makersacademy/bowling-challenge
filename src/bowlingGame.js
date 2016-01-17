@@ -37,7 +37,6 @@ else{
 BowlingGame.prototype.bowlSecond = function(pinsHit){
 
 this.PinsKnockedDown = pinsHit ;
-this.rollArray.push(this.PinsKnockedDown);
 this.currentFrame.setSecondRollScore(this.PinsKnockedDown);
 
   if (this.PinsKnockedDown === 0) {
@@ -70,15 +69,14 @@ if(this.PinsKnockedDown < 10){
 
 BowlingGame.prototype.strikeBall = function() {
 if (this.PinsKnockedDown === 10) {
-this.newFrame();
-console.log("stike1");
 this.calcTotalScore();
+console.log("stike1");
+this.newFrame();
+
 return 'strike!';
 
 }
 };
-
-
 
 // private methods
 //
@@ -102,6 +100,24 @@ BowlingGame.prototype.tenthFrame = function(){
 
 BowlingGame.prototype.newFrame = function() {
   console.log('triggered newFrame')
+  this.gameFrames.push(this.currentFrame);
 
+  this.resetRoll();
+  this.incrementFrame();
+  this.currentFrame = new frame();
+  this.resetPinsKnockedDown();
 
+};
+
+BowlingGame.prototype.resetRoll = function() {
+  console.log("reset roll called");
+ this.roll = 0 ;
+};
+
+BowlingGame.prototype.incrementFrame = function() {
+  this.frameNumber+=1;
+};
+
+BowlingGame.prototype.resetPinsKnockedDown = function() {
+ this.PinsKnockedDown = 0;
 };

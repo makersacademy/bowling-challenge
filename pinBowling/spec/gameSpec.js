@@ -26,6 +26,23 @@ describe(".Game", function () {
       expect(pin.pinsHit).toHaveBeenCalledWith(1);
     });
 
+    it ('increments round if round 1', function () {
+      expect(game._round).toEqual(1);
+      game.pinsHit(1);
+      expect(game._round).toEqual(2);
+    });
+
+    it ('resets round if round 2', function () {
+      game.pinsHit(1);
+      game.pinsHit(1);
+      expect(game._round).toEqual(1);
+    });
+
+    it ('resets round if strike', function () {
+      game.pinsHit(10);
+      expect(game._round).toEqual(1);
+    });
+
     describe ("when 'strike'", function () {
       it ('the bonus is the scores of the two subsequent rounds', function () {
         game.pinsHit(10);
@@ -44,6 +61,27 @@ describe(".Game", function () {
         expect(game.getScore()).toEqual(36);
       });
     });
+
+    describe ("when 'spare'", function () {
+      it ('the bonus is the score of the next roll', function () {
+        game.pinsHit(1);
+        game.pinsHit(9);
+        game.pinsHit(1);
+        game.pinsHit(2);
+        expect(game.getScore()).toEqual(14);
+      });
+      it ('the bonus only occurs using sum of two rounds', function () {
+        game.pinsHit(1);
+        game.pinsHit(9);
+        game.pinsHit(1);
+        game.pinsHit(2);
+        game.pinsHit(8);
+        game.pinsHit(1);
+        expect(game.getScore()).toEqual(23);
+      });
+    });
   });
+
+
 
 });

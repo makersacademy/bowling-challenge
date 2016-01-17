@@ -132,3 +132,17 @@ h1 {
   float: left;
   background: #F9D83F;
 }
+
+#author {
+  opacity:1;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  background-color: white;
+  width: 100%;
+  opacity: 0.7;
+}

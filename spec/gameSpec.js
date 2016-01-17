@@ -14,7 +14,7 @@ describe('Game', function() {
     });
 
     it('cannot be more than 10', function() {
-      var noMoreFrames = 'Only 10 frames per game: no cheating, please!'
+      var noMoreFrames = 'Only 10 frames per game: no cheating, please!';
       for (var playedFrames = 0; playedFrames < 10; playedFrames++) {
           game.addPlayedFrame();
       }

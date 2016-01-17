@@ -13,7 +13,7 @@ describe('Frame', function() {
     });
 
     it('cannot be more than 2', function() {
-      var noMoreRolls = 'Only 2 rolls per frame: no cheating, please!'
+      var noMoreRolls = 'Only 2 rolls per frame: no cheating, please!';
       frame.addPlayedRoll();
       frame.addPlayedRoll();
       expect(function() { frame.roll(1) }).toThrowError(noMoreRolls);
@@ -118,7 +118,7 @@ describe('Frame', function() {
   describe('#setRollKnockedPins', function() {
     it('sets the number of knocked pins in this roll', function() {
       frame.setRollKnockedPins(4);
-      expect(frame.rollKnockedPins).toEqual(4)
+      expect(frame.rollKnockedPins).toEqual(4);
     });
   });
 
@@ -128,7 +128,7 @@ describe('Frame', function() {
       frame.updateFrameKnockedPins();
       frame.setRollKnockedPins(2);
       frame.updateFrameKnockedPins();
-      expect(frame.frameKnockedPins).toEqual(6)
+      expect(frame.frameKnockedPins).toEqual(6);
     });
   });
 
@@ -142,7 +142,7 @@ describe('Frame', function() {
 
   describe('#roll', function() {
     describe('throws an error when passed:', function() {
-      var invalidValue = 'Only valid numbers: no cheating, please!'
+      var invalidValue = 'Only valid numbers: no cheating, please!';
 
       it('negative integers', function() {
         expect(function() { frame.roll(-1) }).toThrowError(invalidValue);
@@ -162,25 +162,25 @@ describe('Frame', function() {
     });
 
     it('sets the number of knocked pins in this roll', function() {
-      frame.roll(4)
-      expect(frame.rollKnockedPins).toEqual(4)
+      frame.roll(4);
+      expect(frame.rollKnockedPins).toEqual(4);
     });
 
     it('updates the total number of knocked pins in this frame', function() {
-      frame.roll(4)
-      frame.roll(2)
-      expect(frame.frameKnockedPins).toEqual(6)
+      frame.roll(4);
+      frame.roll(2);
+      expect(frame.frameKnockedPins).toEqual(6);
     });
 
     it('updates the number of standing pins', function() {
-      frame.roll(5)
-      frame.roll(2)
+      frame.roll(5);
+      frame.roll(2);
       expect(frame.standingPins).toEqual(3);
     });
 
     it('sets the current frame score', function() {
-      frame.roll(2)
-      frame.roll(3)
+      frame.roll(2);
+      frame.roll(3);
       expect(frame.frameScore).toEqual(5);
     });
   });

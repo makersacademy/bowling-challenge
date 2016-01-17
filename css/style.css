@@ -3,6 +3,11 @@ body {
   font-family: futura, helvetica, sans-serif;
 }
 
+.buttons {
+  float: left;
+
+}
+
 .score {
   background: red;
   box-sizing: border-box;
@@ -63,27 +68,43 @@ body {
 }
 
 .bottombox {
-  background: grey;
   box-sizing: border-box;
-  width: 40%;
-  height:100px;
+  width: 100%;
+  height:400px;
   color: white;
 }
 
 .totalscorebox {
   background: #0066CC;
   box-sizing: border-box;
-  width: 100%;
-  height:50%;
+  width: 40%;
+  height:20%;
   color: white;
+  float: left;
 }
 
-.errorbox {
+#errorbox {
   background: red;
   box-sizing: border-box;
-  width: 100%;
-  height:50%;
+  width: 40%;
+  height:20%;
   color: white;
+  float: left;
+}
+
+.endpicture {
+  box-sizing: border-box;
+  width:58.536585%;
+  height:100%;
+  margin:0 auto;
+  float: right;
+}
+
+.pictures {
+  width: auto;
+  height: 100%;
+  border-radius: 2%;
+  opacity: 0.9;
 }
 
 #frame10roll1 {

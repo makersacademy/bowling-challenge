@@ -98,7 +98,7 @@ describe('Frame', function() {
   });
 
   describe('#addPlayedRoll', function() {
-    it('updates the number of played roll', function() {
+    it('updates the number of played rolls by one', function() {
       frame.addPlayedRoll();
       frame.addPlayedRoll();
       expect(frame.playedRolls).toEqual(2);

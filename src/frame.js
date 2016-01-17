@@ -1,13 +1,22 @@
 'use strict';
 
 function Frame() {
+this.INITIAL_PLAYED_ROLLS = 0
 this.INITIAL_STANDING_PINS = 10
 this.INITIAL_KNOCKED_PINS = 0
 this.INITIAL_FRAME_SCORE = 0
+this.playedRolls = this.INITIAL_PLAYED_ROLLS
 this.standingPins = this.INITIAL_STANDING_PINS
 this.rollKnockedPins = this.INITIAL_KNOCKED_PINS
 this.frameKnockedPins = this.INITIAL_KNOCKED_PINS
 this.frameScore = this.INITIAL_FRAME_SCORE
+}
+
+var noMoreRolls = 'Only 2 rolls per frame: no cheating, please!'
+var invalidValue = 'Only valid numbers: no cheating, please!';
+
+Frame.prototype.getPlayedRolls = function() {
+  return this.playedRolls;
 }
 
 Frame.prototype.getStandingPins = function() {
@@ -32,6 +41,10 @@ Frame.prototype.isValidNumber = function(knockedPins) {
          knockedPins <= this.standingPins;
 }
 
+Frame.prototype.addPlayedRoll = function() {
+  this.playedRolls += 1;
+}
+
 Frame.prototype.setRollKnockedPins = function(knockedPins) {
   this.rollKnockedPins = knockedPins;
 }
@@ -53,10 +66,11 @@ Frame.prototype.setFrameScore = function(knockedPins) {
 }
 
 Frame.prototype.roll = function(knockedPins) {
-  var error = "Only valid numbers: no cheating, please!";
-  if (!this.isValidNumber(knockedPins)) { throw new Error (error) }
+  if (this.playedRolls >= 2) { throw new Error (noMoreRolls) }
+  if (!this.isValidNumber(knockedPins)) { throw new Error (invalidValue) }
   this.setRollKnockedPins(knockedPins)
   this.updateFrameKnockedPins()
   this.updateStandingPins()
   this.setFrameScore(knockedPins)
+  this.addPlayedRoll()
 }

@@ -39,20 +39,21 @@ describe("Game", function() {
                 ("You already finished this game"));
       });
     });
+  });
 
-    describe("scores a strike in the first frame", function() {
-      beforeEach(function() {
-        game.bowl(10);
-      });
-
-      it("sets a bonus for the first frame", function() {
-        expect(game.frames[0].bonus.numberOfBowls).toBe(2);
-      });
-
-      it("adds the bowling score of the next frame to the bonus", function() {
-        game.bowl(1);
-        expect(game.frames[0].getScore()).toEqual(11);
-      })
+  describe("scores a strike in the first frame", function() {
+    beforeEach(function() {
+      game.bowl(10);
     });
+
+    it("sets a bonus for the first frame", function() {
+      expect(game.frames[0].bonus.numberOfBowls).toBe(2);
+    });
+
+    it("adds the bowling score of the next two bowls to the bonus", function() {
+      game.bowl(1);
+      game.bowl(2);
+      expect(game.frames[0].getScore()).toEqual(13);
+    })
   });
 });

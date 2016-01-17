@@ -2,9 +2,8 @@ function Game(frameKlass, gameLength) {
   var DEFAULT_LENGTH = 10;
   this.gameLength = gameLength || DEFAULT_LENGTH;
   this.frameKlass = frameKlass || Frame;
-  
+
   this.frames = [];
-  this.totalScore = null;
   this.currentFrame = 0;
   this.currentFrameNum = 0;
   this.isFinished = false;
@@ -37,10 +36,11 @@ Game.prototype.regularBowl = function (num) {
 };
 
 Game.prototype.calcTotalScore = function() {
+  var totalScore = 0
   for (var i = 0; i < this.frames.length; i++) {
-      this.totalScore += this.frames[i].getScore();
+      totalScore += this.frames[i].getScore();
   }
-  return this.totalScore;
+  return totalScore;
 }
 
 Game.prototype.getCurrentFrame = function() {

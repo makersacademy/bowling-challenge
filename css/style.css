@@ -4,7 +4,7 @@ body {
 }
 
 #page-wrap {
-  width: 700px;
+  width: 900px;
   margin: 25px auto;
 }
 
@@ -13,7 +13,7 @@ table {
   border-color: #ccc;
   border-radius: 10px;
   border-collapse: collapse;
-  background-color: #f0f0f0;
+  background-color: #f9f9f9;
   margin-bottom: 40px;
   -webkit-box-shadow: 0px 1px 3px #666666;
   -moz-box-shadow: 0px 1px 3px #666666;
@@ -27,13 +27,25 @@ td, th {
   text-align: center;
 }
 
+th {
+  background-color: #e0e0e0;
+}
+
 th, .second {
   border-bottom: 1px solid;
   border-color: inherit;
 }
 
-.frame-num {
-  width: 90px;
+.first, .second, .third {
+  min-width: 22px;
+}
+
+.frame-num .frame1{
+  border-top-left-radius: 10px;
+}
+
+.frame-num .frame10{
+  border-top-right-radius: 10px;
 }
 
 .frame10 {
@@ -44,7 +56,7 @@ th, .second {
 }
 
 .running-total, .frame-score {
-  height: 30px;
+  height: 35px;
 }
 
 .total {
@@ -93,6 +105,6 @@ th, .second {
 }
 
 #enter-scores {
-  max-width: 466px;
+  max-width: 513px;
   margin: auto;
 }

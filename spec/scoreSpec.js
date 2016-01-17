@@ -6,10 +6,6 @@ describe("Score", function() {
   });
 
   describe("returning the score", function() {
-    it("returns an array of scores", function() {
-      expect(score.giveScore([[1, 2]])).toEqual([3]);
-    });
-
     it("returns the running totals for each round", function() {
       expect(score.giveScore([[1, 2], [5, 3], [6, 3], [1, 1]])).toEqual([3, 11, 20, 22]);
     });
@@ -34,8 +30,8 @@ describe("Score", function() {
     });
 
     it("deals with multiple strikes", function() {
-      score.giveScore([[10], [10], [10], [10], [10], [10], [10], [10], [10], [9, 0]]);
-      expect(score.scores.pop()).toEqual(267);
+      score.giveScore([[10], [10], [10], [10], [10], [10], [10], [10], [10], [10, 10, 10]]);
+      expect(score.scores.pop()).toEqual(300);
     });
   });
 });

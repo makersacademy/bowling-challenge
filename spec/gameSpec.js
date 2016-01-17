@@ -30,13 +30,6 @@ describe("Game", function() {
       }
       expect(game.rounds.length).toEqual(2);
     });
-
-    xit("calls the round.acceptFinalPins on the 10th round", function() {
-      for(var i = 0; i < 20; i++) {
-        game.enterPins(4);
-      }
-      expect(game.round.acceptFinalPins()).toHaveBeenCalled();
-    });
   });
 
   describe("getting the score", function() {

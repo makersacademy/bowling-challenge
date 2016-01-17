@@ -1,5 +1,4 @@
 function Score() {
-  this.scores = [];
 }
 
 Score.prototype.giveScore = function(pins) {

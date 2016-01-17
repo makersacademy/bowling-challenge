@@ -20,35 +20,12 @@ describe("Round", function() {
     });
   });
 
-  describe("tracking the progress of the round", function() {
-    it("is in progress if one or both rolls are empty", function() {
-      round.acceptPins(0);
-      expect(round.isFull()).toBe(false);
-    });
-
-    it("is not in progress if both rolls are full", function() {
-      round.acceptPins(3);
-      round.acceptPins(5);
-      expect(round.isFull()).toBe(true);
-    });
-  });
-
-  describe("check the validity of the pins", function() {
-    it("only accepts numbers", function() {
+  describe("acceptPins", function() {
+    it("only accepts numbers between 0 and 10", function() {
       expect(function() {round.acceptPins("one");}).toThrow("Invalid pin entry");
-    });
-
-    it("only accepts a number between 0 and 10", function() {
       expect(function() {round.acceptPins(15);}).toThrow("Invalid pin entry");
     });
 
-    it("only accepts a second roll if the round total won't be exceeded", function() {
-      round.acceptPins(8);
-      expect(function() {round.acceptPins(3);}).toThrow("Invalid pin entry");
-    });
-  });
-
-  describe("stores the values of the rolls correctly", function() {
     it("accepts entries and stores them in the correct variables", function() {
       round.acceptPins(8);
       round.acceptPins(1);
@@ -62,6 +39,30 @@ describe("Round", function() {
       round.acceptPins(5);
       expect(round.rollOne).toEqual(8);
       expect(round.rollTwo).not.toEqual(5);
+    });
+
+    it("only accepts a second roll if the round total won't be exceeded", function() {
+      round.acceptPins(8);
+      expect(function() {round.acceptPins(3);}).toThrow("Invalid pin entry");
+    });
+  });
+
+  describe("acceptFinalPins", function() {
+    it("only accepts numbers between 0 and 10", function() {
+      expect(function() {round.acceptFinalPins("one");}).toThrow("Invalid pin entry");
+      expect(function() {round.acceptFinalPins(15);}).toThrow("Invalid pin entry");
+    });
+
+    it("is still in progress if the sum of the first two numbers >= 10", function() {
+      round.acceptFinalPins(5);
+      round.acceptFinalPins(5);
+      expect(round.isInProgress).toBe(true);
+    });
+  });
+
+  describe("isFull", function() {
+    it("returns the opposite of whether the game is in progress", function() {
+      expect(round.isFull()).toBe(false);
     });
   });
 });

@@ -36,7 +36,8 @@ Frame.prototype.getFrameScore = function() {
 };
 
 Frame.prototype.isValidNumber = function(knockedPins) {
-  return Number.isInteger(knockedPins) &&
+  return typeof knockedPins === 'number' &&
+         knockedPins % 1 === 0 &&
          knockedPins >= 0 &&
          knockedPins <= this.standingPins;
 };

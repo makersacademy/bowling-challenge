@@ -4,37 +4,21 @@ function Game (pin, defaultScore) {
   this.frame = this.pin.frame;
   this._DEFAULT_SCORE = defaultScore || 0;
   this.score = this._DEFAULT_SCORE;
-  this._loopLimit = 0;
   this._initialPinsThere = this.pin._initialPinsThere;
-  this._strikeBonusTime = 0;
-  this._bonusCollection = [];
+  this.reserve = 0;
 }
-
-// Need to unravel below function or start from scratch
 
 Game.prototype.pinsHit = function (number) {
   this.pin.pinsHit(number);
-  this._increaseScore(number);
-  if (this._bonusCollection.length !== 0) {
-  for (var bonus in this._bonusCollection) {bonus.timeLimit--;}
-  this._loopLimit =
-    this._bonusCollection.reduce(function(previousValue, currentValue) {
-    return previousValue.loopLimit + currentValue.loopLimit;
-  });}
-  this._strikeEffectOnLoopLimit(number);
-  // if (this._strikeBonusTime > 0){this._strikeBonusTime--;}
-  // this._strikeEffectOnLoopLimit(number);
+  this.score += number;
+  this._bonus(number);
 };
 
-Game.prototype.getScore = function (first_argument) {
+Game.prototype.getScore = function () {
   return this.score;
 };
 
-Game.prototype._increaseScore = function (number) {
-  for (var i = 0; i < this._loopLimit + 1; i++) {this.score += number;}
-};
-
-Game.prototype._strikeEffectOnLoopLimit = function (number) {
-  var strike = new Bonus (2);
-  if (number >= this._initialPinsThere) { (this._bonusCollection).push(strike);}
+Game.prototype._bonus = function (number) {
+  if (this.reserve >= 10) {this.score += number; this.reserve -= 10}
+  if (number === 10) {this.reserve += 10*2}
 };

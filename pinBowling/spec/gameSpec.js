@@ -34,6 +34,15 @@ describe(".Game", function () {
         game.pinsHit(1);
         expect(game.getScore()).toEqual(15);
       });
+
+      it ('the bonus is as expected with two strikes in row', function () {
+        game.pinsHit(10);
+        game.pinsHit(10);
+        game.pinsHit(1);
+        game.pinsHit(1);
+        game.pinsHit(1);
+        expect(game.getScore()).toEqual(36);
+      });
     });
   });
 

@@ -3,7 +3,6 @@ describe("Frame", function() {
 
   beforeEach(function() {
     frame = new Frame();
-    bonusKlass = Bonus;
   });
 
   describe("standard frame scoring", function(){

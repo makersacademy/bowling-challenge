@@ -1,9 +1,8 @@
-function Game(frameKlass, gameLength, bonusKlass) {
+function Game(frameKlass, gameLength) {
   var DEFAULT_LENGTH = 10;
   this.gameLength = gameLength || DEFAULT_LENGTH;
   this.frameKlass = frameKlass || Frame;
-  this.bonusKlass = bonusKlass || Bonus;
-
+  
   this.frames = [];
   this.totalScore = null;
   this.currentFrame = 0;

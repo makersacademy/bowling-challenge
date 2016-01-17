@@ -1,22 +1,49 @@
-
 Bowling Challenge
 =================
+This program is written by Sara Tateno in response to the Makers Academy Weekend
+Challenge #5. It is written in JavaScript and uses jQuery, HTML and CSS on the front-end. It is fully test-driven using Jasmine and aims to follow SOLID principles.
+
+It uses three classes: Game, Frame and Bonus.
+
+The Game initialises with a frame class and the number of frames that you
+wish to play as arguments. It defaults to the frame class here.
+
+The Game class tracks the frame the player is bowling in and calculates the
+total score of the game. It is also responsible for the rules governing when to
+award a bonus and what type (i.e. by marking a frame as being a "strike" or
+"spare"). You could for example, add new rules that awards a special bonus to
+a player scoring zero in a frame.
+
+The Frame class is responsible for tracking the score of each frame.
 
 
+
+
+Still To Do
+-----------
+* Use Spies to fully isolate the unit tests
+* Return running total for the game at each frame
+
+
+
+
+
+
+--
 * Challenge time: rest of the day and weekend, and the entire of lab week if you need it, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday week
 
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
 * Forking this repo
@@ -63,7 +90,7 @@ Code Review
 In code review we'll be hoping to see:
 
 * All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 

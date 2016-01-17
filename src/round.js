@@ -23,7 +23,7 @@ Round.prototype.acceptFinalPins = function(pins) {
   if(this.rollOne === null) {
     this._logRollOne(pins);
   } else if(this.rollTwo === null) {
-    // Add in QC here but only if rollOne is NOT 10
+    if(this.rollOne !== 10) {this._checkRoundTotals(pins);}
     this._logRollTwo(pins);
     if(this.rollOne + this.rollTwo < this.ROLL_TOTAL) {
       this.isInProgress = false;}

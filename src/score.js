@@ -9,10 +9,10 @@ Score.prototype.giveScore = function(pins) {
 
   for(var i = 0; i < (pins.length-1); i++) {
     if(pins[i][0] === 10) {
-      currentScore = this._strike(pins, i);
+      currentScore = this._calculateStrikeScore(pins, i);
       total += currentScore;
     } else if(pins[i][0] + pins[i][1] === 10) {
-      currentScore = this._spare(pins, i);
+      currentScore = this._calculateSpareScore(pins, i);
       total += currentScore;
     } else {
       total += (pins[i][0] + pins[i][1])
@@ -25,7 +25,7 @@ Score.prototype.giveScore = function(pins) {
   return this.scores;
 };
 
-Score.prototype._strike = function(pins, i) {
+Score.prototype._calculateStrikeScore = function(pins, i) {
   var strikeScore = 0;
   var flattenedPins = flattenArraySection(pins, i);
   strikeScore += 10;
@@ -34,7 +34,7 @@ Score.prototype._strike = function(pins, i) {
   return strikeScore;
 }
 
-Score.prototype._spare = function(pins, i) {
+Score.prototype._calculateSpareScore = function(pins, i) {
   var spareScore = 0;
   var flattenedPins = flattenArraySection(pins, i);
   spareScore += 10;

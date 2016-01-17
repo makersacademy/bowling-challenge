@@ -1,42 +1,47 @@
 function Frame(ball) {
+  this.ball = ball || new Ball();
   this.firstRoll = null;
   this.secondRoll = null;
   this.score = null;
   this.message = '';
-  this.ball = ball || new Ball();
-  this.scoreIsUpdated = false;
+  this.scoreNeedsUpdating = false;
 }
 
 Frame.prototype.rollBall = function () {
-  var ball = this.ball.roll(10-this.firstRoll);
-  this._setMessage(ball);
-  this.score += ball;
+  var rolledBall = this.ball.roll(this.pinsLeft());
+  this._setMessage(rolledBall);
+  this.writeScore(rolledBall);
   if (this.firstRoll !== null) {
-    this.secondRoll = ball
-    return this.secondRoll
+    return (this.secondRoll = rolledBall)
   } else {
-    this.firstRoll = ball
-    return this.firstRoll
+    return (this.firstRoll = rolledBall)
   }
 }
+
+Frame.prototype.pinsLeft = function () {
+  return (10-this.firstRoll)
+};
+
+Frame.prototype.writeScore = function (ball) {
+  this.score += ball;
+  if (this.score === 10) { this.scoreNeedsUpdating = true }
+  return this.score
+};
 
 Frame.prototype.getTempScore = function () {
   return this.score;
 }
 
-Frame.prototype.getScore = function () {
-  if ((this.isCompleted() && !this._isSpare() && !this._isStrike()) || this.scoreIsUpdated) {
-    return this.score;
-  } else {
-    return ''
-  }
+Frame.prototype.getFinalScore = function () {
+  return ((this.scoreNeedsUpdating || !this.bothBallThrown()) ? '' : this.score)
 }
 
 Frame.prototype.updateScore = function (nextFrame) {
-  this.scoreIsUpdated = true;
-  if (this._isStrike() && nextFrame.isCompleted()) {
+  if (this._isStrike() && nextFrame.bothBallThrown() && this.scoreNeedsUpdating ) {
+    this.scoreNeedsUpdating = false;
     return this.score += nextFrame.getTempScore();
-  } else if (this._isSpare()) {
+  } else if (this._isSpare() && this.scoreNeedsUpdating) {
+    this.scoreNeedsUpdating = false;
     return this.score += nextFrame.firstRoll;
   } else {
     return this.score
@@ -47,7 +52,7 @@ Frame.prototype.getMessage = function () {
   return this.message;
 };
 
-Frame.prototype.isCompleted = function () {
+Frame.prototype.bothBallThrown = function () {
   return (this._isStrike() || this.secondRoll !== null);
 };
 
@@ -57,7 +62,7 @@ Frame.prototype._isStrike = function () {
 };
 
 Frame.prototype._isSpare = function () {
-  return (this.getTempScore() === 10);
+  return ((this.secondRoll !== null) && (this.getTempScore() === 10));
 };
 
 Frame.prototype._setMessage = function (ball) {

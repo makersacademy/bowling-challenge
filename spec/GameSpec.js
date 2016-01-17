@@ -1,11 +1,22 @@
 describe("Game", function() {
   var game;
+  var frame;
 
-  beforeEach(function() {
-    game = new Game();
-  })
 
 	describe("When not spare nor strike", function() {
+
+    beforeEach(function() {
+      frame = {
+        rollBall: function() {
+
+        },
+        bothBallThrown: function() {
+
+        }
+      }
+      game = new Game();
+    })
+
     describe("#play", function() {
       it("returns the value of the pins hit", function() {
         game.play(6)

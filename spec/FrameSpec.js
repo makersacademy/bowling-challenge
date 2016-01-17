@@ -25,33 +25,31 @@ describe("Frame", function(){
       })
     })
 
-    describe("#isCompleted", function() {
+    describe("#bothBallThrown", function() {
       it("returns true if it's not a strike, it's not a spare and the second ball has been thrown", function() {
         frame.rollBall()
-        expect(frame.isCompleted()).toBeTruthy();
+        expect(frame.bothBallThrown()).toBeTruthy();
       })
       it("returns false if the second ball hasn't been thrown", function() {
-        expect(frame.isCompleted()).toBeFalsy();
+        expect(frame.bothBallThrown()).toBeFalsy();
       })
     })
 
     describe("#getTempScore", function() {
-      it("returns the total score of the frame", function() {
-        frame.rollBall()
-        expect(frame.getTempScore()).toEqual(6)
+      it("returns the temporary total score of the frame", function() {
+        expect(frame.getTempScore()).toEqual(3)
       })
     })
 
-    describe("#getScore", function() {
-      it("returns the total score only if the frame is ready to display the score", function() {
-        frame.rollBall()
-        expect(frame.getScore()).toEqual('')
+    describe("#getFinalScore", function() {
+      it("returns empty string when the frame score is not final", function() {
+        expect(frame.getFinalScore()).toEqual('')
       })
 
-      it("returns the total score only if the frame is ready to display the score", function() {
+      it("returns the total score when the frame score is final", function() {
         frame.rollBall()
-        frame.rollBall()
-        expect(frame.getScore()).toEqual(6)
+        frame.updateScore(nextFrame)
+        expect(frame.getFinalScore()).toEqual(6)
       })
     })
 
@@ -63,6 +61,9 @@ describe("Frame", function(){
     })
 
     describe("#updateScore", function() {
+      it("returns the temp score if score isn't updated", function() {
+        expect(frame.updateScore(nextFrame)).toEqual(3)
+      })
       it("returns the total score of the frame unchanged", function() {
         frame.rollBall()
         expect(frame.getTempScore()).toEqual(6)
@@ -88,17 +89,31 @@ describe("Frame", function(){
       }
     })
 
-    describe("#isCompleted", function() {
-      it("returns true if it's spare", function() {
+    describe("#bothBallThrown", function() {
+      it("returns true when both ball thrown and it's spare", function() {
         frame.rollBall()
-        expect(frame.isCompleted()).toBeTruthy();
+        expect(frame.bothBallThrown()).toBeTruthy();
       })
     })
 
     describe("#getTempScore", function() {
-      it("returns the total score of the frame", function() {
+      it("returns the temporary total score of the frame", function() {
+        expect(frame.getTempScore()).toEqual(5)
+      })
+      it("returns the temporary total score of the frame", function() {
         frame.rollBall()
         expect(frame.getTempScore()).toEqual(10)
+      })
+    })
+
+    describe("#getFinalScore", function() {
+      it("returns empty string when the frame score is not final", function() {
+        expect(frame.getFinalScore()).toEqual('')
+      })
+
+      it("returns empty string when the frame score is not final", function() {
+        frame.rollBall()
+        expect(frame.getFinalScore()).toEqual('')
       })
     })
 
@@ -114,6 +129,7 @@ describe("Frame", function(){
         frame.rollBall()
         expect(frame.getTempScore()).toEqual(10)
         expect(frame.updateScore(nextFrame)).toEqual(13)
+        expect(frame.getFinalScore()).toEqual(13)
       })
     })
   })
@@ -132,21 +148,27 @@ describe("Frame", function(){
           return 6
         },
         firstRoll: 3,
-        isCompleted: function() {
+        bothBallThrown: function() {
           return true
         }
       }
     })
 
-    describe("#isCompleted", function() {
+    describe("#bothBallThrown", function() {
       it("returns true if it's strike", function() {
-        expect(frame.isCompleted()).toBeTruthy();
+        expect(frame.bothBallThrown()).toBeTruthy();
       })
     })
 
     describe("#getTempScore", function() {
       it("returns the total score of the frame", function() {
         expect(frame.getTempScore()).toEqual(10)
+      })
+    })
+
+    describe("#getFinalScore", function() {
+      it("returns empty string when the frame score is not final", function() {
+        expect(frame.getFinalScore()).toEqual('')
       })
     })
 
@@ -160,6 +182,7 @@ describe("Frame", function(){
       it("returns the total score of the frame changed", function() {
         expect(frame.getTempScore()).toEqual(10)
         expect(frame.updateScore(nextFrame)).toEqual(16)
+        expect(frame.getFinalScore()).toEqual(16)
       })
     })
   })

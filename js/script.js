@@ -31,9 +31,9 @@ $( document ).ready(function() {
 
   var updateScores = function(idRollScore, idFrameScore, idPrevFrameScore, pinsHit) {
     $(idRollScore).text(pinsHit);
-    $(idFrameScore).text(game.currentFrame.getScore());
+    $(idFrameScore).text(game.currentFrame.getFinalScore());
     if (game.currentFrameNumber() > 1) {
-      $(idPrevFrameScore).text(game.prevFrame().getScore());
+      $(idPrevFrameScore).text(game.prevFrame().getFinalScore());
     }
     $('#tot-score').text(game.getTotScore());
   }

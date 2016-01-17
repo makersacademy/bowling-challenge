@@ -1,7 +1,9 @@
-function Bonus() {
-  this.numberOfBowls = 0
+function Bonus(bonusType) {
+  this.numberOfBowls = null;
   this.scores = [];
+  this.score = null;
   this.isComplete = false;
+  this.set(bonusType);
 }
 
 Bonus.prototype.addPoints = function (numberOfPins) {
@@ -12,25 +14,21 @@ Bonus.prototype.addPoints = function (numberOfPins) {
 };
 
 Bonus.prototype.set = function (bonusType) {
-  switch (bonusType) {
-    case "none":
-      this.isComplete = true;
-      break;
-    case "strike":
-      this.numberOfBowls = 2;
-      break;
-    case "spare":
-      this.numberOfBowls = 1;
-      break;
+  if(bonusType === "strike") {
+    this.numberOfBowls = 2
+  } else if (bonusType === "spare") {
+    this.numberOfBowls = 1
   }
 };
 
 Bonus.prototype.getTotal = function () {
-  return this.scores.reduce(function(a, b) { return a + b; }, 0);
+  this.score = this.scores.reduce(function(a, b) { return a + b; }, 0);
+  return this.score;
 };
 
 Bonus.prototype._complete = function() {
   if (this.scores.length === this.numberOfBowls) {
     this.isComplete = true;
+    this.getTotal();
   }
 }

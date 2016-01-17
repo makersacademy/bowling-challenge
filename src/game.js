@@ -28,10 +28,8 @@ Game.prototype.regularBowl = function (num) {
   if (this.currentFrame.isComplete) {
     this._changeFrame();
   }
-
-  this.currentFrame.bowl(num);
   this.addToBonuses(num);
-  this._setBonus();
+  this.currentFrame.bowl(num);
   this._completeSelf();
 };
 
@@ -49,7 +47,9 @@ Game.prototype.getCurrentFrame = function() {
 
 Game.prototype.addToBonuses = function(num){
   this.frames.forEach(function(frame) {
-    frame.bonus.addPoints(num);
+    if(frame.bonus) {
+      frame.addToBonus(num);
+    }
   });
 }
 
@@ -74,18 +74,6 @@ Game.prototype._setCurrentFrame = function() {
 Game.prototype._changeFrame = function() {
   this.currentFrameNum += 1;
   this._setCurrentFrame();
-}
-
-Game.prototype._setBonus = function() {
-  var bonusType
-  if (this.currentFrame.standingPins > 0) {
-    bonusType = "none";
-  } else if (this.currentFrame.scoreCard.length === 1) {
-    bonusType = "strike";
-  } else {
-    bonusType = "spare";
-  }
-  this.currentFrame.setBonus(bonusType);
 }
 
 Game.prototype._isFinalFrame = function() {

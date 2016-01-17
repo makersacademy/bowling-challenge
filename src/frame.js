@@ -5,7 +5,7 @@ function Frame(bonusKlass){
   this.scoreCard = [];
   this.isComplete = false;
   this.isFinalised = false;
-  this.bonus = new this.bonusKlass();
+  this.bonus = null;
 }
 
 Frame.prototype.bowl = function(numberOfPins) {
@@ -25,13 +25,28 @@ Frame.prototype.getScoreCard = function() {
 }
 
 Frame.prototype.getScore = function() {
+  if(this.isFinalised) {
     var directScore = this.scoreCard.reduce(function(a, b) { return a + b; },0);
-    return directScore + this.bonus.getTotal();
+    return directScore + this._getBonusScore();
+  }
 }
 
-Frame.prototype.setBonus = function(bonusType) {
-  this.bonus.set(bonusType);
+Frame.prototype.setBonus = function() {
+  if (this.standingPins > 0) {
+    this.isFinalised = true;
+  } else if (this.scoreCard.length === 1) {
+    this.bonus = new this.bonusKlass("strike");
+  } else {
+    this.bonus = new this.bonusKlass("spare");
+  }
 };
+
+Frame.prototype.addToBonus = function(num) {
+  this.bonus.addPoints(num);
+  if(this.bonus.isComplete) {
+    this.isFinalised = true;
+  }
+}
 
 Frame.prototype._isValidScore = function(numberOfPins) {
   return (numberOfPins <= this.standingPins) && (numberOfPins >= 0);
@@ -45,8 +60,17 @@ Frame.prototype._addToFrameScore = function(numberOfPins) {
 Frame.prototype._completeSelf = function() {
   if (this.standingPins === 0 || this.scoreCard.length === 2) {
     this.isComplete = true;
+    this.setBonus();
   }
-  if (this.bonus.isComplete === true) {
+  if (this.bonus && this.bonus.isComplete === true) {
     this.isFinalised = true;
   }
 }
+
+Frame.prototype._getBonusScore = function () {
+  if(this.bonus) {
+    return this.bonus.score;
+  } else {
+    return 0;
+  }
+};

@@ -3,6 +3,11 @@ body {
   font-size: 20px;
 }
 
+h1 {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
 #page-wrap {
   width: 900px;
   margin: 25px auto;

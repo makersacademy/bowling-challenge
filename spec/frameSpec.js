@@ -52,9 +52,8 @@ describe("Frame", function() {
   describe("scoring a strike", function() {
     it("can be given a bonus", function() {
       frame.bowl(10);
-      frame.setBonus("strike");
-      frame.bonus.addPoints(4);
-      frame.bonus.addPoints(5);
+      frame.addToBonus(4);
+      frame.addToBonus(5);
       expect(frame.getScore()).toEqual(19);
     });
   });

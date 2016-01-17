@@ -5,24 +5,21 @@ Challenge #5. It is written in JavaScript and uses jQuery, HTML and CSS on the f
 
 It uses three classes: Game, Frame and Bonus.
 
-The Game initialises with a frame class and the number of frames that you
-wish to play as arguments. It defaults to the frame class here.
+The Game initialises with a frame class and the number of frames to be played. Either of these defaults can be changed by entering them as arguments: `new Game(frameKlass, gameLength)`.
 
-The Game class tracks the frame the player is bowling in and calculates the
-total score of the game. It is also responsible for the rules governing when to
-award a bonus and what type (i.e. by marking a frame as being a "strike" or
-"spare"). You could for example, add new rules that awards a special bonus to
-a player scoring zero in a frame.
+The Game class tracks the frame the player is currently bowling in and passes scores in to that frame. 
 
-The Frame class is responsible for tracking the score of each frame.
+The Frame class is responsible for tracking the score of each frame within its `scoreCard` array.
+
+It awards a bonus to a frame when it is complete (i.e. by marking a frame as being a "strike" or "spare").
 
 
-
-
-Still To Do
+Builds
 -----------
 * Use Spies to fully isolate the unit tests
 * Return running total for the game at each frame
+* Extract a 'score calculator' class that returns a total for the finalised frames that are passed in to it.
+* Extract 'bonus award' logic from the Game class to determine the type of bonus on the basis of the frame results passed in to it. This would then instantiate the bonus class with the correct number of bowls.
 
 
 

@@ -41,7 +41,20 @@ Game.prototype._increaseScore = function(numberOfPins) {
 };
 
 Game.prototype._isEndOfGame = function() {
-  if ((typeof this.framesLog.frames[9] !== 'undefined') && (this.framesLog.frames[9].reduce((a, b) => a + b, 0) === 10)) {
+  if ((typeof this.framesLog.frames[9] !== 'undefined') && (this.framesLog.frames[9].reduce((a, b) => a + b, 0) === 10) && (this.framesLog.frames[9].length === 2)) {
+    if (this.framesLog.currentFrame.length === 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  if ((typeof this.framesLog.frames[9] !== 'undefined') && (this.framesLog.frames[9].reduce((a, b) => a + b, 0) === 10) && (this.framesLog.frames[9].length === 1)) {
+    if ((typeof this.framesLog.frames[10] !== 'undefined') && (this.framesLog.frames[10].length === 2)) {
+      return true;
+    }
+    if ((typeof this.framesLog.frames[10] !== 'undefined') && (this.framesLog.frames[10].length === 1) && (typeof this.framesLog.frames[11] !== 'undefined')) {
+      return true;
+    }
     return false;
   }
   return (this.framesLog.frames.length >= 10);

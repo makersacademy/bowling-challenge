@@ -60,12 +60,51 @@ describe('Game', function() {
 
   describe('#_isEndOfGame', function() {
     it('returns an end of game message after 10 frames', function() {
-      frame.frames = [1,2,3,4,5,6,7,8,9,10];
+      game.framesLog.frames = [1,2,3,4,5,6,7,8,9, [7,2]];
       expect(game.bowlA(4)).toEqual('Game over: Ten frames played');
     });
 
     it('allows another ball if last frame was spare', function() {
-      frame.frames = [[1],[1],[1],[1],[1],[1],[1],[1],[1],[8, 2]]
+      game.framesLog.frames = [[1],[1],[1],[1],[1],[1],[1],[1],[1],[8, 2]];
+      expect(game.bowlA(4)).not.toEqual('Game over: Ten frames played');
+    });
+
+    it('prevents another ball if last frame was spare and the bonus ball has been bowled', function() {
+      game.framesLog.frames = [[1],[1],[1],[1],[1],[1],[1],[1],[1],[8, 2]]
+      game.framesLog.currentFrame = [4];
+      expect(game.bowlA(4)).toEqual('Game over: Ten frames played');
+    });
+
+    it('allows another ball if last frame was strike', function() {
+      game.framesLog.frames = [[1],[1],[1],[1],[1],[1],[1],[1],[1],[10]]
+      expect(game.bowlA(4)).not.toEqual('Game over: Ten frames played');
+    });
+
+    it('allows another two balls if last frame was strike', function() {
+      game.framesLog.frames = [[1],[1],[1],[1],[1],[1],[1],[1],[1],[10]];
+      game.framesLog.currentFrame = [4];
+      expect(game.bowlA(4)).not.toEqual('Game over: Ten frames played');
+    });
+
+    it('prevents another ball if last frame was strike and two bonus balls have been bowled', function() {
+      game.framesLog.frames = [[1],[1],[1],[1],[1],[1],[1],[1],[1],[10],[4, 4]];
+      expect(game.bowlA(4)).toEqual('Game over: Ten frames played');
+    });
+
+    it('allows another strike if last frame was strike', function() {
+      game.framesLog.frames = [[1],[1],[1],[1],[1],[1],[1],[1],[1],[10]]
+      expect(game.bowlA(10)).not.toEqual('Game over: Ten frames played');
+    });
+
+    it('allows another two strikes if last frame was strike', function() {
+      game.framesLog.frames = [[1],[1],[1],[1],[1],[1],[1],[1],[1],[10], [10]]
+      expect(game.bowlA(10)).not.toEqual('Game over: Ten frames played');
+    });
+
+    it('allows another two strikes if last frame was strike', function() {
+      game.framesLog.frames = [[1],[1],[1],[1],[1],[1],[1],[1],[1],[10]]
+      game.bowlA(10);
+      game.bowlA(10);
       expect(game.bowlA(4)).not.toEqual('Game over: Ten frames played');
     });
   });

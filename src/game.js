@@ -18,11 +18,10 @@ Game.prototype.addFrame = function(){
   this._addBonus();
   this.frameCount ++;
   this.frameScore();
-  if(this.checkLastFrame !== true)
+  if(this.checkLastFrame() === true)
+    {this.currentFrame = new FinalFrame()}
+  else
     {this.currentFrame = new Frame()}
-  else {
-    this.currentFrame = new FinalFrame()
-    }
 };
 
 Game.prototype._addBonus = function(){
@@ -44,9 +43,7 @@ Game.prototype.checkOver = function(){
 Game.prototype.frameScore = function(){
   if(this.bonusList[this.frameCount] === 0)
     {this.results.push(this.scorecard[this.frameCount][0] + this.scorecard[this.frameCount][1])}
-  if(this.bonusList[this.frameCount] === 1)
-    {this.results.push(10)}
-  if(this.bonusList[this.frameCount] === 2)
+  else
     {this.results.push(10)}
     this.calcBonus();
     this.calcTotalScore();
@@ -62,13 +59,45 @@ Game.prototype.calcTotalScore = function(){
 
 Game.prototype.calcBonus = function(){
 if(this.frameCount > 0)
-//this sorts out the spares
-  {if(this.bonusList[this.frameCount - 1] === 1)
-    {this.results[this.frameCount - 1] += this.scorecard[this.frameCount][0]}
+    {this._calcSpareBonus()}
+    {this._calcStrikeBonus()}
+    {this._calcDoubleStrikeBonus()}
+if(this.frameCount === 9)
+  {this._calcFinalBonus()}
   }
-  //this sorts out a strike followed by a non-strike
-  {if(this.bonusList[this.frameCount - 1] === 2 && this.results[this.frameCount] !== 10)
-      {this.results[this.frameCount - 1] += (this.scorecard[this.frameCount][0] + this.scorecard[this.frameCount][1])}}
-  if(this.bonusList[this.frameCount - 2] === 2 && this.bonusList[this.frameCount - 1] === 2)
-    {this.results[this.frameCount - 2] += (this.scorecard[this.frameCount - 1][0] + this.scorecard[this.frameCount][0])}
+
+  Game.prototype._calcSpareBonus = function(){
+    if(this.bonusList[this.frameCount - 1] === 1)
+      {this.results[this.frameCount - 1] +=
+      this.scorecard[this.frameCount][0]}
   }
+
+  Game.prototype._calcStrikeBonus = function(){
+    if(this.bonusList[this.frameCount - 1] === 2 &&
+      this.results[this.frameCount] !== 10)
+        {this.results[this.frameCount - 1] +=
+        (this.scorecard[this.frameCount][0] +
+        this.scorecard[this.frameCount][1])}
+  }
+
+  Game.prototype._calcDoubleStrikeBonus = function(){
+    if(this.bonusList[this.frameCount - 2] === 2 &&
+       this.bonusList[this.frameCount - 1] === 2)
+          {this.results[this.frameCount - 2] +=
+          (this.scorecard[this.frameCount - 1][0] +
+           this.scorecard[this.frameCount][0])}
+  }
+
+Game.prototype._calcFinalBonus = function(){
+  if(this.bonusList[this.frameCount - 1] === 2)
+    {this.results[this.frameCount - 1] +=
+    this.scorecard[this.frameCount][0] + this.scorecard[this.frameCount][1]}
+  if(this.bonusList[this.frameCount - 1] === 1)
+    {this.results[this.frameCount - 1] +=
+    this.scorecard[this.frameCount][0]}
+  if(this.bonusList[this.framecount] === 1)
+    {this.results[this.framecount] += this.scorecard[this.frameCount][2]}
+  if(this.bonusList[this.framecount] === 2)
+      {this.results[this.framecount] +=
+      this.scorecard[this.frameCount][1] + this.scorecard[this.frameCount][2]}
+}

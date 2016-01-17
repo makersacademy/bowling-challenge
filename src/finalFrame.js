@@ -10,11 +10,25 @@ function FinalFrame(){
     this.pins -= score;
     this.results.push(score);
     this._addRoll();
+    this.setBonus();
+    this.pinReset();
+  }
+
+  FinalFrame.prototype.pinReset = function(){
+    if(this.getBonus() > 0){this.pins = 10}
+  }
+
+  FinalFrame.prototype.setBonus = function(){
+    if(this.pins === 0 && this.currentRoll === 3)
+      {this.bonus = 1}
+    if(this.pins === 0 && this.currentRoll === 2)
+      {this.bonus = 2}
   }
 
   FinalFrame.prototype.checkComplete = function(){
-    if(this.currentRoll === 3 && this.pins > 0)
+    if(this.currentRoll === 3 && this.bonus === 0 ||
+      this.currentRoll === 4 && this.bonus > 0)
       {return true}
-    if(this.currentRoll === 2 || this.currentRoll === 3 && this.results.reduce === 10)
+    else
       {return false}
   }

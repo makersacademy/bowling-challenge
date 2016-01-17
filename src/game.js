@@ -3,8 +3,9 @@ function Game(frame) {
 }
 
 Game.prototype.bowlA = function(numberOfPins) {
+  var error = 'Nope. Ten pins max per frame'
   if (this._isEndOfGame()) {return 'Game over: Ten frames played'}
-  if (this._isTooManyPins(numberOfPins)) {throw new Error('Nope. Ten pins max per frame')}
+  if (this._isTooManyPins(numberOfPins)) {throw new Error(error)}
   this.framesLog.receivePins(numberOfPins);
 }
 
@@ -35,11 +36,15 @@ Game.prototype._isTooManyPins = function(numberOfPins) {
 };
 
 Game.prototype._isLastFrameSpare = function() {
-  return (typeof this.framesLog.frames[9] !== 'undefined') && (this.framesLog.frames[9].reduce((a, b) => a + b, 0) === 10) && (this.framesLog.frames[9].length === 2);
+  return (typeof this.framesLog.frames[9] !== 'undefined') &&
+  (this.framesLog.frames[9].reduce((a, b) => a + b, 0) === 10) &&
+  (this.framesLog.frames[9].length === 2);
 };
 
 Game.prototype._isLastFrameStrike = function() {
-  return (typeof this.framesLog.frames[9] !== 'undefined') && (this.framesLog.frames[9].reduce((a, b) => a + b, 0) === 10) && (this.framesLog.frames[9].length === 1);
+  return (typeof this.framesLog.frames[9] !== 'undefined') &&
+  (this.framesLog.frames[9].reduce((a, b) => a + b, 0) === 10) &&
+  (this.framesLog.frames[9].length === 1);
 }
 
 Game.prototype._isSpareComplete = function() {
@@ -51,10 +56,13 @@ Game.prototype._isSpareComplete = function() {
 };
 
 Game.prototype._isStrikeComplete = function() {
-  if ((typeof this.framesLog.frames[10] !== 'undefined') && (this.framesLog.frames[10].length === 2)) {
+  if ((typeof this.framesLog.frames[10] !== 'undefined') &&
+    (this.framesLog.frames[10].length === 2)) {
     return true;
   }
-  if ((typeof this.framesLog.frames[10] !== 'undefined') && (this.framesLog.frames[10].length === 1) && (typeof this.framesLog.frames[11] !== 'undefined')) {
+  if ((typeof this.framesLog.frames[10] !== 'undefined') &&
+    (this.framesLog.frames[10].length === 1) &&
+    (typeof this.framesLog.frames[11] !== 'undefined')) {
     return true;
   }
   return false;

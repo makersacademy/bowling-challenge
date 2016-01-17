@@ -10,7 +10,7 @@ This weekend challenge is to create the logic behind a Bowling game in Javascrip
 # Implementation
 
 The implementation was driven by acceptance unit test cycles, using Jasmine as the testing framework.
-![makersacademy](https://github.com/allimac/ma-bowling-challenge/images/screenshot.png)
+![bowling-game](https://github.com/allimac/ma-bowling-challenge/blob/master/images/screenshot.png)
 
 ## How to use it
 - First clone this project to your local machine.

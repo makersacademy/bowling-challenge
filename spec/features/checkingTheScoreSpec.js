@@ -5,20 +5,6 @@ describe ('FEATURE TEST :Checking the score', function () {
     game = new Game();
   });
 
-  describe('checking the overall score', function() {
-    it('allows the score to be checked after one ball', function() {
-      game.bowlA(4);
-      expect(game.checkScore()).toEqual(4);
-    });
-
-    it('allows the score to be checked after multiple balls', function() {
-      game.bowlA(4);
-      game.bowlA(5);
-      game.bowlA(4);
-      expect(game.checkScore()).toEqual(13);
-    });
-  });
-
   describe('seeing the score for each frame', function() {
 
     it('passes the number of pins knocked down to the frame', function() {

@@ -5,8 +5,9 @@ describe ('FEATURE TEST: Bowling a ball', function () {
   });
 
   it('allows a ball to be bowled', function() {
-    game.bowlA(5);
-    expect(game.getBallCount()).toEqual(1);
+    expect(function() {
+      game.bowlA(5);
+    }).not.toThrow();
   });
 
   it('allows multiple balls to be bowled', function() {
@@ -14,7 +15,9 @@ describe ('FEATURE TEST: Bowling a ball', function () {
     for (n = 0; n < 5; n++) {
       game.bowlA(5);
     }
-    expect(game.getBallCount()).toEqual(5);
+    expect(function() {
+      game.bowlA(5);
+    }).not.toThrow();
   });
 
   it('prevents more than 10 pins knocked down per frame', function() {

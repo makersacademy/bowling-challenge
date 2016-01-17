@@ -21,7 +21,6 @@ Frame.prototype.getFrameScores = function() {
       return output
     }
     output.push([score]);
-    // output.push([this._reduceFrameToScore(i)]);
   }
   return output;
 };
@@ -67,12 +66,10 @@ Frame.prototype._addBonusOrSetScoreToZero = function(score, frame, nextFrame, ne
       bonus_score = score + nextFrame[0];
   }
   if (frame.length === 1 && typeof nextFrame === 'object' && typeof nextNextFrame === 'object') {
-    var bonus
-    bonus = nextFrame.length === 1 ? (nextFrame[0] + nextNextFrame[0]) : nextFrame.reduce((a, b) => a + b, 0);
+    var bonus = nextFrame.length === 1 ? (nextFrame[0] + nextNextFrame[0]) : nextFrame.reduce((a, b) => a + b, 0);
     bonus_score = score + bonus;
   } else if (frame.length === 1 && typeof nextFrame === 'object' && nextNextFrame === undefined) {
-      var bonus
-      bonus = nextFrame.length === 1 ? (nextFrame[0] + this.currentFrame[0]) : nextFrame.reduce((a, b) => a + b, 0);
+      var bonus = nextFrame.length === 1 ? (nextFrame[0] + this.currentFrame[0]) : nextFrame.reduce((a, b) => a + b, 0);
       bonus_score = score + bonus;
   }
   return bonus_score;
@@ -87,11 +84,3 @@ function twoDArrayTotal(array) {
   }
   return sum;
 }
-
-
-// Frame.prototype._isNotEnoughDataToCalcStrike = function(nextFrame, nextNextFrame) {
-//   if ((nextFrame === undefined) || (nextFrame.length === 1 && nextNextFrame === undefined && this.currentFrame[0] === undefined)) {
-//     return true;
-//   }
-//   return false;
-// }

@@ -38,3 +38,4 @@ describe("Score", function() {
       expect(score.scores.pop()).toEqual(267);
     });
   });
+});

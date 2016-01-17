@@ -7,7 +7,7 @@ function Game() {
 
 Game.prototype.enterPins = function(pins) {
   if(!this.isGameInProgress()) {throw "The game is over";}
-  if(this.rounds.length < 9) {
+  if(this.rounds.length < this.NUMBER_OF_ROUNDS - 1) {
     this.round.acceptPins(pins);
   } else {
     this.round.acceptFinalPins(pins);

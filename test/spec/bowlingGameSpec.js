@@ -12,7 +12,15 @@ describe('bowlingGame', function() {
   });
 
   it('can roll a gutter game', function() {
-
+    customInput(20, 0);
+    expect(bowlingGame.score()).toBe(0)
   });
+
+  it('can roll a one point game', function() {
+    customInput(20, 1);
+    expect(bowlingGame.score()).toBe(1)
+  });
+
+
 
 });

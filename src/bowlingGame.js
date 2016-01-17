@@ -4,5 +4,9 @@ var BowlingGame = function() {
 };
 
 BowlingGame.prototype.scoreInput = function(pins) {
-  this.scoreInput.push(pins);
+  // this.scoreInput.push(pins);
 };
+
+BowlingGame.prototype.score = function() {
+  return 0
+}

@@ -43,10 +43,12 @@ Game.prototype.checkOver = function(){
 Game.prototype.frameScore = function(){
   if(this.bonusList[this.frameCount] === 0)
     {this.results.push(this.scorecard[this.frameCount][0] + this.scorecard[this.frameCount][1])}
+  else if(this.frameCount === 9 && this.bonusList[9] > 0)
+    {this.results.push(this.scorecard[this.frameCount][0] + this.scorecard[this.frameCount][1] +this.scorecard[this.frameCount][2])}
   else
     {this.results.push(10)}
-    this.calcBonus();
-    this.calcTotalScore();
+  this.calcBonus();
+  this.calcTotalScore();
 }
 
 Game.prototype.calcTotalScore = function(){
@@ -62,8 +64,6 @@ if(this.frameCount > 0)
     {this._calcSpareBonus()}
     {this._calcStrikeBonus()}
     {this._calcDoubleStrikeBonus()}
-if(this.frameCount === 9)
-  {this._calcFinalBonus()}
   }
 
   Game.prototype._calcSpareBonus = function(){
@@ -87,17 +87,3 @@ if(this.frameCount === 9)
           (this.scorecard[this.frameCount - 1][0] +
            this.scorecard[this.frameCount][0])}
   }
-
-Game.prototype._calcFinalBonus = function(){
-  if(this.bonusList[this.frameCount - 1] === 2)
-    {this.results[this.frameCount - 1] +=
-    this.scorecard[this.frameCount][0] + this.scorecard[this.frameCount][1]}
-  if(this.bonusList[this.frameCount - 1] === 1)
-    {this.results[this.frameCount - 1] +=
-    this.scorecard[this.frameCount][0]}
-  if(this.bonusList[this.framecount] === 1)
-    {this.results[this.framecount] += this.scorecard[this.frameCount][2]}
-  if(this.bonusList[this.framecount] === 2)
-      {this.results[this.framecount] +=
-      this.scorecard[this.frameCount][1] + this.scorecard[this.frameCount][2]}
-}

@@ -23,7 +23,7 @@ describe("bowlingGame", function() {
 
     it("if player bowls a strike the frame number is incremented", function() {
       game.bowl(10);
-    
+
       expect(game.frameNumber).toEqual(1);
     });
 
@@ -32,6 +32,49 @@ describe("bowlingGame", function() {
       game.bowl(5);
       game.bowl(5);
       expect(game.frameNumber).toEqual(1);
+    });
+
+    it("player gets awarded a strike bonus if he gets 3 strikes in a row(score + 2 next rolls)", function() {
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      expect(game.gameFrames[0].finalFrameScore).toEqual(30);
+    });
+
+    it("player gets awarded a spare bonus if he knocks down all the pins in two attempts (bonus: next roll) ", function() {
+      game.bowl(5);
+      game.bowl(5);
+      game.bowl(5);
+      expect(game.gameFrames[0].finalFrameScore).toEqual(15);
+    });
+
+    it("play can roll a perfect game of 300", function() {
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      expect(game.totalScore).toEqual(300);
+    });
+
+    it("play can roll a gutter game of 0 total score", function() {
+      game.bowl(0);
+      game.bowl(0);
+      game.bowl(0);
+      game.bowl(0);
+      game.bowl(0);
+      game.bowl(0);
+      game.bowl(0);
+      game.bowl(0);
+
+      expect(game.gameFrames[0].finalFrameScore).toEqual(99);
     });
 
 

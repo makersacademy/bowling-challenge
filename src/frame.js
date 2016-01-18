@@ -32,3 +32,8 @@ frame.prototype.isSpareScored = function() {
 frame.prototype.setFinalFrameScore = function(score) {
  this.finalFrameScore = this.framesScores[0] + this.framesScores[1]+ this.bonus
 }
+
+frame.prototype.setBonus = function(bonusValue) {
+  this.bonus += bonusValue;
+  this.setFinalFrameScore();
+}

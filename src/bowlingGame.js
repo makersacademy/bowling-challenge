@@ -81,6 +81,9 @@ return 'strike!';
 // private methods
 //
 //
+//
+//
+
 
 BowlingGame.prototype.incrementRoll = function() {
   console.log("increments roll called");
@@ -101,11 +104,12 @@ BowlingGame.prototype.tenthFrame = function(){
 BowlingGame.prototype.newFrame = function() {
   console.log('triggered newFrame')
   this.gameFrames.push(this.currentFrame);
-
+  this.awardBonus();
   this.resetRoll();
   this.incrementFrame();
   this.currentFrame = new frame();
   this.resetPinsKnockedDown();
+  this.updateScore();
 
 };
 
@@ -120,4 +124,44 @@ BowlingGame.prototype.incrementFrame = function() {
 
 BowlingGame.prototype.resetPinsKnockedDown = function() {
  this.PinsKnockedDown = 0;
+};
+
+BowlingGame.prototype.awardBonus = function(){
+  if (this.gameFrames.length > 1) {
+    if (this.gameFrames[this.gameFrames.length-2].isSpare === true){
+       this.gameFrames[this.gameFrames.length-2]
+        .setBonus(this.currentFrame.framesScores[0]);
+        console.log("Spare Bonus Awarded");
+    }
+  }
+
+  if (this.gameFrames.length > 2) {
+    this.doubleStrikeBonus();
+  }
+};
+
+BowlingGame.prototype.doubleStrikeBonus = function(){
+  if (this.gameFrames[this.gameFrames.length-2].isStrike === true && this.gameFrames[this.gameFrames.length-3].isStrike === true ){
+    console.log(this.currentFrame.framesScores);
+    this.gameFrames[this.gameFrames.length-3]
+      .setBonus(
+        (this.gameFrames[this.gameFrames.length-2].framesScores[0] +
+        this.gameFrames[this.gameFrames.length-2].framesScores[1] + this.currentFrame.framesScores[0]) //+
+      ) ;
+    console.log("Double Strike Bonus Awarded");
+  }
+}
+
+BowlingGame.prototype.updateScore = function() {
+  this.totalScore = 0;
+ var arrayLength = this.gameFrames.length;
+ for (var i = 0; i < arrayLength; i++) {
+     this.gameFrames[i].setFinalFrameScore();
+     if (i < 10) {
+       this.totalScore  +=  this.gameFrames[i].finalFrameScore;
+     }
+     console.log("TRIGGERED UPDATE SCORE!!!!!!!!!");
+     console.log(this.gameFrames[i].finalFrameScore);
+     //Do something
+ }
 };

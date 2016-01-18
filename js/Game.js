@@ -8,6 +8,8 @@ Game.prototype.playFrame = function () {
   this.gameOver();
 };
 
+
+
 Game.prototype.gameOver = function () {
   var length = this.frames.length;
   if (length === 10 && final_frame !== 10) {
@@ -30,8 +32,8 @@ Game.prototype.calculateScore = function () {
       frame[0] = 10 + copyFrames[i + 1][0] + copyFrames[i + 1][1]
     }
     if (frame[0] + frame[1] === 10 && frame[0] !== 10){
-      frame[1] = 0;
       frame[0] = 10 + copyFrames[i + 1][0];
+      frame[1] = 0;
     }
     score += frame[0] + frame[1];
   }

@@ -1,27 +1,15 @@
-
 Bowling Challenge
 =================
 
+This is a solution to a challenge given by Makers Academy on week 5, part of Learn
+to code in 12 weeks course.
 
-* Challenge time: rest of the day and weekend, and the entire of lab week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
-Task: 
------
+The aim of the challenge.
+-------------------------
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by 
-
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
 
 
 ### Optional Extra
@@ -57,24 +45,64 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-Code Review
------------
 
-In code review we'll be hoping to see:
+Technologies used
+-----------------
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+  * Testing
+    * Jasmine
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+  * Back end framework
+    * JavaScript
 
-CI
---
+  * Front end framework
+    * jQuery
 
-We are running JSHint on our CI server - save yourself having to wait for a build to happen by linting your code on your machine first. [Here are installations for most popular editors](http://jshint.com/install/). Grab the `.jshintrc` from this repo and have better JS!
 
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
+Functionalities requested
+-------------------------
 
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.
+- Count and sum the scores of a bowling game for one player (in JavaScript).
+
+- A bowling game consists of 10 frames in which the player tries to knock down the
+10 pins.
+
+- In every frame the player can roll one or two times.
+
+- The actual number depends on strikes and spares.
+
+- The score of a frame is the number of knocked down pins plus bonuses for
+strikes and spares. After every frame the 10 pins are reset.
+
+
+Setting up testing environment
+------------------------------
+
+In order to play around with this app you need to clone the repo shown below and
+execute the following commands to be functional.
+
+```sh
+$ git clone git@github.com:Willibaur/bowling-challenge.git
+```
+
+If you want to run all tests written previously, you need to execute:
+
+```sh
+$ username/bowling-challenge/open SpecRunner.html
+```
+
+This will open a window in your default browser when you can see all info related
+to the tests written in Jasmine.
+
+Web access application
+-----------------------
+
+[![Build Status](https://travis-ci.org/makersacademy/bowling-challenge.svg?branch=master)](https://travis-ci.org/makers/bowling-challenge)
+
+[![Build Status](https://travis-ci.org/Willibaur/bowling-challenge.svg?branch=master)](https://travis-ci.org/makers/bowling-challenge)
+
+
+Contributors
+------------
+
+* [William Bautista](https://github.com/Willibaur)

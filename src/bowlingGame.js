@@ -5,15 +5,16 @@ function BowlingGame() {
     this.gameFrames = [];
     this.currentFrame = new frame();
     this.PinsKnockedDown = 0;
+    this.hasEnded = false;
 }
 
 BowlingGame.prototype.bowl = function(pinsHit){
   if (this.roll === 0){
   this.bowlFirst(pinsHit);
-
+  this.gameEnd();
   }else {
   this.bowlSecond(pinsHit);
-
+  this.gameEnd();
   }
 };
 
@@ -164,4 +165,26 @@ BowlingGame.prototype.updateScore = function() {
      console.log(this.gameFrames[i].finalFrameScore);
      //Do something
  }
+};
+
+BowlingGame.prototype.zeroPinsDown = function(){
+  this.calcTotalScore();
+  this.newFrame();
+  return 'gutter_second';
+};
+
+BowlingGame.prototype.gameEnd = function(){
+
+if (this.gameFrames.length === 10 && this.gameFrames[this.gameFrames.length-1].isStrike === false && this.gameFrames[this.gameFrames.length-1].isSpare === false ) {
+  console.log("GAME ENDS!!!!!!!!!!!!!!");
+  this.hasEnded = true;
+}
+if(this.gameFrames.length === 12 && this.gameFrames[this.gameFrames.length-1].isSpare === true){
+  console.log("GAME ENDS!!!!!!!!!!!!!! 12th spare");
+  this.hasEnded = true;
+}
+if(this.gameFrames.length === 13){
+  this.hasEnded = true;
+  console.log("GAME ENDS!!!!!!!!!!!!!! 13th");
+}
 };

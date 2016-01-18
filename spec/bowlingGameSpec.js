@@ -45,6 +45,7 @@ describe("bowlingGame", function() {
       game.bowl(5);
       game.bowl(5);
       game.bowl(5);
+      game.bowl(5);
       expect(game.gameFrames[0].finalFrameScore).toEqual(15);
     });
 
@@ -73,10 +74,59 @@ describe("bowlingGame", function() {
       game.bowl(0);
       game.bowl(0);
       game.bowl(0);
-
-      expect(game.gameFrames[0].finalFrameScore).toEqual(99);
+      game.bowl(0);
+      game.bowl(0);
+      expect(game.totalScore).toEqual(0);
     });
 
+
+    it("game ends in tenth round if no spare or strike is scored", function() {
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(5);
+      game.bowl(3);
+
+      expect(game.hasEnded).toEqual(true);
+    });
+
+    it("game ends after 12th if 10th and 11th is a strike", function() {
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+
+      expect(game.hasEnded).toEqual(true);
+    });
+
+    it("game ends after 11th if 10th is a spare", function() {
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(5);
+      game.bowl(5);
+
+      expect(game.hasEnded).toEqual(true);
+    });
 
 
 

@@ -3,7 +3,11 @@ var BowlingGame = function() {
 };
 
 BowlingGame.prototype.scoreInput = function(pins) {
-  this.gameScores.push(pins);
+  if(/^([0-9]|10)$/.test(pins)) {
+    this.gameScores.push(pins);
+  } else {
+    throw new Error("Invalid input");
+  }
 };
 
 BowlingGame.prototype.score = function() {

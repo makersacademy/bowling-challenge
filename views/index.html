@@ -1,6 +1,9 @@
 <head>
 <link rel="stylesheet" type="text/css" href="./css/main.css">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<script src="../jquery.js"></script>
+<script src="../src/bowlingGame.js"></script>
+<script src="bowlingGame_jquery.js"></script>
 </head>
 <body>
    <h1>Bowling Calulator</h1>
@@ -19,8 +22,8 @@
         <th colspan='6'>Frame 10</th>
       </tr>
       <tr>
-        <td colspan='3'>1</td><td colspan='3'>2</td>
-        <td colspan='3'></td><td colspan='3'></td>
+        <td colspan='3' id="T1_1">b</td><td colspan='3' id="T1_2">a</td>
+        <td colspan='3' id="T2_1">b</td><td colspan='3' id="T2_2">a</td>
         <td colspan='3'></td><td colspan='3'></td>
         <td colspan='3'></td><td colspan='3'></td>
         <td colspan='3'></td><td colspan='3'></td>
@@ -31,8 +34,8 @@
         <td colspan='2'></td><td colspan='2'></td><td colspan='2'></td>
       </tr>
       <tr>
-        <td colspan='6'>1</td>
-        <td colspan='6'></td>
+        <td colspan='6' id="T1_"></td>
+        <td colspan='6' id="T2_"></td>
         <td colspan='6'></td>
         <td colspan='6'></td>
         <td colspan='6'></td>
@@ -47,21 +50,13 @@
   <div id="scoreInput">
     <button id="scoreOne" type="button" formmethod="post">1</button>
     <button id="scoreTwo" type="button" formmethod="post">2</button>
-    <button id="scoreOne" type="button" formmethod="post">3</button>
-    <button id="scoreTwo" type="button" formmethod="post">4</button>
-    <button id="scoreOne" type="button" formmethod="post">5</button>
-    <button id="scoreTwo" type="button" formmethod="post">6</button>
-    <button id="scoreOne" type="button" formmethod="post">7</button>
-    <button id="scoreTwo" type="button" formmethod="post">8</button>
-    <button id="scoreOne" type="button" formmethod="post">1</button>
-    <button id="scoreTwo" type="button" formmethod="post">2</button>
-    <button id="scoreOne" type="button" formmethod="post">3</button>
-    <button id="scoreTwo" type="button" formmethod="post">4</button>
-    <button id="scoreOne" type="button" formmethod="post">5</button>
-    <button id="scoreTwo" type="button" formmethod="post">6</button>
-    <button id="scoreOne" type="button" formmethod="post">7</button>
-    <button id="scoreTwo" type="button" formmethod="post">8</button>
-    <button id="scoreOne" type="button" formmethod="post">9</button>
-    <button id="scoreTwo" type="button" formmethod="post">/</button>
+    <button id="scoreThree" type="button" formmethod="post">3</button>
+    <button id="scoreFour" type="button" formmethod="post">4</button>
+    <button id="scoreFive" type="button" formmethod="post">5</button>
+    <button id="scoreSix" type="button" formmethod="post">6</button>
+    <button id="scoreSeven" type="button" formmethod="post">7</button>
+    <button id="scoreEight" type="button" formmethod="post">7</button>
+    <button id="scoreNine" type="button" formmethod="post">9</button>
+    <button id="scoreTen" type="button" formmethod="post">/</button>
   </div>
 </body>

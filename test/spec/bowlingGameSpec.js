@@ -41,6 +41,15 @@ describe('bowlingGame', function() {
     expect(bowlingGame.score()).toBe(300);
   });
 
+  describe('edge cases', function(){
+    it('only allows numeric inputs', function(){
+      expect(function(){bowlingGame.scoreInput("b");}).toThrow(new Error("Invalid input"));
+    });
+    it('only allows numbers 1-10', function(){
+      expect(function(){bowlingGame.scoreInput(11);}).toThrow(new Error('Invalid input'));
+    });
+  })
+
 
 
 

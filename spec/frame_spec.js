@@ -77,10 +77,10 @@ describe('Frame', function(){
     });
   });
 
-  describe('#checkComplete', function(){
+  describe('#isComplete', function(){
     it('should return false if the frame is ongoing', function(){
       frame.roll(4);
-      expect(frame.checkComplete()).toEqual(false);
+      expect(frame.isComplete()).toEqual(false);
     });
   });
 

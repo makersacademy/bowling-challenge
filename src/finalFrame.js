@@ -25,7 +25,7 @@ function FinalFrame(){
       {this.bonus = 2}
   }
 
-  FinalFrame.prototype.checkComplete = function(){
+  FinalFrame.prototype.isComplete = function(){
     if(this.currentRoll === 3 && this.bonus === 0 ||
       this.currentRoll === 4 && this.bonus > 0)
       {return true}

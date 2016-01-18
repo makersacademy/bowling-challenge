@@ -23,7 +23,7 @@ function Frame() {
     this._isSpare();
   }
 
-  Frame.prototype.checkComplete = function(){
+  Frame.prototype.isComplete = function(){
   if(this.currentRoll >= 3 || this.pins === 0)
     {return true;}
   else

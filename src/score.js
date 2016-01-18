@@ -12,7 +12,7 @@ Score.prototype.giveScore = function(pins) {
     } else if(pins[i][0] + pins[i][1] === this.BONUS_SCORE) {
       total += this._calculateSpareScore(pins, i);
     } else {
-      total += (pins[i][0] + pins[i][1])
+      total += (pins[i][0] + pins[i][1]);
     }
     this.scores.push(total);
   }

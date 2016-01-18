@@ -24,13 +24,15 @@ frame.prototype.isStrikeScored = function() {
 }
 
 frame.prototype.isSpareScored = function() {
-  if (this.framesScores[0] + this.framesScores[1] === 10) {this.isSpare = true;
+  if (this.framesScores[0] + this.framesScores[1] === 10) {
+    this.isSpare = true;
     console.log("SPARE!");
   }
 }
 
 frame.prototype.setFinalFrameScore = function(score) {
- this.finalFrameScore = this.framesScores[0] + this.framesScores[1]+ this.bonus
+ this.finalFrameScore = this.framesScores[0] +
+   this.framesScores[1]+ this.bonus
 }
 
 frame.prototype.setBonus = function(bonusValue) {

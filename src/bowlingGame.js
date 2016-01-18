@@ -118,7 +118,6 @@ BowlingGame.prototype.awardBonus = function(){
         .setBonus(this.currentFrame.framesScores[0]);
     }
   }
-
   if (this.gameFrames.length > 2) {
     this.doubleStrikeBonus();
   }
@@ -130,7 +129,8 @@ BowlingGame.prototype.doubleStrikeBonus = function(){
     this.gameFrames[this.gameFrames.length-3]
       .setBonus(
         (this.gameFrames[this.gameFrames.length-2].framesScores[0] +
-        this.gameFrames[this.gameFrames.length-2].framesScores[1] + this.currentFrame.framesScores[0]) //+
+        this.gameFrames[this.gameFrames.length-2]
+          .framesScores[1] + this.currentFrame.framesScores[0]) 
       ) ;
   }
 }
@@ -154,10 +154,13 @@ BowlingGame.prototype.zeroPinsDown = function(){
 
 BowlingGame.prototype.gameEnd = function(){
 
-if (this.gameFrames.length === 10 && this.gameFrames[this.gameFrames.length-1].isStrike === false && this.gameFrames[this.gameFrames.length-1].isSpare === false ) {
+if (this.gameFrames.length === 10 && this.gameFrames[this.gameFrames.length-1]
+    .isStrike === false && this.gameFrames[this.gameFrames.length-1]
+      .isSpare === false ) {
   this.hasEnded = true;
 }
-if(this.gameFrames.length === 12 && this.gameFrames[this.gameFrames.length-1].isSpare === true){
+if(this.gameFrames.length === 12 && this.gameFrames[this.gameFrames.length-1]
+    .isSpare === true){
   this.hasEnded = true;
 }
 if(this.gameFrames.length === 13){

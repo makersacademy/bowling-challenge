@@ -10,7 +10,7 @@ Round.prototype.acceptPins = function(pins) {
   this._checkPinValidity(pins);
   if(this.rollOne === null) {
     this._logRollOne(pins);
-    if(pins === 10) {this.isInProgress = false;}
+    if(pins === this.ROLL_TOTAL) {this.isInProgress = false;}
   } else if(this.rollTwo === null) {
     this._checkRoundTotals(pins);
     this._logRollTwo(pins);
@@ -23,13 +23,10 @@ Round.prototype.acceptFinalPins = function(pins) {
   if(this.rollOne === null) {
     this._logRollOne(pins);
   } else if(this.rollTwo === null) {
-    if(this.rollOne !== 10) {this._checkRoundTotals(pins);}
-    this._logRollTwo(pins);
-    if(this.rollOne + this.rollTwo < this.ROLL_TOTAL) {
-      this.isInProgress = false;}
+    this._handleFinalRoundRollTwo(pins);
   } else {
-      this.result.push(pins);
-      this.isInProgress = false;
+    this.result.push(pins);
+    this.isInProgress = false;
   }
 }
 
@@ -56,5 +53,15 @@ Round.prototype._checkPinValidity = function(pins) {
 Round.prototype._checkRoundTotals = function(pins) {
   if(this.rollOne + pins > this.ROLL_TOTAL) {
     throw "Invalid pin entry";
+  }
+}
+
+Round.prototype._handleFinalRoundRollTwo = function(pins) {
+  if(this.rollOne !== this.ROLL_TOTAL) {
+    this._checkRoundTotals(pins);
+  }
+  this._logRollTwo(pins);
+  if(this.rollOne + this.rollTwo < this.ROLL_TOTAL) {
+    this.isInProgress = false;
   }
 }

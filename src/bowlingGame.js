@@ -45,6 +45,7 @@ this.currentFrame.setSecondRollScore(this.PinsKnockedDown);
 
   if (this.PinsKnockedDown === 0) {
     this.zeroPinsDown();
+    this.newFrame();
   }
   else {
     this.calcTotalScore();
@@ -130,7 +131,7 @@ BowlingGame.prototype.doubleStrikeBonus = function(){
       .setBonus(
         (this.gameFrames[this.gameFrames.length-2].framesScores[0] +
         this.gameFrames[this.gameFrames.length-2]
-          .framesScores[1] + this.currentFrame.framesScores[0]) 
+          .framesScores[1] + this.currentFrame.framesScores[0])
       ) ;
   }
 }

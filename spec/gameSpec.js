@@ -21,13 +21,12 @@ describe('Game', function() {
       });
     });
 
-    // describe('#playFrame', function() {
-    //   it('appends to frames a new frame');
-    //     game.playFrame();
-    //     expect(game.frames.length).toEqual(1);
-    //   });
-    // });
-
+    describe('#playFrame', function() {
+      it('appends to frames a new frame', function() {
+        game.playFrame();
+        expect(game.frames.length).toEqual(1);
+      });
+    });
 
   //
   // // demonstrates use of spies to intercept and test method calls

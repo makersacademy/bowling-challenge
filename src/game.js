@@ -1,23 +1,23 @@
 function Game() {
   this.frames = [];
-  this.currentFrame = new Frame();
   this.scores = [];
   this.score = 0;
   this.frameCount = 0;
 }
 
-Game.prototype.playFrame = function() {
-  if(this.scores.length === 8) {
-		this.lastRoll();
-	} else if (this.frames.length === 2) {
-    this.checkBonus();
-    this.addScoresArray();
-    this.playFrame();
-	} else {
+Game.prototype.playFrame = function(frame) {
+  var frame = new Frame;
+  // if(this.scores.length === 8) {
+	// 	this.lastRoll();
+	// } else if (this.frames.length === 2) {
+  //   this.checkBonus();
+  //   this.addScoresArray();
+  //   this.playFrame();
+	// } else {
 		frame.firstRoll();
 		frame.secondRoll();
 		this.frames.push(frame);
-	}
+	// }
 };
 
 

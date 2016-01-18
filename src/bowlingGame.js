@@ -9,13 +9,17 @@ function BowlingGame() {
 }
 
 BowlingGame.prototype.bowl = function(pinsHit){
-  if (this.roll === 0){
+  if (this.roll === 0 && this.hasEnded == false){
   this.bowlFirst(pinsHit);
   this.gameEnd();
-  }else {
+}else if (this.hasEnded == false) {
   this.bowlSecond(pinsHit);
   this.gameEnd();
   }
+else{
+ console.log("Game Has Ended - Start a new game to play again.")
+  throw "Game Has Ended - Start a new game to play again.";
+}
 };
 
 BowlingGame.prototype.bowlFirst = function(pinsHit) {
@@ -80,10 +84,6 @@ return 'strike!';
 };
 
 // private methods
-//
-//
-//
-//
 
 
 BowlingGame.prototype.incrementRoll = function() {
@@ -161,8 +161,8 @@ BowlingGame.prototype.updateScore = function() {
      if (i < 10) {
        this.totalScore  +=  this.gameFrames[i].finalFrameScore;
      }
-     console.log("TRIGGERED UPDATE SCORE!!!!!!!!!");
-     console.log(this.gameFrames[i].finalFrameScore);
+    //  console.log("TRIGGERED UPDATE SCORE!!!!!!!!!");
+    //  console.log(this.gameFrames[i].finalFrameScore);
      //Do something
  }
 };
@@ -182,6 +182,8 @@ if (this.gameFrames.length === 10 && this.gameFrames[this.gameFrames.length-1].i
 if(this.gameFrames.length === 12 && this.gameFrames[this.gameFrames.length-1].isSpare === true){
   console.log("GAME ENDS!!!!!!!!!!!!!! 12th spare");
   this.hasEnded = true;
+
+
 }
 if(this.gameFrames.length === 13){
   this.hasEnded = true;

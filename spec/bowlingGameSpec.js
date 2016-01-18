@@ -93,10 +93,13 @@ describe("bowlingGame", function() {
       game.bowl(5);
       game.bowl(3);
 
+
       expect(game.hasEnded).toEqual(true);
     });
 
     it("game ends after 12th if 10th and 11th is a strike", function() {
+      game.bowl(10);
+      game.bowl(10);
       game.bowl(10);
       game.bowl(10);
       game.bowl(10);
@@ -122,8 +125,11 @@ describe("bowlingGame", function() {
       game.bowl(10);
       game.bowl(10);
       game.bowl(10);
+      game.bowl(10);
       game.bowl(5);
-      game.bowl(5);
+      game.bowl(5)
+      game.bowl(5)
+      game.bowl(5)
 
       expect(game.hasEnded).toEqual(true);
     });

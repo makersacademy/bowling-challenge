@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bowling Scorecard</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href="css/main.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="src/frame.js"></script>
+  <script src="src/finalFrame.js"></script>
+  <script src="src/game.js"></script>
+  <script src="src/interface.js"></script>
+</head>
+<body>
+  <h1>Bowling Scorecard</h1>
+  <section class="score-buttons">
+    <button id="B1">1</button>
+    <button id="B2">2</button>
+    <button id="B3">3</button>
+    <button id="B4">4</button>
+    <button id="B5">5</button>
+    <button id="B6">6</button>
+    <button id="B7">7</button>
+    <button id="B8">8</button>
+    <button id="B9">9</button>
+    <button id="B10">10</button>
+  </section>
+  <section class="scorecard">
+    <div class="row col-md-10 col-md-offset-1">
+      <ul>
+        <li class="frame">
+          <div class="framenum">Frame 1</div>
+          <div id="ball1-1" class="ball"></div>
+          <div id="ball1-2" class="ball last-ball"></div>
+          <div id="total1" class="ftotal"></div>
+        </li>
+        <li class="frame">
+          <div class="framenum">Frame 2</div>
+          <div id="ball2-1" class="ball"></div>
+          <div id="ball2-2" class="ball last-ball"></div>
+          <div id="total2" class="ftotal"></div>
+        </li>
+        <li class="frame">
+          <div class="framenum">Frame 3</div>
+          <div id="ball3-1" class="ball"></div>
+          <div id="ball3-2" class="ball last-ball"></div>
+          <div id="total3" class="ftotal"></div>
+        </li>
+        <li class="frame">
+          <div class="framenum">Frame 4</div>
+          <div id="ball4-1" class="ball"></div>
+          <div id="ball4-2" class="ball last-ball"></div>
+          <div id="total4" class="ftotal"></div>
+        </li>
+        <li class="frame">
+          <div class="framenum">Frame 5</div>
+          <div id="ball5-1" class="ball"></div>
+          <div id="ball5-2" class="ball last-ball"></div>
+          <div id="total5" class="ftotal"></div>
+        </li>
+        <li class="frame">
+          <div class="framenum">Frame 6</div>
+          <div id="ball6-1" class="ball"></div>
+          <div id="ball6-2" class="ball last-ball"></div>
+          <div id="total6" class="ftotal"></div>
+        </li>
+        <li class="frame">
+          <div class="framenum">Frame 7</div>
+          <div id="ball7-1" class="ball"></div>
+          <div id="ball7-2" class="ball last-ball"></div>
+          <div id="total7" class="ftotal"></div>
+        </li>
+        <li class="frame">
+          <div class="framenum">Frame 8</div>
+          <div id="ball8-1" class="ball"></div>
+          <div id="ball8-2" class="ball last-ball"></div>
+          <div id="total8" class="ftotal"></div>
+        </li>
+        <li class="frame">
+          <div class="framenum">Frame 9</div>
+          <div id="ball9-1" class="ball"></div>
+          <div id="ball9-2" class="ball last-ball"></div>
+          <div id="total9" class="ftotal"></div>
+        </li>
+        <li class="finalframe">
+          <div class="framenum">Frame 10</div>
+          <div id="ball10-1" class="ball"></div>
+          <div id="ball10-2" class="ball"></div>
+          <div id="ball10-3" class="ball last-ball"></div>
+          <div id="total10" class="ftotal"></div>
+        </li>
+      </ul>
+    </div>
+    <div class="row col-md-12">
+      <h1> Total Score </h1>
+      <div id="totalscore" class="well col-md-4 col-md-offset-4">0</div>
+    </div>
+  </section>
+</body>
+</html>

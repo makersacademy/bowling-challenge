@@ -1,0 +1,50 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background-color: #ECECEA;
+}
+
+h1 {
+  text-align: center;
+  font-size: 90px;
+  font-weight: 300;
+  letter-spacing: 19px;
+  margin-bottom: 10px;
+}
+
+#scoreInput {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+  padding-left: 240px;
+}
+
+
+
+
+table.bowlingsheet {
+  margin: 0 auto; width:80%; font-size:12px; border:1px solid; text-align: center; table-layout: fixed; margin-bottom: 40px;
+}
+table.bowlingsheet th, tr, td {
+  padding: 0; vertical-align: middle; font-family: Arial, Helvetica, sans-serif; font-weight: bold; letter-spacing: 2px
+}
+table.bowlingsheet th {
+  border-bottom:1px solid; background-color:#DE1B1B; height:30px;
+}
+table.bowlingsheet th:not(:last-child) {
+  border-right:1px solid;
+}
+table.bowlingsheet td {
+  height:30px; background: rgba(255, 255, 255, 0.5);
+}
+table.bowlingsheet tr td:not(:last-child) {
+  border-right:1px solid;
+}
+table.bowlingsheet tr:nth-child(2) td:nth-child(even) {
+  border-bottom:1px solid;
+}
+table.bowlingsheet tr:nth-child(2) td:last-child {
+  border-bottom:1px solid;
+}

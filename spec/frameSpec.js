@@ -4,8 +4,6 @@ describe('Frame', function() {
 
   beforeEach(function() {
     frame = new Frame();
-    spyOn(Math, 'random').and.returnValue(0.4);
-
   });
 
   describe('new game parameters', function() {
@@ -16,26 +14,129 @@ describe('Frame', function() {
     it('starts with 10 pins standing', function() {
       expect(frame.pinsLeft).toEqual(frame.MAX_PINS);
     });
-  });
-
-  describe('#firstRole', function() {
-    beforeEach(function() {
-        frame.firstRole();
-        });
-
-    it('ensures pins hit are removed from frame', function() {
-      expect(frame.pinsLeft).toEqual(6);
+    it('starts with a frame score of 0', function() {
+      expect(frame.frameScore).toEqual(0);
     });
   });
 
-  describe('#secondRole', function() {
-    beforeEach(function() {
-      frame.firstRole();
-      frame.secondRole();
+  describe('#firstRoll', function() {
+    describe('strike', function() {
+      beforeEach(function() {
+          spyOn(Math, 'random').and.returnValue(0.95);
+          frame.firstRoll();
+      });
+
+      it('changes isStrike to true', function() {
+        expect(frame.isStrike).toBe(true);
+      });
+
+      it('expects isSpare to be false', function() {
+        expect(frame.isSpare).toBe(false);
+      });
+
+      it('adds to bonus score the number of pins hit', function() {
+        expect(frame.scoreBonus).toEqual(10);
+      });
+
+      it('expects framescore to be 0', function() {
+        expect(frame.frameScore).toEqual(0);
+      });
+
+      it('resets the frame', function() {
+        expect(frame.pinsHit).toEqual(0);
+        expect(frame.pinsLeft).toEqual(frame.MAX_PINS);
+      });
     });
 
-    it('ensures max pins that can be hit are the pins left from firstRole', function() {
-      expect(frame.pinsLeft).toEqual(4);
+    describe('#no strike', function() {
+      beforeEach(function() {
+          spyOn(Math, 'random').and.returnValue(0.4);
+          frame.firstRoll();
+      });
+
+      it('isStrike expected to be false', function() {
+        expect(frame.isStrike).toBe(false);
+      });
+
+      it('expects isSpare to be false', function() {
+        expect(frame.isSpare).toBe(false);
+      });
+
+      it('adds to the frame score the number of pins hit', function() {
+        expect(frame.frameScore).toEqual(4);
+      });
+
+      it('ensures pins hit are removed from frame', function() {
+        expect(frame.pinsLeft).toEqual(6);
+      });
+    });
+  });
+
+  describe('#secondRoll', function() {
+    describe('strike', function() {
+      beforeEach(function() {
+          spyOn(Math, 'random').and.returnValue(0.95);
+          frame.firstRoll();
+          frame.secondRoll();
+      });
+
+      it('changes isStrike to true', function() {
+        expect(frame.isStrike).toBe(true);
+      });
+
+      it('adds to the frame bonus the number of pins hit', function() {
+        expect(frame.scoreBonus).toEqual(20);
+      });
+
+      it('resets the frame', function() {
+        expect(frame.pinsHit).toEqual(0);
+        expect(frame.pinsLeft).toEqual(frame.MAX_PINS);
+      });
+
+      it('adds to the frame bonus the number of pins hit', function() {
+        expect(frame.scoreBonus).toEqual(20);
+      });
+    });
+
+    describe('#no strike', function() {
+      beforeEach(function() {
+          spyOn(Math, 'random').and.returnValue(0.4);
+          frame.firstRoll();
+          frame.secondRoll();
+      });
+
+      it('isStrike expected to be false', function() {
+        expect(frame.isStrike).toBe(false);
+      });
+
+      it('isSpare expected to be false', function() {
+        expect(frame.isSpare).toBe(false);
+      });
+
+      it('adds to the frame score the number of pins hit', function() {
+        expect(frame.frameScore).toEqual(6);
+      });
+
+      it('ensures pins hit are removed from frame', function() {
+        expect(frame.pinsLeft).toEqual(4);
+      });
+    });
+
+    describe('#spare', function() {
+      beforeEach(function() {
+          spyOn(Math, 'random').and.returnValues(0.4, 0.9);
+          frame.firstRoll();
+          frame.secondRoll();
+      });
+
+      it('isStrike expected to be false', function() {
+        expect(frame.isStrike).toBe(false);
+      });
+
+      it('allows spare roll', function () {
+        expect(frame.pinsLeft).toEqual(0);
+        expect(frame.isSpare).toBe(true);
+      });
     });
   });
 
@@ -50,60 +151,4 @@ describe('Frame', function() {
       expect(frame.pinsHit).toEqual(0);
     });
   });
-// describe('new game parameters', function() {
-//
-//   it('starts with no pins hit', function() {
-//     expect(frame.pinsHit).toEqual(0);
-//   });
-//   it('starts with 10 pins standing', function() {
-//     expect(frame.pinsLeft).toEqual(frame.MAX_PINS);
-//   });
-// });
-
-
 });
-
-
-    //demonstrates use of custom matcher
-    // expect(game).toBePlaying(song);
-
-  // describe("when song has been paused", function() {
-  //   beforeEach(function() {
-  //     game.play(song);
-  //     player.pause();
-  //   });
-  //
-  //   it("should indicate that the song is currently paused", function() {
-  //     expect(player.isPlaying).toBeFalsy();
-  //
-  //     // demonstrates use of 'not' with a custom matcher
-  //     expect(player).not.toBePlaying(song);
-  //   });
-  //
-  //   it("should be possible to resume", function() {
-  //     player.resume();
-  //     expect(player.isPlaying).toBeTruthy();
-  //     expect(player.currentlyPlayingSong).toEqual(song);
-  //   });
-  // });
-  //
-  // // demonstrates use of spies to intercept and test method calls
-  // it("tells the current song if the user has made it a favorite", function() {
-  //   spyOn(song, 'persistFavoriteStatus');
-  //
-  //   player.play(song);
-  //   player.makeFavorite();
-  //
-  //   expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
-  // });
-  //
-  // //demonstrates use of expected exceptions
-  // describe("#resume", function() {
-  //   it("should throw an exception if song is already playing", function() {
-  //     player.play(song);
-  //
-  //     expect(function() {
-  //       player.resume();
-  //     }).toThrowError("song is already playing");
-  //   });
-  // });

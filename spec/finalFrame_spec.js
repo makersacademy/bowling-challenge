@@ -27,7 +27,7 @@ describe('Final Frame', function(){
     })
     it('should be 1 if strike', function(){
       fFrame.roll(10);
-      expect(fFrame.getBonus()).toEqual(2);
+      expect(fFrame.getBonus()).toEqual(1);
     })
   })
 

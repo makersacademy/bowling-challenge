@@ -10,19 +10,17 @@ function FinalFrame(){
     this.pins -= score;
     this.results.push(score);
     this._addRoll();
-    this.setBonus();
-    this.pinReset();
+    this._setBonus();
+    this._pinReset();
   }
 
-  FinalFrame.prototype.pinReset = function(){
+  FinalFrame.prototype._pinReset = function(){
     if(this.getBonus() > 0){this.pins = 10}
   }
 
-  FinalFrame.prototype.setBonus = function(){
-    if(this.pins === 0 && this.currentRoll === 3)
+  FinalFrame.prototype._setBonus = function(){
+    if(this.pins === 0)
       {this.bonus = 1}
-    if(this.pins === 0 && this.currentRoll === 2)
-      {this.bonus = 2}
   }
 
   FinalFrame.prototype.isComplete = function(){

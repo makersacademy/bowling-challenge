@@ -6,7 +6,7 @@ $(document).ready(function() {
   controlButtonsHandler();
 
   function setInterface() {
-    for (var i = 1; i <= game.defaults.pins; i++) {
+    for (var i = 0; i <= game.defaults.pins; i++) {
       $('#controls').append(
         '<button id="roll'+ i +'" class="btn btn-default" data-value="'+ i +
         '">'+ i +'</button>');

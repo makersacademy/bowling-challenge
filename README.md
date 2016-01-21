@@ -9,7 +9,7 @@ Screenshot
 Installation
 ------------
 You can try the app remotely:
->[https://bowling-giamir.herokuapp.com](https://bowling-giamir.herokuapp.com)
+>[http://giamir.com/projects/bowling](http://giamir.com/projects/bowling)
 
 or install it locally:
 ```

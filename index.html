@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bowling</title>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+
+  <script src="src/lane.js"></script>
+  <script src="src/frame.js"></script>
+  <script src="src/lastFrame.js"></script>
+  <script src="src/game.js"></script>
+  <script src="src/interface.js"></script>
+
+  <style>
+    #controls button{
+      margin: 10px 10px 10px 0;
+      width: 45px;
+      padding: 8px 0;
+    }
+    .grey{
+      background-color: #eee;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row text-center">
+      <h2>Bowling</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="table-responsive col-sm-12 col-md-7 col-lg-7">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Frame</th>
+              <th>Roll</th>
+              <th>Knocked Down Pins</th>
+              <th>Frame Score</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-12 col-md-offset-1 col-md-4 col-lg-offset-1 col-lg-4">
+        <div class="jumbotron">
+          <h4 id="currentframe"></h4>
+          <div id="controls"></div>
+          <hr>
+          <h4 id="totalscore"></h4>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

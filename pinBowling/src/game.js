@@ -5,7 +5,8 @@ function Game (pin, defaultScore) {
   this._DEFAULT_SCORE = defaultScore || 0;
   this.score = this._DEFAULT_SCORE;
   this._initialPinsThere = this.pin._initialPinsThere;
-  this._strikeReserve = this._prevRoundScore = this._spareReserve = this._currentScore = 0;
+  this._strikeReserve = this._prevRoundScore =
+    this._spareReserve = this._currentScore = 0;
   this._strikeValue = 10;
   this._round = 1;
 }

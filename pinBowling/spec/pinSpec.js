@@ -21,7 +21,7 @@ describe(".Pin", function () {
       expect(pin.pinsHit(1)).toEqual(1);
     });
 
-    it ("throws error if try to submit a number above number of pins there", function () {
+    it ("throws error when submitting above number of pins there", function () {
       expect(function () {pin.pinsHit(pin._pinsThere + 1)})
       .toThrow('cannot exceed pin number');
     });

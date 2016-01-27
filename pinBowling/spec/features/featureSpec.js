@@ -28,4 +28,23 @@ describe("Feature Tests", function () {
     expect(game.pin._pinsThere).toEqual(game.pin._initialPinsThere)
   });
 
+
+
+describe ('number of frames is limited', function () {
+  it('maximum of 10 frames normally', function () {
+    game.pinsHit(10);
+    game.pinsHit(10);
+    game.pinsHit(10);
+    game.pinsHit(10);
+    game.pinsHit(10);
+    game.pinsHit(10);
+    game.pinsHit(10);
+    game.pinsHit(10);
+    game.pinsHit(10);
+    game.pinsHit(1);
+    game.pinsHit(8);
+    expect(game.pinsHit(8)).toThrowError('No More Rounds')
+  });
+});
+
 });

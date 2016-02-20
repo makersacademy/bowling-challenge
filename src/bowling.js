@@ -49,6 +49,7 @@ Bowling.prototype.lastRound = function () {
 };
 
 Bowling.prototype.addScoreToFrame = function (score) {
+  //TO DO: if the current Frame is 10 and 3 rounds don't add anymore
   this.allFrames[this.currentFrame].push(score);
 };
 

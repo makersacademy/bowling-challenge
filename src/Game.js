@@ -1,10 +1,8 @@
-function Game(player) {
+function Game() {
   this.frames = [];
   this.totalScore = 0;
-  this.player = player;
 }
 
-Game.prototype.addFrame = function() {
-  var frame = new Frame();
+Game.prototype.addFrame = function(frame) {
   this.frames.push(frame);
 };

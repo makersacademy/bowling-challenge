@@ -4,6 +4,7 @@ describe("Game", function() {
 
     var game;
     var player;
+    var frame;
 
   beforeEach(function() {
     player = new Player;
@@ -18,15 +19,15 @@ describe("Game", function() {
     expect(game.totalScore).toEqual(0);
   });
 
-  it("has a player", function() {
-    expect(game.player).toEqual(new Player)
-  });
-
   describe("addFrame", function() {
-    it("creates a frame", function(){
-      game.addFrame();
-      expect(game.frames).toContain(new Frame)
+
+    it("adds a frame", function(){
+      player.firstBowl();
+      game.addFrame(frame)
+      expect(game.frames).toContain(frame)
     });
+
+
   });
 
 });

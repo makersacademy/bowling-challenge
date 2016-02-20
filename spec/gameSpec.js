@@ -4,20 +4,15 @@ describe('Game', function() {
 
   beforeEach(function() {
     game = new Game();
-    frame1 = jasmine.createSpyObj('frame', ['isSpare']);
-    frame2 = jasmine.createSpyObj('frame', ['isSpare']);
+    frame1 = jasmine.createSpyObj('frame1', ['showRolls', 'isSpare']);
+    frame2 = jasmine.createSpyObj('frame2', ['showRolls', 'isSpare']);
+    frame1.showRolls.and.returnValue([0, 0]);
   });
 
   describe('initializing a new Game', function() {
-    it('starts out with empty frames', function() {
+    it('starts out empty', function() {
       expect(game.frames).toEqual([]);
-    });
-
-    it('starts out with empty frameScores', function() {
       expect(game.frameScores).toEqual([]);
-    });
-
-    it('starts out with currFrameNum of 0', function() {
       expect(game.currFrameNum).toEqual(0);
     });
   });
@@ -37,6 +32,23 @@ describe('Game', function() {
     });
   });
 
-  // frame1.isSpare.and.returnValue(true);
+  describe('frameScores', function() {
+    it('keeps track of per frame scores in frameScores', function() {
+      frame1.showRolls.and.returnValue([1, 2]);
+      game.addFrame(frame1)
+      frame1.showRolls.and.returnValue([4, 5]);
+      game.addFrame(frame1)
+      expect(game.frameScores).toContain(3);
+      expect(game.frameScores).toContain(9);
+    });
+  });
 
+  describe('totalScore', function() {
+    it('keeps track of the totalScore', function() {
+      frame1.showRolls.and.returnValue([1, 2]);
+      game.addFrame(frame1)
+      game.addFrame(frame1)
+      expect(game.totalScore).toEqual(6);
+    });
+  });
 });

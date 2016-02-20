@@ -47,6 +47,54 @@ describe("User Story 4", function(){
     for (var i = 0; i < 20; i++){
       game.bowl();
     };
-    expect(game.result()).toEqual("Game Over!");
+    expect(game.endGame()).toEqual("Game Over!");
+  });
+});
+
+/*As a bowler,
+If I knock down all pins on my second turn,
+I expect to get a 'Spare!'*/
+
+describe("User Story 5", function(){
+  it("returns the result 'Spare! if all pins down in second roll", function(){
+    var game = new Game();
+    spyOn(game, "_getRandomInt").and.returnValue(5);
+    game.bowl();
+    game.bowl();
+    expect(game.result()).toEqual("Spare!");
+  });
+});
+
+/*As a bowler,
+If I knock down all pins on my first turn,
+I expect to get a 'Strike!' and miss the next turn.*/
+
+describe("User Story 6", function(){
+  it("returns the result 'Strike! if all pins down in first roll", function(){
+    var game = new Game();
+    spyOn(game, "_getRandomInt").and.returnValue(10);
+    game.bowl();
+    expect(game.result()).toEqual("Strike!");
+    expect(game.turn).toEqual(2);
+  });
+});
+
+/*7. As a bowler,
+If I get a strike or a spare in the tenth frame,
+I expect to roll an additional throw.*/
+
+describe("User Story 7", function(){
+  it("allows a third throw if I throw a strike on the last turn", function(){
+    var game = new Game();
+    spyOn(game, "_getRandomInt").and.returnValue(10);
+    for(var i = 0; i<10; i++){
+      game.bowl();
+      console.log(game.turn);
+    };
+    expect(game.endGame()).not.toEqual("Game Over!");
+    expect(game.turn).toEqual(10);
+    game.bowl();
+    game.bowl();
+    expect(game.endGame()).toEqual("Game Over!");
   });
 });

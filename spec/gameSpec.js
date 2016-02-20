@@ -3,10 +3,12 @@ describe("Game", function(){
 
   beforeEach(function(){
     game = new Game();
-    spyOn(game, "_getRandomInt").and.returnValue(4);
   });
 
   describe("frames", function(){
+    beforeEach(function(){
+      spyOn(game, "_getRandomInt").and.returnValue(4);
+    });
 
     it("starts on frame 1", function(){
       expect(game.turn).toEqual(1);
@@ -25,6 +27,11 @@ describe("Game", function(){
   });
 
   describe("pins", function(){
+
+    beforeEach(function(){
+      spyOn(game, "_getRandomInt").and.returnValue(4);
+    });
+
     it("frame starts with 10 pins", function(){
       expect(game.pins).toEqual(10);
     });
@@ -43,16 +50,55 @@ describe("Game", function(){
 
   describe("result", function(){
     it("returns 'number of pins' after a normal bowl", function(){
+      spyOn(game, "_getRandomInt").and.returnValue(4);
       game.bowl();
       expect(game.result()).toEqual("4 pins!");
     });
 
     it("returns 'game over' after the 10 frames played", function(){
+      spyOn(game, "_getRandomInt").and.returnValue(4);
       for(var i = 0; i < 20; i++){
         game.bowl();
       };
-      expect(game.result()).toEqual("Game Over!");
+      expect(game.endGame()).toEqual("Game Over!");
+    });
+
+    it("returns 'spare' if all pins knocked down after 2nd turn", function(){
+      spyOn(game, "_getRandomInt").and.returnValue(5);
+      game.bowl();
+      game.bowl();
+      expect(game.result()).toEqual("Spare!");
+    });
+
+    it("returns 'strike' if all pins knocked down after 1st turn", function(){
+      spyOn(game, "_getRandomInt").and.returnValue(10);
+      game.bowl();
+      expect(game.result()).toEqual("Strike!");
+    });
+
+    it("changes turns after a 'strike", function(){
+      spyOn(game, "_getRandomInt").and.returnValue(10);
+      game.bowl();
+      expect(game.turn).toEqual(2);
     });
   });
+
+describe("last turn", function(){
+  it("allows a third roll if a strike is scored in last turn", function(){
+    spyOn(game, "_getRandomInt").and.returnValue(10);
+    for (var i = 0; i < 10; i++){
+      game.bowl();
+    };
+    expect(game.turn).toEqual(10);
+  });
+
+  it("allows a third roll if a spare is scored in last turn", function(){
+    spyOn(game, "_getRandomInt").and.returnValue(5);
+    for (var i = 0; i < 20; i++){
+      game.bowl();
+    };
+    expect(game.turn).toEqual(10);
+  });
+});
 
 });

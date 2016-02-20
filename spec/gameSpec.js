@@ -5,7 +5,7 @@ describe("Game",function(){
 
   beforeEach(function(){
     game = new Game();
-    frame = {throws:[4,5]};
+    frame = {rolls:[4,5]};
   });
 
   describe("Game setup",function(){

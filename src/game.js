@@ -16,7 +16,7 @@ Game.prototype.score = function(){
   var totalScore = 0;
   for (var i=0;i<this.frames.length;i++){
     var frame = this.frames[i];
-    var frameScore = (frame.throws[0]+frame.throws[1]);
+    var frameScore = (frame.rolls[0]+frame.rolls[1]);
     totalScore += frameScore;
   };
   return totalScore;

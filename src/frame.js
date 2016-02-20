@@ -1,19 +1,25 @@
 function Frame(){
-  this.throws = [];
+  this.rolls = [];
   this.START_PINS = 10;
 };
 
-Frame.prototype.addThrow = function (throwValue) {
-  if(throwValue > this.pinsLeft()) {
+Frame.prototype.addRoll = function (rollValue) {
+  if(rollValue > this.pinsLeft()) {
     throw 'Value exceeds number of pins';
   };
-  this.throws.push(throwValue);
+  if(this.rolls.length === 0 && rollValue === 10){
+      this.rolls.push(rollValue);
+      this.rolls.push(this.pinsLeft());
+  }
+  else{
+    this.rolls.push(rollValue);
+  }
 };
 
 Frame.prototype.pinsLeft = function(){
-  if (this.throws.length === 0){
+  if (this.rolls.length === 0){
     return this.START_PINS;
   } else{
-  return this.START_PINS - this.throws[0];
+  return this.START_PINS - this.rolls[0];
   };
 };

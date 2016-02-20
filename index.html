@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Thermostat</title>
+    <link rel="stylesheet" type="text/css" href="css/thermo.css">
+
+  </head>
+  <body>
+    <section class='controls'>
+    <h1 id='temperature'></h1>
+      <section class='temp'>
+      <button id='temperature-up'> + </button>
+      <button id='temperature-down'> - </button>
+      <button id='temperature-reset'>Reset</button></section>
+    <section class='PSM-section'>
+      <span id='temp_display'></span> power saving mode is: <span class='PSS'> On </span>
+        <button id='switch-PSM'>Switch </button></section>
+
+  </section><section class='visuals'><div class='bottom-container'><span class= 'vertical-text'> DEGREES</span></div>
+  </section><section class='local'>
+      <section class='weather'>
+      <div id ='weather-icon'></div></section>
+      <section class='local2'>
+        <h2>Weather in <span class='city-name'>London</span></h2>
+        Current temperature <p><span id='ajax-result'></span> degrees</p>
+        <input id='city' type='text' name='city' placeholder="Type in new city"><br>
+        <button id='ajax-weather'>Change city</button>
+      </section>
+
+  </section>
+    <script src='src/thermostat.js'></script>
+    <script src="src/jquery-2.2.0.js"></script>
+    <script src="src/jquery.js"></script>
+  </body>
+
+</html>

@@ -30,6 +30,10 @@ I want to be able to see what my total score is as I progress,
 so that I can know how the player is doing.
 
 As a scorekeeper,
+I want to see what the total score is after each throw,
+so that I can know how the player is doing.
+
+As a scorekeeper,
 I want to be informed when the set is over,
 so that I know when to announce the total score.
 
@@ -45,10 +49,9 @@ so that I am not confused by reading it.
 Classes and roles:
 -----
 
-* A game holds sets, and announces the results
-* A set consists of ten frames of throws
-* A scorecard keeps the scoring of each throw and the total
-* The score-calculator calculates the total score
+* A game holds 10 frames, and announces the results
+<!-- * A set consists of ten frames of throws -->
 * A frame holds each of the throws
 * A throw knows whether it is a normal throw or a special throws
- 
+* A scorecard keeps the scoring of each throw and the total
+* The score-calculator calculates the total score

@@ -18,7 +18,6 @@ $(document).ready(function(){
       var frame_score = "#score-frame"+(i);
       $(frame_score).text(game.frameScore(i));
     };
-    console.log(game.result());
     $('#game-result').text(game.result());
     $('#total-score').text(game.total());
   });

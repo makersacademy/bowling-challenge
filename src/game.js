@@ -3,13 +3,13 @@ function Game(name) {
   this.turn = 1;
   this.roll = 0;
   this.pins = 10;
-  this.score = new Score;
-};
+  this.score = new Score();
+}
 
 Game.prototype.bowl = function() {
   if (this.turn > 10) {
     throw "The Game is Over";
-  };
+  }
   this._hitPins();
   this.roll++;
   this._specialScore();
@@ -33,7 +33,7 @@ Game.prototype.result = function() {
   else {
     var pins = this._plural();
     return this.lastScore() + pins;
-  };
+  }
 };
 
 Game.prototype.frameScore = function(frame) {
@@ -56,7 +56,7 @@ Game.prototype._plural = function() {
   }
   else {
     return " pins!"
-  };
+  }
 }
 
 Game.prototype._specialScore = function() {
@@ -70,7 +70,7 @@ Game.prototype._specialScore = function() {
     this.score.setBonus(2);
     this.roll = 2;
     this._lastTurn();
-  };
+  }
 };
 
 Game.prototype._strikeConditions = function() {
@@ -80,7 +80,7 @@ Game.prototype._strikeConditions = function() {
 Game.prototype._lastTurn = function(){
   if (this.turn === 10) {
       this.roll = 3;
-  };
+  }
 };
 
 Game.prototype._changeTurn = function() {
@@ -89,7 +89,7 @@ Game.prototype._changeTurn = function() {
     this.pins = 10;
     this.roll = 0;
     this.score.newFrame();
-  };
+  }
 };
 
 Game.prototype._hitPins = function() {

@@ -93,8 +93,7 @@ describe("User Story 7", function(){
     expect(game.result()).not.toEqual("Game Over!");
     expect(game.turn).toEqual(10);
     game.bowl();
-    game.bowl();
-    expect(game.result()).toEqual("Game Over!");
+    expect(function() {game.bowl()}).toThrow("The Game is Over");
   });
 });
 

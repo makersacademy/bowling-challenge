@@ -24,6 +24,13 @@ describe("Game", function(){
       game.bowl();
       expect(game.turn).toEqual(2);
     });
+
+    it("doesn't keep playing after 10 frames", function(){
+      for(var i = 0; i < 20; i++){
+        game.bowl();
+      };
+      expect(function() {game.bowl()}).toThrow("The Game is Over");
+    });
   });
 
   describe("pins", function(){

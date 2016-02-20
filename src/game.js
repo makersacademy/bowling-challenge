@@ -7,6 +7,9 @@ function Game(name) {
 };
 
 Game.prototype.bowl = function() {
+  if (this.turn > 10) {
+    throw "The Game is Over";
+  };
   this._hitPins();
   this.roll++;
   this._specialScore();

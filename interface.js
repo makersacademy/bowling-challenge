@@ -20,5 +20,6 @@ $(document).ready(function(){
     };
     console.log(game.result());
     $('#game-result').text(game.result());
+    $('#total-score').text(game.total());
   });
 });

@@ -9,7 +9,7 @@ describe('Frame', function() {
     frame = new Frame();
   });
 
-  describe('rolls property', function() {
+  describe('rolls property and #addRoll', function() {
     it('starts out with empty rolls', function() {
       expect(frame.rolls).toEqual([]);
     });
@@ -26,7 +26,7 @@ describe('Frame', function() {
       expect(frame.rolls).toContain(pins2);
     });
 
-    it('Error if attempted to record a third roll', function() {
+    it('throws error if recording a third roll', function() {
       frame.addRoll(pins1);
       frame.addRoll(pins2);
       expect(function() {
@@ -34,6 +34,47 @@ describe('Frame', function() {
       }).toThrowError("Rolls exceeded");
       expect(frame.rolls).not.toContain(pins3);
     });
+  });
+
+  describe('handling spares, #isSpare', function() {
+    it('correctly identifies non-spare roll', function() {
+      frame.addRoll(pins1);
+      frame.addRoll(pins2);
+      expect(frame.isSpare()).toBeFalsy();
+    });
+
+    it('correctly identifies a spare roll', function() {
+      frame.addRoll(pins1);
+      frame.addRoll(pins9);
+      expect(frame.isSpare()).toBeTruthy();
+    });
+
+    it('correctly identifies a strike is not a spare', function() {
+      frame.addRoll(pins10);
+      expect(frame.isSpare()).toBeFalsy();
+    });
+  });
+
+  describe('handling strikes, #isStrike', function() {
+    it('correctly identifies non-strike roll', function() {
+      frame.addRoll(pins1);
+      frame.addRoll(pins9);
+      expect(frame.isStrike()).toBeFalsy();
+    });
+
+    it('correctly identifies a strike roll', function() {
+      frame.addRoll(pins10);
+      expect(frame.isStrike()).toBeTruthy();
+    });
+
+    it('throws error if recording a second roll after a strike', function() {
+      frame.addRoll(pins10);
+      expect(function() {
+        frame.addRoll(pins1);
+      }).toThrowError("Rolls exceeded");
+      expect(frame.rolls).not.toContain(pins1);
+    });
+
   });
 
 });

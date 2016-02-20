@@ -28,4 +28,21 @@ User Stories:
    If I get a strike or a spare in the tenth frame,
    I expect to roll an additional throw.
 
+8. As a player,
+   So I can see my latest score,
+   I want to see the last points I earned.
+
+9. As a player,
+   So I can see my total score,
+   I want to see the total points I earned.
+
+10. As a player,
+   If I throw a strike,
+   I should score double the next round.
+
+11. As a player,
+    So I know I'm the one playing,
+    I can enter my name.
+
+
 Then scoring and player name

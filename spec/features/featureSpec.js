@@ -89,12 +89,63 @@ describe("User Story 7", function(){
     spyOn(game, "_getRandomInt").and.returnValue(10);
     for(var i = 0; i<10; i++){
       game.bowl();
-      console.log(game.turn);
     };
     expect(game.endGame()).not.toEqual("Game Over!");
     expect(game.turn).toEqual(10);
     game.bowl();
     game.bowl();
     expect(game.endGame()).toEqual("Game Over!");
+  });
+});
+
+/*8. As a player,
+So I can see my latest score,
+I want to see the last points I earned.*/
+describe("User Story 8", function(){
+  it("see latest score", function(){
+    var game = new Game();
+    spyOn(game, "_getRandomInt").and.returnValue(4);
+    game.bowl();
+    expect(game.lastScore()).toEqual(4);
+  });
+});
+
+/* As a player,
+So I can see my total score,
+I want to see the total points I earned.*/
+describe("User Story 9", function(){
+  it("see latest score", function(){
+    var game = new Game();
+    spyOn(game, "_getRandomInt").and.returnValue(4);
+    game.bowl();
+    expect(game.total()).toEqual(4);
+    game.bowl();
+    game.bowl();
+    expect(game.total()).toEqual(12);
+  });
+});
+
+/*As a player,
+If I throw a strike,
+I should score double the next round.*/
+describe("User Story 10", function(){
+  it("get double points next round if score a strike", function(){
+    var game = new Game();
+    spyOn(game, "_getRandomInt").and.returnValue(10);
+    game.bowl();
+    game._getRandomInt.and.returnValue(3);
+    game.bowl();
+    game.bowl();
+    expect(game.total()).toEqual(22);
+ });
+});
+
+/*As a player,
+So I know I'm the one playing,
+I can enter my name.*/
+describe("User Story 11", function(){
+  it("accepts name when game is started", function(){
+    var game = new Game('Player');
+    expect(game.player).toEqual('Player')
   });
 });

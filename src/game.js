@@ -1,8 +1,9 @@
-function Game() {
+function Game(name) {
+  this.player = name;
   this.turn = 1;
   this.roll = 0;
   this.pins = 10;
-  this.latest_score = 0;
+  this.score = new Score;
 };
 
 Game.prototype.bowl = function() {
@@ -12,34 +13,50 @@ Game.prototype.bowl = function() {
   this._changeTurn();
 };
 
+Game.prototype.result = function() {
+  if (this.lastScore() == '/') {
+    return "Spare!";
+  }
+  else if (this.lastScore() == 'X') {
+    return "Strike!";
+  }
+  else {
+    return this.lastScore() + " pins!";
+  }
+};
+
+Game.prototype.lastScore = function() {
+  return this.score.viewLatestScore();
+}
+
+Game.prototype.frameScore = function(frame) {
+  return this.score.viewFrameScore(frame-1);
+};
+
+Game.prototype.total = function() {
+  return this.score.viewTotal();
+}
+
 Game.prototype.endGame = function() {
   if (this.turn > 10) {
     return "Game Over!";
   };
 };
 
-Game.prototype.result = function() {
-  if (this.latest_score == '/') {
-    return "Spare!";
-  }
-  else if (this.latest_score == 'X') {
-    return "Strike!";
-  }
-  else {
-    return this.latest_score + " pins!";
-  }
-};
+
 
 
 //private methods
 
 Game.prototype._specialScore = function() {
   if (this.pins === 0 && this.roll === 2){
-    this.latest_score = '/';
+    this._changeLatestScore('/');
+    this.score.setBonus(1);
     this._lastTurn();
   }
   else if (this.pins === 0 && this._strikeConditions() ){
-    this.latest_score = 'X';
+    this._changeLatestScore('X');
+    this.score.setBonus(2);
     this.roll = 2;
     this._lastTurn();
   };
@@ -60,12 +77,18 @@ Game.prototype._changeTurn = function() {
     this.turn++;
     this.pins = 10;
     this.roll = 0;
+    this.score.newFrame();
   };
 };
 
 Game.prototype._hitPins = function() {
-  this.latest_score = this._getRandomInt(0, this.pins+1)
-  this.pins = this.pins - this.latest_score;
+  this._changeLatestScore(this._getRandomInt(0, this.pins+1));
+  this.score.addResult(this.lastScore(), (this.turn-1));
+  this.pins = this.pins - this.lastScore();
+};
+
+Game.prototype._changeLatestScore = function(new_score) {
+  this.score.changeLatestScore(new_score);
 };
 
 Game.prototype._getRandomInt = function(min, max) {

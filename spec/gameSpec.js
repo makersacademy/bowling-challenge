@@ -83,22 +83,48 @@ describe("Game", function(){
     });
   });
 
-describe("last turn", function(){
-  it("allows a third roll if a strike is scored in last turn", function(){
-    spyOn(game, "_getRandomInt").and.returnValue(10);
-    for (var i = 0; i < 10; i++){
-      game.bowl();
-    };
-    expect(game.turn).toEqual(10);
-  });
+  describe("last turn", function(){
+    it("allows a third roll if a strike is scored in last turn", function(){
+      spyOn(game, "_getRandomInt").and.returnValue(10);
+      for (var i = 0; i < 10; i++){
+        game.bowl();
+      };
+      expect(game.turn).toEqual(10);
+    });
 
-  it("allows a third roll if a spare is scored in last turn", function(){
-    spyOn(game, "_getRandomInt").and.returnValue(5);
-    for (var i = 0; i < 20; i++){
+    it("allows a third roll if a spare is scored in last turn", function(){
+      spyOn(game, "_getRandomInt").and.returnValue(5);
+      for (var i = 0; i < 20; i++){
+        game.bowl();
+      };
+      expect(game.turn).toEqual(10);
+      });
+    });
+
+  describe("scores", function(){
+
+    beforeEach(function(){
+      spyOn(game, "_getRandomInt").and.returnValue(4);
+    });
+
+    it("can see latest score", function(){
       game.bowl();
-    };
-    expect(game.turn).toEqual(10);
+      expect(game.lastScore()).toEqual(4);
+    });
+
+    it("can see the score of the frame", function(){
+      for(var i = 0; i<3; i++){
+        game.bowl()
+      };
+      expect(game.frameScore(1)).toEqual(8);
+    })
+
+    it("returns a cumulative total", function(){
+      for(var i=0; i < 6; i++){
+        game.bowl();
+      }
+      expect(game.total()).toEqual(24);
+    });
   });
-});
 
 });

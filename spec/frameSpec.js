@@ -1,5 +1,3 @@
-'use strict=false;'
-
 describe('Frame', function() {
   var frame;
   var pins1 = 1, pins2 = 2, pins3 = 3;
@@ -9,7 +7,7 @@ describe('Frame', function() {
     frame = new Frame();
   });
 
-  describe('rolls property and #addRoll', function() {
+  describe('handling rolls and #addRoll', function() {
     it('starts out with empty rolls', function() {
       expect(frame.rolls).toEqual([]);
     });

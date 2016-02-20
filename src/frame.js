@@ -13,6 +13,10 @@ Frame.prototype.addRoll = function (pins) {
   }
 };
 
+Frame.prototype.showRolls = function (pins) {
+  return this.rolls;
+}
+
 Frame.prototype.isSpare = function () {
   return this.rolls[0] + this.rolls[1] === 10;
 };

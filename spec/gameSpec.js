@@ -41,4 +41,18 @@ describe("Game", function(){
     });
   });
 
+  describe("result", function(){
+    it("returns 'number of pins' after a normal bowl", function(){
+      game.bowl();
+      expect(game.result()).toEqual("4 pins!");
+    });
+
+    it("returns 'game over' after the 10 frames played", function(){
+      for(var i = 0; i < 20; i++){
+        game.bowl();
+      };
+      expect(game.result()).toEqual("Game Over!");
+    });
+  });
+
 });

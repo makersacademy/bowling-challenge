@@ -35,3 +35,18 @@ describe("User Story 3", function(){
     expect(game.pins).toEqual(10);
   });
 });
+
+/*As a bowler,
+So that I can stop playing
+I expect the game to end after 10 frames.*/
+
+describe("User Story 4", function(){
+  it("returns 'Game Over' when finishing the tenth frame", function(){
+    var game = new Game();
+    spyOn(game, "_getRandomInt").and.returnValue(4);
+    for (var i = 0; i < 20; i++){
+      game.bowl();
+    };
+    expect(game.result()).toEqual("Game Over!");
+  });
+});

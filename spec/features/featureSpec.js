@@ -47,7 +47,7 @@ describe("User Story 4", function(){
     for (var i = 0; i < 20; i++){
       game.bowl();
     };
-    expect(game.endGame()).toEqual("Game Over!");
+    expect(game.result()).toEqual("Game Over!");
   });
 });
 
@@ -90,11 +90,11 @@ describe("User Story 7", function(){
     for(var i = 0; i<10; i++){
       game.bowl();
     };
-    expect(game.endGame()).not.toEqual("Game Over!");
+    expect(game.result()).not.toEqual("Game Over!");
     expect(game.turn).toEqual(10);
     game.bowl();
     game.bowl();
-    expect(game.endGame()).toEqual("Game Over!");
+    expect(game.result()).toEqual("Game Over!");
   });
 });
 

@@ -13,21 +13,25 @@ Game.prototype.bowl = function() {
   this._changeTurn();
 };
 
+Game.prototype.lastScore = function() {
+  return this.score.viewLatestScore();
+};
+
 Game.prototype.result = function() {
-  if (this.lastScore() == '/') {
+  if (this.turn > 10){
+    return this._endGame();
+  }
+  else if (this.lastScore() === '/') {
     return "Spare!";
   }
-  else if (this.lastScore() == 'X') {
+  else if (this.lastScore() === 'X') {
     return "Strike!";
   }
   else {
-    return this.lastScore() + " pins!";
-  }
+    var pins = this._plural();
+    return this.lastScore() + pins;
+  };
 };
-
-Game.prototype.lastScore = function() {
-  return this.score.viewLatestScore();
-}
 
 Game.prototype.frameScore = function(frame) {
   return this.score.viewFrameScore(frame-1);
@@ -35,18 +39,22 @@ Game.prototype.frameScore = function(frame) {
 
 Game.prototype.total = function() {
   return this.score.viewTotal();
-}
-
-Game.prototype.endGame = function() {
-  if (this.turn > 10) {
-    return "Game Over!";
-  };
 };
 
-
-
-
 //private methods
+
+Game.prototype._endGame = function() {
+    return "Game Over!";
+};
+
+Game.prototype._plural = function() {
+  if (this.lastScore() === 1){
+    return " pin!"
+  }
+  else {
+    return " pins!"
+  };
+}
 
 Game.prototype._specialScore = function() {
   if (this.pins === 0 && this.roll === 2){
@@ -82,7 +90,7 @@ Game.prototype._changeTurn = function() {
 };
 
 Game.prototype._hitPins = function() {
-  this._changeLatestScore(this._getRandomInt(0, this.pins+1));
+  this._changeLatestScore(this._getRandomInt(this.pins+1));
   this.score.addResult(this.lastScore(), (this.turn-1));
   this.pins = this.pins - this.lastScore();
 };
@@ -91,6 +99,6 @@ Game.prototype._changeLatestScore = function(new_score) {
   this.score.changeLatestScore(new_score);
 };
 
-Game.prototype._getRandomInt = function(min, max) {
-  return Math.floor(Math.random() * (min - max)) + min;
+Game.prototype._getRandomInt = function(max) {
+  return Math.floor(Math.random() * max);
 };

@@ -60,7 +60,7 @@ describe("Game", function(){
       for(var i = 0; i < 20; i++){
         game.bowl();
       };
-      expect(game.endGame()).toEqual("Game Over!");
+      expect(game.result()).toEqual("Game Over!");
     });
 
     it("returns 'spare' if all pins knocked down after 2nd turn", function(){

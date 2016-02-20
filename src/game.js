@@ -16,6 +16,7 @@ Game.prototype.bowl = function() {
 Game.prototype._changeTurn = function() {
   if (this.roll === 2){
     this.turn++;
+    this.pins = 10;
   };
 };
 

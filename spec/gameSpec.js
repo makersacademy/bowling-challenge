@@ -3,6 +3,7 @@ describe("Game", function(){
 
   beforeEach(function(){
     game = new Game();
+    spyOn(game, "_getRandomInt").and.returnValue(4);
   });
 
   describe("frames", function(){
@@ -29,9 +30,14 @@ describe("Game", function(){
     });
 
     it("a bowl knocks down pins", function(){
-      spyOn(game, "_getRandomInt").and.returnValue(4);
       game.bowl();
       expect(game.pins).toEqual(6);
+    });
+
+    it("resets to ten after two bowls", function(){
+      game.bowl();
+      game.bowl();
+      expect(game.pins).toEqual(10);
     });
   });
 

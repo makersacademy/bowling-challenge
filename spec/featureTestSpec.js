@@ -43,7 +43,7 @@ describe("featureTest",function(){
 
   describe("Spares and strikes",function(){
 
-    it("Calculates the correct value after a spare",function(){
+    xit("Calculates the correct value after a spare",function(){
       game = new Game();
       frame = new Frame();
       frame.addRoll(4);

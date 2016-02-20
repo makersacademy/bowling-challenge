@@ -1,0 +1,31 @@
+User Stories:
+
+
+1. As a bowler,
+   So that I can play a game,
+   I expect the frame number to change after two throws
+
+2. As a bowler,
+   I expect to knock down a random number of pins each throw.
+
+3. As a bowler,
+   So that I can keep playing,
+   I expect the number of pins to reset when the number of frames changes.
+
+4. As a bowler,
+   So that I can stop playing
+   I expect the game to end after 10 frames.
+
+5. As a bowler,
+   If I knock down all pins on my second turn,
+   I expect to get a 'Spare!'
+
+6. As a bowler,
+   If I knock down all pins on my first turn,
+   I expect to get a 'Strike!' and miss the next turn.
+
+7. As a bowler,
+   If I get a strike or a spare in the tenth frame,
+   I expect to roll an additional throw.
+
+Then scoring and player name

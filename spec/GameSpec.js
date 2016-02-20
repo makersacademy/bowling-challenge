@@ -15,9 +15,14 @@ describe('Game', function() {
       expect(game.bowl()).toEqual(jasmine.any(Number));
     });
 
-    it('adds bowled score to current score', function(){
+    it('adds bowled score to current score', function() {
       spyOn(game, "bowl").and.returnValue(5)
       expect(game.currentScore()).toEqual(5)
+    });
+
+    it('displays a score of 10 as X', function() {
+     spyOn(game, "bowl").and.returnValue(10)
+     expect(game.currentScore()).toEqual('X')
     });
 
 });

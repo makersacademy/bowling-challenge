@@ -7,10 +7,14 @@ function Game() {
 };
 
 Game.prototype.totalScore = function(){
-  return this.score
+  return this.score;
 }
 
 Game.prototype.currentScore = function(){
+  if (this.bowl() === 10) {
+    this.score += 10;
+    return 'X';
+  }
   return this.score += this.bowl();
 }
 

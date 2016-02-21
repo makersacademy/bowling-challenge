@@ -10,15 +10,21 @@ describe("Player", function() {
     expect(player.score).toEqual (0);
   });
 
-  it ("returns a number when ball is rolled", function() {
-    spyOn(player, "roll").and.returnValue(7);
-    expect(player.roll()).toEqual(7);
+  it ("adds roll results to results array", function(){
+    player.roll(7);
+    expect(player.results).toContain (7);
   });
 
-  it ("adds roll results to results array", function(){
-    player.roll();
-    expect(player.results).toContain (pinsDown);
+  it ("calculates the score", function(){
+    player.roll(3);
+    player.roll(5);
+    player.calculateScore();
+    expect(player.score).toEqual(8);
   });
+
+  // it ("only stores one number in the array if the player rolls a 10"), function(){
+  //
+  // )};
 
   // it ("can play a maximum of 10 frames", function(){
   //

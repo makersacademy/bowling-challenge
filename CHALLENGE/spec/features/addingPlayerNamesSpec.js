@@ -1,15 +1,15 @@
-describe('Adding player names', function() {
+describe('Bowling game', function() {
 
-  var bowlingGame
+  var game
 
   beforeEach(function() {
-    bowlingGame = new BowlingGame();
+    game = new Bowling();
   });
 
-  describe('before each game', function() {
+  describe('To add players', function() {
 
-    it('has no names registed', function() {
-      expect(bowlingGame.players()).toEqual([]);
+    it('an entered name adds that player to the game', function() {
+      expect(game.addPlayer()).toEqual([player]);
     });
   });
 });

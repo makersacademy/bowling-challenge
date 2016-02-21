@@ -2,31 +2,27 @@
 
 describe("Frame", function() {
 
-  var player
   var frame
 
   beforeEach(function() {
     frame = new Frame();
-    player = new Player();
   });
 
   it("has a score of zero at the start", function() {
-    expect(frame.firstScore).toEqual(0);
+    expect(frame.score).toEqual([]);
   });
 
-  it("calculates the first score when player bowls", function() {
+  it("can calculate a first score", function() {
     spyOn(Math, 'random').and.returnValue(0.3);
-    player.firstBowl();
-    frame.calculateScore1();
-    expect(frame.firstScore).toEqual(4);
+    frame.calculateScore(0);
+    expect(frame.score).toContain(4);
   });
 
-  it("calculates the second score when player bowls", function() {
-    spyOn(Math, 'random').and.returnValue(0.2);
-    player.firstBowl();
-    frame.calculateScore1();
-    frame.calculateScore2();
-    expect(frame.secondScore).toEqual(2);
+  it("can calculate a second score", function() {
+    frame.score = [4]
+    spyOn(Math, 'random').and.returnValue(0.3);
+    frame.calculateScore(4);
+    expect(frame.score).toContain(4, 6);
   });
 
 });

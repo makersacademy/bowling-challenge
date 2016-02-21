@@ -1,0 +1,48 @@
+body {
+  background-color: #fff1f1;
+  margin: 0 0 0 0;
+  font-family: Rubik;
+}
+
+input,
+textarea {
+  font-family: Rubik;
+  border: 2px outset;
+  border-radius: 20px;
+  background-color: #fff;
+  text-align: center;
+  outline: none;
+}
+
+button {
+  border: none;
+  background-color: #fff;
+}
+
+#HeadingBar {
+  background-image: url("http://www.hdnicewallpapers.com/Walls/Big/Mountain/Snowy_Mountains_Range_in_New_South_Wales_Australia_Wallpaper.jpg");
+  background-position: 0 -7em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 0 0 0;
+  opacity: 0.6;
+}
+
+#HeadingBar h1 {
+    margin: 0 0 0 0;
+    color: #fff;
+    text-align: right;
+    padding: 2.5em 4em 2.5em;
+    opacity: 1;
+    letter-spacing: 4px;
+    text-shadow: -20px 30px 13px #f1f1f1;
+}
+
+#NameEntryForm {
+  background-color: #fff;
+}
+
+#NameEntryForm form {
+  padding: 4em 0 4em;
+  text-align: center;
+}

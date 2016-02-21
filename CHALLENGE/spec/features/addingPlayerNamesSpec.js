@@ -12,5 +12,10 @@ describe('Bowling game', function() {
       game.addPlayer('Joe');
       expect(game.players).toEqual(['Joe']);
     });
+
+    it('shows those names onscreen', function() {
+      game.addPlayer('Joe');
+      
+    });
   });
 });

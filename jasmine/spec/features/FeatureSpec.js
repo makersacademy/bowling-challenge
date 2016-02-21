@@ -31,4 +31,15 @@ describe('Features Spec', function(){
       expect(game.totalScore).toEqual(13);
     });
   });
+
+  describe('User Story 4:', function(){
+    it('Can account for spares and add the bonus', function(){
+      var game = new Bowling();
+      game.writeFrameOne(2);
+      game.writeFrameTwo(8);
+      game.writeFrameOne(5);
+      game.writeFrameTwo(2);
+      expect(game.totalScore).toEqual(22);
+    }); 
+  });
 });

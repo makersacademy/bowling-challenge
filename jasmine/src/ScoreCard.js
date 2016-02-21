@@ -2,24 +2,30 @@ function ScoreCard(){
   this.show = {};
   this.frameNumber = 1;
   this.currentFrame = [];
+  this.spare = false;
+  this.bonus = 0;
 }
 
 ScoreCard.prototype.add = function(score){
   if (this.currentFrame.length === 1) {
     this.currentFrame.push(score); 
-    console.log("expect this to be 8,1: " + this.currentFrame);
     var key = "Frame " + this.frameNumber;
     this.show[key] = this.currentFrame;
     this.frameNumber++;
-    console.log("scorecard: " + this.show["Frame 1"]);
+
+    if (this.currentFrame[0] + this.currentFrame[1] === 10) {
+      this.spare = true;
+
+    }
 
   } else {
-this.currentFrame = [score];
-
+    if (this.spare === true){
+      this.bonus = score;
+    }
+    else {
+      this.currentFrame = [score];
+    }
   }
-  console.log("scorecard: " + this.show["Frame 1"]);
-
-
 };
 
 ScoreCard.prototype.isFinished = function(){

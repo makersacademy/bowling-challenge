@@ -22,6 +22,10 @@ describe("Player", function() {
     expect(player.score).toEqual(8);
   });
 
+  it ("prevents a user rolling more than 10 on their first roll", function(){
+    expect(function(){player.roll(11);}).toThrow("roll must be a number between 1 and 10")
+  });
+
   // it ("only stores one number in the array if the player rolls a 10"), function(){
   //
   // )};

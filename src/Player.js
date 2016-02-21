@@ -3,16 +3,16 @@ function Player()  {
   this.results = [];
 }
 
-Player.prototype.calculateScore = function() {
-  for(var i in this.results) { this.score += this.results[i]; }
-};
-
 Player.prototype.roll = function(number) {
+  if (number > 10)
+    throw "roll must be a number between 1 and 10";
   var pinsDown = number;
   this.results.push(pinsDown);
 };
 
-
+Player.prototype.calculateScore = function() {
+  for(var i in this.results) { this.score += this.results[i]; }
+};
 
 
 // RANDOM ROLL FUNCTIONALITY:

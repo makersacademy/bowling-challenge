@@ -33,4 +33,8 @@ describe("Game", function(){
     expect(game.BowlCount).toBe(1);
   });
 
+  it("FrameCount is set to 0 as default", function(){
+    expect(game.FrameCount).toEqual(0);
+  });
+
 });

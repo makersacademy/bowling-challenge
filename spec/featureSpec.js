@@ -16,6 +16,6 @@ describe("feature test", function(){
   it("a game can record the amount of frames played", function(){
     game.Bowl();
     game.Bowl();
-    expect(game.FrameCount).toBe(1);
+    expect(game.FrameCount).toEqual(1);
   });
 });

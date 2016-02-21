@@ -2,7 +2,6 @@
 Bowling Challenge
 =================
 
-
 What is it:
 -----
 
@@ -23,9 +22,9 @@ Rules of the game: http://en.wikipedia.org/wiki/Ten-pin_bowling
 ScreenShots:
 ----
 
-![strike](images/Selection_001.png)
+![strike](images/Selection_001.jpg)
 
-![spare](images/Selection_003.png)
+![spare](images/Selection_003.jpg)
 
 To Do:
 ----

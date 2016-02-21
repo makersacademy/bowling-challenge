@@ -2,23 +2,14 @@
 
 var _PIN_ERROR = "I think you might want to check those figures again...";
 
-function Frame(pinsBallOne, pinsBallTwo){
-    this.strike = false;
-    this.spare = false;
-    this.scoreBallOne = pinsBallOne;
-    this.scoreBallTwo = pinsBallTwo;
-    this.ballOne(pinsBallOne);
-    this.ballTwo(pinsBallOne, pinsBallTwo);
-    this.bonusBall = 0;
+function Ball(pins){
+  this.checkLegal(pins);
   }
 
-  Frame.prototype.ballOne = function(pinsBallOne){
-    if (noOfPinsBallOne > 10 || pinsBallOne < 0) {
+  Ball.prototype.checkLegal = function(pins){
+    if (pins > 10 || pins < 0) {
       throw new Error(_PIN_ERROR);
-    } else {
-    this.checkStrike(pinsBallOne);
-    }
-  };
+  }
 
   Frame.prototype.ballTwo = function(pinsBallOne, pinsBallTwo){
     if ((pinsBallOne + pinsBallTwo) > 10 || pinsBallTwo < 0) {

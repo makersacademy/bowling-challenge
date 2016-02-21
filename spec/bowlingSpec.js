@@ -20,21 +20,25 @@ describe("When a user bowls", function () {
 
   beforeEach(function(){
     spyOn(bowling, 'randomHit');
+    spyOn(bowling, 'isStrike');
   });
 
   it("sets second round to 0 if strike", function(){
+    bowling.isStrike.and.returnValue(true);
     bowling.randomHit.and.returnValue(10);
     bowling.bowl();
     expect(bowling.allFrames[bowling.currentFrame]).toContain(10, 0);
   });
 
   it("scores 3 if it hits 3 pins", function(){
+    bowling.isStrike.and.returnValue(false);
     bowling.randomHit.and.returnValue(3);
     bowling.bowl();
     expect(bowling.score).toEqual(3);
   });
 
   it("is on the 2nd frame", function(){
+    bowling.isStrike.and.returnValue(false);
     bowling.randomHit.and.returnValue(3);
     bowling.bowl();
     expect(bowling.currentFrame).toEqual(2);
@@ -69,6 +73,7 @@ describe("when a user has a spare",function(){
 
   beforeEach(function(){
     spyOn(bowling, 'randomHit');
+    spyOn(bowling, 'isStrike');
   });
 
   it("returns 10 by spare", function () {
@@ -80,6 +85,7 @@ describe("when a user has a spare",function(){
   });
 
   it("returns isSpare to true at next round", function () {
+    bowling.isStrike.and.returnValue(false);
     bowling.bowl();
     expect(bowling.isSpare()).toEqual(true);
   });

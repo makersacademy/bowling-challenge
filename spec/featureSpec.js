@@ -8,8 +8,14 @@ describe("feature test", function(){
   });
 
   it("a ball can be rolled and return a score between 1 & 10", function(){
-    var bowl = game.bowl();
+    var bowl = game.Bowl();
     bowl
-    expect(game.score).toEqual(bowl);
+    expect(game.Score).toEqual(bowl);
+  });
+
+  it("a game can record the amount of frames played", function(){
+    game.Bowl();
+    game.Bowl();
+    expect(game.FrameCount).toBe(1);
   });
 });

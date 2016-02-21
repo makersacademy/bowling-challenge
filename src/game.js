@@ -1,11 +1,11 @@
 'use strict';
 
 function Game(){
-  this.score = 0;}
+  this.Score = 0;}
 
-  Game.prototype.bowl = function (){
+  Game.prototype.Bowl = function (){
     var result = this._randNum();
-    this.score += result;
+    this.Score += result;
     return result;
   };
 

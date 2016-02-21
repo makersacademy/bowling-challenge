@@ -4,6 +4,7 @@ describe("Game", function() {
 
     var game;
     var frame;
+    var i;
 
   beforeEach(function() {
     game = new Game();
@@ -75,6 +76,16 @@ describe("Game", function() {
       game.bowl();
       expect(game.totalScore).toEqual(5)
     });
+  });
+
+  describe("checkGameOver", function() {
+    it("ends game if ten frames have been bowled", function(){
+      for(i = 0; i < 10; i++) {
+        game.addFrame();
+      };
+      expect(game.isGameOver()).toEqual(true)
+    });
+
   });
 
 });

@@ -5,9 +5,14 @@ function Game() {
 }
 
 Game.prototype.bowl = function(){
-  this.currentFrame.calculateScore(this.getFrameScore());
-  this.checkStrike(this.getFrameScore());
-  this.checkFrameOver();
+  if (this.isGameOver()) {
+    return 'Game over!'
+  }
+  else {
+    this.currentFrame.calculateScore(this.getFrameScore());
+    this.checkStrike(this.getFrameScore());
+    this.checkFrameOver();
+  }
 };
 
 Game.prototype.checkStrike = function(ballScore){
@@ -39,4 +44,10 @@ Game.prototype.getFrameScore = function(){
     return a + b;
   }
   return sum
+};
+
+Game.prototype.isGameOver = function(){
+  if (this.frames.length === 10) {
+    return true
+  }
 };

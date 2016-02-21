@@ -11,4 +11,13 @@ describe('Features Spec', function(){
       expect(game.isFinished()).toEqual(true); 
     }); 
   });
+
+  describe('User Story 2:', function(){
+    it('Can record a single frame', function(){
+      var game = new Bowling();
+      game.writeFrameOne(5);
+      game.writeFrameTwo(2);
+      expect(game.totalScore).toEqual(7);
+    }); 
+  });
 });

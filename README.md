@@ -1,6 +1,9 @@
 Some User Stories...
 
 As a player, 
+so that I can have a game of bowling, I would like to be able to bowl a ball and get a score between 1 & 10
+
+As a player, 
 so that I can have a game of bowling,
 I would like to have two rolls per frame.
 

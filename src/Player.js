@@ -34,7 +34,7 @@ Player.prototype.calculateScore = function() {
   this.score = 0;
   var rollIndex = 0;
 
-  for(var frameIndex = 0; frameIndex < 2; frameIndex++) {
+  for(var frameIndex = 0; frameIndex < 11; frameIndex++) {
 
     if (this.results[rollIndex] === 10){
       this.score += this.results[rollIndex] + this.results[rollIndex + 1] + this.results[rollIndex + 2] + this.results[rollIndex + 3];

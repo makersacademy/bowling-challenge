@@ -25,25 +25,62 @@ describe("Player", function() {
   });
 
   it ("calculates the bonus score if the user rolls a spare", function(){
+    for (var i = 0; i < 8; i ++){
+      player.roll1(2); player.roll2(2);
+    }
     player.roll1(7);
     player.roll2(3);
     player.roll1(5);
     player.roll2(2);
+    player.roll1(0);
+    player.roll2(0);
     player.calculateScore();
-    expect(player.score).toEqual(22);
+    expect(player.score).toEqual(54);
   });
 
   it ("calculates the bonus score is the user rolls a strike", function(){
+    for (var i = 0; i < 8; i ++){
+      player.roll1(2); player.roll2(2);
+    }
     player.roll1(10);
     player.roll1(7);
     player.roll2(2);
+    player.roll1(0);
+    player.roll2(0);
     player.calculateScore();
-    expect(player.score).toEqual(28);
+    expect(player.score).toEqual(60);
   });
 
-  // it ("only stores one number in the array if the player rolls a 10"), function(){
-  //
-  // )};
+  it ("calculates score for a gutter game", function (){
+    for (var i = 0; i < 11; i ++){
+      player.roll1(0); player.roll2(0);
+    }
+    player.calculateScore();
+    expect(player.score).toEqual(0);
+  });
+
+  it ("calculates correct score when strike rolled in tenth frame", function(){
+    for (var i = 0; i < 9; i ++){
+      player.roll1(4); player.roll2(4);
+    }
+    player.roll1(10);
+    player.roll1(5);
+    player.roll2(2);
+    player.calculateScore();
+    expect(player.score).toEqual(96);
+  });
+
+  it ("calculates correct score when spare rolled in tenth frame", function(){
+    for (var i = 0; i < 9; i ++){
+      player.roll1(4); player.roll2(4);
+    }
+    player.roll1(1);
+    player.roll2(9);
+    player.roll1(2);
+    player.roll2(3);
+    player.calculateScore();
+    expect(player.score).toEqual(89);
+  });
 
   // it ("can play a maximum of 10 frames", function(){
   //

@@ -7,7 +7,13 @@ describe('Bowling', function(){
       var game = new Bowling();
       expect(game.totalScore).toEqual(0);
     });
+
+    it ('an empty hash object for a scorecard', function(){
+      var game = new Bowling();
+      var emptyHash = {};
+      expect(game.scoreCard.show).toEqual(emptyHash);
+    });
   });
-
-
 });
+
+

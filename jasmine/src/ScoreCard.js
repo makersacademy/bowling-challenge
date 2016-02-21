@@ -1,0 +1,5 @@
+function ScoreCard(){
+  this.show = {};
+};
+
+

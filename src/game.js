@@ -8,11 +8,11 @@ function Game(playerName, frameFunc) {
 }
 
 Game.prototype._lastFrame = function () {
-  return this.frames.slice(-1)[0];
+  return this.frames[this.frames.length - 1];
 };
 
 Game.prototype._secondLastFrame = function () {
-  return this.frames.slice(-2)[0];
+  return this.frames[this.frames.length - 2];
 };
 
 Game.prototype._calculateScore = function () {
@@ -21,14 +21,17 @@ Game.prototype._calculateScore = function () {
 };
 
 Game.prototype._adjustScores = function () {
+  var last = this._lastFrame();
   if(this._lastFrame().isSpare){
     this._lastFrame().score += this.currentFrame._throwArray[0];
   }
   if(this._lastFrame().isStrike){
-    // magic
-    if(this._secondLastFrame().isStrike){
-      // magic
-    }
+    if(this._secondLastFrame() && this._secondLastFrame().isStrike){
+      this._secondLastFrame().score += this.currentFrame._throwArray[1];
+    } else {
+      var scores = this.currentFrame._throwArray[0] + this.currentFrame._throwArray[1];
+      this._lastFrame().score += scores;
+  }
   }
 };
 

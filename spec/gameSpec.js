@@ -8,6 +8,7 @@ describe('Game', function() {
     this._throwArray = [4, 5]
   }
   MockFrame.prototype.isComplete = function () {return true;};
+  MockFrame.prototype.updateScore = function (num) {this.score += num;};
 
   beforeEach(function() {
     game = new Game('Rufus', MockFrame);
@@ -40,11 +41,30 @@ describe('Game', function() {
     });
   });
 
-  xdescribe('#_adjustScores', function() {
-    it('adds strike bonus to last frame', function() {
+  describe('#_adjustScores', function() {
+    it('adds spare bonus to last frame', function() {
       game.currentFrame.isSpare = true;
       game.nextFrame();
+      game._adjustScores();
       expect(game._lastFrame().score).toEqual(8 + 4);
+    });
+    it('adds strike bonus to last frame', function() {
+      game.currentFrame.isStrike = true;
+      game.currentFrame.score = 10;
+      game.nextFrame();
+      game._adjustScores();
+      expect(game._lastFrame().score).toEqual(10 + 4 + 5);
+    });
+    it('adds strike bonus to last frame when multiple strikes in a row', function() {
+      for(i=0; i < 2; i++){
+        game.currentFrame.isStrike = true;
+        game.currentFrame.score = 10;
+        game.currentFrame.throwArray = [10, 'X'];
+        game.nextFrame();
+      }
+      game._adjustScores();
+      console.log(game.frames);
+      expect(game._secondLastFrame().score).toEqual(10 + 10 + 4);
     });
   });
 

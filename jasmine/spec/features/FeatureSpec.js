@@ -42,4 +42,14 @@ describe('Features Spec', function(){
       expect(game.totalScore).toEqual(22);
     }); 
   });
+
+  describe('User Story 5:', function(){
+    it('Can account for strikes and add the bonus', function(){
+      var game = new Bowling();
+      game.writeFrameOne(10);
+      game.writeFrameOne(3);
+      game.writeFrameTwo(5);
+      expect(game.totalScore).toEqual(26);
+    }); 
+  });
 });

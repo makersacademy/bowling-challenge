@@ -34,5 +34,16 @@ describe('ScoreCard', function(){
       expect(scoreCard.bonus).toEqual(5);
     });
   });
+  describe('#strikeBonus', function(){
+    it('toggles strike and calculates bonus', function(){
+      var scoreCard = new ScoreCard();
+      scoreCard.add(10);
+      expect(scoreCard.strike).toEqual(true)
+      scoreCard.add(5);
+      scoreCard.add(3);
+      //expect(scoreCard.).toEqual(8);
+    });
+  });
 });
+
 

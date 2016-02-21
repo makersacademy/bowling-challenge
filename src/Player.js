@@ -1,17 +1,52 @@
 function Player()  {
   this.score = 0;
   this.results = [];
+  this.PINS_STANDING = 10;
 }
 
-Player.prototype.roll = function(number) {
-  if (number > 10)
+Player.prototype.roll1 = function(number) {
+  if (number > 10) {
     throw "roll must be a number between 1 and 10";
-  var pinsDown = number;
-  this.results.push(pinsDown);
+  }
+  else if (number === 10) {
+    var pinsDown = number
+    this.results.push(pinsDown, 0);
+    this.PINS_STANDING = 0;
+  }
+  else {
+    var pinsDown = number
+    this.results.push(pinsDown);
+    this.PINS_STANDING = (10 - number);
+  }
+};
+
+Player.prototype.roll2 = function(number) {
+  if (number > this.PINS_STANDING){
+    throw "oops looks like there aren't that many pins standing, roll " + this.PINS_STANDING + " or below"
+  }
+  else {
+    var pinsDown = number
+    this.results.push(pinsDown);
+  }
 };
 
 Player.prototype.calculateScore = function() {
-  for(var i in this.results) { this.score += this.results[i]; }
+  this.score = 0;
+  var rollIndex = 0;
+
+  for(var frameIndex = 0; frameIndex < 2; frameIndex++) {
+
+    if (this.results[rollIndex] + this.results[rollIndex + 1] === 10){
+      this.score += this.results[rollIndex] + this.results[rollIndex + 1] + this.results[rollIndex + 2];
+    }
+    else {
+      this.score += this.results[rollIndex] + this.results[rollIndex + 1];
+    }
+    rollIndex += 2;
+  }
+
+  return this.score;
+
 };
 
 

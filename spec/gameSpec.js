@@ -4,8 +4,8 @@ describe('Game', function() {
 
   beforeEach(function() {
     game = new Game();
-    frame1 = jasmine.createSpyObj('frame1', ['showRolls', 'isSpare']);
-    frame2 = jasmine.createSpyObj('frame2', ['showRolls', 'isSpare']);
+    frame1 = jasmine.createSpyObj('frame1', ['showRolls', 'isSpare', 'isStrike']);
+    frame2 = jasmine.createSpyObj('frame2', ['showRolls', 'isSpare', 'isStrike']);
     frame1.showRolls.and.returnValue([0, 0]);
   });
 
@@ -40,6 +40,32 @@ describe('Game', function() {
       game.addFrame(frame1)
       expect(game.frameScores).toContain(3);
       expect(game.frameScores).toContain(9);
+    });
+
+    it('can handle spare scoring correctly', function() {
+      frame1.showRolls.and.returnValue([9, 1]);
+      frame1.isSpare.and.returnValue(true);
+      game.addFrame(frame1)
+      game.addFrame(frame1)
+      expect(game.frameScores).toContain(19);
+    });
+
+    it('can handle strike scoring correctly', function() {
+      frame1.showRolls.and.returnValue([10]);
+      frame1.isStrike.and.returnValue(true);
+      game.addFrame(frame1)
+      game.addFrame(frame1)
+      expect(game.frameScores).toContain(20);
+    });
+
+    it('can handle three strikes scoring correctly', function() {
+      frame1.showRolls.and.returnValue([10]);
+      frame1.isStrike.and.returnValue(true);
+      game.addFrame(frame1)
+      game.addFrame(frame1)
+      game.addFrame(frame1)
+      expect(game.frameScores).toContain(30);
+      expect(game.frameScores).toContain(20);
     });
   });
 

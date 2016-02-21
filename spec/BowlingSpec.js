@@ -10,7 +10,7 @@ describe('Game', function() {
 	});
 
 	it('should start the game with a score of 0', function() {
-		expect(game.totalScore).toEqual(0);
+		expect(game.finalScore).toEqual(0);
 	});
 
 	it("a user can begin a game with their first bowl", function() {
@@ -22,6 +22,12 @@ describe('Game', function() {
   game.bowl()
   game.bowl()
 	expect(game.scoreCard.length).toEqual(1)
+	});
+
+	it("a user can take their second bowl", function() { 
+  spyOn(game.scoreCard,'reduce').and.returnValue([5,4,5,5])
+  game.calculate()
+	expect(game.finalScore).toEqual(19)
 	});
 
 });

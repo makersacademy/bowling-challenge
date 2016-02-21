@@ -5,7 +5,7 @@ function Frame(){
 	this.rollScore = STARTING_SCORE
 	this.score = [];
 	this.pins = MAXIMUM_PINS
-};
+}
 
 	
 	Frame.prototype.firstBowl = function() {

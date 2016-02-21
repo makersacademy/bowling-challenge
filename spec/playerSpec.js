@@ -15,15 +15,6 @@ describe("Player", function() {
     expect(player.results).toContain (7);
   });
 
-  it ("calculates the score for one frame", function(){
-    player.roll1(3);
-    player.roll2(5);
-    player.roll2(0);
-    player.roll2(0);
-    player.calculateScore();
-    expect(player.score).toEqual(8);
-  });
-
   it ("prevents a user rolling more than 10 on their first roll", function(){
     expect(function(){player.roll1(11);}).toThrow("roll must be a number between 1 and 10")
   });
@@ -40,6 +31,14 @@ describe("Player", function() {
     player.roll2(2);
     player.calculateScore();
     expect(player.score).toEqual(22);
+  });
+
+  it ("calculates the bonus score is the user rolls a strike", function(){
+    player.roll1(10);
+    player.roll1(7);
+    player.roll2(2);
+    player.calculateScore();
+    expect(player.score).toEqual(28);
   });
 
   // it ("only stores one number in the array if the player rolls a 10"), function(){

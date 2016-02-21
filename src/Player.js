@@ -36,7 +36,10 @@ Player.prototype.calculateScore = function() {
 
   for(var frameIndex = 0; frameIndex < 2; frameIndex++) {
 
-    if (this.results[rollIndex] + this.results[rollIndex + 1] === 10){
+    if (this.results[rollIndex] === 10){
+      this.score += this.results[rollIndex] + this.results[rollIndex + 1] + this.results[rollIndex + 2] + this.results[rollIndex + 3];
+    }
+    else if (this.results[rollIndex] + this.results[rollIndex + 1] === 10){
       this.score += this.results[rollIndex] + this.results[rollIndex + 1] + this.results[rollIndex + 2];
     }
     else {

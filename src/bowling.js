@@ -8,7 +8,33 @@ function Bowling () {
                     9: [], 10:[]};
   this.currentFrame = 1;
   this.round = 0;
+  this._totalScore = 0;
+  this.finishedGame = false;
 }
+
+Bowling.prototype.viewTotalScore = function () {
+  return this._totalScore;
+};
+
+Bowling.prototype.isSpare = function () {
+  if (this.currentFrame > 1){
+    if((this.allFrames[this.currentFrame - 1][0] + this.allFrames[this.currentFrame - 1][1]) === 10 && this.round === 1){
+      return true;
+    } else {
+      return false;
+    }
+  }
+};
+
+Bowling.prototype.isStrike = function () {
+  if (this.currentFrame > 1){
+    if (this.allFrames[this.currentFrame - 1].includes(10) && this.round === 1){
+      return true;
+    } else {
+      return false;
+    }
+  }
+};
 
 Bowling.prototype.bowl = function () {
   this.setRound();
@@ -24,6 +50,7 @@ Bowling.prototype.dropPins = function () {
 Bowling.prototype.setScore = function (hitPins) {
   this.score = hitPins;
   this.addScoreToFrame(hitPins);
+  if (hitPins === 10 && this.round === 1 && this.currentFrame !== 10) {this.setRound();}
 };
 
 Bowling.prototype.setRound = function () {
@@ -32,7 +59,7 @@ Bowling.prototype.setRound = function () {
   } else {
     if (this.round >= 2) {
       this.currentFrame += 1;
-      this.reset();
+      this.resetRound();
     } else {
       this.round += 1;
     }
@@ -41,47 +68,39 @@ Bowling.prototype.setRound = function () {
 
 Bowling.prototype.lastRound = function () {
   if (this.round >= 3) {
-    console.log("finito");
+    alert("Game Finished!!! \nTotal Score: " + this.viewTotalScore());
+    this.finishedGame = true;
   } else {
+    if (this.score === 10) {
+      this.resetRound();
+    }
     this.round += 1;
-    if (this.score === 10) {this.reset();}
   }
 };
 
 Bowling.prototype.addScoreToFrame = function (score) {
-  //TO DO: if the current Frame is 10 and 3 rounds don't add anymore
   this.allFrames[this.currentFrame].push(score);
+  this.addTotalScore(score);
 };
 
-Bowling.prototype.reset = function () {
+Bowling.prototype.addTotalScore = function (score) {
+  if (this.isStrike() || this.isSpare()) {
+    this._totalScore += (score * 2);
+  } else {
+    this._totalScore += score;
+  }
+};
+
+Bowling.prototype.resetRound = function () {
   this.round = 1;
   this.currentPins = 10;
+};
+
+Bowling.prototype.isGameFinished = function () {
+  return this.finishedGame;
 };
 
 Bowling.prototype.randomHit = function () {
   var value = this.currentPins + 1
   return Math.floor((Math.random() * value) + 0 );
 };
-
-// Bowling.prototype.calculateTotalScore = function () {
-//   var totalScore = 0;
-//   var allFramesLength = Object.keys(this.allFrames).length;
-//   for (var i = 0; i < allFramesLength; i++) {
-//     totalScore += this.allFrames[i];
-//   }
-// };
-
-// TO BE DELETED, testing locally.
-// var bowling = new Bowling ();
-//
-//
-// for (var i = 1; i < 11; i++){
-//   bowling.bowl();
-//   bowling.bowl();
-//   console.log(bowling.currentFrame);
-//   console.log(bowling.allFrames[i]);
-// }
-// bowling.bowl();
-// console.log(bowling.currentFrame);
-// console.log(bowling.round);
-// console.log(bowling.allFrames[10]);

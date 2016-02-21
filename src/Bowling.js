@@ -1,14 +1,24 @@
-
-function Bowling(){
-	var MAXIMUM_PINS = 10
-	var STARTING_SCORE = 0
-	this.pins = MAXIMUM_PINS
-	this.totalScore = STARTING_SCORE
-	this.frameScore = STARTING_SCORE
-
-Bowling.prototype.roll = function() {
-	this.frameScore = Math.floor((Math.random()*10)+1)
-
-};
+function Game(frame){
+	this.scoreCard = []
+	this._frame = frame
+	this.totalScore = 0 
 
 }
+
+Game.prototype.addFrame = function(frame){
+  this.scoreCard.push(this._frame.score);
+  this._frame.resetFrame();
+}
+	
+	Game.prototype.bowl = function() {
+		if (this._frame.score.length < 1) {
+		this._frame.firstBowl()
+		}
+		else {
+		this._frame.secondBowl()
+		this.addFrame()
+		}
+	};
+
+
+

@@ -1,29 +1,27 @@
-describe('Bowling', function() {
-
-	var bowling;
+describe('Game', function() {
+	
+	var game;
+	var frame;
 
 	beforeEach(function() {
-		bowling = new Bowling();
-	});
-
-	it('should start a game with ten pins up ', function() {
-		expect(bowling.pins).toEqual(10);
+		game = new Game(new Frame);
+		spyOn(game._frame,'firstBowl').and.callThrough();
+		spyOn(game._frame,'secondBowl').and.callThrough();
 	});
 
 	it('should start the game with a score of 0', function() {
-		expect(bowling.totalScore).toEqual(0);
+		expect(game.totalScore).toEqual(0);
 	});
 
-	it('the first roll of a frame has a maximum score of 10', function() {
-		spyOn(Math,'floor').and.returnValue(10)
-		bowling.roll()
-		expect(bowling.frameScore).toEqual(10)
+	it("a user can begin a game with their first bowl", function() {
+  game.bowl()
+  expect(game._frame.firstBowl).toHaveBeenCalled();
 	});
-		
 
+	it("a user can take their second bowl", function() {
+  game.bowl()
+  game.bowl()
+	expect(game.scoreCard.length).toEqual(1)
+	});
 
 });
-
-
-
-

@@ -5,6 +5,7 @@
     "maxerr"        : 50,       // {int} Maximum error before stopping
 
     // Enforcing
+    "jasmine"       : true
     "bitwise"       : true,     // true: Prohibit bitwise operators (&, |, ^, etc.)
     "camelcase"     : false,    // true: Identifiers must be in camelCase
     "curly"         : true,     // true: Require {} for every new block or scope

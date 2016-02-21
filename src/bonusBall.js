@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 function Scorecard(){
     this.bowlingFrames = []
@@ -11,7 +11,7 @@ function Scorecard(){
     this.tenthFrame = false;
     this.addbonusBall = false;
     this.finalScore = 0;
-}
+  }
 
   Scorecard.prototype.ballOne = function(noOfPinsBallOne){
     if (this.tenthFrame) {

@@ -20,4 +20,15 @@ describe('Features Spec', function(){
       expect(game.totalScore).toEqual(7);
     }); 
   });
+
+  describe('User Story 3:', function(){
+    it('Can record two frames and return total score', function(){
+      var game = new Bowling();
+      game.writeFrameOne(2);
+      game.writeFrameTwo(3);
+      game.writeFrameOne(6);
+      game.writeFrameTwo(2);
+      expect(game.totalScore).toEqual(13);
+    });
+  });
 });

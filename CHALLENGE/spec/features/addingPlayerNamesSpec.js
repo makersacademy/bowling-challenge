@@ -1,6 +1,6 @@
 describe('Bowling game', function() {
 
-  var game
+  var game;
 
   beforeEach(function() {
     game = new Bowling();
@@ -9,7 +9,8 @@ describe('Bowling game', function() {
   describe('To add players', function() {
 
     it('an entered name adds that player to the game', function() {
-      expect(game.addPlayer()).toEqual([player]);
+      game.addPlayer('Joe');
+      expect(game.players).toEqual(['Joe']);
     });
   });
 });

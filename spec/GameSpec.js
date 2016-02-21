@@ -7,22 +7,24 @@ describe('Game', function() {
     game = new Game();
   });
 
-    it('has a starting total score of 0', function(){
-      expect(game.totalScore()).toEqual(0)
+    it('has a starting score of 0', function(){
+      expect(game.getCurrentScore()).toEqual(0)
     });
 
     it('bowling returns a number', function(){
       expect(game.bowl()).toEqual(jasmine.any(Number));
     });
 
-    it('adds bowled score to current score', function() {
-      spyOn(game, "bowl").and.returnValue(5)
-      expect(game.currentScore()).toEqual(5)
+    it('adds bowled score to total score', function() {
+      spyOn(game, "bowl").and.returnValue(5);
+      expect(game.totalScore()).toEqual(5);
     });
 
-    it('displays a score of 10 as X', function() {
-     spyOn(game, "bowl").and.returnValue(10)
-     expect(game.currentScore()).toEqual('X')
+    it('adds two scores together to total score', function() {
+      spyOn(game, "bowl").and.returnValue(5);
+      expect(game.totalScore()).toEqual(5);
+      game.bowl.and.returnValue(4);
+      expect(game.totalScore()).toEqual(9);
     });
 
 });

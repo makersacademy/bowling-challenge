@@ -6,21 +6,21 @@ function Game() {
 
 Game.prototype.bowl = function(){
   this.currentFrame.calculateScore(this.getFrameScore());
-  this.totalScore += (this.getFrameScore());
-  this.checkStrike();
+  this.checkStrike(this.getFrameScore());
   this.checkFrameOver();
 };
 
 Game.prototype.checkStrike = function(ballScore){
-  if (ballScore === 10) {
-    this.addFrame();
+  if (ballScore === 10){
+    this.addFrame(this.currentFrame);
     this.startNewFrame();
   }
 };
 
 Game.prototype.checkFrameOver = function(){
-  if (this.currentFrame.score.length > 2) {
-    this.addFrame();
+  if (this.currentFrame.score.length >= 2){
+    this.totalScore += (this.getFrameScore());
+    this.addFrame(this.currentFrame);
     this.startNewFrame();
   }
 };
@@ -29,7 +29,7 @@ Game.prototype.startNewFrame = function(){
   this.currentFrame = new Frame();
 };
 
-Game.prototype.addFrame = function(frame) {
+Game.prototype.addFrame = function(frame){
   this.frames.push(frame);
 };
 

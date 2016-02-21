@@ -22,22 +22,59 @@ describe("Game", function() {
   });
 
   describe("bowl", function(){
-
     it("bowling a ball calculates a score", function(){
       spyOn(Math, 'random').and.returnValue(0.3);
       game.bowl();
-      expect(game.totalScore).toEqual(4)
+      expect(game.getFrameScore()).toEqual(4)
+    });
+  });
+
+  describe("checkStrike", function() {
+    it("starts a new frame if a strike is scored", function(){
+      spyOn(Math, 'random').and.returnValue(0.9);
+      game.bowl();
+      expect(game.currentFrame.score).toEqual([])
     });
 
+    it("adds frame if score is 10", function(){
+      game.checkStrike(10)
+      expect(game.frames.length).toEqual(1)
+    });
+
+    it("closes the frame if a strike is scored", function(){
+      spyOn(Math, 'random').and.returnValue(0.9);
+      game.bowl();
+      expect(game.frames.length).toEqual(1)
+    });
+  });
+
+  describe("checkFrameOver", function() {
+    it("starts a new frame if two balls are bowled", function(){
+      game.bowl();
+      expect(game.bowl()).toEqual(this.startNewFrame)
+    });
+  });
+
+  describe("startNewFrame", function() {
+    it("starts a new frame", function(){
+      expect(game.startNewFrame()).toEqual(this.currentFrame);
+    });
   });
 
   describe("addFrame", function() {
-
     it("adds a frame", function(){
-      game.addFrame(frame)
-      expect(game.frames).toContain(frame)
+      game.addFrame(this.currentFrame)
+      expect(game.frames).toContain(this.currentFrame)
     });
+  });
 
+  describe("getFrameScore", function() {
+    it("calculates the total score for the current frame", function(){
+      spyOn(Math, 'random').and.returnValue(0.2);
+      game.bowl();
+      game.bowl();
+      expect(game.totalScore).toEqual(5)
+    });
   });
 
 });

@@ -52,4 +52,29 @@ describe('Features Spec', function(){
       expect(game.totalScore).toEqual(26);
     }); 
   });
-});
+
+  describe('User Story 6:', function(){
+    it('Gives a third frame if the tenth frame has a spare', function(){
+      var game = new Bowling();
+      for (var i = 1; i < 10; i++){
+        game.writeFrameOne(2);
+        game.writeFrameTwo(3);
+      } 
+      game.writeFrameOne(5);
+      game.writeFrameTwo(5);
+      game.writeFinalFrame(3);
+      expect(game.isFinished()).toEqual(true);
+      expect(game.totalScore).toEqual(61);
+    });  
+  });
+   describe('Maximum Points Game', function(){
+    it('Returns a maximum score of 300 for 12 consecutive strikes', function(){
+      var game = new Bowling();
+      for (var i = 1; i < 11; i++){
+        game.writeFrameOne(10);
+      } 
+      expect(game.isFinished()).toEqual(true);
+      expect(game.totalScore).toEqual(300);
+    });  
+  });
+}); 

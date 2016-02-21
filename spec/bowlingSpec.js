@@ -52,17 +52,20 @@ describe("when a user strikes",function(){
 
   beforeEach(function(){
     spyOn(bowling, 'randomHit');
+    spyOn(bowling, 'isStrike');
   });
 
   it("doubles the next round", function () {
     bowling.randomHit.and.returnValue(10);
     bowling.bowl();
+    bowling.isStrike.and.returnValue(true);
     bowling.randomHit.and.returnValue(2);
     bowling.bowl();
     expect(bowling.viewTotalScore()).toEqual(14);
   });
 
   it("returns isStrike to true at next round", function () {
+    bowling.isStrike.and.returnValue(true);
     expect(bowling.isStrike()).toEqual(true);
   });
 

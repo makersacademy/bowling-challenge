@@ -10,8 +10,8 @@ describe('ScoreCard', function(){
   describe('#add', function(){
     it('adds score to the scoreCard', function(){
       var scoreCard = new ScoreCard();
-      scoreCard.add(8);
-      scoreCard.add(1);
+      scoreCard.addFrame1(8);
+      scoreCard.addFrame2(1);
       //expect(scoreCard.show).toEqual({[8, 1]}); 
     }); 
   });
@@ -27,20 +27,20 @@ describe('ScoreCard', function(){
   describe('#spareBonus', function(){
     it('toggles spare and calculates bonus', function(){
       var scoreCard = new ScoreCard();
-      scoreCard.add(5);
-      scoreCard.add(5);
+      scoreCard.addFrame1(5);
+      scoreCard.addFrame2(5);
       expect(scoreCard.spare).toEqual(true)
-      scoreCard.add(5);
+      scoreCard.addFrame1(5);
       expect(scoreCard.bonus).toEqual(5);
     });
   });
   describe('#strikeBonus', function(){
     it('toggles strike and calculates bonus', function(){
       var scoreCard = new ScoreCard();
-      scoreCard.add(10);
+      scoreCard.addFrame1(10);
       expect(scoreCard.strike).toEqual(true)
-      scoreCard.add(5);
-      scoreCard.add(3);
+      scoreCard.addFrame1(5);
+      scoreCard.addFrame2(3);
       //expect(scoreCard.).toEqual(8);
     });
   });

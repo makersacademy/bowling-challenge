@@ -5,6 +5,29 @@ describe('Frame', function() {
     frame = new Frame();
   });
 
+  describe('#_throwsAllowed', function() {
+    it('set to 2 by default', function() {
+      expect(frame._throwsAllowed).toEqual(2);
+    });
+    it('set to 3 if strike in final frame', function() {
+      frame2 = new Frame(true);
+      frame2.bowl(10);
+      expect(frame2._throwsAllowed).toEqual(3);
+    });
+  });
+
+  describe('#isFinal', function() {
+    it('allows three throws if first strike', function() {
+      expect(frame.score).toEqual(0);
+      frame2 = new Frame(true);
+      frame2.bowl(10);
+      frame2.bowl(10);
+      frame2.bowl(10);
+      expect(frame2.score).toEqual(30);
+    });
+  });
+
+
   describe('#score', function() {
     it('returns 0 by default', function() {
       expect(frame.score).toEqual(0);
@@ -40,24 +63,16 @@ describe('Frame', function() {
       frame.bowl(8);
       expect(frame.isSpare).toBe(true);
     });
-    it('pushes "/" into throwArray', function() {
-      frame.bowl(2);
-      frame.bowl(8);
-      expect(frame.throwArray).toContain('/');
-    });
   });
 
-  describe('#isComplete', function() {
-    it('returns false by default', function() {
-      expect(frame.isComplete()).toBe(false);
+  describe('#_updateCompleteness', function() {
+    it('returns sets this.isComplete to true when frame complete', function() {
+      frame.bowl(10);
+      expect(frame.isComplete).toBe(true);
     });
   });
 
   describe('#_evaluateThrow', function() {
-    it('increases _numberOfThrows by 2 if score is 10', function() {
-      frame.bowl(10);
-      expect(frame._numberOfThrows).toEqual(2);
-    });
     it('pushes "X" into throwArray', function() {
       frame.bowl(10);
       expect(frame.throwArray).toContain('X');

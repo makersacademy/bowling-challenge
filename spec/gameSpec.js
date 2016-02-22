@@ -1,11 +1,12 @@
 describe('Game', function() {
   var game;
 
-  function MockFrame() {
+  function MockFrame(isFinal) {
+    this.isFinal = isFinal || false;
     this.score = 8;
     this.isSpare = false;
     this.isStrike = false;
-    this._throwArray = [4, 5]
+    this.throwArray = [4, 5];
   }
   MockFrame.prototype.isComplete = function () {return true;};
   MockFrame.prototype.updateScore = function (num) {this.score += num;};
@@ -62,9 +63,23 @@ describe('Game', function() {
         game.currentFrame.throwArray = [10, 'X'];
         game.nextFrame();
       }
+      game.nextFrame();
+      thirdLast = game.frames[game.frames.length - 3];
+      expect(thirdLast.score).toEqual(10 + 10 + 4);
+    });
+    it('works for final frame', function() {
+      for(i=0; i < 3; i++){
+        game.currentFrame.isStrike = true;
+        game.currentFrame.score = 10;
+        game.currentFrame.throwArray = [10, 'X'];
+        game.nextFrame();
+      }
+      game.currentFrame.isFinal = true;
+      game.currentFrame.throwArray = [10, 10, 10];
       game._adjustScores();
-      console.log(game.frames);
-      expect(game._secondLastFrame().score).toEqual(10 + 10 + 4);
+      thirdLast = game.frames[game.frames.length - 3];
+      expect(thirdLast.score).toEqual(10 + 10 + 10);
+      expect(game._secondLastFrame().score).toEqual(10 + 10 + 10);
     });
   });
 
@@ -109,7 +124,7 @@ describe('Game', function() {
 
   describe('#nextFrame', function() {
     it('throws error if current frame not complete', function() {
-      spyOn(game.currentFrame, 'isComplete').and.returnValue(false);
+      game.currentFrame = false;
       expect(function() {game.nextFrame()}).toThrowError('Finish frame first');
     });
     it('throws error if game over', function() {
@@ -127,6 +142,11 @@ describe('Game', function() {
     it('increases framesPlayed', function() {
       game.nextFrame();
       expect(game._framesPlayed).toEqual(1);
+    });
+    it('generates final frame when frames played === 9', function() {
+      game._framesPlayed = 8;
+      game.nextFrame();
+      expect(game.currentFrame.isFinal).toBe(true);
     });
   });
 

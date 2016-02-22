@@ -1,26 +1,22 @@
-function Frame() {
+function Frame(isFinal) {
+  this.isFinal =  isFinal || false;
+  this._throwsAllowed = 2;
   this.score = 0;
   this._numberOfThrows = 0;
   this.throwArray = [];
   this.isSpare = false;
   this.isStrike = false;
+  this.isComplete = false;
 }
 
-Frame.prototype.isComplete = function () {
-  if(this._numberOfThrows >= 2){return true;}
-  return false;
+Frame.prototype._updateCompleteness = function () {
+  if(this._numberOfThrows >= this._throwsAllowed){
+    this.isComplete = true;
+  }
 };
 
 Frame.prototype._evaluateThrow = function (score) {
-  if(score === 10){
-    this._numberOfThrows += 2;
-    this.isStrike = true;
-    this.throwArray.push('X');
-  } else if(score < 10) {
-    this._numberOfThrows += 1;
-  } else {
-    throw new Error('Invalid score');
-  }
+  if(score > 10){throw new Error('Invalid score');}
 };
 
 Frame.prototype._updateThrowArray = function (score) {
@@ -31,19 +27,37 @@ Frame.prototype._updateScore = function (score) {
   this.score += score;
 };
 
+Frame.prototype._checkForStrike = function (score) {
+  if(score === 10){
+    if(this.isFinal){
+      this._throwsAllowed = 3;
+    } else {
+      this.isComplete = true;
+      this.throwArray.push('X');
+    }
+    this.isStrike = true;
+  }
+};
+
 Frame.prototype._checkForSpare = function (score) {
   if(this.score === 10 && !this.isStrike){
     this.isSpare = true;
-    this.throwArray.push('/');
+  }
+};
+
+Frame.prototype._checkIfComplete = function () {
+  if(this.isComplete){
+    throw new Error('Frame is already complete');
   }
 };
 
 Frame.prototype.bowl = function (score) {
-  if(this.isComplete()){
-    throw new Error('Frame is already complete');
-  }
+  this._checkIfComplete();
   this._updateThrowArray(score);
   this._evaluateThrow(score);
   this._updateScore(score);
+  this._numberOfThrows += 1;
+  this._updateCompleteness();
+  this._checkForStrike(score);
   this._checkForSpare(score);
 };

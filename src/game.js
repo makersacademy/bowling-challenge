@@ -6,28 +6,28 @@ function Game(scoreCalculator) {
 
 Game.prototype.addFrame = function(frame){
   this.frames.push(frame);
-  // if(this.isOver()) {
-  //   this.frames = [];
-  //   return this.result();
-  // };
 };
 
-Game.prototype.score = function(){
-  // var merged = [].concat.apply([],this.frames)
+Game.prototype.flattenFrames = function(){
   var rolls = [];
   for(var i = 0; i<this.frames.length; i++){
     rolls = rolls.concat(this.frames[i].rolls);
   }
-  return this.scoreCalculator.finalCalc(rolls)
-};
+  return rolls;
+}
 
-Game.prototype.isOver = function(){
-  return (this.frames.length >= 10);
+Game.prototype.score = function(){
+  var rolls = this.flattenFrames();
+  return this.scoreCalculator.finalCalc(rolls)
 };
 
 Game.prototype.finalScore = function(){
   return this.score().slice(-1)[0];
 }
+
+Game.prototype.isOver = function(){
+  return (this.frames.length >= 10);
+};
 
 // Game.prototype.result = function(){
 //   console.log(this.score());

@@ -34,6 +34,6 @@ Frame.prototype.addSpecialRoll = function(rollValue){
 }
 
 Frame.prototype.pinsLeft = function(){
-  this.numberOfPinsDown  = this.numberOfPinsDown   === 10 ? 0 : this.numberOfPinsDown 
-  return this.START_PINS - this.numberOfPinsDown  ;
+  this.numberOfPinsDown  = this.numberOfPinsDown === 10 ? 0 : this.numberOfPinsDown
+  return this.START_PINS - this.numberOfPinsDown;
 };

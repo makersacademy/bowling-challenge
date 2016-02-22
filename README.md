@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-Makers Academy week 05 challenge. Forked from https://github.com/makersacademy/bowling-challenge.
+Makers Academy week 05 weekend challenge. Forked from https://github.com/makersacademy/bowling-challenge.
 
 Task: 
 -----

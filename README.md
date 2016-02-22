@@ -23,11 +23,20 @@ How to use
 
 - clone this repo
 - open ```/src/game.js``` and ```/src/frame.js``` in the console of your choice. E.g. for Chrome Devtools console, open ```new-game.html``` in Chrome and open Devtools (Command + Option + J).
-- in the console, create a new game using ```var game = new Game(‘yourNameHere’);```
-- play the game by calling ```game.currentFrame.bowl(yourScore)```, passing it the number of pins you bowled (10 max). 
+- in the console, create a new game using ```var game = new Game('yourNameHere');```
+- play the game by calling ```game.currentFrame.bowl(yourScore);```, passing it the number of pins you bowled (10 max). 
 - call ```game.nextFrame();``` to move on to the next frame (helpful error messages should let you know if your current frame hasn’t been completed)
-- repeat until all ten frames have been bowled!
-- at any time you can check your score by calling ```game.score```
+- repeat until all ten frames have been bowled (you still have to call ```game.nextFrame();``` after the tenth frame to finalize the scores, but you won't be able to bowl again
+- at the end of every ```bowl()```, the program returns the current score for the current frame
+- every time ```nextFrame()``` is called, the program returns the current total score for the game
+- at any time you can check your score by calling ```game.score;```
+
+
+To do
+---
+
+Consider better ways of implementing private methods (currently using the ```_privateMethod``` convention). Douglas Crockford <a href="http://javascript.crockford.com/code.html">says</a>:
+>Do not use _ underbar as the first or last character of a name. It is sometimes intended to indicate privacy, but it does not actually provide privacy. If privacy is important, use closure. Avoid conventions that demonstrate a lack of competence. 
 
 
 Rules of Ten-Pin Bowling

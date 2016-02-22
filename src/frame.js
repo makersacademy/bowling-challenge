@@ -60,4 +60,5 @@ Frame.prototype.bowl = function (score) {
   this._updateCompleteness();
   this._checkForStrike(score);
   this._checkForSpare(score);
+  return 'Current frame score: ' + this.score;
 };

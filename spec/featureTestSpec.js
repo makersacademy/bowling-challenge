@@ -13,7 +13,7 @@ describe("featureTest",function(){
       expect(game.score()).toEqual(9);
     });
 
-    it("After 4-5, 6-2,7-1, the total score is 25",function(){
+    it("After 4-5, 6-2, 7-1, the total score is 25",function(){
       game = new Game();
       frame = new Frame();
       frame.addRoll(4);
@@ -31,15 +31,6 @@ describe("featureTest",function(){
     });
   });
 
-  describe("Continous updating",function(){
-
-    xit("the score is updated after each roll",function(){
-      game = new Game();
-      frame = new Frame();
-      frame.addRoll(4);
-      expect(game.score()).toEqual(4);
-    });
-  });
 
   describe("Spares and strikes",function(){
 

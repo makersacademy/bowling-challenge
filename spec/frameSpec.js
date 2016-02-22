@@ -30,12 +30,26 @@ describe("Frame",function(){
   });
 
   describe("tenth frame",function(){
-    it("allows for three rolls",function(){
-      frame2 = new Frame(specialFrame: true)
+    it("specialFrame accepts addroll",function(){
+      var frame2 = new Frame('specialFrame');
+      frame2.addRoll(5);
+      expect(frame2.rolls.length).toEqual(1);
+    });
+
+    it("accepts three rolls",function(){
+      var frame2 = new Frame('specialFrame');
       frame2.addRoll(10);
       frame2.addRoll(2);
       frame2.addRoll(7);
-      expect(frame.rolls.length).toEqual(3);
+      expect(frame2.rolls.length).toEqual(3);
     });
+
+    it("each roll cannot be higher than the number of pins available",function(){
+      var frame2 = new Frame('specialFrame');
+      frame2.addRoll(5)
+      expect(function(){frame2.addRoll(frame.pinsLeft()+1)}).toThrow('Value exceeds number of pins');
+    });
+
+
   });
 });

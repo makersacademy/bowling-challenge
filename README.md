@@ -18,6 +18,13 @@ My approach
 I chose to see this challenge as an opportunity to practice object-oriented JavaScript. Thus, I based my program on the interaction of a ```Game``` object with various ```Frame``` objects (in bowling, a game consists of 10 frames).
 
 
+Technologies used
+---------
+
+- JavaScript
+- Jasmine (testing)
+
+
 How to use
 ---
 

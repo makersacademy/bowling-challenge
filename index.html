@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+  <html>
+    <head>
+      <link rel='stylesheet' content="text/css" href="stylesheet/style.css">
+      <title>Bowling Challenge</title>
+      
+    </head>
+    <body id="index" onload="">
+      <section id='main'>
+        <p id='name'>Player 1</p>
+          <div id='partial'>Partial Score: </div>
+            <div id='lastShot'>LastShot: </div><hr />
+        <div id='div1'>
+          <p id='frame10'> ---<div id='frame15'></div></p>
+        </div>
+        <div id='div2'>
+          <p id='frame20'> ---<div id='frame25'></div></p>
+        </div>
+        <div id='div3'>
+          <p id='frame30'> ---<div id='frame35'></div></p>
+        </div>
+        <div id='div4'>
+          <p id='frame40'> ---<div id='frame45'></div></p>
+        </div>
+        <div id='div5'>
+          <p id='frame50'> ---<div id='frame55'></div></p>
+        </div>
+        <div id='div6'>
+          <p id='frame60'> ---<div id='frame65'></div></p>
+        </div>
+        <div id='div7'>
+          <p id='frame70'> ---<div id='frame75'></div></p>
+        </div>
+        <div id='div8'>
+          <p id='frame80'> ---<div id='frame85'></div></p>
+        </div>
+        <div id='div9'>
+          <p id='frame90'> ---<div id='frame95'></div></p>
+        </div>
+        <div id='div10'>
+          <p id='frame100'> ---<div id='frame105'></div></p>
+        </div>
+        <div id='shoot'>
+          <button id='play'>SHOOT!</button>
+        </div>
+      </section>
+      <script type="text/javascript" src="src/Bowling.js"></script> 
+      <script type="text/javascript" src="jquery.js"></script> 
+      <script>
+        $( document ).ready(function() {
+          var bowling = new Bowling();
+          
+          $( '#shoot' ).on('click', function() {
+             var last = bowling.shoot();
+            if (last === 10 && bowling.firstShot === true) {
+            $( '#frame' + ((bowling._getFrame() * 10) + 5)).text('TEST'); 
+            } else {
+              $( '#frame' + (bowling._getFrame() * 10)).text(last);
+              $( '#partial' ).text("Partial Score: " + bowling.getScore());
+              $( '#lastShot' ).text("Last Shot: " + last);
+            }
+          });
+         
+          
+        });
+      </script>
+    </body>
+  </html>

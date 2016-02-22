@@ -1,0 +1,207 @@
+#partial {
+  width: 120px;
+  height: 25px;
+  border: solid thin;
+  position: relative;
+  text-align: center;
+  left: 79px;
+  top: -37px;
+}
+
+#lastShot {
+  width: 120px;
+  height: 25px;
+  border: solid thin;
+  position: relative;
+  text-align: center;
+  left: 150px;
+  top: -38px;
+}
+
+#shoot {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 200px;
+  left: 20px;
+}
+
+
+#div1 {
+  width: 100px;
+  height: 50px;
+  border: solid thin;
+  position: relative;
+  left: 10px;
+}
+
+#frame15 {
+   width: 50px;
+  height: 30px;
+  border: solid thin;
+  position: relative;
+  left: 49px;
+ top: -52px;
+}
+
+#div2 {
+  width: 100px;
+  height: 50px;
+  border: solid thin;
+  position: relative;
+  left: 111px;
+  top: -52px;
+}
+
+#frame25 {
+  width: 50px;
+  height: 30px;
+  border: solid thin;
+  position: relative;
+  left: 49px;
+  top: -52px;
+}
+
+#div3 {
+ width: 100px;
+  height: 50px;
+  border: solid thin;
+  position: relative;
+  left: 212px;
+  top: -104px;
+}
+
+#frame35 {
+   width: 50px;
+  height: 30px;
+  border: solid thin;
+  position: relative;
+  left: 49px;
+  top: -52px;
+}
+
+#div4 {
+  width: 100px;
+  height: 50px;
+  border: solid thin;
+  position: relative;
+  left: 313px;
+  top: -156px;
+}
+
+#frame45 {
+  width: 50px;
+  height: 30px;
+  border: solid thin;
+  position: relative;
+  left: 49px;
+  top: -52px;
+}
+
+#div5 {
+  width: 100px;
+  height: 50px;
+  border: solid thin;
+  position: relative;
+  left: 414px;
+  top: -208px;
+}
+
+#frame55 {
+  width: 50px;
+  height: 30px;
+  border: solid thin;
+  position: relative;
+  left: 49px;
+  top: -52px;
+}
+
+#div6 {
+  width: 100px;
+  height: 50px;
+  border: solid thin;
+  position: relative;
+  left: 515px;
+  top: -260px;
+}
+
+#frame65 {
+  width: 50px;
+  height: 30px;
+  border: solid thin;
+  position: relative;
+  left: 49px;
+  top: -52px;
+}
+
+#div7 {
+  width: 100px;
+  height: 50px;
+  border: solid thin;
+  position: relative;
+  left: 616px;
+  top: -312px;
+}
+
+#frame75 {
+  width: 50px;
+  height: 30px;
+  border: solid thin;
+  position: relative;
+  left: 49px;
+  top: -52px;
+}
+
+#div8 {
+  width: 100px;
+  height: 50px;
+  border: solid thin;
+  position: relative;
+  left: 717px;
+  top: -364px;
+}
+
+#frame85 {
+  width: 50px;
+  height: 30px;
+  border: solid thin;
+  position: relative;
+  left: 49px;
+  top: -52px;
+}
+
+#div9 {
+  width: 100px;
+  height: 50px;
+  border: solid thin;
+  position: relative;
+  left: 818px;
+  top: -416px;
+}
+
+#frame95 {
+  width: 50px;
+  height: 30px;
+  border: solid thin;
+  position: relative;
+  left: 49px;
+  top: -52px;
+}
+
+#div10 {
+  width: 100px;
+  height: 50px;
+  border: solid thin;
+  position: relative;
+  left: 919px;
+  top: -468px;
+}
+
+#frame105 {
+  width: 50px;
+  height: 30px;
+  border: solid thin;
+  position: relative;
+  left: 49px;
+  top: -52px;
+}

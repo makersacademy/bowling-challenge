@@ -89,8 +89,6 @@ describe("scoreCalculator",function(){
       var tenFramesOneStrike = [1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,10,5,4];
       expect(calculator.finalCalc(tenFramesOneStrike)).toEqual([3,6,9,12,15,18,21,24,27,46]);
     });
-
-
   });
 
   describe("tenFrameCalc",function(){

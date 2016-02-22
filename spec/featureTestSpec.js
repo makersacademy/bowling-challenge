@@ -49,6 +49,21 @@ describe("featureTest",function(){
       game.addFrame(frame2);
       expect(game.finalScore()).toEqual(300);
     });
+
+    it("calculates a zero game",function(){
+      for(var i = 0; i < 9; i++){
+        frame2 = new Frame();
+        frame2.addRoll(0);
+        frame2.addRoll(0);
+        game.addFrame(frame2);
+      }
+      frame2 = new Frame('specialFrame');
+      frame2.addRoll(0);
+      frame2.addRoll(0);
+      game.addFrame(frame2);
+      expect(game.finalScore()).toEqual(0);
+
+    });
   });
 
 });

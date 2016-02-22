@@ -3,7 +3,7 @@ describe("Game", function() {
 
   beforeEach(function() {
     game = new Game();
-    frame1 = jasmine.createSpyObj('frame', [3, 5]);
+    frame1 = jasmine.createSpyObj('frame', [3, 6]);
     frame2 = jasmine.createSpyObj('frame', [4, 5]);
   });
 
@@ -29,5 +29,14 @@ describe("Game", function() {
       expect(function() {game.addFrames(frame2);}).toThrowError("You have reached the limit of frames for the game");
     });
 
+  });
+
+  describe("it calculates score", function() {
+
+    it('calculates the total score', function(){
+      game.addFrames(frame1);
+      game.addFrames(frame2);
+      expect(game.score()).toEqual(18);
+    });
   });
 });

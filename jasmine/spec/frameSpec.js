@@ -3,12 +3,12 @@ describe("Frame", function() {
 
   beforeEach(function(){
     frame = new Frame();
-  })
+  });
 
   describe("Rolls", function(){
 
     it('begins with no rolls', function(){
-      expect(frame.rolls).toEqual([])
+      expect(frame.rolls).toEqual([]);
     });
 
     it('adds the first roll to the frame', function(){

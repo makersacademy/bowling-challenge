@@ -16,7 +16,7 @@ scoreCalculator.prototype.isSpare = function(twoRolls){
 }
 
 scoreCalculator.prototype.isStrike = function(twoRolls){
-  return (twoRolls[0]===10 && twoRolls[1]===0);
+  return (twoRolls[0]===10);
 }
 
 scoreCalculator.prototype.spareBonus = function(rolls){
@@ -24,7 +24,7 @@ scoreCalculator.prototype.spareBonus = function(rolls){
 }
 
 scoreCalculator.prototype.strikeBonus = function(rolls){
-  if(rolls[0]===10){
+  if(rolls[0]===10 ){
     return rolls[0]+rolls[2];
   }
   else {
@@ -44,12 +44,30 @@ scoreCalculator.prototype.calculateBonus = function(fullRoll){
 
 scoreCalculator.prototype.incrementalScore = function(fullRoll){
   if(fullRoll.length === 1){return fullRoll};
-  var incremental = [0];
+  var incrementalOverview = []
+  var incrementalValue = 0;
   for(var i = 0; i<fullRoll.length; i += 2){
     var bonus = this.calculateBonus(fullRoll.slice(i,fullRoll.length));
-    var add = incremental.slice(-1)[0] + bonus + fullRoll[i] + fullRoll[i+1];
-    incremental.push(add);
+    incrementalValue += bonus + fullRoll[i] + fullRoll[i+1];
+    incrementalOverview.push(incrementalValue);
   };
-  incremental.shift();
-  return incremental;
+  return incrementalOverview;
 };
+
+scoreCalculator.prototype.tenFrameCalc = function(tenthFrame){
+  if(this.type(tenthFrame) === 'strike'){
+    return 10 + tenthFrame[1]+tenthFrame[2];
+  } else{
+    return this.calculateBonus(tenthFrame)+tenthFrame[0]+tenthFrame[1];
+  }
+}
+
+scoreCalculator.prototype.finalCalc = function(fullRoll){
+  if (fullRoll.length<18){
+    return this.incrementalScore(fullRoll);
+  }
+  var result = this.incrementalScore(fullRoll.slice(0,18));
+  var tenFrame = result[result.length-1]+this.tenFrameCalc(fullRoll.slice(18,fullRoll.length));
+  result.push(tenFrame);
+  return result;
+}

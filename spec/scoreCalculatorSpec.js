@@ -91,9 +91,17 @@ describe("scoreCalculator",function(){
     });
   });
 
-  xdescribe("tenFrameCalc",function(){
-    it("does not contain any frames",function(){
-      expect(game.frames.length).toEqual(0);
+  describe("tenFrameCalc",function(){
+    it("calculates the value of the tenth frame",function(){
+      var tenthFrame = [10,5,4];
+      expect(calculator.tenFrameCalc(tenthFrame)).toEqual(19);
+    });
+  });
+
+  describe("finalCalc",function(){
+    it("one strike in last frame",function(){
+      var tenFramesOneStrike = [1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,10,5,4];
+      expect(calculator.finalCalc(tenFramesOneStrike)).toEqual([3,6,9,12,15,18,21,24,27,46]);
     });
   });
 });

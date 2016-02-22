@@ -25,7 +25,7 @@ describe("Frame",function(){
 
     it("if a ten is rolled in the first roll, the next roll is automatically a zero",function(){
       frame.addRoll(10);
-      expect(frame.rolls.length).toEqual(2);
+      expect(frame.rolls).toEqual([10,0]);
     });
   });
 

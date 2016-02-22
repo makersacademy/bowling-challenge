@@ -22,7 +22,7 @@ Frame.prototype.addRoll = function (rollValue) {
 Frame.prototype.addNormalRoll = function(rollValue){
   if(this.rolls.length === 0 && rollValue === 10){
       this.rolls.push(rollValue);
-      this.rolls.push(this.pinsLeft());
+      this.rolls.push(0);
   }
   else{
     this.rolls.push(rollValue);

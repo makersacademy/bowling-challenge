@@ -4,7 +4,7 @@ describe("scoreCalculator",function(){
   var calculator, spareRoll,normalRoll, strikeRoll, halfSpareRoll, halfSingleStrikeRoll;
 
   beforeEach(function(){
-    calculator = new scoreCalculator();
+    calculator = new ScoreCalculator();
     spareRoll = [1,9,5,4];
     normalRoll = [2,5,4,5];
     strikeRoll = [10,0,5,2];

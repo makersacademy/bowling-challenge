@@ -1,10 +1,11 @@
 'use strict';
 
 describe("Game",function(){
-  var game, frame;
+  var game, frame, calculator;
 
   beforeEach(function(){
-    game = new Game();
+    calculator = {}
+    game = new Game(calculator);
     frame = {rolls:[4,5]};
   });
 
@@ -21,12 +22,6 @@ describe("Game",function(){
     });
   });
 
-  describe("score",function(){
-    it("provides the score of all of the frames",function(){
-      game.addFrame(frame);
-      expect(game.score()).toEqual(9);
-    });
-  });
 
   describe("isOver",function(){
     xit("game is over when ten frames have been played",function(){
@@ -36,14 +31,14 @@ describe("Game",function(){
       expect(game.isOver()).toEqual(true);
     });
 
-    it("when the last frame is completed, the final result is returned",function(){
+    xit("when the last frame is completed, the final result is returned",function(){
       for(var i=0; i<9; i++){
         game.addFrame(frame);
       }
       expect(game.addFrame(frame)).toEqual('Game over - final score is: 90');
     });
 
-    it("the game is reset after ten frames",function(){
+    xit("the game is reset after ten frames",function(){
       for(var i=0; i<10; i++){
         game.addFrame(frame);
       }

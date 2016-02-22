@@ -21,8 +21,13 @@
 			spyOn(Math,'round').and.returnValue(5)
 			frame.secondBowl()
 			expect(frame.pins).toEqual(5)
-
 		});
 
+		it('a player can roll a strike', function() {
+			spyOn(Math,'round').and.returnValue(10)
+			frame.firstBowl()
+			expect(frame.isStrike()).toEqual(true)
+		});
+	
 	});
 

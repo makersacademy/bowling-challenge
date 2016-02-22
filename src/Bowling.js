@@ -10,7 +10,10 @@ function Game(frame){
 	Game.prototype.bowl = function() {
 		if (this._frame.score.length < 1) {
 		this._frame.firstBowl()
-		}
+			if (this._frame.isStrike() === true) {
+				this._addFrame()
+			}
+		}			
 		else {
 		this._frame.secondBowl()
 		this._addFrame()

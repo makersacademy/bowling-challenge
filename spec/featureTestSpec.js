@@ -14,7 +14,7 @@ describe("featureTest",function(){
       frame.addRoll(4);
       frame.addRoll(5);
       game.addFrame(frame);
-      expect(game.score().slice(-1)[0]).toEqual(9);
+      expect(game.finalScore()).toEqual(9);
     });
 
     it("After 4-5, 6-2, 7-1, the total score is 25",function(){
@@ -29,7 +29,7 @@ describe("featureTest",function(){
       frame3.addRoll(7);
       frame3.addRoll(1);
       game.addFrame(frame3);
-      expect(game.score().slice(-1)[0]).toEqual(25);
+      expect(game.finalScore()).toEqual(25);
     });
   });
 
@@ -47,8 +47,7 @@ describe("featureTest",function(){
       frame2.addRoll(10);
       frame2.addRoll(10);
       game.addFrame(frame2);
-      console.log(game.score());
-      expect(game.score().slice(-1)[0]).toEqual(300);
+      expect(game.finalScore()).toEqual(300);
     });
   });
 

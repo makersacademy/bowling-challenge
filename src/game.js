@@ -25,6 +25,10 @@ Game.prototype.isOver = function(){
   return (this.frames.length >= 10);
 };
 
+Game.prototype.finalScore = function(){
+  return this.score().slice(-1)[0];
+}
+
 // Game.prototype.result = function(){
 //   console.log(this.score());
 //   return ("Game over - final score is: " + 90);

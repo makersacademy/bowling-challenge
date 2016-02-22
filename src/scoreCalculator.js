@@ -56,7 +56,6 @@ ScoreCalculator.prototype.incrementalScore = function(fullRoll){
 
 ScoreCalculator.prototype.tenFrameCalc = function(tenthFrame){
   if(this.isStrike(tenthFrame)){
-    console.log(tenthFrame)
     return 10 + tenthFrame[1]+tenthFrame[2];
   } else{
     return this.calculateBonus(tenthFrame)+tenthFrame[0]+tenthFrame[1];

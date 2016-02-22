@@ -3,14 +3,14 @@ function Frame(specialFrame){
   this.rolls = [];
   this.specialFrame = specialFrame;
   this.START_PINS = 10;
-  this.pinsDown = 0;
+  this.numberOfPinsDown  = 0;
 };
 
 Frame.prototype.addRoll = function (rollValue) {
   if(rollValue > this.pinsLeft()) {
     throw 'Value exceeds number of pins';
   };
-  this.pinsDown += rollValue;
+  this.numberOfPinsDown  += rollValue;
   if(this.specialFrame){
     this.addSpecialRoll(rollValue);
   }
@@ -34,6 +34,6 @@ Frame.prototype.addSpecialRoll = function(rollValue){
 }
 
 Frame.prototype.pinsLeft = function(){
-  this.pinsDown = this.pinsDown === 10 ? 0 : this.pinsDown
-  return this.START_PINS - this.pinsDown;
+  this.numberOfPinsDown  = this.numberOfPinsDown   === 10 ? 0 : this.numberOfPinsDown 
+  return this.START_PINS - this.numberOfPinsDown  ;
 };

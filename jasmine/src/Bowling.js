@@ -1,16 +1,21 @@
 function Bowling() {
-  this.frame = [];
-  this.score = 0;
+  this.frames = {};
+  this.currentFrame = 1;
 };
 
 Bowling.prototype.pinsHit = function(number) {
-  this.frame.push(number);
-  if (this.frame.length === 2) {
-    this.logScore(this.frame);
-    this.frame = [];
-  }
+  this.createFrame();
+  this.frames[this.currentFrame].push(number);
+  console.log(this.frames)
+  if (this.isFrameFull()) {this.currentFrame ++}
 };
 
-Bowling.prototype.logScore = function(frame) {
-  this.score = this.score + this.frame[0] + this.frame[1];
+Bowling.prototype.createFrame = function() {
+  if (!(this.currentFrame in this.frames)) {
+    this.frames[this.currentFrame] = [];
+  };
+};
+
+Bowling.prototype.isFrameFull = function() {
+  return (this.frames[this.currentFrame].length == 2);
 };

@@ -26,8 +26,8 @@ describe("Bowling", function(){
   });
 
   it("can accertain if pins are above 10", function() {
-    bowling.frames[1] = [5,2];
-    expect(bowling.isOverTen).toBe(true);
+    bowling.pinsHit(5);
+    expect(bowling.isOverTen(7)).toBe(true);
   });
 
   it("raises error if second roll sums pins to over 10", function() {

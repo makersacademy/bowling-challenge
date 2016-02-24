@@ -9,6 +9,16 @@ describe("Feature", function(){
 
   describe("score patterns:", function(){
 
+    it("normal, normal, normal", function(){
+      bowling.pinsHit(7);
+      bowling.pinsHit(2);
+      bowling.pinsHit(1);
+      bowling.pinsHit(1);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(18);
+    });
+
     it("normal, strike, normal", function(){
       bowling.pinsHit(7);
       bowling.pinsHit(2);

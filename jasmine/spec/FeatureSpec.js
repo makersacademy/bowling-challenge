@@ -18,6 +18,15 @@ describe("Feature", function(){
       expect(bowling.calculateScore()).toEqual(33);
     });
 
+    it("strike, normal, normal", function(){
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(31);
+    });
+
     it("strike, strike", function(){
       bowling.pinsHit(10);
       bowling.pinsHit(10);
@@ -86,7 +95,37 @@ describe("Feature", function(){
       bowling.pinsHit(5);
       bowling.pinsHit(5);
       bowling.pinsHit(2);
-      expect(bowling.calculateScore()).toEqual(0);
+      expect(bowling.calculateScore()).toEqual(37);
+    });
+
+    it("spare, spare, spare, normal", function(){
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(52);
+    });
+
+    it("spare, strike, normal", function(){
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(44);
+    });
+
+    it("strike, spare, normal", function(){
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(42);
     });
 
   });

@@ -128,6 +128,18 @@ describe("Feature", function(){
       expect(bowling.calculateScore()).toEqual(42);
     });
 
+    it("strike, spare, strike, spare, normal", function(){
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(82);
+    });
+
   });
 
 });

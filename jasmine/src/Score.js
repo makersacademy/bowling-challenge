@@ -6,15 +6,19 @@ function Score() {
 Score.prototype.calculate = function(frames, currentFrame) {
   var score = 0;
   var spareBonus = 0;
+  var strikeBonus = 0;
+  var strikeLocation = 0;
   for (i=1; i <= (currentFrame - 1); i++) {
     spareBonus = spareBonus + this.spareBonusCalculate(frames[i]);
     if (this.isStrike(frames[i])) {
       this.strikeCount = this.strikeCount + 1;
+      strikeLocation = i;
     }else if (this.isSpare(frames[i])) {
+      strikeBonus = strikeBonus + this.strikeBonusCalculate(frames[i]);
       this.spareCount = 1;
     }else {
       score = score + this.frameTotal(frames[i]);
-      score = score + this.strikeBonusCalculate(frames[i]);
+      score = score + strikeBonus + this.strikeBonusCalculate(frames[i]);
       score = score + spareBonus;
     }
   };
@@ -30,7 +34,7 @@ Score.prototype.isStrike = function(frame) {
 };
 
 Score.prototype.isSpare = function(frame) {
-  return (this.frameTotal(frame) === 10);
+  return (this.frameTotal(frame) === 10 && !(this.isStrike(frame)));
 };
 
 Score.prototype.strikeBonusCalculate = function(frame) {

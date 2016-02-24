@@ -14,11 +14,13 @@ describe("Score", function () {
   it("can recognise a strike", function(){
     frame = [10,0]
     expect(score.isStrike(frame)).toBe(true);
+    expect(score.isSpare(frame)).toBe(false);
   });
 
   it("can recognise a spare", function(){
     frame = [8,2]
     expect(score.isSpare(frame)).toBe(true);
+    expect(score.isStrike(frame)).toBe(false);
   });
 
   it("can add bonus points for a strike", function(){

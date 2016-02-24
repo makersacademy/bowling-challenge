@@ -11,14 +11,8 @@ Score.prototype.calculate = function(frames, currentFrame) {
       this.bonus = this.bonus + 1;
     }else {
       score = score + this.frameTotal(frames[i]);
-      if (this.bonus >= 2) {
-        score = score + this.frameTotal(frames[i]) + 10;
-        this.bonus = this.bonus - 2;
-      }
-      if (this.bonus === 1) {
-        score = score + frames[i][0] + 10;
-        this.bonus = this.bonus - 1;
-      }
+      score = score + this.strikeBonus(frames[i]);
+      score = score + this.spareBonus(frames[i]);
     }
   };
   return score;
@@ -34,4 +28,18 @@ Score.prototype.isStrike = function(frame) {
 
 Score.prototype.isSpare = function(frame) {
   return (this.frameTotal(frame) === 10);
+};
+
+Score.prototype.strikeBonus = function(frame) {
+  if (this.bonus >= 2) {
+    this.bonus = this.bonus - 2;
+    return (this.frameTotal(frame) + 10);
+  } else {return 0;}
+};
+
+Score.prototype.spareBonus = function(frame) {
+  if (this.bonus === 1) {
+    this.bonus = this.bonus - 1;
+    return (frame[0] + 10);
+  } else {return 0;}
 };

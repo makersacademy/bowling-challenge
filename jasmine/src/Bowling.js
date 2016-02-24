@@ -6,12 +6,25 @@ function Bowling(score) {
 
 Bowling.prototype.pinsHit = function(number) {
   this.createFrame();
-  if (this.isOverTen(number)) {
+  if (this.isGameOver()) {
+    throw new Error("Game Over");
+  }
+  if (this.isOverTen(number) && this.currentFrame < 10) {
     throw new Error("There are only 10 pins");
   }
   this.frames[this.currentFrame].push(number);
-  this.strikeCorrector()
-  if (this.isFrameFull()) {this.currentFrame ++}
+  if (this.currentFrame === 10) {
+    if (this.frames[10].length == 2) {
+      if (score.isStrike(this.frames[10])) {
+      } else if (score.isSpare(this.frames[10])) {
+      } else {
+        this.currentFrame ++;
+      }
+    } else if (this.frames[10].length == 3) {this.currentFrame ++;}
+  } else {
+    this.strikeCorrector()
+    if (this.isFrameFull()) {this.currentFrame ++}
+  }
 };
 
 Bowling.prototype.createFrame = function() {
@@ -22,6 +35,11 @@ Bowling.prototype.createFrame = function() {
 
 Bowling.prototype.isFrameFull = function() {
   return (this.frames[this.currentFrame].length == 2);
+};
+
+
+Bowling.prototype.isGameOver = function() {
+  return (this.currentFrame === 11);
 };
 
 Bowling.prototype.isOverTen = function(number) {

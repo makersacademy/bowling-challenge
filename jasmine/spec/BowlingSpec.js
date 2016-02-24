@@ -53,5 +53,28 @@ describe("Bowling", function(){
     expect(bowling.frames[1]).toEqual([10,0]);
   });
 
+  it("raises error when the game is over", function() {
+    bowling.currentFrame = 10;
+    bowling.pinsHit(5);
+    bowling.pinsHit(2);
+    expect(function(){bowling.pinsHit(3);}).toThrowError("Game Over");
+  });
+
+  it("raises error when the game is over after strike in 10th round", function() {
+    bowling.currentFrame = 10;
+    bowling.pinsHit(10);
+    bowling.pinsHit(2);
+    bowling.pinsHit(5);
+    expect(function(){bowling.pinsHit(3);}).toThrowError("Game Over");
+  });
+
+  it("raises error when the game is over after spare in 10th round", function() {
+    bowling.currentFrame = 10;
+    bowling.pinsHit(8);
+    bowling.pinsHit(2);
+    bowling.pinsHit(5);
+    expect(function(){bowling.pinsHit(3);}).toThrowError("Game Over");
+  });
+
 
 });

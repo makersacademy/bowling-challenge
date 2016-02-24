@@ -11,6 +11,7 @@ Bowling.prototype.pinsHit = function(number) {
     throw new Error("There are only 10 pins");
   }
   this.frames[this.currentFrame].push(number);
+  this.strikeCorrector()
   if (this.isFrameFull()) {this.currentFrame ++}
 };
 
@@ -35,4 +36,10 @@ Bowling.prototype.isOverTen = function(number) {
 
 Bowling.prototype.calculateScore = function() {
   return this.score.calculate(this.frames, this.currentFrame);
+};
+
+Bowling.prototype.strikeCorrector = function() {
+  if (this.frames[this.currentFrame][0] === 10) {
+    this.frames[this.currentFrame].push(0);
+  }
 };

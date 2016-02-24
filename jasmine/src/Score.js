@@ -47,17 +47,21 @@ Score.prototype.strikeBonusCalculate = function(frame) {
   var bonusScore = 0
   if (this.strikeCount > 0) {
     while (this.strikeCount > 0) {
-      if (this.strikeCount === 1) {
-        bonusScore = bonusScore + (this.frameTotal(frame) + 10);
-      } else if (this.strikeCount === 2) {
-        bonusScore = bonusScore + (20 + frame[0]);
-      } else {
-        bonusScore = bonusScore + 30;
-      }
+      bonusScore = bonusScore + this.strikeStreak(frame);
       this.strikeCount --;
     }
     return bonusScore;
   } else {return 0;}
+};
+
+Score.prototype.strikeStreak = function(frame) {
+  if (this.strikeCount === 1) {
+      return (this.frameTotal(frame) + 10);
+  } else if (this.strikeCount === 2) {
+      return (20 + frame[0]);
+  } else {
+      return 30;
+  }
 };
 
 

@@ -27,6 +27,7 @@ Bowling.prototype.isFrameFull = function() {
 
 Bowling.prototype.isOverTen = function(number) {
   if (this.frames[this.currentFrame].length === 0) {
+    if (number > 10 ){return true;}
     return false;
   } else {
     sum = this.frames[this.currentFrame][0] + number;

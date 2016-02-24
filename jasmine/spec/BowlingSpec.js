@@ -38,6 +38,10 @@ describe("Bowling", function(){
     expect(function(){bowling.pinsHit(7);}).toThrowError("There are only 10 pins");
   });
 
+  it("raises error if first roll is over 10", function() {
+    expect(function(){bowling.pinsHit(11);}).toThrowError("There are only 10 pins");
+  });
+
   it("can call the score class and calculate the score", function() {
     bowling.pinsHit(5);
     bowling.pinsHit(2);

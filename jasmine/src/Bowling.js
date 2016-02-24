@@ -34,5 +34,5 @@ Bowling.prototype.isOverTen = function(number) {
 };
 
 Bowling.prototype.calculateScore = function() {
-  return this.score.calculate(this.frames);
+  return this.score.calculate(this.frames, this.currentFrame);
 };

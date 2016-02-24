@@ -140,6 +140,70 @@ describe("Feature", function(){
       expect(bowling.calculateScore()).toEqual(82);
     });
 
+    it("strike, strike, spare, strike, spare, spare, normal", function(){
+      bowling.pinsHit(10);
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(122);
+    });
+
+    it("strike, strike, spare, normal", function(){
+      bowling.pinsHit(10);
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(67);
+    });
+
+    it("strike, spare, spare, normal", function(){
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(57);
+    });
+
+    it("strike, strike, normal, strike, normal", function(){
+      bowling.pinsHit(10);
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(73);
+    });
+
+    it("strike, strike, spare, normal, strike, spare, spare, normal", function(){
+      bowling.pinsHit(10);
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(124);
+    });
+
   });
 
 });

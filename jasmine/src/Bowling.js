@@ -1,7 +1,6 @@
 function Bowling(score) {
   this.frames = {};
   this.currentFrame = 1;
-  this.createFrame();
   this.score = score;
 };
 

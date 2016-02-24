@@ -21,4 +21,18 @@ describe("Score", function () {
     expect(score.isSpare(frame)).toBe(true);
   });
 
+  it("can add bonus points for a strike", function(){
+    frames = {1 : [10,0], 2 : [5,2]};
+    currentFrame = 3;
+    expect(score.calculate(frames, currentFrame)).toEqual(24);
+  });
+
+  it("can add bonus points for a spare", function(){
+    frames = {1 : [8,2], 2 : [5,2]};
+    currentFrame = 3;
+    expect(score.calculate(frames, currentFrame)).toEqual(22);
+  });
+
+
+
 });

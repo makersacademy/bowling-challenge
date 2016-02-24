@@ -16,4 +16,9 @@ describe("Score", function () {
     expect(score.isStrike(frame)).toBe(true);
   });
 
+  it("can recognise a spare", function(){
+    frame = [8,2]
+    expect(score.isSpare(frame)).toBe(true);
+  });
+
 });

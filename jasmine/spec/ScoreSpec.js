@@ -11,4 +11,9 @@ describe("Score", function () {
     expect(score.calculate(frames, currentFrame)).toEqual(7);
   });
 
+  it("can recognise a strike", function(){
+    frame = [10,0]
+    expect(score.isStrike(frame)).toBe(true);
+  });
+
 });

@@ -48,7 +48,7 @@ describe("Bowling", function(){
     expect(bowling.calculateScore()).toEqual(7);
   });
 
-  it("can recognise a strike", function(){
+  it("can correct a strike frame", function(){
     bowling.pinsHit(10);
     expect(bowling.frames[1]).toEqual([10,0]);
   });

@@ -1,7 +1,10 @@
 describe("Bowling", function(){
   var bowling;
+
   beforeEach(function() {
-    bowling = new Bowling;
+    score = new Score;
+    spyOn(score, "calculate").and.returnValue(7);
+    bowling = new Bowling(score);
   });
 
   it("can create a frame which the pins are added", function(){
@@ -33,6 +36,12 @@ describe("Bowling", function(){
   it("raises error if second roll sums pins to over 10", function() {
     bowling.pinsHit(5);
     expect(function(){bowling.pinsHit(7);}).toThrowError("There are only 10 pins");
+  });
+
+  it("can call the score class and calculate the score", function() {
+    bowling.pinsHit(5);
+    bowling.pinsHit(2);
+    expect(bowling.calculateScore()).toEqual(7);
   });
 
 

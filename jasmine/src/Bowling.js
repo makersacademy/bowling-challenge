@@ -1,7 +1,8 @@
-function Bowling() {
+function Bowling(score) {
   this.frames = {};
   this.currentFrame = 1;
   this.createFrame();
+  this.score = score;
 };
 
 Bowling.prototype.pinsHit = function(number) {
@@ -30,4 +31,8 @@ Bowling.prototype.isOverTen = function(number) {
     sum = this.frames[this.currentFrame][0] + number;
     return (sum > 10);
   }
+};
+
+Bowling.prototype.calculateScore = function() {
+  return this.score.calculate(this.frames);
 };

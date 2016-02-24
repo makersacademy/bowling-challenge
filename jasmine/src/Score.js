@@ -1,28 +1,34 @@
 function Score() {
   this.strikeCount = 0;
   this.spareCount = 0;
+  this.score = 0;
+  this.spareBonus = 0;
+  this.strikeBonus = 0;
 };
 
 Score.prototype.calculate = function(frames, currentFrame) {
-  var score = 0;
-  var spareBonus = 0;
-  var strikeBonus = 0;
   for (i=1; i <= (currentFrame - 1); i++) {
-    spareBonus = spareBonus + this.spareBonusCalculate(frames[i]);
-    if (this.isStrike(frames[i])) {
-      this.strikeCount = this.strikeCount + 1;
-    }else if (this.isSpare(frames[i])) {
-      strikeBonus = strikeBonus + this.strikeBonusCalculate(frames[i]);
-      this.spareCount = 1;
-    }else {
-      score = score + this.frameTotal(frames[i]);
-      score = score + strikeBonus + this.strikeBonusCalculate(frames[i]);
-      score = score + spareBonus;
-      spareBonus = 0;
-      strikeBonus = 0;
-    }
+    this.spareBonus = this.spareBonus + this.spareBonusCalculate(frames[i]);
+    this.calculationLoop(frames[i]);
   };
-  return score;
+  return this.score;
+};
+
+Score.prototype.calculationLoop = function(frame) {
+  if (this.isStrike(frame)) {
+    this.strikeCount = this.strikeCount + 1;
+  }else if (this.isSpare(frame)) {
+    this.strikeBonus = this.strikeBonus + this.strikeBonusCalculate(frame);
+    this.spareCount = 1;
+  }else {
+    this.score = this.score + this.frameTotal(frame) + this.strikeBonus + this.spareBonus + this.strikeBonusCalculate(frame);
+    this.bonusReset();
+  }
+};
+
+Score.prototype.bonusReset = function(frame) {
+  this.spareBonus = 0;
+  this.strikeBonus = 0;
 };
 
 Score.prototype.frameTotal = function(frame) {
@@ -53,6 +59,7 @@ Score.prototype.strikeBonusCalculate = function(frame) {
     return bonusScore;
   } else {return 0;}
 };
+
 
 Score.prototype.spareBonusCalculate = function(frame) {
   if (this.spareCount === 1) {

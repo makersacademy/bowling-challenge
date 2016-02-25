@@ -74,6 +74,7 @@ $(document).ready(function() {
         }
       }
     }
+    // $('#score1').text(bowling.calculationRoute());
   });
 
 

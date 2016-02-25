@@ -37,11 +37,22 @@ describe('Frame', function() {
   });
 
   describe('-> strikes & spares', function() {
+    it('-> knows that a strike is', function() {
+      frame.addRoll(strike);
+      expect(frame.isStrike()).toBeTruthy();
+    });
+
     it('-> prevents the player from rolling again after a strike', function() {
       frame.addRoll(strike)
       expect(function() {
         frame.addRoll(score1);
       }).toThrowError('Max two rolls per turn or one per strike!')
+    });
+
+    it('-> knows what a spare is', function(){
+      frame.addRoll(score2)
+      frame.addRoll(score2)
+      expect(frame.isSpare()).toBeTruthy();
     });
   });
 });

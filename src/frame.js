@@ -18,3 +18,7 @@ Frame.prototype.isFrameCompleted = function() {
 Frame.prototype.isStrike = function () {
   return this._rolls[0] === 10;
 };
+
+Frame.prototype.isSpare = function() {
+  return (this._rolls[0] + this._rolls[1]) === 10;
+};

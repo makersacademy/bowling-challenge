@@ -74,7 +74,7 @@ $(document).ready(function() {
       }
     }
 
-    $('#score' + Math.ceil(count/2)).text(score.calculateChosen(bowling.frames, Math.ceil(count/2)));
+    if (count%2 === 0) {$('#score' + Math.ceil(count/2)).text(score.calculateChosen(bowling.frames, Math.ceil(count/2)));}
 
 
     // if (count === 2) {$('#score1').text(bowling.calculateChosenScore(1));}

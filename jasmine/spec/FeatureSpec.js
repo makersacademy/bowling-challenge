@@ -214,6 +214,55 @@ describe("Feature", function(){
       expect(bowling.calculateScore()).toEqual(124);
     });
 
+    it("ten rounds normal", function(){
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(70);
+    });
+
+    it("ten rounds normal with final strike", function(){
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(80);
+    });
+
   });
 
 });

@@ -9,24 +9,34 @@ function Score() {
 Score.prototype.calculate = function(frames, currentFrame) {
   for (i=1; i <= (currentFrame - 1); i++) {
     this.spareBonus = this.spareBonus + this.spareBonusCalculate(frames[i]);
-    this.calculationLoop(frames[i]);
+    this.calculationLoop(frames[i], i);
   };
   return this.score;
 };
 
-Score.prototype.calculationLoop = function(frame) {
+Score.prototype.calculationLoop = function(frame, i) {
   if (this.isStrike(frame)) {
+    if (i === 10) { this.tenthFrameTotal(frame);}
     this.strikeCount = this.strikeCount + 1;
   }else if (this.isSpare(frame)) {
     this.strikeBonus = this.strikeBonus + this.strikeBonusCalculate(frame);
     this.spareCount = 1;
   }else {
-    this.score = this.score + this.frameTotal(frame) + this.strikeBonus + this.spareBonus + this.strikeBonusCalculate(frame);
+    this.summateScore(frame);
     this.bonusReset();
   }
 };
 
-Score.prototype.bonusReset = function(frame) {
+Score.prototype.tenthFrameTotal = function(frame) {
+  this.summateScore(frame);
+  this.score = this.score + frame[2];
+};
+
+Score.prototype.summateScore = function(frame) {
+  this.score = this.score + this.frameTotal(frame) + this.strikeBonus + this.spareBonus + this.strikeBonusCalculate(frame);
+};
+
+Score.prototype.bonusReset = function() {
   this.spareBonus = 0;
   this.strikeBonus = 0;
 };

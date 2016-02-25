@@ -17,15 +17,7 @@ Game.prototype.bowl = function(){
 
 Game.prototype.checkFrameOver = function(){
   if (this.currentFrame.score.length >= 2){
-    if (this.lastScore[0] === 10) {
-      this.totalScore += 2*(this.getFrameScore());
-    }
-    else if (this.lastScore[0] + this.lastScore[1] >= 10) {
-      this.totalScore += (this.currentFrame.score[0] + this.getFrameScore())
-    }
-    else {
-      this.totalScore += (this.getFrameScore());
-    }
+    this.determineFrameScore();
     this.lastScore = this.currentFrame.score;
     this.addFrame(this.currentFrame);
     this.startNewFrame();
@@ -57,5 +49,17 @@ Game.prototype.getFrameScore = function(){
 Game.prototype.isGameOver = function(){
   if (this.frames.length === 10) {
     return true
+  }
+};
+
+Game.prototype.determineFrameScore = function() {
+  if (this.lastScore[0] === 10) {
+    this.totalScore += 2*(this.getFrameScore());
+  }
+  else if (this.lastScore[0] + this.lastScore[1] >= 10) {
+    this.totalScore += (this.currentFrame.score[0] + this.getFrameScore())
+  }
+  else {
+    this.totalScore += (this.getFrameScore());
   }
 };

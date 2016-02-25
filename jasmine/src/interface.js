@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var score = new Score;
   var bowling = new Bowling(score);
+  var count = 0;
 
   $('#0').click(function() {
     bowling.pinsHit(0);
@@ -30,7 +31,6 @@ $(document).ready(function() {
   $('#5').click(function() {
     bowling.pinsHit(5);
     $('#score').text(bowling.calculationRoute());
-    $('#pin').text('5');
   });
 
   $('#6').click(function() {
@@ -58,6 +58,22 @@ $(document).ready(function() {
     $('#score').text(bowling.calculationRoute());
   });
 
+  $("button").click(function() {
+    console.log(count = count+1)
+    for (i=1; i <= count; i ++) {
+      if (i%2 === 0) {j=1}else{j=0}
+      if (i === 21) {
+        $('#roll21').text(bowling.frames[Math.ceil(10)][2]);
+      } else {
+        $('#roll'+i).text(bowling.frames[Math.ceil(i/2)][j]);
+      }
+    }
+  });
+
+
   $('#score').text(bowling.calculationRoute());
+
+
+
 
 });

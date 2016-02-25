@@ -1,25 +1,47 @@
 describe('Frame', function() {
-  var frame1;
-  var frame2;
+  var frame;
+  var score1 = 3;
+  var score2 = 5;
+  var strike = 10;
 
   beforeEach(function() {
-    frame1 = new Frame();
-    frame2 = new Frame();
+    frame = new Frame();
   });
+
 
   describe('-> initialising a frame', function() {
     it('-> starts the game with empty rolls', function(){
-      expect(frame1._rolls).toEqual([])
+      expect(frame._rolls).toEqual([])
     });
   });
 
-  describe('-> adding rolls', function() {
-    it('-> prevents the player from rolling more than twice per turn', function(){
-      frame1.addRoll()
-      frame1.addRoll()
+  describe('-> rolling without strikies or spares', function() {
+    it('-> allows player to roll his first ball ', function() {
+      frame.addRoll(score1)
+      expect(frame._rolls).toContain(score1)
+    });
+
+    it('-> allows player to roll his second', function (){
+      frame.addRoll(score1)
+      frame.addRoll(score2)
+      expect(frame._rolls).toContain(score2)
+    });
+
+    it('-> prevents the player from rolling', function(){
+      frame.addRoll(score1)
+      frame.addRoll(score1)
       expect(function() {
-        frame1.addRoll()
-      }).toThrowError('Max two rolls per turn!')
+        frame.addRoll(score1)
+      }).toThrowError('Max two rolls per turn or one per strike!')
+    });
+  });
+
+  describe('-> strikes & spares', function() {
+    it('-> prevents the player from rolling again after a strike', function() {
+      frame.addRoll(strike)
+      expect(function() {
+        frame.addRoll(score1);
+      }).toThrowError('Max two rolls per turn or one per strike!')
     });
   });
 });

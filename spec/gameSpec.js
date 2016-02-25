@@ -5,7 +5,6 @@ describe('Game', function() {
   beforeEach(function() {
     game = new Game();
     frame1 = new Frame()
-    frame2 = new Frame()
   });
 
   describe('-> starting a new game', function() {
@@ -22,7 +21,7 @@ describe('Game', function() {
       expect(game._frameNumber).toEqual(0)
     });
   });
-  
+
   describe('-> adding a frame', function() {
 
     it('-> adds a new frame to the game upon start', function(){

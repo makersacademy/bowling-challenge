@@ -7,3 +7,7 @@ Frame.prototype.calculateScore = function(pinsDown){
   var pins = this.initialPins - pinsDown
   this.score.push(Math.floor((Math.random()*pins) + 1));
 };
+
+Frame.prototype.returnScore = function() {
+  return this.score;
+};

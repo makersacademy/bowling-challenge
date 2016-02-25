@@ -37,11 +37,6 @@ describe("Game", function() {
       expect(game.currentFrame.score).toEqual([])
     });
 
-    // it("adds frame if score is 10", function(){
-    //   game.checkStrike(10)
-    //   expect(game.frames.length).toEqual(1)
-    // });
-
     it("closes the frame if a strike is scored", function(){
       spyOn(Math, 'random').and.returnValue(0.9);
       game.bowl();

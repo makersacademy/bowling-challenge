@@ -71,3 +71,9 @@ Bowling.prototype.strikeCorrector = function() {
     this.frames[this.currentFrame].push(0);
   }
 };
+
+Bowling.prototype.calculationRoute = function() {
+  if (!(this.currentFrame in this.frames)) {
+    return this.score.calculate(this.frames, this.currentFrame);
+  }
+};

@@ -59,6 +59,11 @@ Bowling.prototype.isOverTen = function(number) {
 };
 
 Bowling.prototype.calculateScore = function() {
+  console.log(this.frames[this.currentFrame])
+  if ((this.currentFrame in this.frames)) {
+    console.log('here');
+    throw new Error('Finish the frame');
+  }
   return this.score.calculate(this.frames, this.currentFrame);
 };
 

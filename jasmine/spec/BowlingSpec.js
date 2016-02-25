@@ -38,6 +38,11 @@ describe("Bowling", function(){
     expect(function(){bowling.pinsHit(7);}).toThrowError("There are only 10 pins");
   });
 
+  it("raises error if score is calculated with half full frame", function() {
+    bowling.pinsHit(8);
+    expect(function(){bowling.calculateScore();}).toThrowError("Finish the frame");
+  });
+
   it("raises error if first roll is over 10", function() {
     expect(function(){bowling.pinsHit(11);}).toThrowError("There are only 10 pins");
   });

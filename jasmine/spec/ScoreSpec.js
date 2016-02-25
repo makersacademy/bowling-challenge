@@ -35,6 +35,15 @@ describe("Score", function () {
     expect(score.calculate(frames, currentFrame)).toEqual(22);
   });
 
+  describe("of previous frame", function(){
+    it("with normal frames", function(){
+      frames = {1 : [5,2], 2 : [5,2], 3 : [5,2]};
+      currentFrame = 3;
+      expect(score.calculate(frames, currentFrame)).toEqual(14);
+    });
+
+  });
+
 
 
 });

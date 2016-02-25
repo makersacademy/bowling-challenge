@@ -66,6 +66,10 @@ Bowling.prototype.calculateScore = function() {
   return this.score.calculate(this.frames, this.currentFrame);
 };
 
+Bowling.prototype.calculateChosenScore = function(chosenFrame) {
+  return this.score.calculate(this.frames, (chosenFrame+1));
+};
+
 Bowling.prototype.strikeCorrector = function() {
   if (this.frames[this.currentFrame][0] === 10) {
     this.frames[this.currentFrame].push(0);

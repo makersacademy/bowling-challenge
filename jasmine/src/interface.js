@@ -74,7 +74,16 @@ $(document).ready(function() {
         }
       }
     }
-    // $('#score1').text(bowling.calculationRoute());
+    if (count === 2) {$('#score1').text(bowling.calculateChosenScore(1));}
+    if (count === 4) {$('#score2').text(bowling.calculateChosenScore(2));}
+    if (count === 6) {$('#score3').text(bowling.calculateChosenScore(3));}
+    if (count === 8) {$('#score4').text(bowling.calculateChosenScore(4));}
+    if (count === 10) {$('#score5').text(bowling.calculateChosenScore(5));}
+    if (count === 12) {$('#score6').text(bowling.calculateChosenScore(6));}
+    if (count === 14) {$('#score7').text(bowling.calculateChosenScore(7));}
+    if (count === 16) {$('#score8').text(bowling.calculateChosenScore(8));}
+    if (count === 18) {$('#score9').text(bowling.calculateChosenScore(9));}
+    if (count === 20) {$('#score10').text(bowling.calculateChosenScore(10));}
   });
 
 

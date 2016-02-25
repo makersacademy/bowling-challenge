@@ -263,6 +263,129 @@ describe("Feature", function(){
       expect(bowling.calculateScore()).toEqual(80);
     });
 
+    it("ten rounds normal with final spare", function(){
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(75);
+    });
+
+    it("ten rounds normal with final strike, strike", function(){
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(10);
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(98);
+    });
+
+    it("ten rounds normal with final spare, strike", function(){
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(93);
+    });
+
+    it("ten rounds normal with final spare, spare", function(){
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(83);
+    });
+
+    it("ten rounds normal with final strike, spare", function(){
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.pinsHit(10);
+      bowling.pinsHit(5);
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(88);
+    });
+
   });
 
 });

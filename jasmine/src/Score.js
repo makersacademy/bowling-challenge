@@ -19,6 +19,7 @@ Score.prototype.calculationLoop = function(frame, i) {
     if (i === 10) { this.tenthFrameTotal(frame);}
     this.strikeCount = this.strikeCount + 1;
   }else if (this.isSpare(frame)) {
+    if (i === 10) { this.tenthFrameTotal(frame);}
     this.strikeBonus = this.strikeBonus + this.strikeBonusCalculate(frame);
     this.spareCount = 1;
   }else {

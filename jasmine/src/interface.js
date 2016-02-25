@@ -2,6 +2,8 @@ $(document).ready(function() {
   var score = new Score;
   var bowling = new Bowling(score);
   var count = 0;
+  var waitSpare = 0;
+  var waitStrike = 0;
 
   $('#0').click(function() {
     bowling.pinsHit(0);
@@ -60,6 +62,7 @@ $(document).ready(function() {
 
   $("button").click(function() {
     count = count+1;
+
     for (i=1; i <= count; i ++) {
       if (i%2 === 0) {j=1}else{j=0}
       if (i === 21) {
@@ -74,8 +77,43 @@ $(document).ready(function() {
       }
     }
 
-    if (count%2 === 0) {$('#score' + Math.ceil(count/2)).text(score.calculateChosen(bowling.frames, Math.ceil(count/2)));}
 
+    if(waitSpare === 1) {
+      $('#score' + (Math.ceil(count/2)-1)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-1)));
+      waitSpare = 0;
+    }
+
+    if(waitStrike === 2) {
+      $('#score' + (Math.ceil(count/2)-2)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-2)));
+      waitStrike -- ;
+    }
+
+    if(waitStrike === 3) {
+      $('#score' + (Math.ceil(count/2)-2)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-2)));
+      waitStrike -- ;
+    }
+
+    if (score.isStrike(bowling.frames[Math.ceil(count/2)]) && waitStrike === 1) {
+      waitStrike ++;
+    }
+
+
+    if (count%2 === 0) {
+
+      if(waitStrike === 1) {
+        $('#score' + (Math.ceil(count/2)-1)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-1)));
+        waitStrike --;
+      }
+
+      if (score.isStrike(bowling.frames[Math.ceil(count/2)])) {
+        waitStrike ++;
+      } else if (score.isSpare(bowling.frames[Math.ceil(count/2)])) {
+        waitSpare = 1;
+      } else {
+        $('#score' + Math.ceil(count/2)).text(score.calculateChosen(bowling.frames, Math.ceil(count/2)));
+      }
+    }
+    console.log(waitStrike)
 
     // if (count === 2) {$('#score1').text(bowling.calculateChosenScore(1));}
     // if (count === 4) {$('#score2').text(bowling.calculateChosenScore(2));}

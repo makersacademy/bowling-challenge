@@ -59,13 +59,19 @@ $(document).ready(function() {
   });
 
   $("button").click(function() {
-    console.log(count = count+1)
+    count = count+1;
     for (i=1; i <= count; i ++) {
       if (i%2 === 0) {j=1}else{j=0}
+      console.log(i)
       if (i === 21) {
-        $('#roll21').text(bowling.frames[Math.ceil(10)][2]);
+        $('#roll21').text(bowling.frames[10][2]);
       } else {
-        $('#roll'+i).text(bowling.frames[Math.ceil(i/2)][j]);
+        if (bowling.frames[Math.ceil(i/2)][j] === 10) {
+          $('#roll'+i).text(bowling.frames[Math.ceil(i/2)][0]);
+          if (i === count) {count ++;}
+        } else {
+          $('#roll'+i).text(bowling.frames[Math.ceil(i/2)][j]);
+        }
       }
     }
   });

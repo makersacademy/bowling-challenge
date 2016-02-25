@@ -388,4 +388,15 @@ describe("Feature", function(){
 
   });
 
+  describe('score patterns with score calculation mid game:', function(){
+    it("normal, calculation, normal", function(){
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      bowling.calculateScore();
+      bowling.pinsHit(5);
+      bowling.pinsHit(2);
+      expect(bowling.calculateScore()).toEqual(14);
+    });
+  });
+
 });

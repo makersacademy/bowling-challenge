@@ -14,6 +14,7 @@ Bowling.prototype.pinsHit = function(number) {
     this.strikeCorrector();
     if (this.isFrameFull()) {this.currentFrame ++};
   }
+  console.log(this.frames);
 };
 
 Bowling.prototype.createFrame = function() {
@@ -24,7 +25,7 @@ Bowling.prototype.createFrame = function() {
 
 Bowling.prototype.frameTenExtension = function() {
   if (this.isFrameFull()) {
-    if (score.frameTotal(this.frames[10]) < 10) {
+    if (this.score.frameTotal(this.frames[10]) < 10) {
       this.currentFrame ++;
     }
   } else if (this.frames[10].length == 3) {this.currentFrame ++;}
@@ -59,9 +60,7 @@ Bowling.prototype.isOverTen = function(number) {
 };
 
 Bowling.prototype.calculateScore = function() {
-  console.log(this.frames[this.currentFrame])
   if ((this.currentFrame in this.frames)) {
-    console.log('here');
     throw new Error('Finish the frame');
   }
   return this.score.calculate(this.frames, this.currentFrame);

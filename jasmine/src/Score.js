@@ -7,6 +7,7 @@ function Score() {
 };
 
 Score.prototype.calculate = function(frames, currentFrame) {
+  this.resetAll();
   for (i=1; i <= (currentFrame - 1); i++) {
     this.spareBonus = this.spareBonus + this.spareBonusCalculate(frames[i]);
     this.calculationLoop(frames[i], i);
@@ -35,6 +36,14 @@ Score.prototype.tenthFrameTotal = function(frame) {
 
 Score.prototype.summateScore = function(frame) {
   this.score = this.score + this.frameTotal(frame) + this.strikeBonus + this.spareBonus + this.strikeBonusCalculate(frame);
+};
+
+Score.prototype.resetAll = function() {
+  this.strikeCount = 0;
+  this.spareCount = 0;
+  this.score = 0;
+  this.spareBonus = 0;
+  this.strikeBonus = 0;
 };
 
 Score.prototype.bonusReset = function() {

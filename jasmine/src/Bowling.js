@@ -11,8 +11,8 @@ Bowling.prototype.pinsHit = function(number) {
   if (this.currentFrame === 10) {
     this.frameTenExtension();
   } else {
-    this.strikeCorrector()
-    if (this.isFrameFull()) {this.currentFrame ++}
+    this.strikeCorrector();
+    if (this.isFrameFull()) {this.currentFrame ++};
   }
 };
 

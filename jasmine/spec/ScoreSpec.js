@@ -36,10 +36,35 @@ describe("Score", function () {
   });
 
   describe("of previous frame", function(){
+
     it("with normal frames", function(){
       frames = {1 : [5,2], 2 : [5,2], 3 : [5,2]};
-      currentFrame = 3;
-      expect(score.calculate(frames, currentFrame)).toEqual(14);
+      chosenFrame = 2;
+      expect(score.calculateChosen(frames, chosenFrame)).toEqual(14);
+    });
+
+    it("with strike frames", function(){
+      frames = {1 : [5,2], 2 : [10,0], 3 : [5,2]};
+      chosenFrame = 2;
+      expect(score.calculateChosen(frames, chosenFrame)).toEqual(24);
+    });
+
+    it("with spare frames", function(){
+      frames = {1 : [5,2], 2 : [5,5], 3 : [5,2]};
+      chosenFrame = 2;
+      expect(score.calculateChosen(frames, chosenFrame)).toEqual(22);
+    });
+
+    it("with spare, spare frames", function(){
+      frames = {1 : [5,2], 2 : [5,5], 3 : [5,5], 4 : [5,2]};
+      chosenFrame = 2;
+      expect(score.calculateChosen(frames, chosenFrame)).toEqual(22);
+    });
+
+    it("with strike, strike frames", function(){
+      frames = {1 : [5,2], 2 : [10,0], 3 : [10, 0], 4 : [5,2]};
+      chosenFrame = 2;
+      expect(score.calculateChosen(frames, chosenFrame)).toEqual(32);
     });
 
   });

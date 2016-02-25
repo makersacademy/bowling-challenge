@@ -37,10 +37,10 @@ describe("Game", function() {
       expect(game.currentFrame.score).toEqual([])
     });
 
-    it("adds frame if score is 10", function(){
-      game.checkStrike(10)
-      expect(game.frames.length).toEqual(1)
-    });
+    // it("adds frame if score is 10", function(){
+    //   game.checkStrike(10)
+    //   expect(game.frames.length).toEqual(1)
+    // });
 
     it("closes the frame if a strike is scored", function(){
       spyOn(Math, 'random').and.returnValue(0.9);
@@ -78,6 +78,17 @@ describe("Game", function() {
     });
   });
 
+  describe("totalScore", function() {
+    it("calculates the total score for the game", function(){
+      spyOn(Math, 'random').and.returnValue(0.2);
+      for(i = 0; i < 10; i++) {
+      game.bowl();
+      game.bowl();
+    }
+      expect(game.totalScore).toEqual(50)
+    });
+  });
+
   describe("checkGameOver", function() {
     it("ends game if ten frames have been bowled", function(){
       for(i = 0; i < 10; i++) {
@@ -85,7 +96,6 @@ describe("Game", function() {
       };
       expect(game.isGameOver()).toEqual(true)
     });
-
   });
 
 });

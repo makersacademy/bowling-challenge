@@ -10,17 +10,17 @@ Game.prototype.bowl = function(){
   }
   else {
     this.currentFrame.calculateScore(this.getFrameScore());
-    this.checkStrike(this.getFrameScore());
+    // this.checkStrike(this.getFrameScore());
     this.checkFrameOver();
   }
 };
-
-Game.prototype.checkStrike = function(ballScore){
-  if (ballScore === 10){
-    this.addFrame(this.currentFrame);
-    this.startNewFrame();
-  }
-};
+//
+// Game.prototype.checkStrike = function(ballScore){
+//   if (ballScore === 10){
+//     this.addFrame(this.currentFrame);
+//     this.startNewFrame();
+//   }
+// };
 
 Game.prototype.checkFrameOver = function(){
   if (this.currentFrame.score.length >= 2){
@@ -28,6 +28,11 @@ Game.prototype.checkFrameOver = function(){
     this.addFrame(this.currentFrame);
     this.startNewFrame();
   }
+    else if (this.currentFrame.score[0] === 10){
+      this.totalScore += (this.getFrameScore());
+      this.addFrame(this.currentFrame);
+      this.startNewFrame();
+    }
 };
 
 Game.prototype.startNewFrame = function(){

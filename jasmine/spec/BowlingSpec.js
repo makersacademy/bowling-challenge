@@ -3,7 +3,7 @@ describe("Bowling", function(){
 
   beforeEach(function() {
     score = new Score;
-    spyOn(score, "calculate").and.returnValue(7);
+    // spyOn(score, "calculate").and.returnValue(7);
     bowling = new Bowling(score);
   });
 

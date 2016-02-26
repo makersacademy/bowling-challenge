@@ -7,8 +7,8 @@ describe("Score", function () {
 
   it("can be evaluated from a single full frame", function(){
     frames = {1 : [5,2]};
-    currentFrame = 2;
-    expect(score.calculate(frames, currentFrame)).toEqual(7);
+    chosenFrame = 1;
+    expect(score.calculateChosen(frames, chosenFrame)).toEqual(7);
   });
 
   it("can recognise a strike", function(){
@@ -25,14 +25,14 @@ describe("Score", function () {
 
   it("can add bonus points for a strike", function(){
     frames = {1 : [10,0], 2 : [5,2]};
-    currentFrame = 3;
-    expect(score.calculate(frames, currentFrame)).toEqual(24);
+    chosenFrame = 2;
+    expect(score.calculateChosen(frames, chosenFrame)).toEqual(24);
   });
 
   it("can add bonus points for a spare", function(){
     frames = {1 : [8,2], 2 : [5,2]};
-    currentFrame = 3;
-    expect(score.calculate(frames, currentFrame)).toEqual(22);
+    chosenFrame = 2;
+    expect(score.calculateChosen(frames, chosenFrame)).toEqual(22);
   });
 
   describe("of previous frame", function(){

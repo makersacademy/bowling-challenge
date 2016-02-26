@@ -62,21 +62,11 @@ Bowling.prototype.calculateScore = function() {
   if ((this.currentFrame in this.frames)) {
     throw new Error('Finish the frame');
   }
-  return this.score.calculate(this.frames, this.currentFrame);
-};
-
-Bowling.prototype.calculateChosenScore = function(chosenFrame) {
-  return this.score.calculate(this.frames, (chosenFrame+1));
+  return this.score.calculateChosen(this.frames, this.currentFrame - 1);
 };
 
 Bowling.prototype.strikeCorrector = function() {
   if (this.frames[this.currentFrame][0] === 10) {
     this.frames[this.currentFrame].push(0);
-  }
-};
-
-Bowling.prototype.calculationRoute = function() {
-  if (!(this.currentFrame in this.frames)) {
-    return this.score.calculate(this.frames, this.currentFrame);
   }
 };

@@ -11,7 +11,7 @@ describe('Frame', function() {
 
   describe('-> initialising a frame', function() {
     it('-> starts the game with empty rolls', function(){
-      expect(frame._rolls).toEqual([])
+      expect(frame._rolls).toEqual([]);
     });
   });
 

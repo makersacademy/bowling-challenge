@@ -7,6 +7,13 @@ The following criteria for the app has been set by speaking to potential users a
 ```
 USER STORY ONE
 As a player,
-So that I know I am in a game,
-I want to input and see my name on screen.
+So that I can be involved in a game,
+I would like to be able to make a bowl.
+```
+
+```
+USER STORY TWO
+As a player,
+So that I can sit down again quickly,
+I would like a strike to complete my turn.
 ```

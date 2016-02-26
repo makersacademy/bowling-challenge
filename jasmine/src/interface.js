@@ -62,6 +62,7 @@ $(document).ready(function() {
 
   $("button").click(function() {
     count = count+1;
+    console.log(count)
 
     for (i=1; i <= count; i ++) {
       if (i%2 === 0) {j=1}else{j=0}
@@ -70,16 +71,27 @@ $(document).ready(function() {
       } else {
         if (bowling.frames[Math.ceil(i/2)][j] === 10) {
           $('#roll'+i).text(bowling.frames[Math.ceil(i/2)][0]);
-          if (i === count) {count ++;}
+
+          if (i === count && count < 19) {count ++;}
+
+
         } else {
           $('#roll'+i).text(bowling.frames[Math.ceil(i/2)][j]);
         }
       }
     }
 
+    if (count === 21) {
+      $('#score10').text(score.calculateChosen(bowling.frames, 10));
+    }
+    if (count < 21) {
+
+
 
     if(waitSpare === 1) {
-      $('#score' + (Math.ceil(count/2)-1)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-1)));
+
+        $('#score' + (Math.ceil(count/2)-1)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-1)));
+
       waitSpare = 0;
     }
 
@@ -93,15 +105,18 @@ $(document).ready(function() {
       waitStrike -- ;
     }
 
-    if (score.isStrike(bowling.frames[Math.ceil(count/2)]) && waitStrike === 1) {
-      waitStrike ++;
+    if (count < 20) {
+      if (score.isStrike(bowling.frames[Math.ceil(count/2)]) && waitStrike === 1) {
+        waitStrike ++;
+      }
     }
+
 
 
     if (count%2 === 0) {
 
       if(waitStrike === 1) {
-        $('#score' + (Math.ceil(count/2)-1)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-1)));
+        if (count<=20) {$('#score' + (Math.ceil(count/2)-1)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-1)));}
         waitStrike --;
       }
 
@@ -113,18 +128,9 @@ $(document).ready(function() {
         $('#score' + Math.ceil(count/2)).text(score.calculateChosen(bowling.frames, Math.ceil(count/2)));
       }
     }
-    console.log(waitStrike)
 
-    // if (count === 2) {$('#score1').text(bowling.calculateChosenScore(1));}
-    // if (count === 4) {$('#score2').text(bowling.calculateChosenScore(2));}
-    // if (count === 6) {$('#score3').text(bowling.calculateChosenScore(3));}
-    // if (count === 8) {$('#score4').text(bowling.calculateChosenScore(4));}
-    // if (count === 10) {$('#score5').text(bowling.calculateChosenScore(5));}
-    // if (count === 12) {$('#score6').text(bowling.calculateChosenScore(6));}
-    // if (count === 14) {$('#score7').text(bowling.calculateChosenScore(7));}
-    // if (count === 16) {$('#score8').text(bowling.calculateChosenScore(8));}
-    // if (count === 18) {$('#score9').text(bowling.calculateChosenScore(9));}
-    // if (count === 20) {$('#score10').text(bowling.calculateChosenScore(10));}
+  }
+    console.log(waitStrike)
   });
 
 

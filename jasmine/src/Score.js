@@ -33,19 +33,28 @@ Score.prototype.calculateChosen = function(frames, chosenFrame) {
   var chosenScore = 0;
   for (i=1; i <= (chosenFrame); i++) {
     if (this.isStrike(frames[i])) {
-      if (this.isStrike(frames[i + 1])) {
-        chosenScore = chosenScore + this.frameTotal(frames[i]) + frames[i+1][0] + frames[i+2][0]
+      if (i === 10) {
+        chosenScore = chosenScore + this.frameTotal(frames[i]) + frames[i][2];
       } else {
-        chosenScore = chosenScore + this.frameTotal(frames[i]) + this.frameTotal(frames[i+1])
+        if (this.isStrike(frames[i + 1])) {
+          chosenScore = chosenScore + this.frameTotal(frames[i]) + frames[i+1][0] + frames[i+2][0];
+        } else {
+          chosenScore = chosenScore + this.frameTotal(frames[i]) + this.frameTotal(frames[i+1]);
+        }
       }
     } else if (this.isSpare(frames[i])) {
-      chosenScore = chosenScore + this.frameTotal(frames[i]) + frames[i+1][0]
+      if (i === 10) {
+        chosenScore = chosenScore + this.frameTotal(frames[i]) + frames[i][2];
+      } else {
+        chosenScore = chosenScore + this.frameTotal(frames[i]) + frames[i+1][0];
+      }
     } else {
-      chosenScore = chosenScore + this.frameTotal(frames[i])
+      chosenScore = chosenScore + this.frameTotal(frames[i]);
     }
   };
   return chosenScore;
 };
+
 
 Score.prototype.tenthFrameTotal = function(frame) {
   this.summateScore(frame);

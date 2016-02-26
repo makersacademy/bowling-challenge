@@ -5,16 +5,21 @@ function Game() {
   this.frames = [];
   this.score = 0;
   this.FRAMES_LIMIT = 10;
+  this.pinsStanding = 10;
 };
 
 Game.prototype.bowl = function(hits) {
   if (this.isGameOver()) throw new Error("Ten frames have been played, the game is over");
+  if (hits > this.pinsStanding) throw new Error("Incorrect score");
+
   if (this.isFinalFrame()) {
     this._finalFrameScoring(hits)
   } else {
     this.bowlHistory.push(hits)
     this.currentFrame().pinsHit(hits);
     this.score += hits;
+    this.pinsStanding -= hits;
+    if (this.lastFrame().isOver()) { this._resetPins() }
   };
 };
 
@@ -23,6 +28,13 @@ Game.prototype._finalFrameScoring = function(hits) {
   if (!finalFrame.isStrike() && !finalFrame.isSpare()) {
     this.score += hits;
   }
+
+  if (hits === this.pinsStanding) {
+    this.pinsStanding -= hits;
+    this._resetPins()
+  } else {
+  this.pinsStanding -= hits;
+  };
   finalFrame.pinsHit(hits)
   this.bowlHistory.push(hits)
 };
@@ -79,4 +91,8 @@ Game.prototype.spareBonus = function() {
     }
   };
   return total;
+};
+
+Game.prototype._resetPins = function() {
+  this.pinsStanding = 10;
 };

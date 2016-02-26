@@ -34,15 +34,6 @@ describe('Frame', function() {
     expect(frame.isSpare()).toEqual(false);
   });
 
-  it('has a deafault score of 0', function() {
-    expect(frame.pinsDown).toEqual(0);
-  });
-
-  it('keeps track of the frames score', function() {
-    frame.pinsHit(10);
-    expect(frame.pinsDown).toEqual(10);
-  });
-
   it('keeps track of which roll it is on', function() {
     frame.pinsHit(9);
     expect(frame.numberOfRolls).toEqual(1);

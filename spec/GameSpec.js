@@ -6,7 +6,7 @@ describe('Game', function() {
 
   beforeEach(function() {
     game = new Game();
-    frame = { isOver: function() {}, pinsHit: function() {}, isFinalFrameOver(){}, isStrike(){}, isSpare(){} };
+    frame = { isOver: function() {}, pinsHit: function() {}, isFinalFrameOver(){}, isStrike(){}, isSpare(){}, resetPins(){}, };
   });
 
   describe('bowl', function() {
@@ -34,6 +34,17 @@ describe('Game', function() {
       }
       spyOn(game.frames[9], 'isFinalFrameOver').and.returnValue(true);
       expect(function(){game.bowl(9);}).toThrow(new Error("Ten frames have been played, the game is over"))
+    });
+
+    it('changes the number of pins standing', function() {
+      game.bowl(9)
+      expect(game.pinsStanding).toEqual(1)
+    });
+
+    it ('resets the pins after a frame has ended', function() {
+      game.bowl(5)
+      game.bowl(5)
+      expect(game.pinsStanding).toEqual(10)
     });
   });
 

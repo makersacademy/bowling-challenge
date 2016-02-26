@@ -2,13 +2,11 @@
 
 function Frame() {
   this.rolls = [];
-  this.pinsDown = 0;
   this.numberOfRolls = 0;
 }
 
 Frame.prototype.pinsHit = function(score) {
   this.rolls.push(score);
-  this.pinsDown += score;
   this.numberOfRolls ++;
 };
 

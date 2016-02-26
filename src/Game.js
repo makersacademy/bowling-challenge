@@ -28,7 +28,7 @@ Game.prototype._finalFrameScoring = function(hits) {
 };
 
 Game.prototype.currentFrame = function() {
-  if (this.framesPlayed() === this.FRAMES_LIMIT_NUM_FRAMES) {
+  if (this.framesPlayed() === this.FRAMES_LIMIT) {
     return this.lastFrame();
   } else if ((this.framesPlayed() === 0) || this.lastFrame().isOver()) {
     this.frames.push(new Frame());

@@ -22,6 +22,7 @@ Bowling.prototype.createFrame = function() {
   };
 };
 
+
 Bowling.prototype.frameTenExtension = function() {
   if (this.isFrameFull()) {
     if (this.score.frameTotal(this.frames[10]) < 10) {

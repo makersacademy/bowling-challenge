@@ -77,7 +77,25 @@ $(document).ready(function() {
         }
       }
     }
+    var scoreArray = []
+    if (i < 20) {
+      scoreArray = score.createScoreArray(bowling.frames,(Math.ceil(count/2)+1));
+    } else {
+      scoreArray = score.createScoreArray(bowling.frames,(11));
+    }
 
+    for (i=1; i <= count; i ++) {
+      if (i < 19) {
+        $('#score' + Math.ceil(i/2)).text(scoreArray[(Math.ceil(i/2)-1)]);
+      } else {
+        $('#score10').text(scoreArray[9]);
+      }
+    }
+
+    // for (i=1; i <= count; i ++) {
+    //
+    //   if (count%2 === 0) {$('#score'+ (Math.ceil(count/2))).text(score.createScoreArray(bowling.frames,count)[count -1]);}
+    // }
 
 
     //   if(waitSpare === 1) {

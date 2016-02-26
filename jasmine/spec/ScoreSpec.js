@@ -162,6 +162,13 @@ describe("Score", function () {
         expect(score.createScoreArray(frames, currentFrame)).toEqual([7,14,21,28,35,42,49,56,71,82]);
       });
     });
+    describe('partial frames', function(){
+      it("normal, normal, normal", function(){
+        frames = {1 : [5,2], 2 : [5,2], 3 : [5]};
+        currentFrame = 3;
+        expect(score.createScoreArray(frames, currentFrame)).toEqual([7,14]);
+      });
+    });
 
   });
 

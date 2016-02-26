@@ -78,7 +78,6 @@ Score.prototype.createScoreArray = function(frames, currentFrame) {
     }
 
   };
-  console.log(scores)
   return scores;
 };
 

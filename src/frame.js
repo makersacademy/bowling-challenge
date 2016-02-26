@@ -37,3 +37,11 @@ Frame.prototype.pinsLeft = function(){
   this.numberOfPinsDown  = this.numberOfPinsDown === 10 ? 0 : this.numberOfPinsDown
   return this.START_PINS - this.numberOfPinsDown;
 };
+
+Frame.prototype.maxRolls = function(){
+  if(this.specialFrame && (this.rolls[0]+this.rolls[1] >= 10)){
+    return 3;
+  } else{
+    return 2;
+  }
+}

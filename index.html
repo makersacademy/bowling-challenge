@@ -1,36 +1,29 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title> Thermostat</title>
-    <link rel="stylesheet" type="text/css" href="css/thermo.css">
+<head>
+  <link rel="stylesheet" type="text/css" href="bowling.css">
+</head>
+<body>
+  <a href='#' value=0>0</a>
+  <a href='#' value=1>1</a>
+  <a href='#' value=2>2</a>
+  <a href='#' value=3>3</a>
+  <a href='#' value=4>4</a>
+  <a href='#' value=5>5</a>
+  <a href='#' value=6>6</a>
+  <a href='#' value=7>7</a>
+  <a href='#' value=8>8</a>
+  <a href='#' value=9>9</a>
+  <a href='#' value=10>10</a>
 
-  </head>
-  <body>
-    <section class='controls'>
-    <h1 id='temperature'></h1>
-      <section class='temp'>
-      <button id='temperature-up'> + </button>
-      <button id='temperature-down'> - </button>
-      <button id='temperature-reset'>Reset</button></section>
-    <section class='PSM-section'>
-      <span id='temp_display'></span> power saving mode is: <span class='PSS'> On </span>
-        <button id='switch-PSM'>Switch </button></section>
 
-  </section><section class='visuals'><div class='bottom-container'><span class= 'vertical-text'> DEGREES</span></div>
-  </section><section class='local'>
-      <section class='weather'>
-      <div id ='weather-icon'></div></section>
-      <section class='local2'>
-        <h2>Weather in <span class='city-name'>London</span></h2>
-        Current temperature <p><span id='ajax-result'></span> degrees</p>
-        <input id='city' type='text' name='city' placeholder="Type in new city"><br>
-        <button id='ajax-weather'>Change city</button>
-      </section>
+  <!-- <table id='f'><tr><td id='r1'>1</td><td id='r2'> 1</td></tr><tr> <td class='score'  colspan="2">1</td></tr></table> -->
+  <div id='scoreboard'>
 
-  </section>
-    <script src='src/thermostat.js'></script>
-    <script src="src/jquery-2.2.0.js"></script>
-    <script src="src/jquery.js"></script>
-  </body>
+  </div>
 
-</html>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src='src/interface.js'></script>
+  <script src='src/game.js'></script>
+  <script src='src/frame.js'></script>
+  <script src='src/scoreCalculator.js'></script>
+</body>

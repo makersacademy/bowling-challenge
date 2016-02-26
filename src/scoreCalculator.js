@@ -33,17 +33,18 @@ ScoreCalculator.prototype.calculateBonus = function(rolls){
   } else{
     return 0;
   }
-};
+}
 
 ScoreCalculator.prototype._incrementalScore = function(fullRoll){
   var incrementalValue = 0;
+  this.incrementalOverview = [];
   for(var i = 0; i<(fullRoll.length); i += 2){
     var bonus = this.calculateBonus(fullRoll.slice(i,fullRoll.length));
     incrementalValue += bonus + fullRoll[i] + fullRoll[i+1];
     this.incrementalOverview.push(incrementalValue);
   };
   return this.incrementalOverview;
-};
+}
 
 ScoreCalculator.prototype.tenFrameCalc = function(tenthFrame){
   if(this.isStrike(tenthFrame)){
@@ -66,7 +67,7 @@ ScoreCalculator.prototype.finalCalc = function(fullRoll){
 
 ScoreCalculator.prototype._frameValues = function(rolls){
   return rolls.slice(0,2);
-};
+}
 
 ScoreCalculator.prototype._nextFramesValues = function(rolls){
   return rolls.slice(2,rolls.length);

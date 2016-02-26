@@ -80,5 +80,3 @@ Game.prototype.spareBonus = function() {
   };
   return total;
 };
-
-// isNaN to not return the NaN

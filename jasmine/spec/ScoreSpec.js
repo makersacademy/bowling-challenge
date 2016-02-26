@@ -77,6 +77,92 @@ describe("Score", function () {
       expect(score.createScoreArray(frames, currentFrame)).toEqual([7,14,21]);
     });
 
+    it("normal, spare, normal", function(){
+      frames = {1 : [5,2], 2 : [5,5], 3 : [5, 2]};
+      currentFrame = 4;
+      expect(score.createScoreArray(frames, currentFrame)).toEqual([7,22,29]);
+    });
+
+    it("normal, normal, spare", function(){
+      frames = {1 : [5,2], 2 : [5,2], 3 : [5, 5]};
+      currentFrame = 4;
+      expect(score.createScoreArray(frames, currentFrame)).toEqual([7,14,'/']);
+    });
+
+    it("normal, strike, normal", function(){
+      frames = {1 : [5,2], 2 : [10,0], 3 : [5, 2]};
+      currentFrame = 4;
+      expect(score.createScoreArray(frames, currentFrame)).toEqual([7,24,31]);
+    });
+
+    it("normal, normal, strike", function(){
+      frames = {1 : [5,2], 2 : [5,2], 3 : [10,0]};
+      currentFrame = 4;
+      expect(score.createScoreArray(frames, currentFrame)).toEqual([7,14,'x']);
+    });
+
+    it("normal, strike, strike, normal", function(){
+      frames = {1 : [5,2], 2 : [10,0], 3 : [10,0], 4 : [5, 2]};
+      currentFrame = 5;
+      expect(score.createScoreArray(frames, currentFrame)).toEqual([7,32,49,56]);
+    });
+
+    it("normal, strike, strike", function(){
+      frames = {1 : [5,2], 2 : [10,0], 3 : [10,0]};
+      currentFrame = 4;
+      expect(score.createScoreArray(frames, currentFrame)).toEqual([7,'x','x']);
+    });
+
+    it("normal, spare, strike", function(){
+      frames = {1 : [5,2], 2 : [5,5], 3 : [10,0]};
+      currentFrame = 4;
+      expect(score.createScoreArray(frames, currentFrame)).toEqual([7,27,'x']);
+    });
+
+    it("normal, strike, spare", function(){
+      frames = {1 : [5,2], 2 : [10,0], 3 : [5,5]};
+      currentFrame = 4;
+      expect(score.createScoreArray(frames, currentFrame)).toEqual([7,27,'/']);
+    });
+
+    describe('frame 10', function(){
+      it("normal", function(){
+        frames = {1 : [5,2], 2 : [5,2], 3 : [5,2], 4 : [5,2], 5 : [5,2], 6 : [5,2], 7 : [5,2], 8 : [5,2], 9 : [5,2], 10 : [5,2]};
+        currentFrame = 11;
+        expect(score.createScoreArray(frames, currentFrame)).toEqual([7,14,21,28,35,42,49,56,63,70]);
+      });
+
+      it("strike", function(){
+        frames = {1 : [5,2], 2 : [5,2], 3 : [5,2], 4 : [5,2], 5 : [5,2], 6 : [5,2], 7 : [5,2], 8 : [5,2], 9 : [5,2], 10 : [10,1,1]};
+        currentFrame = 11;
+        expect(score.createScoreArray(frames, currentFrame)).toEqual([7,14,21,28,35,42,49,56,63,75]);
+      });
+
+      it("spare", function(){
+        frames = {1 : [5,2], 2 : [5,2], 3 : [5,2], 4 : [5,2], 5 : [5,2], 6 : [5,2], 7 : [5,2], 8 : [5,2], 9 : [5,2], 10 : [5,5,1]};
+        currentFrame = 11;
+        expect(score.createScoreArray(frames, currentFrame)).toEqual([7,14,21,28,35,42,49,56,63,74]);
+      });
+
+      it("strike, strike", function(){
+        frames = {1 : [5,2], 2 : [5,2], 3 : [5,2], 4 : [5,2], 5 : [5,2], 6 : [5,2], 7 : [5,2], 8 : [5,2], 9 : [10,0], 10 : [10,1,1]};
+        currentFrame = 11;
+        expect(score.createScoreArray(frames, currentFrame)).toEqual([7,14,21,28,35,42,49,56,77,89]);
+      });
+
+      it("strike, strike, strike", function(){
+        frames = {1 : [5,2], 2 : [5,2], 3 : [5,2], 4 : [5,2], 5 : [5,2], 6 : [5,2], 7 : [5,2], 8 : [10,0], 9 : [10,0], 10 : [10,1,1]};
+        currentFrame = 11;
+        expect(score.createScoreArray(frames, currentFrame)).toEqual([7,14,21,28,35,42,49,79,100,112]);
+      });
+
+      it("spare, spare", function(){
+        frames = {1 : [5,2], 2 : [5,2], 3 : [5,2], 4 : [5,2], 5 : [5,2], 6 : [5,2], 7 : [5,2], 8 : [5,2], 9 : [5,5], 10 : [5,5,1]};
+        currentFrame = 11;
+        expect(score.createScoreArray(frames, currentFrame)).toEqual([7,14,21,28,35,42,49,56,71,82]);
+      });
+    });
+
   });
 
 

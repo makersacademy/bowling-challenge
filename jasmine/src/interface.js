@@ -78,6 +78,8 @@ $(document).ready(function() {
       }
     }
 
+
+
     //   if(waitSpare === 1) {
     //     $('#score' + (Math.ceil(count/2)-1)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-1)));
     //     waitSpare = 0;

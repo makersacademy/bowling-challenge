@@ -71,66 +71,95 @@ $(document).ready(function() {
       } else {
         if (bowling.frames[Math.ceil(i/2)][j] === 10) {
           $('#roll'+i).text(bowling.frames[Math.ceil(i/2)][0]);
-
           if (i === count && count < 19) {count ++;}
-
-
         } else {
           $('#roll'+i).text(bowling.frames[Math.ceil(i/2)][j]);
         }
       }
     }
 
-    if (count === 21) {
-      $('#score10').text(score.calculateChosen(bowling.frames, 10));
-    }
-    if (count < 21) {
+    //   if(waitSpare === 1) {
+    //     $('#score' + (Math.ceil(count/2)-1)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-1)));
+    //     waitSpare = 0;
+    //   }
+    //
+    // if (count <= 19) {
+    //   //normal frames
+    //  if (score.isStrike(bowling.frames[Math.ceil(count/2)])) {
+    //
+    //  } else if (score.isSpare(bowling.frames[Math.ceil(count/2)])) {
+    //    waitSpare = 1;
+    //  } else {
+    //    // print score for normal frame
+    //    if (count%2 === 0) {$('#score' + Math.ceil(count/2)).text(score.calculateChosen(bowling.frames, Math.ceil(count/2)));}
+    //  }
+    //
+    // } else {
+    //   //frame 10
+    //   if (score.isStrike(bowling.frames[10])) {
+    //
+    //   } else if (score.isSpare(bowling.frames[10])) {
+    //     if (count === 21) {$('#score10').text(score.calculateChosen(bowling.frames, 10));}
+    //   } else {
+    //     // print score for normal frame
+    //     if (count%2 === 0) {$('#score10').text(score.calculateChosen(bowling.frames, 10));}
+    //   }
+    //
+    // }
 
 
 
-    if(waitSpare === 1) {
 
-        $('#score' + (Math.ceil(count/2)-1)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-1)));
-
-      waitSpare = 0;
-    }
-
-    if(waitStrike === 2) {
-      $('#score' + (Math.ceil(count/2)-2)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-2)));
-      waitStrike -- ;
-    }
-
-    if(waitStrike === 3) {
-      $('#score' + (Math.ceil(count/2)-2)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-2)));
-      waitStrike -- ;
-    }
-
-    if (count < 20) {
-      if (score.isStrike(bowling.frames[Math.ceil(count/2)]) && waitStrike === 1) {
-        waitStrike ++;
-      }
-    }
-
-
-
-    if (count%2 === 0) {
-
-      if(waitStrike === 1) {
-        if (count<=20) {$('#score' + (Math.ceil(count/2)-1)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-1)));}
-        waitStrike --;
-      }
-
-      if (score.isStrike(bowling.frames[Math.ceil(count/2)])) {
-        waitStrike ++;
-      } else if (score.isSpare(bowling.frames[Math.ceil(count/2)])) {
-        waitSpare = 1;
-      } else {
-        $('#score' + Math.ceil(count/2)).text(score.calculateChosen(bowling.frames, Math.ceil(count/2)));
-      }
-    }
-
-  }
-    console.log(waitStrike)
+  //   if (count === 21) {
+  //     $('#score10').text(score.calculateChosen(bowling.frames, 10));
+  //   }
+  //   if (count < 21) {
+  //
+  //
+  //
+  //   if(waitSpare === 1) {
+  //
+  //       $('#score' + (Math.ceil(count/2)-1)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-1)));
+  //
+  //     waitSpare = 0;
+  //   }
+  //
+  //   if(waitStrike === 2) {
+  //     $('#score' + (Math.ceil(count/2)-2)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-2)));
+  //     waitStrike -- ;
+  //   }
+  //
+  //   if(waitStrike === 3) {
+  //     $('#score' + (Math.ceil(count/2)-2)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-2)));
+  //     waitStrike -- ;
+  //   }
+  //
+  //   if (count < 20) {
+  //     if (score.isStrike(bowling.frames[Math.ceil(count/2)]) && waitStrike === 1) {
+  //       waitStrike ++;
+  //     }
+  //   }
+  //
+  //
+  //
+  //   if (count%2 === 0) {
+  //
+  //     if(waitStrike === 1) {
+  //       if (count<=20) {$('#score' + (Math.ceil(count/2)-1)).text(score.calculateChosen(bowling.frames, (Math.ceil(count/2)-1)));}
+  //       waitStrike --;
+  //     }
+  //
+  //     if (score.isStrike(bowling.frames[Math.ceil(count/2)])) {
+  //       waitStrike ++;
+  //     } else if (score.isSpare(bowling.frames[Math.ceil(count/2)])) {
+  //       waitSpare = 1;
+  //     } else {
+  //       $('#score' + Math.ceil(count/2)).text(score.calculateChosen(bowling.frames, Math.ceil(count/2)));
+  //     }
+  //   }
+  //
+  // }
+  //   console.log(waitStrike)
   });
 
 

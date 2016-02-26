@@ -14,7 +14,6 @@ Bowling.prototype.pinsHit = function(number) {
     this.strikeCorrector();
     if (this.isFrameFull()) {this.currentFrame ++};
   }
-  console.log(this.frames);
 };
 
 Bowling.prototype.createFrame = function() {

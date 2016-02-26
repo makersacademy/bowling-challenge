@@ -55,6 +55,14 @@ Score.prototype.calculateChosen = function(frames, chosenFrame) {
   return chosenScore;
 };
 
+Score.prototype.createScoreArray = function(frames, currentFrame) {
+  var scores = [];
+  for (j=1; j <= (currentFrame-1); j++) {
+    scores.push(this.calculateChosen(frames, j));
+  };
+  return scores;
+};
+
 
 Score.prototype.tenthFrameTotal = function(frame) {
   this.summateScore(frame);

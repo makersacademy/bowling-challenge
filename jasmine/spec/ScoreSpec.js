@@ -69,6 +69,17 @@ describe("Score", function () {
 
   });
 
+  describe("can create a score array", function(){
+
+    it("normal, normal, normal", function(){
+      frames = {1 : [5,2], 2 : [5,2], 3 : [5, 2]};
+      currentFrame = 4;
+      expect(score.createScoreArray(frames, currentFrame)).toEqual([7,14,21]);
+    });
+
+  });
+
+
 
 
 });

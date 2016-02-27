@@ -49,7 +49,28 @@ describe("Frame",function(){
       frame2.addRoll(5)
       expect(function(){frame2.addRoll(frame.pinsLeft()+1)}).toThrow('Value exceeds number of pins');
     });
+  });
 
+  describe("frameOver when number of rolls equals max rolls",function(){
+    it("a normal frame is over after two rolls",function(){
+      frame.addRoll(4);
+      frame.addRoll(4);
+      expect(frame.isOver()).toEqual(true);
+    });
 
+    it("a special frame is over after three rolls given a strike",function(){
+      var frame2 = new Frame('specialFrame');
+      frame2.addRoll(10);
+      frame2.addRoll(2);
+      frame2.addRoll(7);
+      expect(frame2.isOver()).toEqual(true);
+    });
+
+    it("a special frame is over after two rolls if not special is rolled",function(){
+      var frame2 = new Frame('specialFrame');
+      frame2.addRoll(4);
+      frame2.addRoll(2);
+      expect(frame2.isOver()).toEqual(true);
+    });
   });
 });

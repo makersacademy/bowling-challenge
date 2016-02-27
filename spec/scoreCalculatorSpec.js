@@ -33,20 +33,20 @@ describe("scoreCalculator",function(){
 
   describe("spareCalculation",function(){
     it("calculates the right value of a spare",function(){
-      expect(calculator.spareBonus(spareRoll.slice(2,4))).toEqual(5);
+      expect(calculator._spareBonus(spareRoll.slice(2,4))).toEqual(5);
     });
     it("calculates a single strike correctly",function(){
-      expect(calculator.strikeBonus(strikeRoll.slice(2,4))).toEqual(7);
+      expect(calculator._strikeBonus(strikeRoll.slice(2,4))).toEqual(7);
     });
 
     it("calculates a double strike correctly",function(){
       var doubleStrike = [10,0,10,0,5,7]
-      expect(calculator.strikeBonus(doubleStrike.slice(2,doubleStrike.length))).toEqual(15);
+      expect(calculator._strikeBonus(doubleStrike.slice(2,doubleStrike.length))).toEqual(15);
     });
 
     it("calculates a triple strike correctly",function(){
       var doubleStrike = [10,0,10,0,10,0]
-      expect(calculator.strikeBonus(doubleStrike.slice(2,doubleStrike.length))).toEqual(20);
+      expect(calculator._strikeBonus(doubleStrike.slice(2,doubleStrike.length))).toEqual(20);
     });
   });
 
@@ -94,7 +94,7 @@ describe("scoreCalculator",function(){
   describe("tenFrameCalc",function(){
     it("calculates the value of the tenth frame",function(){
       var tenthFrame = [10,5,4];
-      expect(calculator.tenFrameCalc(tenthFrame)).toEqual(19);
+      expect(calculator._tenFrameCalc(tenthFrame)).toEqual(19);
     });
 
   });

@@ -1,6 +1,5 @@
 function Game(scoreCalculator) {
   this.frames = [];
-  this.totalScore = 0;
   this.scoreCalculator = scoreCalculator;
 }
 
@@ -8,7 +7,7 @@ Game.prototype.addFrame = function(frame){
   this.frames.push(frame);
 }
 
-Game.prototype.flattenFrames = function(){
+Game.prototype._flattenFrames = function(){
   var rolls = [];
   for(var i = 0; i<this.frames.length; i++){
     rolls = rolls.concat(this.frames[i].rolls);
@@ -17,7 +16,7 @@ Game.prototype.flattenFrames = function(){
 }
 
 Game.prototype.score = function(){
-  var rolls = this.flattenFrames();
+  var rolls = this._flattenFrames();
   return this.scoreCalculator.finalCalc(rolls)
 }
 
@@ -33,7 +32,6 @@ Game.prototype.frameNr = function(){
   return this.frames.length;
 }
 
-// Game.prototype.result = function(){
-//   console.log(this.score());
-//   return ("Game over - final score is: " + 90);
-// };
+Game.prototype.reset = function(){
+  this.frames = [];
+}

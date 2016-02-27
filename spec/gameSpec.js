@@ -11,20 +11,20 @@ describe("Game",function(){
 
   describe("Game setup",function(){
     it("does not contain any frames",function(){
-      expect(game.frames.length).toEqual(0);
+      expect(game.frameNr()).toEqual(0);
     });
   });
 
   describe("addFrame",function(){
     it("adding a frame adds to the number of frames",function(){
       game.addFrame(frame);
-      expect(game.frames.length).toEqual(1);
+      expect(game.frameNr()).toEqual(1);
     });
   });
 
 
   describe("isOver",function(){
-    xit("game is over when ten frames have been played",function(){
+    it("game is over when ten frames have been played",function(){
       for(var i=0; i<10; i++){
         game.addFrame(frame);
       }
@@ -42,9 +42,22 @@ describe("Game",function(){
       for(var i=0; i<10; i++){
         game.addFrame(frame);
       }
-      expect(game.frames.length).toEqual(0);
+      expect(game.frameNr()).toEqual(0);
+    });
+  });
+
+  describe("frameNr",function(){
+    it("returns the number of frames played",function(){
+      game.addFrame(frame);
+      expect(game.frameNr()).toEqual(1);
     });
 
+    it("returns the number of frames played",function(){
+      game.addFrame(frame);
+      game.addFrame(frame);
+      game.addFrame(frame);
+      expect(game.frameNr()).toEqual(3);
+    });
   });
 
 });

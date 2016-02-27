@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  createTable();
 
   var calculator = new ScoreCalculator();
   var game = new Game(calculator);
@@ -7,37 +6,60 @@ $(document).ready(function(){
   var cumulativeScore = [];
 
 
-  $('a').click(function(){
+  startGame();
+
+  $('#rollValueAvailable').on('click', '.rollValue', function(e){
+    e.preventDefault()
     var value = parseInt($(this).attr('value'));
     frame.addRoll(value);
-    var frameNr = game.frameNr();
-    var frameThrow = frame.rolls.length;
-    var rollNr = "#r"+ (frameNr * 2 + frameThrow - 1);
+    var rollNr = "#r"+ (game.frameNr() * 2 + frame.nrRollsCompleted() - 1);
     $(rollNr).text(value);
     changeFrame();
   })
 
+  function startGame(){
+    createTable();
+    createRolls();
+  }
+
+  function createRolls(){
+    if(game.isOver()){
+      $('#rollValueAvailable').empty();
+      return ''
+    }
+    var str =""
+    for(var i=0,n=frame.pinsLeft()+1; i<n; i++){
+      str += "<a href='#' class='rollValue' value="+ i +">" + i +"</a>  ";
+    }
+    $('#rollValueAvailable').html(str);
+
+  }
+
   function changeFrame(){
-    if (frame.rolls.length === frame.maxRolls()){
+    if (frame.isOver()){
       game.addFrame(frame);
       addScore();
-      // if(game.frameNr() === 10){
-      //   gameOver();
-      // }
-      if(game.frameNr() === 9){
-        frame = new Frame('specialFrame')
-      } else{
-        frame = new Frame();
-        }
+      nextFrame();
     }
+    createRolls();
+  }
+
+  function nextFrame(){
+    if(game.isOver()){
+      gameOver();
+      frame = new Frame();
+    }else if(game.frameNr() === 9){
+      frame = new Frame('specialFrame')
+    } else{
+      frame = new Frame();
+      }
   }
 
   function addScore(){
     cumulativeScore = game.score();
-    console.log(cumulativeScore)
     var frameID = ""
     var incrementalScore = 0
-    for(var i = 0; i<game.frameNr(); i++){
+    for(var i = 0, n=game.frameNr(); i< n ; i++){
       frameID = "#f" + i + " .score"
       if(isNaN(cumulativeScore[i])){
         incrementalScore = '-'
@@ -49,8 +71,18 @@ $(document).ready(function(){
   }
 
   function gameOver(){
-      $('#f10 .score').text(incrementalScore);
+    $('h3').text('Game over. Final score is: ' + game.finalScore());
+    $('#playAgainButton').html("<a href='#' id='playAgain'>Play again?</a>")
   }
+
+  $('#playAgainButton').on('click', '#playAgain', function(e){
+    e.preventDefault();
+    game.reset();
+    $('#scoreboard').children().remove();
+    $('h3').empty();
+    $('#playAgainButton').empty();
+    startGame();
+  })
 
 
 

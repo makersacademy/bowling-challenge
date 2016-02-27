@@ -1,22 +1,17 @@
-function Game(frameKlass) {
-  'use strict';
+'use strict';
 
-  this._frames = (function () {
-    var array = [];
-    for (var i = 0; i < 10; i++) {
-      array.push(new frameKlass());
-    }
-    return array;
-  })(frameKlass);
-
-  console.log(this._frames);
+function Game() {
+  this._score = 0;
 }
 
-Game.prototype.roll = function () {
-  // TODO: add #currentTurn implementation
-  this._frames[0].roll();
+Game.prototype.roll = function (pins) {
+  if (typeof pins === 'number' && pins >= 0 && pins <= 10 ) {
+    this._score += pins;
+  } else {
+    throw new Error('Invalid roll');
+  }
 };
 
-// TODO: #currentTurn
-
-// TODO: #logFrame
+Game.prototype.getScore = function () {
+  return this._score;
+};

@@ -1,34 +1,51 @@
 function BowlingGame() {
-  this.scoreCard = new ScoreCard; 
-  this.frame = 1;
-  this.frameIndex = 0;
+  this.rolls = [];
 };
 
+BowlingGame.prototype.roll = function(pins){
+  this.rolls.push(pins);
 
-BowlingGame.prototype.letsBowl = function(){
-  this.scoreCard.addScore(this.playBall());
-  if (this.frameIndex == 1) {
-    this.checkForSpare();
-    this._nextFrame();
+};
+
+BowlingGame.prototype.score = function(){
+  var result = 0;
+  var rollIndex = 0;
+  var game = this;
+
+  for (var frameIndex = 0; frameIndex < 10; frameIndex++){
+    if (isStrike()) {
+      result += getStrikeScore();
+      rollIndex++;
+    }
+    else if (isSpare()) {
+      result += getSpareScore();
+      rollIndex += 2;
+    }
+    else {
+      result += getNormalScore();
+      rollIndex += 2;
+    }
   }
-  else { this.frameIndex++};
-};
+  return result;
 
-BowlingGame.prototype.currentFrame = function(){
-  return this.frame;
-};
-
-BowlingGame.prototype.playBall = function(){
-  return Math.floor(Math.random()*11);
-};
-
-BowlingGame.prototype.checkForSpare = function(){
-  if (this.scoreCard.isSpare()) {
-    this.scoreCard.spareBonus = true; 
+  function isStrike(){
+    return game.rolls[rollIndex] == 10
   }
-};
 
-BowlingGame.prototype._nextFrame = function(){
-  this.frameIndex = 0
-    this.frame++  
-};
+  function isSpare(){
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10;
+  }
+
+  function getStrikeScore(){
+    return  game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
+  }
+
+  function getSpareScore(){
+    return  game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
+  }
+
+  function getNormalScore(){
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
+  }
+}
+

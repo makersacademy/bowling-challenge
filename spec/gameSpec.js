@@ -74,7 +74,7 @@ describe('Game', function() {
       frame1.showRolls.and.returnValue([1, 2]);
       game.addFrame(frame1)
       game.addFrame(frame1)
-      expect(game.totalScore).toEqual(6);
+      expect(game.totalScore).toContain(6);
     });
   });
 });

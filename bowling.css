@@ -1,0 +1,90 @@
+body{
+  font-family: helvetica-light;
+}
+
+table {
+    /*border: 1px solid black;*/
+    display: inline-block;
+    width: 10%;
+}
+
+h1{
+  margin-top: 40px;
+  color: #f06c02;
+  text-align: center;
+
+}
+
+th{
+  color: #f06c02;
+}
+
+td {
+  font-weight: bold;
+  border: 0.2px solid #f06c02;
+  height: 50px;
+  text-align: center;
+}
+
+.score{
+  background-color: #eee;
+  font-weight: bold;
+}
+#rollValueAvailable{
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  box-sizing: border-box;
+  height: 40px;
+}
+
+#scoreboard{
+  width: 80%;
+  margin: 0 auto;
+}
+
+#endGame{
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#playAgainButton{
+
+}
+
+
+.rollValue{
+  color: black;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  border: 0.2px solid #f06c02;
+  border-radius: 2px;
+  width: 50px;
+  height: 25px;
+  line-height: 25px;
+}
+
+.rollValue:hover{
+  background-color: #f06c02;
+  color: white;
+}
+
+#playAgain{
+  color: black;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  border: 0.2px solid #f06c02;
+  border-radius: 2px;
+  height: 25px;
+  line-height: 25px;
+  padding: 15px;
+}
+
+#playAgain:hover{
+  background-color: #f06c02;
+  color: white;
+}

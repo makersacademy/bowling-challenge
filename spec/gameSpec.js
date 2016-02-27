@@ -41,12 +41,50 @@ describe('Game', function() {
     });
   });
 
-  describe('-> it calculates non-strike/spare scores', function() {
+  describe('-> it calculates scores', function() {
 
-    it('-> calculates the correct score', function() {
+    it('-> calculates the correct score if not striking/sparing', function() {
       frame1.checkRoll.and.returnValue([3,5])
       game.addFrame(frame1)
+      frame1.checkRoll.and.returnValue([1,5])
+      game.addFrame(frame1)
       expect(game._scores).toContain(8)
+      expect(game._scores).toContain(6)
+    });
+
+    it('-> calcualates a spare score correctly', function() {
+      frame1.checkRoll.and.returnValue([9,1]);
+      frame1.isSpare.and.returnValue(true);
+      game.addFrame(frame1)
+      game.addFrame(frame1)
+      expect(game._scores).toContain(19)
+    });
+
+    it('-> calculates a strike bonus correctly after one strike', function() {
+      frame1.checkRoll.and.returnValue([10])
+      frame1.isStrike.and.returnValue(true)
+      game.addFrame(frame1)
+      game.addFrame(frame1)
+      expect(game._scores).toContain(20)
+    });
+
+    it('-> calculates three strikes in a row correctly', function() {
+      frame1.checkRoll.and.returnValue([10])
+      frame1.isStrike.and.returnValue(true)
+      game.addFrame(frame1)
+      game.addFrame(frame1)
+      game.addFrame(frame1)
+      expect(game._scores).toContain(30)
+      expect(game._scores).toContain(20)
+    });
+  });
+
+  describe('-> calculating the total score', function() {
+    it('-> calculates the total score correctly', function() {
+      frame1.checkRoll.and.returnValue([1,2]);
+      game.addFrame(frame1)
+      game.addFrame(frame1)
+      expect(game.totalScore).toEqual(6)
     });
   });
 });

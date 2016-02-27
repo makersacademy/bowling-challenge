@@ -10,7 +10,8 @@ function ScoreCard(){
 }
 
 ScoreCard.prototype._advanceFrame = function(score){
-    this.currentFrame.push(score); var key = "Frame " + this.frameNumber;
+    this.currentFrame.push(score);
+    var key = "Frame " + this.frameNumber;
     this.show[key] = this.currentFrame;
     this.frameNumber++;
 };
@@ -34,5 +35,5 @@ ScoreCard.prototype.addFrame2 = function(score){
 };
 
 ScoreCard.prototype.isFinished = function(){
-  return (this.frameNumber === 11);
+  return ((this.spare === false) && (this.frameNumber === 11));
 };

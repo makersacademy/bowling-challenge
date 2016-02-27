@@ -11,6 +11,7 @@ Bowling.prototype._addFrameToTotalScore = function(){
 Bowling.prototype._clearStrike = function(score){
   this._addFrameToTotalScore();
   this.scoreCard.strike = false;
+  if (this.scoreCard.strikeCarry) { score += score };
   this.scoreCard.strikeBonus += score; 
   this.scoreCard.strikeCarry = true;
   this.scoreCard.currentFrame = [];
@@ -24,10 +25,10 @@ Bowling.prototype._clearSpare = function(score){
 };
 
 Bowling.prototype._clearStrikeCarry = function(score){
-    this.scoreCard.strikeBonus += score;
-    this.totalScore += this.scoreCard.strikeBonus;
-    this.scoreCard.strikeBonus = 0; 
-    this.scoreCard.strikeCarry = false;
+  this.scoreCard.strikeBonus += score;
+  this.totalScore += this.scoreCard.strikeBonus;
+  this.scoreCard.strikeBonus = 0; 
+  this.scoreCard.strikeCarry = false;
 };
 
 Bowling.prototype.writeFrameOne = function(score){
@@ -43,8 +44,26 @@ Bowling.prototype.writeFrameTwo = function(score){
   };
   this.scoreCard.addFrame2(score);
   this._addFrameToTotalScore();
+
+};
+
+Bowling.prototype.writeFinalFrame = function(score){
+  if (this.scoreCard.spare && this.scoreCard.frameNumber === 11) {
+    this.scoreCard.currentFrame.push(score);
+    this.scoreCard.spare = false;
+    this.totalScore += 2 * score;
+  }
+ else { throw { name: 'frameError', message: 'Unable to play final frame' } }; 
 };
 
 Bowling.prototype.isFinished = function(){
-  return this.scoreCard.isFinished();
+  if (this.scoreCard.frameNumber === 11 && this.scoreCard.spare === false && this.scoreCard.strike === false){
+    return this.scoreCard.isFinished();
+  }
+  else if (this.scoreCard.strike && this.scoreCard.frameNumber === 11){
+   this._clearStrike(10);
+   this.totalScore += this.scoreCard.strikeBonus + 10;
+   return true;
+  }
+  return false; 
 };

@@ -1,0 +1,45 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+table {
+  margin: 0 auto;
+  width:90%;
+  font-size:24px;
+  text-align: center;
+  table-layout: fixed;
+  margin-bottom: 40px;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
+table th {
+  border:0.5px solid;
+  background-color:gray;
+}
+
+table td {
+  height:40px;
+  border-left: 0.5px solid;
+  border-right: 0.5px solid;
+}
+
+table tr:nth-child(2) td:nth-child(even) {
+  border-bottom:1px solid;
+}
+
+table tr:nth-child(2) td:last-child {
+  border-bottom:1px solid;
+}
+
+#button-container {
+  text-align: center;
+}
+
+button {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  font-size: 16px;
+  background-color: white;
+}

@@ -53,7 +53,14 @@ Installation:
 
 Screenshots:
 -----
-![Overview](https://www.dropbox.com/s/7oywleiymnu6q1u/Overview.png?dl=0)
-![Second_roll](https://www.dropbox.com/s/47p7evc3aetnh27/Second-roll.png?dl=0)
-![Result](https://www.dropbox.com/s/c0zo3gtecqhxdhm/result1.png?dl=0)
-![Perfect_game](https://www.dropbox.com/s/qhkpjwcx3rsw1me/perfectgame.png?dl=0)
+Overview
+![Overview](/docs/screenshot/Overview.png)
+
+Second roll
+![Second_roll](/docs/screenshot/Second-roll.png)
+
+Example of game result
+![Result](/docs/screenshot/result1.png)
+
+Perfect game
+![Perfect_game](/docs/screenshot/perfectgame.png)

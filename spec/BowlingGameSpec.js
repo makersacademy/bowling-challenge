@@ -2,12 +2,6 @@ describe('BowlingGame', function(){
   beforeEach(function(){
   });
 
-
-  it('Can initialize a new game', function(){
-    var game = new BowlingGame();
-    expect(game).toBeDefined();
-  });
-
   describe('#bowl', function(){
     it('Can bowl a ball', function(){
       var game = new BowlingGame();

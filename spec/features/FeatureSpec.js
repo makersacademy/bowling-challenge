@@ -1,9 +1,4 @@
 
-//User Story 1:
-//As a bowler,
-//So that I can see how well I'm doing,
-//I can play 1 frame and see the score.
-
 describe('JavaScript Bowling Game', function(){
 
   beforeEach(function(){
@@ -15,9 +10,21 @@ describe('JavaScript Bowling Game', function(){
     game.letsBowl();
     game.letsBowl();
     expect(game.currentFrame()).toBe(2);
-    expect(game.getScore()).toBe(6); 
+    expect(game.scoreCard.getScore()).toBe(6); 
   })
 
+  //User Story 2: 
+  //As a bowler, when I bowl a spare, I want to see my bonus points
+
+  it('I can bowl a spare and it will give me double points on the next bowl', function(){
+    var game = new BowlingGame();
+    spyOn(game, "playBall").and.returnValue(5);
+    game.letsBowl();
+    game.letsBowl();
+    game.letsBowl();
+    expect(game.scoreCard.getScore()).toBe(20); 
+
+  });
 
 
 

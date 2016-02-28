@@ -27,16 +27,16 @@ describe('Bowling', function() {
    describe('#setPins', function() {
       it('reset number of pins after 2 shots', function() {
          for (var i = 0; i < 2; i++) {
-            bowling.shoot();
+            bowling.fakeShoot(3);
          }
          expect(bowling.pins).toEqual(10);
       });
    });
    
-   describe('#resetShoot', function() {
+   describe('#switchShoot', function() {
       it('tracks shoots sequence',function() {
          bowling.shoot();
-         expect(bowling.firstShot).toBe(false);
+         expect(bowling.firstShot).toEqual(bowling.lastShot);
       });
    });
    

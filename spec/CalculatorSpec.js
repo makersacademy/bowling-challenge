@@ -17,7 +17,6 @@ describe("Game", function() {
       for(var i = 0; i < 10; i ++){
         game.addFrame(0,0);
       }
-      console.log(game.frames)
       expect(game.score()).toEqual(0);
     });
 
@@ -37,7 +36,7 @@ describe("Game", function() {
       expect(game.score()).toEqual(110);
     });
 
-    it ("calculates score correctly with spares", function(){
+    it ("calculates score correctly with strikes", function(){
       for(var i = 0; i < 5; i ++){
         game.addFrame(10,0);
       }

@@ -1,7 +1,6 @@
 'use strict';
 
-function Frame(isLastFrame) {
-  this.MAX_ROLLS = (typeof isLastFrame === 'boolean' && isLastFrame) ? 3 : 2;
+function Frame() {
   this._rolls = [];
   this.remainingPins = 10;
 }
@@ -22,7 +21,7 @@ Frame.prototype.getRoll = function (rollNumber) {
 };
 
 Frame.prototype.isComplete = function () {
-  return this.isAStrike() || this._rolls.length >= this.MAX_ROLLS;
+  return this.isAStrike() || this._rolls.length >= 2;
 };
 
 Frame.prototype.isAStrike = function () {

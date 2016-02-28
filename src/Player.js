@@ -1,14 +1,13 @@
 function Player (playerName, game) {
-  this.playerGame = game || new Game (this);
+  this.playerScoreSheet = game || new ScoreSheet (this);
   this.playerName = playerName;
-  this.rollCount = 0
 }
 
 
 Player.prototype.roll = function () {
   var pinsAvailable = this.playerGame.currentPinsAvailable;
   if (this.rollCount === 0) {
-    this.playerGame.newFrame(this.rollScoreGenerator(pinsAvailable));
+    this.playerGame.new Frame(this.rollScoreGenerator(pinsAvailable));
   } else {
     this.playerGame.finishFrame(this.rollScoreGenerator(pinsAvailable));
   }

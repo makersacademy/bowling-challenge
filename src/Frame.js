@@ -1,16 +1,10 @@
-function Game(player) {
-  this.player = player;
-  this.scoreSheet = {1: [], 2: [],
-                    3: [], 4: [],
-                    5: [], 6: [],
-                    7: [], 8: [],
-                    9: [], 10:[]};
+function Frame {
+  this.rollCount = 0
   this.currentPinsAvailable = 10;
-  this.currentFrameNumber = 0;
-  this.consecutiveStrikes = 0;
+  this.frameScores = []
 }
 
-Game.prototype.newFrame = function (rollScore) {
+Frame.prototype.firstRoll = function (rollScore) {
   this.currentFrameNumber += 1;
   this.updateScoresheet(rollScore);
   if (this.currentFrameNumber > 1) {
@@ -20,25 +14,9 @@ Game.prototype.newFrame = function (rollScore) {
   this.wipePins(rollScore);
 };
 
-Game.prototype.spareRollOwed = function (rollScore) {
-  var lastFrame = this.getLastFrame()
-  if (this.isSpareOwed()) {
-    var updatedSecondRoll = (10 - lastFrame[0] + rollScore)
-    this.scoreSheet[this.currentFrameNumber - 1] = [lastFrame[0], updatedSecondRoll];
-  }
 
-};
 
-Game.prototype.isSpareOwed = function () {
-  var lastFrame = this.getLastFrame();
-  return lastFrame[1] === '/'
-};
-
-Game.prototype.getLastFrame = function () {
-  return this.scoreSheet[this.currentFrameNumber - 1];
-};
-
-Game.prototype.wipePins = function (rollScore) {
+Frame.prototype.wipePins = function (rollScore) {
   this.currentPinsAvailable -= rollScore;
 };
 

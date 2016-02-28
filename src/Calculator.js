@@ -9,20 +9,26 @@ Game.prototype.addFrame = function(rollOne, rollTwo){
   this.frames.push([rollOne, rollTwo]);
 }
 
-Game.prototype.calculateScore = function(){
-  return this.frames.map(frameScore).reduce(sum, 0)
+Game.prototype.score = function(){
+  return this.frames.map(this.frameScore.bind(this)).reduce(sum, 0);
 }
 
-function frameScore(frame,frameNum, frames) {
-  if(frames[frameNum + 1] && frame.reduce(sum) === 10){
-    return frame.reduce(sum) + rollOne(frames,frameNum);
-  } else {
-    return frame.reduce(sum);
-  }
+Game.prototype.hasNextFrame = function(frameNum) {
+  return this.frames[frameNum + 1] ? true : false;
 }
 
-var sum = function(prev, curr) {return prev + curr};
+Game.prototype.isSpecial = function(frame) {
+  return frame.reduce(sum) === 10 ? true : false;
+}
 
-var rollOne = function(frames, frameNum) {
-  return frames[frameNum + 1][0]
-};
+Game.prototype.frameScore = function(frame, frameNum, frames) {
+  if(this.hasNextFrame(frameNum) && this.isSpecial(frame)){ return frame.reduce(sum) + rollOne(frame);}
+  return frame.reduce(sum);
+}
+
+var sum = function(prev, curr) {return prev + curr;}
+
+var rollOne = function(frame) {return frame[0];}
+
+// Game.prototype.isTenthFrame = function() {
+// }

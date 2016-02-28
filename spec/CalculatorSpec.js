@@ -8,7 +8,7 @@ describe("Game", function() {
   });
 
   it ("game starts with 0 points", function(){
-    expect(game.calculateScore()).toEqual(0);
+    expect(game.score()).toEqual(0);
   });
 
   describe("Scoring", function() {
@@ -17,7 +17,7 @@ describe("Game", function() {
       for(var i = 0; i < 10; i ++){
         game.addFrame(0,0);
       }
-      expect(game.calculateScore()).toEqual(0);
+      expect(game.score()).toEqual(0);
     });
 
     it ("calculates score correctly without strikes or spares", function(){
@@ -25,7 +25,7 @@ describe("Game", function() {
         game.addFrame(1,6);
         game.addFrame(4,3);
       }
-      expect(game.calculateScore()).toEqual(70);
+      expect(game.score()).toEqual(70);
     });
 
     it ("calculates score correctly with spares", function(){
@@ -33,7 +33,7 @@ describe("Game", function() {
         game.addFrame(4,6);
         game.addFrame(4,4);
       }
-      expect(game.calculateScore()).toEqual(110);
+      expect(game.score()).toEqual(110);
     });
     describe ("Tenth frame", function(){
 

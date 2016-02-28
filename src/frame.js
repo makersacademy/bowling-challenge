@@ -22,7 +22,15 @@ Frame.prototype.getRoll = function (rollNumber) {
 };
 
 Frame.prototype.isComplete = function () {
-  return this._rolls.length >= this.MAX_ROLLS;
+  return this.isAStrike() || this._rolls.length >= this.MAX_ROLLS;
+};
+
+Frame.prototype.isAStrike = function () {
+  return this.getRoll(1) === 10;
+};
+
+Frame.prototype.isASpare = function () {
+  return this.getRoll(1) + this.getRoll(2) === 10;
 };
 
 Frame.prototype.getScore = function () {

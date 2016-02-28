@@ -4,7 +4,7 @@ describe('Game', function() {
 
   beforeEach(function() {
     frame = jasmine.createSpyObj('frame',
-      ['addRoll', 'isRollsComplete', 'calcTotal']);
+      ['addRoll', 'isRollsComplete', 'calcTotal', 'addBonus']);
     game = new Game(frame);
     });
 
@@ -31,22 +31,35 @@ describe('Game', function() {
     it('adds maximum frames to the game', function() {
       frame.isRollsComplete.and.returnValue(true);
       for (var i = 0; i<19; i++) { game.addRoll(0); }
-      expect(function() {
-        game.addRoll(0);
-      }).toThrowError("Max frames");
+      expect(function() { game.addRoll(0); }).toThrowError("Max frames");
     });
   });
 
   describe('totalScore property', function() {
-    it('calculates the per frame total scores', function() {
-      frame.isRollsComplete.and.returnValue(true);
+    it('calculates the total scores per frame', function() {
       game.addRoll(1)
-      game.addRoll(2)
+      frame.isRollsComplete.and.returnValue(true);
       frame.calcTotal.and.returnValue(3);
-      expect(game.totalScore).toContain(3);
-      game.addRoll(4)
-      game.addRoll(5)
-      expect(game.totalScore).toContain(12);
+      game.addRoll(2)
+      expect(game.totalScore).toEqual([3]);
+    });
+
+    it('calculates the running total of scores per frame', function() {
+      game.addRoll(1)
+      frame.isRollsComplete.and.returnValue(true);
+      frame.calcTotal.and.returnValue(3);
+      game.addRoll(2)
+      game.addRoll(4) // actual frame
+      game.addRoll(5) // actual frame
+      expect(game.totalScore).toEqual([3, 12]);
+    });
+
+    it('calls addBonus on frame', function() {
+      frame.isRollsComplete.and.returnValue(true);
+      frame.bonusBalls = 1;
+      game.addRoll(10) // spy frame
+      game.addRoll(1)
+      expect(frame.addBonus).toHaveBeenCalled();
     });
 
   //   it('can handle spare scoring correctly', function() {

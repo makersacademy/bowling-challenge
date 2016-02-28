@@ -17,3 +17,17 @@ As a player,
 So that I can sit down again quickly,
 I would like a strike to complete my turn.
 ```
+
+```
+USER STORY THREE
+As a player,
+So that I can get a big score,
+I'd like a spare to be registered if I knock all the pins down on my second turn.
+```
+
+```
+USER STORY FOUR
+As a player,
+So that my turn can end,
+I would like a completed turn to prevent further bowls.
+```

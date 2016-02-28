@@ -1,31 +1,34 @@
 describe("Player", function() {
   var player;
+  var player1;
+  var playerGood;
   var scoreSheet;
   var frameMock;
-  var player1;
+  var frameMockSpy;
   var lowRoll;
-  // var spareRoll;
 
 
 
 
   beforeEach(function(){
     scoreSheet = jasmine.createSpyObj('scoreSheet', ['player', 'scoreCard', 'consecutiveStrikes']);
-    player = new Player("Viola", scoreSheet);
+    frameMockSpy = jasmine.createSpyObj('frameMockSpy', ['pinsAvailable', 'number', 'rollScores', 'update']);
+
     function FrameMock(roll, frameNumber){
       this.pinsAvailable = 10 - roll
       this.rollScores = [roll]
       this.number = frameNumber || 1
     }
     frameMock = new FrameMock();
+    player = new Player("Johny", scoreSheet);
     player1 = new Player("Viola", scoreSheet, frameMock);
+    playerGood = new Player("Ace", scoreSheet, frameMockSpy);
     lowRoll = 3
-
   });
 
   describe("#Constructor", function(){
     it("Has a new name", function(){
-      expect(player.playerName).toEqual("Viola");
+      expect(player.playerName).toEqual("Johny");
     });
 
     it("Has a new scoresheet", function(){
@@ -45,9 +48,11 @@ describe("Player", function() {
     var playerPrototype;
 
     beforeEach(function(){
+      // spyOn(Math, 'random').and.returnValue(1)
       spyOn(player1, 'firstRoll').and.callThrough();
-      spyOn(player1, 'rollScoreGenerator').and.returnValue(3);
+      spyOn(player1, 'rollScoreGenerator').and.returnValue(lowRoll);
       spyOn(player1, 'secondRoll').and.callThrough();
+
       player1.roll();
     });
 
@@ -68,33 +73,47 @@ describe("Player", function() {
 
     describe("#firstRoll", function(){
 
+      beforeEach(function(){
+        spyOn(playerGood, 'rollScoreGenerator').and.returnValue(10);
+        playerGood.roll();
+      });
+
       it("generates a roll score from the new frame's 10 pins", function(){
         expect(player1.rollScoreGenerator).toHaveBeenCalledWith(10);
       });
 
       it("instantiates a new Frame object", function(){
         expect(player1.currentFrame)
-          .toEqual(jasmine.objectContaining({'number': 1, 'rollScores': [3], 'pinsAvailable': 7 }));
+          .toEqual(jasmine.objectContaining({'number': 1, 'rollScores': [lowRoll], 'pinsAvailable': 7 }));
       });
 
+      it("won't increment the rollCount unless there is a strike", function(){
+        expect(player1.rollCount).toEqual(1);
+      });
+
+      it("will increment the rollCount again - strike", function(){
+        expect(playerGood.rollCount).toEqual(2);
+      });
+
+      it("will call to update the frame with 'pending' - strike", function(){
+        expect(frameMockSpy).toEqual(jasmine.objectContaining({}));
+      });
     });
 
     describe("#secondRoll", function(){
-      var currentFrameMock;
 
       beforeEach(function(){
-        player1.roll()
-        currentFrameMock = player1.currentFrame;
-        spyOn(currentFrameMock, 'wipePins').and.returnValue(5);
-        player1.roll()
+        player1.roll();
+        player1.roll();
       });
 
-      it("wipes the pins from the previous roll", function(){
-        expect(currentFrameMock.wipePins).toHaveBeenCalled();
+      it("has already had pins wiped from previous roll", function(){
+        expect(player1.currentFrame)
+          .toEqual(jasmine.objectContaining({'pinsAvailable': 7}));
       });
 
       it("generates a roll score from the remaining pins in frame", function(){
-        expect(player1.rollScoreGenerator).toHaveBeenCalledWith(5);
+        expect(player1.rollScoreGenerator).toHaveBeenCalledWith(7);
       });
     });
   });
@@ -109,7 +128,6 @@ describe("Player", function() {
     it("again generates a number between 0 and the number of pins left", function(){
       expect(player.rollScoreGenerator(5)).toBeLessThan(6)
     });
-
 
   });
 });

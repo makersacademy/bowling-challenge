@@ -10,7 +10,7 @@ Player.prototype.roll = function () {
   if (this.rollCount % 2 === 0) {
     this.firstRoll(frameNumber)
   } else {
-    this.secondRoll(frameNumber)
+    this.secondRoll(Math.floor(frameNumber))
   }
   this.rollCount++
 };
@@ -18,17 +18,24 @@ Player.prototype.roll = function () {
 Player.prototype.firstRoll = function (frameNumber) {
   var roll = this.rollScoreGenerator(10);
   this.currentFrame = new Frame(roll, frameNumber);
+  if (roll === 10) {
+    this.currentFrame.update('pending');
+    this.rollCount++;
+  }
 };
 
 Player.prototype.secondRoll = function (frameNumber) {
-  var pinsLeft = this.currentFrame.wipePins()
+
+  var pinsLeft = this.currentFrame.pinsAvailable
   var roll = this.rollScoreGenerator(pinsLeft);
-  this.playerSS.scoreCard[frameNumber] = this.currentFrame.update(roll);
+  this.currentFrame.update(roll)
+  this.playerSS.scoreCard[frameNumber] = this.currentFrame.rollScores;
 };
 
-Player.prototype.rollScoreGenerator = function(pins){
-  return Math.floor(Math.random() * (pins + 1));
+Player.prototype.rollScoreGenerator = function(pinsLeft){
+  return Math.floor(Math.random() * (pinsLeft + 1));
 };
+
 
 // Player.prototype.roll = function () {
 //   var pinsAvailable = this.playerGame.currentPinsAvailable;

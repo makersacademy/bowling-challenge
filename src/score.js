@@ -8,6 +8,9 @@ function Score(){
 
 
 Score.prototype.add = function(amount){
+if (amount > 10){
+  return "No cheating!"
+}
 
 for (var i = 0; i < (this.specials.length); i++) {
     this.specials[i].add(amount)
@@ -22,7 +25,7 @@ for (var i=0; i < (this.specials.length); i++){
   if(this.round > 10 && this.specials.length == 0){
     return "Game over"
   }
-  if(amount == 10 && this.round <= 10){
+  if(amount == 10 && this.round <= 10 && this.roundthrow == 0){
     var strike = new Strike
     this.specials.push(strike)
     this.round += 1
@@ -32,13 +35,18 @@ for (var i=0; i < (this.specials.length); i++){
     this.specials.push(spare)
     this.round+= 1
     this.roundthrow = 0
+    this.roundscore = 0
   }
   else if(this.roundthrow == 1){
+    if (this.roundscore + amount < 11){
     this.roundscore += amount
     this.total += this.roundscore
     this.roundthrow = 0
     this.roundscore = 0
-    this.round += 1
+    this.round += 1}
+    else{
+      return "No cheating!"
+    }
   }
   else{
     this.roundscore = amount

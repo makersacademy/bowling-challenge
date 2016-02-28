@@ -1,14 +1,15 @@
 "use strict";
 
 function Game() {
-  this.score = 0;
-  this.roundNumber = 0;
+  this.DEFAULT = 0
+  this.score = this.DEFAULT;
+  this.roundNumber = this.DEFAULT;
   this.fullScores = [];
   this.roundScore = [];
-  this.roundTotal = 0;
-  this.lastRound
-  this.lastRoundTotal
-  this.totalScore = 0;
+  this.roundTotal = this.DEFAULT;
+  this.lastRound = [];
+  this.lastRoundTotal = this.DEFAULT;
+  this.totalScore = this.DEFAULT;
 }
 
 Game.prototype.getScore = function(){
@@ -79,6 +80,7 @@ Game.prototype._addTotalScore = function() {
    if ( this.roundTotal === 10 ) {
     this.totalScore += (this.score * 2) ;
    }
-   else
+   else {
    this.totalScore += this.score;
    }
+}

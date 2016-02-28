@@ -19,8 +19,7 @@ describe('BowlingGame', function(){
 
   describe('#getFrame', function(){
     it('returns the frame number', function(){
-      game.currentFrame = 5;
-      expect(game.currentFrame()).toBe(5);
+      expect(game.currentFrame).toBe(1);
     });
   });
 

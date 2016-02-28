@@ -47,7 +47,7 @@ $(document).ready(function() {
     bowling.pinsHit(10);
   });
 
-  $("button").click(function() {
+  $(".pinButton").click(function() {
     count = count+1;
 
     for (i=1; i <= count; i ++) {
@@ -82,6 +82,10 @@ $(document).ready(function() {
       }
     }
   });
+
+  $('#playAgain').click(function() {
+    location.reload();
+});
 
 
 });

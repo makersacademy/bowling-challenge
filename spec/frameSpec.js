@@ -9,28 +9,27 @@ describe('Frame', function() {
 
   describe('handling rolls and #addRoll', function() {
     it('starts out with empty rolls', function() {
-      expect(frame.showRolls()).toEqual([]);
+      expect(frame.rolls).toEqual([]);
     });
 
     it('records the first roll', function() {
       frame.addRoll(pins1);
-      expect(frame.showRolls()).toContain(pins1);
+      expect(frame.rolls).toContain(pins1);
     });
 
     it('records the first roll and the second roll', function() {
       frame.addRoll(pins1);
       frame.addRoll(pins2);
-      expect(frame.showRolls()).toContain(pins1);
-      expect(frame.showRolls()).toContain(pins2);
+      expect(frame.rolls).toContain(pins1);
+      expect(frame.rolls).toContain(pins2);
     });
 
-    it('throws error if recording a third roll', function() {
-      frame.addRoll(pins1);
-      frame.addRoll(pins2);
+    it('throws error if invalid roll total', function() {
+      frame.addRoll(pins9);
       expect(function() {
-        frame.addRoll(pins3);
-      }).toThrowError("Rolls exceeded");
-      expect(frame.showRolls()).not.toContain(pins3);
+        frame.addRoll(pins2);
+      }).toThrowError("Invalid roll");
+      expect(frame.rolls).not.toContain(pins2);
     });
   });
 
@@ -69,10 +68,8 @@ describe('Frame', function() {
       frame.addRoll(pins10);
       expect(function() {
         frame.addRoll(pins1);
-      }).toThrowError("Rolls exceeded");
-      expect(frame.showRolls()).not.toContain(pins1);
+      }).toThrowError("Invalid roll");
+      expect(frame.rolls).not.toContain(pins1);
     });
-
   });
-
 });

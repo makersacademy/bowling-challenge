@@ -4,8 +4,10 @@ describe('Game', function() {
 
   beforeEach(function() {
     frame = jasmine.createSpyObj('frame',
-      ['addRoll', 'isRollsComplete', 'calcTotal', 'addBonus']);
-    game = new Game(frame);
+      ['addRoll', 'isRollsComplete', 'calcTotal', 'addBonus', 'isFrameClosed']);
+    function frameKlass() { return frame; }
+
+    game = new Game(frameKlass);
     });
 
   describe('initializing a new Game', function() {
@@ -25,67 +27,45 @@ describe('Game', function() {
       frame.isRollsComplete.and.returnValue(true);
       game.addRoll(0)
       game.addRoll(0)
-      expect(game.frames).toEqual([frame]);
+      expect(game.frames).toContain(frame);
     });
 
     it('adds maximum frames to the game', function() {
       frame.isRollsComplete.and.returnValue(true);
-      for (var i = 0; i<19; i++) { game.addRoll(0); }
+      frame.isFrameClosed.and.returnValue(true);
+      for (var i = 0; i<10; i++) { game.addRoll(0); }
       expect(function() { game.addRoll(0); }).toThrowError("Max frames");
+    });
+
+    it('adds extra balls on final frame with bonus', function() {
+      frame.isRollsComplete.and.returnValue(true);
+      for (var i = 0; i < 11; i++) { game.addRoll(); }
+      expect(frame.isFrameClosed).toHaveBeenCalled();
     });
   });
 
   describe('totalScore property', function() {
     it('calculates the total scores per frame', function() {
-      game.addRoll(1)
       frame.isRollsComplete.and.returnValue(true);
       frame.calcTotal.and.returnValue(3);
-      game.addRoll(2)
+      game.addRoll()
       expect(game.totalScore).toEqual([3]);
     });
 
     it('calculates the running total of scores per frame', function() {
-      game.addRoll(1)
       frame.isRollsComplete.and.returnValue(true);
       frame.calcTotal.and.returnValue(3);
-      game.addRoll(2)
-      game.addRoll(4) // actual frame
-      game.addRoll(5) // actual frame
-      expect(game.totalScore).toEqual([3, 12]);
+      game.addRoll()
+      game.addRoll()
+      expect(game.totalScore).toEqual([3, 6]);
     });
 
     it('calls addBonus on frame', function() {
       frame.isRollsComplete.and.returnValue(true);
       frame.bonusBalls = 1;
-      game.addRoll(10) // spy frame
+      game.addRoll(10)
       game.addRoll(1)
       expect(frame.addBonus).toHaveBeenCalled();
     });
-
-  //   it('can handle spare scoring correctly', function() {
-  //     frame1.rolls.and.returnValue([9, 1]);
-  //     frame1.isSpare.and.returnValue(true);
-  //     game.addRoll(frame1)
-  //     game.addRoll(frame1)
-  //     expect(game.frameScores).toContain(19);
-  //   });
-  //
-  //   it('can handle strike scoring correctly', function() {
-  //     frame1.rolls.and.returnValue([10]);
-  //     frame1.isStrike.and.returnValue(true);
-  //     game.addRoll(frame1)
-  //     game.addRoll(frame1)
-  //     expect(game.frameScores).toContain(20);
-  //   });
-  //
-  //   it('can handle three strikes scoring correctly', function() {
-  //     frame1.rolls.and.returnValue([10]);
-  //     frame1.isStrike.and.returnValue(true);
-  //     game.addRoll(frame1)
-  //     game.addRoll(frame1)
-  //     game.addRoll(frame1)
-  //     expect(game.frameScores).toContain(30);
-  //     expect(game.frameScores).toContain(20);
-  //   });
   });
 });

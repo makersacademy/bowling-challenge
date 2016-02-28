@@ -1,10 +1,12 @@
 'use strict;'
 
-function Game(frame) {
+function Game(frameKlass) {
   this.frames = [];
   this.currFrameNum = 0;
   this.totalScore = [];
-  this.currFrame = frame || new Frame();
+  this.frameKlass = frameKlass;
+  this.currFrame = new this.frameKlass();
+
 }
 
 Game.prototype.addRoll = function (pinsDown) {
@@ -21,7 +23,7 @@ Game.prototype.addRoll = function (pinsDown) {
     this.frames.push(this.currFrame)
     this._updateTotalScore();
     // this._updateFrameScores();
-    this.currFrame = new Frame();
+    this.currFrame = new this.frameKlass();
   }
 };
 

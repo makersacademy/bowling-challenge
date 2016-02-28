@@ -1,102 +1,82 @@
-
 describe('JavaScript Bowling Game', function(){
+
   var game;
+
   beforeEach(function(){
     game = new BowlingGame();
   });
 
-  //  it('I can play a single normal frame and see the score', function(){
-  //    var game = new BowlingGame();
-  //    spyOn(game, "playBall").and.returnValue(3); 
-  //    game.letsBowl();
-  //    game.letsBowl();
-  //    expect(game.currentFrame()).toBe(2);
-  //    expect(game.scoreCard.getScore()).toBe(6); 
-  //  })
-  //  it('I can bowl a spare and it will give me double points on the next bowl', function(){
-  //    var game = new BowlingGame();
-  //    spyOn(game, "playBall").and.returnValue(5);
-  //    game.letsBowl();
-  //    game.letsBowl();
-  //    game.letsBowl();
-  //    expect(game.scoreCard.getScore()).toBe(20); 
-  //
-  //  });
-
-  it('can roll a gutter game', function(){
-    rollMany(0, 20);
-    expect(game.score()).toBe(0);
+  describe('User Story 1:', function(){
+    it('can roll a gutter game', function(){
+      spyOn(game, "randomRoll").and.returnValue(0);
+      rollManyRandoms(20);
+      expect(game.getScore.score(game.currentFrame)).toBe(0);
+    });
   });
 
-  it('can roll all ones', function(){
-    rollMany(1, 20);
-    expect(game.score()).toBe(20);
+  describe('User Story 2:', function(){
+    it('can roll all ones', function(){
+      spyOn(game, "randomRoll").and.returnValue(1);
+      rollManyRandoms(20);
+      expect(game.getScore.score(game.currentFrame)).toBe(20);
+    });
   });
 
-  it('can roll a spare', function(){
-    game.roll(5);
-    game.roll(5);
-    game.roll(3);
-    rollMany(0, 17);
-    expect(game.score()).toBe(16);
+  describe('User Story 3:', function(){
+    it('can roll a spare', function(){
+      spyOn(game, "randomRoll").and.returnValues(5, 5, 3, 3);
+      rollManyRandoms(4);
+      expect(game.getScore.score(game.currentFrame)).toBe(19);
+    });
   });
 
-  it('can roll a strike', function(){
-    game.roll(10);
-    game.roll(4);
-    game.roll(3);
-    rollMany(0, 16);
-    expect(game.score()).toBe(24);
-    expect(game.isGameOver()).toBe(true)
+  describe('User Story 4:', function(){
+    it('can roll a strike', function(){
+      spyOn(game, "randomRoll").and.returnValues(10, 3, 3);
+      rollManyRandoms(3);
+      expect(game.getScore.score(game.currentFrame)).toBe(22);
+    });
   });
 
-  it('can roll a perfect game', function(){
-    rollMany(10, 12);
-   expect(game.score()).toBe(300); 
-   expect(game.isGameOver()).toBe(true);
+  describe('User Story 5:', function(){
+    it('can roll a perfect game', function(){
+      spyOn(game, "randomRoll").and.returnValue(10);
+      rollManyRandoms(12);
+      expect(game.getScore.score(game.currentFrame)).toBe(300); 
+      expect(game.isGameOver()).toBe(true);
+    });
   });
 
-  it('can return a score after a normal frame', function(){
-  
-    rollMany(3, 2);
-    expect(game.score()).toBe(6);
-    expect(game.isGameOver()).toBe(false);
+  describe('User Story 6:', function(){
+    it('returns score after one strike and a normal frame', function(){
+      spyOn(game, "randomRoll").and.returnValues(10, 3, 5);
+      rollManyRandoms(3);
+      expect(game.getScore.score(game.currentFrame)).toBe(26);
+      expect(game.isGameOver()).toBe(false);
+    });
   });
 
-  it('can return the correct score after one strike and a normal frame', function(){
-    game.roll(10);
-    game.roll(3);
-    game.roll(6);
-    expect(game.score()).toBe(28);
-    expect(game.isGameOver()).toBe(false);
-  
+  describe('User Story 7:', function(){
+    it('returns score after 3 successive strikes', function(){
+      spyOn(game, "randomRoll").and.returnValue(10);
+      rollManyRandoms(3);
+      expect(game.getScore.score(game.currentFrame)).toBe(30);
+    });
   });
 
-  it('can return the correct score after 3 successive strikes', function(){
-  
-    game.roll(10);
-    game.roll(10);
-    game.roll(10);
-    expect(game.score()).toBe(30);
+  describe('User Story 8:', function(){
+    it('returns score after 1 strike, 1 spare and 2 normal bowls', function(){
+      spyOn(game, "randomRoll").and.returnValues(10, 7, 3, 3, 2);
+      rollManyRandoms(5);
+      expect(game.getScore.score(game.currentFrame)).toBe(38);
+    });
   });
 
-   it('can return the correct score after 2 strikes, 1 spare and 2 normal bowls', function(){
-  
-    game.roll(10);
-    game.roll(7);
-    game.roll(3);
-    game.roll(3);
-    game.roll(2);
-    expect(game.score()).toBe(38);
-  });
-
- 
-
-  var rollMany = function (pins, rolls) {
+  var rollManyRandoms = function (rolls) {
     for (var i = 0; i < rolls; i++) {
+      var pins = game.randomRoll();
       game.roll(pins);
     };
   };
-
 
 });

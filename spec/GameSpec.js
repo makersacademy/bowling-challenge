@@ -25,7 +25,7 @@ describe('Game', function() {
       spyOn(game, "_number").and.returnValue(4);
       game.bowl();
       game.bowl();
-      expect(game.getScore()).toEqual(8);
+      expect(game.getTotalScore()).toEqual(8);
     });
 
     it('keeps track of the number of rounds', function() {
@@ -35,10 +35,44 @@ describe('Game', function() {
       expect(game.getRoundNumber()).toEqual(4);
     });
 
-    it('adds scores to an array', function(){
+    it('adds scores to an array for the round', function(){
       spyOn(game, "_number").and.returnValue(4);
       game.bowl();
       game.bowl();
-      expect(game.getFullScores()).toEqual([4,4])
+      expect(game.getRoundScore()).toEqual([4,4])
+    });
+
+    it('sums scores for the round', function(){
+      spyOn(game, "_number").and.returnValue(4);
+      game.bowl();
+      game.bowl();
+      expect(game.getRoundTotal()).toEqual(8)
+    });
+
+    it('adds scores to an array of full scores', function(){
+      spyOn(game, "_number").and.returnValue(4);
+      game.bowl();
+      game.bowl();
+      game.bowl();
+      game.bowl();
+      expect(game.getFullScores()).toEqual([[4,4],[4,4]])
+    });
+
+    it('returns the scores for the previous round', function(){
+      spyOn(game, "_number").and.returnValue(4);
+      game.bowl();
+      game.bowl();
+      game.bowl();
+      game.bowl();
+      expect(game.getLastRound()).toEqual([4,4])
+    });
+
+    it('adds the next score twice when a spare is scored', function() {
+      spyOn(game, "_number").and.returnValue(5);
+      game.bowl();
+      game.bowl();
+      game.bowl();
+      expect(game.getTotalScore()).toEqual(20);
+
     });
 });

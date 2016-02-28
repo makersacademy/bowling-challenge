@@ -47,17 +47,20 @@ describe('JavaScript Bowling Game', function(){
     game.roll(3);
     rollMany(0, 16);
     expect(game.score()).toBe(24);
+    expect(game.isGameOver()).toBe(true)
   });
 
   it('can roll a perfect game', function(){
     rollMany(10, 12);
    expect(game.score()).toBe(300); 
+   expect(game.isGameOver()).toBe(true);
   });
 
   it('can return a score after a normal frame', function(){
   
     rollMany(3, 2);
     expect(game.score()).toBe(6);
+    expect(game.isGameOver()).toBe(false);
   });
 
   it('can return the correct score after one strike and a normal frame', function(){
@@ -65,8 +68,29 @@ describe('JavaScript Bowling Game', function(){
     game.roll(3);
     game.roll(6);
     expect(game.score()).toBe(28);
+    expect(game.isGameOver()).toBe(false);
   
   });
+
+  it('can return the correct score after 3 successive strikes', function(){
+  
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    expect(game.score()).toBe(30);
+  });
+
+   it('can return the correct score after 2 strikes, 1 spare and 2 normal bowls', function(){
+  
+    game.roll(10);
+    game.roll(7);
+    game.roll(3);
+    game.roll(3);
+    game.roll(2);
+    expect(game.score()).toBe(38);
+  });
+
+ 
 
   var rollMany = function (pins, rolls) {
     for (var i = 0; i < rolls; i++) {

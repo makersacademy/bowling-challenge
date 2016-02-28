@@ -13,9 +13,9 @@ describe('BowlingGame', function() {
     }
   };
 
-  function rollSpare() {
-    game.roll(5);
-    game.roll(5);
+  function rollSpare(firstRoll, secondRoll) {
+    game.roll(firstRoll);
+    game.roll(secondRoll);
   };
 
   function rollStrike() {
@@ -33,7 +33,7 @@ describe('BowlingGame', function() {
   });
 
   it('can roll a spare', function() {
-    rollSpare();
+    rollSpare(5, 5);
     game.roll(2);
     rollMany(17, 0);
     expect(game.score()).toEqual(14);
@@ -45,5 +45,38 @@ describe('BowlingGame', function() {
     game.roll(3);
     rollMany(16, 0);
     expect(game.score()).toEqual(20);
+  });
+
+  it('can roll a perfect game', function() {
+    rollMany(12, 10);
+    expect(game.score()).toEqual(300);
+  });
+
+  it('can roll a combination of pins', function() {
+    game.roll(1);
+    game.roll(4);
+
+    game.roll(4);
+    game.roll(5);
+
+    rollSpare(6, 4);
+
+    rollSpare(5, 5);
+
+    rollStrike();
+
+    game.roll(0);
+    game.roll(1);
+
+    rollSpare(7, 3);
+
+    rollSpare(6, 4);
+
+    rollStrike();
+
+    rollSpare(2, 8);
+    game.roll(6);
+
+    expect(game.score()).toEqual(133);
   });
 });

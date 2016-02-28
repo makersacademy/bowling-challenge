@@ -5,6 +5,7 @@ function Game() {
 };
 
 Game.prototype.addFrame = function(rollOne, rollTwo){
+  if (this.frames.length >= 10) throw new TypeError("Can't add over ten frames");
   this.frames.push([rollOne, rollTwo]);
 }
 

@@ -18,6 +18,10 @@ describe('BowlingGame', function() {
     game.roll(5);
   };
 
+  function rollStrike() {
+    game.roll(10);
+  };
+
   it('can roll a gutter game', function() {
     rollMany(20, 0);
     expect(game.score()).toEqual(0);
@@ -33,5 +37,13 @@ describe('BowlingGame', function() {
     game.roll(2);
     rollMany(17, 0);
     expect(game.score()).toEqual(14);
+  });
+
+  it('can roll a strike', function() {
+    rollStrike();
+    game.roll(2);
+    game.roll(3);
+    rollMany(16, 0);
+    expect(game.score()).toEqual(20);
   });
 });

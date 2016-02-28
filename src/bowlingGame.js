@@ -14,6 +14,8 @@ BowlingGame.prototype.score = function() {
   for(var roll = 0; roll < this._rolls.length; roll++) {
     if(this._isSpare(roll)) {
       score += this._rolls[roll] + this._rolls[roll + 1];
+    } else if(this._isStrike(roll)) {
+      score += 10 + this._rolls[roll + 1] + this._rolls[roll + 2];
     } else {
       score += this._rolls[roll];
     }
@@ -23,4 +25,8 @@ BowlingGame.prototype.score = function() {
 
 BowlingGame.prototype._isSpare = function(roll) {
   return this._rolls[roll - 1] + this._rolls[roll] === 10;
+};
+
+BowlingGame.prototype._isStrike = function(roll) {
+  return this._rolls[roll] === 10;
 };

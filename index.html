@@ -13,16 +13,16 @@
   <div>
     <table cellspacing='0'>
       <tr>
-        <th colspan='6'>Frame 1</th>
-        <th colspan='6'>Frame 2</th>
-        <th colspan='6'>Frame 3</th>
-        <th colspan='6'>Frame 4</th>
-        <th colspan='6'>Frame 5</th>
-        <th colspan='6'>Frame 6</th>
-        <th colspan='6'>Frame 7</th>
-        <th colspan='6'>Frame 8</th>
-        <th colspan='6'>Frame 9</th>
-        <th colspan='6'>Frame 10</th>
+        <th colspan='6'>1</th>
+        <th colspan='6'>2</th>
+        <th colspan='6'>3</th>
+        <th colspan='6'>4</th>
+        <th colspan='6'>5</th>
+        <th colspan='6'>6</th>
+        <th colspan='6'>7</th>
+        <th colspan='6'>8</th>
+        <th colspan='6'>9</th>
+        <th colspan='6'>10</th>
       </tr>
       <tr>
         <td colspan='3'></td><td colspan='3'></td>
@@ -49,4 +49,22 @@
         <td colspan='6'></td>
       </tr>
     </table>
+
+    <div id='button-container'>
+      <button class='button-roll' value='0'>0</button>
+      <button class='button-roll' value='1'>1</button>
+      <button class='button-roll' value='2'>2</button>
+      <button class='button-roll' value='3'>3</button>
+      <button class='button-roll' value='4'>4</button>
+      <button class='button-roll' value='5'>5</button>
+      <button class='button-roll' value='6'>6</button>
+      <button class='button-roll' value='7'>7</button>
+      <button class='button-roll' value='8'>8</button>
+      <button class='button-roll' value='9'>9</button>
+      <button class='button-roll' value='10'>10</button>
+      <button class='button-reset' onClick='history.go(0)' value='Refresh'>Reset</button>
+    </div>
+
+    <div hidden class='messages' id='gameover'>Game Over</div>
+    <div hidden class='messages' id='errors'></div>
   </div>

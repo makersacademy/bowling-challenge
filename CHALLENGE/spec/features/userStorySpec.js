@@ -48,7 +48,7 @@ describe ('*FEATURES', function() {
     });
   });
 
-  xdescribe ('USER STORY FOUR', function() {
+  describe ('USER STORY FOUR', function() {
     // As a player,
     // So that my turn can end,
     // I would like a completed turn to prevent further bowls.
@@ -63,8 +63,8 @@ describe ('*FEATURES', function() {
       turn.firstBowl(5);
       turn.secondBowl(4);
       expect(turn.turnCompleted).toEqual(true);
-      expect(turn.firstBowl()).toThrowError("Next player's turn");
-      expect(turn.secondBowl()).toThrowError("Next player's turn");
+      expect(function() {turn.firstBowl(5);}).toThrowError("Next player's turn.");
+      expect(function() {turn.secondBowl(5);}).toThrowError("Next player's turn.");
     });
   });
 });

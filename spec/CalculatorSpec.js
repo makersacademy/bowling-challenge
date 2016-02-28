@@ -17,6 +17,7 @@ describe("Game", function() {
       for(var i = 0; i < 10; i ++){
         game.addFrame(0,0);
       }
+      console.log(game.frames)
       expect(game.score()).toEqual(0);
     });
 
@@ -35,8 +36,26 @@ describe("Game", function() {
       }
       expect(game.score()).toEqual(110);
     });
-    describe ("Tenth frame", function(){
 
+    it ("calculates score correctly with spares", function(){
+      for(var i = 0; i < 5; i ++){
+        game.addFrame(10,0);
+      }
+      for(var i = 0; i < 4; i ++){
+        game.addFrame(5,5);
+      }
+      game.addFrame(5,5,5);
+      expect(game.score()).toEqual(210);
+    });
+
+    describe ("Tenth frame", function(){
+      it ("calculates score correctly with spares", function(){
+      for(var i = 0; i < 9; i ++){
+        game.addFrame(4,4);
+      }
+      game.addFrame(4,6,4);
+      expect(game.score()).toEqual(86);
+      });
     });
     describe ("Error handling", function(){
       it ("More than 10 frames returns an error", function(){

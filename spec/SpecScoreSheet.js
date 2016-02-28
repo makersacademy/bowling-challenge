@@ -42,14 +42,10 @@ var frameMock;
 
   });
 
-  describe("pendingScores", function(){
+  describe("pendingSpare", function(){
 
     beforeEach(function(){
-      // scoreSheet.scoreCard = {1: [3, 5], 2: [8, '/'],
-      //                         3: [0, '/'], 4: ['X', 'pending'],
-      //                         5: ['X', 'pending'], 6: [4, 5]}
-      spyOn(scoreSheet, 'consecutiveStrikes');
-      scoreSheet.isReadyForBonusScore();
+      
     });
 
 

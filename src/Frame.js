@@ -21,11 +21,10 @@ Frame.prototype.isSpare = function (roll) {
 };
 
 Frame.prototype.total = function (roll) {
-    var toAdd =  roll || this.rollScores[1] || 0;
+    var toAdd =  roll || this.rollScores[1] || 0
     var added = this.rollScores[0] + toAdd
-    if (added === 10){
-      debugger
-      this.game.pendingSpare(this);
+    if (added === 10 ){
+      this.game.pendingSpare(this)
     }
   return added;
 };

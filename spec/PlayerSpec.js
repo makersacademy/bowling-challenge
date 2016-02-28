@@ -12,7 +12,7 @@ describe("Player", function() {
 
   beforeEach(function(){
     scoreSheet = jasmine
-      .createSpyObj('scoreSheet', ['player', 'scoreCard', 'pendingSpare', 'consecutiveStrikes', 'updateSpare']);
+      .createSpyObj('scoreSheet', ['player', 'scoreCard', 'pendingSpare', 'consecutiveStrikes', 'updateSpare', 'spareRollOwed']);
     frameMockSpy = jasmine
       .createSpyObj('frameMockSpy', ['pinsAvailable', 'number', 'rollScores', 'update']);
 

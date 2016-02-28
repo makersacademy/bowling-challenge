@@ -1,17 +1,18 @@
-function ScoreSheet(player, frame) {
+function ScoreSheet(player) {
   this.player = player;
   this.scoreCard = {1: [], 2: [],
                     3: [], 4: [],
                     5: [], 6: [],
                     7: [], 8: [],
                     9: [], 10:[]};
-  this.spareRollOwed = this.pendingSpare(frame);
   this.pendingStrikes = [];
+  this.spareRollOwed = [];
 }
 
 
 ScoreSheet.prototype.pendingSpare = function (frame) {
-  return (frame !== undefined) ? this.scoreCard[frame.number] : null;
+  var spareOwed = (frame !== undefined) ? frame : null;
+  this.spareRollOwed.push(spareOwed)
 };
 
 ScoreSheet.prototype.consecutiveStrikes = function (frame) {
@@ -19,10 +20,15 @@ ScoreSheet.prototype.consecutiveStrikes = function (frame) {
 };
 
 ScoreSheet.prototype.updateSpare = function (roll) {
-  return this.pendingSpare.rollScore[1] + roll;
+  var frameToUpdate = this.spareRollOwed.pop()
+  this.scoreCard[frameToUpdate.number] = [10, roll]
 };
 
 
+
+ScoreSheet.prototype.gameOver = function () {
+  console.log("Game Over")
+};
 // ScoreSheet.prototype.spareRollOwed = function (rollScore) {
 //   var lastFrame = this.getLastFrame()
 //   if (this.pendingSpare()) {

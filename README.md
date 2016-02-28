@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-This program is a console-based score calculator for ten-pin bowling. It accounts for spare and strike bonuses points and bonus rolls in the last frame.
+This program is a console-based score calculator for ten-pin bowling. It accounts for spare and strike bonus points and bonus rolls in the last frame.
 
 The program is built in JavaScript following TDD/BDD practices using Jasmine.js.
 

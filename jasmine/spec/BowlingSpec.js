@@ -23,6 +23,12 @@ describe("Bowling", function(){
     expect(bowling.frames[1]).toEqual([5,2]);
   })
 
+  it("can roll a zero then a 10", function(){
+    bowling.pinsHit(0);
+    bowling.pinsHit(10);
+    expect(bowling.frames[1]).toEqual([0,10]);
+  })
+
   it("can recognise if a frame is full of hit pins", function(){
     bowling.frames[1] = [5,2];
     expect(bowling.isFrameFull()).toBe(true);

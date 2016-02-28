@@ -55,6 +55,9 @@ $(document).ready(function() {
       if (i === 21) {
         $('#roll21').text(bowling.frames[10][2]);
       } else {
+        console.log(count);
+        console.log(j);
+        console.log(i);
         if (bowling.frames[Math.ceil(i/2)][j] === 10) {
           $('#roll'+i).text(bowling.frames[Math.ceil(i/2)][0]);
           if (i === count && count < 19) {count ++;}

@@ -12,15 +12,20 @@ describe("Score", function () {
   });
 
   it("can recognise a strike", function(){
-    frame = [10,0]
+    frame = [10,0];
     expect(score.isStrike(frame)).toBe(true);
     expect(score.isSpare(frame)).toBe(false);
   });
 
   it("can recognise a spare", function(){
-    frame = [8,2]
+    frame = [8,2];
     expect(score.isSpare(frame)).toBe(true);
     expect(score.isStrike(frame)).toBe(false);
+  });
+
+  it("can recognise a 0 roll then a 10", function(){
+    frames = {1 : [0,10], 2 : [5,2]};
+    expect(score.calculateChosen(frames, 1)).toEqual(15);
   });
 
   it("can add bonus points for a strike", function(){
@@ -70,6 +75,12 @@ describe("Score", function () {
   });
 
   describe("can create a score array", function(){
+
+    it("normal - 0 then a 10", function(){
+      frames = {1 : [0,10]};
+      currentFrame = 2;
+      expect(score.createScoreArray(frames, currentFrame)).toEqual(['/']);
+    });
 
     it("normal, normal, normal", function(){
       frames = {1 : [5,2], 2 : [5,2], 3 : [5, 2]};

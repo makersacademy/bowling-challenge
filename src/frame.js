@@ -1,13 +1,13 @@
 'use strict';
 
-function Frame(maxRolls) {
-  this.MAX_ROLLS = (typeof maxRolls === 'undefined') ? 2 : maxRolls;
+function Frame(isLastFrame) {
+  this.MAX_ROLLS = (typeof isLastFrame === 'boolean' && isLastFrame) ? 3 : 2;
   this._rolls = [];
   this.remainingPins = 10;
 }
 
 Frame.prototype.roll = function (pins) {
-  if (this._rolls.length > this.MAX_ROLLS) {
+  if (this.isComplete()) {
     throw new Error('Invalid number of rolls');
   } else if (pins > this.remainingPins) {
     throw new Error('Invalid roll');

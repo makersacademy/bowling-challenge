@@ -25,10 +25,10 @@ function Turn() {
   Turn.prototype.completeTurn = function(_turnCompleted) {
     if(this._isStrike() === true) {
       this.overallScore.push("X", "-");
-  //   } else if(this._isSpare) {
-  //     this.overallScore.push(this.firstBowlScore, "-");
+    } else if(this._isSpare() === true) {
+      this.overallScore.push(this.firstBowlScore.toString(), "/");
     } else {
-   this.overallScore.push(this.firstBowlScore, this.secondBowlScore);
+   this.overallScore.push(this.firstBowlScore.toString(), this.secondBowlScore.toString());
     }
   };
   //
@@ -37,10 +37,10 @@ function Turn() {
   Turn.prototype._isStrike = function() {
    return this.firstBowlScore === 10;
   };
-  //
-  // Turn.prototype._isSpare = function() {
-  //   return this.firstBowlScore + this.secondBowlScore === 10;
-  // };
+
+  Turn.prototype._isSpare = function() {
+    return this.firstBowlScore + this.secondBowlScore === 10;
+  };
   //
   // Turn.prototype._turnCompleted = function() {
   //   this.turnCompleted = true;

@@ -14,6 +14,7 @@ describe ('A turn', function() {
     });
 
     it ('#secondBowl can set #secondBowlScore', function() {
+      turn.firstBowl(5);
       turn.secondBowl(4);
       expect(turn.secondBowlScore).not.toBeNull();
     });
@@ -21,7 +22,14 @@ describe ('A turn', function() {
     it ('and complete the turn', function() {
       turn.firstBowl(5);
       turn.secondBowl(4);
-      expect(turn.overallScore.reduce(function(a, b) { return a + b; }, 0)).toEqual(9);
+      expect(turn.firstBowlScore + turn.secondBowlScore).toEqual(9);
+    });
+
+    it ('and post both scores to the #overallScore array', function() {
+      turn.firstBowl(5);
+      turn.secondBowl(4);
+      expect(turn.overallScore).toContain('5');
+      expect(turn.overallScore).toContain('4');
     });
   });
 
@@ -42,14 +50,21 @@ describe ('A turn', function() {
       expect(turn.overallScore).toContain('X');
     });
   });
-  //
-  // describe ('once completed', function() {
-  //
-  //   it ('has an #overallScore that includes two seperate scores', function() {
-  //     turn.firstBowl();
-  //     turn.secondBowl();
-  //     expect(turn.overallScore.length).toBe(2);
-  //   });
-  // });
-  //
+
+  describe ('when there is a spare', function() {
+
+    it ('the #firstBowlScore and #secondBowlScore add up to ten', function() {
+      turn.firstBowl(5);
+      turn.secondBowl(5);
+      expect(turn.firstBowlScore + turn.secondBowlScore).toEqual(10);
+    });
+
+    it ('the #overallScore includes "/"', function() {
+      turn.firstBowl(5);
+      turn.secondBowl(5);
+      expect(turn.overallScore).toContain('5');
+      expect(turn.overallScore).toContain('/');
+    });
+  });
+
 });

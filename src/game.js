@@ -1,41 +1,30 @@
 'use strict;'
 
-function Game() {
+function Game(frame) {
   this.frames = [];
-  this.frameScores = [];
   this.currFrameNum = 0;
   this.totalScore = [];
+  this.currFrame = frame || new Frame();
 }
 
 Game.prototype.addRoll = function (pinsDown) {
-  if(this.frames[this.currFrameNum] && this.frames[this.currFrameNum]._frameComplete()) {
-    this.currFrameNum++;
-  }
-
-  if(!this.frames[this.currFrameNum]) {
-    this.addFrame(new Frame());
-  }
-  this.frames[this.currFrameNum].addRoll(pinsDown);
-  this._updateFrameScores();
-  console.log(this.totalScore)
-};
-
-
-Game.prototype.addFrame = function (frame) {
   this.currFrameNum = this.frames.length;
-  if (this.currFrameNum < 10 || this.addBonusBall()) {
-    this.frames.push(frame);
-    this._updateFrameScores();
-    this._updateTotalScore();
+  if (this.currFrameNum < 10 || this.lastFrameBonus()) {
+    this.currFrame.addRoll(pinsDown);
   } else {
     throw new Error("Max frames");
+  }
+  this._updateFrameScores();
+  if(this.currFrame.isRollsComplete()) {
+    this.frames.push(this.currFrame)
+    this._updateFrameScores();
+    this.currFrame = new Frame();
   }
 };
 
 Game.prototype._updateFrameScores = function() {
-  this.ball1 = this.frames[this.currFrameNum].showRolls()[0];
-  this.ball2 = this.frames[this.currFrameNum].showRolls()[1] || 0;
-  this.frameScores[this.currFrameNum] = this.ball1 + this.ball2;
+  this.ball1 = this.currFrame.rolls[0];
+  this.ball2 = this.currFrame.rolls[1];
   this.calcPrevSpareBonus();
   this.calcPrevStrikeBonus();
   this.calcPrevDoubleStrikeBonus();
@@ -44,38 +33,25 @@ Game.prototype._updateFrameScores = function() {
 
 Game.prototype._updateTotalScore = function() {
   for(var i = 0; i < this.frames.length; i++) {
-    this.totalScore[i] = this.frameScores[i] + ( this.totalScore[i-1] || 0 )
-  }
-  if(this.frames[this.currFrameNum].isSpare() ||
-    this.frames[this.currFrameNum].isStrike()) {
-    this.totalScore[this.currFrameNum] = '';
-  }
-  if(this.currFrameNum > 0 && this.frames[this.currFrameNum].isStrike() &&
-    this.frames[this.currFrameNum-1].isStrike()) {
-    this.totalScore[this.currFrameNum] = '';
-    this.totalScore[this.currFrameNum-1] = '';
-  }
-
-  if(this.currFrameNum > 0 && !this.frames[this.currFrameNum]._frameComplete() &&
-    this.frames[this.currFrameNum-1].isStrike()) {
-    this.totalScore[this.currFrameNum-1] = '';
-  }
-  if(this.frames[this.currFrameNum] && !this.frames[this.currFrameNum]._frameComplete()) {
-    this.totalScore[this.currFrameNum] = '';
+    this.totalScore[i] = this.frames[i].calcTotal() + ( this.totalScore[i-1] || 0 );
   }
 };
 
 Game.prototype.calcPrevSpareBonus = function () {
   var prev = this.currFrameNum - 1;
   if(this.frames[prev] && this.frames[prev].isSpare()) {
-    this.frameScores[prev] = 10 + this.ball1;
+    this.frames[prev].bonus0 = this.ball1;
   }
 };
 
 Game.prototype.calcPrevStrikeBonus = function () {
   var prev = this.currFrameNum - 1;
-  if(prev >= 0 && this.frames[prev].isStrike()) {
-    this.frameScores[prev] = 10 + this.ball1 + this.ball2;
+  if(prev >= 0 && this.frames[prev].isStrike() &&
+    !this.currFrame.isStrike()) {
+      this.frames[prev].bonus0 = this.ball1;
+      if(this.currFrame.isRollsComplete()) {
+        this.frames[prev].bonus1 = this.ball2;
+      }
   }
 };
 
@@ -85,15 +61,19 @@ Game.prototype.calcPrevDoubleStrikeBonus = function () {
   if(prevprev >= 0 &&
     this.frames[prevprev].isStrike() &&
     this.frames[prev].isStrike()) {
-    this.frameScores[prevprev] = 20 + this.ball1;
-  }
+      this.frames[prevprev].bonus0 = 10;
+      this.frames[prevprev].bonus1 = this.ball1;
+    }
 };
 
-Game.prototype.addBonusBall = function () {
+Game.prototype.lastFrameBonus = function () {
   var currFrameNum = this.currFrameNum;
-  if (currFrameNum === 10 &&
-    (this.frames[9].isSpare() || this.frames[9].isStrike())) { return true; }
-  if (currFrameNum === 11 &&
-    (this.frames[9].isStrike() && this.frames[10].isStrike())) { return true; }
+  if (currFrameNum === 10 && this.frames[9].isStrike() &&
+    this.frames[9].bonus1===null) { return true; }
+  if (currFrameNum === 11 && this.frames[9].isStrike() &&
+    this.frames[10].isStrike() && (this.frames[10].bonus0===null)) { return true; }
+  if (this.frames[9].isSpare() && (this.frames[9].bonus0===null)) { return true; }
   return false;
 };
+
+// currFrameNum === 11 &&

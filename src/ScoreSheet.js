@@ -5,16 +5,27 @@ function ScoreSheet(player) {
                     5: [], 6: [],
                     7: [], 8: [],
                     9: [], 10:[]};
-  this.consecutiveStrikes = 0;
+  this.pendingSpare = []
+  this.pendingStrikes = []
 }
 
 
-// function Game(){
-//   this.scorecard = [];
-//   this.frame = new Frame();
-//   this.final = 0;
-// }
-//
+ScoreSheet.prototype.pendingSpare = function (frame) {
+  this.scoreCard[frame.number]
+};
+
+ScoreSheet.prototype.pendingStrikes = function (frame) {
+  this.scoreCard[frame.number]
+};
+
+
+// ScoreSheet.prototype.spareRollOwed = function (rollScore) {
+//   var lastFrame = this.getLastFrame()
+//   if (this.pendingSpare()) {
+//     var updatedSecondRoll = (10 - lastFrame[0] + rollScore)
+//     this.scoreCard[this.currentFrameNumber - 1] = [lastFrame[0], updatedSecondRoll];
+//   }
+// //
 // Game.prototype.addFrameScore = function() {
 //   this.endGame();
 //   this.frame.checkStrike();
@@ -40,13 +51,8 @@ function ScoreSheet(player) {
 //   var thisFrameScore = thisFrame[0] + thisFrame[1]
 //   return thisFrameScore;
 // };
-// 
-// ScoreSheet.prototype.isReadyForBonusScore = function (rollScore) {
-//   return (rollScore !== 'pending') &&
-//   (this.consecutiveStrikes >= 1) &&
-//   (this.scoreSheet[this.currentFrameNumber].length === 2) &&
-//   !this.isSpareOwed(rollScore);
-// };
+//
+
 //
 // ScoreSheet.prototype.factorInStrikes = function (consecutiveStrikes) {
 //   var frameNumber = this.currentFrameNumber;
@@ -63,20 +69,9 @@ function ScoreSheet(player) {
 //   this.consecutiveStrikes = 0;
 // };
 //
-// ScoreSheet.prototype.spareRollOwed = function (rollScore) {
-//   var lastFrame = this.getLastFrame()
-//   if (this.isSpareOwed()) {
-//     var updatedSecondRoll = (10 - lastFrame[0] + rollScore)
-//     this.scoreSheet[this.currentFrameNumber - 1] = [lastFrame[0], updatedSecondRoll];
-//   }
-//
+
 // };
 //
 // ScoreSheet.prototype.isSpareOwed = function () {
 //   var lastFrame = this.getLastFrame();
 //   return lastFrame[1] === '/'
-// };
-//
-// ScoreSheet.prototype.getLastFrame = function () {
-//   return this.scoreSheet[this.currentFrameNumber - 1];
-// };

@@ -21,8 +21,8 @@ Frame.prototype.isSpare = function (roll) {
 };
 
 Frame.prototype.total = function (roll) {
-  if (typeof this.rollScores[1] === "string"){
-    // this.game.bonusCalculator()
+  if (this.rollScores[1] === "/"){
+    this.game.pendingSpare(this)
   } else {
     var toAdd =  roll || this.rollScores[1] || 0
     return this.rollScores[0] + toAdd

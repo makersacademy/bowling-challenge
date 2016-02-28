@@ -11,8 +11,10 @@ describe("Player", function() {
 
 
   beforeEach(function(){
-    scoreSheet = jasmine.createSpyObj('scoreSheet', ['player', 'scoreCard', 'consecutiveStrikes']);
-    frameMockSpy = jasmine.createSpyObj('frameMockSpy', ['pinsAvailable', 'number', 'rollScores', 'update']);
+    scoreSheet = jasmine
+      .createSpyObj('scoreSheet', ['player', 'scoreCard', 'pendingSpare', 'pendingStrikes']);
+    frameMockSpy = jasmine
+      .createSpyObj('frameMockSpy', ['pinsAvailable', 'number', 'rollScores', 'update']);
 
     function FrameMock(roll, frameNumber){
       this.pinsAvailable = 10 - roll
@@ -48,11 +50,10 @@ describe("Player", function() {
     var playerPrototype;
 
     beforeEach(function(){
-      // spyOn(Math, 'random').and.returnValue(1)
+      spyOn(player1, 'strikeCase').and.callThrough()
       spyOn(player1, 'firstRoll').and.callThrough();
       spyOn(player1, 'rollScoreGenerator').and.returnValue(lowRoll);
       spyOn(player1, 'secondRoll').and.callThrough();
-
       player1.roll();
     });
 
@@ -72,9 +73,12 @@ describe("Player", function() {
     });
 
     describe("#firstRoll", function(){
+      var playerGoodSS;
 
       beforeEach(function(){
         spyOn(playerGood, 'rollScoreGenerator').and.returnValue(10);
+        spyOn(playerGood, 'strikeCase').and.callThrough();
+        playerGoodSS = playerGood.playerSS;
         playerGood.roll();
       });
 
@@ -87,17 +91,25 @@ describe("Player", function() {
           .toEqual(jasmine.objectContaining({'number': 1, 'rollScores': [lowRoll], 'pinsAvailable': 7 }));
       });
 
-      it("won't increment the rollCount unless there is a strike", function(){
-        expect(player1.rollCount).toEqual(1);
+      it("calls on strikeCase when there is a strike", function(){
+        expect(playerGood.strikeCase).toHaveBeenCalled();
       });
 
-      it("will increment the rollCount again - strike", function(){
-        expect(playerGood.rollCount).toEqual(2);
+
+      it("won't call on strikeCase if there is not a strike", function(){
+        expect(player1.strikeCase).not.toHaveBeenCalled();
       });
 
-      it("will call to update the frame with 'pending' - strike", function(){
-        expect(playerGood.currentFrame)
-          .toEqual(jasmine.objectContaining({'rollScores': ['X','pending']}));
+      describe("#strikeCase", function(){
+
+        it("will increment the rollCount again - strike", function(){
+          expect(playerGood.rollCount).toEqual(2);
+        });
+
+        it("will call to update the frame with 'pending' - strike", function(){
+          expect(playerGood.currentFrame)
+            .toEqual(jasmine.objectContaining({'rollScores': ['X','pending']}));
+        });
       });
     });
 

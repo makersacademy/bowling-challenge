@@ -19,9 +19,14 @@ Player.prototype.firstRoll = function (frameNumber) {
   var roll = this.rollScoreGenerator(10);
   this.currentFrame = new Frame(roll, frameNumber, this.playerSS);
   if (roll === 10) {
-    this.currentFrame.update('pending');
-    this.rollCount++;
+    this.strikeCase()
   }
+};
+
+Player.prototype.strikeCase = function () {
+  this.currentFrame.update('pending');
+  this.rollCount++;
+  this.playerSS.pendingStrikes(this.currentFrame);
 };
 
 Player.prototype.secondRoll = function (frameNumber) {
@@ -34,6 +39,8 @@ Player.prototype.secondRoll = function (frameNumber) {
 Player.prototype.rollScoreGenerator = function(pinsLeft){
   return Math.floor(Math.random() * (pinsLeft + 1));
 };
+
+
 
 
 // Player.prototype.roll = function () {

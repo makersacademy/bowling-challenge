@@ -26,6 +26,7 @@ Game.prototype.spareRollOwed = function (rollScore) {
     var updatedSecondRoll = (10 - lastFrame[0] + rollScore)
     this.scoreSheet[this.currentFrameNumber - 1] = [lastFrame[0], updatedSecondRoll];
   }
+
 };
 
 Game.prototype.isSpareOwed = function () {
@@ -66,9 +67,9 @@ Game.prototype.updateScoresheet = function (rollScore) {
 
 
 Game.prototype.frameScore = function (frameNo) {
-  var thisFrameScore = this.scoreSheet[frameNo].reduce(function(a, b) {
-    return a + b;
-  });
+  var thisFrame = this.scoreSheet[frameNo]
+  var thisFrameScore = thisFrame[0] + thisFrame[1]
+
   return thisFrameScore;
 };
 
@@ -103,5 +104,7 @@ Game.prototype.isStrike = function (rollScore) {
 
 Game.prototype.isReadyForBonusScore = function (rollScore) {
   return (rollScore !== 'pending') &&
-  (this.consecutiveStrikes >= 1);
+  (this.consecutiveStrikes >= 1) &&
+  (this.scoreSheet[this.currentFrameNumber].length === 2) &&
+  !this.isSpareOwed(rollScore);
 };

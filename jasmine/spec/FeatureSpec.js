@@ -201,22 +201,7 @@ describe("Feature", function(){
     });
 
     it("ten rounds normal", function(){
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
+      eightNormalRolls(bowling)
       bowling.pinsHit(5);
       bowling.pinsHit(2);
       bowling.pinsHit(5);
@@ -225,22 +210,7 @@ describe("Feature", function(){
     });
 
     it("ten rounds normal with final strike", function(){
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
+      eightNormalRolls(bowling)
       bowling.pinsHit(5);
       bowling.pinsHit(2);
       bowling.pinsHit(10);
@@ -250,22 +220,7 @@ describe("Feature", function(){
     });
 
     it("ten rounds normal with final spare", function(){
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
+      eightNormalRolls(bowling)
       bowling.pinsHit(5);
       bowling.pinsHit(2);
       bowling.pinsHit(5);
@@ -275,22 +230,7 @@ describe("Feature", function(){
     });
 
     it("ten rounds normal with final strike, strike", function(){
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
+      eightNormalRolls(bowling)
       bowling.pinsHit(10);
       bowling.pinsHit(10);
       bowling.pinsHit(5);
@@ -299,22 +239,7 @@ describe("Feature", function(){
     });
 
     it("ten rounds normal with final spare, strike", function(){
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
+      eightNormalRolls(bowling)
       bowling.pinsHit(5);
       bowling.pinsHit(5);
       bowling.pinsHit(10);
@@ -324,22 +249,7 @@ describe("Feature", function(){
     });
 
     it("ten rounds normal with final spare, spare", function(){
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
+      eightNormalRolls(bowling)
       bowling.pinsHit(5);
       bowling.pinsHit(5);
       bowling.pinsHit(5);
@@ -349,22 +259,7 @@ describe("Feature", function(){
     });
 
     it("ten rounds normal with final strike, spare", function(){
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
-      bowling.pinsHit(5);
-      bowling.pinsHit(2);
+      eightNormalRolls(bowling)
       bowling.pinsHit(10);
       bowling.pinsHit(5);
       bowling.pinsHit(5);

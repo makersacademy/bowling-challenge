@@ -54,6 +54,20 @@ describe('JavaScript Bowling Game', function(){
    expect(game.score()).toBe(300); 
   });
 
+  it('can return a score after a normal frame', function(){
+  
+    rollMany(3, 2);
+    expect(game.score()).toBe(6);
+  });
+
+  it('can return the correct score after one strike and a normal frame', function(){
+    game.roll(10);
+    game.roll(3);
+    game.roll(6);
+    expect(game.score()).toBe(28);
+  
+  });
+
   var rollMany = function (pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

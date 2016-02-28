@@ -1,7 +1,8 @@
 function Frame {
-  this.rollCount = 0
+  this.rollCount = 0;
   this.currentPinsAvailable = 10;
-  this.frameScores = []
+  this.frameScores = [];
+  this.currentFrameNumber =
 }
 
 Frame.prototype.firstRoll = function (rollScore) {
@@ -10,79 +11,37 @@ Frame.prototype.firstRoll = function (rollScore) {
   if (this.currentFrameNumber > 1) {
     this.spareRollOwed(rollScore);
   }
-
   this.wipePins(rollScore);
 };
-
 
 
 Frame.prototype.wipePins = function (rollScore) {
   this.currentPinsAvailable -= rollScore;
 };
 
-Game.prototype.finishFrame = function (rollScore) {
+Frame.prototype.isFrameOver = function () {
+  return this.rollCount === 2 || this.currentPinsAvailable === 0;
+};
+
+Frame.prototype.finishFrame = function (rollScore) {
     this.updateScoresheet(rollScore);
     this.currentPinsAvailable = 10;
 };
 
-
-Game.prototype.updateScoresheet = function (rollScore) {
-    if (this.isStrike(rollScore)) {
-      this.consecutiveStrikes +=1;
-      this.scoreSheet[this.currentFrameNumber].push('X');
-      this.finishFrame('pending')
-  } else if (this.isSpare(rollScore)){
-      this.scoreSheet[this.currentFrameNumber].push('/');
+Frame.prototype.resetRollCount = function () {
+  if (this.isFrameOver()){
+    this.rollCount = 0
   } else {
-      this.scoreSheet[this.currentFrameNumber].push(rollScore)
-      if (this.isReadyForBonusScore(rollScore)){
-        this.factorInStrikes(this.consecutiveStrikes)
-      }
-
+    this.rollCount = 1
   }
 };
 
 
-
-Game.prototype.frameScore = function (frameNo) {
-  var thisFrame = this.scoreSheet[frameNo]
-  var thisFrameScore = thisFrame[0] + thisFrame[1]
-
-  return thisFrameScore;
-};
-
-
-Game.prototype.factorInStrikes = function (consecutiveStrikes) {
-  var frameNumber = this.currentFrameNumber;
-  this.scoreSheet[frameNumber - 1] = [10, this.frameScore(frameNumber)];
-
-  if (consecutiveStrikes === 2) {
-    this.scoreSheet[frameNumber - 2] = [10, this.frameScore(frameNumber - 1)]
-  } else {
-    var i = frameNumber -3
-    for ( i ; i === consecutiveStrikes - 2; i--) {
-        this.scoreSheet[i] = [10, 20];
-      }
-    }
-  this.consecutiveStrikes = 0;
-};
-
-// Game.prototype.factorInSpares = function () {
-//
-// };
-
-Game.prototype.isSpare = function (rollScore) {
+Frame.prototype.isSpare = function (rollScore) {
   return (this.currentPinsAvailable - rollScore === 0) &&
   this.scoreSheet[this.currentFrameNumber].length === 1
 };
 
-Game.prototype.isStrike = function (rollScore) {
+Frame.prototype.isStrike = function (rollScore) {
   return rollScore === 10
-};
-
-Game.prototype.isReadyForBonusScore = function (rollScore) {
-  return (rollScore !== 'pending') &&
-  (this.consecutiveStrikes >= 1) &&
-  (this.scoreSheet[this.currentFrameNumber].length === 2) &&
-  !this.isSpareOwed(rollScore);
 };

@@ -16,18 +16,6 @@ Player.prototype.roll = function () {
 };
 
 
-Player.prototype.isFrameOver = function () {
-  return this.rollCount === 2 || this.playerGame.pinsAvailable === 0;
-};
-
-Player.prototype.resetRollCount = function () {
-  if (this.isFrameOver()){
-    this.rollCount = 0
-  } else {
-    this.rollCount = 1
-  }
-};
-
 Player.prototype.rollScoreGenerator = function(pins){
   return Math.floor(Math.random() * (pins + 1));
 };

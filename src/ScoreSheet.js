@@ -9,6 +9,50 @@ function ScoreSheet(player) {
   this.consecutiveStrikes = 0;
 }
 
+ScoreSheet.prototype.update = function (rollScore) {
+    if (this.isStrike(rollScore)) {
+      this.consecutiveStrikes +=1;
+      this.scoreSheet[this.currentFrameNumber].push('X');
+      this.finishFrame('pending')
+  } else if (this.isSpare(rollScore)){
+      this.scoreSheet[this.currentFrameNumber].push('/');
+  } else {
+      this.scoreSheet[this.currentFrameNumber].push(rollScore)
+      if (this.isReadyForBonusScore(rollScore)){
+        this.factorInStrikes(this.consecutiveStrikes)
+      }
+
+  }
+};
+
+ScoreSheet.prototype.lookupFrameScore = function (frameNo) {
+  var thisFrame = this.scoreSheet[frameNo]
+  var thisFrameScore = thisFrame[0] + thisFrame[1]
+  return thisFrameScore;
+};
+
+ScoreSheet.prototype.isReadyForBonusScore = function (rollScore) {
+  return (rollScore !== 'pending') &&
+  (this.consecutiveStrikes >= 1) &&
+  (this.scoreSheet[this.currentFrameNumber].length === 2) &&
+  !this.isSpareOwed(rollScore);
+};
+
+ScoreSheet.prototype.factorInStrikes = function (consecutiveStrikes) {
+  var frameNumber = this.currentFrameNumber;
+  this.scoreSheet[frameNumber - 1] = [10, this.frameScore(frameNumber)];
+
+  if (consecutiveStrikes === 2) {
+    this.scoreSheet[frameNumber - 2] = [10, this.frameScore(frameNumber - 1)]
+  } else {
+    var i = frameNumber -3
+    for ( i ; i === consecutiveStrikes - 2; i--) {
+        this.scoreSheet[i] = [10, 20];
+      }
+    }
+  this.consecutiveStrikes = 0;
+};
+
 ScoreSheet.prototype.spareRollOwed = function (rollScore) {
   var lastFrame = this.getLastFrame()
   if (this.isSpareOwed()) {

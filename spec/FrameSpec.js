@@ -1,4 +1,4 @@
-describe("Game", function() {
+describe("Frame", function() {
   var player;
   var game;
   var rollScoreFive;

@@ -2,6 +2,7 @@ function Frame() {
   this.rolls = [];
   this.rollsLimit = 2;
   this.bonus = null;
+  this.score = 0;
 }
 
 Frame.prototype.addRoll = function (pinsKnocked) {
@@ -17,20 +18,24 @@ Frame.prototype.addRoll = function (pinsKnocked) {
 
 Frame.prototype.isSpare = function () {
   if (this.rolls[0] + this.rolls[1] === 10) {
-    return true;
-  }
-  return false;
+      this.bonus = "spare";
+  } else {
+    this.bonus = null;
+ }
 };
 
 Frame.prototype.isStrike = function () {
   if (this.rolls[0] === 10) {
-    return true;
-  }
-  return false;
+     this.bonus = "strike";
+     return this.bonus;
+  } else {
+   this.bonus = null;
+   return this.bonus;
+ }
 };
 
-Frame.prototype.score = function () {
+Frame.prototype.calcScore = function () {
   var total = 0;
   for (var i in this.rolls) { total += this.rolls[i]; }
-  return total;
+  this.score = total;
 };

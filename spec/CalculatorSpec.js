@@ -24,4 +24,12 @@ describe("Game", function() {
     }
     expect(function() {game.addFrame(0,0)}).toThrowError(TypeError, "Can't add over ten frames");
   });
+
+  it ("calculates score correctly without strikes or spares", function(){
+    for(var i = 0; i < 5; i ++){
+      game.addFrame(1,6);
+      game.addFrame(4,3);
+    }
+    expect(game.calculateScore()).toEqual(70);
+  });
 });

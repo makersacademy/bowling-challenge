@@ -96,7 +96,8 @@ describe("Player", function() {
       });
 
       it("will call to update the frame with 'pending' - strike", function(){
-        expect(frameMockSpy).toEqual(jasmine.objectContaining({}));
+        expect(playerGood.currentFrame)
+          .toEqual(jasmine.objectContaining({'rollScores': ['X','pending']}));
       });
     });
 

@@ -25,7 +25,6 @@ Player.prototype.firstRoll = function (frameNumber) {
 };
 
 Player.prototype.secondRoll = function (frameNumber) {
-
   var pinsLeft = this.currentFrame.pinsAvailable
   var roll = this.rollScoreGenerator(pinsLeft);
   this.currentFrame.update(roll)

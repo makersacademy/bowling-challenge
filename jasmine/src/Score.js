@@ -5,19 +5,7 @@ Score.prototype.calculateChosen = function(frames, chosenFrame) {
   var chosenScore = 0;
   for (i=1; i <= (chosenFrame); i++) {
     if (this.isStrike(frames[i])) {
-      if (i === 10) {
-        chosenScore = chosenScore + this.frameTotal(frames[i]) + frames[i][2];
-      } else {
-        if (this.isStrike(frames[i + 1])) {
-          if ( i === 9){
-            chosenScore = chosenScore + this.frameTotal(frames[i]) + frames[i+1][0] + frames[i+1][1];
-          } else {
-            chosenScore = chosenScore + this.frameTotal(frames[i]) + frames[i+1][0] + frames[i+2][0];
-          }
-        } else {
-          chosenScore = chosenScore + this.frameTotal(frames[i]) + this.frameTotal(frames[i+1]);
-        }
-      }
+      chosenScore = chosenScore + this.strikeFunctionality(frames, i);
     } else if (this.isSpare(frames[i])) {
       if (i === 10) {
         chosenScore = chosenScore + this.frameTotal(frames[i]) + frames[i][2];
@@ -62,4 +50,20 @@ Score.prototype.isStrike = function(frame) {
 
 Score.prototype.isSpare = function(frame) {
   return (this.frameTotal(frame) === 10 && !(this.isStrike(frame)));
+};
+
+Score.prototype.strikeFunctionality = function(frames, i) {
+  if (i === 10) {
+    return (this.frameTotal(frames[i]) + frames[i][2]);
+  } else {
+    if (this.isStrike(frames[i + 1])) {
+      if ( i === 9){
+        return (this.frameTotal(frames[i]) + frames[i+1][0] + frames[i+1][1]);
+      } else {
+        return (this.frameTotal(frames[i]) + frames[i+1][0] + frames[i+2][0]);
+      }
+    } else {
+      return (this.frameTotal(frames[i]) + this.frameTotal(frames[i+1]));
+    }
+  }
 };

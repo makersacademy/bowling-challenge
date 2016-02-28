@@ -18,8 +18,19 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 Technologies
 ------------
 
-* JaaScript, Jasmine, HTML/CSS. 
+* JavaScript, Jasmine, HTML/CSS. 
+
+Instructions 
+------------
 
 ```
+$ git clone https://github.com/MarcoCode/bowling-challenge.git
+    
+    or 
+
+$ git clone git@github.com:MarcoCode/bowling-challenge.git
+
+$ cd bowling-challenge 
+$ open index.html
 
 ```

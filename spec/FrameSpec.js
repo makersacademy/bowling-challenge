@@ -112,20 +112,20 @@ describe("Frame", function(){
   });
 
   describe("#total", function(){
+    var frameBGame;
 
     beforeEach(function(){
       frameB.update(rollFive);
       frameA.update(rollSeven);
       frameC.update('pending');
-      spyOn(frameC, 'game');
     });
 
-    xit("defers to the scoreSheet to calculate strikes and spares", function(){
-      frameC.total();
-      expect(frameC.game).toHaveBeenCalled();
+    it("defers to the scoreSheet to calculate strikes and spares", function(){
+      frameB.total();
+      expect(game.pendingSpare).toHaveBeenCalled();
     });
 
-    xit("adds up frame scores when not a strike or spare", function(){
+    it("adds up frame scores when not a strike or spare", function(){
       expect(frameA.total()).toEqual(rollZero + rollSeven);
     });
 

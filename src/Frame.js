@@ -17,14 +17,14 @@ Frame.prototype.isStrike = function (roll) {
 };
 
 Frame.prototype.isSpare = function (roll) {
-  return (roll !== 'pending') && (this.total(roll) === 10)
+  return (this.total(roll) === 10) && (roll !== 'pending')
 };
 
 Frame.prototype.total = function (roll) {
-  if (this.rollScores[1] === "/"){
-    this.game.pendingSpare(this)
-  } else {
-    var toAdd =  roll || this.rollScores[1] || 0
-    return this.rollScores[0] + toAdd
-  }
+    var toAdd =  roll || this.rollScores[1] || 0;
+    var added = this.rollScores[0] + toAdd
+    if ( added === 10){
+      this.game.pendingSpare(this);
+    }
+  return added;
 };

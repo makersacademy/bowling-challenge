@@ -19,18 +19,9 @@ Score.prototype.createScoreArray = function(frames, currentFrame) {
   var scores = [];
   for (j=1; j <= (currentFrame-1); j++) {
     if (j === 10) {
-      scores.push(this.calculateChosen(frames, j));
-      scores[8] = this.calculateChosen(frames, j-1)
+      this.frameTenScores(frames, j, scores);
     } else {
-      if (this.isStrike(frames[j]) && j === (currentFrame-1)) {
-        scores.push('x');
-      } else if (this.isSpare(frames[j]) && j === (currentFrame-1)) {
-        scores.push('/');
-      } else if (this.isStrike(frames[j]) && this.isStrike(frames[j+1]) && j === (currentFrame-2)) {
-        scores.push('x');
-      } else{
-        scores.push(this.calculateChosen(frames, j));
-      }
+      this.normalFrameScores(frames, j, currentFrame, scores)
     }
   };
   return scores;
@@ -77,5 +68,22 @@ Score.prototype.normalFrameStrike = function(frames, i){
     return this.multipleStrikes(frames, i)
   } else {
     return (this.frameTotal(frames[i]) + this.frameTotal(frames[i+1]));
+  }
+};
+
+Score.prototype.frameTenScores = function(frames, j, scores){
+  scores[8] = this.calculateChosen(frames, j-1);
+  scores.push(this.calculateChosen(frames, j));
+};
+
+Score.prototype.normalFrameScores = function(frames, j, currentFrame, scores){
+  if (this.isStrike(frames[j]) && j === (currentFrame-1)) {
+    scores.push('x');
+  } else if (this.isSpare(frames[j]) && j === (currentFrame-1)) {
+    scores.push('/');
+  } else if (this.isStrike(frames[j]) && this.isStrike(frames[j+1]) && j === (currentFrame-2)) {
+    scores.push('x');
+  } else{
+    scores.push(this.calculateChosen(frames, j));
   }
 };

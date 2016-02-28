@@ -49,7 +49,7 @@ $(document).ready(function() {
 
   $(".pinButton").click(function() {
     count = count+1;
-
+    // Display pins hit
     for (i=1; i <= count; i ++) {
       if (i%2 === 0) {j=1}else{j=0}
       if (i === 21) {
@@ -63,6 +63,8 @@ $(document).ready(function() {
         }
       }
     }
+
+    // display scores
     var scoreArray = []
     if (i < 20) {
       scoreArray = score.createScoreArray(bowling.frames,(Math.ceil(count/2)+1));
@@ -81,11 +83,26 @@ $(document).ready(function() {
         }
       }
     }
+
+    // hide unecessary buttons
+    if (count%2 != 0 && count < 21){
+      hiddenPins = 10 -(bowling.frames[Math.ceil(count/2)][0]);
+      for (i = (hiddenPins+1); i <= 10; i ++) {
+        if (count === 19 && bowling.frames[Math.ceil(count/2)][0] === 10){} else{
+          $('#' + i).css('visibility', 'hidden');
+        }
+      };
+    } else {
+      for (i = 1; i <= 10; i ++) {
+        $('#' + i).css('visibility', 'visible');
+      };
+    }
+
   });
 
   $('#playAgain').click(function() {
     location.reload();
-});
+  });
 
 
 });

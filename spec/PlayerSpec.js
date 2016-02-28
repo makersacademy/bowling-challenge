@@ -12,7 +12,7 @@ describe("Player", function() {
 
   beforeEach(function(){
     scoreSheet = jasmine
-      .createSpyObj('scoreSheet', ['player', 'scoreCard', 'pendingSpare', 'pendingStrikes']);
+      .createSpyObj('scoreSheet', ['player', 'scoreCard', 'pendingSpare', 'consecutiveStrikes', 'updateSpare']);
     frameMockSpy = jasmine
       .createSpyObj('frameMockSpy', ['pinsAvailable', 'number', 'rollScores', 'update']);
 
@@ -106,9 +106,9 @@ describe("Player", function() {
           expect(playerGood.rollCount).toEqual(2);
         });
 
-        it("will call to update the frame with 'pending' - strike", function(){
+        it("will not update on the second roll - strike", function(){
           expect(playerGood.currentFrame)
-            .toEqual(jasmine.objectContaining({'rollScores': ['X','pending']}));
+            .toEqual(jasmine.objectContaining({'game': scoreSheet, 'rollScores': ['X', "pending"]}));
         });
       });
     });

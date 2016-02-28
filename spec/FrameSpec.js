@@ -22,7 +22,7 @@ describe("Frame", function(){
   describe("#Constructor", function(){
 
   beforeEach(function(){
-    game = jasmine.createSpyObj('game', ['pendingSpare'])
+    game = jasmine.createSpyObj('game', ['pendingSpare', 'updateSpare'])
     spyOn(Frame.prototype, 'isStrike').and.callThrough();
     frameA = new Frame(rollZero, 1, game);
     frameB = new Frame(rollFive, 2, game);
@@ -128,7 +128,6 @@ describe("Frame", function(){
     it("adds up frame scores when not a strike or spare", function(){
       expect(frameA.total()).toEqual(rollZero + rollSeven);
     });
-
 
   });
 });

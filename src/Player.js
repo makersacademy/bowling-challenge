@@ -18,15 +18,16 @@ Player.prototype.roll = function () {
 Player.prototype.firstRoll = function (frameNumber) {
   var roll = this.rollScoreGenerator(10);
   this.currentFrame = new Frame(roll, frameNumber, this.playerSS);
-  if (roll === 10) {
-    this.strikeCase()
-  }
+  if (roll === 10)
+    { this.strikeCase() }
+  if (this.playerSS.spareRollOwed !== null)
+    { roll = this.playerSS.updateSpare(roll)}
 };
 
 Player.prototype.strikeCase = function () {
   this.currentFrame.update('pending');
   this.rollCount++;
-  this.playerSS.pendingStrikes(this.currentFrame);
+  this.playerSS.consecutiveStrikes(this.currentFrame);
 };
 
 Player.prototype.secondRoll = function (frameNumber) {

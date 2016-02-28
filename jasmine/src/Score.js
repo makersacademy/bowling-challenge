@@ -7,11 +7,7 @@ Score.prototype.calculateChosen = function(frames, chosenFrame) {
     if (this.isStrike(frames[i])) {
       chosenScore = chosenScore + this.strikeFunctionality(frames, i);
     } else if (this.isSpare(frames[i])) {
-      if (i === 10) {
-        chosenScore = chosenScore + this.frameTotal(frames[i]) + frames[i][2];
-      } else {
-        chosenScore = chosenScore + this.frameTotal(frames[i]) + frames[i+1][0];
-      }
+      chosenScore = chosenScore + this.spareFunctionality(frames, i)
     } else {
       chosenScore = chosenScore + this.frameTotal(frames[i]);
     }
@@ -65,5 +61,13 @@ Score.prototype.strikeFunctionality = function(frames, i) {
     } else {
       return (this.frameTotal(frames[i]) + this.frameTotal(frames[i+1]));
     }
+  }
+};
+
+Score.prototype.spareFunctionality = function(frames, i){
+  if (i === 10) {
+    return (this.frameTotal(frames[i]) + frames[i][2]);
+  } else {
+    return (this.frameTotal(frames[i]) + frames[i+1][0]);
   }
 };

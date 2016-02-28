@@ -17,4 +17,9 @@ describe('BowlingGame', function() {
     rollMany(20, 0);
     expect(game.score()).toEqual(0);
   });
+
+  it('can roll all ones', function() {
+    rollMany(20, 1);
+    expect(game.score()).toEqual(20);
+  });
 });

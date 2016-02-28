@@ -15,7 +15,6 @@ Game.prototype.score = function () {
   var toScore = (tenth) ? tenth + 1 : this.rolls.length;
 
   for (i = 0; i < toScore; i += 1) {
-    console.log(this.isSpare(i));
     if (this.isStrike(i)) {
       score += 10 + this.rolls[i + 1] + this.rolls[i + 2];
     } else if (this.isSpare(i)) {

@@ -20,7 +20,7 @@ describe('BowlingGame', function(){
   describe('#getFrame', function(){
     it('returns the frame number', function(){
       game.currentFrame = 5;
-      expect(game.currenFrame()).toBe(5);
+      expect(game.currentFrame()).toBe(5);
     });
   });
 
@@ -47,12 +47,6 @@ describe('BowlingGame', function(){
       game.roll(5);
       game.roll(3);
       expect(game.currentFrame).toBe(frame + 1);
-    });
-    it('calls final frame method for 10th frame', function(){
-      spyOn(game, "_finalFrame")
-        game.currentFrame = 10;
-      game.roll(3);
-      expect(game._finalFrame()).toBeCalled();
     });
   });
 });

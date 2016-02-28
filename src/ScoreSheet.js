@@ -8,6 +8,7 @@ function ScoreSheet(player) {
   this.consecutiveStrikes = 0;
 }
 
+
 // function Game(){
 //   this.scorecard = [];
 //   this.frame = new Frame();
@@ -32,28 +33,14 @@ function ScoreSheet(player) {
 //   console.log(this.scorecard);
 // };
 
-// ScoreSheet.prototype.update = function (rollScore) {
-//     if (this.isStrike(rollScore)) {
-//       this.consecutiveStrikes +=1;
-//       this.scoreSheet[this.currentFrameNumber].push('X');
-//       this.finishFrame('pending')
-//   } else if (this.isSpare(rollScore)){
-//       this.scoreSheet[this.currentFrameNumber].push('/');
-//   } else {
-//       this.scoreSheet[this.currentFrameNumber].push(rollScore)
-//       if (this.isReadyForBonusScore(rollScore)){
-//         this.factorInStrikes(this.consecutiveStrikes)
-//       }
-//
-//   }
-// };
+
 //
 // ScoreSheet.prototype.lookupFrameScore = function (frameNo) {
 //   var thisFrame = this.scoreSheet[frameNo]
 //   var thisFrameScore = thisFrame[0] + thisFrame[1]
 //   return thisFrameScore;
 // };
-//
+// 
 // ScoreSheet.prototype.isReadyForBonusScore = function (rollScore) {
 //   return (rollScore !== 'pending') &&
 //   (this.consecutiveStrikes >= 1) &&

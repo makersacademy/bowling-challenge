@@ -17,7 +17,7 @@ Player.prototype.roll = function () {
 
 Player.prototype.firstRoll = function (frameNumber) {
   var roll = this.rollScoreGenerator(10);
-  this.currentFrame = new Frame(roll, frameNumber);
+  this.currentFrame = new Frame(roll, frameNumber, this.playerSS);
   if (roll === 10) {
     this.currentFrame.update('pending');
     this.rollCount++;

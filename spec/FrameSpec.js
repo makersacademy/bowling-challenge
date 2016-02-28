@@ -48,7 +48,7 @@ describe("Frame", function(){
       });
 
     it("records a strike with a 'x' as the first roll", function(){
-      expect(frameC.rollScores).toEqual(['X'])
+      expect(frameC.rollScores).toEqual(['X']);
     });
 
 
@@ -59,29 +59,72 @@ describe("Frame", function(){
     });
 
     it("has a frame number which defaults to one", function (){
-      expect(frameA.number).toEqual(1)
-      expect(frameB.number).toEqual(2)
+      expect(frameA.number).toEqual(1);
+      expect(frameB.number).toEqual(2);
     });
 
 
     describe("#update", function(){
 
       beforeEach(function(){
-        frameA.update(rollSeven)
-        frameB.update(rollThree)
-        frameC.update()
+        spyOn(frameA, 'isSpare');
+        frameA.update(rollSeven);
+        frameB.update(rollFive);
       });
 
       it("updates the rollScores with the new roll", function(){
         expect(frameA.rollScores).toContain(rollZero, rollSeven);
-        expect(frameB.rollScores).toContain(rollFive, rollThree);
       });
 
-      // it("will always receive 0 if first roll was a strike", function(){
-      //   expect(frameC.rollScores).toContain();
-      // });
+      it("checks if there was a spare", function(){
+        expect(frameA.isSpare).toHaveBeenCalledWith(rollSeven);
+      });
 
-      it("checks if there was a spare")
+      it("updates the rollScores with a '/' when spare detected", function(){
+        expect(frameB.rollScores).toContain(rollFive, '/');
+      });
     });
+  });
+
+  describe("#isSpare", function(){
+
+    it("returns false if the past roll was a strike", function(){
+      expect(frameC.isSpare('pending')).toBeFalsy();
+    });
+
+    it("returns false if the total for the frame is not 10", function(){
+      expect(frameB.isSpare(rollThree)).toBeFalsy();
+    });
+
+    it("returns true if the total for the frame is 10", function(){
+      expect(frameB.isSpare(rollFive)).toBeTruthy();
+    });
+
+    it("checks the total for the frame", function(){
+      spyOn(frameB, 'total');
+      frameB.isSpare(rollFive);
+      expect(frameB.total).toHaveBeenCalledWith(rollFive);
+    });
+  });
+
+  describe("#total", function(){
+
+    beforeEach(function(){
+      frameB.update(rollFive);
+      frameA.update(rollSeven);
+      frameC.update('pending');
+      spyOn(frameC, 'game');
+    });
+
+    it("defers to the scoreSheet to calculate strikes and spares", function(){
+      frameC.total();
+      expect(frameC.game).toHaveBeenCalled();
+    });
+
+    it("adds up frame scores when not a strike or spare", function(){
+      expect(frameA.total()).toEqual(rollZero + rollSeven);
+    });
+
+
   });
 });

@@ -1,4 +1,5 @@
-function Frame (roll, frameNumber) {
+function Frame (roll, frameNumber, game) {
+  this.game = game
   this.pinsAvailable = 10 - roll;
   this.rollScores = this.isStrike(roll) ? ['X'] : [roll];
   this.number = frameNumber || 1
@@ -16,19 +17,14 @@ Frame.prototype.isStrike = function (roll) {
 };
 
 Frame.prototype.isSpare = function (roll) {
-  return (this.rollScores[0] !== 'X') && (this.total(roll) === 10)
+  return (roll !== 'pending') && (this.total(roll) === 10)
 };
 
 Frame.prototype.total = function (roll) {
-  return this.rollScores[0] + (roll || this.rollScores[1])
+  if (typeof this.rollScores[1] === "string"){
+    // this.game.bonusCalculator()
+  } else {
+    var toAdd =  roll || this.rollScores[1] || 0
+    return this.rollScores[0] + toAdd
+  }
 };
-
-
-
-//
-//
-// Frame.prototype.isSpare = function (rollScore) {
-//   return (this.currentPinsAvailable - rollScore === 0) &&
-//   this.scoreSheet[this.currentFrameNumber].length === 1
-// };
-//

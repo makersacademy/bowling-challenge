@@ -52,11 +52,7 @@ Score.prototype.strikeFunctionality = function(frames, i) {
   if (i === 10) {
     return (this.frameTotal(frames[i]) + frames[i][2]);
   } else {
-    if (this.isStrike(frames[i + 1])) {
-      return this.multipleStrikes(frames, i)
-    } else {
-      return (this.frameTotal(frames[i]) + this.frameTotal(frames[i+1]));
-    }
+    return this.normalFrameStrike(frames, i)
   }
 };
 
@@ -73,5 +69,13 @@ Score.prototype.multipleStrikes = function(frames, i){
     return (this.frameTotal(frames[i]) + frames[i+1][0] + frames[i+1][1]);
   } else {
     return (this.frameTotal(frames[i]) + frames[i+1][0] + frames[i+2][0]);
+  }
+};
+
+Score.prototype.normalFrameStrike = function(frames, i){
+  if (this.isStrike(frames[i + 1])) {
+    return this.multipleStrikes(frames, i)
+  } else {
+    return (this.frameTotal(frames[i]) + this.frameTotal(frames[i+1]));
   }
 };

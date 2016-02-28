@@ -1,2 +1,0 @@
-describe Bowling do
-end

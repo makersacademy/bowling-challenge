@@ -1,6 +1,8 @@
 'use strict';
 
-function Game() {
+function Game(frameKlass, lastFrameKlass) {
+  this._frameKlass = typeof frameKlass === 'undefined' ? Frame : frameKlass;
+  this._lastFrameKlass = typeof lastFrameKlass === 'undefined' ? LastFrame : lastFrameKlass;
   this._frames = [];
 }
 
@@ -30,7 +32,7 @@ Game.prototype.calculateScore = function () {
 Game.prototype._calculateBonus = function (i) {
   var bonus;
   var frames = this._frames;
-  
+
   if (frames[i].isAStrike()) {
     bonus = this._strikeBonus(i);
   } else if (frames[i].isASpare()) {
@@ -73,9 +75,9 @@ Game.prototype._newFrame = function () {
   var frame;
 
   if (this._frames.length === 9) {
-    frame = new LastFrame();
+    frame = new this._lastFrameKlass();
   } else {
-    frame = new Frame();
+    frame = new this._frameKlass();
   }
   this._frames.push(frame);
   return frame;

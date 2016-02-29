@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Frame', function () {
+describe('LastFrame', function () {
   var frame;
 
   beforeEach(function () {
@@ -9,14 +9,14 @@ describe('Frame', function () {
 
   describe('#roll', function () {
     it('logs a roll for the frame', function () {
-      this.rollMany(frame, 1, 5);
+      this.rollMany.call(frame, 1, 5);
       expect(frame.getRoll(1)).toEqual(5);
     });
 
     describe('if player has NOT rolled a strike or a spare', function () {
       describe('if player already rolled twice', function () {
         it('throws an exception', function () {
-          this.rollMany(frame, 2, 3);
+          this.rollMany.call(frame, 2, 3);
           var thirdRoll = function () {
             frame.roll(2);
           };
@@ -38,7 +38,7 @@ describe('Frame', function () {
     describe('if the player has rolled a strike or a spare', function () {
       describe('if player already rolled three times', function () {
         it('throws an exception', function () {
-          this.rollMany(frame, 3, 5);
+          this.rollMany.call(frame, 3, 5);
           var thirdRoll = function () {
             frame.roll(2);
           };
@@ -47,7 +47,7 @@ describe('Frame', function () {
       });
 
       it('resets the pins for bonus rolls', function () {
-        this.rollMany(frame, 2, 10);
+        this.rollMany.call(frame, 2, 10);
         var thirdStrike = function () {
           frame.roll(10);
         };
@@ -58,7 +58,7 @@ describe('Frame', function () {
 
   describe('#getRoll', function () {
     it('returns the outcome of a given roll', function () {
-      this.rollMany(frame, 2, 5);
+      this.rollMany.call(frame, 2, 5);
       frame.roll(1);
       expect(frame.getRoll(3)).toEqual(1);
     });
@@ -68,14 +68,14 @@ describe('Frame', function () {
     describe('if player has NOT rolled a strike or a spare', function () {
       describe('and has NOT rolled twice', function () {
         it('returns false', function () {
-          this.rollMany(frame, 1, 2);
+          this.rollMany.call(frame, 1, 2);
           expect(frame.isComplete()).toBeFalsy();
         });
       });
 
       describe('and has rolled twice', function () {
         it('returns true', function () {
-          this.rollMany(frame, 2, 2);
+          this.rollMany.call(frame, 2, 2);
           expect(frame.isComplete()).toBeTruthy();
         });
       });
@@ -84,14 +84,14 @@ describe('Frame', function () {
     describe('if the player has rolled a strike or a spare', function () {
       describe('and has NOT rolled three times', function () {
         it('returns false', function () {
-          this.rollMany(frame, 2, 10);
+          this.rollMany.call(frame, 2, 10);
           expect(frame.isComplete()).toBeFalsy();
         });
       });
 
       describe('and has rolled three times', function () {
         it('returns true', function () {
-          this.rollMany(frame, 3, 5);
+          this.rollMany.call(frame, 3, 5);
           expect(frame.isComplete()).toBeTruthy();
         });
       });
@@ -117,14 +117,14 @@ describe('Frame', function () {
   describe('#isASpare', function () {
     describe('if the player has rolled a spare', function () {
       it('returns true', function () {
-        this.rollMany(frame, 2, 5);
+        this.rollMany.call(frame, 2, 5);
         expect(frame.isASpare()).toBeTruthy();
       });
     });
 
     describe('if the player has NOT rolled a spare', function () {
       it('returns false', function () {
-        this.rollMany(frame, 2, 2);
+        this.rollMany.call(frame, 2, 2);
         expect(frame.isASpare()).toBeFalsy();
       });
     });

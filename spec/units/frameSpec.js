@@ -9,13 +9,13 @@ describe('Frame', function () {
 
   describe('#roll', function () {
     it('logs a roll for the frame', function () {
-      this.rollMany(frame, 1, 5);
+      this.rollMany.call(frame, 1, 5);
       expect(frame.getRoll(1)).toEqual(5);
     });
 
     describe('if player already rolled twice', function () {
       it('throws an exception', function () {
-        this.rollMany(frame, 2, 2);
+        this.rollMany.call(frame, 2, 2);
         var invalidRoll = function (pins) {
           frame.roll(2);
         };
@@ -45,7 +45,7 @@ describe('Frame', function () {
   describe('#isComplete', function () {
     describe('if the player has rolled twice', function () {
       it('returns true', function () {
-        this.rollMany(frame, 2, 2);
+        this.rollMany.call(frame, 2, 2);
         expect(frame.isComplete()).toBeTruthy();
       });
     });
@@ -84,14 +84,14 @@ describe('Frame', function () {
   describe('#isASpare', function () {
     describe('if the player has rolled a spare', function () {
       it('returns true', function () {
-        this.rollMany(frame, 2, 5);
+        this.rollMany.call(frame, 2, 5);
         expect(frame.isASpare()).toBeTruthy();
       });
     });
 
     describe('if the player has NOT rolled a spare', function () {
       it('returns false', function () {
-        this.rollMany(frame, 2, 2);
+        this.rollMany.call(frame, 2, 2);
         expect(frame.isASpare()).toBeFalsy();
       });
     });
@@ -106,7 +106,7 @@ describe('Frame', function () {
 
   describe('#getScore', function () {
     it('returns the sum of rolls', function () {
-      this.rollMany(frame, 2, 3);
+      this.rollMany.call(frame, 2, 3);
       expect(frame.getScore()).toEqual(6);
     });
   });

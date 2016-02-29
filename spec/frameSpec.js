@@ -1,7 +1,5 @@
 describe('Frame', function() {
   var frame;
-  var pins1 = 1, pins2 = 2, pins3 = 3;
-  var pins9 = 9, pins10 = 10;
 
   beforeEach(function() {
     frame = new Frame();
@@ -13,63 +11,93 @@ describe('Frame', function() {
     });
 
     it('records the first roll', function() {
-      frame.addRoll(pins1);
-      expect(frame.rolls).toContain(pins1);
+      frame.addRoll(1);
+      expect(frame.rolls).toContain(1);
     });
 
     it('records the first roll and the second roll', function() {
-      frame.addRoll(pins1);
-      frame.addRoll(pins2);
-      expect(frame.rolls).toContain(pins1);
-      expect(frame.rolls).toContain(pins2);
+      frame.addRoll(1);
+      frame.addRoll(2);
+      expect(frame.rolls).toContain(1);
+      expect(frame.rolls).toContain(2);
     });
 
     it('throws error if invalid roll total', function() {
-      frame.addRoll(pins9);
-      expect(function() {
-        frame.addRoll(pins2);
-      }).toThrowError("Invalid roll");
-      expect(frame.rolls).not.toContain(pins2);
+      frame.addRoll(9);
+      expect(function() { frame.addRoll(2); }).toThrowError("Invalid roll");
+      expect(frame.rolls).not.toContain(2);
     });
   });
 
-  describe('handling spares, #isSpare', function() {
-    it('correctly identifies non-spare roll', function() {
-      frame.addRoll(pins1);
-      frame.addRoll(pins2);
-      expect(frame.isSpare()).toBeFalsy();
+  describe('#isRollsComplete', function() {
+    it('is is false if only one roll', function() {
+      frame.addRoll(0);
+      expect(frame.isRollsComplete()).toBeFalsy();
     });
 
-    it('correctly identifies a spare roll', function() {
-      frame.addRoll(pins1);
-      frame.addRoll(pins9);
-      expect(frame.isSpare()).toBeTruthy();
+    it('is true after two rolls', function() {
+      frame.addRoll(0);
+      frame.addRoll(10);
+      expect(frame.isRollsComplete()).toBeTruthy();
     });
 
-    it('correctly identifies a strike is not a spare', function() {
-      frame.addRoll(pins10);
-      expect(frame.isSpare()).toBeFalsy();
+    it('is true after a strike roll', function() {
+      frame.addRoll(10);
+      expect(frame.isRollsComplete()).toBeTruthy();
     });
   });
 
-  describe('handling strikes, #isStrike', function() {
-    it('correctly identifies non-strike roll', function() {
-      frame.addRoll(pins1);
-      frame.addRoll(pins9);
-      expect(frame.isStrike()).toBeFalsy();
+  describe('bonusBalls property for spares and strikes', function() {
+    it('no bonusBalls for non-spare roll', function() {
+      frame.addRoll(1);
+      frame.addRoll(2);
+      expect(frame.bonusBalls).toEqual(0);
     });
 
-    it('correctly identifies a strike roll', function() {
-      frame.addRoll(pins10);
-      expect(frame.isStrike()).toBeTruthy();
+    it('one bonusBalls for a spare roll', function() {
+      frame.addRoll(1);
+      frame.addRoll(9);
+      expect(frame.bonusBalls).toEqual(1);
     });
 
-    it('throws error if recording a second roll after a strike', function() {
-      frame.addRoll(pins10);
-      expect(function() {
-        frame.addRoll(pins1);
-      }).toThrowError("Invalid roll");
-      expect(frame.rolls).not.toContain(pins1);
+    it('one bonusBalls for a spare roll, first roll 0', function() {
+      frame.addRoll(0);
+      frame.addRoll(10);
+      expect(frame.bonusBalls).toEqual(1);
+    });
+
+    it('two bonusBalls for a strike roll', function() {
+      frame.addRoll(10);
+      expect(frame.bonusBalls).toEqual(2);
+    });
+  });
+
+  describe('#isFrameClosed and #addBonus', function() {
+    it('is true for normal roll without bonus', function() {
+      frame.addRoll(1);
+      frame.addRoll(2);
+      expect(frame.isFrameClosed()).toBeTruthy();
+    });
+
+    it('is false for unfinished frames', function() {
+      frame.addRoll(1);
+      expect(frame.isFrameClosed()).toBeFalsy();
+    });
+
+    it('is false for spare before adding bonus roll, true after', function() {
+      frame.addRoll(9);
+      frame.addRoll(1);
+      expect(frame.isFrameClosed()).toBeFalsy();
+      frame.addBonus(0);
+      expect(frame.isFrameClosed()).toBeTruthy();
+    });
+
+    it('is false for strike before adding bonus rolls, true after', function() {
+      frame.addRoll(10);
+      expect(frame.isFrameClosed()).toBeFalsy();
+      frame.addBonus(10);
+      frame.addBonus(0);
+      expect(frame.isFrameClosed()).toBeTruthy();
     });
   });
 });

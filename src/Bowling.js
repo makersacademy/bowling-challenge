@@ -8,18 +8,6 @@ var Bowling = function() {
   this.bonus = false;
   this.strike = false;
   
- //Bowling.prototype.lastFrame = function() {
- //  if (this.frame === 10) {
- //    this.partialScore += this.lastShot;
- //    this._setFrame(0.5); 
- //    return this.lastShot;
- //  }
- //  if (this.frame === 10.5 && this.strike) {
- //    this.partialScore += this.lastShot;
- //    return this.lastShot;
- //  }
- //};
-  
  Bowling.prototype.getScore = function() {
    return this.partialScore;
  };
@@ -29,9 +17,14 @@ var Bowling = function() {
  };
   
  Bowling.prototype._setFrame = function(amount) {
-   if (this._getFrame() === 10 && amount === 10) return this.frame === 10;
-   if (this._getFrame() === 10.5) return this.frame; 
-   return this.frame += amount;
+   if (this.frame >= 9.5) {
+     console.log("set frame at frame: " + this.frame)
+     return this.frame += 0.5;
+   } else if (this.frame === 11) {
+      return this.frame;
+   } else {
+     return this.frame += amount;
+   } 
  };
  
  Bowling.prototype._nextFrame = function() {
@@ -59,8 +52,15 @@ var Bowling = function() {
  Bowling.prototype.setPins = function() {
     this.pins -= this.lastShot;
     if (this.firstShot === 10) {
-        if (this.bonus) this.partialScore += 10;
-      this._nextFrame();
+        if (this.bonus && this.frame === 10.5) {
+          console.log("this happened on frame: " + this.frame);
+          return this._nextFrame();
+        } else if (this.bonus){
+          this.partialScore += 10;
+          return this._nextFrame();
+        } else {
+          return this._nextFrame();
+        }
     } else if (this.firstShot && this.secondShot === undefined){
       this._nextShot();
         if (this.bonus) this.partialScore += this.lastShot; this.bonus = false;
@@ -76,19 +76,27 @@ var Bowling = function() {
    
  Bowling.prototype.shoot = function() {
    this.lastShot = (Math.round(Math.random() * this.pins));
-   if (this.frame === 10) {
+   if (this.frame === 10.5 && (this.firstShot + this.lastShot !== 10)) {
      this.partialScore += this.lastShot;
-     this._setFrame(0.5); 
+     this.lastShot = 'Nice Game';
+     return alert("The game is finished! The final score is: " + this.getScore());
+   }
+   if ((this.frame === 10.5 && this.strike) || (this.frame === 10.5 && (this.firstShot + this.lastShot !== 10))) {
+     this.partialScore += this.lastShot;
+     this.setPins();
      return this.lastShot;
    }
-   if (this.frame === 10.5 && this.strike) {
+   if (this.frame === 11 && !this.bonus) {
      this.partialScore += this.lastShot;
-     return this.lastShot;
+     this.lastShot = 'Nice Game';
+     return alert("The game is finished! The final score is: " + this.getScore());
    }
-   if (this.frame === 10.5) {
+   if ((this.frame === 11 && this.strike) || (this.frame === 11 && this.bonus)) {
+     this.partialScore += this.lastShot;
      this.lastShot = 'Nice Game';
      return alert("The game is finished! The final score is: " + this.getScore());
    };
+   
    this.switchShot(); 
    this.setPins();
    return this.lastShot;

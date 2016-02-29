@@ -41,7 +41,7 @@
   border: solid thin;
   position: relative;
   left: 49px;
- top: -52px;
+  top: -51px;
 }
 
 #div2 {
@@ -59,7 +59,7 @@
   border: solid thin;
   position: relative;
   left: 49px;
-  top: -52px;
+  top: -51px;
 }
 
 #div3 {
@@ -77,7 +77,7 @@
   border: solid thin;
   position: relative;
   left: 49px;
-  top: -52px;
+  top: -51px;
 }
 
 #div4 {
@@ -95,7 +95,7 @@
   border: solid thin;
   position: relative;
   left: 49px;
-  top: -52px;
+  top: -51px;
 }
 
 #div5 {
@@ -113,7 +113,7 @@
   border: solid thin;
   position: relative;
   left: 49px;
-  top: -52px;
+  top: -51px;
 }
 
 #div6 {
@@ -131,7 +131,7 @@
   border: solid thin;
   position: relative;
   left: 49px;
-  top: -52px;
+  top: -51px;
 }
 
 #div7 {
@@ -149,7 +149,7 @@
   border: solid thin;
   position: relative;
   left: 49px;
-  top: -52px;
+  top: -51px;
 }
 
 #div8 {
@@ -167,7 +167,7 @@
   border: solid thin;
   position: relative;
   left: 49px;
-  top: -52px;
+  top: -51px;
 }
 
 #div9 {
@@ -185,11 +185,11 @@
   border: solid thin;
   position: relative;
   left: 49px;
-  top: -52px;
+  top: -51px;
 }
 
 #div10 {
-  width: 100px;
+  width: 101px;
   height: 50px;
   border: solid thin;
   position: relative;
@@ -198,10 +198,19 @@
 }
 
 #frame105 {
-  width: 50px;
+  width: 25px;
   height: 30px;
   border: solid thin;
   position: relative;
   left: 49px;
-  top: -52px;
+  top: -51px;
+}
+
+#frame110 {
+  width: 25px;
+  height: 30px;
+  border: solid thin;
+  position: relative;
+  left: 75px;
+  top: -83px;
 }

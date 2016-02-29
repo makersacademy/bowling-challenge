@@ -47,18 +47,31 @@ describe('Bowling Feature', function() {
      bowling.fakeShoot(5);
      bowling.fakeShoot(5);
      bowling.fakeShoot(10);
-     expect(bowling.frame).toBe(10.5)
+     expect(bowling.frame).toBe(11)
      expect(bowling.getScore()).toBe(20)
    });
    
-   it('Adds the bonus for a strike on the last frame', function() {
+   xit('Adds the bonus for two strikes on the last frame', function() {
      for (var i = 0; i < 18; i++) {
        bowling.fakeShoot(0)   
      };
+     
      bowling.fakeShoot(10);
+     console.log(bowling.strike)
+     console.log(bowling.bonus)
+     console.log(bowling.firstShot)
+     console.log(bowling.secondShot)
+     console.log(bowling.frame)
+     console.log("-----------------")
      bowling.fakeShoot(10);
-     expect(bowling.frame).toBe(10.5)
-     expect(bowling.getScore()).toBe(20)
+     console.log(bowling.strike)
+     console.log(bowling.bonus)
+     console.log(bowling.firstShot)
+     console.log(bowling.secondShot)
+     console.log(bowling.frame)
+     bowling.fakeShoot(10);
+     expect(bowling.frame).toBe(11)
+     expect(bowling.getScore()).toBe(30)
    });
    
 });

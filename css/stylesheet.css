@@ -1,0 +1,132 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  color: white;
+}
+
+#back {
+  border: solid 1px white;
+  position: relative;
+  background-color: black;
+}
+
+#back:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-image: url("https://c2.staticflickr.com/8/7017/6660222319_1d0251eb90_o.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: 0.8;
+}
+
+#wrapper {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+}
+
+#section-one {
+  margin: auto;
+  text-align: center;
+}
+#logo {
+  width: 64px;
+  height: 64px;
+  font-size: 52px;
+  background-color: white;
+  color: rgb(45,137,239);
+  border-radius: 50%;
+  display: inline-block;
+  padding-left: 6px;
+}
+
+#titlelogo {
+  font-size: 48px;
+  margin: 20px auto;
+  margin-left: 20px;
+}
+
+#subtitle {
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+table {
+  color: white;
+  background-color: rgba(43, 137, 239, 0.7);
+  margin: 0 auto;
+  width:85%;
+  font-size:24px;
+  text-align: center;
+  table-layout: fixed;
+  margin-bottom: 40px;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
+table th {
+  background-color: rgba(43, 87, 151, 0.7);
+  border:0.5px solid;
+}
+
+table td {
+  height:40px;
+  border-left: 0.5px solid;
+  border-right: 0.5px solid;
+}
+
+table tr:nth-child(2) td:nth-child(even) {
+  border-bottom:1px solid;
+}
+
+table tr:nth-child(2) td:last-child {
+  border-bottom:1px solid;
+}
+
+#button-container {
+  text-align: center;
+}
+/*border: 2px solid red;*/
+
+button {
+  width: 50px;
+  height: 50px;
+  margin: 0px auto;
+  margin-left: 10px;
+  font-size: 24px;
+  background-color: white;
+  color: rgb(43, 87, 151);
+  border: 0px;
+  border-radius: 50%;
+}
+
+button:hover {
+  border: solid 5px rgb(43, 137, 239);
+}
+
+button:focus {
+  border: solid 5px rgb(43, 137, 239);
+}
+
+#button-reset {
+  width: 100px;
+}
+
+.messages {
+  height: 40px;
+  width: 400px;
+  margin: 30px auto;
+  background-color: red;
+  font-size: 24px;
+}
+
+#gameover {
+  background-color: rgb(43, 137, 239);
+}

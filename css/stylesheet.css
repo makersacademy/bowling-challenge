@@ -53,6 +53,11 @@ body {
   margin-left: 20px;
 }
 
+#subtitle {
+  font-size: 18px;
+  text-decoration: underline;
+}
+
 table {
   color: white;
   background-color: rgba(43, 137, 239, 0.7);

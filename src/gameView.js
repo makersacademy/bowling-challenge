@@ -37,4 +37,18 @@ $(document).ready(function() {
       $('#gameover').fadeIn('fast');
     }
   }
+
+  $(document).keypress(function(event){
+    if(event.keyCode === 48){ $('.button-roll[value="0"]').focus().click(); }
+    if(event.keyCode === 49){ $('.button-roll[value="1"]').focus().click(); }
+    if(event.keyCode === 50){ $('.button-roll[value="2"]').focus().click(); }
+    if(event.keyCode === 51){ $('.button-roll[value="3"]').focus().click(); }
+    if(event.keyCode === 52){ $('.button-roll[value="4"]').focus().click(); }
+    if(event.keyCode === 53){ $('.button-roll[value="5"]').focus().click(); }
+    if(event.keyCode === 54){ $('.button-roll[value="6"]').focus().click(); }
+    if(event.keyCode === 55){ $('.button-roll[value="7"]').focus().click(); }
+    if(event.keyCode === 56){ $('.button-roll[value="8"]').focus().click(); }
+    if(event.keyCode === 57){ $('.button-roll[value="9"]').focus().click(); }
+    if(event.keyCode === 120){ $('.button-roll[value="10"]').focus().click(); }
+  });
 });

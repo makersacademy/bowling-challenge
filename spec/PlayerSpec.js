@@ -12,7 +12,9 @@ describe("Player", function() {
 
   beforeEach(function(){
     scoreSheet = jasmine
-      .createSpyObj('scoreSheet', ['player', 'scoreCard', 'pendingSpare', 'consecutiveStrikes', 'updateSpare', 'spareRollOwed']);
+      .createSpyObj('scoreSheet', ['player', 'scoreCard', 'pendingSpare',
+                                  'consecutiveStrikes', 'updateSpare',
+                                  'spareRollOwed', 'factorInStrikes']);
     frameMockSpy = jasmine
       .createSpyObj('frameMockSpy', ['pinsAvailable', 'number', 'rollScores', 'update']);
 
@@ -73,12 +75,11 @@ describe("Player", function() {
     });
 
     describe("#firstRoll", function(){
-      var playerGoodSS;
+
 
       beforeEach(function(){
         spyOn(playerGood, 'rollScoreGenerator').and.returnValue(10);
         spyOn(playerGood, 'strikeCase').and.callThrough();
-        playerGoodSS = playerGood.playerSS;
         playerGood.roll();
       });
 
@@ -106,9 +107,17 @@ describe("Player", function() {
           expect(playerGood.rollCount).toEqual(2);
         });
 
-        it("will not update on the second roll - strike", function(){
+        it("record its second roll score as pending - strike", function(){
           expect(playerGood.currentFrame)
             .toEqual(jasmine.objectContaining({'game': scoreSheet, 'rollScores': ['X', "pending"]}));
+        });
+
+        it("will update the scoresheet", function(){
+          expect(playerGood.playerSS.scoreCard[1]).toEqual(['X', "pending"]);
+        });
+
+        xit("will increment the number of consecutiveStrikes", function(){
+          expect(scoreSheet.consecutiveStrikes).toHaveBeenCalled();
         });
       });
     });
@@ -128,6 +137,10 @@ describe("Player", function() {
       it("generates a roll score from the remaining pins in frame", function(){
         expect(player1.rollScoreGenerator).toHaveBeenCalledWith(7);
       });
+
+      xit("checks if consecutiveStrikes is >=1", function(){
+        expect(consecutiveStrikes).toHaveBeenCalled();
+      });
     });
   });
 
@@ -144,62 +157,3 @@ describe("Player", function() {
 
   });
 });
-
-
-
-
-//
-//     it("will generate a newFrame if the player is new", function(){
-//       player.roll();
-//       expect(game.newFrame).toHaveBeenCalled();
-//     });
-//
-//     it("will finish the frame on the second go", function(){
-//       player.roll();
-//       player.roll();
-//       expect(game.finishFrame).toHaveBeenCalled();
-//     });
-//
-//   });
-//
-//     describe("#isFrameOver", function(){
-//
-//
-//       it("checks if the player has had all the rolls in this frame", function(){
-//         expect(player.isFrameOver()).toBeFalsy();
-//       });
-//
-//       it("checks if the player still has rolls in the frame", function(){
-//         player.roll();
-//         expect(player.rollCount).toEqual(1);
-//       });
-//
-//       it("checks if the player has no rolls left in the frame", function(){
-//         player.roll();
-//         expect(player.isFrameOver()).toBeFalsy();
-//       });
-//     });
-//
-//     describe("#resetRollCount", function(){
-//
-//       it("will reset the roll round if the frame is over", function(){
-//         player.roll()
-//         player.roll()
-//         expect(player.rollCount).toEqual(0)
-//       });
-//
-//       it("will not the roll round if the frame is not over", function(){
-//         player.roll()
-//         expect(player.rollCount).toEqual(1)
-//       });
-//
-//     });
-//
-//
-//
-
-//
-//
-//
-//
-// });

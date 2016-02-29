@@ -1,0 +1,85 @@
+body {
+  font-family: 'Playball';
+  font-size: 200%;
+  color: white;
+  background-color: rgb(99, 226, 176);
+  background-size: cover;
+}
+
+header {
+  font-size: 150%;
+  text-shadow:
+   10px 10px rgb(255, 140, 26),
+   1px -1px rgb(255, 140, 26),
+   -1px 1px rgb(255, 140, 26),
+   1px 1px rgb(255, 140, 26);
+}
+
+.wrapper {
+  position: relative;
+  align-self: center;
+  padding: 10%;
+  width: 80%;
+  height: 80%;
+}
+
+.center {
+  margin: 0 auto;
+  margin: 10%;
+  width: 80%;
+  height: 80%;
+  text-align: center;
+}
+
+button {
+  font-family: 'Playball';
+  background-color: white;
+  font-size: 200%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10px;
+}
+
+.form {
+  border-style: dashed;
+  border-width: thin;
+  border-color: white;
+  margin: 0 auto;
+  width: 80%;
+  height: 80%;
+}
+
+.username {
+  padding: 10%;
+  max-width: 100%;
+  max-height: 100%;
+  font-size: 200%;
+  font-family: 'Gruppo';
+  align-items: center;
+  text-align: center;
+}
+
+
+input[type=submit] {
+  background-color: white;
+  font-size: 80%;
+  font-family: 'Gruppo';
+  border: none;
+  color: black;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10px;
+}
+
+input[type=text]{
+  align-self: center;
+  text-align: center;
+ width: 100%;
+ height: 10%;
+ font-family: 'Gruppo';
+ font-size: 80%;
+ line-height: 200%;
+}

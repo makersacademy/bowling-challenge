@@ -3,7 +3,7 @@ describe('Scoring last few frames', function() {
   var game;
 
   beforeEach(function() {
-    game = new Game();
+    game = new Game(Frame);
     for (var i = 0; i < 18; i++) { game.addRoll(0); }
   });
 

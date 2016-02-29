@@ -3,7 +3,7 @@ describe('Scoring first few frames', function() {
   var game;
 
   beforeEach(function() {
-    game = new Game();
+    game = new Game(Frame);
   });
 
   describe('first frame gutter', function() {

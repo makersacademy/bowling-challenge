@@ -43,3 +43,21 @@ button {
   font-size: 16px;
   background-color: white;
 }
+
+button:focus {
+  border: solid 3px lightblue;
+}
+
+button.button-reset {
+  width: 100px;
+}
+
+.messages {
+  height: 40px;
+  width: 400px;
+  margin: 40px auto;
+  color: red;
+  text-align: center;
+  font-size: 24px;
+  border: 1px solid red;
+}

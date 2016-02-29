@@ -26,12 +26,16 @@ describe('Scorecard - Checking values for new card', function (){
     expect(scorecard.lastFrameSpare).toBe(false);
   });
 
+  it('starts with #tenthFrame as false', function(){
+    expect(scorecard.tenthFrame).toBe(false);
+  });
+
   it('starts with #frameCount as 0', function(){
     expect(scorecard.frameCount).toEqual(0);
   });
 
-  it('starts with #scoreIsFinal as false', function(){
-    expect(scorecard.scoreIsFinal).toBe(false);
+  it('starts with #finalScore as 0', function(){
+    expect(scorecard.finalScore).toEqual(0);
   });
 
   it('starts with #score as 0', function(){

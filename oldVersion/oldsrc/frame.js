@@ -1,24 +1,22 @@
 'use strict';
 
-var _PIN_ERROR = "I think you might want to check those figures again...";
-
-function Ball(pins){
-  this.checkLegal(pins);
+function Frame(pinsBallOne, pinsBallTwo){
+    this.strike = false;
+    this.spare = false;
+    this.scoreBallOne = pinsBallOne;
+    this.scoreBallTwo = pinsBallTwo;
+    this.ballOne(pinsBallOne);
+    this.ballTwo(pinsBallOne, pinsBallTwo);
+    this.bonusBall = 0;
   }
 
-  Ball.prototype.checkLegal = function(pins){
-    if (pins > 10 || pins < 0) {
-      throw new Error(_PIN_ERROR);
-  }
-
-  Frame.prototype.ballTwo = function(pinsBallOne, pinsBallTwo){
-    if ((pinsBallOne + pinsBallTwo) > 10 || pinsBallTwo < 0) {
-      throw new Error(_PIN_ERROR);
-    }
-    this.pinsBallTwo = pinsBallTwo
-    this.checkSpare(pinsBallOne, pinsBallTwo);
+  Frame.prototype.ballOne = function(pinsBallOne){
+    this.checkStrike(pinsBallOne);
   };
 
+  Frame.prototype.ballTwo = function(pinsBallOne, pinsBallTwo){
+    this.checkSpare(pinsBallOne, pinsBallTwo);
+  };
 
   Frame.prototype.checkStrike = function(noPins){
     if (noPins === 10) {
@@ -31,7 +29,3 @@ function Ball(pins){
        this.spare = true;
     }
   };
-
-
-
-});

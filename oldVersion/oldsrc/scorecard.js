@@ -5,13 +5,13 @@ var _PIN_ERROR = "I think you might want to check those figures again...";
 var _MAX_PINS = 10
 
 function Scorecard(){
-  this.score = 0;
-  this.frameList = [];
-  this.firstBall = true;
-  this.gameOver = false;
-  this.tenPins = false;
-  this.addNextBall = false;
-  this.extraBall = false;
+  var score = 0;
+  var frameList = [];
+  var firstBall = true;
+  var gameOver = false;
+  var tenPins = false;
+  var addNextBall = false;
+  var extraBall = false;
 }
 
   Scorecard.prototype.ball = function(pins){
@@ -37,7 +37,7 @@ function Scorecard(){
   }
 
   Scorecard.prototype.checkSecondBall = function(pins) {
-    if (!this.firstBall && !this.extraBall && (pins + this.frameList[this.frameList.length -1] > _MAX_PINS)) {
+    if ((!this.firstBall && !this.extraBall) && (pins + this.frameList[-1] > _MAX_PINS)) {
       throw new Error(_PIN_ERROR);
     }
   }
@@ -49,7 +49,7 @@ function Scorecard(){
   }
 
   Scorecard.prototype.checkTenPins = function(pins){
-    if ((this.firstBall && pins === _MAX_PINS) || (!this.firstBall && pins + this.frameList[this.frameList.length -1] === _MAX_PINS)) {
+    if ((this.firstBall && pins === _MAX_PINS) || (!this.firstBall && pins + this.frameList[-1] === _MAX_PINS)) {
       this.tenPins = true;
     }
   }
@@ -65,9 +65,7 @@ function Scorecard(){
   }
 
   Scorecard.prototype.resetBonus = function(){
-    if (this.frameList[18] === 10 ) {
-      this.addNextBall = true;
-    } else if (this.tenPins && this.firstBall && !this.extraBall) {
+    if (this.tenPins && this.firstBall) {
       this.addNextBall = true;
       this.frameList.push(0);
       this.changeNextBall();
@@ -80,23 +78,17 @@ function Scorecard(){
   }
 
   Scorecard.prototype.checkTenthFrame = function(){
-    if (this.frameList.length === 21) {
-      this.runGameover();
-    } else if (this.frameList[18] === 10 || this.frameList.length >= 20) {
+    if ((this.frameList.length === 19 && this.addNextBall) || this.frameList.length <= 20) {
         this.tenthFrame();
     }
   }
 
   Scorecard.prototype.tenthFrame = function(){
     this.checkBonusTenthFrame();
-    if (this.frameList.length >= 20 && !this.extraBall) {
-      this.runGameover();
+    if (!this.extraBall) {
+      this.gameOver = true;
+      this.checkMegaFail();
     }
-  }
-
-  Scorecard.prototype.runGameover = function(){
-    this.gameOver = true;
-    this.checkMegaFail();
   }
 
   Scorecard.prototype.checkMegaFail = function(){
@@ -106,7 +98,7 @@ function Scorecard(){
   }
 
   Scorecard.prototype.checkBonusTenthFrame = function(){
-    if (this.addNextBall) {
+    if ((this.addNextBall) && (this.frameList.length < 21)) {
       this.extraBall = true
     } else {
       this.extraBall = false

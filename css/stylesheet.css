@@ -102,11 +102,15 @@ button {
   border-radius: 50%;
 }
 
+button:hover {
+  border: solid 5px rgb(43, 137, 239);
+}
+
 button:focus {
   border: solid 5px rgb(43, 137, 239);
 }
 
-button.button-reset {
+#button-reset {
   width: 100px;
 }
 

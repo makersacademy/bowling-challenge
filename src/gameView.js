@@ -1,14 +1,15 @@
 $(document).ready(function() {
 
-  var game = new Game(Frame);
-  var rollCount = 0;
+  var game;
+  var rollCount;
   var prevpins;
+
+  initializeGame();
 
   $('.button-roll').click(function() {
     var pins = parseInt($(this).attr('value'));
     try {
       game.addRoll(pins);
-      console.log(game);
       updateRollDisplay(pins);
       updateTotalDisplay();
       isGameOver();
@@ -36,6 +37,17 @@ $(document).ready(function() {
     if($('tr:eq(2) td:eq(9)').html()) {
       $('#gameover').fadeIn('fast');
     }
+  }
+
+  $('#button-reset').click(function() {
+    initializeGame();
+  });
+
+  function initializeGame() {
+    game = new Game(Frame);
+    rollCount = 0;
+    $('td').html('');
+    $('#gameover').hide();
   }
 
   $(document).keypress(function(event){

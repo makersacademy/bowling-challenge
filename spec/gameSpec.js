@@ -35,7 +35,7 @@ describe('Game', function () {
     expect(game.score()).toEqual(24);
   });
 
-  it('should score 300 a perfect game including bonuses', function () {
+  it('should score 300 - a perfect game including bonuses', function () {
     for (i = 0; i < 12; i += 1) {
       game.roll(10);
     }

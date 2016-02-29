@@ -36,4 +36,4 @@ describe('Game', function() {
 	expect(game.finalScore).toEqual(19)
 	});
 
-});
+})

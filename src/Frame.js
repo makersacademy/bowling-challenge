@@ -8,14 +8,14 @@ function Frame(){
 }
 
 	
-	Frame.prototype.firstBowl = function() {
-		this.bowl()
+	Frame.prototype.firstBowl = function(pins) {
+		this.rollScore = pins
 		this.score.push(this.rollScore)
-		
+		this.pins = (MAXIMUM_PINS - this.rollScore)
 	};
 
-	Frame.prototype.secondBowl = function() {
-		this.bowl()
+	Frame.prototype.secondBowl = function(pins) {
+		this.rollScore = pins
 		this.score.push(this.rollScore)
 	};
 
@@ -26,9 +26,8 @@ function Frame(){
 	};
 
 
-	Frame.prototype.bowl = function() {
-	this.rollScore = Math.round(Math.random()*this.pins);
-	this.pins = (MAXIMUM_PINS - this.rollScore)
+	Frame.prototype.randomBowl = function() {
+	return Math.round(Math.random()*this.pins);
 	};
 
 	Frame.prototype.isStrike = function() {

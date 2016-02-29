@@ -13,19 +13,17 @@
 
 		it('the first roll of a frame has a maximum score of 10', function() {
 			spyOn(Math,'round').and.returnValue(10)
-			frame.firstBowl()
+			frame.firstBowl(frame.randomBowl())
 			expect(frame.score).toEqual([10])
 		});
 		
 		it('second roll has a maximum score of the remaining pins', function() {
-			spyOn(Math,'round').and.returnValue(5)
-			frame.secondBowl()
+			frame.firstBowl(5)
 			expect(frame.pins).toEqual(5)
 		});
 
 		it('a player can roll a strike', function() {
-			spyOn(Math,'round').and.returnValue(10)
-			frame.firstBowl()
+			frame.firstBowl(10)
 			expect(frame.isStrike()).toEqual(true)
 		});
 	

@@ -38,7 +38,7 @@ Player.prototype.secondRoll = function (frameNumber) {
   this.currentFrame.update(roll);
   this.playerSS.scoreCard[frameNumber] = this.currentFrame.rollScores;
   if (this.playerSS.consecutiveStrikes > 0) {
-    this.playerSS.factorInStrikes(frameNumber);
+    this.playerSS.factorInStrike(frameNumber);
   }
 };
 
@@ -47,14 +47,14 @@ Player.prototype.rollScoreGenerator = function(pinsLeft){
 };
 
 
-// Player.prototype.showScoreSheet = function () {
-//   var scoreSheetRaw = this.playerSS.scoreCard;
-//   var frames = [];
-//   var frameScores = [];
-//   for (var key in scoreSheetRaw) {
-//     frames.push(key);
-//     frameScores.push(scoreSheetRaw[key]);
-//   }
-//   var readableFrameScores = [].concat.apply([], frameScores);
-//   return console.log(readableFrameScores);
-// };
+Player.prototype.showScoreSheet = function () {
+  var scoreSheetRaw = this.playerSS.scoreCard;
+  var frames = [];
+  var frameScores = [];
+  for (var key in scoreSheetRaw) {
+    frames.push(key);
+    frameScores.push(scoreSheetRaw[key]);
+  }
+  var readableFrameScores = [].concat.apply([], frameScores);
+  return console.log(readableFrameScores);
+};

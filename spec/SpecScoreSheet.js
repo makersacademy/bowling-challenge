@@ -16,6 +16,8 @@ var spareFrame;
     }
     frameMock = new FrameMock();
     spareFrame = new FrameMock(3, 4)
+    strikeFrame1 = new FrameMock(3, 2)
+    strikeFrame2 = new FrameMock(3, 1)
     playerMock = new PlayerMock("Viola", frameMock);
   });
 
@@ -58,9 +60,6 @@ var spareFrame;
       expect(scoreSheet.spareRollOwed).toEqual([spareFrame])
     });
 
-    xit("pushes a frame into spareRollOwed if there was a spare", function(){
-      expect(scoreSheet.spareRollOwed[0]).toEqual(spareFrame)
-    });
   });
 
   describe("#updateSpare", function(){
@@ -73,6 +72,47 @@ var spareFrame;
     it("updates the necessary frame with the current roll", function(){
       expect(scoreSheet.scoreCard[4]).toEqual([10, 3])
     });
+  });
 
+  describe("#lookupFrameScore", function(){
+
+    beforeEach(function(){
+      scoreSheet.pendingSpare(spareFrame)
+      scoreSheet.updateSpare(3)
+    });
+
+    it("calculates the frame score of a given frame number", function(){
+      expect(scoreSheet.lookupFrameScore(4)).toEqual(13)
+    });
+  });
+
+  describe("#factorInStrikes", function(){
+    var scoreCard;
+
+    beforeEach(function(){
+      scoreSheet2 = new ScoreSheet(playerMock);
+      scoreCard = {1: [1, 5], 2:['X', 'pending'], 3:['X', 'pending'],
+                   4: ['X', 'pending'], 5:[7, 1], 6:[3, 7]},
+      scoreSheet2.scoreCard = scoreCard;
+      scoreSheet2.consecutiveStrikes = 3;
+      scoreSheet2.factorInStrike(5)
+    });
+
+    it("updates the most recent strike frame", function(){
+
+      expect(scoreSheet2.scoreCard[4]).toEqual([10, 8])
+    });
+
+    it("updates the 2nd most recent strike frame", function(){
+      expect(scoreSheet2.scoreCard[3]).toEqual([10, 18])
+    });
+
+    it("updates the 3rd most recent strike frame", function(){
+      expect(scoreSheet2.scoreCard[2]).toEqual([10, 20])
+    });
+
+    it("resets consecutiveStrikes to 0", function(){
+      expect(scoreSheet2.consecutiveStrikes).toEqual(0)
+    });
   });
 });

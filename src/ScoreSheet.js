@@ -22,20 +22,27 @@ ScoreSheet.prototype.updateSpare = function (roll) {
 
 ScoreSheet.prototype.lookupFrameScore = function (frameNumber) {
   var thisFrame = this.scoreCard[frameNumber]
-  var thisFrameScore = thisFrame[0] + thisFrame[1]
-  return thisFrameScore;
+  var lastRoll = thisFrame[0] + thisFrame[1];
+  return lastRoll;
 };
 
-ScoreSheet.prototype.factorInStrikes = function (frameNumber) {
+ScoreSheet.prototype.factorInStrike = function (frameNumber) {
   this.scoreCard[frameNumber - 1] = [10, this.lookupFrameScore(frameNumber)];
-  if (this.consecutiveStrikes === 2) {
-    this.scoreCard[frameNumber - 2] = [10, this.frameScore(frameNumber - 1)]
-  } else {
-    var i = frameNumber -3
-    for ( i ; i === this.consecutiveStrikes - 2; i--) {
-        this.scoreCard[i] = [10, 20];
-      }
+  var lastRoll = this.scoreCard[frameNumber - 1][1];
+  if (this.consecutiveStrikes > 1) {
+   this.factorInStrikes(frameNumber - 2, (lastRoll +10))
+ }
+  this.consecutiveStrikes = 0;
+};
+
+ScoreSheet.prototype.factorInStrikes = function (frameNumber, lastRoll) {
+  if (frameNumber >= 1) {
+  this.scoreCard[frameNumber] = [10, lastRoll];
+    var i = frameNumber - 1
+      for ( i ; i === this.consecutiveStrikes - 1; i--) {
+      this.scoreCard[i] = [10, 20];
     }
+  }
   this.consecutiveStrikes = 0;
 };
 
@@ -53,53 +60,3 @@ ScoreSheet.prototype.finalScore = function() {
     }
   return total.reduce(function(a, b) { return a + b; }, 0);
 };
-
-
-
-// Player.prototype.showScoreSheet = function () {
-//   var scoreSheetRaw = this.playerSS.scoreCard;
-//   var frames = [];
-//   var frameScores = [];
-//   for (var key in scoreSheetRaw) {
-//     frames.push(key);
-//     ;
-//   }
-//   var readableFrameScores = [].concat.apply([], frameScores);
-//   return console.log(readableFrameScores);
-// };
-
-// ScoreSheet.prototype.spareRollOwed = function (rollScore) {
-//   var lastFrame = this.getLastFrame()
-//   if (this.pendingSpare()) {
-//     var updatedSecondRoll = (10 - lastFrame[0] + rollScore)
-//     this.scoreCard[this.currentFrameNumber - 1] = [lastFrame[0], updatedSecondRoll];
-//   }
-// //
-// Game.prototype.addFrameScore = function() {
-//   this.endGame();
-//   this.frame.checkStrike();
-//   this.frame.checkSpare();
-//   this.frame.checkScore();
-//   this.scorecard.push(this.frame.totalScore);
-// };
-//
-// Game.prototype.endGame = function() {
-//   if (this.scorecard.length >= 10) return 'GAME OVER';
-//   this.finalScore();
-// };
-//
-
-
-//
-
-//
-
-//
-
-//
-
-// };
-//
-// ScoreSheet.prototype.isSpareOwed = function () {
-//   var lastFrame = this.getLastFrame();
-//   return lastFrame[1] === '/'

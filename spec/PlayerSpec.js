@@ -115,10 +115,6 @@ describe("Player", function() {
         it("will update the scoresheet", function(){
           expect(playerGood.playerSS.scoreCard[1]).toEqual(['X', "pending"]);
         });
-
-        xit("will increment the number of consecutiveStrikes", function(){
-          expect(scoreSheet.consecutiveStrikes).toHaveBeenCalled();
-        });
       });
     });
 
@@ -138,9 +134,6 @@ describe("Player", function() {
         expect(player1.rollScoreGenerator).toHaveBeenCalledWith(7);
       });
 
-      xit("checks if consecutiveStrikes is >=1", function(){
-        expect(consecutiveStrikes).toHaveBeenCalled();
-      });
     });
   });
 
@@ -151,7 +144,7 @@ describe("Player", function() {
       expect(player.rollScoreGenerator(10)).toBeLessThan(11)
     });
 
-    it("again generates a number between 0 and the number of pins left", function(){
+    it("again generates a number between 0 and pins left", function(){
       expect(player.rollScoreGenerator(5)).toBeLessThan(6)
     });
 

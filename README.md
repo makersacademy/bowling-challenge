@@ -1,6 +1,31 @@
+Contributors
+============
+
+Introduction
+============
+
+Technologies
+============
+
+Installation
+============
+
+Testing
+=========
+
+Features
+========
+
+
+Licence
+=======
+
 
 Bowling Challenge
 =================
+
+
+
 
 
 * Challenge time: rest of the day and weekend, and the entire of lab week if you need it, until Monday 9am

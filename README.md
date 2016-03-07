@@ -1,23 +1,34 @@
-This is my solution to the weekend challenge 'Bowling Challenge' from week 5 of Makers Academy.
+##Bowling Challenge
 
-To install the application clone the repo from 'git@github.com:Wynndow/bowling-challenge.git' then run the SpecRunner.html. This will run the tests for the application using the Jasmine testing framework. You can then use the console within Chrome Dev Tools to interact with the application.
 
-To start a new game, type ```game = new Game()```
-To record a score, type ```game.bowlA('Your Score Here')```
-To view the results of all completed frames type ```game.seeFrameResults()```
-To view the scores for each frame (including bonus points) type ```game.seeFrameScores()```
-To view the total score type ```game.totalScore()```
+#### About
+
+This is my solution to the weekend challenge 'Bowling Challenge' from week 5 of Makers Academy. It's written in JavaScript and test driven using Jasmine. It's a model of a bowling scorecard, and correctly calculates scores for strikes and spares.
+
+#### Installation
+To install the application clone the repo from ```git@github.com:Wynndow/bowling-challenge.git``` then run the SpecRunner.html. This will run the tests for the application using the Jasmine testing framework. You can then use the console within Chrome Dev Tools to interact with the application.
+
+
+#### Usage
+
+- To start a new game, type ```game = new Game()```
+- To record a score, type ```game.bowlA('Your Score Here')```
+- To view the results of all completed frames type ```game.seeFrameResults()```
+- To view the scores for each frame (including bonus points) type ```game.seeFrameScores()```
+- To view the total score type ```game.totalScore()```
 
 The application will let you know when the game is over, as well as if you have entered too may pins per frame.
 
+#### Running tests
+
+- From yor command line, run ```$ open SpecRunner.html```
+- Tests and results will be displayed in your browser.
+
+#### Further improvements
+
 The next stage of this application would be to link it to a front end and use jQuery to display the scores in a user friendly environment.
 
-
-
-
-Bowling Challenge
-=================
-
+#### Original instructions below
 
 * Challenge time: rest of the day and weekend, and the entire of lab week if you need it, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own

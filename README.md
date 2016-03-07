@@ -1,14 +1,20 @@
-==Contributors
+Contributors
+============
 
-==Introduction
+Introduction
+============
 
-==Technologies
+Technologies
+============
 
-==Installation
+Installation
+============
 
-==Testing
+Testing
+=========
 
-==Features
+Features
+========
 
 
 ==Licence

@@ -1,5 +1,6 @@
 Bowling Challenge
 =================
+[![Build Status](https://travis-ci.org/emmabeynon/bowling-challenge.svg?branch=master)](https://travis-ci.org/emmabeynon/bowling-challenge)
 
 Author: Emma Beynon
 

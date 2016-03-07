@@ -17,7 +17,10 @@ Features
 ========
 
 
-==Licence
+Licence
+=======
+
+
 Bowling Challenge
 =================
 

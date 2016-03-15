@@ -39,7 +39,7 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 
 You can try the Bowling Scorecard online:
 
-COMING SOON!!
+http://jelgar1.github.io/bowling/
 
 or install it locally:
 

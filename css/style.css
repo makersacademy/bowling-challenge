@@ -1,0 +1,148 @@
+body {
+  background: #F2EEEA;
+  font-family: futura, helvetica, sans-serif;
+  align-items: center;
+}
+
+h1 {
+  font-size: 250%;
+}
+
+.button {
+  float: left;
+  border-radius: 50%;
+  font-size: 100%;
+  margin: .1%;
+
+}
+
+.score {
+  background: red;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100px;
+  border: solid thin #292929;
+}
+
+.framebox {
+  background: blue;
+  box-sizing: border-box;
+  width: 10%;
+  height: 100%;
+  border: solid thin #292929;
+  float: left;
+}
+
+.framenumber {
+  background: #84989D;
+  box-sizing: border-box;
+  width: 100%;
+  height: 24%;
+  border: solid thin #292929;
+}
+
+.rollsscore {
+  background: gold;
+  box-sizing: border-box;
+  width: 100%;
+  height: 38%;
+  border: solid thin #292929;
+}
+
+.roll1 {
+  background: #F1D59E;
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  border: solid thin #292929;
+  float: left;
+}
+
+.roll2 {
+  background: #D1C1A9;
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  border: solid thin #292929;
+  float: right;
+}
+
+.framescore {
+  background: #E87162;
+  box-sizing: border-box;
+  width: 100%;
+  height: 38%;
+  border: solid thin #292929;
+}
+
+.bottombox {
+  box-sizing: border-box;
+  width: 100%;
+  height:400px;
+  color: #F2EEEA;
+  font-size: 200%;
+}
+
+.totalscorebox {
+  background: #4574CC;
+  box-sizing: border-box;
+  width: 40%;
+  height:20%;
+  color: white;
+  float: left;
+}
+
+#errorbox {
+  background: #84989D;
+  box-sizing: border-box;
+  width: 40%;
+  height:20%;
+  color: white;
+  float: left;
+}
+
+.endpicture {
+  box-sizing: border-box;
+  width:58.536585%;
+  height:100%;
+  margin: auto;
+  float: right;
+}
+
+.pictures {
+  width: auto;
+  height: 100%;
+  border-radius: 2%;
+  opacity: 0.9;
+  margin: auto;
+  float: none;
+
+}
+
+#frame10roll1 {
+  width: 33.33%;
+}
+
+#frame10roll2 {
+  width: 33.33%;
+  float: left;
+}
+#frame10roll3 {
+  width: 33.33%;
+  float: left;
+  background: #F9D83F;
+}
+
+#author {
+  opacity:1;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  background-color: white;
+  width: 100%;
+  opacity: 0.7;
+}

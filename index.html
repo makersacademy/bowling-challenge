@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bowling Calculator</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="src/bowlingGame.js"></script>
+  <script src="src/interface.js"></script>
+</head>
+<body>
+  <div class="title">
+    <h1>Bowling Calculator</h1>
+  </div>
+  <div class="pins">
+    <h4>How many pins did you knock down?</h4>
+    <div class="buttons">
+      <button class="button" id="btn0" type="button" value="0">0</button>
+      <button class="button" id="btn1" type="button" value="1">1</button>
+      <button class="button" id="btn2" type="button" value="2">2</button>
+      <button class="button" id="btn3" type="button" value="3">3</button>
+      <button class="button" id="btn4" type="button" value="4">4</button>
+      <button class="button" id="btn5" type="button" value="5">5</button>
+      <button class="button" id="btn6" type="button" value="6">6</button>
+      <button class="button" id="btn7" type="button" value="7">7</button>
+      <button class="button" id="btn8" type="button" value="8">8</button>
+      <button class="button" id="btn9" type="button" value="9">9</button>
+      <button class="button" id="btn10" type="button" value="10">10</button>
+    </div>
+  </div>
+  <br></br>
+  <div class="score">
+    <div class="framebox" id="framebox1">
+      <div class="framenumber">1</div>
+      <div class="rollsscore">
+        <div class="roll1" id="frame1roll1"></div>
+        <div class="roll2" id="frame1roll2"></div>
+      </div>
+      <div class="framescore" id="framescore1"></div>
+    </div>
+    <div class="framebox" id="framebox2">
+      <div class="framenumber">2</div>
+      <div class="rollsscore">
+        <div class="roll1" id="frame2roll1"></div>
+        <div class="roll2" id="frame2roll2"></div>
+      </div>
+      <div class="framescore" id="framescore2"></div>
+    </div>
+    <div class="framebox" id="framebox3">
+      <div class="framenumber">3</div>
+      <div class="rollsscore">
+        <div class="roll1" id="frame3roll1"></div>
+        <div class="roll2" id="frame3roll2"></div>
+      </div>
+      <div class="framescore" id="framescore3"></div>
+    </div>
+    <div class="framebox" id="framebox4">
+      <div class="framenumber">4</div>
+      <div class="rollsscore">
+        <div class="roll1" id="frame4roll1"></div>
+        <div class="roll2" id="frame4roll2"></div>
+      </div>
+      <div class="framescore" id="framescore4"></div>
+    </div>
+    <div class="framebox" id="framebox5">
+      <div class="framenumber">5</div>
+      <div class="rollsscore">
+        <div class="roll1" id="frame5roll1"></div>
+        <div class="roll2" id="frame5roll2"></div>
+      </div>
+      <div class="framescore" id="framescore5"></div>
+    </div>
+    <div class="framebox" id="framebox6">
+      <div class="framenumber">6</div>
+      <div class="rollsscore">
+        <div class="roll1" id="frame6roll1"></div>
+        <div class="roll2" id="frame6roll2"></div>
+      </div>
+      <div class="framescore" id="framescore6"></div>
+    </div>
+    <div class="framebox" id="framebox7">
+      <div class="framenumber">7</div>
+      <div class="rollsscore">
+        <div class="roll1" id="frame7roll1"></div>
+        <div class="roll2" id="frame7roll2"></div>
+      </div>
+      <div class="framescore" id="framescore7"></div>
+    </div>
+    <div class="framebox" id="framebox8">
+      <div class="framenumber">8</div>
+      <div class="rollsscore">
+        <div class="roll1" id="frame8roll1"></div>
+        <div class="roll2" id="frame8roll2"></div>
+      </div>
+      <div class="framescore" id="framescore8"></div>
+    </div>
+    <div class="framebox" id="framebox9">
+      <div class="framenumber">9</div>
+      <div class="rollsscore">
+        <div class="roll1" id="frame9roll1"></div>
+        <div class="roll2" id="frame9roll2"></div>
+      </div>
+      <div class="framescore" id="framescore9"></div>
+    </div>
+    <div class="framebox" id="framebox10">
+      <div class="framenumber">10</div>
+      <div class="rollsscore">
+        <div class="roll1" id="frame10roll1"></div>
+        <div class="roll2" id="frame10roll2"></div>
+        <div class="roll2" id="frame10roll3"></div>
+      </div>
+      <div class="framescore" id="framescore10"></div>
+    </div>
+  </div>
+  <br>
+  <div class="bottombox">
+    <div class="totalscorebox">TOTAL: <span id="totalscore"></span></div>
+    <div class="endpicture"></div>
+    <div id="errorbox"></div>
+  </div>
+  <div class="footer">
+    <h3 id="author">By Jonathan Gardiner</h3>
+  </div>
+</body>

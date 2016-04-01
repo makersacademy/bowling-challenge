@@ -18,6 +18,8 @@ Testing :white_check_mark:
 
 Tools used :wrench:
 -----------
+* JavaScript
+* Jasmine
 
 Author :cat:
 ----------------------

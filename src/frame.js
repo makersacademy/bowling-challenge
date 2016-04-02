@@ -1,33 +1,17 @@
-function Frame() {
-  this._rolls = []
+function Frame(){
+  this._rolls  = []
+  this.pins   = 0
+  this.strike = false
+  this.spare  = false
 }
 
-Frame.prototype.roll = function (pins) {
-  this.isFinished();
-  this._rolls.push(pins);
-}
 
-Frame.prototype.isFinished = function () {
-  return (this.isStrike() || this.isFull())
-  // if full, is spare or strike?
-  //clear out frame -> start new frame
-}
+this.roll(pins)
+  this._rolls.push(this.pins)
 
-Frame.prototype.score = function () {
-  return this._rolls.reduce(function (first, second) {
-    return first + second;
-  })
-}
+this.isStrike
+  this.pins === 10
+  this.strike = true
 
-Frame.prototype.isFull = function () {
-  return this._rolls.length === 2
-}
-
-Frame.prototype.isSpare = function() {
-  return this.score() === 10
-};
-
-Frame.prototype.isStrike = function() {
-  return (this._rolls[0] || this._rolls[1]) === 10
-}
-//skip second roll if first is 10.
+  this.isSpare
+  this._rolls

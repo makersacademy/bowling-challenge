@@ -54,8 +54,10 @@ describe("Bowling", function() {
   });
 
   describe("#isStrike", function() {
-    it("should return true if pins equal 10", function() {
-      expect(game.isStrike(10)).toEqual(true);
+    it("should return true if previous frame pins equal 10", function() {
+      game2.calculateScore(10);
+      game2.calculateScore(5);
+      expect(game2.isStrike()).toEqual(true);
     });
   });
 

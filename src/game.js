@@ -15,15 +15,20 @@ function Game() {
   this._score = 0
 }
 
-Game.prototype.roll = function(pins) {
-  this._rollScore = pins
-  this.scoreUpdate()
-};
+// Game.prototype.roll = function(pins) {
+//   this._rollScore = pins
+//   this.scoreUpdate()
+// };
 
 Game.prototype.currentScore = function() {
   return this._score
 };
 
-Game.prototype.scoreUpdate = function () {
-  this._score += this._rollScore
-};
+// Game.prototype.scoreUpdate = function () {
+//   this._score += this._rollScore
+// };
+
+Game.prototype.addFrame = function(frame) {
+  var rollScore = frame.isFull()
+  this._score += rollScore
+}

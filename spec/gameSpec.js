@@ -11,7 +11,7 @@ describe ("Game", function() {
     expect(game.currentScore()).toEqual(0);
   })
 
-  it('adds roll to score', function() {
+  xit('adds roll to score', function() {
     game.roll(pins)
     expect(game.currentScore()).toEqual(pins)
   })

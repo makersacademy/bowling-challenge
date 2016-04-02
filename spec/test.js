@@ -1,11 +1,11 @@
 describe('Game', function () {
   'use strict';
-  
+
   var game;
 
   beforeEach (function () {
     game = new Game()
-   });
+  });
 
 
   it ('will have a score of 0 if all gutterballs', function () {
@@ -37,5 +37,43 @@ describe('Game', function () {
       game.rollBall(1)
     }
     expect(game.score()).toBe(30)
+  });
+
+  it ('will calculate two strikes in a row correctly', function () {
+    game.rollBall(10);
+    game.rollBall(10);
+    for (var i = 0; i < 16; i++) {
+      game.rollBall(1)
+    }
+    expect(game.score()).toBe(49)
+  });
+  it ('will calculate three strikes in a row correctly', function () {
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    for (var i = 0; i < 14; i ++) {
+      game.rollBall(1)
+    }
+    expect(game.score()).toBe(77)
+  });
+
+  it ('will calculate a mix of strikes and spares correctly', function () {
+    game.rollBall(10);
+    game.rollBall(7);
+    game.rollBall(3);
+    game.rollBall(7);
+    game.rollBall(2);
+    game.rollBall(10);
+    game.rollBall(3);
+    game.rollBall(7);
+    game.rollBall(10);
+    game.rollBall(7);
+    game.rollBall(3);
+    game.rollBall(10);
+    game.rollBall(1);
+    game.rollBall(1);
+    game.rollBall(1);
+    game.rollBall(1);
+    expect(game.score()).toBe(142)
   });
 });

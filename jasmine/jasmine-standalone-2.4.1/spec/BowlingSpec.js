@@ -42,11 +42,18 @@ describe("Bowling", function(){
 				expect(bowling.changeRoundNumber).toHaveBeenCalled();
 		});
 
-		it("when there is a spare, will get a bonus the following round", function(){
+		it("when there is a spare, will get a bonus of the following round, 1st roll's, pin hits", function(){
 			bowling.updateScore(6);
 			bowling.updateScore(4);
 			bowling.updateScore(6);
 			expect(bowling.currentScore).toEqual(22)
+		});
+
+		it("when there is a strike, will get a bonus of the following round's pin hits", function(){
+			bowling.updateScore(10);
+			bowling.updateScore(7);
+			bowling.updateScore(2);
+			expect(bowling.currentScore).toEqual(28)
 		});
 
 	});
@@ -62,6 +69,12 @@ describe("Bowling", function(){
 		expect(bowling.round).toEqual(2);
 	});
 
+	it("increases the round number if strike", function(){
+		bowling.isStrike(10);
+		bowling.changeRoundNumber();
+		expect(bowling.round).toEqual(2);
+	});
+
 	it("will not increase the round number if roll number is 1", function(){
 		bowling.changeRoundNumber();
 		expect(bowling.round).toEqual(1);
@@ -71,6 +84,11 @@ describe("Bowling", function(){
 		bowling.updateScore(6);
 		bowling.isSpare(4);
 		expect(bowling.spare).toEqual(1);
+	});
+
+	it("will recognise a strike", function(){
+		bowling.isStrike(10);
+		expect(bowling.strike).toEqual(1);
 	});
 
 

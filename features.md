@@ -2,7 +2,7 @@
 
 * 10 frames => frames array, length 10;
 * 10 pins;
-* in each frame: roll * 2;
+<!-- * in each frame: roll * 2; -->
 
 * frameScore = numPinsKnockedDown + bonus;
 * after each frame: reset 10 pins;

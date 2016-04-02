@@ -3,7 +3,7 @@
 function Frame() {
   this._score = 0;
   this.isFirstRoll = true;
-  this.PINS_ERROR = "There are only 10 pins per frame."
+  this.PINS_ERROR = "Cannot knock down more than 10 pins."
 }
 
 Frame.prototype.logRoll = function (pins) {

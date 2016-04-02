@@ -1,15 +1,26 @@
 "use strict";
 
-function Game() {
+function Game(frame) {
   this._scores = [];
   this._frames = [];
-  this.currentFrame = new Frame();
+  this.currentFrame = frame;
 }
 
 Game.prototype.logRoll = function (pins) {
   this.currentFrame.logRoll(pins);
+  this.logFrameScore(this.currentFrame);
 };
 
+Game.prototype.logFrameScore = function (frame) {
+  this._scores.push(frame.getScore())
+};
+
+Game.prototype.addFrame = function (newFrame) {
+  if (this.currentFrame.isComplete()) {
+    this._frames.push(this.currentFrame);
+    this.currentFrame = newFrame;
+  }
+};
 
 Game.prototype.sumScore = function () {
   if (this._scores.length < 1) { return 0; }

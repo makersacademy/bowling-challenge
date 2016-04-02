@@ -1,7 +1,7 @@
 # Bowling game:
 
 * 10 frames => frames array, length 10;
-* 10 pins;
+<!-- * 10 pins; -->
 <!-- * in each frame: roll * 2; -->
 
 * frameScore = numPinsKnockedDown + bonus;

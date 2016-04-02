@@ -2,14 +2,20 @@ function Bowling(){
 	this.currentScore = 0;
 	this.round = 1;
 	this.rollNumber = 1;
-
+	this.lastHit = 0
+	this.spare = 0;
 };
 
 
 
 Bowling.prototype.updateScore = function(pinsHit){
-	this.currentScore = pinsHit;
-	this.changeRollNumber() ;
+
+		this.currentScore += pinsHit*(1 + this.spare);
+		this.isSpare(pinsHit)
+		this.lastHit = pinsHit;
+		this.changeRollNumber() ;
+		this.changeRoundNumber();
+
 };
 
 Bowling.prototype.changeRollNumber = function(){
@@ -20,3 +26,16 @@ Bowling.prototype.changeRollNumber = function(){
 	}
 };
 
+Bowling.prototype.changeRoundNumber = function(){
+	if(this.rollNumber===2){
+		this.round +=1;
+	}
+};
+
+Bowling.prototype.isSpare = function(pinsHit){
+	if(this.rollNumber==2 && this.lastHit+pinsHit==10){
+		this.spare=1;
+	} else {
+		this.spare =0
+	}
+}

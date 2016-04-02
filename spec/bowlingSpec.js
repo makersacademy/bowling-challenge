@@ -53,4 +53,18 @@ describe("Bowling", function() {
     });
   });
 
+  describe("#isStrike", function() {
+    it("should return true if pins equal 10", function() {
+      expect(game.isStrike(10)).toEqual(true);
+    });
+  });
+
+  describe("#isSpare", function() {
+    it("returns true if currentFrame in scoreSheet adds to 10", function() {
+      game2.calculateScore(5);
+      game2.calculateScore(5);
+      expect(game2.isSpare()).toEqual(true);
+    });
+  });
+
 });

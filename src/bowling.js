@@ -24,3 +24,21 @@ Bowling.prototype.frameNumber = function () {
     this.currentFrame ++;
   }
 };
+
+Bowling.prototype.isStrike = function (pins) {
+  if(pins === 10) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+Bowling.prototype.isSpare = function () {
+  var frame = this.scoreSheet[this.currentFrame].reduce(add, 0);
+  function add( a, b ) { return a + b }
+  if(frame === 10) {
+    return true;
+  } else {
+    return false;
+  }
+};

@@ -5,12 +5,12 @@ describe("Game", function () {
   var frame
 
   beforeEach(function () {
-    frame = jasmine.createSpyObj("frame", ["logRoll", "isComplete", "getScore"]);
+    frame = jasmine.createSpyObj("frame", ["logRoll", "isComplete", "getScore", "isStrike"]);
     game = new Game(frame);
   });
 
   it("should start with a zero score", function () {
-    expect(game.sumScore()).toEqual(0);
+    expect(game.getScore()).toEqual(0);
   });
 
   describe("log scores", function () {
@@ -22,7 +22,7 @@ describe("Game", function () {
     it("logs the score of each frame", function () {
       frame.getScore.and.returnValue(8);
       game.logFrameScore(frame);
-      expect(game.sumScore()).toEqual(8);
+      expect(game.getScore()).toEqual(8);
     });
   });
 
@@ -32,6 +32,17 @@ describe("Game", function () {
       var newFrame = jasmine.createSpy("newFrame");
       game.addFrame(newFrame);
       expect(game.currentFrame).toEqual(newFrame);
+    });
+  });
+
+  describe("add bonus", function () {
+    xit("adds next frame's score as bonus when strike", function () {
+
+    });
+
+    xit("add next roll's score as bonus when spare",
+  function () {
+
     });
   });
 

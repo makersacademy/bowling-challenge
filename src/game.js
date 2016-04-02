@@ -1,18 +1,17 @@
 "use strict";
 
 function Game(frame) {
-  this._scores = [];
+  this._score = 0;
   this._completedFrames = [];
   this.currentFrame = frame;
 }
 
 Game.prototype.logRoll = function (pins) {
   this.currentFrame.logRoll(pins);
-  this.logFrameScore(this.currentFrame);
 };
 
 Game.prototype.logFrameScore = function (frame) {
-  this._scores.push(frame.getScore())
+  this._score += frame.getScore();
 };
 
 Game.prototype.addFrame = function (newFrame) {
@@ -22,9 +21,13 @@ Game.prototype.addFrame = function (newFrame) {
   }
 };
 
-Game.prototype.sumScore = function () {
-  if (this._scores.length < 1) { return 0; }
-  return this._scores.reduce(function (sum, score) {
-    return sum + score;
-  });
+Game.prototype.addBonus = function (newFrame) {
+  var lastFrame = this._completedFrames.slice(-1)[0];
+  if (lastFrame.isStrike() || lastFrame.isSpare()) {
+    this._score += newFrame.getScore();
+  }
+};
+
+Game.prototype.getScore = function () {
+  return this._score
 };

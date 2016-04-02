@@ -23,9 +23,24 @@ describe("Frame", function () {
   });
 
   describe("strike", function () {
-    it("finishes the frame with a strike", function () {
+    beforeEach(function () {
       frame.logRoll(10);
+    })
+
+    it("is a strike when 10 pins are knocked down in 1 roll", function () {
+      expect(frame.isStrike()).toEqual(true);
+    });
+
+    it("finishes the frame with a strike", function () {
       expect(frame.isComplete()).toEqual(true);
+    });
+  });
+
+  describe("spare", function () {
+    it("is a spare when 10 pins are knowcked down in 2 rolls", function () {
+      frame.logRoll(6);
+      frame.logRoll(4);
+      expect(frame.isSpare()).toEqual(true);
     });
   });
 });

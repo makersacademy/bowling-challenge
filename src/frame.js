@@ -12,6 +12,7 @@ Frame.prototype.logRoll = function (pins) {
 
 Frame.prototype.getScore = function () {
   if (this._scores.length < 1) { return 0; }
+  if (this._scores.length === 1) { return this._scores[0]; }
   return this._scores[0] + this._scores[1];
 };
 
@@ -21,6 +22,10 @@ Frame.prototype.isComplete = function () {
 
 Frame.prototype.isStrike = function () {
   return this._scores[0] === 10;
+};
+
+Frame.prototype.isSpare = function () {
+  return this._scores[0] + this._scores[1] === 10;
 };
 
 Frame.prototype._checkPins = function (pins) {

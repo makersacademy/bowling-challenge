@@ -8,13 +8,22 @@ a strike = 10 points, plus 'bonus' from both rolls of next frame,
   includes upto 2 next frames
 a spare = 10 points, plus 'bonus' from first roll of next frame,
   only includes next frame.
-when pins left standing, simple addition. 
+when pins left standing, simple addition.
 */
 
 function Game() {
-  this.scoreboard = []
+  this._score = 0
 }
 
-Game.prototype.addFrame = function(frame) {
-  this.scoreboard.push(frame)
+Game.prototype.roll = function(pins) {
+  this._rollScore = pins
+  this.scoreUpdate()
+};
+
+Game.prototype.currentScore = function() {
+  return this._score
+};
+
+Game.prototype.scoreUpdate = function () {
+  this._score += this._rollScore
 };

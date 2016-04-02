@@ -28,7 +28,6 @@ describe("Game", function () {
 
   describe("add frame", function () {
     it("adds a new frame when a frame is complete", function () {
-      frame.isComplete.and.returnValue(true);
       var newFrame = jasmine.createSpy("newFrame");
       game.addFrame(newFrame);
       expect(game.currentFrame).toEqual(newFrame);
@@ -46,12 +45,13 @@ describe("Game", function () {
     });
   });
 
-  describe("Perfect Game", function () {
-    xit("can calculate a Perfect Game", function () {
-      for (var i = 1; i <= 12; i++) {
-        game.logRoll(10);
-      };
-      expect(game.getScore()).toEqual(300);
+  describe("game over", function () {
+    it("game is over after 10 frames", function () {
+      for (var i = 1; i <= 10; i ++) {
+        frame.isComplete.and.returnValue(true);
+        game.saveFrame(frame);
+      }
+      expect(game.isOver()).toEqual(true);
     });
   });
 });

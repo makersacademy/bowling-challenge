@@ -14,11 +14,14 @@ Game.prototype.logFrameScore = function (frame) {
   this._score += frame.getScore();
 };
 
-Game.prototype.addFrame = function (newFrame) {
+Game.prototype.saveFrame = function (frame) {
   if (this.currentFrame.isComplete()) {
     this._completedFrames.push(this.currentFrame);
-    this.currentFrame = newFrame;
   }
+}
+
+Game.prototype.addFrame = function (newFrame) {
+  this.currentFrame = newFrame;
 };
 
 Game.prototype.addBonus = function (newFrame) {
@@ -26,6 +29,10 @@ Game.prototype.addBonus = function (newFrame) {
   if (lastFrame.isStrike() || lastFrame.isSpare()) {
     this._score += newFrame.getScore();
   }
+};
+
+Game.prototype.isOver = function () {
+  return this._completedFrames.length === 10;
 };
 
 Game.prototype.getScore = function () {

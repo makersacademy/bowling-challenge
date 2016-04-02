@@ -3,15 +3,12 @@ function Frame() {
 }
 
 Frame.prototype.roll = function (pins) {
-  this.finished();
+  this.isFinished();
   this._rolls.push(pins);
 }
 
-Frame.prototype.finished = function () {
-  if(this.isStrike()){
-    this.score()
-    this._rolls = []
-  }
+Frame.prototype.isFinished = function () {
+  return (this.isStrike() || this.isFull())
   // if full, is spare or strike?
   //clear out frame -> start new frame
 }
@@ -24,7 +21,6 @@ Frame.prototype.score = function () {
 
 Frame.prototype.isFull = function () {
   return this._rolls.length === 2
-
 }
 
 Frame.prototype.isSpare = function() {

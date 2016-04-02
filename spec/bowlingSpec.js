@@ -1,8 +1,11 @@
 describe("Bowling", function() {
-  var game;
+  var game, game2;
 
   beforeEach(function() {
     game = new Bowling();
+    spyOn(game, "frameNumber");
+    spyOn(game, "addScore");
+    game2 = new Bowling();
   })
 
   it("should have a scoreSheet hash", function() {
@@ -22,21 +25,31 @@ describe("Bowling", function() {
       game.calculateScore(4);
       expect(game.totalScore).toEqual(4);
     });
+
+    it("should call the frameNumber function", function() {
+      game.calculateScore();
+      expect(game.frameNumber.calls.any()).toEqual(true);
+    });
+
+    it("should call the addScore function", function() {
+      game.calculateScore();
+      expect(game.addScore.calls.any()).toEqual(true);
+    });
   });
 
   describe("#addScore", function() {
     it("should add the pins number to the scoreSheet", function() {
-      game.addScore(3);
-      expect(game.scoreSheet[game.currentFrame]).toEqual([3])
+      game2.addScore(3);
+      expect(game2.scoreSheet[game2.currentFrame]).toEqual([3])
     });
   });
 
   describe("#frameNumber", function() {
     it("should + 1 to currentFrame if currentFrame in scoreSheet contains 2 numbers", function() {
-      game.calculateScore(3);
-      game.calculateScore(4);
-      game.frameNumber();
-      expect(game.currentFrame).toEqual(2);
+      game2.calculateScore(3);
+      game2.calculateScore(4);
+      game2.frameNumber();
+      expect(game2.currentFrame).toEqual(2);
     });
   });
 

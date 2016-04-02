@@ -1,29 +1,20 @@
-function Game() {
-  this.score = 0;
-  this.rollInFrame = 1;
-  this.isStrike = false;
-  this.frameScore = 0;
-  this.frames = [];
+function Game () {
+  this.rollScores = [];
 }
 
-Game.prototype.rollBall = function (pins) {
-  this.frameScore += pins;
+Game.prototype.rollBall = function(pins) {
+  this.rollScores.push(pins);
+}
+
+Game.prototype.score = function() {
+  var score = 0; 
+  for (var rollScoresIndex = 0; rollScoresIndex < 20; rollScoresIndex+=2) {
+    if (this.rollScores[rollScoresIndex] + this.rollScores[rollScoresIndex + 1] == 10) {
+      score += this.rollScores[rollScoresIndex] + this.rollScores[rollScoresIndex + 1] + this.rollScores[rollScoresIndex + 2]
     }
-  if (this.rollInFrame === 1) {
-    this.rollInFrame = 2;
-  }  
-  else {
-    this.frames.push(this.frameScore);
-    this.frameScore = 0;
-    this.rollInFrame = 1;
+    else {
+    score += this.rollScores[rollScoresIndex] + this.rollScores[rollScoresIndex + 1]
+    }
   }
-  }
-}
-
-
-Game.prototype.calculateScore = function() {
-  this.score = this.frames.reduce(add, 0);
-  function add(a, b) {
-    return a + b;
-  }
+  return score
 }

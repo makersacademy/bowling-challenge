@@ -68,14 +68,33 @@ describe("Bowling", function(){
 				expect(bowling.currentScore).toEqual(24);
 			});
 
+			it(" and get a strike", function(){
+				bowling.round = 9;
+				bowling.updateScore(5);
+				bowling.updateScore(3);
+				bowling.updateScore(10);
+				bowling.updateScore(6);
+				bowling.updateScore(6);
+				expect(bowling.currentScore).toEqual(30);
+			});
+
+			it("cannot play 4 rolls or more, ever", function(){
+				bowling.round = 9;
+				bowling.updateScore(5);
+				bowling.updateScore(3);
+				bowling.updateScore(4);
+				bowling.updateScore(6);
+				bowling.updateScore(6);
+				expect(function() { bowling.updateScore(5) }).toThrowError("The game has now ended");
+			});
+
 			it(" and don't get a spare or strike cannot play 3 rolls", function(){
 				bowling.round = 9;
 				bowling.updateScore(5);
 				bowling.updateScore(3);
 				bowling.updateScore(4);
-				bowling.updateScore(5);
-				bowling.updateScore(5);
-				expect(bowling.currentScore).toEqual(17);
+				bowling.updateScore(5);				
+				expect(function() { bowling.updateScore(5) }).toThrowError("The game has now ended");
 			});
 
 		});

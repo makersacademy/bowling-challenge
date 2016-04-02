@@ -48,13 +48,20 @@ describe('Game', function () {
     it ('will add the framescore to frames', function () {
       game.rollBall(2)
       game.rollBall(3)
-      expect(game.frames.size).toBe(1)
+      expect(game.frames.length).toBe(1)
     });
 
     it ('will reset framescore to zero', function () {
       game.rollBall(2)
       game.rollBall(3)
       expect(game.frameScore).toBe(0)
+    });
+
+    it ('will calculate the score', function () {
+      game.rollBall(2)
+      game.rollBall(3)
+      game.calculateScore()
+      expect(game.score).toBe(5)
     });
   });
   describe ('when a strike is rolled', function () {
@@ -68,7 +75,7 @@ describe('Game', function () {
     });
 
     it('frame is updated', function () {
-      expect(game.frame).toBe(2)
+      expect(game.frames.length).toBe(1)
     });
 
     it('and next frame is not a strike/spare, will add 10 + framescore + framescore', function () {

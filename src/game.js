@@ -7,12 +7,13 @@ function Game() {
 }
 
 Game.prototype.rollBall = function(pins) {
-  this.frameScore += pins;
   if (this.rollInFrame === 1 && pins === 10) {
     this.isStrike = true;
     this.updateFrame();
   }
   else {
+
+    this.frameScore += pins;
     this.nextRoll()
   }
 }
@@ -28,13 +29,12 @@ Game.prototype.nextRoll = function() {
 }
 
 Game.prototype.updateFrame = function() {
-  this.frames.push('1');
+  this.frames.push(this.frameScore);
   this.frameScore = 0;
-  this.frame +=1;
 }
 
 Game.prototype.calculateScore = function() {
-  this.frames.reduce(add, 0);
+  this.score = this.frames.reduce(add, 0);
   function add(a, b) {
     return a + b;
   }

@@ -2,7 +2,7 @@ function BowlingGame(){
   this.totalScore = 0;
   this.scoreBoard = [[],[],[],[],[],
                      [],[],[],[],[]];
-  this.currentRound = 0
+  this.currentRound = 0;
 }
 
 BowlingGame.prototype.addScores = function(score){

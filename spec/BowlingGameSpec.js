@@ -1,8 +1,11 @@
-describe('BowlingGame', function(){
+describe('Bowling Game', function(){
+
   var testGame;
+  // var testScoreBoard;
 
   beforeEach(function(){
     testGame = new BowlingGame();
+    // testScoreBoard = new ScoreBoard();
   });
 
   describe('Object status', function(){

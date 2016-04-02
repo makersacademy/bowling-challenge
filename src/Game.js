@@ -1,11 +1,14 @@
-function Game() {}
+function Game()
+  {
+    this.totalScore = 0;
+  }
 
 Game.prototype.hit = function(pins)
   {
-
+    return this.totalScore += pins;
   }
 
-Game.prototype.totalScore = function()
+Game.prototype.getTotal = function()
   {
-    return 0;
+    return this.totalScore;
   }

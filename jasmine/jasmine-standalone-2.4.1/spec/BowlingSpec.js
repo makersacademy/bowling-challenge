@@ -46,14 +46,38 @@ describe("Bowling", function(){
 			bowling.updateScore(6);
 			bowling.updateScore(4);
 			bowling.updateScore(6);
-			expect(bowling.currentScore).toEqual(22)
+			expect(bowling.currentScore).toEqual(22);
 		});
 
 		it("when there is a strike, will get a bonus of the following round's pin hits", function(){
 			bowling.updateScore(10);
 			bowling.updateScore(7);
 			bowling.updateScore(2);
-			expect(bowling.currentScore).toEqual(28)
+			expect(bowling.currentScore).toEqual(28);
+		});
+
+		describe("when in the 10th (last) round", function(){
+
+			it(" and get a spare", function(){
+				bowling.round = 9;
+				bowling.updateScore(5);
+				bowling.updateScore(3);
+				bowling.updateScore(4);
+				bowling.updateScore(6);
+				bowling.updateScore(6);
+				expect(bowling.currentScore).toEqual(24);
+			});
+
+			it(" and don't get a spare or strike cannot play 3 rolls", function(){
+				bowling.round = 9;
+				bowling.updateScore(5);
+				bowling.updateScore(3);
+				bowling.updateScore(4);
+				bowling.updateScore(5);
+				bowling.updateScore(5);
+				expect(bowling.currentScore).toEqual(17);
+			});
+
 		});
 
 	});

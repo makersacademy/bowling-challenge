@@ -13,33 +13,39 @@ describe('Frame', function() {
   it('removes no pins when gutter roll', function(){
     var gutterRoll = 0
     frame.newRoll(gutterRoll)
-    expect(frame.game).toContain(0)
+    expect(frame.roll).toContain(0)
   });
 
   it('removes 3 pins after roll', function(){
     frame.newRoll(roll)
-    expect(frame.game).toContain(3)
+    expect(frame.roll).toContain(3)
   });
 
   it('stores first roll when completed', function(){
     frame.newRoll(roll);
-    expect(frame.game).toContain(roll);
+    expect(frame.roll).toContain(roll);
   })
 
   it('stores second roll when completed', function(){
-    var secondRoll = 4
+    var roll2 = 8
     frame.newRoll(roll);
-    frame.newRoll(secondRoll);
-    expect(frame.game).toContain(roll)
-    expect(frame.game).toContain(secondRoll)
+    frame.newRoll(roll2);
+    expect(frame.game[0]).toContain(roll)
+    expect(frame.game[0]).toContain(roll2)
   })
 
-  it('stop player from rolling more than 2 goes', function(){
-    frame.newRoll(roll);
-    frame.newRoll(roll);
-    expect(function(){
-      frame.newRoll(roll);
-    }).toThrowError('To many goes man');
+  it('stores a strike and empties array', function(){
+    var strike = 10
+    frame.newRoll(strike);
+    expect(frame.roll).toEqual([ ])
+    expect(frame.game[0]).toContain(strike)
   })
+
+  // it('sums scores up'), function(){
+  //   for (var i = 1; i < 21; i++){
+  //     frame.newRoll(roll);
+  //   }
+  //   expect(this.)
+  // }
 
 })

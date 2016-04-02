@@ -5,7 +5,7 @@
 <!-- * in each frame: roll * 2; -->
 
 * frameScore = numPinsKnockedDown + bonus;
-* after each frame: reset 10 pins;
+<!-- * after each frame: reset 10 pins; -->
 
 * isStrike (knocks down 10 pins in 1st roll) => nextFrame, bonus: numPinsNextFrame;
 * isSpare (knocks down 10 pins in 2 rolls) => bonus: numPinsNextRoll;

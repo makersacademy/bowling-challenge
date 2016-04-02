@@ -1,28 +1,35 @@
 "use strict";
 
 function Frame() {
-  this._score = 0;
-  this.isFirstRoll = true;
+  this._scores = [];
   this.PINS_ERROR = "Cannot knock down more than 10 pins."
 }
 
 Frame.prototype.logRoll = function (pins) {
   this._checkPins(pins);
-  this._score += pins;
-  this.isFirstRoll = false;
+  this._scores.push(pins);
 };
 
 Frame.prototype.getScore = function () {
-  return this._score;
+  if (this._scores.length < 1) { return 0; }
+  return this._scores[0] + this._scores[1];
 };
 
 Frame.prototype.isComplete = function () {
-  return !this.isFirstRoll;
+  return this._scores[0] === 10 || this._scores.length === 2;
+};
+
+Frame.prototype.isStrike = function () {
+  return this._scores[0] === 10;
 };
 
 Frame.prototype._checkPins = function (pins) {
   if (pins > 10 ||
-     (!this.isFirstRoll && this._score + pins > 10)) {
+     (this._isSecondRoll() && this._scores[0] + pins > 10)) {
     throw new Error(this.PINS_ERROR);
   }
+};
+
+Frame.prototype._isSecondRoll = function () {
+  return this._scores.length > 0;
 };

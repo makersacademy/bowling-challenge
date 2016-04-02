@@ -2,7 +2,7 @@
 
 function Game(frame) {
   this._scores = [];
-  this._frames = [];
+  this._completedFrames = [];
   this.currentFrame = frame;
 }
 
@@ -17,7 +17,7 @@ Game.prototype.logFrameScore = function (frame) {
 
 Game.prototype.addFrame = function (newFrame) {
   if (this.currentFrame.isComplete()) {
-    this._frames.push(this.currentFrame);
+    this._completedFrames.push(this.currentFrame);
     this.currentFrame = newFrame;
   }
 };

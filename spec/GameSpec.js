@@ -67,4 +67,12 @@ describe("Game", function() {
     expect(expection).toThrow();
   });
 
+  it('goes to frame 2 after four rolls', function() {
+    for(var i = 0; i < 4; i++) {
+      game.rollBall(4);
+    }
+    expect(game.getFrameCount()).toEqual(2);
+    expect(game.getRollCount()).toEqual(4);
+  });
+
 });

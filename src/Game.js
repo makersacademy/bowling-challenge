@@ -1,5 +1,4 @@
 function Game() {
-  this.score = 0;
   this.roll = 0;
   this.frame = 0;
   this.frames = []
@@ -27,8 +26,6 @@ Game.prototype.rollBall = function(numberOfPins) {
   if (this.frameTotal(currentFrame) > 10) {
     throw 'Error frame total can\'t be more than 10';
   }
-
-  this.score += numberOfPins;
   this.knockedDownPins.push(numberOfPins);
   this.countRoll();
 };
@@ -46,8 +43,8 @@ Game.prototype.frameTotal = function(currentFrame) {
 
 Game.prototype.countRoll = function() {
   this.roll += 1;
-  if (this.roll === 2) {
-    this.countFrames();
+  if (this.roll % 2 === 0) {
+    this.incrementFrame();
   }
 }
 
@@ -59,6 +56,6 @@ Game.prototype.getFrameCount = function() {
   return this.frame;
 };
 
-Game.prototype.countFrames = function() {
+Game.prototype.incrementFrame = function() {
   this.frame += 1;
 };

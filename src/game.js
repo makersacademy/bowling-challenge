@@ -16,8 +16,7 @@ function Game() {
 }
 
 // Game.prototype.roll = function(pins) {
-//   this._rollScore = pins
-//   this.scoreUpdate()
+//   frame.roll(pins)
 // };
 
 Game.prototype.currentScore = function() {
@@ -32,3 +31,8 @@ Game.prototype.addFrame = function(frame) {
   var rollScore = frame.isFull()
   this._score += rollScore
 }
+
+// if !frame.isFinished
+// game.roll(pins)
+// else save score in frame index
+// start new frame.

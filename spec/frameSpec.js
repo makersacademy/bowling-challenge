@@ -23,10 +23,10 @@ describe('Frame', function() {
   it('returns score for full frame(2 rolls)', function(){
     frame.roll(pins)
     frame.roll(pins)
-    expect(frame.isFull()).toEqual(pins + pins)
+    expect(frame.isFull()).toEqual(true)
   })
 
-  xit('calculates a spare', function(){
+  it('defines a spare', function(){
     frame.roll(pins)
     frame.roll(spare)
     expect(frame.isSpare()).toEqual(true)

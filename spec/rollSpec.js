@@ -5,21 +5,33 @@ describe("Roll", function(){
   var roll;
   var firstRoll;
 
+
+
+
+
+
+
   describe("first roll", function(){
 
-    it("cannot be a spare on first roll", function(){
-      roll = new Roll();
+
+    it("cannot be a spare", function(){
+      roll =  Roll.createInstance();
       expect(roll.isSpare()).toEqual(false);
     });
 
     describe("no pins fall", function(){
       beforeEach(function(){
         spyOn(Math, 'random').and.returnValue(0);
-        roll = new Roll();
+        roll =  Roll.createInstance();
       });
 
-      it("first roll returns 10 pins", function(){
+      it("numStandingPins returns 10", function(){
         expect(roll.numStandingPins()).toEqual(10);
+        // expect(roll.numStandingPins() <= numStandingPins).toBeTruthy();
+      });
+
+      it("numFelledPins returns 0", function(){
+        expect(roll.numFelledPins()).toEqual(0);
         // expect(roll.numStandingPins() <= numStandingPins).toBeTruthy();
       });
 
@@ -31,11 +43,16 @@ describe("Roll", function(){
     describe("all pins fall", function(){
       beforeEach(function(){
         spyOn(Math, 'random').and.returnValue(0.99);
-        roll = new Roll();
+        roll =  Roll.createInstance();
       });
 
-      it("first roll returns 0 pins", function(){
+      it("numStandingPins returns 0", function(){
         expect(roll.numStandingPins()).toEqual(0);
+        // expect(roll.numStandingPins() <= numStandingPins).toBeTruthy();
+      });
+
+      it("numFelledPins returns 10", function(){
+        expect(roll.numFelledPins()).toEqual(10);
         // expect(roll.numStandingPins() <= numStandingPins).toBeTruthy();
       });
 
@@ -47,10 +64,10 @@ describe("Roll", function(){
     describe("5 pins fall", function(){
       beforeEach(function(){
         spyOn(Math, 'random').and.returnValue(0.5);
-        roll = new Roll();
+        roll =  Roll.createInstance();
       });
 
-      it("first roll returns 5 pins", function(){
+      it("numStandingPins returns 5 pins", function(){
         expect(roll.numStandingPins()).toEqual(5);
         // expect(roll.numStandingPins() <= numStandingPins).toBeTruthy();
       });
@@ -62,7 +79,7 @@ describe("Roll", function(){
 
   });
 
-  describe("second roll", function(){
+  describe("5 pins fell on first roll - second roll", function(){
     beforeEach(function(){
       firstRoll  = {
         numStandingPins: function() {
@@ -77,10 +94,15 @@ describe("Roll", function(){
       };
     });
 
+    it("cannot be a strike", function(){
+      roll =  Roll.createInstance(firstRoll);
+      expect(roll.isStrike()).toEqual(false);
+    });
+
     describe("no pins fall", function(){
       beforeEach(function(){
         spyOn(Math, 'random').and.returnValue(0);
-        roll = new Roll(firstRoll);
+        roll =  Roll.createInstance(firstRoll);
       });
 
       it("same number of pins as in first roll", function(){
@@ -88,19 +110,15 @@ describe("Roll", function(){
         // expect(roll.numStandingPins() <= numStandingPins).toBeTruthy();
       });
 
-      it("is not a strike", function(){
-        expect(roll.isStrike()).toEqual(false);
-      });
-
       it("is not a spare", function(){
-        expect(roll.isStrike()).toEqual(false);
+        expect(roll.isSpare()).toEqual(false);
       });
     });
 
     describe("all remaining pins fall", function(){
       beforeEach(function(){
         spyOn(Math, 'random').and.returnValue(0.99);
-        roll = new Roll(firstRoll);
+        roll =  Roll.createInstance(firstRoll);
       });
 
       it("standing pins = 0", function(){
@@ -108,12 +126,24 @@ describe("Roll", function(){
         // expect(roll.numStandingPins() <= numStandingPins).toBeTruthy();
       });
 
-      it("is not a strike", function(){
-        expect(roll.isStrike()).toEqual(false);
+      it("is a spare", function(){
+        expect(roll.isSpare()).toEqual(true);
+      });
+    });
+
+    describe("3 pins fall", function(){
+      beforeEach(function(){
+        spyOn(Math, 'random').and.returnValue(0.5);
+        roll = Roll.createInstance(firstRoll);
       });
 
-      it("is a spare", function(){
-        expect(roll.isStrike()).toEqual(true);
+      it("numStandingPins returns 2 pins", function(){
+        expect(roll.numStandingPins()).toEqual(2);
+        // expect(roll.numStandingPins() <= numStandingPins).toBeTruthy();
+      });
+
+      it("is not a strike", function(){
+        expect(roll.isStrike()).toEqual(false);
       });
     });
   });

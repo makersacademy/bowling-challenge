@@ -3,9 +3,9 @@ describe ('Game', function() {
 
   beforeEach(function(){
 
-    game = new Game
-    game.nextFrame(Frame);
-    game.nextFrame(Frame);
+    game = new Game(Frame)
+    game.nextFrame();
+    game.nextFrame();
 
   })
 
@@ -33,15 +33,39 @@ describe ('Game', function() {
   })
 
   describe('#score', function() {
+    
     it('should save the score of bowl 1', function(){
       game.firstBowlPins(5)
-      expect(game.frameScores()).toContain(5);
+      expect(game.frameScore()).toContain(5);
     })
 
-    it('should save the score of bowl 2', function(){
+    it('should save the score of bowl 2 and return total', function(){
+      game.firstBowlPins(5)
       game.secondBowlPins(2)
-      expect(game.frameScores()).toContain(7)
+      expect(game.frameScore()).toContain(7)
+    })
+    
+    describe('strike', function (){
+
+      it('should know how to calculate a single strike', function () {
+        spyOn(game, 'frameScore').and.returnValue(['X',9])
+        expect(game.scoreCalculator()).toEqual(28)
+      })
+
+      it('should know how to calculate a double strike', function () {
+        spyOn(game, 'frameScore').and.returnValue([4,'X','X',4])
+        expect(game.scoreCalculator()).toEqual(46)
+      })
+
+      it('should know how to calculate a tripe strike', function () {
+        spyOn(game, 'frameScore').and.returnValue(['X','X','X',5])
+        expect(game.scoreCalculator()).toEqual(75)
+      })
+
+      it('should know how to calculate with max stikres', function () {
+        spyOn(game, 'frameScore').and.returnValue([5,'X','X','X','X',5])
+        expect(game.scoreCalculator()).toEqual(75)
+      })
     })
   })
-
 })

@@ -23,5 +23,6 @@ Frame.prototype.b2 = function(pins) {
 }
 
 Frame.prototype.score = function() {
+  if (this.strike) {return 'X'}
   return this.first + this.second
 }

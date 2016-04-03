@@ -8,7 +8,7 @@ describe('Game', function(){
 
   describe('#game frames and scores', function(){
 
-      it('adds bowls scores to current round score',function(){
+      it('adds bowls scores to current frame score',function(){
         game.updateScore(5)
         game.updateScore(2)
         expect(game.currentFrame).toEqual([5,2]);
@@ -25,6 +25,12 @@ describe('Game', function(){
         game.updateScore(2)
         expect(game.scoreBoard).toEqual([[5,2]]);
       });
+
+      it('detects final frame',function(){
+        game.frameIndex = 9;
+        expect(game.isFinalFrame()).toEqual(true);
+      })
+
   });
 
   describe('strike and spare',function(){
@@ -41,6 +47,14 @@ describe('Game', function(){
         expect(game.isASpare()).toEqual(true);
       })
   });
+
+  describe('gutter game', function(){
+
+    it('scoreboard has ten 0 scores',function(){
+      // for(i=1; i<=20;i++){game.updateScore(0)};
+        expect(game.scoreBoard).toEqual([[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]])
+    })
+  })
 
 
 });

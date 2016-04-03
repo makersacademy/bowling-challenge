@@ -1,6 +1,6 @@
 'use strict';
 
-function Frame(final){
+function Frame(final = false){
   this.round = [];
   // this.score = 0;
   this.pins = 10;

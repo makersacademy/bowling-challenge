@@ -9,10 +9,8 @@ function Bowling(){
 	this.gameOver = false;
 };
 
-
-
 Bowling.prototype.updateScore = function(pinsHit){
-	if(this.gameOver){
+	if(this.round >10){
 		throw new Error("The game has now ended");
 	} else if(this.finalRound && this.rollNumber !=1){
 		this.currentScore += pinsHit;
@@ -20,30 +18,28 @@ Bowling.prototype.updateScore = function(pinsHit){
 		this.confirmMultipleStrikes(pinsHit);
 		this.currentScore += pinsHit*(1 + this.spare)*(1 + this.strike);
 	};
-		this.confirmStrike(pinsHit);
-		this.confirmSpare(pinsHit);
-		this.gameEnded();
-		this.lastHit = pinsHit;
-		this.changeRoundNumber();
-		this.changeRollNumber() ;
+	this.confirmStrike(pinsHit);
+	this.confirmSpare(pinsHit);
+	this.gameEnded();	
+	this.changeRoundNumber();
+	this.changeRollNumber() ;
+	this.lastHit = pinsHit;
 };
 
-Bowling.prototype.changeRollNumber = function(){
-	
-	if(this.finalRound && this.rollNumber ==2 && (this.strike==1 || this.spare==1) ){
+Bowling.prototype.changeRollNumber = function(){	
+	if(this.finalRound && this.rollNumber ==2 && (this.lastHit==10 || this.spare==1) ){
 		this.rollNumber = 3;
-	} else if(this.rollNumber===1 && (this.strike==0 || this.finalRound)){
-		this.rollNumber = 2 ;
+	} else if((this.rollNumber===1 && this.strike==1 && !this.finalRound) || this.rollNumber==2 ){
+		this.rollNumber = 1 ;
+		this.confirmFinalRound();
 	} else {
-				this.rollNumber = 1 ;
+		this.rollNumber = 2 ;
 	}
 };
 
 Bowling.prototype.changeRoundNumber = function(){
-	if(!this.finalRound && (this.rollNumber===2 || this.strike===1 )){
+	if((!this.finalRound && (this.rollNumber===2 || this.strike!=0 )) || this.gameOver){
 		this.round +=1;
-
-		this.confirmFinalRound();
 	}
 };
 
@@ -56,7 +52,7 @@ Bowling.prototype.confirmSpare = function(pinsHit){
 };
 
 Bowling.prototype.confirmStrike = function(pinsHit){
-if((this.rollNumber==1 && (pinsHit==10 || this.strike!=0)) || (this.finalRound & this.strike ==1) ){
+if(pinsHit==10 || (this.rollNumber==1 && this.strike!=0) ){
 		this.strike=1;
 	} else {
 		this.strike =0;
@@ -76,7 +72,7 @@ Bowling.prototype.confirmFinalRound = function(){
 };
 
 Bowling.prototype.gameEnded = function(){
-	if(this.finalRound ==true && ((this.strike==0 && this.spare==0 && this.rollNumber==2) || this.rollNumber==3)){
+	if(this.finalRound ==true && ((this.lastHit!=10 && this.spare==0 && this.rollNumber==2) || this.rollNumber==3)){
 	 this.gameOver = true	;
 	};
 };

@@ -20,7 +20,7 @@ function enterPinsHit(id) {
     $('#b'+nextCell).show();
     console.log(nextCell + " boo");
   }
-	if(bowling.strike===1 && bowling.rollNumber==1){		
+	if(bowling.strike===1 && bowling.lastHit==10){		
 		$('#b'+nextCell).hide();
 		moveCell = theNextCell(nextCell);
 		console.log(moveCell);

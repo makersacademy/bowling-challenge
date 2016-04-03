@@ -75,4 +75,14 @@ describe("Game", function() {
     expect(game.getRollCount()).toEqual(4);
   });
 
+  describe('Bonus points', function() {
+    it('gets points from 1st roll in next frame after spare', function() {
+      game.rollBall(4);
+      game.rollBall(6);
+      game.rollBall(5);
+      expect(game.getScore()).toEqual(19);
+    });
+  });
+
+
 });

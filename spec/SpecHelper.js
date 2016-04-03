@@ -14,20 +14,20 @@
 //   });
 // });
 function throwStrike(frame){
-  frame._firstBall = 10;
+  frame.firstBall = 10;
 }
 
 function throwSpare(frame){
-  frame._firstBall = 4;
-  frame._secondBall = 6;
+  frame.firstBall = 4;
+  frame.secondBall = 6;
 }
 
 function throwNormal(frame){
-  frame._firstBall = 2;
-  frame._secondBall = 3;
+  frame.firstBall = 2;
+  frame.secondBall = 3;
 }
 
 function throwGutters(frame){
-  frame._firstBall = 0;
-  frame._secondBall = 0;
+  frame.firstBall = 0;
+  frame.secondBall = 0;
 }

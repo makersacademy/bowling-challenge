@@ -13,10 +13,15 @@ Game.prototype.nextFrame = function() {
     this.currentGame = [new Frame];}
   else
     {this.currentGame.push(new Frame);}
+  this.frameScore
 }
 
 Game.prototype.currentFrame = function() {
  return last(this.currentGame)
+}
+
+Game.prototype.knockedPins = function() {
+
 }
 
 Game.prototype.firstBowlPins = function(pins) {
@@ -28,31 +33,62 @@ Game.prototype.secondBowlPins = function(pins) {
 }
 
 Game.prototype.frameScore = function() {
-  var score=[]
-  for (i=0; i<this.currentGame.length;i++){
+  var frames = this.currentGame
+  for (i=0; i<frames.length;i++){
+   
+    if (frames[i].isStrike())
+        {this.strike(i)}
+    else if (frames[i].isSpare())
+        {this.spare(i)}
+    else{frames[i].total}
+
+  }
+}
+
+Game.prototype.spare = function(i) {
+  var frames = this.currentGame
+  frames[i].bonus(frames[i+1].first)
+} 
+
+Game.prototype.strike = function(i) {
+    var frames = this.currentGame
+    if (frames[i+2])
+      { 
+        if (frames[i+1].isStrike() && frames[i+2].isStrike() )
+        {
+          frames[i].bonus(20)
+        }
+
+        else if (frames[i+1].isStrike())
+        {
+          frames[i].bonus(10+(frames[i+2].first))
+        }
+
+        else
+        {frames[i].bonus((frames[i+1].first)+(frames[i+1].second))}
+      }
+    else
+      {frames[i].bonus((frames[i+1].first)+(frames[i+1].second))}
+  }
+
+Game.prototype.score = function() {
+  var score = []
+  this.frameScore()
+  for (i=0; i<this.currentGame.length;i++) {
+
     score.push(this.currentGame[i].score())
   }
+
   return score
 }
 
-Game.prototype.scoreCalculator = function() {
-  var score = 0
-  var strike=0
-  var temp = this.frameScore()
-  for(i=0; i<temp.length; i++) {
-    if (temp[i]!=='X') {score+=temp[i]}
-    if (temp[i] ==='X') {strike += 1}
-    if (temp[i-1] ==='X' && temp[i]!=='X')
-        {score +=(this.strike(strike,temp[i]))
-          strike=0
-        }
+Game.prototype.total = function () {
+  var scores = this.score()
+  var sum = 0 
+
+  for (i=0; i<scores.length;i++) {
+    sum += scores[i]
   }
-  return score
-}
 
-Game.prototype.strike = function(strikes, pins) {
-  if (strikes ===1) {return (1*10)+(pins*strikes)};
-  if (strikes ===2) {return (3*10)+(2*pins)}
-  if (strike >3) {}
-  return (5*10)+(4*pins)
+  return sum
 }

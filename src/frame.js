@@ -5,13 +5,17 @@ function Frame() {
   this.spare=false
 }
 
-Frame.prototype.strike = function() {
+Frame.prototype.isStrike = function() {
+  return this.strike
+}
 
+Frame.prototype.isSpare = function() {
+  return this.spare
 }
 
 Frame.prototype.b1 = function(pins) {
   if (pins === 10) {this.strike = true;}
-  else {this.first=pins;}
+  this.first=pins
 
 
 }
@@ -19,10 +23,14 @@ Frame.prototype.b1 = function(pins) {
 Frame.prototype.b2 = function(pins) {
   if (this.first + pins === 10) {
     this.spare = true;}
-  else { this.second=pins;}
+  this.second=pins
 }
 
 Frame.prototype.score = function() {
-  if (this.strike) {return 'X'}
-  return this.first + this.second
+  if (this.strike) {return ((this.total)+(this.first))}
+  if (this.spare)  {return ((this.total)+(this.first)+this.second)}
+  else {return this.first + this.second}
+}
+Frame.prototype.bonus = function(total) {
+  this.total = total
 }

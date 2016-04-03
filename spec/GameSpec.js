@@ -8,8 +8,13 @@ describe('Game', function(){
     game = new Game();
   });
 
-  it('score starts at 0', function(){
-    expect(game.score).toEqual(0);
-  });
+  describe('to start', function(){
+    it('has empty frames array', function(){
+      expect(game.frames).toEqual([]);
+    });
+    it('has 0 score', function(){
+      expect(game.score).toEqual(0);
+    });
+  })
 
 });

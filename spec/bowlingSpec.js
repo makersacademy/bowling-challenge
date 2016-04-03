@@ -35,6 +35,10 @@ describe("Bowling", function() {
     expect(game1.spare).toEqual(false);
   });
 
+  it("should start with finalFrame set to false", function() {
+    expect(game1.finalFrame).toEqual(false);
+  });
+
 
   describe("#pinsKnockedDown", function() {
     it("should add the pins entered to the firstBowl variable", function() {
@@ -145,6 +149,14 @@ describe("Bowling", function() {
       game1.secondBowl = 7;
       game1.resetBowlScores();
       expect(game1.secondBowl).toEqual(0);
+    });
+  });
+
+  describe("#isFinalFrame", function() {
+    it("should change finalFrame to true if currentFrame === 10", function() {
+      game1.currentFrame = 10;
+      game1.isFinalFrame();
+      expect(game1.finalFrame).toEqual(true);
     });
   });
 

@@ -58,9 +58,8 @@ describe('Frame', function() {
   })
 
   it('declares finished frame', function(){
-    frame.roll(pins)
-    frame.roll(pins)
-    frame.closeFrame()
+    frame.play(pins)
+    frame.play(pins)
     expect(frame._isFinished).toEqual(true)
   })
 

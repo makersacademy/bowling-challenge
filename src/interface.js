@@ -3,6 +3,8 @@ $(document).ready(function () {
   var game = new Game(frame);
 
   createScoreTable();
+  createPinButtons();
+  updateGameProgress();
 
   function createScoreTable() {
     for (var i = 1; i <= 10; i ++) {
@@ -11,5 +13,16 @@ $(document).ready(function () {
     }
     $("#score-table").append("<tr><td>" + 10 + "</td><td>" + 3 + "</td><td id='frame" + 10 + "-roll3'></td><td><td></tr>");
   };
+
+  function createPinButtons() {
+    for (var i = 1; i <= 10; i ++) {
+      $("#pin-buttons").append("<button>" + i + "</button>");
+    }
+  };
+
+  function updateGameProgress() {
+    $("#total").text(game.getScore());
+    $("#current-frame").text(game.frameNum());
+  }
 
 });

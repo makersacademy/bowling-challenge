@@ -1,7 +1,32 @@
 body {
-  font-family: "Georgia";
+  background-image: url("http://wallpaper.pickywallpapers.com/1920x1080/death-star-bowling.jpg");
+  background-size: cover;
+  color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13pt;
+  padding-top: 10px;
 }
 
 h1 {
   text-transform: uppercase;
+  text-align: center;
+  font-family: "Arial Black";
+  font-size: 45pt;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #FFFF66;
+}
+
+table {
+  position: absolute;
+  right: 25%;
+  top: 20%;
+  font-weight: 100;
+}
+
+section {
+  position: absolute;
+  left: 15%;
+  top: 20%;
+  font-weight: bold;
 }

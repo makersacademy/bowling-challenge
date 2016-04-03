@@ -1,10 +1,4 @@
 function Bowling() {
-  this.scoreSheet = {1: [], 2: [],
-                     3: [], 4: [],
-                     5: [], 6: [],
-                     7: [], 8: [],
-                     9: [], 10: []
-                    };
   this.currentFrame = 1;
   this.currentBowl = 1;
   this.firstBowl = 0;
@@ -12,19 +6,7 @@ function Bowling() {
   this.totalScore = 0;
   this.strike = false;
   this.spare = false;
-  this.firstTurn = true;
 }
-
-// Bowling.prototype.calculateScore = function (pins) {
-//   if(this.strike) {
-//     this.totalScore += pins * 2;
-//   } else {
-//     this.totalScore += pins;
-//   }
-//     this.isStrike(pins);
-//     this.addScore(pins);
-//     this.frameNumber(pins);
-// };
 
 Bowling.prototype.pinsKnockedDown = function (pins) {
   if(this.currentBowl === 1) {
@@ -32,18 +14,9 @@ Bowling.prototype.pinsKnockedDown = function (pins) {
   } else {
     this.secondBowl = pins;
   }
-  // this.isStrike(pins);
-  // this.isSpare();
-  // if(this.currentBowl === 2 || this.strike === true) {
-  //   this.addScore();
-  //   this.resetBowlScores();
-  // }
-  // this.frameNumber(pins);
-  // this.changeBowlNum();
 };
 
 Bowling.prototype.addScore = function (pins) {
-  // this.scoreSheet[this.currentFrame].push(pins);
   this.pinsKnockedDown(pins);
   if(this.currentBowl === 1) {
     this.totalScore += this.firstBowl;
@@ -60,12 +33,6 @@ Bowling.prototype.addScore = function (pins) {
   this.isStrike(pins);
   this.frameNumber(pins);
   this.changeBowlNum();
-  // if(this.strike !== true) {
-  //   this.totalScore += this.firstBowl + this.secondBowl;
-  // } else {
-  //   var totalFrame = this.firstBowl + this.secondBowl;
-  //   this.totalScore += totalFrame * 2
-  // }
 };
 
 Bowling.prototype.frameNumber = function (pins) {

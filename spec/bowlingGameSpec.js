@@ -11,13 +11,13 @@ describe('bowlingGame', function() {
       expect(game.score()).toEqual(0);
     });
     it('starts with empty array of pins', function() {
-      expect(game.pins()).toEqual([]);
+      expect(game.pins).toEqual([]);
     });
     it('starts with frame 0', function() {
-      expect(game.frame()).toEqual(1);
+      expect(game._frame).toEqual(1);
     });
     it('starts with roll 0', function() {
-      expect(game.roll()).toEqual(0);
+      expect(game._roll).toEqual(0);
     });
   });
 
@@ -25,14 +25,14 @@ describe('bowlingGame', function() {
     it('adds number of pins knocked down to array', function() {
       game.knockedDownPins(3);
       game.knockedDownPins(4);
-      expect(game.pins()).toEqual([3, 4]);
+      expect(game.pins).toEqual([3, 4]);
     });
 
     it('adds number of roll after each roll', function() {
       game.knockedDownPins(3);
-      expect(game.roll()).toEqual(1);
+      expect(game._roll).toEqual(1);
       game.knockedDownPins(3);
-      expect(game.roll()).toEqual(2);
+      expect(game._roll).toEqual(2);
     });
 
     it('ends the frame if there is a strike', function() {
@@ -47,11 +47,24 @@ describe('bowlingGame', function() {
       game.knockedDownPins(4);
       game.addToScore();
       expect(game.score()).toEqual(7);
-      expect(game.frame()).toEqual(2);
-      expect(game.roll()).toEqual(0);
+      expect(game._frame).toEqual(2);
+      expect(game._roll).toEqual(0);
     });
   });
 
+  describe('#strike', function() {
+    it('changes strike to true', function() {
+      game.knockedDownPins(10);
+      expect(game._strike).toEqual(true);
+    });
 
+    it('doubles the next score after a strike', function() {
+      game.knockedDownPins(10);
+      game.knockedDownPins(2);
+      game.knockedDownPins(2);
+      game.addToScore();
+      expect(game.score()).toEqual(18);
+    });
+  });
 
 });

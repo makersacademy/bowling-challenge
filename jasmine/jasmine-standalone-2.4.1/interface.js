@@ -1,21 +1,25 @@
 var bowling = new Bowling()
 
 document.getElementById("totalScore").innerHTML= "Current Score: "+ bowling.currentScore
-// $("#totalScore").text("work");
+
 function enterPinsHit(id) {
     var pinsKnocked = prompt("Please enter how many pins you knocked down")
+    if(pinsKnocked=="" || pinsKnocked==null){
+    	enterPinsHit(id);
+    } else {
+	    document.getElementById(id).innerHTML = pinsKnocked;
+	    document.getElementById(id).setAttribute('value', pinsKnocked); 
 
-    document.getElementById(id).innerHTML = pinsKnocked;
-    console.log(bowling.lastHit);
-    console.log(bowling.round);
-    console.log(bowling.rollNumber);
-    bowling.updateScore(parseInt(pinsKnocked));
-		console.log(bowling.spare);
-if(document.getElementById(id).value){
-	btn.style.visibility === "hidden";
-}
+	    bowling.updateScore(parseInt(pinsKnocked));
+	    
+		}
+
+		if(document.getElementById(id).value){
+			btn.style.visibility === "hidden";
+		}
+		
 
 
 document.getElementById("totalScore").innerHTML= "Current Score: "+ bowling.currentScore
-// $("#totalScore").text("work");
+
 }

@@ -12,15 +12,20 @@ Game.prototype.score = function() {
   var game = this;
 
   for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    if (isStrike()) {
-      score += getStrikeScore();
-      rollIndex++; //only increments by 1 for a strike scenrio
-    } else if (isSpare()) {
-      score += getSpareScore();
-      rollIndex += 2; //increments by 2 because 2 rolls
-    } else {
-      score += getStandardScore();
-      rollIndex += 2 //increments by 2 because 2 rolls
+    if(frameIndex <= 9) {
+      if (isStrike()) {
+        score += getStrikeScore();
+        rollIndex++; //only increments by 1 for a strike scenrio
+      } else if (isSpare()) {
+        score += getSpareScore();
+        rollIndex += 2; //increments by 2 because 2 rolls
+      } else {
+        score += getStandardScore();
+        rollIndex += 2 //increments by 2 because 2 rolls
+      }
+    }
+    else {
+      
     }
   }
   return score;

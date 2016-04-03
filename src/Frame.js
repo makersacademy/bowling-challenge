@@ -1,12 +1,12 @@
 'use strict';
 
-function Frame(final = false){
+function Frame(final){
   this.round = [];
   // this.score = 0;
   this.pins = 10;
   this.ballsRolled = 0;
   this.frameComplete = false;
-  this.finalFrame = final;
+  this.finalFrame = typeof final !== 'undefined' ? final : false;
   this.isStrike = false;
   this.isSpare = false;
 }

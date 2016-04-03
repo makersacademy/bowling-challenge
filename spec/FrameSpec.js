@@ -71,4 +71,22 @@ describe('Frame', function() {
     expect(frame.finalize()).toEqual(19)
   })
 
+  it('completes game when 10 frames have been completed', function(){
+    for (var i = 1; i < 21; i++) {
+      frame.newRoll(roll);
+    };
+    expect(function(){
+      frame.newRoll(roll);
+    }).toThrowError('Game completed')
+  });
+
+  it('allows second go if 10th frame is a strike', function(){
+    for (var i = 1; i < 19; i++) {
+      frame.newRoll(roll);
+    };
+    frame.newRoll(strike);
+    frame.newRoll(roll);
+    expect(frame.roll).toContain(roll)
+  })
+
 })

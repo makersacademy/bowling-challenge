@@ -1,15 +1,28 @@
-function Frame() {
-  this.roll1 = 0
-  this.roll2 = 0
-  this.bonus = 0
-}
+function Frame(previous = "open", twoPrevious = "open") {
+  this.roll1 = 0;
+  this.roll2 = 0;
+  this.score = 0;
+  this.previous = previous;
+  this.twoPrevious = twoPrevious;
+  this.bonus = "open"
 
-Frame.prototype.firstRoll = function(score){
-  this.roll1 = score;
+
+
+
+this.firstRoll = function(ballOneScore){
+  this.roll1 = ballOneScore;
+  this.checkBonus();
 };
 
-Frame.prototype.secondRoll = function(score){
-  this.roll2 = score;
+this.secondRoll = function(ballTwoScore){
+  this.roll2 = ballTwoScore;
+  this.checkBonus();
+};
+
+}
+
+Frame.prototype.setScore = function(score){
+  this.score = score;
 };
 
 Frame.prototype.checkBonus= function(score){
@@ -21,5 +34,7 @@ Frame.prototype.checkBonus= function(score){
   }
   else {
     this.bonus = "open";
-  };
+  }
 };
+
+// module.exports = Frame;

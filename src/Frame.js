@@ -44,11 +44,15 @@ Frame.prototype.nextRoll = function() {
   this._roll += 1;
 }
 
+Frame.prototype.getTotal = function() {
+  return this.getFirstRoll() + this.getSecondRoll();
+}
+
 Frame.prototype.isSpare = function() {
   if (this.isStrike()) {
     return false;
   }
-  return this.getFirstRoll() + this.getSecondRoll() === this.ALL_PINS;
+  return this.getTotal() === this.ALL_PINS;
 }
 
 Frame.prototype.isStrike = function() {

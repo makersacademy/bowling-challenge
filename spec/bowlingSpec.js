@@ -12,6 +12,23 @@ describe ('Game', function() {
     }
   };
 
+  it("pushes pins from roll into rolls array", function () {
+    game.roll(5);
+    expect(game.rolls).toContain(5);
+  });
+
+  it("throws error when game tries to exceed 10 frames", function() {
+    rollMany(0, 20);
+    // expect( function(){ game.roll(4); } ).toThrow(new Error("The game has ended"));
+    // game.roll(4);
+    expect(game.frameError).toEqual(true);
+  });
+
+  it("frame error is true when pins in a frame exceeds 10", function(){
+    game.roll(9);
+    game.roll(4);
+    expect(game.frameArr).toEqual([9]);
+  });
 
 
   it("can roll spare", function () {
@@ -45,18 +62,6 @@ describe ('Game', function() {
     expect(game.score()).toEqual(300);
   });
 
-  // describe('10th frame logic', function(){
-
-    it('gives the bonus points for strikes on the 10th frame & then spare', function(){
-      rollMany(1, 18);
-      // score will be 18
-      game.roll(10);
-      game.roll(4);
-      game.roll(6);
-      expect(game.score()).toEqual(38);
-    });
-
-  // });
 
 
 });

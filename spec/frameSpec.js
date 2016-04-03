@@ -1,6 +1,6 @@
 /*frame
 
-if regular rolls, adds whole array
+if regular rolls, adds both to score
 
 if either first or second index 10, then its a strike
 
@@ -27,10 +27,13 @@ JUST ADD ALL THREE TOGETHER, BY HOLDING SCORE IF FIRST TWO FRAMES ARE STRIKES
 describe('Frame', function() {
   var frame;
   var pins;
+  var strike;
 
   beforeEach(function() {
-    frame = new Frame()
-    pins  = 3
+    frame  = new Frame()
+    pins   = 3
+    spare  = 7
+    strike = 10
   })
 
   it('begins with an empty scoreboard', function(){
@@ -48,9 +51,32 @@ describe('Frame', function() {
     expect(frame._score).toEqual(pins + pins)
   })
 
-  it('Does not allow 3 rolls', function(){
+  it('has max of 2 rolls', function(){
     frame.roll(pins)
     frame.roll(pins)
     expect(function() { frame.roll(pins) }).toThrowError('Two rolls per frame!')
+  })
+
+  it('declares finished frame', function(){
+    frame.roll(pins)
+    frame.roll(pins)
+    frame.closeFrame()
+    expect(frame._isFinished).toEqual(true)
+  })
+
+  it('declares frame as strike', function(){
+    frame.play(strike)
+    expect(frame._isStrike).toEqual(true)
+  })
+
+  it('declares frame as spare', function(){
+    frame.play(pins)
+    frame.play(spare)
+    expect(frame._isSpare).toEqual(true)
+  })
+
+  xit('stores strike with X', function(){
+    frame.play(strike)
+    expect(frame._scoreArray).toEqual(['X'])
   })
 })

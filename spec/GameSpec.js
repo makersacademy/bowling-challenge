@@ -42,6 +42,18 @@ describe('Game', function()
       }
     )
 
+    it('scores a strike', function()
+      {
+        game.hit(10);
+        game.hit(3);
+        game.hit(5);
+        for( roll = 1; roll <= 17; roll++ )
+          {
+            game.hit(0);
+          }
+        expect( game.getTotal() ).toEqual(26);
+      }
+    )
 
   }
 )

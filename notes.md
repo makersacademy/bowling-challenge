@@ -16,3 +16,12 @@ arrays???
 //     this.totalScore = rollScores[this.rollNumber - 1] + rollScores[this.rollNumber];
 //     rollNumber +=2;
 //   }
+
+frames
+-total
+-nextframe
+-istenth
+
+Strikes
+- next hit is automatically 0
+- 

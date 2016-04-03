@@ -1,11 +1,11 @@
-
 Bowling Challenge
 =================
-
 
 Introduction :bowling:
 ----------
 This is a little web app that counts and sums the scores of a bowling game, written in JavaScript and test-driven using Jasmine.
+
+![Imgur](http://i.imgur.com/KPQCkyT.png)
 
 Features :star2:
 -----------
@@ -20,6 +20,11 @@ How to use Bowling :page_with_curl:
 To clone this repo:
 ```
 $ git clone git@github.com:junyuanxue/bowling-challenge.git
+```
+To interact with the user interface:
+```
+$ cd bowling-challenge
+$ open index.html
 ```
 
 Testing :white_check_mark:

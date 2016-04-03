@@ -43,4 +43,28 @@ describe('Frame', function(){
     frame.play(5);
     expect(frame.shotsHistory).toEqual([4,5]);
   })
+
+  describe('isLastFrame', function(){
+    it('three shots if first is a strike', function(){
+      frame.isLastFrame = true;
+      frame.play(10);
+      expect(frame.shotsAllowed).toEqual(3);
+    })
+
+    it('three shots if spare', function(){
+      frame.isLastFrame = true;
+      frame.play(5);
+      frame.play(5);
+      expect(frame.shotsAllowed).toEqual(3);
+    })
+
+    it('can play third shot', function(){
+      frame.isLastFrame = true;
+      frame.play(5);
+      frame.play(5);
+      frame.play(5);
+      expect(frame.score).toEqual(15);
+      expect(frame.shotsHistory).toEqual([5,5,5])
+    })
+  })
 })

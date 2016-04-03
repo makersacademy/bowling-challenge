@@ -1,9 +1,10 @@
 function Game(){
-  this._frames = []
-  this.score = 0
-  this.currentFrame
+  this.currentFrame = new Frame();
+  this.framesPlayed = 0;
+  this._frames = [];
+  this.score = 0;
 }
 
-Game.prototype.addFrame = function(frame){
-  this._frames.push(frame)
-}
+Game.prototype.nextFrame = function () {
+  checkFrameOver();
+};

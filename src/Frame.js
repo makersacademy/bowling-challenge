@@ -1,3 +1,5 @@
+"use strict";
+
 function Frame(last) {
   this.score = 0;
   this.shotsAllowed = 2;
@@ -8,6 +10,16 @@ function Frame(last) {
   this.isComplete = false;
   this.isLastFrame = last || false;
 }
+
+Frame.prototype.play = function (score) {
+  this.score += score;
+  this.shotsPlayed ++;
+  this.checkComplete();
+  this.checkSpare();
+  this.checkStrike();
+  this.addToHistory(score);
+  this.checkLastFrame();
+};
 
 Frame.prototype.checkStrike = function(){
   if(this.score === 10 && this.shotsPlayed === 1){
@@ -21,15 +33,6 @@ Frame.prototype.checkSpare = function(){
   }
 }
 
-Frame.prototype.play = function (score) {
-  this.score += score;
-  this.shotsPlayed ++;
-  this.checkComplete();
-  this.checkSpare();
-  this.checkStrike();
-  this.addToHistory(score);
-};
-
 Frame.prototype.checkComplete = function(){
   if (this.score === 10 || this.shotsPlayed === this.shotsAllowed){
     this.isComplete = true;
@@ -38,4 +41,12 @@ Frame.prototype.checkComplete = function(){
 
 Frame.prototype.addToHistory = function (score) {
   this.shotsHistory.push(score)
+};
+
+Frame.prototype.checkLastFrame = function () {
+  if(this.isLastFrame){
+    if(this.isStrike || this.isSpare){
+      this.shotsAllowed = 3;
+    }
+  }
 };

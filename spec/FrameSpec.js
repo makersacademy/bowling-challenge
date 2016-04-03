@@ -4,6 +4,7 @@ describe('Frame', function() {
     game = new Game();
     frame = new Frame();
     roll = 3
+    strike = 10
   });
 
   // it('checks number of pins knocked down', function(){
@@ -34,18 +35,40 @@ describe('Frame', function() {
     expect(frame.game[0]).toContain(roll2)
   })
 
-  it('stores a strike and empties array', function(){
-    var strike = 10
-    frame.newRoll(strike);
-    expect(frame.roll).toEqual([ ])
-    expect(frame.game[0]).toContain(strike)
+  it('stores mutiple frames', function(){
+    for (var i = 1; i < 5; i++) {
+      frame.newRoll(roll);
+    };
+    expect(frame.game.length).toBe(2);
   })
 
-  // it('sums scores up'), function(){
-  //   for (var i = 1; i < 21; i++){
-  //     frame.newRoll(roll);
-  //   }
-  //   expect(this.)
-  // }
+  it('stores a strike and empties array', function(){
+    frame.newRoll(strike);
+    expect(frame.roll).toEqual([ ])
+    expect(frame.game[0][0]).toEqual(strike)
+    expect(frame.game[0][1]).toEqual(0)
+  })
+
+  it('sums scores up for two frames', function(){
+    for (var i = 1; i < 5; i++) {
+      frame.newRoll(roll);
+    };
+    expect(frame.finalize()).toEqual(12)
+  })
+
+  it('Adds strike bonus to finalzie scores', function(){
+    frame.newRoll(strike);
+    frame.newRoll(3);
+    frame.newRoll(3);
+    expect(frame.finalize()).toEqual(22)
+  })
+
+  it('Adds spare bonus to finalzie scores', function(){
+    frame.newRoll(7);
+    frame.newRoll(3);
+    frame.newRoll(3);
+    frame.newRoll(3);
+    expect(frame.finalize()).toEqual(19)
+  })
 
 })

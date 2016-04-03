@@ -7,22 +7,33 @@ $('#br1r1').show();
 
 function enterPinsHit(id) {
 	nextCell = theNextCell(id);
-  var pinsKnocked = prompt("Please enter how many pins you knocked down")
-  if(pinsKnocked=="" || pinsKnocked==null){
-    enterPinsHit(id);
-  } else {    
-    bowling.updateScore(parseInt(pinsKnocked));	 
-    document.getElementById(id).innerHTML = pinsKnocked;
-    $('#b'+id).hide(); 	
-    showNextCell(id);
-  	skipCell(id);	
- 	}
+	do {
+		var pinsKnocked = prompt("Please enter how many pins you knocked down");
+	}
+	while(pinsKnocked=="" || pinsKnocked==null)
+	while(pinsKnocked >10 || pinsKnocked <0){
+		var pinsKnocked = prompt("Please enter a valid number of pins");
+	}
+	while((bowling.lastHit+parseInt(pinsKnocked)>10 && bowling.rollNumber==2 && bowling.lastHit <10) || pinsKnocked=="" || pinsKnocked==null){
+  	var pinsKnocked = prompt("Please enter a valid number of pins.");
+  }   
+  bowling.updateScore(parseInt(pinsKnocked));	 
+  document.getElementById(id).innerHTML = pinsKnocked;
+  $('#b'+id).hide(); 	
+  showNextCell(id);
+  skipCell(id);	
 	document.getElementById("totalScore").innerHTML= "Current Score: "+ bowling.currentScore
 }
 
 function theNextCell(id){
 	if(id!='r10r3'){
 		return $('#'+id).closest('td').next()[0].id;
+	}
+}
+
+function theLastCell(id){
+	if(id!='r1r1'){
+		return $('#'+id).closest('td').prev()[0].id;
 	}
 }
 
@@ -41,5 +52,7 @@ function showNextCell(id){
     $('#b'+nextCell).show();
   }
 }
+
+
 
 

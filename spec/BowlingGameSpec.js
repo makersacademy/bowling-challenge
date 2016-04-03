@@ -52,13 +52,4 @@ describe("BowlingGame", function(){
     expect(bowling._frames.length).toEqual(2);
   })
 
-  // it('updates a spare frame after the next ball', function(){
-  //   bowling.startGame();
-  //   bowling.enterScore(7);
-  //   bowling.enterScore(3);
-  //   bowling.enterScore(5);
-  //   expect(bowling.getPreviousFrame().outcome).toEqual(15);
-  // })
-
-
 });

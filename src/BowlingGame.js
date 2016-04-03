@@ -73,8 +73,6 @@ BowlingGame.prototype.calculateScore = function() {
   return score;
 };
 
-
-
 if (!Array.prototype.last){
     Array.prototype.last = function(){
         return this[this.length - 1];

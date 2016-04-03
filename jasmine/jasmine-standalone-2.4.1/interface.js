@@ -9,12 +9,13 @@ function enterPinsHit(id) {
 	nextCell = theNextCell(id);
 	do {
 		var pinsKnocked = prompt("Please enter how many pins you knocked down");
+		console.log(typeof pinsKnocked);
 	}
-	while(pinsKnocked=="" || pinsKnocked==null)
+	while(pinsKnocked=="" || pinsKnocked==null || /[\D\s]/.test(pinsKnocked))
 	while(pinsKnocked >10 || pinsKnocked <0){
 		var pinsKnocked = prompt("Please enter a valid number of pins");
 	}
-	while((bowling.lastHit+parseInt(pinsKnocked)>10 && bowling.rollNumber==2 && bowling.lastHit <10) || pinsKnocked=="" || pinsKnocked==null){
+	while((bowling.lastHit+parseInt(pinsKnocked)>10 && bowling.rollNumber==2 && bowling.lastHit <10) || pinsKnocked=="" || pinsKnocked==null || /[\D\s]/.test(pinsKnocked)){
   	var pinsKnocked = prompt("Please enter a valid number of pins.");
   }   
   bowling.updateScore(parseInt(pinsKnocked));	 

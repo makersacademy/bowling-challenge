@@ -3,47 +3,28 @@ function Game() {
   this.frame = 0;
   this.frames = []
   for(var i = 0; i < 10; i++) {
-    this.frames.push([]);
+    this.frames.push(new Frame());
   }
-  this.knockedDownPins = []
 }
 
 Game.prototype.getScore = function() {
   var total = 0;
   for(var i = 0; i < this.frames.length; i++) {
-    var currentFrameTotal = this.frameTotal(this.frames[i]);
+    var currentFrameTotal = this.frames[i].getTotal();
     total += currentFrameTotal;
-
-    var isSpare = currentFrameTotal === 10;
-
-    if (isSpare) {
+    if (this.frames[i].isSpare()) {
       var nextFrame = this.frames[i+1];
-      if(nextFrame.length !== 0) {
-        total += nextFrame[0];
-      }
+      total += nextFrame.getFirstRoll();
     }
-
   }
   return total;
 };
 
 Game.prototype.rollBall = function(numberOfPins) {
   var currentFrame = this.frames[this.frame];
-  currentFrame.push(numberOfPins);
-  this.knockedDownPins.push(numberOfPins);
+  currentFrame.rollBall(numberOfPins);
   this.countRoll();
 };
-
-Game.prototype.frameTotal = function(currentFrame) {
-  if(currentFrame.length === 0) {
-    return 0;
-  }
-  if(currentFrame.length === 1) {
-    return currentFrame[0];
-  }
-  return currentFrame[0] + currentFrame[1];
-};
-
 
 Game.prototype.countRoll = function() {
   this.roll += 1;

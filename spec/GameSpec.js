@@ -7,25 +7,21 @@ describe("Game", function() {
     frame = 'new Frame';
   });
 
-  it('has a starting score of 0', function() {
-    expect(game.getScore()).toEqual(0);
-  });
+  describe('scoring', function() {
+    it('has a starting score of 0', function() {
+      expect(game.getScore()).toEqual(0);
+    });
 
-  it('may not change the score', function() {
-    game.rollBall(0);
-    expect(game.getScore()).toEqual(0);
-  });
+    it('may not change the score', function() {
+      game.rollBall(0);
+      expect(game.getScore()).toEqual(0);
+    });
 
-  it('increase total score by amount of pins', function() {
-    game.rollBall(8);
-    expect(game.getScore()).toEqual(8);
-  });
-
-  it('keeps track of knockedDownPins', function() {
-    game.rollBall(4);
-    game.rollBall(4);
-    expect(game.knockedDownPins).toContain(4,4);
-  });
+    it('increase total score by amount of pins', function() {
+      game.rollBall(8);
+      expect(game.getScore()).toEqual(8);
+    });
+  })
 
   it('counts the rolls per frame', function() {
     game.rollBall(4);

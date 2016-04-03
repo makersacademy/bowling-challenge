@@ -55,5 +55,23 @@ describe('Game', function()
       }
     )
 
+    it('scores a perfect game', function()
+      {
+
+        for( roll = 1; roll <= 12; roll++ )
+          {
+            game.hit(10);
+          }
+        expect( game.getTotal() ).toEqual(300);
+      }
+    )
+
+    it('scores mixed game', function()
+      {
+        game.rollScores = [6, 3, 7, 1, 8, 2, 7, 2, 10, 6, 2, 7, 3, 10, 8,0, 7, 3, 10];
+        expect( game.getTotal() ).toEqual(135);
+      }
+    )
+
   }
 )

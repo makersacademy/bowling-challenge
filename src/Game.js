@@ -1,47 +1,32 @@
 function Game()
   {
     this.totalScore = 0;
-    this.roll = 0
     this.rollScores = [];
     this.FRAMES = 10;
   }
 
 Game.prototype.hit = function(pins)
   {
-    this.rollScores[this.roll] = pins;
-    if (pins === 10)
-    {
-      this.rollScores[this.roll+1] = 0;
-      this.roll +=2;
-    }
-    else
-    {
-      this.roll += 1;
-    }
+    this.rollScores.push(pins);
   }
 
 Game.prototype.getTotal = function()
-  {
+  { var rollIndex = 0;
     for (var i = 0; i < this.FRAMES; i++)
       {
-        var firstRoll = this.rollScores[ 2*i];
-        var secondRoll = this.rollScores[2*i + 1];
-        var thirdRoll = this.rollScores[2*i + 2];
-        var fourthRoll = this.rollScores[2*i + 3];
-        var subTotal =  firstRoll + secondRoll;
-        if (firstRoll === 10) {
-          subTotal += (thirdRoll + fourthRoll);
-          this.totalScore += subTotal;
+        if (this.rollScores[rollIndex] === 10) {
+          this.totalScore += 10 + this.rollScores[rollIndex+1] + this.rollScores[rollIndex + 2];
+          rollIndex +=1;
         }
-        else if (firstRoll + secondRoll === 10 && secondRoll != 0)
+        else if (this.rollScores[rollIndex] + this.rollScores[rollIndex+1] === 10 )
           {
-            subTotal += thirdRoll;
-            this.totalScore += subTotal;
+            this.totalScore += 10 + this.rollScores[rollIndex + 2];
+            rollIndex +=2;
           }
         else
           {
-            console.log(subTotal);
-            this.totalScore += subTotal;
+            this.totalScore += this.rollScores[rollIndex] + this.rollScores[rollIndex + 1];
+            rollIndex +=2;
           }
       }
     return this.totalScore;

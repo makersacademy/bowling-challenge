@@ -3,6 +3,7 @@ this.currentFrame = [];
 this.scoreBoard = [];
 this.totalScore = 0;
 this.frameIndex = 0;
+this.bowlIndex = 0;
 }
 
 Game.prototype.updateScore = function(score){
@@ -11,8 +12,7 @@ Game.prototype.updateScore = function(score){
 }
 
 Game.prototype.frameComplete = function(){
-  if(this.currentFrame.length >= 2 || this.isAStrike === true){return true;}
-  else {return false;}
+  return(this.currentFrame.length >= 2 || this.isAStrike());
 }
 
 Game.prototype.nextFrame = function(){
@@ -28,16 +28,15 @@ Game.prototype.calculateTotalScore = function(){
 }
 
 Game.prototype.isAStrike = function(){
-  if(this.currentFrame[0] === 10) {return true;}
-  else {return false;}
+  return this.currentFrame[0] === 10;
 }
 
 Game.prototype.isASpare = function(){
-  if(this.currentFrame.length === 2 && this.currentFrame[0] + this.currentFrame[1] === 10){return true;}
-  else {return false;}
+  return (this.currentFrame.length === 2 && this.currentFrame[0] + this.currentFrame[1] === 10);
 }
 
 Game.prototype.isFinalFrame = function(){
-  if(this.frameIndex === 9){return true;}
-    else {return false;}
+  return (this.frameIndex === 9)
 }
+
+Game.

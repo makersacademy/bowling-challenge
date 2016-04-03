@@ -52,6 +52,7 @@ describe("Bowling", function() {
 
   describe("#addScore", function() {
     it("should call pinsKnockedDown", function() {
+      expect(spyGame.pinsKnockedDown.calls.any()).toEqual(false);
       spyGame.addScore(3);
       expect(spyGame.pinsKnockedDown.calls.any()).toEqual(true);
     });
@@ -62,21 +63,25 @@ describe("Bowling", function() {
     });
 
     it("should call isSpare", function() {
+      expect(spyGame.isSpare.calls.any()).toEqual(false);
       spyGame.addScore(2);
       expect(spyGame.isSpare.calls.any()).toEqual(true);
     });
 
     it("should call isStrike", function() {
+      expect(spyGame.isStrike.calls.any()).toEqual(false);
       spyGame.addScore(8);
       expect(spyGame.isStrike.calls.any()).toEqual(true);
     });
 
     it("should call frameNumber", function() {
+      expect(spyGame.frameNumber.calls.any()).toEqual(false);
       spyGame.addScore(3);
       expect(spyGame.frameNumber.calls.any()).toEqual(true);
     });
 
     it("should call changeBowlNum", function() {
+      expect(spyGame.changeBowlNum.calls.any()).toEqual(false);
       spyGame.addScore(7);
       expect(spyGame.changeBowlNum.calls.any()).toEqual(true);
     });
@@ -127,6 +132,20 @@ describe("Bowling", function() {
       game1.addScore(10);
       expect(game1.currentBowl).toEqual(1);
     })
+  });
+
+  describe("#resetBowlScores", function() {
+    it("should reset the firstBowl to 0", function() {
+      game1.firstBowl = 2;
+      game1.resetBowlScores();
+      expect(game1.firstBowl).toEqual(0);
+    });
+
+    it("should reset the secondBowl to 0", function() {
+      game1.secondBowl = 7;
+      game1.resetBowlScores();
+      expect(game1.secondBowl).toEqual(0);
+    });
   });
 
 });

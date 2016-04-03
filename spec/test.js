@@ -57,6 +57,8 @@ describe('Game', function () {
     expect(game.score()).toBe(77)
   });
 
+
+
   it ('will calculate a mix of strikes and spares correctly', function () {
     game.rollBall(10);
     game.rollBall(7);
@@ -75,5 +77,22 @@ describe('Game', function () {
     game.rollBall(1);
     game.rollBall(1);
     expect(game.score()).toBe(142)
+  });
+
+  it ('will calculate a perfect game correctly', function () {
+    for (var i = 0; i < 12; i++) {
+      game.rollBall(10)
+    }
+    expect(game.score()).toBe(300)
+  });
+
+
+  it ('will return the individual frame scores correctly', function () {
+    game.rollBall(1);
+    game.rollBall(1);
+    game.rollBall(1);
+    game.rollBall(1);
+    expect(game.frames[0]).toBe(2)
+    expect(game.frames[1]).toBe(4)
   });
 });

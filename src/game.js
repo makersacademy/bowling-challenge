@@ -1,34 +1,40 @@
 function Game () {
-  this.rollScores = [];
+  this.rolls = [];
+  this.frames = []
 }
 
 Game.prototype.rollBall = function(pins) {
-  this.rollScores.push(pins);
+  this.rolls.push(pins);
+  this.checkFrame()
+}
+
+Game.prototype.checkFrame = function() {
+  if (this.rolls.length % 2 === 0) {
+    this.frames.push(this.score())
+  }
 }
 
 Game.prototype.score = function() {
   var score = 0; 
-  for (var rollScoresIndex = 0; rollScoresIndex < 20; rollScoresIndex+=2) {
-    if (this.rollScores[rollScoresIndex] + this.rollScores[rollScoresIndex + 1] == 10) {
-      score += this.spareScore(rollScoresIndex) 
-    } else if (this.rollScores[rollScoresIndex] === 10) {
-        this.rollScores.splice(rollScoresIndex+1, 0, 0)
-        score += this.strikeScore(rollScoresIndex) }
+  for (var rollsIndex = 0; rollsIndex < this.rolls.length; rollsIndex+=2) {
+    if (this.rolls[rollsIndex] + this.rolls[rollsIndex + 1] === 10) {
+      score += this.spareScore(rollsIndex) 
+    } else if (this.rolls[rollsIndex] === 10) {
+        this.rolls.splice(rollsIndex+1, 0, 0)
+        score += this.strikeScore(rollsIndex) }
     else {
-    score += this.rollScores[rollScoresIndex] + this.rollScores[rollScoresIndex + 1]
+    score += this.rolls[rollsIndex] + this.rolls[rollsIndex + 1]
     }
   }
   return score
 }
 
-Game.prototype.spareScore = function(rollScoresIndex) {
- return  this.rollScores[rollScoresIndex] + this.rollScores[rollScoresIndex + 1] + this.rollScores[rollScoresIndex + 2]
+Game.prototype.spareScore = function(rollsIndex) {
+ return  this.rolls[rollsIndex] + this.rolls[rollsIndex + 1] + this.rolls[rollsIndex + 2]
 }
 
-Game.prototype.strikeScore = function(rollScoresIndex) {
-  return this.rollScores[rollScoresIndex] + this.rollScores[rollScoresIndex + 2] + this.rollScores[rollScoresIndex + 3]
+Game.prototype.strikeScore = function(rollsIndex) {
+  return this.rolls[rollsIndex] + this.rolls[rollsIndex + 2] + this.rolls[rollsIndex + 3]
 }
 
-Game.prototype.isSpare = function(rollScoresIndex) {
- (this.rollScores[rollScoresIndex] + this.rollScores[rollScoresIndex + 1] === 10)
-}
+

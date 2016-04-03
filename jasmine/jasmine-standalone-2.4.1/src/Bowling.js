@@ -22,14 +22,14 @@ Bowling.prototype.updateScore = function(pinsHit){
 	this.confirmSpare(pinsHit);
 	this.gameEnded();	
 	this.changeRoundNumber();
-	this.changeRollNumber() ;
+	this.changeRollNumber(pinsHit) ;
 	this.lastHit = pinsHit;
 };
 
-Bowling.prototype.changeRollNumber = function(){	
+Bowling.prototype.changeRollNumber = function(pinsHit){	
 	if(this.finalRound && this.rollNumber ==2 && (this.lastHit==10 || this.spare==1) ){
 		this.rollNumber = 3;
-	} else if((this.rollNumber===1 && this.strike==1 && !this.finalRound) || this.rollNumber==2 ){
+	} else if((this.rollNumber===1 && pinsHit==10 && !this.finalRound) || this.rollNumber==2 ){
 		this.rollNumber = 1 ;
 		this.confirmFinalRound();
 	} else {

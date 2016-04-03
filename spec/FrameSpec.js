@@ -41,4 +41,24 @@ describe("Frame", function() {
     });
   });
 
+  describe('exceptions', function() {
+    beforeEach(function() {
+      frame = new Frame();
+    });
+    it('can\'t have more than 10 pins per roll', function() {
+      var expection = function() {
+        frame.rollBall(11);
+      };
+      expect(expection).toThrow();
+    });
+
+    it('can\'t have more than 10 pins per frame', function() {
+      var expection = function(){
+        frame.rollBall(9);
+        frame.rollBall(2);
+      };
+      expect(expection).toThrow();
+    });
+  });
+
 });

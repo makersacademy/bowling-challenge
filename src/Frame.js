@@ -7,8 +7,10 @@ function Frame() {
 
 Frame.prototype.rollBall = function(numberOfPins) {
   if (this.isFirstRoll()) {
+    this.checkPinNumberPerRoll(numberOfPins);
     this.setFirstRoll(numberOfPins);
   } else if (this.isSecondRoll()) {
+    this.checkPinNumberPerFrame(numberOfPins);
     this.setSecondRoll(numberOfPins);
   } else {
     return;
@@ -57,4 +59,23 @@ Frame.prototype.isSpare = function() {
 
 Frame.prototype.isStrike = function() {
   return this.getFirstRoll() === this.ALL_PINS;
+}
+
+Frame.prototype.checkPinNumberPerRoll = function(numberOfPins) {
+  if (this.isTooManyPinsPerRoll(numberOfPins)) {
+    throw 'ERROR: can\'t have more than 10 pins per roll';
+  }
+}
+
+Frame.prototype.checkPinNumberPerFrame = function(numberOfPins) {
+  if (this.isTooManyPinsPerFrame(numberOfPins)) {
+    throw 'ERROR: can\'t have more than 10 pins per frame';
+  }
+}
+
+Frame.prototype.isTooManyPinsPerRoll = function(numberOfPins) {
+  return numberOfPins > this.ALL_PINS;
+}
+Frame.prototype.isTooManyPinsPerFrame = function(numberOfPins) {
+  return this.getFirstRoll() + numberOfPins > this.ALL_PINS;
 }

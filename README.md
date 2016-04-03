@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-Makers Academy week 05 weekend challenge
+Makers Academy week 05 weekend challenge<br>
 [![Build Status](https://travis-ci.org/rhiannonruth/bowling-challenge.svg?branch=master)](https://travis-ci.org/rhiannonruth/bowling-challenge)
 
 Task:

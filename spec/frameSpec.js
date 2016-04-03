@@ -3,6 +3,9 @@
 describe("Frame", function(){
 
   var frame;
+
+  var rollPointer = 0;
+  var rollArray = [];
   var firstRoll  = {
     numStandingPins:  function() { return 5; },
     numFelledPins:    function() { return 5; },
@@ -31,56 +34,42 @@ describe("Frame", function(){
     isStrike:         function() { return true; }
   };
 
-  var strikeFrame = {
-    getScore:         function() { return 10; },
-    isSpare:          function() { return false; },
-    isStrike:         function() { return true; },
-    getRollScores:    function() { return [10]; }
-  };
 
-  var spareFrame = {
-    getScore:         function() { return 10; },
-    isSpare:          function() { return true; },
-    isStrike:         function() { return false; },
-    getRollScores:    function() { return [5,5]; }
-  };
 
-  var averageFrame = {
-    getScore:         function() { return 5; },
-    isSpare:          function() { return false; },
-    isStrike:         function() { return false; },
-    getRollScores:    function() { return [3,2]; }
-  };
 
-  var crapFrame = {
-    getScore:         function() { return 0; },
-    isSpare:          function() { return false; },
-    isStrike:         function() { return false; },
-    getRollScores:    function() { return [0,0]; }
-  };
 
-  describe("default", function(){
+  describe("by default:", function(){
 
     beforeEach(function(){
 
-      spyOn(Roll, "createInstance").and.returnValue(firstRoll);
-      frame = new Frame(Roll);
+      // spyOn(Roll, "createInstance").and.returnValue(firstRoll);
+      frame =  Frame.createInstance(rollArray,rollPointer);
     });
 
     it("has a zero score", function(){
-      expect(frame.getTotal()).toEqual(0);
+      expect(frame.getTotal(rollArray)).toEqual(0);
     });
 
-    it("can create rolls", function(){
-      expect(frame.createRoll()).toEqual(firstRoll);
+    it("has a roll pointer", function(){
+      expect(frame.rollPointer()).toEqual(rollPointer);
+    });
+
+    it("is not a strike", function(){
+      expect(frame.isStrike()).toEqual(false);
+    });
+
+    it("is not a spare", function(){
+      expect(frame.isSpare()).toEqual(false);
+    });
+
+    it("is not complete", function(){
+      expect(frame.isComplete()).toEqual(false);
     });
   });
 
   describe("first roll is a strike", function(){
     beforeEach(function(){
-      spyOn(Roll, "createInstance").and.returnValue(strikeRoll);
-      frame = new Frame(Roll);
-      frame.roll();
+      rollArray = [strikeRoll];
     });
     it("#isStrike", function(){
       expect(frame.isStrike()).toEqual(true);
@@ -99,7 +88,7 @@ describe("Frame", function(){
   describe("first roll is not a strike, second is a spare", function(){
     beforeEach(function(){
       spyOn(Roll, "createInstance").and.returnValues(crapRoll, spareRoll);
-      frame = new Frame(Roll);
+      frame =  Frame.createInstance(Roll);
       frame.roll();
       frame.roll();
     });
@@ -117,48 +106,48 @@ describe("Frame", function(){
     });
   });
 
-  describe("calculates bonuses from subsequent frames:", function(){
-    describe("strike", function(){
-      beforeEach(function(){
-        spyOn(Roll, "createInstance").and.returnValue(strikeRoll);
-        frame = new Frame(Roll);
-        frame.roll();
-      });
-
-      it(" followed by two strikes: score = 30", function(){
-        frame.pushNextFrame(strikeFrame);
-        frame.pushNextFrame(strikeFrame);
-        expect(frame.getTotal()).toEqual(30);
-      });
-
-      it(" followed by strike followed by non-strike: score = 23", function(){
-        frame.pushNextFrame(strikeFrame);
-        frame.pushNextFrame(averageFrame);
-        expect(frame.getTotal()).toEqual(23);
-      });
-
-      it(" followed by non-strike: score = 15", function(){
-        frame.pushNextFrame(averageFrame);
-        expect(frame.getTotal()).toEqual(15);
-      });
-    });
-
-    describe("spare", function(){
-      beforeEach(function(){
-        spyOn(Roll, "createInstance").and.returnValues(crapRoll, spareRoll);
-        frame = new Frame(Roll);
-        frame.roll();
-        frame.roll();
-      });
-      it("followed by strike: score = 20", function(){
-        frame.pushNextFrame(strikeFrame);
-        expect(frame.getTotal()).toEqual(20);
-      });
-
-      it("followed by non-strike: score = 13", function(){
-        frame.pushNextFrame(averageFrame);
-        expect(frame.getTotal()).toEqual(13);
-      });
-    });
-  });
+  // describe("calculates bonuses from subsequent frames:", function(){
+  //   describe("strike", function(){
+  //     beforeEach(function(){
+  //       spyOn(Roll, "createInstance").and.returnValue(strikeRoll);
+  //       frame =  Frame.createInstance(Roll);
+  //       frame.roll();
+  //     });
+  //
+  //     it(" followed by two strikes: score = 30", function(){
+  //       frame.pushNextFrame(strikeFrame);
+  //       frame.pushNextFrame(strikeFrame);
+  //       expect(frame.getTotal()).toEqual(30);
+  //     });
+  //
+  //     it(" followed by strike followed by non-strike: score = 23", function(){
+  //       frame.pushNextFrame(strikeFrame);
+  //       frame.pushNextFrame(averageFrame);
+  //       expect(frame.getTotal()).toEqual(23);
+  //     });
+  //
+  //     it(" followed by non-strike: score = 15", function(){
+  //       frame.pushNextFrame(averageFrame);
+  //       expect(frame.getTotal()).toEqual(15);
+  //     });
+  //   });
+  //
+  //   describe("spare", function(){
+  //     beforeEach(function(){
+  //       spyOn(Roll, "createInstance").and.returnValues(crapRoll, spareRoll);
+  //       frame =  Frame.createInstance(Roll);
+  //       frame.roll();
+  //       frame.roll();
+  //     });
+  //     it("followed by strike: score = 20", function(){
+  //       frame.pushNextFrame(strikeFrame);
+  //       expect(frame.getTotal()).toEqual(20);
+  //     });
+  //
+  //     it("followed by non-strike: score = 13", function(){
+  //       frame.pushNextFrame(averageFrame);
+  //       expect(frame.getTotal()).toEqual(13);
+  //     });
+  //   });
+  // });
 });

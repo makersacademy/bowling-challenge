@@ -1,63 +1,50 @@
 'use strict';
 
-function Frame(rollDefinition=Roll){
+function Frame(rollPtr){
   this.score = 0;
-  this.rolls = [];
-  this.nextFrames = [];
-  this.rollDefinition = rollDefinition;
+  this.rollPtr = rollPtr;
+
+};
+
+Frame.prototype.rollPointer = function(){
+  return this.rollPtr;
 };
 
 
-Frame.prototype.getBonus = function(){
-  if(this.isStrike()){
-    if (!!this.nextFrames[0]){
-      if (this.nextFrames[0].isStrike()){
-        if (!!this.nextFrames[1]){
-          return this.nextFrames[0].getScore() + this.nextFrames[1].getRollScores()[0];
-        } else {
-          return this.nextFrames[0].getScore();
-        }
-      } else {
-        return this.nextFrames[0].getScore();
-      }
-    } else {
-      return 0;
-    }
-  } else if (this.isSpare()) {
-    if (!!this.nextFrames[0]){
-      return this.nextFrames[0].getRollScores()[0];
-    } else {
-      return 0;
-    }
-  } else {
-    return 0;
+Frame.prototype._getBonus = function(){
+  var bonus = 0
+  for(var i = 0; i < this._getBonusRollCount(); i ++){
+    if(this.nextRollScores[i]) bonus += this.nextRollScores[i];
   }
+  return bonus;
 };
 
+Frame.prototype._getBonusRollCount = function(){
+    if (this.isStrike()) return 2;
+    if (this.isSpare()) return 1;
+    return 0;
+};
 
-
-
-
-Frame.prototype.getRollScores = function(){
-  result=[];
-  for(i=0; i<this.rolls.length; i++){
+Frame.prototype._getRollScores = function(){
+  var result=[];
+  for(var i=0; i<this.rolls.length; i++){
     result.push(this.rolls[i].numFelledPins());
   }
   return result;
 };
 
+Frame.prototype.pushNextFrame = function(frame){
+  for(var i=0; i < frame._getRollScores().length; i++){
+    this.nextRollScores.push(frame._getRollScores()[i]);
+  }
+};
 
 Frame.prototype.getTotal = function(){
-  return this.getScore() + this.getBonus();
+  return this._getScore() + this._getBonus();
 };
 
-Frame.prototype.getScore = function(){
+Frame.prototype._getScore = function(){
   return this.score;
-};
-
-
-Frame.prototype.pushNextFrame = function(frame){
-  this.nextFrames.push(frame);
 };
 
 Frame.prototype.roll = function(){
@@ -84,7 +71,12 @@ Frame.prototype.isComplete = function(){
   return this.isStrike() || twoRolls;
 };
 
-Frame.prototype.createRoll = function(previousRoll){
-  var newRoll = this.rollDefinition.createInstance(previousRoll);
-  return newRoll;
+Frame.createInstance = function(rollAry, rollPtr){
+  this.rollArray = rollAry;
+  return new Frame(rollPtr);
 };
+
+// Frame.prototype.createRoll = function(previousRoll){
+//   var newRoll = this.rollDefinition.createInstance(previousRoll);
+//   return newRoll;
+// };

@@ -1,6 +1,6 @@
 # Bowling game:
 
-* 10 frames => frames array, length 10;
+<!-- * 10 frames => frames array, length 10; -->
 <!-- * 10 pins; -->
 <!-- * in each frame: roll * 2; -->
 

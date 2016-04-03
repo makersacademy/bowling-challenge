@@ -7,10 +7,6 @@ describe("Frame", function () {
     frame = new Frame();
   });
 
-  it("should start with a zero score", function () {
-    expect(frame.getScore()).toEqual(0);
-  });
-
   describe("log rolls", function () {
     it("each roll can only hit 10 pins maximum", function () {
       expect(function () { frame.logRoll(11) }).toThrowError(frame.PINS_ERROR);
@@ -19,6 +15,23 @@ describe("Frame", function () {
     it("there are only 10 pins for 2 rolls", function () {
       frame.logRoll(3);
       expect(function () { frame.logRoll(8) }).toThrowError(frame.PINS_ERROR);
+    });
+  });
+
+  describe("getScore", function () {
+    it("should start with a zero score", function () {
+      expect(frame.getScore()).toEqual(0);
+    });
+
+    it("returns a single roll's score", function () {
+      frame.logRoll(3);
+      expect(frame.getScore()).toEqual(3);
+    });
+
+    it("returns the sum of two rolls' scores", function () {
+      frame.logRoll(3);
+      frame.logRoll(5);
+      expect(frame.getScore()).toEqual(8);
     });
   });
 

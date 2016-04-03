@@ -1,5 +1,5 @@
 function Frame(){
-  this._frameScore = 0
+  // this._frameScore = 0
   this._rollNumber = 0
   this._maxRolls   = 2
   this._isFinished = false
@@ -23,10 +23,10 @@ Frame.prototype.roll = function(pins) {
 Frame.prototype.closeFrame = function () {
   if(this._rollNumber === this._maxRolls) {
     this._isFinished = true
-    var score = this._scoreboard.reduce(function (first, last){
-      return first + last
-    })
-    this._frameScore = score
+    // var score = this._scoreboard.reduce(function (first, last){
+    //   return first + last
+    // })
+    // this._frameScore = score
   }
 };
 
@@ -35,9 +35,7 @@ Frame.prototype.isStrike = function (pins) {
   if(pins === 10){
     this._isStrike   = true
     this._scoreboard.push(pins)
-    if(lastScore === 10){
-      this._scoreboard.push(0)
-    }
+    this._scoreboard.push(0)
   } else if (lastScore + pins === 10){
     this.isSpare()
   } else {
@@ -45,6 +43,7 @@ Frame.prototype.isStrike = function (pins) {
   }
   this.closeFrame()
 };
+
 
 Frame.prototype.isSpare = function (pins) {
     this._isSpare = true

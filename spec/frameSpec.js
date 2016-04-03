@@ -75,7 +75,7 @@ describe('Frame', function() {
     expect(frame._isSpare).toEqual(true)
   })
 
-  it('calculates frame score', function() {
+  xit('calculates frame score', function() {
     frame.play(pins)
     frame.play(pins)
     expect(frame._frameScore).toEqual(pins + pins)

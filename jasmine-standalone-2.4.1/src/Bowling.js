@@ -28,15 +28,36 @@ Bowling.prototype.getCurrentBowl = function (){
   return this._currentBowl
 };
 
+Bowling.prototype.successfulBowl = function (pins){
+  this._standingPins -= pins
+  this._currentScore += pins
+};
+
+Bowling.prototype.frameUpdater = function (){
+  if (this._currentFrame < 10) {
+    this._currentFrame += 1
+  } else {
+    throw new Error('game is over');
+  }
+};
+
+Bowling.prototype.hitConfirm = function (pins) {
+  console.log("you just hit " + pins + " pins!")
+};
+
+Bowling.prototype.strikeConfirm = function (){
+  console.log("you just striked!")
+};
+
 Bowling.prototype.bowl = function (pins) {
   if (pins === 10) {
-    this._standingPins -= pins
-    this._currentFrame += 1
-    this._currentScore += pins
+    this.strikeConfirm()
+    this.successfulBowl(pins)
+    this.frameUpdater()
   } else {
-    this._standingPins -= pins
-    this._currentScore += pins
+    this.successfulBowl(pins)
     this._currentBowl += 1
+    this.hitConfirm(pins)
   }
 
 };

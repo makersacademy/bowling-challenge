@@ -69,4 +69,11 @@ describe('Bowling', function (){
       expect(bowling.getCurrentBowl()).toEqual(2);
     });
   });
+
+  it('prevents further rolls when the game is over', function(){
+    for(var i=0; i < 9; i++){
+      bowling.frameUpdater();
+    }
+    expect(function() { bowling.frameUpdater(); }).toThrowError("game is over");
+  });
 });

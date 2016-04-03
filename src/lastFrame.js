@@ -22,15 +22,28 @@ LastFrame.prototype.isStrike = function () {
   return this._scores[0] === 10;
 };
 
+LastFrame.prototype.isSpare = function () {
+  return this._scores[0] + this._scores[1] === 10;
+};
+
+LastFrame.prototype.isComplete = function () {
+  if (this.isStrike() || this.isSpare()) {
+    return this._scores.length === 3;
+  } else {
+    return this._scores.length === 2;
+  }
+};
+
 LastFrame.prototype._checkPins = function (pins) {
   if (pins > 10 ||
      (!this.isStrike() &&
      this._isSecondRoll() &&
-     this._scores[0] + pins > 10)) {
-    throw new Error(this.PINS_ERROR);
-  }
+     this._scores[0] + pins > 10) ||
+     (this.isStrike() && this._scores[1] + pins > 10)) {
+       throw new Error(this.PINS_ERROR);
+     }
 };
 
 LastFrame.prototype._isSecondRoll = function () {
-  return this._scores.length > 0;
+  return this._scores.length === 1;
 };

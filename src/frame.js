@@ -16,16 +16,16 @@ Frame.prototype.getScore = function () {
   return this._scores[0] + this._scores[1];
 };
 
-Frame.prototype.isComplete = function () {
-  return this._scores[0] === 10 || this._scores.length === 2;
-};
-
 Frame.prototype.isStrike = function () {
   return this._scores[0] === 10;
 };
 
 Frame.prototype.isSpare = function () {
   return this._scores[0] + this._scores[1] === 10;
+};
+
+Frame.prototype.isComplete = function () {
+  return this.isStrike() || this._scores.length === 2;
 };
 
 Frame.prototype._checkPins = function (pins) {
@@ -36,5 +36,5 @@ Frame.prototype._checkPins = function (pins) {
 };
 
 Frame.prototype._isSecondRoll = function () {
-  return this._scores.length > 0;
+  return this._scores.length === 1;
 };

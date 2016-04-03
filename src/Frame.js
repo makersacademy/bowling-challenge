@@ -8,13 +8,12 @@ function Frame() {
 Frame.prototype.rollBall = function(numberOfPins) {
   if (this.isFirstRoll()) {
     this.setFirstRoll(numberOfPins);
-    this.nextRoll();
   } else if (this.isSecondRoll()) {
     this.setSecondRoll(numberOfPins);
-    this.nextRoll();
   } else {
     return;
   }
+  this.nextRoll();
 };
 
 Frame.prototype.isFirstRoll = function() {

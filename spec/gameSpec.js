@@ -59,10 +59,16 @@ describe('Game', function() {
     expect(game._frameScore).toEqual([6])
 
   })
-  xit('sets score for one strike, one regular frame', function() {
+
+  it('saves score for strike', function() {
     game.play(strike)
-    game.play(pins)
-    game.play(pins)
-    expect(game._frameScore).toEqual([16, 22])
+    expect(game.currentScore).toEqual(10)
   })
+
+  it('saves score for spare', function() {
+    game.play(pins)
+    game.play(spare)
+    expect(game.currentScore).toEqual(10)
+  })
+
 })

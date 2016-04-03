@@ -21,6 +21,7 @@ function Game(){
   this._frameScore  = []
 }
 
+
 Game.prototype.play = function (pins) {
   if(this.frameNumber > this._maxFrames){
     throw new Error('Game Over!')
@@ -35,27 +36,18 @@ Game.prototype.endFrame = function () {
     this._allFrames.push(this.currentFrame)
     this.currentFrame = new Frame
     this.frameNumber ++
-    // this.checkLastFrame()
-  }
-};
-
-Game.prototype.checkLastFrame = function () {
-  if (this.latterFrame() !== undefined){
-    if(this.latterFrame().isStrike){
-      var score = this.currentScore += this.calculateFrame()
-      this._frameScore.push(score)
-    }
   }
 };
 
 Game.prototype.calculateFrame = function () {
   if(this.currentFrame._isStrike || this.currentFrame._isSpare){
-      this.currentScore = 10
+      this.currentScore += 10
   } else {
-    var score = this.currentScore + this.currentFrame.totalScore()
+    var score = this.currentScore += this.currentFrame.totalScore()
     this._frameScore.push(score)
   }
 };
+
 
 
 Game.prototype.latterFrame = function () {

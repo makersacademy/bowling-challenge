@@ -28,3 +28,14 @@ FrameLog.prototype.createNewFrame = function() {
   this.log.push(this.currentFrame);
   return this.currentFrame;
 }
+
+FrameLog.prototype.score = function() {
+  var scoreTotal = 0;
+
+  for(var i in this.log) {
+    for(var j in this.log[i].total()) {
+      scoreTotal += this.log[i].total()[j];
+    }
+  }
+  return scoreTotal;
+}

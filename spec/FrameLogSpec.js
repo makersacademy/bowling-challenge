@@ -32,18 +32,38 @@ describe("FrameLog", function() {
     });
   });
 
-  describe("calculate score", function() {
+  describe("calculate a simple score", function() {
     beforeEach(function() {
       frameLog = new FrameLog();
+
       frame1 = jasmine.createSpyObj('Frame', ['total'])
       frame1.total.and.returnValue([1,2]);
+
       frameLog.log = [frame1];
-      spyOn(frameLog, 'frames').and.returnValue([frame1]);
+      // Query what is correct/better method - stubbing variable or method
+      // spyOn(frameLog, 'frames').and.returnValue([frame1]);
     });
 
-    it("returns a score", function() {
-      expect(frameLog.frames()[0].total()).toEqual(1);
+    it("returns the calculated score", function() {
+      expect(frameLog.score()).toEqual(3);
     });
   });
 
+  describe("calculate a score with a strike", function() {
+    beforeEach(function() {
+      frameLog = new FrameLog();
+
+      frame1 = jasmine.createSpyObj('Frame', ['total'])
+      frame1.total.and.returnValue([10,0]);
+
+      frame2 = jasmine.createSpyObj('Frame', ['total'])
+      frame2.total.and.returnValue([3,6]);
+
+      frameLog.log = [frame1, frame2];
+    });
+
+    it("returns the calculated score", function() {
+      expect(frameLog.score()).toEqual(28);
+    });
+  });
 });

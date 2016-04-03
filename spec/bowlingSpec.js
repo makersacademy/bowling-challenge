@@ -20,34 +20,34 @@ describe("Bowling", function() {
     expect(game.totalScore).toEqual(0);
   });
 
-  describe("#calculateScore", function() {
+  describe("#pinsKnockedDown", function() {
     it("should add the pins entered to the total score", function() {
-      game.calculateScore(4);
+      game.pinsKnockedDown(4);
       expect(game.totalScore).toEqual(4);
     });
 
     it("should call the frameNumber function", function() {
-      game.calculateScore();
+      game.pinsKnockedDown();
       expect(game.frameNumber.calls.any()).toEqual(true);
     });
 
-    it("should call the addScore function", function() {
-      game.calculateScore();
-      expect(game.addScore.calls.any()).toEqual(true);
-    });
+    // it("should call the addScore function", function() {
+    //   game.pinsKnockedDown();
+    //   expect(game.addScore.calls.any()).toEqual(true);
+    // });
   });
 
-  describe("#addScore", function() {
-    it("should add the pins number to the scoreSheet", function() {
-      game2.addScore(3);
-      expect(game2.scoreSheet[game2.currentFrame]).toEqual([3])
-    });
-  });
+  // describe("#addScore", function() {
+  //   it("should add the pins number to the scoreSheet", function() {
+  //     game2.addScore(3);
+  //     expect(game2.scoreSheet[game2.currentFrame]).toEqual([3])
+  //   });
+  // });
 
   describe("#frameNumber", function() {
     it("should + 1 to currentFrame if currentFrame in scoreSheet contains 2 numbers", function() {
-      game2.calculateScore(3);
-      game2.calculateScore(4);
+      game2.pinsKnockedDown(3);
+      game2.pinsKnockedDown(4);
       game2.frameNumber();
       expect(game2.currentFrame).toEqual(2);
     });
@@ -55,17 +55,16 @@ describe("Bowling", function() {
 
   describe("#isStrike", function() {
     it("should return true if previous frame pins equal 10", function() {
-      game2.calculateScore(10);
-      game2.calculateScore(5);
-      expect(game2.isStrike()).toEqual(true);
+      game2.pinsKnockedDown(10);
+      expect(game2.strike).toEqual(true);
     });
   });
 
   describe("#isSpare", function() {
     it("returns true if currentFrame in scoreSheet adds to 10", function() {
-      game2.calculateScore(5);
-      game2.calculateScore(5);
-      expect(game2.isSpare()).toEqual(true);
+      game2.pinsKnockedDown(5);
+      game2.pinsKnockedDown(5);
+      expect(game2.spare).toEqual(true);
     });
   });
 

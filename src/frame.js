@@ -16,6 +16,10 @@ Frame.prototype.getScore = function () {
   return this._scores[0] + this._scores[1];
 };
 
+Frame.prototype.isSecondRoll = function () {
+  return this._scores.length === 1;
+};
+
 Frame.prototype.isStrike = function () {
   return this._scores[0] === 10;
 };
@@ -30,11 +34,7 @@ Frame.prototype.isComplete = function () {
 
 Frame.prototype._checkPins = function (pins) {
   if (pins > 10 ||
-     (this._isSecondRoll() && this._scores[0] + pins > 10)) {
+     (this.isSecondRoll() && this._scores[0] + pins > 10)) {
     throw new Error(this.PINS_ERROR);
   }
-};
-
-Frame.prototype._isSecondRoll = function () {
-  return this._scores.length === 1;
 };

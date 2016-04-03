@@ -27,7 +27,7 @@ describe("LastFrame", function () {
     });
   });
 
-  describe("getScore", function () {
+  describe("get score", function () {
     it("should start with a zero score", function () {
       expect(lastFrame.getScore()).toEqual(0);
     });
@@ -46,6 +46,17 @@ describe("LastFrame", function () {
       lastFrame.logRoll(10);
       logRolls(3, 6);
       expect(lastFrame.getScore()).toEqual(19);
+    });
+  });
+
+  describe("second roll", function () {
+    it("starts with the first roll", function () {
+      expect(lastFrame.isSecondRoll()).toEqual(false);
+    });
+
+    it("is the second roll after the first roll", function () {
+      lastFrame.logRoll(3);
+      expect(lastFrame.isSecondRoll()).toEqual(true);
     });
   });
 

@@ -18,6 +18,10 @@ LastFrame.prototype.getScore = function () {
   });
 };
 
+LastFrame.prototype.isSecondRoll = function () {
+  return this._scores.length === 1;
+};
+
 LastFrame.prototype.isStrike = function () {
   return this._scores[0] === 10;
 };
@@ -35,17 +39,13 @@ LastFrame.prototype.isComplete = function () {
 };
 
 LastFrame.prototype._checkPins = function (pins) {
-  if (pins > 10 ||
-     (!this.isStrike() &&
-     this._isSecondRoll() &&
-     this._scores[0] + pins > 10) ||
-     (this.isStrike() &&
-     this._scores[1] < 10 &&
-     this._scores[1] + pins > 10)) {
+  var exceedPinsInFirstTwoRolls = !this.isStrike() &&
+                                  this.isSecondRoll() &&
+                                  this._scores[0] + pins > 10
+  var exceedPinsInLastTwoRolls =  this.isStrike() &&
+                                  this._scores[1] < 10 &&
+                                  this._scores[1] + pins > 10
+  if (pins > 10 || exceedPinsInFirstTwoRolls || exceedPinsInLastTwoRolls) {
        throw new Error(this.PINS_ERROR);
      }
-};
-
-LastFrame.prototype._isSecondRoll = function () {
-  return this._scores.length === 1;
 };

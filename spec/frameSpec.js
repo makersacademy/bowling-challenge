@@ -22,7 +22,7 @@ describe("Frame", function () {
     });
   });
 
-  describe("getScore", function () {
+  describe("get score", function () {
     it("should start with a zero score", function () {
       expect(frame.getScore()).toEqual(0);
     });
@@ -35,6 +35,17 @@ describe("Frame", function () {
     it("returns the sum of two rolls' scores", function () {
       logRolls(3, 5);
       expect(frame.getScore()).toEqual(8);
+    });
+  });
+
+  describe("second roll", function () {
+    it("starts with the first roll", function () {
+      expect(frame.isSecondRoll()).toEqual(false);
+    });
+
+    it("is the second roll after the first roll", function () {
+      frame.logRoll(3);
+      expect(frame.isSecondRoll()).toEqual(true);
     });
   });
 

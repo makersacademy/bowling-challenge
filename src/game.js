@@ -1,35 +1,33 @@
 function Game(Frame){
+  this.currentGame=[]
+  this.normalGame=true
   last = function(array) {
   return array[array.length-1];
   }
+
 }
 
 Game.prototype.name = function(name) {
   this.currentPlayer = name
 }
 
+Game.prototype.firstBowlPins = function(pins) {
+ // if (this.normalGame && this.currentGame.length ===10 ) {throw 'the game is complete'}
+ // if (!this.normalGame && this.currentGame.length ===11) {throw 'the game is complete'}
+  this.nextFrame()
+  last(this.currentGame).firstBowlPins(pins)
+}
+
+Game.prototype.secondBowlPins = function(pins) {
+  last(this.currentGame).secondBowlPins(pins)
+}
+
 Game.prototype.nextFrame = function() {
-  if (this.currentGame === undefined) { 
-    this.currentGame = [new Frame];}
-  else
-    {this.currentGame.push(new Frame);}
-  this.frameScore
+  this.currentGame.push(new Frame);
 }
 
 Game.prototype.currentFrame = function() {
  return last(this.currentGame)
-}
-
-Game.prototype.knockedPins = function() {
-
-}
-
-Game.prototype.firstBowlPins = function(pins) {
-  last(this.currentGame).b1(pins)
-}
-
-Game.prototype.secondBowlPins = function(pins) {
-  last(this.currentGame).b2(pins)
 }
 
 Game.prototype.frameScore = function() {
@@ -52,22 +50,13 @@ Game.prototype.spare = function(i) {
 
 Game.prototype.strike = function(i) {
     var frames = this.currentGame
-    if (frames[i+2])
-      { 
         if (frames[i+1].isStrike() && frames[i+2].isStrike() )
-        {
-          frames[i].bonus(20)
-        }
+        {frames[i].bonus(20)}
 
         else if (frames[i+1].isStrike())
-        {
-          frames[i].bonus(10+(frames[i+2].first))
-        }
+        {frames[i].bonus(10+(frames[i+2].first))}
 
-        else
-        {frames[i].bonus((frames[i+1].first)+(frames[i+1].second))}
-      }
-    else
+       else
       {frames[i].bonus((frames[i+1].first)+(frames[i+1].second))}
   }
 
@@ -76,7 +65,7 @@ Game.prototype.score = function() {
   this.frameScore()
   for (i=0; i<this.currentGame.length;i++) {
 
-    score.push(this.currentGame[i].score())
+    score.push(this.currentGame[i].totalScore())
   }
 
   return score

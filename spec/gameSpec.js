@@ -6,19 +6,14 @@ describe ('Game', function() {
     frame = jasmine.createSpyObj('frame', ['totalStrike'])
     game = new Game(Frame)
 
-    game.nextFrame();
+    
     game.firstBowlPins(5)
     game.secondBowlPins(2)
-    game.nextFrame();
     game.firstBowlPins(10)
-    game.nextFrame();
     game.firstBowlPins(10)
-    game.nextFrame();
     game.firstBowlPins(10)
-    game.nextFrame();
     game.firstBowlPins(5)
     game.secondBowlPins(5)
-    game.nextFrame();
     game.firstBowlPins(1)
     game.secondBowlPins(5)
 

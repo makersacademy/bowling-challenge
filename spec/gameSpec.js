@@ -7,7 +7,6 @@ describe("Game", function(){
     game  = new Game();
   });
 
-
   describe("#frames", function(){
     it("initializes as an empty array", function(){
       expect(game.frames.length).toEqual(0);
@@ -19,7 +18,6 @@ describe("Game", function(){
       game.nextRound();
       expect(game.frameNumber).toEqual(1);
     });
-
   });
 
 
@@ -27,7 +25,7 @@ describe("Game", function(){
     it ("updates the score for the frame first ball ", function(){
       game.firstBall(5);
       var length = game.frames.length;
-      expect(game.frames[length -1].roll1).toEqual(5);
+      expect(game.frames[0].roll1).toEqual(5);
     });
   });
 
@@ -35,43 +33,65 @@ describe("Game", function(){
     it ("updates the score for the frame second ball", function(){
       game.firstBall(5);
       game.secondBall(5);
-      var length = game.frames.length;
-      expect(game.frames.pop().roll2).toEqual(5);
+      expect(game.frames[0].roll2).toEqual(5);
     });
   });
 
-  describe("#setScore", function(){
+  describe("#scorer", function(){
+    it("is a gutter frame", function() {
+      game.firstBall(0);
+      game.secondBall(0);
+      game.scorer();
+      expect(game.score).toEqual(0);
+    });
+
     it("frame is open so current frame is scored", function() {
       game.firstBall(4);
       game.secondBall(3);
       game.scorer();
-      expect(game.frames[0].score).toEqual(7);
+      expect(game.score).toEqual(7);
     });
 
-    it("frame is spare so current frame is cached", function() {
-      game.firstBall(7);
-      game.secondBall(3);
-      game.scorer();
-      expect(game.frames[0].score).toEqual(0);
-    });
-
-    it("previous frame was a spare and current frame scored", function() {
+    it("previous frame was a spare", function(){
       game.firstBall(5);
       game.secondBall(5);
+      game.scorer();
+      console.log(game.score)
+      game.firstBall(4);
+      game.secondBall(3);
+      game.scorer();
+      expect(game.score).toEqual(14 + 7);
+    });
+
+    it("previous frame was a strike",function(){
+      game.firstBall(10);
+      game.secondBall(0)
+      game.scorer();
       game.firstBall(5);
       game.secondBall(4);
-      // game.firstBall(5);
-      // game.secondBall(4);
-
-
-      game.scorer();
-      console.log(game.frames);
-      console.log(game.frames[0]);
-      console.log(game.frames[1]);
-      expect(game.frames[0].score).toEqual(15);
-      expect(game.frames[1].score).toEqual(7);
+      game.scorer()
+      expect(game.score).toEqual(19 + 9);
     });
+
+    it("previous 2 frames were a strike",function(){
+      game.firstBall(10);
+      game.secondBall(0)
+      game.scorer();
+      console.log(game.score)
+      game.firstBall(10);
+      game.secondBall(0);
+      game.scorer()
+      console.log(game.score)
+      game.firstBall(5);
+      game.secondBall(4);
+      game.scorer()
+      expect(game.score).toEqual(29 + 19 + 9);
+    });
+
+
   });
+
+
 
 
   // describe("#currentFrame", function(){

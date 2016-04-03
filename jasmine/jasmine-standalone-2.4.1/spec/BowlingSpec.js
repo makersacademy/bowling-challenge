@@ -66,6 +66,7 @@ describe("Bowling", function(){
 				it(" and get a spare", function(){				
 					bowling.updateScore(4);
 					bowling.updateScore(6);
+					bowling.gameOver = false;
 					bowling.updateScore(6);
 					expect(bowling.currentScore).toEqual(24);
 				});
@@ -73,6 +74,7 @@ describe("Bowling", function(){
 				it(" and get a strike", function(){
 					bowling.updateScore(10);
 					bowling.updateScore(6);
+					bowling.gameOver = false;
 					bowling.updateScore(6);
 					expect(bowling.currentScore).toEqual(30);
 				});
@@ -127,5 +129,27 @@ describe("Bowling", function(){
 		expect(bowling.strike).toEqual(1);
 	});
 
+	it("will recognise multiple strikes", function(){
+		bowling.updateScore(10);
+		bowling.confirmMultipleStrikes(10);
+		expect(bowling.strike).toEqual(2);
+	});
+
+	it(" and get a  perfect score of 300", function(){				
+		bowling.updateScore(10);
+		bowling.updateScore(10);
+		bowling.updateScore(10);
+		bowling.updateScore(10);
+		bowling.updateScore(10);
+		bowling.updateScore(10);
+		bowling.updateScore(10);
+		bowling.updateScore(10);
+		bowling.updateScore(10);
+		bowling.updateScore(10);
+		bowling.updateScore(10);
+		bowling.gameOver = false;
+		bowling.updateScore(10);
+		expect(bowling.currentScore).toEqual(300);
+	});
 
 });

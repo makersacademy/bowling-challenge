@@ -14,9 +14,10 @@ function Bowling(){
 Bowling.prototype.updateScore = function(pinsHit){
 	if(this.gameOver){
 		throw new Error("The game has now ended");
-	} else if(this.finalRound){
+	} else if(this.finalRound && this.rollNumber !=1){
 		this.currentScore += pinsHit;
 	} else {
+		this.confirmMultipleStrikes(pinsHit);
 		this.currentScore += pinsHit*(1 + this.spare)*(1 + this.strike);
 	};
 		this.confirmStrike(pinsHit);
@@ -34,13 +35,14 @@ Bowling.prototype.changeRollNumber = function(){
 	} else if(this.rollNumber===1 && (this.strike==0 || this.finalRound)){
 		this.rollNumber = 2 ;
 	} else {
-		this.rollNumber = 1 ;
+				this.rollNumber = 1 ;
 	}
 };
 
 Bowling.prototype.changeRoundNumber = function(){
 	if(!this.finalRound && (this.rollNumber===2 || this.strike===1 )){
 		this.round +=1;
+
 		this.confirmFinalRound();
 	}
 };
@@ -54,11 +56,17 @@ Bowling.prototype.confirmSpare = function(pinsHit){
 };
 
 Bowling.prototype.confirmStrike = function(pinsHit){
-	if((this.rollNumber==1 && (pinsHit==10 || this.strike==1)) || (this.finalRound & this.strike ==1) ){
+if((this.rollNumber==1 && (pinsHit==10 || this.strike!=0)) || (this.finalRound & this.strike ==1) ){
 		this.strike=1;
 	} else {
 		this.strike =0;
 	}
+};
+
+Bowling.prototype.confirmMultipleStrikes = function(pinsHit){
+	if(pinsHit==10 && this.strike==1){
+		this.strike=2;
+	} 
 };
 
 Bowling.prototype.confirmFinalRound = function(){
@@ -72,3 +80,4 @@ Bowling.prototype.gameEnded = function(){
 	 this.gameOver = true	;
 	};
 };
+

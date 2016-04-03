@@ -74,7 +74,7 @@ describe ('Game', function() {
     describe('#spare', function() {
 
       it('should pass only the first bowl to bonus', function() {
-        expect(game.total()).toEqual(99)
+        expect(game.total()).toEqual(143)
       })
     })
   })

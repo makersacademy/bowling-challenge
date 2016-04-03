@@ -39,6 +39,14 @@ describe("Game", function () {
     });
   });
 
+  describe("frame number", function () {
+    it("returns the current frame number", function () {
+      frame.isComplete.and.returnValue(true);
+      game.saveFrame(frame);
+      expect(game.frameNum()).toEqual(2);
+    });
+  });
+
   describe("add bonuses", function () {
     beforeEach(function () {
       getAndLogScore(frame, 10)

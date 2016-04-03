@@ -8,18 +8,18 @@ function Game(frame) {
 
 Game.prototype.logRoll = function (pins) {
   this.currentFrame.logRoll(pins);
-  if (this._frameNum() > 1) {
+  if (this.frameNum() > 1) {
     this.addSpareBonus(pins);
   }
-  if (this._frameNum() > 2 &&
-      this._frameNum() <= 9) {
+  if (this.frameNum() > 2 &&
+      this.frameNum() <= 9) {
     this.addDoubleStrikeBonus(pins);
   }
 };
 
 Game.prototype.logFrameScore = function (frame) {
   this._score += frame.getScore();
-  if (this._frameNum() > 1) {
+  if (this.frameNum() > 1) {
     this.addStrikeBonus(frame);
   }
 };
@@ -32,6 +32,10 @@ Game.prototype.saveFrame = function (frame) {
 
 Game.prototype.addFrame = function (newFrame) {
   this.currentFrame = newFrame;
+};
+
+Game.prototype.frameNum = function () {
+  return this._completedFrames.length + 1;
 };
 
 Game.prototype.addStrikeBonus = function (newFrame) {
@@ -54,13 +58,9 @@ Game.prototype.addSpareBonus = function (pins) {
 }
 
 Game.prototype.isOver = function () {
-  return this._frameNum() > 10;
+  return this.frameNum() > 10;
 };
 
 Game.prototype.getScore = function () {
   return this._score
-};
-
-Game.prototype._frameNum = function () {
-  return this._completedFrames.length + 1;
 };

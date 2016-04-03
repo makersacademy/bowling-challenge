@@ -57,45 +57,38 @@ describe("Bowling", function(){
 		});
 
 		describe("when in the 10th (last) round", function(){
-
-			it(" and get a spare", function(){
+			beforeEach(function(){
 				bowling.round = 9;
 				bowling.updateScore(5);
 				bowling.updateScore(3);
-				bowling.updateScore(4);
-				bowling.updateScore(6);
-				bowling.updateScore(6);
-				expect(bowling.currentScore).toEqual(24);
 			});
 
-			it(" and get a strike", function(){
-				bowling.round = 9;
-				bowling.updateScore(5);
-				bowling.updateScore(3);
-				bowling.updateScore(10);
-				bowling.updateScore(6);
-				bowling.updateScore(6);
-				expect(bowling.currentScore).toEqual(30);
-			});
+				it(" and get a spare", function(){				
+					bowling.updateScore(4);
+					bowling.updateScore(6);
+					bowling.updateScore(6);
+					expect(bowling.currentScore).toEqual(24);
+				});
 
-			it("cannot play 4 rolls or more, ever", function(){
-				bowling.round = 9;
-				bowling.updateScore(5);
-				bowling.updateScore(3);
-				bowling.updateScore(4);
-				bowling.updateScore(6);
-				bowling.updateScore(6);
-				expect(function() { bowling.updateScore(5) }).toThrowError("The game has now ended");
-			});
+				it(" and get a strike", function(){
+					bowling.updateScore(10);
+					bowling.updateScore(6);
+					bowling.updateScore(6);
+					expect(bowling.currentScore).toEqual(30);
+				});
 
-			it(" and don't get a spare or strike cannot play 3 rolls", function(){
-				bowling.round = 9;
-				bowling.updateScore(5);
-				bowling.updateScore(3);
-				bowling.updateScore(4);
-				bowling.updateScore(5);				
-				expect(function() { bowling.updateScore(5) }).toThrowError("The game has now ended");
-			});
+				it("cannot play 4 rolls or more, ever", function(){
+					bowling.updateScore(4);
+					bowling.updateScore(6);
+					bowling.updateScore(6);
+					expect(function() { bowling.updateScore(5) }).toThrowError("The game has now ended");
+				});
+
+				it(" and don't get a spare or strike cannot play 3 rolls", function(){
+					bowling.updateScore(4);
+					bowling.updateScore(5);				
+					expect(function() { bowling.updateScore(5) }).toThrowError("The game has now ended");
+				});
 
 		});
 
@@ -113,24 +106,24 @@ describe("Bowling", function(){
 	});
 
 	it("increases the round number if strike", function(){
-		bowling.isStrike(10);
+		bowling.confirmStrike(10);
 		bowling.changeRoundNumber();
 		expect(bowling.round).toEqual(2);
 	});
 
-	it("will not increase the round number if roll number is 1", function(){
+	it("will not increase the round number if roll number is 1 and no strike", function(){
 		bowling.changeRoundNumber();
 		expect(bowling.round).toEqual(1);
 	});
 
 	it("will recognise a spare", function(){
 		bowling.updateScore(6);
-		bowling.isSpare(4);
+		bowling.confirmSpare(4);
 		expect(bowling.spare).toEqual(1);
 	});
 
 	it("will recognise a strike", function(){
-		bowling.isStrike(10);
+		bowling.confirmStrike(10);
 		expect(bowling.strike).toEqual(1);
 	});
 

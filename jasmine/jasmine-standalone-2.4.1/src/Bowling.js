@@ -19,14 +19,12 @@ Bowling.prototype.updateScore = function(pinsHit){
 	} else {
 		this.currentScore += pinsHit*(1 + this.spare)*(1 + this.strike);
 	};
-		this.isStrike(pinsHit);
-		this.isSpare(pinsHit);
+		this.confirmStrike(pinsHit);
+		this.confirmSpare(pinsHit);
 		this.gameEnded();
 		this.lastHit = pinsHit;
 		this.changeRoundNumber();
 		this.changeRollNumber() ;
-
-
 };
 
 Bowling.prototype.changeRollNumber = function(){
@@ -43,11 +41,11 @@ Bowling.prototype.changeRollNumber = function(){
 Bowling.prototype.changeRoundNumber = function(){
 	if(!this.finalRound && (this.rollNumber===2 || this.strike===1 )){
 		this.round +=1;
-		this.isFinalRound();
+		this.confirmFinalRound();
 	}
 };
 
-Bowling.prototype.isSpare = function(pinsHit){
+Bowling.prototype.confirmSpare = function(pinsHit){
 	if(this.rollNumber==2 && this.lastHit+pinsHit==10){
 		this.spare=1;
 	} else {
@@ -55,7 +53,7 @@ Bowling.prototype.isSpare = function(pinsHit){
 	}
 };
 
-Bowling.prototype.isStrike = function(pinsHit){
+Bowling.prototype.confirmStrike = function(pinsHit){
 	if((this.rollNumber==1 && (pinsHit==10 || this.strike==1)) || (this.finalRound & this.strike ==1) ){
 		this.strike=1;
 	} else {
@@ -63,7 +61,7 @@ Bowling.prototype.isStrike = function(pinsHit){
 	}
 };
 
-Bowling.prototype.isFinalRound = function(){
+Bowling.prototype.confirmFinalRound = function(){
 	if( this.round==10 ){
 		this.finalRound = true;
 	}

@@ -52,6 +52,10 @@ describe('Frame', function(){
       frame.bowl(10);
       expect(frame.round).toEqual(["X"])
     });
+    it('isStrike is true', function(){
+      frame.bowl(10);
+      expect(frame.isStrike).toEqual(true)
+    });
   });
 
   describe('Spare', function(){
@@ -59,6 +63,11 @@ describe('Frame', function(){
       frame.bowl(3);
       frame.bowl(7);
       expect(frame.round).toEqual([3,"/"])
+    });
+    it('isSpare is true', function(){
+      frame.bowl(3);
+      frame.bowl(7);
+      expect(frame.isSpare).toEqual(true)
     });
   });
 

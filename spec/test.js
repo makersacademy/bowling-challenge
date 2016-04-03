@@ -95,4 +95,5 @@ describe('Game', function () {
     expect(game.frames[0]).toBe(2)
     expect(game.frames[1]).toBe(4)
   });
+
 });

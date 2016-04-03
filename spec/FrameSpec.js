@@ -66,6 +66,5 @@ describe('Frame', function(){
     frame.bowl(5);
     frame.bowl(4);
     expect( function(){ frame.bowl(1); } ).toThrow(new Error("Frame complete!"));
-
   });
 });

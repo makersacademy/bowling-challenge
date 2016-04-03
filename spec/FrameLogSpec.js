@@ -6,26 +6,37 @@ describe("FrameLog", function() {
     frameLog = new FrameLog();
   });
 
-  describe("single frame", function() {
-    it("starts a new frame on first bowl", function() {
+  describe("frame handler", function() {
+    beforeEach(function() {
+      frame = jasmine.createSpyObj('Frame', ['isComplete', 'record']);
+      frame.isComplete.and.returnValue(false);
+      frameLog = new FrameLog(frame);
+    });
+
+    it("creates a new frame if none exists", function() {
+      expect(frameLog.frames().length).toEqual(0);
       frameLog.record(1);
       expect(frameLog.frames().length).toEqual(1);
     });
 
-    it("adds second bowl result to same frame", function() {
+    it("calls the frame record method", function() {
       frameLog.record(1);
-      frameLog.record(1);
-      expect(frameLog.frames()[0].total()).toEqual([1,1]);
+      expect(frame.record).toHaveBeenCalledWith(1);
     });
 
-    xdescribe("closing off a frame", function() {
-      it("happens after a second bowl", function() {
-
-      });
-
-      it("happens after a strike on first bowl", function() {
-
-      });
+    it("starts a new frame after completing one", function() {
+      frameLog.record(1);
+      frame.isComplete.and.returnValue(true);
+      frameLog.record(1);
+      expect(frameLog.frames().length).toEqual(2);
     });
   });
+
+  describe("calculate score", function() {
+    
+  });
+
+  // describe("", function() {
+  //
+  // });
 });

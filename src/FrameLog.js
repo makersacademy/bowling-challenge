@@ -1,6 +1,7 @@
 "use strict";
 
-function FrameLog() {
+function FrameLog(frameFunction) {
+  this.frameFunction = frameFunction;
   this.currentFrame;
   this.log = new Array();
 }
@@ -11,7 +12,6 @@ FrameLog.prototype.record = function(pinScore) {
 
 FrameLog.prototype.getCurrentFrame = function() {
   this.currentFrame = this.currentFrame || this.createNewFrame();
-
 
   if (this.currentFrame.isComplete()) {
     this.createNewFrame();
@@ -24,7 +24,7 @@ FrameLog.prototype.frames = function() {
 }
 
 FrameLog.prototype.createNewFrame = function() {
-  this.currentFrame = new Frame();
+  this.currentFrame = this.frameFunction || new Frame();
   this.log.push(this.currentFrame);
   return this.currentFrame;
 }

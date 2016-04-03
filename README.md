@@ -1,7 +1,29 @@
+# User Stories
+
+```
+As a Player
+So I can keep track of my score
+I want to record the amount of pins knocked down in a frame.
+
+As a Player
+So I can review my score.
+I want to be able to view my total points.
+
+As a Player.
+So I can score more points.
+I want to 
+
+As a
+So I can
+I want to
 
 
+```
 
-# Original Challenge
+# [Link to my Challenge](https://github.com/olmesm/bowling-challenge)
+
+# [Original Challenge](https://github.com/makersacademy/bowling-challenge)
+
 
 Bowling Challenge
 =================

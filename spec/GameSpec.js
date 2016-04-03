@@ -80,7 +80,7 @@ describe("Game", function() {
       game.rollBall(4);
       game.rollBall(6);
       game.rollBall(5);
-      expect(game.getScore()).toEqual(19);
+      expect(game.getScore()).toEqual(20);
     });
   });
 

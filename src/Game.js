@@ -11,7 +11,18 @@ function Game() {
 Game.prototype.getScore = function() {
   var total = 0;
   for(var i = 0; i < this.frames.length; i++) {
-    total += this.frameTotal(this.frames[i]);
+    var currentFrameTotal = this.frameTotal(this.frames[i]);
+    total += currentFrameTotal;
+
+    var isSpare = currentFrameTotal === 10;
+
+    if (isSpare) {
+      var nextFrame = this.frames[i+1];
+      if(nextFrame.length !== 0) {
+        total += nextFrame[0];
+      }
+    }
+
   }
   return total;
 };

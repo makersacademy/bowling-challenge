@@ -37,18 +37,18 @@ describe('Frame', function() {
   })
 
   it('begins with an empty scoreboard', function(){
-    expect(frame._score).toEqual(0)
+    expect(frame._scoreboard).toEqual([])
   })
 
   it('adds pins to scoreboard', function(){
     frame.roll(pins)
-    expect(frame._score).toEqual(pins)
+    expect(frame._scoreboard).toEqual([pins])
   })
 
   it('adds two rolls', function(){
     frame.roll(pins)
     frame.roll(pins)
-    expect(frame._score).toEqual(pins + pins)
+    expect(frame._scoreboard).toEqual([pins, pins])
   })
 
   it('has max of 2 rolls', function(){
@@ -75,8 +75,9 @@ describe('Frame', function() {
     expect(frame._isSpare).toEqual(true)
   })
 
-  xit('stores strike with X', function(){
-    frame.play(strike)
-    expect(frame._scoreArray).toEqual(['X'])
+  it('calculates frame score', function() {
+    frame.play(pins)
+    frame.play(pins)
+    expect(frame._frameScore).toEqual(pins + pins)
   })
 })

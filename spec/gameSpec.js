@@ -3,11 +3,18 @@
 describe("Game", function () {
   var game
   var frame
+  var newFrame
 
   beforeEach(function () {
-    frame = jasmine.createSpyObj("frame", ["logRoll", "isComplete", "getScore", "isStrike"]);
+    frame = jasmine.createSpyObj("frame", ["logRoll", "isComplete", "getScore", "isStrike", "isSpare"]);
+    newFrame = jasmine.createSpyObj("newFrame", ["getScore", "logRoll"]);
     game = new Game(frame);
   });
+
+  function getAndLogScore(frame, score) {
+    frame.getScore.and.returnValue(score);
+    game.logFrameScore(frame);
+  };
 
   it("should start with a zero score", function () {
     expect(game.getScore()).toEqual(0);
@@ -20,28 +27,47 @@ describe("Game", function () {
     });
 
     it("logs the score of each frame", function () {
-      frame.getScore.and.returnValue(8);
-      game.logFrameScore(frame);
+      getAndLogScore(frame, 8)
       expect(game.getScore()).toEqual(8);
     });
   });
 
   describe("add frame", function () {
     it("adds a new frame when a frame is complete", function () {
-      var newFrame = jasmine.createSpy("newFrame");
       game.addFrame(newFrame);
       expect(game.currentFrame).toEqual(newFrame);
     });
   });
 
   describe("add bonus", function () {
-    xit("adds next frame's score as bonus when strike", function () {
-
+    beforeEach(function () {
+      getAndLogScore(frame, 10)
     });
 
-    xit("add next roll's score as bonus when spare",
-  function () {
+    function saveAndAddFrame(frame, newFrame) {
+      frame.isComplete.and.returnValue(true);
+      game.saveFrame(frame);
+      game.addFrame(newFrame);
+    };
 
+    describe("strike bonus", function () {
+      it("adds next frame's score as bonus when strike", function () {
+        frame.isStrike.and.returnValue(true);
+        saveAndAddFrame(frame, newFrame);
+        getAndLogScore(newFrame, 8);
+        expect(game.getScore()).toEqual(26);
+      });
+    });
+
+    describe("spare bonus", function () {
+      it("add next roll's score as bonus when spare",
+      function () {
+        frame.isSpare.and.returnValue(true);
+        saveAndAddFrame(frame, newFrame);
+        game.logRoll(4);
+        getAndLogScore(newFrame, 8);
+        expect(game.getScore()).toEqual(22);
+      });
     });
   });
 

@@ -7,7 +7,7 @@ describe("LastFrame", function () {
     lastFrame = new LastFrame();
   });
 
-  function logRolls (first, second) {
+  function logRolls(first, second) {
     lastFrame.logRoll(first);
     lastFrame.logRoll(second);
   };

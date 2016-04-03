@@ -1,9 +1,5 @@
 describe('Game', function() {
-  var game;
-  var pins;
-  var spare;
-  var strike;
-  var frame;
+  var game, pins, spare, strike, frame;
 
   beforeEach(function() {
     game   = new Game;

@@ -28,15 +28,8 @@ Game.prototype.getScore = function() {
 };
 
 Game.prototype.rollBall = function(numberOfPins) {
-  if (numberOfPins > 10) {
-    throw 'Error can\'t roll more than 10 pins per roll';
-  }
   var currentFrame = this.frames[this.frame];
   currentFrame.push(numberOfPins);
-
-  if (this.frameTotal(currentFrame) > 10) {
-    throw 'Error frame total can\'t be more than 10';
-  }
   this.knockedDownPins.push(numberOfPins);
   this.countRoll();
 };

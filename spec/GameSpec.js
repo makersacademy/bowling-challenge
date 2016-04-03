@@ -1,8 +1,10 @@
 describe("Game", function() {
   var game;
+  var frame;
 
   beforeEach(function() {
     game = new Game();
+    frame = 'new Frame';
   });
 
   it('has a starting score of 0', function() {
@@ -50,21 +52,6 @@ describe("Game", function() {
     game.rollBall(4);
     game.rollBall(4);
     expect(game.getScore()).toEqual(8);
-  });
-
-  it('throws error if roll more than 10 pins per roll', function() {
-    var expection = function() {
-      game.rollBall(11);
-    };
-    expect(expection).toThrow();
-  });
-
-  it('throws error if rolls more than 10 pins per frame', function() {
-    var expection = function(){
-      game.rollBall(9);
-      game.rollBall(2);
-    };
-    expect(expection).toThrow();
   });
 
   it('goes to frame 2 after four rolls', function() {

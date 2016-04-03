@@ -15,7 +15,7 @@ describe('Game', function()
           {
             game.hit(0);
           }
-        expect( game.getTotal() ).toEqual(0);
+        expect( game.calculateTotal() ).toEqual(0);
       }
     )
 
@@ -25,7 +25,7 @@ describe('Game', function()
           {
             game.hit(1);
           }
-        expect( game.getTotal() ).toEqual(20);
+        expect( game.calculateTotal() ).toEqual(20);
       }
     )
 
@@ -38,7 +38,7 @@ describe('Game', function()
           {
             game.hit(0);
           }
-        expect( game.getTotal() ).toEqual(26);
+        expect( game.calculateTotal() ).toEqual(26);
       }
     )
 
@@ -51,7 +51,7 @@ describe('Game', function()
           {
             game.hit(0);
           }
-        expect( game.getTotal() ).toEqual(26);
+        expect( game.calculateTotal() ).toEqual(26);
       }
     )
 
@@ -62,14 +62,14 @@ describe('Game', function()
           {
             game.hit(10);
           }
-        expect( game.getTotal() ).toEqual(300);
+        expect( game.calculateTotal() ).toEqual(300);
       }
     )
 
     it('scores mixed game', function()
       {
         game.rollScores = [6, 3, 7, 1, 8, 2, 7, 2, 10, 6, 2, 7, 3, 10, 8,0, 7, 3, 10];
-        expect( game.getTotal() ).toEqual(135);
+        expect( game.calculateTotal() ).toEqual(135);
       }
     )
 

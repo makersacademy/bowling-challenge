@@ -12,9 +12,8 @@ Game.prototype.hit = function(pins)
     return pins;
   }
 
-Game.prototype.getTotal = function()
+Game.prototype.calculateTotal = function()
   {
-
     for ( var currentFrame = 0; currentFrame < this.FRAMES; currentFrame++ )
       {
         if ( this._isStrike())

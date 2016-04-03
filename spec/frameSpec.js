@@ -23,7 +23,7 @@ describe('Frame', function() {
     it('should through an error if frame is complete', function(){
       frame.firstBowlPins(5)
       frame.secondBowlPins(3);
-            console.log(frame.isComplete())
+  
       expect(function(){frame.secondBowlPins(5)}).toThrow('this frame is complete please start next one!');
     })
 

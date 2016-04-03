@@ -4,6 +4,7 @@ describe ('Game', function() {
 
   beforeEach(function(){
     frame = jasmine.createSpyObj('frame', ['totalStrike'])
+
     game = new Game(Frame)
 
     
@@ -14,8 +15,13 @@ describe ('Game', function() {
     game.firstBowlPins(10)
     game.firstBowlPins(5)
     game.secondBowlPins(5)
-    game.firstBowlPins(1)
-    game.secondBowlPins(5)
+    game.firstBowlPins(10)
+    game.firstBowlPins(3)
+    game.secondBowlPins(7)
+    game.firstBowlPins(2)
+    game.secondBowlPins(7)
+  
+
 
   })
 
@@ -27,10 +33,16 @@ describe ('Game', function() {
     })
   })
   
-  describe('#newFrame', function(){
+  xdescribe('nextFrame', function(){
+    it('should throw an error if there are 10 frames and the game is normal', function(){
+      game.isGameComplete()=jasmine.createSpy("isGameComokete() spy").andReturn(true);
+        expect(function() {game.nextFrame()}).toThrow('the game is complete')
+    })
+  })
 
-    it('should know the current frame', function(){
-      expect(game.currentFrame()).toEqual(game.currentGame[5])
+  describe('#currentFrame', function(){
+    it('should return the current frame', function(){
+      expect(game.currentFrame()).toEqual(game.currentGame[7])
     })
   })
 
@@ -47,7 +59,7 @@ describe ('Game', function() {
       })
 
       it('should not crash if the next frame is not played yet', function() {
-        expect(game.score()).toContain(6)
+        expect(game.score()).toContain(9)
       })
 
       it('should work with a double strike', function () {

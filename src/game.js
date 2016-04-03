@@ -12,8 +12,6 @@ Game.prototype.name = function(name) {
 }
 
 Game.prototype.firstBowlPins = function(pins) {
- // if (this.normalGame && this.currentGame.length ===10 ) {throw 'the game is complete'}
- // if (!this.normalGame && this.currentGame.length ===11) {throw 'the game is complete'}
   this.nextFrame()
   last(this.currentGame).firstBowlPins(pins)
 }
@@ -23,6 +21,7 @@ Game.prototype.secondBowlPins = function(pins) {
 }
 
 Game.prototype.nextFrame = function() {
+  if (this.isGameComplete()) {throw 'the game is complete'}
   this.currentGame.push(new Frame);
 }
 
@@ -50,23 +49,22 @@ Game.prototype.spare = function(i) {
 
 Game.prototype.strike = function(i) {
     var frames = this.currentGame
-        if (frames[i+1].isStrike() && frames[i+2].isStrike() )
-        {frames[i].bonus(20)}
 
-        else if (frames[i+1].isStrike())
-        {frames[i].bonus(10+(frames[i+2].first))}
+    if (frames[i+1].isStrike() && frames[i+2].isStrike() )
+       {frames[i].bonus(20)}
 
-       else
-      {frames[i].bonus((frames[i+1].first)+(frames[i+1].second))}
+    else if (frames[i+1].isStrike())
+            {frames[i].bonus(10+(frames[i+2].first))}
+
+    else {frames[i].bonus((frames[i+1].first)+(frames[i+1].second))}
   }
 
 Game.prototype.score = function() {
-  var score = []
   this.frameScore()
-  for (i=0; i<this.currentGame.length;i++) {
+  var score = []
 
-    score.push(this.currentGame[i].totalScore())
-  }
+  for (i=0; i<this.currentGame.length;i++) 
+    { score.push(this.currentGame[i].totalScore())}
 
   return score
 }
@@ -75,9 +73,15 @@ Game.prototype.total = function () {
   var scores = this.score()
   var sum = 0 
 
-  for (i=0; i<scores.length;i++) {
-    sum += scores[i]
-  }
-
+  for (i=0; i<scores.length;i++) {sum += scores[i]}
   return sum
 }
+
+
+Game.prototype.isGameComplete = function() {
+  var count = this.currentGame.length
+  if ( count === 10 && this.normalGame) {return true}
+  if (count ===11 && !this.normalGame) {return true}
+
+}
+

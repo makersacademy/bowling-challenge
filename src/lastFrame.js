@@ -39,7 +39,9 @@ LastFrame.prototype._checkPins = function (pins) {
      (!this.isStrike() &&
      this._isSecondRoll() &&
      this._scores[0] + pins > 10) ||
-     (this.isStrike() && this._scores[1] + pins > 10)) {
+     (this.isStrike() &&
+     this._scores[1] < 10 &&
+     this._scores[1] + pins > 10)) {
        throw new Error(this.PINS_ERROR);
      }
 };

@@ -39,7 +39,7 @@ describe("Game", function () {
     });
   });
 
-  describe("add bonus", function () {
+  describe("add bonuses", function () {
     beforeEach(function () {
       getAndLogScore(frame, 10)
     });
@@ -51,11 +51,23 @@ describe("Game", function () {
     };
 
     describe("strike bonus", function () {
-      it("adds next frame's score as bonus when strike", function () {
+      beforeEach(function () {
         frame.isStrike.and.returnValue(true);
+      });
+
+      it("adds next frame's score as bonus when strike", function () {
         saveAndAddFrame(frame, newFrame);
         getAndLogScore(newFrame, 8);
         expect(game.getScore()).toEqual(26);
+      });
+
+      it("adds next two rolls' scores if strike again", function () {
+        saveAndAddFrame(frame, frame);
+        getAndLogScore(frame, 10);
+        saveAndAddFrame(frame, newFrame);
+        game.logRoll(4);
+        getAndLogScore(newFrame, 9);
+        expect(game.getScore()).toEqual(52);
       });
     });
 

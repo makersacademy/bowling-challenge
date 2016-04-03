@@ -39,6 +39,15 @@ describe('Game', function () {
     expect(game.score()).toBe(30)
   });
 
+  it ('will calculate all spares correctly', function () {
+    for (var i = 0; i <20; i++) {
+      game.rollBall(5)
+  }
+    game.rollBall(0)
+    expect(game.score()).toBe(145)
+  });
+
+
   it ('will calculate two strikes in a row correctly', function () {
     game.rollBall(10);
     game.rollBall(10);

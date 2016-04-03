@@ -20,7 +20,7 @@ Game.prototype.calculateScore = function() {
   var score = 0;
   for (var rollsIndex = 0; rollsIndex < this.rolls.length; rollsIndex++) {
     if (this.rolls[rollsIndex] === 'X') {
-      score += 10 + this.rolls[rollsIndex+1] + this.rolls[rollsIndex+2];
+      score += 10 + this.rolls[rollsIndex+2] + this.rolls[rollsIndex+3];
       this.addToFrame(score)
     } else if (this.rolls[rollsIndex] === '/') {
       score += 10 + this.rolls[rollsIndex+1] - this.rolls[rollsIndex-1]
@@ -28,28 +28,29 @@ Game.prototype.calculateScore = function() {
     } else {
       score += this.rolls[rollsIndex]
     }
-    }
-    return score
-    } 
+  }
+  return score
+} 
 
-    Game.prototype.rollBall = function(pins) {
-      this.rolls.push(pins);
-      this.updateFrame()
-    }
+Game.prototype.rollBall = function(pins) {
+  this.rolls.push(pins);
+  this.updateFrame()
+}
 
-    Game.prototype.updateFrame = function() {
-      if (this.isStrike() === true) { 
-        this.rolls.splice(-1,1)
+Game.prototype.updateFrame = function() {
+  if (this.isStrike() === true) { 
+    this.rolls.splice(-1,1)
       this.rolls.push('X');
-      } else if (this.rolls.length % 2 === 0) {
-        if (this.isSpare()===true) {
-          this.rolls.splice(-1,1)
-            this.rolls.push('/');
-        } else {
-          this.addToFrame(this.calculateScore());
-        }
-      }
+      this.rolls.push(0);
+  } else if (this.rolls.length % 2 === 0) {
+    if (this.isSpare()===true) {
+      this.rolls.splice(-1,1)
+        this.rolls.push('/');
+    } else {
+      this.addToFrame(this.calculateScore());
     }
+  }
+}
 
 
 Game.prototype.isSpare = function() {
@@ -61,3 +62,10 @@ Game.prototype.isStrike = function() {
   var i = this.rolls.length % 2 === 1 && this.rolls[this.rolls.length-1] === 10
     return i;
 }
+
+
+Game.prototype.calculateStrikeBonus = function() {
+  var rollsCopy = this.rolls.slice();
+}
+
+

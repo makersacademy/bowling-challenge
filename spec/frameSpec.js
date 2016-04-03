@@ -23,3 +23,34 @@ IF NEXT FRAME STRIKE, HOLD SCORE ROLL 3RD FRAME,
 ELSE ADD FIRST TWO FRAMES PLUS SCORE OF THIRD TO FIRST FRAME SCORE.
 
 JUST ADD ALL THREE TOGETHER, BY HOLDING SCORE IF FIRST TWO FRAMES ARE STRIKES
+*/
+describe('Frame', function() {
+  var frame;
+  var pins;
+
+  beforeEach(function() {
+    frame = new Frame()
+    pins  = 3
+  })
+
+  it('begins with an empty scoreboard', function(){
+    expect(frame._score).toEqual(0)
+  })
+
+  it('adds pins to scoreboard', function(){
+    frame.roll(pins)
+    expect(frame._score).toEqual(pins)
+  })
+
+  it('adds two rolls', function(){
+    frame.roll(pins)
+    frame.roll(pins)
+    expect(frame._score).toEqual(pins + pins)
+  })
+
+  it('Does not allow 3 rolls', function(){
+    frame.roll(pins)
+    frame.roll(pins)
+    expect(function() { frame.roll(pins) }).toThrowError('Two rolls per frame!')
+  })
+})

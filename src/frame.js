@@ -1,17 +1,13 @@
 function Frame(){
-  this._rolls  = []
-  this.pins   = 0
-  this.strike = false
-  this.spare  = false
+  this._score = 0
+  this._numberOfThrows = 0
 }
 
-
-this.roll(pins)
-  this._rolls.push(this.pins)
-
-this.isStrike
-  this.pins === 10
-  this.strike = true
-
-  this.isSpare
-  this._rolls
+Frame.prototype.roll = function(pins) {
+  if(this._numberOfThrows <= 2){
+    this._score += pins
+    this._numberOfThrows ++
+  } else {
+    throw new Error('Two rolls per frame!')
+  }
+}

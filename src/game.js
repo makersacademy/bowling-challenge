@@ -11,25 +11,7 @@ a spare = 10 points, plus 'bonus' from first roll of next frame,
 when pins left standing, simple addition.
 */
 
-function Game(frame) {
-  this._score  = 0
-  this._frames = []
-  this.currentFrame = frame
-}
 
-Game.prototype.currentScore = function() {
-  var total = this._frames.reduce(function (first, second, index) {
-    return first + second;
-  })
-  return this._score += total
-};
-
-Game.prototype.addFrame = function() {
-  if(this.currentFrame.isFinished()) {
-    this._frames.push(this.currentFrame.score())
-    this.currentFrame._rolls = []
-  }
-}
 
 // use strike / spare >> frames for score
 

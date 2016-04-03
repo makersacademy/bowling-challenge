@@ -22,6 +22,9 @@ bowlingGame.prototype.roll = function() {
 }
 
 bowlingGame.prototype.knockedDownPins = function(number) {
+  if (number === 10) {
+    this.strike();
+  }
   this._pins.push(number);
   this._roll += 1;
 }
@@ -31,4 +34,10 @@ bowlingGame.prototype.addToScore = function() {
    this._score += total;
    this._frame += 1;
    this._roll = 0
+}
+
+bowlingGame.prototype.strike = function() {
+  this._score += 10;
+  this._frame += 1;
+  this._roll = 0
 }

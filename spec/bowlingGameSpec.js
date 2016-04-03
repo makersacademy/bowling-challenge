@@ -21,7 +21,7 @@ describe('bowlingGame', function() {
     });
   });
 
-  describe('#pins', function() {
+  describe('#knockedDownPins', function() {
     it('adds number of pins knocked down to array', function() {
       game.knockedDownPins(3);
       game.knockedDownPins(4);
@@ -33,6 +33,11 @@ describe('bowlingGame', function() {
       expect(game.roll()).toEqual(1);
       game.knockedDownPins(3);
       expect(game.roll()).toEqual(2);
+    });
+
+    it('ends the frame if there is a strike', function() {
+      game.knockedDownPins(10);
+      expect(game.score()).toEqual(10)
     });
   });
 

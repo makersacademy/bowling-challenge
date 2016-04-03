@@ -33,10 +33,17 @@ describe("FrameLog", function() {
   });
 
   describe("calculate score", function() {
-    
+    beforeEach(function() {
+      frameLog = new FrameLog();
+      frame1 = jasmine.createSpyObj('Frame', ['total'])
+      frame1.total.and.returnValue([1,2]);
+      frameLog.log = [frame1];
+      spyOn(frameLog, 'frames').and.returnValue([frame1]);
+    });
+
+    it("returns a score", function() {
+      expect(frameLog.frames()[0].total()).toEqual(1);
+    });
   });
 
-  // describe("", function() {
-  //
-  // });
 });

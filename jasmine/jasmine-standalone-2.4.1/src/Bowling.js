@@ -21,7 +21,7 @@ Bowling.prototype.updateScore = function(pinsHit){
 	this.confirmStrike(pinsHit);
 	this.confirmSpare(pinsHit);
 	this.gameEnded();	
-	this.changeRoundNumber();
+	this.changeRoundNumber(pinsHit);
 	this.changeRollNumber(pinsHit) ;
 	this.lastHit = pinsHit;
 };
@@ -37,8 +37,8 @@ Bowling.prototype.changeRollNumber = function(pinsHit){
 	}
 };
 
-Bowling.prototype.changeRoundNumber = function(){
-	if((!this.finalRound && (this.rollNumber===2 || this.strike!=0 )) || this.gameOver){
+Bowling.prototype.changeRoundNumber = function(pinsHit){
+	if((!this.finalRound && (this.rollNumber===2 || pinsHit==10 )) || this.gameOver){
 		this.round +=1;
 	}
 };

@@ -61,7 +61,6 @@ describe("Bowling", function(){
 				bowling.round = 9;
 				bowling.updateScore(5);
 				bowling.updateScore(3);
-				console.log("boo "+ bowling.currentScore)
 			});
 
 				it(" and get a spare", function(){				
@@ -73,17 +72,8 @@ describe("Bowling", function(){
 
 				it(" and get a strike", function(){
 					bowling.updateScore(10);
-					console.log(bowling.rollNumber);
-					console.log(bowling.finalRound);
-					console.log("hel "+ bowling.currentScore);
-					
 					bowling.updateScore(6);
-					console.log(bowling.rollNumber);
-					console.log("hello "+ bowling.currentScore);
-console.log(bowling.round);
-console.log(bowling.gameOver);
 					bowling.updateScore(6);
-					console.log("work "+ bowling.currentScore);
 					expect(bowling.currentScore).toEqual(30);
 				});
 
@@ -116,8 +106,7 @@ console.log(bowling.gameOver);
 	});
 
 	it("increases the round number if strike", function(){
-		bowling.confirmStrike(10);
-		bowling.changeRoundNumber();
+		bowling.changeRoundNumber(10);
 		expect(bowling.round).toEqual(2);
 	});
 
@@ -153,18 +142,9 @@ console.log(bowling.gameOver);
 		bowling.updateScore(10);
 		bowling.updateScore(10);
 		bowling.updateScore(10);
-		console.log(bowling.currentScore);
 		bowling.updateScore(10);
-		this.round = 10;
-		console.log(bowling.currentScore);
-		this.round = 10;
 		bowling.updateScore(10);
-		console.log(bowling.currentScore);
-		this.round = 10;
 		bowling.updateScore(10);
-		console.log(bowling.currentScore);
-		
-
 		expect(bowling.currentScore).toEqual(300);
 	});
 

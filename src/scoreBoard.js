@@ -1,0 +1,4 @@
+function ScoreBoard(){
+  this.reveal = [[],[],[],[],[],
+                 [],[],[],[],[]];
+}

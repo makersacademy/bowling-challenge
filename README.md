@@ -17,27 +17,27 @@ On Windows
 Search for and open Command Prompt
 
 make a directory
-    mkdir bowling-challenge
+``    mkdir bowling-challenge``
 clone the project
-    gitclone https://github.com/kevinpmcc/bowling-challenge.git
+``    gitclone https://github.com/kevinpmcc/bowling-challenge.git``
 
 open the tests
-    open SpecRunner.html
+``    open SpecRunner.html``
 open console in your browser
 http://webmasters.stackexchange.com/questions/8525/how-to-open-the-javascript-console-in-different-browsers
 
 in the console create a new game
-    game = new Game();
+``    game = new Game();``
 
 to roll a ball put rollBall(numberofpins)
-    game.rollBall(7);
+``    game.rollBall(7);``
 to get the score
-    game.score();
+``    game.score();``
 
 to roll a perfect game
-    for (var i = 0; i < 12; i++){
+``    for (var i = 0; i < 12; i++){
     game.rollBall(10);
-    }
+    }``
  
 Technologies Used
 ---------

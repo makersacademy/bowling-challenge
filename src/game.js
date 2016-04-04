@@ -3,9 +3,12 @@ function Game () {
 }
 
 Game.prototype.rollBall = function(pins) {
-  this.rollScores.push(pins);
+  if (this.isValidInput(pins)){
+    this.rollScores.push(pins);
+  } else {
+    return "that is not a valid entry"
+  }
 }
-
 Game.prototype.score = function() {
   var score = 0; 
   for (var rollScoresIndex = 0; rollScoresIndex < 20; rollScoresIndex+=2) {
@@ -19,6 +22,10 @@ Game.prototype.score = function() {
     }
   }
   return score
+}
+
+Game.prototype.isValidInput = function(pins) {
+  return (pins < 11) && (pins > -1) && (pins % 1 === 0) 
 }
 
 Game.prototype.spareScore = function(rollScoresIndex) {

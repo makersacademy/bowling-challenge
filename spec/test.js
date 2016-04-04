@@ -48,22 +48,25 @@ describe('Game', function () {
     expect(game.score()).toBe(30)
   });
 
-  it ('will calculate two strikes in a row correctly', function () {
-    game.rollBall(10);
-    game.rollBall(10);
-    for (var i = 0; i < 16; i++) {
-      game.rollBall(1)
-    }
-    expect(game.score()).toBe(49)
-  });
-  it ('will calculate three strikes in a row correctly', function () {
-    game.rollBall(10);
-    game.rollBall(10);
-    game.rollBall(10);
-    for (var i = 0; i < 14; i ++) {
-      game.rollBall(1)
-    }
-    expect(game.score()).toBe(77)
+  describe ('after two strikes', function () {
+    beforeEach (function() {
+      game.rollBall(10);
+      game.rollBall(10);
+    });
+
+    it ('will calculate score correctly', function () {
+      for (var i = 0; i < 16; i++) {
+        game.rollBall(1)
+      }
+      expect(game.score()).toBe(49)
+    });
+    it ('will calculate another strike in a row correctly', function () {
+      game.rollBall(10);
+      for (var i = 0; i < 14; i ++) {
+        game.rollBall(1)
+      }
+      expect(game.score()).toBe(77)
+    });
   });
 
   it ('will calculate a mix of strikes and spares correctly', function () {
@@ -84,5 +87,23 @@ describe('Game', function () {
     game.rollBall(1);
     game.rollBall(1);
     expect(game.score()).toBe(142)
+  });
+
+  describe ('will not accept', function () {
+    it ('when given number above 10', function () {
+      expect(game.rollBall(11)).toContain("that is not a valid entry");
+    });
+
+    it ('when given negative number', function ()  {
+     expect(game.rollBall(-1)).toContain("that is not a valid entry");
+    });
+
+    it ('when given float', function () {
+      expect(game.rollBall(1.1)).toContain("that is not a valid entry");
+    });
+
+    it ('when given string', function () {
+      expect(game.rollBall('blah')).toContain("that is not a valid entry");
+    });
   });
 });

@@ -10,10 +10,10 @@ $(document).ready(function () {
     for (var i = 1; i <= 10; i ++) {
       $("#score-table").append("<tr><td>" + i + "</td><td>" + 1 +
                                "</td><td id='frame" + i +
-                               "-roll1'></td><td><td></tr>");
+                               "-roll1'></td><td></td></tr>");
       $("#score-table").append("<tr><td>" + i + "</td><td>" + 2 +
                                "</td><td id='frame" + i +
-                               "-roll2'></td><td><td></tr>");
+                               "-roll2'></td><td id='frame" + i + "score'></td></tr>");
     }
     $("#score-table").append("<tr><td>" + 10 + "</td><td>" + 3 +
                              "</td><td id='frame" + 10 +
@@ -37,10 +37,15 @@ $(document).ready(function () {
     $("button").click(function () {
       var pins = $(this).data("value");
       game.logRoll(pins);
-      game.logFrameScore(frame);
       var num = game.frameNum();
-
-      $("#frame" + num + "-roll1").text(game.getScore());
+      if (game.currentFrame.isSecondRoll()) {
+        $("#frame" + num + "-roll1").text(game.currentFrame.scores[0]);
+      } else {
+        $("#frame" + num + "-roll2").text(game.currentFrame.scores[1]);
+      }
+      game.logFrameScore(game.currentFrame);
+      $("#frame" + num + "score").text(game.currentFrame.getScore());
+      game.saveFrame(frame);
       updateGameProgress();
     });
   }

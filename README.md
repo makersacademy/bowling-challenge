@@ -21,7 +21,7 @@ To clone this repo:
 ```
 $ git clone git@github.com:junyuanxue/bowling-challenge.git
 ```
-To interact with the user interface:
+To interact with user interface:
 ```
 $ cd bowling-challenge
 $ open index.html

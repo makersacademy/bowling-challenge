@@ -31,6 +31,15 @@ describe('Game', function () {
     expect(game.score()).toBe(29)
   }); 
 
+  it ('will calculate all spares and five correctly', function () {
+    for (var i = 0; i < 20; i++) {
+      game.rollBall(5)
+    }
+    game.rollBall(5);
+    expect(game.score()).toBe(150)
+  });
+
+
   it ('will calculate strikes correctly', function () {
     game.rollBall(10);
     for (var i = 0; i < 18; i++) {
@@ -48,22 +57,25 @@ describe('Game', function () {
   });
 
 
-  it ('will calculate two strikes in a row correctly', function () {
-    game.rollBall(10);
-    game.rollBall(10);
-    for (var i = 0; i < 16; i++) {
-      game.rollBall(1)
-    }
-    expect(game.score()).toBe(49)
-  });
-  it ('will calculate three strikes in a row correctly', function () {
-    game.rollBall(10);
-    game.rollBall(10);
-    game.rollBall(10);
-    for (var i = 0; i < 14; i ++) {
-      game.rollBall(1)
-    }
-    expect(game.score()).toBe(77)
+  describe ('after two strikes', function () {
+    beforeEach (function() {
+      game.rollBall(10);
+      game.rollBall(10);
+    });
+
+    it ('will calculate score correctly', function () {
+      for (var i = 0; i < 16; i++) {
+        game.rollBall(1)
+      }
+      expect(game.score()).toBe(49)
+    });
+    it ('will calculate another strike in a row correctly', function () {
+      game.rollBall(10);
+      for (var i = 0; i < 14; i ++) {
+        game.rollBall(1)
+      }
+      expect(game.score()).toBe(77)
+    });
   });
 
 
@@ -96,13 +108,21 @@ describe('Game', function () {
   });
 
 
-  it ('will return the individual frame scores correctly', function () {
-    game.rollBall(1);
-    game.rollBall(1);
-    game.rollBall(1);
-    game.rollBall(1);
-    expect(game.frames[0]).toBe(2)
-    expect(game.frames[1]).toBe(4)
-  });
+  describe ('will not accept', function () {
+    it ('when given number above 10', function () {
+      expect(game.rollBall(11)).toContain("that is not a valid entry");
+    });
 
+    it ('when given negative number', function ()  {
+     expect(game.rollBall(-1)).toContain("that is not a valid entry");
+    });
+
+    it ('when given float', function () {
+      expect(game.rollBall(1.1)).toContain("that is not a valid entry");
+    });
+
+    it ('when given string', function () {
+      expect(game.rollBall('blah')).toContain("that is not a valid entry");
+    });
+  });
 });

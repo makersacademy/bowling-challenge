@@ -12,29 +12,29 @@ Installation Instruction
 -----
 Set up your directory
 On Mac 
-* Cmd+Space "Terminal"
+Cmd+Space "Terminal"
 On Windows
-* Search for and open Command Prompt
+Search for and open Command Prompt
 
-* make a directory
+make a directory
     mkdir bowling-challenge
-* clone the project
+clone the project
     gitclone https://github.com/kevinpmcc/bowling-challenge.git
 
-* open the tests
+open the tests
     open SpecRunner.html
-* open console in your browser
+open console in your browser
 http://webmasters.stackexchange.com/questions/8525/how-to-open-the-javascript-console-in-different-browsers
 
-* in the console create a new game
+in the console create a new game
     game = new Game();
 
-* to roll a ball put rollBall(numberofpins)
+to roll a ball put rollBall(numberofpins)
     game.rollBall(7);
-* to get the score
+to get the score
     game.score();
 
-* to roll a perfect game
+to roll a perfect game
     for (var i = 0; i < 12; i++){
     game.rollBall(10);
     }

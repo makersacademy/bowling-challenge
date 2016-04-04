@@ -73,5 +73,19 @@ describe('Game', function()
       }
     )
 
+    it('plays a max number of rolls', function()
+      {
+
+        for( roll = 1; roll <= 18; roll++ )
+          {
+            game.hit(0);
+          }
+        game.hit(10);
+        game.hit(10);
+        game.hit(10);
+        expect( game.calculateTotal() ).toEqual(30);
+      }
+    )
+
   }
 )

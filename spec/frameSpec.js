@@ -49,6 +49,6 @@ describe('Frame', function() {
   it('calculates frame score', function() {
     frame.play(pins)
     frame.play(pins)
-    expect(frame.totalScore()).toEqual(pins + pins)
+    expect(frame._score).toEqual(pins + pins)
   })
 })

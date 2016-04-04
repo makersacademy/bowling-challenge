@@ -1,5 +1,5 @@
 function Frame(){
-  // this._frameScore = 0
+  this._score = 0
   this._rollNumber = 0
   this._maxRolls   = 2
   this._isFinished = false
@@ -24,6 +24,7 @@ Frame.prototype.roll = function(pins) {
 Frame.prototype.closeFrame = function () {
   if(this._rollNumber === this._maxRolls) {
     this._isFinished = true
+    this.totalScore()
   }
 };
 
@@ -50,5 +51,5 @@ Frame.prototype.totalScore = function () {
   var score = this._scoreboard.reduce(function (first, last){
     return first + last
   })
-  return score
+  this._score = score
 };

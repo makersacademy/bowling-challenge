@@ -56,8 +56,7 @@ describe('Game', function() {
   it('stores score for regular frame', function() {
     game.play(pins)
     game.play(pins)
-    expect(game._frameScore).toEqual([6])
-
+    expect(game.latterFrame()._score).toEqual(6)
   })
 
   it('saves score for strike', function() {

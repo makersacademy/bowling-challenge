@@ -43,7 +43,7 @@ Game.prototype.calculateFrame = function () {
   if(this.currentFrame._isStrike || this.currentFrame._isSpare){
       this.currentScore += 10
   } else {
-    var score = this.currentScore += this.currentFrame.totalScore()
+    var score = this.currentScore += this.currentFrame._score
     this._frameScore.push(score)
   }
 };

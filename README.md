@@ -2,33 +2,50 @@
 Bowling Challenge
 =================
 
+In this challenge we had to count and sum the scores of a bowling game for one player (in JavaScript).
 
-* Challenge time: rest of the day and weekend, and the entire of lab week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+Functionality
+------------
 
-Task: 
+
+Installation Instruction
 -----
+Set up your directory
+On Mac 
+* Cmd+Space "Terminal"
+On Windows
+* Search for and open Command Prompt
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+* make a directory
+    mkdir bowling-challenge
+* clone the project
+    gitclone https://github.com/kevinpmcc/bowling-challenge.git
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+* open the tests
+    open SpecRunner.html
+* open console in your browser
+http://webmasters.stackexchange.com/questions/8525/how-to-open-the-javascript-console-in-different-browsers
 
-As usual please start by 
+* in the console create a new game
+    game = new Game();
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_november2015 (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
+* to roll a ball put rollBall(numberofpins)
+    game.rollBall(7);
+* to get the score
+    game.score();
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+* to roll a perfect game
+    for (var i = 0; i < 12; i++){
+    game.rollBall(10);
+    }
+ 
+Technologies Used
+---------
+JavaScript for business logic
+Jasmine for testing
 
 
-### Optional Extra
 
-Create a nice interactive animated interface with jQuery.
-
-## Strikes
 
 The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
 

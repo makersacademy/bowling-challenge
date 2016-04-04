@@ -22,9 +22,16 @@ Frame.prototype.checkPins = function() {
 }
 
 Frame.prototype.checkFinish = function() {
-  if (this.game.length >= 10 && this.game[9][0] != 10) {
+  if (this.game.length === 10 && this.game[9][0] === 10) {
+    this.lastRound();
+  } else if (this.game.length >= 10) {
     throw new Error('Game completed')
   }
+}
+
+Frame.prototype.lastRound = function(){
+  // if (this.game[this.game.length-1][0] != 10) {
+  //   throw new Error('Game completed')
 }
 
 Frame.prototype.finalize = function() {

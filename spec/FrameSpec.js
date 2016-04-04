@@ -86,28 +86,9 @@ describe('Frame', function() {
     };
     frame.newRoll(strike);
     frame.newRoll(roll);
-    expect(frame.roll).toContain(roll)
+    expect(frame.game[game.length-1]).toContain(roll)
   })
 
-  it('allows second go if 10th frame is a strike', function(){
-    for (var i = 1; i < 19; i++) {
-      frame.newRoll(roll);
-    };
-    frame.newRoll(strike);
-    frame.newRoll(roll);
-    expect(frame.roll).toContain(roll)
-  })
-
-  it('Completes game if 11th frame roll is not a strike', function(){
-    for (var i = 1; i < 19; i++) {
-      frame.newRoll(roll);
-    };
-    frame.newRoll(strike);
-    frame.newRoll(roll);
-    expect(function(){
-      frame.newRoll(roll)
-    }).toThrowError('Game completed')
-  });
 
   it('allows third go if 11th frame is a strike', function(){
 

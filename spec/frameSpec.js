@@ -2,10 +2,21 @@
 
 describe("Frame", function(){
   var frame;
+  var spareFrame;
+  var strikeFrame;
+  var normalFrame;
   var i;
 
   beforeEach(function(){
     frame  = new Frame();
+    spareFrame = new Frame();
+    spareFrame.roll1 = 5;
+    spareFrame.roll2 = 5;
+    strikeFrame = new Frame();
+    strikeFrame.roll1 = 10;
+    normalFrame = new Frame();
+    normalFrame.roll1 = 5;
+    normalFrame.roll2 = 4;
   });
 
   it('roll 1 is initially 0', function(){
@@ -63,4 +74,33 @@ describe("Frame", function(){
       expect(frame._isSpare()).toEqual(true);
     });
   });
+
+  describe("#score", function() {
+    it("scores an open frame", function(){
+      expect(normalFrame.score(strikeFrame, strikeFrame)).toEqual(9);
+    })
+
+    it("scores an spare frame", function(){
+      expect(spareFrame.score(strikeFrame, strikeFrame)).toEqual(20);
+    })
+
+    it("scores a strike frame", function(){
+      expect(strikeFrame.score(spareFrame, strikeFrame)).toEqual(20);
+    })
+
+    it("scores two Stikes in a row", function(){
+      expect(strikeFrame.score(strikeFrame, strikeFrame)).toEqual(30)
+    })
+
+    it("scores the first frame", function(){
+      expect(normalFrame.score(undefined, undefined)).toEqual(9)
+    })
+
+    it("scores the second frame", function(){
+      expect(strikeFrame.score(strikeFrame, undefined)).toEqual(10)
+    })
+
+
+  });
+
 });

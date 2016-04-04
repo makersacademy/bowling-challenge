@@ -77,15 +77,23 @@ describe("Game", function(){
       game.firstBall(10);
       game.secondBall(0)
       game.scorer();
-      console.log(game.score)
+      console.log(game.score);
       game.firstBall(10);
       game.secondBall(0);
-      game.scorer()
-      console.log(game.score)
-      game.firstBall(5);
-      game.secondBall(4);
-      game.scorer()
-      expect(game.score).toEqual(29 + 19 + 9);
+      game.scorer();
+      console.log(game.score);
+      game.firstBall(10);
+      game.secondBall(0);
+      game.scorer();
+      console.log(game.score);
+      game.firstBall(10);
+      game.secondBall(0);
+      game.scorer();
+      console.log(game.score);
+      game.firstBall(6);
+      game.secondBall(3);
+      game.scorer();
+      expect(game.score).toEqual(30 + 30 + 26 + 19 + 9);
     });
 
 

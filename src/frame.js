@@ -1,7 +1,6 @@
 function Frame() {
   this.roll1 = 0;
   this.roll2 = 0;
-  this.total = this.roll1 + this.roll2;
 
 
 this.firstRoll = function(ballOneScore){
@@ -23,4 +22,24 @@ Frame.prototype._isStrike = function(){
 
 Frame.prototype._isSpare = function(){
   return !this._isStrike() && this.total() === 10;
+};
+
+Frame.prototype.score = function(nextFrame, nextNextFrame) {
+  if(nextFrame === undefined || nextNextFrame === undefined){
+    return this.total();
+  }
+
+  if(this._isStrike() && nextFrame._isStrike()){
+    return (this.total() + nextFrame.total() + nextNextFrame.total() )
+  }
+
+  else if(this._isStrike()){
+    return (this.total() + nextFrame.total());
+  }
+  else if(this._isSpare()){
+    return (this.total() + nextFrame.roll1);
+  }
+  else {
+    return this.total();
+  }
 };

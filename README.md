@@ -16,4 +16,4 @@ Game Play
 ------
 The game can be interacted through two functions.
 * Roll function `game.roll(number)` it takes the score you want to record.
-* The score function `game.score` it displays the score at the current time.
+* The score function `game.score()` it displays the score at the current time.

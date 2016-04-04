@@ -7,7 +7,7 @@ function Game(Frame){
 
 }
 
-Game.prototype.name = function(name) {
+Game.prototype.name = function(name) { //enterName
   this.currentPlayer = name
 }
 
@@ -29,7 +29,7 @@ Game.prototype.currentFrame = function() {
  return last(this.currentGame)
 }
 
-Game.prototype.frameScore = function() {
+Game.prototype.frameScore = function() { //setFrameScore
   var frames = this.currentGame
   for (i=0; i<frames.length;i++){
    
@@ -59,7 +59,7 @@ Game.prototype.strike = function(i) {
     else {frames[i].bonus((frames[i+1].first)+(frames[i+1].second))}
   }
 
-Game.prototype.score = function() {
+Game.prototype.score = function() { //saveAllFramesScore
   this.frameScore()
   var score = []
 
@@ -69,7 +69,7 @@ Game.prototype.score = function() {
   return score
 }
 
-Game.prototype.total = function () {
+Game.prototype.total = function () { //totalScore
   var scores = this.score()
   var sum = 0 
 

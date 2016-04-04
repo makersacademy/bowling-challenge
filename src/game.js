@@ -34,8 +34,6 @@ Game.prototype._changeFrame = function () {
     return this.isOver;
    }
   this.currentFrame = this.frames[this.currentFrame.number + 1];
-  console.log(this.currentFrame.number);
-  console.log(this.score());
 };
 
 

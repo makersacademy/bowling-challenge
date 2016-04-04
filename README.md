@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kevinpmcc/bowling-challenge.svg?branch=master)](https://travis-ci.org/kevinpmcc/bowling-challenge)
+
 
 Bowling Challenge
 =================
@@ -6,7 +8,12 @@ In this challenge we had to count and sum the scores of a bowling game for one p
 
 Functionality
 ------------
+Bowlers can roll all gutterballs and get a score of 0.
+Bowlers can roll all 1s and get a score of 20.
+Bowlers can roll a mix of strikes and spares and get correct score.
+Bowlers can roll a perfect game (11 strikes) and get a score of 300.
 
+The game will not accept non-integers or negative numbers or numbers above 10.
 
 Installation Instruction
 -----

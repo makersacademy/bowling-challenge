@@ -35,6 +35,10 @@ FrameLog.prototype.score = function() {
   for(var i in this.log) {
     for(var j in this.log[i].total()) {
       scoreTotal += this.log[i].total()[j];
+
+      if(this.log[i].total()[0] == 10) {
+
+      }
     }
   }
   return scoreTotal;

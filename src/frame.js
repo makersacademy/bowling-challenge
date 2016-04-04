@@ -3,6 +3,14 @@ function Frame(){
   this.balls = [];
 }
 
+Frame.prototype.getScore = function(){
+  return this.score;
+}
+
+Frame.prototype.getBalls = function(){
+  return this.balls;
+}
+
 Frame.prototype.isComplete = function(){
   if ((this.score === 10) || (this.balls.length === 2)) {
     return true
@@ -14,14 +22,19 @@ Frame.prototype.isComplete = function(){
 
 Frame.prototype.addScore = function(pins){
   if ((pins > 10)||(this.score+pins > 10)) {
-    throw new Error('A frame\'s score cannot be above 10');
+    throw new Error('A frame\'s total score cannot be above 10');
   }
   else if (pins < 0) {
     throw new Error('A score cannot be below 0')
   }
   else {
-    this.balls.push(pins);
-    this.score += pins;
+    if (!this.isComplete()){
+      this.balls.push(pins);
+      this.score += pins;
+    }
+    else {
+      throw new Error('This frame is already completed')
+    }
   }
 }
 

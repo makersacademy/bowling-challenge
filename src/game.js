@@ -1,16 +1,14 @@
 function Game() {
-  this.Frame = Frame;
-  this.LastFrame = LastFrame;
   this.frames = [];
   this._setup();
   this.isOver = false;
 }
 
 Game.prototype._setup = function () {
-  for (i = 0; i < (this._default.numberOfFrames - 1); i++) {
-    this.frames.push(new this.Frame(i));
+  for (var i = 0; i < (this._default.numberOfFrames - 1); i++) {
+    this.frames.push(new Frame(i));
   }
-  this.frames.push(new this.LastFrame(9));
+  this.frames.push(new LastFrame(9));
   this.currentFrame = this.frames[0];
 };
 
@@ -51,8 +49,11 @@ Game.prototype.spareBonus = function (frame) {
 
 Game.prototype.nextTwoRolls = function (frame) {
   if (this._nextTwoFramesRolls(frame).length === 0) { return [0,0]; }
-  if (this._nextTwoFramesRolls(frame).length === 1) { return this.nextRoll(frame); }
-  return [this._nextTwoFramesRolls(frame)[0],this._nextTwoFramesRolls(frame)[1]];
+  if (this._nextTwoFramesRolls(frame).length === 1) {
+    return this.nextRoll(frame);
+  }
+  return [this._nextTwoFramesRolls(frame)[0],
+          this._nextTwoFramesRolls(frame)[1]];
 };
 
 Game.prototype.nextRoll = function (frame) {
@@ -76,15 +77,15 @@ Game.prototype._default = {
 function rollsFromFrame(twoFrames){
   twoFrames[0] = twoFrames[0].rolls;
   twoFrames[1] = twoFrames[1].rolls;
-  rolls = twoFrames.reduce(function(a, b) { return a.concat(b);}, []);
+  var rolls = twoFrames.reduce(function(a, b) { return a.concat(b);}, []);
   return rolls;
 }
 
 function undHelper(thingToCompare) {
-  return typeof thingToCompare == 'undefined';
+  return typeof thingToCompare === 'undefined';
 }
 
 function arraySum(arr){
-  sum = arr.reduce(function(a, b) { return a + b; }, 0);
+  var sum = arr.reduce(function(a, b) { return a + b; }, 0);
   return undHelper(sum) ? 0 : sum;
 }

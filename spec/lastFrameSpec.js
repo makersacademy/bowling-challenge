@@ -24,7 +24,7 @@ describe('LastFrame',function () {
     it('user cannot roll when the game is over',function () {
       frame.roll(5);
       frame.roll(4);
-      dirtyRoll = function () {
+      var dirtyRoll = function () {
         frame.roll(1);
       };
       expect(dirtyRoll).toThrowError(frame._GAME_OVER_ERROR);

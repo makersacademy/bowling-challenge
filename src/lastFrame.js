@@ -16,6 +16,7 @@ LastFrame.prototype.numberOfRolls = function () {
 };
 
 LastFrame.prototype.pinsKnocked = function () {
+  var sum;
   sum = this.rolls.reduce(function(a, b) { return a + b; }, 0);
   return sum;
 };
@@ -25,7 +26,7 @@ LastFrame.prototype.isStrike = function () {
 };
 
 LastFrame.prototype.isSpare = function () {
-  if(this.isStrike()) return false;
+  if(this.isStrike()) { return false; }
   return this.pinsKnocked() === this._default.pins;
 };
 
@@ -36,9 +37,9 @@ LastFrame.prototype.totalScore = function () {
 };
 
 LastFrame.prototype.isFinished = function () {
-  if(this.numberOfRolls() === 2 && this.isStrike()) return false;
-  if(this.numberOfRolls() === 2 && !this.isSpare()) return true;
-  if(this.numberOfRolls() === this.maxRolls) return true;
+  if(this.numberOfRolls() === 2 && this.isStrike()) { return false; }
+  if(this.numberOfRolls() === 2 && !this.isSpare()) { return true; }
+  if(this.numberOfRolls() === this.maxRolls) { return true; }
   return false;
 };
 

@@ -24,7 +24,7 @@ describe('Frame',function () {
     it('user cannot roll more than the total rolls in a frame',function () {
       frame.roll(5);
       frame.roll(4);
-      dirtyRoll = function () {
+      var dirtyRoll = function () {
         frame.roll(1);
       };
       expect(dirtyRoll).toThrowError(frame._MAX_ROLLS_ERR);

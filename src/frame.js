@@ -16,7 +16,7 @@ Frame.prototype.numberOfRolls = function () {
 };
 
 Frame.prototype.pinsKnocked = function () {
-  sum = this.rolls.reduce(function(a, b) { return a + b; }, 0);
+  var sum = this.rolls.reduce(function(a, b) { return a + b; }, 0);
   return sum;
 };
 
@@ -25,7 +25,7 @@ Frame.prototype.isStrike = function () {
 };
 
 Frame.prototype.isSpare = function () {
-  if(this.isStrike()) return false;
+  if(this.isStrike()) { return false; }
   return this.pinsKnocked() === this._default.pins;
 };
 
@@ -36,8 +36,8 @@ Frame.prototype.totalScore = function () {
 };
 
 Frame.prototype.isFinished = function () {
-  if(this.isStrike() && this.maxRolls === 2) return true;
-  if(this.numberOfRolls() === this.maxRolls) return true;
+  if(this.isStrike() && this.maxRolls === 2) { return true; }
+  if(this.numberOfRolls() === this.maxRolls) { return true; }
   return false;
 };
 

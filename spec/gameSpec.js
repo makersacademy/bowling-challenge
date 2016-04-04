@@ -38,6 +38,11 @@ describe ('Game', function() {
       game.isGameComplete()=jasmine.createSpy("isGameComokete() spy").andReturn(true);
         expect(function() {game.nextFrame()}).toThrow('the game is complete')
     })
+
+    it('should throw an error if there are 11 frames and the game has bonus round', function(){
+      game.isGameComplete()=jasmine.createSpy("isGameComokete() spy").andReturn(false);
+      expect(function() {game.nextFrame()}).toThrow('the game is complete')
+    })
   })
 
   describe('#currentFrame', function(){

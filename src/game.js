@@ -14,10 +14,16 @@ Game.prototype.name = function(name) { //enterName
 Game.prototype.firstBowlPins = function(pins) {
   this.nextFrame()
   last(this.currentGame).firstBowlPins(pins)
+
+  if (this.currentFrame() === this.currentGame[9] && (pins===10)) 
+    {this.normalGame=false}
 }
 
 Game.prototype.secondBowlPins = function(pins) {
   last(this.currentGame).secondBowlPins(pins)
+
+  if (this.currentFrame() === this.currentGame[9] && last(this.currentGame).isSpare) 
+    {this.normalGame=false}
 }
 
 Game.prototype.nextFrame = function() {
@@ -48,16 +54,17 @@ Game.prototype.spare = function(i) {
 } 
 
 Game.prototype.strike = function(i) {
-    var frames = this.currentGame
+  
+  var frames = this.currentGame
 
-    if (frames[i+1].isStrike() && frames[i+2].isStrike() )
-       {frames[i].bonus(20)}
+  if (frames[i+1].isStrike() && frames[i+2].isStrike() )
+     {frames[i].bonus(20)}
 
-    else if (frames[i+1].isStrike())
-            {frames[i].bonus(10+(frames[i+2].first))}
+  else if (frames[i+1].isStrike())
+          {frames[i].bonus(10+(frames[i+2].first))}
 
-    else {frames[i].bonus((frames[i+1].first)+(frames[i+1].second))}
-  }
+  else {frames[i].bonus((frames[i+1].first)+(frames[i+1].second))}
+}
 
 Game.prototype.score = function() { //saveAllFramesScore
   this.frameScore()
@@ -81,7 +88,8 @@ Game.prototype.total = function () { //totalScore
 Game.prototype.isGameComplete = function() {
   var count = this.currentGame.length
   if ( count === 10 && this.normalGame) {return true}
-  if (count ===11 && !this.normalGame) {return true}
+  if (count ===11 && !this.normalGame && !this.currentFrame().isStikre) {return true}
+  if (count ===12 && !this.normalGame) {return true}  
 
 }
 

@@ -89,9 +89,4 @@ describe('Frame', function() {
     expect(frame.game[game.length-1]).toContain(roll)
   })
 
-
-  it('allows third go if 11th frame is a strike', function(){
-
-  })
-
 })

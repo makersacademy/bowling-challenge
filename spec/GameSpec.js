@@ -41,9 +41,9 @@ describe('Game', function() {
   it('can score a strike', function() {
     game.throw(10);
     game.throw(3);
-    game.throw(4);
+    game.throw(3);
     throws(17,0);
-    expect(game.score()).toBe(24)
+    expect(game.score()).toBe(22)
   });
 
   it('can score back to back strikes', function() {
@@ -64,7 +64,13 @@ describe('Game', function() {
   })
 
   it('can score a full house of strikes', function() {
+    throws(12,10);
     expect(game.score()).toBe(300);
+  });
+
+  it('can score a game of gutter balls (zero game)', function() {
+    throws(20,0);
+    expect(game.score()).toBe(0);
   });
 
   function throws(throws, pins) {

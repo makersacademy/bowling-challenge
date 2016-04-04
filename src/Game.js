@@ -3,12 +3,7 @@ function Game() {
 }
 
 Game.prototype.throw = function(pins) {
-  if (pins === 10) {
-    this.rolls.push(pins);
-    this.rolls.push(0);
-  } else {
-    this.rolls.push(pins);
-  };
+  this.rolls.push(pins);
 }
 
 Game.prototype.score = function() {
@@ -20,21 +15,23 @@ Game.prototype.score = function() {
   for (var frame = 0; frame < 10; frame++) {
     if (isStrike()) {
       result += getStrikeScore();
+      rollTally += 1;
     } else if (isSpare()) {
       result += getSpareScore();
+      rollTally += 2
     } else {
       result += getNormalScore();
+      rollTally += 2;
     }
-    rollTally += 2;
   }
   return result;
 
   function isSpare() {
-    return game.rolls[rollTally] + game.rolls[rollTally + 1] == 10
+    return (game.rolls[rollTally] + game.rolls[rollTally + 1] == 10);
   }
 
   function isStrike() {
-    return (game.rolls[rollTally] == 10) && (game.rolls[rollTally + 1] == 0)
+    return (game.rolls[rollTally] == 10);
   }
 
   function getSpareScore() {
@@ -42,7 +39,7 @@ Game.prototype.score = function() {
   }
 
   function getStrikeScore() {
-    return game.rolls[rollTally] + game.rolls[rollTally + 1] + game.rolls[rollTally + 2] + game.rolls[rollTally + 3];
+    return game.rolls[rollTally] + game.rolls[rollTally + 1] + game.rolls[rollTally + 2];
   }
 
   function getNormalScore() {

@@ -6,6 +6,7 @@ function Game() {
   this.frameNumber = 0;
   this.score = 0;
   var frameCounter = 0;
+  var i
 
 
   this.newFrame = function() {
@@ -32,14 +33,12 @@ Game.prototype._currentFrame = function() {
   return this.frames[0];
 }
 
-Game.prototype._nextFrame = function() {
-  return this.frames[frameCounter + 1];
-}
-
-Game.prototype._nextNextFrame = function() {
-  return this.frames[frameCounter];
-}
-
 Game.prototype._gameLength = function() {
   return this.frames.length - 1;
+}
+
+Game.prototype.scorer = function(){
+  for(i=0; i <= this._gameLength(); i++){
+    this.score += this.frames[i].score(this.frames[i+1],this.frames[i+2]);
+  }
 }

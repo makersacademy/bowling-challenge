@@ -2,6 +2,7 @@
 
 describe("Game", function(){
   var game;
+  var i;
 
   beforeEach(function(){
     game  = new Game();
@@ -37,75 +38,60 @@ describe("Game", function(){
     });
   });
 
-  describe("#scorer", function(){
-    it("is a gutter frame", function() {
-      game.firstBall(0);
-      game.secondBall(0);
+  describe("#scorer",function(){
+    it ("scores a gutter game", function(){
+      for(i=1; i <=10; i++){
+        game.firstBall(0);
+        game.secondBall(0);
+      }
       game.scorer();
       expect(game.score).toEqual(0);
-    });
+    })
 
-    it("frame is open so current frame is scored", function() {
-      game.firstBall(4);
-      game.secondBall(3);
+    it ("scores a singles game", function(){
+      for(i=1; i <=10; i++){
+        game.firstBall(1);
+        game.secondBall(1);
+      }
+      console.log(game.frames);
       game.scorer();
-      expect(game.score).toEqual(7);
-    });
+      expect(game.score).toEqual(20);
+    })
 
-    it("previous frame was a spare", function(){
-      game.firstBall(5);
-      game.secondBall(5);
+    it ("scores a two's game", function(){
+      for(i=1; i <=10; i++){
+        game.firstBall(2);
+        game.secondBall(2);
+      }
+      console.log(game.frames);
       game.scorer();
-      console.log(game.score)
-      game.firstBall(4);
-      game.secondBall(3);
+      expect(game.score).toEqual(40);
+    })
+
+// Tenth round not implemented
+
+    it ("scores a spares's game", function(){
+      for(i=1; i <=10; i++){
+        game.firstBall(9);
+        game.secondBall(1);
+      }
+      console.log(game.frames);
       game.scorer();
-      expect(game.score).toEqual(14 + 7);
-    });
+      expect(game.score).toEqual(181);
+    })
 
-    it("previous frame was a strike",function(){
-      game.firstBall(10);
-      game.secondBall(0)
+    it ("scores a strikes's game", function(){
+      for(i=1; i <=11; i++){
+        game.firstBall(10);
+        game.secondBall(0);
+      }
+      console.log(game.frames);
       game.scorer();
-      game.firstBall(5);
-      game.secondBall(4);
-      game.scorer()
-      expect(game.score).toEqual(19 + 9);
-    });
-
-    it("previous 2 frames were a strike",function(){
-      game.firstBall(10);
-      game.secondBall(0)
-      game.scorer();
-      console.log(game.score);
-      game.firstBall(10);
-      game.secondBall(0);
-      game.scorer();
-      console.log(game.score);
-      game.firstBall(10);
-      game.secondBall(0);
-      game.scorer();
-      console.log(game.score);
-      game.firstBall(10);
-      game.secondBall(0);
-      game.scorer();
-      console.log(game.score);
-      game.firstBall(6);
-      game.secondBall(3);
-      game.scorer();
-      expect(game.score).toEqual(30 + 30 + 26 + 19 + 9);
-    });
-
-
-  });
+      expect(game.score).toEqual(300);
+    })
 
 
 
-
-  // describe("#currentFrame", function(){
-  //   it("gets the current frame from the frames array", function(){
-  //
-  //   });
-  // });
+  })
 
 });

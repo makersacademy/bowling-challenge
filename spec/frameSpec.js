@@ -80,7 +80,7 @@ describe("Frame", function(){
       expect(normalFrame.score(strikeFrame, strikeFrame)).toEqual(9);
     })
 
-    it("scores an spare frame", function(){
+    it("scores a spare frame", function(){
       expect(spareFrame.score(strikeFrame, strikeFrame)).toEqual(20);
     })
 
@@ -97,7 +97,7 @@ describe("Frame", function(){
     })
 
     it("scores the second frame", function(){
-      expect(strikeFrame.score(strikeFrame, undefined)).toEqual(10)
+      expect(strikeFrame.score(strikeFrame, undefined)).toEqual(20)
     })
 
 

@@ -18,9 +18,7 @@ Game.prototype.logRoll = function (pins) {
 };
 
 Game.prototype.logFrameScore = function (frame) {
-  if (this.currentFrame.isComplete()) {
-    this._score += frame.getScore();
-  }
+  this._score += frame.getScore();
   if (this.frameNum() > 1) {
     this.addStrikeBonus(frame);
   }

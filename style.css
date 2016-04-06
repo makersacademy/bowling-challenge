@@ -18,9 +18,13 @@ h1 {
 
 table {
   position: absolute;
-  right: 25%;
+  right: 15%;
   top: 20%;
   font-weight: 100;
+}
+
+th, td {
+  width: 80px;
 }
 
 td {

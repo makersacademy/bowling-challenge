@@ -12,9 +12,9 @@ describe('Frame', function(){
     it('has empty turns array', function(){
       expect(frame.round).toEqual([]);
     });
-    // it('has 0 score', function(){
-    //   expect(frame.score).toEqual(0);
-    // });
+    it('has 0 score', function(){
+       expect(frame.score).toEqual(0);
+    });
     it('has 10 pins', function(){
       expect(frame.pins).toEqual(10);
     });
@@ -29,9 +29,9 @@ describe('Frame', function(){
       frame.bowl(3);
     });
 
-    // it('adds to score', function(){
-    //   expect(frame.score).toEqual(3);
-    // });
+    it('adds to score', function(){
+      expect(frame.score).toEqual(3);
+    });
     it('adds to array', function(){
       expect(frame.round).toEqual([3]);
     });
@@ -40,6 +40,19 @@ describe('Frame', function(){
     });
     it('adds to balls rolled', function(){
       expect(frame.ballsRolled).toEqual(1);
+    });
+  });
+
+  describe('Second bowl of frame', function(){
+
+    beforeEach(function(){
+      frame.bowl(3);
+    });
+
+    it('error when knocking down too many pins', function(){
+      expect(function() {
+        frame.bowl(9);
+      }).toThrowError('Cannot knock down more than 10 pins!');
     });
   });
 

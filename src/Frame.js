@@ -63,13 +63,14 @@ Frame.prototype.isStrike = function() {
 
 Frame.prototype.checkPinNumberPerRoll = function(numberOfPins) {
   if (this.isTooManyPinsPerRoll(numberOfPins)) {
-    throw 'ERROR: can\'t have more than 10 pins per roll';
+    throw 'Has ' + numberOfPins + ' pins in this roll. ' +
+    'getFirstRoll: ' + this.getFirstRoll();
   }
 }
 
 Frame.prototype.checkPinNumberPerFrame = function(numberOfPins) {
   if (this.isTooManyPinsPerFrame(numberOfPins)) {
-    throw 'ERROR: can\'t have more than 10 pins per frame';
+    throw 'Has ' + numberOfPins + ' pins in this frame.\n' + 'Pins knocked down in first roll: ' + this.getFirstRoll() + '.\nPins knocked down in second roll: ' + this.getSecondRoll() + '\n';
   }
 }
 

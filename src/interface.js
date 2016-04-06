@@ -6,7 +6,7 @@ $(document).ready(function () {
   if (!game.isOver()) {
     inputScores();
   } else {
-    $("#game-over").text("Game Over!")
+    $("#game-over").text("Game Over!");
   }
 
   function createScoreTable() {
@@ -51,6 +51,7 @@ $(document).ready(function () {
         $("#frame" + num + "-roll2").text(game.currentFrame.scores[1]);
       }
       if (num === 10) {
+        console.log(game.currentFrame.isComplete());
         if (game.currentFrame.isThirdRoll()) {
           $("#frame10-roll3").text(game.currentFrame.scores[2]);
         }
@@ -58,11 +59,11 @@ $(document).ready(function () {
 
       if (game.currentFrame.isComplete()) {
         game.logFrameScore(game.currentFrame);
-        game.currentFrame.isComplete();
       }
 
       $("#frame" + num + "score").text(game.currentFrame.getScore());
       game.saveFrame(game.currentFrame);
+      console.log(game.isOver());
       updateGameProgress();
 
       if (game.currentFrame.isComplete()) {

@@ -23,7 +23,7 @@ LastFrame.prototype.isSecondRoll = function () {
 };
 
 LastFrame.prototype.isThirdRoll = function () {
-  return this.scores.length === 2;
+  return this.scores.length > 2;
 };
 
 LastFrame.prototype.isStrike = function () {

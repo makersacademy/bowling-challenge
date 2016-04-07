@@ -56,4 +56,21 @@ describe('Frame',function(){
       expect(frame.isAStrike()).toEqual(true)
     })
   })
+
+  describe('#isASpare', function(){
+    it('returns true if two rolls add up to ten',function(){
+      frame.firstroll = 3
+      frame.secondroll = 7
+      expect(frame.isASpare()).toEqual(true)
+    })
+    it('returns false if first roll is a strike',function(){
+      frame.firstroll = 10
+      expect(frame.isASpare()).toEqual(false)
+    })
+    it('returns false if both rolls add up to less than 10',function(){
+      frame.firstroll = 3
+      frame.secondroll = 3
+      expect(frame.isASpare()).toEqual(false)
+    })
+  })
 })

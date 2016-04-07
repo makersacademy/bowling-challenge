@@ -32,3 +32,14 @@ Frame.prototype.isAStrike = function () {
     return true
   } else { return false }
 };
+
+Frame.prototype.isASpare = function () {
+  if (this.isAStrike()) {
+    return false
+  } else {
+    if (10-this.firstroll-this.secondroll > 0) {
+      return false
+    }
+  return true 
+}
+};

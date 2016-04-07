@@ -10,12 +10,16 @@ describe('Frame',function(){
     expect(frame.outcome).toBeDefined()
   })
 
-  it('should have firstroll property',function(){
+  it('should have firstRoll property',function(){
     expect(frame.firstroll).toBeDefined()
   })
 
-  it('should have secondroll property',function(){
+  it('should have secondRoll property',function(){
     expect(frame.secondroll).toBeDefined()
+  })
+
+  it('should have thirdRoll property for the final frame',function(){
+    expect(frame.thirdRoll).toBeDefined()
   })
 
   it('should have an outcome method',function(){

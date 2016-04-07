@@ -2,6 +2,7 @@ function Frame() {
   this.outcome;
   this.firstroll = null
   this.secondroll = null
+  this.thirdRoll = null
   this.completeStatus = false
 }
 
@@ -40,6 +41,6 @@ Frame.prototype.isASpare = function () {
     if (10-this.firstroll-this.secondroll > 0) {
       return false
     }
-  return true 
+  return true
 }
 };

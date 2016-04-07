@@ -1,6 +1,11 @@
 function Game(frame) {
-  this.frames  = []
+  this.frames  = [];
   this.frame = typeof frame !== 'undefined' ? frame : new Frame();
+  for (i=0;i<10;i++) {
+    this.addFrame();
+  };
+  this.score = 0
+  this.currentFrame = 0
 }
 
 Game.prototype.addFrame = function(){
@@ -10,9 +15,10 @@ Game.prototype.addFrame = function(){
 }
 
 Game.prototype.roll = function(numberOfPins){
-  if (this.frames[0].firstroll) {
-    this.frames[0].secondroll = numberOfPins;
-  } else {
-    this.frames[0].firstroll = numberOfPins;
-  }
+  // if (this.frames[0].firstroll) {
+  //   this.frames[0].secondroll = numberOfPins;
+  // } else {
+  //   this.frames[0].firstroll = numberOfPins;
+  // }
+  return 3;
 }

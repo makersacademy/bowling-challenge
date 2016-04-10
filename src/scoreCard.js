@@ -26,3 +26,10 @@ Scorecard.prototype.checkForExtraTurn = function(){
     this.gameOver = true;
     }
 }
+
+Scorecard.prototype.advanceGame = function(){
+  this.frames[this.currentFrame].throwNumber += 1;
+  if(this.frames[this.currentFrame].isTurnCompleted()) {
+    this.currentFrame++;
+  }
+}

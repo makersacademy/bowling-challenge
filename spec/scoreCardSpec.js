@@ -2,8 +2,9 @@ describe("scoreCard", function(){
 
   beforeEach(function(){
     DummyFrame = function(){
-      dum = jasmine.createSpyObj('dummyframe',['pushExtra','pushNormal', 'calculateScore']);
+      dum = jasmine.createSpyObj('dummyframe',['pushExtra','pushNormal','calculateScore','isTurnCompleted']);
       dum.addExtra = 0;
+      dum.throwNumber = 0;
       return dum;
     };
     testScoreCard = new Scorecard(DummyFrame);
@@ -71,6 +72,14 @@ describe("scoreCard", function(){
 
   });
 
+  describe("#advanceGame", function(){
+
+    it("calls on #isTurnCompleted", function(){
+      testScoreCard.advanceGame();
+      expect(testScoreCard.frames[0].isTurnCompleted).toHaveBeenCalled();
+    });
+
+  });
 
 
 });

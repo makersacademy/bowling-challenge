@@ -24,7 +24,7 @@ Game.prototype.roll = function(numberOfPins){
 Game.prototype.calculate = function(){
   var sum = 0;
   this.frames.forEach(function(frame){
-    if frame.isComplete(){
+    if (frame.isComplete()) {
     sum += frame.firstroll()
     sum += frame.secondroll()
   }

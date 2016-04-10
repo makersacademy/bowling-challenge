@@ -4,7 +4,7 @@ describe('Game',function(){
   var frame;
 
   beforeEach(function(){
-    frame = jasmine.createSpyObj('frame',['firstroll','secondroll','saveRoll'])
+    frame = jasmine.createSpyObj('frame',['firstroll','secondroll','isComplete','saveRoll'])
     game = new Game(frame);
   });
 
@@ -53,6 +53,7 @@ describe('Game',function(){
       game.start()
       frame.firstroll.and.returnValue(3)
       frame.secondroll.and.returnValue(3)
+      frame.isComplete.and.returnValue(true)
       game.calculate()
       expect(game.calculate()).toBe(60)
     })
@@ -60,6 +61,7 @@ describe('Game',function(){
       game.start()
       frame.firstroll.and.returnValue(3)
       frame.secondroll.and.returnValue(4)
+      frame.isComplete.and.returnValue(true)
       game.calculate()
       expect(game.calculate()).toBe(70)
     })

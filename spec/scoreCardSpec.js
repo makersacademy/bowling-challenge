@@ -2,7 +2,7 @@ describe("scoreCard", function(){
 
   beforeEach(function(){
     DummyFrame = function(){
-      dum = jasmine.createSpyObj('dummyframe',['pushExtra','pushNormal','calculateScore','isTurnCompleted']);
+      dum = jasmine.createSpyObj('dummyframe',['pushExtra','pushNormal','setExtra','calculateScore','isTurnCompleted']);
       dum.addExtra = 0;
       dum.throwNumber = 0;
       return dum;
@@ -98,4 +98,30 @@ describe("scoreCard", function(){
 
   });
 
-});
+  describe("#newThrow", function(){
+
+    beforeEach(function(){
+        spyOn(testScoreCard,'pushScore');
+        spyOn(testScoreCard,'checkEnd');
+        spyOn(testScoreCard,'advanceGame');
+        testScoreCard.newThrow();
+    });
+
+    it("calls #pushScore", function(){
+      expect(testScoreCard.pushScore).toHaveBeenCalled();
+    });
+
+    it("calls #setExtra on current frame", function(){
+      expect(testScoreCard.frames[0].setExtra).toHaveBeenCalled();
+    });
+
+    it("calls #checkEnd", function(){
+      expect(testScoreCard.checkEnd).toHaveBeenCalled();
+    });
+
+    it("calls #advanceGame", function(){
+      expect(testScoreCard.advanceGame).toHaveBeenCalled();
+    });
+  });
+
+})

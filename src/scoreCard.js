@@ -7,7 +7,18 @@ function Scorecard(FrameContainer){
   this.gameOver = false;
 }
 
-Scorecard.prototype.pushScore = function(score , frames){
+Scorecard.prototype.newThrow = function(score){
+  var frames = [this.frames[this.currentFrame],
+                this.frames[this.currentFrame-1],
+                this.frames[this.currentFrame-2]];
+
+  this.pushScore(score, frames);
+  this.frames[0].setExtra();
+  this.checkEnd();
+  this.advanceGame();
+}
+
+Scorecard.prototype.pushScore = function(score, frames){
   frames[0].pushNormal(score);
   frames[1].pushExtra(score);
   frames[2].pushExtra(score);
@@ -27,15 +38,15 @@ Scorecard.prototype.checkGameOver = function(){
     }
 }
 
+Scorecard.prototype.checkEnd = function(){
+  if(this.currentFrame > 8 && this.frames[this.currentFrame].isTurnCompleted()){
+    this.checkGameOver();
+  }
+}
+
 Scorecard.prototype.advanceGame = function(){
   this.frames[this.currentFrame].throwNumber += 1;
   if(this.frames[this.currentFrame].isTurnCompleted()) {
     this.currentFrame++;
-  }
-}
-
-Scorecard.prototype.checkEnd = function(){
-  if(this.currentFrame > 8 && this.frames[this.currentFrame].isTurnCompleted()){
-    this.checkGameOver();
   }
 }

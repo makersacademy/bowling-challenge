@@ -54,6 +54,21 @@ describe('Game', function(){
       game.evaluateScore();
       expect(game.score).toEqual(20);
     })
+    it('calculates bonus for spare', function(){
+      game.bowl(5);
+      game.bowl(5);
+      game.bowl(1);
+      game.bowl(1);
+      game.evaluateScore();
+      expect(game.score).toEqual(13);
+    })
+    it('calculates bonus for strike', function(){
+      game.bowl(10);
+      game.bowl(1);
+      game.bowl(1);
+      game.evaluateScore();
+      expect(game.score).toEqual(14);
+  })
   })
 
 });

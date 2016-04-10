@@ -17,10 +17,10 @@ Frame.prototype.bowl = function(pins) {
   }
   this.knockPins(pins);
   this.addToBallsRolled(pins);
+  this.score += pins;
   this.checkForStrike();
   this.checkForSpare();
   if(this.isStrike === false && this.isSpare === false) {
-    this.score += pins;
     this.round.push(pins);
   }
 }

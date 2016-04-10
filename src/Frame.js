@@ -11,10 +11,12 @@ Frame.prototype.outcome = function () {
 };
 
 Frame.prototype.saveRoll = function (numberOfPins) {
-  if (this.firstroll) {
-    this.secondroll = numberOfPins;
-  } else {
-    this.firstroll = numberOfPins;
+  if (!this.isComplete()) {
+    if (this.firstroll) {
+      if (this.firstroll<10) {this.secondroll = numberOfPins }
+    } else {
+      this.firstroll = numberOfPins;
+    }
   }
 };
 

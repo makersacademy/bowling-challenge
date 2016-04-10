@@ -1,24 +1,33 @@
-function Game(frame) {
+function Game(frameConstructor) {
   this.frames  = [];
-  this.frame = typeof frame !== 'undefined' ? frame : new Frame();
-  for (i=0;i<10;i++) {
-    this.addFrame();
-  };
+  this.frame = typeof frameConstructor === 'undefined' ? new Frame() : frameConstructor;
   this.score = 0
   this.currentFrame = 0
 }
 
-Game.prototype.addFrame = function(){
+Game.prototype.start = function() {
+  for (i=0;i<10;i++) {
+    this.addFrame(this.frame);
+  };
+}
+
+Game.prototype.addFrame = function(frame){
   if (this.frames.length < 10) {
-  this.frames.push(new this.frame());
+  this.frames.push(frame);
 }
 }
 
 Game.prototype.roll = function(numberOfPins){
-  // if (this.frames[0].firstroll) {
-  //   this.frames[0].secondroll = numberOfPins;
-  // } else {
-  //   this.frames[0].firstroll = numberOfPins;
-  // }
-  return 3;
+  this.frames[this.currentFrame].saveRoll()
+}
+
+Game.prototype.calculate = function(){
+  var sum = 0;
+  this.frames.forEach(function(frame){
+    if frame.isComplete(){
+    sum += frame.firstroll()
+    sum += frame.secondroll()
+  }
+  })
+  return sum
 }

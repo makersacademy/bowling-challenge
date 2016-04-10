@@ -4,23 +4,25 @@ describe('Game',function(){
   var frame;
 
   beforeEach(function(){
-    frameClass = jasmine.createSpy('frameClass')
-    frame = new frameClass
-    game = new Game(frameClass);
+    frame = jasmine.createSpyObj('frame',['firstroll','secondroll','saveRoll'])
+    game = new Game(frame);
   });
 
-  describe('Frames', function(){
-    it('can add a frame',function(){
-      game.addFrame()
-      expect(game.frames).toContain(frame)
-    });
-    it('can only have ten frames',function(){
-      for(i=0;i<11;i++) {
-        game.addFrame();
-      };
-      expect(game.frames.length).toEqual(10)
-    });
-    it('starts with 10 frames',function(){
+  it('can add a frame',function(){
+    game.addFrame(frame)
+    expect(game.frames).toContain(frame)
+  });
+
+  it('can only have ten frames',function(){
+    for(i=0;i<11;i++) {
+      game.addFrame(frame);
+    };
+    expect(game.frames.length).toEqual(10)
+  });
+
+  describe('#start',function(){
+    it('loads the game with 10 frames',function(){
+      game.start()
       expect(game.frames.length).toEqual(10)
     });
   })
@@ -33,23 +35,33 @@ describe('Game',function(){
     expect(game.currentFrame).toEqual(0)
   })
 
-  // it('stores the number of pins scored on the first roll', function() {
-  //   game.roll(2);
-  //   jasmine.createSpyObj(frame,['saveRoll'])
-  //   expect(frame1.saveRoll).toHaveBeenCalled()
-  // });
+  it('stores the number of pins scored on the first roll', function() {
+    game.start()
+    game.roll(2);
+    expect(game.frames[0].saveRoll).toHaveBeenCalled()
+  });
 
-  // it('stores the number of pins scored on the second roll', function() {
-  //   game.addFrame();
-  //   game.roll(3);
-  //   game.roll(4);
-  //   expect(game.frames[0].secondroll).toEqual(4)
-  // });
+  it('stores the number of pins scored on the second roll', function() {
+    game.start();
+    game.roll(3);
+    game.roll(4);
+    expect(game.frames[0].saveRoll).toHaveBeenCalledTimes(2)
+  });
 
-  // describe('#calculate',function(){
-  //   it('should return the total score', function(){
-  //     game.calculate()
-  //     expect(game.score)
-  //   })
-  // })
+  describe('#calculate',function(){
+    it('should return the total score when it has all numbers', function(){
+      game.start()
+      frame.firstroll.and.returnValue(3)
+      frame.secondroll.and.returnValue(3)
+      game.calculate()
+      expect(game.calculate()).toBe(60)
+    })
+    it('should return the total score when it has all numbers', function(){
+      game.start()
+      frame.firstroll.and.returnValue(3)
+      frame.secondroll.and.returnValue(4)
+      game.calculate()
+      expect(game.calculate()).toBe(70)
+    })
+  })
 });

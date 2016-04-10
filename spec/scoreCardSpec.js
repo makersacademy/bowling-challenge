@@ -63,10 +63,10 @@ describe("scoreCard", function(){
 
   });
 
-  describe("#checkForExtraTurn", function(){
+  describe("#checkGameOver", function(){
 
     it("set gameOver flag to true when there are no bonus frames", function(){
-      testScoreCard.checkForExtraTurn();
+      testScoreCard.checkGameOver();
       expect(testScoreCard.gameOver).toEqual(true);
     })
 
@@ -81,5 +81,21 @@ describe("scoreCard", function(){
 
   });
 
+  describe("#checkEnd", function(){
+
+    beforeEach(function(){
+      spyOn(testScoreCard, 'checkGameOver');
+      testScoreCard.frames[9].isTurnCompleted = function(){
+        return true;
+      };
+    });
+
+    it("calls #checkGameOver on last round", function(){
+      testScoreCard.currentFrame = 9;
+      testScoreCard.checkEnd();
+      expect(testScoreCard.checkGameOver).toHaveBeenCalled();
+    });
+
+  });
 
 });

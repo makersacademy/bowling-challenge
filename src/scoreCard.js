@@ -21,7 +21,7 @@ Scorecard.prototype.calculateTotalScore = function(){
   return totalScore;
 }
 
-Scorecard.prototype.checkForExtraTurn = function(){
+Scorecard.prototype.checkGameOver = function(){
   if(Math.max(this.frames[8].addExtra , this.frames[9].addExtra) === 0){
     this.gameOver = true;
     }
@@ -31,5 +31,11 @@ Scorecard.prototype.advanceGame = function(){
   this.frames[this.currentFrame].throwNumber += 1;
   if(this.frames[this.currentFrame].isTurnCompleted()) {
     this.currentFrame++;
+  }
+}
+
+Scorecard.prototype.checkEnd = function(){
+  if(this.currentFrame > 8 && this.frames[this.currentFrame].isTurnCompleted()){
+    this.checkGameOver();
   }
 }

@@ -12,6 +12,13 @@ Frame.prototype.setExtra = function(){
   }
 }
 
+Frame.prototype.pushExtra = function(score){
+  if(this.addExtra > 0){
+    this.score.push(score);
+    this.addExtra -= 1;
+  }
+}
+
 Frame.prototype.calculateScore = function(){
   var totalScore = 0;
   for(var i = 0; i < this.score.length; i++){

@@ -74,4 +74,20 @@ describe("Frame", function(){
 
   });
 
+  describe("#pushExtra", function(){
+
+    it("adds a score when addExtra is > 0", function(){
+      testFrame.addExtra = 1;
+      testFrame.pushExtra(2);
+      expect(testFrame.calculateScore()).toEqual(2);
+    });
+
+    it("does not add a score when addExtra is = 0", function(){
+      testFrame.addExtra = 0;
+      testFrame.pushExtra(2);
+      expect(testFrame.calculateScore()).toEqual(0);
+    });
+
+  });
+
 });

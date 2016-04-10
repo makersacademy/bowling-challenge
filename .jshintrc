@@ -30,7 +30,7 @@
                                 //   true     : all variables, last function parameter
                                 //   "vars"   : all variables only
                                 //   "strict" : all variables, all function parameters
-    "strict"        : false,     // true: Requires all functions run in ES5 Strict Mode
+    "strict"        : true,     // true: Requires all functions run in ES5 Strict Mode
     "maxparams"     : 4,    // {int} Max number of formal params allowed per function
     "maxdepth"      : 2,    // {int} Max depth of nested blocks (within functions)
     "maxstatements" : 10,    // {int} Max number statements per function
@@ -44,13 +44,13 @@
     "debug"         : false,     // true: Allow debugger statements e.g. browser breakpoints.
     "eqnull"        : false,     // true: Tolerate use of `== null`
     "es5"           : false,     // true: Allow ES5 syntax (ex: getters and setters)
-    "esnext"        : false,     // true: Allow ES.next (ES6) syntax (ex: `const`)
+    "esnext"        : true,     // true: Allow ES.next (ES6) syntax (ex: `const`)
     "moz"           : false,     // true: Allow Mozilla specific syntax (extends and overrides esnext features)
                                  // (ex: `for each`, multiple try/catch, function expression…)
     "evil"          : false,     // true: Tolerate use of `eval` and `new Function()`
     "expr"          : false,     // true: Tolerate `ExpressionStatement` as Programs
     "funcscope"     : false,     // true: Tolerate defining variables inside control statements
-    "globalstrict"  : false,     // true: Allow global "use strict" (also enables 'strict')
+    "globalstrict"  : true,     // true: Allow global "use strict" (also enables 'strict')
     "iterator"      : false,     // true: Tolerate using the `__iterator__` property
     "lastsemic"     : false,     // true: Tolerate omitting a semicolon for the last statement of a 1-line block
     "laxbreak"      : false,     // true: Tolerate possibly unsafe line breakings
@@ -89,5 +89,6 @@
     "yui"           : false,    // Yahoo User Interface
 
     // Custom Globals
-    "globals"       : {}        // additional predefined global variables
+    "globals"       : {"expect": true}        // additional predefined global variables
+
 }

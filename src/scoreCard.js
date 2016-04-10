@@ -7,8 +7,16 @@ function Scorecard(FrameContainer){
   this.gameOver = false;
 }
 
-Scorecard.prototype.setScore = function(score , frames){
+Scorecard.prototype.pushScore = function(score , frames){
   frames[0].pushNormal(score);
   frames[1].pushExtra(score);
   frames[2].pushExtra(score);
+}
+
+Scorecard.prototype.calculateTotalScore = function(){
+  var totalScore = 0;
+  for(var j = 0; j < 10; j++){
+    totalScore += this.frames[j].calculateScore();
+  }
+  return totalScore;
 }

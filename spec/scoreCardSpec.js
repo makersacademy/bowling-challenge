@@ -2,7 +2,9 @@ describe("scoreCard", function(){
 
   beforeEach(function(){
     DummyFrame = function(){
-      return jasmine.createSpyObj('dummyframe',['pushExtra','pushNormal', 'calculateScore']);
+      dum = jasmine.createSpyObj('dummyframe',['pushExtra','pushNormal', 'calculateScore']);
+      dum.addExtra = 0;
+      return dum;
     };
     testScoreCard = new Scorecard(DummyFrame);
 
@@ -59,6 +61,16 @@ describe("scoreCard", function(){
     });
 
   });
+
+  describe("#checkForExtraTurn", function(){
+
+    it("set gameOver flag to true when there are no bonus frames", function(){
+      testScoreCard.checkForExtraTurn();
+      expect(testScoreCard.gameOver).toEqual(true);
+    })
+
+  });
+
 
 
 });

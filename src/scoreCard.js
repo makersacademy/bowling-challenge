@@ -20,3 +20,9 @@ Scorecard.prototype.calculateTotalScore = function(){
   }
   return totalScore;
 }
+
+Scorecard.prototype.checkForExtraTurn = function(){
+  if(Math.max(this.frames[8].addExtra , this.frames[9].addExtra) === 0){
+    this.gameOver = true;
+    }
+}

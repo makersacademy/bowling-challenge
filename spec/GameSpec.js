@@ -87,5 +87,13 @@ describe('Game', function()
       }
     )
 
+    it('raises an error if pins hit is greater than 10', function()
+      {
+        expect(function() {
+          game.hit(11);
+        }).toThrowError("Illegal hit: Only hit 0 to 10 pins");
+      }
+    )
+
   }
 )

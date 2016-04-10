@@ -8,6 +8,9 @@ function Game()
 
 Game.prototype.hit = function(pins)
   {
+    if (pins > 10) {
+      throw new Error("Illegal hit: Only hit 0 to 10 pins")
+    }
     this.rollScores.push(pins);
     return pins;
   }

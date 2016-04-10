@@ -1,1 +1,4 @@
 /**/.DS_Store
+spec/PlayerSpec.js
+src/Player.js
+src/Song.js

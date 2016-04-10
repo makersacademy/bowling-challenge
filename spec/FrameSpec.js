@@ -16,7 +16,7 @@ describe('Frame', function(){
        expect(frame.score).toEqual(0);
     });
     it('has 10 pins', function(){
-      expect(frame.pins).toEqual(10);
+      expect(frame.pinsRemaining).toEqual(10);
     });
     it('has 0 balls rolled', function(){
       expect(frame.ballsRolled).toEqual(0);
@@ -36,7 +36,7 @@ describe('Frame', function(){
       expect(frame.round).toEqual([3]);
     });
     it('removes from pins', function(){
-      expect(frame.pins).toEqual(7);
+      expect(frame.pinsRemaining).toEqual(7);
     });
     it('adds to balls rolled', function(){
       expect(frame.ballsRolled).toEqual(1);

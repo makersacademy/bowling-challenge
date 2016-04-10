@@ -3,7 +3,7 @@
 function Frame(final){
   this.round = [];
   this.score = 0;
-  this.pins = 10;
+  this.pinsRemaining = 10;
   this.ballsRolled = 0;
   this.frameComplete = false;
   this.finalFrame = typeof final !== 'undefined' ? final : false;
@@ -26,11 +26,11 @@ Frame.prototype.bowl = function(pins) {
 }
 
 Frame.prototype.knockPins = function(pins) {
-  if ((this.pins - pins) < 0) {
+  if ((this.pinsRemaining - pins) < 0) {
   throw new Error('Cannot knock down more than 10 pins!');
 }
-  this.pins -= pins;
-  if(this.pins === 0) {
+  this.pinsRemaining -= pins;
+  if(this.pinsRemaining === 0) {
     this.frameComplete = true;
   }
 }
@@ -43,7 +43,7 @@ Frame.prototype.addToBallsRolled = function(pins) {
 }
 
 Frame.prototype.checkForStrike = function() {
-  if(this.pins === 0 && this.ballsRolled === 1){
+  if(this.pinsRemaining === 0 && this.ballsRolled === 1){
     this.frameComplete = true;
     this.round.push('X');
     this.isStrike = true;
@@ -51,7 +51,7 @@ Frame.prototype.checkForStrike = function() {
 }
 
 Frame.prototype.checkForSpare = function() {
-  if(this.pins === 0 && this.ballsRolled === 2){
+  if(this.pinsRemaining === 0 && this.ballsRolled === 2){
     this.frameComplete = true;
     this.round.push('/');
     this.isSpare = true;

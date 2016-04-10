@@ -57,3 +57,7 @@ Frame.prototype.checkForSpare = function() {
     this.isSpare = true;
   }
 }
+
+Frame.prototype.getScore = function() {
+  return this.score;
+}

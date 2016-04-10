@@ -7,7 +7,7 @@ describe('Game', function(){
 
   beforeEach(function(){
     game = new Game();
-    frame = jasmine.createSpyObj('frame', ['bowl'])
+    frame = jasmine.createSpyObj('frame', ['bowl', 'getScore'])
   });
 
   describe('to start', function(){
@@ -40,6 +40,20 @@ describe('Game', function(){
       game.bowl(3);
       expect(frame.bowl).toHaveBeenCalled();
     });
+  })
+
+  describe('evaluateScore', function(){
+    it('returns 20 for game of 1s', function(){
+      frame.getScore.and.returnValue(2);
+      for(var i = 0; i < 10; i++){
+        game.newFrame(frame);
+        game.bowl(1);
+        game.bowl(1);
+        game.saveFrame();
+      }
+      game.evaluateScore();
+      expect(game.score).toEqual(20);
+    })
   })
 
 });

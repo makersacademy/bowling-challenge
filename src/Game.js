@@ -3,7 +3,7 @@
 function Game(){
   this.frames = [];
   this.score = 0;
-  // this.currentFrame = [];
+  this.newFrame();
 }
 
 Game.prototype.newFrame = function(frame){
@@ -16,6 +16,15 @@ Game.prototype.saveFrame = function(){
 
 Game.prototype.bowl = function(pins){
   this.currentFrame.bowl(pins);
+  if (this.currentFrame.frameComplete === true) {
+    this.saveFrame();
+    this.newFrame();
+  }
 }
-// evaluateScore
-// getScore
+Game.prototype.evaluateScore = function() {
+  var result = 0
+  for(var i=0; i < this.frames.length ; i++){
+    result += this.frames[i].getScore();
+  }
+  this.score = result;
+}

@@ -54,6 +54,24 @@ describe("Frame", function(){
 
   });
 
+  describe("#isTurnCompleted", function(){
 
+    it("returns false if the frame is open", function(){
+      testFrame.score.push(3);
+      expect(testFrame.isTurnCompleted()).toEqual(false);
+    });
+
+    it("returns true if the frame is closed", function(){
+      testFrame.score.push(3);
+      testFrame.score.push(2);
+      expect(testFrame.isTurnCompleted()).toEqual(true);
+    });
+
+    it("returns true if the frame is closed with a strike", function(){
+      testFrame.score.push(10);
+      expect(testFrame.isTurnCompleted()).toEqual(true);
+    });
+
+  });
 
 });

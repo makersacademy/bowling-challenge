@@ -19,3 +19,7 @@ Frame.prototype.calculateScore = function(){
   }
   return totalScore;
 }
+
+Frame.prototype.isTurnCompleted = function(){
+  return this.score.length >= 2 || this.score[0] === 10;
+}

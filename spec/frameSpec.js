@@ -74,6 +74,15 @@ describe("Frame", function(){
 
   });
 
+  describe("pushNormal", function(){
+
+    it("add the score to the current frame", function(){
+      testFrame.pushNormal(2);
+      expect(testFrame.score[0]).toEqual(2);
+    });
+
+  });
+
   describe("#pushExtra", function(){
 
     it("adds a score when addExtra is > 0", function(){

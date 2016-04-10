@@ -12,6 +12,10 @@ Frame.prototype.setExtra = function(){
   }
 }
 
+Frame.prototype.pushNormal = function(score){
+  this.score.push(score);
+}
+
 Frame.prototype.pushExtra = function(score){
   if(this.addExtra > 0){
     this.score.push(score);

@@ -2,7 +2,6 @@ function Game () {
   this.rollScores = [];
 }
 
-
 Game.prototype.rollBall = function(pins) {
   if (this.isValidInput(pins)){
     this.rollScores.push(pins);
@@ -26,28 +25,27 @@ Game.prototype.score = function() {
       score += standardScore(rollScoresIndex)
     }
   }
-  return score
-  
+  return score;
+
     function isSpare(rollScoresIndex) {
       return thisRoll + nextRoll === 10;
     }
-    
-    function spareScore(rollScoresIndex) {
-      return thisRoll + nextRoll + secondNextRoll;
-    }
 
-    function isStrike(rollScoresIndex) {
-      return thisRoll === 10;
-    }
+  function spareScore(rollScoresIndex) {
+    return thisRoll + nextRoll + secondNextRoll;
+  }
 
-    function strikeScore(rollScoresIndex) {
-      return thisRoll + nextRoll + secondNextRoll;
-    }  
+  function isStrike(rollScoresIndex) {
+    return thisRoll === 10;
+  }
 
-    function standardScore(rollScoresIndex) {
-      return thisRoll + nextRoll;
-    }
+  function strikeScore(rollScoresIndex) {
+    return thisRoll + nextRoll + secondNextRoll;
+  }  
 
+  function standardScore(rollScoresIndex) {
+    return thisRoll + nextRoll;
+  }
 } 
 
 

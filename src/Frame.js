@@ -1,5 +1,3 @@
-"use strict";
-
 function Frame(last) {
   this.score = 0;
   this.shotsAllowed = 2;

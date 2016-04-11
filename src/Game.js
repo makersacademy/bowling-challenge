@@ -1,7 +1,7 @@
 "use strict";
 
-function Game(frameFunction) {
-  this.frameFunction = frameFunction;
+function Game(frameObject) {
+  this.frameObject = frameObject;
   this.currentFrame;
   this.log = new Array();
 }
@@ -24,7 +24,7 @@ Game.prototype.frames = function() {
 }
 
 Game.prototype.createNewFrame = function() {
-  this.currentFrame = this.frameFunction || new Frame();
+  this.currentFrame = this.frameObject || new Frame();
   this.log.push(this.currentFrame);
   return this.currentFrame;
 }

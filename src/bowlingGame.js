@@ -4,6 +4,7 @@ function bowlingGame() {
   this._frame = 1;
   this._roll = 0;
   this._strike = false;
+  this._spare = false;
 }
 
 bowlingGame.prototype.score = function() {
@@ -20,15 +21,29 @@ bowlingGame.prototype.knockedDownPins = function(number) {
 
 bowlingGame.prototype.addToScore = function() {
   if (this._strike === true) {
-    var total = ((this.pins[0] + this.pins[1])*2);
-    this._score += total;
-    this._strike = false;
-    this.restart();
+    var total = (this.pins[0] + this.pins[1]);
+    if (total === 10) {
+      this._spare = true;
+      this._strike = false;
+      this._score += (total)*2;
+      this.restart();
+    } else {
+      this._score += (total)*2;
+      this._strike = false;
+      this.restart();
+    }
   }
-   var total = this.pins[0] + this.pins[1];
+  else { var total = this.pins[0] + this.pins[1];
+  if (total === 10) {
+    this._spare = true;
+    this._score += total;
+    this.restart();
+  } else {
    this._score += total;
    this._strike = false;
    this.restart();
+  }
+ }
 }
 
 bowlingGame.prototype.strike = function() {

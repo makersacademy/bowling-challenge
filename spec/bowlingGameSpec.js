@@ -58,12 +58,27 @@ describe('bowlingGame', function() {
       expect(game._strike).toEqual(true);
     });
 
-    xit('doubles the next score after a strike', function() {
+    it('doubles the next score after a strike', function() {
       game.knockedDownPins(10);
       game.knockedDownPins(2);
       game.knockedDownPins(2);
       game.addToScore();
       expect(game.score()).toEqual(18);
+    });
+  });
+
+  describe('#spare', function() {
+    it('changes spare to true', function() {
+      game.knockedDownPins(5);
+      game.knockedDownPins(5);
+      game.addToScore();
+      expect(game._spare).toEqual(true);
+    });
+    it('changes score by 10', function() {
+      game.knockedDownPins(5);
+      game.knockedDownPins(5);
+      game.addToScore();
+      expect(game._score).toEqual(10);
     });
   });
 

@@ -1,7 +1,7 @@
 Bowling Challenge
 =================
 
-**Author: ** Omar Alvarez
+**Author:** Omar Alvarez
 
 Task: 
 -----

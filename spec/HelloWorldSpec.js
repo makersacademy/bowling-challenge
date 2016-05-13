@@ -25,7 +25,7 @@ describe("Hello World", function(){
     expect(x).not.toEqual(y);        
   });
   
-  xit("is divisible by two", function(){
+  it("is divisible by two", function(){
     expect(4).toBeDivisibleByTwo();
   });
 }); 

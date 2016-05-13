@@ -6,7 +6,13 @@ describe("Hello World", function(){
   beforeEach(function(){
     jasmine.addMatchers({
       toBeDivisibleByTwo: function(){
-        return (this.actual % 2) === 0;
+        return {
+          compare: function (actual, expected) {
+            return {
+              pass: (actual % 2) === 0
+            };
+          }
+        };
       }
     }); 
   });

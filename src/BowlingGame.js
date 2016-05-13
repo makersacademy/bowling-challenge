@@ -7,6 +7,7 @@ function BowlingGame() {
   };
 
   BowlingGame.prototype.roll = function(pins) {
+    _score += pins;
   };
 
 }

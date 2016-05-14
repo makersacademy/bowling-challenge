@@ -8,17 +8,9 @@ function Game(frame) {
    return _frames.last().getScore();
   };
 
-  if (!Array.prototype.last){
-    Array.prototype.last = function(){
-      return this[this.length - 1];
-    };
-  }
-
   Game.prototype.frameLength = function() {
     return _frames.length;
   };
-
-
 
   Game.prototype.roll = function(pins) {
     currentRollIndex++;
@@ -31,30 +23,36 @@ function Game(frame) {
       addFrame(frame);
     }
 
-    function addFrame(frame) {
-      _frames.push(frame);
-      currentRollIndex++;
-    }
-
     function checkStrike() {
       if (firstFrameRoll === 10) {
         frame = new Frame(pins);
         addFrame(frame);
       }
     }
-
-    function checkExceptions(roll1,roll2) {
-      if (isError(roll1) || isError(roll2)) {
-        var error = 'rolls are not within range or not numbers';
-        throw new Error(error);
-      }
-      if ((roll1 + roll2) > 10) {
-        throw new Error("frame can't exceed 10");
-      }
-
-      function isError(number) {
-        return (typeof(number) !== "number" || number < 0 || number > 10)
-      }
-    }
   };
+
+  function addFrame(frame) {
+    _frames.push(frame);
+    currentRollIndex++;
+  }
+
+  function checkExceptions(roll1,roll2) {
+    if (isError(roll1) || isError(roll2)) {
+      var error = 'rolls are not within range or not numbers';
+      throw new Error(error);
+    }
+    if ((roll1 + roll2) > 10) {
+      throw new Error("frame can't exceed 10");
+    }
+
+    function isError(number) {
+      return (typeof(number) !== "number" || number < 0 || number > 10)
+    }
+  }
+
+  if (!Array.prototype.last){
+    Array.prototype.last = function(){
+      return this[this.length - 1];
+    };
+  }
 }

@@ -66,7 +66,7 @@ describe("BowlingGame",function() {
       expect(game.frameLength()).toBe(1);
     });
   });
-  describe('frame scores, ',function(){
+  describe('1 singl frame scores, ',function(){
     it('2 rolls with (0,0) make frame score = 0',function(){
       game.roll(0);
       game.roll(0);
@@ -83,21 +83,16 @@ describe("BowlingGame",function() {
       game.roll(10);
       expect(game.totalScore()).toEqual(10);
     });
+  });
 
-    xit('with rolls of 1, score is 20',function(){
-      game.rollMany(20,1);
-      expect(game.totalScore()).toEqual(20);
-    });
-
-    xit('F1R1:1, F1R2:9, (spare), F2R1: 5, F2R2: 0 gives score 20', function(){
+  describe('1 singl frame scores, ',function(){
+    it('2 rolls with (0,0) make frame score = 0',function(){
       game.roll(1);
-      game.roll(9);
-      game.roll(5);
-      game.rollMany(17,0);
-      expect(game.totalScore()).toEqual(20);
+      game.roll(4);
+      game.roll(3);
+      game.roll(6);
+      expect(game.frameLength()).toEqual(2);
     });
-
-
   });
 
 

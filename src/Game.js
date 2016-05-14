@@ -1,74 +1,49 @@
-function Game(){
+function Game(bonusCalc){
 	this.current_frame = 1;
 	this.current_roll = 1;
-	this.total_score = 0;
 	this.frame_score = 0;
-	this.bonus_due = false;
+	this.total_score = 0;
+	this.bonusCalc = (bonusCalc || new BonusCalc(this));
 };
 
+// MAIN ROLL FUNCTION
+
 Game.prototype.roll = function(score){
-	if (this.game_end) {
+	if (this.isOver) {
 		throw new Error('The game has ended');
 	};
 	if (this.current_frame > 10) {
-		this.addBonus(score);
+		this.bonusCalc.addBonus(score);
 	};
 	if (this.current_frame <= 10) {
 		this.addToScore(score);
-		this.calculateBonus(score);
+		this.bonusCalc.processBonus(score);
 	};
 	this.prepareForNext();
 	return this.calculateEnd();
 };
 
+// CALCULATING THE END //
 
-// End calculator //
-
-Game.prototype.calculateEnd = function(score){
-	if ((this.current_frame > 10) && (this.bonus_due === false)) {
-		this.game_end = true;
+Game.prototype.calculateEnd = function(){
+	if ((this.current_frame > 10) && (this.bonusCalc.bonus_due === false)) {
+		this.isOver = true;
 		return {finalScore: this.total_score};
 	};
 };
 
-// add to score //
+// ADDING TO SCORE //
+
+Game.prototype.add_to_total = function(score){
+	this.total_score += score;
+};
 
 Game.prototype.addToScore = function(score){
 	this.frame_score += score;
 	this.total_score += score;
 };
 
-// bonus calculator //
-
-Game.prototype.calculateBonus = function(score){
-	this.addBonus(score);
-	this.setBonusStatus();
-};
-
-Game.prototype.addBonus = function(score){
-	if (this.bonus_due === 'spare') {
-		this.total_score += score;
-		this.bonus_due = false;
-	};
-	if (this.bonus_due === 'strike') {
-		this.total_score += score;
-		if (this.current_roll === 2) {
-			this.bonus_due = false;
-		};
-	};
-};
-
-Game.prototype.setBonusStatus = function(){
-	if ((this.frame_score === 10) && (this.current_roll === 2)) {
-		this.bonus_due = 'spare';
-	};
-	if ((this.frame_score === 10) && (this.current_roll === 1)) {
-		this.bonus_due = 'strike';
-		this.current_roll ++;
-	};
-};
-
-// prepare for next calculator //
+// PREPARING FOR THE NEXT FRAME //
 
 Game.prototype.prepareForNext = function(){
 	this.calculateFrame();
@@ -94,4 +69,8 @@ Game.prototype.calculateRoll = function(){
 	} else {
 		this.current_roll ++;
 	};
+};
+
+Game.prototype.current_roll_up = function(){
+	this.current_roll ++;
 };

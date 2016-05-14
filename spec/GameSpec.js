@@ -3,146 +3,41 @@ describe("Ten Pin Bowling", function(){
 	var game;
 
 	beforeEach( function(){
-		game = new Game();
-	});
-
-	it("A first roll of less than 10 puts the score up and moves to second roll in first frame", function(){
-		game.roll(5);
-		expect(game.total_score).toEqual(5);
-		expect(game.current_roll).toEqual(2);
-		expect(game.current_frame).toEqual(1);
-	});
-
-	it("A second roll puts the score up and moves to first roll in second frame", function(){
-		game.roll(5);
-		game.roll(4);
-		expect(game.total_score).toEqual(5+4);
-		expect(game.current_roll).toEqual(1);
-		expect(game.current_frame).toEqual(2);
-	});
-
-	describe("When a second roll knocks down the remaining pins", function(){
-		it("- the next roll is added to the total twice", function(){
-			game.roll(5);
-			game.roll(5);
-			game.roll(1);
-			game.roll(2);
-			expect(game.total_score).toEqual(14);
-			expect(game.current_frame).toEqual(3);
-		});
-	});
-
-	describe("When a first roll knocks down all 10 pins", function(){
-		it("- the next roll is the first roll of the next frame", function(){
-			game.roll(10);
-			game.roll(5);
-			expect(game.current_roll).toEqual(2);
-			expect(game.current_frame).toEqual(2);
-		});
-		it("- the next two rolls are added to the total twice", function(){
-			game.roll(10);
-			game.roll(1);
-			game.roll(1);
-			expect(game.total_score).toEqual(14);
-			expect(game.current_frame).toEqual(3);
-		});
-	});
-
-	describe("Two strikes in a row", function(){
-		it("- the second 10 gets added to the total twice, as does the third frame", function(){
-			game.roll(10);
-			game.roll(10);
-			game.roll(1);
-			game.roll(2);
-			expect(game.total_score).toEqual(36);
-			expect(game.current_frame).toEqual(4);
-		});
-	});
-
-	describe("A strike then a spare", function(){
-		it("- the second frame gets added to the total twice, as does the first roll of frame 3", function(){
-			game.roll(10);
-			game.roll(5);
-			game.roll(5);
-			game.roll(1);
-			game.roll(2);
-			expect(game.total_score).toEqual(34);
-			expect(game.current_frame).toEqual(4);
-		});
-	});
-
-	describe("A spare then a strike", function(){
-		it("- the strike gets added to the total twice, as does the third frame", function(){
-			game.roll(5);
-			game.roll(5);
-			game.roll(10);
-			game.roll(1);
-			game.roll(2);
-			expect(game.total_score).toEqual(36);
-			expect(game.current_frame).toEqual(4);
-		});
-	});
-
-	describe("Frame 10", function(){
-		it("- a strike triggers two bonus rolls added to the total", function(){
-			for (var i = 1; i < 19; i++) {
-				game.roll(1);
-			}
-			game.roll(10);
-			game.roll(10);
-			game.roll(10);
-			expect(game.total_score).toEqual(48);
-		});
-
-		it("- a strike triggers two bonus rolls, then the game ends", function(){
-			for (var i = 1; i < 19; i++) {
-				game.roll(1);
-			}
-			game.roll(10);
-			game.roll(10);
-			result = game.roll(10);
-			expect(result).toEqual({finalScore: 48});
-		});
-
-		it("- a spare triggers one bonus roll added to the total", function(){
-			for (var i = 1; i < 19; i++) {
-				game.roll(1);
-			}
-			game.roll(5);
-			game.roll(5);
-			game.roll(10);
-			expect(game.total_score).toEqual(38);
-		});
-
-		it("- a spare triggers one bonus roll, then the game ends", function(){
-			for (var i = 1; i < 19; i++) {
-				game.roll(1);
-			}
-			game.roll(5);
-			game.roll(5);
-			result = game.roll(10);
-			expect(result).toEqual({finalScore: 38});
-		});
-
-		it("- if there is no bonus achieved in frame 10, the game ends", function(){
-			for (var i = 1; i < 19; i++) {
-				game.roll(1);
-			}
-			game.roll(5);
-			var result = game.roll(4);
-			expect(result).toEqual({finalScore: 27});
-		});
-	});
-
-	it("Raises error if trying to roll when the game has ended", function(){
-		for (var i = 1; i < 19; i++) {
-			game.roll(1);
+		bonusCalc = {
+			processBonus: function(){
+				return "Dummy process"
+			},
+			addBonus: function(score){
+				return "Dummy process"
+			},
+			bonus_due: "Dummy answer"
 		}
-		game.roll(5);
-		game.roll(4);
-		expect(function(){
-			game.roll(4)
-		}).toThrowError("The game has ended");
+
+		game = new Game(bonusCalc);
+	});
+
+	describe("roll()",function(){
+		it("If the current frame is no. 10 or less, the bonus calculator is invoked", function(){
+			spyOn(bonusCalc, 'processBonus');
+			game.roll(1);
+			expect(bonusCalc.processBonus).toHaveBeenCalledWith(1);
+		});
+
+		it("If the current frame is more than ten but the game is not over, the bonus calculator is invoked to add the bonus rolls", function(){
+			spyOn(bonusCalc, 'addBonus');
+			game.current_frame = 11;
+			game.roll(1);
+			expect(bonusCalc.addBonus).toHaveBeenCalledWith(1);
+		});
+	});
+
+	describe("calculateEnd()",function(){
+		it("If the current frame is more than ten and the bonus calculator says no bonus is due, the game is over", function(){
+			bonusCalc.bonus_due = false;
+			game.current_frame = 11;
+			game.calculateEnd();
+			expect(game.isOver).toEqual(true);
+		});
 	});
 
 });

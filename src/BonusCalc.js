@@ -1,6 +1,6 @@
 function BonusCalc(game){
-	this.bonus_due = false;
 	this.game = game;
+	this.bonusArray = [];
 };
 
 BonusCalc.prototype.processBonus = function(score){
@@ -9,26 +9,31 @@ BonusCalc.prototype.processBonus = function(score){
 };
 
 BonusCalc.prototype.setBonusStatus = function(){
-	if ((this.game.frame_score === 10) && (this.game.current_roll === 2)) {
-		this.bonus_due = 'spare';
+	if ((this.game.frameScore === 10) && (!(this.game.isOnFirstRoll()))) {
+		this.bonusArray.push('spare');
 	};
-	if ((this.game.frame_score === 10) && (this.game.current_roll === 1)) {
-		this.bonus_due = 'strike';
-		//change this to calling current_roll_check
-		this.game.current_roll_up();
+	if ((this.game.frameScore === 10) && (this.game.isOnFirstRoll())) {
+		this.bonusArray.push(this.game.strikeTracker);
+		this.game.currentRollUp();
 	};
 };
 
 BonusCalc.prototype.addBonus = function(score){
-	if (this.bonus_due === 'spare') {
-		this.game.add_to_total(score);
-		this.bonus_due = false;
+	if (this.bonusArray.includes('spare')) {
+		this.game.addToTotal(score);
+		var index = this.bonusArray.indexOf('spare');
+		this.bonusArray.splice(index,1);
 	};
-	if (this.bonus_due === 'strike') {
-		this.game.add_to_total(score);
-		if (this.game.current_roll === 2) {
-			this.bonus_due = false;
-		};
+	if (this.bonusArray.includes((this.game.strikeTracker)-1)) {
+		this.game.addToTotal(score);
 	};
-}
+	if (this.bonusArray.includes((this.game.strikeTracker)-2)) {
+		this.game.addToTotal(score);
+		var index = this.bonusArray.indexOf((this.game.strikeTracker)-2);
+		this.bonusArray.splice(index,1);
+	};
+};
 
+BonusCalc.prototype.isBonusDue = function(){
+	return (this.bonusArray.length > 0)
+};

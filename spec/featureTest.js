@@ -8,17 +8,18 @@ describe("Game and Bonus Calculator working together", function(){
 
 	it("A first roll of less than 10 puts the score up and moves to second roll in first frame", function(){
 		game.roll(5);
-		expect(game.total_score).toEqual(5);
-		expect(game.current_roll).toEqual(2);
-		expect(game.current_frame).toEqual(1);
+		expect(game.totalScore).toEqual(5);
+		expect(game.currentRoll).toEqual(2);
+		expect(game.currentFrame()).toEqual(1);
 	});
 
-	it("A second roll puts the score up and moves to first roll in second frame", function(){
+	it("A second roll puts the score up and moves to third roll, the first in the second frame", function(){
 		game.roll(5);
 		game.roll(4);
-		expect(game.total_score).toEqual(5+4);
-		expect(game.current_roll).toEqual(1);
-		expect(game.current_frame).toEqual(2);
+		expect(game.totalScore).toEqual(9);
+		expect(game.currentRoll).toEqual(3);
+		expect(game.currentFrame()).toEqual(2);
+		expect(game.isOnFirstRoll()).toEqual(true);
 	});
 
 	describe("When a second roll knocks down the remaining pins", function(){
@@ -27,8 +28,8 @@ describe("Game and Bonus Calculator working together", function(){
 			game.roll(5);
 			game.roll(1);
 			game.roll(2);
-			expect(game.total_score).toEqual(14);
-			expect(game.current_frame).toEqual(3);
+			expect(game.totalScore).toEqual(14);
+			expect(game.currentFrame()).toEqual(3);
 		});
 	});
 
@@ -36,26 +37,26 @@ describe("Game and Bonus Calculator working together", function(){
 		it("- the next roll is the first roll of the next frame", function(){
 			game.roll(10);
 			game.roll(5);
-			expect(game.current_roll).toEqual(2);
-			expect(game.current_frame).toEqual(2);
+			expect(game.currentRoll).toEqual(4);
+			expect(game.currentFrame()).toEqual(2);
 		});
 		it("- the next two rolls are added to the total twice", function(){
 			game.roll(10);
 			game.roll(1);
 			game.roll(1);
-			expect(game.total_score).toEqual(14);
-			expect(game.current_frame).toEqual(3);
+			expect(game.totalScore).toEqual(14);
+			expect(game.currentFrame()).toEqual(3);
 		});
 	});
 
 	describe("Two strikes in a row", function(){
-		it("- the second 10 gets added to the total twice, as does the third frame", function(){
+		it("- the second 10 gets added to the total twice, the next roll gets added three times, and the final roll gets added twice,", function(){
 			game.roll(10);
 			game.roll(10);
 			game.roll(1);
 			game.roll(2);
-			expect(game.total_score).toEqual(36);
-			expect(game.current_frame).toEqual(4);
+			expect(game.totalScore).toEqual(37);
+			expect(game.currentFrame()).toEqual(4);
 		});
 	});
 
@@ -66,8 +67,8 @@ describe("Game and Bonus Calculator working together", function(){
 			game.roll(5);
 			game.roll(1);
 			game.roll(2);
-			expect(game.total_score).toEqual(34);
-			expect(game.current_frame).toEqual(4);
+			expect(game.totalScore).toEqual(34);
+			expect(game.currentFrame()).toEqual(4);
 		});
 	});
 
@@ -78,8 +79,8 @@ describe("Game and Bonus Calculator working together", function(){
 			game.roll(10);
 			game.roll(1);
 			game.roll(2);
-			expect(game.total_score).toEqual(36);
-			expect(game.current_frame).toEqual(4);
+			expect(game.totalScore).toEqual(36);
+			expect(game.currentFrame()).toEqual(4);
 		});
 	});
 
@@ -91,7 +92,7 @@ describe("Game and Bonus Calculator working together", function(){
 			game.roll(10);
 			game.roll(10);
 			game.roll(10);
-			expect(game.total_score).toEqual(48);
+			expect(game.totalScore).toEqual(48);
 		});
 
 		it("- a strike triggers two bonus rolls, then the game ends", function(){
@@ -111,7 +112,7 @@ describe("Game and Bonus Calculator working together", function(){
 			game.roll(5);
 			game.roll(5);
 			game.roll(10);
-			expect(game.total_score).toEqual(38);
+			expect(game.totalScore).toEqual(38);
 		});
 
 		it("- a spare triggers one bonus roll, then the game ends", function(){
@@ -143,6 +144,14 @@ describe("Game and Bonus Calculator working together", function(){
 		expect(function(){
 			game.roll(4)
 		}).toThrowError("The game has ended");
+	});
+
+	it("A perfect game scores 300", function(){
+		for (var i = 1; i < 12; i++) {
+			game.roll(10);
+		}
+		var result = game.roll(10);
+		expect(result).toEqual({finalScore: 300});
 	});
 
 

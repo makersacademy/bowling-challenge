@@ -1,9 +1,9 @@
 function Game(bonusCalc){
-	this.current_frame = 1;
-	this.current_roll = 1;
-	this.frame_score = 0;
-	this.total_score = 0;
 	this.bonusCalc = (bonusCalc || new BonusCalc(this));
+	this.currentRoll = 1;
+	this.strikeTracker = 1;
+	this.frameScore = 0;
+	this.totalScore = 0;
 };
 
 // MAIN ROLL FUNCTION
@@ -12,65 +12,65 @@ Game.prototype.roll = function(score){
 	if (this.isOver) {
 		throw new Error('The game has ended');
 	};
-	if (this.current_frame > 10) {
+	if (this.currentFrame() > 10) {
 		this.bonusCalc.addBonus(score);
 	};
-	if (this.current_frame <= 10) {
+	if (this.currentFrame() <= 10) {
 		this.addToScore(score);
 		this.bonusCalc.processBonus(score);
 	};
-	this.prepareForNext();
+	this.prepareNextRoll();
 	return this.calculateEnd();
 };
 
-// CALCULATING THE END //
+// ENDING THE GAME
 
 Game.prototype.calculateEnd = function(){
-	if ((this.current_frame > 10) && (this.bonusCalc.bonus_due === false)) {
+	if ((this.currentFrame() > 10) && (!(this.bonusCalc.isBonusDue()))) {
 		this.isOver = true;
-		return {finalScore: this.total_score};
+		return {finalScore: this.totalScore};
 	};
 };
 
-// ADDING TO SCORE //
+// PREPARING NEXT ROLL
 
-Game.prototype.add_to_total = function(score){
-	this.total_score += score;
+Game.prototype.prepareNextRoll = function(){
+	this.nextRoll();
+	this.calculateFrameScoreReset();
+};
+
+Game.prototype.nextRoll = function(){
+	this.currentRoll ++;
+	this.strikeTracker ++;
+};
+
+Game.prototype.calculateFrameScoreReset = function(){
+	if (this.isOnFirstRoll()) {
+		this.frameScore = 0;
+	};
+};
+
+Game.prototype.currentRollUp = function(){
+	this.currentRoll ++;
+};
+
+// ADDING SCORES
+
+Game.prototype.addToTotal = function(score){
+	this.totalScore += score;
 };
 
 Game.prototype.addToScore = function(score){
-	this.frame_score += score;
-	this.total_score += score;
+	this.frameScore += score;
+	this.totalScore += score;
 };
 
-// PREPARING FOR THE NEXT FRAME //
+// INTERPRETTING NUMBER OF ROLLS
 
-Game.prototype.prepareForNext = function(){
-	this.calculateFrame();
-	this.calculateRoll();
-	this.calculateFrameScoreReset();
-}
-
-Game.prototype.calculateFrameScoreReset = function(){
-	if (this.current_roll === 1) {
-		this.frame_score = 0;
-	};
+Game.prototype.isOnFirstRoll = function(){
+	return (!(this.currentRoll % 2 === 0))
 };
 
-Game.prototype.calculateFrame = function(){
-	if (this.current_roll === 2) {
-		this.current_frame ++;
-	};
-};
-
-Game.prototype.calculateRoll = function(){
-	if (this.current_roll === 2) {
-		this.current_roll = 1;
-	} else {
-		this.current_roll ++;
-	};
-};
-
-Game.prototype.current_roll_up = function(){
-	this.current_roll ++;
+Game.prototype.currentFrame = function(){
+	return Math.round((this.currentRoll)/2)
 };

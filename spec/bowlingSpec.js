@@ -3,7 +3,7 @@ describe('Bowling', function() {
   beforeEach(function() {
     bowling = new Bowling();
   });
-  describe('score', function() {
+  describe('#score', function() {
     it('starts with a score of 0', function() {
       expect(bowling.score()).toEqual(0);
     });
@@ -11,8 +11,14 @@ describe('Bowling', function() {
     it('can store the score for the first ball of the first frame', function() {
       bowling.hit(5);
       bowling.hit(4);
-      expect(bowling._scoreSheet.frame1).toEqual([5,4]);
+      expect(bowling.scoreSheet()).toEqual({ frame1: [ 5, 4 ] });
     });
+
+    it('can track the total score', function() {
+      bowling.hit(5);
+      bowling.hit(4);
+      expect(bowling.score()).toEqual(9);
+    })
   });
 
   describe('#turn tracking', function() {
@@ -43,6 +49,16 @@ describe('Bowling', function() {
       bowling.hit(10);
       expect(bowling.currentTurn()).toEqual(2);
     })
-
+    it('sets to new turn after a strike on 1st ball, 2nd turn', function() {
+      bowling.hit(10);
+      bowling.hit(10);
+      expect(bowling.currentTurn()).toEqual(3);
+    })
+    it('sets to new turn after a spare on 2nd ball, 2nd turn', function() {
+      bowling.hit(10);
+      bowling.hit(5)
+      bowling.hit(5);
+      expect(bowling.currentTurn()).toEqual(3);
+    })
   })
 })

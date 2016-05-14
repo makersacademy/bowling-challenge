@@ -1,4 +1,4 @@
-Bowling Challenge
+Bowling Challenge [![Build Status](https://travis-ci.org/omajul85/bowling-challenge.svg?branch=master)](https://travis-ci.org/omajul85/bowling-challenge)
 =================
 
 **Author:** Omar Alvarez

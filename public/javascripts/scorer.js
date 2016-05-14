@@ -51,7 +51,7 @@ Scorer.prototype.ball_1 = function(b) {
 };
 
 Scorer.prototype.ball_2 = function(b) {
-  if (this.firstBallInFrame + b == 10) {
+  if (this.firstBallInFrame + b === 10) {
     this.state = "SPARE_1";
   } else {
     this.addScoreInFrame(this.firstBallInFrame + b);
@@ -60,7 +60,7 @@ Scorer.prototype.ball_2 = function(b) {
 };
 
 Scorer.prototype.strike_1 = function(b) {
-  if (b == 10) {
+  if (b === 10) {
     this.rollingFrame += 1;
     this.state = "STRIKES_X2";
   } else {
@@ -70,7 +70,7 @@ Scorer.prototype.strike_1 = function(b) {
 };
 
 Scorer.prototype.strike_x2 = function(b) {
-  if (b == 10) {
+  if (b === 10) {
     this.rollingFrame += 1;
   } else {
     this.firstBallInFrame = b;
@@ -79,7 +79,7 @@ Scorer.prototype.strike_x2 = function(b) {
 };
 
 Scorer.prototype.strike_2 = function(b) {
-  if (this.firstBallInFrame + b == 10) {
+  if (this.firstBallInFrame + b === 10) {
     this.state = "SPARE_1";
   } else {
     this.addScoreInFrame(this.firstBallInFrame + b);

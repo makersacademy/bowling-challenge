@@ -1,4 +1,3 @@
-
 /* globals Frame */
 function Game(frame) {
   'use strict';
@@ -17,7 +16,7 @@ function Game(frame) {
 
   Game.prototype.frameLength = function() {
     return _frames.length;
-  }
+  };
 
 
 
@@ -59,45 +58,3 @@ function Game(frame) {
     }
   };
 }
-
-
-
- // Game.prototype.begin = function() {
-  //   for(var i=0;i<21;i++) {
-  //     _rolls[i] = 0;
-  //   }
-  // };
-
-
-  // Game.prototype.calculateFrameScore = function(currentRoll){
-  //   var frameScore = 0;
-  //   var frameIndex = Math.round(currentRoll/2)
-  //    if (isSpare(frameIndex)) {
-  //     this._frames[frameIndex] = 'spare';
-  //   } else {
-  //     this._frames[frameIndex] = _rolls[currentRoll] + _rolls[currentRoll-1]
-  //   }
-  //   if (this._frames[frameIndex-1] === 'spare') {
-  //     this._frames[frameIndex-1] = 10 + _rolls[currentRoll];
-  //     calculateCumulative(frameIndex-1);
-  //   }
-
-  // };
-
-  // function isStrike(frame, pins) {
-  //   return pins === 10;
-  // }
-
-  // function isSpare(frameIndex) {
-  //   return (_rolls[frameIndex] + _rolls[frameIndex+1]) === 10;
-  // }
-
-  // function isregularFrame(frameIndex) {
-  //   return !(isStrike(frameIndex) || isSpare(frameIndex));
-  // }
-
-  // function calculateCumulative(index) {
-  //   if (index > 0) {
-  //     _frames[index] += frames[index-1];
-  //   }
-  // }

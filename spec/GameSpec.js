@@ -73,10 +73,15 @@ describe("BowlingGame",function() {
       expect(game.totalScore()).toEqual(0);
     });
 
-    it('2 rolls with (0,0) make frame score = 0',function(){
-      game.roll(0);
-      game.roll(0);
-      expect(game.totalScore()).toEqual(0);
+    it('2 rolls with (3,4) make frame score = 7',function(){
+      game.roll(3);
+      game.roll(4);
+      expect(game.totalScore()).toEqual(7);
+    });
+
+    it('1 rolls with (10) make frame score = 10',function(){
+      game.roll(10);
+      expect(game.totalScore()).toEqual(10);
     });
 
     xit('with rolls of 1, score is 20',function(){

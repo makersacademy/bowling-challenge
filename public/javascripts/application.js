@@ -1,36 +1,37 @@
 $(document).ready(function(){
-    // updateRollDislay(1,0,"X");
-    // updateRollDislay(0,1,"8");
-    // updateGameScoreDisplay(0);
-    var scorer = new Scorer();
-    var game = new Game(scorer);
-    buttons(0);
-    // displayButtons(s.state, s.firstBallInFrame);
+  // updateRollDislay(1,0,"X");
+  // updateRollDislay(0,1,"8");
+  // updateGameScoreDisplay(0);
+  var scorer = new Scorer();
+  var game = new Game(scorer);
+  // buttons(0);
+  updateButtons(game._scorer.state, game._scorer.firstBallInFrame);
+  updateDashboard();
+  $("body").delegate(".btn-round", "click", function(){
+    game._scorer.roll(Number($(this).val()));
+    updateButtons(game._scorer.state, game._scorer.firstBallInFrame);
     updateDashboard();
-    $(":button").click(function(){
-      game._scorer.roll(Number($(this).val()));
-        // displayButtons(s.state, s.firstBallInFrame);
-        updateDashboard();        
-      });
+    console.log('Button clicked!');
+  });
 
 
-    function displayButtons(state, b) {
-      if (state == "BALL_2" || state == "STRIKE_2") {
-        buttons(b);
-      } else {
-        buttons(0);    
-      }
+  function updateButtons(state, b) {
+    if (state === "BALL_2" || state === "STRIKE_2") {
+      buttons(b);
+    } else {
+      buttons(0);    
     }
+  }
 
-    function buttons(pins) {
-      var buttonHTML = '';
-      for (var i = 0; i < (11 - pins); i++) {
-        // buttonHTML += '<button type="button" class="btn btn-primary" onclick="press(' + i + ')">' + i + '</button>';
-        buttonHTML += '<button type="button" class="btn-round" value="' + i + '">' + i + '</button>';
-      }
-      console.log(buttonHTML);
-      $('#buttons').html(buttonHTML);
+  function buttons(pins) {
+    var buttonHTML = '';
+    for (var i = 0; i < (11 - pins); i++) {
+      // buttonHTML += '<button type="button" class="btn btn-primary" onclick="press(' + i + ')">' + i + '</button>';
+      buttonHTML += '<button type="button" class="btn-round" value="' + i + '">' + i + '</button>';
     }
+    console.log(buttonHTML);
+    $('#buttons').html(buttonHTML);
+  }
 
 // function press(pinsKnocked) {
 //     if(scoresheet.frames.lengameth === 0 || scoresheet.currFrameOver()) {
@@ -53,23 +54,23 @@ $(document).ready(function(){
 
 // position [0 or 1]
 // displayContent ["/", "X" or number]
-function updateRollDislay(position, currFrame, displayContent) {
-  $('#score-table tr:eq(1) td:eq(' + ((currFrame*2)+position) + ')').html(displayContent);
-}
+  function updateRollDislay(position, currFrame, displayContent) {
+    $('#score-table tr:eq(1) td:eq(' + ((currFrame*2)+position) + ')').html(displayContent);
+  }
 
-function updateGameScoreDisplay(currFrame) {
-  $('#score-table tr:eq(2) td:eq(' + currFrame + ')').html("10");
-}
+  function updateGameScoreDisplay(currFrame) {
+    $('#score-table tr:eq(2) td:eq(' + currFrame + ')').html("10");
+  }
 
-function updateDashboard(){
-  $("#state").text(game._scorer.state);
-  $("#frame-number").text(game.frameNumber());
-  $("#frame-scores").text(game._scorer.frameScores);
-  $("#balls-rolled").text(game._scorer.rolls);
-  $("#rolling-frame").text(game._scorer.rollingFrame);
-  $("#totalScore").text(game._scorer.totalScore);
-  $("#first-ball").text(game._scorer.firstBallInFrame);
-  $("#game-over").text(game.isOver());
-}
+  function updateDashboard(){
+    $("#state").text(game._scorer.state);
+    $("#frame-number").text(game.frameNumber());
+    $("#frame-scores").text(game._scorer.frameScores);
+    $("#balls-rolled").text(game._scorer.rolls);
+    $("#rolling-frame").text(game._scorer.rollingFrame);
+    $("#totalScore").text(game._scorer.totalScore);
+    $("#first-ball").text(game._scorer.firstBallInFrame);
+    $("#game-over").text(game.isOver());
+  }
 
 });

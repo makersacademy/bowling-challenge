@@ -21,7 +21,37 @@ As usual please start by
 * Forking this repo
 
 * Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+* 
 
+User Stories
+------------
+As a player 
+In order to remember my score 
+I want to be able to input my score
+
+As a player 
+In order for me to play the right number of frames 
+I only want to be able to input 10 scores
+
+As a Player
+Because I am bad at counting
+I want to see my total score
+
+As a Player
+In order to play properly and need put a score in per ball
+I want to be able to enter scores twice per frame
+
+As a Player
+In order not to score too much (if there is such a thing)
+I only want to be able to score 10 max per frame
+
+As a Player
+In order to get strikes
+I want to get the points doubled for the next two sets of balls if I score a 10 on the first ball of the frame
+
+As a Player
+In order to score a spare
+I want to be able to double the points of the next ball rolled if I score 10 in the previous frame
 
 ### Optional Extra
 

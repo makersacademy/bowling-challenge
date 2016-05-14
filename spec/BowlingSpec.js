@@ -14,15 +14,6 @@ describe('BowlingGame', function() {
     expect(game.currentScore()).toEqual(0);
   });
 
-  it('a game begins on frame 1', function() {
-    expect(game._frame).toEqual(1);
-  });
-
-  it('frame number is inremented at the end of every frame', function() {
-    game.nextFrame();
-    expect(game._frame).toEqual(2);
-  });
-
 
 
 });

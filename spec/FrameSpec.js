@@ -36,4 +36,11 @@ describe("Frame",function() {
     });
   });
 
+  describe('Exception management', function(){
+    it('error if rolls are not numbers', function(){
+      var error = 'rolls are not within range or not numbers'
+      expect(function(){new Frame("0","x"); }).toThrowError(error);
+    });
+  });
+
 });

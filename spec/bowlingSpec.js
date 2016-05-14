@@ -61,4 +61,30 @@ describe('Bowling', function() {
       expect(bowling.currentTurn()).toEqual(3);
     })
   })
+
+  describe('#strikes and spares', function() {
+    it('gotStrike returns true when you get a strike', function() {
+      bowling.hit(10);
+      expect(bowling.gotStrike()).toBeTruthy();
+    })
+    it('gotStrike returns false when you don\'t get a strike', function() {
+      bowling.hit(9);
+      bowling.hit(1);
+      expect(bowling.gotStrike()).toBeFalsy();
+    })
+    it('gotSpare returns true when you get a spare', function() {
+      bowling.hit(9);
+      bowling.hit(1);
+      expect(bowling.gotSpare()).toBeTruthy();
+    })
+    it('gotSpare returns false when you don\'t get a spare', function() {
+      bowling.hit(8);
+      bowling.hit(1);
+      expect(bowling.gotSpare()).toBeFalsy();
+    })
+    it('gotSpare doesn\'t return true for strikes', function() {
+      bowling.hit(10);
+      expect(bowling.gotSpare()).toBeFalsy();
+    })
+  })
 })

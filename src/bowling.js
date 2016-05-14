@@ -17,7 +17,7 @@ Bowling.prototype.scoreSheet = function() {
 Bowling.prototype.hit = function(pins) {
   if(this._currentBall === 0) {
     this._scoreSheet['frame' + this._currentTurn] = [pins];
-  } else if(this._currentBall === 1) {
+  } else if(this._currentBall >= 1) {
     this._scoreSheet['frame' + this._currentTurn].push(pins);
   }
   this.ballCheck();
@@ -43,22 +43,43 @@ Bowling.prototype.ballCheck = function () {
 
 Bowling.prototype.strikeCheck = function() {
   this.currentTurnKey = 'frame' + this._currentTurn;
-  if(this._scoreSheet[this.currentTurnKey][this._currentBall] === 10) {
+  if(this._scoreSheet[this.currentTurnKey][0] === 10) {
+    return true;
+  }
+}
+
+Bowling.prototype.gotStrike = function() {
+  this.lastTurnKey = 'frame' + (this._currentTurn-1);
+  if(this._scoreSheet[this.lastTurnKey][0] === 10 &&
+    this._currentBall === 0) {
+    return true;
+  }
+}
+
+Bowling.prototype.gotSpare = function() {
+  this.lastTurnKey = 'frame' + (this._currentTurn-1);
+  var ballOneScore = this._scoreSheet[this.lastTurnKey][0]
+  var ballTwoScore = this._scoreSheet[this.lastTurnKey][1]
+  if(ballOneScore + ballTwoScore === 10 && ballOneScore < 10) {
     return true;
   }
 }
 
 
-var bowling = new Bowling();
-bowling.hit(10);
-bowling.hit(5);
-bowling.hit(4);
-bowling.hit(3);
-bowling.hit(2);
-bowling.hit(1);
-bowling.hit(9);
-bowling.hit(10);
-bowling.hit(1);
-console.log(bowling.scoreSheet());
-console.log(bowling._scoreSheet.frame1);
-console.log(bowling.score());
+// var bowling = new Bowling();
+// bowling.hit(10);
+// bowling.hit(5);
+// bowling.hit(4);
+// bowling.hit(3);
+// bowling.hit(2);
+// bowling.hit(1);
+// bowling.hit(9);
+// bowling.hit(10);
+// bowling.hit(1);
+// console.log(bowling.scoreSheet());
+// console.log(bowling._scoreSheet.frame1);
+// console.log(bowling.score());
+//
+// var b2 = new Bowling();
+// b2.hit(9);
+// console.log(b2.currentTurn());

@@ -1,28 +1,33 @@
 function Frame(firstRoll,secondRoll) {
+  'use strict';
   var _rolls = [firstRoll, secondRoll];
   var _score = calculateScore();
-  var type;
-  checkExceptions();
+  var _type = calculateType();
+
 
   Frame.prototype.getRoll = function(index) {
     return _rolls[index-1];
   };
 
   Frame.prototype.getScore = function() {
-
     return _score;
   };
 
   Frame.prototype.getType = function() {
-    if (firstRoll === 10) {
-      type = 'strike';
-    } else if (_score === 10) {
-      type = 'spare';
-    } else {
-      type = 'regular';
-    }
-    return type;
+    return _type;
   };
+
+  function calculateType() {
+    if (firstRoll === 10) {
+      _type = 'strike';
+      _rolls[1] = "-";
+    } else if (_score === 10) {
+      _type = 'spare';
+    } else {
+      _type = 'regular';
+    }
+    return _type;
+  }
 
   function calculateScore() {
     var result;
@@ -33,26 +38,4 @@ function Frame(firstRoll,secondRoll) {
     }
     return result;
   }
-
-  function checkExceptions() {
-    if (isErrorFirstRoll(_rolls[0]) || isErrorSecondRoll(_rolls[1])) {
-      var error = 'rolls are not within range or not numbers';
-      throw new Error(error);
-    }
-
-    function isErrorFirstRoll(number) {
-      return (typeof(number) !== "number" || number < 0 || number > 10)
-    }
-
-    function isErrorSecondRoll(number) {
-      // to accept undefined as a valid option for roll2
-      var typeCheck = !isNumberOrUndefined(number);
-      return (typeCheck || number < 0 || number > 10)
-
-      function isNumberOrUndefined(number) {
-        return (typeof(number === "number") || typeof(number === "undefined"));
-      }
-    }
-  }
-
 }

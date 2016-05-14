@@ -1,4 +1,4 @@
-
+/*globals Game */
 describe("BowlingGame",function() {
   "use strict"
   var game;
@@ -8,13 +8,41 @@ describe("BowlingGame",function() {
 
   });
 
-  describe('on new game, ',function(){
-    it('score is 0',function() {
-      expect(game.totalScore()).toEqual(0);
+  describe('rolls exceptions, ',function(){
+    it('error if roll1 is not a number', function(){
+      game.roll("7");
+      var error = 'rolls are not within range or not numbers'
+      expect(function(){ game.roll(3); }).toThrowError(error);
+    });
+
+    it('error if roll2 is not a number', function(){
+      game.roll(7);
+      var error = 'rolls are not within range or not numbers'
+      expect(function(){ game.roll("3"); }).toThrowError(error);
+    });
+
+    it('error if roll1 is <0', function(){
+      game.roll(-3);
+      var error = 'rolls are not within range or not numbers'
+      expect(function(){ game.roll(3); }).toThrowError(error);
+    });
+
+    it('error if roll2 is >10', function(){
+      game.roll(3);
+      var error = 'rolls are not within range or not numbers'
+      expect(function(){ game.roll(12); }).toThrowError(error);
+    });
+
+    it('error if roll1+roll2 is >10', function(){
+      game.roll(6);
+      var error = 'frame can\'t exceed 10';
+      expect(function(){ game.roll(7); }).toThrowError(error);
     });
   });
 
-  describe('rolls,  ',function(){
+
+
+  describe('frame creations,  ',function(){
     beforeEach(function(){
       Game.prototype.rollMany = function(times, pins) {
         for (var i=0; i<times; i++) {
@@ -22,8 +50,32 @@ describe("BowlingGame",function() {
         }
       };
     });
-    it('gutter game, score is zero',function(){
-      game.rollMany(20,0);
+    it('1 roll with score <10 does not create Frame',function(){
+      game.roll(7);
+      expect(game.frameLength()).toBe(0);
+    });
+
+    it('1 roll with score=10 creates a Frame',function(){
+      game.roll(10);
+      expect(game.frameLength()).toBe(1);
+    });
+
+    it('2 rolls with (3,5) creates a Frame',function(){
+      game.roll(3);
+      game.roll(5);
+      expect(game.frameLength()).toBe(1);
+    });
+  });
+  describe('frame scores, ',function(){
+    it('2 rolls with (0,0) make frame score = 0',function(){
+      game.roll(0);
+      game.roll(0);
+      expect(game.totalScore()).toEqual(0);
+    });
+
+    it('2 rolls with (0,0) make frame score = 0',function(){
+      game.roll(0);
+      game.roll(0);
       expect(game.totalScore()).toEqual(0);
     });
 
@@ -40,5 +92,8 @@ describe("BowlingGame",function() {
       expect(game.totalScore()).toEqual(20);
     });
 
+
   });
+
+
 });

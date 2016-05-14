@@ -1,3 +1,4 @@
+/*globals Frame */
 describe("Frame",function() {
   "use strict"
   var frame;
@@ -35,12 +36,4 @@ describe("Frame",function() {
       expect(frame.getType()).toEqual('spare');
     });
   });
-
-  describe('Exception management', function(){
-    it('error if rolls are not numbers', function(){
-      var error = 'rolls are not within range or not numbers'
-      expect(function(){new Frame("0","x"); }).toThrowError(error);
-    });
-  });
-
 });

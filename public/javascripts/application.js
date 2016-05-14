@@ -2,27 +2,27 @@ $(document).ready(function(){
     // updateRollDislay(1,0,"X");
     // updateRollDislay(0,1,"8");
     // updateGameScoreDisplay(0);
-    var omar = new Player("Omar");
-    var g = new Game(omar);
+    var scorer = new Scorer();
+    var game = new Game(scorer);
     buttons(0);
     // displayButtons(s.state, s.firstBallInFrame);
-    $("#state").text(g.player.score.state);
-    $("#frame-number").text(g.frameNumber());
-    $("#balls-rolled").text(g.player.score.rolls);
-    $("#rolling-frame").text(g.player.score.rollingFrame);
-    $("#totalScore").text(g.player.score.totalScore);
-    $("#first-ball").text(g.player.score.firstBallInFrame);
-    $("#game-over").text(g.gameIsOver());
+    $("#state").text(game._scorer.state);
+    $("#frame-number").text(game.frameNumber());
+    $("#balls-rolled").text(game._scorer.rolls);
+    $("#rollingame-frame").text(game._scorer.rollingameFrame);
+    $("#totalScore").text(game._scorer.totalScore);
+    $("#first-ball").text(game._scorer.firstBallInFrame);
+    $("#gameame-over").text(game.isOver());
     $(":button").click(function(){
-        g.player.score.roll(Number($(this).val()));
+        game._scorer.roll(Number($(this).val()));
         // displayButtons(s.state, s.firstBallInFrame);
-        $("#state").text(g.player.score.state);
-        $("#frame-number").text(g.frameNumber());
-        $("#balls-rolled").text(g.player.score.rolls);
-        $("#rolling-frame").text(g.player.score.rollingFrame);
-        $("#totalScore").text(g.player.score.totalScore);
-        $("#first-ball").text(g.player.score.firstBallInFrame);
-        $("#game-over").text(g.gameIsOver());
+        $("#state").text(game._scorer.state);
+        $("#frame-number").text(game.frameNumber());
+        $("#balls-rolled").text(game._scorer.rolls);
+        $("#rollingame-frame").text(game._scorer.rollingameFrame);
+        $("#totalScore").text(game._scorer.totalScore);
+        $("#first-ball").text(game._scorer.firstBallInFrame);
+        $("#gameame-over").text(game.isOver());
     });
 });
 
@@ -45,18 +45,18 @@ function buttons(pins) {
 }
 
 // function press(pinsKnocked) {
-//     if(scoresheet.frames.length === 0 || scoresheet.currFrameOver()) {
+//     if(scoresheet.frames.lengameth === 0 || scoresheet.currFrameOver()) {
 //         frame = new Frame;
 //     scoresheet.addFrame(frame);
 //     update(pinsKnocked, 1);
 //     } else {
 //         update(pinsKnocked, 2);
 //     }
-//     gameOver();
+//     gameameOver();
 // }
 
 // function updateButtons(pinsKnocked, currFrame) {
-//   if(scoresheet.currFrameOver() || (scoresheet.frames.length === scoresheet.framesLimit && !(scoresheet.frames[scoresheet.framesLimit-1].rolls.length === 1 && scoresheet.frames[scoresheet.framesLimit-1].rolls[0] < scoresheet.frames[currFrame].pins))) {
+//   if(scoresheet.currFrameOver() || (scoresheet.frames.lengameth === scoresheet.framesLimit && !(scoresheet.frames[scoresheet.framesLimit-1].rolls.lengameth === 1 && scoresheet.frames[scoresheet.framesLimit-1].rolls[0] < scoresheet.frames[currFrame].pins))) {
 //     buttons(0);
 //   } else {
 //     buttons(pinsKnocked);

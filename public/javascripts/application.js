@@ -6,43 +6,31 @@ $(document).ready(function(){
     var game = new Game(scorer);
     buttons(0);
     // displayButtons(s.state, s.firstBallInFrame);
-    $("#state").text(game._scorer.state);
-    $("#frame-number").text(game.frameNumber());
-    $("#balls-rolled").text(game._scorer.rolls);
-    $("#rollingame-frame").text(game._scorer.rollingameFrame);
-    $("#totalScore").text(game._scorer.totalScore);
-    $("#first-ball").text(game._scorer.firstBallInFrame);
-    $("#gameame-over").text(game.isOver());
+    updateDashboard();
     $(":button").click(function(){
-        game._scorer.roll(Number($(this).val()));
+      game._scorer.roll(Number($(this).val()));
         // displayButtons(s.state, s.firstBallInFrame);
-        $("#state").text(game._scorer.state);
-        $("#frame-number").text(game.frameNumber());
-        $("#balls-rolled").text(game._scorer.rolls);
-        $("#rollingame-frame").text(game._scorer.rollingameFrame);
-        $("#totalScore").text(game._scorer.totalScore);
-        $("#first-ball").text(game._scorer.firstBallInFrame);
-        $("#gameame-over").text(game.isOver());
-    });
-});
+        updateDashboard();        
+      });
 
-function displayButtons(state, b) {
-    if (state == "BALL_2" || state == "STRIKE_2") {
+
+    function displayButtons(state, b) {
+      if (state == "BALL_2" || state == "STRIKE_2") {
         buttons(b);
-    } else {
+      } else {
         buttons(0);    
+      }
     }
-}
 
-function buttons(pins) {
-    var buttonHTML = '';
-    for (var i = 0; i < (11 - pins); i++) {
+    function buttons(pins) {
+      var buttonHTML = '';
+      for (var i = 0; i < (11 - pins); i++) {
         // buttonHTML += '<button type="button" class="btn btn-primary" onclick="press(' + i + ')">' + i + '</button>';
         buttonHTML += '<button type="button" class="btn-round" value="' + i + '">' + i + '</button>';
+      }
+      console.log(buttonHTML);
+      $('#buttons').html(buttonHTML);
     }
-    console.log(buttonHTML);
-    $('#buttons').html(buttonHTML);
-}
 
 // function press(pinsKnocked) {
 //     if(scoresheet.frames.lengameth === 0 || scoresheet.currFrameOver()) {
@@ -66,9 +54,22 @@ function buttons(pins) {
 // position [0 or 1]
 // displayContent ["/", "X" or number]
 function updateRollDislay(position, currFrame, displayContent) {
-    $('#score-table tr:eq(1) td:eq(' + ((currFrame*2)+position) + ')').html(displayContent);
+  $('#score-table tr:eq(1) td:eq(' + ((currFrame*2)+position) + ')').html(displayContent);
 }
 
 function updateGameScoreDisplay(currFrame) {
-    $('#score-table tr:eq(2) td:eq(' + currFrame + ')').html("10");
+  $('#score-table tr:eq(2) td:eq(' + currFrame + ')').html("10");
 }
+
+function updateDashboard(){
+  $("#state").text(game._scorer.state);
+  $("#frame-number").text(game.frameNumber());
+  $("#frame-scores").text(game._scorer.frameScores);
+  $("#balls-rolled").text(game._scorer.rolls);
+  $("#rolling-frame").text(game._scorer.rollingFrame);
+  $("#totalScore").text(game._scorer.totalScore);
+  $("#first-ball").text(game._scorer.firstBallInFrame);
+  $("#game-over").text(game.isOver());
+}
+
+});

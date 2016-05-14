@@ -4,14 +4,27 @@ $(document).ready(function(){
   // updateGameScoreDisplay(0);
   var scorer = new Scorer();
   var game = new Game(scorer);
-  // buttons(0);
+  var framePosition, frameNumber;
+
+  framePosition = getFramePosition();
+  frameNumber = game.frameNumber()-1;
   updateButtons(game._scorer.state, game._scorer.firstBallInFrame);
   updateDashboard();
   $("body").delegate(".btn-round", "click", function(){
-    game._scorer.roll(Number($(this).val()));
-    updateButtons(game._scorer.state, game._scorer.firstBallInFrame);
+    var ballRolled = Number($(this).val());
+    game._scorer.roll(ballRolled);
+    
+    if (game.isOver()){
+      $('#buttons').html('');
+    } else {
+      updateButtons(game._scorer.state, game._scorer.firstBallInFrame);
+    }
+    
+    updateRollsOnFrame(framePosition, frameNumber, formatRolledBall(ballRolled));
+    updateFrameScores();
     updateDashboard();
-    console.log('Button clicked!');
+    framePosition = getFramePosition();
+    frameNumber = game.frameNumber()-1;
   });
 
 
@@ -26,40 +39,47 @@ $(document).ready(function(){
   function buttons(pins) {
     var buttonHTML = '';
     for (var i = 0; i < (11 - pins); i++) {
-      // buttonHTML += '<button type="button" class="btn btn-primary" onclick="press(' + i + ')">' + i + '</button>';
       buttonHTML += '<button type="button" class="btn-round" value="' + i + '">' + i + '</button>';
     }
     console.log(buttonHTML);
     $('#buttons').html(buttonHTML);
   }
 
-// function press(pinsKnocked) {
-//     if(scoresheet.frames.lengameth === 0 || scoresheet.currFrameOver()) {
-//         frame = new Frame;
-//     scoresheet.addFrame(frame);
-//     update(pinsKnocked, 1);
-//     } else {
-//         update(pinsKnocked, 2);
-//     }
-//     gameameOver();
-// }
-
-// function updateButtons(pinsKnocked, currFrame) {
-//   if(scoresheet.currFrameOver() || (scoresheet.frames.lengameth === scoresheet.framesLimit && !(scoresheet.frames[scoresheet.framesLimit-1].rolls.lengameth === 1 && scoresheet.frames[scoresheet.framesLimit-1].rolls[0] < scoresheet.frames[currFrame].pins))) {
-//     buttons(0);
-//   } else {
-//     buttons(pinsKnocked);
-//   }
-// }
-
 // position [0 or 1]
 // displayContent ["/", "X" or number]
-  function updateRollDislay(position, currFrame, displayContent) {
-    $('#score-table tr:eq(1) td:eq(' + ((currFrame*2)+position) + ')').html(displayContent);
+  function updateRollsOnFrame(position, frame, content) {
+    $('#score-table tr:eq(1) td:eq(' + ((frame * 2) + position) + ')').html(content);
   }
 
-  function updateGameScoreDisplay(currFrame) {
-    $('#score-table tr:eq(2) td:eq(' + currFrame + ')').html("10");
+  function updateFrameScores() {
+    for (var i = 0; i < game._scorer.frameScores.length; i++){
+      $('#score-table tr:eq(2) td:eq(' + i + ')').html(game._scorer.frameScores[i]);
+    }
+  }
+
+  function getFramePosition(){
+    if (game._scorer.state === "BALL_2" || game._scorer.state === "STRIKE_2") {
+      return 1;
+    } else {
+      return 0;   
+    }
+    if(game.frameNumber() >= 10){
+      if(game._scorer.state === "STRIKES_X2"){
+        return 1;
+      }else if (game._scorer.state === "SPARE_1" || game._scorer.state === "STRIKE_2") {
+        return 2;
+      }
+    }
+  }
+
+  function formatRolledBall(b){
+    if (b === 10) {
+      return 'X';
+    } else if(b + game._scorer.firstBallInFrame === 10){
+      return '/';
+    } else {
+      return b;
+    }
   }
 
   function updateDashboard(){

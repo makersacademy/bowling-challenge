@@ -18,7 +18,7 @@ I want to create a game
 so that I can begin a game of bowling
 
 As a bowler
-I want a two rolls per frame if my first roll was less than 10
+I want to have two rolls per frame if my first roll knocked down fewer than 10
 So that I have the chance to get a spare
 
 As a bowler

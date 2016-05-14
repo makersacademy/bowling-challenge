@@ -1,24 +1,37 @@
 function Frame(firstRoll,secondRoll) {
   var _rolls = [firstRoll, secondRoll];
-  var _score = 0;
+  var _score = calculateScore(_rolls);
+  var type;
 
 Frame.prototype.getRoll = function(index) {
   return _rolls[index-1];
 };
 
 Frame.prototype.getScore = function() {
-  if (firstRoll === 10) {
-    _score = 10;
-  } else {
-    _score = _rolls[0] + _rolls[1];
-  }
+
   return _score;
 };
 
+Frame.prototype.getType = function() {
+  if (firstRoll === 10) {
+    type = 'strike';
+  } else if (_score === 10) {
+    type = 'spare';
+  } else {
+    type = 'regular';
+  }
+  return type;
+};
 
+function calculateScore(_rolls) {
+  var result;
+  if (_rolls[0] === 10) {
+    result = 10;
+  } else {
+    result = _rolls[0] + _rolls[1];
+  }
+  return result;
+}
 
-// Frame.prototype.addRoll = function(index, pins) {
-//   _rolls[index-1] = pins;
-// };
 
 }

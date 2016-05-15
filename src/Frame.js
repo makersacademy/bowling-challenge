@@ -1,14 +1,15 @@
 function Frame(){
-  this._count = 1;
+  this.count = 1;
   this.roll = 1;
-  this.pins = 10;
+  this.pinsStanding = this.DEFAULT_PINS;
+  this.DEFAULT_PINS = 10;
   this.current = [];
   this.log = [];
   this.gameScore = 0;
 }
 
   Frame.prototype.getCount = function(){
-    return this._count;
+    return this.count;
   };
 
   Frame.prototype.next = function(){
@@ -16,13 +17,32 @@ function Frame(){
     this.log.push(this.current);
     this.current = [];
     this.roll = 1;
-    this._count ++;
+    this.count ++;
   };
 
+  // Frame.prototype.calculateFrameScore = function(frame){
+  //   var _this = this;
+  //   var _frame = frame || this.current;
+  //   return _frame.reduce(function(totalPins, morePins){
+  //     if (_this.lastIsStrike()) {
+  //       return (totalPins + morePins) * 2;
+  //     } else if (_this.lastIsSpare()) {
+  //       return (totalPins * 2) + morePins;
+  //     } else {
+  //       return totalPins + morePins;
+  //     }
+  //   }, 0);
+  // };
+
+
   Frame.prototype.calculateFrameScore = function(){
-    return this.current.reduce(function(totalPins, morePins){
-      return totalPins + morePins;
-    }, 0);
+      if (this.lastIsStrike()) {
+        return this.calculatePinCount() * 2;
+      } else if (this.lastIsSpare()) {
+        return this.calculatePinCount() + this.current[0];
+      } else {
+        return this.calculatePinCount();
+      }
   };
 
   Frame.prototype.newRoll = function(){
@@ -31,9 +51,39 @@ function Frame(){
 
   Frame.prototype.bowl = function(pins){
     this.current.push(pins);
-    if (this.roll === 1) {
+    if (this.roll === 1 && pins === 10) {
+      this.next();
+    } else if (this.roll === 1) {
       this.newRoll();
+      this.pinsStanding = this.DEFAULT_PINS - pins;
     } else if (this.roll === 2) {
       this.next();
     }
+  };
+
+  Frame.prototype.calculatePinCount = function(frame){
+    var _frame = frame || this.current;
+    return _frame.reduce(function(totalPins, morePins){
+      return totalPins + morePins;
+    }, 0);
+  };
+
+  Frame.prototype.lastIsSpare = function(){
+    var last = this.lastCompletedFrame();
+    if (this.calculatePinCount(last) === 10 && last.length === 2) {
+    return true;
+  }
+    return false;
+  };
+
+  Frame.prototype.lastIsStrike = function(){
+    var last = this.lastCompletedFrame();
+    if (this.calculatePinCount(last) === 10 && last.length === 1) {
+    return true;
+  }
+    return false;
+  };
+
+  Frame.prototype.lastCompletedFrame = function(){
+    return this.log[this.log.length - 1] || [];
   };

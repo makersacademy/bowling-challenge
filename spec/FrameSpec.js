@@ -39,6 +39,29 @@ describe('Frame', function() {
     expect(frame.log).toEqual([[2, 2], [2, 2]]);
   });
 
+  it('should know if the frame was a spare', function(){
+    game.bowl(5);
+    game.bowl(5);
+    expect(frame.lastIsSpare()).toEqual(true);
+  });
+
+  it('should know if the frame was a strike', function(){
+    game.bowl(10);
+    expect(frame.lastIsStrike()).toEqual(true);
+  });
+
+  it('should know if the frame was a spare2', function(){
+    // game.bowl(5);
+    // game.bowl(5);
+    expect(frame.lastIsSpare()).toEqual(false);
+  });
+
+  it('should know if the frame was a strike2', function(){
+    // game.bowl(10);
+    expect(frame.lastIsStrike()).toEqual(false);
+  });
+
+
   // it('the score is calculated', function(){
   //   game.bowl(2);
   //   game.bowl(2);

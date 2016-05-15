@@ -2,7 +2,7 @@ function BowlingGame(frame){
   this.frame = frame || new Frame();
 }
 
-  BowlingGame.prototype.currentScore = function(){
+  BowlingGame.prototype.getScore = function(){
     return this.frame.gameScore;
   };
 

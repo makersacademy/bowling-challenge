@@ -3,16 +3,16 @@ function BonusCalc(game){
 	this.bonusArray = [];
 };
 
-BonusCalc.prototype.processBonus = function(score){
+BonusCalc.prototype.processBonus = function(score,frameScore){
 	this.addBonus(score);
-	this.setBonusStatus();
+	this.setBonusStatus(frameScore);
 };
 
-BonusCalc.prototype.setBonusStatus = function(){
-	if ((this.game.frameScore === 10) && (!(this.game.isOnFirstRoll()))) {
+BonusCalc.prototype.setBonusStatus = function(frameScore){
+	if ((frameScore === 10) && (!(this.game.isOnFirstRoll()))) {
 		this.bonusArray.push('spare');
 	};
-	if ((this.game.frameScore === 10) && (this.game.isOnFirstRoll())) {
+	if ((frameScore === 10) && (this.game.isOnFirstRoll())) {
 		this.bonusArray.push(this.game.strikeTracker);
 		this.game.addOneToCurrentRoll();
 	};

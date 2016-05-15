@@ -17,7 +17,7 @@ Game.prototype.roll = function(score){
 	};
 	if (this.currentFrame() <= 10) {
 		this.addToScore(score);
-		this.bonusCalc.processBonus(score);
+		this.bonusCalc.processBonus(score,this.frameScore);
 	};
 	this.prepareNextRollOrEnd();
 };

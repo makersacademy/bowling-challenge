@@ -33,7 +33,7 @@ describe('BowlingGame', function() {
     game.playFirstRoll();
     game.playSecondRoll();
     var board = game.getScoreboard();
-    expect(board.getCurrentScore()).toBeGreaterThan(-1);
+    expect(board.calculator.getCurrentScore()).toBeGreaterThan(-1);
   });
 
 });

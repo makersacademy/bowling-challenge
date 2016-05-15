@@ -14,7 +14,6 @@ BowlingGame.prototype.getCurrentRoll = function () {
 };
 
 BowlingGame.prototype.playFirstRoll = function () {
-  this._scoreboard.nextFrame();
   this._currentRoll.roll();
   this._scoreboard.saveFirstRoll(this._currentRoll.getHitsFromRoll());
 };

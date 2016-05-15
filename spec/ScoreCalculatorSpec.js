@@ -20,46 +20,53 @@ describe('ScoreCalculator', function() {
     expect(calculator.getCurrentScore()).toEqual(total);
   });
 
-  it('registers if there is a strike', function() {
-    expect(calculator.registerStrike(strike)).toEqual(true);
+
+  describe('Strike', function() {
+    beforeEach(function(){
+      calculator.registerStrike(strike);
+    });
+
+    it('registers if there is a strike', function() {
+      expect(calculator.registerStrike(strike)).toEqual(true);
+    });
+
+    it('adds bonuses to total score from the round after a strike', function() {
+      calculator.calculateScore(roll1, roll2);
+      var bonus = (roll1 + roll2) * 2;
+      expect(calculator.getCurrentScore()).toEqual(strike + bonus);
+    });
+
+    it('adds bonuses to total score after two strikes in a row (a double)', function() {
+      calculator.registerStrike(strike);
+      calculator.calculateScore(roll1, roll2);
+      var total = ( (strike+(strike+roll1)) + (strike+(roll1+0) + (roll1+roll2)) );
+      expect(calculator.getCurrentScore()).toEqual(total);
+    });
+
+    it('adds bonuses to total score after three strikes in a row (a turkey)', function() {
+      calculator.registerStrike(strike);
+      calculator.registerStrike(strike);
+      calculator.calculateScore(0, 9);
+      var total = 78;
+      expect(calculator.getCurrentScore()).toEqual(total);
+    });
   });
 
-  it('registers if there is a spare', function() {
-    expect(calculator.registerSpare(4+6)).toEqual(true);
-  });
+  describe('Spare', function() {
 
-  it('adds bonuses to total score from the round after a strike', function() {
-    calculator.registerStrike(strike);
-    calculator.calculateScore(roll1, roll2);
-    var bonus = (roll1 + roll2) * 2;
-    expect(calculator.getCurrentScore()).toEqual(strike + bonus);
-  });
+    it('registers if there is a spare', function() {
+      expect(calculator.registerSpare(4+6)).toEqual(true);
+    });
 
-  it('adds bonuses to total score after two strikes in a row (a double)', function() {
-    calculator.registerStrike(strike);
-    calculator.registerStrike(strike);
-    calculator.calculateScore(roll1, roll2);
-    var total = ( (strike+(strike+roll1)) + (strike+(roll1+0) + (roll1+roll2)) );
-    expect(calculator.getCurrentScore()).toEqual(total);
-  });
+    it('It adds bonus when the player gets a spare', function() {
+      calculator.registerSpare(roll1 + 6);
+      calculator.calculateScore(roll1, 6);
+      calculator.calculateScore(roll1, roll2);
 
-  it('adds bonuses to total score after three strikes in a row (a turkey)', function() {
-    calculator.registerStrike(strike);
-    calculator.registerStrike(strike);
-    calculator.registerStrike(strike);
+      var total = (((roll1*2 + roll2) + 6) + roll1);
+      expect(calculator.getCurrentScore()).toEqual(total);
+    });
 
-    calculator.calculateScore(0, 9);
-    var total = 78;
-    expect(calculator.getCurrentScore()).toEqual(total);
-  });
-
-  it('It adds bonus when the player gets a spare', function() {
-    calculator.registerSpare(roll1 + 6);
-    calculator.calculateScore(roll1, 6);
-    calculator.calculateScore(roll1, roll2);
-
-    var total = (((roll1*2 + roll2) + 6) + roll1);
-    expect(calculator.getCurrentScore()).toEqual(total);
   });
 
 });

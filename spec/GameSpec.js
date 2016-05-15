@@ -95,15 +95,15 @@ describe("BowlingGame",function() {
     });
   });
 
-  // describe('spares, ',function(){
-  //   it('2 frames[7,3],[2,0] make total score 14',function(){
-  //     game.roll(7);
-  //     game.roll(3);
-  //     game.roll(2);
-  //     game.roll(0);
-  //     expect(game.totalScore()).toEqual(14);
-  //   });
-  // });
+  describe('spares, ',function(){
+    it('2 frames[7,3],[2,0] make total score 14',function(){
+      game.roll(7);
+      game.roll(3);
+      game.roll(2);
+      game.roll(0);
+      expect(game.totalScore()).toEqual(14);
+    });
+  });
 
 
 });

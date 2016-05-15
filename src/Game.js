@@ -31,7 +31,8 @@ Game.prototype.roll = function(pins) {
     this.addFrame(frame);
     this.calculateBonusSpare();
     this.calculateBonusStrike();
-    this.cumulateFrameScore();
+    this.calculateBonusDoubleStrike();
+    // this.cumulateFrameScore();
   }
 };
 
@@ -51,7 +52,8 @@ Game.prototype.checkStrike = function(pins) {
     this.addFrame(frame);
     this.calculateBonusSpare();
     this.calculateBonusStrike();
-    this.cumulateFrameScore();
+    this.calculateBonusDoubleStrike();
+    // this.cumulateFrameScore();
     this.currentRollIndex++;
   }
 }
@@ -70,11 +72,40 @@ Game.prototype.calculateBonusStrike = function() {
   if ((length >1) && (this._frames[length-2]._type === 'STRIKE')) {
     var prevScore = this._frames[length-2].getScore();
     var firstFrameRoll = this._frames[length-1].getRoll("first");
-    var secondFrameRoll = this._frames[length-1].getRoll("second");
-    var bonus = firstFrameRoll + secondFrameRoll;
-    this._frames[length-2].setScore(prevScore + bonus);
+    if (this.isStrike(length-1)) {
+      console.log("double strike!");
+      this._frames[length-1].updateDoubleStrike();
+    } else {
+      var secondFrameRoll = this._frames[length-1].getRoll("second");
+      var bonus = firstFrameRoll + secondFrameRoll;
+      this._frames[length-2].setScore(prevScore + bonus);
+
+    }
   }
 }
+
+Game.prototype.isStrike = function(index) {
+  return this._frames[index].calculateType() === 'STRIKE';
+};
+
+Game.prototype.calculateBonusDoubleStrike = function() {
+  var length = this._frames.length;
+  if ((length >1) && (this._frames[length-2].getDoubleStrike())) {
+    console.log("calculating double strike!")
+    var prevScore = this._frames[length-3].getScore();
+    var firstFrameRoll = this._frames[length-1].getRoll("first");
+    var bonus = 10 + firstFrameRoll;
+    this._frames[length-3].setScore(prevScore + bonus);
+    console.log("frames: ",this._frames);
+  }
+
+}
+
+// Game.prototype.checkDoubleStrike = function(length) {
+//   if(this._frames[length-1].getRoll("second") === '-') {
+
+//   }
+// }
 
 Game.prototype.addFrame = function(frame) {
   this._frames.push(frame);

@@ -17,12 +17,12 @@ describe("Frame", function(){
       expect(frame._details.secondScore).toEqual(2);
     });
 
-    // it('cannot score more than ten pins on a stanard frame', function() {
-    //   expect(function(){
-    //     frame.firstBowl(5);
-    //     frame.firstBowl(6);
-    //   }).toThrowError('Error: You cannot score more than ten standard points.')
-    // })
+    it('cannot score more than ten pins on a standard frame', function() {
+      frame.firstBowl(5);
+      expect(function(){
+        frame.secondBowl(6);
+      }).toThrowError('Error: You cannot hit more than 10 pins.')
+    })
   });
 
   describe('totals the score of the bowls in the frame', function() {

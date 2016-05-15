@@ -20,7 +20,7 @@ $(document).ready(function(){
       updateButtons(game._scorer.state, game._scorer.firstBallInFrame);
     }
     
-    updateRollsOnFrame(framePosition, frameNumber, formatRolledBall(ballRolled));
+    updateRollsOnFrame();
     updateFrameScores();
     updateDashboard();
     framePosition = getFramePosition();
@@ -47,8 +47,38 @@ $(document).ready(function(){
 
 // position [0 or 1]
 // displayContent ["/", "X" or number]
-  function updateRollsOnFrame(position, frame, content) {
-    $('#score-table tr:eq(1) td:eq(' + ((frame * 2) + position) + ')').html(content);
+  function updateRollsOnFrame() {
+    var i = 0;
+    var position = 0;
+    while(i < game._scorer.rolls.length){
+      if (game._scorer.rolls[i] < 10){
+        //In case of spare in the last frame
+        if (i === game._scorer.rolls.length - 1){
+          if (game._scorer.rolls[i] !== 10){
+            $('#score-table tr:eq(1) td:eq(' + position + ')').html(game._scorer.rolls[i]);
+          } else {
+            //In case of strike in the last roll
+            $('#score-table tr:eq(1) td:eq(' + position + ')').html('X');
+          }
+        } else {
+          if (game._scorer.rolls[i] + game._scorer.rolls[i+1] === 10){
+            $('#score-table tr:eq(1) td:eq(' + position + ')').html(game._scorer.rolls[i]); 
+            $('#score-table tr:eq(1) td:eq(' + (position+1) + ')').html('/'); 
+          } else {
+            $('#score-table tr:eq(1) td:eq(' + position + ')').html(game._scorer.rolls[i]); 
+            $('#score-table tr:eq(1) td:eq(' + (position+1) + ')').html(game._scorer.rolls[i+1]);
+          }
+        }
+        if (i < game._scorer.rolls.length) { 
+          i += 2;
+          position += 2;
+        }
+      } else {
+        $('#score-table tr:eq(1) td:eq(' + position + ')').html('X');
+        i += 1;
+        position += 2;
+      }
+    }
   }
 
   function updateFrameScores() {
@@ -69,16 +99,6 @@ $(document).ready(function(){
       }else if (game._scorer.state === "SPARE_1" || game._scorer.state === "STRIKE_2") {
         return 2;
       }
-    }
-  }
-
-  function formatRolledBall(b){
-    if (b === 10) {
-      return 'X';
-    } else if(b + game._scorer.firstBallInFrame === 10){
-      return '/';
-    } else {
-      return b;
     }
   }
 

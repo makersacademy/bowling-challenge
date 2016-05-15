@@ -28,4 +28,12 @@ Frame.prototype.updateScore = function(pins) {
   this._details.pins += pins;
 }
 
+Frame.prototype.isStrike = function() {
+  return (this._details.firstScore === 10);
+}
+
+Frame.prototype.isSpare = function() {
+  return (this._details.firstScore != 10 && this._details.pins === 10);
+}
+
 

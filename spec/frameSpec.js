@@ -33,4 +33,25 @@ describe("Frame", function(){
     });
   });
 
+  describe('treatment of strikes', function() {
+    it('recognises when the player makes a strike', function() {
+      frame.firstBowl(10);
+      expect(frame.isStrike()).toBe(true);
+    });
+
+    it('recognises when the player does not make a strike', function() {
+      frame.firstBowl(9);
+      expect(frame.isStrike()).toBe(false);
+
+    });
+  });
+
+  describe('treatment of spares', function() {
+    it('recognises when the player makes a spare', function() {
+      frame.firstBowl(8);
+      frame.secondBowl(2);
+      expect(frame.isSpare()).toBe(true);
+    })
+  })
+
 });

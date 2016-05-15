@@ -17,11 +17,9 @@ Game.prototype.calculateFrames = function(frame) {
   return this._frames.length;
 }
 
-Game.prototype.calculateScore = function() {
-
-}
-
-  // this._score.reduce(function (a, b){
-  //   this._score = a + b;
-  // });
+Game.prototype.calculateScore = function(f) {
+  // for(var f = 0; f < 10; f++) {
+  //   this._score += (this._frames[0]._details.pins)
+  // }
   // return this._score;
+}

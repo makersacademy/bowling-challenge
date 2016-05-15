@@ -33,15 +33,14 @@ describe("Game", function(){
     });
 
     it('calculates a nil score initially', function() {
-      // game._score = 0;
-      // expect(game.calculateScore()).toEqual(0);
+      expect(game._score).toEqual(0);
     });
 
-    // it('calculates scores correctly', function() {
-    //   game._frames[0] = 8;
-    //   game.addFrames(frame);
-    //   expect(game.calculateScore()).toEqual(8);
-    // });
+    it('calculates scores correctly', function() {
+      // game._frames[0] = 8;
+      // game.addFrames(frame);
+      // expect(game.calculateScore()).toEqual(8);
+    });
   });
 
   describe('calculation of strikes', function() {

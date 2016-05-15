@@ -32,9 +32,10 @@ describe("Game", function(){
       }).toThrowError('You may only play 10 frames.')
     });
 
-    // it('calculates a nil score initially', function() {
+    it('calculates a nil score initially', function() {
+      // game._score = 0;
       // expect(game.calculateScore()).toEqual(0);
-    // });
+    });
 
     // it('calculates scores correctly', function() {
     //   game._frames[0] = 8;

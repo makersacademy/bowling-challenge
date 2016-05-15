@@ -18,9 +18,10 @@ Game.prototype.calculateFrames = function(frame) {
 }
 
 Game.prototype.calculateScore = function() {
-  this._frames.reduce(function (a, b){
-    this._score = a + b;
-  });
-  return this._score;
+
 }
 
+  // this._score.reduce(function (a, b){
+  //   this._score = a + b;
+  // });
+  // return this._score;

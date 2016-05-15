@@ -15,7 +15,7 @@ Frame.prototype.recordFirstRoll = function(score){
 }
 
 Frame.prototype.firstRollScore = function(){
-  return this._firstRoll;
+  return this._firstRoll || 0;
 }
 
 Frame.prototype.recordSecondRoll = function(score){
@@ -23,7 +23,7 @@ Frame.prototype.recordSecondRoll = function(score){
 }
 
 Frame.prototype.secondRollScore = function(){
-  return this._secondRoll;
+  return this._secondRoll || 0;
 }
 ;
 Frame.prototype.isStrike = function(){
@@ -53,7 +53,7 @@ Frame.prototype.isNotGood = function(){
   return (!this.isSpare() && !this.isStrike()) && this.isFinished()
 }
 
-Frame.prototype.totalScore = function(){
+Frame.prototype.calculateTotal = function(){
   return this.firstRollScore() + this.secondRollScore() + this.calculateBonus();
 }
 

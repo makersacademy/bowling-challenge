@@ -142,18 +142,46 @@ describe("Frame", function(){
       frame.addBonus(8);
       frame.addBonus(2);
       expect(frame.calculateBonus()).toEqual(10);
+      expect(frame.calculateTotal()).toEqual(20);
     });
 
     it('calculate bonus for spare', function(){
       Spare();
       frame.addBonus(5);
       expect(frame.calculateBonus()).toEqual(5);
+      expect(frame.calculateTotal()).toEqual(15);
     });
 
     it('return 0 for any other finished game', function(){
       otherFinishedGame();
       expect(frame.calculateBonus()).toEqual(0);
+      expect(frame.calculateTotal()).toEqual(9);
     });
   });
 
+  describe('#addBonus', function(){
+    it('cannot add more than two bonus for strike', function(){
+      Strike();
+      frame.addBonus(8);
+      frame.addBonus(2);
+      expect(function(){
+        frame.addBonus(10);
+      }).toThrowError('no more bonus for this frame')
+    });
+
+    it('cannot add more than one bonus for spare', function(){
+      Spare();
+      frame.addBonus(8);
+      expect(function(){
+        frame.addBonus(10);
+      }).toThrowError('no more bonus for this frame')
+    });
+
+    it('cannot add any bonus for others', function(){
+      otherFinishedGame();
+      expect(function(){
+        frame.addBonus(10);
+      }).toThrowError('no more bonus for this frame')
+    });
+  });
 });

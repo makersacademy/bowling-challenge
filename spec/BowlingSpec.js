@@ -7,4 +7,8 @@ describe("Bowling", function(){
     bowling = new Bowling();
   });
 
+  it('can start a new frame', function(){
+
+  })
+
 });

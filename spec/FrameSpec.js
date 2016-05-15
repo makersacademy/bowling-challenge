@@ -12,13 +12,18 @@ describe("Frame", function(){
     frame.recordSecondRoll(2);
   }
 
+  function otherFinishedGame(){
+    frame.recordFirstRoll(7);
+    frame.recordSecondRoll(2);
+  }
+
   beforeEach(function(){
     frame = new Frame();
   });
 
   it("record the score for first roll", function(){
     frame.recordFirstRoll(8);
-    expect(frame.firstRoll).toEqual(8);
+    expect(frame._firstRoll).toEqual(8);
   });
 
   it("shows the score for first roll", function(){
@@ -28,7 +33,7 @@ describe("Frame", function(){
 
   it("stores the score for second roll", function(){
     frame.recordSecondRoll(1);
-    expect(frame.secondRoll).toEqual(1);
+    expect(frame._secondRoll).toEqual(1);
   });
 
   it("shows the score for second roll", function(){
@@ -60,8 +65,7 @@ describe("Frame", function(){
     });
 
     it("returns false for other conditions", function(){
-      frame.recordFirstRoll(7);
-      frame.recordSecondRoll(2);
+      otherFinishedGame();
       expect(frame.isSpare()).toBe(false);
     });
   });
@@ -84,8 +88,7 @@ describe("Frame", function(){
     });
 
     it('correctly identify another finished frame as finished', function(){
-      frame.recordFirstRoll(7);
-      frame.recordSecondRoll(1);
+      otherFinishedGame();
       expect(frame.isFinished()).toBe(true);
     });
 
@@ -95,4 +98,62 @@ describe("Frame", function(){
     });
 
   });
+
+  describe("#isAllBonusAdded", function(){
+    it('returns true for 2 bonus for strike', function(){
+      Strike();
+      frame.addBonus(8);
+      frame.addBonus(2);
+      expect(frame.isAllBonusAdded()).toBe(true);
+    });
+
+    it('returns for 1 bonus for strike', function(){
+      Strike();
+      frame.addBonus(8);
+      expect(frame.isAllBonusAdded()).toBe(false);
+    });
+
+
+    it('returns for 1 bonus for strike', function(){
+      Strike();
+      expect(frame.isAllBonusAdded()).toBe(false);
+    });
+
+    it('returns true for 1 bonus for spare', function(){
+      Spare();
+      frame.addBonus(8);
+      expect(frame.isAllBonusAdded()).toBe(true);
+    });
+
+    it('returns false for 0 bonus for spare', function(){
+      Spare();
+      expect(frame.isAllBonusAdded()).toBe(false);
+    })
+
+    it('returns true for 0 bonus for other finished games', function(){
+      otherFinishedGame();
+      expect(frame.isAllBonusAdded()).toBe(true);
+    });
+  });
+
+  describe('#calculateBonus', function(){
+    it('calculate the bonus for strike', function(){
+      Strike();
+      frame.addBonus(8);
+      frame.addBonus(2);
+      expect(frame.calculateBonus()).toEqual(10);
+    });
+
+    it('calculate bonus for spare', function(){
+      Spare();
+      frame.addBonus(5);
+      expect(frame.calculateBonus()).toEqual(5);
+    });
+
+    it('return 0 for any other finished game', function(){
+      otherFinishedGame();
+      expect(frame.calculateBonus()).toEqual(0);
+    });
+  });
+
 });

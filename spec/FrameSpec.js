@@ -39,4 +39,11 @@ describe('Frame', function() {
     expect(frame.log).toEqual([[2, 2], [2, 2]]);
   });
 
+  // it('the score is calculated', function(){
+  //   game.bowl(2);
+  //   game.bowl(2);
+  //   expect(frame.calculateScore).toHaveBeenCalled();
+  // });
+
+
 });

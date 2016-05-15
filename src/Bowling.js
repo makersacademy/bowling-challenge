@@ -7,11 +7,17 @@ function Bowling() {
   this._currentFrameScore = [];
   this._currentFrame = 1;
   this._currentBall = 1;
+  this._strike = false;
   this.scoreByFrame = {};
 }
 
 Bowling.prototype.takeTurn = function(pins) {
-  if (this._isFirstBall()) {
+  if (this._strike) {
+    this._calculateStrike(pins);
+  } else if (pins === 10) {
+    this._strike = true;
+    this._endTurn();
+  } else if (this._isFirstBall()) {
     this._logFirstBall(pins);
   } else {
     this._logSecondBall(pins);
@@ -23,6 +29,17 @@ Bowling.prototype.totalScore = function() {
 };
 
 //PRIVATE
+
+Bowling.prototype._calculateStrike = function(pins) {
+  if (this._isFirstBall()) {
+    this._logFirstBall(pins);
+  } else {
+    this._score += ((this._currentFrameScore[0] + pins) + 10);
+    this._strike = false;
+    this._logSecondBall(pins);
+    this._endTurn();
+  }
+};
 
 Bowling.prototype._logFirstBall = function(pins) {
   this._currentFrameScore.push(pins);
@@ -49,6 +66,7 @@ Bowling.prototype._updateTotalScore = function() {
 Bowling.prototype._endTurn = function() {
   this._currentFrameScore = [];
   this._currentBall = 1;
+  this._currentFrame ++;
 };
 
 Bowling.prototype._isFirstBall = function() {

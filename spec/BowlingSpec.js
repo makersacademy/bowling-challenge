@@ -26,4 +26,21 @@ describe('Bowling', function(){
     });
   });
 
+  describe('Strike', function() {
+    it('The total score is correct when a player strikes', function(){
+      bowling.takeTurn(10);
+      bowling.takeTurn(3);
+      bowling.takeTurn(2);
+      expect(bowling.totalScore()).toEqual(20);
+    });
+  });
+
+  describe('Frames', function(){ //delete later
+    it('Keeps track of which frame is being played', function(){
+      bowling.takeTurn(1);
+      bowling.takeTurn(3);
+      expect(bowling._currentFrame).toEqual(2);
+    });
+  });
+
 });

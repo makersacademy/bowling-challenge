@@ -6,9 +6,9 @@ I want my score to start at 0 -->
 So I can track an accurate score
 I want to log the score of each throw -->
 
-As a player
+<!-- As a player
 So I can see my overall progress
-I want to see a total running score
+I want to see a total running score -->
 
 As a player
 So I can score a strike

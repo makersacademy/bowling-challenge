@@ -1,3 +1,5 @@
+//need to completely update this!!
+
 describe("Ten Pin Bowling", function(){
 
 	var game;
@@ -39,5 +41,9 @@ describe("Ten Pin Bowling", function(){
 			expect(game.isOver).toEqual(true);
 		});
 	});
+
+	it("currentFrame() is calculated from the number of rolls", function(){
+
+	})
 
 });

@@ -19,24 +19,17 @@ Game.prototype.roll = function(score){
 		this.addToScore(score);
 		this.bonusCalc.processBonus(score);
 	};
-	this.prepareNextRoll();
-	return this.calculateEnd();
-};
-
-// ENDING THE GAME
-
-Game.prototype.calculateEnd = function(){
-	if ((this.currentFrame() > 10) && (!(this.bonusCalc.isBonusDue()))) {
-		this.isOver = true;
-		return {finalScore: this.totalScore};
-	};
+	this.prepareNextRollOrEnd();
 };
 
 // PREPARING NEXT ROLL
 
-Game.prototype.prepareNextRoll = function(){
+Game.prototype.prepareNextRollOrEnd = function(){
 	this.nextRoll();
 	this.calculateFrameScoreReset();
+	if ((this.currentFrame() > 10) && (!(this.bonusCalc.isBonusDue()))) {
+		this.isOver = true;
+	};
 };
 
 Game.prototype.nextRoll = function(){
@@ -48,10 +41,6 @@ Game.prototype.calculateFrameScoreReset = function(){
 	if (this.isOnFirstRoll()) {
 		this.frameScore = 0;
 	};
-};
-
-Game.prototype.currentRollUp = function(){
-	this.currentRoll ++;
 };
 
 // ADDING SCORES
@@ -73,4 +62,8 @@ Game.prototype.isOnFirstRoll = function(){
 
 Game.prototype.currentFrame = function(){
 	return Math.round((this.currentRoll)/2)
+};
+
+Game.prototype.addOneToCurrentRoll = function(){
+	this.currentRoll ++;
 };

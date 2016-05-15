@@ -5,12 +5,15 @@ describe("Bonus Calculator, for adding bonuses and deciding if they are due", fu
 
 	beforeEach(function(){
 		dummyGame = {
-			frame_score: "Dummy score",
-			current_roll: "Dummy roll",
-			current_roll_up: function(){
+			frameScore: 10,
+			strikeTracker: 1,
+			isOnFirstRoll: function(){
+				return true;
+			},
+			addOneToCurrentRoll: function(score){
 				return "Dummy value";
 			},
-			add_to_total: function(score){
+			addToTotal: function(score){
 				return "Dummy value";
 			}
 		};
@@ -19,66 +22,60 @@ describe("Bonus Calculator, for adding bonuses and deciding if they are due", fu
 	});
 
 	describe("Deciding whether bonuses are due", function(){
-		it("- it sets its bonus due status to 'spare' if the game's frame score is 10 and it's on the second roll", function(){
-			dummyGame.frame_score = 10;
-			dummyGame.current_roll = 2;
+		it("- it puts 'spare' in the bonus array if the game's frame score is 10 and it's not on a first roll", function(){
+			spyOn(dummyGame, 'isOnFirstRoll').and.returnValue(false);
 			bonusCalc.setBonusStatus();
-			expect(bonusCalc.bonus_due).toEqual('spare');
+			expect(bonusCalc.bonusArray).toContain('spare');
 		});
-		it("- it sets its bonus due status to 'strike' if the game's frame score is 10 and it's on the first roll", function(){
-			dummyGame.frame_score = 10;
-			dummyGame.current_roll = 1;
+		it("- it adds the roll's strike tracker number if the game's frame score is 10 and it's on a first roll", function(){
 			bonusCalc.setBonusStatus();
-			expect(bonusCalc.bonus_due).toEqual('strike');
+			expect(bonusCalc.bonusArray).toContain(1);
 		});
-		it("- it also tells the game to skip a roll when it sets the bonus due status to 'strike'", function(){
-			spyOn(dummyGame, 'current_roll_up');
-			dummyGame.frame_score = 10;
-			dummyGame.current_roll = 1;
+		it("- it also tells the game to skip a roll when it adds a strike to the bonus array", function(){
+			spyOn(dummyGame, 'addOneToCurrentRoll');
 			bonusCalc.setBonusStatus();
-			expect(dummyGame.current_roll_up).toHaveBeenCalled();
+			expect(dummyGame.addOneToCurrentRoll).toHaveBeenCalled();
 		});
-		it("- if the game's frame score is less than 10, the bonus due status remains false", function(){
-			dummyGame.frame_score = 9;
+		it("- if the game's frame score is less than 10, nothing is added to the bonus array", function(){
+			dummyGame.frameScore = 9;
 			bonusCalc.setBonusStatus();
-			expect(bonusCalc.bonus_due).toEqual(false);
+			expect(bonusCalc.bonusArray).not.toContain(1);
 		});
 	});
 
 	describe("Adding any bonus that is due", function(){
-		it("- it makes the game add the current score to the total if the bonus due status has been set to spare", function(){
-			spyOn(dummyGame, 'add_to_total');
-			dummyGame.frame_score = 10;
-			dummyGame.current_roll = 2;
+		it("- it makes the game add the current score to the total if the bonus array contains a spare", function(){
+			spyOn(dummyGame, 'isOnFirstRoll').and.returnValue(false);
+			spyOn(dummyGame, 'addToTotal');
 			bonusCalc.setBonusStatus();
 			bonusCalc.addBonus(5);
-			expect(dummyGame.add_to_total).toHaveBeenCalledWith(5);
+			expect(dummyGame.addToTotal).toHaveBeenCalledWith(5);
 		});
-		it("- then it resets the bonus due status to false", function(){
-			spyOn(dummyGame, 'add_to_total');
-			dummyGame.frame_score = 10;
-			dummyGame.current_roll = 2;
+		it("- then it removes the spare from the bonus array", function(){
+			spyOn(dummyGame, 'isOnFirstRoll').and.returnValue(false);
 			bonusCalc.setBonusStatus();
 			bonusCalc.addBonus(5);
-			expect(bonusCalc.bonus_due).toEqual(false);
+			expect(bonusCalc.bonusArray).not.toContain('spare');
 		});
-		it("- it makes the game add the current score to the total if the bonus due status has been set to strike", function(){
-			spyOn(dummyGame, 'add_to_total');
-			dummyGame.frame_score = 10;
-			dummyGame.current_roll = 1;
+		it("- it makes the game add the current score to the total if the bonus array contains a strike tracker number from the previous roll", function(){
+			spyOn(dummyGame, 'addToTotal');
 			bonusCalc.setBonusStatus();
+			dummyGame.strikeTracker = 2;
 			bonusCalc.addBonus(5);
-			expect(dummyGame.add_to_total).toHaveBeenCalledWith(5);
+			expect(dummyGame.addToTotal).toHaveBeenCalledWith(5);
 		});
-		it("- then it resets the bonus due status to false, but only after the second roll", function(){
-			dummyGame.frame_score = 10;
-			dummyGame.current_roll = 1;
+		it("- it makes the game add the current score to the total if the bonus array contains a strike tracker number from two rolls ago", function(){
+			spyOn(dummyGame, 'addToTotal');
 			bonusCalc.setBonusStatus();
+			dummyGame.strikeTracker = 3;
 			bonusCalc.addBonus(5);
-			expect(bonusCalc.bonus_due).toEqual('strike');
-			dummyGame.current_roll = 2;
+			expect(dummyGame.addToTotal).toHaveBeenCalledWith(5);
+		});
+		it("- then it removes the strike tracker number from two games ago, because both bonus rolls have been added", function(){
+			bonusCalc.setBonusStatus();
+			dummyGame.strikeTracker = 3;
 			bonusCalc.addBonus(5);
-			expect(bonusCalc.bonus_due).toEqual(false);
+			expect(bonusCalc.bonusArray).not.toContain(1);
 		})
 	});
 

@@ -14,7 +14,7 @@ BonusCalc.prototype.setBonusStatus = function(){
 	};
 	if ((this.game.frameScore === 10) && (this.game.isOnFirstRoll())) {
 		this.bonusArray.push(this.game.strikeTracker);
-		this.game.currentRollUp();
+		this.game.addOneToCurrentRoll();
 	};
 };
 

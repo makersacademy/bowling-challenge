@@ -101,8 +101,8 @@ describe("Game and Bonus Calculator working together", function(){
 			}
 			game.roll(10);
 			game.roll(10);
-			result = game.roll(10);
-			expect(result).toEqual({finalScore: 48});
+			game.roll(10);
+			expect(game.isOver).toEqual(true);
 		});
 
 		it("- a spare triggers one bonus roll added to the total", function(){
@@ -121,8 +121,8 @@ describe("Game and Bonus Calculator working together", function(){
 			}
 			game.roll(5);
 			game.roll(5);
-			result = game.roll(10);
-			expect(result).toEqual({finalScore: 38});
+			game.roll(10);
+			expect(game.isOver).toEqual(true);
 		});
 
 		it("- if there is no bonus achieved in frame 10, the game ends", function(){
@@ -130,8 +130,8 @@ describe("Game and Bonus Calculator working together", function(){
 				game.roll(1);
 			}
 			game.roll(5);
-			var result = game.roll(4);
-			expect(result).toEqual({finalScore: 27});
+			game.roll(4);
+			expect(game.isOver).toEqual(true);
 		});
 	});
 
@@ -150,8 +150,8 @@ describe("Game and Bonus Calculator working together", function(){
 		for (var i = 1; i < 12; i++) {
 			game.roll(10);
 		}
-		var result = game.roll(10);
-		expect(result).toEqual({finalScore: 300});
+		game.roll(10);
+		expect(game.totalScore).toEqual(300);
 	});
 
 

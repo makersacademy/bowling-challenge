@@ -3,12 +3,12 @@ function Frame(pins) {
   this._secondRoll = null
 }
 
-Frame.prototype.firstRollScore = function() {
-  return this._firstRoll
-}
-
 Frame.prototype.addSecondRoll = function(pinsDown) {
   this._secondRoll = pinsDown
+}
+
+Frame.prototype.firstRollScore = function() {
+  return this._firstRoll
 }
 
 Frame.prototype.isComplete = function() {

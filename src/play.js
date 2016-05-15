@@ -1,5 +1,7 @@
-function Play() {
+function Play(scoreCalculator) {
   this._frames = []
+  this._scoreCalculator = typeof scoreCalculator !== "undefined" ?
+                          scoreCalculator : new ScoreCalculator()
 }
 
 Play.prototype.knockDown = function(pinsDown) {
@@ -7,19 +9,11 @@ Play.prototype.knockDown = function(pinsDown) {
 }
 
 Play.prototype.calculate = function() {
-  var total = 0
-  for(var i = 0; i <= this._frames.length; i++) {
-    if(i === this._frames.length) {
-      return total
-    } else {
-      total += this._frames[i].firstAndSecondRollScore()
-    }
-  }
+  return this._scoreCalculator.calculateTotal(this._frames)
 }
 
-
 Play.prototype._addRoll = function(pinsDown) {
-  if(this._lastFrame() === undefined || this._lastFrame().isComplete()) {
+  if(this._hasAnActiveFrame()) {
     this._addFrame(pinsDown)
   } else {
     this._lastFrame().addSecondRoll(pinsDown)
@@ -32,4 +26,8 @@ Play.prototype._addFrame = function(pinsDown) {
 
 Play.prototype._lastFrame = function() {
   return this._frames[this._frames.length - 1]
+}
+
+Play.prototype._hasAnActiveFrame = function() {
+  return (this._lastFrame() === undefined || this._lastFrame().isComplete())
 }

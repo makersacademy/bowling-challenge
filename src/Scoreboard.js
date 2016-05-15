@@ -2,8 +2,7 @@
 
 function Scoreboard () {
   this.frames = [];
-  this._currentScore = 0;
-  this._strikes = [];
+  this.calculator = new ScoreCalculator();
 };
 
 Scoreboard.prototype.nextFrame = function () {
@@ -12,8 +11,8 @@ Scoreboard.prototype.nextFrame = function () {
 
 Scoreboard.prototype.saveFirstRoll = function (hits) {
   this.frames[this.frames.length-1].roll1 = hits;
-  if (hits == 10) {
-    this.registerStrike();
+  if (this.calculator.registerStrike(hits)) {
+    this.nextFrame();
   }
 };
 
@@ -22,36 +21,19 @@ Scoreboard.prototype.saveSecondRoll = function (hits) {
     throw new Error('Must roll first ball silly');
   }
   this.currentFrame().roll2 = hits;
-  this.calculateScore();
-  this.nextFrame();
+  this.finishAndCreateNewFrame();
 };
 
-Scoreboard.prototype.calculateScore = function () {
-  this._currentScore += (this.currentFrame().roll1 + this.currentFrame().roll2);
-  this.calculateStrikeBonus();
-};
-
-Scoreboard.prototype.getCurrentScore = function () {
-  return this._currentScore;
+Scoreboard.prototype.getCurrentScore = function () { //Remove after refactoring tests
+  return this.calculator.getCurrentScore();
 };
 
 Scoreboard.prototype.currentFrame = function () {
   return this.frames[this.frames.length-1];
 };
 
-Scoreboard.prototype.registerStrike = function () {
-  this.currentFrame().roll2 = 0; //MIGHT NOT BE NEEDED FURTHER ON, 10 + NULL is also 10
-  this._currentScore += 10;
-  this._strikes.push(true);
+Scoreboard.prototype.finishAndCreateNewFrame = function () {
+  this.calculator.calculateScore(this.currentFrame().roll1, this.currentFrame().roll2);
+  this.calculator.registerSpare(this.currentFrame().roll1 + this.currentFrame().roll2);
   this.nextFrame();
-};
-
-Scoreboard.prototype.calculateStrikeBonus = function () {
-  for (var i = this._strikes.length; i > 0; i--){
-    this._currentScore += (i-1)*10;
-    if(i == 1) {
-      this._strikes = [];
-      this.calculateScore();
-    }
-  }
 };

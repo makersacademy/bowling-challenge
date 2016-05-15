@@ -43,7 +43,8 @@ describe('Scoreboard', function() {
     expect(function() { scoreboard.saveSecondRoll(hits); }).toThrowError(message);
   });
 
-  it('calculates total score of frame', function() {
+
+  it('returns total score of frame', function() {
     var total = hits + hits;
 
     scoreboard.nextFrame();
@@ -61,7 +62,7 @@ describe('Scoreboard', function() {
   });
 
 
-  it('adds bonuses to total score from the round after a strike', function() {
+  it('returns total score including bonuses the round after a strike', function() {
     var strike = 10;
     scoreboard.nextFrame();
     scoreboard.saveFirstRoll(strike);
@@ -71,7 +72,7 @@ describe('Scoreboard', function() {
     expect(scoreboard.getCurrentScore()).toEqual(strike + bonus);
   });
 
-  it('adds bonuses to total score after two strikes in a row (a double)', function() {
+  it('returns total score with bonuses after two strikes in a row (a double)', function() {
     var strike = 10;
     scoreboard.nextFrame();
     scoreboard.saveFirstRoll(strike);
@@ -84,7 +85,7 @@ describe('Scoreboard', function() {
   });
 
 
-  it('can add points when player gets three strikes in a row (turkey)', function() {
+  it('returns total score with bonuses after three strikes in a row (a turkey)', function() {
     var strike = 10;
     scoreboard.nextFrame();
     scoreboard.saveFirstRoll(strike);
@@ -96,4 +97,19 @@ describe('Scoreboard', function() {
     var total = 78;
     expect(scoreboard.getCurrentScore()).toEqual(total);
   });
+
+
+  it('It returns total score when player got a spare the previous round', function() {
+    scoreboard.nextFrame();
+    scoreboard.saveFirstRoll(hits);
+    scoreboard.saveSecondRoll(6);
+
+    scoreboard.saveFirstRoll(hits);
+    scoreboard.saveSecondRoll(hits);
+
+    var total = ((hits*3) + 6) + hits;
+    expect(scoreboard.getCurrentScore()).toEqual(total);
+  });
+
+
 });

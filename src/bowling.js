@@ -23,3 +23,7 @@ Bowling.prototype.incrementTableCell = function(pinsDown) {
     return this._tableCell += 1
   }
 }
+
+Bowling.prototype.frames = function() {
+  return this._play.frames()
+}

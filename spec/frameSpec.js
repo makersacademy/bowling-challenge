@@ -1,5 +1,5 @@
 describe("Frame", function() {
-  var frame;
+  var frame
 
   describe("non strikes", function() {
     beforeEach(function() {

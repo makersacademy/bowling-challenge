@@ -26,4 +26,45 @@ describe("Feature test:", function() {
     })
   })
 
+  describe("spare, then 1", function() {
+    it("has a total of 30", function() {
+      bowling.knockDown(1)
+      bowling.knockDown(9)
+      bowling.knockDown(1)
+      expect(bowling.calculateTotal()).toEqual(11)
+    })
+  })
+
+  describe("strike, then 7,1", function() {
+    it("has a total of 30", function() {
+      bowling.knockDown(10)
+      bowling.knockDown(7)
+      bowling.knockDown(1)
+      expect(bowling.calculateTotal()).toEqual(26)
+    })
+  })
+
+  describe("strike, strike, strike", function() {
+    it("has a total of 30", function() {
+      bowling.knockDown(10)
+      bowling.knockDown(10)
+      bowling.knockDown(10)
+      expect(bowling.calculateTotal()).toEqual(30)
+    })
+  })
+
+  describe("strike, strike, strike, spare, strike, standard", function() {
+    it("has a total of 30", function() {
+      bowling.knockDown(10)
+      bowling.knockDown(10)
+      bowling.knockDown(10)
+      bowling.knockDown(1)
+      bowling.knockDown(9)
+      bowling.knockDown(10)
+      bowling.knockDown(3)
+      bowling.knockDown(6)
+      expect(bowling.calculateTotal()).toEqual(119)
+    })
+  })
+
 })

@@ -1,9 +1,6 @@
 describe("ScoreCalculator:", function() {
-  var scoreCalculator
-  var frames
-  var frame1
-  var frame2
-  var frame3
+  var scoreCalculator, frames, frame1, frame2, frame3
+
 
   beforeEach(function() {
     scoreCalculator = new ScoreCalculator()

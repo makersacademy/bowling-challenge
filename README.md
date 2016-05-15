@@ -1,7 +1,22 @@
+Initialize a game:
+` var game = new Game() `
+
+Then start rolling balls, recording the number between 0 and 10 knocked down:
+` game.roll(score) `
+
+Check the frame at any point:
+` game.currentFrame() `
+
+Check the score at any point:
+` game.scoreBoard.totalScore `
+
+Check whether the game is over at any point:
+` game.isOver ` will return true if it is
+
+* * *
 
 Bowling Challenge
 =================
-
 
 * Challenge time: rest of the day and weekend, and the entire of lab week if you need it, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own

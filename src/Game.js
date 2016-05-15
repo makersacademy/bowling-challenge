@@ -2,7 +2,7 @@ function Game() {
   this._frameScore = 0
   this._totalScore = 0
   this._rollCount = 0
-  this._frameNumber = 0
+  this._frameNumber = 1
   this._strike = null
 }
 
@@ -18,6 +18,10 @@ Game.prototype.frameScore = function() {
   return this._frameScore
 }
 
+Game.prototype.frameNumber = function() {
+  return this._frameNumber
+}
+
 Game.prototype.isFrameComplete = function() {
   if(this._rollCount === 2) { return true }
 }
@@ -26,15 +30,16 @@ Game.prototype.isStrikeAchived = function() {
   if(this._strike) { return true }
 }
 
+Game.prototype.isGameOver = function() {
+  if(this._frameNumber === 10) { return true}
+}
+
 Game.prototype.newFrame = function() {
+  if(this.isGameOver()) { throw Error('Cannot start new Frame: Game Over Man')}
   this._totalScore += this._frameScore
   this._frameScore = 0
   this._rollCount = 0
   this._frameNumber ++
-}
-
-Game.prototype.frameNumber = function() {
-  return this._frameNumber
 }
 
 Game.prototype.totalScore = function() {

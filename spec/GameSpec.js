@@ -41,11 +41,11 @@ describe('Game', function() {
     })
 
     it('Game tracks the current frame', function() {
-      expect(game.frameNumber()).toEqual(0)
-      game.newFrame()
       expect(game.frameNumber()).toEqual(1)
       game.newFrame()
       expect(game.frameNumber()).toEqual(2)
+      game.newFrame()
+      expect(game.frameNumber()).toEqual(3)
     })
 
     it('ends immediately if player gets a strike', function() {
@@ -53,6 +53,15 @@ describe('Game', function() {
       expect(function() {
         game.roll(4)
       }).toThrowError('Cannot Roll: Frame complete, you got a Strike!')
+    })
+
+    it('game ends after 10 frames', function() {
+            for (var i = 0; i < 9; i++) {
+        game.newFrame()
+      }
+      expect( function() {
+        game.newFrame()
+      }).toThrowError('Cannot start new Frame: Game Over Man')
     })
 
   })

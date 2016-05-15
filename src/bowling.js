@@ -9,10 +9,14 @@ Bowling.prototype.knockDown = function(pins) {
 }
 
 Bowling.prototype.calculateTotal = function() {
-  return this._play.calculate()
+  if(this._play.isGameOver()) {
+    return "Game over! You scored " + this._play.calculate()
+  } else {
+    return this._play.calculate()
+  }
 }
 
-Bowling.prototype.tableCell = function(pinsDown) {
+Bowling.prototype.incrementTableCell = function(pinsDown) {
   if (pinsDown === 10) {
     return this._tableCell += 2
   } else {

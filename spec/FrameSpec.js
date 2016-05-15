@@ -86,5 +86,8 @@ describe('Frame', function() {
     expect(frame.lastCompletedFrame()).toEqual([5, 1]);
   });
 
+  it('should raise an error if more than 10 pins are knocked down', function(){
+    expect(function(){game.bowl(11);}).toThrow("Invalid input");
+  });
 
 });

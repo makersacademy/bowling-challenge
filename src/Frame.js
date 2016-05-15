@@ -18,6 +18,7 @@ function Frame(){
     this.current = [];
     this.roll = 1;
     this.count ++;
+    this.pinsStanding = this.DEFAULT_PINS;
   };
 
   Frame.prototype.calculateFrameScore = function(){
@@ -35,6 +36,7 @@ function Frame(){
   };
 
   Frame.prototype.bowl = function(pins){
+    if(pins > this.pinsStanding) throw("Invalid input");
     this.current.push(pins);
     if (this.roll === 1 && pins === 10) {
       this.next();
@@ -71,4 +73,14 @@ function Frame(){
 
   Frame.prototype.lastCompletedFrame = function(){
     return this.log[this.log.length - 1] || [];
+  };
+
+  Frame.prototype.isFinalFrame = function(){
+    if (this.count === 10){
+      this.finalFrame();
+    }
+  };
+
+  Frame.prototype.finalFrame = function(){
+
   };

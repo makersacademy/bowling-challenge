@@ -1,54 +1,35 @@
 function Game() {
-  this._frameScore = 0
-  this._totalScore = 0
-  this._rollCount = 0
-  this._frameNumber = 1
-  this._strike = null
+  this._frames = {'1':0, '2':0, '3':0, '4':0, '5':0,
+                  '6':0, '7':0, '8':0, '9':0, '10':0}
+  this._frameRollNumber = 0
+  this._currentFrame = 1
+  this._totalRolls = 0
+}
+
+Game.prototype.rollNumber = function() {
+  return this._frameRollNumber
+}
+
+Game.prototype.totalRolls = function() {
+  return this._totalRolls
 }
 
 Game.prototype.roll = function(score) {
-  if(this.isFrameComplete()) { throw Error('Cannot Roll: Frame complete')}
-  if(this.isStrikeAchived()) { throw Error('Cannot Roll: Frame complete, you got a Strike!')}
-  if(score === 'X') { this._strike = true}
-  this._frameScore += score
-  this._rollCount ++
+  this._frames[this._currentFrame] += score
+  this._frameRollNumber ++
+  this._totalRolls ++
+  if(this._frameRollNumber === 3) { this._frameRollNumber = 1}
+  if(this._frameRollNumber === 2 || score === 10) { this._currentFrame ++ }
 }
 
-Game.prototype.frameScore = function() {
-  return this._frameScore
+Game.prototype.frameScore = function(frameNumber) {
+  return this._frames[frameNumber]
 }
 
-Game.prototype.frameNumber = function() {
-  return this._frameNumber
-}
-
-Game.prototype.isFrameComplete = function() {
-  if(this._rollCount === 2) { return true }
-}
-
-Game.prototype.isStrikeAchived = function() {
-  if(this._strike) { return true }
-}
-
-Game.prototype.isGameOver = function() {
-  if(this._frameNumber === 10) { return true}
-}
-
-Game.prototype.newFrame = function() {
-  if(this.isGameOver()) { throw Error('Cannot start new Frame: Game Over Man')}
-  this._totalScore += this._frameScore
-  this._frameScore = 0
-  this._rollCount = 0
-  this._frameNumber ++
-}
-
-Game.prototype.totalScore = function() {
-  return this._totalScore
+Game.prototype.currentFrame = function() {
+  return this._currentFrame
 }
 
 
 
-Game.prototype.errorCheck = function() {
-  if(this.isFrameComplete()) { throw Error('Cannot Roll: Frame complete')}
-  if(this.isStrikeAchived()) { throw Error('Cannot Roll: Frame complete, you got a Strike!')}
-}
+

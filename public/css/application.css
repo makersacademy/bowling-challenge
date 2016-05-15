@@ -42,6 +42,10 @@ footer div {
   text-align: center;
 }
 
+#score-table{
+  table-layout: fixed;
+}
+
 #totalScore {
   color: #CDDC39;
   position: relative;
@@ -83,11 +87,22 @@ footer div {
 
 tr, td {
   text-align: center;
-  height: 30px;
+  height: 45px;
   font-size: 20px;
+  overflow: hidden;
 }
 
 th {
   background-color: rgba(171, 23, 73, 0.85);
   border-bottom-width: 1px;
+  overflow: hidden;
+}
+
+#logo{
+  font-size: 50px;
+}
+
+#logo a{
+  text-decoration: none;
+  color: white;
 }

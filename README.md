@@ -20,7 +20,7 @@ $ git clone git@github.com:omajul85/bowling-challenge.git
 $ cd bowling-challenge
 $ google-chrome SpecRunner.html
 ```
-The last command can be changed to use the browser of your preference. This is going to open the test on the browser as you can see in the image below:
+The last command above can be changed in order to use the browser of your preference. The command will open the tests on the browser as you can see in the image below:
 
 ![Jasmine](http://s19.postimg.org/o6cfhak1f/Jasmine.png)
 

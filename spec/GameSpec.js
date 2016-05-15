@@ -127,14 +127,32 @@ describe("BowlingGame",function() {
     });
   });
 
-  describe('end of game, ',function(){
-    it('game ends ',function(){
-      game.roll(7);
+  describe('10th frame end of game, ',function(){
+
+    var multiRoll = function(rolls, pins){
+      for (var i = 0; i < rolls; i++) {
+        game.roll(pins);
+      }
+    };
+    it('gutter game ends ',function(){
+      multiRoll(20,0);
+      expect(game.over()).toBe(true);
+    });
+
+    it('game spare needs 1 roll more ',function(){
+      multiRoll(18,0);
+      game.roll(5);
+      game.roll(5);
       game.roll(3);
+      expect(game.over()).toBe(true);
+    });
+
+    it('game strike needs 1 roll more ',function(){
+      multiRoll(18,0);
       game.roll(10);
-      game.roll(0);
-      game.roll(0);
-      expect(game.totalScore()).toEqual(30);
+      game.roll(3);
+      game.roll(3);
+      expect(game.over()).toBe(true);
     });
   });
 });

@@ -4,7 +4,8 @@ function Game(frame) {
   this._frames = [];
   this.firstFrameRoll = 0;
   this.currentRollIndex = 0;
-
+  this.finalBonusSpare = 0;
+  this.bonusComplete = false;
 }
 
 Game.prototype.getFrame = function(i) {
@@ -12,9 +13,10 @@ Game.prototype.getFrame = function(i) {
 }
 
 Game.prototype.totalScore = function(){
-  var total=0;
-  for (var index=0;index < this._frames.length; index++) {
-    total += this._frames[index].getScore();
+  var total=0, length;
+  length = Math.min(this._frames.length, 10);
+  for (var index=0;index < length; index++) {
+    total += this._frames[index].getScore()+ this.finalBonusSpare;
  }
   return total;
 };
@@ -29,6 +31,7 @@ Game.prototype.roll = function(pins) {
   if (isFirstRoll) {
     this.firstFrameRoll = pins;
     this.checkStrike(pins);
+    this.checkFinalSpare(pins);
   } else {
     this.checkExceptions(this.firstFrameRoll, pins);
     var frame = new Frame(this.firstFrameRoll, pins);
@@ -36,19 +39,9 @@ Game.prototype.roll = function(pins) {
     this.calculateBonusSpare();
     this.calculateBonusStrike();
     this.calculateBonusDoubleStrike();
-    // this.cumulateFrameScore();
   }
 };
 
-Game.prototype.cumulateFrameScore = function() {
-  var length = this._frames.length;
-  var prevScore, cumulScore;
-  if(length > 1) {
-    prevScore = this._frames[length-2].getScore();
-    cumulScore = this._frames.last().getScore() + prevScore;
-    this._frames.last().setScore(cumulScore);
-  }
-}
 
 Game.prototype.checkStrike = function(pins) {
   if (pins === 10) {
@@ -57,7 +50,6 @@ Game.prototype.checkStrike = function(pins) {
     this.calculateBonusSpare();
     this.calculateBonusStrike();
     this.calculateBonusDoubleStrike();
-    // this.cumulateFrameScore();
     this.currentRollIndex++;
   }
 }
@@ -77,7 +69,6 @@ Game.prototype.calculateBonusStrike = function() {
     var prevScore = this._frames[length-2].getScore();
     var firstFrameRoll = this._frames[length-1].getRoll("first");
     if (this.isStrike(length-1)) {
-      console.log("double strike!");
       this._frames[length-1].updateDoubleStrike();
     } else {
       var secondFrameRoll = this._frames[length-1].getRoll("second");
@@ -95,12 +86,10 @@ Game.prototype.isStrike = function(index) {
 Game.prototype.calculateBonusDoubleStrike = function() {
   var length = this._frames.length;
   if ((length >1) && (this._frames[length-2].getDoubleStrike())) {
-    console.log("calculating double strike!")
     var prevScore = this._frames[length-3].getScore();
     var firstFrameRoll = this._frames[length-1].getRoll("first");
     var bonus = 10 + firstFrameRoll;
     this._frames[length-3].setScore(prevScore + bonus);
-    console.log("frames: ",this._frames);
   }
 
 }
@@ -125,21 +114,54 @@ Game.prototype.checkExceptions = function(roll1,roll2) {
   }
 }
 
-Game.prototype.finalFrame = function() {
-  if (this._frames.length === 10) {
-    this.calculate10thFrameScore();}
+Game.prototype.checkFinalSpare = function(pins) {
+  if (this.currentRollIndex === 21) {
+    this.finalBonusSpare = pins;
+    this.bonusComplete = true;
+  }
 }
 
-Game.prototype.calculate10thFrameScore = function() {
-
+Game.prototype.isRegularEnd = function() {
+  var condition1, condition2, condition3;
+  var length = this._frames.length;
+  condition1 = length === 10;
+  condition2 = this._frames[length-1].getType() === "regular";
+  condition3 = this._frames[length-1].getRoll("second") !== undefined;
+  return condition1 && condition2 && condition3;
 }
 
-Game.prototype.inPlay = function() {
-
+Game.prototype.isSpareEnd = function() {
+  var condition1, condition2, condition3;
+  var length = this._frames.length;
+  condition1 = length === 10;
+  condition2 = this._frames[length-1].getType() === "SPARE";
+  condition3 = this.bonusComplete;
+  // console.log("spareend!")
+  // console.log(this._frames);
+  // console.log("cond1",condition1);
+  return condition1 && condition2 && condition3;
 }
 
-if (!Array.prototype.last){
-  Array.prototype.last = function(){
-    return this[this.length - 1];
-  };
+Game.prototype.isStrikeEnd = function() {
+  var condition1, condition2, condition3;
+  var length = this._frames.length;
+  condition1 = (length === 11);
+  condition2 = this._frames[length-2].getType() === "STRIKE";
+  condition3 = this._frames[length-1].getRoll("first") !== undefined;
+  return condition1 && condition2 && condition3;
+}
+
+Game.prototype.isDblStrikeEnd = function() {
+  var condition1, condition2, condition3;
+  var length = this._frames.length;
+  condition1 = (length === 12);
+  condition2 = this._frames[length-3].getType() === "STRIKE";
+  condition3 = this._frames[length-1].getRoll("first") !== undefined;
+  return condition1 && condition2 && condition3;
+}
+
+Game.prototype.over = function() {
+  var cond1 = this.isRegularEnd() || this.isSpareEnd();
+  var cond2 = this.isStrikeEnd() || this.isDblStrikeEnd();
+  return cond1 || cond2;
 }

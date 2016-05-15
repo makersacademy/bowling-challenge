@@ -14,7 +14,7 @@ describe('BowlingGame', function() {
     expect(game.getScore()).toEqual(0);
   });
 
-  it('the score is calculated', function(){
+  it('bowling a frame changes the score', function(){
     game.bowl(2);
     game.bowl(2);
     expect(game.getScore()).toEqual(4);

@@ -13,6 +13,15 @@ describe('Frame', function() {
     expect(frame.getCount()).toEqual(1);
   });
 
+  it('begins with 10 pins standing', function() {
+    expect(frame.pinsStanding).toEqual(10);
+  });
+
+  it('pins standing is reduced after a successful bowl', function() {
+    game.bowl(5);
+    expect(frame.pinsStanding).toEqual(5);
+  });
+
   it('frame number is incremented at the end of every frame', function() {
     frame.next();
     expect(frame.getCount()).toEqual(2);
@@ -50,23 +59,32 @@ describe('Frame', function() {
     expect(frame.lastIsStrike()).toEqual(true);
   });
 
-  it('should know if the frame was a spare2', function(){
-    // game.bowl(5);
-    // game.bowl(5);
-    expect(frame.lastIsSpare()).toEqual(false);
+  it('should calculate the score', function(){
+    game.bowl(5);
+    game.bowl(1);
+    expect(frame.gameScore).toEqual(6);
   });
 
-  it('should know if the frame was a strike2', function(){
-    // game.bowl(10);
-    expect(frame.lastIsStrike()).toEqual(false);
+  it('should apply a bonus score for a spare', function(){
+    game.bowl(5);
+    game.bowl(5);
+    game.bowl(5);
+    game.bowl(1);
+    expect(frame.gameScore).toEqual(21);
   });
 
+  it('should apply a bonus score for a strike', function(){
+    game.bowl(10);
+    game.bowl(5);
+    game.bowl(1);
+    expect(frame.gameScore).toEqual(22);
+  });
 
-  // it('the score is calculated', function(){
-  //   game.bowl(2);
-  //   game.bowl(2);
-  //   expect(frame.calculateScore).toHaveBeenCalled();
-  // });
+  it('should return the last competed frame', function(){
+    game.bowl(5);
+    game.bowl(1);
+    expect(frame.lastCompletedFrame()).toEqual([5, 1]);
+  });
 
 
 });

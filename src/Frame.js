@@ -1,8 +1,8 @@
 function Frame(){
+  this.DEFAULT_PINS = 10;
   this.count = 1;
   this.roll = 1;
   this.pinsStanding = this.DEFAULT_PINS;
-  this.DEFAULT_PINS = 10;
   this.current = [];
   this.log = [];
   this.gameScore = 0;
@@ -19,21 +19,6 @@ function Frame(){
     this.roll = 1;
     this.count ++;
   };
-
-  // Frame.prototype.calculateFrameScore = function(frame){
-  //   var _this = this;
-  //   var _frame = frame || this.current;
-  //   return _frame.reduce(function(totalPins, morePins){
-  //     if (_this.lastIsStrike()) {
-  //       return (totalPins + morePins) * 2;
-  //     } else if (_this.lastIsSpare()) {
-  //       return (totalPins * 2) + morePins;
-  //     } else {
-  //       return totalPins + morePins;
-  //     }
-  //   }, 0);
-  // };
-
 
   Frame.prototype.calculateFrameScore = function(){
       if (this.lastIsStrike()) {

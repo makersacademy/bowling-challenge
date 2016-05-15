@@ -104,7 +104,6 @@ describe("BowlingGame",function() {
       game.roll(0);
       game.roll(0);
       expect(game.totalScore()).toEqual(30);
-      expect(game.frameLength()).toEqual(3);
     });
   });
 
@@ -153,6 +152,40 @@ describe("BowlingGame",function() {
       game.roll(3);
       game.roll(3);
       expect(game.over()).toBe(true);
+    });
+  });
+
+  describe('scores 10thframe, ',function(){
+    var multiRoll = function(rolls, pins){
+      for (var i = 0; i < rolls; i++) {
+        game.roll(pins);
+      }
+    };
+    it('perfect game',function(){
+      multiRoll(10,10);
+      game.roll(10);
+      game.roll(10);
+      expect(game.totalScore()).toEqual(300);
+      expect(game.frameLength()).toEqual(12);
+    });
+
+    it('almost perfect game, spare in 10thframe',function(){
+      multiRoll(9,10);
+      game.roll(2);
+      game.roll(3);
+      // game.roll(0);
+      // game.roll(0);
+      expect(game.totalScore()).toEqual(252);
+      expect(game.frameLength()).toEqual(10);
+    });
+
+    it('almost perfect game, spare in 10thframe',function(){
+      multiRoll(9,10);
+      game.roll(10);
+      game.roll(5);
+      game.roll(5);
+      // game.roll(0);
+      expect(game.totalScore()).toEqual(261);
     });
   });
 });

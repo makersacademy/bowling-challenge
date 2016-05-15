@@ -1,10 +1,16 @@
-function BowlingGame(){
+function BowlingGame(frame){
   this._score = 0;
+  this.frame = frame || new Frame();
 }
 
-var game = new BowlingGame();
+  BowlingGame.prototype.currentScore = function(){
+    return this._score;
+  };
+
+  BowlingGame.prototype.bowl = function(pins){
+    this.frame.bowl(pins);
+  };
 
 
-BowlingGame.prototype.currentScore = function(){
-  return this._score;
-};
+
+  // this.frame = typeof frame !== 'undefined' ? frame : new Frame();

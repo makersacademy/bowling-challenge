@@ -1,7 +1,5 @@
-$(document).ready(function(){
-  // updateRollDislay(1,0,"X");
-  // updateRollDislay(0,1,"8");
-  // updateGameScoreDisplay(0);
+$(document).ready(function($){
+
   var scorer = new Scorer();
   var game = new Game(scorer);
   var framePosition, frameNumber;
@@ -9,11 +7,12 @@ $(document).ready(function(){
   framePosition = getFramePosition();
   frameNumber = game.frameNumber()-1;
   updateButtons(game._scorer.state, game._scorer.firstBallInFrame);
-  updateDashboard();
+
   $("body").delegate(".btn-round", "click", function(){
     var ballRolled = Number($(this).val());
     game._scorer.roll(ballRolled);
     
+    // Only display buttons for pins when game is not over
     if (game.isOver()){
       $('#buttons').html('');
     } else {
@@ -22,11 +21,10 @@ $(document).ready(function(){
     
     updateRollsOnFrame();
     updateFrameScores();
-    updateDashboard();
+    updateTotalScore();
     framePosition = getFramePosition();
     frameNumber = game.frameNumber()-1;
   });
-
 
   function updateButtons(state, b) {
     if (state === "BALL_2" || state === "STRIKE_2") {
@@ -41,12 +39,9 @@ $(document).ready(function(){
     for (var i = 0; i < (11 - pins); i++) {
       buttonHTML += '<button type="button" class="btn-round" value="' + i + '">' + i + '</button>';
     }
-    console.log(buttonHTML);
     $('#buttons').html(buttonHTML);
   }
 
-// position [0 or 1]
-// displayContent ["/", "X" or number]
   function updateRollsOnFrame() {
     var i = 0;
     var position = 0;
@@ -74,10 +69,16 @@ $(document).ready(function(){
           position += 2;
         }
       } else {
-        $('#score-table tr:eq(1) td:eq(' + position + ')').html('X');
+        // Special case for Perfect Game
+        if (position >= 18){
+          $('#score-table tr:eq(1) td:eq(' + (position--) + ')').html('X');  
+        } else {
+          $('#score-table tr:eq(1) td:eq(' + position + ')').html('X');
+        }
         i += 1;
         position += 2;
       }
+      console.log("current position is: " + position);
     }
   }
 
@@ -102,15 +103,8 @@ $(document).ready(function(){
     }
   }
 
-  function updateDashboard(){
-    $("#state").text(game._scorer.state);
-    $("#frame-number").text(game.frameNumber());
-    $("#frame-scores").text(game._scorer.frameScores);
-    $("#balls-rolled").text(game._scorer.rolls);
-    $("#rolling-frame").text(game._scorer.rollingFrame);
+  function updateTotalScore(){
     $("#totalScore").text(game._scorer.totalScore);
-    $("#first-ball").text(game._scorer.firstBallInFrame);
-    $("#game-over").text(game.isOver());
   }
 
 });

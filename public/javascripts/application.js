@@ -12,13 +12,14 @@ $(document).ready(function($){
     var ballRolled = Number($(this).val());
     game._scorer.roll(ballRolled);
     
-    // Only display buttons for pins when game is not over
+    // Display buttons during the game or the Game Over message
     if (game.isOver()){
-      $('#buttons').html('');
+      $('#buttons').html('<h1>Game Over</h1><h3>Want to play again? Click <a href="/">here</a></h3>');
     } else {
       updateButtons(game._scorer.state, game._scorer.firstBallInFrame);
     }
     
+    // Update Dashboard
     updateRollsOnFrame();
     updateFrameScores();
     updateTotalScore();
@@ -69,7 +70,7 @@ $(document).ready(function($){
           position += 2;
         }
       } else {
-        // Special case for Perfect Game
+        // Special case for last frame
         if (position >= 18){
           $('#score-table tr:eq(1) td:eq(' + (position--) + ')').html('X');  
         } else {
@@ -78,7 +79,6 @@ $(document).ready(function($){
         i += 1;
         position += 2;
       }
-      console.log("current position is: " + position);
     }
   }
 

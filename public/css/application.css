@@ -57,8 +57,9 @@ footer div {
   min-height: 300px;
   margin: 0 auto;
   position: relative;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0,0,0,0.70);
   color: white;
+  margin-top: 5%
 }
 
 .center {
@@ -106,3 +107,8 @@ th {
   text-decoration: none;
   color: white;
 }
+
+#buttons {
+  font-family: 'Lobster', cursive;
+}
+

@@ -28,11 +28,13 @@ describe('Scoreboard', function() {
     expect(scoreboard.frames[0].roll1).toEqual(expectedHits);
   });
 
-  it('can save information about the second roll of frame', function() {
+  it('can save information about the second roll of frame and creates new frame', function() {
     scoreboard.nextFrame();
     scoreboard.saveFirstRoll(hits);
     scoreboard.saveSecondRoll(hits);
     expect(scoreboard.frames[0].roll2).toEqual(expectedHits);
+    expect(scoreboard.frames.length).toEqual(2);
+
   });
 
   it('can not save a second roll if first roll value is null', function() {
@@ -50,4 +52,48 @@ describe('Scoreboard', function() {
     expect(scoreboard.getCurrentScore()).toEqual(total);
   });
 
+  it('creates a new frame and saves the points when player gets a strike', function() {
+    var strike = 10;
+    scoreboard.nextFrame();
+    scoreboard.saveFirstRoll(strike);
+    expect(scoreboard.getCurrentScore()).toEqual(strike);
+    expect(scoreboard.frames.length).toEqual(2);
+  });
+
+
+  it('adds bonuses to total score from the round after a strike', function() {
+    var strike = 10;
+    scoreboard.nextFrame();
+    scoreboard.saveFirstRoll(strike);
+    scoreboard.saveFirstRoll(hits);
+    scoreboard.saveSecondRoll(hits);
+    var bonus = (hits + hits) * 2;
+    expect(scoreboard.getCurrentScore()).toEqual(strike + bonus);
+  });
+
+  it('adds bonuses to total score after two strikes in a row (a double)', function() {
+    var strike = 10;
+    scoreboard.nextFrame();
+    scoreboard.saveFirstRoll(strike);
+    scoreboard.saveFirstRoll(strike);
+
+    scoreboard.saveFirstRoll(hits);
+    scoreboard.saveSecondRoll(hits);
+    var total = ( (strike+(strike+hits)) + (strike+(hits+0) + (hits+hits)) );
+    expect(scoreboard.getCurrentScore()).toEqual(total);
+  });
+
+
+  it('can add points when player gets three strikes in a row (turkey)', function() {
+    var strike = 10;
+    scoreboard.nextFrame();
+    scoreboard.saveFirstRoll(strike);
+    scoreboard.saveFirstRoll(strike);
+    scoreboard.saveFirstRoll(strike);
+
+    scoreboard.saveFirstRoll(0);
+    scoreboard.saveSecondRoll(9);
+    var total = 78;
+    expect(scoreboard.getCurrentScore()).toEqual(total);
+  });
 });

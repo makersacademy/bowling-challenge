@@ -2,10 +2,18 @@
 
 describe('BowlingGame', function() {
   var game;
+  var _currentRoll;
 
   beforeEach(function() {
     game = new BowlingGame();
+    _currentRoll = {
+      getHitsFromRoll: function() {
+        return value;
+      },
+    };
+    spyOn(game._currentRoll, 'getHitsFromRoll').and.returnValue(4);
   });
+
 
   it('initializes with a scoreboard', function() {
     expect(game.getScoreboard()).not.toEqual(null);

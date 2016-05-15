@@ -18,4 +18,12 @@ describe("Feature test:", function() {
     })
   })
 
+  describe("second roll", function() {
+    it("has a total of 2", function() {
+      play.knockDown(1)
+      play.knockDown(1)
+      expect(play.calculate()).toEqual(2)
+    })
+  })
+
 })

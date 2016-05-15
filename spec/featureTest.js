@@ -1,4 +1,4 @@
-describe("Game and Bonus Calculator working together", function(){
+describe("Game, Bonus Calculator and ScoreBoard working together to calculate scores", function(){
 
 	var game;
 
@@ -8,7 +8,7 @@ describe("Game and Bonus Calculator working together", function(){
 
 	it("A first roll of less than 10 puts the score up and moves to second roll in first frame", function(){
 		game.roll(5);
-		expect(game.totalScore).toEqual(5);
+		expect(game.scoreBoard.totalScore).toEqual(5);
 		expect(game.currentRoll).toEqual(2);
 		expect(game.currentFrame()).toEqual(1);
 	});
@@ -16,7 +16,7 @@ describe("Game and Bonus Calculator working together", function(){
 	it("A second roll puts the score up and moves to third roll, the first in the second frame", function(){
 		game.roll(5);
 		game.roll(4);
-		expect(game.totalScore).toEqual(9);
+		expect(game.scoreBoard.totalScore).toEqual(9);
 		expect(game.currentRoll).toEqual(3);
 		expect(game.currentFrame()).toEqual(2);
 		expect(game.isOnFirstRoll()).toEqual(true);
@@ -28,7 +28,7 @@ describe("Game and Bonus Calculator working together", function(){
 			game.roll(5);
 			game.roll(1);
 			game.roll(2);
-			expect(game.totalScore).toEqual(14);
+			expect(game.scoreBoard.totalScore).toEqual(14);
 			expect(game.currentFrame()).toEqual(3);
 		});
 	});
@@ -44,7 +44,7 @@ describe("Game and Bonus Calculator working together", function(){
 			game.roll(10);
 			game.roll(1);
 			game.roll(1);
-			expect(game.totalScore).toEqual(14);
+			expect(game.scoreBoard.totalScore).toEqual(14);
 			expect(game.currentFrame()).toEqual(3);
 		});
 	});
@@ -55,7 +55,7 @@ describe("Game and Bonus Calculator working together", function(){
 			game.roll(10);
 			game.roll(1);
 			game.roll(2);
-			expect(game.totalScore).toEqual(37);
+			expect(game.scoreBoard.totalScore).toEqual(37);
 			expect(game.currentFrame()).toEqual(4);
 		});
 	});
@@ -67,7 +67,7 @@ describe("Game and Bonus Calculator working together", function(){
 			game.roll(5);
 			game.roll(1);
 			game.roll(2);
-			expect(game.totalScore).toEqual(34);
+			expect(game.scoreBoard.totalScore).toEqual(34);
 			expect(game.currentFrame()).toEqual(4);
 		});
 	});
@@ -79,7 +79,7 @@ describe("Game and Bonus Calculator working together", function(){
 			game.roll(10);
 			game.roll(1);
 			game.roll(2);
-			expect(game.totalScore).toEqual(36);
+			expect(game.scoreBoard.totalScore).toEqual(36);
 			expect(game.currentFrame()).toEqual(4);
 		});
 	});
@@ -92,7 +92,7 @@ describe("Game and Bonus Calculator working together", function(){
 			game.roll(10);
 			game.roll(10);
 			game.roll(10);
-			expect(game.totalScore).toEqual(48);
+			expect(game.scoreBoard.totalScore).toEqual(48);
 		});
 
 		it("- a strike triggers two bonus rolls, then the game ends", function(){
@@ -112,7 +112,7 @@ describe("Game and Bonus Calculator working together", function(){
 			game.roll(5);
 			game.roll(5);
 			game.roll(10);
-			expect(game.totalScore).toEqual(38);
+			expect(game.scoreBoard.totalScore).toEqual(38);
 		});
 
 		it("- a spare triggers one bonus roll, then the game ends", function(){
@@ -151,7 +151,7 @@ describe("Game and Bonus Calculator working together", function(){
 			game.roll(10);
 		}
 		game.roll(10);
-		expect(game.totalScore).toEqual(300);
+		expect(game.scoreBoard.totalScore).toEqual(300);
 	});
 
 

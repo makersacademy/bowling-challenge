@@ -1,9 +1,8 @@
-function Game(bonusCalc){
+function Game(bonusCalc,scoreBoard){
+	this.scoreBoard = (scoreBoard || new ScoreBoard());
 	this.bonusCalc = (bonusCalc || new BonusCalc(this));
 	this.currentRoll = 1;
 	this.strikeTracker = 1;
-	this.frameScore = 0;
-	this.totalScore = 0;
 };
 
 // MAIN ROLL FUNCTION
@@ -16,8 +15,8 @@ Game.prototype.roll = function(score){
 		this.bonusCalc.addBonus(score);
 	};
 	if (this.currentFrame() <= 10) {
-		this.addToScore(score);
-		this.bonusCalc.processBonus(score,this.frameScore);
+		this.scoreBoard.addToBoth(score);
+		this.bonusCalc.processBonus(score);
 	};
 	this.prepareNextRollOrEnd();
 };
@@ -39,19 +38,8 @@ Game.prototype.nextRoll = function(){
 
 Game.prototype.calculateFrameScoreReset = function(){
 	if (this.isOnFirstRoll()) {
-		this.frameScore = 0;
+		this.scoreBoard.resetFrameScore();
 	};
-};
-
-// ADDING SCORES
-
-Game.prototype.addToTotal = function(score){
-	this.totalScore += score;
-};
-
-Game.prototype.addToScore = function(score){
-	this.frameScore += score;
-	this.totalScore += score;
 };
 
 // INTERPRETTING NUMBER OF ROLLS

@@ -5,7 +5,8 @@ function Frame(firstRoll,secondRoll) {
   this._type = this.calculateType();
 }
   Frame.prototype.getRoll = function(index) {
-    return this._rolls[index-1];
+    return index === "first" ? this._rolls[0] : this._rolls[1];
+    // return this._rolls[index-1];
   };
 
   Frame.prototype.getScore = function() {
@@ -22,10 +23,10 @@ function Frame(firstRoll,secondRoll) {
 
   Frame.prototype.calculateType = function() {
     if (this._rolls[0] === 10) {
-      this._type = 'strike';
+      this._type = 'STRIKE';
       this._rolls[1] = "-";
     } else if (this._score === 10) {
-      this._type = 'spare';
+      this._type = 'SPARE';
     } else {
       this._type = 'regular';
     }

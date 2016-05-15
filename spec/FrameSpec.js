@@ -28,12 +28,12 @@ describe("Frame",function() {
   describe('Frame type, ', function(){
     it("with first roll 10, frame is strike", function(){
       frame = new Frame(10);
-      expect(frame.getType()).toEqual('strike');
+      expect(frame.getType()).toEqual('STRIKE');
     });
 
     it("first roll 3, second roll 7, frame is spare",function(){
       frame  = new Frame(3,7);
-      expect(frame.getType()).toEqual('spare');
+      expect(frame.getType()).toEqual('SPARE');
     });
   });
 });

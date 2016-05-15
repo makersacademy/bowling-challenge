@@ -105,5 +105,14 @@ describe("BowlingGame",function() {
     });
   });
 
+  describe('strikes,, ',function(){
+    it('1 frames[10,-],[4,4] make total score 26',function(){
+      game.roll(10);
+      game.roll(4);
+      game.roll(4);
+      expect(game.totalScore()).toEqual(26);
+    });
+  });
+
 
 });

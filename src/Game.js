@@ -30,6 +30,7 @@ Game.prototype.roll = function(pins) {
     var frame = new Frame(this.firstFrameRoll, pins);
     this.addFrame(frame);
     this.calculateBonusSpare();
+    this.calculateBonusStrike();
     this.cumulateFrameScore();
   }
 };
@@ -49,6 +50,7 @@ Game.prototype.checkStrike = function(pins) {
     var frame = new Frame(pins);
     this.addFrame(frame);
     this.calculateBonusSpare();
+    this.calculateBonusStrike();
     this.cumulateFrameScore();
     this.currentRollIndex++;
   }
@@ -56,9 +58,20 @@ Game.prototype.checkStrike = function(pins) {
 
 Game.prototype.calculateBonusSpare = function() {
   var length = this._frames.length;
-  if ((length >1) && (this._frames[length-2]._type === 'spare')) {
+  if ((length >1) && (this._frames[length-2]._type === 'SPARE')) {
     var prevScore = this._frames[length-2].getScore();
-    var bonus = this._frames[length-1].getRoll(1);
+    var bonus = this._frames[length-1].getRoll("first");
+    this._frames[length-2].setScore(prevScore + bonus);
+  }
+}
+
+Game.prototype.calculateBonusStrike = function() {
+  var length = this._frames.length;
+  if ((length >1) && (this._frames[length-2]._type === 'STRIKE')) {
+    var prevScore = this._frames[length-2].getScore();
+    var firstFrameRoll = this._frames[length-1].getRoll("first");
+    var secondFrameRoll = this._frames[length-1].getRoll("second");
+    var bonus = firstFrameRoll + secondFrameRoll;
     this._frames[length-2].setScore(prevScore + bonus);
   }
 }

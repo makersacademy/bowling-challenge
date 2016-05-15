@@ -22,17 +22,20 @@ BonusCalc.prototype.setBonusStatus = function(){
 BonusCalc.prototype.addBonus = function(score){
 	if (this.bonusArray.includes('spare')) {
 		this.scoreBoard.addToTotal(score);
-		var index = this.bonusArray.indexOf('spare');
-		this.bonusArray.splice(index,1);
+		this.deleteFromBonusArray('spare');
 	};
 	if (this.bonusArray.includes((this.game.strikeTracker)-1)) {
 		this.scoreBoard.addToTotal(score);
 	};
 	if (this.bonusArray.includes((this.game.strikeTracker)-2)) {
 		this.scoreBoard.addToTotal(score);
-		var index = this.bonusArray.indexOf((this.game.strikeTracker)-2);
-		this.bonusArray.splice(index,1);
+		this.deleteFromBonusArray((this.game.strikeTracker)-2);
 	};
+};
+
+BonusCalc.prototype.deleteFromBonusArray = function(item){
+	var index = this.bonusArray.indexOf(item);
+	this.bonusArray.splice(index,1);
 };
 
 BonusCalc.prototype.isBonusDue = function(){

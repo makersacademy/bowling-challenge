@@ -1,4 +1,4 @@
-describe("Frame", function() {
+xdescribe("Frame", function() {
 
   var frame
 

@@ -3,20 +3,20 @@ Bowling Challenge
 
 ```
 As a user
-So that I score a frame of 10-pin bowling
+So that I can score a frame of 10-pin bowling
 I would like to be able to track the result of two rolls
 ```
 
 ```
 As a user
 So that I can keep score
-I would like the game to keep score over 10 frames
+I would like the game to keep score of successive frames
 ```
 
 ```
 As a user
 So that I can keep an effective score
-I would like the game to account for spare and strike score multipliers
+I would like the game to account for spare and strike score bonus's
 ```
 
 ```

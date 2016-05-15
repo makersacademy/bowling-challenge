@@ -66,7 +66,28 @@ describe('ScoreCalculator', function() {
       var total = (((roll1*2 + roll2) + 6) + roll1);
       expect(calculator.getCurrentScore()).toEqual(total);
     });
+  });
 
+  describe('Gutter game', function() {
+
+    it('Returns a total score of 0', function() {
+      for (var i = 10; i > 0; i--){
+        calculator.calculateScore(0, 0);
+      }
+      expect(calculator.getCurrentScore()).toEqual(0);
+    });
+  });
+
+  describe('Perfect Game', function() {
+
+    it('Returns a total score of 300', function() {
+      for (var i = 9; i > 0; i--){
+        calculator.registerStrike(10);
+        calculator.calculateScore(10, null);
+      }
+      calculator.calculateScore(10, 10, 10);
+      expect(calculator.getCurrentScore()).toEqual(300);
+    });
   });
 
 });

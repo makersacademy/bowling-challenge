@@ -1,8 +1,8 @@
 'use strict';
 
-function Scoreboard (calculator = new ScoreCalculator()) {
+function Scoreboard (calculator) {
   this.frames =[{roll1: null, roll2: null}];
-  this.calculator = calculator;
+  this.calculator = calculator || new ScoreCalculator();
 }
 
 Scoreboard.prototype.nextFrame = function () {

@@ -85,15 +85,25 @@ describe("BowlingGame",function() {
     });
   });
 
-  describe('1 singl frame scores, ',function(){
-    it('2 rolls with (0,0) make frame score = 0',function(){
+  describe('multiple simple frame scores, ',function(){
+    it('2 frames[1,3],[4,5] make total score 13',function(){
       game.roll(1);
-      game.roll(4);
       game.roll(3);
-      game.roll(6);
-      expect(game.frameLength()).toEqual(2);
+      game.roll(4);
+      game.roll(5);
+      expect(game.totalScore()).toEqual(13);
     });
   });
+
+  // describe('spares, ',function(){
+  //   it('2 frames[7,3],[2,0] make total score 14',function(){
+  //     game.roll(7);
+  //     game.roll(3);
+  //     game.roll(2);
+  //     game.roll(0);
+  //     expect(game.totalScore()).toEqual(14);
+  //   });
+  // });
 
 
 });

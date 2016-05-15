@@ -3,11 +3,17 @@
 describe('Frame', function(){
 
   var frame
+  var roll
   var rollOne
   var rollTwo
 
   beforeEach(function() {
     frame = new Frame()
+    roll = {
+      score: function() {
+        return value
+      }
+    }
     rollOne = jasmine.createSpy('rollOne')
     rollTwo = jasmine.createSpy('rollTwo')
   })
@@ -28,6 +34,13 @@ describe('Frame', function(){
     expect(frame.rollNum()).toEqual(1)
     frame.bowl(rollOne)
     expect(frame.rollNum()).toEqual(2)
+  })
+
+  it('tracks the score', function() {
+    spyOn(roll, 'score').and.returnValue(3)
+    frame.bowl(roll)
+    frame.bowl(roll)
+    expect(frame.score()).toEqual(6)
   })
 
 

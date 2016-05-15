@@ -6,13 +6,13 @@ function Frame() {
   this._rollNumber = 0
 }
 
-Frame.prototype.bowl = function(roll = new Roll()) {
+Frame.prototype.bowl = function(roll = new Roll(score)) {
   this._rollNumber ++
   if(this._rollNumber === 1) { this._firstRoll = roll }
   if(this._rollNumber === 2) { this._secondRoll = roll }
 }
 
-Frame.prototype.firstRoll = function(first_argument) {
+Frame.prototype.firstRoll = function() {
   return this._firstRoll
 }
 
@@ -22,4 +22,8 @@ Frame.prototype.secondRoll = function() {
 
 Frame.prototype.rollNum = function() {
   return this._rollNumber
+}
+
+Frame.prototype.score = function() {
+  return this._firstRoll.score + this._secondRoll.score
 }

@@ -10,12 +10,18 @@ describe('Game', function(){
     frame = {
       firstRoll: function() {
         return value
-      }
+      },
       secondRoll: function() {
-        return Value
+        return value
       }
     }
   })
 
+  it('can add a frame to the game', function() {
+    game.addFrame(frame)
+    expect(game.frames()).toContain(frame)
+  })
+
+  it('game tracks score')
 
 })

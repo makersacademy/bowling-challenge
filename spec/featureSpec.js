@@ -1,28 +1,28 @@
 describe("Feature test:", function() {
-  var play
+  var bowling
 
   beforeEach(function() {
-    play = new Play()
+    bowling = new Bowling()
   })
 
   describe("start of game", function() {
     it("has a total of zero", function() {
-      expect(play.calculate()).toEqual(0)
+      expect(bowling.calculateTotal()).toEqual(0)
     })
   })
 
   describe("first roll", function() {
     it("has a total of 1", function() {
-      play.knockDown(1)
-      expect(play.calculate()).toEqual(1)
+      bowling.knockDown(1)
+      expect(bowling.calculateTotal()).toEqual(1)
     })
   })
 
   describe("second roll", function() {
     it("has a total of 2", function() {
-      play.knockDown(1)
-      play.knockDown(1)
-      expect(play.calculate()).toEqual(2)
+      bowling.knockDown(1)
+      bowling.knockDown(1)
+      expect(bowling.calculateTotal()).toEqual(2)
     })
   })
 

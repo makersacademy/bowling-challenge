@@ -9,31 +9,31 @@ describe("BowlingGame",function() {
   });
 
   describe('rolls exceptions, ',function(){
-    xit('error if roll1 is not a number', function(){
+    it('error if roll1 is not a number', function(){
       game.roll("7");
       var error = 'rolls are not within range or not numbers'
       expect(function(){ game.roll(3); }).toThrowError(error);
     });
 
-    xit('error if roll2 is not a number', function(){
+    it('error if roll2 is not a number', function(){
       game.roll(7);
       var error = 'rolls are not within range or not numbers'
       expect(function(){ game.roll("3"); }).toThrowError(error);
     });
 
-    xit('error if roll1 is <0', function(){
+    it('error if roll1 is <0', function(){
       game.roll(-3);
       var error = 'rolls are not within range or not numbers'
       expect(function(){ game.roll(3); }).toThrowError(error);
     });
 
-    xit('error if roll2 is >10', function(){
+    it('error if roll2 is >10', function(){
       game.roll(3);
       var error = 'rolls are not within range or not numbers'
       expect(function(){ game.roll(12); }).toThrowError(error);
     });
 
-    xit('error if roll1+roll2 is >10', function(){
+    it('error if roll1+roll2 is >10', function(){
       game.roll(6);
       var error = 'frame can\'t exceed 10';
       expect(function(){ game.roll(7); }).toThrowError(error);
@@ -50,36 +50,36 @@ describe("BowlingGame",function() {
         }
       };
     });
-    xit('1 roll with score <10 does not create Frame',function(){
+    it('1 roll with score <10 does not create Frame',function(){
       game.roll(7);
       expect(game.frameLength()).toBe(0);
     });
 
-    xit('1 roll with score=10 creates a Frame',function(){
+    it('1 roll with score=10 creates a Frame',function(){
       game.roll(10);
       expect(game.frameLength()).toBe(1);
     });
 
-    xit('2 rolls with (3,5) creates a Frame',function(){
+    it('2 rolls with (3,5) creates a Frame',function(){
       game.roll(3);
       game.roll(5);
       expect(game.frameLength()).toBe(1);
     });
   });
   describe('1 singl frame scores, ',function(){
-    xit('2 rolls with (0,0) make frame score = 0',function(){
+    it('2 rolls with (0,0) make frame score = 0',function(){
       game.roll(0);
       game.roll(0);
       expect(game.totalScore()).toEqual(0);
     });
 
-    xit('2 rolls with (3,4) make frame score = 7',function(){
+    it('2 rolls with (3,4) make frame score = 7',function(){
       game.roll(3);
       game.roll(4);
       expect(game.totalScore()).toEqual(7);
     });
 
-    xit('1 rolls with (10) make frame score = 10',function(){
+    it('1 rolls with (10) make frame score = 10',function(){
       game.roll(10);
       expect(game.totalScore()).toEqual(10);
       expect(game.frameLength()).toEqual(1);
@@ -87,7 +87,7 @@ describe("BowlingGame",function() {
   });
 
   describe('multiple simple frame scores, ',function(){
-    xit('2 frames[1,3],[4,5] make total score 13',function(){
+    it('2 frames[1,3],[4,5] make total score 13',function(){
       game.roll(1);
       game.roll(3);
       game.roll(4);
@@ -97,7 +97,7 @@ describe("BowlingGame",function() {
   });
 
   describe('spares, ',function(){
-    xit('2 frames[7,3],[2,0] make total score 14',function(){
+    it('2 frames[7,3],[2,0] make total score 14',function(){
       game.roll(7);
       game.roll(3);
       game.roll(10);
@@ -109,14 +109,14 @@ describe("BowlingGame",function() {
   });
 
   describe('strikes,, ',function(){
-    xit('1 frames[10,-],[4,4] make total score 26',function(){
+    it('1 frames[10,-],[4,4] make total score 26',function(){
       game.roll(10);
       game.roll(4);
       game.roll(4);
       expect(game.totalScore()).toEqual(26);
     });
 
-    it('1 frames[10,-],[10,-] [3,5] make total score 26',function(){
+    it('1 frames[10,-],[10,-] [4,1] [0,0] make total score 44',function(){
       game.roll(10);
       game.roll(10);
       game.roll(4);
@@ -127,5 +127,14 @@ describe("BowlingGame",function() {
     });
   });
 
-
+  describe('end of game, ',function(){
+    it('game ends ',function(){
+      game.roll(7);
+      game.roll(3);
+      game.roll(10);
+      game.roll(0);
+      game.roll(0);
+      expect(game.totalScore()).toEqual(30);
+    });
+  });
 });

@@ -12,7 +12,11 @@ Game.prototype.getFrame = function(i) {
 }
 
 Game.prototype.totalScore = function(){
- return this._frames.last().getScore();
+  var total=0;
+  for (var index=0;index < this._frames.length; index++) {
+    total += this._frames[index].getScore();
+ }
+  return total;
 };
 
 Game.prototype.frameLength = function() {
@@ -101,11 +105,6 @@ Game.prototype.calculateBonusDoubleStrike = function() {
 
 }
 
-// Game.prototype.checkDoubleStrike = function(length) {
-//   if(this._frames[length-1].getRoll("second") === '-') {
-
-//   }
-// }
 
 Game.prototype.addFrame = function(frame) {
   this._frames.push(frame);
@@ -124,6 +123,19 @@ Game.prototype.checkExceptions = function(roll1,roll2) {
   function isError(number) {
     return (typeof(number) !== "number" || number < 0 || number > 10)
   }
+}
+
+Game.prototype.finalFrame = function() {
+  if (this._frames.length === 10) {
+    this.calculate10thFrameScore();}
+}
+
+Game.prototype.calculate10thFrameScore = function() {
+
+}
+
+Game.prototype.inPlay = function() {
+
 }
 
 if (!Array.prototype.last){

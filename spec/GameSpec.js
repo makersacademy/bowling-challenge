@@ -92,4 +92,19 @@ describe("Game, for tracking the stage of the game", function(){
 		});
 	});
 
+	describe("Invalid scores not allowed", function(){
+		it("Error thrown if number more than 10 is passed to roll", function(){
+			dummyScoreBoard.frameScore = 0;
+			expect(function(){
+				game.roll(11)
+			}).toThrowError('Invalid score');
+		});
+		it("Error thrown if score is more than remaining pins", function(){
+			dummyScoreBoard.frameScore = 5;
+			expect(function(){
+				game.roll(6)
+			}).toThrowError('Invalid score');
+		});
+	});
+
 });

@@ -8,9 +8,7 @@ function Game(bonusCalc,scoreBoard){
 // MAIN ROLL FUNCTION
 
 Game.prototype.roll = function(score){
-	if (this.isOver) {
-		throw new Error('The game has ended');
-	};
+	this.checkForErrors(score);
 	if (this.currentFrame() > 10) {
 		this.bonusCalc.addBonus(score);
 	};
@@ -19,6 +17,17 @@ Game.prototype.roll = function(score){
 		this.bonusCalc.processBonus(score);
 	};
 	this.prepareNextRollOrEnd();
+};
+
+// CHECK FOR ERRORS
+
+Game.prototype.checkForErrors = function(score){
+	if (this.scoreBoard.frameScore + score > 10) {
+		throw new Error('Invalid score');
+	};
+	if (this.isOver) {
+		throw new Error('The game has ended');
+	};
 };
 
 // PREPARING NEXT ROLL

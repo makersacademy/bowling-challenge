@@ -42,6 +42,9 @@ ScoreCard.prototype.isSpare = function () {
   return this.lastGo() + this.lastLastGo() === 10;
 };
 
+ScoreCard.prototype.isStrike = function () {
+  return this.lastGo() === 10;
+};
 
 
 ScoreCard.prototype.frames = function (){
@@ -61,7 +64,8 @@ ScoreCard.prototype.resetBalls = function (){
 };
 ScoreCard.prototype.addBall = function (){
   this._balls += 1;
-}
+};
+
 ScoreCard.prototype.playerStrike = function () {
   this._strike = true;
 };
@@ -79,31 +83,28 @@ ScoreCard.prototype.resetSpare = function () {
 
 ScoreCard.prototype.throw = function (score) {
 
-  if(score === 10 && this.balls()===2 && this._strike === false){
-    //this._playerLog.push(score);
-    this.playerStrike();
-    //this.removeFrame();
-    //this.resetBalls();
-  }
-  else if(this.isSpare() && this.balls()===0 && this._spare === false){
-    //this._playerLog.push(score);
-    this.playerSpare();
-  }
-  else if (this.strike()) {
-    this._playerLog.push(10+score);
-    this.resetStrike();
-  }
-  else if (this.spare()) {
-    this._playerLog.push(10+score);
-    this.resetSpare();
+  if(this.isStrike() && this.balls()===2){
+    this._playerLog.push(10);
+    this._playerLog.push(score);
     this.throwBall();
+
   }
+  else if(this.isSpare() && this.balls()===0){
+    //this._playerLog.push(score);
+    this._playerLog.push(10);
+    this._playerLog.push(score);
+    this.removeFrame();
+    this.addBall();
+  }
+
+  // else if (this.spare()) {
+  //
+  // }
   else if(this.balls()=== 0) {
     this._playerLog.push(score);
     this.removeFrame();
     this.resetBalls();
-
-  }
+ }
   else{
     this._playerLog.push(score);
     this.throwBall();

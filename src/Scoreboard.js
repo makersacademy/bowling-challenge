@@ -22,7 +22,7 @@ Scoreboard.prototype.saveFirstRoll = function (hits) {
 };
 
 Scoreboard.prototype.saveSecondRoll = function (hits) {
-  if (this.frames.length === 0 || this.currentFrame().roll1 === null) {
+  if (this.currentFrame().roll1 === null) {
     throw new Error('Must roll first ball silly');
   }
   this.currentFrame().roll2 = hits;
@@ -38,26 +38,29 @@ Scoreboard.prototype.saveThirdRoll = function (hits) {
     throw new Error('Nope, no can do!');
   }
   this.currentFrame().roll3 = hits;
-  this.calculator.calculateScore(this.currentFrame().roll1, this.currentFrame().roll2, hits);
+  this.calculator.calculateScore(this.currentFrame().roll1,
+  this.currentFrame().roll2, hits);
 };
 
 Scoreboard.prototype.checkFramesAndRegisterStrikes = function (hits) {
   if (this.frames.length === 10) {
     return this.lastFrame(hits);
   }
-  this.calculator.registerStrike(hits)
+  this.calculator.registerStrike(hits);
   this.nextFrame();
 };
 
 Scoreboard.prototype.checkFramesAndGetResults = function (hits) {
-  if (this.frames.length == 10) {
+  if (this.frames.length === 10) {
     return this.lastFrame(this.currentFrame().roll1, hits);
   }
   this.finishAndCreateNewFrame();
 };
 
 Scoreboard.prototype.finishAndCreateNewFrame = function () {
-  this.calculator.calculateScore(this.currentFrame().roll1, this.currentFrame().roll2);
-  this.calculator.registerSpare(this.currentFrame().roll1 + this.currentFrame().roll2);
+  this.calculator.calculateScore(this.currentFrame().roll1,
+  this.currentFrame().roll2);
+  this.calculator.registerSpare(this.currentFrame().roll1 +
+  this.currentFrame().roll2);
   this.nextFrame();
 };

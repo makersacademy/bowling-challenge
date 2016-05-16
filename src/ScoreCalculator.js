@@ -17,7 +17,7 @@ ScoreCalculator.prototype.registerSpare = function (total) {
 ScoreCalculator.prototype.registerStrike = function (roll1) {
   if (roll1 === 10) {
     this._currentScore += 10;
-    return this._strikes.push(true);
+    this._strikes.push(true);
     return true;
   }
 };

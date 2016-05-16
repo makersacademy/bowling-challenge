@@ -3,46 +3,40 @@
 describe('Frame', function(){
 
   var frame
-  var roll
-  var rollOne
-  var rollTwo
 
   beforeEach(function() {
     frame = new Frame()
-    roll = {
-      score: function() {
-        return value
-      }
-    }
-    rollOne = jasmine.createSpy('rollOne')
-    rollTwo = jasmine.createSpy('rollTwo')
   })
 
   it('records a roll', function() {
-    frame.bowl(rollOne)
-    expect(frame.firstRoll()).toEqual(rollOne)
+    frame.bowl(2)
+    expect(frame.firstRoll()).toEqual(2)
   })
 
   it('records a second roll', function() {
-    frame.bowl(rollOne)
-    frame.bowl(rollTwo)
-    expect(frame.secondRoll()).toEqual(rollTwo)
+    frame.bowl(2)
+    frame.bowl(7)
+    expect(frame.secondRoll()).toEqual(7)
   })
 
   it('records roll number', function() {
-    frame.bowl(rollOne)
+    frame.bowl(2)
     expect(frame.rollNum()).toEqual(1)
-    frame.bowl(rollOne)
+    frame.bowl(5)
     expect(frame.rollNum()).toEqual(2)
   })
 
   it('tracks the score', function() {
-    spyOn(roll, 'score').and.returnValue(3)
-    frame.bowl(roll)
-    frame.bowl(roll)
+    frame.bowl(2)
+    frame.bowl(4)
     expect(frame.score()).toEqual(6)
   })
 
-
+  it('can only roll once if a strike is bowled', function() {
+    frame.bowl(10)
+    frame.bowl(4)
+    expect(frame.score()).toEqual(10)
+    expect(frame.rollNum()).toEqual(1)
+  })
 
 })

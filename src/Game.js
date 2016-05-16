@@ -11,3 +11,4 @@ Game.prototype.addFrame = function(frame = new Frame()) {
 Game.prototype.frames = function() {
   return this._frames
 }
+

@@ -1,12 +1,13 @@
 'use strict'
 
 function Frame() {
-  this._firstRoll = null
-  this._secondRoll = null
+  this._firstRoll = 0
+  this._secondRoll = 0
   this._rollNumber = 0
 }
 
-Frame.prototype.bowl = function(roll = new Roll(score)) {
+Frame.prototype.bowl = function(roll) {
+  if(this._firstRoll === 10) { return }
   this._rollNumber ++
   if(this._rollNumber === 1) { this._firstRoll = roll }
   if(this._rollNumber === 2) { this._secondRoll = roll }
@@ -25,5 +26,5 @@ Frame.prototype.rollNum = function() {
 }
 
 Frame.prototype.score = function() {
-  return this._firstRoll.score + this._secondRoll.score
+  return this._firstRoll + this._secondRoll
 }

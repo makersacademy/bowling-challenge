@@ -3,6 +3,7 @@ function Frame(id){
     pins: null,
     firstScore: null,
     secondScore: null,
+    thirdScore: null,
     id: id
   }
 }
@@ -24,13 +25,12 @@ Frame.prototype.secondBowl = function(pins){
 }
 
 Frame.prototype.thirdBowl = function(pins){
-  if (this._details.id !== 10) {
+  if ((this._details.id !== 10) || 
+     (this._details.id === 10 && this._details.pins < 10)) {
     throw new Error('Error: You cannot bowl a third time.');
-  } else if (this._details.id === 10 && this._details.pins < 10) {
-    throw new Error('Error: You cannot bowl a third time.');
-  } else {
-    this.updateScore(pins);
   }
+    this._details.thirdScore = pins;
+    this.updateScore(pins);
 }
 
 Frame.prototype.isStrike = function() {
@@ -42,7 +42,8 @@ Frame.prototype.isSpare = function() {
 }
 
 Frame.prototype.isIllegal = function(pins){
-  if(pins > 10 || pins + this._details.pins > 10) {
+  if(this._details.id !== 10 && (pins > 10 || 
+     pins + this._details.pins > 10)) {
     throw new Error('Error: You cannot hit more than 10 pins.');
   }
 }

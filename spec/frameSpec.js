@@ -4,7 +4,7 @@ describe("Frame", function(){
   var pins;
 
   beforeEach(function(){
-    frame = new Frame();
+    frame = new Frame(5);
     lastFrame = new Frame(10);
   });
 
@@ -50,7 +50,6 @@ describe("Frame", function(){
     it('recognises when the player does not make a strike', function() {
       frame.firstBowl(9);
       expect(frame.isStrike()).toBe(false);
-
     });
   });
 
@@ -60,15 +59,32 @@ describe("Frame", function(){
       frame.secondBowl(2);
       expect(frame.isSpare()).toBe(true);
     });
+
+    it('recognises when the player does not make a spare', function() {
+      frame.firstBowl(8);
+      frame.secondBowl(1);
+      expect(frame.isSpare()).toBe(false);
+    });
   });
 
   describe('special functionality for frame 10', function() {
-    it('allows the player to make three bowls in frame 10', function() {
+    it('will not ordinarily allow the player to make three bowls in frame 10', function() {
       expect(function(){
         frame.firstBowl(1);
         frame.secondBowl(4);
         lastFrame.thirdBowl(10);
       }).toThrowError('Error: You cannot bowl a third time.')
+    });
+
+    it('allows the player to make a third bowl if they make a strike', function() {
+        lastFrame.firstBowl(10);
+        lastFrame.secondBowl(10);
+        lastFrame.thirdBowl(10);
+        expect(lastFrame._details.pins).toEqual(30);
+    });
+
+    it('allows the player to make a third bowl if they make a spare', function() {
+
     });
   });
 

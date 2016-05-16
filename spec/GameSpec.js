@@ -169,14 +169,12 @@ describe("BowlingGame",function() {
       expect(game.frameLength()).toEqual(12);
     });
 
-    it('almost perfect game, spare in 10thframe',function(){
+    it('9 frames perfect, spare 10th',function(){
       multiRoll(9,10);
-      game.roll(2);
+      game.roll(7);
       game.roll(3);
-      // game.roll(0);
-      // game.roll(0);
-      expect(game.totalScore()).toEqual(252);
-      expect(game.frameLength()).toEqual(10);
+      game.roll(6)
+      expect(game.totalScore()).toEqual(273);
     });
 
     it('almost perfect game, spare in 10thframe',function(){

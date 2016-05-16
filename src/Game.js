@@ -17,11 +17,8 @@ Game.prototype.totalScore = function(){
   length = Math.min(this._frames.length, 10);
   for (var index=0;index < length; index++) {
     total += this._frames[index].getScore();
-    console.log("cumul total",total);
 }
- console.log(this._frames);
- console.log("finalBonus:",this.finalBonusSpare);
- // console.log("total",total,"length",length);
+
   return total + this.finalBonusSpare;
 };
 
@@ -33,17 +30,25 @@ Game.prototype.roll = function(pins) {
   this.currentRollIndex++;
   var isFirstRoll = this.currentRollIndex %2 !== 0;
   if (isFirstRoll) {
-    this.firstFrameRoll = pins;
-    this.checkStrike(pins);
-    this.checkFinalSpare(pins);
+    this.processFirstRoll(pins);
   } else {
-    this.checkExceptions(this.firstFrameRoll, pins);
-    var frame = new Frame(this.firstFrameRoll, pins);
-    this.addFrame(frame);
-    this.calculateBonusSpare();
-    this.calculateBonusStrike();
-    this.calculateBonusDoubleStrike();
+    this.processSecondRoll(pins);
   }
+};
+
+Game.prototype.processFirstRoll = function(pins) {
+  this.firstFrameRoll = pins;
+  this.checkStrike(pins);
+  this.checkFinalSpare(pins);
+}
+
+Game.prototype.processSecondRoll = function(pins) {
+  this.checkExceptions(this.firstFrameRoll, pins);
+  var frame = new Frame(this.firstFrameRoll, pins);
+  this.addFrame(frame);
+  this.calculateBonusSpare();
+  this.calculateBonusStrike();
+  this.calculateBonusDoubleStrike();
 };
 
 
@@ -140,9 +145,6 @@ Game.prototype.isSpareEnd = function() {
   condition1 = length === 10;
   condition2 = this._frames[length-1].getType() === "SPARE";
   condition3 = this.bonusComplete;
-  // console.log("spareend!")
-  // console.log(this._frames);
-  // console.log("cond1",condition1);
   return condition1 && condition2 && condition3;
 }
 

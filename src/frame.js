@@ -16,7 +16,7 @@ Frame.prototype.isComplete = function() {
 }
 
 Frame.prototype.firstAndSecondRollScore = function() {
-  return this._firstRoll + this._secondRoll
+  return (this._firstRoll + this._secondRoll)
 }
 
 Frame.prototype.isAStrike = function() {

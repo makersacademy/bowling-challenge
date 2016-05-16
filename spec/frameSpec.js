@@ -31,6 +31,13 @@ describe("Frame", function(){
         frame.secondBowl(6);
       }).toThrowError('Error: You cannot hit more than 10 pins.')
     });
+
+    it('cannot score more pins after a strike', function() {
+      frame.firstBowl(10);
+      expect(function(){
+        frame.secondBowl(1);
+      }).toThrowError('Error: You cannot hit more than 10 pins.')
+    })
   });
 
   describe('totals the score of the bowls in the frame', function() {
@@ -77,14 +84,17 @@ describe("Frame", function(){
     });
 
     it('allows the player to make a third bowl if they make a strike', function() {
-        lastFrame.firstBowl(10);
-        lastFrame.secondBowl(10);
-        lastFrame.thirdBowl(10);
-        expect(lastFrame._details.pins).toEqual(30);
+      lastFrame.firstBowl(10);
+      lastFrame.secondBowl(10);
+      lastFrame.thirdBowl(10);
+      expect(lastFrame._details.pins).toEqual(30);
     });
 
     it('allows the player to make a third bowl if they make a spare', function() {
-
+      lastFrame.firstBowl(2);
+      lastFrame.secondBowl(8);
+      lastFrame.thirdBowl(1);
+      expect(lastFrame._details.pins).toEqual(11);
     });
   });
 

@@ -42,8 +42,8 @@ Frame.prototype.isSpare = function() {
 }
 
 Frame.prototype.isIllegal = function(pins){
-  if(this._details.id !== 10 && (pins > 10 || 
-     pins + this._details.pins > 10)) {
+  if(this._details.id !== 10 && 
+    (pins > 10 || pins + this._details.pins > 10)) {
     throw new Error('Error: You cannot hit more than 10 pins.');
   }
 }

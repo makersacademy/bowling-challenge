@@ -1,9 +1,11 @@
 describe("Frame", function(){
   var frame;
+  var lastFrame;
   var pins;
 
   beforeEach(function(){
     frame = new Frame();
+    lastFrame = new Frame(10);
   });
 
   describe('has a number of rolls/bowls', function() {
@@ -17,12 +19,18 @@ describe("Frame", function(){
       expect(frame._details.secondScore).toEqual(2);
     });
 
+    it('returns an error on the third bowl', function() {
+      expect(function(){
+        frame.thirdBowl(4);
+      }).toThrowError('Error: You cannot bowl a third time.')
+    });
+
     it('cannot score more than ten pins on a standard frame', function() {
       frame.firstBowl(5);
       expect(function(){
         frame.secondBowl(6);
       }).toThrowError('Error: You cannot hit more than 10 pins.')
-    })
+    });
   });
 
   describe('totals the score of the bowls in the frame', function() {
@@ -51,7 +59,17 @@ describe("Frame", function(){
       frame.firstBowl(8);
       frame.secondBowl(2);
       expect(frame.isSpare()).toBe(true);
-    })
-  })
+    });
+  });
+
+  describe('special functionality for frame 10', function() {
+    it('allows the player to make three bowls in frame 10', function() {
+      expect(function(){
+        frame.firstBowl(1);
+        frame.secondBowl(4);
+        lastFrame.thirdBowl(10);
+      }).toThrowError('Error: You cannot bowl a third time.')
+    });
+  });
 
 });

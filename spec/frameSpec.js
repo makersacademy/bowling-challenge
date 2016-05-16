@@ -74,6 +74,20 @@ describe("Frame", function(){
     });
   });
 
+  describe('treatment of gutters', function() {
+    it('recognises when the player makes a gutter', function() {
+      frame.firstBowl(0);
+      frame.secondBowl(0);
+      expect(frame.isGutter()).toBe(true);
+    });
+
+    it('recognises when the player does not make a gutter', function() {
+      frame.firstBowl(1);
+      frame.secondBowl(0);
+      expect(frame.isGutter()).toBe(false);
+    });
+  });
+
   describe('special functionality for frame 10', function() {
     it('will not ordinarily allow the player to make three bowls in frame 10', function() {
       expect(function(){

@@ -41,6 +41,10 @@ Frame.prototype.isSpare = function() {
   return (this._details.firstScore !== 10 && this._details.pins === 10);
 }
 
+Frame.prototype.isGutter = function() {
+  return ((this._details.firstScore + this._details.secondScore) === 0);
+}
+ 
 Frame.prototype.isIllegal = function(pins){
   if(this._details.id !== 10 && 
     (pins > 10 || pins + this._details.pins > 10)) {

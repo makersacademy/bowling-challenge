@@ -184,8 +184,7 @@ describe("BowlingGame",function() {
       game.roll(10);
       game.roll(5);
       game.roll(5);
-      // game.roll(0);
-      expect(game.totalScore()).toEqual(261);
+      expect(game.totalScore()).toEqual(285);
     });
   });
 });

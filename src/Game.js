@@ -16,9 +16,13 @@ Game.prototype.totalScore = function(){
   var total=0, length;
   length = Math.min(this._frames.length, 10);
   for (var index=0;index < length; index++) {
-    total += this._frames[index].getScore()+ this.finalBonusSpare;
- }
-  return total;
+    total += this._frames[index].getScore();
+    console.log("cumul total",total);
+}
+ console.log(this._frames);
+ console.log("finalBonus:",this.finalBonusSpare);
+ // console.log("total",total,"length",length);
+  return total + this.finalBonusSpare;
 };
 
 Game.prototype.frameLength = function() {
@@ -115,7 +119,7 @@ Game.prototype.checkExceptions = function(roll1,roll2) {
 }
 
 Game.prototype.checkFinalSpare = function(pins) {
-  if (this.currentRollIndex === 21) {
+  if (this.currentRollIndex === 21 && this._frames[9].getType()==='SPARE' ) {
     this.finalBonusSpare = pins;
     this.bonusComplete = true;
   }

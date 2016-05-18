@@ -25,13 +25,52 @@ As usual please start by
 
 User Stories
 ------------
-As a player 
-In order to remember my score 
-I want to be able to input my score
 
-As a player 
-In order for me to play the right number of frames 
-I only want to be able to input 10 scores
+As a Player
+In order to play a game
+I want to play 10 rounds
+
+As a Player 
+In order to play a game 
+I want to have up to 2 balls per round
+
+As a Player
+In order to play a game
+I want to have 10 pins per round
+
+As a Player
+In order to play  a game
+I want to start a round
+
+As a Player 
+In order to start a round
+I want to roll a ball
+
+As a Player
+In order to play a round
+I want to record the number of pins my ball knocks down
+
+As a Player
+In order to finish a round
+I want to bowl a second ball
+
+As a Player
+In order to finish a round
+I don't want to play a second ball if I have already knocked down all balls
+
+As a Player 
+In order to finish a round
+I want to sum my score from my balls
+
+As a Player
+In order to play a game
+I want to start a new round when my round is finished
+
+
+As a Player
+In order to finish a game
+I only want to play the max number of rounds
+
 
 As a Player
 Because I am bad at counting

@@ -5,21 +5,18 @@ function Game(){
 }
 
 Game.prototype.addFrames = function(frame){
-  if (this._frames.length >= this._maxFrames) {
-    throw new Error('You may only play 10 frames.');
-  } else 
-  for(var f = 0; f < 10; f++) {
-    this._frames.push(frame);
-  }
+  // if (this._frames.length >= this._maxFrames) {
+  //   throw new Error('You may only play 10 frames.');
+  // } else 
+  // for(var id = 0; id < 10; id++) {
+    this._frames.push(new Frame(1));
+  // }
 }
 
 Game.prototype.calculateFrames = function(frame) {
   return this._frames.length;
 }
 
-Game.prototype.calculateScore = function(f) {
-  // for(var f = 0; f < 10; f++) {
-  //   this._score += (this._frames[0]._details.pins)
-  // }
-  // return this._score;
+Game.prototype.calculateFrameScore = function(id) {
+  this._score += (this._frames[id]._details.pins)
 }

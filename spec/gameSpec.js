@@ -2,11 +2,12 @@
 
 describe("Game", function(){
   var game;
-  var frame = jasmine.createSpyObj('frame', ['isEmpty', 'true', 'false']);
+  var frame;
+  var emptyFrame = jasmine.createSpyObj('emptyFrame', ['isEmpty', 'true', 'false']);
 
   beforeEach(function(){
     game = new Game();
-    frame.isEmpty.and.returnValue(true);
+    emptyFrame.isEmpty.and.returnValue(true);
   });
 
   describe('initialization of a game', function() {
@@ -36,10 +37,15 @@ describe("Game", function(){
       expect(game._score).toEqual(0);
     });
 
-    it('calculates scores correctly', function() {
-      // game._frames[0] = 8;
-      // game.addFrames(frame);
-      // expect(game.calculateScore()).toEqual(8);
+    it('calculates the score of a game correctly', function() {
+      game.addFrames();
+      // game._frames[frame]._details.firstScore;
+      // game._frames[0]._details.secondScore;
+      // game._frames[0].secondScore(1);
+      // game._frames[1].firstBowl(2);
+      // game._frames[1].firstBowl(3);
+      // game._frames[2].firstBowl(10);
+      // expect(game.calculateFrameScore()).toEqual(24);
     });
   });
 

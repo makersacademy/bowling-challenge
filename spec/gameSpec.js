@@ -54,20 +54,21 @@ describe("Game", function(){
     });
   });
 
-  describe('calculation of strikes', function() {
-
-  });
-
-  describe('calculation of spares', function() {
-
-  });
-
   describe('calculation of perfect games', function() {
+    it('recognises a perfect game', function() {
+      game._score = 300;
+      expect(game.isPerfectGame()).toBe(true);
+      expect(game.isGutterGame()).toBe(false);
+    });
 
   });
 
   describe('calculation of gutter games', function() {
-
+    it('recognises a gutter game', function() {
+      game._score = 0;
+      expect(game.isGutterGame()).toBe(true);
+      expect(game.isPerfectGame()).toBe(false);
+    });
   });
 
 });

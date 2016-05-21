@@ -2,15 +2,21 @@ Bowling Challenge
 =================
 
 ```
-As a user
-So that I can keep an effective score
-I would like the game to account for spare and strike score bonus's
+As a player
+So that I keep track of my score
+I want to store the result of a roll
 ```
 
 ```
-As a user
-So that I can keep an effective score
-I would like the game to account for spares and strikes in the final frame
+As a player
+So that I can keep track of my score per frame
+I want to store the result of 2 rolls
+```
+
+```
+As a player
+So that I can check my score for a particular frame
+I want the game to automatically keep track of the frame a roll is made in
 ```
 
 

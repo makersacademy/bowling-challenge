@@ -1,27 +1,16 @@
 'use strict'
 
-describe('Game', function(){
+describe('Game', function() {
 
   var game
-  var frame
 
-  beforeEach(function() {
-    game = new Game()
-    frame = {
-      firstRoll: function() {
-        return value
-      },
-      secondRoll: function() {
-        return value
-      }
-    }
+  beforeEach( function() {
+    game = new Game
   })
 
-  it('can add a frame to the game', function() {
-    game.addFrame(frame)
-    expect(game.frames()).toContain(frame)
+  it('stores the result of a roll', function() {
+    game.roll(5)
+    expect(game.rollscore(1)).toEqual(5)
   })
-
-  it('game tracks score')
 
 })

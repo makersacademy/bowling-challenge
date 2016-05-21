@@ -7,15 +7,16 @@ function Bowling(){
 }
 
 Bowling.prototype.roll = function(pins){
-  if (this._frames.length === 0 || this._frames.last.isFinished()) {
+  this.updateBonus(pins);
+  if (this._frames.length === 0 || this.currentFrame().isFinished()) {
     this._frames.push(new Frame());
-    this._frames.last.recordFirstRoll(pins);
+    this.currentFrame().recordFirstRoll(pins);
   } else {
-    this._frames.last.recordSecondRoll(pins);
+    this.currentFrame().recordSecondRoll(pins);
   }
 }
 
-Bowling.prototype.gameScore = function(){
+Bowling.prototype.totalScore = function(){
   var sum = 0
   this._frames.forEach(function(frame){
     if (frame.isAllBonusAdded()){
@@ -23,4 +24,16 @@ Bowling.prototype.gameScore = function(){
     }
   });
   return sum;
+}
+
+Bowling.prototype.currentFrame = function(){
+  return this._frames.last();
+}
+
+Bowling.prototype.updateBonus = function(pins){
+    this._frames.forEach(function(frame){
+    if (!frame.isAllBonusAdded() && frame.isFinished()){
+      frame.addBonus(pins);
+    }
+  });
 }

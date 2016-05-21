@@ -107,14 +107,14 @@ describe("Frame", function(){
       expect(frame.isAllBonusAdded()).toBe(true);
     });
 
-    it('returns for 1 bonus for strike', function(){
+    it('returns false for 1 bonus for strike', function(){
       Strike();
       frame.addBonus(8);
       expect(frame.isAllBonusAdded()).toBe(false);
     });
 
 
-    it('returns for 1 bonus for strike', function(){
+    it('returns false for 0 bonus for strike', function(){
       Strike();
       expect(frame.isAllBonusAdded()).toBe(false);
     });
@@ -159,29 +159,9 @@ describe("Frame", function(){
     });
   });
 
-  describe('#addBonus', function(){
-    it('cannot add more than two bonus for strike', function(){
-      Strike();
-      frame.addBonus(8);
-      frame.addBonus(2);
-      expect(function(){
-        frame.addBonus(10);
-      }).toThrowError('no more bonus for this frame')
-    });
-
-    it('cannot add more than one bonus for spare', function(){
-      Spare();
-      frame.addBonus(8);
-      expect(function(){
-        frame.addBonus(10);
-      }).toThrowError('no more bonus for this frame')
-    });
-
-    it('cannot add any bonus for others', function(){
-      otherFinishedGame();
-      expect(function(){
-        frame.addBonus(10);
-      }).toThrowError('no more bonus for this frame')
-    });
-  });
+  it('only add bonus for finished game', function(){
+    frame.recordFirstRoll(8);
+    frame.addBonus(10);
+    expect(frame.calculateBonus()).toEqual(0);
+  })
 });

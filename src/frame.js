@@ -8,6 +8,8 @@ function Frame(id){
   }
 }
 
+var frameArray = [];
+
 Frame.prototype.updateScore = function(pins) {
   this._details.pins += pins;
 }

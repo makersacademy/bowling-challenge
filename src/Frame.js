@@ -70,6 +70,7 @@ Frame.prototype.isAllBonusAdded = function(){
   } else if (this.isSpare() && this._Bonus.length < 1) {
     return false;
   } else {
-    return true;
+    return this.isFinished();
   }
 }
+

@@ -49,21 +49,30 @@ describe("Bowling", function(){
   });
 
   it("should handle the perfect game", function(){
-    rollMany(12,10);
+    rollMany(10,10);
+    expect(game.isGameFinished()).toEqual(false);
+    rollStrike();
+    expect(game.isGameFinished()).toEqual(false);
+    rollStrike();
+    expect(game.isGameFinished()).toEqual(true);
     expect(game.totalScore()).toEqual(300)
   });
 
   it("handle the last frame if it is a spare", function(){
     rollMany(9,10);
     rollSpare();
+    expect(game.isGameFinished()).toEqual(false);
     rollStrike();
+    expect(game.isGameFinished()).toEqual(true);
     expect(game.totalScore()).toEqual(275);
   });
 
   it("handle the last frame if it is neither strike or spare", function(){
     rollMany(9,10);
     game.roll(5);
+    expect(game.isGameFinished()).toEqual(false);
     game.roll(4);
+    expect(game.isGameFinished()).toEqual(true);
     expect(game.totalScore()).toEqual(263);
   });
 

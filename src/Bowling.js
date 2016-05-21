@@ -37,3 +37,19 @@ Bowling.prototype.updateBonus = function(pins){
     }
   });
 }
+
+Bowling.prototype.isGameFinished = function(){
+  if (this._frames.length === 12) {
+    return true;
+  }
+  else if (this._frames.length === 11) {
+    return !(this._frames[9].isStrike() && this._frames[10].isStrike());
+  }
+  else if (this._frames.length === 10) {
+    return this.currentFrame().isAllBonusAdded();
+  }
+  return false;
+}
+
+
+

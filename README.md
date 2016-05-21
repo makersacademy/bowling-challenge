@@ -46,17 +46,17 @@ As a Player
 In order to start a round
 I want to roll a ball -->
 
-As a Player
+<!-- As a Player
 In order to play a round
-I want to record the number of pins my ball knocks down
+I want to record the number of pins my ball knocks down -->
 
-As a Player
+<!-- As a Player
 In order to finish a round
-I want to bowl a second ball
+I want to bowl a second ball -->
 
-As a Player
+<!-- As a Player
 In order to finish a round
-I don't want to play a second ball if I have already knocked down all balls
+I don't want to play a second ball if I have already knocked down all balls -->
 
 As a Player
 In order to finish a round

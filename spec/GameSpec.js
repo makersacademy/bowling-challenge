@@ -12,7 +12,7 @@ describe('Game', function(){
       });
 
       it('should call a new round', function(){
-
+        expect(game.newRound).toEqual('Round({ MAX_BALLS: 2, PINS: 10, balls: 2, roundScore: [  ] })');
 
       });
 
@@ -21,11 +21,17 @@ describe('Game', function(){
         expect(game.rounds).toEqual(9);
 
       });
+      it('has an empty array', function(){
+        expect(game.score).toEqual([]);
+      });
 
-      it('should save pins from round', function(){
-        spyOn(Math, 'random').and.returnValue(.1);
-        round.roll;
-        expect(game.score).toEqual(1);
+
+      it('should save a round score when it calls a new one', function(){
+          spyOn(Math, 'random').and.returnValue(.4);
+        round.roll();
+        round.roll();
+        game.newRound();
+        expect(game.score).toEqual([[4,4]])
 
       });
 

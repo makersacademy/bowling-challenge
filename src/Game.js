@@ -22,6 +22,27 @@ Game.prototype.frame = function(frameNumber) {
   return this._frames[frameNumber]
 }
 
+Game.prototype.frameScore = function(frameNumber) {
+
+  if(this._frames[frameNumber][0].isStrike()) {}
+
+
+
+  var frameScore = 0
+  this._frames[frameNumber].forEach(function (roll) {
+    frameScore += roll.score()
+  })
+  return frameScore
+}
+
+Game.prototype.totalScore = function() {
+  var totalScore = 0
+  this._rolls.forEach(function (item) {
+    totalScore += item
+  })
+  return totalScore
+}
+
 
 
 
@@ -35,4 +56,5 @@ Game.prototype.updateRollInfo = function(roll) {
   this._frameRollNumber ++
   this._rollNumber ++
   this._rolls.push(roll.score())
+  roll.setRollNumber(this._rollNumber)
 }

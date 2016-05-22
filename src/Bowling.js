@@ -1,4 +1,4 @@
-'use strict';
+"use strict"
 
 function Bowling() {
   this.STARTING_PINS = 10
@@ -31,7 +31,7 @@ Bowling.prototype.score =  function() {
     return bowling.rolls[rollIndex] + bowling.rolls[rollIndex + 1] + bowling.rolls[rollIndex + 2]
   }
 
-   function getNormalScore() {
+  function getNormalScore() {
     return bowling.rolls[rollIndex] + bowling.rolls[rollIndex + 1]
   }
 }

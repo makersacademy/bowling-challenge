@@ -15,17 +15,25 @@ Bowling.prototype.score =  function() {
   var bowling = this
   for (var frameIndex = 0; frameIndex < 10; frameIndex++){
     if (isSpare()){
-      result = this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2]
+      result += getSpareScore()
     } else {
-result += this.rolls[rollIndex] + this.rolls[rollIndex + 1]
-}
-rollIndex += 2
-}
-return result
+      result += getNormalScore()
+    }
+    rollIndex += 2
+  }
+  return result
 
-function isSpare() {
-  return bowling.rolls[rollIndex] + bowling.rolls[rollIndex + 1] == 10
-}
+  function isSpare() {
+    return bowling.rolls[rollIndex] + bowling.rolls[rollIndex + 1] === 10
+  }
+
+  function getSpareScore() {
+    return bowling.rolls[rollIndex] + bowling.rolls[rollIndex + 1] + bowling.rolls[rollIndex + 2]
+  }
+
+   function getNormalScore() {
+    return bowling.rolls[rollIndex] + bowling.rolls[rollIndex + 1]
+  }
 }
 
 Bowling.prototype.randomScore = function() {

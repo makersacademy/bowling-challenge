@@ -17,7 +17,7 @@ describe('Game', function() {
       score: function() {
         return pinScore
       },
-      isStrike: function() {
+      rollNumber: function() {
         return value
       },
       setRollNumber: function(value) {
@@ -30,6 +30,9 @@ describe('Game', function() {
       },
       score: function() {
         return pinScore2
+      },
+      setRollNumber: function(value) {
+        return value
       }
     }
   })
@@ -98,26 +101,28 @@ describe('Game', function() {
   })
 
   describe('Strike', function() {
-    it('frame score gets a bonus of the score from next 2 rolls', function() {
-      spyOn(roll, 'isStrike').and.returnValue(true)
-      game.bowl(roll)
+    beforeEach(function() {
+      roll.setScore(10)
       roll2.setScore(3)
+      spyOn(roll, 'rollNumber').and.returnValue(1)
+    })
+
+    it('frame score gets a bonus of the score from next 2 rolls', function() {
+      game.bowl(roll)
       game.bowl(roll2)
       game.bowl(roll2)
       expect(game.frameScore(1)).toEqual(16)
+      expect(game.totalScore()).toEqual(22)
     })
 
     it('strike only stores 1 roll to a frame', function() {
-      roll.setScore(10)
       game.bowl(roll)
-      roll.setScore(3)
-      game.bowl(roll)
-      game.bowl(roll)
+      game.bowl(roll2)
+      game.bowl(roll2)
       expect(game.frame(1)).toEqual([roll])
-      expect(game.frame(2)).toEqual([roll, roll])
+      expect(game.frame(2)).toEqual([roll2, roll2])
     })
   })
-
 
 
 

@@ -23,8 +23,12 @@ Game.prototype.frame = function(frameNumber) {
 }
 
 Game.prototype.frameScore = function(frameNumber) {
-
-  if(this._frames[frameNumber][0].isStrike()) {}
+  var frameScore = 0
+  if(this._frames[frameNumber][0].score() === 10) {
+    var rollNum = this._frames[frameNumber][0].rollNumber()
+    frameScore = 10 + this.rollNumber(rollNum+1) + this.rollNumber(rollNum+2)
+    return frameScore
+  }
 
 
 

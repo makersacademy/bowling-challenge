@@ -3,7 +3,7 @@
 function Bowling() {
   this.STARTING_PINS = 10
   this.rolls = [];
-}
+};
 
 Bowling.prototype.roll = function(pins) {
   this.rolls.push(pins)

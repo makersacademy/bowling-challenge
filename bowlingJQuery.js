@@ -2,7 +2,7 @@ $(document).ready(function() {
   var bowling = new Bowling()
 
   function buttonClick(buttonValue) {
-    if (bowling.permittedValue(buttonValue)) {
+    if (bowling.isPermittedValue(buttonValue)) {
       bowling.knockDown(buttonValue)
       var idOfTable = bowling.incrementTableCell(buttonValue)
       $("#" + idOfTable).text(buttonValue)
@@ -44,6 +44,11 @@ $(document).ready(function() {
 
   $("button").click(function() {
     buttonClick(+this.value)
+  })
+
+  $("#resetButton").click(function() {
+    sendGameToServer("nil")
+    location.reload()
   })
 
 })

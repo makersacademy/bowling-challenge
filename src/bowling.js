@@ -3,10 +3,13 @@ function Bowling(play) {
                           play : new Play()
   this._tableCell = 0
   this._rolls = []
+  this._message = {0:"Gutter game! You scored ",
+                   1:"Perfect game! You scored ",
+                   2:"You scored "}
 }
 
 Bowling.prototype.knockDown = function(pins) {
-  if(this.permittedValue(pins)) {
+  if(this.isPermittedValue(pins)) {
     this._play.knockDown(pins)
     this.addRoll(pins)
   } else {
@@ -20,7 +23,7 @@ Bowling.prototype.addRoll = function(pins) {
 
 Bowling.prototype.calculateTotal = function() {
   if(this._play.isGameOver()) {
-    return "Game over! You scored " + this._play.calculate()
+    return this._message[this._play.gameOverMessage()] + this._play.calculate()
   } else {
     return this._play.calculate()
   }
@@ -38,6 +41,6 @@ Bowling.prototype.rolls = function() {
   return this._rolls
 }
 
-Bowling.prototype.permittedValue = function (pinsDown) {
-  return this._play.permittedValue(pinsDown)
+Bowling.prototype.isPermittedValue = function (pinsDown) {
+  return this._play.isPermittedValue(pinsDown)
 }

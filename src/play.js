@@ -8,7 +8,21 @@ Play.prototype.knockDown = function(pinsDown) {
   this._addRoll(pinsDown)
 }
 
-Play.prototype.permittedValue = function(pinsDown) {
+Play.prototype.calculate = function() {
+  return this._scoreCalculator.calculateTotal(this._frames)
+}
+
+Play.prototype.gameOverMessage = function() {
+  if (this.calculate() === 300) {
+    return 1
+  } else if (this.calculate() === 0) {
+    return 0
+  } else {
+    return 2
+  }
+}
+
+Play.prototype.isPermittedValue = function(pinsDown) {
   if(this._hasNoActiveFrame()) {
     return (pinsDown <= 10)
   } else {
@@ -16,9 +30,6 @@ Play.prototype.permittedValue = function(pinsDown) {
   }
 }
 
-Play.prototype.calculate = function() {
-  return this._scoreCalculator.calculateTotal(this._frames)
-}
 
 Play.prototype.isGameOver = function() {
   if(this._frames.length === 12) {

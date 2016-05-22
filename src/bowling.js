@@ -2,10 +2,15 @@ function Bowling(play) {
   this._play = typeof play !== "undefined" ?
                           play : new Play()
   this._tableCell = 0
+  this._rolls = []
 }
 
 Bowling.prototype.knockDown = function(pins) {
   this._play.knockDown(pins)
+}
+
+Bowling.prototype.addRoll = function(pins) {
+  this._rolls.push(pins)
 }
 
 Bowling.prototype.calculateTotal = function() {
@@ -24,6 +29,6 @@ Bowling.prototype.incrementTableCell = function(pinsDown) {
   }
 }
 
-Bowling.prototype.frames = function() {
-  return this._play.frames()
+Bowling.prototype.rolls = function() {
+  return this._rolls
 }

@@ -8,12 +8,12 @@ class Bowling < Sinatra::Base
 
   post "/pins" do
     headers "Access-Control-Allow-Origin" => "*"
-    session[:pins] = params.to_json
+    session[:rolls] = params[:rolls]
   end
 
   get "/pins" do
     headers "Access-Control-Allow-Origin" => "*"
-    session[:pins]
+    session[:rolls] || "nil"
   end
 
   get "/" do

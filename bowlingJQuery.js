@@ -3,49 +3,38 @@ $(document).ready(function() {
 
   function buttonClick(buttonValue) {
     bowling.knockDown(buttonValue)
-    var idOfTable = bowling.incrementTableCell(buttonValue)
+    bowling.addRoll(buttonValue)
+    idOfTable = bowling.incrementTableCell(buttonValue)
     $("#" + idOfTable).text(buttonValue)
     $("#totalScore").text(bowling.calculateTotal())
-    sendGameToServer(buttonValue)
+    sendGameToServer(bowling.rolls())
   }
 
-  function sendGameToServer(pins) {
-    var url = "http://localhost:4567/pins"
-
-    $.ajax({
-        type: "POST",
-        url: url,
-        dataType: "json",
-        data:{frames:bowling.frames()},
-        success: function(data){
-          console.log(data)
-        },
-        error: function(error){
-          console.log(error)
-        }
-    })
+  function sendGameToServer(rolls) {
+    $.post("http://localhost:4567/pins?rolls=" + rolls)
   }
 
   function getGameFromServer() {
-    var url = "http://localhost:4567/pins"
     $.ajax({
-        type: "GET",
-        url: url,
-        dataType: "json",
-        success: function(data){
-          console.log(data.frames)
-          inputPreviousGameInfo(data)
-        },
-        error: function(error){
-          console.log(error)
+      type: "GET",
+      url: "http://localhost:4567/pins",
+      dataType: "html",
+      success: function(rolls_array){
+        var array
+        if (rolls_array === "nil") {
+          array = []
+        } else {
+          array = rolls_array.split(",")
         }
+        inputPreviousGameInfo(array)
+      },
     })
   }
 
-  function inputPreviousGameInfo(data) {
-    for(var i = 0; i <= data.frames.length; i++) {
-
-    }
+  function inputPreviousGameInfo(rolls_array) {
+    rolls_array.forEach(function(entry) {
+      buttonClick(Number(entry))
+    })
   }
 
   getGameFromServer()
@@ -53,7 +42,5 @@ $(document).ready(function() {
   $("button").click(function() {
     buttonClick(+this.value)
   })
-
-
 
 })

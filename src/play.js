@@ -4,10 +4,6 @@ function Play(scoreCalculator) {
                           scoreCalculator : new ScoreCalculator()
 }
 
-Play.prototype.frames = function() {
-  return this._frames
-}
-
 Play.prototype.knockDown = function(pinsDown) {
   this._addRoll(pinsDown)
 }

@@ -29,4 +29,20 @@ describe("Game", function(){
 		game.addScore(3);
 		expect(game.calculateScores()).toEqual(24);
 	});
+
+	it('plays a perfect game', function(){
+		game.addScore(10);
+		game.addScore(10);
+		game.addScore(10);
+		game.addScore(10);
+		game.addScore(10);
+		game.addScore(10);
+		game.addScore(10);
+		game.addScore(10);
+		game.addScore(10);
+		game.addScore(10);
+		game.addScore(10);
+		game.addScore(10);
+		expect(game.calculateScores()).toEqual(300);
+	});
 });

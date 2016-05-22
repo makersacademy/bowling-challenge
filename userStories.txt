@@ -1,0 +1,35 @@
+* As a player,
+So that I can start a new game of bowling,
+I want to begin on frame 1 with zero points.
+
+As a player,
+So that I can have my score counted,
+I want each turn to change the 
+
+As a player,
+So that I can gain points in bowling,
+I want to have my score counted in the appropriate frame.
+
+As a player,
+So that I can have my score counted,
+I want each turn in each frame to represent the number of pins I knocked down.
+
+As a player,
+So that I can have a game successfully scored,
+I want to have a total score after all of my frames.
+
+As a player who just got a spare,
+So that I can have my spare successfully counted,
+I want to have my frame score change according to the score of the next throw.
+
+As a player who just got a strike,
+So that I can have my strike successfully counted,
+I want to have my frame score change according to the score of the next two throws.
+
+As a player who got a strike on the final frame,
+So that I can gain all possible extra points,
+I want to have two extra throws counted towards my total.
+
+As a player who got a spare on the final frame,
+So that I can gain all possible extra points,
+I want to have one extra throw counted towards my total.

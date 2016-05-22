@@ -27,6 +27,7 @@ Bowling.prototype.score =  function() {
   }
   return result
 
+
   function isStrike() {
     return bowling.rolls[rollIndex] === 10
   }
@@ -58,4 +59,7 @@ var rollMany = function (pins, rolls) {
   for (var i = 0; i < rolls; i++) {
   }
 }
+}
+
+
 

@@ -30,10 +30,16 @@ Game.prototype.frame = function(frameNumber) {
 Game.prototype.frameScore = function(frameNumber) {
   var frameScore = 0
   var rollNum = this._frames[frameNumber][0].rollNumber()
-  this.strikeCheck(frameNumber)
+  if(this._frames[frameNumber][0].score() === 10) {
+    if(this.rollNumberScore(rollNum+1) === undefined) { return 10 }
+    frameScore = 10 + this.rollNumberScore(rollNum+1) + this.rollNumberScore(rollNum+2)
+    return frameScore
+  }
+
   this._frames[frameNumber].forEach(function (roll) {
     frameScore += roll.score()
   })
+
   if(frameScore === 10) {
     if(this.rollNumberScore(rollNum+2) === undefined) { return 10 }
     frameScore += this.rollNumberScore(rollNum+2)
@@ -42,14 +48,14 @@ Game.prototype.frameScore = function(frameNumber) {
   return frameScore
 }
 
-Game.prototype.totalScore = function() {
-  var totalScore = 0
-  for (var i = 1; i = this._frameNumber; i++) {
-   var currentFrameScore = this.frameScore(i)
-  totalScore += currentFrameScore
-  }
-  return totalScore
-}
+// Game.prototype.totalScore = function() {
+//   var totalScore = 0
+//   for (var i = 1; i = this._frameNumber; i++) {
+//    var currentFrameScore = this.frameScore(i)
+//   totalScore += currentFrameScore
+//   }
+//   return totalScore
+// }
 
 
 
@@ -67,13 +73,13 @@ Game.prototype.updateRollInfo = function(roll) {
   roll.setRollNumber(this._rollNumber)
 }
 
-Game.prototype.strikeCheck = function(frameNumber) {
-  if(this._frames[frameNumber][0].score() === 10) {
-    if(this.rollNumberScore(rollNum+1) === undefined) { return 10 }
-    frameScore = 10 + this.rollNumberScore(rollNum+1) + this.rollNumberScore(rollNum+2)
-    return frameScore
-  }
-}
+// Game.prototype.strikeCheck = function(frameNumber, rollNum, frameScore) {
+//   if(this._frames[frameNumber][0].score() === 10) {
+//     if(this.rollNumberScore(rollNum+1) === undefined) { return 10 }
+//     frameScore = 10 + this.rollNumberScore(rollNum+1) + this.rollNumberScore(rollNum+2)
+//     return frameScore
+//   }
+// }
 
 // Game.prototype.spareCheck = function() {
 //   if(frameScore === 10) {

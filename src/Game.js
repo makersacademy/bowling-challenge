@@ -48,14 +48,14 @@ Game.prototype.frameScore = function(frameNumber) {
   return frameScore
 }
 
-// Game.prototype.totalScore = function() {
-//   var totalScore = 0
-//   for (var i = 1; i = this._frameNumber; i++) {
-//    var currentFrameScore = this.frameScore(i)
-//   totalScore += currentFrameScore
-//   }
-//   return totalScore
-// }
+Game.prototype.totalScore = function() {
+  var totalScore = 0
+  for (var i = 1; i = this._frameNumber; i++) {
+   var currentFrameScore = this.frameScore(i)
+  totalScore += currentFrameScore
+  }
+  return totalScore
+}
 
 
 

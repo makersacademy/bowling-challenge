@@ -6,8 +6,13 @@ function Game () {
   this.strike = false
 }
 
-
 Game.prototype.updateScore = function (frame) {
+  this.bonusCheck()
+  this.addScore()
+  this.nextFrame()
+}
+
+Game.prototype.bonusCheck = function (frame) {
   if (this.strike === true) {
     this.strikeBonus(frame)
   } else if (this.spare === true) {
@@ -15,13 +20,14 @@ Game.prototype.updateScore = function (frame) {
   } else {
     this.score += (this.currentFrame.bowl1 + this.currentFrame.bowl2)
   }
-  this.addScore()
+}
+Game.prototype.nextFrame = function () {
   this.currentFrame = new Frame(this)
   if (this.gameScores.length === 1) {
     this.currentFrame.frameNumber = 2
   } else {
-  this.currentFrame.frameNumber = this.gameScores.length + 1
-  this.tenthFrame()
+    this.currentFrame.frameNumber = this.gameScores.length + 1
+    this.tenthFrame()
   }
 }
 

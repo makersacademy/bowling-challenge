@@ -32,8 +32,9 @@ Frame.prototype.frameNumber = function () {
 Frame.prototype.endFrameCheck = function () {
   if (this.pins === 0) {
     this.game.updateScore()
+    this.game.strike = true
   }
 }
 Frame.prototype.endFrame = function () {
-  this.game.updateScore(this)  
+  this.game.updateScore(this)
 }

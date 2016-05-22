@@ -8,11 +8,11 @@ describe('Game', function () {
 
   })
 
-  it('should start on frame 1', function () {
+  it('starts on frame 1', function () {
     expect(game.currentFrame.frameNumber).toEqual(1)
   })
 
-  it('should add scores for first frame of game', function () {
+  it('adds scores for first frame of game', function () {
     spyOn(Math, 'floor').and.returnValue(5)
     game.currentFrame.firstBowl()
     game.currentFrame.secondBowl()
@@ -25,16 +25,33 @@ describe('Game', function () {
     expect(game.currentFrame.frameNumber).toEqual(2)
   })
 
-  it('should store each frame', function () {
+  it('stores each frame', function () {
     spyOn(Math, 'floor').and.returnValue(5)
     game.currentFrame.firstBowl()
     game.currentFrame.secondBowl()
     expect(game.gameScores).toContain(10)
     expect(game.currentFrame.frameNumber).toEqual(2)
   })
-  it('should move to next frame if player rolls a strike', function () {
+  it('moves to next frame if player rolls a strike', function () {
     spyOn(Math, 'floor').and.returnValue(10)
     game.currentFrame.firstBowl()
     expect(game.currentFrame.frameNumber).toEqual(2)
   })
+
+  it('adds together scores of two frames', function () {
+    spyOn(Math, 'floor').and.returnValue(5)
+    game.currentFrame.firstBowl()
+    game.currentFrame.secondBowl()
+    game.currentFrame.firstBowl()
+    game.currentFrame.secondBowl()
+    expect(game.score).toEqual(20)
+    expect(game.gameScores).toContain(10)
+  })
+  it('adds a strike bonus', function () {
+    spyOn(Math, 'floor').and.returnValue(10)
+    game.currentFrame.firstBowl()
+    game.currentFrame.firstBowl()
+    expect(game.score).toEqual(30)
+  })
+
 })

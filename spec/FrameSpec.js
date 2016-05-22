@@ -12,15 +12,13 @@ describe('Frame', function () {
   })
 
   it('should have allow player to bowl first bowl', function () {
-    spyOn(Math, 'floor').and.returnValue(5)
-    frame.firstBowl()
+    frame.firstBowl(5)
     expect(frame.bowl1).toEqual(5)
   })
 
   it('should allow player to bowl twice per game', function () {
-    spyOn(Math, 'floor').and.returnValue(5)
-    frame.firstBowl()
-    frame.secondBowl()
+    frame.firstBowl(5)
+    frame.secondBowl(5)
     expect(frame.pins).toEqual(0)
     expect(frame.bowl2).toEqual(5)
   })

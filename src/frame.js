@@ -6,23 +6,15 @@ function Frame (game) {
   this.bowl2 = 0
 }
 
-Frame.prototype.firstBowl = function () {
-  this.bowl1 += Math.floor((Math.random() * 10) + 1)
+Frame.prototype.firstBowl = function (amount) {
+  this.bowl1 += amount
   this.pins -= this.bowl1
   this.endFrameCheck()
-  }
-Frame.prototype.secondBowl = function () {
-  this.bowl2 += Math.floor((Math.random() * 10) + 1)
+}
+Frame.prototype.secondBowl = function (amount) {
+  this.bowl2 += amount
   this.pins -= this.bowl2
   this.endFrame()
-}
-
-Frame.prototype.bowlOne = function () {
-  return this.bowl1
-}
-
-Frame.prototype.bowlTwo = function () {
-  return this.bowl2
 }
 
 Frame.prototype.frameNumber = function () {
@@ -36,5 +28,13 @@ Frame.prototype.endFrameCheck = function () {
   }
 }
 Frame.prototype.endFrame = function () {
-  this.game.updateScore(this)
+  if (this.bowl1 > 0 && this.bowl2 === 10) {
+    this.game.updateScore(this)
+    this.game.strike = true
+  } else if (this.pins === 0) {
+    this.game.updateScore(this)
+    this.game.spare = true
+  } else {
+    this.game.updateScore(this)
+  }
 }

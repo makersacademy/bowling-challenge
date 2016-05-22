@@ -3,7 +3,9 @@
 function Game(){
 	this.frames = [];
 	this.currentFrame = 1;
-	this.countScore = 0;
+	// this.totalScore = 0;
+	// this.completedFrames = [];
+	// this.frameCount = 0;
 
 	for (var i = 0; i < 10; i++) {
 		this.frames.push(new Frame());
@@ -18,18 +20,29 @@ Game.prototype.addScore = function(number){
 	this.frames[this.currentFrame - 1].addScore(number);
 
 	if (this.frames[this.currentFrame - 1].isComplete()) {
- 		this.currentFrame += 1;
+		this.currentFrame += 1;
 	}
 }
 
+// Game.prototype.updateCompletedFrames = function() {
+// 	if (this.frames[this.currentFrame - 1].isComplete()) {
+// 		this.completedFrames.push(this.frames[currentFrame - 1].rolls);
+// 		this.currentFrame += 1;
+
+// 	}
+// }
+
 Game.prototype.calculateScores = function(){
+	var result = 0;
+
 	for (var i = 0; i < 10; i++) {
 		if (this.frames[i].isStrike()) {
-			console.log(this.frames[i].score() + 10 + this.frames[i + 1].score());
+			result += this.frames[i].score() + this.frames[i + 1].rolls[0] + this.frames[i + 1].rolls[1];
 		} else if (this.frames[i].isSpare()) {
-			console.log(this.frames[i].score() + 10 + this.frames[i + 1].rolls[0]);
+			result += this.frames[i].score() + this.frames[i + 1].rolls[0];
 		} else {
-			console.log(this.frames[i].score());
+			result += this.frames[i].score();
 		}
 	}
+	return result;
 }

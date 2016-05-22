@@ -34,6 +34,12 @@ describe("Bowling", function () {
     expect(bowling.score()).toEqual(300)
   });
 
+  it("can end the game", function () {
+    rollMany(10, 20)
+    bowling.endGame()
+    expect(bowling.gameOver).toBe(true)
+  });
+
   var rollMany = function (pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       bowling.roll(pins)

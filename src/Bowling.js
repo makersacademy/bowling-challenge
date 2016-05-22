@@ -1,12 +1,18 @@
 "use strict"
 
 function Bowling() {
-  this.STARTING_PINS = 10
   this.rolls = [];
+  this.frameIndex = 0
+  this.gameOver = false
 }
 
 Bowling.prototype.roll = function(pins) {
   this.rolls.push(pins)
+}
+
+Bowling.prototype.endGame = function() {
+  if (this.rolls = 20)
+    this.gameOver = true
 }
 
 Bowling.prototype.score =  function() {
@@ -60,6 +66,7 @@ var rollMany = function (pins, rolls) {
   }
 }
 }
+
 
 
 

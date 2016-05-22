@@ -8,6 +8,6 @@ function Frames() {
 Frames.prototype.frameNumber = function () {
   if (this.frameCount > 10) {
     throw new Error("A bowling game only has 10 frames")
-  };
+  }
   return this.frameCount
 }

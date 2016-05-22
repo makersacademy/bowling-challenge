@@ -1,15 +1,17 @@
 
-function Game(frame) {
-  this.gameFrames = []
+function Game () {
+  this.gameScores = []
   this.score = 0
-  this.currentFrame = frame
+  this.currentFrame = new Frame (this)
 }
 
-Game.prototype.updateScore = function(frame) {
+Game.prototype.updateScore = function (frame) {
   this.score += (this.currentFrame.bowlOne() + this.currentFrame.bowlTwo())
-  this.addFrame()
-  this.currentFrame.endFrame()
-};
-Game.prototype.addFrame = function(){
-  this.gameFrames.push(this.currentFrame)
+  this.addScore()
+  this.currentFrame = new Frame(this)
+  this.currentFrame.frameNumber ++
+}
+
+Game.prototype.addScore = function () {
+  this.gameScores.push(this.score)
 }

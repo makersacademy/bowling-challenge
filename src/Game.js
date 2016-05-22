@@ -14,7 +14,7 @@ Game.prototype.bowl = function(roll = new Roll()) {
   if(this._frameRollNumber === 2 || roll.score() === 10) { this.updateFrameInfo() }
 }
 
-Game.prototype.rollNumber = function(number) {
+Game.prototype.rollNumberScore = function(number) {
   return this._rolls[number-1]
 }
 
@@ -24,18 +24,21 @@ Game.prototype.frame = function(frameNumber) {
 
 Game.prototype.frameScore = function(frameNumber) {
   var frameScore = 0
+  var rollNum = this._frames[frameNumber][0].rollNumber()
   if(this._frames[frameNumber][0].score() === 10) {
-    var rollNum = this._frames[frameNumber][0].rollNumber()
-    frameScore = 10 + this.rollNumber(rollNum+1) + this.rollNumber(rollNum+2)
+    if(this.rollNumberScore(rollNum+1) === undefined) { return 10 }
+    frameScore = 10 + this.rollNumberScore(rollNum+1) + this.rollNumberScore(rollNum+2)
     return frameScore
   }
 
-
-
-  var frameScore = 0
   this._frames[frameNumber].forEach(function (roll) {
     frameScore += roll.score()
   })
+  if(frameScore === 10) {
+    if(this.rollNumberScore(rollNum+2) === undefined) { return 10 }
+    frameScore += this.rollNumberScore(rollNum+2)
+    return frameScore
+  }
   return frameScore
 }
 

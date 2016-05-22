@@ -17,7 +17,7 @@ describe('Game', function() {
       score: function() {
         return pinScore
       },
-      rollNumber: function() {
+      rollNumber: function(value) {
         return value
       },
       setRollNumber: function(value) {
@@ -70,9 +70,9 @@ describe('Game', function() {
     game.bowl(roll)
     roll.setScore(3)
     game.bowl(roll)
-    expect(game.rollNumber(1)).toEqual(2)
-    expect(game.rollNumber(2)).toEqual(4)
-    expect(game.rollNumber(3)).toEqual(3)
+    expect(game.rollNumberScore(1)).toEqual(2)
+    expect(game.rollNumberScore(2)).toEqual(4)
+    expect(game.rollNumberScore(3)).toEqual(3)
   })
 
   it('can calculate the total score of every roll to that point', function() {
@@ -109,6 +109,7 @@ describe('Game', function() {
 
     it('frame score gets a bonus of the score from next 2 rolls', function() {
       game.bowl(roll)
+      expect(game.frameScore(1)).toEqual(10)
       game.bowl(roll2)
       game.bowl(roll2)
       expect(game.frameScore(1)).toEqual(16)
@@ -121,6 +122,20 @@ describe('Game', function() {
       game.bowl(roll2)
       expect(game.frame(1)).toEqual([roll])
       expect(game.frame(2)).toEqual([roll2, roll2])
+    })
+  })
+
+  describe('Spare', function() {
+    it('frame score gets a bonus of the score from the next roll', function() {
+      spyOn(roll, 'rollNumber').and.returnValue(1)
+      roll.setScore(5)
+      game.bowl(roll)
+      game.bowl(roll)
+      expect(game.frameScore(1)).toEqual(10)
+      roll2.setScore(2)
+      game.bowl(roll2)
+      game.bowl(roll2)
+      expect(game.frameScore(1)).toEqual(12)
     })
   })
 

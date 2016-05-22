@@ -1,4 +1,4 @@
-describe('Game', function () {
+describe('Normal Game functions', function () {
   var game
 
   beforeEach(function () {
@@ -21,11 +21,10 @@ describe('Game', function () {
     expect(game.currentFrame.frameNumber).toEqual(2)
   })
 
-  it('stores each frame', function () {
+  it('stores each frames score', function () {
     game.currentFrame.firstBowl(5)
     game.currentFrame.secondBowl(5)
     expect(game.gameScores).toContain(10)
-    expect(game.currentFrame.frameNumber).toEqual(2)
   })
   it('moves to next frame if player rolls a strike', function () {
     game.currentFrame.firstBowl(10)
@@ -41,6 +40,15 @@ describe('Game', function () {
     expect(game.gameScores).toContain(8)
     expect(game.gameScores).toContain(17)
   })
+})
+
+describe('Bonuses', function () {
+  var game
+
+  beforeEach(function () {
+    game = new Game()
+  })
+
   it('adds a strike bonus', function () {
     game.currentFrame.firstBowl(10)
     game.currentFrame.firstBowl(10)
@@ -72,6 +80,14 @@ describe('Game', function () {
     while (i < 10)
     expect(game.currentFrame.frameNumber).toEqual('Spare Bonus')
   })
+})
+describe('Games Scenarios', function () {
+  var game
+
+  beforeEach(function () {
+      game = new Game()
+    })
+
   it('correctly calculates perfect game', function () {
     var i = 0
     do {
@@ -95,6 +111,23 @@ describe('Game', function () {
     expect(game.currentFrame.frameNumber).toEqual('Game Over')
     expect(game.score).toEqual(0)
   })
+
+  it('Adds spare bonus in tenth frame', function () {
+    var i = 0
+    do {
+      game.currentFrame.firstBowl(0)
+      game.currentFrame.secondBowl(0)
+      i++
+    }
+    while (i < 9)
+    game.currentFrame.firstBowl(5)
+    game.currentFrame.secondBowl(5)
+    expect(game.spareLast).toEqual(true)
+    expect(game.currentFrame.frameNumber).toEqual('Spare Bonus')
+    game.currentFrame.firstBowl(5)
+    expect(game.score).toEqual(15)
+  })
+
   it('stops game after 10 frames', function () {
     var i = 0
     do {
@@ -103,6 +136,6 @@ describe('Game', function () {
       i++
     }
     while (i <= 10)
-    expect(function () { game.currentFrame.firstBowl(0) }).toThrow('The game is over')
+    expect(function () { game.currentFrame.firstBowl(0) }).toThrow ('The game is over')
   })
 })

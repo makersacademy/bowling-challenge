@@ -32,28 +32,27 @@ Bowling.prototype.score =  function() {
   }
 
   function getStrikeScore() {
-   return bowling.rolls[rollIndex] + bowling.rolls[rollIndex + 1] + bowling.rolls[rollIndex + 2]
+   return bowling.rolls[rollIndex]
+   + bowling.rolls[rollIndex + 1]
+   + bowling.rolls[rollIndex + 2]
  }
 
  function isSpare() {
-  return bowling.rolls[rollIndex] + bowling.rolls[rollIndex + 1] === 10
+  return bowling.rolls[rollIndex]
+  + bowling.rolls[rollIndex + 1] === 10
 }
 
 function getSpareScore() {
-  return bowling.rolls[rollIndex] + bowling.rolls[rollIndex + 1] + bowling.rolls[rollIndex + 2]
+  return bowling.rolls[rollIndex]
+  + bowling.rolls[rollIndex + 1]
+  + bowling.rolls[rollIndex + 2]
 }
 
 function getNormalScore() {
-  return bowling.rolls[rollIndex] + bowling.rolls[rollIndex + 1]
+  return bowling.rolls[rollIndex]
+  + bowling.rolls[rollIndex + 1]
 }
 }
-
-Bowling.prototype.randomScore = function() {
-  return Math.floor((Math.random()) * 11);
-}
-
-
-// for (var frameIndex = 0; frameIndex < 10; frameIndex++)
 
 var rollMany = function (pins, rolls) {
   for (var i = 0; i < rolls; i++) {

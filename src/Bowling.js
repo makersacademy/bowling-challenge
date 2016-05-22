@@ -1,8 +1,9 @@
 "use strict"
 
-function Bowling() {
+
+function Bowling(frames) {
   this.rolls = [];
-  this.frameIndex = 0
+  this.frames = frames
   this.gameOver = false
 }
 
@@ -11,7 +12,7 @@ Bowling.prototype.roll = function(pins) {
 }
 
 Bowling.prototype.endGame = function() {
-  if (this.rolls.length === 20) {
+  if (this.frames = 10) {
     this.gameOver = true
   }
 }
@@ -20,7 +21,7 @@ Bowling.prototype.score =  function() {
   var result = 0
   var rollIndex = 0
   var bowling = this
-  for (var frameIndex = 0; frameIndex < 10; frameIndex++){
+  for (bowling.frames = 0; bowling.frames < 10; bowling.frames++){
     if (isStrike()) {
       result += getStrikeScore()
       rollIndex++
@@ -67,6 +68,7 @@ var rollMany = function (pins, rolls) {
   }
 }
 }
+
 
 
 

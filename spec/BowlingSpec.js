@@ -3,7 +3,6 @@
 describe("Bowling", function () {
   var bowling;
 
-
   beforeEach(function () {
     bowling = new Bowling();
   });
@@ -38,6 +37,12 @@ describe("Bowling", function () {
     rollMany(2, 20)
     bowling.endGame()
     expect(bowling.gameOver).toBe(true)
+  });
+
+  it("can return the number of frames", function () {
+    bowling.roll(2)
+    bowling.roll(2)
+    expect(bowling.gameOver).toBe(false)
   });
 
   var rollMany = function (pins, rolls) {

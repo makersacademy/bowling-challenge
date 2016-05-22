@@ -1,6 +1,5 @@
 "use strict"
 
-
 function Bowling(frames) {
   this.rolls = [];
   this.frames = frames
@@ -68,8 +67,3 @@ var rollMany = function (pins, rolls) {
   }
 }
 }
-
-
-
-
-

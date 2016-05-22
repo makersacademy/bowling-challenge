@@ -4,7 +4,7 @@ describe("Bowling", function () {
   var bowling;
 
   beforeEach(function () {
-    bowling = new Bowling();
+    bowling = new Bowling(frames);
   });
 
   it("can roll a gutter game", function () {

@@ -13,11 +13,6 @@ describe("Bowling", function () {
     expect(bowling.score()).toEqual(0)
   });
 
-  it("should respond to the random score generator", function () {
-    spyOn(Math, "random").and.returnValue(0.5)
-    expect(bowling.randomScore()).toEqual(5)
-  });
-
   it("can roll a spare", function () {
     bowling.roll(4)
     bowling.roll(6)

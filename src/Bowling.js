@@ -52,7 +52,7 @@ function getNormalScore() {
   return bowling.rolls[rollIndex] +
   bowling.rolls[rollIndex + 1]
 }
-}
+
 
 var rollMany = function (pins, rolls) {
   for (var i = 0; i < rolls; i++) {

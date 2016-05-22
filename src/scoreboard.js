@@ -35,7 +35,7 @@ Game.prototype.score = function () {
   for (var line = 0; line < 10; line ++) {
     if (this.isStrike()) {
       result += this.strikeScore();
-      this.rollIndex++;
+      this.rollIndex += 1;
     } else if (this.isSpare()) {
       result += this.spareScore();
       this.rollIndex += 2;

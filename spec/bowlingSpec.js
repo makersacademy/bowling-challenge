@@ -10,7 +10,8 @@ describe('Bowling', function(){
 
   describe('tracks score', function(){
     it('starts at zero', function() {
-      expect(bowling.score).toEqual(0);
+      expect(bowling.getScore()).toEqual(0);
     });
   });
+
 });

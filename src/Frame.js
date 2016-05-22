@@ -8,6 +8,8 @@ function add(a,b) {
 
 function Frame(){
   this._Bonus = [];
+  this._firstRoll = null;
+  this._secondRoll = null;
 }
 
 Frame.prototype.recordFirstRoll = function(score){

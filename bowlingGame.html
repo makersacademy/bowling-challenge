@@ -3,11 +3,100 @@
 
   <head>
     <title>Bowling Game Scorer</title>
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <script src="public/jquery.js"></script>
+    <script src="public/bootstrap.min.js"></script>
   </head>
 
   <body>
 
-  <h1> Scorer </h1>
+    <div class="container">
+
+      <h1> Bowling Game Scorer </h1>
+      <div class="btn-group btn-group-lg" id='score-buttons'>
+        <button type="button" class="btn btn-default btn-sm pins" id='1'>1</button>
+        <button type="button" class="btn btn-default btn-sm pins" id='2'>2</button>
+        <button type="button" class="btn btn-default btn-sm pins" id='3'>3</button>
+        <button type="button" class="btn btn-default btn-sm pins" id='4'>4</button>
+        <button type="button" class="btn btn-default btn-sm pins" id='5'>5</button>
+        <button type="button" class="btn btn-default btn-sm pins" id='6'>6</button>
+        <button type="button" class="btn btn-default btn-sm pins" id='7'>7</button>
+        <button type="button" class="btn btn-default btn-sm pins" id='8'>8</button>
+        <button type="button" class="btn btn-default btn-sm pins" id='9'>9</button>
+        <button type="button" class="btn btn-default btn-sm pins" id='10'>10</button>
+      </div>
+
+      <button type="button" class="btn btn-default btn-lg" id='start-game'>Start Game</button>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Frame</th>
+            <th>Rolls</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id='frame-1'>
+            <td>1</td>
+            <td class='rolls'></td>
+            <td class='score'></td>
+          </tr>
+          <tr id='frame-2'>
+            <td>2</td> rolls
+            <td class='rolls'></td>
+            <td class='score'></td>
+          </tr>
+          <tr id='frame-3'>
+            <td>3</td>
+            <td class='rolls'></td>
+            <td class='score'></td>
+          </tr>
+          <tr id='frame-4'>
+            <td>4</td>
+            <td class='rolls'></td>
+            <td class='score'></td>
+          </tr>
+          <tr id='frame-5'>
+            <td>5</td>
+            <td class='rolls'></td>
+            <td class='score'></td>
+          </tr>
+          <tr id='frame-6'>
+            <td>6</td>
+            <td class='rolls'></td>
+            <td class='score'></td>
+          </tr>
+          <tr id='frame-7'>
+            <td>7</td>
+            <td class='rolls'></td>
+            <td class='score'></td>
+          </tr>
+          <tr id='frame-8'>
+            <td>8</td>
+            <td class='rolls'></td>
+            <td class='score'></td>
+          </tr>
+          <tr id='frame-9'>
+            <td>9</td>
+            <td class='rolls'></td>
+            <td class='score'></td>
+          </tr>
+          <tr id='frame-10'>
+            <td>10</td>
+            <td class='rolls'></td>
+            <td class='score'></td>
+          </tr>
+          <tr id='frame-total'>
+            <td>Total</td>
+            <td></td>
+            <td id='total-score'></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
 
 
     <footer>
@@ -16,6 +105,28 @@
       <script src="public/bootstrap.min.js"></script>
       <script type="text/javascript" src='src/Bowling.js'></script>
       <script type="text/javascript" src='src/Frame.js'></script>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          var game;
+
+          function displayFrameScores(){
+            for(var i = 1; i < 10; i++){
+              $("#frame-" + i).addClass("rolls").text(i);
+            }
+          }
+
+          $("#start-game" ).click(function() {
+            game = new Bowling();
+          });
+
+          $(".pins").click(function(){
+            game.roll(Number(this.id));
+            displayFrameScores();
+          })
+
+
+        })
+      </script>
     </footer>
 
   </body>

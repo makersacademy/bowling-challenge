@@ -26,6 +26,19 @@ describe("Bowling", function () {
     expect(bowling.score()).toEqual(14)
   });
 
+  it("can roll a strike", function () {
+    bowling.roll(10)
+    bowling.roll(2)
+    bowling.roll(2)
+    rollMany(0,16)
+    expect(bowling.score()).toEqual(18)
+  });
+
+  it("can bowl a perfect game", function () {
+    rollMany(10,12)
+    expect(bowling.score()).toEqual(300)
+  });
+
   var rollMany = function (pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       bowling.roll(pins)

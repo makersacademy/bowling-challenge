@@ -8,6 +8,9 @@ function Frame(){
 Frame.prototype.roll = function(noOfPins) {
   if(this.rolls.length >= 2){
     throw new Error('Exceeded maximum rolls');
+  } else if(this.rolls.length === 1)
+    if (this.getPins() + noOfPins > 10) {
+      throw new Error('Exceeded maximum pins');
   };
   this.rolls.push(noOfPins);
 };

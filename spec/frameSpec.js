@@ -20,8 +20,8 @@ describe('Frame', function(){
       expect(function() {
         frame.roll(1);
       }).toThrowError('Exceeded maximum rolls');
-
     });
+
   });
   describe('records number of pins', function() {
 
@@ -42,9 +42,12 @@ describe('Frame', function(){
       expect(frame.getPins()).toEqual(9);
     });
 
-    // it('tracks max of 10 pins', function(){
-    //
-    // });
+    it('tracks max of 10 pins', function(){
+      frame.roll(4);
+      expect(function() {
+        frame.roll(7);
+      }).toThrowError('Exceeded maximum pins');
+    });
 
   });
 

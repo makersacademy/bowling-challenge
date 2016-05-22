@@ -27,7 +27,7 @@ describe("Game", function() {
   });
 
   it("When initiated player had 10 frames to play", function() {
-    expect(game.frames.length).toBe(10);
+    expect(game.frames.length).toBe(11);
   });
 
   it("1st turn' score goes in the 1st frame", function() {
@@ -94,5 +94,14 @@ describe("Game", function() {
     game.roll(2);
     game.roll(2);
     expect(game.score).toBe(40);
+  });
+
+  it("keeps track of score when 3 strikes in a row", function() {
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(2);
+    game.roll(2);
+    expect(game.score).toBe(70);
   });
 });

@@ -11,8 +11,9 @@ Bowling.prototype.roll = function(pins) {
 }
 
 Bowling.prototype.endGame = function() {
-  if (this.rolls = 20)
+  if (this.rolls.length === 20) {
     this.gameOver = true
+  }
 }
 
 Bowling.prototype.score =  function() {

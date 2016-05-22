@@ -35,7 +35,7 @@ describe("Bowling", function () {
   });
 
   it("can end the game", function () {
-    rollMany(10, 20)
+    rollMany(2, 20)
     bowling.endGame()
     expect(bowling.gameOver).toBe(true)
   });

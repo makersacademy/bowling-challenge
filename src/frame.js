@@ -4,6 +4,8 @@ function Frame (game) {
   this.pins = 10
   this.bowl1 = 0
   this.bowl2 = 0
+  this.bonus1 = 0
+  this.bonus2 = 0
 }
 
 Frame.prototype.firstBowl = function (amount) {
@@ -21,13 +23,20 @@ Frame.prototype.frameNumber = function () {
   return this.frameNumber
 }
 
-Frame.prototype.endFrameCheck = function () {
-  if (this.pins === 0) {
+Frame.prototype.endFrameCheck = function (amount) {
+  if (this.frameNumber === 'Strike Bonus') {
+    this.bonus1 += amount
+  } else if (this.frameNumber === 'Spare Bonus') {
+    this.bonus1 += amount
+  } else if (this.pins === 0) {
     this.game.updateScore()
     this.game.strike = true
   }
 }
-Frame.prototype.endFrame = function () {
+Frame.prototype.endFrame = function (amount) {
+  if (this.frameNumber === 'Strike Bonus') {
+    this.bonus2 += amount
+  }
   if (this.bowl1 > 0 && this.bowl2 === 10) {
     this.game.updateScore(this)
     this.game.strike = true

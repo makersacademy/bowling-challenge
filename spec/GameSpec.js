@@ -63,4 +63,26 @@ describe('Game', function () {
     while (i < 10)
     expect(game.currentFrame.frameNumber).toEqual('Strike Bonus')
   })
+  it('allows spare bonus bowls in 10th frame', function () {
+    var i = 0
+    do {
+      game.currentFrame.firstBowl(5)
+      game.currentFrame.secondBowl(5)
+      i++
+    }
+    while (i < 10)
+    expect(game.currentFrame.frameNumber).toEqual('Spare Bonus')
+  })
+  it('correctly calculates perfect game', function () {
+    var i = 0
+    do {
+      game.currentFrame.firstBowl(10)
+      i++
+    }
+    while (i < 10)
+    expect(game.currentFrame.frameNumber).toEqual('Strike Bonus')
+    game.currentFrame.firstBowl(10)
+    game.currentFrame.secondBowl(10)
+    expect(game.score).toEqual(300)
+  })
 })

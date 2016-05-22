@@ -58,7 +58,7 @@ Game.prototype.tenthFrame = function () {
       this.currentFrame.frameNumber = 'Strike Bonus'
     } else if (this.spare === true) {
       this.currentFrame.frameNumber = 'Spare Bonus'
-    } else if (this.currentFrame.frameNumber > 11 ) {
+    } else {
       this.currentFrame.frameNumber = 'Game Over'
     }
   }

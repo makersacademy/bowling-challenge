@@ -85,4 +85,25 @@ describe('Game', function () {
     game.currentFrame.secondBowl(10)
     expect(game.score).toEqual(300)
   })
+  it('correctly calculates gutter game', function () {
+    var i = 0
+    do {
+      game.currentFrame.firstBowl(0)
+      game.currentFrame.secondBowl(0)
+      i++
+    }
+    while (i < 10)
+    expect(game.currentFrame.frameNumber).toEqual('Game Over')
+    expect(game.score).toEqual(0)
+  })
+  it('stops game after 10 frames', function () {
+    var i = 0
+    do {
+      game.currentFrame.firstBowl(0)
+      game.currentFrame.secondBowl(0)
+      i++
+    }
+    while (i <= 10)
+    expect(function(){game.currentFrame.firstBowl(0);}).toThrow("The game is over");
+  })
 })

@@ -3,7 +3,6 @@ describe('Game', function () {
 
   beforeEach(function () {
     game = new Game()
-
   })
 
   it('starts on frame 1', function () {
@@ -104,6 +103,6 @@ describe('Game', function () {
       i++
     }
     while (i <= 10)
-    expect(function(){game.currentFrame.firstBowl(0);}).toThrow("The game is over");
+    expect(function () { game.currentFrame.firstBowl(0) }).toThrow('The game is over')
   })
 })

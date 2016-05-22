@@ -54,4 +54,14 @@ describe('Game', function () {
     game.currentFrame.secondBowl(5)
     expect(game.score).toEqual(17)
   })
+
+  it('allows strike bonus bowls in 10th frame', function () {
+    var i = 0
+    do {
+      game.currentFrame.firstBowl(10);
+      i++;
+    }
+    while (i < 10)
+    expect(game.currentFrame.frameNumber).toEqual('Strike Bonus')
+  })
 })

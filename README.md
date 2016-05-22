@@ -13,11 +13,11 @@ Fifth weekend challenge, forked from MakersAcademy.
 
 Installation instructions
 -------------------------
-''''
+'''
 $ git clone https://github.com/HannaEb/bowling-challenge
 $ cd bowling-challenge
 $ open SpecRunner.html
-''''
+'''
 
 Screenshot
 ----------

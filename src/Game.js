@@ -11,7 +11,12 @@ function Game() {
 Game.prototype.bowl = function(roll = new Roll()) {
   this.updateRollInfo(roll)
   this._frames[this._frameNumber].push(roll)
-  if(this._frameRollNumber === 2 || roll.score() === 10) { this.updateFrameInfo() }
+  if(this._frameNumber === 10) {
+    if(this._frameRollNumber === 3) { this.updateFrameInfo() }
+  }
+  else {
+    if(this._frameRollNumber === 2 || roll.score() === 10) { this.updateFrameInfo() }
+  }
 }
 
 Game.prototype.rollNumberScore = function(number) {
@@ -25,12 +30,7 @@ Game.prototype.frame = function(frameNumber) {
 Game.prototype.frameScore = function(frameNumber) {
   var frameScore = 0
   var rollNum = this._frames[frameNumber][0].rollNumber()
-  if(this._frames[frameNumber][0].score() === 10) {
-    if(this.rollNumberScore(rollNum+1) === undefined) { return 10 }
-    frameScore = 10 + this.rollNumberScore(rollNum+1) + this.rollNumberScore(rollNum+2)
-    return frameScore
-  }
-
+  this.strikeCheck(frameNumber)
   this._frames[frameNumber].forEach(function (roll) {
     frameScore += roll.score()
   })
@@ -44,9 +44,10 @@ Game.prototype.frameScore = function(frameNumber) {
 
 Game.prototype.totalScore = function() {
   var totalScore = 0
-  this._rolls.forEach(function (item) {
-    totalScore += item
-  })
+  for (var i = 1; i = this._frameNumber; i++) {
+   var currentFrameScore = this.frameScore(i)
+  totalScore += currentFrameScore
+  }
   return totalScore
 }
 
@@ -65,3 +66,19 @@ Game.prototype.updateRollInfo = function(roll) {
   this._rolls.push(roll.score())
   roll.setRollNumber(this._rollNumber)
 }
+
+Game.prototype.strikeCheck = function(frameNumber) {
+  if(this._frames[frameNumber][0].score() === 10) {
+    if(this.rollNumberScore(rollNum+1) === undefined) { return 10 }
+    frameScore = 10 + this.rollNumberScore(rollNum+1) + this.rollNumberScore(rollNum+2)
+    return frameScore
+  }
+}
+
+// Game.prototype.spareCheck = function() {
+//   if(frameScore === 10) {
+//     if(this.rollNumberScore(rollNum+2) === undefined) { return 10 }
+//     frameScore += this.rollNumberScore(rollNum+2)
+//     return frameScore
+//   }
+// }

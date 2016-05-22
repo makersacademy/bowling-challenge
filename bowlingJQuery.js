@@ -2,12 +2,15 @@ $(document).ready(function() {
   var bowling = new Bowling()
 
   function buttonClick(buttonValue) {
-    bowling.knockDown(buttonValue)
-    bowling.addRoll(buttonValue)
-    idOfTable = bowling.incrementTableCell(buttonValue)
-    $("#" + idOfTable).text(buttonValue)
-    $("#totalScore").text(bowling.calculateTotal())
-    sendGameToServer(bowling.rolls())
+    if (bowling.permittedValue(buttonValue)) {
+      bowling.knockDown(buttonValue)
+      var idOfTable = bowling.incrementTableCell(buttonValue)
+      $("#" + idOfTable).text(buttonValue)
+      $("#totalScore").text(bowling.calculateTotal())
+      sendGameToServer(bowling.rolls())
+    } else {
+      alert("You can't score more than 10 per frame!")
+    }
   }
 
   function sendGameToServer(rolls) {

@@ -52,4 +52,15 @@ describe("Bowling", function() {
     })
   })
 
+  describe("check if permitted value for roll", function() {
+    it("returns false when first+second roll score > 10", function() {
+      spyOn(bowling._play,"permittedValue").and.returnValue(false);
+      expect(bowling.permittedValue()).toBeFalsy()
+    })
+    it("returns true when first+second roll score <= 10", function() {
+      spyOn(bowling._play,"permittedValue").and.returnValue(true);
+      expect(bowling.permittedValue()).toBeTruthy()
+    })
+  })
+
 })

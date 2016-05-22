@@ -6,7 +6,12 @@ function Bowling(play) {
 }
 
 Bowling.prototype.knockDown = function(pins) {
-  this._play.knockDown(pins)
+  if(this.permittedValue(pins)) {
+    this._play.knockDown(pins)
+    this.addRoll(pins)
+  } else {
+    throw new Error("Can't score more than 10 per frame!")
+  }
 }
 
 Bowling.prototype.addRoll = function(pins) {
@@ -31,4 +36,8 @@ Bowling.prototype.incrementTableCell = function(pinsDown) {
 
 Bowling.prototype.rolls = function() {
   return this._rolls
+}
+
+Bowling.prototype.permittedValue = function (pinsDown) {
+  return this._play.permittedValue(pinsDown)
 }

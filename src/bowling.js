@@ -3,6 +3,7 @@ function Bowling() {
   this._scoreSheet = {};
   this._currentTurn = 1;
   this._currentBall = 0;
+  this._gameOver = false;
 
 }
 
@@ -33,7 +34,13 @@ Bowling.prototype.currentBall = function () {
 };
 
 Bowling.prototype.ballCheck = function () {
-  if(this._currentBall >= 1 || this.strikeCheck()) {
+  if(this._currentTurn === 10 && this._currentBall === 0 &&
+     this.strikeCheck()) {
+        this._currentBall ++;
+  } else if(this._currentTurn === 10 &&this._currentBall === 1 &&
+     this.strikeCheck()) {
+    this._currentBall ++;
+  } else if(this._currentBall >= 1 || this.strikeCheck()) {
     this._currentBall = 0;
     this._currentTurn ++;
   } else {
@@ -58,12 +65,18 @@ Bowling.prototype.gotStrike = function() {
 
 Bowling.prototype.gotSpare = function() {
   this.lastTurnKey = 'frame' + (this._currentTurn-1);
-  var ballOneScore = this._scoreSheet[this.lastTurnKey][0]
-  var ballTwoScore = this._scoreSheet[this.lastTurnKey][1]
+  var ballOneScore = this._scoreSheet[this.lastTurnKey][0];
+  var ballTwoScore = this._scoreSheet[this.lastTurnKey][1];
   if(ballOneScore + ballTwoScore === 10 && ballOneScore < 10) {
     return true;
   }
 }
+
+Bowling.prototype.gameOver = function () {
+  if(this._currentTurn > 10){
+    this._gameOver = true;
+  }
+};
 
 
 // var bowling = new Bowling();

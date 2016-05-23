@@ -87,4 +87,23 @@ describe('Bowling', function() {
       expect(bowling.gotSpare()).toBeFalsy();
     })
   })
+
+  it('can play 3 strikes in the 10th frame', function(){
+    for (var i = 1; i <= 18; i++) {
+      bowling.hit(1);
+    }
+    bowling.hit(10);
+    bowling.hit(10);
+    bowling.hit(10);
+    expect(bowling.score()).toEqual(48);
+  });
+
+  it('allows 3 strikes in the 10th frame', function() {
+    for (var i = 1; i <= 18; i++) {
+      bowling.hit(1);
+    }
+    bowling.hit(10);
+    bowling.hit(10);
+    expect(bowling.currentTurn()).toEqual(10);
+  })
 })

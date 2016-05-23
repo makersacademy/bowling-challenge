@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" href="public/css/style.css" />
+    <title>Bowling Score Calculator</title>
+</head>
+<body>
+  <center>
+    <h1 id="title">Bowling Score Calculator</h1>
+    <h3>Current Score</h3>
+    <h3 id="currentScore"></h3>
+    <h4>Current Frame</h4>
+    <h4 id="currentFrame"></h4>
+    <h4>Frame Scores</h4>
+    <h4 id="frameScore"></h4>
+    <form id="frame">
+      <input id="firstFrame" type="number" min="0"max="10"placeholder="First frame"></input>
+      <input id="secondFrame" type="number" min="0"max="10"placeholder="Second frame"></input>
+      <input class="server"type="submit"></input>
+    </form>
+  </center>
+  <script src="src/jquery.js"></script>
+  <script src="src/bowling.js"></script>
+  <script src="src/interface.js"></script>
+</body>

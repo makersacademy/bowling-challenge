@@ -119,7 +119,12 @@ describe("Game", function(){
     });
 
     it('calculates the strike bonus for a frame', function() {
-
+      frame1.firstBowl(10);
+      frame2.firstBowl(4);
+      frame2.secondBowl(4);
+      game.addFrames(frame1);
+      game.addFrames(frame2);
+      expect(game.strikeBonus(frame1)).toEqual(8);
     });
   });
 

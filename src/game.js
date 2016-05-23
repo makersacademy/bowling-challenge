@@ -19,7 +19,7 @@ Game.prototype.calculateFramesLength = function(frame) {
 }
 
 Game.prototype.calculateBonuses = function(frame) {
-
+  
 }
 
 Game.prototype.calculateGameScore = function(frame) {
@@ -40,17 +40,15 @@ Game.prototype.nextFrame = function(frame) {
   return nextItem = this._frames[index + 1];
 }
 
-// Game.prototype.nextNextFrame = function(frame) {
-//   return this._frames[this._frames.indexOf(frame) + 2];
-// }
-
-// Game.prototype.getNext = function(frame) {
-//   return this._frames[++this._frames.current];
-// }
-
 Game.prototype.spareBonus = function(frame) {
   var index = this._frames.indexOf(frame);
   var nextItem = this._frames[index + 1];
   return nextItem._details.firstScore;
+}
+
+Game.prototype.strikeBonus = function(frame) {
+  var index = this._frames.indexOf(frame);
+  var nextItem = this._frames[index + 1];
+  return (nextItem._details.firstScore + nextItem._details.secondScore);
 }
 

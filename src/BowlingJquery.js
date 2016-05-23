@@ -22,6 +22,19 @@ $(document).ready(function(){
 		$("#roll").text('');
 	};
 
+	function hidePins(){
+		if (game.isOnFirstRoll()) {
+			for (i = 0; i < 11; i++) {
+				$('#roll'+i).show();
+			};
+		} else {
+			var firstScore = game.scoreBoard.frameScore;
+			for (i = 1; i <= firstScore; i++) {
+				$('#roll'+(11-i)).hide();
+			};
+		};
+	};
+
 	updateStats();
 
 	$("button[id^='roll']").click(function(event){
@@ -31,6 +44,7 @@ $(document).ready(function(){
 			endGame();
 		} else {
 			updateStats();
+			hidePins();
 		};
 	});
 	

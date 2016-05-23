@@ -40,7 +40,8 @@ Frame.prototype.isStrike = function() {
 }
 
 Frame.prototype.isSpare = function() {
-  return (this._details.firstScore !== 10 && this._details.pins === 10);
+  return (this._details.firstScore !== 10 
+    && this._details.pins === 10);
 }
 
 Frame.prototype.isGutter = function() {

@@ -23,7 +23,6 @@ describe("Game", function(){
     it('opens with empty frames', function() {
       expect(new Game()._frames).toEqual([]);
     });
-
   });
 
   describe('basic scoring functionality', function() {
@@ -61,6 +60,14 @@ describe("Game", function(){
       expect(game.isGutterGame()).toBe(false);
     });
 
+    // it('can calculate a perfect game', function() {
+    //   for(var i = 0; i < 9; i++) {
+    //     frame.firstBowl(10);
+    //     frame.secondBowl(0);
+    //     game.addFrames(i);
+    //   }
+    //   expect(game.isPerfectGame()).toBe(true);
+    // });
   });
 
   describe('calculation of gutter games', function() {
@@ -68,6 +75,15 @@ describe("Game", function(){
       game._score = 0;
       expect(game.isGutterGame()).toBe(true);
       expect(game.isPerfectGame()).toBe(false);
+    });
+
+    it('can calculate a gutter game', function() {
+      for(var i = 0; i < 10; i++) {
+        frame.firstBowl(0);
+        frame.secondBowl(0);
+        game.addFrames(i);
+      }
+      expect(game.isGutterGame()).toBe(true);
     });
   });
 

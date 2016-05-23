@@ -1,4 +1,3 @@
-/*jshint esversion: 6 */
 
 function Frame(){
   this.pins = 10
@@ -58,7 +57,7 @@ Frame.prototype._setRollsLeft = function (score) {
 };
 
 Frame.prototype._getFrameScore = function () {
-  return this.rolls.reduce((pv,cv) => pv + cv)
+  return this.rolls.reduce(function(pv,cv){return pv + cv})
 };
 
 

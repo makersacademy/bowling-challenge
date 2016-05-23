@@ -5,6 +5,7 @@ describe("Game", function(){
   var frame;
   var frame1;
   var frame2;
+  var frame3;
   var emptyFrame = jasmine.createSpyObj('emptyFrame', ['isEmpty', 'true', 'false']);
 
   beforeEach(function(){
@@ -12,6 +13,7 @@ describe("Game", function(){
     frame = new Frame();
     frame1 = new Frame();
     frame2 = new Frame();
+    frame3 = new Frame();
     emptyFrame.isEmpty.and.returnValue(true);
   });
 
@@ -41,13 +43,18 @@ describe("Game", function(){
       expect(game._score).toEqual(0);
     });
 
+    it('recognises the score of an individual frame', function() {
+      frame1.firstBowl(5);
+      frame1.secondBowl(4);
+      game.addFrames(frame1);
+      expect(game._frames[0]._details.pins).toEqual(9);
+    });
+
     it('calculates the score of a game correctly', function() {
       frame1.firstBowl(2);
       frame1.secondBowl(5);
       frame2.firstBowl(1);
       frame2.secondBowl(4);
-      game.addFrames(frame1);
-      game.addFrames(frame2);
       expect(game.calculateGameScore(frame1)).toEqual(7);
       expect(game.calculateGameScore(frame2)).toEqual(12);
     });
@@ -63,9 +70,9 @@ describe("Game", function(){
     // it('can calculate a perfect game', function() {
     //   for(var i = 0; i < 9; i++) {
     //     frame.firstBowl(10);
-    //     frame.secondBowl(0);
-    //     game.addFrames(i);
     //   }
+    //   game.addFrames(i);
+    //   game.calculateGameScore(i);
     //   expect(game.isPerfectGame()).toBe(true);
     // });
   });
@@ -77,13 +84,42 @@ describe("Game", function(){
       expect(game.isPerfectGame()).toBe(false);
     });
 
-    it('can calculate a gutter game', function() {
-      for(var i = 0; i < 10; i++) {
-        frame.firstBowl(0);
-        frame.secondBowl(0);
-        game.addFrames(i);
-      }
-      expect(game.isGutterGame()).toBe(true);
+    // it('can calculate a gutter game', function() {
+    //   for(var i = 0; i < 10; i++) {
+    //     frame.firstBowl(0);
+    //     frame.secondBowl(0);
+    //     game.addFrames(i);
+    //   }
+    //   expect(game.isGutterGame()).toBe(true);
+    // });
+  });
+
+  describe('calculation of bonuses', function() {
+    it('gets the subsequent frame', function() {
+      game.addFrames(frame1);
+      game.addFrames(frame2);
+      expect(game.nextFrame(frame1)).toEqual(frame2);
+    });
+
+    it('gets the frame after the subsequent frame', function() {
+      game.addFrames(frame1);
+      game.addFrames(frame2);
+      game.addFrames(frame3);
+      expect(game.nextFrame(frame1)).toEqual(frame3);
+    });
+
+    it('calculates the spare bonus for a frame', function() {
+      frame1.firstBowl(9);
+      frame1.secondBowl(1);
+      frame2.firstBowl(5);
+      frame2.secondBowl(2);
+      game.addFrames(frame1);
+      game.addFrames(frame2);
+      expect(game.spareBonus(frame1)).toEqual(5);
+    });
+
+    it('calculates the strike bonus for a frame', function() {
+
     });
   });
 

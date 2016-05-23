@@ -20,5 +20,9 @@ $(document).ready(function(){
     $('#current-score').append(game._score);
   });
 
+  $('#bowl').click(function(){
+    var frameIndex = frameNumber - 1
+    // game._frames[frameIndex].firstBowl();
+  });
 
 });

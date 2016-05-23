@@ -1,6 +1,7 @@
 function Frame(id){
   this._details = {
     pins: null,
+    bonus: null,
     firstScore: null,
     secondScore: null,
     thirdScore: null,

@@ -28,7 +28,7 @@ describe("Feature test ", function() {
       game.currentFrame.firstBowl(4)
       game.currentFrame.secondBowl(5)
       expect(game.totalScores).toContain(15)
-    })
+    });
   });
 
   describe("strikes", function() {
@@ -36,7 +36,7 @@ describe("Feature test ", function() {
       game.currentFrame.firstBowl(10)
       game.currentFrame.secondBowl(10)
       expect(game.score).toEqual(30)
-    })
+    });
     it("calculate perfect game", function(){
       for (var i = 0; i < 10; i ++){
         game.currentFrame.firstBowl(10)
@@ -44,8 +44,8 @@ describe("Feature test ", function() {
       game.currentFrame.firstBowl(10)
       game.currentFrame.secondBowl(10)
       expect(game.score).toEqual(300)
-    })
-  })
+    });
+  });
 
   describe("spares", function() {
     it("adds bonus for spares", function() {
@@ -54,8 +54,8 @@ describe("Feature test ", function() {
       game.currentFrame.firstBowl(2)
       game.currentFrame.secondBowl(2)
       expect(game.score).toEqual(16)
-    })
-  })
+    });
+  });
 
   describe("calculates scores correctly", function() {
     it("calculate 90 game", function(){
@@ -64,23 +64,13 @@ describe("Feature test ", function() {
         game.currentFrame.secondBowl(0)
       }
       expect(game.score).toEqual(90)
-    })
+    });
     it("calculate 0 game", function(){
       for (var i = 0; i < 10; i ++){
         game.currentFrame.firstBowl(0)
         game.currentFrame.secondBowl(0)
       }
       expect(game.score).toEqual(0)
-    })
-  })
-
-  xdescribe("finishes", function() {
-    it("game over after 10 frames", function(){
-      for (var i = 0; i < 10; i ++){
-        game.currentFrame.firstBowl(9)
-        game.currentFrame.secondBowl(0)
-      }
-      expect(function() { game.currentFrame.firstBowl(1) }).toThrow('game over')
-    })
-  })
+    });
+  });
 });

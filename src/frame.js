@@ -10,7 +10,7 @@ function Frame(game){
 }
 
 Frame.prototype.gameOver = function () {
-  if (this.frameNumber >= 11) {
+  if (this.frameNumber === 10) {
     throw("game over")
   }
 }
@@ -18,7 +18,7 @@ Frame.prototype.gameOver = function () {
 Frame.prototype.firstBowl = function(pins){
   this.gameOver();
   this.bowl1 += pins;
-  this.pinsLeft -= this.bowl1;;
+  this.pinsLeft -= this.bowl1;
   this.endCurrentFrameCheck();
 }
 
@@ -64,10 +64,10 @@ Frame.prototype.endCurrentFrame = function(pins) {
 
 Frame.prototype.lastFrameBonus = function(pins) {
   if (this.strike()) {
-    this.bonus1 += pins
+    this.bonus1 += pins;
   }
   else if (this.spare()) {
-    this.bonus1 += pins
+    this.bonus1 += pins;
   }
 }
 

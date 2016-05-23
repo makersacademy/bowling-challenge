@@ -30,3 +30,7 @@ Frame.prototype.isStrike = function() {
 Frame.prototype.isSpare = function() {
   return (this.rollCount() === 2) && (this.total() === 10);
 };
+
+Frame.prototype.isComplete = function() {
+  return (this.isStrike()) || (this.rollCount() == 2);
+};

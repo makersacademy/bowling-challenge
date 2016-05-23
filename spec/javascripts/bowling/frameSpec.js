@@ -36,14 +36,83 @@ describe('Frame', function() {
     });
   });
 
-  it('knows if it is a strike', function() {
-    frame.addScore(10);
-    expect(frame.isStrike()).toEqual(true);
+  describe('zero rolls', function(){
+    it('is not a strike', function() {
+      expect(frame.isStrike()).toEqual(false);
+    });
+    it('is not a spare', function(){
+      expect(frame.isSpare()).toEqual(false);
+    });
+    it('is not complete', function() {
+      expect(frame.isComplete()).toEqual(false);
+    });
   });
 
-    it('knows if it is a spare', function() {
-    frame.addScore(9);
-    frame.addScore(1);
-    expect(frame.isSpare()).toEqual(true);
+  describe('first roll', function() {
+    describe('when strike', function() {
+      it('is a strike', function() {
+        frame.addScore(10);
+        expect(frame.isStrike()).toEqual(true);
+      });
+      it('is not a spare', function(){
+        frame.addScore(10);
+        expect(frame.isSpare()).toEqual(false);
+      });
+      it('is complete', function() {
+        frame.addScore(10);
+        expect(frame.isComplete()).toEqual(true);
+      });
+    });
+    describe('when not a strike', function() {
+      it('is not a strike', function(){
+        frame.addScore(3);
+        expect(frame.isStrike()).toEqual(false);
+      });
+      it('is not a spare', function(){
+        frame.addScore(3);
+        expect(frame.isSpare()).toEqual(false);
+      });
+      it('is not complete', function(){
+        frame.addScore(3);
+        expect(frame.isComplete()).toEqual(false);
+      });
+    });
+  });
+
+  describe('second roll', function() {
+    describe('when spare', function() {
+      it('is not a strike', function(){
+        frame.addScore(9);
+        frame.addScore(1);
+        expect(frame.isStrike()).toEqual(false);
+      });
+      it('is a spare', function(){
+        frame.addScore(9);
+        frame.addScore(1);
+        expect(frame.isSpare()).toEqual(true);
+      });
+      it('is complete', function(){
+        frame.addScore(9);
+        frame.addScore(1);
+        expect(frame.isComplete()).toEqual(true);
+      });
+    });
+    describe('when not spare', function() {
+      it('is not a strike', function(){
+        frame.addScore(7);
+        frame.addScore(1);
+        expect(frame.isStrike()).toEqual(false);
+      });
+      it('is not a spare', function(){
+        frame.addScore(7);
+        frame.addScore(1);
+        expect(frame.isSpare()).toEqual(false);
+      });
+      it('is complete', function(){
+        frame.addScore(7);
+        frame.addScore(1);
+        expect(frame.isComplete()).toEqual(true);
+      });
+    });
   });
 });

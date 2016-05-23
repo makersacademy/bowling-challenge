@@ -1,31 +1,43 @@
-
-Bowling Challenge
+Bowling Challenge [![Build Status](https://travis-ci.org/omajul85/bowling-challenge.svg?branch=master)](https://travis-ci.org/omajul85/bowling-challenge)
 =================
 
-
-* Challenge time: rest of the day and weekend, and the entire of lab week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+**Author:** Omar Alvarez
 
 Task: 
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset. 
 
-As usual please start by 
+Installation and usage
+----------------------
 
-* Forking this repo
+From a user's perspective, you can download and run the test using the commands below:
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+```sh
+$ git clone git@github.com:omajul85/bowling-challenge.git
+$ cd bowling-challenge
+$ google-chrome SpecRunner.html
+```
+The last command above can be changed in order to use the browser of your preference. The command will open the tests on the browser as you can see in the image below:
+
+![Jasmine](http://s19.postimg.org/o6cfhak1f/Jasmine.png)
+
+In order to test the application locally, you can use the command:
+```sh
+$ ruby server.rb 
+```
+Then, open your browser and visit `localhost:4567`.
+
+Deployment
+----------
+
+The application has been pushed to Heroku using Git. You can play <a href="https://bowling-omajul85.herokuapp.com/" target="_blank">here</a>.
 
 
-### Optional Extra
-
-Create a nice interactive animated interface with jQuery.
+Ten-pin bowling rules:
+----------------------
 
 ## Strikes
 
@@ -50,30 +62,13 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
-In the image below you can find some score examples.
+For more information about the game visit this wikipedia <a href="https://en.wikipedia.org/wiki/Ten-pin_bowling" target="_blank">link</a>.
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+Solution
+--------
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+This solution is based on the Finite-state machine modeling. See the wikipedia <a href="https://en.wikipedia.org/wiki/Finite-state_machine" target="_blank">article</a> for further details.
 
-Code Review
------------
+The image below is a state diagram for a bowling game: 
 
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
-
-CI
---
-
-We are running JSHint on our CI server - save yourself having to wait for a build to happen by linting your code on your machine first. [Here are installations for most popular editors](http://jshint.com/install/). Grab the `.jshintrc` from this repo and have better JS!
-
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
-
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.
+![Diagram](http://s19.postimg.org/408xieodv/Graph.png)

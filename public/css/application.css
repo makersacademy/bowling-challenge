@@ -1,0 +1,120 @@
+body {
+  background-image: url(/images/bowling.jpg);
+}
+
+header {
+  width: 100%;
+  float: left;
+  position: fixed;
+  top: 0;
+  box-shadow: 1px 0 3px rgba(0,0,0, 0.3);
+  background-image: url(/images/darth_stripe.png);
+  color: white;
+  font-family: 'Lobster', cursive;
+}
+
+footer {
+  background-image: url(/images/bg.png);
+  padding: 15px;
+  text-align: left;
+  font-size: 12px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+#footer {
+  margin: 0 auto;
+  width: 800px;
+}
+
+footer img {
+  float: left;
+  margin-right: 40px;
+  width: 240px;
+}
+
+/*10 px margin at top and bottom and 0 for left and right*/
+footer div {
+  margin: 10px 0;
+}
+
+#score-in-frame {
+  text-align: center;
+}
+
+#score-table{
+  table-layout: fixed;
+}
+
+#totalScore {
+  color: #CDDC39;
+  position: relative;
+  font-size: 40px;
+}
+
+#game-area {
+  width: 80%;
+  padding: 50px;
+  background-color: rgba(0,0,0,0.70);
+  position:absolute;
+  color: white;
+  top:50%;
+  left:50%;
+  padding:15px;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.center {
+  margin: 0 auto;
+  width: 80%;
+  padding: 10px;
+  text-align: center;
+}
+
+.btn-round {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  background-color: rgb(253, 242, 127);
+  text-align: center;
+  color: black;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+#scoresheet {
+  font-family: 'Lobster', cursive;
+  text-align: center;
+  width: auto;
+}
+
+tr, td {
+  text-align: center;
+  height: 45px;
+  font-size: 20px;
+  overflow: hidden;
+}
+
+th {
+  background-color: rgba(171, 23, 73, 0.85);
+  border-bottom-width: 1px;
+  overflow: hidden;
+}
+
+#logo{
+  font-size: 50px;
+}
+
+#logo a{
+  text-decoration: none;
+  color: white;
+}
+
+#buttons {
+  font-family: 'Lobster', cursive;
+}
+

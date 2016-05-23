@@ -34,7 +34,7 @@
     "maxparams"     : 4,    // {int} Max number of formal params allowed per function
     "maxdepth"      : 2,    // {int} Max depth of nested blocks (within functions)
     "maxstatements" : 10,    // {int} Max number statements per function
-    "maxcomplexity" : 4,    // {int} Max cyclomatic complexity per function
+    "maxcomplexity" : 10,    // {int} Max cyclomatic complexity per function
     "maxlen"        : 80,    // {int} Max number of characters per line
     "varstmt"       : false,    // true: Disallow any var statements. Only `let` and `const` are allowed.
 
@@ -72,7 +72,7 @@
     "couch"         : false,    // CouchDB
     "devel"         : true,     // Development/debugging (alert, confirm, etc)
     "dojo"          : false,    // Dojo Toolkit
-    "jasmine"       : false,    // Jasmine
+    "jasmine"       : true,     // Jasmine
     "jquery"        : false,    // jQuery
     "mocha"         : true,     // Mocha
     "mootools"      : false,    // MooTools

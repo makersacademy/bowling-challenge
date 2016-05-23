@@ -35,7 +35,8 @@ Game.prototype._getStrikeScore = function (remainingFrames) {
   var nextFrame = remainingFrames[1]
   var frameAfterNext = remainingFrames[2]
   return nextFrame.isStrike() ?
-  20 + frameAfterNext.getRolls()[0] : 10 + this._getScore(nextFrame)
+  20 + frameAfterNext.getRolls()[0] :
+  10 + nextFrame.getRolls()[0] + nextFrame.getRolls()[1]
 };
 
 Game.prototype._getScore = function (frame) {

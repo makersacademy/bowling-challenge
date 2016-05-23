@@ -1,6 +1,6 @@
 describe('Game', function(){
 
-  var game, frame, split, strike;
+  var game, frame, split, strike, finalFrame;
 
   beforeEach(function(){
     game = new Game;
@@ -43,17 +43,19 @@ describe('Game', function(){
         },
         isStrike: function(){
           return true
-        }
+        },
       };
-      spyOn(frame, 'getRolls').and.callThrough();
-      spyOn(spare, 'getRolls').and.callThrough();
-      spyOn(strike, 'getRolls').and.callThrough();
-      spyOn(frame, 'isSpare').and.callThrough();
-      spyOn(spare, 'isSpare').and.callThrough();
-      spyOn(strike, 'isSpare').and.callThrough();
-      spyOn(frame, 'isStrike').and.callThrough();
-      spyOn(spare, 'isStrike').and.callThrough();
-      spyOn(strike, 'isStrike').and.callThrough();
+      finalFrame = {
+        getRolls: function(){
+          return [10, 10, 10];
+        },
+        isSpare: function(){
+          return false;
+        },
+        isStrike: function(){
+          return false
+        },
+      };
     })
 
     it('calculates the score of a frame', function() {
@@ -109,17 +111,22 @@ describe('Game', function(){
         expect(game.totalScore()).toEqual(9);
       });
 
-      it("10strikes",function(){
-        for(var i = 0; i < 10; i++){
+      it("perfect game scores 300",function(){
+        for(var i = 0; i < 9; i++){
           game.play(strike);
         }
-        expect(game.totalScore()).toEqual(240);
+        game.play(finalFrame)
+        expect(game.totalScore()).toEqual(300);
       })
     });
 
     describe('final frame',function(){
-      
-    });
 
+        it('sums all scores regardless of spares and strikes',function(){
+          spyOn(finalFrame,"getRolls").and.returnValue([1, 9, 2])
+          game.play(finalFrame)
+          expect(game.totalScore()).toEqual(12)
+        })
+    });
   });
 });

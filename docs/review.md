@@ -228,3 +228,10 @@ if (!Array.prototype.last){
     };
 };
 ```
+
+## Example Solutions
+
+[Leo](https://github.com/pitchinvasion/bowling)
+[Ben](https://github.com/silvabox/bowling_js)
+[Spike](https://github.com/spike01/bowlingJS)
+[Henry](https://github.com/henrygarner/BowlingNode)

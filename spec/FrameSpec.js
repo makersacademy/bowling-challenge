@@ -22,13 +22,6 @@ describe('Frame',function(){
     }).toThrowError("Invalid roll")
   });
 
-  it('two rolls max per frame',function(){
-    frame.roll(3);
-    frame.roll(3);
-    expect(function(){
-      frame.roll(3);
-    }).toThrowError("No rolls left")
-  });
 
   it('records the rolls', function(){
     frame.roll(3);
@@ -49,12 +42,109 @@ describe('Frame',function(){
     expect(frame.isSpare()).toBe(false)
     expect(frame.isStrike()).toBe(true)
   });
+  describe('normal frame',function(){
 
-  it('strike means no more rolls left', function(){
-    frame.roll(10);
-    expect(function(){
+    it('not final frame by default', function(){
+      expect(frame.getIsFinalFrame()).toBe(false)
+    });
+
+    it('strike means no more rolls left', function(){
+      frame.roll(10);
+      expect(function(){
+        frame.roll(3);
+      }).toThrowError("No rolls left")
+    });
+
+    it('two rolls max per frame',function(){
       frame.roll(3);
-    }).toThrowError("No rolls left")
+      frame.roll(3);
+      expect(function(){
+        frame.roll(3);
+      }).toThrowError("No rolls left")
+    });
   });
 
+
+  describe('final frame',function(){
+    beforeEach(function(){
+      frame.setFinalFrame();
+    });
+
+    it('can be set to final frame', function(){
+      expect(frame.getIsFinalFrame()).toBe(true)
+    });
+
+    describe('when spare',function(){
+      beforeEach(function(){
+        frame.roll(3);
+        frame.roll(7);
+      });
+
+      it('pins reset',function(){
+        expect(frame.getPins()).toEqual(10);
+      });
+
+      it('one extra roll',function(){
+        expect(function(){
+          frame.roll(3);
+        }).not.toThrowError("No rolls left")
+      });
+
+      it('max three rolls',function(){
+        frame.roll(3);
+        expect(function(){
+          frame.roll(3);
+        }).toThrowError("No rolls left")
+      });
+    });
+
+    describe('when strike',function(){
+      beforeEach(function(){
+        frame.roll(10);
+      });
+
+      it('pins are reset',function(){
+        expect(frame.getPins()).toEqual(10);
+      });
+
+      it('two extra rolls',function(){
+        expect(function(){
+          frame.roll(3);
+          frame.roll(7);
+        }).not.toThrowError("No rolls left")
+      });
+
+      it('max three rolls',function(){
+        expect(function(){
+          frame.roll(3);
+          frame.roll(2);
+          frame.roll(2);
+        }).toThrowError("No rolls left")
+      });
+
+      describe('when first and second rolls are strikes',function(){
+        beforeEach(function(){
+          frame.roll(10);
+        });
+
+        it('pins are reset',function(){
+          expect(frame.getPins()).toEqual(10);
+        });
+
+        it('max three rolls',function(){
+          frame.roll(3);
+          expect(function(){
+            frame.roll(2);
+          }).toThrowError("No rolls left")
+        });
+
+        it('max three rolls even if another strike',function(){
+          frame.roll(10);
+          expect(function(){
+            frame.roll(2);
+          }).toThrowError("No rolls left")
+        });
+      });
+    });
+  });
 });

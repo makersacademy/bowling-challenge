@@ -117,5 +117,9 @@ describe('Game', function(){
       })
     });
 
+    describe('final frame',function(){
+      
+    });
+
   });
 });

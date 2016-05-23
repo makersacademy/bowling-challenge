@@ -19,12 +19,13 @@ Game.prototype.calculateFramesLength = function(frame) {
 }
 
 Game.prototype.calculateBonuses = function(frame) {
-  
+  return this.strikeBonus(frame);
+  return this.spareBonus(frame);
 }
 
 Game.prototype.calculateGameScore = function(frame) {
   this._score += frame._details.pins
-  return this._score 
+  return this._score;
 }
 
 Game.prototype.isPerfectGame = function() {

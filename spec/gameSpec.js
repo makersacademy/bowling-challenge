@@ -68,11 +68,10 @@ describe("Game", function(){
     });
 
     // it('can calculate a perfect game', function() {
-    //   for(var i = 0; i < 9; i++) {
+    //   for(var i = 0; i < 10; i++) {
     //     frame.firstBowl(10);
+    //     game.addFrames(frame);
     //   }
-    //   game.addFrames(i);
-    //   game.calculateGameScore(i);
     //   expect(game.isPerfectGame()).toBe(true);
     // });
   });
@@ -84,14 +83,14 @@ describe("Game", function(){
       expect(game.isPerfectGame()).toBe(false);
     });
 
-    // it('can calculate a gutter game', function() {
-    //   for(var i = 0; i < 10; i++) {
-    //     frame.firstBowl(0);
-    //     frame.secondBowl(0);
-    //     game.addFrames(i);
-    //   }
-    //   expect(game.isGutterGame()).toBe(true);
-    // });
+    it('can calculate a gutter game', function() {
+      for(var i = 0; i < 10; i++) {
+        frame.firstBowl(0);
+        frame.secondBowl(0);
+        game.addFrames(frame);
+      }
+      expect(game.isGutterGame()).toBe(true);
+    });
   });
 
   describe('calculation of bonuses', function() {
@@ -125,6 +124,19 @@ describe("Game", function(){
       game.addFrames(frame1);
       game.addFrames(frame2);
       expect(game.strikeBonus(frame1)).toEqual(8);
+    });
+
+    it('aggregates all bonuses for a frame', function() {
+      frame1.firstBowl(9);
+      frame1.secondBowl(1);
+      frame2.firstBowl(10);
+      frame3.firstBowl(2);
+      frame3.secondBowl(4);
+      game.addFrames(frame1);
+      game.addFrames(frame2);
+      game.addFrames(frame3);
+      expect(game.calculateBonuses(frame1)).toEqual(10);
+      expect(game.calculateBonuses(frame2)).toEqual(6);
     });
   });
 

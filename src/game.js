@@ -24,8 +24,12 @@ Game.prototype.calculateBonuses = function(frame) {
 }
 
 Game.prototype.calculateGameScore = function(frame) {
-  this._score += frame._details.pins
+  this._score += frame._details.pins;
   return this._score;
+}
+
+Game.prototype.aggregateAllPins = function(frame) {
+  return this._score += this.calculateBonuses(frame);
 }
 
 Game.prototype.isPerfectGame = function() {

@@ -67,13 +67,13 @@ describe("Game", function(){
       expect(game.isGutterGame()).toBe(false);
     });
 
-    // it('can calculate a perfect game', function() {
-    //   for(var i = 0; i < 10; i++) {
-    //     frame.firstBowl(10);
-    //     game.addFrames(frame);
-    //   }
-    //   expect(game.isPerfectGame()).toBe(true);
-    // });
+    it('can calculate a perfect game', function() {
+      for(var i = 0; i < 10; i++) {
+        frame._details.firstScore === 10;
+        game.addFrames(frame);
+      }
+      expect(game.isPerfectGame()).toBe(true);
+    });
   });
 
   describe('calculation of gutter games', function() {

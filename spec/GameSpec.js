@@ -6,10 +6,6 @@ describe('Game', function(){
     game = new Game;
   });
 
-  it('a new game starts at 0 score', function(){
-    expect(game.totalScore()).toBe(0);
-  });
-
   describe('#totalScore',function(){
     beforeEach(function(){
       frame = {
@@ -58,11 +54,6 @@ describe('Game', function(){
       };
     })
 
-    it('calculates the score of a frame', function() {
-      game.play(frame);
-      expect(game.totalScore()).toEqual(9);
-    });
-
     it('calculates the score of multiple frames', function(){
       game.play(frame);
       game.play(frame);
@@ -96,13 +87,6 @@ describe('Game', function(){
         game.play(frame);
         expect(game.totalScore()).toEqual(52);
       })
-
-      it('three strikes means thirty points for the first strike', function(){
-        game.play(strike);
-        game.play(strike);
-        game.play(strike);
-        expect(game.totalScore()).toEqual(30);
-      });
 
       it("strikes arn't calculated until two more rolls have been completed", function(){
         game.play(frame);

@@ -1,5 +1,3 @@
-/*jshint esversion: 6 */
-
 function Game(){
   this.frames = []
 }
@@ -40,10 +38,13 @@ Game.prototype._getStrikeScore = function (remainingFrames) {
 };
 
 Game.prototype._getScore = function (frame) {
-  return frame.getRolls().reduce((pv,cv) => pv + cv);
+  return frame.getRolls().reduce(function(pv,cv){
+    return pv + cv
+  });
 };
 
 Game.prototype._rollsToBeScored = function (remainingFrames) {
-  return remainingFrames.reduce((total,frame) => total +
-  frame.getRolls().length,0);
+  return remainingFrames.reduce(function(total,frame){
+    return total + frame.getRolls().length
+  },0);
 };

@@ -6,7 +6,8 @@ function Frame(id){
     secondScore: null,
     thirdScore: null,
     id: id
-  }
+  };
+  this._LAST_FRAME = 10;
 }
 
 var frameArray = [];
@@ -28,8 +29,8 @@ Frame.prototype.secondBowl = function(pins){
 }
 
 Frame.prototype.thirdBowl = function(pins){
-  if ((this._details.id !== 10) || 
-     (this._details.id === 10 && this._details.pins < 10)) {
+  if ((this._details.id !== this._LAST_FRAME) || 
+     (this._details.id === this._LAST_FRAME && this._details.pins < 10)) {
     throw new Error('Error: You cannot bowl a third time.');
   }
     this._details.thirdScore = pins;
@@ -50,7 +51,7 @@ Frame.prototype.isGutter = function() {
 }
  
 Frame.prototype.isIllegal = function(pins){
-  if(this._details.id !== 10 && 
+  if(this._details.id !== this._LAST_FRAME && 
     (pins > 10 || pins + this._details.pins > 10)) {
     throw new Error('Error: You cannot hit more than 10 pins.');
   }

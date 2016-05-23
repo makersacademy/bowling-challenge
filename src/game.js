@@ -23,6 +23,11 @@ Game.prototype.calculateBonuses = function(frame) {
   return this.spareBonus(frame);
 }
 
+Game.prototype.addBonuses = function(frame) {
+  this._bonuses += this.strikeBonus(frame);
+  return this._bonuses;
+}
+
 Game.prototype.calculateGameScore = function(frame) {
   this._score += frame._details.pins;
   return this._score;
@@ -46,14 +51,21 @@ Game.prototype.nextFrame = function(frame) {
 }
 
 Game.prototype.spareBonus = function(frame) {
-  var index = this._frames.indexOf(frame);
-  var nextItem = this._frames[index + 1];
-  return nextItem._details.firstScore;
+  if (frame._details.id === 10) {
+    return null; 
+  } else {
+    var index = this._frames.indexOf(frame);
+    var nextItem = this._frames[index + 1];
+    return nextItem._details.firstScore;
+  }
 }
 
 Game.prototype.strikeBonus = function(frame) {
-  var index = this._frames.indexOf(frame);
-  var nextItem = this._frames[index + 1];
-  return (nextItem._details.firstScore + nextItem._details.secondScore);
+  if (frame._details.id === 10) {
+    return null;
+  } else {
+    var index = this._frames.indexOf(frame);
+    var nextItem = this._frames[index + 1];
+    return (nextItem._details.firstScore + nextItem._details.secondScore);
+  }
 }
-

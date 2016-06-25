@@ -1,6 +1,7 @@
 function Game() {
   this.frame = 1;
   this.score = 0;
+  this.pinsStruck = 0;
 }
 
 Game.prototype.gameScore = function(value) {
@@ -12,8 +13,8 @@ Game.prototype.currentFrame = function() {
 };
 
 Game.prototype.play = function(){
-  var pinsStruck = Math.floor(Math.random() * (10 + 1));
-  return pinsStruck;
+  this.pinsStruck = Math.floor(Math.random() * (10 + 1));
+  return this.pinsStruck;
 };
 
 Game.prototype.increaseFrame = function(){
@@ -26,3 +27,8 @@ Game.prototype.increaseFrame = function(){
     return this.frame;
   }
 };
+
+Game.prototype.increaseScore = function(){
+  this.score = this.pinsStruck;
+  return this.score;
+}

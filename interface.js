@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var game = new Game();
+
     $('#play').click(function() {
         $('#pinsStruck').text("CURRENT ROLL = " + game.pinStruck());
         appendToTable();
@@ -10,10 +11,11 @@ $(document).ready(function() {
         console.log(game);
     })
 
-    $('#reset').click(function(){
-      var game = new Game();
-      game.resetGameNew();
-      game.play();
+    $('#reset').click(function() {
+      $('#pinsStruck').text("CURRENT ROLL = ");
+      $('#score_table tbody').empty();
+      game = new Game();
+
     })
 
     function appendToTable() {
@@ -23,7 +25,8 @@ $(document).ready(function() {
         <td>${game.getMoves()}</td>
         <td>${game.knockedDownPins()}</td>
         <td>${game.gameScore()}</td>
+        </tr>
         `;
-        $('#score_table tr:last').after(table_row);
+        $('#score_table tbody').append(table_row);
     }
 })

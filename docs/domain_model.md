@@ -66,7 +66,7 @@ I want to be able to update the current score with a new roll
 
 As the user interface
 So I can declare the total score
-I want to be able to find out if the game is over
+I want to be able to find out if the game is finished
 
 As the user interface
 So I can let the user know if they entered an invalid roll

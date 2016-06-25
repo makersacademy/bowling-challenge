@@ -13,7 +13,7 @@ describe("Game", function(){
   });
 });
   it("should allow the user to play",function(){
-    spyOn(Math, 'random').and.returnValue(.6);
+    spyOn(Math, 'random').and.returnValue(6);
     expect(game.play()).toEqual(6);
   });
   it ('should allow the user to get duck', function(){
@@ -32,9 +32,16 @@ describe("Game", function(){
     expect(game.currentFrame()).toEqual(1);
   });
   it('should increase the score to 4 if 4 pins fall on rolling the ball', function(){
-    spyOn(Math, 'random').and.returnValue(.4);
+    spyOn(Math, 'random').and.returnValue(4);
     game.play();
     game.increaseScore();
     expect(game.gameScore()).toEqual(4);
   });
+  it('should show score as 6', function(){
+    spyOn(Math, 'random').and.returnValue(6);
+    game.play();
+    game.increaseScore();
+    expect(game.gameScore()).toEqual(6);
+  })
+
 });

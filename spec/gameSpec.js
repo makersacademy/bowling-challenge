@@ -5,18 +5,28 @@ describe('Game', function(){
     game = new Game();
   });
 
-  it('is a gutter a game', function(){
-    for(var i = 0; i < 20; i++){
-      game.roll(0);
+  function rollMany(rolls, pins){
+    for(var i = 0; i < rolls; i++){
+      game.roll(pins);
     }
+  };
+
+  it('is a gutter a game', function(){
+    rollMany(20, 0);
     expect(game.score()).toBe(0);
   });
 
   it('rolls all ones', function(){
-    for(var i = 0; i < 20; i++){
-      game.roll(1);
-    }
+    rollMany(20, 1)
     expect(game.score()).toBe(20);
+  });
+
+  it('rolls a spare', function(){
+    game.roll(5);
+    game.roll(5);
+    game.roll(3);
+    rollMany(17, 0);
+    expect(game.score()).toBe(16);
   });
 
 });

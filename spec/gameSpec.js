@@ -11,6 +11,13 @@ describe('Game', function(){
     }
   };
 
+  function rollSpare(){
+    game.roll(5);
+    game.roll(5);
+  };
+
+
+
   it('is a gutter a game', function(){
     rollMany(20, 0);
     expect(game.score()).toBe(0);
@@ -22,8 +29,7 @@ describe('Game', function(){
   });
 
   it('rolls a spare', function(){
-    game.roll(5);
-    game.roll(5);
+    rollSpare();
     game.roll(3);
     rollMany(17, 0);
     expect(game.score()).toBe(16);

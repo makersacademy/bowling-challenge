@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-Thanks to [Spike](https://github.com/spike01) for the [reference](https://github.com/spike01/bowlingJS).
+Thanks to [Spike](https://github.com/spike01) for the [inspiration](https://github.com/spike01/bowlingJS).
 
 
 * Challenge time: rest of the day and weekend, and the entire of lab week if you need it, until Monday 9am

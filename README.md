@@ -3,25 +3,43 @@ Bowling Challenge
 =================
 
 
-* Challenge time: rest of the day and weekend, and the entire of lab week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+User Stories
+-----
 
-* Forking this repo
+As a bowler
+I want to create a game
+so that I can begin a game of bowling
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+As a bowler
+I want to have two rolls per frame if my first roll knocked down fewer than 10
+So that I have the chance to get a spare
 
+As a bowler
+I want to bowl only 10 frames
+So that I can complete a game and see that the game is over
+
+As a bowler
+I want my score to be calculated
+So that I can accrue points while playing
+
+As a bowler
+I want to be able to knock down 10 pins in one roll
+So that I can bowl a strike
+
+As a bowler
+I want to trigger a bonus condition for bowling a spare
+So that I can earn extra points
+
+As a bowler
+I want to trigger a bonus condition for bowling a strike
+So that I can earn extra points
 
 ### Optional Extra
 
@@ -62,7 +80,7 @@ Code Review
 In code review we'll be hoping to see:
 
 * All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 

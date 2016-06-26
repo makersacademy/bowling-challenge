@@ -6,10 +6,17 @@ describe('Game', function(){
   });
 
   it('is a gutter a game', function(){
-    for(var i = 0; i < 20; i++ ){
+    for(var i = 0; i < 20; i++){
       game.roll(0);
     }
     expect(game.score()).toBe(0);
+  });
+
+  it('rolls all ones', function(){
+    for(var i = 0; i < 20; i++){
+      game.roll(1);
+    }
+    expect(game.score()).toBe(20);
   });
 
 });

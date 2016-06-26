@@ -7,6 +7,7 @@ function ScoreManager(frameModel = new Frame) {
   this._score = 0;
   this._gameFinished = false;
   this._currentFrame = 0;
+  this._adjacentStrike = false;
 };
 
 ScoreManager.prototype = {
@@ -23,6 +24,7 @@ ScoreManager.prototype = {
     if (this.isRollValid(pins)) {
       this._score += pins;
       this.checkBonusPoints(pins);
+      this._frameModel.roll(pins);
       if (this._frameModel.isNewFrame()) {
         this._currentFrame += 1;
       }
@@ -42,8 +44,14 @@ ScoreManager.prototype = {
   },
 
   checkBonusPoints: function(pins) {
-    if (this._frameModel.isSpare() || this._frameModel.isStrike()) {
+    if (this._frameModel.isSpare()) {
+      this._adjacentStrike = false;
       this._score += pins;
-    }
+    } else if (this._frameModel.isStrike()) {
+      this._adjacentStrike = true;
+      this._score += pins;
+    } else {
+      this._adjacentStrike = false;
+    }  
   }
 };

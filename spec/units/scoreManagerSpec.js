@@ -12,7 +12,8 @@ describe('ScoreManager', function() {
         isRollValid: function(pins) { return true; },
         isNewFrame: function() {},
         isStrike: function() { return false; },
-        isSpare: function() { return false; }
+        isSpare: function() { return false; },
+        roll: function() { }
       };
       scoreManager = new ScoreManager(frame);
     });
@@ -62,7 +63,8 @@ describe('ScoreManager', function() {
         isRollValid: function(pins) { return true; },
         isNewFrame: function() { return false; },
         isSpare: function() { return false; },
-        isStrike: function() { return false; }
+        isStrike: function() { return false; },
+        roll: function() { }
       };
       scoreManager = new ScoreManager(frame);
       scoreManager.roll(3);
@@ -86,7 +88,8 @@ describe('ScoreManager', function() {
         isRollValid: function(pins) { return true; },
         isNewFrame: function() { return true; },
         isSpare: function() { return false; },
-        isStrike: function() { return false; } 
+        isStrike: function() { return false; },
+        roll: function() { }
       };
       scoreManager = new ScoreManager(frame);
       scoreManager.roll(6);
@@ -114,7 +117,8 @@ describe('ScoreManager', function() {
         isRollValid: function(pins) { return true; },
         isNewFrame: function() { return true; },
         isSpare: function() { return false; }, 
-        isStrike: function() { return false; } 
+        isStrike: function() { return false; },
+        roll: function() { }
       };
       scoreManager = new ScoreManager(frame);
       scoreManager.roll(10);

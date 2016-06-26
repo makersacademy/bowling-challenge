@@ -2,7 +2,7 @@
 
 'use strict';
 
-function ScoreManager(frameModel = new Frame) {
+function ScoreManager(frameModel = Frame) {
   this._frameModel = frameModel;
   this._frames = [];
   this._gameFinished = false;
@@ -24,7 +24,7 @@ ScoreManager.prototype = {
   roll: function(pins) {
     if (this._frames.length === 0 ||
         this._frames[this._frames.length-1].isComplete()) {
-      this._frames.push(new Frame(pins));
+      this._frames.push(new this._frameModel(pins));
     } else {
       this._frames[this._frames.length-1].roll(pins);
     } 

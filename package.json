@@ -1,0 +1,24 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "makers academy week 5 challenge",
+  "main": "server.js",
+  "scripts": {
+    "test": "node_modules/jasmine-node/bin/jasmine-node spec/ --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marlondc/bowling-challenge.git"
+  },
+  "author": "marlondc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marlondc/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/marlondc/bowling-challenge#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "jasmine-node": "^1.14.5",
+    "request": "^2.72.0"
+  }
+}

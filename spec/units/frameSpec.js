@@ -3,14 +3,10 @@
 describe('Frame', function() {
   var frame;
 
-  beforeEach(function() { 
-    frame = new Frame;
-  });
+  describe('after one roll (5)', function(){
 
-  describe('at the start of the game', function(){
-
-    it('.isNewFrame() returns true', function() {
-      expect(frame.isNewFrame()).toEqual(true);
+    beforeEach(function() { 
+      frame = new Frame(5);
     });
 
     it('.isSpare() returns false', function() {
@@ -21,53 +17,42 @@ describe('Frame', function() {
       expect(frame.isStrike()).toEqual(false);
     });
 
-    it('.isRollValid() returns true for a valid roll', function() {
-      expect(frame.isRollValid(9)).toEqual(true);
+    it('.isComplete() returns false', function() {
+      expect(frame.isComplete()).toEqual(false);
     });
 
-    it('.isRollValid() returns false for an invalid roll', function() {
-      expect(frame.isRollValid(11)).toEqual(false);
-    });
-  });
-
-  describe('after one valid roll', function(){
-
-    beforeEach(function() { 
-      frame.roll(7);
-    });
-
-    it('.isNewFrame() returns false', function() {
-      expect(frame.isNewFrame()).toEqual(false);
-    });
-
-    it('.isRollValid() returns false for an invalid roll', function() {
-      expect(frame.isRollValid(4)).toEqual(false);
+    it('.getScore() returns the correct score', function() {
+      expect(frame.getScore()).toEqual(5);
     });
   });
 
   describe('after a strike', function(){
 
     beforeEach(function() {
-      frame.roll(10);
+      frame = new Frame(10);
     });
 
     it('.isStrike() returns true', function() {
       expect(frame.isStrike()).toEqual(true);
     });
 
-    it('.isNewFrame() returns true', function() {
-      expect(frame.isNewFrame()).toEqual(true);
-    });
-
     it('.isSpare() returns false', function() {
       expect(frame.isSpare()).toEqual(false);
+    });
+
+    it('.isComplete() returns true', function() {
+      expect(frame.isComplete()).toEqual(true);
+    });
+
+    it('.getScore() returns the correct score', function() {
+      expect(frame.getScore()).toEqual(10);
     });
   });
 
   describe('after two valid rolls', function(){
     
     beforeEach(function() {
-      frame.roll(4);
+      frame = new Frame(4);
       frame.roll(4);
     });
 
@@ -79,15 +64,19 @@ describe('Frame', function() {
       expect(frame.isSpare()).toEqual(false);
     });
 
-    it('.isNewFrame() returns true', function() {
-      expect(frame.isNewFrame()).toEqual(true);
+    it('.isComplete() returns true', function() {
+      expect(frame.isComplete()).toEqual(true);
+    });
+
+    it('.getScore() returns the correct score', function() {
+      expect(frame.getScore()).toEqual(8);
     });
   });
 
   describe('after two valid rolls giving spare', function(){
     
     beforeEach(function() {
-      frame.roll(4);
+      frame = new Frame(4);
       frame.roll(6);
     });
 
@@ -98,15 +87,13 @@ describe('Frame', function() {
     it('.isSpare() returns true', function() {
       expect(frame.isSpare()).toEqual(true);
     });
-  });
 
-  describe('after two valid rolls giving spare and a third roll', function(){
+    it('.isComplete() returns true', function() {
+      expect(frame.isComplete()).toEqual(true);
+    });
 
-    it('.isSpare() returns false', function() {
-      frame.roll(4);
-      frame.roll(6);
-      frame.roll(3)
-      expect(frame.isSpare()).toEqual(false);
+    it('.getScore() returns the correct score', function() {
+      expect(frame.getScore()).toEqual(10);
     });
   });
 });

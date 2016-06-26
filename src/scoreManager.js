@@ -3,11 +3,10 @@
 'use strict';
 
 function ScoreManager(frameModel = new Frame) {
-  this._frameModel = frameModel
-  this._score = 0;
+  this._frameModel = frameModel;
+  this._frames = [];
   this._gameFinished = false;
   this._currentFrame = 0;
-  this._adjacentStrike = false;
 };
 
 ScoreManager.prototype = {
@@ -17,41 +16,21 @@ ScoreManager.prototype = {
   },
 
   getScore: function() {
-    return this._score;
+    var latestScore = 0;
+    this._frames.forEach(function(frame) { latestScore += frame.getScore() });
+    return latestScore;
   },
 
   roll: function(pins) {
-    if (this.isRollValid(pins)) {
-      this._score += pins;
-      this.checkBonusPoints(pins);
-      this._frameModel.roll(pins);
-      if (this._frameModel.isNewFrame()) {
-        this._currentFrame += 1;
-      }
+    if (this._frames.length === 0 ||
+        this._frames[this._frames.length-1].isComplete()) {
+      this._frames.push(new Frame(pins));
     } else {
-      throw('Cannot roll: not enough pins');
-    }
-  },
-
-  //This is wrapping a method from a different object so that the interface deal with 
-  //just the scoreManager rather than scoreManager + frame
-  isRollValid: function(pins) {
-    return this._frameModel.isRollValid(pins);
+      this._frames[this._frames.length-1].roll(pins);
+    } 
   },
 
   isGameFinished: function() {
     return this._gameFinished;
   },
-
-  checkBonusPoints: function(pins) {
-    if (this._frameModel.isSpare()) {
-      this._adjacentStrike = false;
-      this._score += pins;
-    } else if (this._frameModel.isStrike()) {
-      this._adjacentStrike = true;
-      this._score += pins;
-    } else {
-      this._adjacentStrike = false;
-    }  
-  }
 };

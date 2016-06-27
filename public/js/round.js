@@ -33,5 +33,19 @@ Round.prototype = {
       return 0;
     }
     return this.totalScore;
+  },
+
+  bowlScores: function()  {
+    var output = [" "," "]
+    if (this.scores.length > 1) {
+      output[0] = this.scores[0]
+      if (this.scores[0]+this.scores[1] === 10) { output[1] = "/" }
+      else { output[1] = this.scores[1] }
+    }
+    else if (this.scores.length === 1)  {
+      if(this.scores[0] === 10) { output = ["","X"] }
+      else { output[0] = this.scores[0] }
+    }
+    return output
   }
 };

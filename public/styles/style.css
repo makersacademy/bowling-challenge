@@ -209,7 +209,7 @@ button:hover  {
 }
 
 .visibleScore  {
-
+  opacity: 1;
 }
 
 .hiddenScore  {
@@ -219,16 +219,15 @@ button:hover  {
 
 a  {
   display: block;
-  background-color: #FFF;
+  background-color: #E67E22;
   width: 100px;
   height: 32px;
   padding-top: 8px;
   text-decoration: none;
-  opacity: 0.8;
   transition: all 0.3s;
-  color: #00BD9C;
+  color: #FFF;
 }
 
 a:hover{
-  opacity: 1;
+  background-color: #D35400;
 }

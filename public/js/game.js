@@ -9,7 +9,7 @@ function Game() {
 
 Game.prototype = {
 
-  setNew: function()  {
+  newRound: function()  {
     this.rounds.push(new Round());
     this.roundCount++;
   },
@@ -35,8 +35,20 @@ Game.prototype = {
   incrementRound: function()  {
     if(this.ball === 3 || this.ball === 1) {
       this.ball = 1;
-      this.setNew();
+      this.newRound();
     }
+  },
+
+  bowlScores: function(round) {
+    return this.rounds[round].bowlScores()
+  },
+
+  bonusCount: function(round) {
+    return this.rounds[round].bonusCount
+  },
+
+  roundTotal: function(round) {
+    return this.rounds[round].totalScore
   },
 
   totalScore: function()  {
@@ -59,4 +71,5 @@ Game.prototype = {
   isStrike: function(score)  {
     return (this.ball === 1 && score === 10);
   }
+
 };

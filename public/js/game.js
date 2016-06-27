@@ -15,9 +15,7 @@ Game.prototype = {
   },
 
   addBonus: function(score)  {
-    if(this.roundCount === 2) {
-      this.rounds[0].addBonus(score);
-    }
+    if(this.roundCount === 2) { this.rounds[0].addBonus(score) }
     else if(this.roundCount > 2)  {
       this.rounds[this.roundCount - 2].addBonus(score);
       this.rounds[this.roundCount - 3].addBonus(score);
@@ -25,15 +23,16 @@ Game.prototype = {
   },
 
   bowl: function(score) {
-
-    if(this.ball === 1 && score === 10) {
-      this.rounds[this.roundCount - 1].score(score);
-    }
+    if(this.isStrike(score)) { this.rounds[this.roundCount - 1].score(score) }
     else {
       this.rounds[this.roundCount - 1].score(score);
       this.ball++;
     }
     this.addBonus(score);
+    this.incrementRound();
+  },
+
+  incrementRound: function()  {
     if(this.ball === 3 || this.ball === 1) {
       this.ball = 1;
       this.setNew();
@@ -55,5 +54,9 @@ Game.prototype = {
       if(this.rounds[9].bonusCount === 0) { return true; }
     }
     return false;
+  },
+
+  isStrike: function(score)  {
+    return (this.ball === 1 && score === 10);
   }
 };

@@ -42,8 +42,6 @@ $(document).ready(function()  {
         else {
           $('#ball1_'+String(i+1)).text(game.rounds[i].scores[0]);
         }
-
-
         if (i < game.roundCount-1) { updateTotalScores(i+1); }
       }
       if (game.roundCount > 9) { tenScoring(); }
@@ -130,4 +128,5 @@ $(document).ready(function()  {
       $("h2").attr("style", "background-color: #FFF");
     }
   }
+
 });

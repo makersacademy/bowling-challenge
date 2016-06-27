@@ -10,18 +10,12 @@ Round.prototype = {
   score: function(score)  {
     if(score === 10 && this.scores.length === 0)  {
       this.bonusCount = 2;
-      this.scores.push(score);
-      this.totalScore += score;
     }
     else if(this.scores.length === 1 && (this.scores[0]+score === 10))  {
       this.bonusCount = 1;
-      this.scores.push(score);
-      this.totalScore += score;
     }
-    else {
-      this.scores.push(score);
-      this.totalScore += score;
-    }
+    this.scores.push(score);
+    this.totalScore += score;
   },
 
   addBonus: function(score) {

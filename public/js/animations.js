@@ -23,7 +23,7 @@ function dimButtons(game, upper_limit) {
 }
 
 function endGame(game) {
-  dimButtons(game, 0);
+  dimButtons(game, 0)
   $("#resetDiv").attr("class","resetVisible")
   $("#scoreTitle").text("final score: ")
   $("#scoreTitle").attr("style", "font-weight: bolder; color: #D55400")

@@ -29,11 +29,12 @@ $(document).ready(function()  {
   }
 
   function updateFrameScores()  {
-    for (var i = 0;i<game.roundCount; i++)  {
+    for (var i = 0;(i<game.roundCount && i < 9); i++)  {
       var scores = game.bowlScores(i)
       $('#ball1_'+String(i+1)).text(scores[0])
       $('#ball2_'+String(i+1)).text(scores[1])
     }
+    if (game.roundCount > 9) { roundTenScores() }
   }
 
   function updateFrameTotals() {
@@ -50,6 +51,21 @@ $(document).ready(function()  {
         $('#total').text(game.totalScore())
       }
     }
+  }
+
+  function roundTenScores() {
+    scores = getTenScores()
+    if (scores.length > 0) { $('#ball1_10').text(scores[0]) }
+    if (scores.length > 1) { $('#ball2_10').text(scores[1]) }
+    if (scores.length > 2) { $('#ball3_10').text(scores[2]) }
+  }
+
+  function getTenScores() {
+    var scores
+    if (game.roundCount > 9) { scores = game.bowlScores(9) }
+    if (game.roundCount > 10) { scores = scores.concat(game.bowlScores(10))}
+    if (game.roundCount > 11) { scores = scores.concat(game.bowlScores(11))}
+    return scores = scores.filter(function(element) { return element !== ""})
   }
 
 })

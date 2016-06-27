@@ -9,7 +9,7 @@ body {
 
 h1  {
   font-weight: lighter;
-  font-size: 40px;
+  font-size: 50px;
 }
 
 h2  {
@@ -18,7 +18,17 @@ h2  {
   width: 200px;
   margin-left: auto;
   margin-right: auto;
+  transition: all 0.3s;
 }
+
+#scoreTitle {
+  transition: all 0.3s;
+}
+
+#total {
+  transition: all 0.3s;
+}
+
 
 #main_wrapper {
   margin-left: auto;
@@ -161,6 +171,20 @@ h2  {
   justify-content: center;
 }
 
+#buttonWrapper  {
+  background-color: #16A085;
+  width: 548px;
+  padding: 10px;
+  height: 70px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#throwScore {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
 button  {
   height: 40px;
   width: 40px;
@@ -172,7 +196,7 @@ button  {
   color: #00BD9C;
   font-size: 16px;
   font-weight: bolder;
-
+  cursor: pointer;
 }
 
 button:focus  {
@@ -180,7 +204,8 @@ button:focus  {
 }
 
 button:hover  {
-  background-color: #F1C40F;
+  color: #D35400;
+  background-color: #FFF;
 }
 
 .visibleScore  {

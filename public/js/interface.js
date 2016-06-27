@@ -120,7 +120,7 @@ $(document).ready(function()  {
 
   function checkEnd() {
     if(game.checkEnd() === true)  {
-      for(var i = 1; i <= 10; i++) {
+      for(var i = 0; i <= 10; i++) {
         $('#score'+String(i)).attr('class','hiddenScore');
       }
       $("#resetDiv").attr("class","resetVisible");

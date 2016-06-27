@@ -17,7 +17,7 @@
 
   <body>
     <h1>Bowling Score Calculator</h1>
-    <h2><span id="scoreTitle">score: </span><span id="total">0</span></h2>
+    <h2><span id="scoreTitle">current score: </span><span id="total">0</span></h2>
 
     <div id="main_wrapper">
 
@@ -42,7 +42,8 @@
 
     </div>
     <br>
-    <div>
+    <div id="buttonWrapper">
+      <div id="throwScore">bowl score:</div>
       <% count = -1 %>
       <% 11.times do %>
         <% count += 1 %>

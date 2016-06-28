@@ -31,7 +31,7 @@ describe('Game', function(){
         expect(game.score()).toEqual(20);
     });
 
-    it("should handle a spare", function(){
+    xit("should handle a spare", function(){
       rollSpare();
       game.roll(3);
       rollMany(17, 0);

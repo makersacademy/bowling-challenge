@@ -31,23 +31,5 @@ describe('Game', function(){
         expect(game.score()).toEqual(20);
     });
 
-    xit("should handle a spare", function(){
-      rollSpare();
-      game.roll(3);
-      rollMany(17, 0);
-      expect(game.score()).toEqual(16);
-    });
 
-    xit("should handle one strike", function(){
-      rollStrike();
-      game.roll(3);
-      game.roll(4);
-      rollMany(16, 0);
-      expect(game.score()).toEqual(24);
-    });
-
-    xit("should handle a perfect game", function() {
-        rollMany(12, 10);
-        expect(game.score()).toEqual(300);
-    });
 });

@@ -34,13 +34,20 @@ Below are the initial CRC cards. Please notice that these do not represent the f
     <td>Frame</td>
   </tr>
   <tr>
-    <td>Knows how to apply bonus points</td>
-    <td></td>
-  </tr>
-  <tr>
     <td>Knows how many frames there are in one game</td>
     <td></td>
   </tr>
+</table>
+
+<table>
+  <tr>
+    <td colspan="2"><b>bonusChecker</b></td>
+  </tr>
+  <tr>
+    <td>Knows how to apply bonus points</td>
+    <td>Frame</td>
+  </tr>
+  <tr>
 </table>
 
 ## User stories - Client/side logic

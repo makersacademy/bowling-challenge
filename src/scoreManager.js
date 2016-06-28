@@ -34,4 +34,5 @@ ScoreManager.prototype = {
   isGameFinished: function() {
     return this._gameFinished;
   },
+
 };

@@ -9,7 +9,7 @@ Game.prototype.roll = function(pins) {
   if (typeof pins !== 'number') {
     throw new Error('expected a number');
   }
-  this ._rolls[this._current++] = pins;
+  this._rolls[this._current++] = pins;
 };
 
 Game.prototype.score = function() {

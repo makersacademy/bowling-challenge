@@ -6,11 +6,16 @@ describe('Bowling', function(){
 
   beforeEach(function(){
     bowling = new Bowling();
+    frame = new Frame();
   });
 
   describe('tracks score', function(){
     it('starts at zero', function() {
       expect(bowling.getScore()).toEqual(0);
+    });
+
+    it('tracks the total number of pins knocked down', function() {
+
     });
   });
 
@@ -25,9 +30,9 @@ describe('Bowling', function(){
       expect(bowling.getFrames()).toEqual([]);
     });
 
-    it('stores a maximum of 10 frames', function(){
-      
-    });
+    // it('stores a maximum of 10 frames', function(){
+    //
+    // });
   });
 
 });

@@ -29,9 +29,5 @@ describe('ScoreManager', function() {
       scoreManager.roll(4);
       expect(scoreManager.getScore()).toEqual(4);
     });
-
-    it('.isGameFinished() returns false', function() {
-      expect(scoreManager.isGameFinished()).toEqual(false)
-    });
   });
 });

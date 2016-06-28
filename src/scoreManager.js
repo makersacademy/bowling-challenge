@@ -2,17 +2,16 @@
 
 'use strict';
 
-function ScoreManager(frameModel = Frame) {
+function ScoreManager(frameModel = Frame, bonusChecker = BonusChecker) {
   this._frameModel = frameModel;
+  this._bonusChecker = new bonusChecker;
   this._frames = [];
-  this._gameFinished = false;
-  this._currentFrame = 0;
 };
 
 ScoreManager.prototype = {
   
   currentFrame: function() {
-    return this._currentFrame;
+    return this._frames.length;
   },
 
   getScore: function() {
@@ -25,8 +24,10 @@ ScoreManager.prototype = {
     if (this._frames.length === 0 ||
         this._frames[this._frames.length-1].isComplete()) {
       this._frames.push(new this._frameModel(pins));
+      this._bonusChecker.checkBonus(this._frames);
     } else {
       this._frames[this._frames.length-1].roll(pins);
+      this._bonusChecker.checkBonus(this._frames);
     } 
   },
 

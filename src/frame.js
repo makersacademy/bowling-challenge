@@ -11,15 +11,15 @@ function Frame(firstRoll) {
  // const SPARE = 10;
   this._complete = firstRoll === STRIKE;
   this._strike = firstRoll === STRIKE;
-  this._firstRoll = firstRoll;
-  this._secondRoll = 0;
-  this._bonus = 0;
+  this.firstRoll = firstRoll;
+  this.secondRoll = 0;
+  this.bonus = 0;
 };
 
 Frame.prototype = {
   
   getScore: function() {
-    return this._firstRoll + this._secondRoll + this._bonus;
+    return this.firstRoll + this.secondRoll + this.bonus;
   },
 
   isComplete: function() {
@@ -27,7 +27,7 @@ Frame.prototype = {
   },
 
   isSpare: function() {
-    return this._secondRoll > 0 && (this._firstRoll + this._secondRoll === 10);
+    return this.secondRoll > 0 && (this.firstRoll + this.secondRoll === 10);
   },
 
   roll: function(pins) {
@@ -35,7 +35,7 @@ Frame.prototype = {
       throw ('Cannot roll: too many pins');
     }
     if (!this._complete) {
-      this._secondRoll = pins;
+      this.secondRoll = pins;
       this._complete = true;
     } else {
       ('Cannot roll: frame already completed');
@@ -44,6 +44,12 @@ Frame.prototype = {
 
   isStrike: function() {
     return this._strike;
+  },
+
+  addBonus: function(bonusPoints) {
+    if (this.bonus === 0) {
+      this.bonus +=  bonusPoints;
+    }
   },
 
 };

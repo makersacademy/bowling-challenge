@@ -1,25 +1,26 @@
 'use strict';
 
-function Frame(firstRoll) {
+function Frame(firstRoll, isTenth) {
   const MAX_PINS_PER_ROLL = 10;
   const STRIKE = 10;
 
   if (firstRoll > MAX_PINS_PER_ROLL) {
     throw ('Cannot roll: too many pins');
   };
- // const MAX_PINS_PER_FRAME = 10;
- // const SPARE = 10;
-  this._complete = firstRoll === STRIKE;
+  
+  this._complete = firstRoll === STRIKE && !isTenth;
   this._strike = firstRoll === STRIKE;
   this.firstRoll = firstRoll;
   this.secondRoll = 0;
+  this.thirdRoll = 0;
   this.bonus = 0;
+  this._isTenth = isTenth;
 };
 
 Frame.prototype = {
   
   getScore: function() {
-    return this.firstRoll + this.secondRoll + this.bonus;
+    return this.firstRoll + this.secondRoll + this.thirdRoll + this.bonus;
   },
 
   isComplete: function() {
@@ -31,12 +32,15 @@ Frame.prototype = {
   },
 
   roll: function(pins) {
-    if (pins > 10 || (this.getScore() + pins) > 10) {
+    if (pins > 10 || (this.getScore() + pins) > 10 && !this._isTenth) {
       throw ('Cannot roll: too many pins');
     }
-    if (!this._complete) {
+    if (!this._complete && !this._isTenth) {
       this.secondRoll = pins;
       this._complete = true;
+    } else if (!this._complete && this._isTenth) {
+      this.secondRoll = 10;
+      if (this.secondRoll !== 0) { this._complete = true; }
     } else {
       ('Cannot roll: frame already completed');
     }

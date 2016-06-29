@@ -21,14 +21,24 @@ ScoreManager.prototype = {
   },
 
   roll: function(pins) {
-    if (this._frames.length === 0 ||
-        this._frames[this._frames.length-1].isComplete()) {
-      this._frames.push(new this._frameModel(pins));
-      this._bonusChecker.checkBonus(this._frames);
+    if (this.currentFrame() < 10) {
+      if (this._frames.length === 0 ||
+          this._frames[this._frames.length-1].isComplete()) {
+        this._frames.push(new this._frameModel(pins, false));
+        this._bonusChecker.checkBonus(this._frames);
+      } else {
+        this._frames[this._frames.length-1].roll(pins, false);
+        this._bonusChecker.checkBonus(this._frames);
+      } 
     } else {
-      this._frames[this._frames.length-1].roll(pins);
-      this._bonusChecker.checkBonus(this._frames);
-    } 
+      if (this._frames[this._frames.length-1].isComplete()) {
+        this._frames.push(new this._frameModel(pins, true));
+        this._bonusChecker.checkBonus(this._frames);
+      } else {
+        this._frames[this._frames.length-1].roll(pins, true);
+        this._bonusChecker.checkBonus(this._frames);
+      } 
+    }
   },
 
   isGameFinished: function() {

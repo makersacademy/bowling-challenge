@@ -38,5 +38,17 @@ describe('Game', function(){
       expect(game.score()).toEqual(16);
     });
 
+    it("should handle a strike", function(){
+      rollStrike();
+      game.roll(3);
+      game.roll(4);
+      rollMany(16, 0);
+      expect(game.score()).toEqual(24);
+    });
+
+    it("should score a perfect game", function(){
+      rollMany(12, 10);
+      expect(game.score()).toEqual(300);
+    });
 
 });

@@ -39,7 +39,7 @@ Frame.prototype = {
       this.secondRoll = pins;
       this._complete = true;
     } else if (!this._complete && this._isTenth) {
-      this.secondRoll = 10;
+      this.secondRoll == 0 ? this.secondRoll = pins : this.thirdRoll = pins;
       if (this.secondRoll !== 0) { this._complete = true; }
     } else {
       ('Cannot roll: frame already completed');

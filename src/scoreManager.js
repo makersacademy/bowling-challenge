@@ -27,7 +27,7 @@ ScoreManager.prototype = {
         this._frames.push(new this._frameModel(pins, false));
         this._bonusChecker.checkBonus(this._frames);
       } else {
-        this._frames[this._frames.length-1].roll(pins, false);
+        this._frames[this._frames.length-1].roll(pins);
         this._bonusChecker.checkBonus(this._frames);
       } 
     } else {
@@ -35,8 +35,8 @@ ScoreManager.prototype = {
         this._frames.push(new this._frameModel(pins, true));
         this._bonusChecker.checkBonus(this._frames);
       } else {
-        this._frames[this._frames.length-1].roll(pins, true);
-        this._bonusChecker.checkBonus(this._frames);
+        this._frames[this._frames.length-1].roll(pins);
+        //this._bonusChecker.checkBonus(this._frames);
       } 
     }
   },

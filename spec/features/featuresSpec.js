@@ -46,8 +46,21 @@ describe ('Features', function() {
   it ('perfect game', function() {
     for (let i = 0; i < 12; i++) {
       scoreManager.roll(10);
-console.log(scoreManager.getScore());
     }
     expect(scoreManager.getScore()).toEqual(300);
+  });
+
+  it ('perfect game', function() {
+    for (let i = 0; i < 12; i++) {
+      scoreManager.roll(10);
+    }
+    expect(scoreManager.getScore()).toEqual(300);
+  });
+
+  it ('all ones (total score of 20)', function() {
+    for (let i = 0; i < 20; i++) {
+      scoreManager.roll(1);
+    }
+    expect(scoreManager.getScore()).toEqual(20);
   });
 });

@@ -1,3 +1,4 @@
+var Frame = require('../../src/frame')
 'use strict';
 
 describe('Frame', function() {

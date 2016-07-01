@@ -57,5 +57,3 @@ Frame.prototype = {
   },
 
 };
-
-module.exports = Frame;

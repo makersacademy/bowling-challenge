@@ -1,15 +1,19 @@
-'use strict';
+'use strict'
 
 describe("Game", function() {
-  var game;
-  var song;
+  var game
+  var round
 
   beforeEach(function() {
-    game = new Game();
-  });
+    game = new Game()
+  })
 
-  it("should start with zero score", function() {
-    expect(game.score).toEqual(0);
-  });
+  describe("#newRound", function()  {
+    it("starts a new round", function() {
+      expect(game.roundCount).toEqual(1)
+      game.newRound()
+      expect(game.roundCount).toEqual(2)
+    })
+  })
 
-});
+})

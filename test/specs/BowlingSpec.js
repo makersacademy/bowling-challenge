@@ -5,6 +5,10 @@ describe('Bowling', function() {
     bowling = new Bowling();
   });
 
+  it('is 0 if no pins are given', function() {
+    expect(bowling.getScore()).toEqual(0);
+  });
+
   it('is a gutter game', function() {
     ballsPins(20,0);
     expect(bowling.getScore()).toEqual(0);
@@ -35,6 +39,11 @@ describe('Bowling', function() {
     expect(bowling.getScore()).toEqual(300);
   });
 
+  it('do not add points for more than a full game', function() {
+    ballsPins(30,1);
+    expect(bowling.getScore()).toEqual(20);
+  });
+
   describe('10th frame', function() {
     it('hits a strike', function() {
       ballsPins(18,0);
@@ -49,11 +58,6 @@ describe('Bowling', function() {
       bowling.pinsInCurrentBall(10);
       expect(bowling.getScore()).toEqual(20);
     });
-  });
-
-  it('do not add points for more than a full game', function() {
-    ballsPins(30,1);
-    expect(bowling.getScore()).toEqual(20);
   });
 
 // helpers:

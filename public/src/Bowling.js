@@ -22,7 +22,7 @@ Bowling.prototype = {
         frameIndex += 2;
       }
     }
-    return this._score;
+    return isNaN(this._score) ? 0 : this._score;
   },
 
   pinsInCurrentBall: function(pins) {

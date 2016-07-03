@@ -7,6 +7,14 @@ function Bowling() {
 
 Bowling.prototype = {
 
+  getBallNumber: function() {
+    return this._frames.length;
+  },
+
+  // testGetScore: function() {
+  //   return this._frames.reduce(function(a, b){return a+b;});
+  // },
+
   getScore: function() {
     var frameIndex = 0;
     for(var frame = 0; frame < 10; frame++){
@@ -22,7 +30,8 @@ Bowling.prototype = {
         frameIndex += 2;
       }
     }
-    return isNaN(this._score) ? 0 : this._score;
+    // return isNaN(this._score) ? 0 : this._score;
+    return this._score;
   },
 
   pinsInCurrentBall: function(pins) {

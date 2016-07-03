@@ -2,58 +2,67 @@ $(document).ready(function() {
 
   bowling = new Bowling();
 
+  $('#0').click(function() {
+    bowling.pinsInCurrentBall(0);
+    update();
+  });
+
   $('#1').click(function() {
     bowling.pinsInCurrentBall(1);
-    console.log(bowling.getScore());
-    updateScore();
+    update();
   });
 
   $('#2').click(function() {
     bowling.pinsInCurrentBall(2);
-    updateScore();
+    update();
   });
 
   $('#3').click(function() {
     bowling.pinsInCurrentBall(3);
-    updateScore();
+    update();
   });
 
   $('#4').click(function() {
     bowling.pinsInCurrentBall(4);
-    updateScore();
+    update();
   });
 
   $('#5').click(function() {
     bowling.pinsInCurrentBall(5);
-    updateScore();
+    update();
   });
 
   $('#6').click(function() {
     bowling.pinsInCurrentBall(6);
-    updateScore();
+    update();
   });
 
   $('#7').click(function() {
     bowling.pinsInCurrentBall(7);
-    updateScore();
+    update();
   });
 
   $('#8').click(function() {
     bowling.pinsInCurrentBall(8);
-    updateScore();
+    update();
   });
 
   $('#9').click(function() {
     bowling.pinsInCurrentBall(9);
-    updateScore();
+    update();
   });
 
   $('#10').click(function() {
     bowling.pinsInCurrentBall(10);
-    updateScore();
+    update();
   });
 
-  function updateScore() {
+  // $('end-game').click(function() {
+  //   $('#current-score').text(bowling.getScore());
+  // });
+
+  function update() {
     $('#current-score').text(bowling.getScore());
-  }
+    $('#ball-number').text(bowling.getBallNumber());
+  };
 });

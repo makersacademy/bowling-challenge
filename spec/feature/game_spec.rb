@@ -1,11 +1,9 @@
-
 feature "Bowling score calculator" do
 
   scenario "Gutter game bowled", js: true do
     visit "/"
     20.times { click_button "score0" }
     expect(page).to have_content "final score: 0"
-
   end
 
   scenario "Perfect game bowled", js: true do

@@ -9,7 +9,7 @@ BowlingGame.prototype = {
       this.scoreBoard.push(0);
     }
   },
-  evaluateStrikeOrSpare: function(frame) {
+  _evaluateStrikeOrSpare: function(frame) {
     if(this.scoreBoard[frame] === 10){
       return this.scoreBoard[frame + 2] + this.scoreBoard[frame + 3];
     } else if(this.scoreBoard[frame] + this.scoreBoard[frame + 1] === 10){
@@ -20,7 +20,7 @@ BowlingGame.prototype = {
   score: function() {
     var scoreNumber = 0
     for(var frame = 0; frame < 20; frame+=2) {
-      scoreNumber += this.evaluateStrikeOrSpare(frame);
+      scoreNumber += this._evaluateStrikeOrSpare(frame);
       scoreNumber += this.scoreBoard[frame] + this.scoreBoard[frame+1];
     }
     return scoreNumber;

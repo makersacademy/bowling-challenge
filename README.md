@@ -3,7 +3,7 @@ Bowling Challenge
 
 Task:
 =================
-Create a Twitter clone that will allow the users to post messages to a public stream.
+Create a Bowling score calculator for a single player
 Technologies used: Ruby, Sinatra, Capybara, Rspec, JavaScript
 
 Try it out online at: [http://kb-bowling.herokuapp.com/](http://kb-bowling.herokuapp.com/)

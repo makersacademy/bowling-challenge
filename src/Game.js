@@ -3,6 +3,7 @@
 function Game(){
   this.frames = [[],[],[],[],[],[],[],[],[],[]];
   this.score = [0,0,0,0,0,0,0,0,0,0];
+  this.cumulativeScore = [0,0,0,0,0,0,0,0,0,0];
   this.currentFrameIndex = 0;  
   this.bonuses = [];
   this.isGameOver = false;
@@ -13,6 +14,9 @@ Game.prototype.currentFrame = function(){
 };
 
 Game.prototype.roll = function(pinsKnocked){  
+  pinsKnocked = parseInt(pinsKnocked);
+  if (this.isGameOver) { throw 'Game has already finishd!'};
+  // console.log('Rolling a ' + pinsKnocked)
   this.currentFrame().push(pinsKnocked);
   this.updateScore(pinsKnocked);
   this.setCurrentFrame();
@@ -21,6 +25,9 @@ Game.prototype.roll = function(pinsKnocked){
 Game.prototype.updateScore = function(pinsKnocked){
   this.score[this.currentFrameIndex] += pinsKnocked;
   this.addBonuses(pinsKnocked);
+  this.cumulativeScore[this.currentFrameIndex] = this.totalScore();
+  // console.log(this.score);
+  // console.log(this.totalScore());
 };
 
 Game.prototype.addBonuses = function(pinsKnocked){
@@ -63,13 +70,14 @@ Game.prototype.pins = function(frameIndex){
 };
 
 Game.prototype.totalScore = function(){
+  // console.log(this.score)
   return this.score.reduce(function(a, b){ return a  + b});
 };
 
 Game.prototype.checkEndGame = function(){
   if ((this.pins(this.currentFrameIndex) < 10 && this.currentFrame().length === 2) || this.currentFrame().length === 3) {
     this.isGameOver = true;
-    console.log('Game Over.  You scored ' + this.totalScore() + '.')
+    return ('Game Over.  You scored ' + this.totalScore() + '.')
   };
 };
 
@@ -82,6 +90,8 @@ Game.prototype._isSpare = function(frameIndex){
   if (this.pins(frameIndex) === 10 && this.frames[frameIndex].length === 2) { return true };
   return false;
 };
+
+
 
 
 

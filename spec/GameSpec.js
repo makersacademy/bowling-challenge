@@ -12,7 +12,7 @@ describe('Game', function(){
     expect(game.frames.length).toEqual(10);
   });
 
-  it('#roll adds the pins knocked down to the current frame (when no strike or spare)', function(){
+  it('#roll adds the pins knocked down to the current frame', function(){
     game.roll(2);
     game.roll(3);
     game.roll(4);
@@ -21,13 +21,11 @@ describe('Game', function(){
     expect(game.frames[1]).toEqual([4, 1]);
   });
 
-  it('#roll adds the pins knocked down to the current frame (when spare)', function(){
-    game.roll(7);
-    game.roll(3);
-    game.roll(4);
-    expect(game.frames[0]).toEqual([7, 3]);
-    expect(game.frames[1]).toEqual([4]);
-  });
+  // it('#updateScore adds the number of pins knocked down to the current score array then calls the addBonuses method', function(){
+  //   game.roll(7);
+  //   expect(game.score).toEqual([7,0,0,0,0,0,0,0,0,0]);
+  //   expect(game.addBonuses).toHaveBeenCalled;
+  // });
 
   it('#totalScore determines the score of the game so far (when no strikes or spares)', function(){
     game.roll(2);
@@ -52,14 +50,6 @@ describe('Game', function(){
     expect(game.totalScore()).toEqual(24);
   });
 
-  it('#totalScore determines the score of the game so far (when spare)', function(){
-    game.roll(7);
-    game.roll(3);
-    game.roll(4);
-    game.roll(2);
-    expect(game.totalScore()).toEqual(20);
-  });
-
   it('#totalScore determines the score of the game so far (with sequential strikes and spares)', function(){
     game.roll(6)
     game.roll(4)
@@ -71,6 +61,22 @@ describe('Game', function(){
       game.roll(10);
     };
     expect(game.totalScore()).toEqual(268)
+  });
+
+  it('#totalScore determines the score of the game so far (with sequential strikes and spares)', function(){
+    for(var i = 0; i < 5; i++) {
+      game.roll(i+1);
+    };
+    for(var i = 0; i < 5; i++) {
+      game.roll(i+1);
+    };
+    for(var i = 0; i < 5; i++) {
+      game.roll(i+1);
+    };
+    for(var i = 0; i < 5; i++) {
+      game.roll(i+1);
+    };
+    expect(game.totalScore()).toEqual(60)
   });
 
 });

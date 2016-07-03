@@ -44,6 +44,16 @@ describe('BowlingGame', function() {
       }
       expect(game.score()).toEqual(20);
     });
+
+    it('detects strikes', function() {
+      game.roll(10);
+      game.roll(3);
+      game.roll(3);
+      for(var i = 0; i < 17; i++ ){
+        game.roll(0);
+      }
+      expect(game.score()).toEqual(22);
+    })
   });
 
 });

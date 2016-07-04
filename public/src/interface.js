@@ -62,7 +62,7 @@ $(document).ready(function() {
   // });
 
   function update() {
-    $('#current-score').text(bowling.getScore());
+    $('#current-score').text(bowling.testGetScore());
     $('#ball-number').text(bowling.getBallNumber());
   };
 });

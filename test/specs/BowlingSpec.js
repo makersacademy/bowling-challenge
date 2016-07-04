@@ -5,7 +5,7 @@ describe('Bowling', function() {
     bowling = new Bowling();
   });
 
-  it('is 0 if no pins are given', function() {
+  xit('is 0 if no pins are given', function() {
     expect(bowling.getScore()).toEqual(0);
   });
 

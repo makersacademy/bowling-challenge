@@ -2,6 +2,12 @@
 Bowling Challenge
 =================
 
+How to use:
+Clone it!
+Using the command line go to the project folder.
+Run `node server`.
+Visit [http://localhost:3000/](http://localhost:3000/) in the browser.
+
 Thanks to [Spike](https://github.com/spike01) for the [inspiration](https://github.com/spike01/bowlingJS).
 
 

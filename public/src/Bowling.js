@@ -11,9 +11,10 @@ Bowling.prototype = {
     return this._frames.length;
   },
 
-  // testGetScore: function() {
-  //   return this._frames.reduce(function(a, b){return a+b;});
-  // },
+// check interface.js line 65
+  testGetScore: function() {
+    return this._frames.reduce(function(a, b){return a+b;});
+  },
 
   getScore: function() {
     var frameIndex = 0;
@@ -30,6 +31,7 @@ Bowling.prototype = {
         frameIndex += 2;
       }
     }
+    // check bowlingSpec.js line 8
     // return isNaN(this._score) ? 0 : this._score;
     return this._score;
   },

@@ -15,7 +15,7 @@ describe('Game', function() {
   });
 
   it('has a score of zero to start', function() {
-    expect(game.score).toEqual(0);
+    expect(game.totalScore).toEqual(0);
   });
 
   it('has an empty scorecard to start', function() {
@@ -36,35 +36,58 @@ describe('Game', function() {
   });
 
   it('updates the frames, strike involved', function() {
-    game.throw(3);
-    game.throw(3);
-    game.throw(10);
-    game.throw(3);
-    game.throw(3);
-    game.throw(10);
-    game.throw(3);
-    expect(game.frame).toEqual([3])
-    expect(game.scorecard).toEqual([[3,3],[10],[3,3],[10]]);
+    oneStrike();
+    expect(game.frame).toEqual([])
+    expect(game.scorecard).toEqual([[3,3],[10],[3,3],[3,3]]);
   });
 
   it('updates the frames, strikes and spare involved', function() {
-    game.throw(3);
-    game.throw(3);
-    game.throw(10);
-    game.throw(3);
-    game.throw(3);
-    game.throw(10);
-    game.throw(3);
-    game.throw(7)
+    strikesSpares();
     expect(game.frame).toEqual([])
-    expect(game.scorecard).toEqual([[3,3],[10],[3,3],[10],[3,7]]);
+    expect(game.scorecard).toEqual([[3,3],[10],[3,7],[10],[3,3]]);
   });
 
-  it('updates the score with no strikes/spares', function() {
-    for (var i = 1; i < 8; i++) {
-      game.throw(3);
-    }
-    expect(game.score).toEqual(18);
-  });
+  // it('calculates the score', function() {
+  //   for (var i = 1; i < 21; i++) {
+  //     game.throw(3);
+  //   }
+  //   console.log(game.scorecard);
+  //   expect(game.frame).toEqual(60);
+  // })
+  //
+  // it('calculates the score', function() {
+  //   strikesSpares()
+  //   console.log(game.scorecard);
+  //   expect(game.frame).toEqual(60);
+  // })
 
+  function strikesSpares() {
+    game.throw(3);
+    game.throw(3);
+    game.throw(10);
+    game.throw(3);
+    game.throw(7);
+    game.throw(10);
+    game.throw(3);
+    game.throw(3);
+  }
+
+  function oneStrike() {
+    game.throw(3);
+    game.throw(3);
+    game.throw(10);
+    game.throw(3);
+    game.throw(3);
+    game.throw(3);
+    game.throw(3);
+  }
+
+  function oneSpare() {
+    game.throw(3);
+    game.throw(3);
+    game.throw(3);
+    game.throw(7);
+    game.throw(3);
+    game.throw(3);
+  }
 });

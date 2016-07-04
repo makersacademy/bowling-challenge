@@ -1,8 +1,11 @@
 var express = require('express');
 var app = express();
 
+
+app.set('view engine', 'ejs');
+
 app.get('/', function(req, res) {
-  res.end('Hello World');
+  res.render('index.ejs');
 });
 
 app.listen(process.argv[2], function() {

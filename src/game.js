@@ -2,7 +2,9 @@
 
 function Game() {
   this.frame = [];
-  this.score = 0;
+  this.totalScore = 0;
+  this.frameScore = 0
+  this.frameScores = [];
   this.scorecard = [];
   this.strikeBonus = false;
   this.spareBonus = false;
@@ -11,46 +13,49 @@ function Game() {
 Game.prototype = {
 
   throw: function(number) {
-    if (this.canThrow()) {
+    if (this.firstThrow()) {
       this.frame.push(number);
-      this.wasStrikeScored(number);
+      this.perfectRoll(number);
     } else {
       this.frame.push(number);
-      this.wasSpareScored();
       this.endFrame();
     }
   },
 
   endFrame: function() {
     this.scorecard.push(this.frame);
-    this.updateScore();
+    this.endOfGame();
     this.frame = [];
   },
 
-  canThrow: function() {
+  firstThrow: function() {
     if (this.frame.length === 0) {
       return true;
     }
   },
 
-  wasStrikeScored: function(number) {
+  perfectRoll: function(number) {
     if (number === 10) {
-      this.endFrame();
       this.strikeBonus = true;
+      this.endFrame();
     }
   },
 
-  wasSpareScored: function(number) {
-    if (number + this.frame[0] === 10) {
-      this.spareBonus = true;
+  caclulateScore: function(number) {
+    
+  },
+
+  endOfGame: function(number) {
+    if (this.scorecard.length === 10) {
+      this.bonus()
+      this.frame = nil
+      console.log("Game finished")
     }
   },
 
-  updateScore: function() {
-    for(var  i = 0; i < this.frame.length; i++) {
-      this.score += this.frame[i]
-    }
-  },
+  bonus: function(number) {
+    
+  }
 
 
 };

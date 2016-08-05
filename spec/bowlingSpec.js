@@ -14,6 +14,8 @@ describe('Bowling', function(){
   var twoRolls = function(){
     for (var i = 0; i < 2; i++) {
       oneRoll();
+      console.log(bowling.totalScore);
+
     }
   }
 
@@ -42,6 +44,12 @@ describe('Bowling', function(){
       oneRoll();
       expect(bowling.frames[0][1]).toEqual(0);
     })
+
+    it('updates total score with current frame', function(){
+      spyOn(Math, 'random').and.returnValue(0.4);
+      twoRolls();
+      expect(bowling.totalScore).toEqual(8);
+    })
   })
 
   describe('reaminingPins', function(){
@@ -64,8 +72,7 @@ describe('Bowling', function(){
     it('applies bonus points to previous scores', function(){
       spyOn(Math, 'random').and.returnValue(0.9);
       twoRolls();
-      console.log(bowling.frames);
-      expect(bowling.frames[0][0]).toEqual(20)
+      expect(bowling.totalScore).toEqual(30)
     })
   })
 

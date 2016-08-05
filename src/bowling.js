@@ -4,6 +4,7 @@ var Bowling = function(){
   this.frames = []
   this.currentFrame = []
   this.pins = 10;
+  this.totalScore = 0;
 }
 
 Bowling.prototype.roll = function(){
@@ -19,17 +20,20 @@ Bowling.prototype.roll = function(){
 Bowling.prototype.firstRollScore = function(points){
   if(this.strike(points)){
     this.currentFrame.push(points, 0);
+    this.updateTotalScore(points)
     this.saveFrame();
-    this.applyBonusPoints(points);
-    this.bonusPoints(this.frames.length);
+    // this.applyBonusPoints(points);
+    this.bonusPoints();
   } else {
     this.currentFrame.push(points);
-    this.applyBonusPoints(points);
+    this.updateTotalScore(points)
+    // this.applyBonusPoints(points);
   }
 }
 
 Bowling.prototype.secondRollScore = function(points) {
   this.currentFrame.push(points);
+  this.updateTotalScore(points)
   this.saveFrame();
 }
 
@@ -66,15 +70,22 @@ Bowling.prototype.sumFrame = function(array){
   return total;
 }
 
+Bowling.prototype.updateTotalScore = function(points){
+  this.totalScore += points;
+  this.applyBonusPoints(points);
+};
+
 Bowling.prototype.bonusPoints = function(location){
-  this.bonusLocation = location-1
-  console.log(this.bonusLocation);
+  // this.bonusLocation = location-1
   this.bonus = 2
 }
 
 Bowling.prototype.applyBonusPoints = function(points){
-  if(this.bonus > 0){
-    this.frames[this.bonusLocation][0] += points
-    console.log(this.frames[0][0]);
+  if(this.bonus > 0) {
+    this.totalScore += points
+    this.bonus -= 1
   }
+  // if(this.bonus > 0){
+  //   this.frames[this.bonusLocation][0] += points
+  // }
 }

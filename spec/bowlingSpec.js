@@ -64,6 +64,7 @@ describe('Bowling', function(){
     it('applies bonus points to previous scores', function(){
       spyOn(Math, 'random').and.returnValue(0.9);
       twoRolls();
+      console.log(bowling.frames);
       expect(bowling.frames[0][0]).toEqual(20)
     })
   })

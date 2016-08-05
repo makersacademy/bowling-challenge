@@ -25,7 +25,27 @@ describe("Player", function() {
   });
 
   it("Should add a score of 10 on a strike", function() {
-    game.inputScore("strike")
+    game.strike()
     expect(game._currentScore).toEqual(10)
+  });
+
+  it("Should move onto the next frame after a strike", function() {
+    game.strike();
+    expect(game._frame).toEqual(2);
+  });
+
+  it("Should keep track of strike bonus", function() {
+    game.strike()
+    game.inputScore(3);
+    game.inputScore(4);
+    expect(game._currentScore).toEqual(24);
+  });
+
+  it("Adds to the strikebonus in the case of consective strikes", function() {
+    game.strike()
+    game.strike()
+    game.inputScore(4)
+    game.inputScore(2)
+    expect(game._currentScore).toEqual(46)
   });
 });

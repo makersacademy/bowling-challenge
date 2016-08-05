@@ -22,4 +22,8 @@ describe('Game', function(){
   it('starts with 10 pins', function(){
     expect(game.pins).toEqual(10);
   });
+
+  it('starts player with a score of 0', function(){
+    expect(game.playerScore).toEqual(0);
+  });
 });

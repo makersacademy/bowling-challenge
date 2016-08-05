@@ -14,8 +14,6 @@ describe('Bowling', function(){
   var twoRolls = function(){
     for (var i = 0; i < 2; i++) {
       oneRoll();
-      console.log(bowling.totalScore);
-
     }
   }
 
@@ -36,13 +34,13 @@ describe('Bowling', function(){
     it('saves the second roll score in the current frame', function(){
       spyOn(Math, 'random').and.returnValue(0.4);
       twoRolls();
-      expect(bowling.frames[0][1]).toEqual(3);
+      expect(bowling.gameFrames[0][1]).toEqual(3);
     })
 
     it('saves and closes the frame if the first roll is a strike', function(){
       spyOn(Math, 'random').and.returnValue(0.9);
       oneRoll();
-      expect(bowling.frames[0][1]).toEqual(0);
+      expect(bowling.gameFrames[0][1]).toEqual(0);
     })
 
     it('updates total score with current frame', function(){
@@ -64,7 +62,16 @@ describe('Bowling', function(){
     it('returns true if the pins knocked are 10', function(){
       spyOn(Math, 'random').and.returnValue(0.9);
       oneRoll();
-      expect(bowling.strike(bowling.frames[0][0])).toBeTruthy();
+      expect(bowling.strike(bowling.gameFrames[0][0])).toBeTruthy();
+    })
+  })
+
+  describe('spare', function(){
+    it('returns true if the frame score is 10', function(){
+      // spyOn(Math, 'random').and.returnValue(0.9);
+      spyOn(Math, 'random').and.returnValue(0.7);
+      twoRolls();
+      expect(bowling.spare(bowling.totalScore)).toEqual(true)
     })
   })
 
@@ -72,7 +79,13 @@ describe('Bowling', function(){
     it('applies bonus points to previous scores', function(){
       spyOn(Math, 'random').and.returnValue(0.9);
       twoRolls();
-      expect(bowling.totalScore).toEqual(30)
+      twoRolls();
+      twoRolls();
+      twoRolls();
+      twoRolls();
+      oneRoll();
+      console.log(bowling.bonusScores);
+      expect(bowling.totalScore).toEqual(300)
     })
   })
 
@@ -80,7 +93,7 @@ describe('Bowling', function(){
     it('sums the points in a frame', function(){
       spyOn(Math, 'random').and.returnValue(0.4);
       twoRolls();
-      expect(bowling.sumFrame(bowling.frames[0])).toEqual(8)
+      expect(bowling.sumFrame(bowling.gameFrames[0])).toEqual(8)
     })
   })
 
@@ -96,7 +109,7 @@ describe('Bowling', function(){
     it('saves the current frame and resets', function(){
       spyOn(Math, 'random').and.returnValue(0.4);
       twoRolls();
-      expect(bowling.frames[0][1]).toEqual(3)
+      expect(bowling.gameFrames[0][1]).toEqual(3)
     })
   })
 

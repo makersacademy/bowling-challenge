@@ -9,15 +9,14 @@ function Bowling() {
 }
 
 Bowling.prototype = {
-  
+
   getScore: function() {
     return this._score;
   },
 
   play: function() {
     var roll = this._roll();
-    this._pinsLeft -= roll;
-    this._score += roll;
+    this._addScore(roll);
     this._processRoll(roll);
     return roll;
   },
@@ -30,14 +29,21 @@ Bowling.prototype = {
     return this._currentFrame;
   },
 
-  getCurrentFrame: function() {
-    if (!this._frames[this._currentFrame]) {
-      return this._frames[this._currentFrame] = {
-        roll1: null,
-        roll2: null
+  getFrame: function(frame) {
+    if (frame > 10 || frame < 1) {
+      return;
+    }
+    if (!this._frames[frame]) {
+      return this._frames[frame] = {
+        1: null,
+        2: null
       };
     }
-    return this._frames[this._currentFrame];
+    return this._frames[frame];
+  },
+
+  getCurrentFrame: function() {
+    return this.getFrame(this._currentFrame);
   },
 
 
@@ -46,17 +52,38 @@ Bowling.prototype = {
     return Math.floor(Math.random() * (this._pinsLeft + 1));
   },
 
-  _processRoll: function(roll) {
-    if (roll === 10 && this._currentRoll === 1) {
-       
-    } else if (roll === 10 && this._currentRoll === 2) {
+  _addScore: function(score) {
+    this._pinsLeft -= score;
+    this.getCurrentFrame()[this._currentRoll] = score;
+    this._score += score;
+  },
 
-    } else if (this._currentRoll === 1) {
+  _processRoll: function(roll) {
+
+    if (roll === 10 && this._currentRoll === 1) {
+      this._currentFrame++;
+      return;
+    }
+
+    if (roll === 10 && this._currentRoll === 2) {
+      if (this._currentFrame === 10) {
+        this._currentRoll = 3;
+      } else {
+        this._currentFrame++;
+      }
+      return;
+    }
+
+    if (this._currentRoll === 1) {
       this._currentRoll = 2;
-    } else {
+      return;
+    }
+
+    if (this._currentFrame < 10) {
       this._currentFrame++;
       this._currentRoll = 1;
     }
+
   },
 
 }

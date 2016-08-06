@@ -10,13 +10,13 @@ describe("Bowling", function() {
   it ("keeps score", function() {
     expect(bowling.getScore()).toEqual(0);
   });
-  
+
   describe ("Pins", function() {
     it ("returns the amount of pins left", function() {
       expect(bowling.getPins()).toEqual(10);
       var result = bowling.play();
       expect(bowling.getPins()).toEqual(10 - result);
-  });
+    });
   });
 
   describe ("Knocking down pins (playing)", function() {
@@ -34,11 +34,23 @@ describe("Bowling", function() {
       expect(result).toBeGreaterThan(-1);
       expect(result).toBeLessThan(2);
     });
+    it ("second roll, moves on to the next frame", function() {
+      bowling._currentRoll = 2;
+      bowling.play();
+      expect(bowling.getCurrentFrameNumber()).toEqual(2);
+    });
+    it ("second roll on frame 10, strike moves on to the third roll", function() {
+      bowling._currentFrame = 10;
+      bowling._currentRoll = 2;
+      bowling._roll = function() { return 10; };
+      bowling.play();
+      expect(bowling._currentRoll).toEqual(3);
+    });
   });
-  
+
   describe ("Frame", function() {
     it ("can get the current frame scores", function() {
-      var scores = {roll1: null, roll2: null};
+      var scores = {1: null, 2: null};
       expect(bowling.getCurrentFrame()).toEqual(scores);
     });
   });
@@ -54,15 +66,41 @@ describe("Bowling", function() {
       bowling.play();
       expect(bowling.getCurrentFrameNumber()).toEqual(2);
     });
+    it ("jumps straight to the next frame number after a strike", function() {
+      bowling._roll = function() { return 10; };
+      bowling.play();
+      expect(bowling.getCurrentFrameNumber()).toEqual(2);
+    });
+    it ("has a maximum of 10 frames", function() {
+      bowling._currentFrame = 10;
+      bowling._currentRoll = 2;
+      bowling.play();
+      expect(bowling.getCurrentFrameNumber()).toEqual(10);
+    });
   });
 
   describe ("Keeping Score", function() {
-    
+
+    beforeEach(function() {
+      bowling._roll = function() { return 5; };
+    });
     it ("adds the points to the score", function() {
       var points = bowling.play();
       expect(bowling.getScore()).toEqual(points);
     });
+    it ("records the score inside the frame object", function() {
+      var frame = bowling.getCurrentFrameNumber();
+      var points = bowling.play();
+      expect(bowling.getFrame(frame)[1]).toEqual(points);
+    });
+
+    describe("Bonus Points", function() {
+      it ("correctly adds bonus points", function() {
+        bowling._hasBonusPoints = 1;
+        
+      });
+    });
 
   });
-  
+
 });

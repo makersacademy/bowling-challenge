@@ -11,6 +11,7 @@ Frame.prototype.getRollNumber = function () {
   return this.rollNumber;
 };
 
+// Do I need this and the isComplete property in constructor??
 Frame.prototype.isFrameFinished = function () {
   return this.isComplete;
 };

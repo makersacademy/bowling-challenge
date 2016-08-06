@@ -5,18 +5,6 @@ describe('Frame', function(){
     frame = new Frame();
   });
 
-  // it('sets default firstBall to 0', function(){
-  //   expect(frame.firstBall).toEqual(0);
-  // });
-  //
-  // it('sets default knockedPins to 0', function(){
-  //   expect(frame.knockedPins).toEqual(0);
-  // });
-  //
-  // it('sets default secondBall to 0', function(){
-  //   expect(frame.secondBall).toEqual(0);
-  // });
-
   it('sets default frameScore to an empty array', function(){
     expect(frame.frameScore).toEqual([]);
   });
@@ -29,7 +17,6 @@ describe('Frame', function(){
   it('secondBowl returns a random value between 0 and knocked pins', function(){
     spyOn(frame, 'firstBall').and.returnValue(5);
     frame.firstBowl();
-    // frame.firstBall();
     frame.secondBowl();
     expect(frame.frameScore[1] >= 1 && frame.frameScore[1] <= 5).toBeTruthy();
   });

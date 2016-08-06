@@ -11,7 +11,7 @@
 
 'use strict';
 
-describe('Game', function(){
+describe('Game:', function(){
 
   var game;
 
@@ -23,17 +23,61 @@ describe('Game', function(){
     expect(game.getCurrentPinsStanding()).toEqual(10);
   });
 
-  it('starts with 10 frames', function(){
-    expect(game.getCurrentFramesLeft()).toEqual(10);
+  it('starts frame status as "ready to play"', function(){
+    expect(game.getCurrentFrameStatus()).toEqual('ready to play');
   });
 
-  describe('player starts with a', function(){
-    it('score of 0', function(){
-      expect(game.getCurrentPlayerScore()).toEqual(0);
+  describe('frames available', function(){
+    it('start with 10', function(){
+      expect(game.getCurrentFramesLeft()).toEqual(10);
+    });
+    it('avaible can be deducted', function(){
+      game.deductFrames();
+      expect(game.getCurrentFramesLeft()).toEqual(9)
+    });
+  });
+
+  describe('current frame', function(){
+    it('starts on 0', function(){
+      expect(game.getCurrentFrame()).toEqual(0);
     });
 
-    it('bonus of 0', function(){
-      expect(game.getCurrentBonus()).toEqual(0);
+    it('can be updated', function(){
+      game.updateCurrentFrame();
+      expect(game.getCurrentFrame()).toEqual(1)
+    });
+  });
+
+  describe('Player', function(){
+
+    describe('starts with', function(){
+
+      it('a score of 0', function(){
+        expect(game.getCurrentPlayerScore()).toEqual(0);
+      });
+
+      it('a bonus of 0', function(){
+        expect(game.getCurrentBonus()).toEqual(0);
+      });
+    });
+
+    describe('can start a frame', function(){
+
+      it('if frame status is "ready to play"', function(){
+        game.startFrame();
+        expect(game.getCurrentFramesLeft()).toEqual(9);
+        expect(game.getCurrentFrame()).toEqual(1);
+        expect(game.getCurrentFrameStatus()).toEqual('unavailable')
+      });
+    });
+    describe('cannot start a frame', function(){
+
+      it('if a frame is already being played', function(){
+        game.startFrame();
+        game.startFrame();
+        expect(game.getCurrentFrameStatus()).toEqual('unavailable')
+        expect(game.startFrame()).toContain('cannot start frame')
+      });
     });
   });
 });

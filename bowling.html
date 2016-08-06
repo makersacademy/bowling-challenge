@@ -8,6 +8,9 @@
         border: 1px solid black
 
       }
+      input {
+        font-family:"Arial Black", Arial;
+      }
     </style>
     <meta charset="utf-8">
     <title></title>
@@ -22,7 +25,11 @@
       </tr>
       <tr>
         <td>
-          Please enter your name:
+          <form id="enter-name">
+            <input id="player-name" type="text" placeholder="Enter your name"></input>
+            <input type="button" value="Let's bowl!" onclick="getName()"
+            style="background-color: transparent; border: none"></input>
+          </form>
         </td>
       </tr>
       <tr>
@@ -68,7 +75,7 @@
             </tr>
             <tr>
               <td height="20">
-                Jonny
+                <label id="bowler"></label>
               </td>
               <td>
               </td>
@@ -154,14 +161,12 @@
 
 
 
-
-
-
-
-
-
-    <script src='spec/BowlingSpec.js'></script>
-    <script src='src/Bowling.js'></script>
+    <script src="jquery-3.1.0.js"></script>
+    <script src='src/Game.js'></script>
+    <script src='src/Frame.js'></script>
+    <script src='src/Score.js'></script>
+    <script src='src/InputName.js'></script>
+    <script src='src/interface.js'></script>
 
   </body>
 </html>

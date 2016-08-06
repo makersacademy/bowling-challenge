@@ -47,7 +47,6 @@ describe("Game", function() {
     game.inputScore(10);
     game.inputScore(4);
     game.inputScore(2);
-    game.inputScore(0)
     expect(game._score).toEqual(46);
   });
 });

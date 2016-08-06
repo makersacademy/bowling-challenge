@@ -14,7 +14,11 @@ Game.prototype.inputScore = function(score) {
     this._strikeBonus += score
   }
   if (this._strikeBowlsToCount !== 0) {
-    this._strikeBowlsToCount --
+    if (this._strikeBowlsToCount === 3) {
+      this._strikeBowlsToCount -= 2
+    } else {
+      this._strikeBowlsToCount --
+    }
     if (this._strikeBowlsToCount === 0) {
       this._score += this._strikeBonus
       this._strikeBonus = 0

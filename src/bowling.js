@@ -6,6 +6,7 @@ function Bowling() {
   this._currentFrame = 1;
   this._currentRoll = 1;
   this._pinsLeft = 10;
+  this._hasBonusPoints = 0;
 }
 
 Bowling.prototype = {
@@ -15,14 +16,12 @@ Bowling.prototype = {
   },
 
   play: function() {
-    var roll = this._roll();
-    this._addScore(roll);
-    this._processRoll(roll);
+    if (this._currentFrame === 11) {
+      return false;
+    }
+    var roll = this._processRoll();
+    this._resetPins();
     return roll;
-  },
-
-  getPins: function() {
-    return this._pinsLeft;
   },
 
   getCurrentFrameNumber: function() {
@@ -56,33 +55,38 @@ Bowling.prototype = {
     this._pinsLeft -= score;
     this.getCurrentFrame()[this._currentRoll] = score;
     this._score += score;
+    if (this._hasBonusPoints > 0) {
+      this._score += score;
+      this._hasBonusPoints--;
+    }
   },
 
-  _processRoll: function(roll) {
-
-    if (roll === 10 && this._currentRoll === 1) {
-      this._currentFrame++;
+  _resetPins: function() {
+    if (this._currentFrame === 10 && this._pinsLeft === 0 && this._currentRoll < 3) {
+      this._currentRoll++;
+      this._pinsLeft = 10;
       return;
     }
-
-    if (roll === 10 && this._currentRoll === 2) {
-      if (this._currentFrame === 10) {
-        this._currentRoll = 3;
-      } else {
-        this._currentFrame++;
-      }
-      return;
-    }
-
-    if (this._currentRoll === 1) {
-      this._currentRoll = 2;
-      return;
-    }
-
-    if (this._currentFrame < 10) {
+    if (this._pinsLeft === 0 || this._currentRoll >= 2) {
       this._currentFrame++;
       this._currentRoll = 1;
+      this._pinsLeft = 10;
+      return;
     }
+    this._currentRoll++;
+  },
+
+  _processRoll: function() {
+
+    var roll = this._roll();
+    this._addScore(roll);
+    if (this._pinsLeft === 0 && this._currentRoll === 1) {
+      this._hasBonusPoints = 2;
+    }
+    if (this._pinsLeft === 0 && this._currentRoll === 2) {
+      this._hasBonusPoints = 1;
+    }
+    return roll;
 
   },
 

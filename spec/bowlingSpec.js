@@ -11,14 +11,6 @@ describe("Bowling", function() {
     expect(bowling.getScore()).toEqual(0);
   });
 
-  describe ("Pins", function() {
-    it ("returns the amount of pins left", function() {
-      expect(bowling.getPins()).toEqual(10);
-      var result = bowling.play();
-      expect(bowling.getPins()).toEqual(10 - result);
-    });
-  });
-
   describe ("Knocking down pins (playing)", function() {
     it ("can play and returns the number of pins knocked down", function() {
       var result = bowling.play();
@@ -34,10 +26,11 @@ describe("Bowling", function() {
       expect(result).toBeGreaterThan(-1);
       expect(result).toBeLessThan(2);
     });
-    it ("second roll, moves on to the next frame", function() {
+    it ("second roll, moves on to the next frame and puts 10 pins again", function() {
       bowling._currentRoll = 2;
       bowling.play();
       expect(bowling.getCurrentFrameNumber()).toEqual(2);
+      expect(bowling._pinsLeft).toEqual(10);
     });
     it ("second roll on frame 10, strike moves on to the third roll", function() {
       bowling._currentFrame = 10;
@@ -71,11 +64,11 @@ describe("Bowling", function() {
       bowling.play();
       expect(bowling.getCurrentFrameNumber()).toEqual(2);
     });
-    it ("has a maximum of 10 frames", function() {
+    it ("unable to play after reaching Frame 11 (doesn't exist)", function() {
       bowling._currentFrame = 10;
-      bowling._currentRoll = 2;
+      bowling._currentRoll = 3;
       bowling.play();
-      expect(bowling.getCurrentFrameNumber()).toEqual(10);
+      expect(bowling.play()).toEqual(false);
     });
   });
 
@@ -97,7 +90,23 @@ describe("Bowling", function() {
     describe("Bonus Points", function() {
       it ("correctly adds bonus points", function() {
         bowling._hasBonusPoints = 1;
-        
+        var result = bowling.play();
+        expect(bowling.getScore()).toEqual(result * 2);
+      });
+      it ("reduces the amount of bonus point rolls", function() {
+        bowling._hasBonusPoints = 2;
+        bowling.play();
+        expect(bowling._hasBonusPoints).toEqual(1);
+      });
+      it ("gives one spare bonus if player knocked all pins on second roll", function() {
+        bowling.play();
+        bowling.play();
+        expect(bowling._hasBonusPoints).toEqual(1);
+      });
+      it ("gives two spare bonuses if player striked on first roll", function() {
+        bowling._roll = function() { return 10; };
+        bowling.play();
+        expect(bowling._hasBonusPoints).toEqual(2);
       });
     });
 

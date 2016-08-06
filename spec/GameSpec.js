@@ -3,19 +3,27 @@
 describe("Game", function(){
 
   var game;
+  var frame;
 
   beforeEach(function(){
     game = new Game();
+    frame = jasmine.createSpy('frame');
   });
 
-  it('sets default frame to 0', function(){
+
+  it('sets frame scores to an empty array', function(){
+    expect(game.frameScores).toEqual([]);
+  });
+
+
+  it('keeps count of frames played', function(){
+    game.playFrame();
     expect(game.frameNumber).toEqual(0);
   });
 
-  it('sets default totalScore to 0', function(){
-    expect(game.totalScore).toEqual(0);
-  });
-
-
+  // it('creates a new frame object per frame', function(){
+  //   game.playFrame();
+  //   expect(game.playFrame.frame).toEqual(frame);
+  // });
 
 });

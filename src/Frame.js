@@ -1,20 +1,28 @@
 function Frame(){
-
   this.frameScore = [];
-
+  this.previousScore = 0;
+  this.roll = 0;
 }
 
 Frame.prototype.firstBowl = function () {
- this.frameScore.push(Math.round(Math.random() * (0 - 10) + 10));
-};
-
-Frame.prototype.firstBall = function(){
-  return this.frameScore[0];
+  var result = Math.round(Math.random() * (0 - 10) + 10)
+  this.frameScore.push(result);
+  return result;
 };
 
 Frame.prototype.secondBowl = function() {
-  knocked = 10 - this.firstBall();
-  this.frameScore.push(Math.round(Math.random() * (0 - knocked) + knocked));
+  var knocked = 10 - this.frameScore[0];
+  var result = Math.round(Math.random() * (0 - knocked) + knocked);
+  this.frameScore.push(result);
+  return result;
 };
 
-// module.exports = Frame;
+Frame.prototype.currentScore = function(){
+  return this.frameScore;
+};
+
+Frame.prototype.playFrame = function( ){
+  this.firstBowl();
+  this.secondBowl();
+  return this.currentScore();
+};

@@ -66,20 +66,25 @@ describe('Bowling', function(){
     })
   })
 
-  describe('spare', function(){
-    it('returns true if the frame score is 10', function(){
+  // describe('spare', function(){
+  //   it('returns true if the frame score is 10', function(){
+  //     spyOn(Math, 'random').and.returnValue(0.7);
+  //     twoRolls();
+  //     expect(bowling.spare(bowling.totalScore)).toEqual(true)
+  //   })
+  // })
+
+  describe('spareBonusPointsApply',function(){
+    it('applies spare bonus points to total scores', function(){
       spyOn(Math, 'random').and.returnValue(0.7);
       twoRolls();
-      expect(bowling.spare(bowling.totalScore)).toEqual(true)
+      twoRolls();
+      expect(bowling.totalScore).toEqual(25)
     })
   })
 
-  describe('spareBonusPointsApply',function(){
-    
-  })
-
   describe('strikeBonusPointsApply', function(){
-    it('applies bonus points to previous scores', function(){
+    it('applies strike bonus points to total score', function(){
       spyOn(Math, 'random').and.returnValue(0.9);
       twoRolls();
       twoRolls();

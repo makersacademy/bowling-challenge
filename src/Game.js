@@ -88,3 +88,12 @@ Game.prototype.multipleRolls = function(x, y) {
     this.inputScore(x);
   };
 };
+
+Game.prototype.finalFrame = function(score) {
+  if (this._frame === 10) {
+    if (this._finalStrike === true) {
+      this._strikeBonus += score
+    }
+    
+  }
+}

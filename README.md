@@ -36,6 +36,10 @@ So that I can see my name in lights
 I'd like to be able to enter my name and see it on the scorecard.
 
 As a bowler
+So that I receive some feedback on my game
+I would like to be given some feedback at the end of the game.
+
+As a bowler
 So that I don't forget to celebrate my strikes
 I would like to see my strikes highlighted a special colour.
 

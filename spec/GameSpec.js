@@ -1,4 +1,6 @@
-describe("Frame", function(){
+// var Game = require('../src/Game');
+
+describe("Game", function(){
 
   var game;
 
@@ -7,10 +9,10 @@ describe("Frame", function(){
   });
 
   it('sets default frame to 1', function(){
-    expect(game.frame).toEqual(1);
+    expect(game.frameNumber).toEqual(1);
   });
 
-  it('sets default knockedPins to 0', function(){
+  it('sets default totalScore to 0', function(){
     expect(game.totalScore).toEqual(0);
   });
 

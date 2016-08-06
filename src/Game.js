@@ -1,6 +1,8 @@
 function Game(){
 
-  this.frame = 1;
-  this.total = 0;
+  this.frameNumber = 1;
+  this.totalScore = 0;
 
 }
+
+// module.exports = Game;

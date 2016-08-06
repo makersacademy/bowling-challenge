@@ -49,4 +49,12 @@ describe("Game", function() {
     game.inputScore(2);
     expect(game._score).toEqual(46);
   });
+
+  it("Adds a spare bonus after a spare", function() {
+    game.inputScore(5)
+    game.inputScore(5)
+    game.inputScore(3)
+    expect(game._score).toEqual(16)
+  })
+
 });

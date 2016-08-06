@@ -23,11 +23,17 @@ describe('Game', function(){
     expect(game.getCurrentPinsStanding()).toEqual(10);
   });
 
-  it('starts player with a score of 0', function(){
-    expect(game.getCurrentPlayerScore()).toEqual(0);
+  it('starts with 10 frames', function(){
+    expect(game.getCurrentFramesLeft()).toEqual(10);
   });
 
-  it('starts player with a bonus of 0', function(){
-    expect(game.getCurrentBonus()).toEqual(0);
+  describe('player starts with a', function(){
+    it('score of 0', function(){
+      expect(game.getCurrentPlayerScore()).toEqual(0);
+    });
+
+    it('bonus of 0', function(){
+      expect(game.getCurrentBonus()).toEqual(0);
+    });
   });
 });

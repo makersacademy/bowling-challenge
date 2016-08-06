@@ -4,6 +4,7 @@ function Game(){
   this.pins = 10;
   this.playerScore = 0;
   this.bonus = 0;
+  this.framesLeft = 10;
 }
 
 
@@ -17,4 +18,8 @@ Game.prototype.getCurrentPlayerScore = function () {
 
 Game.prototype.getCurrentBonus = function () {
   return this.bonus
+};
+
+Game.prototype.getCurrentFramesLeft = function () {
+ return this.framesLeft
 };

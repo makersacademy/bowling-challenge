@@ -10,4 +10,4 @@ Game.prototype.playFrame = function(){
   this.frameNumber += 1;
   frame = new Frame;
 };
-// module.exports = Game;
+module.exports = Game;

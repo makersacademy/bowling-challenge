@@ -14,8 +14,8 @@ describe('Game', function(){
     expect(game.getCurrentPins()).toEqual([]);
   });
 
-  it('A game is initialized with a multiplier of 1 (no spare of strike in previous frame)', function(){
-    expect(game.getMultiplier()).toEqual(1);
+  it('A game is initialized with a multiplier of "none" (no spare of strike in previous frame)', function(){
+    expect(game.getMultiplier()).toEqual("none");
   });
 
   it('A game is initialized with a total score of 0', function(){

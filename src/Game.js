@@ -1,7 +1,7 @@
 Game = function(){
   this.frameNumber = 1;
   this.currentPins = [];
-  this.multiplier = 1;
+  this.multiplier = "none";
   this.totalScore = 0;
 };
 

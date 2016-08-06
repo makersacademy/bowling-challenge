@@ -17,9 +17,9 @@ describe("Game", function(){
 
   it('puts the scores from the frame into frameScores', function(){
     game.bowl();
+    game.bowl();
     var frameScores = game.frameScores[0];
     expect(frameScores[0]).toBeLessThan(10);
-    game.bowl();
     expect(frameScores[1]).toBeLessThan(9);
   });
 

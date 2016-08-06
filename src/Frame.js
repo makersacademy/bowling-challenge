@@ -11,18 +11,12 @@ Frame.prototype.firstBowl = function () {
 };
 
 Frame.prototype.secondBowl = function() {
-  var knocked = 10 - this.frameScore[0];
+  var knocked = 10 - this.currentScore();
   var result = Math.round(Math.random() * (0 - knocked) + knocked);
   this.frameScore.push(result);
   return result;
 };
 
 Frame.prototype.currentScore = function(){
-  return this.frameScore;
-};
-
-Frame.prototype.playFrame = function( ){
-  this.firstBowl();
-  this.secondBowl();
-  return this.currentScore();
+  return this.frameScore[this.frameScore.length-1];
 };

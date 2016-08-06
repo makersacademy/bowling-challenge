@@ -79,7 +79,8 @@ describe('Bowling', function(){
       spyOn(Math, 'random').and.returnValue(0.7);
       twoRolls();
       twoRolls();
-      expect(bowling.totalScore).toEqual(25)
+      console.log(bowling.gameFrames);
+      expect(bowling.totalScore).toEqual(28)
     })
   })
 

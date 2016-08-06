@@ -7,6 +7,7 @@ var Bowling = function(){
   this.totalScore = 0;
   this.strikeBonus = [];
   this.strikePoints = false
+  this.sparePoints = false
 }
 
 Bowling.prototype.roll = function(){
@@ -33,11 +34,11 @@ Bowling.prototype.firstRollScore = function(points){
 }
 
 Bowling.prototype.secondRollScore = function(points) {
-  if(this.spare()){
-
-  }
   this.currentFrame.push(points);
   this.totalScoreUpdate(points)
+  if(this.spare()){
+    this.sparePointStart();
+  }
   this.saveFrame();
 }
 
@@ -77,6 +78,9 @@ Bowling.prototype.sumFrame = function(array){
 
 Bowling.prototype.totalScoreUpdate = function(points){
   this.totalScore += points;
+  if (this.sparePoints){
+    this.sparePointsScoring(points);
+  }
   if (this.strikePoints){
     this.strikePointsSet(points);
   }
@@ -88,6 +92,19 @@ Bowling.prototype.totalScoreUpdate = function(points){
     // this.strikePointsSet(points);
   }
   }
+
+Bowling.prototype.sparePointsScoring = function (points) {
+  this.totalScore += points
+  this.sparePointEnd();
+};
+
+Bowling.prototype.sparePointStart = function () {
+  this.sparePoints = true;
+};
+
+Bowling.prototype.sparePointEnd = function () {
+  this.sparePoints = false
+};
 
 Bowling.prototype.strikePointStart = function () {
   this.strikePoints = true;

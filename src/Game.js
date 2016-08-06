@@ -45,4 +45,13 @@ Game.prototype.inputScore = function(score) {
     this._frameBowlNumber = 1
   };
   this._score += score
+  if (this._score === 0 & this._frame === 11) {
+    this._gutterGame = true
+  }
 };
+
+Game.prototype.multipleRolls = function(x, y) {
+  for (var i = 0; i < y; i++) {
+    this.inputScore(x)
+  }
+}

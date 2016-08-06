@@ -56,5 +56,8 @@ describe("Game", function() {
     game.inputScore(3)
     expect(game._score).toEqual(16)
   })
-
+  it("Returns gutter game on a final score of 0", function() {
+    game.multipleRolls(0, 20)
+    expect(game._gutterGame).toEqual(true)
+  })
 });

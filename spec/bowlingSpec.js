@@ -68,14 +68,17 @@ describe('Bowling', function(){
 
   describe('spare', function(){
     it('returns true if the frame score is 10', function(){
-      // spyOn(Math, 'random').and.returnValue(0.9);
       spyOn(Math, 'random').and.returnValue(0.7);
       twoRolls();
       expect(bowling.spare(bowling.totalScore)).toEqual(true)
     })
   })
 
-  describe('bonusPoints', function(){
+  describe('spareBonusPointsApply',function(){
+    
+  })
+
+  describe('strikeBonusPointsApply', function(){
     it('applies bonus points to previous scores', function(){
       spyOn(Math, 'random').and.returnValue(0.9);
       twoRolls();
@@ -96,14 +99,6 @@ describe('Bowling', function(){
       expect(bowling.sumFrame(bowling.gameFrames[0])).toEqual(8)
     })
   })
-
-  // describe('spare', function(){
-  //   it('returns true if total pins knocked are 10', function(){
-  //     bowling.score(bowling.pins/2);
-  //     var points = bowling.currentFrame[0] + bowling.currentFrame[1]
-  //     expect(bowling.spare(points)).toBeTruthy();
-  //   })
-  // })
 
   describe('saveFrame', function(){
     it('saves the current frame and resets', function(){

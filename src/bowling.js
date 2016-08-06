@@ -5,7 +5,7 @@ var Bowling = function(){
   this.currentFrame = []
   this.pins = 10;
   this.totalScore = 0;
-  this.bonusScores = [];
+  this.strikeBonus = [];
 }
 
 Bowling.prototype.roll = function(){
@@ -21,20 +21,19 @@ Bowling.prototype.roll = function(){
 Bowling.prototype.firstRollScore = function(points){
   if(this.strike(points)){
     this.currentFrame.push(points, 0);
-    this.updateTotalScore(points)
+    this.totalScoreUpdate(points)
     this.saveFrame();
-    // this.applyBonusPoints(points);
-    this.bonusPoints()
+    // this.setStrikePoints()
   } else {
     this.currentFrame.push(points);
-    this.updateTotalScore(points)
-    this.applyBonusPoints(points);
+    this.totalScoreUpdate(points)
+    // this.applyBonusPoints(points);
   }
 }
 
 Bowling.prototype.secondRollScore = function(points) {
   this.currentFrame.push(points);
-  this.updateTotalScore(points)
+  this.totalScoreUpdate(points)
   this.saveFrame();
 }
 
@@ -71,47 +70,27 @@ Bowling.prototype.sumFrame = function(array){
   return total;
 }
 
-Bowling.prototype.updateTotalScore = function(points){
+Bowling.prototype.totalScoreUpdate = function(points){
   this.totalScore += points;
-  if (this.bonus > 0) {
-    this.applyBonusPoints(points)
+  if (this.strikeBonus.length > 0) {
+    this.strikeBonusPointsApply(points)
   }
-};
+  if (points === 10){
+    this.strikePointsSet(points);
+  }
+  }
 
-Bowling.prototype.bonusPoints = function(){
-  // this.bonusLocation = location-1
-  this.bonus = 2
-  this.bonusCount = 1
-}
-
-// Bowling.prototype.applyBonusPoints = function(points){
-//   console.log((this.bonus > 0))
-//   if(this.bonusCount === 1 || this.bonus === 1) {
-//     this.totalScore += points
-//     this.bonus -= 1
-//     this.bounsCount += 1}
-//   else if(this.bonus > 0) {
-//     this.totalScore += (points*2);
-//     this.bonus -= 1;
-//     this.bounsCount += 1}
-// }
-Bowling.prototype.applyBonusPoints = function(points){
-  // if(this.bonusScores.length > 0){
-    this.totalScore += points
-    this.bonusScores.push(points);
-    if(this.bonusScores.length > 1) {
-      this.totalScore += this.bonusScores[0]
-      this.bonusScores = this.bonusScores.slice(1, this.bonusScores.length)
-    }
-  // }
-  // for (var i = 0; i < this.gameFrames.length; i++) {
-  //   if(this.gameFrames[-i][i] === 10 || this.gameFrames[-i][i+1] === 10){
-  //     this.totalScore += points;
-  //   }
-  // }
+Bowling.prototype.strikePointsSet = function(points){
+  this.strikeBonus.push(points)
 }
 
 
-  // if(this.bonus > 0){
-  //   this.frames[this.bonusLocation][0] += points
-  // }
+Bowling.prototype.strikeBonusPointsApply = function(points){
+      this.totalScore += this.strikeBonus[0]
+      if(this.strikeBonus.length >= 2){
+        this.totalScore += this.strikeBonus[1]
+        this.strikeBonus =  this.strikeBonus.slice(1, this.strikeBonus.length)
+      }
+
+    // }
+  }

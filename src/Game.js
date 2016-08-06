@@ -6,6 +6,7 @@ Game.prototype.getFrameNumber = function () {
   return this.frameNumber;
 };
 
-Game.prototype.playFrame = function () {
+Game.prototype.playGame = function () {
   frame = new Frame();
+  frame.playFrame();
 };

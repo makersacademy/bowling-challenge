@@ -2,7 +2,9 @@ Frame = function(){
   this.rollNumber = 1;
   this.isComplete = false;
   this.pinsStanding = 10;
-  this.knockedPins = 0;
+  this.knockedPinsOne = 0;
+  this.knockedPinsTwo = 0;
+  this.strike = false;
 };
 
 Frame.prototype.getRollNumber = function () {
@@ -14,30 +16,38 @@ Frame.prototype.isFrameFinished = function () {
 };
 
 Frame.prototype.rollOne = function () {
-  this.knockedPins = Math.floor((Math.random() * this.pinsStanding) + 1);
-  this.pinsStanding -= this.knockedPins;
+  this.knockedPinsOne = Math.floor(Math.random() * (this.pinsStanding + 1));
+  this.pinsStanding -= this.knockedPinsOne;
   if (this.pinsStanding === 0) {
-    this.completeFrame();
+    this.strike = true;
   } else {
     this.rollNumber = 2;
   };
 };
 
 Frame.prototype.rollTwo = function () {
-  this.knockedPins += Math.floor((Math.random() * this.pinsStanding) + 1);
-  this.completeFrame();
+  this.knockedPinsTwo = Math.floor(Math.random() * (this.pinsStanding + 1));
 };
 
-Frame.prototype.getKnockedPins = function () {
-  return this.knockedPins;
+Frame.prototype.getKnockedPinsOne = function () {
+  return this.knockedPinsOne;
+};
+
+Frame.prototype.getKnockedPinsTwo = function () {
+  return this.knockedPinsTwo;
 };
 
 Frame.prototype.getPinsStanding = function () {
   return this.pinsStanding;
 };
 
-Frame.prototype.completeFrame = function (arguments) {
-  this.isComplete = true;
-  this.rollNumber = 1;
-  this.pinsStanding = 10;
+Frame.prototype.getStrike = function () {
+  return this.strike;
+};
+
+// Come back and sort this!
+Frame.prototype.playFrame = function () {
+  this.rollOne();
+  if (this.getRollNumber() === 2) this.rollTwo();
+  return [this.knockedPinsOne, this.knockedPinsTwo];
 };

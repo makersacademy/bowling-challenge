@@ -1,9 +1,9 @@
-
 describe('Game', function(){
   var game;
 
-  it('starts a game in round 1', function(){
+  it('A game starts in round 1', function(){
     game = new Game();
-    expect(game.getRound()).toEqual(1);
+    expect(game.roundNumber()).toEqual(1);
   });
+
 });

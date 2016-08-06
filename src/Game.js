@@ -1,7 +1,12 @@
 Game = function(){
-  this.round = 1
+  this.round = 1;
+  this.throw = 1;
 };
 
-Game.prototype.getRound = function () {
+Game.prototype.roundNumber = function () {
   return this.round;
+};
+
+Game.prototype.throwNumber = function (arguments) {
+  return this.throw;
 };

@@ -1,12 +1,11 @@
 Game = function(){
-  this.round = 1;
-  this.throw = 1;
+  this.frameNumber = 1;
 };
 
-Game.prototype.roundNumber = function () {
-  return this.round;
+Game.prototype.getFrameNumber = function () {
+  return this.frameNumber;
 };
 
-Game.prototype.throwNumber = function (arguments) {
-  return this.throw;
+Game.prototype.playFrame = function () {
+  frame = new Frame();
 };

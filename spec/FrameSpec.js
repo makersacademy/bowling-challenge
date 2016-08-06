@@ -16,11 +16,27 @@ describe('Frame', function(){
     expect(frame.getPinsStanding()).toEqual(10);
   });
 
+  describe('Complete Frame', function(){
+    it('Resets the roll number to 1', function(){
+      frame.completeFrame();
+      expect(frame.getRollNumber()).toEqual(1);
+    });
+    it('Marks the frame as finished', function(){
+      frame.completeFrame();
+      expect(frame.isFrameFinished()).toEqual(true);
+    });
+    it('Resets the pins so 10 are standing', function(){
+      frame.rollOne();
+      frame.completeFrame();
+      expect(frame.getPinsStanding()).toEqual(10);
+    });
+  });
+
   describe('Roll One', function(){
     it('Updates knocked pins after roll', function(){
       spyOn(Math, "random").and.returnValue(0.49);
       frame.rollOne();
-      expect(frame.knockedPins).toEqual(5);
+      expect(frame.getKnockedPins()).toEqual(5);
     });
     it('Updates the Roll Number to 2 after roll 1', function(){
       spyOn(Math, "random").and.returnValue(0.49);

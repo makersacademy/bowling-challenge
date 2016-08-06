@@ -17,7 +17,7 @@ Frame.prototype.rollOne = function () {
   this.knockedPins = Math.floor((Math.random() * this.pinsStanding) + 1);
   this.pinsStanding -= this.knockedPins;
   if (this.pinsStanding === 0) {
-    this.isComplete = true;
+    this.completeFrame();
   } else {
     this.rollNumber = 2;
   };
@@ -25,7 +25,7 @@ Frame.prototype.rollOne = function () {
 
 Frame.prototype.rollTwo = function () {
   this.knockedPins += Math.floor((Math.random() * this.pinsStanding) + 1);
-  this.isComplete = true;
+  this.completeFrame();
 };
 
 Frame.prototype.getKnockedPins = function () {
@@ -34,4 +34,10 @@ Frame.prototype.getKnockedPins = function () {
 
 Frame.prototype.getPinsStanding = function () {
   return this.pinsStanding;
+};
+
+Frame.prototype.completeFrame = function (arguments) {
+  this.isComplete = true;
+  this.rollNumber = 1;
+  this.pinsStanding = 10;
 };

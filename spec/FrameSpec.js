@@ -13,7 +13,7 @@ describe('Frame', function(){
     expect(frame.getPinsStanding()).toEqual(10);
   });
 
-  describe('Roll One', function(){
+  describe('#rollOne', function(){
     it('Updates knocked pins after roll', function(){
       spyOn(Math, "random").and.returnValue(0.49);
       frame.rollOne();
@@ -37,7 +37,7 @@ describe('Frame', function(){
     });
   });
 
-  describe('Roll Two', function(){
+  describe('#rollTwo', function(){
     it('Updates knocked pins after roll', function(){
       spyOn(Math, "random").and.returnValue(0.49);
       frame.rollTwo();
@@ -45,7 +45,7 @@ describe('Frame', function(){
     });
   });
 
-  describe('Play Frame', function(){
+  describe('#playFrame', function(){
     it('Returns the number of pins knocked down in each of rolls 1 and 2', function(){
       spyOn(Math, "random").and.returnValue(0.49);
       expect(frame.playFrame()).toEqual([5, 2])

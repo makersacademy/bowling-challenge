@@ -20,10 +20,14 @@ describe('Game', function(){
   });
 
   it('starts with 10 pins', function(){
-    expect(game.pins).toEqual(10);
+    expect(game.getCurrentPinsStanding()).toEqual(10);
   });
 
   it('starts player with a score of 0', function(){
-    expect(game.playerScore).toEqual(0);
+    expect(game.getCurrentPlayerScore()).toEqual(0);
+  });
+
+  it('starts player with a bonus of 0', function(){
+    expect(game.getCurrentBonus()).toEqual(0);
   });
 });

@@ -1,6 +1,6 @@
 function Frame(){
 
-  this.roll = 1;
+  this.roll = 0;
   this.knockedPins = 0;
   this.frameScore = 0;
 }

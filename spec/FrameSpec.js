@@ -9,7 +9,7 @@ describe("Frame", function(){
   });
 
   it('sets default roll to 1', function(){
-    expect(frame.roll).toEqual(1);
+    expect(frame.roll).toEqual(0);
   });
 
   it('sets default knockedPins to 0', function(){
@@ -20,5 +20,8 @@ describe("Frame", function(){
     expect(frame.frameScore).toEqual(0);
   });
 
-
+  it('simulates 10 frames', function(){
+    game.playFrame;
+    expect(frame.frameNumber).toEqual(0);
+  });
 });

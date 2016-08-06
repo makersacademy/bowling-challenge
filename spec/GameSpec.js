@@ -18,7 +18,7 @@ describe("Game", function(){
 
   it('keeps count of frames played', function(){
     game.playFrame();
-    expect(game.frameNumber).toEqual(0);
+    expect(game.frameNumber).toEqual(1);
   });
 
   // it('creates a new frame object per frame', function(){

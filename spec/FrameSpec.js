@@ -17,16 +17,21 @@ describe('Frame', function(){
   });
 
   describe('Roll One', function(){
+    it('Updates knocked pins after roll', function(){
+      spyOn(Math, "random").and.returnValue(0.49);
+      frame.rollOne();
+      expect(frame.knockedPins).toEqual(5);
+    });
+    it('Updates the Roll Number to 2 after roll 1', function(){
+      spyOn(Math, "random").and.returnValue(0.49);
+      frame.rollOne();
+      expect(frame.getRollNumber()).toEqual(2);
+    });
     it('A frame ends if a strike is thrown in roll 1', function(){
       // Roll has to receive 10
       spyOn(Math, "random").and.returnValue(0.99);
       frame.rollOne();
       expect(frame.isFrameFinished()).toBe(true);
-    });
-    it('Updates knocked pins after roll', function(){
-      spyOn(Math, "random").and.returnValue(0.49);
-      frame.rollOne();
-      expect(frame.knockedPins).toEqual(5);
     });
   });
 
@@ -41,7 +46,7 @@ describe('Frame', function(){
       // Stub roll to receieve 7
       spyOn(Math, "random").and.returnValue(0.49);
       frame.rollTwo();
-      expect(frame.knockedPins).toEqual(5);
+      expect(frame.getKnockedPins()).toEqual(5);
     });
     it('After roll 2 is used, the frame ends', function(){
       // Roll has to receive less than 10

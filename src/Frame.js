@@ -29,7 +29,7 @@ Frame.prototype.rollTwo = function () {
 };
 
 Frame.prototype.getKnockedPins = function () {
-  this.knockedPins;
+  return this.knockedPins;
 };
 
 Frame.prototype.getPinsStanding = function () {

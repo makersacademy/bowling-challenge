@@ -23,17 +23,23 @@ describe('Game:', function(){
     expect(game.getCurrentPinsStanding()).toEqual(10);
   });
 
-  it('starts frame status as "ready to play"', function(){
-    expect(game.getCurrentFrameStatus()).toEqual('ready to play');
+  describe('frameStatus', function(){
+    it('starts as "ready to play"', function(){
+      expect(game.getCurrentFrameStatus()).toEqual('ready to play');
+    });
   });
 
-  describe('frames available', function(){
+  describe('rollsLeft', function(){
+    it('starts on 0', function(){
+      expect(game.getCurrentRollsLeft()).toEqual(0);
+    });
+  });
+
+
+
+  describe('framesLeft', function(){
     it('start with 10', function(){
       expect(game.getCurrentFramesLeft()).toEqual(10);
-    });
-    it('avaible can be deducted', function(){
-      game.deductFrames();
-      expect(game.getCurrentFramesLeft()).toEqual(9)
     });
   });
 
@@ -41,14 +47,15 @@ describe('Game:', function(){
     it('starts on 0', function(){
       expect(game.getCurrentFrame()).toEqual(0);
     });
-
-    it('can be updated', function(){
-      game.updateCurrentFrame();
-      expect(game.getCurrentFrame()).toEqual(1)
-    });
   });
 
   describe('Player', function(){
+    it('rolls second ball which changes frame status to ready to play', function(){
+      game.startFrame();
+      game.rollBall();
+      game.rollBall();
+      expect(game.getCurrentFrameStatus()).toEqual('ready to play');
+    });
 
     describe('starts with', function(){
 
@@ -65,18 +72,42 @@ describe('Game:', function(){
 
       it('if frame status is "ready to play"', function(){
         game.startFrame();
+        expect(game.getCurrentFramesLeft()).toEqual(9)
+        expect(game.getCurrentRollsLeft()).toEqual(2);
         expect(game.getCurrentFramesLeft()).toEqual(9);
         expect(game.getCurrentFrame()).toEqual(1);
-        expect(game.getCurrentFrameStatus()).toEqual('unavailable')
+        expect(game.getCurrentFrameStatus()).toEqual('unavailable');
       });
     });
+
     describe('cannot start a frame', function(){
 
       it('if a frame is already being played', function(){
         game.startFrame();
         game.startFrame();
-        expect(game.getCurrentFrameStatus()).toEqual('unavailable')
-        expect(game.startFrame()).toContain('cannot start frame')
+        expect(game.getCurrentFrameStatus()).toEqual('unavailable');
+        expect(game.startFrame()).toContain('cannot start frame');
+      });
+    });
+
+    describe('can roll a ball', function(){
+      it('if they have started a frame', function(){
+        game.startFrame();
+        game.rollBall();
+        expect(game.getCurrentRollsLeft()).toEqual(1);
+      });
+    });
+
+    describe('cannot roll a ball', function(){
+      it('if they have not started a frame', function(){
+        game.rollBall();
+        expect(game.rollBall()).toContain('no balls available')
+      });
+
+      it('if there are no balls left to roll', function(){
+        game.rollBall();
+        game.rollBall();
+        expect(game.rollBall()).toContain('no balls available');
       });
     });
   });

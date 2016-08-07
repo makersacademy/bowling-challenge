@@ -22,15 +22,17 @@ describe('Game', function(){
     expect(game.getTotalScore()).toEqual(0);
   });
 
-  // Test using spies:
-  // describe('#calculateMultiplier', function(){
-  //   it('evaluates to "strike" if a strike has been bowled', function(){
-  //   });
-  //   it('evaluates to "spare" if a spare has been bowled', function(){
-  //   });
-  //   it('evaluates to "none" if neither a strike nor a spare has bowled', function(){
-  //   });
-  // });
+  describe('#calculateMultiplier', function(){
+    it('evaluates to "strike" if a strike has been bowled', function(){
+      expect(game.calculateMultiplier([10,0])).toEqual("strike");
+    });
+    it('evaluates to "spare" if a spare has been bowled', function(){
+      expect(game.calculateMultiplier([3,7])).toEqual("spare");
+    });
+    it('evaluates to "none" if neither a strike nor a spare has bowled', function(){
+      expect(game.calculateMultiplier([1,1])).toEqual("none");
+    });
+  });
 
   // describe('#playGame', function(){
   //   it('', function(){
@@ -45,6 +47,7 @@ describe('Game', function(){
       game.bowlFrame();
       expect(game.getTotalScore()).toEqual(10);
     });
+    // Doubling up on tests
     it('Updates the total score', function(){
       spyOn(Math, "random").and.returnValue(0.49);
       game.bowlFrame();

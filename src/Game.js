@@ -26,30 +26,24 @@ Game.prototype.addScore = function (score) {
 };
 
 Game.prototype.bowlFrame = function () {
+  // Slim this right down:
+  // How about frame 10?
   var frame = new Frame();
   result = frame.playFrame();
-  this.totalScore += result[0] + result[1];
+  this.currentPins = result;
+  var score = new Score(this.multiplier, result);
+  points = score.calculateFrameScore();
+  this.addScore(points)
+  this.multiplier = this.calculateMultiplier(result);
 };
 
-// Game.prototype.playGame = function () {
-//   // Recode it so we call FRAME.BOWL instead of FRAME.playFrame
-//   // Slim down some lines
-//   frame = new Frame();
-//   this.currentPins = frame.playFrame();
-//   this.multiplier = calculateMultiplier(this.currentPins);
-//   // Combine the next two lines??
-//   // Do I have to decalar var score... ?
-//   score = new Score(this.multiplier, this.currentPins);
-//   var points = score.calculateFrameScore();
-//   this.addScore(points);
-// };
 
 Game.prototype.calculateMultiplier = function (currentPins) {
   if (currentPins[0] === 10) {
-    this.multiplier = "strike";
+    return "strike";
   } else if (currentPins[0] + currentPins[1] === 10) {
-     this.multiplier = "spare";
+     return "spare";
   } else {
-     this.multiplier = "none";
+     return "none";
   };
 };

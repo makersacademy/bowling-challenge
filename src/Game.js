@@ -31,8 +31,10 @@ Game.prototype.playGame = function () {
   this.currentPins = frame.playFrame();
   this.multiplier = calculateMultiplier(this.currentPins);
   // Combine the next two lines??
-  score = new Score(this.getMultiplier(), this.getCurrentPins());
-  this.addScore(score);
+  // Do I have to decalar var score... ?
+  score = new Score(this.multiplier, this.currentPins);
+  var points = score.calculateFrameScore();
+  this.addScore(points);
 };
 
 Game.prototype.calculateMultiplier = function (currentPins) {

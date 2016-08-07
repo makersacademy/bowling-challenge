@@ -3,12 +3,12 @@ Score = function(multiplier, currentPins){
   this.currentPins = currentPins;
 };
 
-// Score.prototype.calculateFrameScore = function (multiplier, currentPins) {
-//   if (multiplier === "strike") {
-//     return (2 * (currentPins[0] + currentPins[1]);
-//   } else if (multiplier === "spare") {
-//     return (2 * currentPins[0] + currentPins[1]);
-//   } else {
-//     return (currentPins[0] + currentPins[1]);
-//   }
-// };
+Score.prototype.calculateFrameScore = function () {
+  if (this.multiplier === "strike") {
+    return 2 * (this.currentPins[0] + this.currentPins[1]);
+  } else if (this.multiplier === "spare") {
+    return (2 * this.currentPins[0] + this.currentPins[1]);
+  } else {
+    return (this.currentPins[0] + this.currentPins[1]);
+  };
+};

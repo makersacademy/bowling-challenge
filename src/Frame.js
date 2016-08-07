@@ -2,7 +2,6 @@ Frame = function(){
   this.pinsStanding = 10;
   this.knockedPinsOne = 0;
   this.knockedPinsTwo = 0;
-  this.strike = false;
 };
 
 Frame.prototype.getKnockedPinsOne = function () {

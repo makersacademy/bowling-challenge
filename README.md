@@ -12,11 +12,11 @@ I'd like to be able to see my 1 player bowling scorecard.
 
 As a bowler
 So that I can enjoy bowling
-I would like to be able to bowl.
+I would like to be able to bowl 10 frames.
 
 As a bowler
 So that I can see the result of my bowl
-I would like my scorecard to be updated with the result of each bowl.
+I would like my scorecard to be updated with the result of each frame .
 
 As a bowler
 So that I can see how well I'm doing
@@ -50,4 +50,8 @@ I'd like my spares to be highlighted a special colour.
 As a bowler
 So I can enjoy the tension of two rolls per frame
 I would like to be able to bowl every roll (2 per frame) separately.
+
+As a bowler
+So I can smash an opponent
+I would like to be able to play a 2 player game against the computer.
 ```

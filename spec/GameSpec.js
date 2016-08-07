@@ -32,9 +32,23 @@ describe('Game', function(){
   //   });
   // });
 
-  describe('#playGame', function(){
-    it('', function(){
+  // describe('#playGame', function(){
+  //   it('', function(){
+  //
+  //   });
+  // });
 
+  describe('#bowlFrame', function(){
+    // DO ALL OF THESE PROPERLY USING SPIES.
+    it('Updates the total score', function(){
+      spyOn(Math, "random").and.returnValue(0.99);
+      game.bowlFrame();
+      expect(game.getTotalScore()).toEqual(10);
+    });
+    it('Updates the total score', function(){
+      spyOn(Math, "random").and.returnValue(0.49);
+      game.bowlFrame();
+      expect(game.getTotalScore()).toEqual(7);
     });
   });
 

@@ -25,18 +25,24 @@ Game.prototype.addScore = function (score) {
   this.totalScore += score;
 };
 
-Game.prototype.playGame = function () {
-  // Recode it so we call FRAME.BOWL instead of FRAME.playFrame
-  // Combine the next two lines??
-  frame = new Frame();
-  this.currentPins = frame.playFrame();
-  this.multiplier = calculateMultiplier(this.currentPins);
-  // Combine the next two lines??
-  // Do I have to decalar var score... ?
-  score = new Score(this.multiplier, this.currentPins);
-  var points = score.calculateFrameScore();
-  this.addScore(points);
+Game.prototype.bowlFrame = function () {
+  var frame = new Frame();
+  result = frame.playFrame();
+  this.totalScore += result[0] + result[1];
 };
+
+// Game.prototype.playGame = function () {
+//   // Recode it so we call FRAME.BOWL instead of FRAME.playFrame
+//   // Slim down some lines
+//   frame = new Frame();
+//   this.currentPins = frame.playFrame();
+//   this.multiplier = calculateMultiplier(this.currentPins);
+//   // Combine the next two lines??
+//   // Do I have to decalar var score... ?
+//   score = new Score(this.multiplier, this.currentPins);
+//   var points = score.calculateFrameScore();
+//   this.addScore(points);
+// };
 
 Game.prototype.calculateMultiplier = function (currentPins) {
   if (currentPins[0] === 10) {

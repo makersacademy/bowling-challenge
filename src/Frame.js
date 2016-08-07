@@ -15,12 +15,9 @@ Frame.prototype.secondBowl = function() {
   return result;
 };
 
+
 Frame.prototype.currentScore = function(){
   return this.frameScore[this.frameScore.length-1];
-};
-
-Frame.prototype.isASpare = function() {
-  return this.totalFrameScore() === 10;
 };
 
 Frame.prototype.isAStrike = function() {

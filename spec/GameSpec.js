@@ -16,14 +16,11 @@ describe("Game", function(){
     expect(game.frameNumber).toEqual(1);
   });
 
-  it('totalGrameScore returns total score of a game', function(){
+  it('totalGameScore sets gameScore to total score of game', function(){
     game.bowl();
     game.bowl();
-    expect(game.totalGameScore()).toBeLessThan(11);
+    expect(game.gameScore.toBeLessThan(11);
   });
 
-  it('enables frames to be played a maximum of 10 times', function(){
-
-  });
 
 });

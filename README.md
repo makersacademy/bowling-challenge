@@ -1,3 +1,7 @@
+PLEASE NOTE: Challenge started but not completed. Expect to replace all code currently in place, but will tackle this challenge during week 6.
+
+
+
 
 Bowling Challenge
 =================

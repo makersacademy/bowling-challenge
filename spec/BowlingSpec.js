@@ -14,14 +14,21 @@ describe ('bowling game', function(){
   });
 
   it('stores all the rolls', function(){
-    for (var i = 0; i < 14; i++){
+    for (var i = 0; i < 21; i++){
     bowling.roll = function() { return 5; };
     bowling.updateRolls();
     }
-    expect(bowling.addScore()).toEqual(50);
+    expect(bowling.addScore()).toEqual(150);
   });
 
+  it('accurately calculates the spare', function(){
+    for (var i = 0; i < 21; i++){
+    bowling.roll = function() { return 5; };
+    bowling.updateRolls();
 
+  }
+    expect(bowling.addScore()).toEqual(150);
+  });
 
 
 

@@ -6,8 +6,9 @@ describe("Bowling", function() {
   beforeEach(function() {
     bowling = new Bowling();
     bowling.scorecard = {
+      pinsLeft: 10,
       getPinsLeft: function() {
-        return 10;
+        return this.pinsLeft;
       },
       receiveScore: function(num) {}
     };
@@ -21,8 +22,7 @@ describe("Bowling", function() {
       expect(result).toBeLessThan(11);
     });
     it ("second roll, cannot knock more pins than what was left", function() {
-      bowling._roll = function() { return 9; };
-      bowling.play();
+      bowling.scorecard.pinsLeft = 1;
       bowling._roll = Bowling.prototype._roll;
       var result = bowling.play();
       expect(result).toBeGreaterThan(-1);

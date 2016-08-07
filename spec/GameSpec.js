@@ -47,11 +47,9 @@ describe('Game', function(){
       game.bowlFrame();
       expect(game.getTotalScore()).toEqual(10);
     });
-    // Doubling up on tests
-    it('Updates the total score', function(){
-      spyOn(Math, "random").and.returnValue(0.49);
+    it('Updates the frameNumber after each bowl', function(){
       game.bowlFrame();
-      expect(game.getTotalScore()).toEqual(7);
+      expect(game.getFrameNumber()).toEqual(2);
     });
   });
 
@@ -61,5 +59,12 @@ describe('Game', function(){
       expect(game.getTotalScore()).toEqual(5);
     });
   });
+
+  // describe('#endGame', function(){
+  //   it('Ends the game and returns a message', function(){
+  //     game.endGame();
+  //
+  //   });
+  // });
 
 });

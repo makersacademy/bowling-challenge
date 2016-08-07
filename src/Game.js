@@ -28,15 +28,32 @@ Game.prototype.addScore = function (score) {
 Game.prototype.bowlFrame = function () {
   // Slim this right down:
   // How about frame 10?
-  var frame = new Frame();
-  result = frame.playFrame();
-  this.currentPins = result;
-  var score = new Score(this.multiplier, result);
-  points = score.calculateFrameScore();
-  this.addScore(points)
-  this.multiplier = this.calculateMultiplier(result);
+  if (this.getFrameNumber() < 10) {
+    this.playRegularFrame();
+  } else {
+    this.playSpecialTenthFrame();
+  };
 };
 
+Game.prototype.playRegularFrame = function () {
+  var frame = new Frame();
+  var result = frame.playFrame();
+  this.currentPins = result;
+  var score = new Score(this.multiplier, result);
+  this.addScore(score.calculateFrameScore());
+  this.multiplier = this.calculateMultiplier(result);
+  this.frameNumber += 1;
+};
+
+Game.prototype.playSpecialTenthFrame = function () {
+  var tenthFrame = new TenthFrame();
+  var result = tenthFrame.playTenthFrame();
+  this.currentPins = result;
+  var score = new Score(this.multiplier, result);
+  this.addScore(score.calculateTenthFrameScore());
+  // What can I do here??
+  this.endGame();
+};
 
 Game.prototype.calculateMultiplier = function (currentPins) {
   if (currentPins[0] === 10) {

@@ -32,8 +32,17 @@ describe('Score', function(){
   });
 
   describe('#calculateTenthFrameScore', function(){
-    it('', function(){
-
+    it('Calculates the correct score after a strike was bowled in frame 9', function(){
+      score = new Score("strike", [5,2,10]);
+      expect(score.calculateTenthFrameScore()).toEqual(24);
+    });
+    it('Calculates the correct score after a spare was bowled in frame 9', function(){
+      score = new Score("spare", [5,2,10]);
+      expect(score.calculateTenthFrameScore()).toEqual(22);
+    });
+    it('Calculates the correct score after neither a strike nor a spare was bowled in frame 9', function(){
+      score = new Score("none", [5,2,10]);
+      expect(score.calculateTenthFrameScore()).toEqual(17);
     });
   });
 

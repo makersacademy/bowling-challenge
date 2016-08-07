@@ -9,6 +9,25 @@ describe('Feature Test:', function() {
     frame = new Frame();
   });
 
+  describe('Playing the game', function() {
+
+    describe('can return the number of frames taken in the game', function() {
+      it('after one frame', function() {
+        frame.roll(2);
+        frame.roll(2);
+        expect(game.getFrameCounter()).toEqual(1);
+      });
+    });
+  });
+
+  // describe('can calculate the total score', function() {
+  //   it('after one frame', function() {
+  //     frame.roll(2);
+  //     frame.roll(2);
+  //     expect(game.getScore()).toEqual(4);
+  //   });
+  // });
+
   // describe('can get a frame score from a roll', function() {
   //
   //   it('returns a frame score for the first roll', function() {
@@ -23,3 +42,4 @@ describe('Feature Test:', function() {
   //     expect(game.roll(11)).toThrow(new Error("Cannot bowl more than 10"));
   //   });
   // });
+});

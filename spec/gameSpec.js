@@ -17,7 +17,15 @@ describe('Game', function() {
     });
   });
 
-  describe('is made up of a number of Frames', function() {
+
+
+
+
+
+  
+
+  describe('Frames', function() {
+
     it('has a maximum number of frames', function() {
       expect(game.frameCounter).not.toBeGreaterThan(game.MAX_FRAMES);
     });

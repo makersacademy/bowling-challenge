@@ -14,5 +14,6 @@ describe("Game", function(){
     expect(game.getTotalScore()).toEqual(0);
   });
 
+  
 
 });

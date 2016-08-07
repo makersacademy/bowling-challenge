@@ -22,6 +22,14 @@ describe("Game", function() {
     rollMany(0,16);
     expect(game.score()).toBe(20);
   })
+
+  it("calculates score for a strike", function(){
+    game.roll(10);
+    game.roll(4);
+    game.roll(4);
+    rollMany(0,17);
+    expect(game.score()).toBe(26);
+  });
     function rollMany(pins, rolls) {
     for(i = 0; i < rolls; i++) {
       game.roll(pins);

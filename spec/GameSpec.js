@@ -16,19 +16,6 @@ describe("Game", function(){
     expect(game.frameNumber).toEqual(1);
   });
 
-  // it('puts the score from last frame into currentframeScore', function(){
-  //   game.bowl();
-  //   game.bowl();
-  //   game.
-  //   expect(game.frameScores[0]).toBeLessThan(11);
-  // });
-
-  it('puts the score from last frame into frameScores', function(){
-    game.bowl();
-    game.bowl();
-    expect(game.frameScores[0]).toBeLessThan(11);
-  });
-
   it('totalGrameScore returns total score of a game', function(){
     game.bowl();
     game.bowl();
@@ -38,12 +25,5 @@ describe("Game", function(){
   it('enables frames to be played a maximum of 10 times', function(){
 
   });
-
-  // it('returns total score of a frame', function(){
-  //   game.bowl();
-  //   game.bowl();
-  //   expect(game.frameScore()).toBeLessThan(11);
-  // });
-
 
 });

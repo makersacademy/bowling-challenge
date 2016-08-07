@@ -38,4 +38,18 @@ describe('Frame', function(){
     expect(frame.totalFrameScore()).toBeLessThan(11);
   });
 
+  it('returns true if a spare has been scored', function(){
+    spyOn(frame, 'firstBowl').and.returnValue(8);
+    spyOn(frame, 'secondBowl').and.returnValue(2);
+    frame.firstBowl();
+    frame.secondBowl();
+    expect(frame.isASpare()).toEqual(true);
+  });
+
+  it('returns true if firstBowl is a strike', function(){
+    spyOn(frame, 'firstBowl').and.returnValue(10);
+    frame.firstBowl();
+    expect(frame.isAStrike()).toEqual(true);
+  });
+
 });

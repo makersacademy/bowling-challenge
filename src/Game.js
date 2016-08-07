@@ -8,6 +8,7 @@ function Game(){
 }
 
 Game.prototype.bowl = function () {
+  if(this.frameNumber <= 10){
   if (this.roll % 2 === 0) {
     this.bowlScore = this.currentFrame.firstBowl();
     this.gameScore += this.bowlScore;
@@ -15,21 +16,14 @@ Game.prototype.bowl = function () {
   }
   else {
     this.bowlScore = this.currentFrame.secondBowl();
-    this.frameScores.push(this.currentFrame.totalFrameScore());
     this.gameScore += this.bowlScore;
   }
+  this.frameScores.push(this.currentFrame.totalFrameScore());
   this.roll += 1
   return this.bowlScore;
+}
 }
 
 Game.prototype.totalGameScore = function(){
   return this.gameScore;
 };
-
-// Game.prototype.frameScore = function(){
-//   return this.frameScores;
-// };
-
-// Game.prototype.newFrame = function(){
-//   this.frameNumber += 1;
-// };

@@ -1,6 +1,5 @@
 Frame = function(){
   this.rollNumber = 1;
-  this.isComplete = false;
   this.pinsStanding = 10;
   this.knockedPinsOne = 0;
   this.knockedPinsTwo = 0;
@@ -9,11 +8,6 @@ Frame = function(){
 
 Frame.prototype.getRollNumber = function () {
   return this.rollNumber;
-};
-
-// Do I need this and the isComplete property in constructor??
-Frame.prototype.isFrameFinished = function () {
-  return this.isComplete;
 };
 
 Frame.prototype.rollOne = function () {

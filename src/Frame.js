@@ -20,3 +20,10 @@ Frame.prototype.secondBowl = function() {
 Frame.prototype.currentScore = function(){
   return this.frameScore[this.frameScore.length-1];
 };
+
+Frame.prototype.totalFrameScore = function(){
+  var sum = this.frameScore.reduceRight(function(a,b){
+    return a + b;
+  })
+  return sum;
+};

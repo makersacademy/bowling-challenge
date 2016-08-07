@@ -20,4 +20,22 @@ describe('Frame', function(){
     expect(frame.frameScore[1] >= 0 && frame.frameScore[1] <= 5).toBeTruthy();
   });
 
+  it('currentScore returns the last ball bowled', function(){
+    frame.firstBowl();
+    expect(frame.currentScore()).toBeLessThan(10);
+  });
+
+  it('frameScore returns an array of two numbers', function(){
+    frame.firstBowl();
+    frame.secondBowl();
+    expect(frame.frameScore[0]).toBeLessThan(11);
+    expect(frame.frameScore[1]).toBeLessThan(10);
+  });
+
+  it('totalFrameScore returns a number less than 11', function(){
+    frame.firstBowl();
+    frame.secondBowl();
+    expect(frame.totalFrameScore()).toBeLessThan(11);
+  });
+
 });

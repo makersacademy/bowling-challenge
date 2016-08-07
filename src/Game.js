@@ -13,6 +13,7 @@ Game.prototype.bowl = function () {
   else {
     this.bowlScore = this.currentFrame.secondBowl();
     this.frameNumber += 1;
+    this.frameScores.push(this.currentFrame.totalFrameScore());
   }
   this.roll += 1;
   return this.bowlScore;
@@ -21,3 +22,14 @@ Game.prototype.bowl = function () {
 Game.prototype.newFrame = function(){
   this.frameNumber += 1;
 };
+
+Game.prototype.totalGameScore = function(){
+  var sum = this.frameScores.reduceRight(function(a,b){
+    return a + b;
+  })
+  return sum;
+};
+
+// Game.prototype.frameScore = function(){
+//   return this.frameScores;
+// };

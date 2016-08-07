@@ -11,6 +11,12 @@ $(document).ready(function(){
     listItem += result.toString();
     listItem += '</l>';
     $('.scores').append(listItem);
+
+    var result = game.totalGameScore();
+    var listItem = '<l>';
+    listItem += result.toString();
+    listItem += '</l>';
+    $('.frames').append(listItem);
   });
 
 

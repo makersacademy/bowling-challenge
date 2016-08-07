@@ -12,3 +12,14 @@ Bowling.prototype.getScoreboard = function () {
 Bowling.prototype.getCurrentRoll = function () {
   return this._currentRoll;
 };
+
+Bowling.prototype.playFirstRoll = function () {
+  this._scoreboard.nextFrame();
+  this._currentRoll.roll();
+  this._scoreboard.saveFirstRoll(this._currentRoll.getPins());
+};
+
+Bowling.prototype.playSecondRoll = function () {
+  this._currentRoll.roll();
+  this._scoreboard.saveSecondRoll(this._currentRoll.getPins());
+};

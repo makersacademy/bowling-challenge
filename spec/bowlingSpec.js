@@ -1,10 +1,8 @@
 describe('Bowling', function(){
   var bowling;
-  // var frame;
 
   beforeEach(function(){
     bowling = new Bowling();
-    // frame = new Frame();
   })
 
   var oneRoll = function(){
@@ -25,11 +23,11 @@ describe('Bowling', function(){
     })
   })
 
-  describe('score', function(){
+  describe('#score', function(){
     it('saves the first roll score in current frame', function(){
       oneRoll();
       expect(bowling.currentFrame[0]).toEqual(bowling.currentFrame[0]);
-      })
+    })
 
     it('saves the second roll score in the current frame', function(){
       spyOn(Math, 'random').and.returnValue(0.4);
@@ -50,7 +48,7 @@ describe('Bowling', function(){
     })
   })
 
-  describe('reaminingPins', function(){
+  describe('#reaminingPins', function(){
     it('reduces the number of pins by those knocked', function(){
       spyOn(Math, 'random').and.returnValue(0.4);
       oneRoll();
@@ -58,7 +56,7 @@ describe('Bowling', function(){
     })
   })
 
-  describe('strike', function(){
+  describe('#strike', function(){
     it('returns true if the pins knocked are 10', function(){
       spyOn(Math, 'random').and.returnValue(0.9);
       oneRoll();
@@ -66,39 +64,26 @@ describe('Bowling', function(){
     })
   })
 
-  // describe('spare', function(){
-  //   it('returns true if the frame score is 10', function(){
-  //     spyOn(Math, 'random').and.returnValue(0.7);
-  //     twoRolls();
-  //     expect(bowling.spare(bowling.totalScore)).toEqual(true)
-  //   })
-  // })
-
-  describe('spareBonusPointsApply',function(){
+  describe('#spareBonusPointsApply',function(){
     it('applies spare bonus points to total scores', function(){
       spyOn(Math, 'random').and.returnValue(0.7);
       twoRolls();
       twoRolls();
-      console.log(bowling.gameFrames);
       expect(bowling.totalScore).toEqual(28)
     })
   })
 
-  describe('strikeBonusPointsApply', function(){
+  describe('#strikeBonusPointsApply', function(){
     it('applies strike bonus points to total score', function(){
       spyOn(Math, 'random').and.returnValue(0.9);
-      twoRolls();
-      twoRolls();
-      twoRolls();
-      twoRolls();
-      twoRolls();
-      oneRoll();
-      console.log(bowling.bonusScores);
+      for (var i = 0; i < STARTINGPINS+2; i++) {
+        oneRoll();
+      }
       expect(bowling.totalScore).toEqual(300)
     })
   })
 
-  describe('sumFrame', function(){
+  describe('#sumFrame', function(){
     it('sums the points in a frame', function(){
       spyOn(Math, 'random').and.returnValue(0.4);
       twoRolls();
@@ -106,7 +91,7 @@ describe('Bowling', function(){
     })
   })
 
-  describe('saveFrame', function(){
+  describe('#saveFrame', function(){
     it('saves the current frame and resets', function(){
       spyOn(Math, 'random').and.returnValue(0.4);
       twoRolls();
@@ -114,4 +99,14 @@ describe('Bowling', function(){
     })
   })
 
+  describe('#finalFrame', function(){
+    it('gives an extra roll if a strike rolled', function(){
+      spyOn(Math, 'random').and.returnValue(0.9);
+      for (var i = 0; i < STARTINGPINS/2; i++) {
+        twoRolls();
+      }
+      twoRolls();
+      expect(bowling.gameFrames[9][2]).toEqual(10);
+    })
+  })
 });

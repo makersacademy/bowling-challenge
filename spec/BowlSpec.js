@@ -12,4 +12,5 @@ describe('Bowl', function() {
     expect(bowl.getPins()).toBeGreaterThan(-1);
     expect(bowl.getPins()).toBeLessThan(11);
   });
+  
 });

@@ -6,6 +6,11 @@
 
    beforeEach(function() {
      game = new Bowling();
+     currentRoll = {
+       getPins: function() {
+         return value;
+       }
+     };
    });
 
    it('starts with a new scorecard', function() {

@@ -1,25 +1,25 @@
 'use strict';
 
 function Bowling () {
-  this._scoreboard = new Scoreboard();
-  this._currentRoll = new Bowl();
+  this.scoreboard = new Scoreboard();
+  this.currentRoll = new Bowl();
 }
 
-Bowling.prototype.getScoreboard = function () {
-  return this._scoreboard;
+Bowling.prototype.getScoreboard = function() {
+  return this.scoreboard;
 };
 
-Bowling.prototype.getCurrentRoll = function () {
-  return this._currentRoll;
+Bowling.prototype.getCurrentRoll = function() {
+  return this.currentRoll;
 };
 
-Bowling.prototype.playFirstRoll = function () {
-  this._scoreboard.nextFrame();
-  this._currentRoll.roll();
-  this._scoreboard.saveFirstRoll(this._currentRoll.getPins());
+Bowling.prototype.playFirstRoll = function() {
+  this.scoreboard.nextFrame();
+  this.currentRoll.roll();
+  this.scoreboard.saveFirstRoll(this.currentRoll.getPins());
 };
 
-Bowling.prototype.playSecondRoll = function () {
-  this._currentRoll.roll();
-  this._scoreboard.saveSecondRoll(this._currentRoll.getPins());
+Bowling.prototype.playSecondRoll = function() {
+  this.currentRoll.roll();
+  this.scoreboard.saveSecondRoll(this.currentRoll.getPins());
 };

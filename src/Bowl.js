@@ -1,14 +1,14 @@
 'use strict';
 
 function Bowl () {
-  this._score = 0;
-  this._hitsPins = 0;
+  this.score = 0;
+  this.hitsPins = 0;
 }
 
-Bowl.prototype.roll = function (){
-  this._hitsPins = Math.floor(Math.random()*11);
+Bowl.prototype.roll = function(){
+  this.hitsPins = Math.floor(Math.random()*11);
 };
 
-Bowl.prototype.getPins = function () {
-  return this._hitsPins;
+Bowl.prototype.getPins = function() {
+  return this.hitsPins;
 };

@@ -30,7 +30,7 @@
           <form id="enter-name">
             <input id="player-name" type="text" placeholder="Enter your name"></input>
             <input type="button" value="Let's bowl!" onclick="getName()"
-            style="background-color: transparent; border: none"></input>
+            style="background-color: #d01d1d; border: none border: solid black 2px"></input>
           </form>
         </td>
       </tr>
@@ -123,6 +123,7 @@
               <td>
               </td>
               <td>
+                <label id="total-score"></label>
               </td>
             </tr>
             <tr>
@@ -157,6 +158,10 @@
               <td colspan="10">
               </td>
               <td colspan="7">
+                <form id="bowl-button">
+                  <input id="bowl-frame" type="button" value="Bowl frame!"
+                  style="background-color: #d01d1d; border: solid black 2px"></input>
+                </form>
               </td>
             </tr>
           </table>

@@ -4,7 +4,7 @@
 
 Load up bowling.html from the root directory. Enter your name and click bowl frame to bowl each frame.
 
-Note. The scoring is based on 'Penang' bowling, with strikes doubling score for the next two rolls (but limited to the next frame).
+Note: The scoring is based on 'Penang' bowling, with strikes doubling the score for the next two rolls (but limited to the next frame).
 
 ### User Stories
 

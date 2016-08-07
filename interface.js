@@ -8,6 +8,7 @@ $(document).ready(function(){
           //Change the label of $btn
           $btn.val($btn.val()+' ('+count+')')
 
+      var turn = 1;
       $btn.click(function(){
         game.bowl();
         console.log(game);
@@ -17,17 +18,19 @@ $(document).ready(function(){
         listItem += '</l>';
         $('.scores').append(listItem);
 
-        var result = game.gameScore;
+        if(turn % 2 === 0){
+        var score = game.gameScore;
         var listItem = '<l>';
-        listItem += result.toString() + ', ';
+        listItem += score.toString() + ', ';
         listItem += '</l>';
         $('.frames').append(listItem);
-
+        }
           $btn.val($btn.val().replace(count,count-1));
           count--;
           if(count==0) {
                 return !$btn.attr('disabled','disabled');
           }
+          turn += 1;
       })
     })
 

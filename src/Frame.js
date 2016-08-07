@@ -1,12 +1,13 @@
-function Frame(){
-  this.rollNumber = 1;
+function Frame(number){
+  this.currentFrame = number;
+  this.currentRoll = 1;
   this.pinsStanding = 10;
   this.firstPinsDown = 0;
   this.secondPinsDown = 0;
 }
 
-Frame.prototype.getRollNumber = function(){
-  return this.rollNumber;
+Frame.prototype.getCurrentRoll = function(){
+  return this.currentRoll;
 };
 
 Frame.prototype.getPinsStanding = function(){
@@ -14,9 +15,9 @@ Frame.prototype.getPinsStanding = function(){
 };
 
 Frame.prototype.firstRoll = function(){
-  this.rollNumber = 2;
   this.firstPinsDown = Math.floor(Math.random()*11);
   this.pinsStanding -= this.firstPinsDown;
+  this.currentRoll = 2;
 };
 
 Frame.prototype.getFirstPinsDown = function(){
@@ -26,8 +27,21 @@ Frame.prototype.getFirstPinsDown = function(){
 Frame.prototype.secondRoll = function(){
   this.secondPinsDown = Math.floor(Math.random()*11);
   this.pinsStanding -= this.secondPinsDown;
+  // var nextFrame = new Frame(this.currentFrame + 1);
 };
 
 Frame.prototype.getSecondPinsDown = function(){
   return this.secondPinsDown;
+};
+
+Frame.prototype.isStrike = function(){
+  if (this.getFirstPinsDown() === 10){
+    return true;
+  }
+}
+
+Frame.prototype.isSpare = function(){
+  if ((this.getFirstPinsDown()) + (this.getSecondPinsDown()) === 10){
+    return true;
+  }
 };

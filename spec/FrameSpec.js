@@ -1,12 +1,14 @@
 describe ("Frame", function(){
-  var frame
+  var frame;
+  var game;
 
   beforeEach(function(){
     frame = new Frame();
+    game = new Game();
   });
 
   it("frame begins with ball 1", function(){
-    expect(frame.getRollNumber()).toEqual(1);
+    expect(frame.getCurrentRoll()).toEqual(1);
   });
 
   it("frame begins with 10 pins", function(){
@@ -33,7 +35,7 @@ describe ("Frame", function(){
 
     it("can roll a second time after first", function(){
       frame.firstRoll();
-      expect(frame.getRollNumber()).toEqual(2);
+      expect(frame.getCurrentRoll()).toEqual(2);
     });
 
     it("second roll can knock remaining pins down", function(){
@@ -48,10 +50,19 @@ describe ("Frame", function(){
 
   describe("strike", function(){
 
+    it("strike scored if 10 pins down after first roll", function(){
+      frame.firstPinsDown = 10;
+      expect(frame.isStrike()).toBe(true);
+    });
+
   });
 
   describe("spare", function(){
-
+    it("spare scored if 10 pins down after second roll", function(){
+      frame.firstPinsDown = 8;
+      frame.secondPinsDown = 2;
+      expect(frame.isSpare()).toBe(true);
+    });
   });
 
 

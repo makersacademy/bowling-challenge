@@ -26,6 +26,7 @@ Game.prototype.addScore = function (score) {
 };
 
 Game.prototype.playGame = function () {
+  // Recode it so we call FRAME.BOWL instead of FRAME.playFrame
   // Combine the next two lines??
   frame = new Frame();
   this.currentPins = frame.playFrame();

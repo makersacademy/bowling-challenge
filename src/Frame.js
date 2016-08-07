@@ -20,6 +20,7 @@ Frame.prototype.rollOne = function () {
   this.knockedPinsOne = Math.floor(Math.random() * (this.pinsStanding + 1));
   this.pinsStanding -= this.knockedPinsOne;
   if (this.pinsStanding === 0) {
+    // Do we need this?
     this.strike = true;
   } else {
     this.rollNumber = 2;

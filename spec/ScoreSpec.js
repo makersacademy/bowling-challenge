@@ -29,7 +29,12 @@ describe('Score', function(){
       score = new Score("none", [5,2]);
       expect(score.calculateFrameScore()).toEqual(7);
     });
+  });
 
+  describe('#calculateTenthFrameScore', function(){
+    it('', function(){
+
+    });
   });
 
 });

@@ -46,4 +46,8 @@ I would like to see my strikes highlighted a special colour.
 As a bowler
 So that I can gloat about my spares
 I'd like my spares to be highlighted a special colour.
+
+As a bowler
+So I can enjoy the tension of two rolls per frame
+I would like to be able to bowl every roll (2 per frame) separately.
 ```

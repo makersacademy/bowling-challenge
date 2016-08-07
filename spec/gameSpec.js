@@ -1,0 +1,46 @@
+describe("bowling", function(){
+  var game;
+});
+
+beforeEach(function(){
+  game = new Game ();
+});
+
+it("adds a zero score to the roll", function(){
+  game.roll(0);
+  expect(game.currentFrame).toEqual([0]);
+});
+it("adds a scores to the roll", function(){
+  game.roll(7);
+  expect(game.currentFrame).toEqual([7]);
+});
+it("only allows one turn if a strike is rolled", function(){
+  game.roll(10);
+  expect(game.frames).toEqual([[10]]);
+});
+it("only allows for two rolls in each frame", function(){
+  game.roll(6);
+  game.roll(2);
+  expect(game.frames).toEqual([[6, 2]]);
+});
+it("The current frame is emptied when written to frames with 2 scores", function(){
+  game.roll(6);
+  game.roll(2);
+  expect(game.currentFrame).toEqual([]);
+});
+it("The current frame is emptied when written to frames with a strike", function(){
+  game.roll(10);
+  expect(game.currentFrame).toEqual([]);
+});
+it("can calculate the score of a gutter game", function(){
+  for(var i = 0; i < 20; i++){
+    game.roll(0)};
+    game.score();
+    expect(game.frameTotal).toEqual(0)
+});
+// it("can calculate the score of a game with no strikes or spares", function(){
+//   for(var i = 0; i < 20; i++){
+//     game.roll(2)}
+//     game.score();
+//     expect(game.total).toEqual(40)
+// });

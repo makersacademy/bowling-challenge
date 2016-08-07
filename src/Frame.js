@@ -1,28 +1,8 @@
 Frame = function(){
-  this.rollNumber = 1;
   this.pinsStanding = 10;
   this.knockedPinsOne = 0;
   this.knockedPinsTwo = 0;
   this.strike = false;
-};
-
-Frame.prototype.getRollNumber = function () {
-  return this.rollNumber;
-};
-
-Frame.prototype.rollOne = function () {
-  this.knockedPinsOne = Math.floor(Math.random() * (this.pinsStanding + 1));
-  this.pinsStanding -= this.knockedPinsOne;
-  if (this.pinsStanding === 0) {
-    // Do we need this?
-    this.strike = true;
-  } else {
-    this.rollNumber = 2;
-  };
-};
-
-Frame.prototype.rollTwo = function () {
-  this.knockedPinsTwo = Math.floor(Math.random() * (this.pinsStanding + 1));
 };
 
 Frame.prototype.getKnockedPinsOne = function () {
@@ -41,9 +21,17 @@ Frame.prototype.getStrike = function () {
   return this.strike;
 };
 
-// Come back and sort this!
+Frame.prototype.rollOne = function () {
+  this.knockedPinsOne = Math.floor(Math.random() * (this.pinsStanding + 1));
+  this.pinsStanding -= this.knockedPinsOne;
+};
+
+Frame.prototype.rollTwo = function () {
+  this.knockedPinsTwo = Math.floor(Math.random() * (this.pinsStanding + 1));
+};
+
 Frame.prototype.playFrame = function () {
   this.rollOne();
-  if (this.getRollNumber() === 2) this.rollTwo();
+  if (this.pinsStanding > 0) this.rollTwo();
   return [this.knockedPinsOne, this.knockedPinsTwo];
 };

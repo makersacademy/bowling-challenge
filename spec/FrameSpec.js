@@ -6,9 +6,6 @@ describe('Frame', function(){
 
   });
 
-  it('A frame starts with roll 1 (potentially of 2)', function(){
-    expect(frame.getRollNumber()).toEqual(1);
-  });
   it('A frame begins with 10 pins standing', function(){
     expect(frame.getPinsStanding()).toEqual(10);
   });
@@ -23,17 +20,6 @@ describe('Frame', function(){
       spyOn(Math, "random").and.returnValue(0.49);
       frame.rollOne();
       expect(frame.getPinsStanding()).toEqual(5);
-    });
-    it('Updates the Roll Number to 2 after roll 1', function(){
-      spyOn(Math, "random").and.returnValue(0.49);
-      frame.rollOne();
-      expect(frame.getRollNumber()).toEqual(2);
-    });
-    // Do we need this??
-    it('A strike is noted if bowled on roll 1', function(){
-      spyOn(Math, "random").and.returnValue(0.99);
-      frame.rollOne();
-      expect(frame.getStrike()).toBe(true);
     });
   });
 

@@ -1,4 +1,4 @@
-var Frame = function(){
+function Frame(){
   this.frameScore = [];
 };
 

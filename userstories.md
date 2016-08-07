@@ -11,13 +11,13 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 #User Stories
 
-As a player
+<!-- As a player
 So I can play a frame.
-I roll a ball.
+I roll a ball. -->
 
-As a player
+<!-- As a player
 So I can keep score when playing a game
-I am told how many pins I knocked down as a frame score.
+I am told how many pins I knocked down as a frame score. -->
 
 As a player
 If I get a strike

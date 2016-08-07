@@ -11,9 +11,17 @@ describe("Game", function(){
   });
 
   it('keeps count of frames played', function(){
-    game.newFrame();
-    expect(game.frameNumber).toEqual(2);
+    game.bowl();
+    game.bowl();
+    expect(game.frameNumber).toEqual(1);
   });
+
+  // it('puts the score from last frame into currentframeScore', function(){
+  //   game.bowl();
+  //   game.bowl();
+  //   game.
+  //   expect(game.frameScores[0]).toBeLessThan(11);
+  // });
 
   it('puts the score from last frame into frameScores', function(){
     game.bowl();

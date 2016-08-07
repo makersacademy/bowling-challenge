@@ -22,7 +22,7 @@ describe('Frame', function(){
 
   it('currentScore returns the last ball bowled', function(){
     frame.firstBowl();
-    expect(frame.currentScore()).toBeLessThan(10);
+    expect(frame.currentScore()).toBeLessThan(11);
   });
 
   it('frameScore returns an array of two numbers', function(){

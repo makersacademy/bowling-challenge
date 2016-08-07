@@ -1,7 +1,5 @@
 function Frame(){
   this.frameScore = [];
-  this.previousScore = 0;
-  this.roll = 0;
 }
 
 Frame.prototype.firstBowl = function () {
@@ -14,6 +12,7 @@ Frame.prototype.secondBowl = function() {
   var knocked = 10 - this.currentScore();
   var result = Math.round(Math.random() * (0 - knocked) + knocked);
   this.frameScore.push(result);
+  this.totalFrameScore();
   return result;
 };
 
@@ -22,8 +21,5 @@ Frame.prototype.currentScore = function(){
 };
 
 Frame.prototype.totalFrameScore = function(){
-  var sum = this.frameScore.reduceRight(function(a,b){
-    return a + b;
-  })
-  return sum;
+  return this.frameScore[0] + this.frameScore[1];
 };

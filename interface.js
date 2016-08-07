@@ -8,16 +8,20 @@ $(document).ready(function(){
     console.log(game);
     var result = game.bowlScore;
     var listItem = '<l>';
-    listItem += result.toString();
+    listItem += result.toString() + ', ';
     listItem += '</l>';
     $('.scores').append(listItem);
 
-    var result = game.totalGameScore();
-    var listItem = '<l>';
-    listItem += result.toString();
-    listItem += '</l>';
-    $('.frames').append(listItem);
   });
 
+  $('.btn-bowl').click(
+    // function(){},
+    function(){
+      var result = game.gameScore;
+      var listItem = '<l>';
+      listItem += result.toString() + ', ';
+      listItem += '</l>';
+      $('.frames').append(listItem);
+    });
 
 });

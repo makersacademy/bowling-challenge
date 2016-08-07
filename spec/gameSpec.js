@@ -35,12 +35,23 @@ it("The current frame is emptied when written to frames with a strike", function
 it("can calculate the score of a gutter game", function(){
   for(var i = 0; i < 20; i++){
     game.roll(0)};
-    game.score();
-    expect(game.frameTotal).toEqual(0)
+    expect(game.total).toEqual(0)
 });
-// it("can calculate the score of a game with no strikes or spares", function(){
-//   for(var i = 0; i < 20; i++){
-//     game.roll(2)}
-//     game.score();
-//     expect(game.total).toEqual(40)
-// });
+it("can calculate the score of a game with no strikes or spares", function(){
+  for(var i = 0; i < 20; i++){
+    game.roll(2)};
+  expect(game.total).toEqual(40)
+});
+it("can calculate the score of a game with one strike", function(){
+  game.roll(10)
+  for(var i = 0; i < 18; i++){
+    game.roll(2)};
+  expect(game.total).toEqual(50)
+});
+it("can calculate the score of a game with one strike", function(){
+  game.roll(10)
+  game.roll(10)
+  for(var i = 0; i < 16; i++){
+    game.roll(2)};
+  expect(game.total).toEqual(60)
+});

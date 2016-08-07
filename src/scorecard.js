@@ -21,7 +21,10 @@ Scorecard.prototype = {
   },
 
   calculateScore: function(frame){
-    this.score[frame].reduce((a, b) => a + b, 0);
+    if (this.score[frame] === [10,0]){
+      calculateStrike();
+    }
+    return this.score[frame].reduce((a, b) => a + b, 0);
   },
 
   calculateFrame: function(){

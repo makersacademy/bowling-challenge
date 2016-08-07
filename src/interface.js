@@ -11,4 +11,7 @@ function getName(){
 $( "#bowl-frame" ).click(function(){
   game.bowlFrame();
   $('#total-score').text(game.totalScore);
+  $('#' + (game.frameNumber - 1) + 'a').text(game.currentPins[0]);
+  $('#' + (game.frameNumber - 1) + 'b').text(game.currentPins[1]);
+  $('#' + (game.frameNumber - 1) + 'c').text(game.currentPins[2]);
 });

@@ -30,8 +30,10 @@ Game.prototype.bowlFrame = function () {
   // How about frame 10?
   if (this.getFrameNumber() < 10) {
     this.playRegularFrame();
-  } else {
+  } else if (this.getFrameNumber() === 10) {
     this.playSpecialTenthFrame();
+  } else {
+    return;
   };
 };
 
@@ -51,8 +53,8 @@ Game.prototype.playSpecialTenthFrame = function () {
   this.currentPins = result;
   var score = new Score(this.multiplier, result);
   this.addScore(score.calculateTenthFrameScore());
+  this.frameNumber += 1;
   // What can I do here??
-  this.endGame();
 };
 
 Game.prototype.calculateMultiplier = function (currentPins) {

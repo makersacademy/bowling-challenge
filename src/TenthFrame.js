@@ -35,6 +35,7 @@ TenthFrame.prototype.rollThree = function () {
 TenthFrame.prototype.playTenthFrame = function () {
   this.rollOne();
   this.rollTwo();
+  this.knockedPinsThree = 0;
   if (this.pinsStanding === 0) this.rollThree();
   return [this.knockedPinsOne, this.knockedPinsTwo, this.knockedPinsThree];
 };

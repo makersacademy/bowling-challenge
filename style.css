@@ -1,0 +1,9 @@
+#game {
+  background-color: #353535;
+  display: block;
+  margin: 100px auto 50px auto;
+  border: 3px solid #73AD21;
+  padding: 10px;
+  /* position: absolute; */
+  margin-top: 100px;
+}

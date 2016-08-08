@@ -34,12 +34,6 @@ Scoring.prototype.roll = function() {
 
   var rollResult = this.random();
 
-  // if(rollResult == 10) {
-  //   this._currentFrame.push(rollResult);
-  // } else if(rollResult + this._currentFrame[0] == 10) {
-  //   this._currentFrame.push(rollResult);
-  // }
-
   if(rollResult == 10 || this._currentFrame.length > 1) {
     this._currentFrame.push(rollResult);
     var score = this.frameScore(this._currentFrame[0], this._currentFrame[1]);

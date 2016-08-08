@@ -2,8 +2,8 @@
 describe('Feature Test:', function(){
   var game;
   var game = new Game();
-  it('there should be 10 frames', function(){
-    // expect(game.frames).toEqual(10);
+  it('user should be able to throw a ball', function(){
+    expect(game.person.throw()).not.toBeUndefined()
 
   });
 });

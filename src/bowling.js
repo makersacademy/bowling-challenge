@@ -44,6 +44,7 @@ Game.prototype.update = function() {
 
   if (this.keys.isPressed(32) && (!this.p1.ball || this.p1.ball.isThrown === false)){ //spacekey
     this.p1.throw();
+
   }
   for (var i=0;i<10;i++){
     this.pins[i].update();
@@ -104,6 +105,10 @@ Person.prototype.draw = function(context)
 {
     context.fillRect(this.x, this.y, this.width, this.height);
 };
+
+Person.prototype.receive = function(ball) {
+
+}
 
 Person.prototype.throw = function() {
   this.ball = new Ball();

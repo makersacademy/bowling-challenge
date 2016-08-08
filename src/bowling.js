@@ -7,6 +7,8 @@ var Bowling = function(){
   this.strikeBonus = [];
   this.strikePoints = false
   this.sparePoints = false
+  this.latestRoll = 0
+  this.strikes = 0
   STARTINGPINS = 10
 }
 
@@ -20,7 +22,7 @@ Bowling.prototype.roll = function(){
     var points = this.remainingPinsKnocked();
     this.secondRollScore(points);
   }
-};
+}
 
 Bowling.prototype.firstRollScore = function(points) {
   this.currentFrame.push(points, 0);
@@ -55,7 +57,7 @@ Bowling.prototype.saveFrame = function() {
 }
 
 Bowling.prototype.firstRoll = function() {
-    return this.currentFrame.length === 0
+  return this.currentFrame.length === 0
 }
 
 Bowling.prototype.frameNumber = function() {
@@ -72,15 +74,16 @@ Bowling.prototype.sumFrame = function(array) {
 
 Bowling.prototype.totalScoreUpdate = function(points) {
   this.totalScore += points;
+  this.latestRollUpdate(points);
   this.spareCheck(points);
   this.strikeCheck(points);
-  }
+}
 
 Bowling.prototype.spareCheck = function(points) {
   if (this.sparePoints){
     this.sparePointsScoring(points);
   }
-};
+}
 
 Bowling.prototype.strikeCheck = function(points) {
   if (this.strikePoints) {
@@ -92,27 +95,27 @@ Bowling.prototype.strikeCheck = function(points) {
   if (this.strike(points)) {
     this.strikePointStart(points);
   }
-};
+}
 
 Bowling.prototype.sparePointsScoring = function(points) {
   this.totalScore += points
   this.sparePointEnd();
-};
+}
 
 Bowling.prototype.sparePointStart = function() {
   this.sparePoints = true;
-};
+}
 
 Bowling.prototype.sparePointEnd = function() {
   this.sparePoints = false
-};
+}
 
 Bowling.prototype.strikePointStart = function(points) {
   this.strikePoints = true;
   if(this.gameFrames.length < 9) {
     this.saveFrame();
   }
-};
+}
 
 Bowling.prototype.strikePointEnd = function() {
   if(this.strikeBonus.length === 0) {
@@ -121,20 +124,22 @@ Bowling.prototype.strikePointEnd = function() {
 }
 
 Bowling.prototype.strikePointsSet = function(points) {
-  this.strikeBonus.push(points)
+    this.strikeBonus.push(points)
 }
 
 Bowling.prototype.strikeBonusPointsApply = function(points) {
-  this.totalScore += this.strikeBonus[0]
-  if(this.strikeBonus.length >= 2) {
-    this.totalScore += this.strikeBonus[1]
-    this.strikeBonus =  this.strikeBonus.slice(1, this.strikeBonus.length)
-    this.strikePointEnd();
+  if(this.gameFrames.length >= 2) {
+    this.totalScore += this.strikeBonus[0]
+    if(this.strikeBonus.length >= 2){
+      this.totalScore += this.strikeBonus[1]
+      this.strikeBonus =  this.strikeBonus.slice(1, this.strikeBonus.length)
     }
+    this.strikePointEnd();
   }
+}
 
 Bowling.prototype.finalFrameCheck = function() {
-  return this.gameFrames.length === 9;
+  return this.gameFrames.length >= STARTINGPINS - 1;
 }
 
 Bowling.prototype.finalRollPins = function() {
@@ -143,41 +148,69 @@ Bowling.prototype.finalRollPins = function() {
   } else {
     return this.remainingPinsKnocked();
   }
-};
+}
 
 Bowling.prototype.finalFrameRollFirst = function() {
     var points = this.startingPinsKnocked();
     this.currentFrame.push(points);
     this.totalScoreUpdate(points)
-};
+    console.log('Final Frame:' + this.totalScore);
+}
 
 Bowling.prototype.finalFrameRollSecond = function() {
   var points = this.finalRollPins();
   this.currentFrame.push(points);
-  this.totalScore += points*2
+  this.totalScoreUpdate(points);
+  this.latestRollUpdate(points);
+  if (this.sumFrame(this.currentFrame) < STARTINGPINS) {
+    this.saveFrame();
+  }
 }
 
 Bowling.prototype.finalFrameRollThird = function() {
-  var points = this.startingPinsKnocked();
+  var points = this.bonusRollPins();
   this.currentFrame.push(points);
   this.totalScore += points
+  this.latestRollUpdate(points);
   this.saveFrame();
-};
+}
+
+Bowling.prototype.bonusRollPins = function(){
+  if(this.bonusRollSpare() || this.bonusRollStrike()) {
+    return this.startingPinsKnocked();
+  } else {
+    return Math.floor(Math.random()*(STARTINGPINS - this.currentFrame[1])+1)
+  }
+}
+
+Bowling.prototype.bonusRollSpare = function() {
+  return this.sumFrame(this.currentFrame) === STARTINGPINS;
+}
+
+Bowling.prototype.bonusRollStrike = function() {
+  return this.strike(this.currentFrame[1]);
+}
 
 Bowling.prototype.finalFrame = function() {
-  if(this.currentFrame.length === 0) {
+  if (this.gameFrames.length === 10) {
+      return ""
+  } else if(this.currentFrame.length === 0) {
     this.finalFrameRollFirst();
-    } else if(this.currentFrame.length === 1) {
+  } else if(this.currentFrame.length === 1) {
     this.finalFrameRollSecond();
-    } else if(this.currentFrame.length === 2) {
+  } else if(this.currentFrame.length === 2) {
     this.finalFrameRollThird();
   }
 }
 
 Bowling.prototype.startingPinsKnocked = function() {
   return Math.floor(Math.random()*STARTINGPINS+1);
-};
+}
 
 Bowling.prototype.remainingPinsKnocked = function() {
   return Math.floor(Math.random()*this.remainingPins()+1)
-};
+}
+
+Bowling.prototype.latestRollUpdate = function(points) {
+  this.latestRoll = points
+}

@@ -76,7 +76,7 @@ describe('Bowling', function(){
   describe('#strikeBonusPointsApply', function(){
     it('applies strike bonus points to total score', function(){
       spyOn(Math, 'random').and.returnValue(0.9);
-      for (var i = 0; i < STARTINGPINS+2; i++) {
+      for (var i = 0; i < 12; i++) {
         oneRoll();
       }
       expect(bowling.totalScore).toEqual(300)

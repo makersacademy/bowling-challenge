@@ -17,15 +17,14 @@ describe('Bowling Game', function() {
   });
 
   it('can roll a spare', function() {
-    game.roll(5);
-    game.roll(5);
+    rollSpare();
     game.roll(3);
     rollMany(0, 17);
     expect(game.score()).toBe(16);
   });
 
   it('can roll a strike', function() {
-    game.roll(10);
+    rollStrike();
     game.roll(4);
     game.roll(3);
     rollMany(0, 16);
@@ -37,9 +36,18 @@ describe('Bowling Game', function() {
     expect(game.score()).toBe(300);
   });
 
-  var rollMany = function (pins, rolls) {
+  function rollMany(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);
     }
   };
+
+  function rollSpare() {
+    game.roll(5);
+    game.roll(5);
+  }
+
+  function rollStrike() {
+    game.roll(10);
+  }
 });

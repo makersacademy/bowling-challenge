@@ -61,7 +61,7 @@ describe ("Scorecard", function() {
     });
     it ("records the score inside the frame object", function() {
       scorecard.receiveScore(3);
-      expect(scorecard.getFrame(1)).toEqual({ 1: 5, 2: 3 });
+      expect(scorecard.getFrame(1)).toEqual({ 1: 5, 2: 3, totalScore: 8 });
     });
 
     describe("Bonus Points", function() {

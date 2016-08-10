@@ -72,6 +72,7 @@ Scorecard.prototype = {
 
   _addToFrame: function(score) {
     this.getCurrentFrame()[this._currentRoll] = score;
+    this.getCurrentFrame()["totalScore"] = this.getScore();
   },
 
   _moveForward: function() {

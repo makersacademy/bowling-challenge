@@ -7,26 +7,22 @@ describe("Game", function() {
     frame = new Frame();
   });
 
-	it("game begins with a score of 0", function() {
+  it("game begins with a score of 0", function() {
     expect(game.getTotalScore()).toEqual(0);
   });
 
-	describe("#begin", function() {
+  describe("#begin", function() {
     it("initialises frame 1", function() {
       game.begin();
-			expect(game.frame).toEqual(new Frame(1));
-		});
-
-	});
+      expect(game.frame).toEqual(new Frame(1));
+    });
+  });
 
 	describe("#nextFrame", function() {
-
-		it("increases current frame by one", function() {
-			game.begin();
-			game.nextFrame();
-			expect(game.frame).toEqual(new Frame(2));
-		});
-
-	});
-
+    it("increases current frame by one", function() {
+      game.begin();
+      game.nextFrame();
+      expect(game.frame).toEqual(new Frame(2));
+    });
+  });
 });

@@ -41,6 +41,6 @@ Frame.prototype.isStrike = function() {
 
 Frame.prototype.isSpare = function() {
   if ((this.getFirstPinsDown()) + (this.getSecondPinsDown()) === 10) {
-	   return true;
-   }
+    return true;
+  }
 };

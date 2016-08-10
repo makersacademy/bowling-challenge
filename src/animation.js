@@ -7,6 +7,8 @@ function Game() {
   this.context.fillStyle = "white";
   this.keys = new KeyListener();
 
+  this.ball = new Ball();
+
   this.p1 = new Person(15, 0); //create p1 instance.
   this.p1.y = this.height/2 - this.p1.height/2; //set p1's initial y position.
   this.pins =[];
@@ -25,44 +27,51 @@ Game.prototype.clearCanvasAndDraw = function() {
 
   this.p1.draw(this.context); //passing canvas 2d context to be used into p1 draw function.
   // this.p2.draw(this.context);
-  for (i=0;i<10;i++){
+  for (var i=0;i<10;i++){
     this.pins[i].draw(this.context);
   }
-  if(this.p1.ball) {
-    this.p1.ball.draw(this.context);
+  if(this.ball) {
+    this.ball.draw(this.context);
   }
 };
 
 Game.prototype.update = function() {
   if (this.paused) return;
-      // To which Y direction the person is moving
   if (this.keys.isPressed(40)) { // DOWN
       this.p1.y = Math.min(this.height - this.p1.height, this.p1.y + 4); //returns the smallest of the numbers. This is to make sure y position of p1 does not exceed the boundary of the canvas area.
   } else if (this.keys.isPressed(38)) { // UP
       this.p1.y = Math.max(0, this.p1.y - 4); //returns the largest of the numbers. This is to make sure y position of p1 does not exceed the boundary of the canvas area.
   }
 
-  if (this.keys.isPressed(32) && (!this.p1.ball || this.p1.ball.isThrown === false)){ //spacekey
-    this.p1.throw();
-
-  }
   for (var i=0;i<10;i++){
     this.pins[i].update();
   }
 
-  if(this.p1.ball) {
-    this.p1.ball.update();
-    if (this.p1.ball.x > this.width-10) {
-        this.p1.ball.vx = 0;
-        this.p1.ball.vy = 0;
-        this.p1.ball.isThrown = false;
+  if (this.keys.isPressed(32) && (this.ball && this.ball.isThrown === false)){
+    if (this.p1.chance > 0){
+      this.p1.throw(this.ball);
+      this.p1.chance -=1;
+    } else {
+      document.getElementById("message").innerHTML = "You used up 2 chances for this frame!";
     }
-    if (this.p1.ball.y > this.height-10 || this.p1.ball.y < 10) {
-        this.p1.ball.vy = 0;
+
+  }
+
+  if(this.ball) {
+    this.ball.update();
+    if (this.ball.x > this.width-10) {
+        this.ball.vx = 0;
+        this.ball.vy = 0;
+        this.ball.x = 0;
+        this.ball.y = 0;
+        this.ball.isThrown = false;
     }
-    if (this.p1.ball.vx > 0) {
+    if (this.ball.y > this.height-10 || this.ball.y < 10) {
+        this.ball.vy = 0;
+    }
+    if (this.ball.vx > 0) {
       for (i=0;i<10;i++){
-        if(this.collisionCheck(this.p1.ball, this.pins[i])) {
+        if(this.collisionCheck(this.ball, this.pins[i])) {
           this.pins[i].move();
         }
       }
@@ -100,23 +109,19 @@ function Person(x,y) {
     this.height = 28;
     this.score = 0;
     this.chance = 2;
+    this.frame = 10;
 }
 Person.prototype.draw = function(context)
 {
     context.fillRect(this.x, this.y, this.width, this.height);
 };
 
-Person.prototype.receive = function(ball) {
-
-}
-
-Person.prototype.throw = function() {
-  this.ball = new Ball();
-  this.ball.x = this.x;
-  this.ball.y = this.y+(this.height/2);
-  this.ball.vy = 0;
-  this.ball.vx = 7 - Math.abs(this.ball.vy);
-  this.ball.isThrown = true;
+Person.prototype.throw = function(ball) {
+  ball.x = this.x;
+  ball.y = this.y+(this.height/2);
+  ball.vy = 0;
+  ball.vx = 7 - Math.abs(ball.vy);
+  ball.isThrown = true;
 };
 // PIN
 function Pin(x,y) {

@@ -1,11 +1,33 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Pong</title>
-        <script defer src="src/bowling.js"></script>
+        <title>Bowling</title>
+        <script defer src="src/scoreGame.js"></script>
+        <script defer src="src/animation.js"></script>
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
+      <center>
+        <h1>Bowling Game</h1>
+        <table>
+          <tr>
+            <th colspan="2">1</th><th colspan="2">2</th><th colspan="2">3</th><th colspan="2">4</th><th colspan="2">5</th>
+            <th colspan="2">6</th><th colspan="2">7</th><th colspan="2">8</th><th colspan="2">9</th><th colspan="2">10</th>
+          </tr>
+          <tr>
+            <td></td><td></td><td></td><td></td><td></td><td>
+            </td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td><td>
+            </td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td colspan="2"></td><td colspan="2"></td><td colspan="2"></td><td colspan="2"></td><td colspan="2"></td>
+            <td colspan="2"></td><td colspan="2"></td><td colspan="2"></td><td colspan="2"></td><td colspan="2"></td>
+          </tr>
+        </table>
+
+        <p id="message"></p>
         <canvas id="game" width="500" height="200"></canvas>
+      </center>
     </body>
 </html>

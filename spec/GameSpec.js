@@ -18,7 +18,7 @@ describe("Game", function() {
     });
   });
 
-	describe("#nextFrame", function() {
+  describe("#nextFrame", function() {
     it("increases current frame by one", function() {
       game.begin();
       game.nextFrame();

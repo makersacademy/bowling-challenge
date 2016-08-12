@@ -19,9 +19,8 @@ Bowling.prototype.roll = function(){
 }
 
 Bowling.prototype.updateRolls = function(){
-  // var pins = this.availablePins - roll
   var roll = this.roll();
-  this.rollsStorage.push(roll);
+  var pins = this.availablePins - roll
 }
 
 Bowling.prototype.addScore = function() {

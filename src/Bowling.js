@@ -1,19 +1,19 @@
 var BowlingGame = function() {
-  this.rollsArray = [];
+  this.rolls = [];
   this.scoresArray = [];
 };
 
 BowlingGame.prototype.roll = function (pins) {
-  this.rollsArray.push(pins);
+  this.rolls.push(pins);
   this.score(pins);
 };
 
-BowlingGame.prototype.score = function (frameIndex) {
+BowlingGame.prototype.score = function (frameNumber) {
   var result = 0;
   var rollIndex = 0;
   var game = this;
 
-  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+  for (var i = 0; i < frameNumber; i++) {
     if (isStrike()) {
       result += getStrikeScore();
       rollIndex ++;
@@ -28,21 +28,21 @@ BowlingGame.prototype.score = function (frameIndex) {
   return result;
 
   function isStrike() {
-    return game.rollsArray[rollIndex] === 10;
+    return game.rolls[rollIndex] === 10;
   }
   function isSpare() {
-    return game.rollsArray[rollIndex] + game.rollsArray[rollIndex + 1] === 10;
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] === 10;
   }
 
   function getStrikeScore() {
-    return game.rollsArray[rollIndex] + game.rollsArray[rollIndex + 1] + game.rollsArray[rollIndex + 2];
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
   }
 
   function getSpareScore() {
-    return game.rollsArray[rollIndex] + game.rollsArray[rollIndex + 1] + game.rollsArray[rollIndex + 2];
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
   }
 
   function getNormalScore() {
-    return game.rollsArray[rollIndex] + game.rollsArray[rollIndex + 1];
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
   }
 };

@@ -8,19 +8,19 @@ describe('Bowling Game', function() {
 
   it('can roll a gutter game', function() {
     rollMany(0, 20);
-    expect(game.score()).toBe(0);
+    expect(game.score(10)).toBe(0);
   });
 
   it('can roll all ones', function() {
     rollMany(1, 20);
-    expect(game.score()).toBe(20);
+    expect(game.score(10)).toBe(20);
   });
 
   it('can roll a spare', function() {
     rollSpare();
     game.roll(3);
     rollMany(0, 17);
-    expect(game.score()).toBe(16);
+    expect(game.score(10)).toBe(16);
   });
 
   it('can roll a strike', function() {
@@ -28,12 +28,12 @@ describe('Bowling Game', function() {
     game.roll(4);
     game.roll(3);
     rollMany(0, 16);
-    expect(game.score()).toBe(24);
+    expect(game.score(10)).toBe(24);
   });
 
   it('can roll a perfect game', function() {
     rollMany(10, 12);
-    expect(game.score()).toBe(300);
+    expect(game.score(10)).toBe(300);
   });
 
   function rollMany(pins, rolls) {

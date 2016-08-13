@@ -13,7 +13,7 @@ describe('Scoreboard', function() {
     expect(scoreboard.frames.length).toEqual(0);
   });
 
-  it('Can go to next frame', function(){
+  it('can go to next frame', function(){
     scoreboard.nextFrame();
     expect(scoreboard.frames.length).toEqual(1);
   });
@@ -38,7 +38,7 @@ describe('Scoreboard', function() {
     expect(function() { scoreboard.saveSecondRoll(hits); }).toThrowError(message);
   });
 
-  it('calculates frame total score', function() {
+  it('gets total score', function() {
     var total = hits + hits;
 
     scoreboard.nextFrame();

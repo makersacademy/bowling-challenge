@@ -4,6 +4,7 @@ function Scoreboard () {
   this.frames = [];
   this.currentScore = 0;
   this.strikes = [];
+  //this.calc = new Scoring();
 };
 
 Scoreboard.prototype.nextFrame = function () {

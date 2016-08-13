@@ -1,25 +1,20 @@
 'use strict';
 
 describe('BowlingGame', function() {
-  var game;
-
-  beforeEach(function(){
-    game = new BowlingGame();
-  });
-
-  function rollMany(n, pins) {
-    for(var i = 0; i < n; i++) {
-      game.roll(pins)
-    }
-  }
 
   it('can handle a gutter game', function() {
-    rollMany(20, 0)
+    var game = new BowlingGame();
+    for(var i = 0; i < 20; i++) {
+      game.roll(0)
+    }
     expect(game.score()).toEqual(0);
   });
 
   it('can handle a game of all ones', function() {
-    rollMany(20, 1)
+    var game = new BowlingGame();
+    for(var i = 0; i < 20; i++) {
+      game.roll(1)
+    }
     expect(game.score()).toEqual(20);
   });
 

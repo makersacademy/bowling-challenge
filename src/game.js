@@ -3,7 +3,7 @@
 function Game(){
   this.frameStatus     = 'start frame';
   this.pinsStanding    = 10;
-  this.pinsToKnockDown =  0;
+  this.pinsKnockedDown =  0;
   this.playerScore     =  0;
   this.playerBonus     =  0;
   this.framesLeft      = 10;
@@ -15,8 +15,8 @@ Game.prototype.getCurrentPinsStanding = function () {
   return this.pinsStanding;
 };
 
-Game.prototype.getCurrentPinsToKnockDown = function () {
-  return this.pinsToKnockDown;
+Game.prototype.getCurrentpinsKnockedDown = function () {
+  return this.pinsKnockedDown;
 };
 
 Game.prototype.getCurrentPlayerScore = function () {
@@ -54,18 +54,26 @@ Game.prototype.startFrame = function () {
 };
 
 Game.prototype.rollBall = function () {
-  if (this.getCurrentRollsLeft() === 0) {
+  if (this.getCurrentRollsLeft() === 2) {
+    this.pinsKnockedDown = _randomNumber();
+    this._deductRollsLeft();
+    this._updateScore();
+    this._updatePinsStanding();
+  }
+  else if (this.getCurrentRollsLeft() === 1) {
+    this.pinsKnockedDown = _randomNumber();
+    this._deductRollsLeft();
+    this._updateScore();
+    this._resetFrameStatus();
+    this._updatePinsStanding();
+  }
+  else {
     return 'no balls available, start next frame';
   }
-  if (this.getCurrentRollsLeft() === 1) {
-    this._deductRollsLeft();
-    this._resetFrameStatus();
-    this.pinsToKnockDown = _randomNumber();
-  }
-  if (this.getCurrentRollsLeft() === 2) {
-    this.pinsToKnockDown = _randomNumber();
-    this._deductRollsLeft();
-  }
+};
+
+Game.prototype._updateScore = function () {
+  this.playerScore += this.pinsKnockedDown
 };
 
 Game.prototype._updateCurrentFrame = function () {
@@ -86,6 +94,10 @@ Game.prototype._resetRollsLeft = function () {
 
 Game.prototype._resetFrameStatus = function () {
   this.frameStatus = 'start frame'
+};
+
+Game.prototype._updatePinsStanding = function () {
+  this.pinsStanding -= this.pinsKnockedDown
 };
 
 function _randomNumber() {

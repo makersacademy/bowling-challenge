@@ -19,12 +19,26 @@ describe('Game:', function(){
     game = new Game();
   });
 
+  it('can update pins standing', function(){
+    game.startFrame();
+    game.rollBall();
+    expect(game.getCurrentPinsStanding()).toEqual(7)
+  });
+
+  it('can update score', function(){
+    game.startFrame();
+    game.rollBall();
+    spyOn(game, 'pinsKnockedDown').and.returnValue(3);
+    expect(game.getCurrentPlayerScore()).toEqual(3);
+  });
+
+
   it('starts with 10 pins', function(){
     expect(game.getCurrentPinsStanding()).toEqual(10);
   });
 
-  it('starts with pinsToKnockDown at 0', function(){
-    expect(game.getCurrentPinsToKnockDown()).toEqual(0);
+  it('starts with pinsKnockedDown at 0', function(){
+    expect(game.getCurrentpinsKnockedDown()).toEqual(0);
   });
 
   describe('frameStatus', function(){
@@ -56,10 +70,9 @@ describe('Game:', function(){
   describe('Player', function(){
 
   it('rolls a ball which knocks down some pins', function(){
-    spyOn(game.getCurrentPinsToKnockDown()).and.returnValue(3);
+    spyOn(game, 'getCurrentpinsKnockedDown').and.returnValue(3);
     game.startFrame();
     game.rollBall();
-    spyOn(game.getCurrentPinsToKnockDown()).and.returnValue(3);
     expect(game.getCurrentPinsStanding()).toEqual(7)
   });
 

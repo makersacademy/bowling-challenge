@@ -30,4 +30,12 @@ function manyRolls(n, pins) {
     expect(game.score()).toEqual(16);
   });
 
+  it('can handle one strike', function() {
+    game.roll(10);
+    game.roll(3);
+    game.roll(4);
+    manyRolls(16, 0);
+    expect(game.score()).toEqual(24);
+  });
+
 });

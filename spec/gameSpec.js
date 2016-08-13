@@ -22,13 +22,10 @@ describe('Game', function() {
 
 
 
-  
-
-  describe('Frames', function() {
+  describe('frames in game', function() {
 
     it('has a maximum number of frames', function() {
       expect(game.frameCounter).not.toBeGreaterThan(game.MAX_FRAMES);
     });
   });
-
 });

@@ -46,3 +46,12 @@ Frame.prototype.isSpare = function() {
     return true;
   };
 };
+
+Frame.prototype.getFrameScore = function() {
+ var total = this.rolls.reduce(add, 0);
+   function add(a, b) {
+     return a + b;
+   }
+ this.frameScore = total;
+ return this.frameScore;
+};

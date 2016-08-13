@@ -27,15 +27,29 @@ describe('Frame', function() {
   });
 
   describe('Roll score', function() {
+
     it('can add the pins knocked down to the roll score', function() {
       frame.roll(2);
       expect(frame.rollScore).toEqual(2);
     });
 
-    it('knows when the roll is a strike', function() {
+  });
+
+  describe('Strike and Spare', function() {
+
+    it('knows when the frame is a strike', function() {
       frame.roll(frame.DEFAULT_PIN_COUNT);
       expect(frame.isStrike()).toBeTruthy();
     });
+
+    it('knows when the frame is a spare', function() {
+      var remaining;
+      remaining = (frame.DEFAULT_PIN_COUNT - 2);
+      frame.roll(2);
+      frame.roll(remaining);
+      expect(frame.isSpare()).toBeTruthy();
+    });
+
   });
 
 });

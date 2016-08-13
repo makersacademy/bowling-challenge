@@ -40,3 +40,9 @@ Frame.prototype.isStrike = function() {
     return true;
   };
 };
+
+Frame.prototype.isSpare = function() {
+  if ((this.getRollCounter() === 2) && (this.getPinCount() === 0)) {
+    return true;
+  };
+};

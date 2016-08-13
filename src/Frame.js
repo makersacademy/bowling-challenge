@@ -48,12 +48,12 @@ Frame.prototype.isSpare = function() {
 };
 
 Frame.prototype.getFrameScore = function() {
- var total = this.rolls.reduce(add, 0);
-   function add(a, b) {
-     return a + b;
-   }
- this.frameScore = total;
- return this.frameScore;
+  var total = this.rolls.reduce(add, 0);
+    function add(a, b) {
+      return a + b;
+    }
+  this.frameScore = total;
+  return this.frameScore;
 };
 
 Frame.prototype.isComplete = function() {

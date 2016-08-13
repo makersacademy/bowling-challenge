@@ -2,14 +2,19 @@
 
 function Game(){
 
-  this.DEFAULT_SCORE = 0;
-  this.score = this.DEFAULT_SCORE;
+  this.DEFAULT_GAME_SCORE = 0;
+  this.GameScore = this.DEFAULT_GAME_SCORE;
   this.MAX_FRAMES = 10;
   this.frames = [];
 };
 
-Game.prototype.getScore = function() {
-  return this.score;
+Game.prototype.getGameScore = function() {
+  var total = this.frames.reduce(add, 0);
+    function add(a, b) {
+      return a + b;
+    }
+  this.GameScore = total;
+  return this.GameScore;
 };
 
 Game.prototype.getFrameCounter = function() {

@@ -18,10 +18,21 @@ BowlingGame.prototype.score = function() {
     return self.rolls[frameIndex] + self.rolls[frameIndex + 1];
   }
 
+  function spareBonus() {
+    return self.rolls[frameIndex + 2];
+  }
+
+  function isSpare() {
+    return self.rolls[frameIndex] + self.rolls[frameIndex + 1] === 10;
+  }
+
   for (var frame = 0; frame < 10; frame++) {
-    {
-    score += sumOfBallsInFrame();
-    frameIndex += 2;
+    if(isSpare()) {
+      score += 10 + spareBonus();
+      frameIndex += 2;
+    } else {
+      score += sumOfBallsInFrame();
+      frameIndex += 2;
     }
   }
   return score;

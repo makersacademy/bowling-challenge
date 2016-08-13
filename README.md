@@ -4,6 +4,8 @@
 
 Load up bowling.html from the root directory. Enter your name and click bowl frame to bowl each frame.
 
+<img width="1152" alt="screen shot 2016-08-13 at 21 40 12" src="https://cloud.githubusercontent.com/assets/18581870/17645474/f80f9976-619e-11e6-8c5a-fab31b911a38.png">
+
 [Screenshot](http://i.imgur.com/Z4vLzI2.png)
 
 Note: The scoring is based on 'Penang' bowling, with strikes doubling the score for the next two rolls (but limited to the next frame). Additional User Stories are additional features that I would like to come back and implement.

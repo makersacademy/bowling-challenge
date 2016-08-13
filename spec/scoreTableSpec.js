@@ -1,31 +1,31 @@
-describe("Bowling game",function() {
+describe("Score table",function() {
   var table;
   beforeEach(function() {
     table = new ScoreTable();
   });
 
-  describe("Before first roll, Player",function() {
-    it("can have the first roll",function() {
+  describe("before first roll ",function() {
+    it("is set to first roll",function() {
       expect(table.rollNumber).toEqual(1);
     });
 
-    it("has 10 pins to hit in first frame",function() {
+    it("has 10 pins",function() {
       expect(table.pinsLeft).toEqual(10);
     });
 
-    it("has 0 points",function() {
+    it("shows that player has 0 points",function() {
       expect(table.totalPoints).toEqual(0);
     });
   });
 
-  describe("When Player rolls",function() {
+  describe("when Player rolls",function() {
 
     describe("and knocks 5 pins",function() {
       beforeEach(function() {
        table.receiveScore(5);
       });
 
-      it("gets 5 points, and has another roll",function() {
+      it("displays 5 points, and sets another roll",function() {
         expect(table.totalPoints).toEqual(5);
         expect(table.rollNumber).toEqual(2);
       });
@@ -41,20 +41,24 @@ describe("Bowling game",function() {
           expect(table.totalPoints).toEqual(10);
         });
 
-        //it("gets bonus points for next roll",function() {
-          //spyOn(Math,'random').and.returnValue(3);
-          //game.roll();
-          //expect(game.totalPoints).toEqual(16);
-        //});
+        it("gives player double points for next roll",function() {
+          table.receiveScore(5);
+          expect(table.totalPoints).toEqual(20);
+        });
       });
     });
 
-    //describe("a strike",function() {
-      //beforeEach(function() {
-        //spyOn(Math,'random').and.returnValue(10);
-        //game.roll();
-      //});
-    //});
+    describe("a strike",function() {
+      beforeEach(function() {
+        table.receiveScore(10);
+      });
+
+      it("gives player double points for next 2 rolls",function() {
+        table.receiveScore(6);
+        table.receiveScore(6);
+        expect(table.totalPoints).toEqual(34);
+      });
+    });
 
   });
 });

@@ -18,13 +18,23 @@ ScoreTable.prototype = {
 
   receiveScore: function(score) {
     this.pinsKnocked = score;
+    this.pinsLeft -= score;
     this.calculatePoints();
     this.nextTurn();
     return this.getPinsLeft();
   },
 
+  getBonus: function () {
+    var bonus = 0;
+    if (this.bonus > 0) {
+      bonus = this.pinsKnocked;
+      this.bonus -= 1;
+    }
+    return bonus;
+  },
+
   calculatePoints: function () {
-    this.totalPoints += this.pinsKnocked;
+    this.totalPoints += this.pinsKnocked + this.getBonus();
   },
 
   nextTurn: function () {
@@ -41,6 +51,7 @@ ScoreTable.prototype = {
       this._setNewFrame(0);
     }
   },
+
   _setNewFrame: function (bonus) {
     this.frameNumber += 1;
     this.rollNumber = 1;

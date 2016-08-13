@@ -55,3 +55,9 @@ Frame.prototype.getFrameScore = function() {
  this.frameScore = total;
  return this.frameScore;
 };
+
+Frame.prototype.isComplete = function() {
+  if (this.getRollCounter() === 2) {
+    return true;
+  };
+};

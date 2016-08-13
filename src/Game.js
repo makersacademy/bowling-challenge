@@ -6,7 +6,6 @@ function Game(){
   this.score = this.DEFAULT_SCORE;
   this.MAX_FRAMES = 10;
   this.frames = [];
-  this.frameCounter = this.frames.length;
 };
 
 Game.prototype.getScore = function() {
@@ -20,5 +19,4 @@ Game.prototype.getFrameCounter = function() {
 
 Game.prototype.addFrame = function(frame) {
   this.frames.push(frame.frameScore);
-  this.getFrameCounter();
 };

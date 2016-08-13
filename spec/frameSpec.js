@@ -71,4 +71,12 @@ describe('Frame', function() {
     });
   });
 
+  describe('When a frame is complete', function() {
+    it('knows a normal frame is complete after two rolls', function() {
+      frame.roll(2);
+      frame.roll(2);
+      expect(frame.isComplete()).toBeTruthy();
+    });
+  });
+
 });

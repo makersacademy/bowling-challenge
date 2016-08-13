@@ -15,6 +15,7 @@ describe('Feature Test:', function() {
       it('after one frame', function() {
         frame.roll(2);
         frame.roll(2);
+        game.addFrame(frame);
         expect(game.getFrameCounter()).toEqual(1);
       });
     });

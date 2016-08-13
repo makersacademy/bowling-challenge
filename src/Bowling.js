@@ -1,11 +1,60 @@
 var BowlingGame = function() {
   this.rolls = [];
   this.scoresArray = [];
+  this.rollCounter = 0;
+  this.frameCounter = 1;
 };
 
 BowlingGame.prototype.roll = function (pins) {
   this.rolls.push(pins);
-  this.score(pins);
+  this.registerRoll(pins);
+};
+
+BowlingGame.prototype.registerRoll = function(pins) {
+  var game = this;
+
+  function tenthFrame() {
+    return game.frameCounter > 18;
+  }
+
+  function isStrike() {
+    return pins === 10;
+  }
+
+  function isFrameEnd() {
+    return game.frameCounter % 2 === 0;
+  }
+
+  function isSpare() {
+    return pins + game.scoresArray[game.scoresArray.length -1] === 10;
+  }
+
+  function decideSpare() {
+    if (isSpare()) {
+      game.scoresArray.push('/');
+    } else {
+      game.scoresArray.push(pins);
+    }
+    game.frameCounter++;
+  }
+
+  function pushScore() {
+    game.scoresArray.push(pins);
+  }
+
+  if (tenthFrame()) {
+    pushScore();
+  } else if (isStrike()) {
+    pushScore();
+    game.scoresArray.push('X');
+    game.frameCounter += 2;
+  } else if (isFrameEnd()) {
+    decideSpare();
+  } else {
+    pushScore();
+    game.frameCounter++;
+  }
+  game.rollCounter++;
 };
 
 BowlingGame.prototype.score = function (frameNumber) {

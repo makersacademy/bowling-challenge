@@ -36,6 +36,23 @@ describe('Bowling Game', function() {
     expect(game.score(10)).toBe(300);
   });
 
+  it('two non-spare/non-strike rolls', function() {
+    rollMany(5, 1);
+    rollMany(2, 1);
+    expect(game.scoresArray).toEqual([5, 2]);
+  });
+
+  it('a game of all fours', function() {
+    rollMany(4, 20);
+    expect(game.scoresArray).toEqual([4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]);
+  });
+
+  it('a strike and a spare', function() {
+    rollMany(10, 1);
+    rollMany(5, 2);
+    expect(game.scoresArray).toEqual([10, 'X', 5, '/']);
+  });
+
   function rollMany(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

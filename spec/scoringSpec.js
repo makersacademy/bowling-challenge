@@ -10,4 +10,12 @@ describe('BowlingGame', function() {
     expect(game.score()).toEqual(0);
   });
 
+  it('can handle a game of all 1\'s', function() {
+    var game = new BowlingGame();
+    for(var i = 0; i < 20; i++) {
+      game.roll(1);
+    }
+    expect(game.score()).toEqual(20);
+  });
+
 });

@@ -38,9 +38,4 @@ function manyRolls(n, pins) {
     expect(game.score()).toEqual(24);
   });
 
-  it('can handle a perfect game', function() {
-    manyRolls(12, 10);
-    expect(game.score()).toEqual(300);
-  });
-
 });

@@ -1,5 +1,5 @@
 function Game() {
-  this.totalScore = 0;
+
 }
 
 Game.prototype.getFrameNumber = function() {
@@ -7,11 +7,12 @@ Game.prototype.getFrameNumber = function() {
 };
 
 Game.prototype.getTotalScore = function() {
-  return this.totalScore;
+  return this.score.total;
 };
 
 Game.prototype.begin = function() {
   this.frame = new Frame(1);
+  this.score = new Score();
 };
 
 Game.prototype.nextFrame = function() {

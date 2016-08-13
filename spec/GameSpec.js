@@ -1,13 +1,16 @@
 describe("Game", function() {
   var game;
   var frame;
+  var score
 
   beforeEach(function() {
     game = new Game();
     frame = new Frame();
+    score = new Score();
   });
 
   it("game begins with a score of 0", function() {
+    game.begin();
     expect(game.getTotalScore()).toEqual(0);
   });
 
@@ -15,6 +18,10 @@ describe("Game", function() {
     it("initialises frame 1", function() {
       game.begin();
       expect(game.frame).toEqual(new Frame(1));
+    });
+    it("instantiates a score object", function() {
+      game.begin();
+      expect(game.score).toEqual(new Score());
     });
   });
 

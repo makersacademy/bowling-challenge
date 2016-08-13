@@ -1,10 +1,22 @@
 describe("Score", function() {
+  var game;
+  var frame;
+  var score
 
-	// it("stores the frame scores in a hash", function(){
-	//   game.play()
-	//   game.currentFrame.firstPinsDown = 4;
-	//   game.currentFrame.secondPinsDown = 5;
-	//   expect(game.getFrameScore(1)).toEqual({firstPinsDown: 4, secondPinsDown: 5})
-	// });
+  beforeEach(function() {
+    game = new Game();
+    frame = new Frame();
+    score = new Score();
+  });
+
+  describe("when first instantiated", function(){
+    it("has a total of 0", function(){
+      expect(score.total).toEqual(0);
+    });
+
+    it("has an empty hash of frame scores", function(){
+      expect(score.frameScores).toEqual({});
+    });
+  });
 
 });

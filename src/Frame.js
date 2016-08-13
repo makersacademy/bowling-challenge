@@ -11,10 +11,10 @@ Frame.prototype.getFrameScore = function() {
   return this.frameScore;
 };
 
-Frame.prototype.getrollCounter = function() {
+Frame.prototype.getRollCounter = function() {
   return this.rollCounter;
 };
 
-Frame.prototype.getpinCount = function() {
+Frame.prototype.getPinCount = function() {
   return this.pinCount;
 };

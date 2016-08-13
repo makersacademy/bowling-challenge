@@ -17,11 +17,6 @@ describe('Game', function() {
     });
   });
 
-
-
-
-
-
   describe('frames in game', function() {
 
     it('has a maximum number of frames', function() {

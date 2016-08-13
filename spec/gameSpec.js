@@ -2,9 +2,11 @@
 
 describe('Game', function() {
   var game;
+  var frame;
 
   beforeEach(function() {
     game = new Game();
+    frame = jasmine.createSpyObj('frame', ['addFrameToGame']);
   });
 
   describe('can return a game score', function() {
@@ -17,7 +19,7 @@ describe('Game', function() {
     });
 
     it('returns a score from the frames played if no bonuses', function() {
-      game.frames = [2, 2, 2]
+      game.frames = [2, 2, 2];
       expect(game.getGameScore()).toEqual(6);
     });
   });
@@ -32,6 +34,7 @@ describe('Game', function() {
       game.frames = [2, 2, 2]
       expect(game.getFrameCounter()).toEqual(3);
     });
-
   });
+
+
 });

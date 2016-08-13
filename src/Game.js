@@ -6,6 +6,8 @@ function Game(){
   this.GameScore = this.DEFAULT_GAME_SCORE;
   this.MAX_FRAMES = 10;
   this.frames = [];
+  this.spareBonus = false
+  this.strikeBonus = false
 };
 
 Game.prototype.getGameScore = function() {
@@ -24,4 +26,11 @@ Game.prototype.getFrameCounter = function() {
 
 Game.prototype.addFrame = function(frame) {
   this.frames.push(frame.frameScore);
+  if (frame.isStrike() === true) {
+    this.strikeBonus = true;
+  } else {
+      if (frame.isSpare() === true) {
+        this.spareBonus = true;
+      };
+    };
 };

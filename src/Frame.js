@@ -33,6 +33,14 @@ Frame.prototype.roll = function(numberOfPins) {
 
 Frame.prototype.addRollScore = function() {
   this.rolls.push(this.rollScore);
+  // if (this.isComplete() === true) {
+  //   console.log("isComplete is true!");
+  //   this.addFrameToGame(game);
+  // };
+  // if (game.spareBonus === true) {
+  //   console.log("spareBonus is true");
+  //
+  // };
 };
 
 Frame.prototype.isStrike = function() {
@@ -51,13 +59,18 @@ Frame.prototype.getFrameScore = function() {
   var total = this.rolls.reduce(add, 0);
     function add(a, b) {
       return a + b;
-    }
+    };
   this.frameScore = total;
   return this.frameScore;
 };
 
 Frame.prototype.isComplete = function() {
-  if (this.getRollCounter() === 2) {
+  if (this.isStrike() === true || (this.getRollCounter() === 2)) {
     return true;
   };
+};
+
+Frame.prototype.addFrameToGame = function(game) {
+  this.getFrameScore();
+  game.addFrame(this);
 };

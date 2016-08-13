@@ -15,8 +15,23 @@ describe('Feature Test:', function() {
       it('after one frame', function() {
         frame.roll(2);
         frame.roll(2);
-        game.addFrame(frame);
+        frame.addFrameToGame(game);
         expect(game.getFrameCounter()).toEqual(1);
+      });
+    });
+
+    describe('Bonuses', function() {
+      it('Game knows when to record a spare bonus', function() {
+        frame.roll(5);
+        frame.roll(5);
+        frame.addFrameToGame(game);
+        expect(game.spareBonus).toBeTruthy();
+      });
+
+      it('Game knows when to record a strike bonus', function() {
+        frame.roll(10);
+        frame.addFrameToGame(game);
+        expect(game.strikeBonus).toBeTruthy();
       });
     });
   });

@@ -2,10 +2,13 @@
 
 describe('Frame', function() {
   var frame;
+  var game;
 
   beforeEach(function() {
     frame = new Frame();
+    game = jasmine.createSpyObj('game', ['addFrame' ]);
   });
+
 
   describe('At the start of each frame', function() {
 
@@ -38,6 +41,8 @@ describe('Frame', function() {
       frame.roll(2);
       expect(frame.getRollCounter()).toEqual(2);
     });
+
+
 
   });
 
@@ -76,6 +81,13 @@ describe('Frame', function() {
       frame.roll(2);
       frame.roll(2);
       expect(frame.isComplete()).toBeTruthy();
+    });
+  });
+
+  describe("'addFrameToGame'", function() {
+    it('could add a frame to the game', function() {
+     frame.addFrameToGame(game);
+     expect(game.addFrame).toHaveBeenCalledWith(frame);
     });
   });
 

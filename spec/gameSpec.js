@@ -19,6 +19,10 @@ describe ('A game of 10 pin bowling', function(){
     game.roll(5);
   }
 
+  function rollStrike() {
+    game.roll(10);
+  }
+
   it('calculates a game score for a "gutter" game', function(){
     rollMany(20,0);
     expect(game.gameTotal()).toEqual(0);
@@ -34,6 +38,19 @@ describe ('A game of 10 pin bowling', function(){
     game.roll(4);
     rollMany(17, 0);
     expect(game.gameTotal()).toEqual(18);
+  });
+
+  it('calculates a game score for a game with a strike', function(){
+    rollStrike();
+    game.roll(4);
+    game.roll(5);
+    rollMany(16,3);
+    expect(game.gameTotal()).toEqual(76);
+  });
+
+  it('calculates a perfect game', function(){
+    rollMany(12,10);
+    expect(game.gameTotal()).toEqual(300);
   });
 
 });

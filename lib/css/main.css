@@ -1,0 +1,151 @@
+@import url('normalize.css');
+@import url('grid.css');
+
+body {
+  font-family: 'Poiret One', serif;
+        font-size: 48px;
+  /*line-height: 100%;*/
+  background-color: #252839;
+  color: white;
+}
+
+.btn {
+  background-color: #b5b5b7;
+  padding: 0px;
+  color: #677077;
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  color: #333333;
+  background-color: #677077;
+}
+
+.panel-body {
+  font-size: 25px;
+  color: white;
+  padding-bottom: 40px;
+  height: 50px;
+  width: 100%;
+  /*margin-left: auto;
+  margin-right: auto;*/
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+table {
+    width: 100%;
+    /*margin-left: auto;
+    margin-right: auto;*/
+    border-spacing: 0.5em;
+    border-collapse: collapse;
+}
+
+thead {
+  font-size: 35px;
+  background-color: #f2b632;
+  color: white;
+  border: 2px solid white;
+
+}
+
+tbody {
+  font-size: 20px;
+  background-color: #b5b5b7;
+  font-weight: thin;
+  border: 2px solid white;
+}
+
+tfoot {
+  font-size: 20px;
+  background-color: #677077;
+  border: 2px solid white;
+}
+
+th, td {
+    border: 2px solid white;
+    text-align: center;
+    padding: 8px;
+}
+
+#newgame {
+  background-color: #b5b5b7;
+  font-size: 18px;
+  color: #677077;
+  width: 200px;
+  height: 45px;
+  /*margin-left: auto;
+  margin-right: auto;*/
+  margin-top: 45px;
+  padding: 5px;
+}
+
+/*    TABLE    */
+
+/*.head {
+  width: 7%;
+}
+
+#tab_name {
+  width: 12%;
+}
+
+#tab_total {
+  width: 7%;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  border: 1px solid black;
+  height: 40px;
+}
+
+/*  FORMS   */
+
+/*form.form_group {
+  font-family: 'Raleway', sans-serif;
+  padding: 40px 40px;
+  background-color: #E8E8E8;
+  border-radius: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+label {
+  font-size: 1.16em;
+  /*font-weight: bold;*/
+/*}
+
+.button_styled {
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+  margin: 5px 2px;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+}*/

@@ -23,9 +23,13 @@ describe('Game:', function(){
     expect(game.getCurrentPinsStanding()).toEqual(10);
   });
 
+  it('starts with pinsToKnockDown at 0', function(){
+    expect(game.getCurrentPinsToKnockDown()).toEqual(0);
+  });
+
   describe('frameStatus', function(){
-    it('starts as "ready to play"', function(){
-      expect(game.getCurrentFrameStatus()).toEqual('ready to play');
+    it('starts as "start frame"', function(){
+      expect(game.getCurrentFrameStatus()).toEqual('start frame');
     });
   });
 
@@ -50,11 +54,20 @@ describe('Game:', function(){
   });
 
   describe('Player', function(){
-    it('rolls second ball which changes frame status to ready to play', function(){
+
+  it('rolls a ball which knocks down some pins', function(){
+    spyOn(game.getCurrentPinsToKnockDown()).and.returnValue(3);
+    game.startFrame();
+    game.rollBall();
+    spyOn(game.getCurrentPinsToKnockDown()).and.returnValue(3);
+    expect(game.getCurrentPinsStanding()).toEqual(7)
+  });
+
+    it('rolls second ball which changes frame status to start frame', function(){
       game.startFrame();
       game.rollBall();
       game.rollBall();
-      expect(game.getCurrentFrameStatus()).toEqual('ready to play');
+      expect(game.getCurrentFrameStatus()).toEqual('start frame');
     });
 
     describe('starts with', function(){

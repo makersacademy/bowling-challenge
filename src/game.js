@@ -1,17 +1,22 @@
 'use strict';
 
 function Game(){
-  this.pinsStanding = 10;
-  this.playerScore = 0;
-  this.playerBonus = 0;
-  this.framesLeft = 10;
-  this.currentFrame = 0;
-  this.frameStatus = 'ready to play';
-  this.rollsLeft = 0;
+  this.frameStatus     = 'start frame';
+  this.pinsStanding    = 10;
+  this.pinsToKnockDown =  0;
+  this.playerScore     =  0;
+  this.playerBonus     =  0;
+  this.framesLeft      = 10;
+  this.currentFrame    =  0;
+  this.rollsLeft       =  0;
 }
 
 Game.prototype.getCurrentPinsStanding = function () {
   return this.pinsStanding;
+};
+
+Game.prototype.getCurrentPinsToKnockDown = function () {
+  return this.pinsToKnockDown;
 };
 
 Game.prototype.getCurrentPlayerScore = function () {
@@ -52,12 +57,15 @@ Game.prototype.rollBall = function () {
   if (this.getCurrentRollsLeft() === 0) {
     return 'no balls available, start next frame';
   }
-
   if (this.getCurrentRollsLeft() === 1) {
     this._deductRollsLeft();
     this._resetFrameStatus();
+    this.pinsToKnockDown = _randomNumber();
   }
-  this._deductRollsLeft();
+  if (this.getCurrentRollsLeft() === 2) {
+    this.pinsToKnockDown = _randomNumber();
+    this._deductRollsLeft();
+  }
 };
 
 Game.prototype._updateCurrentFrame = function () {
@@ -77,7 +85,7 @@ Game.prototype._resetRollsLeft = function () {
 };
 
 Game.prototype._resetFrameStatus = function () {
-  this.frameStatus = 'ready to play'
+  this.frameStatus = 'start frame'
 };
 
 function _randomNumber() {

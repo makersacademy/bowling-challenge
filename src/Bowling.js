@@ -6,8 +6,21 @@ var BowlingGame = function() {
 };
 
 BowlingGame.prototype.roll = function (pins) {
-  this.rolls.push(pins);
-  this.registerRoll(pins);
+  var game = this;
+  function throwAlert() {
+    alert('Illegal Score');
+  }
+
+  function isIllegalScore() {
+    return game.frameCounter % 2 === 0 && (pins + game.scoresArray[game.scoresArray.length - 1] > 10);
+  }
+
+  if (isIllegalScore()) {
+    throwAlert();
+  } else {
+    game.rolls.push(pins);
+    game.registerRoll(pins)
+  }
 };
 
 BowlingGame.prototype.registerRoll = function(pins) {
@@ -84,14 +97,14 @@ BowlingGame.prototype.score = function (frameNumber) {
   }
 
   function getStrikeScore() {
-    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2] || 0;
   }
 
   function getSpareScore() {
-    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2] || 0;
   }
 
   function getNormalScore() {
-    return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] || 0;
   }
 };

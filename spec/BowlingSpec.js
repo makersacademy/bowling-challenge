@@ -53,6 +53,16 @@ describe('Bowling Game', function() {
     expect(game.scoresArray).toEqual([10, 'X', 5, '/']);
   });
 
+  it('a perfect game', function() {
+    rollMany(10, 12);
+    expect(game.scoresArray).toEqual([10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,'X',10,10,10]);
+  });
+
+  it('a gutter game', function() {
+    rollMany(0, 20);
+    expect(game.scoresArray).toEqual([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+  });
+
   function rollMany(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

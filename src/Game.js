@@ -17,4 +17,10 @@ Game.prototype.begin = function() {
 
 Game.prototype.nextFrame = function() {
   this.frame = new Frame(this.frame.currentFrame + 1);
-}
+};
+
+
+Game.prototype.saveScore = function() {
+  this.score.frameScores.first = this.frame.firstPinsDown;
+  this.score.frameScores.second = this.frame.secondPinsDown;
+};

@@ -1,10 +1,12 @@
 describe("Frame", function() {
   var frame;
   var game;
+  var score;
 
   beforeEach(function() {
     frame = new Frame();
     game = new Game();
+    score = new Score();
   });
 
   it("frame begins with ball 1", function() {

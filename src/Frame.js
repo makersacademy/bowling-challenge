@@ -17,7 +17,7 @@ Frame.prototype.getPinsStanding = function() {
 Frame.prototype.firstRoll = function() {
   this.firstPinsDown = Math.floor(Math.random() * 11);
   this.pinsStanding -= this.firstPinsDown;
-  this.currentRoll = 2;
+  this.currentRoll = 2
 };
 
 Frame.prototype.getFirstPinsDown = function() {

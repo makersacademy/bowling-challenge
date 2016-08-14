@@ -22,4 +22,5 @@ Game.prototype.nextFrame = function() {
 Game.prototype.saveScore = function() {
   this.score.frameScores.push({first: this.frame.firstPinsDown,
                                second: this.frame.secondPinsDown});
+  this.score.total += (this.frame.firstPinsDown + this.frame.secondPinsDown);
 };

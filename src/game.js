@@ -20,17 +20,32 @@ Game.prototype = {
 
   addSpareBonus: function(i) {
     if (this.frames[i].isSpare()) {
+      if (i<=8) {
       this.frames[i].scores += this.frames[i+1].firstScore;
+     }
     };
   },
 
   addStrikeBonus: function(i) {
-     if (this.frames[i].isStrike() && this.frames[i+1].isStrike()) {
-     this.frames[i].scores += this.frames[i+1].firstScore + this.frames[i+2].firstScore;
-   } else if (this.frames[i].isStrike()) {
-      this.frames[i].scores += this.frames[i+1].firstScore + this.frames[i+1].secondScore;
-   }
+    if(i<= 7){
+       if (this.frames[i].isStrike() && this.frames[i+1].isStrike()) {
+         this.frames[i].scores += this.frames[i+1].firstScore + this.frames[i+2].firstScore;
+       } else if (this.frames[i].isStrike()) {
+         this.frames[i].scores += this.frames[i+1].firstScore + this.frames[i+1].secondScore;
+       }
+     }
+    else if (this.frames[i].isStrike()) {
+      //edge case 10
+      if (i=9) {
+        this.frames[i].scores += this.frames[i].thirdScore;
+      }
+      else {
+        this.frames[i].scores += this.frames[i+1].firstScore + this.frames[i+1].secondScore;
+      }
+    }
+
   },
+
 
 
 };

@@ -59,8 +59,50 @@ describe("Game",function() {
     expect(game.frames[1].scores).toEqual(15);
   });
 
+  it("can play the perfect game",function(){
+    //the iteration through all frames is not working as i+1 is 11 and i+2 is 12 in the end
+    game.frames[0].firstRoll(10);
+    game.frames[1].firstRoll(10);
+    game.frames[2].firstRoll(10);
+    game.frames[3].firstRoll(10);
+    game.frames[4].firstRoll(10);
+    game.frames[5].firstRoll(10);
+    game.frames[6].firstRoll(10);
+    game.frames[7].firstRoll(10);
+    game.frames[8].firstRoll(10);
+    game.frames[9].firstRoll(10);
+    game.frames[9].secondRoll(10);
+    game.frames[9].thirdRoll(10);
+    game.countScores();
+    expect(game.totalScores).toEqual(300);
+  });
 
+  it('can play a perfect spare game',function(){
+    game.frames[0].firstRoll(8);
+    game.frames[0].secondRoll(2);
+    game.frames[1].firstRoll(8);
+    game.frames[1].secondRoll(2);
+    game.frames[2].firstRoll(8);
+    game.frames[2].secondRoll(2);
+    game.frames[3].firstRoll(8);
+    game.frames[3].secondRoll(2);
+    game.frames[4].firstRoll(8);
+    game.frames[4].secondRoll(2);
+    game.frames[5].firstRoll(8);
+    game.frames[5].secondRoll(2);
+    game.frames[6].firstRoll(8);
+    game.frames[6].secondRoll(2);
+    game.frames[7].firstRoll(8);
+    game.frames[7].secondRoll(2);
+    game.frames[8].firstRoll(8);
+    game.frames[8].secondRoll(2);
+    game.frames[9].firstRoll(8);
+    game.frames[9].secondRoll(2);
+    game.frames[9].thirdRoll(10);
+    game.countScores();
+    expect(game.totalScores).toEqual(182);
 
+  })
 
 
 })

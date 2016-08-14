@@ -3,6 +3,7 @@ describe ("Frame",function() {
 
   beforeEach(function(){
     frame = new Frame(1);
+    tenthFrame = new Frame(10);
   });
 
   it("is the nth frame",function(){
@@ -53,7 +54,22 @@ describe ("Frame",function() {
     expect(frame.isStrike()).toBe(false);
   });
 
-  
+  it("is the 10th frame",function(){
+    expect(tenthFrame.number()).toEqual(10);
+  });
+  it("can roll three balls when spare 10th frame",function(){
+    tenthFrame.firstRoll(9);
+    tenthFrame.secondRoll(1);
+    tenthFrame.thirdRoll(3);
+    expect(tenthFrame.scores).toEqual(13);
+  });
+  it("can roll three balls when strike 10th frame",function(){
+    tenthFrame.firstRoll(10);
+    tenthFrame.secondRoll(5);
+    tenthFrame.thirdRoll(7);
+    expect(tenthFrame.scores).toEqual(22);
+  })
+
 
 
 

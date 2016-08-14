@@ -3,9 +3,24 @@
 var BowlingGame = function() {
   this.rolls = []
   this.currentRoll = 0;
+  this.currentFrame = 1;
+  this.remainingPins = 10;
+  this.ball = 1;
 };
 
 BowlingGame.prototype.roll = function(pins) {
+
+  if (pins == 10) {
+    this.currentFrame += 1;
+  } else if (this.ball == 2) {
+    this.currentFrame += 1;
+    this.remainingPins = 10;
+    this.ball -= 1;
+  } else {
+    this.remainingPins -= pins;
+    this.ball += 1;
+  }
+
   this.rolls[this.currentRoll++] = pins;
 };
 
@@ -47,4 +62,16 @@ BowlingGame.prototype.score = function() {
     }
   }
   return score;
+};
+
+BowlingGame.prototype.currentScore = function() {
+  return this.rolls.reduce(function(a,b) {
+    return a + b;
+  }, 0)
+};
+
+BowlingGame.prototype.random = function(min=0, max=this.remainingPins + 1) {
+  var min = Math.ceil(min);
+  var max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
 };

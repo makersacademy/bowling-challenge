@@ -7,6 +7,8 @@ This little javascript app calculates the score of a 10 pin bowling game.  It ca
 * open index.html in your browser
 * enter your results for each frame then click "Submit Frame Result"
 
+![alt text](https://github.com/Rob-rls/bowling-challenge/blob/master/bowlingApp.png "Screenshot of the Bowling-Challenge app")
+
 #### It can be run from the console
 * open the browser console.
 * add your results for each frame with the frameBowls(bowl1, bowl2 (optional bowl3 for 10th frame)) function.

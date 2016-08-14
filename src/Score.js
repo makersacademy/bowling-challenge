@@ -14,3 +14,7 @@ Score.prototype.getFrameTotal = function(number) {
   // returns just that hash
   return (frameScore.first + frameScore.second)
 }
+
+Score.prototype.getGameTotal = function() {
+  return this.total
+}

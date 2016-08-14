@@ -1,10 +1,7 @@
 describe("Score", function() {
-  var game;
-  var frame;
   var score;
 
   beforeEach(function() {
-    game = new Game();
     score = new Score();
   });
 
@@ -32,18 +29,13 @@ describe("Score", function() {
     });
   });
 
-  // describe("#updateTotal", function(){
-  //   it ("updates game total with frame scores", function(){
-  //     score.frameScores = [{first: 2, second: 3}]
-  //     expect()
-  //   });
-  // });
 
-  // describe("#getGameTotal", function(){
-  //   it("sums up frame totals", function(){
-  //     score.frameScores = [{first: 2, second: 3}, {first: 5, second: 4}];
-  //     expect(score.getGameTotal()).toEqual(14);
-  //   });
-  // });
+
+  describe("#getGameTotal", function(){
+    it("sums up frame totals", function(){
+      score.total = 99;
+      expect(score.getGameTotal()).toEqual(99);
+    });
+  });
 
 });

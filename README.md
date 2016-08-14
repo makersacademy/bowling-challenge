@@ -144,9 +144,10 @@ Score {
 
 > game.score.getFrameTotal(2)
 9
->
-```
 
+> game.score.getGameTotal()
+16
+```
 
 # User stories
 

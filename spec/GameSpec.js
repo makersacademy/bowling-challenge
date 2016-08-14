@@ -6,10 +6,6 @@ describe("Game", function() {
     game.begin();
   });
 
-  it("game begins with a score of 0", function() {
-    expect(game.getTotalScore()).toEqual(0);
-  });
-
   describe("#begin", function() {
 
     it("initialises frame 1", function() {
@@ -53,6 +49,5 @@ describe("Game", function() {
     });
 
   });
-
 
 });

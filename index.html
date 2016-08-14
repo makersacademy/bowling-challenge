@@ -6,26 +6,68 @@
     <link rel="stylesheet" href="css/style.css" charset="utf-8">
   </head>
   <body>
-    <div id="main">
+  <div class="container">
+
+    <section id="logo"><img     src="http://www.asgard-design.com/portfolio/jtf21qc8c9icw87jzwqdwqz3ieayyqza.gif" width="400px">
       <form class="player">
-        Enter name: <input type="text" id="player_name">
-      <input type="submit" name='submit' value='Submit'>
-      </form>
-    </div>
-      <div id="display_name"></div>
+        <input type="text" id="player_name" placeholder="Enter Player Name"><input type="submit" name='submit' value='Submit'>
+      </form><br><br>
+    <div id="info">  Welcome to King Pin Bowling by Joe Sweeny<br><br>
+      <span id="rules">1) Please enter your name<br><br>
+      2) Play each frame in order<br><br>
+    3) A strike will earn a bonus score of the total score of the    following frame<br><br>
+  4) A spare will earn a bonus of the score of your next bowl in the following frame </span>
+    </section>
 
-    <button id="frame_one">Play Frame 1</button>
-    <div class="frame_one_score"></div>
-
-
-
-
-
+    <section id="scorecard">
+      <div id="card">Player: </div><div id="display_name"></div><div id="display_score">Score: </div>
 
 
+    </section>
+
+    <section id="frames">
+      <button id="frame_one">Play Frame 1</button><br><br>
+      <button id="frame_two">Play Frame 2</button><br><br>
+      <button id="frame_three">Play Frame 3</button><br><br>
+      <button id="frame_four">Play Frame 4</button><br><br>
+      <button id="frame_five">Play Frame 5</button><br><br>
+      <button id="frame_six">Play Frame 6</button><br><br>
+      <button id="frame_seven">Play Frame 7</button><br><br>
+      <button id="frame_eight">Play Frame 8</button><br><br>
+      <button id="frame_nine">Play Frame 9</button><br><br>
+      <button id="frame_ten">Play Frame 10</button><br><br>
+    </section>
+
+    <section id="bowl_one">
+      <div id="frame_one_one"></div>
+      <div id="frame_two_one"></div>
+      <div id="frame_three_one"></div>
+      <div id="frame_four_one"></div>
+      <div id="frame_five_one"></div>
+      <div id="frame_six_one"></div>
+      <div id="frame_seven_one"></div>
+      <div id="frame_eight_one"></div>
+      <div id="frame_nine_one"></div>
+      <div id="frame_ten_one"></div>
+    </section>
+
+    <section id="bowl_two">
+      <div id="frame_one_two"></div>
+      <div id="frame_two_two"></div>
+      <div id="frame_three_two"></div>
+      <div id="frame_four_two"></div>
+      <div id="frame_five_two"></div>
+      <div id="frame_six_two"></div>
+      <div id="frame_seven_two"></div>
+      <div id="frame_eight_two"></div>
+      <div id="frame_nine_two"></div>
+      <div id="frame_ten_two"></div>
+    </section>
 
 
 
+
+  </div>
 
   <script src="src/jquery-3.1.0.min.js"></script>
   <script src="src/frame.js"></script>

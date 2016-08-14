@@ -1,56 +1,28 @@
-'use strict';
-
-describe ('A game of 10 pin bowling', function(){
+describe('Frame', function(){
   var game;
-  var i;
+  var frame;
 
   beforeEach(function(){
+    frame = new Frame();
     game = new Game();
   });
 
-  function rollMany(n, pins) {
-    for (i = 0; i < n; i++) {
-      game.roll(pins);
-    }
-  }
-
-  function rollSpare() {
-    game.roll(5);
-    game.roll(5);
-  }
-
-  function rollStrike() {
-    game.roll(10);
-  }
-
-  it('calculates a game score for a "gutter" game', function(){
-    rollMany(20,0);
-    expect(game.gameTotal()).toEqual(0);
+  it('a game starts with a score of zero', function(){
+    expect(game.getTotalScore()).toEqual(0);
   });
 
-  it('calculates a game score without strikes', function(){
-    rollMany(20,2);
-    expect(game.gameTotal()).toEqual(40);
+  describe("#begin", function() {
+    it("initialises frame 1", function() {
+      game.begin();
+      expect(game.frame).toEqual(new Frame(1));
+    });
   });
 
-  it('calculates a game score for a game with a spare', function(){
-    rollSpare();
-    game.roll(4);
-    rollMany(17, 0);
-    expect(game.gameTotal()).toEqual(18);
+  describe("#nextFrame", function() {
+    it("increases current frame by one", function() {
+      game.begin();
+      game.nextFrame();
+      expect(game.frame).toEqual(new Frame(2));
+    });
   });
-
-  it('calculates a game score for a game with a strike', function(){
-    rollStrike();
-    game.roll(4);
-    game.roll(5);
-    rollMany(16,3);
-    expect(game.gameTotal()).toEqual(76);
-  });
-
-  it('calculates a perfect game', function(){
-    rollMany(12,10);
-    expect(game.gameTotal()).toEqual(300);
-  });
-
 });

@@ -32,29 +32,6 @@ As a bowling player
 If I score a strike in every frame of the game
 I want to be awarded the title of 'perfect game'
 
-# Installation
+# Note on solution
 
-TODO: Describe the installation process
-
-# Usage
-
-TODO: Write usage instructions
-
-# Contributing
-
-Fork it!
-Create your feature branch: git checkout -b my-new-feature
-Commit your changes: git commit -am 'Add some feature'
-Push to the branch: git push origin my-new-feature
-Submit a pull request :D
-# History
-
-TODO: Write history
-
-# Credits
-
-TODO: Write credits
-
-# License
-
-TODO: Write license
+After initially going down a deep dark rabbit hole for a day and a half I decided to use Uncle Bob's classic javascript solution (https://github.com/hontas/bowling-game-kata) as the basis for the scoring mechanism and added some extra functionality on top. Unfortunately I ran out of time before fully completing the challenge as a player can roll past 10 frames.

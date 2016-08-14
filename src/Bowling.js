@@ -4,7 +4,8 @@ function Bowling(){
 this.score = 0;
 this.pins = 10;
 this.currentFrame = 1;
-this.gameRoll = 0;
+this.gameRoll = 1;
+this.rolls = [];
 
 };
 
@@ -21,12 +22,12 @@ Bowling.prototype.getRoll = function() {
   this.score += roll;
   this.pins -= roll;
   this.gameRoll += 1;
-  if (this.gameRoll === 2){
+  this.rolls.push(roll);
+  if (this.gameRoll === 3){
     this.currentFrame += 1
     this.gameRoll = 1
     this.pins = 10
   };
-
   return roll;
 };
 
@@ -36,4 +37,20 @@ Bowling.prototype.getPins = function(){
 
 Bowling.prototype.getCurrentFrame = function(){
   return this.currentFrame;
+};
+
+Bowling.prototype.getBonus = function(){
+    var rollIndex = 0;
+    var points = 0;
+    if (this.currentFrame === 10){
+    for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+      if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10){
+        points += (this.rolls[rollIndex + 2] );
+      }
+      if (this.rolls[rollIndex] === 10){
+        points += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+      }
+      rollIndex += 2;
+    };};
+    this.score += points;
 };

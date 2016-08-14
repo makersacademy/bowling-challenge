@@ -1,5 +1,7 @@
 # Bowling Challenge
 =================
+[![Build Status](https://travis-ci.org/lukecartledge/bowling-challenge.svg?branch=master)](https://travis-ci.org/lukecartledge/bowling-challenge)
+
 * ### Features
   * [x] Gutter game
   * [x] One frame

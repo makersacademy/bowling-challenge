@@ -22,7 +22,7 @@ describe("Score table",function() {
 
     describe("and knocks 5 pins",function() {
       beforeEach(function() {
-       table.receiveScore(5);
+       table.calculateRoll(5);
       });
 
       it("displays 5 points, and sets another roll",function() {
@@ -32,7 +32,7 @@ describe("Score table",function() {
 
       describe("rolls again and knocks 5 pins again",function() {
         beforeEach(function() {
-          table.receiveScore(5);
+          table.calculateRoll(5);
         });
 
         it("starts another frame with 10 points",function() {
@@ -42,7 +42,7 @@ describe("Score table",function() {
         });
 
         it("gives player double points for next roll",function() {
-          table.receiveScore(5);
+          table.calculateRoll(5);
           expect(table.totalPoints).toEqual(20);
         });
       });
@@ -50,12 +50,12 @@ describe("Score table",function() {
 
     describe("a strike",function() {
       beforeEach(function() {
-        table.receiveScore(10);
+        table.calculateRoll(10);
       });
 
       it("gives player double points for next 2 rolls",function() {
-        table.receiveScore(6);
-        table.receiveScore(6);
+        table.calculateRoll(6);
+        table.calculateRoll(6);
         expect(table.totalPoints).toEqual(34);
       });
     });

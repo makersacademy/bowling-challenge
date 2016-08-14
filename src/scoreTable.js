@@ -8,33 +8,37 @@ function ScoreTable() {
 };
 
 ScoreTable.prototype = {
+  getScore: function() {
+    console.log("Frame: ",        this.frameNumber);
+    console.log("Roll: ",         this.rollNumber);
+    console.log("Pins knocked: ", this.pinsKnocked);
+    console.log("Total score: ",  this.totalPoints);
+  },
+
   getPinsLeft: function() {
     return this.pinsLeft;
   },
 
-  getTotalPoints: function() {
-    return this.totalPoints;
-  },
-
-  receiveScore: function(score) {
+  calculateRoll: function(score) {
     this.pinsKnocked = score;
     this.pinsLeft -= score;
     this.calculatePoints();
+    this.getScore();
     this.nextTurn();
-    return this.getPinsLeft();
+    return this.pinsLeft;
   },
 
-  getBonus: function () {
+  calculatePoints: function () {
+    this.totalPoints += this.pinsKnocked + this.addBonus();
+  },
+
+  addBonus: function () {
     var bonus = 0;
     if (this.bonus > 0) {
       bonus = this.pinsKnocked;
       this.bonus -= 1;
     }
     return bonus;
-  },
-
-  calculatePoints: function () {
-    this.totalPoints += this.pinsKnocked + this.getBonus();
   },
 
   nextTurn: function () {

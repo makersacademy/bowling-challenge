@@ -20,6 +20,12 @@ describe("A normal frame", function() {
     expect(frame.calculateScore()).toEqual(rand);
   });
 
+  it("returns an array of the scores", function() {
+    rand = 4;
+    frame.run();
+    expect(frame.getScores()).toEqual([4, 4]);
+  });
+
   describe("isStrike", function() {
     it("returns true if all pins down in first play", function() {
       rand = 10;

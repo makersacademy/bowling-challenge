@@ -23,6 +23,10 @@ Frame.prototype.calculateScore = function() {
   return this.score.reduce(add, 0);
 }
 
+Frame.prototype.getScores = function() {
+  return this.score;
+}
+
 Frame.prototype.getFirstScore = function() {
   return this.score[0];
 }

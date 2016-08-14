@@ -31,13 +31,13 @@ describe("Game", function() {
     it("saving after firstRoll adds current score to hash", function() {
       game.frame.firstPinsDown = 5;
       game.saveScore();
-      expect(game.score.frameScores).toEqual({first: 5, second: 0});
+      expect(game.score.frameScores).toEqual([{first: 5, second: 0}]);
     });
     it("saving after secondRoll adds current score to hash", function() {
       game.frame.firstPinsDown = 5;
       game.frame.secondPinsDown = 3;
       game.saveScore();
-      expect(game.score.frameScores).toEqual({first: 5, second: 3});
+      expect(game.score.frameScores).toEqual([{first: 5, second: 3}]);
     });
   });
 

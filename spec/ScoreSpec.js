@@ -15,7 +15,7 @@ describe("Score", function() {
     });
 
     it("has an empty hash of frame scores", function(){
-      expect(score.frameScores).toEqual({});
+      expect(score.frameScores).toEqual([]);
     });
   });
 

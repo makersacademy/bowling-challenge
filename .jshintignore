@@ -4,4 +4,3 @@ spec/*
 *.md
 **/*.html
 *.LICENSE
-src/*

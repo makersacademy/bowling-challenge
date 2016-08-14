@@ -10,6 +10,15 @@ function Game(){
   this.strikeBonus = false;
 };
 
+Game.prototype.getFrameCounter = function() {
+  this.frameCounter = this.frames.length;
+  return this.frameCounter;
+};
+
+Game.prototype.getSpareBonus = function() {
+  return this.spareBonus;
+};
+
 Game.prototype.getGameScore = function() {
   var total = this.frames.reduce(add, 0);
     function add(a, b) {
@@ -17,11 +26,6 @@ Game.prototype.getGameScore = function() {
     }
   this.GameScore = total;
   return this.GameScore;
-};
-
-Game.prototype.getFrameCounter = function() {
-  this.frameCounter = this.frames.length;
-  return this.frameCounter;
 };
 
 Game.prototype.addFrame = function(frame) {
@@ -35,8 +39,17 @@ Game.prototype.addFrame = function(frame) {
     };
 };
 
-Game.prototype.addSpareBonus = function(frame) {
+Game.prototype.addBonusPrevious = function(frame) {
   var previous;
-  previous = this.getFrameCounter() - 1;
+  // if (this.strikeBonus === true) {
+  //   previous = this.getFrameCounter() - 2;
+  // } else {
+    previous = this.getFrameCounter() - 1;
+  // };
   this.frames[previous] += frame.getBonusScore();
+};
+
+Game.prototype.start = function() {
+  var frame1;
+  frame1 = new Frame;
 };

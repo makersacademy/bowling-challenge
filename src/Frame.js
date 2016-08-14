@@ -1,7 +1,6 @@
 'use strict';
 
-function Frame(number) {
-  this.frameNumber = number
+function Frame() {
   this.frameScore = 0;
   this.DEFAULT_PIN_COUNT = 10;
   this.pinCount = this.DEFAULT_PIN_COUNT;
@@ -26,36 +25,25 @@ Frame.prototype.getBonusScore = function() {
   return this.bonusScore;
 };
 
-Frame.prototype.roll = function(numberOfPins) {
-  this.rollScore = numberOfPins;
-  this.pinCount -= numberOfPins;
-  this.addRollScore();
-  // if (game.spareBonus === true) {
-  //   this.bonusScore = this.rollScore;
-  // };
-};
+
 
 Frame.prototype.addRollScore = function() {
   this.rolls.push(this.rollScore);
-  // if (this.isComplete() === true) {
-  //   console.log("isComplete is true!");
-  //   this.addFrameToGame(game);
-  // };
-  // if (game.spareBonus === true) {
-  //   console.log("spareBonus is true");
-  //
-  // };
 };
 
 Frame.prototype.isStrike = function() {
   if ((this.getRollCounter() === 1) && (this.getPinCount() === 0)) {
     return true;
+  } else {
+    return false;
   };
 };
 
 Frame.prototype.isSpare = function() {
   if ((this.getRollCounter() === 2) && (this.getPinCount() === 0)) {
     return true;
+  } else {
+    return false;
   };
 };
 
@@ -71,6 +59,8 @@ Frame.prototype.getFrameScore = function() {
 Frame.prototype.isComplete = function() {
   if (this.isStrike() === true || (this.getRollCounter() === 2)) {
     return true;
+  } else {
+    return false;
   };
 };
 
@@ -83,11 +73,35 @@ Frame.prototype.addBonus = function() {
   this.bonusScore += this.rollScore;
 };
 
-Frame.prototype.addSpareBonusToGame = function(game) {
+Frame.prototype.addBonusToGame = function(game) {
   this.getBonusScore();
-  game.addSpareBonus(this);
+  game.addBonusPrevious(this);
+  this.bonusScore = 0
 };
 
+Frame.prototype.roll = function(numberOfPins) {
+  if (this.isComplete === true) {
+    throw new Error("This frame is finished");
+  };
+  if (numberOfPins > this.getPinCount()) {
+    throw new Error("Cannot bowl more than number of pins left standing");
+  }
+  this.rollScore = numberOfPins;
+  this.pinCount -= numberOfPins;
+  this.addRollScore();
+  this.nextStep();
+};
+
+Frame.prototype.nextStep = function() {
+  if (this.isComplete() === true) {
+    console.log("is Complete");
+    // this.addFrameToGame(game);
+    // if (game.getSpareBonus() === true) {
+    //   this.addBonusToGame(game);
+    // };
+  };
+
+};
 // Frame.prototype.addStrikeBonus = function() {
 //   this.bonusScore += this.rollScore;
 // };

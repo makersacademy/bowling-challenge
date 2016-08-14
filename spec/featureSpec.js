@@ -7,7 +7,7 @@ describe('Feature Test:', function() {
 
   beforeEach(function() {
     game = new Game();
-    frame = new Frame(1);
+    frame = new Frame();
   });
 
   describe('Playing the game', function() {
@@ -23,7 +23,7 @@ describe('Feature Test:', function() {
 
     describe('Bonuses', function() {
       beforeEach(function() {
-        frame2 = new Frame(2);
+        frame2 = new Frame();
       });
 
       describe('Spare', function() {
@@ -46,7 +46,7 @@ describe('Feature Test:', function() {
         it('can add the spare bonus to the previous framescore', function() {
           frame2.roll(2);
           frame2.addBonus();
-          frame2.addSpareBonusToGame(game);
+          frame2.addBonusToGame(game);
           expect(game.frames[0]).toEqual(12);
         });
       });
@@ -74,8 +74,12 @@ describe('Feature Test:', function() {
           frame2.addBonus();
           frame2.roll(2);
           frame2.addBonus();
-          frame2.addSpareBonusToGame(game);
+          frame2.addBonusToGame(game);
           expect(game.frames[0]).toEqual(14);
+        });
+
+        it('can record the strike bonus to be added when first bonus roll is also a strike', function() {
+
         });
 
       });
@@ -83,26 +87,13 @@ describe('Feature Test:', function() {
 
   });
 
-  // describe('can calculate the total score', function() {
-  //   it('after one frame', function() {
-  //     frame.roll(2);
-  //     frame.roll(2);
-  //     expect(game.getScore()).toEqual(4);
-  //   });
-  // });
+  describe('can calculate the total score', function() {
+    it('after one regular frame', function() {
+      frame.roll(2);
+      frame.roll(2);
+      expect(game.getGameScore()).toEqual(4);
+    });
 
-  // describe('can get a frame score from a roll', function() {
-  //
-  //   it('returns a frame score for the first roll', function() {
-  //     expect(game.roll(1)).toBeGreaterThan(-1);
-  //   });
-  //
-  //   it('returns a number for each roll', function() {
-  //     expect(game.roll(7)).toEqual(7);
-  //   });
-  //
-  //   it('returns a number of 10 or less for each roll', function() {
-  //     expect(game.roll(11)).toThrow(new Error("Cannot bowl more than 10"));
-  //   });
-  // });
+
+  });
 });

@@ -5,8 +5,9 @@ describe('Frame', function() {
   var game;
 
   beforeEach(function() {
-    frame = new Frame(1);
+    frame = new Frame;
     game = jasmine.createSpyObj('game', ['addFrame' ]);
+    // game = jasmine.createSpy('game');
   });
 
 
@@ -42,11 +43,28 @@ describe('Frame', function() {
       expect(frame.getRollCounter()).toEqual(2);
     });
 
+    it('rejects a number of 10 or more for each roll', function() {
+      expect(function() { frame.roll(11); }).toThrowError("Cannot bowl more than number of pins left standing");
+    });
 
+    it('rejects a roll number which is greater than the pins left standing', function() {
+      frame.roll(2);
+      expect(function() { frame.roll(9); }).toThrowError("Cannot bowl more than number of pins left standing");
+    });
 
+    it('does not reject a roll number which is lower than the pins left standing', function() {
+      frame.roll(2);
+      expect(function() { frame.roll(7); }).not.toThrowError("Cannot bowl more than number of pins left standing");
+    });
   });
 
   describe('Strike and Spare', function() {
+
+    it('knows when the frame is neither a strike nor a spare', function() {
+      frame.roll(2);
+      expect(frame.isStrike()).toBeFalsy();
+      expect(frame.isSpare()).toBeFalsy();
+    });
 
     describe('Strike', function() {
       it('knows when the frame is a strike', function() {
@@ -56,6 +74,7 @@ describe('Frame', function() {
     });
 
     describe('Spare', function() {
+
       beforeEach(function() {
         var remaining;
         remaining = (frame.DEFAULT_PIN_COUNT - 2);
@@ -66,7 +85,6 @@ describe('Frame', function() {
       it('knows when the frame is a spare', function() {
         expect(frame.isSpare()).toBeTruthy();
       });
-
     });
   });
 

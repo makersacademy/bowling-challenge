@@ -9,6 +9,145 @@ Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
+## Directions
+
+### Setup
+
+* Clone the repository
+```
+git clone git@github.com:richo225/bowling-challenge.git
+```
+* Update/install gems
+```
+bundle install
+```
+* Run node
+```
+node
+```
+* Load required project files
+```
+.load ./src/Game.js
+.load ./src/Frame.js
+.load ./src/Score.js
+```
+
+### First frame
+
+```
+> game = new Game()
+Game {}
+
+> game.begin()
+Game {
+  frame:
+   Frame {
+     currentFrame: 1,
+     currentRoll: 1,
+     pinsStanding: 10,
+     firstPinsDown: 0,
+     secondPinsDown: 0 },
+  score: Score { total: 0, frameScores: [] } }
+
+> game.frame.firstRoll()
+Game {
+  frame:
+   Frame {
+     currentFrame: 1,
+     currentRoll: 2,
+     pinsStanding: 7,
+     firstPinsDown: 3,
+     secondPinsDown: 0 },
+  score: Score { total: 0, frameScores: [] } }
+
+> game.frame.secondRoll()
+Game {
+  frame:
+   Frame {
+     currentFrame: 1,
+     currentRoll: 2,
+     pinsStanding: 3,
+     firstPinsDown: 3,
+     secondPinsDown: 4 },
+  score: Score { total: 0, frameScores: [] } }
+
+> game.saveScore()
+Game {
+  frame:
+   Frame {
+     currentFrame: 1,
+     currentRoll: 2,
+     pinsStanding: 3,
+     firstPinsDown: 3,
+     secondPinsDown: 4 },
+  score: Score { total: 7, frameScores: [ [Object] ] } }
+
+> game.score
+Score { total: 7, frameScores: [ { first: 3, second: 4 } ] }
+
+> game.nextFrame()
+Game {
+  frame:
+   Frame {
+     currentFrame: 2,
+     currentRoll: 1,
+     pinsStanding: 10,
+     firstPinsDown: 0,
+     secondPinsDown: 0 },
+  score: Score { total: 7, frameScores: [ [Object] ] } }
+```
+### Second frame
+```
+> game.frame.firstRoll()
+Game {
+  frame:
+   Frame {
+     currentFrame: 2,
+     currentRoll: 2,
+     pinsStanding: 2,
+     firstPinsDown: 8,
+     secondPinsDown: 0 },
+  score: Score { total: 7, frameScores: [ [Object] ] } }
+
+> game.frame.secondRoll()
+Game {
+  frame:
+   Frame {
+     currentFrame: 2,
+     currentRoll: 2,
+     pinsStanding: 1,
+     firstPinsDown: 8,
+     secondPinsDown: 1 },
+  score: Score { total: 7, frameScores: [ [Object] ] } }
+
+> game.score
+Score { total: 7, frameScores: [ { first: 3, second: 4 } ] }
+
+> game.saveScore()
+Game {
+  frame:
+   Frame {
+     currentFrame: 2,
+     currentRoll: 2,
+     pinsStanding: 1,
+     firstPinsDown: 8,
+     secondPinsDown: 1 },
+  score: Score { total: 16, frameScores: [ [Object], [Object] ] } }
+
+> game.score
+Score {
+  total: 16,
+  frameScores: [ { first: 3, second: 4 }, { first: 8, second: 1 } ] }
+
+> game.score.getFrameScores(2)
+{ first: 8, second: 1 }
+
+> game.score.getFrameTotal(2)
+9
+>
+```
+
+
 # User stories
 
 ```

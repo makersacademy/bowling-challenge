@@ -22,12 +22,15 @@ describe('Feature Test:', function() {
     });
 
     describe('Bonuses', function() {
+      beforeEach(function() {
+        frame2 = new Frame(2);
+      });
+
       describe('Spare', function() {
         beforeEach(function() {
           frame.roll(5);
           frame.roll(5);
           frame.addFrameToGame(game);
-          frame2 = new Frame(2);
         });
 
         it('Game knows when to record a spare bonus', function() {
@@ -36,9 +39,15 @@ describe('Feature Test:', function() {
 
         it('can record the spare bonus to be added to the previous framescore', function() {
           frame2.roll(2);
-          frame2.addBonusScore();
-          // expect(game.frames[0]).toEqual(12);
+          frame2.addBonus();
           expect(frame2.getBonusScore()).toEqual(2);
+        });
+
+        it('can add the spare bonus to the previous framescore', function() {
+          frame2.roll(2);
+          frame2.addBonus();
+          frame2.addSpareBonusToGame(game);
+          expect(game.frames[0]).toEqual(12);
         });
       });
 
@@ -51,6 +60,24 @@ describe('Feature Test:', function() {
         it('Game knows when to record a strike bonus', function() {
           expect(game.strikeBonus).toBeTruthy();
         });
+
+        it('can record the strike bonus to be added to the previous framescore', function() {
+          frame2.roll(2);
+          frame2.addBonus();
+          frame2.roll(2);
+          frame2.addBonus();
+          expect(frame2.getBonusScore()).toEqual(4);
+        });
+
+        it('can add the strike bonus to the previous framescore', function() {
+          frame2.roll(2);
+          frame2.addBonus();
+          frame2.roll(2);
+          frame2.addBonus();
+          frame2.addSpareBonusToGame(game);
+          expect(game.frames[0]).toEqual(14);
+        });
+
       });
     });
 

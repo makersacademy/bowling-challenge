@@ -6,8 +6,8 @@ function Game(){
   this.GameScore = this.DEFAULT_GAME_SCORE;
   this.MAX_FRAMES = 10;
   this.frames = [];
-  this.spareBonus = false
-  this.strikeBonus = false
+  this.spareBonus = false;
+  this.strikeBonus = false;
 };
 
 Game.prototype.getGameScore = function() {
@@ -33,4 +33,10 @@ Game.prototype.addFrame = function(frame) {
         this.spareBonus = true;
       };
     };
+};
+
+Game.prototype.addSpareBonus = function(frame) {
+  var previous;
+  previous = this.getFrameCounter() - 1;
+  this.frames[previous] += frame.getBonusScore();
 };

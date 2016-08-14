@@ -79,7 +79,15 @@ Frame.prototype.addFrameToGame = function(game) {
   game.addFrame(this);
 };
 
-Frame.prototype.addBonusScore = function() {
+Frame.prototype.addBonus = function() {
   this.bonusScore += this.rollScore;
-  // game.spareBonus = false;
 };
+
+Frame.prototype.addSpareBonusToGame = function(game) {
+  this.getBonusScore();
+  game.addSpareBonus(this);
+};
+
+// Frame.prototype.addStrikeBonus = function() {
+//   this.bonusScore += this.rollScore;
+// };

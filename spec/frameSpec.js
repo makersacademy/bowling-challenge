@@ -66,6 +66,7 @@ describe('Frame', function() {
       it('knows when the frame is a spare', function() {
         expect(frame.isSpare()).toBeTruthy();
       });
+
     });
   });
 

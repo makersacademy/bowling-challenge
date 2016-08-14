@@ -1,10 +1,13 @@
 # Bowling Scoresheet
 
-This little javscript app calculates the score of a 10 pin bowling game.  It can calculate the score after each frame of bowls is entered.  It requires the player to be honest as it does not check for 'valid' frame results.
+This little javascript app calculates the score of a 10 pin bowling game.  It can calculate the score after each frame of bowls is entered.  The total score is correctly calculated after each frame.  It requires the player to be honest as it does not check for 'valid' frame results.
 
 ## Instructions
 * clone this repo
-* open SpecRunner.html in your browser
+* open index.html in your browser
+* enter your results for each frame then click "Submit Frame Result"
+
+#### It can be run from the console
 * open the browser console.
 * add your results for each frame with the frameBowls(bowl1, bowl2 (optional bowl3 for 10th frame)) function.
 * check your current score after each frame with the score() function

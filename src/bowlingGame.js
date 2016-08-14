@@ -18,6 +18,7 @@ Game.prototype.score = function() {
   var total = 0;
   var frameResults = this._score
   for (var frame = 0; frame < 10; frame++) {
+    // scoring rules for the first 8 frames
     if (frame < 8) {
       // bonus score for a strike
       if (isStrike(frameResults[frame])) {
@@ -33,7 +34,8 @@ Game.prototype.score = function() {
       // adding the result of the frame pins knocked down
       total += frameResults[frame].reduce(add,0);
     };
-    // for frame 9
+    // for frame 9 - needs special logic to know if
+    // it needs to count two strikces in frame 10
     if (frame === 8) {
       if (isStrike(frameResults[frame])) {
         total += frameResults[frame+1][0] + frameResults[frame+1][1];
@@ -51,7 +53,7 @@ Game.prototype.score = function() {
   return total;
 };
 
-// function to determine rules for the score function
+// functions to determine rules for calculating bonus points
 function isStrike(frame) {
   if (frame[0] === 10) {
     return true
@@ -69,8 +71,4 @@ function isSpare(frame) {
 // functions to use with reduce
 function add(a, b) {
   return a + b;
-};
-
-function makeFlat(a, b) {
-  return a.concat(b);
 };

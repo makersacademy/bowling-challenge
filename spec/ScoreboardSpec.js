@@ -3,91 +3,58 @@
 describe('Scoreboard', function() {
   var scoreboard;
   var hits;
+  var expectedHits;
 
   beforeEach(function() {
     scoreboard = new Scoreboard();
     hits = 4;
+    expectedHits = 4;
   });
 
-  it('initalises empty frame first', function(){
-    expect(scoreboard.frames.length).toEqual(0);
-  });
-
-  it('can go to next frame', function(){
-    scoreboard.nextFrame();
+  it('empty frame initalized', function(){
     expect(scoreboard.frames.length).toEqual(1);
   });
 
-  it('get score of first roll', function(){
+  it('can go to to next frame', function(){
     scoreboard.nextFrame();
-    scoreboard.saveFirstRoll(hits);
-    expect(scoreboard.frames[0].roll1).toEqual(hits);
-  });
-
-  it('get score of second roll, then new frame', function() {
-    scoreboard.nextFrame();
-    scoreboard.saveFirstRoll(hits);
-    scoreboard.saveSecondRoll(hits);
-    expect(scoreboard.frames[0].roll2).toEqual(hits);
     expect(scoreboard.frames.length).toEqual(2);
   });
 
-  it('first roll cannot be saved if no bowling happened', function() {
-    scoreboard.nextFrame();
-    var message = 'Bowl first';
-    expect(function() { scoreboard.saveSecondRoll(hits); }).toThrowError(message);
+  describe('First roll', function() {
+    it('can save information about first roll of frame', function(){
+      scoreboard.saveFirstRoll(hits);
+      expect(scoreboard.frames[0].roll1).toEqual(expectedHits);
+    });
   });
 
-  it('gets total score', function() {
-    var total = hits + hits;
+  describe('Second roll', function() {
+    it('can save information about the second roll of frame and creates new frame', function() {
+      scoreboard.saveFirstRoll(hits);
+      scoreboard.saveSecondRoll(hits);
+      expect(scoreboard.frames[0].roll2).toEqual(expectedHits);
+      expect(scoreboard.frames.length).toEqual(2);
+    });
 
-    scoreboard.nextFrame();
-    scoreboard.saveFirstRoll(hits);
-    scoreboard.saveSecondRoll(hits);
-    expect(scoreboard.getCurrentScore()).toEqual(total);
+    it('throws an error if first roll not saved.', function() {
+      var message = 'Roll first';
+      expect(function() { scoreboard.saveSecondRoll(hits); }).toThrowError(message);
+    });
   });
 
-  it('moves onto next frame saving score', function(){
-    var strike = 10;
-    scoreboard.nextFrame();
-    scoreboard.saveFirstRoll(strike);
-    expect(scoreboard.getCurrentScore()).toEqual(strike);
-    expect(scoreboard.frames.length).toEqual(2);
-  });
+  describe('Third roll - 10th Frame only', function() {
+    it('can save information about the third roll of last frame', function() {
+      for (var i = 9; i > 0; i--){
+        scoreboard.saveFirstRoll(hits);
+        scoreboard.saveSecondRoll(hits);
+      }
+      scoreboard.lastFrame(hits, 6);
+      expect(Object.keys(scoreboard.frames[9]).length).toEqual(3);
+    });
 
-  it('adds bonus after strike', function() {
-    var strike = 10;
-    scoreboard.nextFrame();
-    scoreboard.saveFirstRoll(strike);
-    scoreboard.saveFirstRoll(hits);
-    scoreboard.saveSecondRoll(hits);
-    var bonus = (hits + hits) * 2;
-    expect(scoreboard.getCurrentScore()).toEqual(strike + bonus);
-  });
-
-  it('last frame - two strikes', function() {
-    var strike = 10;
-    scoreboard.nextFrame();
-    scoreboard.saveFirstRoll(strike);
-    scoreboard.saveFirstRoll(strike);
-
-    scoreboard.saveFirstRoll(hits);
-    scoreboard.saveSecondRoll(hits);
-    var total = ( (strike+(strike+hits)) + (strike+(hits+0) + (hits+hits)) );
-    expect(scoreboard.getCurrentScore()).toEqual(total);
-  });
-
-  it('last frame - three continuous strikes', function() {
-    var strike = 10;
-    scoreboard.nextFrame();
-    scoreboard.saveFirstRoll(strike);
-    scoreboard.saveFirstRoll(strike);
-    scoreboard.saveFirstRoll(strike);
-
-    scoreboard.saveFirstRoll(0);
-    scoreboard.saveSecondRoll(9);
-    var total = 78;
-    expect(scoreboard.getCurrentScore()).toEqual(total);
+    it('throws an error if 3rd roll in final frame is not available', function(){
+      var message = 'Unlucky'
+      expect(function() { scoreboard.saveThirdRoll(5); }).toThrowError(message);
+    });
   });
 
 });

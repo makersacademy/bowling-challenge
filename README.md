@@ -80,4 +80,5 @@ If you don't follow the usual Jasmine convention of having your tests in `spec` 
 
 
 Alwin Solanky - Bowling Challenge weekend 5
-The work is done by myself but I've taken advice from classmates and taken inspiration from earlier Makers Students.
+The work is done by myself but I've taken advice from classmates and taken inspiration from earlier Makers Students.  
+Weekend 6 completely changed game again and started from scratch

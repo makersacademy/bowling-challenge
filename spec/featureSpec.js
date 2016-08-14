@@ -3,10 +3,11 @@
 describe('Feature Test:', function() {
   var game;
   var frame;
+  var frame2;
 
   beforeEach(function() {
     game = new Game();
-    frame = new Frame();
+    frame = new Frame(1);
   });
 
   describe('Playing the game', function() {
@@ -21,19 +22,38 @@ describe('Feature Test:', function() {
     });
 
     describe('Bonuses', function() {
-      it('Game knows when to record a spare bonus', function() {
-        frame.roll(5);
-        frame.roll(5);
-        frame.addFrameToGame(game);
-        expect(game.spareBonus).toBeTruthy();
+      describe('Spare', function() {
+        beforeEach(function() {
+          frame.roll(5);
+          frame.roll(5);
+          frame.addFrameToGame(game);
+          frame2 = new Frame(2);
+        });
+
+        it('Game knows when to record a spare bonus', function() {
+          expect(game.spareBonus).toBeTruthy();
+        });
+
+        it('can record the spare bonus to be added to the previous framescore', function() {
+          frame2.roll(2);
+          frame2.addBonusScore();
+          // expect(game.frames[0]).toEqual(12);
+          expect(frame2.getBonusScore()).toEqual(2);
+        });
       });
 
-      it('Game knows when to record a strike bonus', function() {
-        frame.roll(10);
-        frame.addFrameToGame(game);
-        expect(game.strikeBonus).toBeTruthy();
+      describe('Strike', function() {
+        beforeEach(function() {
+          frame.roll(10);
+          frame.addFrameToGame(game);
+        });
+
+        it('Game knows when to record a strike bonus', function() {
+          expect(game.strikeBonus).toBeTruthy();
+        });
       });
     });
+
   });
 
   // describe('can calculate the total score', function() {

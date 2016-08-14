@@ -1,6 +1,7 @@
 'use strict';
 
-function Frame() {
+function Frame(number) {
+  this.frameNumber = number
   this.frameScore = 0;
   this.DEFAULT_PIN_COUNT = 10;
   this.pinCount = this.DEFAULT_PIN_COUNT;
@@ -29,6 +30,9 @@ Frame.prototype.roll = function(numberOfPins) {
   this.rollScore = numberOfPins;
   this.pinCount -= numberOfPins;
   this.addRollScore();
+  // if (game.spareBonus === true) {
+  //   this.bonusScore = this.rollScore;
+  // };
 };
 
 Frame.prototype.addRollScore = function() {
@@ -73,4 +77,9 @@ Frame.prototype.isComplete = function() {
 Frame.prototype.addFrameToGame = function(game) {
   this.getFrameScore();
   game.addFrame(this);
+};
+
+Frame.prototype.addBonusScore = function() {
+  this.bonusScore += this.rollScore;
+  // game.spareBonus = false;
 };

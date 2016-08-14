@@ -5,7 +5,7 @@ describe('Frame', function() {
   var game;
 
   beforeEach(function() {
-    frame = new Frame();
+    frame = new Frame(1);
     game = jasmine.createSpyObj('game', ['addFrame' ]);
   });
 
@@ -48,17 +48,24 @@ describe('Frame', function() {
 
   describe('Strike and Spare', function() {
 
-    it('knows when the frame is a strike', function() {
-      frame.roll(frame.DEFAULT_PIN_COUNT);
-      expect(frame.isStrike()).toBeTruthy();
+    describe('Strike', function() {
+      it('knows when the frame is a strike', function() {
+        frame.roll(frame.DEFAULT_PIN_COUNT);
+        expect(frame.isStrike()).toBeTruthy();
+      });
     });
 
-    it('knows when the frame is a spare', function() {
-      var remaining;
-      remaining = (frame.DEFAULT_PIN_COUNT - 2);
-      frame.roll(2);
-      frame.roll(remaining);
-      expect(frame.isSpare()).toBeTruthy();
+    describe('Spare', function() {
+      beforeEach(function() {
+        var remaining;
+        remaining = (frame.DEFAULT_PIN_COUNT - 2);
+        frame.roll(2);
+        frame.roll(remaining);
+      });
+
+      it('knows when the frame is a spare', function() {
+        expect(frame.isSpare()).toBeTruthy();
+      });
     });
   });
 

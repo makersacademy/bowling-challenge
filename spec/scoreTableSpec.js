@@ -1,3 +1,5 @@
+'use strict';
+
 describe("Score table",function() {
   var table;
   beforeEach(function() {
@@ -25,7 +27,7 @@ describe("Score table",function() {
        table.calculateRoll(5);
       });
 
-      it("displays 5 points, and sets another roll",function() {
+      it("gets 5 points, and has another roll",function() {
         expect(table.totalPoints).toEqual(5);
         expect(table.rollNumber).toEqual(2);
       });
@@ -54,11 +56,22 @@ describe("Score table",function() {
       });
 
       it("gives player double points for next 2 rolls",function() {
+        table.calculateRoll(3);
         table.calculateRoll(6);
-        table.calculateRoll(6);
-        expect(table.totalPoints).toEqual(34);
+        expect(table.totalPoints).toEqual(28);
       });
     });
+  });
 
+  describe("when Player reaches the last frame",function() {
+    it("can roll a perfect game",function() {
+      for (var i = 0; i < 10; i++) {
+        table.calculateRoll(10);
+      }
+      //expect(table.frameNumber).toEqual(10);
+      expect(table.totalPoints).toEqual(280);
+      table.calculateRoll(10);
+      expect(table.totalPoints).toEqual(300);
+    });
   });
 });

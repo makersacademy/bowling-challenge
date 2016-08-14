@@ -1,3 +1,5 @@
+'use strict';
+
 function ScoreTable() {
   this.pinsLeft = 10;
   this.rollNumber = 1;
@@ -5,6 +7,7 @@ function ScoreTable() {
   this.totalPoints = 0;
   this.pinsKnocked = 0;
   this.bonus = 0;
+  this.scores = [];
 };
 
 ScoreTable.prototype = {
@@ -19,29 +22,41 @@ ScoreTable.prototype = {
     return this.pinsLeft;
   },
 
+  countTotalPoints: function() {
+    this.totalPoints = 0;
+    for (var i = 0; i < this.scores.length ; i++) {
+      this.totalPoints += this.scores[i];
+    }
+  },
+
   calculateRoll: function(score) {
     this.pinsKnocked = score;
     this.pinsLeft -= score;
-    this.calculatePoints();
+    this._calculatePoints();
     this.getScore();
-    this.nextTurn();
+    this._nextTurn();
     return this.pinsLeft;
   },
 
-  calculatePoints: function () {
-    this.totalPoints += this.pinsKnocked + this.addBonus();
+  _calculatePoints: function () {
+    this.scores.push(this.pinsKnocked);
+    this._addBonus(this.bonus);
+    this.countTotalPoints();
   },
 
-  addBonus: function () {
-    var bonus = 0;
-    if (this.bonus > 0) {
-      bonus = this.pinsKnocked;
+  _addBonus: function (bonusCount) {
+    if (bonusCount > 2) {
+      this.scores[this.frameNumber - 1] += this.pinsKnocked;
+      this.scores[this.frameNumber - 2] += this.pinsKnocked;
       this.bonus -= 1;
     }
-    return bonus;
+    else if (bonusCount > 0){
+      this.scores[this.frameNumber - 1] += this.pinsKnocked;
+      this.bonus -= 1;
+    }
   },
 
-  nextTurn: function () {
+  _nextTurn: function () {
     if (this.pinsLeft > 0 && this.rollNumber === 1){
       this.rollNumber += 1;
     }
@@ -59,7 +74,7 @@ ScoreTable.prototype = {
   _setNewFrame: function (bonus) {
     this.frameNumber += 1;
     this.rollNumber = 1;
-    this.bonus = bonus;
+    this.bonus += bonus;
     this.pinsLeft = 10;
   }
 };

@@ -1,6 +1,7 @@
+'use strict';
+
 function Game() {
   this.table = new ScoreTable();
-  //this.table._setNewFrame(0);
 }
 
 Game.prototype = {
@@ -13,4 +14,8 @@ Game.prototype = {
   _roll: function (pins) {
     return Math.floor(Math.random() * (1 + pins));
   },
+
+  getScoreTable: function() {
+    this.table.getScores();
+  }
 };

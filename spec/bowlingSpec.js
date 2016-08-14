@@ -74,12 +74,42 @@ describe('Bowling', function(){
   })
 
   describe('#strikeBonusPointsApply', function(){
-    it('applies strike bonus points to total score', function(){
+    it('Perfect game', function(){
       spyOn(Math, 'random').and.returnValue(0.9);
       for (var i = 0; i < 12; i++) {
         oneRoll();
       }
       expect(bowling.totalScore).toEqual(300)
+    })
+    it('multiple strikes in the beginning', function(){
+      spyOn(Math, 'random').and.returnValues(0.9, 0.9, 0.9, 0.9, 0.3, 0.3);
+      for (var i = 0; i < 6; i++) {
+        oneRoll();
+      }
+      expect(bowling.totalScore).toEqual(106)
+    })
+    it('no strikes in the final frame', function(){
+      spyOn(Math, 'random').and.returnValues(0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+        0.9, 0.9, 0.3, 0.3);
+      for (var i = 0; i < 11; i++) {
+        oneRoll();
+      }
+      expect(bowling.totalScore).toEqual(256)
+    })
+    it('One strike amongst non bonus frames', function(){
+      spyOn(Math, 'random').and.returnValues(0.3, 0.3, 0.9, 0.3, 0.3);
+      for (var i = 0; i < 5; i++) {
+        oneRoll();
+      }
+      expect(bowling.totalScore).toEqual(28)
+    })
+    it('Multiple strikes amongst non bonus frames', function(){
+      spyOn(Math, 'random').and.returnValues(0.3, 0.3, 0.9, 0.9, 0.9, 0.3, 0.3);
+      for (var i = 0; i < 7; i++) {
+        oneRoll();
+        console.log(bowling.latestRoll);
+      }
+      expect(bowling.totalScore).toEqual(82)
     })
   })
 

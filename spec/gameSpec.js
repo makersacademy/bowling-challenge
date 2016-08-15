@@ -51,4 +51,23 @@ describe('Bowling Game', function() {
     completeAllBowls(extraPins, extraBowls);
     expect(game.calculateScore()).toBe(28);
   });
+
+  it('calculates the score for a perfect game', function() {
+    bowls = 1 // the one bowl that made a strike
+    hitASpecial(bowls);
+    hitASpecial(bowls);
+    hitASpecial(bowls);
+    hitASpecial(bowls);
+    hitASpecial(bowls);
+    hitASpecial(bowls);
+    hitASpecial(bowls);
+    hitASpecial(bowls);
+    hitASpecial(bowls);
+    hitASpecial(bowls);
+    hitASpecial(bowls);
+    hitASpecial(bowls);
+    // completeAllBowls(extraPins, extraBowls);
+    expect(game.calculateScore()).toBe(300);
+  });
+
 });

@@ -9,10 +9,16 @@ I used the Math.random() function in Javascript for the purpose of the pins bein
 To view this game in all of it's glory:
 
 ```
-Fork this repo
+Clone this repo
 ```
 ```
 Open the index.html in your browser and follow the on screen game instructions
 ```
 
 Enjoy!!
+
+![screenshot_1](images/Screen Shot 2016-08-15 at 09.02.57.png)
+
+![screenshot_2](images/Screen Shot 2016-08-15 at 09.03.08.png)
+
+![screenshot_3](images/Screen Shot 2016-08-15 at 09.03.16.png)

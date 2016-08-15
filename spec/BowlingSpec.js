@@ -36,7 +36,7 @@ describe ('bowling game', function(){
       bowling.roll = function() { return 2; };
       bowling.getRoll();
       bowling.roll = function() { return 0;};
-    for ( var i = 0; i < 13; i++){
+    for ( var i = 0; i < 14; i++){
       bowling.getRoll();};
       bowling.getBonus();
     expect(bowling.getScore()).toEqual(33)
@@ -48,7 +48,7 @@ describe ('bowling game', function(){
       bowling.getRoll();
       bowling.getRoll();
       bowling.getRoll();
-    for ( var i = 0; i < 15; i++){
+    for ( var i = 0; i < 17; i++){
       bowling.roll = function() { return 0; };
       bowling.getRoll();};
       bowling.getBonus();
@@ -57,10 +57,18 @@ describe ('bowling game', function(){
 
   it ('plays the perfect game', function(){
     bowling.roll = function() { return 10; };
-    for ( var i = 0; i < 17 ;i++){
+    for ( var i = 0; i < 20; i++){
       bowling.getRoll();};
       bowling.getBonus();
       expect(bowling.getScore()).toEqual(300)
+  });
+
+  it ('plays the gutter game', function() {
+    bowling.roll = function() {return 0; };
+    for (var i = 0; i < 20; i++){
+      bowling.getRoll();};
+      bowling.getBonus();
+      expect(bowling.getScore()).toEqual(0)
   });
 
 

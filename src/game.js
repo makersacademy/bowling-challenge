@@ -16,12 +16,16 @@ Game.prototype.calculateScore = function () {
     // calculate score for a spare
     if ((totalBowls[attempt] + totalBowls[attempt + 1]) === 10) {
       score = score + totalBowls[attempt] + totalBowls[attempt + 1] + totalBowls[attempt + 2];
-    }
-    // calculate score for a 'one pin at a time'
+      attempt += 2;
+    } // calculate score for a strike
+    else if (totalBowls[attempt] === 10) {
+      score = score + totalBowls[attempt] + totalBowls[attempt + 1] + totalBowls[attempt + 2];
+      attempt ++;
+    } // calculate score for a 'one pin at a time'
     else {
       score += totalBowls[attempt] + totalBowls[attempt + 1];
+      attempt += 2;
     }
-    attempt += 2;
   }
   return score;
 };

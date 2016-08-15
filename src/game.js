@@ -47,6 +47,23 @@ Game.prototype.playGame = function() {
   };
 };
 
+Game.prototype.playTenthFrame = function() {
+  var number_two = (this.frameNumber - 2)
+  var spare = this.frameScore[number_two][0] + this.frameScore[number_two][1];
+  this.calculateFrameScore();
+  this.updateFrame();
+  if (this.frameScore[9][0] === this.STRIKE) {
+    this.calculateFrameScore();
+    this.updateFrame()
+    this.bonus()
+  } else if (spare === 10) {
+    this.calcluateFrameScore();
+    this.updateFrame();
+    this.bonus();
+  }
+  return;
+};
+
 Game.prototype.bonus = function() {
    var number_two = (this.frameNumber - 2)
    var number_one = (this.frameNumber - 1)
@@ -61,18 +78,4 @@ Game.prototype.bonus = function() {
   } else {
     return;
   }
-};
-
-Game.prototype.playTenthFrame = function() {
-  var number_two = (this.frameNumber - 2)
-  var spare = this.frameScore[number_two][0] + this.frameScore[number_two][1];
-  this.calculateFrameScore();
-  if (this.frameScore[9][0] === this.STRIKE) {
-    this.calculateFrameScore();
-    return;
-  } else if (spare === 10) {
-    this.calcluateFrameScore();
-    return;
-  }
-  return;
 };

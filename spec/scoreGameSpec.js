@@ -145,12 +145,20 @@ describe('ScoreGame:', function(){
     var scoreGame = new ScoreGame();
     it("Player receives 300 points when he/she rolls 12 strikes in the game.", function(){
       for (var i=1;i<=12;i++) {
-        console.log("i is:", i);
         scoreGame.getScore(10);
       }
       expect(scoreGame.game[10][1]).toEqual(300);
 
     });
   });
+  describe("Gutter Game:", function(){
+    var scoreGame = new ScoreGame();
+    it("A Gutter Game is when the player never hits a pin (20 zero scores).", function(){
+      for (var i=1;i<=20;i++) {
+        scoreGame.getScore(0);
+      }
+      expect(scoreGame.game[10][1]).toEqual(0);
 
+    });
+  });
 });

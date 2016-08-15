@@ -11,6 +11,7 @@ function Game() {
 
   this.p1 = new Person(15, 0); //create p1 instance.
   this.p1.y = this.height/2 - this.p1.height/2; //set p1's initial y position.
+
   this.pins =[];
   var pin1PosX = 400;
   var pin1PosY = 100-this.p1.height/2;
@@ -36,7 +37,7 @@ Game.prototype.clearCanvasAndDraw = function() {
 };
 
 Game.prototype.update = function() {
-  if (this.paused) return;
+
   if (this.keys.isPressed(40)) { // DOWN
       this.p1.y = Math.min(this.height - this.p1.height, this.p1.y + 4); //returns the smallest of the numbers. This is to make sure y position of p1 does not exceed the boundary of the canvas area.
   } else if (this.keys.isPressed(38)) { // UP
@@ -52,7 +53,7 @@ Game.prototype.update = function() {
       this.p1.throw(this.ball);
       this.p1.chance -=1;
     } else {
-      document.getElementById("message").innerHTML = "You used up 2 chances for this frame!";
+      // document.getElementById("message").innerHTML = "You used up 2 chances for this frame!";
     }
 
   }
@@ -70,14 +71,14 @@ Game.prototype.update = function() {
         this.ball.vy = 0;
     }
     if (this.ball.vx > 0) {
-      for (i=0;i<10;i++){
+      for (var i=0;i<10;i++){
         if(this.collisionCheck(this.ball, this.pins[i])) {
           this.pins[i].move();
         }
       }
     }
   }
-  for (i=0;i<10;i++){
+  for (var i=0;i<10;i++){
     for (var j=0;j<10;j++) {
       if (i !== j){
         if(this. collisionCheck(this.pins[i],this.pins[j])){
@@ -119,7 +120,9 @@ Person.prototype.draw = function(context)
 Person.prototype.throw = function(ball) {
   ball.x = this.x;
   ball.y = this.y+(this.height/2);
-  ball.vy = 0;
+  var vyRange = [-0.5, 0, 0.5];
+  var velocityY = vyRange[Math.floor(Math.random()* vyRange.length)];
+  ball.vy = velocityY;
   ball.vx = 7 - Math.abs(ball.vy);
   ball.isThrown = true;
 };
@@ -140,7 +143,7 @@ Pin.prototype.draw = function(p) {
 
 Pin.prototype.move = function() {
   this.randomVy = function() {
-    var vyRange = [-0.5, 0, 0.5];
+    var vyRange = [-1, -0.5, 0, 0.5, 1];
     var velocityY = vyRange[Math.floor(Math.random()* vyRange.length)];
     return velocityY;
   };
@@ -196,17 +199,9 @@ function KeyListener() {
       return this.pressedKeys[key] ? true : false;
   };
 
-  // KeyListener.prototype.addKeyPressListener = function(keyCode, callback)
-  // {
-  //     document.addEventListener("keypress", function(e) {
-  //         if (e.keyCode == keyCode)
-  //             callback(e);
-  //     });
-  // };
-
-
 // Initialize our game instance
 var game = new Game();
+var scoreGame = new ScoreGame();
 
 function MainLoop() {
     game.update();

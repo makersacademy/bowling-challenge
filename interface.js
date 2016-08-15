@@ -9,6 +9,9 @@ var game = new Game();
   });
 
   function updateDisplay() {
+      game.calculateScores();
+      console.log(game._finalScores);
+      $('#display_scores').text(game._finalScores.join());
       if (game._frames.length <= 10)
         $('#game_status').text(game._frames.length + ' frames played');
       else

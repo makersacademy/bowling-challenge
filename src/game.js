@@ -32,6 +32,7 @@ Game.prototype.frameComplete = function(frame) {
 }
 
 Game.prototype.calculateScores = function() {
+  this._finalScores = [];
   var i;
   for (i = 0; i < this._frames.length; i++) {
     this._finalScores.push(this.FrameTotal(

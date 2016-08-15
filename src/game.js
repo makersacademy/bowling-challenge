@@ -3,6 +3,7 @@ function Game() {
   this._frame = [];
   this._finalScores = [];
   this.over = false;
+  this.MAXIMUM_SCORE = 10;
 }
 
 Game.prototype.bowl = function(score){
@@ -11,24 +12,24 @@ Game.prototype.bowl = function(score){
       this.frameComplete(this._frame)}
 };
 
-Game.prototype.frameComplete = function(frame) {
-  this._frames.push(this._frame);
-  this._frame = [];
-  this.isGameOver();
-}
-
 Game.prototype.isSecondBall = function(frame){
   return frame.length > 1;
 };
 
 Game.prototype.isStrike = function(frame){
-  return frame[0] === 10;
+  return frame[0] === this.MAXIMUM_SCORE;
 };
 
 Game.prototype.isSpare = function(frame) {
   var score = frame.reduce(function sum(total, num) {return total + num;});
-  return score === 10 && frame.length === 2;
+  return score === this.MAXIMUM_SCORE;
 };
+
+Game.prototype.frameComplete = function(frame) {
+  this._frames.push(this._frame);
+  this._frame = [];
+  this.isGameOver();
+}
 
 Game.prototype.calculateScores = function() {
   var i;
@@ -42,16 +43,15 @@ Game.prototype.FrameTotal = function (frame, nextFrame, secondNextFrame) {
   if (typeof frame === 'undefined') {return 0;}
 
   if (this.isStrike(frame)) {
-    return 10 + this.FrameTotal(nextFrame, secondNextFrame);
+    return this.MAXIMUM_SCORE + this.FrameTotal(nextFrame, secondNextFrame);
   }
   else if (this.isSpare(frame)) {
-    return 10 + nextFrame[0];
+    return this.MAXIMUM_SCORE + nextFrame[0];
   }
   else {
     return frame.reduce(function sum(total, num) {return total + num;});
   }
 };
-
 
 Game.prototype.isGameOver = function(){
   if (this._frames.length >= 10)

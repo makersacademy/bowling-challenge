@@ -74,7 +74,7 @@ describe('ScoreGame:', function(){
     var scoreGame = new ScoreGame();
     it("If player knocks down all 10 pins (10 scores) at his/her first try in a frame, he/she is awarded 'strike'.", function(){
       scoreGame.getScore(10);
-      expect(scoreGame.bonus).toEqual('strike');
+      expect(scoreGame.strikeFrames[1]).toEqual(true);
     });
     it("After a strike in the current frame, there is no more pin left in the frame, so player rolls in the next frame.", function(){
       scoreGame.getScore(4);
@@ -105,7 +105,6 @@ describe('ScoreGame:', function(){
       scoreGame.getScore(4);
       console.log(scoreGame.game[10][0][0]);
       console.log(scoreGame.game[10][0][1]);
-      console.log(scoreGame.game[10][1]);
       expect(scoreGame.game[10][0][0]).toEqual(3);
       expect(scoreGame.game[10][0][1]).toEqual(4);
       expect(scoreGame.getScore(5)).toEqual("Your game is finished.");

@@ -4,9 +4,9 @@ describe('Bowling scorer', function() {
 
   var game;
 
-  var rollMany = function(points, rolls) {
+  var rollMany = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
-      game.roll(points);
+      game.roll(pins);
     }
   };
 

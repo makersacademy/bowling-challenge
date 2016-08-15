@@ -29,11 +29,11 @@ BowlingScorer.prototype.score = function() {
   return result;
 
   function isStrike() {
-    return game.rolls[frameIndex] == 10;
+    return game.rolls[frameIndex] === 10;
   }
 
   function isSpare() {
-    return game.rolls[frameIndex] + game.rolls[frameIndex + 1] == 10;
+    return game.rolls[frameIndex] + game.rolls[frameIndex + 1] === 10;
   }
 
   function getStrikeScore() {

@@ -2,7 +2,8 @@
 
 function Game(){
   this.frameStatus     = 'start frame';
-  this.pinsStanding    = 10;
+  this.pinsStanding    =  0;
+  this.PINS_DEFAULT    = 10;
   this.pinsKnockedDown =  0;
   this.playerScore     =  0;
   this.playerBonus     =  0;
@@ -47,6 +48,7 @@ Game.prototype.startFrame = function () {
   if (this.getCurrentFrameStatus() === 'unavailable') {
     return 'cannot start frame: already playing a frame or game is finished';
   }
+  this._resetPins();
   this._updateCurrentFrame();
   this._deductFramesLeft();
   this._resetRollsLeft();
@@ -102,6 +104,10 @@ Game.prototype._resetFrameStatus = function () {
 
 Game.prototype._updatePinsStanding = function () {
   this.pinsStanding -= this.pinsKnockedDown
+};
+
+Game.prototype._resetPins = function () {
+  this.pinsStanding = this.PINS_DEFAULT
 };
 
 Game.prototype._randomNumber = function () {

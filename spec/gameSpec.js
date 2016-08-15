@@ -17,9 +17,15 @@ describe('Game:', function(){
 
   beforeEach(function(){
     game = new Game();
+    spyOn(game, '_randomNumber').and.returnValue(3);
   });
 
-  it('can update pins standing', function(){
+  it('starting next frame resets the pins standing to 10', function(){
+    game.startFrame();
+    expect(game.getCurrentPinsStanding()).toEqual(10)
+  });
+
+  it('removes knocked down pins when ball is rolled', function(){
     game.startFrame();
     game.rollBall();
     expect(game.getCurrentPinsStanding()).toEqual(7)
@@ -28,23 +34,21 @@ describe('Game:', function(){
   it('can update score', function(){
     game.startFrame();
     game.rollBall();
-    spyOn(game, 'pinsKnockedDown').and.returnValue(3);
     expect(game.getCurrentPlayerScore()).toEqual(3);
   });
 
-  it('returns 3', function(){
-    spyOn(game, '_randomNumber').and.returnValue(3);
+  it('#_randomNumber returns 3', function(){
     expect(game._randomNumber()).toEqual(3);
   });
 
-
   it('pins to knock down', function(){
-    game.knockDownPins();
-    expect(game.getCurrentPinsStanding()).toEqual(3);
+    game.startFrame();
+    game.rollBall();
+    expect(game.getCurrentPinsStanding()).toEqual(7);
   });
 
-  it('starts with 10 pins', function(){
-    expect(game.getCurrentPinsStanding()).toEqual(10);
+  it('starts with no pins', function(){
+    expect(game.getCurrentPinsStanding()).toEqual(0);
   });
 
   it('starts with pinsKnockedDown at 0', function(){
@@ -78,7 +82,6 @@ describe('Game:', function(){
   describe('Player', function(){
 
   it('rolls a ball which knocks down some pins', function(){
-    spyOn(game, 'getCurrentpinsKnockedDown').and.returnValue(3);
     game.startFrame();
     game.rollBall();
     expect(game.getCurrentPinsStanding()).toEqual(7)

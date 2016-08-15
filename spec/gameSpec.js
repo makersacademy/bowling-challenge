@@ -70,4 +70,11 @@ describe('Bowling Game', function() {
     expect(game.calculateScore()).toBe(300);
   });
 
+  it('calculates the score for a gutter', function() {
+    bowls = 20;
+    pins = 0;
+    completeAllBowls(pins, bowls);
+    expect(game.calculateScore()).toBe(0);
+  });
+
 });

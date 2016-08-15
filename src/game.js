@@ -55,13 +55,13 @@ Game.prototype.startFrame = function () {
 
 Game.prototype.rollBall = function () {
   if (this.getCurrentRollsLeft() === 2) {
-    this.pinsKnockedDown = _randomNumber();
+    this.knockDownPins();
     this._deductRollsLeft();
     this._updateScore();
     this._updatePinsStanding();
   }
   else if (this.getCurrentRollsLeft() === 1) {
-    this.pinsKnockedDown = _randomNumber();
+    this.knockDownPins();
     this._deductRollsLeft();
     this._updateScore();
     this._resetFrameStatus();
@@ -70,6 +70,10 @@ Game.prototype.rollBall = function () {
   else {
     return 'no balls available, start next frame';
   }
+};
+
+Game.prototype.knockDownPins = function () {
+  this.pinsKnockedDown = this._randomNumber();
 };
 
 Game.prototype._updateScore = function () {
@@ -100,6 +104,9 @@ Game.prototype._updatePinsStanding = function () {
   this.pinsStanding -= this.pinsKnockedDown
 };
 
-function _randomNumber() {
-  return Math.floor(Math.random() * 11);
-}
+Game.prototype._randomNumber = function () {
+  return Math.floor(Math.random() * this.pinsStanding);
+};
+// function _randomNumber() {
+//   return Math.floor(Math.random() * 11);
+// }

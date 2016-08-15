@@ -32,6 +32,16 @@ describe('Game:', function(){
     expect(game.getCurrentPlayerScore()).toEqual(3);
   });
 
+  it('returns 3', function(){
+    spyOn(game, '_randomNumber').and.returnValue(3);
+    expect(game._randomNumber()).toEqual(3);
+  });
+
+
+  it('pins to knock down', function(){
+    game.knockDownPins();
+    expect(game.getCurrentPinsStanding()).toEqual(3);
+  });
 
   it('starts with 10 pins', function(){
     expect(game.getCurrentPinsStanding()).toEqual(10);
@@ -52,8 +62,6 @@ describe('Game:', function(){
       expect(game.getCurrentRollsLeft()).toEqual(0);
     });
   });
-
-
 
   describe('framesLeft', function(){
     it('start with 10', function(){
@@ -98,7 +106,7 @@ describe('Game:', function(){
 
       it('if frame status is "ready to play"', function(){
         game.startFrame();
-        expect(game.getCurrentFramesLeft()).toEqual(9)
+        expect(game.getCurrentFramesLeft()).toEqual(9);
         expect(game.getCurrentRollsLeft()).toEqual(2);
         expect(game.getCurrentFramesLeft()).toEqual(9);
         expect(game.getCurrentFrame()).toEqual(1);
@@ -127,7 +135,7 @@ describe('Game:', function(){
     describe('cannot roll a ball', function(){
       it('if they have not started a frame', function(){
         game.rollBall();
-        expect(game.rollBall()).toContain('no balls available')
+        expect(game.rollBall()).toContain('no balls available');
       });
 
       it('if there are no balls left to roll', function(){

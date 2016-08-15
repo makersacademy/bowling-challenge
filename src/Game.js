@@ -29,7 +29,7 @@ Game.prototype.getGameScore = function() {
 };
 
 Game.prototype.addFrame = function(frame) {
-  this.frames.push(frame.frameScore);
+  this.frames.push(frame.getRolls());
   if (frame.isStrike() === true) {
     this.strikeBonus = true;
   } else {
@@ -49,7 +49,7 @@ Game.prototype.addBonusPrevious = function(frame) {
   this.frames[previous] += frame.getBonusScore();
 };
 
-Game.prototype.start = function() {
-  var frame1;
-  frame1 = new Frame;
-};
+// Game.prototype.start = function() {
+//   var frame1;
+//   frame1 = new Frame;
+// };

@@ -10,15 +10,14 @@ describe('Frame', function() {
     // game = jasmine.createSpy('game');
   });
 
-
   describe('At the start of each frame', function() {
 
-    it('has a default score of zero', function() {
-      expect(frame.getFrameScore()).toEqual(0);
-    });
+    // it('has a default score of zero', function() {
+    //   expect(frame.getFrameScore()).toEqual(0);
+    // });
 
     it('has a roll count of zero', function() {
-      expect(frame.getRollCounter()).toEqual(0);
+      expect(frame.getRollCount()).toEqual(0);
     });
 
     it('has a starting pin count of 10', function() {
@@ -34,13 +33,13 @@ describe('Frame', function() {
 
     it('can add the pins knocked down to the roll score', function() {
       frame.roll(2);
-      expect(frame.rollScore).toEqual(2);
+      expect(frame.rolls).toEqual([2]);
     });
 
     it('knows how many rolls there have been', function() {
       frame.roll(2);
-      frame.roll(2);
-      expect(frame.getRollCounter()).toEqual(2);
+      // frame.roll(2);
+      expect(frame.getRollCount()).toEqual(1);
     });
 
     it('rejects a number of 10 or more for each roll', function() {
@@ -88,19 +87,19 @@ describe('Frame', function() {
     });
   });
 
-  describe('Framescore', function() {
-
-    it('can add the roll score to the frame score for the first roll', function() {
-      frame.roll(2);
-      expect(frame.getFrameScore()).toEqual(2);
-    });
-
-    it('can add the roll score to the frame score for the second roll', function() {
-      frame.roll(2);
-      frame.roll(2);
-      expect(frame.getFrameScore()).toEqual(4);
-    });
-  });
+  // describe('Framescore', function() {
+  //
+  //   it('can add the roll score to the frame score for the first roll', function() {
+  //     frame.roll(2);
+  //     expect(frame.getFrameScore()).toEqual(2);
+  //   });
+  //
+  //   it('can add the roll score to the frame score for the second roll', function() {
+  //     frame.roll(2);
+  //     frame.roll(2);
+  //     expect(frame.getFrameScore()).toEqual(4);
+  //   });
+  // });
 
   describe('When a frame is complete', function() {
     it('knows a normal frame is complete after two rolls', function() {

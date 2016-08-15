@@ -217,7 +217,7 @@ BowlingGame.prototype.currentMove = function(pins) {
 };
 ```
 
-## Duck Punch carefully
+## Monkey Patch carefully
 
 If you are adding new function to existing JavaScript objects then do check you are not overwriting an existing function.
 

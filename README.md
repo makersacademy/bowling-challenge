@@ -40,4 +40,4 @@ Instructions
 * to start please fork this repo;
 * to check current passing tests, please open file SpecRunner.html in your browser;
 * UI is not yet implemented;
-* totalScore method does not work with strikes and spres (which are separate methods);
+* totalScore method does not work with strikes and spares (which are separate methods);

@@ -69,9 +69,10 @@ ScoreGame.prototype.getScore = function(score) {
       if (this.isUndefined(score)) {
         score = Math.floor(Math.random()*(11-try1));
       }
-      // else if (this.isUndefined(score) && this.bonus === "TFStrike"){
-      //   score = Math.floor(Math.random()*11);
-      // }
+      if (this.isUndefined(score) && this.frameNth === 10 && try1 === 10) {
+        score = Math.floor(Math.random()*11);
+      }
+
       this.game[this.frameNth][0][this.tryNth-1] = score;
       var try2 = this.game[this.frameNth][0][this.tryNth-1];
       console.log("try2:", try2);
@@ -81,15 +82,6 @@ ScoreGame.prototype.getScore = function(score) {
                            score;
         this.game[this.frameNth-1][1]= this.totalScore;
       }
-      // if (this.bonus === "strike") {
-      //   this.strikeSum.push(score);
-      //   if (this.strikeSum.length === 2) {
-      //     this.totalScore += 10 + this.strikeSum.reduce(function(a,b){return a+b});;
-      //     this.game[this.strikeFrame][1] = this.totalScore;
-      //     console.log("previous frameTotal:",this.game[this.strikeFrame][1]);
-      //     this.bonus = "";
-      //   }
-      // }
 
       if (try1 < 10 && (try1+try2)===10) {
         this.bonus = "spare";
@@ -103,6 +95,8 @@ ScoreGame.prototype.getScore = function(score) {
           this.moveToNextFrame();
         }
 
+      } else if (this.frameNth === 10 && try1 === 10) {
+        this.moveToNextTry();
       } else {
         this.totalScore += try1 + try2;
         this.game[this.frameNth][1] = this.totalScore;

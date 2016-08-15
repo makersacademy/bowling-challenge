@@ -30,17 +30,6 @@ describe('Game', function(){
     });
   });
 
-  // describe('play game', function(){
-  //   beforeEach(function(){
-  //     for(var i = 0 ; i <= 11 ; i++) {
-  //       game.playGame();
-  //     };
-  //   });
-  //   it('regular game is 10 frames', function(){
-  //     expect(game.playGame()).toEqual('Game Finished')
-  //   });
-  // });
-
   describe('strike', function() {
     beforeEach(function(){
       spyOn(Math, 'floor').and.returnValue(10);

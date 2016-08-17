@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Scope+One" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="lib/css/main.css" />
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="col-2">
+        <br />
+      </div>
+      <div class="col-8">
+        <h1>Bowling Challenge</h1>
+        <table>
+          <tr>
+            <td id="tab_name">Player Name</td>
+            <td colspan="2" class="head">1</td>
+            <td colspan="2" class="head">2</td>
+            <td colspan="2" class="head">3</td>
+            <td colspan="2" class="head">4</td>
+            <td colspan="2" class="head">5</td>
+            <td colspan="2" class="head">6</td>
+            <td colspan="2" class="head">7</td>
+            <td colspan="2" class="head">8</td>
+            <td colspan="2" class="head">9</td>
+            <td colspan="3" width="11%">10</td>
+            <td id="tab_total">Total</td>
+          </tr>
+          <tr>
+            <td rowspan="2" id="player-name"></td>
+            <td id="1a"></td>
+            <td id="1b"></td>
+            <td id="2a"></td>
+            <td id="2b"></td>
+            <td id="3a"></td>
+            <td id="3b"></td>
+            <td id="4a"></td>
+            <td id="4b"></td>
+            <td id="5a"></td>
+            <td id="5b"></td>
+            <td id="6a"></td>
+            <td id="6b"></td>
+            <td id="7a"></td>
+            <td id="7b"></td>
+            <td id="8a"></td>
+            <td id="8b"></td>
+            <td id="9a"></td>
+            <td id="9b"></td>
+            <td id="10a"></td>
+            <td id="10b"></td>
+            <td id="10c"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="2" id="1s"></td>
+            <td colspan="2" id="2s"></td>
+            <td colspan="2" id="3s"></td>
+            <td colspan="2" id="4s"></td>
+            <td colspan="2" id="5s"></td>
+            <td colspan="2" id="6s"></td>
+            <td colspan="2" id="7s"></td>
+            <td colspan="2" id="8s"></td>
+            <td colspan="2" id="9s"></td>
+            <td colspan="3" id="10s"></td>
+            <td id="total"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-2">
+        <br />
+      </div>
+      <div class="col-3">
+        <br />
+      </div>
+      <div class="col-6">
+        <form id="enter-name">
+          <input type="text" name="name" id="name-entry" placeholder="Enter players name"/>
+          <button type="submit" class="button_styled">Add Name</button>
+        </form>
+        <button type="submit" name="roll" class="button_styled">Roll!</button>
+      </div>
+      <div class="col-3">
+        <br />
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="src/game.js"></script>
+    <script src="lib/js/interface.js"></script>
+  </body>
+
+</html>

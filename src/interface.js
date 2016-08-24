@@ -3,6 +3,7 @@ var game = new Game();
 $(document).ready(function(){
 
   $("#start").click(function(){
+    $("#status").text("Game started!")
     game.begin();
   })
 
@@ -57,6 +58,7 @@ $(document).ready(function(){
   })
 
   $("#get_total").click(function(){
+    $("#status").text("Game ended!")
     $("#total").text(game.score.getGameTotal());
   })
 

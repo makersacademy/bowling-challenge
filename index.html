@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link></link>
+  <title> Bowling Scorecard! </title>
+</head>
+
+<body>
+
+  <h1> Bowling </h1>
+
+  <h2> Welcome. Please click start below to begin a game </h2>
+
+  <button id="start">Start</button>
+
+  <div class="scoreboard">
+    <table border="1">
+      <colgroup>
+      <col style="width: 66px">
+      <col style="width: 22px">
+      <col style="width: 22px">
+      <col style="width: 22px">
+      <col style="width: 22px">
+      <col style="width: 22px">
+      <col style="width: 21px">
+      <col style="width: 21px">
+      <col style="width: 21px">
+      <col style="width: 21px">
+      <col style="width: 21px">
+      <col style="width: 21px">
+      <col style="width: 21px">
+      <col style="width: 21px">
+      <col style="width: 21px">
+      <col style="width: 21px">
+      <col style="width: 21px">
+      <col style="width: 21px">
+      <col style="width: 21px">
+      <col style="width: 21px">
+      <col style="width: 21px">
+      </colgroup>
+      <tr>
+        <th></th>
+        <th><button id="1">></button></th>
+        <th></th>
+        <th><button id="2">></button></th>
+        <th></th>
+        <th><button id="3">></button></th>
+        <th></th>
+        <th><button id="4">></button></th>
+        <th></th>
+        <th><button id="5">></button></th>
+        <th></th>
+        <th><button id="6">></button></th>
+        <th></th>
+        <th><button id="7">></button></th>
+        <th></th>
+        <th><button id="8">></button></th>
+        <th></th>
+        <th><button id="9">></button></th>
+        <th></th>
+        <th><button id="10">></button></th>
+        <th></th>
+        <th><button id="get_total">*</button></th>
+      </tr>
+      <tr>
+        <th>Frame</th>
+        <th>1</th>
+        <th></th>
+        <th>2</th>
+        <th></th>
+        <th>3</th>
+        <th></th>
+        <th>4</th>
+        <th></th>
+        <th>5</th>
+        <th></th>
+        <th>6</th>
+        <th></th>
+        <th>7</th>
+        <th></th>
+        <th>8</th>
+        <th></th>
+        <th>9</th>
+        <th></th>
+        <th>10</th>
+        <th></th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td>Score</td>
+        <td id="1a"></td>
+        <td id="1b"></td>
+        <td id="2a"></td>
+        <td id="2b"></td>
+        <td id="3a"></td>
+        <td id="3b"></td>
+        <td id="4a"></td>
+        <td id="4b"></td>
+        <td id="5a"></td>
+        <td id="5b"></td>
+        <td id="6a"></td>
+        <td id="6b"></td>
+        <td id="7a"></td>
+        <td id="7b"></td>
+        <td id="8a"></td>
+        <td id="8b"></td>
+        <td id="9a"></td>
+        <td id="9b"></td>
+        <td id="10a"></td>
+        <td id="10b"></td>
+        <td id="total"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="status" >
+    <h3 id="status"></h3>
+    <ul>
+      <li>Current frame:<span id="framenumber"></li>
+      <li>Current roll:<span id="currentroll"></li>
+    </ul>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="src/Game.js"></script>
+  <script src="src/Frame.js"></script>
+  <script src="src/Score.js"></script>
+  <script src="src/interface.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,233 @@
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #FFF;
+  background-color: #00BD9C;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h1  {
+  font-weight: lighter;
+  font-size: 50px;
+}
+
+h2  {
+  font-weight: normal;
+  padding: 10px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.3s;
+}
+
+#scoreTitle {
+  transition: all 0.3s;
+}
+
+#total {
+  transition: all 0.3s;
+}
+
+
+#main_wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 985px;
+  height: 150px;
+}
+
+.round  {
+  height: 100px;
+  width: 70px;
+  background-color: #FFF;
+  padding: 5px;
+  margin: 25px 5px 25px 5px;
+  float: left;
+  transition: all 0.3s;
+}
+
+.roundActive  {
+  height: 140px;
+  width: 98px;
+  background-color: #FFF;
+  padding: 5px;
+  margin: 5px;
+  float: left;
+  transition: all 0.3s;
+}
+
+.roundTen  {
+  height: 100px;
+  width: 105px;
+  background-color: #FFF;
+  padding: 5px;
+  margin: 25px 5px 25px 5px;
+  float: left;
+  transition: all 0.3s;
+}
+
+#resetDiv  {
+  width: 100px;
+  overflow: hidden;
+  transition: all 0.3s;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.resetHidden  {
+  height: 0px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.resetVisible  {
+  height: 40px;
+}
+
+.roundTenActive  {
+  height: 140px;
+  width: 142px;
+  background-color: #FFF;
+  padding: 5px;
+  margin: 5px;
+  float: left;
+  transition: all 0.3s;
+}
+
+.r10ball1  {
+  height: 33%;
+  width: 33%;
+  background-color: #ECF0F1;
+  float: left;
+  color: #33485F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.r10ball2  {
+  height: 33%;
+  width: 33%;
+  background-color: #DAE2E4;
+  float: left;
+  color: #33485F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.r10ball3  {
+  height: 33%;
+  width: 33%;
+  background-color: #DAE2E4;
+  float: left;
+  color: #33485F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roundNumber  {
+  height: 33%;
+  width: 100%;
+  float: left;
+  color: #00BE9C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ball1  {
+  height: 33%;
+  width: 50%;
+  background-color: #ECF0F1;
+  float: left;
+  color: #33485F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ball2  {
+  height: 33%;
+  width: 50%;
+  background-color: #DAE2E4;
+  float: left;
+  color: #33485F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roundScore  {
+  height: 33%;
+  width: 100%;
+  background-color: #ECF0F1;
+  float: left;
+  color: #D55400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#buttonWrapper  {
+  background-color: #16A085;
+  width: 548px;
+  padding: 10px;
+  height: 70px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#throwScore {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+button  {
+  height: 40px;
+  width: 40px;
+  background-color: #ECF0F1;
+  transition: all 0.3s;
+  margin: 3px;
+  border: 0px;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #00BD9C;
+  font-size: 16px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+button:focus  {
+  outline: none;
+}
+
+button:hover  {
+  color: #D35400;
+  background-color: #FFF;
+}
+
+.visibleScore  {
+  opacity: 1;
+}
+
+.hiddenScore  {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+a  {
+  display: block;
+  background-color: #E67E22;
+  width: 100px;
+  height: 32px;
+  padding-top: 8px;
+  text-decoration: none;
+  transition: all 0.3s;
+  color: #FFF;
+}
+
+a:hover{
+  background-color: #D35400;
+}

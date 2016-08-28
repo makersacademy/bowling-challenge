@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling Calculator</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/styles/style.css">
+
+    <script src="js/lib/jquery-3.0.0.min.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/round.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/animations.js"></script>
+
+
+  </head>
+
+  <body>
+    <h1>Bowling Score Calculator</h1>
+    <h2><span id="scoreTitle">current score: </span><span id="total">0</span></h2>
+
+    <div id="main_wrapper">
+
+      <% count = 0 %>
+      <% 9.times do %>
+        <% count += 1 %>
+        <div id="round<%= count %>" class="round">
+          <div class="roundNumber"><%= count %></div>
+          <div id="ball1_<%= count %>" class="ball1"></div>
+          <div id="ball2_<%= count %>" class="ball2"></div>
+          <div id="roundScore<%= count %>" class="roundScore"></div>
+        </div>
+      <% end %>
+      <div id="round10" class="roundTen">
+        <div class="roundNumber">10</div>
+        <div id="ball1_10" class="r10ball1"></div>
+        <div id="ball2_10" class="r10ball2"></div>
+        <div id="ball3_10" class="r10ball2"></div>
+        <div id="roundScore10" class="roundScore"></div>
+      </div>
+
+
+    </div>
+    <br>
+    <div id="buttonWrapper">
+      <div id="throwScore">bowl score:</div>
+      <% count = -1 %>
+      <% 11.times do %>
+        <% count += 1 %>
+        <button id="score<%= count %>" class="visibleScore"><%= count %></button>
+      <% end %>
+    </div>
+    <br>
+    <div id="resetDiv" class="resetHidden">
+      <a href="/">reset</a>
+    </div>
+
+  </body>
+
+</html>

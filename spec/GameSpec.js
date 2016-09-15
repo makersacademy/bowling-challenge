@@ -10,16 +10,8 @@ describe("Game", function() {
 
   describe("At the start the game ...", function() {
 
-    it("should have 10 pins", function() {
-      expect(game.showPins()).toEqual(10);
-    });
-
     it("should have 10 frames", function() {
       expect(game.showFramesToPlay()).toEqual(10)
-    });
-
-    it("should have 2 rolls remaining", function() {
-      expect(game.showRollsRemaining()).toEqual(2);
     });
 
     it("should have a score of 0", function() {
@@ -27,5 +19,14 @@ describe("Game", function() {
     });
 
   });
+
+  describe("Playing two turns ... ", function() {
+
+  it("should update the score and reduce the frames to play by 1", function () {
+    helperModule.playGame(2, game);
+    expect(game.showScore()).toEqual(6);
+  });
+
+});
 
 });

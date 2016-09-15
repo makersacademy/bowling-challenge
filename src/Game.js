@@ -24,5 +24,4 @@ Game.prototype = {
     return this._score;
   }
 
-
 }

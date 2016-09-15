@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel='stylesheet' type='text/css' href="style.css" />
+    <title>Bowling Scoresheet</title>
+  </head>
+  <body>
+    <script src="src/jquery-3.1.0.js"></script>
+    <script src="src/bowlingGame.js"></script>
+    <script src="interface.js"></script>
+    <div class="container-title">
+      <div class="header">
+        <h1>Bowling Scoresheet</h1>
+        <br />
+      </div>
+      <h2>Frame: <span id="frame-number">1</span></h2>
+      <h2>Score: <span id="total-score">0</span></h2>
+    </div>
+    <div class="container-frames">
+
+    </div>
+    <div class="score-input">
+      <form>
+        First Bowl:
+        <input id="bowl1" type="text" placeholder="0" />
+        <br />
+        Second Bowl:
+        <input id="bowl2" type="text" placeholder="0"/>
+        <br />
+        Third Bowl:
+        <input id="bowl3" type="text" placeholder="0" />
+        (Optional for 10th frame only)
+        <br />
+        <input type="button" id="frame-bowls" value="Submit Frame Result" />
+        <br />
+      </form>
+    </div>
+  </body>
+</html>

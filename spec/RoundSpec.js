@@ -71,4 +71,18 @@ describe("Round", function() {
 
   });
 
+  describe("After a strike ... ", function() {
+
+    beforeEach(function(){
+        firstRoll.showPinsHit.and.returnValue(10);
+      });
+
+    it("should update the pinsLeft", function () {
+      round.roll(firstRoll);
+      expect(round.showPinsLeft()).toEqual(0);
+      expect(round.showStrike()).toEqual(true);
+    });
+
+  });
+
 });

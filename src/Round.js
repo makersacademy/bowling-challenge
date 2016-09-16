@@ -30,8 +30,7 @@ Round.prototype = {
   roll: function (roll) {
     var newRoll = typeof roll !== 'undefined' ? roll : new Roll(this._pinsLeft);
     this._rolls.push(newRoll);
-    console.log("i'm 2");
-    console.log(newRoll.showPinsHit())
-    this._pinsLeft -= newRoll.showPinsHit()
+    this._pinsLeft -= newRoll.showPinsHit();
+    if (newRoll.showPinsHit() === 10) { this._strike = true }
   }
 }

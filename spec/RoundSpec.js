@@ -85,4 +85,20 @@ describe("Round", function() {
 
   });
 
+  describe("After a spare ... ", function() {
+
+    beforeEach(function(){
+        firstRoll.showPinsHit.and.returnValue(5);
+        secondRoll.showPinsHit.and.returnValue(5);
+      });
+
+    it("should update the pinsLeft", function () {
+      round.roll(firstRoll);
+      round.roll(secondRoll);
+      expect(round.showPinsLeft()).toEqual(0);
+      expect(round.showSpare()).toEqual(true);
+    });
+
+  });
+
 });

@@ -31,6 +31,8 @@ Round.prototype = {
     var newRoll = typeof roll !== 'undefined' ? roll : new Roll(this._pinsLeft);
     this._rolls.push(newRoll);
     this._pinsLeft -= newRoll.showPinsHit();
-    if (newRoll.showPinsHit() === 10) { this._strike = true }
+    if (newRoll.showPinsHit() === 10) { this._strike = true };
+    if ((this._rolls[0].showPinsHit() + newRoll.showPinsHit()) === 10) { this._spare = true };
   }
+
 }

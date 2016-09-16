@@ -2,34 +2,37 @@
 
 'use-strict';
 
-function Frame() {
+function Round() {
   this._pinsLeft = 10;
-  this._rollsLeft = 2;
-  this._score = 0;
-  this._bonus = false;
+  this._rolls = [];
+  this._spare = false;
+  this._strike = false;
 }
 
-Frame.prototype = {
+Round.prototype = {
 
   showPinsLeft: function() {
     return this._pinsLeft;
   },
 
-  showRollsLeft: function() {
-    return this._rollsLeft;
+  showRolls: function() {
+    return this._rolls;
   },
 
-  showScore: function() {
-    return this._score;
+  showSpare: function() {
+    return this._spare;
   },
 
-  showBonus: function() {
-    return this._bonus;
+  showStrike: function() {
+    return this._strike;
   },
 
-  roll: function() {
-    this._rollsLeft --;
-    this._pinsLeft = roll.score();
+  roll: function (roll) {
+    var newRoll = typeof roll !== 'undefined' ? roll : new Roll(this._pinsLeft);
+    this._rolls.push(newRoll);
+    this._pinsLeft -= newRoll.showPinsHit()
   }
+
+
 
 }

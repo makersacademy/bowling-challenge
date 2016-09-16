@@ -1,45 +1,45 @@
 'use-strict';
 
-describe("Frame", function() {
+describe("Round", function() {
 
-  var frame;
+  var round;
 
   beforeEach(function() {
-    frame = new Frame();
+    round = new Round();
   });
 
-  describe("At the start the frame ...", function() {
+  describe("At the start the round ...", function() {
 
     it("should have 10 pins", function() {
-      expect(frame.showPinsLeft()).toEqual(10);
+      expect(round.showPinsLeft()).toEqual(10);
     });
 
-    it("should have 2 rolls remaining", function() {
-      expect(frame.showRollsLeft()).toEqual(2);
+    it("should have 0 rolls in the rolls array", function() {
+      expect(round.showRolls()).toEqual([]);
     });
 
-    it("should have a score of 0", function() {
-      expect(frame.showScore()).toEqual(0);
+    it("should have a spare set to false", function() {
+      expect(round.showSpare()).toEqual(false);
     });
 
-    it("should have the bonus set to false", function() {
-      expect(frame.showBonus()).toEqual(false);
+    xit("should have the strike set to false", function() {
+      expect(round.showStrike()).toEqual(false);
     });
 
   });
 
-  describe("After one roll ... ", function() {
+  describe("After one 'regular' roll ... ", function() {
 
-    it("should reduce the rollsLeft by 1", function(){
-      frame.roll();
-      expect(frame.showRollsLeft()).toEqual(1);
+    it("rolls should have 1 object", function(){
+      round.roll();
+      expect(round._rolls.length).toEqual(1);
     });
 
     it("should update the pinsLeft", function () {
-      frame.roll();
-      expect(frame.showPinsLeft()).toEqual(4);
+      round.roll();
+      expect(round.showPinsLeft()).toEqual(4);
     });
 
-  })
+  });
 
 });

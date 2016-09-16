@@ -3,9 +3,13 @@
 describe("Round", function() {
 
   var round;
+  var firstRoll;
+  var secondRoll;
 
   beforeEach(function() {
     round = new Round();
+    firstRoll = jasmine.createSpyObj("firstRoll", ['showPinsHit']);
+    secondRoll = jasmine.createSpyObj("secondRoll", ['showPinsHit']);
   });
 
   describe("At the start the round ...", function() {
@@ -22,7 +26,7 @@ describe("Round", function() {
       expect(round.showSpare()).toEqual(false);
     });
 
-    xit("should have the strike set to false", function() {
+    it("should have the strike set to false", function() {
       expect(round.showStrike()).toEqual(false);
     });
 
@@ -30,14 +34,39 @@ describe("Round", function() {
 
   describe("After one 'regular' roll ... ", function() {
 
+    beforeEach(function(){
+        firstRoll.showPinsHit.and.returnValue(2);
+      });
+
     it("rolls should have 1 object", function(){
       round.roll();
       expect(round._rolls.length).toEqual(1);
     });
 
     it("should update the pinsLeft", function () {
-      round.roll();
-      expect(round.showPinsLeft()).toEqual(4);
+      round.roll(firstRoll);
+      expect(round.showPinsLeft()).toEqual(8);
+    });
+
+  });
+
+  describe("After two 'regular' rolls ... ", function() {
+
+    beforeEach(function(){
+        firstRoll.showPinsHit.and.returnValue(2);
+        secondRoll.showPinsHit.and.returnValue(5);
+      });
+
+    it("rolls should have 2 objects", function(){
+      round.roll(firstRoll);
+      round.roll(secondRoll);
+      expect(round._rolls.length).toEqual(2);
+    });
+
+    it("should update the pinsLeft", function () {
+      round.roll(firstRoll);
+      round.roll(secondRoll);
+      expect(round.showPinsLeft()).toEqual(3);
     });
 
   });

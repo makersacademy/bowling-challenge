@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {font-family:"Arial Black", "Arial"; font-size:13pt; text-align:center;}
+      table {
+        border-spacing:0;
+        border: 1px solid black;
+      }
+      input {
+        font-family:"Arial Black", Arial;
+      }
+      td {
+        border:1px solid black;
+      }
+    </style>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table border="0" width="100%">
+      <tr>
+        <td>
+          <!-- <a href="http://tinypic.com?ref=14jnp0g" target="_blank">
+            <img src="http://i66.tinypic.com/14jnp0g.jpg" border="0" alt="Image and video hosting by TinyPic"></a> -->
+          <a href="http://tinypic.com?ref=2rp768n" target="_blank">
+            <img src="http://i66.tinypic.com/2rp768n.jpg" border="0" height="180px" align="center"></a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <form id="enter-name">
+            <input id="player-name" type="text" placeholder="Enter your name"></input>
+            <input type="button" value="Let's bowl!" onclick="getName()"
+            style="background-color: #d01d1d; border: none border: solid black 2px"></input>
+          </form>
+        </td>
+      </tr>
+      <tr height="25px" style="background-color:black;">
+        <td>
+        </td>
+      </tr>
+        <td>
+          <table border="0" width="100%" style="background-color:#9f54a6">
+            <tr>
+              <td width="20%">
+                Name
+              </td>
+              <td colspan="2" width="29px">
+                1
+              </td>
+              <td colspan="2" width="29px">
+                2
+              </td>
+              <td colspan="2" width="29px">
+                3
+              </td>
+              <td colspan="2" width="29px">
+                4
+              </td>
+              <td colspan="2" width="29px">
+                5
+              </td>
+              <td colspan="2" width="29px">
+                6
+              </td>
+              <td colspan="2" width="29px">
+                7
+              </td>
+              <td colspan="2" width="29px">
+                8
+              </td>
+              <td colspan="2" width="29px">
+                9
+              </td>
+              <td colspan="3" width="60px">
+                10
+              </td>
+              <td width="15%">
+                Total
+              </td>
+            </tr>
+            <tr>
+              <td height="25">
+                <label id="bowler"></label>
+                <!-- style="font-family:Edwardian Script ITC; font-size:30pt" -->
+              </td>
+              <td id="1a">
+              </td>
+              <td id="1b">
+              </td>
+              <td id="2a">
+              </td>
+              <td id="2b">
+              </td>
+              <td id="3a">
+              </td>
+              <td id="3b">
+              </td>
+              <td id="4a">
+              </td>
+              <td id="4b">
+              </td>
+              <td id="5a">
+              </td>
+              <td id="5b">
+              </td>
+              <td id="6a">
+              </td>
+              <td id="6b">
+              </td>
+              <td id="7a">
+              </td>
+              <td id="7b">
+              </td>
+              <td id="8a">
+              </td>
+              <td id="8b">
+              </td>
+              <td id="9a">
+              </td>
+              <td id="9b">
+              </td>
+              <td id="10a" width="20px">
+              </td>
+              <td id="10b" width="20px">
+              </td>
+              <td id="10c" width="20px">
+              </td>
+              <td>
+                <label id="total-score"></label>
+              </td>
+            </tr>
+            <tr>
+              <td height="25">
+              </td>
+              <td colspan="2">
+              </td>
+              <td colspan="2">
+              </td>
+              <td colspan="2">
+              </td>
+              <td colspan="2">
+              </td>
+              <td colspan="2">
+              </td>
+              <td colspan="2">
+              </td>
+              <td colspan="2">
+              </td>
+              <td colspan="2">
+              </td>
+              <td colspan="2">
+              </td>
+              <td colspan="3">
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="5" height="40">
+              </td>
+              <td colspan="10">
+              </td>
+              <td colspan="8">
+                <form id="bowl-button">
+                  <input id="bowl-frame" type="button" value="Bowl frame!"
+                  style="background-color: #d01d1d; border: solid black 2px"></input>
+                </form>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+
+
+    <script src="jquery-3.1.0.js"></script>
+    <script src='src/Game.js'></script>
+    <script src='src/Frame.js'></script>
+    <script src='src/Score.js'></script>
+    <script src='src/TenthFrame.js'></script>
+    <script src='src/InputName.js'></script>
+    <script src='src/interface.js'></script>
+
+  </body>
+</html>

@@ -1,79 +1,62 @@
 
-Bowling Challenge
-=================
+# Bowling Challenge
+================================
+
+Load up bowling.html from the root directory. Enter your name and click bowl frame to bowl each frame.
+
+<img width="1152" alt="screen shot 2016-08-13 at 21 40 12" src="https://cloud.githubusercontent.com/assets/18581870/17645474/f80f9976-619e-11e6-8c5a-fab31b911a38.png">
+
+Note: The scoring is based on 'Penang' bowling, with strikes doubling the score for the next two rolls (but limited to the next frame). Additional User Stories are additional features that I would like to come back and implement.
+
+### User Stories
+
+```
+As a bowler
+So that I can see my score for a game of bowling
+I'd like to be able to see my 1 player bowling scorecard.
+
+As a bowler
+So that I can enjoy bowling
+I would like to be able to bowl 10 frames.
+
+As a bowler
+So that I can see the result of my bowl
+I would like my scorecard to be updated with the result of each frame .
+
+As a bowler
+So that I can see how well I'm doing
+I'd like to see a running total of my score.
+
+As a bowler
+So that I can enjoy lots of different games
+I would like my bowling scores to be randomised.
+
+As a bowler
+So that I can see my name in lights
+I'd like to be able to enter my name and see it on the scorecard.
+```
 
 
-* Challenge time: rest of the day and weekend, and the entire of lab week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+### Additional User Stories
 
-Task: 
------
+```
+As a bowler
+So that I don't forget to celebrate my strikes
+I would like to see my strikes highlighted with an 'X'.
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+As a bowler
+So that I can gloat about my spares
+I'd like my spares to be highlighted with a '/'.
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+As a bowler
+So that I can hear how well I've done
+I would like to be given some feedback at the end of the game.
 
-As usual please start by 
+As a bowler
+So I can enjoy the tension of two rolls per frame
+I would like to be able to bowl every roll (2 per frame) separately.
 
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-
-### Optional Extra
-
-Create a nice interactive animated interface with jQuery.
-
-## Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-## Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-## 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-## Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-## Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-Code Review
------------
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
-
-CI
---
-
-We are running JSHint on our CI server - save yourself having to wait for a build to happen by linting your code on your machine first. [Here are installations for most popular editors](http://jshint.com/install/). Grab the `.jshintrc` from this repo and have better JS!
-
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
-
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.
+As a bowler
+So I can smash an opponent
+I would like to be able to play a 2 player game against the computer.
+```

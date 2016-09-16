@@ -1,58 +1,57 @@
-describe("Player", function() {
-  var player;
-  var song;
+describe("Frame", function() {
 
   beforeEach(function() {
-    player = new Player();
-    song = new Song();
+    frame = new Frame();
   });
 
-  it("should be able to play a Song", function() {
-    player.play(song);
-    expect(player.currentlyPlayingSong).toEqual(song);
+  describe('Adding Scores', function() {
+    it("should accept first score ", function() {
+      frame.addScore(5);
+      expect(frame.firstScore).toEqual(5);
+    });
 
-    //demonstrates use of custom matcher
-    expect(player).toBePlaying(song);
+    it("should accept second score ", function() {
+      frame.addScore(2);
+      frame.addScore(6);
+      expect(frame.secondScore).toEqual(6);
+    });
   });
 
-  describe("when song has been paused", function() {
+  describe('Calculating Frame Score', function(){
+    it('should return 0 on a gutter frame', function() {
+      frame.addScore(0);
+      frame.addScore(0);
+      expect(frame.calculateScore()).toEqual(0);
+    });
+
+    it('should return sum of pins on normal frame', function(){
+      frame.addScore(2);
+      frame.addScore(3);
+      expect(frame.calculateScore()).toEqual(5);
+    })
+  });
+
+  describe("Spare Bonus Game", function(){
     beforeEach(function() {
-      player.play(song);
-      player.pause();
+      bonusSpareFrame = new Frame('spare');
     });
-
-    it("should indicate that the song is currently paused", function() {
-      expect(player.isPlaying).toBeFalsy();
-
-      // demonstrates use of 'not' with a custom matcher
-      expect(player).not.toBePlaying(song);
-    });
-
-    it("should be possible to resume", function() {
-      player.resume();
-      expect(player.isPlaying).toBeTruthy();
-      expect(player.currentlyPlayingSong).toEqual(song);
-    });
+    it('should add bonus of first score', function(){
+      bonusSpareFrame.addScore(2);
+      bonusSpareFrame.addScore(3);
+      expect(bonusSpareFrame.calculateScore()).toEqual(7);
+    })
   });
 
-  // demonstrates use of spies to intercept and test method calls
-  it("tells the current song if the user has made it a favorite", function() {
-    spyOn(song, 'persistFavoriteStatus');
-
-    player.play(song);
-    player.makeFavorite();
-
-    expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
-  });
-
-  //demonstrates use of expected exceptions
-  describe("#resume", function() {
-    it("should throw an exception if song is already playing", function() {
-      player.play(song);
-
-      expect(function() {
-        player.resume();
-      }).toThrowError("song is already playing");
+  describe("Spare Bonus Game", function(){
+    beforeEach(function() {
+      bonusStrikeFrame = new Frame('strike');
     });
+    it('should add bonus of combined score', function(){
+      bonusStrikeFrame.addScore(3);
+      bonusStrikeFrame.addScore(4);
+      expect(bonusStrikeFrame.calculateScore()).toEqual(14);
+    })
   });
+
+
 });

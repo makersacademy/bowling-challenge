@@ -1,22 +1,22 @@
-function Player() {
+function Frame(bonus) {
+  this.frameType = bonus || null;
+  this.firstScore = null;
+  this.secondScore = null;
 }
-Player.prototype.play = function(song) {
-  this.currentlyPlayingSong = song;
-  this.isPlaying = true;
-};
 
-Player.prototype.pause = function() {
-  this.isPlaying = false;
-};
-
-Player.prototype.resume = function() {
-  if (this.isPlaying) {
-    throw new Error("song is already playing");
+Frame.prototype = {
+  addScore: function(score) {
+    this.firstScore ? this.secondScore = score : this.firstScore = score
+  },
+  calculateScore: function() {
+    if (this.frameType == 'spare') {
+      return (this.firstScore * 2) + this.secondScore
+    }
+    else if(this.frameType == 'strike'){
+      return (this.firstScore + this.secondScore) * 2
+    }
+    else {
+        return this.firstScore + this.secondScore
+    }
   }
-
-  this.isPlaying = true;
-};
-
-Player.prototype.makeFavorite = function() {
-  this.currentlyPlayingSong.persistFavoriteStatus(true);
 };

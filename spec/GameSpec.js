@@ -1,5 +1,4 @@
-/* jshint undef: true, unused: true */
-/* globals Game */
+var Game = require('../lib/game');
 
 describe("Game", function() {
 

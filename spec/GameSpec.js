@@ -6,20 +6,30 @@ describe("Game", function(){
     game = new Game();
   })
 
-  function setUpFrames(frame) {
-    for(i = 0; i < 10; i++) {
+  function setUpFrames(frame, n) {
+    for(i = 0; i < n; i++) {
       game.bowl(frame);
     }
   }
 
   it("can roll a gutter game", function(){
-    setUpFrames([0,0]);
+    setUpFrames([0,0],10);
     expect(game.score()).toEqual(0);
   })
 
   it("can roll a game of all 1s", function(){
-    setUpFrames([1,1]);
+    setUpFrames([1,1],10);
     expect(game.score()).toEqual(20);
   })
+
+  it("can calculate score of game with a spare", function(){
+    setUpFrames([5,5],1);
+    setUpFrames([6,1],1);
+    expect(game.score()).toEqual(23);
+  })
+
+  // it("can calculate the score of a game with a strike", function(){
+  //
+  // })
 
 })

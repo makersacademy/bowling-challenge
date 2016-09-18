@@ -77,6 +77,12 @@ describe("Round", function() {
       expect(round.showPinsLeft()).toEqual(3);
     });
 
+    it("the firstRollPinHits should be 2", function () {
+      round.roll(firstRoll);
+      round.roll(secondRoll);
+      expect(round.firstRollPinsHit()).toEqual(2);
+    });
+
   });
 
   describe("After a strike it... ", function() {

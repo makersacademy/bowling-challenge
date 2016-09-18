@@ -21,5 +21,10 @@ Game.prototype = {
     calculateGameScore: function () {
       var scores = this.framesHistory.map(function(frame){ return frame.calculateScore() });
       return scores.reduce(function(a, b) { return a + b; }, 0);
+    },
+    displaySymbols: function(position){
+      currentFrame = this._currentFrame();
+      currentSymbols = currentFrame.getDisplaySymbols();
+      return currentSymbols[position];
     }
 };

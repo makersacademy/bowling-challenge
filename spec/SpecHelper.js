@@ -1,9 +1,9 @@
 var helperModule = (function() {
   var helpers = {};
 
-   helpers.playGame = function(n, game) {
+   helpers.playGame = function(n, game, round) {
     for (var i = 0; i < n; i++) {
-      game.play();
+      game.play(round);
     }
 };
 return helpers;

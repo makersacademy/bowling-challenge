@@ -12,7 +12,7 @@ describe("Round", function() {
     secondRoll = jasmine.createSpyObj("secondRoll", ['showPinsHit']);
   });
 
-  describe("At the start the round ...", function() {
+  describe("At the start the round it ...", function() {
 
     it("should have 10 pins", function() {
       expect(round.showPinsLeft()).toEqual(10);
@@ -20,6 +20,14 @@ describe("Round", function() {
 
     it("should have 0 rolls in the rolls array", function() {
       expect(round.showRolls()).toEqual([]);
+    });
+
+    it("should have a rawScore of 0", function() {
+      expect(round.showRawScore()).toEqual(0);
+    });
+
+    it("should have a 0 as a the number of rolls", function() {
+      expect(round.showNumRolls()).toEqual(0);
     });
 
     it("should have a spare set to false", function() {
@@ -32,7 +40,7 @@ describe("Round", function() {
 
   });
 
-  describe("After one 'regular' roll ... ", function() {
+  describe("After one 'regular' roll... ", function() {
 
     beforeEach(function(){
         firstRoll.showPinsHit.and.returnValue(2);
@@ -43,7 +51,7 @@ describe("Round", function() {
       expect(round._rolls.length).toEqual(1);
     });
 
-    it("should update the pinsLeft", function () {
+    it("it should update the pinsLeft", function () {
       round.roll(firstRoll);
       expect(round.showPinsLeft()).toEqual(8);
     });
@@ -71,7 +79,7 @@ describe("Round", function() {
 
   });
 
-  describe("After a strike ... ", function() {
+  describe("After a strike it... ", function() {
 
     beforeEach(function(){
         firstRoll.showPinsHit.and.returnValue(10);
@@ -85,7 +93,7 @@ describe("Round", function() {
 
   });
 
-  describe("After a spare ... ", function() {
+  describe("After a spare it... ", function() {
 
     beforeEach(function(){
         firstRoll.showPinsHit.and.returnValue(5);

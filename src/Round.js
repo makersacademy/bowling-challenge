@@ -5,6 +5,7 @@
 function Round() {
   this._pinsLeft = 10;
   this._rolls = [];
+  this._rawScore = 0;
   this._spare = false;
   this._strike = false;
 }
@@ -27,12 +28,23 @@ Round.prototype = {
     return this._strike;
   },
 
+  showRawScore: function() {
+    return this._rawScore;
+  },
+
+  showNumRolls: function() {
+    return this._rolls.length;
+  },
+
   roll: function (roll) {
     var newRoll = typeof roll !== 'undefined' ? roll : new Roll(this._pinsLeft);
     this._rolls.push(newRoll);
     this._pinsLeft -= newRoll.showPinsHit();
-    if (newRoll.showPinsHit() === 10) { this._strike = true };
-    if ((this._rolls[this._rolls.length-1].showPinsHit() + newRoll.showPinsHit()) === 10) { this._spare = true };
-  }
+    this._rawScore += newRoll.showPinsHit();
+    if (newRoll.showPinsHit() === 10) { this._strike = true }
+    if ((this._rolls[this._rolls.length-1].showPinsHit() + newRoll.showPinsHit()) === 10) { this._spare = true }
+  },
+
+
 
 }

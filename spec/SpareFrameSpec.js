@@ -43,7 +43,7 @@ describe("SpareFrame", function() {
     });
     it("should not accept two scores over 10", function() {
       spareFrame.addScore(6);
-      expect(function(){spareFrame.addScore(7)}).toThrow(new Error("Maximum Frame Score Reached"));
+      expect(function(){spareFrame.addScore(7)}).toThrow(new Error("Max Score Reached"));
     });
   });
 });

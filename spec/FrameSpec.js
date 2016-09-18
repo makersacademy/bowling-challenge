@@ -54,7 +54,7 @@ describe("Frame", function() {
     });
     it("should not accept two scores over 10", function() {
       frame.addScore(6);
-      expect(function(){frame.addScore(7)}).toThrow(new Error("Maximum Frame Score Reached"));
+      expect(function(){frame.addScore(7)}).toThrow(new Error("Max Score Reached"));
     });
   });
 });

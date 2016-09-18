@@ -6,20 +6,20 @@ $(document).ready(function() {
   game.nextFrame();
 
   function randomScore() {
-     return Math.floor(Math.random() * (11 - game._currentFrame().firstScore));
-  };
+     return Math.floor(Math.random() * (11 - game._currentFrame().firstScore))
+  }
 
   function getElement(target) {
-    var element = (target === 'score1' ? '-1' : (target === 'score2' ? '-2' : '-3'))
+    var element = (target === '1' ? '-1' : (target === '2' ? '-2' : '-3'))
     return '#'+ counter.toString() + element
   }
 
   function updateDisplay(){
-      $(getElement('score1')).text(game.displaySymbols('first'));
-      $(getElement('score2')).text(game.displaySymbols('second'));
+      $(getElement('1')).text(game.displaySymbols('first'));
+      $(getElement('2')).text(game.displaySymbols('second'));
       $('#10-4').text(game.displaySymbols('third'));
       $(getElement('total')).text(game.calculateGameScore());
-  };
+  }
 
   function currentFrame(){
     return '#'+ counter.toString()

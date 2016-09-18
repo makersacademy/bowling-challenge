@@ -12,19 +12,19 @@ FinalFrame.prototype = {
     else if (this.secondScore === null) {this.secondScore = score}
     else {this.thirdScore = score}
   },
-  _firstStrike: function () {
+  _isFirstStrike: function () {
     var strike = this.firstScore === 10
     var unfinished = (this.secondScore === null || this.thirdScore === null)
     return strike && unfinished
   },
-  _firstSpare: function () {
+  _isFirstSpare: function () {
     var spare = (this.firstScore + this.secondScore) === 10
     var unfinished = this.thirdScore === null
     return spare && unfinished;
   },
   _isFrameOver: function() {
-    if (this._firstStrike()) {return false}
-    else if (this._firstSpare()) {return false}
+    if (this._isFirstStrike()) {return false}
+    else if (this._isFirstSpare()) {return false}
     else {return (this.firstScore !== null && this.secondScore !== null)}
   },
   _isInvalidScore: function(score) {

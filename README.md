@@ -20,7 +20,7 @@ Moving forward I'd like to restructure the program to make the game class respon
 
 ## Usage Instructions
 
-To interact with the animated system, open the index.html file in your browser. This will also load all files, so you can manually interact with the code using Chrome Dev Tools or similar.
+To interact with the animated system, open the index.html file in your browser. This will also load all files, so you can manually interact with the code using Chrome Dev Tools or similar. Tests can be accessed by opening the specrunner.html file in the spec folder. 
 
 ![NewGame](https://dl.dropboxusercontent.com/u/19916786/bowling_new_game.png)
 

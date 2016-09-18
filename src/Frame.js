@@ -13,10 +13,10 @@ Frame.prototype = {
   _isInvalidScore: function(score) {
      return (this.firstScore + score > 10)
   },
-  _firstSymbol: function() {
+  _getFirstSymbol: function() {
     return this.firstScore === 10 ? '\u00A0' : this.firstScore
   },
-  _secondSymbol: function() {
+  _getSecondSymbol: function() {
       if (this.firstScore === 10) { return 'X' }
       else if (this.secondScore === null) {return "\u00A0"}
       else if (this.firstScore + this.secondScore === 10) {return '/'}
@@ -39,8 +39,8 @@ Frame.prototype = {
     else {return 'frame'}
   },
   getDisplaySymbols: function(){
-    var firstSymbol = this._firstSymbol();
-    var secondSymbol = this._secondSymbol();
+    var firstSymbol = this._getFirstSymbol();
+    var secondSymbol = this._getSecondSymbol();
     return {first: firstSymbol, second: secondSymbol}
   }
 };

@@ -28,8 +28,10 @@ describe("Game", function(){
     expect(game.score()).toEqual(23);
   })
 
-  // it("can calculate the score of a game with a strike", function(){
-  //
-  // })
+  it("can calculate the score of a game with a strike", function(){
+    setUpFrames([10,0],1);
+    setUpFrames([6,3],1);
+    expect(game.score()).toEqual(28);
+  })
 
 })

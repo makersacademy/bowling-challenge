@@ -55,5 +55,13 @@ Bowling.prototype.rollAlternate = function(){
     this._roll = 2;
   } else {
     this._roll = 1;
+    this.frameReset();
   }
+}
+
+Bowling.prototype.frameReset = function(){
+  this._rollScore1 = 0;
+  this._rollScore2 = 0;
+  this._currentKnockdown = 0;
+  this._standingPins = 10;
 }

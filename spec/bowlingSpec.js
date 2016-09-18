@@ -54,4 +54,14 @@ describe("feature test", function(){ "use strict";
     expect(bowling._rollScore2).toEqual(3)
   })
 
+  it("frame specific variables are reset at a new frame", function(){
+    spyOn(bowling, 'pinsKnockdown').and.returnValues(3, 4);
+    bowling.bowl();
+    bowling.bowl();
+    expect(bowling._rollScore1).toEqual(0);
+    expect(bowling._rollScore2).toEqual(0);
+    expect(bowling._currentKnockdown).toEqual(0);
+    expect(bowling._standingPins).toEqual(10);
+  });
+
 });

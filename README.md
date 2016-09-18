@@ -7,7 +7,35 @@ Task:
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
+#### Bowling Score Sheet
+![Bowling Score Sheet](images/BowlingScoreSheet.jpg)
+
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+
+User stories:
+-------
+
+```
+As a bowler
+So that I can keep track of my score during a bowling game
+I want to be able to log my scores on a scoresheet
+
+As a bowler
+So that I can focus on knocking down all pins within each frame
+I want to be given the remaining number of pins following each throw
+
+As a bowler
+So that I can keep track of my remaining rolls during a bowling game
+I want the scoresheet to display all 10 frames and pins knocked down with each roll
+
+As a bowler
+So that my scores are displayed correctly for each frame
+I want the final score for each frame to be displayed once the bonus rolls following spares and strikes have been thrown
+
+As a bowler
+So that I can play several games
+I want to have the option of starting a new game once I have finished a game
+```
 
 
 ### Optional Extra

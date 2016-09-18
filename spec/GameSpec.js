@@ -4,10 +4,12 @@ describe("Game", function() {
 
   var game;
   var roundOne;
+  var roundTwo;
 
   beforeEach(function() {
     game = new Game();
-    roundOne = jasmine.createSpyObj("roundOne", ['roll', 'showRawScore', 'showNumRolls']);
+    roundOne = jasmine.createSpyObj("roundOne", ['roll', 'showRawScore', 'showNumRolls', 'showCurrentRound']);
+    roundTwo = jasmine.createSpyObj("roundTwo", ['roll', 'showRawScore', 'showNumRolls', 'showCurrentRound']);
   });
 
   describe("At the start the game ...", function() {
@@ -46,7 +48,6 @@ describe("Game", function() {
     it("should have 1 round in the Rounds array", function () {
       helperModule.playGame(2, game, roundOne);
       expect(game._rounds.length).toEqual(1);
-      expect(game.showCurrentRound()).toEqual(roundOne);
     });
 
     it("should update the score", function () {
@@ -56,22 +57,32 @@ describe("Game", function() {
 
     it("should reset the currentRound to null", function() {
       helperModule.playGame(2, game, roundOne);
-      expect(game.showCurrentRound()).toEqual(null);
+      expect(game._currentRound).toEqual(null);
     });
 
   });
 
   describe("After three regular rolls it ...", function() {
 
+    beforeEach(function(){
+        roundOne.showRawScore.and.returnValue(7);
+        roundOne.showNumRolls.and.returnValues(1,2);
+        roundTwo.showRawScore.and.returnValue(5);
+        roundTwo.showNumRolls.and.returnValues(1,2);
+      });
+
     it("should have 2 rounds in the Rounds array", function () {
       helperModule.playGame(2, game, roundOne);
-      expect(game._rounds.length).toEqual(1);
-      expect(game.showCurrentRound()).toEqual(roundOne);
-    });
+      helperModule.playGame(2, game, roundTwo);
+      expect(game.showRounds().length).toEqual(2);
+      expect(game.showCurrentRound()).toEqual(null);
     });
 
-    it("should have update the score", function () {
-      // something!
+    it("should update the score", function () {
+      helperModule.playGame(2, game, roundOne);
+      helperModule.playGame(2, game, roundTwo);
+      expect(game.showScore()).toEqual(12);
+      expect(game.showCurrentRound()).toEqual(null);
     });
 
   })

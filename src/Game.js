@@ -28,8 +28,23 @@ Game.prototype = {
     this._currentRound = newRound;
   },
 
+  _getLastRound: function() {
+    return this._rounds[(this._rounds.length)-2];
+  },
+
+  _updateScore: function() {
+    if (this._rounds.length > 1) {
+      if (this._getLastRound().showStrike() === true) {
+        this._score += (this.showCurrentRound().showRawScore())
+     } else if (this._getLastRound().showSpare() === true) {
+       this._score += this.showCurrentRound().firstRollPinsHit()
+     }
+   }
+    this._score += (this.showCurrentRound().showRawScore());
+  },
+
   _roundComplete: function() {
-    this._score += (this._rounds[(this._rounds.length)-1].showRawScore());
+    this._updateScore();
     this._currentRound = null;
   },
 

@@ -36,6 +36,10 @@ Round.prototype = {
     return this._rolls.length;
   },
 
+  firstRollPinsHit: function() {
+    return this._rolls[0].showPinsHit();
+  },
+
   roll: function (roll) {
     var newRoll = typeof roll !== 'undefined' ? roll : new Roll(this._pinsLeft);
     this._rolls.push(newRoll);

@@ -4,12 +4,16 @@ describe("Game", function() {
 
   var game;
   var roundOne;
+  var roundOneStrike;
+  var roundOneSpare;
   var roundTwo;
 
   beforeEach(function() {
     game = new Game();
-    roundOne = jasmine.createSpyObj("roundOne", ['roll', 'showRawScore', 'showNumRolls', 'showCurrentRound']);
-    roundTwo = jasmine.createSpyObj("roundTwo", ['roll', 'showRawScore', 'showNumRolls', 'showCurrentRound']);
+    roundOne = jasmine.createSpyObj("roundOne", ['roll', 'showRawScore', 'showNumRolls', 'showCurrentRound', 'showStrike', 'showSpare', 'firstRollPinsHit']);
+    roundOneStrike = jasmine.createSpyObj("roundOneStrike", ['roll', 'showRawScore', 'showNumRolls', 'showCurrentRound', 'showStrike', 'showSpare', 'firstRollPinsHit']);
+    roundOneSpare = jasmine.createSpyObj("roundOneSpare", ['roll', 'showRawScore', 'showNumRolls', 'showCurrentRound', 'showStrike', 'showSpare', 'firstRollPinsHit']);
+    roundTwo = jasmine.createSpyObj("roundTwo", ['roll', 'showRawScore', 'showNumRolls', 'showCurrentRound', 'showStrike', 'showSpare', '_rolls', 'firstRollPinsHit']);
   });
 
   describe("At the start the game ...", function() {
@@ -62,7 +66,7 @@ describe("Game", function() {
 
   });
 
-  describe("After three regular rolls it ...", function() {
+  describe("After four regular rolls it ...", function() {
 
     beforeEach(function(){
         roundOne.showRawScore.and.returnValue(7);
@@ -85,6 +89,44 @@ describe("Game", function() {
       expect(game.showCurrentRound()).toEqual(null);
     });
 
-  })
+  });
+
+  describe("If round 1 = strike & round 2 = regular it ...", function() {
+
+    beforeEach(function(){
+        roundOneStrike.showRawScore.and.returnValue(10);
+        roundOneStrike.showStrike.and.returnValue(true);
+        roundOneStrike.showNumRolls.and.returnValues(1,2);
+        roundTwo.showRawScore.and.returnValue(5);
+        roundTwo.showStrike.and.returnValue(false);
+        roundTwo.showNumRolls.and.returnValues(1,2);
+      });
+
+    it("should add a bonus to the score", function() {
+      helperModule.playGame(2, game, roundOneStrike);
+      helperModule.playGame(2, game, roundTwo);
+      expect(game.showScore()).toEqual(20);
+    });
+
+  });
+
+  describe("If round 1 = spare & round 2 = regular it ...", function() {
+
+    beforeEach(function(){
+        roundOneSpare.showRawScore.and.returnValue(10);
+        roundOneSpare.showSpare.and.returnValue(true);
+        roundOneSpare.showNumRolls.and.returnValues(1,2);
+        roundTwo.showRawScore.and.returnValue(5);
+        roundTwo.showNumRolls.and.returnValues(1,2);
+        roundTwo.firstRollPinsHit.and.returnValues(2);
+      });
+
+    it("should add a bonus to the score", function() {
+      helperModule.playGame(2, game, roundOneSpare);
+      helperModule.playGame(2, game, roundTwo);
+      expect(game.showScore()).toEqual(17);
+    });
+
+  });
 
 });

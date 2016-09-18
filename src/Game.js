@@ -3,14 +3,14 @@
 'use-strict';
 
 function Game() {
-  this._framesToPlay = 10;
   this._score = 0;
+  this._rounds = [];
 }
 
 Game.prototype = {
 
-  showFramesToPlay: function() {
-    return this._framesToPlay;
+  showRounds: function() {
+    return this._rounds;
   },
 
   showScore: function() {

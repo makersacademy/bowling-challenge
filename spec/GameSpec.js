@@ -10,11 +10,11 @@ describe("Game", function() {
 
   describe("At the start the game ...", function() {
 
-    xit("should have 10 frames", function() {
-      expect(game.showFramesToPlay()).toEqual(10);
+    it("should have a constant of 10 frames", function() {
+      expect(game.showRounds()).toEqual([]);
     });
 
-    xit("should have a score of 0", function() {
+    it("should have a score of 0", function() {
       expect(game.showScore()).toEqual(0);
     });
 

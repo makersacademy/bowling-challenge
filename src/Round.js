@@ -32,7 +32,7 @@ Round.prototype = {
     this._rolls.push(newRoll);
     this._pinsLeft -= newRoll.showPinsHit();
     if (newRoll.showPinsHit() === 10) { this._strike = true };
-    if ((this._rolls[0].showPinsHit() + newRoll.showPinsHit()) === 10) { this._spare = true };
+    if ((this._rolls[this._rolls.length-1].showPinsHit() + newRoll.showPinsHit()) === 10) { this._spare = true };
   }
 
 }

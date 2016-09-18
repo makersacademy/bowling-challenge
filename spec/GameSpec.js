@@ -4,7 +4,7 @@ describe("Game", function() {
     frame = jasmine.createSpyObj('frame',['addScore','calculateScore','frameResult']);
     frame.calculateScore.and.returnValue(6);
     spyOn(window, "frame").and.returnValue(frame);
-    game = new Game(frame);
+    game = new Game({frame: frame, strike: frame, spare: frame, final: frame});
   });
 
   describe('Adding frames', function() {
@@ -25,8 +25,7 @@ describe("Game", function() {
         game.nextFrame();
         game.addScore(5);
         game.addScore(5);
-        game.nextFrame();
-        expect(frame).toHaveBeenCalledWith('spare');
+        expect(game._nextFrameType()).toEqual('spare');
       });
     });
 
@@ -37,23 +36,20 @@ describe("Game", function() {
       it("should create new bonus strike frame", function(){
         game.nextFrame();
         game.addScore(10);
-
-        game.nextFrame();
-        expect(frame).toHaveBeenCalledWith('strike');
+        expect(game._nextFrameType()).toEqual('strike');
       });
     });
   });
 
   describe('adding final frame', function(){
     beforeEach(function() {
-      for (var i = 1; i < 10; i++) {
+      for (var i = 0; i < 9; i++) {
         game.nextFrame();
-
+        frame.frameResult.and.returnValue('final');
       }
     });
     it("should create new bonus spare frame", function(){
-      game.nextFrame();
-      expect(frame).toHaveBeenCalledWith('final');
+      expect(game._nextFrameType()).toEqual('final');
     });
   });
 

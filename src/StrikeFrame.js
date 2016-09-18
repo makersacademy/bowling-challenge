@@ -1,11 +1,11 @@
-function Frame() {
+function StrikeFrame() {
   this.firstScore = null;
   this.secondScore = null;
 }
 
-Frame.prototype = {
+StrikeFrame.prototype = {
   _isFrameOver: function() {
-    return (this.firstScore === 10 ) || (this.firstScore && this.secondScore)
+     return (this.firstScore === 10 ) || (this.firstScore && this.secondScore)
   },
   _isInvalidScore: function(score) {
      return (this.firstScore + score > 10)
@@ -16,7 +16,7 @@ Frame.prototype = {
     else {this.firstScore ? this.secondScore = score : this.firstScore = score}
   },
   calculateScore: function() {
-        return this.firstScore + this.secondScore
+    return (this.firstScore + this.secondScore) * 2
   },
   frameResult: function() {
     if (this.firstScore == 10) {return 'strike'}

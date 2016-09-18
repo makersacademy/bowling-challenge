@@ -1,3 +1,5 @@
+'use strict';
+
 $(document).ready(function() {
   var game = new Game();
   var counter = 1;
@@ -8,7 +10,7 @@ $(document).ready(function() {
   };
 
   function getElement(target) {
-    element = (target === 'score1' ? '-1' : (target === 'score2' ? '-2' : '-3'))
+    var element = (target === 'score1' ? '-1' : (target === 'score2' ? '-2' : '-3'))
     return '#'+ counter.toString() + element
   }
 

@@ -1,0 +1,88 @@
+ul{
+  max-width: 700px; /* for  below IE7 use `width: 660px;` */
+  margin: 0 auto;
+  float: center;
+}
+
+li{
+  list-style-type: none; /*Removes bullet points*/
+  float:left; /*Moves div to next row if the window is too narrow*/
+  border:2px #000 solid; /*For demo*/
+}
+
+.center {
+    display:table-cell;
+    vertical-align:middle;
+    float:none;
+}
+
+.1-3 {
+  display: block;
+}
+.score {
+  text-align: center;
+  width: 60px;
+  margin: auto;
+}
+.turn {
+  width: 60px;
+  font-size: 18px;
+  height: 60px;
+  text-align: center;
+}
+
+.currentturn {
+  width: 60px;
+  font-size: 18px;
+  height: 60px;
+  text-align: center;
+  background-color: #cccccc;
+}
+
+.lastturn {
+  width: 91px;
+  height: 60px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.secondroll {
+  border-left: 1px #000 solid;
+  border-bottom: 1px #000 solid;
+  display: inline-block;
+  float: right;
+  width: 28px;
+}
+
+.thirdroll {
+  border-left: 1px #000 solid;
+  border-bottom: 1px #000 solid;
+  display: inline-block;
+  float: right;
+  width:30px;
+  padding-left: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  margin-right: 0px;
+}
+
+.lastfirstroll {
+  float: left;
+  display: inline-block;
+  width: 25px;
+  padding-right: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+.lastsecondroll {
+  border-left: 1px #000 solid;
+  border-bottom: 1px #000 solid;
+  display: inline-block;
+  width: 30px;
+  padding-left: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  margin-right: 0px;
+}

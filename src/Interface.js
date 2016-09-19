@@ -2,11 +2,14 @@
 
 $(document).ready(function() {
   var game = new Game();
-  var counter = 1;
   game.nextFrame();
+  var counter = 1;
+  var lastScore = null;
+
 
   function randomScore() {
-     return Math.floor(Math.random() * (11 - game._currentFrame().firstScore))
+    lastScore = Math.floor(Math.random() * (10 - lastScore));
+    return lastScore;
   }
 
   function getElement(target) {
@@ -15,10 +18,10 @@ $(document).ready(function() {
   }
 
   function updateDisplay(){
-      $(getElement('1')).text(game.displaySymbols('first'));
-      $(getElement('2')).text(game.displaySymbols('second'));
-      $('#10-4').text(game.displaySymbols('third'));
-      $(getElement('total')).text(game.calculateGameScore());
+    $(getElement('1')).text(game.displaySymbols('first'));
+    $(getElement('2')).text(game.displaySymbols('second'));
+    $('#10-4').text(game.displaySymbols('third'));
+    $(getElement('total')).text(game.calculateGameScore());
   }
 
   function currentFrame(){

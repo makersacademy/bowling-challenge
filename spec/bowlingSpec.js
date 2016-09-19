@@ -9,7 +9,7 @@ describe("Bowling", function() {
   });
 
   describe("stores player name", function() {
-    it("it stores the player's name at start", function() {
+    it("stores the player's name at start", function() {
       expect(bowling.playerName).toEqual("Bob");
     })
   });
@@ -22,7 +22,11 @@ describe("Bowling", function() {
       expect(bowling.score).toEqual(8);
     });
 
-    it("it increases the frameNumber after completing a frame", function() {
+    it("resets the pins after a completed frame", function() {
+      // to be define
+    })
+
+    it("increases the frameNumber after completing a frame", function() {
       bowling.roll();
       bowling.roll();
       expect(bowling.frameNumber).toEqual(2);
@@ -33,14 +37,47 @@ describe("Bowling", function() {
       bowling.roll();
       expect(bowling.frameNumber).toEqual(2);
     });
+
+    it("plays the gutter game", function() {
+      spyOn(Math, "floor").and.returnValue(0);
+      for (var i = 0; i < 21; i++) {
+        bowling.roll();
+      }
+      expect(bowling.score).toEqual(0);
+    });
+
+    it("plays perfect game in case of strikes in each cases", function() {
+      spyOn(Math, "floor").and.returnValue(10);
+      for (var i = 0; i < 12; i++) {
+        bowling.roll();
+      }
+      expect(bowling.score).toEqual(300);
+    });
+
+    it("plays all the 10 frames with 2 rolls if always 3 pins knocked down", function() {
+      spyOn(Math, "floor").and.returnValue(3);
+      for (var i = 0; i < 20; i++) {
+        bowling.roll();
+      }
+      expect(bowling.score).toEqual(60);
+    });
+
+    it("plays 21 rolls with spare in each frame", function() {
+      spyOn(Math, "floor").and.returnValue(5);
+      for(var i = 0; i < 21; i++) {
+        bowling.roll();
+      }
+      expect(bowling.score).toEqual(150);
+    });
   });
 
   describe("handle bonus scores", function() {
     it("adds bonus scores in case of a strike", function() {
       spyOn(Math, "floor").and.returnValue(10);
-      bowling.roll();
-      bowling.roll();
-      expect(bowling.score).toEqual(30);
+      for(var i = 0; i < 3; i++) {
+        bowling.roll();
+      }
+      expect(bowling.score).toEqual(50);
     });
 
     it("add bonus scores in case of spares, in 2 frames", function() {
@@ -60,4 +97,15 @@ describe("Bowling", function() {
     });
   });
 
+  describe("handle the 10th frame", function() {
+    it("lets user rolls 3 times in the 10th frame", function() {
+      spyOn(Math, "floor").and.returnValue(5);
+      for (var i = 0; i < 20; i++) {
+        bowling.roll();
+      };
+      expect(bowling.frameNumber).toEqual(10);
+      bowling.roll();
+      expect(bowling.score).toEqual(150);
+    })
+  });
 });

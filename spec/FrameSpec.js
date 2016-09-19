@@ -10,4 +10,9 @@ describe('A frame', function(){
     expect(frame.currPins()).toEqual(10);
   });
 
+  it('returns the knocked down number of pins', function(){
+    spyOn(frame, 'knockedPins').and.returnValues(4);
+    expect(frame.remainingPins()).toEqual(6);
+  });
+
 });

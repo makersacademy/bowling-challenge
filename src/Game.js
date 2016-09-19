@@ -2,6 +2,9 @@
 function Game() {
   this.currScore = 0;
   this.remainingFrames = 10;
-  
 
+}
+
+Game.prototype = {
+  
 }

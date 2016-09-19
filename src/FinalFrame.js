@@ -35,7 +35,8 @@ FinalFrame.prototype = {
   },
   _getSecondSymbol: function() {
     var lookup = {10: 'X', null: "\u00A0"}
-    return lookup[this.secondScore] || this.secondScore
+    var spare = this.firstScore + this.secondScore === 10 ? '/' : null
+    return lookup[this.secondScore] || spare || this.secondScore
   },
   _getThirdSymbol: function() {
     if (this.thirdScore === 10) {return 'X' }

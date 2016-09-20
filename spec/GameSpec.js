@@ -14,4 +14,10 @@ describe('A game', function() {
       expect(game.remainingFrames).toEqual(10);
     });
 
+    it('decreases the number of frames as you play', function (){
+      game.frameDecrease();
+      game.frameDecrease();
+      expect(game.remainingFrames).toEqual(8)
+    });
+
     });

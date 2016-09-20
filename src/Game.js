@@ -6,5 +6,9 @@ function Game() {
 }
 
 Game.prototype = {
-  
+
+  frameDecrease: function() {
+    this.remainingFrames --;
+  }
+
 }

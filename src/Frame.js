@@ -7,16 +7,21 @@ function Frame (){
 
 Frame.prototype = {
 
+
+  rollOne: function() {
+     return Math.floor(Math.random() * (this._standingPins + 1));
+  },
+
+  rollTwo: function() {
+     return Math.floor(Math.random() * (this._standingPins + 1));
+  },
+
   knockedPins: function () {
-    this._pinsKnocked = Math.floor(Math.random() * (this._standingPins + 1));
+    this._pinsKnocked = this.rollOne() + this.rollTwo();
   },
 
   remainingPins: function() {
     return this._standingPins -= this._pinsKnocked;
-  },
-
-  currPins: function() {
-    return this._standingPins;
   },
 
 };

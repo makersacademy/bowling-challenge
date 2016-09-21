@@ -20,4 +20,4 @@ describe('A game', function() {
       expect(game.remainingFrames).toEqual(8)
     });
 
-    });
+  });

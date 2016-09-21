@@ -12,16 +12,22 @@ describe('A frame', function(){
 
   it('generates a random number of knockedPins', function(){
     spyOn(Math, 'random').and.returnValue(0.5);
-    frame.knockedPins();
-    expect(frame._pinsKnocked).toEqual(5);
+    expect(frame.rollOne()).toEqual(5);
   });
 
-  it('can return the standing pins after knocking pins over', function() {
-    spyOn(Math, 'random').and.returnValue(0.7);
-    frame.knockedPins();
-    expect(frame.remainingPins()).toEqual(3);
+  describe('with two seperate rolls', function (){
+
+    beforeEach(function(){
+      spyOn(Math, 'random').and.returnValue(0.3);
+      frame.rollOne();
+      frame.rollTwo();
+      frame.knockedPins();
+    });
+
+    it('stores the knocked pins in two seperate rolls', function() {
+      expect(frame.remainingPins()).toEqual(4);
+    });
+
   });
-
-
 
 });

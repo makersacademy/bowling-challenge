@@ -3,10 +3,11 @@ describe('A game', function() {
 
   beforeEach(function(){
     game = new Game();
+    frame = jasmine.createSpyObj('frame', ['rollOne','rollTwo','knockedPins','remainingPins'])
   });
 
     it('the starting score is displayed', function(){
-      expect(game.currScore).toEqual(0);
+      expect(game._currScore).toEqual(0);
 
     });
 
@@ -18,6 +19,13 @@ describe('A game', function() {
       game.frameDecrease();
       game.frameDecrease();
       expect(game.remainingFrames).toEqual(8)
+    });
+
+    it('displays the players score at the end of each frame', function() {
+      spyOn(Math, 'random').and.returnValue(0.4)
+      game.updateScore();
+      expect(game.playerScore()).toEqual(8);
+      expect(game.remainingFrames).toEqual(9);
     });
 
   });

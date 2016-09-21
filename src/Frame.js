@@ -7,7 +7,6 @@ function Frame (){
 
 Frame.prototype = {
 
-
   rollOne: function() {
      return Math.floor(Math.random() * (this._standingPins + 1));
   },

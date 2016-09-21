@@ -10,18 +10,6 @@ describe("feature test", function(){ "use strict";
 
   describe("bowl functionality", function(){
 
-    it("Has an initial frame number of 1", function(){
-      expect(bowling._frame).toEqual(1);
-    });
-
-    it("Has an initial roll number of 1", function(){
-      expect(bowling._roll).toEqual(1);
-    });
-
-    it("Has an initial score of 0", function(){
-      expect(bowling._totalScore).toEqual(0);
-    });
-
     it("pinsKnockdown method generates number between 0 and 10 ", function(){
       spyOn(bowling, 'pinsKnockdown').and.returnValue(3);
       expect(bowling.pinsKnockdown()).toEqual(3);
@@ -55,7 +43,24 @@ describe("feature test", function(){ "use strict";
       bowling.bowl();
       expect(bowling._totalScore).toEqual(7);
     });
+
+    it("adds correct amount to score when a strike is recoreded", function(){
+      spyOn(bowling, 'pinsKnockdown').and.returnValues(10, 2, 7);
+      bowling.bowl();
+      bowling.bowl();
+      bowling.bowl();
+      expect(bowling._totalScore).toEqual(28);
   });
+
+  it("adds correct amount to score when a spare is recoreded", function(){
+    spyOn(bowling, 'pinsKnockdown').and.returnValues(5, 5, 5, 2);
+    bowling.bowl();
+    bowling.bowl();
+    bowling.bowl();
+    bowling.bowl();
+    expect(bowling._totalScore).toEqual(22);
+  });
+});
 
   describe("frame/roll functionality", function(){
 
@@ -88,6 +93,22 @@ describe("feature test", function(){ "use strict";
       expect(bowling._rollScore2).toEqual(0);
       expect(bowling._currentKnockdown).toEqual(0);
       expect(bowling._standingPins).toEqual(10);
+    });
+
+    it("manages end game - frame not increased after 10", function(){
+      bowling._frame = 10
+      spyOn(bowling, 'pinsKnockdown').and.returnValues(5, 2);
+      bowling.bowl();
+      bowling.bowl();
+      expect(bowling._frame).toEqual(10);
+    });
+
+    it("manages end game - extra roll for strike/spare", function(){
+      bowling._frame = 10
+      spyOn(bowling, 'pinsKnockdown').and.returnValues(5, 5);
+      bowling.bowl();
+      bowling.bowl();
+      expect(bowling._frame).toEqual(11);
     });
   });
 

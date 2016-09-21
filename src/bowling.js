@@ -1,6 +1,4 @@
 
-// impliment score increase for strike/spare on following roll(s).
-
 var Bowling = function Bowling(){"use strict";
   this._frame = 1;
   this._roll = 1;
@@ -10,16 +8,17 @@ var Bowling = function Bowling(){"use strict";
   this._currentKnockdown = 0;
   this._standingPins = 10;
   this._sX = "";
+  this._maxRounds = 10;
 };
 
 Bowling.prototype = {
   bowl: function () {
     this.rollScoreRecord();
-    this.remainingPins();
     this.frameAndRoll();
   },
 };
 
+// ------------------------------------
 
 Bowling.prototype.rollScoreRecord = function(){
   this._currentKnockdown = this.pinsKnockdown();
@@ -28,16 +27,55 @@ Bowling.prototype.rollScoreRecord = function(){
   } else {
     this._rollScore2 = this._currentKnockdown
   }
-  this.strikeOrSpare();
+  this.remainingPins();
 }
 
-// Random pin knockdown assignment
 Bowling.prototype.pinsKnockdown = function(){
   return Math.floor(Math.random() * (this._standingPins + 1));
 }
 
 Bowling.prototype.remainingPins = function(){
   this._standingPins -= this._currentKnockdown
+}
+
+// ------------------------------------
+
+Bowling.prototype.frameAndRoll = function(){
+  this.endGameCheck();
+  if(this._frame < this._maxRounds) {
+    this.frameIncrement();
+    this.rollAlternate();
+  }
+}
+
+Bowling.prototype.endGameCheck = function(){
+  if(this._frame === 10 && this._standingPins === 0){
+    this._maxRounds = 11
+  }
+}
+
+// ------------------------------------
+
+Bowling.prototype.frameIncrement = function(){
+  if(this._roll === 2 || this._standingPins === 0){
+    this._frame ++
+    this.totalScoreUpdate();
+  }
+}
+
+Bowling.prototype.totalScoreUpdate = function(){
+  this._totalScore += (this._rollScore1 + this._rollScore2);
+  this.checkBonus();
+  this.strikeOrSpare();
+}
+
+Bowling.prototype.checkBonus = function(){
+  if (this._sX === "Strike!") {
+    this._totalScore += (this._rollScore1 + this._rollScore2);
+  } else if (this._sX === "Spare!") {
+    this._totalScore += this._rollScore1;
+  }
+  this._sX = "";
 }
 
 Bowling.prototype.strikeOrSpare = function(){
@@ -48,22 +86,7 @@ Bowling.prototype.strikeOrSpare = function(){
   }
 }
 
-Bowling.prototype.totalScoreUpdate = function(){
-  this._totalScore += (this._rollScore1 + this._rollScore2);
-}
-
-// below 3 methods manage frame and roll count logic
-Bowling.prototype.frameAndRoll = function(){
-  this.frameIncrement();
-  this.rollAlternate();
-}
-
-Bowling.prototype.frameIncrement = function(){
-  if(this._roll === 2 || this._standingPins === 0){
-    this._frame ++
-    this.totalScoreUpdate();
-  }
-}
+// ------------------------------------
 
 Bowling.prototype.rollAlternate = function(){
   if(this._roll === 1 && this._standingPins > 0){
@@ -79,4 +102,5 @@ Bowling.prototype.frameReset = function(){
   this._rollScore2 = 0;
   this._currentKnockdown = 0;
   this._standingPins = 10;
+  this._maxRounds = 10;
 }

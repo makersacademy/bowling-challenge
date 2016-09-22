@@ -5,25 +5,29 @@
     <title>10 Pin Bowling!</title>
     <script src="src/bowling.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="src/interface.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <!-- <link rel="stylesheet" type="text/css" href="src/styles.css"> -->
   </head>
 
   <body>
+    <center>
+    <section display:inline-block;>
 
-    <section>
+      <h1>Total score: </h1><h1 id="total_score"></h1>
+      <h2>Roll 1:</h2><h2 id="roll_1_score"></h2>
+      <h2>Roll 2:</h2><h2 id="roll_2_score"></h2>
 
-      <h1 id="total_score"></h1>
-      <h2 id="roll_1_score"></h2>
-      <h2 id="roll_2_score"></h2>
-
-    </section>
+    </section >
 
     <p>
-      <button id="bowl">BOWL</button>
-      <!-- <button id="new_game">New game</button> -->
+      <button id="bowl" >BOWL</button>
+    <br>
+      <button id="new_game" >New game</button>
     </p>
-
+  </center>
   </body>
 
 </html>

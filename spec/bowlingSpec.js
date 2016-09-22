@@ -110,6 +110,14 @@ describe("feature test", function(){ "use strict";
       bowling.bowl();
       expect(bowling._frame).toEqual(11);
     });
+
+    it("resets frame and roll on new game", function(){
+      bowling._frame = 10
+      bowling._roll = 2
+      bowling.newGame();
+      expect(bowling._frame).toEqual(1);
+      expect(bowling._frame).toEqual(1);
+    });
   });
 
 });

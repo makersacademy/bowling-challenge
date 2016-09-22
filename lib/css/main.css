@@ -1,0 +1,72 @@
+body {
+  font-family: 'Poiret One', serif;
+  font-size: 48px;
+  background-color: #252839;
+  color: white;
+}
+
+.btn {
+  background-color: #b5b5b7;
+  color: #677077;
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  color: #333333;
+  background-color: #677077;
+}
+
+.panel-body {
+  font-size: 25px;
+  color: white;
+  padding-bottom: 40px;
+  height: 50px;
+  width: 100%;
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0.5em;
+  border-collapse: collapse;
+}
+
+thead {
+  font-size: 35px;
+  background-color: #f2b632;
+  color: white;
+  border: 2px solid white;
+
+}
+
+tbody {
+  font-size: 20px;
+  background-color: #b5b5b7;
+  font-weight: lighter;
+  border: 2px solid white;
+}
+
+tfoot {
+  font-size: 20px;
+  background-color: #677077;
+  border: 2px solid white;
+}
+
+th, td {
+  border: 2px solid white;
+  text-align: center;
+  padding: 8px;
+}
+
+#newgame {
+  background-color: #b5b5b7;
+  font-size: 18px;
+  color: #677077;
+  width: 200px;
+  height: 45px;
+  margin-top: 45px;
+  padding: 5px;
+}

@@ -40,7 +40,7 @@ describe("Bowling", function() {
 
     it("plays the gutter game", function() {
       spyOn(Math, "floor").and.returnValue(0);
-      for (var i = 0; i < 21; i++) {
+      for (var i = 0; i < 20; i++) {
         bowling.roll();
       }
       expect(bowling.score).toEqual(0);
@@ -69,6 +69,17 @@ describe("Bowling", function() {
       }
       expect(bowling.score).toEqual(150);
     });
+
+    it("raises error if there is no more frame left to play with", function() {
+      spyOn(Math, "floor").and.returnValue(2);
+      for (var i = 0; i < 20; i++) {
+        bowling.roll();
+      }
+      expect(function() {
+        bowling.roll();
+      }).toThrowError("Game over. No more frame left.");
+
+    })
   });
 
   describe("handle bonus scores", function() {

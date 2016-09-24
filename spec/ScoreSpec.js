@@ -35,6 +35,8 @@ describe("Score", function() {
       expect(score.totalScore).toEqual(13)
     });
   });
+
+  
 });
   // demonstrates use of spies to intercept and test method calls
   // xit("tells the current song if torite", function() {

@@ -19,27 +19,25 @@ describe("Score", function() {
       score.addRoll(7);
       score.addRoll(1);
       expect(score.results).toEqual([[10],[7,1]])
-    })
+    });
 
-    
+    xit("should only score 10 frames + bonus", function(){
 
-
-    // beforeEach(function() {
-    //   player.play(song);
-    //   player.pause();
-    // });
-    //
-    // xit("should indicate that the song is currently paused", function() {
-    //   expect(player.isPlaying).toBeFalsy();
-    //
-    //   // demonstrates use of 'not' with a custom matcher
-    //   expect(player).not.toBePlaying(song);
-    // });
-
+    });
   });
 
+  describe("calculating result", function() {
+    it("should add a point for each pin", function() {
+      score.addRoll(1);
+      score.addRoll(4);
+      score.addRoll(7);
+      score.addRoll(1);
+      expect(score.totalScore).toEqual(13)
+    });
+  });
+});
   // demonstrates use of spies to intercept and test method calls
-  // xit("tells the current song if the user has made it a favorite", function() {
+  // xit("tells the current song if torite", function() {
   //   spyOn(song, 'persistFavoriteStatus');
   //
   //   player.play(song);
@@ -58,4 +56,4 @@ describe("Score", function() {
   //     }).toThrowError("song is already playing");
   //   });
   // });
-});
+  //});

@@ -11,7 +11,7 @@ describe("Score", function() {
     score.addRoll(4);
     score.addRoll(7);
     score.addRoll(1);
-    expect(score.results).toEqual([1,4],[7,1]);
+    expect(score.results).toEqual([[1,4],[7,1]]);
   });
 
   describe("when song has been paused", function() {

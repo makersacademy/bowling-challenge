@@ -34,23 +34,24 @@ Score.prototype.calculateCurrentScore = function () {
   var spareScore = 0
   var strScore = 0
   var results = this.results
-    results.forEach(function(frame, frameIndex) {
-      basicScore += Score.prototype.getBasicPoints(frame);
-      spareScore += Score.prototype.getSparePoints(frame, frameIndex, results);
-      strScore += Score.prototype.getStrPoints(frame, frameIndex, results);
-    })
-    this.totalScore = basicScore + spareScore + strScore
+
+  for (var i = 0; i < results.length; i++) {
+    if (i > 9) { break }
+    basicScore += Score.prototype.getBasicPoints(results[i])
+  }
+
+  results.forEach(function(frame, frameIndex) {
+    spareScore += Score.prototype.getSparePoints(frame, frameIndex, results);
+    strScore += Score.prototype.getStrPoints(frame, frameIndex, results);
+  })
+  this.totalScore = basicScore + spareScore + strScore
 };
 
 Score.prototype.getBasicPoints = function (frame) {
   var framePoints = 0
-  // for (var i = 0; i < frame.length; i++) {
-  //   framePoints += frame[i]
-  // }
-
-    frame.forEach(function(roll) {
-      framePoints += roll;
-    });
+  for (var i = 0; i < frame.length; i++) {
+    framePoints += frame[i]
+  }
   return framePoints
 };
 

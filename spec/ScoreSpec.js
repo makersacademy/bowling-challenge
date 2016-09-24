@@ -69,7 +69,17 @@ describe("Score", function(){
       score.addRoll(1);
       score.addRoll(1);
       score.addRoll(1);
-      expect(score.totalScore).toEqual(10)
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      expect(score.totalScore).toEqual(20)
     });
 
     it("should handle perfect game", function(){

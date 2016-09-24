@@ -30,20 +30,18 @@ Score.prototype.isStrike = function (currentFrame) {
 };
 
 Score.prototype.calculateCurrentScore = function () {
-  var basicScore = 0
-  var spareScore = 0
-  var strScore = 0
-  var results = this.results
+  var basicScore  = 0,
+      spareScore  = 0,
+      strScore    = 0,
+      self        = this,
+      results     = this.results;
 
-  for (var i = 0; i < results.length; i++) {
+  for (var i = 0; i < this.results.length; i++) {
+    spareScore += self.getSparePoints(results[i], i, results);
+    strScore += self.getStrPoints(results[i], i, results);
     if (i > 9) { break }
-    basicScore += Score.prototype.getBasicPoints(results[i])
+    basicScore += self.getBasicPoints(results[i])
   }
-
-  results.forEach(function(frame, frameIndex) {
-    spareScore += Score.prototype.getSparePoints(frame, frameIndex, results);
-    strScore += Score.prototype.getStrPoints(frame, frameIndex, results);
-  })
   this.totalScore = basicScore + spareScore + strScore
 };
 
@@ -58,7 +56,7 @@ Score.prototype.getBasicPoints = function (frame) {
 Score.prototype.getSparePoints = function (frame, frameIndex, results) {
   var framePoints = 0
       try {
-        if (Score.prototype.isSpareBonus(frame)) {
+        if (this.isSpareBonus(frame)) {
           framePoints = results[frameIndex + 1][0]
         }
       } catch (e) {
@@ -68,7 +66,7 @@ Score.prototype.getSparePoints = function (frame, frameIndex, results) {
 };
 
 Score.prototype.isSpareBonus = function (frame) {
-  var framePoints = Score.prototype.getBasicPoints(frame)
+  var framePoints = this.getBasicPoints(frame)
     if (framePoints === 10 && frame.length === 2) {
       return true
     } else {
@@ -77,7 +75,7 @@ Score.prototype.isSpareBonus = function (frame) {
 };
 
 Score.prototype.isStrBonus = function (frame) {
-  var framePoints = Score.prototype.getBasicPoints(frame)
+  var framePoints = this.getBasicPoints(frame)
     if (framePoints === 10 && frame.length === 1) {
       return true
     } else {
@@ -85,18 +83,16 @@ Score.prototype.isStrBonus = function (frame) {
     }
 };
 
-Score.prototype.getStrPoints = function (frame, frameIndex, results) {
-  var framePoints = 0
+Score.prototype.getStrPoints = function (frame, index, results) {
+  var points = 0
       try {
-        if (Score.prototype.isStrBonus(frame)) {
-          if (Score.prototype.isStrBonus(results[frameIndex + 1])) {
-            framePoints = results[frameIndex + 1][0] + results[frameIndex + 2][0]
-          } else {
-            framePoints = results[frameIndex + 1][0] + results[frameIndex + 1][1]
-          }
+        if (this.isStrBonus(frame) && this.isStrBonus(results[index + 1])) {
+          points = results[index + 1][0] + results[index + 2][0]
+        } else if (this.isStrBonus(frame)) {
+          points = this.getBasicPoints(results[index + 1])
         }
       } catch (e) {
         return 0
       }
-    return framePoints;
+    return points;
 };

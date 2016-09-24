@@ -11,14 +11,14 @@ describe("Score", function(){
       score.addRoll(4);
       score.addRoll(7);
       score.addRoll(1);
-      expect(score.results).toEqual([[1,4],[7,1]]);
+      expect(score._results).toEqual([[1,4],[7,1]]);
     });
 
     it("should close frame on strike", function(){
       score.addRoll(10);
       score.addRoll(7);
       score.addRoll(1);
-      expect(score.results).toEqual([[10],[7,1]])
+      expect(score._results).toEqual([[10],[7,1]])
     });
 
   });
@@ -29,7 +29,7 @@ describe("Score", function(){
       score.addRoll(4);
       score.addRoll(7);
       score.addRoll(1);
-      expect(score.totalScore).toEqual(13)
+      expect(score._totalScore).toEqual(13)
     });
 
     it("should add extra points for spares", function(){
@@ -37,14 +37,14 @@ describe("Score", function(){
       score.addRoll(9);
       score.addRoll(3);
       score.addRoll(1);
-      expect(score.totalScore).toEqual(17)
+      expect(score._totalScore).toEqual(17)
     });
 
     it("should add extra points for strike", function(){
       score.addRoll(10);
       score.addRoll(7);
       score.addRoll(1);
-      expect(score.totalScore).toEqual(26)
+      expect(score._totalScore).toEqual(26)
     });
 
     it("should handle few strikes in a row correctly", function(){
@@ -53,7 +53,7 @@ describe("Score", function(){
       score.addRoll(10);
       score.addRoll(1);
       score.addRoll(3);
-      expect(score.totalScore).toEqual(69)
+      expect(score._totalScore).toEqual(69)
     });
 
     it("should only count 10 frames", function(){
@@ -79,7 +79,7 @@ describe("Score", function(){
       score.addRoll(1);
       score.addRoll(1);
       score.addRoll(1);
-      expect(score.totalScore).toEqual(20)
+      expect(score._totalScore).toEqual(20)
     });
 
     it("should handle perfect game", function(){
@@ -95,7 +95,7 @@ describe("Score", function(){
       score.addRoll(10);
       score.addRoll(10);
       score.addRoll(10);
-      expect(score.totalScore).toEqual(300)
+      expect(score._totalScore).toEqual(300)
     });
 
   });

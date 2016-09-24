@@ -30,17 +30,72 @@ Score.prototype.isStrike = function (currentFrame) {
 };
 
 Score.prototype.calculateCurrentScore = function () {
-var basicScore = 0
-  this.results.forEach(function(frame) {
-    basicScore += Score.prototype.getPoints(frame);
-  })
-  this.totalScore = basicScore
+  var basicScore = 0
+  var spareScore = 0
+  var strScore = 0
+  var results = this.results
+    results.forEach(function(frame, frameIndex) {
+      basicScore += Score.prototype.getBasicPoints(frame);
+      spareScore += Score.prototype.getSparePoints(frame, frameIndex, results);
+      strScore += Score.prototype.getStrPoints(frame, frameIndex, results);
+    })
+    this.totalScore = basicScore + spareScore + strScore
 };
 
-Score.prototype.getPoints = function (frame) {
-var framePoints = 0
-  frame.forEach(function(roll) {
-    framePoints += roll;
-  });
-return framePoints
+Score.prototype.getBasicPoints = function (frame) {
+  var framePoints = 0
+  // for (var i = 0; i < frame.length; i++) {
+  //   framePoints += frame[i]
+  // }
+
+    frame.forEach(function(roll) {
+      framePoints += roll;
+    });
+  return framePoints
+};
+
+Score.prototype.getSparePoints = function (frame, frameIndex, results) {
+  var framePoints = 0
+      try {
+        if (Score.prototype.isSpareBonus(frame)) {
+          framePoints = results[frameIndex + 1][0]
+        }
+      } catch (e) {
+        return 0
+      }
+    return framePoints;
+};
+
+Score.prototype.isSpareBonus = function (frame) {
+  var framePoints = Score.prototype.getBasicPoints(frame)
+    if (framePoints === 10 && frame.length === 2) {
+      return true
+    } else {
+      return false
+    }
+};
+
+Score.prototype.isStrBonus = function (frame) {
+  var framePoints = Score.prototype.getBasicPoints(frame)
+    if (framePoints === 10 && frame.length === 1) {
+      return true
+    } else {
+      return false
+    }
+};
+
+Score.prototype.getStrPoints = function (frame, frameIndex, results) {
+  var framePoints = 0
+      try {
+        if (Score.prototype.isStrBonus(frame)) {
+          if (Score.prototype.isStrBonus(results[frameIndex + 1])) {
+            framePoints = results[frameIndex + 1][0] + results[frameIndex + 2][0]
+          } else {
+            framePoints = results[frameIndex + 1][0] + results[frameIndex + 1][1]
+          }
+        }
+      } catch (e) {
+        return 0
+      }
+    return framePoints;
 };

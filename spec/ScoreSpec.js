@@ -1,12 +1,12 @@
-describe("Score", function() {
+describe("Score", function(){
   var score;
 
-  beforeEach(function() {
+  beforeEach(function(){
     score = new Score();
   });
 
-  describe("storing frames", function() {
-    it("should score frames as arrays inside an array", function() {
+  describe("storing frames", function(){
+    it("should score frames as arrays inside an array", function(){
       score.addRoll(1);
       score.addRoll(4);
       score.addRoll(7);
@@ -21,41 +21,73 @@ describe("Score", function() {
       expect(score.results).toEqual([[10],[7,1]])
     });
 
-    xit("should only score 10 frames + bonus", function(){
-
-    });
   });
 
-  describe("calculating result", function() {
-    it("should add a point for each pin", function() {
+  describe("calculating result", function(){
+    it("should add a point for each pin", function(){
       score.addRoll(1);
       score.addRoll(4);
       score.addRoll(7);
       score.addRoll(1);
       expect(score.totalScore).toEqual(13)
     });
+
+    it("should add extra points for spares", function(){
+      score.addRoll(1);
+      score.addRoll(9);
+      score.addRoll(3);
+      score.addRoll(1);
+      expect(score.totalScore).toEqual(17)
+    });
+
+    it("should add extra points for strike", function(){
+      score.addRoll(10);
+      score.addRoll(7);
+      score.addRoll(1);
+      expect(score.totalScore).toEqual(26)
+    });
+
+    it("should handle few strikes in a row correctly", function(){
+      score.addRoll(10);
+      score.addRoll(10);
+      score.addRoll(10);
+      score.addRoll(1);
+      score.addRoll(3);
+      expect(score.totalScore).toEqual(69)
+    });
+
+    it("should only count 10 frames", function(){
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      score.addRoll(1);
+      expect(score.totalScore).toEqual(10)
+    });
+
+    it("should handle perfect game", function(){
+      score.addRoll(10);
+      score.addRoll(10);
+      score.addRoll(10);
+      score.addRoll(10);
+      score.addRoll(10);
+      score.addRoll(10);
+      score.addRoll(10);
+      score.addRoll(10);
+      score.addRoll(10);
+      score.addRoll(10);
+      score.addRoll(10);
+      score.addRoll(10);
+      expect(score.totalScore).toEqual(300)
+    });
+
   });
 
-  
 });
-  // demonstrates use of spies to intercept and test method calls
-  // xit("tells the current song if torite", function() {
-  //   spyOn(song, 'persistFavoriteStatus');
-  //
-  //   player.play(song);
-  //   player.makeFavorite();
-  //
-  //   expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
-  // });
-
-  //demonstrates use of expected exceptions
-  // describe("#resume", function() {
-  //   xit("should throw an exception if song is already playing", function() {
-  //     player.play(song);
-  //
-  //     expect(function() {
-  //       player.resume();
-  //     }).toThrowError("song is already playing");
-  //   });
-  // });
-  //});

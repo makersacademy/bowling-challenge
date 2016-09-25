@@ -1,6 +1,7 @@
 'use strict';
 
-function Bowling(name) {
+function Bowling(name, frame) {
+  this._frame = frame === undefined ? new Frame() : frame;
   this._game = [];
   this.playerName = name;
   this.score = 0;
@@ -14,6 +15,19 @@ Bowling.prototype = {
     if (this.noMoreFramesToPlay()) { throw Error(this._GAME_ENDED_ERROR); }
     if (this._isNewFrameNeeded()) { this._createNewFrame() };
     this._executeRoll();
+  },
+  _isNewFrameNeeded: function() {
+    return this._currentFrame === undefined || this._currentFrame.isFrameOver()
+  },
+  _createNewFrame: function() {
+    this.frameNumber++;
+    this._currentFrame = this._frame;
+    this._currentFrame.setFrameNumber(this.frameNumber);
+  },
+  _executeRoll: function() {
+    this._game.push(this._currentFrame.roll());
+    this.score += this._game[this._game.length - 1];
+    this._calculateAndAddBonusScore();
   },
   _calculateAndAddBonusScore: function() {
     if (this._currentFrame.isSecondRoll()) { this._calculateSpareBonusScore() }
@@ -45,17 +59,5 @@ Bowling.prototype = {
   },
   _isStrikeIncludedInLastTwoRolls: function() {
     return (this._game[this._game.length - 2] !== 10) && (this._game[this._game.length - 3] !== 10)
-  },
-  _isNewFrameNeeded: function() {
-    return this._currentFrame === undefined || this._currentFrame.isFrameOver()
-  },
-  _executeRoll: function() {
-    this._game.push(this._currentFrame.roll());
-    this.score += this._game[this._game.length - 1];
-    this._calculateAndAddBonusScore();
-  },
-  _createNewFrame: function() {
-    this.frameNumber++;
-    this._currentFrame = new Frame(this.frameNumber);
   }
 };

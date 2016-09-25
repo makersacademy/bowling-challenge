@@ -1,7 +1,7 @@
 'user strict';
 
-function Frame(frameNumber) {
-  this.frameNumber = frameNumber;
+function Frame() {
+  this.frameNumber;
   this.frameContent = [];
   this._isFrameOver = false;
 };
@@ -18,6 +18,9 @@ Frame.prototype = {
   },
   isFrameOver: function() {
     return this._isFrameOver;
+  },
+  setFrameNumber: function(frameNumber) {
+    this.frameNumber = frameNumber
   },
   roll: function() {
     if (this.isFirstRoll()) {

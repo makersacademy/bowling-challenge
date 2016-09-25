@@ -3,9 +3,14 @@
 describe("Bowling", function() {
 
   var bowling;
+  var frame;
 
   beforeEach(function() {
-    bowling = new Bowling("Bob");
+    frame = jasmine.createSpyObj("frame", ["isFrameOver", "setFrameNumber", "roll", "isSecondRoll", "isBonunsRollInLastFrame"]);
+    bowling = new Bowling("Bob", frame);
+    frame.isFrameOver.and.returnValue(false);
+    frame.isBonunsRollInLastFrame.and.returnValue(false);
+    frame.isSecondRoll.and.returnValue(false);
   });
 
   describe("stores player name", function() {
@@ -15,106 +20,126 @@ describe("Bowling", function() {
   });
 
   describe("play game", function() {
-    it("rolls the ball twice in a frame with less than 10 pins down ", function() {
-      spyOn(Math, "floor").and.returnValue(4);
+    it("if a frame is finished, the frameNumber is increased in the following frame", function() {
+      frame.roll.and.returnValue(3);
       bowling.roll();
       bowling.roll();
-      expect(bowling.score).toEqual(8);
-    });
-
-    it("resets the pins after a completed frame", function() {
-      // to be define
-    })
-
-    it("if a frame is finished, the frameNumber is increased in the following frame", function() {    
-      bowling.roll();
-      bowling.roll();
+      frame.isFrameOver.and.returnValue(true);
       bowling.roll();
       expect(bowling.frameNumber).toEqual(2);
     });
 
-    it("finishes the frame if the first roll is a strike", function() {
-      spyOn(Math, "floor").and.returnValue(10);
-      bowling.roll();
-      expect(bowling._currentFrame.isFrameOver()).toEqual(true);
-    });
-
     it("plays the gutter game", function() {
-      spyOn(Math, "floor").and.returnValue(0);
-      for (var i = 0; i < 20; i++) {
+      frame.roll.and.returnValue(0);
+      for (var i = 0; i < 10; i++) {
         bowling.roll();
+        frame.isFrameOver.and.returnValue(false);
+        bowling.roll();
+        frame.isFrameOver.and.returnValue(true);
       }
       expect(bowling.score).toEqual(0);
+      expect(bowling.frameNumber).toEqual(10);
     });
 
     it("plays perfect game in case of strikes in each cases", function() {
-      spyOn(Math, "floor").and.returnValue(10);
-      for (var i = 0; i < 12; i++) {
+      frame.roll.and.returnValue(10);
+      for (var i = 0; i < 9; i++) {
         bowling.roll();
+        frame.isFrameOver.and.returnValue(true);
       }
+      bowling.roll();
+      frame.isFrameOver.and.returnValue(false);
+      bowling.roll();
+      frame.isBonunsRollInLastFrame.and.returnValue(true);
+      bowling.roll();
       expect(bowling.score).toEqual(300);
     });
 
     it("plays all the 10 frames with 2 rolls if always 3 pins knocked down", function() {
-      spyOn(Math, "floor").and.returnValue(3);
-      for (var i = 0; i < 20; i++) {
+      frame.roll.and.returnValue(3);
+      for (var i = 0; i < 10; i++) {
         bowling.roll();
+        frame.isFrameOver.and.returnValue(false);
+        bowling.roll();
+        frame.isFrameOver.and.returnValue(true);
+      }
+      expect(bowling.frameNumber).toEqual(10);
+    });
+
+    it("collects 60 scores with 2 rolls if always 3 pins knocked down", function() {
+      frame.roll.and.returnValue(3);
+      for (var i = 0; i < 10; i++) {
+        bowling.roll();
+        frame.isFrameOver.and.returnValue(false);
+        bowling.roll();
+        frame.isFrameOver.and.returnValue(true);
       }
       expect(bowling.score).toEqual(60);
     });
 
-    it("plays 21 rolls with spare in each frame", function() {
-      spyOn(Math, "floor").and.returnValue(5);
-      for(var i = 0; i < 21; i++) {
-        bowling.roll();
-      }
-      expect(bowling.score).toEqual(150);
-    });
-
     it("raises error if there is no more frame left to play with", function() {
-      spyOn(Math, "floor").and.returnValue(2);
-      for (var i = 0; i < 20; i++) { bowling.roll(); }
+      frame.roll.and.returnValue(2);
+      for (var i = 0; i < 10; i++) {
+        bowling.roll();
+        frame.isFrameOver.and.returnValue(false);
+        bowling.roll();
+        frame.isFrameOver.and.returnValue(true);
+      }
       expect(function() {
         bowling.roll();
       }).toThrowError("Game over. No more frame left.");
-    })
+    });
+
+    it("plays 21 rolls with spare in each frame", function() {
+      frame.roll.and.returnValue(5);
+      for(var i = 0; i < 10; i++) {
+        bowling.roll();
+        frame.isSecondRoll.and.returnValue(true);
+        frame.isFrameOver.and.returnValue(false);
+        bowling.roll();
+        frame.isFrameOver.and.returnValue(true);
+        frame.isSecondRoll.and.returnValue(false);
+      }
+      frame.isFrameOver.and.returnValue(false);
+      bowling.roll();
+      expect(bowling.score).toEqual(150);
+    });
   });
 
   describe("handle bonus scores", function() {
     it("adds bonus scores in case of a strike", function() {
-      spyOn(Math, "floor").and.returnValue(10);
+      frame.roll.and.returnValue(10);
       for(var i = 0; i < 3; i++) {
         bowling.roll();
+        frame.isFrameOver.and.returnValue(true);
       }
       expect(bowling.score).toEqual(50);
     });
 
-    it("add bonus scores in case of spares, in 2 frames", function() {
-      spyOn(Math, "floor").and.returnValue(5);
-      for (var i = 0; i < 4; i++) {
+    it("adds bonus scores in case of spares, in 2 frames", function() {
+      frame.roll.and.returnValue(5);
+      for (var i = 0; i < 2; i++) {
         bowling.roll();
+        frame.isSecondRoll.and.returnValue(true);
+        frame.isFrameOver.and.returnValue(false);
+        bowling.roll();
+        frame.isFrameOver.and.returnValue(true);
+        frame.isSecondRoll.and.returnValue(false);
       };
-      expect(bowling.score).toEqual(25)
+      expect(bowling.score).toEqual(25);
     });
 
-    it("add bonus scores in case of spares, in 6 frames", function() {
-      spyOn(Math, "floor").and.returnValue(5);
-      for (var i = 0; i < 12; i++) {
+    it("adds bonus scores in case of spares, in 6 frames", function() {
+      frame.roll.and.returnValue(5);
+      for (var i = 0; i < 6; i++) {
+        frame.isSecondRoll.and.returnValue(true);
         bowling.roll();
+        frame.isFrameOver.and.returnValue(false);
+        frame.isSecondRoll.and.returnValue(false);
+        bowling.roll();
+        frame.isFrameOver.and.returnValue(true)
       }
       expect(bowling.score).toEqual(85);
     });
-  });
-
-  describe("handle the 10th frame", function() {
-    it("lets user rolls 3 times in the 10th frame", function() {
-      spyOn(Math, "floor").and.returnValue(5);
-      for (var i = 0; i < 20; i++) {
-        bowling.roll();
-      };
-      expect(bowling.frameNumber).toEqual(10);
-      bowling.roll();
-      expect(bowling.score).toEqual(150);
-    })
   });
 });

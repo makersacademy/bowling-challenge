@@ -1,7 +1,10 @@
 /* jshint -W117 */
 
+MAX_FRAMES = 10;
+
 BowlingGame = function() { 'use strict';
   this.frames = [];
+  this.gameLength = MAX_FRAMES;
 }
 
 BowlingGame.prototype = {
@@ -18,6 +21,6 @@ BowlingGame.prototype = {
     }, 0);
   },
   isOver: function() {
-    return this.frames.length >= 10;
+    return this.frames.length >= this.gameLength;
   }
 }

@@ -12,11 +12,20 @@ Game.prototype = {
 
   updateScore: function() {
     this.frameDecrease();
-    this._currScore = this.frame.rollOne() + this.frame.rollTwo();
+    this._currScore += (this.firstRoll() + this.secondRoll());
   },
 
   playerScore: function() {
     return this._currScore
-  }
+  },
+
+  firstRoll: function() {
+    return this.frame.rollOne();
+  },
+
+  secondRoll: function() {
+    return this.frame.rollTwo();
+  },
+
 
 }

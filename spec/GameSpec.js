@@ -29,4 +29,18 @@ describe('A game', function() {
       expect(game.remainingFrames).toEqual(9);
     });
 
-  });
+    describe('A completed frame', function(){
+      it('will update the score after multiple frames', function (){
+        spyOn(Math, 'random').and.returnValue(0.4)
+        game.firstRoll();
+        game.secondRoll();
+        game.updateScore();
+        game.firstRoll();
+        game.secondRoll();
+        game.updateScore();
+        expect(game.playerScore()).toEqual(16);
+      });
+
+      });
+
+    });

@@ -29,5 +29,18 @@ describe('A frame', function(){
     });
 
   });
+    it('Understands a strike', function(){
+      spyOn(Math, 'random').and.returnValue(0.99)
+      frame.rollOne();
+      expect(frame.isStrike()).toEqual(true);
+    });
+
+    it('Understands a spare', function (){
+      spyOn(Math, 'random').and.returnValue(0.5)
+      frame.rollOne();
+      frame.rollTwo();
+      expect(frame.isSpare()).toEqual(true);
+
+    });
 
 });

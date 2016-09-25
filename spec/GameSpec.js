@@ -1,3 +1,4 @@
+
 describe('A game', function() {
   var game;
 

@@ -23,4 +23,17 @@ Frame.prototype = {
     return this._standingPins -= this._pinsKnocked;
   },
 
+  isStrike: function() {
+    if (this.rollOne() === 10) {
+      return true
+    }
+    return false;
+  },
+
+  isSpare: function() {
+    if ((this.rollOne() + this.rollTwo()) === 10) {
+      return true;
+    }
+    return false;
+  }
 };

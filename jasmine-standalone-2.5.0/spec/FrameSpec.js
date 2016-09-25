@@ -13,4 +13,10 @@ describe('Frame', function() { 'use strict';
     expect(frame.isSpare()).toEqual(true);
   })
 
+  it('knows when is a strike', function() {
+    var frame = new Frame([10,0]);
+    expect(frame.isStrike()).toEqual(true);
+  })
+
+
 });

@@ -13,5 +13,8 @@ Frame.prototype = {
   },
   isSpare: function() {
     return this._rolls[0] + this._rolls[1] === 10;
+  },
+  isStrike: function() {
+    return this._rolls[0] === 10;
   }
 }

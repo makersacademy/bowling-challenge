@@ -19,10 +19,6 @@ $(document).ready(function() {
     updateScore();
   };
 
-  var endGame = function () {
-
-  }
-
   var updateTableFirstRoll = function() {
     $('#gameTableBody').append(
       $('<tr>'),
@@ -41,11 +37,9 @@ $(document).ready(function() {
         $('<td>').text(myGame.showScore())
   )};
 
-
   $( "#rollBtn" ).click(function() {
     console.log(myGame);
-    var isGameComplete = myGame._rounds.length >= 12;
-    isGameComplete ? resetGame() : myGame.play();
+    (myGame._rounds.length === 11) ? resetGame() : myGame.play();
     var isFirstRoll = getCurrentRound().showNumRolls() === 1;
     isFirstRoll ? updateTableFirstRoll() : updateTableSecondRoll();
     updateScore();

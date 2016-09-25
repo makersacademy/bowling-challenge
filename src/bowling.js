@@ -11,29 +11,22 @@ function Bowling(name) {
 
 Bowling.prototype = {
   roll: function() {
-    if(this.noMoreFramesToPlay()) { throw Error(this._GAME_ENDED_ERROR); }
-    if (this.isNewFrameNeeded()) {
-      this.frameNumber++;
-      this._currentFrame = new Frame(this.frameNumber);
-    }
+    if (this.noMoreFramesToPlay()) { throw Error(this._GAME_ENDED_ERROR); }
+    if (this._isNewFrameNeeded()) { this._createNewFrame() };
     this._executeRoll();
   },
-  calculateAndAddBonusScore: function() {
-    if (this.isFirstRoll()) {
-      this.calculateSpareBonusScore();
-      this.calculateStrikeBonusScore();
-    } else if (this.isSecondRoll()) {
-      this.calculateStrikeBonusScore();
-    }
+  _calculateAndAddBonusScore: function() {
+    if (this._currentFrame.isSecondRoll()) { this._calculateSpareBonusScore() }
+    if (!this._currentFrame.isBonunsRollInLastFrame()) { this._calculateStrikeBonusScore() };
   },
-  calculateStrikeBonusScore: function() {
-    if (this.isStrikeBonusAvailable()) {
+  _calculateStrikeBonusScore: function() {
+    if (this._isStrikeBonusAvailable()) {
       var bonusScore = this._game[this._game.length - 1] + this._game[this._game.length - 2];
       this.score += bonusScore;
     }
   },
-  calculateSpareBonusScore: function() {
-    if (this.isSpareBonusAvailable()) {
+  _calculateSpareBonusScore: function() {
+    if (this._isSpareBonusAvailable()) {
       var bonusScore = this._game[this._game.length - 1];
       this.score += bonusScore;
     }
@@ -41,30 +34,28 @@ Bowling.prototype = {
   noMoreFramesToPlay: function() {
     return (this.frameNumber === 10 && this._currentFrame.isFrameOver());
   },
-  isFirstRoll: function() {
-    return this._currentFrame.frameContent.length === 1;
-  },
-  isSecondRoll: function() {
-    return this._currentFrame.frameContent.length === 2;
-  },
-  isStrikeBonusAvailable: function() {
+  _isStrikeBonusAvailable: function() {
     return this._game.length > 2 && (this._game[this._game.length - 3] === 10);
   },
-  isSpareBonusAvailable: function() {
-    return this._game.length > 2 && this.isStrikeIncludedInLastTwoRolls() && this.isLastFrameASpare();
+  _isSpareBonusAvailable: function() {
+    return this._game.length > 2 && this._isStrikeIncludedInLastTwoRolls() && this._isLastFrameASpare();
   },
-  isLastFrameASpare: function() {
+  _isLastFrameASpare: function() {
     return (this._game[this._game.length - 2] + this._game[this._game.length - 3]) === 10;
   },
-  isStrikeIncludedInLastTwoRolls: function() {
+  _isStrikeIncludedInLastTwoRolls: function() {
     return (this._game[this._game.length - 2] !== 10) && (this._game[this._game.length - 3] !== 10)
   },
-  isNewFrameNeeded: function() {
+  _isNewFrameNeeded: function() {
     return this._currentFrame === undefined || this._currentFrame.isFrameOver()
   },
   _executeRoll: function() {
     this._game.push(this._currentFrame.roll());
     this.score += this._game[this._game.length - 1];
-    this.calculateAndAddBonusScore();
+    this._calculateAndAddBonusScore();
+  },
+  _createNewFrame: function() {
+    this.frameNumber++;
+    this._currentFrame = new Frame(this.frameNumber);
   }
 };

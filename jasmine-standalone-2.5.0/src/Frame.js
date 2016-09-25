@@ -6,7 +6,14 @@ Frame = function(rolls) { 'use strict';
 }
 
 Frame.prototype = {
-  total: function() {
+  totalScore: function(nextFrame) {
+    if (this.isSpare()) {
+      return this.totalFrame() + nextFrame._rolls[0];
+    } else {
+    return this.totalFrame()
+  }
+  },
+  totalFrame: function() {
     return this._rolls.reduce(function(a,b){
       return a + b;
     })

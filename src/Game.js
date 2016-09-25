@@ -8,7 +8,7 @@ function Game() {
 
 Game.prototype.bowl = function (rolls) {
   if (this.isOver()) {
-    return;
+    throw new Error ("Game finished. Please start new game.");
   }
   this.frames.push(new Frame(rolls));
 };

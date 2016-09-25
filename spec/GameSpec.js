@@ -53,8 +53,9 @@ describe("Game", function(){
   })
 
   it("doesn't add score from 11th frame", function(){
-    setUpFrames([1,1],11);
-    expect(game.score()).toEqual(20);
+    setUpFrames([0,0],10);
+    msg = "Game finished. Please start new game.";
+    expect(function() {game.bowl([0,0])}).toThrowError(msg);
   })
 
 })

@@ -10,8 +10,8 @@ BowlingGame.prototype = {
   },
   score: function() {
     return this.frames.reduce(
-      function(total, frame) {
-        return total + frame.totalScore();
+      function(total, frame, i, frames) {
+        return total + frame.totalScore(frames[i+1]);
     }, 0);
   }
 }

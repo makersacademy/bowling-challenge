@@ -9,7 +9,7 @@ $(document).ready(function() {
 
   $("#name_submit").click(function() {
     var name = $("#playerName").val();
-    bowling = new Bowling(name, Frame);
+    bowling = new Bowling(name);
     $("#welcome_user").text("Welcome, " + name + "!");
     renderGameContent();
   });

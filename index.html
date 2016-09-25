@@ -1,20 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Bowl On Yo</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="lib/styles.css">
-
-  <!-- include source files here... -->
+  <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lobster:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="lib/normalize.css">
+  <link rel="stylesheet" href="lib/skeleton.css">
+  <link rel="icon" type="image/png" href="images/favicon.ico">
 
 </head>
 
 <body>
 
+  <div class="container">
+    <div class="row" style="margin-top: 15%">
+      <div class="row">
+        <div class="twelve columns">
+          <h2>Bowl On!</h2>
+          <h5>A simple one-page Javascript and jQuery application of one player 10-pin bowling</h5>
+          <hr>
+        </div>
 
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="three columns" id="space"> .
+      </div>
+      <div class="three columns vertAlign">
+        <h3> Your Score</h3>
+      </div>
+      <div class="three columns">
+        <h1 id="score"> 123 </h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="four columns" id="space">.
+      </div>
+      <div class="four columns">
+        <button id="rollBtn" class="button-primary twelve columns">Roll</button>
+      </div>
+    </div>
 
+    <hr>
+
+    <div class="row">
+      <div class="two columns" id="space"> .
+      </div>
+      <div class="eight columns">
+
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>Frame</th>
+              <th>Roll</th>
+              <th>Pins Hit</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody id="gameTableBody">
+            <tr>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <hr>
+      <div class="twelve columns" style="text-align: center">
+        <button id="resetBtn" class="button">Reset</button>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class"row">
+      <p style="text-align: center"> Made by <a href="https://github.com/mfperkins">mfperkins</a> in September 2016</p>
+    </div>
+
+  </div>
 
   <script src="lib/jquery-3.1.0.min.js"></script>
   <script src="src/Roll.js"></script>

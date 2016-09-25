@@ -51,6 +51,6 @@ Game.prototype = {
   play: function (round) {
     if (this.showCurrentRound() === null) {this._newRound(round)}
     this.showCurrentRound().roll();
-    if (this.showCurrentRound().showNumRolls() === 2) {this._roundComplete()}
+    if ((this.showCurrentRound().showNumRolls() === 2)) {this._roundComplete()}
   }
 }

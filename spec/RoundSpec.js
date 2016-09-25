@@ -77,10 +77,11 @@ describe("Round", function() {
       expect(round.showPinsLeft()).toEqual(3);
     });
 
-    it("the firstRollPinHits should be 2", function () {
+    it("the firstRollPinHits = 2, secondRollPinsHit = 5", function() {
       round.roll(firstRoll);
       round.roll(secondRoll);
       expect(round.firstRollPinsHit()).toEqual(2);
+      expect(round.secondRollPinsHit()).toEqual(5);
     });
 
   });
@@ -102,8 +103,8 @@ describe("Round", function() {
   describe("After a spare it... ", function() {
 
     beforeEach(function(){
-        firstRoll.showPinsHit.and.returnValue(5);
-        secondRoll.showPinsHit.and.returnValue(5);
+        firstRoll.showPinsHit.and.returnValue(7);
+        secondRoll.showPinsHit.and.returnValue(3);
       });
 
     it("should update the pinsLeft", function () {

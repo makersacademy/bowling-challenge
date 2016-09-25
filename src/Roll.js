@@ -15,6 +15,7 @@ Roll.prototype = {
   },
 
   _roll: function (pins) {
-    this._pinsHit = Math.floor(Math.random() * pins);
+    this._pinsHit = Math.floor(Math.random() * (pins + 1));
   }
+
 };

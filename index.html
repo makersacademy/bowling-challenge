@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling game</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="./src/interface.js"></script>
+    <style>
+   .jumbotron {
+     padding: 0px;
+     display: flex;
+     align-items: center;
+     background-image: url('https://static.pexels.com/photos/4192/sport-alley-ball-game.jpg');
+     background-size: cover;
+     color: #ffffff;
+     height: 600px;
+     text-shadow: 0.25px 0.25px 0.25px #000000;
+   }
+</style>
+</head>
+  <body>
+    <section class="jumbotron">
+      <div class="container" id="main_area">
+        <div class="row text-center">
+          <h1>Fancy a game?</h1>
+          <div class="btn-group">
+            <div class="input-group input-append date" id="datePicker">
+              <input type="text" class="form-control" id="playerName" require/>
+            </div>
+            <div class="col-xs-5 col-xs-offset-3">
+              <button class="btn btn-default" id="name_submit">Start</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container" id="game_area">
+        <div class="row text-center">
+          <h1 id="welcome_user"></h1>
+          <div class="col-xs-5 col-xs-offset-3">
+            <button class="btn btn-default" id="roll">Roll</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12" style="height: 350px;">
+            <div class="row">
+            <div class="col-xs-6 col-md-4">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Frame</th>
+                    <th>Roll</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="f1">Frame #1</td>
+                    <td id="r1">Roll #1</td>
+                    <td id="r1_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f1">Frame #1</td>
+                    <td id="r2">Roll #2</td>
+                    <td id="r2_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f2">Frame #2</td>
+                    <td id="r3">Roll #1</td>
+                    <td id="r3_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f2">Frame #2</td>
+                    <td id="r4">Roll #2</td>
+                    <td id="r4_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f3">Frame #3</td>
+                    <td id="r5">Roll #1</td>
+                    <td id="r5_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f3">Frame #3</td>
+                    <td id="r6">Roll #2</td>
+                    <td id="r6_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f4">Frame #4</td>
+                    <td id="r7">Roll #1</td>
+                    <td id="r7_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f4">Frame #4</td>
+                    <td id="r8">Roll #2</td>
+                    <td id="r8_result"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-xs-6 col-md-4">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Frame</th>
+                    <th>Roll</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="f5">Frame #5</td>
+                    <td id="r9">Roll #1</td>
+                    <td id="r9_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f5">Frame #5</td>
+                    <td id="r10">Roll #2</td>
+                    <td id="r10_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f6">Frame #6</td>
+                    <td id="r11">Roll #1</td>
+                    <td id="r11_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f6">Frame #6</td>
+                    <td id="r12">Roll #2</td>
+                    <td id="r12_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f7">Frame #7</td>
+                    <td id="r13">Roll #1</td>
+                    <td id="r13_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f7">Frame #7</td>
+                    <td id="r14">Roll #2</td>
+                    <td id="r14_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f8">Frame #8</td>
+                    <td id="r15">Roll #1</td>
+                    <td id="r15_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f8">Frame #8</td>
+                    <td id="r16">Roll #2</td>
+                    <td id="r16_result"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-xs-6 col-md-4">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Frame</th>
+                    <th>Roll</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="f9">Frame #9</td>
+                    <td id="r17">Roll #1</td>
+                    <td id="r17_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f9">Frame #9</td>
+                    <td id="r18">Roll #2</td>
+                    <td id="r18_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f10">Frame #10</td>
+                    <td id="r19">Roll #1</td>
+                    <td id="r19_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f10">Frame #10</td>
+                    <td id="r20">Roll #2</td>
+                    <td id="r20_result"></td>
+                  </tr>
+                  <tr>
+                    <td id="f10">Frame #10</td>
+                    <td id="r21">Bonus roll</td>
+                    <td id="r21_result"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="row text-center">
+          <h2 id="score">Your score: </h2>
+        </div>
+      </div>
+    </section>
+      <div class="container" id="game_over">
+        <div class="row text-center">
+          <h1 id="game_over_msg"></h1>
+        </div>
+      </div>
+    <script src="./src/bowling.js"></script>
+    <script src="./src/frame.js"></script>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 'use strict';
 
-function Bowling(name, frame) {
-  this._frame = frame === undefined ? new Frame() : frame;
+function Bowling(name, frameClass) {
+  this._frameClass = frameClass === undefined ? Frame : frameClass;
   this._game = [];
   this.playerName = name;
   this.score = 0;
@@ -15,13 +15,14 @@ Bowling.prototype = {
     if (this.noMoreFramesToPlay()) { throw Error(this._GAME_ENDED_ERROR); }
     if (this._isNewFrameNeeded()) { this._createNewFrame() };
     this._executeRoll();
+    return this._game[this._game.length - 1];
   },
   _isNewFrameNeeded: function() {
     return this._currentFrame === undefined || this._currentFrame.isFrameOver()
   },
   _createNewFrame: function() {
     this.frameNumber++;
-    this._currentFrame = this._frame;
+    this._currentFrame = new this._frameClass();
     this._currentFrame.setFrameNumber(this.frameNumber);
   },
   _executeRoll: function() {

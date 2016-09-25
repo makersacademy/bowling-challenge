@@ -36,5 +36,8 @@ Frame.prototype = {
   },
   isStrike: function() {
     return this._rolls[0] === this._pins;
+  },
+  isInvalid: function() {
+    return this.totalFrame() > this._pins;
   }
 }

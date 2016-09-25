@@ -69,5 +69,8 @@ describe('BowlingGame', function() { 'use strict';
       expect(function(){game.roll([1,1]);}).toThrowError('No frames remaining');
     })
 
+    it('does not accept an invalid roll', function() {
+      expect(function(){game.roll([5,6]);}).toThrowError('Invalid roll');
+    })
   });
 });

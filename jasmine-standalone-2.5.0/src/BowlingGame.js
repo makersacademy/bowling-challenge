@@ -9,10 +9,10 @@ BowlingGame = function() { 'use strict';
 
 BowlingGame.prototype = {
   roll: function(rolls) {
-    if (this.isOver()) {
-      throw new Error ('No frames remaining');
-    }
-    this.frames.push(new Frame(rolls));
+    var frame = new Frame(rolls);
+    if (this.isOver()) { throw new Error ('No frames remaining'); }
+    if (frame.isInvalid()) { throw new Error ('Invalid roll'); }
+    this.frames.push(frame);
   },
   score: function() {
     return this.frames.reduce(

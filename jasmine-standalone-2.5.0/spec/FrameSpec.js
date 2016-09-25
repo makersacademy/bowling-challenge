@@ -1,5 +1,4 @@
-/* jshint undef: true, unused: true */
-/* globals Frame, expect */
+/* jshint -W117 */
 
 describe('Frame', function() { 'use strict';
 

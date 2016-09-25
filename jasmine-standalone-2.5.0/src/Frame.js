@@ -1,5 +1,4 @@
-/* jshint undef: true, unused: true */
-/* globals Frame */
+/* jshint -W117 */
 
 Frame = function(rolls) { 'use strict';
   this._rolls = rolls;

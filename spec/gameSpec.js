@@ -31,16 +31,16 @@ beforeEach(function(){
   describe('game score calculation', function(){
     it('can calculate gutter game score as zero', function(){
       gameOfFrames([0,0]);
-      console.log(game.frames);
+      console.log(game.score());
       expect(game.score()).toEqual(0);
     });
   });
 
-  function gameOfFrames(frame, final_frame) {
-      for(i = 0; i < 9; i++) {
-        game.bowl(frame);
-      }
-      game.bowl(final_frame || frame);
+  function gameOfFrames(frame) {
+    for(i = 0; i < 9; i++) {
+      game.bowl(frame);
     }
+  }
+
 
 });

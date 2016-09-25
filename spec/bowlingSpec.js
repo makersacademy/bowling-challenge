@@ -26,7 +26,8 @@ describe("Bowling", function() {
       // to be define
     })
 
-    it("increases the frameNumber after completing a frame", function() {
+    it("if a frame is finished, the frameNumber is increased in the following frame", function() {    
+      bowling.roll();
       bowling.roll();
       bowling.roll();
       expect(bowling.frameNumber).toEqual(2);
@@ -35,7 +36,7 @@ describe("Bowling", function() {
     it("finishes the frame if the first roll is a strike", function() {
       spyOn(Math, "floor").and.returnValue(10);
       bowling.roll();
-      expect(bowling.frameNumber).toEqual(2);
+      expect(bowling._currentFrame.isFrameOver()).toEqual(true);
     });
 
     it("plays the gutter game", function() {
@@ -72,13 +73,10 @@ describe("Bowling", function() {
 
     it("raises error if there is no more frame left to play with", function() {
       spyOn(Math, "floor").and.returnValue(2);
-      for (var i = 0; i < 20; i++) {
-        bowling.roll();
-      }
+      for (var i = 0; i < 20; i++) { bowling.roll(); }
       expect(function() {
         bowling.roll();
       }).toThrowError("Game over. No more frame left.");
-
     })
   });
 

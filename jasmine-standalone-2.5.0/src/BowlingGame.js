@@ -11,7 +11,7 @@ BowlingGame.prototype = {
   score: function() {
     return this.frames.reduce(
       function(total, frame, i, frames) {
-        return total + frame.totalScore(frames[i+1]);
+        return total + frame.totalScore(frames[i+1], frames[i+2]);
     }, 0);
   }
 }

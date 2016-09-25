@@ -31,4 +31,10 @@ describe('BowlingGame', function() { 'use strict';
     expect(game.score()).toEqual(14);
   })
 
+  it('can score a game with a strike frame', function() {
+    bowlFrames(1, [10,0])
+    bowlFrames(1, [1,2])
+    expect(game.score()).toEqual(16);
+  })
+
 });

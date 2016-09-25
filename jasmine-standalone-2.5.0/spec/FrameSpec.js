@@ -8,4 +8,9 @@ describe('Frame', function() { 'use strict';
     expect(frame.total()).toEqual(7);
   })
 
+  it('knows when is a spare', function() {
+    var frame = new Frame([5,5]);
+    expect(frame.isSpare()).toEqual(true);
+  })
+
 });

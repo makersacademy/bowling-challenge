@@ -6,8 +6,13 @@ Frame = function(rolls) { 'use strict';
 }
 
 Frame.prototype = {
-  totalScore: function(nextFrame) {
-    if (this.isSpare()) {
+  totalScore: function(nextFrame, secondNextFrame) {
+    if (this.isStrike()) {
+      if (nextFrame.isStrike()) {
+        return this.totalFrame() + nextFrame.totalFrame() + secondNextFrame._rolls[0];
+      }
+      return this.totalFrame() + nextFrame.totalFrame();
+    } else if (this.isSpare()) {
       return this.totalFrame() + nextFrame._rolls[0];
     } else {
     return this.totalFrame()

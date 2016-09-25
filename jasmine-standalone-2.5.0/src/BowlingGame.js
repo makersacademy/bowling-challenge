@@ -9,6 +9,9 @@ BowlingGame.prototype = {
     this.frames.push(new Frame(rolls));
   },
   score: function() {
-    return 0;
+    return this.frames.reduce(
+      function(total, frame) {
+        return total + frame.totalScore();
+    }, 0);
   }
 }

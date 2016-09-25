@@ -18,4 +18,11 @@ describe('BowlingGame', function() { 'use strict';
     bowlFrames(10, [0,0])
     expect(game.score()).toEqual(0);
   })
+
+  it('can score a game with two regular frames', function() {
+    bowlFrames(1, [1,2])
+    bowlFrames(1, [3,4])
+    expect(game.score()).toEqual(10);
+  })
+
 });

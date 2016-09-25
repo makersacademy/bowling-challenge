@@ -46,19 +46,26 @@ Game.prototype.endRound = function () {
 
 Game.prototype.scoreGame = function () {
   this.score = 0;
-  
+
   this.rounds.forEach(function(round) {
-    var roll1 = round.firstRoll;
-
-
-
+    if (round.strike === true) {
+      this.score += 10;
+    } else {
+      this.score += round.secondRoll.finishingPins;
+    }
   });
 
-}
+  Game.prototype.scoreGame = function () {
+    this.score = 0;
 
-  // this.rounds.forEach(function(round) {
-  //   var roll1 = round.firstRoll;
-  //
-  //
-  //   this.score = this.score + (roll1Pins + roll2Pins);
-  // });
+    var i = 0;
+    while (i < this.rounds.length) {
+      if (this.rounds[i].strike === true) {
+        this.score += 10 //strike score
+      } else {
+        this.score += 10 - this.rounds[i].secondRoll.finishingPins;
+      }
+      i++;
+    }
+  };
+}

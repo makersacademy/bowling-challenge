@@ -9,10 +9,12 @@ $( document ).ready(function() {
   });
 
   function refresh() {
+    game.scoreGame();
     $('#roundnumber').text(game.rounds.length + 1);
     $('#bowlnumber').text(game.currentRound.bowlNumber);
     $('#bowltotal').text(getBowlTotal());
     $('#score').text(game.score);
+    console.log(game);
   }
 
   function newPageStatus() {
@@ -28,14 +30,5 @@ $( document ).ready(function() {
       return 2;
     }
   }
-
-  // function prevBowlResult() {
-  //   if (game.prevBowl === null) {
-  //     return "N/A";
-  //   }
-  //   else {
-  //     return game.prevBowl.
-  //   }
-  // }
 
 });

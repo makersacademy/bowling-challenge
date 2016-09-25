@@ -7,28 +7,19 @@ describe('Game feature tests', function () {
 
   function playRound() {
       game.newRound();
-      game.firstRoll();
-      game.secondRoll();
+      game.bowl(); //first bowl
+      game.bowl(); // second bowl
   }
 
   it('creates a new round', function() {
     game.newRound();
     expect(game.currentRound).not.toEqual(null);
-    console.log(game.currentRound);
   });
 
   it('creates a new round with two rolls', function() {
     playRound();
-    console.log(game.currentRound);
-    expect(game.currentRound.firstRoll).not.toEqual(null);
 
-    if (game.currentRound.strike === true) {
-      expect(game.currentRound.secondRoll).toEqual(null);
-    } else {
-      expect(game.currentRound.secondRoll).not.toEqual(null);
-    }
     expect(game.rounds.length).toEqual(1);
-    console.log(game);
   });
 
   it('runs through a game with multiple rolls', function() {
@@ -37,23 +28,27 @@ describe('Game feature tests', function () {
     playRound();
 
     expect(game.rounds.length).toEqual(3);
-    console.log(game);
   });
 
-  it('runs through an entier game', function() {
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
+  it('alerts you when you try to play after the game is over.', function() {
+    spyOn(window, 'alert');
 
-
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    expect(window.alert).toHaveBeenCalledWith("The game is over! Refresh the page to play again.");
   });
+
+  // it("plays a regular game from start to finish", function() {
+  //
+  // });
 
 
 });

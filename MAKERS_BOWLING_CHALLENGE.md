@@ -2,40 +2,25 @@
 Bowling Challenge
 =================
 
+
+* Challenge time: rest of the day and weekend, and the entire of lab week if you need it, until Monday 9am
+* Feel free to use google, your notes, books, etc. but work on your own
+* If you refer to the solution of another coach or student, please put a link to that in your README
+* If you have a partial solution, **still check in a partial solution**
+* You must submit a pull request to this repo with your code by 9am Monday week
+
 Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
-#### Bowling Score Sheet
-![Bowling Score Sheet](images/BowlingScoreSheet.jpg)
-
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-User stories:
--------
+As usual please start by
 
-```
-As a bowler
-So that I can keep track of my score during a bowling game
-I want to be able to log my scores on a scoresheet
+* Forking this repo
 
-As a bowler
-So that I can focus on knocking down all pins within each frame
-I want to be given the remaining number of pins following each throw
-
-As a bowler
-So that I can keep track of my remaining rolls during a bowling game
-I want the scoresheet to display all 10 frames and pins knocked down with each roll
-
-As a bowler
-So that my scores are displayed correctly for each frame
-I want the final score for each frame to be displayed once the bonus rolls following spares and strikes have been thrown
-
-As a bowler
-So that I can play several games
-I want to have the option of starting a new game once I have finished a game
-```
+* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
 
 
 ### Optional Extra
@@ -70,3 +55,25 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+
+Code Review
+-----------
+
+In code review we'll be hoping to see:
+
+* All tests passing
+* The code is elegant: every class has a clear responsibility, methods are short etc.
+
+Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+CI
+--
+
+We are running JSHint on our CI server - save yourself having to wait for a build to happen by linting your code on your machine first. [Here are installations for most popular editors](http://jshint.com/install/). Grab the `.jshintrc` from this repo and have better JS!
+
+If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
+
+1. Open up your `.travis.yml`
+2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
+3. Adjust these to point to the correct directories
+4. Done.

@@ -40,7 +40,7 @@ function Game() {
       for(i = 0; i < this._frames.length; i++) {
         var thisFrame = this._frames[i];
         if(thisFrame === this._frames[10]) {
-          tempScore += calculateTenthFrame(thisFrame);
+          tempScore += this.calculateTenthFrame(thisFrame);
         } else {
         tempBonus += this.calculateBonus(thisFrame, this._frames[i+1]);
         tempScore += thisFrame.firstBowl + thisFrame.secondBowl;

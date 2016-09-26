@@ -1,7 +1,3 @@
-/* jshint undef: true, unused: true */
-/* globals Frame */
-/*jshint -W117 */
-
 
 describe ("Frame", function(){
 
@@ -11,7 +7,7 @@ describe ("Frame", function(){
     frame = new Frame();
   });
 
-  describe('starting a frame', function(){
+  describe('starting a new frame', function(){
     it('starts with first bowl equal to null', function() {
       expect(frame.firstBowl).toEqual(null);
     });
@@ -29,18 +25,37 @@ describe ("Frame", function(){
     it('allows a player to take second bowl', function() {
       spyOn(Math, 'random').and.returnValue(0.3);
       frame.bowl();
-      console.log(frame);
       frame.bowl();
-      console.log(frame);
       expect(frame.secondBowl).toEqual(2);
     });
 
-    it('will not allow second bowl if first is a strike', function(){
-      spyOn(Math, 'random').and.returnValue(0.99);
+    it('checks if frame is complete', function() {
+      spyOn(Math, 'random').and.returnValue(0.3);
+      frame.bowl();
       frame.bowl();
       expect(frame.canBowl()).toEqual(false);
     });
+  });
+  describe('it can check if frame is a spare or strike', function() {
 
-  })
+    it('check if frame is a strike', function(){
+      spyOn(Math, 'random').and.returnValue(0.99);
+      frame.bowl();
+      expect(frame.isAStrike()).toEqual(true);
+    });
+
+    it('checks if frame is a spare', function() {
+      spyOn(Math, 'random').and.returnValues(0.5, 0.9);
+      frame.bowl();
+      frame.bowl();
+      expect(frame.isASpare()).toEqual(true);
+    });
+
+    it('isASpare returns false if frame is a strike', function() {
+      spyOn(Math, 'random').and.returnValue(0.99);
+      frame.bowl();
+      expect(frame.isASpare()).toEqual(false);
+    });
+  });
 
 });

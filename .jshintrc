@@ -89,5 +89,5 @@
     "yui"           : false,    // Yahoo User Interface
 
     // Custom Globals
-    "globals"       : { "Frame": true, "Game": true }        // additional predefined global variables
+    "globals"       : { "Frame": true, "Game": true, "TenthFrame": true }        // additional predefined global variables
 }

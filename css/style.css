@@ -1,0 +1,274 @@
+.page {
+  font-family: futura-pt, Futura, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+}
+
+body {
+
+}
+
+.container {
+  position: relative;
+}
+
+#logo {
+  position: absolute;
+  left: 0px;
+  width: 400px;
+  padding-left: 100px;
+}
+
+.player {
+  padding-left: 110px;
+  display: inline;
+}
+
+#scorecard {
+  padding-top: 10px;
+  margin-left: 600px;
+}
+
+#frames {
+  /* position is static by default */
+  margin-left: 600px;
+  max-width: 200px;
+  padding-top: 30px;
+  float: left;
+  position: absolute;;
+}
+
+#bowl_one {
+  /* position is static by default */
+  margin-left: 800px;
+  max-width: 70px;
+  padding-top: 30px;
+  float: left;
+  position: absolute;
+  text-align: left;
+}
+
+#bowl_two {
+  /* position is static by default */
+  margin-left: 1000px;
+  max-width: 70px;
+  padding-top: 30px;
+  float: left;
+}
+
+#left {
+  max-width: 500px;
+  height: 100%;
+  padding-left: 75px;
+  align-items: center;
+  position: relative;
+  float: left;
+}
+
+#right {
+  max-width: 500px;
+  height: 100%;
+  padding-left: 75px;
+  align-items: center;
+  position: relative;
+  float: left;
+  padding-top: 50px;
+  padding-left: 150px;
+}
+
+#frame_buttons {
+  max-width: 100px;
+  height: 100%:
+  border: 2px solid black;
+  position:relative;;
+  float: left;
+}
+
+#frame_scores {
+  max-width: 300px;
+  height: 100%:
+  border: 2px solid black;
+  position:relative;;
+  float: left;
+}
+
+button {
+    background-color: #c53638;
+    border: none;
+    width: 100px;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 2px 1px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+input[type=submit] {
+    background-color: #a29d9a;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 2px 1px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#card {
+  color: black;
+  position: relative;;
+  text-align: left;
+  font-size: 25px;
+  display: inline;
+  max-width: 50px;
+  max-height: 100px;
+}
+
+#display_name {
+  color: #c53638;
+  position: relative;;
+  text-align: left;
+  font-size: 25px;
+  display: inline;
+  max-width: 300px;
+  max-height: 100px;
+}
+
+#display_score {
+  position: relative;
+  display: inline;
+  text-align: right;
+  font-size: 25px;
+  max-width: 150px;
+  max-height: 100px;
+  float: right;
+  padding-right: 130px;
+}
+
+#total_score {
+  color: #c53638;
+  position: relative;
+  display: inline;
+  text-align: right;
+  font-size: 30px;
+  max-width: 50px;
+  max-height: 100px;
+  float: right;
+}
+
+#info {
+  text-align: center;
+}
+
+#rules {
+  color: #c53638;
+  text-align: left;
+  float: left;
+  padding-left: 20px;
+}
+
+
+#frame_one_one {
+  padding-top: 5px;
+  padding-bottom: 20px
+}
+
+#frame_one_two {
+  padding-top: 5px;
+  padding-bottom: 20px
+}
+
+#frame_two_one {
+  padding-top: 7px;
+  padding-bottom: 20px
+}
+
+#frame_two_two {
+  padding-top: 7px;
+  padding-bottom: 20px
+}
+
+#frame_three_one {
+  padding-top: 8px;
+  padding-bottom: 20px
+}
+
+#frame_three_two {
+  padding-top: 8px;
+  padding-bottom: 20px
+}
+
+#frame_four_one {
+  padding-top: 9px;
+  padding-bottom: 20px
+}
+
+#frame_four_two {
+  padding-top: 9px;
+  padding-bottom: 20px
+}
+
+#frame_five_one {
+  padding-top: 9px;
+  padding-bottom: 20px
+}
+
+#frame_five_two {
+  padding-top: 9px;
+  padding-bottom: 20px
+}
+
+#frame_six_one {
+  padding-top: 9px;
+  padding-bottom: 20px
+}
+
+#frame_six_two {
+  padding-top: 9px;
+  padding-bottom: 30px
+}
+
+#frame_seven_one {
+  padding-top: 9px;
+  padding-bottom: 20px
+}
+
+#frame_seven_two {
+  padding-top: -1px;
+  padding-bottom: 20px
+}
+
+#frame_eight_one {
+  padding-top: 9px;
+  padding-bottom: 20px
+}
+
+#frame_eight_two {
+  padding-top: 7px;
+  padding-bottom: 20px
+}
+
+#frame_nine_one {
+  padding-top: 10px;
+  padding-bottom: 20px
+}
+
+#frame_nine_two {
+  padding-top: 10px;
+  padding-bottom: 20px
+}
+
+#frame_ten_one {
+  padding-top: 9px;
+  padding-bottom: 20px
+}
+
+#frame_ten_two {
+  padding-top: 8px;
+  padding-bottom: 20px
+}

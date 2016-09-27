@@ -12,7 +12,7 @@ To view this game in all of it's glory:
 Clone this repo
 ```
 ```
-Open the index.html in your browser and follow the on screen game instructions
+Open the bowling.html in your browser and follow the on screen game instructions
 ```
 
 Enjoy!!

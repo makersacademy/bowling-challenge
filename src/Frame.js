@@ -17,20 +17,24 @@ Frame.prototype = {
     return this.totalFrame()
   }
   },
+
   totalFrame: function() {
     return this._rolls.reduce(function(a,b){
       return a + b;
     })
   },
+
   strikeScore: function(nextFrame, secondNextFrame) {
     if (nextFrame.isStrike()) {
       return this.totalFrame() + nextFrame.totalFrame() + secondNextFrame._rolls[0];
     }
     return this.totalFrame() + nextFrame.totalFrame();
   },
+
   spareScore: function(nextFrame) {
     return this.totalFrame() + nextFrame._rolls[0];
   },
+
   isSpare: function() {
     return this._rolls[0] + this._rolls[1] === this._pins;
   },

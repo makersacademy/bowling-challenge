@@ -10,16 +10,26 @@ BowlingGame = function() { 'use strict';
 BowlingGame.prototype = {
   roll: function(rolls) {
     var frame = new Frame(rolls);
-    if (this.isOver()) { throw new Error ('No frames remaining'); }
-    if (frame.isInvalid()) { throw new Error ('Invalid roll'); }
+    this.checkGameStatus();
+    this.checkRollValid(frame);
     this.frames.push(frame);
   },
+
   score: function() {
     return this.frames.reduce(
       function(total, frame, i, frames) {
         return total + frame.totalScore(frames[i+1], frames[i+2]);
     }, 0);
   },
+  
+  checkGameStatus: function() {
+    if (this.isOver()) { throw new Error ('No frames remaining'); }
+  },
+
+  checkRollValid: function(frame) {
+  if (frame.isInvalid()) { throw new Error ('Invalid roll'); }
+  },
+
   isOver: function() {
     return this.frames.length >= this.gameLength;
   }

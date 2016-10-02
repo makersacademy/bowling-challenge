@@ -17,6 +17,9 @@ Bowling.prototype = {
     this._executeRoll();
     return this._game[this._game.length - 1];
   },
+  getRollNumber: function() {
+    return this._currentFrame.getRollNumber();
+  },
   _isNewFrameNeeded: function() {
     return this._currentFrame === undefined || this._currentFrame.isFrameOver()
   },

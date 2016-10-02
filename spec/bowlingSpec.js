@@ -6,12 +6,12 @@ describe("Bowling", function() {
   var frame;
 
   beforeEach(function() {
-    frame = jasmine.createSpyObj("frame", ["isFrameOver", "setFrameNumber", "roll", "isSecondRoll", "isBonunsRollInLastFrame"]);
+    frame = jasmine.createSpyObj("frame", ["isFrameOver", "setFrameNumber", "roll", "isSecondRoll", "isBonunsRollInLastFrame", "getRollNumber"]);
     spyOn(window, "Frame").and.returnValue(frame);
     frame.isFrameOver.and.returnValue(false);
     frame.isBonunsRollInLastFrame.and.returnValue(false);
     frame.isSecondRoll.and.returnValue(false);
-    bowling = new Bowling("Bob");
+    bowling = new Bowling("Bob", Frame);
   });
 
   describe("stores player name", function() {

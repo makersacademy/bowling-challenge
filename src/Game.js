@@ -2,7 +2,7 @@
 
 function Game() {
 
-  this.frame = 10;
+  this.pins = 10;
 }
 
 

@@ -1,6 +1,13 @@
-// function Game() {
-// }
-// Game.prototype.play = function(song) {
-//   this.currentlyPlayingSong = song;
+'use strict';
+
+function Game() {
+
+  this.frame = 10;
+}
+
+
+
+
+// Game.prototype.play = function(num) {
+//   this.currentlyGame = song;
 //   this.isPlaying = true;
-// };

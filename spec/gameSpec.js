@@ -8,6 +8,6 @@ describe("Game", function() {
   });
 
   it("starts a game with 10 frames", function() {
-    expect(game.frames.length).toEqual(10);
+    expect(game.frame).toEqual(10);
   });
 });

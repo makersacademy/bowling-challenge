@@ -5,9 +5,15 @@ roll.addRoll(2);
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 game = new Game();
 game.addFrame(roll);
-console.log(game.showFrame(1));
-game.addFrame("testgame2");
-console.log(game.showFrame(2));
+//console.log(game.showFrame(1));
+roll = new Roll();
+roll.addRoll(7);
+roll.addRoll(1);
+
+game.addFrame(roll);
+//console.log(game.showFrame(2));
+
+console.log(game.showAllFrames());
 
 
 

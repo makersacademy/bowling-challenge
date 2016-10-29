@@ -1,7 +1,33 @@
+describe("Roll",function(){
+  var roll;
+  beforeEach(function(){
+    roll = new Roll();
+  });
+
+  describe("make a roll",function(){
+    it("should add a new roll",function(){
+      roll.addRoll(9);
+      roll.addRoll(1);
+      expect(roll.roll.length).toEqual(2);
+    })
+  });
+
+  describe("cannot exceed 2 rolls",function(){
+    it("throws an error if there are more that 2 rolls in a frame",function(){
+      roll.addRoll(2);
+      roll.addRoll(1);
+      expect(function(){roll.addRoll(4);}).toThrowError('There are a maximum of 2 rolls per frame');
+    });
+  });
+});
+
+
 describe("Game", function(){
   var game;
+  var roll;
   beforeEach(function(){
     game = new Game();
+
   });
 
   describe("start a new game",function(){
@@ -20,9 +46,15 @@ describe("Game", function(){
 
   describe("get frame roll scores",function(){
     it("should return frame scores",function(){
-      game.addFrame("testgame1");
-      game.addFrame("testgame2");
-      expect(game.showFrame(2)).toEqual("testgame2");
+      roll1 = new Roll();
+      roll1.addRoll(7);
+      roll1.addRoll(2);
+      game.addFrame(roll1);
+      roll2 = new Roll();
+      roll2.addRoll(5);
+      roll2.addRoll(2);
+      game.addFrame(roll2);
+      expect(game.showFrame(2)).toEqual(roll2);
     })
   });
 

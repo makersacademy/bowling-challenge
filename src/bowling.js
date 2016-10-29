@@ -3,7 +3,8 @@
 function Bowling() {
   this.game = []
   this.currentFrame = []
-  this.outcomes = []
+  this.spareOrStrike = []
+  this.bonuses = []
 }
 
 Bowling.prototype.bowl = function(){
@@ -24,11 +25,39 @@ Bowling.prototype.bowlFrame = function(){
 
 Bowling.prototype.determineOutcomeofFrame = function(){
   if(this.currentFrame[0] >= 10) {
-    this.outcomes.push("strike");
+    this.spareOrStrike.push("strike");
   } else if (this.currentFrame[0] + this.currentFrame[1] === 10) {
-      this.outcomes.push("spare");
+      this.spareOrStrike.push("spare");
     }
     else {
-      this.outcomes.push("mediocre");
+      this.spareOrStrike.push("neither");
     }
+  this.bonuses.push([])
+  this.currentFrame = []
+};
+
+Bowling.prototype.calculateBonuses = function(){
+  if (this.game.length > 1) {
+    this.calculateSpareBonus();
+    this.calculateStrikeBonus();
+  }
+};
+
+Bowling.prototype.calculateSpareBonus = function(){
+  if (this.spareOrStrike[this.spareOrStrike.length-2] === "spare") {
+    this.bonuses[this.bonuses.length-2].push(this.game[this.game.length - 1][0]);
+  }
+};
+
+Bowling.prototype.calculateStrikeBonus = function(){
+  if (this.spareOrStrike[this.spareOrStrike.length-2] === "strike" && this.spareOrStrike[this.spareOrStrike.length-3] === "strike") {
+    this.bonuses[this.bonuses.length-3].push(this.game[this.game.length - 1][0]);
+  }
+  else if (this.spareOrStrike[this.spareOrStrike.length-2] === "strike" && this.spareOrStrike[this.spareOrStrike.length-1] === "strike") {
+    this.bonuses[this.bonuses.length-2].push(this.game[this.game.length - 1][0]);
+  }
+  else if (this.spareOrStrike[this.spareOrStrike.length-2] === "strike") {
+    this.bonuses[this.bonuses.length-2].push(this.game[this.game.length - 1][0]);
+    this.bonuses[this.bonuses.length-2].push(this.game[this.game.length - 1][1]);
+  }
 };

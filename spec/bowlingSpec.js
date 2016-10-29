@@ -34,15 +34,19 @@ describe('Bowling', function() {
       spyOn(Math, 'random').and.returnValue(1);
       bowling.bowlFrame();
       bowling.determineOutcomeofFrame();
-      console.log(bowling.currentFrame)
-      expect(bowling.outcomes[(bowling.outcomes.length) - 1]).toEqual("strike");
+      expect(bowling.spareOrStrike[(bowling.spareOrStrike.length) - 1]).toEqual("strike");
     });
-    it("adds 'spare to the outcome array if a frame generates a spare'", function() {
-      spyOn(bowling, 'currentFrame').and.returnValue([5,5]);
+    it("adds 'spare' to the outcome array if a frame generates a spare'", function() {
+      spyOn(Math, 'random').and.returnValues(0.5, 0.9);
       bowling.bowlFrame();
       bowling.determineOutcomeofFrame();
-      console.log(bowling.currentFrame)
-      expect(bowling.outcomes[(bowling.outcomes.length) - 1]).toEqual("spare");
+      expect(bowling.spareOrStrike[(bowling.spareOrStrike.length) - 1]).toEqual("spare");
+    });
+    it("adds 'neither' to the outcome array if neither a spare or strike is bowled", function(){
+      spyOn(Math, 'random').and.returnValues(0.5, 0.5);
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      expect(bowling.spareOrStrike[bowling.spareOrStrike.length - 1]).toEqual('neither');
     });
 
   });
@@ -53,4 +57,44 @@ describe('Bowling', function() {
       expect(bowling.bowl()).toEqual(9);
     });
   });
+
+  describe("Bonuses:", function(){
+    it('adds a bonus of your next bowl when a spare is scored', function(){
+      spyOn(Math, 'random').and.returnValues(0.5, 0.9, 0.5, 0.9);
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      bowling.calculateBonuses();
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      bowling.calculateBonuses();
+      expect(bowling.bonuses[bowling.bonuses.length-2]).toEqual([5])
+    });
+    it('adds both of the bowls scores from your next frame (if not a strike) as a bonus when a strike is scored', function(){
+      spyOn(Math, 'random').and.returnValues(1, 0.3, 0.2);
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      bowling.calculateBonuses();
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      bowling.calculateBonuses();
+      expect(bowling.bonuses[bowling.bonuses.length-2]).toEqual([3, 1])
+    });
+    it('adds bonuses from separate frames if two strikes are scored in a row', function(){
+      spyOn(Math, 'random').and.returnValues(1, 1, 1);
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      bowling.calculateBonuses();
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      bowling.calculateBonuses();
+      bowling.determineOutcomeofFrame();
+      bowling.calculateBonuses();
+      console.log(bowling.game)
+      console.log(bowling.spareOrStrike)
+      console.log(bowling.bonuses)
+      expect(bowling.bonuses[bowling.bonuses.length-3]).toEqual([11, 11])
+
+    });
+  });
+
 });

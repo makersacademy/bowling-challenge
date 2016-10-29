@@ -23,4 +23,10 @@ describe("Frame", function () {
     expect(frame.score).toEqual(9);
   });
 
+  it('knows the frame is complete', function() {
+    frame.addRollOneScore(8);
+    frame.addRollTwoScore(1)
+    expect(frame.isComplete).toBe(true);
+  });
+
 });

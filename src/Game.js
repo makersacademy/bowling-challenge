@@ -1,7 +1,6 @@
 function Game() {
   this.completedFrames = [];
   this.score = 0;
-  this.currentFrame = new Frame();
   this.isOver = false;
 }
 

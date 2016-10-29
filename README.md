@@ -23,6 +23,7 @@ Approach:
 - Before writing any tests / code, I attempted to break down the problem and understand the rules of bowling by writing small, testable, independent user stories (roughly in order of increasing complexity), which I imagine will represent my tests / feature implementations to some degree
 - I then played with scores in Excel to better understand how strikes and spares (especially sequential ones) worked.
 - I also played with http://www.bowlinggenius.com/ to model different scenarios and better understand the required logic
+- Started to write and pass tests for the basic game, i.e. with no strikes or spares. Created Frame and Game objects with their own properties.
 
 User stories:
 -----

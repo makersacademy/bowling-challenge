@@ -2,7 +2,7 @@ describe("Game", function(){
   var game;
 
   beforeEach(function() {
-    game = new Game;
+    game = new Game();
   });
 
   it("adds roll to rolls array", function(){

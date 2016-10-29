@@ -2,7 +2,16 @@ function Frame(bowls) {
    this.bowls = bowls;
   }
 
-  Frame.prototype.total = function(){
+  Frame.prototype.totalScore = function(nextFrame){
+      if (this._isSpare()){
+        return this.frameScore() + nextFrame.bowls[0];
+      }
+      else {
+        return this.frameScore()
+      }
+  };
+
+    Frame.prototype.frameScore = function(nextFrame){
       return this.bowls.reduce(function(a,b){
         return a + b;
       })

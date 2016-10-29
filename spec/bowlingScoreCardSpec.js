@@ -51,24 +51,24 @@ describe ('Scorecard', function() {
         expect(scorecard.getCurrentRoll()).toEqual(2)
       });
 
+      it("it changes to frame 2 after completing a second roll", function () {
+        scorecard.updateScore(1)
+        scorecard.updateScore(2)
+        expect(scorecard.getCurrentFrame()).toEqual(2)
+      });
+
+      it("it resets the frame total to 0 upon changing to a new frame", function () {
+        scorecard.updateScore(10)
+        expect(scorecard.frameTotal).toEqual(0)
+      });
     });
   });
 
+  describe("end conditions", function () {
 
-      // describe("second full turn", function () {
-      //
-      //   it("it changes the rolls to 0 upon starting a new framme", function () {
-      //     scorecar
-      //   });
-      // });
+    it("it ends the game upon completing 10 frames", function () {
 
-
-  //
-  // describe("end conditions", function () {
-  //
-  //   it("it can on", function () {
-  //
-  //   });
-  // });
+    });
+  });
 
 });

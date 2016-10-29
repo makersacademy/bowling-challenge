@@ -25,13 +25,18 @@ Scorecard.prototype.getCurrentRoll = function () {
 }
 
 Scorecard.prototype.updateScore = function (number) {
+  if(this.roll === 1){
+    this.endTurnIfStrike(number);
+  } else if(this.roll === 2){
+    this.updateAllTotalsAndFrame();
+  };
+};
 
-  if(number === 10 && this.roll === 1){
-    this.updateAllTotals(number);
-    this.updateFrame();
+Scorecard.prototype.endTurnIfStrike = function (number) {
+  if(number === 10){
+    this.updateAllTotalsAndFrame(number);
   } else {
-    this.updateAllTotals(number);
-    this.updateRoll();
+    this.updateAllTotalsAndRoll(number);
   };
 };
 
@@ -40,12 +45,23 @@ Scorecard.prototype.updateAllTotals = function (number) {
   this.frameTotal += number;
 };
 
+Scorecard.prototype.updateAllTotalsAndRoll = function (number) {
+  this.updateAllTotals(number);
+  this.updateRoll();
+};
+
+Scorecard.prototype.updateAllTotalsAndFrame = function (number) {
+  this.updateAllTotals(number);
+  this.updateFrame();
+};
+
 Scorecard.prototype.updateRoll = function () {
   this.roll += 1;
 };
 
 Scorecard.prototype.updateFrame = function () {
   this.frame += 1;
+  this.frameTotal = 0;
 };
 
 module.exports = Scorecard;

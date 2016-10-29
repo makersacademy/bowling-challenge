@@ -1,3 +1,4 @@
+'use strict';
 function Game(){
   var frames;
   this.frames = [];
@@ -33,6 +34,12 @@ Roll.prototype.addRoll = function(rollScore){
   if (this.roll.length >= 2) {
     throw new Error('There are a maximum of 2 rolls per frame');
   }
+  if (this.roll.length === 1){
+    if ((rollScore + this.roll[0]) > 10){
+      throw new Error("Score for 2 throws cannot exceed 10");
+    }
+  }
+
   this.roll.push(rollScore);
 };
 

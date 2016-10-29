@@ -1,3 +1,5 @@
+'use strict';
+
 describe("Roll",function(){
   var roll;
   beforeEach(function(){
@@ -19,12 +21,21 @@ describe("Roll",function(){
       expect(function(){roll.addRoll(4);}).toThrowError('There are a maximum of 2 rolls per frame');
     });
   });
+
+  describe("make a second roll in a frame",function(){
+    it("throws an error if the score for 2 rolls in a frame > 10", function(){
+      roll.addRoll(2);
+      expect(function(){roll.addRoll(9);}).toThrowError("Score for 2 throws cannot exceed 10");
+    });
+  });
+
 });
 
 
 describe("Game", function(){
   var game;
-  var roll;
+  var roll1;
+  var roll2;
   beforeEach(function(){
     game = new Game();
 

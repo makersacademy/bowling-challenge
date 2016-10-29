@@ -1,9 +1,9 @@
-'use strict';
-
-function Frame() {
-  this._allFrames = [];
-};
-
-Frame.prototype.save = function (frame) {
-  this._allFrames.push(frame);
-};
+// 'use strict';
+//
+// function Frame() {
+//   this.allFrames = []
+// };
+//
+// Frame.prototype.save = function(frame) {
+//   this.allFrames.push(frame)
+// };

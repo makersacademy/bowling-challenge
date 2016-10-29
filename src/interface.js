@@ -9,13 +9,18 @@ $(document).ready(function(){
     // console.log(roll.showRoll(1));
   // })
 
-  game.addFrame(roll);
+  if (roll.rollComplete){
+    game.addFrame(roll);
+  }
+
   //console.log(game.showFrame(1));
   roll = new Roll();
-  roll.addRoll(7);
-  roll.addRoll(1);
 
-  game.addFrame(roll);
+  roll.addRoll(10);
+
+  if (roll.rollComplete){
+    game.addFrame(roll);
+  }
   //console.log(game.showFrame(2));
 
   console.log(game.showAllFrames());

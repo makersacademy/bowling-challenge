@@ -28,6 +28,7 @@ Game.prototype.showAllFrames = function(){
 function Roll(){
   var roll;
   this.roll = [];
+  var rollComplete = false;
 };
 
 Roll.prototype.addRoll = function(rollScore){
@@ -45,8 +46,8 @@ Roll.prototype.addRoll = function(rollScore){
     }
   }
   this.roll.push(rollScore);
-  if (this.roll.length === 2){
-    // Game.addFrame(this.roll);
+  if ((this.roll.length === 2) || ((this.roll.length === 1)&&(this.roll[0] === 10))){
+    this.rollComplete = true;
   }
 };
 

@@ -9,7 +9,7 @@ require 'rspec'
 require 'coveralls'
 Coveralls.wear!
 
-Capybara.app = Bowling
+Capybara.app = Game
 
 RSpec.configure do |config|
 

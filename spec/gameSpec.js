@@ -36,8 +36,18 @@ describe("Game", function(){
    });
 
    it("scores a perfect game", function(){
-      rollSometoMany(20, 10);
+      rollSometoMany(15, 10);
       expect(game.calcScore()).toEqual(300);
+    });
+
+   it("scores a game of spares", function(){
+       rollSometoMany(21, 5);
+       expect(game.calcScore()).toEqual(150);
+     });
+
+   it("scores a random game", function(){
+      rollSometoMany(21, 2);
+       expect(game.calcScore()).toEqual(40);
     });
 
    function rollSometoMany(rolls, pins){

@@ -28,7 +28,7 @@ User stories:
 -----
 
 ### Basic play
-
+````
 As a player, I can **knock down up to ten pins on my first roll**, so that I can begin a frame.
 
 As a player, I can **knock down the remainder of the pins (ten minus my score from the first roll)**, so that I can finish the frame.
@@ -38,23 +38,23 @@ As a player, I'd like to **see my total score from the frame**, so that I can ev
 As a player, I'd like to **play exactly ten frames**, so I can complete a full (basic) game.
 
 As a player, I'd like to **see my final score for the game**, so I can make a mental comparison against others and myself historically.
+````
 
 ### Gutter game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
+````
 As a player who has completed a basic game, **if I score zero, my game should be marked as a Gutter Game**, so that I can enjoy the full glory / humiliation.
+````
 
 ### Spares
-
+````
 As a player on my second roll, **knocking down all of the remaining pins should be marked as a spare (with a /)**, so that I can revel in the glory.
 
 As as player who just achieved a spare, I'd like the **points from the first roll of the next frame added to the score for my spare frame**, so that I can benefit from the bonus.
 
 As a player who just achieved a spare, my **score for the spare frame should not appear until after the first roll of the next frame**, so that I can see an accurate game score.
-
+````
 ### Strikes
-
+````
 As a player, **if I knock down all ten pins on the first roll, the frame should be marked as a strike (with an X)**, so that I can revel in the glory.
 
 As a player who just achieved a strike, I'd like the **second roll of the frame cancelled**, so that I can move straight onto the next frame of ten pins.
@@ -66,9 +66,9 @@ As a player who just achieved a strike, my **score for the strike frame should n
 [MORE WORK NEEDED HERE]
 As a player who has achieved two strikes in a row
 ...three strikes in a row
-
+````
 ### Final frame
-
+````
 As a player in my 10th frame, **if I roll a strike on the first or second roll I will be given an additional third roll**, so that I can benefit from the bonus points.
 
 As a player in my 10th frame, **if I roll a spare on the second roll I am given an additional third roll**, so that I can benefit from the bonus points.
@@ -77,7 +77,8 @@ As a player in my 10th frame, **if I roll a spare on the second roll I am given 
 As a player with a final bonus roll, the **result of this bonus roll is added to my score**, so that I can see my final score.
 
 [The scores for the final frame shouldn't appear until after the last roll.]
-
+````
 ### Perfect game
-
+````
 As a player, **if I roll 12 strikes (10 regular strikes and 2 for the bonus in the 10th frame) thereby scoring the maximum score of 300, my game should be marked as a Perfect Game**, so that I can enjoy the full glory of this.
+````

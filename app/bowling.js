@@ -1,7 +1,16 @@
 $(document).ready(function() {
-    var frame = 1;
-    var ball = 1;
-    var total = 0;
+  var frame = 1;
+  var ball = 1;
+  var total = 0;
+
+  // Randomise throwAngle
+  var randomAngle = function() {
+    var angle = Math.floor(Math.random() * 21) - 10;
+    $("#throwAngle").val(angle);
+  };
+
+  randomAngle();
+
   $("#bowl").click(function() {
     // Calculate number of pins down
     var pinsDown =  10 - Math.abs($("#throwAngle").val());
@@ -23,5 +32,7 @@ $(document).ready(function() {
       frame++;
       ball = 1;
     }
+
+    randomAngle();
   });
 });

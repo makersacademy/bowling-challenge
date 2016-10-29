@@ -14,5 +14,9 @@ describe ('Scorecard', function() {
     it('it starts with a total score of 0', function(){
       expect(scorecard.total).toEqual(0)
     });
+
+    it('it starts at frame 1', function(){
+      expect(scorecard.getCurrentFrame()).toEqual(1)
+    });
   });
 });

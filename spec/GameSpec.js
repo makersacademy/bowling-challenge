@@ -12,21 +12,23 @@ describe("Roll",function(){
       roll.addRoll(1);
       expect(roll.roll.length).toEqual(2);
     })
-  });
 
-  describe("cannot exceed 2 rolls",function(){
     it("throws an error if there are more that 2 rolls in a frame",function(){
       roll.addRoll(2);
       roll.addRoll(1);
       expect(function(){roll.addRoll(4);}).toThrowError('There are a maximum of 2 rolls per frame');
     });
-  });
 
-  describe("make a second roll in a frame",function(){
     it("throws an error if the score for 2 rolls in a frame > 10", function(){
       roll.addRoll(2);
       expect(function(){roll.addRoll(9);}).toThrowError("Score for 2 throws cannot exceed 10");
     });
+
+    it("throws an error if a 2nd roll is made if the 1st roll was a strike(i.e. scored 10)",function(){
+      roll.addRoll(10);
+      expect(function(){roll.addRoll(1)}).toThrowError("You cannot roll a second time if your 1st roll was a strike");
+    })
+
   });
 
 });

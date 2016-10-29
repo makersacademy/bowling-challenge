@@ -35,6 +35,11 @@ Roll.prototype.addRoll = function(rollScore){
     throw new Error('There are a maximum of 2 rolls per frame');
   }
   if (this.roll.length === 1){
+
+    if (this.roll[0] === 10){
+      throw new Error('You cannot roll a second time if your 1st roll was a strike');
+    }
+
     if ((rollScore + this.roll[0]) > 10){
       throw new Error("Score for 2 throws cannot exceed 10");
     }
@@ -47,6 +52,10 @@ Roll.prototype.showRoll = function(rollNo){
   return this.roll[rollNo-1];
 };
 
+
+Roll.prototype.checkForRollErrors = function(){
+
+}
 
 // function Player() {
 // }

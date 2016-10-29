@@ -89,11 +89,60 @@ describe('Bowling', function() {
       bowling.calculateBonuses();
       bowling.determineOutcomeofFrame();
       bowling.calculateBonuses();
+      expect(bowling.bonuses[bowling.bonuses.length-3]).toEqual([11, 11])
+
+    });
+  });
+
+  describe("Final frame bonus:", function(){
+    beforeEach(function(){
+        bowling.bowlFrame();
+        bowling.determineOutcomeofFrame();
+        bowling.calculateBonuses();
+        bowling.bowlFrame();
+        bowling.determineOutcomeofFrame();
+        bowling.calculateBonuses();
+        bowling.bowlFrame();
+        bowling.determineOutcomeofFrame();
+        bowling.calculateBonuses();
+        bowling.bowlFrame();
+        bowling.determineOutcomeofFrame();
+        bowling.calculateBonuses();
+        bowling.bowlFrame();
+        bowling.determineOutcomeofFrame();
+        bowling.calculateBonuses();
+        bowling.bowlFrame();
+        bowling.determineOutcomeofFrame();
+        bowling.calculateBonuses();
+        bowling.bowlFrame();
+        bowling.determineOutcomeofFrame();
+        bowling.calculateBonuses();
+        bowling.bowlFrame();
+        bowling.determineOutcomeofFrame();
+        bowling.calculateBonuses();
+        bowling.bowlFrame();
+        bowling.determineOutcomeofFrame();
+        bowling.calculateBonuses();
+      });
+    it('allows an extra bowl to calculate the bonus for the last frame is a spare is rolled', function() {
+      spyOn(Math, 'random').and.returnValues(0.5, 0.9, 0.3);
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      bowling.calculateBonuses();
+      expect(bowling.bonuses[bowling.bonuses.length-1]).toEqual([3])
       console.log(bowling.game)
       console.log(bowling.spareOrStrike)
       console.log(bowling.bonuses)
-      expect(bowling.bonuses[bowling.bonuses.length-3]).toEqual([11, 11])
-
+    });
+    it('allows an extra 2 bowls to calculate the bonus for the last frame is a spare is rolled', function() {
+      spyOn(Math, 'random').and.returnValues(1, 0.3, 0.3);
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      bowling.calculateBonuses();
+      expect(bowling.bonuses[bowling.bonuses.length-1]).toEqual([3, 2])
+      console.log(bowling.game)
+      console.log(bowling.spareOrStrike)
+      console.log(bowling.bonuses)
     });
   });
 

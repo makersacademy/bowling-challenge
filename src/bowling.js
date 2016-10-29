@@ -32,14 +32,30 @@ Bowling.prototype.determineOutcomeofFrame = function(){
     else {
       this.spareOrStrike.push("neither");
     }
-  this.bonuses.push([])
-  this.currentFrame = []
+    this.currentFrame = []
 };
 
+
 Bowling.prototype.calculateBonuses = function(){
+  this.bonuses.push([])
   if (this.game.length > 1) {
     this.calculateSpareBonus();
     this.calculateStrikeBonus();
+  }
+  if (this.game.length === 10 && this.spareOrStrike[9] != 'neither'){
+    this.bowlFinalFrameBonuses()
+  }
+};
+
+Bowling.prototype.bowlFinalFrameBonuses = function(){
+  console.log("it's worked")
+  var bonusBowl1
+  var bonusBowl2
+  bonusBowl1 = Math.floor((Math.random() * 11));
+  this.bonuses[9].push(bonusBowl1);
+  if (this.spareOrStrike[this.spareOrStrike.length-1] === 'strike'){
+    bonusBowl2 = Math.floor((Math.random() * (11-bonusBowl1)));
+    this.bonuses[9].push(bonusBowl2);
   }
 };
 

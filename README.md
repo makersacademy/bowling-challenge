@@ -29,20 +29,32 @@ User stories:
 
 ### Basic play
 ````
-As a player, I can knock down up to ten pins on my first roll, so that I can begin a frame.
+As a player,
+I can knock down up to ten pins on my first roll,
+so that I can begin a frame.
 
-As a player, I can knock down the remainder of the pins (ten minus my score from the first roll), so that I can finish the frame.
+As a player,
+I can knock down the remainder of the pins (ten minus my score from the first roll),
+so that I can finish the frame.
 
-As a player, I'd like to see my total score from the frame, so that I can evaluate my progress.
+As a player,
+I'd like to see my total score from the frame,
+so that I can evaluate my progress.
 
-As a player, I'd like to play exactly ten frames, so I can complete a full (basic) game.
+As a player,
+I'd like to play exactly ten frames,
+so I can complete a full (basic) game.
 
-As a player, I'd like to see my final score for the game, so I can make a mental comparison against others and myself historically.
+As a player,
+I'd like to see my final score for the game,
+so I can make a mental comparison against others and myself historically.
 ````
 
 ### Gutter game
 ````
-As a player who has completed a basic game, if I score zero, my game should be marked as a Gutter Game, so that I can enjoy the full glory / humiliation.
+As a player who has completed a basic game,
+if I score zero, my game should be marked as a Gutter Game,
+so that I can enjoy the full glory / humiliation.
 ````
 
 ### Spares
@@ -70,11 +82,11 @@ I'd like the second roll of the frame cancelled,
 so that I can move straight onto the next frame of ten pins.
 
 As a player who just achieved a strike, as a bonus
-I'd like the points from the next frame added to the score of my strike frame (unless another strike is achieved),
+I'd like the points from the next frame added to the score of my strike frame,
 so that I can benefit from the extra points.
 
 As a player who just achieved a strike,
-my score for the strike frame should not appear until after next frame has finished (unless another strike is achieved),
+my score for the strike frame should not appear until after next frame has finished,
 so that I can see an accurate game score.
 
 [MORE WORK NEEDED HERE]

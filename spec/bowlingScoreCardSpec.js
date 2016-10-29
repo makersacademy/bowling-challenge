@@ -20,22 +20,49 @@ describe ('Scorecard', function() {
     });
 
     it('it starts at turn 1', function(){
-      expect(scorecard.getCurrentTurn()).toEqual(1)
+      expect(scorecard.getCurrentRoll()).toEqual(1)
     });
   });
 
-  describe("first turn", function () {
+  describe("first full turn", function () {
 
-    it("it updates the game total", function () {
-      scorecard.updateScore(4)
-      expect(scorecard.getCurrentScore()).toEqual(4)
+    describe("first roll", function () {
+
+      it("it updates the game total", function () {
+        scorecard.updateScore(4)
+        expect(scorecard.getCurrentScore()).toEqual(4)
+      });
+
+      it("it updates the frame total", function () {
+        scorecard.updateScore(5)
+        expect(scorecard.getFrameScore()).toEqual(5)
+      });
+
+      it("it starts a new turn if you score a maximum of 10 on the first roll", function () {
+        scorecard.updateScore(10)
+        expect(scorecard.getCurrentFrame()).toEqual(2)
+      });
     });
 
-    it("it updates the frame total", function () {
-      scorecard.updateScore(5);
-      expect(scorecard.getFrameScore()).toEqual(5)
+    describe("second roll", function () {
+
+      it("it changes to turn two after updating the score", function () {
+        scorecard.updateScore(5)
+        expect(scorecard.getCurrentRoll()).toEqual(2)
+      });
+
     });
   });
+
+
+      // describe("second full turn", function () {
+      //
+      //   it("it changes the rolls to 0 upon starting a new framme", function () {
+      //     scorecar
+      //   });
+      // });
+
+
   //
   // describe("end conditions", function () {
   //

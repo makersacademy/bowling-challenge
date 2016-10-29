@@ -1,17 +1,20 @@
 'use strict';
 
-describe("Game", function() {
+describe('Game', function() {
   var game;
 
   beforeEach(function() {
     game = new Game();
   });
 
-  it("starts a game with 10 pins", function() {
-    expect(game.pins).toEqual(10);
-  });
+  describe('start of game', function(){
 
-  it("ends a game when all 10 pins are knocked down", function() {
-    expect(game.pins).toEqual(o);
+    it('starts a game with 10 pins', function() {
+      expect(game.pins).toEqual(10);
+    });
+
+    it('starts a game with 10 frames', function() {
+      expect(game.frames).toEqual(10);
+    });
   });
 });

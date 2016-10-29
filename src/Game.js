@@ -3,11 +3,11 @@
 function Game() {
 
   this.pins = 10;
+  this.frames = 10;
 }
 
 
-
-
 // Game.prototype.play = function(num) {
-//   this.currentlyGame = song;
-//   this.isPlaying = true;
+//   if (this.pins  === 0); {
+//   return this.isGameOver
+// }

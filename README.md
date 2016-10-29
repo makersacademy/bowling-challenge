@@ -63,13 +63,13 @@ As a player on my second roll,
 knocking down all of the remaining pins should be marked as a spare (with a /),
 so that I can revel in the glory.
 
-As as player who just achieved a spare,
-I'd like the points from the first roll of the next frame added to the score for my spare frame,
-so that I can benefit from the bonus.
-
 As a player who just achieved a spare,
 my score for the spare frame should not appear until after the first roll of the next frame,
 so that I can see an accurate game score.
+
+As as player who just achieved a spare,
+I'd like the points from the first roll of the next frame added to the score for my spare frame,
+so that I can benefit from the bonus.
 ````
 ### Strikes
 ````
@@ -81,13 +81,13 @@ As a player who just achieved a strike,
 I'd like the second roll of the frame cancelled,
 so that I can move straight onto the next frame of ten pins.
 
-As a player who just achieved a strike, as a bonus
-I'd like the points from the next frame added to the score of my strike frame,
-so that I can benefit from the extra points.
-
 As a player who just achieved a strike,
 my score for the strike frame should not appear until after next frame has finished,
 so that I can see an accurate game score.
+
+As a player who just achieved a strike, as a bonus
+I'd like the points from the next frame added to the score of my strike frame,
+so that I can benefit from the extra points.
 
 [MORE WORK NEEDED HERE]
 As a player who has achieved two strikes in a row
@@ -113,7 +113,7 @@ so that I can see my final score.
 ### Perfect game
 ````
 As a player,
-if I roll 12 strikes (10 regular strikes and 2 for the bonus in the 10th frame) thereby scoring the maximum score of 300,
+if I roll 12 strikes thereby scoring the maximum score of 300,
 my game should be marked as a Perfect Game,
 so that I can enjoy the full glory of this.
 ````

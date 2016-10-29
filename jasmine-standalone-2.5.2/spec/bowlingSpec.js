@@ -39,5 +39,9 @@ describe('Bowling', function () {
     expect(game.currentFrame()).toEqual(frameBeforeRoll + 1 );
   });
 
+  it('calculates total score for first frame as both rolls combined', function () {
+    
+  });
+
 
 })

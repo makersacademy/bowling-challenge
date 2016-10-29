@@ -46,5 +46,5 @@ Bowling.prototype.currentFrame = function () {
 };
 
 Bowling.prototype.calculateScore = function () {
-
+  
 };

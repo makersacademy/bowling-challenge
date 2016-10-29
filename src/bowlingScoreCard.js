@@ -1,6 +1,7 @@
 function strict(){
   'use strict';
-};
+}
+
 function Scorecard(){
   this.total = 0
   this.frameTotal = 0

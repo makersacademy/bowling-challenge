@@ -17,16 +17,19 @@ describe("Frame", function () {
     expect(frame.score).toEqual(8);
   });
 
-  it('adds the score from roll two', function() {
-    frame.addRollOneScore(8);
-    frame.addRollTwoScore(1)
-    expect(frame.score).toEqual(9);
-  });
+  describe("completing a frame", function () {
 
-  it('knows the frame is complete', function() {
-    frame.addRollOneScore(8);
-    frame.addRollTwoScore(1)
-    expect(frame.isComplete).toBe(true);
-  });
+    beforeEach(function() {
+      frame.addRollOneScore(8);
+      frame.addRollTwoScore(1)
+    });
 
+    it('adds the score from roll two', function() {
+      expect(frame.score).toEqual(9);
+    });
+
+    it('knows the frame is complete', function() {
+      expect(frame.isComplete).toBe(true);
+    });
+  });
 });

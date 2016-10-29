@@ -9,9 +9,9 @@ Game.prototype.completeFrame = function() {
   this.completedFrames.push(this.currentFrame);
   if(this.completedFrames.length === 10) {
     this.isOver = true;
-  };
-};
+  }
+}
 
 Game.prototype.startNewFrame = function() {
-  this.currentFrame = new Frame();
-};
+  this.currentFrame = new Frame()
+}

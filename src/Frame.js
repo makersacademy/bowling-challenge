@@ -8,10 +8,10 @@ function Frame() {
 Frame.prototype.addRollOneScore = function(pins) {
   this.rollOneScore = pins;
   this.score += this.rollOneScore;
-};
+}
 
 Frame.prototype.addRollTwoScore = function(pins) {
   this.rollTwoScore = pins;
   this.score += this.rollTwoScore;
   this.isComplete = true;
-};
+}

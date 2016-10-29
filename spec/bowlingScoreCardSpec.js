@@ -1,4 +1,6 @@
-'use strict';
+function strict(){
+  'use strict';
+}
 
 describe ('Scorecard', function() {
 
@@ -6,7 +8,7 @@ describe ('Scorecard', function() {
   var scorecard;
 
   beforeEach(function() {
-    scorecard = new Scorecard;
+    scorecard = new Scorecard();
   });
 
   describe('start conditions', function(){
@@ -23,7 +25,7 @@ describe ('Scorecard', function() {
       expect(scorecard.getCurrentRoll()).toEqual(1)
     });
   });
-  
+
   describe("first full turn", function () {
 
     describe("first roll", function () {

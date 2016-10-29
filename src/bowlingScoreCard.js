@@ -9,6 +9,7 @@ function Scorecard(){
   this.roll  = 1
   this.MAX_FRAME_TOTAL = 10
 }
+var module;
 
 module.exports = Scorecard;
 

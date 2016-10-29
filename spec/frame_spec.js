@@ -68,4 +68,11 @@ describe('Frame', function() {
     expect(frame.totalScore).toEqual(8);
   });
 
+  it("records its shots", function() {
+    frame.addScore(5);
+    frame.addScore(3);
+    expect(frame.turn[0]).toEqual(5);
+    expect(frame.turn[1]).toEqual(3);
+  });
+
 });

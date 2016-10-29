@@ -4,9 +4,11 @@ function Frame() {
   this.totalScore = 0;
   this.workingScore = 0;
   this.shot = 0;
+  this.bonus = 0;
   this.isStrike = false
   this.isOver = false
   this.isSpare = false
+  this.turn = []
 };
 
 Frame.prototype.addScore = function(score) {
@@ -14,6 +16,7 @@ Frame.prototype.addScore = function(score) {
   this.checkIfStrike(score);
   if (!this.isOver) {
     this.workingScore += score;
+    this.turn.push(score)
     this.shot += 1;
     this.checkIfOver();
   }

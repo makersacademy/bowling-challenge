@@ -36,21 +36,93 @@ describe('Game', function() {
     expect(game.calculateFrameNumber()).toEqual(5);
   });
 
-  it('calculates correct score with strikes', function() {
-    game.bowl(10);
-    game.bowl(4);
-    game.bowl(4);
-    expect(game.calculateScore()).toEqual(26);
+  describe('for strikes', function() {
+    it('calculates correct score with strikes', function() {
+      game.bowl(10);
+      game.bowl(4);
+      game.bowl(4);
+      expect(game.calculateScore()).toEqual(26);
+    });
+
+     it("doesn't calculate strike total until enough turns have been taken", function() {
+      game.bowl(4);
+      game.bowl(4);
+      game.bowl(10);
+      expect(game.calculateScore()).toEqual(8);
+     });
+
+    it('calculates correct score with two strikes in a row', function() {
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(4);
+      game.bowl(4);
+      expect(game.calculateScore()).toEqual(50);
+    });
+
+    it("doesn't calculate strike total until enough turns have been taken - double strike", function() {
+     game.bowl(4);
+     game.bowl(4);
+     game.bowl(10);
+     game.bowl(10);
+     expect(game.calculateScore()).toEqual(8);
+    });
+
+    it('calculates correct score with three strikes in a row', function() {
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(4);
+      game.bowl(4);
+      expect(game.calculateScore()).toEqual(80);
+    });
+
+    describe('random feature tests with different strike combos (for my sanity)', function() {
+      it('calculates correct score with random strikes in a row', function() {
+        game.bowl(4);
+        game.bowl(4);
+        game.bowl(10);
+        game.bowl(10);
+        game.bowl(10);
+        game.bowl(4);
+        game.bowl(4);
+        game.bowl(3);
+        game.bowl(2);
+        expect(game.calculateScore()).toEqual(93);
+      });
+
+      it('calculates correct score with random strikes in a row', function() {
+        game.bowl(4);
+        game.bowl(4);
+        game.bowl(10);
+        game.bowl(10);
+        game.bowl(10);
+        expect(game.calculateScore()).toEqual(38);
+      });
+
+      it('calculates correct score with random strikes in a row', function() {
+        game.bowl(4);
+        game.bowl(4);
+        game.bowl(10);
+        game.bowl(10);
+        game.bowl(10);
+        game.bowl(4);
+        game.bowl(4);
+        expect(game.calculateScore()).toEqual(88);
+      });
+    });
   });
 
-  it('calculates correct score with strikes', function() {
-    game.bowl(10);
-    game.bowl(10);
-    game.bowl(10);
-    expect(game.calculateScore()).toEqual(26);
+  describe('for spares', function() {
+    it('calculates correct score with spares', function() {
+      game.bowl(3);
+      game.bowl(7);
+      game.bowl(4);
+      expect(game.calculateScore()).toEqual(14);
+    });
+
+
+
   });
-
-
 
 
 

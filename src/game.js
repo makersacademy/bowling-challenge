@@ -1,7 +1,7 @@
 function Game(){
   var frames;
   this.frames = [];
-  console.log(this);
+  // console.log("function Game###|: " + this);
 };
 
 // Game.prototype.frames = function(){
@@ -12,13 +12,26 @@ function Game(){
 Game.prototype.addFrame = function(frameScore){
   this.frames.push(frameScore);
   // this.frames.push(frameScore);
-  // console.log(this);
+  // console.log("Game.prototype.addFrame###|: " + this);
 };
 
 Game.prototype.showFrame = function(frameNo){
   return this.frames[frameNo-1];
+  // console.log("Game.prototype.showFrame###|: " + this);
+};
+// ~~~~~~~~~~~~~~~~~~~~~~~~~ Roll ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function Roll(){
+  var roll;
+  this.roll = [];
 };
 
+Roll.prototype.addRoll = function(rollScore){
+  this.roll.push(rollScore);
+};
+
+Roll.prototype.showRoll = function(rollNo){
+  return this.roll[rollNo-1];
+};
 
 
 // function Player() {

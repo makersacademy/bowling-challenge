@@ -7,16 +7,24 @@ describe("Game", function(){
   describe("start a new game",function(){
     it("should start a new game", function(){
       expect(game instanceof Game).toEqual(true);
-    })
-  })
+    });
+  });
 
   describe("complete a frame",function(){
     it("should add a new frame",function(){
       game.addFrame("testgame1");
       game.addFrame("testgame2");
       expect(game.frames.length).toEqual(2);
+    });
+  });
+
+  describe("get frame roll scores",function(){
+    it("should return frame scores",function(){
+      game.addFrame("testgame1");
+      game.addFrame("testgame2");
+      expect(game.showFrame(2)).toEqual("testgame2");
     })
-  })
+  });
 
 })
 

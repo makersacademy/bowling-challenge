@@ -51,7 +51,7 @@ describe('Bowling', function() {
 
   });
 
-  describe("A bowl:", function(){
+  describe("Bowling:", function(){
     it('generates a random number', function(){
       spyOn(Math, 'random').and.returnValue(0.9);
       expect(bowling.bowl()).toEqual(9);
@@ -124,14 +124,14 @@ describe('Bowling', function() {
         bowling.determineOutcomeofFrame();
         bowling.calculateBonuses();
       });
-    it('allows an extra bowl to calculate the bonus for the last frame is a spare is rolled', function() {
+    it('allows an extra bowl to calculate the bonus for the last frame if a spare is rolled', function() {
       spyOn(Math, 'random').and.returnValues(0.5, 0.9, 0.3);
       bowling.bowlFrame();
       bowling.determineOutcomeofFrame();
       bowling.calculateBonuses();
       expect(bowling.bonuses[bowling.bonuses.length-1]).toEqual([3])
     });
-    it('allows an extra 2 bowls to calculate the bonus for the last frame is a spare is rolled', function() {
+    it('allows an extra 2 bowls to calculate the bonus for the last frame if a strike is rolled', function() {
       spyOn(Math, 'random').and.returnValues(1, 0.3, 0.3);
       bowling.bowlFrame();
       bowling.determineOutcomeofFrame();

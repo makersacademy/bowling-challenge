@@ -35,7 +35,19 @@ BowlingGame.prototype._incrementNoOfFrames  = function (frame) {
 }
 
 BowlingGame.prototype._incrementScore = function () {
-  this.score += this.noOfFrames[this.noOfFrames.length-1].rollScore;
+  if (this._wasSpare() === true) {
+    this.score += ((this.noOfFrames[this.noOfFrames.length-1].rollScore) + (this.noOfFrames[this.noOfFrames.length-1].roll1));
+  } else {
+    this.score += this.noOfFrames[this.noOfFrames.length-1].rollScore;
+  }
+}
+
+BowlingGame.prototype._wasSpare = function () {
+  if (this.noOfFrames.length <= 1){
+    return false;
+  } else {
+    return (this.noOfFrames[this.noOfFrames.length-2].rollScore === 10);
+  }
 }
 
 BowlingGame.prototype._isLowest = function () {

@@ -32,8 +32,6 @@ describe('BowlingGame', function () {
 
   });
 
-
-
   it('only allows 10 frames', function () {
     for (var i = 1; i < 11; i ++) {
       game.addFrame(frame);
@@ -41,12 +39,28 @@ describe('BowlingGame', function () {
     expect(game.addFrame(new Frame())).toEqual('Game is over');
   });
 
+  describe('last frame was a', function () {
+    it('spare', function () {
+      frame1 = new Frame();
+      frame1.rollScore = 10;
+      console.log(game.noOfFrames);
+      game.addFrame(frame1);
+      console.log(game.noOfFrames);
+      frame2 = new Frame();
+      frame2.roll1 = 5;
+      frame2.roll2 = 2;
+      frame2.rollScore = 7;
+      game.addFrame(frame2);
+      console.log(game.noOfFrames);
+      expect(game.score).toEqual(22);
+    });
+  });
+
   describe('outcome is', function () {
     it('gutter game', function () {
       for (var i = 1; i < 11; i ++) {
         game.addFrame(new Frame());
       }
-      console.log(game.score);
       expect(game.outcome()).toEqual('Gutter game! Too bad, try again next time!');
     });
     it('a perfect game', function () {

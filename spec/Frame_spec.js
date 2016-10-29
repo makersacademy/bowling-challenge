@@ -14,15 +14,32 @@ describe('Frame', function () {
     it('a roll score of 0', function () {
       expect(frame.rollScore).toEqual(0);
     });
+
+    it('a first roll value of 0', function () {
+      expect(frame.roll1).toEqual(0);
+    });
+
+    it('a second roll value of 0', function () {
+      expect(frame.roll2).toEqual(0);
+    });
   });
 
-  describe('increments on each roll', function () {
-    it('the roll counter', function () {
+  describe('increments', function () {
+    it('the roll counter on each roll', function () {
       frame.recordRolls(2);
       expect(frame.rollCounter).toEqual(1);
     });
+    it('roll1 on the first roll', function () {
+      frame.recordRolls(2);
+      expect(frame.roll1).toEqual(2);
+    });
+    it('roll2 on the second roll', function () {
+      frame.recordRolls(1);
+      frame.recordRolls(7);
+      expect(frame.roll2).toEqual(7);
+    });
 
-    it('the frame score', function () {
+    it('the frame score on each roll', function () {
       frame.recordRolls(3);
       frame.recordRolls(4);
       expect(frame.rollScore).toEqual(7);
@@ -38,9 +55,7 @@ describe('Frame', function () {
 
     it('a rollScore > 10', function () {
       frame.recordRolls(5);
-      console.log(frame.rollScore);
       expect(frame.recordRolls(7)).toEqual('Score can not be greater than 10')
-console.log(frame.rollScore);
     });
 
   });

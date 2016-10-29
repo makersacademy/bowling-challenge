@@ -9,9 +9,6 @@ function Scorecard(){
   this.roll  = 1
   this.MAX_FRAME_TOTAL = 10
 }
-var module;
-
-module.exports = Scorecard;
 
 Scorecard.prototype.getCurrentScore = function () {
   return this.total;
@@ -68,3 +65,8 @@ Scorecard.prototype.updateFrame = function () {
   this.frame += 1;
   this.frameTotal = 0;
 };
+
+if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
+{
+   module.exports = Scorecard;
+}

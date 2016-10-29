@@ -40,7 +40,7 @@ describe ('Scorecard', function() {
         expect(scorecard.getFrameScore()).toEqual(5)
       });
 
-      it("it starts a new turn if you score a maximum of 10 on the first roll", function () {
+      it("it starts a new turn if you score 10 on the first roll",function(){
         scorecard.updateScore(10)
         expect(scorecard.getCurrentFrame()).toEqual(2)
       });
@@ -53,13 +53,13 @@ describe ('Scorecard', function() {
         expect(scorecard.getCurrentRoll()).toEqual(2)
       });
 
-      it("it changes to frame 2 after completing a second roll", function () {
+      it("it changes to frame 2 after completing a second roll", function(){
         scorecard.updateScore(1)
         scorecard.updateScore(2)
         expect(scorecard.getCurrentFrame()).toEqual(2)
       });
 
-      it("it resets the frame total to 0 upon changing to a new frame", function () {
+      it("it resets the frame total to 0 on changing to a new frame",function(){
         scorecard.updateScore(10)
         expect(scorecard.frameTotal).toEqual(0)
       });

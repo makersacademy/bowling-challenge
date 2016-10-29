@@ -10,6 +10,14 @@ describe("Game", function(){
     })
   })
 
+  describe("complete a frame",function(){
+    it("should add a new frame",function(){
+      game.addFrame("testgame1");
+      game.addFrame("testgame2");
+      expect(game.frames.length).toEqual(2);
+    })
+  })
+
 })
 
 

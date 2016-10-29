@@ -1,0 +1,5 @@
+game = new Game();
+game.addFrame("testgame1");
+game.showFrame(1);
+game.addFrame("testgame2");
+game.showFrame(2);

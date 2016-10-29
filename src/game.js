@@ -1,10 +1,25 @@
 function Game(){
-
+  var frames;
+  this.frames = [];
+  console.log(this);
 };
 
-Game.prototype.play = function(){
-  
+// Game.prototype.frames = function(){
+//   // var frames = [];
+//   console.log(this);
+// };
+
+Game.prototype.addFrame = function(frameScore){
+  this.frames.push(frameScore);
+  // this.frames.push(frameScore);
+  // console.log(this);
 };
+
+Game.prototype.showFrame = function(frameNo){
+  return this.frames[frameNo-1];
+};
+
+
 
 // function Player() {
 // }

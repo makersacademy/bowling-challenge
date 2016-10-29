@@ -18,16 +18,6 @@ describe('Game', function() {
     expect(game.calculateScore()).toEqual(8);
   });
 
-  it('can add complex points', function() {
-    game.bowl(10);
-    game.bowl(10);
-    game.bowl(3);
-    game.bowl(5);
-    game.bowl(10);
-    game.bowl(3);
-    expect(game.calculateScore()).toEqual(42);
-  });
-
   it('knows what turn it is/what frame it is on', function() {
     game.bowl(8);
     game.bowl(1);
@@ -43,6 +33,20 @@ describe('Game', function() {
     game.bowl(10);
     game.bowl(3);
     expect(game.calculateFrameNumber()).toEqual(5);
+  });
+
+  it('calculates correct score with strikes', function() {
+    game.bowl(10);
+    game.bowl(4);
+    game.bowl(4);
+    expect(game.calculateScore()).toEqual(26);
+  });
+
+  it('calculates correct score with strikes', function() {
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(10);
+    expect(game.calculateScore()).toEqual(26);
   });
 
 

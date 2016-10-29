@@ -4,3 +4,4 @@ spec/*
 *.md
 **/*.html
 *.LICENSE
+user_stories.md

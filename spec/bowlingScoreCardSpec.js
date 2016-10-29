@@ -23,7 +23,7 @@ describe ('Scorecard', function() {
       expect(scorecard.getCurrentRoll()).toEqual(1)
     });
   });
-
+  
   describe("first full turn", function () {
 
     describe("first roll", function () {
@@ -70,5 +70,4 @@ describe ('Scorecard', function() {
   //   //   scorecard.frame = 10
   //   // });
   // });
-
 });

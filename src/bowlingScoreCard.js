@@ -10,6 +10,8 @@ function Scorecard(){
   this.MAX_FRAME_TOTAL = 10
 }
 
+module.exports = Scorecard;
+
 Scorecard.prototype.getCurrentScore = function () {
   return this.total;
 }
@@ -65,5 +67,3 @@ Scorecard.prototype.updateFrame = function () {
   this.frame += 1;
   this.frameTotal = 0;
 };
-
-module.exports = Scorecard;

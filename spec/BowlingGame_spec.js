@@ -38,9 +38,27 @@ describe('BowlingGame', function () {
     for (var i = 1; i < 11; i ++) {
       game.addFrame(frame);
     }
-    console.log(game.noOfFrames.length);
-    console.log(game);
     expect(game.addFrame(new Frame())).toEqual('Game is over');
+  });
+
+  describe('outcome is', function () {
+    it('gutter game', function () {
+      for (var i = 1; i < 11; i ++) {
+        game.addFrame(new Frame());
+      }
+      console.log(game.score);
+      expect(game.outcome()).toEqual('Gutter game! Too bad, try again next time!');
+    });
+    it('a perfect game', function () {
+      game.score = game.HIGHESTSCORE;
+      expect(game.outcome()).toEqual('Perfect game!');
+    });
+    it('regular score', function () {
+      for (var i = 1; i < 11; i ++) {
+        game.addFrame(frame);
+      }
+      expect(game.outcome()).toEqual('Your score is 90');
+    });
   });
 
 });

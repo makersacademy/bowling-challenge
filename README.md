@@ -8,6 +8,9 @@ REVIEW EXPECTATIONS:
 All tests passing
 The code is elegant: every class has a clear responsibility, methods are short etc.
 
+LAYOUT:
+I copied the layout from : http://www.sportcalculators.com/bowling-score-calculator
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Bowling Challenge
 =================

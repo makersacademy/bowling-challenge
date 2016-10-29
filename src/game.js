@@ -44,8 +44,10 @@ Roll.prototype.addRoll = function(rollScore){
       throw new Error("Score for 2 throws cannot exceed 10");
     }
   }
-
   this.roll.push(rollScore);
+  if (this.roll.length === 2){
+    // Game.addFrame(this.roll);
+  }
 };
 
 Roll.prototype.showRoll = function(rollNo){

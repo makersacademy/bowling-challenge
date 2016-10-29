@@ -47,7 +47,20 @@ describe("Roll",function(){
       }
       expect(game.frames[0]).toEqual(roll);
     })
+  });
 
+  describe("end of game",function(){
+    it("stops after 10 frames (assuming neither a spare nor a strike) in last frame",function(){
+      for(var i=0;i<10;i++){
+        roll = new Roll();
+        roll.addRoll(6);
+        roll.addRoll(4);
+        if (roll.rollComplete){
+          game.addFrame(roll);    //This is fudged. Do I need to test through the frontend?
+        }
+      }
+      expect(game.gameOver).toEqual(true);
+    })
 
   });
 

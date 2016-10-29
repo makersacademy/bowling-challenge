@@ -2,11 +2,19 @@
 function Game(){
   var frames;
   this.frames = [];
+  var gameOver;
+  this.gameOver = false;
   // console.log("function Game###|: " + this);
 };
 
 Game.prototype.addFrame = function(frameScore){
-  this.frames.push(frameScore);
+  if (this.frames.length === 10){
+    throw new Error("Game over");
+  }
+    this.frames.push(frameScore);
+    if (this.frames.length === 10){
+      this.gameOver = true;
+    }
   // console.log("Game.prototype.addFrame###|: " + this);
 };
 
@@ -57,26 +65,3 @@ Roll.prototype.showRoll = function(rollNo){
 Roll.prototype.checkForRollErrors = function(){
 
 }
-
-// function Player() {
-// }
-// Player.prototype.play = function(song) {
-//   this.currentlyPlayingSong = song;
-//   this.isPlaying = true;
-// };
-//
-// Player.prototype.pause = function() {
-//   this.isPlaying = false;
-// };
-//
-// Player.prototype.resume = function() {
-//   if (this.isPlaying) {
-//     throw new Error("song is already playing");
-//   }
-//
-//   this.isPlaying = true;
-// };
-//
-// Player.prototype.makeFavorite = function() {
-//   this.currentlyPlayingSong.persistFavoriteStatus(true);
-// };

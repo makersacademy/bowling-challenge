@@ -80,10 +80,10 @@ If you don't follow the usual Jasmine convention of having your tests in `spec` 
 
 Solution
 --------
-Installation
+### Installation
 - ```git clone https://github.com/lauraweston/bowling-challenge.git```
 - ```cd bowling-challenge```
 - ```npm install``` (installs jshint and jasmine dependencies in ```package.json```)
 
-Running tests
+### Running tests
 - ```npm test```

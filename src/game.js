@@ -42,19 +42,7 @@ function Roll(){
 };
 
 Roll.prototype.addRoll = function(rollScore){
-  if (this.roll.length >= 2) {
-    throw new Error('There are a maximum of 2 rolls per frame');
-  }
-  if (this.roll.length === 1){
-
-    if (this.roll[0] === 10){
-      throw new Error('You cannot roll a second time if your 1st roll was a strike');
-    }
-
-    if ((rollScore + this.roll[0]) > 10){
-      throw new Error("Score for 2 throws cannot exceed 10");
-    }
-  }
+  this.checkForRollErrors(rollScore);
   this.roll.push(rollScore);
   if (this.roll.length === 2){
     this.rollComplete = true;
@@ -74,7 +62,16 @@ Roll.prototype.showRoll = function(rollNo){
   return this.roll[rollNo-1];
 };
 
-
-Roll.prototype.checkForRollErrors = function(){
-
+Roll.prototype.checkForRollErrors = function(rollScore){
+  if (this.roll.length >= 2) {
+    throw new Error('There are a maximum of 2 rolls per frame');
+  }
+  if (this.roll.length === 1){
+    if (this.roll[0] === 10){
+      throw new Error('You cannot roll a second time if your 1st roll was a strike');
+    }
+    if ((rollScore + this.roll[0]) > 10){
+      throw new Error("Score for 2 throws cannot exceed 10");
+    }
+  }
 }

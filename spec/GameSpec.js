@@ -58,6 +58,14 @@ describe("Roll",function(){
       }
       expect(roll.score).toEqual(9);
     })
+
+    it("shows the correct score where frame is a strike",function(){
+      roll.addRoll(10);
+      if (roll.rollComplete){
+        game.addFrame(roll);    //This is fudged. Do I need to test through the frontend?
+      }
+      expect(roll.score).toEqual(30);
+    })
   })
 
   describe("end of game",function(){

@@ -7,7 +7,6 @@ function Game(){
 
 Game.prototype.addFrame = function(frameScore){
   this.frames.push(frameScore);
-  // this.frames.push(frameScore);
   // console.log("Game.prototype.addFrame###|: " + this);
 };
 
@@ -23,8 +22,7 @@ Game.prototype.showAllFrames = function(){
   // console.log("Game.prototype.showFrame###|: " + this);
 };
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~ Roll ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+// XXXXXXXXXXXXXXXXXXXXXXXXXXX Roll XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 function Roll(){
   var roll;
   this.roll = [];

@@ -2,8 +2,10 @@
 
 describe("Roll",function(){
   var roll;
+  var game;
   beforeEach(function(){
     roll = new Roll();
+    game = new Game();
   });
 
   describe("make a roll",function(){
@@ -28,6 +30,24 @@ describe("Roll",function(){
       roll.addRoll(10);
       expect(function(){roll.addRoll(1)}).toThrowError("You cannot roll a second time if your 1st roll was a strike");
     })
+
+    it("should add a complete frame to the game if the player had had 2 rolls",function(){
+      roll.addRoll(6);
+      roll.addRoll(4);
+      if (roll.rollComplete){
+        game.addFrame(roll);    //This is fudged. Do I need to test through the frontend?
+      }
+      expect(game.frames[0]).toEqual(roll);
+    })
+
+    it("should add a complete frame to the game if the player rolled a strike",function(){
+      roll.addRoll(10);
+      if (roll.rollComplete){
+        game.addFrame(roll);    //This is fudged. Do I need to test through the frontend?
+      }
+      expect(game.frames[0]).toEqual(roll);
+    })
+
 
   });
 

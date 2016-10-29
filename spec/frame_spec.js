@@ -9,7 +9,7 @@ describe('Frame', function() {
 
   it('keeps score of the turn', function() {
     frame.addScore(8);
-    expect(frame.score).toEqual(8);
+    expect(frame.workingScore).toEqual(8);
   });
 
   it('knows when it is not over', function() {
@@ -27,7 +27,7 @@ describe('Frame', function() {
     frame.addScore(3);
     frame.addScore(3);
     frame.addScore(3);
-    expect(frame.score).toEqual(6);
+    expect(frame.totalScore).toEqual(6);
   });
 
   it("knows it wasn't a strike", function() {
@@ -55,6 +55,17 @@ describe('Frame', function() {
     frame.addScore(7);
     frame.addScore(3);
     expect(frame.isSpare).toEqual(true);
+  });
+
+  it("doesn't total score if it was a strike", function() {
+    frame.addScore(10);
+    expect(frame.totalScore).toEqual(0);
+  });
+
+  it("does add a total score if it wasn't a strike", function() {
+    frame.addScore(5);
+    frame.addScore(3);
+    expect(frame.totalScore).toEqual(8);
   });
 
 });

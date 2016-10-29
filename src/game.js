@@ -22,9 +22,9 @@ Game.prototype.checkFrameChange = function() {
 Game.prototype.calculateScore = function() {
   this.totalScore = 0
   for (var i = 0; i < this.oldFrames.length; i++) {
-    this.totalScore += this.oldFrames[i].score
+    this.totalScore += this.oldFrames[i].totalScore
   }
-  this.totalScore += this.currentFrame.score
+  this.totalScore += this.currentFrame.totalScore
   return this.totalScore
 };
 
@@ -38,6 +38,6 @@ Game.prototype.calculateFrameNumber = function() {
 Game.prototype.calculatePreviousStrikeBonus = function() {
   var lastFrame = this.oldFrames[0]
   if (lastFrame && lastFrame.isStrike) {
-    lastFrame.score += this.currentFrame.score
+    lastFrame.totalScore = this.currentFrame.score + lastFrame.workingScore
   }
 };

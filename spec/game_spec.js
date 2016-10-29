@@ -15,7 +15,8 @@ describe('Game', function() {
 
   it('can add points', function() {
     game.bowl(8);
-    expect(game.calculateScore()).toEqual(8);
+    game.bowl(1);
+    expect(game.calculateScore()).toEqual(9);
   });
 
   it('knows what turn it is/what frame it is on', function() {

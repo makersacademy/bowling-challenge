@@ -3,7 +3,7 @@ describe('Frame', function() {
     var frame = new Frame();
 
     it('has two bowls', function() {
-        expect(frame.firstBowl).toEqual(0);
-        expect(frame.secondBowl).toEqual(0);
+        expect(frame._firstBowl).toEqual(0);
+        expect(frame._secondBowl).toEqual(0);
     });
 });

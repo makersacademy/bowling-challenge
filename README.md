@@ -1,7 +1,7 @@
 
 Bowling Challenge
 =================
-
+[![Build Status](https://travis-ci.org/lauraweston/bowling-challenge.svg?branch=master)](https://travis-ci.org/lauraweston/bowling-challenge)
 
 * Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own
@@ -77,3 +77,13 @@ If you don't follow the usual Jasmine convention of having your tests in `spec` 
 2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
 3. Adjust these to point to the correct directories
 4. Done.
+
+Solution
+--------
+Installation
+- ```git clone https://github.com/lauraweston/bowling-challenge.git```
+- ```cd bowling-challenge```
+- ```npm install``` (installs jshint and jasmine dependencies in ```package.json```)
+
+Running tests
+- ```npm test```

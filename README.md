@@ -117,3 +117,21 @@ if I roll 12 strikes thereby scoring the maximum score of 300,
 my game should be marked as a Perfect Game,
 so that I can enjoy the full glory of this.
 ````
+
+Domain model
+-----
+I expect the notation is all wrong here, but using the nouns and verbs from the user stories, I'm trying to think about objects and messages.
+
+Player --> rolls during a --> Frame
+Player --> knocks down --> Pins
+Player --> achieves a --> Score
+Player --> achieves a --> Strike
+Player --> achieves a --> Spare
+10 frames --> completes a --> Game
+Game --> can be classed as --> Gutter Game / Perfect Game
+
+Possible objects:
+Player (although there's only ever one in this instance)
+Game has 10 Frames
+Game has a Score
+Frame has a Score

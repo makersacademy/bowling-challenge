@@ -1,11 +1,15 @@
 function Frame() {
   this.score = 0;
+  this.rollOneScore = 0;
+  this.rollTwoScore = 0;
 }
 
-Frame.prototype.rollOneScore = function(pins) {
-  this.score += pins;
+Frame.prototype.addRollOneScore = function(pins) {
+  this.rollOneScore = pins;
+  this.score += this.rollOneScore;
 };
 
-Frame.prototype.rollTwoScore = function(pins) {
-  this.score += pins;
+Frame.prototype.addRollTwoScore = function(pins) {
+  this.rollTwoScore = pins;
+  this.score += this.rollTwoScore;
 };

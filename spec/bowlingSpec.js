@@ -130,9 +130,6 @@ describe('Bowling', function() {
       bowling.determineOutcomeofFrame();
       bowling.calculateBonuses();
       expect(bowling.bonuses[bowling.bonuses.length-1]).toEqual([3])
-      console.log(bowling.game)
-      console.log(bowling.spareOrStrike)
-      console.log(bowling.bonuses)
     });
     it('allows an extra 2 bowls to calculate the bonus for the last frame is a spare is rolled', function() {
       spyOn(Math, 'random').and.returnValues(1, 0.3, 0.3);
@@ -140,9 +137,6 @@ describe('Bowling', function() {
       bowling.determineOutcomeofFrame();
       bowling.calculateBonuses();
       expect(bowling.bonuses[bowling.bonuses.length-1]).toEqual([3, 2])
-      console.log(bowling.game)
-      console.log(bowling.spareOrStrike)
-      console.log(bowling.bonuses)
     });
   });
 

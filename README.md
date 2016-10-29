@@ -1,7 +1,7 @@
 
 Bowling Challenge
 =================
-Count and sum the scores of a bowling game for one player (in JavaScript).
+Our week 5 weekend challenge was to produce a scoring calculator for a bowling game for one player (in JavaScript).
 
 Instructions:
 -------
@@ -15,7 +15,7 @@ Coming soon.
 ````
 Technologies used:
 -------
-JavaScript, Jasmine.
+JavaScript, Jasmine BDD framework.
 
 Approach:
 -------
@@ -24,6 +24,7 @@ Approach:
 - I then played with scores in Excel to better understand how strikes and spares (especially sequential ones) worked.
 - I also played with http://www.bowlinggenius.com/ to model different scenarios and better understand the required logic
 - Started to write and pass tests for the basic game, i.e. with no strikes or spares. Created Frame and Game objects with their own properties.
+- Wrote a basic HTML interface so I could input the scores and see the results appear (felt that this would help with understanding what was happening / de-bugging later on)
 
 User stories:
 -----

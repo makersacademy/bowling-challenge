@@ -49,6 +49,17 @@ describe("Roll",function(){
     })
   });
 
+  describe("calculate the score",function(){
+    it("shows the correct score where frame is not a strike or a spare",function(){
+      roll.addRoll(5);
+      roll.addRoll(4);
+      if (roll.rollComplete){
+        game.addFrame(roll);    //This is fudged. Do I need to test through the frontend?
+      }
+      expect(roll.score).toEqual(9);
+    })
+  })
+
   describe("end of game",function(){
     it("stops after 10 frames (assuming neither a spare nor a strike) in last frame",function(){
       for(var i=0;i<10;i++){

@@ -32,9 +32,13 @@ Game.prototype.showAllFrames = function(){
 
 // XXXXXXXXXXXXXXXXXXXXXXXXXXX Roll XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 function Roll(){
-  var roll;
+  var roll, rollComplete, lookAhead, score;
   this.roll = [];
-  var rollComplete = false;
+  // var rollComplete;
+  this.rollComplete = false;
+  // var rollComplete;
+  this.lookAhead = 0;
+  this.score = 0;
 };
 
 Roll.prototype.addRoll = function(rollScore){
@@ -52,10 +56,19 @@ Roll.prototype.addRoll = function(rollScore){
     }
   }
   this.roll.push(rollScore);
-  if ((this.roll.length === 2) || ((this.roll.length === 1)&&(this.roll[0] === 10))){
+  if (this.roll.length === 2){
     this.rollComplete = true;
+    this.score = this.addScore();
+  }
+  if ((this.roll.length === 1)&&(this.roll[0] === 10)){
+    this.rollComplete = true;
+    this.lookAhead = 2;
   }
 };
+
+Roll.prototype.addScore = function(){
+  return this.roll[0]+this.roll[1];
+}
 
 Roll.prototype.showRoll = function(rollNo){
   return this.roll[rollNo-1];

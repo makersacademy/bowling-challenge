@@ -61,7 +61,7 @@ describe('Game', function () {
     expect(game.currentFrame).toEqual(2);
   });
 
-  it('can add bonus points after strike', function() {
+  it('can add bonus points correctly after strike', function() {
     spyOn(game, 'hits').and.returnValue(4);
     game.scoreMode = "strike";
     game.scoreTotal = 10;
@@ -72,30 +72,15 @@ describe('Game', function () {
     expect(game.scoreTotal).toEqual(30)
   });
 
-  it('can score a perfect game correctly', function() {
-    spyOn(game, 'hits').and.returnValue(10);
-    for(var i=1; i<=12; i++){
-      game.roll();
-    };
-    expect(game.scoreTotal).toEqual(300);
-    expect(game.gameOver).toEqual(true);
-  });
-
-  it('can add bonus points after a spare', function() {
-    spyOn(game, 'hits').and.returnValue(5);
+  it('can add bonus points after double strike', function() {
+    spyOn(game, 'hits').and.returnValue(4);
+    game.scoreMode = "doubleStrike";
+    game.scoreTotal = 20;
+    game.lastRollScore = 10;
     for(var i=1; i<=3; i++){
       game.roll();
     };
-    expect(game.scoreTotal).toEqual(20);
-  });
-
-  it('can score last round correctly if spare', function() {
-    game.currentFrame = 10;
-    spyOn(game, 'hits').and.returnValue(5);
-    for(var i=1; i<=3; i++){
-      game.roll();
-    };
-    expect(game.scoreTotal).toEqual(15);
+    expect(game.scoreTotal).toEqual(44)
   });
 
 });

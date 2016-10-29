@@ -6,7 +6,7 @@
    this.pins = 10;
    this.scoreMode = "normal";
    this.gameOver = false;
- };
+ }
 
 Game.prototype.hits = function() {
   return Math.floor(Math.random() * (this.pins + 1));
@@ -53,29 +53,48 @@ Game.prototype.resetPins = function(hits) {
 
 Game.prototype.resetMode = function(hits, mode) {
   if (this.currentFrame === 10) {
-    this.resetFrame10(hits, mode);
-  } else if (hits === 10 && this.lastRollScore < 10) {
-    this.scoreMode = "strike";
-  } else if (hits === 10 && this.lastRollScore === 10) {
-    this.scoreMode = "doubleStrike";
-  } else if (mode === "strike" && this.lastRollScore < 10) {
-    this.scoreMode = "normal";
-  } else if (mode === "doubleStrike" && this.lastRollScore < 10) {
-    this.scoreMode = "strike"
-  } else if (this.currentRoll === 2 && this.lastRollScore + hits === 10) {
-    this.scoreMode = "spare";
-  } else if (mode === "spare") {
-    this.scoreMode = "normal";
+    this.resetFrame10(hits);
+  } else if (hits === 10) {
+    this.resetStrike();
+  } else if (mode === "strike" || mode === "doubleStrike") {
+    this.strikeReview(hits, mode);
+  } else {
+    this.spareCheck(hits, mode);
   }
 };
 
-Game.prototype.resetFrame10 = function(hits, mode) {
+Game.prototype.resetFrame10 = function(hits) {
   if (hits === 10 && this.lastRollScore === 10 && this.currentRoll === 1) {
         this.scoreMode = "strike"
   }  else {
     this.scoreMode = "normal";
   }
 };
+
+Game.prototype.resetStrike = function() {
+  if (this.lastRollScore === 10) {
+    this.scoreMode = "doubleStrike";
+  } else {
+    this.scoreMode = "strike";
+  }
+};
+
+Game.prototype.strikeReview = function(hits, mode) {
+  if (mode === "strike" && this.lastRollScore < 10) {
+    this.scoreMode = "normal";
+  } else if (mode === "doubleStrike" && hits < 10) {
+    this.scoreMode = "strike"
+  }
+};
+
+Game.prototype.spareCheck = function(hits, mode) {
+  if (this.currentRoll === 2 && this.lastRollScore + hits === 10) {
+    this.scoreMode = "spare";
+  } else if (mode === "spare") {
+    this.scoreMode = "normal";
+  }
+};
+
 
 Game.prototype.resetRolls = function(hits) {
     if((this.currentRoll === 2 || hits === 10) && this.currentFrame !== 10 ){

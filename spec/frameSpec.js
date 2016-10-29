@@ -8,7 +8,7 @@ describe('Frame', function() {
             expect(frame.secondBowl).toEqual(undefined);
         });
         it('total frame score starts at zero', function() {
-            expect(frame.totalScore()).toEqual(0);
+            expect(frame.totalScore).toEqual(0);
         });
     })
     
@@ -16,10 +16,12 @@ describe('Frame', function() {
         it('takes a score for first bowl', function() {
             frame.bowl(5);
             expect(frame.firstBowl).toEqual(5);
+            expect(frame.totalScore).toEqual(5);
         });
         it('takes a score for second bowl', function() {
             frame.bowl(3);
             expect(frame.secondBowl).toEqual(3);
+            expect(frame.totalScore).toEqual(8);
         });
     });
     

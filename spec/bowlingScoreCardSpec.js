@@ -18,5 +18,10 @@ describe ('Scorecard', function() {
     it('it starts at frame 1', function(){
       expect(scorecard.getCurrentFrame()).toEqual(1)
     });
+
+    it('it starts at turn 1', function(){
+      expect(scorecard.getCurrentTurn()).toEqual(1)
+    });
+
   });
 });

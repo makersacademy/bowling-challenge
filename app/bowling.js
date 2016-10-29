@@ -33,7 +33,6 @@ $(document).ready(function() {
       $("#frame" + frame + " #ball3").text(total);
 
       // Add bonus if strike
-
       if($("#frame" + (frame - 1) + " #ball1").text() == 10) {
         total += points;
         if(ball === 2) {
@@ -46,10 +45,11 @@ $(document).ready(function() {
       }
 
       // Prepare for next entry
-      ball++;
-      if(ball === 3) {
+      if((ball === 2) || (ball === 1 && pinsDown === 10)) {
         frame++;
         ball = 1;
+      } else {
+        ball++;
       }
 
       randomAngle();

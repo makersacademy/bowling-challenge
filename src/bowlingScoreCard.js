@@ -27,14 +27,17 @@ Scorecard.prototype.getCurrentRoll = function () {
 Scorecard.prototype.updateScore = function (number) {
 
   if(number === 10 && this.roll === 1){
-    this.total += number;
-    this.frameTotal += number;
+    this.updateAllTotals(number);
     this.updateFrame();
   } else {
-    this.total += number;
-    this.frameTotal += number;
+    this.updateAllTotals(number);
     this.updateRoll();
   };
+};
+
+Scorecard.prototype.updateAllTotals = function (number) {
+  this.total += number;
+  this.frameTotal += number;
 };
 
 Scorecard.prototype.updateRoll = function () {

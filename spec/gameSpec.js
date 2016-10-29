@@ -37,5 +37,8 @@ describe("Game", function() {
     expect(game.getCurrentScore()).toEqual(4);
   });
 
-
+  it("tracks the current frame", function() {
+    game.bowl(0);
+    expect(game.getCurrentFrame()).toBe(game.frames[1]);
+  });
 });

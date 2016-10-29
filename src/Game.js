@@ -11,8 +11,12 @@ function Game() {
 
 }
 
+Game.prototype.bowl = function() {
+  this.playFrame();
+}
+
 Game.prototype.getCurrentFrame = function() {
-  return this.currentFrame;
+  return this.frames[1];
 }
 
 Game.prototype.playFrame = function() {

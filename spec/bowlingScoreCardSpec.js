@@ -64,11 +64,11 @@ describe ('Scorecard', function() {
     });
   });
 
-  describe("end conditions", function () {
-
-    it("it ends the game upon completing 10 frames", function () {
-
-    });
-  });
+  // describe("end conditions", function () {
+  //
+  //   // it("it ends the game upon completing 10 frames", function () {
+  //   //   scorecard.frame = 10
+  //   // });
+  // });
 
 });

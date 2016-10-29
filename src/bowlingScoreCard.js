@@ -1,5 +1,6 @@
-'use strict';
-
+function strict(){
+  'use strict';
+};
 function Scorecard(){
   this.total = 0
   this.frameTotal = 0
@@ -29,7 +30,7 @@ Scorecard.prototype.updateScore = function (number) {
     this.endTurnIfStrike(number);
   } else if(this.roll === 2){
     this.updateAllTotalsAndFrame();
-  };
+  }
 };
 
 Scorecard.prototype.endTurnIfStrike = function (number) {
@@ -37,7 +38,7 @@ Scorecard.prototype.endTurnIfStrike = function (number) {
     this.updateAllTotalsAndFrame(number);
   } else {
     this.updateAllTotalsAndRoll(number);
-  };
+  }
 };
 
 Scorecard.prototype.updateAllTotals = function (number) {

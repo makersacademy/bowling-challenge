@@ -1,7 +1,7 @@
-describe("Game", function(){
+describe('Game', function(){
   var game;
 
-  beforeEach(function() {
+  beforeEach(function(){
     game = new Game();
   });
 
@@ -31,26 +31,26 @@ describe("Game", function(){
   });
 
   it("scores a gutter game", function(){
-     rollSometoMany(20, 0);
+     rollAll(20, 0);
      expect(game.calcScore()).toEqual(0);
    });
 
    it("scores a perfect game", function(){
-      rollSometoMany(15, 10);
+      rollAll(15, 10);
       expect(game.calcScore()).toEqual(300);
     });
 
    it("scores a game of spares", function(){
-       rollSometoMany(21, 5);
+       rollAll(21, 5);
        expect(game.calcScore()).toEqual(150);
      });
 
    it("scores a random game", function(){
-      rollSometoMany(21, 2);
+       rollAll(21, 2);
        expect(game.calcScore()).toEqual(40);
     });
 
-   function rollSometoMany(rolls, pins){
+   function rollAll(rolls, pins){
      var r = 0;
      while(r < rolls){
        game.roll(pins);

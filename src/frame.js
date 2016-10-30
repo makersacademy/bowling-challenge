@@ -17,3 +17,14 @@ Frame.prototype.bowlFrame = function(game){
 Frame.prototype.resetFrame = function(){
   this.score = []
 };
+
+Frame.prototype.bowlFinalFrameBonuses = function(game, spareOrStrike){
+  var bonusBowl = []
+  if (spareOrStrike === 'spare'){
+    bonusBowl.push(Math.floor((Math.random() * 11)));
+  } else if (spareOrStrike === 'strike'){
+    bonusBowl.push(Math.floor((Math.random() * 11)));
+    bonusBowl.push(Math.floor(Math.random() * (11-bonusBowl)));
+  }
+  game.addFinalFrameBonuses(bonusBowl)
+};

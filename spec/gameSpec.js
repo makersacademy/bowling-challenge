@@ -64,33 +64,6 @@ describe('Game', function() {
     });
   });
 
-  describe("Final frame bonus:", function(){
-    beforeEach(function(){
-      for (var i = 0; i < 9; i++) {
-        frame.bowlFrame(game);
-        frame.resetFrame();
-        game.determineOutcomeofFrame();
-        game.calculateBonuses();
-      }
-      });
-    it('allows an extra bowl to calculate the bonus for the last frame if a spare is rolled', function() {
-      spyOn(Math, 'random').and.returnValues(0.5, 0.9, 0.3);
-      frame.bowlFrame(game);
-      frame.resetFrame();
-      game.determineOutcomeofFrame();
-      game.calculateBonuses();
-      expect(game.bonuses[game.bonuses.length-1]).toEqual([3])
-    });
-    it('allows an extra 2 bowls to calculate the bonus for the last frame if a strike is rolled', function() {
-      spyOn(Math, 'random').and.returnValues(1, 0.3, 0.3);
-      frame.bowlFrame(game);
-      frame.resetFrame();
-      game.determineOutcomeofFrame();
-      game.calculateBonuses();
-      expect(game.bonuses[game.bonuses.length-1]).toEqual([3, 2])
-    });
-  });
-
   describe("Totalling:", function(){
     it("calculates the total score of multiple frame", function(){
       spyOn(Math, 'random').and.returnValues(0.5, 0.5, 0.5, 0.5);
@@ -125,19 +98,6 @@ describe('Game', function() {
       game.calculateTotal();
       expect(game.runningTotal).toEqual(27)
     });
-
-    // it("calculates the score for a full game", function(){
-    //   spyOn(Math, 'random').and.returnValues(0.5, 0.9)
-    //   for (var i = 0; i < 10; i++) {
-    //     game.bowlFrame();
-    //     game.determineOutcomeofFrame();
-    //     game.calculateBonuses();
-    //   }
-    //   console.log(game.game)
-    //   console.log(game.bonuses)
-    //   expect(game.runningTotal).toEqual(98)
-    // });
-
   });
 
 });

@@ -32,18 +32,18 @@ Game.prototype.calculateBonuses = function(){
     this.calculateSpareBonus();
     this.calculateStrikeBonus();
   }
-  if (this.game.length === 10 && this.spareOrStrike[9] != 'neither'){
-    this.bowlFinalFrameBonuses()
+  if (this.game.length === 10 && this.spareOrStrike[9] === 'strike'){
+    var bonusFrame = new Frame()
+    bonusFrame.bowlFinalFrameBonuses(this, "strike")
+  } else if ((this.game.length === 10 && this.spareOrStrike[9] === 'spare')){
+    var bonusFrame = new Frame()
+    bonusFrame.bowlFinalFrameBonuses(this, "spare")
   }
 };
 
-Game.prototype.bowlFinalFrameBonuses = function(){
-  var bonusBowl
-  bonusBowl = Math.floor((Math.random() * 11));
-  this.bonuses[9].push(bonusBowl);
-  if (this.spareOrStrike[this.spareOrStrike.length-1] === 'strike'){
-    bonusBowl = Math.floor((Math.random() * (11-bonusBowl)));
-    this.bonuses[9].push(bonusBowl);
+Game.prototype.addFinalFrameBonuses = function(bonusBowl){
+  for (var i = 0; i < bonusBowl.length; i++) {
+    this.bonuses[9].push(bonusBowl[i]);
   }
 };
 

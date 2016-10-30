@@ -11,7 +11,31 @@ $(document).ready(function(){
 
   if (roll.rollComplete){
     game.addFrame(roll);
+    updateScoreCard();
+    updateTotal();
   }
+
+  // alert(game.frames[0].score);
+
+  function updateScoreCard(){
+    for(var i=1;i<=game.frames.length;i++){
+        if(game.frames[i-1].roll.length === 1){
+          $('#edit-frame'+i+'-1').val(game.frames[i-1].roll[0]);
+        } else if(game.frames[i-1].roll.length === 2){
+            $('#edit-frame'+i+'-1').val(game.frames[i-1].roll[0]);
+            $('#edit-frame'+i+'-2').val(game.frames[i-1].roll[1]);
+          }
+        $('#edit-frame'+i+'-res').val(game.frames[i-1].score);      //game.frames[i].
+      }
+    }
+
+    function updateTotal(){
+      // $('#edit-game-result') = 
+    }
+
+  //edit-frame1-res
+  //edit-frame1-1, edit-frame1-2, edit-frame2-1
+
 
   //console.log(game.showFrame(1));
   roll = new Roll();

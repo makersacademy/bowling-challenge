@@ -57,6 +57,8 @@ Roll.prototype.addRoll = function(rollScore){
 };
 
 Roll.prototype.lookBackOne = function(){
+  // var framesArray = Game.showAllFrames;
+  // alert(framesArray);
   //Not correct at this time!
   //  if (this.roll.length >= 2){
   //    if (this.lookAhead === 2){

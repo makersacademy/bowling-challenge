@@ -1,10 +1,11 @@
 'use strict';
 
 describe("Roll",function(){
-  var roll;
+  var roll, roll2;
   var game;
   beforeEach(function(){
     roll = new Roll();
+    roll2 = new Roll();
     game = new Game();
   });
 
@@ -68,14 +69,42 @@ describe("Roll",function(){
       //Add 2 more rolls after this one, checking the original score each time.
     })
 
+    it("corectly updates the score retrospectively where previous roll was a strike followed by a standard 2 roll frame",function(){
+        roll.addRoll(10);
+        if (roll.rollComplete){
+          game.addFrame(roll);    //This is fudged. Do I need to test through the frontend?
+        }
+        roll2.addRoll(3);
+        roll2.addRoll(4);
+        if (roll2.rollComplete){
+          game.addFrame(roll);    //This is fudged. Do I need to test through the frontend?
+        }
+        // expect(roll.score).toEqual(17);
+        //Need to test more variations,e.g strike, strike, normal frame and strike, strike, strike
+      })
+
     it("shows the correct score where CURRENT frame is a spare",function(){
       roll.addRoll(10);
       if (roll.rollComplete){
         game.addFrame(roll);    //This is fudged. Do I need to test through the frontend?
       }
       expect(roll.score).toEqual(10);
-      //Add 1 more roll after this one, and check the original score again.
     })
+
+    it("corectly updates the score retrospectively where previous roll was a spare followed by a standard 2 roll frame",function(){
+        roll.addRoll(8);
+        roll.addRoll(2);
+        if (roll.rollComplete){
+          game.addFrame(roll);    //This is fudged. Do I need to test through the frontend?
+        }
+        roll2.addRoll(3);
+        roll2.addRoll(4);
+        if (roll2.rollComplete){
+          game.addFrame(roll);    //This is fudged. Do I need to test through the frontend?
+        }
+        // expect(roll.score).toEqual(13);
+        //Could do another test where ball following the spare is a strike.
+      })
 
   })
 

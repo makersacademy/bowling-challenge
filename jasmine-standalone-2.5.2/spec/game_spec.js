@@ -23,11 +23,21 @@ describe('Game', function(){
     expect(game._currentBall).toBe(1)
   });
 
+  it('starts with an empty history of frames', function(){
+    expect(game._previousFrames).toEqual([])
+  });
+
  describe('Bowling the ball', function(){
 
   it('adds the score to the current frame score', function(){
     game.bowl(4);
     expect(game._currentFrameScore).toBe(4)
+  });
+
+  it('adds the score to the frame history', function(){
+    game.bowl(4);
+    game.bowl(5);
+    expect(game._previousFrames).toEqual([[9, 'none']])
   });
 
   it('changes current ball to ball 2', function(){
@@ -50,7 +60,7 @@ describe('Game', function(){
   });
  });
 
- describe('Strike calculation', function(){
+ describe('Strike', function(){
 
    it('adds 10 to the score if you bowl a strike', function(){
      game.bowl(10);
@@ -66,21 +76,52 @@ describe('Game', function(){
      game.bowl(10);
      expect(game._currentFrameScore).toBe(0)
    });
+
+   it('adds the score to the current frame score', function(){
+     game.bowl(4);
+     expect(game._currentFrameScore).toBe(4)
+   });
+
+   it('adds the score to the frame history', function(){
+     game.bowl(10);
+     expect(game._previousFrames).toEqual([[10, 'strike']])
+   });
+
   });
 
-  describe('Spare calculation', function(){
+  describe('Spare', function(){
    it('adds score to the score card', function(){
    game.bowl(5);
    expect(game._currentFrameScore).toBe(5);
    game.bowl(5);
    expect(game._currentGameScore).toBe(10);
   });
+
+  it('adds the score to the frame history', function(){
+    game.bowl(5);
+    game.bowl(5);
+    expect(game._previousFrames).toEqual([[10, 'spare']])
+  });
  });
 
  describe('Game over', function(){
    it('Ends game when you reach 10 frames', function(){
      game._currentFrame = 10
+     game._currentGameScore = 130
      expect(function() { game.bowl(1); }).toThrowError("Game Over!")
+   });
+ });
+
+ describe('Final score calculation', function(){
+   it('gutter game when you miss pins 10 times', function(){
+     spyOn(game, 'calculateFinalScore')
+     game._currentFrame = 10
+     expect(game._gutterGame()).toEqual("Bad luck, Gutter Game!")
+   });
+
+   it('returns final score', function(){
+     game._currentGameScore = 134
+     expect(game.calculateFinalScore()).toEqual(134)
    });
  });
 });

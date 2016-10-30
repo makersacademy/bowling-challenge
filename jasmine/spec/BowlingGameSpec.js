@@ -7,12 +7,19 @@ describe("BowlingGame", function() {
 
   function gameGenerator(frame, lastFrame) {
     for(i = 0; i < 9; i++) {
-      game.roll(frame);
+      bowlingGame.saveRolls(frame);
     };
-    game.roll(lastFrame || frame);
+    bowlingGame.saveRolls(lastFrame || frame);
   };
 
   describe("totalScore", function() {
 
     it('calculates the score for a gutter game', function() {
+      gameGenerator([0,0]);
+      expect(bowlingGame.totalScore()).toBe(0)
     });
+
+
+  });
+
+});

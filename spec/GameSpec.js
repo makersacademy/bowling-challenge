@@ -19,12 +19,20 @@ describe("Game", function() {
   });
 
   it('can roll a spare', function() {
-    game.roll(5);
-    game.roll(5);
-    game.roll(2);
+    roll(1, 5);
+    roll(1, 5);
+    roll(1, 2);
     roll(17, 0);
     expect(game.score()).toEqual(14);
   });
+
+  it('can roll a strike', function() {
+    roll(1, 10);
+    roll(1, 2);
+    roll(1, 2);
+    roll(17, 0);
+    expect(game.score()).toEqual(18);
+  })
 
   function roll(times, pinsDown) {
     for (var i = 0; i < times; i++) {

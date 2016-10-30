@@ -6,6 +6,7 @@ $("document").ready(function() {
   var secondGo;
   var frameTotal;
   var game = {'total': 0};
+  
   var randomAngle = function() {
     var angle = Math.floor(Math.random() * 21) - 10;
     $("#throwAngle").val(angle);
@@ -31,19 +32,20 @@ $("document").ready(function() {
         frame++;
         randomAngle();
       } else {
+        randomAngle();
         ball++;
-        randomAngle;
       }
     } else if(ball === 2 ) {
       secondGo = slider - firstGo < 1 ? 0 : slider - firstGo;
       frameTotal = firstGo + secondGo;
       cellTwo.text(secondGo);
+      cellFrameTot.text(frameTotal);
       game['frame' + frame] = [{'frameTotal':frameTotal}, firstGo, secondGo];
       game.total += frameTotal;
       console.log(game);
       ball = 1;
       frame++;
-      randomAngle;
+      randomAngle();
     }
   });
 });

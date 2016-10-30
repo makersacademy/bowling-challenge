@@ -19,7 +19,7 @@ $(document).ready(function(){
       var num1 = num+1;
       $('#edit-frame'+num1+'-1').val(roll.roll[0]);
       disableButtons(roll.roll[0]);
-      enableSpareButton();
+      enableSpareButton(roll.roll[0]);
     }
     if (roll.rollComplete){
       game.totalScore = 0;
@@ -44,10 +44,6 @@ $(document).ready(function(){
       }
 
       function updateTotal(){
-        // (game.frames).forEach(function(val){
-        //   alert(val.score);
-        //   game.totalScore += val.score
-        // })
         $('#edit-game-result').val(game.totalScore);
       }
     }
@@ -64,11 +60,13 @@ $(document).ready(function(){
     });
 
     function disableSpareButton(){
-      $("[name=var1-9]").prop('disabled',true);
+      $("[id=var1-9]").prop('disabled',true);
     }
 
-    function enableSpareButton(){
-      $("[name=var1-9]").prop('disabled',false);
+    function enableSpareButton(value){
+      $("[id=var1-9]").prop('disabled',false);
+      var nameVal = (10 - parseInt(value))
+      $("[id=var1-9]").attr('name',nameVal);
     }
 
     function disableButtons(value){

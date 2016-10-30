@@ -7,32 +7,18 @@ function Game() {
   this.runningTotal = 0
 }
 
-// Game.prototype.bowl = function(){
-//   return Math.floor(Math.random() * 11);
-// };
-//
-// Game.prototype.bowlFrame = function(){
-//   var bowl = Math.floor((Math.random() * 11));
-//   this.currentFrame.push(bowl);
-//   if (bowl <= 10){
-//     bowl = Math.floor((Math.random() * (11-bowl)));
-//     this.currentFrame.push(bowl);
-//   }
-//   this.game.push(this.currentFrame);
-// };
-
 Game.prototype.addFrame = function(score){
   this.game.push(score);
 };
 
-Game.prototype.returnLastElement = function(array){
-  return array[array.length - 1];
+Game.prototype.returnLastElement = function(lastPosition, array){
+  return array[array.length - lastPosition];
 };
 
 Game.prototype.determineOutcomeofFrame = function(){
-  if(this.game[this.game.length - 1][0] >= 10) {
+  if(this.returnLastElement(1, this.game)[0] >= 10) {
     this.spareOrStrike.push("strike");
-  } else if (this.game[this.game.length - 1][0] + this.game[this.game.length - 1][1] === 10) {
+  } else if (this.returnLastElement(1, this.game)[0] + this.returnLastElement(1, this.game)[1] === 10) {
       this.spareOrStrike.push("spare");
     }
     else {
@@ -69,14 +55,14 @@ Game.prototype.calculateSpareBonus = function(){
 
 Game.prototype.calculateStrikeBonus = function(){
   if (this.spareOrStrike[this.spareOrStrike.length-2] === "strike" && this.spareOrStrike[this.spareOrStrike.length-3] === "strike") {
-    this.bonuses[this.bonuses.length-3].push(this.game[this.game.length - 1][0]);
+    this.returnLastElement(3, this.bonuses).push(this.returnLastElement(1, this.game)[0]);
   }
   else if (this.spareOrStrike[this.spareOrStrike.length-2] === "strike" && this.spareOrStrike[this.spareOrStrike.length-1] === "strike") {
-    this.bonuses[this.bonuses.length-2].push(this.game[this.game.length - 1][0]);
+    this.returnLastElement(2, this.bonuses).push(this.returnLastElement(1, this.game)[0]);
   }
   else if (this.spareOrStrike[this.spareOrStrike.length-2] === "strike") {
-    this.bonuses[this.bonuses.length-2].push(this.game[this.game.length - 1][0]);
-    this.bonuses[this.bonuses.length-2].push(this.game[this.game.length - 1][1]);
+    this.returnLastElement(2, this.bonuses).push(this.returnLastElement(1, this.game)[0]);
+    this.returnLastElement(2, this.bonuses).push(this.returnLastElement(1, this.game)[1]);
   }
 };
 

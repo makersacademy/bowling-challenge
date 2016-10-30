@@ -28,7 +28,7 @@ describe('Game', function() {
         game.bowl(6);
         expect(game.score()).toEqual(13);
     });
-    xit('adds a bonus of next bowl score for a spare', function() {
+    it('adds a bonus of next bowl score for a spare', function() {
         game.bowl(5);
         game.bowl(5);
         game.bowl(6);

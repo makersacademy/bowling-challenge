@@ -1,3 +1,13 @@
+function Bowling () {
+  this.score = 0;
+  this.list = [];
+  this.counter = 0;
+  this.strike = 10;
+}
+
+var bonus = 0;
+
+
 if (!Array.prototype.includes) {
   Array.prototype.includes = function(searchElement /*, fromIndex*/) {
     'use strict';
@@ -31,20 +41,13 @@ if (!Array.prototype.includes) {
     };
   }
 
-  function Bowling () {
-    this.score = 0;
-    this.list = [];
-    this.counter = 0;
-    this.strike = 10;
-  }
 
-  var bonus = 0
 
   Bowling.prototype.play = function (roll1, roll2, roll3 ) {
     roll2 = roll2 || 0; roll3 = roll3 || 0;
-    var frame = [(roll1 + roll2 + roll3), roll1, roll2, roll3]
+    var frame = [(roll1 + roll2 + roll3), roll1, roll2, roll3];
     if (this.counter < 10) {
-      this.list.push(frame)
+      this.list.push(frame);
       this.score += frame[0];
       this.counter += 1;
       this.calculate (frame);
@@ -75,7 +78,7 @@ if (!Array.prototype.includes) {
     (this.list[this.list.indexOf(frame) - 2][0] === this.strike)&&
     (this.list[this.list.indexOf(frame) - 1][1] === this.strike)&&
     (this.list[this.list.indexOf(frame) - 1][0] === this.strike)){
-      bonus = this.strike + frame[1]
+      bonus = this.strike + frame[1];
       this.list[this.list.indexOf(frame) - 2][0] += bonus;
       this.scoreUpdate(bonus);
     }
@@ -84,7 +87,7 @@ if (!Array.prototype.includes) {
   Bowling.prototype.spare = function (frame) {
     if ((this.list[this.list.indexOf(frame) - 2][1] !== this.strike)&&
     (this.list[this.list.indexOf(frame) - 2][0] === this.strike)){
-      bonus = this.list[this.list.indexOf(frame) - 1][1]
+      bonus = this.list[this.list.indexOf(frame) - 1][1];
       this.list[this.list.indexOf(frame) - 2][0] += bonus;
       this.scoreUpdate(bonus);
     }

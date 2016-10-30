@@ -90,4 +90,10 @@
 
     // Custom Globals
     "globals"       : {}        // additional predefined global variables
+jshint: {
+  options: {
+    mocha: true,
+  }
+}
+
 }

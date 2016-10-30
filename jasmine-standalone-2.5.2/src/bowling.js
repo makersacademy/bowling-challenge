@@ -16,6 +16,7 @@ function Bowling () {
 
 Bowling.prototype.firstRoll = function () {
   if (this.currentFrame() === 12) {
+    this.totalScore = this.lastRoundScore + this.totalScore;
     alert("Game Over! Final Score:" + this.viewTotalScore());
   }
   else { this.pinsKnocked = Math.round(Math.random() * (this.pinsLeft - 0));
@@ -33,11 +34,8 @@ Bowling.prototype.roll = function () {
   if (this.gameOverview.length === 10) {
     alert("Game Over! Final Score:" + this.viewTotalScore());
   }
-  else if (this.roll1Score === 10) {
-
-  }
-  else { this.pinsKnocked = Math.round(Math.random() * (this.pinsLeft - 0));
-  this.pinsLeft = 10 - this.pinsKnocked;
+  else {
+  this.resultOfRoll();
   this.storeScore();
   this.calculateScore();
   this.scoreArray();
@@ -46,10 +44,10 @@ Bowling.prototype.roll = function () {
 }
 };
 
-
-
-
-
+Bowling.prototype.resultOfRoll = function () {
+  this.pinsKnocked = Math.round(Math.random() * (this.pinsLeft - 0));
+  this.pinsLeft = 10 - this.pinsKnocked;
+}
 
 Bowling.prototype.changeRollNum = function () {
   if (this.rollNum === 1) {

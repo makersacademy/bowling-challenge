@@ -1,0 +1,44 @@
+As a player,
+I want to know which frame I am on.
+So that I know how many frames I have left.
+
+As a player,
+I want to know which roll I am on
+So that I know how many rolls I have left.
+
+As a player,
+I want to be given one or two rolls in every frame
+So that I can nock down as many bowling pins as I can in that frame.
+
+As a player,
+I want to be able to display the number of pins I have nocked down for each roll
+So that the player can see how well they're doing.
+
+As a player,
+I want to be able to add up the total number of pins I have knocked down for each roll
+So that I can record a total score for each frame.
+
+As a player,
+I want to be able to add the score from the current frame to the running total
+So that I can have an up-to-date total score.
+
+As a player,
+I want to be told when the game is over
+So that I can see my total score and stop playing.
+
+As a bowling alley,
+I want to be able to reset the total numbers of pins to 10
+So that the next frame can take place.
+
+Bonus
+As a player,
+I want to be able to note when I have a 'strike' (all in one on first go)
+So that I can get a bonus score.
+
+As a player,
+I want to be able to note when I have 'spares' (all in two frames)
+So that I can get a bonus score.(number of pins knocked down by the next roll)
+
+As a player,
+I want to know when I have hit no pins for a frame
+So that I can see 'gutter game' displayed on the screen

@@ -6,10 +6,17 @@
    this._currentFrame = 1;
    this._currentBall = 1;
    this._previousFrames = [];
-   this._nextScoreBonus = 'none'
+   this._index = this._currentFrame - 1
+   this.ballOne = 0
+   this.ballTwo = 0
   };
 
   Game.prototype.bowl = function(num) {
+   if(this._currentBall === 1) {
+     this.ballOne = num
+   } else {
+     this.ballTwo = num
+   }
     this._gameOver()
     this._currentFrameScore += num
      if(this.strikeCheck() === true) {
@@ -25,26 +32,25 @@
 
   Game.prototype.strikeCheck = function() {
     if(this._currentFrameScore === 10 && this._currentBall === 1) {
-       this._nextScoreBonus = 'strike'
       return true;
     }
   };
 
   Game.prototype.spareCheck = function() {
     if(this._currentFrameScore === 10 && this._currentBall === 2) {
-      this._nextScoreBonus = 'spare'
      return true;
     }
   };
 
   Game.prototype.calculateFrameScore = function () {
-    this._currentGameScore += this._currentFrameScore;
-    this._previousFrames.push([this._currentFrameScore, this._nextScoreBonus])
     this._reset();
   };
 
+  Game.prototype._strikeCalulation = function () {
+  };
+
   Game.prototype._gameOver = function () {
-    if(this._currentFrame === 10) {
+    if(this._previousFrames.length === 10) {
      this.calculateFinalScore();
      throw new Error('Game Over!')
     }
@@ -62,8 +68,12 @@
   };
 
   Game.prototype._reset = function () {
+    this._currentGameScore += this._currentFrameScore;
+    this._previousFrames.push([this.ballOne, this.ballTwo])
     this._currentFrameScore = 0;
     this._currentFrame += 1;
     this._currentBall = 1
     this._nextScoreBonus = 'none'
+    this.ballOne = 0
+    this.ballTwo = 0
   };

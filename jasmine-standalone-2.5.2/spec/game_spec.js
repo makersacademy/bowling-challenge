@@ -27,6 +27,14 @@ describe('Game', function(){
     expect(game._previousFrames).toEqual([])
   });
 
+  it('ball one starts with a game score of 0', function(){
+    expect(game.ballOne).toBe(0)
+  });
+
+  it('ball two starts with a game score of 0', function(){
+    expect(game.ballTwo).toBe(0)
+  });
+
  describe('Bowling the ball', function(){
 
   it('adds the score to the current frame score', function(){
@@ -37,7 +45,7 @@ describe('Game', function(){
   it('adds the score to the frame history', function(){
     game.bowl(4);
     game.bowl(5);
-    expect(game._previousFrames).toEqual([[9, 'none']])
+    expect(game._previousFrames).toEqual([[4, 5]])
   });
 
   it('changes current ball to ball 2', function(){
@@ -84,7 +92,7 @@ describe('Game', function(){
 
    it('adds the score to the frame history', function(){
      game.bowl(10);
-     expect(game._previousFrames).toEqual([[10, 'strike']])
+     expect(game._previousFrames).toEqual([[10, 0]])
    });
 
   });
@@ -100,14 +108,22 @@ describe('Game', function(){
   it('adds the score to the frame history', function(){
     game.bowl(5);
     game.bowl(5);
-    expect(game._previousFrames).toEqual([[10, 'spare']])
+    expect(game._previousFrames).toEqual([[5, 5]])
+  });
+
+  it('adds the score to the frame history', function(){
+    game.bowl(0);
+    game.bowl(10);
+    expect(game._previousFrames).toEqual([[0, 10]])
   });
  });
 
  describe('Game over', function(){
    it('Ends game when you reach 10 frames', function(){
-     game._currentFrame = 10
-     game._currentGameScore = 130
+     for (var i = 0; i < 10; i++){
+      game.bowl(5);
+      game.bowl(4);
+    }
      expect(function() { game.bowl(1); }).toThrowError("Game Over!")
    });
  });

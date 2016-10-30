@@ -34,7 +34,7 @@ Bowling.prototype.roll = function () {
     alert("Game Over! Final Score:" + this.viewTotalScore());
   }
   else if (this.roll1Score === 10) {
-    
+
   }
   else { this.pinsKnocked = Math.round(Math.random() * (this.pinsLeft - 0));
   this.pinsLeft = 10 - this.pinsKnocked;
@@ -103,7 +103,7 @@ Bowling.prototype.pinsLeftAfterFirstRoll = function () {
 };
 
 Bowling.prototype.currentFrame = function () {
-  return this.gameOverview.length;
+  return this.frameNum;
 };
 
 Bowling.prototype.score = function () {

@@ -1,21 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Coiny);
 
-/* radiobuttons on same line*/
-div .form-type-radio {
-  float: left;
-  clear: none;
-}
-
 /***** FORM *****/
 
 form {
   min-width: 440px;
   font-family: 'Coiny';
   border: 1px solid #F0F0F0;
-  background: #E8F5FA;/*#E1EDF2;*//*#CBE7F2;*//*#61C3EB;*/
+  background: #E8F5FA;
   border-radius: 10px;
-  padding: 2%;/* 2% 5% 2% 5%;/*20px 50px 20px 50px;*/
-  margin: 2%; /* 2% 10% 2% 10% !important;*/
+  padding: 2%;
+  margin: 2%;
 
 }
 

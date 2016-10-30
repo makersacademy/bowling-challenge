@@ -84,5 +84,33 @@ describe ("Bowling", function() {
         bowling.nextFrame();
       }).toThrowError('Current frame is not finished');
     });
-  })
+  });
+
+  describe('#frameScore', function() {
+    it("adds the score when the frame is open", function() {
+      bowling.knockDown(5);
+      bowling.knockDown(4);
+      bowling.nextFrame();
+      expect(bowling.frameScore(0)).toBe(9);
+    });
+
+    it("adds the score when the frame is a spare", function() {
+      bowling.knockDown(5);
+      bowling.knockDown(5);
+      bowling.nextFrame();
+      bowling.knockDown(3);
+      bowling.knockDown(6);
+      bowling.nextFrame();
+      expect(bowling.frameScore(0)).toBe(5 + 5 + 3);
+    });
+
+    it("adds the score when the frame is a strike", function() {
+      bowling.knockDown(10);
+      bowling.nextFrame();
+      bowling.knockDown(3);
+      bowling.knockDown(6);
+      bowling.nextFrame();
+      expect(bowling.frameScore(0)).toBe((10 + 3 + 6));
+    });
+  });
 });

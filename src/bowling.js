@@ -1,3 +1,9 @@
+function sum(arr) {
+  return arr.reduce(function(memo, elem) {
+    return memo + elem;
+  }, 0);
+}
+
 function Bowling() {
   this._frames = [];
   this._currentFrame = [];
@@ -22,11 +28,21 @@ Bowling.prototype.nextFrame = function() {
 }
 
 Bowling.prototype.getCurrentFrame = function() {
-  return this._currentFrame.reduce(function(memo, elem) {
-    return memo + elem;
-  }, 0);
+  return sum(this._currentFrame);
 };
 
 Bowling.prototype.isCurrentFrameFinished = function() {
   return (this._currentFrame[0] === 10 || this._currentFrame.length === 2);
+};
+
+Bowling.prototype.frameScore = function(i) {
+  var score = sum(this._frames[i]);
+  if (this._frames[i][0] === 10) {
+    // Strike!
+    score += this._frames[i + 1][0] + this._frames[i + 1][1];
+  } else if (score === 10) {
+    // Spare!
+    score += this._frames[i + 1][0];
+  }
+  return score;
 };

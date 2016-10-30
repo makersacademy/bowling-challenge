@@ -15,3 +15,7 @@ Bowling.prototype.getCurrentFrame = function() {
     return memo + elem;
   }, 0);
 };
+
+Bowling.prototype.isCurrentFrameFinished = function() {
+  return (this._currentFrame[0] === 10 || this._currentFrame.length === 2);
+};

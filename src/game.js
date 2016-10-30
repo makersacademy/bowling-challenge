@@ -28,8 +28,8 @@ Game.prototype.determineOutcomeofFrame = function(){
 
 Game.prototype.calculateBonuses = function(){
   this.bonuses.push([])
-    this.calculateSpareBonus();
-    this.calculateStrikeBonus();
+  this.calculateSpareBonus();
+  this.calculateStrikeBonus();
   if (this.spareOrStrike[9] === "strike"){
     var bonusFrame = new Frame()
     bonusFrame.bowlFinalFrameBonuses(this, "strike")
@@ -42,6 +42,9 @@ Game.prototype.calculateBonuses = function(){
 Game.prototype.addFinalFrameBonuses = function(bonusBowl){
   for (var i = 0; i < bonusBowl.length; i++) {
     this.bonuses[9].push(bonusBowl[i]);
+  }
+  if (this.spareOrStrike[8] === "strike"){
+    this.bonuses[8].push(bonusBowl[0])  
   }
 };
 

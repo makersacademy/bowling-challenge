@@ -62,7 +62,7 @@ Bowling.prototype.calculateScore = function () {
 Bowling.prototype.scoreArray = function () {
   if (this.rollNum === 2) {
     var total = this.lastRoundScore + this.totalScore
-    var frameScore = [ this.frameNum - 1, this.roll1Score, this.roll2Score, total ];
+    var frameScore = [ "framenum: " + (this.frameNum - 1), " roll1: " + this.roll1Score, " roll2: " + this.roll2Score, " total: " + total ];
     this.gameOverview.push(frameScore);
     this.lastRoundScore = total;
   }

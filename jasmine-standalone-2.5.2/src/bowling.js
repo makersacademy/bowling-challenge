@@ -28,6 +28,29 @@ Bowling.prototype.firstRoll = function () {
 }
 };
 
+
+Bowling.prototype.roll = function () {
+  if (this.gameOverview.length === 10) {
+    alert("Game Over! Final Score:" + this.viewTotalScore());
+  }
+  else if (this.roll1Score === 10) {
+    
+  }
+  else { this.pinsKnocked = Math.round(Math.random() * (this.pinsLeft - 0));
+  this.pinsLeft = 10 - this.pinsKnocked;
+  this.storeScore();
+  this.calculateScore();
+  this.scoreArray();
+  this.changeRollNum();
+  this.changeFrameNum();
+}
+};
+
+
+
+
+
+
 Bowling.prototype.changeRollNum = function () {
   if (this.rollNum === 1) {
   this.rollNum = 2;
@@ -62,7 +85,7 @@ Bowling.prototype.calculateScore = function () {
 Bowling.prototype.scoreArray = function () {
   if (this.rollNum === 2) {
     var total = this.lastRoundScore + this.totalScore
-    var frameScore = [ "framenum: " + (this.frameNum - 1), " roll1: " + this.roll1Score, " roll2: " + this.roll2Score, " total: " + total ];
+    var frameScore = [ "Frame: " + (this.frameNum - 1), " First Roll: " + this.roll1Score, " Second Roll: " + this.roll2Score, " Total Score: " + total ];
     this.gameOverview.push(frameScore);
     this.lastRoundScore = total;
   }
@@ -80,7 +103,7 @@ Bowling.prototype.pinsLeftAfterFirstRoll = function () {
 };
 
 Bowling.prototype.currentFrame = function () {
-  return this.frameNum;
+  return this.gameOverview.length;
 };
 
 Bowling.prototype.score = function () {
@@ -93,4 +116,13 @@ Bowling.prototype.gameScoreOverview = function () {
 
 Bowling.prototype.viewTotalScore = function () {
   return this.lastRoundScore + this.totalScore;
+};
+
+Bowling.prototype.isStrike = function () {
+  if (this.roll1Score === 10) {
+    return true
+  }
+  else {
+    return false
+  }
 };

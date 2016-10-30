@@ -22,22 +22,14 @@ Frame.prototype.roll  = function () {
   };
 
 Frame.prototype.firstRoll = function () {
-  else { this.pinsKnocked = Math.round(Math.random() * (this.pinsLeft - 0));
+  this.pinsKnocked = Math.round(Math.random() * (this.pinsLeft - 0));
   this.pinsLeft = 10 - this.pinsKnocked;
-  this.storeScore();
-  this.calculateScore();
-  this.scoreArray();
-  this.changeRollNum();
-  this.changeFrameNum();
 }
 };
 
 Frame.prototype.secondRoll = function () {
   { this.pinsKnocked = Math.round(Math.random() * (this.pinsLeft - 0));
   this.pinsLeft = 10 - this.pinsKnocked;
-  this.storeScore();
-  this.calculateScore();
-  this.scoreArray();
   this.changeFrameNum();
 }
 };

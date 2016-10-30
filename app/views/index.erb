@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Thermostat</title>
+  <script src="/src/Thermostat.js"></script>
+  <script src="/src/interface.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+  <link href="<%= url("/css/style.css")%> "rel="stylesheet"/>
+</head>
+<body>
+  <section class = 'text-center'>
+    <div class = 'transparent-box'>
+      <p class="text-danger">
+        Please select your home-town
+      </p>
+      <form action = "/settings" method="post">
+        <select name="city" class="text-primary" id="current-city">
+          <option value ="london">London</option>
+          <option value ="newyork">New York</option>
+          <option value ="paris">Paris</option>
+          <option value ="tokyo">Tokyo</option>
+          <option value ="florence">Florence</option>
+        </select>
+        <button class="btn btn-primary" id="temperature-down">Submit</button>
+      </form>
+
+      <h2 class="text-danger">Current temperature: <span id = 'current-temperature'></span></h2>
+    </div>
+
+    <div class = 'transparent-box'>
+
+      <h1 class="text-center text-danger" id="temperature"></h1>
+
+      <div class="text-center text-danger">
+        <div class = "buttons-div">
+          <button class="btn btn-primary" id="temperature-down">-</button>
+          <button class="btn btn-success"  id="temperature-up">+</button>
+        </div>
+
+        <div>
+          <button class="btn btn-danger" id="temperature-reset">Reset</button>
+        </div>
+
+        <p class="text-danger"> Power saving mode is <span id="power-saving-status">on</span> </p>
+
+        <div>
+          <form action = "/settings" method="post">
+            <button class="btn btn-warning" id="powersaving-toggle">Power Saving</button>
+          </form>
+        </div>
+
+    </div>
+
+  </section>
+</body>
+</html>

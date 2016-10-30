@@ -2,21 +2,47 @@
 Bowling Challenge
 =================
 
-
-* Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
-Task: 
------
-
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As a player
+so I can be able to play
+I want to roll a ball and hit a 0 to 10 pins
+
+As a player
+so I can end a frame
+I want to be able to roll maximum twice
+
+As a player
+so I can be able to roll a strike
+I want to be able to hit 10 pins
+
+As a player
+so I can be able to roll a spare
+I want to be able to hit less than 10 pins at the first round and the rest on the second
+
+<!-- As a player
+so I can be able to pass the turn on to another player
+I want the turns the score to switch to player n. 2 if i hit 10 pins or two rolls -->
+
+As a player
+so I can keep track of my score
+I want the total score to update everytime I hit a pin
+
+As a player
+so I can keep track of my score
+I want the total score to update everytime I hit a strike or a spare
+
+As a player
+so I can have a bonus
+I want a bonus frame if I hit a spare or a strike at the 10th
+
+
+
+
+
+As usual please start by
 
 * Forking this repo
 
@@ -62,7 +88,7 @@ Code Review
 In code review we'll be hoping to see:
 
 * All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 

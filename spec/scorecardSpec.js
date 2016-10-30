@@ -84,7 +84,7 @@ describe ('Scorecard', function() {
       for (var i = 0; i < 21 ; i++) {
         scorecard.updateScore(2)
       }
-      expect(score.roll).toEqual(3)
+      expect(scorecard.roll).toEqual(3)
     });
   });
 });

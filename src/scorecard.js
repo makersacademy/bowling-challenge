@@ -60,10 +60,13 @@ Scorecard.prototype.updateAllTotalsAndFrame = function (number) {
 Scorecard.prototype.updateRoll = function () {
   if(this.roll === 1){
     this.roll += 1;
-  } else if(this.roll === 2 ){
+  } else if(this.roll === 2 && this.frame <= 9){
     this.roll = 1;
+  } else if(this.roll === 2 && this.frame === 10){
+    this.roll += 1;
   }
-};
+}
+
 
 Scorecard.prototype.updateFrame = function () {
   if(this.frame ===  this.MAX_FRAME_TOTAL){

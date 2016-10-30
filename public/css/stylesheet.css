@@ -9,6 +9,11 @@
 
 }
 
+html {
+  background: url("http://okcmod.com/wp-content/uploads/2012/09/DSC_0488-lanes.jpg");
+  background-size: cover;
+}
+
 
 
 .header {
@@ -19,6 +24,7 @@
     background-color: black;
     border: 5px solid black;
     border-radius: 10%;
+    padding-bottom: 0px;
 }
 
 .header h2 {
@@ -29,6 +35,45 @@
   float: left;
   margin-left: 2%;
 }
+
+.intro {
+  width: 90%;
+  float:left;
+  height: 3%;
+  margin-left: 5%;
+  text-align: center;
+  font-family: 'paytone_oneregular';
+  font-size: 15px;
+  color: black;
+  position: absolute;
+  top: 10%;
+}
+
+.intro h1 {
+  padding-top: 0px;
+}
+
+#strike  {
+  z-index: 2;
+  position: absolute;
+  top: 15%;
+  left:25%;
+  text-align: center;
+  visibility: hidden;
+}
+
+#message {
+  font-family: 'paytone_oneregular';
+  font-size: 50px;
+  color: black;
+  z-index: 3;
+  position: absolute;
+  top: 40%;
+  left:42%;
+  text-align: center;
+  visibility: hidden;
+}
+
 
 .pins {
   width:100%;
@@ -78,4 +123,5 @@
   position: absolute;
   top: 70%;
   left:43%;
+  outline: none;
 }

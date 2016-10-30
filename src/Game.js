@@ -12,6 +12,7 @@ Game.prototype.hits = function() {
   return Math.floor(Math.random() * (this.pins + 1));
 };
 
+
 Game.prototype.roll = function() {
   var hits = this.hits();
   this.score(hits);

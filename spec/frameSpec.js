@@ -42,5 +42,34 @@ describe('Frame', function() {
             frame.bowl(5);
             expect(frame.isASpare()).toBe(true);
         });
+        it('reports it is a spare when first bowl scores 0 and second bowl scores 10', function() {
+            frame.bowl(0);
+            frame.bowl(10);
+            expect(frame.isASpare()).toBe(true);
+        });
+    });
+
+    describe('completion', function() {
+        it('reports the frame is not completed at start', function() {
+            expect(frame.isComplete()).toBe(false);
+        });
+        it('reports the frame is not completed after first bowl if score is less than 10', function() {
+            frame.bowl(5);
+            expect(frame.isComplete()).toBe(false);
+        });
+        it('reports the frame is complete if first bowl is a strike', function() {
+            frame.bowl(10);
+            expect(frame.isComplete()).toBe(true);
+        });
+        it('reports the frame is complete after two bowls', function() {
+            frame.bowl(0);
+            frame.bowl(10);
+            expect(frame.isComplete()).toBe(true);
+        })
+        it('reports the frame is complete after two gutter bowls', function() {
+            frame.bowl(0);
+            frame.bowl(0);
+            expect(frame.isComplete()).toBe(true);
+        })
     });
 });

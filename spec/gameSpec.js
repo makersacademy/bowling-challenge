@@ -17,4 +17,21 @@ describe('Game', function() {
         game.bowl(5);
         expect(game.score()).toEqual(5);
     });
+    it('takes score for second bowl', function() {
+        game.bowl(5);
+        game.bowl(2);
+        expect(game.score()).toEqual(7);
+    });
+     it('takes score for third bowl', function() {
+        game.bowl(5);
+        game.bowl(2);
+        game.bowl(6);
+        expect(game.score()).toEqual(13);
+    });
+    xit('adds a bonus of next bowl score for a spare', function() {
+        game.bowl(5);
+        game.bowl(5);
+        game.bowl(6);
+        expect(game.score()).toEqual(22);
+    });
 });

@@ -2,15 +2,38 @@
 <html>
   <head>
     <script src="src/Game.js"></script>
-    <title>Let's Bowl</title>
+    <link type="text/css" rel="stylesheet" href="public/css/stylesheet.css"/>
   </head>
   <body>
     <script src="lib/jquery.js"></script>
       <div class="header">
-        <h2> Frame: <span class="frame"></span></h2>
-        <h2> Roll: <span class="roll"></span></h2>
-        <h2> Score: <span class="score"></span></h2>
-        <h1> You hit <span class="hits"></span> pins!</h1>
+        <h2> Frame: &nbsp; &nbsp;<span class="frame"></span></h2>
+        <h2> Roll: &nbsp; &nbsp;<span class="roll"></span></h2>
+        <h2> Pins hit: &nbsp; &nbsp;<span class="hits"></span></h2>
+        <h2> Total score: &nbsp; &nbsp;<span class="score"></span></h2>
+      </div>
+      <div class="pins">
+        <div class="first">
+          <img id="1" src="https://www.dropbox.com/s/9m24jcco3jzcjev/newpin1.png?raw=1"/>
+        </div>
+        <div class="front">
+          <img id="2" src="https://www.dropbox.com/s/9m24jcco3jzcjev/newpin1.png?raw=1"/>
+          <img id="3" src="https://www.dropbox.com/s/9m24jcco3jzcjev/newpin1.png?raw=1"/>
+        </div>
+        <div class="middle">
+          <img id="4" src="https://www.dropbox.com/s/9m24jcco3jzcjev/newpin1.png?raw=1"/>
+          <img id="6" src="https://www.dropbox.com/s/9m24jcco3jzcjev/newpin1.png?raw=1"/>
+          <img id="5" src="https://www.dropbox.com/s/9m24jcco3jzcjev/newpin1.png?raw=1"/>
+        </div>
+        <div class="back">
+          <img id="7" src="https://www.dropbox.com/s/9m24jcco3jzcjev/newpin1.png?raw=1"/>
+          <img id="10" src="https://www.dropbox.com/s/9m24jcco3jzcjev/newpin1.png?raw=1"/>
+          <img id="9" src="https://www.dropbox.com/s/9m24jcco3jzcjev/newpin1.png?raw=1"/>
+          <img id="8" src="https://www.dropbox.com/s/9m24jcco3jzcjev/newpin1.png?raw=1"/>
+        </div>
+      </div>
+      <div class="ball">
+        <img id="ball" src="http://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Sport-PNG/Black_Bowling_Ball_PNG_Vector_Clipart.png?m=1433658032"/>
       </div>
       <input id="roll" type="button" value="Let's Roll!">
     <script src="src/Interface.js"></script>

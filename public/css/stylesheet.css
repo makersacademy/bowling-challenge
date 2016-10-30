@@ -1,0 +1,81 @@
+
+
+@font-face {
+    font-family: 'paytone_oneregular';
+    src: url('paytoneone-webfont.woff2') format('woff2'),
+         url('paytoneone-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+.header {
+    width: 90%;
+    float:left;
+    height: 10%;
+    margin-left: 5%;
+    background-color: black;
+    border: 5px solid black;
+    border-radius: 10%;
+}
+
+.header h2 {
+  font-family: 'paytone_oneregular';
+  font-size: 20px;
+  color: white;
+  width: 20%;
+  float: left;
+  margin-left: 2%;
+}
+
+.pins {
+  width:100%;
+  height:30%;
+}
+
+.pins img {
+  width: 50px;
+}
+
+.back {
+  z-index: -3;
+  position: absolute;
+  top: 25%;
+  left:40%;
+}
+
+.middle {
+  z-index: -2;
+  position: absolute;
+  top: 30%;
+  left:42.5%;
+}
+
+.front {
+  z-index: -1;
+  position: absolute;
+  top: 35%;
+  left:45%;
+}
+
+.first {
+  z-index: 0;
+  position: absolute;
+  top: 40%;
+  left:47.5%;
+}
+
+.pins {
+  width:100%;
+  height:30%;
+}
+
+#ball {
+  width: 150px;
+  z-index: 1;
+  position: absolute;
+  top: 70%;
+  left:43%;
+}

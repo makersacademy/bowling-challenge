@@ -49,7 +49,7 @@ describe("Frame", function() {
       frame.resetFrame();
       game.determineOutcomeofFrame();
       game.calculateBonuses();
-      expect(game.bonuses[game.bonuses.length-1]).toEqual([3, 2])
+      expect(game.bonuses[game.bonuses.length-1]).toEqual([3, 3])
     });
   });
 });

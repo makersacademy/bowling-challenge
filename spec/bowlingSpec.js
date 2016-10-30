@@ -113,4 +113,32 @@ describe ("Bowling", function() {
       expect(bowling.frameScore(0)).toBe((10 + 3 + 6));
     });
   });
+
+  describe('#totalScore', function() {
+    it("adds the score when the frame is open", function() {
+      bowling.knockDown(5);
+      bowling.knockDown(4);
+      bowling.nextFrame();
+      expect(bowling.totalScore()).toBe(9);
+    });
+
+    it("adds the score when the frame is a spare", function() {
+      bowling.knockDown(5);
+      bowling.knockDown(5);
+      bowling.nextFrame();
+      bowling.knockDown(3);
+      bowling.knockDown(6);
+      bowling.nextFrame();
+      expect(bowling.totalScore()).toBe((10 + 3) + (3 + 6));
+    });
+
+    it("adds the score when the frame is a strike", function() {
+      bowling.knockDown(10);
+      bowling.nextFrame();
+      bowling.knockDown(3);
+      bowling.knockDown(6);
+      bowling.nextFrame();
+      expect(bowling.totalScore()).toBe((10 + 3 + 6) + (3 + 6));
+    });
+  });
 });

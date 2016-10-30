@@ -46,3 +46,9 @@ Bowling.prototype.frameScore = function(i) {
   }
   return score;
 };
+
+Bowling.prototype.totalScore = function() {
+  return this._frames.reduce(function(memo, frame, i) {
+    return memo + this.frameScore(i);
+  }.bind(this), 0);
+};

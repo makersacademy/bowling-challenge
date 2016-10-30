@@ -1,5 +1,6 @@
+var Frame = require('../lib/Frame.js');
+
 describe('Frame', function() {
-    var Frame = require('../lib/Frame.js');
     var frame;
 
     beforeEach(function() {

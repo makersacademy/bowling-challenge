@@ -48,7 +48,6 @@ $(document).ready(function(){
     $("[name=b-new]").click(function(){
       game.newGame();
       roll.roll=[];
-      // alert("hey!");
       for(var i=1;i<=10;i++){
         $('#edit-frame'+i+'-1').val("");
         $('#edit-frame'+i+'-2').val("");
@@ -57,25 +56,17 @@ $(document).ready(function(){
       }
     });
 
+    disableButtons(8);
+
+    function disableButtons(value){
+      for(var i=value;i<=10;i++){
+        var string = "[name="+i+"]";
+        alert(string);
+        $(string).prop('disabled',true);
+      }
+      // $("[name=1]").prop('disabled',true);
+    }
 
   console.log(game.showAllFrames());
-
-
-
-
-  //#######################################################
-
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  // roll = new Roll();
-  // roll.addRoll(8);
-  // console.log(roll.showRoll(1));
-  // // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  // game = new Game();
-  // game.addFrame("testgame1");
-  // console.log(game.showFrame(1));
-  // game.addFrame("testgame2");
-  // console.log(game.showFrame(2));
-
-
 
 })

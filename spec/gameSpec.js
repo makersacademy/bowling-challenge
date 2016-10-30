@@ -68,27 +68,47 @@ describe("Game", function() {
       expect(function(){game.totalFramePoints(); }).toThrowError("Error: max. frame point exceeded");
     });
 
-    it("provides a running tally of total points", function() {
-      game.updateGamePoints(4);
-      game.updateGamePoints(3);
-      expect(game.totalPoints()).toEqual(7);
+    it("provides a running tally of total game points", function() {
+      game.updateGamePoints(65);
+      game.firstBowlPoints(3);
+      game.secondBowlPoints(2);
+      game.firstBowlPoints(4);
+      game.secondBowlPoints(1);
+      expect(game.totalPoints()).toEqual(75);
     });
 
     it("a game has a maximum total score of 300", function() {
       game.updateGamePoints(299);
-      game.updateGamePoints(5);
+      game.firstBowlPoints(5);
       expect(function(){game.totalPoints(); }).toThrowError("Error: max. point exceeded");
     });
+  });
+
+  describe("Strike", function() {
 
     it("confirms a strike if all 10 pins are knocked down on the first bowl", function() {
       game.firstBowlPoints(10);
       expect(game.firstBowlPoints()).toEqual("Strike!")
     });
 
+    // it("does not confirm a strike if less than 10 pins are knocked down on the first bowl", function() {
+    //   game.firstBowlPoints(6);
+    //   expect(game.firstBowlPoints()).toEqual(6);
+    // });
+  });
+
+  describe("Spare", function() {
+
     it("confirms a spare if all pins are knocked down on the second bowl", function() {
       game.firstBowlPoints(8);
       game.secondBowlPoints(2);
       expect(game.secondBowlPoints()).toEqual("Spare!")
     });
+
+    // it("does not confirm a spare if pins remain at the end", function() {
+    //   game.firstBowlPoints(7);
+    //   game.secondBowlPoints(1);
+    //   expect(game.secondBowlPoints()).toEqual(1)
+    // });
   });
 });

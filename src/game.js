@@ -9,6 +9,10 @@ function Game(){
   // console.log("function Game###|: " + this);
 };
 
+Game.prototype.newGame = function(){
+  this.frames = [];
+};
+
 Game.prototype.addFrame = function(frameScore){
   if (this.frames.length === 10){
     throw new Error("Game over");

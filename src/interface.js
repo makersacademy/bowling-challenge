@@ -2,42 +2,22 @@ $(document).ready(function(){
   var game = new Game();
   var roll = new Roll();
 
-  // Function to detect button clicked.
-
-
-  // function rollBall(pinsDown){
-  //   alert("rollBall called!");
-  // }
-
   $("[type=button]").click(function(){
-    // alert(this['value']);
-    // pinsFromForm = this['value'];
-    // if
     rollBall(this['name']);
   });
 
-  // $(".bowling-calc-buttons-container").click(function(){
-  // $('[name=b-3]').click(function(){
   function rollBall(pinsDown){
-    // alert("|||"+pinsDown+"|||");
-    // alert(pinsDown+20);
-    // var pinsDown1 = pinsDown;
     if(roll.rollComplete === true){
       roll = new Roll();
     }
     roll.addRoll(parseInt(pinsDown));
-    // alert(roll.roll.length);
     if((roll.rollComplete === false)&&(roll.roll.length === 1)){
-      // alert(game.currentRollNumber());
       var num = game.currentRollNumber();
       var num1 = num+1;
-      // alert(num);
-      // alert('#edit-frame'+num1+'-1');
       $('#edit-frame'+num1+'-1').val(roll.roll[0]);
     }
-    // roll.addRoll(parseInt(pinsDown));
-    // console.log(roll.showRoll(1));
     if (roll.rollComplete){
+      game.totalScore = 0;
       game.addFrame(roll);
       updateScoreCard();
       updateTotal();
@@ -51,7 +31,7 @@ $(document).ready(function(){
             $('#edit-frame'+i+'-1').val(game.frames[i-1].roll[0]);
             $('#edit-frame'+i+'-2').val(game.frames[i-1].roll[1]);
           }
-          $('#edit-frame'+i+'-res').val(game.frames[i-1].score);      //game.frames[i].
+          $('#edit-frame'+i+'-res').val(game.frames[i-1].score);
           game.totalScore += game.frames[i-1].score
         }
       }
@@ -65,30 +45,18 @@ $(document).ready(function(){
       }
     }
 
-  //edit-frame1-res
-  //edit-frame1-1, edit-frame1-2, edit-frame2-1
+    $("[name=b-new]").click(function(){
+      game.newGame();
+      roll.roll=[];
+      // alert("hey!");
+      for(var i=1;i<=10;i++){
+        $('#edit-frame'+i+'-1').val("");
+        $('#edit-frame'+i+'-2').val("");
+        $('#edit-frame'+i+'-res').val("");
+        $('#edit-game-result').val("");
+      }
+    });
 
-
-  //console.log(game.showFrame(1));
-  // roll = new Roll();
-  // roll.addRoll(10);
-  //
-  // if (roll.rollComplete){
-  //   game.addFrame(roll);
-  //   updateScoreCard();
-  //   updateTotal();
-  // }
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  // roll = new Roll();
-  // roll.addRoll(0);
-  // roll.addRoll(6);
-  //
-  // if (roll.rollComplete){
-  //   game.addFrame(roll);
-  //   updateScoreCard();
-  //   updateTotal();
-  // }
-  //console.log(game.showFrame(2));
 
   console.log(game.showAllFrames());
 

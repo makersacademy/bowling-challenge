@@ -25,7 +25,6 @@ $("document").ready(function() {
         cellOne.text(firstGo);
         if(firstGo === 10) {
           second = 0;
-          cellFrameTot.text(firstGo);
           game['frame' + frame] = [{'frameTotal': firstGo}, firstGo, ];
           game.total += firstGo;
           console.log(game);

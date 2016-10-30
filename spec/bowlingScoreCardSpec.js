@@ -2,9 +2,10 @@ function strict(){
   'use strict';
 }
 
+var Scorecard = require('../src/bowlingScoreCard.js');
+
 describe ('Scorecard', function() {
 
-  var Scorecard = require('../src/bowlingScoreCard.js');
   var scorecard;
 
   beforeEach(function() {

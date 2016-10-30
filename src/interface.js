@@ -48,6 +48,8 @@ $(document).ready(function(){
       }
     }
 
+    // Need to call gameOver();  function at the end of the game.
+
     $("[name=b-new]").click(function(){
       game.newGame();
       roll.roll=[];
@@ -86,6 +88,17 @@ $(document).ready(function(){
         var string = "[name="+i+"]";
         $(string).prop('disabled',false);
         $(string).animate({opacity:1});
+      }
+    }
+
+// ################################################### Need to call this!
+    function gameOver(){
+      if(game.totalScore === 0){
+        alert("COMMISERATIONS!!! You just completed a gutter game.")
+      } else if(game.totalScore === 300){
+        alert("CONGRATULATIONS!!! You just completed a perfect game.")
+      } else {
+        alert("Thank you for playing");
       }
     }
 

@@ -6,7 +6,6 @@ function Game(){
   this.gameOver = false;
   var totalScore;
   this.totalScore = 0;
-  // console.log("function Game###|: " + this);
 };
 
 Game.prototype.newGame = function(){
@@ -21,23 +20,18 @@ Game.prototype.addFrame = function(frameScore){
     if (this.frames.length === 10){
       this.gameOver = true;
     }
-  // console.log("Game.prototype.addFrame###|: " + this);
 };
 
 Game.prototype.showFrame = function(frameNo){
   return this.frames[frameNo-1];
-  // console.log("Game.prototype.showFrame###|: " + this);
 };
 
 Game.prototype.currentRollNumber = function(){
  return parseInt(this.frames.length);
 }
 
-
-// For verfication purposes only!!!
 Game.prototype.showAllFrames = function(){
   return this.frames;
-  // console.log("Game.prototype.showFrame###|: " + this);
 };
 
 // XXXXXXXXXXXXXXXXXXXXXXXXXXX Roll XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -54,7 +48,6 @@ function Roll(){
 Roll.prototype.addRoll = function(rollScore){
   this.checkForRollErrors(rollScore);
   this.roll.push(rollScore);
-  this.lookBackOne();
   if (this.roll.length === 2){
     this.rollComplete = true;
     this.score = this.addScore2Rolls();
@@ -65,18 +58,6 @@ Roll.prototype.addRoll = function(rollScore){
     this.lookAhead = 2;
   }
 };
-
-Roll.prototype.lookBackOne = function(){
-  // var framesArray = Game.showAllFrames;
-  // alert(framesArray);
-  //Not correct at this time!
-  //  if (this.roll.length >= 2){
-  //    if (this.lookAhead === 2){
-  //      this.roll[roll.length-2].lookAhead =1;
-  //      this.roll[roll.length-2].score+=this.roll.score;
-  //    }
-  //  }
-}
 
 Roll.prototype.addScore2Rolls = function(){
   return this.roll[0]+this.roll[1];

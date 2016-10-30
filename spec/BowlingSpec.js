@@ -6,7 +6,7 @@ describe("Bowling", function() {
   });
 
   describe("Turns", function(){
-    it("should record the result of a throw", function() {
+    it("should record the result of a turn", function() {
       bowling.recordThrow(5);
       expect(bowling._turn).toEqual([5])
     });
@@ -24,7 +24,7 @@ describe("Bowling", function() {
     it("should end if 10 pins are scored", function(){
       bowling.recordThrow(5);
       bowling.recordThrow(5);
-      expect(bowling.calculateTurn()).toEqual(0)
+      expect(bowling._turn).toEqual([])
     });
 
     it("should end after 2 throws", function(){
@@ -35,7 +35,7 @@ describe("Bowling", function() {
 
     it("should end after a strike", function(){
       bowling.recordThrow(10);
-      expect(bowling._turnLog[bowling._turnLog.length-1]).toEqual([10])
+      expect(bowling._turn).toEqual([])
     });
   });
 
@@ -56,21 +56,36 @@ describe("Bowling", function() {
   });
 
   describe("Spares", function () {
-    it("should record the next throw in the previous throw's score too", function() {
+    it("should record the next throw in the previous turn's score too", function() {
       bowling.recordThrow(9);
       bowling.recordThrow(1);
       //won't count towards current score until the second ball of this turn is thrown
       bowling.recordThrow(5);
       expect(bowling.calculateTotalScore()).toEqual(15)
     });
+    it("should not record the second throw after the spare in the previous turn's score too", function() {
+      bowling.recordThrow(10);
+      //won't count towards current score until the second ball of this turn is thrown
+      bowling.recordThrow(5);
+      bowling.recordThrow(4);
+      expect(bowling._turnLog[0].calculate()).toEqual(15)
+    });
+
   });
 
   describe("Strikes", function () {
-    it("should record the next throw in the previous throw's score too", function() {
+    it("should record the next throw in the previous turn's score too", function() {
       bowling.recordThrow(10);
       //won't count towards current score until the second ball of this turn is thrown
       bowling.recordThrow(5);
       expect(bowling.calculateTotalScore()).toEqual(15)
+    });
+    it("should record the second throw after the strike in the previous turn's score too", function() {
+      bowling.recordThrow(10);
+      //won't count towards current score until the second ball of this turn is thrown
+      bowling.recordThrow(5);
+      bowling.recordThrow(4);
+      expect(bowling._turnLog[0].calculate()).toEqual(19)
     });
   });
 });

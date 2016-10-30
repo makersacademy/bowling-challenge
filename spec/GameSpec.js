@@ -27,15 +27,21 @@ describe("Game", function() {
     expect(game.frames.length).toBe(2);
   });
 
-  it("should add to the bonus count if the score was a strike", function () {
+  it("should add to the bonus count if the score was a strike", function() {
     game.addScore(10);
     expect(game.bonusCount).toBe(2);
   });
 
-  it("should add to the bonus count if the score was a spare", function () {
+  it("should add to the bonus count if the score was a spare", function() {
     game.addScore(6);
     game.addScore(4);
     expect(game.bonusCount).toBe(1);
+  });
+
+  it("returns the total sum of all the scores", function() {
+    game.frames[0].push(1,2);
+    game.addScore(6);
+    expect(game.total()).toEqual(9);
   });
 
 });

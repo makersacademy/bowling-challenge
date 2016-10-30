@@ -16,6 +16,16 @@ Game.prototype.frameTotal = function() {
   }, 0);
 };
 
+Game.prototype.total = function() {
+  var total = 0;
+  for (var i = 0; i < this.frames.length; i++) {
+    total += this.frames[i].reduce(function(a, b) {
+      return a + b;
+    }, 0);
+  }
+  return total;
+};
+
 Game.prototype._checkFrame = function() {
   if (this.frames[this.currentFrame].length == 2 || this.frames[this.currentFrame][0] == 10) {
     this._addFrame();

@@ -1,58 +1,104 @@
-function Bowling () {
-  this.score = 0;
-  this.framesList = [];
-}
-
-Bowling.prototype.strik = function(frame) {
-  if (this.framesList[this.framesList.length-2][1] === '/') {
-    (this.framesList[this.framesList.length-2])[2] +=
-    (this.framesList[this.framesList.length-1])[2];
-  }
-}
-
-Bowling.prototype.spare = function (frame) {
-  if (this.framesList[this.framesList.length-2][2] === 10) {
-this.framesList[this.framesList.length - 2][2] +=
-this.framesList[this.framesList.length - 1][0];
-  }
-}
-
-Bowling.prototype.play = function (roll1, roll2, roll3 = 0) {
-  var frame = []
-    if((this.framesList.length < 10) && (roll1 === 10)) {
-      roll2 = '/';
-      frame = [roll1, roll2, 10]
-      this.framesList.push(frame)
-      this.updateScore(frame)
+if (!Array.prototype.includes) {
+  Array.prototype.includes = function(searchElement /*, fromIndex*/) {
+    'use strict';
+    if (this === null) {
+      throw new TypeError('Array.prototype.includes called on null or undefined');
     }
-    else if ((this.framesList.length < 10) && (roll1 !== 10)) {
-      frame = [roll1, roll2, (roll1 + roll2)]
-      this.framesList.push(frame)
-      this.updateScore(frame)
+
+    var O = Object(this);
+    var len = parseInt(O.length, 10) || 0;
+    if (len === 0) {
+      return false;
     }
-    else if (this.framesList.length === 9){this.lastPlay(roll1, roll2, roll3)}
-};
-
-Bowling.prototype.lastPlay = function (roll1, roll2, roll3) {
-  var frame = []
-  if ((roll1 === 10) || (roll1 + roll2 === 10)) {
-  frame = [roll1, roll2, (roll1 + roll2 + roll3), roll3]
-  this.framesList.push(frame)
+    var n = parseInt(arguments[1], 10) || 0;
+    var k;
+    if (n >= 0) {
+      k = n;
+    } else {
+      k = len + n;
+      if (k < 0) {k = 0;}
+    }
+    var currentElement;
+    while (k < len) {
+      currentElement = O[k];
+      if (searchElement === currentElement ||
+        (searchElement !== searchElement && currentElement !== currentElement)) { // NaN !== NaN
+          return true;
+        }
+        k++;
+      }
+      return false;
+    };
   }
-  else {
-    frame = [roll1, roll2, (roll1 + roll2)]
-    this.framesList.push(frame)
-  }
-  this.updateScore (frame)
-  this.finalScore = this.framesList[this.framesList.length-1][2];
-}
 
-
-Bowling.prototype.updateScore = function (frame) {
-  if (this.framesList.length > 1) {
-    this.strik (frame);
-    this.spare (frame);
-  this.framesList[this.framesList.length-1][2] +=
-  this.framesList[this.framesList.length-2][2];
+  function Bowling () {
+    this.score = 0;
+    this.list = [];
+    this.counter = 0;
+    this.strike = 10;
   }
-}
+
+  var bonus = 0
+
+  Bowling.prototype.play = function (roll1, roll2, roll3 ) {
+    roll2 = roll2 || 0; roll3 = roll3 || 0;
+    var frame = [(roll1 + roll2 + roll3), roll1, roll2, roll3]
+    if (this.counter < 10) {
+      this.list.push(frame)
+      this.score += frame[0];
+      this.counter += 1;
+      this.calculate (frame);
+    }
+  };
+
+  Bowling.prototype.strik = function (frame) {
+    if ((this.counter < 10) &&
+    (this.list[this.list.indexOf(frame) - 2][1] === this.strike)&&
+    (this.list[this.list.indexOf(frame) - 2][0] === this.strike)&&
+    (this.list[this.list.indexOf(frame) - 1][1] !== this.strike)){
+      bonus = this.list[this.list.indexOf(frame) - 1][1] +
+      this.list[this.list.indexOf(frame) - 1][2];
+      this.list[this.list.indexOf(frame) - 2][0] += bonus;
+      this.scoreUpdate(bonus);
+    }
+    else if ((this.counter === 10) &&
+    (this.list[this.list.indexOf(frame) - 1][1] === this.strike)&&
+    (this.list[this.list.indexOf(frame) - 1][0] === this.strike)){
+      bonus = frame[1] + frame[2];
+      this.list[this.list.indexOf(frame) - 1][0] += bonus;
+      this.scoreUpdate(bonus);
+    }
+  };
+
+  Bowling.prototype.doublestrike = function (frame) {
+    if ((this.list[this.list.indexOf(frame) - 2][1] === this.strike)&&
+    (this.list[this.list.indexOf(frame) - 2][0] === this.strike)&&
+    (this.list[this.list.indexOf(frame) - 1][1] === this.strike)&&
+    (this.list[this.list.indexOf(frame) - 1][0] === this.strike)){
+      bonus = this.strike + frame[1]
+      this.list[this.list.indexOf(frame) - 2][0] += bonus;
+      this.scoreUpdate(bonus);
+    }
+  };
+
+  Bowling.prototype.spare = function (frame) {
+    if ((this.list[this.list.indexOf(frame) - 2][1] !== this.strike)&&
+    (this.list[this.list.indexOf(frame) - 2][0] === this.strike)){
+      bonus = this.list[this.list.indexOf(frame) - 1][1]
+      this.list[this.list.indexOf(frame) - 2][0] += bonus;
+      this.scoreUpdate(bonus);
+    }
+  };
+
+  Bowling.prototype.calculate = function (frame) {
+    if
+    (this.list.includes(this.list[this.list.indexOf(frame)-2])){
+      this.doublestrike(frame);
+      this.strik(frame);
+      this.spare(frame);
+    }
+  };
+
+  Bowling.prototype.scoreUpdate = function (bonus) {
+    this.score += bonus;
+  };

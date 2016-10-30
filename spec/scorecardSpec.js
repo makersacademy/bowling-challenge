@@ -65,10 +65,26 @@ describe ('Scorecard', function() {
     });
   });
 
-  // describe("end conditions", function () {
-  //
-  //   // it("it ends the game upon completing 10 frames", function () {
-  //   //   scorecard.frame = 10
-  //   // });
-  // });
+  describe("end conditions", function () {
+
+    it("it ends the game upon completing 10 frames", function () {
+      scorecard.frame = 10
+      scorecard.updateScore(10)
+      expect(scorecard.frameTotal).toEqual(10)
+    });
+
+    it("it can roll a gutter game with nothing but 0s", function () {
+      for (var i = 0; i < 20 ; i++) {
+        scorecard.updateScore(0)
+      }
+      expect(scorecard.total).toEqual(0)
+    });
+
+    it("it lets you roll a 3rd time on frame 10", function () {
+      for (var i = 0; i < 21 ; i++) {
+        scorecard.updateScore(2)
+      }
+      expect(score.roll).toEqual(3)
+    });
+  });
 });

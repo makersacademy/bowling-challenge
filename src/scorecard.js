@@ -66,6 +66,10 @@ Scorecard.prototype.updateRoll = function () {
 };
 
 Scorecard.prototype.updateFrame = function () {
-  this.frame += 1;
-  this.frameTotal = 0;
+  if(this.frame ===  this.MAX_FRAME_TOTAL){
+    console.log("Game Completed")
+  } else {
+     this.frame += 1;
+     this.frameTotal = 0;
+  }
 };

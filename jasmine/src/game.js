@@ -1,7 +1,7 @@
 function Game(){
    this.startgame = true;
    this.startscore = 0;
-   this.frames = [];
+   this._frames = [];
 }
 
   Game.prototype.startgame = function(){
@@ -13,5 +13,5 @@ function Game(){
   };
 
   Game.prototype.frames = function(){
-    return this.frames;
+    return this._frames;
   };

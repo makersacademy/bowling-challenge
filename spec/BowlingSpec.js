@@ -5,41 +5,12 @@ describe("Bowling", function() {
     bowling = new Bowling();
   });
 
-  describe("Turns", function(){
-    it("should record the result of a turn", function() {
-      bowling.recordThrow(5);
-      expect(bowling._turn).toEqual([5])
-    });
-
-    it("should record the action of a throw", function() {
-      bowling.recordThrow(5);
-      expect(bowling._turnThrows).toEqual(1)
-    });
-
+  describe("Games", function () {
     it("should keep track of remaining pins for each turn", function() {
       bowling.recordThrow(5);
       expect(bowling._turnRemainingPins).toEqual(5)
     });
 
-    it("should end if 10 pins are scored", function(){
-      bowling.recordThrow(5);
-      bowling.recordThrow(5);
-      expect(bowling._turn).toEqual([])
-    });
-
-    it("should end after 2 throws", function(){
-      bowling.recordThrow(5);
-      bowling.recordThrow(4);
-      expect(bowling._turnLog[bowling._turnLog.length-1]).toEqual([5,4])
-    });
-
-    it("should end after a strike", function(){
-      bowling.recordThrow(10);
-      expect(bowling._turn).toEqual([])
-    });
-  });
-
-  describe("Games", function () {
     it("should end after 10 turns", function () {
       for (i = 1; i <= 10; i++){
         bowling.recordThrow(5); bowling.recordThrow(4);
@@ -68,7 +39,7 @@ describe("Bowling", function() {
       //won't count towards current score until the second ball of this turn is thrown
       bowling.recordThrow(5);
       bowling.recordThrow(4);
-      expect(bowling._turnLog[0].calculate()).toEqual(15)
+      expect(bowling._turnLog[0].totalScore()).toEqual(15)
     });
 
   });
@@ -85,7 +56,7 @@ describe("Bowling", function() {
       //won't count towards current score until the second ball of this turn is thrown
       bowling.recordThrow(5);
       bowling.recordThrow(4);
-      expect(bowling._turnLog[0].calculate()).toEqual(19)
+      expect(bowling._turnLog[0].totalScore()).toEqual(19)
     });
   });
 });

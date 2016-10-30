@@ -11,19 +11,16 @@ function Bowling () {
   this.gameOverview = [];
 };
 
+// Business logic methods
+
 Bowling.prototype.firstRoll = function () {
   this.pinsKnocked = Math.round(Math.random() * (10 - 0));
   this.pinsLeft = 10 - this.pinsKnocked;
+  this.storeScore();
+  this.calculateScore();
+  this.scoreArray();
   this.changeRollNum();
   this.changeFrameNum();
-};
-
-Bowling.prototype.pinsKnockedFirst = function () {
-  return this.pinsKnocked;
-};
-
-Bowling.prototype.pinsLeftAfterFirstRoll = function () {
-  return this.pinsLeft;
 };
 
 Bowling.prototype.changeRollNum = function () {
@@ -41,10 +38,48 @@ Bowling.prototype.changeFrameNum = function ()  {
 }
 };
 
+Bowling.prototype.storeScore = function () {
+  if (this.rollNum === 1) {
+  this.roll1Score = this.pinsKnocked;
+}
+else if (this.rollNum === 2) {
+  this.roll2Score = this.pinsKnocked;
+};
+}
+
+Bowling.prototype.calculateScore = function () {
+  if (this.rollNum === 2) {
+    this.totalScore = this.roll1Score + this.roll2Score;
+}
+};
+
+
+Bowling.prototype.scoreArray = function () {
+  if (this.rollNum === 2) {
+    var frameScore = [this.frameNum, this.roll1Score, this.roll2Score, this.totalScore ];
+    this.gameOverview.push(frameScore);
+  }
+}
+
+
+// methods to display variables
+
+Bowling.prototype.pinsKnockedFirst = function () {
+  return this.pinsKnocked;
+};
+
+Bowling.prototype.pinsLeftAfterFirstRoll = function () {
+  return this.pinsLeft;
+};
+
 Bowling.prototype.currentFrame = function () {
   return this.frameNum;
 };
 
-Bowling.prototype.calculateScore = function () {
-  
+Bowling.prototype.score = function () {
+  return this.totalScore;
+};
+
+Bowling.prototype.gameScoreOverview = function () {
+  return this.gameOverview;
 };

@@ -11,18 +11,23 @@ describe('Bowling', function () {
       expect(game.pinsLeftAfterFirstRoll()).toEqual(10);
     });
 
-    it('selects a number from 0 to 10 for the first frame', function () {
+    it('selects a number greater than 0 for the first frame', function () {
       game.firstRoll();
-      expect(game.pinsKnockedFirst()).toBeGreaterThan(0);
+      expect(game.pinsKnockedFirst()).toBeGreaterThan(-1);
+    });
+
+    it('selects a number less than 10 for the first frame', function () {
+      game.firstRoll();
+      expect(game.pinsKnockedFirst()).toBeLessThan(11);
     });
 
     it('first roll sets to the second roll', function () {
-      expect(game.rollNum).toEqual(2);
+      expect(game.rollNum).toEqual(1);
     });
 
     it('second roll sets to a new frame', function () {
       game.firstRoll();
-      expect(game.rollNum).toEqual(1);
+      expect(game.rollNum).toEqual(2);
     })
 
   });
@@ -40,7 +45,11 @@ describe('Bowling', function () {
   });
 
   it('calculates total score for first frame as both rolls combined', function () {
-    
+    game.roll1Score = 5;
+    game.roll2Score = 3;
+    game.rollNum = 2;
+    game.calculateScore();
+    expect(game.score()).toEqual(8);
   });
 
 

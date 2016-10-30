@@ -2,10 +2,10 @@ require 'sinatra/base'
 require 'json'
 
 
-class Thermostat < Sinatra::Base
+class Bowling < Sinatra::Base
 
   get '/' do
-    send_file 'views/thermostat.html'
+    send_file 'src/bowling.html'
   end
 
   # start the server if ruby file executed directly

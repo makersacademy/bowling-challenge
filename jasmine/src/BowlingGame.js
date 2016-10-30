@@ -11,4 +11,5 @@ BowlingGame.prototype.totalScore = function() {
 BowlingGame.prototype.saveRolls = function(rolls) {
   frame = new Frame(rolls);
   this.frames.push(frame);
+  return this.frames
 };

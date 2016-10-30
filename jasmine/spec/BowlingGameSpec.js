@@ -25,4 +25,10 @@ describe("BowlingGame", function() {
     });
   });
 
+  describe("saveRolls", function() {
+    it('saves the frame to the game array',function() {
+      frame = new Frame([3,4])
+      expect(bowlingGame.saveRolls(frame)).toBe({rolls:[3,4]})
+    });
+  });
 });

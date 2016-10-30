@@ -1,6 +1,7 @@
 $(document).ready(function(){
   var game = new Game();
   var roll = new Roll();
+  disableSpareButton();
 
   $("[type=button]").click(function(){
     rollBall(this['name']);
@@ -9,13 +10,16 @@ $(document).ready(function(){
   function rollBall(pinsDown){
     if(roll.rollComplete === true){
       roll = new Roll();
+      disableSpareButton();
     }
     roll.addRoll(parseInt(pinsDown));
+
     if((roll.rollComplete === false)&&(roll.roll.length === 1)){
       var num = game.currentRollNumber();
       var num1 = num+1;
       $('#edit-frame'+num1+'-1').val(roll.roll[0]);
       disableButtons(roll.roll[0]);
+      enableSpareButton();
     }
     if (roll.rollComplete){
       game.totalScore = 0;
@@ -23,6 +27,7 @@ $(document).ready(function(){
       updateScoreCard();
       updateTotal();
       enableButtons();
+      disableSpareButton();
     }
 
     function updateScoreCard(){
@@ -58,15 +63,20 @@ $(document).ready(function(){
       }
     });
 
-    // disableButtons(8);
+    function disableSpareButton(){
+      $("[name=var1-9]").prop('disabled',true);
+    }
+
+    function enableSpareButton(){
+      $("[name=var1-9]").prop('disabled',false);
+    }
 
     function disableButtons(value){
-      for(var i=(11-value);i<=10;i++){
+
+      for(var i=(10-value);i<=10;i++){
         var string = "[name="+i+"]";
-        // alert(string);
         $(string).prop('disabled',true);
       }
-      // $("[name=1]").prop('disabled',true);
     }
 
     function enableButtons(){

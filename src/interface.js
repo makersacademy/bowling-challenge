@@ -11,7 +11,9 @@ $(document).ready(function(){
 
   $("[type=button]").click(function(){
     // alert(this['value']);
-    rollBall(this['value']);
+    // pinsFromForm = this['value'];
+    // if
+    rollBall(this['name']);
   });
 
   // $(".bowling-calc-buttons-container").click(function(){

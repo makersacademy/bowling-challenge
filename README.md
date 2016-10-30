@@ -1,79 +1,76 @@
+# Bowling Challenge
 
-Bowling Challenge
-=================
+## Tasks
 
+### General
 
-* Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+This task is quite intensive and a lot of thought went into it. Many questions were asked? Such as:
+```
+1. How to calculate the scores?
+2. How to store each roll of the ball?
+3. How to score each frame?
+4. How to take into account strikes and spares?
+5. How to account for the 10th frame problem?
+```
+This meant I had to plan how I intended to store all of this information before attempting to start coding.
 
-Task: 
------
+#### General Solutions
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+1. This required logic to be able to calculate what score would be produced from each frame. You need to know: if a strike was scored, if a spare was scored or if it was just a regular frame? You then needed to total these to keep track of the current score.
+2. I thought long and hard about this one and the obvious solution appeared to be an array. This led to more problems though. What kind of array? How would you obtain information from the array to calculate the scores properly? This would require some value to be able to select key rolls from the array and use them to calculate scores. This was the basis for my ```frameIndex```.
+3. This came in the form of the above solution to just track the score. Use the frame to index the position in the array of rolls.
+4. See below for spare and strike response.
+5. See below for more in-depth response about 10th frame.
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by 
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-
-### Optional Extra
-
-Create a nice interactive animated interface with jQuery.
-
-## Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-## Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-## 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-## Gutter Game
-
+### Gutter Game
+```
 A Gutter Game is when the player never hits a pin (20 zero scores).
+```
+#### Solution
+* Have a method in which you can dictate how many pins were knocked down (or not knocked down on this occasion)
+* ```game.roll(0)```
+* Repeat 0 pins being knocked down 20 times and check the score is still 0
 
-## Perfect Game
+### Spares
+```
+The player has a spare if the knocks down all 10 pins with the two
+rolls of a frame. The bonus for that frame is the number of pins
+knocked down by the next roll (first roll of next frame).
+```
+#### Solution
+* Spares would require a bonus of the next ball. It was concluded that a ```spareBonus``` would need to be applied in order to calculate the value of the spare frame
+* Using the aforementioned ```roll(pin)```, get a spare and roll a 3rd ball
+* The score for that frame should equal the 3 rolls
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+### Strikes
+```
+The player has a strike if he knocks down all 10 pins with the first
+roll in a frame. The frame ends immediately (since there are no pins
+left for a second roll). The bonus for that frame is the number of
+pins knocked down by the next two rolls. That would be the next
+frame, unless the player rolls another strike.
+```
+#### Solution
+* Similarly to the spare only this time score 10 with the first ball
+* This would also require a ```strikeBonus``` in order to calculate the total points from a strike frame
+* Roll 2 more balls and the score from the strike frame should equal the 3 balls total
 
-In the image below you can find some score examples.
+### 10th frame
+```
+If the player rolls a strike or spare in the 10th frame they can roll
+the additional balls for the bonus. But they can never roll more than
+3 balls in the 10th frame. The additional rolls only count for the
+bonus not for the regular frame count.
+```
+#### Solution
+* Due to how the spare and strikes are calculated (using an additional 3rd roll) this will work automatically
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-Code Review
------------
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
-
-CI
---
-
-We are running JSHint on our CI server - save yourself having to wait for a build to happen by linting your code on your machine first. [Here are installations for most popular editors](http://jshint.com/install/). Grab the `.jshintrc` from this repo and have better JS!
-
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
-
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.
+### Perfect Game
+```
+A Perfect Game is when the player rolls 12 strikes (10 regular strikes
+and 2 strikes for the bonus in the 10th frame). The Perfect Game
+scores 300 points.
+```
+#### Solution
+* Similarly to the gutter game, only this time using ```game.roll(10)``` to simulate the strikes
+* Repeat this 12 times and you should get a score of 300

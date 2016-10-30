@@ -27,9 +27,9 @@ describe("Bowling game", function() {
   it('should be able to score a strike', function () {
     game.roll(10);
     game.roll(4);
-    game.roll(4);
+    game.roll(5);
     rollMany(0, 16);
-    expect(game.score()).toEqual(25)
+    expect(game.score()).toEqual(28);
   });
 
   var rollMany = function (pins, rolls) {

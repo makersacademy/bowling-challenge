@@ -4,6 +4,8 @@ function Game(){
   this.frames = [];
   var gameOver;
   this.gameOver = false;
+  var totalScore;
+  this.totalScore = 0;
   // console.log("function Game###|: " + this);
 };
 

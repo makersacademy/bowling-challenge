@@ -1,50 +1,65 @@
 $(document).ready(function(){
   var game = new Game();
-  var roll = new Roll();
+  // var roll = new Roll();
 
   // Function to detect button clicked.
-  // $("#value_of_scorebutton_clicked",function(){
-    roll.addRoll(8);
+  $(".bowling-calc-buttons-container").click(function(){
+    alert('Clicked!!!');
+    roll = new Roll();
+    roll.addRoll(6);
     roll.addRoll(2);
     // console.log(roll.showRoll(1));
-  // })
+    if (roll.rollComplete){
+      game.addFrame(roll);
+      updateScoreCard();
+      updateTotal();
+    }
 
-  if (roll.rollComplete){
-    game.addFrame(roll);
-    updateScoreCard();
-    updateTotal();
-  }
-
-  // alert(game.frames[0].score);
-
-  function updateScoreCard(){
-    for(var i=1;i<=game.frames.length;i++){
-        if(game.frames[i-1].roll.length === 1){
-          $('#edit-frame'+i+'-1').val(game.frames[i-1].roll[0]);
-        } else if(game.frames[i-1].roll.length === 2){
+    function updateScoreCard(){
+      for(var i=1;i<=game.frames.length;i++){
+          if(game.frames[i-1].roll.length === 1){
             $('#edit-frame'+i+'-1').val(game.frames[i-1].roll[0]);
-            $('#edit-frame'+i+'-2').val(game.frames[i-1].roll[1]);
-          }
-        $('#edit-frame'+i+'-res').val(game.frames[i-1].score);      //game.frames[i].
+          } else if(game.frames[i-1].roll.length === 2){
+              $('#edit-frame'+i+'-1').val(game.frames[i-1].roll[0]);
+              $('#edit-frame'+i+'-2').val(game.frames[i-1].roll[1]);
+            }
+          $('#edit-frame'+i+'-res').val(game.frames[i-1].score);      //game.frames[i].
+          game.totalScore += game.frames[i-1].score
+        }
       }
-    }
 
-    function updateTotal(){
-      // $('#edit-game-result') = 
-    }
+      function updateTotal(){
+        // (game.frames).forEach(function(val){
+        //   alert(val.score);
+        //   game.totalScore += val.score
+        // })
+        $('#edit-game-result').val(game.totalScore);
+      }
+    })
 
   //edit-frame1-res
   //edit-frame1-1, edit-frame1-2, edit-frame2-1
 
 
   //console.log(game.showFrame(1));
-  roll = new Roll();
-
-  roll.addRoll(10);
-
-  if (roll.rollComplete){
-    game.addFrame(roll);
-  }
+  // roll = new Roll();
+  // roll.addRoll(10);
+  //
+  // if (roll.rollComplete){
+  //   game.addFrame(roll);
+  //   updateScoreCard();
+  //   updateTotal();
+  // }
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  // roll = new Roll();
+  // roll.addRoll(0);
+  // roll.addRoll(6);
+  //
+  // if (roll.rollComplete){
+  //   game.addFrame(roll);
+  //   updateScoreCard();
+  //   updateTotal();
+  // }
   //console.log(game.showFrame(2));
 
   console.log(game.showAllFrames());
@@ -55,15 +70,15 @@ $(document).ready(function(){
   //#######################################################
 
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  roll = new Roll();
-  roll.addRoll(8);
-  console.log(roll.showRoll(1));
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  game = new Game();
-  game.addFrame("testgame1");
-  console.log(game.showFrame(1));
-  game.addFrame("testgame2");
-  console.log(game.showFrame(2));
+  // roll = new Roll();
+  // roll.addRoll(8);
+  // console.log(roll.showRoll(1));
+  // // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  // game = new Game();
+  // game.addFrame("testgame1");
+  // console.log(game.showFrame(1));
+  // game.addFrame("testgame2");
+  // console.log(game.showFrame(2));
 
 
 

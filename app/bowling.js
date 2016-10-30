@@ -1,11 +1,11 @@
 
 $("document").ready(function() {
-  var frame = 1;
+  var frameNo = 1;
   var ball = 1;
   var firstGo;
   var secondGo;
   var frameTotal;
-  var game = {'total': 0};
+  var game = {frame:[], total: 0};
   
   var randomAngle = function() {
     var angle = Math.floor(Math.random() * 21) - 10;
@@ -16,19 +16,20 @@ $("document").ready(function() {
 
   $("#bowl").click(function() {
     var slider = 10 - Math.abs($("#throwAngle").val());
-    var cellOne = $("#frame" + frame + " #ball1");
-    var cellTwo = $("#frame" + frame + " #ball2");
-    var cellFrameTot = $("#frame" + frame + " #ball3");
-    if(frame < 11) {
+    var cellOne = $("#frame" + frameNo + " #ball1");
+    var cellTwo = $("#frame" + frameNo + " #ball2");
+    var cellFrameTot = $("#frame" + frameNo + " #ball3");
+    if(frameNo < 11) {
       if(ball === 1) {
         firstGo = slider;
         cellOne.text(firstGo);
         if(firstGo === 10) {
           second = 0;
-          game['frame' + frame] = [{'frameTotal': firstGo}, firstGo, ];
+          game.frame[frameNo] = [{'frameTotal': firstGo}, firstGo, ];
+          // if(frameNo 
           game.total += firstGo;
           console.log(game);
-          frame++;
+          frameNo++;
           randomAngle();
         } else {
           randomAngle();
@@ -39,11 +40,11 @@ $("document").ready(function() {
         frameTotal = firstGo + secondGo;
         cellTwo.text(secondGo);
         cellFrameTot.text(frameTotal);
-        game['frame' + frame] = [{'frameTotal':frameTotal}, firstGo, secondGo];
+        game.frame[frameNo] = [{'frameTotal':frameTotal}, firstGo, secondGo];
         game.total += frameTotal;
         console.log(game);
         ball = 1;
-        frame++;
+        frameNo++;
         randomAngle();
       }
     }

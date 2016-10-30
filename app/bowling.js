@@ -11,6 +11,12 @@ $("document").ready(function() {
     var angle = Math.floor(Math.random() * 21) - 10;
     $("#throwAngle").val(angle);
   };
+
+  var bonusForStrike = function() {
+    game.total += firstGo;
+    game.frame[frameNo - 2][0]['frameTotal'] += firstGo;
+    $("#frame" + (frameNo - 2) + " #ball3").text(game.frame[frameNo - 2][0]['frameTotal']); 
+  };
   
   randomAngle()
 
@@ -26,7 +32,9 @@ $("document").ready(function() {
         if(firstGo === 10) {
           second = 0;
           game.frame[frameNo] = [{'frameTotal': firstGo}, firstGo, ];
-          // if(frameNo 
+          if(frameNo > 2 && game.frame[frameNo - 2][1] === 10) {
+            bonusForStrike();
+          } 
           game.total += firstGo;
           console.log(game);
           frameNo++;
@@ -41,6 +49,9 @@ $("document").ready(function() {
         cellTwo.text(secondGo);
         cellFrameTot.text(frameTotal);
         game.frame[frameNo] = [{'frameTotal':frameTotal}, firstGo, secondGo];
+        if(frameNo > 2 && game.frame[frameNo - 2][1] === 10) {
+          bonusForStrike();
+        }
         game.total += frameTotal;
         console.log(game);
         ball = 1;

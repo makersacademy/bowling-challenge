@@ -1,180 +1,178 @@
 <!DOCTYPE html>
 <head>
 <link rel = "stylesheet" href = "css/style1.css">
-<link rel = "stylesheet" href = "css/style3.css">
+<link rel = "stylesheet" href = "css/style2.css">
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src='./src/game.js'></script>
 <script src='./src/interface.js'></script>
+<link href="https://fonts.googleapis.com/css?family=Coiny" rel="stylesheet">
 </head>
 </body>
 <noscript><p>This app requires javascript.</p></noscript>
 
+
   <form>
-  <div id="bowling-calc-container">
+<p style = "text-align: center; font-family: Coiny;"><font size="7" style = "font-weight: bold;">Ten Pin Bowling Score Sheet</font></p>
       <div id="bowling-calc-score-container">
           <table class="bowling-calc-score-table">
               <tr>
                   <td class="first score"><div class="form-item form-type-textfield form-item-frame1-1">
-   <input type="text" id="edit-frame1-1" name="frame1-1" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame1-1" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="second score"><div class="form-item form-type-textfield form-item-frame1-2">
-   <input type="text" id="edit-frame1-2" name="frame1-2" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame1-2" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="first score"><div class="form-item form-type-textfield form-item-frame2-1">
-   <input type="text" id="edit-frame2-1" name="frame2-1" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame2-1" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="second score"><div class="form-item form-type-textfield form-item-frame2-2">
-   <input type="text" id="edit-frame2-2" name="frame2-2" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame2-2" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="first score"><div class="form-item form-type-textfield form-item-frame3-1">
-   <input type="text" id="edit-frame3-1" name="frame3-1" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame3-1" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="second score"><div class="form-item form-type-textfield form-item-frame3-2">
-   <input type="text" id="edit-frame3-2" name="frame3-2" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame3-2" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="first score"><div class="form-item form-type-textfield form-item-frame4-1">
-   <input type="text" id="edit-frame4-1" name="frame4-1" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame4-1" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="second score"><div class="form-item form-type-textfield form-item-frame4-2">
-   <input type="text" id="edit-frame4-2" name="frame4-2" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame4-2" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="first score"><div class="form-item form-type-textfield form-item-frame5-1">
-   <input type="text" id="edit-frame5-1" name="frame5-1" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame5-1" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="second score"><div class="form-item form-type-textfield form-item-frame5-2">
-   <input type="text" id="edit-frame5-2" name="frame5-2" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame5-2" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="first score"><div class="form-item form-type-textfield form-item-frame6-1">
-   <input type="text" id="edit-frame6-1" name="frame6-1" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame6-1" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="second score"><div class="form-item form-type-textfield form-item-frame6-2">
-   <input type="text" id="edit-frame6-2" name="frame6-2" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame6-2" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="first score"><div class="form-item form-type-textfield form-item-frame7-1">
-   <input type="text" id="edit-frame7-1" name="frame7-1" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame7-1" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="second score"><div class="form-item form-type-textfield form-item-frame7-2">
-   <input type="text" id="edit-frame7-2" name="frame7-2" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame7-2" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="first score"><div class="form-item form-type-textfield form-item-frame8-1">
-   <input type="text" id="edit-frame8-1" name="frame8-1" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame8-1" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="second score"><div class="form-item form-type-textfield form-item-frame8-2">
-   <input type="text" id="edit-frame8-2" name="frame8-2" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame8-2" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="first score"><div class="form-item form-type-textfield form-item-frame9-1">
-   <input type="text" id="edit-frame9-1" name="frame9-1" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame9-1" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="second score"><div class="form-item form-type-textfield form-item-frame9-2">
-   <input type="text" id="edit-frame9-2" name="frame9-2" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame9-2" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="first score"><div class="form-item form-type-textfield form-item-frame10-1">
-   <input type="text" id="edit-frame10-1" name="frame10-1" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame10-1" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="second score"><div class="form-item form-type-textfield form-item-frame10-2">
-   <input type="text" id="edit-frame10-2" name="frame10-2" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame10-2" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td class="third score"><div class="form-item form-type-textfield form-item-frame10-3">
-   <input type="text" id="edit-frame10-3" name="frame10-3" size="1" maxlength="1" class="form-text" readonly/>
+   <input type="text" id="edit-frame10-3" size="1" maxlength="1" class="form-text" readonly/>
   </div>
   </td>
                   <td rowspan="2" class="game-result"><div class="form-item form-type-textfield form-item-game-result">
-   <input type="text" id="edit-game-result" name="game_result" size="10" maxlength="3" class="form-text" readonly/>
+   <input type="text" id="edit-game-result" size="10" maxlength="3" class="form-text" readonly/>
   </div>
   </td>
               </tr>
               <tr>
                   <td class="frame score" colspan="2"><div class="form-item form-type-textfield form-item-frame1-res">
-   <input type="text" id="edit-frame1-res" name="frame1-res" size="3" maxlength="3" class="form-text" readonly/>
+   <input type="text" id="edit-frame1-res" size="3" maxlength="3" class="form-text" readonly/>
   </div>
   </td>
                   <td class="frame score" colspan="2"><div class="form-item form-type-textfield form-item-frame2-res">
-   <input type="text" id="edit-frame2-res" name="frame2-res" size="3" maxlength="3" class="form-text" readonly/>
+   <input type="text" id="edit-frame2-res" size="3" maxlength="3" class="form-text" readonly/>
   </div>
   </td>
                   <td class="frame score" colspan="2"><div class="form-item form-type-textfield form-item-frame3-res">
-   <input type="text" id="edit-frame3-res" name="frame3-res" size="3" maxlength="3" class="form-text" readonly/>
+   <input type="text" id="edit-frame3-res" size="3" maxlength="3" class="form-text" readonly/>
   </div>
   </td>
                   <td class="frame score" colspan="2"><div class="form-item form-type-textfield form-item-frame4-res">
-   <input type="text" id="edit-frame4-res" name="frame4-res" size="3" maxlength="3" class="form-text" readonly/>
+   <input type="text" id="edit-frame4-res" size="3" maxlength="3" class="form-text" readonly/>
   </div>
   </td>
                   <td class="frame score" colspan="2"><div class="form-item form-type-textfield form-item-frame5-res">
-   <input type="text" id="edit-frame5-res" name="frame5-res" size="3" maxlength="3" class="form-text" readonly/>
+   <input type="text" id="edit-frame5-res" size="3" maxlength="3" class="form-text" readonly/>
   </div>
   </td>
                   <td class="frame score" colspan="2"><div class="form-item form-type-textfield form-item-frame6-res">
-   <input type="text" id="edit-frame6-res" name="frame6-res" size="3" maxlength="3" class="form-text" readonly/>
+   <input type="text" id="edit-frame6-res" size="3" maxlength="3" class="form-text" readonly/>
   </div>
   </td>
                   <td class="frame score" colspan="2"><div class="form-item form-type-textfield form-item-frame7-res">
-   <input type="text" id="edit-frame7-res" name="frame7-res" size="3" maxlength="3" class="form-text" readonly/>
+   <input type="text" id="edit-frame7-res" size="3" maxlength="3" class="form-text" readonly/>
   </div>
   </td>
                   <td class="frame score" colspan="2"><div class="form-item form-type-textfield form-item-frame8-res">
-   <input type="text" id="edit-frame8-res" name="frame8-res" size="3" maxlength="3" class="form-text" readonly/>
+   <input type="text" id="edit-frame8-res" size="3" maxlength="3" class="form-text" readonly/>
   </div>
   </td>
                   <td class="frame score" colspan="2"><div class="form-item form-type-textfield form-item-frame9-res">
-   <input type="text" id="edit-frame9-res" name="frame9-res" size="3" maxlength="3" class="form-text" readonly/>
+   <input type="text" id="edit-frame9-res" size="3" maxlength="3" class="form-text" readonly/>
   </div>
   </td>
                   <td class="frame score" colspan="3"><div class="form-item form-type-textfield form-item-frame10-res">
-   <input type="text" id="edit-frame10-res" name="frame10-res" size="3" maxlength="3" class="form-text" readonly/>
+   <input type="text" id="edit-frame10-res" size="3" maxlength="3" class="form-text" readonly/>
   </div>
   </td>
               </tr>
           </table>
       </div>
 
-  <div id="bowling-calc-buttons-container">
+  <div>
       <table class="bowling-calc-buttons-table" style="border-collapse: separate;">
           <tr>
-              <td class="bowling-calc-buttons-container"><input type="button" name="0" value="0" /></td>
-              <td class="bowling-calc-buttons-container"><input type="button" name="1" value="1" /></td>
-              <td class="bowling-calc-buttons-container"><input type="button" name="2" value="2" /></td>
-              <td class="bowling-calc-buttons-container"><input type="button" name="3" value=3 /></td>
-              <td class="bowling-calc-buttons-container"><input type="button" name="4" value="4" /></td>
-              <td class="bowling-calc-buttons-container"><input type="button" name="5" value="5" /></td>
+              <td><input type="button" name="0" value="0" /></td>
+              <td><input type="button" name="1" value="1" /></td>
+              <td><input type="button" name="2" value="2" /></td>
+              <td><input type="button" name="3" value=3 /></td>
+              <td><input type="button" name="4" value="4" /></td>
+              <td><input type="button" name="5" value="5" /></td>
           </tr>
           <tr>
-              <td class="bowling-calc-buttons-container"><input type="button" name="6" value="6" /></td>
-              <td class="bowling-calc-buttons-container"><input type="button" name="7" value="7" /></td>
-              <td class="bowling-calc-buttons-container"><input type="button" name="8" value="8" /></td>
-              <td class="bowling-calc-buttons-container"><input type="button" name="9" value="9" /></td>
-              <td class="bowling-calc-buttons-container"><input type="button" name="10" value="X" /></td>
-              <td class="bowling-calc-buttons-container"><input type="button" name="xxx" id="var1-9" value="/" /></td>
+              <td><input type="button" name="6" value="6" /></td>
+              <td><input type="button" name="7" value="7" /></td>
+              <td><input type="button" name="8" value="8" /></td>
+              <td><input type="button" name="9" value="9" /></td>
+              <td><input type="button" name="10" value="X" /></td>
+              <td><input type="button" name="xxx" id="var1-9" value="/" /></td>
           </tr>
           <tr>
-              <!--<td class="bowling-calc-buttons-container-fix"></td>-->
-              <td colspan=2 class="bowling-calc-buttons-container new-game"><input type="button" name="b-new" value="New game" /></td>
+              <td colspan=2><input type="button" name="b-new" value="New game" /></td>
           </tr>
       </table>
   </div>
-
-  <input type="hidden" name="form_build_id" value="form-ca88kSmMbev_MOHS62cm3YTGDSaioAV5TnO8-Ov2HLw" />
-  <input type="hidden" name="form_id" value="generate_bowling_score_calculator" />
-  </div></div></form>
+  </div></form>
 </body>
 </html>

@@ -1,8 +1,4 @@
-/*http://www.sportcalculators.com/sites/all/modules/SportCalculators/css/general_calculator.css?nab3kk*/
-
-@import url(http://fonts.googleapis.com/css?family=Roboto:100);
-
-
+@import url(https://fonts.googleapis.com/css?family=Coiny);
 
 /* radiobuttons on same line*/
 div .form-type-radio {
@@ -14,7 +10,7 @@ div .form-type-radio {
 
 form {
   min-width: 440px;
-  font-family: 'Roboto';
+  font-family: 'Coiny';
   border: 1px solid #F0F0F0;
   background: #E8F5FA;/*#E1EDF2;*//*#CBE7F2;*//*#61C3EB;*/
   border-radius: 10px;
@@ -56,7 +52,7 @@ form input[type=number],
 form input[type=password],
 form input[type=button],
 form input[type=radio]{
-  font-family: 'Roboto';
+  font-family: 'Coiny';
 }
 
 form input[type=text],
@@ -67,7 +63,7 @@ form input[type=password]{
   margin-bottom: 10px;
   padding-left: 15px;
   background: #fff;
-  border: none;/*1px solid #F1F1F1;*/
+  border: none;
   color: #222222;
   outline: none;
 }
@@ -79,8 +75,6 @@ form input.ng-dirty.ng-invalid{
 
 
 form input[type=button]:disabled {
-    /*background: #68beff;
-    background: #014677;*/
     background: #E8F5FA;
     border: #014677 1px solid;
     color: #f0f0f0;
@@ -158,23 +152,12 @@ form input[type=radio   ]:not(old) + label > span{
   border           : none;/*0.0625em solid #F1F1F1;*/
   border-radius    : 0.25em;
   background       : #FFFFFF;
-/*  background-image :    -moz-linear-gradient(rgb(240,240,240),rgb(224,224,224));
-  background-image :     -ms-linear-gradient(rgb(240,240,240),rgb(224,224,224));
-  background-image :      -o-linear-gradient(rgb(240,240,240),rgb(224,224,224));
-  background-image : -webkit-linear-gradient(rgb(240,240,240),rgb(224,224,224));
-  background-image :         linear-gradient(rgb(240,240,240),rgb(224,224,224));
-*/  vertical-align   : bottom;
+  vertical-align   : bottom;
 }
 
 /*In the example, the background gradient is reversed on selected checkboxes and radio buttons: */
 form input[type=checkbox]:not(old):checked + label > span,
 form input[type=radio   ]:not(old):checked + label > span{
- /* background-image :    -moz-linear-gradient(rgb(224,224,224),rgb(240,240,240));
-  background-image :     -ms-linear-gradient(rgb(224,224,224),rgb(240,240,240));
-  background-image :      -o-linear-gradient(rgb(224,224,224),rgb(240,240,240));
-  background-image : -webkit-linear-gradient(rgb(224,224,224),rgb(240,240,240));
-  background-image :         linear-gradient(rgb(224,224,224),rgb(240,240,240));
-*/
 }
 
 /* We then display a tick inside selected checkboxes: */

@@ -51,6 +51,7 @@ $(document).ready(function(){
     $("[name=b-new]").click(function(){
       game.newGame();
       roll.roll=[];
+      disableSpareButton();
       for(var i=1;i<=10;i++){
         $('#edit-frame'+i+'-1').val("");
         $('#edit-frame'+i+'-2').val("");
@@ -61,10 +62,12 @@ $(document).ready(function(){
 
     function disableSpareButton(){
       $("[id=var1-9]").prop('disabled',true);
+      $("[id=var1-9]").animate({opacity:0.2});
     }
 
     function enableSpareButton(value){
       $("[id=var1-9]").prop('disabled',false);
+      $("[id=var1-9]").animate({opacity:1});
       var nameVal = (10 - parseInt(value))
       $("[id=var1-9]").attr('name',nameVal);
     }
@@ -74,6 +77,7 @@ $(document).ready(function(){
       for(var i=(10-value);i<=10;i++){
         var string = "[name="+i+"]";
         $(string).prop('disabled',true);
+        $(string).animate({opacity:0.2});
       }
     }
 
@@ -81,6 +85,7 @@ $(document).ready(function(){
       for(var i=0;i<=10;i++){
         var string = "[name="+i+"]";
         $(string).prop('disabled',false);
+        $(string).animate({opacity:1});
       }
     }
 

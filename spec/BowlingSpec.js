@@ -140,7 +140,6 @@ describe("Bowling", function() {
       bowling.recordThrow(5);
       bowling.recordThrow(5);
       expect(bowling.isNormalPlayOver()).toBe(true)
-      expect(bowling.isGameOver()).toBe(false)
       bowling.recordThrow(5);
       bowling.recordThrow(5);
       expect(bowling.isGameOver()).toBe(true)

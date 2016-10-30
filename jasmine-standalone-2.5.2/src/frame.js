@@ -3,10 +3,14 @@ function Frame() {
     this.score1 = 0;
     this.score2 = 0;
     this.totalPins;
+    this.firstRoll = false;
+    this.secondRoll = false;
+    this.frame = 0
   };
 
   Frame.prototype.roll1 = function() {
   return this.score1 = Math.floor((Math.random() * 10) + 1);
+  firstRoll();
   };
 
   Frame.prototype.pinsLeft = function() {
@@ -18,7 +22,21 @@ function Frame() {
     var pins = this.totalPins;
     this.score2 = Math.floor((Math.random() * pins) + 1);
     return this.score2
+    secondRoll();
+  };
+
+  Frame.prototype.firstRoll = function() {
+    this.firstRoll = true;
   }
+
+  Frame.prototype.secondRoll = function() {
+    this.secondRoll = true;
+  }
+
+  Frame.prototype.nextFrame = function() {
+    if (this.firstRoll === true && this.secondRoll === true);
+      return this.frame = 1
+  };
 // };
 
 // Bowling.prototype.firstRoll = function () {

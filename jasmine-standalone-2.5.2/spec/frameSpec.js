@@ -29,4 +29,11 @@ describe('Frame', function () {
         frame.roll2();
         expect(frame.totalPins).toBeGreaterThan(-1);
       });
+
+      it("allows you to know which frame you are on", function () {
+        frame.roll1();
+        frame.roll2();
+        frame.nextFrame();
+        expect(frame.frame).toBe(1);
+      });
    });

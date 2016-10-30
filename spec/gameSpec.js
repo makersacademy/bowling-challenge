@@ -1,43 +1,51 @@
 var Game = require('../lib/Game.js');
 
-describe('Game', function() {
+describe('Game', function () {
     var game;
-    beforeEach(function() {
+    beforeEach(function () {
         game = new Game();
         game.start();
     });
-    
-    it('contains 10 frames', function() {
-        expect(game.frames.length).toEqual(10);
+    describe('frames', function() {
+        it('contains 10 frames', function () {
+            expect(game.frames.length).toEqual(10);
+        });
     });
-    it('has a score of zero at start', function() {
-        expect(game.score()).toEqual(0);
-    });
-    it('takes score for first bowl', function() {
-        game.bowl(5);
-        expect(game.score()).toEqual(5);
-    });
-    it('takes score for second bowl', function() {
-        game.bowl(5);
-        game.bowl(2);
-        expect(game.score()).toEqual(7);
-    });
-     it('takes score for third bowl', function() {
-        game.bowl(5);
-        game.bowl(2);
-        game.bowl(6);
-        expect(game.score()).toEqual(13);
-    });
-    it('adds a bonus of next bowl score for a spare', function() {
-        game.bowl(5);
-        game.bowl(5);
-        game.bowl(6);
-        expect(game.score()).toEqual(22);
-    });
-    it('adds a bonus of next two bowl scores for a strike', function() {
-        game.bowl(10);
-        game.bowl(6);
-        game.bowl(2);
-        expect(game.score()).toEqual(26);
+
+    describe('scoring', function() {
+        var testCases = [
+            {
+                bowls: [],
+                expectedScore: 0
+            },
+            {
+                bowls: [5],
+                expectedScore: 5
+            },
+            {
+                bowls: [5, 2],
+                expectedScore: 7
+            },
+            {
+                bowls: [5, 2, 6],
+                expectedScore: 13
+            },
+            {
+                bowls: [5, 5, 6],
+                expectedScore: 22
+            },
+            {
+                bowls: [10, 6, 2],
+                expectedScore: 26
+            }
+        ];
+        testCases.forEach(function(testCase) {
+            it('keeps the correct score for bowls', function() {
+                testCase.bowls.forEach(function(score) {
+                    game.bowl(score);
+                });
+                expect(game.score()).toEqual(testCase.expectedScore);
+            });
+        });
     });
 });

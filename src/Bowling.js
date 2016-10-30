@@ -4,10 +4,10 @@ function Bowling (){
   this.score = 0;
 };
 
-Bowling.prototype.first_throw = function(){
-  return this.score;
+Bowling.prototype.roll = function(roll){
+  this.score += roll;
 };
 
-Bowling.prototype.your_score = function(){
+Bowling.prototype.yourScore = function(){
   return this.score;
 }

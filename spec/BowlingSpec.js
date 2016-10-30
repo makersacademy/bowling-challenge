@@ -5,19 +5,23 @@ describe('Bowling', function(){
   var bowling;
 
   beforeEach(function(){
-    bowling = new Bowling();
+    bowling = new Bowling;
   });
 
   describe('Bowling', function(){
 
-    it('starts with the first roll is zero', function(){
-      expect(bowling.first_throw()).toEqual(0)
-    });
+
     it('has a gutter roll', function(){
       for (var i = 0; i < 20 ; i++) {
-        bowling.your_score();
+        bowling.roll(0)
       }
-      expect(bowling.your_score()).toEqual(0)
+      expect(bowling.score).toEqual(0)
+    });
+    it('Can score a game of ones', function(){
+      for (var i = 0; i < 20 ; i++) {
+        bowling.roll(1);
+      }
+      expect(bowling.yourScore()).toEqual(20)
     });
   });
 

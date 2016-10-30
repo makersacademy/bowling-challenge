@@ -4,11 +4,10 @@ function strict(){
 
 describe ('Scorecard', function() {
 
-  // var Scorecard = require('../src/bowlingScoreCard');
   var scorecard;
 
   beforeEach(function() {
-    scorecard = new Scorecard();
+    scorecard = new Scorecard;
   });
 
   describe('start conditions', function(){

@@ -30,7 +30,7 @@ Scorecard.prototype.updateScore = function (number) {
   if(this.roll === 1){
     this.endTurnIfStrike(number);
   } else if(this.roll === 2){
-    this.updateAllTotalsAndFrame();
+    this.updateAllTotalsAndFrame(number);
   }
 };
 
@@ -53,20 +53,19 @@ Scorecard.prototype.updateAllTotalsAndRoll = function (number) {
 };
 
 Scorecard.prototype.updateAllTotalsAndFrame = function (number) {
-  this.updateAllTotals(number);
+  this.updateAllTotalsAndRoll(number);
   this.updateFrame();
 };
 
 Scorecard.prototype.updateRoll = function () {
-  this.roll += 1;
+  if(this.roll === 1){
+    this.roll += 1;
+  } else if(this.roll === 2 ){
+    this.roll = 1;
+  }
 };
 
 Scorecard.prototype.updateFrame = function () {
   this.frame += 1;
   this.frameTotal = 0;
 };
-
-if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
-{
-   module.exports = Scorecard;
-}

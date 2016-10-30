@@ -12,5 +12,11 @@ describe("Frame", function() {
       strikeFrame = new Frame([10])
       expect(strikeFrame.totalPoints(frame)).toBe(16);
     });
+
+    it('calculates the total score for a spare frame', function() {
+      frame = new Frame([3,3])
+      spareFrame = new Frame([5,5])
+      expect(spareFrame.totalPoints(frame)).toBe(13);
+    });
   });
 });

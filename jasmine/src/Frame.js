@@ -30,6 +30,15 @@ Frame.prototype._isStrike = function() {
   return this._firstRoll() == 10;
 };
 
+Frame.prototype._isSpare = function() {
+  return this._rollScore() == 10;
+};
+
+Frame.prototype._spareBonus = function() {
+  return this._firstRoll()
+};
+
+
 Frame.prototype._firstRoll = function () {
   return this.rolls[0];
 };

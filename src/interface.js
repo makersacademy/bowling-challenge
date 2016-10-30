@@ -3,8 +3,23 @@ $(document).ready(function(){
   // var roll = new Roll();
 
   // Function to detect button clicked.
+
+
+  function rollBall(pinsDown){
+    alert("rollBall called!");
+  }
+
   $(".bowling-calc-buttons-container").click(function(){
-    alert('Clicked!!!');
+    // alert(this['name']);
+  });
+
+  $("[type=button]").click(function(){
+    alert(this['value']);
+  });
+
+  // $(".bowling-calc-buttons-container").click(function(){
+  $('[name=b-3]').click(function(){
+
     roll = new Roll();
     roll.addRoll(6);
     roll.addRoll(2);

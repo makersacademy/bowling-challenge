@@ -3,10 +3,12 @@
 <link rel = "stylesheet" href = "css/style1.css">
 <link rel = "stylesheet" href = "css/style3.css">
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src = './src/game.js'></script>
-<script src = './src/interface.js'></script>
+<script src='./src/game.js'></script>
+<script src='./src/interface.js'></script>
 </head>
 </body>
+<button onclick="myFunction()">Click me</button>
+
   <form action="/bowling-score-calculator" method="post" id="generate-bowling-score-calculator" accept-charset="UTF-8"><div><noscript><p>Bowling score calculator requires javascript to be enabled to work.</p></noscript>
   <div id="bowling-calc-container">
       <div id="bowling-calc-score-container">
@@ -152,7 +154,7 @@
               <td class="bowling-calc-buttons-container"><input type="button" name="b-0" value="0" <!--onclick="calc('0', 'ten-pin'-->)" /></td>
               <td class="bowling-calc-buttons-container"><input type="button" name="b-1" value="1" <!--onclick="calc('1', 'ten-pin'-->)" /></td>
               <td class="bowling-calc-buttons-container"><input type="button" name="b-2" value="2" <!--onclick="calc('2', 'ten-pin'-->)" /></td>
-              <td class="bowling-calc-buttons-container"><input type="button" name="b-3" value="3" <!--onclick="calc('3', 'ten-pin'-->)" /></td>
+              <td class="bowling-calc-buttons-container"><input type="button" id="b-3" name="b-3" value="3" /></td>
               <td class="bowling-calc-buttons-container"><input type="button" name="b-4" value="4" <!--onclick="calc('4', 'ten-pin'-->)" /></td>
               <td class="bowling-calc-buttons-container"><input type="button" name="b-5" value="5" <!--onclick="calc('5', 'ten-pin'-->)" /></td>
           </tr>

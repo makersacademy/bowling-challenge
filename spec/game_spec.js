@@ -210,6 +210,18 @@ describe('Game', function() {
       game.bowl(10);
       expect(game.calculateScore()).toEqual(102);
     });
+
+    it('calculates correct score with a strike then a spare', function() {
+      for (var i = 1; i <= 9; i++) {
+        console.log("turn: " + i)
+        game.bowl(4);
+        game.bowl(4);
+      }
+      game.bowl(10);
+      game.bowl(5);
+      game.bowl(5);
+      expect(game.calculateScore()).toEqual(92);
+    });
   });
 
 });

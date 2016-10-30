@@ -25,6 +25,11 @@ Game.prototype.bowl = function(score) {
     this.lastFrame.totalScore += 10
     this.currentFrame = new Frame;
   }
+  else if (this.isOver() && this.lastFrame.isStrike && this.currentFrame.isOver && this.currentFrame.isSpare) {
+    console.log("It's over frame 10, but last frame was a strike and this frame is now over.")
+    this.lastFrame.totalScore = this.lastFrame.workingScore + 10;
+    console.log("Game Over");
+  }
   else if (this.isOver() && this.lastFrame.isStrike && this.currentFrame.isOver) {
     console.log("It's over frame 10, but last frame was a strike and this frame is now over.")
     this.lastFrame.totalScore = this.lastFrame.workingScore + this.currentFrame.totalScore;

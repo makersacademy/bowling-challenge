@@ -19,7 +19,10 @@ describe("BowlingGame", function() {
       expect(bowlingGame.totalScore()).toBe(0)
     });
 
-
+    it('calculates the score for a the perfect game', function() {
+      gameGenerator([10],[10,10,10]);
+      expect(bowlingGame.totalScore()).toBe(300)
+    });
   });
 
 });

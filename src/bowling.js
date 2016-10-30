@@ -13,8 +13,7 @@ Bowling.prototype.bowl = function(){
 };
 
 Bowling.prototype.bowlFrame = function(){
-  var bowl
-  bowl = Math.floor((Math.random() * 11));
+  var bowl = Math.floor((Math.random() * 11));
   this.currentFrame.push(bowl);
   if (bowl <= 10){
     bowl = Math.floor((Math.random() * (11-bowl)));
@@ -34,7 +33,6 @@ Bowling.prototype.determineOutcomeofFrame = function(){
     }
     this.currentFrame = []
 };
-
 
 Bowling.prototype.calculateBonuses = function(){
   this.bonuses.push([])

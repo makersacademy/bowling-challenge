@@ -84,7 +84,6 @@ describe('Bowling', function() {
         bowling.calculateBonuses();
       }
       expect(bowling.bonuses[bowling.bonuses.length-3]).toEqual([11, 11])
-
     });
   });
 

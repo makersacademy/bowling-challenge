@@ -1,59 +1,59 @@
 'use strict';
 
-describe('Bowling', function() {
+describe('Game', function() {
 
-  var bowling;
+  var game;
 
   beforeEach(function() {
-    bowling = new Bowling();
+    game = new Game();
   });
 
   describe("A frame:", function(){
     it('only bowls once if you get a strike', function(){
       spyOn(Math, 'random').and.returnValue(1);
-      bowling.bowlFrame();
-      expect(bowling.currentFrame.length).toEqual(1);
+      game.bowlFrame();
+      expect(game.currentFrame.length).toEqual(1);
     });
     it('bowls again if you do not get a strike', function(){
       spyOn(Math, 'random').and.returnValue(0.1);
-      bowling.bowlFrame();
-      expect(bowling.currentFrame.length).toEqual(2);
+      game.bowlFrame();
+      expect(game.currentFrame.length).toEqual(2);
     });
     it('cannot have a frame totalling more than 10', function(){
-      bowling.bowlFrame();
-      expect(bowling.currentFrame[0]+bowling.currentFrame[1]).toBeLessThan(11)
+      game.bowlFrame();
+      expect(game.currentFrame[0]+game.currentFrame[1]).toBeLessThan(11)
     });
     it('adds the frame to the game array upon completion', function(){
-      bowling.bowlFrame();
-      expect(bowling.game.length).toEqual(1)
+      game.bowlFrame();
+      expect(game.game.length).toEqual(1)
     });
   });
 
   describe("Frame outcome:", function(){
     it("adds 'strike' to the outcome array if a frame generates at strike", function() {
       spyOn(Math, 'random').and.returnValue(1);
-      bowling.bowlFrame();
-      bowling.determineOutcomeofFrame();
-      expect(bowling.spareOrStrike[(bowling.spareOrStrike.length) - 1]).toEqual("strike");
+      game.bowlFrame();
+      game.determineOutcomeofFrame();
+      expect(game.spareOrStrike[(game.spareOrStrike.length) - 1]).toEqual("strike");
     });
     it("adds 'spare' to the outcome array if a frame generates a spare'", function() {
       spyOn(Math, 'random').and.returnValues(0.5, 0.9);
-      bowling.bowlFrame();
-      bowling.determineOutcomeofFrame();
-      expect(bowling.spareOrStrike[(bowling.spareOrStrike.length) - 1]).toEqual("spare");
+      game.bowlFrame();
+      game.determineOutcomeofFrame();
+      expect(game.spareOrStrike[(game.spareOrStrike.length) - 1]).toEqual("spare");
     });
     it("adds 'neither' to the outcome array if neither a spare or strike is bowled", function(){
       spyOn(Math, 'random').and.returnValues(0.5, 0.5);
-      bowling.bowlFrame();
-      bowling.determineOutcomeofFrame();
-      expect(bowling.spareOrStrike[bowling.spareOrStrike.length - 1]).toEqual('neither');
+      game.bowlFrame();
+      game.determineOutcomeofFrame();
+      expect(game.spareOrStrike[game.spareOrStrike.length - 1]).toEqual('neither');
     });
   });
 
-  describe("Bowling:", function(){
+  describe("Bowling a frame:", function(){
     it('generates a random number', function(){
       spyOn(Math, 'random').and.returnValue(0.9);
-      expect(bowling.bowl()).toEqual(9);
+      expect(game.bowl()).toEqual(9);
     });
   });
 
@@ -61,53 +61,53 @@ describe('Bowling', function() {
     it('adds a bonus of your next bowl when a spare is scored', function(){
       spyOn(Math, 'random').and.returnValues(0.5, 0.9, 0.5, 0.9);
       for (var i = 0; i < 2; i++) {
-        bowling.bowlFrame();
-        bowling.determineOutcomeofFrame();
-        bowling.calculateBonuses();
+        game.bowlFrame();
+        game.determineOutcomeofFrame();
+        game.calculateBonuses();
       }
-      expect(bowling.bonuses[bowling.bonuses.length-2]).toEqual([5])
+      expect(game.bonuses[game.bonuses.length-2]).toEqual([5])
     });
     it('adds both of the bowls scores from your next frame (if not a strike) as a bonus when a strike is scored', function(){
       spyOn(Math, 'random').and.returnValues(1, 0.3, 0.2);
       for (var i = 0; i < 2; i++) {
-        bowling.bowlFrame();
-        bowling.determineOutcomeofFrame();
-        bowling.calculateBonuses();
+        game.bowlFrame();
+        game.determineOutcomeofFrame();
+        game.calculateBonuses();
       }
-      expect(bowling.bonuses[bowling.bonuses.length-2]).toEqual([3, 1])
+      expect(game.bonuses[game.bonuses.length-2]).toEqual([3, 1])
     });
     it('adds bonuses from separate frames if two strikes are scored in a row', function(){
       spyOn(Math, 'random').and.returnValues(1, 1, 1);
       for (var i = 0; i < 3; i++) {
-        bowling.bowlFrame();
-        bowling.determineOutcomeofFrame();
-        bowling.calculateBonuses();
+        game.bowlFrame();
+        game.determineOutcomeofFrame();
+        game.calculateBonuses();
       }
-      expect(bowling.bonuses[bowling.bonuses.length-3]).toEqual([11, 11])
+      expect(game.bonuses[game.bonuses.length-3]).toEqual([11, 11])
     });
   });
 
   describe("Final frame bonus:", function(){
     beforeEach(function(){
       for (var i = 0; i < 9; i++) {
-        bowling.bowlFrame();
-        bowling.determineOutcomeofFrame();
-        bowling.calculateBonuses();
+        game.bowlFrame();
+        game.determineOutcomeofFrame();
+        game.calculateBonuses();
       }
       });
     it('allows an extra bowl to calculate the bonus for the last frame if a spare is rolled', function() {
       spyOn(Math, 'random').and.returnValues(0.5, 0.9, 0.3);
-      bowling.bowlFrame();
-      bowling.determineOutcomeofFrame();
-      bowling.calculateBonuses();
-      expect(bowling.bonuses[bowling.bonuses.length-1]).toEqual([3])
+      game.bowlFrame();
+      game.determineOutcomeofFrame();
+      game.calculateBonuses();
+      expect(game.bonuses[game.bonuses.length-1]).toEqual([3])
     });
     it('allows an extra 2 bowls to calculate the bonus for the last frame if a strike is rolled', function() {
       spyOn(Math, 'random').and.returnValues(1, 0.3, 0.3);
-      bowling.bowlFrame();
-      bowling.determineOutcomeofFrame();
-      bowling.calculateBonuses();
-      expect(bowling.bonuses[bowling.bonuses.length-1]).toEqual([3, 2])
+      game.bowlFrame();
+      game.determineOutcomeofFrame();
+      game.calculateBonuses();
+      expect(game.bonuses[game.bonuses.length-1]).toEqual([3, 2])
     });
   });
 
@@ -115,44 +115,44 @@ describe('Bowling', function() {
     it("calculates the total score of multiple frame", function(){
       spyOn(Math, 'random').and.returnValues(0.5, 0.5, 0.5, 0.5);
       for (var i = 0; i < 2; i++) {
-        bowling.bowlFrame();
-        bowling.determineOutcomeofFrame();
+        game.bowlFrame();
+        game.determineOutcomeofFrame();
       }
-      bowling.calculateTotal();
-      expect(bowling.runningTotal).toEqual(16)
+      game.calculateTotal();
+      expect(game.runningTotal).toEqual(16)
     });
     it("includes spare bonus scores in the total", function(){
       spyOn(Math, 'random').and.returnValues(0.5, 0.9, 0.5, 0.5);
       for (var i = 0; i < 2; i++) {
-        bowling.bowlFrame();
-        bowling.determineOutcomeofFrame();
-        bowling.calculateBonuses();
+        game.bowlFrame();
+        game.determineOutcomeofFrame();
+        game.calculateBonuses();
       }
-      bowling.calculateTotal();
-      expect(bowling.runningTotal).toEqual(23)
+      game.calculateTotal();
+      expect(game.runningTotal).toEqual(23)
     });
 
     it("includes strike bonus scores in the total", function(){
       spyOn(Math, 'random').and.returnValues(1, 0.5, 0.5);
       for (var i = 0; i < 2; i++) {
-        bowling.bowlFrame();
-        bowling.determineOutcomeofFrame();
-        bowling.calculateBonuses();
+        game.bowlFrame();
+        game.determineOutcomeofFrame();
+        game.calculateBonuses();
       }
-      bowling.calculateTotal();
-      expect(bowling.runningTotal).toEqual(27)
+      game.calculateTotal();
+      expect(game.runningTotal).toEqual(27)
     });
 
     // it("calculates the score for a full game", function(){
     //   spyOn(Math, 'random').and.returnValues(0.5, 0.9)
     //   for (var i = 0; i < 10; i++) {
-    //     bowling.bowlFrame();
-    //     bowling.determineOutcomeofFrame();
-    //     bowling.calculateBonuses();
+    //     game.bowlFrame();
+    //     game.determineOutcomeofFrame();
+    //     game.calculateBonuses();
     //   }
-    //   console.log(bowling.game)
-    //   console.log(bowling.bonuses)
-    //   expect(bowling.runningTotal).toEqual(98)
+    //   console.log(game.game)
+    //   console.log(game.bonuses)
+    //   expect(game.runningTotal).toEqual(98)
     // });
 
   });

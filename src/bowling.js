@@ -1,6 +1,6 @@
 'use strict'
 
-function Bowling() {
+function Game() {
   this.game = []
   this.currentFrame = []
   this.spareOrStrike = []
@@ -8,11 +8,11 @@ function Bowling() {
   this.runningTotal = 0
 }
 
-Bowling.prototype.bowl = function(){
+Game.prototype.bowl = function(){
   return Math.floor(Math.random() * 11);
 };
 
-Bowling.prototype.bowlFrame = function(){
+Game.prototype.bowlFrame = function(){
   var bowl = Math.floor((Math.random() * 11));
   this.currentFrame.push(bowl);
   if (bowl <= 10){
@@ -22,7 +22,15 @@ Bowling.prototype.bowlFrame = function(){
   this.game.push(this.currentFrame);
 };
 
-Bowling.prototype.determineOutcomeofFrame = function(){
+Game.prototype.addFrame = function(frame){
+  this.game.push(frame);
+};
+
+Game.prototype.returnLastElement = function(array){
+  return array[array.length - 1];
+};
+
+Game.prototype.determineOutcomeofFrame = function(){
   if(this.currentFrame[0] >= 10) {
     this.spareOrStrike.push("strike");
   } else if (this.currentFrame[0] + this.currentFrame[1] === 10) {
@@ -34,7 +42,7 @@ Bowling.prototype.determineOutcomeofFrame = function(){
     this.currentFrame = []
 };
 
-Bowling.prototype.calculateBonuses = function(){
+Game.prototype.calculateBonuses = function(){
   this.bonuses.push([])
   if (this.game.length > 1) {
     this.calculateSpareBonus();
@@ -45,7 +53,7 @@ Bowling.prototype.calculateBonuses = function(){
   }
 };
 
-Bowling.prototype.bowlFinalFrameBonuses = function(){
+Game.prototype.bowlFinalFrameBonuses = function(){
   var bonusBowl
   bonusBowl = Math.floor((Math.random() * 11));
   this.bonuses[9].push(bonusBowl);
@@ -55,13 +63,13 @@ Bowling.prototype.bowlFinalFrameBonuses = function(){
   }
 };
 
-Bowling.prototype.calculateSpareBonus = function(){
+Game.prototype.calculateSpareBonus = function(){
   if (this.spareOrStrike[this.spareOrStrike.length-2] === "spare") {
     this.bonuses[this.bonuses.length-2].push(this.game[this.game.length - 1][0]);
   }
 };
 
-Bowling.prototype.calculateStrikeBonus = function(){
+Game.prototype.calculateStrikeBonus = function(){
   if (this.spareOrStrike[this.spareOrStrike.length-2] === "strike" && this.spareOrStrike[this.spareOrStrike.length-3] === "strike") {
     this.bonuses[this.bonuses.length-3].push(this.game[this.game.length - 1][0]);
   }
@@ -74,7 +82,7 @@ Bowling.prototype.calculateStrikeBonus = function(){
   }
 };
 
-Bowling.prototype.calculateTotal = function () {
+Game.prototype.calculateTotal = function () {
   var merged = [].concat.apply([], this.game);
   for (var i = 0; i < merged.length; i++) {
     this.runningTotal += merged[i];

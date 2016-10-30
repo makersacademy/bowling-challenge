@@ -44,18 +44,34 @@ function Roll(){
 Roll.prototype.addRoll = function(rollScore){
   this.checkForRollErrors(rollScore);
   this.roll.push(rollScore);
+  this.lookBackOne();
   if (this.roll.length === 2){
     this.rollComplete = true;
-    this.score = this.addScore();
+    this.score = this.addScore2Rolls();
   }
   if ((this.roll.length === 1)&&(this.roll[0] === 10)){
     this.rollComplete = true;
+    this.score = this.addScore1Roll();
     this.lookAhead = 2;
   }
 };
 
-Roll.prototype.addScore = function(){
+Roll.prototype.lookBackOne = function(){
+  //Not correct at this time!
+  //  if (this.roll.length >= 2){
+  //    if (this.lookAhead === 2){
+  //      this.roll[roll.length-2].lookAhead =1;
+  //      this.roll[roll.length-2].score+=this.roll.score;
+  //    }
+  //  }
+}
+
+Roll.prototype.addScore2Rolls = function(){
   return this.roll[0]+this.roll[1];
+}
+
+Roll.prototype.addScore1Roll = function(){
+  return this.roll[0];
 }
 
 Roll.prototype.showRoll = function(rollNo){

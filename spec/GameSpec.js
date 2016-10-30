@@ -59,13 +59,24 @@ describe("Roll",function(){
       expect(roll.score).toEqual(9);
     })
 
-    it("shows the correct score where frame is a strike",function(){
+    it("shows the correct score where CURRENT frame is a strike",function(){
       roll.addRoll(10);
       if (roll.rollComplete){
         game.addFrame(roll);    //This is fudged. Do I need to test through the frontend?
       }
-      expect(roll.score).toEqual(30);
+      expect(roll.score).toEqual(10);
+      //Add 2 more rolls after this one, checking the original score each time.
     })
+
+    it("shows the correct score where CURRENT frame is a spare",function(){
+      roll.addRoll(10);
+      if (roll.rollComplete){
+        game.addFrame(roll);    //This is fudged. Do I need to test through the frontend?
+      }
+      expect(roll.score).toEqual(10);
+      //Add 1 more roll after this one, and check the original score again.
+    })
+
   })
 
   describe("end of game",function(){

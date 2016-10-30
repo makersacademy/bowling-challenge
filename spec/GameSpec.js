@@ -15,9 +15,15 @@ describe("Game", function() {
     expect(game.frames[0][0]).toBe(5);
   });
 
-  it("should start a new frame after 2 throws or a strike", function() {
+  it("should start a new frame after 2 throws", function() {
     game.frames[0].push(1,2);
     game.addScore(5);
+    expect(game.frames.length).toBe(2);
+  });
+
+  it("should start a new frame after a strike", function() {
+    game.addScore(10);
+    game.addScore(1);
     expect(game.frames.length).toBe(2);
   });
 

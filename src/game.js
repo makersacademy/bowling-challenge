@@ -48,13 +48,13 @@ Game.prototype.bowlFinalFrameBonuses = function(){
 };
 
 Game.prototype.calculateSpareBonus = function(){
-  if (this.spareOrStrike[this.spareOrStrike.length-2] === "spare") {
-    this.bonuses[this.bonuses.length-2].push(this.game[this.game.length - 1][0]);
+  if (this.returnLastElement(2, this.spareOrStrike) === "spare") {
+    this.returnLastElement(2, this.bonuses).push(this.returnLastElement(1, this.game)[0]);
   }
 };
 
 Game.prototype.calculateStrikeBonus = function(){
-  if (this.spareOrStrike[this.spareOrStrike.length-2] === "strike" && this.spareOrStrike[this.spareOrStrike.length-3] === "strike") {
+  if (this.returnLastElement(3, this.spareOrStrike) === "strike" && this.spareOrStrike[this.spareOrStrike.length-3] === "strike") {
     this.returnLastElement(3, this.bonuses).push(this.returnLastElement(1, this.game)[0]);
   }
   else if (this.spareOrStrike[this.spareOrStrike.length-2] === "strike" && this.spareOrStrike[this.spareOrStrike.length-1] === "strike") {

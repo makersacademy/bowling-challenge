@@ -2,28 +2,27 @@
 
 function Game() {
   this.game = []
-  this.currentFrame = []
   this.spareOrStrike = []
   this.bonuses = []
   this.runningTotal = 0
 }
 
-Game.prototype.bowl = function(){
-  return Math.floor(Math.random() * 11);
-};
+// Game.prototype.bowl = function(){
+//   return Math.floor(Math.random() * 11);
+// };
+//
+// Game.prototype.bowlFrame = function(){
+//   var bowl = Math.floor((Math.random() * 11));
+//   this.currentFrame.push(bowl);
+//   if (bowl <= 10){
+//     bowl = Math.floor((Math.random() * (11-bowl)));
+//     this.currentFrame.push(bowl);
+//   }
+//   this.game.push(this.currentFrame);
+// };
 
-Game.prototype.bowlFrame = function(){
-  var bowl = Math.floor((Math.random() * 11));
-  this.currentFrame.push(bowl);
-  if (bowl <= 10){
-    bowl = Math.floor((Math.random() * (11-bowl)));
-    this.currentFrame.push(bowl);
-  }
-  this.game.push(this.currentFrame);
-};
-
-Game.prototype.addFrame = function(frame){
-  this.game.push(frame);
+Game.prototype.addFrame = function(score){
+  this.game.push(score);
 };
 
 Game.prototype.returnLastElement = function(array){
@@ -31,15 +30,14 @@ Game.prototype.returnLastElement = function(array){
 };
 
 Game.prototype.determineOutcomeofFrame = function(){
-  if(this.currentFrame[0] >= 10) {
+  if(this.game[this.game.length - 1][0] >= 10) {
     this.spareOrStrike.push("strike");
-  } else if (this.currentFrame[0] + this.currentFrame[1] === 10) {
+  } else if (this.game[this.game.length - 1][0] + this.game[this.game.length - 1][1] === 10) {
       this.spareOrStrike.push("spare");
     }
     else {
       this.spareOrStrike.push("neither");
     }
-    this.currentFrame = []
 };
 
 Game.prototype.calculateBonuses = function(){

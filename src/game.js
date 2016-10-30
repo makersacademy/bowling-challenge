@@ -7,8 +7,32 @@ function Game() {
 
 Game.prototype.bowl = function(score) {
   this.currentFrame.addScore(score);
+  this._defineLastFrames();
   this.calculatePreviousSpareBonus();
-  if (this.currentFrame.isOver) {
+  console.log("frame number turn" + this.calculateFrameNumber() + ":" + this.calculateScore())
+  this.calculatePreviousStrikeBonus();
+  if (this.isOver() && this.lastFrame.isSpare) {
+    this.oldFrames.unshift(this.currentFrame)
+    console.log("Game Over")
+  }
+  else if (this.isFinalFrame() && this.currentFrame.isStrike) {
+    console.log("It's the final frame and it is a strike!")
+    this.currentFrame.totalScore = 10
+    this.FrameChange();
+  }
+  else if (this.isOver() && this.lastFrame.isStrike && this.currentFrame.isStrike) {
+    console.log("It's over frame 10, but last frame was a strike and this frame is a strike.")
+    this.lastFrame.totalScore += 10
+    this.currentFrame = new Frame;
+  }
+  else if (this.isOver() && this.lastFrame.isStrike && this.currentFrame.isOver) {
+    console.log("It's over frame 10, but last frame was a strike and this frame is now over.")
+    this.lastFrame.totalScore = this.lastFrame.workingScore + this.currentFrame.totalScore;
+    this.currentFrame.totalScore = 0;
+    console.log("Game Over");
+  }
+  else if (this.currentFrame.isOver) {
+    console.log("This is normal frame gameplay")
     this.calculatePreviousStrikeBonus();
     this.FrameChange();
   }
@@ -16,8 +40,17 @@ Game.prototype.bowl = function(score) {
 
 Game.prototype.FrameChange = function() {
   this.oldFrames.unshift(this.currentFrame)
-  this.currentFrame = new Frame;
+  if (this.isOver() && !this.currentFrame.isSpare && !this.currentFrame.isStrike) {
+    console.log("Game Over")
+  }
+  else {
+    this.currentFrame = new Frame;
+  }
 };
+
+// Game.prototype.checkIfFinalFrame = function () {
+//
+// };
 
 Game.prototype.calculateScore = function() {
   this._totalScore = 0
@@ -29,22 +62,32 @@ Game.prototype.calculateScore = function() {
 };
 
 Game.prototype.calculateFrameNumber = function() {
-  this._frameNumber = 0;
-  for (var i = 0; i <= this.oldFrames.length; i++) {
+  this._frameNumber = 1;
+  for (var i = 0; i < this.oldFrames.length; i++) {
     this._frameNumber += 1
   }
   return this._frameNumber
 };
 
+// Game Over Logic
+
+Game.prototype.isOver = function () {
+  return (this.calculateFrameNumber() > 10)
+};
+
+Game.prototype.isFinalFrame = function () {
+  return (this.calculateFrameNumber() === 10)
+}
+
+// Spare & Strike Logic Below Here
+
 Game.prototype.calculatePreviousStrikeBonus = function() {
-  this._defineLastFrames();
   this.ScoreThreeStrikesBonus();
   this.ScoreTwoStrikeBonus();
   this.ScoreOneStrikeBonus();
 };
 
 Game.prototype.calculatePreviousSpareBonus = function() {
-  this._defineLastFrames();
   if (this.lastFrame && this.lastFrame.isSpare) {
     this.lastFrame.totalScore = 10 + this.currentFrame.turn[0]
   }
@@ -68,14 +111,12 @@ Game.prototype.ScoreTwoStrikeBonus = function () {
   if (this.twoStrikesInARow() && !this.currentFrame.isStrike) {
     this.secondToLastFrame.totalScore = 20 + this.currentFrame.turn[0];
     this.lastFrame.totalScore = 10 + this.currentFrame.workingScore;
-    console.log("I'm calculating two strikes in a row!");
   }
 };
 
 Game.prototype.ScoreOneStrikeBonus = function () {
   if (this.oneStrikeInARow() && !this.currentFrame.isStrike) {
-    this.lastFrame.totalScore = this.currentFrame.totalScore + this.lastFrame.workingScore;
-    console.log("I'm calculating one strikes in a row!");
+    this.lastFrame.totalScore = 10 + this.currentFrame.workingScore;
   }
 };
 

@@ -35,6 +35,7 @@ Frame.prototype.checkIfStrike = function(score) {
     this.isStrike = true;
     this.isOver = true;
     this.workingScore += score
+    this.turn.push(score)
   }
 };
 

@@ -30,6 +30,14 @@ describe ("Bowling", function() {
       expect(bowling.getCurrentFrame()).toBe(10);
     });
 
+    it("validates that the current frame is not finished", function() {
+      bowling.knockDown(8);
+      bowling.knockDown(1);
+      expect(function() {
+        bowling.knockDown(1);
+      }).toThrowError('Current frame is finished');
+    });
+
     it("validates that a frame does not go over 10", function() {
       bowling.knockDown(8);
       expect(function() {
@@ -61,4 +69,20 @@ describe ("Bowling", function() {
       expect(bowling.isCurrentFrameFinished()).toBe(false);
     });
   });
+
+  describe('#nextFrame', function() {
+    it("starts a new frame", function() {
+      bowling.knockDown(5);
+      bowling.knockDown(4);
+      bowling.nextFrame();
+      expect(bowling.getCurrentFrame()).toBe(0);
+    });
+
+    it("validates that the current frame is finished", function() {
+      bowling.knockDown(5);
+      expect(function() {
+        bowling.nextFrame();
+      }).toThrowError('Current frame is not finished');
+    });
+  })
 });

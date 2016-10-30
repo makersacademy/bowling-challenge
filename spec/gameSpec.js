@@ -80,14 +80,9 @@ describe("Game", function() {
       expect(function(){game.totalPoints(); }).toThrowError("Error: max. point exceeded");
     });
 
-    it("return a score of Gutter Game if no points are scored", function() {
-      game.updateGamePoints(299);
-      game.updateGamePoints(5);
-      expect(function(){game.totalPoints(); }).toThrowError("Error: max. point exceeded");
+    it("confirms a strike if all 10 pins are knocked down on the first bowl", function() {
+      game.firstBowlPoints(10);
+      expect(game.firstBowlPoints()).toEqual("Strike!")
     });
-
-    // it("returns a strike if all pins are knocked down on first throw", function () {
-
-    // });
   });
 });

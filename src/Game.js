@@ -10,6 +10,8 @@ function Game() {
   this.framePoints = [];
   this.frames = [];
   this.gameFrame = 0;
+  this.firstBowl = [];
+  this.secondBowl = [];
 }
 
 Game.prototype.bowl = function() {
@@ -48,6 +50,17 @@ Game.prototype.totalFramePoints = function () {
   else
   return total
 }
+
+Game.prototype.firstBowlPoints = function (number) {
+    this.firstBowl.push(number);
+    if(this.firstBowl[0] === 10) 
+      return "Strike!";
+}
+
+Game.prototype.secondBowlPoints = function (number) {
+    this.secondBowl.push(number);
+}
+
 
 Game.prototype.updateGamePoints = function (number) {
   this.gamePoints.push(number);

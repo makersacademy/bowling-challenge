@@ -7,8 +7,9 @@ describe('Game', function(){
     game = new Game();
   });
 
-  it('has an initial score of 0', function(){
+  it('has an initial score of 0 and no frames', function(){
     expect(game.frameScore).toEqual(0)
+    expect(game.frameCount).toEqual(0)
   });
 
   it('reduces the bowl count by 1 after each bowl is taken', function(){
@@ -55,5 +56,11 @@ describe('Game', function(){
       game.calcScore(game.allFrames)
       expect(game.totalScore).toEqual(12)
     });
+  });
+
+  it('Ends the frame if player gets a strike', function(){
+    game.bowl(10)
+    expect(game.frameScore).toEqual(10)
+    expect(game.strike).toBe(true)
   });
 });

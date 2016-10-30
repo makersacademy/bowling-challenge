@@ -1,3 +1,5 @@
+'use strict';
+
 var BowlingGame = function () {
   this.LOWESTSCORE = 0;
   this.HIGHESTSCORE = 300;
@@ -35,9 +37,9 @@ BowlingGame.prototype._incrementNoOfFrames  = function (frame) {
 
 BowlingGame.prototype._incrementScore = function () {
   if (this._wasSpare() === true) {
-    this.score += (this._currentFrame().rollScore) + (this._currentFrame().roll1);
+    this.score += (this._currentFrame().rollsTotal) + (this._currentFrame().roll1);
   } else {
-    this.score += this._currentFrame().rollScore;
+    this.score += this._currentFrame().rollsTotal;
   }
 }
 
@@ -45,7 +47,7 @@ BowlingGame.prototype._wasSpare = function () {
   if (this._notFirstFrame()){
     return false;
   } else {
-    return (this._lastFrame().rollScore === 10);
+    return (this._lastFrame().rollsTotal === 10);
   }
 }
 

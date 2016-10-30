@@ -1,13 +1,17 @@
+'use strict';
+
 describe('BowlingGame', function () {
 
   var game
   var frame
+  var frame1
+  var frame2
 
   beforeEach(function () {
     game = new BowlingGame();
     frame = new Frame();
     frame.rollCounter = 2;
-    frame.rollScore = 9;
+    frame.rollsTotal = 9;
   });
 
   describe('object is constructed with', function () {
@@ -44,12 +48,12 @@ describe('BowlingGame', function () {
       frame1 = new Frame();
       frame1.roll1 = 6;
       frame1.roll2 = 4;
-      frame1.rollScore = 10;
+      frame1.rollsTotal = 10;
       game.addFrame(frame1);
       frame2 = new Frame();
       frame2.roll1 = 5;
       frame2.roll2 = 2;
-      frame2.rollScore = 7;
+      frame2.rollsTotal = 7;
       game.addFrame(frame2);
       expect(game.score).toEqual(22);
     });

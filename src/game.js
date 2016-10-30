@@ -32,10 +32,10 @@ Game.prototype.calculateBonuses = function(){
     this.calculateSpareBonus();
     this.calculateStrikeBonus();
   }
-  if (this.game.length === 10 && this.spareOrStrike[9] === 'strike'){
+  if (this.spareOrStrike[9] === 'strike'){
     var bonusFrame = new Frame()
     bonusFrame.bowlFinalFrameBonuses(this, "strike")
-  } else if ((this.game.length === 10 && this.spareOrStrike[9] === 'spare')){
+  } else if (this.spareOrStrike[9] === 'spare'){
     var bonusFrame = new Frame()
     bonusFrame.bowlFinalFrameBonuses(this, "spare")
   }

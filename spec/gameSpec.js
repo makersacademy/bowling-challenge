@@ -34,4 +34,10 @@ describe('Game', function() {
         game.bowl(6);
         expect(game.score()).toEqual(22);
     });
+    it('adds a bonus of next two bowl scores for a strike', function() {
+        game.bowl(10);
+        game.bowl(6);
+        game.bowl(2);
+        expect(game.score()).toEqual(26);
+    });
 });

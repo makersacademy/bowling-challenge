@@ -42,16 +42,15 @@ describe('BowlingGame', function () {
   describe('last frame was a', function () {
     it('spare', function () {
       frame1 = new Frame();
+      frame1.roll1 = 6;
+      frame1.roll2 = 4;
       frame1.rollScore = 10;
-      console.log(game.noOfFrames);
       game.addFrame(frame1);
-      console.log(game.noOfFrames);
       frame2 = new Frame();
       frame2.roll1 = 5;
       frame2.roll2 = 2;
       frame2.rollScore = 7;
       game.addFrame(frame2);
-      console.log(game.noOfFrames);
       expect(game.score).toEqual(22);
     });
   });
@@ -61,17 +60,17 @@ describe('BowlingGame', function () {
       for (var i = 1; i < 11; i ++) {
         game.addFrame(new Frame());
       }
-      expect(game.outcome()).toEqual('Gutter game! Too bad, try again next time!');
+      expect(game.giveOutcome()).toEqual('Gutter game! Too bad, try again next time!');
     });
     it('a perfect game', function () {
       game.score = game.HIGHESTSCORE;
-      expect(game.outcome()).toEqual('Perfect game!');
+      expect(game.giveOutcome()).toEqual('Perfect game!');
     });
     it('regular score', function () {
       for (var i = 1; i < 11; i ++) {
         game.addFrame(frame);
       }
-      expect(game.outcome()).toEqual('Your score is 90');
+      expect(game.giveOutcome()).toEqual('Your score is 90');
     });
   });
 

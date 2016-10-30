@@ -1,7 +1,7 @@
 var BowlingGame = function () {
-  this.LOWESTSCORE = 0
-  this.HIGHESTSCORE = 300
-  this.MAXFRAMES = 10
+  this.LOWESTSCORE = 0;
+  this.HIGHESTSCORE = 300;
+  this.MAXFRAMES = 10;
   this.score = 0;
   this.noOfFrames = [];
 }
@@ -15,7 +15,7 @@ BowlingGame.prototype.addFrame = function (frame) {
   }
 }
 
-BowlingGame.prototype.outcome = function () {
+BowlingGame.prototype.giveOutcome = function () {
   if (this._isLowest() === true) {
     return 'Gutter game! Too bad, try again next time!';
   } else if (this._isHighest() === true) {
@@ -24,7 +24,6 @@ BowlingGame.prototype.outcome = function () {
     return 'Your score is ' + this.score;
   }
 }
-
 
 BowlingGame.prototype._addFrameLimit = function () {
   return this.noOfFrames.length === this.MAXFRAMES;
@@ -36,17 +35,17 @@ BowlingGame.prototype._incrementNoOfFrames  = function (frame) {
 
 BowlingGame.prototype._incrementScore = function () {
   if (this._wasSpare() === true) {
-    this.score += ((this.noOfFrames[this.noOfFrames.length-1].rollScore) + (this.noOfFrames[this.noOfFrames.length-1].roll1));
+    this.score += (this._currentFrame().rollScore) + (this._currentFrame().roll1);
   } else {
-    this.score += this.noOfFrames[this.noOfFrames.length-1].rollScore;
+    this.score += this._currentFrame().rollScore;
   }
 }
 
 BowlingGame.prototype._wasSpare = function () {
-  if (this.noOfFrames.length <= 1){
+  if (this._notFirstFrame()){
     return false;
   } else {
-    return (this.noOfFrames[this.noOfFrames.length-2].rollScore === 10);
+    return (this._lastFrame().rollScore === 10);
   }
 }
 
@@ -56,4 +55,16 @@ BowlingGame.prototype._isLowest = function () {
 
 BowlingGame.prototype._isHighest = function () {
   return this.score === this.HIGHESTSCORE;
+}
+
+BowlingGame.prototype._currentFrame =  function () {
+  return this.noOfFrames[this.noOfFrames.length-1];
+}
+
+BowlingGame.prototype._lastFrame =  function () {
+  return this.noOfFrames[this.noOfFrames.length-2];
+}
+
+BowlingGame.prototype._notFirstFrame = function () {
+  return this.noOfFrames.length <= 1;
 }

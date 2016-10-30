@@ -101,7 +101,7 @@ describe('Game', function() {
   });
 
   describe("Perfect game", function(){
-    it("allows an extra bowl to calculate the bonus for the last frame if a spare is rolled", function() {
+    it("accurately scores a perfect game" function() {
       spyOn(Math, 'random').and.returnValues(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
       frame.bowlFrame(game);
       frame.resetFrame();

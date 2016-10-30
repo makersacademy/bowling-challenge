@@ -4,14 +4,28 @@ describe('BowlingGame', function () {
 
   var game
   var frame
-  var frame1
-  var frame2
+  var strikeFrame
+  var spareFrame
+
 
   beforeEach(function () {
     game = new BowlingGame();
+
     frame = new Frame();
     frame.rollCounter = 2;
+    frame.roll1 = 7;
+    frame.roll2 = 2;
     frame.rollsTotal = 9;
+
+    strikeFrame = new Frame ();
+    strikeFrame.roll1 = 10;
+    strikeFrame.rollsTotal = 10;
+
+    spareFrame = new Frame ();
+    spareFrame.roll1 = 6;
+    spareFrame.roll2 = 4;
+    spareFrame.rollsTotal = 10;
+
   });
 
   describe('object is constructed with', function () {
@@ -44,18 +58,25 @@ describe('BowlingGame', function () {
   });
 
   describe('last frame was a', function () {
+    it('strike', function () {
+      game.addFrame(strikeFrame);
+      game.addFrame(frame);
+      expect(game.score).toEqual(28);
+    });
+
     it('spare', function () {
-      frame1 = new Frame();
-      frame1.roll1 = 6;
-      frame1.roll2 = 4;
-      frame1.rollsTotal = 10;
-      game.addFrame(frame1);
-      frame2 = new Frame();
-      frame2.roll1 = 5;
-      frame2.roll2 = 2;
-      frame2.rollsTotal = 7;
-      game.addFrame(frame2);
-      expect(game.score).toEqual(22);
+      game.addFrame(spareFrame);
+      game.addFrame(frame);
+      expect(game.score).toEqual(26);
+    });
+  });
+
+  describe('last 2 frames were', function () {
+    it('strikes', function () {
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(frame);
+      expect(game.score).toEqual(55);
     });
   });
 

@@ -36,18 +36,38 @@ BowlingGame.prototype._incrementNoOfFrames  = function (frame) {
 }
 
 BowlingGame.prototype._incrementScore = function () {
-  if (this._wasSpare() === true) {
-    this.score += (this._currentFrame().rollsTotal) + (this._currentFrame().roll1);
+  if (this._andLastWereStrikes() === true) {
+    this.score += (this._currentFrame().rollsTotal) + (this._currentFrame().rollsTotal) + (this._currentFrame().roll1);
+  } else if (this._wasStrike() === true) {
+    this.score += ((this._currentFrame().rollsTotal) + (this._currentFrame().rollsTotal));
+  } else if (this._wasSpare() === true) {
+    this.score += ((this._currentFrame().rollsTotal) + (this._currentFrame().roll1));
   } else {
     this.score += this._currentFrame().rollsTotal;
   }
 }
 
 BowlingGame.prototype._wasSpare = function () {
-  if (this._notFirstFrame()){
+  if (this._isFirstFrame()){
     return false;
   } else {
-    return (this._lastFrame().rollsTotal === 10 && this._lastFrame().roll1 != 10);
+    return (this._isLastFrame().rollsTotal === 10 && this._isLastFrame().roll1 != 10);
+  }
+}
+
+BowlingGame.prototype._wasStrike = function () {
+  if (this._isFirstFrame()){
+    return false;
+  } else {
+    return (this._isLastFrame().roll1 === 10);
+  }
+}
+
+BowlingGame.prototype._andLastWereStrikes = function () {
+  if (this._isFirstOrSecondFrame()) {
+    return false;
+  } else {
+    return ((this._isLastFrame().roll1 === 10) && (this._isLastFrame().roll1 === 10));
   }
 }
 
@@ -63,10 +83,18 @@ BowlingGame.prototype._currentFrame =  function () {
   return this.noOfFrames[this.noOfFrames.length-1];
 }
 
-BowlingGame.prototype._lastFrame =  function () {
+BowlingGame.prototype._isLastFrame =  function () {
   return this.noOfFrames[this.noOfFrames.length-2];
 }
 
-BowlingGame.prototype._notFirstFrame = function () {
+BowlingGame.prototype._isFrameBefore =  function () {
+  return this.noOfFrames[this.noOfFrames.length-3];
+}
+
+BowlingGame.prototype._isFirstFrame = function () {
   return this.noOfFrames.length <= 1;
+}
+
+BowlingGame.prototype._isFirstOrSecondFrame = function () {
+  return this.noOfFrames.length <= 2;
 }

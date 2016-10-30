@@ -15,12 +15,14 @@ $(document).ready(function(){
       var num = game.currentRollNumber();
       var num1 = num+1;
       $('#edit-frame'+num1+'-1').val(roll.roll[0]);
+      disableButtons(roll.roll[0]);
     }
     if (roll.rollComplete){
       game.totalScore = 0;
       game.addFrame(roll);
       updateScoreCard();
       updateTotal();
+      enableButtons();
     }
 
     function updateScoreCard(){
@@ -56,15 +58,22 @@ $(document).ready(function(){
       }
     });
 
-    disableButtons(8);
+    // disableButtons(8);
 
     function disableButtons(value){
-      for(var i=value;i<=10;i++){
+      for(var i=(11-value);i<=10;i++){
         var string = "[name="+i+"]";
-        alert(string);
+        // alert(string);
         $(string).prop('disabled',true);
       }
       // $("[name=1]").prop('disabled',true);
+    }
+
+    function enableButtons(){
+      for(var i=0;i<=10;i++){
+        var string = "[name="+i+"]";
+        $(string).prop('disabled',false);
+      }
     }
 
   console.log(game.showAllFrames());

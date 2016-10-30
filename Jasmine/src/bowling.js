@@ -19,13 +19,13 @@ this.framesList[this.framesList.length - 1][0];
 
 Bowling.prototype.play = function (roll1, roll2, roll3 = 0) {
   var frame = []
-    if((this.framesList.length < 9) && (roll1 === 10)) {
+    if((this.framesList.length < 10) && (roll1 === 10)) {
       roll2 = '/';
       frame = [roll1, roll2, 10]
       this.framesList.push(frame)
       this.updateScore(frame)
     }
-    else if ((this.framesList.length < 9) && (roll1 !== 10)) {
+    else if ((this.framesList.length < 10) && (roll1 !== 10)) {
       frame = [roll1, roll2, (roll1 + roll2)]
       this.framesList.push(frame)
       this.updateScore(frame)

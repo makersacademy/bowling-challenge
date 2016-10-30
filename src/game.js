@@ -33,19 +33,19 @@ Game.prototype.frameTotal = function(){
   for (var i = 0; i < this.currentFrame.length; i++) {
     frameScore += this.currentFrame[i]  }
     this.frameByFrameScore.push(frameScore)
-};
+  };
 
-Game.prototype.calculateScore = function(array){
-  this.total = 0
-  for ( var i = 0; i < array.length; this.total += array[i++]){
-  }
-  return this.total
-};
+  Game.prototype.calculateScore = function(array){
+    this.total = 0
+    for ( var i = 0; i < array.length; this.total += array[i++]){
+    }
+    return this.total
+  };
 
-Game.prototype.calcScore = function(array){
-  this.totalScore = 0
-  var arr1 = [].concat.apply([], this.allFrames);
-  for ( var i = 0; i < arr1.length; this.totalScore += arr1[i++]){
+  Game.prototype.calcScore = function(array){
+    this.totalScore = 0
+    var arr1 = [].concat.apply([], this.allFrames);
+    for ( var i = 0; i < arr1.length; this.totalScore += arr1[i++]){
     }
     return this.totalScore
-};
+  };

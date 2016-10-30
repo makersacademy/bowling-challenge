@@ -3,13 +3,17 @@ function Bowling () {
   this._turnLog = []
   this._turnRemainingPins = 10;
   this._turnThrows = 0;
-  this.totalScore = 0;
 };
 
 Bowling.prototype.recordThrow = function (pins) {
   this._turn.push(pins);
   this._turnRemainingPins -= pins;
   this._turnThrows++;
+
+  if (this.isPreviousTurn10() === true){
+    this._turnLog[this._turnLog.length-1].push(pins);
+  }
+
   if (this.isTurnEnd() === true) {
     this.resetPins();
   }
@@ -35,14 +39,19 @@ Bowling.prototype.isTurnEnd = function () {
 };
 
 Bowling.prototype.isGameOver = function () {
-  if (this._turnLog.length === 10) {
-    return true
-  }
-  else {
-    return false
-  }
+  return this._turnLog.length === 10
 };
 
-// Bowling.prototype.calculateTotalScore = function () {
-//   return this._turnLog.reduce(function(a,b){return a.concat(b);},[]).calculateTurn();
-// }
+Bowling.prototype.calculateTotalScore = function () {
+  var turnlog = [].concat.apply([], this._turnLog)
+  return turnlog.reduce(function(a,b){return a + b},0)
+}
+
+Bowling.prototype._lastTurn = function () {
+  return this._turnLog[this._turnLog.length-1]
+};
+
+Bowling.prototype.isPreviousTurn10 = function () {
+  if (this._lastTurn() === undefined ){return}
+  return ((this._lastTurn()).reduce(function(a,b){return a + b},0) === 10)
+};

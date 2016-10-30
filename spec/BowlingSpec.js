@@ -49,7 +49,28 @@ describe("Bowling", function() {
 
     it("should return a running total", function() {
       bowling.recordThrow(5); bowling.recordThrow(4);
-      expect(bowling.totalScore).toEqual(9)
+      expect(bowling.calculateTotalScore()).toEqual(9)
+      bowling.recordThrow(1); bowling.recordThrow(8);
+      expect(bowling.calculateTotalScore()).toEqual(18)
+    });
+  });
+
+  describe("Spares", function () {
+    it("should record the next throw in the previous throw's score too", function() {
+      bowling.recordThrow(9);
+      bowling.recordThrow(1);
+      //won't count towards current score until the second ball of this turn is thrown
+      bowling.recordThrow(5);
+      expect(bowling.calculateTotalScore()).toEqual(15)
+    });
+  });
+
+  describe("Strikes", function () {
+    it("should record the next throw in the previous throw's score too", function() {
+      bowling.recordThrow(10);
+      //won't count towards current score until the second ball of this turn is thrown
+      bowling.recordThrow(5);
+      expect(bowling.calculateTotalScore()).toEqual(15)
     });
   });
 });

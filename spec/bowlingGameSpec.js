@@ -24,14 +24,14 @@ describe("BowlingGame", function() {
 
   });
 
-  describe("starting a game", function(){
+  describe("when starting a game", function(){
 
     it('should start with a total score of 0', function(){
       expect(game.totalScore).toEqual(0)
     });
 
     it("should know that it's on the first frame", function(){
-      expect(game.currentFrame).toEqual(game.frame_one);
+      expect(game.currentFrame).toEqual(game.frame1);
     });
 
     it("should start with an array of 10 frames", function(){
@@ -44,7 +44,7 @@ describe("BowlingGame", function() {
 
     it('should be able to add a score of 3 to frame one', function(){
       game.takeShot(3);
-      expect(frame1.addPoints(3)).toHaveBeenCalled();
+      expect(game.frame1.addScore).toHaveBeenCalledWith(3);
     });
 
     it('should be able to add a score of 10', function(){

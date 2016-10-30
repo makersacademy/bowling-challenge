@@ -21,3 +21,7 @@ this.currentFrameCounter = 0;
 this.currentFrame = this.framesArray[this.currentFrameCounter];
 
 }
+
+BowlingGame.prototype.takeShot = function(points){
+  this.currentFrame.addScore(points);
+}

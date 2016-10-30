@@ -6,23 +6,17 @@ function Bowling () {
 };
 
 Bowling.prototype.recordThrow = function (pins) {
-  this._turnRemainingPins -= pins;
-  this._turnThrows++;
-  this._turn.logThrow(pins);
-
-  for (turn of this._turnLog) {
-    if (turn.isTurnOver() === false){
-      turn.logThrow(pins);
+  if (this.isNormalPlayOver() === true){
+    this.addToSpecialTurns(pins)
+  } else {
+    this._turnRemainingPins -= pins;
+    this._turnThrows++;
+    this._turn.logThrow(pins);
+    this.addToSpecialTurns(pins);
+    if (this.isTurnEnd() === true) {
+      this.resetPins();
     }
   }
-  if (this.isTurnEnd() === true) {
-    this.resetPins();
-  }
-};
-
-Bowling.prototype._isAStrike = function () {
-  if (this._turn === undefined ){return false}
-  return (this._turn.totalScore() === 10)
 };
 
 Bowling.prototype.resetPins = function () {
@@ -32,11 +26,11 @@ Bowling.prototype.resetPins = function () {
 };
 
 Bowling.prototype.isTurnEnd = function () {
-  return (this._turnThrows === 2 || this._isAStrike() === true)
+  return (this._turnThrows === 2 || this._turn.isAStrike() === true)
 };
 
-Bowling.prototype.isGameOver = function () {
-  return this._turnLog.length === 10
+Bowling.prototype.isNormalPlayOver = function () {
+  return this._turnLog.length >= 10
 };
 
 Bowling.prototype.calculateTotalScore = function () {
@@ -53,6 +47,23 @@ Bowling.prototype._lastTurn = function () {
   return this._turnLog[this._turnLog.length-1]
 };
 
+Bowling.prototype.addToSpecialTurns = function (pins) {
+  for (turn of this._turnLog) {
+    if (turn.isTurnOver() === false){
+      turn.logThrow(pins);
+    }
+  }
+};
+
+Bowling.prototype.isGameOver = function () {
+  var count = 0
+  for (turn of this._turnLog) {
+    if (turn.isTurnOver() === false){
+      count++;
+    }
+  }
+  return (((count === 0) && (this.isNormalPlayOver() === true)) === true)
+};
 
 Array.prototype.calculate = function () {
   return this.reduce(function(a,b){return a + b},0)

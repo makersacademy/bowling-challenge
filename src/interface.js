@@ -1,6 +1,6 @@
 $(document).ready(function(){
   var game = new Game();
-  // var roll = new Roll();
+  var roll = new Roll();
 
   // Function to detect button clicked.
 
@@ -17,10 +17,14 @@ $(document).ready(function(){
   // $(".bowling-calc-buttons-container").click(function(){
   // $('[name=b-3]').click(function(){
   function rollBall(pinsDown){
-    // alert(pinsDown);
-    roll = new Roll();
-    roll.addRoll(6);
-    roll.addRoll(2);
+    // alert("|||"+pinsDown+"|||");
+    // alert(pinsDown+20);
+    // var pinsDown1 = pinsDown;
+    if(roll.rollComplete === true){
+      roll = new Roll();
+    }
+    roll.addRoll(parseInt(pinsDown));
+    // roll.addRoll(parseInt(pinsDown));
     // console.log(roll.showRoll(1));
     if (roll.rollComplete){
       game.addFrame(roll);

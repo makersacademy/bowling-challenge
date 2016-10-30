@@ -71,6 +71,23 @@ describe('BowlingGame', function () {
     });
   });
 
+  // describe('final frame was a', function () {
+  //   it('strike', function () {
+  //     for (var i = 1; i < 10; i ++) {
+  //       game.addFrame(frame);
+  //     }
+  //     game.addFrame(strikeFrame);
+  //     expect(game.score).toEqual(111);
+  //   });
+  //   it('spare', function () {
+  //     for (var i = 1; i < 10; i ++) {
+  //       game.addFrame(frame);
+  //     }
+  //     game.addFrame(spareFrame);
+  //     expect(game.score).toEqual(110);
+  //   });
+  // });
+
   describe('last 2 frames were', function () {
     it('strikes', function () {
       game.addFrame(strikeFrame);
@@ -88,7 +105,9 @@ describe('BowlingGame', function () {
       expect(game.giveOutcome()).toEqual('Gutter game! Too bad, try again next time!');
     });
     it('a perfect game', function () {
-      game.score = game.HIGHESTSCORE;
+      for (var i = 1; i < 11; i ++) {
+        game.addFrame(strikeFrame);
+      }
       expect(game.giveOutcome()).toEqual('Perfect game!');
     });
     it('regular score', function () {

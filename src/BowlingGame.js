@@ -2,7 +2,7 @@
 
 var BowlingGame = function () {
   this.LOWESTSCORE = 0;
-  this.HIGHESTSCORE = 300;
+  this.HIGHESTSCORE = 270;
   this.MAXFRAMES = 10;
   this.score = 0;
   this.noOfFrames = [];
@@ -36,26 +36,26 @@ BowlingGame.prototype._incrementNoOfFrames  = function (frame) {
 }
 
 BowlingGame.prototype._incrementScore = function () {
-  if (this._andLastWereStrikes() === true) {
+  if (this._lastTwoFramesWereStrikes() === true) {
     this.score += (this._currentFrame().rollsTotal) + (this._currentFrame().rollsTotal) + (this._currentFrame().roll1);
-  } else if (this._wasStrike() === true) {
+  } else if (this._lastFrameWasStrike() === true) {
     this.score += ((this._currentFrame().rollsTotal) + (this._currentFrame().rollsTotal));
-  } else if (this._wasSpare() === true) {
+  } else if (this._lastFrameWasSpare() === true) {
     this.score += ((this._currentFrame().rollsTotal) + (this._currentFrame().roll1));
   } else {
     this.score += this._currentFrame().rollsTotal;
   }
 }
 
-BowlingGame.prototype._wasSpare = function () {
-  if (this._isFirstFrame()){
+BowlingGame.prototype._lastTwoFramesWereStrikes = function () {
+  if (this._isFirstOrSecondFrame()) {
     return false;
   } else {
-    return (this._isLastFrame().rollsTotal === 10 && this._isLastFrame().roll1 != 10);
+    return ((this._isLastFrame().roll1 === 10) && (this._isLastFrame().roll1 === 10));
   }
 }
 
-BowlingGame.prototype._wasStrike = function () {
+BowlingGame.prototype._lastFrameWasStrike = function () {
   if (this._isFirstFrame()){
     return false;
   } else {
@@ -63,11 +63,11 @@ BowlingGame.prototype._wasStrike = function () {
   }
 }
 
-BowlingGame.prototype._andLastWereStrikes = function () {
-  if (this._isFirstOrSecondFrame()) {
+BowlingGame.prototype._lastFrameWasSpare = function () {
+  if (this._isFirstFrame()){
     return false;
   } else {
-    return ((this._isLastFrame().roll1 === 10) && (this._isLastFrame().roll1 === 10));
+    return (this._isLastFrame().rollsTotal === 10 && this._isLastFrame().roll1 != 10);
   }
 }
 

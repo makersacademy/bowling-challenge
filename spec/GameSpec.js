@@ -5,14 +5,20 @@ describe("Game", function() {
     game = new Game();
   });
 
-  it("should create a new frame", function () {
+  it("should create a new frame", function() {
     game.addScore(5);
     expect(game.frames.length).not.toBe(0);
   });
 
-  it("should add the user's score to the frame", function () {
+  it("should add the user's score to the frame", function() {
     game.addScore(5);
     expect(game.frames[0][0]).toBe(5);
+  });
+
+  it("should start a new frame after 2 throws or a strike", function() {
+    game.frames[0].push(1,2);
+    game.addScore(5);
+    expect(game.frames.length).toBe(2);
   });
 
   it("should add to the bonus count if the score was a strike", function () {

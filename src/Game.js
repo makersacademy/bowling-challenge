@@ -3,16 +3,24 @@
 
 function Game() {
   this.MAX_FRAMES = 10;
+  this.MAX_GAMES_PER_FRAME = 2;
   this.gamePins = 10;
   this.currentFrame = 0;
   this.gamePoints = [];
   this.framePoints = [];
   this.frames = [];
-
+  this.gameFrame = 0;
 }
 
 Game.prototype.bowl = function() {
   this.playFrame();
+}
+
+Game.prototype.countGameFrame = function() {
+  if(this.gameFrame + 1 > this.MAX_GAMES_PER_FRAME) {
+    throw new Error("Error: max role per turn is two");
+  }
+  this.gameFrame += 1;
 }
 
 Game.prototype.getCurrentFrame = function() {
@@ -55,3 +63,5 @@ Game.prototype.totalPoints = function () {
   else
   return total
 }
+
+//module.exports = Game;

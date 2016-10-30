@@ -1,9 +1,10 @@
 'use strict';
 
 describe("Game", function() {
-  var game;
+  //var Game = require('../src/game.js');
+    var game;
 
-  beforeEach(function() {
+    beforeEach(function() {
     game = new Game();
   });
 
@@ -43,6 +44,14 @@ describe("Game", function() {
       game.bowl(1);
       expect(game.getCurrentFrame()).toBe(game.frames[2]);
     });
+
+    it("allows a maximum of two roles per frame", function() {
+      game.gameFrame;
+      for (var i = 0; i < 2; i++) {
+        game.countGameFrame();
+      }
+      expect(function(){game.countGameFrame(); }).toThrowError("Error: max role per turn is two");
+    });
   });
 
   describe("Game Scores", function() {
@@ -70,5 +79,15 @@ describe("Game", function() {
       game.updateGamePoints(5);
       expect(function(){game.totalPoints(); }).toThrowError("Error: max. point exceeded");
     });
+
+    it("return a score of Gutter Game if no points are scored", function() {
+      game.updateGamePoints(299);
+      game.updateGamePoints(5);
+      expect(function(){game.totalPoints(); }).toThrowError("Error: max. point exceeded");
+    });
+
+    // it("returns a strike if all pins are knocked down on first throw", function () {
+
+    // });
   });
 });

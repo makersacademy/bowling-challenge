@@ -15,4 +15,9 @@ describe("Game", function() {
     expect(game.frames[0][0]).toBe(5);
   });
 
+  it("should add to the bonus count if the score was a strike", function () {
+    game.addScore(10);
+    expect(game.bonusCount).toBe(2);
+  });
+
 });

@@ -140,5 +140,27 @@ describe ("Bowling", function() {
       bowling.nextFrame();
       expect(bowling.totalScore()).toBe((10 + 3 + 6) + (3 + 6));
     });
+
+    it("adds the score for three consecutive strikes", function() {
+        bowling.knockDown(10);
+        bowling.nextFrame();
+        bowling.knockDown(10);
+        bowling.nextFrame();
+        bowling.knockDown(10);
+        bowling.nextFrame();
+        bowling.knockDown(4);
+        bowling.knockDown(1);
+        bowling.nextFrame();
+      expect(bowling.totalScore()).toBe((10 + 10 + 10) + (10 + 10 + 4) +
+      (10 + 4 + 1) + (4 + 1));
+    });
+
+    it("adds the score for a perfect game", function() {
+      for (var i = 0; i < 12; i++) {
+        bowling.knockDown(10);
+        bowling.nextFrame();
+      }
+      expect(bowling.totalScore()).toBe(300);
+    });
   });
 });

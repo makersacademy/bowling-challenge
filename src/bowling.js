@@ -37,10 +37,15 @@ Bowling.prototype.isCurrentFrameFinished = function() {
 
 Bowling.prototype.frameScore = function(i) {
   var score = sum(this._frames[i]);
-  if (this._frames[i][0] === 10) {
+  if (this._frames[i][0] === 10 && this._frames[i + 1]) {
     // Strike!
-    score += this._frames[i + 1][0] + this._frames[i + 1][1];
-  } else if (score === 10) {
+    score += this._frames[i + 1][0];
+    if (this._frames[i + 1][1]) {
+      score += this._frames[i + 1][1];
+    } else if (this._frames[i + 2]) {
+      score += this._frames[i + 2][0];
+    }
+  } else if (score === 10 && this._frames[i + 1]) {
     // Spare!
     score += this._frames[i + 1][0];
   }

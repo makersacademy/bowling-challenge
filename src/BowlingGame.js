@@ -47,7 +47,7 @@ BowlingGame.prototype._wasSpare = function () {
   if (this._notFirstFrame()){
     return false;
   } else {
-    return (this._lastFrame().rollsTotal === 10);
+    return (this._lastFrame().rollsTotal === 10 && this._lastFrame().roll1 != 10);
   }
 }
 

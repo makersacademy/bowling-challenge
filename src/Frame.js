@@ -16,17 +16,10 @@ Frame.prototype.recordRolls = function (pins) {
     if (this._greaterThanMaxScore(pins) === true) {
       return 'Score can not be greater than 10';
     } else if (pins === 10) {
-      this._addRollScore(pins);
-      this._incrementRollCounter();
-      this._incrementRollsTotal(pins);
-      this._addRollScore(0);
-      this._incrementRollCounter();
-      this._incrementRollsTotal(0);
-      return 'Wooo! You got a strike!';
+      this._addRoll(pins);
+      return this._addStrikeRoll(0);
     } {
-      this._addRollScore(pins);
-      this._incrementRollCounter();
-      this._incrementRollsTotal(pins);
+      this._addRoll(pins);
     }
   }
 }
@@ -55,4 +48,15 @@ Frame.prototype._addRollScore = function (pins) {
   }
 }
 
-Frame.prototype._addRoll
+Frame.prototype._addRoll = function (pins) {
+  this._addRollScore(pins);
+  this._incrementRollCounter();
+  this._incrementRollsTotal(pins);
+}
+
+Frame.prototype._addStrikeRoll = function(pins) {
+  this._addRollScore(0);
+  this._incrementRollCounter();
+  this._incrementRollsTotal(0);
+  return 'Wooo! You got a strike!';
+}

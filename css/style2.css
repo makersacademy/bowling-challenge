@@ -5,7 +5,7 @@
 form {
   min-width: 440px;
   font-family: 'Coiny';
-  border: 1px solid #F0F0F0;
+  border: 3px solid #F0F0F0;
   background: #E8F5FA;
   border-radius: 10px;
   padding: 2%;
@@ -42,8 +42,6 @@ td {
 /****** INPUTS *****/
 
 form input[type=text],
-form input[type=number],
-form input[type=password],
 form input[type=button],
 form input[type=radio]{
   font-family: 'Coiny';

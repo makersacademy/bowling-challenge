@@ -44,4 +44,11 @@ describe("Game", function() {
     expect(game.total()).toEqual(9);
   });
 
+  it("should add the bonus scores from strikes or spares", function() {
+    game.addScore(10);
+    game.addScore(4);
+    game.addScore(3);
+    expect(game.total()).toEqual(24);
+  });
+
 });

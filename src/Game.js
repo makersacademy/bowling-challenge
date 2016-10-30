@@ -8,6 +8,7 @@ Game.prototype.addScore = function(score) {
   this._checkFrame();
   this.frames[this.currentFrame].push(score);
   this._addBonus(score);
+  this._checkBonus(score);
 };
 
 Game.prototype.frameTotal = function() {
@@ -37,10 +38,17 @@ Game.prototype._addFrame = function() {
   this.frames.push([]);
 };
 
-Game.prototype._addBonus = function(score) {
+Game.prototype._checkBonus = function(score) {
   if (score === 10) {
     this.bonusCount += 2;
   } else if (this.frameTotal() === 10) {
     this.bonusCount += 1;
+  }
+};
+
+Game.prototype._addBonus = function(score) {
+  if (this.bonusCount !== 0) {
+    this.frames[this.currentFrame - 1].push(score);
+    this.bonusCount -= 1;
   }
 };

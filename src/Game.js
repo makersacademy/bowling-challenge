@@ -1,21 +1,17 @@
-'use strict';
+"use strict";
 
-var rolls = [];
-
-function Game() {
-  this.score = 0;
-  var roll = 0;
-}
-
-Game.prototype.newGame = function() {
-  return this.score;
+var Game = function() {
+  this.rolls = [];
 };
 
 Game.prototype.roll = function(pinsDown) {
-  rolls.push(pinsDown);
-  var sum = rolls.reduce(add, 0);
-  function add(a, b) {
-    return a + b;
+  this.rolls.push(pinsDown);
+};
+
+Game.prototype.score = function() {
+  var result = 0;
+  for(var i = 0; i < 20; i++) {
+    result += this.rolls[i];
   }
-  return this.score = sum;
+  return result;
 };

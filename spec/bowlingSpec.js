@@ -140,4 +140,52 @@ describe('Bowling', function() {
     });
   });
 
+  describe("Totalling:", function(){
+    it("calculates the total score of multiple frame", function(){
+      spyOn(Math, 'random').and.returnValues(0.5, 0.5, 0.5, 0.5);
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      bowling.calculateTotal();
+      expect(bowling.runningTotal).toEqual(16)
+    });
+    it("includes spare bonus scores in the total", function(){
+      spyOn(Math, 'random').and.returnValues(0.5, 0.9, 0.5, 0.5);
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      bowling.calculateBonuses();
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      bowling.calculateBonuses();
+      bowling.calculateTotal();
+      expect(bowling.runningTotal).toEqual(23)
+    });
+
+    it("includes strike bonus scores in the total", function(){
+      spyOn(Math, 'random').and.returnValues(1, 0.5, 0.5);
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      bowling.calculateBonuses();
+      bowling.bowlFrame();
+      bowling.determineOutcomeofFrame();
+      bowling.calculateBonuses();
+      bowling.calculateTotal();
+      expect(bowling.runningTotal).toEqual(27)
+    });
+
+    // it("calculates the score for a full game", function(){
+    //   spyOn(Math, 'random').and.returnValues(0.5, 0.9)
+    //   for (var i = 0; i < 10; i++) {
+    //     bowling.bowlFrame();
+    //     bowling.determineOutcomeofFrame();
+    //     bowling.calculateBonuses();
+    //   }
+    //   console.log(bowling.game)
+    //   console.log(bowling.bonuses)
+    //   expect(bowling.runningTotal).toEqual(98)
+    // });
+
+  });
+
 });

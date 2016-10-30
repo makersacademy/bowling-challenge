@@ -5,6 +5,7 @@ function Bowling() {
   this.currentFrame = []
   this.spareOrStrike = []
   this.bonuses = []
+  this.runningTotal = 0
 }
 
 Bowling.prototype.bowl = function(){
@@ -12,13 +13,12 @@ Bowling.prototype.bowl = function(){
 };
 
 Bowling.prototype.bowlFrame = function(){
-  var bowl1
-  var bowl2
-  bowl1 = Math.floor((Math.random() * 11));
-  this.currentFrame.push(bowl1);
-  if (bowl1 <= 10){
-    bowl2 = Math.floor((Math.random() * (11-bowl1)));
-    this.currentFrame.push(bowl2);
+  var bowl
+  bowl = Math.floor((Math.random() * 11));
+  this.currentFrame.push(bowl);
+  if (bowl <= 10){
+    bowl = Math.floor((Math.random() * (11-bowl)));
+    this.currentFrame.push(bowl);
   }
   this.game.push(this.currentFrame);
 };
@@ -48,14 +48,12 @@ Bowling.prototype.calculateBonuses = function(){
 };
 
 Bowling.prototype.bowlFinalFrameBonuses = function(){
-  console.log("it's worked")
-  var bonusBowl1
-  var bonusBowl2
-  bonusBowl1 = Math.floor((Math.random() * 11));
-  this.bonuses[9].push(bonusBowl1);
+  var bonusBowl
+  bonusBowl = Math.floor((Math.random() * 11));
+  this.bonuses[9].push(bonusBowl);
   if (this.spareOrStrike[this.spareOrStrike.length-1] === 'strike'){
-    bonusBowl2 = Math.floor((Math.random() * (11-bonusBowl1)));
-    this.bonuses[9].push(bonusBowl2);
+    bonusBowl = Math.floor((Math.random() * (11-bonusBowl)));
+    this.bonuses[9].push(bonusBowl);
   }
 };
 
@@ -75,5 +73,16 @@ Bowling.prototype.calculateStrikeBonus = function(){
   else if (this.spareOrStrike[this.spareOrStrike.length-2] === "strike") {
     this.bonuses[this.bonuses.length-2].push(this.game[this.game.length - 1][0]);
     this.bonuses[this.bonuses.length-2].push(this.game[this.game.length - 1][1]);
+  }
+};
+
+Bowling.prototype.calculateTotal = function () {
+  var merged = [].concat.apply([], this.game);
+  for (var i = 0; i < merged.length; i++) {
+    this.runningTotal += merged[i];
+  }
+  var bonusMerged = [].concat.apply([], this.bonuses);
+  for (var i = 0; i < bonusMerged.length; i++) {
+    this.runningTotal += bonusMerged[i];
   }
 };

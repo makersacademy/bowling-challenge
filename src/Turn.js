@@ -35,3 +35,13 @@ Turn.prototype.requiredThrows = function () {
   };
   return this.LENGTH_NORMAL
 }
+
+Turn.prototype.displayValue = function () {
+  if (this.isAStrike() === true){
+    return "X"
+  }
+  if (this.isASpare() === true){
+    return this._throws[0]+"/"
+  }
+  return this._throws[0]+', '+this._throws[1]
+}

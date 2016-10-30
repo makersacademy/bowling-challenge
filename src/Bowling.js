@@ -3,6 +3,7 @@ function Bowling () {
   this._turnLog = []
   this._turnRemainingPins = 10;
   this._turnThrows = 0;
+  this.totalScore = this.calculateTotalScore()
 };
 
 Bowling.prototype.recordThrow = function (pins) {

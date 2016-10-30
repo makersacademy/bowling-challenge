@@ -32,4 +32,10 @@ describe("Game", function() {
     expect(game.bonusCount).toBe(2);
   });
 
+  it("should add to the bonus count if the score was a spare", function () {
+    game.addScore(6);
+    game.addScore(4);
+    expect(game.bonusCount).toBe(1);
+  });
+
 });

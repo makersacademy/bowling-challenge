@@ -6,8 +6,14 @@ function Game() {
 
 Game.prototype.addScore = function(score) {
   this._checkFrame();
-  this._addBonus(score);
   this.frames[this.currentFrame].push(score);
+  this._addBonus(score);
+};
+
+Game.prototype.frameTotal = function() {
+  return this.frames[this.currentFrame].reduce(function(a, b) {
+    return a + b;
+  }, 0);
 };
 
 Game.prototype._checkFrame = function() {
@@ -24,5 +30,7 @@ Game.prototype._addFrame = function() {
 Game.prototype._addBonus = function(score) {
   if (score === 10) {
     this.bonusCount += 2;
+  } else if (this.frameTotal() === 10) {
+    this.bonusCount += 1;
   }
 };

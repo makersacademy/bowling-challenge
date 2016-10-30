@@ -84,5 +84,11 @@ describe("Game", function() {
       game.firstBowlPoints(10);
       expect(game.firstBowlPoints()).toEqual("Strike!")
     });
+
+    it("confirms a spare if all pins are knocked down on the second bowl", function() {
+      game.firstBowlPoints(8);
+      game.secondBowlPoints(2);
+      expect(game.secondBowlPoints()).toEqual("Spare!")
+    });
   });
 });

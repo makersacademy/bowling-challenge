@@ -53,14 +53,15 @@ Game.prototype.totalFramePoints = function () {
 
 Game.prototype.firstBowlPoints = function (number) {
     this.firstBowl.push(number);
-    if(this.firstBowl[0] === 10) 
+    if(this.firstBowl[0] === 10)
       return "Strike!";
 }
 
 Game.prototype.secondBowlPoints = function (number) {
     this.secondBowl.push(number);
+    if(this.secondBowl[0]) + (this.firstBowl[0]) === 10
+      return "Spare!";
 }
-
 
 Game.prototype.updateGamePoints = function (number) {
   this.gamePoints.push(number);

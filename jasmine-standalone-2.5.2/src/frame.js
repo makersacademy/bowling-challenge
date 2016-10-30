@@ -1,6 +1,7 @@
 'use strict';
 function Frame() {
     this.score1 = 0;
+    this.score2 = 0;
     this.totalPins;
   };
 
@@ -12,6 +13,12 @@ function Frame() {
     this.totalPins = 10 - this.score1;
     return this.totalPins;
   };
+
+  Frame.prototype.roll2 = function() {
+    var pins = this.totalPins;
+    this.score2 = Math.floor((Math.random() * pins) + 1);
+    return this.score2
+  }
 // };
 
 // Bowling.prototype.firstRoll = function () {

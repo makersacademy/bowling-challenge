@@ -17,9 +17,16 @@ describe('Frame', function () {
      });
 
       it('is able to asign the remaining pins to roll2', function () {
-        spyOn(frame, 'score1').and.returnValue(4);
+        // spyOn(frame, 'score1').and.returnValue(4);
         frame.roll1();
         frame.pinsLeft();
         expect(frame.totalPins).toBeLessThan(10);
+      });
+
+      it('is able to calculate a total score at the end of roll2', function () {
+        frame.roll1();
+        frame.pinsLeft();
+        frame.roll2();
+        expect(frame.totalPins).toBeGreaterThan(-1);
       });
    });

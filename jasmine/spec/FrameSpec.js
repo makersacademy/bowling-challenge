@@ -19,11 +19,18 @@ describe("Frame", function() {
       expect(spareFrame.totalPoints(frame)).toBe(13);
     });
 
-    it('calculates the total score for 2 strikes in a row', function() {
-      strike1 = new Frame ([10])
-      strike2 = new Frame ([10])
+    it('calculates the total score for 2 strikes in a row given another frame', function() {
+      strike1 = new Frame([10])
+      strike2 = new Frame([10])
       frame = new Frame([2,6])
       expect(strike1.totalPoints(strike2, frame)).toBe(22)
+    });
+
+    it('calculates the total score for 3 strikes in a row', function() {
+      strike1 = new Frame([10])
+      strike2 = new Frame([10])
+      strike3 = new Frame([10])
+      expect(strike1.totalPoints(strike2, strike3)).toBe(new Frame([10,10,10]).totalPoints())
     });
   });
 });

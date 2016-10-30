@@ -27,7 +27,7 @@ describe('Game', function() {
       spyOn(Math, 'random').and.returnValues(0.5, 0.5);
       frame.bowlFrame(game);
       game.determineOutcomeofFrame();
-      expect(game.spareOrStrike[game.spareOrStrike.length - 1]).toEqual('neither');
+      expect(game.spareOrStrike[game.spareOrStrike.length - 1]).toEqual("neither");
     });
   });
 
@@ -42,7 +42,7 @@ describe('Game', function() {
       }
       expect(game.bonuses[game.bonuses.length-2]).toEqual([5])
     });
-    it('adds both of the bowls scores from your next frame (if not a strike) as a bonus when a strike is scored', function(){
+    it("adds both of the bowls scores from your next frame (if not a strike) as a bonus when a strike is scored", function(){
       spyOn(Math, 'random').and.returnValues(1, 0.3, 0.2);
       for (var i = 0; i < 2; i++) {
         frame.bowlFrame(game);
@@ -52,7 +52,7 @@ describe('Game', function() {
       }
       expect(game.bonuses[game.bonuses.length-2]).toEqual([3, 1])
     });
-    it('adds bonuses from separate frames if two strikes are scored in a row', function(){
+    it("adds bonuses from separate frames if two strikes are scored in a row", function(){
       spyOn(Math, 'random').and.returnValues(1, 1, 1);
       for (var i = 0; i < 3; i++) {
         frame.bowlFrame(game);

@@ -25,6 +25,10 @@ Game.prototype.showFrame = function(frameNo){
   // console.log("Game.prototype.showFrame###|: " + this);
 };
 
+Game.prototype.currentRollNumber = function(){
+ return parseInt(this.frames.length);
+}
+
 
 // For verfication purposes only!!!
 Game.prototype.showAllFrames = function(){

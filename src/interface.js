@@ -26,6 +26,15 @@ $(document).ready(function(){
       roll = new Roll();
     }
     roll.addRoll(parseInt(pinsDown));
+    // alert(roll.roll.length);
+    if((roll.rollComplete === false)&&(roll.roll.length === 1)){
+      // alert(game.currentRollNumber());
+      var num = game.currentRollNumber();
+      var num1 = num+1;
+      // alert(num);
+      // alert('#edit-frame'+num1+'-1');
+      $('#edit-frame'+num1+'-1').val(roll.roll[0]);
+    }
     // roll.addRoll(parseInt(pinsDown));
     // console.log(roll.showRoll(1));
     if (roll.rollComplete){
@@ -39,9 +48,9 @@ $(document).ready(function(){
           if(game.frames[i-1].roll.length === 1){
             $('#edit-frame'+i+'-1').val(game.frames[i-1].roll[0]);
           } else if(game.frames[i-1].roll.length === 2){
-              $('#edit-frame'+i+'-1').val(game.frames[i-1].roll[0]);
-              $('#edit-frame'+i+'-2').val(game.frames[i-1].roll[1]);
-            }
+            $('#edit-frame'+i+'-1').val(game.frames[i-1].roll[0]);
+            $('#edit-frame'+i+'-2').val(game.frames[i-1].roll[1]);
+          }
           $('#edit-frame'+i+'-res').val(game.frames[i-1].score);      //game.frames[i].
           game.totalScore += game.frames[i-1].score
         }

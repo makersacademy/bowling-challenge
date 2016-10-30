@@ -144,8 +144,6 @@ describe('Game', function() {
       game.determineOutcomeofFrame();
       game.calculateBonuses();
       game.calculateTotal();
-      console.log(game._game)
-      console.log(game.bonuses)
       expect(game.runningTotal).toEqual(330);
     });
   });

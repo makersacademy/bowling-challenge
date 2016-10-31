@@ -20,6 +20,9 @@ var game;
     game.frame_ten = jasmine.createSpyObj('BowlingFrame',['first_ball', 'second_ball', 'current_ball', 'addScore'])
     ]
 
+    game.currentFrame = game.framesArray[game.currentFrameCounter];
+
+
   });
 
   describe("when starting a game", function(){

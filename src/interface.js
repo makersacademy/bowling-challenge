@@ -26,9 +26,10 @@ $(document).ready(function() {
 
     $('#roll').click(function(){
       var roll;
-      if (game.currentFrame() == null) {
+
+      if (game.currentFrame() === null) {
         roll = Math.floor(Math.random()*10);
-      } else if(game.currentFrame().roll1()) {
+      } else if(game.currentFrame().roll1() > 0) {
         roll = Math.floor(Math.random()*(10-game.currentFrame().roll1()))
       } else {
         roll = Math.floor(Math.random()*10);

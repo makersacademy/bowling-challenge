@@ -23,7 +23,7 @@ Frame.prototype.roll2 = function (){
 };
 
 Frame.prototype.total = function(){
-  if (this.roll1() && this.roll2()) {
+  if (this.roll1()>=0 && this.roll2()>=0) {
     return this.roll1() + this.roll2();
   } else if (this.roll1()) {
     return this.roll1();

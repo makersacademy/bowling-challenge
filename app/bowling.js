@@ -8,14 +8,28 @@ $("document").ready(function() {
   var game = {frame:[], total: 0};
   
   var randomAngle = function() {
-    var angle = Math.floor(Math.random() * 21) - 10;
-    $("#throwAngle").val(angle);
+    // var angle = Math.floor(Math.random() * 21) - 10;
+    // $("#throwAngle").val(angle);
   };
 
+  // var checkForBonus = function() {
+  //   if(frameNo > 2 && game.frame[frameNo - 2][
+
   var bonusForStrike = function() {
-    game.total += firstGo;
-    game.frame[frameNo - 2][0]['frameTotal'] += firstGo;
-    $("#frame" + (frameNo - 2) + " #ball3").text(game.frame[frameNo - 2][0]['frameTotal']); 
+    var strikeFrame = game.frame[frameNo - 2];
+    game.total += frameTotal;
+    strikeFrame[0]['frameTotal'] += frameTotal;
+    $("#frame" + (frameNo - 2) + " #ball3").text(strikeFrame[0]['frameTotal']); 
+  };
+
+  var bonusForSpareOrStrike = function(){
+    console.log('bonus for spare or strike');
+    var spareFrame = game.frame[frameNo - 1];
+    game.total += frameTotal;
+    spareFrame[0]['frameTotal'] += frameTotal;
+    if(spareFrame[1] != 10) {
+      $("#frame" + (frameNo - 1) + " #ball3").text(spareFrame[0]['frameTotal']);
+    }
   };
   
   randomAngle()
@@ -31,10 +45,15 @@ $("document").ready(function() {
         cellOne.text(firstGo);
         if(firstGo === 10) {
           second = 0;
-          game.frame[frameNo] = [{'frameTotal': firstGo}, firstGo, ];
+          frameTotal = firstGo
+          game.frame[frameNo] = [{'frameTotal': frameTotal}, firstGo, ];
           if(frameNo > 2 && game.frame[frameNo - 2][1] === 10) {
             bonusForStrike();
-          } 
+          }
+          if(frameNo > 1 && game.frame[frameNo - 1][0]['frameTotal'] === 10) {
+            console.log('bonus for spare or strike condition');
+            bonusForSpareOrStrike();
+          }
           game.total += firstGo;
           console.log(game);
           frameNo++;
@@ -47,10 +66,15 @@ $("document").ready(function() {
         secondGo = slider - firstGo < 1 ? 0 : slider - firstGo;
         frameTotal = firstGo + secondGo;
         cellTwo.text(secondGo);
-        cellFrameTot.text(frameTotal);
-        game.frame[frameNo] = [{'frameTotal':frameTotal}, firstGo, secondGo];
+        if(frameTotal < 10) {
+          cellFrameTot.text(frameTotal);
+        }
+        game.frame[frameNo] = [{'frameTotal': frameTotal}, firstGo, secondGo];
         if(frameNo > 2 && game.frame[frameNo - 2][1] === 10) {
           bonusForStrike();
+        }
+        if(frameNo > 1 && game.frame[frameNo - 1][0]['frameTotal'] === 10) {
+          bonusForSpareOrStrike();
         }
         game.total += frameTotal;
         console.log(game);

@@ -15,16 +15,11 @@ Game.prototype.bowl = function(pins) {
   }
 }
 
-// Game.prototype.checkForSpareBonus = function(rollOneScore) {
-//   // if(this.completedFrames.slice(-1)[0].isSpare) {
-//   //   this.completedFrames.slice(-1)[0].score = this.completedFrames.slice(-1)[0].pendingScore + rollOneScore;
-//   //   this.score += this.completedFrames.slice(-1)[0].score;
-//   // }
-// }
-
 Game.prototype._processFirstRoll = function(pins) {
-  this._startNewFrame();
-  // this.checkForSpareBonus(pins);
+  this.currentFrame = new Frame()
+  if(this.completedFrames.length > 0) {
+    this.checkForSpareBonus(pins);
+  }
   this.currentFrame.addRollOneScore(pins);
   this.isFirstRoll = false;
 }
@@ -35,8 +30,12 @@ Game.prototype._processSecondRoll = function(pins) {
   this._completeFrame();
 }
 
-Game.prototype._startNewFrame = function() {
-  this.currentFrame = new Frame()
+Game.prototype.checkForSpareBonus = function(pins) {
+  this.previousFrame = this.completedFrames.slice(-1)[0];
+  if(this.previousFrame.isSpare) {
+    this.previousFrame.score = this.previousFrame.pendingScore + pins;
+    this.score += this.previousFrame.score;
+  }
 }
 
 Game.prototype._completeFrame = function() {

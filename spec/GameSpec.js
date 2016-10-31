@@ -39,21 +39,22 @@ describe("Game", function () {
     });
   });
 
-  // describe("frame following a spare", function() {
-  //
-  //   beforeEach(function() {
-  //     game.startNewFrame();
-  //     game.bowl(5);
-  //     game.bowl(5);
-  //     game.completeFrame();
-  //     game.startNewFrame();
-  //     game.bowl(8);
-  //   });
-  //
-  //   it("calculates bonus and adds to previous frame's score", function(){
-  //     expect(game.completedFrames.slice(-1)[0].score).toEqual(18);
-  //   });
-  // });
+  describe("frame following a spare", function() {
+
+    beforeEach(function() {
+      game.bowl(5);
+      game.bowl(5);
+      game.bowl(8);
+    });
+
+    it("knows the previous frame is a Frame", function(){
+      expect(game.completedFrames.slice(-1)[0]).toEqual(jasmine.any(Frame));
+    });
+
+    it("calculates bonus and adds to previous frame's score", function(){
+      expect(game.completedFrames.slice(-1)[0].score).toEqual(18);
+    });
+  });
 
   describe("completed game", function() {
 

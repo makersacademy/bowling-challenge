@@ -112,7 +112,7 @@ describe('Game', function() {
     });
   });
 
-  describe('random feature tests with different strike combos (for my sanity)', function() {
+  describe('random score sanity checks', function() {
     it('calculates correct score with random strikes in a row', function() {
       game.bowl(4);
       game.bowl(4);
@@ -166,7 +166,6 @@ describe('Game', function() {
 
     it('knows the game is over', function() {
       for (var i = 1; i <= 10; i++) {
-        console.log("turn" + (i+1))
         game.bowl(3);
         game.bowl(5);
       }
@@ -189,7 +188,6 @@ describe('Game', function() {
 
     it('calculates correct score with strike', function() {
       for (var i = 1; i <= 9; i++) {
-        console.log("turn: " + i)
         game.bowl(4);
         game.bowl(4);
       }
@@ -201,7 +199,6 @@ describe('Game', function() {
 
     it('calculates correct score with 3 final strikes', function() {
       for (var i = 1; i <= 9; i++) {
-        console.log("turn: " + i)
         game.bowl(4);
         game.bowl(4);
       }
@@ -213,7 +210,6 @@ describe('Game', function() {
 
     it('calculates correct score with a strike then a spare', function() {
       for (var i = 1; i <= 9; i++) {
-        console.log("turn: " + i)
         game.bowl(4);
         game.bowl(4);
       }
@@ -224,4 +220,21 @@ describe('Game', function() {
     });
   });
 
+  describe('perfect game', function() {
+    it('correctly calculates 300 for perfect game', function() {
+      for (var i = 1; i <= 12; i++) {
+        game.bowl(10);
+      }
+      expect(game.calculateScore()).toEqual(300);
+    });
+  });
+
+  describe('gutter game', function() {
+    it('correctly calculates 0 for gutter game', function() {
+      for (var i = 1; i <= 10; i++) {
+        game.bowl(0);
+      }
+      expect(game.calculateScore()).toEqual(0);
+    });
+  });
 });

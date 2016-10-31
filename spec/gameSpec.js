@@ -3,7 +3,6 @@
 describe("Game", function() {
   //var Game = require('../src/game.js');
     var game;
-
     beforeEach(function() {
     game = new Game();
   });
@@ -23,7 +22,6 @@ describe("Game", function() {
   });
 
   describe("Game End", function() {
-
     it ("ends the game after 10 frames", function() {
       game.currentFrame;
       for (var i = 0; i < 10; i++) {
@@ -34,7 +32,6 @@ describe("Game", function() {
   });
 
   describe("Game Frames", function() {
-
     it('confirms each play function plays a frame', function(){
       game.playFrame();
       expect(game.currentFrame).toEqual(1);
@@ -55,7 +52,6 @@ describe("Game", function() {
   });
 
   describe("Game Scores", function() {
-
     it("keeps track of aggregate frame points", function () {
       game.frameScore(2);
       game.frameScore(3);
@@ -85,30 +81,17 @@ describe("Game", function() {
   });
 
   describe("Strike", function() {
-
     it("confirms a strike if all 10 pins are knocked down on the first bowl", function() {
       game.firstBowlPoints(10);
       expect(game.firstBowlPoints()).toEqual("Strike!")
     });
-
-    // it("does not confirm a strike if less than 10 pins are knocked down on the first bowl", function() {
-    //   game.firstBowlPoints(6);
-    //   expect(game.firstBowlPoints()).toEqual(6);
-    // });
   });
 
   describe("Spare", function() {
-
     it("confirms a spare if all pins are knocked down on the second bowl", function() {
       game.firstBowlPoints(8);
       game.secondBowlPoints(2);
       expect(game.secondBowlPoints()).toEqual("Spare!")
     });
-
-    // it("does not confirm a spare if pins remain at the end", function() {
-    //   game.firstBowlPoints(7);
-    //   game.secondBowlPoints(1);
-    //   expect(game.secondBowlPoints()).toEqual(1)
-    // });
   });
 });

@@ -5,10 +5,14 @@ function Game() {
 }
 
 Game.prototype.addScore = function(score) {
-  this._checkFrame();
-  this.frames[this.currentFrame].push(score);
-  this._addBonus(score);
-  this._checkBonus(score);
+  if (this.currentFrame + 1 === 10) {
+    this._tenthFrame(score);
+  } else {
+    this._checkFrame();
+    this.frames[this.currentFrame].push(score);
+    this._addBonus(score);
+    this._checkBonus(score);
+  }
 };
 
 Game.prototype.frameTotal = function() {
@@ -25,6 +29,13 @@ Game.prototype.total = function() {
     }, 0);
   }
   return total;
+};
+
+Game.prototype._tenthFrame = function(score) {
+  if ((this.frames[this.currentFrame].length != 2 || this.bonusCount !== 0) && this.frames[this.currentFrame].length != 3) {
+    this.frames[this.currentFrame].push(score);
+    this._checkBonus(score);
+  }
 };
 
 Game.prototype._checkFrame = function() {

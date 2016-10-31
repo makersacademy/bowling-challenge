@@ -51,4 +51,53 @@ describe("Game", function() {
     expect(game.total()).toEqual(24);
   });
 
+  it("doesn't add anymore frames after the 10th frame", function() {
+    for (var i = 0; i < 20; i++) {
+      game.addScore(3);
+    }
+    game.addScore(3);
+    expect(game.frames.length).toEqual(10);
+  });
+
+  it("doesn't allow more than 3 scores in the 10th frame", function() {
+    for (var i = 0; i < 18; i++) {
+      game.addScore(3);
+    }
+    game.addScore(10);
+    game.addScore(10);
+    game.addScore(10);
+    game.addScore(10);
+    expect(game.frames[9].length).toEqual(3);
+  });
+
+  it("allows extra throws when scoring a strike on the 10th frame", function() {
+    for (var i = 0; i < 18; i++) {
+      game.addScore(3);
+    }
+    game.addScore(10);
+    game.addScore(4);
+    game.addScore(3);
+    expect(game.frames[9].length).toEqual(3);
+  });
+
+  it("allows an extra throw when scoring a spare on the 10th frame", function() {
+    for (var i = 0; i < 18; i++) {
+      game.addScore(3);
+    }
+    game.addScore(4);
+    game.addScore(6);
+    game.addScore(3);
+    expect(game.frames[9].length).toEqual(3);
+  });
+
+  it("allows a triple strike in the 10th frame", function() {
+    for (var i = 0; i < 18; i++) {
+      game.addScore(3);
+    }
+    game.addScore(10);
+    game.addScore(10);
+    game.addScore(10);
+    expect(game.frames[9].length).toEqual(3);
+  });
+
 });

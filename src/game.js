@@ -1,4 +1,5 @@
-'use strict';
+(function(){'use strict';}());
+
 function Game(){
   var frames;
   this.frames = [];
@@ -6,7 +7,7 @@ function Game(){
   this.gameOver = false;
   var totalScore;
   this.totalScore = 0;
-};
+}
 
 Game.prototype.newGame = function(){
   this.frames = [];
@@ -43,7 +44,7 @@ function Roll(){
   // var rollComplete;
   this.lookAhead = 0;
   this.score = 0;
-};
+}
 
 Roll.prototype.addRoll = function(rollScore){
   this.checkForRollErrors(rollScore);

@@ -1,10 +1,12 @@
+(function(){'use strict';}());
+
 $(document).ready(function(){
   var game = new Game();
   var roll = new Roll();
   disableSpareButton();
 
   $("[type=button]").click(function(){
-    rollBall(this['name']);
+    rollBall(this.name);
   });
 
   function rollBall(pinsDown){

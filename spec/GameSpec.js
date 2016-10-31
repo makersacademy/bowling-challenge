@@ -1,4 +1,4 @@
-'use strict';
+(function(){'use strict';}());
 
 describe("Roll",function(){
   var roll, roll2;

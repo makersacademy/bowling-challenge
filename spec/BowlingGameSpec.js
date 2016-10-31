@@ -35,7 +35,14 @@ describe( 'BowlingGame', function() {
     });
 
     describe('Roll Two', function() {
+      it('cannot be recorded without a rollOne', function() {
+          expect(function() {
+            game.rollTwo(1);
+          }).toThrowError('enter roll one before roll two');
+      });
+
       it('user cannot enter number > 10', function() {
+          game.rollOne(1);
           var toomuchpins;
           toomuchpins = game.NUMBER_OF_PINS + 1;
           expect(function() {
@@ -55,7 +62,7 @@ describe( 'BowlingGame', function() {
           expect(game.frameNumber()).toEqual(2);
       });
 
-      it('# of pins in roll one + # of pins in roll <= 10', function() {
+      it('# of pins in roll one + # of pins in roll two <= 10', function() {
           game.rollOne(1);
           expect(function() {
               game.rollTwo(game.NUMBER_OF_PINS);

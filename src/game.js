@@ -44,7 +44,7 @@ Game.prototype.addFinalFrameBonuses = function(bonusBowl){
     this.bonuses[9].push(bonusBowl[i]);
   }
   if (this.spareOrStrike[8] === "strike"){
-    this.bonuses[8].push(bonusBowl[0])  
+    this.bonuses[8].push(bonusBowl[0])
   }
 };
 
@@ -76,4 +76,24 @@ Game.prototype.calculateTotal = function () {
   for (var i = 0; i < bonusMerged.length; i++) {
     this.runningTotal += bonusMerged[i];
   }
+};
+
+Game.prototype.scoreEntireGame = function(){
+  var game = new Game()
+  for (var i = 0; i < 10; i++){
+    var frame = new Frame()
+    frame.bowlFrame(game);
+    frame.resetFrame();
+    game.determineOutcomeofFrame();
+    game.calculateBonuses();
+    console.log("Frame:")
+    console.log(i + 1)
+    console.log("Frame outcome:")
+    console.log(game._game[game._game.length - 1])
+    console.log(game.spareOrStrike[game.spareOrStrike.length - 1])
+  }
+    game.calculateTotal();
+    console.log("Final total:");
+    console.log(game.runningTotal);
+    console.log(game.bonuses);
 };

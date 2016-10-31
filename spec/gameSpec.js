@@ -101,50 +101,37 @@ describe('Game', function() {
   });
 
   describe("Perfect game", function(){
-    it("accurately scores a perfect game" function() {
+    it("accurately scores a perfect game", function() {
       spyOn(Math, 'random').and.returnValues(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
-      frame.bowlFrame(game);
-      frame.resetFrame();
-      game.determineOutcomeofFrame();
-      game.calculateBonuses();
-      frame.bowlFrame(game);
-      frame.resetFrame();
-      game.determineOutcomeofFrame();
-      game.calculateBonuses();
-      frame.bowlFrame(game);
-      frame.resetFrame();
-      game.determineOutcomeofFrame();
-      game.calculateBonuses();
-      frame.bowlFrame(game);
-      frame.resetFrame();
-      game.determineOutcomeofFrame();
-      game.calculateBonuses();
-      frame.bowlFrame(game);
-      frame.resetFrame();
-      game.determineOutcomeofFrame();
-      game.calculateBonuses();
-      frame.bowlFrame(game);
-      frame.resetFrame();
-      game.determineOutcomeofFrame();
-      game.calculateBonuses();
-      frame.bowlFrame(game);
-      frame.resetFrame();
-      game.determineOutcomeofFrame();
-      game.calculateBonuses();
-      frame.bowlFrame(game);
-      frame.resetFrame();
-      game.determineOutcomeofFrame();
-      game.calculateBonuses();
-      frame.bowlFrame(game);
-      frame.resetFrame();
-      game.determineOutcomeofFrame();
-      game.calculateBonuses();
-      frame.bowlFrame(game);
-      frame.resetFrame();
-      game.determineOutcomeofFrame();
-      game.calculateBonuses();
+      for (var i = 0; i < 10; i++) {
+        frame.bowlFrame(game);
+        frame.resetFrame();
+        game.determineOutcomeofFrame();
+        game.calculateBonuses();
+      }
       game.calculateTotal();
       expect(game.runningTotal).toEqual(330);
+    });
+  });
+
+  describe("Gutter game", function(){
+    it("accurately scores a gutter gamegame", function() {
+      spyOn(Math, 'random').and.returnValues(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+      for (var i = 0; i < 10; i++) {
+        frame.bowlFrame(game);
+        frame.resetFrame();
+        game.determineOutcomeofFrame();
+        game.calculateBonuses();
+      }
+      game.calculateTotal();
+      expect(game.runningTotal).toEqual(0);
+    });
+  });
+
+  describe("Full game", function(){
+    it("bowls an entire game annd prints the scores to the console", function() {
+      game.scoreEntireGame();
+      expect(game.runningTotal).toEqual(0);
     });
   });
 

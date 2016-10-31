@@ -24,6 +24,7 @@ $(document).ready(function(){
       enableSpareButton(roll.roll[0]);
     }
     if (roll.rollComplete){
+      $("[id=var1-9]").prop('disabled',true);
       game.totalScore = 0;
       game.addFrame(roll);
       updateScoreCard();
@@ -85,11 +86,17 @@ $(document).ready(function(){
     }
 
     function disableButtons(value){
-
       for(var i=(10-value);i<=10;i++){
         var string = "[name="+i+"]";
         $(string).prop('disabled',true);
         $(string).animate({opacity:0.2});
+      }
+    }
+
+    function disableButtonsGameOver(){
+      for(var i=0;i<=10;i++){
+        var string = "[name="+i+"]";
+        $(string).prop('disabled',true);
       }
     }
 
@@ -108,7 +115,8 @@ $(document).ready(function(){
     }
 
     function gameOver(){
-      disableButtons(10);
+      disableButtonsGameOver();
+      // disableButtons(10);
       disableSpareButton();
       if(game.totalScore === 0){
         alert("COMMISERATIONS!!! You just completed a gutter game.")

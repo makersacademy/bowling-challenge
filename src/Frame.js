@@ -1,6 +1,6 @@
 function Frame() {
   this._rolls = [];
-};
+}
 
 Frame.prototype.isComplete = function() {
   return this._rolls.length === 2 || this.roll1() === 10;

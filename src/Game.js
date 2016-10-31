@@ -2,7 +2,7 @@ function Game() {
   this._frames = [];
   this._currentFrame = null;
   this.MAX_FRAMES = 10;
-};
+}
 
 Game.prototype.score = function() {
   this._score = 0;

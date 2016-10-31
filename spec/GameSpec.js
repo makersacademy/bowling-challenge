@@ -23,21 +23,11 @@ describe("Game", function () {
     });
   });
 
-  describe("startNewFrame", function () {
-
-    it('starts a new frame', function() {
-      game.startNewFrame();
-      expect(game.currentFrame).toEqual(jasmine.any(Frame));
-    });
-  });
-
   describe("first completed frame", function () {
 
     beforeEach(function() {
-      game.startNewFrame();
       game.bowl(4);
       game.bowl(5);
-      game.completeFrame();
     });
 
     it('adds the score of a completed frame to the game score', function() {
@@ -46,11 +36,6 @@ describe("Game", function () {
 
     it('adds the completed frame to the completed frames array', function() {
       expect(game.completedFrames.length).toEqual(1);
-    });
-
-    it('starts a new frame', function() {
-      game.startNewFrame();
-      expect(game.currentFrame.rollOneScore).toBeFalsy();
     });
   });
 
@@ -74,10 +59,8 @@ describe("Game", function () {
 
     beforeEach(function() {
       for (var i = 1; i < 11; i++) {
-        game.startNewFrame();
         game.bowl(4);
         game.bowl(5);
-        game.completeFrame();
       }
     });
 
@@ -94,10 +77,8 @@ describe("Game", function () {
 
     beforeEach(function() {
       for (var i = 1; i < 11; i++) {
-        game.startNewFrame();
         game.bowl(0);
         game.bowl(0);
-        game.completeFrame();
       }
     });
 

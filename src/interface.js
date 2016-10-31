@@ -28,12 +28,14 @@ $(document).ready(function(){
       game.addFrame(roll);
       updateScoreCard();
       updateTotal();
-      enableButtons();
-      disableSpareButton();
-      // setTimeout(function() {
-      //   isGameOver();
-      // }, 1000);
-
+      setTimeout(function() {
+        if (isGameOver()){
+          gameOver();
+        } else {
+          enableButtons();
+          disableSpareButton();
+        }
+      }, 1000);
     }
   }
 
@@ -101,14 +103,13 @@ $(document).ready(function(){
 
 // ################################################### Need to call this!
     function isGameOver(){
-      if(game.frames.length === 10){
-        disableButtons(10);
-        disableSpareButton();
-        gameOver();
-      }
+      // alert(game.frames.length);
+      return (game.frames.length === 10);
     }
 
     function gameOver(){
+      disableButtons(10);
+      disableSpareButton();
       if(game.totalScore === 0){
         alert("COMMISERATIONS!!! You just completed a gutter game.")
       } else if(game.totalScore === 300){

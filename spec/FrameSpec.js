@@ -17,10 +17,23 @@ describe("Frame", function(){
     });
   });
 
-  it('knows the total score', function(){
-    frame.addRoll(5);
-    frame.addRoll(3);
-    expect(frame.total()).toEqual(8);
+  describe('total', function(){
+    it('knows the total score of two rolls', function(){
+      frame.addRoll(5);
+      frame.addRoll(3);
+      expect(frame.total()).toEqual(8);
+    });
+
+    it('knows the total score with one roll', function(){
+      frame.addRoll(5);
+      expect(frame.total()).toEqual(5);
+    });
+
+    it('returns 0 when no rolls', function(){
+      expect(frame.total()).toEqual(0);
+    });
+
+
   });
 
   it('knows the first roll', function(){

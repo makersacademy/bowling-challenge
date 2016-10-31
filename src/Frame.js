@@ -7,6 +7,7 @@ var Frame = function () {
   this.rollsTotal = 0;
   this.roll1 = 0;
   this.roll2 = 0;
+  this.bonusRoll = 0;
 }
 
 Frame.prototype.recordRolls = function (pins) {

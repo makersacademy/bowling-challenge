@@ -24,6 +24,10 @@ describe('Frame', function () {
     it('a second roll value of 0', function () {
       expect(frame.roll2).toEqual(0);
     });
+
+    it('a bonus roll value of 0', function () {
+      expect(frame.bonusRoll).toEqual(0);
+    });
   });
 
   describe('increments', function () {

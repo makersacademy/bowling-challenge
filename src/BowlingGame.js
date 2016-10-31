@@ -11,7 +11,18 @@ var BowlingGame = function () {
 BowlingGame.prototype.addFrame = function (frame) {
   if (this._addFrameLimit() === true) {
     return 'Game is over';
-  } else {
+  } else if (this.noOfFrames.length === 9) {
+    this._incrementNoOfFrames(frame);
+    this._incrementScore();
+    if (this._currentFrame().roll1 === 10) {
+      this.score += ((this._currentFrame().roll2) + (this._currentFrame().bonusRoll));
+      // if (this._lastFrameWasStrike() === true) {
+      //   this.score += ((this._currentFrame().roll1) + (this._currentFrame().roll2));
+      // }
+    } else if ((this._currentFrame().rollsTotal === 10) && (this._currentFrame().roll1 != 10)) {
+      this.score += (this._currentFrame().bonusRoll);
+    }
+  }  else {
     this._incrementNoOfFrames(frame);
     this._incrementScore();
   }

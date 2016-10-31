@@ -70,8 +70,21 @@ describe("Game", function () {
     it("calculates bonus and adds to previous frame's score", function(){
       expect(game.completedFrames.slice(-1)[0].score).toEqual(18);
     });
-  });
 
+    it("doesn't add the score from this frame to the game score just yet", function(){
+      expect(game.score).toEqual(18);
+    });
+
+    it("knows the current frame is complete after the second roll", function() {
+      game.bowl(1);
+      expect(game.currentFrame.isComplete).toBe(true);
+    })
+
+    it("accurately calculates the game score including the second frame", function() {
+      game.bowl(1);
+      expect(game.score).toEqual(27);
+    })
+  });
 
   describe("frame which is a strike", function() {
 
@@ -106,6 +119,10 @@ describe("Game", function () {
 
     it("calculates bonus and adds to previous frame's score", function(){
       expect(game.completedFrames.slice(-2)[0].score).toEqual(19);
+    });
+
+    it("accurately calculates the game score including the second frame", function() {
+      expect(game.score).toEqual(28);
     });
   });
 

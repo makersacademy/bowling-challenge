@@ -24,6 +24,7 @@ Approach:
 - I also played with http://www.bowlinggenius.com/ to model different scenarios and better understand the required logic
 - Started to write and pass tests for the basic game, i.e. with no strikes or spares. Created Frame and Game objects with their own properties.
 - Wrote a basic HTML interface so I could input the scores and see the results appear (felt that this would help with understanding what was happening / de-bugging later on)
+- Didn't integrate the interface, but instead carried on with the logic, getting basic strike and spare bonuses to calculate correctly.
 
 User stories:
 -----

@@ -44,6 +44,7 @@ $(document).ready(function(){
       for(var i=1;i<=game.frames.length;i++){
           if(game.frames[i-1].roll.length === 1){
             $('#edit-frame'+i+'-1').val(game.frames[i-1].roll[0]);
+            amendScoreRetrospectivelyForStrike(i);
           } else if(game.frames[i-1].roll.length === 2){
             $('#edit-frame'+i+'-1').val(game.frames[i-1].roll[0]);
             $('#edit-frame'+i+'-2').val(game.frames[i-1].roll[1]);
@@ -51,6 +52,25 @@ $(document).ready(function(){
           $('#edit-frame'+i+'-res').val(game.frames[i-1].score);
           game.totalScore += game.frames[i-1].score
         }
+      }
+
+      function amendScoreRetrospectivelyForStrike(i){
+        // i=i-1;
+        // var oneFrameAhead = [], twoFramesAhead = [], combined = [];
+        // game.frames[i].strikeScore = 0;
+        // game.frames[i].score = 0;
+        // if((game.frames.length - i-1) >= 2){
+        //   oneFrameAhead = game.frames[i+1].roll;
+        //   twoFramesAhead = game.frames[i+2].roll;
+        //   combined = oneFrameAhead.concat(twoFramesAhead);
+        //   alert(combined);
+        //   game.frames[i].strikeScore = combined[0]+combined[1];
+        //   game.frames[i].score = game.frames[i].strikeScore;
+        // } else if((game.frames.length - i-1) === 1){
+        //   oneFrameAhead = game.frames[i+1].roll;
+        //   game.frames[i].strikeScore = oneFrameAhead[0];
+        //   game.frames[i].score = game.frames[i].strikeScore;
+        // }
       }
 
       function updateTotal(){
@@ -108,7 +128,6 @@ $(document).ready(function(){
       }
     }
 
-// ################################################### Need to call this!
     function isGameOver(){
       // alert(game.frames.length);
       return (game.frames.length === 10);

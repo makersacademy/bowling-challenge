@@ -46,11 +46,7 @@ describe("Game", function () {
       game.bowl(3);
     });
 
-    it("knows the current frame is complete after the first roll", function(){
-      expect(game.currentFrame.isComplete).toBe(true);
-    });
-
-    it("knows the current frame is a strike", function() {
+    it("knows the current frame is a spare", function() {
       expect(game.currentFrame.isSpare).toBe(true);
     })
   })

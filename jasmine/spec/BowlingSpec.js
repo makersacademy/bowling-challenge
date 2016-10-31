@@ -3,54 +3,59 @@
 describe("Game", function () {
   var game;
 
-  beforeEach(function () {
+  beforeEach( function() {
     game = new Game();
   });
 
-  it("can get index for the latest roll score", function () {
-    for (var i = 0; i < 3; i++) { game.bowl(3) }
-    expect(game.getIndex()).toEqual(2);
-  });
+it("has 10 frames or 20 rolls typically", function () {
+   expect(game.rollsLeft).toEqual(20);
+   // expect 11th frame to throw error / message
+});
 
-  it("can record score for each roll", function () {
-    game.bowl(8);
-    expect(game._rollScore).toEqual([8]);
-  });
+it("records score for each roll", function () {
+  game.bowl(4);
+  expect(game.roll).toEqual([4]);
+});
 
-  it("can record score for each frame", function () {
-    game.bowl(8);
-    game.bowl(1);
-    game.calFrameScore();
-    expect(game._frameScore).toEqual([9]);
-  });
+it("knows the number of rolls left for each game", function () {
+  game.bowl(4);
+  expect(game.rollsLeft).toEqual(19);
+});
 
-  it("can check remaining pins for each frame", function () {
-    game.bowl(2);
-    expect(game._pins).toEqual(8);
-  });
+it("has 10 pins per frame", function () {
+  game.bowl(4);
+  expect(game.pins).toEqual(6);
+});
 
-  it("knows a strike", function () {
-    game.bowl(10);
-    expect(game.isStrike()).toBe(true);
-  });
+it("updates score after a frame", function () {
+  game.bowl(4);
+  game.bowl(3);
+  expect(game.score).toEqual(7);
+});
 
-  it("knows a spare", function () {
-    game.bowl(8);
-    game.bowl(2);
-    expect(game.isSpare()).toBe(true);
-  });
+it("updates score without bonus", function () {
+  game.bowl(4);
+  game.bowl(5);
+  game.bowl(3);
+  game.bowl(3);
+  expect(game.score).toEqual(15);
+});
 
-  it("allow 10 pins for each frame", function () {
-    game.bowl(3);
-    expect(function () { game.bowl(8);}).toThrow("You can't hit more than 10 pins in each frame");
-  });
+it("add bonus when strike", function() {
+  game.bowl(10);
+  game.bowl(4);
+  game.bowl(4);
+  expect(game.score).toEqual(18);
+});
 
-  it("resets pins after every frame", function () {
-    game.bowl(2);
-    game.bowl(1);
-    expect(game._pins).toEqual(10);
-  });
+it("add bonus when spare", function() {
+  game.bowl(9);
+  game.bowl(1);
+  game.bowl(4);
+  game.bowl(2);
+  expect(game.score).toEqual(14);
+});
 
-
+//add tenth frame 
 
 });

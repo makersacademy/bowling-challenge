@@ -1,47 +1,65 @@
 "use strict";
 
-function Game(){
-  this._rollScore = []
-  this._frameScore = []
-  this._pins = 10
+function Game () {
+  this.roll = []
+  this.score = 0
+  this.pins = 10
+  this.rollsLeft = 20
+  this.idx = 0
 }
 
 Game.prototype.bowl = function (pins) {
-    if (pins > this._pins) {
-      throw "You can't hit more than 10 pins in each frame"
-    }
-    this._rollScore.push(pins);
-    this._rollScore.length % 2 === 0 ? this.resetPins() : this.deductPins(pins);
+  this.updateRoll(pins);
+  this.checkPins(pins);
+  this.rollsLeft -= 1;
+  this.frameIndex();
 };
 
-Game.prototype.deductPins = function (pins) {
-    this._pins -= pins;
+Game.prototype.updateRoll = function (pins) {
+  this.roll.push(pins);
+  if (pins === 10 && this.roll.length % 2 !== 0){
+     this.roll.push(0);
+   }
 };
 
-Game.prototype.resetPins = function() {
-  this._pins = 10;
+Game.prototype.checkPins = function (pins) {
+  this.roll.length % 2 === 0 ? this.pins === 10 : this.pins -= pins;
+}
+
+Game.prototype.frameIndex = function () {
+  if (this.roll.length === 2) {
+    this.frameOne();
+  }
+  if (this.roll.length > 2 && this.roll.length < 18 && this.roll.length % 2 === 0) {
+    this.frameTypical();
+  }
+  // } else {
+  //   this.frameTen();
+  // }
 };
 
-Game.prototype.getIndex = function () {
-  return this._rollScore.length - 1
+Game.prototype.frameOne = function () {
+  var index = this.idx;
+  if (this.roll[index] + this.roll[index + 1] < 10) {
+    this.score += this.roll[index] + this.roll[index + 1];
+    this.idx += 2;
+  } else {
+    this.idx += 2;
+  }
 };
 
-Game.prototype.calFrameScore = function (index = this.getIndex()) {
-  var score = this._rollScore[index] + this._rollScore[index - 1];
-  this._frameScore.push(score);
-};
+Game.prototype.frameTypical = function () {
+  var index = this.idx;
+  if (this.roll[index - 2] + this.roll[index - 1] < 10) {
+    this.score += this.roll[index] + this.roll[index + 1];
+    this.idx += 2;
+  }
+  if (this.roll[index - 2] === 10) {
+    this.score += 10 + this.roll[index] + this.roll[index + 1];
+    this.idx += 2;
+  }
 
-Game.prototype.checkPins = function (index = this.getIndex()) {
-  this._pins -= this._rollScore[index];
-};
-
-Game.prototype.isStrike = function (index = this.getIndex()) {
-  return this._rollScore[index] === 10;
-};
-
-
-Game.prototype.isSpare = function () {
-  this.calFrameScore();
-  var index = this._frameScore.length - 1;
-  return this._frameScore[index] === 10;
+  if (this.roll[index - 2] + this.roll[index - 1] === 10 && this.roll[index - 2] !== 10) {
+    this.score += 10 + this.roll[index];
+  }
 };

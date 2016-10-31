@@ -35,8 +35,8 @@ describe("Game", function () {
 
     beforeEach(function() {
       game.startNewFrame();
-      game.currentFrame.addRollOneScore(4);
-      game.currentFrame.addRollTwoScore(5);
+      game.bowl(4);
+      game.bowl(5);
       game.completeFrame();
     });
 
@@ -54,13 +54,29 @@ describe("Game", function () {
     });
   });
 
+  // describe("frame following a spare", function() {
+  //
+  //   beforeEach(function() {
+  //     game.startNewFrame();
+  //     game.bowl(5);
+  //     game.bowl(5);
+  //     game.completeFrame();
+  //     game.startNewFrame();
+  //     game.bowl(8);
+  //   });
+  //
+  //   it("calculates bonus and adds to previous frame's score", function(){
+  //     expect(game.completedFrames.slice(-1)[0].score).toEqual(18);
+  //   });
+  // });
+
   describe("completed game", function() {
 
     beforeEach(function() {
       for (var i = 1; i < 11; i++) {
         game.startNewFrame();
-        game.currentFrame.addRollOneScore(4);
-        game.currentFrame.addRollTwoScore(5);
+        game.bowl(4);
+        game.bowl(5);
         game.completeFrame();
       }
     });
@@ -71,6 +87,26 @@ describe("Game", function () {
 
     it('calculates total score', function() {
       expect(game.score).toEqual(90);
+    });
+  });
+
+  describe("gutter game", function() {
+
+    beforeEach(function() {
+      for (var i = 1; i < 11; i++) {
+        game.startNewFrame();
+        game.bowl(0);
+        game.bowl(0);
+        game.completeFrame();
+      }
+    });
+
+    it('expects a zero score', function() {
+      expect(game.score).toEqual(0);
+    });
+
+    it('marks a zero score game as a Gutter Game', function() {
+      expect(game.isGutterGame).toBe(true);
     });
   });
 });

@@ -1,4 +1,3 @@
-
 Bowling Challenge
 =================
 Our week 5 weekend challenge was to produce a scoring calculator for a bowling game for one player (in JavaScript).
@@ -62,7 +61,7 @@ so that I can enjoy the full glory / humiliation.
 ### Spares
 ````
 As a player on my second roll,
-knocking down all of the remaining pins should be marked as a spare (with a /),
+knocking down all of the remaining pins should be marked as a spare,
 so that I can revel in the glory.
 
 As a player who just achieved a spare,
@@ -76,7 +75,7 @@ so that I can benefit from the bonus.
 ### Strikes
 ````
 As a player, if I knock down all ten pins on the first roll,
-the frame should be marked as a strike (with an X),
+the frame should be marked as a strike,
 so that I can revel in the glory.
 
 As a player who just achieved a strike,

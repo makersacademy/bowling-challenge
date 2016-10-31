@@ -5,3 +5,5 @@ spec/*
 **/*.html
 *.LICENSE
 user_stories.md
+src/jquery.js
+src/interface.js

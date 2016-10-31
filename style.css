@@ -1,0 +1,24 @@
+html, body {
+  text-align: center;
+}
+#main_table {
+  margin: 0 auto;
+}
+.frame {
+  border: 1px solid #ccc;
+  padding: 0px;
+}
+.total_frame {
+  border: 1px solid #ccc;
+  padding: 0px;
+}
+.frame td {
+  padding: 0 5px;
+}
+
+textarea {
+  resize: none;
+  text-align: inherit;
+  border: none;
+  background-color: transparent;
+}

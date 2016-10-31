@@ -10,7 +10,7 @@ describe("Game", function () {
 
   describe("default status", function () {
 
-    it('has zero completed frames', function() {
+    it('has no completed frames', function() {
       expect(game.completedFrames.length).toEqual(0);
     });
 
@@ -39,6 +39,22 @@ describe("Game", function () {
     });
   });
 
+  describe("frame which is a spare", function() {
+
+    beforeEach(function() {
+      game.bowl(7);
+      game.bowl(3);
+    });
+
+    it("knows the current frame is complete after the first roll", function(){
+      expect(game.currentFrame.isComplete).toBe(true);
+    });
+
+    it("knows the current frame is a strike", function() {
+      expect(game.currentFrame.isSpare).toBe(true);
+    })
+  })
+
   describe("frame following a spare", function() {
 
     beforeEach(function() {
@@ -51,8 +67,49 @@ describe("Game", function () {
       expect(game.completedFrames.slice(-1)[0]).toEqual(jasmine.any(Frame));
     });
 
+    it("knows the previous frame was a spare", function(){
+      expect(game.completedFrames.slice(-1)[0].isSpare).toBe(true);
+    });
+
     it("calculates bonus and adds to previous frame's score", function(){
       expect(game.completedFrames.slice(-1)[0].score).toEqual(18);
+    });
+  });
+
+
+  describe("frame which is a strike", function() {
+
+    beforeEach(function() {
+      game.bowl(10);
+    });
+
+    it("knows the current frame is complete after the first roll", function(){
+      expect(game.currentFrame.isComplete).toBe(true);
+    });
+
+    it("knows the current frame is a strike", function() {
+      expect(game.currentFrame.isStrike).toBe(true);
+    })
+  })
+
+  describe("frame following a strike", function() {
+
+    beforeEach(function() {
+      game.bowl(10);
+      game.bowl(4);
+      game.bowl(5);
+    });
+
+    it("knows the previous frame is a Frame", function(){
+      expect(game.completedFrames.slice(-1)[0]).toEqual(jasmine.any(Frame));
+    });
+
+    it("knows the previous frame was a strike", function(){
+      expect(game.completedFrames.slice(-2)[0].isStrike).toBe(true);
+    });
+
+    it("calculates bonus and adds to previous frame's score", function(){
+      expect(game.completedFrames.slice(-2)[0].score).toEqual(19);
     });
   });
 
@@ -65,7 +122,7 @@ describe("Game", function () {
       }
     });
 
-    it('after ten frames have finished', function() {
+    it('is over after ten frames have been completed', function() {
       expect(game.isOver).toEqual(true);
     });
 

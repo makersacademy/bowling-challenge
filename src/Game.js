@@ -18,24 +18,48 @@ Game.prototype.bowl = function(pins) {
 Game.prototype._processFirstRoll = function(pins) {
   this.currentFrame = new Frame()
   if(this.completedFrames.length > 0) {
-    this.checkForSpareBonus(pins);
+    this._checkForSpareBonus(pins);
   }
   this.currentFrame.addRollOneScore(pins);
-  this.isFirstRoll = false;
+  this._completeFrameIfStrike();
 }
 
 Game.prototype._processSecondRoll = function(pins) {
   this.currentFrame.addRollTwoScore(pins);
+  if(this.completedFrames.length > 0) {
+    this._checkForStrikeBonus();
+  }
   this.isFirstRoll = true;
   this._completeFrame();
 }
 
-Game.prototype.checkForSpareBonus = function(pins) {
-  this.previousFrame = this.completedFrames.slice(-1)[0];
+Game.prototype._checkForSpareBonus = function(pins) {
+  this._getPreviousFrame();
   if(this.previousFrame.isSpare) {
     this.previousFrame.score = this.previousFrame.pendingScore + pins;
     this.score += this.previousFrame.score;
   }
+}
+
+Game.prototype._completeFrameIfStrike = function() {
+  if(this.currentFrame.isComplete) {
+    this._completeFrame();
+  }
+  else {
+    this.isFirstRoll = false;
+  }
+}
+
+Game.prototype._checkForStrikeBonus = function() {
+  this._getPreviousFrame();
+  if(this.previousFrame.isStrike) {
+    this.previousFrame.score = this.previousFrame.pendingScore + this.currentFrame.score;
+    this.score += this.previousFrame.score;
+  }
+}
+
+Game.prototype._getPreviousFrame = function() {
+  this.previousFrame = this.completedFrames.slice(-1)[0];
 }
 
 Game.prototype._completeFrame = function() {

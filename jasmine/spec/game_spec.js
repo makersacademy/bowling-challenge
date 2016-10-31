@@ -27,11 +27,11 @@ describe('Game', function(){
     expect(game._previousFrames).toEqual([])
   });
 
-  it('ball one starts with a game score of 0', function(){
+  it('ball one starts with a frame score of 0', function(){
     expect(game.ballOne).toBe(0)
   });
 
-  it('ball two starts with a game score of 0', function(){
+  it('ball two starts with a frame score of 0', function(){
     expect(game.ballTwo).toBe(0)
   });
 

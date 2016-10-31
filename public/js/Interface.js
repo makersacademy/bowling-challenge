@@ -8,7 +8,12 @@ $( document ).ready(function () {
     $(".roll").text(game.currentRoll);
     $(".score").text(game.scoreTotal);
     $(".hits").text(game.lastRollScore);
-    if (game.pins < 10) {
+    if (game.gameOver) {
+      endGame();
+    } else if (game.scoreMode === "spare") {
+      message("SPARE!");
+      $(":hidden").show("slow");
+    } else if (game.pins < 10) {
       for (var i = 1; i <= (10 - game.pins); i++) {
         $('#'+i.toString()).hide("slow");
       }
@@ -23,20 +28,31 @@ $( document ).ready(function () {
   function message(message) {
     $("#message").text(message);
     for (var i = 1; i <= 3; i++) {
-      $("#message").fadeIn('slow', function() {
-      $(this).css({"visibility":"visible"});
-      });
-      $("#strike").fadeIn('slow', function() {
-      $(this).css({"visibility":"visible"});
-      });
-      $("#message").fadeOut('slow', function() {
-      $(this).css({"visibility":"hidden"});
-      });
-      $("#strike").fadeOut('slow', function() {
-      $(this).css({"visibility":"hidden"});
-      });
+      messageFlash();
     }
   };
+
+  function messageFlash() {
+    $("#message").fadeIn('slow', function() {
+    $(this).css({"visibility":"visible"});
+    });
+    $("#strike").fadeIn('slow', function() {
+    $(this).css({"visibility":"visible"});
+    });
+    $("#message").fadeOut('slow', function() {
+    $(this).css({"visibility":"hidden"});
+    });
+    $("#strike").fadeOut('slow', function() {
+    $(this).css({"visibility":"hidden"});
+    });
+  };
+
+  function endGame() {
+    $("#ball").hide();
+    $(".end").css({"visibility":"visible"});
+  }
+
+
 
   function play() {
     game.roll();

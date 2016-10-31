@@ -74,6 +74,32 @@ html {
   visibility: hidden;
 }
 
+.end {
+  z-index: 3;
+  position: absolute;
+  top: 30%;
+  left:25%;
+  text-align: center;
+  width: 50%;
+  height: 30%;
+  background-color: black;
+  border: 5px solid black;
+  border-radius: 10%;
+  visibility: hidden;
+}
+
+.end h1 {
+  font-family: 'paytone_oneregular';
+  font-size: 50px;
+  color: white;
+}
+
+.end h2 {
+  font-family: 'paytone_oneregular';
+  font-size: 25px;
+  color: white;
+}
+
 
 .pins {
   width:100%;

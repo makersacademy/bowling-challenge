@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">  <script src="../jquery/jquery.js"></script> -->
+  <style>
+  body {
+    background-image: url("https://static1.squarespace.com/static/55b67078e4b034a5976b25b6/t/55ed8a25e4b08279fc1051cb/1441630759452/bowling.png?format=2500w");
+    background-size: cover;
+  }
+  table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+  }
+  /*#draggable { width: 150px; height: 150px; padding: 0.5em; }
+  DIV.table
+  {
+      display:table;
+  }
+  FORM.tr, DIV.tr
+  {
+      display:table-row;
+  }
+  SPAN.td
+  {
+      display:table-cell;
+  }*/
+  </style>
+  <script src="jquery/interface.js"></script>
+  <script src="jquery/jquery.js"></script>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- <script>
+  $( function() {
+    $( "#draggable" ).draggable();
+  } );
+  </script> -->
+  <!-- <link rel="stylesheet" href="../public/reset.css" />
+  <link rel="stylesheet" href="../public/css/style.css" /> -->
+  <script src="../src/bowling.js"></script>
+  <meta charset="utf-8">
+  <title>Bowling Score Sheet</title>
+
+</head>
+
+
+<body>
+
+  <div class="table">
+      <form class="tr" method="post" action="blah.html">
+          <span class="td"><input type="text"/></span>
+          <span class="td"><input type="text"/></span>
+          <span class="td"><input type="text"/></span>
+          <span class="td"><input type="text"/></span>
+      </form>
+      <div class="tr">
+          <span class="td">Frame1</span>
+          <span class="td">Frame2 </span>
+          <span class="td">(cell data)</span>
+          <span class="td">(cell data)</span>
+      </div>
+  <h1>Bowling Score Sheet</h1>
+
+  <div id="draggable" class="ui-widget-content">
+    <p>Enter the hits for the ball</p>
+    <form class="hit" >
+      <input type ="text" method="post">
+      <input type="submit" value="Add">
+    </form>
+  </div>
+<div>
+  <table style="width:70%">
+  <tr>
+    <th>Player's name</th>
+    <th>Ball 1</th>
+    <th>Ball 2</th>
+    <th>Total</th>
+    <th>Ball 3</th>
+
+  </tr>
+  <tr>
+    <td>Frame 1</td>
+    <form class="F1" id="form">
+    <td>
+        <input  id="F1B1" type ="text">
+    </td>
+    <td>
+        <input id="F1B2" type ="text">
+        <input type="submit" value="save"></td>
+      </form>
+    <td class="F1Tot"></td>
+  </tr>
+    <tr>
+    <td>Frame 2</td>
+    <td class="F2B1"></td>
+    <td class="F2B2"></td>
+    <td class="F2Tot"></td>
+  </tr>
+  <tr>
+    <td>Frame 3</td>
+   <td class="F3B1"></td>
+    <td class="F3B2"></td>
+    <td class="F3Tot"></td>
+  </tr>
+ <tr>
+    <td>Frame 4</td>
+    <td class="F4B1"></td>
+    <td class="F4B2"></td>
+    <td class="F4Tot"></td>
+  </tr>
+ <tr>
+    <td>Frame 5</td>
+    <td class="F5B1"></td>
+    <td class="F5B2"></td>
+    <td class="F5Tot"></td>
+  </tr>
+ <tr>
+    <td>Frame 6</td>
+    <td class="F6B1"></td>
+    <td class="F6B2"></td>
+    <td class="F6Tot"></td>
+  </tr>
+ <tr>
+    <td>Frame 7</td>
+    <td class="F7B1"></td>
+    <td class="F7B2"></td>
+    <td class="F7Tot"></td>
+  </tr>
+ <tr>
+    <td>Frame 8</td>
+    <td class="F8B1"></td>
+    <td class="F8B2"></td>
+    <td class="F8Tot"></td>
+  </tr>
+ <tr>
+    <td>Frame 9</td>
+    <td class="F9B1"></td>
+    <td class="F9B2"></td>
+    <td class="F9Tot"></td>
+  </tr>
+ <tr>
+    <td>Frame 10</td>
+    <td class="F10B1"></td>
+    <td class="F10B2"></td>
+    <td class="F10B3"></td>
+    <td class="F10Tot"></td>
+  </tr>
+  <tr>
+    <td class="TOTAL">Total</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>
+
+<!-- img src="http://s18.postimg.org/nwgb93zc9/down.png" -->
+<!-- src="http://image.flaticon.com/icons/svg/56/56690.svg" -->

@@ -1,10 +1,11 @@
 function Frame(){
- this.roll = 2;
+ this.roll = 0;
  this.pinCount = 10;
+ this.pinTotal = 10;
 }
 
 Frame.prototype.oneGame = function (pinCount) {
-  this.roll --;
+  this.roll ++;
   this.pinCount -= pinCount;
 };
 
@@ -13,5 +14,9 @@ Frame.prototype.defaultPins = function () {
 };
 
 Frame.prototype.isGameOver = function () {
-  return (this.roll === 0);
+  return (this.roll === 2 || this.pinCount === 0);
+};
+
+Frame.prototype.total = function () {
+  return (this.pinTotal - this.pinCount);
 };

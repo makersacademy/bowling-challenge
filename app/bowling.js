@@ -12,9 +12,6 @@ $("document").ready(function() {
     // $("#throwAngle").val(angle);
   };
 
-  // var checkForBonus = function() {
-  //   if(frameNo > 2 && game.frame[frameNo - 2][
-
   var bonusForStrike = function() {
     var strikeFrame = game.frame[frameNo - 2];
     game.total += frameTotal;
@@ -31,6 +28,15 @@ $("document").ready(function() {
       $("#frame" + (frameNo - 1) + " #ball3").text(spareFrame[0]['frameTotal']);
     }
   };
+
+  var checkBonus = function() {
+    if(frameNo > 2 && game.frame[frameNo - 2][1] === 10) {
+      bonusForStrike();
+    }
+    if(frameNo > 1 && game.frame[frameNo - 1][0]['frameTotal'] === 10) {
+      bonusForSpareOrStrike();
+    }
+  }
   
   randomAngle()
 
@@ -47,13 +53,7 @@ $("document").ready(function() {
           second = 0;
           frameTotal = firstGo
           game.frame[frameNo] = [{'frameTotal': frameTotal}, firstGo, ];
-          if(frameNo > 2 && game.frame[frameNo - 2][1] === 10) {
-            bonusForStrike();
-          }
-          if(frameNo > 1 && game.frame[frameNo - 1][0]['frameTotal'] === 10) {
-            console.log('bonus for spare or strike condition');
-            bonusForSpareOrStrike();
-          }
+          checkBonus();
           game.total += firstGo;
           console.log(game);
           frameNo++;
@@ -70,12 +70,7 @@ $("document").ready(function() {
           cellFrameTot.text(frameTotal);
         }
         game.frame[frameNo] = [{'frameTotal': frameTotal}, firstGo, secondGo];
-        if(frameNo > 2 && game.frame[frameNo - 2][1] === 10) {
-          bonusForStrike();
-        }
-        if(frameNo > 1 && game.frame[frameNo - 1][0]['frameTotal'] === 10) {
-          bonusForSpareOrStrike();
-        }
+        checkBonus();
         game.total += frameTotal;
         console.log(game);
         ball = 1;

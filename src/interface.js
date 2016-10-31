@@ -30,7 +30,12 @@ $(document).ready(function(){
       updateTotal();
       enableButtons();
       disableSpareButton();
+      // setTimeout(function() {
+      //   isGameOver();
+      // }, 1000);
+
     }
+  }
 
     function updateScoreCard(){
       for(var i=1;i<=game.frames.length;i++){
@@ -48,13 +53,14 @@ $(document).ready(function(){
       function updateTotal(){
         $('#edit-game-result').val(game.totalScore);
       }
-    }
+
 
     // Need to call gameOver();  function at the end of the game.
 
     $("[name=b-new]").click(function(){
       game.newGame();
       roll.roll=[];
+      enableButtons();
       disableSpareButton();
       for(var i=1;i<=10;i++){
         $('#edit-frame'+i+'-1').val("");
@@ -94,6 +100,14 @@ $(document).ready(function(){
     }
 
 // ################################################### Need to call this!
+    function isGameOver(){
+      if(game.frames.length === 10){
+        disableButtons(10);
+        disableSpareButton();
+        gameOver();
+      }
+    }
+
     function gameOver(){
       if(game.totalScore === 0){
         alert("COMMISERATIONS!!! You just completed a gutter game.")

@@ -134,5 +134,4 @@ describe('Game', function() {
       expect(game.runningTotal).toEqual(0);
     });
   });
-
 });

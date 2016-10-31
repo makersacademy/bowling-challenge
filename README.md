@@ -21,3 +21,7 @@ Bowling Challenge
     * A spare in the final frame
     * A strike in the final frame
     * A gutter game
+
+## Credits
+
+Credit to Stephen Gregory (@stejgregory) who suggested creating a separate array to store spare or strike outcomes as part of brainstorming in the latter stages of our pairing session.

@@ -3,26 +3,47 @@
 function BowlingGame() {
     this.NUMBER_OF_PINS = 10;
     this.runningTotal = 0;
+    this.currentFrameNumber = 1;
     this.currentFrameRollOne = 0;
-    this.FrameRollTwo = 0;
+    this.currentFrameRollTwo = 0;
+    this.scoreBoard = [];
 }
 
 BowlingGame.prototype.score = function () {
     return this.runningTotal;
 };
 
-BowlingGame.prototype.rollone = function (numberOfPins) {
+BowlingGame.prototype.frameNumber = function () {
+    return this.currentFrameNumber;
+};
+
+BowlingGame.prototype.rollOne = function (numberOfPins) {
     if (numberOfPins > this.NUMBER_OF_PINS) {
       throw new Error('number of pins cannot exceed 10');
     }
     this.currentFrameRollOne = numberOfPins;
 };
 
-BowlingGame.prototype.rolltwo = function(numberOfPins) {
+BowlingGame.prototype.rollTwo = function(numberOfPins) {
     if (numberOfPins > this.NUMBER_OF_PINS) {
       throw new Error('number of pins cannot exceed 10');
     } else if (this.currentFrameRollOne + numberOfPins > this.NUMBER_OF_PINS) {
-      throw new Error('number of pins in frame cannot exceed 10')
+      throw new Error('number of pins in frame cannot exceed 10');
     }
     this.currentFrameRollTwo = numberOfPins;
+    this.updateScore();
+    this.endFrame();
+};
+
+BowlingGame.prototype.updateScore = function () {
+    this.runningTotal += this.currentFrameRollOne;
+    this.runningTotal += this.currentFrameRollTwo;
+    this.scoreBoard.push(this.currentFrameRollOne);
+    this.scoreBoard.push(this.currentFrameRollTwo);
+    this.currentFrameRollOne = 0;
+    this.currentFrameRollTwo = 0;
+};
+
+BowlingGame.prototype.endFrame = function () {
+    this.currentFrameNumber += 1;
 };

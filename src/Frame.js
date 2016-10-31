@@ -17,6 +17,7 @@ Frame.prototype.addRollOneScore = function(pins) {
   }
   else {
     this.score += this.rollOneScore;
+    this.pinsRemaining = 10 - pins;
   }
 }
 
@@ -31,4 +32,5 @@ Frame.prototype.addRollTwoScore = function(pins) {
     this.score += this.rollTwoScore;
   }
   this.isComplete = true;
+  this.pinsRemaining = 10
 }

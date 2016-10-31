@@ -51,7 +51,6 @@ describe("Frame", function () {
       expect(frame.score).toEqual(0);
       expect(frame.pendingScore).toEqual(10);
     });
-
   });
 
   describe("spares", function() {
@@ -69,6 +68,19 @@ describe("Frame", function () {
       expect(frame.score).toEqual(0);
       expect(frame.pendingScore).toEqual(10);
     });
+  });
 
+  describe("calculates number of remaining pins", function() {
+
+    it("for the user to target in the second roll", function() {
+      frame.addRollOneScore(7);
+      expect(frame.pinsRemaining).toEqual(3);
+    })
+
+    it("resetting once a Frame is complete", function() {
+      frame.addRollOneScore(7);
+      frame.addRollTwoScore(2);
+      expect(frame.pinsRemaining).toEqual(10);
+    })
   });
 });

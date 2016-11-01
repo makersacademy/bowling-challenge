@@ -37,6 +37,11 @@ describe("Game", function () {
     it('adds the completed frame to the completed frames array', function() {
       expect(game.completedFrames.length).toEqual(1);
     });
+
+    it("knows which frame number the player is on", function() {
+      expect(game.frameNumber).toEqual(2);
+    });
+
   });
 
   describe("frame which is a spare", function() {

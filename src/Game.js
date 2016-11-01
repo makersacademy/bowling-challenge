@@ -4,6 +4,7 @@ function Game() {
   this.isOver = false;
   this.isGutterGame = false;
   this.isFirstRoll = true;
+  this.frameNumber = 1;
 }
 
 Game.prototype.bowl = function(pins) {
@@ -21,7 +22,7 @@ Game.prototype._processFirstRoll = function(pins) {
     this._checkForSpareBonus(pins);
   }
   this.currentFrame.addRollOneScore(pins);
-  this._completeFrameIfStrike();
+  this._completeFrameIfStrikeOrSetFirstRollToFalse();
 }
 
 Game.prototype._processSecondRoll = function(pins) {
@@ -41,7 +42,7 @@ Game.prototype._checkForSpareBonus = function(pins) {
   }
 }
 
-Game.prototype._completeFrameIfStrike = function() {
+Game.prototype._completeFrameIfStrikeOrSetFirstRollToFalse = function() {
   if(this.currentFrame.isComplete) {
     this._completeFrame();
   }
@@ -65,6 +66,7 @@ Game.prototype._getPreviousFrame = function() {
 Game.prototype._completeFrame = function() {
   this.score += this.currentFrame.score;
   this.completedFrames.push(this.currentFrame);
+  this.frameNumber += 1;
   if(this.completedFrames.length === 10) {
     this._completeGame();
   }

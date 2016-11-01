@@ -7,4 +7,4 @@ table.scoresheet th:not(:last-child) { border-right:1px solid; }
 table.scoresheet td { height:30px; background: #555; }
 table.scoresheet tr td:not(:last-child) { border-right:1px solid; }
 table.scoresheet tr:nth-child(2) td:nth-child(even) { border-bottom:1px solid; }
-table.scoresheet tr:nth-child(2) td:last-child { border-bottom:1px solid; }
+table.scoresheet tr:nth-child(2) td:last-child(2) { border-bottom:1px solid; }

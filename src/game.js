@@ -37,7 +37,7 @@ Game.prototype.showAllFrames = function(){
 
 // XXXXXXXXXXXXXXXXXXXXXXXXXXX Roll XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 function Roll(){
-  var roll, rollComplete, lookAhead, score, strikeScore, spareScore;
+  var roll, rollComplete, lookAhead, score, strikeScore, spareScore, subScore;
   this.roll = [];
   // var rollComplete;
   this.rollComplete = false;
@@ -46,6 +46,7 @@ function Roll(){
   this.score = 0;
   this.strikeScore = 0;       //Check if these are used!
   this.spareScore = 0;      //Check if these are used!
+  this.subScore = 0;      //Check if these are used!
 }
 
 Roll.prototype.addRoll = function(rollScore){

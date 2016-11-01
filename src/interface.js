@@ -55,22 +55,26 @@ $(document).ready(function(){
       }
 
       function amendScoreRetrospectivelyForStrike(i){
-        // i=i-1;
-        // var oneFrameAhead = [], twoFramesAhead = [], combined = [];
-        // game.frames[i].strikeScore = 0;
+        i=i-1;
+        var oneFrameAhead = [], twoFramesAhead = [], combined = [];
+        game.frames[i].strikeScore = 0;
         // game.frames[i].score = 0;
-        // if((game.frames.length - i-1) >= 2){
-        //   oneFrameAhead = game.frames[i+1].roll;
-        //   twoFramesAhead = game.frames[i+2].roll;
-        //   combined = oneFrameAhead.concat(twoFramesAhead);
-        //   alert(combined);
-        //   game.frames[i].strikeScore = combined[0]+combined[1];
-        //   game.frames[i].score = game.frames[i].strikeScore;
-        // } else if((game.frames.length - i-1) === 1){
-        //   oneFrameAhead = game.frames[i+1].roll;
-        //   game.frames[i].strikeScore = oneFrameAhead[0];
-        //   game.frames[i].score = game.frames[i].strikeScore;
-        // }
+        if((game.frames.length - i-1) >= 2){
+          oneFrameAhead = game.frames[i+1].roll;
+          twoFramesAhead = game.frames[i+2].roll;
+          combined = oneFrameAhead.concat(twoFramesAhead);
+          alert(combined);
+          game.frames[i].strikeScore = combined[0]+combined[1];
+          game.frames[i].score = game.frames[i].strikeScore;
+        } else if((game.frames.length - i-1) === 1){
+          oneFrameAhead = game.frames[i+1].roll;
+          if(oneFrameAhead.length === 1){
+              game.frames[i].strikeScore = oneFrameAhead[0];
+          } else if (oneFrameAhead.length === 2){
+            game.frames[i].strikeScore = oneFrameAhead[0]+oneFrameAhead[1];
+          }
+          game.frames[i].score = game.frames[i].strikeScore;
+        }
       }
 
       function updateTotal(){

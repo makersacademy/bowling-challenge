@@ -55,11 +55,13 @@ Roll.prototype.addRoll = function(rollScore){
   if (this.roll.length === 2){
     this.rollComplete = true;
     this.score = this.addScore2Rolls();
+    this.subScore = this.addScore2Rolls();  //Check!
   }
   if ((this.roll.length === 1)&&(this.roll[0] === 10)){
     this.rollComplete = true;
     this.score = this.addScore1Roll();
-    this.lookAhead = 2;
+    this.subScore = this.addScore1Roll();  //Check!
+    this.lookAhead = 2;                    //Check!
   }
 };
 

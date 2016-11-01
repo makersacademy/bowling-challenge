@@ -63,15 +63,15 @@ $(document).ready(function(){
           oneFrameAhead = game.frames[i+1].roll;
           twoFramesAhead = game.frames[i+2].roll;
           combined = oneFrameAhead.concat(twoFramesAhead);
-          alert(combined);
-          game.frames[i].strikeScore = combined[0]+combined[1];
+          // alert(combined);
+          game.frames[i].strikeScore = game.frames[i].subScore + combined[0]+combined[1];
           game.frames[i].score = game.frames[i].strikeScore;
         } else if((game.frames.length - i-1) === 1){
           oneFrameAhead = game.frames[i+1].roll;
           if(oneFrameAhead.length === 1){
-              game.frames[i].strikeScore = oneFrameAhead[0];
+              game.frames[i].strikeScore = game.frames[i].subScore + oneFrameAhead[0];
           } else if (oneFrameAhead.length === 2){
-            game.frames[i].strikeScore = oneFrameAhead[0]+oneFrameAhead[1];
+            game.frames[i].strikeScore = game.frames[i].subScore + oneFrameAhead[0]+oneFrameAhead[1];
           }
           game.frames[i].score = game.frames[i].strikeScore;
         }

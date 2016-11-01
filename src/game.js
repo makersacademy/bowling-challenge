@@ -1,11 +1,9 @@
 (function(){'use strict';}());
 
 function Game(){
-  var frames;
+  var frames, gameOver, totalScore;
   this.frames = [];
-  var gameOver;
   this.gameOver = false;
-  var totalScore;
   this.totalScore = 0;
 }
 
@@ -37,16 +35,13 @@ Game.prototype.showAllFrames = function(){
 
 // XXXXXXXXXXXXXXXXXXXXXXXXXXX Roll XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 function Roll(){
-  var roll, rollComplete, lookAhead, score, strikeScore, spareScore, subScore;
+  var roll, rollComplete, score, strikeScore, spareScore, subScore;
   this.roll = [];
-  // var rollComplete;
   this.rollComplete = false;
-  // var rollComplete;
-  this.lookAhead = 0;       //Check if these are used!
   this.score = 0;
-  this.strikeScore = 0;       //Check if these are used!
-  this.spareScore = 0;      //Check if these are used!
-  this.subScore = 0;      //Check if these are used!
+  this.strikeScore = 0;
+  this.spareScore = 0;
+  this.subScore = 0;
 }
 
 Roll.prototype.addRoll = function(rollScore){
@@ -55,13 +50,12 @@ Roll.prototype.addRoll = function(rollScore){
   if (this.roll.length === 2){
     this.rollComplete = true;
     this.score = this.addScore2Rolls();
-    this.subScore = this.addScore2Rolls();  //Check!
+    this.subScore = this.addScore2Rolls();
   }
   if ((this.roll.length === 1)&&(this.roll[0] === 10)){
     this.rollComplete = true;
     this.score = this.addScore1Roll();
-    this.subScore = this.addScore1Roll();  //Check!
-    this.lookAhead = 2;                    //Check!
+    this.subScore = this.addScore1Roll();
   }
 };
 

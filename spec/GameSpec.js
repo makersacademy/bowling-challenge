@@ -33,8 +33,7 @@ describe("Game", function() {
   });
 
   it("should add to the bonus count if the score was a spare", function() {
-    game.addScore(6);
-    game.addScore(4);
+    addSpare();
     expect(game.bonusCount).toBe(1);
   });
 
@@ -45,9 +44,7 @@ describe("Game", function() {
   });
 
   it("should add the bonus scores from strikes or spares", function() {
-    game.addScore(10);
-    game.addScore(4);
-    game.addScore(3);
+    strikeAndTwoScores();
     expect(game.total()).toEqual(24);
   });
 
@@ -60,32 +57,21 @@ describe("Game", function() {
   });
 
   it("doesn't allow more than 3 scores in the 10th frame", function() {
-    for (var i = 0; i < 18; i++) {
-      game.addScore(3);
-    }
-    game.addScore(10);
-    game.addScore(10);
-    game.addScore(10);
+    addNineFrames();
+    addTripleStrike();
     game.addScore(10);
     expect(game.frames[9].length).toEqual(3);
   });
 
   it("allows extra throws when scoring a strike on the 10th frame", function() {
-    for (var i = 0; i < 18; i++) {
-      game.addScore(3);
-    }
-    game.addScore(10);
-    game.addScore(4);
-    game.addScore(3);
+    addNineFrames();
+    strikeAndTwoScores();
     expect(game.frames[9].length).toEqual(3);
   });
 
   it("allows an extra throw when scoring a spare on the 10th frame", function() {
-    for (var i = 0; i < 18; i++) {
-      game.addScore(3);
-    }
-    game.addScore(4);
-    game.addScore(6);
+    addNineFrames();
+    addSpare();
     game.addScore(3);
     expect(game.frames[9].length).toEqual(3);
   });
@@ -94,10 +80,31 @@ describe("Game", function() {
     for (var i = 0; i < 18; i++) {
       game.addScore(3);
     }
-    game.addScore(10);
-    game.addScore(10);
-    game.addScore(10);
+    addTripleStrike();
     expect(game.frames[9].length).toEqual(3);
   });
+
+  var addSpare = function() {
+    game.addScore(6);
+    game.addScore(4);
+  };
+
+  var addTripleStrike = function() {
+    game.addScore(10);
+    game.addScore(10);
+    game.addScore(10);
+  };
+
+  var addNineFrames = function() {
+    for (var i = 0; i < 18; i++) {
+      game.addScore(3);
+    }
+  };
+
+  var strikeAndTwoScores = function() {
+    game.addScore(10);
+    game.addScore(4);
+    game.addScore(3);
+  };
 
 });

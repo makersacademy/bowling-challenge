@@ -48,9 +48,21 @@ $(document).ready(function(){
           } else if(game.frames[i-1].roll.length === 2){
             $('#edit-frame'+i+'-1').val(game.frames[i-1].roll[0]);
             $('#edit-frame'+i+'-2').val(game.frames[i-1].roll[1]);
+            amendScoreRetrospectivelyForSpare(i);
           }
           $('#edit-frame'+i+'-res').val(game.frames[i-1].score);
           game.totalScore += game.frames[i-1].score
+        }
+      }
+
+      function amendScoreRetrospectivelyForSpare(i){
+        i=i-1;
+        var oneFrameAhead = [];
+        game.frames[i].spareScore = 0;
+          if(((game.frames.length - i-1) >= 1)&&(game.frames[i].subScore === 10)){
+          oneFrameAhead = game.frames[i+1].roll;
+          game.frames[i].spareScore = game.frames[i].subScore + oneFrameAhead[0];
+          game.frames[i].score = game.frames[i].spareScore;
         }
       }
 
@@ -58,12 +70,10 @@ $(document).ready(function(){
         i=i-1;
         var oneFrameAhead = [], twoFramesAhead = [], combined = [];
         game.frames[i].strikeScore = 0;
-        // game.frames[i].score = 0;
         if((game.frames.length - i-1) >= 2){
           oneFrameAhead = game.frames[i+1].roll;
           twoFramesAhead = game.frames[i+2].roll;
           combined = oneFrameAhead.concat(twoFramesAhead);
-          // alert(combined);
           game.frames[i].strikeScore = game.frames[i].subScore + combined[0]+combined[1];
           game.frames[i].score = game.frames[i].strikeScore;
         } else if((game.frames.length - i-1) === 1){

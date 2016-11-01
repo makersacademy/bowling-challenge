@@ -1,0 +1,153 @@
+
+
+@font-face {
+    font-family: 'paytone_oneregular';
+    src: url('paytoneone-webfont.woff2') format('woff2'),
+         url('paytoneone-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html {
+  background: url("http://okcmod.com/wp-content/uploads/2012/09/DSC_0488-lanes.jpg");
+  background-size: cover;
+}
+
+
+
+.header {
+    width: 90%;
+    float:left;
+    height: 10%;
+    margin-left: 5%;
+    background-color: black;
+    border: 5px solid black;
+    border-radius: 10%;
+    padding-bottom: 0px;
+}
+
+.header h2 {
+  font-family: 'paytone_oneregular';
+  font-size: 20px;
+  color: white;
+  width: 20%;
+  float: left;
+  margin-left: 2%;
+}
+
+.intro {
+  width: 90%;
+  float:left;
+  height: 3%;
+  margin-left: 5%;
+  text-align: center;
+  font-family: 'paytone_oneregular';
+  font-size: 15px;
+  color: black;
+  position: absolute;
+  top: 10%;
+}
+
+.intro h1 {
+  padding-top: 0px;
+}
+
+#strike  {
+  z-index: 2;
+  position: absolute;
+  top: 15%;
+  left:25%;
+  text-align: center;
+  visibility: hidden;
+}
+
+#message {
+  font-family: 'paytone_oneregular';
+  font-size: 50px;
+  color: black;
+  z-index: 3;
+  position: absolute;
+  top: 40%;
+  left:42%;
+  text-align: center;
+  visibility: hidden;
+}
+
+.end {
+  z-index: 3;
+  position: absolute;
+  top: 30%;
+  left:25%;
+  text-align: center;
+  width: 50%;
+  height: 30%;
+  background-color: black;
+  border: 5px solid black;
+  border-radius: 10%;
+  visibility: hidden;
+}
+
+.end h1 {
+  font-family: 'paytone_oneregular';
+  font-size: 50px;
+  color: white;
+}
+
+.end h2 {
+  font-family: 'paytone_oneregular';
+  font-size: 25px;
+  color: white;
+}
+
+
+.pins {
+  width:100%;
+  height:30%;
+}
+
+.pins img {
+  width: 50px;
+}
+
+.back {
+  z-index: -3;
+  position: absolute;
+  top: 25%;
+  left:40%;
+}
+
+.middle {
+  z-index: -2;
+  position: absolute;
+  top: 30%;
+  left:42.5%;
+}
+
+.front {
+  z-index: -1;
+  position: absolute;
+  top: 35%;
+  left:45%;
+}
+
+.first {
+  z-index: 0;
+  position: absolute;
+  top: 40%;
+  left:47.5%;
+}
+
+.pins {
+  width:100%;
+  height:30%;
+}
+
+#ball {
+  width: 150px;
+  z-index: 1;
+  position: absolute;
+  top: 70%;
+  left:43%;
+  outline: none;
+}

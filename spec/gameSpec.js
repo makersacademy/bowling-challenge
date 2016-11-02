@@ -6,13 +6,13 @@ describe('Game', function () {
         game = new Game();
         game.start();
     });
-    describe('frames', function() {
+    describe('frames', function () {
         it('contains 10 frames', function () {
             expect(game.frames.length).toEqual(10);
         });
     });
 
-    describe('scoring', function() {
+    describe('scoring', function () {
         var testCases = [
             {
                 bowls: [],
@@ -37,11 +37,15 @@ describe('Game', function () {
             {
                 bowls: [10, 6, 2],
                 expectedScore: 26
+            },
+            {
+                bowls: [10, 10, 10],
+                expectedScore: 60
             }
         ];
-        testCases.forEach(function(testCase) {
-            it('keeps the correct score for bowls', function() {
-                testCase.bowls.forEach(function(score) {
+        testCases.forEach(function (testCase) {
+            it('keeps the correct score for bowls', function () {
+                testCase.bowls.forEach(function (score) {
                     game.bowl(score);
                 });
                 expect(game.score()).toEqual(testCase.expectedScore);

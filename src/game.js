@@ -1,10 +1,11 @@
 (function(){'use strict';}());
 
 function Game(){
-  var frames, gameOver, totalScore;
+  var frames, gameOver, totalScore, allowedNoOfFrames;
   this.frames = [];
   this.gameOver = false;
   this.totalScore = 0;
+  this.allowedNoOfFrames = 10;
 }
 
 Game.prototype.newGame = function(){
@@ -12,11 +13,11 @@ Game.prototype.newGame = function(){
 };
 
 Game.prototype.addFrame = function(frameScore){
-  if (this.frames.length === 10){
+  if (this.frames.length === this.allowedNoOfFrames){
     throw new Error("Game over");
   }
     this.frames.push(frameScore);
-    if (this.frames.length === 10){
+    if (this.frames.length === this.allowedNoOfFrames){
       this.gameOver = true;
     }
 };

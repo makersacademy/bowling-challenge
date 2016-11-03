@@ -17,15 +17,34 @@ $(document).ready(function(){
     roll.addRoll(parseInt(pinsDown));
 
     if((roll.rollComplete === false)&&(roll.roll.length === 1)){
-      var num = game.currentRollNumber();
-      var num1 = num+1;
-      $('#edit-frame'+num1+'-1').val(roll.roll[0]);
-      disableButtons(roll.roll[0]);
-      enableSpareButton(roll.roll[0]);
-    } else if (roll.rollComplete){
+      if(game.frames.length === 10){
+        roll.rollComplete = true;
+      } else
+      if(game.frames.length === 11){
+        roll.rollComplete = true;
+      } else {
+        var num = game.currentRollNumber();
+        var num1 = num+1;
+        $('#edit-frame'+num1+'-1').val(roll.roll[0]);
+        disableButtons(roll.roll[0]);
+        enableSpareButton(roll.roll[0]);
+      }
+    }
+     if (roll.rollComplete){
       $("[id=var1-9]").prop('disabled',true);
       game.totalScore = 0;
       game.addFrame(roll);
+      // console.log(game.frames.length); console.log(roll.score);
+      if((game.frames.length === 10)&&(roll.score === 10)){
+        // alert("HELLO");
+        game.allowedNoOfFrames = 11;
+      }
+      if((game.frames.length === 11)&&(roll.score === 10)
+      &&(game.frames[9].roll.length === 1)){
+        //This is the 12th roll.
+        // alert("HELLO");
+        game.allowedNoOfFrames = 12;
+      }
       updateScoreCard();
       updateTotal();
       setTimeout(function() {

@@ -43,26 +43,11 @@ $(document).ready(function(){
       $("[id=var1-9]").prop('disabled',true);
       game.totalScore = 0;
       game.addFrame(roll);
-      // console.log(game.frames.length); console.log(roll.score);
-      // if((game.frames.length === 11)&&(roll.score === 10)
-      // &&(game.frames[10].roll.length === 2)){
-      //   alert("HELLO");
-      //   game.allowedNoOfFrames = 12;
-      // }
-      if((game.frames.length === 11)&&(roll.roll[0] < 10)
-      &&(game.frames[9].roll.length === 1)){
-        // alert("HELLO");
-        game.allowedNoOfFrames = 12;
-      }
-
       if((game.frames.length === 10)&&(roll.score === 10)){
-        // alert("HELLO");
         game.allowedNoOfFrames = 11;
       }
-      if((game.frames.length === 11)&&(roll.score === 10)
-      &&(game.frames[9].roll.length === 1)){
-        //This is the 12th roll.
-        // alert("HELLO");
+      if((game.frames.length === 11)&&(game.frames[9].roll.length === 1)
+        &&((roll.score === 10)||(roll.roll[0] < 10))){
         game.allowedNoOfFrames = 12;
       }
       updateScoreCard();

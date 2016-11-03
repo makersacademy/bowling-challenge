@@ -22,8 +22,7 @@ $(document).ready(function(){
       $('#edit-frame'+num1+'-1').val(roll.roll[0]);
       disableButtons(roll.roll[0]);
       enableSpareButton(roll.roll[0]);
-    }
-    if (roll.rollComplete){
+    } else if (roll.rollComplete){
       $("[id=var1-9]").prop('disabled',true);
       game.totalScore = 0;
       game.addFrame(roll);
@@ -144,7 +143,7 @@ $(document).ready(function(){
 
     function isGameOver(){
       // alert(game.frames.length);
-      return (game.frames.length === 10);
+      return (game.frames.length === game.allowedNoOfFrames);
     }
 
     function gameOver(){

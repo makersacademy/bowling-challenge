@@ -4,7 +4,7 @@ describe('Game:', function(){
   var game;
 
   beforeEach(function(){
-    game = new Game();
+    game = new Game();  
   });
 
   describe('it tracks frames', function(){

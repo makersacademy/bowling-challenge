@@ -17,7 +17,7 @@ $(document).ready(function(){
     roll.addRoll(parseInt(pinsDown));
 
     if((roll.rollComplete === false)&&(roll.roll.length === 1)){
-      console.log(roll.roll[0]); console.log(game.frames.length);
+      // console.log(roll.roll[0]); console.log(game.frames.length);
       // if((game.frames.length === 10)&&(roll.roll[0] < 10)){
       //   //So this is now in the 12th frame.
       //   // alert("HAAAAAAAAAA");
@@ -73,6 +73,15 @@ $(document).ready(function(){
             $('#edit-frame'+i+'-2').val(game.frames[i-1].roll[1]);
             amendScoreRetrospectivelyForSpare(i);
           }
+          if(game.frames.length === 11){
+            if((game.frames[9].roll.length === 2)
+            &&(game.frames[10].roll.length === 1)){
+              $('#edit-frame'+i+'-3').val(game.frames[10].roll[0]);
+            }
+          }
+
+
+
           $('#edit-frame'+i+'-res').val(game.frames[i-1].score);
           game.totalScore += game.frames[i-1].score
         }

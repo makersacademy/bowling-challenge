@@ -84,6 +84,20 @@ describe("Game", function() {
     expect(game.frames[9].length).toEqual(3);
   });
 
+  it("allows a gutter game (0 score)", function() {
+    for (var i = 0; i < 20; i++) {
+      game.addScore(0);
+    }
+    expect(game.total()).toEqual(0);
+  });
+
+  it("allows a perfect game (300 score)", function() {
+    for (var i = 0; i < 12; i++) {
+      game.addScore(10);
+    }
+    expect(game.total()).toEqual(300);
+  });
+
   var addSpare = function() {
     game.addScore(6);
     game.addScore(4);

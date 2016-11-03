@@ -17,10 +17,19 @@ $(document).ready(function(){
     roll.addRoll(parseInt(pinsDown));
 
     if((roll.rollComplete === false)&&(roll.roll.length === 1)){
+      console.log(roll.roll[0]); console.log(game.frames.length);
+      // if((game.frames.length === 10)&&(roll.roll[0] < 10)){
+      //   //So this is now in the 12th frame.
+      //   // alert("HAAAAAAAAAA");
+      // } else
       if(game.frames.length === 10){
+        //So this is now in the 11th frame.
         roll.rollComplete = true;
       } else
+
       if(game.frames.length === 11){
+        //So this is now in the 12th frame.
+        // alert("Hoooo!");
         roll.rollComplete = true;
       } else {
         var num = game.currentRollNumber();
@@ -35,6 +44,17 @@ $(document).ready(function(){
       game.totalScore = 0;
       game.addFrame(roll);
       // console.log(game.frames.length); console.log(roll.score);
+      // if((game.frames.length === 11)&&(roll.score === 10)
+      // &&(game.frames[10].roll.length === 2)){
+      //   alert("HELLO");
+      //   game.allowedNoOfFrames = 12;
+      // }
+      if((game.frames.length === 11)&&(roll.roll[0] < 10)
+      &&(game.frames[9].roll.length === 1)){
+        // alert("HELLO");
+        game.allowedNoOfFrames = 12;
+      }
+
       if((game.frames.length === 10)&&(roll.score === 10)){
         // alert("HELLO");
         game.allowedNoOfFrames = 11;

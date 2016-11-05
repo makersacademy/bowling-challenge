@@ -36,15 +36,15 @@ describe('Game:', function () {
     })
   })
   describe('Complete frames', function () {
-    // beforeEach(function(){
-    //   game.bowl(4);
-    // });
+    beforeEach(function () {
+      game.bowl(4)
+      game.bowl(4)
+    })
     it('adds score of a frame to the game score', function () {
-      var game = new Game()
-      expect(game.score).toEqual(0)
-      game.bowl(4)
-      game.bowl(4)
       expect(game.score).toEqual(8)
+    })
+    it('stores a complete frame in the frame array', function () {
+      expect(game.frames.length).toEqual(1)
     })
   })
 })

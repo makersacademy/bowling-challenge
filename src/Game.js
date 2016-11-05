@@ -2,6 +2,7 @@
 
 function Game () {
   this.frames = []
+  this.frameNumber = 0
   this.score = 0
   this.isFirstRoll = true
   this.currentFrame = new Frame()
@@ -16,10 +17,15 @@ Game.prototype.bowl = function (pins) {
 Game.prototype.calcFirstRoll = function (pins) {
   this.currentFrame.firstRoll(pins)
   this.score = this.score + this.currentFrame.firstRollTotal
-  this.isFirstRoll = false
+  if (this.currentFrame.isfinished) {
+    this.frames.push(this.currentFrame)
+    this.frameNumber += 1
+  } else this.isFirstRoll = false
 }
 
 Game.prototype.calcSecondRoll = function (pins) {
   this.currentFrame.secondRoll(pins)
   this.score = this.score + this.currentFrame.secondRollTotal
+  this.frames.push(this.currentFrame)
+  this.frameNumber += 1
 }

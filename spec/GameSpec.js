@@ -38,8 +38,12 @@ describe("Game", function () {
       expect(game.completedFrames.length).toEqual(1);
     });
 
-    it("knows which frame number the player is on", function() {
+    it("knows which frame number the player is on next", function() {
       expect(game.frameNumber).toEqual(2);
+    });
+
+    it("empties or restarts the currentFrame", function() {
+      expect(game.currentFrame.score).toEqual(0);
     });
 
   });
@@ -51,8 +55,8 @@ describe("Game", function () {
       game.bowl(3);
     });
 
-    it("knows the current frame is a spare", function() {
-      expect(game.currentFrame.isSpare).toBe(true);
+    it("knows the frame just completed was a spare", function() {
+      expect(game.completedFrames.slice(-1)[0].isSpare).toBe(true);
     })
   })
 
@@ -64,14 +68,6 @@ describe("Game", function () {
       game.bowl(8);
     });
 
-    it("knows the previous frame is a Frame", function(){
-      expect(game.completedFrames.slice(-1)[0]).toEqual(jasmine.any(Frame));
-    });
-
-    it("knows the previous frame was a spare", function(){
-      expect(game.completedFrames.slice(-1)[0].isSpare).toBe(true);
-    });
-
     it("calculates bonus and adds to previous frame's score", function(){
       expect(game.completedFrames.slice(-1)[0].score).toEqual(18);
     });
@@ -79,11 +75,6 @@ describe("Game", function () {
     it("doesn't add the score from this frame to the game score just yet", function(){
       expect(game.score).toEqual(18);
     });
-
-    it("knows the current frame is complete after the second roll", function() {
-      game.bowl(1);
-      expect(game.currentFrame.isComplete).toBe(true);
-    })
 
     it("accurately calculates the game score including the second frame", function() {
       game.bowl(1);
@@ -97,12 +88,12 @@ describe("Game", function () {
       game.bowl(10);
     });
 
-    it("knows the current frame is complete after the first roll", function(){
-      expect(game.currentFrame.isComplete).toBe(true);
+    it("completes the frame after the first roll", function(){
+      expect(game.completedFrames.slice(-1)[0].isComplete).toBe(true);
     });
 
-    it("knows the current frame is a strike", function() {
-      expect(game.currentFrame.isStrike).toBe(true);
+    it("knows the completed frame was a strike", function() {
+      expect(game.completedFrames.slice(-1)[0].isStrike).toBe(true);
     })
   })
 

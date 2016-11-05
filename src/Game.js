@@ -5,6 +5,7 @@ function Game() {
   this.isGutterGame = false;
   this.isFirstRoll = true;
   this.frameNumber = 1;
+  this.currentFrame = new Frame(this.frameNumber)
 }
 
 Game.prototype.bowl = function(pins) {
@@ -17,7 +18,6 @@ Game.prototype.bowl = function(pins) {
 }
 
 Game.prototype._processFirstRoll = function(pins) {
-  this.currentFrame = new Frame()
   if(this.completedFrames.length > 0) {
     this._checkForSpareBonus(pins);
   }
@@ -67,6 +67,7 @@ Game.prototype._completeFrame = function() {
   this.score += this.currentFrame.score;
   this.completedFrames.push(this.currentFrame);
   this.frameNumber += 1;
+  this.currentFrame = new Frame(this.frameNumber);
   if(this.completedFrames.length === 10) {
     this._completeGame();
   }

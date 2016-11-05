@@ -56,11 +56,5 @@ describe( 'BowlingGame', function() {
               game.rollTwo(game.NUMBER_OF_PINS);
           }).toThrowError('number of pins in frame cannot exceed 10');
       });
-
-      // it('frame is recorded at the end of current frame', function() {
-      //   game.rollOne(1);
-      //   game.rollTwo(2);
-      //   expect(game.currentGameRollTwo).toContain(2);
-      // });
     });
 });

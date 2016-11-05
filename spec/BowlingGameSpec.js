@@ -17,24 +17,24 @@ describe( 'BowlingGame', function() {
     describe('Roll One', function() {
       it('number of pins knocked down is recorded', function() {
           game.rollOne(1);
-          expect(game.currentFrameRollOne).toEqual(1);
+          expect(game.recordRollOne).toEqual([1]);
       });
 
       it('for roll one, user cannot enter number > 10', function() {
-          var toomuchpins;
-          toomuchpins = game.NUMBER_OF_PINS + 1;
+          var toomuchpins = game.NUMBER_OF_PINS + 1;
           expect(function() {
               game.rollOne(toomuchpins);
           }).toThrowError('number of pins cannot exceed 10');
       });
-
-      it('Strike auto-completes turn', function() {
-            game.rollOne(10);
-            expect(game.frameNumber()).toEqual(2);
-      });
     });
 
     describe('Roll Two', function() {
+      it('number of pins knocked down is recorded', function() {
+          game.rollOne(1);
+          game.rollTwo(2);
+          expect(game.recordRollTwo).toEqual([2]);
+      });
+
       it('cannot be entered without a rollOne', function() {
           expect(function() {
             game.rollTwo(1);
@@ -50,18 +50,6 @@ describe( 'BowlingGame', function() {
           }).toThrowError('number of pins cannot exceed 10');
       });
 
-      it('running total is updated', function() {
-          game.rollOne(1);
-          game.rollTwo(1);
-          expect(game.score()).toEqual(2);
-      });
-
-      it('frame end, turn auto-completes', function() {
-          game.rollOne(1);
-          game.rollTwo(1);
-          expect(game.frameNumber()).toEqual(2);
-      });
-
       it('# of pins in roll one + # of pins in roll two <= 10', function() {
           game.rollOne(1);
           expect(function() {
@@ -69,10 +57,10 @@ describe( 'BowlingGame', function() {
           }).toThrowError('number of pins in frame cannot exceed 10');
       });
 
-      it('frame is recorded at the end of current frame', function() {
-        game.rollOne(1);
-        game.rollTwo(2);
-        expect(game.currentGameRollTwo).toContain(2);
-      });
+      // it('frame is recorded at the end of current frame', function() {
+      //   game.rollOne(1);
+      //   game.rollTwo(2);
+      //   expect(game.currentGameRollTwo).toContain(2);
+      // });
     });
 });

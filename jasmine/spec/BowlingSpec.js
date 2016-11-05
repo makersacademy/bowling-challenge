@@ -8,12 +8,13 @@ describe("Game", function () {
   });
 
 it("has 10 frames or 20 rolls typically", function () {
-   expect(game.rollsLeft).toEqual(20);
-   // expect 11th frame to throw error / message
+  for (var i = 0; i < 20; i++) { game.bowl(4);}
+   expect(function () { game.bowl(4) }).toThrow("Game has ended");
 });
 
 it("records score for each roll", function () {
   game.bowl(4);
+  game.calScore();
   expect(game.roll).toEqual([4]);
 });
 
@@ -27,35 +28,67 @@ it("has 10 pins per frame", function () {
   expect(game.pins).toEqual(6);
 });
 
-it("updates score after a frame", function () {
-  game.bowl(4);
-  game.bowl(3);
-  expect(game.score).toEqual(7);
+it("updates score for an open frame", function () {
+  for (var i = 0; i < 20; i++) { game.bowl(4); }
+  game.calScore();
+  expect(game.score).toEqual(80);
 });
 
-it("updates score without bonus", function () {
-  game.bowl(4);
-  game.bowl(5);
-  game.bowl(3);
-  game.bowl(3);
-  expect(game.score).toEqual(15);
-});
 
 it("add bonus when strike", function() {
   game.bowl(10);
-  game.bowl(4);
-  game.bowl(4);
-  expect(game.score).toEqual(18);
+  for (var i = 0; i < 14; i++) { game.bowl(4); }
+  game.calScore();
+  expect(game.score).toEqual(74);
+});
+
+it("add bonus when double strike", function() {
+  game.bowl(10);
+  game.bowl(10);
+  for (var i = 0; i < 16; i++) { game.bowl(4); }
+  game.calScore();
+  expect(game.score).toEqual(106);
 });
 
 it("add bonus when spare", function() {
   game.bowl(9);
   game.bowl(1);
-  game.bowl(4);
-  game.bowl(2);
-  expect(game.score).toEqual(14);
+  for (var i = 0; i < 14; i++) { game.bowl(4); }
+  game.calScore();
+  expect(game.score).toEqual(70);
 });
 
-//add tenth frame 
+it("on the tenth frame, it there is no strike or spare, total score are sum and game is terminated at the 20th roll", function () {
+  for (var i = 0; i < 20; i++) { game.bowl(4); }
+  game.calScore();
+  expect(game.score).toEqual(80);
+});
+
+it("on the tenth frame, if user strike, user gets to roll one extra time", function () {
+  for (var i = 0; i < 18; i++) { game.bowl(4); }
+  game.bowl(10);
+  expect(game.rollsLeft).toEqual(2);
+});
+
+it("on the tenth frame, if user has spare, user gets to roll one extra time", function () {
+  for (var i = 0; i < 18; i++) { game.bowl(4); }
+  game.bowl(2);
+  game.bowl(8);
+  expect(game.rollsLeft).toEqual(1);
+});
+
+it("calculate a gutter game", function () {
+  for (var i = 0; i < 20; i++) { game.bowl(0); }
+  game.calScore();
+  expect(game.score).toEqual(0);
+});
+
+it("calculate a perfect game", function () {
+  for (var i = 0; i < 12; i++) { game.bowl(10); }
+  game.calScore();
+  game.bonusRoll();
+  expect(game.score).toEqual(300);
+});
+
 
 });

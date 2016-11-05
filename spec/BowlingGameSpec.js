@@ -28,14 +28,14 @@ describe( 'BowlingGame', function() {
           }).toThrowError('number of pins cannot exceed 10');
       });
 
-      // it('Strike auto-completes turn', function() {
-      //       game.rollOne(1);
-      //       expect(game.frameNumber()).toEqual(2);
-      // });
+      it('Strike auto-completes turn', function() {
+            game.rollOne(10);
+            expect(game.frameNumber()).toEqual(2);
+      });
     });
 
     describe('Roll Two', function() {
-      it('cannot be recorded without a rollOne', function() {
+      it('cannot be entered without a rollOne', function() {
           expect(function() {
             game.rollTwo(1);
           }).toThrowError('enter roll one before roll two');
@@ -67,6 +67,12 @@ describe( 'BowlingGame', function() {
           expect(function() {
               game.rollTwo(game.NUMBER_OF_PINS);
           }).toThrowError('number of pins in frame cannot exceed 10');
+      });
+
+      it('frame is recorded at the end of current frame', function() {
+        game.rollOne(1);
+        game.rollTwo(2);
+        expect(game.currentGameRollTwo).toContain(2);
       });
     });
 });

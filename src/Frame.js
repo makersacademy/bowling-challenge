@@ -48,3 +48,7 @@ Frame.prototype.isStrike = function(){
 Frame.prototype.isSpare = function(){
   return this.roll1() + this.roll2() === 10;
 };
+
+Frame.prototype.hasNoRolls = function() {
+  return this.roll1() === undefined
+};

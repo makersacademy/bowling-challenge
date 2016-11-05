@@ -34,26 +34,32 @@ Game.prototype.frames = function() {
 };
 
 Game.prototype.roll = function(n) {
-  if(this.currentFrame() === undefined || this.currentFrame().isComplete()) {
+  if(this.hasntStarted() || this.currentFrame().isComplete()) {
     var frame = new Frame();
     this.addFrame(frame);
   }
-  if(this.afterStrikeOrSpare()) {
+  if(this.afterStrike() || this.afterSpare()) {
     this.previousFrame().addValue(n);
-  };
-  this.currentFrame().addRoll(n);
-}
-
-Game.prototype.afterStrikeOrSpare = function() {
-  if(this.previousFrame() !== undefined) {
-    if(this.previousFrame().isStrike()) {
-      return true;
-    }
-    if(this.previousFrame().isSpare() && this.currentFrame().roll1() === undefined) {
-      return true;
+    if(this._isDouble) {
+      this.beforePreviousFrame().addValue(n);
     }
   }
+  this.currentFrame().addRoll(n);
+
+  if(this.afterStrike()) {
+    this._isDouble = this.currentFrame().isStrike() === true;
+  }
+}
+
+Game.prototype.afterSpare = function() {
+  if(this.previousFrame() !== undefined) {
+    return this.previousFrame().isSpare() && this.currentFrame().hasNoRolls()
+  }
 };
+
+Game.prototype.afterStrike = function() {
+  return (this.previousFrame() !== undefined) && this.previousFrame().isStrike()
+}
 
 Game.prototype.isComplete = function() {
   return this.frames().length === 10 && this.currentFrame().isComplete();

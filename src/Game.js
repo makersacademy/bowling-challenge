@@ -35,18 +35,49 @@ Game.prototype.frames = function() {
 
 Game.prototype.roll = function(n) {
   if(this.currentFrame() === undefined || this.currentFrame().isComplete()) {
-    frame = new Frame();
+    var frame = new Frame();
     this.addFrame(frame);
   }
-  this.currentFrame().addRoll(n);
-  if(this.previousFrame() != undefined && this.previousFrame().isStrike()) {
+  if(this.afterStrikeOrSpare()) {
     this.previousFrame().addValue(n);
-  }
-  // if frame before is strike or spare add this roll result to last frame
-  // if rolling twice and strike before add the second roll result too
-  // this.previous_frame or this._frames[current_index-1]
+  };
+  this.currentFrame().addRoll(n);
 }
+
+Game.prototype.afterStrikeOrSpare = function() {
+  if(this.previousFrame() !== undefined) {
+    if(this.previousFrame().isStrike()) {
+      return true;
+    }
+    if(this.previousFrame().isSpare() && this.currentFrame().roll1() === undefined) {
+      return true;
+    }
+  }
+};
 
 Game.prototype.isComplete = function() {
   return this.frames().length === 10 && this.currentFrame().isComplete();
 }
+
+Game.prototype.hasntStarted = function() {
+  return this.currentFrame() === undefined
+}
+
+Game.prototype.randomRoll = function(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+Game.prototype.autoRoll = function() {
+  var roll;
+  if(this.hasntStarted() || this.currentFrame().isComplete()) {
+    var chance_of_strike = Math.random() > 0.7;
+    if(chance_of_strike) {
+      roll = 10;
+    } else {
+      roll = this.randomRoll(0, 10);
+    }
+  } else {
+    roll = this.randomRoll(0, 10-this.currentFrame().roll1());
+  }
+  this.roll(roll);
+};

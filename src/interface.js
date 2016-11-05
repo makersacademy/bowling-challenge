@@ -27,8 +27,8 @@ $(document).ready(function() {
 
   function updateFrames(){
     for(var i=0; i<game.frames().length; i++) {
-      roll1 = game.frames()[i].roll1();
-      roll2 = game.frames()[i].roll2();
+      var roll1 = game.frames()[i].roll1();
+      var roll2 = game.frames()[i].roll2();
       $(`#frame${i} .roll1`).text(roll1 === 10 ? 'X' : roll1);
       $(`#frame${i} .roll2`).text(roll2);
       $(`#frame${i} .frame_total`).text(game.frames()[i].total());
@@ -44,18 +44,7 @@ $(document).ready(function() {
   }
 
   $('#roll').click(function(){
-    var roll;
-
-    var chance_of_strike = Math.random() > 0.7;
-
-    if(chance_of_strike) {
-      roll = 10;
-    } else if(game.currentFrame() === undefined || game.currentFrame().roll1() === 0) {
-      roll = Math.floor(Math.random()*10+1);
-    } else {
-      roll = Math.floor(Math.random()*(11-game.currentFrame().roll1()));
-    }
-    game.roll(roll);
+    game.autoRoll();
     update();
   });
 

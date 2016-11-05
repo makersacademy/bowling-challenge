@@ -1,28 +1,37 @@
-var BowlingGame = function() {
+var BowlingGame = function () {
   this.rolls = [];
-};
+  this.currentScore = 0;
+}
 
-BowlingGame.prototype.roll = function (pins) {
+BowlingGame.prototype.roll = function(pins) {
   this.rolls.push(pins);
 };
 
-BowlingGame.prototype.score = function () {
-  var currentScore = 0;
+BowlingGame.prototype.score = function() {
   var rollIndex = 0;
+  var game = this;
 
-  for (var frame = 0; frame < 10; frame++) {
-    if (this.rolls[rollIndex] === 10) {
-      currentScore += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
-      rollIndex++;
+  for (var frameIndex = 0; frameIndex < 10;  frameIndex++) {
+    if (game.rolls[rollIndex] === 10) {
+      this.currentScore += specialScore();
+      rollIndex++
     }
-    else if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10) {
-      currentScore += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
-      rollIndex += 2;
-    }
-    else {
-      currentScore += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
-      rollIndex += 2;
+    else if (game.rolls[rollIndex] + game.rolls[rollIndex + 1] === 10) {
+      this.currentScore += specialScore();
+      rollIndex +=2;
+    } else {
+      this.currentScore += normalScore();
+      rollIndex +=2;
     }
   }
-  return currentScore;
+  return this.currentScore;
+
+  function specialScore() {
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
+  }
+
+  function normalScore() {
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
+  }
+
 };

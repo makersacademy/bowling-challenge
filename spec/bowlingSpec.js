@@ -19,6 +19,116 @@ describe('bowling: ', function() {
       expect(score1._allFrames).toEqual([[3,4]]);
     });
 
+    it('stores a strike in a frame by itself', function(){
+      score1.roll(10);
+      expect(score1._allFrames).toEqual([[10]]);
+      expect(score1._currentFrame).toEqual([]);
+    });
+
+    it('stores the roll after a strike in current frame', function(){
+      score1.roll(10);
+      score1.roll(3);
+      expect(score1._allFrames).toEqual([[10]]);
+      expect(score1._currentFrame).toEqual([3]);
+    });
+
+    it('stores a series of rolls in the correct place', function(){
+      score1.roll(0);
+      score1.roll(3);
+      score1.roll(10);
+      score1.roll(1);
+      score1.roll(9);
+      score1.roll(3);
+      score1.roll(5);
+      score1.roll(6);
+      expect(score1._allFrames).toEqual([[0,3],[10],[1,9],[3,5]]);
+      expect(score1._currentFrame).toEqual([6]);
+    });
+
+    it('calculates the running total', function(){
+      score1.roll(2);
+      score1.roll(3);
+      score1.roll(4);
+      score1.roll(5);
+      expect(score1.runningTotal()).toEqual(14);
+    });
+
+    it('calculates the running total and strike bonuses', function(){
+      score1.roll(10);
+      score1.roll(3);
+      score1.roll(4);
+      score1.roll(5);
+      // console.log('strikeBonus: ' + score1.strikeBonus());
+      expect(score1.runningTotal()).toEqual(29);
+    });
+
+    it('calculates the running total and spare bonuses', function(){
+      score1.roll(1);
+      score1.roll(9);
+      score1.roll(4);
+      score1.roll(5);
+      // console.log('strikeBonus: ' + score1.spareBonus());
+      expect(score1.runningTotal()).toEqual(23);
+    });
+
+    it('calculates the running total when there are spares and strikes', function(){
+      score1.roll(1);
+      score1.roll(9);
+      score1.roll(4);
+      score1.roll(5);
+      score1.roll(10);
+      score1.roll(9);
+      score1.roll(4);
+      score1.roll(5);
+      score1.roll(2);
+      // console.log('spareBonus: ' + score1.spareBonus());
+      // console.log('strikeBonus: ' + score1.spareBonus());
+      expect(score1.runningTotal()).toEqual(66);
+    });
+
+    it('accurately calculates score when a strike has just happened', function(){
+      score1.roll(1);
+      score1.roll(7);
+      score1.roll(4);
+      score1.roll(5);
+      score1.roll(10);
+      // console.log('spareBonus: ' + score1.spareBonus());
+      // console.log('strikeBonus: ' + score1.spareBonus());
+      expect(score1.runningTotal()).toEqual(27);
+    });
+
+    it('accurately calculates score when a spare has just happened', function(){
+      score1.roll(1);
+      score1.roll(7);
+      score1.roll(4);
+      score1.roll(4);
+      score1.roll(5);
+      score1.roll(5);
+      console.log('spareBonus: ' + score1.spareBonus());
+      console.log('strikeBonus: ' + score1.spareBonus());
+      expect(score1.runningTotal()).toEqual(26);
+    });
+
+    it('accurately calculates the score with a mix of strikes and spares', function(){
+      score1.roll(10);
+      score1.roll(3);
+      score1.roll(1);
+      score1.roll(7);
+      score1.roll(3);
+      score1.roll(5);
+      score1.roll(5);
+      console.log('baseTotal: ' + score1.baseTotal());
+      console.log('spareBonus: ' + score1.spareBonus());
+      console.log('strikeBonus: ' + score1.strikeBonus());
+      console.log('current frame: ' + score1._currentFrame)
+      console.log('all frames: ' + score1._allFrames)
+      expect(score1.runningTotal()).toEqual(43);
+    });
+
+    it('', function(){
+
+    });
+
 });
 
 

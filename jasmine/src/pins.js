@@ -1,11 +1,14 @@
-function Pins(){
-  this.bowlingPins = [0,1,2,3,4,5,6,7,8,9,10];
-};
-
-Array.prototype.random = function (){
-  return this[Math.floor((Math.random()*this.length))];
-};
-
-Pins.prototype.knockedDownPins = function(){
-  return this.bowlingPins.random();
-};
+// function Pins(){
+//   var roll1score;
+//   var roll2score;
+// };
+//
+// Pins.prototype.roll1 = function() {
+//   roll1score = Math.floor((Math.random() * 10) + 1);
+//   return roll1score;
+// };
+//
+// Pins.prototype.roll2 = function() {
+//   roll2score = Math.floor((Math.random() * (10 - roll1score)));
+//   return roll2score;
+// }

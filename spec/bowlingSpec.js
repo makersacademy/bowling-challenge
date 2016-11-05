@@ -4,14 +4,27 @@ describe('bowling: ', function() {
 
     beforeEach(function() {
       score1 = new Score();
+      rollsMadeThisFrame = 0;
     });
 
-    it('', function() {
+    it('stores a roll in current frame', function() {
+      score1.roll(5);
+      expect(score1._currentFrame[0]).toEqual(5);
+      // console.log('rollsMadeThisFrame: ' + rollsMadeThisFrame);
+    });
 
+    it('stores 2 rolls in all frames', function(){
+      score1.roll(3);
+      score1.roll(4);
+      expect(score1._allFrames).toEqual([[3,4]]);
     });
 
 });
 
+
+// console.log('rollsMadeThisFrame: ' + rollsMadeThisFrame);
+// console.log('current frame: ' + score1._currentFrame)
+// console.log('all frames: ' + score1._allFrames)
 
 
 
@@ -133,7 +146,7 @@ describe('bowling: ', function() {
 
 // it('stores a strike in the first frame if the player rolls a strike', function() {
 //   spyOn(score1, 'mostRecentRoll').and.returnValue(10);
-//   expect(XXX).toEqual(10);
+//   expect().toEqual(10);
 // });
 
 // console.log('roll 1: ' + roll1);

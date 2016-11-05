@@ -16,7 +16,9 @@ Frame.prototype.addRoll = function(n) {
 };
 
 Frame.prototype.addValue = function(n) {
-  this._extra += n;
+  if(this._extra+n <= 20) {
+    this._extra += n;
+  }
 }
 
 Frame.prototype.roll1 = function (){

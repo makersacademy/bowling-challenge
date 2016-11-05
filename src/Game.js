@@ -34,12 +34,17 @@ Game.prototype.frames = function() {
 };
 
 Game.prototype.roll = function(n) {
-  if(this.hasntStarted() || this.currentFrame().isComplete()) {
-    var frame = new Frame();
-    this.addFrame(frame);
+  if(this.needsANewFrame()) {
+    if(this.frames().length < this.MAX_FRAMES-1) {
+      this.addFrame(new Frame());
+    } else {
+      this.addFrame(new LastFrame());
+    }
   }
-  if(this.afterStrike() || this.afterSpare()) {
-    this.previousFrame().addValue(n);
+  if(this.afterStrikeOrSpare()) {
+    if(!this.onLastFrame() || this.onLastFrame() && this.currentFrame().notRoll3()) {
+      this.previousFrame().addValue(n);
+    }
     if(this._isDouble) {
       this.beforePreviousFrame().addValue(n);
     }
@@ -49,7 +54,18 @@ Game.prototype.roll = function(n) {
   if(this.afterStrike()) {
     this._isDouble = this.currentFrame().isStrike() === true;
   }
+
+  // last frame
+  // if isStrike || isSpare  - addRoll again
 }
+
+Game.prototype.needsANewFrame = function() {
+  return this.hasntStarted() || this.currentFrame().isComplete()
+};
+
+Game.prototype.afterStrikeOrSpare = function () {
+  return this.afterStrike() || this.afterSpare()
+};
 
 Game.prototype.afterSpare = function() {
   if(this.previousFrame() !== undefined) {
@@ -76,14 +92,20 @@ Game.prototype.randomRoll = function(min, max) {
 Game.prototype.autoRoll = function() {
   var roll;
   if(this.hasntStarted() || this.currentFrame().isComplete()) {
-    var chance_of_strike = Math.random() > 0.7;
+    var chance_of_strike = Math.random() > 0.66;
     if(chance_of_strike) {
       roll = 10;
     } else {
       roll = this.randomRoll(0, 10);
     }
+  } else if(this.onLastFrame() && this.currentFrame().roll1() === 10){
+    roll = this.randomRoll(0, 10)
   } else {
     roll = this.randomRoll(0, 10-this.currentFrame().roll1());
   }
   this.roll(roll);
+};
+
+Game.prototype.onLastFrame = function () {
+  return this.frames().length === this.MAX_FRAMES
 };

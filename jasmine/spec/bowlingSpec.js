@@ -1,8 +1,8 @@
 describe ('Bowling', function(){
 
   var game;
-  var roll1score;
-  var roll2score;
+  // var roll1score;
+  // var roll2score;
 
   beforeEach(function(){
     game = new Game();
@@ -22,8 +22,8 @@ describe ('Bowling', function(){
   });
 
   it('bowls roll 1 and 2 and does not exceed 10', function() {
-    game.roll1();
-    game.roll2();
+    var roll1score = game.roll1();
+    var roll2score = game.roll2(roll1score);
     expect(roll1score + roll2score).toBeLessThan(11);
   });
 });

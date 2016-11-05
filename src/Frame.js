@@ -1,5 +1,6 @@
 function Frame() {
   this._rolls = [];
+  this._extra = 0;
 }
 
 Frame.prototype.isComplete = function() {
@@ -14,6 +15,10 @@ Frame.prototype.addRoll = function(n) {
   }
 };
 
+Frame.prototype.addValue = function(n) {
+  this._extra += n;
+}
+
 Frame.prototype.roll1 = function (){
   return this._rolls[0];
 };
@@ -24,9 +29,9 @@ Frame.prototype.roll2 = function (){
 
 Frame.prototype.total = function(){
   if (this.roll1()>=0 && this.roll2()>=0) {
-    return this.roll1() + this.roll2();
+    return this.roll1() + this.roll2() + this._extra;
   } else if (this.roll1()) {
-    return this.roll1();
+    return this.roll1() + this._extra;
   } else {
     return 0;
   }

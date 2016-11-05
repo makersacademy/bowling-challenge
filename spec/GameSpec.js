@@ -20,7 +20,7 @@ describe("Game", function(){
 
   describe('currentFrame', function(){
     it('is null at initialization', function(){
-      expect(game.currentFrame()).toBe(null);
+      expect(game.currentFrame()).toBe(undefined);
     });
 
     it('knows the current frame', function(){

@@ -97,8 +97,16 @@ describe("Game", function() {
     for (var i = 0; i < 12; i++) {
       game.addScore(10);
     }
-    console.log(game.frames);
     expect(game.total()).toEqual(300);
+  });
+
+  it("outputs the correct total", function() {
+    var scores = [10, 8, 1, 8, 1, 8, 2, 8, 2, 5, 4, 9, 0, 2, 7, 10, 10, 10, 10];
+    var i;
+    for (i in scores) {
+      game.addScore(scores[i]);
+    }
+    expect(game.total()).toEqual(157);
   });
 
   var addSpare = function() {

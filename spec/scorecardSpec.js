@@ -17,15 +17,15 @@ describe('Scorecard', function() {
       expect(scorecard.currentFrame).toEqual([]);
     });
 
-    it('stores first role in the rollOne', function() {
-      scorecard.calculateCurrentRole(3);
-      expect(scorecard.roleOne).toEqual(3);
+    it('stores first roll in the rollOneScore', function() {
+      scorecard.calculateCurrentRoll(3);
+      expect(scorecard.rollOneScore).toEqual(3);
     });
 
-    it('stores second role in rollTwo if rollOne has been taken', function() {
-      scorecard.calculateCurrentRole(4);
-      scorecard.calculateCurrentRole(7);
-      expect(scorecard.roleTwo).toEqual(7);
+    it('stores second roll in rollTwoscore if rollOne has been taken', function() {
+      scorecard.calculateCurrentRoll(4);
+      scorecard.calculateCurrentRoll(7);
+      expect(scorecard.rollTwoScore).toEqual(7);
     });
   });
 });

@@ -1,9 +1,11 @@
 describe ('Game', function () {
-  var game = new Game ();
+
+  var results = [1,2,3]
+  var game = new Game (results);
   var strike = game._pins;
 
   it("has a score that is initially zero", function () {
-    expect(game._score).toEqual(0);
+    expect(game.getScore()).toEqual(0);
   });
 
   it("has 10 pins", function () {
@@ -22,13 +24,17 @@ describe ('Game', function () {
     expect(game.frame.calls.count()).toBeLessThan(12);
   });
 
+  it("recieves an array of roll results on initialisation", function(){
+    expect(game.results).toEqual([1,2,3])
+  });
+
   describe('frame', function(){
 
     it("updates the score based on the result of the frame", function(){
       spyOn(game, 'roll').and.returnValue(3);
-      var score = game._score;
+      var score = game.getScore();
       game.frame();
-      expect(game._score).toEqual(score+6);
+      expect(game.getScore()).toEqual(score+6);
     });
 
     it("performs one roll if strike", function(){
@@ -68,9 +74,9 @@ describe ('Game', function () {
     it ("increases the score by the number of pins knocked down in the next roll", function(){
       spyOn(game, 'roll').and.returnValue(3);
       game.setBonus();
-      var score = game._score;
+      var score = game.getScore();
       game.frame();
-      expect(game._score).toEqual(score + 3*3);
+      expect(game.getScore()).toEqual(score + 3*3);
     });
 
     it ("applies even when next roll is a strike", function(){
@@ -82,10 +88,51 @@ describe ('Game', function () {
     });
   });
 
-  describe("10th frame strike or spare", function(){
-    it("lets you roll the additional balls for bonus", function(){
-      done.fail("Need to design this spec");
+  describe("10th frame", function(){
+
+    it("lets you roll the additional balls for bonus if it was a strike frame", function(){
+      spyOn(game, 'roll').and.returnValue(strike);
+      spyOn(game, 'extraRolls');
+      game.start();
+      expect(game.extraRolls).toHaveBeenCalled();
+    });
+    it("lets you roll the additional balls for bonus if it was a spare frame", function(){
+      spyOn(game, 'roll').and.returnValue(5);
+      spyOn(game, 'extraRolls');
+      game.start();
+      expect(game.extraRolls).toHaveBeenCalled();
     });
   });
 
+  describe("rolling extra balls", function(){
+
+    it("lets you have up to 3 extra rolls", function(){
+      spyOn(game, 'roll');
+      game.extraRolls();
+      expect(game.roll.calls.count()).toBeLessThan(4);
+    });
+
+    it("you get as many extra rolls as you have balls remaining", function(){
+      spyOn(game, 'roll');
+      game._balls = 2;
+      game.extraRolls();
+      expect(game.roll.calls.count()).toEqual(2);
+    });
+  });
+
+  describe("special games:", function(){
+    it("is a gutter game when you score nothing", function(){
+      game = new Game ();
+      spyOn(game, 'roll').and.returnValue(0);
+      game.start();
+      expect(game.getScore()).toEqual(0);
+    });
+    it("is a gutter game when you score nothing", function(){
+      game = new Game ();
+      var strike = game._pins;
+      spyOn(game, 'roll').and.returnValue(strike);
+      game.start();
+      expect(game.getScore()).toEqual(300);
+    });
+  });
 });

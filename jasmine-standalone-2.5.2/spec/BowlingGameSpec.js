@@ -46,15 +46,71 @@ describe('BowlingGame', function () {
       game.frames[9].thirdRoll = 8;
     });
 
-    it ('can calculate the total bonus points for the game (excluding final frame)', function () {
+    it ('can calculate the total bonus points for the game)', function () {
       expect(game.totalScoreBonuses()).toBe(55);
-      console.log(game);
     });
 
-    it ('can calculate total base score of the game (excluding final frame)', function () {
-      expect(game.totalBaseScore()).toBe(76)
-      console.log(game);
+    it ('can calculate total base score of the game)', function () {
+      expect(game.totalBaseScore()).toBe(94);
     });
 
+    it ('can calculate the final score of the game', function () {
+      expect(game.finalScore()).toBe(149);
+    })
+
+  });
+
+  describe('the perfect game', function () {
+
+    beforeEach(function () {
+      game.frames[0].firstRoll = 10;
+      game.frames[1].firstRoll = 10;
+      game.frames[2].firstRoll = 10;
+      game.frames[3].firstRoll = 10;
+      game.frames[4].firstRoll = 10;
+      game.frames[5].firstRoll = 10;
+      game.frames[6].firstRoll = 10;
+      game.frames[7].firstRoll = 10;
+      game.frames[8].firstRoll = 10;
+      game.frames[9].firstRoll = 10;
+      game.frames[9].secondRoll = 10;
+      game.frames[9].thirdRoll = 10;
+    });
+
+    it ('can score a perfect game', function () {
+      expect(game.finalScore()).toBe(300);
+      console.log(game.finalScore());
+    });
+  });
+
+  describe('the gutter game', function () {
+
+    beforeEach(function () {
+      game.frames[0].firstRoll = 0;
+      game.frames[0].secondRoll = 0;
+      game.frames[1].firstRoll = 0;
+      game.frames[1].secondRoll = 0;
+      game.frames[2].firstRoll = 0;
+      game.frames[2].secondRoll = 0;
+      game.frames[3].firstRoll = 0;
+      game.frames[3].secondRoll = 0;
+      game.frames[4].firstRoll = 0;
+      game.frames[4].secondRoll = 0;
+      game.frames[5].firstRoll = 0;
+      game.frames[5].secondRoll = 0;
+      game.frames[6].firstRoll = 0;
+      game.frames[6].secondRoll = 0;
+      game.frames[7].firstRoll = 0;
+      game.frames[7].secondRoll = 0;
+      game.frames[8].firstRoll = 0;
+      game.frames[8].secondRoll = 0;
+      game.frames[9].firstRoll = 0;
+      game.frames[9].secondRoll = 0;
+    });
+
+    it('can score a gutter game', function () {
+      expect(game.finalScore()).toBe(0);
+      console.log(game.finalScore());
+    })
   });
 });

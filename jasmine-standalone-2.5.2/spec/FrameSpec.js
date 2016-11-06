@@ -1,5 +1,6 @@
 describe('Frame', function () {
   var frame;
+  var game;
 
   beforeEach(function () {
     frame = new Frame();
@@ -24,11 +25,12 @@ describe('Frame', function () {
     });
 
     it ('knows when a strike has been rolled', function () {
+      frame.number = 1
       frame.rollOne(10);
       expect(frame._isStrike()).toBeTruthy();
     });
 
-    it ('sets the second roll score to 0 if this is a strike', function () {
+    it ('sets the second roll score to 0 if there is a strike', function () {
       frame.rollOne(10);
       expect(function() {frame.rollTwo(2);}).toThrow("A strike was thrown on the first ball of the frame, score not recorded.");
       expect(frame.secondRoll).toBe(0);
@@ -81,6 +83,15 @@ describe('Frame', function () {
 
       expect(game.frames[1].bonusScore).toBe(17);
     });
+
+    it ('calculates the final frames base score from 3 rolls', function () {
+      game.frames[9].rollOne(10);
+      game.frames[9].rollTwo(10);
+      game.frames[9].rollThree(7);
+      game.frames[9].bonusScoreCalculation()
+
+      expect(game.frames[9].bonusScore).toBe(0);
+    });
   });
 
   describe('calculate the frame\'s base score', function () {
@@ -92,5 +103,20 @@ describe('Frame', function () {
       frame._setFrameScore()
       expect(frame._frameScore()).toBe(7);
     });
+  });
+
+  describe('last frame', function () {
+
+    beforeEach(function () {
+      frame.number = 10;
+      frame.rollOne(5);
+      frame.rollTwo(5);
+      frame.rollThree(10);
+    })
+
+    it ('allows you to roll a third ball in the last frame if a strike or spare is rolled', function () {
+      expect(frame._isThridRollNeeded()).toBeTruthy();
+    });
+
   });
 });

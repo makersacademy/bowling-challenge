@@ -27,7 +27,7 @@ BowlingGame.prototype._setupLastFrame = function () {
 };
 
 BowlingGame.prototype.frameScoreBonuses = function () {
-  for (var i = 0; i < this.frames.length - 1; i++) {
+  for (var i = 0; i < this.frames.length; i++) {
     var currentFrame = this.frames[i];
     currentFrame.bonusScoreCalculation();
   };
@@ -42,7 +42,7 @@ BowlingGame.prototype.totalScoreBonuses = function () {
 };
 
 BowlingGame.prototype.framesBaseScores = function () {
-  for (var i = 0; i < this.frames.length - 1; i++) {
+  for (var i = 0; i < this.frames.length; i++) {
     var currentFrame = this.frames[i];
     currentFrame._setFrameScore();
   };
@@ -54,4 +54,8 @@ BowlingGame.prototype.totalBaseScore = function () {
     return totalScore + frameScore.score;
   }, 0);
   return allScores;
+};
+
+BowlingGame.prototype.finalScore = function () {
+  return this.totalScoreBonuses() + this.totalBaseScore();
 };

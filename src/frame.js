@@ -13,6 +13,7 @@ Frame.prototype.bowl = function(pins) {
   }
   this.rolls.push(pins);
   this.score += pins;
+  this.checkBonus();
 };
 
 Frame.prototype.isEndFrame = function() {
@@ -20,10 +21,14 @@ Frame.prototype.isEndFrame = function() {
 };
 
 Frame.prototype.isStrike = function() {
-  return this.frameRolls[this.frameNum - 2][0] === 10
+  return this.rolls[0] === 10;
 };
 
 Frame.prototype.isSpare = function() {
-  return this.frameRolls[this.frameNum - 2][0] +
-        this.frameRolls[this.frameNum - 2][1] === 10
+  return this.rolls[0] + this.rolls[1] === 10;
+};
+
+Frame.prototype.checkBonus = function() {
+  if(this.isStrike()) { this.strike = true }
+  if(this.isSpare()) { this.spare = true }
 };

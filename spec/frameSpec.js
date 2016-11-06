@@ -30,19 +30,30 @@ describe('Frame', function() {
   });
 
   it('knows when a frame has ended', function() {
-    frame.bowl(10)
+    frame.bowl(10);
     expect(frame.isEndFrame()).toBe(true);
   });
 
-  // it('recognises a strike condition',function() {
-  //   game.recordRoll(10)
-  //   expect(frame.isStrike()).toBe(true);
-  // });
-  //
-  // it('recognises a spare condition',function() {
-  //   game.recordRoll(9)
-  //   game.recordRoll(1)
-  //   expect(frame.isSpare()).toBe(true);
-  // });
+  it('recognises a strike condition',function() {
+    frame.bowl(10);
+    expect(frame.isStrike()).toBe(true);
+  });
+
+  it('recognises a spare condition',function() {
+    frame.bowl(5);
+    frame.bowl(5);
+    expect(frame.isSpare()).toBe(true);
+  });
+
+  it('sets strike property to true', function() {
+    frame.bowl(10);
+    expect(frame.strike).toBe(true);
+  });
+
+  it('sets spare property to true', function() {
+    frame.bowl(5);
+    frame.bowl(5);
+    expect(frame.spare).toBe(true);
+  });
 
 });

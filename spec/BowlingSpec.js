@@ -1,28 +1,46 @@
 'use strict';
 
-describe('Bowling', function(){
+describe('The Bowling Game', function() {
 
-  var bowling;
+  var game;
 
-  beforeEach(function(){
-    bowling = new Bowling;
+  beforeEach(function() {
+    game = new BowlingGame();
+
   });
 
-  describe('Bowling', function(){
-
-
-    it('has a gutter roll', function(){
-      for (var i = 0; i < 20 ; i++) {
-        bowling.roll(0)
-      }
-      expect(bowling.score).toEqual(0)
+    it('has a gutter roll', function() {
+      rollMany(0, 20);
+      expect(game.score()).toBe(0);
     });
-    it('Can score a game of ones', function(){
-      for (var i = 0; i < 20 ; i++) {
-        bowling.roll(1);
-      }
-      expect(bowling.yourScore()).toEqual(20)
-    });
-  });
 
+    it('Can score a game of ones', function() {
+      rollMany(1, 20);
+      expect(game.score()).toEqual(20);
+    });
+
+    it('can roll a spare', function() {
+      game.roll(5);
+      game.roll(5);
+      game.roll(3);
+      rollMany(0, 17);
+      expect(game.score()).toBe(16);
+    });
+    it('can roll a strike', function() {
+      game.roll(10);
+      game.roll(4);
+      game.roll(3);
+      rollMany(0, 16);
+      expect(game.score()).toBe(24);
+    });
+    it('can roll perfect game', function() {
+      rollMany(10, 12);
+      expect(game.score()).toBe(300);
+    });
+
+    var rollMany = function (pins, rolls) {
+      for (var i = 0; i < rolls; i++) {
+        game.roll(pins);
+      }
+    };
 });

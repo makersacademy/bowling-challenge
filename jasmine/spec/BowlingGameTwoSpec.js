@@ -24,6 +24,14 @@ describe('Bowling game Two', function() {
     expect(gameTwo.score()).toBe(14);
   });
 
+  it('rolling a strike',function() {
+    gameTwo.roll(10)
+    gameTwo.roll(5)
+    gameTwo.roll(2)
+    rollBall(0,16)
+    expect(gameTwo.score()).toBe(24);
+  });
+
   var rollBall = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       gameTwo.roll(pins);

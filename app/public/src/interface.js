@@ -17,15 +17,39 @@ $(document).ready(function(){
     roll.addRoll(parseInt(pinsDown));
 
     if((roll.rollComplete === false)&&(roll.roll.length === 1)){
-      var num = game.currentRollNumber();
-      var num1 = num+1;
-      $('#edit-frame'+num1+'-1').val(roll.roll[0]);
-      disableButtons(roll.roll[0]);
-      enableSpareButton(roll.roll[0]);
-    } else if (roll.rollComplete){
+      // console.log(roll.roll[0]); console.log(game.frames.length);
+      // if((game.frames.length === 10)&&(roll.roll[0] < 10)){
+      //   //So this is now in the 12th frame.
+      //   // alert("HAAAAAAAAAA");
+      // } else
+      if(game.frames.length === 10){
+        //So this is now in the 11th frame.
+        roll.rollComplete = true;
+      } else
+
+      if(game.frames.length === 11){
+        //So this is now in the 12th frame.
+        // alert("Hoooo!");
+        roll.rollComplete = true;
+      } else {
+        var num = game.currentRollNumber();
+        var num1 = num+1;
+        $('#edit-frame'+num1+'-1').val(roll.roll[0]);
+        disableButtons(roll.roll[0]);
+        enableSpareButton(roll.roll[0]);
+      }
+    }
+     if (roll.rollComplete){
       $("[id=var1-9]").prop('disabled',true);
       game.totalScore = 0;
       game.addFrame(roll);
+      if((game.frames.length === 10)&&(roll.score === 10)){
+        game.allowedNoOfFrames = 11;
+      }
+      if((game.frames.length === 11)&&(game.frames[9].roll.length === 1)
+        &&((roll.score === 10)||(roll.roll[0] < 10))){
+        game.allowedNoOfFrames = 12;
+      }
       updateScoreCard();
       updateTotal();
       setTimeout(function() {
@@ -49,8 +73,25 @@ $(document).ready(function(){
             $('#edit-frame'+i+'-2').val(game.frames[i-1].roll[1]);
             amendScoreRetrospectivelyForSpare(i);
           }
+          if(game.frames.length === 11){
+            if((game.frames[9].roll.length === 2)
+            &&(game.frames[10].roll.length === 1)){
+              $('#edit-frame'+i+'-3').val(game.frames[10].roll[0]);
+            }
+            if((game.frames[9].roll.length === 1)
+            &&(game.frames[10].roll.length === 1)){
+              $('#edit-frame10-2').val(game.frames[10].roll[0]);
+            }
+          }
+          if(game.frames.length === 12){
+            $('#edit-frame'+i+'-3').val(game.frames[11].roll[0]);
+          }
+
           $('#edit-frame'+i+'-res').val(game.frames[i-1].score);
-          game.totalScore += game.frames[i-1].score
+          if (i<=10){
+            // alert(i);
+            game.totalScore += game.frames[i-1].score
+          }
         }
       }
 

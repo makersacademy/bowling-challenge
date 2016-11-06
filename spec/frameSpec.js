@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Frame', function() {
 
   var frame;
@@ -14,6 +16,11 @@ describe('Frame', function() {
   it('allows a maximum of 10 pins to be knocked down per frame', function() {
     frame.bowl(6);
     expect(function(){frame.bowl(5)}).toThrowError('Please re-enter correct score')
+  });
+
+  it('knows when a frame has ended', function() {
+    frame.bowl(10)
+    expect(frame.isEndFrame()).toBe(true);
   });
 
 });

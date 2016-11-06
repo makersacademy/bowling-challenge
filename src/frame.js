@@ -1,3 +1,5 @@
+'use strict';
+
 function Frame() {
   this.rolls = [];
   this.score = 0
@@ -8,13 +10,17 @@ Frame.prototype.bowl = function(pins) {
     throw new Error('Please re-enter correct score');
   }
   this.rolls.push(pins);
-  this.calculateRawScore();
+  this._calculateRawScore();
 };
 
-Frame.prototype.calculateRawScore = function () {
+Frame.prototype._calculateRawScore = function () {
   for( var i in this.rolls) {
     if (this.score <=10 ) {
       this.score += this.rolls[i]
     }
   }
+};
+
+Frame.prototype.isEndFrame = function() {
+  return (this.rolls.length === 2 || this.score === 10);
 };

@@ -1,3 +1,5 @@
+'use strict';
+
 function Game() {
   this.totalScore = 0;
   this.frame = new Frame();
@@ -5,21 +7,24 @@ function Game() {
 }
 
 Game.prototype.recordRoll = function(pins) {
+  if (this.isOver()) {
+    throw new Error('Game over, please start a new game')
+  }
   this.frame.bowl(pins);
-  if (this.isEndFrame()) {
-    this.endFrame();
+  if (this.frame.isEndFrame()) {
+    this.nextFrame();
   }
 };
 
-Game.prototype.getTotalScore = function() {
-  return this.totalScore;
-};
-
-Game.prototype.isEndFrame = function() {
-  return (this.frame.rolls.length === 2 || this.frame.score === 10);
-};
-
-Game.prototype.endFrame = function() {
+Game.prototype.nextFrame = function() {
   this.frameRolls.push(this.frame.rolls);
   this.frame = new Frame();
+};
+
+Game.prototype.isOver = function() {
+  return this.frameRolls.length === 10
+};
+
+Game.prototype.gameOver = function() {
+  console.log('Game Over');
 };

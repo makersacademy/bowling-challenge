@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <head>
+    <title>Bowling Challenge</title>
+  </head>
+  <body>
+    <section>
+      <p>
+        <h2 id="start-game">Start your game by pressing the button</h2>
+        <h4>Frame number: <span id="frame-tally"></h4>
+        <h3>Point for that turn: <span id="points"></span></h3>
+        <button id="take-turn">New frame</button>
+        <button id="show-score">Show score</button>
+
+        <h4 id="game-over">Game over! Your score is: <span id="score-card"></span></h4>
+
+        <h4>1  | <span id="frame1"></span> |</h4>
+        <h4>2  | <span id="frame2"></span> |</h4>
+        <h4>3  | <span id="frame3"></span> |</h4>
+        <h4>4  | <span id="frame4"></span> |</h4>
+        <h4>5  | <span id="frame5"></span> |</h4>
+        <h4>6  | <span id="frame6"></span> |</h4>
+        <h4>7  | <span id="frame7"></span> |</h4>
+        <h4>8  | <span id="frame8"></span> |</h4>
+        <h4>9  | <span id="frame9"></span> |</h4>
+        <h4>10 | <span id="frame10"></span> |</h4>
+
+        <h2 class="score">You have no more turns. Your score is <span id="final-result"></span></h2>
+      </p>
+    </section>
+    <script src="src/Game.js"></script>
+    <script src="src/interface.js"></script>
+  </body>
+</html>

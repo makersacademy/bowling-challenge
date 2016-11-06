@@ -104,30 +104,85 @@ describe('bowling: ', function() {
       score1.roll(4);
       score1.roll(5);
       score1.roll(5);
-      console.log('spareBonus: ' + score1.spareBonus());
-      console.log('strikeBonus: ' + score1.spareBonus());
+      // console.log('spareBonus: ' + score1.spareBonus());
+      // console.log('strikeBonus: ' + score1.spareBonus());
       expect(score1.runningTotal()).toEqual(26);
     });
 
-    it('accurately calculates the score with a mix of strikes and spares', function(){
-      score1.roll(10);
-      score1.roll(3);
+    it('accurately calculates the score when 3 strikes are rolled in the last frame', function(){
       score1.roll(1);
-      score1.roll(7);
-      score1.roll(3);
-      score1.roll(5);
-      score1.roll(5);
-      console.log('baseTotal: ' + score1.baseTotal());
-      console.log('spareBonus: ' + score1.spareBonus());
-      console.log('strikeBonus: ' + score1.strikeBonus());
-      console.log('current frame: ' + score1._currentFrame)
-      console.log('all frames: ' + score1._allFrames)
-      expect(score1.runningTotal()).toEqual(43);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+      console.log("starting the 3 strikes")
+      score1.roll(10);
+      score1.roll(10);
+      score1.roll(10);
+      console.log("finalFrameTotal: " + score1.finalFrameTotal)
+      console.log("runningTotal: " + score1.runningTotal)
+
+      expect(score1.runningTotal()).toEqual(48);
     });
 
-    it('', function(){
+    it('accurately calculates the score when a spare is rolled in the last frame', function(){
+      score1.roll(1);
+      score1.roll(1);
 
+      score1.roll(1);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+
+      score1.roll(1);
+      score1.roll(1);
+      console.log("starting the 3 strikes")
+      score1.roll(1);
+      score1.roll(9);
+      score1.roll(6);
+      console.log("finalFrameTotal: " + score1.finalFrameTotal)
+      console.log("runningTotal: " + score1.runningTotal)
+
+      expect(score1.runningTotal()).toEqual(34);
     });
+
 
 });
 
@@ -135,7 +190,16 @@ describe('bowling: ', function() {
 // console.log('rollsMadeThisFrame: ' + rollsMadeThisFrame);
 // console.log('current frame: ' + score1._currentFrame)
 // console.log('all frames: ' + score1._allFrames)
-
+// 108?
+// console.log('baseTotal: ' + score1.baseTotal());
+// // 30?
+// console.log('spareBonus: ' + score1.spareBonus());
+// // 8?
+// console.log('strikeBonus: ' + score1.strikeBonus());
+// // 30
+// console.log('finalFrameScore: ' + score1.finalFrameScore());
+// console.log('current frame: ' + score1._currentFrame)
+// console.log('all frames: ' + score1._allFrames)
 
 
 

@@ -2,7 +2,7 @@
 
 function Frame() {
   this.rolls = [];
-  this.score = 0
+  this.score = 0;
 }
 
 Frame.prototype.bowl = function(pins) {
@@ -10,15 +10,7 @@ Frame.prototype.bowl = function(pins) {
     throw new Error('Please re-enter correct score');
   }
   this.rolls.push(pins);
-  this._calculateRawScore();
-};
-
-Frame.prototype._calculateRawScore = function () {
-  for( var i in this.rolls) {
-    if (this.score <=10 ) {
-      this.score += this.rolls[i]
-    }
-  }
+  this.score += pins;
 };
 
 Frame.prototype.isEndFrame = function() {

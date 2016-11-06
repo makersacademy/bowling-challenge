@@ -3,7 +3,7 @@
 function Game() {
   this.totalScore = 0;
   this.frame = new Frame();
-  this.frameRolls = []
+  this.frameRolls = [];
 }
 
 Game.prototype.recordRoll = function(pins) {
@@ -17,8 +17,13 @@ Game.prototype.recordRoll = function(pins) {
 };
 
 Game.prototype.nextFrame = function() {
-  this.frameRolls.push(this.frame.rolls);
+  this.addScore();
   this.frame = new Frame();
+};
+
+Game.prototype.addScore = function() {
+  this.frameRolls.push(this.frame.rolls);
+  this.totalScore += this.frame.score;
 };
 
 Game.prototype.isOver = function() {
@@ -27,4 +32,8 @@ Game.prototype.isOver = function() {
 
 Game.prototype.gameOver = function() {
   console.log('Game Over');
+};
+
+Game.prototype.isStrike = function() {
+  
 };

@@ -39,7 +39,11 @@ describe('Game', function() {
 
     it('does not allow additional rolls after game end', function() {
       expect(function(){game.recordRoll(10)}).toThrowError('Game over, please start a new game');
-    });    
+    });
+
+    it('should have a final score of 100', function() {
+      expect(game.totalScore).toEqual(100);
+    });   
 
   });
 

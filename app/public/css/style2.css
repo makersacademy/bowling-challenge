@@ -6,32 +6,19 @@ form {
   min-width: 440px;
   font-family: 'Coiny';
   border: 3px solid #F0F0F0;
-  background: #E8F5FA;
+  background: #E8F5FA;   
   border-radius: 10px;
   padding: 2%;
   margin: 2%;
-
 }
 
 
 /****** TABLE *****/
 
-table.pointsTable {
- border: 2px solid black;
- text-align: left;
-}
-
-table.pointsTable th,
-table.pointsTable td{
-  padding-left: 5px;
-  border: 1px solid black;
-}
-
 table {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  border-collapse: separate !important;
 }
 
 td {
@@ -42,14 +29,12 @@ td {
 /****** INPUTS *****/
 
 form input[type=text],
-form input[type=button],
-form input[type=radio]{
+form input[type=button]{
   font-family: 'Coiny';
 }
 
 form input[type=text],
-form input[type=number],
-form input[type=password]{
+form input[type=number]{
   height: 40px;
   width: 100%;
   margin-bottom: 10px;
@@ -59,12 +44,6 @@ form input[type=password]{
   color: #222222;
   outline: none;
 }
-
-form input.ng-dirty.ng-invalid{
-  border: 1px solid red;
-  color: red;
-}
-
 
 form input[type=button]:disabled {
     background: #E8F5FA;
@@ -78,107 +57,18 @@ form input[type=button] {
     background: #136899;
     height: 40px;
     width: 100%;
-    /*max-width: 80px;*/
     color: #ffffff;
     text-align: center;
     border-radius: 5px;
-    /*box-shadow: 0px 3px 1px #2075aa;*/
   	-webkit-transition: all 0.15s linear;
 	  -moz-transition: all 0.15s linear;
 	  transition: all 0.15s linear;
 }
 
-
-
-
 form input[type=button]:hover:enabled {
   background: #1e75aa;
-  /*box-shadow: 0 3px 1px #237bb2;*/
 }
 
 form input[type=button]:active {
   background: #136899;
-  /*box-shadow: 0 3px 1px #0f608c;*/
-}
-
-::-webkit-input-placeholder {
-  color: #e74c3c;
-}
-:-moz-placeholder {
-  /* Firefox 18- */
-  color: #e74c3c;
-}
-::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #e74c3c;
-}
-:-ms-input-placeholder {
-  color: #e74c3c;
-}
-
-/* We hide the checkboxes and radio buttons in the stylesheet: */
-form input[type=checkbox]:not(old),
-form input[type=radio   ]:not(old){
-  width     : 2em;
-  margin    : 0;
-  padding   : 0;
-  font-size : 1em;
-  opacity   : 0;
-}
-
-/* We then position the label: */
-form input[type=checkbox]:not(old) + label,
-form input[type=radio   ]:not(old) + label{
-  display      : inline-block;
-  margin-left  : -2em;
-  line-height  : 1.5em;
-}
-
-/* We then style the first span to create the unchecked graphics:*/
-form input[type=checkbox]:not(old) + label > span,
-form input[type=radio   ]:not(old) + label > span{
-  display          : inline-block;
-  width            : 0.875em;
-  height           : 0.875em;
-  margin           : 0.25em 0.5em 0.25em 0.25em;
-  border           : none;/*0.0625em solid #F1F1F1;*/
-  border-radius    : 0.25em;
-  background       : #FFFFFF;
-  vertical-align   : bottom;
-}
-
-/*In the example, the background gradient is reversed on selected checkboxes and radio buttons: */
-form input[type=checkbox]:not(old):checked + label > span,
-form input[type=radio   ]:not(old):checked + label > span{
-}
-
-/* We then display a tick inside selected checkboxes: */
-form input[type=checkbox]:not(old):checked + label > span:before{
-  content     : '✓';
-  display     : block;
-  width       : 1em;
-  color       : rgb(153,204,102);
-  font-size   : 0.875em;
-  line-height : 1em;
-  text-align  : center;
-  text-shadow : 0 0 0.0714em rgb(115,153,77);
-  font-weight : bold;
-}
-
-
-/*Finally, we display a ‘bullet’ inside selected radio buttons,
-applying the same techniques as for the unchecked graphics to the second span element: */
-form input[type=radio]:not(old):checked + label > span > span{
-  display          : block;
-  width            : 0.5em;
-  height           : 0.5em;
-  margin           : 0.125em;
-  border           : 0.0625em solid rgb(115,153,77);
-  border-radius    : 0.125em;
-  background       : rgb(153,204,102);
-  background-image :    -moz-linear-gradient(rgb(179,217,140),rgb(153,204,102));
-  background-image :     -ms-linear-gradient(rgb(179,217,140),rgb(153,204,102));
-  background-image :      -o-linear-gradient(rgb(179,217,140),rgb(153,204,102));
-  background-image : -webkit-linear-gradient(rgb(179,217,140),rgb(153,204,102));
-  background-image :         linear-gradient(rgb(179,217,140),rgb(153,204,102));
 }

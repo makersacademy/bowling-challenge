@@ -14,7 +14,7 @@ end
 Capybara.configure do |config|
   # System.setProperty("webdriver.chrome.driver", "/home/glynester/Desktop/Projects/chromedriver");
   # WebDriver driver = new ChromeDriver();
-  Capybara.default_max_wait_time = 10
+  Capybara.default_max_wait_time = 2
   Capybara.default_driver = :selenium
   Capybara.javascript_driver = :webkit
 end

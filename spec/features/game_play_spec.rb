@@ -21,7 +21,7 @@ feature 'Playing 10 pin bowling' do
 # expect(page).to have_field('edit-game-result', with: '10')
 # expect(page).to have_css 'input#edit-game-result', visible: false, text: 10
 
-
+  expect(page).to have_field('edit-game-result', with: '10')
 
       # page.find_by_id('edit-game-result')
       # page.find_by_id("edit-game-result", exact: "elephant")

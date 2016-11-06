@@ -4,10 +4,9 @@ var Game = function() {
   this.rolls = [];
 };
 
-Game.prototype.roll = function(pinsDown) {
-  this.rolls.push(pinsDown);
-  return pinsDown;
-};
+  Game.prototype.roll = function(pinsDown) {
+    this.rolls.push(pinsDown);
+  };
 
 Game.prototype.score = function() {
   var result = 0;

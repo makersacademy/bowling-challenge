@@ -22,6 +22,15 @@ Frame.prototype.rollThree = function (pins) {
   this.thirdRoll = pins;
 };
 
+Frame.prototype.bonusScoreCalculation = function () {
+  if (this._currentFrame()._isSpare() && this._isNotLastFrame()) { this._spareScoreBonus() };
+  if (this._currentFrame()._isDoubleStrike() && this._isNotLastFrame()) {
+    this._doubleStrikeBonus();
+  } else {
+    this._strikeBonus();
+  }
+};
+
 Frame.prototype._isStrike = function () {
   return (this.firstRoll === 10 && this._isNotLastFrame() );
 };
@@ -86,18 +95,6 @@ Frame.prototype._doubleStrikeBonus = function () {
   if (this._currentFrame()._isDoubleStrike()) {
     this._currentFrame().bonusScore = this._nextFrame().firstRoll + this._twoFramesAlong().firstRoll;
   };
-};
-
-Frame.prototype.bonusScoreCalculation = function () {
-  if (this._currentFrame()._isSpare() && this._isNotLastFrame()) { this._spareScoreBonus() };
-  if (this._currentFrame()._isDoubleStrike() && this._isNotLastFrame()) {
-    this._doubleStrikeBonus();
-  } else {
-    this._strikeBonus();
-  }
-  if (this._currentFrame()._isLastFrame()) {
-    this._currentFrame().bonusScore = 0
-  }
 };
 
 Frame.prototype._setFrameScore = function () {

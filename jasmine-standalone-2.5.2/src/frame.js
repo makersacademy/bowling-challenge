@@ -1,81 +1,84 @@
 'use strict';
 function Frame() {
-    this.score1 = 0;
-    this.score2 = 0;
-    this.totalPins;
-    this.firstRoll = false;
-    this.secondRoll = false;
-    this.frame = 0
+    this.pinsDown1 = 0;
+    this.pinsDown2 = 0;
+    this.totalPins = 10;
+    this.rolled1 = false;
+    this.rolled2 = false;
+    this.currentFrame = 0;
   };
 
+  // function pinsLeft(totalPins, pinsDown){
+  //   this.totalPins = totalPins;
+  //   this.pinsDown = pinsDown;
+  //
+  //     if (totalPins > 0) {
+  //       this.totalPins = (this.totalPins - this.pinsDown)
+  //     } else {
+  //       return "There are no pins left"
+  //     }
+  // }
+
+
+  // Frame.prototype.roll1 = function() {
+  // return this.pinsDown1 = Math.floor((Math.random() * 10) + 1);
+  // pinsLeft();
+  // firstRoll();
+  // };
+
   Frame.prototype.roll1 = function() {
-  return this.score1 = Math.floor((Math.random() * 10) + 1);
-  firstRoll();
+  return this.pinsDown1 = Math.floor((Math.random() * 10) + 1);
   };
 
   Frame.prototype.pinsLeft = function() {
-    this.totalPins = 10 - this.score1;
-    return this.totalPins;
+    if (this.totalPins > 0 && this.rolled2 === false) {
+        return this.totalPins = (this.totalPins - this.pinsDown1);
+      } else if (this.totalPins > 0 && this.rollled2 === true) {
+        return this.totalPins = (this.totalPins - this.pinsDown2);
+      } else {
+        return "There are no bowling pins left"
+      }
   };
 
-  Frame.prototype.roll2 = function() {
-    var pins = this.totalPins;
-    this.score2 = Math.floor((Math.random() * pins) + 1);
-    return this.score2
+  Frame.prototype.roll2 = function(totalPins) {
+    var totalPins = this.totalPins;
+    this.pinsDown2 = Math.floor((Math.random() * totalPins) + 1);
+    return this.pinsDown2;
     secondRoll();
   };
 
   Frame.prototype.firstRoll = function() {
-    this.firstRoll = true;
-  }
-
+    if (this.rolled1 === false) {
+        return this.rolled1 = true;
+    } else {
+       return this.rolled1 = false;
+    }
+  };
   Frame.prototype.secondRoll = function() {
-    this.secondRoll = true;
-  }
+    if (this.rolled2 === false) {
+        return this.rolled2 = true;
+    } else {
+       return "You have already rolled"
+    }
+  };
 
   Frame.prototype.nextFrame = function() {
-    if (this.firstRoll === true && this.secondRoll === true);
-      return this.frame = 1
+    // if (this.rolled2 === true) {
+      return this.currentFrame += 1;
+    //   } else {
+    //     return this.currentFrame;
+    // }
   };
-// };
 
-// Bowling.prototype.firstRoll = function () {
-//   this.pinsKnocked = Math.round(Math.random() * (10 - 0));
-//   this.pinsLeft = 10 - this.pinsKnocked;
-//   this.changeRollNum();
-//   this.changeFrameNum();
-// };
+  // function rolling1(){
+  //   frame.roll1();
+  //   frame.pinsLeft();
+  //   frame.firstRoll();
+  // }
+  // function rolling2(){
+  //   frame.roll2();
+  //   frame.pinsLeft();
+  //   frame.secondRoll();
+  // }
 
-
-
-// function Person(name, family) {
-//     this.name = name;
-//     this.family = family;
-//
-//     var records = [{type: "in", amount: 0}];
-//
-//     this.addTransaction = function(trans) {
-//         if(trans.hasOwnProperty("type") && trans.hasOwnProperty("amount")) {
-//            records.push(trans);
-//         }
-//     }
-//
-//     this.balance = function() {
-//        var total = 0;
-//
-//        records.forEach(function(record) {
-//            if(record.type === "in") {
-//              total += record.amount;
-//            }
-//            else {
-//              total -= record.amount;
-//            }
-//        });
-//
-// Person.prototype.getFull = function() {
-//     return this.name + " " + this.family;
-// };
-//
-// Person.prototype.getProfile = function() {
-//      return this.getFull() + ", total balance: " + this.balance();
 // };

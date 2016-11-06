@@ -160,6 +160,15 @@ describe('Game', function() {
       game.bowl(0);
       expect(game.calculateScore()).toEqual(115);
     });
+
+    it('can tell me what the score of a certain frame is', function() {
+      game.bowl(3);
+      game.bowl(5);
+      game.bowl(2);
+      game.bowl(2);
+      game.bowl(2);
+      expect(game.scoreOfFrame(2)).toEqual(4);
+    });
   });
 
   describe("game over", function() {
@@ -237,4 +246,13 @@ describe('Game', function() {
       expect(game.calculateScore()).toEqual(0);
     });
   });
+
+  it("can't have more shots that is meant to", function() {
+    for (var i = 1; i <= 10; i++) {
+      game.bowl(4);
+      game.bowl(4);
+    }
+    expect(function() { game.bowl(4); }).toThrowError('Game Over');
+  });
+
 });

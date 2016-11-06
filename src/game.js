@@ -9,20 +9,20 @@ Game.prototype.bowl = function(score) {
   this.currentFrame.addScore(score);
   this._defineLastFrames();
   this.calculatePreviousSpareBonus();
-  if (this.isOver() || this.isFinalFrame()) {
-    this.calculatePreviousStrikeBonus();
-    this.finalFrameLogic();
+  this.calculatePreviousStrikeBonus();
+  if (this.isOver()) {
+    this.finalFrameStrikeLogic();
+    /*Game Over*/
   }
   else if (this.currentFrame.isOver) {
-    this.calculatePreviousStrikeBonus();
     this.frameChange();
   }
 };
 
 Game.prototype.frameChange = function() {
   this.oldFrames.unshift(this.currentFrame)
-  if (this.isOver() && !this.currentFrame.isSpare && !this.currentFrame.isStrike) {
-    console.log("Game Over")
+  if (this.isFinalFrame()) {
+    this.currentFrame = new FinalFrame;
   }
   else {
     this.currentFrame = new Frame;
@@ -49,34 +49,16 @@ Game.prototype.calculateFrameNumber = function() {
 // Game Over Logic
 
 Game.prototype.isOver = function () {
-  return (this.calculateFrameNumber() > 10)
+  return (this.currentFrame instanceof FinalFrame && this.currentFrame.isOver)
 };
 
 Game.prototype.isFinalFrame = function () {
   return (this.calculateFrameNumber() === 10)
 }
 
-Game.prototype.finalFrameLogic = function () {
-  if (this.isFinalFrame() && this.currentFrame.isStrike) {
-    this.currentFrame.totalScore = 10
-    this.frameChange();
-  }
-  else if (this.lastFrame.isStrike && this.currentFrame.isStrike) {
-    this.lastFrame.totalScore += 10
-    this.currentFrame = new Frame;
-  }
-  else if (this.lastFrame.isStrike && this.currentFrame.isOver && this.currentFrame.isSpare) {
-    this.lastFrame.totalScore = this.lastFrame.workingScore + 10;
-    console.log("Game Over")
-  }
-  else if (this.lastFrame.isStrike && this.currentFrame.isOver) {
-    this.lastFrame.totalScore = this.lastFrame.workingScore + this.currentFrame.totalScore;
-    this.currentFrame.totalScore = 0;
-    console.log("Game Over")
-  }
-  else if (this.currentFrame.isOver) {
-    this.calculatePreviousStrikeBonus();
-    this.frameChange();
+Game.prototype.finalFrameStrikeLogic = function () {
+  if (this.lastFrame.isStrike) {
+    this.lastFrame.totalScore += (10 + this.currentFrame.turn[0] + this.currentFrame.turn[1])
   }
 };
 
@@ -131,4 +113,9 @@ Game.prototype.twoStrikesInARow = function() {
 
 Game.prototype.threeStrikesInARow = function() {
   return (this.twoStrikesInARow() && this.currentFrame.isStrike)
+};
+
+Game.prototype.scoreOfFrame = function(frameNumber) {
+  var totalFrames = this.calculateFrameNumber()
+  return this.oldFrames[totalFrames - frameNumber - 1].totalScore
 };

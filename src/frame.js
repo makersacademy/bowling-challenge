@@ -4,7 +4,6 @@ function Frame() {
   this.totalScore = 0;
   this.workingScore = 0;
   this.shot = 0;
-  this.bonus = 0;
   this.isStrike = false
   this.isOver = false
   this.isSpare = false

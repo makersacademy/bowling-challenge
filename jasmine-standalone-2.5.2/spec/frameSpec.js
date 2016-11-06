@@ -32,16 +32,18 @@ describe('Frame', function () {
       });
 
       it("allows you to know which frame you are on", function () {
-        frame.roll1();
-        frame.roll2();
+        frame.firstRoll();
+        frame.secondRoll();
         frame.nextFrame();
         expect(frame.currentFrame).toBe(1);
       });
 
       it("allows you to reset totalPins to 10 for the following frame", function () {
-        frame.firstRoll();
-        frame.secondRoll();
+        frame.roll1();
+        frame.roll2();
+        frame.pinsLeft();
         frame.nextFrame();
+        frame.reset();
         expect(frame.totalPins).toBe(10);
       });
    });

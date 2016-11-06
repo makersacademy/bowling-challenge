@@ -6,6 +6,7 @@ function Frame() {
     this.rolled1 = false;
     this.rolled2 = false;
     this.currentFrame = 0;
+
   };
 
   // function pinsLeft(totalPins, pinsDown){
@@ -68,8 +69,18 @@ function Frame() {
     //   } else {
     //     return this.currentFrame;
     // }
+
   };
 
+Frame.prototype.reset = function() {
+  //
+    this.pinsDown1 = 0;
+    this.pinsDown2 = 0;
+    this.totalPins = 10;
+    this.rolled1 = false;
+    this.rolled2 = false;
+    // }
+  }
   // function rolling1(){
   //   frame.roll1();
   //   frame.pinsLeft();

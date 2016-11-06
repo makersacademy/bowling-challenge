@@ -69,5 +69,11 @@ describe( 'BowlingGame', function() {
             game.rollOne(1);
           }).toThrowError('enter roll 2 to complete current roll');
       });
+
+      it('the frame number is incremented after completing a frame', function() {
+          game.rollOne(1);
+          game.rollTwo(1);
+          expect(game.frameNumber).toEqual(2);
+      });
     });
 });

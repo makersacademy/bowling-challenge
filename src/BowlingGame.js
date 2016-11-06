@@ -32,9 +32,9 @@ BowlingGame.prototype.rollTwo = function(numberOfPins) {
         throw new Error('number of pins in frame cannot exceed 10');
     }
     this.recordRollTwo.push(numberOfPins);
+    this.nextFrame();
     // this.recordFrame();
     // this.updateScore();
-    // this.endFrame();
 };
 
 BowlingGame.prototype.recordFrame = function (one = this.currentFrameRollOne, two = this.currentFrameRollTwo) {
@@ -47,8 +47,6 @@ BowlingGame.prototype.updateScore = function (one = this.currentFrameRollOne, tw
     this.runningTotal += two;
 };
 
-BowlingGame.prototype.endFrame = function () {
-    this.currentFrameNumber += 1;
-    this.currentFrameRollOne = null;
-    this.currentFrameRollTwo = null;
+BowlingGame.prototype.nextFrame = function () {
+    this.frameNumber += 1;
 };

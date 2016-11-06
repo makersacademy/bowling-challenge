@@ -1,6 +1,6 @@
 describe ('Game', function () {
   var game = new Game ();
-  var strike = Game._pins;
+  var strike = game._pins;
 
   it("has a score that is initially zero", function () {
     expect(game._score).toEqual(0);
@@ -45,16 +45,16 @@ describe ('Game', function () {
 
     it("adds a bonus if the player rolls a strike", function(){
       spyOn(game, 'roll').and.returnValue(strike);
-      spyOn(game, 'bonus');
+      spyOn(game, 'setBonus');
       game.frame();
-      expect(game.bonus()).toHaveBeenCalled();
+      expect(game.setBonus).toHaveBeenCalled();
     });
 
     it("adds a bonus if the player rolls a spare", function(){
       spyOn(game, 'roll').and.returnValue(strike/2);
-      spyOn(game, 'bonus');
+      spyOn(game, 'setBonus');
       game.frame();
-      expect(game.bonus()).toHaveBeenCalled();
+      expect(game.setBonus).toHaveBeenCalled();
     });
   });
 
@@ -66,13 +66,19 @@ describe ('Game', function () {
 
   describe("bonus", function(){
     it ("increases the score by the number of pins knocked down in the next roll", function(){
-      spyOn(game, 'roll').and.returnValue(7);
-      expect(game.bonus()).toChange(game._score).by(7);
+      spyOn(game, 'roll').and.returnValue(3);
+      game.setBonus();
+      score = game._score;
+      game.frame();
+      expect(game._score).toEqual(score + 3*3);
     });
 
     it ("applies even when next roll is a strike", function(){
       spyOn(game, 'roll').and.returnValue(strike);
-      expect(game.bonus()).toChange(game._score).by(strike);
+      spyOn(game, 'applyBonus');
+      game.setBonus();
+      game.frame();
+      expect(game.applyBonus).toHaveBeenCalled();
     });
   });
 

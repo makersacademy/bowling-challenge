@@ -17,19 +17,11 @@ $(document).ready(function(){
     roll.addRoll(parseInt(pinsDown));
 
     if((roll.rollComplete === false)&&(roll.roll.length === 1)){
-      // console.log(roll.roll[0]); console.log(game.frames.length);
-      // if((game.frames.length === 10)&&(roll.roll[0] < 10)){
-      //   //So this is now in the 12th frame.
-      //   // alert("HAAAAAAAAAA");
-      // } else
       if(game.frames.length === 10){
-        //So this is now in the 11th frame.
         roll.rollComplete = true;
       } else
 
       if(game.frames.length === 11){
-        //So this is now in the 12th frame.
-        // alert("Hoooo!");
         roll.rollComplete = true;
       } else {
         var num = game.currentRollNumber();
@@ -132,8 +124,6 @@ $(document).ready(function(){
       }
 
 
-    // Need to call gameOver();  function at the end of the game.
-
     $("[name=b-new]").click(function(){
       game.newGame();
       roll.roll=[];
@@ -183,13 +173,11 @@ $(document).ready(function(){
     }
 
     function isGameOver(){
-      // alert(game.frames.length);
       return (game.frames.length === game.allowedNoOfFrames);
     }
 
     function gameOver(){
       disableButtonsGameOver();
-      // disableButtons(10);
       disableSpareButton();
       if(game.totalScore === 0){
         alert("COMMISERATIONS!!! You just completed a gutter game.")

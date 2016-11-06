@@ -58,9 +58,20 @@ describe('Frame', function () {
       });
 
       it("tells you when the game is over", function() {
-          for(var x = 0; x < 15; x++) {
+          for(var x = 0; x < 11; x++) {
           frame.nextFrame();
         }
         expect(frame.currentFrame).toBe(11);
       });
+
+      // As a player,
+      // I want to be able to note when I have a 'strike' (all in one on first go)
+      // So that I can get a bonus score.
+
+      it("tells you when you have a strike", function() {
+          // frame.roll1();
+          this.pinsDown1 = jasmine.createSpy(10);
+          expect(this.pinsDown1).toBe("It's a strike");
+      });
+
    });

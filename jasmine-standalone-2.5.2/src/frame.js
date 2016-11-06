@@ -10,26 +10,15 @@ function Frame() {
 
   };
 
-  // function pinsLeft(totalPins, pinsDown){
-  //   this.totalPins = totalPins;
-  //   this.pinsDown = pinsDown;
-  //
-  //     if (totalPins > 0) {
-  //       this.totalPins = (this.totalPins - this.pinsDown)
-  //     } else {
-  //       return "There are no pins left"
-  //     }
-  // }
-
-
-  // Frame.prototype.roll1 = function() {
-  // return this.pinsDown1 = Math.floor((Math.random() * 10) + 1);
-  // pinsLeft();
-  // firstRoll();
-  // };
-
   Frame.prototype.roll1 = function() {
-  return this.pinsDown1 = Math.floor((Math.random() * 10) + 1);
+    this.pinsDown1 = Math.floor((Math.random() * 10) + 1);
+  if (this.pinsDown1 === 10) {
+      return "It's a strike";
+    } else {
+      return this.pinsDown1;
+    }
+    // var result = this.pinsDown1 = Math.floor((Math.random() * 10) + 1);
+    // result === 10 ? "It's a strike" : result;
   };
 
   Frame.prototype.pinsLeft = function() {

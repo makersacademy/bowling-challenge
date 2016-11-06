@@ -1,13 +1,8 @@
 function Game() {
-  this.totalScore = 0
-  this.frame = 0
-  this.frameScore = []
+  this.totalScore = 0;
+  this.frame = new Frame();
 }
 
 Game.prototype.getTotalScore = function() {
   return this.totalScore;
-};
-
-Game.prototype.bowl = function(pins) {
-  this.frameScore += pins
 };

@@ -32,6 +32,11 @@ describe('Bowling game Two', function() {
     expect(gameTwo.score()).toBe(24);
   });
 
+  it('rolling a pefect game',function() {
+    rollBall(10,12)
+    expect(gameTwo.score()).toBe(300);
+  });
+
   var rollBall = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       gameTwo.roll(pins);

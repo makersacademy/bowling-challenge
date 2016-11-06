@@ -34,14 +34,6 @@ describe("Game", function() {
     expect(game.score()).toEqual(18);
   });
 
-  // it('can roll a regular game', function() {
-  //   roll(1, 10);
-  //   roll(1, 2);
-  //   roll(1, 2);
-  //   roll(17, 0);
-  //   expect(game.score()).toEqual(18);
-  // });
-
   it('rolls a game of all strikes', function() {
     roll(12, 10);
     expect(game.score()).toEqual(300);

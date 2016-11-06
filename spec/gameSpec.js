@@ -12,12 +12,6 @@ describe('Game', function () {
         });
     });
 
-    // describe('start', function() {
-    //     it('increases frame count by 1', function() {
-    //         expect(game.frames.length).toEqual(1);            
-    //     });
-    // });
-
     describe('scoring', function () {
         var testCases = [
             {

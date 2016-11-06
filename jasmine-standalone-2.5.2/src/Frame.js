@@ -15,7 +15,6 @@ Frame.prototype.rollTwo = function (pins) {
     this.secondRoll = pins;
   } else {
     throw "A strike was thrown on the first ball of the frame, score not recorded."
-    this.secondRoll = 0;
   }
 };
 
@@ -88,4 +87,12 @@ Frame.prototype.bonusScoreCalculation = function () {
   } else {
     this._strikeBonus();
   }
+};
+
+Frame.prototype._setFrameScore = function () {
+  this.score = (this.firstRoll + this.secondRoll);
+};
+
+Frame.prototype._frameScore = function () {
+  return this.score
 };

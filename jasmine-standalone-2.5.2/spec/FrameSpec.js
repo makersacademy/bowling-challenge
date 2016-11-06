@@ -82,4 +82,15 @@ describe('Frame', function () {
       expect(game.frames[1].bonusScore).toBe(17);
     });
   });
+
+  describe('calculate the frame\'s base score', function () {
+
+    it ('can total the 2 roll for a given frame', function () {
+      frame.number = 1;
+      frame.rollOne(3);
+      frame.rollTwo(4);
+      frame._setFrameScore()
+      expect(frame._frameScore()).toBe(7);
+    });
+  });
 });

@@ -27,9 +27,31 @@ BowlingGame.prototype._setupLastFrame = function () {
 };
 
 BowlingGame.prototype.frameScoreBonuses = function () {
-  for (var i = 0; i < this.frames.length - 2; i++) {
+  for (var i = 0; i < this.frames.length - 1; i++) {
     var currentFrame = this.frames[i];
-    currentFrame.bonusScore;
+    currentFrame.bonusScoreCalculation();
   };
-  this.frames[8].finalFrameBonus();
+};
+
+BowlingGame.prototype.totalScoreBonuses = function () {
+  this.frameScoreBonuses();
+  var allBonuses = this.frames.reduce(function(totalBonus, frameBonus) {
+    return totalBonus + frameBonus.bonusScore;
+  }, 0);
+  return allBonuses;
+};
+
+BowlingGame.prototype.framesBaseScores = function () {
+  for (var i = 0; i < this.frames.length - 1; i++) {
+    var currentFrame = this.frames[i];
+    currentFrame._setFrameScore();
+  };
+};
+
+BowlingGame.prototype.totalBaseScore = function () {
+  this.framesBaseScores();
+  var allScores = this.frames.reduce(function(totalScore, frameScore) {
+    return totalScore + frameScore.score;
+  }, 0);
+  return allScores;
 };

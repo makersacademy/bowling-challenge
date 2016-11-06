@@ -33,16 +33,28 @@ describe('BowlingGame', function () {
       game.frames[2].firstRoll = 4;
       game.frames[2].secondRoll = 6;
       game.frames[3].firstRoll = 7;
+      game.frames[3].secondRoll = 3;
       game.frames[4].firstRoll = 4;
+      game.frames[4].secondRoll = 1;
       game.frames[5].firstRoll = 10;
       game.frames[6].firstRoll = 4;
-      game.frames[6].rollTwoScore = 3;
-      game.frames[7].firstRoll = 7;
-      game.frames[8].firstRoll = 6;
-      game.frames[8].rollTwoScore = 4;
+      game.frames[6].secondRoll  = 3;
+      game.frames[7].firstRoll = 10;
+      game.frames[8].firstRoll = 10;
       game.frames[9].firstRoll = 7;
+      game.frames[9].secondRoll = 3;
+      game.frames[9].thirdRoll = 8;
     });
 
+    it ('can calculate the total bonus points for the game (excluding final frame)', function () {
+      expect(game.totalScoreBonuses()).toBe(55);
+      console.log(game);
+    });
+
+    it ('can calculate total base score of the game (excluding final frame)', function () {
+      expect(game.totalBaseScore()).toBe(76)
+      console.log(game);
+    });
 
   });
 });

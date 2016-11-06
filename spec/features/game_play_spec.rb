@@ -4,45 +4,52 @@ feature 'Playing 10 pin bowling' do
     expect(page).to have_content('Ten Pin Bowling Score Sheet')
   end
 
-  scenario 'Playing a game' do
-
+  scenario 'Playing a perfect game' do
       visit '/'
-      click_button('New game')
-      expect(page).to have_content('Ten Pin Bowling Score Sheet');
-      click_button(5)
-      click_button(5)
-      # expect('edit-game-result').to eq(10)
-      # expect(find_field('edit-game-result').value).to eq '10'
-      # page.find_by_id('red')
-      # expect(page).to have_field('edit-game-result', with: '10')
+      12.times { click_button("X") }
+      expect(page).to have_field('edit-game-result', with: '300')
+  end
 
-      # $('#edit-game-result').val(game.totalScore);
+  scenario 'Playing a perfectly bad game' do
+      visit '/'
+      10.times { click_button("0") }
+      expect(page).to have_field('edit-game-result', with: '0')
+  end
 
-      # expect(page).to have_field('edit-game-result', with: '10')
-      # expect(page).to have_css 'input#edit-game-result', visible: false, text: 10
+  scenario 'Playing a game with 10th frame spare, then another roll (not a strike)' do
+      visit '/'
+      10.times {
+        click_button("5")
+        click_button("/") }
+        click_button("2")
+      expect(page).to have_field('edit-game-result', with: '147')
+  end
 
-      expect(page).to have_field('edit-game-result', with: '10')
+  scenario 'Playing a game with 10th frame spare, then a strike' do
+      visit '/'
+      18.times { click_button("3") }
+        click_button("0")
+        click_button("/")
+        click_button("X")
+      expect(page).to have_field('edit-game-result', with: '74')
+  end
 
-      # page.find_by_id('edit-game-result')
-      # page.find_by_id("edit-game-result", exact: "elephant")
-      # expect(find("#edit-game-result")).to have_content(10)
+# Failing!!!!!!!!!!!!
+  scenario 'Playing a game with 10th frame strike, then another 2 strikes' do
+      visit '/'
+      18.times { click_button("4") }
+      click_button("X")
+      click_button("X")
+      click_button("X")
+      expect(page).to have_field('edit-game-result', with: '102')
+  end
 
-      # expect(page.find('#edit-game-result')[:value]).to eq 10
+  scenario 'Playing a game with 10th frame strike, then another strike and then a non-strike' do
+      visit '/'
+      11.times { click_button("X") }
+      click_button("4")
 
-      # expect(find_field('#edit-game-result').value).to eq 10
-
-      # Finds the element but still need to check value.
-
-
-      # expect('#edit-game-result').value.to eq 10;
-      # expect(('input#edit-game-result').val).to eq 10
-      # expect(find_field('edit-game-result').value).to eq 10
-      # expect(find_field('edit-game-result').value) == 'bitchbastard'
-      # expect(page.find('#edit-game-result')['data-value']).to eq 5
+      expect(page).to have_field('edit-game-result', with: '294')
   end
 
 end
-
-# http://stackoverflow.com/questions/13070190/is-the-html-is-view-source-different-from-the-html-in-inspect-element
-
-# http://ahmednadar.github.io/12/09/2013/overwrite-how-Capybara-ignores-hidden-elements/

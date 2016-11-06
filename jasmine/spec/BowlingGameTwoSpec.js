@@ -3,7 +3,7 @@ describe('Bowling game Two', function() {
   var gameTwo;
 
   beforeEach(function() {
-    gameTwo = new BowlingGameTwo
+    gameTwo = new BowlingGameTwo()
   });
 
   it('rolling a gutter game', function() {
@@ -16,7 +16,15 @@ describe('Bowling game Two', function() {
     expect(gameTwo.score()).toBe(20);
   });
 
-  var rollBall = function(pins,rolls) {
+  it('rolling a spare',function() {
+    gameTwo.roll(5)
+    gameTwo.roll(5)
+    gameTwo.roll(2)
+    rollBall(0,17)
+    expect(gameTwo.score()).toBe(14);
+  });
+
+  var rollBall = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       gameTwo.roll(pins);
     }

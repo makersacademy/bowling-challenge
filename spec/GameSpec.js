@@ -32,6 +32,7 @@ describe('Game', function() {
   it('calculates one spare', function() {
     rollSpare();
     game.roll(5);
+    rollLoop(17, 0);
     expect(game.score()).toEqual(20);
   });
 
@@ -40,7 +41,13 @@ describe('Game', function() {
     game.roll(3);
     game.roll(6); // Frame 2: 3 + 6 = 9
                   // Total: 19 + 9 = 28
+    rollLoop(17, 0);
     expect(game.score()).toEqual(28);
+  });
+
+  it('calculates a perfect game', function() {
+    rollLoop(12, 10);
+    expect(game.score()).toEqual(300);
   });
 
 });

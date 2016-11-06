@@ -1,7 +1,7 @@
 function Game() {
-  this.currentScore = 0
+  this.totalScore = 0
 }
 
-Game.prototype.getCurrentScore = function() {
-  return this.currentScore;
+Game.prototype.getTotalScore = function() {
+  return this.totalScore;
 };

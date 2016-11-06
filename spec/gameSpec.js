@@ -6,8 +6,8 @@ describe('Game', function() {
     game = new Game();
   });
 
-  it('starts with a current score of zero', function() {
-    expect(game.getCurrentScore()).toEqual(0);
+  it('starts with a total score of zero', function() {
+    expect(game.getTotalScore()).toEqual(0);
   });
 
 });

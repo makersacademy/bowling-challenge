@@ -83,7 +83,10 @@ $(document).ready(function(){
 
 
           $('#edit-frame'+i+'-res').val(game.frames[i-1].score);
-          game.totalScore += game.frames[i-1].score
+          if (i<=10){
+            // alert(i);
+            game.totalScore += game.frames[i-1].score
+          }
         }
       }
 

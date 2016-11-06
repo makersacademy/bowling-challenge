@@ -32,8 +32,15 @@ describe('Frame', function () {
                 var invalidScore = function () {
                     return frame.bowl(score);
                 };
-                expect(invalidScore).toThrowError("Score must be an integer 0-10")
+                expect(invalidScore).toThrowError("Score must be an integer 0-10");
             });
+        });
+        it('cannot bowl score greater than 10 in a single frame', function () {
+            var invalidSecondBowl = function () {
+                frame.bowl(9);
+                frame.bowl(2);
+            };
+            expect(invalidSecondBowl).toThrowError("Invalid score");
         });
     });
 

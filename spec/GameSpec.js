@@ -12,11 +12,11 @@ describe("Game", function() {
 
   it("should add the user's score to the frame", function() {
     game.addScore(5);
-    expect(game.frames[0][0]).toBe(5);
+    expect(game.frames[0][0][0]).toBe(5);
   });
 
   it("should start a new frame after 2 throws", function() {
-    game.frames[0].push(1,2);
+    game.frames[0][0].push(1,2);
     game.addScore(5);
     expect(game.frames.length).toBe(2);
   });
@@ -27,18 +27,19 @@ describe("Game", function() {
     expect(game.frames.length).toBe(2);
   });
 
-  it("should add to the bonus count if the score was a strike", function() {
+  it("should add the bonuses to the array if the score was a strike", function() {
     game.addScore(10);
-    expect(game.bonusCount).toBe(2);
+    expect(game.frames[0][1]).toBe(2);
   });
 
   it("should add to the bonus count if the score was a spare", function() {
     addSpare();
-    expect(game.bonusCount).toBe(1);
+    expect(game.frames[0][1]).toBe(1);
   });
 
   it("returns the total sum of all the scores", function() {
-    game.frames[0].push(1,2);
+    game.addScore(1);
+    game.addScore(2);
     game.addScore(6);
     expect(game.total()).toEqual(9);
   });
@@ -60,20 +61,21 @@ describe("Game", function() {
     addNineFrames();
     addTripleStrike();
     game.addScore(10);
-    expect(game.frames[9].length).toEqual(3);
+    expect(game.frames[9][0].length).toEqual(3);
   });
 
   it("allows extra throws when scoring a strike on the 10th frame", function() {
     addNineFrames();
     strikeAndTwoScores();
-    expect(game.frames[9].length).toEqual(3);
+    expect(game.frames[9][0].length).toEqual(3);
   });
 
   it("allows an extra throw when scoring a spare on the 10th frame", function() {
     addNineFrames();
     addSpare();
     game.addScore(3);
-    expect(game.frames[9].length).toEqual(3);
+    game.addScore(3);
+    expect(game.frames[9][0].length).toEqual(3);
   });
 
   it("allows a triple strike in the 10th frame", function() {
@@ -81,7 +83,7 @@ describe("Game", function() {
       game.addScore(3);
     }
     addTripleStrike();
-    expect(game.frames[9].length).toEqual(3);
+    expect(game.frames[9][0].length).toEqual(3);
   });
 
   it("allows a gutter game (0 score)", function() {
@@ -95,6 +97,7 @@ describe("Game", function() {
     for (var i = 0; i < 12; i++) {
       game.addScore(10);
     }
+    console.log(game.frames);
     expect(game.total()).toEqual(300);
   });
 

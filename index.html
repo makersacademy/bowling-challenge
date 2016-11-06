@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>10 Pin Bowling Counter</title>
+  <script src="src/jquery.js"></script>
+  <script src="src/Game.js"></script>
+</head>
+
+<body>
+  <h1>10 Pin Bowling Counter</h1>
+  <p>Current frame: <span id="currentFrame"></span></p>
+  <p>Frame total: <span id="frameTotal"></span>
+  <p>Game total: <span id="gameTotal"></span>
+  <form>
+    <input type="text" name="value">
+    <input id="add" type="button" value="Add Score">
+  </form>
+<script>
+  game = new Game();
+  $('#currentFrame').html(game.currentFrame + 1);
+  $('#frameTotal').html(game.frameTotal());
+  $('#gameTotal').html(game.total());
+
+  $("#add").click(function( event ) {
+    game.addScore(parseInt($('form').serializeArray()[0].value));
+    $('#currentFrame').html(game.currentFrame + 1);
+    $('#frameTotal').html(game.frameTotal());
+    $('#gameTotal').html(game.total());
+  });
+</script>
+</body>
+</html>

@@ -20,12 +20,12 @@ it("records score for each roll", function () {
 
 it("knows the number of rolls left for each game", function () {
   game.bowl(4);
-  expect(game._rollsLeft).toEqual(19);
+  expect(game.rollsLeft).toEqual(19);
 });
 
 it("has 10 pins per frame", function () {
   game.bowl(4);
-  expect(game._pins).toEqual(6);
+  expect(game.pins).toEqual(6);
 });
 
 it("updates score for an open frame", function () {
@@ -67,14 +67,14 @@ it("on the tenth frame, it there is no strike or spare, total score are sum and 
 it("on the tenth frame, if user strike, user gets to roll one extra time", function () {
   for (var i = 0; i < 18; i++) { game.bowl(4); }
   game.bowl(10);
-  expect(game._rollsLeft).toEqual(2);
+  expect(game.rollsLeft).toEqual(2);
 });
 
 it("on the tenth frame, if user has spare, user gets to roll one extra time", function () {
   for (var i = 0; i < 18; i++) { game.bowl(4); }
   game.bowl(2);
   game.bowl(8);
-  expect(game._rollsLeft).toEqual(1);
+  expect(game.rollsLeft).toEqual(1);
 });
 
 it("calculate a gutter game", function () {

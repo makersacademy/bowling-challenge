@@ -23,5 +23,14 @@ this.currentFrame = this.framesArray[this.currentFrameCounter];
 }
 
 BowlingGame.prototype.takeShot = function(points){
+  if(this.currentFrame.isFinished) {
+    this.currentFrameCounter += 1;
+  };
   this.currentFrame.addScore(points);
 }
+
+Bowling.prototype.updateFrame = function() {
+  if (currentFrame.isFinished) {
+    this.currentFrameCounter += 1;
+  };
+};

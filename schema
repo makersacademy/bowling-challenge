@@ -1,3 +1,20 @@
+FEATURES
+
+GAMES
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 10 Frames
 
 Select score out of 10 (throw error if above 10)
@@ -21,7 +38,7 @@ PRESS SCORE BUTTON - if 3, ball 1 = 3, ready for ball 2. you get another ball.
 
 move on to frame 2
 
-Each frame - first ball, second ball, frame score 
+Each frame - first ball, second ball, frame score
 
 current_frame = frame.next
 

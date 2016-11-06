@@ -63,6 +63,10 @@ describe('Game', function () {
             {
                 bowls: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10],
                 expectedScore: 30
+            },
+            {
+                bowls: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,1],
+                expectedScore: 11
             }
         ];
         testCases.forEach(function (testCase) {

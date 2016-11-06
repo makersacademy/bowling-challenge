@@ -12,6 +12,12 @@ describe('Game', function () {
         });
     });
 
+    // describe('start', function() {
+    //     it('increases frame count by 1', function() {
+    //         expect(game.frames.length).toEqual(1);            
+    //     });
+    // });
+
     describe('scoring', function () {
         var testCases = [
             {
@@ -41,6 +47,22 @@ describe('Game', function () {
             {
                 bowls: [10, 10, 10],
                 expectedScore: 60
+            },
+            {
+                bowls: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                expectedScore: 0
+            },
+            {
+                bowls: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5],
+                expectedScore: 10
+            },
+            {
+                bowls: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10],
+                expectedScore: 10
+            },
+            {
+                bowls: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10],
+                expectedScore: 30
             }
         ];
         testCases.forEach(function (testCase) {

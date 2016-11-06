@@ -12,20 +12,33 @@ BowlingGame.prototype.score = function () {
   var bowlingGame = this;
 
   for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    if (isSpareFrame()) {
+    if (isStrikeFrame()) {
+      result += strikeScore();
+      rollIndex++;
+    } else if (isSpareFrame()) {
       result += spareScore();
+      rollIndex += 2;
     } else {
       result += normalScore();
+      rollIndex += 2;
     }
-    rollIndex += 2;
   }
-  return result
+
+  return result;
 
   function isSpareFrame() {
-    return bowlingGame.rolls[rollIndex] + bowlingGame.rolls[rollIndex + 1] == 10
+    return bowlingGame.rolls[rollIndex] + bowlingGame.rolls[rollIndex + 1] == 10;
+  }
+
+  function isStrikeFrame() {
+    return bowlingGame.rolls[rollIndex] == 10;
   }
 
   function spareScore() {
+    return bowlingGame.rolls[rollIndex] + bowlingGame.rolls[rollIndex + 1] + bowlingGame.rolls[rollIndex + 2];
+  }
+
+  function strikeScore() {
     return bowlingGame.rolls[rollIndex] + bowlingGame.rolls[rollIndex + 1] + bowlingGame.rolls[rollIndex + 2];
   }
 

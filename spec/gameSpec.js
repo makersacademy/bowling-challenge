@@ -10,4 +10,11 @@ describe('Game', function() {
     expect(game.getTotalScore()).toEqual(0);
   });
 
+  it('starts a new frame after two rolls', function() {
+    game.recordRoll(5);
+    game.recordRoll(4);
+    expect(game.frame.rolls).toEqual([]);
+    expect(game.frameRolls[0]).toEqual([5,4]);
+  });
+
 });

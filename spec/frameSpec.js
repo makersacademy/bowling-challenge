@@ -11,7 +11,7 @@ describe('Frame', function() {
     expect(frame.rolls).toContain(6);
   });
 
-  it('allows a maximum of 10 pins to be recorded per frame', function() {
+  it('allows a maximum of 10 pins to be knocked down per frame', function() {
     frame.bowl(6);
     expect(function(){frame.bowl(5)}).toThrowError('Please re-enter correct score')
   });

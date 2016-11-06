@@ -8,10 +8,10 @@ Frame.prototype.bowl = function(pins) {
     throw new Error('Please re-enter correct score');
   }
   this.rolls.push(pins);
-  this.calculateScore();
+  this.calculateRawScore();
 };
 
-Frame.prototype.calculateScore = function () {
+Frame.prototype.calculateRawScore = function () {
   for( var i in this.rolls) {
     if (this.score <=10 ) {
       this.score += this.rolls[i]

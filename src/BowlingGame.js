@@ -16,9 +16,6 @@ BowlingGame.prototype.addFrame = function (frame) {
     this._incrementScore();
     if (this._currentFrame().roll1 === 10) {
       this.score += ((this._currentFrame().roll2) + (this._currentFrame().bonusRoll));
-      // if (this._lastFrameWasStrike() === true) {
-      //   this.score += ((this._currentFrame().roll1) + (this._currentFrame().roll2));
-      // }
     } else if ((this._currentFrame().rollsTotal === 10) && (this._currentFrame().roll1 != 10)) {
       this.score += (this._currentFrame().bonusRoll);
     }

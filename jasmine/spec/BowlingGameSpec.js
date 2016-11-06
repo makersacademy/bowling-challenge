@@ -23,6 +23,14 @@ describe('BowlingGame', function () {
     expect(bowlingGame.score()).toBe(18)
   });
 
+  it('can roll a strike', function () {
+    bowlingGame.roll(10);
+    bowlingGame.roll(3);
+    bowlingGame.roll(5);
+    rollMany(0, 17);
+    expect(bowlingGame.score()).toBe(26)
+  });
+
   var rollMany = function (pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       bowlingGame.roll(pins);

@@ -56,6 +56,7 @@ describe('BowlingGame', function () {
 
     it ('can calculate the final score of the game', function () {
       expect(game.finalScore()).toBe(149);
+      console.log(game);
     })
 
   });

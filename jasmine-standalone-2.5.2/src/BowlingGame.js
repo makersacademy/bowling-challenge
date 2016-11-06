@@ -56,6 +56,12 @@ BowlingGame.prototype.totalBaseScore = function () {
   return allScores;
 };
 
+BowlingGame.prototype._setfinalScore = function () {
+  this.totalScore = this.totalScoreBonuses() + this.totalBaseScore();
+};
+
 BowlingGame.prototype.finalScore = function () {
-  return this.totalScoreBonuses() + this.totalBaseScore();
+  this._setfinalScore();
+  return this.totalScore; 
+
 };

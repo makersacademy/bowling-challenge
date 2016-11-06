@@ -57,4 +57,17 @@ describe( 'BowlingGame', function() {
           }).toThrowError('number of pins in frame cannot exceed 10');
       });
     });
+
+    describe('Multi-Frame', function() {
+      it('user can check current frame number', function() {
+          expect(game.frameNumber).toEqual(1)
+      });
+
+      it('Frame roll two must be recorded before recording next roll one', function() {
+          game.rollOne(1);
+          expect(function() {
+            game.rollOne(1);
+          }).toThrowError('enter roll 2 to complete current roll');
+      });
+    });
 });

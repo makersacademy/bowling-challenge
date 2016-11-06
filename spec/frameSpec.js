@@ -23,6 +23,14 @@ describe('Frame', function () {
             frame.bowl(3);
             expect(frame.totalScore()).toEqual(8);
         });
+        it('cannot take more than two bowl scores', function () {
+            var bowlMoreThanTwice = function () {
+                frame.bowl(5);
+                frame.bowl(3);
+                frame.bowl(4);
+            };
+            expect(bowlMoreThanTwice).toThrowError("Frame already complete")
+        });
     });
 
     describe('invalid scores', function () {
@@ -65,6 +73,13 @@ describe('Frame', function () {
             frame.bowl(0);
             frame.bowl(10);
             expect(frame.isASpare()).toBe(true);
+        });
+        it('cannot bowl twice when first bowl is a strike', function () {
+            var bowlAfterStrike = function () {
+                frame.bowl(10);
+                frame.bowl(0);
+            };
+            expect(bowlAfterStrike).toThrowError("Frame already complete");
         });
     });
 

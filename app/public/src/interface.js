@@ -78,9 +78,14 @@ $(document).ready(function(){
             &&(game.frames[10].roll.length === 1)){
               $('#edit-frame'+i+'-3').val(game.frames[10].roll[0]);
             }
+            if((game.frames[9].roll.length === 1)
+            &&(game.frames[10].roll.length === 1)){
+              $('#edit-frame10-2').val(game.frames[10].roll[0]);
+            }
           }
-
-
+          if(game.frames.length === 12){
+            $('#edit-frame'+i+'-3').val(game.frames[11].roll[0]);
+          }
 
           $('#edit-frame'+i+'-res').val(game.frames[i-1].score);
           if (i<=10){

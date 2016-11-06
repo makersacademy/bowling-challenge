@@ -2,20 +2,24 @@ describe('Bowling game Two', function() {
 
   var gameTwo;
 
+  beforeEach(function() {
+    gameTwo = new BowlingGameTwo
+  });
+
   it('rolling a gutter game', function() {
-    var gameTwo = new BowlingGameTwo()
-    for (var i=1; i<21; i++) {
-      gameTwo.roll(0);
-    }
+    rollBall(0,20)
     expect(gameTwo.score()).toBe(0);
   });
 
   it('roll 1 and 1 pin, for 10 frames', function() {
-    var gameTwo = new BowlingGameTwo()
-    for (var i=1; i<21; i++) {
-      gameTwo.roll(1);
-    }
+    rollBall(1,20)
     expect(gameTwo.score()).toBe(20);
   });
+
+  var rollBall = function(pins,rolls) {
+    for (var i = 0; i < rolls; i++) {
+      gameTwo.roll(pins);
+    }
+  };
 
 });

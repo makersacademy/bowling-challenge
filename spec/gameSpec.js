@@ -30,6 +30,27 @@ describe('Game', function() {
     expect(game.frameNum).toEqual(2);
   });
 
+  describe('Bonus Scores', function() {
+
+    beforeEach(function() {
+      game.recordRoll(9);
+      game.recordRoll(1);
+      game.recordRoll(3);
+      game.addSpareBonus();
+    });
+
+    it('adds the spare bonus', function() {
+      expect(game.allFrames[0].score).toEqual(13);
+    });
+
+    it('updates the total score', function() {
+      game.recordRoll(2);
+      game.updateScore();
+      expect(game.totalScore).toEqual(18);
+    });
+
+  });
+
   describe('End Game', function() {
 
     beforeEach(function() {

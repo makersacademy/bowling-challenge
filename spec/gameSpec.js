@@ -25,6 +25,22 @@ describe('Game', function() {
     expect(game.frameRolls[0]).toEqual([10]);
   });
 
+  it('increases the frame number by one',function() {
+    game.recordRoll(10)
+    expect(game.frameNum).toEqual(2);
+  });
+
+  it('recognises a strike condition',function() {
+    game.recordRoll(10)
+    expect(game.isStrike()).toBe(true);
+  });
+
+  it('recognises a spare condition',function() {
+    game.recordRoll(9)
+    game.recordRoll(1)
+    expect(game.isSpare()).toBe(true);
+  });
+
   describe('End Game', function() {
 
     beforeEach(function() {
@@ -43,7 +59,7 @@ describe('Game', function() {
 
     it('should have a final score of 100', function() {
       expect(game.totalScore).toEqual(100);
-    });   
+    });
 
   });
 

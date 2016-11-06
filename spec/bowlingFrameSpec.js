@@ -5,7 +5,7 @@ describe("BowlingFrame", function() {
   var frame;
 
   beforeEach(function() {
-    frame = new BowlingFrame;
+    frame = new BowlingFrame();
   });
 
   describe("Using #addScore", function(){
@@ -19,6 +19,7 @@ describe("BowlingFrame", function() {
     });
     it('should know that 10 is a strike', function(){
       frame.addScore(10);
+      expect(frame.second_ball).toEqual('X');
       expect(frame.isStrike).toEqual(true);
     });
 
@@ -39,7 +40,13 @@ describe("BowlingFrame", function() {
       frame.addScore(7);
       expect(frame.isSpare).toEqual(true);
     });
+    it("should know it's finished after 2 shots", function(){
+      frame.addScore(3);
+      frame.addScore(7);
+      expect(frame.isFinished).toEqual(true);
+    });
   });
+
 
 
 });

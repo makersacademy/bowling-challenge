@@ -23,14 +23,32 @@ this.currentFrame = this.framesArray[this.currentFrameCounter];
 }
 
 BowlingGame.prototype.takeShot = function(points){
-  if(this.currentFrame.isFinished) {
-    this.currentFrameCounter += 1;
-  };
   this.currentFrame.addScore(points);
+  if (this.currentFrame.isFinished) {
+    this.checkStrike();
+    this.nextFrame();
+  }
 }
 
-Bowling.prototype.updateFrame = function() {
-  if (currentFrame.isFinished) {
-    this.currentFrameCounter += 1;
-  };
-};
+BowlingGame.prototype.nextFrame = function(){
+  this.currentFrameCounter += 1;
+  this.currentFrame = this.framesArray[this.currentFrameCounter];
+}
+
+BowlingGame.prototype.checkStrike = function() {
+var oneBefore = this.oneBefore();
+var twoBefore = this.twoBefore();
+  if (this.currentFrameCounter >= 3) {
+    if (twoBefore.isStrike) {
+      twoBefore.frame_score = (this.currentFrame.frame_score + oneBefore.frame_score + 10);
+    }
+  }
+}
+
+BowlingGame.prototype.twoBefore = function(){
+  return this.framesArray[this.currentFrameCounter - 2];
+}
+
+BowlingGame.prototype.oneBefore = function(){
+  return this.framesArray[this.currentFrameCounter - 1];
+}

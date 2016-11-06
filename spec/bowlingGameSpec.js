@@ -7,20 +7,6 @@ var game;
 
     game = new BowlingGame();
 
-    game.framesArray = [
-    game.frame_one = jasmine.createSpyObj('BowlingFrame',['first_ball', 'second_ball', 'current_ball', 'addScore', 'isFinished']),
-    game.frame_two = jasmine.createSpyObj('BowlingFrame',['first_ball', 'second_ball', 'current_ball', 'addScore', 'isFinished']),
-    game.frame_three = jasmine.createSpyObj('BowlingFrame',['first_ball', 'second_ball', 'current_ball', 'addScore', 'isFinished']),
-    game.frame_four = jasmine.createSpyObj('BowlingFrame',['first_ball', 'second_ball', 'current_ball', 'addScore', 'isFinished']),
-    game.frame_five = jasmine.createSpyObj('BowlingFrame',['first_ball', 'second_ball', 'current_ball', 'addScore', 'isFinished']),
-    game.frame_six = jasmine.createSpyObj('BowlingFrame',['first_ball', 'second_ball', 'current_ball', 'addScore', 'isFinished']),
-    game.frame_seven = jasmine.createSpyObj('BowlingFrame',['first_ball', 'second_ball', 'current_ball', 'addScore', 'isFinished']),
-    game.frame_eight = jasmine.createSpyObj('BowlingFrame',['first_ball', 'second_ball', 'current_ball', 'addScore', 'isFinished']),
-    game.frame_nine = jasmine.createSpyObj('BowlingFrame',['first_ball', 'second_ball', 'current_ball', 'addScore', 'isFinished']),
-    game.frame_ten = jasmine.createSpyObj('BowlingFrame',['first_ball', 'second_ball', 'current_ball', 'addScore', 'isFinished'])
-    ]
-    game.currentFrame = game.framesArray[game.currentFrameCounter];
-
   });
 
   describe("when starting a game", function(){
@@ -42,17 +28,27 @@ var game;
   describe("when starting a frame", function(){
 
     it('should be able to add a score of 3 to frame one', function(){
-      game.frame_one.isFinished = false;
       game.takeShot(3);
-      expect(game.frame_one.addScore).toHaveBeenCalledWith(3);
+      expect(game.frame_one.first_ball).toEqual(3);
     });
 
-    it('should be able to move on to the next frame when game is finished', function(){
+    it('should move to next frame when game finished', function(){
       game.frame_one.isFinished = true;
       game.takeShot(3);
       expect(game.currentFrame).toEqual(game.frame_two);
     });
 
   });
+  //
+  // describe("Scoring after a strike", function(){
+  //   it("Should change the strike frame score after next 2 frames", function(){
+  //     game.takeShot(10);
+  //     game.takeShot(2);
+  //     game.takeShot(2);
+  //     game.takeShot(2);
+  //     game.takeShot(2);
+  //     expect(game.frame_one.frame_score).toEqual(18);
+  //   });
+  // });
 
 });

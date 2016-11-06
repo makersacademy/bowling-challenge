@@ -20,18 +20,19 @@ BowlingFrame.prototype.addScore = function(points){
   }  else {
     this.isFinished = true;
     this.checkForSpare(points);
-  };
+    this.updateScore();
+  }
 };
 
 BowlingFrame.prototype.checkForStrike = function(points){
   if(points === 10) {
-    this.first_ball = 'X';
+    this.second_ball = 'X';
     this.isStrike = true;
     this.isFinished = true;
   } else {
     this.first_ball = points;
     this.current_ball = 'second';
-  };
+  }
 };
 
 BowlingFrame.prototype.checkForSpare = function(points){
@@ -40,5 +41,11 @@ BowlingFrame.prototype.checkForSpare = function(points){
     this.second_ball = '/';
   } else {
     this.second_ball = points;
-  };
-}
+  }
+};
+
+BowlingFrame.prototype.updateScore = function(){
+  if((!this.isSpare) && (!this.isStrike)) {
+    this.frame_score = this.first_ball + this.second_ball;
+  }
+};

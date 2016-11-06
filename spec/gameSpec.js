@@ -88,8 +88,7 @@ describe('Game', function () {
             {
                 bowls: [10,10,10,10,10,10,10,10,10,10,10,10],
                 expectedScore: 300
-            },
-
+            }
         ];
         testCases.forEach(function (testCase) {
             it('keeps the correct score for bowls', function () {

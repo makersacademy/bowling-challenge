@@ -25,6 +25,18 @@ describe('Frame', function () {
         });
     });
 
+    describe('invalid scores', function () {
+        var invalidScores = [11, -1, "10", 1.5, true, {}, [10], undefined]
+        invalidScores.forEach(function (score) {
+            it('only accepts integer scores between 0 and 10 inclusive', function () {
+                var invalidScore = function () {
+                    return frame.bowl(score);
+                };
+                expect(invalidScore).toThrowError("Score must be an integer 0-10")
+            });
+        });
+    });
+
     describe('strikes and spares', function () {
         it('reports it is not a strike at start of game', function () {
             expect(frame.isAStrike()).toBe(false);

@@ -13,7 +13,7 @@ Frame.prototype.bowl = function(pins) {
   }
   this.rolls.push(pins);
   this.score += pins;
-  this.checkBonus();
+  this.assignBonus();
 };
 
 Frame.prototype.isEndFrame = function() {
@@ -28,7 +28,7 @@ Frame.prototype.isSpare = function() {
   return this.rolls[0] + this.rolls[1] === 10;
 };
 
-Frame.prototype.checkBonus = function() {
+Frame.prototype.assignBonus = function() {
   if(this.isStrike()) { this.strike = true }
   if(this.isSpare()) { this.spare = true }
 };

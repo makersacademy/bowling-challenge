@@ -1,4 +1,4 @@
-var Frame = function(game) {
+var Frame = function (game) {
   this.score = 0;
   this.bonusScore = 0;
   this.firstRoll = 0;
@@ -24,7 +24,7 @@ Frame.prototype.rollThree = function (pins) {
 
 Frame.prototype.bonusScoreCalculation = function () {
   if (this._currentFrame()._isSpare() && this._isNotLastFrame()) {
-    this._spareScoreBonus() 
+    this._spareScoreBonus()
   };
   if (this._currentFrame()._isDoubleStrike() && this._isNotLastFrame()) {
     this._doubleStrikeBonus();
@@ -34,7 +34,7 @@ Frame.prototype.bonusScoreCalculation = function () {
 };
 
 Frame.prototype._isStrike = function () {
-  return (this.firstRoll === 10 && this._isNotLastFrame() );
+  return (this.firstRoll === 10 && this._isNotLastFrame());
 };
 
 Frame.prototype._isNotStrike = function () {
@@ -70,11 +70,11 @@ Frame.prototype._currentFrame = function () {
 };
 
 Frame.prototype._nextFrame = function () {
-  return this._allFrames()[this._allFrames().indexOf(this)+1];
+  return this._allFrames()[this._allFrames().indexOf(this) + 1];
 };
 
 Frame.prototype._twoFramesAlong = function () {
-  return this._allFrames()[this._allFrames().indexOf(this)+2];
+  return this._allFrames()[this._allFrames().indexOf(this) + 2];
 };
 
 Frame.prototype._spareScoreBonus = function () {

@@ -6,7 +6,7 @@ var BowlingGame = function () {
 
 BowlingGame.prototype.totalScoreBonuses = function () {
   this._frameScoreBonuses();
-  var allBonuses = this.frames.reduce(function(totalBonus, frameBonus) {
+  var allBonuses = this.frames.reduce(function (totalBonus, frameBonus) {
     return totalBonus + frameBonus.bonusScore;
   }, 0);
   return allBonuses;
@@ -14,7 +14,7 @@ BowlingGame.prototype.totalScoreBonuses = function () {
 
 BowlingGame.prototype.totalBaseScore = function () {
   this._framesBaseScores();
-  var allScores = this.frames.reduce(function(totalScore, frameScore) {
+  var allScores = this.frames.reduce(function (totalScore, frameScore) {
     return totalScore + frameScore.score;
   }, 0);
   return allScores;

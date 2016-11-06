@@ -1,6 +1,6 @@
 describe ('Game', function () {
 
-  var results = [1,2,3]
+  var results = [1,2,3,4,5,5,3,5,2,6,7,3,6,1,3,2,8,1,9,0];
   var game = new Game (results);
   var strike = game._pins;
 
@@ -12,52 +12,48 @@ describe ('Game', function () {
     expect(game._pins).toEqual(10);
   });
 
-  it("starts a frame at least 10 times", function(){
-    spyOn(game, 'frame');
-    game.start();
-    expect(game.frame.calls.count()).toEqual(10);
-  });
-
-  it("starts a frame no more than 12 times", function(){
-    spyOn(game, 'frame');
-    game.start();
-    expect(game.frame.calls.count()).toBeLessThan(12);
-  });
-
   it("recieves an array of roll results on initialisation", function(){
-    expect(game.results).toEqual([1,2,3])
+    expect(game.results).toEqual(results);
+  });
+
+  it("starts a frame as many times as the results array indicates", function(){
+    spyOn(game, 'frame');
+    spyOn(game, 'tenthFrame');
+    game.start();
+    expect(game.frame.calls.count()).toEqual(results.length/2-1);
+    expect(game.tenthFrame).toHaveBeenCalled();
   });
 
   describe('frame', function(){
 
     it("updates the score based on the result of the frame", function(){
-      spyOn(game, 'roll').and.returnValue(3);
+      spyOn(game, 'getRoll').and.returnValue(3);
       var score = game.getScore();
       game.frame();
       expect(game.getScore()).toEqual(score+6);
     });
 
     it("performs one roll if strike", function(){
-      spyOn(game, 'roll').and.returnValue(strike);
+      spyOn(game, 'getRoll').and.returnValue(strike);
       game.frame();
-      expect(game.roll.calls.count()).toEqual(1);
+      expect(game.getRoll.calls.count()).toEqual(1);
     });
 
     it("performs two rolls if the first wasn't a strike", function(){
-      spyOn(game, 'roll').and.returnValue(4);
+      spyOn(game, 'getRoll').and.returnValue(4);
       game.frame();
-      expect(game.roll.calls.count()).toEqual(2);
+      expect(game.getRoll.calls.count()).toEqual(2);
     });
 
     it("adds a bonus if the player rolls a strike", function(){
-      spyOn(game, 'roll').and.returnValue(strike);
+      spyOn(game, 'getRoll').and.returnValue(strike);
       spyOn(game, 'setBonus');
       game.frame();
       expect(game.setBonus).toHaveBeenCalled();
     });
 
     it("adds a bonus if the player rolls a spare", function(){
-      spyOn(game, 'roll').and.returnValue(strike/2);
+      spyOn(game, 'getRoll').and.returnValue(strike/2);
       spyOn(game, 'setBonus');
       game.frame();
       expect(game.setBonus).toHaveBeenCalled();
@@ -72,7 +68,7 @@ describe ('Game', function () {
 
   describe("bonus", function(){
     it ("increases the score by the number of pins knocked down in the next roll", function(){
-      spyOn(game, 'roll').and.returnValue(3);
+      spyOn(game, 'getRoll').and.returnValue(3);
       game.setBonus();
       var score = game.getScore();
       game.frame();
@@ -80,7 +76,7 @@ describe ('Game', function () {
     });
 
     it ("applies even when next roll is a strike", function(){
-      spyOn(game, 'roll').and.returnValue(strike);
+      spyOn(game, 'getRoll').and.returnValue(strike);
       spyOn(game, 'applyBonus');
       game.setBonus();
       game.frame();
@@ -91,48 +87,59 @@ describe ('Game', function () {
   describe("10th frame", function(){
 
     it("lets you roll the additional balls for bonus if it was a strike frame", function(){
-      spyOn(game, 'roll').and.returnValue(strike);
-      spyOn(game, 'extraRolls');
+      var results = [10,0,3,4,5,5,3,5,2,6,7,3,6,1,3,2,8,1,10,4,6];
+      var game = new Game (results);
+      spyOn(game, 'extraRoll');
       game.start();
-      expect(game.extraRolls).toHaveBeenCalled();
+      expect(game.extraRoll).toHaveBeenCalled();
     });
     it("lets you roll the additional balls for bonus if it was a spare frame", function(){
-      spyOn(game, 'roll').and.returnValue(5);
-      spyOn(game, 'extraRolls');
+      var results = [10,0,3,4,5,5,3,5,2,6,7,3,6,1,3,2,8,1,9,1,7];
+      var game = new Game (results);
+      spyOn(game, 'extraRoll');
       game.start();
-      expect(game.extraRolls).toHaveBeenCalled();
+      expect(game.extraRoll).toHaveBeenCalled();
     });
   });
 
   describe("rolling extra balls", function(){
 
-    it("lets you have up to 3 extra rolls", function(){
-      spyOn(game, 'roll');
-      game.extraRolls();
-      expect(game.roll.calls.count()).toBeLessThan(4);
+    it("lets you have up to 1 extra roll", function(){
+      results = [10,0,3,4,10,0,3,5,10,0,7,3,10,0,3,2,8,10,10,0,10,4,5];
+      game = new Game(results);
+      spyOn(game, 'extraRoll');
+      game.start();
+      expect(game.extraRoll.calls.count()).toEqual(1);
     });
 
-    it("you get as many extra rolls as you have balls remaining", function(){
-      spyOn(game, 'roll');
-      game._balls = 2;
-      game.extraRolls();
-      expect(game.roll.calls.count()).toEqual(2);
+    it("if you have no balls left you don't get an extra roll", function(){
+      results = [1,2,3,4,5,5,3,5,2,6,7,3,6,1,3,2,8,1,9,10];
+      game = new Game(results);
+      spyOn(game, 'extraRoll');
+      game.start();
+      expect(game.extraRoll).not.toHaveBeenCalled();
     });
   });
 
   describe("special games:", function(){
     it("is a gutter game when you score nothing", function(){
-      game = new Game ();
-      spyOn(game, 'roll').and.returnValue(0);
+      var results = new Array(20);
+      results.fill(0,0,20);
+      game = new Game (results);
       game.start();
       expect(game.getScore()).toEqual(0);
     });
-    it("is a gutter game when you score nothing", function(){
-      game = new Game ();
-      var strike = game._pins;
-      spyOn(game, 'roll').and.returnValue(strike);
+    it("is a perfect game when all your rolls ares strikes", function(){
+      var results = [10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 10, 10, 10];
+      game = new Game (results);
       game.start();
-      expect(game.getScore()).toEqual(300);
+      expect(game.getScore()).toEqual(230);
+    });
+    it("example game", function(){
+      var results = [1,4,4,5,6,4,5,5,10,0,0,1,7,3,6,4,10,0,2,8,6];
+      game = new Game (results);
+      game.start();
+      expect(game.getScore()).toEqual(131);
     });
   });
 });

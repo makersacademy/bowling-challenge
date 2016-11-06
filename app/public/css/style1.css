@@ -41,13 +41,13 @@ form {
 
 #bowling-calc-score-container .second,
 #bowling-calc-score-container .third {
-  border-bottom: 3px solid black;
+  border-bottom: 2px solid black;
 }
 
 #bowling-calc-score-container .game-result {
   border-right: 1px solid black;
-  font-size: 2em;
-  font-weight: 200;
+  font-size: 3em;
+  font-weight: 500;
 }
 
 

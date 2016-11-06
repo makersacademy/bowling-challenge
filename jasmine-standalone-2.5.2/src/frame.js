@@ -65,12 +65,7 @@ function Frame() {
   };
 
   Frame.prototype.nextFrame = function() {
-    // if (this.rolled2 === true) {
-      return this.currentFrame += 1;
-    //   } else {
-    //     return this.currentFrame;
-    // }
-
+      this.currentFrame === 11 ? alert("Game Over") : this.currentFrame += 1;
   };
 
 Frame.prototype.reset = function() {
@@ -81,18 +76,6 @@ Frame.prototype.reset = function() {
     this.rolled2 = false;
   };
 
-  Frame.prototype.totalScore = function() {
-    return this.score = (this.score + this.pinsDown1 + this.pinsDown2);
+  Frame.prototype.addScore = function() {
+    return this.score = this.score + this.pinsDown1 + this.pinsDown2;
   };
-  // function rolling1(){
-  //   frame.roll1();
-  //   frame.pinsLeft();
-  //   frame.firstRoll();
-  // }
-  // function rolling2(){
-  //   frame.roll2();
-  //   frame.pinsLeft();
-  //   frame.secondRoll();
-  // }
-
-// };

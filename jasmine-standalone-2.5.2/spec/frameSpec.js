@@ -52,9 +52,15 @@ describe('Frame', function () {
         frame.roll2();
         frame.pinsLeft();
         frame.nextFrame();
-        frame.totalScore();
+        frame.addScore();
         frame.reset();
         expect(frame.score).toBeGreaterThan(0);
       });
 
+      it("tells you when the game is over", function() {
+          for(var x = 0; x < 15; x++) {
+          frame.nextFrame();
+        }
+        expect(frame.currentFrame).toBe(11);
+      });
    });

@@ -4,7 +4,6 @@ describe('Game', function () {
     var game;
     beforeEach(function () {
         game = new Game();
-        game.start();
     });
     describe('frames', function () {
         it('contains 10 frames', function () {

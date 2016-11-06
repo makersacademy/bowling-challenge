@@ -8,14 +8,14 @@ Game.prototype.addScore = function(score) {
     this._tenthFrame(score);
   } else {
     this._checkFrame();
-    this.frames[this.currentFrame][0].push(score);
+    this._currentFrameScore().push(score);
     this._applyBonus(score);
     this._checkBonus(score);
   }
 };
 
 Game.prototype.frameTotal = function() {
- return this.frames[this.currentFrame][0].reduce(function(a, b) {
+ return this._currentFrameScore().reduce(function(a, b) {
     return a + b;
   }, 0);
 };
@@ -31,8 +31,8 @@ Game.prototype.total = function() {
 };
 
 Game.prototype._tenthFrame = function(score) {
-  if ((this.frames[this.currentFrame][1] > 0 || this.frames[this.currentFrame][0].length == 1) && (this.frames[this.currentFrame][0].length < 3)) {
-    this.frames[this.currentFrame][0].push(score);
+  if ((this._currentFrameBonus() > 0 || this._currentFrameScore().length == 1) && (this._currentFrameScore().length < 3)) {
+    this._currentFrameScore().push(score);
     this._checkBonus(score);
     if (this.frames[8][1] == 1) {
       this.frames[8][0].push(score);
@@ -42,7 +42,7 @@ Game.prototype._tenthFrame = function(score) {
 };
 
 Game.prototype._checkFrame = function() {
-  if (this.frames[this.currentFrame][0].length == 2 || this.frames[this.currentFrame][0][0] == 10) {
+  if (this._currentFrameScore().length == 2 || this._currentFrameScore()[0] == 10) {
     this._addFrame();
   }
 };
@@ -62,9 +62,17 @@ Game.prototype._checkBonus = function(score) {
 
 Game.prototype._applyBonus = function(score) {
   for(var i = 0; i < this.frames.length; i++) {
-    if (this.frames[i][1] >= 1 && this.frames[i][0].length <= 3) {
+    if (this.frames[i][1] >= 1) {
       this.frames[i][0].push(score);
       this.frames[i][1] -= 1;
     }
   }
+};
+
+Game.prototype._currentFrameScore = function() {
+  return this.frames[this.currentFrame][0];
+};
+
+Game.prototype._currentFrameBonus = function() {
+  return this.frames[this.currentFrame][1];
 };

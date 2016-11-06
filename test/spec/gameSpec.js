@@ -26,7 +26,7 @@ describe ('Game', function () {
 
     it("updates the score based on the result of the frame", function(){
       spyOn(game, 'roll').and.returnValue(3);
-      score = game._score;
+      var score = game._score;
       game.frame();
       expect(game._score).toEqual(score+6);
     });
@@ -68,7 +68,7 @@ describe ('Game', function () {
     it ("increases the score by the number of pins knocked down in the next roll", function(){
       spyOn(game, 'roll').and.returnValue(3);
       game.setBonus();
-      score = game._score;
+      var score = game._score;
       game.frame();
       expect(game._score).toEqual(score + 3*3);
     });

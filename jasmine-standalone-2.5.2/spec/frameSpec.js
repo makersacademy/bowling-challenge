@@ -46,4 +46,15 @@ describe('Frame', function () {
         frame.reset();
         expect(frame.totalPins).toBe(10);
       });
+
+      it("has an accumalative score", function () {
+        frame.roll1();
+        frame.roll2();
+        frame.pinsLeft();
+        frame.nextFrame();
+        frame.totalScore();
+        frame.reset();
+        expect(frame.score).toBeGreaterThan(0);
+      });
+
    });

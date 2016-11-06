@@ -6,6 +6,7 @@ function Frame() {
     this.rolled1 = false;
     this.rolled2 = false;
     this.currentFrame = 0;
+    this.score = 0;
 
   };
 
@@ -73,14 +74,16 @@ function Frame() {
   };
 
 Frame.prototype.reset = function() {
-  //
     this.pinsDown1 = 0;
     this.pinsDown2 = 0;
     this.totalPins = 10;
     this.rolled1 = false;
     this.rolled2 = false;
-    // }
-  }
+  };
+
+  Frame.prototype.totalScore = function() {
+    return this.score = (this.score + this.pinsDown1 + this.pinsDown2);
+  };
   // function rolling1(){
   //   frame.roll1();
   //   frame.pinsLeft();

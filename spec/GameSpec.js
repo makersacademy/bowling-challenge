@@ -32,7 +32,12 @@ describe("Game", function() {
     roll(1, 2);
     roll(17, 0);
     expect(game.score()).toEqual(18);
-  })
+  });
+
+  it('rolls a game of all strikes', function() {
+    roll(12, 10);
+    expect(game.score()).toEqual(300);
+  });
 
   function roll(times, pinsDown) {
     for (var i = 0; i < times; i++) {

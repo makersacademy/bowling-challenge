@@ -65,9 +65,38 @@ describe('Game', function () {
                 expectedScore: 30
             },
             {
+                bowls: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,0],
+                expectedScore: 10
+            },
+            {
                 bowls: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,1],
                 expectedScore: 11
-            }
+            },
+            {
+                bowls: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,10],
+                expectedScore: 20
+            },
+            {
+                bowls: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0],
+                expectedScore: 10
+            },
+            {
+                bowls: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,1,1],
+                expectedScore: 12
+            },
+            {
+                bowls: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,4,6],
+                expectedScore: 20
+            },
+            {
+                bowls: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,10],
+                expectedScore: 30
+            },
+            {
+                bowls: [10,10,10,10,10,10,10,10,10,10,10,10],
+                expectedScore: 300
+            },
+
         ];
         testCases.forEach(function (testCase) {
             it('keeps the correct score for bowls', function () {

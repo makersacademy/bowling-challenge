@@ -19,4 +19,9 @@ describe('Game', function() {
     expect(game.score()).toEqual(0);
   });
 
+  it('calculates 20 if all rolls hit 1 pin', function() {
+    rollLoop(20, 1);
+    expect(game.score()).toEqual(20);
+  });
+
 });

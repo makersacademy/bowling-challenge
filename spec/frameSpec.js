@@ -34,4 +34,15 @@ describe('Frame', function() {
     expect(frame.isEndFrame()).toBe(true);
   });
 
+  // it('recognises a strike condition',function() {
+  //   game.recordRoll(10)
+  //   expect(frame.isStrike()).toBe(true);
+  // });
+  //
+  // it('recognises a spare condition',function() {
+  //   game.recordRoll(9)
+  //   game.recordRoll(1)
+  //   expect(frame.isSpare()).toBe(true);
+  // });
+
 });

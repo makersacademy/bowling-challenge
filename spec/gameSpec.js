@@ -15,30 +15,19 @@ describe('Game', function() {
   it('starts a new frame after two rolls', function() {
     game.recordRoll(5);
     game.recordRoll(4);
-    expect(game.frame.rolls).toEqual([]);
-    expect(game.frameRolls[0]).toEqual([5,4]);
+    expect(game.currentFrame.rolls).toEqual([]);
+    expect(game.allFrames[0].rolls).toEqual([5,4]);
   });
 
   it('starts a new frame after a strike', function() {
     game.recordRoll(10);
-    expect(game.frame.rolls).toEqual([]);
-    expect(game.frameRolls[0]).toEqual([10]);
+    expect(game.currentFrame.rolls).toEqual([]);
+    expect(game.allFrames[0].rolls).toEqual([10]);
   });
 
   it('increases the frame number by one',function() {
     game.recordRoll(10)
     expect(game.frameNum).toEqual(2);
-  });
-
-  it('recognises a strike condition',function() {
-    game.recordRoll(10)
-    expect(game.isStrike()).toBe(true);
-  });
-
-  it('recognises a spare condition',function() {
-    game.recordRoll(9)
-    game.recordRoll(1)
-    expect(game.isSpare()).toBe(true);
   });
 
   describe('End Game', function() {

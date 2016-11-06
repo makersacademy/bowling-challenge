@@ -14,6 +14,11 @@ describe('Game', function() {
     }
   }
 
+  function rollSpare() {
+    game.roll(5);
+    game.roll(5);
+  }
+
   it('calculates a gutter game', function() {
     rollLoop(20, 0);
     expect(game.score()).toEqual(0);
@@ -22,6 +27,20 @@ describe('Game', function() {
   it('calculates 20 if all rolls hit 1 pin', function() {
     rollLoop(20, 1);
     expect(game.score()).toEqual(20);
+  });
+
+  it('calculates one spare', function() {
+    rollSpare();
+    game.roll(5);
+    expect(game.score()).toEqual(20);
+  });
+
+  it('calculates one strike', function() {
+    game.roll(10); // Frame 1: 10 + (3 + 6)= 19
+    game.roll(3);
+    game.roll(6); // Frame 2: 3 + 6 = 9
+                  // Total: 19 + 9 = 28
+    expect(game.score()).toEqual(28);
   });
 
 });

@@ -11,14 +11,8 @@ var BowlingGame = function () {
 BowlingGame.prototype.addFrame = function (frame) {
   if (this._addFrameLimit() === true) {
     return 'Game is over';
-  } else if (this.noOfFrames.length === 9) {
-    this._incrementNoOfFrames(frame);
-    this._incrementScore();
-    if (this._currentFrame().roll1 === 10) {
-      this.score += ((this._currentFrame().roll2) + (this._currentFrame().bonusRoll));
-    } else if ((this._currentFrame().rollsTotal === 10) && (this._currentFrame().roll1 !== 10)) {
-      this.score += (this._currentFrame().bonusRoll);
-    }
+  } else if (this._framesLengthIs9() === true) {
+    this._isFinalFrame(frame);
   }  else {
     this._incrementNoOfFrames(frame);
     this._incrementScore();
@@ -45,9 +39,9 @@ BowlingGame.prototype._incrementNoOfFrames  = function (frame) {
 
 BowlingGame.prototype._incrementScore = function () {
   if (this._lastTwoFramesWereStrikes() === true) {
-    this.score += (this._currentFrame().rollsTotal) + (this._currentFrame().rollsTotal) + (this._currentFrame().roll1);
+    this.score += ((this._currentFrame().rollsTotal) * 2) + (this._currentFrame().roll1);
   } else if (this._lastFrameWasStrike() === true) {
-    this.score += ((this._currentFrame().rollsTotal) + (this._currentFrame().rollsTotal));
+    this.score += ((this._currentFrame().rollsTotal) * 2)
   } else if (this._lastFrameWasSpare() === true) {
     this.score += ((this._currentFrame().rollsTotal) + (this._currentFrame().roll1));
   } else {
@@ -105,4 +99,18 @@ BowlingGame.prototype._isFirstFrame = function () {
 
 BowlingGame.prototype._isFirstOrSecondFrame = function () {
   return this.noOfFrames.length <= 2;
+}
+
+BowlingGame.prototype._framesLengthIs9 = function () {
+  return this.noOfFrames.length === 9;
+}
+
+BowlingGame.prototype._isFinalFrame = function (frame) {
+  this._incrementNoOfFrames(frame);
+  this._incrementScore();
+  if (this._currentFrame().roll1 === 10) {
+    this.score += ((this._currentFrame().roll2) + (this._currentFrame().bonusRoll));
+  } else if ((this._currentFrame().rollsTotal === 10) && (this._currentFrame().roll1 !== 10)) {
+    this.score += (this._currentFrame().bonusRoll);
+  }
 }

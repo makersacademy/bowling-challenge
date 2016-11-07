@@ -16,7 +16,7 @@ BowlingGame.prototype.addFrame = function (frame) {
     this._incrementScore();
     if (this._currentFrame().roll1 === 10) {
       this.score += ((this._currentFrame().roll2) + (this._currentFrame().bonusRoll));
-    } else if ((this._currentFrame().rollsTotal === 10) && (this._currentFrame().roll1 != 10)) {
+    } else if ((this._currentFrame().rollsTotal === 10) && (this._currentFrame().roll1 !== 10)) {
       this.score += (this._currentFrame().bonusRoll);
     }
   }  else {
@@ -75,7 +75,7 @@ BowlingGame.prototype._lastFrameWasSpare = function () {
   if (this._isFirstFrame()){
     return false;
   } else {
-    return (this._isLastFrame().rollsTotal === 10 && this._isLastFrame().roll1 != 10);
+    return (this._isLastFrame().rollsTotal === 10 && this._isLastFrame().roll1 !== 10);
   }
 }
 

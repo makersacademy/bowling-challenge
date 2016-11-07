@@ -1,5 +1,5 @@
 $( document ).ready(function () {
-  var game = new BowlingGame
+  var game = new BowlingGame();
   var frame
 
 

@@ -34,13 +34,13 @@ BowlingGame.prototype._gameSetup = function () {
 BowlingGame.prototype._createFrames = function () {
   for (var i = 0; i < 10; i++) {
     this.frames.push(new Frame(this))
-  };
+  }
 };
 
 BowlingGame.prototype._frameNumber = function () {
   for (var n = 0; n < 10; n++) {
     this.frames[n].number = n + 1
-  };
+  }
 };
 
 BowlingGame.prototype._setupLastFrame = function () {
@@ -51,14 +51,14 @@ BowlingGame.prototype._frameScoreBonuses = function () {
   for (var i = 0; i < this.frames.length; i++) {
     var currentFrame = this.frames[i];
     currentFrame.bonusScoreCalculation();
-  };
+  }
 };
 
 BowlingGame.prototype._framesBaseScores = function () {
   for (var i = 0; i < this.frames.length; i++) {
     var currentFrame = this.frames[i];
     currentFrame._setFrameScore();
-  };
+  }
 };
 
 BowlingGame.prototype._setfinalScore = function () {

@@ -81,7 +81,6 @@ $(document).ready(function(){
 
           $('#edit-frame'+i+'-res').val(game.frames[i-1].score);
           if (i<=10){
-            // alert(i);
             game.totalScore += game.frames[i-1].score
           }
         }
@@ -129,6 +128,7 @@ $(document).ready(function(){
       roll.roll=[];
       enableButtons();
       disableSpareButton();
+      $('#edit-frame10-3').val("");
       for(var i=1;i<=10;i++){
         $('#edit-frame'+i+'-1').val("");
         $('#edit-frame'+i+'-2').val("");

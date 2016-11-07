@@ -6,7 +6,7 @@ form {
   min-width: 440px;
   font-family: 'Coiny';
   border: 3px solid #F0F0F0;
-  background: #E8F5FA;   
+  background: #E8F5FA;
   border-radius: 10px;
   padding: 2%;
   margin: 2%;
@@ -66,9 +66,5 @@ form input[type=button] {
 }
 
 form input[type=button]:hover:enabled {
-  background: #1e75aa;
-}
-
-form input[type=button]:active {
-  background: #136899;
+  background: #168BCE;
 }

@@ -1,3 +1,7 @@
+Outstanding:
+New game functionality does not work properly.
+Some of the tests fail although the score is correct.
+
 AIM:
 Count and sum the scores of a bowling game for one player (in JavaScript).
 Create a nice interactive animated interface with jQuery.
@@ -10,14 +14,14 @@ Click a button representing the value of the first roll.
 If the first roll is a strike, that frame is complete and you move on to the next frame
 Click a button representing the value of the second roll.
 X = strike - This button is only available on the first ball of a frame.
-/ = spare - This button is only available on the second ball of a frame.
+/ = spare - This button is only available on the second ball of a frame and represents the value remaining to make a spare (i.e. score 10), e.g. if the 1st roll of the frame knocked down 2 pins, then the value of "/" will be 8 when you enter the number of pins knocked down by the 2nd ball of the frame.
 
 REVIEW EXPECTATIONS:
 All tests passing
 The code is elegant: every class has a clear responsibility, methods are short etc.
 
 LAYOUT:
-I copied the layout from : http://www.sportcalculators.com/bowling-score-calculator
+I copied the layout from sportcalculators.com
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Bowling Challenge

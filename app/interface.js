@@ -1,8 +1,9 @@
 
 $("document").ready(function() {
   game = new Game();
-  console.log(game);
+  game.randomAngle();
   $("#bowl").click(function() {
     game.play();
+    game.randomAngle();
   });
 });

@@ -1,20 +1,10 @@
 Bowling Challenge
 =================
-Our week 5 weekend challenge was to produce a scoring calculator for a bowling game for one player (in JavaScript).
+Our week 5 solo challenge was to produce a scoring calculator for a bowling game for one player (in JavaScript).
 
-Instructions:
--------
-````
-Coming soon.
-````
-Screenshots:
--------
-````
-Coming soon.
-````
 Technologies used:
 -------
-JavaScript, Jasmine BDD framework.
+JavaScript, jQuery, Jasmine BDD framework.
 
 Approach:
 -------
@@ -25,6 +15,9 @@ Approach:
 - Started to write and pass tests for the basic game, i.e. with no strikes or spares. Created Frame and Game objects with their own properties.
 - Wrote a basic HTML interface so I could input the scores and see the results appear (felt that this would help with understanding what was happening / de-bugging later on)
 - Didn't integrate the interface, but instead carried on with the logic, getting basic strike and spare bonuses to calculate correctly.
+- Somewhat integrated the interface (for non-strikes/spares), but then decided to carry on with the logic
+- Managed to get sequential strikes to work, but not random strikes and spares after each other
+- Did not complete final frame
 
 User stories:
 -----

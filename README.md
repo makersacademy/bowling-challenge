@@ -1,11 +1,11 @@
 # TEN PIN BOWLING SCORECARD
 
 ## AIM:
-Count and sum the scores of a bowling game for one player (in JavaScript).
-Create a nice interactive animated interface with jQuery.
-Provide messages for "Gutter Game" and "Perfect Game".
-Gutter Game = the player never hits a pin (20 zero scores)
-Perfect Game = the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+Count and sum the scores of a bowling game for one player (in JavaScript).  
+Create a nice interactive animated interface with jQuery.  
+Provide messages for "Gutter Game" and "Perfect Game".  
+Gutter Game = the player never hits a pin (20 zero scores)  
+Perfect Game = the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.  
 
 ## HOW TO PLAY:
 * Click a button representing the value of the first roll.

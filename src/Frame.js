@@ -10,7 +10,6 @@ function Frame() {
 }
 
 Frame.prototype.addRollOneScore = function(pins) {
-  this.rollsCompleted = 1;
   this.rollOneScore = pins;
   if(this.rollOneScore === 10) {
     this._markAsStrike();
@@ -19,10 +18,10 @@ Frame.prototype.addRollOneScore = function(pins) {
     this.score += this.rollOneScore;
     this.pinsRemaining = 10 - pins;
   }
+  this.rollsCompleted = 1;
 }
 
 Frame.prototype.addRollTwoScore = function(pins) {
-  this.rollsCompleted = 2;
   this.rollTwoScore = pins;
   if(this.rollOneScore + this.rollTwoScore === 10) {
     this._markAsSpare();
@@ -30,6 +29,7 @@ Frame.prototype.addRollTwoScore = function(pins) {
   else {
     this.score += this.rollTwoScore;
   }
+  this.rollsCompleted = 2;
   this.isComplete = true;
 }
 

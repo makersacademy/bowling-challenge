@@ -8,7 +8,7 @@ describe("Game", function () {
     game = new Game();
   });
 
-  describe("default status", function () {
+  describe("default status", function() {
 
     it('has no completed frames', function() {
       expect(game.completedFrames.length).toEqual(0);
@@ -22,6 +22,24 @@ describe("Game", function () {
       expect(game.isOver).toBe(false);
     });
   });
+
+  describe("only accepts integer values from 0 to 10", function() {
+
+    it("won't accept a string", function() {
+      expect(function() { game.bowl("X") } ).toThrow("Cannot read this input. Expected a number from 0 to 10.")
+    });
+
+    it("won't accept numbers greater than 10", function() {
+      expect(function() { game.bowl(11) } ).toThrow("Cannot read this input. Expected a number from 0 to 10.")
+    });
+
+    it("won't accept numbers less than 0", function() {
+      expect(function() { game.bowl(-1) } ).toThrow("Cannot read this input. Expected a number from 0 to 10.")
+    });
+  });
+
+
+// cannot bowl more then pins remaining on second roll
 
   describe("first completed frame", function () {
 

@@ -63,18 +63,18 @@ BowlingGame.prototype.checkSingleStrike = function(){
 }
 
 BowlingGame.prototype.checkDoubleStrike = function() {
-  var oneBefore = this.oneBefore();
-  var twoBefore = this.twoBefore();
   if (this.isDoubleStrike) {
-    this.checkTripleStrikeAndProcess();
+    this.checkTripleStrikeAndUpdate();
   }
 }
 
 BowlingGame.prototype.isDoubleStrike = function(){
+  var oneBefore = this.oneBefore();
+  var twoBefore = this.twoBefore();
   return (oneBefore.isStrike && twoBefore.isStrike);
 }
 
-BowlingGame.prototype.checkTripleStrikeAndProcess = function() {
+BowlingGame.prototype.checkTripleStrikeAndUpdate = function() {
   if (this.currentFrame.isStrike) {
     twoBefore.frame_score = 30
   } else {

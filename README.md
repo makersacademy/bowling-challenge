@@ -22,7 +22,6 @@ The code is elegant: every class has a clear responsibility, methods are short e
 
 LAYOUT:
 I copied the layout from sportcalculators.com
-https://www.dropbox.com/s/7ydue0dthexq7o9/Screenshot%20from%202016-11-07%2008-15-03.png
 ![alt tag](https://www.dropbox.com/s/7ydue0dthexq7o9/Screenshot%20from%202016-11-07%2008-15-03.png?raw=1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Bowling Challenge

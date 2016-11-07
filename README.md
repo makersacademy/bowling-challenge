@@ -8,11 +8,11 @@ Gutter Game = the player never hits a pin (20 zero scores)
 Perfect Game = the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
 ## HOW TO PLAY:
-Click a button representing the value of the first roll.
-If the first roll is a strike, that frame is complete and you move on to the next frame
-Click a button representing the value of the second roll.
-X = strike - This button is only available on the first ball of a frame.
-/ = spare - This button is only available on the second ball of a frame and represents the value remaining to make a spare (i.e. score 10), e.g. if the 1st roll of the frame knocked down 2 pins, then the value of "/" will be 8 when you enter the number of pins knocked down by the 2nd ball of the frame.
+* Click a button representing the value of the first roll.
+* If the first roll is a strike, that frame is complete and you move on to the next frame
+* Click a button representing the value of the second roll.
+* X = strike - This button is only available on the first ball of a frame.
+* / = spare - This button is only available on the second ball of a frame and represents the value remaining to make a spare (i.e. score 10), e.g. if the 1st roll of the frame knocked down 2 pins, then the value of "/" will be 8 when you enter the number of pins knocked down by the 2nd ball of the frame.
 
 ## REVIEW EXPECTATIONS:
 All tests passing

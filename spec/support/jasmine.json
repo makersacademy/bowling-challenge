@@ -3,6 +3,7 @@
     "spec_files": [
         "spec/BowlingGameSpec.js",
         "spec/FrameSpec.js",
+        "spec/BowlingBall.js",
         "**/*[sS]pec.js"
     ],
     "helpers": [

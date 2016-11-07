@@ -13,6 +13,10 @@ If the first roll is a strike, that frame is complete and you move on to the fir
 After entering the value of the 1st roll (assuming it wasn't a strike), click a button representing the value of the second roll.  
 X = strike - This button is only available on the first ball of a frame.  
 / = spare - This button is only available on the second ball of a frame and represents the value remaining to make a spare (i.e. score 10), e.g. if the 1st roll of the frame knocked down 2 pins, then the value of "/" will be 8 when you enter the number of pins knocked down by the 2nd ball of the frame.  
+If you get a strike in a frame, the score of the next 2 rolls is added retrospectively to the score in that frame.  
+If you get a spare in a frame, the score of the next roll is added retrospectively to the score in that frame.  
+If you get a strike in the 10th frame, you are given 2 more rolls which add (retrospectively) to the score of the 10th frame.  
+If you get a spare in the 10th frame, you are given 1 more roll which add (retrospectively) to the score of the 10th frame.  
 
 ## REVIEW EXPECTATIONS:
 All tests passing  

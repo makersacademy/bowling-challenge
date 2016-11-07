@@ -24,6 +24,8 @@ FinalFrame.prototype.addScore = function(skittles) {
 FinalFrame.prototype.checkIfFirstStrike = function(skittles) {
   if (skittles === 10 && this.turnNumber === 1) {
     this.isStrike = true;
+    this.totalScore = null
+    this.workingScore += skittles
     this.addThirdTurn();
   }
 };

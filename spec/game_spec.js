@@ -23,7 +23,7 @@ describe('Game', function() {
     game.bowl(8);
     game.bowl(1);
     game.bowl(4);
-    expect(game.calculateFrameNumber()).toEqual(2);
+    expect(game.frameNumber).toEqual(2);
   });
 
   it('knows what frame it is on, even with several strikes', function() {
@@ -33,7 +33,7 @@ describe('Game', function() {
     game.bowl(5);
     game.bowl(10);
     game.bowl(3);
-    expect(game.calculateFrameNumber()).toEqual(5);
+    expect(game.frameNumber).toEqual(5);
   });
 
   describe('for strikes', function() {

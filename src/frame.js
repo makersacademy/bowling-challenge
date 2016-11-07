@@ -1,7 +1,7 @@
 'use strict';
 
 function Frame() {
-  this.totalScore = 0;
+  this.totalScore = null;
   this.workingScore = 0;
   this.shot = 0;
   this.isStrike = false
@@ -47,6 +47,6 @@ Frame.prototype.checkForIllegalScore = function(score) {
 Frame.prototype.checkIfSpare = function() {
   if (this.shot === 2 && this.workingScore === 10) {
     this.isSpare = true;
-    this.totalScore = 0
+    this.totalScore = null
   }
 };

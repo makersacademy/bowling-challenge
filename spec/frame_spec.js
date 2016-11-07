@@ -59,7 +59,7 @@ describe('Frame', function() {
 
   it("doesn't total score if it was a strike", function() {
     frame.addScore(10);
-    expect(frame.totalScore).toEqual(0);
+    expect(frame.totalScore).toEqual(null);
   });
 
   it("does add a total score if it wasn't a strike", function() {

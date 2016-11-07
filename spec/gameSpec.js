@@ -11,4 +11,10 @@ describe("Game", function() {
   it("Starts with 0 points", function() {
     expect(game.defaultPoints).toBe(0);
   });
+
+describe("#roll", function () {
+  it('chooses a random score out of 10', function() {
+    expect(Game.roll).not.toBe(null);
+  });
+  });
 });

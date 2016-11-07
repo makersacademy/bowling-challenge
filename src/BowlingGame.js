@@ -22,33 +22,70 @@ this.currentFrame = this.framesArray[this.currentFrameCounter];
 
 }
 
+BowlingGame.prototype.updateCurrentFrame = function() {
+  this.currentFrame = this.framesArray[this.currentFrameCounter];
+}
+
 BowlingGame.prototype.takeShot = function(points){
   this.currentFrame.addScore(points);
   if (this.currentFrame.isFinished) {
-    this.checkStrike();
+    this.checkSingleStrike();
     this.nextFrame();
+  } else {
+    this.checkSpare();
+    this.checkDoubleStrike();
   }
 }
 
 BowlingGame.prototype.nextFrame = function(){
   this.currentFrameCounter += 1;
-  this.currentFrame = this.framesArray[this.currentFrameCounter];
+  this.updateCurrentFrame();
 }
 
-BowlingGame.prototype.checkStrike = function() {
-var oneBefore = this.oneBefore();
-var twoBefore = this.twoBefore();
-  if (this.currentFrameCounter >= 3) {
-    if (twoBefore.isStrike) {
-      twoBefore.frame_score = (this.currentFrame.frame_score + oneBefore.frame_score + 10);
+BowlingGame.prototype.checkSpare = function() {
+  var oneBefore = this.oneBefore();
+  if (oneBefore.isSpare) {
+    if (this.currentFrame.isStrike) {
+      oneBefore.frameScore = 20;
+    } else {
+      oneBefore.frameScore = (this.currentFrame.first_ball + 10);
     }
   }
 }
 
-BowlingGame.prototype.twoBefore = function(){
-  return this.framesArray[this.currentFrameCounter - 2];
+BowlingGame.prototype.checkSingleStrike = function(){
+  var oneBefore = this.oneBefore();
+  if (this.currentFrameCounter >= 1) {
+    if (oneBefore.isStrike) {
+      oneBefore.frame_score = (this.currentFrame.frame_score + 10);
+    }
+  }
+}
+
+BowlingGame.prototype.checkDoubleStrike = function() {
+  var oneBefore = this.oneBefore();
+  var twoBefore = this.twoBefore();
+  if (this.isDoubleStrike) {
+    this.checkTripleStrikeAndProcess();
+  }
+}
+
+BowlingGame.prototype.isDoubleStrike = function(){
+  return (oneBefore.isStrike && twoBefore.isStrike);
+}
+
+BowlingGame.prototype.checkTripleStrikeAndProcess = function() {
+  if (this.currentFrame.isStrike) {
+    twoBefore.frame_score = 30
+  } else {
+    twoBefore.frameScore = (this.currentFrame.first_ball + 20);
+  }
 }
 
 BowlingGame.prototype.oneBefore = function(){
   return this.framesArray[this.currentFrameCounter - 1];
+}
+
+BowlingGame.prototype.twoBefore = function(){
+  return this.framesArray[this.currentFrameCounter - 2];
 }

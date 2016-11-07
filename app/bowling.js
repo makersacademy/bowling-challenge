@@ -1,82 +1,100 @@
 
-$("document").ready(function() {
-  var frameNo = 1;
-  var ball = 1;
-  var firstGo;
-  var secondGo;
-  var frameTotal;
-  var game = {frame:[], total: 0};
-  
-  var randomAngle = function() {
-    // var angle = Math.floor(Math.random() * 21) - 10;
-    // $("#throwAngle").val(angle);
-  };
+function Game() {
+  this.frameNo = 1;
+  this.ball = 1;
+  this.firstGo;
+  this.secondGo;
+  this.frameTotal;
+  this.game = {frame:[], total: 0};
+}
 
-  var bonusForStrike = function() {
-    var strikeFrame = game.frame[frameNo - 2];
-    game.total += frameTotal;
-    strikeFrame[0]['frameTotal'] += frameTotal;
-    $("#frame" + (frameNo - 2) + " #ball3").text(strikeFrame[0]['frameTotal']); 
-  };
+Game.prototype.randomAngle = function() {
+  // var angle = Math.floor(Math.random() * 21) - 10;
+  // $("#throwAngle").val(angle);
+}
 
-  var bonusForSpareOrStrike = function(){
-    console.log('bonus for spare or strike');
-    var spareFrame = game.frame[frameNo - 1];
-    game.total += frameTotal;
-    spareFrame[0]['frameTotal'] += frameTotal;
-    if(spareFrame[1] != 10) {
-      $("#frame" + (frameNo - 1) + " #ball3").text(spareFrame[0]['frameTotal']);
-    }
-  };
+Game.prototype.bonusForStrike = function() {
+  var strikeFrame = this.game.frame[this.frameNo - 2];
+  this.game.total += this.frameTotal;
+  strikeFrame[0]['frameTotal'] += this.frameTotal;
+  $("#frame" + (this.frameNo - 2) + " #ball3").text(strikeFrame[0]['frameTotal']); 
+};
 
-  var checkBonus = function() {
-    if(frameNo > 2 && game.frame[frameNo - 2][1] === 10) {
-      bonusForStrike();
-    }
-    if(frameNo > 1 && game.frame[frameNo - 1][0]['frameTotal'] === 10) {
-      bonusForSpareOrStrike();
-    }
+Game.prototype.bonusForSpareOrStrike = function(){
+  var spareFrame = this.game.frame[this.frameNo - 1];
+  this.game.total += this.frameTotal;
+  spareFrame[0]['frameTotal'] += this.frameTotal;
+  if(spareFrame[1] != 10) {
+    $("#frame" + (this.frameNo - 1) + " #ball3").text(spareFrame[0]['frameTotal']);
   }
-  
-  randomAngle()
+};
 
-  $("#bowl").click(function() {
-    var slider = 10 - Math.abs($("#throwAngle").val());
-    var cellOne = $("#frame" + frameNo + " #ball1");
-    var cellTwo = $("#frame" + frameNo + " #ball2");
-    var cellFrameTot = $("#frame" + frameNo + " #ball3");
-    if(frameNo < 11) {
-      if(ball === 1) {
-        firstGo = slider;
-        cellOne.text(firstGo);
-        if(firstGo === 10) {
-          second = 0;
-          frameTotal = firstGo
-          game.frame[frameNo] = [{'frameTotal': frameTotal}, firstGo, ];
-          checkBonus();
-          game.total += firstGo;
-          console.log(game);
-          frameNo++;
-          randomAngle();
-        } else {
-          randomAngle();
-          ball++;
-        }
-      } else if(ball === 2 ) {
-        secondGo = slider - firstGo < 1 ? 0 : slider - firstGo;
-        frameTotal = firstGo + secondGo;
-        cellTwo.text(secondGo);
-        if(frameTotal < 10) {
-          cellFrameTot.text(frameTotal);
-        }
-        game.frame[frameNo] = [{'frameTotal': frameTotal}, firstGo, secondGo];
-        checkBonus();
-        game.total += frameTotal;
-        console.log(game);
-        ball = 1;
-        frameNo++;
-        randomAngle();
+Game.prototype.checkBonus = function() {
+  if(this.frameNo > 2 && this.game.frame[this.frameNo - 2][1] === 10) {
+    this.bonusForStrike();
+  }
+  if(this.frameNo > 1 && this.frameNo < 12 && this.game.frame[this.frameNo - 1][0]['frameTotal'] === 10) {
+    this.bonusForSpareOrStrike();
+  }
+}
+
+Game.prototype.play = function() {
+  var slider = 10 - Math.abs($("#throwAngle").val());
+  var cellOne = $("#frame" + this.frameNo + " #ball1");
+  var cellTwo = $("#frame" + this.frameNo + " #ball2");
+  var cellFrameTot = $("#frame" + this.frameNo + " #ball3");
+
+  if((this.frameNo === 11 && this.game.frame[10][0]['frameTotal'] === 10) || (this.frameNo === 12 && this.game.frame[10][1] === 10)) {
+    if(this.ball === 1) {
+      this.firstGo = slider;
+      if(this.firstGo === 10) {
+        second = 0;
+        this.frameTotal = this.firstGo
+        this.game.frame[this.frameNo] = [{'frameTotal': this.frameTotal}, this.firstGo, ];
+        this.checkBonus();
+        console.log(this);
+        this.frameNo++;
+        $('#total').text(this.game.total);
       }
     }
-  });
+  }
+  if(this.frameNo < 11) {
+    if(this.ball === 1) {
+      this.firstGo = slider;
+      cellOne.text(this.firstGo);
+      if(this.firstGo === 10) {
+        second = 0;
+        this.frameTotal = this.firstGo;
+        this.game.frame[this.frameNo] = [{'frameTotal': this.frameTotal}, this.firstGo, 0];
+        this.checkBonus();
+        this.game.total += this.firstGo;
+        console.log(this);
+        this.frameNo++;
+        $('#total').text(this.game.total);
+        this.randomAngle();
+      } else {
+        this.randomAngle();
+        this.ball++;
+      }
+    } else if(this.ball === 2 ) {
+      this.secondGo = slider - this.firstGo < 1 ? 0 : slider - this.firstGo;
+      this.frameTotal = this.firstGo + this.secondGo;
+      cellTwo.text(this.secondGo);
+      if(this.frameTotal < 10) {
+        cellFrameTot.text(this.frameTotal);
+      }
+      this.game.frame[this.frameNo] = [{'frameTotal': this.frameTotal}, this.firstGo, this.secondGo];
+      this.checkBonus();
+      this.game.total += this.frameTotal;
+      console.log(this);
+      this.ball = 1;
+      this.frameNo++;
+      $('#total').text(this.game.total);
+      this.randomAngle();
+    }
+  }
+};
+
+$("#bowl").click(function() {
+  play();
 });

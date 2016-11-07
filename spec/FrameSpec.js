@@ -48,12 +48,12 @@ describe('Frame:', function () {
   describe('Finishing a frame', function () {
     it('bowling a strike should end the frame', function () {
       frame.firstRoll(10)
-      expect(frame.isfinished).toEqual(true)
+      expect(frame.isFinished).toEqual(true)
     })
     it('Secondroll should finish the frame', function () {
       frame.firstRoll(5)
       frame.secondRoll(1)
-      expect(frame.isfinished).toEqual(true)
+      expect(frame.isFinished).toEqual(true)
     })
   })
 })

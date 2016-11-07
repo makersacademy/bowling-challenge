@@ -13,7 +13,7 @@ describe('Game:', function () {
     })
   })
 
-  describe('it calculates the score', function () {
+  describe('it tracks the score', function () {
     it('initializes at 0', function () {
       expect(game.score).toEqual(0)
     })
@@ -39,12 +39,31 @@ describe('Game:', function () {
     beforeEach(function () {
       game.bowl(4)
       game.bowl(4)
+      game.bowl(4)
+      game.bowl(4)
+      game.bowl(4)
+      game.bowl(4)
     })
+
     it('adds score of a frame to the game score', function () {
-      expect(game.score).toEqual(8)
+      expect(game.score).toEqual(24)
     })
+
     it('stores a complete frame in the frame array', function () {
-      expect(game.frames.length).toEqual(1)
+      expect(game.frames.length).toEqual(3)
+    })
+  })
+  describe('End game', function () {
+
+    beforeEach(function () {
+      for (var i = 0; i <=19; i++) {
+        game.bowl(0)
+      }
+    })
+    it('should identify a gutter game', function () {
+      expect(game.score).toEqual(0)
+      expect(game.framesCompleted).toEqual(10)
+      expect(game.finalScore()).toEqual('gutter game')
     })
   })
 })

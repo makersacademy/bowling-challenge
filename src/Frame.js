@@ -4,9 +4,10 @@ function Frame () {
   this.firstRollTotal = 0
   this.secondRollTotal = 0
   this.tempTotal = 0
+  this.finalTotal = 0
   this.isStrike = false
   this.isSpare = false
-  this.isfinished = false
+  this.isFinished = false
 };
 
 Frame.prototype.firstRoll = function (pins) {
@@ -14,7 +15,7 @@ Frame.prototype.firstRoll = function (pins) {
   this.tempTotal = this.firstRollTotal
   if (this.tempTotal === 10) {
     this.isStrike = true
-    this.isfinished = true
+    this.isFinished = true
   }
 }
 
@@ -24,5 +25,5 @@ Frame.prototype.secondRoll = function (pins) {
   if (this.tempTotal === 10) {
     this.isSpare = true
   }
-  this.isfinished = true
+  this.isFinished = true
 }

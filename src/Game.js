@@ -4,13 +4,13 @@ function Game() {
   this.isOver = false;
   this.isGutterGame = false;
   this.isFirstRoll = true;
-  this.frameNumber = 0;
+  this.frameNumber = 1;
+  this.currentFrame = new Frame();
 }
 
 Game.prototype.bowl = function(pins) {
   this._checkForDodgyInputs(pins);
   if(this.isFirstRoll) {
-    this._startNewFrame();
     this._processFirstRoll(pins);
   }
   else {
@@ -19,8 +19,7 @@ Game.prototype.bowl = function(pins) {
 }
 
 Game.prototype._startNewFrame = function() {
-  this.frameNumber += 1
-  this.currentFrame = new Frame();
+
 }
 
 Game.prototype._processFirstRoll = function(pins) {
@@ -40,6 +39,8 @@ Game.prototype._completeFrame = function() {
   this.score += this.currentFrame.score;
   this.completedFrames.push(this.currentFrame);
   this.isFirstRoll = true;
+  this.frameNumber += 1
+  this.currentFrame = new Frame();
   if(this.completedFrames.length === 10) {
     this._completeGame();
   }
@@ -47,32 +48,41 @@ Game.prototype._completeFrame = function() {
 
 Game.prototype._addBonusIfPreviousFrameWasSpare = function(pins) {
   if(this.completedFrames.length > 0) {
-    this._getPreviousFrame();
-    if(this.previousFrame.isSpare) {
-      this.completedFrames.slice(-1)[0].score = this.previousFrame.pendingScore + pins;
-      this.score += this.completedFrames.slice(-1)[0].score;
-    }
-  }
-}
-
-Game.prototype._addBonusifPreviousFrameWasStrike = function() {
-  if(this.completedFrames.length > 0) {
-    this._getPreviousFrame();
-    if(this.previousFrame.isStrike) {
-      this.completedFrames.slice(-1)[0].score = this.previousFrame.pendingScore + this.currentFrame.score;
+    if(this.completedFrames.slice(-1)[0].isSpare) {
+      this.completedFrames.slice(-1)[0].bonusScore += pins;
+      this.completedFrames.slice(-1)[0].score = this.completedFrames.slice(-1)[0].pendingScore + this.completedFrames.slice(-1)[0].bonusScore;
       this.score += this.completedFrames.slice(-1)[0].score;
     }
   }
 }
 
 Game.prototype._completeFrameIfStrike = function() {
+  this._addBonusForSequentialStrikes();
   if(this.currentFrame.isStrike) {
     this._completeFrame();
   }
 }
 
-Game.prototype._getPreviousFrame = function() {
-  this.previousFrame = this.completedFrames.slice(-1)[0];
+//unless the second roll is a spare, in which case - add the bonus but don't change actual score for the frame or game
+Game.prototype._addBonusifPreviousFrameWasStrike = function() {
+  if(this.completedFrames.length > 0) {
+    if(this.completedFrames.slice(-1)[0].isStrike) {
+      this.completedFrames.slice(-1)[0].bonusScore += this.currentFrame.score;
+      this.completedFrames.slice(-1)[0].score = this.completedFrames.slice(-1)[0].pendingScore + this.completedFrames.slice(-1)[0].bonusScore
+      this.score += this.completedFrames.slice(-1)[0].score;
+    }
+  }
+}
+
+Game.prototype._addBonusForSequentialStrikes = function() {
+  if(this.completedFrames.length > 0) {
+    if(this.completedFrames.slice(-1)[0].isStrike) {
+      this.completedFrames.slice(-1)[0].bonusScore = this.currentFrame.pendingScore;
+    }
+    if(this.completedFrames.slice(-2)[0].isStrike) {
+      this.completedFrames.slice(-2)[0].score = this.completedFrames.slice(-2)[0].pendingScore + this.completedFrames.slice(-2)[0].bonusScore + this.currentFrame.pendingScore;;
+    }
+  }
 }
 
 Game.prototype._completeGame = function() {
@@ -90,4 +100,7 @@ Game.prototype._checkForDodgyInputs = function(pins) {
   if(isNaN(pins)) throw "Cannot read this input. Expected a number from 0 to 10.";
   if(pins > 10) throw "Cannot read this input. Expected a number from 0 to 10.";
   if(pins < 0) throw "Cannot read this input. Expected a number from 0 to 10.";
+  if(!this.isFirstRoll && pins > this.currentFrame.pinsRemaining) {
+    throw "Cannot bowl more pins than are available.";
+  }
 }

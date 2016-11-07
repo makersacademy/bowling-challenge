@@ -36,6 +36,10 @@ describe("Frame", function () {
     it('sets rolls completed to one', function() {
       expect(frame.rollsCompleted).toEqual(1);
     });
+
+    it('calculates the pins remaining', function() {
+      expect(frame.pinsRemaining).toEqual(2);
+    });
   });
 
   describe("simple frame completion", function () {
@@ -55,6 +59,10 @@ describe("Frame", function () {
 
     it('knows the frame is complete', function() {
       expect(frame.isComplete).toBe(true);
+    });
+
+    it('calculates the pins remaining', function() {
+      expect(frame.pinsRemaining).toEqual(1);
     });
   });
 
@@ -76,6 +84,10 @@ describe("Frame", function () {
       expect(frame.score).toEqual(0);
       expect(frame.pendingScore).toEqual(10);
     });
+
+    it('calculates the pins remaining', function() {
+      expect(frame.pinsRemaining).toEqual(0);
+    });
   });
 
   describe("spares", function() {
@@ -92,6 +104,10 @@ describe("Frame", function () {
     it('witholds the score for the frame until the bonus has been calculated', function() {
       expect(frame.score).toEqual(0);
       expect(frame.pendingScore).toEqual(10);
+    });
+
+    it('calculates the pins remaining', function() {
+      expect(frame.pinsRemaining).toEqual(0);
     });
   });
 

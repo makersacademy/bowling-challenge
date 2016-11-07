@@ -7,6 +7,7 @@ function Frame() {
   this.isStrike = false;
   this.isSpare = false;
   this.pendingScore = 0;
+  this.bonusScore = 0;
 }
 
 Frame.prototype.addRollOneScore = function(pins) {
@@ -16,8 +17,8 @@ Frame.prototype.addRollOneScore = function(pins) {
   }
   else {
     this.score += this.rollOneScore;
-    this.pinsRemaining = 10 - pins;
   }
+  this.pinsRemaining = 10 - pins;
   this.rollsCompleted = 1;
 }
 
@@ -28,7 +29,9 @@ Frame.prototype.addRollTwoScore = function(pins) {
   }
   else {
     this.score += this.rollTwoScore;
+
   }
+  this.pinsRemaining -= pins;
   this.rollsCompleted = 2;
   this.isComplete = true;
 }

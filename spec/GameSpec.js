@@ -38,8 +38,25 @@ describe("Game", function () {
     });
   });
 
+  describe("after first roll", function() {
 
-// cannot bowl more then pins remaining on second roll
+    beforeEach(function() {
+      game.bowl(4);
+    });
+
+    it('does not yet add the frame score to the game score', function() {
+      expect(game.score).toEqual(0);
+    });
+
+    it("knows it's not longer on the first roll", function() {
+      expect(game.isFirstRoll).toBe(false);
+    });
+
+    it("won't accept more pins bowled on the second roll than are remaining", function() {
+      expect(function() { game.bowl(7) } ).toThrow("Cannot bowl more pins than are available.")
+    });
+
+  });
 
   describe("first completed frame", function () {
 
@@ -56,8 +73,8 @@ describe("Game", function () {
       expect(game.completedFrames.length).toEqual(1);
     });
 
-    it("doesn't increment frame count until next bowl rolled", function() {
-      expect(game.frameNumber).toEqual(1);
+    it("increments frame count after frame completed", function() {
+      expect(game.frameNumber).toEqual(2);
     });
 
   });
@@ -119,10 +136,6 @@ describe("Game", function () {
       game.bowl(5);
     });
 
-    it("knows the previous frame is a Frame", function(){
-      expect(game.completedFrames.slice(-1)[0]).toEqual(jasmine.any(Frame));
-    });
-
     it("knows the previous frame was a strike", function(){
       expect(game.completedFrames.slice(-2)[0].isStrike).toBe(true);
     });
@@ -134,6 +147,75 @@ describe("Game", function () {
     it("accurately calculates the game score including the second frame", function() {
       expect(game.score).toEqual(28);
     });
+  });
+
+  describe("sequential strikes", function() {
+
+    beforeEach(function() {
+      game.bowl(10);
+      game.bowl(10);
+    });
+
+    it("doesn't yet update the game's score", function(){
+      expect(game.score).toEqual(0);
+    });
+
+    it("knows the last completed frame was a strike", function(){
+      expect(game.completedFrames.slice(-1)[0].isStrike).toBe(true);
+    });
+
+    it("knows the frame before that was also a strike", function(){
+      expect(game.completedFrames.slice(-2)[0].isStrike).toBe(true);
+    });
+
+    it("updates the bonus score for the frame before last with 10", function(){
+      expect(game.completedFrames.slice(-2)[0].bonusScore).toBe(10);
+    });
+  });
+
+  describe("three strikes in a row", function() {
+
+    beforeEach(function() {
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+    });
+
+    it("doesn't yet update the game's score", function(){
+      expect(game.score).toEqual(0);
+    });
+
+    it("knows the very first frame was a strike", function(){
+      expect(game.completedFrames.slice(-3)[0].isStrike).toBe(true);
+    });
+
+    it("updates the bonus score for the penultimate frame with 10", function(){
+      expect(game.completedFrames.slice(-2)[0].bonusScore).toBe(10);
+    });
+
+    it("updates the actual score for first strike frame with 30", function(){
+      expect(game.completedFrames.slice(-3)[0].score).toBe(30);
+    });
+  });
+
+  describe("spare following a strike", function() {
+
+    beforeEach(function() {
+      game.bowl(10);
+      game.bowl(4);
+      game.bowl(6);
+    });
+
+  });
+
+  describe("strike following a spare", function() {
+
+    beforeEach(function() {
+      game.bowl(4);
+      game.bowl(6);
+      game.bowl(10);
+    });
+
   });
 
   describe("completed game", function() {

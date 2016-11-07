@@ -2,21 +2,57 @@
 Bowling Challenge
 =================
 
+As a player,
+I want to know which frame I am on.
+So that I know how many frames I have left.
 
-* Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+As a player,
+I want to know which roll I am on
+So that I know how many rolls I have left.
 
-Task: 
------
+As a player,
+I want to be given one or two rolls in every frame
+So that I can nock down as many bowling pins as I can in that frame.
+
+As a player,
+I want to be able to display the number of pins I have nocked down for each roll
+So that the player can see how well they're doing.
+
+As a player,
+I want to be able to add up the total number of pins I have knocked down for each roll
+So that I can record a total score for each frame.
+
+As a player,
+I want to be able to add the score from the current frame to the running total
+So that I can have an up-to-date total score.
+
+As a player,
+I want to be told when the game is over
+So that I can see my total score and stop playing.
+
+As a bowling alley,
+I want to be able to reset the total numbers of pins to 10
+So that the next frame can take place.
+
+Bonus
+As a player,
+I want to be able to note when I have a 'strike' (all in one on first go)
+So that I can get a bonus score.
+
+As a player,
+I want to be able to note when I have 'spares' (all in two frames)
+So that I can get a bonus score.(number of pins knocked down by the next roll)
+
+As a player,
+I want to know when I have hit no pins for a frame
+So that I can see 'gutter game' displayed on the screen
+
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Forking this repo
 
@@ -62,7 +98,7 @@ Code Review
 In code review we'll be hoping to see:
 
 * All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 

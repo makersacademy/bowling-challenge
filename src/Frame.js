@@ -7,7 +7,7 @@ function Frame() {
     this._isStrike = false;
     this._score1 = this._NULL_SCORE;
     this._score2 = this._NULL_SCORE;
-    this._tot_score = this._NULL_SCORE;
+    this._tot_score = (this._score1 + this._score2);
 };
 
 Frame.prototype.totPins = function() {

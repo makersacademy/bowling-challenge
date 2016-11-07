@@ -16,13 +16,17 @@ describe('Frame', function() {
             expect(frame._isStrike).toEqual(false);
         });
 
-				it('score 1 in frame is null', function() {
-					expect(frame._score1).toEqual(null);
-				});
+        it('score 1 in frame is null', function() {
+            expect(frame._score1).toEqual(null);
+        });
 
-				it('score 2 in frame is null', function() {
-					expect(frame._score2).toEqual(null);
-				});
+        it('score 2 in frame is null', function() {
+            expect(frame._score2).toEqual(null);
+        });
+
+        it('total score in frame is null', function() {
+            expect(frame._tot_score).toEqual(frame._score1 + frame._score2);
+        });
     });
 
 });

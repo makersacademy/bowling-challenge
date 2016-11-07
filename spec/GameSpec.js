@@ -38,12 +38,8 @@ describe("Game", function () {
       expect(game.completedFrames.length).toEqual(1);
     });
 
-    it("knows which frame number the player is on next", function() {
-      expect(game.frameNumber).toEqual(2);
-    });
-
-    it("empties or restarts the currentFrame", function() {
-      expect(game.currentFrame.score).toEqual(0);
+    it("doesn't increment frame count until next bowl rolled", function() {
+      expect(game.frameNumber).toEqual(1);
     });
 
   });

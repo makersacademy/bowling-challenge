@@ -8,16 +8,37 @@ describe("Frame", function () {
     frame = new Frame();
   });
 
-  it('defaults the frame score to zero', function() {
-    expect(frame.score).toEqual(0);
+  describe("default status", function () {
+
+    it("score is zero", function() {
+      expect(frame.score).toEqual(0);
+    });
+
+    it('rolls completed is zero', function() {
+      expect(frame.rollsCompleted).toEqual(0);
+    });
+
+    it('is not complete', function() {
+      expect(frame.isComplete).toBe(false);
+    });
   });
 
-  it('adds the score from roll one', function() {
-    frame.addRollOneScore(8);
-    expect(frame.score).toEqual(8);
+  describe("first roll", function () {
+
+    beforeEach(function() {
+      frame.addRollOneScore(8);
+    });
+
+    it('adds the score from roll one', function() {
+      expect(frame.score).toEqual(8);
+    });
+
+    it('sets rolls completed to one', function() {
+      expect(frame.rollsCompleted).toEqual(1);
+    });
   });
 
-  describe("completing a frame", function () {
+  describe("simple frame completion", function () {
 
     beforeEach(function() {
       frame.addRollOneScore(8);
@@ -26,6 +47,10 @@ describe("Frame", function () {
 
     it('adds the score from roll two', function() {
       expect(frame.score).toEqual(9);
+    });
+
+    it('sets rolls completed to two', function() {
+      expect(frame.rollsCompleted).toEqual(2);
     });
 
     it('knows the frame is complete', function() {
@@ -75,12 +100,6 @@ describe("Frame", function () {
     it("for the user to target in the second roll", function() {
       frame.addRollOneScore(7);
       expect(frame.pinsRemaining).toEqual(3);
-    })
-
-    it("resetting once a Frame is complete", function() {
-      frame.addRollOneScore(7);
-      frame.addRollTwoScore(2);
-      expect(frame.pinsRemaining).toEqual(10);
     })
   });
 });

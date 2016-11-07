@@ -4,18 +4,15 @@ describe('bowling: ', function() {
 
     beforeEach(function() {
       score1 = new Score();
-      rollsMadeThisFrame = 0;
     });
 
     it('stores a roll in current frame', function() {
       score1.roll(5);
       expect(score1._currentFrame[0]).toEqual(5);
-      // console.log('rollsMadeThisFrame: ' + rollsMadeThisFrame);
     });
 
     it('stores 2 rolls in all frames', function(){
-      score1.roll(3);
-      score1.roll(4);
+      score1.roll(3);  score1.roll(4);
       expect(score1._allFrames).toEqual([[3,4]]);
     });
 
@@ -26,220 +23,116 @@ describe('bowling: ', function() {
     });
 
     it('stores the roll after a strike in current frame', function(){
-      score1.roll(10);
-      score1.roll(3);
+      score1.roll(10);  score1.roll(3);
       expect(score1._allFrames).toEqual([[10]]);
       expect(score1._currentFrame).toEqual([3]);
     });
 
     it('stores a series of rolls in the correct place', function(){
-      score1.roll(0);
-      score1.roll(3);
-      score1.roll(10);
-      score1.roll(1);
-      score1.roll(9);
-      score1.roll(3);
-      score1.roll(5);
-      score1.roll(6);
+      score1.roll(0);   score1.roll(3);
+      score1.roll(10);  score1.roll(1);
+      score1.roll(9);   score1.roll(3);
+      score1.roll(5);   score1.roll(6);
       expect(score1._allFrames).toEqual([[0,3],[10],[1,9],[3,5]]);
       expect(score1._currentFrame).toEqual([6]);
     });
 
     it('calculates the running total', function(){
-      score1.roll(2);
-      score1.roll(3);
-      score1.roll(4);
-      score1.roll(5);
+      score1.roll(2);  score1.roll(3);
+      score1.roll(4);  score1.roll(5);
       expect(score1.runningTotal()).toEqual(14);
     });
 
     it('calculates the running total and strike bonuses', function(){
       score1.roll(10);
-      score1.roll(3);
-      score1.roll(4);
+      score1.roll(3);   score1.roll(4);
       score1.roll(5);
-      // console.log('strikeBonus: ' + score1.strikeBonus());
       expect(score1.runningTotal()).toEqual(29);
     });
 
     it('calculates the running total and spare bonuses', function(){
-      score1.roll(1);
-      score1.roll(9);
-      score1.roll(4);
-      score1.roll(5);
-      // console.log('strikeBonus: ' + score1.spareBonus());
+      score1.roll(1);  score1.roll(9);
+      score1.roll(4);  score1.roll(5);
       expect(score1.runningTotal()).toEqual(23);
     });
 
     it('calculates the running total when there are spares and strikes', function(){
-      score1.roll(1);
-      score1.roll(9);
-      score1.roll(4);
-      score1.roll(5);
-      score1.roll(10);
-      score1.roll(9);
-      score1.roll(4);
-      score1.roll(5);
+      score1.roll(1);   score1.roll(9);
+      score1.roll(4);   score1.roll(5);
+      score1.roll(10);  score1.roll(9);
+      score1.roll(4);   score1.roll(5);
       score1.roll(2);
-      // console.log('spareBonus: ' + score1.spareBonus());
-      // console.log('strikeBonus: ' + score1.spareBonus());
       expect(score1.runningTotal()).toEqual(66);
     });
 
     it('accurately calculates score when a strike has just happened', function(){
-      score1.roll(1);
-      score1.roll(7);
-      score1.roll(4);
-      score1.roll(5);
+      score1.roll(1);  score1.roll(7);
+      score1.roll(4);  score1.roll(5);
       score1.roll(10);
-      // console.log('spareBonus: ' + score1.spareBonus());
-      // console.log('strikeBonus: ' + score1.spareBonus());
       expect(score1.runningTotal()).toEqual(27);
     });
 
     it('accurately calculates score when a spare has just happened', function(){
-      score1.roll(1);
-      score1.roll(7);
-      score1.roll(4);
-      score1.roll(4);
-      score1.roll(5);
-      score1.roll(5);
-      // console.log('spareBonus: ' + score1.spareBonus());
-      // console.log('strikeBonus: ' + score1.spareBonus());
+      score1.roll(1);  score1.roll(7);
+      score1.roll(4);  score1.roll(4);
+      score1.roll(5);  score1.roll(5);
       expect(score1.runningTotal()).toEqual(26);
     });
 
     it('accurately calculates the score when 3 strikes are rolled in the last frame', function(){
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-      console.log("starting the 3 strikes")
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
       score1.roll(10);
       score1.roll(10);
       score1.roll(10);
-      console.log("finalFrameTotal: " + score1.finalFrameTotal)
-      console.log("runningTotal: " + score1.runningTotal)
-
       expect(score1.runningTotal()).toEqual(48);
     });
 
     it('accurately calculates the score when a spare is rolled in the last frame', function(){
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-
-      score1.roll(1);
-      score1.roll(1);
-      console.log("starting the 3 strikes")
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
+      score1.roll(1);  score1.roll(1);
       score1.roll(1);
       score1.roll(9);
       score1.roll(6);
-      console.log("finalFrameTotal: " + score1.finalFrameTotal)
-      console.log("runningTotal: " + score1.runningTotal)
-
       expect(score1.runningTotal()).toEqual(34);
     });
-
-
 });
 
 
 // console.log('rollsMadeThisFrame: ' + rollsMadeThisFrame);
 // console.log('current frame: ' + score1._currentFrame)
 // console.log('all frames: ' + score1._allFrames)
-// 108?
 // console.log('baseTotal: ' + score1.baseTotal());
-// // 30?
 // console.log('spareBonus: ' + score1.spareBonus());
-// // 8?
 // console.log('strikeBonus: ' + score1.strikeBonus());
-// // 30
 // console.log('finalFrameScore: ' + score1.finalFrameScore());
 // console.log('current frame: ' + score1._currentFrame)
 // console.log('all frames: ' + score1._allFrames)
+  // console.log("starting the 3 strikes")
+  // console.log("finalFrameTotal: " + score1.finalFrameTotal)
+  // console.log("runningTotal: " + score1.runningTotal)
+  // console.log("finalFrameTotal: " + score1.finalFrameTotal)
+  // console.log("runningTotal: " + score1.runningTotal)
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// THE TESTS BELOW ARE FROM THE RANDOMISING CODE BEFORE I SWITCHED TO MANUAL
 
   // describe('frame management: ', function() {
   //
@@ -311,10 +204,6 @@ describe('bowling: ', function() {
   //   //
   //   // });
   //
-
-
-
-
 
 // spyOn(airport.weather, 'isStormy').and.returnValue(false);
 

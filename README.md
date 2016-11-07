@@ -1,28 +1,31 @@
-Outstanding:
-New game functionality does not work properly.
-Some of the tests fail although the score is correct.
+# TEN PIN BOWLING SCORECARD
 
-AIM:
+## AIM:
 Count and sum the scores of a bowling game for one player (in JavaScript).
 Create a nice interactive animated interface with jQuery.
 Provide messages for "Gutter Game" and "Perfect Game".
 Gutter Game = the player never hits a pin (20 zero scores)
 Perfect Game = the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
-HOW TO PLAY:
+## HOW TO PLAY:
 Click a button representing the value of the first roll.
 If the first roll is a strike, that frame is complete and you move on to the next frame
 Click a button representing the value of the second roll.
 X = strike - This button is only available on the first ball of a frame.
 / = spare - This button is only available on the second ball of a frame and represents the value remaining to make a spare (i.e. score 10), e.g. if the 1st roll of the frame knocked down 2 pins, then the value of "/" will be 8 when you enter the number of pins knocked down by the 2nd ball of the frame.
 
-REVIEW EXPECTATIONS:
+## REVIEW EXPECTATIONS:
 All tests passing
 The code is elegant: every class has a clear responsibility, methods are short etc.
 
-LAYOUT:
-I copied the layout from sportcalculators.com
+## Outstanding:
+New game functionality does not work properly.
+Some of the tests fail although the score is correct.
+
+## LAYOUT:
+
 ![alt tag](https://www.dropbox.com/s/7ydue0dthexq7o9/Screenshot%20from%202016-11-07%2008-15-03.png?raw=1)
+I copied the layout from sportcalculators.com
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Bowling Challenge
 =================

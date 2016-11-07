@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Superstar</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  </head>
+  <body>
+    <h1>Bowling Superstar!</h1>
+    <div id="buttons">
+      <button id="0">0</button>
+      <button id="1">1</button>
+      <button id="2">2</button>
+      <button id="3">3</button>
+      <button id="4">4</button>
+      <button id="5">5</button>
+      <button id="6">6</button>
+      <button id="7">7</button>
+      <button id="8">8</button>
+      <button id="9">9</button>
+      <button id="10">10</button>
+    </div>
+    <div id='scoresheet'>
+    <table id='scoresheetTable' class='scoresheet'>
+      <tr>
+        <th colspan='6'>Frame 1</th>
+        <th colspan='6'>Frame 2</th>
+        <th colspan='6'>Frame 3</th>
+        <th colspan='6'>Frame 4</th>
+        <th colspan='6'>Frame 5</th>
+        <th colspan='6'>Frame 6</th>
+        <th colspan='6'>Frame 7</th>
+        <th colspan='6'>Frame 8</th>
+        <th colspan='6'>Frame 9</th>
+        <th colspan='6'>Frame 10</th>
+        <th colspan='6'>Score</th>
+      </tr>
+      <tr>
+        <td colspan='3' id="frameOneRollOneScore"></td><td colspan='3' id="frameOneRollTwoScore"></td>
+        <td colspan='3' id="frameTwoRollOneScore"></td><td colspan='3' id="frameTwoRollTwoScore"></td>
+        <td colspan='3' id="frameThreeRollOneScore"></td><td colspan='3' id="frameThreeRollTwoScore"></td>
+        <td colspan='3' id="frameFourRollOneScore"></td><td colspan='3' id="frameFourRollTwoScore"></td>
+        <td colspan='3' id="frameFiveRollOneScore"></td><td colspan='3' id="frameFiveRollTwoScore"></td>
+        <td colspan='3' id="frameSixRollOneScore"></td><td colspan='3' id="frameSixRollTwoScore"></td>
+        <td colspan='3' id="frameSevenRollOneScore"></td><td colspan='3' id="frameSevenRollTwoScore"></td>
+        <td colspan='3' id="frameEightRollOneScore"></td><td colspan='3' id="frameEightRollTwoScore"></td>
+        <td colspan='3' id="frameNineRollOneScore"></td><td colspan='3' id="frameNineRollTwoScore"></td>
+        <td colspan='2' id="frameTenRollOneScore"></td><td colspan='2' id="frameTenRollTwoScore"></td><td colspan='2' id="frameTenRollThreeScore"></td>
+        <td colspan='6' rowspan='2' id="gameScore"></td>
+      </tr>
+      <tr>
+        <td colspan='6' id="frameOneScore"></td>
+        <td colspan='6' id="frameTwoScore"></td>
+        <td colspan='6' id="frameThreeScore"></td>
+        <td colspan='6' id="frameFourScore"></td>
+        <td colspan='6' id="frameFiveScore"></td>
+        <td colspan='6' id="frameSixScore"></td>
+        <td colspan='6' id="frameSevenScore"></td>
+        <td colspan='6' id="frameEightScore"></td>
+        <td colspan='6' id="frameNineScore"></td>
+        <td colspan='6' id="frameTenScore"></td>
+      </tr>
+    </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src='src/Frame.js'></script>
+    <script src='src/Game.js'></script>
+    <script src='src/interface.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>

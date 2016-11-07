@@ -1,79 +1,134 @@
-
 Bowling Challenge
 =================
+Our week 5 solo challenge was to produce a scoring calculator for a bowling game for one player (in JavaScript).
 
+Technologies used:
+-------
+JavaScript, jQuery, Jasmine BDD framework.
 
-* Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+Approach:
+-------
+- I forked the repo, set up Git and then the Jasmine BDD framework
+- Before writing any tests / code, I attempted to break down the problem and understand the rules of bowling by writing small, testable, independent user stories (roughly in order of increasing complexity), which I imagine will represent my tests / feature implementations to some degree
+- I then played with scores in Excel to better understand how strikes and spares (especially sequential ones) worked.
+- I also played with http://www.bowlinggenius.com/ to model different scenarios and better understand the required logic
+- Started to write and pass tests for the basic game, i.e. with no strikes or spares. Created Frame and Game objects with their own properties.
+- Wrote a basic HTML interface so I could input the scores and see the results appear (felt that this would help with understanding what was happening / de-bugging later on)
+- Didn't integrate the interface, but instead carried on with the logic, getting basic strike and spare bonuses to calculate correctly.
+- Somewhat integrated the interface (for non-strikes/spares), but then decided to carry on with the logic
+- Managed to get sequential strikes to work, but not random strikes and spares after each other
+- Did not complete final frame
 
-Task: 
+User stories:
 -----
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+### Basic play
+````
+As a player,
+I can knock down up to ten pins on my first roll,
+so that I can begin a frame.
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+As a player,
+I can knock down the remainder of the pins (ten minus my score from the first roll),
+so that I can finish the frame.
 
-As usual please start by 
+As a player,
+I'd like to see my total score from the frame,
+so that I can evaluate my progress.
 
-* Forking this repo
+As a player,
+I'd like to play exactly ten frames,
+so I can complete a full (basic) game.
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+As a player,
+I'd like to see my final score for the game,
+so I can make a mental comparison against others and myself historically.
+````
 
+### Gutter game
+````
+As a player who has completed a basic game,
+if I score zero, my game should be marked as a Gutter Game,
+so that I can enjoy the full glory / humiliation.
+````
 
-### Optional Extra
+### Spares
+````
+As a player on my second roll,
+knocking down all of the remaining pins should be marked as a spare,
+so that I can revel in the glory.
 
-Create a nice interactive animated interface with jQuery.
+As a player who just achieved a spare,
+my score for the spare frame should not appear until after the first roll of the next frame,
+so that I can see an accurate game score.
 
-## Strikes
+As as player who just achieved a spare,
+I'd like the points from the first roll of the next frame added to the score for my spare frame,
+so that I can benefit from the bonus.
+````
+### Strikes
+````
+As a player, if I knock down all ten pins on the first roll,
+the frame should be marked as a strike,
+so that I can revel in the glory.
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+As a player who just achieved a strike,
+I'd like the second roll of the frame cancelled,
+so that I can move straight onto the next frame of ten pins.
 
-## Spares
+As a player who just achieved a strike,
+my score for the strike frame should not appear until after next frame has finished,
+so that I can see an accurate game score.
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+As a player who just achieved a strike, as a bonus
+I'd like the points from the next frame added to the score of my strike frame,
+so that I can benefit from the extra points.
 
-## 10th frame
+[MORE WORK NEEDED HERE]
+As a player who has achieved two strikes in a row
+...three strikes in a row
+````
+### Final frame
+````
+As a player in my 10th frame,
+if I roll a strike on the first or second roll I will be given an additional third roll,
+so that I can benefit from the bonus points.
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+As a player in my 10th frame,
+if I roll a spare on the second roll I am given an additional third roll,
+so that I can benefit from the bonus points.
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+[THIS NEXT ONE NEEDS ADJUSTMENT]
+As a player with a final bonus roll,
+the result of this bonus roll is added to my score,
+so that I can see my final score.
 
-## Gutter Game
+[The scores for the final frame shouldn't appear until after the last roll.]
+````
+### Perfect game
+````
+As a player,
+if I roll 12 strikes thereby scoring the maximum score of 300,
+my game should be marked as a Perfect Game,
+so that I can enjoy the full glory of this.
+````
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-## Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-Code Review
------------
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
-
-CI
---
-
-We are running JSHint on our CI server - save yourself having to wait for a build to happen by linting your code on your machine first. [Here are installations for most popular editors](http://jshint.com/install/). Grab the `.jshintrc` from this repo and have better JS!
-
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
-
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.
+Domain model
+-----
+I expect the notation is all wrong here, but using the nouns and verbs from the user stories, I'm trying to think about objects and messages.
+````
+Player --> rolls during a --> Frame
+Player --> knocks down --> Pins
+Player --> achieves a --> Score
+Player --> achieves a --> Strike
+Player --> achieves a --> Spare
+10 frames --> completes a --> Game
+Game --> can be classed as --> Gutter Game / Perfect Game
+````
+Possible objects:
+````
+Player (although there's only ever one in this instance)
+Game has 10 Frames
+Game has a Score
+Frame has a Score
+````

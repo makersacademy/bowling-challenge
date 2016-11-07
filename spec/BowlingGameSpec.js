@@ -8,12 +8,6 @@ describe('BowlingGame', function() {
         game = new BowlingGame();
     });
 
-    describe('Game', function() {
-        it('has a default score of zero', function() {
-            expect(game.score()).toEqual(0);
-        });
-    });
-
     describe('Roll One', function() {
         it('number of pins knocked down is recorded', function() {
             game.rollOne(1);
@@ -60,7 +54,6 @@ describe('BowlingGame', function() {
 
     describe('Multi-Frame', function() {
         describe('#frameNumber', function() {
-
             it('user can check current frame number', function() {
                 expect(game.frameNumber).toEqual(1)
             });
@@ -77,6 +70,12 @@ describe('BowlingGame', function() {
             expect(function() {
                 game.rollOne(1);
             }).toThrowError('enter roll 2 to complete current roll');
+        });
+
+        it('User can check the rolls for a given frame number ', function() {
+            game.rollOne(1);
+            game.rollTwo(1);
+            expect(game.checkFrame(1)).toEqual([1, 1])
         });
 
         describe('For a second frame, user can enter: ', function() {
@@ -106,6 +105,23 @@ describe('BowlingGame', function() {
             expect(function() {
                 game.rollOne(1)
             }).toThrowError('game is over');
+        });
+
+    });
+
+    describe('Scoring', function() {
+
+        it('has a default score of zero', function() {
+            expect(game.score()).toEqual(0);
+        });
+
+        it('Gutter game', function() {
+            for (var i = 0; i < 10; i++) {
+                game.rollOne(0);
+                game.rollTwo(0);
+            }
+
+            expect(game.runningTotal).toEqual(0);
         });
 
     });

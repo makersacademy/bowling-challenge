@@ -87,7 +87,11 @@
     "worker"        : false,    // Web Workers
     "wsh"           : false,    // Windows Scripting Host
     "yui"           : false,    // Yahoo User Interface
+    "-W117"         : true,
+    "-W097"         : true,
+    "-W101"         : true,
 
     // Custom Globals
     "globals"       : {}        // additional predefined global variables
+
 }

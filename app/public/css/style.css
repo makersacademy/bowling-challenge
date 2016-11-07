@@ -1,0 +1,38 @@
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+section {
+  padding-top: 10px;
+}
+
+.transparent-box {
+  background-color: rgba(230, 230, 230, 0.7);
+  width: 450px;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#current-temperature {
+  font-size: 40;
+  font-style: bold;
+}
+
+#power-saving-status {
+  font-style: bold;
+  font-size: 25px;
+}
+
+.buttons-div {
+  margin: 5px;
+  padding: 5px;
+}
+
+#temperature-reset {
+  padding: 3px 17px;
+}

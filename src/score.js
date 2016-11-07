@@ -13,3 +13,16 @@ Score.prototype.total = function () {
   }
   return scoreTotal;
 };
+
+// Score.prototype.strikeBonus = function(index) {
+//   var bonus = this.frames[index + 1].total;
+//   var frames = this.frames;
+//   if (this.isAStrike(index+1)) {
+//     bonus = isAStrike(index+2) ? 20 : 10 + this.frames[index+2].firstBowl;
+//   }
+//   return bonus;
+// }
+//
+// Score.prototype.isAStrike(index){
+//   return this.frames[index+1].outcome === 'X';
+// }

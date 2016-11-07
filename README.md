@@ -3,7 +3,7 @@
 ## AIM:
 Count and sum the scores of a bowling game for one player (in JavaScript).  
 Create a nice interactive animated interface with jQuery.  
-Provide messages for `Gutter Game` and "`Perfect Game`.  
+Provide messages for "`Gutter Game`" and "`Perfect Game`".  
 
 
 ## HOW TO PLAY:
@@ -16,8 +16,8 @@ If you get a strike in a frame, the score of the next 2 rolls is added retrospec
 If you get a spare in a frame, the score of the next roll is added retrospectively to the score in that frame.  
 If you get a strike in the 10th frame, you are given 2 more rolls which add (retrospectively) to the score of the 10th frame.  
 If you get a spare in the 10th frame, you are given 1 more roll which add (retrospectively) to the score of the 10th frame.  
-A `Gutter Game` is when the player does not knock down a single pin in the whole game (20 rolls with zero scored for each roll).  
-A `Perfect Game` is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). A `Perfect Game` scores 300 points.  
+A "`Gutter Game`" is when the player does not knock down a single pin in the whole game (20 rolls with zero scored for each roll).  
+A "`Perfect Game`" is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). A "`Perfect Game`" scores 300 points.  
 
 ## REVIEW EXPECTATIONS:
 All tests passing  

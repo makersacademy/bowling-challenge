@@ -15,16 +15,16 @@ Perfect Game = the player rolls 12 strikes (10 regular strikes and 2 strikes for
 * / = spare - This button is only available on the second ball of a frame and represents the value remaining to make a spare (i.e. score 10), e.g. if the 1st roll of the frame knocked down 2 pins, then the value of "/" will be 8 when you enter the number of pins knocked down by the 2nd ball of the frame.
 
 ## REVIEW EXPECTATIONS:
-All tests passing
-The code is elegant: every class has a clear responsibility, methods are short etc.
+All tests passing  
+The code is elegant: every class has a clear responsibility, methods are short etc.  
 
 ## Outstanding:
-New game functionality does not work properly.
-Some of the tests fail although the score is correct.
+New game functionality does not work properly.  
+Some of the tests fail although the score is correct.  
 
 ## LAYOUT:
 
-![alt tag](https://www.dropbox.com/s/7ydue0dthexq7o9/Screenshot%20from%202016-11-07%2008-15-03.png?raw=1)
+![alt tag](https://www.dropbox.com/s/7ydue0dthexq7o9/Screenshot%20from%202016-11-07%2008-15-03.png?raw=1)  
 I copied the layout from sportcalculators.com
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Bowling Challenge

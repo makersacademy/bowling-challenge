@@ -47,6 +47,4 @@ function getNormalScore () {
  return game.rolls[rollIndex] + game.rolls[rollIndex +1];
 }
 
-
-
 };

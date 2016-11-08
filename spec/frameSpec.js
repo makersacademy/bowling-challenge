@@ -22,6 +22,13 @@ describe("Frame", function() {
     expect(frame.defaultPins()).toEqual(5);
   });
 
+  it("resets the game", function(){
+    frame.oneGame(4);
+    frame.resetFrame();
+    expect(frame.roll).toEqual(0);
+    expect(frame.pinCount).toEqual(10);
+  });
+
   it("returns twice rolls", function(){
     frame.oneGame(3);
     frame.oneGame(5);

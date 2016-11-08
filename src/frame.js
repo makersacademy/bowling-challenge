@@ -32,3 +32,8 @@ Frame.prototype.isGameOver = function () {
 Frame.prototype.totalPinDown = function () {
   return (this.pinTotal - this.pinCount);
 };
+
+Frame.prototype.resetFrame = function () {
+  this.roll = 0;
+  this.pinCount = 10;
+};

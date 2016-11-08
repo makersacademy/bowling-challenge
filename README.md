@@ -1,5 +1,6 @@
 Bowling Challenge
 =================
+ ```
                          ! ! ! !
                       ." ! ! !  /
                     ."   ! !   /
@@ -16,7 +17,9 @@ Bowling Challenge
        |/
       /|
       / |
-      
+```
+
+
 Here is my solution of the Bowling Challenge using Javascript with Jasmine in Node.
 
 Task: 

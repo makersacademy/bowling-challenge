@@ -1,0 +1,70 @@
+@import url(https://fonts.googleapis.com/css?family=Coiny);
+
+/***** FORM *****/
+
+form {
+  min-width: 440px;
+  font-family: 'Coiny';
+  border: 3px solid #F0F0F0;
+  background: #E8F5FA;
+  border-radius: 10px;
+  padding: 2%;
+  margin: 2%;
+}
+
+
+/****** TABLE *****/
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+td {
+  padding: 1%;
+}
+
+
+/****** INPUTS *****/
+
+form input[type=text],
+form input[type=button]{
+  font-family: 'Coiny';
+}
+
+form input[type=text],
+form input[type=number]{
+  height: 40px;
+  width: 100%;
+  margin-bottom: 10px;
+  padding-left: 15px;
+  background: #fff;
+  border: none;
+  color: #222222;
+  outline: none;
+}
+
+form input[type=button]:disabled {
+    background: #E8F5FA;
+    border: #014677 1px solid;
+    color: #f0f0f0;
+}
+
+form input[type=button] {
+    border: none;
+    display: block;
+    background: #2763A8;
+    height: 40px;
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 5px;
+  	-webkit-transition: all 0.15s linear;
+	  -moz-transition: all 0.15s linear;
+	  transition: all 0.15s linear;
+}
+
+form input[type=button]:hover:enabled {
+  background: #168BCE;
+}

@@ -88,6 +88,10 @@ describe('Game', function () {
             {
                 bowls: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
                 expectedScore: 300
+            },
+            {
+                bowls: [10, 0, 0, 1],
+                expectedScore: 11
             }
         ];
         testCases.forEach(function (testCase) {
@@ -102,12 +106,13 @@ describe('Game', function () {
 
     describe('game over', function () {
         it('cannot bowl after game has ended', function () {
+            for (var i = 0; i < 20; i++) {
+                game.bowl(0);
+            };
             var bowlAfterGameOver = function () {
-                for (var i = 0; i < 22; i++) {
-                    game.bowl(0);
-                };
+                game.bowl(0);
             }
-            expect(bowlAfterGameOver).toThrowError("Game is over");
+            expect(bowlAfterGameOver).toThrowError("Game over");
         });
     });
 });

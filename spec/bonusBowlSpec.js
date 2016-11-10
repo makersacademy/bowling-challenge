@@ -9,6 +9,7 @@ describe('BonusBowl', function () {
 
     describe('initialization', function () {
         it('has a total score starting at zero', function () {
+            expect(bonusBowl.firstBowl).toEqual(0);
             expect(bonusBowl.totalScore()).toEqual(0);
         });
     });
@@ -16,6 +17,7 @@ describe('BonusBowl', function () {
     describe('keeping score', function () {
         it('takes a given score for a bonus bowl', function () {
             bonusBowl.bowl(5);
+            expect(bonusBowl.firstBowl).toEqual(5);
             expect(bonusBowl.totalScore()).toEqual(5);
         });
         it('cannot take more than one bowl score', function () {
@@ -24,6 +26,17 @@ describe('BonusBowl', function () {
                 bonusBowl.bowl(3);
             };
             expect(bowlMoreThanOnce).toThrowError("Bonus bowl already complete");
+        });
+    });
+
+    describe('strike', function () {
+        it('reports it is not a strike when first bowl score is not 10', function () {
+            bonusBowl.bowl(0);
+            expect(bonusBowl.isAStrike()).toBe(false);
+        });
+        it('reports it is a strike when first bowl score is 10', function () {
+            bonusBowl.bowl(10);
+            expect(bonusBowl.isAStrike()).toBe(true);
         });
     });
 

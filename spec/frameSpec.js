@@ -11,7 +11,7 @@ describe('Frame', function () {
         it('total frame score starts at zero', function () {
             expect(frame.totalScore()).toEqual(0);
         });
-    })
+    });
 
     describe('keeping score', function () {
         it('takes a score for first bowl', function () {

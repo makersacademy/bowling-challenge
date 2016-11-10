@@ -1,0 +1,15 @@
+{
+    "spec_dir": "spec",
+    "spec_files": [
+        "spec/BowlingGameSpec.js",
+        "spec/FrameSpec.js",
+        "spec/BowlingBall.js",
+        "**/*[sS]pec.js"
+    ],
+    "helpers": [
+        "./SpecRunner.html"
+        "helpers/**/*.js"
+    ],
+    "stopSpecOnExpectationFailure": false,
+    "random": false
+}

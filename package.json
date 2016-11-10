@@ -1,0 +1,28 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "jshint": "^2.9.4",
+    "jasmine": "^2.5.2"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lauraweston/bowling-challenge.git"
+  },
+  "author": "Laura Weston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lauraweston/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/lauraweston/bowling-challenge#readme"
+}

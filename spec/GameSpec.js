@@ -34,14 +34,7 @@ describe('Game', function(){
     });
   });
 
-  // describe('#playGame', function(){
-  //   it('', function(){
-  //
-  //   });
-  // });
-
   describe('#bowlFrame', function(){
-    // DO ALL OF THESE PROPERLY USING SPIES.
     it('Updates the total score', function(){
       spyOn(Math, "random").and.returnValue(0.99);
       game.bowlFrame();
@@ -59,12 +52,5 @@ describe('Game', function(){
       expect(game.getTotalScore()).toEqual(5);
     });
   });
-
-  // describe('#endGame', function(){
-  //   it('Ends the game and returns a message', function(){
-  //     game.endGame();
-  //
-  //   });
-  // });
 
 });

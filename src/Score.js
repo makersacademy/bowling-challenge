@@ -13,16 +13,6 @@ Score.prototype.calculateFrameScore = function () {
   };
 };
 
-// strike and a or b =>    2a + 2b + 2c
-// spare   [10,10,y]       2a + 2b + 2c
-// strike  [x,y]           2a + 2b + c
-// strike  [x,spare]       2a + 2b + c
-// spare   [10,x,y]        2a + 2b + c
-// spare   [x,spare]       2a + b + 2c
-// spare   [x,y,z]         2a + b + c
-// none    [10,y,z]        a + 2b + c
-// none    [x,spare]       a + b + 2c
-
 Score.prototype.calculateTenthFrameScore = function () {
   var a = this.currentPins[0];
   var b = this.currentPins[1];

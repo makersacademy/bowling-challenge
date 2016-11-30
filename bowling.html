@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <title>Bowling Calculator</title>
+  </head>
+
+  <body>
+
+    <div class="pins">
+      <h1> Click number of pins to knock down: </h1>
+      <div class="pinbuttons">
+        <button id="1" type="button">1</button>
+        <button id="2"  type="button">2</button>
+        <button id="3"  type="button">3</button>
+        <button id="4"  type="button">4</button>
+        <button id="5"  type="button">5</button>
+        <button id="6"  type="button">6</button>
+        <button id="7pin"  type="button">7</button>
+        <button id="8pin"  type="button">8</button>
+        <button id="9pin"  type="button">9</button>
+        <button id="10"  type="button">10</button>
+      </div>
+    </div>
+
+    <div class="scores">
+      <h1> Total score is: </h1>
+      <h1 id="totalscore"></h1>
+      <h2> Score per frame: </h1>
+      <h2 id="allframescores"></h1>
+      <h2> Score per bowl: </h1>
+      <h2 id="allbowls"></h1>
+    </div>
+
+  </body>
+</html>
+
+<script src="./src/bowling.js"> </script>
+<script src="./node_modules/jquery/dist/jquery.min.js"> </script>
+<script src="./bowling-jquery.js"> </script>

@@ -4,3 +4,7 @@ var Game = function(){
   this.score = 0;
   this.points = [];
 };
+
+Game.prototype.startNewFrame = function(){
+  return new Frame();
+}

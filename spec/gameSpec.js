@@ -1,9 +1,11 @@
 describe("Game", function(){
 
   var game;
+  var frame;
 
   beforeEach(function(){
     game = new Game();
+    frame = new Frame();
   })
 
   describe("Creation", function(){
@@ -18,6 +20,23 @@ describe("Game", function(){
     })
     it("has an initial empty points array", function(){
       expect(game.points).toEqual([]);
+    })
+  })
+
+  describe("New frame", function(){
+    it("can start a new frame", function(){
+      expect(game.startNewFrame()).toBeDefined();
+    })
+    it("increases frame count", function(){
+      game.startNewFrame();
+      expect(game.frameCount).toEqual(1);
+    })
+  })
+
+  describe("End frame", function(){
+    it("adds total points of frame to game score", function(){
+      spyOn(frame, "score").and.returnValue(8);
+      expect()
     })
   })
 

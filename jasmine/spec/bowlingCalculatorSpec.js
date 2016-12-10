@@ -120,4 +120,12 @@ describe('BowlingCalculator', function(){
 
   });
 
+  describe("#totalScore()", function(){
+
+    it("should return 0 at the start", function(){
+      expect(bowlingcalculator.totalScore()).toEqual(0);
+    });
+
+  });
+
 });

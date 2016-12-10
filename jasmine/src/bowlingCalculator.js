@@ -87,3 +87,7 @@ BowlingCalculator.prototype._setBonus = function(){
     this.currentTurn.bonus = 'spare';
   };
 };
+
+BowlingCalculator.prototype.totalScore = function(){
+  return 0;
+};

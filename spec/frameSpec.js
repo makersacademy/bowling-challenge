@@ -35,6 +35,7 @@ describe("Frame", function(){
       spyOn(frame, "calculateRollScore").and.returnValue(10);
       frame.roll();
       expect(function(){frame.roll();}).toThrow("Frame is over");
+      expect(frame.score).toEqual(10);
     })
   })
 
@@ -46,6 +47,7 @@ describe("Frame", function(){
     it("count cannot exceed 2", function(){
       for(var i = 0; i<2; i++){ frame.roll(); }
       expect(function(){frame.roll();}).toThrow("Frame is over");
+      expect(frame.rollCount).toEqual(2);
     })
   })
 

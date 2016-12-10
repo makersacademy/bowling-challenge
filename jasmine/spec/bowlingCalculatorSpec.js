@@ -58,8 +58,6 @@ describe('bowlingCalculator', function(){
       expect(bowlingcalculator.throws).toEqual(1);
     });
 
-    // should decrease number of balls left to throw
-
   });
 
   describe("#endTurn()", function(){

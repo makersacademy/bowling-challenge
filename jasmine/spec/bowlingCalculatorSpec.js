@@ -23,7 +23,11 @@ describe('bowlingCalculator', function(){
     });
 
     it("should initialize with throws property set to 2", function(){
-      expect(bowlingcalculator.throws).toEqual(2)
+      expect(bowlingcalculator.throws).toEqual(2);
+    });
+
+    it("should initialize with a bonus property set to null", function(){
+      expect(bowlingcalculator.bonus).toEqual(null);
     });
 
   });

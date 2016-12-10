@@ -33,11 +33,18 @@ BowlingCalculator.prototype._reduceFrames = function(){
 };
 
 BowlingCalculator.prototype.throwBall = function(pins) {
+  this._hasFramesLeft();
   this._hasThrowsLeft();
   this._validateThrowBall(pins);
   this.balls.push(pins);
   this._reduceThrows();
   this._setBonus();
+};
+
+BowlingCalculator.prototype._hasFramesLeft = function() {
+  if (this.frames === 0) {
+    throw new Error("No frames left.");
+  };
 };
 
 BowlingCalculator.prototype._hasThrowsLeft = function() {

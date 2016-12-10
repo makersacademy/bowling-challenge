@@ -4,11 +4,19 @@ var BowlingCalculator = function() {
 };
 
 BowlingCalculator.prototype.endTurn = function() {
-  var turnScore = this.balls.reduce(function(a, b){
-    return a + b;}, 0)
-  this.addToScore(turnScore);
-  this.balls = [];
+  this.addToScore(this.sumBalls());
+  this.clearBalls();
 };
+
+BowlingCalculator.prototype.sumBalls = function(){
+  var sum = this.balls.reduce(function(a, b){
+    return a + b;}, 0)
+  return sum
+};
+
+BowlingCalculator.prototype.clearBalls = function(){
+  this.balls = [];
+}
 
 BowlingCalculator.prototype.addToScore = function(number) {
   this.totalScore += number

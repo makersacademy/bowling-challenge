@@ -7,6 +7,7 @@ BowlingCalculator.prototype.endTurn = function() {
   var turnScore = this.balls.reduce(function(a, b){
     return a + b;}, 0)
   this.addToScore(turnScore);
+  this.balls = [];
 };
 
 BowlingCalculator.prototype.addToScore = function(number) {

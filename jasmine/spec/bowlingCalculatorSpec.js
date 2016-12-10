@@ -62,6 +62,13 @@ describe('bowlingCalculator', function(){
       expect(bowlingcalculator.totalScore).toEqual(8);
     });
 
+    it("should empty the balls array", function(){
+      bowlingcalculator.throwBall(5);
+      bowlingcalculator.throwBall(3);
+      bowlingcalculator.endTurn();
+      expect(bowlingcalculator.balls).toEqual([]);
+    });
+
   });
 
 });

@@ -10,11 +10,14 @@ You've done a strike. And it's really nicely styled!
 ## User stories
 
 ### DONE
-
-### WIP
 As a bowler,
 So that I can keep track of my score
 I want to see a running total
+
+### WIP
+As a bowler,
+So that the scoresheet accurately reflects the game,
+I want to see scores for my 2 throws per turn separately from the total for the turn & the running total
 
 ### TODO
 
@@ -22,9 +25,6 @@ As a bowler,
 So that I know how many turns I have left,
 I want a countdown
 
-As a bowler,
-So that the scoresheet accurately reflects the game,
-I want to see scores for my 2 throws per turn separately from the total for the turn & the running total
 
 As a bowler,
 So that my excellence is rewarded,

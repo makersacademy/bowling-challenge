@@ -7,7 +7,8 @@ var Game = function () {
 
 Game.prototype.hit = function () {
   this._knockedDownPins();
-  return console.log("You have " + this.pins + " pins remaining");
+  this._calculateScore();
+
 }
 
 Game.prototype._reset = function () {
@@ -16,12 +17,12 @@ Game.prototype._reset = function () {
 }
 
 Game.prototype.frames = function () {
-  var roll = 1;
+
 
 }
 
 Game.prototype._calculateScore = function () {
-
+  this.score += this._knockedDownPins();
 }
 
 Game.prototype.displayScore = function () {

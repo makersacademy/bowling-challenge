@@ -23,8 +23,16 @@ describe("Game", function() {
       expect(game.frameCount).toEqual(0);
     });
 
-    it("should load pins", function(){
+    it("should allow the pins to rack up as frame count is 10 or less", function(){
+      game.frameCount = 5;
+      game.rackUp();
       expect(game.rack).toBe(true);
+    });
+
+    it("should not allow pins to rack up as frame count is over 10", function(){
+      game.frameCount = 11;
+      game.rackUp();
+      expect(game.rack).toBe(false);
     });
 
     it("should return number of pins hit on first roll - if not a strike", function(){

@@ -8,15 +8,16 @@ function Game() {
  this.firstScore = 0;
  this.secondScore = 0;
  this.result1 = "";
- this.result2 = ""
- this._newPins = [];
+ this.result2 = "";
 }
 
 Game.prototype.rackUp = function() {
   if (this.frameCount <= 10) {
-  this.rack = true;
-  return this.rack;
-};
+    this.rack = true;
+    return this.rack;
+  } else {
+    return this.rack = false;
+  };
 };
 
 Game.prototype.roll_1 = function() {
@@ -30,7 +31,7 @@ Game.prototype.roll_1 = function() {
 };
 
 Game.prototype.pinSweep = function (){
-  this.newPins = this.pins.splice(-(this.firstScore));
+  this.pins.splice(-(this.firstScore));
   return this.pins;
 };
 

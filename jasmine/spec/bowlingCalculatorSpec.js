@@ -11,11 +11,11 @@ describe('BowlingCalculator', function(){
   describe("#new()", function(){
 
     it("should initialize with a total score set to zero", function(){
-      expect(bowlingcalculator.totalScore).toEqual(0);
+      expect(bowlingcalculator.totalScore()).toEqual(0);
     });
 
     it("should initialize with an empty balls array", function() {
-      expect(bowlingcalculator.balls).toEqual([]);
+      expect(bowlingcalculator.currentTurn).toEqual([]);
     });
 
     it("should initialize with frames property set to 10", function(){
@@ -37,7 +37,7 @@ describe('BowlingCalculator', function(){
     it("should store balls you throw separately", function(){
       bowlingcalculator.throwBall(5);
       bowlingcalculator.throwBall(3);
-      expect(bowlingcalculator.balls).toContain(5, 3);
+      expect(bowlingcalculator.currentTurn).toContain(5, 3);
     });
 
     it("should not accept negative numbers for balls thrown", function(){
@@ -101,7 +101,7 @@ describe('BowlingCalculator', function(){
       bowlingcalculator.throwBall(5);
       bowlingcalculator.throwBall(3);
       bowlingcalculator.endTurn();
-      expect(bowlingcalculator.balls).toEqual([]);
+      expect(bowlingcalculator.currentTurn).toEqual([]);
     });
 
     it("should reduce the number of frames left by 1", function(){

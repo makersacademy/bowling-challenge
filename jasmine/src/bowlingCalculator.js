@@ -1,11 +1,17 @@
 'use strict';
 
 var BowlingCalculator = function() {
-  this.totalScore = 0;
-  this.balls = [];
+  this.score = [];
+  this.currentTurn = [];
   this.bonus = null;
   this.frames = 10;
   this.throws = 2;
+};
+
+BowlingCalculator.prototype.totalScore = function(){
+  var sum = this.score.reduce(function(a, b){
+    return a + b;}, 0)
+  return sum
 };
 
 BowlingCalculator.prototype.endTurn = function() {
@@ -19,13 +25,13 @@ BowlingCalculator.prototype._addToScore = function(number) {
 };
 
 BowlingCalculator.prototype._sumBalls = function(){
-  var sum = this.balls.reduce(function(a, b){
+  var sum = this.currentTurn.reduce(function(a, b){
     return a + b;}, 0)
   return sum
 };
 
 BowlingCalculator.prototype._clearBalls = function(){
-  this.balls = [];
+  this.currentTurn = [];
 };
 
 BowlingCalculator.prototype._reduceFrames = function(){
@@ -36,7 +42,7 @@ BowlingCalculator.prototype.throwBall = function(pins) {
   this._hasFramesLeft();
   this._hasThrowsLeft();
   this._validateThrowBall(pins);
-  this.balls.push(pins);
+  this.currentTurn.push(pins);
   this._reduceThrows();
   this._setBonus();
 };
@@ -79,7 +85,7 @@ BowlingCalculator.prototype._isNotHigherThanTen = function(number) {
 };
 
 BowlingCalculator.prototype._doesNotSumToMoreThanTen = function(number) {
-  if (number + this.balls[0] > 10) {
+  if (number + this.currentTurn[0] > 10) {
     throw new Error("Invalid input: trying to score more than 10 pins")
   }
 };
@@ -89,10 +95,10 @@ BowlingCalculator.prototype._reduceThrows = function(){
 };
 
 BowlingCalculator.prototype._setBonus = function(){
-  if (this.balls[0] === 10) {
+  if (this.currentTurn[0] === 10) {
     this.bonus = 'strike';
   };
-  if (this._sumBalls() === 10 && !this.balls.includes(10)) {
+  if (this._sumBalls() === 10 && !this.currentTurn.includes(10)) {
     this.bonus = 'spare';
   };
 };

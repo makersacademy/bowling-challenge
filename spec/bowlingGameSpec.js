@@ -13,4 +13,10 @@ describe("bowlingGame", function() {
     });
   });
 
+  describe("#roll", function(){
+    it("should allow input of a number of pins and store it in the current roll score", function(){
+      expect(game.roll(7)).toEqual(7)
+    });
+  });
+
 });

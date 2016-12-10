@@ -1,14 +1,16 @@
-var Frame = function(){
+var Frame = function(fn){
   this.MAX_POINTS = 10;
   this.MAX_ROLLS = 2;
   this.rollCount = 0;
   this.score = 0;
   this.points = [];
+  this.fn = fn
 };
 
 Frame.prototype.roll = function(){
   if (this.hasEnded()) {
-    throw "Frame is over"
+    throw "Frame is over";
+    this.fn(this);
   } else {
     this.updateRollCount();
     this.updateScore();

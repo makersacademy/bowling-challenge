@@ -25,18 +25,25 @@ describe("Game", function(){
 
   describe("New frame", function(){
     it("can start a new frame", function(){
-      expect(game.startNewFrame()).toBeDefined();
+      game.startNewFrame();
+      expect(game.frame).toBeDefined();
     })
     it("increases frame count", function(){
       game.startNewFrame();
-      expect(game.frameCount).toEqual(1);
+      expect(game.frameCount).toEqual(2);
     })
   })
 
   describe("End frame", function(){
-    it("adds total points of frame to game score", function(){
-      spyOn(frame, "score").and.returnValue(8);
-      expect()
+    it("adds total score of frame to game score", function(){
+      frame.score = 8;
+      game.endFrame(frame);
+      expect(game.score).toEqual(8);
+    })
+    it("adds points in frame to points array", function(){
+      frame.points = [4,5];
+      game.endFrame(frame);
+      expect(game.points).toEqual([4,5]);
     })
   })
 

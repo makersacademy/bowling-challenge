@@ -6,5 +6,14 @@ var Game = function(){
 };
 
 Game.prototype.startNewFrame = function(){
-  return new Frame();
+  var self = this;
+  this.frame = new Frame(function finishFrame(frame){
+    self.endFrame(frame);
+  });
+  this.frameCount += 1;
+}
+
+Game.prototype.endFrame = function(frame){
+  this.score += frame.score;
+  this.points.push.apply(this.points, frame.points);
 }

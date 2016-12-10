@@ -73,7 +73,12 @@ describe('BowlingCalculator', function(){
       expect(bowlingcalculator.bonus).toEqual('spare');
     });
 
-    // should raise an error if you try to throw with no throws left
+    it("should raise an error if you try to throw a ball with 0 throws left", function(){
+      bowlingcalculator.throwBall(8);
+      bowlingcalculator.throwBall(2);
+      expect(function(){bowlingcalculator.throwBall(1)}).toThrowError("No throws left.")
+    });
+
     // should raise an error if you try to throw with no frames left
 
   });

@@ -3,9 +3,11 @@
 describe ('Caluclater for Ten pins bowling', function(){
 
   var caluclater
+  var pins
 
   beforeEach(function(){
     caluclater = new CaluclaterTenPinsBowling();
+    pins = 5;
   });
 
 
@@ -23,6 +25,10 @@ describe ('Caluclater for Ten pins bowling', function(){
       expect( caluclater.roll ).toBe(1);
     });
 
+  });
+
+  it ('should pass how many pins', function(){
+    expect( caluclater.passScore(pins) ).toEqual(5);
   });
 
 

@@ -19,6 +19,9 @@ describe("Frame", function(){
     it("sets an initial score of 0", function(){
       expect(frame.score).toEqual(0);
     })
+    it("sets an initial empty points array", function(){
+      expect(frame.points).toEqual([]);
+    })
   })
 
   describe("Scores", function(){

@@ -28,7 +28,6 @@ BowlingCalculator.prototype.throwBall = function(pins) {
   this._validateThrowBall(pins);
   this.currentTurn.push(pins);
   this._reduceThrows();
-  this._setBonus();
 };
 
 BowlingCalculator.prototype._hasFramesLeft = function() {
@@ -76,16 +75,6 @@ BowlingCalculator.prototype._doesNotSumToMoreThanTen = function(number) {
 
 BowlingCalculator.prototype._reduceThrows = function(){
   this.throws -= 1;
-};
-
-BowlingCalculator.prototype._setBonus = function(){
-  if (this.currentTurn[0] === 10) {
-    this.currentTurn.bonus = 'strike';
-    this.throws = 0;
-  };
-  if (this.currentTurn[0] + this.currentTurn[1] === 10) {
-    this.currentTurn.bonus = 'spare';
-  };
 };
 
 BowlingCalculator.prototype.totalScore = function(){

@@ -62,17 +62,6 @@ describe('BowlingCalculator', function(){
       expect(bowlingcalculator.throws).toEqual(1);
     });
 
-    it("should set bonus to strike if you knock over 10 pins with the first throw", function(){
-      bowlingcalculator.throwBall(10);
-      expect(bowlingcalculator.currentTurn.bonus).toEqual('strike');
-    })
-
-    it("should set bonus to spare if you knock over 10 pins cumulatively", function(){
-      bowlingcalculator.throwBall(8);
-      bowlingcalculator.throwBall(2);
-      expect(bowlingcalculator.currentTurn.bonus).toEqual('spare');
-    });
-
     it("should raise an error if you try to throw a ball with 0 throws left", function(){
       bowlingcalculator.throwBall(8);
       bowlingcalculator.throwBall(2);
@@ -106,15 +95,6 @@ describe('BowlingCalculator', function(){
       bowlingcalculator.endTurn();
       expect(bowlingcalculator.frames).toEqual(9);
     });
-
-    xit("should give you bonus points if you got a strike last turn", function(){
-      bowlingcalculator.throwBall(10);
-      bowlingcalculator.endTurn();
-      bowlingcalculator.throwBall(3);
-      bowlingcalculator.throwBall(3);
-      bowlingcalculator.endTurn();
-      expect(bowlingcalculator.totalScore).toEqual(22);
-    })
 
   });
 

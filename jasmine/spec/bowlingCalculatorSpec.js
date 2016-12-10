@@ -1,6 +1,6 @@
 'use strict';
 
-describe('bowlingCalculator', function(){
+describe('BowlingCalculator', function(){
 
   var bowlingcalculator;
 
@@ -62,10 +62,19 @@ describe('bowlingCalculator', function(){
       expect(bowlingcalculator.throws).toEqual(1);
     });
 
-    it("should set bonus to strike if you knock over 10 balls with the first throw", function(){
+    it("should set bonus to strike if you knock over 10 pins with the first throw", function(){
       bowlingcalculator.throwBall(10);
       expect(bowlingcalculator.bonus).toEqual('strike');
     })
+
+    it("should set bonus to spare if you knock over 10 pins cumulatively", function(){
+      bowlingcalculator.throwBall(8);
+      bowlingcalculator.throwBall(2);
+      expect(bowlingcalculator.bonus).toEqual('spare');
+    });
+
+    // should raise an error if you try to throw with no throws left
+    // should raise an error if you try to throw with no frames left
 
   });
 

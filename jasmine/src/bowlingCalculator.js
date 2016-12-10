@@ -75,5 +75,10 @@ BowlingCalculator.prototype._reduceThrows = function(){
 };
 
 BowlingCalculator.prototype._setBonus = function(){
-  this.bonus = 'strike'
+  if (this.balls[0] === 10) {
+    this.bonus = 'strike';
+  };
+  if (this._sumBalls() === 10 && !this.balls.includes(10)) {
+    this.bonus = 'spare';
+  };
 };

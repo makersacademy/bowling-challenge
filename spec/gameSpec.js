@@ -15,9 +15,16 @@ describe('Game', function () {
     })
   });
 
+  it('displays the number of knocked down pins after a hit', function (){
+    spyOn(Math, 'random').and.returnValue(0.5);
+    game.hit();
+    expect(game.remainingPinsNumber()).toEqual(5);
+  })
+
   it('displays the score', function () {
     expect(game.displayScore()).toEqual(0);
   })
+
 
 
 

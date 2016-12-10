@@ -18,26 +18,27 @@ Game.prototype._reset = function () {
 
 Game.prototype.frames = function () {
 
-
-}
-
-Game.prototype._calculateScore = function () {
-  this.score += this._knockedDownPins();
 }
 
 Game.prototype.displayScore = function () {
   return this.score;
 }
 
-Game.prototype._randomNumber = function () {
-  return Math.floor((Math.random() * 11));
+Game.prototype.remainingPinsNumber = function () {
+  return this.pins;
 }
+
 
 Game.prototype._knockedDownPins = function () {
   this.pins = this.PINS_NUMBER - this._randomNumber();
   return this.pins;
 }
 
-Game.prototype._getPinsNumber = function () {
-  return this.pins;
+Game.prototype._calculateScore = function () {
+  this.score += this._knockedDownPins();
+}
+
+
+Game.prototype._randomNumber = function () {
+  return Math.floor((Math.random() * 11));
 }

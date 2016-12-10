@@ -1,10 +1,12 @@
 var Game = function () {
-  this.frames = []
-  this.pins = 10;
+  this.frames = [];
+  this.PINS_NUMBER = 10;
+  this.pins = this.PINS_NUMBER;
 };
 
 Game.prototype.hit = function () {
-
+  this._knockedDownPins();
+  return console.log("You have " + this.pins + " pins remaining");
 }
 
 Game.prototype.reset = function () {
@@ -29,6 +31,6 @@ Game.prototype._randomNumber = function () {
 }
 
 Game.prototype._knockedDownPins = function () {
-  var pins = this.pins - this._randomNumber();
-  return pins;
+  this.pins = this.PINS_NUMBER - this._randomNumber();
+  return this.pins;
 }

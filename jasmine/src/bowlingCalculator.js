@@ -8,30 +8,13 @@ var BowlingCalculator = function() {
   this.throws = 2;
 };
 
-BowlingCalculator.prototype.totalScore = function(){
-  var sum = this.score.reduce(function(a, b){
-    return a + b;}, 0)
-  return sum
-};
-
 BowlingCalculator.prototype.endTurn = function() {
-  // this._addToScore(this._sumBalls());
   this.score.push(this.currentTurn);
-  this._clearBalls();
+  this._clearCurrentTurn();
   this._reduceFrames();
 };
 
-BowlingCalculator.prototype._addToScore = function(number) {
-  this.totalScore += number
-};
-
-BowlingCalculator.prototype._sumBalls = function(){
-  var sum = this.currentTurn.reduce(function(a, b){
-    return a + b;}, 0)
-  return sum
-};
-
-BowlingCalculator.prototype._clearBalls = function(){
+BowlingCalculator.prototype._clearCurrentTurn = function(){
   this.currentTurn = [];
 };
 

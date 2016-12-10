@@ -10,9 +10,9 @@ describe('BowlingCalculator', function(){
 
   describe("#new()", function(){
 
-    it("should initialize with a total score set to zero", function(){
-      expect(bowlingcalculator.totalScore()).toEqual(0);
-    });
+    it("should initialize with an empty score array", function(){
+      expect(bowlingcalculator.currentTurn).toEqual([]);
+    })
 
     it("should initialize with an empty current turn array", function() {
       expect(bowlingcalculator.currentTurn).toEqual([]);

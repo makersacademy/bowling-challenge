@@ -7,8 +7,14 @@ describe("Frame", function(){
   })
 
   describe("Points", function(){
-    it("are a maximum of 10", function(){
+    it("can be a maximum of 10", function(){
       expect(frame.MAX_POINTS).toEqual(10);
+    })
+  })
+
+  describe("Rolls", function(){
+    it("can be a maximum of 2", function(){
+      expect(frame.MAX_ROLLS).toEqual(2);
     })
   })
 

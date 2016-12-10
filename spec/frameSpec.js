@@ -74,11 +74,4 @@ describe("Frame", function(){
     })
   })
 
-
-
-
-
-
-
-
 })

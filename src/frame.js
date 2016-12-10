@@ -12,6 +12,7 @@ Frame.prototype.roll = function(){
   } else {
     this.updateRollCount();
     this.updateScore();
+    this.updatePoints();
   }
 }
 
@@ -21,6 +22,10 @@ Frame.prototype.updateRollCount = function(){
 
 Frame.prototype.updateScore = function(){
   this.score += this.calculateRollScore();
+}
+
+Frame.prototype.updatePoints = function(){
+  this.points.push(this.calculateRollScore());
 }
 
 Frame.prototype.calculateRollScore = function(){

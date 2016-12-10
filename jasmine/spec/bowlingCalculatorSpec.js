@@ -37,16 +37,16 @@ describe('bowlingCalculator', function(){
       expect(bowlingcalculator.balls).toContain(5, 3);
     });
 
-  });
-
-  describe("edge cases", function() {
-
     it("should not accept negative numbers for balls thrown", function(){
       expect(function(){bowlingcalculator.throwBall(-5)}).toThrowError("Invalid input: negative number.")
     });
 
     it("should not accept anything except numbers for balls thrown", function(){
       expect(function(){bowlingcalculator.throwBall("not a number")}).toThrowError("Invalid input: not a number.")
+    });
+
+    it("should not accept numbers higher than 10", function(){
+      expect(function(){bowlingcalculator.throwBall(11)}).toThrowError("Invalid input: max score per throw is 10")
     });
 
   });

@@ -73,6 +73,11 @@ describe('bowlingCalculator', function(){
       expect(bowlingcalculator.balls).toEqual([]);
     });
 
+    it("should reduce the number of frames left by 1", function(){
+      bowlingcalculator.endTurn();
+      expect(bowlingcalculator.frames).toEqual(9);
+    });
+
   });
 
 });

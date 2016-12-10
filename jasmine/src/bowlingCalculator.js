@@ -7,6 +7,11 @@ var BowlingCalculator = function() {
 BowlingCalculator.prototype.endTurn = function() {
   this.addToScore(this.sumBalls());
   this.clearBalls();
+  this.reduceFrames();
+};
+
+BowlingCalculator.prototype.addToScore = function(number) {
+  this.totalScore += number
 };
 
 BowlingCalculator.prototype.sumBalls = function(){
@@ -17,10 +22,10 @@ BowlingCalculator.prototype.sumBalls = function(){
 
 BowlingCalculator.prototype.clearBalls = function(){
   this.balls = [];
-}
+};
 
-BowlingCalculator.prototype.addToScore = function(number) {
-  this.totalScore += number
+BowlingCalculator.prototype.reduceFrames = function(){
+  this.frames -= 1;
 };
 
 BowlingCalculator.prototype.throwBall = function(pins) {

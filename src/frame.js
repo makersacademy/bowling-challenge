@@ -3,6 +3,7 @@ var Frame = function(){
   this.MAX_ROLLS = 2;
   this.rollCount = 0;
   this.score = 0;
+  this.points = [];
 };
 
 Frame.prototype.roll = function(){

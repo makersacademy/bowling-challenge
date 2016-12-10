@@ -9,8 +9,9 @@ Game.prototype.hit = function () {
   return console.log("You have " + this.pins + " pins remaining");
 }
 
-Game.prototype.reset = function () {
-
+Game.prototype._reset = function () {
+  this.pins = 10;
+  return this.pins;
 }
 
 Game.prototype.frames = function () {

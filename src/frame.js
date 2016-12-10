@@ -1,19 +1,18 @@
-var Frame = function(fn){
+var Frame = function(finishFrame){
   this.MAX_POINTS = 10;
   this.MAX_ROLLS = 2;
   this.rollCount = 0;
   this.score = 0;
   this.points = [];
-  this.fn = fn
+  this.finishFrame = finishFrame
 };
 
 Frame.prototype.roll = function(){
   if (this.hasEnded()) {
-    this.fn(this);
+    this.finishFrame(this);
     return "Frame is over";
   } else {
     var number = this.calculateRollScore();
-    console.log(number);
     this.updateRollCount();
     this.updateScore(number);
     this.updatePoints(number);

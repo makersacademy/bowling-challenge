@@ -32,6 +32,14 @@ describe("Game", function(){
       game.startNewFrame();
       expect(game.frameCount).toEqual(2);
     })
+    it("starts a new frame when previous frame is over", function(){
+      spyOn(frame, "score");
+      spyOn(frame, "points");
+      spyOn(game, "startNewFrame");
+      game.frameCount = 1;
+      game.endFrame(frame);
+      expect(game.startNewFrame).toHaveBeenCalled();
+    })
   })
 
   describe("End frame", function(){
@@ -44,6 +52,23 @@ describe("Game", function(){
       frame.points = [4,5];
       game.endFrame(frame);
       expect(game.points).toEqual([4,5]);
+    })
+  })
+
+  describe("Last frame", function(){
+    it("can indicate when the last frame has been reached", function(){
+      game.frameCount = 10;
+      expect(game.hasEnded()).toEqual(true);
+    })
+    it("can indicate when the last frame has not been reached", function(){
+      game.frameCount = 6;
+      expect(game.hasEnded()).toEqual(false);
+    })
+    it("returns 'Game over!' when last frame has been played", function(){
+      game.frameCount = 10;
+      spyOn(frame, "score");
+      spyOn(frame, "points");
+      expect(game.endFrame(frame)).toEqual("Game over!");
     })
   })
 

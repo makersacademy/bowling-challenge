@@ -16,4 +16,13 @@ Game.prototype.startNewFrame = function(){
 Game.prototype.endFrame = function(frame){
   this.score += frame.score;
   this.points.push.apply(this.points, frame.points);
+  if (this.hasEnded()) {
+    return "Game over!"
+  } else {
+    this.startNewFrame();
+  }
+}
+
+Game.prototype.hasEnded = function(){
+  return this.frameCount === this.MAX_FRAMES
 }

@@ -49,6 +49,13 @@ describe("score array", function(){
     expect(game.numberOfFramesRemaining).toEqual(9);
   });
 
+  it("should raise an error if there are no frames left", function(){
+    for (var i = 0; i <= 9; i += 1) {
+    game.nextFrame();
+  }
+expect(function() { game.nextFrame() }).toThrow("Too many frames")
+  });
+
 });
 
 

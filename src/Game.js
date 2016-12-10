@@ -24,5 +24,6 @@ Game.prototype.addToScoreArray = function(score) {
 };
 
 Game.prototype.nextFrame = function() {
+  if (this.numberOfFramesRemaining <= 0) throw "Too many frames"
   this.numberOfFramesRemaining -= 1;
 };

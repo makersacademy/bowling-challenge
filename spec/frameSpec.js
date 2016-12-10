@@ -42,6 +42,14 @@ describe("Frame", function(){
     })
   })
 
+  describe("Points", function(){
+    it("can be updated after each roll", function(){
+      spyOn(frame, "calculateRollScore").and.returnValue(6);
+      frame.roll();
+      expect(frame.points).toEqual([6]);
+    })
+  })
+
   describe("Roll", function(){
     it("count increases by 1 when a roll is taken", function(){
       frame.roll();

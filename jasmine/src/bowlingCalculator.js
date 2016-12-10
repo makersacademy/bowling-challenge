@@ -89,5 +89,17 @@ BowlingCalculator.prototype._setBonus = function(){
 };
 
 BowlingCalculator.prototype.totalScore = function(){
-  return 0;
+  if (this.frames === 10) {
+    return 0;
+  } else {
+    var flattenedScore = this.score.reduce(function(a, b) {
+      return a.concat(b);})
+      console.log(flattenedScore);
+
+    var sum = flattenedScore.reduce(function(a, b){
+      return a + b;
+    }, 0);
+    return sum;
+  }
+    // flatten the score array and then sum it
 };

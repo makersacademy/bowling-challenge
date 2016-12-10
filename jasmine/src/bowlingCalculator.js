@@ -35,12 +35,13 @@ BowlingCalculator.prototype.throwBall = function(pins) {
 };
 
 BowlingCalculator.prototype._validateThrowBall = function(number) {
-  this._isNegativeNumber(number);
+  this._isNotANegativeNumber(number);
   this._isNotANumber(number);
-  this._isHigherThanTen(number);
+  this._isNotHigherThanTen(number);
+  this._doesNotSumToMoreThanTen(number);
 };
 
-BowlingCalculator.prototype._isNegativeNumber = function(number) {
+BowlingCalculator.prototype._isNotANegativeNumber = function(number) {
   if (number < 0) {
     throw new Error("Invalid input: negative number.");
   };
@@ -52,8 +53,14 @@ BowlingCalculator.prototype._isNotANumber = function(number) {
   };
 };
 
-BowlingCalculator.prototype._isHigherThanTen = function(number) {
+BowlingCalculator.prototype._isNotHigherThanTen = function(number) {
   if (number > 10) {
     throw new Error("Invalid input: max score per throw is 10")
+  }
+};
+
+BowlingCalculator.prototype._doesNotSumToMoreThanTen = function(number) {
+  if (number + this.balls[0] > 10) {
+    throw new Error("Invalid input: trying to score more than 10 pins")
   }
 };

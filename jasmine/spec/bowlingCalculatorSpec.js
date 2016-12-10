@@ -48,6 +48,11 @@ describe('bowlingCalculator', function(){
       expect(function(){bowlingcalculator.throwBall(11)}).toThrowError("Invalid input: max score per throw is 10")
     });
 
+    it("should not accept multiple balls with a combined value of over 10", function(){
+      bowlingcalculator.throwBall(5);
+      expect(function(){bowlingcalculator.throwBall(6)}).toThrowError("Invalid input: trying to score more than 10 pins")
+    });
+
     // should decrease number of balls left to throw
 
   });

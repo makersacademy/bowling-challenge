@@ -1,9 +1,11 @@
 describe("Frame", function(){
 
   var frame;
+  var frame2;
 
   beforeEach(function(){
     frame = new Frame();
+    frame2 = new Frame();
   })
 
   describe("Creation", function(){
@@ -37,7 +39,7 @@ describe("Frame", function(){
     it("cannot exceed 10", function(){
       spyOn(frame, "calculateRollScore").and.returnValue(10);
       frame.roll();
-      expect(function(){frame.roll();}).toThrow("Frame is over");
+      expect(frame.roll()).toEqual("Frame is over");
       expect(frame.score).toEqual(10);
     })
   })
@@ -48,6 +50,16 @@ describe("Frame", function(){
       frame.roll();
       expect(frame.points).toEqual([6]);
     })
+    it("can calculate available points to be won", function(){
+      spyOn(frame, "calculateRollScore").and.returnValue(6);
+      frame.roll();
+      expect(frame.availablePoints()).toEqual(4);
+    })
+    it("can recalculate if roll is higher than available points", function(){
+      spyOn(frame, "calculateRollScore").and.returnValue(8);
+      frame.roll();
+      expect(frame.calculateRollScore).not.toBeGreaterThan(2);
+    })
   })
 
   describe("Roll", function(){
@@ -57,7 +69,7 @@ describe("Frame", function(){
     })
     it("count cannot exceed 2", function(){
       for(var i = 0; i<2; i++){ frame.roll(); }
-      expect(function(){frame.roll();}).toThrow("Frame is over");
+      expect(frame.roll()).toEqual("Frame is over");
       expect(frame.rollCount).toEqual(2);
     })
   })

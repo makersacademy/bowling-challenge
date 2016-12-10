@@ -13,6 +13,6 @@ BowlingCalculator.prototype.addToScore = function(number) {
   this.totalScore += number
 };
 
-BowlingCalculator.prototype.throwBall = function(number) {
-  this.balls.push(number);
+BowlingCalculator.prototype.throwBall = function(pins) {
+  this.balls.push(pins);
 };

@@ -25,9 +25,10 @@ describe('bowlingCalculator', function(){
     expect(bowlingcalculator.totalScore).toEqual(3);
   });
 
-  it("should be store first ball separately", function(){
+  it("should store balls you throw separately", function(){
     bowlingcalculator.throwBall(5);
-    expect(bowlingcalculator.balls).toContain(5);
+    bowlingcalculator.throwBall(3);
+    expect(bowlingcalculator.balls).toContain(5, 3);
   });
 
   describe("edge cases", function() {

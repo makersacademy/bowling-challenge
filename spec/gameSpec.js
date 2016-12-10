@@ -22,8 +22,15 @@ describe('Game', function () {
   })
 
   it('displays the score', function () {
-    expect(game.displayScore()).toEqual(0);
+    spyOn(Math, 'random').and.returnValue(0.5);
+    game.hit();
+    expect(game.displayScore()).toEqual(5);
   })
+
+  it('pushes a frame in an array', function () {
+    game.hit();
+    expect(game.frames.length).toEqual(1);
+  });
 
 
 

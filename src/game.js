@@ -34,3 +34,7 @@ Game.prototype._knockedDownPins = function () {
   this.pins = this.PINS_NUMBER - this._randomNumber();
   return this.pins;
 }
+
+Game.prototype._getPinsNumber = function () {
+  return this.pins;
+}

@@ -7,8 +7,13 @@ function Game() {
  this.rack = false;
 }
 
-Game.prototype.start = function() {
+Game.prototype.start_game = function() {
   var pinsReady = this.pins;
   this.rack = true;
   return this.rack;
+};
+
+Game.prototype.roll = function() {
+  first_score = this.pins[Math.floor(Math.random() * this.pins.length)];
+  return first_score;
 };

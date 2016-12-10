@@ -23,10 +23,15 @@ describe("Game", function() {
     });
 
     it("should load pins", function(){
-      game.start()
+      game.start_game();
       expect(game.rack).toEqual(true);
     });
 
+    it("should return number of pin hit", function(){
+      game.start_game();
+      spyOn(game,'roll').and.returnValue(5);
+      expect(game.roll()).toEqual(5);
+    });
 
 
 });

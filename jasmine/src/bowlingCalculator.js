@@ -1,6 +1,7 @@
 var BowlingCalculator = function() {
   this.totalScore = 0;
   this.balls = [];
+  this.frames = 10;
 };
 
 BowlingCalculator.prototype.endTurn = function() {

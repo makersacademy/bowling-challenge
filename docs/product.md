@@ -12,12 +12,11 @@ You've done a strike. And it's really nicely styled!
 ### DONE
 
 ### WIP
-
-### TODO
-
 As a bowler,
 So that I can keep track of my score
 I want to see a running total
+
+### TODO
 
 As a bowler,
 So that I know how many turns I have left,

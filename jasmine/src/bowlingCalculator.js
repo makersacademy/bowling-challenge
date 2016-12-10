@@ -1,5 +1,6 @@
 var BowlingCalculator = function () {
   this.totalScore = 0;
+  this.balls = [];
 };
 
 BowlingCalculator.prototype.addToScore = function(number) {
@@ -10,4 +11,8 @@ BowlingCalculator.prototype.addToScore = function(number) {
     throw new Error("Invalid input: not a number.")
   }
   this.totalScore += number
+};
+
+BowlingCalculator.prototype.throwBall = function(number) {
+  this.balls.push(number);
 };

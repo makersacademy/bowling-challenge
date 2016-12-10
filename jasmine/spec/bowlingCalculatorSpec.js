@@ -14,7 +14,7 @@ describe('BowlingCalculator', function(){
       expect(bowlingcalculator.totalScore()).toEqual(0);
     });
 
-    it("should initialize with an empty balls array", function() {
+    it("should initialize with an empty current turn array", function() {
       expect(bowlingcalculator.currentTurn).toEqual([]);
     });
 
@@ -34,11 +34,11 @@ describe('BowlingCalculator', function(){
 
   describe("#throwBall(pins)", function(){
 
-    it("should store balls you throw separately", function(){
+    it("should store the balls you throw", function(){
       bowlingcalculator.throwBall(5);
       bowlingcalculator.throwBall(3);
       expect(bowlingcalculator.currentTurn).toContain(5, 3);
-    });
+    })
 
     it("should not accept negative numbers for balls thrown", function(){
       expect(function(){bowlingcalculator.throwBall(-5)}).toThrowError("Invalid input: negative number.")
@@ -64,13 +64,13 @@ describe('BowlingCalculator', function(){
 
     it("should set bonus to strike if you knock over 10 pins with the first throw", function(){
       bowlingcalculator.throwBall(10);
-      expect(bowlingcalculator.bonus).toEqual('strike');
+      expect(bowlingcalculator.currentTurn.bonus).toEqual('strike');
     })
 
     it("should set bonus to spare if you knock over 10 pins cumulatively", function(){
       bowlingcalculator.throwBall(8);
       bowlingcalculator.throwBall(2);
-      expect(bowlingcalculator.bonus).toEqual('spare');
+      expect(bowlingcalculator.currentTurn.bonus).toEqual('spare');
     });
 
     it("should raise an error if you try to throw a ball with 0 throws left", function(){
@@ -90,11 +90,11 @@ describe('BowlingCalculator', function(){
 
   describe("#endTurn()", function(){
 
-    it("should add the balls array to the total score", function(){
+    it("should add the currentTurn array into the total score", function(){
       bowlingcalculator.throwBall(5);
       bowlingcalculator.throwBall(3);
       bowlingcalculator.endTurn();
-      expect(bowlingcalculator.totalScore).toEqual(8);
+      expect(bowlingcalculator.score).toContain([5,3]);
     });
 
     it("should empty the balls array", function(){

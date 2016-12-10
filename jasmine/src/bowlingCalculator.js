@@ -15,7 +15,8 @@ BowlingCalculator.prototype.totalScore = function(){
 };
 
 BowlingCalculator.prototype.endTurn = function() {
-  this._addToScore(this._sumBalls());
+  // this._addToScore(this._sumBalls());
+  this.score.push(this.currentTurn);
   this._clearBalls();
   this._reduceFrames();
 };
@@ -96,9 +97,10 @@ BowlingCalculator.prototype._reduceThrows = function(){
 
 BowlingCalculator.prototype._setBonus = function(){
   if (this.currentTurn[0] === 10) {
-    this.bonus = 'strike';
+    this.currentTurn.bonus = 'strike';
+    this.throws = 0;
   };
-  if (this._sumBalls() === 10 && !this.currentTurn.includes(10)) {
-    this.bonus = 'spare';
+  if (this.currentTurn[0] + this.currentTurn[1] === 10) {
+    this.currentTurn.bonus = 'spare';
   };
 };

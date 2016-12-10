@@ -15,6 +15,10 @@ Game.prototype.inputSecondThrow = function(number) {
   this.frameScore.push(number);
 };
 
+Game.prototype.inputThirdThrow = function(number) {
+  this.frameScore.push(number);
+}
+
 Game.prototype.addToScoreArray = function(score) {
   this.scoreArray.push(this.frameScore);
 };

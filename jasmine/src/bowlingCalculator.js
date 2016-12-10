@@ -30,29 +30,29 @@ BowlingCalculator.prototype._reduceFrames = function(){
 };
 
 BowlingCalculator.prototype.throwBall = function(pins) {
-  this.validateThrowBall(pins);
+  this._validateThrowBall(pins);
   this.balls.push(pins);
 };
 
-BowlingCalculator.prototype.validateThrowBall = function(number) {
-  this.isNegativeNumber(number);
-  this.isNotANumber(number);
-  this.isHigherThanTen(number);
+BowlingCalculator.prototype._validateThrowBall = function(number) {
+  this._isNegativeNumber(number);
+  this._isNotANumber(number);
+  this._isHigherThanTen(number);
 };
 
-BowlingCalculator.prototype.isNegativeNumber = function(number) {
+BowlingCalculator.prototype._isNegativeNumber = function(number) {
   if (number < 0) {
     throw new Error("Invalid input: negative number.");
   };
 };
 
-BowlingCalculator.prototype.isNotANumber = function(number) {
+BowlingCalculator.prototype._isNotANumber = function(number) {
   if (isNaN(number)) {
     throw new Error("Invalid input: not a number.")
   };
 };
 
-BowlingCalculator.prototype.isHigherThanTen = function(number) {
+BowlingCalculator.prototype._isHigherThanTen = function(number) {
   if (number > 10) {
     throw new Error("Invalid input: max score per throw is 10")
   }

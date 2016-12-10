@@ -49,6 +49,19 @@ describe('bowlingCalculator', function(){
       expect(function(){bowlingcalculator.throwBall(11)}).toThrowError("Invalid input: max score per throw is 10")
     });
 
+    // should decrease number of balls left to throw
+
+  });
+
+  describe("#endTurn()", function(){
+
+    it("should add the balls array to the total score", function(){
+      bowlingcalculator.throwBall(5);
+      bowlingcalculator.throwBall(3);
+      bowlingcalculator.endTurn();
+      expect(bowlingcalculator.totalScore).toEqual(8);
+    });
+
   });
 
 });

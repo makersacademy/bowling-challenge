@@ -32,6 +32,7 @@ BowlingCalculator.prototype._reduceFrames = function(){
 BowlingCalculator.prototype.throwBall = function(pins) {
   this._validateThrowBall(pins);
   this.balls.push(pins);
+  this._reduceThrows();
 };
 
 BowlingCalculator.prototype._validateThrowBall = function(number) {
@@ -63,4 +64,8 @@ BowlingCalculator.prototype._doesNotSumToMoreThanTen = function(number) {
   if (number + this.balls[0] > 10) {
     throw new Error("Invalid input: trying to score more than 10 pins")
   }
+};
+
+BowlingCalculator.prototype._reduceThrows = function(){
+  this.throws -= 1;
 };

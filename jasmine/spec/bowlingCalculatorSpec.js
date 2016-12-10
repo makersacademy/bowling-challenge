@@ -53,6 +53,11 @@ describe('bowlingCalculator', function(){
       expect(function(){bowlingcalculator.throwBall(6)}).toThrowError("Invalid input: trying to score more than 10 pins")
     });
 
+    it("should decrease throws by 1", function(){
+      bowlingcalculator.throwBall(5);
+      expect(bowlingcalculator.throws).toEqual(1);
+    });
+
     // should decrease number of balls left to throw
 
   });

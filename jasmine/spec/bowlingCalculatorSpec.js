@@ -22,13 +22,8 @@ describe('bowlingCalculator', function(){
       expect(bowlingcalculator.frames).toEqual(10);
     });
 
-  });
-
-  describe("#addToScore(number)", function(){
-
-    it("should be able to add to the total score", function(){
-      bowlingcalculator.addToScore(3)
-      expect(bowlingcalculator.totalScore).toEqual(3);
+    it("should initialize with throws property set to 2", function(){
+      expect(bowlingcalculator.throws).toEqual(2)
     });
 
   });

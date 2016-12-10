@@ -2,29 +2,30 @@ var BowlingCalculator = function() {
   this.totalScore = 0;
   this.balls = [];
   this.frames = 10;
+  this.throws = 2;
 };
 
 BowlingCalculator.prototype.endTurn = function() {
-  this.addToScore(this.sumBalls());
-  this.clearBalls();
-  this.reduceFrames();
+  this._addToScore(this._sumBalls());
+  this._clearBalls();
+  this._reduceFrames();
 };
 
-BowlingCalculator.prototype.addToScore = function(number) {
+BowlingCalculator.prototype._addToScore = function(number) {
   this.totalScore += number
 };
 
-BowlingCalculator.prototype.sumBalls = function(){
+BowlingCalculator.prototype._sumBalls = function(){
   var sum = this.balls.reduce(function(a, b){
     return a + b;}, 0)
   return sum
 };
 
-BowlingCalculator.prototype.clearBalls = function(){
+BowlingCalculator.prototype._clearBalls = function(){
   this.balls = [];
 };
 
-BowlingCalculator.prototype.reduceFrames = function(){
+BowlingCalculator.prototype._reduceFrames = function(){
   this.frames -= 1;
 };
 

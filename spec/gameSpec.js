@@ -15,6 +15,11 @@ describe('Game', function () {
     })
   });
 
+  it('displays the score', function () {
+    expect(game.displayScore()).toEqual(0);
+  })
+
+
 
 
 

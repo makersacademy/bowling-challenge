@@ -2,6 +2,7 @@ var Game = function () {
   this.frames = [];
   this.PINS_NUMBER = 10;
   this.pins = this.PINS_NUMBER;
+  this.score = 0;
 };
 
 Game.prototype.hit = function () {
@@ -19,12 +20,12 @@ Game.prototype.frames = function () {
 
 }
 
-Game.prototype.calculateScore = function () {
+Game.prototype._calculateScore = function () {
 
 }
 
 Game.prototype.displayScore = function () {
-
+  return this.score;
 }
 
 Game.prototype._randomNumber = function () {

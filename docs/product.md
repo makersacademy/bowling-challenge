@@ -36,6 +36,10 @@ So that my score is calculated correctly,
 If I get a spare, I want the points for the next one ball added to the points for this turn
 
 As a bowler,
+So that I can seal a win at the last minute,
+I want to get a number of extra balls if I score a strike or a spare in the last frame
+
+As a bowler,
 So that I don't accidentally enter a wrong score
 I want to actively confirm that my score for a turn is what it is
 

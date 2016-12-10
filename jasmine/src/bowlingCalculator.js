@@ -101,5 +101,4 @@ BowlingCalculator.prototype.totalScore = function(){
     }, 0);
     return sum;
   }
-    // flatten the score array and then sum it
 };

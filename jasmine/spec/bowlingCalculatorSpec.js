@@ -84,8 +84,6 @@ describe('BowlingCalculator', function(){
       expect(function(){bowlingcalculator.throwBall(1)}).toThrowError("No frames left.")
     });
 
-    // should raise an error if you try to throw with no frames left
-
   });
 
   describe("#endTurn()", function(){

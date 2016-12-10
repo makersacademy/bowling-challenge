@@ -7,6 +7,10 @@ Game.prototype.startGame = function() {
   this.numberOfFramesRemaining = 10;
 };
 
-Game.prototype.inputFirstFrame = function(number) {
+Game.prototype.inputFirstThrow = function(number) {
     this.frameScore = [number];
-}
+};
+
+Game.prototype.inputSecondThrow = function(number) {
+  this.frameScore.push(number);
+};

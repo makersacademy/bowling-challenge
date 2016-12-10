@@ -16,9 +16,15 @@ describe("Game", function(){
   });
 
 describe("frames", function(){
-  it("should allow a user to put in the score of their first frame", function(){
-    game.inputFirstFrame(6);
+  it("first throw of first frame", function(){
+    game.inputFirstThrow(6);
     expect(game.frameScore).toEqual([6])
+  });
+
+  it("second throw of first frame", function(){
+  game.inputFirstThrow(6);
+  game.inputSecondThrow(0);
+  expect(game.frameScore).toEqual([6,0])  
   });
 });
 

@@ -17,4 +17,16 @@ describe('bowlingCalculator', function(){
     expect(bowlingcalculator.totalScore).toEqual(3);
   });
 
+  describe("edge cases", function() {
+
+    it("should not accept negative numbers for scores", function(){
+      expect(function(){bowlingcalculator.addToScore(-5)}).toThrowError("Invalid input: negative number.")
+    });
+
+    it("should not accept anything except numbers for scores", function(){
+      expect(function(){bowlingcalculator.addToScore("not a number")}).toThrowError("Invalid input: not a number.")
+    });
+
+  });
+
 });

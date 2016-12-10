@@ -8,3 +8,7 @@ FrameManager.prototype.moveToNextFrame = function() {
   }
   this.currentFrame++;
 }
+
+FrameManager.prototype.resetFrame = function() {
+  this.currentFrame = 1;
+}

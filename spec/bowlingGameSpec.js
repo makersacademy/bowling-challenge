@@ -2,7 +2,7 @@ describe("Bowling Game", function() {
   var game;
   beforeEach(function() {
     game = new BowlingGame();
-    score = jasmine.createSpyObj('score',['currentScore','addToScore'])
+    frame = jasmine.createSpyObj('frame',['moveToNextFrame'])
   })
 
   describe("a new game", function() {
@@ -13,6 +13,18 @@ describe("Bowling Game", function() {
   })
 
   describe("playing a game", function() {
+
+    it("Each game has two turns before moving to the next frame", function(){
+      game.playBall();
+      expect(frame.moveToNextFrame).not.toHaveBeenCalled()
+    })
+
+    it("moves to the next frame after two plays", function() {
+      game.playBall();
+      game.playBall();
+      expect(frame.moveToNextFrame).toHaveBeenCalled()
+    })
   })
+
 
 })

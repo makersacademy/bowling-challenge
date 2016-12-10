@@ -22,4 +22,11 @@ describe("Frame Manager", function() {
     expect(function() {frameManager.moveToNextFrame()}).toThrow(new Error("Maximum number of frames reached!"))
   })
 
+  it("Resets the frames back to one", function() {
+    frameManager.moveToNextFrame()
+    frameManager.moveToNextFrame()
+    frameManager.resetFrame()
+    expect(frameManager.currentFrame).toEqual(1)
+  })
+
 })

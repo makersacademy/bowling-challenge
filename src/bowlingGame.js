@@ -1,14 +1,11 @@
 function BowlingGame() {
   this.currentTotal = 0
+  this.firstTurn = true
 }
 
-BowlingGame.prototype.moveToNextFrame = function() {
-  if (this.currentFrame > 10) {
-    throw new Error("Game over!")
+BowlingGame.prototype.playBall = function() {
+  if (this.firstTurn !== true) {
+    frame.moveToNextFrame();
   }
-  this.currentFrame++;
-}
-
-BowlingGame.prototype.resetGame = function() {
-  this.currentFrame = 1
+  this.firstTurn = false
 }

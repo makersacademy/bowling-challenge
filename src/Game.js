@@ -22,3 +22,7 @@ Game.prototype.inputThirdThrow = function(number) {
 Game.prototype.addToScoreArray = function(score) {
   this.scoreArray.push(this.frameScore);
 };
+
+Game.prototype.nextFrame = function() {
+  this.numberOfFramesRemaining -= 1;
+};

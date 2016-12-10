@@ -43,6 +43,12 @@ describe("score array", function(){
     expect(game.scoreArray).toEqual([[6,0]])
   });
 
+  it("should move to the next frame", function(){
+    game.addToScoreArray();
+    game.nextFrame();
+    expect(game.numberOfFramesRemaining).toEqual(9);
+  });
+
 });
 
 

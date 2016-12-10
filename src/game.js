@@ -4,7 +4,7 @@ var Game = function () {
 };
 
 Game.prototype.hit = function () {
-  return this.randomNumber();
+
 }
 
 Game.prototype.reset = function () {
@@ -24,6 +24,11 @@ Game.prototype.displayScore = function () {
 
 }
 
-Game.prototype.randomNumber = function () {
+Game.prototype._randomNumber = function () {
   return Math.floor((Math.random() * 11));
+}
+
+Game.prototype._knockedDownPins = function () {
+  var pins = this.pins - this._randomNumber();
+  return pins;
 }

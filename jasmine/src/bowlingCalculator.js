@@ -36,6 +36,7 @@ BowlingCalculator.prototype.throwBall = function(pins) {
   this._validateThrowBall(pins);
   this.balls.push(pins);
   this._reduceThrows();
+  this._setBonus();
 };
 
 BowlingCalculator.prototype._validateThrowBall = function(number) {
@@ -71,4 +72,8 @@ BowlingCalculator.prototype._doesNotSumToMoreThanTen = function(number) {
 
 BowlingCalculator.prototype._reduceThrows = function(){
   this.throws -= 1;
+};
+
+BowlingCalculator.prototype._setBonus = function(){
+  this.bonus = 'strike'
 };

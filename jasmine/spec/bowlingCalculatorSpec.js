@@ -62,6 +62,11 @@ describe('bowlingCalculator', function(){
       expect(bowlingcalculator.throws).toEqual(1);
     });
 
+    it("should set bonus to strike if you knock over 10 balls with the first throw", function(){
+      bowlingcalculator.throwBall(10);
+      expect(bowlingcalculator.bonus).toEqual('strike');
+    })
+
   });
 
   describe("#endTurn()", function(){
@@ -84,6 +89,15 @@ describe('bowlingCalculator', function(){
       bowlingcalculator.endTurn();
       expect(bowlingcalculator.frames).toEqual(9);
     });
+
+    xit("should give you bonus points if you got a strike last turn", function(){
+      bowlingcalculator.throwBall(10);
+      bowlingcalculator.endTurn();
+      bowlingcalculator.throwBall(3);
+      bowlingcalculator.throwBall(3);
+      bowlingcalculator.endTurn();
+      expect(bowlingcalculator.totalScore).toEqual(22);
+    })
 
   });
 

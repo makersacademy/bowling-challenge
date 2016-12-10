@@ -24,7 +24,14 @@ describe("frames", function(){
   it("second throw of first frame", function(){
   game.inputFirstThrow(6);
   game.inputSecondThrow(0);
-  expect(game.frameScore).toEqual([6,0])  
+  expect(game.frameScore).toEqual([6,0])
+  });
+
+  it("should put the scores into the score array", function(){
+    game.inputFirstThrow(6);
+    game.inputSecondThrow(0);
+    game.addToScoreArray();
+    expect(game.scoreArray).toEqual([[6,0]])
   });
 });
 

@@ -1,6 +1,5 @@
 function BowlingGame() {
-  this.currentTotal = 0;
-  this.currentFrame = 1;
+  this.currentTotal = 0
 }
 
 BowlingGame.prototype.moveToNextFrame = function() {

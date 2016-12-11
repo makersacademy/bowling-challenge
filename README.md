@@ -44,6 +44,10 @@ As a player
 So I can know how well I am doing
 I would like to see my score.
 
+As a player
+So I can make the final frame more interesting
+I would like to have three chances to knock down the pins.
+
 Game Rules:
 -----------
 ## Strikes

@@ -100,6 +100,23 @@ describe("Frame", function(){
       frame.roll();
       expect(frame.isStrike()).toEqual(true);
     })
+    it("can identify not a strike", function(){
+      spyOn(frame, "calculateRollScore").and.returnValue(4);
+      frame.roll();
+      expect(frame.isStrike()).toEqual(false);
+    })
+    it("can identify a spare", function(){
+      spyOn(frame, "calculateRollScore").and.returnValue(5);
+      frame.roll();
+      frame.roll();
+      expect(frame.isSpare()).toEqual(true);
+    })
+    it("can identify not a spare", function(){
+      spyOn(frame, "calculateRollScore").and.returnValue(4);
+      frame.roll();
+      frame.roll();
+      expect(frame.isSpare()).toEqual(false);
+    })
   })
 
 })

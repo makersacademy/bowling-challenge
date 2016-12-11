@@ -5,6 +5,7 @@ describe("Bowling", function(){
               [5,5,8,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
               [10,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
               [10,0,10,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+              [1,4,4,5,6,4,5,5,10,0,0,1,7,3,6,4,10,0,2,8,6],
               [10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,10,10]]
   var bowling;
   var index = 0;
@@ -39,6 +40,10 @@ describe("Bowling", function(){
     expect(bowling.score()).toEqual(49);
   })
 
+  it("should calculate the example game", function(){
+    expect(bowling.score()).toEqual(133);
+  });
+  
   it("should calculate a perfect game", function(){
     expect(bowling.score()).toEqual(300);
   });

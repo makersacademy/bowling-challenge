@@ -29,7 +29,6 @@ Bowling.prototype.scoreSum = function(){
 Bowling.prototype.score = function(){
   this.spares();
   this.strikes();
-  console.log(this.game);
   return this.bonus + this.scoreSum();
 }
 

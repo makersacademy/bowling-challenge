@@ -35,8 +35,20 @@ describe('Game', function() {
   });
 
   describe('when calculating scores', function() {
-    it('can calculate the score for each frame and add this to an array', function() {
+    it('stores the score for each frame in an array', function() {
       expect(game._scores).toEqual([]);
+    });
+
+    it('responds to frameScore', function() {
+      expect('frameScore' in game).toEqual(true);
+    });
+
+    it('can calculate the score for a frame', function() {
+      for (var i = 0; i < 10; i++) {
+        game.takeTurn(1, 1);
+      }
+      game.frameScore();
+      expect(game._scores[0]).toEqual(2);
     });
   });
 

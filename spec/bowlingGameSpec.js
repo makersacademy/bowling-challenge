@@ -9,7 +9,7 @@ describe("bowlingGame", function() {
 
   describe("Initialize", function(){
     it("Should initialize with score property set to zero", function(){
-      expect(game.score).toEqual(0);
+      expect(game.scoreTotal).toEqual(0);
     });
   });
 
@@ -18,41 +18,5 @@ describe("bowlingGame", function() {
       game.roll(7);
       expect(game._rollScore).toEqual(7);
     });
-
-    it("should move on to the next frame when a player gets a strike", function(){
-      game.roll(10);
-      expect(game._frame).toEqual(2)
-    });
-
-    it("should move on to the next frame when a player rolls twice", function(){
-      game.roll(4);
-      game.roll(3);
-      expect(game._frame).toEqual(2)
-    });
-
-    it("should double the score in the next frame if a player rolls a strike the previous frame", function(){
-      game.roll(10);
-      game.roll(5);
-      game.roll(1);
-      expect(game.score).toEqual(22)
-    });
-
-    it("should double the score of the second and third frames if two strikes are thrown in succession", function(){
-      game.roll(10);
-      game.roll(10);
-      game.roll(5);
-      game.roll(0);
-      expect(game.score).toEqual(40)
-    });
   });
-
-    it("should score 300 for a perfect game", function(){
-      for (var i = 0; i < 13; i++) {
-        game.roll(10)
-      }
-      expect(game.score).toEqual(300)
-    });
-
-
-
 });

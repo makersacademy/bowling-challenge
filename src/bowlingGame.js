@@ -5,7 +5,7 @@ function BowlingGame(){
   this._rollScore = 0;
   this._frameRolls = 0;
   this.frame = 1;
-  this.scoresSheet = []
+  this.scoreSheet = []
 
 };
 
@@ -14,7 +14,6 @@ const RESET = 0
 BowlingGame.prototype.roll = function(number){
   this._RollCalculator(number);
   this._isStrike(number);
-  this._scoringFrame();
   this._nextFrame();
 };
 
@@ -34,9 +33,11 @@ BowlingGame.prototype._isStrike = function(number){
 BowlingGame.prototype._nextFrame = function(){
   if(this._frameRolls === 2 || this._strike === true){
     this.frame += 1;
+    this._scoringFrame()
+
   };
 };
 
 BowlingGame.prototype._scoringFrame = function(){
-     this.score += this._rollScore
+     this.scoreSheet.push(this._rollScore)
 };

@@ -19,4 +19,9 @@ describe("bowlingGame", function() {
       expect(game._rollScore).toEqual(7);
     });
   });
+
+  it("should store the score in scoresheet after finishing a frame", function(){
+    game.roll(10);
+    expect(game.scoreSheet).toEqual([10])
+  });
 });

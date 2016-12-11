@@ -17,12 +17,12 @@ describe('Game', function () {
 
   it('is a Gutter Game', function () {
     rollMany(20,0);
-    expect(game.displayScore()).toEqual(0);
+    expect(game.score()).toEqual(0);
   })
 
   it('rolls all ones', function () {
     rollMany(20,1);
-    expect(game.displayScore()).toEqual(20);
+    expect(game.score()).toEqual(20);
   })
 
   it('rolls one spare', function (){
@@ -30,7 +30,7 @@ describe('Game', function () {
     game.roll(5);
     game.roll(3);
     rollMany(17,0);
-    expect(game.displayScore()).toEqual(16);
+    expect(game.score()).toEqual(16);
   })
 
   it('rolls one strike', function (){
@@ -38,11 +38,11 @@ describe('Game', function () {
     game.roll(3);
     game.roll(4);
     rollMany(16,0);
-    expect(game.displayScore()).toEqual(24);
+    expect(game.score()).toEqual(24);
   })
 
   it('plays a Perfect Game', function (){
     rollMany(12,10);
-    expect(game.displayScore()).toEqual(300);
+    expect(game.score()).toEqual(300);
   })
 });

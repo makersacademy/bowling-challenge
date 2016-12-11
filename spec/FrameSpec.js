@@ -9,7 +9,7 @@ describe("Frame", function() {
   });
 
 
-  describe("- keeping track of the rolls", function() {    
+  describe("- keeping track of the rolls", function() {
     it("should keep track of how many rolls have been made", function() {
       expect(frame.rollNumber).toEqual(0)
     });
@@ -49,9 +49,9 @@ describe("Frame", function() {
   });
 
   describe("ten", function() {
-    it("should be able to hold a third roll", function() {
-      expect(frame.rollThree).toEqual(0)
-    });
+    // it("should be able to hold a third roll", function() {
+    //   expect(frame.rollThree).toEqual(0)
+    // });
 
     describe("- the first roll", function() {
       it("should mark the first roll as strike if 10 pins were knocked", function() {
@@ -88,18 +88,6 @@ describe("Frame", function() {
       });
     });
 
-    describe("- third roll", function() {
-      it("should mark roll number as 3", function() {
-        frame.tenthFrame(10)
-        frame.tenthFrame(9)
-        expect(frame.rollNumber).toEqual(3)
-      });
-
-      it("should end game after third roll", function() {
-        frame.tenthFrame(10)
-        expect(frame.tenthFrame(9)).toEqual("Game has ended")
-      });
-    });
   });
 
 });

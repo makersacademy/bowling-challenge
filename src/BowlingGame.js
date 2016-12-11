@@ -2,7 +2,6 @@
 
 function BowlingGame() {
   this.framesInPlay = [];
-  // this.frameIndex = 0
   this.totalScore = 0;
 }
 
@@ -12,8 +11,11 @@ BowlingGame.prototype.roll = function(knockedPins) {
       this.framesInPlay.push(frame);
       frame.rollNumber += 1;
       frame.checkStrike(knockedPins);
+  } else if (this._isTenthFrame() && this._currentFrame().rollNumber === 3 && (this._currentFrame().isStrike || this.currentFrame().isSpare)) {
+      var bonusFrame = new Frame(knockedPins);
+      this.framesInPlay.push(bonusFrame);
+      bonusFrame.rollOne = knockedPins;
   } else if (this._isTenthFrame()) {
-      this._isGameFinished()
       var frame = this._currentFrame();
       return frame.tenthFrame(knockedPins);
   } else if (this._currentFrame().rollNumber === 1) {
@@ -22,6 +24,7 @@ BowlingGame.prototype.roll = function(knockedPins) {
       frame.rollTwo = knockedPins;
       frame.checkSpare(knockedPins);
   } else {
+      this._isGameFinished()
       var frame = new Frame(knockedPins);
       this.framesInPlay.push(frame);
       frame.rollNumber += 1;
@@ -42,11 +45,40 @@ BowlingGame.prototype._isTenthFrame = function() {
 };
 
 BowlingGame.prototype._isGameFinished = function() {
-  if (this._currentFrame().rollNumber === 3) {
+  if (this.framesInPlay.length === 11) {
     throw TypeError("Your game has finished, please reset if you would like to play again.")
   }
 };
 
 BowlingGame.prototype.resetGame = function() {
   this.framesInPlay = [];
+};
+
+BowlingGame.prototype.checkFinalScore = function() {
+  var total = 0;
+  for (var index = 0; index < 9; index++) {
+    if (this.framesInPlay[index].isStrike && this.framesInPlay[index+1].isStrike) {
+      total += this.framesInPlay[index].rollOne + this.framesInPlay[index+1].rollOne + this.framesInPlay[index+2].rollOne;
+    } else if (this.framesInPlay[index].isStrike && this.framesInPlay[index+1].isSpare) {
+      total += this.framesInPlay[index].rollOne + this.framesInPlay[index+1].rollOne;
+    } else if (this.framesInPlay[index].isSpare) {
+      total += this.framesInPlay[index].rollOne + this.framesInPlay[index].rollTwo + this.framesInPlay[index+1].rollOne;
+    } else {
+      total += this.framesInPlay[index].rollOne + this.framesInPlay[index].rollTwo;
+    }
+  }
+    if (this.framesInPlay.length === 11) {
+      total += (this._tenthFrameTotalScore() + this._bonusFrameTotalScore());
+    } else {
+      total += this._tenthFrameTotalScore();
+    }
+  return total
+};
+
+BowlingGame.prototype._tenthFrameTotalScore = function() {
+  return this.framesInPlay[9].rollOne + this.framesInPlay[9].rollTwo;
+};
+
+BowlingGame.prototype._bonusFrameTotalScore = function() {
+  return this.framesInPlay[10].rollOne;
 };

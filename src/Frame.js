@@ -4,7 +4,6 @@ function Frame(knockedPins) {
   this.rollNumber = 0
   this.rollOne = knockedPins
   this.rollTwo = 0
-  this.rollThree = 0
   this.isStrike = false
   this.isSpare = false
   this.totalScore = 0
@@ -24,11 +23,8 @@ Frame.prototype.checkSpare = function(knockedPins) {
 };
 
 Frame.prototype._checkFinalRoll = function(knockedPins) {
-  if ((this.rollOne + this.rollTwo) !== 10) {
-    // game.calculateFinalScore()
+  if ((this.rollOne + this.rollTwo !== 10 || this.rollOne + this.rollTwo !== 20) && this.isStrike == false && this.isSpare == false) {
     return "Game has ended"
-    //this should be linked to calculating the final score
-    //in Game
   };
 };
 
@@ -37,15 +33,14 @@ Frame.prototype.tenthFrame = function(knockedPins) {
     this.rollNumber += 1
     this.rollOne = knockedPins
     this.checkStrike(knockedPins)
-  } else if (this.rollNumber === 1) {
+} else if (this.rollNumber === 1 || this.rollNumber === 2) {
     this.rollNumber += 1
     this.rollTwo = knockedPins
+    this.totalScore = (this.rollOne + this.rollTwo)
     this.checkSpare(knockedPins)
     return this._checkFinalRoll(knockedPins)
-  } else if ((this.rollNumber === 2) && (this.isStrike || this.isSpare)) {
-    this.rollNumber = 3
-    this.rollThree = knockedPins
-    return "Game has ended"; //this should be linked to calculating the final
-    //score in Game.
+
   };
+
+
 };

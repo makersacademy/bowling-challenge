@@ -18,9 +18,6 @@ describe("BowlingGame", function() {
       expect(game.totalScore).toEqual(0);
     });
 
-    // it("should have a frameIndex to increment", function() {
-    //   expect(game.frameIndex).toEqual(0);
-    // });
   });
 
   describe("- rolling a ball", function() {
@@ -65,17 +62,17 @@ describe("BowlingGame", function() {
       expect(game._isTenthFrame()).toEqual(true)
     });
 
-    it("should let Player know game has ended after tenth frame play", function() {
-      for (var i = 0; i < 10; i++) {
-        game.roll(10)
-      };
-      expect(game.roll(2)).toEqual("Game has ended")
-    });
+    // it("should let Player know game has ended after tenth or eleventh frame play", function() {
+    //   for (var i = 0; i < 10; i++) {
+    //     game.roll(10)
+    //   };
+    //   expect(game.roll(2)).toEqual("Game has ended")
+    // });
   });
 
   describe("- resetting the game", function() {
     it("should throw an error if Player has completed a full game", function() {
-      for (var i = 0; i < 11; i++) {
+      for (var i = 0; i < 12; i++) {
         game.roll(10)
       };
       expect(function(){ game.roll(1); }).toThrowError("Your game has finished, please reset if you would like to play again.")
@@ -85,6 +82,15 @@ describe("BowlingGame", function() {
       game.roll(1)
       game.resetGame()
       expect(game.framesInPlay.length).toEqual(0)
+    });
+  });
+
+  describe("- calculating the final score", function() {
+    it("should return the correct final score", function() {
+      for (var i = 0; i < 12; i++) {
+        game.roll(10)
+      };
+      expect(game.checkFinalScore()).toEqual(300);
     });
   });
 

@@ -51,6 +51,18 @@ describe("Frame", function() {
     it("should be able to hold a third roll", function() {
       expect(frame.rollThree).toEqual(0)
     });
+
+    it("should mark the first roll as strike if 10 pins were knocked", function() {
+      frame.rollNumber = 0
+      frame.tenthFrame(10)
+      expect(frame.isStrike).toEqual(true)
+    });
+
+    it("should mark rollNumber as 1 after first roll", function() {
+      frame.rollNumber = 0
+      frame.tenthFrame(5)
+      expect(frame.rollNumber).toEqual(1)
+    });
   });
 
 });

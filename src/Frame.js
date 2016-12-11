@@ -22,3 +22,11 @@ Frame.prototype.checkSpare = function(knockedPins) {
     this.isSpare = true
   };
 };
+
+Frame.prototype.tenthFrame = function(knockedPins) {
+  if (this.rollNumber === 0) {
+    this.rollNumber += 1
+    this.rollOne = knockedPins
+    this.checkStrike(knockedPins) 
+  }
+};

@@ -10,12 +10,17 @@ describe('Game', function() {
     frame = jasmine.createSpyObj('frame', ['method']);
   });
 
-  describe('when playing a game', function() {
-
+  describe('when beginning a new game', function() {
     it('contains an empty array to track the frames', function() {
       expect(game._frames).toEqual([]);
     });
 
+    it('the score will start at zero', function() {
+      expect(game._score).toEqual(0);
+    });
+  });
+
+  describe('when playing a game', function() {
     it('is expected to respond to takeTurn', function() {
       expect('takeTurn' in game).toEqual(true);
     });
@@ -24,7 +29,6 @@ describe('Game', function() {
       game.takeTurn();
       expect(game._frames.length).toEqual(1);
     });
-
   });
 
 });

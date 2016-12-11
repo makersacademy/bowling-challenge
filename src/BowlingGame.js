@@ -72,7 +72,14 @@ BowlingGame.prototype.checkFinalScore = function() {
     } else {
       total += this._tenthFrameTotalScore();
     }
-  return total
+
+    if (total === 300) {
+      return "Your final total score is 300! You played the perfect game!"
+    } else if (total === 0) {
+      return "Your final total score is 0 - Gutter game!"
+    } else {
+      return "Your final total score is " + total
+    }
 };
 
 BowlingGame.prototype._tenthFrameTotalScore = function() {

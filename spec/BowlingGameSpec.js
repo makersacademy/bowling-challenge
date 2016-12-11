@@ -90,7 +90,7 @@ describe("BowlingGame", function() {
       for (var i = 0; i < 12; i++) {
         game.roll(10)
       };
-      expect(game.checkFinalScore()).toEqual(300);
+      expect(game.checkFinalScore()).toEqual("Your final total score is 300! You played the perfect game!");
     });
   });
 

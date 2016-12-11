@@ -9,7 +9,6 @@ var Frame = function(finishFrame){
 
 Frame.prototype.roll = function(){
   var number = this.calculateRollScore();
-  console.log(number);
   this.updateRollCount();
   this.updateScore(number);
   this.updatePoints(number);

@@ -1,0 +1,11 @@
+body {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+.score-table,tr,th {
+  width: 700px;
+  border: 4px solid;
+  border-collapse: collapse;
+}

@@ -9,9 +9,14 @@ describe("Scoreboard", function(){
     expect(scoreBoard.currentScore).toEqual([]);
   });
 
-  it("should set the players first score", function(){
+  it("should set the players first roll score", function(){
     scoreBoard.firstRoll(3);
     expect(scoreBoard.currentScore).toContain(3);
+  });
+
+  it("should set the players second roll score", function(){
+    scoreBoard.secondRoll(4);
+    expect(scoreBoard.currentScore).toContain(4);
   });
 
 

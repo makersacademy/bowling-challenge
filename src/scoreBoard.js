@@ -6,3 +6,8 @@ function Scoreboard (){
     this.currentScore.push(scoreOne);
     return this.currentScore;
   };
+
+  Scoreboard.prototype.secondRoll = function(scoreTwo){
+    this.currentScore.push(scoreTwo);
+    return this.currentScore;
+  }

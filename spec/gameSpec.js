@@ -15,4 +15,12 @@ describe('Game', function () {
     }
     expect(game.score()).toEqual(0);
   })
+
+  it('rolls all ones', function () {
+    for(var i = 0; i<21; i++) {
+      game.roll(0);
+    }
+    expect(game.score()).toEqual(20);
+
+  })
 });

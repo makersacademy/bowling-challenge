@@ -8,6 +8,7 @@ Game.prototype.roll = function (pins) {
   this.rolls[this.currentRoll++] = pins;
 };
 
+
 Game.prototype.score = function () {
   var score = 0;
   var frameIndex = 0;

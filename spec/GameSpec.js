@@ -15,7 +15,7 @@ describe("Game", function() {
       for(var i=0; i < 2; i++){
         game.recordRoll(6);
       }
-      expect(game.frames).toEqual([[6,6]])
+      expect(game.framez).toEqual([[6,6]])
     });
 
     it("should clean the rolls after frame is recorded", function() {
@@ -23,6 +23,15 @@ describe("Game", function() {
         game.recordRoll(6);
       }
       expect(game.rolls).toEqual([])
+    });
+  });
+
+  describe("calculateResult", function() {
+    it("calculates results after 10 rolls", function() {
+      for(var i=0; i < 20; i++){
+        game.recordRoll(6);
+      }
+      expect(game.result).toEqual(120)
     });
   });
 

@@ -1,6 +1,8 @@
 function Game() {
-  this.rolls = []
-  this.frames = []
+  this.rolls = [];
+  this.framez = [];
+  this.result = 0
+
 };
 Game.prototype.recordRoll = function(roll) {
   this.rolls.push(roll);
@@ -10,6 +12,19 @@ Game.prototype.recordRoll = function(roll) {
 };
 
 Game.prototype.recordFrame = function() {
-  this.frames.push(this.rolls);
+  this.framez.push(this.rolls);
   this.rolls = [];
+  if (this.framez.length === 10) {
+    this.calculateResult();
+  }
+};
+
+Game.prototype.calculateResult = function() {
+
+  var allRolls = this.framez.reduce(function(a, b) {
+    return a.concat(b);
+  }, []);
+  this.result = allRolls.reduce(function(a, b) {
+        return a + b;
+    }, 0);
 };

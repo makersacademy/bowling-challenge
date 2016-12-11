@@ -13,6 +13,10 @@ describe("Scoreboard", function(){
     expect(scoreBoard.frameCount).toEqual(0);
   });
 
+  it("should initialize with a scores of zero", function(){
+    expect(scoreBoard.scores).toEqual([]);
+  });
+
   it("should set the players first roll score", function(){
     scoreBoard.firstRoll(3);
     expect(scoreBoard.currentScore).toContain(3);
@@ -23,16 +27,11 @@ describe("Scoreboard", function(){
     expect(scoreBoard.currentScore).toContain(4);
   });
 
-  it("should increase the frame count by 1 for each roll set", function(){
-    scoreBoard.secondRoll(4);
-    scoreBoard.currentFrame();
-    expect(scoreBoard.frameCount).toEqual(1);
-  });
-
   it("should calculate the total score for the set", function(){
+    scoreBoard.firstRoll(3);
     scoreBoard.secondRoll(4);
-    expect(scoreBoard.calculateScore()).toEqual(7);
+    scoreBoard.calculateScore()
+    expect(scoreBoard.scores).toContain(7);
   });
-
 
 });

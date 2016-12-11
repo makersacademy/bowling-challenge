@@ -1,6 +1,7 @@
 function Scoreboard (){
   this.currentScore = [];
   this.frameCount = 0;
+  this.scores = [];
 };
 
   Scoreboard.prototype.firstRoll = function(scoreOne){
@@ -13,7 +14,9 @@ function Scoreboard (){
     return this.currentScore;
   };
 
-  Scoreboard.prototype.currentFrame = function() {
-    this.frameCount = this.currentScore.length;
-    return this.frameCount
+  Scoreboard.prototype.calculateScore = function() {
+    this.scores.push(this.currentScore.reduce(function(a,b){return a + b },0));
+    return this.scores;
   };
+
+  

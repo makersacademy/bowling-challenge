@@ -14,3 +14,9 @@ Game.prototype.frameScore = function() {
     this._scores.push(this._frames[i]._firstRoll + this._frames[i]._secondRoll);
   }
 };
+
+Game.prototype.addTotalScore = function() {
+  for (var i = 0; i < this._scores.length; i++) {
+    this._totalScore += this._scores[i];
+  }
+};

@@ -26,29 +26,24 @@ describe('Game', function() {
       expect(game._frames.length).toEqual(1);
     });
 
-    // it('can add the total score at the end of a game' function() {
-    //   for (var i = 0; i < 10; i++) {
-    //     game.takeTurn(1, 1);
-    //   }
-    //   expect(game.totalScore).toEqual(20);
-    // });
   });
 
   describe('when calculating scores', function() {
-    it('stores the score for each frame in an array', function() {
-      expect(game._scores).toEqual([]);
-    });
-
-    it('responds to frameScore', function() {
-      expect('frameScore' in game).toEqual(true);
-    });
-
-    it('can calculate the score for a frame', function() {
+    beforeEach(function() {
       for (var i = 0; i < 10; i++) {
         game.takeTurn(1, 1);
       }
+    });
+
+    it('can calculate the score for a frame', function() {
       game.frameScore();
       expect(game._scores[0]).toEqual(2);
+    });
+
+    it('can calculate the total score', function() {
+      game.frameScore();
+      game.addTotalScore();
+      expect(game._totalScore).toEqual(20);
     });
   });
 

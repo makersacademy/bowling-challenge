@@ -50,22 +50,20 @@ describe('Game', function() {
       for (var i = 0; i < 10; i++) {
         game.takeTurn(1, 1);
       }
-      game._frameScore();
-      game._addTotalScore();
     });
 
     it('resets the frames', function() {
-      game.takeTurn();
+      game._endGame();
       expect(game._frames).toEqual([]);
     });
 
     it('resets the score per frame', function() {
-      game.takeTurn();
+      game._endGame();
       expect(game._scores).toEqual([]);
     });
 
     it('resets the total score back to zero', function() {
-      game.takeTurn();
+      game._endGame();
       expect(game._totalScore).toEqual(0);
     });
   });

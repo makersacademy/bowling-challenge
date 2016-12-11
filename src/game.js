@@ -6,7 +6,7 @@ function Game() {
 
 Game.prototype.takeTurn = function(firstRoll, secondRoll) {
   if (this._isGameOver()) {
-    this._endGame();
+    return;
   }
   frame = new Frame(firstRoll, secondRoll);
   this._frames.push(frame);
@@ -35,5 +35,8 @@ Game.prototype._resetGame = function() {
 };
 
 Game.prototype._endGame = function() {
+  this._frameScore();
+  this._addTotalScore();
+  console.log("Total score is " + this._totalScore);
   this._resetGame();
 };

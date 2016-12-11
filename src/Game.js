@@ -1,22 +1,15 @@
-function Player() {
-}
-Player.prototype.play = function(song) {
-  this.currentlyPlayingSong = song;
-  this.isPlaying = true;
+function Game() {
+  this.rolls = []
+  this.frames = []
 };
-
-Player.prototype.pause = function() {
-  this.isPlaying = false;
-};
-
-Player.prototype.resume = function() {
-  if (this.isPlaying) {
-    throw new Error("song is already playing");
+Game.prototype.recordRoll = function(roll) {
+  this.rolls.push(roll);
+  if (this.rolls.length === 2) {
+    this.recordFrame();
   }
-
-  this.isPlaying = true;
 };
 
-Player.prototype.makeFavorite = function() {
-  this.currentlyPlayingSong.persistFavoriteStatus(true);
+Game.prototype.recordFrame = function() {
+  this.frames.push(this.rolls);
+  this.rolls = [];
 };

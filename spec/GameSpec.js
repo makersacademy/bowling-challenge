@@ -72,8 +72,9 @@ describe("Game", function(){
       }
       expect(function() { game.nextFrame() }).toThrow("Too many frames")
     });
+      });
 
-    describe("scoring", function(){
+    describe("entire game", function(){
       it("should work on all frames", function(){
       game.inputFirstThrow(0);
       game.inputSecondThrow(6);
@@ -110,12 +111,9 @@ describe("Game", function(){
       game.nextFrame();
       game.inputFirstThrow(10);
       game.inputSecondThrow(0);
+      game.inputThirdThrow(10);
       game.addToScoreArray();
-      expect(game.scoreArray).toEqual([[0,6],[10],[0,0],[9,1],[10],[0,6],[10],[0,0],[9,1],[10, 0]])
+      expect(game.scoreArray).toEqual([[0,6],[10],[0,0],[9,1],[10],[0,6],[10],[0,0],[9,1],[10, 0, 10]])
       });
     });
-
-  });
-
-
 });

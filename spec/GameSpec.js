@@ -24,6 +24,14 @@ describe("Game", function() {
       expect(game.framez).toEqual([[10]])
     });
 
+    it("should calculate correct score for a strike", function() {
+      game.recordRoll(10);
+      for(var i=0; i < 2; i++){
+        game.recordRoll(6);
+      }
+      expect(game.framez).toEqual([[22],[6,6]])
+    });
+
     it("should clean the rolls after frame is recorded", function() {
       for(var i=0; i < 2; i++){
         game.recordRoll(6);

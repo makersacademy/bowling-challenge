@@ -45,13 +45,13 @@ Frame.prototype.hasEnded = function(){
 }
 
 Frame.prototype.availablePoints = function(){
-  return 10 - this.score;
+  return this.MAX_POINTS - this.score;
 }
 
 Frame.prototype.isStrike = function(){
-  return this.points[0] === 10 || this.points[1] === 10;
+  return this.points[0] === this.MAX_POINTS || this.points[1] === this.MAX_POINTS;
 }
 
 Frame.prototype.isSpare = function(){
-  return this.points.length === 2 && this.score === 10;
+  return this.points.length === this.MAX_ROLLS && this.score === this.MAX_POINTS;
 }

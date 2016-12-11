@@ -12,8 +12,8 @@ describe("Game", function(){
     it("has a maximum of 10 frames", function(){
       expect(game.MAX_FRAMES).toEqual(10);
     })
-    it("has an initial frame count of 1", function(){
-      expect(game.frameCount).toEqual(1);
+    it("has an initial frame count of 0", function(){
+      expect(game.frameCount).toEqual(0);
     })
     it("has an initial score of 0", function(){
       expect(game.score).toEqual(0);
@@ -30,7 +30,7 @@ describe("Game", function(){
     })
     it("increases frame count", function(){
       game.startNewFrame();
-      expect(game.frameCount).toEqual(2);
+      expect(game.frameCount).toEqual(1);
     })
     it("starts a new frame when previous frame is over", function(){
       spyOn(frame, "score");
@@ -48,10 +48,11 @@ describe("Game", function(){
       game.endFrame(frame);
       expect(game.score).toEqual(8);
     })
-    it("adds points in frame to points array", function(){
+    it("adds frame object to points array", function(){
       frame.points = [4,5];
+      game.startNewFrame();
       game.endFrame(frame);
-      expect(game.points).toEqual([4,5]);
+      expect(game.points).toEqual(jasmine.arrayContaining([frame]));
     })
   })
 

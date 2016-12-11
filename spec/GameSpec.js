@@ -10,9 +10,28 @@ describe("Game", function(){
       expect(game.scoreArray).toEqual([]);
     });
 
+    it("should have 10 frames remaining", function(){
+      expect(game.numberOfFramesRemaining).toEqual(10);
+    });
+  });
 
-    it("should start at frame 1 ", function(){
-      expect(game.frameNumber).toEqual(1);
+  describe("frames", function(){
+    it("first throw of first frame", function(){
+      game.inputFirstThrow(6);
+      expect(game.frameScore).toEqual([6])
+    });
+
+    it("second throw of first frame", function(){
+      game.inputFirstThrow(6);
+      game.inputSecondThrow(0);
+      expect(game.frameScore).toEqual([6,0])
+    });
+
+    it("should give a third frame in the last score if 10 points", function(){
+      game.inputFirstThrow(10);
+      game.inputSecondThrow(0);
+      game.inputThirdThrow(5);
+      expect(game.frameScore).toEqual([10,0,5])
     });
   });
 
@@ -27,17 +46,16 @@ describe("Game", function(){
     it("should move to the next frame", function(){
       game.addToScoreArray();
       game.nextFrame();
-      expect(game.frameNumber).toEqual(2);
+      expect(game.numberOfFramesRemaining).toEqual(9);
     });
 
-    it("should raise an error if next frame is number 11", function(){
-      for (var i = 1; i <= 10; i += 1) {
-        console.log(i);
+    it("should raise an error if there are no frames left", function(){
+      for (var i = 0; i <= 9; i += 1) {
         game.nextFrame();
       }
       expect(function() { game.nextFrame() }).toThrow("Too many frames")
     });
-
+    
   });
 
 

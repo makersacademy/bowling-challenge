@@ -1,17 +1,29 @@
-// controls the flow of the game
-requireRelative('Frame')
+// calculates score
+
 function Game() {}
 
 Game.prototype.startGame = function() {
   this.scoreArray = [];
-  this.frameNumber = 1;
+  this.numberOfFramesRemaining = 10;
 };
 
+Game.prototype.inputFirstThrow = function(number) {
+    this.frameScore = [number];
+};
+
+Game.prototype.inputSecondThrow = function(number) {
+  this.frameScore.push(number);
+};
+
+Game.prototype.inputThirdThrow = function(number) {
+  this.frameScore.push(number);
+}
+
 Game.prototype.addToScoreArray = function(score) {
-  this.scoreArray.push(Frame.frameScore);
+  this.scoreArray.push(this.frameScore);
 };
 
 Game.prototype.nextFrame = function() {
-  if (this.frameNumber >= 11) throw "Too many frames"
-  this.frameNumber += 1;
+  if (this.numberOfFramesRemaining <= 0) throw "Too many frames"
+  this.numberOfFramesRemaining -= 1;
 };

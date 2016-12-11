@@ -4,12 +4,8 @@ describe("Game", function() {
 
   beforeEach(function() {
     game = new Game();
-    game.rackUp();
-  });
 
-    // it("should initialize with no pins set up (rack = false)", function(){
-    //   expect(game.rack).toBe(false);
-    // });
+  });
 
     it("should initialize with a constant of pins", function(){
       expect(game.pins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
@@ -76,9 +72,9 @@ describe("Game", function() {
       expect(game.frameCount).toEqual(1);
     });
 
-    it("should give an error if a player attempts to play more than 10 sets", function(){
-
-    });
+    // it("should give an error if a player attempts to play more than 10 sets", function(){
+    //
+    // });
 
 
 });

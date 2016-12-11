@@ -11,15 +11,20 @@ Game.prototype.roll = function (pins) {
 Game.prototype.displayScore = function () {
   var frameIndex = 0;
   for( var frame=0; frame < 10; frame++) {
-    if(this._isSpare(frameIndex)) {
-      this.score = 10 + this.rolls[frameIndex+2];
-      frameIndex += 2;
+    if(this.rolls[frameIndex] === 10) {
+      this.score = 10 + this.rolls[frameIndex+1] + this.rolls[frameIndex+2];
+      frameIndex++;
     }
     else {
-      this.score += this.rolls[frameIndex] + this.rolls[frameIndex+1];
-      frameIndex += 2;
+      if(this._isSpare(frameIndex)) {
+        this.score = 10 + this.rolls[frameIndex+2];
+        frameIndex += 2;
+      }
+      else {
+        this.score += this.rolls[frameIndex] + this.rolls[frameIndex+1];
+        frameIndex += 2;
+      }
     }
-    
   }
   return this.score;
 };

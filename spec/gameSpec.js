@@ -13,6 +13,6 @@ describe('Game', function () {
     for(var i = 0; i<21; i++) {
       game.roll(0);
     }
-    
+    expect(game.score()).toEqual(0);
   })
 });

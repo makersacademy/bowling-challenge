@@ -29,8 +29,12 @@ describe("Game", function(){
 
     it("should not allow a second frame if first was a strike", function(){
       game.inputFirstThrow(10);
-      console.log(game.frameScore)
-      expect(function() { game.inputSecondThrow() }).toThrow("Strike - Second fame not allowed")
+      expect(function() { game.inputSecondThrow(5) }).toThrow("Strike - Second fame not allowed")
+    });
+
+    it("should not allow a total greater than 10", function(){
+      game.inputFirstThrow(8);
+      expect(function(){ game.inputSecondThrow(3)}).toThrow("Frame total must be 10 or lower")
     });
 
     it("should give a third frame in the last score if 10 points", function(){

@@ -27,6 +27,8 @@ Frame.prototype.checkFinalRoll = function(knockedPins) {
   if ((this.rollOne + this.rollTwo) !== 10) {
     // game.calculateFinalScore()
     return "Game has ended"
+    //this should be linked to calculating the final score
+    //in Game
   };
 };
 
@@ -43,5 +45,7 @@ Frame.prototype.tenthFrame = function(knockedPins) {
   } else if ((this.rollNumber === 2) && (this.isStrike || this.isSpare)) {
     this.rollNumber = 3
     this.rollThree = knockedPins
+    return "Game has ended"; //this should be linked to calculating the final
+    //score in Game.
   };
 };

@@ -93,6 +93,11 @@ describe("Frame", function() {
         frame.tenthFrame(9)
         expect(frame.rollNumber).toEqual(3)
       });
+
+      it("should end game after third roll", function() {
+        frame.tenthFrame(10)
+        expect(frame.tenthFrame(9)).toEqual("Game has ended")
+      });
     });
   });
 

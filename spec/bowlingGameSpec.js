@@ -46,6 +46,12 @@ describe("bowlingGame", function() {
     });
   });
 
+    it("should score 300 for a perfect game", function(){
+      for (var i = 0; i < 13; i++) {
+        game.roll(10)
+      }
+      expect(game.score).toEqual(300)
+    });
 
 
 

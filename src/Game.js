@@ -4,7 +4,7 @@ function Game() {}
 
 Game.prototype.startGame = function() {
   this.scoreArray = [];
-  this.numberOfFramesRemaining = 10;
+  this.frameNumber = 1;
 };
 
 Game.prototype.inputFirstThrow = function(number) {
@@ -12,8 +12,8 @@ Game.prototype.inputFirstThrow = function(number) {
 };
 
 Game.prototype.inputSecondThrow = function(number) {
-if (this.frameScore[0] === 10) throw "Strike - Second fame not allowed";
-if (this.frameScore[0] + number > 10) throw "Frame total must be 10 or lower";
+if ((this.frameScore[0] === 10) && this.frameNumber !== 10) throw "Strike - Second fame not allowed";
+if ((this.frameScore[0] + number > 10) && this.frameNumber !== 10) throw "Frame total must be 10 or lower";
   this.frameScore.push(number);
 };
 
@@ -26,6 +26,6 @@ Game.prototype.addToScoreArray = function(score) {
 };
 
 Game.prototype.nextFrame = function() {
-  if (this.numberOfFramesRemaining <= 0) throw "Too many frames";
-  this.numberOfFramesRemaining -= 1;
+  if (this.frameNumber >= 10) throw "Too many frames";
+  this.frameNumber += 1;
 };

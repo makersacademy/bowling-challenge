@@ -10,8 +10,8 @@ describe("Game", function(){
       expect(game.scoreArray).toEqual([]);
     });
 
-    it("should have 10 frames remaining", function(){
-      expect(game.numberOfFramesRemaining).toEqual(10);
+    it("should start on frame 1", function(){
+      expect(game.frameNumber).toEqual(1);
     });
   });
 
@@ -30,6 +30,13 @@ describe("Game", function(){
     it("should not allow a second frame if first was a strike", function(){
       game.inputFirstThrow(10);
       expect(function() { game.inputSecondThrow(5) }).toThrow("Strike - Second fame not allowed")
+    });
+
+    it("should allow a second frame if the first was a strike in the last frame", function(){
+      game.frameNumber = 10;
+      game.inputFirstThrow(10);
+      game.inputSecondThrow(5);
+      expect(game.frameScore).toEqual[10,5]
     });
 
     it("should not allow a total greater than 10", function(){
@@ -56,14 +63,56 @@ describe("Game", function(){
     it("should move to the next frame", function(){
       game.addToScoreArray();
       game.nextFrame();
-      expect(game.numberOfFramesRemaining).toEqual(9);
+      expect(game.frameNumber).toEqual(2);
     });
 
     it("should raise an error if there are no frames left", function(){
-      for (var i = 0; i <= 9; i += 1) {
+      for (var i = 1; i <= 9; i += 1) {
         game.nextFrame();
       }
       expect(function() { game.nextFrame() }).toThrow("Too many frames")
+    });
+
+    describe("scoring", function(){
+      it("should work on all frames", function(){
+      game.inputFirstThrow(0);
+      game.inputSecondThrow(6);
+      game.addToScoreArray();
+      game.nextFrame();
+      game.inputFirstThrow(10);
+      game.addToScoreArray();
+      game.nextFrame();
+      game.inputFirstThrow(0);
+      game.inputSecondThrow(0);
+      game.addToScoreArray();
+      game.nextFrame();
+      game.inputFirstThrow(9);
+      game.inputSecondThrow(1);
+      game.addToScoreArray();
+      game.nextFrame();
+      game.inputFirstThrow(10);
+      game.addToScoreArray();
+      game.nextFrame();
+      game.inputFirstThrow(0);
+      game.inputSecondThrow(6);
+      game.addToScoreArray();
+      game.nextFrame();
+      game.inputFirstThrow(10);
+      game.addToScoreArray();
+      game.nextFrame();
+      game.inputFirstThrow(0);
+      game.inputSecondThrow(0);
+      game.addToScoreArray();
+      game.nextFrame();
+      game.inputFirstThrow(9);
+      game.inputSecondThrow(1);
+      game.addToScoreArray();
+      game.nextFrame();
+      game.inputFirstThrow(10);
+      game.inputSecondThrow(0);
+      game.addToScoreArray();
+      expect(game.scoreArray).toEqual([[0,6],[10],[0,0],[9,1],[10],[0,6],[10],[0,0],[9,1],[10, 0]])
+      });
     });
 
   });

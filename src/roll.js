@@ -16,3 +16,11 @@ Roll.prototype.summedRolls = function() {
   }, 0);
   return sumRolls;
 };
+
+Roll.prototype.isStrike = function() {
+  if (this._rolls[0] === 10) return true ;
+};
+
+Roll.prototype.isSpare = function() {
+  if (this._rolls[0] + this._rolls[1] === 10) return true
+};

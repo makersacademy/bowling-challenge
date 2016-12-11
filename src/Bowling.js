@@ -6,7 +6,7 @@ function Bowling(array) {
 Bowling.prototype.spares = function(){
   for(var i= 0; i < 20; i+= 2){
     var frame = this.frameSum(i);
-    if(frame === 10 && this.game[i] != 10){
+    if(frame === 10 && this.game[i] !== 10){
       this.bonus += this.game[i+2];
     }
   }
@@ -21,7 +21,7 @@ Bowling.prototype.strikes = function(){
 }
 
 Bowling.prototype.scoreSum = function(){
-  if (this.game[18] == 10){this.game[19] = 0}
+  if (this.game[18] === 10){this.game[19] = 0}
   return this.game.slice(0,20).reduce(function(a, b){ return a + b }, 0)
 
 }

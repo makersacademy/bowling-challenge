@@ -38,6 +38,7 @@ describe("Bowling", function(){
   it("should calculate a game with two consecutive strikes", function(){
     expect(bowling.score()).toEqual(49);
   })
+
   it("should calculate a perfect game", function(){
     expect(bowling.score()).toEqual(300);
   });

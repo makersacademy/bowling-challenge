@@ -8,23 +8,24 @@ function BowlingGame() {
 
 BowlingGame.prototype.roll = function(knockedPins) {
   if (this.framesInPlay.length === 0) {
-    var frame = new Frame(knockedPins);
-    this.framesInPlay.push(frame);
-    frame.rollNumber += 1;
-    frame.checkStrike(knockedPins);
+      var frame = new Frame(knockedPins);
+      this.framesInPlay.push(frame);
+      frame.rollNumber += 1;
+      frame.checkStrike(knockedPins);
   } else if (this._isTenthFrame()) {
-    var frame = this._currentFrame();
-    return frame.tenthFrame(knockedPins);
+      this._isGameFinished()
+      var frame = this._currentFrame();
+      return frame.tenthFrame(knockedPins);
   } else if (this._currentFrame().rollNumber === 1) {
-    var frame = this._currentFrame();
-    frame.rollNumber += 1;
-    frame.rollTwo = knockedPins;
-    frame.checkSpare(knockedPins);
+      var frame = this._currentFrame();
+      frame.rollNumber += 1;
+      frame.rollTwo = knockedPins;
+      frame.checkSpare(knockedPins);
   } else {
-    var frame = new Frame(knockedPins);
-    this.framesInPlay.push(frame);
-    frame.rollNumber += 1;
-    frame.checkStrike(knockedPins);
+      var frame = new Frame(knockedPins);
+      this.framesInPlay.push(frame);
+      frame.rollNumber += 1;
+      frame.checkStrike(knockedPins);
   };
 };
 
@@ -38,4 +39,14 @@ BowlingGame.prototype._isNextFrameTen = function() {
 
 BowlingGame.prototype._isTenthFrame = function() {
   return this.framesInPlay.length === 10
+};
+
+BowlingGame.prototype._isGameFinished = function() {
+  if (this._currentFrame().rollNumber === 3) {
+    throw TypeError("Your game has finished, please reset if you would like to play again.")
+  }
+};
+
+BowlingGame.prototype.resetGame = function() {
+  this.framesInPlay = [];
 };

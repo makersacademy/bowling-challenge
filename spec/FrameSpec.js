@@ -8,11 +8,12 @@ describe("Frame", function() {
     frame = new Frame(knockedPins)
   });
 
-  it("should keep track of how many rolls have been made", function() {
-    expect(frame.rollNumber).toEqual(0)
-  });
 
-  describe("keeping track of the rolls", function() {
+  describe("- keeping track of the rolls", function() {    
+    it("should keep track of how many rolls have been made", function() {
+      expect(frame.rollNumber).toEqual(0)
+    });
+
     it("should add new frame's knocked down pins to the first roll", function() {
       expect(frame.rollOne).toEqual(5)
     });
@@ -26,7 +27,7 @@ describe("Frame", function() {
     });
   });
 
-  describe("keeping track of a Strike", function() {
+  describe("- keeping track of a Strike", function() {
     it("should mark frame as a Strike if KnockedPins is 10", function() {
       frame.checkStrike(10)
       expect(frame.isStrike).toEqual(true)
@@ -38,7 +39,7 @@ describe("Frame", function() {
     });
   });
 
-  describe("keeping track of a Spare", function() {
+  describe("- keeping track of a Spare", function() {
     it("should mark frame as a Spare if both rolls equal 10", function() {
       frame.rollOne = 5
       frame.rollTwo = 5
@@ -52,7 +53,7 @@ describe("Frame", function() {
       expect(frame.rollThree).toEqual(0)
     });
 
-    describe(" - the first roll", function() {
+    describe("- the first roll", function() {
       it("should mark the first roll as strike if 10 pins were knocked", function() {
         frame.rollNumber = 0
         frame.tenthFrame(10)
@@ -66,7 +67,7 @@ describe("Frame", function() {
       });
     });
 
-    describe(" - the second roll", function() {
+    describe("- the second roll", function() {
       it("should mark roll number as 2", function() {
         frame.rollNumber = 1
         frame.tenthFrame(5)
@@ -87,7 +88,7 @@ describe("Frame", function() {
       });
     });
 
-    describe(" - third roll", function() {
+    describe("- third roll", function() {
       it("should mark roll number as 3", function() {
         frame.tenthFrame(10)
         frame.tenthFrame(9)

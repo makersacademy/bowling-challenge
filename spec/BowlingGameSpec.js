@@ -9,7 +9,7 @@ describe("BowlingGame", function() {
     frame = jasmine.createSpyObj('frame', ['testMethod']);
   });
 
-  describe("properties", function() {
+  describe("- properties", function() {
     it("can record frames played", function() {
       expect(game.framesInPlay).toEqual([]);
     });
@@ -23,7 +23,7 @@ describe("BowlingGame", function() {
     // });
   });
 
-  describe("rolling a ball", function() {
+  describe("- rolling a ball", function() {
     it("should add new frame on first roll", function() {
       game.roll(2);
       expect(game.framesInPlay.length).toEqual(1);
@@ -43,7 +43,7 @@ describe("BowlingGame", function() {
     });
   });
 
-  describe("checking last frame", function() {
+  describe("- checking last frame", function() {
     it("should know if the last frame was a strike", function() {
       game.roll(10)
       expect(game.framesInPlay.slice(-1)[0].isStrike).toEqual(true)
@@ -57,8 +57,7 @@ describe("BowlingGame", function() {
     });
   });
 
-  describe("checking for tenth frame", function() {
-
+  describe("- checking for tenth frame", function() {
     it("should know if current frame in play is the tenth", function() {
       for (var i = 0; i < 10; i++) {
         game.roll(10)
@@ -71,6 +70,21 @@ describe("BowlingGame", function() {
         game.roll(10)
       };
       expect(game.roll(2)).toEqual("Game has ended")
+    });
+  });
+
+  describe("- resetting the game", function() {
+    it("should throw an error if Player has completed a full game", function() {
+      for (var i = 0; i < 11; i++) {
+        game.roll(10)
+      };
+      expect(function(){ game.roll(1); }).toThrowError("Your game has finished, please reset if you would like to play again.")
+    });
+
+    it("should be able to reset game", function() {
+      game.roll(1)
+      game.resetGame()
+      expect(game.framesInPlay.length).toEqual(0)
     });
   });
 

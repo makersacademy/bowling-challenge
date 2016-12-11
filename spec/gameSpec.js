@@ -11,8 +11,6 @@ describe('Game', function () {
     }
   };
 
-
-
   it('is defined', function() {
     expect(game).toBeDefined();
   })
@@ -41,5 +39,10 @@ describe('Game', function () {
     game.roll(4);
     rollMany(16,0);
     expect(game.displayScore()).toEqual(24);
+  })
+
+  it('plays a Perfect Game', function (){
+    rollMany(12,10);
+    expect(game.displayScore()).toEqual(300);
   })
 });

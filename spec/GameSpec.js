@@ -36,7 +36,7 @@ describe("Game", function(){
       game.frameNumber = 10;
       game.inputFirstThrow(10);
       game.inputSecondThrow(5);
-      expect(game.frameScore).toEqual[10,5]
+      expect(game.frameScore).toEqual([10,5])
     });
 
     it("should not allow a total greater than 10", function(){

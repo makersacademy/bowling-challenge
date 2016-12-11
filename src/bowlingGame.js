@@ -5,9 +5,9 @@ function BowlingGame(){
   this._rollOne = 0;
   this._rollTwo = 0;
   this.frame = 1;
-  this.scoreSheet = []
-  this.bonus = null
-  this.previousStrikeHeld = 0
+  this.scoreSheet = [];
+  this.bonus = null;
+  this.previousStrikeHeld = 0;
 
 };
 
@@ -15,7 +15,6 @@ const RESET = 0
 
 BowlingGame.prototype.rolls = function(number1,number2){
   var number2 = number2 || 0
-  console.log(number2)
   this._rollCalculator(number1,number2);
   this._isStrike(number1);
   this._nextFrame();
@@ -30,7 +29,6 @@ BowlingGame.prototype._rollCalculator = function(number1,number2){
 BowlingGame.prototype._isStrike = function(number1){
   if(number1 === 10){
     this._strike = true;
-
   };
 };
 
@@ -38,16 +36,15 @@ BowlingGame.prototype._isStrike = function(number1){
 BowlingGame.prototype._nextFrame = function(){
     this.frame += 1;
     this._scoringFrame();
-    this.bonus = null
-    this.bonusAvailable()
-    this._frameRolls = 0
+    this.bonus = null;
+    this.bonusAvailable();
     this._strike = false;
 
 };
 
 BowlingGame.prototype.bonusAvailable = function(){
   if (this._strike === true){
-   this.bonus = 'strike'
+   this.bonus = 'strike';
   };
 };
 
@@ -57,6 +54,7 @@ BowlingGame.prototype._scoringFrame = function(){
      if (this.bonus === 'strike' && this._strike === true){
        return this.previousStrikeHeld += 10;
      };
+
      if (this.bonus === 'strike'){
        rollScore *= 2;
        this.bonus = null;
@@ -64,7 +62,7 @@ BowlingGame.prototype._scoringFrame = function(){
 
      this.previousStrikeHeld = 0;
      this.scoreSheet.push(rollScore);
-     this.scoreTotal += this.tallyScore()
+     this.scoreTotal += this.tallyScore();
 };
 
 BowlingGame.prototype.tallyScore = function(){

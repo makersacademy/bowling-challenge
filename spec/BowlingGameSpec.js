@@ -10,7 +10,6 @@ describe("BowlingGame", function() {
   });
 
   describe("properties", function() {
-
     it("can record frames played", function() {
       expect(game.framesInPlay).toEqual([]);
     });
@@ -22,22 +21,40 @@ describe("BowlingGame", function() {
     // it("should have a frameIndex to increment", function() {
     //   expect(game.frameIndex).toEqual(0);
     // });
-
   });
 
   describe("rolling a ball", function() {
-
     it("should add new frame on first roll", function() {
       game.roll(2);
       expect(game.framesInPlay.length).toEqual(1);
     });
 
-    it("should add a second frame after two balls have been thrown", function() {
+    it("should add a second frame on third go, after two balls have been thrown", function() {
       game.roll(2);
       game.roll(5);
+      game.roll(6);
       expect(game.framesInPlay.length).toEqual(2);
     });
-    
+
+    it("should move to next frame if Player rolls a Strike", function() {
+      game.roll(10)
+      game.roll(1)
+      expect(game.framesInPlay.length).toEqual(2)
+    });
+  });
+
+  describe("checking if last frame", function() {
+    it("should know if the last frame was a strike", function() {
+      game.roll(10)
+      expect(game.framesInPlay.slice(-1)[0].isStrike).toEqual(true)
+    });
+
+    it("should know if the last frame was a spare", function() {
+      game.roll(5)
+      game.roll(5)
+      expect(game.framesInPlay.slice(-1)[0].isSpare).toEqual(true)
+      expect(game.framesInPlay.slice(-1)[0].isStrike).toEqual(false)
+    });
   });
 
 

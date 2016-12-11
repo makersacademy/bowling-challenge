@@ -27,6 +27,10 @@ Frame.prototype.tenthFrame = function(knockedPins) {
   if (this.rollNumber === 0) {
     this.rollNumber += 1
     this.rollOne = knockedPins
-    this.checkStrike(knockedPins) 
-  }
+    this.checkStrike(knockedPins)
+  } else if (this.rollNumber === 1) {
+    this.rollNumber += 1
+    this.rollTwo = knockedPins
+    this.checkSpare(knockedPins)
+  };
 };

@@ -52,16 +52,33 @@ describe("Frame", function() {
       expect(frame.rollThree).toEqual(0)
     });
 
-    it("should mark the first roll as strike if 10 pins were knocked", function() {
-      frame.rollNumber = 0
-      frame.tenthFrame(10)
-      expect(frame.isStrike).toEqual(true)
+    describe(" - the first roll", function() {
+      it("should mark the first roll as strike if 10 pins were knocked", function() {
+        frame.rollNumber = 0
+        frame.tenthFrame(10)
+        expect(frame.isStrike).toEqual(true)
+      });
+
+      it("should mark rollNumber as 1 after first roll", function() {
+        frame.rollNumber = 0
+        frame.tenthFrame(5)
+        expect(frame.rollNumber).toEqual(1)
+      });
     });
 
-    it("should mark rollNumber as 1 after first roll", function() {
-      frame.rollNumber = 0
-      frame.tenthFrame(5)
-      expect(frame.rollNumber).toEqual(1)
+    describe(" - the second roll", function() {
+      it("should mark roll number as 2", function() {
+        frame.rollNumber = 1
+        frame.tenthFrame(5)
+        expect(frame.rollNumber).toEqual(2)
+      });
+
+      it("should mark frame as spare if roll one and two equals 10", function() {
+        frame.rollNumber = 1
+        frame.rollOne = 5
+        frame.tenthFrame(5)
+        expect(frame.isSpare).toEqual(true)
+      });
     });
   });
 

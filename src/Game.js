@@ -12,6 +12,7 @@ Game.prototype.inputFirstThrow = function(number) {
 };
 
 Game.prototype.inputSecondThrow = function(number) {
+if (this.frameScore[0] === 10) throw "Strike - Second fame not allowed";
   this.frameScore.push(number);
 };
 
@@ -24,6 +25,6 @@ Game.prototype.addToScoreArray = function(score) {
 };
 
 Game.prototype.nextFrame = function() {
-  if (this.numberOfFramesRemaining <= 0) throw "Too many frames"
+  if (this.numberOfFramesRemaining <= 0) throw "Too many frames";
   this.numberOfFramesRemaining -= 1;
 };

@@ -27,11 +27,17 @@ describe("Game", function(){
       expect(game.frameScore).toEqual([6,0])
     });
 
-    it("should give a third frame in the last score if 10 points", function(){
+    it("should not allow a second frame if first was a strike", function(){
       game.inputFirstThrow(10);
-      game.inputSecondThrow(0);
+      console.log(game.frameScore)
+      expect(function() { game.inputSecondThrow() }).toThrow("Strike - Second fame not allowed")
+    });
+
+    it("should give a third frame in the last score if 10 points", function(){
+      game.inputFirstThrow(9);
+      game.inputSecondThrow(1);
       game.inputThirdThrow(5);
-      expect(game.frameScore).toEqual([10,0,5])
+      expect(game.frameScore).toEqual([9,1,5])
     });
   });
 
@@ -55,7 +61,7 @@ describe("Game", function(){
       }
       expect(function() { game.nextFrame() }).toThrow("Too many frames")
     });
-    
+
   });
 
 

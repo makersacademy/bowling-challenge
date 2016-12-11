@@ -8,14 +8,15 @@ var Frame = function(finishFrame){
 };
 
 Frame.prototype.roll = function(){
+  var number = this.calculateRollScore();
+  console.log(number);
+  this.updateRollCount();
+  this.updateScore(number);
+  this.updatePoints(number);
+
   if (this.hasEnded()) {
     this.finishFrame(this);
     return "Frame is over";
-  } else {
-    var number = this.calculateRollScore();
-    this.updateRollCount();
-    this.updateScore(number);
-    this.updatePoints(number);
   }
 }
 
@@ -32,11 +33,11 @@ Frame.prototype.updatePoints = function(number){
 }
 
 Frame.prototype.calculateRollScore = function(){
-  var newScore = Math.floor(Math.random() * 10);
+  var newScore = Math.round(Math.random() * 10);
   if (newScore <= this.availablePoints()) {
     return newScore
   } else {
-    this.calculateRollScore();
+    return this.calculateRollScore();
   }
 }
 

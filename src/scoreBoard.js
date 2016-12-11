@@ -5,8 +5,13 @@ function Scoreboard (){
 };
 
   Scoreboard.prototype.firstRoll = function(scoreOne){
+    if (scoreOne === 'Strike') {
+      this.scores.push(scoreOne);
+      return this.scores;
+    } else {
     this.currentScore.push(scoreOne);
     return this.currentScore;
+    };
   };
 
   Scoreboard.prototype.secondRoll = function(scoreTwo){
@@ -22,4 +27,4 @@ function Scoreboard (){
   Scoreboard.prototype.currentFrame = function() {
       this.frameCount = this.scores.length;
       return this.frameCount
-    };
+  };

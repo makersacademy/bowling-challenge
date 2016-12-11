@@ -22,6 +22,11 @@ describe("Scoreboard", function(){
     expect(scoreBoard.currentScore).toContain(3);
   });
 
+  it("should indicate that a strike was scored in the set", function(){
+    scoreBoard.firstRoll('Strike');
+    expect(scoreBoard.scores).toContain('Strike');
+  });
+
   it("should set the players second roll score", function(){
     scoreBoard.secondRoll(4);
     expect(scoreBoard.currentScore).toContain(4);
@@ -41,4 +46,10 @@ describe("Scoreboard", function(){
     scoreBoard.currentFrame();
     expect(scoreBoard.frameCount).toEqual(1);
     });
+
+  it("should calculate the totals when player gets a strike or spare", function(){
+    scoreBoard.firstRoll('Strike');
+    scoreBoard.currentFrame();
+    expect(scoreBoard.frameCount).toEqual(1);
+  });
 });

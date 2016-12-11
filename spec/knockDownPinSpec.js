@@ -7,6 +7,14 @@ describe("Knocking pins down", function() {
 
   describe("scoring",function() {
 
+    it("the number of pins knocked down is random", function() {
+      attempt1 = pins.attemptBall()
+      attempt2 = pins.attemptBall()
+      console.log(attempt1)
+      console.log(attempt2)
+      expect(attempt1).not.toEqual(attempt2)
+    })
+
     it("returns a whole number between one and ten", function() {
       attempt = pins.attemptBall()
       expect(attempt >= 0 && attempt <= 10).toEqual(true)
@@ -39,12 +47,21 @@ describe("Knocking pins down", function() {
       }
       expect(function() {pins.attemptBall()}).toThrow(new Error("Maximum attempts reached"))
     })
+  })
 
-    it("Resets the attempts back to zero", function() {
+  describe("Resetting the attempt", function() {
+
+    beforeEach(function() {
       pins.attemptBall();
       pins.resetAttempts();
+    })
+
+    it("Resets the attempts back to zero", function() {
       expect(pins.attempts).toEqual(0)
     })
 
+    it("Resets the first score back to zero", function() {
+      expect(pins.firstScore).toEqual(0)
+    })
   })
 })

@@ -14,3 +14,7 @@ BowlingGame.prototype.playBall = function() {
   this.currentTotal = 4;
   return 4;
 }
+
+BowlingGame.prototype.startAgain = function() {
+  frame.resetFrame();
+}

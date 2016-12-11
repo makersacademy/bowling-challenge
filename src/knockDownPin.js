@@ -19,4 +19,5 @@ KnockDownPin.prototype.nextAttempt = function() {
 
 KnockDownPin.prototype.resetAttempts = function() {
   this.attempts = 0;
+  this.firstScore = 0;
 }

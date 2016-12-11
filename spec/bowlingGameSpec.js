@@ -2,7 +2,7 @@ describe("Bowling Game", function() {
   var game;
   beforeEach(function() {
     game = new BowlingGame();
-    frame = jasmine.createSpyObj('frame',['moveToNextFrame'])
+    frame = jasmine.createSpyObj('frame',['moveToNextFrame','resetFrame'])
     pins = jasmine.createSpyObj('pins', ['attemptBall'])
   })
 
@@ -47,5 +47,12 @@ describe("Bowling Game", function() {
       expect(game.currentTotal).toEqual(score)
     })
 
+  })
+
+  describe("restarting the game", function() {
+    it("calls reset frames", function() {
+      game.startAgain();
+      expect(frame.resetFrame).toHaveBeenCalled()
+    })
   })
 })

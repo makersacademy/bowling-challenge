@@ -123,4 +123,14 @@ describe('BowlingCalculator', function(){
 
   });
 
+  describe("#isSpareLastTurn()", function(){
+    it("should return true if you got a spare last turn", function(){
+      bowlingcalculator.throwBall(5);
+      bowlingcalculator.throwBall(5);
+      bowlingcalculator.endTurn();
+      expect(bowlingcalculator.isSpareLastTurn()).toBeTruthy();
+    });
+
+  });
+
 });

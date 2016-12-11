@@ -91,8 +91,15 @@ BowlingCalculator.prototype.totalScore = function(){
   }
 };
 
-BowlingCalculator.prototype.isStrikeLastTurn = function(){
+BowlingCalculator.prototype.isStrikeLastTurn = function() {
   var lastItemIndex = this.score.length - 1;
-  console.log(this.score[lastItemIndex]);
   return this.score[lastItemIndex] == 10;
+};
+
+BowlingCalculator.prototype.isSpareLastTurn = function() {
+  var lastItemIndex = this.score.length - 1;
+  var sum = this.score[lastItemIndex].reduce(function(a, b){
+    return a + b;
+  }, 0);
+  return sum == 10;
 };

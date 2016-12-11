@@ -30,12 +30,12 @@ describe("bowlingGame", function() {
       expect(game._frame).toEqual(2)
     });
 
-    // it("should double the score in the next frame if a player rolls a strike the previous frame", function(){
-    //   game.roll(10);
-    //   game.roll(5);
-    //   game.roll(1);
-    //   expect(game.score).toEqual(22)
-    // });
+    it("should double the score in the next frame if a player rolls a strike the previous frame", function(){
+      game.roll(10);
+      game.roll(5);
+      game.roll(1);
+      expect(game.score).toEqual(22)
+    });
   });
 
 

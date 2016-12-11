@@ -13,8 +13,36 @@ User Story:
 -----------
 
 As a player
-So I can know how well I am doing at 10-pin bowling
-I would like to see my current score to be calculated.
+So I can begin my game of 10-pin bowling
+I would like to start on the first frame
+
+As a player
+So I can have a target for the ball
+I would like to play against 10-pins
+
+As a player
+So I can compete properly
+I would like to have two attempts to knock down the ten pins
+
+As a player
+So I can play again in the next frame
+I would like the pins to be refreshed back to 10pins.
+
+As a player
+So I am rewarded for hitting 10 pins at once
+I would like to have a bonus for a strike
+
+As a player
+So I am rewarded for hitting 10 pins in two attempts
+I would like to have a bonus for a spare.
+
+As a player
+So I can have a Challenge
+I would like there to be a maximum of 10 frames.
+
+As a player
+So I can know how well I am doing
+I would like to see my score.
 
 Game Rules:
 -----------
@@ -41,7 +69,7 @@ One point is scored for each pin knocked over, in the event of a **strike** or *
 
 A player achieving a spare is awarded ten points, plus a bonus of whatever is scored with the next ball.
 
-A player achieving a strike is awarded ten points, plus a bonus of whatever is scored with the next two balls. 
+A player achieving a strike is awarded ten points, plus a bonus of whatever is scored with the next two balls.
 
 e.g
 

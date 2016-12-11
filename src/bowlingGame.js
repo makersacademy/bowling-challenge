@@ -4,8 +4,12 @@ function BowlingGame() {
 }
 
 BowlingGame.prototype.playBall = function() {
-  if (this.firstTurn !== true) {
+  if (this.firstTurn === false) {
+    this.firstTurn = true;
     frame.moveToNextFrame();
+  } else {
+    this.firstTurn = false;
   }
-  this.firstTurn = false
+  this.currentTotal = 4;
+  return 4;
 }

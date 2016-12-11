@@ -87,10 +87,15 @@ describe("Game", function(){
       game.points = [frame, frame];
       expect(game.calculateBonusPoints(frame)).toEqual(4);
     })
-    it("can not look ahead if neither strike or spare", function(){
+    it("returns 0 if neither strike or spare", function(){
       spyOn(frame, "isStrike").and.returnValue(false);
       spyOn(frame, "isSpare").and.returnValue(false);
       expect(game.calculateBonusPoints(frame)).toEqual(0);
+    })
+    it("adds new property to frame for bonus points", function(){
+      spyOn(game, "calculateBonusPoints").and.returnValue(28);
+      game.addBonusPoints(frame);
+      expect(frame.bonus).toEqual(28);
     })
   })
 

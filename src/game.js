@@ -29,14 +29,13 @@ Game.prototype.isLastFrame = function(){
 
 Game.prototype.calculateBonusPoints = function(frame){
     var framePosition = this.points.indexOf(frame);
+    var nextFrame = this.points[framePosition + 1];
 
     if (frame.isSpare()) {
-      var nextFrame = this.points[framePosition + 1];
       return nextFrame.points[0];
     }
 
     if (frame.isStrike()) {
-      var nextFrame = this.points[framePosition + 1];
       if (nextFrame.points.length === 2) {
         return nextFrame.score;
       } else {
@@ -47,4 +46,8 @@ Game.prototype.calculateBonusPoints = function(frame){
     else {
       return 0;
     }
+}
+
+Game.prototype.addBonusPoints = function(frame){
+  frame.bonus = this.calculateBonusPoints();
 }

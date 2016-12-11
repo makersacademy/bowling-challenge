@@ -1,14 +1,24 @@
 describe("Knocking pins down", function() {
   var pins;
+
   beforeEach(function() {
-    pins = new KnockDownPin()
+    pins = new KnockDownPin();
   })
 
-  describe("attempt", function() {
+  describe("scoring",function() {
+
     it("returns a whole number between one and ten", function() {
       attempt = pins.attemptBall()
       expect(attempt >= 0 && attempt <= 10).toEqual(true)
     })
+
+    it("the maximum score for second attempt is the remainder of the first attempt", function() {
+      attempt = pins.attemptBall()
+      expect(pins.attemptBall()).not.toBeGreaterThan(10-attempt)
+    })
+  })
+
+  describe("attempt", function() {
 
     it("Keeps track of the number of attempts", function() {
       expect(pins.attempts).toBeDefined()

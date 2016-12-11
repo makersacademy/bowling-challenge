@@ -10,6 +10,7 @@ BowlingGame.prototype.playBall = function() {
   } else {
     this.firstTurn = false;
   }
+  pins.attemptBall()
   this.currentTotal = 4;
   return 4;
 }

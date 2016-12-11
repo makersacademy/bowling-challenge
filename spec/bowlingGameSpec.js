@@ -3,6 +3,7 @@ describe("Bowling Game", function() {
   beforeEach(function() {
     game = new BowlingGame();
     frame = jasmine.createSpyObj('frame',['moveToNextFrame'])
+    pins = jasmine.createSpyObj('pins', ['attemptBall'])
   })
 
   describe("a new game", function() {
@@ -17,6 +18,11 @@ describe("Bowling Game", function() {
     it("Each game has two turns before moving to the next frame", function(){
       game.playBall();
       expect(frame.moveToNextFrame).not.toHaveBeenCalled()
+    })
+
+    it("calls the attempt ball method", function() {
+      game.playBall();
+      expect(pins.attemptBall).toHaveBeenCalled()
     })
 
     it("moves to the next frame after two plays", function() {

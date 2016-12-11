@@ -1,5 +1,6 @@
 function KnockDownPin() {
   this.attempts = 0;
+  this.firstScore = 0;
 }
 
 KnockDownPin.prototype.attemptBall = function() {
@@ -7,7 +8,8 @@ KnockDownPin.prototype.attemptBall = function() {
   if (this.attempts > 2) {
     throw new Error("Maximum attempts reached")
   } else {
-    return 3;
+    var score = 10 - this.firstScore;
+    return this.firstScore = score;
   }
 }
 

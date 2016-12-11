@@ -83,11 +83,16 @@ BowlingCalculator.prototype.totalScore = function(){
   } else {
     var flattenedScore = this.score.reduce(function(a, b) {
       return a.concat(b);})
-      console.log(flattenedScore);
 
     var sum = flattenedScore.reduce(function(a, b){
       return a + b;
     }, 0);
     return sum;
   }
+};
+
+BowlingCalculator.prototype.isStrikeLastTurn = function(){
+  var lastItemIndex = this.score.length - 1;
+  console.log(this.score[lastItemIndex]);
+  return this.score[lastItemIndex] == 10;
 };

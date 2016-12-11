@@ -113,4 +113,14 @@ describe('BowlingCalculator', function(){
 
   });
 
+  describe("#isStrikeLastTurn()", function(){
+
+    it("should return true if you got a strike last turn", function(){
+      bowlingcalculator.throwBall(10);
+      bowlingcalculator.endTurn();
+      expect(bowlingcalculator.isStrikeLastTurn()).toBeTruthy();
+    });
+
+  });
+
 });

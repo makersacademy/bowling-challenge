@@ -33,3 +33,7 @@ Game.prototype._resetGame = function() {
   this._scores = [];
   this._totalScore = 0;
 };
+
+Game.prototype._endGame = function() {
+  this._resetGame();
+};

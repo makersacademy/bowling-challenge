@@ -4,8 +4,10 @@ function Frame(knockedPins) {
   this.rollNumber = 0
   this.rollOne = knockedPins
   this.rollTwo = 0
+  this.rollThree = 0
   this.isStrike = false
   this.isSpare = false
+  this.totalScore = 0
 }
 
 Frame.prototype.checkStrike = function(knockedPins) {
@@ -15,8 +17,8 @@ Frame.prototype.checkStrike = function(knockedPins) {
   };
 };
 
-Frame.prototype.checkSpare = function() {
-  if ((this.rollOne + this.rollTwo) === 10) {
+Frame.prototype.checkSpare = function(knockedPins) {
+  if ((this.rollOne + knockedPins) === 10) {
     this.isSpare = true
   };
 };

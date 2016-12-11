@@ -43,7 +43,7 @@ describe("BowlingGame", function() {
     });
   });
 
-  describe("checking if last frame", function() {
+  describe("checking last frame", function() {
     it("should know if the last frame was a strike", function() {
       game.roll(10)
       expect(game.framesInPlay.slice(-1)[0].isStrike).toEqual(true)
@@ -54,6 +54,22 @@ describe("BowlingGame", function() {
       game.roll(5)
       expect(game.framesInPlay.slice(-1)[0].isSpare).toEqual(true)
       expect(game.framesInPlay.slice(-1)[0].isStrike).toEqual(false)
+    });
+  });
+
+  describe("checking for tenth frame", function() {
+    it("should know if the last frame was the ninth", function() {
+      for (var i = 0; i < 9; i++) {
+        game.roll(10)
+      };
+      expect(game._isNextFrameTen()).toEqual(true);
+    });
+
+    it("should know if current frame in play is the tenth", function() {
+      for (var i = 0; i < 10; i++) {
+        game.roll(10)
+      };
+      expect(game._isTenthFrame()).toEqual(true)
     });
   });
 

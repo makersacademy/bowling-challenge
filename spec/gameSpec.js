@@ -54,26 +54,18 @@ describe('Game', function() {
       game._addTotalScore();
     });
 
-    it('the game lasts for 10 frames', function() {
-      expect(function(){ game.takeTurn(0, 0); }).toThrowError('Game Over');
-    });
-
-    it('responds to _endGame', function() {
-      expect('_endGame' in game).toEqual(true);
-    });
-
-    it('resets the frames at the end of the game', function() {
-      game._endGame();
+    it('resets the frames', function() {
+      game.takeTurn();
       expect(game._frames).toEqual([]);
     });
 
-    it('resets the score per frame at the end of the game', function() {
-      game._endGame();
+    it('resets the score per frame', function() {
+      game.takeTurn();
       expect(game._scores).toEqual([]);
     });
 
-    it('resets the total score back to zero at the end of the game', function() {
-      game._endGame();
+    it('resets the total score back to zero', function() {
+      game.takeTurn();
       expect(game._totalScore).toEqual(0);
     });
   });

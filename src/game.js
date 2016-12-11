@@ -1,14 +1,13 @@
 function Game(){
   this.frames = 10
-  this.points = []
+  this.totalPoints = []
 }
 
-Game.prototype.calculatePoints = function(points){
+Game.prototype.calculateTotalPoints = function(totalPoints){
+this.totalPoints.push(totalPoints)
   var sum = 0;
-  for( var i = 0; i < points.length; i++ ){
-    sum += points[i];
+  for( var i = 0; i < totalPoints.length; i++ ){
+    sum += totalPoints[i];
   }
-  console.log(sum)
-
   return sum
 }

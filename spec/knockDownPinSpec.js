@@ -7,26 +7,36 @@ describe("Knocking pins down", function() {
 
   describe("scoring",function() {
 
-    it("the number of pins knocked down is random", function() {
-      attempt1 = pins.attemptBall()
-      attempt2 = pins.attemptBall()
-      console.log(attempt1)
-      console.log(attempt2)
-      expect(attempt1).not.toEqual(attempt2)
+    beforeEach(function(){
+      spyOn(pins,"getRandomInt").and.returnValue(8)
     })
+
+    it("second attempt has a maximum of 10 minus first attempt", function() {
+      pins.attemptBall();
+      expect(pins.attemptBall()).not.toBeGreaterThan(2)
+    })
+
+  })
+
+  describe("getting a strike", function() {
+
+    beforeEach(function() {
+      spyOn(pins,"getRandomInt").and.returnValue(10)
+    })
+
+    it("attempts should be set to zero", function() {
+      pins.attemptBall()
+      expect(pins.attempts).toEqual(0)
+    })
+
+  })
+
+  describe("attempt", function() {
 
     it("returns a whole number between one and ten", function() {
       attempt = pins.attemptBall()
       expect(attempt >= 0 && attempt <= 10).toEqual(true)
     })
-
-    it("the maximum score for second attempt is the remainder of the first attempt", function() {
-      attempt = pins.attemptBall()
-      expect(pins.attemptBall()).not.toBeGreaterThan(10-attempt)
-    })
-  })
-
-  describe("attempt", function() {
 
     it("Keeps track of the number of attempts", function() {
       expect(pins.attempts).toBeDefined()
@@ -41,11 +51,12 @@ describe("Knocking pins down", function() {
       expect(pins.attempts).toEqual(1)
     })
 
-    it("Raises an error when the maximum number of attempts is reached", function() {
+    it("Resets the pins when two attempts have been made", function() {
       for (count=0; count<2; count++) {
         pins.attemptBall();
       }
-      expect(function() {pins.attemptBall()}).toThrow(new Error("Maximum attempts reached"))
+      expect(pins.attempts).toEqual(0)
+      expect(pins.firstScore).toEqual(0)
     })
   })
 

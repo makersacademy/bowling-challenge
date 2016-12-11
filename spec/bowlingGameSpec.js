@@ -37,16 +37,6 @@ describe("Bowling Game", function() {
       expect(game.firstTurn).toEqual(true)
     })
 
-    it("first go returns a random number between 0 and 10", function() {
-      score = game.playBall()
-      expect(score >= 0 && score <= 10).toEqual(true);
-    })
-
-    it("the score updates the current total", function() {
-      score = game.playBall();
-      expect(game.currentTotal).toEqual(score)
-    })
-
   })
 
   describe("restarting the game", function() {

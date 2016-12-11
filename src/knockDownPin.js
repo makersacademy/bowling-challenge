@@ -4,12 +4,16 @@ function KnockDownPin() {
 }
 
 KnockDownPin.prototype.attemptBall = function() {
-  this.nextAttempt();
-  if (this.attempts > 2) {
-    throw new Error("Maximum attempts reached")
+  if (this.attempts === 1) {
+    this.resetAttempts()
+    return this.getRandomIntForSecondAttempt(this.firstScore)
   } else {
-    var score = 10 - this.firstScore;
-    return this.firstScore = score;
+    this.nextAttempt();
+    var score = this.getRandomInt();
+    if (score === 10) {
+      this.resetAttempts()
+    }
+    return score;
   }
 }
 
@@ -20,4 +24,14 @@ KnockDownPin.prototype.nextAttempt = function() {
 KnockDownPin.prototype.resetAttempts = function() {
   this.attempts = 0;
   this.firstScore = 0;
+}
+
+KnockDownPin.prototype.getRandomInt = function() {
+  var max = Math.floor(11);
+  return Math.floor(Math.random()*max)
+}
+
+KnockDownPin.prototype.getRandomIntForSecondAttempt = function(max) {
+  var max = Math.floor(max);
+  return Math.floor(Math.random()*max)
 }

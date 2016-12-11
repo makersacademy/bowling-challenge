@@ -79,6 +79,20 @@ describe("Frame", function() {
         frame.tenthFrame(5)
         expect(frame.isSpare).toEqual(true)
       });
+
+      it("should end game if the last two rolls are not a spare or strike", function() {
+        frame.rollNumber = 1
+        frame.rollOne = 5
+        expect(frame.tenthFrame(4)).toEqual("Game has ended")
+      });
+    });
+
+    describe(" - third roll", function() {
+      it("should mark roll number as 3", function() {
+        frame.tenthFrame(10)
+        frame.tenthFrame(9)
+        expect(frame.rollNumber).toEqual(3)
+      });
     });
   });
 

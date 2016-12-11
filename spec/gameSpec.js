@@ -13,14 +13,14 @@ describe('Game', function () {
     for(var i = 0; i<21; i++) {
       game.roll(0);
     }
-    expect(game.score()).toEqual(0);
+    expect(game.displayScore()).toEqual(0);
   })
 
   it('rolls all ones', function () {
-    for(var i = 0; i<21; i++) {
-      game.roll(0);
+    for(var i = 0; i<20; i++) {
+      game.roll(1);
     }
-    expect(game.score()).toEqual(20);
+    expect(game.displayScore()).toEqual(20);
 
   })
 });

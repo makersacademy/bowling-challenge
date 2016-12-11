@@ -11,7 +11,7 @@ Game.prototype.recordRoll = function(roll) {
   }
 };
 Game.prototype.isFrameCompleted = function() {
-  return this.rolls.length === 2;
+  return (this.rolls.length === 2 || this.rolls[0] === 10);
 };
 
 Game.prototype.recordFrame = function() {

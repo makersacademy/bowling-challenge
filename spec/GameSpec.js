@@ -10,12 +10,18 @@ describe("Game", function() {
       expect(game.rolls).toEqual([6]);
     });
   });
+
   describe("recordFrame", function() {
     it("should record a frame after two rolls", function() {
       for(var i=0; i < 2; i++){
         game.recordRoll(6);
       }
       expect(game.framez).toEqual([[6,6]])
+    });
+
+    it("should record a frame after a strike", function() {
+      game.recordRoll(10);
+      expect(game.framez).toEqual([[10]])
     });
 
     it("should clean the rolls after frame is recorded", function() {

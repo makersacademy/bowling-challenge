@@ -36,6 +36,14 @@ describe("bowlingGame", function() {
       game.roll(1);
       expect(game.score).toEqual(22)
     });
+
+    it("should double the score of the second and third frames if two strikes are thrown in succession", function(){
+      game.roll(10);
+      game.roll(10);
+      game.roll(5);
+      game.roll(0);
+      expect(game.score).toEqual(40)
+    });
   });
 
 

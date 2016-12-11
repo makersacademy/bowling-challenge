@@ -11,6 +11,7 @@ describe('Game', function () {
     }
   };
 
+
   it('is defined', function() {
     expect(game).toBeDefined();
   })
@@ -31,5 +32,13 @@ describe('Game', function () {
     game.roll(3);
     rollMany(17,0);
     expect(game.displayScore()).toEqual(16);
+  })
+
+  it('rolls one strike', function (){
+    game.roll(10);
+    game.roll(3);
+    game.roll(4);
+    rollMany(16,0);
+    expect(game.displayScore()).toEqual(24);
   })
 });

@@ -4,11 +4,7 @@ var Frame = function () {
 };
 
 Frame.prototype.roll = function (){
-
-};
-
-Frame.prototype.setRoll = function () {
-
+  
 };
 
 Frame.prototype.displayScore = function (score) {

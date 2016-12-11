@@ -1,7 +1,6 @@
 'use strict';
 
 describe('Game', function() {
-
   var game;
   var frame;
 
@@ -26,6 +25,16 @@ describe('Game', function() {
       expect(game._frames.length).toEqual(1);
     });
 
+    it('the game lasts for 10 frames', function() {
+      for (var i = 0; i < 10; i++) {
+        game.takeTurn(0, 0);
+      }
+      expect(function(){ game.takeTurn(0, 0); }).toThrowError('Game Over');
+    });
+
+    it('responds to isGameOver', function() {
+      expect('isGameOver' in game).toEqual(true);
+    });
   });
 
   describe('when calculating scores', function() {

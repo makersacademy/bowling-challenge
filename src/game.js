@@ -5,6 +5,9 @@ function Game() {
 }
 
 Game.prototype.takeTurn = function(firstRoll, secondRoll) {
+  if (this.isGameOver()) {
+    throw new Error('Game Over');
+  }
   frame = new Frame(firstRoll, secondRoll);
   this._frames.push(frame);
 };
@@ -19,4 +22,8 @@ Game.prototype.addTotalScore = function() {
   for (var i = 0; i < this._scores.length; i++) {
     this._totalScore += this._scores[i];
   }
+};
+
+Game.prototype.isGameOver = function() {
+  return this._frames.length === 10;
 };

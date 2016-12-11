@@ -1,13 +1,25 @@
 function Game(){
-  this.frames = 10
-  this.totalPoints = []
+  this.rolls = []
 }
 
-Game.prototype.calculateTotalPoints = function(totalPoints){
-this.totalPoints.push(totalPoints)
-  var sum = 0;
-  for( var i = 0; i < totalPoints.length; i++ ){
-    sum += totalPoints[i];
+Game.prototype.roll = function(pins){
+  this.rolls.push(pins);
+}
+Game.prototype.score = function(){
+  rollIndex = 0;
+  sum = 0;
+
+  for( var frameIndex = 0; frameIndex < 10; frameIndex++ ){
+    if (this.rolls[rollIndex] === 10){
+      sum += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+      rollIndex++;
+    } else if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10){
+      sum += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+      rollIndex += 2;
+    } else  {
+      sum += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+      rollIndex += 2;
+    }
   }
-  return sum
+  return sum;
 }

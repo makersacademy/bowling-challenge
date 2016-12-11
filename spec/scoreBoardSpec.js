@@ -57,7 +57,7 @@ describe("Scoreboard", function(){
     expect(scoreBoard.frameCount).toEqual(1);
   });
 
-  it("should calculate the totals when player gets a strike", function(){
+  it("should return the relevant function according to the score - strike", function(){
     scoreBoard.firstRoll('Strike');
     scoreBoard.firstRoll(3);
     scoreBoard.secondRoll(3);
@@ -67,7 +67,7 @@ describe("Scoreboard", function(){
     expect(scoreBoard.scores).toContain(16);
   });
 
-  it("should calculate the totals when player gets a spare", function(){
+  it("should return the relevant function according to the score - spare", function(){
     scoreBoard.firstRoll(5);
     scoreBoard.secondRoll(5);
     scoreBoard.calculateScore();
@@ -79,11 +79,77 @@ describe("Scoreboard", function(){
     expect(scoreBoard.scores).toContain(13);
   });
 
-  it("should return the scores if there are no spares or strikes", function(){
-    scoreBoard.firstRoll(2);
+  it("should return the scores if no stikes or spares were scored", function(){
+    scoreBoard.firstRoll(5);
+    scoreBoard.secondRoll(2);
+    scoreBoard.calculateScore();
+    scoreBoard.firstRoll(3);
     scoreBoard.secondRoll(6);
     scoreBoard.calculateScore();
+    scoreBoard.currentFrame();
     scoreBoard.bonusPoints();
-    expect(scoreBoard.scores).toContain(8);
+    expect(scoreBoard.scores).toEqual([7,9]);
   });
+
+  it("should return the bonus of a strike", function(){
+    scoreBoard.firstRoll('Strike');
+    scoreBoard.firstRoll(3);
+    scoreBoard.secondRoll(3);
+    scoreBoard.calculateScore();
+    scoreBoard.currentFrame();
+    scoreBoard.aStrike();
+    expect(scoreBoard.scores).toContain(16);
+  });
+
+  it("should return the bonus for a spare", function(){
+    scoreBoard.firstRoll(5);
+    scoreBoard.secondRoll(5);
+    scoreBoard.calculateScore();
+    scoreBoard.firstRoll(3);
+    scoreBoard.secondRoll(6);
+    scoreBoard.calculateScore();
+    scoreBoard.currentFrame();
+    scoreBoard.spare();
+    expect(scoreBoard.scores).toContain(13);
+  });
+
+
+
+  // it("should return the strikes function if a strike is scored", function(){
+  //   scoreBoard.firstRoll('Strike');
+  //
+  // });
+
+
+
+  // it("should calculate the totals when player gets a strike", function(){
+  //   scoreBoard.firstRoll('Strike');
+  //   scoreBoard.firstRoll(3);
+  //   scoreBoard.secondRoll(3);
+  //   scoreBoard.calculateScore();
+  //   scoreBoard.currentFrame();
+  //   scoreBoard.bonusPoints();
+  //   scoreBoard.strikes();
+  //   expect(scoreBoard.scores).toContain(16);
+  // });
+
+  // it("should calculate the totals when player gets a spare", function(){
+  //   scoreBoard.firstRoll(5);
+  //   scoreBoard.secondRoll(5);
+  //   scoreBoard.calculateScore();
+  //   scoreBoard.firstRoll(3);
+  //   scoreBoard.secondRoll(6);
+  //   scoreBoard.calculateScore();
+  //   scoreBoard.currentFrame();
+  //   scoreBoard.bonusPoints();
+  //   expect(scoreBoard.scores).toContain(13);
+  // });
+  //
+  // it("should return the scores if there are no spares or strikes", function(){
+  //   scoreBoard.firstRoll(2);
+  //   scoreBoard.secondRoll(6);
+  //   scoreBoard.calculateScore();
+  //   scoreBoard.bonusPoints();
+  //   expect(scoreBoard.scores).toContain(8);
+  // });
 });

@@ -3,7 +3,6 @@ function Scoreboard (){
   this.frameCount = 0;
   this.scores = [];
   this.maxScore = 10;
-  this.spare = 0;
 };
 
   Scoreboard.prototype.firstRoll = function(scoreOne){
@@ -34,18 +33,26 @@ function Scoreboard (){
 
   Scoreboard.prototype.bonusPoints = function() {
     if (this.scores[this.frameCount-2] === 'Strike') {
-       var strike = this.scores.indexOf('Strike');
-       if (~strike) {
-        this.scores[strike] = this.maxScore + this.scores.slice(-1)[0];
-       }
-      return this.scores;
+      return this.aStrike();
     } else if (this.scores[this.frameCount-2] === 10) {
-      this.spare = this.scores.indexOf(10);
-      if (~this.spare) {
-        this.scores[this.spare] = this.maxScore + this.currentScore.slice(-2)[0];
-        }
-      return this.scores;
+      return this.spare();
     } else {
       return this.scores;
     };
+  };
+
+  Scoreboard.prototype.aStrike = function(){
+    var strike = this.scores.indexOf('Strike');
+      if (~strike) {
+        this.scores[strike] = this.maxScore + this.scores.slice(-1)[0];
+        return this.scores;
+      }
+    };
+
+  Scoreboard.prototype.spare = function() {
+        var spare = this.scores.indexOf(10);
+        if (~spare) {
+         this.scores[spare] = this.maxScore + this.currentScore.slice(-2)[0];
+         return this.scores;
+       }
   };

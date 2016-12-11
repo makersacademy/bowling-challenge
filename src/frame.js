@@ -47,3 +47,7 @@ Frame.prototype.hasEnded = function(){
 Frame.prototype.availablePoints = function(){
   return 10 - this.score;
 }
+
+Frame.prototype.isStrike = function(){
+  return this.points[0] === 10 || this.points[1] === 10;
+}

@@ -94,4 +94,12 @@ describe("Frame", function(){
     })
   })
 
+  describe("Strike or Spare", function(){
+    it("can identify a strike", function(){
+      spyOn(frame, "calculateRollScore").and.returnValue(10);
+      frame.roll();
+      expect(frame.isStrike()).toEqual(true);
+    })
+  })
+
 })

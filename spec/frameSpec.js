@@ -14,8 +14,13 @@ describe('Frame', function() {
     expect(frame.MAXIMUM_PINS).toEqual(10);
   });
 
-  // it('receives the number of pins knocked down in the first and second roll from game', function() {
-  //
-  // });
+  it('when player takes their turn the take turn method is called in game', function() {
+    game.takeTurn(0, 0);
+    expect(game.takeTurn).toHaveBeenCalledWith(0, 0);
+  });
 
+  // it('receives the number of pins knocked down in the second roll from game', function() {
+  //   game.takeTurn(0, 0);
+  //   expect(frame._secondRoll).toEqual(0);
+  // });
 });

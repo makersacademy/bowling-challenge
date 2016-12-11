@@ -59,26 +59,38 @@ describe("Game", function(){
   describe("Last frame", function(){
     it("can indicate when the last frame has been reached", function(){
       game.frameCount = 10;
-      expect(game.lastFrame()).toEqual(true);
+      expect(game.isLastFrame()).toEqual(true);
     })
     it("can indicate when the last frame has not been reached", function(){
       game.frameCount = 6;
-      expect(game.lastFrame()).toEqual(false);
+      expect(game.isLastFrame()).toEqual(false);
     })
     it("returns 'Game over!' when last frame has been played", function(){
       game.frameCount = 10;
       spyOn(frame, "score");
       spyOn(frame, "points");
-      expect(game.lastFrame(frame)).toEqual("Game over!");
+      expect(game.endFrame(frame)).toEqual("Game over!");
     })
   })
 
   describe("Bonus points", function(){
-    it("can be calculated if a strike", function(){
+    it("can look ahead 2 rolls if a strike", function(){
       spyOn(frame, "isStrike").and.returnValue(true);
       frame.points = [10];
+      frame.score = 10;
       game.points = [frame, frame, frame];
-      expect(game.calculateBonusPoints()).toEqual(30);
+      expect(game.calculateBonusPoints(frame)).toEqual(20);
+    })
+    it("can look ahead 1 roll if a spare", function(){
+      spyOn(frame, "isSpare").and.returnValue(true);
+      frame.points = [4,6];
+      game.points = [frame, frame];
+      expect(game.calculateBonusPoints(frame)).toEqual(4);
+    })
+    it("can not look ahead if neither strike or spare", function(){
+      spyOn(frame, "isStrike").and.returnValue(false);
+      spyOn(frame, "isSpare").and.returnValue(false);
+      expect(game.calculateBonusPoints(frame)).toEqual(0);
     })
   })
 

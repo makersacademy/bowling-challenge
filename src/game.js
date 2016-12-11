@@ -16,17 +16,35 @@ Game.prototype.startNewFrame = function(){
 Game.prototype.endFrame = function(frame){
   this.score += frame.score;
   this.points.push(frame);
-  if (this.lastFrame()) {
+  if (this.isLastFrame()) {
     return "Game over!"
   } else {
     this.startNewFrame();
   }
 }
 
-Game.prototype.lastFrame = function(){
+Game.prototype.isLastFrame = function(){
   return this.frameCount === this.MAX_FRAMES
 }
 
 Game.prototype.calculateBonusPoints = function(frame){
-  
+    var framePosition = this.points.indexOf(frame);
+
+    if (frame.isSpare()) {
+      var nextFrame = this.points[framePosition + 1];
+      return nextFrame.points[0];
+    }
+
+    if (frame.isStrike()) {
+      var nextFrame = this.points[framePosition + 1];
+      if (nextFrame.points.length === 2) {
+        return nextFrame.score;
+      } else {
+        var secondFrame = this.points[framePosition + 2];
+        return nextFrame.score + secondFrame.points[0];
+      }
+    }
+    else {
+      return 0;
+    }
 }

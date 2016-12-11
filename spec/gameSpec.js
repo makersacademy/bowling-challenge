@@ -59,21 +59,28 @@ describe("Game", function(){
   describe("Last frame", function(){
     it("can indicate when the last frame has been reached", function(){
       game.frameCount = 10;
-      expect(game.hasEnded()).toEqual(true);
+      expect(game.lastFrame()).toEqual(true);
     })
     it("can indicate when the last frame has not been reached", function(){
       game.frameCount = 6;
-      expect(game.hasEnded()).toEqual(false);
+      expect(game.lastFrame()).toEqual(false);
     })
     it("returns 'Game over!' when last frame has been played", function(){
       game.frameCount = 10;
       spyOn(frame, "score");
       spyOn(frame, "points");
-      expect(game.endFrame(frame)).toEqual("Game over!");
+      expect(game.lastFrame(frame)).toEqual("Game over!");
     })
   })
 
-
+  describe("Bonus points", function(){
+    it("can be calculated if a strike", function(){
+      spyOn(frame, "isStrike").and.returnValue(true);
+      frame.points = [10];
+      game.points = [frame, frame, frame];
+      expect(game.calculateBonusPoints()).toEqual(30);
+    })
+  })
 
 
 

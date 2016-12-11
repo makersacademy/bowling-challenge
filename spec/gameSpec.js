@@ -24,17 +24,6 @@ describe('Game', function() {
       game.takeTurn();
       expect(game._frames.length).toEqual(1);
     });
-
-    it('the game lasts for 10 frames', function() {
-      for (var i = 0; i < 10; i++) {
-        game.takeTurn(0, 0);
-      }
-      expect(function(){ game.takeTurn(0, 0); }).toThrowError('Game Over');
-    });
-
-    it('responds to isGameOver', function() {
-      expect('isGameOver' in game).toEqual(true);
-    });
   });
 
   describe('when calculating scores', function() {
@@ -45,14 +34,43 @@ describe('Game', function() {
     });
 
     it('can calculate the score for a frame', function() {
-      game.frameScore();
+      game._frameScore();
       expect(game._scores[0]).toEqual(2);
     });
 
     it('can calculate the total score', function() {
-      game.frameScore();
-      game.addTotalScore();
+      game._frameScore();
+      game._addTotalScore();
       expect(game._totalScore).toEqual(20);
+    });
+  });
+
+  describe('when a game is finished', function() {
+    beforeEach(function() {
+      for (var i = 0; i < 10; i++) {
+        game.takeTurn(1, 1);
+      }
+      game._frameScore();
+      game._addTotalScore();
+    });
+
+    it('the game lasts for 10 frames', function() {
+      expect(function(){ game.takeTurn(0, 0); }).toThrowError('Game Over');
+    });
+
+    it('resets the frames at the end of the game', function() {
+      game._resetGame();
+      expect(game._frames).toEqual([]);
+    });
+
+    it('resets the score per frame at the end of the game', function() {
+      game._resetGame();
+      expect(game._scores).toEqual([]);
+    });
+
+    it('resets the total score back to zero at the end of the game', function() {
+      game._resetGame();
+      expect(game._totalScore).toEqual(0);
     });
   });
 

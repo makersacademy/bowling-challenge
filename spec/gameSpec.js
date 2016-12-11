@@ -24,7 +24,7 @@ describe('Game', function () {
     rollMany(20,1);
     expect(game.displayScore()).toEqual(20);
   })
-
+  
   it('rolls a spare', function (){
     game.roll(5);
     game.roll(5);

@@ -1,6 +1,7 @@
 function Game() {
   this._frames = [];
-  this._score = 0;
+  this._scores = [];
+  this._totalScore = 0;
 }
 
 Game.prototype.takeTurn = function(firstRoll, secondRoll) {

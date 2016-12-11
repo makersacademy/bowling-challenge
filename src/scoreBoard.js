@@ -19,4 +19,7 @@ function Scoreboard (){
     return this.scores;
   };
 
-  
+  Scoreboard.prototype.currentFrame = function() {
+      this.frameCount = this.scores.length;
+      return this.frameCount
+    };

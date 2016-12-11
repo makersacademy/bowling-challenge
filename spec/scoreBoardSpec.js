@@ -34,4 +34,11 @@ describe("Scoreboard", function(){
     expect(scoreBoard.scores).toContain(7);
   });
 
+  it("should increase the frame count by 1 for each roll set", function(){
+    scoreBoard.firstRoll(3);
+    scoreBoard.secondRoll(4);
+    scoreBoard.calculateScore();
+    scoreBoard.currentFrame();
+    expect(scoreBoard.frameCount).toEqual(1);
+    });
 });

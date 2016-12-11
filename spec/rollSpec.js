@@ -34,4 +34,10 @@ describe('Roll', function() {
     roll.secondRoll(5);
     expect(roll.isSpare()).toBe(true);
   });
+
+  it('Checks whether the user scored an Open', function() {
+    roll.firstRoll(4);
+    roll.secondRoll(5);
+    expect(roll.isOpen()).toBe(true);
+  });
 });

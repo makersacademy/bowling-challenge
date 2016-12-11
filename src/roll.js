@@ -24,3 +24,7 @@ Roll.prototype.isStrike = function() {
 Roll.prototype.isSpare = function() {
   if (this._rolls[0] + this._rolls[1] === 10) return true
 };
+
+Roll.prototype.isOpen = function() {
+  if (this._rolls[0] + this._rolls[1] < 10) return true
+};

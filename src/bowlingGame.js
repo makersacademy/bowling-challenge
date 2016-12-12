@@ -7,6 +7,11 @@ function BowlingGame(){
 };
 
 BowlingGame.prototype.roll = function(score1, score2){
+  this.updateScore(score1, score2);
+};
+
+BowlingGame.prototype.updateScore = function(score1, score2){
+  score2 = score2 || 0
   this.score += score1;
   this.score += score2;
 };

@@ -27,6 +27,11 @@
       expect(game.score).toEqual(6)
     });
 
+    it("Should update score when player rolls less than a strike or spare #2", function(){
+      game.roll(2, 0)
+      expect(game.score).toEqual(2)
+    });
+
 
   });
 

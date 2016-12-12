@@ -81,6 +81,15 @@
     });
   });
 
+  describe("Gutter game", function(){
+    it("Player should have a zero score after getting zero 20 times", function(){
+      for (var i = 0; i < 20; i++) {
+      game.roll(0,0);
+    }
+    expect(game.score).toEqual(0)
+    });
+  });
+
 
 
 

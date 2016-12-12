@@ -1,0 +1,50 @@
+<!DOCTYPE hmtl>
+<html>
+  <head>
+    <title>Bowling</title>
+    <style type='text/css'>
+    table {
+      border: 2px solid black;
+    }
+    th {
+      border: 1px solid black;
+    }
+    td {
+      text-align: center;
+    }
+    </style>
+  </head>
+  <body>
+    <section>
+    <h1>Score Board </h1>
+    <button id='rackUp' >Rack Up</button>
+    <button id='roll_1' class='ROLL_1' disabled='disabled' >Roll 1</button>
+    <button id='pinSweep'>Pin Sweep</button>
+    <button id='roll_2'>Roll 2 </button>
+    <button id='currentScore'>Current Score</button>
+    <table>
+      <tr>
+        <th width="10%">Frame</th><th width="10%">Roll</th><th width="10%">Knocked Down pins</th><th width="10%">Total</th><th width="10%">Notes</th>
+      </tr>
+      <tr>
+        <td id="frameCount"></td><td id="firstScore"></td><td id="score"></td>
+      </tr>
+       <tr>
+        <td id="frameCount"></td><td id="secondScore"></td>
+      </tr>
+      <tr>
+        <td id="frameCount"></td>
+      </tr>
+      <tr>
+        <td id="frameCount"></td>
+      </tr>
+      <tr>
+        <td id="frameCount"></td>
+      </tr>
+    </table>
+  </section>
+    <script src="src/Game.js"></script>
+     <script src="jquery.js"></script>
+     <script src="interface.js"></script>
+  </body>
+</html>

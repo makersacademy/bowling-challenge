@@ -42,6 +42,13 @@
       expect(game.score).toEqual(20)
     });
 
+    it("Should have double strike compounding functionality", function(){
+      game.roll(10)
+      game.roll(10)
+      game.roll(5,0)
+      expect(game.score).toEqual(45)
+    });
+
   });
 
 

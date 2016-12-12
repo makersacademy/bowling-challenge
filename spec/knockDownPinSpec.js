@@ -29,6 +29,11 @@ describe("Knocking pins down", function() {
       expect(pins.attempts).toEqual(0)
     })
 
+    it("moves to the next frame", function() {
+      pins.attemptBall()
+      expect(frame.moveToNextFrame).toHaveBeenCalled()
+    })
+
   })
 
   describe("attempt", function() {
@@ -36,10 +41,6 @@ describe("Knocking pins down", function() {
     it("returns a whole number between one and ten", function() {
       attempt = pins.attemptBall()
       expect(attempt >= 0 && attempt <= 10).toEqual(true)
-    })
-
-    it("Keeps track of the number of attempts", function() {
-      expect(pins.attempts).toBeDefined()
     })
 
     it("Starts off with no attempts", function() {
@@ -56,23 +57,6 @@ describe("Knocking pins down", function() {
         pins.attemptBall();
       }
       expect(pins.attempts).toEqual(0)
-      expect(pins.firstScore).toEqual(0)
-    })
-  })
-
-  describe("Resetting the attempt", function() {
-
-    beforeEach(function() {
-      pins.attemptBall();
-      pins.resetAttempts();
-    })
-
-    it("Resets the attempts back to zero", function() {
-      expect(pins.attempts).toEqual(0)
-    })
-
-    it("Resets the first score back to zero", function() {
-      expect(pins.firstScore).toEqual(0)
     })
   })
 })

@@ -1,6 +1,8 @@
 function KnockDownPin() {
   this.attempts = 0;
-  this.firstScore = 0;
+  this.firstAttempt = true
+  this.firstAttemptScore = 0
+  this.frame = new FrameManager()
 }
 
 KnockDownPin.prototype.attemptBall = function() {
@@ -10,6 +12,7 @@ KnockDownPin.prototype.attemptBall = function() {
   } else {
     this.nextAttempt();
     var score = this.getRandomInt();
+    this.firstAttemptScore = score;
     if (score === 10) {
       this.resetAttempts()
     }
@@ -23,7 +26,8 @@ KnockDownPin.prototype.nextAttempt = function() {
 
 KnockDownPin.prototype.resetAttempts = function() {
   this.attempts = 0;
-  this.firstScore = 0;
+  this.firstAttempt = true;
+  this.frame.moveToNextFrame()
 }
 
 KnockDownPin.prototype.getRandomInt = function() {

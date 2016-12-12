@@ -20,6 +20,7 @@ BowlingGame.prototype.roll = function(score1, score2){
 
 BowlingGame.prototype.regularPhase = function(score1, score2){
   this.saveScore(score1, score2)
+  this._validateThrow();
   this.updateFrame();
   this.removeStreak();
   this.checkBonuses();
@@ -30,6 +31,7 @@ BowlingGame.prototype.regularPhase = function(score1, score2){
 
 BowlingGame.prototype.endPhase = function(score1,score2) {
   this.saveScore(score1, score2);
+  this._validateThrow();
   this.updateFrame();
   this.IsEndError();
   this.updateScore();
@@ -39,7 +41,7 @@ BowlingGame.prototype.endPhase = function(score1,score2) {
 
 BowlingGame.prototype.saveScore = function(score1, score2) {
    this.roll1 = score1
-   this.roll2 = score2
+   this.roll2 = score2 || 0
 };
 
 BowlingGame.prototype.updateFrame = function(){
@@ -89,7 +91,6 @@ BowlingGame.prototype.checkBonuses = function(){
 };
 
 BowlingGame.prototype.updateScore = function(){
-  this.roll2 = this.roll2 || 0;
   this.score += this.roll1;
   this.score += this.roll2;
 };
@@ -136,5 +137,29 @@ BowlingGame.prototype.isEnd = function(){
 BowlingGame.prototype.IsEndError = function(){
   if (this.frame === 14){
     throw new Error("Maximum number of frames reached. Please start a new game")
+  };
+};
+
+BowlingGame.prototype._validateThrow = function(){
+  this._isNumber();
+  this._isPositive();
+  this._isSumMoreThanTen();
+};
+
+BowlingGame.prototype._isNumber = function(){
+  if (isNaN(this.roll1) || isNaN(this.roll2)){
+    throw new Error("Only numbers may be added to your score. Please enter a number.")
+  };
+};
+
+BowlingGame.prototype._isPositive = function(){
+  if (this.roll1 < 0 || this.roll2 < 0){
+    throw new Error("Only positive numbers may be added to your score. Please enter a positive number.")
+  };
+};
+
+BowlingGame.prototype._isSumMoreThanTen = function(){
+  if ((this.roll1 + this.roll2) > 10){
+    throw new Error("Only possible outcomes may be added to your score. Please enter two number which add up to less than the total number of pins.")
   };
 };

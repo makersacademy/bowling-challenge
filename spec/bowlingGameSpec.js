@@ -97,6 +97,18 @@ describe("bowlingGame", function() {
     }
     expect(function(){game.roll(10);}).toThrowError("Maximum number of frames reached. Please start a new game")
     });
+
+    it("Should raise an error if player tries to enter a string in the roll argument", function(){
+      expect(function(){game.roll('ten',2);}).toThrowError("Only numbers may be added to your score. Please enter a number.")
+    });
+
+    it("Should raise an error if player tries to enter a negetive number in the roll argument",function(){
+      expect(function(){game.roll(-2,7);}).toThrowError("Only positive numbers may be added to your score. Please enter a positive number.")
+    });
+
+    it("Should raise an error if player tries to enter two numbers which add up to more than total number of pins", function(){
+      expect(function(){game.roll(6,7);}).toThrowError("Only possible outcomes may be added to your score. Please enter two number which add up to less than the total number of pins.")
+    });
   });
 
 

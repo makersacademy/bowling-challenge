@@ -2,5 +2,9 @@
 
 function BowlingGame(){
   this.score = 0
+};
 
+BowlingGame.prototype.roll = function(score1, score2){
+  this.score += score1
+  this.score += score2
 };

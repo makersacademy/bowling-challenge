@@ -71,7 +71,14 @@
     }
       expect(game.score).toEqual(300);
     });
+  });
 
+  describe("Spare functionality",function(){
+    it("Player should have his first roll after getting a spare doubled", function(){
+      game.roll(4,6);
+      game.roll(2,0);
+      expect(game.score).toEqual(14);
+    });
   });
 
 

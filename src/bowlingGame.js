@@ -79,6 +79,11 @@ BowlingGame.prototype.checkBonuses = function(){
     this.roll1 *= 2;
     this.strikeBonusThrows -= 2;
   };
+
+  if (this.spareBonusThrows === 1){
+    this.roll1 *= 2;
+    this.spareBonusThrows -= 1;
+  };
 };
 
 BowlingGame.prototype.updateScore = function(){
@@ -98,6 +103,12 @@ BowlingGame.prototype.isStrike = function(){
     this.strikeBonusThrows += 1;
     this.striked += 1;
   };
+};
+
+BowlingGame.prototype.isSpare = function(){
+    if ((this.roll1 + this.roll2 === 10) && (this.roll2 != 0)){
+      this.spareBonusThrows += 1
+    };
 };
 
 BowlingGame.prototype.isDoubleStrike = function(){

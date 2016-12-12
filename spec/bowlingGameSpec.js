@@ -79,6 +79,8 @@
       game.roll(10)
       game.roll(10)
       game.roll(10)
+      game.roll(0,0)
+      game.roll(0,0)
       expect(game.score).toEqual(270)
     });
   });
@@ -97,6 +99,7 @@
       game.roll(10)
       game.roll(10)
 
+      game.roll(10)
       game.roll(10)
       game.roll(10)
       expect(game.score).toEqual(300)

@@ -19,6 +19,30 @@ describe("bowlingGame", function() {
     it("should intialize with spare bonus throws set to zero", function(){
       expect(game.spareBonusThrows).toEqual(0)
     });
+
+    it("Should initialize with strikeBonusThrows set to zero", function(){
+      expect(game.strikeBonusThrows).toEqual(0)
+    });
+
+    it("Should initialize with spareBonusThrows set to zero", function(){
+      expect(game.spareBonusThrows).toEqual(0)
+    });
+
+    it("Should initialize with doubleStrikeBonusThrows set to zero", function(){
+      expect(game.doubleStrikeBonusThrows).toEqual(0)
+    });
+
+    it("Should initialize with striked set to zero", function(){
+      expect(game.striked).toEqual(0)
+    });
+
+    it("Should initialize with frame set to zero", function(){
+      expect(game.frame).toEqual(0)
+    });
+
+    it("Should initialize with doubleStrikeBonusThrows set to 13", function(){
+      expect(game.endFrame).toEqual(13)
+    });
   });
 
 

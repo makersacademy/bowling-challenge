@@ -7,6 +7,7 @@ function BowlingGame(){
   this.doubleStrikeBonusThrows = 0;
   this.striked = 0;
   this.frame = 0
+  this.endFrame = 13
 };
 
 BowlingGame.prototype.roll = function(score1, score2){
@@ -30,6 +31,7 @@ BowlingGame.prototype.regularPhase = function(score1, score2){
 BowlingGame.prototype.endPhase = function(score1,score2) {
   this.saveScore(score1, score2);
   this.updateFrame();
+  this.IsEndError();
   this.updateScore();
   this.finalPhaseIsStrike();
   this.isEnd();
@@ -128,5 +130,11 @@ BowlingGame.prototype.finalPhaseIsStrike = function(){
 BowlingGame.prototype.isEnd = function(){
   if (this.frame === this.endFrame){
     return this.score;
+  };
+};
+
+BowlingGame.prototype.IsEndError = function(){
+  if (this.frame === 14){
+    throw new Error("Maximum number of frames reached. Please start a new game")
   };
 };

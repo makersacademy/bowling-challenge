@@ -21,6 +21,8 @@
      });
   });
 
+
+
   describe("#roll", function(){
     it("Should update score when player rolls less than a strike or spare", function(){
       game.roll(2,4)
@@ -31,7 +33,14 @@
       game.roll(2, 0)
       expect(game.score).toEqual(2)
     });
+  });
 
+  describe("Strike functionality", function(){
+    it("Should double the score of the next two rolls", function(){
+      game.roll(10)
+      game.roll(2,3)
+      expect(game.score).toEqual(20)
+    });
 
   });
 

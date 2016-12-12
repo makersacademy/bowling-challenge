@@ -11,6 +11,14 @@
      it("Should initialize with score set to zero", function(){
        expect(game.score).toEqual(0)
      });
+
+     it("should intialize with strike bonus throws set to zero", function(){
+       expect(game.strikeBonusThrows).toEqual(0)
+     });
+
+     it("should intialize with spare bonus throws set to zero", function(){
+       expect(game.spareBonusThrows).toEqual(0)
+     });
   });
 
   describe("#roll", function(){

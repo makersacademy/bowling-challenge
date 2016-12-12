@@ -15,7 +15,6 @@ BowlingGame.prototype.roll = function(score1, score2){
   this.updateScore();
   this.isStrike();
   this.isDoubleStrike();
-  console.log(this.doubleStrikeBonusThrows)
 };
 
 BowlingGame.prototype.saveScore = function(score1, score2) {

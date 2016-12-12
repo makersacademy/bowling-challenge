@@ -10,7 +10,7 @@ function BowlingGame(){
 };
 
 BowlingGame.prototype.roll = function(score1, score2){
-  if (this.frame < 11){
+  if (this.frame <= 10){
     this.regularPhase(score1, score2);
   } else {
     this.endPhase(score1, score2);
@@ -108,9 +108,9 @@ BowlingGame.prototype.isDoubleStrike = function(){
 
 BowlingGame.prototype.finalPhaseIsStrike = function(){
   if ((this.frame === 11) && (this.roll1 === 10)){
-    this.endFrame = 12
+    this.endFrame = 12;
   } else {
-    this.endFrame = 11
+    this.endFrame = 11;
   };
 };
 

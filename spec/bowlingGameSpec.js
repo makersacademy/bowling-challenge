@@ -43,66 +43,33 @@
     });
 
     it("Should have double strike compounding functionality", function(){
-      game.roll(10)
-      game.roll(10)
-      game.roll(5,0)
+      game.roll(10);
+      game.roll(10);
+      game.roll(5,0);
       expect(game.score).toEqual(45)
     });
 
     it("Should have double strike compounding functionality #2", function(){
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      expect(game.score).toEqual(120)
-    });
-
-    it("Should have double strike compounding functionality #2", function(){
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
+      for (var i = 0; i < 5; i++) {
+      game.roll(10);
+    }
       expect(game.score).toEqual(120)
     });
 
     it("Should have double strike compounding functionality #3", function(){
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      game.roll(0,0)
-      game.roll(0,0)
-      expect(game.score).toEqual(270)
+      for (var i = 0; i < 10; i++) {
+      game.roll(10);
+    }
+      expect(game.score).toEqual(270);
     });
   });
 
   describe("Perfect game", function(){
-    it("Player should be able to score a perfect game by getting 12 strikes in a row", function(){
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-
-      game.roll(10)
-      game.roll(10)
-      game.roll(10)
-      expect(game.score).toEqual(300)
+    it("Player should be able to score a perfect game by getting 13 strikes in a row", function(){
+      for (var i = 0; i < 13; i++) {
+      game.roll(10);
+    }
+      expect(game.score).toEqual(300);
     });
 
   });

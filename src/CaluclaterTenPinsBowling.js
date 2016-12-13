@@ -1,70 +1,100 @@
 'use strict';
 
-function CaluclaterTenPinsBowling() {
-  this.gameScores  = {};
-  this.frameScores = [];
+function CalculatorTenPinsBowling() {
+  this.gameScores  = []; //store [[ro11-1, roll-2, bonus]]
+  this.frameScores = []; //store  [ro11-1, roll-2]
   this.roll  = 1;
   this.frame = 1;
   this.strike = false;
   this.spare  = false;
-  this.strikeBounus = [];
-  this.spareBounus  = 0;
+  this.strikeBonus  = []; //store bonus [ro11-1, roll-2]
+  this.spareBonus   = 0;
   this.STRIKE_PINS  = 10;
 };
 
-CaluclaterTenPinsBowling.prototype.passScore = function(pins){
+CalculatorTenPinsBowling.prototype.passScore = function(pins){
   if( this.frameScores.length === 0 ){
     this.frameScores[0] = pins
   } else {
     this.frameScores[1] = pins
-    this.gameScores[ this.frame ] = this.frameScores
+    this.gameScores.push(this.frameScores)
   }
 };
 
-CaluclaterTenPinsBowling.prototype.passStrikeBounus = function(pins){
-  this.strikeBounus.length === 0 ? this.strikeBounus[0] = pins : this.strikeBounus[1] = pins
+CalculatorTenPinsBowling.prototype.passStrike = function(){
+  this.gameScores.push([ this.STRIKE_PINS, 0 ]);
 };
 
-CaluclaterTenPinsBowling.prototype.passSpareBounus = function(pins){
-  this.spareBounus = pins;
+CalculatorTenPinsBowling.prototype.passBonuses = function(){
+  if( this.spare === true ){
+    this.gameScores[ this.frame - 2 ][2] = this.spareBonus
+  }
+  if( this.strike === true ){
+    var sumStrike = this.sumStrikeBonus();
+    this.gameScores[ this.frame - 2 ][2] = sumStrike
+  }
 };
 
-CaluclaterTenPinsBowling.prototype.passStrike = function(){
-  this.gameScores[ this.frame ] = [ this.STRIKE_PINS, "-" ];
+CalculatorTenPinsBowling.prototype.passStrikeBonus = function(pins){
+  this.strikeBonus.length === 0 ? this.strikeBonus[0] = pins : this.strikeBonus[1] = pins
 };
 
-CaluclaterTenPinsBowling.prototype.changeRoll = function(){
+CalculatorTenPinsBowling.prototype.passSpareBonus = function(pins){
+  this.spareBonus = pins;
+};
+
+CalculatorTenPinsBowling.prototype.sumStrikeBonus = function(){
+  var i;
+  var sum = 0;
+  for (i=0; i<2; i++){ sum = sum + this.strikeBonus[i] }
+  return sum
+};
+
+CalculatorTenPinsBowling.prototype.sumGameScores = function(){
+  var i;
+  var j;
+  var sum = 0;
+
+  for (i=0; i<this.gameScores.length; i++){
+    for (j=0; j<this.gameScores[i].length; j++){
+       sum += this.gameScores[i][j]
+    }
+  }
+  return sum
+};
+
+CalculatorTenPinsBowling.prototype.changeRoll = function(){
   this.roll === 1 ? this.roll = 2 : this.roll = 1;
 };
 
-CaluclaterTenPinsBowling.prototype.increaseFrame = function(){
+CalculatorTenPinsBowling.prototype.increaseFrame = function(){
   this.frame ++;
 };
 
-CaluclaterTenPinsBowling.prototype.clearFrameScores = function(){
+CalculatorTenPinsBowling.prototype.clearFrameScores = function(){
   this.frameScores = [];
 };
 
-CaluclaterTenPinsBowling.prototype.setStrike = function(){
+CalculatorTenPinsBowling.prototype.setStrike = function(){
   this.strike = true;
 };
 
-CaluclaterTenPinsBowling.prototype.setSpare = function(){
+CalculatorTenPinsBowling.prototype.setSpare = function(){
   this.spare = true;
 };
 
-CaluclaterTenPinsBowling.prototype.clearStrike = function(){
+CalculatorTenPinsBowling.prototype.clearStrike = function(){
   this.strike = false;
 };
 
-CaluclaterTenPinsBowling.prototype.clearSpare = function(){
+CalculatorTenPinsBowling.prototype.clearSpare = function(){
   this.strike = false;
 };
 
-CaluclaterTenPinsBowling.prototype.isStrikeFlag = function(){
+CalculatorTenPinsBowling.prototype.isStrikeFlag = function(){
   return this.strike;
 };
 
-CaluclaterTenPinsBowling.prototype.isSpareFlag = function(){
+CalculatorTenPinsBowling.prototype.isSpareFlag = function(){
   return this.spare;
 };

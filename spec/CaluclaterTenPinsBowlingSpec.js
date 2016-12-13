@@ -1,13 +1,13 @@
 'use strict';
 
-describe ('Caluclater for Ten pins bowling', function(){
+describe ('calculator for Ten pins bowling', function(){
 
-  var caluclater;
+  var calculator;
   var pins_1;
   var pins_2;
 
   beforeEach(function(){
-    caluclater = new CaluclaterTenPinsBowling();
+    calculator = new CalculatorTenPinsBowling();
     pins_1 = 5;
     pins_2 = 3;
   });
@@ -16,120 +16,165 @@ describe ('Caluclater for Ten pins bowling', function(){
   describe ('as a default', function(){
 
       it('should set gameScores a empty hash', function(){
-        expect( caluclater.gameScores ).toEqual({});
+        expect( calculator.gameScores ).toEqual([]);
       });
 
       it('should set frameScores a empty array', function(){
-        expect( caluclater.frameScores ).toEqual([]);
+        expect( calculator.frameScores ).toEqual([]);
       });
 
       it('should set roll "1"', function(){
-        expect( caluclater.roll ).toBe( 1 );
+        expect( calculator.roll ).toBe( 1 );
       });
 
       it('should set frame "1"', function(){
-        expect( caluclater.frame ).toBe( 1 );
+        expect( calculator.frame ).toBe( 1 );
       });
 
       it('should set strike flag "false"', function(){
-        expect( caluclater.strike ).toBe( false );
+        expect( calculator.strike ).toBe( false );
       });
 
       it('should set spare flag "false"', function(){
-        expect( caluclater.spare ).toBe( false );
+        expect( calculator.spare ).toBe( false );
       });
 
       it('should set constant for number of Strike pins', function(){
-        expect( caluclater.STRIKE_PINS ).toBe( 10 )
+        expect( calculator.STRIKE_PINS ).toBe( 10 )
       });
 
-      it('should set bounus for strike and spare', function(){
-        expect( caluclater.strikeBounus ).toEqual( [] );
-        expect( caluclater.spareBounus ).toBe( 0 );
+      it('should set bonus for strike and spare', function(){
+        expect( calculator.strikeBonus ).toEqual( [] );
+        expect( calculator.spareBonus ).toBe( 0 );
       });
 
   });
 
-  describe ('functions about pass pins', function(){
+  describe ('functions for passing pins', function(){
 
       it ('should store pins by each frame', function(){
-        caluclater.passScore( pins_1 );
-        expect( caluclater.frameScores ).toEqual( [5] );
-        caluclater.passScore( pins_2 );
-        expect( caluclater.frameScores ).toEqual( [5,3] );
-        expect( caluclater.gameScores ).toEqual( {1:[5,3]} );
+        calculator.passScore( pins_1 );
+        expect( calculator.frameScores ).toEqual( [5] );
+        calculator.passScore( pins_2 );
+        expect( calculator.frameScores ).toEqual( [5,3] );
+        expect( calculator.gameScores ).toEqual( [[5,3]] );
       });
 
-      it ('should store strike bounus for two rolls', function(){
-        caluclater.passStrikeBounus( pins_1 )
-        caluclater.passStrikeBounus( pins_2 )
-        expect( caluclater.strikeBounus ).toEqual( [5,3] );
+      it ('should store strike bonus for two rolls', function(){
+        calculator.passStrikeBonus( pins_1 )
+        calculator.passStrikeBonus( pins_2 )
+        expect( calculator.strikeBonus ).toEqual( [5,3] );
       });
 
-      it ('should store spare bounus for one roll', function(){
-        caluclater.passSpareBounus( pins_1 )
-        expect( caluclater.spareBounus ).toBe( 5 );
+      it ('should store spare bonus for one roll', function(){
+        calculator.passSpareBonus( pins_1 )
+        expect( calculator.spareBonus ).toBe( 5 );
+      });
+
+      it ('should store strike bonus to gameScores', function(){
+        calculator.passStrike();
+        calculator.setStrike();
+        calculator.increaseFrame();
+        calculator.passScore( pins_1 )
+        calculator.passScore( pins_2 )
+        calculator.passStrikeBonus( pins_1 )
+        calculator.passStrikeBonus( pins_2 )
+        calculator.passBonuses()
+        expect( calculator.gameScores ).toEqual( [[10,0,8],[5,3]] );
+        expect( calculator.sumGameScores() ).toEqual( 26 );
+      });
+
+      it ('should store spare bonus to gameScores', function(){
+        calculator.passScore( 2 )
+        calculator.passScore( 8 )
+        calculator.setSpare();
+        calculator.clearFrameScores();
+        calculator.increaseFrame();
+        calculator.passScore( pins_1 )
+        calculator.passScore( pins_2 )
+        calculator.passSpareBonus( pins_1 )
+        calculator.passBonuses()
+        expect( calculator.gameScores ).toEqual( [[2,8,5],[5,3]] );
+        expect( calculator.sumGameScores() ).toEqual( 23 );
       });
 
   });
 
 
   it ('should store Scores when Strike', function(){
-    caluclater.passStrike();
-    expect( caluclater.gameScores ).toEqual( {1:[10,"-"]} );
+    calculator.passStrike();
+    expect( calculator.gameScores ).toEqual( [[10,0]] );
   });
 
 
   it ('should change 1 to 2 when change to next roll', function(){
-    caluclater.changeRoll();
-    expect( caluclater.roll ).toBe( 2 );
+    calculator.changeRoll();
+    expect( calculator.roll ).toBe( 2 );
   });
 
   it ('should change 2 to 1 when change to next roll', function(){
-    caluclater.changeRoll();
-    caluclater.changeRoll();
-    expect( caluclater.roll ).toBe( 1 );
+    calculator.changeRoll();
+    calculator.changeRoll();
+    expect( calculator.roll ).toBe( 1 );
   });
 
   it ('should change 1 to 2 when moved the next frame', function(){
-    caluclater.increaseFrame();
-    expect( caluclater.frame ).toBe( 2 );
+    calculator.increaseFrame();
+    expect( calculator.frame ).toBe( 2 );
   });
 
   it ('should clear frameScores', function(){
-    caluclater.clearFrameScores();
-    expect( caluclater.frameScores ).toEqual( [] );
+    calculator.clearFrameScores();
+    expect( calculator.frameScores ).toEqual( [] );
   });
 
   it ('should set strike "true"', function(){
-    caluclater.setStrike();
-    expect( caluclater.strike ).toBe( true );
+    calculator.setStrike();
+    expect( calculator.strike ).toBe( true );
   });
 
   it ('should check strike status', function(){
-    caluclater.setStrike();
-    expect( caluclater.strike ).toBe( true );
+    calculator.setStrike();
+    expect( calculator.strike ).toBe( true );
   });
 
   it ('should check strike flag', function(){
-    expect( caluclater.isStrikeFlag() ).toEqual( false )
-    caluclater.setStrike();
-    expect( caluclater.isStrikeFlag() ).toEqual( true )
+    expect( calculator.isStrikeFlag() ).toEqual( false )
+    calculator.setStrike();
+    expect( calculator.isStrikeFlag() ).toEqual( true )
   });
 
   it ('should check spare flag', function(){
-    expect( caluclater.isSpareFlag() ).toEqual( false )
-    caluclater.setSpare();
-    expect( caluclater.isSpareFlag() ).toEqual( true )
+    expect( calculator.isSpareFlag() ).toEqual( false )
+    calculator.setSpare();
+    expect( calculator.isSpareFlag() ).toEqual( true )
   });
 
   it ('should turn false Strike flag', function(){
-    caluclater.clearStrike();
-    expect( caluclater.strike ).toBe( false )
+    calculator.clearStrike();
+    expect( calculator.strike ).toBe( false )
   });
 
   it ('should turn false Spare flag', function(){
-    caluclater.clearSpare();
-    expect( caluclater.spare ).toBe( false )
+    calculator.clearSpare();
+    expect( calculator.spare ).toBe( false )
   });
+
+  describe ('functions for sum', function(){
+
+      it ('should sum game scores', function(){
+        calculator.passScore( pins_1 );
+        calculator.passScore( pins_2 );
+        expect( calculator.sumGameScores() ).toEqual( 8 );
+      });
+
+      it ('should sum strike bonus', function(){
+        calculator.passStrikeBonus( pins_1 );
+        calculator.passStrikeBonus( pins_2 );
+        expect( calculator.sumStrikeBonus() ).toEqual( 8 );
+      });
+
+  });
+
+
 });

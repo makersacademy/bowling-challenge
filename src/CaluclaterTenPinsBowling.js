@@ -15,9 +15,10 @@ function CalculatorTenPinsBowling() {
 CalculatorTenPinsBowling.prototype.passScore = function(pins){
   if( this.frameScores.length === 0 ){
     this.frameScores[0] = pins
+    this.gameScores.push(this.frameScores)
   } else {
     this.frameScores[1] = pins
-    this.gameScores.push(this.frameScores)
+    this.gameScores[ this.frame - 1 ] = this.frameScores
   }
 };
 

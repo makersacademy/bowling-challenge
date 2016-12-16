@@ -72,6 +72,7 @@ describe ('calculator for Ten pins bowling', function(){
       });
 
       it ('should store strike bonus to gameScores', function(){
+        calculator.changeRoll();
         calculator.passStrike();
         calculator.setStrike();
         calculator.increaseFrame();
@@ -85,6 +86,7 @@ describe ('calculator for Ten pins bowling', function(){
       });
 
       it ('should store spare bonus to gameScores', function(){
+        calculator.changeRoll();
         calculator.passScore( 2 )
         calculator.passScore( 8 )
         calculator.setSpare();
@@ -119,6 +121,7 @@ describe ('calculator for Ten pins bowling', function(){
   });
 
   it ('should change 1 to 2 when moved the next frame', function(){
+    calculator.changeRoll();
     calculator.increaseFrame();
     expect( calculator.frame ).toBe( 2 );
   });

@@ -12,7 +12,8 @@ function CalculatorTenPinsBowling() {
   this.STRIKE_PINS  = 10;
 };
 
-CalculatorTenPinsBowling.prototype.passScore = function(pins){
+CalculatorTenPinsBowling.prototype.passScore = function(user_input){
+  var pins = Number(user_input)
   if( this.frameScores.length === 0 ){
     this.frameScores[0] = pins
     this.gameScores.push(this.frameScores)
@@ -69,11 +70,11 @@ CalculatorTenPinsBowling.prototype.changeRoll = function(){
 };
 
 CalculatorTenPinsBowling.prototype.increaseFrame = function(){
-  this.frame ++;
+  if( this.roll === 2 ){ this.frame ++ }
 };
 
 CalculatorTenPinsBowling.prototype.clearFrameScores = function(){
-  this.frameScores = [];
+  if( this.roll === 2 ){ this.frameScores = [] }
 };
 
 CalculatorTenPinsBowling.prototype.setStrike = function(){

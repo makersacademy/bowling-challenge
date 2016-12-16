@@ -1,18 +1,20 @@
 $(document).ready(function(){
 
   var calculator = new CalculatorTenPinsBowling();
+
   displayTable();
+  displayTotalScore();
 
   $('#my-form').submit(function(event) {
     event.preventDefault();
     var pins = $('#pins').val();
     calculator.passScore(pins);
+    calculator.clearFrameScores();
+    calculator.increaseFrame();
+    calculator.changeRoll();
     displayTable();
+    displayTotalScore();
   })
-
-  function displayScore(pins){
-    $('#score').text( calculator.passScore(pins) );
-  }
 
   function displayTable(){
     var i;
@@ -24,6 +26,10 @@ $(document).ready(function(){
         $(place.toString()).text( calculator.gameScores[i][j] );
       }
     }
+  }
+
+  function displayTotalScore(){
+    $('#total').text( calculator.sumGameScores() );
   }
 
 })

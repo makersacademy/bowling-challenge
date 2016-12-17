@@ -9,6 +9,11 @@ KnockDownPin.prototype.attemptBall = function() {
   if (this.attempts === 1) {
     this.resetAttempts();
     secondAttempt = this.getRandomIntForSecondAttempt(this.firstScore);
+    if (secondAttempt + this.firstAttemptScore == 10) {
+      game.spare_scored();
+    } else {
+      game.calculateScore();
+    }
     game.calculateScore();
   } else {
     this.nextAttempt();

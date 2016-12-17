@@ -3,7 +3,7 @@ describe("Knocking pins down", function() {
 
   beforeEach(function() {
     pins = new KnockDownPin();
-    game = jasmine.createSpyObj("game", ["calculateScore", "strike_scored"])
+    game = jasmine.createSpyObj("game", ["calculateScore", "strike_scored", "spare_scored"])
   })
 
   describe("scoring",function() {
@@ -30,7 +30,6 @@ describe("Knocking pins down", function() {
     beforeEach(function() {
       spyOn(pins,"getRandomInt").and.returnValue(10)
       frame = jasmine.createSpyObj("frame",["moveToNextFrame"])
-      score = jasmine.createSpyObj("score", ["score_strike", "score_spare"])
     })
 
     it("attempts should be set to zero", function() {
@@ -54,7 +53,28 @@ describe("Knocking pins down", function() {
 
     beforeEach(function() {
       spyOn(pins, "getRandomInt").and.returnValue(7)
-      spyOn(pins, "getRandomAttemptForSecondAttempt")
+      spyOn(pins, "getRandomIntForSecondAttempt").and.returnValue(3)
+      pins.attemptBall();
+      pins.attemptBall();
+    })
+
+    it ("should call a spare method", function() {
+      expect(game.spare_scored).toHaveBeenCalled()
+    })
+
+  })
+
+  describe("not getting a spare", function() {
+
+    beforeEach(function() {
+      spyOn(pins, "getRandomInt").and.returnValue(7)
+      spyOn(pins, "getRandomIntForSecondAttempt").and.returnValue(2)
+      pins.attemptBall();
+      pins.attemptBall();
+    })
+
+    it ("should call a spare method", function() {
+      expect(game.spare_scored).not.toHaveBeenCalled()
     })
 
   })
@@ -62,7 +82,7 @@ describe("Knocking pins down", function() {
   describe("attempt", function() {
 
     it("returns a whole number between one and ten", function() {
-      attempt = pins.attemptBall()
+      attempt = pins.attemptBall();
       expect(attempt >= 0 && attempt <= 10).toEqual(true)
     })
 

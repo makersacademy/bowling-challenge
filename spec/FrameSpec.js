@@ -19,3 +19,10 @@ describe("Frame", function() {
       expect(frame.rollOne).toEqual(4)
     });
   });
+
+  describe("secondRoll", function() {
+    it("should store given score in rollTwo", function() {
+      frame.secondRoll(5);
+      expect(frame.rollTwo).toEqual(5);
+    });
+  });

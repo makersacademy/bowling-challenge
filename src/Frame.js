@@ -6,3 +6,7 @@ var Frame = function() {
 Frame.prototype.firstRoll = function(score) {
   this.rollOne = score;
 };
+
+Frame.prototype.secondRoll = function(score) {
+  this.rollTwo = score;
+};

@@ -4,106 +4,117 @@ describe("Game", function(){
   var frame;
 
   beforeEach(function(){
-    game = new Game();
-    frame = new Frame();
-    frame1 = new Frame();
+    game = new Game()
+    frame = new Frame()
+    frame1 = new Frame()
   })
 
   describe("Creation", function(){
     it("has a maximum of 10 frames", function(){
-      expect(game.FINAL_FRAME).toEqual(10);
+      expect(game.FINAL_FRAME).toEqual(10)
     })
     it("can go up to 12 frames in total", function(){
-      expect(game.MAX_FRAMES).toEqual(12);
+      expect(game.MAX_FRAMES).toEqual(12)
     })
     it("has an initial frame count of 0", function(){
-      expect(game.frameCount).toEqual(0);
+      expect(game.frameCount).toEqual(0)
     })
     it("has an initial score of 0", function(){
-      expect(game.score).toEqual(0);
+      expect(game.score).toEqual(0)
     })
     it("has an initial empty points array", function(){
-      expect(game.points).toEqual([]);
+      expect(game.points).toEqual([])
     })
   })
 
   describe("New frame", function(){
     it("can start a new frame", function(){
-      game.startNewFrame();
-      expect(game.frame).toBeDefined();
+      game.startNewFrame()
+      expect(game.frame).toBeDefined()
     })
     it("increases frame count", function(){
-      game.startNewFrame();
-      expect(game.frameCount).toEqual(1);
+      game.startNewFrame()
+      expect(game.frameCount).toEqual(1)
     })
     it("starts a new frame when previous frame is over", function(){
-      spyOn(frame, "score");
-      spyOn(frame, "points");
-      spyOn(game, "startNewFrame");
-      game.frameCount = 1;
-      game.endFrame(frame);
-      expect(game.startNewFrame).toHaveBeenCalled();
+      spyOn(frame, "score")
+      spyOn(frame, "points")
+      spyOn(game, "startNewFrame")
+      game.frameCount = 1
+      game.endFrame(frame)
+      expect(game.startNewFrame).toHaveBeenCalled()
     })
   })
 
   describe("End frame", function(){
     it("adds total score of frame to game score", function(){
-      frame.score = 8;
-      game.endFrame(frame);
-      expect(game.score).toEqual(8);
+      frame.score = 8
+      game.endFrame(frame)
+      expect(game.score).toEqual(8)
     })
     it("adds frame object to points array", function(){
-      frame.points = [4,5];
-      game.startNewFrame();
-      game.endFrame(frame);
+      frame.points = [4,5]
+      game.startNewFrame()
+      game.endFrame(frame)
       expect(game.points).toEqual(jasmine.arrayContaining([frame]));
     })
   })
 
   describe("Last frame", function(){
     it("can indicate when the last frame has been reached", function(){
-      game.frameCount = 10;
-      expect(game.isLastFrame()).toEqual(true);
+      game.frameCount = 10
+      expect(game.isLastFrame()).toEqual(true)
     })
     it("can indicate when the last frame has not been reached", function(){
-      game.frameCount = 6;
-      expect(game.isLastFrame()).toEqual(false);
+      game.frameCount = 6
+      expect(game.isLastFrame()).toEqual(false)
     })
   })
 
   describe("Frame Ten", function(){
     it("indicates 'Game over!' when last frame has been played, and the last frame was not a strike or spare", function(){
-      game.frameCount = 10;
       spyOn(frame, "isStrike").and.returnValue(false)
       spyOn(frame, "isSpare").and.returnValue(false)
-      expect(game.isFrameTenEnd(frame)).toEqual(true);
+      expect(game.isFrameTenEnd(frame)).toEqual(true)
+    })
+    it("does not indicate 'Game over!' when last frame has been played, and it was a strike", function(){
+      spyOn(frame, "isStrike").and.returnValue(true)
+      expect(game.isFrameTenEnd(frame)).toEqual(false)
+    })
+    it("does not indicate 'Game over!' when last frame has been played, and it was a spare", function(){
+      spyOn(frame, "isSpare").and.returnValue(true)
+      expect(game.isFrameTenEnd(frame)).toEqual(false)
     })
   })
 
   describe("Frame Eleven", function(){
     it("indicates 'Game over!' if on 11th frame, where 10th was strike, 11th was not a strike", function(){
-      spyOn(frame, "isStrike").and.returnValue(false);
-      spyOn(frame1, "isStrike").and.returnValue(true);
-      game.points = [frame1, frame];
-      expect(game.isFrameElevenEnd(frame)).toEqual(true);
+      spyOn(frame, "isStrike").and.returnValue(false)
+      spyOn(frame1, "isStrike").and.returnValue(true)
+      game.points = [frame1, frame]
+      expect(game.isFrameElevenEnd(frame)).toEqual(true)
     })
     it("does not indicate 'Game over!' if on 11th frame, where 10th was strike, 11th was a strike", function(){
-      spyOn(frame, "isStrike").and.returnValue(true);
-      spyOn(frame1, "isStrike").and.returnValue(true);
-      game.points = [frame1, frame];
-      expect(game.isFrameElevenEnd(frame)).toEqual(false);
+      spyOn(frame, "isStrike").and.returnValue(true)
+      spyOn(frame1, "isStrike").and.returnValue(true)
+      game.points = [frame1, frame]
+      expect(game.isFrameElevenEnd(frame)).toEqual(false)
     })
     it("indicates 'Game over!' if on 11th frame, where 10th was a spare", function(){
-      spyOn(frame1, "isSpare").and.returnValue(true);
-      game.points = [frame1, frame];
-      expect(game.isFrameElevenEnd(frame)).toEqual(true);
+      spyOn(frame1, "isSpare").and.returnValue(true)
+      game.points = [frame1, frame]
+      expect(game.isFrameElevenEnd(frame)).toEqual(true)
     })
   })
 
   describe("Frame Twelve", function(){
     it("can indicate when absolutely final frame has been reached", function(){
-      game.frameCount = 12;
-      expect(game.isFinalFrame()).toEqual(true);
+      game.frameCount = 12
+      expect(game.isFinalFrame()).toEqual(true)
+    })
+    it("can indicate when absolutely final frame has not been reached", function(){
+      game.frameCount = 11
+      expect(game.isFinalFrame()).toEqual(false)
     })
   })
 
@@ -121,14 +132,14 @@ describe("Game", function(){
       expect(game.endFrame(frame)).not.toEqual("Game over!");
     })
     it("returns 'Game over!' when on 11th frame, and 10th was a spare", function(){
-      game.frameCount = 11;
-      spyOn(frame1, "isSpare").and.returnValue(true);
-      game.points = [frame1];
-      expect(game.endFrame(frame)).toEqual("Game over!");
+      game.frameCount = 11
+      spyOn(frame1, "isSpare").and.returnValue(true)
+      game.points = [frame1]
+      expect(game.endFrame(frame)).toEqual("Game over!")
     })
     it("returns 'Game over!' whenever the maximum number of frames is reached", function(){
-      game.frameCount = 12;
-      expect(game.endFrame(frame)).toEqual("Game over!");
+      game.frameCount = 12
+      expect(game.endFrame(frame)).toEqual("Game over!")
     })
   })
 

@@ -24,7 +24,6 @@ Game.prototype.endFrame = function(frame){
     }
   }
   else if (this.frameCount === 11) {
-    console.log("Code", this.isFrameElevenEnd(frame));
     if (this.isFrameElevenEnd(frame)) {
       return "Game over!"
     }

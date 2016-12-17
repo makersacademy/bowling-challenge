@@ -13,37 +13,37 @@ describe("Knocking pins down", function() {
     })
 
     it("second attempt has a maximum of 10 minus first attempt", function() {
-      pins.attemptBall();
-      expect(pins.attemptBall()).not.toBeGreaterThan(2)
+      pins.rollBall();
+      expect(pins.rollBall()).not.toBeGreaterThan(2)
     })
 
     it ("calls a method to calculate the score after the seocond attempt", function() {
-      pins.attemptBall();
-      pins.attemptBall();
+      pins.rollBall();
+      pins.rollBall();
       expect(game.calculateScore).toHaveBeenCalled()
     })
 
   })
 
-  describe("getting a strike", function() {
+  describe("getting a strike on the first roll", function() {
 
     beforeEach(function() {
       spyOn(pins,"getRandomInt").and.returnValue(10)
       frame = jasmine.createSpyObj("frame",["moveToNextFrame"])
     })
 
-    it("attempts should be set to zero", function() {
-      pins.attemptBall();
-      expect(pins.attempts).toEqual(0)
+    it("rolls should be set to zero", function() {
+      pins.rollBall();
+      expect(pins.rolls).toEqual(0)
     })
 
     it("moves to the next frame", function() {
-      pins.attemptBall();
+      pins.rollBall();
       expect(frame.moveToNextFrame).toHaveBeenCalled()
     })
 
     it("calls a strike method", function() {
-      pins.attemptBall()
+      pins.rollBall()
       expect(game.strike_scored).toHaveBeenCalled()
     })
 
@@ -54,8 +54,8 @@ describe("Knocking pins down", function() {
     beforeEach(function() {
       spyOn(pins, "getRandomInt").and.returnValue(7)
       spyOn(pins, "getRandomIntForSecondAttempt").and.returnValue(3)
-      pins.attemptBall();
-      pins.attemptBall();
+      pins.rollBall();
+      pins.rollBall();
     })
 
     it ("should call a spare method", function() {
@@ -69,8 +69,8 @@ describe("Knocking pins down", function() {
     beforeEach(function() {
       spyOn(pins, "getRandomInt").and.returnValue(7)
       spyOn(pins, "getRandomIntForSecondAttempt").and.returnValue(2)
-      pins.attemptBall();
-      pins.attemptBall();
+      pins.rollBall();
+      pins.rollBall();
     })
 
     it ("should call a spare method", function() {
@@ -82,24 +82,24 @@ describe("Knocking pins down", function() {
   describe("attempt", function() {
 
     it("returns a whole number between one and ten", function() {
-      attempt = pins.attemptBall();
+      attempt = pins.rollBall();
       expect(attempt >= 0 && attempt <= 10).toEqual(true)
     })
 
-    it("Starts off with no attempts", function() {
-      expect(pins.attempts).toEqual(0)
+    it("Starts off with no rolls", function() {
+      expect(pins.rolls).toEqual(0)
     })
 
     it("Moves to the next attempt", function() {
-      pins.attemptBall();
-      expect(pins.attempts).toEqual(1)
+      pins.rollBall();
+      expect(pins.rolls).toEqual(1)
     })
 
-    it("Resets the pins when two attempts have been made", function() {
+    it("Resets the pins when two rolls have been made", function() {
       for (count=0; count<2; count++) {
-        pins.attemptBall();
+        pins.rollBall();
       }
-      expect(pins.attempts).toEqual(0)
+      expect(pins.rolls).toEqual(0)
     })
   })
 })

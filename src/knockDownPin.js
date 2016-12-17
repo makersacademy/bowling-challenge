@@ -1,41 +1,41 @@
 function KnockDownPin() {
-  this.attempts = 0;
-  this.firstAttempt = true
-  this.firstAttemptScore = 0
+  this.rolls = 0;
+  this.firstRoll = true;
+  this.firstRollScore = 0;
+  this.secondRollScore = 0;
   this.frame = new FrameManager()
 }
 
-KnockDownPin.prototype.attemptBall = function() {
-  if (this.attempts === 1) {
-    this.resetAttempts();
+KnockDownPin.prototype.rollBall = function() {
+  if (this.rolls === 1) {
+    this.resetRolls();
     secondAttempt = this.getRandomIntForSecondAttempt(this.firstScore);
-    if (secondAttempt + this.firstAttemptScore == 10) {
+    if (secondAttempt + this.firstRollScore == 10) {
       game.spare_scored();
     } else {
       game.calculateScore();
     }
     game.calculateScore();
   } else {
-    this.nextAttempt();
+    this.nextRoll();
     var fallenPins = this.getRandomInt();
-    this.firstAttemptScore = fallenPins;
+    this.firstRollScore = fallenPins;
     if (fallenPins === 10) {
       game.strike_scored()
       frame.moveToNextFrame();
-      this.resetAttempts();
-
+      this.resetRolls();
     }
     return fallenPins;
   }
 }
 
-KnockDownPin.prototype.nextAttempt = function() {
-  this.attempts++;
+KnockDownPin.prototype.nextRoll = function() {
+  this.rolls++;
 }
 
-KnockDownPin.prototype.resetAttempts = function() {
-  this.attempts = 0;
-  this.firstAttempt = true;
+KnockDownPin.prototype.resetRolls = function() {
+  this.rolls = 0;
+  this.firstRoll = true;
   this.frame.moveToNextFrame()
 }
 

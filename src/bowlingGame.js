@@ -3,7 +3,7 @@ function BowlingGame() {
 }
 
 BowlingGame.prototype.playBall = function() {
-  pins.attemptBall();
+  pins.rollBall();
 }
 
 BowlingGame.prototype.startAgain = function() {

@@ -26,3 +26,10 @@ describe("Frame", function() {
       expect(frame.rollTwo).toEqual(5);
     });
   });
+
+  describe("isStrike", function() {
+    it("should return true if firstRoll is 10", function() {
+      frame.firstRoll(10);
+      expect(frame.isStrike()).toBe(true);
+    });
+  });

@@ -10,3 +10,7 @@ Frame.prototype.firstRoll = function(score) {
 Frame.prototype.secondRoll = function(score) {
   this.rollTwo = score;
 };
+
+Frame.prototype.isStrike = function() {
+  return this.rollOne === 10;
+};

@@ -17,8 +17,22 @@ Game.prototype.startNewFrame = function(){
 Game.prototype.endFrame = function(frame){
   this.score += frame.score;
   this.points.push(frame);
-  if (this.isLastFrame() && !frame.isStrike() && !frame.isSpare() || this.isFinalFrame()) {
-    return "Game over!"
+
+  if (this.frameCount === 10) {
+    if (this.isLastFrame() && this.isFrameTenEnd(frame)) {
+      return "Game over!"
+    }
+  }
+  else if (this.frameCount === 11) {
+    console.log("Code", this.isFrameElevenEnd(frame));
+    if (this.isFrameElevenEnd(frame)) {
+      return "Game over!"
+    }
+  }
+  else if (this.frameCount === 12) {
+    if (this.isFinalFrame()) {
+      return "Game over!"
+    }
   } else {
     this.startNewFrame();
   }
@@ -32,33 +46,33 @@ Game.prototype.isFinalFrame = function(){
   return this.frameCount === this.MAX_FRAMES
 }
 
-Game.prototype.calculateBonusPoints = function(frame){
-    var framePosition = this.points.indexOf(frame);
-    var nextFrame = this.points[framePosition + 1];
-
-    if (frame.isSpare()) {
-      return nextFrame.points[0];
-    }
-
-    if (frame.isStrike()) {
-      if (nextFrame.points.length === 2) {
-        return nextFrame.score;
-      } else {
-        var secondFrame = this.points[framePosition + 2];
-        return nextFrame.score + secondFrame.points[0];
-      }
-    }
-    else {
-      return 0;
-    }
-}
-
 Game.prototype.isFrameTenEnd = function(frame){
   return !frame.isStrike() && !frame.isSpare()
 }
 
 Game.prototype.isFrameElevenEnd = function(frame){
-  return this.points[this.points.length-2].isStrike() && !frame.isStrike() || (this.points[this.points.length-2].isSpare())
+  return (this.points[this.points.length-2].isStrike() && !frame.isStrike()) || (this.points[this.points.length-2].isSpare())
+}
+
+Game.prototype.calculateBonusPoints = function(frame){
+  var framePosition = this.points.indexOf(frame);
+  var nextFrame = this.points[framePosition + 1];
+
+  if (frame.isSpare()) {
+    return nextFrame.points[0];
+  }
+
+  if (frame.isStrike()) {
+    if (nextFrame.points.length === 2) {
+      return nextFrame.score;
+    } else {
+      var secondFrame = this.points[framePosition + 2];
+      return nextFrame.score + secondFrame.points[0];
+    }
+  }
+  else {
+    return 0;
+  }
 }
 
 Game.prototype.addBonusPoints = function(frame){

@@ -95,7 +95,6 @@ describe("Game", function(){
     })
     it("indicates 'Game over!' if on 11th frame, where 10th was a spare", function(){
       spyOn(frame1, "isSpare").and.returnValue(true);
-      spyOn(frame, "isSpare").and.returnValue(true);
       game.points = [frame1, frame];
       expect(game.isFrameElevenEnd(frame)).toEqual(true);
     })
@@ -113,24 +112,22 @@ describe("Game", function(){
       game.frameCount = 10;
       spyOn(frame, "isStrike").and.returnValue(true)
       spyOn(frame, "isSpare").and.returnValue(false)
-      spyOn(frame, "score");
-      spyOn(frame, "points");
       expect(game.endFrame(frame)).not.toEqual("Game over!");
     })
     it("does not return 'Game over!' when last frame has been played and the last frame was a spare", function(){
       game.frameCount = 10;
       spyOn(frame, "isStrike").and.returnValue(false)
       spyOn(frame, "isSpare").and.returnValue(true)
-      spyOn(frame, "score");
-      spyOn(frame, "points");
       expect(game.endFrame(frame)).not.toEqual("Game over!");
+    })
+    it("returns 'Game over!' when on 11th frame, and 10th was a spare", function(){
+      game.frameCount = 11;
+      spyOn(frame1, "isSpare").and.returnValue(true);
+      game.points = [frame1];
+      expect(game.endFrame(frame)).toEqual("Game over!");
     })
     it("returns 'Game over!' whenever the maximum number of frames is reached", function(){
       game.frameCount = 12;
-      spyOn(frame, "isStrike").and.returnValue(false)
-      spyOn(frame, "isSpare").and.returnValue(true)
-      spyOn(frame, "score");
-      spyOn(frame, "points");
       expect(game.endFrame(frame)).toEqual("Game over!");
     })
   })

@@ -7,8 +7,15 @@ describe("Frame", function() {
   });
 
   it("should have a starting firstRoll score of 0", function() {
-    expect(frame.firstRoll).toEqual(0)
+    expect(frame.rollOne).toEqual(0)
   });
   it("should have a starting secondRoll score of 0", function() {
-    expect(frame.secondRoll).toEqual(0)
+    expect(frame.rollTwo).toEqual(0)
+  });
+
+  describe("firstRoll", function() {
+    it("should store given score in rollOne", function() {
+      frame.firstRoll(4)
+      expect(frame.rollOne).toEqual(4)
+    });
   });

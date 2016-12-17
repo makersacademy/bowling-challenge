@@ -1,4 +1,8 @@
 var Frame = function() {
-  this.firstRoll = 0
-  this.secondRoll = 0
+  this.rollOne = 0;
+  this.rollTwo = 0;
+};
+
+Frame.prototype.firstRoll = function(score) {
+  this.rollOne = score;
 };

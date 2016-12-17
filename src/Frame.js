@@ -14,3 +14,7 @@ Frame.prototype.secondRoll = function(score) {
 Frame.prototype.isStrike = function() {
   return this.rollOne === 10;
 };
+
+Frame.prototype.isSpare = function() {
+  return (this.isStrike() === false && (this.rollOne + this.rollTwo === 10));
+};

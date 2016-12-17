@@ -33,3 +33,10 @@ describe("Frame", function() {
       expect(frame.isStrike()).toBe(true);
     });
   });
+  describe("isSpare", function() {
+    it("should return true if rollOne and rollTwo add to 10", function() {
+      frame.firstRoll(8);
+      frame.secondRoll(2);
+      expect(frame.isSpare()).toBe(true);
+    });
+  });

@@ -16,7 +16,7 @@ Game.prototype.startNewFrame = function(){
 Game.prototype.endFrame = function(frame){
   this.score += frame.score;
   this.points.push(frame);
-  if (this.isLastFrame()) {
+  if (this.isLastFrame() && !frame.isStrike() && !frame.isSpare()) {
     return "Game over!"
   } else {
     this.startNewFrame();

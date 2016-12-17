@@ -65,12 +65,31 @@ describe("Game", function(){
       game.frameCount = 6;
       expect(game.isLastFrame()).toEqual(false);
     })
-    it("returns 'Game over!' when last frame has been played", function(){
+    it("returns 'Game over!' when last frame has been played, and the last frame was not a strike or spare", function(){
       game.frameCount = 10;
+      spyOn(frame, "isStrike").and.returnValue(false)
+      spyOn(frame, "isSpare").and.returnValue(false)
       spyOn(frame, "score");
       spyOn(frame, "points");
       expect(game.endFrame(frame)).toEqual("Game over!");
     })
+    it("does not return 'Game over!' when last frame has been played and the last frame was a strike", function(){
+      game.frameCount = 10;
+      spyOn(frame, "isStrike").and.returnValue(true)
+      spyOn(frame, "isSpare").and.returnValue(false)
+      spyOn(frame, "score");
+      spyOn(frame, "points");
+      expect(game.endFrame(frame)).not.toEqual("Game over!");
+    })
+    it("does not return 'Game over!' when last frame has been played and the last frame was a spare", function(){
+      game.frameCount = 10;
+      spyOn(frame, "isStrike").and.returnValue(false)
+      spyOn(frame, "isSpare").and.returnValue(true)
+      spyOn(frame, "score");
+      spyOn(frame, "points");
+      expect(game.endFrame(frame)).not.toEqual("Game over!");
+    })
+
   })
 
   describe("Bonus points", function(){

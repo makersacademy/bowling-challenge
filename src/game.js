@@ -17,7 +17,26 @@ Game.prototype.startNewFrame = function(){
 Game.prototype.endFrame = function(frame){
   this.score += frame.score;
   this.points.push(frame);
+  this.endGame(frame)
+}
 
+Game.prototype.isLastFrame = function(){
+  return this.frameCount === this.FINAL_FRAME
+}
+
+Game.prototype.isFinalFrame = function(){
+  return this.frameCount === this.MAX_FRAMES
+}
+
+Game.prototype.isFrameTenEnd = function(frame){
+  return !frame.isStrike() && !frame.isSpare()
+}
+
+Game.prototype.isFrameElevenEnd = function(frame){
+  return (this.points[this.points.length-2].isStrike() && !frame.isStrike()) || (this.points[this.points.length-2].isSpare())
+}
+
+Game.prototype.endGame = function(frame){
   if (this.frameCount === 10) {
     if (this.isLastFrame() && this.isFrameTenEnd(frame)) {
       return "Game over!"
@@ -35,22 +54,6 @@ Game.prototype.endFrame = function(frame){
   } else {
     this.startNewFrame();
   }
-}
-
-Game.prototype.isLastFrame = function(){
-  return this.frameCount === this.FINAL_FRAME
-}
-
-Game.prototype.isFinalFrame = function(){
-  return this.frameCount === this.MAX_FRAMES
-}
-
-Game.prototype.isFrameTenEnd = function(frame){
-  return !frame.isStrike() && !frame.isSpare()
-}
-
-Game.prototype.isFrameElevenEnd = function(frame){
-  return (this.points[this.points.length-2].isStrike() && !frame.isStrike()) || (this.points[this.points.length-2].isSpare())
 }
 
 Game.prototype.calculateBonusPoints = function(frame){

@@ -11,10 +11,10 @@ Frame.prototype.secondRoll = function(score) {
   this.rollTwo = score;
 };
 
-Frame.prototype.isStrike = function() {
+Frame.prototype._isStrike = function() {
   return this.rollOne === 10;
 };
 
-Frame.prototype.isSpare = function() {
-  return (this.isStrike() === false && (this.rollOne + this.rollTwo === 10));
+Frame.prototype._isSpare = function() {
+  return (this._isStrike() === false && (this.rollOne + this.rollTwo === 10));
 };

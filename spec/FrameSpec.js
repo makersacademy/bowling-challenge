@@ -27,16 +27,16 @@ describe("Frame", function() {
     });
   });
 
-  describe("isStrike", function() {
+  describe("_isStrike", function() {
     it("should return true if firstRoll is 10", function() {
       frame.firstRoll(10);
-      expect(frame.isStrike()).toBe(true);
+      expect(frame._isStrike()).toBe(true);
     });
   });
-  describe("isSpare", function() {
+  describe("_isSpare", function() {
     it("should return true if rollOne and rollTwo add to 10", function() {
       frame.firstRoll(8);
       frame.secondRoll(2);
-      expect(frame.isSpare()).toBe(true);
+      expect(frame._isSpare()).toBe(true);
     });
   });

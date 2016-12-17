@@ -6,7 +6,7 @@ FrameManager.prototype.moveToNextFrame = function() {
   if(this.currentFrame > 10) {
     throw new Error("Maximum number of frames reached!")
   }
-  this.currentFrame++;
+  return this.currentFrame++;
 }
 
 FrameManager.prototype.resetFrame = function() {

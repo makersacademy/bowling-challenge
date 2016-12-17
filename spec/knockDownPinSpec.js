@@ -3,6 +3,7 @@ describe("Knocking pins down", function() {
 
   beforeEach(function() {
     pins = new KnockDownPin();
+    game = jasmine.createSpyObj("game", ["calculateScore", "strike_scored"])
   })
 
   describe("scoring",function() {
@@ -16,22 +17,44 @@ describe("Knocking pins down", function() {
       expect(pins.attemptBall()).not.toBeGreaterThan(2)
     })
 
+    it ("calls a method to calculate the score after the seocond attempt", function() {
+      pins.attemptBall();
+      pins.attemptBall();
+      expect(game.calculateScore).toHaveBeenCalled()
+    })
+
   })
 
   describe("getting a strike", function() {
 
     beforeEach(function() {
       spyOn(pins,"getRandomInt").and.returnValue(10)
+      frame = jasmine.createSpyObj("frame",["moveToNextFrame"])
+      score = jasmine.createSpyObj("score", ["score_strike", "score_spare"])
     })
 
     it("attempts should be set to zero", function() {
-      pins.attemptBall()
+      pins.attemptBall();
       expect(pins.attempts).toEqual(0)
     })
 
     it("moves to the next frame", function() {
-      pins.attemptBall()
+      pins.attemptBall();
       expect(frame.moveToNextFrame).toHaveBeenCalled()
+    })
+
+    it("calls a strike method", function() {
+      pins.attemptBall()
+      expect(game.strike_scored).toHaveBeenCalled()
+    })
+
+  })
+
+  describe("getting a spare", function() {
+
+    beforeEach(function() {
+      spyOn(pins, "getRandomInt").and.returnValue(7)
+      spyOn(pins, "getRandomAttemptForSecondAttempt")
     })
 
   })

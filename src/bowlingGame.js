@@ -1,9 +1,9 @@
 function BowlingGame() {
-  this.currentTotal = 0
+  this.totalScore = 0
 }
 
 BowlingGame.prototype.playBall = function() {
-  pins.attemptBall()
+  pins.attemptBall();
 }
 
 BowlingGame.prototype.startAgain = function() {

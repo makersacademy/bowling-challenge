@@ -7,16 +7,20 @@ function KnockDownPin() {
 
 KnockDownPin.prototype.attemptBall = function() {
   if (this.attempts === 1) {
-    this.resetAttempts()
-    return this.getRandomIntForSecondAttempt(this.firstScore)
+    this.resetAttempts();
+    secondAttempt = this.getRandomIntForSecondAttempt(this.firstScore);
+    game.calculateScore();
   } else {
     this.nextAttempt();
-    var score = this.getRandomInt();
-    this.firstAttemptScore = score;
-    if (score === 10) {
-      this.resetAttempts()
+    var fallenPins = this.getRandomInt();
+    this.firstAttemptScore = fallenPins;
+    if (fallenPins === 10) {
+      game.strike_scored()
+      frame.moveToNextFrame();
+      this.resetAttempts();
+
     }
-    return score;
+    return fallenPins;
   }
 }
 

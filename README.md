@@ -79,7 +79,7 @@ e.g
 
 Frame 1, ball 1: 10 points (strike)
 Frame 2, ball 1: 3 points
-Frame 3, ball 2: 6 points (strike)
+Frame 2, ball 2: 6 points (strike)
 
 In the image below you can find some score examples.
 

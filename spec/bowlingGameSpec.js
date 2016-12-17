@@ -9,7 +9,7 @@ describe("Bowling Game", function() {
   describe("a new game", function() {
 
     it("should start the game on 0 points", function() {
-      expect(game.currentTotal).toEqual(0);
+      expect(game.totalScore).toEqual(0);
     })
   })
 

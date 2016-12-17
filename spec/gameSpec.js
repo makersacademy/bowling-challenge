@@ -6,6 +6,7 @@ describe("Game", function(){
   beforeEach(function(){
     game = new Game();
     frame = new Frame();
+    frame1 = new Frame();
   })
 
   describe("Creation", function(){
@@ -68,14 +69,46 @@ describe("Game", function(){
       game.frameCount = 6;
       expect(game.isLastFrame()).toEqual(false);
     })
-    it("returns 'Game over!' when last frame has been played, and the last frame was not a strike or spare", function(){
+  })
+
+  describe("Frame Ten", function(){
+    it("indicates 'Game over!' when last frame has been played, and the last frame was not a strike or spare", function(){
       game.frameCount = 10;
       spyOn(frame, "isStrike").and.returnValue(false)
       spyOn(frame, "isSpare").and.returnValue(false)
-      spyOn(frame, "score");
-      spyOn(frame, "points");
-      expect(game.endFrame(frame)).toEqual("Game over!");
+      expect(game.isFrameTenEnd(frame)).toEqual(true);
     })
+  })
+
+  describe("Frame Eleven", function(){
+    it("indicates 'Game over!' if on 11th frame, where 10th was strike, 11th was not a strike", function(){
+      spyOn(frame, "isStrike").and.returnValue(false);
+      spyOn(frame1, "isStrike").and.returnValue(true);
+      game.points = [frame1, frame];
+      expect(game.isFrameElevenEnd(frame)).toEqual(true);
+    })
+    it("does not indicate 'Game over!' if on 11th frame, where 10th was strike, 11th was a strike", function(){
+      spyOn(frame, "isStrike").and.returnValue(true);
+      spyOn(frame1, "isStrike").and.returnValue(true);
+      game.points = [frame1, frame];
+      expect(game.isFrameElevenEnd(frame)).toEqual(false);
+    })
+    it("indicates 'Game over!' if on 11th frame, where 10th was a spare", function(){
+      spyOn(frame1, "isSpare").and.returnValue(true);
+      spyOn(frame, "isSpare").and.returnValue(true);
+      game.points = [frame1, frame];
+      expect(game.isFrameElevenEnd(frame)).toEqual(true);
+    })
+  })
+
+  describe("Frame Twelve", function(){
+    it("can indicate when absolutely final frame has been reached", function(){
+      game.frameCount = 12;
+      expect(game.isFinalFrame()).toEqual(true);
+    })
+  })
+
+  describe("End Game", function(){
     it("does not return 'Game over!' when last frame has been played and the last frame was a strike", function(){
       game.frameCount = 10;
       spyOn(frame, "isStrike").and.returnValue(true)
@@ -92,7 +125,14 @@ describe("Game", function(){
       spyOn(frame, "points");
       expect(game.endFrame(frame)).not.toEqual("Game over!");
     })
-
+    it("returns 'Game over!' whenever the maximum number of frames is reached", function(){
+      game.frameCount = 12;
+      spyOn(frame, "isStrike").and.returnValue(false)
+      spyOn(frame, "isSpare").and.returnValue(true)
+      spyOn(frame, "score");
+      spyOn(frame, "points");
+      expect(game.endFrame(frame)).toEqual("Game over!");
+    })
   })
 
   describe("Bonus points", function(){
@@ -118,13 +158,6 @@ describe("Game", function(){
       spyOn(game, "calculateBonusPoints").and.returnValue(28);
       game.addBonusPoints(frame);
       expect(frame.bonus).toEqual(28);
-    })
-  })
-
-  describe("Final frame", function(){
-    it("can indicate when absolutely final frame has been reached", function(){
-      game.frameCount = 12;
-      expect(game.isFinalFrame()).toEqual(true);
     })
   })
 

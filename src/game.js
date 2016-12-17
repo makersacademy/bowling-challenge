@@ -17,7 +17,7 @@ Game.prototype.startNewFrame = function(){
 Game.prototype.endFrame = function(frame){
   this.score += frame.score;
   this.points.push(frame);
-  if (this.isLastFrame() && !frame.isStrike() && !frame.isSpare()) {
+  if (this.isLastFrame() && !frame.isStrike() && !frame.isSpare() || this.isFinalFrame()) {
     return "Game over!"
   } else {
     this.startNewFrame();
@@ -51,6 +51,14 @@ Game.prototype.calculateBonusPoints = function(frame){
     else {
       return 0;
     }
+}
+
+Game.prototype.isFrameTenEnd = function(frame){
+  return !frame.isStrike() && !frame.isSpare()
+}
+
+Game.prototype.isFrameElevenEnd = function(frame){
+  return this.points[this.points.length-2].isStrike() && !frame.isStrike() || (this.points[this.points.length-2].isSpare())
 }
 
 Game.prototype.addBonusPoints = function(frame){

@@ -1,9 +1,9 @@
-describe("BowlingScorer", function() {
+describe("bowlingScorer", function() {
   var scorer;
 });
 
   beforeEach(function() {
-    scorer = new BowlingScorer();
+    scorer = new bowlingScorer();
   });
 
   it("should start with a total score of zero", function() {

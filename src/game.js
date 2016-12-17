@@ -1,5 +1,6 @@
 var Game = function(){
-  this.MAX_FRAMES = 10;
+  this.FINAL_FRAME = 10;
+  this.MAX_FRAMES = 12;
   this.frameCount = 0;
   this.score = 0;
   this.points = [];
@@ -24,6 +25,10 @@ Game.prototype.endFrame = function(frame){
 }
 
 Game.prototype.isLastFrame = function(){
+  return this.frameCount === this.FINAL_FRAME
+}
+
+Game.prototype.isFinalFrame = function(){
   return this.frameCount === this.MAX_FRAMES
 }
 

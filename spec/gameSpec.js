@@ -10,7 +10,10 @@ describe("Game", function(){
 
   describe("Creation", function(){
     it("has a maximum of 10 frames", function(){
-      expect(game.MAX_FRAMES).toEqual(10);
+      expect(game.FINAL_FRAME).toEqual(10);
+    })
+    it("can go up to 12 frames in total", function(){
+      expect(game.MAX_FRAMES).toEqual(12);
     })
     it("has an initial frame count of 0", function(){
       expect(game.frameCount).toEqual(0);
@@ -115,6 +118,13 @@ describe("Game", function(){
       spyOn(game, "calculateBonusPoints").and.returnValue(28);
       game.addBonusPoints(frame);
       expect(frame.bonus).toEqual(28);
+    })
+  })
+
+  describe("Final frame", function(){
+    it("can indicate when absolutely final frame has been reached", function(){
+      game.frameCount = 12;
+      expect(game.isFinalFrame()).toEqual(true);
     })
   })
 

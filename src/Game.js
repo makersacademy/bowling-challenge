@@ -20,7 +20,7 @@ Game.prototype.rackUp = function(){
 Game.prototype.firstRoll = function(){
   var score = Math.floor(Math.random() * this.setUpPins.length);
   if (score === 10) {
-    return this.score.push('X');
+    return this.currentScore.push('X');
   } else {
     return this.currentScore.push(score);
   };
@@ -36,4 +36,8 @@ Game.prototype.pinSweep = function(){
 Game.prototype.secondRoll = function(){
   var score = Math.floor(Math.random() * this.setUpPins.length);
     return this.currentScore.push(score);
+};
+
+Game.prototype.newGame = function(){
+  this.frameCount = 0;
 };

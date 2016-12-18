@@ -76,4 +76,9 @@ describe("Game", function(){
     expect(game.secondRoll()).toEqual(3)
   });
 
+  it("should return the frame count to zero", function(){
+    game.newGame();
+    expect(game.frameCount).toEqual(0);
+  });
+
 });

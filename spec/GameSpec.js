@@ -27,6 +27,10 @@ describe("Game", function(){
     expect(game.score).toEqual([]);
   });
 
+  it("should initilize with a sweep function returning false", function(){
+    expect(game.sweep).toBe(false);
+  });
+
   it("should re-rack the pins between each round if frame count is less than ", function(){
     game.frameCount = 1;
     game.rackUp();
@@ -46,8 +50,23 @@ describe("Game", function(){
 
   it("should return X when 10 pins are knocked down", function(){
     game.rackUp();
-    spyOn(Game, "firstRoll").and.returnValue(10);
+    spyOn(game, "firstRoll").and.returnValue(10);
     expect(game.firstRoll()).toEqual(10);
+  });
+
+  it("should return the left over pins", function(){
+    game.rackUp();
+    game.currentScore = [9];
+    game.pinSweep();
+    console.log(game.setUpPins);
+    expect(game.setUpPins).toEqual([0,1]);
+  });
+
+  it("should return the true when remaing pins are returned", function(){
+    game.rackUp();
+    game.currentScore = ['X'];
+    game.pinSweep();
+    expect(game.sweep).toBe(false);
   });
 
 

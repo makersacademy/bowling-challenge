@@ -6,6 +6,7 @@ function Game() {
   this.frameCount = 0;
   this.currentScore = [];
   this.score = [];
+  this.sweep = false;
 };
 
 Game.prototype.rackUp = function(){
@@ -22,5 +23,12 @@ Game.prototype.firstRoll = function(){
     return this.score.push('X');
   } else {
     return this.currentScore.push(score);
+  };
+};
+
+Game.prototype.pinSweep = function(){
+  if (this.currentScore != 'X') {
+   this.setUpPins.splice(-(this.currentScore));
+   return this.sweep = true;
   };
 };

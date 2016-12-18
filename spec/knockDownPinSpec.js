@@ -40,6 +40,11 @@ describe("Knocking pins down", function() {
       expect(pins.rolls).toEqual(0)
     })
 
+    it("moves to the next frame", function() {
+      pins.rollBall();
+      expect(pins.getCurrentFrame()).toEqual(2)
+    })
+
   })
 
   describe("getting a spare", function() {

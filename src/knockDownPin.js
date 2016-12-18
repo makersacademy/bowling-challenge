@@ -21,8 +21,7 @@ KnockDownPin.prototype.rollBall = function() {
     this.nextRoll();
     this.firstRollScore = this.getRandomInt();
     if (this.firstRollScore === 10) {
-      this.game.strike_scored()
-      this.frame.moveToNextFrame();
+      this.game.strike_scored();
       this.resetRolls();
     }
     return this.firstRollScore;

@@ -12,7 +12,7 @@ BowlingGame.prototype.startAgain = function() {
 }
 
 BowlingGame.prototype.calculateScore = function() {
-  return this.totalScore = this.pins.firstRollScore + this.pins.secondRollScore;
+  return this.totalScore += this.pins.firstRollScore + this.pins.secondRollScore;
 }
 
 BowlingGame.prototype.spare_scored = function() {

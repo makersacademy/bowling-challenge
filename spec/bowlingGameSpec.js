@@ -22,6 +22,18 @@ describe("Bowling Game", function() {
   })
 
   describe("playing during the game", function() {
+    beforeEach(function() {
+      spyOn(game.pins, 'getRandomInt').and.returnValue(7)
+      spyOn(game.pins, 'getRandomIntForSecondAttempt').and.returnValue(2)
+      game.playBall()
+      game.playBall()
+      game.playBall()
+      game.playBall()
+    })
+
+    it("the score is added on the total from the previous frame", function() {
+      expect(game.totalScore).toEqual(18)
+    })
 
   })
 

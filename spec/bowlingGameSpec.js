@@ -2,7 +2,7 @@ describe("Bowling Game", function() {
   var game;
   beforeEach(function() {
     game = new BowlingGame();
-    pins = jasmine.createSpyObj('pins', ['','rollBall','getRandomInt','getRandomIntForSecondAttempt'])
+    pins = jasmine.createSpyObj('pins', ['rollBall','getRandomInt','getRandomIntForSecondAttempt'])
     frame = jasmine.createSpyObj('this.frame',['resetFrame'])
   })
 
@@ -25,8 +25,8 @@ describe("Bowling Game", function() {
     describe("for two rolls without a strike or spare", function() {
 
       beforeEach(function() {
-        pins.getRandomInt.and.returnValue(7)
-        pins.getRandomIntForSecondAttempt.and.returnValue(2)
+        spyOn(game.pins, 'getRandomInt').and.returnValue(7)
+        spyOn(game.pins, 'getRandomIntForSecondAttempt').and.returnValue(2)
       })
 
       it("adds the sum of two attempts to the score", function() {

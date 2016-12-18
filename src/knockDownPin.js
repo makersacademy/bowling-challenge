@@ -14,7 +14,7 @@ KnockDownPin.prototype.rollBall = function() {
     if (this.secondRollScore + this.firstRollScore == 10) {
       this.game.spare_scored();
     } else {
-      this.game.calculateScore();
+      return this.game.calculateScore();
     }
     this.game.calculateScore();
     return this.secondRollScore;
@@ -46,6 +46,6 @@ KnockDownPin.prototype.getRandomInt = function() {
 }
 
 KnockDownPin.prototype.getRandomIntForSecondAttempt = function(max) {
-  var max = Math.floor(max);
+  var max = Math.floor(10-max);
   return Math.floor(Math.random()*max)
 }

@@ -2,26 +2,31 @@ describe("Knocking pins down", function() {
   var pins;
 
   beforeEach(function() {
-    pins = new KnockDownPin();
     game = jasmine.createSpyObj("game", ["calculateScore", "strike_scored", "spare_scored"])
+    pins = new KnockDownPin(game);
   })
 
   describe("scoring",function() {
 
-    beforeEach(function(){
-      spyOn(pins,"getRandomInt").and.returnValue(8)
-    })
-
     it("second attempt has a maximum of 10 minus first attempt", function() {
+      spyOn(pins,"getRandomInt").and.returnValue(8)
       pins.rollBall();
       expect(pins.rollBall()).not.toBeGreaterThan(2)
     })
 
-    it ("calls a method to calculate the score after the seocond attempt", function() {
+    it("second attempt has a maximum of 10 minus first attempt", function() {
+      spyOn(pins,"getRandomInt").and.returnValue(3)
       pins.rollBall();
-      pins.rollBall();
-      expect(game.calculateScore).toHaveBeenCalled()
+      expect(pins.rollBall()).not.toBeGreaterThan(7)
     })
+
+    it("second attempt has a maximum of 10 minus first attempt", function() {
+      spyOn(pins,"getRandomInt").and.returnValue(6)
+      pins.rollBall();
+      expect(pins.rollBall()).not.toBeGreaterThan(4)
+    })
+
+
 
   })
 

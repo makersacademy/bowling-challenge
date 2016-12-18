@@ -1,56 +1,26 @@
-'use strict';
+'use strinct';
 
 function Game() {
- this.pins = [0,1,2,3,4,5,6,7,8,9,10]
- this.score = [];
- this.frameCount = 0;
- this.rack = false;
- this.firstScore = 0;
- this.secondScore = 0;
- this.result1 = "";
- this.result2 = "";
-}
+  this.PINS = [0,1,2,3,4,5,6,7,8,9,10];
+  this.setUpPins = [];
+  this.frameCount = 0;
+  this.currentScore = [];
+  this.score = [];
+};
 
-Game.prototype.rackUp = function() {
-  if (this.frameCount <= 10) {
-    this.rack = true;
-    return this.rack;
+Game.prototype.rackUp = function(){
+  if (this.frameCount < 10) {
+    return this.setUpPins = this.PINS
   } else {
-    return this.rack = false;
+    throw new Error("Game Over! Please start a new game");
   };
 };
 
-Game.prototype.roll_1 = function() {
-  this.firstScore = this.pins[Math.floor(Math.random() * this.pins.length)];
-  if (this.firstScore === 10) {
-     this.result1 = "Strike";
-     return this.result1;
+Game.prototype.firstRoll = function(){
+  var score = Math.floor(Math.random() * this.setUpPins.length);
+  if (score === 10) {
+    return this.score.push('X');
   } else {
-    return this.firstScore;
+    return this.currentScore.push(score);
   };
-};
-
-Game.prototype.pinSweep = function (){
-  this.pins.splice(-(this.firstScore));
-  return this.pins;
-};
-
-Game.prototype.roll_2 = function() {
-  this.secondScore = this.pins[Math.floor(Math.random() * this.pins.length)];
-  if (this.secondScore + this.firstScore === 10) {
-    this.result2 = "Spare";
-    return this.result2;
-  } else {
-    return this.secondScore;
-  };
-};
-
-Game.prototype.currentScore = function() {
-  this.score.push([this.firstScore, this.secondScore]);
-  return this.score;
-};
-
-Game.prototype.currentFrame = function() {
-  this.frameCount = this.score.length;
-  return this.frameCount;
 };

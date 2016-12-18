@@ -14,19 +14,18 @@ KnockDownPin.prototype.rollBall = function() {
     if (this.secondRollScore + this.firstRollScore == 10) {
       this.game.spare_scored();
     } else {
-      return this.game.calculateScore();
+       this.game.calculateScore();
     }
-    this.game.calculateScore();
     return this.secondRollScore;
   } else {
     this.nextRoll();
     this.firstRollScore = this.getRandomInt();
-      return this.firstRollScore;
     if (this.firstRollScore === 10) {
       this.game.strike_scored()
       this.frame.moveToNextFrame();
       this.resetRolls();
     }
+    return this.firstRollScore;
   }
 }
 
@@ -48,4 +47,8 @@ KnockDownPin.prototype.getRandomInt = function() {
 KnockDownPin.prototype.getRandomIntForSecondAttempt = function(max) {
   var max = Math.floor(10-max);
   return Math.floor(Math.random()*max)
+}
+
+KnockDownPin.prototype.getCurrentFrame = function() {
+  return this.frame.currentFrame;
 }

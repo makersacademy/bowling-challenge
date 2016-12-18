@@ -26,8 +26,6 @@ describe("Knocking pins down", function() {
       expect(pins.rollBall()).not.toBeGreaterThan(4)
     })
 
-
-
   })
 
   describe("getting a strike on the first roll", function() {
@@ -66,6 +64,13 @@ describe("Knocking pins down", function() {
   })
 
   describe("attempt", function() {
+
+    beforeEach(function() {
+      spyOn(pins, "getRandomInt").and.returnValue(7)
+      spyOn(pins, "getRandomIntForSecondAttempt").and.returnValue(2)
+      pins.rollBall();
+      pins.rollBall();
+    })
 
     it("returns a whole number between one and ten", function() {
       attempt = pins.rollBall();

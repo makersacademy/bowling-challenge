@@ -11,6 +11,18 @@ describe("Bowling Game", function() {
     it("should start the game on 0 points", function() {
       expect(game.totalScore).toEqual(0);
     })
+
+    it("should be able to display know the current frame", function() {
+      expect(game.currentFrame).toBeDefined()
+    })
+
+    it("current frame should start on 1 for a new game", function() {
+      expect(game.currentFrame()).toEqual(1)
+    })
+  })
+
+  describe("playing during the game", function() {
+
   })
 
   describe("restarting the game", function() {

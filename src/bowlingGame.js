@@ -16,5 +16,13 @@ BowlingGame.prototype.calculateScore = function() {
 }
 
 BowlingGame.prototype.spare_scored = function() {
-  return 2
+  return "heu"
+}
+
+BowlingGame.prototype.strike_scored = function() {
+  return "hey"
+}
+
+BowlingGame.prototype.currentFrame = function() {
+  return this.pins.getCurrentFrame()
 }

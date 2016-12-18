@@ -1,4 +1,5 @@
-function KnockDownPin() {
+function KnockDownPin(game) {
+  this.game = game
   this.rolls = 0;
   this.firstRoll = true;
   this.firstRollScore = 0;
@@ -9,23 +10,23 @@ function KnockDownPin() {
 KnockDownPin.prototype.rollBall = function() {
   if (this.rolls === 1) {
     this.resetRolls();
-    secondAttempt = this.getRandomIntForSecondAttempt(this.firstScore);
-    if (secondAttempt + this.firstRollScore == 10) {
-      game.spare_scored();
+    this.secondRollScore = this.getRandomIntForSecondAttempt(this.firstRollScore);
+    if (this.secondRollScore + this.firstRollScore == 10) {
+      this.game.spare_scored();
     } else {
-      game.calculateScore();
+      this.game.calculateScore();
     }
-    game.calculateScore();
+    this.game.calculateScore();
+    return this.secondRollScore;
   } else {
     this.nextRoll();
-    var fallenPins = this.getRandomInt();
-    this.firstRollScore = fallenPins;
-    if (fallenPins === 10) {
-      game.strike_scored()
-      frame.moveToNextFrame();
+    this.firstRollScore = this.getRandomInt();
+      return this.firstRollScore;
+    if (this.firstRollScore === 10) {
+      this.game.strike_scored()
+      this.frame.moveToNextFrame();
       this.resetRolls();
     }
-    return fallenPins;
   }
 }
 

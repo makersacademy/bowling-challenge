@@ -2,8 +2,8 @@ describe("Bowling Game", function() {
   var game;
   beforeEach(function() {
     game = new BowlingGame();
-    pins = jasmine.createSpyObj('pins', ['rollBall'])
-    frame = jasmine.createSpyObj('frame',['resetFrame'])
+    pins = jasmine.createSpyObj('pins', ['','rollBall','getRandomInt','getRandomIntForSecondAttempt'])
+    frame = jasmine.createSpyObj('this.frame',['resetFrame'])
   })
 
   describe("a new game", function() {
@@ -11,15 +11,6 @@ describe("Bowling Game", function() {
     it("should start the game on 0 points", function() {
       expect(game.totalScore).toEqual(0);
     })
-  })
-
-  describe("playing a game", function() {
-
-    it("calls the attempt ball method", function() {
-      game.playBall();
-      expect(pins.rollBall).toHaveBeenCalled()
-    })
-
   })
 
   describe("restarting the game", function() {
@@ -34,8 +25,8 @@ describe("Bowling Game", function() {
     describe("for two rolls without a strike or spare", function() {
 
       beforeEach(function() {
-        spyOn(pins, "getRandomInt").and.returnValue(7)
-        spyOn(pins, "getRandomIntForSecondAttempt").and.returnValue(2)
+        pins.getRandomInt.and.returnValue(7)
+        pins.getRandomIntForSecondAttempt.and.returnValue(2)
       })
 
       it("adds the sum of two attempts to the score", function() {
@@ -43,10 +34,6 @@ describe("Bowling Game", function() {
         game.playBall();
         expect(game.totalScore).toEqual(9)
       })
-
-
     })
-
-
   })
 })

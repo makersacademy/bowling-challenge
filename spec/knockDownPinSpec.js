@@ -37,16 +37,6 @@ describe("Knocking pins down", function() {
       expect(pins.rolls).toEqual(0)
     })
 
-    it("moves to the next frame", function() {
-      pins.rollBall();
-      expect(frame.moveToNextFrame).toHaveBeenCalled()
-    })
-
-    it("calls a strike method", function() {
-      pins.rollBall()
-      expect(game.strike_scored).toHaveBeenCalled()
-    })
-
   })
 
   describe("getting a spare", function() {
@@ -56,10 +46,6 @@ describe("Knocking pins down", function() {
       spyOn(pins, "getRandomIntForSecondAttempt").and.returnValue(3)
       pins.rollBall();
       pins.rollBall();
-    })
-
-    it ("should call a spare method", function() {
-      expect(game.spare_scored).toHaveBeenCalled()
     })
 
   })
@@ -72,11 +58,6 @@ describe("Knocking pins down", function() {
       pins.rollBall();
       pins.rollBall();
     })
-
-    it ("should call a spare method", function() {
-      expect(game.spare_scored).not.toHaveBeenCalled()
-    })
-
   })
 
   describe("attempt", function() {

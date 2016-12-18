@@ -22,13 +22,16 @@ describe("Bowling Game", function() {
   })
 
   describe("playing during the game", function() {
+
     beforeEach(function() {
+
       spyOn(game.pins, 'getRandomInt').and.returnValue(7)
       spyOn(game.pins, 'getRandomIntForSecondAttempt').and.returnValue(2)
-      game.playBall()
-      game.playBall()
-      game.playBall()
-      game.playBall()
+
+      for(count=0;count<4;count++) {
+      game.playBall();
+      }
+
     })
 
     it("the score is added on the total from the previous frame", function() {
@@ -38,10 +41,12 @@ describe("Bowling Game", function() {
   })
 
   describe("restarting the game", function() {
+
     it("calls reset frames", function() {
       game.startAgain();
       expect(frame.resetFrame).toHaveBeenCalled()
     })
+
   })
 
   describe("calculating the score", function(){
@@ -58,7 +63,9 @@ describe("Bowling Game", function() {
         game.playBall();
         expect(game.totalScore).toEqual(9)
       })
+
     })
+
   })
 
   describe("ending the game", function() {

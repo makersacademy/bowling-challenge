@@ -68,7 +68,7 @@ describe("Knocking pins down", function() {
     })
   })
 
-  describe("attempt", function() {
+  describe("attempting to roll ball", function() {
 
     beforeEach(function() {
       spyOn(pins, "getRandomInt").and.returnValue(7)

@@ -1,7 +1,6 @@
 function KnockDownPin(game) {
   this.game = game
   this.rolls = 0;
-  this.firstRoll = true;
   this.firstRollScore = 0;
   this.secondRollScore = 0;
   this.frame = new FrameManager()
@@ -10,26 +9,15 @@ function KnockDownPin(game) {
 KnockDownPin.prototype.rollBall = function() {
   if (this.rolls === 1) {
     this.secondRollScore = this.getRandomIntForSecondAttempt(this.firstRollScore);
-    if (this.secondRollScore + this.firstRollScore == 10) {
-      this.game.spare_scored();
-    } else {
-       this.game.calculateScore();
-    }
-    if (this.getCurrentFrame() == 10 ) {
-       this.game.gameOver = true;
-    }
+    this.didSpareOccur();
+    this.makeGameOverIfFinalFrame();
     this.resetRolls();
     return this.secondRollScore;
   } else {
-    if (this.game.gameOver === true) {
-      throw new Error("Maximum number of frames reached!");
-    }
+    this.checkIfGameOver();
     this.nextRoll();
     this.firstRollScore = this.getRandomInt();
-    if (this.firstRollScore === 10) {
-      this.game.strike_scored();
-      this.resetRolls();
-    }
+    this.didStrikeOccur();
     return this.firstRollScore;
   }
 }
@@ -42,6 +30,33 @@ KnockDownPin.prototype.resetRolls = function() {
   this.rolls = 0;
   this.firstRoll = true;
   this.frame.moveToNextFrame()
+}
+
+KnockDownPin.prototype.didStrikeOccur = function() {
+  if (this.firstRollScore === 10) {
+    this.game.strike_scored();
+    this.resetRolls();
+  }
+}
+
+KnockDownPin.prototype.didSpareOccur = function() {
+  if (this.secondRollScore + this.firstRollScore == 10) {
+    this.game.spare_scored();
+  } else {
+     this.game.calculateScore();
+  }
+}
+
+KnockDownPin.prototype.checkIfGameOver = function() {
+  if (this.game.gameOver === true) {
+    throw new Error("Maximum number of frames reached!");
+  }
+}
+
+KnockDownPin.prototype.makeGameOverIfFinalFrame = function() {
+  if (this.getCurrentFrame() == 10 ) {
+     this.game.gameOver = true;
+  }
 }
 
 KnockDownPin.prototype.getRandomInt = function() {

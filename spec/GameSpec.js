@@ -42,13 +42,13 @@ describe("Game", function(){
     expect(function(){game.rackUp();}).toThrowError("Game Over! Please start a new game")
   });
 
-  it("should return amount of pins knocked down - excluding a strike", function(){
+  it("should return amount of pins knocked down in first throw- excluding a strike", function(){
     game.rackUp();
     spyOn(game, 'firstRoll').and.returnValue(4);
     expect(game.firstRoll()).toEqual(4);
   });
 
-  it("should return X when 10 pins are knocked down", function(){
+  it("should return X when 10 pins are knocked down in first throw", function(){
     game.rackUp();
     spyOn(game, "firstRoll").and.returnValue(10);
     expect(game.firstRoll()).toEqual(10);
@@ -58,7 +58,6 @@ describe("Game", function(){
     game.rackUp();
     game.currentScore = [9];
     game.pinSweep();
-    console.log(game.setUpPins);
     expect(game.setUpPins).toEqual([0,1]);
   });
 
@@ -69,5 +68,12 @@ describe("Game", function(){
     expect(game.sweep).toBe(false);
   });
 
+  it("should return amount of pins knocked down in second throw", function(){
+    game.rackUp();
+    game.currentScore = [4];
+    game.pinSweep();
+    spyOn(game, 'secondRoll').and.returnValue(3);
+    expect(game.secondRoll()).toEqual(3)
+  });
 
 });

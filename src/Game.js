@@ -32,3 +32,8 @@ Game.prototype.pinSweep = function(){
    return this.sweep = true;
   };
 };
+
+Game.prototype.secondRoll = function(){
+  var score = Math.floor(Math.random() * this.setUpPins.length);
+    return this.currentScore.push(score);
+};

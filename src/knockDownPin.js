@@ -9,15 +9,21 @@ function KnockDownPin(game) {
 
 KnockDownPin.prototype.rollBall = function() {
   if (this.rolls === 1) {
-    this.resetRolls();
     this.secondRollScore = this.getRandomIntForSecondAttempt(this.firstRollScore);
     if (this.secondRollScore + this.firstRollScore == 10) {
       this.game.spare_scored();
     } else {
        this.game.calculateScore();
     }
+    if (this.getCurrentFrame() == 10 ) {
+       this.game.gameOver = true;
+    }
+    this.resetRolls();
     return this.secondRollScore;
   } else {
+    if (this.game.gameOver === true) {
+      throw new Error("Maximum number of frames reached!");
+    }
     this.nextRoll();
     this.firstRollScore = this.getRandomInt();
     if (this.firstRollScore === 10) {

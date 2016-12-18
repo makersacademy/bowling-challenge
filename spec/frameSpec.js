@@ -15,13 +15,6 @@ describe("Frame Manager", function() {
     expect(frameManager.currentFrame).toEqual(2)
   })
 
-  it("Throws an error when maximum number of frames are reached", function() {
-    for(count = 0; count < 10; count++) {
-      frameManager.moveToNextFrame();
-    }
-    expect(function() {frameManager.moveToNextFrame()}).toThrow(new Error("Maximum number of frames reached!"))
-  })
-
   it("Resets the frames back to one", function() {
     frameManager.moveToNextFrame()
     frameManager.moveToNextFrame()

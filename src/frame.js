@@ -1,11 +1,9 @@
-function FrameManager() {
+function FrameManager(pins) {
   this.currentFrame = 1;
+  this.maxFrames = 10;
 }
 
 FrameManager.prototype.moveToNextFrame = function() {
-  if(this.currentFrame > 10) {
-    throw new Error("Maximum number of frames reached!")
-  }
   return this.currentFrame++;
 }
 

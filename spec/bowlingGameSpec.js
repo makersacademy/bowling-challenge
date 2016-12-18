@@ -60,4 +60,31 @@ describe("Bowling Game", function() {
       })
     })
   })
+
+  describe("ending the game", function() {
+
+    beforeEach(function() {
+      spyOn(game.pins, 'getRandomInt').and.returnValue(7)
+      spyOn(game.pins, 'getRandomIntForSecondAttempt').and.returnValue(2)
+    })
+
+    it("finishes at the end of the final frame", function() {
+      for(count = 0; count < 20; count++) {
+        game.playBall()
+      }
+      expect(game.gameOver).toBeTruthy()
+    })
+
+    it("game is not over until the end of the final frame", function() {
+      game.playBall()
+      expect(game.gameOver).toBeFalsy()
+    })
+
+    it("trying to play throws an error", function() {
+      for(count = 0; count < 20; count++) {
+        game.playBall()
+      }
+      expect(function() {game.playBall()}).toThrow(new Error("Maximum number of frames reached!"))
+    })
+  })
 })

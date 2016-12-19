@@ -7,12 +7,14 @@ function Game() {
 
 Game.prototype.roll = function(pins) {
   var currentFrame = this.frames[this.currentFrameIndex];
-  
   currentFrame.addToFrame(pins);
+  if (currentFrame.isOver()) {
+    this.currentFrameIndex ++;
+  }
 }
 
 Game.prototype.calculateScore = function() {
-  return 0;
+return 0;
 }
 
 Game.prototype._createFrames = function() {

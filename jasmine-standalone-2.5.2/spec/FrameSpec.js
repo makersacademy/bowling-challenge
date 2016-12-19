@@ -23,4 +23,10 @@ describe("Frame", function() {
     frame.addToFrame(0);
     expect(frame.isOver()).toEqual(true);
   })
+
+  it("calculates the score of the frame", function() {
+    frame.addToFrame(1);
+    frame.addToFrame(2);
+    expect(frame.getScore()).toEqual(3);
+  })
 })

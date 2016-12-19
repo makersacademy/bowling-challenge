@@ -25,9 +25,10 @@ describe('Feature Test', function() {
   })
 
   it("should calculate the score for a simple game with a spare", function() {
-    rollMany(5,3);
+    rollMany(5,2);
+    game.roll(2);
     rollMany(0,17);
-    expect(game.calculateScore()).toEqual(20);
+    expect(game.calculateScore()).toEqual(14);
   })
 
 

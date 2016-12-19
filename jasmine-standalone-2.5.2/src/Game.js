@@ -6,7 +6,9 @@ function Game() {
 }
 
 Game.prototype.roll = function(pins) {
-
+  var currentFrame = this.frames[this.currentFrameIndex];
+  
+  currentFrame.addToFrame(pins);
 }
 
 Game.prototype.calculateScore = function() {

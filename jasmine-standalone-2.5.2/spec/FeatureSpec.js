@@ -39,5 +39,22 @@ describe('Feature Test', function() {
     expect(game.calculateScore()).toEqual(32);
   })
 
+  it('should calculate the score for a perfect game', function() {
+    rollMany(10,12);
+    expect(game.calculateScore()).toEqual(300);
+  })
+
+  it('should calculate a game with a spare in the last game', function() {
+    rollMany(0,18);
+    rollMany(5,3);
+    expect(game.calculateScore()).toEqual(15);
+  })
+
+  it('should only include a frame in the total score once all bonus points have been received', function() {
+    game.roll(10);
+    game.roll(2);
+    expect(game.calculateScore()).toEqual(0);
+  })
+
 
 });

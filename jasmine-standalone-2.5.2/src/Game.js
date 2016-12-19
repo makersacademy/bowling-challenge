@@ -7,11 +7,15 @@ function Game() {
 }
 
 Game.prototype.roll = function(pins) {
-  var currentFrame = this.frames[this.currentFrameIndex];
-  this.addBonusPoints(pins);
-  currentFrame.addToFrame(pins);
-  if (currentFrame.isOver()) {
-    this.currentFrameIndex ++;
+  if (this.currentFrameIndex != 10) {
+    var currentFrame = this.frames[this.currentFrameIndex];
+    this.addBonusPoints(pins);
+    currentFrame.addToFrame(pins);
+    if (currentFrame.isOver()) {
+      this.currentFrameIndex ++;
+    }
+  } else {
+    this.addBonusPoints(pins);
   }
 }
 

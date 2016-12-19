@@ -28,7 +28,6 @@ describe("Frame", function() {
     it("should not be rolled if rollOne was a strike", function() {
       frame.firstRoll(10);
       expect(function() { frame.secondRoll(2) }).toThrow("First roll was a strike, cannot roll a second during this frame.");
-
     });
   });
 

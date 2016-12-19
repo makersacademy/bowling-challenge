@@ -30,10 +30,23 @@ Scoreboard.prototype.aStrike = function(){
     }
   };
 
-  Scoreboard.prototype.spare = function(currentScore) {
-        var spare = this.scores.indexOf(10);
-        if (~spare) {
-         this.scores[spare] = this.MAXSCORE + this.allScores[this.allScores.length-1][0];
-         return this.scores;
-       }
-  };
+Scoreboard.prototype.spare = function(currentScore) {
+  var spare = this.scores.indexOf(10);
+    if (~spare) {
+      this.scores[spare] = this.MAXSCORE + this.allScores[this.allScores.length-1][0];
+      return this.scores;
+    }
+};
+
+Scoreboard.prototype.currentTotal = function() {
+  this.total = this.scores.reduce(function(a,b){return a + b },0);
+    if (this.total === 300) {
+      return this.perfectGame();
+    } else {
+      return this.total;
+    };
+};
+
+Scoreboard.prototype.perfectGame = function() {
+  return 'Perfect Game!'
+};

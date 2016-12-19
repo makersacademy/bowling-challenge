@@ -54,5 +54,29 @@ describe("Scoreboard", function(){
    scoreboard.calculateScore(currentScore);
    scoreboard.bonusPoints();
    expect(scoreboard.scores).toContain(13);
- });
+  });
+
+  it("should return the scores if no stikes or spares were scored", function(){
+    var currentScore = [5,2];
+    scoreboard.calculateScore(currentScore);
+    var currentScore = [3,6];
+    scoreboard.calculateScore(currentScore);
+    scoreboard.bonusPoints();
+    expect(scoreboard.scores).toEqual([7,9]);
+  });
+
+  it("should calculate current total", function() {
+    var currentScore = [5,5]
+    scoreboard.calculateScore(currentScore);
+    var currentScore = [3,6]
+    scoreboard.calculateScore(currentScore);
+    scoreboard.bonusPoints();
+    expect(scoreboard.currentTotal()).toEqual(22)
+  });
+
+  it("should return perfect score if score equals 300", function(){
+    scoreboard.total = 300;
+    scoreboard.currentTotal();
+    expect(scoreboard.perfectGame()).toEqual('Perfect Game!')
+  });
 });

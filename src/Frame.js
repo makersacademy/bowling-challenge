@@ -1,6 +1,7 @@
 var Frame = function() {
   this.rollOne = 0;
   this.rollTwo = 0;
+  this.frameBonus = 0;
 };
 
 Frame.prototype.firstRoll = function(score) {
@@ -22,9 +23,4 @@ Frame.prototype._isStrike = function() {
 
 Frame.prototype._isSpare = function() {
   return (this._isStrike() === false && (this.rollOne + this.rollTwo === 10));
-};
-
-Frame.prototype._clearFrame = function() {
-  this.rollOne = 0;
-  this.rollTwo = 0;
 };

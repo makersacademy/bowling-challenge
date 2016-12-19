@@ -1,9 +1,11 @@
 describe("Frame", function() {
   var frame;
+  var frame2;
 });
 
   beforeEach(function() {
     frame = new Frame();
+    frame2= new Frame();
   });
 
   it("should have a starting firstRoll score of 0", function() {
@@ -42,14 +44,5 @@ describe("Frame", function() {
       frame.firstRoll(8);
       frame.secondRoll(2);
       expect(frame._isSpare()).toBe(true);
-    });
-  });
-  describe("_clearFrame", function() {
-    it("should clear the current frame", function() {
-      frame.firstRoll(8);
-      frame.secondRoll(2);
-      frame._clearFrame();
-      expect(frame.rollOne).toEqual(0);
-      expect(frame.rollTwo).toEqual(0);
     });
   });

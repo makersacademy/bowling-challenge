@@ -5,7 +5,7 @@ describe("Game", function() {
   var frame;
 
   beforeEach(function() {
-    player = new Game();
+    game = new Game();
     frame = new Frame();
   });
 

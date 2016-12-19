@@ -41,4 +41,14 @@ describe("Frame", function() {
     frame.addToFrame(5);
     expect(frame.bonus).toEqual(jasmine.any(Bonus))
   })
+
+  it("calculates the total score plus its bonus", function() {
+    frame.addToFrame(5);
+    frame.addToFrame(5);
+    frame.addToBonus(2);
+    expect(frame.getTotalScore()).toEqual(12);
+  })
+
+
+
 })

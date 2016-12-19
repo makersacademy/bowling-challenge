@@ -9,7 +9,7 @@ Bonus.prototype.addToBonus = function (pins) {
 }
 
 Bonus.prototype.getScore = function() {
-  return this.score;
+  return this.score.reduce((a, b) => a + b, 0);
 }
 
 Bonus.prototype.isOver = function() {

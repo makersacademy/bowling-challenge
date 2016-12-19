@@ -10,7 +10,7 @@ describe("Bonus", function() {
 
   it("adds points to its score", function() {
     bonus.addToBonus(1);
-    expect(bonus.getScore()).toEqual([1]);
+    expect(bonus.getScore()).toEqual(1);
   })
 
   it("knows when it is complete", function() {

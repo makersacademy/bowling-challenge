@@ -3,6 +3,6 @@ var bowlingScorer = function() {
   this.frames = []
 };
 
-bowlingScorer.prototype.addFrame = function (frame) {
+bowlingScorer.prototype.addFrame = function(frame) {
   this.frames.push(frame);
 };

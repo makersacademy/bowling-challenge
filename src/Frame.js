@@ -23,3 +23,8 @@ Frame.prototype._isStrike = function() {
 Frame.prototype._isSpare = function() {
   return (this._isStrike() === false && (this.rollOne + this.rollTwo === 10));
 };
+
+Frame.prototype._clearFrame = function() {
+  this.rollOne = 0;
+  this.rollTwo = 0;
+};

@@ -44,3 +44,12 @@ describe("Frame", function() {
       expect(frame._isSpare()).toBe(true);
     });
   });
+  describe("_clearFrame", function() {
+    it("should clear the current frame", function() {
+      frame.firstRoll(8);
+      frame.secondRoll(2);
+      frame._clearFrame();
+      expect(frame.rollOne).toEqual(0);
+      expect(frame.rollTwo).toEqual(0);
+    });
+  });

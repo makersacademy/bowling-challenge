@@ -14,7 +14,11 @@ Game.prototype.roll = function(pins) {
 }
 
 Game.prototype.calculateScore = function() {
-return 0;
+  var total = 0;
+  this.frames.forEach(function(frame) {
+    total += frame.getScore();
+  })
+  return total;
 }
 
 Game.prototype._createFrames = function() {

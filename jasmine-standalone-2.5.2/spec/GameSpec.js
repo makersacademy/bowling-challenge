@@ -8,9 +8,4 @@ describe("Game", function() {
     game = new Game();
   });
 
-
-
-
-
-
 });

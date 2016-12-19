@@ -7,8 +7,12 @@ function Frame() {
 
 Frame.prototype.addToFrame = function(pins) {
   this.scoreCard.push(pins);
-  if (this.isSpare()) {
-    this.bonus = new Bonus();
+  if (this.isStrike()) {
+    this.bonus = new Bonus("strike");
+  } else if (this.isSpare()) {
+    this.bonus = new Bonus("spare");
+  } else {
+    null;
   }
 }
 
@@ -21,7 +25,7 @@ Frame.prototype.addToBonus = function(pins) {
 }
 
 Frame.prototype.isOver = function() {
-  return this.scoreCard.length >= 2;
+  return this.scoreCard.length >= 2 || this.isStrike();
 }
 
 Frame.prototype.getScore = function() {
@@ -36,7 +40,11 @@ Frame.prototype.getTotalScore = function() {
 }
 
 Frame.prototype.isSpare = function() {
-  return this.getScore() === 10;
+  return this.getScore() === 10 && this.scoreCard.length === 2;
+}
+
+Frame.prototype.isStrike = function() {
+  return this.getScore() === 10 && this.scoreCard.length === 1;
 }
 
 Frame.prototype.hasBonus = function() {

@@ -24,6 +24,11 @@ describe("Frame", function() {
     expect(frame.isOver()).toEqual(true);
   })
 
+  it("knows when a frame is over following a strike", function() {
+    frame.addToFrame(10);
+    expect(frame.isOver()).toEqual(true);
+  })
+
   it("calculates the score of the frame", function() {
     frame.addToFrame(1);
     frame.addToFrame(2);
@@ -36,10 +41,27 @@ describe("Frame", function() {
     expect(frame.isSpare()).toEqual(true);
   })
 
+  it("knows if frame is a spare", function() {
+    frame.addToFrame(10);
+    expect(frame.isStrike()).toEqual(true);
+    expect(frame.isSpare()).toEqual(false)
+  })
+
   it("has a bonus if frame is a spare", function() {
     frame.addToFrame(5);
     frame.addToFrame(5);
-    expect(frame.bonus).toEqual(jasmine.any(Bonus))
+    expect(frame.bonus).toEqual(new Bonus("spare"));
+  })
+
+  it("has a bonus if frame is a strike", function() {
+    frame.addToFrame(10);
+    expect(frame.bonus).toEqual(new Bonus("strike"));
+  })
+
+  it("has a no bonus if frame is not a spare or strike", function() {
+    frame.addToFrame(1);
+    frame.addToFrame(1);
+    expect(frame.bonus).toEqual(null);
   })
 
   it("calculates the total score plus its bonus", function() {

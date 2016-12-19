@@ -24,11 +24,19 @@ describe('Feature Test', function() {
     expect(game.calculateScore()).toEqual(20);
   })
 
-  it("should calculate the score for a simple game with a spare", function() {
+  it("should calculate the score for a game with a spare", function() {
     rollMany(5,2);
     game.roll(2);
     rollMany(0,17);
     expect(game.calculateScore()).toEqual(14);
+  })
+
+  it("should calculate the score for a game with a strike", function() {
+    game.roll(10);
+    game.roll(1);
+    game.roll(2);
+    rollMany(1,16);
+    expect(game.calculateScore()).toEqual(32);
   })
 
 

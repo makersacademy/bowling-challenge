@@ -53,3 +53,15 @@ describe("calculating bonuses", function() {
     expect(function() { scorer.calculateBonus(scorer.frames[0], scorer.frames[1]) }).toThrow("No bonus for this roll.")
   });
 });
+  describe("addBase()", function() {
+    it("should add all scores to the baseTotal", function() {
+      frame.firstRoll(4);
+      frame.secondRoll(5);
+      scorer.addFrame(frame);
+      frame2.firstRoll(4);
+      frame2.secondRoll(6);
+      scorer.addFrame(frame2);
+      scorer._addBase(this.frames);
+      expect(scorer.baseTotal).toEqual(19);
+    });
+  });

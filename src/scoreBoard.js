@@ -2,10 +2,12 @@
 
 function Scoreboard() {
   this.scores = [];
+  this.allScores = [];
   this.MAXSCORE = 10;
 };
 
   Scoreboard.prototype.calculateScore = function(currentScore){
+    this.allScores.push(currentScore)
     this.scores.push(currentScore.reduce(function(a,b){return a + b },0));
     return this.scores;
   };
@@ -26,4 +28,12 @@ Scoreboard.prototype.aStrike = function(){
       this.scores[strike] = this.MAXSCORE + this.scores.slice(-1)[0];
       return this.scores;
     }
+  };
+
+  Scoreboard.prototype.spare = function(currentScore) {
+        var spare = this.scores.indexOf(10);
+        if (~spare) {
+         this.scores[spare] = this.MAXSCORE + this.allScores[this.allScores.length-1][0];
+         return this.scores;
+       }
   };

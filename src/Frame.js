@@ -8,7 +8,12 @@ Frame.prototype.firstRoll = function(score) {
 };
 
 Frame.prototype.secondRoll = function(score) {
-  this.rollTwo = score;
+  if (this._isStrike()) {
+    throw("First roll was a strike, cannot roll a second during this frame.");
+  }
+  else {
+    this.rollTwo = score;
+  }
 };
 
 Frame.prototype._isStrike = function() {

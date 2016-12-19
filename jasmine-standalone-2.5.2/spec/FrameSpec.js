@@ -29,4 +29,16 @@ describe("Frame", function() {
     frame.addToFrame(2);
     expect(frame.getScore()).toEqual(3);
   })
+
+  it("knows if frame is a spare", function() {
+    frame.addToFrame(5);
+    frame.addToFrame(5);
+    expect(frame.isSpare()).toEqual(true);
+  })
+
+  it("has a bonus if frame is a spare", function() {
+    frame.addToFrame(5);
+    frame.addToFrame(5);
+    expect(frame.bonus).toEqual(jasmine.any(Bonus))
+  })
 })

@@ -6,8 +6,13 @@ describe("Game", function() {
 
   beforeEach(function() {
     game = new Game();
-    frame = new Frame();
   });
+
+  it("tells the frame to add pins", function() {
+    spyOn(game.currentFrame, 'addToFrame');
+    game.roll(1);
+    expect(game.currentFrame.addToFrame).toHaveBeenCalledWith(1);
+  })
 
 
 

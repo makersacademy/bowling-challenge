@@ -3,12 +3,12 @@
 function Game() {
   this.frames = this._createFrames();
   this.currentFrameIndex = 0;
+  this.currentFrame = this.frames[this.currentFrameIndex];
 }
 
 Game.prototype.roll = function(pins) {
-  var currentFrame = this.frames[this.currentFrameIndex];
-  currentFrame.addToFrame(pins);
-  if (currentFrame.isOver()) {
+  this.currentFrame.addToFrame(pins);
+  if (this.currentFrame.isOver()) {
     this.currentFrameIndex ++;
   }
 }

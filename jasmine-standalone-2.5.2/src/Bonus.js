@@ -7,7 +7,9 @@ function Bonus(type) {
 }
 
 Bonus.prototype.addToBonus = function (pins) {
-  this.scoreCard.push(pins);
+  if (!this.isOver()) {
+    this.scoreCard.push(pins);
+  }
 }
 
 Bonus.prototype.getScore = function() {

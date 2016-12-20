@@ -32,7 +32,7 @@ describe("Frame", function() {
   it("calculates the score of the frame", function() {
     frame.addToFrame(1);
     frame.addToFrame(2);
-    expect(frame.getScore()).toEqual(3);
+    expect(frame._getScore()).toEqual(3);
   })
 
   it("knows if frame is a spare", function() {
@@ -69,6 +69,12 @@ describe("Frame", function() {
     frame.addToFrame(5);
     frame.addToBonus(2);
     expect(frame.getTotalScore()).toEqual(12);
+  })
+
+  it('knows when a frames points are complete', function() {
+    frame.addToFrame(5);
+    frame.addToFrame(5);
+    expect(frame.isPointsComplete()).toEqual(false);
   })
 
 

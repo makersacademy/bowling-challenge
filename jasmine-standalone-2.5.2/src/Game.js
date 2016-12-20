@@ -3,19 +3,16 @@
 function Game() {
   this.frames = this._createFrames();
   this.currentFrameIndex = 0;
-  // this.currentFrame = this.frames[this.currentFrameIndex];
 }
 
 Game.prototype.roll = function(pins) {
-  if (this.currentFrameIndex != 10) {
+  this._addBonusPoints(pins);
+  if (this._isNormalFrame()) {
     var currentFrame = this.frames[this.currentFrameIndex];
-    this.addBonusPoints(pins);
     currentFrame.addToFrame(pins);
     if (currentFrame.isOver()) {
       this.currentFrameIndex ++;
     }
-  } else {
-    this.addBonusPoints(pins);
   }
 }
 
@@ -35,8 +32,12 @@ Game.prototype._createFrames = function() {
   return frames;
 }
 
-Game.prototype.addBonusPoints = function(pins) {
+Game.prototype._addBonusPoints = function(pins) {
   this.frames.forEach(function(frame) {
     frame.addToBonus(pins);
   })
+}
+
+Game.prototype._isNormalFrame = function() {
+  return this.currentFrameIndex < 10;
 }

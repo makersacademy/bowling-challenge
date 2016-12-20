@@ -7,6 +7,30 @@ function Frame() {
 
 Frame.prototype.addToFrame = function(pins) {
   this.scoreCard.push(pins);
+  this._createBonus();
+}
+
+Frame.prototype.addToBonus = function(pins) {
+  if (this.bonus) {
+    this.bonus.addToBonus(pins);
+  };
+}
+
+Frame.prototype.isOver = function() {
+  return this.scoreCard.length >= 2 || this.isStrike();
+}
+
+Frame.prototype.getTotalScore = function() {
+  var sum = this._getScore();
+  var bonus = this.getBonusScore();
+  if (this.isPointsComplete()) {
+    return sum + bonus;
+  } else {
+    return 0;
+  }
+}
+
+Frame.prototype._createBonus = function() {
   if (this.isStrike()) {
     this.bonus = new Bonus("strike");
   } else if (this.isSpare()) {
@@ -16,35 +40,18 @@ Frame.prototype.addToFrame = function(pins) {
   }
 }
 
-Frame.prototype.addToBonus = function(pins) {
-  if (this.bonus) {
-    if (!this.bonus.isOver()) {
-      this.bonus.addToBonus(pins);
-    };
-  };
-}
-
-Frame.prototype.isOver = function() {
-  return this.scoreCard.length >= 2 || this.isStrike();
-}
-
-Frame.prototype.getScore = function() {
+Frame.prototype._getScore = function() {
   var sum = this.scoreCard.reduce((a, b) => a + b, 0);
   return sum
 }
 
-Frame.prototype.getTotalScore = function() {
-  var sum = this.getScore();
-  var bonus = this.getBonusScore();
-  return sum + bonus;
-}
 
 Frame.prototype.isSpare = function() {
-  return this.getScore() === 10 && this.scoreCard.length === 2;
+  return this._getScore() === 10 && this.scoreCard.length === 2;
 }
 
 Frame.prototype.isStrike = function() {
-  return this.getScore() === 10 && this.scoreCard.length === 1;
+  return this._getScore() === 10 && this.scoreCard.length === 1;
 }
 
 Frame.prototype.hasBonus = function() {
@@ -56,5 +63,13 @@ Frame.prototype.getBonusScore = function() {
       return this.bonus.getScore();
     } else {
       return 0;
+    }
+}
+
+Frame.prototype.isPointsComplete = function() {
+  if (this.bonus) {
+      return this.bonus.isOver();
+    } else {
+      return this.isOver();
     }
 }

@@ -50,11 +50,19 @@ describe('Feature Test', function() {
     expect(game.calculateScore()).toEqual(15);
   })
 
-  it('should only include a frame in the total score once all bonus points have been received', function() {
+  it('should not include a frame in the total score until all points have been received', function() {
     game.roll(10);
-    game.roll(2);
     expect(game.calculateScore()).toEqual(0);
   })
+
+  it('should include a frame in the total score once all points have been received', function() {
+    game.roll(10);
+    game.roll(1);
+    game.roll(1);
+    expect(game.calculateScore()).toEqual(14);
+  })
+
+
 
 
 });

@@ -6,6 +6,9 @@ var bowlingScorer = function() {
 
 bowlingScorer.prototype.addFrame = function(frame) {
   this.frames.push(frame);
+  if (this.frames.length > 1) {
+    this.calculateBonus(this.frames[this.frames.length-2], this.frames[this.frames.length-1])
+  };
 };
 
 bowlingScorer.prototype.calculateBonus = function(previousFrame, nextFrame) {
@@ -14,7 +17,7 @@ bowlingScorer.prototype.calculateBonus = function(previousFrame, nextFrame) {
   } else if (previousFrame._isSpare()) {
     previousFrame.frameBonus += nextFrame.rollOne
   } else {
-    throw("No bonus for this roll.")
+    console.log("No bonus for this roll")
   }
 };
 

@@ -29,7 +29,6 @@ describe("calculating bonuses", function() {
     frame2.firstRoll(5);
     frame2.secondRoll(4);
     scorer.addFrame(frame2);
-    scorer.calculateBonus(scorer.frames[0], scorer.frames[1])
     expect(scorer.frames[0].frameBonus).toEqual(9);
   });
   it("should add the bonuses for a spare", function() {
@@ -40,7 +39,6 @@ describe("calculating bonuses", function() {
     frame2.firstRoll(4);
     frame2.secondRoll(3);
     scorer.addFrame(frame2);
-    scorer.calculateBonus(scorer.frames[0], scorer.frames[1]);
     expect(scorer.frames[0].frameBonus).toEqual(4);
   });
   it("should not add a bonus if no strike or spare was rolled", function() {
@@ -50,7 +48,7 @@ describe("calculating bonuses", function() {
     frame2.firstRoll(3);
     frame2.secondRoll(4);
     scorer.addFrame(frame2);
-    expect(function() { scorer.calculateBonus(scorer.frames[0], scorer.frames[1]) }).toThrow("No bonus for this roll.")
+    expect(scorer.frames[0].frameBonus).toEqual(0);
   });
 });
   describe("addBase()", function() {

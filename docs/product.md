@@ -27,6 +27,9 @@ So that my score is calculated correctly,
 If I get a spare, I want the points for the next one ball added to the points for this turn
 
 ### WIP
+As a bowler,
+So that I can seal a win at the last minute,
+I want to get a number of extra balls if I score a strike or a spare in the last frame
 
 ### TODO
 
@@ -34,9 +37,6 @@ As a bowler,
 So that the scoresheet accurately reflects the game,
 I want to see scores for my 2 throws per turn separately from the total for the turn & the running total
 
-As a bowler,
-So that I can seal a win at the last minute,
-I want to get a number of extra balls if I score a strike or a spare in the last frame
 
 As a bowler,
 So that I don't accidentally enter a wrong score

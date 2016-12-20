@@ -1,12 +1,15 @@
-function FrameManager(pins) {
-  this.currentFrame = 1;
-  this.maxFrames = 10;
+function Frame() {
+  this.currentFrame = startingFrame;
+  this.maxFrames = frameMaximum;
 }
 
-FrameManager.prototype.moveToNextFrame = function() {
+Frame.prototype.moveToNextFrame = function() {
   return this.currentFrame++;
 }
 
-FrameManager.prototype.resetFrame = function() {
+Frame.prototype.resetFrame = function() {
   this.currentFrame = 1;
 }
+
+const frameMaximum = 10;
+const startingFrame = 1;

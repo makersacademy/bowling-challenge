@@ -18,6 +18,10 @@ describe('BowlingCalculator', function(){
       expect(bowlingcalculator.currentBalls).toEqual([]);
     });
 
+    it("should initialize with an empty previous balls array", function(){
+      expect(bowlingcalculator.previousBalls).toEqual([]);
+    });
+
     it("should initialize with frames property set to 10", function(){
       expect(bowlingcalculator.frames).toEqual(10);
     });

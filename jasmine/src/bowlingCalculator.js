@@ -3,6 +3,7 @@
 var BowlingCalculator = function() {
   this.score = [];
   this.currentBalls = [];
+  this.previousBalls = [];
   this.frames = 10;
   this.throws = 2;
 };

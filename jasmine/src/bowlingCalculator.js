@@ -105,11 +105,7 @@ BowlingCalculator.prototype._doesNotSumToMoreThanTen = function(number) {
 };
 
 BowlingCalculator.prototype._reduceThrows = function(){
-  if (this.currentBalls == 10) {
-    this.throws = 0;
-  } else {
-    this.throws -= 1;
-  };
+  this.currentBalls == 10 ? this.throws = 0 : this.throws -= 1;
 };
 
 BowlingCalculator.prototype.totalScore = function(){
@@ -137,6 +133,7 @@ BowlingCalculator.prototype._isStrikeLastTurn = function() {
 BowlingCalculator.prototype._isSpareLastTurn = function() {
   var lastItemIndex = this.score.length - 1;
   var lastScoreItem = this.score[lastItemIndex];
+
   if (lastScoreItem == 10 && !this._isStrikeLastTurn()) {
     return true;
   } else {

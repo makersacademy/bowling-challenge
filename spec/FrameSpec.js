@@ -42,6 +42,13 @@ describe("secondRoll", function() {
   });
 });
 
+describe("_isTenthFrame", function() {
+  it("when true, should allow a second roll after a strike", function() {
+    frame10._tenthFrame();
+    expect(frame10._isTenthFrame).toEqual(true);
+  })
+});
+
 describe("_isStrike", function() {
   it("should return true if firstRoll is 10", function() {
     frame1.firstRoll(10);

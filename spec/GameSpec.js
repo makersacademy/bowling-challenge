@@ -33,14 +33,24 @@ describe("Game", function(){
     expect(game.sweep).toBe(false);
   });
 
+  it("should initialize with a false rack of pins", function(){
+    expect(game.rackedPins).toBe(false);
+  });
+
   it("should initialize with a new Scoreboard", function() {
     expect(game.scoreboard).toEqual(new Scoreboard())
   });
 
-  it("should re-rack the pins between each round if frame count is less than ", function(){
+  it("should re-rack the pins between each round if frame count is less than ten", function(){
     game.frameCount = 1;
     game.rackUp();
     expect(game.setUpPins).toContain(0,1,2,3,4,5,6,7,8,9,10);
+  });
+
+  it("should re-rack the pins and return rackedpins to be true between each round if frame count is less than ten", function(){
+    game.frameCount = 1;
+    game.rackUp();
+    expect(game.rackedPins).toBe(true);
   });
 
   it("should throw an error if frame count is more then ten", function(){

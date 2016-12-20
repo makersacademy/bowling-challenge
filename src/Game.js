@@ -7,12 +7,14 @@ function Game() {
   this.currentScore = [];
   this.score = [];
   this.sweep = false;
+  this.rackedPins = false;
   this.scoreboard = new Scoreboard();
 };
 
   Game.prototype.rackUp = function(){
     if (this.frameCount < 10) {
-      return this.setUpPins = this.PINS
+      this.rackedPins = true;
+      return this.setUpPins = this.PINS;
     } else {
       throw new Error("Game Over! Please start a new game");
     };

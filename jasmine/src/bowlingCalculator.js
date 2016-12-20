@@ -9,7 +9,11 @@ var BowlingCalculator = function() {
 };
 
 BowlingCalculator.prototype.endTurn = function() {
-  this.score.push(this.currentBalls);
+  var turnSum = this.currentBalls.reduce(function(a, b){
+    return a + b;
+  }, 0)
+  this.score.push(turnSum)
+  this.previousBalls.push(this.currentBalls);
   this._clearCurrentTurn();
   this._reduceFrames();
   this._resetThrows();

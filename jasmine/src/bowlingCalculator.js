@@ -98,8 +98,10 @@ BowlingCalculator.prototype.totalScore = function(){
 };
 
 BowlingCalculator.prototype._isStrikeLastTurn = function() {
-  var lastItemIndex = this.score.length - 1;
-  if (this.score[lastItemIndex] == 10) {
+  var lastBallIndex = this.previousBalls.length - 1;
+  var previousBall = this.previousBalls[lastBallIndex];
+
+  if (previousBall == 10) {
     return true;
   } else {
     return false;
@@ -108,12 +110,11 @@ BowlingCalculator.prototype._isStrikeLastTurn = function() {
 
 BowlingCalculator.prototype._isSpareLastTurn = function() {
   var lastItemIndex = this.score.length - 1;
-  var sum = this.score[lastItemIndex].reduce(function(a, b) {
-    return a + b;
-  }, 0);
-  if (sum == 10) {
+  var lastScoreItem = this.score[lastItemIndex];
+  if (lastScoreItem == 10 && !this._isStrikeLastTurn()) {
     return true;
   } else {
     return false;
   };
+
 };

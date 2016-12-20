@@ -149,13 +149,13 @@ describe('BowlingCalculator', function(){
 
   describe("#_isStrikeLastTurn()", function(){
 
-    xit("should return true if you got a strike last turn", function(){
+    it("should return true if you got a strike last turn", function(){
       bowlingcalculator.throwBall(10);
       bowlingcalculator.endTurn();
       expect(bowlingcalculator._isStrikeLastTurn()).toBeTruthy();
     });
 
-    xit("should return false if you did not get a strike last turn", function(){
+    it("should return false if you did not get a strike last turn", function(){
       bowlingcalculator.throwBall(3);
       bowlingcalculator.throwBall(5);
       bowlingcalculator.endTurn();

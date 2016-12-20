@@ -3,16 +3,30 @@
 var BowlingCalculator = function() {
   this.score = [];
   this.currentTurn = [];
-  this.bonus = null;
   this.frames = 10;
   this.throws = 2;
 };
 
 BowlingCalculator.prototype.endTurn = function() {
+  if (this._isStrikeLastTurn()) {
+    var lastItemIndex = this.score.length - 1;
+    var score = this.score;
+    this.currentTurn.forEach(function(element){
+      console.log(element);
+      console.log(score);
+      score.push(element);
+    });
+  };
   this.score.push(this.currentTurn);
   this._clearCurrentTurn();
   this._reduceFrames();
   this._resetThrows();
+};
+
+BowlingCalculator.prototype._pushToIndexedScore = function(index, score) {
+  var indexedScore = this.score[index];
+  // console.log(indexedScore);
+  indexedScore.push(score);
 };
 
 BowlingCalculator.prototype._clearCurrentTurn = function(){

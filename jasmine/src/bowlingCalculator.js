@@ -9,26 +9,29 @@ var BowlingCalculator = function() {
 };
 
 BowlingCalculator.prototype.endTurn = function() {
-  if (this._isStrikeLastTurn()) {
-    var lastScoreIndex = this.score.length - 1;
-    var lastScore = this.score[lastScoreIndex];
-    var turnSum = this.currentBalls.reduce(function(a, b){
-      return a + b;
-    }, 0);
-    this.score.splice(lastScoreIndex, 1, lastScore + turnSum);
-  };
-
-  if (this._isSpareLastTurn()) {
-    var lastScoreIndex = this.score.length - 1;
-    var lastScore = this.score[lastScoreIndex];
-    var firstBall = this.currentBalls[0];
-    this.score.splice(lastScoreIndex, 1, lastScore + firstBall);
-  };
+  this._addBonus();
   this._pushTurnToScore();
   this.previousBalls.push(this.currentBalls);
   this._clearCurrentTurn();
   this._reduceFrames();
   this._resetThrows();
+};
+
+BowlingCalculator.prototype._addBonus = function(){
+  var lastScoreIndex = this.score.length - 1;
+  var lastScore = this.score[lastScoreIndex];
+  var turnSum = this.currentBalls.reduce(function(a, b){
+    return a + b;
+  }, 0);
+
+  if (this._isStrikeLastTurn()) {
+    this.score.splice(lastScoreIndex, 1, lastScore + turnSum);
+  };
+
+  if (this._isSpareLastTurn()) {
+    var firstBall = this.currentBalls[0];
+    this.score.splice(lastScoreIndex, 1, lastScore + firstBall);
+  };
 };
 
 BowlingCalculator.prototype._pushTurnToScore = function(){

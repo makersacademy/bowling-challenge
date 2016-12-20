@@ -47,17 +47,28 @@ describe("Bowling Game", function() {
     beforeEach(function() {
       spyOn(game.pins, 'firstRoll').and.returnValue(7)
       spyOn(game.pins, 'secondRoll').and.returnValue(3)
-
+      game.playBall()
+      game.playBall()
     })
 
     it("awards bonus of next ball after a spare", function() {
+      game.pins.firstRoll.and.returnValue(4)
+      game.pins.secondRoll.and.returnValue(5)
+      game.playBall()
+      game.playBall()
+      expect(game.getCurrentScore()).toEqual(23)
+    })
+
+    it("for two spares in a row", function() {
+      game.pins.firstRoll.and.returnValue(4)
+      game.pins.secondRoll.and.returnValue(6)
       game.playBall()
       game.playBall()
       game.pins.firstRoll.and.returnValue(4)
       game.pins.secondRoll.and.returnValue(5)
       game.playBall()
       game.playBall()
-      expect(game.getCurrentScore()).toEqual(23)
+      expect(game.getCurrentScore()).toEqual(37)
     })
   })
 
@@ -76,6 +87,33 @@ describe("Bowling Game", function() {
       expect(game.getCurrentScore()).toEqual(24)
     })
 
+    it("for two strikes in a row", function() {
+      game.playBall()
+      game.pins.firstRoll.and.returnValue(10)
+      game.playBall()
+      game.pins.firstRoll.and.returnValue(4)
+      spyOn(game.pins, 'secondRoll').and.returnValue(3)
+      game.playBall()
+      game.playBall()
+      expect(game.getCurrentScore()).toEqual(48)
+
+
+    })
+
+  })
+
+  describe("a perfect game", function() {
+
+    beforeEach(function() {
+      spyOn(game.pins, 'firstRoll').and.returnValue(10);
+    })
+    xit("ten strikes in a row gains 300 points", function() {
+      for(count=0;count<9;count++) {
+        game.playBall();
+      }
+
+      expect(game.getCurrentScore()).toEqual(300)
+    })
   })
 
   describe("ending the game", function() {

@@ -11,7 +11,8 @@ function Game() {
 Game.prototype.playBall = function() {
   if (this.rolls === 1) {
     this.secondRollScore = this.pins.secondRoll(this.firstRollScore);
-    this.didSpareOccur();
+    this.awardBonusForStrike(this.firstRollScore,this.secondRollScore);
+    this.didSpareOccur(); 
     this.makeGameOverIfFinalFrame();
     this.resetRolls();
     return this.secondRollScore;
@@ -19,6 +20,7 @@ Game.prototype.playBall = function() {
     this.checkIfGameOver();
     this.nextRoll();
     this.firstRollScore = this.pins.firstRoll();
+    this.awardBonusForSpare(this.firstRollScore);
     this.didStrikeOccur();
     return this.firstRollScore;
   }
@@ -32,8 +34,17 @@ Game.prototype.resetRolls = function() {
 Game.prototype.didStrikeOccur = function() {
   if (this.firstRollScore === totalNumberOfPins) {
     this.score.strike = true;
+    this.score.strikes++
     this.resetRolls();
   }
+}
+
+Game.prototype.awardBonusForSpare = function(firstScore) {
+  this.score.bonusForSpare(firstScore);
+}
+
+Game.prototype.awardBonusForStrike = function(firstScore, secondScore) {
+  this.score.bonusForStrike(firstScore,secondScore)
 }
 
 Game.prototype.didSpareOccur = function() {

@@ -41,3 +41,8 @@ Game.prototype._addBonusPoints = function(pins) {
 Game.prototype._isNormalFrame = function() {
   return this.currentFrameIndex < 10;
 }
+
+Game.prototype._rollNumber = function() {
+  var currentFrame = this.frames[this.currentFrameIndex];
+  return currentFrame.rollNumber();
+}

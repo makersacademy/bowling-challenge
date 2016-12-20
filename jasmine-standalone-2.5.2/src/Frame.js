@@ -73,3 +73,11 @@ Frame.prototype.isPointsComplete = function() {
       return this.isOver();
     }
 }
+
+Frame.prototype.rollNumber = function() {
+  if (this.scoreCard.length === 0) {
+    return 1;
+  } else {
+    return 2;
+  }
+}

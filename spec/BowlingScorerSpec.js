@@ -47,39 +47,24 @@ describe("calculating bonuses", function() {
     expect(scorer.frames[0].frameBonus).toEqual(0);
   });
   it("should calculate the base score for a perfect game", function() {
-        frame1.firstRoll(10);
-        scorer.addFrame(frame1);
-        frame2.firstRoll(10);
-        scorer.addFrame(frame2);
-        frame3.firstRoll(10);
-        scorer.addFrame(frame3);
-        frame4.firstRoll(10);
-        scorer.addFrame(frame4);
-        frame5.firstRoll(10);
-        scorer.addFrame(frame5);
-        frame6.firstRoll(10);
-        scorer.addFrame(frame6);
-        frame7.firstRoll(10);
-        scorer.addFrame(frame7);
-        frame8.firstRoll(10);
-        scorer.addFrame(frame8);
-        frame9.firstRoll(10);
-        scorer.addFrame(frame9);
-        frame10.firstRoll(10);
-        scorer.addFrame(frame10);
-        scorer._addBase();
-        expect(scorer.baseTotal).toEqual(100);
+    for (var i = 1; i < 11; i++) {
+      window["frame"+i].firstRoll(10);
+      scorer.addFrame(window["frame" + i]);
+      console.log(window["frame" + i]);
+    }
+    scorer._addBase();
+    expect(scorer.baseTotal).toEqual(100);
   });
 });
-  describe("addBase()", function() {
-    it("should add all scores to the baseTotal", function() {
-      frame1.firstRoll(4);
-      frame1.secondRoll(5);
-      scorer.addFrame(frame1);
-      frame2.firstRoll(4);
-      frame2.secondRoll(6);
-      scorer.addFrame(frame2);
-      scorer._addBase(this.frames);
-      expect(scorer.baseTotal).toEqual(19);
-    });
+describe("addBase()", function() {
+  it("should add all scores to the baseTotal", function() {
+    frame1.firstRoll(4);
+    frame1.secondRoll(5);
+    scorer.addFrame(frame1);
+    frame2.firstRoll(4);
+    frame2.secondRoll(6);
+    scorer.addFrame(frame2);
+    scorer._addBase(this.frames);
+    expect(scorer.baseTotal).toEqual(19);
   });
+});

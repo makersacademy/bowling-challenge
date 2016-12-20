@@ -42,7 +42,11 @@ Game.prototype.resetRolls = function() {
 }
 
 Game.prototype.didStrikeOccur = function() {
-  if (this.firstRollScore === totalNumberOfPins) {
+  if (this.firstRollScore == totalNumberOfPins && this.getCurrentFrame() == 10) {
+    this.score.strike = true;
+    this.strikes++;
+  }
+  else if (this.firstRollScore === totalNumberOfPins) {
     this.score.strike = true;
     this.score.strikes++
     this.resetRolls();

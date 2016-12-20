@@ -100,44 +100,59 @@ describe("Bowling Game", function() {
 
   })
 
-  describe("the 10th frame", function() {
+  describe("bonus on the 10th frame", function() {
 
-    beforeEach(function() {
-      spyOn(game.pins, 'firstRoll').and.returnValue(5)
-      spyOn(game.pins, 'secondRoll').and.returnValue(3)
-      for(count=0;count<18;count++) {
+
+    describe("for a spare", function() {
+
+      beforeEach(function() {
+        spyOn(game.pins, 'firstRoll').and.returnValue(5)
+        spyOn(game.pins, 'secondRoll').and.returnValue(3)
+        for(count=0;count<18;count++) {
+          game.playBall()
+        }
+        game.pins.firstRoll.and.returnValue(5)
+        game.pins.secondRoll.and.returnValue(5)
         game.playBall()
-      }
+        game.playBall()
+      })
+
+      it("getting a spare gives you an extra roll", function() {
+        expect(game.gameOver).toBeFalsy()
+      })
+
+      it("after the extra roll the game is over", function() {
+        game.pins.firstRoll.and.returnValue(8)
+        game.playBall()
+        expect(game.gameOver).toBeTruthy()
+      })
+
+      it("totalScore", function() {
+        game.pins.firstRoll.and.returnValue(8)
+        game.playBall()
+        expect(game.getCurrentScore()).toEqual(98)
+      })
     })
 
-    it("getting a spare gives you an extra roll", function() {
-      game.pins.firstRoll.and.returnValue(5)
-      game.pins.secondRoll.and.returnValue(5)
-      game.playBall()
-      game.playBall()
-      expect(game.gameOver).toBeFalsy()
+    describe("for a strike", function() {
+
+      beforeEach(function() {
+        spyOn(game.pins, 'firstRoll').and.returnValue(5)
+        spyOn(game.pins, 'secondRoll').and.returnValue(3)
+        for(count=0;count<18;count++) {
+          game.playBall()
+        }
+        game.pins.firstRoll.and.returnValue(10)
+        game.playBall();
+      })
+
+      it("does not move to the next frame", function() {
+        expect(game.getCurrentFrame()).toEqual(10)
+      })
+
     })
 
-    it("after the extra roll the game is over", function() {
-      game.pins.firstRoll.and.returnValue(5)
-      game.pins.secondRoll.and.returnValue(5)
-      game.playBall()
-      game.playBall()
-      game.pins.firstRoll.and.returnValue(8)
-      game.playBall()
-      expect(game.gameOver).toBeTruthy()
-    })
-
-    it("totalScore", function() {
-      game.pins.firstRoll.and.returnValue(5)
-      game.pins.secondRoll.and.returnValue(5)
-      game.playBall()
-      game.playBall()
-      game.pins.firstRoll.and.returnValue(8)
-      game.playBall()
-      expect(game.getCurrentScore()).toEqual(98)
-    })
-  })
+      })
 
   describe("a perfect game", function() {
 

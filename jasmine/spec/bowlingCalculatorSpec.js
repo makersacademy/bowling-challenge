@@ -166,14 +166,14 @@ describe('BowlingCalculator', function(){
 
   describe("#_isSpareLastTurn()", function(){
 
-    xit("should return true if you got a spare last turn", function(){
+    it("should return true if you got a spare last turn", function(){
       bowlingcalculator.throwBall(5);
       bowlingcalculator.throwBall(5);
       bowlingcalculator.endTurn();
       expect(bowlingcalculator._isSpareLastTurn()).toBeTruthy();
     });
 
-    xit("should return false if you didn't get a spare last turn", function(){
+    it("should return false if you didn't get a spare last turn", function(){
       bowlingcalculator.throwBall(5);
       bowlingcalculator.throwBall(1);
       bowlingcalculator.endTurn();

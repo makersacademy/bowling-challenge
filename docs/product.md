@@ -23,15 +23,15 @@ As a bowler,
 So that my excellence is rewarded,
 If I get a strike, I want the points for the next two balls added to the points for this turn
 
+As a bowler,
+So that my score is calculated correctly,
+If I get a spare, I want the points for the next one ball added to the points for this turn
+
 ### TODO
 
 As a bowler,
 So that the scoresheet accurately reflects the game,
 I want to see scores for my 2 throws per turn separately from the total for the turn & the running total
-
-As a bowler,
-So that my score is calculated correctly,
-If I get a spare, I want the points for the next one ball added to the points for this turn
 
 As a bowler,
 So that I can seal a win at the last minute,

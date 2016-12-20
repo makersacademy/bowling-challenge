@@ -50,10 +50,19 @@ describe("calculating bonuses", function() {
     for (var i = 1; i < 11; i++) {
       window["frame"+i].firstRoll(10);
       scorer.addFrame(window["frame" + i]);
-      console.log(window["frame" + i]);
     }
     scorer._addBase();
     expect(scorer.baseTotal).toEqual(100);
+  });
+  it("should return 'gutter game' when the player scores 0 in every frame", function() {
+    for (var i = 1; i < 11; i++) {
+      window["frame"+i].firstRoll(0);
+      window["frame"+i].secondRoll(0);
+      scorer.addFrame(window["frame" + i]);
+    }
+    scorer._addBase();
+    expect(scorer.baseTotal).toEqual(0);
+    expect(scorer.result(scorer.baseTotal)).toEqual("Gutter game!");
   });
 });
 describe("addBase()", function() {

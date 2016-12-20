@@ -11,6 +11,12 @@ bowlingScorer.prototype.addFrame = function(frame) {
   };
 };
 
+bowlingScorer.prototype.result = function(score) {
+  if (score === 0) {
+    return "Gutter game!"
+  }
+};
+
 bowlingScorer.prototype.calculateBonus = function(previousFrame, nextFrame) {
   if (previousFrame._isStrike()) {
     previousFrame.frameBonus += (nextFrame.rollOne + nextFrame.rollTwo);

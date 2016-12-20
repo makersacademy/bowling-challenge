@@ -90,13 +90,10 @@ BowlingCalculator.prototype.totalScore = function(){
   if (this.frames === 10) {
     return 0;
   } else {
-    var flattenedScore = this.score.reduce(function(a, b) {
-      return a.concat(b);})
-
-    var sum = flattenedScore.reduce(function(a, b){
+    var totalScore = this.score.reduce(function(a, b) {
       return a + b;
-    }, 0);
-    return sum;
+    }, 0)
+    return totalScore;
   }
 };
 

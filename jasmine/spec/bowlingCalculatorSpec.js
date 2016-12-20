@@ -138,7 +138,7 @@ describe('BowlingCalculator', function(){
       expect(bowlingcalculator.totalScore()).toEqual(0);
     });
 
-    xit("should return 8 if you throw a 3, then a 5, the end your turn", function(){
+    it("should return 8 if you throw a 3, then a 5, the end your turn", function(){
       bowlingcalculator.throwBall(3);
       bowlingcalculator.throwBall(5);
       bowlingcalculator.endTurn();

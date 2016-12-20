@@ -9,14 +9,18 @@ var BowlingCalculator = function() {
 };
 
 BowlingCalculator.prototype.endTurn = function() {
-  var turnSum = this.currentBalls.reduce(function(a, b){
-    return a + b;
-  }, 0)
-  this.score.push(turnSum)
+  this._pushToScore();
   this.previousBalls.push(this.currentBalls);
   this._clearCurrentTurn();
   this._reduceFrames();
   this._resetThrows();
+};
+
+BowlingCalculator.prototype._pushToScore = function(){
+  var turnSum = this.currentBalls.reduce(function(a, b){
+    return a + b;
+  }, 0)
+  this.score.push(turnSum);
 };
 
 BowlingCalculator.prototype._clearCurrentTurn = function(){

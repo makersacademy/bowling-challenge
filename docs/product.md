@@ -27,6 +27,7 @@ So that my score is calculated correctly,
 If I get a spare, I want the points for the next one ball added to the points for this turn
 
 ### WIP
+
 As a bowler,
 So that the scoresheet accurately reflects the game,
 I want to see scores for my 2 throws per turn separately from the total for the turn & the running total.

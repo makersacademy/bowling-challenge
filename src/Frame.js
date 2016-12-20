@@ -10,7 +10,7 @@ Frame.prototype.firstRoll = function(score) {
 };
 
 Frame.prototype.secondRoll = function(score) {
-  if (this._isStrike()) {
+  if (this._isStrike() && this._isTenthFrame === false) {
     throw("First roll was a strike, cannot roll a second during this frame.");
   }
   else {

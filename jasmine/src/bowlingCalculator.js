@@ -17,7 +17,7 @@ BowlingCalculator.prototype.endTurn = function() {
   this._resetThrows();
 };
 
-BowlingCalculator.prototype._addBonus = function(){
+BowlingCalculator.prototype._addBonus = function() {
   var lastScoreIndex = this.score.length - 1;
   var lastScore = this.score[lastScoreIndex];
   var turnSum = this.currentBalls.reduce(function(a, b){
@@ -34,22 +34,22 @@ BowlingCalculator.prototype._addBonus = function(){
   };
 };
 
-BowlingCalculator.prototype._pushTurnToScore = function(){
-  var turnSum = this.currentBalls.reduce(function(a, b){
+BowlingCalculator.prototype._pushTurnToScore = function() {
+  var turnSum = this.currentBalls.reduce(function(a, b) {
     return a + b;
   }, 0)
   this.score.push(turnSum);
 };
 
-BowlingCalculator.prototype._clearCurrentTurn = function(){
+BowlingCalculator.prototype._clearCurrentTurn = function() {
   this.currentBalls = [];
 };
 
-BowlingCalculator.prototype._reduceFrames = function(){
+BowlingCalculator.prototype._reduceFrames = function() {
   this.frames -= 1;
 };
 
-BowlingCalculator.prototype._resetThrows = function(){
+BowlingCalculator.prototype._resetThrows = function() {
   this.throws = 2;
 }
 
@@ -58,7 +58,7 @@ BowlingCalculator.prototype.throwBall = function(pins) {
   this._hasThrowsLeft();
   this._validateThrowBall(pins);
   this.currentBalls.push(pins);
-  this._reduceThrows();
+  this._setThrows();
 };
 
 BowlingCalculator.prototype._hasFramesLeft = function() {
@@ -104,11 +104,11 @@ BowlingCalculator.prototype._doesNotSumToMoreThanTen = function(number) {
   }
 };
 
-BowlingCalculator.prototype._reduceThrows = function(){
+BowlingCalculator.prototype._setThrows = function() {
   this.currentBalls == 10 ? this.throws = 0 : this.throws -= 1;
 };
 
-BowlingCalculator.prototype.totalScore = function(){
+BowlingCalculator.prototype.totalScore = function() {
   if (this.frames === 10) {
     return 0;
   } else {

@@ -10,6 +10,12 @@ var BowlingCalculator = function() {
 
 BowlingCalculator.prototype.endTurn = function() {
   this.score.push(this.currentTurn);
+  // if (this._isStrikeLastTurn()) {
+  //   var penultimateItemIndex = this.score.length - 1;
+  //   this.currentTurn.forEach(function(element){
+  //     this.score[](element);
+  //   });
+  // };
   this._clearCurrentTurn();
   this._reduceFrames();
   this._resetThrows();
@@ -96,14 +102,18 @@ BowlingCalculator.prototype.totalScore = function(){
   }
 };
 
-BowlingCalculator.prototype.isStrikeLastTurn = function() {
-  var lastItemIndex = this.score.length - 1;
-  return this.score[lastItemIndex] == 10;
+BowlingCalculator.prototype._isStrikeLastTurn = function() {
+  var penultimateItemIndex = this.score.length - 1;
+  if (this.score[penultimateItemIndex] == 10) {
+    return true;
+  } else {
+    return false;
+  };
 };
 
 BowlingCalculator.prototype.isSpareLastTurn = function() {
-  var lastItemIndex = this.score.length - 1;
-  var sum = this.score[lastItemIndex].reduce(function(a, b){
+  var penultimateItemIndex = this.score.length - 1;
+  var sum = this.score[penultimateItemIndex].reduce(function(a, b){
     return a + b;
   }, 0);
   return sum == 10;

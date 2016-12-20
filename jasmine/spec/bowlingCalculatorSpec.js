@@ -129,12 +129,19 @@ describe('BowlingCalculator', function(){
 
   });
 
-  describe("#isStrikeLastTurn()", function(){
+  describe("#_isStrikeLastTurn()", function(){
 
     it("should return true if you got a strike last turn", function(){
       bowlingcalculator.throwBall(10);
       bowlingcalculator.endTurn();
-      expect(bowlingcalculator.isStrikeLastTurn()).toBeTruthy();
+      expect(bowlingcalculator._isStrikeLastTurn()).toBeTruthy();
+    });
+
+    it("should return false if you did not get a strike last turn", function(){
+      bowlingcalculator.throwBall(3);
+      bowlingcalculator.throwBall(5);
+      bowlingcalculator.endTurn();
+      expect(bowlingcalculator._isStrikeLastTurn()).toBeFalsy();
     });
 
   });

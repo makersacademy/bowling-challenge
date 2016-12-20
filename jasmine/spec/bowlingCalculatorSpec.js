@@ -96,6 +96,22 @@ describe('BowlingCalculator', function(){
       expect(bowlingcalculator.frames).toEqual(9);
     });
 
+    it("should reset the number of throws back up to 2", function(){
+      bowlingcalculator.throwBall(3);
+      bowlingcalculator.throwBall(5)
+      bowlingcalculator.endTurn();
+      expect(bowlingcalculator.throws).toEqual(2);
+    });
+
+    xit("should add this turn's score to last turn if you got a strike last turn", function(){
+      bowlingcalculator.throwBall(10);
+      bowlingcalculator.endTurn();
+      bowlingcalculator.throwBall(3);
+      bowlingcalculator.throwBall(5)
+      bowlingcalculator.endTurn();
+      expect(bowlingcalculator.totalScore()).toEqual(26);
+    });
+
   });
 
   describe("#totalScore()", function(){

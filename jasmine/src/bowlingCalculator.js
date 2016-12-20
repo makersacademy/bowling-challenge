@@ -12,6 +12,7 @@ BowlingCalculator.prototype.endTurn = function() {
   this.score.push(this.currentTurn);
   this._clearCurrentTurn();
   this._reduceFrames();
+  this._resetThrows();
 };
 
 BowlingCalculator.prototype._clearCurrentTurn = function(){
@@ -21,6 +22,10 @@ BowlingCalculator.prototype._clearCurrentTurn = function(){
 BowlingCalculator.prototype._reduceFrames = function(){
   this.frames -= 1;
 };
+
+BowlingCalculator.prototype._resetThrows = function(){
+  this.throws = 2;
+}
 
 BowlingCalculator.prototype.throwBall = function(pins) {
   this._hasFramesLeft();

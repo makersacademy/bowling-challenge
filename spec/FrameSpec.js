@@ -4,45 +4,45 @@ describe("Frame", function() {
 });
 
 beforeEach(function() {
-  frame = new Frame();
+  frame1 = new Frame();
   frame2= new Frame();
 });
 
 it("should have a starting firstRoll score of 0", function() {
-  expect(frame.rollOne).toEqual(0)
+  expect(frame1.rollOne).toEqual(0)
 });
 it("should have a starting secondRoll score of 0", function() {
-  expect(frame.rollTwo).toEqual(0)
+  expect(frame1.rollTwo).toEqual(0)
 });
 
 describe("firstRoll", function() {
   it("should store given score in rollOne", function() {
-    frame.firstRoll(4)
-    expect(frame.rollOne).toEqual(4)
+    frame1.firstRoll(4)
+    expect(frame1.rollOne).toEqual(4)
   });
 });
 
 describe("secondRoll", function() {
   it("should store given score in rollTwo", function() {
-    frame.secondRoll(5);
-    expect(frame.rollTwo).toEqual(5);
+    frame1.secondRoll(5);
+    expect(frame1.rollTwo).toEqual(5);
   });
   it("should not be rolled if rollOne was a strike", function() {
-    frame.firstRoll(10);
-    expect(function() { frame.secondRoll(2) }).toThrow("First roll was a strike, cannot roll a second during this frame.");
+    frame1.firstRoll(10);
+    expect(function() { frame1.secondRoll(2) }).toThrow("First roll was a strike, cannot roll a second during this frame.");
   });
 });
 
 describe("_isStrike", function() {
   it("should return true if firstRoll is 10", function() {
-    frame.firstRoll(10);
-    expect(frame._isStrike()).toBe(true);
+    frame1.firstRoll(10);
+    expect(frame1._isStrike()).toBe(true);
   });
 });
 describe("_isSpare", function() {
   it("should return true if rollOne and rollTwo add to 10", function() {
-    frame.firstRoll(8);
-    frame.secondRoll(2);
-    expect(frame._isSpare()).toBe(true);
+    frame1.firstRoll(8);
+    frame1.secondRoll(2);
+    expect(frame1._isSpare()).toBe(true);
   });
 });

@@ -1,11 +1,27 @@
 describe("Frame", function() {
-  var frame;
+  var frame1;
   var frame2;
+  var frame3;
+  var frame4;
+  var frame5;
+  var frame6;
+  var frame7;
+  var frame8;
+  var frame9;
+  var frame10;
 });
 
 beforeEach(function() {
   frame1 = new Frame();
   frame2= new Frame();
+  frame3= new Frame();
+  frame4= new Frame();
+  frame5= new Frame();
+  frame6= new Frame();
+  frame7= new Frame();
+  frame8= new Frame();
+  frame9= new Frame();
+  frame10 = new Frame();
 });
 
 it("should have a starting firstRoll score of 0", function() {

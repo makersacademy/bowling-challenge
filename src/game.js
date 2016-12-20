@@ -6,15 +6,18 @@ function Game() {
   this.frame = new Frame();
   this.score = new Score(this);
   this.rolls = 0;
+  this.finalFrameSpare = false;
 }
 
 Game.prototype.playBall = function() {
-  if (this.rolls === 1) {
+  if (this.finalFrameSpare === true) {
+    this.finalFrameForSpare();
+  }
+  else if (this.rolls === 1) {
     this.secondRollScore = this.pins.secondRoll(this.firstRollScore);
     this.awardBonusForStrike(this.firstRollScore,this.secondRollScore);
     this.didSpareOccur(); 
     this.makeGameOverIfFinalFrame();
-    this.resetRolls();
     return this.secondRollScore;
   } else {
     this.checkIfGameOver();
@@ -24,6 +27,13 @@ Game.prototype.playBall = function() {
     this.didStrikeOccur();
     return this.firstRollScore;
   }
+}
+
+Game.prototype.finalFrameForSpare = function() {
+  this.firstRollScore = this.pins.firstRoll();
+  this.awardBonusForSpare(this.firstRollScore);
+  this.score.currentScore += this.firstRollScore;
+  this.gameOver = true;
 }
 
 Game.prototype.resetRolls = function() {
@@ -79,7 +89,11 @@ Game.prototype.getCurrentScore = function() {
 }
 
 Game.prototype.makeGameOverIfFinalFrame = function() {
-  if (this.getCurrentFrame() >= this.frame.maxFrames ) {
+  if (this.getCurrentFrame() == this.frame.maxFrames && this.score.spare === true) {
+    this.finalFrameSpare = true;
+  } else if (this.getCurrentFrame() >= this.frame.maxFrames ) {
      this.gameOver = true;
+  } else {
+    this.resetRolls();
   }
 }

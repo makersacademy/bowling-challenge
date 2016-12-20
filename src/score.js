@@ -14,7 +14,7 @@ Score.prototype.calculateScore = function(firstRoll,secondRoll) {
 Score.prototype.bonusForSpare = function(firstRoll) {
   if (this.spare == true) {
       this.currentScore += bonus + firstRoll
-      this.spare == false
+      this.spare = false
   }
 }
 
@@ -28,7 +28,8 @@ Score.prototype.bonusForStrike = function(firstRoll,secondRoll) {
     } else {
     this.singleStrikeBonus(firstRoll,secondRoll);
     }
-      this.strike = false
+      this.strike = false;
+      this.strikes = 0;
   }
 }
 

@@ -96,10 +96,47 @@ describe("Bowling Game", function() {
       game.playBall()
       game.playBall()
       expect(game.getCurrentScore()).toEqual(48)
-
-
     })
 
+  })
+
+  describe("the 10th frame", function() {
+
+    beforeEach(function() {
+      spyOn(game.pins, 'firstRoll').and.returnValue(5)
+      spyOn(game.pins, 'secondRoll').and.returnValue(3)
+      for(count=0;count<18;count++) {
+        game.playBall()
+      }
+    })
+
+    it("getting a spare gives you an extra roll", function() {
+      game.pins.firstRoll.and.returnValue(5)
+      game.pins.secondRoll.and.returnValue(5)
+      game.playBall()
+      game.playBall()
+      expect(game.gameOver).toBeFalsy()
+    })
+
+    it("after the extra roll the game is over", function() {
+      game.pins.firstRoll.and.returnValue(5)
+      game.pins.secondRoll.and.returnValue(5)
+      game.playBall()
+      game.playBall()
+      game.pins.firstRoll.and.returnValue(8)
+      game.playBall()
+      expect(game.gameOver).toBeTruthy()
+    })
+
+    it("totalScore", function() {
+      game.pins.firstRoll.and.returnValue(5)
+      game.pins.secondRoll.and.returnValue(5)
+      game.playBall()
+      game.playBall()
+      game.pins.firstRoll.and.returnValue(8)
+      game.playBall()
+      expect(game.getCurrentScore()).toEqual(98)
+    })
   })
 
   describe("a perfect game", function() {
@@ -107,14 +144,15 @@ describe("Bowling Game", function() {
     beforeEach(function() {
       spyOn(game.pins, 'firstRoll').and.returnValue(10);
     })
-    xit("ten strikes in a row gains 300 points", function() {
-      for(count=0;count<9;count++) {
+    it("ten strikes in a row gains 300 points", function() {
+      for(count=0;count<10;count++) {
         game.playBall();
       }
-
       expect(game.getCurrentScore()).toEqual(300)
     })
   })
+
+
 
   describe("ending the game", function() {
 

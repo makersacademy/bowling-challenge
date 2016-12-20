@@ -28,20 +28,20 @@ If I get a spare, I want the points for the next one ball added to the points fo
 
 ### WIP
 As a bowler,
-So that I can seal a win at the last minute,
-I want to get a number of extra balls if I score a strike or a spare in the last frame
+So that the scoresheet accurately reflects the game,
+I want to see scores for my 2 throws per turn separately from the total for the turn & the running total.
 
 ### TODO
-
-As a bowler,
-So that the scoresheet accurately reflects the game,
-I want to see scores for my 2 throws per turn separately from the total for the turn & the running total
 
 
 As a bowler,
 So that I don't accidentally enter a wrong score
-I want to actively confirm that my score for a turn is what it is
+I want to actively confirm that my score for a turn is what it is.
+
+As a bowler,
+So that I can seal a win at the last minute,
+I want to get a number of extra balls if I score a strike or a spare in the last frame.
 
 As a bowler,
 For funzies,
-I want to see all the funny names for multiple strikes or gutter balls
+I want to see all the funny names for multiple strikes or gutter balls.

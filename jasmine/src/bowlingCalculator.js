@@ -9,14 +9,22 @@ var BowlingCalculator = function() {
 };
 
 BowlingCalculator.prototype.endTurn = function() {
-  this._pushToScore();
+  if (this._isStrikeLastTurn()) {
+    var lastScoreIndex = this.score.length - 1;
+    var lastScore = this.score[lastScoreIndex];
+    var turnSum = this.currentBalls.reduce(function(a, b){
+      return a + b;
+    }, 0);
+    this.score.splice(lastScoreIndex, 1, lastScore + turnSum);
+  };
+  this._pushTurnToScore();
   this.previousBalls.push(this.currentBalls);
   this._clearCurrentTurn();
   this._reduceFrames();
   this._resetThrows();
 };
 
-BowlingCalculator.prototype._pushToScore = function(){
+BowlingCalculator.prototype._pushTurnToScore = function(){
   var turnSum = this.currentBalls.reduce(function(a, b){
     return a + b;
   }, 0)

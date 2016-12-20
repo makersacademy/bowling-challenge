@@ -65,6 +65,20 @@ describe("calculating bonuses", function() {
     expect(scorer.result(scorer.baseTotal)).toEqual("Gutter game!");
   });
 });
+
+describe("final frame", function() {
+  it("should know if it is the final round", function() {
+    for (var i = 1; i < 10; i++) {
+      window["frame"+i].firstRoll(0);
+      window["frame"+i].secondRoll(0);
+      scorer.addFrame(window["frame" + i]);
+    }
+    scorer._finalFrame(frame10);
+    expect(frame10._isTenthFrame).toEqual(true);
+  })
+
+});
+
 describe("addBase()", function() {
   it("should add all scores to the baseTotal", function() {
     frame1.firstRoll(4);

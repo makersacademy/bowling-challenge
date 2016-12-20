@@ -27,6 +27,10 @@ bowlingScorer.prototype.calculateBonus = function(previousFrame, nextFrame) {
   }
 };
 
+bowlingScorer.prototype._finalFrame = function(frame) {
+  frame._tenthFrame();
+};
+
 bowlingScorer.prototype._addBase = function(frames) {
   for (var i = 0; i < this.frames.length; i++) {
     this.baseTotal += this.frames[i].rollOne;

@@ -119,7 +119,7 @@ describe('BowlingCalculator', function(){
       expect(bowlingcalculator.totalScore()).toEqual(26);
     });
 
-    xit("should add your first ball to last turn's score if you got a spare last turn", function(){
+    it("should add your first ball to last turn's score if you got a spare last turn", function(){
       bowlingcalculator.throwBall(5);
       bowlingcalculator.throwBall(5);
       bowlingcalculator.endTurn();

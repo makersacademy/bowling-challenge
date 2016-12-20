@@ -18,7 +18,6 @@ As a bowler,
 So that I know how many turns I have left,
 I want a countdown
 
-### WIP
 As a bowler,
 So that my excellence is rewarded,
 If I get a strike, I want the points for the next two balls added to the points for this turn
@@ -26,6 +25,8 @@ If I get a strike, I want the points for the next two balls added to the points 
 As a bowler,
 So that my score is calculated correctly,
 If I get a spare, I want the points for the next one ball added to the points for this turn
+
+### WIP
 
 ### TODO
 

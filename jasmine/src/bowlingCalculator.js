@@ -17,6 +17,13 @@ BowlingCalculator.prototype.endTurn = function() {
     }, 0);
     this.score.splice(lastScoreIndex, 1, lastScore + turnSum);
   };
+
+  if (this._isSpareLastTurn()) {
+    var lastScoreIndex = this.score.length - 1;
+    var lastScore = this.score[lastScoreIndex];
+    var firstBall = this.currentBalls[0];
+    this.score.splice(lastScoreIndex, 1, lastScore + firstBall);
+  };
   this._pushTurnToScore();
   this.previousBalls.push(this.currentBalls);
   this._clearCurrentTurn();

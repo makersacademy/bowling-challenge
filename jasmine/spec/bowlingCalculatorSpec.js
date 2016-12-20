@@ -62,6 +62,11 @@ describe('BowlingCalculator', function(){
       expect(bowlingcalculator.throws).toEqual(1);
     });
 
+    it("should set your throws to zero if you throw a strike", function(){
+      bowlingcalculator.throwBall(10);
+      expect(bowlingcalculator.throws).toEqual(0);
+    });
+
     it("should raise an error if you try to throw a ball with 0 throws left", function(){
       bowlingcalculator.throwBall(8);
       bowlingcalculator.throwBall(2);

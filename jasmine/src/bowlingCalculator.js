@@ -105,7 +105,11 @@ BowlingCalculator.prototype._doesNotSumToMoreThanTen = function(number) {
 };
 
 BowlingCalculator.prototype._reduceThrows = function(){
-  this.throws -= 1;
+  if (this.currentBalls == 10) {
+    this.throws = 0;
+  } else {
+    this.throws -= 1;
+  };
 };
 
 BowlingCalculator.prototype.totalScore = function(){

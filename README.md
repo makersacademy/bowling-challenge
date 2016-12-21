@@ -1,14 +1,14 @@
 #Bowling Challenge
 
-Task:
-=====
+Task
+====
 
 Program in javascript to count and sum the scores of a bowling game for one player.
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset. More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-User Stories:
-=============
+User Stories
+============
 ```
 As a player
 So I can begin my game of 10-pin bowling
@@ -54,32 +54,49 @@ Approach and Technologies
 
 The project uses three main classes:
 
-*Game* responsible for the controlling the game and contains methods related to rolling the ball
+**Game** responsible for the controlling the game and contains methods related to rolling the ball
 
-*Pins* responsible for randomly selecting between 0 and 10 pins on the first roll, and from 0 to up to the remaining pins left on the second roll.
+**Pins** responsible for randomly selecting between 0 and 10 pins on the first roll, and from 0 to up to the remaining pins left on the second roll.
 
-*Score* responsible for calculating the score, and awarding bonuses for strikes and spares.
+**Score** responsible for calculating the score, and awarding bonuses for strikes and spares.
 
-*Frame* responsible for moving to the next frame at the end of the play.
+**Frame** responsible for moving to the next frame at the end of the play.
 
 The main challenges faced were deciding the exact responsibilities of each class in order to keep to Single Responsibility Principle (SRP).
-
 
 Setup
 =====
 
 Fork and clone this repo, then copy the path of the SpecRunner.html file into any browser. It should be ./yourPath/SpecRunner.html
 
-You will then need to open the developer tools which can be done by pressing F12 or cmd+alt+i on a Mac.
+You will then need to open the developer tools which can be done by pressing ```F12``` or ```cmd+alt+i``` on a Mac.
 
 start a new game by entering ```game = new Game() ``` where ```game``` is a parameter variable. Then use the following commands:
 
-* To roll the ball: ```game.playBall()```
+* To roll the ball: ```game.playBall()``` This returns a random number between 0 and 10.
 * To get the current score: ```game.getCurrentScore()```
 * To get the current Frame. ```game.getCurrentFrame()```
 * To start again. ```game.startAgain()```
 
+The game will throw an error when the game is over.
+
+Example
+=======
+
+Starting up the game, and getting a strike on the first roll!
+
+![alt tag](./startBowlingGame.png)
+
+Checking the score or frame during the game.
+
+![alt tag](./checkingFrameOrScore.png)
+
+'Game Over' message when end of last frame is reached.
+
+![alt tag](./gameOver.png)
+
+
 Further Features
 ================
 
-Create a nice interactive animated interface with jQuery.
+* Use jQuery to connect models to a user interface.

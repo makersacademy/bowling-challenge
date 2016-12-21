@@ -1,5 +1,4 @@
 var bowlingScorer = function() {
-  this.baseTotal = 0;
   this.totalScore = 0;
   this.frames = []
 };

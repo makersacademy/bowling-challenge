@@ -64,3 +64,20 @@ Game.prototype.getFrameScore = function(frameNumber) {
 Game.prototype._isTenthFrame = function() {
   return this.currentFrameIndex === 9;
 }
+
+Game.prototype.getFinalBonus = function(roll) {
+  var frame = this.frames[9];
+  if (roll === 2) {
+    if (frame.isStrike()) {
+      return frame.getBonusPoints(0);
+    } else {
+      return frame.scoreCard[1];
+    }
+  } else {
+    if (frame.isStrike()) {
+      return frame.getBonusPoints(1);
+    } else {
+      return frame.getBonusPoints(0);
+    }
+  }
+}

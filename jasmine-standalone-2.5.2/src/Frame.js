@@ -66,6 +66,14 @@ Frame.prototype.getBonusScore = function() {
     }
 }
 
+Frame.prototype.getBonusPoints = function(index) {
+  if (this.bonus) {
+      return this.bonus.scoreCard[index];
+    } else {
+      return null;
+    }
+}
+
 Frame.prototype.isPointsComplete = function() {
   if (this.bonus) {
       return this.bonus.isOver();

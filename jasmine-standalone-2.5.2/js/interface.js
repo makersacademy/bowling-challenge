@@ -36,6 +36,8 @@ $( document ).ready(function() {
       }
       $( '#score' + frame ).text( game.getFrameScore(frame) );
     }
+    $('#10-2').text( game.getFinalBonus(2));
+    $('#10-3').text( game.getFinalBonus(3));
   }
 
 

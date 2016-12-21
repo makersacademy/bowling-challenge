@@ -13,4 +13,30 @@ describe("Bowling", function() {
   it("should start at 1", function() {
     expect(bowling.frame).toEqual(1);
   })
+
+  it("should increment by the amount entered", function() {
+    bowling.enter_score(1);
+    expect(bowling.score).toEqual(1);
+  })
+
+  it("should increase frame by 1 every second time score is entered", function() {
+    bowling.enter_score(1);
+    bowling.enter_score(1);
+    expect(bowling.frame).toEqual(2);
+  })
+
+  it("seventh go frame should be 4", function() {
+    bowling.enter_score(1);
+    bowling.enter_score(1);
+    bowling.enter_score(1);
+    bowling.enter_score(1);
+    bowling.enter_score(1);
+    bowling.enter_score(1);
+    bowling.enter_score(1);
+    expect(bowling.frame).toEqual(4);
+  })
+
+  it("should start as an empty array", function() {
+    expect(bowling.running_total).toEqual([]);
+  })
 });

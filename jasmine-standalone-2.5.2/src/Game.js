@@ -7,12 +7,15 @@ function Game() {
 
 Game.prototype.roll = function(pins) {
   this._addBonusPoints(pins);
-  if (this._isNormalFrame()) {
-    var currentFrame = this.frames[this.currentFrameIndex];
+  var currentFrame = this.frames[this.currentFrameIndex];
+
+  if (!this.frames[9].isStrike() && !this.frames[9].isSpare()) {
     currentFrame.addToFrame(pins);
-    if (currentFrame.isOver()) {
-      this.currentFrameIndex ++;
-    }
+  }
+
+  if (currentFrame.isOver() && !this._isTenthFrame()) {
+    this.currentFrameIndex ++;
+
   }
 }
 
@@ -39,9 +42,9 @@ Game.prototype._addBonusPoints = function(pins) {
   })
 }
 
-Game.prototype._isNormalFrame = function() {
-  return this.currentFrameIndex < 10;
-}
+// Game.prototype._isNormalFrame = function() {
+//   return this.currentFrameIndex < 10;
+// }
 
 Game.prototype._rollNumber = function() {
   var currentFrame = this.frames[this.currentFrameIndex];
@@ -56,4 +59,8 @@ Game.prototype.getRoll = function(frameNumber,rollNumber) {
 Game.prototype.getFrameScore = function(frameNumber) {
   var frame = this.frames[frameNumber - 1];
   return frame.getTotalScore();
+}
+
+Game.prototype._isTenthFrame = function() {
+  return this.currentFrameIndex === 9;
 }

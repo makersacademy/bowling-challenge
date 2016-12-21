@@ -20,13 +20,13 @@ $( document ).ready(function() {
   }
 
   function hideNumbers(pins){
-    if (game._rollNumber() === 2) {
-      for (var id = 11 - pins; id < 11; id++) {
-        $("#" + id).hide();
-      }
-    } else {
-      $( 'button' ).show();
-    }
+    // if (game._rollNumber() === 2) {
+    //   for (var id = 11 - pins; id < 11; id++) {
+    //     $("#" + id).hide();
+    //   }
+    // } else {
+    //   $( 'button' ).show();
+    // }
   }
 
   function getRolls() {

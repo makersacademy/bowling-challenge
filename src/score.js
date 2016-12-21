@@ -34,7 +34,7 @@ Score.prototype.bonusForStrike = function(firstRoll,secondRoll) {
 }
 
 Score.prototype.threeOrMoreStrikesInARow = function(strikes,firstRoll,secondRoll) {
-  this.currentScore += (strikes*bonus)
+  this.currentScore += ((strikes-2)*30)
   this.twoStrikesInARow(firstRoll,secondRoll);
 }
 

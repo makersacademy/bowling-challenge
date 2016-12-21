@@ -7,6 +7,7 @@ function Game() {
   this.score = new Score(this);
   this.rolls = 0;
   this.finalFrameSpare = false;
+  this.finalFrameStrikes = 0;
 }
 
 Game.prototype.playBall = function() {
@@ -14,8 +15,13 @@ Game.prototype.playBall = function() {
     this.finalFrameForSpare();
   }
   else if (this.rolls === 1) {
-    this.secondRollScore = this.pins.secondRoll(this.firstRollScore);
+    if (this.finalFrameStrikes >=2) {
+      this.secondRollScore = this.pins.firstRoll();
+    } else {
+      this.secondRollScore = this.pins.secondRoll(this.firstRollScore);
+    }
     this.awardBonusForStrike(this.firstRollScore,this.secondRollScore);
+
     this.didSpareOccur(); 
     this.makeGameOverIfFinalFrame();
     return this.secondRollScore;
@@ -41,10 +47,20 @@ Game.prototype.resetRolls = function() {
   this.frame.moveToNextFrame()
 }
 
+Game.prototype.finalFrameStrike = function() {
+    if (this.finalFrameStrikes >= 1) {
+      this.finalFrameStrikes++;
+    } else {
+      this.rolls = 0;
+      this.score.strike = true;
+      this.score.strikes++;
+      this.finalFrameStrikes++;
+    }
+}
+
 Game.prototype.didStrikeOccur = function() {
   if (this.firstRollScore == totalNumberOfPins && this.getCurrentFrame() == 10) {
-    this.score.strike = true;
-    this.strikes++;
+    this.finalFrameStrike();
   }
   else if (this.firstRollScore === totalNumberOfPins) {
     this.score.strike = true;
@@ -64,7 +80,7 @@ Game.prototype.awardBonusForStrike = function(firstScore, secondScore) {
 Game.prototype.didSpareOccur = function() {
   if (this.secondRollScore + this.firstRollScore == totalNumberOfPins) {
     this.score.spare = true;
-  } else {
+  } else if (this.finalFrameStrikes < 2) {
      this.score.calculateScore(this.firstRollScore,this.secondRollScore);
   }
 }
@@ -97,6 +113,7 @@ Game.prototype.makeGameOverIfFinalFrame = function() {
     this.finalFrameSpare = true;
   } else if (this.getCurrentFrame() >= this.frame.maxFrames ) {
      this.gameOver = true;
+     this.rolls = 0;
   } else {
     this.resetRolls();
   }

@@ -31,6 +31,8 @@ describe("Bowling Game", function() {
   })
 
   it("Resets the pins when two rolls have been made", function() {
+    spyOn(game.pins, 'firstRoll').and.returnValue(3)
+    spyOn(game.pins, 'secondRoll').and.returnValue(4)
     for (count=0; count<2; count++) {
       game.playBall();
     }
@@ -102,7 +104,6 @@ describe("Bowling Game", function() {
 
   describe("bonus on the 10th frame", function() {
 
-
     describe("for a spare", function() {
 
       beforeEach(function() {
@@ -150,6 +151,26 @@ describe("Bowling Game", function() {
         expect(game.getCurrentFrame()).toEqual(10)
       })
 
+      it("the number of rolls stays at zero", function() {
+        expect(game.rolls).toEqual(0)
+      })
+
+      it("after two more rolls the game is over", function() {
+        game.pins.firstRoll.and.returnValue(4)
+        game.pins.secondRoll.and.returnValue(5)
+        game.playBall()
+        game.playBall()
+        expect(game.gameOver).toBeTruthy()
+      })
+
+      it("calculates the total score of 3 roles", function() {
+        game.pins.firstRoll.and.returnValue(4)
+        game.pins.secondRoll.and.returnValue(5)
+        game.playBall()
+        game.playBall()
+        expect(game.getCurrentScore()).toEqual(100)
+      })
+
     })
 
       })
@@ -160,14 +181,12 @@ describe("Bowling Game", function() {
       spyOn(game.pins, 'firstRoll').and.returnValue(10);
     })
     it("ten strikes in a row gains 300 points", function() {
-      for(count=0;count<10;count++) {
+      for(count=0;count<12;count++) {
         game.playBall();
       }
       expect(game.getCurrentScore()).toEqual(300)
     })
   })
-
-
 
   describe("ending the game", function() {
 

@@ -49,10 +49,10 @@ function Game() {
     };
   };
 
-  Game.prototype.currentRoundScore = function() {
-    return this.scoreboard.calculateScore(this.currentScore);
-  };
-
-  Game.prototype.runningTotal = function() {
-    return this.scoreboard.currentTotal();
-  };
+  // Game.prototype.currentRoundScore = function() {
+  //   return this.scoreboard.calculateScore(this.currentScore);
+  // };
+  //
+  // Game.prototype.runningTotal = function() {
+  //   return this.scoreboard.currentTotal();
+  // };

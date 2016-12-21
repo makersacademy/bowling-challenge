@@ -32,12 +32,16 @@ $(document).ready(function(){
   $('#secondRoll').click(function(){
     $(this).hide();
   $('#secondScore').text(scoreboard.scoreSecondRoll(game.secondRoll()));
+  updateCurrentScore();
   });
 
   function updateFrameCount() {
     $('#frameCount').text(game.frameCount);
-    // $('#currentTotalScore').text(game.currentRoundScore());
-    // $('#runningTotal').text(game.runningTotal());
+  };
+
+  function updateCurrentScore() {
+    scoreboard.calculateScore();
+    $('#currentTotalScore').text(scoreboard.scores[scoreboard.scores.length-1]);
   };
 
 

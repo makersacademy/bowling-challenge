@@ -3,14 +3,17 @@
 function Scoreboard() {
   this.scores = [];
   this.allScores = [];
+  this.currentScore = [];
   this.MAXSCORE = 10;
 };
 
   Scoreboard.prototype.scoreFirstRoll = function(score1) {
+    this.currentScore.push(score1)
     return score1
   };
 
   Scoreboard.prototype.scoreSecondRoll = function(score2) {
+    this.currentScore.push(score2)
     return score2;
   };
 
@@ -18,9 +21,8 @@ function Scoreboard() {
     return score3;
   }
 
-  Scoreboard.prototype.calculateScore = function(currentScore){
-    this.allScores.push(currentScore)
-    this.scores.push(currentScore.reduce(function(a,b){return a + b },0));
+  Scoreboard.prototype.calculateScore = function(){
+    this.scores.push(this.currentScore.reduce(function(a,b){return a + b },0));
     return this.scores;
   };
 

@@ -18,6 +18,15 @@ Frame.prototype.secondRoll = function(score) {
   }
 };
 
+Frame.prototype.bonusRoll = function(score) {
+  if (this._isSpare() && this._isTenthFrame == true) {
+    this.frameBonus += score;
+  }
+  else {
+    throw("No spare was rolled in final frame - no bonus roll allowed.")
+  }
+};
+
 Frame.prototype._tenthFrame = function() {
   this._isTenthFrame = true;
 };

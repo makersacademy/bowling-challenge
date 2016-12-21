@@ -9,17 +9,9 @@ describe("Game", function(){
     scoreboard = jasmine.createSpy('Scoreboard');
   });
 
-  // it("should initialize with a constant of pin setup", function(){
-  //   expect(game.PINS).toContain(0,1,2,3,4,5,6,7,8,9,10)
-  // });
-
   it("should initialize with a fram count of zero", function(){
     expect(game.frameCount).toEqual(0);
   });
-
-  // it("should initialize with no pins set up", function(){
-  //   expect(game.setUpPins).toEqual([]);
-  // });
 
   it("should initialize with a empty current score", function(){
     expect(game.currentScore).toEqual([]);
@@ -28,10 +20,6 @@ describe("Game", function(){
   it("should initialize with a empty score", function(){
     expect(game.score).toEqual([]);
   });
-
-  // it("should initialize with a sweep function returning false", function(){
-  //   expect(game.sweep).toBe(false);
-  // });
 
   it("should initialize with a false rack of pins", function(){
     expect(game.rackedPins).toBe(false);
@@ -78,12 +66,6 @@ describe("Game", function(){
     game.firstRoll();
     expect(game.sweepComplete).toBe(true);
   });
-
-  // it("should return true when pins are cleared to be sweeped", function(){
-  //   game.rackUp();
-  //   game.firstRoll();
-  //   expect(game.pinSweepReady).toBe(true);
-  // });
 
   it("should return the left over pins", function(){
     game.rackUp();

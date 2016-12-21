@@ -6,14 +6,14 @@ $(document).ready(function(){
   $(function () {
   $('#rackUp').click(function(){
     game.rackUp();
-    updateCurrentScore();
-    $('#firstRoll').show();
-    if ($(this.rackedPins).val() == false) {
-                $('.roll1').prop('disabled', true);
-            } else {
-                $('.roll1').prop('disabled', false);
-            }
-        });
+    updateFrameCount();
+      $('#firstRoll').show();
+                if ($(this.rackedPins).val() == false) {
+                  $('.roll1').prop('disabled', true);
+              } else {
+                  $('.roll1').prop('disabled', false);
+              };
+    });
   });
 
   $(function () {
@@ -34,11 +34,7 @@ $(document).ready(function(){
   $('#secondScore').text(scoreboard.scoreSecondRoll(game.secondRoll()));
   });
 
-  // $('#restart').click(function(){
-  //   game.newGame();
-  // });
-
-  function updateCurrentScore() {
+  function updateFrameCount() {
     $('#frameCount').text(game.frameCount);
     // $('#currentTotalScore').text(game.currentRoundScore());
     // $('#runningTotal').text(game.runningTotal());

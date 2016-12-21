@@ -1,8 +1,6 @@
 'use strict';
 
 function Game() {
-  // this.PINS = [0,1,2,3,4,5,6,7,8,9,10];
-  // this.setUpPins = [];
   this.frameCount = 0;
   this.currentScore = [];
   this.score = [];
@@ -34,19 +32,6 @@ function Game() {
       throw new Error("Cannot Roll, Pins are not yet racked!");
     };
   };
-
-    // if (score === 10) {
-    //   this.currentScore.push('X');
-    //   this.pins == [0]
-    //   return score
-    // } else {
-    //   this.currentScore.push(score);
-    //   this.pins == [0]
-    //   return score
-    // };
-
-    // this.currentScore.push(score);
-    // return score;
 
   Game.prototype.pinSweep = function(score){
       this.sweepComplete = true;

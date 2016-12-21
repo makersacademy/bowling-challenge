@@ -39,4 +39,9 @@ describe("Bowling", function() {
   it("should start as an empty array", function() {
     expect(bowling.running_total).toEqual([]);
   })
+
+  it("should store scores in an array", function() {
+    bowling.enter_score(1);
+    expect(bowling.running_total).toEqual([1]);
+  })
 });

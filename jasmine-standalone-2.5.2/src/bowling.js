@@ -9,6 +9,7 @@ Bowling.prototype.enter_score = function(number) {
   if (this.go === 1) {
     this.go += 1;
     this.score += number;
+    this.running_total.push(number);
   }
   else {
     this.go = 1;

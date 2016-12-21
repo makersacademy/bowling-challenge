@@ -82,11 +82,8 @@ describe("calculating bonuses", function() {
       frame10.secondRoll(10);
       frame10.bonusRoll(10);
       scorer.addFrame(frame10)
-      console.log(scorer.calculateBonus)
-      console.log(scorer.frames[8])
-      console.log(scorer.frames[9])
-
       expect(scorer.totalScore).toEqual(300);
+      expect(scorer.result(scorer.totalScore)).toEqual("Perfect game!")
   });
 });
 
@@ -123,5 +120,41 @@ describe("addScores()", function() {
     scorer.addFrame(frame2);
     scorer._addScores(this.frames);
     expect(scorer.totalScore).toEqual(19);
+  });
+});
+
+describe("Test Game", function() {
+  it("should play a whole game", function() {
+    frame1.firstRoll(1);
+    frame1.secondRoll(4);
+    scorer.addFrame(frame1);
+    frame2.firstRoll(4);
+    frame2.secondRoll(5);
+    scorer.addFrame(frame2);
+    frame3.firstRoll(6);
+    frame3.secondRoll(4);
+    scorer.addFrame(frame3);
+    frame4.firstRoll(5);
+    frame4.secondRoll(5);
+    scorer.addFrame(frame4);
+    frame5.firstRoll(10);
+    scorer.addFrame(frame5);
+    frame6.firstRoll(0);
+    frame6.secondRoll(1);
+    scorer.addFrame(frame6);
+    frame7.firstRoll(7);
+    frame7.secondRoll(3);
+    scorer.addFrame(frame7);
+    frame8.firstRoll(6);
+    frame8.secondRoll(4);
+    scorer.addFrame(frame8);
+    frame9.firstRoll(10);
+    scorer.addFrame(frame9);
+    scorer._finalFrame(frame10);
+    frame10.firstRoll(2);
+    frame10.secondRoll(8);
+    frame10.bonusRoll(6);
+    scorer.addFrame(frame10);
+    expect(scorer.result(scorer.totalScore)).toEqual("Your score is 133")
   });
 });

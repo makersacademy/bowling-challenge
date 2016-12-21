@@ -12,12 +12,19 @@ bowlingScorer.prototype.addFrame = function(frame) {
   if (this.frames.length === 10) {
     this.tenthBonus(this.frames[8], this.frames[9]);
     this._addScores(this.frames);
+    this.result(this.totalScore);
   }
 };
 
 bowlingScorer.prototype.result = function(score) {
   if (score === 0) {
     return "Gutter game!"
+  }
+  else if (score === 300) {
+    return "Perfect game!"
+  }
+  else {
+    return "Your score is " + score
   }
 };
 

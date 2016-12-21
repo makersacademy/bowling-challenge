@@ -9,8 +9,8 @@ $( document ).ready(function() {
       game.roll(pins);
       updateScoreAndRoll();
       hideNumbers(pins);
-      // var hideThese = [pins];
-      // var id = pins + 1;
+      getRolls();
+
   })
 
   function updateScoreAndRoll(){
@@ -26,6 +26,15 @@ $( document ).ready(function() {
       }
     } else {
       $( 'button' ).show();
+    }
+  }
+
+  function getRolls() {
+    for (var frame = 1; frame < 11; frame ++) {
+      for (var roll = 1; roll < 3; roll++) {
+        $( '#' + frame + '-' + roll ).text( game.getRoll(frame,roll) );
+      }
+      $( '#score' + frame ).text( game.getFrameScore(frame) );
     }
   }
 

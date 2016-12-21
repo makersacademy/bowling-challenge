@@ -16,11 +16,12 @@ Game.prototype.roll = function(pins) {
   }
 }
 
-Game.prototype.calculateScore = function() {
+Game.prototype.calculateScore = function(scoreUpTo=10) {
   var total = 0;
-  this.frames.forEach(function(frame) {
+  for (var frameIndex = 0; frameIndex < scoreUpTo; frameIndex++) {
+    var frame = this.frames[frameIndex];
     total += frame.getTotalScore();
-  })
+  }
   return total;
 }
 
@@ -45,4 +46,14 @@ Game.prototype._isNormalFrame = function() {
 Game.prototype._rollNumber = function() {
   var currentFrame = this.frames[this.currentFrameIndex];
   return currentFrame.rollNumber();
+}
+
+Game.prototype.getRoll = function(frameNumber,rollNumber) {
+  var frame = this.frames[frameNumber-1];
+  return frame.scoreCard[rollNumber-1];
+}
+
+Game.prototype.getFrameScore = function(frameNumber) {
+  var frame = this.frames[frameNumber - 1];
+  return frame.getTotalScore();
 }

@@ -26,7 +26,7 @@ Frame.prototype.getTotalScore = function() {
   if (this.isPointsComplete()) {
     return sum + bonus;
   } else {
-    return 0;
+    return null;
   }
 }
 

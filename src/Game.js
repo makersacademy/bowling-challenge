@@ -56,8 +56,3 @@ function Game() {
   Game.prototype.runningTotal = function() {
     return this.scoreboard.currentTotal();
   };
-
-
-  Game.prototype.newGame = function(){
-    new Game();
-  };

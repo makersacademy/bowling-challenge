@@ -87,11 +87,6 @@ describe("Game", function(){
     expect(game.scoreboard.scoreSecondRoll(game.secondRoll())).toEqual(3)
   });
 
-  it("should return the frame count to zero", function(){
-    game.newGame();
-    expect(game.frameCount).toEqual(0);
-  });
-
   it("should calculate the current score", function() {
     game.currentScore = [3, 4];
     expect(game.currentRoundScore()).toContain(7);

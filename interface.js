@@ -6,7 +6,6 @@ $(document).ready(function(){
   $(function () {
   $('#rackUp').click(function(){
     $('#firstRoll').show();
-    $('#pinSweep').show();
     $('#secondRoll').show();
     game.rackUp();
     if ($(this.rackedPins).val() == false) {
@@ -19,6 +18,7 @@ $(document).ready(function(){
 
   $('#firstRoll').click(function(){
     $(this).hide();
+    $('#pinSweep').show();
   $('#firstScore').text(scoreboard.scoreFirstRoll(game.firstRoll()))
   });
 

@@ -29,9 +29,9 @@ describe("Game", function(){
     expect(game.score).toEqual([]);
   });
 
-  it("should initialize with a sweep function returning false", function(){
-    expect(game.sweep).toBe(false);
-  });
+  // it("should initialize with a sweep function returning false", function(){
+  //   expect(game.sweep).toBe(false);
+  // });
 
   it("should initialize with a false rack of pins", function(){
     expect(game.rackedPins).toBe(false);
@@ -68,24 +68,33 @@ describe("Game", function(){
     expect(function(){game.firstRoll();}).toThrowError("Cannot Roll, Pins are not yet racked!")
   });
 
+  it("should return true when pins are cleared to be sweeped", function(){
+    game.rackUp();
+    game.firstRoll();
+    expect(game.pinSweepReady).toBe(true);
+  });
+
   it("should return the left over pins", function(){
     game.rackUp();
+    game.firstRoll();
     game.currentScore = [9];
     game.pinSweep();
     expect(game.setUpPins).toEqual([0,1]);
   });
 
   it("should return the true when remaining pins are returned", function(){
-    game.currentScore = ['X'];
+    game.rackUp();
+    game.firstRoll();
     game.pinSweep();
     expect(game.sweep).toBe(true);
   });
 
   it("should return amount of pins knocked down in second throw", function(){
-    game.currentScore = [4];
+    game.rackUp();
+    game.firstRoll();
     game.pinSweep();
     spyOn(game, 'secondRoll').and.returnValue(3);
-    expect(game.secondRoll()).toEqual(3)
+    expect(game.scoreboard.scoreSecondRoll(game.secondRoll())).toEqual(3)
   });
 
   it("should return the frame count to zero", function(){

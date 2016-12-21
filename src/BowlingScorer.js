@@ -9,6 +9,9 @@ bowlingScorer.prototype.addFrame = function(frame) {
   if (this.frames.length > 1) {
     this.calculateBonus(this.frames[this.frames.length-2], this.frames[this.frames.length-1])
   };
+  if (this.frames.length === 10) {
+    this._addBase(this.frames);
+  }
 };
 
 bowlingScorer.prototype.result = function(score) {

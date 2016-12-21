@@ -46,14 +46,6 @@ describe("calculating bonuses", function() {
     scorer.addFrame(frame2);
     expect(scorer.frames[0].frameBonus).toEqual(0);
   });
-  it("should calculate the base score for a perfect game", function() {
-    for (var i = 1; i < 11; i++) {
-      window["frame"+i].firstRoll(10);
-      scorer.addFrame(window["frame" + i]);
-    }
-    scorer._addBase();
-    expect(scorer.baseTotal).toEqual(100);
-  });
   it("should return 'gutter game' when the player scores 0 in every frame", function() {
     for (var i = 1; i < 11; i++) {
       window["frame"+i].firstRoll(0);
@@ -67,14 +59,24 @@ describe("calculating bonuses", function() {
 });
 
 describe("final frame", function() {
-  it("should know if it is the final round", function() {
+  beforeEach(function() {
     for (var i = 1; i < 10; i++) {
       window["frame"+i].firstRoll(0);
       window["frame"+i].secondRoll(0);
       scorer.addFrame(window["frame" + i]);
     }
-    scorer._finalFrame(frame10);
+      scorer._finalFrame(frame10);
+
+  });
+  it("should know if it is the final round", function() {
     expect(frame10._isTenthFrame).toEqual(true);
+  });
+  it("should calculate the final score after the tenth frame is added", function() {
+    frame10.firstRoll(10);
+    frame10.secondRoll(10);
+    frame10.bonusRoll(10);
+    scorer.addFrame(frame10);
+    expect(scorer.baseTotal).toEqual(20);
   })
 
 });

@@ -15,5 +15,6 @@ Bowling.prototype.enter_score = function(number) {
     this.go = 1;
     this.frame += 1;
     this.score += number;
+    this.running_total.push(number);
   }
 }

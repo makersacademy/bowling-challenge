@@ -44,4 +44,10 @@ describe("Bowling", function() {
     bowling.enter_score(1);
     expect(bowling.running_total).toEqual([1]);
   })
+
+  it("should store multiple scores in an array", function() {
+    bowling.enter_score(1);
+    bowling.enter_score(2);
+    expect(bowling.running_total).toEqual([1,2]);
+  })
 });

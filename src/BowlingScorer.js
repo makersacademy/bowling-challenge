@@ -10,7 +10,7 @@ bowlingScorer.prototype.addFrame = function(frame) {
     this.calculateBonus(this.frames[this.frames.length-2], this.frames[this.frames.length-1])
   };
   if (this.frames.length === 10) {
-    this._addBase(this.frames);
+    this._addScores(this.frames);
   }
 };
 
@@ -34,9 +34,10 @@ bowlingScorer.prototype._finalFrame = function(frame) {
   frame._tenthFrame();
 };
 
-bowlingScorer.prototype._addBase = function(frames) {
+bowlingScorer.prototype._addScores = function(frames) {
   for (var i = 0; i < this.frames.length; i++) {
-    this.baseTotal += this.frames[i].rollOne;
-    this.baseTotal += this.frames[i].rollTwo;
+    this.totalScore += this.frames[i].rollOne;
+    this.totalScore += this.frames[i].rollTwo;
+    this.totalScore += this.frames[i].frameBonus;
   }
 };

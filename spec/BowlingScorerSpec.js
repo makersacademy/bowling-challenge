@@ -52,7 +52,6 @@ describe("calculating bonuses", function() {
       window["frame"+i].secondRoll(0);
       scorer.addFrame(window["frame" + i]);
     }
-    scorer._addBase();
     expect(scorer.baseTotal).toEqual(0);
     expect(scorer.result(scorer.baseTotal)).toEqual("Gutter game!");
   });
@@ -76,20 +75,20 @@ describe("final frame", function() {
     frame10.secondRoll(10);
     frame10.bonusRoll(10);
     scorer.addFrame(frame10);
-    expect(scorer.baseTotal).toEqual(20);
+    expect(scorer.totalScore).toEqual(30);
   })
 
 });
 
-describe("addBase()", function() {
-  it("should add all scores to the baseTotal", function() {
+describe("addScores()", function() {
+  it("should add all scores together", function() {
     frame1.firstRoll(4);
     frame1.secondRoll(5);
     scorer.addFrame(frame1);
     frame2.firstRoll(4);
     frame2.secondRoll(6);
     scorer.addFrame(frame2);
-    scorer._addBase(this.frames);
-    expect(scorer.baseTotal).toEqual(19);
+    scorer._addScores(this.frames);
+    expect(scorer.totalScore).toEqual(19);
   });
 });

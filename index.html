@@ -19,14 +19,17 @@
     <h1>Score Board </h1>
     <button id='rackUp' >Rack Up</button>
     <button id='firstRoll' class='roll1' disabled='disabled' >Roll 1</button>
-    <button id='secondRoll' class='rool2' disabled='disabled' >Roll 2 </button>
-    <button id='restart'>Restart Game</button>
+    <button id='pinSweep' >Pin Sweep</button>
+    <button id='secondRoll' class='roll2' disabled='disabled' >Roll 2 </button>
+    <form action ='file:///Users/courtneyosborn/Documents/projects/course_week_5/weekend_challenge/Bowling/bowling-challenge/bowling-challenge/index.html'>
+      <input id='restart' type="submit" value='Restart Game'/>
+    </form>
     <table>
       <tr>
         <th width="10%">Frame</th><th width="10%">Roll</th><th width="10%">Knocked Down pins</th><th width="10%">Total</th><th width="10%">Notes</th>
       </tr>
       <tr>
-        <td id="frameCount"></td><td id="firstScore"></td><td id="score"></td>
+        <td id="frameCount"></td><td id="firstScore"></td><td id="currentTotalScore"></td><td id="runningTotal"></td>
       </tr>
        <tr>
         <td id="frameCount1"></td><td id="secondScore"></td>
@@ -42,7 +45,8 @@
       </tr>
     </table>
   </section>
-    <script src="src/Game.js"></script>
+     <script src="src/Game.js"></script>
+     <script src="src/Scoreboard.js"></script>
      <script src="jquery.js"></script>
      <script src="interface.js"></script>
   </body>

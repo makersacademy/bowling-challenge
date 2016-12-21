@@ -21,14 +21,24 @@ function Game() {
   };
 
   Game.prototype.firstRoll = function(){
-    var score = Math.floor(Math.random() * this.setUpPins.length);
-    if (score === 10) {
-      return this.currentScore.push('X');
+    if (this.rackedPins == true) {
+      var score = Math.floor(Math.random() * this.setUpPins.length);
+      return this.scoreboard.scoreFirstRoll(score);
     } else {
-      this.pinSweep();
-      return this.currentScore.push(score);
+      throw new Error("Cannot Roll, Pins are not yet racked!");
     };
   };
+
+    // if (score === 10) {
+    //   this.currentScore.push('X');
+    //   this.pins == [0]
+    //   return score
+    // } else {
+    //   this.currentScore.push(score);
+    //   this.pins == [0]
+    //   return score
+    // };
+
 
   Game.prototype.pinSweep = function(){
      this.setUpPins.splice(-(this.currentScore));
@@ -37,7 +47,8 @@ function Game() {
 
   Game.prototype.secondRoll = function(){
     var score = Math.floor(Math.random() * this.setUpPins.length);
-      return this.currentScore.push(score);
+      this.currentScore.push(score);
+      return score;
   };
 
   Game.prototype.currentRoundScore = function() {
@@ -54,5 +65,5 @@ function Game() {
   };
 
   Game.prototype.newGame = function(){
-    this.frameCount = 0;
+    new Game();
   };

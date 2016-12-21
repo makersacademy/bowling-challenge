@@ -6,6 +6,14 @@ function Scoreboard() {
   this.MAXSCORE = 10;
 };
 
+  Scoreboard.prototype.scoreFirstRoll = function(score1) {
+    return score1;
+  };
+
+  Scoreboard.prototype.scoreSecondRoll = function(score2) {
+    return score2;
+  };
+
   Scoreboard.prototype.calculateScore = function(currentScore){
     this.allScores.push(currentScore)
     this.scores.push(currentScore.reduce(function(a,b){return a + b },0));

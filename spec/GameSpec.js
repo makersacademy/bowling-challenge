@@ -6,7 +6,7 @@ describe("Game", function(){
 
   beforeEach(function(){
     game = new Game();
-    scoreboard = new Scoreboard();
+    scoreboard = jasmine.createSpy('Scoreboard');
   });
 
   it("should initialize with a constant of pin setup", function(){
@@ -58,26 +58,26 @@ describe("Game", function(){
     expect(function(){game.rackUp();}).toThrowError("Game Over! Please start a new game")
   });
 
-  it("should return amount of pins knocked down in first throw- excluding a strike", function(){
+  it("should call return amount of pins knocked down in first throw", function(){
+    game.rackUp();
     spyOn(game, 'firstRoll').and.returnValue(4);
-    expect(game.firstRoll()).toEqual(4);
+    expect(game.scoreboard.scoreFirstRoll(game.firstRoll())).toEqual(4);
   });
 
-  it("should return X when 10 pins are knocked down in first throw", function(){
-    spyOn(game, "firstRoll").and.returnValue(10);
-    expect(game.firstRoll()).toEqual(10);
+  it("should throw an error if pins are not racked", function() {
+    expect(function(){game.firstRoll();}).toThrowError("Cannot Roll, Pins are not yet racked!")
   });
 
   it("should return the left over pins", function(){
     game.rackUp();
     game.currentScore = [9];
-    game.firstRoll();
+    game.pinSweep();
     expect(game.setUpPins).toEqual([0,1]);
   });
 
   it("should return the true when remaining pins are returned", function(){
     game.currentScore = ['X'];
-    game.firstRoll();
+    game.pinSweep();
     expect(game.sweep).toBe(true);
   });
 

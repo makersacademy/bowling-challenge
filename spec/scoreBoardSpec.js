@@ -21,6 +21,14 @@ describe("Scoreboard", function(){
     expect(scoreboard.allScores).toEqual([]);
   });
 
+  it("should return the result of the first roll", function(){
+    expect(scoreboard.scoreFirstRoll(4)).toEqual(4);
+  });
+
+  it("should return the result of the second roll", function(){
+    expect(scoreboard.scoreSecondRoll(3)).toEqual(3);
+  });
+
   it("should return a calculation of the current score per throw set", function(){
     game.currentScore = [3,4]
     scoreboard.calculateScore(game.currentScore);

@@ -1,17 +1,15 @@
-
-Bowling Challenge
-=================
+#Bowling Challenge
 
 Task:
------
+=====
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+Program in javascript to count and sum the scores of a bowling game for one player.
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset. More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-User Story:
------------
-
+User Stories:
+=============
+```
 As a player
 So I can begin my game of 10-pin bowling
 I would like to start on the first frame
@@ -48,47 +46,40 @@ As a player
 So I can make the final frame more interesting
 I would like to have three chances to knock down the pins.
 
-Game Rules:
------------
-## Strikes
+```
+Approach and Technologies
+=========================
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll).
+* Jasmine: For unit testing.
 
-## Spares
+The project uses three main classes:
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame.
+*Game* responsible for the controlling the game and contains methods related to rolling the ball
 
-## Gutter Game
+*Pins* responsible for randomly selecting between 0 and 10 pins on the first roll, and from 0 to up to the remaining pins left on the second roll.
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+*Score* responsible for calculating the score, and awarding bonuses for strikes and spares.
 
-## Perfect Game
+*Frame* responsible for moving to the next frame at the end of the play.
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-Scoring:
---------
-
-One point is scored for each pin knocked over, in the event of a **strike** or **spare** the following bonuses are awarded.
-
-A player achieving a spare is awarded ten points, plus a bonus of whatever is scored with the next ball.
-
-A player achieving a strike is awarded ten points, plus a bonus of whatever is scored with the next two balls.
-
-e.g
-
-Frame 1, ball 1: 10 points (strike)
-Frame 2, ball 1: 3 points
-Frame 2, ball 2: 6 points (strike)
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+The main challenges faced were deciding the exact responsibilities of each class in order to keep to Single Responsibility Principle (SRP).
 
 
-Further Features to Implement:
-------------------------------
+Setup
+=====
+
+Fork and clone this repo, then copy the path of the SpecRunner.html file into any browser. It should be ./yourPath/SpecRunner.html
+
+You will then need to open the developer tools which can be done by pressing F12 or cmd+alt+i on a Mac.
+
+start a new game by entering ```game = new Game() ``` where ```game``` is a parameter variable. Then use the following commands:
+
+* To roll the ball: ```game.playBall()```
+* To get the current score: ```game.getCurrentScore()```
+* To get the current Frame. ```game.getCurrentFrame()```
+* To start again. ```game.startAgain()```
+
+Further Features
+================
 
 Create a nice interactive animated interface with jQuery.

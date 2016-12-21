@@ -115,13 +115,6 @@ describe("Game", function(){
     expect(game.currentRoundScore()).toContain(7);
   });
 
-  it("should increase frame Count when there are two scores in current score", function() {
-    game.currentScore = [3, 4];
-    game.currentRoundScore();
-    game.increaseFrameCount();
-    expect(game.frameCount).toEqual(1);
-  });
-
   it("should return the current total", function() {
     game.currentScore = [5,2];
     game.currentRoundScore();

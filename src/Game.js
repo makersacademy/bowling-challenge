@@ -72,10 +72,6 @@ function Game() {
     return this.scoreboard.currentTotal();
   };
 
-  Game.prototype.increaseFrameCount = function() {
-    this.frameCount = this.scoreboard.increaseFrame();
-    return this.frameCount;
-  };
 
   Game.prototype.newGame = function(){
     new Game();

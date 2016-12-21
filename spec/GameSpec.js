@@ -87,6 +87,13 @@ describe("Game", function(){
     expect(game.scoreboard.scoreSecondRoll(game.secondRoll())).toEqual(3)
   });
 
+  it("should return a thir roll only on the 10th frame and if a srike or spare was scored", function(){
+    game.frameCount = 10;
+    game.scoreboard.scoreSecondRoll(10);
+    spyOn(game, 'thirdRoll').and.returnValue(5)
+    expect(game.scoreboard.scoreThirdRoll(game.thirdRoll())).toEqual(5)
+  });
+
   it("should calculate the current score", function() {
     game.currentScore = [3, 4];
     expect(game.currentRoundScore()).toContain(7);

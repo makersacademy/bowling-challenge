@@ -14,6 +14,10 @@ function Scoreboard() {
     return score2;
   };
 
+  Scoreboard.prototype.scoreThirdRoll = function(score3) {
+    return score3;
+  }
+
   Scoreboard.prototype.calculateScore = function(currentScore){
     this.allScores.push(currentScore)
     this.scores.push(currentScore.reduce(function(a,b){return a + b },0));

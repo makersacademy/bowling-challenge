@@ -8,7 +8,6 @@ $(document).ready(function(){
     game.rackUp();
     updateCurrentScore();
     $('#firstRoll').show();
-    $('#secondRoll').show();
     if ($(this.rackedPins).val() == false) {
                 $('.roll1').prop('disabled', true);
             } else {
@@ -17,26 +16,21 @@ $(document).ready(function(){
         });
   });
 
+  $(function () {
   $('#firstRoll').click(function(){
     $(this).hide();
-    $('#pinSweep').show();
+    $('#secondRoll').show();
   $('#firstScore').text(scoreboard.scoreFirstRoll(game.firstRoll()))
+  if ($(this.sweepComplete).val() == false) {
+              $('.roll2').prop('disabled', true);
+          } else {
+              $('.roll2').prop('disabled', false);
+          }
+      });
   });
 
-  // $(function () {
-  // $('#pinSweep').click(function(){
-  //   $(this).hide();
-  //   game.pinSweep();
-  //   if ($(this.sweep).val() == false) {
-  //               $('.roll2').prop('disabled', true);
-  //           } else {
-  //               $('.roll2').prop('disabled', false);
-  //           }
-  //       });
-  // });
-
   $('#secondRoll').click(function(){
-    // $(this).hide();
+    $(this).hide();
   $('#secondScore').text(scoreboard.scoreSecondRoll(game.secondRoll()));
   });
 

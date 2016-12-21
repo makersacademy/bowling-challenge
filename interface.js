@@ -6,6 +6,7 @@ $(document).ready(function(){
   $(function () {
   $('#rackUp').click(function(){
     game.rackUp();
+    updateCurrentScore();
     $('#firstRoll').show();
     $('#secondRoll').show();
     if ($(this.rackedPins).val() == false) {
@@ -37,7 +38,6 @@ $(document).ready(function(){
   $('#secondRoll').click(function(){
     // $(this).hide();
   $('#secondScore').text(scoreboard.scoreSecondRoll(game.secondRoll()));
-  // updateCurrentScore();
   });
 
   // $('#restart').click(function(){
@@ -45,8 +45,9 @@ $(document).ready(function(){
   // });
 
   function updateCurrentScore() {
-    $('#currentTotalScore').text(game.currentRoundScore());
-    $('#runningTotal').text(game.runningTotal());
+    $('#frameCount').text(game.frameCount);
+    // $('#currentTotalScore').text(game.currentRoundScore());
+    // $('#runningTotal').text(game.runningTotal());
   };
 
 

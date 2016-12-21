@@ -7,7 +7,7 @@ function Scoreboard() {
 };
 
   Scoreboard.prototype.scoreFirstRoll = function(score1) {
-    return score1;
+    return score1
   };
 
   Scoreboard.prototype.scoreSecondRoll = function(score2) {

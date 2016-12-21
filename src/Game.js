@@ -1,20 +1,23 @@
 'use strict';
 
 function Game() {
-  this.PINS = [0,1,2,3,4,5,6,7,8,9,10];
-  this.setUpPins = [];
+  // this.PINS = [0,1,2,3,4,5,6,7,8,9,10];
+  // this.setUpPins = [];
   this.frameCount = 0;
   this.currentScore = [];
   this.score = [];
-  // this.sweep = false;
   this.rackedPins = false;
   this.scoreboard = new Scoreboard();
 };
 
   Game.prototype.rackUp = function(){
-    if (this.frameCount < 10) {
+    this.frameCount ++
+    if (this.frameCount <= 10) {
+      console.log(this.rackedPins)
       this.rackedPins = true;
-      return this.setUpPins = this.PINS;
+      console.log(this.rackedPins)
+      this.setUpPins = [0,1,2,3,4,5,6,7,8,9,10];
+      console.log(this.setUpPins)
     } else {
       throw new Error("Game Over! Please start a new game");
     };
@@ -22,8 +25,10 @@ function Game() {
 
   Game.prototype.firstRoll = function(){
     if (this.rackedPins == true) {
+      console.log(this.setUpPins)
       var score = Math.floor(Math.random() * this.setUpPins.length);
-      this.pinSweepReady = true;
+      console.log(score)
+      this.pinSweep(score);
       return this.scoreboard.scoreFirstRoll(score);
     } else {
       throw new Error("Cannot Roll, Pins are not yet racked!");
@@ -43,17 +48,19 @@ function Game() {
     // this.currentScore.push(score);
     // return score;
 
-  Game.prototype.pinSweep = function(){
-    if (this.pinSweepReady === true) {
-     this.setUpPins.splice(-(this.currentScore));
-     return this.sweep = true;
-   };
+  Game.prototype.pinSweep = function(score){
+      this.sweepComplete = true;
+      return this.setUpPins.splice(this.setUpPins.length-score, score);
+
   };
 
   Game.prototype.secondRoll = function(){
-    if (this.sweep === true) {
-      var score = Math.floor(Math.random() * this.setUpPins.length);
-      this.scoreboard.scoreSecondRoll(score);
+    if (this.sweepComplete === true) {
+      console.log(this.setUpPins)
+      var score2 = Math.floor(Math.random() * this.setUpPins.length);
+      console.log(score2)
+      this.rackedPins = false;
+      return this.scoreboard.scoreSecondRoll(score2);
     };
   };
 

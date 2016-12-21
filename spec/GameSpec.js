@@ -9,17 +9,17 @@ describe("Game", function(){
     scoreboard = jasmine.createSpy('Scoreboard');
   });
 
-  it("should initialize with a constant of pin setup", function(){
-    expect(game.PINS).toContain(0,1,2,3,4,5,6,7,8,9,10)
-  });
+  // it("should initialize with a constant of pin setup", function(){
+  //   expect(game.PINS).toContain(0,1,2,3,4,5,6,7,8,9,10)
+  // });
 
   it("should initialize with a fram count of zero", function(){
     expect(game.frameCount).toEqual(0);
   });
 
-  it("should initialize with no pins set up", function(){
-    expect(game.setUpPins).toEqual([]);
-  });
+  // it("should initialize with no pins set up", function(){
+  //   expect(game.setUpPins).toEqual([]);
+  // });
 
   it("should initialize with a empty current score", function(){
     expect(game.currentScore).toEqual([]);
@@ -39,6 +39,11 @@ describe("Game", function(){
 
   it("should initialize with a new Scoreboard", function() {
     expect(game.scoreboard).toEqual(new Scoreboard())
+  });
+
+  it("should return a frame count each time the pins are racked up", function(){
+    game.rackUp();
+    expect(game.frameCount).toEqual(1)
   });
 
   it("should re-rack the pins between each round if frame count is less than ten", function(){
@@ -68,31 +73,34 @@ describe("Game", function(){
     expect(function(){game.firstRoll();}).toThrowError("Cannot Roll, Pins are not yet racked!")
   });
 
-  it("should return true when pins are cleared to be sweeped", function(){
+  it("should return sweep complete as true", function(){
     game.rackUp();
     game.firstRoll();
-    expect(game.pinSweepReady).toBe(true);
+    expect(game.sweepComplete).toBe(true);
   });
+
+  // it("should return true when pins are cleared to be sweeped", function(){
+  //   game.rackUp();
+  //   game.firstRoll();
+  //   expect(game.pinSweepReady).toBe(true);
+  // });
 
   it("should return the left over pins", function(){
     game.rackUp();
-    game.firstRoll();
-    game.currentScore = [9];
-    game.pinSweep();
-    expect(game.setUpPins).toEqual([0,1]);
+    spyOn(game, 'firstRoll').and.returnValue(2);
+    game.pinSweep(game.firstRoll());
+    expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8]);
   });
 
   it("should return the true when remaining pins are returned", function(){
     game.rackUp();
     game.firstRoll();
-    game.pinSweep();
-    expect(game.sweep).toBe(true);
+    expect(game.sweepComplete).toBe(true);
   });
 
   it("should return amount of pins knocked down in second throw", function(){
     game.rackUp();
     game.firstRoll();
-    game.pinSweep();
     spyOn(game, 'secondRoll').and.returnValue(3);
     expect(game.scoreboard.scoreSecondRoll(game.secondRoll())).toEqual(3)
   });

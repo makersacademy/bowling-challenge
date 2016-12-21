@@ -72,7 +72,7 @@ describe("calculating bonuses", function() {
     expect(scorer.totalScore).toEqual(0);
     expect(scorer.result(scorer.totalScore)).toEqual("Gutter game!");
   });
-  xit("should calculate the scores for a perfect game", function() {
+  it("should calculate the scores for a perfect game", function() {
     for (var i = 1; i < 10; i++) {
       window["frame"+i].firstRoll(10);
       scorer.addFrame(window["frame" + i]);
@@ -82,6 +82,10 @@ describe("calculating bonuses", function() {
       frame10.secondRoll(10);
       frame10.bonusRoll(10);
       scorer.addFrame(frame10)
+      console.log(scorer.calculateBonus)
+      console.log(scorer.frames[8])
+      console.log(scorer.frames[9])
+
       expect(scorer.totalScore).toEqual(300);
   });
 });

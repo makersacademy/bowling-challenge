@@ -7,9 +7,39 @@ describe('Game', function() {
     game = new Game();
   });
 
-it('should have a default value of 10 frames', function() {
-  expect(game._frames).toEqual(10);
+it('can roll a gutter game', function() {
+  rollMany(0,20);
+  expect(game.score()).toEqual(0);
 })
 
+it('can roll all ones', function () {
+  rollMany(1,20);
+  expect(game.score()).toEqual(20);
+})
 
+  it('can roll a spare', function() {
+    game.roll(5);
+    game.roll(5);
+    game.roll(3);
+    rollMany(0,17);
+    expect(game.score()).toEqual(16);
+  })
+
+var rollMany = function(pins, rolls){
+  for (var i = 0; i < rolls; i++)
+  game.roll(pins);
+};
+
+it('can roll a strike', function() {
+  game.roll(10);
+  game.roll(5);
+  game.roll(3);
+  rollMany(0,16);
+  expect(game.score()).toEqual(26);
+})
+
+it('can roll a perfect game', function() {
+  rollMany(10,12);
+  expect(game.score()).toEqual(300);
+})
 });

@@ -51,7 +51,13 @@ describe("_isTenthFrame", function() {
     expect(frame10._isTenthFrame).toEqual(true);
     frame10.firstRoll(10);
     expect(function() { frame10.secondRoll(10) }).not.toThrow("First roll was a strike, cannot roll a second during this frame.");
-  })
+  });
+  it("should allow a third roll after a strike", function() {
+    frame10.firstRoll(10);
+    frame10.secondRoll(10);
+    frame10.bonusRoll(10);
+    expect(frame10.frameBonus).toEqual(10);
+  });
   it("should allow a third roll after a spare", function() {
     frame10.firstRoll(5);
     frame10.secondRoll(5);

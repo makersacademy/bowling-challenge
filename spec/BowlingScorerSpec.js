@@ -25,7 +25,17 @@ describe("calculating bonuses", function() {
     frame2.firstRoll(5);
     frame2.secondRoll(4);
     scorer.addFrame(frame2);
+    frame3.firstRoll(5);
+    frame3.secondRoll(3);
+    scorer.addFrame(frame3);
     expect(scorer.frames[0].frameBonus).toEqual(9);
+  });
+  it("should add the bonuses when the next frame is a strike", function() {
+  for (var i = 1; i < 4; i++) {
+    window["frame"+i].firstRoll(10);
+    scorer.addFrame(window["frame" + i]);
+  }
+    expect(scorer.frames[0].frameBonus).toEqual(20);
   });
   it("should add the bonuses for a spare", function() {
     frame1.firstRoll(5);
@@ -35,6 +45,9 @@ describe("calculating bonuses", function() {
     frame2.firstRoll(4);
     frame2.secondRoll(3);
     scorer.addFrame(frame2);
+    frame3.firstRoll(4);
+    frame3.secondRoll(5);
+    scorer.addFrame(frame3);
     expect(scorer.frames[0].frameBonus).toEqual(4);
   });
   it("should not add a bonus if no strike or spare was rolled", function() {
@@ -47,13 +60,29 @@ describe("calculating bonuses", function() {
     expect(scorer.frames[0].frameBonus).toEqual(0);
   });
   it("should return 'gutter game' when the player scores 0 in every frame", function() {
-    for (var i = 1; i < 11; i++) {
+    for (var i = 1; i < 10; i++) {
       window["frame"+i].firstRoll(0);
       window["frame"+i].secondRoll(0);
       scorer.addFrame(window["frame" + i]);
     }
-    expect(scorer.baseTotal).toEqual(0);
-    expect(scorer.result(scorer.baseTotal)).toEqual("Gutter game!");
+    scorer._finalFrame(frame10);
+    frame10.firstRoll(0);
+    frame10.secondRoll(0);
+    scorer.addFrame(frame10)
+    expect(scorer.totalScore).toEqual(0);
+    expect(scorer.result(scorer.totalScore)).toEqual("Gutter game!");
+  });
+  xit("should calculate the scores for a perfect game", function() {
+    for (var i = 1; i < 10; i++) {
+      window["frame"+i].firstRoll(10);
+      scorer.addFrame(window["frame" + i]);
+    }
+      scorer._finalFrame(frame10);
+      frame10.firstRoll(10);
+      frame10.secondRoll(10);
+      frame10.bonusRoll(10);
+      scorer.addFrame(frame10)
+      expect(scorer.totalScore).toEqual(300);
   });
 });
 

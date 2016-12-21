@@ -6,8 +6,8 @@ var bowlingScorer = function() {
 
 bowlingScorer.prototype.addFrame = function(frame) {
   this.frames.push(frame);
-  if (this.frames.length > 1) {
-    this.calculateBonus(this.frames[this.frames.length-2], this.frames[this.frames.length-1])
+  if (this.frames.length > 2) {
+    this.calculateBonus(this.frames[this.frames.length-3], this.frames[this.frames.length-2], this.frames[this.frames.length-2])
   };
   if (this.frames.length === 10) {
     this._addScores(this.frames);
@@ -20,13 +20,20 @@ bowlingScorer.prototype.result = function(score) {
   }
 };
 
-bowlingScorer.prototype.calculateBonus = function(previousFrame, nextFrame) {
+bowlingScorer.prototype.calculateBonus = function(previousFrame, currentFrame, nextFrame) {
   if (previousFrame._isStrike()) {
-    previousFrame.frameBonus += (nextFrame.rollOne + nextFrame.rollTwo);
+    previousFrame.frameBonus += (currentFrame.rollOne + currentFrame.rollTwo);
+    this._twoStrikes(previousFrame, currentFrame, nextFrame)
   } else if (previousFrame._isSpare()) {
-    previousFrame.frameBonus += nextFrame.rollOne
+    previousFrame.frameBonus += currentFrame.rollOne
   } else {
     console.log("No bonus for this roll")
+  }
+};
+
+bowlingScorer.prototype._twoStrikes = function(previousFrame, currentFrame, nextFrame) {
+  if (previousFrame._isStrike() && nextFrame._isStrike()) {
+    previousFrame.frameBonus += nextFrame.rollOne
   }
 };
 

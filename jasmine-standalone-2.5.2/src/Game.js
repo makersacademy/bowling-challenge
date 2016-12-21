@@ -6,16 +6,20 @@ function Game() {
 }
 
 Game.prototype.roll = function(pins) {
-  this._addBonusPoints(pins);
-  var currentFrame = this.frames[this.currentFrameIndex];
+  if (this.isOver()) {
+    console.log("Over");
+  } else {
+    this._addBonusPoints(pins);
+    var currentFrame = this.frames[this.currentFrameIndex];
 
-  if (!this.frames[9].isStrike() && !this.frames[9].isSpare()) {
-    currentFrame.addToFrame(pins);
-  }
+    if (!this.frames[9].isStrike() && !this.frames[9].isSpare()) {
+      currentFrame.addToFrame(pins);
+    }
 
-  if (currentFrame.isOver() && !this._isTenthFrame()) {
-    this.currentFrameIndex ++;
+    if (currentFrame.isOver() && !this._isTenthFrame()) {
+      this.currentFrameIndex ++;
 
+    }
   }
 }
 
@@ -80,4 +84,8 @@ Game.prototype.getFinalBonus = function(roll) {
       return frame.getBonusPoints(0);
     }
   }
+}
+
+Game.prototype.isOver = function() {
+  return this.frames[9].isPointsComplete();
 }

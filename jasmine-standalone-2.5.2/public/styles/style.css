@@ -1,12 +1,52 @@
+#main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#table-wrapper {
+}
+
 table {
-    border-collapse: collapse;
+      border-color: white;
+      margin: 0 auto;
+
 }
 
 th, td {
-    border: 1px solid black;
+    border: 1px solid white;
     height: 30px;
     width: 20px;
     text-align: center;
 }
 
 td:hover {background-color: #f5f5f5}
+
+#frame-rolls-go {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#game-over {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#score {
+  text-align: center;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+#pins {
+    text-align: center;
+}
+
+body {
+background: #303030;
+color: white
+}

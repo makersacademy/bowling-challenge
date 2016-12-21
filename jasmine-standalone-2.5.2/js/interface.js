@@ -4,12 +4,17 @@ $( document ).ready(function() {
 
   updateScoreAndRoll();
 
+  $("button").mouseup(function(){
+    $(this).blur();
+  })
+
   $( 'button' ).click(function() {
       var pins = parseInt(this.id)
       game.roll(pins);
       updateScoreAndRoll();
       hideNumbers(pins);
       getRolls();
+      gameOver();
 
   })
 
@@ -20,13 +25,14 @@ $( document ).ready(function() {
   }
 
   function hideNumbers(pins){
-    // if (game._rollNumber() === 2) {
-    //   for (var id = 11 - pins; id < 11; id++) {
-    //     $("#" + id).hide();
-    //   }
-    // } else {
-    //   $( 'button' ).show();
-    // }
+    if (game._rollNumber() === 2) {
+      for (var id = 11 - pins; id < 11; id++) {
+        $("#" + id).attr("disabled", true);
+
+      }
+    } else {
+      $( 'button' ).attr("disabled", false);
+    }
   }
 
   function getRolls() {
@@ -40,7 +46,13 @@ $( document ).ready(function() {
     $('#10-3').text( game.getFinalBonus(3));
   }
 
-
+  function gameOver() {
+    if (game.isOver()) {
+      $( '#game-over' ).text( "Game Over!" );
+      $( 'button' ).hide();
+      $( '#frame-rolls-go' ).hide();
+    }
+  }
 
 
 

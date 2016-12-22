@@ -14,7 +14,7 @@ describe("Scoreboard", function(){
   });
 
   it("should initialize with maximum score of 10", function(){
-    expect(scoreboard.MAXSCORE).toEqual(10);
+    expect(scoreboard.MAXPINS).toEqual(10);
   });
 
   it("should initialize with an empty array for all scores", function(){
@@ -70,15 +70,22 @@ describe("Scoreboard", function(){
 
   it("should call the function strike when score is 10", function(){
     scoreboard.scoreFirstRoll(10);
-    scoreboard.scoreFirstRoll(4);
-    scoreboard.scoreSecondRoll(3);
+    scoreboard.bonusPoints();
+    scoreboard.refreshCurrentScores();
+    scoreboard.scoreFirstRoll(3);
+    scoreboard.scoreSecondRoll(4);
     scoreboard.calculateScore();
     scoreboard.bonusPoints();
     scoreboard.refreshCurrentScores();
     scoreboard.scoreFirstRoll(10);
+    scoreboard.bonusPoints();
+    scoreboard.refreshCurrentScores();
     scoreboard.scoreFirstRoll(5);
     scoreboard.scoreSecondRoll(5);
     scoreboard.calculateScore();
+    scoreboard.bonusPoints();
+    scoreboard.refreshCurrentScores();
+    scoreboard.scoreFirstRoll(10);
     scoreboard.bonusPoints();
     scoreboard.refreshCurrentScores();
     scoreboard.scoreFirstRoll(5);
@@ -90,14 +97,9 @@ describe("Scoreboard", function(){
     scoreboard.scoreSecondRoll(0);
     scoreboard.calculateScore();
     scoreboard.bonusPoints();
-    expect(scoreboard.scores).toEqual([17, 7, 20, 15, 8, 7]);
+    expect(scoreboard.scores).toEqual([17, 7, 20, 20, 18, 8, 7]);
   });
 
-  it("should scores should contain 20 when two strikes are scored", function(){
-    scoreboard.scoreFirstRoll(10);
-    scoreboard.scoreFirstRoll(10);
-    expect(scoreboard.scores).toContain(20);
-  });
 
   it("should return X when 10 is scored on the first roll", function(){
     scoreboard.scoreFirstRoll(10);
@@ -127,6 +129,31 @@ describe("Scoreboard", function(){
     scoreboard.currentScore = [4,3]
     scoreboard.calculateScore();
     expect(scoreboard.scores).toContain(7);
+  });
+
+  it("should result in 20 being logged in the scores when two strikes are scored", function(){
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.bonusPoints();
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.bonusPoints();
+    expect(scoreboard.scores).toContain(20);
+  });
+
+  it("should result in the score containing 20 if a spare and then a strike is scored", function(){
+    scoreboard.scoreFirstRoll(5);
+    scoreboard.scoreSecondRoll(5);
+    scoreboard.calculateScore();
+    scoreboard.bonusPoints();
+    scoreboard.refreshCurrentScores();
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.bonusPoints();
+    scoreboard.refreshCurrentScores();
+    scoreboard.scoreFirstRoll(3);
+    scoreboard.scoreSecondRoll(2);
+    scoreboard.calculateScore();
+    scoreboard.bonusPoints();
+    scoreboard.refreshCurrentScores();
+    expect(scoreboard.scores).toEqual([20, 15, 5])
   });
 
   it("should return a total of all score", function(){

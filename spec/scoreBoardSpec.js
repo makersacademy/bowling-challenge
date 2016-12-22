@@ -39,7 +39,7 @@ describe("Scoreboard", function(){
     expect(scoreboard.scores).toContain('X')
   });
 
-  it("should call the function strike when score is 10", function(){
+  it("should call the function a strike when score is 10", function(){
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreFirstRoll(4);
     scoreboard.scoreSecondRoll(3);
@@ -48,31 +48,50 @@ describe("Scoreboard", function(){
     expect(scoreboard.scores).toEqual([17, 7]);
   });
 
-  // it("should call the function strike when score is 10", function(){
-  //   scoreboard.scoreFirstRoll(10);
-  //   scoreboard.scoreFirstRoll(4);
-  //   scoreboard.scoreSecondRoll(3);
-  //   scoreboard.calculateScore();
-  //   scoreboard.bonusPoints();
-  //   scoreboard.refreshCurrentScores();
-  //   console.log(scoreboard.currentScores)
-  //   scoreboard.scoreFirstRoll(10);
-  //   console.log(scoreboard.scores)
-  //   scoreboard.scoreFirstRoll(2);
-  //   scoreboard.scoreSecondRoll(1);
-  //   scoreboard.calculateScore();
-  //   scoreboard.bonusPoints();
-  //   scoreboard.refreshCurrentScores();
-  //   console.log(scoreboard.currentScore)
-  //   console.log(scoreboard.totalCurrentScore)
-  //   scoreboard.scoreFirstRoll(10);
-  //   console.log(scoreboard.scores)
-  //   scoreboard.scoreFirstRoll(7);
-  //   scoreboard.scoreSecondRoll(0);
-  //   scoreboard.calculateScore();
-  //   scoreboard.bonusPoints();
-  //   expect(scoreboard.scores).toEqual([17, 7, 13, 3, 17, 7]);
-  // });
+  it("should return a / if score one and two equal 10", function(){
+    scoreboard.scoreFirstRoll(4);
+    scoreboard.scoreSecondRoll(6);
+    scoreboard.calculateScore();
+    expect(scoreboard.scores).toContain('/');
+  });
+
+  it("should call function spare when score one and score two equals 10", function(){
+    scoreboard.scoreFirstRoll(4);
+    scoreboard.scoreSecondRoll(6);
+    scoreboard.calculateScore();
+    scoreboard.refreshCurrentScores();
+    scoreboard.bonusPoints();
+    scoreboard.scoreFirstRoll(3);
+    scoreboard.scoreSecondRoll(4);
+    scoreboard.calculateScore();
+    scoreboard.bonusPoints();
+    expect(scoreboard.scores).toEqual([13, 7])
+  });
+
+  it("should call the function strike when score is 10", function(){
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreFirstRoll(4);
+    scoreboard.scoreSecondRoll(3);
+    scoreboard.calculateScore();
+    scoreboard.bonusPoints();
+    scoreboard.refreshCurrentScores();
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreFirstRoll(5);
+    scoreboard.scoreSecondRoll(5);
+    scoreboard.calculateScore();
+    scoreboard.bonusPoints();
+    scoreboard.refreshCurrentScores();
+    scoreboard.scoreFirstRoll(5);
+    scoreboard.scoreSecondRoll(3);
+    scoreboard.calculateScore();
+    scoreboard.bonusPoints();
+    scoreboard.refreshCurrentScores();
+    scoreboard.scoreFirstRoll(7);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.calculateScore();
+    scoreboard.bonusPoints();
+    expect(scoreboard.scores).toEqual([17, 7, 20, 15, 8, 7]);
+  });
 
   it("should return X when 10 is scored on the first roll", function(){
     scoreboard.scoreFirstRoll(10);

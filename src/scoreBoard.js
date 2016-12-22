@@ -70,6 +70,14 @@ function Scoreboard() {
     };
   };
 
+  Scoreboard.prototype.spare = function(currentScore) {
+    var spare = this.scores.indexOf('/');
+      if (~spare) {
+        this.scores[spare] = this.MAXSCORE + this.currentScore[this.currentScore.length-2];
+        return this.scores;
+      };
+  };
+
   Scoreboard.prototype.currentTotal = function() {
     this.bonusPoints();
     var total = this.scores.reduce(function(a,b){return a + b },0);
@@ -110,13 +118,7 @@ function Scoreboard() {
     };
 
 
-  Scoreboard.prototype.spare = function(currentScore) {
-    var spare = this.scores.indexOf(10);
-      if (~spare) {
-        this.scores[spare] = this.MAXSCORE + this.allScores[this.allScores.length-1][0];
-        return this.scores;
-      }
-  };
+
 
   Scoreboard.prototype.strikeSpare = function(currentScore) {
     var spare = this.scores.indexOf(10);

@@ -27,21 +27,45 @@ function Scoreboard() {
     return score3;
   }
 
-  Scoreboard.prototype.calculateScore = function(){
+  Scoreboard.prototype.calculateScore = function() {
     this.totalCurrentScore = this.currentScore.reduce(function(a,b){return a + b },0);
-    if (this.scores[this.scores.length-1] === 'X') {
-      return this.aStrike();
+      if (this.totalCurrentScore === 10) {
+        this.scores.push('/')
     } else {
-    this.scores.push(this.totalCurrentScore)
-    return this.scores;
+        this.scores.push(this.totalCurrentScore)
+        return this.scores;
+    };
   };
+
+  Scoreboard.prototype.bonusPoints = function() {
+    if (this.scores[this.scores.length-2] === 'X') {
+      return this.aStrike();
+    } else if ((this.scores[this.scores.length-2] === '/')) {
+      return this.spare();
+    } else {
+      return this.scores;
+    };
   };
+
+
+
+  // Scoreboard.prototype.calculateScore = function(){
+  //   this.totalCurrentScore = this.currentScore.reduce(function(a,b){return a + b },0);
+  //   if (this.scores[this.scores.length-1] === 'X') {
+  //     return this.aStrike();
+  //   }else if {
+  //     (this.totalCurrentScore === 10)
+  //       this.scores.push('/')
+  //   } else {
+  //   this.scores.push(this.totalCurrentScore)
+  //   return this.scores;
+  // };
+  // };
 
   Scoreboard.prototype.aStrike = function(){
     var strike = this.scores.indexOf('X');
       if (~strike) {
       this.scores[strike] = this.MAXSCORE + this.totalCurrentScore;
-      this.scores.push(this.totalCurrentScore);
           return this.scores;
     };
   };

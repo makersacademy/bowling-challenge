@@ -25,6 +25,10 @@ describe("Scoreboard", function(){
     expect(scoreboard.currentScore).toEqual([]);
   });
 
+  it("should initialize with a total current score of 0", function() {
+    expect(scoreboard.totalCurrentScore).toEqual(0);
+  });
+
   it("should return an array with the first current score", function() {
     scoreboard.scoreFirstRoll(4);
     expect(scoreboard.currentScore).toContain(4);
@@ -40,6 +44,7 @@ describe("Scoreboard", function(){
     scoreboard.scoreFirstRoll(4);
     scoreboard.scoreSecondRoll(3);
     scoreboard.calculateScore();
+    scoreboard.bonusPoints();
     expect(scoreboard.scores).toEqual([17, 7]);
   });
 
@@ -48,6 +53,7 @@ describe("Scoreboard", function(){
   //   scoreboard.scoreFirstRoll(4);
   //   scoreboard.scoreSecondRoll(3);
   //   scoreboard.calculateScore();
+  //   scoreboard.bonusPoints();
   //   scoreboard.refreshCurrentScores();
   //   console.log(scoreboard.currentScores)
   //   scoreboard.scoreFirstRoll(10);
@@ -55,6 +61,7 @@ describe("Scoreboard", function(){
   //   scoreboard.scoreFirstRoll(2);
   //   scoreboard.scoreSecondRoll(1);
   //   scoreboard.calculateScore();
+  //   scoreboard.bonusPoints();
   //   scoreboard.refreshCurrentScores();
   //   console.log(scoreboard.currentScore)
   //   console.log(scoreboard.totalCurrentScore)
@@ -63,7 +70,8 @@ describe("Scoreboard", function(){
   //   scoreboard.scoreFirstRoll(7);
   //   scoreboard.scoreSecondRoll(0);
   //   scoreboard.calculateScore();
-  //   expect(scoreboard.scores).toEqual([17, 7, 13, 3]);
+  //   scoreboard.bonusPoints();
+  //   expect(scoreboard.scores).toEqual([17, 7, 13, 3, 17, 7]);
   // });
 
   it("should return X when 10 is scored on the first roll", function(){

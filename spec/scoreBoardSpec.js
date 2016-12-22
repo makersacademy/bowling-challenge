@@ -93,6 +93,12 @@ describe("Scoreboard", function(){
     expect(scoreboard.scores).toEqual([17, 7, 20, 15, 8, 7]);
   });
 
+  it("should scores should contain 20 when two strikes are scored", function(){
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreFirstRoll(10);
+    expect(scoreboard.scores).toContain(20);
+  });
+
   it("should return X when 10 is scored on the first roll", function(){
     scoreboard.scoreFirstRoll(10);
     expect(scoreboard.scoreFirstRoll(10)).toEqual('X')
@@ -121,6 +127,11 @@ describe("Scoreboard", function(){
     scoreboard.currentScore = [4,3]
     scoreboard.calculateScore();
     expect(scoreboard.scores).toContain(7);
+  });
+
+  it("should return a total of all score", function(){
+    scoreboard.scores = [17, 7, 20, 15, 8, 7]
+    expect(scoreboard.totalScore()).toEqual(74)
   });
 
   it("should return an empty array once score have been calculated", function(){

@@ -78,17 +78,21 @@ function Scoreboard() {
       };
   };
 
-  Scoreboard.prototype.currentTotal = function() {
-    this.bonusPoints();
-    var total = this.scores.reduce(function(a,b){return a + b },0);
-      if (total === '2200X') {
-        return this.perfectGame();
-      } else if (total === 0) {
-        return this.gutterGame();
-      } else {
-        return total;
-      };
+  Scoreboard.prototype.totalScore = function() {
+    return this.scores.reduce(function(a,b){return a + b },0);
   };
+
+  // Scoreboard.prototype.currentTotal = function() {
+  //   this.bonusPoints();
+  //   var total = this.scores.reduce(function(a,b){return a + b },0);
+  //     if (total === '2200X') {
+  //       return this.perfectGame();
+  //     } else if (total === 0) {
+  //       return this.gutterGame();
+  //     } else {
+  //       return total;
+  //     };
+  // };
 
   // Scoreboard.prototype.increaseFrame = function() {
   //   this.frameCount = this.allScores.length;
@@ -120,13 +124,13 @@ function Scoreboard() {
 
 
 
-  Scoreboard.prototype.strikeSpare = function(currentScore) {
-    var spare = this.scores.indexOf(10);
-      if (~spare) {
-        this.scores[spare] = this.MAXSCORE + this.MAXSCORE;
-        return this.scores;
-      }
-  };
+  // Scoreboard.prototype.strikeSpare = function(currentScore) {
+  //   var spare = this.scores.indexOf(10);
+  //     if (~spare) {
+  //       this.scores[spare] = this.MAXSCORE + this.MAXSCORE;
+  //       return this.scores;
+  //     }
+  // };
 
   Scoreboard.prototype.perfectGame = function() {
     return 'Perfect Game!'

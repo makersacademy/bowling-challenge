@@ -82,11 +82,6 @@ describe("Frame", function(){
       for(var i = 0; i<2; i++){ frame.roll(); }
       expect(frame.hasEnded()).toEqual(true);
     })
-    it("can indicate a frame is not over when 1 roll has been taken", function(){
-      spyOn(frame, "calculateRollScore").and.returnValue(6);
-      frame.roll();
-      expect(frame.hasEnded()).toEqual(false);
-    })
     it("can indicate a frame is not over when 6 points has been reached in 1 roll", function(){
       spyOn(frame, "calculateRollScore").and.returnValue(6);
       frame.roll();

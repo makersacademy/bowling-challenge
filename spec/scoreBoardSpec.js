@@ -134,9 +134,20 @@ describe("Scoreboard", function(){
   it("should result in 20 being logged in the scores when two strikes are scored", function(){
     scoreboard.scoreFirstRoll(10);
     scoreboard.bonusPoints();
+    scoreboard.refreshCurrentScores();
+    console.log(scoreboard.scores)
     scoreboard.scoreFirstRoll(10);
     scoreboard.bonusPoints();
-    expect(scoreboard.scores).toContain(20);
+    console.log(scoreboard.scores)
+    scoreboard.scoreFirstRoll(3);
+    scoreboard.scoreSecondRoll(2);
+    scoreboard.calculateScore();
+    console.log(scoreboard.scores)
+    scoreboard.bonusPoints();
+    console.log(scoreboard.scores)
+    scoreboard.refreshCurrentScores();
+    console.log(scoreboard.scores)
+    expect(scoreboard.scores).toContain(23);
   });
 
   it("should result in the score containing 20 if a spare and then a strike is scored", function(){
@@ -154,6 +165,16 @@ describe("Scoreboard", function(){
     scoreboard.bonusPoints();
     scoreboard.refreshCurrentScores();
     expect(scoreboard.scores).toEqual([20, 15, 5])
+  });
+
+  it("should return a perfect score if the total score is 300", function(){
+    scoreboard.scores = [30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+    expect(scoreboard.totalScore()).toEqual("Perfect Game!")
+  });
+
+  it("should return Gutter Game if the total score is 0", function() {
+    scoreboard.scores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    expect(scoreboard.totalScore()).toEqual('Gutter Game!')
   });
 
   it("should return a total of all score", function(){

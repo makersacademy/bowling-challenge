@@ -64,12 +64,12 @@ function Scoreboard() {
 
   Scoreboard.prototype.aStrike = function(){
     var strike = this.scores.indexOf('X');
-      if (~strike && this.totalCurrentScore > 0) {
+      if (this.totalCurrentScore > 0) {
       this.scores[strike] = this.MAXPINS + this.totalCurrentScore;
           return this.scores;
-      } else if (~strike) {
-        this.scores[strike] = this.MAXPINS + this.MAXPINS;
-    };
+      } else {
+        this.scores[strike] = this.MAXPINS + this.MAXPINS + this.currentScore[this.currentScore.length-2];
+      }
   };
 
   Scoreboard.prototype.spare = function(currentScore) {
@@ -83,7 +83,14 @@ function Scoreboard() {
   };
 
   Scoreboard.prototype.totalScore = function() {
-    return this.scores.reduce(function(a,b){return a + b },0);
+    var total = this.scores.reduce(function(a,b){return a + b },0);
+    if (total === 0){
+      return this.gutterGame();
+    } else if (total === 300) {
+      return this.perfectGame();
+    } else {
+      return total;
+    }
   };
 
   // Scoreboard.prototype.currentTotal = function() {

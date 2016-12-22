@@ -25,8 +25,50 @@ describe("Scoreboard", function(){
     expect(scoreboard.currentScore).toEqual([]);
   });
 
-  it("should return the result of the first roll", function(){
-    expect(scoreboard.scoreFirstRoll(4)).toEqual(4);
+  it("should return an array with the first current score", function() {
+    scoreboard.scoreFirstRoll(4);
+    expect(scoreboard.currentScore).toContain(4);
+  });
+
+  it("should return X if a 10 is scored on the first roll", function(){
+    scoreboard.scoreFirstRoll(10);
+    expect(scoreboard.scores).toContain('X')
+  });
+
+  it("should call the function strike when score is 10", function(){
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreFirstRoll(4);
+    scoreboard.scoreSecondRoll(3);
+    scoreboard.calculateScore();
+    expect(scoreboard.scores).toEqual([17, 7]);
+  });
+
+  // it("should call the function strike when score is 10", function(){
+  //   scoreboard.scoreFirstRoll(10);
+  //   scoreboard.scoreFirstRoll(4);
+  //   scoreboard.scoreSecondRoll(3);
+  //   scoreboard.calculateScore();
+  //   scoreboard.refreshCurrentScores();
+  //   console.log(scoreboard.currentScores)
+  //   scoreboard.scoreFirstRoll(10);
+  //   console.log(scoreboard.scores)
+  //   scoreboard.scoreFirstRoll(2);
+  //   scoreboard.scoreSecondRoll(1);
+  //   scoreboard.calculateScore();
+  //   scoreboard.refreshCurrentScores();
+  //   console.log(scoreboard.currentScore)
+  //   console.log(scoreboard.totalCurrentScore)
+  //   scoreboard.scoreFirstRoll(10);
+  //   console.log(scoreboard.scores)
+  //   scoreboard.scoreFirstRoll(7);
+  //   scoreboard.scoreSecondRoll(0);
+  //   scoreboard.calculateScore();
+  //   expect(scoreboard.scores).toEqual([17, 7, 13, 3]);
+  // });
+
+  it("should return X when 10 is scored on the first roll", function(){
+    scoreboard.scoreFirstRoll(10);
+    expect(scoreboard.scoreFirstRoll(10)).toEqual('X')
   });
 
   it("should return the result of the second roll", function(){
@@ -35,11 +77,6 @@ describe("Scoreboard", function(){
 
   it("should return the result for the third roll", function(){
     expect(scoreboard.scoreThirdRoll(5)).toEqual(5);
-  });
-
-  it("should return an array with the first current score", function() {
-    scoreboard.scoreFirstRoll(4);
-    expect(scoreboard.currentScore).toContain(4);
   });
 
   it("should return an array that contains the second score", function(){
@@ -57,6 +94,14 @@ describe("Scoreboard", function(){
     scoreboard.currentScore = [4,3]
     scoreboard.calculateScore();
     expect(scoreboard.scores).toContain(7);
+  });
+
+  it("should return an empty array once score have been calculated", function(){
+    scoreboard.scoreFirstRoll(4);
+    scoreboard.scoreSecondRoll(3);
+    scoreboard.calculateScore();
+    scoreboard.refreshCurrentScores();
+    expect(scoreboard.currentScore).toEqual([]);
   });
 
 //   it("should return an array of all individual scores obtained", function(){

@@ -34,6 +34,11 @@ describe("Game", function(){
     expect(game.frameCount).toEqual(1)
   });
 
+  it("should reset the current score count on the scoreboard", function(){
+    game.rackUp();
+    expect(game.scoreboard.currentScore).toEqual([]);
+  });
+
   it("should re-rack the pins between each round if frame count is less than ten", function(){
     game.frameCount = 1;
     game.rackUp();

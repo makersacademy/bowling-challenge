@@ -5,11 +5,17 @@ function Scoreboard() {
   this.allScores = [];
   this.currentScore = [];
   this.MAXSCORE = 10;
+  this.totalCurrentScore = 0;
 };
 
   Scoreboard.prototype.scoreFirstRoll = function(score1) {
-    this.currentScore.push(score1)
-    return score1
+    if (score1 === 10) {
+      this.scores.push('X')
+      return 'X'
+    } else {
+      this.currentScore.push(score1)
+      return score1
+    };
   };
 
   Scoreboard.prototype.scoreSecondRoll = function(score2) {
@@ -22,8 +28,22 @@ function Scoreboard() {
   }
 
   Scoreboard.prototype.calculateScore = function(){
-    this.scores.push(this.currentScore.reduce(function(a,b){return a + b },0));
+    this.totalCurrentScore = this.currentScore.reduce(function(a,b){return a + b },0);
+    if (this.scores[this.scores.length-1] === 'X') {
+      return this.aStrike();
+    } else {
+    this.scores.push(this.totalCurrentScore)
     return this.scores;
+  };
+  };
+
+  Scoreboard.prototype.aStrike = function(){
+    var strike = this.scores.indexOf('X');
+      if (~strike) {
+      this.scores[strike] = this.MAXSCORE + this.totalCurrentScore;
+      this.scores.push(this.totalCurrentScore);
+          return this.scores;
+    };
   };
 
   Scoreboard.prototype.currentTotal = function() {
@@ -38,24 +58,24 @@ function Scoreboard() {
       };
   };
 
-  Scoreboard.prototype.increaseFrame = function() {
-    this.frameCount = this.allScores.length;
-    return this.frameCount
-  };
+  // Scoreboard.prototype.increaseFrame = function() {
+  //   this.frameCount = this.allScores.length;
+  //   return this.frameCount
+  // };
 
-  Scoreboard.prototype.bonusPoints = function() {
-    if (this.scores[this.scores.length-2] === '0X' && this.scores[this.scores.length-1] === '0X'){
-      return this.multiStrike();
-  } else if (this.scores[this.scores.length-2] === '0X') {
-      return this.aStrike();
-  }  else if (this.scores[this.scores.length-2] === 10 && this.scores[this.scores.length-1] === '0X' ) {
-        return this.strikeSpare();
-  } else if (this.scores[this.scores.length-2] === 10) {
-      return this.spare();
-  } else {
-      return this.scores;
-  };
-  };
+  // Scoreboard.prototype.bonusPoints = function() {
+  //   if (this.scores[this.scores.length-2] === '0X' && this.scores[this.scores.length-1] === '0X'){
+  //     return this.multiStrike();
+  // } else if (this.scores[this.scores.length-2] === '0X') {
+  //     return this.aStrike();
+  // }  else if (this.scores[this.scores.length-2] === 10 && this.scores[this.scores.length-1] === '0X' ) {
+  //       return this.strikeSpare();
+  // } else if (this.scores[this.scores.length-2] === 10) {
+  //     return this.spare();
+  // } else {
+  //     return this.scores;
+  // };
+  // };
 
   Scoreboard.prototype.multiStrike = function(){
     var strike = this.scores.indexOf('0X');
@@ -65,13 +85,6 @@ function Scoreboard() {
       }
     };
 
-  Scoreboard.prototype.aStrike = function(){
-    var strike = this.scores.indexOf('0X');
-      if (~strike) {
-        this.scores[strike] = this.MAXSCORE + this.scores.slice(-1)[0];
-        return this.scores;
-      }
-    };
 
   Scoreboard.prototype.spare = function(currentScore) {
     var spare = this.scores.indexOf(10);
@@ -95,4 +108,8 @@ function Scoreboard() {
 
   Scoreboard.prototype.gutterGame = function() {
     return 'Gutter Game!'
+  };
+
+  Scoreboard.prototype.refreshCurrentScores = function() {
+    return this.currentScore = [];
   };

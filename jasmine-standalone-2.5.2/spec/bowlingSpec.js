@@ -1,3 +1,5 @@
+'user strict';
+
 describe("Bowling", function() {
   var bowling;
 
@@ -50,4 +52,14 @@ describe("Bowling", function() {
     bowling.enter_score(2);
     expect(bowling.running_total).toEqual([1,2]);
   })
+
+  it("should skip to next frame if there is a strike", function() {
+    bowling.enter_score(10);
+    expect(bowling.frame).toEqual(2)
+  });
+
+  it("should change last_strike to true", function() {
+    bowling.enter_score(10);
+    expect(bowling.last_strike).toEqual(true)
+  });
 });

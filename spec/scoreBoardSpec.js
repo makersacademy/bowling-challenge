@@ -131,25 +131,6 @@ describe("Scoreboard", function(){
     expect(scoreboard.scores).toContain(7);
   });
 
-  it("should result in 20 being logged in the scores when two strikes are scored", function(){
-    scoreboard.scoreFirstRoll(10);
-    scoreboard.bonusPoints();
-    scoreboard.refreshCurrentScores();
-    console.log(scoreboard.scores)
-    scoreboard.scoreFirstRoll(10);
-    scoreboard.bonusPoints();
-    console.log(scoreboard.scores)
-    scoreboard.scoreFirstRoll(3);
-    scoreboard.scoreSecondRoll(2);
-    scoreboard.calculateScore();
-    console.log(scoreboard.scores)
-    scoreboard.bonusPoints();
-    console.log(scoreboard.scores)
-    scoreboard.refreshCurrentScores();
-    console.log(scoreboard.scores)
-    expect(scoreboard.scores).toContain(23);
-  });
-
   it("should result in the score containing 20 if a spare and then a strike is scored", function(){
     scoreboard.scoreFirstRoll(5);
     scoreboard.scoreSecondRoll(5);
@@ -168,7 +149,7 @@ describe("Scoreboard", function(){
   });
 
   it("should return a perfect score if the total score is 300", function(){
-    scoreboard.scores = [30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+    scoreboard.scores = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
     expect(scoreboard.totalScore()).toEqual("Perfect Game!")
   });
 
@@ -189,124 +170,4 @@ describe("Scoreboard", function(){
     scoreboard.refreshCurrentScores();
     expect(scoreboard.currentScore).toEqual([]);
   });
-
-//   it("should return an array of all individual scores obtained", function(){
-//     game.currentScore = [3,4]
-//     scoreboard.calculateScore(game.currentScore);
-//     expect(scoreboard.allScores).toEqual([[3,4]]);
-//   });
-//
-//   it("should return a calculation of the current score per throw set", function(){
-//     game.currentScore = ["X"]
-//     scoreboard.calculateScore(game.currentScore);
-//     expect(scoreboard.scores).toContain('0X');
-//   });
-//
-//   it("should return the relevant function according to the score - 2 strikes", function(){
-//     game.currentScore = ["X"];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     game.currentScore = ["X"];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     expect(scoreboard.scores).toContain(20);
-//   });
-//
-//   it("should return the relevant function according to the score - strike", function(){
-//     game.currentScore = ["X"]
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal()
-//     game.currentScore = [3,3]
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal()
-//     expect(scoreboard.scores).toContain(16);
-//   });
-//
-//   it("should return the relevant function according to the score - spare", function(){
-//     game.currentScore = [5,5]
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal()
-//     game.currentScore = [3,6]
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal()
-//     expect(scoreboard.scores).toContain(13);
-//   });
-//
-//   it("should return the relevant function according to the score - spare", function(){
-//     game.currentScore = [5,5];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     game.currentScore = ['X'];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     expect(scoreboard.scores).toContain(20);
-//   });
-//
-//   it("should return the total score if no stikes or spares were scored", function(){
-//     game.currentScore = [5,2];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     game.currentScore = [3,6];
-//     scoreboard.calculateScore(game.currentScore);
-//     expect(scoreboard.currentTotal()).toEqual(16);
-//   });
-//
-//   it("should calculate current total", function() {
-//     game.currentScore = [5,5]
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.bonusPoints();
-//     game.currentScore = [3,6]
-//     scoreboard.calculateScore(game.currentScore);
-//     expect(scoreboard.currentTotal()).toEqual(22)
-//   });
-//
-//   it("should return perfect score if total score is 300", function(){
-//     game.currentScore = ["X"];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     game.currentScore = ["X"];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     game.currentScore = ["X"];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     game.currentScore = ["X"];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     game.currentScore = ["X"];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     game.currentScore = ["X"];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     game.currentScore = ["X"];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     game.currentScore = ["X"];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     game.currentScore = ["X"];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     game.currentScore = ["X"];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     game.currentScore = ["X"];
-//     scoreboard.calculateScore(game.currentScore);
-//     scoreboard.currentTotal();
-//     game.currentScore = ["X"];
-//     scoreboard.calculateScore(game.currentScore);
-//     expect(scoreboard.currentTotal()).toEqual('Perfect Game!')
-//   });
-//
-//   it("should return gutter game if total score is zero", function() {
-//     expect(scoreboard.currentTotal()).toEqual('Gutter Game!')
-//   });
-//
-//   it("should count the frames completed", function() {
-//     scoreboard.allScores = ([[1,3]]);
-//     scoreboard.increaseFrame();
-//     expect(scoreboard.frameCount).toEqual(1)
-//   });
-//
 });

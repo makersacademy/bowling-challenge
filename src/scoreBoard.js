@@ -38,29 +38,14 @@ function Scoreboard() {
   };
 
   Scoreboard.prototype.bonusPoints = function() {
-    if (this.scores[this.scores.length-2] === 'X') {
-      return this.aStrike();
+     if (this.scores[this.scores.length-2] === 'X') {
+        return this.aStrike();
     } else if ((this.scores[this.scores.length-2] === '/')) {
-      return this.spare();
+        return this.spare();
     } else {
-      return this.scores;
+        return this.scores;
     };
   };
-
-
-
-  // Scoreboard.prototype.calculateScore = function(){
-  //   this.totalCurrentScore = this.currentScore.reduce(function(a,b){return a + b },0);
-  //   if (this.scores[this.scores.length-1] === 'X') {
-  //     return this.aStrike();
-  //   }else if {
-  //     (this.totalCurrentScore === 10)
-  //       this.scores.push('/')
-  //   } else {
-  //   this.scores.push(this.totalCurrentScore)
-  //   return this.scores;
-  // };
-  // };
 
   Scoreboard.prototype.aStrike = function(){
     var strike = this.scores.indexOf('X');
@@ -68,13 +53,14 @@ function Scoreboard() {
       this.scores[strike] = this.MAXPINS + this.totalCurrentScore;
           return this.scores;
       } else {
-        this.scores[strike] = this.MAXPINS + this.MAXPINS + this.currentScore[this.currentScore.length-2];
+        this.scores[strike] = this.MAXPINS + this.MAXPINS
+        return this.scores;
       }
   };
 
-  Scoreboard.prototype.spare = function(currentScore) {
+  Scoreboard.prototype.spare = function() {
     var spare = this.scores.indexOf('/');
-     if (~spare && this.scores[this.scores.length-1] === 'X') {
+     if (this.scores[this.scores.length-1] === 'X') {
         this.scores[spare] = this.MAXPINS + this.MAXPINS;
    } else {
         this.scores[spare] = this.MAXPINS + this.currentScore[this.currentScore.length-2];
@@ -86,54 +72,13 @@ function Scoreboard() {
     var total = this.scores.reduce(function(a,b){return a + b },0);
     if (total === 0){
       return this.gutterGame();
-    } else if (total === 300) {
+    } else if (total === 240) {
       return this.perfectGame();
     } else {
       return total;
     }
   };
 
-  // Scoreboard.prototype.currentTotal = function() {
-  //   this.bonusPoints();
-  //   var total = this.scores.reduce(function(a,b){return a + b },0);
-  //     if (total === '2200X') {
-  //       return this.perfectGame();
-  //     } else if (total === 0) {
-  //       return this.gutterGame();
-  //     } else {
-  //       return total;
-  //     };
-  // };
-
-  // Scoreboard.prototype.increaseFrame = function() {
-  //   this.frameCount = this.allScores.length;
-  //   return this.frameCount
-  // };
-
-  // Scoreboard.prototype.bonusPoints = function() {
-  //   if (this.scores[this.scores.length-2] === '0X' && this.scores[this.scores.length-1] === '0X'){
-  //     return this.multiStrike();
-  // } else if (this.scores[this.scores.length-2] === '0X') {
-  //     return this.aStrike();
-  // }  else if (this.scores[this.scores.length-2] === 10 && this.scores[this.scores.length-1] === '0X' ) {
-  //       return this.strikeSpare();
-  // } else if (this.scores[this.scores.length-2] === 10) {
-  //     return this.spare();
-  // } else {
-  //     return this.scores;
-  // };
-  // };
-
-
-
-
-  // Scoreboard.prototype.strikeSpare = function(currentScore) {
-  //   var spare = this.scores.indexOf(10);
-  //     if (~spare) {
-  //       this.scores[spare] = this.MAXSCORE + this.MAXSCORE;
-  //       return this.scores;
-  //     }
-  // };
 
   Scoreboard.prototype.perfectGame = function() {
     return 'Perfect Game!'

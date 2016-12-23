@@ -85,7 +85,9 @@ Frame.prototype.isPointsComplete = function() {
 Frame.prototype.rollNumber = function() {
   if (this.scoreCard.length === 0) {
     return 1;
-  } else {
+  } else if (this.scoreCard.length === 1) {
     return 2;
+  } else {
+    return 3;
   }
 }

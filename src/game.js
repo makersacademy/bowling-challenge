@@ -50,3 +50,5 @@ Game.prototype._strikeBonus = function (index) {
 Game.prototype._frameScore = function (index) {
   return this.rolls[index] + this.rolls[index+1];
 };
+
+game = new Game();

@@ -5,6 +5,7 @@ function Game() {
   this.currentScore = [];
   this.score = [];
   this.rackedPins = false;
+  this.bonusRoll = false;
   this.scoreboard = new Scoreboard();
 };
 
@@ -42,18 +43,16 @@ function Game() {
     };
   };
 
-  Game.prototype.thirdRoll = function() {
+  Game.prototype.bonusThirdRoll = function() {
     if (this.frameCount === 10 && this.secondRoll() === 10 ) {
-      this.setUpPins = [0,1,2,3,4,5,6,7,8,9,10];
-      var score = Math.floor(Math.random() * this.setUpPins.length);
-      return this.scoreboard.scoreThirdRoll(score);
+      return this.bonusRoll = true;
     };
   };
 
-  // Game.prototype.currentRoundScore = function() {
-  //   return this.scoreboard.calculateScore(this.currentScore);
-  // };
-  //
-  // Game.prototype.runningTotal = function() {
-  //   return this.scoreboard.currentTotal();
-  // };
+  Game.prototype.thirdRoll = function() {
+    if(this.bonusRoll === true) {
+      this.setUpPins = [0,1,2,3,4,5,6,7,8,9,10];
+      var score = Math.floor(Math.random() * this.setUpPins.length);
+      return this.scoreboard.scoreThirdRoll(score);
+    }
+  };

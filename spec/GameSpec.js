@@ -25,6 +25,10 @@ describe("Game", function(){
     expect(game.rackedPins).toBe(false);
   });
 
+  it("should initialize with a false bonus roll", function(){
+    expect(game.bonusRoll).toEqual(false);
+  });
+
   it("should initialize with a new Scoreboard", function() {
     expect(game.scoreboard).toEqual(new Scoreboard())
   });
@@ -56,11 +60,11 @@ describe("Game", function(){
     expect(function(){game.rackUp();}).toThrowError("Game Over! Please start a new game")
   });
 
-  it("should call return amount of pins knocked down in first throw", function(){
-    game.rackUp();
-    spyOn(game, 'firstRoll').and.returnValue(4);
-    expect(game.scoreboard.scoreFirstRoll(game.firstRoll())).toEqual(4);
-  });
+  // it("should call return amount of pins knocked down in first throw", function(){
+  //   game.rackUp();
+  //   spyOn(game, 'firstRoll').and.returnValue(4);
+  //   expect(game.scoreboard.scoreFirstRoll(game.firstRoll())).toEqual(4);
+  // });
 
   it("should throw an error if pins are not racked", function() {
     expect(function(){game.firstRoll();}).toThrowError("Cannot Roll, Pins are not yet racked!")
@@ -92,26 +96,17 @@ describe("Game", function(){
     expect(game.scoreboard.scoreSecondRoll(game.secondRoll())).toEqual(3)
   });
 
-  it("should return a third roll only on the 10th frame and if a srike or spare was scored", function(){
+  it("should return a bonus roll true only on the 10th frame and if a srike or spare was scored", function(){
     game.frameCount = 10;
-    game.scoreboard.scoreSecondRoll(10);
+    spyOn(game, 'secondRoll').and.returnValue(10);
+    game.bonusThirdRoll();
+    expect(game.bonusRoll).toEqual(true);
+  });
+
+  it("should return amount of pins knocked down in third roll", function(){
+    game.bonusRoll = true;
+    game.thirdRoll();
     spyOn(game, 'thirdRoll').and.returnValue(5)
     expect(game.scoreboard.scoreThirdRoll(game.thirdRoll())).toEqual(5)
   });
-
-  // it("should calculate the current score", function() {
-  //   game.currentScore = [3, 4];
-  //   expect(game.currentRoundScore()).toContain(7);
-  // });
-  //
-  // it("should return the current total", function() {
-  //   game.currentScore = [5,2];
-  //   game.currentRoundScore();
-  //   game.runningTotal();
-  //   game.currentScore = [3,6];
-  //   game.currentRoundScore();
-  //   game.runningTotal();
-  //   expect(game.runningTotal()).toEqual(16);
-  // });
-
 });

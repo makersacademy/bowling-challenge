@@ -41,7 +41,10 @@ $(document).ready(function(){
 
   function updateCurrentScore() {
     scoreboard.calculateScore();
-    $('#currentTotalScore').text(scoreboard.scores[scoreboard.scores.length-1]);
+    scoreboard.bonusPoints();
+    scoreboard.addBonus();
+    scoreboard.refreshCurrentScores();
+    $('#currentTotalScore').text(scoreboard.totalScore());
   };
 
 

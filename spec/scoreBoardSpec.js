@@ -16,6 +16,9 @@ describe ("Scoreboard", function() {
     expect(scoreboard.totalScores).toEqual([]);
   });
 
-
+  it("should put the score result into the scores array", function(){
+    scoreboard.scoreFirstRoll(4);
+    expect(scoreboard.scores).toContain(4)
+  });
 
 });

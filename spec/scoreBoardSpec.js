@@ -36,6 +36,15 @@ describe ("Scoreboard", function() {
     expect(scoreboard.scores).toContain(5);
   });
 
+  it("should place the total of each set of rolls", function(){
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.bonusPoints();
+    scoreboard.scoreFirstRoll(2);
+    scoreboard.scoreSecondRoll(1);
+    scoreboard.bonusPoints();
+    expect(scoreboard.totalScores).toEqual([13, 3])
+  });
+
   it("should return the calculation of two consecutive throws", function(){
     scoreboard.scoreFirstRoll(4);
     scoreboard.scoreSecondRoll(3);
@@ -54,18 +63,13 @@ describe ("Scoreboard", function() {
   scoreboard.scoreFirstRoll(5);
   scoreboard.scoreSecondRoll(1);
   expect(scoreboard.aStrike()).toEqual(16);
-});
+  });
 
   it("should place the total scores of three consecutive throws (first a strike) to totalScores", function(){
     scoreboard.scoreFirstRoll(10);
-    console.log(scoreboard.scores)
     scoreboard.scoreFirstRoll(5);
     scoreboard.scoreSecondRoll(1);
-    console.log(scoreboard.scores)
-    scoreboard.calculateScores();
-    console.log(scoreboard.scores)
-    console.log(scoreboard.totalScores)
-    console.log(scoreboard.aStrike())
+    scoreboard.bonusPoints();
     expect(scoreboard.totalScores).toEqual([16, 6])
   });
 

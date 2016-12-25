@@ -21,9 +21,9 @@ function Game() {
 
   Game.prototype.firstRoll = function(){
     if (this.rackedPins == true) {
-      var score = Math.floor(Math.random() * this.setUpPins.length);
-      this.pinSweep(score);
-      return this.scoreboard.scoreFirstRoll(score);
+      var score1 = Math.floor(Math.random() * this.setUpPins.length);
+      this.pinSweep(score1);
+      return this.scoreboard.scoreFirstRoll(score1);
     } else {
       throw new Error("Cannot Roll, Pins are not yet racked!");
     };
@@ -51,7 +51,7 @@ function Game() {
   Game.prototype.thirdRoll = function() {
     if(this.bonusRoll === true) {
       this.setUpPins = [0,1,2,3,4,5,6,7,8,9,10];
-      var score = Math.floor(Math.random() * this.setUpPins.length);
-      return this.scoreboard.scoreThirdRoll(score);
+      var score3 = Math.floor(Math.random() * this.setUpPins.length);
+      return this.scoreboard.scoreThirdRoll(score3);
     }
   };

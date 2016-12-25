@@ -2,10 +2,11 @@
 
 describe ("Scoreboard", function() {
   var scoreboard;
-
+  var game;
 
   beforeEach(function(){
     scoreboard = new Scoreboard();
+    game = jasmine.createSpy("Game");
   });
 
   it("Should initialize with an empty scores array", function(){
@@ -16,9 +17,37 @@ describe ("Scoreboard", function() {
     expect(scoreboard.totalScores).toEqual([]);
   });
 
-  it("should put the score result into the scores array", function(){
+  it("should place the first roll score result into the scores array", function(){
     scoreboard.scoreFirstRoll(4);
-    expect(scoreboard.scores).toContain(4)
+    expect(scoreboard.scores).toContain(4);
   });
+
+  it("should return 'X' when a strike is scored", function(){
+    expect(scoreboard.scoreFirstRoll(10)).toEqual('X');
+  });
+
+  it("should place the second roll score result into the scores array", function(){
+    scoreboard.scoreSecondRoll(3);
+    expect(scoreboard.scores).toContain(3);
+  });
+
+  it("should place the bonus third roll score into the scores array", function(){
+    scoreboard.scoreThirdRoll(5);
+    expect(scoreboard.scores).toContain(5);
+  });
+
+  it("should return the calculation of two consecutive throws", function(){
+    scoreboard.scoreFirstRoll(4);
+    scoreboard.scoreSecondRoll(3);
+    expect(scoreboard.calculateScores()).toEqual(7);
+  });
+
+  it("should place the calculated score into the totalScores array", function(){
+    scoreboard.scoreFirstRoll(5);
+    scoreboard.scoreSecondRoll(1);
+    scoreboard.calculateScores();
+    expect(scoreboard.totalScores).toContain(6);
+  });
+
 
 });

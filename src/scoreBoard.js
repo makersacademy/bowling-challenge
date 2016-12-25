@@ -27,4 +27,8 @@ function Scoreboard() {
     return currentScore;
   };
 
-  
+  Scoreboard.prototype.aStrike = function(){
+    var currentScore1 = this.scores[this.scores.length-3] + this.scores[this.scores.length-2] + this.scores[this.scores.length-1];
+    this.totalScores.push(currentScore1);
+    return currentScore1;
+  };

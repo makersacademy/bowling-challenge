@@ -38,11 +38,6 @@ describe("Game", function(){
     expect(game.frameCount).toEqual(1)
   });
 
-  it("should reset the current score count on the scoreboard", function(){
-    game.rackUp();
-    expect(game.scoreboard.currentScore).toEqual([]);
-  });
-
   it("should re-rack the pins between each round if frame count is less than ten", function(){
     game.frameCount = 1;
     game.rackUp();
@@ -60,11 +55,11 @@ describe("Game", function(){
     expect(function(){game.rackUp();}).toThrowError("Game Over! Please start a new game")
   });
 
-  // it("should call return amount of pins knocked down in first throw", function(){
-  //   game.rackUp();
-  //   spyOn(game, 'firstRoll').and.returnValue(4);
-  //   expect(game.scoreboard.scoreFirstRoll(game.firstRoll())).toEqual(4);
-  // });
+  it("should call return amount of pins knocked down in first throw", function(){
+    game.rackUp();
+    spyOn(game, 'firstRoll').and.returnValue(4);
+    expect(game.scoreboard.scoreFirstRoll(game.firstRoll())).toEqual(4);
+  });
 
   it("should throw an error if pins are not racked", function() {
     expect(function(){game.firstRoll();}).toThrowError("Cannot Roll, Pins are not yet racked!")

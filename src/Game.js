@@ -11,7 +11,6 @@ function Game() {
 
   Game.prototype.rackUp = function(){
     this.frameCount ++
-    this.scoreboard.refreshCurrentScores();
     if (this.frameCount <= 10) {
       this.rackedPins = true;
       this.setUpPins = [0,1,2,3,4,5,6,7,8,9,10];

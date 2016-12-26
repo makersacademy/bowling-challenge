@@ -1,3 +1,5 @@
+'use strict';
+
 var bowlingScorer = function() {
   this.totalScore = 0;
   this.frames = []

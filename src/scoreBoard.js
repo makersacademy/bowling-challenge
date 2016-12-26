@@ -28,10 +28,10 @@ function Scoreboard() {
   Scoreboard.prototype.bonusPoints = function(){
     var scoreIndex = this.scores.length
       if (this.scores[scoreIndex-4] === 10) {
-        console.log("strike")
+        console.log("multistrike")
         return this._multiStrike();
     } else if (this.scores[scoreIndex-3] === 10) {
-        console.log("mulitstrike")
+        console.log("strike")
         return this._aStrike();
     } else if (scoreIndex >= 2 && this.scores[scoreIndex-1] !== 10) {
       console.log("anything")
@@ -42,21 +42,22 @@ function Scoreboard() {
   Scoreboard.prototype.calculateScores = function(){
     var scoresIndex = this.scores.length;
       console.log(this.scores)
-    var currentScore = this.scores[scoresIndex-2] + this.scores[scoresIndex-1];
+    var currentScore = this.scores[scoresIndex-3] + this.scores[scoresIndex-2];
       console.log(currentScore)
     if (currentScore === 10) {
       console.log("spare")
       this._spare();
-    } else {
-      this.totalScores.push(currentScore);
-      return currentScore;
+    } else if (this.scores[scoresIndex-2] + this.scores[scoresIndex-1] !==10){
+      var currentScore1 = this.scores[scoresIndex-2] + this.scores[scoresIndex-1];
+      this.totalScores.push(currentScore1);
+      return currentScore1;
     };
 
   };
 
   Scoreboard.prototype._aStrike = function(){
     var scoresIndex = this.scores.length;
-    if (scoresIndex > 2) {
+    if (scoresIndex >= 3) {
       var currentScore1 = this.scores[scoresIndex-3] + this.scores[scoresIndex-2] + this.scores[scoresIndex-1]
       this.totalScores.push(currentScore1);
       this.calculateScores();
@@ -77,13 +78,12 @@ function Scoreboard() {
 
   Scoreboard.prototype._spare = function() {
     var scoresIndex = this.scores.length;
-    if (scoresIndex >= 2) {
+    console.log(this.scores.length);
+    if (scoresIndex >= 3) {
       console.log("Hi Amber " + scoresIndex)
       var currentScore3 = this.scores[scoresIndex-3] + this.scores[scoresIndex-2] + this.scores[scoresIndex-1];
       console.log(currentScore3)
       this.totalScores.push(currentScore3);
-      // this.calculateScores();
-
       return currentScore3;
 
     };

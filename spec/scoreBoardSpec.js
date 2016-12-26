@@ -38,6 +38,7 @@ describe ("Scoreboard", function() {
 
   it("should place the total of each set of rolls", function(){
     scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
     scoreboard.scoreFirstRoll(2);
     scoreboard.scoreSecondRoll(1);
@@ -61,6 +62,8 @@ describe ("Scoreboard", function() {
 
   it("should return of a calculated score of a strike and the next two consecutive throws", function(){
   scoreboard.scoreFirstRoll(10);
+  scoreboard.scoreSecondRoll(0);
+  scoreboard.bonusPoints();
   scoreboard.scoreFirstRoll(5);
   scoreboard.scoreSecondRoll(1);
   expect(scoreboard._aStrike()).toEqual(16);
@@ -68,6 +71,8 @@ describe ("Scoreboard", function() {
 
   it("should place the total scores of three consecutive throws (first a strike) to totalScores", function(){
     scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
     scoreboard.scoreFirstRoll(5);
     scoreboard.scoreSecondRoll(1);
     scoreboard.bonusPoints();
@@ -76,8 +81,10 @@ describe ("Scoreboard", function() {
 
   it("should return the calculated result of two consecutive strikes and score of roll one", function(){
     scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
     scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
     scoreboard.scoreFirstRoll(5)
     scoreboard.scoreSecondRoll(1);
@@ -87,39 +94,65 @@ describe ("Scoreboard", function() {
 
   it("should return 30 when three strikes are scored in a row", function(){
     scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
     scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    scoreboard.scoreFirstRoll(10)
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
     expect(scoreboard.totalScores).toContain(30);
   });
 
-  it("should return '/' when a spare is scored", function(){
-    scoreboard.scoreFirstRoll(2)
-    scoreboard.scoreSecondRoll(8);
-    scoreboard.bonusPoints();
-    expect(scoreboard._spare()).toEqual('/')
-  });
+  // it("should return '/' when a spare is scored", function(){
+  //   scoreboard.scoreFirstRoll(2)
+  //   scoreboard.scoreSecondRoll(8);
+  //   scoreboard.bonusPoints();
+  //   expect(scoreboard._spare()).toEqual('/')
+  // });
+  //
+  // it("should add the result of the calculation of the spare and the first roll of the next set to totalScores", function(){
+  //   scoreboard.scoreFirstRoll(2);
+  //   console.log(scoreboard.scores)
+  //   scoreboard.scoreSecondRoll(8);
+  //   console.log(scoreboard.scores)
+  //   scoreboard.bonusPoints();
+  //   console.log(scoreboard.scores)
+  //   console.log(scoreboard.totalScores)
+  //   scoreboard.scoreFirstRoll(1)
+  //   scoreboard.scoreSecondRoll(8);
+  //   scoreboard.bonusPoints();
+  //     scoreboard.bonusPoints();
+  //   console.log(scoreboard.scores)
+  //   console.log(scoreboard.totalScores)
+  //   expect(scoreboard.totalScores).toEqual([11,9])
+  // });
 
-  it("should add the result of the calculation of the spare and the first roll of the next set to totalScores", function(){
-    scoreboard.scoreFirstRoll(2);
+  it("should call the function strike when score is 10", function(){
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.scores)
-    scoreboard.scoreSecondRoll(8);
+    scoreboard.scoreFirstRoll(3);
+    scoreboard.scoreSecondRoll(4);
+    scoreboard.bonusPoints();
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
+    scoreboard.scoreFirstRoll(5);
+    scoreboard.scoreSecondRoll(5);
     console.log(scoreboard.scores)
     scoreboard.bonusPoints();
-    // console.log(scoreboard.scores)
-    // console.log(scoreboard.totalScores)
-    scoreboard.scoreFirstRoll(1)
-    console.log(scoreboard.scores)
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    // console.log(scoreboard.totalScores)
-    scoreboard.scoreSecondRoll(8);
+    scoreboard.scoreFirstRoll(5);
+    scoreboard.scoreSecondRoll(3);
     scoreboard.bonusPoints();
-    console.log(scoreboard.scores)
-    console.log(scoreboard.totalScores)
-    expect(scoreboard.totalScores).toEqual([11,9])
+    scoreboard.scoreFirstRoll(7);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
+    expect(scoreboard.totalScores).toEqual([17, 7, 20, 20, 18, 8, 7]);
   });
 
 

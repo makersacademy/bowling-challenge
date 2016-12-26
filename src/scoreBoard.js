@@ -27,10 +27,10 @@ function Scoreboard() {
 
   Scoreboard.prototype.bonusPoints = function(){
     var scoreIndex = this.scores.length
-      if (this.scores[scoreIndex-4] === 10) {
+      if (this.scores[scoreIndex-6] === 10 && this.scores[scoreIndex-4] ===10) {
         console.log("multistrike")
         return this._multiStrike();
-    } else if (this.scores[scoreIndex-3] === 10) {
+    } else if (this.scores[scoreIndex-4] === 10 && this.scores[scoreIndex-2] !== 10 ) {
         console.log("strike")
         return this._aStrike();
     } else if (scoreIndex >= 2 && this.scores[scoreIndex-1] !== 10) {
@@ -42,9 +42,9 @@ function Scoreboard() {
   Scoreboard.prototype.calculateScores = function(){
     var scoresIndex = this.scores.length;
       console.log(this.scores)
-    var currentScore = this.scores[scoresIndex-3] + this.scores[scoresIndex-2];
+    var currentScore = this.scores[scoresIndex-4] + this.scores[scoresIndex-3];
       console.log(currentScore)
-    if (currentScore === 10) {
+    if (currentScore === 10 && this.scores[scoresIndex-4] !==10) {
       console.log("spare")
       this._spare();
     } else if (this.scores[scoresIndex-2] + this.scores[scoresIndex-1] !==10){
@@ -57,19 +57,22 @@ function Scoreboard() {
 
   Scoreboard.prototype._aStrike = function(){
     var scoresIndex = this.scores.length;
-    if (scoresIndex >= 3) {
-      var currentScore1 = this.scores[scoresIndex-3] + this.scores[scoresIndex-2] + this.scores[scoresIndex-1]
+    if (scoresIndex >= 4) {
+      var currentScore1 = this.scores[scoresIndex-4] + this.scores[scoresIndex-2] + this.scores[scoresIndex-1]
       this.totalScores.push(currentScore1);
       this.calculateScores();
+      console.log(currentScore1)
       return currentScore1;
     };
       };
 
   Scoreboard.prototype._multiStrike = function(){
         var scoresIndex = this.scores.length;
-      if (scoresIndex >= 3) {
-        var currentScore2 = this.scores[scoresIndex-4] + this.scores[scoresIndex-3] + this.scores[scoresIndex-2]
+        console.log(this.scores)
+      if (scoresIndex >= 6) {
+        var currentScore2 = this.scores[scoresIndex-6] + this.scores[scoresIndex-4] + this.scores[scoresIndex-2]
         this.totalScores.push(currentScore2);
+        console.log(currentScore2)
         this._aStrike();
         return currentScore2;
       };
@@ -81,9 +84,9 @@ function Scoreboard() {
     console.log(this.scores.length);
     if (scoresIndex >= 3) {
       console.log("Hi Amber " + scoresIndex)
-      var currentScore3 = this.scores[scoresIndex-3] + this.scores[scoresIndex-2] + this.scores[scoresIndex-1];
-      console.log(currentScore3)
+      var currentScore3 = this.scores[scoresIndex-4] + this.scores[scoresIndex-3] + this.scores[scoresIndex-2];
       this.totalScores.push(currentScore3);
+      // this.calculateScores();
       return currentScore3;
 
     };

@@ -55,11 +55,17 @@ describe("Game", function(){
     expect(function(){game.rackUp();}).toThrowError("Game Over! Please start a new game")
   });
 
-  // it("should call return amount of pins knocked down in first throw", function(){
-  //   game.rackUp();
-  //   spyOn(game, 'firstRoll').and.returnValue(4);
-  //   expect(game.scoreboard.scoreFirstRoll(game.firstRoll())).toEqual(4);
-  // });
+  it("should call return amount of pins knocked down in first throw", function(){
+    game.rackUp();
+    spyOn(game, 'firstRoll').and.returnValue(4);
+    expect(game.scoreboard.scoreFirstRoll(game.firstRoll())).toEqual(4);
+  });
+
+  it("should call return amount of pins knocked down in first throw", function(){
+    game.rackUp();
+    spyOn(game, 'firstRoll').and.returnValue(10);
+    expect(game.scoreboard.scoreFirstRoll(game.firstRoll())).toEqual('X');
+  });
 
   it("should throw an error if pins are not racked", function() {
     expect(function(){game.firstRoll();}).toThrowError("Cannot Roll, Pins are not yet racked!")
@@ -84,12 +90,12 @@ describe("Game", function(){
     expect(game.sweepComplete).toBe(true);
   });
 
-  // it("should return amount of pins knocked down in second throw", function(){
-  //   game.rackUp();
-  //   game.firstRoll();
-  //   spyOn(game, 'secondRoll').and.returnValue(3);
-  //   expect(game.scoreboard.scoreSecondRoll(game.secondRoll())).toEqual(3)
-  // });
+  it("should return amount of pins knocked down in second throw", function(){
+    game.rackUp();
+    game.firstRoll();
+    spyOn(game, 'secondRoll').and.returnValue(3);
+    expect(game.scoreboard.scoreSecondRoll(game.secondRoll())).toEqual(3)
+  });
 
   it("should return a bonus roll true only on the 10th frame and if a srike or spare was scored", function(){
     game.frameCount = 10;
@@ -98,10 +104,10 @@ describe("Game", function(){
     expect(game.bonusRoll).toEqual(true);
   });
 
-  // it("should return amount of pins knocked down in third roll", function(){
-  //   game.bonusRoll = true;
-  //   game.thirdRoll();
-  //   spyOn(game, 'thirdRoll').and.returnValue(5)
-  //   expect(game.scoreboard.scoreThirdRoll(game.thirdRoll())).toEqual(5)
-  // });
+  it("should return amount of pins knocked down in third roll", function(){
+    game.bonusRoll = true;
+    game.thirdRoll();
+    spyOn(game, 'thirdRoll').and.returnValue(5)
+    expect(game.scoreboard.scoreThirdRoll(game.thirdRoll())).toEqual(5)
+  });
 });

@@ -47,7 +47,9 @@ function Scoreboard() {
     if (currentScore === 10 && this.scores[scoresIndex-4] !==10) {
       console.log("spare")
       this._spare();
-    } else if (this.scores[scoresIndex-2] + this.scores[scoresIndex-1] !==10){
+    } else if (this.scores[scoresIndex-2] + this.scores[scoresIndex-1] ===10) {
+        return "/"
+    } else {
       var currentScore1 = this.scores[scoresIndex-2] + this.scores[scoresIndex-1];
       this.totalScores.push(currentScore1);
       return currentScore1;
@@ -73,7 +75,12 @@ function Scoreboard() {
         var currentScore2 = this.scores[scoresIndex-6] + this.scores[scoresIndex-4] + this.scores[scoresIndex-2]
         this.totalScores.push(currentScore2);
         console.log(currentScore2)
-        this._aStrike();
+        if (this.scores[scoresIndex-2] === 10) {
+          this.scores.splice(0,2)
+          this._multiStrike();
+        } else {
+          this._aStrike();
+        };
         return currentScore2;
       };
 
@@ -86,11 +93,23 @@ function Scoreboard() {
       console.log("Hi Amber " + scoresIndex)
       var currentScore3 = this.scores[scoresIndex-4] + this.scores[scoresIndex-3] + this.scores[scoresIndex-2];
       this.totalScores.push(currentScore3);
-      // this.calculateScores();
+      this.scores.splice(0,2)
       return currentScore3;
-
     };
+  };
 
-    // return "/"
+  Scoreboard.prototype.calculatedTotal= function(){
+    var totalScore = this.totalScores.reduce(function(a,b){return a+b },0)
+      if (totalScore === 300) {
+        return this._perfectGame();
+    } else if (totalScore === 0) {
+        return this._gutterGame();
+    } else {
+      return totalScore;
+    };
+  };
 
+
+  Scoreboard.prototype._gutterGame = function(){
+    return "Gutter Game!"
   };

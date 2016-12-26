@@ -102,32 +102,30 @@ describe ("Scoreboard", function() {
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    expect(scoreboard.totalScores).toContain(30);
+    expect(scoreboard.totalScores).toEqual([30]);
   });
 
-  // it("should return '/' when a spare is scored", function(){
-  //   scoreboard.scoreFirstRoll(2)
-  //   scoreboard.scoreSecondRoll(8);
-  //   scoreboard.bonusPoints();
-  //   expect(scoreboard._spare()).toEqual('/')
-  // });
-  //
-  // it("should add the result of the calculation of the spare and the first roll of the next set to totalScores", function(){
-  //   scoreboard.scoreFirstRoll(2);
-  //   console.log(scoreboard.scores)
-  //   scoreboard.scoreSecondRoll(8);
-  //   console.log(scoreboard.scores)
-  //   scoreboard.bonusPoints();
-  //   console.log(scoreboard.scores)
-  //   console.log(scoreboard.totalScores)
-  //   scoreboard.scoreFirstRoll(1)
-  //   scoreboard.scoreSecondRoll(8);
-  //   scoreboard.bonusPoints();
-  //     scoreboard.bonusPoints();
-  //   console.log(scoreboard.scores)
-  //   console.log(scoreboard.totalScores)
-  //   expect(scoreboard.totalScores).toEqual([11,9])
-  // });
+  it("should return '/' when a spare is scored", function(){
+    scoreboard.scoreFirstRoll(2)
+    scoreboard.scoreSecondRoll(8);
+    console.log(scoreboard.calculateScores())
+    expect(scoreboard.calculateScores()).toEqual('/')
+  });
+
+  it("should add the result of the calculation of the spare and the first roll of the next set to totalScores", function(){
+    scoreboard.scoreFirstRoll(2);
+    console.log(scoreboard.scores)
+    scoreboard.scoreSecondRoll(8);
+    console.log(scoreboard.scores)
+    scoreboard.bonusPoints();
+    console.log(scoreboard.scores)
+    console.log(scoreboard.totalScores)
+    scoreboard.scoreFirstRoll(1)
+    scoreboard.scoreSecondRoll(8);
+    scoreboard.bonusPoints();
+    scoreboard.bonusPoints();
+    expect(scoreboard.totalScores).toEqual([11,9])
+  });
 
   it("should call the function strike when score is 10", function(){
     scoreboard.scoreFirstRoll(10);
@@ -141,7 +139,6 @@ describe ("Scoreboard", function() {
     scoreboard.bonusPoints();
     scoreboard.scoreFirstRoll(5);
     scoreboard.scoreSecondRoll(5);
-    console.log(scoreboard.scores)
     scoreboard.bonusPoints();
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
@@ -155,6 +152,14 @@ describe ("Scoreboard", function() {
     expect(scoreboard.totalScores).toEqual([17, 7, 20, 20, 18, 8, 7]);
   });
 
+  it("should return the total score of all the scores", function(){
+    scoreboard.totalScores = [17, 7, 20, 20, 18, 8, 7]
+    expect(scoreboard.calculatedTotal()).toEqual(97)
+  });
 
+  it("should return Gutter Game! when total score is 0", function(){
+    scoreboard.totalScores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    expect(scoreboard.calculatedTotal()).toEqual("Gutter Game!")
+  });
 
 });

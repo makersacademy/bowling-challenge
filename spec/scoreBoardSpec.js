@@ -17,14 +17,18 @@ describe ("Scoreboard", function() {
     expect(scoreboard.totalScores).toEqual([]);
   });
 
+  it("should initialize with a calculated total of 0", function(){
+    expect(scoreboard.totalCalculated).toEqual(0)
+  });
+
   it("should place the first roll score result into the scores array", function(){
     scoreboard.scoreFirstRoll(4);
     expect(scoreboard.scores).toContain(4);
   });
 
-  it("should return 'X' when a strike is scored", function(){
-    expect(scoreboard.scoreFirstRoll(10)).toEqual('X');
-  });
+  // it("should return 'X' when a strike is scored", function(){
+  //   expect(scoreboard.scoreFirstRoll(10)).toEqual('X');
+  // });
 
   it("should place the second roll score result into the scores array", function(){
     scoreboard.scoreSecondRoll(3);
@@ -50,7 +54,8 @@ describe ("Scoreboard", function() {
     scoreboard.scoreFirstRoll(4);
     scoreboard.scoreSecondRoll(3);
     scoreboard.bonusPoints();
-    expect(scoreboard.calculateScores()).toEqual(7);
+    scoreboard.calculatedTotal();
+    expect(scoreboard.totalCalculated).toEqual(7);
   });
 
   it("should place the calculated score into the totalScores array", function(){
@@ -118,7 +123,6 @@ describe ("Scoreboard", function() {
     scoreboard.scoreFirstRoll(1)
     scoreboard.scoreSecondRoll(8);
     scoreboard.bonusPoints();
-    scoreboard.bonusPoints();
     expect(scoreboard.totalScores).toEqual([11,9])
   });
 
@@ -126,24 +130,31 @@ describe ("Scoreboard", function() {
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
+    console.log(scoreboard.scores)
     scoreboard.scoreFirstRoll(3);
     scoreboard.scoreSecondRoll(4);
     scoreboard.bonusPoints();
+  console.log(scoreboard.scores)
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
+    console.log(scoreboard.scores)
     scoreboard.scoreFirstRoll(5);
     scoreboard.scoreSecondRoll(5);
     scoreboard.bonusPoints();
+    console.log(scoreboard.scores)
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
+    console.log(scoreboard.scores)
     scoreboard.scoreFirstRoll(5);
     scoreboard.scoreSecondRoll(3);
     scoreboard.bonusPoints();
+    console.log(scoreboard.scores)
     scoreboard.scoreFirstRoll(7);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
+    console.log(scoreboard.scores)
     expect(scoreboard.totalScores).toEqual([17, 7, 20, 20, 18, 8, 7]);
   });
 

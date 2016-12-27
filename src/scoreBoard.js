@@ -3,12 +3,13 @@
 function Scoreboard() {
   this.scores = [];
   this.totalScores = [];
+  this.totalCalculated = 0;
 };
 
   Scoreboard.prototype.scoreFirstRoll = function(score1) {
     if (score1 === 10) {
       this.scores.push(score1)
-      return 'X';
+      return 10;
     } else {
       this.scores.push(score1)
       return score1
@@ -52,6 +53,7 @@ function Scoreboard() {
     } else {
       var currentScore1 = this.scores[scoresIndex-2] + this.scores[scoresIndex-1];
       this.totalScores.push(currentScore1);
+      this.scores.splice(0,2)
       return currentScore1;
     };
 
@@ -62,7 +64,8 @@ function Scoreboard() {
     if (scoresIndex >= 4) {
       var currentScore1 = this.scores[scoresIndex-4] + this.scores[scoresIndex-2] + this.scores[scoresIndex-1]
       this.totalScores.push(currentScore1);
-      this.calculateScores();
+      this.scores.splice(0,2)
+      this.bonusPoints();
       console.log(currentScore1)
       return currentScore1;
     };
@@ -77,9 +80,10 @@ function Scoreboard() {
         console.log(currentScore2)
         if (this.scores[scoresIndex-2] === 10) {
           this.scores.splice(0,2)
-          this._multiStrike();
+          this.bonusPoints();
         } else {
-          this._aStrike();
+          this.scores.splice(0,2)
+          this.bonusPoints();
         };
         return currentScore2;
       };
@@ -94,18 +98,19 @@ function Scoreboard() {
       var currentScore3 = this.scores[scoresIndex-4] + this.scores[scoresIndex-3] + this.scores[scoresIndex-2];
       this.totalScores.push(currentScore3);
       this.scores.splice(0,2)
+      this.bonusPoints();
       return currentScore3;
     };
   };
 
   Scoreboard.prototype.calculatedTotal= function(){
-    var totalScore = this.totalScores.reduce(function(a,b){return a+b },0)
-      if (totalScore === 300) {
+    this.totalCalculated = this.totalScores.reduce(function(a,b){return a+b },0)
+      if (this.totalCalculated === 300) {
         return this._perfectGame();
-    } else if (totalScore === 0) {
+    } else if (this.totalCalculated === 0) {
         return this._gutterGame();
     } else {
-      return totalScore;
+      return this.totalCalculated;
     };
   };
 

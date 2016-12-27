@@ -77,10 +77,10 @@ describe("Game", function(){
       expect(game.scoreboard.scoreFirstRoll(game.firstRoll())).toEqual(4);
     });
 
-    it("should call return amount of pins knocked down in first throw", function(){
-      spyOn(game, 'firstRoll').and.returnValue(10);
-      expect(game.scoreboard.scoreFirstRoll(game.firstRoll())).toEqual('X');
-    });
+    // it("should call return amount of pins knocked down in first throw", function(){
+    //   spyOn(game, 'firstRoll').and.returnValue(10);
+    //   expect(game.scoreboard.scoreFirstRoll(game.firstRoll())).toEqual('X');
+    // });
 
     it("should return sweep complete as true", function(){
       game.firstRoll();

@@ -5,7 +5,7 @@ $(document).ready(function(){
 
   $(function () {
   $('#rackUp').click(function(){
-    game.rackUp();
+    game.increaseFrameCount();
     updateFrameCount();
       $('#firstRoll').show();
                 if ($(this.rackedPins).val() == false) {
@@ -40,11 +40,9 @@ $(document).ready(function(){
   };
 
   function updateCurrentScore() {
-    scoreboard.calculateScore();
     scoreboard.bonusPoints();
-    scoreboard.addBonus();
-    scoreboard.refreshCurrentScores();
-    $('#currentTotalScore').text(scoreboard.totalScore());
+    scoreboard.calculatedTotal();
+    $('#currentTotalScore').text(scoreboard.totalCalculated);
   };
 
 

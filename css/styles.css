@@ -1,6 +1,9 @@
 body {
   background-color: slategrey;
+}
 
+input {
+  width: 30px;
 }
 
 h1 {

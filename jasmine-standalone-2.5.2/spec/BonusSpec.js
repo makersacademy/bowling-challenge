@@ -10,7 +10,13 @@ describe("Bonus", function() {
       bonus = new Bonus("strike");
     });
 
-    it("has gets points from 2 rolls if type is strike", function() {
+    describe("::new", function() {
+      it("should create new Bonus instance", function() {
+        expect(bonus instanceof Bonus).toBe(true);
+      });
+    });
+
+    it("consists of 2 rolls if type is strike", function() {
       expect(bonus.numberOfRolls).toEqual(2);
     })
 
@@ -19,12 +25,12 @@ describe("Bonus", function() {
       expect(bonus.getScore()).toEqual(1);
     })
 
-    it("knows when it is not complete", function() {
+    it("knows when it is not over", function() {
       bonus.addToBonus(1);
       expect(bonus.isOver()).toEqual(false);
     })
 
-    it("knows when it is complete", function() {
+    it("knows when it is over", function() {
       bonus.addToBonus(1);
       bonus.addToBonus(1);
       expect(bonus.isOver()).toEqual(true);
@@ -37,16 +43,14 @@ describe("Bonus", function() {
       bonus = new Bonus("spare");
     });
 
-    it("has gets points from 1 rolls if type is strike", function() {
-      bonus = new Bonus("spare");
+    it("consists of 1 roll if type is strike", function() {
       expect(bonus.numberOfRolls).toEqual(1);
     })
 
-    it("knows when it is complete", function() {
+    it("knows when it is over", function() {
       bonus.addToBonus(1);
       expect(bonus.isOver()).toEqual(true);
     })
   })
-
 
 })

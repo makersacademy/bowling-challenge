@@ -1,11 +1,14 @@
 'use strict';
 
 function Game() {
-  this.frames = this._createFrames();
+  this.frames = []
   this.currentFrameIndex = 0;
+
+  this._createFrames()
 }
 
 Game.prototype = {
+
   roll: function(pins) {
     if (this.isOver()) {
       console.log("Over");
@@ -21,40 +24,43 @@ Game.prototype = {
         this.currentFrameIndex ++;
       }
     }
+  },
+
+  _createFrames: function() {
+    for (var i=0; i<10; i++) {
+      this.frames.push(new Frame());
+    }
+  },
+
+  calculateScore: function(scoreUpTo=10) {
+    var total = 0;
+    for (var frameIndex = 0; frameIndex < scoreUpTo; frameIndex++) {
+      total += this.frames[frameIndex].getTotalScore();
+    }
+    return total;
+  },
+
+  _addBonusPoints: function(pins) {
+    this.frames.forEach(function(frame) {
+      frame.addToBonus(pins);
+    })
+  },
+
+  rollNumber: function() {
+    var currentFrame = this.frames[this.currentFrameIndex];
+    return currentFrame.rollNumber();
+  },
+
+  getRoll: function(frameNumber,rollNumber) {
+    var frame = this.frames[frameNumber-1];
+    return frame.scoreCard[rollNumber-1];
   }
 }
 
-Game.prototype.calculateScore = function(scoreUpTo=10) {
-  var total = 0;
-  for (var frameIndex = 0; frameIndex < scoreUpTo; frameIndex++) {
-    total += this.frames[frameIndex].getTotalScore();
-  }
-  return total;
-}
 
-Game.prototype._createFrames = function() {
-  var frames = [];
-  for (var i=0; i<10; i++) {
-    frames.push(new Frame());
-  }
-  return frames;
-}
 
-Game.prototype._addBonusPoints = function(pins) {
-  this.frames.forEach(function(frame) {
-    frame.addToBonus(pins);
-  })
-}
 
-Game.prototype._rollNumber = function() {
-  var currentFrame = this.frames[this.currentFrameIndex];
-  return currentFrame.rollNumber();
-}
 
-Game.prototype.getRoll = function(frameNumber,rollNumber) {
-  var frame = this.frames[frameNumber-1];
-  return frame.scoreCard[rollNumber-1];
-}
 
 Game.prototype.getFrameScore = function(frameNumber) {
   var frame = this.frames[frameNumber - 1];

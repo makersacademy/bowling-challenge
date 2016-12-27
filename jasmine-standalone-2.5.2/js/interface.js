@@ -21,11 +21,11 @@ $( document ).ready(function() {
   function updateScoreAndRoll(){
     $( '#total-score' ).text( game.calculateScore() );
     $( '#frame-number' ).text( game.currentFrameIndex + 1 );
-    $( '#roll-number' ).text( game._rollNumber() );
+    $( '#roll-number' ).text( game.rollNumber() );
   }
 
   function hideNumbers(pins){
-    if (game._rollNumber() === 2 && pins !=10) {
+    if (game.rollNumber() === 2 && pins !=10) {
       for (var id = 11 - pins; id < 11; id++) {
         $("#" + id).attr("disabled", true);
       }

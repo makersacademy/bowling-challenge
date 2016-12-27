@@ -69,7 +69,6 @@ describe("Bowling", function() {
     bowling.enter_score(1);
     bowling.enter_score(1);
     expect(bowling.score).toEqual(14)
-    console.log(bowling.running_total)
   });
 
   it("should return 1 after 1 strike", function() {
@@ -81,5 +80,11 @@ describe("Bowling", function() {
     bowling.enter_score(10);
     bowling.enter_score(1);
     expect(bowling.strikes_in_a_row).toEqual(0)
+  });
+
+  it("strike counter should increment when multiple strikes are scored in a row", function() {
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    expect(bowling.strikes_in_a_row).toEqual(2)
   });
 });

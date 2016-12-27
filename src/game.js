@@ -6,7 +6,7 @@ function Game() {
 
 Game.prototype.takeTurn = function(firstRoll, secondRoll) {
   if (this._isGameOver()) {
-    throw new Error('Game Over');
+    return 'This game is over'
   }
   frame = new Frame(firstRoll, secondRoll);
   this._frames.push(frame);

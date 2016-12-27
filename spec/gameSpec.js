@@ -53,7 +53,8 @@ describe('Game', function() {
     });
 
     it('you cannot continue to play when you have already rolled 10 frames', function() {
-      expect(function(){ game.takeTurn(0, 0); }).toThrowError('Game Over');
+      game.takeTurn(1, 1);
+      expect(game._frames.length).not.toEqual(11);
     });
 
     it('resets the frames', function() {

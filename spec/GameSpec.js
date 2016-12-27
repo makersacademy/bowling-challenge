@@ -21,12 +21,20 @@ describe("Game", function(){
     expect(game.score).toEqual([]);
   });
 
+  it("should initialize with a firstScore that equal 0", function(){
+    expect(game.firstScore).toEqual(0);
+  });
+
+  it("should initialize with a secondScore thats equals 0", function(){
+    expect(game.secondScore).toEqual(0);
+  });
+
   it("should initialize with a false rack of pins", function(){
     expect(game.rackedPins).toBe(false);
   });
 
-  it("should initialize with a false bonus roll", function(){
-    expect(game.bonusRoll).toEqual(false);
+  it("should initialize with a bonus count of 0", function(){
+    expect(game.bonusCount).toEqual(0);
   });
 
   it("should initialize with a new Scoreboard", function() {
@@ -52,16 +60,17 @@ describe("Game", function(){
       expect(game.rackedPins).toBe(true);
     });
 
+    it("should throw an error if frame count is more then ten", function(){
+      game.frameCount = 10;
+      expect(function(){game.increaseFrameCount();}).toThrowError("Game Over! Please start a new game")
+    });
+
     it("should re-rack with all the pins when frame count is 10 and a strike is scored on the first roll", function(){
       game.frameCount = 9;
       spyOn(game, 'firstRoll').and.returnValue(10);
       expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
     });
 
-    it("should throw an error if frame count is more then ten", function(){
-      game.frameCount = 12;
-      expect(function(){game.rackUp();}).toThrowError("Game Over! Please start a new game")
-    });
 
     it("should call return amount of pins knocked down in first throw", function(){
       spyOn(game, 'firstRoll').and.returnValue(4);
@@ -135,5 +144,54 @@ describe("Game", function(){
     //   expect(game.scoreboard.scoreThirdRoll(game.thirdRoll())).toEqual(5)
     // });
   });
+
+
+  it("should re-rack pins if frame count is ten and first roll was a strike", function(){
+    game.frameCount = 10;
+    game.firstScore = 10;
+    game.increaseFrameCount();
+    expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
+  });
+
+  it("should re-rack pins if frame count is ten and the first roll and second roll were a strike", function(){
+    game.frameCount = 10;
+    game.firstScore = 10;
+    game.increaseFrameCount();
+    game.firstScore = 10;
+    game.increaseFrameCount();
+    game.firstScore = 10;
+    game.increaseFrameCount();
+    expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
+  });
+
+  it("should rack up for one more roll if frame count is 10 and a spare is scored", function(){
+    game.frameCount = 10;
+    game.firstScore = 5;
+    game.secondScore = 5;
+    game.increaseFrameCount();
+    expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
+  });
+
+  it("should throw an error when player tries to bowl more than two bonus balls", function(){
+    game.frameCount = 10;
+    game.firstScore = 10;
+    game.increaseFrameCount();
+    game.firstScore = 10;
+    game.increaseFrameCount();
+    game.firstScore = 10;
+    game.increaseFrameCount();
+    game.firstScore = 10;
+    expect(function(){game.increaseFrameCount();}).toThrowError("Game Over! Please start a new game")
+  });
+
+  it("should rack up for one more roll if frame count is 10 and a spare is scored", function(){
+    game.frameCount = 10;
+    game.firstScore = 5;
+    game.secondScore = 5;
+    game.increaseFrameCount();
+    game.firstScore = 3;
+    expect(function(){game.increaseFrameCount();}).toThrowError("Game Over! Please start a new game")
+  });
+
 
 });

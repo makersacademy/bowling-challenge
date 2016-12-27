@@ -1,25 +1,30 @@
 function Game() {
   this._frames = [];
+  this.MAXIMUM_FRAMES = 10;
+  this._isFinalFrame = false;
   this._pinsDown = [];
   this._bonusPoints = [];
   this._totalPins = 0;
   this._totalBonus = 0;
   this._finalScore = 0;
-  this.MAXIMUM_FRAMES = 10;
 }
 
 Game.prototype.takeTurn = function(firstRoll, secondRoll) {
-  if (this._isGameOver()) {
-    return 'This game is over'
-  }
   frame = new Frame(firstRoll, secondRoll);
   if (frame._firstRoll === 10 && frame._secondRoll > 0) {
     throw new Error('You cannot have a second roll if you rolled a strike. Please enter your scores correctly');
   }
-  if (this._frames.length === this.MAXIMUM_FRAMES - 1) {
-    frame._finalFrame();
-  }
   this._frames.push(frame);
+  if (this._frames.length === this.MAXIMUM_FRAMES - 1) {
+    this._finalFrame();
+  }
+  if (this._frames.length === this.MAXIMUM_FRAMES) {
+    this._endGame();
+  }
+};
+
+Game.prototype._finalFrame = function() {
+  this._isFinalFrame = true;
 };
 
 Game.prototype._checkForStrikes = function () {
@@ -83,15 +88,16 @@ Game.prototype._isGameOver = function() {
   return this._frames.length >= 10;
 };
 
-Game.prototype._resetGame = function() {
+Game.prototype.playAgain = function() {
   this._frames = [];
   this._pinsDown = [];
   this._bonusPoints = [];
   this._totalPins = 0;
+  this._finalScore = 0;
 };
 
 Game.prototype._endGame = function() {
   this._addFinalScore();
   console.log("Final score is " + this._finalScore);
-  this._resetGame();
+  console.log("Please call 'game.playAgain' to continue with a new game")
 };

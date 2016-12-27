@@ -21,15 +21,6 @@ describe('Frame', function() {
     expect(frame._isSpare).toEqual(false);
   });
 
-  it('has an _isFinalFrame property which is false by default', function() {
-    expect(frame._isFinalFrame).toEqual(false);
-  });
-
-  it('is _isFinalFrame can be changed to true', function() {
-    frame._finalFrame();
-    expect(frame._isFinalFrame).toEqual(true);
-  });
-
   describe('when a game is in play', function() {
     it('receives the number of pins knocked down in the first roll from game', function() {
       expect(frame._firstRoll).toEqual(0);

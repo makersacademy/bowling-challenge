@@ -28,7 +28,7 @@ describe('Game', function() {
   });
 
   describe('when playing a game', function() {
-    it('when roll is called it creates a new frame', function() {
+    it('when player takes their turn it creates a new frame', function() {
       game.takeTurn(1, 1);
       expect(game._frames.length).toEqual(1);
     });
@@ -38,10 +38,10 @@ describe('Game', function() {
     });
 
     it('knows when it is the final frame', function() {
-      for (var i = 0; i < 10; i++) {
+      for (var i = 0; i < 9; i++) {
         game.takeTurn(1, 1);
       }
-      expect(game._frames[9]._isFinalFrame).toEqual(true);
+      expect(game._isFinalFrame).toEqual(true);
     });
   });
 
@@ -51,10 +51,8 @@ describe('Game', function() {
         game.takeTurn(1, 1);
       }
     });
-
-    it('can calculate the total pins knocked down for the game', function() {
-      game._addTotalPins();
-      expect(game._totalPins).toEqual(20);
+    it('can add up the total amount of pins knocked down', function() {
+      expect(game._finalScore).toEqual(20);
     });
   });
 
@@ -104,36 +102,32 @@ describe('Game', function() {
     });
   });
 
-  describe('when a game is finished', function() {
+  describe('when a game is finished you can play again, which will', function() {
     beforeEach(function() {
       for (var i = 0; i < 10; i++) {
         game.takeTurn(1, 1);
       }
+      game.playAgain();
     });
 
-    it('you cannot continue to play when you have already rolled 10 frames', function() {
-      game.takeTurn(1, 1);
-      expect(game._frames.length).not.toEqual(11);
-    });
-
-    it('resets the frames', function() {
-      game._endGame();
+    it('reset the frames', function() {
       expect(game._frames).toEqual([]);
     });
 
-    it('resets the pins down per frame', function() {
-      game._endGame();
+    it('reset the pins down per frame', function() {
       expect(game._pinsDown).toEqual([]);
     });
 
-    it('resets the bonus points', function() {
-      game._endGame();
+    it('reset the bonus points', function() {
       expect(game._bonusPoints).toEqual([]);
     });
 
-    it('resets the total pins back to zero', function() {
-      game._endGame();
+    it('reset the total pins back to zero', function() {
       expect(game._totalPins).toEqual(0);
+    });
+
+    it('resets the final score back to 0', function() {
+      expect(game._finalScore).toEqual(0);
     });
   });
 

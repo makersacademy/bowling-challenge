@@ -39,8 +39,23 @@ describe('Game', function() {
     });
 
     it('can calculate the total score', function() {
+      game._frameScore();
       game._addTotalScore();
       expect(game._totalScore).toEqual(20);
+    });
+  });
+
+  describe('when calculating bonus points', function() {
+    it('can check whether each frame was a strike', function() {
+      game.takeTurn(10, 0);
+      game._checkForStrikes();
+      expect(game._frames[0]._isStrike).toEqual(true);
+    });
+
+    it('can check whether each frame was a spare', function() {
+      game.takeTurn(5, 5);
+      game._checkForSpares();
+      expect(game._frames[0]._isSpare).toEqual(true);
     });
   });
 

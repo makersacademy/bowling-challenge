@@ -62,4 +62,12 @@ describe("Bowling", function() {
     bowling.enter_score(10);
     expect(bowling.last_strike).toEqual(true)
   });
+
+  it("should double score of next frame after a strike", function() {
+    bowling.enter_score(10);
+    console.log(bowling.first_go);
+    bowling.enter_score(1);
+    bowling.enter_score(1);
+    expect(bowling.score).toEqual(14)
+  });
 });

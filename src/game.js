@@ -22,8 +22,17 @@ Game.prototype._frameScore = function() {
 Game.prototype._strikeBonus = function () {
   this._checkForStrikes();
   for (var i = 0; i < this._frames.length; i++) {
-    if (this._frames[i]._isStrike === true) {
+    if (this._frames[i]._isStrike) {
       this._bonusPoints.push(this._frames[i+1]._firstRoll + this._frames[i+1]._secondRoll);
+    }
+  }
+};
+
+Game.prototype._spareBonus = function () {
+  this._checkForSpares();
+  for (var i = 0; i < this._frames.length; i++) {
+    if (this._frames[i]._isSpare) {
+      this._bonusPoints.push(this._frames[i+1]._firstRoll);
     }
   }
 };

@@ -68,6 +68,15 @@ describe('Game', function() {
     });
   });
 
+  describe('when calculating spare bonuses', function() {
+    it('can calculated the correct bonus for a spare', function() {
+      game.takeTurn(5, 5);
+      game.takeTurn(1, 1);
+      game._spareBonus();
+      expect(game._bonusPoints[0]).toEqual(1);
+    });
+  });
+
   describe('when a game is finished', function() {
     beforeEach(function() {
       for (var i = 0; i < 10; i++) {

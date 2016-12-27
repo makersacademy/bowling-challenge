@@ -11,3 +11,9 @@ Frame.prototype.isStrike = function() {
     this._isStrike = true;
   }
 };
+
+Frame.prototype.isSpare = function() {
+  if ((this._firstRoll + this._secondRoll) === this.MAXIMUM_PINS) {
+    this._isSpare = true;
+  }
+};

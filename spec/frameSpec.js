@@ -32,14 +32,18 @@ describe('Frame', function() {
   });
 
   describe('when strikes are rolled', function() {
-    it('responds to isStrike', function() {
-      expect('isStrike' in frame).toEqual(true);
-    });
-
     it('isStrike turns to true', function() {
       frame = new Frame(10, 0);
       frame.isStrike();
       expect(frame._isStrike).toEqual(true);
+    });
+  });
+
+  describe('when spares are rolled', function() {
+    it('isSpare turn to true', function() {
+      frame = new Frame(5, 5);
+      frame.isSpare();
+      expect(frame._isSpare).toEqual(true);
     });
   });
 });

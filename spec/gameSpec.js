@@ -44,16 +44,6 @@ describe('Game', function() {
     });
   });
 
-  // describe('when calculating bonuses', function() {
-  //   it('responds to isStrike', function() {
-  //     expect('isStrike' in game).toEqual(true);
-  //   });
-  //   it('knows if the player has rolled a strike', function() {
-  //     game.takeTurn(10, 0)
-  //     expect(game._frames[0]._isStrike).toEqual(true);
-  //   });
-  // });
-
   describe('when a game is finished', function() {
     beforeEach(function() {
       for (var i = 0; i < 10; i++) {

@@ -74,6 +74,12 @@ describe("Bowling", function() {
 
   it("should return 1 after 1 strike", function() {
     bowling.enter_score(10);
-    expect(bowling.strikes).toEqual(1)
+    expect(bowling.strikes_in_a_row).toEqual(1)
   })
+
+  it("strike counter should reset after player does not score a strike", function() {
+    bowling.enter_score(10);
+    bowling.enter_score(1);
+    expect(bowling.strikes_in_a_row).toEqual(0)
+  });
 });

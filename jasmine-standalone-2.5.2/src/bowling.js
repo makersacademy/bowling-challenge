@@ -10,7 +10,7 @@ function Bowling () {
   this.last_strike = false;
   this.first_go = 0;
   this.second_go = 0;
-  this.strikes = 0;
+  this.strikes_in_a_row = 0;
 }
 
 Bowling.prototype.enter_score = function(number) {
@@ -18,12 +18,13 @@ Bowling.prototype.enter_score = function(number) {
     if (number === MAXIMUM_SCORE) {
       this.frame += 1;
       this.last_strike = true;
-      this.strikes += 1;
+      this.strikes_in_a_row += 1;
         }
     else {
       if (this.last_strike === true) {
         this.go += 1;
         this.first_go = number;
+        this.strikes_in_a_row = 0;
       }
       else {
       this.go += 1;

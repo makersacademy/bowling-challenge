@@ -11,15 +11,18 @@ $( document ).ready(function(){
   var frame10 = new Frame();
   var scorer = new bowlingScorer();
 
-  var updateScore = function() {
-    $('#firstRoll1').text(frame1.rollOne);
-  }
-
   $('#firstRoll1').submit(function(event) {
     event.preventDefault();
     var score = $("#1roll1").val();
     console.log(score)
     frame1.firstRoll(score);
-    updateScore();
+    $('#firstRoll1').text(frame1.rollOne);
+  });
+  $('#firstRoll2').submit(function(event) {
+    event.preventDefault();
+    var score = $("#1roll2").val();
+    console.log(score)
+    frame1.secondRoll(score);
+    $('#firstRoll2').text(frame1.rollTwo);
   });
 });

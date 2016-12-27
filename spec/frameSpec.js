@@ -13,6 +13,14 @@ describe('Frame', function() {
     expect(frame.MAXIMUM_PINS).toEqual(10);
   });
 
+  it('has an isStrike property which is false by default', function() {
+    expect(frame._isStrike).toEqual(false);
+  });
+
+  it('has an isSpare property which is false by default', function() {
+    expect(frame._isSpare).toEqual(false);
+  });
+
   describe('when a game is in play', function() {
 
     it('receives the number of pins knocked down in the first roll from game', function() {

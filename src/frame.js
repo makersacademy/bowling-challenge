@@ -5,3 +5,9 @@ function Frame(firstRoll, secondRoll) {
   this._isStrike = false;
   this._isSpare = false;
 }
+
+// Frame.prototype.isStrike = function(){
+//   if this._firstRoll === MAXIMUM_PINS {
+//     this._isStrike = true;
+//   }
+// };

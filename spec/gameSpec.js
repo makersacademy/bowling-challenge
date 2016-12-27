@@ -39,10 +39,13 @@ describe('Game', function() {
     });
 
     it('can calculate the total score', function() {
-      game._frameScore();
       game._addTotalScore();
       expect(game._totalScore).toEqual(20);
     });
+  });
+
+  describe('when calculating bonus', function() {
+
   });
 
   describe('when a game is finished', function() {

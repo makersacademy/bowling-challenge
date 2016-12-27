@@ -31,4 +31,11 @@ describe('Frame', function() {
       expect(frame._secondRoll).toEqual(0);
     });
   });
+
+  describe('when a strike or spare is rolled', function() {
+    // it('isStrike changes to true if a strike is rolled', function() {
+    //   frame = new Frame(10, 0);
+    //   expect(frame._isStrike).toEqual(true);
+    // });
+  });
 });

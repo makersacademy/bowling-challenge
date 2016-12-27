@@ -69,5 +69,11 @@ describe("Bowling", function() {
     bowling.enter_score(1);
     bowling.enter_score(1);
     expect(bowling.score).toEqual(14)
+    console.log(bowling.running_total)
   });
+
+  it("should return 1 after 1 strike", function() {
+    bowling.enter_score(10);
+    expect(bowling.strikes).toEqual(1)
+  })
 });

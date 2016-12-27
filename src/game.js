@@ -1,6 +1,7 @@
 function Game() {
   this._frames = [];
-  this._scores = [];
+  this._pinsDown = [];
+  this.bonusPoints = [];
   this._totalScore = 0;
 }
 
@@ -14,7 +15,7 @@ Game.prototype.takeTurn = function(firstRoll, secondRoll) {
 
 Game.prototype._frameScore = function() {
   for (var i = 0; i < this._frames.length; i++) {
-    this._scores.push(this._frames[i]._firstRoll + this._frames[i]._secondRoll);
+    this._pinsDown.push(this._frames[i]._firstRoll + this._frames[i]._secondRoll);
   }
 };
 
@@ -31,8 +32,8 @@ Game.prototype._checkForSpares = function () {
 };
 
 Game.prototype._addTotalScore = function() {
-  for (var i = 0; i < this._scores.length; i++) {
-    this._totalScore += this._scores[i];
+  for (var i = 0; i < this._pinsDown.length; i++) {
+    this._totalScore += this._pinsDown[i];
   }
 };
 
@@ -42,7 +43,7 @@ Game.prototype._isGameOver = function() {
 
 Game.prototype._resetGame = function() {
   this._frames = [];
-  this._scores = [];
+  this._pinsDown = [];
   this._totalScore = 0;
 };
 

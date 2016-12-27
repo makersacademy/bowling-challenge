@@ -35,7 +35,7 @@ describe('Game', function() {
 
     it('can calculate the score for a frame', function() {
       game._frameScore();
-      expect(game._scores[0]).toEqual(2);
+      expect(game._pinsDown[0]).toEqual(2);
     });
 
     it('can calculate the total score', function() {
@@ -78,7 +78,7 @@ describe('Game', function() {
 
     it('resets the score per frame', function() {
       game._endGame();
-      expect(game._scores).toEqual([]);
+      expect(game._pinsDown).toEqual([]);
     });
 
     it('resets the total score back to zero', function() {

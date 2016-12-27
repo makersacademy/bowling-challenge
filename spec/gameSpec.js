@@ -29,12 +29,19 @@ describe('Game', function() {
 
   describe('when playing a game', function() {
     it('when roll is called it creates a new frame', function() {
-      game.takeTurn();
+      game.takeTurn(1, 1);
       expect(game._frames.length).toEqual(1);
     });
 
     it('will throw an error if a strike is rolled and the player tries to roll again in that frame', function () {
       expect(function(){ game.takeTurn(10, 1); }).toThrowError('You cannot have a second roll if you rolled a strike. Please enter your scores correctly');
+    });
+
+    it('knows when it is the final frame', function() {
+      for (var i = 0; i < 10; i++) {
+        game.takeTurn(1, 1);
+      }
+      expect(game._frames[9]._isFinalFrame).toEqual(true);
     });
   });
 

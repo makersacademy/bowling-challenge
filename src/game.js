@@ -5,6 +5,7 @@ function Game() {
   this._totalPins = 0;
   this._totalBonus = 0;
   this._finalScore = 0;
+  this.MAXIMUM_FRAMES = 10;
 }
 
 Game.prototype.takeTurn = function(firstRoll, secondRoll) {
@@ -14,6 +15,9 @@ Game.prototype.takeTurn = function(firstRoll, secondRoll) {
   frame = new Frame(firstRoll, secondRoll);
   if (frame._firstRoll === 10 && frame._secondRoll > 0) {
     throw new Error('You cannot have a second roll if you rolled a strike. Please enter your scores correctly');
+  }
+  if (this._frames.length === this.MAXIMUM_FRAMES - 1) {
+    frame._finalFrame();
   }
   this._frames.push(frame);
 };

@@ -41,13 +41,7 @@ describe('Game', function() {
       }
     });
 
-    it('can calculate the pins knocked down per frame', function() {
-      game._frameScore();
-      expect(game._pinsDown[0]).toEqual(2);
-    });
-
     it('can calculate the total pins knocked down for the game', function() {
-      game._frameScore();
       game._addTotalPins();
       expect(game._totalPins).toEqual(20);
     });
@@ -81,16 +75,22 @@ describe('Game', function() {
     });
 
     it('can add the total of all bonus points scored during that game', function() {
-      game.takeTurn(10, 0)
-      game.takeTurn(5, 5)
-      game.takeTurn(1, 1)
+      game.takeTurn(10, 0);
+      game.takeTurn(5, 5);
+      game.takeTurn(1, 1);
       game._addTotalBonus();
       expect(game._totalBonus).toEqual(11);
     });
   });
 
   describe('when calculating the final score', function() {
-
+    it('should calculate the sum of total pins knocked down and total bonus points', function() {
+      game.takeTurn(10, 0);
+      game.takeTurn(5, 5);
+      game.takeTurn(1, 1);
+      game._addFinalScore();
+      expect(game._finalScore).toEqual(33);
+    });
   });
 
   describe('when a game is finished', function() {
@@ -123,6 +123,16 @@ describe('Game', function() {
     it('resets the total pins back to zero', function() {
       game._endGame();
       expect(game._totalPins).toEqual(0);
+    });
+  });
+
+  describe('exceptional game circumstances', function() {
+    it('you can roll a gutter game', function() {
+      for (var i = 0; i < 10; i++) {
+        game.takeTurn(0, 0);
+      }
+      game._addFinalScore();
+      expect(game._finalScore).toEqual(0);
     });
   });
 

@@ -8,7 +8,7 @@ function Game() {
   this.secondScore = 0;
   this.rackedPins = false;
   this.bonusCount = 0;
-  this.bonusRoll = false;
+  this.bonusRollStatus = false;
   this.scoreboard = new Scoreboard();
 };
 
@@ -17,11 +17,15 @@ function Game() {
       this.frameCount ++
       return this.rackUp();
     } else if (this.frameCount === 10 && this.firstScore === 10 && this.bonusCount <= 2){
+      console.log("strike")
       this.bonusCount ++
-      return this.bonusRoll = true
+      this.bonusRollStatus = true
+      return this._bonusRack();
     } else if (this.frameCount === 10 && this.firstScore + this.secondScore === 10 && this.bonusCount <= 0){
+      console.log("spare")
       this.bonusCount ++
-      return this.rackUp();
+      this.bonusRollStatus = true
+      return this._bonusRack();
     } else {
       throw new Error("Game Over! Please start a new game");
     };
@@ -38,6 +42,7 @@ function Game() {
     if (this.rackedPins == true) {
       this.firstScore = Math.floor(Math.random() * this.setUpPins.length);
       this._pinSweep(this.firstScore);
+      this.rackedPins = false;
       return this.scoreboard.scoreFirstRoll(this.firstScore);
     } else {
       throw new Error("Cannot Roll, Pins are not yet racked!");
@@ -60,8 +65,18 @@ function Game() {
   };
 
   Game.prototype._bonusRack = function(){
-    if (this.bonusRoll === true){
-      this.rackedPins = true;
+    if (this.bonusRollStatus === true){
+      this.bonusRackedPins = true;
       this.setUpPins = [0,1,2,3,4,5,6,7,8,9,10];
+      this.bonusRollStatus = false;
     }
+  };
+
+  Game.prototype.bonusRoll = function() {
+    if (this.bonusRackedPins === true){
+    this.firstScore = Math.floor(Math.random() * this.setUpPins.length);
+    return this.scoreboard.scoreFirstRoll(this.firstScore);
+  } else {
+    throw new Error("Cannot Roll, Pins are not yet racked!");
+  };
   };

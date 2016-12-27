@@ -38,7 +38,7 @@ describe("Game", function(){
   });
 
   it("should initialize with a bonusRoll equal to false", function(){
-    expect(game.bonusRoll).toBe(false);
+    expect(game.bonusRollStatus).toBe(false);
   });
 
   it("should initialize with a new Scoreboard", function() {
@@ -116,22 +116,6 @@ describe("Game", function(){
       game.frameCount = 10;
     });
 
-    // it("should re-rack pins if frame count is ten and first roll was a strike", function(){
-    //   game.firstScore = 10;
-    //   game.increaseFrameCount();
-    //   expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
-    // });
-
-    // it("should re-rack pins if frame count is ten and the first roll and second roll were a strike", function(){
-    //   game.firstScore = 10;
-    //   game.increaseFrameCount();
-    //   game.firstScore = 10;
-    //   game.increaseFrameCount();
-    //   game.firstScore = 10;
-    //   game.increaseFrameCount();
-    //   expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
-    // });
-
     it("should rack up for one more roll if frame count is 10 and a spare is scored", function(){
       game.firstScore = 5;
       game.secondScore = 5;
@@ -161,8 +145,22 @@ describe("Game", function(){
     it("should rackup pins if frameCount is 10 and the first roll is a strike", function(){
       game.firstScore = 10;
       game.increaseFrameCount();
-      game._bonusRack();
       expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
+    });
+
+    it("should return a score when the bonus ball is rolled", function(){
+      game.firstScore = 10;
+      game.increaseFrameCount();
+      spyOn(game, "bonusRoll").and.returnValue(10)
+      expect(game.scoreboard.scoreFirstRoll(game.bonusRoll())).toEqual(10);
+    });
+
+    it("should allow a bonus roll if a spare is scored on the 10th frame", function(){
+      game.firstScore = 5;
+      game.secondScore = 5;
+      game.increaseFrameCount();
+      spyOn(game, "bonusRoll").and.returnValue(5)
+      expect(game.scoreboard.scoreFirstRoll(game.bonusRoll())).toEqual(5);
     });
 
   });

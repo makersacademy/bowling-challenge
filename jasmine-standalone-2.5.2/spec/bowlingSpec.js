@@ -60,12 +60,11 @@ describe("Bowling", function() {
 
   it("should change last_strike to true", function() {
     bowling.enter_score(10);
-    expect(bowling.last_strike).toEqual(true)
+    expect(bowling.strikes_in_a_row).toEqual(1)
   });
 
   it("should double score of next frame after a strike", function() {
     bowling.enter_score(10);
-    console.log(bowling.first_go);
     bowling.enter_score(1);
     bowling.enter_score(1);
     expect(bowling.score).toEqual(14)
@@ -79,6 +78,7 @@ describe("Bowling", function() {
   it("strike counter should reset after player does not score a strike", function() {
     bowling.enter_score(10);
     bowling.enter_score(1);
+    bowling.enter_score(1);
     expect(bowling.strikes_in_a_row).toEqual(0)
   });
 
@@ -87,4 +87,13 @@ describe("Bowling", function() {
     bowling.enter_score(10);
     expect(bowling.strikes_in_a_row).toEqual(2)
   });
+
+  it("should correctly multiply scores if multiple strikes are scored", function() {
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(1);
+    expect(bowling.score).toEqual(21)
+  });
+
+
 });

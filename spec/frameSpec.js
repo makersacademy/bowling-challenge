@@ -22,7 +22,6 @@ describe('Frame', function() {
   });
 
   describe('when a game is in play', function() {
-
     it('receives the number of pins knocked down in the first roll from game', function() {
       expect(frame._firstRoll).toEqual(0);
     });
@@ -32,10 +31,15 @@ describe('Frame', function() {
     });
   });
 
-  describe('when a strike or spare is rolled', function() {
-    // it('isStrike changes to true if a strike is rolled', function() {
-    //   frame = new Frame(10, 0);
-    //   expect(frame._isStrike).toEqual(true);
-    // });
+  describe('when strikes are rolled', function() {
+    it('responds to isStrike', function() {
+      expect('isStrike' in frame).toEqual(true);
+    });
+
+    it('isStrike turns to true', function() {
+      frame = new Frame(10, 0);
+      frame.isStrike();
+      expect(frame._isStrike).toEqual(true);
+    });
   });
 });

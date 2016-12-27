@@ -6,8 +6,8 @@ function Frame(firstRoll, secondRoll) {
   this._isSpare = false;
 }
 
-// Frame.prototype.isStrike = function(){
-//   if this._firstRoll === MAXIMUM_PINS {
-//     this._isStrike = true;
-//   }
-// };
+Frame.prototype.isStrike = function() {
+  if (this._firstRoll === this.MAXIMUM_PINS) {
+    this._isStrike = true;
+  }
+};

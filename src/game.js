@@ -17,6 +17,14 @@ Game.prototype._frameScore = function() {
   this._scores.push((frame._firstRoll) + (frame._secondRoll))
 };
 
+// Game.prototype.isStrike = function() {
+//   for (var i = 0; i < this._frames.length; i++) {
+//     if (this._frames[i]._firstRoll === MAXIMUM_PINS) {
+//       this._frames[i]._isStrike = true;
+//     }
+//   }
+// };
+
 Game.prototype._addTotalScore = function() {
   for (var i = 0; i < this._scores.length; i++) {
     this._totalScore += this._scores[i];

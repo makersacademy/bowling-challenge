@@ -37,6 +37,10 @@ describe("Game", function(){
     expect(game.bonusCount).toEqual(0);
   });
 
+  it("should initialize with a bonusRoll equal to false", function(){
+    expect(game.bonusRoll).toBe(false);
+  });
+
   it("should initialize with a new Scoreboard", function() {
     expect(game.scoreboard).toEqual(new Scoreboard())
   });
@@ -112,21 +116,21 @@ describe("Game", function(){
       game.frameCount = 10;
     });
 
-    it("should re-rack pins if frame count is ten and first roll was a strike", function(){
-      game.firstScore = 10;
-      game.increaseFrameCount();
-      expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
-    });
+    // it("should re-rack pins if frame count is ten and first roll was a strike", function(){
+    //   game.firstScore = 10;
+    //   game.increaseFrameCount();
+    //   expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
+    // });
 
-    it("should re-rack pins if frame count is ten and the first roll and second roll were a strike", function(){
-      game.firstScore = 10;
-      game.increaseFrameCount();
-      game.firstScore = 10;
-      game.increaseFrameCount();
-      game.firstScore = 10;
-      game.increaseFrameCount();
-      expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
-    });
+    // it("should re-rack pins if frame count is ten and the first roll and second roll were a strike", function(){
+    //   game.firstScore = 10;
+    //   game.increaseFrameCount();
+    //   game.firstScore = 10;
+    //   game.increaseFrameCount();
+    //   game.firstScore = 10;
+    //   game.increaseFrameCount();
+    //   expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
+    // });
 
     it("should rack up for one more roll if frame count is 10 and a spare is scored", function(){
       game.firstScore = 5;
@@ -152,6 +156,13 @@ describe("Game", function(){
       game.increaseFrameCount();
       game.firstScore = 3;
       expect(function(){game.increaseFrameCount();}).toThrowError("Game Over! Please start a new game")
+    });
+
+    it("should rackup pins if frameCount is 10 and the first roll is a strike", function(){
+      game.firstScore = 10;
+      game.increaseFrameCount();
+      game._bonusRack();
+      expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
     });
 
   });

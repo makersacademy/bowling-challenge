@@ -8,6 +8,7 @@ function Game() {
   this.secondScore = 0;
   this.rackedPins = false;
   this.bonusCount = 0;
+  this.bonusRoll = false;
   this.scoreboard = new Scoreboard();
 };
 
@@ -17,7 +18,7 @@ function Game() {
       return this.rackUp();
     } else if (this.frameCount === 10 && this.firstScore === 10 && this.bonusCount <= 2){
       this.bonusCount ++
-      return this.rackUp();
+      return this.bonusRoll = true
     } else if (this.frameCount === 10 && this.firstScore + this.secondScore === 10 && this.bonusCount <= 0){
       this.bonusCount ++
       return this.rackUp();
@@ -44,7 +45,7 @@ function Game() {
   };
 
   Game.prototype._pinSweep = function(score){
-    if (this.frameCount < 10) {
+    if (this.frameCount <= 10) {
       this.sweepComplete = true;
       return this.setUpPins.splice(this.setUpPins.length-score, score);
     };
@@ -56,4 +57,11 @@ function Game() {
       this.secondScore = Math.floor(Math.random() * this.setUpPins.length);
       return this.scoreboard.scoreSecondRoll(this.secondScore);
     };
+  };
+
+  Game.prototype._bonusRack = function(){
+    if (this.bonusRoll === true){
+      this.rackedPins = true;
+      this.setUpPins = [0,1,2,3,4,5,6,7,8,9,10];
+    }
   };

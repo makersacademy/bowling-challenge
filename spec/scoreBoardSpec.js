@@ -162,4 +162,55 @@ describe ("Scoreboard", function() {
     expect(scoreboard.calculatedTotal()).toEqual("Gutter Game!")
   });
 
+  it("should return Perfect Game! when total score is 300", function(){
+  scoreboard.totalScores = [30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+  expect(scoreboard.calculatedTotal()).toEqual("Perfect Game!")
+  });
+
+
+  it("should return Perfect Game! when total score is 300", function(){
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
+    console.log(scoreboard.totalScores)
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
+    console.log(scoreboard.totalScores)
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
+    console.log(scoreboard.totalScores)
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
+    console.log(scoreboard.totalScores)
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
+    console.log(scoreboard.totalScores)
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
+    console.log(scoreboard.totalScores)
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
+    console.log(scoreboard.totalScores)
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
+    console.log(scoreboard.totalScores)
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
+    console.log(scoreboard.totalScores)
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(10);
+    scoreboard.scoreThirdRoll(10);
+    scoreboard.bonusPoints();
+    console.log(scoreboard.totalScores)
+    expect(scoreboard.calculatedTotal()).toEqual("Perfect Game!")
+  });
+
 });

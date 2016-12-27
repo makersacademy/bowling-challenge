@@ -109,6 +109,9 @@ function Scoreboard() {
     };
   };
 
+  Scoreboard.prototype._perfectGame = function(){
+    return "Perfect Game!"
+  };
 
   Scoreboard.prototype._gutterGame = function(){
     return "Gutter Game!"

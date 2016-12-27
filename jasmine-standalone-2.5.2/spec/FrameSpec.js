@@ -15,6 +15,22 @@ describe("Frame", function() {
       expect(frame.scoreCard).toEqual([1,2]);
     })
 
+    it("has a bonus if frame is a spare", function() {
+      frame.addToFrame(5);
+      frame.addToFrame(5);
+      expect(frame.bonus).toEqual(new Bonus("spare"));
+    })
+
+    it("has a bonus if frame is a strike", function() {
+      frame.addToFrame(10);
+      expect(frame.bonus).toEqual(new Bonus("strike"));
+    })
+
+    it("has a no bonus if frame is not a spare or strike", function() {
+      frame.addToFrame(1);
+      frame.addToFrame(1);
+      expect(frame.bonus).toEqual(null);
+    })
   })
 
   describe("#isOver", function() {
@@ -34,57 +50,53 @@ describe("Frame", function() {
     })
   })
 
+  describe("#isSpare/Strike", function() {
+    it("knows if frame is a spare", function() {
+      frame.addToFrame(5);
+      frame.addToFrame(5);
+      expect(frame.isSpare()).toEqual(true);
+    })
 
-
-
-  it("calculates the score of the frame", function() {
-    frame.addToFrame(1);
-    frame.addToFrame(2);
-    expect(frame._getScore()).toEqual(3);
+    it("knows if frame is a strike", function() {
+      frame.addToFrame(10);
+      expect(frame.isStrike()).toEqual(true);
+      expect(frame.isSpare()).toEqual(false)
+    })
   })
 
-  it("knows if frame is a spare", function() {
-    frame.addToFrame(5);
-    frame.addToFrame(5);
-    expect(frame.isSpare()).toEqual(true);
+  describe("#getTotalScore", function() {
+    it("calculates the total score plus its bonus", function() {
+      frame.addToFrame(5);
+      frame.addToFrame(5);
+      frame.addToBonus(2);
+      expect(frame.getTotalScore()).toEqual(12);
+    })
   })
 
-  it("knows if frame is a spare", function() {
-    frame.addToFrame(10);
-    expect(frame.isStrike()).toEqual(true);
-    expect(frame.isSpare()).toEqual(false)
+  describe("#isPointsComplete", function() {
+    it('knows when a frames points are complete', function() {
+      frame.addToFrame(5);
+      frame.addToFrame(5);
+      expect(frame.isPointsComplete()).toEqual(false);
+    })
   })
 
-  it("has a bonus if frame is a spare", function() {
-    frame.addToFrame(5);
-    frame.addToFrame(5);
-    expect(frame.bonus).toEqual(new Bonus("spare"));
+  describe("#addToBonus", function() {
+    it('instructs its bonus to add points', function() {
+
+    })
   })
 
-  it("has a bonus if frame is a strike", function() {
-    frame.addToFrame(10);
-    expect(frame.bonus).toEqual(new Bonus("strike"));
+  describe("#isPointsComplete", function() {
+    it('gets knows when a frame has all its points', function() {
+
+    })
   })
 
-  it("has a no bonus if frame is not a spare or strike", function() {
-    frame.addToFrame(1);
-    frame.addToFrame(1);
-    expect(frame.bonus).toEqual(null);
+  describe("#rollNumber", function() {
+    it('returns the current roll number of the frame', function() {
+      frame.addToFrame(1);
+      expect(frame.rollNumber()).toEqual(2);
+    })
   })
-
-  it("calculates the total score plus its bonus", function() {
-    frame.addToFrame(5);
-    frame.addToFrame(5);
-    frame.addToBonus(2);
-    expect(frame.getTotalScore()).toEqual(12);
-  })
-
-  it('knows when a frames points are complete', function() {
-    frame.addToFrame(5);
-    frame.addToFrame(5);
-    expect(frame.isPointsComplete()).toEqual(false);
-  })
-
-
-
 })

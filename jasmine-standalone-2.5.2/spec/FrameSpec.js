@@ -82,14 +82,34 @@ describe("Frame", function() {
   })
 
   describe("#addToBonus", function() {
-    it('instructs its bonus to add points', function() {
+    it('instructs its bonus to add points if there is a bonus', function() {
+      var bonusMock = { addToBonus: null }
+      spyOn(bonusMock,"addToBonus")
+      frame.bonus = bonusMock
+      frame.addToBonus(1);
+      expect(bonusMock.addToBonus).toHaveBeenCalledWith(1);
+    })
 
+    it('does nothing if there is no bonus', function() {
+      var bonusMock = { addToBonus: null }
+      spyOn(bonusMock,"addToBonus")
+      frame.addToBonus(1);
+      expect(bonusMock.addToBonus).not.toHaveBeenCalled();
     })
   })
 
   describe("#isPointsComplete", function() {
-    it('gets knows when a frame has all its points', function() {
+    it('knows frame has all points when bonus is completed', function() {
+      var bonusMock = jasmine.createSpyObj("bonus", ["isOver"]);
+      bonusMock.isOver.and.returnValue(true)
+      frame.bonus = bonusMock
+      expect(frame.isPointsComplete()).toEqual(true)
+    })
 
+    it('knows when a frame without a bonus is complete', function() {
+      frame.addToFrame(0);
+      frame.addToFrame(0);
+      expect(frame.isPointsComplete()).toEqual(true)
     })
   })
 
@@ -97,6 +117,16 @@ describe("Frame", function() {
     it('returns the current roll number of the frame', function() {
       frame.addToFrame(1);
       expect(frame.rollNumber()).toEqual(2);
+    })
+  })
+
+  describe("#getBonusPoints", function() {
+    it('gets the bonus points', function() {
+      var scoreCard = [1,2]
+      var bonusMock = { scoreCard: scoreCard }
+      frame.bonus = bonusMock
+      expect(frame.getBonusPoints(0)).toEqual(1);
+      expect(frame.getBonusPoints(1)).toEqual(2);
     })
   })
 })

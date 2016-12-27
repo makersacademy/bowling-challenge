@@ -19,3 +19,7 @@ Frame.prototype.isSpare = function() {
     this._isSpare = true;
   }
 };
+
+Frame.prototype._finalFrame = function() {
+  this._isFinalFrame = true;
+};

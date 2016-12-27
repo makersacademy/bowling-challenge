@@ -40,7 +40,7 @@ describe('Frame', function() {
   });
 
   describe('when spares are rolled', function() {
-    it('isSpare turn to true', function() {
+    it('isSpare turns to true', function() {
       frame = new Frame(5, 5);
       frame.isSpare();
       expect(frame._isSpare).toEqual(true);

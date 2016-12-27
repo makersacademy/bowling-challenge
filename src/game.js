@@ -19,6 +19,15 @@ Game.prototype._frameScore = function() {
   }
 };
 
+Game.prototype._strikeBonus = function () {
+  this._checkForStrikes();
+  for (var i = 0; i < this._frames.length; i++) {
+    if (this._frames[i]._isStrike === true) {
+      this._bonusPoints.push(this._frames[i+1]._firstRoll + this._frames[i+1]._secondRoll);
+    }
+  }
+};
+
 Game.prototype._checkForStrikes = function () {
   for (var i = 0; i < this._frames.length; i++) {
     this._frames[i].isStrike();

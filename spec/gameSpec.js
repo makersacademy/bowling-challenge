@@ -59,6 +59,15 @@ describe('Game', function() {
     });
   });
 
+  describe('when calculating strike bonuses', function() {
+    it('can calculate the correct bonus for a strike', function() {
+      game.takeTurn(10, 0);
+      game.takeTurn(1, 1);
+      game._strikeBonus();
+      expect(game._bonusPoints[0]).toEqual(2);
+    });
+  });
+
   describe('when a game is finished', function() {
     beforeEach(function() {
       for (var i = 0; i < 10; i++) {

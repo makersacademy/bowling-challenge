@@ -12,6 +12,9 @@ Game.prototype.takeTurn = function(firstRoll, secondRoll) {
     return 'This game is over'
   }
   frame = new Frame(firstRoll, secondRoll);
+  if (frame._firstRoll === 10 && frame._secondRoll > 0) {
+    throw new Error('You cannot have a second roll if you rolled a strike. Please enter your scores correctly');
+  }
   this._frames.push(frame);
 };
 

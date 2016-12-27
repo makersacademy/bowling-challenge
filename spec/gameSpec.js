@@ -32,6 +32,10 @@ describe('Game', function() {
       game.takeTurn();
       expect(game._frames.length).toEqual(1);
     });
+
+    it('will throw an error if a strike is rolled and the player tries to roll again in that frame', function () {
+      expect(function(){ game.takeTurn(10, 1); }).toThrowError('You cannot have a second roll if you rolled a strike. Please enter your scores correctly');
+    });
   });
 
   describe('when calculating pins knocked down', function() {

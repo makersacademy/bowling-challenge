@@ -7,13 +7,13 @@ function Frame(firstRoll, secondRoll) {
 }
 
 Frame.prototype.isStrike = function() {
-  if (this._firstRoll === this.MAXIMUM_PINS) {
+  if (this._firstRoll === this.MAXIMUM_PINS && this._secondRoll === 0) {
     this._isStrike = true;
   }
 };
 
 Frame.prototype.isSpare = function() {
-  if ((this._firstRoll + this._secondRoll) === this.MAXIMUM_PINS) {
+  if ((this._firstRoll < 10) && (this._firstRoll + this._secondRoll) === this.MAXIMUM_PINS) {
     this._isSpare = true;
   }
 };

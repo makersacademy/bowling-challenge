@@ -14,8 +14,16 @@ describe('Game', function() {
       expect(game._frames).toEqual([]);
     });
 
-    it('the score will start at zero', function() {
-      expect(game._totalScore).toEqual(0);
+    it('the total pins will start at zero', function() {
+      expect(game._totalPins).toEqual(0);
+    });
+
+    it('the total bonus points will start at zero', function() {
+      expect(game._totalBonus).toEqual(0);
+    });
+
+    it('the final score will start at zero', function() {
+      expect(game._finalScore).toEqual(0);
     });
   });
 
@@ -26,22 +34,22 @@ describe('Game', function() {
     });
   });
 
-  describe('when calculating scores', function() {
+  describe('when calculating pins knocked down', function() {
     beforeEach(function() {
       for (var i = 0; i < 10; i++) {
         game.takeTurn(1, 1);
       }
     });
 
-    it('can calculate the score for a frame', function() {
+    it('can calculate the pins knocked down per frame', function() {
       game._frameScore();
       expect(game._pinsDown[0]).toEqual(2);
     });
 
-    it('can calculate the total score', function() {
+    it('can calculate the total pins knocked down for the game', function() {
       game._frameScore();
-      game._addTotalScore();
-      expect(game._totalScore).toEqual(20);
+      game._addTotalPins();
+      expect(game._totalPins).toEqual(20);
     });
   });
 
@@ -57,24 +65,32 @@ describe('Game', function() {
       game._checkForSpares();
       expect(game._frames[0]._isSpare).toEqual(true);
     });
-  });
 
-  describe('when calculating strike bonuses', function() {
     it('can calculate the correct bonus for a strike', function() {
       game.takeTurn(10, 0);
       game.takeTurn(1, 1);
       game._strikeBonus();
       expect(game._bonusPoints[0]).toEqual(2);
     });
-  });
 
-  describe('when calculating spare bonuses', function() {
     it('can calculated the correct bonus for a spare', function() {
       game.takeTurn(5, 5);
       game.takeTurn(1, 1);
       game._spareBonus();
       expect(game._bonusPoints[0]).toEqual(1);
     });
+
+    it('can add the total of all bonus points scored during that game', function() {
+      game.takeTurn(10, 0)
+      game.takeTurn(5, 5)
+      game.takeTurn(1, 1)
+      game._addTotalBonus();
+      expect(game._totalBonus).toEqual(11);
+    });
+  });
+
+  describe('when calculating the final score', function() {
+
   });
 
   describe('when a game is finished', function() {
@@ -104,9 +120,9 @@ describe('Game', function() {
       expect(game._bonusPoints).toEqual([]);
     });
 
-    it('resets the total score back to zero', function() {
+    it('resets the total pins back to zero', function() {
       game._endGame();
-      expect(game._totalScore).toEqual(0);
+      expect(game._totalPins).toEqual(0);
     });
   });
 

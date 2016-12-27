@@ -2,7 +2,9 @@ function Game() {
   this._frames = [];
   this._pinsDown = [];
   this._bonusPoints = [];
-  this._totalScore = 0;
+  this._totalPins = 0;
+  this._totalBonus = 0;
+  this._finalScore = 0;
 }
 
 Game.prototype.takeTurn = function(firstRoll, secondRoll) {
@@ -11,6 +13,18 @@ Game.prototype.takeTurn = function(firstRoll, secondRoll) {
   }
   frame = new Frame(firstRoll, secondRoll);
   this._frames.push(frame);
+};
+
+Game.prototype._checkForStrikes = function () {
+  for (var i = 0; i < this._frames.length; i++) {
+    this._frames[i].isStrike();
+  }
+};
+
+Game.prototype._checkForSpares = function () {
+  for (var i = 0; i < this._frames.length; i++) {
+    this._frames[i].isSpare();
+  }
 };
 
 Game.prototype._frameScore = function() {
@@ -37,21 +51,17 @@ Game.prototype._spareBonus = function () {
   }
 };
 
-Game.prototype._checkForStrikes = function () {
-  for (var i = 0; i < this._frames.length; i++) {
-    this._frames[i].isStrike();
-  }
-};
-
-Game.prototype._checkForSpares = function () {
-  for (var i = 0; i < this._frames.length; i++) {
-    this._frames[i].isSpare();
-  }
-};
-
-Game.prototype._addTotalScore = function() {
+Game.prototype._addTotalPins = function() {
   for (var i = 0; i < this._pinsDown.length; i++) {
-    this._totalScore += this._pinsDown[i];
+    this._totalPins += this._pinsDown[i];
+  }
+};
+
+Game.prototype._addTotalBonus = function() {
+  this._strikeBonus();
+  this._spareBonus();
+  for (var i = 0; i < this._bonusPoints.length; i++) {
+    this._totalBonus += this._bonusPoints[i];
   }
 };
 
@@ -63,12 +73,12 @@ Game.prototype._resetGame = function() {
   this._frames = [];
   this._pinsDown = [];
   this._bonusPoints = [];
-  this._totalScore = 0;
+  this._totalPins = 0;
 };
 
 Game.prototype._endGame = function() {
   this._frameScore();
-  this._addTotalScore();
-  console.log("Total score is " + this._totalScore);
+  this._addTotalPins();
+  console.log("Total score is " + this._finalScore);
   this._resetGame();
 };

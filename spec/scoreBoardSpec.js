@@ -108,18 +108,13 @@ describe ("Scoreboard", function() {
   it("should return '/' when a spare is scored", function(){
     scoreboard.scoreFirstRoll(2)
     scoreboard.scoreSecondRoll(8);
-    console.log(scoreboard.calculateScores())
     expect(scoreboard.calculateScores()).toEqual('/')
   });
 
   it("should add the result of the calculation of the spare and the first roll of the next set to totalScores", function(){
     scoreboard.scoreFirstRoll(2);
-    console.log(scoreboard.scores)
     scoreboard.scoreSecondRoll(8);
-    console.log(scoreboard.scores)
     scoreboard.bonusPoints();
-    console.log(scoreboard.scores)
-    console.log(scoreboard.totalScores)
     scoreboard.scoreFirstRoll(1)
     scoreboard.scoreSecondRoll(8);
     scoreboard.bonusPoints();
@@ -172,44 +167,39 @@ describe ("Scoreboard", function() {
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.totalScores)
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.totalScores)
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.totalScores)
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.totalScores)
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.totalScores)
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.totalScores)
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.totalScores)
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.totalScores)
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.totalScores)
     scoreboard.scoreFirstRoll(10);
-    scoreboard.scoreSecondRoll(10);
-    scoreboard.scoreThirdRoll(10);
+    scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.totalScores)
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
     expect(scoreboard.calculatedTotal()).toEqual("Perfect Game!")
   });
 

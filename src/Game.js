@@ -57,22 +57,3 @@ function Game() {
       return this.scoreboard.scoreSecondRoll(this.secondScore);
     };
   };
-
-  // Game.prototype.bonusThirdRoll = function() {
-  //   // if (this.frameCount === 10 && this.secondRoll() === 10 ) {
-  //     this.bonusRoll = true;
-  //     return this.setUpPins = [0,1,2,3,4,5,6,7,8,9,10];
-  //   // };
-  // };
-  //
-  // Game.prototype.thirdRoll = function() {
-  //   if(this.bonusRoll === true) {
-  //     var score3 = Math.floor(Math.random() * this.setUpPins.length);
-  //     return this.scoreboard.scoreThirdRoll(score3);
-  //   }
-  // };
-
-  // Game.prototype._possibleBonusThrows = function(){
-  //   this.setUpPins = [0,1,2,3,4,5,6,7,8,9,10]
-  //   this.rackedPins = true;
-  // };

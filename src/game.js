@@ -1,7 +1,7 @@
 function Game() {
   this._frames = [];
   this._pinsDown = [];
-  this.bonusPoints = [];
+  this._bonusPoints = [];
   this._totalScore = 0;
 }
 
@@ -44,6 +44,7 @@ Game.prototype._isGameOver = function() {
 Game.prototype._resetGame = function() {
   this._frames = [];
   this._pinsDown = [];
+  this._bonusPoints = [];
   this._totalScore = 0;
 };
 

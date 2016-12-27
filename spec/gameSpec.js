@@ -76,9 +76,14 @@ describe('Game', function() {
       expect(game._frames).toEqual([]);
     });
 
-    it('resets the score per frame', function() {
+    it('resets the pins down per frame', function() {
       game._endGame();
       expect(game._pinsDown).toEqual([]);
+    });
+
+    it('resets the bonus points', function() {
+      game._endGame();
+      expect(game._bonusPoints).toEqual([]);
     });
 
     it('resets the total score back to zero', function() {

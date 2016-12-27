@@ -13,12 +13,16 @@ describe('Frame', function() {
     expect(frame.MAXIMUM_PINS).toEqual(10);
   });
 
-  it('has an isStrike property which is false by default', function() {
+  it('has an _isStrike property which is false by default', function() {
     expect(frame._isStrike).toEqual(false);
   });
 
-  it('has an isSpare property which is false by default', function() {
+  it('has an _isSpare property which is false by default', function() {
     expect(frame._isSpare).toEqual(false);
+  });
+
+  it('has an _isFinalFrame property which is false by default', function() {
+    expect(frame._isFinalFrame).toEqual(false);
   });
 
   describe('when a game is in play', function() {

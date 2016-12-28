@@ -13,8 +13,8 @@ $(document).ready(function(){
               } else {
                   $('.roll1').prop('disabled', false);
               };
-    });
   });
+});
 
   $(function () {
   $('#firstRoll').click(function(){
@@ -34,6 +34,7 @@ $(document).ready(function(){
   $('#secondScore').text(scoreboard.scoreSecondRoll(game.secondRoll()));
   updateCurrentScore();
   });
+
 
   function updateFrameCount() {
     $('#frameCount').text(game.frameCount);

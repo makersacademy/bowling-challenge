@@ -7,13 +7,8 @@ function Scoreboard() {
 };
 
   Scoreboard.prototype.scoreFirstRoll = function(score1) {
-    if (score1 === 10) {
-      this.scores.push(score1)
-      return 10;
-    } else {
       this.scores.push(score1)
       return score1
-    };
   };
 
   Scoreboard.prototype.scoreSecondRoll = function(score2){
@@ -27,6 +22,7 @@ function Scoreboard() {
   };
 
   Scoreboard.prototype.bonusPoints = function(){
+    console.log(this.scores)
     var scoreIndex = this.scores.length
       if (this.scores[scoreIndex-6] === 10 && this.scores[scoreIndex-4] ===10) {
         console.log("multistrike")

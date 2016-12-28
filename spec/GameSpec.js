@@ -33,6 +33,10 @@ describe("Game", function(){
     expect(game.rackedPins).toBe(false);
   });
 
+  it("should initialize with a false pin sweepComplete", function(){
+    expect(game.sweepComplete).toBe(false);
+  });
+
   it("should initialize with a bonus count of 0", function(){
     expect(game.bonusCount).toEqual(0);
   });
@@ -41,8 +45,20 @@ describe("Game", function(){
     expect(game.bonusRollStatus).toBe(false);
   });
 
+  it("should initialize with a bonusRackedPins equal to false", function(){
+    expect(game.bonusRackedPins).toBe(false);
+  });
+
   it("should initialize with a new Scoreboard", function() {
     expect(game.scoreboard).toEqual(new Scoreboard())
+  });
+
+  it("should return the left over pins", function(){
+    game.frameCount = 4;
+    game.increaseFrameCount();
+    spyOn(game, 'firstRoll').and.returnValue(2);
+    game._pinSweep(game.firstRoll());
+    expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8]);
   });
 
   describe("start bowling", function() {
@@ -91,13 +107,6 @@ describe("Game", function(){
       expect(game.sweepComplete).toBe(true);
     });
 
-    it("should return the left over pins", function(){
-      game.frameCount = 4;
-      spyOn(game, 'firstRoll').and.returnValue(2);
-      game._pinSweep(game.firstRoll());
-      expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8]);
-    });
-
     it("should return the true when remaining pins are returned", function(){
       game.firstRoll();
       expect(game.sweepComplete).toBe(true);
@@ -123,9 +132,8 @@ describe("Game", function(){
       expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
     });
 
+
     it("should throw an error when player tries to bowl more than two bonus balls", function(){
-      game.firstScore = 10;
-      game.increaseFrameCount();
       game.firstScore = 10;
       game.increaseFrameCount();
       game.firstScore = 10;
@@ -148,20 +156,36 @@ describe("Game", function(){
       expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
     });
 
-    it("should return a score when the bonus ball is rolled", function(){
-      game.firstScore = 10;
-      game.increaseFrameCount();
-      spyOn(game, "bonusRoll").and.returnValue(10)
-      expect(game.scoreboard.scoreFirstRoll(game.bonusRoll())).toEqual(10);
-    });
-
-    it("should allow a bonus roll if a spare is scored on the 10th frame", function(){
+    it("should return result of second roll as zeros as only one extra roll is allowed", function(){
       game.firstScore = 5;
       game.secondScore = 5;
       game.increaseFrameCount();
-      spyOn(game, "bonusRoll").and.returnValue(5)
-      expect(game.scoreboard.scoreFirstRoll(game.bonusRoll())).toEqual(5);
+      game.firstRoll();
+      expect(game.secondRoll()).toEqual(0)
     });
+
+    // it("should return a score when the bonus ball is rolled", function(){
+    //   game.firstScore = 10;
+    //   game.increaseFrameCount();
+    //   spyOn(game, "bonusRoll").and.returnValue(10)
+    //   expect(game.scoreboard.scoreFirstRoll(game.bonusRoll())).toEqual(10);
+    // });
+    //
+    // it("should allow a bonus roll if a spare is scored on the 10th frame", function(){
+    //   game.firstScore = 5;
+    //   game.secondScore = 5;
+    //   game.increaseFrameCount();
+    //   spyOn(game, "bonusRoll").and.returnValue(5)
+    //   expect(game.scoreboard.scoreFirstRoll(game.bonusRoll())).toEqual(5);
+    // });
+    //
+    // it("should return an zero second throw when the bonus throw is rolled", function(){
+    //   game.firstScore = 5;
+    //   game.secondScore = 5;
+    //   game.increaseFrameCount();
+    //   game.bonusRoll();
+    //   expect(game.scoreboard.scoreSecondRoll(game.bonusZero())).toEqual(0);
+    // });
 
   });
 

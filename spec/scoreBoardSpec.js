@@ -26,10 +26,6 @@ describe ("Scoreboard", function() {
     expect(scoreboard.scores).toContain(4);
   });
 
-  // it("should return 'X' when a strike is scored", function(){
-  //   expect(scoreboard.scoreFirstRoll(10)).toEqual('X');
-  // });
-
   it("should place the second roll score result into the scores array", function(){
     scoreboard.scoreSecondRoll(3);
     expect(scoreboard.scores).toContain(3);
@@ -66,12 +62,12 @@ describe ("Scoreboard", function() {
   });
 
   it("should return of a calculated score of a strike and the next two consecutive throws", function(){
-  scoreboard.scoreFirstRoll(10);
-  scoreboard.scoreSecondRoll(0);
-  scoreboard.bonusPoints();
-  scoreboard.scoreFirstRoll(5);
-  scoreboard.scoreSecondRoll(1);
-  expect(scoreboard._aStrike()).toEqual(16);
+    scoreboard.scoreFirstRoll(10);
+    scoreboard.scoreSecondRoll(0);
+    scoreboard.bonusPoints();
+    scoreboard.scoreFirstRoll(5);
+    scoreboard.scoreSecondRoll(1);
+    expect(scoreboard._aStrike()).toEqual(16);
   });
 
   it("should place the total scores of three consecutive throws (first a strike) to totalScores", function(){
@@ -110,11 +106,6 @@ describe ("Scoreboard", function() {
     expect(scoreboard.totalScores).toEqual([30]);
   });
 
-  it("should return '/' when a spare is scored", function(){
-    scoreboard.scoreFirstRoll(2)
-    scoreboard.scoreSecondRoll(8);
-    expect(scoreboard.calculateScores()).toEqual('/')
-  });
 
   it("should add the result of the calculation of the spare and the first roll of the next set to totalScores", function(){
     scoreboard.scoreFirstRoll(2);

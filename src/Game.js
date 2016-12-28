@@ -4,7 +4,6 @@
 function Game() {
   this.frames = []
   this.currentFrameIndex = 0;
-
   this._createFrames()
 }
 
@@ -15,15 +14,30 @@ Game.prototype = {
       console.log("Over");
     } else {
       this._addBonusPoints(pins);
-      var currentFrame = this.frames[this.currentFrameIndex];
-
       if (!this.frames[9].isStrike() && !this.frames[9].isSpare()) {
-        currentFrame.addToFrame(pins);
+        this._addToCurrentFrame(pins);
       }
+      if (this._currentFrameIsOver()) {
+        this._nextFrame()
+      }
+    }
+  },
 
-      if (currentFrame.isOver() && !this._isTenthFrame()) {
-        this.currentFrameIndex ++;
-      }
+  _currentFrame: function() {
+     return this.frames[this.currentFrameIndex];
+  },
+
+  _currentFrameIsOver: function() {
+    return this._currentFrame().isOver();
+  },
+
+  _addToCurrentFrame: function(pins) {
+    this._currentFrame().addToFrame(pins);
+  },
+
+  _nextFrame: function() {
+    if (!this._isTenthFrame()) {
+      this.currentFrameIndex ++;
     }
   },
 
@@ -33,10 +47,14 @@ Game.prototype = {
     }
   },
 
-  calculateScore: function(scoreUpTo) {
+  getScore: function(scoreUpTo) {
     if (scoreUpTo === undefined) {
       scoreUpTo = 10;
     }
+    return this._sumFrameScores(scoreUpTo);
+  },
+
+  _sumFrameScores: function(scoreUpTo) {
     var total = 0;
     for (var frameIndex = 0; frameIndex < scoreUpTo; frameIndex++) {
       total += this.frames[frameIndex].getTotalScore();
@@ -58,35 +76,36 @@ Game.prototype = {
   getRoll: function(frameNumber,rollNumber) {
     var frame = this.frames[frameNumber-1];
     return frame.scoreCard[rollNumber-1];
-  }
-}
+  },
 
-Game.prototype.getFrameScore = function(frameNumber) {
-  var frame = this.frames[frameNumber - 1];
-  return frame.getTotalScore();
-}
+  getFrameScore: function(frameNumber) {
+    var frame = this.frames[frameNumber - 1];
+    return frame.getTotalScore();
+  },
 
-Game.prototype._isTenthFrame = function() {
-  return this.currentFrameIndex === 9;
-}
+  _isTenthFrame: function() {
+    return this.currentFrameIndex === 9;
+  },
 
-Game.prototype.getFinalBonus = function(roll) {
-  var frame = this.frames[9];
-  if (roll === 2) {
-    if (frame.isStrike()) {
-      return frame.getBonusPoints(0);
+  isOver: function() {
+    return this.frames[9].isPointsComplete();
+  },
+
+  getFinalBonus: function(roll) {
+    var frame = this.frames[9];
+    if (roll === 2) {
+      if (frame.isStrike()) {
+        return frame.getBonusPoints(0);
+      } else {
+        return frame.scoreCard[1];
+      }
     } else {
-      return frame.scoreCard[1];
-    }
-  } else {
-    if (frame.isStrike()) {
-      return frame.getBonusPoints(1);
-    } else {
-      return frame.getBonusPoints(0);
+      if (frame.isStrike()) {
+        return frame.getBonusPoints(1);
+      } else {
+        return frame.getBonusPoints(0);
+      }
     }
   }
-}
 
-Game.prototype.isOver = function() {
-  return this.frames[9].isPointsComplete();
 }

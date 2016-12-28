@@ -19,7 +19,7 @@ $( document ).ready(function() {
   })
 
   function updateScoreAndRoll(){
-    $( '#total-score' ).text( game.calculateScore() );
+    $( '#total-score' ).text( game.getScore() );
     $( '#frame-number' ).text( game.currentFrameIndex + 1 );
     $( '#roll-number' ).text( game.rollNumber() );
   }

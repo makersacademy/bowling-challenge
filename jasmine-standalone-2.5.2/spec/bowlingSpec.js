@@ -148,6 +148,22 @@ describe("Bowling", function() {
     console.log(bowling.unscored_strikes);
     expect(bowling.score).toEqual(300)
   })
+  it("score should be 225 when this is scored", function() {
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(1);
+    bowling.enter_score(2);
+    bowling.enter_score(5);
+    bowling.enter_score(3);
+    console.log(bowling.unscored_strikes);
+    expect(bowling.score).toEqual(225)
+  })
 
 
 });

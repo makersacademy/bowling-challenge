@@ -132,7 +132,7 @@ describe("Game", function(){
         game.frameCount = 10;
       });
 
-      it("should throw an error if frame count is more then ten", function(){
+      it("- frame count is more then ten", function(){
         expect(function(){game.increaseFrameCount();}).toThrowError("Game Over! Please start a new game")
       });
 

@@ -15,15 +15,8 @@ function Game() {
     if (this.frameCount < 10) {
       this.frameCount ++
       return this._rackUp();
-    } else if (this.frameCount === 10 && this._isStrike() && this.bonusCount <= 1){
-      this.bonusCount ++
-      return this._rackUp();
-    } else if (this.frameCount === 10 && this._isSpare() && this.bonusCount <= 0){
-      this.bonusCount ++
-      this.bonusRollStatus = true
-      return this._rackUp();
-    } else {
-      throw new Error("Game Over! Please start a new game");
+    } else if (this.frameCount === 10){
+      return this._bonusRoll()
     }
   };
 
@@ -59,6 +52,18 @@ function Game() {
       return this.setUpPins.splice(this.setUpPins.length-score, score);
     } else {
       return this.setUpPins = [0];
+    }
+  };
+
+  Game.prototype._bonusRoll = function(){
+      this.bonusCount ++
+    if (this._isStrike() && this.bonusCount <= 2){
+      return this._rackUp();
+    } else if (this._isSpare() && this.bonusCount <= 1){
+      this.bonusRollStatus = true
+      return this._rackUp();
+    } else {
+      throw new Error("Game Over! Please start a new game");
     }
   };
 

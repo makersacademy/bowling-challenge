@@ -52,8 +52,13 @@ Bowling.prototype.enter_score = function(number) {
       this.go = 1;
       this.second_go = number;
       this.unscored_strikes = 0;
-      this.score += (MAXIMUM_SCORE + 2 * (this.first_go + this.second_go));
-      this.running_total.push("X", this.first_go,number);
+      if (this.first_go + this.second_go === 10) {
+      this.score += MAXIMUM_SCORE + this.first_go + this.second_go ;
+      this.unscored_half_strike = true;
+      }
+      else {
+        this.score += (MAXIMUM_SCORE + 2 * (this.first_go + this.second_go));
+      }
     }
     else if (this.first_go + number === 10) {
       this.go = 1;

@@ -185,5 +185,14 @@ describe("Bowling", function() {
     expect(bowling.score).toEqual(22)
   })
 
+  it("should should equal to 36 after a 10,5,5,2,2 is scored", function() {
+    bowling.enter_score(10);
+    bowling.enter_score(5);
+    bowling.enter_score(5);
+    bowling.enter_score(2);
+    bowling.enter_score(2);
+    expect(bowling.score).toEqual(36)
+  })
+
 
 });

@@ -157,8 +157,8 @@ describe ("Scoreboard", function() {
   });
 
   it("should return Perfect Game! when total score is 300", function(){
-  scoreboard.totalScores = [30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
-  expect(scoreboard.calculatedTotal()).toEqual("Perfect Game!")
+    scoreboard.totalScores = [30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+    expect(scoreboard.calculatedTotal()).toEqual("Perfect Game!")
   });
 
 
@@ -201,5 +201,7 @@ describe ("Scoreboard", function() {
     scoreboard.bonusPoints();
     expect(scoreboard.calculatedTotal()).toEqual("Perfect Game!")
   });
+
+
 
 });

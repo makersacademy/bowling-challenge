@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 function Game() {
   this.frameCount = 0;
@@ -12,7 +12,7 @@ function Game() {
   this.bonusRollStatus = false;
   this.bonusRackedPins = false;
   this.scoreboard = new Scoreboard();
-};
+}
 
   Game.prototype.increaseFrameCount = function() {
     if (this.frameCount < 10) {

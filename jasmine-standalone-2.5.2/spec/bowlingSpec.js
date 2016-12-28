@@ -8,7 +8,6 @@ describe("Bowling", function() {
   });
 
   it("should start at 0", function() {
-    // var bowling = new Bowling();
     expect(bowling.score).toEqual(0);
   });
 
@@ -16,9 +15,15 @@ describe("Bowling", function() {
     expect(bowling.frame).toEqual(1);
   })
 
-  it("should increment by the amount entered", function() {
+  it("should not increment until end of frame", function() {
     bowling.enter_score(1);
-    expect(bowling.score).toEqual(1);
+    expect(bowling.score).toEqual(0);
+  })
+
+  it("should show score at end of the frame", function() {
+    bowling.enter_score(1);
+    bowling.enter_score(1);
+    expect(bowling.score).toEqual(2);
   })
 
   it("should increase frame by 1 every second time score is entered", function() {
@@ -115,7 +120,6 @@ describe("Bowling", function() {
     bowling.enter_score(10);
     bowling.enter_score(10);
     bowling.enter_score(10);
-    console.log(bowling.unscored_strikes);
     expect(bowling.score).toEqual(60)
   })
 
@@ -128,7 +132,6 @@ describe("Bowling", function() {
     bowling.enter_score(10);
     bowling.enter_score(10);
     bowling.enter_score(10);
-    console.log(bowling.unscored_strikes);
     expect(bowling.score).toEqual(180)
   })
 
@@ -145,7 +148,6 @@ describe("Bowling", function() {
     bowling.enter_score(10);
     bowling.enter_score(10);
     bowling.enter_score(10);
-    console.log(bowling.unscored_strikes);
     expect(bowling.score).toEqual(300)
   })
   it("score should be 225 when this is scored", function() {
@@ -161,8 +163,26 @@ describe("Bowling", function() {
     bowling.enter_score(2);
     bowling.enter_score(5);
     bowling.enter_score(3);
-    console.log(bowling.unscored_strikes);
     expect(bowling.score).toEqual(225)
+  })
+
+  it("score should be equal to 43 when this is entered", function() {
+    bowling.enter_score(7);
+    bowling.enter_score(2);
+    bowling.enter_score(10);
+    bowling.enter_score(6);
+    bowling.enter_score(3);
+    bowling.enter_score(5);
+    bowling.enter_score(1);
+    expect(bowling.score).toEqual(43)
+  })
+
+  it("should should equal to 22 after a 9,1,5,2 is scored", function() {
+    bowling.enter_score(9);
+    bowling.enter_score(1);
+    bowling.enter_score(5);
+    bowling.enter_score(2);
+    expect(bowling.score).toEqual(22)
   })
 
 

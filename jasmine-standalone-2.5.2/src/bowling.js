@@ -10,6 +10,7 @@ function Bowling () {
   this.first_go = 0;
   this.second_go = 0;
   this.unscored_strikes = 0;
+  this.unscored_half_strike = false;
 }
 
 Bowling.prototype.enter_score = function(number) {
@@ -35,10 +36,16 @@ Bowling.prototype.enter_score = function(number) {
         this.first_go = number;
         this.running_total.push(number);
       }
+      else if (this.unscored_half_strike === true) {
+        this.go += 1;
+        this.first_go = number;
+        this.score += MAXIMUM_SCORE + number;
+        this.unscored_half_strike = false;
+      }
       else {
       this.go += 1;
-      this.score += number;
       this.running_total.push(number);
+      this.first_go = number;
   }}}
   else {
     if (this.unscored_strikes > 0) {
@@ -48,16 +55,16 @@ Bowling.prototype.enter_score = function(number) {
       this.score += (MAXIMUM_SCORE + 2 * (this.first_go + this.second_go));
       this.running_total.push("X", this.first_go,number);
     }
-    // else if (this.unscored_strikes > 1) {
-    //   this.go = 1;
-    //   this.second_go = number;
-    //   this.score += (MAXIMUM_SCORE + this.first_go + this.second_go) + this.first_go + this.second_go;
-    // }
+    else if (this.first_go + number === 10) {
+      this.go = 1;
+      this.second_go = number;
+      this.unscored_half_strike = true;
+    }
     else {
     this.go = 1;
     this.second_go = number;
     this.frame += 1;
-    this.score += number;
+    this.score += this.first_go + number;
     this.running_total.push(number);
   }}
 }

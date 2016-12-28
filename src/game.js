@@ -7,6 +7,8 @@ function Game() {
   this._totalPins = 0;
   this._totalBonus = 0;
   this._finalScore = 0;
+  this._bonusAllowed = false;
+  this._bonusRollPoints = [];
 }
 
 Game.prototype.takeTurn = function(firstRoll, secondRoll) {
@@ -21,6 +23,10 @@ Game.prototype.takeTurn = function(firstRoll, secondRoll) {
   // if (this._frames.length === this.MAXIMUM_FRAMES) {
   //   this._endGame();
   // }
+};
+
+Game.prototype.bonusRoll = function(roll) {
+
 };
 
 Game.prototype._finalFrame = function() {
@@ -46,19 +52,21 @@ Game.prototype._pinsPerFrame = function() {
 };
 
 Game.prototype._strikeBonus = function() {
-  this._checkForStrikes();
+this._checkForStrikes();
   for (var frameIndex = 1; frameIndex < this._frames.length; frameIndex++) {
-    if (this._frames[frameIndex-1]._isStrike) {
+    if (this._frames[frameIndex-1]._isStrike && !this._frames[frameIndex]._isStrike) {
       this._bonusPoints.push(this._frames[frameIndex]._firstRoll + this._frames[frameIndex]._secondRoll);
+    } else if (this._frames[frameIndex-1]._isStrike && this._frames[frameIndex]._isStrike) {
+      this._bonusPoints.push(this._frames[frameIndex]._firstRoll + this._frames[frameIndex + 1]._firstRoll);
     }
   }
 };
 
 Game.prototype._spareBonus = function () {
   this._checkForSpares();
-  for (var i = 0; i < this._frames.length-1; i++) {
-    if (this._frames[i]._isSpare) {
-      this._bonusPoints.push(this._frames[i+1]._firstRoll);
+  for (var frameIndex = 1; frameIndex < this._frames.length; frameIndex++) {
+    if (this._frames[frameIndex-1]._isSpare) {
+      this._bonusPoints.push(this._frames[frameIndex]._firstRoll);
     }
   }
 };
@@ -75,6 +83,9 @@ Game.prototype._addTotalBonus = function() {
   this._spareBonus();
   for (var i = 0; i < this._bonusPoints.length; i++) {
     this._totalBonus += this._bonusPoints[i];
+  }
+  for (var i = 0; i < this._bonusRollPoints.length; i++) {
+    this._totalBonus += this._bonusRollPoints[i];
   }
 };
 
@@ -94,6 +105,7 @@ Game.prototype.playAgain = function() {
   this._bonusPoints = [];
   this._totalPins = 0;
   this._finalScore = 0;
+  this._isFinalFrame = false;
 };
 
 Game.prototype._endGame = function() {

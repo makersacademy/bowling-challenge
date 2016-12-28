@@ -73,8 +73,17 @@ describe('Game', function() {
       game.takeTurn(1, 1);
       game.takeTurn(10, 0);
       game.takeTurn(1, 1);
-      game._strikeBonus();
-      expect(game._bonusPoints[0]).toEqual(2);
+      game._addTotalBonus();
+      expect(game._totalBonus).toEqual(2);
+    });
+
+    it('can calculate the correct bonus for multiple strikes', function() {
+      game.takeTurn(1, 1);
+      game.takeTurn(10, 0);
+      game.takeTurn(10, 0);
+      game.takeTurn(1, 1);
+      game._addTotalBonus();
+      expect(game._totalBonus).toEqual(13);
     });
 
     it('can calculated the correct bonus for a spare', function() {
@@ -87,19 +96,23 @@ describe('Game', function() {
     it('can add the total of all bonus points scored during that game', function() {
       game.takeTurn(1, 1);
       game.takeTurn(10, 0);
-      game.takeTurn(5, 5);
+      game.takeTurn(1, 1);
       game._addTotalBonus();
-      expect(game._totalBonus).toEqual(10);
+      expect(game._totalBonus).toEqual(2);
     });
+  });
+
+  describe('when eligible for bonus rolls in the final frame', function() {
+
   });
 
   describe('when calculating the final score', function() {
     it('should calculate the sum of total pins knocked down and total bonus points', function() {
-      game.takeTurn(1, 1);
       game.takeTurn(10, 0);
-      game.takeTurn(5, 5);
+      game.takeTurn(1, 1);
+      game.takeTurn(1, 1);
       game._addFinalScore();
-      expect(game._finalScore).toEqual(32);
+      expect(game._finalScore).toEqual(16);
     });
   });
 
@@ -130,16 +143,30 @@ describe('Game', function() {
     it('resets the final score back to 0', function() {
       expect(game._finalScore).toEqual(0);
     });
+
+    it('resets _isFinalFrame back to false', function() {
+      expect(game._isFinalFrame).toEqual(false);
+    });
   });
 
   describe('exceptional game circumstances', function() {
-    it('you can roll a gutter game', function() {
+    it('player can roll a gutter game', function() {
       for (var i = 0; i < 10; i++) {
         game.takeTurn(0, 0);
       }
       game._addFinalScore();
       expect(game._finalScore).toEqual(0);
     });
+
+    // it('player can roll a perfect game', function() {
+    //   for (var i = 0; i < 10; i++) {
+    //     game.takeTurn(10, 0);
+    //   }
+    //   game.bonusRoll(10);
+    //   game.bonusRoll(10);
+    //   game._addFinalScore();
+    //   expect(game._finalScore).toEqual(300);
+    // });
   });
 
 });

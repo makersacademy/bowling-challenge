@@ -38,7 +38,7 @@ $(document).ready(function(){
 
   function updateFrameCount() {
     $('#frameCount').text(game.frameCount);
-  };
+  }
 
   function updateCurrentScore() {
     scoreboard.bonusPoints();

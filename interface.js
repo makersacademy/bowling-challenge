@@ -4,9 +4,12 @@ $(document).ready(function(){
   $('#frameCount').text(game.frameCount);
 
   $(function () {
+    $('#firstRoll').hide();
+    $('#secondRoll').hide();
   $('#rackUp').click(function(){
     game.increaseFrameCount();
     updateFrameCount();
+    $('#rackUp').hide();
       $('#firstRoll').show();
                 if ($(this.rackedPins).val() == false) {
                   $('.roll1').prop('disabled', true);
@@ -14,6 +17,7 @@ $(document).ready(function(){
                   $('.roll1').prop('disabled', false);
               };
   });
+
 });
 
   $(function () {
@@ -31,10 +35,16 @@ $(document).ready(function(){
 
   $('#secondRoll').click(function(){
     $(this).hide();
+    $('#rackUp').show();
   $('#secondScore').text(scoreboard.scoreSecondRoll(game.secondRoll()));
   updateCurrentScore();
   });
 
+  window.onerror=function(){
+   alert("Game Over! Please start a new game")
+   $('#rackUp').hide();
+   return true
+ }
 
   function updateFrameCount() {
     $('#frameCount').text(game.frameCount);

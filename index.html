@@ -3,6 +3,12 @@
   <head>
     <title>Bowling</title>
     <style type='text/css'>
+    h1 {
+      text-align: center;
+    }
+    .buttons {
+      text-align: center;
+    }
     table {
       border: 2px solid black;
     }
@@ -17,15 +23,17 @@
   <body>
     <section>
     <h1>Score Board </h1>
+    <div class=buttons>
     <button id='rackUp' >Rack Up</button>
     <button id='firstRoll' class='roll1' disabled='disabled' >Roll 1</button>
     <button id='secondRoll' class='roll2' disabled='disabled' >Roll 2 </button>
     <form action ='file:///Users/courtneyosborn/Documents/projects/course_week_5/weekend_challenge/Bowling/bowling-challenge/bowling-challenge/index.html'>
       <input id='restart' type="submit" value='Restart Game'/>
     </form>
+  </div>
     <table>
       <tr>
-        <th width="10%">Frame</th><th width="10%">Roll</th><th width="10%">Knocked Down Pins</th><th width="10%">Total</th><th width="10%">Notes</th>
+        <th width="25%">Frame</th><th width="25%">Roll</th><th width="25%">Knocked Down Pins</th><th width="25%">Total</th>
       </tr>
       <tr>
         <td id="frameCount"></td><td>1</td><td id="firstScore"></td><td id="currentTotalScore"></td><td id="runningTotal"></td>
@@ -36,6 +44,8 @@
       <tr>
       </tr>
     </table>
+
+
   </section>
      <script src="src/Game.js"></script>
      <script src="src/Scoreboard.js"></script>

@@ -94,6 +94,7 @@ describe("Game", function(){
       spyOn(game, 'secondRoll').and.returnValue(3);
       expect(game.scoreboard.scoreSecondRoll(game.secondRoll())).toEqual(3)
     });
+
   });
 
   describe("bonus points", function(){
@@ -132,7 +133,6 @@ describe("Game", function(){
       });
 
       it("should throw an error if frame count is more then ten", function(){
-        game.frameCount = 10;
         expect(function(){game.increaseFrameCount();}).toThrowError("Game Over! Please start a new game")
       });
 
@@ -150,7 +150,7 @@ describe("Game", function(){
         game.secondScore = 5;
         game.increaseFrameCount();
         game.firstScore = 3;
-        expect(function(){ game.increaseFrameCount(); }).toThrowError("Game Over! Please start a new game")
+        expect(function(){game.increaseFrameCount();}).toThrowError("Game Over! Please start a new game")
       });
 
   });
@@ -164,6 +164,7 @@ describe("Game", function(){
       it("should throw an error when pins are not sweeped and player tries to bowl", function(){
         expect(function(){ game.secondRoll(); }).toThrowError("Cannot Roll, Pins are not yet racked!")
       });
-      });
+
+    });
 
 });

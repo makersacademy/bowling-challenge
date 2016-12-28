@@ -36,15 +36,13 @@ function Scoreboard() {
   Scoreboard.prototype.calculateScores = function(){
     var index = this.scores.length;
     var currentScore = this.scores[index-4] + this.scores[index-3];
-    if (currentScore === this.MAXIMUM  && this.scores[index-4] !==this.MAXIMUM ) {
-      this._spare();
-    } else if (this.scores[index-2] + this.scores[index-1] ===this.MAXIMUM ) {
-        return "/"
-    } else {
-      var currentScore1 = this.scores[index-2] + this.scores[index-1];
-      this.totalScores.push(currentScore1);
-      this.scores.splice(0,2)
-      return currentScore1;
+      if (currentScore === this.MAXIMUM  && this.scores[index-4] !==this.MAXIMUM ) {
+        this._spare();
+    } else if (!this._isSpare()) {
+        var currentScore1 = this.scores[index-2] + this.scores[index-1];
+        this.totalScores.push(currentScore1);
+        this.scores.splice(0,2)
+        return currentScore1;
     }
   };
 
@@ -55,7 +53,7 @@ function Scoreboard() {
     } else if (this.totalCalculated === 0) {
         return this._gutterGame();
     } else {
-      return this.totalCalculated;
+        return this.totalCalculated;
     }
   };
 
@@ -106,6 +104,11 @@ function Scoreboard() {
   Scoreboard.prototype._isStrike = function() {
     var index = this.scores.length
     return this.scores[index-4] === this.MAXIMUM  && this.scores[index-2] !== this.MAXIMUM
+  };
+
+  Scoreboard.prototype._isSpare = function(){
+    var index = this.scores.length
+    return this.scores[index-2] + this.scores[index-1] ===this.MAXIMUM
   };
 
 

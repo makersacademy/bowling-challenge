@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 function Scoreboard() {
   this.scores = [];
@@ -29,7 +29,7 @@ function Scoreboard() {
         return this._aStrike();
     } else if (scoreIndex >= 2 && this.scores[scoreIndex-1] !== 10) {
         return this.calculateScores();
-    };
+    }
   };
 
   Scoreboard.prototype.calculateScores = function(){
@@ -44,8 +44,7 @@ function Scoreboard() {
       this.totalScores.push(currentScore1);
       this.scores.splice(0,2)
       return currentScore1;
-    };
-
+    }
   };
 
   Scoreboard.prototype._aStrike = function(){
@@ -56,8 +55,8 @@ function Scoreboard() {
       this.scores.splice(0,2)
       this.bonusPoints()
       return currentScore1;
-    };
-      };
+    }
+  };
 
   Scoreboard.prototype._multiStrike = function(){
         var scoresIndex = this.scores.length;
@@ -70,9 +69,9 @@ function Scoreboard() {
         } else {
           this.scores.splice(0,2)
           this.bonusPoints();
-        };
+        }
         return currentScore2;
-      };
+      }
 
   };
 
@@ -84,7 +83,7 @@ function Scoreboard() {
       this.scores.splice(0,2)
       this.bonusPoints();
       return currentScore3;
-    };
+    }
   };
 
   Scoreboard.prototype.calculatedTotal= function(){
@@ -95,7 +94,7 @@ function Scoreboard() {
         return this._gutterGame();
     } else {
       return this.totalCalculated;
-    };
+    }
   };
 
   Scoreboard.prototype._perfectGame = function(){

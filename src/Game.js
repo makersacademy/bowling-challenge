@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 function Game() {
   this.frameCount = 0;
@@ -27,14 +27,14 @@ function Game() {
       return this._rackUp();
     } else {
       throw new Error("Game Over! Please start a new game");
-    };
+    }
   };
 
   Game.prototype._rackUp = function(){
     if (this.frameCount <= 10) {
       this.rackedPins = true;
       this.setUpPins = [0,1,2,3,4,5,6,7,8,9,10];
-    };
+    }
   };
 
   Game.prototype.firstRoll = function(){
@@ -46,7 +46,7 @@ function Game() {
     } else {
       this.sweepComplete = false;
       throw new Error("Cannot Roll, Pins are not yet racked!");
-    };
+    }
   };
 
   Game.prototype._pinSweep = function(score){
@@ -56,7 +56,7 @@ function Game() {
     } else {
       this.sweepComplete = true;
       return this.setUpPins = [0];
-    };
+    }
 
   };
 
@@ -67,5 +67,5 @@ function Game() {
       return this.scoreboard.scoreSecondRoll(this.secondScore);
   } else {
     throw new Error("Cannot Roll, Pins are not yet racked!");
-  };
+  }
   };

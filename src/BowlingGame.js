@@ -11,7 +11,7 @@ BowlingGame.prototype.roll = function(knockedPins) {
       this.framesInPlay.push(frame);
       frame.rollNumber += 1;
       frame.checkStrike(knockedPins);
-  } else if (this._isTenthFrame() && this._currentFrame().rollNumber === 3 && (this._currentFrame().isStrike || this.currentFrame().isSpare)) {
+  } else if (this._isTenthFrame() && this._currentFrame().rollNumber === 3 && (this._currentFrame().isStrike || this._currentFrame().isSpare)) {
       var bonusFrame = new Frame(knockedPins);
       this.framesInPlay.push(bonusFrame);
       bonusFrame.rollOne = knockedPins;

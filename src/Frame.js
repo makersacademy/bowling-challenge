@@ -1,5 +1,6 @@
 /*jslint node: true */
 
+
 function Frame() {
   this.scoreCard = [];
   this.bonus = null;
@@ -33,12 +34,14 @@ Frame.prototype = {
     } else if (this.isSpare()) {
       this.bonus = new Bonus("spare");
     } else {
-      null;
+      this.bonus = null;
     }
   },
 
   _getScore: function() {
-    return this.scoreCard.reduce((a, b) => a + b, 0);
+    return this.scoreCard.reduce( function(a, b) {
+      return a + b
+    }, 0);
   },
 
   isSpare: function() {

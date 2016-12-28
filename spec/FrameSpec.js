@@ -1,3 +1,4 @@
+/*jslint node: true */
 'use strict';
 
 describe("Frame", function() {

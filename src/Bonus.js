@@ -14,7 +14,9 @@ Bonus.prototype = {
   },
 
   getScore: function() {
-    return this.scoreCard.reduce((a, b) => a + b, 0);
+    return this.scoreCard.reduce(function(a, b) {
+      return a + b
+    }, 0);
   },
 
   isOver: function() {

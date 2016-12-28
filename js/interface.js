@@ -25,7 +25,7 @@ $( document ).ready(function() {
   }
 
   function hideNumbers(pins){
-    if (game.rollNumber() === 2 && pins !=10) {
+    if (game.rollNumber() === 2 && pins !==10) {
       for (var id = 11 - pins; id < 11; id++) {
         $("#" + id).attr("disabled", true);
       }

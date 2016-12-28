@@ -33,7 +33,10 @@ Game.prototype = {
     }
   },
 
-  calculateScore: function(scoreUpTo=10) {
+  calculateScore: function(scoreUpTo) {
+    if (scoreUpTo === undefined) {
+      scoreUpTo = 10;
+    }
     var total = 0;
     for (var frameIndex = 0; frameIndex < scoreUpTo; frameIndex++) {
       total += this.frames[frameIndex].getTotalScore();
@@ -57,11 +60,6 @@ Game.prototype = {
     return frame.scoreCard[rollNumber-1];
   }
 }
-
-
-
-
-
 
 Game.prototype.getFrameScore = function(frameNumber) {
   var frame = this.frames[frameNumber - 1];

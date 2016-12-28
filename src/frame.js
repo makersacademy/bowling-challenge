@@ -4,7 +4,7 @@ function Frame(firstRoll, secondRoll) {
   this._secondRoll = secondRoll;
   this._isStrike = false;
   this._isSpare = false;
-  this._allowedBonus = false;
+  this._isFinalFrame = false;
 }
 
 Frame.prototype.isStrike = function() {

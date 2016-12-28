@@ -1,13 +1,13 @@
 function Game() {
   this._frames = [];
   this.MAXIMUM_FRAMES = 10;
-  this._isFinalFrame = false;
+  // this._isFinalFrame = false;
   this._pinsDown = [];
   this._bonusPoints = [];
   this._totalPins = 0;
   this._totalBonus = 0;
   this._finalScore = 0;
-  this._bonusAllowed = false;
+  this._isBonusAllowed = false;
   this._bonusRollPoints = [];
 }
 
@@ -17,8 +17,9 @@ Game.prototype.takeTurn = function(firstRoll, secondRoll) {
     throw new Error('You cannot have a second roll if you rolled a strike. Please enter your scores correctly');
   }
   this._frames.push(frame);
-  if (this._frames.length === this.MAXIMUM_FRAMES - 1) {
-    this._finalFrame();
+  if (this._frames.length === this.MAXIMUM_FRAMES) {
+    // this._finalFrame();
+    frame._isFinalFrame = true;
   }
   // if (this._frames.length === this.MAXIMUM_FRAMES) {
   //   this._endGame();
@@ -26,11 +27,20 @@ Game.prototype.takeTurn = function(firstRoll, secondRoll) {
 };
 
 Game.prototype.bonusRoll = function(roll) {
-
+  this._bonusAllowed();
+  if (this._isBonusAllowed === false) {
+    throw new Error('You do not get a bonus roll right now!')
+  } else {
+  this._bonusRollPoints.push(roll);
+  }
 };
 
-Game.prototype._finalFrame = function() {
-  this._isFinalFrame = true;
+Game.prototype._bonusAllowed = function() {
+  this._checkForStrikes();
+  this._checkForSpares();
+  if (this._frames.length === this.MAXIMUM_FRAMES && (this._frames[9]._isStrike || this._frames[9]._isSpare)) {
+    this._isBonusAllowed = true;
+  }
 };
 
 Game.prototype._checkForStrikes = function () {

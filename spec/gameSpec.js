@@ -153,6 +153,10 @@ describe('Game', function() {
     it('resets _isFinalFrame back to false', function() {
       expect(game._isFinalFrame).toEqual(false);
     });
+
+    it('resets _isBonusAllowed back to false', function() {
+      expect(game._isFinalFrame).toEqual(false);
+    });
   });
 
   describe('exceptional game circumstances', function() {

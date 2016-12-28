@@ -18,7 +18,6 @@ Game.prototype.takeTurn = function(firstRoll, secondRoll) {
   }
   this._frames.push(frame);
   if (this._frames.length === this.MAXIMUM_FRAMES) {
-    // this._finalFrame();
     frame._isFinalFrame = true;
   }
   if (this._frames.length === this.MAXIMUM_FRAMES && !this._isBonusAllowed) {
@@ -116,10 +115,11 @@ Game.prototype.playAgain = function() {
   this._totalPins = 0;
   this._finalScore = 0;
   this._isFinalFrame = false;
+  this._isBonusAllowed = false;
 };
 
 Game.prototype._endGame = function() {
   this._addFinalScore();
   console.log("Final score is " + this._finalScore);
-  console.log("Please call 'game.playAgain' to continue with a new game")
+  console.log("Please call 'game.playAgain' to play again!")
 };

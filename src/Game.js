@@ -38,7 +38,7 @@ function Game() {
   };
 
   Game.prototype.firstRoll = function(){
-    if (this.rackedPins == true) {
+    if (this.rackedPins === true) {
       this.firstScore = Math.floor(Math.random() * this.setUpPins.length);
       this._pinSweep(this.firstScore);
       this.rackedPins = false;
@@ -50,7 +50,7 @@ function Game() {
   };
 
   Game.prototype._pinSweep = function(score){
-    if (this.bonusRollStatus == false) {
+    if (this.bonusRollStatus === false) {
       this.sweepComplete = true;
       return this.setUpPins.splice(this.setUpPins.length-score, score);
     } else {
@@ -61,7 +61,7 @@ function Game() {
   };
 
   Game.prototype.secondRoll = function(){
-    if (this.sweepComplete == true) {
+    if (this.sweepComplete === true) {
       this.secondScore = Math.floor(Math.random() * this.setUpPins.length);
       this.sweepComplete = false;
       return this.scoreboard.scoreSecondRoll(this.secondScore);

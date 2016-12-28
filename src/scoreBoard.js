@@ -4,7 +4,7 @@ function Scoreboard() {
   this.scores = [];
   this.totalScores = [];
   this.totalCalculated = 0;
-};
+}
 
   Scoreboard.prototype.scoreFirstRoll = function(score1) {
       this.scores.push(score1)

@@ -4,6 +4,7 @@ function Scoreboard() {
   this.scores = [];
   this.totalScores = [];
   this.totalCalculated = 0;
+  this.MAXIMUM = 10;
 }
 
   Scoreboard.prototype.scoreFirstRoll = function(score1) {
@@ -22,67 +23,28 @@ function Scoreboard() {
   };
 
   Scoreboard.prototype.bonusPoints = function(){
-    var scoreIndex = this.scores.length
-      if (this.scores[scoreIndex-6] === 10 && this.scores[scoreIndex-4] ===10) {
+    var index = this.scores.length
+      if (this._isMultiStrike()) {
         return this._multiStrike();
-    } else if (this.scores[scoreIndex-4] === 10 && this.scores[scoreIndex-2] !== 10 ) {
+    } else if (this._isStrike()) {
         return this._aStrike();
-    } else if (scoreIndex >= 2 && this.scores[scoreIndex-1] !== 10) {
+    } else {
         return this.calculateScores();
     }
   };
 
   Scoreboard.prototype.calculateScores = function(){
-    var scoresIndex = this.scores.length;
-    var currentScore = this.scores[scoresIndex-4] + this.scores[scoresIndex-3];
-    if (currentScore === 10 && this.scores[scoresIndex-4] !==10) {
+    var index = this.scores.length;
+    var currentScore = this.scores[index-4] + this.scores[index-3];
+    if (currentScore === this.MAXIMUM  && this.scores[index-4] !==this.MAXIMUM ) {
       this._spare();
-    } else if (this.scores[scoresIndex-2] + this.scores[scoresIndex-1] ===10) {
+    } else if (this.scores[index-2] + this.scores[index-1] ===this.MAXIMUM ) {
         return "/"
     } else {
-      var currentScore1 = this.scores[scoresIndex-2] + this.scores[scoresIndex-1];
+      var currentScore1 = this.scores[index-2] + this.scores[index-1];
       this.totalScores.push(currentScore1);
       this.scores.splice(0,2)
       return currentScore1;
-    }
-  };
-
-  Scoreboard.prototype._aStrike = function(){
-    var scoresIndex = this.scores.length;
-    if (scoresIndex >= 4) {
-      var currentScore1 = this.scores[scoresIndex-4] + this.scores[scoresIndex-2] + this.scores[scoresIndex-1]
-      this.totalScores.push(currentScore1);
-      this.scores.splice(0,2)
-      this.bonusPoints()
-      return currentScore1;
-    }
-  };
-
-  Scoreboard.prototype._multiStrike = function(){
-        var scoresIndex = this.scores.length;
-      if (scoresIndex >= 6) {
-        var currentScore2 = this.scores[scoresIndex-6] + this.scores[scoresIndex-4] + this.scores[scoresIndex-2]
-        this.totalScores.push(currentScore2);
-        if (this.scores[scoresIndex-2] === 10) {
-          this.scores.splice(0,2)
-          this.bonusPoints();
-        } else {
-          this.scores.splice(0,2)
-          this.bonusPoints();
-        }
-        return currentScore2;
-      }
-
-  };
-
-  Scoreboard.prototype._spare = function() {
-    var scoresIndex = this.scores.length;
-    if (scoresIndex >= 3) {
-      var currentScore3 = this.scores[scoresIndex-4] + this.scores[scoresIndex-3] + this.scores[scoresIndex-2];
-      this.totalScores.push(currentScore3);
-      this.scores.splice(0,2)
-      this.bonusPoints();
-      return currentScore3;
     }
   };
 
@@ -96,6 +58,57 @@ function Scoreboard() {
       return this.totalCalculated;
     }
   };
+
+  Scoreboard.prototype._aStrike = function(){
+    var index = this.scores.length;
+    if (index >= 4) {
+      var currentScore1 = this.scores[index-4] + this.scores[index-2] + this.scores[index-1]
+      this.totalScores.push(currentScore1);
+      this.scores.splice(0,2)
+      this.bonusPoints()
+      return currentScore1;
+    }
+  };
+
+  Scoreboard.prototype._multiStrike = function(){
+        var index = this.scores.length;
+      if (index >= 6) {
+        var currentScore2 = this.scores[index-6] + this.scores[index-4] + this.scores[index-2]
+        this.totalScores.push(currentScore2);
+        if (this.scores[index-2] === this.MAXIMUM ) {
+          this.scores.splice(0,2)
+          this.bonusPoints();
+        } else {
+          this.scores.splice(0,2)
+          this.bonusPoints();
+        }
+        return currentScore2;
+      }
+
+  };
+
+  Scoreboard.prototype._spare = function() {
+    var index = this.scores.length;
+    if (index >= 3) {
+      var currentScore3 = this.scores[index-4] + this.scores[index-3] + this.scores[index-2];
+      this.totalScores.push(currentScore3);
+      this.scores.splice(0,2)
+      this.bonusPoints();
+      return currentScore3;
+    }
+  };
+
+  Scoreboard.prototype._isMultiStrike = function() {
+    var index = this.scores.length
+    return this.scores[index-6] === this.MAXIMUM && this.scores[index-4] ===this.MAXIMUM
+  };
+
+  Scoreboard.prototype._isStrike = function() {
+    var index = this.scores.length
+    return this.scores[index-4] === this.MAXIMUM  && this.scores[index-2] !== this.MAXIMUM
+  };
+
+
 
   Scoreboard.prototype._perfectGame = function(){
     return "Perfect Game!"

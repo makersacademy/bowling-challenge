@@ -21,6 +21,10 @@ describe ("Scoreboard", function() {
     expect(scoreboard.totalCalculated).toEqual(0)
   });
 
+  it("it should initialize with the maximum pins a player can knock down in one throw", function(){
+    expect(scoreboard.MAXIMUM).toEqual(10)
+  });
+
   it("should place the first roll score result into the scores array", function(){
     scoreboard.scoreFirstRoll(4);
     expect(scoreboard.scores).toContain(4);

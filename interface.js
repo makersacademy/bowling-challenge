@@ -44,7 +44,7 @@ $(document).ready(function(){
     scoreboard.bonusPoints();
     scoreboard.calculatedTotal();
     $('#currentTotalScore').text(scoreboard.totalCalculated);
-  };
+  }
 
 
 });

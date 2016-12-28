@@ -18,9 +18,9 @@ Game.prototype.takeTurn = function(firstRoll, secondRoll) {
   if (this._frames.length === this.MAXIMUM_FRAMES - 1) {
     this._finalFrame();
   }
-  if (this._frames.length === this.MAXIMUM_FRAMES) {
-    this._endGame();
-  }
+  // if (this._frames.length === this.MAXIMUM_FRAMES) {
+  //   this._endGame();
+  // }
 };
 
 Game.prototype._finalFrame = function() {
@@ -45,18 +45,18 @@ Game.prototype._pinsPerFrame = function() {
   }
 };
 
-Game.prototype._strikeBonus = function () {
+Game.prototype._strikeBonus = function() {
   this._checkForStrikes();
-  for (var i = 0; i < this._frames.length; i++) {
-    if (this._frames[i]._isStrike) {
-      this._bonusPoints.push(this._frames[i+1]._firstRoll + this._frames[i+1]._secondRoll);
+  for (var frameIndex = 1; frameIndex < this._frames.length; frameIndex++) {
+    if (this._frames[frameIndex-1]._isStrike) {
+      this._bonusPoints.push(this._frames[frameIndex]._firstRoll + this._frames[frameIndex]._secondRoll);
     }
   }
 };
 
 Game.prototype._spareBonus = function () {
   this._checkForSpares();
-  for (var i = 0; i < this._frames.length; i++) {
+  for (var i = 0; i < this._frames.length-1; i++) {
     if (this._frames[i]._isSpare) {
       this._bonusPoints.push(this._frames[i+1]._firstRoll);
     }

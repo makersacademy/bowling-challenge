@@ -43,7 +43,6 @@ describe('Game', function() {
       for (var i = 0; i < 10; i++) {
         game.takeTurn(1, 1);
       }
-      game._addFinalScore();
     });
     it('can add up the total amount of pins knocked down', function() {
       expect(game._finalScore).toEqual(20);

@@ -21,9 +21,9 @@ Game.prototype.takeTurn = function(firstRoll, secondRoll) {
     // this._finalFrame();
     frame._isFinalFrame = true;
   }
-  // if (this._frames.length === this.MAXIMUM_FRAMES) {
-  //   this._endGame();
-  // }
+  if (this._frames.length === this.MAXIMUM_FRAMES && !this._isBonusAllowed) {
+    this._endGame();
+  }
 };
 
 Game.prototype.bonusRoll = function(roll) {

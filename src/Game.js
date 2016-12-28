@@ -2,15 +2,12 @@
 
 function Game() {
   this.frameCount = 0;
-  this.currentScore = [];
-  this.score = [];
   this.firstScore = 0;
   this.secondScore = 0;
   this.rackedPins = false;
   this.sweepComplete = false;
   this.bonusCount = 0;
   this.bonusRollStatus = false;
-  this.bonusRackedPins = false;
   this.scoreboard = new Scoreboard();
 }
 

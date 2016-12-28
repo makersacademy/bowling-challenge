@@ -13,14 +13,6 @@ describe("Game", function(){
     expect(game.frameCount).toEqual(0);
   });
 
-  it("should initialize with a empty current score", function(){
-    expect(game.currentScore).toEqual([]);
-  });
-
-  it("should initialize with a empty score", function(){
-    expect(game.score).toEqual([]);
-  });
-
   it("should initialize with a firstScore that equal 0", function(){
     expect(game.firstScore).toEqual(0);
   });
@@ -43,10 +35,6 @@ describe("Game", function(){
 
   it("should initialize with a bonusRoll equal to false", function(){
     expect(game.bonusRollStatus).toBe(false);
-  });
-
-  it("should initialize with a bonusRackedPins equal to false", function(){
-    expect(game.bonusRackedPins).toBe(false);
   });
 
   it("should initialize with a new Scoreboard", function() {
@@ -80,17 +68,11 @@ describe("Game", function(){
       expect(game.rackedPins).toBe(true);
     });
 
-    it("should throw an error if frame count is more then ten", function(){
-      game.frameCount = 10;
-      expect(function(){game.increaseFrameCount();}).toThrowError("Game Over! Please start a new game")
-    });
-
     it("should re-rack with all the pins when frame count is 10 and a strike is scored on the first roll", function(){
       game.frameCount = 9;
       spyOn(game, 'firstRoll').and.returnValue(10);
       expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
     });
-
 
     it("should call return amount of pins knocked down in first throw", function(){
       spyOn(game, 'firstRoll').and.returnValue(4);
@@ -127,24 +109,6 @@ describe("Game", function(){
       expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
     });
 
-
-    it("should throw an error when player tries to bowl more than two bonus balls", function(){
-      game.firstScore = 10;
-      game.increaseFrameCount();
-      game.firstScore = 10;
-      game.increaseFrameCount();
-      game.firstScore = 10;
-      expect(function(){game.increaseFrameCount();}).toThrowError("Game Over! Please start a new game")
-    });
-
-    it("should rack up for one more roll if frame count is 10 and a spare is scored", function(){
-      game.firstScore = 5;
-      game.secondScore = 5;
-      game.increaseFrameCount();
-      game.firstScore = 3;
-      expect(function(){game.increaseFrameCount();}).toThrowError("Game Over! Please start a new game")
-    });
-
     it("should rackup pins if frameCount is 10 and the first roll is a strike", function(){
       game.firstScore = 10;
       game.increaseFrameCount();
@@ -159,7 +123,47 @@ describe("Game", function(){
       expect(game.secondRoll()).toEqual(0)
     });
 
+  });
+
+  describe("throw error when frame count is at its maximum", function(){
+
+      beforeEach(function(){
+        game.frameCount = 10;
+      });
+
+      it("should throw an error if frame count is more then ten", function(){
+        game.frameCount = 10;
+        expect(function(){game.increaseFrameCount();}).toThrowError("Game Over! Please start a new game")
+      });
+
+      it("should throw an error when player tries to bowl more than two bonus balls", function(){
+        game.firstScore = 10;
+        game.increaseFrameCount();
+        game.firstScore = 10;
+        game.increaseFrameCount();
+        game.firstScore = 10;
+        expect(function(){game.increaseFrameCount();}).toThrowError("Game Over! Please start a new game")
+      });
+
+      it("should rack up for one more roll if frame count is 10 and a spare is scored", function(){
+        game.firstScore = 5;
+        game.secondScore = 5;
+        game.increaseFrameCount();
+        game.firstScore = 3;
+        expect(function(){ game.increaseFrameCount(); }).toThrowError("Game Over! Please start a new game")
+      });
 
   });
+
+    describe("throw error when pins are not racked", function(){
+
+      it("should throw an error when pins are not racked and player tries to bowl", function(){
+        expect(function(){ game.firstRoll(); }).toThrowError("Cannot Roll, Pins are not yet racked!")
+      });
+
+      it("should throw an error when pins are not sweeped and player tries to bowl", function(){
+        expect(function(){ game.secondRoll(); }).toThrowError("Cannot Roll, Pins are not yet racked!")
+      });
+      });
 
 });

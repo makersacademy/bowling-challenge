@@ -121,31 +121,24 @@ describe ("Scoreboard", function() {
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.scores)
     scoreboard.scoreFirstRoll(3);
     scoreboard.scoreSecondRoll(4);
     scoreboard.bonusPoints();
-  console.log(scoreboard.scores)
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.scores)
     scoreboard.scoreFirstRoll(5);
     scoreboard.scoreSecondRoll(5);
     scoreboard.bonusPoints();
-    console.log(scoreboard.scores)
     scoreboard.scoreFirstRoll(10);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.scores)
     scoreboard.scoreFirstRoll(5);
     scoreboard.scoreSecondRoll(3);
     scoreboard.bonusPoints();
-    console.log(scoreboard.scores)
     scoreboard.scoreFirstRoll(7);
     scoreboard.scoreSecondRoll(0);
     scoreboard.bonusPoints();
-    console.log(scoreboard.scores)
     expect(scoreboard.totalScores).toEqual([17, 7, 20, 20, 18, 8, 7]);
   });
 

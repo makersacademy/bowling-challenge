@@ -97,11 +97,6 @@ describe("Game", function(){
       expect(game.scoreboard.scoreFirstRoll(game.firstRoll())).toEqual(4);
     });
 
-    // it("should call return amount of pins knocked down in first throw", function(){
-    //   spyOn(game, 'firstRoll').and.returnValue(10);
-    //   expect(game.scoreboard.scoreFirstRoll(game.firstRoll())).toEqual('X');
-    // });
-
     it("should return sweep complete as true", function(){
       game.firstRoll();
       expect(game.sweepComplete).toBe(true);
@@ -164,28 +159,6 @@ describe("Game", function(){
       expect(game.secondRoll()).toEqual(0)
     });
 
-    // it("should return a score when the bonus ball is rolled", function(){
-    //   game.firstScore = 10;
-    //   game.increaseFrameCount();
-    //   spyOn(game, "bonusRoll").and.returnValue(10)
-    //   expect(game.scoreboard.scoreFirstRoll(game.bonusRoll())).toEqual(10);
-    // });
-    //
-    // it("should allow a bonus roll if a spare is scored on the 10th frame", function(){
-    //   game.firstScore = 5;
-    //   game.secondScore = 5;
-    //   game.increaseFrameCount();
-    //   spyOn(game, "bonusRoll").and.returnValue(5)
-    //   expect(game.scoreboard.scoreFirstRoll(game.bonusRoll())).toEqual(5);
-    // });
-    //
-    // it("should return an zero second throw when the bonus throw is rolled", function(){
-    //   game.firstScore = 5;
-    //   game.secondScore = 5;
-    //   game.increaseFrameCount();
-    //   game.bonusRoll();
-    //   expect(game.scoreboard.scoreSecondRoll(game.bonusZero())).toEqual(0);
-    // });
 
   });
 

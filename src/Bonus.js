@@ -1,4 +1,4 @@
-'use strict';
+/*jslint node: true */
 
 function Bonus(type) {
   this.type = type;

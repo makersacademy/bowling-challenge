@@ -1,4 +1,4 @@
-'use strict';
+/*jslint node: true */
 
 function Frame() {
   this.scoreCard = [];
@@ -14,7 +14,7 @@ Frame.prototype = {
   addToBonus: function(pins) {
     if (this.bonus) {
       this.bonus.addToBonus(pins);
-    };
+    }
   },
 
   isOver: function() {

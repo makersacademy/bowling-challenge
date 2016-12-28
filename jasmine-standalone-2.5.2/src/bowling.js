@@ -10,24 +10,27 @@ function Bowling () {
   // this.last_strike = false;
   this.first_go = 0;
   this.second_go = 0;
-  this.strikes_in_a_row = 0;
+  this.unscored_strikes = 0;
 }
 
 Bowling.prototype.enter_score = function(number) {
   if (this.go === 1) {
-    if (number === MAXIMUM_SCORE) {
+    if (number === MAXIMUM_SCORE && this.unscored_strikes < 2) {
       this.frame += 1;
-      this.last_strike = true;
-      this.strikes_in_a_row += 1;
+      this.unscored_strikes += 1;
       this.running_total.push("X");
         }
+    else if (number === MAXIMUM_SCORE) {
+      this.frame += 1;
+      this.score += (MAXIMUM_SCORE + MAXIMUM_SCORE + MAXIMUM_SCORE);
+    }
     else {
-      if (this.strikes_in_a_row > 1) {
+      if (this.unscored_strikes > 1) {
         this.go += 1;
         this.first_go = number;
         this.score += (MAXIMUM_SCORE + MAXIMUM_SCORE + number);
       }
-      else if (this.strikes_in_a_row === 1) {
+      else if (this.unscored_strikes === 1) {
         this.go += 1;
         this.first_go = number;
         this.running_total.push(number);
@@ -38,12 +41,17 @@ Bowling.prototype.enter_score = function(number) {
       this.running_total.push(number);
   }}}
   else {
-    if (this.strikes_in_a_row === 1) {
+    if (this.unscored_strikes === 1) {
       this.go = 1;
       this.second_go = number;
-      this.strikes_in_a_row = 0;
+      this.unscored_strikes = 0;
       this.score += (MAXIMUM_SCORE + 2 * (this.first_go + this.second_go));
       this.running_total.push("X", this.first_go,number);
+    }
+    else if (this.unscored_strikes > 1) {
+      this.go = 1;
+      this.second_go = number;
+      this.score += (MAXIMUM_SCORE + this.first_go + this.second_go) + this.first_go + this.second_go;
     }
     else {
     this.go = 1;

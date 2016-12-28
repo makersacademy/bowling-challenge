@@ -60,7 +60,7 @@ describe("Bowling", function() {
 
   it("should change last_strike to true", function() {
     bowling.enter_score(10);
-    expect(bowling.strikes_in_a_row).toEqual(1)
+    expect(bowling.unscored_strikes).toEqual(1)
   });
 
   it("should double score of next frame after a strike", function() {
@@ -72,20 +72,20 @@ describe("Bowling", function() {
 
   it("should return 1 after 1 strike", function() {
     bowling.enter_score(10);
-    expect(bowling.strikes_in_a_row).toEqual(1)
+    expect(bowling.unscored_strikes).toEqual(1)
   })
 
   it("strike counter should reset after player does not score a strike", function() {
     bowling.enter_score(10);
     bowling.enter_score(1);
     bowling.enter_score(1);
-    expect(bowling.strikes_in_a_row).toEqual(0)
+    expect(bowling.unscored_strikes).toEqual(0)
   });
 
   it("strike counter should increment when multiple strikes are scored in a row", function() {
     bowling.enter_score(10);
     bowling.enter_score(10);
-    expect(bowling.strikes_in_a_row).toEqual(2)
+    expect(bowling.unscored_strikes).toEqual(2)
   });
 
   it("should correctly multiply scores if multiple strikes are scored", function() {
@@ -94,6 +94,60 @@ describe("Bowling", function() {
     bowling.enter_score(1);
     expect(bowling.score).toEqual(21)
   });
+
+  it("should give the correct score after multiple strikes are scored", function() {
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(1);
+    bowling.enter_score(1);
+    expect(bowling.score).toEqual(35)
+  })
+
+  it("score should be 30 when three strikes are scored in a row", function() {
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    expect(bowling.score).toEqual(30)
+  })
+
+  it("score should be 60 when four strikes are scored in a row", function() {
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    console.log(bowling.unscored_strikes);
+    expect(bowling.score).toEqual(60)
+  })
+
+  it("score should be 180 when eight strikes are scored in a row", function() {
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    console.log(bowling.unscored_strikes);
+    expect(bowling.score).toEqual(180)
+  })
+
+  it("score should be 300 when ten strikes are scored in a row", function() {
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    bowling.enter_score(10);
+    console.log(bowling.unscored_strikes);
+    expect(bowling.score).toEqual(300)
+  })
 
 
 });

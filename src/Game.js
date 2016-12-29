@@ -14,12 +14,8 @@ Game.prototype = {
       console.log("Over");
     } else {
       this._addBonusPoints(pins);
-      if (!this.frames[9].isStrike() && !this.frames[9].isSpare()) {
-        this._addToCurrentFrame(pins);
-      }
-      if (this._currentFrameIsOver()) {
-        this._nextFrame()
-      }
+      this._addToCurrentFrame(pins);
+      this._nextFrame();
     }
   },
 
@@ -32,11 +28,13 @@ Game.prototype = {
   },
 
   _addToCurrentFrame: function(pins) {
-    this._currentFrame().addToFrame(pins);
+    if (!this.frames[9].isStrike() && !this.frames[9].isSpare()) {
+      this._currentFrame().addToFrame(pins);
+    }
   },
 
   _nextFrame: function() {
-    if (!this._isTenthFrame()) {
+    if (this._currentFrameIsOver() && !this._isTenthFrame()) {
       this.currentFrameIndex ++;
     }
   },

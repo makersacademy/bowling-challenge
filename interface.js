@@ -17,14 +17,26 @@ $(document).ready(function(){
         }
 
         calculator.increaseRoll();
-        
+
     } else if( calculator.frame < 10 ) {
-        $('#game-status').text( "Playing..." );
-        calculator.passScore(pins);
-        calculator.clearFrameScores();
-        displayAll();
-        calculator.increaseFrame();
-        calculator.changeRoll();
+
+        if( calculator.roll === 2 ){
+          $('#game-status').text( "Playing..." );
+          calculator.passScore(pins);
+          if( calculator.sumFrameScores() === 10 ){ calculator.setSpare() };
+          displayAll();
+          calculator.increaseFrame();
+          calculator.changeRoll();
+          calculator.clearFrameScores();  
+        } else {
+          $('#game-status').text( "Playing..." );
+          calculator.passScore(pins);
+          if( calculator.spare === true ){ calculator.passSpareBonus(pins) }
+          calculator.passBonuses();
+          calculator.clearSpare();
+          displayAll();
+          calculator.changeRoll();
+        }
     }
   })
 
@@ -33,6 +45,13 @@ $(document).ready(function(){
     displayRoll();
     displayTable();
     displayTotalScore();
+    $('#1').text( calculator.gameScores );
+    $('#2').text( calculator.frameScores );
+    $('#3').text( calculator.strike );
+    $('#4').text( calculator.spare );
+    $('#5').text( calculator.strikeBonus );
+    $('#6').text( calculator.spareBonus );
+    $('#7').text( calculator.gameFinish );
   }
 
   function displayFrame(){

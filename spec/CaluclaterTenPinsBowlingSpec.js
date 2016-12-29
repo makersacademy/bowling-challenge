@@ -186,6 +186,12 @@ describe ('calculator for Ten pins bowling', function(){
 
   describe ('functions for sum', function(){
 
+      it ('should sum frame scores', function(){
+        calculator.passScore( pins_1 );
+        calculator.passScore( pins_2 );
+        expect( calculator.sumFrameScores() ).toEqual( 8 );
+      });
+
       it ('should sum game scores', function(){
         calculator.passScore( pins_1 );
         calculator.passScore( pins_2 );

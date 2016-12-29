@@ -38,11 +38,13 @@ CalculatorTenPinsBowling.prototype.passBonuses = function(){
   }
 };
 
-CalculatorTenPinsBowling.prototype.passStrikeBonus = function(pins){
+CalculatorTenPinsBowling.prototype.passStrikeBonus = function(user_input){
+  var pins = Number(user_input)
   this.strikeBonus.length === 0 ? this.strikeBonus[0] = pins : this.strikeBonus[1] = pins
 };
 
-CalculatorTenPinsBowling.prototype.passSpareBonus = function(pins){
+CalculatorTenPinsBowling.prototype.passSpareBonus = function(user_input){
+  var pins = Number(user_input)
   this.spareBonus = pins;
 };
 
@@ -50,6 +52,13 @@ CalculatorTenPinsBowling.prototype.sumStrikeBonus = function(){
   var i;
   var sum = 0;
   for (i=0; i<2; i++){ sum = sum + this.strikeBonus[i] }
+  return sum
+};
+
+CalculatorTenPinsBowling.prototype.sumFrameScores = function(){
+  var i;
+  var sum = 0;
+  for (i=0; i<2; i++){ sum = sum + this.frameScores[i] }
   return sum
 };
 
@@ -75,11 +84,11 @@ CalculatorTenPinsBowling.prototype.changeRoll = function(){
 };
 
 CalculatorTenPinsBowling.prototype.increaseFrame = function(){
-  if( this.roll === 2 ){ this.frame ++ }
+  return this.frame ++
 };
 
 CalculatorTenPinsBowling.prototype.clearFrameScores = function(){
-  if( this.roll === 2 ){ this.frameScores = [] }
+  return this.frameScores = []
 };
 
 CalculatorTenPinsBowling.prototype.setStrike = function(){
@@ -95,7 +104,7 @@ CalculatorTenPinsBowling.prototype.clearStrike = function(){
 };
 
 CalculatorTenPinsBowling.prototype.clearSpare = function(){
-  this.strike = false;
+  this.spare = false;
 };
 
 CalculatorTenPinsBowling.prototype.isStrikeFlag = function(){

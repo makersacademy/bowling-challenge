@@ -24,6 +24,9 @@ describe('Bowling', function() {
             expect(game.currentFrame.spares).toEqual(10)
         });
 
+        it("checks that there can be maxmimum of twelve frames", function() {
+            expect(game.maxFrames).toEqual(10)
+        });
 
         it("expects a frame to have two throws", function() {
             game.bowlScore(7);
@@ -111,6 +114,21 @@ describe('Bowling', function() {
             game.bowlScore(10)
             expect(game.scoreSheet.length).toEqual(1)
             expect(game.currentFrame.number).toEqual(2)
+        });
+
+        describe("#Frame()", function() {
+
+            it("checks that a maxmimum of 10 frames can be played", function() {
+                for (var i = 0; i < 9; i++) {
+                    game.bowlScore(10)
+                }
+                game.bowlScore(1)
+                message = "Game Over"
+                expect(function() {
+                    game.bowlScore(1)
+                }).toThrowError(message)
+            });
+
         });
     });
 });

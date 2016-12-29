@@ -1,6 +1,8 @@
 function Bowling() {
     this.scoreSheet = [];
     this.currentFrame = {}
+    this.maxFrames = 10
+    this.gameOver = false
 
     Bowling.prototype.newGame = function() {
         this.newFrame()
@@ -11,6 +13,8 @@ function Bowling() {
     }
 
     Bowling.prototype.bowlScore = function(score) {
+        this.checkGameOver();
+
         this.checkScore(score);
         this.currentFrame.saveFrameScore(score)
 
@@ -35,7 +39,22 @@ function Bowling() {
     Bowling.prototype.saveFrame = function(frame) {
         frame.saveScore();
         this.scoreSheet.push(frame);
+        this.checkGameEnd();
         this.newFrame()
+    }
+
+    Bowling.prototype.checkGameEnd = function() {
+        if (this.scoreSheet.length >= this.maxFrames) {
+            this.gameOver = true;
+            this.currentFrame = {}
+            throw new Error("Game Over")
+        }
+    }
+
+    Bowling.prototype.checkGameOver = function() {
+        if (this.gameOver === true) {
+            throw new Error("Game Over")
+        }
     }
 }
 

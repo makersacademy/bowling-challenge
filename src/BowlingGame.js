@@ -15,6 +15,9 @@ BowlingGame.prototype.roll = function(knockedPins) {
       var bonusFrame = new Frame(knockedPins);
       this.framesInPlay.push(bonusFrame);
       bonusFrame.rollOne = knockedPins;
+      return "Game has ended"
+  } else if (this._isTenthFrame() && this._currentFrame().isfinished) {
+      throw TypeError("Your game has finished, please reset if you would like to play again.");
   } else if (this._isTenthFrame()) {
       var frame = this._currentFrame();
       return frame.tenthFrame(knockedPins);
@@ -45,7 +48,7 @@ BowlingGame.prototype._isTenthFrame = function() {
 };
 
 BowlingGame.prototype._isGameFinished = function() {
-  if (this.framesInPlay.length === 11) {
+  if (this.framesInPlay.length === 11 || this.framesInPlay.length === 10) {
     throw TypeError("Your game has finished, please reset if you would like to play again.")
   }
   // } else if (this._isTenthFrame &&

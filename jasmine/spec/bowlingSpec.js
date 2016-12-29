@@ -136,7 +136,13 @@ describe('Bowling', function() {
               expect(game.currentFrame.maxBowls).toEqual(3)
             });
 
-
+            it("double the following two throws scores if a stike occurs",function(){
+              for (var i = 0; i < 2; i++) {
+                  game.bowlScore(10)
+              }
+              expect(game.scoreSheet[0].score).toEqual(20)
+              expect(game.scoreSheet[1].score).toEqual(40)
+            });
         });
     });
 });

@@ -48,4 +48,10 @@ describe('Bowling', function() {
         expect(game.currentFrame.number).toEqual(1)
     });
 
+    it("expects a frame to accept strike on first bowl", function() {
+      game.bowlScore(10)
+      expect(game.currentFrame.strike).toBe(true)
+    });
+
+    
 });

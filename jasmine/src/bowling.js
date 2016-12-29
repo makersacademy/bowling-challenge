@@ -7,11 +7,12 @@ function Bowling() {
     };
 
     Bowling.prototype.newFrame = function() {
-      this.currentFrame = new Frame(this.scoreSheet.length + 1)
+        this.currentFrame = new Frame(this.scoreSheet.length + 1)
     }
 
     Bowling.prototype.bowlScore = function(score) {
         this.currentFrame.saveFrameScore(score)
+
         if (this.currentFrame.bowlNumber === this.currentFrame.maxBowls) {
             this.saveFrame(this.currentFrame.bowls);
         }
@@ -27,8 +28,14 @@ function Frame(frameNumber) {
     this.bowlNumber = 0
     this.bowls = []
     this.number = frameNumber
+    this.strike = false
 
     Frame.prototype.saveFrameScore = function(score) {
+        if (score === 10 && this.score() === 0) {
+            console.log("STRIKE!")
+            this.strike = true
+        }
+
         var entry = {
             Throw: this.bowlNumber,
             Score: score

@@ -44,7 +44,8 @@ function Bowling() {
     }
 
     Bowling.prototype.checkGameEnd = function() {
-        if (this.scoreSheet.length >= this.maxFrames) {
+        if (this.scoreSheet.length >= this.maxFrames &&
+            this.currentFrame.bowlNumber > this.currentFrame.maxBowls) {
             this.gameOver = true;
             this.currentFrame = {}
             throw new Error("Game Over")
@@ -68,22 +69,33 @@ function Frame(frameNumber) {
     this.score = 0
 
     Frame.prototype.saveFrameScore = function(score) {
+        this.calcSpares(score)
         if (score === 10 && this.score === 0) {
             console.log("STRIKE!")
             this.strike = true
-            this.maxBowls = this.bowlNumber
+
+            if (this.number === 10) {
+                console.log("Bonus Round!")
+                this.maxBowls = 3
+                this.resetSpares()
+            } else {
+                this.maxBowls = this.bowlNumber
+            }
         }
         var entry = {
             Throw: this.bowlNumber,
             Score: score
         }
         this.bowls.push(entry)
-        this.calcSpares(score)
         this.nextBowl();
     }
 
     Frame.prototype.calcSpares = function(score) {
         this.spares -= score
+    }
+
+    Frame.prototype.resetSpares = function() {
+        this.spares = 10
     }
 
     Frame.prototype.saveScore = function() {

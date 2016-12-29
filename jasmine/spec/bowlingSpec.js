@@ -118,7 +118,7 @@ describe('Bowling', function() {
 
         describe("#Frame()", function() {
 
-            it("checks that a maxmimum of 10 frames can be played", function() {
+            it("checks that a maxmimum of 10 frames can be played if final bowl is not strike", function() {
                 for (var i = 0; i < 9; i++) {
                     game.bowlScore(10)
                 }
@@ -128,6 +128,14 @@ describe('Bowling', function() {
                     game.bowlScore(1)
                 }).toThrowError(message)
             });
+
+            it("checks that the 10th frame can have extra bowls if a strike occurs",function(){
+              for (var i = 0; i < 10; i++) {
+                  game.bowlScore(10)
+              }
+              expect(game.currentFrame.maxBowls).toEqual(3)
+            });
+
 
         });
     });

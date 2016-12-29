@@ -11,15 +11,23 @@ $(document).ready(function(){
     event.preventDefault();
     var pins = $('#pins').val();
     if( calculator.frame < 10 ){
-    calculator.passScore(pins);
-    calculator.clearFrameScores();
-    calculator.increaseFrame();
-    calculator.changeRoll();
+      calculator.passScore(pins);
+      calculator.clearFrameScores();
+      calculator.increaseFrame();
+      calculator.changeRoll();
+      displayFrame();
+      displayRoll();
+      displayTable();
+      displayTotalScore();
+    } else {
+      calculator.passScore(pins);
+      calculator.clearFrameScores();
+      calculator.increaseRoll();
+      displayFrame();
+      displayRoll();
+      displayTable();
+      displayTotalScore();
     }
-    displayFrame();
-    displayRoll();
-    displayTable();
-    displayTotalScore();
   })
 
   function displayFrame(){

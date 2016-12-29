@@ -15,10 +15,10 @@ function CalculatorTenPinsBowling() {
 CalculatorTenPinsBowling.prototype.passScore = function(user_input){
   var pins = Number(user_input)
   if( this.frameScores.length === 0 ){
-    this.frameScores[0] = pins
+    this.frameScores.push(pins)
     this.gameScores.push(this.frameScores)
   } else {
-    this.frameScores[1] = pins
+    this.frameScores.push(pins)
     this.gameScores[ this.frame - 1 ] = this.frameScores
   }
 };
@@ -65,8 +65,12 @@ CalculatorTenPinsBowling.prototype.sumGameScores = function(){
   return sum
 };
 
+CalculatorTenPinsBowling.prototype.increaseRoll = function(){
+  this.roll ++
+};
+
 CalculatorTenPinsBowling.prototype.changeRoll = function(){
-  this.roll === 1 ? this.roll = 2 : this.roll = 1;
+  this.roll === 1 ? this.increaseRoll() : this.roll = 1;
 };
 
 CalculatorTenPinsBowling.prototype.increaseFrame = function(){

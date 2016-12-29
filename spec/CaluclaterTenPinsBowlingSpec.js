@@ -50,7 +50,7 @@ describe ('calculator for Ten pins bowling', function(){
 
   });
 
-  describe ('functions for passing pins', function(){
+  describe ('functions for passing the number of pins as score', function(){
 
       it ('should store pins by each frame', function(){
         calculator.passScore( pins_1 );
@@ -100,68 +100,85 @@ describe ('calculator for Ten pins bowling', function(){
         expect( calculator.sumGameScores() ).toEqual( 23 );
       });
 
+      it ('should store the score when strike', function(){
+        calculator.passStrike();
+        expect( calculator.gameScores ).toEqual( [[10,0]] );
+      });
+
+  });
+
+  describe ('functions for changing roll', function(){
+
+      it ('should increase roll', function(){
+        calculator.increaseRoll();
+        expect( calculator.roll ).toBe( 2 );
+      });
+
+      it ('should change 1 to 2 when change to next roll', function(){
+        calculator.changeRoll();
+        expect( calculator.roll ).toBe( 2 );
+      });
+
+      it ('should change 2 to 1 when the number of frame is under 10', function(){
+        calculator.changeRoll();
+        calculator.changeRoll();
+        expect( calculator.roll ).toBe( 1 );
+      });
+
+  });
+
+  describe ('functions for changing frame', function(){
+
+    it ('should change 1 to 2 when moved the next frame', function(){
+      calculator.changeRoll();
+      calculator.increaseFrame();
+      expect( calculator.frame ).toBe( 2 );
+    });
+
+    it ('should clear frameScores', function(){
+      calculator.clearFrameScores();
+      expect( calculator.frameScores ).toEqual( [] );
+    });
+
   });
 
 
-  it ('should store Scores when Strike', function(){
-    calculator.passStrike();
-    expect( calculator.gameScores ).toEqual( [[10,0]] );
+  describe ('functions for checking or setting a flag', function(){
+
+    it ('should set strike "true"', function(){
+      calculator.setStrike();
+      expect( calculator.strike ).toBe( true );
+    });
+
+    it ('should check strike status', function(){
+      calculator.setStrike();
+      expect( calculator.strike ).toBe( true );
+    });
+
+    it ('should check strike flag', function(){
+      expect( calculator.isStrikeFlag() ).toEqual( false )
+      calculator.setStrike();
+      expect( calculator.isStrikeFlag() ).toEqual( true )
+    });
+
+    it ('should check spare flag', function(){
+      expect( calculator.isSpareFlag() ).toEqual( false )
+      calculator.setSpare();
+      expect( calculator.isSpareFlag() ).toEqual( true )
+    });
+
+    it ('should turn false Strike flag', function(){
+      calculator.clearStrike();
+      expect( calculator.strike ).toBe( false )
+    });
+
+    it ('should turn false Spare flag', function(){
+      calculator.clearSpare();
+      expect( calculator.spare ).toBe( false )
+    });
+
   });
 
-
-  it ('should change 1 to 2 when change to next roll', function(){
-    calculator.changeRoll();
-    expect( calculator.roll ).toBe( 2 );
-  });
-
-  it ('should change 2 to 1 when change to next roll', function(){
-    calculator.changeRoll();
-    calculator.changeRoll();
-    expect( calculator.roll ).toBe( 1 );
-  });
-
-  it ('should change 1 to 2 when moved the next frame', function(){
-    calculator.changeRoll();
-    calculator.increaseFrame();
-    expect( calculator.frame ).toBe( 2 );
-  });
-
-  it ('should clear frameScores', function(){
-    calculator.clearFrameScores();
-    expect( calculator.frameScores ).toEqual( [] );
-  });
-
-  it ('should set strike "true"', function(){
-    calculator.setStrike();
-    expect( calculator.strike ).toBe( true );
-  });
-
-  it ('should check strike status', function(){
-    calculator.setStrike();
-    expect( calculator.strike ).toBe( true );
-  });
-
-  it ('should check strike flag', function(){
-    expect( calculator.isStrikeFlag() ).toEqual( false )
-    calculator.setStrike();
-    expect( calculator.isStrikeFlag() ).toEqual( true )
-  });
-
-  it ('should check spare flag', function(){
-    expect( calculator.isSpareFlag() ).toEqual( false )
-    calculator.setSpare();
-    expect( calculator.isSpareFlag() ).toEqual( true )
-  });
-
-  it ('should turn false Strike flag', function(){
-    calculator.clearStrike();
-    expect( calculator.strike ).toBe( false )
-  });
-
-  it ('should turn false Spare flag', function(){
-    calculator.clearSpare();
-    expect( calculator.spare ).toBe( false )
-  });
 
   describe ('functions for sum', function(){
 

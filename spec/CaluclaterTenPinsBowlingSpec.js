@@ -48,6 +48,10 @@ describe ('calculator for Ten pins bowling', function(){
         expect( calculator.spareBonus ).toBe( 0 );
       });
 
+      it('should set gameFinish flag "false"', function(){
+        expect( calculator.gameFinish ).toBe( false );
+      });
+
   });
 
   describe ('functions for passing the number of pins as score', function(){
@@ -196,5 +200,15 @@ describe ('calculator for Ten pins bowling', function(){
 
   });
 
+  it ('check whether the game finished or not', function(){
+    calculator.frame = 10;
+    expect( calculator.isGameFinish() ).toEqual( false );
+    calculator.roll = 2;
+    expect( calculator.isGameFinish() ).toEqual( true );
+    calculator.strike = true;
+    expect( calculator.isGameFinish() ).toEqual( false );
+    calculator.roll = 3;
+    expect( calculator.isGameFinish() ).toEqual( true );
+  });
 
 });

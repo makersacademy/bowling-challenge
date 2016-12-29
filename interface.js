@@ -2,33 +2,38 @@ $(document).ready(function(){
 
   var calculator = new CalculatorTenPinsBowling();
 
-  displayFrame();
-  displayRoll();
-  displayTable();
-  displayTotalScore();
+  displayAll();
 
   $('#my-form').submit(function(event) {
     event.preventDefault();
     var pins = $('#pins').val();
-    if( calculator.frame < 10 ){
-      calculator.passScore(pins);
-      calculator.clearFrameScores();
-      calculator.increaseFrame();
-      calculator.changeRoll();
-      displayFrame();
-      displayRoll();
-      displayTable();
-      displayTotalScore();
-    } else {
-      calculator.passScore(pins);
-      calculator.clearFrameScores();
-      calculator.increaseRoll();
-      displayFrame();
-      displayRoll();
-      displayTable();
-      displayTotalScore();
+    if( calculator.frame === 10 && calculator.gameFinish === false ){
+        calculator.passScore(pins);
+        displayAll();
+
+        if( calculator.isGameFinish() ){
+            calculator.gameFinish = true;
+            $('#game-status').text( "Your score is " + calculator.sumGameScores() + "!" );
+        }
+
+        calculator.increaseRoll();
+        
+    } else if( calculator.frame < 10 ) {
+        $('#game-status').text( "Playing..." );
+        calculator.passScore(pins);
+        calculator.clearFrameScores();
+        displayAll();
+        calculator.increaseFrame();
+        calculator.changeRoll();
     }
   })
+
+  function displayAll(){
+    displayFrame();
+    displayRoll();
+    displayTable();
+    displayTotalScore();
+  }
 
   function displayFrame(){
       $('#frame').text( calculator.frame );

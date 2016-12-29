@@ -10,6 +10,7 @@ function CalculatorTenPinsBowling() {
   this.strikeBonus  = []; //store bonus [ro11-1, roll-2]
   this.spareBonus   = 0;
   this.STRIKE_PINS  = 10;
+  this.gameFinish = false;
 };
 
 CalculatorTenPinsBowling.prototype.passScore = function(user_input){
@@ -103,4 +104,14 @@ CalculatorTenPinsBowling.prototype.isStrikeFlag = function(){
 
 CalculatorTenPinsBowling.prototype.isSpareFlag = function(){
   return this.spare;
+};
+
+CalculatorTenPinsBowling.prototype.isGameFinish = function(){
+  if( this.roll === 2 && this.strike === false && this.spare === false ){
+    return true
+  } else if( this.roll === 3 ){
+    return true
+  } else {
+    return false
+  }
 };

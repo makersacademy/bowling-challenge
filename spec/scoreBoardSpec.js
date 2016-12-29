@@ -162,42 +162,14 @@ describe ("Scoreboard", function() {
   })
 
   it("should return Perfect Game! when total score is 300", function(){
-    scoreboard.scoreFirstRoll(10)
-    scoreboard.scoreSecondRoll(0)
-    scoreboard.bonusPoints()
-    scoreboard.scoreFirstRoll(10)
-    scoreboard.scoreSecondRoll(0)
-    scoreboard.bonusPoints()
-    scoreboard.scoreFirstRoll(10)
-    scoreboard.scoreSecondRoll(0)
-    scoreboard.bonusPoints()
-    scoreboard.scoreFirstRoll(10)
-    scoreboard.scoreSecondRoll(0)
-    scoreboard.bonusPoints()
-    scoreboard.scoreFirstRoll(10)
-    scoreboard.scoreSecondRoll(0)
-    scoreboard.bonusPoints()
-    scoreboard.scoreFirstRoll(10)
-    scoreboard.scoreSecondRoll(0)
-    scoreboard.bonusPoints()
-    scoreboard.scoreFirstRoll(10)
-    scoreboard.scoreSecondRoll(0)
-    scoreboard.bonusPoints()
-    scoreboard.scoreFirstRoll(10)
-    scoreboard.scoreSecondRoll(0)
-    scoreboard.bonusPoints()
-    scoreboard.scoreFirstRoll(10)
-    scoreboard.scoreSecondRoll(0)
-    scoreboard.bonusPoints()
-    scoreboard.scoreFirstRoll(10)
-    scoreboard.scoreSecondRoll(0)
-    scoreboard.bonusPoints()
-    scoreboard.scoreFirstRoll(10)
-    scoreboard.scoreSecondRoll(0)
-    scoreboard.bonusPoints()
-    scoreboard.scoreFirstRoll(10)
-    scoreboard.scoreSecondRoll(0)
-    scoreboard.bonusPoints();
+    var i = 0;
+     do {
+       scoreboard.scoreFirstRoll(10)
+       scoreboard.scoreSecondRoll(0)
+       scoreboard.bonusPoints()
+       i++;
+     }
+     while (i <12);
     expect(scoreboard.calculatedTotal()).toEqual("Perfect Game!")
   });
 

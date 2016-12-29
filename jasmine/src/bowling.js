@@ -3,32 +3,38 @@ function Bowling() {
     this.currentFrame = {}
 
     Bowling.prototype.newGame = function() {
-        this.currentFrame = new Frame()
+        this.newFrame()
     };
+
+    Bowling.prototype.newFrame = function() {
+      this.currentFrame = new Frame(this.scoreSheet.length + 1)
+    }
 
     Bowling.prototype.bowlScore = function(score) {
         this.currentFrame.saveFrameScore(score)
-        if (this.currentFrame.bowlsRemaining === 0){
-          this.saveFrame(this.currentFrame.bowls);
+        if (this.currentFrame.bowlNumber === this.currentFrame.maxBowls) {
+            this.saveFrame(this.currentFrame.bowls);
         }
     };
 
-    Bowling.prototype.saveFrame = function (frame) {
-      this.scoreSheet.push(frame)
+    Bowling.prototype.saveFrame = function(frame) {
+        this.scoreSheet.push(frame)
     }
-};
+}
 
-function Frame() {
-    this.bowlsRemaining = 2
+function Frame(frameNumber) {
+    this.maxBowls = 2
+    this.bowlNumber = 0
     this.bowls = []
+    this.number = frameNumber
 
     Frame.prototype.saveFrameScore = function(score) {
         var entry = {
-            Throw: this.bowlsRemaining,
+            Throw: this.bowlNumber,
             Score: score
         }
         this.bowls.push(entry)
-        this.reduceThrowCount();
+        this.nextBowl();
     }
 
     Frame.prototype.score = function() {
@@ -38,7 +44,7 @@ function Frame() {
         }
         return score
     }
-    Frame.prototype.reduceThrowCount = function(){
-      this.bowlsRemaining--
+    Frame.prototype.nextBowl = function() {
+        this.bowlNumber++
     }
-};
+}

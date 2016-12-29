@@ -57,7 +57,7 @@ Game.prototype = {
     for (var frameIndex = 0; frameIndex < scoreUpTo; frameIndex++) {
       total += this.frames[frameIndex].getTotalScore();
     }
-    return total;
+    return this.frames[scoreUpTo - 1].isPointsComplete() ? total : null;
   },
 
   _addBonusPoints: function(pins) {
@@ -74,11 +74,6 @@ Game.prototype = {
   getRoll: function(frameNumber,rollNumber) {
     var frame = this.frames[frameNumber-1];
     return frame.scoreCard[rollNumber-1];
-  },
-
-  getFrameScore: function(frameNumber) {
-    var frame = this.frames[frameNumber - 1];
-    return frame.getTotalScore();
   },
 
   _isTenthFrame: function() {

@@ -1,3 +1,4 @@
+/*jslint node: true */
 'use strict';
 
 describe('Feature Test', function() {
@@ -52,14 +53,14 @@ describe('Feature Test', function() {
 
   it('should not include a frame in the total score until all points have been received', function() {
     game.roll(10);
-    expect(game.getScore()).toEqual(0);
+    expect(game.getScore(1)).toEqual(null);
   })
 
   it('should include a frame in the total score once all points have been received', function() {
     game.roll(10);
     game.roll(1);
     game.roll(1);
-    expect(game.getScore()).toEqual(14);
+    expect(game.getScore(2)).toEqual(14);
   })
 
 

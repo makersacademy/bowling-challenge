@@ -19,7 +19,7 @@ $( document ).ready(function() {
   })
 
   function updateScoreAndRoll(){
-    $( '#total-score' ).text( game.getScore() );
+
     $( '#frame-number' ).text( game.currentFrameIndex + 1 );
     $( '#roll-number' ).text( game.rollNumber() );
   }
@@ -39,7 +39,7 @@ $( document ).ready(function() {
       for (var roll = 1; roll < 3; roll++) {
         $( '#' + frame + '-' + roll ).text( game.getRoll(frame,roll) );
       }
-      $( '#score' + frame ).text( game.getFrameScore(frame) );
+      $( '#score' + frame ).text( game.getScore(frame) );
     }
     $('#10-2').text( game.getFinalBonus(2));
     $('#10-3').text( game.getFinalBonus(3));
@@ -48,6 +48,7 @@ $( document ).ready(function() {
   function gameOver() {
     if (game.isOver()) {
       $( '#game-over' ).text( "Game Over!" );
+      $( '#total-score' ).text( `Total score: ${game.getScore()}`);
       $( 'button' ).hide();
       $( '#frame-rolls-go' ).hide();
     }

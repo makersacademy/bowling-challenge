@@ -11,7 +11,7 @@ Game.prototype = {
 
   roll: function(pins) {
     if (this.isOver()) {
-      console.log("Over");
+      return;
     } else {
       this._addBonusPoints(pins);
       this._addToCurrentFrame(pins);

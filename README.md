@@ -1,15 +1,19 @@
 Bowling Challenge
 =================
 
-This is an app which counts and sums the scores of a ten pin bowling game for one player (in JavaScript).
+This is an app which counts and sums the scores of a ten pin bowling game for one player (in JavaScript). This is the week 5 homework challenge at Makers Academy.
+
+The aim of this challenge was to become more comfortable in Javascript and using Jasmine as a testing framework.
+
+Thinking, design, issues, alternatives...
 
 ![screenshot](images/Screenshot 2016-12-29 11.08.10.png)
 
 Features
 ----------
-* Interface using jQuery
+* User interface using jQuery
 * Bowler can only knock down remaining amount of pins on second roll
-* Feature
+* Spares, strikes, final frame
 
 Usage
 -------------
@@ -19,11 +23,14 @@ $ git clone https://github.com/cjcoops/bowling-challenge.git
 ```
 To run, open the index.html file in the browser.
 ```
-file://path/to/bowling-challenge/index.html
+$ cd bowling-challenge
+$ open index.html
 ```
 To test, open the SpecRunner.html in the browser.
 ```
 file://path/to/bowling-challenge/SpecRunner.html
+$ cd bowling-challenge
+$ open SpecRunner.html
 ```
 
 Technologies Used
@@ -35,37 +42,6 @@ Technologies Used
 #### Testing
 * Jasmine
 
-Project
-----------------
-#### Objectives
-Objectives objectives objectives
-
-#### Motivations
-Objectives objectives objectives
-
-#### Thinking
-Objectives objectives objectives
-
-#### Design
-Objectives objectives objectives
-
-#### Issues
-Objectives objectives objectives
-
-#### Alternatives
-Objectives objectives objectives
-
-
-
-Bowling Challenge
-=================
-
-
-* Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
 
 Task:
 -----
@@ -101,9 +77,3 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 ## Perfect Game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)

@@ -7,8 +7,8 @@ function CalculatorTenPinsBowling() {
   this.frame = 1;
   this.strike = false;
   this.spare  = false;
-  this.strikeBonus  = []; //store bonus [ro11-1, roll-2]
-  this.spareBonus   = 0;
+  // this.strikeBonus  = []; //store bonus [ro11-1, roll-2]
+  // this.spareBonus   = 0;
   this.STRIKE_PINS  = 10;
   this.gameFinish = false;
 };
@@ -28,32 +28,31 @@ CalculatorTenPinsBowling.prototype.passStrike = function(){
   this.gameScores.push([ this.STRIKE_PINS, 0 ]);
 };
 
-CalculatorTenPinsBowling.prototype.passBonuses = function(){
-  if( this.spare === true ){
-    this.gameScores[ this.frame - 2 ][2] = this.spareBonus
-  }
-  if( this.strike === true ){
-    var sumStrike = this.sumStrikeBonus();
-    this.gameScores[ this.frame - 2 ][2] = sumStrike
-  }
-};
+// CalculatorTenPinsBowling.prototype.passBonuses = function(){
+//   if( this.spare === true ){
+//     this.gameScores[ this.frame - 2 ][2] = this.spareBonus
+//   }
+//   if( this.strike === true ){
+//     var sumStrike = this.sumStrikeBonus();
+//     this.gameScores[ this.frame - 2 ][2] = sumStrike
+//   }
+// };
 
-CalculatorTenPinsBowling.prototype.passStrikeBonus = function(user_input){
-  var pins = Number(user_input)
-  this.strikeBonus.length === 0 ? this.strikeBonus[0] = pins : this.strikeBonus[1] = pins
+CalculatorTenPinsBowling.prototype.passStrikeBonus = function(){
+  this.gameScores[ this.frame - 2 ][2] = this.sumFrameScores()
 };
 
 CalculatorTenPinsBowling.prototype.passSpareBonus = function(user_input){
   var pins = Number(user_input)
-  this.spareBonus = pins;
+  this.gameScores[ this.frame - 2 ][2] = pins;
 };
 
-CalculatorTenPinsBowling.prototype.sumStrikeBonus = function(){
-  var i;
-  var sum = 0;
-  for (i=0; i<2; i++){ sum = sum + this.strikeBonus[i] }
-  return sum
-};
+// CalculatorTenPinsBowling.prototype.sumStrikeBonus = function(){
+//   var i;
+//   var sum = 0;
+//   for (i=0; i<2; i++){ sum = sum + this.strikeBonus[i] }
+//   return sum
+// };
 
 CalculatorTenPinsBowling.prototype.sumFrameScores = function(){
   var i;

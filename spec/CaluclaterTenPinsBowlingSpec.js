@@ -43,10 +43,10 @@ describe ('calculator for Ten pins bowling', function(){
         expect( calculator.STRIKE_PINS ).toBe( 10 )
       });
 
-      it('should set bonus for strike and spare', function(){
-        expect( calculator.strikeBonus ).toEqual( [] );
-        expect( calculator.spareBonus ).toBe( 0 );
-      });
+      // it('should set bonus for strike and spare', function(){
+      //   expect( calculator.strikeBonus ).toEqual( [] );
+      //   expect( calculator.spareBonus ).toBe( 0 );
+      // });
 
       it('should set gameFinish flag "false"', function(){
         expect( calculator.gameFinish ).toBe( false );
@@ -64,16 +64,16 @@ describe ('calculator for Ten pins bowling', function(){
         expect( calculator.gameScores ).toEqual( [[5,3]] );
       });
 
-      it ('should store strike bonus for two rolls', function(){
-        calculator.passStrikeBonus( pins_1 )
-        calculator.passStrikeBonus( pins_2 )
-        expect( calculator.strikeBonus ).toEqual( [5,3] );
-      });
+      // it ('should store strike bonus for two rolls', function(){
+      //   calculator.passStrikeBonus( pins_1 )
+      //   calculator.passStrikeBonus( pins_2 )
+      //   expect( calculator.strikeBonus ).toEqual( [5,3] );
+      // });
 
-      it ('should store spare bonus for one roll', function(){
-        calculator.passSpareBonus( pins_1 )
-        expect( calculator.spareBonus ).toBe( 5 );
-      });
+      // it ('should store spare bonus for one roll', function(){
+      //   calculator.passSpareBonus( pins_1 )
+      //   expect( calculator.spareBonus ).toBe( 5 );
+      // });
 
       it ('should store strike bonus to gameScores', function(){
         calculator.changeRoll();
@@ -82,9 +82,7 @@ describe ('calculator for Ten pins bowling', function(){
         calculator.increaseFrame();
         calculator.passScore( pins_1 )
         calculator.passScore( pins_2 )
-        calculator.passStrikeBonus( pins_1 )
-        calculator.passStrikeBonus( pins_2 )
-        calculator.passBonuses()
+        calculator.passStrikeBonus()
         expect( calculator.gameScores ).toEqual( [[10,0,8],[5,3]] );
         expect( calculator.sumGameScores() ).toEqual( 26 );
       });
@@ -99,7 +97,6 @@ describe ('calculator for Ten pins bowling', function(){
         calculator.passScore( pins_1 )
         calculator.passScore( pins_2 )
         calculator.passSpareBonus( pins_1 )
-        calculator.passBonuses()
         expect( calculator.gameScores ).toEqual( [[2,8,5],[5,3]] );
         expect( calculator.sumGameScores() ).toEqual( 23 );
       });
@@ -198,11 +195,12 @@ describe ('calculator for Ten pins bowling', function(){
         expect( calculator.sumGameScores() ).toEqual( 8 );
       });
 
-      it ('should sum strike bonus', function(){
-        calculator.passStrikeBonus( pins_1 );
-        calculator.passStrikeBonus( pins_2 );
-        expect( calculator.sumStrikeBonus() ).toEqual( 8 );
-      });
+      // it ('should sum strike bonus', function(){
+      //   calculator.passScore( pins_1 );
+      //   calculator.passScore( pins_2 );
+      //   calculator.passStrikeBonus();
+      //   expect( calculator.sumStrikeBonus() ).toEqual( 8 );
+      // });
 
   });
 

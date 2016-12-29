@@ -6,60 +6,111 @@ describe('Bowling', function() {
         game.newGame()
     });
 
-    it("expects a score sheet to exist", function() {
-        expect(game.scoreSheet).toBeDefined()
+    describe("#New()", function() {
+
+        it("expects a score sheet to exist", function() {
+            expect(game.scoreSheet).toBeDefined()
+        });
+
+        it("expects a frame to exist", function() {
+            expect(game.currentFrame).toBeDefined()
+        });
+
+        it("expects a frame to have a max number of bowls", function() {
+            expect(game.currentFrame.maxBowls).toEqual(2)
+        });
+
+        it("expects a frame to have spares", function() {
+            expect(game.currentFrame.spares).toEqual(10)
+        });
+
+
+        it("expects a frame to have two throws", function() {
+            game.bowlScore(7);
+            game.bowlScore(1);
+            expect(game.scoreSheet[0].maxBowls).toEqual(2)
+        });
+
+        describe("#Errors()", function() {
+
+            it("expects a bowl is a number", function() {
+                message = "your have not entered a number, try again"
+                expect(function() {
+                    game.bowlScore("a")
+                }).toThrowError(message)
+            });
+            it("expects a bowl is a positive number", function() {
+                message = "your have not entered a number between 0 and 10, try again"
+                expect(function() {
+                    game.bowlScore(-1)
+                }).toThrowError(message)
+            });
+
+            it("expects a bowl is a number below 10", function() {
+                message = "your have not entered a number between 0 and 10, try again"
+                expect(function() {
+                    game.bowlScore(11)
+                }).toThrowError(message)
+            });
+
+            it("expects a throw only to be eqaul or lower than spares", function() {
+                game.bowlScore(2);
+                message = "Cannot score higher than available spares"
+                expect(function() {
+                    game.bowlScore(10)
+                }).toThrowError(message)
+            });
+        });
+
     });
 
-    it("expects a frame to exist", function() {
-        expect(game.currentFrame).toBeDefined()
-    });
+    describe("#Game()", function() {
 
-    it("expects a frame to have a max number of bowls", function() {
-        expect(game.currentFrame.maxBowls).toEqual(2)
-    });
 
-    it("expects a frame to have two throws", function() {
-        game.bowlScore(7);
-        game.bowlScore(1);
-        expect(game.scoreSheet[0].maxBowls).toEqual(2)
-    });
+        it("expects a frame throw count to reset to 1 after two throws in normal frame", function() {
+            game.bowlScore(2);
+            game.bowlScore(4);
+            expect(game.currentFrame.bowlNumber).toEqual(1)
+        });
 
-    it("expects a frame throw count to reset to 1 after two throws in normal frame", function() {
-        game.bowlScore(2);
-        game.bowlScore(4);
-        expect(game.currentFrame.bowlNumber).toEqual(1)
-    });
+        it("expects a score to be available in a frame", function() {
+            game.bowlScore(3)
+            game.bowlScore(6);
+            expect(game.scoreSheet[0].score).toEqual(9)
+        });
 
-    it("expects a score to be recorded in a frame", function() {
-        game.bowlScore(3)
-        game.bowlScore(6);
-        expect(game.scoreSheet[0].score()).toEqual(9)
-    });
+        it("expects a score to be recorded in a frame", function() {
+            game.bowlScore(3)
+            game.bowlScore(6);
+            expect(game.scoreSheet[0].score).toEqual(9)
+        });
 
-    it("expects a frame to be saved once frame count = 0", function() {
-        game.bowlScore(3)
-        game.bowlScore(6);
-        expect(game.scoreSheet.length).toEqual(1)
-    });
+        it("expects a frame to be saved once frame count = 0", function() {
+            game.bowlScore(3)
+            game.bowlScore(6);
+            expect(game.scoreSheet.length).toEqual(1)
+        });
 
-    it("expects a frame to have a frame number", function() {
-        game.bowlScore(1);
-        expect(game.currentFrame.number).toEqual(1)
-    });
+        it("expects a frame to have a frame number", function() {
+            game.bowlScore(1);
+            expect(game.currentFrame.number).toEqual(1)
+        });
 
-    it("expects a frame to accept strike on first bowl", function() {
-      game.bowlScore(10)
-      expect(game.scoreSheet[0].strike).toBe(true)
-    });
+        it("expects a frame to accept strike on first bowl", function() {
+            game.bowlScore(10)
+            expect(game.scoreSheet[0].strike).toBe(true)
+        });
 
-    it("expects a frame to accept strike on second bowl", function() {
-      game.bowlScore(0)
-      game.bowlScore(10)
-      expect(game.scoreSheet[0].strike).toBe(true)
-    });
+        it("expects a frame to accept strike on second bowl", function() {
+            game.bowlScore(0)
+            game.bowlScore(10)
+            expect(game.scoreSheet[0].strike).toBe(true)
+        });
 
-    it("expects a strike to close and save the frame to the scoresheet", function() {
-        game.bowlScore(10)
-        expect(game.scoresheet[0].number).toEqual(1)
+        it("expects a strike to close and save the frame to the scoresheet", function() {
+            game.bowlScore(10)
+            expect(game.scoreSheet.length).toEqual(1)
+            expect(game.currentFrame.number).toEqual(2)
+        });
     });
 });

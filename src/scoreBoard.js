@@ -7,6 +7,7 @@ function Scoreboard() {
   this.MAXIMUM = 10
 }
 
+
   Scoreboard.prototype.scoreFirstRoll = function(score1) {
       this.scores.push(score1)
       return score1

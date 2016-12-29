@@ -44,8 +44,8 @@ describe("Game", function(){
   it("should return the left over pins", function(){
     game.frameCount = 4
     game.increaseFrameCount()
-    spyOn(game, 'firstRoll').and.returnValue(2)
-    game._pinSweep(game.firstRoll())
+    spyOn(game, 'rollOne').and.returnValue(2)
+    game._sweepPins(game.rollOne())
     expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8])
   })
 
@@ -70,29 +70,24 @@ describe("Game", function(){
 
     it("should re-rack with all the pins when frame count is 10 and a strike is scored on the first roll", function(){
       game.frameCount = 9
-      spyOn(game, 'firstRoll').and.returnValue(10)
+      spyOn(game, 'rollOne').and.returnValue(10)
       expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
     })
 
     it("should call return amount of pins knocked down in first throw", function(){
-      spyOn(game, 'firstRoll').and.returnValue(4)
-      expect(game.scoreboard.scoreFirstRoll(game.firstRoll())).toEqual(4)
-    })
-
-    it("should return sweep complete as true", function(){
-      game.firstRoll()
-      expect(game.sweepComplete).toBe(true)
+      spyOn(game, 'rollOne').and.returnValue(4)
+      expect(game.scoreboard.scoreFirstRoll(game.rollOne())).toEqual(4)
     })
 
     it("should return the true when remaining pins are returned", function(){
-      game.firstRoll()
+      game.rollOne()
       expect(game.sweepComplete).toBe(true)
     });
 
     it("should return amount of pins knocked down in second throw", function(){
-      game.firstRoll()
-      spyOn(game, 'secondRoll').and.returnValue(3)
-      expect(game.scoreboard.scoreSecondRoll(game.secondRoll())).toEqual(3)
+      game.rollOne()
+      spyOn(game, 'rollTwo').and.returnValue(3)
+      expect(game.scoreboard.scoreSecondRoll(game.rollTwo())).toEqual(3)
     })
 
   })
@@ -120,8 +115,8 @@ describe("Game", function(){
       game.firstScore = 5
       game.secondScore = 5
       game.increaseFrameCount()
-      game.firstRoll()
-      expect(game.secondRoll()).toEqual(0)
+      game.rollOne()
+      expect(game.rollTwo()).toEqual(0)
     })
 
   })
@@ -130,10 +125,6 @@ describe("Game", function(){
 
       beforeEach(function(){
         game.frameCount = 10
-      })
-
-      it("- frame count is more then ten", function(){
-        expect(function(){ game.increaseFrameCount() }).toThrowError("Game Over! Please start a new game")
       })
 
       it("should throw an error when player tries to bowl more than two bonus balls", function(){
@@ -158,11 +149,11 @@ describe("Game", function(){
     describe("throw error when pins are not racked", function(){
 
       it("should throw an error when pins are not racked and player tries to bowl", function(){
-        expect(function(){ game.firstRoll() }).toThrowError("Cannot Roll, Pins are not yet racked!")
+        expect(function(){ game.rollOne() }).toThrowError("Cannot Roll, Pins are not yet racked!")
       })
 
       it("should throw an error when pins are not sweeped and player tries to bowl", function(){
-        expect(function(){ game.secondRoll() }).toThrowError("Cannot Roll, Pins are not yet racked!")
+        expect(function(){ game.rollTwo() }).toThrowError("Cannot Roll, Pins are not yet racked!")
       })
 
     })

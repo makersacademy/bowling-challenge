@@ -197,7 +197,10 @@ describe ("Scoreboard", function() {
     scoreboard.bonusPoints()
     scoreboard.scoreFirstRoll(10)
     scoreboard.scoreSecondRoll(0)
-    scoreboard.bonusPoints()
+    scoreboard.bonusPoints();
     expect(scoreboard.calculatedTotal()).toEqual("Perfect Game!")
-  })
-})
+  });
+
+
+
+});

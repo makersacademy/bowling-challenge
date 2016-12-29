@@ -83,9 +83,3 @@ function Game() {
     this.bonusCount ++
     return this.firstScore + this.secondScore === 10
   }
-
-  // if (this._isStrike() && this.bonusCount <= 2){
-  //   return this._rackUp()
-  // } else if (this._isSpare() && this.bonusCount <= 2){
-  //   this.bonusRollStatus = true
-  //   return this._rackUp()

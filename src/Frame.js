@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 function Frame(knockedPins) {
   this.rollNumber = 0
@@ -7,25 +7,29 @@ function Frame(knockedPins) {
   this.isStrike = false
   this.isSpare = false
   this.totalScore = 0
+  this.finished = false
 }
 
 Frame.prototype.checkStrike = function(knockedPins) {
   if (knockedPins === 10) {
     this.isStrike = true
     this.rollNumber = 2
-  };
+  }
 };
 
 Frame.prototype.checkSpare = function(knockedPins) {
   if ((this.rollOne + knockedPins) === 10) {
     this.isSpare = true
-  };
+  }
 };
 
 Frame.prototype._checkFinalRoll = function(knockedPins) {
-  if ((this.rollOne + this.rollTwo !== 10 || this.rollOne + this.rollTwo !== 20) && this.isStrike == false && this.isSpare == false) {
+  if ((this.rollOne + this.rollTwo !== 10 ||
+       this.rollOne + this.rollTwo !== 20) &&
+       this.isStrike === false && this.isSpare === false) {
+    this.isfinished = true
     return "Game has ended"
-  };
+  }
 };
 
 Frame.prototype.tenthFrame = function(knockedPins) {
@@ -39,8 +43,7 @@ Frame.prototype.tenthFrame = function(knockedPins) {
     this.totalScore = (this.rollOne + this.rollTwo)
     this.checkSpare(knockedPins)
     return this._checkFinalRoll(knockedPins)
-
-  };
+  }
 
 
 };

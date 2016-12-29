@@ -71,9 +71,16 @@ describe("BowlingGame", function() {
   });
 
   describe("- resetting the game", function() {
-    it("should throw an error if Player has completed a full game", function() {
+    it("should throw an error if Player has completed a perfect game and tries to roll again", function() {
       for (var i = 0; i < 12; i++) {
         game.roll(10)
+      };
+      expect(function(){ game.roll(1); }).toThrowError("Your game has finished, please reset if you would like to play again.")
+    });
+
+    it("should throw an error if Player has completed an average game and tries to roll again", function() {
+      for (var i = 0; i < 20; i++) {
+        game.roll(4)
       };
       expect(function(){ game.roll(1); }).toThrowError("Your game has finished, please reset if you would like to play again.")
     });

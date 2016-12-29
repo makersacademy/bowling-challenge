@@ -98,6 +98,12 @@ describe("Game", function(){
       game.frameCount = 10
     })
 
+    it("should return a score for the bonus roll after a strike", function(){
+      game.firstScore = 10
+      spyOn(game, "rollBonus").and.returnValue(5)
+      expect(game.scoreboard.scoreBonusRoll(game.rollBonus())).toEqual(5)
+    });
+
     it("should rack up for one more roll if frame count is 10 and a spare is scored", function(){
       game.firstScore = 5
       game.secondScore = 5
@@ -111,14 +117,6 @@ describe("Game", function(){
       expect(game.setUpPins).toEqual([0,1,2,3,4,5,6,7,8,9,10])
     })
 
-    it("should return result of second roll as zeros as only one extra roll is allowed", function(){
-      game.firstScore = 5
-      game.secondScore = 5
-      game.increaseFrameCount()
-      game.rollOne()
-      expect(game.rollTwo()).toEqual(0)
-    })
-
   })
 
   describe("throw error when frame count is at its maximum", function(){
@@ -130,9 +128,9 @@ describe("Game", function(){
       it("should throw an error when player tries to bowl more than two bonus balls", function(){
         game.firstScore = 10
         game.increaseFrameCount()
-        game.firstScore = 10
+        game.bonusScore = 10
         game.increaseFrameCount()
-        game.firstScore = 10
+        game.bonusScore = 3
         expect(function(){ game.increaseFrameCount() }).toThrowError("Game Over! Please start a new game")
       })
 
@@ -140,7 +138,7 @@ describe("Game", function(){
         game.firstScore = 5
         game.secondScore = 5
         game.increaseFrameCount()
-        game.firstScore = 3
+        game.bonusScore = 3
         expect(function(){ game.increaseFrameCount() }).toThrowError("Game Over! Please start a new game")
       })
 

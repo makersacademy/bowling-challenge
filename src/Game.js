@@ -4,6 +4,7 @@ function Game() {
   this.frameCount = 0
   this.firstScore = 0
   this.secondScore = 0
+  this.bonusScore = 0
   this.rackedPins = false
   this.sweepComplete = false
   this.bonusCount = 0
@@ -50,21 +51,27 @@ function Game() {
     this.sweepComplete = true;
     if (this.bonusRollStatus === false) {
       return this.setUpPins.splice(this.setUpPins.length-score, score)
-    } else {
-      return this.setUpPins = [0]
     }
   }
 
   Game.prototype._rollBonus = function(){
       this.bonusCount ++
-    if (this._isStrike() && this.bonusCount <= 2){
-      return this._rackUp()
-    } else if (this._isSpare() && this.bonusCount <= 1){
-      this.bonusRollStatus = true
-      return this._rackUp()
+      if (this.bonusCount <= 2  && (this._isStrike() || this._isSpare())) {
+        return this._rackRollBonus()
     } else {
       throw new Error("Game Over! Please start a new game")
     }
+  }
+
+  Game.prototype._rackRollBonus = function() {
+    this.rackedPins = true
+    return this.setUpPins = [0,1,2,3,4,5,6,7,8,9,10]
+  }
+
+  Game.prototype.rollBonus = function() {
+    if (this.rackedPins === true)
+    this.bonusScore = Math.floor(Math.random() * this.setUpPins.length)
+    return game.scoreboard.scoreBonusRoll(this.bonusScore)
   }
 
 
@@ -73,5 +80,12 @@ function Game() {
   }
 
   Game.prototype._isSpare = function() {
+    this.bonusCount ++
     return this.firstScore + this.secondScore === 10
   }
+
+  // if (this._isStrike() && this.bonusCount <= 2){
+  //   return this._rackUp()
+  // } else if (this._isSpare() && this.bonusCount <= 2){
+  //   this.bonusRollStatus = true
+  //   return this._rackUp()

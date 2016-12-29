@@ -18,7 +18,7 @@ function Scoreboard() {
     return score2
   }
 
-  Scoreboard.prototype.scoreThirdRoll = function(score3) {
+  Scoreboard.prototype.scoreBonusRoll = function(score3) {
     this.scores.push(score3)
     return score3
   }

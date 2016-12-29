@@ -36,7 +36,7 @@ describe ("Scoreboard", function() {
   })
 
   it("should place the bonus third roll score into the scores array", function(){
-    scoreboard.scoreThirdRoll(5)
+    scoreboard.scoreBonusRoll(5)
     expect(scoreboard.scores).toContain(5)
   })
 

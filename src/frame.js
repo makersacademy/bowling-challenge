@@ -12,14 +12,22 @@ Frame.prototype.increaseRollNumber = function() {
   if(this.rollsComplete >= this.MAXROLLS) {
     throw `${this.MAXROLLS} rolls maximum.`
   } else {
-  this.rollsComplete += 1;
-}
+    this.rollsComplete += 1;
+  }
 }
 
 Frame.prototype.rollFirstBall = function(pins){
-  this.firstRollPins = pins;
+  if(pins > this.MAXPINS) {
+    throw `Max pins per throw is ${this.MAXPINS}`
+  } else {
+    this.firstRollPins = pins;
+  }
 }
 
 Frame.prototype.rollSecondBall = function(pins){
+  if((this.firstRollPins + pins) > this.MAXPINS) {
+    throw `Max pins per frame is ${this.MAXPINS}`
+  } else {
   this.secondRollPins = pins;
+}
 }

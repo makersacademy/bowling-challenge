@@ -50,10 +50,24 @@ describe("Frame", function() {
       expect(frame.firstRollPins).toEqual(8);
     });
 
-    it("shoukd keep the score of the second roll", function(){
+    it("should keep the score of the second roll", function(){
       frame.rollSecondBall(1);
       expect(frame.secondRollPins).toEqual(1);
     });
+
+    it("should not allow a score higher than the max score - first frame", function(){
+      expect(function() {frame.rollFirstBall(11)}).toThrow(`Max pins per throw is ${frame.MAXPINS}`);
+    });
+
+    it("should not allow a score higher than the max score - second frame", function(){
+      expect(function() {frame.rollSecondBall(11)}).toThrow(`Max pins per frame is ${frame.MAXPINS}`);
+    });
+
+    it("should not allow a total score higher than the max score", function(){
+      frame.rollFirstBall(8);
+      expect(function() {frame.rollSecondBall(3)}).toThrow(`Max pins per frame is ${frame.MAXPINS}`);
+    });
+
   });
 
 

@@ -1,0 +1,86 @@
+#main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#table-wrapper {
+}
+
+table {
+      border-color: white;
+      margin: 0 auto;
+
+}
+
+th, td {
+    border: 1px solid white;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+}
+
+th {
+   background-color: #8B0000;
+}
+
+td:hover {background-color: #8B0000}
+
+#frame-rolls-go {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#game-over {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#score {
+  text-align: center;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+#pins {
+    text-align: center;
+}
+
+body {
+background: #303030;
+color: white
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  background-color: white;
+  color: #8B0000;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+.btn-zero {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+#zero-pin {
+    text-align: center;
+}

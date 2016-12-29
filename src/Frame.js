@@ -23,8 +23,8 @@ Frame.prototype.checkSpare = function(knockedPins) {
 };
 
 Frame.prototype._checkFinalRoll = function(knockedPins) {
-  if ((this.rollOne + this.rollTwo !== 10 || this.rollOne + this.rollTwo !== 20) && this.isStrike == false && this.isSpare == false) {
-    return "Game has ended"
+  if ((this.rollOne + this.rollTwo !== 10 || this.rollOne + this.rollTwo !== 20) && this.isStrike === false && this.isSpare === false) {
+    throw TypeError("Your game has finished, please reset if you would like to play again.")
   };
 };
 

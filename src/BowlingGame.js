@@ -48,6 +48,17 @@ BowlingGame.prototype._isGameFinished = function() {
   if (this.framesInPlay.length === 11) {
     throw TypeError("Your game has finished, please reset if you would like to play again.")
   }
+  // } else if (this._isTenthFrame &&
+  //    (this._currentFrameTotal() !== 10 ||
+  //     this._currentFrameTotal() !== 20) &&
+  //     this.isStrike === false &&
+  //     this.isSpare === false) {
+  //   throw TypeError("Your game has finished, please reset if you would like to play again.")
+  // }
+};
+
+BowlingGame.prototype._currentFrameTotal = function() {
+  this._currentFrame().rollOne + this._currentFrame().rollTwo;
 };
 
 BowlingGame.prototype.resetGame = function() {

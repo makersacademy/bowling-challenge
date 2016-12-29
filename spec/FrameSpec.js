@@ -84,7 +84,7 @@ describe("Frame", function() {
       it("should end game if the last two rolls are not a spare or strike", function() {
         frame.rollNumber = 1
         frame.rollOne = 5
-        expect(frame.tenthFrame(4)).toEqual("Game has ended")
+        expect(function(){ frame.tenthFrame(4); }).toThrowError("Your game has finished, please reset if you would like to play again.")
       });
     });
 

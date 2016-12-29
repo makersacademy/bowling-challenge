@@ -93,11 +93,25 @@ describe("BowlingGame", function() {
   });
 
   describe("- calculating the final score", function() {
-    it("should return the correct final score", function() {
+    it("should return the correct final score for a perfect game", function() {
       for (var i = 0; i < 12; i++) {
         game.roll(10)
       };
       expect(game.checkFinalScore()).toEqual("Your final total score is 300! You played the perfect game!");
+    });
+
+    it("should return the correct final score for a gutter game", function() {
+      for (var i = 0; i < 20; i++) {
+        game.roll(0)
+      };
+      expect(game.checkFinalScore()).toEqual("Your final total score is 0 - Gutter game!");
+    });
+
+    it("shoud return the correct final score", function() {
+      for (var i = 0; i < 20; i++) {
+        game.roll(4)
+      };
+      expect(game.checkFinalScore()).toEqual("Your final total score is 80");
     });
   });
 

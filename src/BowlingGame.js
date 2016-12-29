@@ -40,7 +40,7 @@ BowlingGame.prototype._totalScoreMessage = function() {
   } else if (this.totalScore === 0) {
     return "Your final total score is 0 - Gutter game!"
   } else {
-    return "Your final total score is " + total
+    return "Your final total score is " + this.totalScore
   }
 };
 

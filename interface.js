@@ -24,7 +24,7 @@ $(document).ready(function(){
   $('#firstRoll').click(function(){
     $(this).hide()
     $('#secondRoll').show()
-  $('#firstScore').text(scoreboard.scoreFirstRoll(game.firstRoll()))
+  $('#firstScore').text(scoreboard.scoreFirstRoll(game.rollOne()))
   if ($(this.sweepComplete).val() === false) {
               $('.roll2').prop('disabled', true)
           } else {
@@ -36,7 +36,7 @@ $(document).ready(function(){
   $('#secondRoll').click(function(){
     $(this).hide()
     $('#rackUp').show()
-  $('#secondScore').text(scoreboard.scoreSecondRoll(game.secondRoll()))
+  $('#secondScore').text(scoreboard.scoreSecondRoll(game.rollTwo()))
   updateCurrentScore()
   })
 

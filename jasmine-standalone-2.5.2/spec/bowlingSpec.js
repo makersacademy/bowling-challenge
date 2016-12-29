@@ -194,5 +194,13 @@ describe("Bowling", function() {
     expect(bowling.score).toEqual(36)
   })
 
+  it("should correctly score when a strike follows a half strike", function() {
+    bowling.enter_score(6);
+    bowling.enter_score(4);
+    console.log(bowling.unscored_half_strike)
+    bowling.enter_score(10);
+    expect(bowling.score).toEqual(20)
+  })
+
 
 });

@@ -15,11 +15,14 @@ function Bowling () {
 
 Bowling.prototype.enter_score = function(number) {
   if (this.go === 1) {
-    if (number === MAXIMUM_SCORE && this.unscored_strikes < 2) {
+    if (number === MAXIMUM_SCORE &&    this.unscored_strikes < 2) {
+      if (this.unscored_half_strike === true) {
+        this.score += MAXIMUM_SCORE + MAXIMUM_SCORE
+      }
       this.frame += 1;
       this.unscored_strikes += 1;
       this.running_total.push("X");
-        }
+    }
     else if (number === MAXIMUM_SCORE) {
       this.frame += 1;
       this.score += (MAXIMUM_SCORE + MAXIMUM_SCORE + MAXIMUM_SCORE);

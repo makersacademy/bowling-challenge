@@ -8,7 +8,14 @@ function Bowling() {
 
     Bowling.prototype.bowlScore = function(score) {
         this.currentFrame.saveFrameScore(score)
+        if (this.currentFrame.bowlsRemaining === 0){
+          this.saveFrame(this.currentFrame.bowls);
+        }
     };
+
+    Bowling.prototype.saveFrame = function (frame) {
+      this.scoreSheet.push(frame)
+    }
 };
 
 function Frame() {

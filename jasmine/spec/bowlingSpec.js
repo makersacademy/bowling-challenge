@@ -39,4 +39,10 @@ describe('Bowling', function() {
         expect(game.currentFrame.score()).toEqual(9)
     });
 
+    it("expects a frame to be saved once frame count = 0",function(){
+      game.newGame();
+      game.bowlScore(3)
+      game.bowlScore(6);
+      expect(game.scoreSheet.length).toEqual(1)
+    });
 });

@@ -12,6 +12,7 @@ function Bowling() {
 };
 
 function Frame() {
+    this.bowlsRemaining = 2
     this.bowls = []
 
     Frame.prototype.saveFrameScore = function(score) {
@@ -20,7 +21,17 @@ function Frame() {
             Score: score
         }
         this.bowls.push(entry)
+        this.reduceThrowCount();
     }
 
-  
+    Frame.prototype.score = function() {
+        var score = 0
+        for (var i = 0; i < this.bowls.length; i++) {
+            score += this.bowls[i].Score
+        }
+        return score
+    }
+    Frame.prototype.reduceThrowCount = function(){
+      this.bowlsRemaining--
+    }
 };

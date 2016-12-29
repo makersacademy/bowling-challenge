@@ -18,12 +18,25 @@ describe('Bowling', function() {
         expect(game.currentFrame.bowlsRemaining).toEqual(2)
     });
 
+    it("expects a frame to have two throws", function() {
+        game.newGame();
+        game.bowlScore(7);
+        game.bowlScore(1);
+        expect(game.currentFrame.bowls.length).toEqual(2)
+    });
+
+    it("expects a frame throw count to reduce to 0 after two throws",function(){
+      game.newGame();
+      game.bowlScore(2);
+      game.bowlScore(4);
+      expect(game.currentFrame.bowlsRemaining).toEqual(0)
+    });
+
     it("expects a score to be recorded in a frame", function() {
         game.newGame();
         game.bowlScore(3)
         game.bowlScore(6);
         expect(game.currentFrame.score()).toEqual(9)
     });
-
 
 });

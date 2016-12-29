@@ -61,13 +61,6 @@ describe("BowlingGame", function() {
       };
       expect(game._isTenthFrame()).toEqual(true)
     });
-
-    // it("should let Player know game has ended after tenth or eleventh frame play", function() {
-    //   for (var i = 0; i < 10; i++) {
-    //     game.roll(10)
-    //   };
-    //   expect(game.roll(2)).toEqual("Game has ended")
-    // });
   });
 
   describe("- resetting the game", function() {

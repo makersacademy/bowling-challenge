@@ -66,4 +66,22 @@ describe("Frame", function() {
     });
   });
 
+  describe("Strike or Spare", function(){
+    it("should recognise a Strike", function(){
+      frame.rollBall(10);
+      expect(frame.strike).toEqual(true);
+    });
+
+    it("should not falsely recognise a strike", function(){
+      frame.rollBall(6);
+      expect(frame.strike).toEqual(false);
+    });
+
+    it("should not falsley recognise a Spare", function(){
+      frame.rollBall(8);
+      frame.rollBall(1);
+      expect(frame.spare).toEqual(false);
+    });
+
+  });
 });

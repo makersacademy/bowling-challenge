@@ -4,6 +4,8 @@ function Frame() {
   this.firstRollPins = 0;
   this.secondRollPins = 0;
   this.totalPinsDown = 0;
+  this.strike = false;
+  this.spare = false;
   this.MAXPINS = 10;
   this.MAXROLLS = 2;
 }
@@ -24,9 +26,19 @@ Frame.prototype.rollBall = function(pins){
     if(this.rollsComplete === 0) {
       this.firstRollPins = pins;
       this.increaseRollNumber();
+      this.isSpecial();
     } else {
       this.secondRollPins = pins;
       this.increaseRollNumber();
+      this.isSpecial();
     }
+  }
+}
+
+Frame.prototype.isSpecial = function(){
+  if(this.firstRollPins === 10) {
+    this.strike = true;
+  } else if((this.firstRollPins + this.secondRollPins) === 10){
+    this.spare = true;
   }
 }

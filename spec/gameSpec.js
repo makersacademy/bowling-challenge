@@ -24,6 +24,14 @@ describe("Game", function() {
     bonusFrame.firstRollPins = 10;
     bonusFrame.secondRollPins = 10;
     bonusFrame.bonusRollPins = 10;
+    bonusFrame.totalPinsDown = 30;
+
+    // bonusFrame2 = newFrame();
+    // bonusFrame2.firstRollPins = 4;
+    // bonusFrame2.secondRollPins = 6;
+    // bonusFrame2.bonusRollPins = 5;
+    // bonusFrame2.totalPinsDown = 15;
+
   });
 
   describe("The game should start with", function(){
@@ -182,7 +190,7 @@ describe("Game", function() {
   });
 
   describe("bonus roll", function(){
-    it("calculates score for the bonus role where appropriate", function(){
+    it("calculates score for the bonus role where appropriate - RSWOB", function(){
       game.addFrame(strikeFrame);
       game.addFrame(strikeFrame);
       game.addFrame(strikeFrame);
@@ -195,5 +203,48 @@ describe("Game", function() {
       game.addBonusFrame(bonusFrame);
       expect(game.runningScoreWithoutBonus).toEqual([10,10,10,10,10,10,10,10,10,[10,10,10]])
     });
+
+    it("calculates score for the bonus role where appropriate - TS", function(){
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addBonusFrame(bonusFrame);
+      expect(game.totalScore).toEqual((10+20)*9 + (10 + 10 + 10))
+    });
+
+    it("calculates score for the bonus role where appropriate - RSWOB", function(){
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addBonusFrame(bonusFrame);
+      expect(game.runningScoreWithoutBonus).toEqual([10,10,10,10,10,10,10,10,10,[10,10,10]])
+    });
+
+    it("calculates score for the bonus role where appropriate - TS", function(){
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addBonusFrame(bonusFrame);
+      expect(game.totalScore).toEqual((10+6)*8 + (10+10) + (10 + 10 + 10))
+    });
+
   });
 });

@@ -20,7 +20,7 @@ Game.prototype.addFrame = function(frame) {
 
 Game.prototype.addBonusFrame = function(bonusFrame) {
   this.isGameOver();
-  this.calculateScore(bonusFrame);
+  this.calculateScoreBonusFrame(bonusFrame);
   this.scoreBoard.splice(this.framesComplete, 0, bonusFrame);
   this.runningScoreWithoutBonus.splice(this.framesComplete, 0,[bonusFrame.firstRollPins, bonusFrame.secondRollPins, bonusFrame.bonusRollPins]);
 }
@@ -44,6 +44,18 @@ Game.prototype.calculateScore = function(frame) {
     this.totalScore += (frame.totalPinsDown * 2)
   } else {
     this.totalScore += frame.totalPinsDown;
+  }
+}
+
+Game.prototype.calculateScoreBonusFrame = function(bonusFrame){
+  this.specials();
+  if(this.wasLastFrameASpare){
+    this.totalScore += (bonusFrame.totalPinsDown + bonusFrame.firstRollPins);
+  } else if(this.wereLastTwoFramesBothStrikes){
+    this.totalScore += (bonusFrame.totalPinsDown + bonusFrame.totalPinsDown)
+  } else if (this.wasLastFrameAStrike){
+  } else {
+    this.totalScore += bonusFrame.totalPinsDown;
   }
 }
 

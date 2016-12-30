@@ -25,13 +25,16 @@ Frame.prototype.rollBall = function(pins){
   } else {
     if(this.rollsComplete === 0) {
       this.firstRollPins = pins;
+      this.totalPinsDown += pins;
       this.increaseRollNumber();
       this.isSpecial();
     } else {
       this.secondRollPins = pins;
+      this.totalPinsDown += pins;
       this.increaseRollNumber();
       this.isSpecial();
     }
+
   }
 }
 

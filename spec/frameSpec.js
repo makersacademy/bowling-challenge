@@ -50,10 +50,21 @@ describe("Frame", function() {
       expect(frame.firstRollPins).toEqual(8);
     });
 
+    it("should add it to the total", function() {
+      frame.rollBall(8);
+      expect(frame.totalPinsDown).toEqual(8);
+    });
+
     it("should keep the score of the second roll", function(){
       frame.rollBall(8);
       frame.rollBall(1);
       expect(frame.secondRollPins).toEqual(1);
+    });
+
+    it("add it to the total", function(){
+      frame.rollBall(8);
+      frame.rollBall(1);
+      expect(frame.totalPinsDown).toEqual(9);
     });
 
     it("should not allow a score higher than the max score - first frame", function(){

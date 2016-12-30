@@ -12,10 +12,11 @@ Game.prototype.addFrame = function(frame) {
   if(frame.strike === true) {
     this.scoreBoard.splice(this.framesComplete, 0, 'X');
   } else if(frame.spare === true) {
-    this.scoreBoard.splice(this.framesComplete, 0, "/");
+    this.scoreBoard.splice(this.framesComplete, 0, [frame.firstRollPins, "/"]);
   } else {
-    this.scoreBoard.splice(this.framesComplete, 0, (frame.firstRollPins + frame.secondRollPins));
+    this.scoreBoard.splice(this.framesComplete, 0, [frame.firstRollPins, frame.secondRollPins]);
   }
+  this.runningScore.splice(this.framesComplete, 0, frame.totalPinsDown);
   this.calculateScore();
 }
 
@@ -27,6 +28,6 @@ Game.prototype.isGameOver = function() {
   }
 
   Game.prototype.calculateScore = function() {
-    this.totalScore += this.scoreBoard[this.framesComplete - 1];
+    this.totalScore += this.runningScore[this.framesComplete - 1];
   }
 }

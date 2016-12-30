@@ -5,14 +5,20 @@ describe("Game", function() {
     game = new Game();
 
     strikeFrame = new Frame();
+    strikeFrame.firstRollPins = 10;
+    strikeFrame.totalPinsDown = 10;
     strikeFrame.strike = true;
 
     spareFrame = new Frame();
+    spareFrame.firstRollPins = 6;
+    spareFrame.secondRollPins = 4;
+    spareFrame.totalPinsDown = 10;
     spareFrame.spare = true;
 
     normalFrame = new Frame();
     normalFrame.firstRollPins = 8;
-    normalFrame.secondRollPins = 0;
+    normalFrame.secondRollPins = 1;
+    normalFrame.totalPinsDown = 9;
   });
 
   describe("The game should start with", function(){
@@ -43,14 +49,29 @@ describe("Game", function() {
       expect(game.scoreBoard).toEqual(["X"]);
     });
 
+    it("recognise a strike - runningScore", function(){
+      game.addFrame(strikeFrame);
+      expect(game.runningScore).toEqual([10]);
+    });
+
     it("recognise a spare", function(){
       game.addFrame(spareFrame);
-      expect(game.scoreBoard).toEqual(["/"]);
+      expect(game.scoreBoard).toEqual([[6, "/"]]);
+    });
+
+    it("recognise a spare - runningScore", function(){
+      game.addFrame(spareFrame);
+      expect(game.runningScore).toEqual([10]);
     });
 
     it("adds the score of a frame if not X or /", function(){
       game.addFrame(normalFrame);
-      expect(game.scoreBoard).toEqual([8]);
+      expect(game.scoreBoard).toEqual([[8,1]]);
+    });
+
+    it("adds the score of a frame if not X or / - running score", function(){
+      game.addFrame(normalFrame);
+      expect(game.runningScore).toEqual([9]);
     });
 
     it("moves on to the next frame", function(){
@@ -72,7 +93,7 @@ describe("Game", function() {
       game.addFrame(normalFrame);
       game.addFrame(strikeFrame);
       game.addFrame(spareFrame);
-      expect(game.scoreBoard).toEqual([8, "X", "/"]);
+      expect(game.scoreBoard).toEqual([[8, 1], "X", [6, "/"]]);
     });
   });
 
@@ -86,7 +107,7 @@ describe("Game", function() {
   describe("Calculating the score", function(){
     it("adds normal frames", function(){
       game.addFrame(normalFrame);
-      expect(game.totalScore).toEqual(8);
+      expect(game.totalScore).toEqual(9);
     });
   });
 });

@@ -1,7 +1,6 @@
 'use strict';
 
 function Spare(){
-  this.count = 0;
   this.bonus = 0;
 };
 

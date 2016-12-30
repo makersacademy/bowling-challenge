@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
-  var calculator = new CalculatorTenPinsBowling();
+  var game = new Game();
+  var strike;
   var spare;
 
   displayAll();
@@ -8,88 +9,83 @@ $(document).ready(function(){
   $('#my-form').submit(function(event) {
     event.preventDefault();
     var pins = $('#pins').val();
-    if( calculator.frame === 10 && calculator.finish === false ){
-        if( calculator.spare === true ){ calculator.passSpareBonus(pins) }
-        if( calculator.strike === true ){ calculator.passStrikeBonus(pins) }
-        calculator.clearSpare();
-        calculator.passScore(pins);
+    $('#game-status').text( "Playing..." );
+
+    if( game.frame === 10 && game.finish === false ){
+
+    } else {
+    // game.frame < 10
+      displayAll();
+        // pass Strike Bonus
+        if( strike ){
+          game.scores[ game.frame - 2 ][2] = strike.addBonus(pins)
+          if( strike.bonus.length === 2 ){ strike = null }
+        }
+        // pass Spare Bonus
+        if( spare  ){
+          game.scores[ game.frame - 2 ][2] = spare.addBonus(pins)
+          spare = null
+        }
+
+        game.passScore(pins);
+
         displayAll();
 
-        if( calculator.isGameFinish() ){
-            calculator.finish = true;
-            $('#game-status').text( "Your score is " + calculator.sumGameScores() + "!" );
+        if( game.roll === 2 ){
+              // check Spare
+              if( game.sumFrameScores() === 10 ){ spare = new Spare() }
+              game.clearFrameScores();
+              game.increaseFrame();
         }
 
-        calculator.increaseRoll();
-
-    } else if( calculator.frame < 10 ) {
-        $('#game-status').text( "Playing..." );
-
-
-        if( calculator.roll === 2 ){
-          calculator.passScore(pins);
-          if( calculator.strike === true ){ calculator.passStrikeBonus(pins) }
-          if( calculator.sumFrameScores() === 10 ){ spare = new Spare() };
-          calculator.clearStrike();
-          displayAll();
-          calculator.increaseFrame();
-          calculator.changeRoll();
-          calculator.clearFrameScores();
-          calculator.clearStrikeBonus();
+        // check Strike
+        if( pins === '10' ){
+              game.frameScores.push('-')
+              game.scores[ game.frame - 1 ] = game.frameScores
+              displayAll();
+              game.clearFrameScores();
+              game.increaseFrame();
+              if( typeof(strike) === "undefined" || strike === null ){ strike = new Strike() }
         } else {
-          if( spare ){ calculator.gameScores[ calculator.frame - 2 ][2] = spare.addBonus(pins) }
-          if( calculator.strike === true ){ calculator.passStrikeBonus(pins) }
-          if( pins === '10' ){
-            calculator.setStrike()
-            calculator.passStrike()
-            displayAll();
-            calculator.increaseFrame();
-            calculator.clearFrameScores();
-          } else {
-            calculator.passScore(pins);
-            spare = null;
-            displayAll();
-            calculator.changeRoll();
-          }
+              game.changeRoll();
         }
+        displayAll();
     }
-  })
+
+  });
 
   function displayAll(){
     displayFrame();
     displayRoll();
     displayTable();
     displayTotalScore();
-    $('#1').text( calculator.gameScores );
-    $('#2').text( calculator.frameScores );
-    $('#3').text( calculator.strike );
-    $('#4').text( calculator.spare );
-    $('#5').text( calculator.strikeBonus );
-    $('#6').text( calculator.gameFinish );
+    $('#1').text( game.scores );
+    $('#2').text( game.frameScores );
+    if( strike ){ $('#3').text( strike.bonus ); }
   }
 
   function displayFrame(){
-      $('#frame').text( calculator.frame );
+      $('#frame').text( game.frame );
   }
 
   function displayRoll(){
-      $('#roll').text( calculator.roll );
+      $('#roll').text( game.roll );
   }
 
   function displayTable(){
     var i;
     var j;
     var place;
-    for(i=0; i<calculator.gameScores.length; i++){
-      for(j=0; j<calculator.gameScores[i].length; j++){
+    for(i=0; i<game.scores.length; i++){
+      for(j=0; j<game.scores[i].length; j++){
         place = '#' + (i+1) + '-' + (j+1)
-        $(place.toString()).text( calculator.gameScores[i][j] );
+        $(place.toString()).text( game.scores[i][j] );
       }
     }
   }
 
   function displayTotalScore(){
-    $('#total').text( calculator.sumGameScores() );
+    $('#total').text( game.sumGameScores() );
   }
 
 })

@@ -3,6 +3,8 @@ function Game() {
   this.MAXFRAMES = 10;
   this.framesComplete = 0;
   this.scoreBoard = [];
+  this.runningScore = [];
+  this.totalScore = 0;
 }
 
 Game.prototype.addFrame = function(frame) {
@@ -14,6 +16,7 @@ Game.prototype.addFrame = function(frame) {
   } else {
     this.scoreBoard.splice(this.framesComplete, 0, (frame.firstRollPins + frame.secondRollPins));
   }
+  this.calculateScore();
 }
 
 Game.prototype.isGameOver = function() {
@@ -21,5 +24,9 @@ Game.prototype.isGameOver = function() {
     throw `${this.MAXFRAMES} frames maximum.`
   } else {
     this.framesComplete += 1;
+  }
+
+  Game.prototype.calculateScore = function() {
+    this.totalScore += this.scoreBoard[this.framesComplete - 1];
   }
 }

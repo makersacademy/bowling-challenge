@@ -24,9 +24,16 @@ describe("Game", function() {
       expect(game.framesComplete).toEqual(0);
     });
 
-
     it("an array for the scores to be held", function(){
       expect(game.scoreBoard).toEqual([]);
+    });
+
+    it("a running score counter", function(){
+      expect(game.runningScore).toEqual([]);
+    });
+
+    it("a total score counter", function(){
+      expect(game.totalScore).toEqual(0);
     });
   });
 
@@ -73,6 +80,13 @@ describe("Game", function() {
     it("does not have more than 10 frames", function(){
       game.framesComplete = 10;
       expect(function() {game.addFrame(normalFrame)}).toThrow(`${game.MAXFRAMES} frames maximum.`)
+    });
+  });
+
+  describe("Calculating the score", function(){
+    it("adds normal frames", function(){
+      game.addFrame(normalFrame);
+      expect(game.totalScore).toEqual(8);
     });
   });
 });

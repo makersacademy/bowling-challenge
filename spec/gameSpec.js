@@ -275,9 +275,21 @@ describe("Game", function() {
       game.addFrame(gutterFrame);
       game.addFrame(gutterFrame);
       game.addFrame(gutterFrame);
-      console.log(game.framesComplete)
-      console.log(game.totalScore)
       expect(game.isGutterGame).toEqual(true);
+    });
+
+    it("has a perfect game", function(){
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addBonusFrame(bonusFrame);
+      expect(game.isPerfectGame).toEqual(true);
     });
   });
 });

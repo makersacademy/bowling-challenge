@@ -1,5 +1,6 @@
 describe("Game", function() {
   var game;
+  var Game;
   var frame;
   var strikeFrame;
   var spareFrame;

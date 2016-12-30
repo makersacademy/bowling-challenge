@@ -8,6 +8,7 @@ function Game() {
   this.isFirstFrame = true;
   this.wasLastFrameASpare = false;
   this.wasLastFrameAStrike = false;
+  this.wereLastTwoFramesBothStrikes = false;
 }
 
 Game.prototype.addFrame = function(frame) {
@@ -38,11 +39,19 @@ Game.prototype.calculateScore = function(frame) {
 
 Game.prototype.specials = function() {
   this.checkFirstFrame();
+  this.checkSecondFrame();
   if(this.isFirstFrame === false){
     if(this.scoreBoard[this.framesComplete - 2].spare === true) {
       this.wasLastFrameASpare = true
     } else {
       this.wasLastFrameASpare = false
+    }
+    if(this.isSecondFrame === false) {
+      if(this.scoreBoard[this.framesComplete - 2].strike === true && this.scoreBoard[this.framesComplete -3].strike === true){
+        this.wereLastTwoFramesBothStrikes = true;
+      } else {
+        this.wereLastTwoFramesBothStrikes = false
+      }
     }
     if(this.scoreBoard[this.framesComplete - 2].strike === true) {
       this.wasLastFrameAStrike = true
@@ -57,5 +66,13 @@ Game.prototype.checkFirstFrame = function(){
     this.isFirstFrame = true;
   } else {
     this.isFirstFrame = false;
+  }
+}
+
+Game.prototype.checkSecondFrame = function(){
+  if(this.framesComplete === 2) {
+    this.isSecondFrame = true;
+  } else {
+    this.isSecondFrame = false;
   }
 }

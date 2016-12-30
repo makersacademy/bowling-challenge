@@ -136,6 +136,12 @@ describe("Game", function() {
       expect(game.wasLastFrameAStrike).toEqual(true);
     });
 
+    it("can tell if there were two strikes in a row", function(){
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(normalFrame);
+      expect(game.wereLastTwoFramesBothStrikes).toEqual(true);
+    });
 
   });
 

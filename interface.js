@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
   var game = new Game();
-  var strike;
-  var spare;
+  var strike = false;
+  var spare = false;
 
   displayAll();
 
@@ -11,31 +11,29 @@ $(document).ready(function(){
     var pins = $('#pins').val();
     $('#game-status').text( "Playing..." );
 
-    if( game.frame === 10 && game.finish === false ){
-
-    } else {
+    if ( game.finish === false ){
     // game.frame < 10
-      displayAll();
+
         // pass Strike Bonus
         if( strike ){
-          game.scores[ game.frame - 2 ][2] = strike.addBonus(pins)
-          if( strike.bonus.length === 2 ){ strike = null }
+          strike.count > 2 ? game.scores[ game.frame - 3 ][2] = strike.addBonus(pins) : game.scores[ game.frame - 2 ][2] = strike.addBonus(pins)
+          strike.decreaseCount();
+          if( strike.count === 0 ){ strike = false }
         }
         // pass Spare Bonus
-        if( spare  ){
+        if( spare ){
           game.scores[ game.frame - 2 ][2] = spare.addBonus(pins)
-          spare = null
+          spare = false
         }
 
         game.passScore(pins);
 
         displayAll();
 
+        // check Spare
         if( game.roll === 2 ){
-              // check Spare
               if( game.sumFrameScores() === 10 ){ spare = new Spare() }
-              game.clearFrameScores();
-              game.increaseFrame();
+              moveNextFrame();
         }
 
         // check Strike
@@ -43,16 +41,20 @@ $(document).ready(function(){
               game.frameScores.push('-')
               game.scores[ game.frame - 1 ] = game.frameScores
               displayAll();
-              game.clearFrameScores();
-              game.increaseFrame();
-              if( typeof(strike) === "undefined" || strike === null ){ strike = new Strike() }
+              moveNextFrame();
+              strike === false ? ( strike = new Strike() ) : strike.increaseCount();
         } else {
               game.changeRoll();
         }
-        displayAll();
+
     }
 
   });
+
+  function moveNextFrame(){
+    game.clearFrameScores();
+    game.increaseFrame();
+  }
 
   function displayAll(){
     displayFrame();
@@ -61,7 +63,11 @@ $(document).ready(function(){
     displayTotalScore();
     $('#1').text( game.scores );
     $('#2').text( game.frameScores );
-    if( strike ){ $('#3').text( strike.bonus ); }
+    if( strike ){
+      $('#3').text( strike.bonus1 );
+      $('#4').text( strike.bonus2 );
+      $('#5').text( strike.count );
+    }
   }
 
   function displayFrame(){

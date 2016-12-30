@@ -71,11 +71,15 @@ Game.prototype.increaseRoll = function(){
 };
 
 Game.prototype.changeRoll = function(){
-  this.roll === 1 ? this.increaseRoll() : this.roll = 1;
+  if( this.frame === 10 ){
+    this.increaseRoll();
+  } else {
+    this.roll === 1 ? this.increaseRoll() : this.roll = 1;
+  }
 };
 
 Game.prototype.increaseFrame = function(){
-  return this.frame ++
+  if( this.frame < 10 ){ return this.frame ++ }
 };
 
 Game.prototype.clearFrameScores = function(){
@@ -83,11 +87,12 @@ Game.prototype.clearFrameScores = function(){
 };
 
 Game.prototype.isLastRoll = function( spare, strike ){
-  if( this.roll === 3 ){ return true }
+  if( this.roll === 1 ){ return false }
   if( this.roll === 2 ){
-    if( spare || strike ){ return true }
+    if( spare || strike ){ return false }
+    return true
   }
-  return false
+  if( this.roll === 3 ){ return true }
 };
 // Game.prototype.isGameFinish = function(){
 //   if( this.roll === 2 && this.strike === false && this.spare === false ){

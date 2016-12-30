@@ -27,4 +27,15 @@ describe ('Deal with Strike', function(){
     expect( strike.bonus ).toEqual( [] );
   });
 
+  it ('should increase strike count', function(){
+    strike.increaseCount();
+    expect( strike.count ).toBe( 1 )
+  });
+
+  it ('should decrease strike count', function(){
+    strike.increaseCount();
+    strike.decreaseCount();
+    expect( strike.count ).toBe( 0 )
+  });
+
 });

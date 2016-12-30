@@ -30,7 +30,9 @@ Game.prototype.calculateScore = function(frame) {
   this.specials();
   if(this.wasLastFrameASpare){
     this.totalScore += (frame.totalPinsDown + frame.firstRollPins);
-  } else if(this.wasLastFrameAStrike){
+  } else if(this.wereLastTwoFramesBothStrikes){
+    this.totalScore += (frame.totalPinsDown * 3)
+  } else if (this.wasLastFrameAStrike){
     this.totalScore += (frame.totalPinsDown * 2)
   } else {
     this.totalScore += frame.totalPinsDown;

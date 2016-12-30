@@ -110,10 +110,23 @@ describe("Game", function() {
       expect(game.runningScoreWithoutBonus).toEqual([10,9])
     });
 
-    it("can calculate a spare - TS", function(){
+    it("can calculate a strike - TS", function(){
       game.addFrame(strikeFrame);
       game.addFrame(normalFrame);
       expect(game.totalScore).toEqual((10+9+8+1))
+    });
+
+    it("can calculate two strikes in a row - RSWOB", function(){
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      expect(game.runningScoreWithoutBonus).toEqual([10,10])
+    });
+
+    it("can calculate multiple strikes - TS", function(){
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      expect(game.totalScore).toEqual((30+20+10))
     });
 
   });

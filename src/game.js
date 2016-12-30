@@ -6,6 +6,7 @@ function Game() {
   this.runningScoreWithoutBonus = [];
   this.totalScore = 0;
   this.wasLastFrameASpare = false;
+  this.isFirstFrame = false;
 }
 
 Game.prototype.addFrame = function(frame) {
@@ -28,7 +29,18 @@ Game.prototype.calculateScore = function(frame) {
 }
 
 Game.prototype.specials = function() {
-  if(this.scoreBoard[this.framesComplete - 2].spare === true) {
-    this.wasLastFrameASpare = true
+  this.checkFirstFrame();
+  if(this.isFirstFrame === false){
+    if(this.scoreBoard[this.framesComplete - 2].spare === true) {
+      this.wasLastFrameASpare = true
+    }
+  }
+}
+
+Game.prototype.checkFirstFrame = function(){
+  if(this.framesComplete === 0) {
+    this.isFirstFrame = true;
+  } else {
+    this.isFirstFrame = false;
   }
 }

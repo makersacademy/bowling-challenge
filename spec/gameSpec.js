@@ -100,6 +100,11 @@ describe("Game", function() {
       game.specials();
       expect(game.wasLastFrameASpare).toEqual(true);
     });
+
+    it("can tell if it is the first frame", function() {
+      game.specials();
+      expect(game.isFirstFrame).toEqual(true);
+    });
   });
 
 });

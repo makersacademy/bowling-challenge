@@ -59,4 +59,28 @@ describe("Game", function() {
       expect(game.scoreBoard).toEqual([normalFrame]);
     });
   });
+
+  describe("Running Score without bonus", function(){
+    it("works for strikes", function(){
+      game.addFrame(strikeFrame);
+      expect(game.runningScoreWithoutBonus).toEqual([10]);
+    });
+
+    it("works for spares", function(){
+      game.addFrame(spareFrame);
+      expect(game.runningScoreWithoutBonus).toEqual([10]);
+    });
+
+    it("works for normal frames", function(){
+      game.addFrame(normalFrame);
+      expect(game.runningScoreWithoutBonus).toEqual([9]);
+    });
+
+    it("works on more than one frame", function(){
+      game.addFrame(strikeFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(normalFrame);
+      expect(game.runningScoreWithoutBonus).toEqual([10,10,9]);
+    });
+  });
 });

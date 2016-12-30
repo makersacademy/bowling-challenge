@@ -1,5 +1,5 @@
 // calculates the score of the entire game
-function Game() {
+function Scoring() {
   this.MAXFRAMES = 10;
   this.framesComplete = 0;
   this.scoreBoard = [];
@@ -13,14 +13,14 @@ function Game() {
   this.isPerfectGame = false;
 }
 
-Game.prototype.addFrame = function(frame) {
+Scoring.prototype.addFrame = function(frame) {
   this.isGameOver();
   this.calculateScore(frame);
   this.scoreBoard.splice(this.framesComplete, 0, frame);
   this.runningScoreWithoutBonus.splice(this.framesComplete, 0, frame.totalPinsDown);
 }
 
-Game.prototype.addBonusFrame = function(bonusFrame) {
+Scoring.prototype.addBonusFrame = function(bonusFrame) {
   this.isGameOver();
   this.calculateScoreBonusFrame(bonusFrame);
   this.scoreBoard.splice(this.framesComplete, 0, bonusFrame);
@@ -28,7 +28,7 @@ Game.prototype.addBonusFrame = function(bonusFrame) {
 }
 
 
-Game.prototype.isGameOver = function() {
+Scoring.prototype.isGameOver = function() {
   if(this.framesComplete >= this.MAXFRAMES) {
     throw `${this.MAXFRAMES} frames maximum.`
   } else {
@@ -36,7 +36,7 @@ Game.prototype.isGameOver = function() {
   }
 }
 
-Game.prototype.calculateScore = function(frame) {
+Scoring.prototype.calculateScore = function(frame) {
   this.specials();
   if(this.wasLastFrameASpare){
     this.totalScore += (frame.totalPinsDown + frame.firstRollPins);
@@ -50,7 +50,7 @@ Game.prototype.calculateScore = function(frame) {
   this.checkGutterGame();
 }
 
-Game.prototype.calculateScoreBonusFrame = function(bonusFrame){
+Scoring.prototype.calculateScoreBonusFrame = function(bonusFrame){
   this.specials();
   if(this.wasLastFrameASpare){
     this.totalScore += (bonusFrame.totalPinsDown + bonusFrame.firstRollPins);
@@ -63,7 +63,7 @@ Game.prototype.calculateScoreBonusFrame = function(bonusFrame){
   this.checkPerfectGame();
 }
 
-Game.prototype.specials = function() {
+Scoring.prototype.specials = function() {
   this.checkFirstFrame();
   this.checkSecondFrame();
   if(this.isFirstFrame === false){
@@ -87,7 +87,7 @@ Game.prototype.specials = function() {
   }
 }
 
-Game.prototype.checkFirstFrame = function(){
+Scoring.prototype.checkFirstFrame = function(){
   if(this.framesComplete === 1) {
     this.isFirstFrame = true;
   } else {
@@ -95,7 +95,7 @@ Game.prototype.checkFirstFrame = function(){
   }
 }
 
-Game.prototype.checkSecondFrame = function(){
+Scoring.prototype.checkSecondFrame = function(){
   if(this.framesComplete === 2) {
     this.isSecondFrame = true;
   } else {
@@ -103,13 +103,13 @@ Game.prototype.checkSecondFrame = function(){
   }
 }
 
-Game.prototype.checkGutterGame = function(){
+Scoring.prototype.checkGutterGame = function(){
   if((this.framesComplete === this.MAXFRAMES) && this.totalScore === 0){
     this.isGutterGame = true;
   }
 }
 
-Game.prototype.checkPerfectGame = function(){
+Scoring.prototype.checkPerfectGame = function(){
   if((this.framesComplete === this.MAXFRAMES) && this.totalScore === 300){
     this.isPerfectGame = true;
   }

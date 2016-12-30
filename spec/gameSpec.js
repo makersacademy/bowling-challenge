@@ -11,7 +11,7 @@ describe("Game", function(){
   var gutterFrame
 
   beforeEach(function(){
-    var game = new Game();
+    game = new Game();
 
     strikeFrame = new Frame();
     strikeFrame.firstRollPins = 10;

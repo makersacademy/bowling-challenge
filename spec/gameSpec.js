@@ -21,7 +21,7 @@ describe("The game should start with", function(){
   });
 
   it("a frame counter", function(){
-    expect(game.frameCounter).toEqual(0);
+    expect(game.framesComplete).toEqual(0);
   });
 
 
@@ -44,6 +44,28 @@ describe("Import a frame and ", function(){
   it("adds the score of a frame if not X or /", function(){
     game.addFrame(normalFrame);
     expect(game.scoreBoard).toEqual([8]);
+  });
+
+  it("moves on to the next frame", function(){
+    game.addFrame(normalFrame);
+    expect(game.framesComplete).toEqual(1);
+  });
+
+  it("moves on to the next frame - X", function(){
+    game.addFrame(strikeFrame);
+    expect(game.framesComplete).toEqual(1);
+  });
+
+  it("moves on to the next frame - /", function(){
+    game.addFrame(spareFrame);
+    expect(game.framesComplete).toEqual(1);
+  });
+
+  it("works on later rolls", function(){
+    game.addFrame(normalFrame);
+    game.addFrame(strikeFrame);
+    game.addFrame(spareFrame);
+    expect(game.scoreBoard).toEqual([8, "X", "/"]);
   });
 });
 

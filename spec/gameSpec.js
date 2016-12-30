@@ -97,12 +97,11 @@ describe("Game", function() {
     it("can tell if the last frame was a spare", function(){
       game.addFrame(spareFrame);
       game.addFrame(normalFrame);
-      game.specials();
       expect(game.wasLastFrameASpare).toEqual(true);
     });
 
     it("can tell if it is the first frame", function() {
-      game.specials();
+      game.addFrame(spareFrame);
       expect(game.isFirstFrame).toEqual(true);
     });
   });

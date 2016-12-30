@@ -6,7 +6,7 @@ function Game() {
   this.runningScoreWithoutBonus = [];
   this.totalScore = 0;
   this.wasLastFrameASpare = false;
-  this.isFirstFrame = false;
+  this.isFirstFrame = true;
 }
 
 Game.prototype.addFrame = function(frame) {
@@ -25,6 +25,7 @@ Game.prototype.isGameOver = function() {
 }
 
 Game.prototype.calculateScore = function(frame) {
+  this.specials();
   this.totalScore += frame.totalPinsDown;
 }
 
@@ -38,7 +39,7 @@ Game.prototype.specials = function() {
 }
 
 Game.prototype.checkFirstFrame = function(){
-  if(this.framesComplete === 0) {
+  if(this.framesComplete === 1) {
     this.isFirstFrame = true;
   } else {
     this.isFirstFrame = false;

@@ -3,12 +3,13 @@
 function CalculatorTenPinsBowling() {
   this.gameScores  = []; //store [[ro11-1, roll-2, bonus]]
   this.frameScores = []; //store  [ro11-1, roll-2]
+  this.strikeBonus = []; //store  [ro11-1, roll-2]
+  this.STRIKE_PINS  = 10;
   this.roll  = 1;
   this.frame = 1;
   this.strike = false;
   this.spare  = false;
-  this.STRIKE_PINS  = 10;
-  this.gameFinish = false;
+  this.finish = false;
 };
 
 CalculatorTenPinsBowling.prototype.passScore = function(user_input){
@@ -26,13 +27,25 @@ CalculatorTenPinsBowling.prototype.passStrike = function(){
   this.gameScores.push([ this.STRIKE_PINS, 0 ]);
 };
 
-CalculatorTenPinsBowling.prototype.passStrikeBonus = function(){
-  this.gameScores[ this.frame - 2 ][2] = this.sumFrameScores()
+CalculatorTenPinsBowling.prototype.passStrikeBonus = function(user_input){
+  var pins = Number(user_input)
+  if( this.strikeBonus.length === 0 ){ this.strikeBonus[0] = pins
+  } else if( this.strikeBonus.length === 1 ){
+    this.strikeBonus[1] = pins
+  }
+  this.gameScores[ this.frame - 2 ][2] = this.sumStrikeBonus()
 };
 
 CalculatorTenPinsBowling.prototype.passSpareBonus = function(user_input){
   var pins = Number(user_input)
   this.gameScores[ this.frame - 2 ][2] = pins;
+};
+
+CalculatorTenPinsBowling.prototype.sumStrikeBonus = function(){
+  var i;
+  var sum = 0;
+  for (i=0; i<this.strikeBonus.length; i++){ sum = sum + this.strikeBonus[i] }
+  return sum
 };
 
 CalculatorTenPinsBowling.prototype.sumFrameScores = function(){
@@ -69,6 +82,10 @@ CalculatorTenPinsBowling.prototype.increaseFrame = function(){
 
 CalculatorTenPinsBowling.prototype.clearFrameScores = function(){
   return this.frameScores = []
+};
+
+CalculatorTenPinsBowling.prototype.clearStrikeBonus = function(){
+  return this.strikeBonus = []
 };
 
 CalculatorTenPinsBowling.prototype.setStrike = function(){

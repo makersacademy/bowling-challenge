@@ -7,12 +7,15 @@ $(document).ready(function(){
   $('#my-form').submit(function(event) {
     event.preventDefault();
     var pins = $('#pins').val();
-    if( calculator.frame === 10 && calculator.gameFinish === false ){
+    if( calculator.frame === 10 && calculator.finish === false ){
+        if( calculator.spare === true ){ calculator.passSpareBonus(pins) }
+        if( calculator.strike === true ){ calculator.passStrikeBonus(pins) }
+        calculator.clearSpare();
         calculator.passScore(pins);
         displayAll();
 
         if( calculator.isGameFinish() ){
-            calculator.gameFinish = true;
+            calculator.finish = true;
             $('#game-status').text( "Your score is " + calculator.sumGameScores() + "!" );
         }
 
@@ -24,21 +27,25 @@ $(document).ready(function(){
 
         if( calculator.roll === 2 ){
           calculator.passScore(pins);
-          if( calculator.strike === true ){ calculator.passStrikeBonus() }
+          if( calculator.strike === true ){ calculator.passStrikeBonus(pins) }
           if( calculator.sumFrameScores() === 10 ){ calculator.setSpare() };
           calculator.clearStrike();
           displayAll();
           calculator.increaseFrame();
           calculator.changeRoll();
           calculator.clearFrameScores();
+          calculator.clearStrikeBonus();
         } else {
           if( calculator.spare === true ){ calculator.passSpareBonus(pins) }
+          if( calculator.strike === true ){ calculator.passStrikeBonus(pins) }
           if( pins === '10' ){
             calculator.setStrike()
             calculator.passStrike()
+            calculator.strikeBonus = [10,0]
             displayAll();
             calculator.increaseFrame();
             calculator.clearFrameScores();
+            calculator.clearStrikeBonus();
           } else {
             calculator.passScore(pins);
             calculator.clearSpare();
@@ -58,7 +65,8 @@ $(document).ready(function(){
     $('#2').text( calculator.frameScores );
     $('#3').text( calculator.strike );
     $('#4').text( calculator.spare );
-    $('#5').text( calculator.gameFinish );
+    $('#5').text( calculator.strikeBonus );
+    $('#6').text( calculator.gameFinish );
   }
 
   function displayFrame(){

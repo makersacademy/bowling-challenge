@@ -3,6 +3,14 @@ describe("Game", function() {
 
   beforeEach(function() {
     game = new Game();
+
+    strikeFrame = new Frame();
+    strikeFrame.strike = true;
+
+    spareFrame = new Frame();
+    spareFrame.spare = true;
+
+
   });
 
 describe("The game should start with", function(){
@@ -13,6 +21,25 @@ describe("The game should start with", function(){
   it("a frame counter", function(){
     expect(game.frameCounter).toEqual(0);
   });
+
+
+  it("an array for the scores to be held", function(){
+    expect(game.scoreBoard).toEqual([]);
+  });
 });
+
+describe("Import a frame and ", function(){
+  it("recognise a strike", function(){
+    game.addFrame(strikeFrame);
+    expect(game.scoreBoard).toEqual(["X"]);
+  });
+
+  it("recognise a spare", function(){
+    game.addFrame(spareFrame);
+    expect(game.scoreBoard).toEqual(["/"]);
+  });
+});
+
+
 
 });

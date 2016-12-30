@@ -15,4 +15,10 @@ describe('Frame', function() {
 		expect(frame.total(frame2)).toEqual(12);
 	});
 
+	it('should calculate the total when a player rolls a strike', function() {
+		frame = new Frame([10]);
+		frame2 = new Frame([2,4]);
+		expect(frame.total(frame2)).toEqual(16);
+	});
+
 });

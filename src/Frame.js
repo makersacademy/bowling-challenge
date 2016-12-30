@@ -18,11 +18,17 @@ Frame.prototype.rollTotal = function() {
 Frame.prototype.bonusTotal = function(framePlusOne) {
 	if (framePlusOne == undefined) {
 		return 0;
-	} else if (this.isSpare) {
+	} else if (this.isStrike()) {
+		return framePlusOne.rollTotal();
+	} else if (this.isSpare()) {
 		return framePlusOne.rolls[0];
 	}
 };
 
 Frame.prototype.isSpare = function() {
-	return this.rolls == this.MAXIMUM_ROLL
+	return this.rollTotal() == this.MAXIMUM_ROLL;
+};
+
+Frame.prototype.isStrike = function() {
+	return this.rolls[0] == this.MAXIMUM_ROLL;
 };

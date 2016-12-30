@@ -15,41 +15,7 @@ function Bowling () {
 
 Bowling.prototype.enter_score = function(number) {
   if (this.go === 1) {
-    if (number === MAXIMUM_SCORE &&    this.unscored_strikes < 2) {
-      if (this.unscored_half_strike === true) {
-        this.score += MAXIMUM_SCORE + MAXIMUM_SCORE
-      }
-      this.frame += 1;
-      this.unscored_strikes += 1;
-      this.running_total.push("X");
-    }
-    else if (number === MAXIMUM_SCORE) {
-      this.frame += 1;
-      this.score += (MAXIMUM_SCORE + MAXIMUM_SCORE + MAXIMUM_SCORE);
-    }
-    else {
-      if (this.unscored_strikes > 1) {
-        this.go += 1;
-        this.first_go = number;
-        this.score += (MAXIMUM_SCORE + MAXIMUM_SCORE + number);
-        this.unscored_strikes -= 1;
-      }
-      else if (this.unscored_strikes === 1) {
-        this.go += 1;
-        this.first_go = number;
-        this.running_total.push(number);
-      }
-      else if (this.unscored_half_strike === true) {
-        this.go += 1;
-        this.first_go = number;
-        this.score += MAXIMUM_SCORE + number;
-        this.unscored_half_strike = false;
-      }
-      else {
-      this.go += 1;
-      this.running_total.push(number);
-      this.first_go = number;
-  }}}
+    this.firstGo(number)}
   else {
     if (this.unscored_strikes > 0) {
       this.go = 1;
@@ -75,4 +41,42 @@ Bowling.prototype.enter_score = function(number) {
     this.score += this.first_go + number;
     this.running_total.push(number);
   }}
+}
+
+Bowling.prototype.firstGo = function(number) {
+  if (number === MAXIMUM_SCORE && this.unscored_strikes < 2) {
+    if (this.unscored_half_strike === true) {
+      this.score += MAXIMUM_SCORE + MAXIMUM_SCORE
+    }
+    this.frame += 1;
+    this.unscored_strikes += 1;
+    this.running_total.push("X");
+  }
+  else if (number === MAXIMUM_SCORE) {
+    this.frame += 1;
+    this.score += (MAXIMUM_SCORE + MAXIMUM_SCORE + MAXIMUM_SCORE);
+  }
+  else {
+    if (this.unscored_strikes > 1) {
+      this.go += 1;
+      this.first_go = number;
+      this.score += (MAXIMUM_SCORE + MAXIMUM_SCORE + number);
+      this.unscored_strikes -= 1;
+    }
+    else if (this.unscored_strikes === 1) {
+      this.go += 1;
+      this.first_go = number;
+      this.running_total.push(number);
+    }
+    else if (this.unscored_half_strike === true) {
+      this.go += 1;
+      this.first_go = number;
+      this.score += MAXIMUM_SCORE + number;
+      this.unscored_half_strike = false;
+    }
+    else {
+    this.go += 1;
+    this.running_total.push(number);
+    this.first_go = number;
+}}}
 }

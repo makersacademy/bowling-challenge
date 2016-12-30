@@ -91,6 +91,19 @@ describe("Game", function() {
       game.addFrame(normalFrame);
       expect(game.totalScore).toEqual(27);
     });
+
+    it("can calculate a spare - RSWOB", function(){
+      game.addFrame(spareFrame);
+      game.addFrame(normalFrame);
+      expect(game.runningScoreWithoutBonus).toEqual([10,9])
+    });
+
+    it("can calculate a spare - TS", function(){
+      game.addFrame(spareFrame);
+      game.addFrame(normalFrame);
+      expect(game.totalScore).toEqual((10+9+8))
+    });
+
   });
 
   describe("specials", function(){

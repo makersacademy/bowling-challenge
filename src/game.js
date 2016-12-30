@@ -26,7 +26,11 @@ Game.prototype.isGameOver = function() {
 
 Game.prototype.calculateScore = function(frame) {
   this.specials();
-  this.totalScore += frame.totalPinsDown;
+  if(this.wasLastFrameASpare){
+    this.totalScore += (frame.totalPinsDown + frame.firstRollPins);
+  } else {
+    this.totalScore += frame.totalPinsDown;
+  }
 }
 
 Game.prototype.specials = function() {

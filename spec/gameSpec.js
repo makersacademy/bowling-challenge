@@ -1,14 +1,14 @@
 describe("Game", function() {
-  var game;
-  var frame;
-  var strikeFrame;
-  var spareFrame;
-  var normalFrame;
-  var bonusFrame;
-  var bonusFrameSpare;
-  var gutterFrame;
+  var game
+  var frame
+  var strikeFrame
+  var spareFrame
+  var normalFrame
+  var bonusFrame
+  var bonusFrameSpare
+  var gutterFrame
 
-  beforeEach(function() {
+  beforeEach(function(){
     game = new Game();
 
     strikeFrame = new Frame();

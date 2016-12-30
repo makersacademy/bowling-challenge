@@ -8,10 +8,10 @@ describe("Frame", function() {
   beforeEach(function() {
     frame = new Frame();
 
-    gameTrue = new Scoring();
+    gameTrue = new Game();
     gameTrue.framesComplete = 10;
 
-    gameFalse = new Scoring();
+    gameFalse = new Game();
     gameFalse.framesComplete = 1;
   });
 

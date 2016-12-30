@@ -1,6 +1,6 @@
 'use strict'
 
-describe('Scoring', function(){
+describe('Game', function(){
   var game
   var frame
   var strikeFrame
@@ -11,7 +11,7 @@ describe('Scoring', function(){
   var gutterFrame
 
   beforeEach(function() {
-    game = new Scoring();
+    game = new Game();
 
     strikeFrame = new Frame();
     strikeFrame.firstRollPins = 10;

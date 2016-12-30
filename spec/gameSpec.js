@@ -83,4 +83,23 @@ describe("Game", function() {
       expect(game.runningScoreWithoutBonus).toEqual([10,10,9]);
     });
   });
+
+  describe("calculate score", function(){
+    it("can calculate the normal scores without anything special", function(){
+      game.addFrame(normalFrame);
+      game.addFrame(normalFrame);
+      game.addFrame(normalFrame);
+      expect(game.totalScore).toEqual(27);
+    });
+  });
+
+  describe("specials", function(){
+    it("can tell if the last frame was a spare", function(){
+      game.addFrame(spareFrame);
+      game.addFrame(normalFrame);
+      game.specials();
+      expect(game.wasLastFrameASpare).toEqual(true);
+    });
+  });
+
 });

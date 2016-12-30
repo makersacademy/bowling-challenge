@@ -10,6 +10,7 @@ function Game() {
 
 Game.prototype.addFrame = function(frame) {
   this.isGameOver();
+  this.calculateScore(frame);
   this.scoreBoard.splice(this.framesComplete, 0, frame);
   this.runningScoreWithoutBonus.splice(this.framesComplete, 0, frame.totalPinsDown);
 }
@@ -19,5 +20,15 @@ Game.prototype.isGameOver = function() {
     throw `${this.MAXFRAMES} frames maximum.`
   } else {
     this.framesComplete += 1;
+  }
+}
+
+Game.prototype.calculateScore = function(frame) {
+  this.totalScore += frame.totalPinsDown;
+}
+
+Game.prototype.specials = function() {
+  if(this.scoreBoard[this.framesComplete - 2].spare === true) {
+    this.wasLastFrameASpare = true
   }
 }

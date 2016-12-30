@@ -6,6 +6,7 @@ function Game() {
 }
 
 Game.prototype.addFrame = function(frame) {
+  this.isGameOver();
   if(frame.strike === true) {
     this.scoreBoard.splice(this.framesComplete, 0, 'X');
   } else if(frame.spare === true) {
@@ -13,5 +14,12 @@ Game.prototype.addFrame = function(frame) {
   } else {
     this.scoreBoard.splice(this.framesComplete, 0, (frame.firstRollPins + frame.secondRollPins));
   }
-  this.framesComplete += 1;
+}
+
+Game.prototype.isGameOver = function() {
+  if(this.framesComplete >= this.MAXFRAMES) {
+    throw `${this.MAXFRAMES} frames maximum.`
+  } else {
+    this.framesComplete += 1;
+  }
 }

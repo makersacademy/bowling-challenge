@@ -93,6 +93,5 @@ describe("Frame", function() {
       frame.rollBall(1);
       expect(frame.spare).toEqual(false);
     });
-
   });
 });

@@ -129,6 +129,25 @@ describe("Game", function() {
       expect(game.totalScore).toEqual((30+20+10))
     });
 
+    it("can deal with random patterns - RSWOB", function(){
+      game.addFrame(strikeFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(normalFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(strikeFrame);
+      expect(game.runningScoreWithoutBonus).toEqual([10,10,9,10,10]);
+    });
+
+    it("can deal with random patterns - TS", function(){
+      game.addFrame(strikeFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(normalFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(strikeFrame);
+      expect(game.totalScore).toEqual((10+6+4) + (10 + 8) + 9 +(10 +10) + 10);
+    });
+
+
   });
 
   describe("specials", function(){
@@ -155,7 +174,5 @@ describe("Game", function() {
       game.addFrame(normalFrame);
       expect(game.wereLastTwoFramesBothStrikes).toEqual(true);
     });
-
   });
-
 });

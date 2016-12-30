@@ -26,12 +26,14 @@ describe("Game", function() {
     bonusFrame.bonusRollPins = 10;
     bonusFrame.totalPinsDown = 30;
 
-    // bonusFrame2 = newFrame();
-    // bonusFrame2.firstRollPins = 4;
-    // bonusFrame2.secondRollPins = 6;
-    // bonusFrame2.bonusRollPins = 5;
-    // bonusFrame2.totalPinsDown = 15;
+    bonusFrameSpare = new Frame();
+    bonusFrameSpare.firstRollPins = 4;
+    bonusFrameSpare.secondRollPins = 6;
+    bonusFrameSpare.bonusRollPins = 10;
+    bonusFrameSpare.totalPinsDown = 15;
 
+    gutterFrame = new Frame();
+    gutterFrame.totalPinsDown = 0;
   });
 
   describe("The game should start with", function(){
@@ -246,5 +248,36 @@ describe("Game", function() {
       expect(game.totalScore).toEqual((10+6)*8 + (10+10) + (10 + 10 + 10))
     });
 
+    it("calculates score for the bonus role where appropriate - TS", function(){
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addFrame(spareFrame);
+      game.addBonusFrame(bonusFrameSpare);
+      expect(game.totalScore).toEqual((10+6)*8 + (10+4) + (4 + 6 + 5 ))
+    });
+  });
+
+  describe("Special games", function(){
+    it("has a gutter game", function(){
+      game.addFrame(gutterFrame);
+      game.addFrame(gutterFrame);
+      game.addFrame(gutterFrame);
+      game.addFrame(gutterFrame);
+      game.addFrame(gutterFrame);
+      game.addFrame(gutterFrame);
+      game.addFrame(gutterFrame);
+      game.addFrame(gutterFrame);
+      game.addFrame(gutterFrame);
+      game.addFrame(gutterFrame);
+      console.log(game.framesComplete)
+      console.log(game.totalScore)
+      expect(game.isGutterGame).toEqual(true);
+    });
   });
 });

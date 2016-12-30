@@ -9,6 +9,7 @@ function Game() {
   this.wasLastFrameASpare = false;
   this.wasLastFrameAStrike = false;
   this.wereLastTwoFramesBothStrikes = false;
+  this.isGutterGame = false;
 }
 
 Game.prototype.addFrame = function(frame) {
@@ -45,6 +46,7 @@ Game.prototype.calculateScore = function(frame) {
   } else {
     this.totalScore += frame.totalPinsDown;
   }
+  this.checkGutterGame();
 }
 
 Game.prototype.calculateScoreBonusFrame = function(bonusFrame){
@@ -96,5 +98,11 @@ Game.prototype.checkSecondFrame = function(){
     this.isSecondFrame = true;
   } else {
     this.isSecondFrame = false;
+  }
+}
+
+Game.prototype.checkGutterGame = function(){
+  if((this.framesComplete === this.MAXFRAMES) && this.totalScore === 0){
+    this.isGutterGame = true;
   }
 }

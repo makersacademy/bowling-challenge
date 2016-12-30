@@ -109,7 +109,6 @@ describe("Frame", function() {
     it("in certain circumstances", function(){
       frame.strike = true;
       frame.isBonusRollAllowed(gameTrue);
-      console.log(frame.bonusRollAllowed)
       frame.rollBonusBall(5);
       expect(frame.bonusRollPins).toEqual(5);
     });
@@ -118,6 +117,5 @@ describe("Frame", function() {
       frame.isBonusRollAllowed(gameFalse);
       expect(function() {frame.rollBonusBall(5)}).toThrow(`Bonus roll is not allowed.`);
     });
-
   });
 });

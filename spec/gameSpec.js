@@ -1,4 +1,6 @@
-describe("Game", function() {
+'use strict'
+
+describe("Game", function(){
   var game
   var frame
   var strikeFrame

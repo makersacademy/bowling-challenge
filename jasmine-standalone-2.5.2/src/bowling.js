@@ -65,7 +65,7 @@ Bowling.prototype.firstGo = function(number) {
     }
     else if (this.unscored_strikes === 1) {
       this.go += 1;
-      this.first_go = number;
+      this.first_go = gnumber;
       this.running_total.push(number);
     }
     else if (this.unscored_half_strike === true) {
@@ -79,4 +79,4 @@ Bowling.prototype.firstGo = function(number) {
     this.running_total.push(number);
     this.first_go = number;
 }}}
-}
+s

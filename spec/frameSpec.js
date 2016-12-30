@@ -1,5 +1,7 @@
 describe("Frame", function() {
   var frame;
+  var gameTrue;
+  var gameFalse;
 
   beforeEach(function() {
     frame = new Frame();

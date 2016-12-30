@@ -1,5 +1,12 @@
 describe("Game", function() {
   var game;
+  var frame;
+  var strikeFrame;
+  var spareFrame;
+  var normalFrame;
+  var bonusFrame;
+  var bonusFrameSpare;
+  var gutterFrame;
 
   beforeEach(function() {
     game = new Game();

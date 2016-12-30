@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
   var calculator = new CalculatorTenPinsBowling();
+  var spare;
 
   displayAll();
 
@@ -28,7 +29,7 @@ $(document).ready(function(){
         if( calculator.roll === 2 ){
           calculator.passScore(pins);
           if( calculator.strike === true ){ calculator.passStrikeBonus(pins) }
-          if( calculator.sumFrameScores() === 10 ){ calculator.setSpare() };
+          if( calculator.sumFrameScores() === 10 ){ spare = new Spare() };
           calculator.clearStrike();
           displayAll();
           calculator.increaseFrame();
@@ -36,19 +37,17 @@ $(document).ready(function(){
           calculator.clearFrameScores();
           calculator.clearStrikeBonus();
         } else {
-          if( calculator.spare === true ){ calculator.passSpareBonus(pins) }
+          if( spare ){ calculator.gameScores[ calculator.frame - 2 ][2] = spare.addBonus(pins) }
           if( calculator.strike === true ){ calculator.passStrikeBonus(pins) }
           if( pins === '10' ){
             calculator.setStrike()
             calculator.passStrike()
-            calculator.strikeBonus = [10,0]
             displayAll();
             calculator.increaseFrame();
             calculator.clearFrameScores();
-            calculator.clearStrikeBonus();
           } else {
             calculator.passScore(pins);
-            calculator.clearSpare();
+            spare = null;
             displayAll();
             calculator.changeRoll();
           }

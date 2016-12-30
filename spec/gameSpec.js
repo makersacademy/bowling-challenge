@@ -19,6 +19,11 @@ describe("Game", function() {
     normalFrame.firstRollPins = 8;
     normalFrame.secondRollPins = 1;
     normalFrame.totalPinsDown = 9;
+
+    bonusFrame = new Frame();
+    bonusFrame.firstRollPins = 10;
+    bonusFrame.secondRollPins = 10;
+    bonusFrame.bonusRollPins = 10;
   });
 
   describe("The game should start with", function(){
@@ -173,6 +178,22 @@ describe("Game", function() {
       game.addFrame(strikeFrame);
       game.addFrame(normalFrame);
       expect(game.wereLastTwoFramesBothStrikes).toEqual(true);
+    });
+  });
+
+  describe("bonus roll", function(){
+    it("calculates score for the bonus role where appropriate", function(){
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addFrame(strikeFrame);
+      game.addBonusFrame(bonusFrame);
+      expect(game.runningScoreWithoutBonus).toEqual([10,10,10,10,10,10,10,10,10,[10,10,10]])
     });
   });
 });

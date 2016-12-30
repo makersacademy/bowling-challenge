@@ -3,6 +3,12 @@ describe("Frame", function() {
 
   beforeEach(function() {
     frame = new Frame();
+
+    gameTrue = new Game();
+    gameTrue.framesComplete = 10;
+
+    gameFalse = new Game();
+    gameFalse.framesComplete = 1;
   });
 
   describe('The frame should start with', function() {
@@ -16,6 +22,10 @@ describe("Frame", function() {
 
     it("0 for the second roll", function(){
       expect(frame.secondRollPins).toEqual(0);
+    });
+
+    it("0 for the bonus roll", function(){
+      expect(frame.bonusRollPins).toEqual(0);
     });
 
     it("0 pins knocked down", function(){
@@ -93,5 +103,21 @@ describe("Frame", function() {
       frame.rollBall(1);
       expect(frame.spare).toEqual(false);
     });
+  });
+
+  describe("Bonus roll", function(){
+    it("in certain circumstances", function(){
+      frame.strike = true;
+      frame.isBonusRollAllowed(gameTrue);
+      console.log(frame.bonusRollAllowed)
+      frame.rollBonusBall(5);
+      expect(frame.bonusRollPins).toEqual(5);
+    });
+
+    it("but not in others", function(){
+      frame.isBonusRollAllowed(gameFalse);
+      expect(function() {frame.rollBonusBall(5)}).toThrow(`Bonus roll is not allowed.`);
+    });
+
   });
 });

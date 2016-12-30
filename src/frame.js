@@ -3,6 +3,8 @@ function Frame() {
   this.rollsComplete = 0;
   this.firstRollPins = 0;
   this.secondRollPins = 0;
+  this.bonusRollPins = 0;
+  this.bonusRollAllowed = false;
   this.totalPinsDown = 0;
   this.strike = false;
   this.spare = false;
@@ -17,7 +19,6 @@ Frame.prototype.increaseRollNumber = function() {
     this.rollsComplete += 1;
   }
 }
-
 
 Frame.prototype.rollBall = function(pins){
   if((this.firstRollPins + pins) > this.MAXPINS) {
@@ -43,5 +44,21 @@ Frame.prototype.isSpecial = function(){
     this.strike = true;
   } else if((this.firstRollPins + this.secondRollPins) === 10){
     this.spare = true;
+  }
+}
+
+Frame.prototype.isBonusRollAllowed = function(game){
+  if((game.framesComplete === 10) && (this.strike || this.spare)) {
+    this.bonusRollAllowed = true;
+  } else {
+    this.bonusRollAllowed = false;
+  }
+}
+
+Frame.prototype.rollBonusBall = function(pins){
+  if(this.bonusRollAllowed === true) {
+    this.bonusRollPins = pins;
+  } else {
+    throw `Bonus roll is not allowed.`
   }
 }

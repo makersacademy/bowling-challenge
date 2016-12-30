@@ -18,6 +18,14 @@ Game.prototype.addFrame = function(frame) {
   this.runningScoreWithoutBonus.splice(this.framesComplete, 0, frame.totalPinsDown);
 }
 
+Game.prototype.addBonusFrame = function(bonusFrame) {
+  this.isGameOver();
+  this.calculateScore(bonusFrame);
+  this.scoreBoard.splice(this.framesComplete, 0, bonusFrame);
+  this.runningScoreWithoutBonus.splice(this.framesComplete, 0,[bonusFrame.firstRollPins, bonusFrame.secondRollPins, bonusFrame.bonusRollPins]);
+}
+
+
 Game.prototype.isGameOver = function() {
   if(this.framesComplete >= this.MAXFRAMES) {
     throw `${this.MAXFRAMES} frames maximum.`

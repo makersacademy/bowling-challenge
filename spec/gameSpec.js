@@ -34,8 +34,8 @@ describe("Game", function() {
       expect(game.scoreBoard).toEqual([]);
     });
 
-    it("a running score counter", function(){
-      expect(game.runningScore).toEqual([]);
+    it("a score counter per frame without bonuses", function(){
+      expect(game.runningScoreWithoutBonus).toEqual([]);
     });
 
     it("a total score counter", function(){
@@ -43,71 +43,20 @@ describe("Game", function() {
     });
   });
 
-  describe("Import a frame and ", function(){
-    it("recognise a strike", function(){
+  describe("Import a frame ", function(){
+    it("strike frame", function(){
       game.addFrame(strikeFrame);
-      expect(game.scoreBoard).toEqual(["X"]);
+      expect(game.scoreBoard).toEqual([strikeFrame]);
     });
 
-    it("recognise a strike - runningScore", function(){
-      game.addFrame(strikeFrame);
-      expect(game.runningScore).toEqual([10]);
-    });
-
-    it("recognise a spare", function(){
+    it("spare frame", function(){
       game.addFrame(spareFrame);
-      expect(game.scoreBoard).toEqual([[6, "/"]]);
+      expect(game.scoreBoard).toEqual([spareFrame]);
     });
 
-    it("recognise a spare - runningScore", function(){
-      game.addFrame(spareFrame);
-      expect(game.runningScore).toEqual([10]);
-    });
-
-    it("adds the score of a frame if not X or /", function(){
+    it("normal frame", function(){
       game.addFrame(normalFrame);
-      expect(game.scoreBoard).toEqual([[8,1]]);
-    });
-
-    it("adds the score of a frame if not X or / - running score", function(){
-      game.addFrame(normalFrame);
-      expect(game.runningScore).toEqual([9]);
-    });
-
-    it("moves on to the next frame", function(){
-      game.addFrame(normalFrame);
-      expect(game.framesComplete).toEqual(1);
-    });
-
-    it("moves on to the next frame - X", function(){
-      game.addFrame(strikeFrame);
-      expect(game.framesComplete).toEqual(1);
-    });
-
-    it("moves on to the next frame - /", function(){
-      game.addFrame(spareFrame);
-      expect(game.framesComplete).toEqual(1);
-    });
-
-    it("works on later rolls", function(){
-      game.addFrame(normalFrame);
-      game.addFrame(strikeFrame);
-      game.addFrame(spareFrame);
-      expect(game.scoreBoard).toEqual([[8, 1], "X", [6, "/"]]);
-    });
-  });
-
-  describe("Frames", function(){
-    it("does not have more than 10 frames", function(){
-      game.framesComplete = 10;
-      expect(function() {game.addFrame(normalFrame)}).toThrow(`${game.MAXFRAMES} frames maximum.`)
-    });
-  });
-
-  describe("Calculating the score", function(){
-    it("adds normal frames", function(){
-      game.addFrame(normalFrame);
-      expect(game.totalScore).toEqual(9);
+      expect(game.scoreBoard).toEqual([normalFrame]);
     });
   });
 });

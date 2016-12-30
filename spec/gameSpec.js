@@ -104,19 +104,39 @@ describe("Game", function() {
       expect(game.totalScore).toEqual((10+9+8))
     });
 
+    it("can calculate a strike - RSWOB", function(){
+      game.addFrame(strikeFrame);
+      game.addFrame(normalFrame);
+      expect(game.runningScoreWithoutBonus).toEqual([10,9])
+    });
+
+    it("can calculate a spare - TS", function(){
+      game.addFrame(strikeFrame);
+      game.addFrame(normalFrame);
+      expect(game.totalScore).toEqual((10+9+8+1))
+    });
+
   });
 
   describe("specials", function(){
+    it("can tell if it is the first frame", function() {
+      game.addFrame(spareFrame);
+      expect(game.isFirstFrame).toEqual(true);
+    });
+
     it("can tell if the last frame was a spare", function(){
       game.addFrame(spareFrame);
       game.addFrame(normalFrame);
       expect(game.wasLastFrameASpare).toEqual(true);
     });
 
-    it("can tell if it is the first frame", function() {
-      game.addFrame(spareFrame);
-      expect(game.isFirstFrame).toEqual(true);
+    it("can tell if the last frame was a strike", function(){
+      game.addFrame(strikeFrame);
+      game.addFrame(normalFrame);
+      expect(game.wasLastFrameAStrike).toEqual(true);
     });
+
+
   });
 
 });

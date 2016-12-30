@@ -5,8 +5,9 @@ function Game() {
   this.scoreBoard = [];
   this.runningScoreWithoutBonus = [];
   this.totalScore = 0;
-  this.wasLastFrameASpare = false;
   this.isFirstFrame = true;
+  this.wasLastFrameASpare = false;
+  this.wasLastFrameAStrike = false;
 }
 
 Game.prototype.addFrame = function(frame) {
@@ -28,6 +29,8 @@ Game.prototype.calculateScore = function(frame) {
   this.specials();
   if(this.wasLastFrameASpare){
     this.totalScore += (frame.totalPinsDown + frame.firstRollPins);
+  } else if(this.wasLastFrameAStrike){
+    this.totalScore += (frame.totalPinsDown * 2)
   } else {
     this.totalScore += frame.totalPinsDown;
   }
@@ -38,6 +41,13 @@ Game.prototype.specials = function() {
   if(this.isFirstFrame === false){
     if(this.scoreBoard[this.framesComplete - 2].spare === true) {
       this.wasLastFrameASpare = true
+    } else {
+      this.wasLastFrameASpare = false
+    }
+    if(this.scoreBoard[this.framesComplete - 2].strike === true) {
+      this.wasLastFrameAStrike = true
+    } else {
+      this.wasLastFrameAStrike = false
     }
   }
 }

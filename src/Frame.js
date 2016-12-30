@@ -38,9 +38,9 @@ Frame.prototype.isStrike = function() {
 };
 
 Frame.prototype.strikeBonus = function(framePlusOne, framePlusTwo) {
-	if (framePlusOne.isStrike()) {
+	if (framePlusOne.isStrike() && framePlusTwo !== undefined) {
 		return framePlusOne.rollTotal() + framePlusTwo.rolls[0];
 	} else {
-		return framePlusOne.rollTotal();
+		return framePlusOne.rolls[0] + framePlusOne.rolls[1];
 	}
-}
+};

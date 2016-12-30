@@ -29,4 +29,22 @@ describe('Frame', function() {
 		expect(frame.total(frame2, frame3)).toEqual(22);
 	});
 
+	it('should calculate the total when a player rolls three strikes in a row', function() {
+		frame = new Frame([10]);
+		frame2 = new Frame([10]);
+		frame3 = new Frame([10]);
+		expect(frame.total(frame2, frame3)).toEqual(30);
+	});
+
+	it ('should calculate the total when a player rolls a strike in the penultimate and final frames', function() {
+		frame = new Frame([10]);
+		frame2 = new Frame([10,10,10]);
+		expect(frame.total(frame2)).toEqual(30);
+	});
+
+	it('should calculate the total when a player rolls three strikes in the final frame', function() {
+		frame = new Frame([10,10,10]);
+		expect(frame.total()).toEqual(30);
+	});
+
 });

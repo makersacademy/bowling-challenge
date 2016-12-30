@@ -16,18 +16,17 @@ Frame.prototype.increaseRollNumber = function() {
   }
 }
 
-Frame.prototype.rollFirstBall = function(pins){
-  if(pins > this.MAXPINS) {
-    throw `Max pins per throw is ${this.MAXPINS}`
-  } else {
-    this.firstRollPins = pins;
-  }
-}
 
-Frame.prototype.rollSecondBall = function(pins){
+Frame.prototype.rollBall = function(pins){
   if((this.firstRollPins + pins) > this.MAXPINS) {
     throw `Max pins per frame is ${this.MAXPINS}`
   } else {
-  this.secondRollPins = pins;
-}
+    if(this.rollsComplete === 0) {
+      this.firstRollPins = pins;
+      this.increaseRollNumber();
+    } else {
+      this.secondRollPins = pins;
+      this.increaseRollNumber();
+    }
+  }
 }

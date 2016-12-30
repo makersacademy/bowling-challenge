@@ -10,6 +10,8 @@ Game.prototype.addFrame = function(frame) {
     this.scoreBoard.splice(this.frameCounter, 0, 'X');
   } else if(frame.spare === true) {
     this.scoreBoard.splice(this.frameCounter, 0, "/");
+  } else {
+    this.scoreBoard.splice(this.frameCounter, 0, (frame.firstRollPins + frame.secondRollPins));
   }
 
 }

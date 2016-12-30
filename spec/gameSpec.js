@@ -1,6 +1,6 @@
 'use strict'
 
-describe("Game", function(){
+describe('Game', function(){
   var game
   var frame
   var strikeFrame
@@ -10,7 +10,7 @@ describe("Game", function(){
   var bonusFrameSpare
   var gutterFrame
 
-  beforeEach(function(){
+  beforeEach(function() {
     game = new Game();
 
     strikeFrame = new Frame();

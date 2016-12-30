@@ -21,7 +21,7 @@ describe('Bowling', function() {
         });
 
         it("expects a frame to have spares", function() {
-            expect(game.currentFrame.spares).toEqual(10)
+            expect(game.currentFrame.RemainingPins).toEqual(10)
         });
 
         it("checks that there can be maxmimum of twelve frames", function() {
@@ -119,7 +119,7 @@ describe('Bowling', function() {
         describe("#Frame()", function() {
 
             it("checks that a maxmimum of 10 frames can be played if final bowl is not strike", function() {
-                for (var i = 0; i < 9; i++) {
+                for (var i = 0; i < 11; i++) {
                     game.bowlScore(10)
                 }
                 game.bowlScore(1)
@@ -129,20 +129,85 @@ describe('Bowling', function() {
                 }).toThrowError(message)
             });
 
-            it("checks that the 10th frame can have extra bowls if a strike occurs",function(){
-              for (var i = 0; i < 10; i++) {
-                  game.bowlScore(10)
-              }
-              expect(game.currentFrame.maxBowls).toEqual(3)
+            it("checks that the 10th frame can have extra bowls if a strike occurs", function() {
+                for (var i = 0; i < 10; i++) {
+                    game.bowlScore(10)
+                }
+                expect(game.currentFrame.maxBowls).toEqual(3)
             });
 
-            it("double the following two throws scores if a stike occurs",function(){
-              for (var i = 0; i < 2; i++) {
-                  game.bowlScore(10)
-              }
-              expect(game.scoreSheet[0].score).toEqual(20)
-              expect(game.scoreSheet[1].score).toEqual(40)
+            it("checks that the 10th frame can have extra bowls if a strike occurs and then game over", function() {
+                for (var i = 0; i < 10; i++) {
+                    game.bowlScore(10)
+                }
+                game.bowlScore(1)
+                game.bowlScore(1)
+                message = "Game Over"
+                expect(function() {
+                    game.bowlScore(1)
+                }).toThrowError(message)
             });
+
+            it("double the following two throws scores if a stike occurs", function() {
+                for (var i = 0; i < 2; i++) {
+                    game.bowlScore(10)
+                }
+                expect(game.scoreSheet[0].score).toEqual(20)
+                expect(game.scoreSheet[1].score).toEqual(40)
+            });
+
+            it("PERFECT game score to equal 300", function() {
+                for (var i = 0; i < 12; i++) {
+                    game.bowlScore(10)
+                }
+                expect(game.scoreSheet[9].rollingScore).toEqual(300)
+
+            });
+
+            it("sample game to get scores totalling", function() {
+                game.bowlScore(6)
+                game.bowlScore(1)
+
+                game.bowlScore(9)
+                game.bowlScore(0)
+
+                game.bowlScore(8)
+                game.bowlScore(2)
+
+                game.bowlScore(5)
+                game.bowlScore(5)
+
+                game.bowlScore(8)
+                game.bowlScore(0)
+
+                game.bowlScore(6)
+                game.bowlScore(2)
+
+                game.bowlScore(9)
+                game.bowlScore(1)
+
+                game.bowlScore(7)
+                game.bowlScore(2)
+
+                game.bowlScore(8)
+                game.bowlScore(2)
+
+                game.bowlScore(9)
+                game.bowlScore(1)
+
+
+                expect(game.scoreSheet[0].rollingScore).toEqual(7)
+                expect(game.scoreSheet[1].rollingScore).toEqual(16)
+                expect(game.scoreSheet[2].rollingScore).toEqual(31)
+                expect(game.scoreSheet[3].rollingScore).toEqual(49)
+                expect(game.scoreSheet[4].rollingScore).toEqual(57)
+                expect(game.scoreSheet[5].rollingScore).toEqual(65)
+                expect(game.scoreSheet[6].rollingScore).toEqual(82)
+                expect(game.scoreSheet[7].rollingScore).toEqual(91)
+                expect(game.scoreSheet[8].rollingScore).toEqual(110)
+
+            });
+
         });
     });
 });

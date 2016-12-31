@@ -36,19 +36,18 @@ $(document).ready(function(){
 
   function underTenFrame( pins ){
      // check Spare
-     if( game.roll === 2 ){
-       if( calculator.sum( game.frameScores ) === 10 ){ spare = new Spare() }
-       moveNextFrame();
-     }
+     if( isSpare() ){ spare = new Spare() }
+
      // check Strike
      if( pins === '10' ){
        game.passStrikeSecondRollScore();
-       moveNextFrame();
+       displayAll();
        strike === false ? ( strike = new Strike() ) : strike.increaseCount();
-     } else {
-       // when it is not strike
-       game.changeRoll();
-     }
+     } else { game.changeRoll() }
+
+     game.increaseFrame();
+     game.clearFrameScores();
+
   }
 
   function isSpare(){
@@ -70,11 +69,6 @@ $(document).ready(function(){
       game.scores[ game.frame - 2 ][2] = spare.addBonus(pins)
       spare = false
     }
-  }
-
-  function moveNextFrame(){
-    game.clearFrameScores();
-    game.increaseFrame();
   }
 
   function displayAll(){

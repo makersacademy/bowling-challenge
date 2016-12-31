@@ -21,10 +21,6 @@ describe ('Deal with Ten pins bowling game', function(){
       expect( game.frameScores ).toEqual([]);
     });
 
-    it('should set strikeBonus a empty array', function(){
-      expect( game.strikeBonus ).toEqual([]);
-    });
-
     it('should set constant for number of Strike pins', function(){
       expect( game.STRIKE_PINS ).toBe( 10 )
     });
@@ -88,8 +84,8 @@ describe ('Deal with Ten pins bowling game', function(){
 
   describe ('functions for changing frame', function(){
 
-    it ('should change 1 to 2 when moved the next frame', function(){
-      game.changeRoll();
+    it ('should change frame 1 to 2 when 2 scores in frameScores', function(){
+      game.frameScores = [1,1]
       game.increaseFrame();
       expect( game.frame ).toBe( 2 );
     });

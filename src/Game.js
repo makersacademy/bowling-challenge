@@ -2,7 +2,6 @@ function Game() {
   'use strict';
   this.scores  = []; //store [[ro11-1, roll-2, bonus]]
   this.frameScores = []; //store  [ro11-1, roll-2]
-  this.strikeBonus = []; //store  [ro11-1, roll-2]
   this.STRIKE_PINS  = 10;
   this.roll  = 1;
   this.frame = 1;
@@ -36,11 +35,11 @@ Game.prototype.changeRoll = function(){
 };
 
 Game.prototype.increaseFrame = function(){
-  if( this.frame < 10 ){ return this.frame ++ }
+  if( this.frame < 10 && this.frameScores.length === 2 ){ return this.frame ++ }
 };
 
 Game.prototype.clearFrameScores = function(){
-  this.frameScores = []
+  if( this.frameScores.length === 2 ){ return this.frameScores = [] }
 };
 
 Game.prototype.isGameFinish = function(){

@@ -25,7 +25,7 @@ $(document).ready(function(){
      displayAll();
 
      // check Spare
-     if( game.roll === 2 && calculator.sum( game.frameScores ) === 10 ){ game.thirdRoll = true }
+     if( isSpare() ){ game.thirdRoll = true }
 
      // check Strike
      if( pins === '10' ){ game.thirdRoll = true }
@@ -61,6 +61,10 @@ $(document).ready(function(){
        // when it is not strike
        game.changeRoll();
      }
+  }
+
+  function isSpare(){
+    return game.roll === 2 && calculator.sum( game.frameScores ) === 10
   }
 
   function passStrikeBonus( pins ){
@@ -104,8 +108,8 @@ $(document).ready(function(){
     var i;
     var j;
     var place;
-    for(i=0; i<game.scores.length; i++){
-      for(j=0; j<game.scores[i].length; j++){
+    for( i=0; i < game.scores.length; i++ ){
+      for( j=0; j < game.scores[i].length; j++ ){
         place = '#' + (i+1) + '-' + (j+1)
         $(place.toString()).text( game.scores[i][j] );
       }

@@ -1,5 +1,6 @@
 describe('Bowling', function() {
     var bowling;
+    var game;
 
     beforeEach(function() {
         game = new Bowling();
@@ -152,8 +153,8 @@ describe('Bowling', function() {
                 for (var i = 0; i < 2; i++) {
                     game.bowlScore(10)
                 }
-                expect(game.scoreSheet[0].score).toEqual(20)
-                expect(game.scoreSheet[1].score).toEqual(40)
+                expect(game.scoreSheet[0].rollingScore).toEqual(20)
+                expect(game.scoreSheet[1].rollingScore).toEqual(40)
             });
 
             it("PERFECT game score to equal 300", function() {
@@ -194,6 +195,7 @@ describe('Bowling', function() {
 
                 game.bowlScore(9)
                 game.bowlScore(1)
+                game.bowlScore(7)
 
 
                 expect(game.scoreSheet[0].rollingScore).toEqual(7)
@@ -205,6 +207,7 @@ describe('Bowling', function() {
                 expect(game.scoreSheet[6].rollingScore).toEqual(82)
                 expect(game.scoreSheet[7].rollingScore).toEqual(91)
                 expect(game.scoreSheet[8].rollingScore).toEqual(110)
+                expect(game.scoreSheet[9].rollingScore).toEqual(127)
 
             });
 

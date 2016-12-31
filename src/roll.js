@@ -19,12 +19,15 @@ Roll.prototype.summedRolls = function() {
 
 Roll.prototype.isStrike = function() {
   if (this._rolls[0] === 10) return true ;
+  else return false;
 };
 
 Roll.prototype.isSpare = function() {
-  if (this._rolls[0] + this._rolls[1] === 10) return true
+  if (this._rolls[0] + this._rolls[1] === 10) return true;
+  else return false;
 };
 
 Roll.prototype.isOpen = function() {
-  if (this._rolls[0] + this._rolls[1] < 10) return true
+  if (this._rolls[0] + this._rolls[1] < 10) return true;
+  else return false;
 };

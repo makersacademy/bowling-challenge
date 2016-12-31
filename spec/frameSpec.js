@@ -10,8 +10,8 @@ describe('Frame', function() {
   });
 
   it('Tests whether the frame has been completed', function() {
-    var roll1 = roll.firstRoll(3)
-    var roll2 = roll.secondRoll(5)
+    var roll1 = roll.firstRoll(3);
+    var roll2 = roll.secondRoll(5);
     expect(frame.completeFrame(roll1, roll2)).toBe(2);
   });
 });

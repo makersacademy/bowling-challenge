@@ -1,12 +1,11 @@
 #Bowling Challenge
 
 [![Build Status](https://travis-ci.org/aabolade/bowling-challenge.svg?branch=master)](https://travis-ci.org/aabolade/bowling-challenge)
-
 [![Coverage Status](https://coveralls.io/repos/github/aabolade/bowling-challenge/badge.svg?branch=master)](https://coveralls.io/github/aabolade/bowling-challenge?branch=master)
 
 Task
 ====
-smkds
+
 
 Program in javascript to count and sum the scores of a bowling game for one player.
 

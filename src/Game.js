@@ -39,7 +39,7 @@ Game.prototype.increaseFrame = function(){
 };
 
 Game.prototype.clearFrameScores = function(){
-  if( this.frameScores.length === 2 ){ return this.frameScores = [] }
+  if( this.frameScores.length === 2 ){ this.frameScores = [] }
 };
 
 Game.prototype.isGameFinish = function(){

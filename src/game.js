@@ -5,12 +5,6 @@ function Game() {
   this.scoreBoard = [];
   this.runningScoreWithoutBonus = [];
   this.totalScore = 0;
-  this.isFirstFrame = true;
-  this.wasLastFrameASpare = false;
-  this.wasLastFrameAStrike = false;
-  this.wereLastTwoFramesBothStrikes = false;
-  this.isGutterGame = false;
-  this.isPerfectGame = false;
 }
 
 Game.prototype.addFrame = function(frame) {

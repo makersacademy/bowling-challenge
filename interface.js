@@ -7,82 +7,77 @@ $(document).ready(function(){
   displayAll();
 
   $('#my-form').submit(function(event) {
-    event.preventDefault();
-    var pins = $('#pins').val();
+      event.preventDefault();
+      var pins = $('#pins').val();
 
-    if( game.finish === false ){
-        $('#game-status').text( "Playing..." );
-        game.frame < 10 ? underTenFrame( pins ) : TenFrame( pins )
-    }
-
+      if( game.finish === false ){
+          $('#game-status').text( "Playing..." );
+          game.frame < 10 ? underTenFrame( pins ) : TenFrame( pins )
+      }
   });
 
- function TenFrame( pins ){
+  function TenFrame( pins ){
 
-     // pass Strike Bonus
-     if( strike ){
-       strike.count > 2 ? game.scores[ game.frame - 3 ][2] = strike.addBonus(pins) : game.scores[ game.frame - 2 ][2] = strike.addBonus(pins)
-       strike.decreaseCount();
-       if( strike.count === 0 ){ strike = false }
-     }
-     // pass Spare Bonus
-     if( spare ){
-       game.scores[ game.frame - 2 ][2] = spare.addBonus(pins)
-       spare = false
-     }
-     game.passScore(pins);
+     passStrikeBonus( pins );
+     passSpareBonus( pins );
+     game.passScore( pins );
      displayAll();
 
      // check Spare
-     if( game.roll === 2 && game.sumFrameScores() === 10 ){ game.spare = true }
+     if( game.roll === 2 && game.sumFrameScores() === 10 ){ game.thirdRoll = true }
 
      // check Strike
-     if( pins === '10' ){ game.strike = true }
+     if( pins === '10' ){ game.thirdRoll = true }
+
+     // check whether this game has finished or not
      if ( game.isGameFinish() ){
        game.finish = true
        $('#game-status').text( "Your score is " + game.sumGameScores() + "!" );
-      }
+     }
+
      game.increaseRoll();
- }
-
-
- function underTenFrame( pins ){
-
-           // pass Strike Bonus
-           if( strike ){
-             strike.count > 2 ? game.scores[ game.frame - 3 ][2] = strike.addBonus(pins) : game.scores[ game.frame - 2 ][2] = strike.addBonus(pins)
-             strike.decreaseCount();
-             if( strike.count === 0 ){ strike = false }
-           }
-           // pass Spare Bonus
-           if( spare ){
-             game.scores[ game.frame - 2 ][2] = spare.addBonus(pins)
-             spare = false
-           }
-
-           game.passScore(pins);
-
-           displayAll();
-
-           // check Spare
-           if( game.roll === 2 ){
-                 if( game.sumFrameScores() === 10 ){ spare = new Spare() }
-                 moveNextFrame();
-           }
-
-           // check Strike
-           if( pins === '10' ){
-                 game.frameScores.push(0)
-                 game.scores[ game.frame - 1 ] = game.frameScores
-                 displayAll();
-                 moveNextFrame();
-                 strike === false ? ( strike = new Strike() ) : strike.increaseCount();
-           } else {
-                 game.changeRoll();
-           }
-
   }
 
+
+  function underTenFrame( pins ){
+
+     passStrikeBonus( pins );
+     passSpareBonus( pins );
+     game.passScore( pins );
+     displayAll();
+     // check Spare
+     if( game.roll === 2 ){
+       if( game.sumFrameScores() === 10 ){ spare = new Spare() }
+       moveNextFrame();
+     }
+     // check Strike
+     if( pins === '10' ){
+       game.passStrikeSecondRollScore();
+       displayAll();
+       moveNextFrame();
+       strike === false ? ( strike = new Strike() ) : strike.increaseCount();
+     } else {
+       // when it is not strike
+       game.changeRoll();
+     }
+  }
+
+  function passStrikeBonus( pins ){
+    if( strike ){
+      if( strike.count > 2 ){
+        game.scores[ game.frame - 3 ][2] = strike.addBonus(pins)
+      } else { game.scores[ game.frame - 2 ][2] = strike.addBonus(pins) }
+      strike.decreaseCount();
+      if( strike.count === 0 ){ strike = false }
+    }
+  }
+
+  function passSpareBonus( pins ){
+    if( spare ){
+      game.scores[ game.frame - 2 ][2] = spare.addBonus(pins)
+      spare = false
+    }
+  }
 
   function moveNextFrame(){
     game.clearFrameScores();
@@ -97,11 +92,11 @@ $(document).ready(function(){
   }
 
   function displayFrame(){
-      $('#frame').text( game.frame );
+    $('#frame').text( game.frame );
   }
 
   function displayRoll(){
-      $('#roll').text( game.roll );
+    $('#roll').text( game.roll );
   }
 
   function displayTable(){

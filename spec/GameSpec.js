@@ -41,6 +41,10 @@ describe ('Deal with Ten pins bowling game', function(){
       expect( game.finish ).toBe( false );
     });
 
+    it('should set third roll flag "false"', function(){
+      expect( game.thirdRoll ).toBe( false );
+    });
+
   });
 
   describe ('functions for passing the number of pins as score', function(){
@@ -51,6 +55,13 @@ describe ('Deal with Ten pins bowling game', function(){
         game.passScore( pins_2 );
         expect( game.frameScores ).toEqual( [5,3] );
         expect( game.scores ).toEqual( [[5,3]] );
+      });
+
+      it ('should store 0 pin at frameScores[1]', function(){
+        game.passScore( pins_1 );
+        game.passStrikeSecondRollScore();
+        expect( game.frameScores ).toEqual( [5,0] );
+        expect( game.scores ).toEqual( [[5,0]] );
       });
 
   });
@@ -111,7 +122,7 @@ describe ('Deal with Ten pins bowling game', function(){
     expect( game.isGameFinish() ).toEqual( false );
     game.roll = 2;
     expect( game.isGameFinish() ).toEqual( true );
-    game.strike = true;
+    game.thirdRoll = true;
     expect( game.isGameFinish() ).toEqual( false );
     game.roll = 3;
     expect( game.isGameFinish() ).toEqual( true );

@@ -7,9 +7,7 @@ function Game() {
   this.roll  = 1;
   this.frame = 1;
   this.finish = false;
-  //flags for only frame 10
-  this.strike = false;
-  this.spare  = false;
+  this.thirdRoll = false;
 }
 
 Game.prototype.passScore = function(user_input){
@@ -22,6 +20,11 @@ Game.prototype.passScore = function(user_input){
     this.scores[ this.frame - 1 ] = this.frameScores
   }
 };
+
+Game.prototype.passStrikeSecondRollScore = function(){
+  this.frameScores.push(0)
+  this.scores[ this.frame - 1 ] = this.frameScores
+}
 
 Game.prototype.sumFrameScores = function(){
   var i;
@@ -61,7 +64,7 @@ Game.prototype.clearFrameScores = function(){
 };
 
 Game.prototype.isGameFinish = function(){
-  if( this.roll === 2 && this.strike === false && this.spare === false ){
+  if( this.roll === 2 && this.thirdRoll === false ){
     return true
   } else if( this.roll === 3 ){
     return true

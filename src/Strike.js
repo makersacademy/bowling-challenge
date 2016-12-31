@@ -1,10 +1,9 @@
-'use strict';
-
 function Strike(){
+  'use strict';
   this.bonus1 = [];
   this.bonus2 = [];
   this.count = 2;
-};
+}
 
 Strike.prototype.addBonus = function(user_input){
   var pins = Number(user_input);

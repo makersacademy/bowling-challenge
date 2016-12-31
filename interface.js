@@ -72,7 +72,7 @@ $(document).ready(function(){
 
            // check Strike
            if( pins === '10' ){
-                 game.frameScores.push('-')
+                 game.frameScores.push(0)
                  game.scores[ game.frame - 1 ] = game.frameScores
                  displayAll();
                  moveNextFrame();
@@ -94,13 +94,6 @@ $(document).ready(function(){
     displayRoll();
     displayTable();
     displayTotalScore();
-    $('#1').text( game.scores );
-    $('#2').text( game.frameScores );
-    if( strike ){
-      $('#3').text( strike.bonus1 );
-      $('#4').text( strike.bonus2 );
-      $('#5').text( strike.count );
-    }
   }
 
   function displayFrame(){

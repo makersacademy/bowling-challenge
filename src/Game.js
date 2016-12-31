@@ -26,26 +26,6 @@ Game.prototype.passStrikeSecondRollScore = function(){
   this.scores[ this.frame - 1 ] = this.frameScores
 }
 
-Game.prototype.sumFrameScores = function(){
-  var i;
-  var sum = 0;
-  for (i=0; i<2; i++){ sum = sum + this.frameScores[i] }
-  return sum
-};
-
-Game.prototype.sumGameScores = function(){
-  var i;
-  var j;
-  var sum = 0;
-
-  for (i=0; i<this.scores.length; i++){
-    for (j=0; j<this.scores[i].length; j++){
-       sum += this.scores[i][j]
-    }
-  }
-  return sum
-};
-
 Game.prototype.increaseRoll = function(){
   this.roll ++
 };

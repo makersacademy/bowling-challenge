@@ -101,22 +101,6 @@ describe ('Deal with Ten pins bowling game', function(){
 
   });
 
-  describe ('functions for sum', function(){
-
-      it ('should sum frame scores', function(){
-        game.passScore( pins_1 );
-        game.passScore( pins_2 );
-        expect( game.sumFrameScores() ).toEqual( 8 );
-      });
-
-      it ('should sum game scores', function(){
-        game.passScore( pins_1 );
-        game.passScore( pins_2 );
-        expect( game.sumGameScores() ).toEqual( 8 );
-      });
-
-  });
-
   it ('check whether the game finished or not', function(){
     game.frame = 10;
     expect( game.isGameFinish() ).toEqual( false );

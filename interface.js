@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+  var calculator = new Calculator();
   var game = new Game();
   var strike = false;
   var spare  = false;
@@ -24,7 +25,7 @@ $(document).ready(function(){
      displayAll();
 
      // check Spare
-     if( game.roll === 2 && game.sumFrameScores() === 10 ){ game.thirdRoll = true }
+     if( game.roll === 2 && calculator.sum( game.frameScores ) === 10 ){ game.thirdRoll = true }
 
      // check Strike
      if( pins === '10' ){ game.thirdRoll = true }
@@ -32,7 +33,7 @@ $(document).ready(function(){
      // check whether this game has finished or not
      if ( game.isGameFinish() ){
        game.finish = true
-       $('#game-status').text( "Your score is " + game.sumGameScores() + "!" );
+       $('#game-status').text( "Your score is " + calculator.sum( game.scores ) + "!" );
      }
 
      game.increaseRoll();
@@ -47,7 +48,7 @@ $(document).ready(function(){
      displayAll();
      // check Spare
      if( game.roll === 2 ){
-       if( game.sumFrameScores() === 10 ){ spare = new Spare() }
+       if( calculator.sum( game.frameScores ) === 10 ){ spare = new Spare() }
        moveNextFrame();
      }
      // check Strike
@@ -112,7 +113,7 @@ $(document).ready(function(){
   }
 
   function displayTotalScore(){
-    $('#total').text( game.sumGameScores() );
+    $('#total').text( calculator.sum( game.scores ) );
   }
 
 })

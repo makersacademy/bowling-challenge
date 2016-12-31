@@ -53,45 +53,6 @@ describe ('Deal with Ten pins bowling game', function(){
         expect( game.scores ).toEqual( [[5,3]] );
       });
 
-      // it ('should store strike bonus to scores', function(){
-      //   game.changeRoll();
-      //   game.passStrike();
-      //   game.setStrike();
-      //   game.increaseFrame();
-      //   game.passScore( pins_1 )
-      //   game.passScore( pins_2 )
-      //   game.passStrikeBonus( pins_1 )
-      //   game.passStrikeBonus( pins_2 )
-      //   expect( game.strikeBonus ).toEqual( [5,3] );
-      //   expect( game.scores ).toEqual( [[10,0,8],[5,3]] );
-      //   expect( game.sumGameScores() ).toEqual( 26 );
-      // });
-
-      // it ('should store spare bonus to scores', function(){
-      //   game.changeRoll();
-      //   game.passScore( 2 )
-      //   game.passScore( 8 )
-      //   game.setSpare();
-      //   game.clearFrameScores();
-      //   game.increaseFrame();
-      //   game.passScore( pins_1 )
-      //   game.passScore( pins_2 )
-      //   game.passSpareBonus( pins_1 )
-      //   expect( game.scores ).toEqual( [[2,8,5],[5,3]] );
-      //   expect( game.sumGameScores() ).toEqual( 23 );
-      // });
-
-      it ('should store the score when strike', function(){
-        game.passStrike();
-        expect( game.scores ).toEqual( [[10,'-']] );
-      });
-
-      // it ('should clear strikeBonus after passing strikeBonus', function(){
-      //   game.strikeBonus = [5,3];
-      //   game.clearStrikeBonus()
-      //   expect( game.strikeBonus ).toEqual( [] );
-      // });
-
   });
 
   describe ('functions for changing roll', function(){
@@ -129,44 +90,6 @@ describe ('Deal with Ten pins bowling game', function(){
 
   });
 
-
-  describe ('functions for checking or setting a flag', function(){
-
-    // it ('should set strike "true"', function(){
-    //   game.setStrike();
-    //   expect( game.strike ).toBe( true );
-    // });
-    //
-    // it ('should check strike status', function(){
-    //   game.setStrike();
-    //   expect( game.strike ).toBe( true );
-    // });
-    //
-    // it ('should check strike flag', function(){
-    //   expect( game.isStrikeFlag() ).toEqual( false )
-    //   game.setStrike();
-    //   expect( game.isStrikeFlag() ).toEqual( true )
-    // });
-    //
-    // it ('should check spare flag', function(){
-    //   expect( game.isSpareFlag() ).toEqual( false )
-    //   game.setSpare();
-    //   expect( game.isSpareFlag() ).toEqual( true )
-    // });
-
-    // it ('should turn false Strike flag', function(){
-    //   game.clearStrike();
-    //   expect( game.strike ).toBe( false )
-    // });
-    //
-    // it ('should turn false Spare flag', function(){
-    //   game.clearSpare();
-    //   expect( game.spare ).toBe( false )
-    // });
-
-  });
-
-
   describe ('functions for sum', function(){
 
       it ('should sum frame scores', function(){
@@ -183,31 +106,7 @@ describe ('Deal with Ten pins bowling game', function(){
 
   });
 
-  it ('check whether the roll is last or not', function(){
-    game.roll  = 3;
-    var spare  = null;
-    var strike = null;
-    expect( game.isLastRoll(spare,strike) ).toEqual( true );
-    game.roll  = 2;
-    var spare  = null;
-    var strike = null;
-    expect( game.isLastRoll(spare,strike) ).toEqual( false );
-    game.roll  = 2;
-    var spare  = 1;
-    var strike = null;
-    expect( game.isLastRoll(spare,strike) ).toEqual( true );
-    game.roll  = 2;
-    var spare  = null;
-    var strike = 1;
-    expect( game.isLastRoll(spare,strike) ).toEqual( true );
-    game.roll  = 1;
-    var spare  = null;
-    var strike = 1;
-    expect( game.isLastRoll(spare,strike) ).toEqual( false );
-  });
-
   it ('check whether the game finished or not', function(){
-    pending();
     game.frame = 10;
     expect( game.isGameFinish() ).toEqual( false );
     game.roll = 2;

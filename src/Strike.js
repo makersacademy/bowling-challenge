@@ -20,10 +20,6 @@ Strike.prototype.addBonus = function(user_input){
   return this._sumBonus();
 };
 
-Strike.prototype.clearBonus = function(){
-  if( this.bonus.length >= 2 ){ this.bonus = [] };
-};
-
 Strike.prototype._sumBonus = function(){
   var i;
   var sum = 0;

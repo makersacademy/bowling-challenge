@@ -13,39 +13,28 @@ $(document).ready(function(){
 
       if( game.finish === false ){
           $('#game-status').text( "Playing..." );
+          passStrikeBonus( pins );
+          passSpareBonus( pins );
+          game.passScore( pins );
+          displayAll();
           game.frame < 10 ? underTenFrame( pins ) : TenFrame( pins )
       }
   });
 
   function TenFrame( pins ){
-
-     passStrikeBonus( pins );
-     passSpareBonus( pins );
-     game.passScore( pins );
-     displayAll();
-
      // check Spare
      if( isSpare() ){ game.thirdRoll = true }
-
      // check Strike
      if( pins === '10' ){ game.thirdRoll = true }
-
      // check whether this game has finished or not
      if ( game.isGameFinish() ){
        game.finish = true
        $('#game-status').text( "Your score is " + calculator.sum( game.scores ) + "!" );
      }
-
      game.increaseRoll();
   }
 
-
   function underTenFrame( pins ){
-
-     passStrikeBonus( pins );
-     passSpareBonus( pins );
-     game.passScore( pins );
-     displayAll();
      // check Spare
      if( game.roll === 2 ){
        if( calculator.sum( game.frameScores ) === 10 ){ spare = new Spare() }
@@ -54,7 +43,6 @@ $(document).ready(function(){
      // check Strike
      if( pins === '10' ){
        game.passStrikeSecondRollScore();
-       displayAll();
        moveNextFrame();
        strike === false ? ( strike = new Strike() ) : strike.increaseCount();
      } else {

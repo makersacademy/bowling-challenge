@@ -13,16 +13,17 @@ $( document ).ready(function(){
 
   $('#firstRoll1').submit(function(event) {
     event.preventDefault();
-    var score = $("#1roll1").val();
-    console.log(score)
+    var score = Number($("#1roll1").val());
     frame1.firstRoll(score);
+    console.log(frame1)
     $('#firstRoll1').text(frame1.rollOne);
   });
-  $('#firstRoll2').submit(function(event) {
+  $('#secondRoll1').submit(function(event) {
     event.preventDefault();
-    var score = $("#1roll2").val();
-    console.log(score)
+    var score = Number($("#1roll2").val());
     frame1.secondRoll(score);
-    $('#firstRoll2').text(frame1.rollTwo);
+    console.log(frame1)
+    $('#secondRoll1').text(frame1.rollTwo);
   });
+
 });

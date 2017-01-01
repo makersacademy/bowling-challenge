@@ -1,0 +1,77 @@
+body {
+  max-width: 700px;
+  margin: 30px auto;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+
+}
+
+table,th {
+  margin: auto;
+  background: #000;
+  color: #FFF;
+  width: 700px;
+  border: 2px solid;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+.btn-table {
+  margin: auto;
+  background: #FFF;
+  width: 600px;
+  border: none;
+}
+
+th.no-border {
+  background: #FFF;
+  border: none;
+}
+
+  th.no-border-black {
+  background: #000;
+  border: none;
+  padding: 20px;
+}
+
+.btn {
+  background: #FFF;
+  border-top: 3px solid #C00;
+  border-left: 3px solid #09C;
+  border-right: 3px solid #9C0;
+  border-bottom: 3px solid #FC0;
+  color:#111;
+  width: 150px;
+  padding: 10px 0;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.start-btn {
+  background: #FFF;
+  border-top: 3px solid #C00;
+  border-left: 3px solid #09C;
+  border-right: 3px solid #9C0;
+  border-bottom: 3px solid #FC0;
+  color:#111;
+  width: 150px;
+  padding: 10px 0;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.btn:hover{
+  background: #999;
+  color: #FFF;
+  border-top: 3px solid #FC0;
+  border-left: 3px solid #9C0;
+  border-right: 3px solid #09C;
+  border-bottom: 3px solid #C00;
+}
+
+.start-btn:hover{
+  background: #999;
+  color: #FFF;
+  border-top: 3px solid #FC0;
+  border-left: 3px solid #9C0;
+  border-right: 3px solid #09C;
+  border-bottom: 3px solid #C00;
+}

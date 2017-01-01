@@ -1,48 +1,79 @@
 $(document).ready(function(){
 
-  var calculator = new Calculator();
-  var game = new Game();
+  var calculator;
+  var game;
   var strike = false;
   var spare  = false;
 
-  displayAll();
+  $('.start-btn').click(function() {
+      if( game ){
+        game.scores = [['-','-','-'],['-','-','-'],['-','-','-'],['-','-','-'],['-','-','-'],['-','-','-'],['-','-','-'],['-','-','-'],['-','-','-'],['-','-','-']]
+        displayAll();
+      }
+      $('#game-status').text("Ready to start a new game :-)");
+      $('#special').text("Press the number you knocked down.");
+      calculator = new Calculator();
+      game = new Game();
+      displayAll();
+  });
 
-  $('#my-form').submit(function(event) {
-      event.preventDefault();
-      var pins = $('#pins').val();
-
-      if( game.finish === false ){
-          $('#game-status').text( "Playing..." );
-          passStrikeBonus( pins );
-          passSpareBonus( pins );
-          game.passScore( pins );
-          displayAll();
-          game.frame < 10 ? underTenFrame( pins ) : TenFrame( pins )
+  $('.btn').click(function() {
+      var pins = this.id;
+      if( game.frameScores[0] + Number(pins) > 10 && game.frame < 10 ){
+        $('#special').text( "You can't knock down more than 10 pins." );
+      } else {
+        if( game.finish === false ){
+            $('#game-status').text("Playing...");
+            $('#special').text( "Press the number you knocked down." );
+            passStrikeBonus( pins );
+            passSpareBonus( pins );
+            game.passScore( pins );
+            displayAll();
+            game.frame < 10 ? underTenFrame( pins ) : TenFrame( pins )
+        }
       }
   });
 
   function TenFrame( pins ){
      // check Spare
-     if( isSpare() ){ game.thirdRoll = true }
+     if( isSpare() ){
+       game.thirdRoll = true
+       $('#special').text( "SPARE!!!!!" )
+      }
      // check Strike
-     if( pins === '10' ){ game.thirdRoll = true }
+     if( pins === '10' ){
+       game.thirdRoll = true
+       $('#special').text( "STRIKE!!!!!" );
+     }
      // check whether this game has finished or not
      if ( game.isGameFinish() ){
        game.finish = true
        $('#game-status').text( "Your score is " + calculator.sum( game.scores ) + "!" );
+       if( calculator.sum( game.scores ) === 300 ){
+         $('#special').text( "Perfect Game!!!!!!!!!!!" );
+       } else if( calculator.sum( game.scores ) === 0 ){
+         $('#special').text( "Gutter Game... what's wrong with you..." );
+       } else {
+         $('#special').text( "Press [ NEW GAME ] to start again" );
+       }
      }
      game.increaseRoll();
   }
 
   function underTenFrame( pins ){
+
      // check Spare
-     if( isSpare() ){ spare = new Spare() }
+     if( isSpare() ){
+       spare = new Spare()
+       $('#special').text( "SPARE!!!!!" );
+     }
 
      // check Strike
      if( pins === '10' ){
        game.passStrikeSecondRollScore();
        displayAll();
        strike === false ? ( strike = new Strike() ) : strike.increaseCount();
+       $('#special').text( "STRIKE!!!!!" );
      } else { game.changeRoll() }
 
      game.increaseFrame();
@@ -72,18 +103,13 @@ $(document).ready(function(){
   }
 
   function displayAll(){
-    displayFrame();
-    displayRoll();
+    displayProcess();
     displayTable();
     displayTotalScore();
   }
 
-  function displayFrame(){
-    $('#frame').text( game.frame );
-  }
-
-  function displayRoll(){
-    $('#roll').text( game.roll );
+  function displayProcess(){
+    $('#where').text( 'Frame ' + game.frame + ', Roll ' + game.roll );
   }
 
   function displayTable(){

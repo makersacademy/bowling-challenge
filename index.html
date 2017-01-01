@@ -1,89 +1,140 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Caluclater For Ten pins bowling</title>
+    <title>Calculator For Ten pin bowling</title>
     <script src="jquery.js"></script>
     <script src="interface.js"></script>
     <script src="src/Calculator.js"></script>
     <script src="src/Game.js"></script>
     <script src="src/Strike.js"></script>
     <script src="src/Spare.js"></script>
-    <LINK href="public/style.css" rel="stylesheet" type="text/css">
+    <script src="partial/score.html"></script>
+    <link href="public/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   </head>
   <body>
-    <h1>Caluclater for ten pins bowling</h1>
-    <h3>Frame <span id="frame"></span>, Roll <span id="roll"></span></h3>
-    <h3><span id="game-status">Ready to start</span></h3>
 
-    <section>
+
     <table class="score-table">
       <tr>
-          <th>Roll \ Frame</th>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-          <th>6</th>
-          <th>7</th>
-          <th>8</th>
-          <th>9</th>
-          <th colspan=3 >10</th>
+          <th class="no-border-black">
+            <h2>Calculator for Ten Pin Bowling</h2>
+            <br>
+            <h3><span id="game-status">Welcome!</span></h3>
+            <h3><span id="special">Press [ NEW GAME ] to start...</span></h3>
+            <br>
+            <h3><span id="where">-----</span></h3>
+          </th>
       </tr>
       <tr>
-          <th>1</th>
-          <th><span id="1-1">-</span></th>
-          <th><span id="2-1">-</span></th>
-          <th><span id="3-1">-</span></th>
-          <th><span id="4-1">-</span></th>
-          <th><span id="5-1">-</span></th>
-          <th><span id="6-1">-</span></th>
-          <th><span id="7-1">-</span></th>
-          <th><span id="8-1">-</span></th>
-          <th><span id="9-1">-</span></th>
-          <th rowspan=3><span id="10-1">-</span></th>
-          <th rowspan=3><span id="10-2">-</span></th>
-          <th rowspan=3><span id="10-3">-</span></th>
-      </tr>
-      <tr>
-          <th>2</th>
-          <th><span id="1-2">-</span></th>
-          <th><span id="2-2">-</span></th>
-          <th><span id="3-2">-</span></th>
-          <th><span id="4-2">-</span></th>
-          <th><span id="5-2">-</span></th>
-          <th><span id="6-2">-</span></th>
-          <th><span id="7-2">-</span></th>
-          <th><span id="8-2">-</span></th>
-          <th><span id="9-2">-</span></th>
-      </tr>
-      <tr>
-          <th>Bonus</th>
-          <th><span id="1-3">-</span></th>
-          <th><span id="2-3">-</span></th>
-          <th><span id="3-3">-</span></th>
-          <th><span id="4-3">-</span></th>
-          <th><span id="5-3">-</span></th>
-          <th><span id="6-3">-</span></th>
-          <th><span id="7-3">-</span></th>
-          <th><span id="8-3">-</span></th>
-          <th><span id="9-3">-</span></th>
-      </tr>
-      <tr>
-          <th colspan="13">Total: <span id="total"></span></th>
+          <th class="no-border-black">
+            <table class="score-table">
+              <tr>
+                  <th>Frame Roll</th>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>4</th>
+                  <th>5</th>
+                  <th>6</th>
+                  <th>7</th>
+                  <th>8</th>
+                  <th>9</th>
+                  <th colspan=3 >10</th>
+              </tr>
+              <tr>
+                  <th>1</th>
+                  <th><span id="1-1">-</span></th>
+                  <th><span id="2-1">-</span></th>
+                  <th><span id="3-1">-</span></th>
+                  <th><span id="4-1">-</span></th>
+                  <th><span id="5-1">-</span></th>
+                  <th><span id="6-1">-</span></th>
+                  <th><span id="7-1">-</span></th>
+                  <th><span id="8-1">-</span></th>
+                  <th><span id="9-1">-</span></th>
+                  <th rowspan=3><span id="10-1">-</span></th>
+                  <th rowspan=3><span id="10-2">-</span></th>
+                  <th rowspan=3><span id="10-3">-</span></th>
+              </tr>
+              <tr>
+                  <th>2</th>
+                  <th><span id="1-2">-</span></th>
+                  <th><span id="2-2">-</span></th>
+                  <th><span id="3-2">-</span></th>
+                  <th><span id="4-2">-</span></th>
+                  <th><span id="5-2">-</span></th>
+                  <th><span id="6-2">-</span></th>
+                  <th><span id="7-2">-</span></th>
+                  <th><span id="8-2">-</span></th>
+                  <th><span id="9-2">-</span></th>
+              </tr>
+              <tr>
+                  <th>Bonus</th>
+                  <th><span id="1-3">-</span></th>
+                  <th><span id="2-3">-</span></th>
+                  <th><span id="3-3">-</span></th>
+                  <th><span id="4-3">-</span></th>
+                  <th><span id="5-3">-</span></th>
+                  <th><span id="6-3">-</span></th>
+                  <th><span id="7-3">-</span></th>
+                  <th><span id="8-3">-</span></th>
+                  <th><span id="9-3">-</span></th>
+              </tr>
+              <tr>
+                  <th colspan="13">Total: <span id="total"></span></th>
+              </tr>
+            </table>
+          </th>
       </tr>
     </table>
 
+    <br><br>
 
-
-      <h1 id="score"></h1>
-    </section>
-    <section>
-      <form id="my-form">
-          <input id="pins" type="text" placeholder="Enter pins"></input>
-          <input type="submit"></input>
-      </form>
-    </section>
+    <table class="btn-table">
+      <tr>
+          <th class="no-border">
+              <form><input type="button" value="1" class="btn" id="1"></input></form>
+          </th>
+          <th class="no-border">
+              <form><input type="button" value="2" class="btn" id="2"></input></form>
+          </th>
+          <th class="no-border">
+              <form><input type="button" value="3" class="btn" id="3"></input></form>
+          </th>
+          <th class="no-border">
+              <form><input type="button" value="NEW GAME" class="start-btn"></input></form>
+          </th>
+      </tr>
+      <tr>
+        <th class="no-border">
+            <form><input type="button" value="4" class="btn" id="4"></input></form>
+        </th>
+        <th class="no-border">
+            <form><input type="button" value="5" class="btn" id="5"></input></form>
+        </th>
+        <th class="no-border">
+            <form><input type="button" value="6" class="btn" id="6"></input></form>
+        </th>
+        <th class="no-border">
+            <form><input type="button" value="GUTTER" class="btn" id="0"></input></form>
+        </th>
+      </tr>
+      <tr>
+        <th class="no-border">
+            <form><input type="button" value="7" class="btn" id="7"></input></form>
+        </th>
+        <th class="no-border">
+            <form><input type="button" value="8" class="btn" id="8"></input></form>
+        </th>
+        <th class="no-border">
+            <form><input type="button" value="9" class="btn" id="9"></input></form>
+        </th>
+        <th class="no-border">
+            <form><input type="button" value="STRIKE" class="btn" id="10"></input></form>
+        </th>
+    </tr>
+    </table>
 
   </body>
 </html>

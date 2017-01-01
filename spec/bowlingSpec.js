@@ -160,7 +160,7 @@ describe('Bowling', function() {
                 expect(game.scoreSheet[1].rollingScore).toEqual(40)
             });
 
-            xit("PERFECT game score to equal 300", function() {
+            it("PERFECT game score to equal 300", function() {
                 for (var i = 0; i < 12; i++) {
                     game.bowlScore(10)
                 }

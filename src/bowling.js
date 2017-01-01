@@ -52,7 +52,6 @@ function Bowling() {
       if (this.scoreSheet[this.currentFrame.number - 1].score ===
         10 && this.scoreSheet[this.currentFrame.number - 1].strike ===
         false) {
-        console.log("spare Frame points")
         this.bonusPoints = 1
       }
     }
@@ -64,10 +63,12 @@ function Bowling() {
       throw new Error("your have not entered a number, try again");
     } else {
       if (score < 0 || score > 10) {
-        throw new Error("your have not entered a number between 0 and 10, try again")
+        throw new Error
+        ("your have not entered a number between 0 and 10, try again")
       }
       if (score > this.currentFrame.RemainingPins) {
-        throw new Error("Cannot score higher than available spares");
+        throw new Error
+        ("Cannot score higher than available spares");
       }
     }
   };
@@ -114,9 +115,7 @@ function Frame(frameNumber, previousScore) {
     this.calcRemainingPins(score)
     this.checkForStrike(score)
     if (this.score === 10) {
-        console.log("pre third round extentsion")
       if (this.number === 10) {
-        console.log("third round extentsion")
         this.maxBowls = 3
         this.resetRemainingPins()
       } else {

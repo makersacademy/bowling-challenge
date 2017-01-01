@@ -49,7 +49,9 @@ function Bowling() {
 
   Bowling.prototype.checkSpareBonusPoints = function() {
     if (this.scoreSheet.length !== 0) {
-      if (this.scoreSheet[this.currentFrame.number - 1].score === 10 && this.scoreSheet[this.currentFrame.number - 1].strike === false) {
+      if (this.scoreSheet[this.currentFrame.number - 1].score ===
+        10 && this.scoreSheet[this.currentFrame.number - 1].strike ===
+        false) {
         console.log("spare Frame points")
         this.bonusPoints = 1
       }
@@ -103,22 +105,32 @@ function Frame(frameNumber, previousScore) {
   this.rollingScore = previousScore
 
   Frame.prototype.saveFrameScore = function(score) {
+    var entry = {
+      Throw: this.bowlNumber,
+      Score: score
+    }
+    this.bowls.push(entry)
+
     this.calcRemainingPins(score)
-    if (score === 10) {
-      this.strike = true
+    this.checkForStrike(score)
+    if (this.score === 10) {
+        console.log("pre third round extentsion")
       if (this.number === 10) {
+        console.log("third round extentsion")
         this.maxBowls = 3
         this.resetRemainingPins()
       } else {
         this.maxBowls = this.bowlNumber
       }
     }
-    var entry = {
-      Throw: this.bowlNumber,
-      Score: score
-    }
-    this.bowls.push(entry)
     this.nextBowl();
+  }
+
+  Frame.prototype.checkForStrike = function(score) {
+    if (score === 10) {
+      this.strike = true
+      this.resetRemainingPins()
+    }
   }
 
   Frame.prototype.calcRemainingPins = function(bowl) {

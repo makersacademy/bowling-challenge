@@ -1,6 +1,8 @@
+// "use strict";
+
 describe('Bowling', function() {
     var bowling;
-    var game;
+    // var game;
     var message;
 
     beforeEach(function() {
@@ -150,7 +152,7 @@ describe('Bowling', function() {
                 }).toThrowError(message)
             });
 
-            xit("double the following two throws scores if a stike occurs", function() {
+            it("double the following two throws scores if a stike occurs", function() {
                 for (var i = 0; i < 2; i++) {
                     game.bowlScore(10)
                 }
@@ -166,7 +168,7 @@ describe('Bowling', function() {
 
             });
 
-            xit("sample game to get scores totalling", function() {
+            it("sample game to get scores totalling", function() {
                 game.bowlScore(6)
                 game.bowlScore(1)
 

@@ -106,5 +106,12 @@ describe('Frame', function() {
       frame.roll(0);
       expect(frame.isSpecial()).toBe(false);
     });
+
+    it('is not special anymore once it has got its bonus', function () {
+      frame.roll(2);
+      frame.roll(8);
+      frame.bonus([3])
+      expect(frame.isSpecial()).toBe(false);
+    });
   });
 });

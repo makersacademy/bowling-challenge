@@ -15,7 +15,6 @@
 ```
 
 
-
 Bowling Challenge
 =================
 
@@ -28,12 +27,13 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-How to install and use the game:
+How to install, test and use the game:
 -------------------------------
 ```
 $ git clone https://github.com/Unicornelia/bowling-challenge
 $ cd bowling-challenge
-$ open SpecRunner.html
+$ open SpecRunner.html in browser (Chrome, Firefox etc.) -> tests are passing
+$ open console (cmd + alt + j) and create Game, roll pins and calculate score) [e.g. game = new Game; game.roll(3); game.roll(4); etc. game.finalSum();]
 ```
 
 Game interface:

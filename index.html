@@ -1,0 +1,100 @@
+<!DOCTYPE hmtl>
+<html>
+</head>
+<title>Bowling Challenge</title>
+<link href = "css/style.css" rel="stylesheet" type='text/css' >
+<script src='src/game.js'></script>
+<script src='src/jquery.js'></script>
+<script src='src/interactive.js'></script>
+</head>
+<body>
+  <div id='title'>
+    Bowling
+  </div>
+  <div>
+    <div class="lane">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      width="63.167px" height="63px" viewBox="0 0 63.167 63" enable-background="new 0 0 63.167 63" xml:space="preserve" class="bowling-ball">
+      <title>bowling_ball</title>
+      <ellipse fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="43.5" cy="23.833" rx="12.917" ry="17.833"/>
+      <g>
+        <path d="M20.143,3.99c3.681-1.574,7.541-2.36,11.581-2.36s7.9,0.787,11.581,2.36c3.681,1.573,6.856,3.695,9.526,6.366
+        c2.67,2.67,4.793,5.846,6.365,9.526c1.573,3.68,2.36,7.541,2.36,11.581s-0.787,7.9-2.36,11.581
+        c-1.572,3.681-3.695,6.856-6.365,9.526c-2.67,2.671-5.847,4.793-9.526,6.367c-3.681,1.572-7.541,2.358-11.581,2.358
+        s-7.9-0.787-11.581-2.358c-3.681-1.574-6.856-3.696-9.526-6.367c-2.671-2.67-4.793-5.846-6.366-9.526
+        c-1.573-3.68-2.36-7.541-2.36-11.581s0.787-7.9,2.36-11.581c1.573-3.681,3.695-6.856,6.366-9.526
+        C13.287,7.685,16.462,5.562,20.143,3.99z M38.119,30.735c1.176,0,2.18-0.418,3.016-1.253c0.835-0.835,1.253-1.84,1.253-3.016
+        c0-1.176-0.418-2.18-1.253-3.016c-0.836-0.835-1.84-1.252-3.016-1.252c-1.175,0-2.18,0.417-3.016,1.252
+        c-0.835,0.835-1.252,1.84-1.252,3.016c0,1.176,0.417,2.18,1.252,3.016C35.939,30.317,36.944,30.735,38.119,30.735z M44.136,17.42
+        c0.854-0.836,1.281-1.84,1.281-3.016c0-1.175-0.428-2.18-1.281-3.015c-0.836-0.835-1.842-1.253-3.016-1.253
+        c-1.176,0-2.181,0.418-3.016,1.253s-1.253,1.84-1.253,3.015c0,1.176,0.418,2.18,1.253,3.016c0.834,0.835,1.84,1.253,3.016,1.253
+        C42.294,18.673,43.3,18.255,44.136,17.42z M45.914,23.466c0,1.175,0.416,2.18,1.252,3.015c0.834,0.835,1.84,1.253,3.016,1.253
+        c1.175,0,2.18-0.418,3.015-1.253s1.253-1.84,1.253-3.015c0-1.175-0.418-2.18-1.253-3.016c-0.834-0.835-1.84-1.252-3.015-1.252
+        c-1.176,0-2.182,0.417-3.016,1.252C46.33,21.286,45.914,22.291,45.914,23.466z"/>
+      </g>
+    </svg>
+  </div>
+</div><br>
+<div id='button'>
+  <input id='roll' class="myButton" type='button' value='Roll'></input>
+</div><br>
+  <div id='bowling'>
+    <div id='frame-one' class='frame'>
+      <p style="font-weight: bold;">1</p><hr>
+      <p id='frame-1-roll-1'><p>
+      <p id='frame-1-roll-2'><p>
+    </div>
+    <div id='frame-two' class='frame'>
+      <p style="font-weight: bold;">2</p><hr>
+      <p id='frame-2-roll-3'><p>
+      <p id='frame-2-roll-4'><p>
+    </div>
+    <div id='frame-three' class='frame'>
+      <p style="font-weight: bold;">3</p><hr>
+      <p id='frame-3-roll-5'><p>
+      <p id='frame-3-roll-6'><p>
+    </div>
+    <div id='frame-four' class='frame'>
+      <p style="font-weight: bold;">4</p><hr>
+      <p id='frame-4-roll-7'><p>
+      <p id='frame-4-roll-8'><p>
+    </div>
+    <div id='frame-five' class='frame'>
+      <p style="font-weight: bold;">5</p><hr>
+      <p id='frame-5-roll-9'><p>
+      <p id='frame-5-roll-10'><p>
+    </div>
+    <div id='frame-six' class='frame'>
+      <p style="font-weight: bold;">6</p><hr>
+      <p id='frame-6-roll-11'><p>
+      <p id='frame-6-roll-12'><p>
+    </div>
+    <div id='frame-seven' class='frame'>
+      <p style="font-weight: bold;">7</p><hr>
+      <p id='frame-7-roll-13'><p>
+      <p id='frame-7-roll-14'><p>
+    </div>
+    <div id='frame-eight' class='frame'>
+      <p style="font-weight: bold;">8</p><hr>
+      <p id='frame-8-roll-15'><p>
+      <p id='frame-8-roll-16'><p>
+    </div>
+    <div id='frame-9' class='frame'>
+      <p style="font-weight: bold;">9</p><hr>
+      <p id='frame-9-roll-17'><p>
+      <p id='frame-9-roll-18'><p>
+    </div>
+    <div id='frame-10' class='frame'>
+      <p style="font-weight: bold;">10</p><hr>
+      <p id='frame-10-roll-19'><p>
+      <p id='frame-10-roll-20'><p>
+    </div>
+    <div id='score' class='frame'>
+      <p style="font-weight: bold;">Total Score</p><hr>
+      <p id='total-score'></p>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -2,8 +2,8 @@ $(document).ready(function(){
 
   var calculator;
   var game;
-  var strike = false;
-  var spare  = false;
+  var strike;
+  var spare;
 
   $('.start-btn').click(function() {
       if( game ){
@@ -14,6 +14,8 @@ $(document).ready(function(){
       $('#special').text("Press the number you knocked down.");
       calculator = new Calculator();
       game = new Game();
+      strike = false;
+      spare  = false;
       displayAll();
   });
 

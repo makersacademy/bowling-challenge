@@ -81,11 +81,30 @@ describe('Frame', function() {
       expect(frame.finalScore()).toBe(11);
     });
 
-    it('calculates the bonus for a spare based on the next 1 roll', function() {
+    it('ignores second roll score when adding bonus to spare', function() {
       frame.roll(5);
       frame.roll(5);
       frame.bonus([1, 5]);
       expect(frame.finalScore()).toBe(11);
+    });
+  });
+
+  describe('special frame', function() {
+    it('is true for a strike', function () {
+      frame.roll(10);
+      expect(frame.isSpecial()).toBe(true);
+    });
+
+    it('is true for a spare', function () {
+      frame.roll(2);
+      frame.roll(8);
+      expect(frame.isSpecial()).toBe(true);
+    });
+
+    it('is false for a anything else but stirke and spare', function () {
+      frame.roll(1);
+      frame.roll(0);
+      expect(frame.isSpecial()).toBe(false);
     });
   });
 });

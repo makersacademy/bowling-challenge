@@ -38,3 +38,7 @@ Frame.prototype.bonus = function(bonusValue) {
 Frame.prototype.finalScore = function() {
   return this.internalScore() + this._bonus;
 };
+
+Frame.prototype.isSpecial = function() {
+  return this.isStrike() || this.isSpare();
+};

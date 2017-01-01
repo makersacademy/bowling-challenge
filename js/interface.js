@@ -11,6 +11,14 @@ $( document ).ready(function(){
   var frame10 = new Frame();
   var scorer = new bowlingScorer();
 
+  var getRoll = function() {
+    $('td').on('click', function() {
+      alert(this.id)
+    });
+  };
+
+  getRoll();
+
   $('#firstRoll1').submit(function(event) {
     event.preventDefault();
     var score = Number($("#1roll1").val());
@@ -30,5 +38,6 @@ $( document ).ready(function(){
     $('#secondRoll1').text(frame1.rollTwo);
     scorer.addFrame(frame1);
   });
+
 
 });

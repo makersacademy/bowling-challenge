@@ -21,7 +21,7 @@ game.roll(3);
 ..............
 game.score();
 ```
-4. Run the test by opening **SpecRunner.html**
+Run the tests by opening **SpecRunner.html**
 
 
 ## Screenshots
@@ -33,7 +33,7 @@ game.score();
 * **JavaScript**
 * **Jasmine** for testing.
 * **JQuery** for the interactive interface.
-* **HTML5** and **CSS3** and **[Codepen]**(http://codepen.io/) for design.
+* **HTML5** and **CSS3** and [Codepen](http://codepen.io/) for design.
 
 ## Future work
 

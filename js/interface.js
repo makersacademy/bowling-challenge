@@ -17,6 +17,10 @@ $( document ).ready(function(){
     frame1.firstRoll(score);
     console.log(frame1)
     $('#firstRoll1').text(frame1.rollOne);
+    if (frame1._isStrike()) {
+      scorer.addFrame(frame1);
+      $('#secondRoll1').text("-");
+    };
   });
   $('#secondRoll1').submit(function(event) {
     event.preventDefault();
@@ -24,6 +28,7 @@ $( document ).ready(function(){
     frame1.secondRoll(score);
     console.log(frame1)
     $('#secondRoll1').text(frame1.rollTwo);
+    scorer.addFrame(frame1);
   });
 
 });

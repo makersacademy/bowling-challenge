@@ -81,8 +81,11 @@ describe('Frame', function() {
       expect(frame.finalScore()).toBe(11);
     });
 
-    // it('stores the bonuses in a separate array', function() {
-    //   frame.bonus();
-    // });
+    it('calculates the bonus for a spare based on the next 1 roll', function() {
+      frame.roll(5);
+      frame.roll(5);
+      frame.bonus([1, 5]);
+      expect(frame.finalScore()).toBe(11);
+    });
   });
 });

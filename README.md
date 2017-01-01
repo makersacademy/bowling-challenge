@@ -6,7 +6,11 @@ This project represents the fifth and sixth weekend challenge at Makers Academy 
 
 The app counts and sums the scores of a bowling game for one player. The logic was written following Uncle Bob's [bowling kata](http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata).
 
+The app works correctly for all the game rules: *Strike*, *Spare*, *Gutter game* and *Perfect game*.
+
 It was challenging to implement the interface with this particular business logic. Because the program is calculating correctly the score once all the rolls are played but it wasn't designed to show the score in real time.
+
+The repository was forked from https://github.com/makersacademy/bowling-challenge
 
 ## Installation and use
 

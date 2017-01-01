@@ -113,5 +113,10 @@ describe('Frame', function() {
       frame.bonus([3])
       expect(frame.isSpecial()).toBe(false);
     });
+
+    it('tells if the frame is the final frame', function() {
+      var frame = new Frame(true);
+      expect(frame.final()).toBe(true);
+    });
   });
 });

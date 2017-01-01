@@ -1,6 +1,7 @@
-var Frame = function() {
+var Frame = function(finalFrame) {
   this._rolls = [];
   this._bonus = null;
+  this._finalFrame = finalFrame;
 };
 
 Frame.prototype.roll = function(value) {
@@ -41,4 +42,8 @@ Frame.prototype.finalScore = function() {
 
 Frame.prototype.isSpecial = function() {
   return (this.isStrike() || this.isSpare()) && this._bonus === null;
+};
+
+Frame.prototype.final = function() {
+  return this._finalFrame === true;
 };

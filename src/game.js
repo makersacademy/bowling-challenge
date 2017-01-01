@@ -12,9 +12,12 @@ Game.prototype.roll = function(score) {
       this._addBonusToFrames(frame._rolls);
     }
     this._frames.push(frame);
-    frame = new this.Frame();
+    if (this.currentFrame() === 9 ) {
+      frame = new this.Frame(true);
+    } else {
+      frame = new this.Frame();
+    }
   }
-
   this._frames.push(frame);
 };
 

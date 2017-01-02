@@ -46,9 +46,9 @@ function Frame() {
 
   Frame.prototype.bowlIndex = function() {
       if (this._firstBowl === true) {
-          return 0 + ((this.frameIndex - 1) * 2)
+          return -1 + ((this.frameIndex) * 2)
         } else {
-          return 1 + ((this.frameIndex - 1) * 2)
+          return ((this.frameIndex) * 2)
         }
   }
 }

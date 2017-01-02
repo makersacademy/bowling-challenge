@@ -17,10 +17,24 @@ describe("Bowling Game: ",function(){
   });
 
   it("should be gutter game when game is over the total score is 0",function(){
-    for(var i = 0; i < 10; i++){
+    for(var i = 0; i < 20; i++){
       game.roll(0);
     };
     expect(game.getTotal()).toEqual(0);
+  });
+
+  xit("should be perfect game when there are 12 strikes",function(){
+    for(var i = 0; i < 12; i++){
+      game.roll(10);
+    }
+    expect(game.getTotal()).toEqual(300);
+  });
+
+  it("should return the total score when the game is over(no strike nor spare)",function() {
+    for(var i = 0; i < 20; i++){
+      game.roll(4);
+    }
+    expect(game.getTotal()).toEqual(80);
   });
 
 });

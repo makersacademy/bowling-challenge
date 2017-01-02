@@ -32,6 +32,13 @@ describe("Game", function() {
       expect(game.framez).toEqual([[22],[6,6]])
     });
 
+    it ("should calculate three strikes in a row", function() {
+      for(var i=0; i < 3; i++){
+        game.recordRoll(10);
+      }
+      expect(game.framez).toEqual([[30],[20],[10]])
+    });
+
     it("should clean the rolls after frame is recorded", function() {
       for(var i=0; i < 2; i++){
         game.recordRoll(6);

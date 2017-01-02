@@ -2,7 +2,6 @@ function Game() {
   this.rolls = [];
   this.framez = [];
   this.result = 0
-  // this.strikes = []
 };
 
 Game.prototype.cleanRolls = function() {
@@ -11,11 +10,6 @@ Game.prototype.cleanRolls = function() {
 
 Game.prototype.recordRoll = function(roll) {
   this.rolls.push(roll);
-  // if (this.isStrike()) {
-  //   this.strikes.push(this.rolls);
-  //   this.cleanRolls();
-  // }
-  // else
   if (this.isFrameCompleted()) {
     this.recordFrame();
   }
@@ -27,12 +21,29 @@ Game.prototype.isStrike = function() {
   return this.rolls[0] === 10
 };
 
-Game.prototype.recordFrame = function() {
-  if (this.framez.length !== 0 && this.framez[this.framez.length - 1][0] === 10) {
+Game.prototype.isLastFrameStrike = function() {
+  return this.framez.length !== 0 && this.framez[this.framez.length - 1][0] === 10
+};
+
+Game.prototype.isDoubleStrike = function() {
+  return this.framez.length >= 2 && this.framez[this.framez.length - 2][0] === 20
+};
+
+Game.prototype.calculateStrike = function() {
+  if (this.isDoubleStrike()) {
+    this.framez[this.framez.length - 2][0] += this.rolls.reduce(function(a, b=0) {
+          return b;
+      }, 0);
+  }
+  if (this.isLastFrameStrike()) {
     this.framez[this.framez.length - 1][0] += this.rolls.reduce(function(a, b=0) {
           return a + b;
       }, 0);
   }
+};
+
+Game.prototype.recordFrame = function() {
+  this.calculateStrike();
   this.framez.push(this.rolls);
   this.cleanRolls();
   if (this.isGameCompleted()) {

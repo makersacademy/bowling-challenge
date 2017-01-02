@@ -31,7 +31,7 @@ describe("Bowling Game: ",function(){
     expect(game.getTotal()).toEqual(0);
   });
 
-  xit("should be perfect game when there are 12 strikes",function(){
+  it("should be perfect game when there are 12 strikes",function(){
     rollMulti(game,12,10);
     expect(game.getTotal()).toEqual(300);
   });

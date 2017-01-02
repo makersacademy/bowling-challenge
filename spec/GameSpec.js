@@ -9,8 +9,8 @@ describe("Game", function() {
       game.recordRoll(4);
       expect(game.rolls).toEqual([4]);
     });
-    it ("should not accept roll results above 10", function() {
-      
+    it ("should not accept non numeric values", function() {
+      expect(function(){game.recordRoll("meow");}).toThrowError("A roll needs to be a number")
     });
   });
 

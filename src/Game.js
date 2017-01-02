@@ -15,7 +15,9 @@ Game.prototype.cleanRolls = function() {
 };
 
 Game.prototype.recordRoll = function(roll) {
-
+  if (typeof roll !== "number") {
+    throw Error("A roll needs to be a number");
+  }
   this.rolls.push(roll);
   this.calculateSpare();
   if (this.isGameCompleted()) {
@@ -25,6 +27,7 @@ Game.prototype.recordRoll = function(roll) {
     this.recordFrame();
   }
 };
+
 Game.prototype.isFrameCompleted = function() {
   return (this.rolls.length === 2 || this.isStrike());
 };

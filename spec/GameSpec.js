@@ -82,6 +82,16 @@ describe("Game", function() {
       }
       expect(game.result).toEqual(0)
     });
+
+    it("calculates spare in tenth frame correctly", function() {
+      for(var i=0; i < 19; i++){
+        game.recordRoll(1);
+      }
+      for(var i=0; i < 3; i++){
+        game.recordRoll(9);
+      }
+      expect(game.result).toEqual(37)
+    });
   });
 
 

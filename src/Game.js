@@ -9,7 +9,12 @@ Game.prototype.cleanRolls = function() {
 };
 
 Game.prototype.recordRoll = function(roll) {
+
   this.rolls.push(roll);
+  this.calculateSpare();
+  if (this.isGameCompleted()) {
+    this.calculateResult();
+  }
   if (this.isFrameCompleted()) {
     this.recordFrame();
   }
@@ -45,14 +50,13 @@ Game.prototype.isLastFrameSpare = function() {
 };
 
 Game.prototype.calculateSpare = function() {
-  if (this.isLastFrameSpare()) {
+  if (this.isLastFrameSpare() && this.rolls.length === 1) {
     this.framez[this.framez.length - 1][1] += this.rolls[0]
   }
 };
 
 Game.prototype.recordFrame = function() {
   this.calculateStrike();
-  this.calculateSpare();
   this.framez.push(this.rolls);
   this.cleanRolls();
   if (this.isGameCompleted()) {
@@ -61,12 +65,14 @@ Game.prototype.recordFrame = function() {
 };
 
 Game.prototype.isRegularEnd = function() {
-  return this.framez.length === 10 && this.framez[this.framez.length - 1][0] !== 10
+  return this.framez.length === 10 && !(this.isLastFrameStrike()) && !(this.isLastFrameSpare())
 }
 
 Game.prototype.isGameCompleted = function () {
   if (this.isRegularEnd()) {
     return true
+  } else if (this.framez.length === 10 && this.isLastFrameSpare()){
+    return this.rolls === 1
   } else {
     return this.framez.length === 12
   }

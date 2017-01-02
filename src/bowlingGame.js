@@ -13,9 +13,9 @@ BowlingGame.prototype.score = function() {
 
   for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
     if (isSpare()) {
-      result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+      result += getSpareScore();
     } else {
-        result += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+        result += getNormalScore();
     }
     rollIndex += 2;
   };
@@ -24,5 +24,13 @@ BowlingGame.prototype.score = function() {
 
   function isSpare(){
     return game.rolls[rollIndex] + game.rolls[rollIndex + 1] === 10;
+  }
+
+  function getSpareScore(){
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2]
+  }
+
+  function getNormalScore(){
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1]
   }
 };

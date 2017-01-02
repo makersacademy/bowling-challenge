@@ -1,6 +1,5 @@
 describe('Bowling', function() {
   var bowling;
-  // var game;
   var message;
 
   beforeEach(function() {

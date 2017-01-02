@@ -139,9 +139,7 @@ function Frame(frameNumber, previousScore) {
       Score: bowl
     }
     this.bowls.push(entry)
-
     this.calcRemainingPins(bowl)
-    // this.checkForStrike(bowl)
     if (this.score === 10) {
       if (this.number === 10) {
         this.maxBowls = 3

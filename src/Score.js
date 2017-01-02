@@ -34,17 +34,25 @@ Score.prototype.totalCalculator = function() {
     total = []
     for (var index = 0; index < this._scores.length; index++) {
     if(this._scores[index].includes("/")) {
-      next = index + 1;
-      if(this._scores[next].includes("/")) {
-        total.push(30); }
+      if(this._scores[index][1]) {
+        next = index + 1;
+        sum = this._scores[next][0] + 10;
+        total.push(sum);
+      }
       else {
-        sum = 10 + this._scores[next][0] + this._scores[next][1];
-        total.push(sum)}
-       }
+        next = index + 1;
+        if(this._scores[next].includes("/")) {
+          total.push(30);
+        }
+        else {
+          sum = 10 + this._scores[next][0] + this._scores[next][1];
+          total.push(sum)
+        }
+      }
+    }
     else
       {sum = this._scores[index][0] + this._scores[index][1];
-      total.push(sum); }
-    };
+      total.push(sum); }}
     this._total = total.reduce(add, 0);
     function add(a,b) { return a + b; }
 };

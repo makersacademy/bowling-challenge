@@ -53,4 +53,14 @@ describe('Bowling Score', function() {
     expect(score._total).toEqual(28);
   });
 
+  it('should calculate the score for a spare', function() {
+    player.bowl.and.returnValue(8);
+    player.secondBowl.and.returnValue(2);
+    score.round();
+    player.bowl.and.returnValue(4);
+    player.secondBowl.and.returnValue(2);
+    score.round();
+    score.totalCalculator();
+    expect(score._total).toEqual(20);
+  });
 });

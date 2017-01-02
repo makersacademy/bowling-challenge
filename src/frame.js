@@ -47,3 +47,14 @@ Frame.prototype.isSpecial = function() {
 Frame.prototype.final = function() {
   return this._finalFrame === true;
 };
+
+Frame.prototype.message = function() {
+  if (this.isFinished() === true) {
+    return 'Your frame is finished, next frame'
+  } else if (this.final() === true) {
+    return 'Last frame, you have 3 rolls max'
+  } else {
+    return 'Keep on rolling'
+  }
+  return this.message;
+};

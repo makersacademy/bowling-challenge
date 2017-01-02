@@ -119,4 +119,42 @@ describe('Frame', function() {
       expect(frame.final()).toBe(true);
     });
   });
+
+  it('delivers a message once the frame is finished', function() {
+    frame.roll(1);
+    frame.roll(4);
+    expect(frame.isFinished()).toBe(true);
+    expect(frame.message()).toEqual('Your frame is finished, next frame');
+  });
+
+  it('delivers a message once the final frame is reached', function() {
+    var frame = new Frame(true);
+    expect(frame.final()).toBe(true);
+    expect(frame.message()).toEqual('Last frame, you have 3 rolls max');
+  });
+
+  it('checks whether the game has been completed', function () {
+    frame.roll(2);
+    frame.roll(8);
+    frame.bonus([3])
+    frame.roll(3);
+    frame.roll(5);
+    frame.roll(3);
+    frame.roll(5);
+    frame.roll(3);
+    frame.roll(5);
+    frame.roll(3);
+    frame.roll(5);
+    frame.roll(3);
+    frame.roll(5);
+    frame.roll(3);
+    frame.roll(5);
+    frame.roll(3);
+    frame.roll(5);
+    frame.roll(3);
+    frame.roll(5);
+    frame.roll(3);
+    frame.roll(5);
+    expect(frame.finalScore()).toBe(85);
+  });
 });

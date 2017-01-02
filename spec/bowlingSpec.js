@@ -111,7 +111,7 @@ describe('Bowling', function() {
         it("expects a frame to accept strike on second bowl", function() {
             game.bowlScore(0)
             game.bowlScore(10)
-            expect(game.scoreSheet[0].strike).toBe(true)
+            expect(game.scoreSheet[0].strike).toBe(false)
         });
 
         it("expects a strike to close and save the frame to the scoresheet", function() {
@@ -152,23 +152,16 @@ describe('Bowling', function() {
                 }).toThrowError(message)
             });
 
-            xit("double the following two throws scores if a stike occurs", function() {
+            it("double the following two throws scores if a stike occurs", function() {
                 for (var i = 0; i < 2; i++) {
                     game.bowlScore(10)
                 }
+                game.bowlScore(0)
                 expect(game.scoreSheet[0].rollingScore).toEqual(20)
-                expect(game.scoreSheet[1].rollingScore).toEqual(40)
+                expect(game.scoreSheet[1].rollingScore).toEqual(30)
             });
 
-            xit("PERFECT game score to equal 300", function() {
-                for (var i = 0; i < 12; i++) {
-                    game.bowlScore(10)
-                }
-                expect(game.scoreSheet[9].rollingScore).toEqual(300)
-
-            });
-
-            it("sample game to get scores totalling", function() {
+            it("sample game 1", function() {
                 game.bowlScore(6)
                 game.bowlScore(1)
 
@@ -213,6 +206,28 @@ describe('Bowling', function() {
                 expect(game.scoreSheet[9].rollingScore).toEqual(127)
 
             });
+
+
+            xit("small sample game 2", function() {
+                for (var i = 0; i < 3; i++) {
+                    game.bowlScore(10)
+                }
+                game.bowlScore(0)
+                game.bowlScore(1)
+                expect(game.scoreSheet[0].rollingScore).toEqual(30)
+                expect(game.scoreSheet[1].rollingScore).toEqual(50)
+                expect(game.scoreSheet[2].rollingScore).toEqual(61)
+                expect(game.scoreSheet[3].rollingScore).toEqual(62)
+            });
+
+            it("PERFECT game score to equal 300", function() {
+                for (var i = 0; i < 12; i++) {
+                    game.bowlScore(10)
+                }
+                expect(game.scoreSheet[9].rollingScore).toEqual(300)
+
+            });
+
 
         });
     });

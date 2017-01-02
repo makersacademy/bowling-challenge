@@ -44,4 +44,5 @@ Bowling Challenge
 ### TODO:
 
 * Finish calculation of Strike score multipliers
+* Resolve JSHint issues
 * Add jQuery Interface.

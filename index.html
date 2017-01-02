@@ -37,8 +37,8 @@
         <th colspan="2">Frame Bonus</th>
         <th colspan="2">Frame Bonus 2</th>
       </tr>
-      <tr>
-        <td id="frame1" colspan="2"></th>
+      <tr data-role="frames">
+        <td id="frame1" data-frame="1" colspan="2"></th>
         <td id="frame2" colspan="2"></th>
         <td id="frame3" colspan="2"></th>
         <td id="frame4" colspan="2"></th>
@@ -51,9 +51,9 @@
         <td id="frameBonus" colspan="2"></th>
         <td id="frameBonus2" colspan="2"></th>
       </tr>
-      <tr>
-        <td id="bowl1"></th>
-        <td id="bowl2"></th>
+      <tr data-role="bowls">
+        <td id="bowl1" data-bowl="1" data-frame="1"></th>
+        <td id="bowl2" data-bowl="2" data-frame="1"></th>
         <td id="bowl3"></th>
         <td id="bowl4"></th>
         <td id="bowl5"></th>
@@ -98,8 +98,8 @@
     </p>
 
     <script src="jquery.js"></script>
-    <!-- <script src="src/game.js"></script> -->
     <script src="src/frame.js"></script>
+    <script src="src/game.js"></script>
     <script src="interface.js"></script>
 
   </body>

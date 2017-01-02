@@ -41,12 +41,6 @@ describe ("Frame", function () {
       frame.reset();
       expect(frame.secondScore).toEqual(0);
     })
-
-    it('returns the frame firstBowl to true', function() {
-      frame._firstBowl = false
-      frame.reset();
-      expect(frame._firstBowl).toEqual(true);
-    })
   })
 
   describe('Update Frame Index', function () {
@@ -64,5 +58,27 @@ describe ("Frame", function () {
       frame.bowl(9)
       expect(frame.frameIndex).toEqual(1)
     })
+  })
+
+  describe('Show bowl index', function () {
+      it('shows that the player is on bowl 1 at the start of the game', function() {
+        expect(frame.bowlIndex()).toEqual(1)
+      })
+
+      it('shows that the player is on bowl 2 after the first bowl', function() {
+        frame.bowl(6)
+        expect(frame.bowlIndex()).toEqual(2)
+      })
+
+      it('shows that the player is on bowl 3 after the second bowl', function() {
+        frame.bowl(6)
+        frame.bowl(3)
+        expect(frame.bowlIndex()).toEqual(3)
+      })
+
+      it('shows that the player is on bowl 3 after a strike in the first bowl', function() {
+        frame.bowl(10)
+        expect(frame.bowlIndex()).toEqual(3)
+      })
   })
 })

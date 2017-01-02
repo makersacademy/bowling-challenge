@@ -33,7 +33,7 @@ How to install, test and use the game:
 $ git clone https://github.com/Unicornelia/bowling-challenge
 $ cd bowling-challenge
 $ open SpecRunner.html in browser (Chrome, Firefox etc.) -> tests are passing
-$ open console (cmd + alt + j) and create Game, roll pins and calculate score) [e.g. game = new Game; game.roll(3); game.roll(4); etc. game.finalSum();]
+$ open console (cmd + alt + j) and create Game, roll pins and calculate score) [e.g. game = new Game(Frame); game.roll(3); game.roll(4); etc. game.finalSum();]
 ```
 
 Game interface:

@@ -3,7 +3,7 @@ function Frame() {
   this.firstScore = 0
   this.secondScore = 0
   this._firstBowl = true
-
+  this.frameIndex = 1
 
     Frame.prototype.checkPinValidity = function(pins) {
       if (pins < 0 || pins + this.firstScore > 10) {
@@ -11,8 +11,14 @@ function Frame() {
       }
     }
 
+    Frame.prototype.updateFrameIndex = function() {
+      this.frameIndex +=1;
+    }
+
   Frame.prototype.firstBowl = function(pins) {
+    this.reset();
     if (pins === 10) {
+      this.updateFrameIndex();
       return pins;
     } else {
       this._firstBowl = !this._firstBowl; return pins;
@@ -20,11 +26,9 @@ function Frame() {
   }
 
   Frame.prototype.secondBowl = function(pins) {
-    if (this.firstScore + pins === 10) {
+      this._firstBowl = !this._firstBowl;
+      this.updateFrameIndex();
       return pins;
-    } else {
-      this._firstBowl = !this._firstBowl; return pins;
-    }
   }
 
   Frame.prototype.bowl = function(pins) {
@@ -38,7 +42,13 @@ function Frame() {
   Frame.prototype.reset = function() {
     this.firstScore = 0
     this.secondScore = 0
-    this._firstBowl = true
   }
 
+  Frame.prototype.bowlIndex = function() {
+      if (this._firstBowl === true) {
+          return 0 + ((this.frameIndex - 1) * 2)
+        } else {
+          return 1 + ((this.frameIndex - 1) * 2)
+        }
+  }
 }

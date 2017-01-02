@@ -47,6 +47,22 @@ describe ("Frame", function () {
       frame.reset();
       expect(frame._firstBowl).toEqual(true);
     })
+  })
 
+  describe('Update Frame Index', function () {
+    it('increases the frame index by 1 after the second bowl of a frame', function() {
+      frame.updateFrameIndex()
+      expect(frame.frameIndex).toEqual(2)
+    })
+
+    it('increases the frame index by 1 after a strike in the first bowl of a frame', function () {
+      frame.bowl(10)
+      expect(frame.frameIndex).toEqual(2)
+    })
+
+    it('Does not increase the frame index after a first bowl of a frame < 10', function () {
+      frame.bowl(9)
+      expect(frame.frameIndex).toEqual(1)
+    })
   })
 })

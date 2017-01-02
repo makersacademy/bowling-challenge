@@ -19,6 +19,7 @@ function Bowling () {
 }
 
 Bowling.prototype.enterScore = function(number) {
+  if (this.gameOver === false) {
   if (number >= 0 && number <= 10 ) {
     if (this.go === 1 && this.frame < MAXIMUM_NUMBER_FRAMES) {
       this.firstGo(number)}
@@ -31,6 +32,9 @@ Bowling.prototype.enterScore = function(number) {
   }
   else {
     throw new Error("Cannot enter score: please enter a valid number")
+  }}
+  else {
+    throw new Error("Cannot enter score: game is complete")
   }
 };
 
@@ -154,14 +158,18 @@ Bowling.prototype.firstGoNotStrikeNormal = function(number) {
 }
 
 Bowling.prototype.secondGo = function(number) {
-  if (this.unscoredStrikes > 0) {
-    this.secondGoUnscoredStrikes(number);
-  }
-  else if (this.firstBall + number === 10) {
-    this.secondGoHalfStrike(number)
-  }
+  if (number + this.firstBall < 11) {
+    if (this.unscoredStrikes > 0) {
+      this.secondGoUnscoredStrikes(number);
+    }
+    else if (this.firstBall + number === 10) {
+      this.secondGoHalfStrike(number)
+    }
+    else {
+      this.secondGoNormal(number)
+    }}
   else {
-    this.secondGoNormal(number)
+    throw new Error("Cannot enter score: please enter a valid number")
   }
 }
 

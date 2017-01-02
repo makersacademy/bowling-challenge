@@ -3,7 +3,7 @@ function Bowling() {
   this.currentFrame = {}
   this.maxFrames = 10
   this.gameOver = false
-  this.bonusPoints = 0
+  this.spareBonusPoints = 0
   this.strikeBonusPoints = 0
 
   Bowling.prototype.newGame = function() {
@@ -14,7 +14,7 @@ function Bowling() {
     var previousScore = 0
     if (this.scoreSheet.length !== 0) {
       previousScore = this.scoreSheet[this.currentFrame.number - 1]
-      .rollingScore
+        .rollingScore
     }
     this.currentFrame = new Frame(this.scoreSheet.length + 1, previousScore)
   }
@@ -30,8 +30,8 @@ function Bowling() {
       this.addStrikeBonusPoints(bowl);
     }
 
-    if (this.bonusPoints > 0) {
-      this.addBonusPoints(bowl);
+    if (this.spareBonusPoints > 0) {
+      this.addSpareBonusPoints(bowl);
     }
 
     this.currentFrame.saveFrameScore(bowl)
@@ -53,131 +53,134 @@ function Bowling() {
       if (this.scoreSheet[this.currentFrame.number - 1].score ===
         10 && this.scoreSheet[this.currentFrame.number - 1].strike ===
         false) {
-          this.bonusPoints = 1
-        }
+        this.spareBonusPoints = 1
       }
     }
+  }
 
-    Bowling.prototype.addBonusPoints = function(bowl) {
-      this.scoreSheet[this.currentFrame.number - 2].rollingScore += bowl
-      this.currentFrame.rollingScore += bowl
-      this.bonusPoints--
-    }
+  Bowling.prototype.addSpareBonusPoints = function(bowl) {
+    this.scoreSheet[this.currentFrame.number - 2].rollingScore += bowl
+    this.currentFrame.rollingScore += bowl
 
-    Bowling.prototype.addStrikeBonusPoints = function(bowl) {
-      this.scoreSheet[this.currentFrame.number - 2].rollingScore += bowl
-      this.currentFrame.rollingScore += bowl
+    this.spareBonusPoints--
+  }
 
-      if (this.currentFrame.number > 3){
-        if (this.scoreSheet[this.currentFrame.number - 2].strike &&
-          this.scoreSheet[this.currentFrame.number - 3].strike){
+  Bowling.prototype.addStrikeBonusPoints = function(bowl) {
+    this.scoreSheet[this.currentFrame.number - 2].rollingScore += bowl
+    this.currentFrame.rollingScore += bowl
 
+    if (this.currentFrame.number > 2) {
+      if (this.scoreSheet[this.currentFrame.number - 2].strike &&
+        this.scoreSheet[this.currentFrame.number - 3].strike) {
+        if (bowl === 10) {
+          if (this.currentFrame.bowlNumber < 2) {
             this.scoreSheet[this.currentFrame.number - 2].rollingScore += bowl
+          }
+          if (this.currentFrame.bowlNumber < 2) {
             this.scoreSheet[this.currentFrame.number - 3].rollingScore += bowl
-            this.currentFrame.rollingScore += bowl
           }
-        }
-        this.strikeBonusPoints--
-
-      }
-
-      Bowling.prototype.checkScore = function(bowl) {
-        if (isNaN(bowl)) {
-          throw new Error("your have not entered a number, try again");
-        } else {
-          if (bowl < 0 || bowl > 10) {
-            throw new Error
-            ("your have not entered a number between 0 and 10, try again")
-          }
-          if (bowl > this.currentFrame.RemainingPins) {
-            throw new Error
-            ("Cannot score higher than available spares");
-          }
-        }
-      };
-
-      Bowling.prototype.saveFrame = function(frame) {
-        this.scoreSheet.push(frame);
-        this.checkSpareBonusPoints();
-        this.checkStrikeBonusPoints();
-        this.checkGameEnd();
-        this.newFrame()
-      }
-
-      Bowling.prototype.checkGameEnd = function() {
-        if (this.scoreSheet.length >= this.maxFrames &&
-          this.currentFrame.bowlNumber > this.currentFrame.maxBowls) {
-            this.gameOver = true;
-          }
-        }
-
-        Bowling.prototype.checkGameOver = function() {
-          if (this.gameOver === true) {
-            this.currentFrame = {}
-            throw new Error("Game Over")
-          }
+          this.currentFrame.rollingScore += bowl
         }
       }
+    }
 
-      function Frame(frameNumber, previousScore) {
-        this.maxBowls = 2
-        this.bowlNumber = 1
-        this.bowls = []
-        this.RemainingPins = 10
-        this.number = frameNumber
-        this.strike = false
-        this.score = 0
-        this.rollingScore = previousScore
+    this.strikeBonusPoints--
+  }
 
-        Frame.prototype.saveFrameScore = function(bowl) {
-          var entry = {
-            Throw: this.bowlNumber,
-            Score: bowl
-          }
-          this.bowls.push(entry)
-
-          this.calcRemainingPins(bowl)
-          this.checkForStrike(bowl)
-          if (this.score === 10) {
-            if (this.number === 10) {
-              this.maxBowls = 3
-              this.resetRemainingPins();
-            } else {
-              this.maxBowls = this.bowlNumber
-            }
-          }
-          this.resetPinCheck(bowl)
-          this.nextBowl();
-        }
-
-        Frame.prototype.checkForStrike = function(bowl) {
-          if (bowl === 10 && (this.bowls < 1 || this.bowls.length === 3)) {
-            this.strike = true
-          }
-        }
-
-        Frame.prototype.calcRemainingPins = function(bowl) {
-          this.RemainingPins -= bowl
-        }
-
-
-        Frame.prototype.resetPinCheck = function(bowl) {
-          if (bowl === 10)
-          {
-            this.RemainingPins = 10
-          }
-        }
-
-        Frame.prototype.resetRemainingPins = function(bowl) {
-          this.RemainingPins = 10
-        }
-
-        Frame.prototype.saveScore = function(bowl) {
-          this.score += bowl
-          this.rollingScore += bowl
-        }
-
-        Frame.prototype.nextBowl = function() {
-          this.bowlNumber++
-        }
+  Bowling.prototype.checkScore = function(bowl) {
+    if (isNaN(bowl)) {
+      throw new Error("your have not entered a number, try again");
+    } else {
+      if (bowl < 0 || bowl > 10) {
+        throw new Error("your have not entered a number between 0 and 10, try again")
       }
+      if (bowl > this.currentFrame.RemainingPins) {
+        throw new Error("Cannot score higher than available spares");
+      }
+    }
+  };
+
+  Bowling.prototype.saveFrame = function(frame) {
+    this.scoreSheet.push(frame);
+    this.checkSpareBonusPoints();
+    this.checkStrikeBonusPoints();
+    this.checkGameEnd();
+    this.newFrame()
+  }
+
+  Bowling.prototype.checkGameEnd = function() {
+    if (this.scoreSheet.length >= this.maxFrames &&
+      this.currentFrame.bowlNumber > this.currentFrame.maxBowls) {
+      this.gameOver = true;
+    }
+  }
+
+  Bowling.prototype.checkGameOver = function() {
+    if (this.gameOver === true) {
+      this.currentFrame = {}
+      throw new Error("Game Over")
+    }
+  }
+}
+
+function Frame(frameNumber, previousScore) {
+  this.maxBowls = 2
+  this.bowlNumber = 1
+  this.bowls = []
+  this.RemainingPins = 10
+  this.number = frameNumber
+  this.strike = false
+  this.score = 0
+  this.rollingScore = previousScore
+
+  Frame.prototype.saveFrameScore = function(bowl) {
+    var entry = {
+      Throw: this.bowlNumber,
+      Score: bowl
+    }
+    this.bowls.push(entry)
+
+    this.calcRemainingPins(bowl)
+    // this.checkForStrike(bowl)
+    if (this.score === 10) {
+      if (this.number === 10) {
+        this.maxBowls = 3
+        this.resetRemainingPins();
+      } else {
+        this.maxBowls = this.bowlNumber
+      }
+    }
+    this.resetPinCheck(bowl)
+    this.nextBowl();
+  }
+
+  Frame.prototype.checkForStrike = function(bowl) {
+    if (bowl === 10 && (this.bowls.length < 1 || this.bowls.length === 2)) {
+      this.strike = true
+    }
+  }
+
+  Frame.prototype.calcRemainingPins = function(bowl) {
+    this.RemainingPins -= bowl
+  }
+
+
+  Frame.prototype.resetPinCheck = function(bowl) {
+    if (bowl === 10) {
+      this.RemainingPins = 10
+    }
+  }
+
+  Frame.prototype.resetRemainingPins = function(bowl) {
+    this.RemainingPins = 10
+  }
+
+  Frame.prototype.saveScore = function(bowl) {
+    this.score += bowl
+    this.rollingScore += bowl
+  }
+
+  Frame.prototype.nextBowl = function() {
+    this.bowlNumber++
+  }
+}

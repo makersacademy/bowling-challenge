@@ -175,6 +175,22 @@ describe("Bowling Game", function() {
 
       })
 
+  describe("a gutter game", function() {
+
+    beforeEach(function() {
+      spyOn(game.pins, 'firstRoll').and.returnValue(0);
+      spyOn(game.pins, 'secondRoll').and.returnValue(0);
+    })
+
+    it("a player never hits a pin a scores 0", function() {
+      for(count=0;count<20;count++) {
+        game.playBall()
+      }
+      expect(game.getCurrentScore()).toEqual(0)
+    })
+
+      })
+
   describe("a perfect game", function() {
 
     beforeEach(function() {

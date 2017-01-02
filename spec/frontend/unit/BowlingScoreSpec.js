@@ -13,7 +13,7 @@ describe("Bowling Game: ",function(){
     game = new Game();
   });
 
-  it("should have score = 0 when the game starts",function(){
+  it("should have 0 score when the game starts",function(){
     expect(game.getTotal()).toEqual(0);
   });
 
@@ -33,7 +33,7 @@ describe("Bowling Game: ",function(){
   });
 
   describe("no strike nor spare", function(){
-    
+
     it("should return the total score", function(){
       rollMulti(game,18,0);
       game.roll(4);

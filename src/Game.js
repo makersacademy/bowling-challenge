@@ -2,7 +2,7 @@ function Game() {
   this.rolls = [];
   this.framez = [];
   this.result = 0
-};
+}
 
 if (!Array.prototype.last){
     Array.prototype.last = function(n){

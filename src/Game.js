@@ -14,10 +14,21 @@ Game.prototype.cleanRolls = function() {
   this.rolls = [];
 };
 
-Game.prototype.recordRoll = function(roll) {
+Game.prototype.isRollNumber = function(roll) {
   if (typeof roll !== "number") {
     throw Error("A roll needs to be a number");
   }
+};
+
+Game.prototype.isRollCorrect = function(roll) {
+  if (roll > 10) {
+    throw Error("Hey, no cheating! There are only 10 pins per frame!");
+  }
+};
+
+Game.prototype.recordRoll = function(roll) {
+  this.isRollNumber(roll);
+  this.isRollCorrect(roll);
   this.rolls.push(roll);
   this.calculateSpare();
   if (this.isGameCompleted()) {
@@ -64,8 +75,15 @@ Game.prototype.calculateSpare = function() {
   }
 };
 
+Game.prototype.isFrameCorrect = function() {
+  if (this.rolls[0] + this.rolls[1] > 10) {
+    throw Error("Hey, no cheating! There are only 10 pins per frame!")
+  }
+};
+
 Game.prototype.recordFrame = function() {
   this.calculateStrike();
+  this.isFrameCorrect();
   this.framez.push(this.rolls);
   this.cleanRolls();
   if (this.isGameCompleted()) {

@@ -10,7 +10,13 @@ describe("Game", function() {
       expect(game.rolls).toEqual([4]);
     });
     it ("should not accept non numeric values", function() {
-      expect(function(){game.recordRoll("meow");}).toThrowError("A roll needs to be a number")
+      var message = "A roll needs to be a number"
+      expect(function(){game.recordRoll("meow");}).toThrowError(message)
+    });
+
+    it ("should not accept numbers greater than 10", function() {
+      var message = "Hey, no cheating! There are only 10 pins per frame!"
+      expect(function(){game.recordRoll(11);}).toThrowError(message)
     });
   });
 
@@ -27,6 +33,12 @@ describe("Game", function() {
         game.recordRoll(4);
       }
       expect(game.rolls).toEqual([])
+    });
+
+    it("should not record a regular frame greater than ten", function() {
+      game.recordRoll(6);
+      var message = "Hey, no cheating! There are only 10 pins per frame!"
+      expect(function(){game.recordRoll(6);}).toThrowError(message)
     });
 
     describe("calculateStrike", function() {
@@ -90,9 +102,10 @@ describe("Game", function() {
       for(var i=0; i < 19; i++){
         game.recordRoll(1);
       }
-      for(var i=0; i < 3; i++){
+      for(var i=0; i < 2; i++){
         game.recordRoll(9);
       }
+      game.recordRoll(1);
       expect(game.result).toEqual(37)
     });
   });

@@ -19,32 +19,46 @@ describe("Game", function() {
       expect(game.framez).toEqual([[4,4]])
     });
 
-    it("should record a frame after a strike", function() {
-      game.recordRoll(10);
-      expect(game.framez).toEqual([[10]])
-    });
-
-    it("should calculate correct score for a strike", function() {
-      game.recordRoll(10);
-      for(var i=0; i < 2; i++){
-        game.recordRoll(4);
-      }
-      expect(game.framez).toEqual([[18],[4,4]])
-    });
-
-    it ("should calculate three strikes in a row", function() {
-      for(var i=0; i < 3; i++){
-        game.recordRoll(10);
-      }
-      expect(game.framez).toEqual([[30],[20],[10]])
-    });
-
     it("should clean the rolls after frame is recorded", function() {
       for(var i=0; i < 2; i++){
         game.recordRoll(4);
       }
       expect(game.rolls).toEqual([])
     });
+
+    describe("calculateStrike", function() {
+      it("should record a frame after a strike", function() {
+        game.recordRoll(10);
+        expect(game.framez).toEqual([[10]])
+      });
+
+      it("should calculate correct score for a strike", function() {
+        game.recordRoll(10);
+        for(var i=0; i < 2; i++){
+          game.recordRoll(4);
+        }
+        expect(game.framez).toEqual([[18],[4,4]])
+      });
+
+      it ("should calculate three strikes in a row", function() {
+        for(var i=0; i < 3; i++){
+          game.recordRoll(10);
+        }
+        expect(game.framez).toEqual([[30],[20],[10]])
+      });
+    });
+
+    describe("calculateSpare", function() {
+      it ("should calculate correct score for a spare", function() {
+        game.recordRoll(7);
+        for(var i=0; i < 2; i++){
+          game.recordRoll(3);
+        }
+        game.recordRoll(5);
+        expect(game.framez).toEqual([[7,6],[3,5]])
+      });
+    });
+
   });
 
   describe("calculateResult", function() {

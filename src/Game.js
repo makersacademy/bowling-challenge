@@ -31,9 +31,7 @@ Game.prototype.isDoubleStrike = function() {
 
 Game.prototype.calculateStrike = function() {
   if (this.isDoubleStrike()) {
-    this.framez[this.framez.length - 2][0] += this.rolls.reduce(function(a, b=0) {
-          return b;
-      }, 0);
+    this.framez[this.framez.length - 2][0] += this.rolls[0]
   }
   if (this.isLastFrameStrike()) {
     this.framez[this.framez.length - 1][0] += this.rolls.reduce(function(a, b=0) {
@@ -42,8 +40,19 @@ Game.prototype.calculateStrike = function() {
   }
 };
 
+Game.prototype.isLastFrameSpare = function() {
+  return this.framez.length !== 0 && this.framez[this.framez.length - 1].length === 2 && this.framez[this.framez.length - 1][0] + this.framez[this.framez.length - 1][1] === 10
+};
+
+Game.prototype.calculateSpare = function() {
+  if (this.isLastFrameSpare()) {
+    this.framez[this.framez.length - 1][1] += this.rolls[0]
+  }
+};
+
 Game.prototype.recordFrame = function() {
   this.calculateStrike();
+  this.calculateSpare();
   this.framez.push(this.rolls);
   this.cleanRolls();
   if (this.isGameCompleted()) {

@@ -1,3 +1,5 @@
+"use strict";
+
 var Game = function(){
   this.score = 0;
   this.rolls = [];

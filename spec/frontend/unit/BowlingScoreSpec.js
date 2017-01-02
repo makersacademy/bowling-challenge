@@ -1,10 +1,10 @@
 "use strict";
 
-describe("Bowling Game: ",function(){
+describe("Bowling Game: ", function(){
   var game;
 
-  var rollMulti = function(game,nRolls,pins) {
-    for(var i = 0; i < nRolls; i++){
+  var rollMulti = function(game,nBalls,pins) {
+    for(var i = 0; i < nBalls; i++){
       game.roll(pins);
     }
   }
@@ -13,7 +13,7 @@ describe("Bowling Game: ",function(){
     game = new Game();
   });
 
-  it("should have 0 score when the game starts",function(){
+  it("should have 0 score when the game starts", function(){
     expect(game.getTotal()).toEqual(0);
   });
 
@@ -21,28 +21,27 @@ describe("Bowling Game: ",function(){
     expect(game.rolls).toEqual([]);
   });
 
-  it("should store the number of pins knocked down by each roll",function(){
+  it("should store the number of pins knocked down by each roll", function(){
     game.roll(4);
     expect(game.rolls[0]).toEqual(4);
   });
 
-  it("gutter game",function(){
+  it("gutter game", function(){
     rollMulti(game,20,0);
     expect(game.getTotal()).toEqual(0);
   });
 
-  it("perfect game",function(){
+  it("perfect game", function(){
     rollMulti(game,12,10);
     expect(game.getTotal()).toEqual(300);
   });
 
-  it("all spares", function() {
-    for(var i = 0; i < 10; i++){
-      game.roll(4);
-      game.roll(6);
+  it("all spares", function(){
+    for(var i = 0; i < 20; i++){
+      game.roll(5);
     }
     game.roll(4);
-    expect(game.getTotal()).toEqual(140);
+    expect(game.getTotal()).toEqual(149);
   });
 
   describe("no strike nor spare", function(){

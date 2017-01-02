@@ -59,8 +59,13 @@ Game.prototype.recordFrame = function() {
     this.calculateResult();
   }
 };
+
+Game.prototype.isRegularEnd = function() {
+  return this.framez.length === 10 && this.framez[this.framez.length - 1][0] !== 10
+}
+
 Game.prototype.isGameCompleted = function () {
-  if (this.framez.length >= 10 && this.framez[this.framez.length - 1][0] !== 10) {
+  if (this.isRegularEnd()) {
     return true
   } else {
     return this.framez.length === 12
@@ -80,6 +85,7 @@ Game.prototype.cleanFramez = function() {
 };
 
 Game.prototype.calculateResult = function() {
+  this.result = 0;
   this.cutExtraFramez();
   var allRolls = this.framez.reduce(function(a, b) {
     return a.concat(b);

@@ -1,4 +1,4 @@
-describe("game", function() {
+describe("Game", function() {
   var game;
 
   beforeEach(function() {
@@ -75,7 +75,15 @@ describe("game", function() {
       }
       expect(game.result).toEqual(300)
     });
+
+    it("calculates a gutter game", function() {
+      for(var i=0; i < 20; i++){
+        game.recordRoll(0);
+      }
+      expect(game.result).toEqual(0)
+    });
   });
+
 
 
 

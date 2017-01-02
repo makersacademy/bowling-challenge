@@ -34,7 +34,6 @@ I want to see scores for my 2 throws per turn separately from the total for the 
 
 ### TODO
 
-
 As a bowler,
 So that I don't accidentally enter a wrong score
 I want to actively confirm that my score for a turn is what it is.

@@ -12,7 +12,7 @@ function Bowling () {
   this.secondBall = 0;
   this.unscoredStrikes = 0;
   this.unscoredHalfStrike = false;
-  this.gameOver = true;
+  this.gameOver = false;
 }
 
 Bowling.prototype.enterScore = function(number) {

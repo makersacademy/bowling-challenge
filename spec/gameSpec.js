@@ -9,12 +9,12 @@ describe('Game', function() {
 
 it('can roll a gutter game', function() {
   rollMany(0,20);
-  expect(game.score()).toEqual(0);
+  expect(game.finalScore()).toEqual(0);
 })
 
 it('can roll all ones', function () {
   rollMany(1,20);
-  expect(game.score()).toEqual(20);
+  expect(game.finalScore()).toEqual(20);
 })
 
   it('can roll a spare', function() {
@@ -22,7 +22,7 @@ it('can roll all ones', function () {
     game.roll(5);
     game.roll(3);
     rollMany(0,17);
-    expect(game.score()).toEqual(16);
+    expect(game.finalScore()).toEqual(16);
   })
 
 var rollMany = function(pins, rolls){
@@ -35,11 +35,11 @@ it('can roll a strike', function() {
   game.roll(5);
   game.roll(3);
   rollMany(0,16);
-  expect(game.score()).toEqual(26);
+  expect(game.finalScore()).toEqual(26);
 })
 
 it('can roll a perfect game', function() {
   rollMany(10,12);
-  expect(game.score()).toEqual(300);
+  expect(game.finalScore()).toEqual(300);
 })
 });

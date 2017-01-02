@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-![Alt text](/Users/courtneyosborn/Documents/projects/course_week_5/weekend_challenge/Bowling/bowling-challenge/bowling-challenge/img/Screen Shot 2016-12-29 at 17.29.24.png)
+![Alt text](images/Screen Shot 2016-12-29 at 17.29.24.png)
 
 Download and Run Tests:
 -----------------------

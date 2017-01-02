@@ -39,4 +39,4 @@ $ open console (cmd + alt + j) and create Game, roll pins and calculate score) [
 Game interface:
 --------------
 
-![Screenshot](https://images/interface.png)
+![Screenshot](images/interface.png)

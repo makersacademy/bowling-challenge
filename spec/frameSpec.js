@@ -6,11 +6,11 @@ describe ("Frame", function () {
 
   describe('first bowl', function(){
     it('adds the first bowl to the frame score', function(){
-        expect(frame.firstBowl(8)).toEqual(8);
+        expect(frame.doBowl(8)).toEqual(8);
     });
 
     it('returns a value of 10 when the first bowl knocks down 10 pins', function(){
-        expect(frame.firstBowl(10)).toEqual(10);
+        expect(frame.doBowl(10)).toEqual(10);
     });
   });
 
@@ -43,42 +43,5 @@ describe ("Frame", function () {
     })
   })
 
-  describe('Update Frame Index', function () {
-    it('increases the frame index by 1 after the second bowl of a frame', function() {
-      frame.updateFrameIndex()
-      expect(frame.frameIndex).toEqual(2)
-    })
 
-    it('increases the frame index by 1 after a strike in the first bowl of a frame', function () {
-      frame.bowl(10)
-      expect(frame.frameIndex).toEqual(2)
-    })
-
-    it('Does not increase the frame index after a first bowl of a frame < 10', function () {
-      frame.bowl(9)
-      expect(frame.frameIndex).toEqual(1)
-    })
-  })
-
-  describe('Show bowl index', function () {
-      it('shows that the player is on bowl 1 at the start of the game', function() {
-        expect(frame.bowlIndex()).toEqual(1)
-      })
-
-      it('shows that the player is on bowl 2 after the first bowl', function() {
-        frame.bowl(6)
-        expect(frame.bowlIndex()).toEqual(2)
-      })
-
-      it('shows that the player is on bowl 3 after the second bowl', function() {
-        frame.bowl(6)
-        frame.bowl(3)
-        expect(frame.bowlIndex()).toEqual(3)
-      })
-
-      it('shows that the player is on bowl 3 after a strike in the first bowl', function() {
-        frame.bowl(10)
-        expect(frame.bowlIndex()).toEqual(3)
-      })
-  })
 })

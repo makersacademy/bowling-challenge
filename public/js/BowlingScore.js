@@ -9,16 +9,18 @@ var Game = function(){
   }
 
   this.getTotal = function(){
-    this.score = this.rolls.reduce( (a, b) => a + b , 0);
-    for(var i = 0; i < 12; i++){
+    this.score = this.rolls.reduce( (a, b) => a + b, 0);
+
+    for(var i = 0; i < this.rolls.length; i++){
       if(this.rolls[i] === 10){
         strikeCount++;
       }
     }
-    if(strikeCount === 12){
+
+    if(strikeCount === this.rolls.length && this.rolls.length !== 0){
       this.score = 300;
     }
-
+    
     return this.score;
   }
 

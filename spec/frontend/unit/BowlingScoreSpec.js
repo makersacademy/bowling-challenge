@@ -36,7 +36,7 @@ describe("Bowling Game: ",function(){
     expect(game.getTotal()).toEqual(300);
   });
 
-  xit("all spares", function() {
+  it("all spares", function() {
     for(var i = 0; i < 10; i++){
       game.roll(4);
       game.roll(6);

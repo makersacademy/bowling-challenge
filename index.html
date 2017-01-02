@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling</title>
+    <style>
+    table {
+      font-family: ariel, sans-serif;
+      border-collapse: collapse;
+      width: 20px;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: centre;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th colspan="2">Frame 1</th>
+        <th colspan="2">Frame 2</th>
+        <th colspan="2">Frame 3</th>
+        <th colspan="2">Frame 4</th>
+        <th colspan="2">Frame 5</th>
+        <th colspan="2">Frame 6</th>
+        <th colspan="2">Frame 7</th>
+        <th colspan="2">Frame 8</th>
+        <th colspan="2">Frame 9</th>
+        <th colspan="2">Frame 10</th>
+        <th colspan="2">Frame Bonus</th>
+        <th colspan="2">Frame Bonus 2</th>
+      </tr>
+      <tr data-role="frames">
+        <td id="frame1" data-frame="1" colspan="2"></th>
+        <td id="frame2" data-frame="2"  colspan="2"></th>
+        <td id="frame3" data-frame="3"  colspan="2"></th>
+        <td id="frame4" data-frame="4"  colspan="2"></th>
+        <td id="frame5" data-frame="5"  colspan="2"></th>
+        <td id="frame6" data-frame="6"  colspan="2"></th>
+        <td id="frame7" data-frame="7"  colspan="2"></th>
+        <td id="frame8" data-frame="8"  colspan="2"></th>
+        <td id="frame9" data-frame="9"  colspan="2"></th>
+        <td id="frame10" data-frame="10"  colspan="2"></th>
+        <td id="frameBonus" data-frame="11"  colspan="2"></th>
+        <td id="frameBonus2" data-frame="12"  colspan="2"></th>
+      </tr>
+      <tr data-role="bowls">
+        <td id="bowl1" data-bowl="1" data-frame="1"></th>
+        <td id="bowl2" data-bowl="2" data-frame="1"></th>
+        <td id="bowl3" data-bowl="1" data-frame="2"></th>
+        <td id="bowl4" data-bowl="2" data-frame="2"></th>
+        <td id="bowl5" data-bowl="1" data-frame="3"></th>
+        <td id="bowl6" data-bowl="2" data-frame="3"></th>
+        <td id="bowl7" data-bowl="1" data-frame="4"></th>
+        <td id="bowl8" data-bowl="2" data-frame="4"></th>
+        <td id="bowl9" data-bowl="1" data-frame="5"></th>
+        <td id="bowl10" data-bowl="2" data-frame="5"></th>
+        <td id="bowl11" data-bowl="1" data-frame="6"></th>
+        <td id="bowl12" data-bowl="2" data-frame="6"></th>
+        <td id="bowl13" data-bowl="1" data-frame="7"></th>
+        <td id="bowl14" data-bowl="2" data-frame="7"></th>
+        <td id="bowl15" data-bowl="1" data-frame="8"></th>
+        <td id="bowl16" data-bowl="2" data-frame="8"></th>
+        <td id="bowl17" data-bowl="1" data-frame="9"></th>
+        <td id="bowl18" data-bowl="2" data-frame="9"></th>
+        <td id="bowl19" data-bowl="1" data-frame="10"></th>
+        <td id="bowl20" data-bowl="2" data-frame="10"></th>
+        <td id="bowl21" colspan="2" data-bowl="1" data-frame="11"></th>
+        <td id="bowl22" colspan="2" data-bowl="1" data-frame="12"></th>
+      </tr>
+    </table>
+
+    <p>
+      <br>
+      <br>
+      <form>
+        <select id="pins">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+        </select>
+        <input type="submit" value="bowl">
+      </form>
+    </p>
+
+    <script src="jquery.js"></script>
+    <script src="src/frame.js"></script>
+    <script src="src/game.js"></script>
+    <script src="interface.js"></script>
+
+  </body>
+</html>

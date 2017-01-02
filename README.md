@@ -1,3 +1,48 @@
+Simon's Bowling Challenge
+=========================
+
+Here are my notes for the bowling challenge:
+
+
+
+## Installation
+Fork this repository and copy this down to your local machine.
+Open the index.html file in your web browser.
+Select the number of pins from the dropdown and click 'Bowl'
+The frame total is shown in the frame row.
+Keep bowling until the game finishes.
+
+
+
+## Things half done
+
+1
+Values are not filled in the bowl row.
+(The html is set up for this. It requires a change to the interface.js file)
+
+2
+I did not test for incorrect bowling values.
+I have written and tested the model for this in frame.js. But did not add it to the game.js file.
+
+3
+The unit tests are incomplete. This is because I rewrote it and started hacking away at the code rather than doing TTD : (
+
+## Things not yet done
+
+3
+Strikes do not get the correct calculation.
+(Because the frame moves on after the second bowl, need to calculate the bowl from 2 frames previous. Currently calculates from 1 frame previous.)
+
+4
+The final frame scores are not calculated.
+
+
+## Things done poorly
+
+5
+I didn't do very well with the jslint tests.
+Lots of fails on this.
+
 
 Bowling Challenge
 =================
@@ -9,14 +54,14 @@ Bowling Challenge
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday week
 
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Forking this repo
 
@@ -62,7 +107,7 @@ Code Review
 In code review we'll be hoping to see:
 
 * All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 

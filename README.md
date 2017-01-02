@@ -6,18 +6,42 @@ Here are my notes for the bowling challenge:
 
 
 ## Installation
+Fork this repository and copy this down to your local machine.
+Open the index.html file in your web browser.
+Select the number of pins from the dropdown and click 'Bowl'
+The frame total is shown in the frame row.
+Keep bowling until the game finishes.
 
 
 
+## Things half done
 
-## 
+1
+Values are not filled in the bowl row.
+(The html is set up for this. It requires a change to the interface.js file)
+
+2
+I did not test for incorrect bowling values.
+I have written and tested the model for this in frame.js. But did not add it to the game.js file.
+
+3
+The unit tests are incomplete. This is because I rewrote it and started hacking away at the code rather than doing TTD : (
+
+## Things not yet done
+
+3
+Strikes do not get the correct calculation.
+(Because the frame moves on after the second bowl, need to calculate the bowl from 2 frames previous. Currently calculates from 1 frame previous.)
+
+4
+The final frame scores are not calculated.
 
 
+## Things done poorly
 
-
-
-
-
+5
+I didn't do very well with the jslint tests.
+Lots of fails on this.
 
 
 Bowling Challenge

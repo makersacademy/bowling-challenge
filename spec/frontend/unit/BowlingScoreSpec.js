@@ -26,19 +26,28 @@ describe("Bowling Game: ",function(){
     expect(game.rolls[0]).toEqual(4);
   });
 
-  it("should be gutter game the total score is 0",function(){
+  it("gutter game",function(){
     rollMulti(game,20,0);
     expect(game.getTotal()).toEqual(0);
   });
 
-  it("should be perfect game when there are 12 strikes",function(){
+  it("perfect game",function(){
     rollMulti(game,12,10);
     expect(game.getTotal()).toEqual(300);
   });
 
+  xit("all spares", function() {
+    for(var i = 0; i < 10; i++){
+      game.roll(4);
+      game.roll(6);
+    }
+    game.roll(4);
+    expect(game.getTotal()).toEqual(140);
+  });
+
   describe("no strike nor spare", function(){
 
-    it("should return the total score", function(){
+    it("should total the score", function(){
       rollMulti(game,18,0);
       game.roll(4);
       game.roll(5);

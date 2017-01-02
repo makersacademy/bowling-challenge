@@ -31,7 +31,6 @@ Game.prototype.roll = function(score) {
   }
 };
 
-
 Game.prototype.finalSum = function() {
   return this._frames.reduce(function(sum, frame) {
     return sum + frame.finalScore();

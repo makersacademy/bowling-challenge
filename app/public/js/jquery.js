@@ -1,61 +1,59 @@
 $(document).ready(function () {
-  var thermostat = new Thermostat();
-  updateTemperature();
+  var game = new Game(Frame);
+  updatefinalSum();
 
-  $("#temperature-up").click(function() {
-    thermostat.increase(1); //update model
-    updateTemperature(); //update view
+  $("#roll1").click(function() {
+    game.roll(1); //update model
+    updateScore(); //update view
   });
 
-  $("#temperature-down").click(function() {
-    thermostat.decrease(1); //update model
-    updateTemperature(); //update view
+  $("#roll2").click(function() {
+    game.roll(1); //update model
+    updateScore(); //update view
   });
 
-  $('#powersaving-on').click(function() {
-    thermostat.powerSavingOn();
-    $('#powersaving').text('Power Saving On')
-    updateTemperature(); //update view
+  $("#roll3").click(function() {
+    game.roll(1); //update model
+    updateScore(); //update view
   });
 
-  $('#powersaving-off').click(function() {
-    thermostat.powerSavingOff();
-    $('#powersaving').text('Power Saving Off')
-    updateTemperature(); //update view
+  $("#roll4").click(function() {
+    game.roll(1); //update model
+    updateScore(); //update view
   });
 
-  $("#reset").click(function() {
-    thermostat.reset(); //update model
-    updateTemperature(); //update view
+  $("#roll5").click(function() {
+    game.roll(1); //update model
+    updateScore(); //update view
   });
 
-  $('#energy-display').click(function() {
-    thermostat.energyUsage(); //update model
-    updateUsage(); //update view
+  $("#roll6").click(function() {
+    game.roll(1); //update model
+    updateScore(); //update view
   });
 
-  $('#current-city').change(function(event) {
-    event.preventDefault();
-    var city = $('#current-city').val();
-    displayWeather(city);
-  })
+  $("#roll7").click(function() {
+    game.roll(1); //update model
+    updateScore(); //update view
+  });
 
-  function updateTemperature() {
-    $('#temperature').text(thermostat.degrees);
-    // $('#temperature').attr('class', thermostat.energyUsage());
+  $("#roll8").click(function() {
+    game.roll(1); //update model
+    updateScore(); //update view
+  });
+
+  $("#roll9").click(function() {
+    game.roll(1); //update model
+    updateScore(); //update view
+  });
+
+  $("#roll10").click(function() {
+    game.roll(1); //update model
+    updateScore(); //update view
+  });
+
+  function updateScore() {
+    $('#score').text(game.finalSum());
   };
 
-  function updateUsage() {
-    $('#temperature').text(thermostat.degrees);
-    $('#energy-display').attr('class', thermostat.energyUsage());
-  };
-
-  function displayWeather(city) {
-    var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city;
-    var token = '&appid=1f8964bd5eb43e2d0df92ec8d112b4b8';
-    var units = '&units=metric';
-    $.get(url + token + units, function(data) {
-      $('#current-temperature').text(data.main.temp);
-    })
-  };
 });

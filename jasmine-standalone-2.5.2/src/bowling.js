@@ -13,6 +13,7 @@ function Bowling () {
   this.unscoredStrikes = 0;
   this.unscoredHalfStrike = false;
   this.gameOver = false;
+  this.lastFrameScores = [];
 }
 
 Bowling.prototype.enterScore = function(number) {
@@ -27,15 +28,27 @@ Bowling.prototype.enterScore = function(number) {
 };
 
 Bowling.prototype.lastFrame = function(number) {
-  if (this.go === 1 && number < MAXIMUM_SCORE) {
+  if (this.go === 1 && number < MAXIMUM_SCORE && this.lastFrameScores.length < 2 ) {
     this.firstGo(number);
+    this.lastFrameScores.push(number);
   }
   else if (this.go === 1 && number === MAXIMUM_SCORE) {
     this.firstGo(number);
-    this.frame -= 1; }
+    this.frame -= 1;
+    this.lastFrameScores.push('X');
+    if (this.lastFrameScores.length === 3) {
+      this.gameOver = true;
+    }
+  }
+  else if (this.lastFrameScores.length === 2) {
+    this.firstGo(number);
+    this.lastFrameScores.push(number);
+    this.gameOver = true;
+  }
   else {
     this.secondGo(number);
     this.frame -= 1;
+    this.lastFrameScores.push(number);
     this.gameOver = true;
   }
 

@@ -1,6 +1,7 @@
 'use strict';
 
 var MAXIMUM_SCORE = 10;
+var MAXIMUM_NUMBER_FRAMES = 10;
 var STARTING_SCORE = 0;
 
 function Bowling () {
@@ -17,9 +18,9 @@ function Bowling () {
 }
 
 Bowling.prototype.enterScore = function(number) {
-  if (this.go === 1 && this.frame < 10) {
+  if (this.go === 1 && this.frame < MAXIMUM_NUMBER_FRAMES) {
     this.firstGo(number)}
-  else if (this.go === 2 && this.frame < 10) {
+  else if (this.go === 2 && this.frame < MAXIMUM_NUMBER_FRAMES) {
     this.secondGo(number)
   }
   else {
@@ -29,23 +30,41 @@ Bowling.prototype.enterScore = function(number) {
 
 Bowling.prototype.lastFrame = function(number) {
   if (this.go === 1 && number < MAXIMUM_SCORE && this.lastFrameScores.length < 2 ) {
-    this.firstGo(number);
-    this.lastFrameScores.push(number);
+    this.lastFrameBonus(number);
   }
   else if (this.go === 1 && number === MAXIMUM_SCORE) {
-    this.firstGo(number);
-    this.frame -= 1;
-    this.lastFrameScores.push('X');
-    if (this.lastFrameScores.length === 3) {
-      this.gameOver = true;
-    }
+    this.lastFramePerfect(number)
   }
   else if (this.lastFrameScores.length === 2 && this.go === 1) {
+    this.lastFrameTwoDone(number)
+  }
+  else {
+    this.lastFrameSecond(number)
+  }
+}
+
+Bowling.prototype.lastFrameBonus = function(number) {
+  this.firstGo(number);
+  this.lastFrameScores.push(number);
+}
+
+Bowling.prototype.lastFramePerfect = function(number) {
+  this.firstGo(number);
+  this.frame -= 1;
+  this.lastFrameScores.push('X');
+  if (this.lastFrameScores.length === 3) {
+    this.gameOver = true;
+  }
+}
+
+Bowling.prototype.lastFrameTwoDone = function(number) {
     this.firstGo(number);
     this.lastFrameScores.push(number);
     this.gameOver = true;
-  }
-  else if (this.go === 2 && this.lastFrameScores.length === 2 && number + this.firstBall < 10) {
+}
+
+Bowling.prototype.lastFrameSecond = function(number) {
+  if (this.go === 2 && this.lastFrameScores.length === 2 && number + this.firstBall < 10) {
     this.secondGo(number);
     this.score -= (number + this.firstBall);
     this.frame -= 1;

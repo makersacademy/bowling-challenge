@@ -1,4 +1,4 @@
-'use strict';
+esversion: 6
 
 describe("Game", function() {
   var game;

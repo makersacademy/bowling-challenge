@@ -60,15 +60,32 @@ Game.prototype.recordFrame = function() {
   }
 };
 Game.prototype.isGameCompleted = function () {
-  return this.framez.length === 10
+  if (this.framez.length >= 10 && this.framez[this.framez.length - 1][0] !== 10) {
+    return true
+  } else {
+    return this.framez.length === 12
+  }
+};
+
+Game.prototype.cutExtraFramez = function() {
+  for(var i=0; i < 2; i++){
+    if (this.framez.length > 10) {
+      this.framez.pop();
+    }
+  }
+};
+
+Game.prototype.cleanFramez = function() {
+  this.framez = [];
 };
 
 Game.prototype.calculateResult = function() {
-
+  this.cutExtraFramez();
   var allRolls = this.framez.reduce(function(a, b) {
     return a.concat(b);
   }, []);
   this.result = allRolls.reduce(function(a, b=0) {
         return a + b;
     }, 0);
+  this.cleanFramez();
 };

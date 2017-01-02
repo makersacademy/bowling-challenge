@@ -62,11 +62,18 @@ describe("Game", function() {
   });
 
   describe("calculateResult", function() {
-    it("calculates results after 10 rolls", function() {
+    it("calculates results after 10 frames", function() {
       for(var i=0; i < 20; i++){
         game.recordRoll(4);
       }
       expect(game.result).toEqual(80)
+    });
+
+    it("calculates a perfect game", function() {
+      for(var i=0; i < 22; i++){
+        game.recordRoll(10);
+      }
+      expect(game.result).toEqual(300)
     });
   });
 

@@ -1,6 +1,7 @@
 'use strict';
 
 var MAXIMUM_SCORE = 10;
+var MINIMUM_SCORE = 0;
 var MAXIMUM_NUMBER_FRAMES = 10;
 var STARTING_SCORE = 0;
 
@@ -18,13 +19,18 @@ function Bowling () {
 }
 
 Bowling.prototype.enterScore = function(number) {
-  if (this.go === 1 && this.frame < MAXIMUM_NUMBER_FRAMES) {
-    this.firstGo(number)}
-  else if (this.go === 2 && this.frame < MAXIMUM_NUMBER_FRAMES) {
-    this.secondGo(number)
+  if (number >= 0 && number <= 10 ) {
+    if (this.go === 1 && this.frame < MAXIMUM_NUMBER_FRAMES) {
+      this.firstGo(number)}
+    else if (this.go === 2 && this.frame < MAXIMUM_NUMBER_FRAMES) {
+      this.secondGo(number)
+    }
+    else {
+      this.lastFrame(number)
+    }
   }
   else {
-    this.lastFrame(number)
+    throw new Error("Cannot enter score: please enter a valid number")
   }
 };
 
@@ -194,4 +200,8 @@ Bowling.prototype.showScore = function() {
 
 Bowling.prototype.showFrame = function() {
   return this.frame;
+}
+
+Bowling.prototype.showGameOver = function() {
+  return this.gameOver;
 }

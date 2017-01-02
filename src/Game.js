@@ -4,6 +4,12 @@ function Game() {
   this.result = 0
 };
 
+if (!Array.prototype.last){
+    Array.prototype.last = function(n){
+        return this[this.length - n];
+    };
+};
+
 Game.prototype.cleanRolls = function() {
   this.rolls = [];
 };
@@ -27,31 +33,31 @@ Game.prototype.isStrike = function() {
 };
 
 Game.prototype.isLastFrameStrike = function() {
-  return this.framez.length !== 0 && this.framez[this.framez.length - 1][0] === 10
+  return this.framez.length !== 0 && this.framez.last(1)[0] === 10
 };
 
 Game.prototype.isDoubleStrike = function() {
-  return this.framez.length >= 2 && this.framez[this.framez.length - 2][0] === 20
+  return this.framez.length >= 2 && this.framez.last(2)[0] === 20
 };
 
 Game.prototype.calculateStrike = function() {
   if (this.isDoubleStrike()) {
-    this.framez[this.framez.length - 2][0] += this.rolls[0]
+    this.framez.last(2)[0] += this.rolls[0]
   }
   if (this.isLastFrameStrike()) {
-    this.framez[this.framez.length - 1][0] += this.rolls.reduce(function(a, b=0) {
+    this.framez.last(1)[0] += this.rolls.reduce(function(a, b=0) {
           return a + b;
       }, 0);
   }
 };
 
 Game.prototype.isLastFrameSpare = function() {
-  return this.framez.length !== 0 && this.framez[this.framez.length - 1].length === 2 && this.framez[this.framez.length - 1][0] + this.framez[this.framez.length - 1][1] === 10
+  return this.framez.length !== 0 && this.framez.last(1).length === 2 && this.framez.last(1)[0] + this.framez.last(1)[1] === 10
 };
 
 Game.prototype.calculateSpare = function() {
   if (this.isLastFrameSpare() && this.rolls.length === 1) {
-    this.framez[this.framez.length - 1][1] += this.rolls[0]
+    this.framez.last(1)[1] += this.rolls[0]
   }
 };
 

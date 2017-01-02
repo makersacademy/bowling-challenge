@@ -9,6 +9,9 @@ describe("Game", function() {
       game.recordRoll(4);
       expect(game.rolls).toEqual([4]);
     });
+    it ("should not accept roll results above 10", function() {
+      
+    });
   });
 
   describe("recordFrame", function() {

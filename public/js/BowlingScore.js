@@ -1,7 +1,6 @@
 "use strict";
 
 var Game = function(){
-  this.score = 0;
   this.rolls = [];
 
   this.roll = function(pins){
@@ -9,14 +8,7 @@ var Game = function(){
   }
 
   this.getTotal = function(){
-    if(this.score !== 0 ){
-      this.score = 0;
-    }
-
-    for(var i = 0; i < this.rolls.length; i++){
-        this.score += this.rolls[i];
-    }
-
+    this.score = this.rolls.reduce( (a, b) => a + b , 0);
     return this.score;
   }
 

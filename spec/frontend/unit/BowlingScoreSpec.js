@@ -22,7 +22,7 @@ describe("Bowling Game: ",function(){
     expect(game.rolls[0]).toEqual(4);
   });
 
-  it("should be gutter game when game is over the total score is 0",function(){
+  it("should be gutter game when game is ended the total score is 0",function(){
     this.rollMulti(game,20,0);
     expect(game.getTotal()).toEqual(0);
   });
@@ -32,7 +32,7 @@ describe("Bowling Game: ",function(){
     expect(game.getTotal()).toEqual(300);
   });
 
-  it("should return the total score when the game is over(no strike nor spare)",function() {
+  it("should return the total score when the game is ended(no strike nor spare)",function(){
     this.rollMulti(game,20,4);
     expect(game.getTotal()).toEqual(80);
   });

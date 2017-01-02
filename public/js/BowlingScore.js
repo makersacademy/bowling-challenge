@@ -12,14 +12,8 @@ var Game = function(){
     }
 
     for(var i = 0; i < this.rolls.length; i++){
-      if(this.rolls[i] === 0){
         this.score += this.rolls[i];
-      } else {
-        this.score +=this.rolls[i];
-      }
-
     }
-
 
     return this.score;
   }

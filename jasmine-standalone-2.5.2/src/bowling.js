@@ -40,9 +40,15 @@ Bowling.prototype.lastFrame = function(number) {
       this.gameOver = true;
     }
   }
-  else if (this.lastFrameScores.length === 2) {
+  else if (this.lastFrameScores.length === 2 && this.go === 1) {
     this.firstGo(number);
     this.lastFrameScores.push(number);
+    this.gameOver = true;
+  }
+  else if (this.go === 2 && this.lastFrameScores.length === 2 && number + this.firstBall < 10) {
+    this.secondGo(number);
+    this.score -= (number + this.firstBall);
+    this.frame -= 1;
     this.gameOver = true;
   }
   else {
@@ -50,6 +56,7 @@ Bowling.prototype.lastFrame = function(number) {
     this.frame -= 1;
     this.lastFrameScores.push(number);
     this.gameOver = true;
+    this.lastFrameScores.push('test');
   }
 
 }

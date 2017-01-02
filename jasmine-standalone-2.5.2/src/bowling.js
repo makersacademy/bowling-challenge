@@ -103,6 +103,7 @@ Bowling.prototype.secondGo = function(number) {
 
 Bowling.prototype.secondGoUnscoredStrikes = function(number) {
   this.go = 1;
+  this.frame += 1;
   this.second_go = number;
   this.unscored_strikes = 0;
   if (this.first_go + this.second_go === 10) {
@@ -116,6 +117,7 @@ Bowling.prototype.secondGoUnscoredStrikes = function(number) {
 
 Bowling.prototype.secondGoHalfStrike = function(number) {
   this.go = 1;
+  this.frame += 1;
   this.second_go = number;
   this.unscored_half_strike = true;
 }
@@ -130,4 +132,8 @@ Bowling.prototype.secondGoNormal = function(number) {
 
 Bowling.prototype.showScore = function() {
   return this.score;
+};
+
+Bowling.prototype.showFrame = function() {
+  return this.frame;
 };

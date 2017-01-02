@@ -1,79 +1,106 @@
+#Bowling Challenge
 
-Bowling Challenge
-=================
+[![Build Status](https://travis-ci.org/aabolade/bowling-challenge.svg?branch=master)](https://travis-ci.org/aabolade/bowling-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/aabolade/bowling-challenge/badge.svg?branch=master)](https://coveralls.io/github/aabolade/bowling-challenge?branch=master)
 
-
-* Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
-Task: 
------
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
-
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by 
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+Task
+====
 
 
-### Optional Extra
+Program in javascript to count and sum the scores of a bowling game for one player.
 
-Create a nice interactive animated interface with jQuery.
+A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset. More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-## Strikes
+User Stories
+============
+```
+As a player
+So I can begin my game of 10-pin bowling
+I would like to start on the first frame
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+As a player
+So I can have a target for the ball
+I would like to play against 10-pins
 
-## Spares
+As a player
+So I can compete properly
+I would like to have two attempts to knock down the ten pins
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+As a player
+So I can play again in the next frame
+I would like the pins to be refreshed back to 10pins.
 
-## 10th frame
+As a player
+So I am rewarded for hitting 10 pins at once
+I would like to have a bonus for a strike
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+As a player
+So I am rewarded for hitting 10 pins in two attempts
+I would like to have a bonus for a spare.
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+As a player
+So I can have a Challenge
+I would like there to be a maximum of 10 frames.
 
-## Gutter Game
+As a player
+So I can know how well I am doing
+I would like to see my score.
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+As a player
+So I can make the final frame more interesting
+I would like to have three chances to knock down the pins.
 
-## Perfect Game
+```
+Approach and Technologies
+=========================
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+* Jasmine: For unit testing.
 
-In the image below you can find some score examples.
+The project uses three main classes:
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+**Game** responsible for the controlling the game and contains methods related to rolling the ball
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+**Pins** responsible for randomly selecting between 0 and 10 pins on the first roll, and from 0 to up to the remaining pins left on the second roll.
 
-Code Review
------------
+**Score** responsible for calculating the score, and awarding bonuses for strikes and spares.
 
-In code review we'll be hoping to see:
+**Frame** responsible for moving to the next frame at the end of the play.
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+The main challenges faced were deciding the exact responsibilities of each class in order to keep to Single Responsibility Principle (SRP).
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+Setup
+=====
 
-CI
---
+Fork and clone this repo, then copy the path of the SpecRunner.html file into any browser. It should be ./yourPath/SpecRunner.html
 
-We are running JSHint on our CI server - save yourself having to wait for a build to happen by linting your code on your machine first. [Here are installations for most popular editors](http://jshint.com/install/). Grab the `.jshintrc` from this repo and have better JS!
+You will then need to open the developer tools which can be done by pressing ```F12``` or ```cmd+alt+i``` on a Mac.
 
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
+start a new game by entering ```game = new Game() ``` where ```game``` is a parameter variable. Then use the following commands:
 
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.
+* To roll the ball: ```game.playBall()``` This returns a random number between 0 and 10.
+* To get the current score: ```game.getCurrentScore()```
+* To get the current Frame. ```game.getCurrentFrame()```
+* To start again. ```game.startAgain()```
+
+The game will throw an error when the game is over.
+
+Example
+=======
+
+Starting up the game, and getting a strike on the first roll!
+
+![alt tag](./startBowlingGame.png)
+
+Checking the score or frame during the game.
+
+![alt tag](./checkingFrameOrScore.png)
+
+'Game Over' message when end of last frame is reached.
+
+![alt tag](./gameOver.png)
+
+
+Further Features
+================
+
+* Use jQuery to connect models to a user interface.

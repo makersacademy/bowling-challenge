@@ -27,13 +27,10 @@ function Bowling() {
 
 
     if (this.strikeBonusPoints > 0) {
-      console.log("ading strike points")
       this.addStrikeBonusPoints(bowl);
     }
 
     if (this.bonusPoints > 0) {
-      console.log("ading Bonus points")
-
       this.addBonusPoints(bowl);
     }
 
@@ -68,15 +65,13 @@ function Bowling() {
     }
 
     Bowling.prototype.addStrikeBonusPoints = function(bowl) {
-      // console.log(this.strikeBonusPoints)
       this.scoreSheet[this.currentFrame.number - 2].rollingScore += bowl
-      console.log(`adding ${bowl} to frame ${this.currentFrame.number - 2}`)
       this.currentFrame.rollingScore += bowl
 
       if (this.currentFrame.number > 3){
         if (this.scoreSheet[this.currentFrame.number - 2].strike &&
           this.scoreSheet[this.currentFrame.number - 3].strike){
-            console.log("triple strike")
+
             this.scoreSheet[this.currentFrame.number - 2].rollingScore += bowl
             this.scoreSheet[this.currentFrame.number - 3].rollingScore += bowl
             this.currentFrame.rollingScore += bowl

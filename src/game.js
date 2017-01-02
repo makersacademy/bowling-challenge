@@ -24,7 +24,11 @@ function Game() {
 
   Game.prototype.getFrameScore = function() {
     var current = this.getCurrentFrame();
-    return current.firstScore + current.secondScore;
+    if (current.secondScore === 0) {
+      return current.firstScore;
+    } else {
+      return current.firstScore + current.secondScore;
+    }
   };
 
 Game.prototype.getPreviousFrame = function() {
@@ -34,7 +38,13 @@ Game.prototype.getPreviousFrame = function() {
 };
 
   Game.prototype.getPreviousScore = function(previous, current) {
-    return previous.firstScore + previous.secondScore + 5;
+    if (previous.firstScore === 10) {
+      return +previous.firstScore + +previous.secondScore + +current.firstScore + +current.secondScore;
+    } else if (+previous.firstScore + +previous.secondScore === 10) {
+      return +previous.firstScore + +previous.secondScore + +current.firstScore + +current.secondScore;
+    } else {
+      return +previous.firstScore + +previous.secondScore;
+    }
   };
 
   Game.prototype.bowl = function(pins) {

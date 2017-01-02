@@ -12,7 +12,6 @@ function Frame() {
       }
     }
 
-
   Frame.prototype.doBowl = function(pins) {
     this._attempts+=1;
       return pins;

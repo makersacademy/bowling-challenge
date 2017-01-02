@@ -1,7 +1,8 @@
 require 'sinatra/base'
 
 class BowlingApp < Sinatra::Base
-  enable :sessions
+
+enable :sessions
 use Rack::MethodOverride
 
 get '/' do

@@ -6,17 +6,17 @@ describe("Game", function() {
   });
   describe("recordRoll", function() {
     it("should be able to record roll results", function() {
-      game.recordRoll(6);
-      expect(game.rolls).toEqual([6]);
+      game.recordRoll(4);
+      expect(game.rolls).toEqual([4]);
     });
   });
 
   describe("recordFrame", function() {
     it("should record a frame after two rolls", function() {
       for(var i=0; i < 2; i++){
-        game.recordRoll(6);
+        game.recordRoll(4);
       }
-      expect(game.framez).toEqual([[6,6]])
+      expect(game.framez).toEqual([[4,4]])
     });
 
     it("should record a frame after a strike", function() {
@@ -27,9 +27,9 @@ describe("Game", function() {
     it("should calculate correct score for a strike", function() {
       game.recordRoll(10);
       for(var i=0; i < 2; i++){
-        game.recordRoll(6);
+        game.recordRoll(4);
       }
-      expect(game.framez).toEqual([[22],[6,6]])
+      expect(game.framez).toEqual([[18],[4,4]])
     });
 
     it ("should calculate three strikes in a row", function() {
@@ -41,7 +41,7 @@ describe("Game", function() {
 
     it("should clean the rolls after frame is recorded", function() {
       for(var i=0; i < 2; i++){
-        game.recordRoll(6);
+        game.recordRoll(4);
       }
       expect(game.rolls).toEqual([])
     });
@@ -50,9 +50,9 @@ describe("Game", function() {
   describe("calculateResult", function() {
     it("calculates results after 10 rolls", function() {
       for(var i=0; i < 20; i++){
-        game.recordRoll(6);
+        game.recordRoll(4);
       }
-      expect(game.result).toEqual(120)
+      expect(game.result).toEqual(80)
     });
   });
 

@@ -1,0 +1,22 @@
+body {
+  background-color: slategrey;
+}
+
+input {
+  width: 30px;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+table, th, td {
+  border: 1px solid black;
+  background-color: white;
+}
+
+th {
+  background-color: black;
+  color: white;
+}

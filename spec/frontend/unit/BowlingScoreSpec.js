@@ -44,6 +44,13 @@ describe("Bowling Game: ", function(){
     expect(game.getTotal()).toEqual(149);
   });
 
+  it("one spare", function(){
+    game.roll(7);
+    game.roll(3);
+    game.roll(2);
+    rollMulti(game,17,0);
+    expect(game.getTotal()).toEqual(14);
+  });
   describe("no strike nor spare", function(){
 
     it("should total the score", function(){

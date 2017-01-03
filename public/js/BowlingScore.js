@@ -3,7 +3,6 @@
 var Game = function(){
   this.rolls = [];
   var score = 0;
-  var strikeCount = 0;
   var frameScore = 0;
 
   this.roll = function(pins){
@@ -26,8 +25,9 @@ var Game = function(){
         }
         i++;
       } else {
-        score = this.rolls.reduce( (a, b) => a + b, 0);
+        score += frameScore + this.rolls[i];
       }
+      frameScore = 0;
     }
 
     return score;

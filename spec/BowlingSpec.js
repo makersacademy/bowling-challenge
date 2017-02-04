@@ -102,28 +102,28 @@ describe('bowling', function(){
   describe('Test Game', function() {
     it ('should return set vales', function(){
       // Frame 1
-      bowling.play(1)
-      bowling.play(4)
-      expect(bowling.score).toEqual([0,5,0,0,0,0,0,0,0,0,0])
+      bowling.play(10)
+      // bowling.play(4)
+      expect(bowling.score).toEqual([0,0,0,0,0,0,0,0,0,0,0])
       // Frame 2
-      bowling.play(4)
-      bowling.play(5)
-      expect(bowling.score).toEqual([0,5,14,0,0,0,0,0,0,0,0])
+      bowling.play(10)
+      // bowling.play(5)
+      expect(bowling.score).toEqual([0,0,0,0,0,0,0,0,0,0,0])
       // Frame 3
-      bowling.play(6)
-      bowling.play(4)
-      expect(bowling.score).toEqual([0,5,14,0,0,0,0,0,0,0,0])
+      bowling.play(10)
+      // bowling.play(4)
+      expect(bowling.score).toEqual([0,0,0,0,0,0,0,0,0,0,0])
       // Frame 4
       bowling.play(2)
       bowling.play(2)
-      expect(bowling.score).toEqual([0,5,14,26,30,0,0,0,0,0,0])
-      // Frame 5
-      bowling.play(10)
-      expect(bowling.score).toEqual([0,5,14,26,30,0,0,0,0,0,0])
-      // Frame 6
-      bowling.play(2)
-      bowling.play(2)
-      expect(bowling.score).toEqual([0,5,14,26,30,44,48,0,0,0,0])
+      expect(bowling.score).toEqual([0,30,60,82,96,100,0,0,0,0,0])
+      // // Frame 5
+      // bowling.play(10)
+      // expect(bowling.score).toEqual([0,5,14,26,30,0,0,0,0,0,0])
+      // // Frame 6
+      // bowling.play(2)
+      // bowling.play(2)
+      // expect(bowling.score).toEqual([0,5,14,26,30,44,48,0,0,0,0])
       // // Frame 7
       // bowling.play(2)
       // bowling.play(2)

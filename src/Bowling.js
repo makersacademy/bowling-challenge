@@ -57,51 +57,40 @@ Bowling.prototype.updateScore = function(){
 
 Bowling.prototype.addBonusScores = function(){
   console.log(this.bonus)
-  for(var i=1;i<=this.bonus.length+1;i++){
-    if (this.bonus[0]==="/"){this.addSpareScore(i)}
-    if (this.bonus[0]==="X"){this.addStrikeScore(i)}
+  console.log("BONUS LENGTH = " + this.bonus.length)
+  console.log(this.totalRolls)
+  for(var i=0; i < this.bonus.length; i++){
+    if (this.bonus[this.bonus.length-i-1]==="/"){this.addSpareScore(i)}
+    if (this.bonus[this.bonus.length-i-1]==="X"){this.addStrikeScore(i)}
   }
+  this.bonus = [];
 }
 
 Bowling.prototype.addStrikeScore = function(i){
-  console.log("frame = " + this.frame)
+  // console.log("frame = " + this.frame)
+  console.log("Im in STRIKE")
   console.log("i = " +i)
-  // console.log("ROLL 1 = " + this.totalRolls[this.frame-2-i])
-  // console.log("SCORE 1 = " + this.score[this.frame-2-i])
-  // console.log("ROLL 2 = " + this.totalRolls[this.frame-1-i])
-  // console.log("SCORE 2 = " + this.score[this.frame-1-i])
-  // console.log("Im in addStrikeScore")
-  this.score[this.frame-i] = 10 + this.totalRolls[this.frame+(i-1)][0] + this.totalRolls[this.frame+(i-1)][1]
+  console.log("currect roll = " + this.totalRolls[this.frame-i])
 
-  if (this.totalRolls[this.frame-i][1] != null){
-    this.score[this.frame-i] += this.totalRolls[this.frame][0]
+
+  this.score[this.frame-i-1] = 10 + this.totalRolls[this.frame-i][0] + this.totalRolls[this.frame-i][1]
+  if (this.totalRolls[this.frame-i][1] === null){
+    console.log("IM HERE AND i = "+i)
+    this.score[this.frame-i-1] += this.totalRolls[this.frame-(i-1)][0]
   }
-  // if (this.totalRolls[this.frame-i-1][1] != null){
-  //   this.score[this.frame-i-1] += this.totalRolls[this.frame-i][1]}
-  // else {
-  //   console.log("IM HERE AND i = " + i)
-  //   this.score[this.frame-i-1] += this.totalRolls[this.frame-i][1]
-  // }
-  //   console.log(this.totalRolls["DATA = "+ this.frame-1-i][1])
-  //   // this.score[this.frame-i] += this.totalRolls[this.frame-1-i][1]
-  // }
-  // else {
-  //   this.score[this.frame-1-i] += this.totalRolls[this.frame-1-i][1]
-  // }
-  //
-  //
-  //
-  // this.score[this.frame-1-i] += this.score[this.frame-2-i]
-  // this.score[this.frame-i] += this.score[this.frame-1-i]
-  this.bonus.pop();
+
+  // this.bonus.pop();
 }
 
 Bowling.prototype.addSpareScore = function(i){
+  console.log("Im in SPARE")
+  console.log("i = " +i)
+  console.log("currect roll = " + this.totalRolls[this.frame-i])
   // console.log("Im in the addSpareScore")
-  this.score[this.frame-2-i] = 10 + this.totalRolls[this.frame-1-i][0]
+  this.score[this.frame-i-1] = 10 + this.totalRolls[this.frame-i][0]
   // this.score[this.frame-1-i] += this.score[this.frame-2-i]
   // this.score[this.frame-i] += this.score[this.frame-1-i]
-  this.bonus.pop();
+  //this.bonus.pop();
 }
 
 Bowling.prototype.checkForStrike = function(){

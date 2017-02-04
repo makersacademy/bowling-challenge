@@ -102,18 +102,28 @@ describe('bowling', function(){
   describe('Test Game', function() {
     it ('should return set vales', function(){
       // Frame 1
+      bowling.play(2)
+      bowling.play(2)
       bowling.play(10)
+      bowling.play(5)
+      bowling.play(5)
       bowling.play(10)
+      bowling.play(8)
+      bowling.play(2)
+      bowling.play(2)
+      bowling.play(2)
+      // bowling.play(10)
+      // bowling.play(10)
       // bowling.play(10)
       // expect(bowling.score).toEqual([5])
       // Frame 2
       // bowling.play(10)
       // bowling.play(10)
       // expect(bowling.score).toEqual([5,9])
-      // Frame 3
-      bowling.play(2)
-      bowling.play(2)
-      expect(bowling.score).toEqual([22,14,4])
+      // // Frame 3
+      // bowling.play(5)
+      // bowling.play(3)
+      expect(bowling.score).toEqual([4,20,20,20,12,4])
       // // Frame 4
       // bowling.play(2)
       // bowling.play(2)

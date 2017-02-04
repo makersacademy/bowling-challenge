@@ -32,12 +32,12 @@ describe('Feature: ', function() {
     it('I can get a spare', function(){
         game.bowl(8);
         game.bowl(2);
-        expect(frame._score[1]).toEqual('/');
+        expect(frame._score[2]).toEqual('/');
     });
 
     it('I can get a strike', function(){
         game.bowl(10);
-        expect(frame._score[0]).toEqual('X');
+        expect(frame._score[2]).toEqual('X');
     });
 
     it('I can check the scoreboard', function() {

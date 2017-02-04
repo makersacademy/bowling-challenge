@@ -3,14 +3,15 @@
 function Game() {
     this._currentFrame = 1
     this._frame = new Frame();
-    this._scorecard = {};
+    this._scorecard = [];
     this._score = 0;
-    this._endTurn = false;
 }
 
 Game.prototype.nextFrame = function() {
-    this._frame = new Frame();
-    return this._currentFrame += 1;
+    this._currentFrame += 1;
+    if(!this.isEnded()) {
+        this._frame = new Frame();
+    }
 };
 
 Game.prototype.bowl = function(pins) {
@@ -19,22 +20,19 @@ Game.prototype.bowl = function(pins) {
 };
 
 Game.prototype.endFrame = function(scores) {
-    this._scorecard["Frame " + this._currentFrame] = scores;
+    this.scorecard(scores);
+    this._scorecard.push(scores);
     this.nextFrame();
 };
 
-Game.prototype.scorecard = function() {
-    if(isNaN(scores[0]) || isNaN(scores[1])) {
-        this._score += 10
-    } else {
+Game.prototype.scorecard = function(scores) {
     this._score += (scores[0] + scores[1]);
-    }
 }
 
 Game.prototype.scoreboard = function() {
     var output = "";
-    for(var i = 1; i <= (this._currentFrame - 1); i++) {
-        output += "Frame " + i + ": " + this._scorecard["Frame " + i] + "\n ";
+    for(var i = 0; i <= (this._currentFrame - 1); i++) {
+        output += "Frame " + (i + 1) + ": " + this._scorecard[i] + "\n ";
     }
     return output;
 };

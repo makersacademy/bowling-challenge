@@ -47,13 +47,13 @@ describe('Frame', function() {
 
     it('records a ten on the first turn as a strike', function() {
         frame.turn(game, 10);
-        expect(frame._score[frame._currentTurn - 1]).toEqual('X');
+        expect(frame._score[2]).toEqual('X');
     });
 
     it('records all pins knocked down over both turns as a spare', function() {
         frame.turn(game, 8);
         frame.turn(game, 2);
-        expect(frame._score[frame._currentTurn - 1]).toEqual('/');
+        expect(frame._score[2]).toEqual('/');
     });
 
     it('tells the game to end the frame after getting a strike', function() {

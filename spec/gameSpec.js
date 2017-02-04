@@ -22,15 +22,15 @@ describe('Game', function() {
 
     it('records the end of each frame', function() {
         game.bowl(7);
-        game.bowl(2);
-        expect(game.bowl(2)).toEqual(game.endFrame());
+        game.bowl(2)
+        expect(game.bowl(2)).toEqual(game..nextFrame());
     });
 
     it('records the scores of each frame on the scorecard', function() {
         game.bowl(7);
         game.bowl(2);
-        expect(game._scorecard["Frame 1"]).toContain(7);
-        expect(game._scorecard["Frame 1"]).toContain(2);
+        expect(game._scorecard[0][0]).toBe(7);
+        expect(game._scorecard[0][1]).toBe(2);
     });
 
     it('ends after frame 10', function() {
@@ -38,6 +38,7 @@ describe('Game', function() {
             game.bowl(2);
             game.bowl(4);
         }
+        // debugger;
         expect(game.isEnded()).toBe(true);
     })
 

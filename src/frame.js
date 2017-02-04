@@ -21,12 +21,24 @@ function Frame() {
 
 Frame.prototype.turn = function(game, pins) {
     this._pinsStanding -= pins;
+    this._currentTurn += 1
     this.scoreCalculator(pins);
-    if((this._currentTurn += 1) > 1 || pins === 10 ) { game.endFrame(this._score); }
+    if (this._currentTurn >= 2 || this.isStrike()) {
+        game.endFrame(this._score);
+    }
 };
 
 Frame.prototype.scoreCalculator = function(pins) {
-    if(pins === 10) { pins = 'X' }
-        else if(this._score[0] + pins === 10) { pins = '/' }
-    this._score.push(pins);
+    if (this.isStrike()) {
+        this._score.push(pins, 0, 'X')
+    }
+    this.isSpare() ? this._score.push(pins, '/') : this._score.push(pins)
 };
+
+Frame.prototype.isStrike = function() {
+    return (this._pinsStanding === 0 && this._currentTurn === 1) ? true : false;
+}
+
+Frame.prototype.isSpare = function() {
+    return (this._pinsStanding === 0 && this._currentTurn === 2) ? true : false;
+}

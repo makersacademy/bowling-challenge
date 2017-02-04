@@ -74,6 +74,23 @@ describe('bowling', function(){
       for (var i = 0; i < 2; i++){bowling.play()}
       expect(bowling.score).toEqual([14,4])
     })
+
+    it ('should have a score of [15,12,4] for knocking down spare, spare then 2, 2', function(){
+      spyOn(Math,'random').and.returnValue(0.5);
+      for (var i = 0; i < 4; i++){bowling.play()}
+      spyOn(bowling,'knockPins').and.returnValue(2)
+      for (var i = 0; i < 2; i++){bowling.play()}
+      expect(bowling.score).toEqual([15,12,4])
+    })
+
+    it ('should have a score of [20,14,4] for knocking down strike, strike then 2, 2', function(){
+      spyOn(Math,'random').and.returnValue(0.99);
+      bowling.play()
+      bowling.play()
+      spyOn(bowling,'knockPins').and.returnValue(2)
+      for (var i = 0; i < 2; i++){bowling.play()}
+      expect(bowling.score).toEqual([20,14,4])
+    })
   })
 })
 

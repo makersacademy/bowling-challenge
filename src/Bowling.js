@@ -47,18 +47,23 @@ Bowling.prototype.updateScore = function(){
   if (this.checkForStrike()){return this.bonus.push("X")}
   if (this.checkForSpare ()){return this.bonus.push("/")}
   this.score[this.frame-1] = this.rolls[0] + this.rolls[1]
-  if (this.bonus.length != 0){
-    if (this.bonus[0]==="/"){this.addSpareScore()}
-    if (this.bonus[0]==="X"){this.addStrikeScore()}
+  if (this.bonus.length != 0){this.addBonusScores()}
+}
+
+Bowling.prototype.addBonusScores = function(){
+  for(var i=this.bonus.length-1;i>=0;i--){
+    if (this.bonus[0]==="/"){this.addSpareScore(i)}
+    if (this.bonus[0]==="X"){this.addStrikeScore(i)}
   }
 }
 
-Bowling.prototype.addStrikeScore = function(){
-  this.score[this.frame-2] = 10 + this.totalRolls[this.frame-1][0] + this.totalRolls[this.frame-1][1]
+Bowling.prototype.addStrikeScore = function(i){
+  console.log(i)
+  this.score[this.frame-2-i] = 10 + this.totalRolls[this.frame-1-i][0] + this.totalRolls[this.frame-1-i][1]
 }
 
-Bowling.prototype.addSpareScore = function(){
-  this.score[this.frame-2] = 10 + this.totalRolls[this.frame-1][0]
+Bowling.prototype.addSpareScore = function(i){
+  this.score[this.frame-2-i] = 10 + this.totalRolls[this.frame-1-i][0]
 }
 
 Bowling.prototype.checkForStrike = function(){

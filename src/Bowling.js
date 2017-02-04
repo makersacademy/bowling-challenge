@@ -6,7 +6,7 @@ function Bowling(){
   this.rolls = [null,null];
   this.rollsNumber = 0;
   this.bonus = [];
-  this.score = 0;
+  this.score = [];
 }
 
 Bowling.prototype.play = function(){
@@ -14,7 +14,6 @@ Bowling.prototype.play = function(){
   this.updateRolls(knockedPins);
   var returnValue = this.returnValue(knockedPins);
   this.finishRoll();
-  // this.updateScore();
   return returnValue;
 }
 
@@ -24,8 +23,12 @@ Bowling.prototype.knockPins = function(){
 
 Bowling.prototype.updateRolls = function(knockedPins){
   this.rolls[this.rollsNumber] = knockedPins;
+  this.swapRoll();
+  if (this.checkForStrike()){this.swapRoll()}
+}
+
+Bowling.prototype.swapRoll = function(){
   this.rollsNumber = Math.abs(-1 + this.rollsNumber);
-  // console.log(this.rolls);
 }
 
 Bowling.prototype.finishRoll = function(){
@@ -41,13 +44,21 @@ Bowling.prototype.nextFrame = function(){
 }
 
 Bowling.prototype.updateScore = function(){
-  console.log(this.rolls)
-  if (this.checkForStrike() || this.checkForSpare()){
-    console.log("STRIKE OR SPARE")
-    this.bonus.push("X")}
-  else {
-    console.log("NORMAL")
+  if (this.checkForStrike()){return this.bonus.push("X")}
+  if (this.checkForSpare ()){return this.bonus.push("/")}
+  this.score[this.frame-1] = this.rolls[0] + this.rolls[1]
+  if (this.bonus.length != 0){
+    if (this.bonus[0]==="/"){this.addSpareScore()}
+    if (this.bonus[0]==="X"){this.addStrikeScore()}
   }
+}
+
+Bowling.prototype.addStrikeScore = function(){
+  this.score[this.frame-2] = 10 + this.totalRolls[this.frame-1][0] + this.totalRolls[this.frame-1][1]
+}
+
+Bowling.prototype.addSpareScore = function(){
+  this.score[this.frame-2] = 10 + this.totalRolls[this.frame-1][0]
 }
 
 Bowling.prototype.checkForStrike = function(){
@@ -62,10 +73,4 @@ Bowling.prototype.returnValue = function(knockedPins){
   if (this.checkForStrike()){return "X"}
   if (this.checkForSpare ()){return "/"}
   return String(knockedPins)
-}
-
-Bowling.prototype.sumArray = function(arrayName){
-  var result = 0;
-  for (var i=0; i<arrayName.length; i++){result += arrayName[i]}
-  return result;
 }

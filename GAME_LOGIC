@@ -7,33 +7,36 @@ var roll, pins, score
 newFrame
 roll = 1
 pins = 10
+frame++
 
 rollTheBall or Enter Score// push button; unless game over
 
-  countPinsDown
+  countPinsDown √
     score = random() <= pins
     pins = score
 
-  updateTotal
+  updateTotal √
     if bonuses?
       score *=2 unless frame == "11"
       bonuses--
       total += score
 
-  recordBonuses
-  if noPins or lastRoll // pins == 0 || roll == 2
+  recordBonuses √
     if isAStrike
       bonuses += 2
     else if isASpare
       bonuses++
     endif
-    newFrame
-  else
-    roll++
-  endif
 
-  isAStrike() {pins == 0 && roll == 1}
-  isASpare() {pins == 0 && roll == 2}
+  endRoll √
+    if roll == 2 or is a strike
+      newFrame
+    else
+      roll++
+    endif
+
+  isAStrike() {pins == 0 && roll == 1} √
+  isASpare() {pins == 0 && roll == 2} √
 
 // to do think a bit about frame '11' - what's easiest way to do?
 // check and output at end

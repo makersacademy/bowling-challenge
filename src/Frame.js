@@ -12,6 +12,7 @@ Frame.prototype.total = function () {
   return this._frameScore()
 };
 
+
 Frame.prototype._frameScore = function () {
   return this.rolls.reduce(function(a,b) {
     return a + b

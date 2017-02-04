@@ -57,7 +57,7 @@ Bowling.prototype.updateScore = function(){
 
 Bowling.prototype.addBonusScores = function(){
   console.log(this.bonus)
-  for(var i=1;i<=this.bonus.length;i++){
+  for(var i=1;i<=this.bonus.length+1;i++){
     if (this.bonus[0]==="/"){this.addSpareScore(i)}
     if (this.bonus[0]==="X"){this.addStrikeScore(i)}
   }
@@ -73,6 +73,9 @@ Bowling.prototype.addStrikeScore = function(i){
   // console.log("Im in addStrikeScore")
   this.score[this.frame-i] = 10 + this.totalRolls[this.frame+(i-1)][0] + this.totalRolls[this.frame+(i-1)][1]
 
+  if (this.totalRolls[this.frame-i][1] != null){
+    this.score[this.frame-i] += this.totalRolls[this.frame][0]
+  }
   // if (this.totalRolls[this.frame-i-1][1] != null){
   //   this.score[this.frame-i-1] += this.totalRolls[this.frame-i][1]}
   // else {

@@ -103,6 +103,7 @@ describe('bowling', function(){
     it ('should return set vales', function(){
       // Frame 1
       bowling.play(10)
+      bowling.play(10)
       // bowling.play(10)
       // expect(bowling.score).toEqual([5])
       // Frame 2
@@ -112,7 +113,7 @@ describe('bowling', function(){
       // Frame 3
       bowling.play(2)
       bowling.play(2)
-      expect(bowling.score).toEqual([14,4])
+      expect(bowling.score).toEqual([22,14,4])
       // // Frame 4
       // bowling.play(2)
       // bowling.play(2)

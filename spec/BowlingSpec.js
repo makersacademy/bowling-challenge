@@ -15,7 +15,7 @@ describe('bowling', function(){
       expect(bowling.score).toEqual(0);
     })
     it ('game initializes with rolls = []', function(){
-      expect(bowling.rolls).toEqual([]);
+      expect(bowling.rolls).toEqual([null,null]);
     })
     it ('game initializes with totalRolls = []', function(){
       expect(bowling.totalRolls).toEqual([]);
@@ -44,7 +44,7 @@ describe('bowling', function(){
       expect(bowling.play()).toEqual("3");
       expect(bowling.play()).toEqual("3");
       // expect(bowling.score).toEqual(6);
-      expect(bowling.rolls).toEqual([]);
+      expect(bowling.rolls).toEqual([null,null]);
       expect(bowling.frame).toEqual(2);
     })
     it ('totalRolls should equal[[3,3],[3,3]] after knocking 3 pins 4 times]', function(){

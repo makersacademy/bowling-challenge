@@ -7,11 +7,12 @@ describe("Game", function() {
     
     beforeEach(function () {
         shot = jasmine.createSpyObj('shot', ['bowl']);
+        shot.bowl.and.returnValue(5);
         game = new Game(shot);
     });
     
-    it("#throwlBall returns an integer", function() {
-        shot.bowl.and.returnValue(5);
-        expect(game.throwBall()).toEqual(5);
+    it("#throwBall knocks down pins in the current frame", function() {
+        game.throwBall();
+        expect(game.currentFrame().pinsStanding()).toEqual(5);
     });
 })

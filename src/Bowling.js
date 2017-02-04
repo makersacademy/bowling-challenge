@@ -48,49 +48,28 @@ Bowling.prototype.updateScore = function(){
   if (this.checkForStrike()){return this.bonus.push("X")}
   if (this.checkForSpare ()){return this.bonus.push("/")}
   this.score[this.frame] = this.totalRolls[this.frame][0] + this.totalRolls[this.frame][1]
-  if (this.bonus.length != 0){
-    this.addBonusScores()}
-  else {
-    //this.score[this.frame] = this.score[this.frame-1] + this.totalRolls[this.frame-1][0] + this.totalRolls[this.frame-1][1]
-  }
+  if (this.bonus.length != 0){this.addBonusScores()}
 }
 
 Bowling.prototype.addBonusScores = function(){
-  console.log(this.bonus)
-  console.log("BONUS LENGTH = " + this.bonus.length)
-  console.log(this.totalRolls)
   for(var i=0; i < this.bonus.length; i++){
     if (this.bonus[this.bonus.length-i-1]==="/"){this.addSpareScore(i)}
     if (this.bonus[this.bonus.length-i-1]==="X"){this.addStrikeScore(i)}
   }
-  this.bonus = [];
+  // this.bonus = [];
 }
 
 Bowling.prototype.addStrikeScore = function(i){
-  // console.log("frame = " + this.frame)
-  console.log("Im in STRIKE")
-  console.log("i = " +i)
-  console.log("currect roll = " + this.totalRolls[this.frame-i])
-
-
   this.score[this.frame-i-1] = 10 + this.totalRolls[this.frame-i][0] + this.totalRolls[this.frame-i][1]
   if (this.totalRolls[this.frame-i][1] === null){
-    console.log("IM HERE AND i = "+i)
     this.score[this.frame-i-1] += this.totalRolls[this.frame-(i-1)][0]
   }
-
-  // this.bonus.pop();
+  this.bonus.shift();
 }
 
 Bowling.prototype.addSpareScore = function(i){
-  console.log("Im in SPARE")
-  console.log("i = " +i)
-  console.log("currect roll = " + this.totalRolls[this.frame-i])
-  // console.log("Im in the addSpareScore")
   this.score[this.frame-i-1] = 10 + this.totalRolls[this.frame-i][0]
-  // this.score[this.frame-1-i] += this.score[this.frame-2-i]
-  // this.score[this.frame-i] += this.score[this.frame-1-i]
-  //this.bonus.pop();
+  this.bonus.shift();
 }
 
 Bowling.prototype.checkForStrike = function(){
@@ -108,5 +87,9 @@ Bowling.prototype.returnValue = function(knockedPins){
 }
 
 Bowling.prototype.returnTotalScore = function(knockedPins){
-
+  var result = [this.score[0]]
+  for (var i = 1; i < this.score.length; i++){
+    result.push(this.score[i]+result[i-1])
+  }
+  return result
 }

@@ -6,11 +6,11 @@ function Bowling(){
   this.rolls = [null,null];
   this.rollsNumber = 0;
   this.bonus = [];
-  this.score = [];
+  this.score = [0,0,0,0,0,0,0,0,0,0,0];
 }
 
-Bowling.prototype.play = function(){
-  var knockedPins = this.knockPins();
+Bowling.prototype.play = function(knockedPins=null){
+  if (knockedPins===null){var knockedPins = this.knockPins()}
   this.updateRolls(knockedPins);
   var returnValue = this.returnValue(knockedPins);
   this.finishRoll();
@@ -46,11 +46,16 @@ Bowling.prototype.nextFrame = function(){
 Bowling.prototype.updateScore = function(){
   if (this.checkForStrike()){return this.bonus.push("X")}
   if (this.checkForSpare ()){return this.bonus.push("/")}
-  this.score[this.frame-1] = this.rolls[0] + this.rolls[1]
-  if (this.bonus.length != 0){this.addBonusScores()}
+  this.score[this.frame] = this.score[this.frame-1] + this.totalRolls[this.frame-1][0] + this.totalRolls[this.frame-1][1]
+  if (this.bonus.length != 0){
+    this.addBonusScores()}
+  else {
+    //this.score[this.frame] = this.score[this.frame-1] + this.totalRolls[this.frame-1][0] + this.totalRolls[this.frame-1][1]
+  }
 }
 
 Bowling.prototype.addBonusScores = function(){
+  console.log(this.bonus)
   for(var i=this.bonus.length-1;i>=0;i--){
     if (this.bonus[0]==="/"){this.addSpareScore(i)}
     if (this.bonus[0]==="X"){this.addStrikeScore(i)}
@@ -59,11 +64,20 @@ Bowling.prototype.addBonusScores = function(){
 
 Bowling.prototype.addStrikeScore = function(i){
   console.log(i)
-  this.score[this.frame-2-i] = 10 + this.totalRolls[this.frame-1-i][0] + this.totalRolls[this.frame-1-i][1]
+  this.score[this.frame-1-i] = 10 + this.totalRolls[this.frame-1-i][0] + this.totalRolls[this.frame-1-i][1]
+
+
+
+  this.score[this.frame-1-i] += this.score[this.frame-2-i]
+  this.score[this.frame-i] += this.score[this.frame-1-i]
+  this.bonus.pop();
 }
 
 Bowling.prototype.addSpareScore = function(i){
-  this.score[this.frame-2-i] = 10 + this.totalRolls[this.frame-1-i][0]
+  this.score[this.frame-1-i] = 10 + this.totalRolls[this.frame-1-i][0]
+  this.score[this.frame-1-i] += this.score[this.frame-2-i]
+  this.score[this.frame-i] += this.score[this.frame-1-i]
+  this.bonus.pop();
 }
 
 Bowling.prototype.checkForStrike = function(){
@@ -78,4 +92,8 @@ Bowling.prototype.returnValue = function(knockedPins){
   if (this.checkForStrike()){return "X"}
   if (this.checkForSpare ()){return "/"}
   return String(knockedPins)
+}
+
+Bowling.prototype.returnTotalScore = function(knockedPins){
+
 }

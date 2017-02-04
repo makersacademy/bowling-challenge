@@ -5,8 +5,16 @@ class BowlingApp < Sinatra::Base
 enable :sessions
 use Rack::MethodOverride
 
-get '/' do
-  erb :index
+get '/play' do
+  erb :play
+end
+
+get '/about' do
+  erb :about
+end
+
+get '/rules' do
+  erb :rules
 end
 
   # start the server if ruby file executed directly

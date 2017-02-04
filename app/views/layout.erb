@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,28 +9,21 @@
     <title>BowlingApp</title>
     <!-- Bootstrap -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
-  </head>
-  <body>
-    <h1>Play!</h1>
+</head>
 
-    <div id="wrapper">
-      <div class="top">
-          <button class="button-start button">START</button>
-      </div>
-
-      <div class="right">
-        <button class="button-roll button">ROLL</button><br>
-        <button class="button-roll-again button">ROLL AGAIN</button><br>
-        <button class="button-reset button">RESET</button><br>
-      </div>
-
-      <div class="score">
-        <h4>Your score is: <div id="score">40pts</div></h4>
-      </div>
-    </div>
-
-
-
+<body>
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <ul class="nav nav-pills">
+                <li role="presentation" class="active"><a href="/play">Play</a>
+                </li>
+                <li role="presentation"><a href="/rules">Rules</a>
+                </li>
+                <li role="presentation"><a href="/about">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -38,5 +32,6 @@
     <script src="./js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./css/styles.css">
     <script src="./js/scripts.js"></script>
-  </body>
+    <%= yield %>
+</body>
 </html>

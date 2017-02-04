@@ -31,4 +31,9 @@ Frame.prototype.isSpare = function(){
   } else {
     return false;
   }
+
+Frame.prototype.showFrameRolls = function(){
+  return this._frame;
+};
+
 };

@@ -11,9 +11,14 @@ function Bowling(){
 
 Bowling.prototype.play = function(knockedPins=null){
   if (knockedPins===null){var knockedPins = this.knockPins()}
-  this.updateRolls(knockedPins);
-  var returnValue = this.returnValue(knockedPins);
-  this.finishRoll();
+  if (this.frame === 9){
+    var returnValue = this.tenthFrame(knockedPins)}
+  else {
+    this.updateRolls(knockedPins)
+    var returnValue = this.returnValue(knockedPins);
+    this.finishRoll();
+  }
+  // console.log(this.totalRolls)
   return returnValue;
 }
 
@@ -22,9 +27,31 @@ Bowling.prototype.knockPins = function(){
 }
 
 Bowling.prototype.updateRolls = function(knockedPins){
+  // console.log("frame = "+this.frame)
+  // console.log("roll number = "+this.rollsNumber)
   this.rolls[this.rollsNumber] = knockedPins;
+  // if (this.frame > 9){this.tenthFrame(); return}
   this.swapRoll();
+  // console.log("HERE")
   if (this.checkForStrike()){this.swapRoll()}
+}
+
+Bowling.prototype.tenthFrame = function(knockedPins){
+  // console.log("frame = "+this.frame)
+  if (this.rollsNumber===2 && this.checkLastRoll()){return Error}
+  this.rolls[this.rollsNumber] = knockedPins;
+  console.log(this.rolls)
+  this.rollsNumber+=1
+  // console.log(this.rollsNumber)
+  var returnValue = this.returnValue(knockedPins);
+
+  return returnValue
+}
+
+Bowling.prototype.checkLastRoll = function(knockedPins){
+  if (this.rolls[0]+this.rolls[1]===20){return false}
+  if (this.rolls[0]+this.rolls[1]===10){return false}
+  return true
 }
 
 Bowling.prototype.swapRoll = function(){
@@ -41,6 +68,8 @@ Bowling.prototype.finishRoll = function(){
 Bowling.prototype.nextFrame = function(){
   this.rolls = [null,null];
   this.frame ++;
+  if (this.frame===9){this.rolls = [null,null,null]}
+  // if (this.frame<9){this.frame ++}else {this.rolls = [null,null,null]}
 }
 
 Bowling.prototype.updateScore = function(){
@@ -58,36 +87,33 @@ Bowling.prototype.addBonus = function(){
 }
 
 Bowling.prototype.addBonusScores = function(){
-  console.log("Im in addBonusScore and the bonus length = "+this.bonus.length)
+  // console.log("Im in addBonusScore and the bonus length = "+this.bonus.length)
   for(var i=0; i < this.bonus.length; i++){
-    console.log("IM HERE")
+    // console.log("IM HERE")
     if (this.bonus[this.bonus.length-i-1]==="/"){this.addSpareScore(i)}
     if (this.bonus[this.bonus.length-i-1]==="X"){this.addStrikeScore(i)}
   }
   this.bonus = [];
-  console.log("The bonus now equals "+this.bonus)
+  // console.log("The bonus now equals "+this.bonus)
 }
 
 Bowling.prototype.addSingleBonusScores = function(){
-  console.log("Im in addSingleBonusScores")
+  // console.log("Im in addSingleBonusScores")
   if (this.bonus[0]==="/"){this.addSpareScore(1)}
   if (this.bonus[0]==="X"){this.addStrikeScore(1)}
   this.bonus.shift();
-  console.log("The bonus now equals "+this.bonus)
+  // console.log("The bonus now equals "+this.bonus)
 }
 
 Bowling.prototype.addStrikeScore = function(i){
-  console.log("i = "+i)
-  console.log("frame = "+this.frame)
+  // console.log("i = "+i)
+  // console.log("frame = "+this.frame)
   this.score[this.frame-i-1] += this.totalRolls[this.frame-i][0] + this.totalRolls[this.frame-i][1]
   // console.log("SCORE = "+this.score[this.frame-i-1])
   if (this.totalRolls[this.frame-i][1] === null){
     // console.log("IM HERE")
     this.score[this.frame-i-1] += this.totalRolls[this.frame-(i-1)][0]
   }
-  // console.log("SCORE = "+this.score[this.frame-i-1])
-  //this.bonus.shift();
-  // console.log("The bonus now equals "+this.bonus)
 }
 
 Bowling.prototype.addSpareScore = function(i){

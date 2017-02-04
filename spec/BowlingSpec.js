@@ -114,6 +114,10 @@ describe('bowling', function(){
       bowling.play(10)
       bowling.play(10)
       bowling.play(10)
+      // bowling.play(10)
+
+      // bowling.play(10)
+      // bowling.play(10)
       // bowling.play(2)
       // bowling.play(6)
       // bowling.play(1)
@@ -125,7 +129,7 @@ describe('bowling', function(){
       // bowling.play(1)
 
       expect(bowling.score).toEqual([30,10,10])
-      // expect(bowling.returnTotalScore()).toEqual([7,23,30,39,53,58])
+      expect(bowling.returnTotalScore()).toEqual([7,23,30,39,53,58])
       // // Frame 4
       // bowling.play(2)
       // bowling.play(2)

@@ -9,10 +9,10 @@ describe('bowling', function(){
 
   describe('#initialize', function() {
     it ('game initializes with frame = 1', function(){
-      expect(bowling.frame).toEqual(1);
+      expect(bowling.frame).toEqual(0);
     })
     it ('game initializes with score = 0', function(){
-      expect(bowling.score).toEqual([0,0,0,0,0,0,0,0,0,0,0]);
+      expect(bowling.score).toEqual([]);
     })
     it ('game initializes with rolls = []', function(){
       expect(bowling.rolls).toEqual([null,null]);
@@ -103,27 +103,27 @@ describe('bowling', function(){
     it ('should return set vales', function(){
       // Frame 1
       bowling.play(10)
-      // bowling.play(4)
-      expect(bowling.score).toEqual([0,0,0,0,0,0,0,0,0,0,0])
+      // bowling.play(10)
+      // expect(bowling.score).toEqual([5])
       // Frame 2
-      bowling.play(10)
-      // bowling.play(5)
-      expect(bowling.score).toEqual([0,0,0,0,0,0,0,0,0,0,0])
+      // bowling.play(10)
+      // bowling.play(10)
+      // expect(bowling.score).toEqual([5,9])
       // Frame 3
-      bowling.play(10)
-      // bowling.play(4)
-      expect(bowling.score).toEqual([0,0,0,0,0,0,0,0,0,0,0])
-      // Frame 4
       bowling.play(2)
       bowling.play(2)
-      expect(bowling.score).toEqual([0,30,60,82,96,100,0,0,0,0,0])
+      expect(bowling.score).toEqual([14,4])
+      // // Frame 4
+      // bowling.play(2)
+      // bowling.play(2)
+      // expect(bowling.score).toEqual([5,9,12,4])
       // // Frame 5
       // bowling.play(10)
-      // expect(bowling.score).toEqual([0,5,14,26,30,0,0,0,0,0,0])
+      // expect(bowling.score).toEqual([5,9,12,4,0])
       // // Frame 6
       // bowling.play(2)
       // bowling.play(2)
-      // expect(bowling.score).toEqual([0,5,14,26,30,44,48,0,0,0,0])
+      // expect(bowling.score).toEqual([5,9,12,4,14,4])
       // // Frame 7
       // bowling.play(2)
       // bowling.play(2)

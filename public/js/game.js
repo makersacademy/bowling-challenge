@@ -2,11 +2,11 @@
 
 // var Shot = require('shot');
 
-function Game() {
+function Game(shot) {
+    this._shot = typeof shot !== 'undefined' ? shot : new Shot();
     
 }
 
 Game.prototype.throwBall = function() {
-    var shot = new Shot();
-    return shot.bowl();
+    return this._shot.bowl();
 };

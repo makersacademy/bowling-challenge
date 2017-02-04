@@ -1,6 +1,8 @@
 # Bowling Challenge
 ### Makers Academy Weekend Challenge No. 5
 
+[![Build Status](https://travis-ci.org/KatHicks/bowling-challenge.svg?branch=master)](https://travis-ci.org/KatHicks/bowling-challenge) [![Coverage Status](https://coveralls.io/repos/github/KatHicks/bowling-challenge/badge.svg?branch=master)](https://coveralls.io/github/KatHicks/bowling-challenge?branch=master)
+
 ### Instructions
 
 We were given the weekend and the evenings during the following week to complete the challenge.

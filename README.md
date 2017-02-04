@@ -33,5 +33,8 @@ We were given the weekend and the evenings during the following week to complete
 * **Setting up my project**
   * Next task was all the administrative set up for the project. Added in standalone Jasmine to the directory for testing.
   * Set up the initial structure of this README.md
+* **Implemented first feature for gutter games**
+  * Based on guidance from YouTube videos found during research, I've decided to write my first test for gutter games in which not points are score in all 10 frames and player gets zero points.
+  * Then, implemented code in the Game object to pass these tests
 
 ### Ideas for extension

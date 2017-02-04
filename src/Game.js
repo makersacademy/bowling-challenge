@@ -1,5 +1,7 @@
 function Game() {
   this._score = 0;
+
+  this._TOTAL_FRAMES = 10;
 }
 
 // PUBLIC

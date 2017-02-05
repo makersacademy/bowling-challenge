@@ -69,4 +69,12 @@ describe("Game", function() {
     expect(function() { game.roll(4); }).toThrowError('Out of range: maximum roll total for a frame is 10');
   });
 
+  it('should end game if no strikes or spares after 10th frame', function(){
+    for (var i = 0; i < game._TOTAL_FRAMES; i++) {
+      game.roll(2);
+      game.roll(3);
+    }
+    expect(function() { game._checkGameOver(); }).toThrowError('Game over!');
+  });
+
 });

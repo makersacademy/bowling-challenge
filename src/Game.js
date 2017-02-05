@@ -127,6 +127,12 @@ Game.prototype._checkGameOver = function() {
   if (this._frames.length >= 10 && !this._checkBonusFrames()) {
     throw Error('Game over!');
   }
+  if (this._frames.length >= 11 && this._checkSpare(this._getLastFrame())) {
+    throw Error('Game over!');
+  }
+  if (this._frames.length >= 12 && this._checkStrike(this._getLastFrame())) {
+    throw Error('Game over!');
+  }
 };
 
 Game.prototype._checkBonusFrames = function() {

@@ -8,30 +8,25 @@ function Player(name="Player"){
 }
 
 Player.prototype.scoreWith = function(frame, knockedPin){
-  // Adds pin to score card
   this.scoreCard[frame][this.roll] = knockedPin;
 }
 
 Player.prototype.setNextRoll = function(frame){
-  // Sets the players next roll number
   if (frame === 9){return this.roll ++}
   this.roll = Math.abs(-1 + this.roll);
 }
 
 Player.prototype.displayScoreCard = function(){
-  // Displays Score Card
   console.log("SCORE CARD")
   console.log(this.scoreCard)
 }
 
-Player.prototype.displayScore = function(){
-  // Displays Score
+Player.prototype.displayScore = function(frame){
   console.log("SCORE")
   var scoreBoard = []
   scoreBoard.push(this.score[0]);
-  for (var i=1; i<=9;i++){
+  for (var i=1; i<=frame;i++){
     scoreBoard.push(scoreBoard[i-1]+this.score[i])
   }
   console.log(scoreBoard)
-
 }

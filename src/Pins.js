@@ -2,6 +2,6 @@
 
 function Pins(){}
 
-Pins.prototype.knockPins = function(){
-  return Math.floor(Math.random() * 11);
+Pins.prototype.knockPin = function(max){
+  return Math.floor(Math.random() * (max+1));
 }

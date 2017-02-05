@@ -1,5 +1,6 @@
 Frame = function() {
-  this.roll1 = 0;
-  this.roll2 = 0;
+  this._roll1 = 0;
+  this._roll2 = 0;
+  this._score = 0;
 
 };

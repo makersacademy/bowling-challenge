@@ -16,10 +16,15 @@ describe('Frame', function() {
   });
 
   it("contains roll1 and roll2", function(){
-    var roll1;
-    var roll2
-    expect(frame.roll1).toBeDefined();
-    expect(frame.roll2).toBeDefined();
+    var _roll1;
+    var _roll2
+    expect(frame._roll1).toBeDefined();
+    expect(frame._roll2).toBeDefined();
+  });
+
+  it("has a score", function(){
+    var _score;
+    expect(frame._score).toBeDefined();
   });
 
 

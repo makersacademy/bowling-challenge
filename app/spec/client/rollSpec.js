@@ -3,7 +3,7 @@ var Roll = require('../../public/javascripts/roll');
 const Reporter = require('jasmine-console-reporter');
 jasmine.getEnv().addReporter(new Reporter());
 
-describe("roll", function(){
+describe("Roll", function(){
 
   var testRoll;
 

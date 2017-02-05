@@ -12,7 +12,7 @@ Game.prototype.getScore = function() {
   var frameIndex = 0;
   for (frame = 0; frame < 10; frame++)
     if (this.rolls[frameIndex] == 10) {
-      score += 10 + this.rolls[frameIndex + 1] + this.rolls[frameIndex + 2];
+      score += 10 + this._strikeBonus(frameIndex);
       frameIndex++;
     }
     else if (this._isSpare(frameIndex)) {
@@ -35,4 +35,8 @@ Game.prototype._sumOfBallsInFrame = function(frameIndex) {
 
 Game.prototype._spareBonus = function(frameIndex) {
   return this.rolls[frameIndex + 2];
+}
+
+Game.prototype._strikeBonus = function(frameIndex) {
+  return this.rolls[frameIndex + 1] + this.rolls[frameIndex + 2];
 }

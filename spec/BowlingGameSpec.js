@@ -1,20 +1,30 @@
 describe('The Bowling Game', function() {
+  var game;
+
+  beforeEach(function() {
+    game = new BowlingGame();
+  });
+
+  var rollManyTimes = function (pins, rolls) {
+    for (var i = 0; i < rolls; i++) {
+      game.roll(pins);
+    }
+  };
+
+describe('', function() {
 
   it('can roll a gutter game', function() {
-    var game;
-    game = new BowlingGame();
-    for (var i = 0; i < 20; i++) {
-      game.roll(0);
-    }
+    rollManyTimes(0, 20);
     expect(game.score()).toEqual(0);
   });
 
   it('can roll all ones', function() {
-    var game = new BowlingGame();
-    for (var i = 0; i < 20; i++) {
-      game.roll(1);
-    }
+    rollManyTimes(1, 20);
     expect(game.score()).toEqual(20);
   });
+
+});
+
+
 
 });

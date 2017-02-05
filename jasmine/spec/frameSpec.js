@@ -27,5 +27,10 @@ describe('Frame', function() {
     expect(frame._score).toBeDefined();
   });
 
+  it("has a bonus", function(){
+    var _bonus;
+    expect(frame._bonus).toBeDefined();
+  });
+
 
 });

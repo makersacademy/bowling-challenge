@@ -1,4 +1,4 @@
-![Challenge Workflow](https://www.dropbox.com/home?preview=Workflow.pdf)
+[Challenge Workflow](https://www.dropbox.com/home?preview=Workflow.pdf)
 
 
 Bowling Challenge user stories:

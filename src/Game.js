@@ -41,10 +41,11 @@ Game.prototype.roll = function(pins) {
 Game.prototype._setScore = function(points) {
   if (!this._checkNewFrame() && this._checkStrike(this._getLastFrame())) {
     this._score += this._sumFrame(this._frame);
-  } else if (this._checkSpare() && this._checkNewFrame() ) {
+  }
+  else if (this._checkSpare(this._getLastFrame()) && this._checkNewFrame() ) {
     this._score += points;
   }
-  this._score += points;
+    this._score += points;
 };
 
 Game.prototype._addRoll = function(roll) {
@@ -61,14 +62,18 @@ Game.prototype._openFrame = function() {
 
 // Internal actions
 
-Game.prototype._checkSpare = function() {
-  if (!this._checkStrike(this._getLastFrame())) {
-    return (this._sumFrame(this._getLastFrame()) === 10);
+Game.prototype._checkSpare = function(frame) {
+  if (!this._checkStrike(frame)) {
+    return (this._sumFrame(frame) === 10);
   }
 };
 
 Game.prototype._checkStrike = function(frame) {
   if (typeof frame !== 'undefined') { return (frame[0] === 10); }
+};
+
+Game.prototype._sumFrame = function(frame) {
+  if (typeof frame !== 'undefined') { return ((frame[0]) + (frame[1])); }
 };
 
 Game.prototype._checkNewFrame = function() {
@@ -77,8 +82,4 @@ Game.prototype._checkNewFrame = function() {
 
 Game.prototype._getLastFrame = function() {
   return this.getRolls().slice(-1)[0]
-};
-
-Game.prototype._sumFrame = function(frame) {
-  if (typeof frame !== 'undefined') { return ((frame[0]) + (frame[1])); }
 };

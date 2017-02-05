@@ -15,6 +15,10 @@ describe("Game", function() {
     game.roll(5);
   }
 
+  function rollStrike() {
+    game.roll(10);
+  }
+
   describe("Gutter game", function() {
     it('should return 0', function() {
       // var n = 20;
@@ -42,11 +46,18 @@ describe("Game", function() {
 
   describe("Strike", function() {
     it('should return the correct number of points', function() {
-      game.roll(10);
+      rollStrike();
       game.roll(3);
       game.roll(4);
       rollMany(16, 0);
       expect(game.getScore()).toEqual(24);
+    });
+  });
+
+  describe("Perfect game", function() {
+    it('should return 300 points', function() {
+      rollMany(12, 10);
+      expect(game.getScore()).toEqual(300);
     });
   });
 

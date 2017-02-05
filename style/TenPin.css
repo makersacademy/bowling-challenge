@@ -1,0 +1,49 @@
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700);
+
+body {
+  font-family: "Roboto", sans-serif ;
+  font-size: 16px;
+  line-height:1.8;
+  text-align: center;
+  color: #585858;
+  background-color:#dddddd;
+}
+h1.name {
+  color: #24C024;
+  font-size: 40px
+}
+
+form {
+	max-width: 200px;
+	margin: 20px auto 0 auto;
+}
+
+input,
+textarea {
+
+	/* over*/
+
+border:none;
+width: 100%;
+padding: 10px;
+margin: 10px 0;
+border-radius: 3px;
+}
+
+textarea {
+	height: 150px;
+    resize: vertical;
+}
+input[type="submit"] {
+
+	background-color: #000;
+	color: #fff;
+
+	cursor: pointer;
+}
+
+input,
+textarea {
+	outline: none;
+}

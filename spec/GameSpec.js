@@ -48,7 +48,7 @@ describe("Game", function() {
       game.roll(0);
     }
 
-    expect(game.getScore()).toEqual(24);
+    expect(game.getScore()).toEqual(20);
   });
 
 });

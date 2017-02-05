@@ -2,6 +2,7 @@ function Frame() {
   this._frame = [];
 }
 
+
 Frame.prototype.getFrame = function() {
   return this._frame;
 };

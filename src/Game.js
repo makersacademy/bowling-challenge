@@ -86,7 +86,7 @@ Game.prototype._checkStrike = function(frame) {
 };
 
 Game.prototype._scoreSpare = function(points) {
-  if (this._checkSpare(this._getLastFrame()) && this._checkNewFrame() ) {
+  if (this._checkSpare(this._getLastFrame()) && this._frame.isNew() ) {
     this._score += points;
   }
 }
@@ -107,10 +107,6 @@ Game.prototype._sumFrame = function(frame) {
   if (typeof frame !== 'undefined') { return ((frame[0]) + (frame[1])); }
 };
 
-Game.prototype._checkNewFrame = function() {
-  return (this._frame.isNew());
-};
-
 Game.prototype._getLastFrame = function() {
   return this.getFrames().slice(-1)[0]
 };
@@ -119,7 +115,7 @@ Game.prototype._validateRoll = function(roll) {
   if (roll > 10) {
     throw Error('Out of range: maximum roll is 10');
   }
-  if (this._checkNewFrame() && this.getFrame()[0] + roll > 10) {
+  if (this._frame.isNew() && this.getFrame()[0] + roll > 10) {
     throw Error('Out of range: maximum roll total for a frame is 10');
   }
 };

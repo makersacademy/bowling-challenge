@@ -1,0 +1,43 @@
+table {
+  text-align: center;
+  width: 650px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+#main {
+  font-family: cursive;;
+  text-align: center;
+  width:700px;
+  border: 2px solid black;
+  padding: 10px;
+  height: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+button {
+  font-family: cursive;
+  font-size: 18px;
+  width:100px;
+  height: 30px;
+  float: right;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 30px;
+}
+input {
+  font-family: cursive;
+  text-align: center;
+  font-size: 18px;
+  float: right;
+  margin-bottom: 10px;
+  width: 25px;
+  height: 25px;
+}
+h1 {
+  color: grey;
+  font-style: italic;
+}
+th {
+  width: 18%;
+}

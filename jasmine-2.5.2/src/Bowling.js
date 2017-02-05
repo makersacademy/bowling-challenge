@@ -1,33 +1,46 @@
 'use strict';
 
 function Bowling() {
-  this._runningTotal = 0;
-  this._score = 0;
   this._frame = 1;
-  this._pins = 10;
   this._roll = 1;
-  this._bonuses = 0;
+  this._pins = 10;
+  this._hits = 0;
+  this._bonus = 0;
+  this._extraNext = 0;
+  this._extra2ndNext = 0;
+  this._runningTotal = 0;
+  this._bonuses = 0; // to do deprecate
 };
 Bowling.prototype.getRunningTotal = function() {return this._runningTotal;};
-Bowling.prototype.getScore = function() {return this._score;};
+Bowling.prototype.getHits = function() {return this._hits;};
 Bowling.prototype.getFrame = function() {return this._frame;};
 Bowling.prototype.getPins = function() {return this._pins;};
 Bowling.prototype.getRoll = function() {return this._roll;};
 Bowling.prototype.getBonuses = function() {return this._bonuses;};
+Bowling.prototype.getBonus = function() {return this._bonus;};
+Bowling.prototype.getExtraNext = function() {return this._extraNext;};
+Bowling.prototype.getExtra2ndNext = function() {return this._extra2ndNext;};
 
-Bowling.prototype.knockDownPins = function(pins) {
-  if (pins > this.getPins()) {
-    pins = this.getPins();
+// Need these:
+
+// getScore() - needs splitting as said elsewhere
+// getBonus()   - get bonuses does something else
+// getStrikeOrSpare()
+// getRunningTotal() √
+
+Bowling.prototype.knockDownPins = function(hits) {
+  if (hits > this.getPins()) {
+    hits = this.getPins();
   };
-  this._pins -= pins;
-  this._score = pins;
+  this._pins -= hits;
+  this._hits = hits;
 };
 Bowling.prototype.updateRunningTotal = function() {
   if ((this.getBonuses() > 0) && (this.getFrame() <= 10 )) {
-    this._score *= 2;
+    this._hits *= 2;
     this._bonuses--;
   }
-  this._runningTotal += this.getScore();
+  this._runningTotal += this.getHits();
 };
 
 Bowling.prototype.recordBonuses = function() {
@@ -62,28 +75,32 @@ Bowling.prototype.newFrame = function() {
   this._frame++;
   this._pins = 10;
   this._roll = 1;
-  this._score = 0;
+  this._hits = 0;
 };
 
 Bowling.prototype.secondRoll = function() {
   this._roll = 2;
-  this._score = 0;
+  this._hits = 0;
 };
 
-// Sequence:
-// knockDownPins() // updates pins and score; may have rollBall() random play option
-// updateRunningTotal() // also resets bonuses
-// recordBonuses() // adds bonuses if required
-// updateRollAndFrame() // calls newFrame() or secondRoll()
+Bowling.prototype.isGameOver = function() {
+  return (this.getFrame() == 11 && this.getBonuses() == 0);
+}
 
-// to do:
-// determine final frame if strike or spare otherwise report game over
 
-// to do
-// refactor with SRP
-// separate out classes if needed: only if any such have both functions and fields
 
-// to do:
-// make _score into separate values to be less error prone:
+// Bowling.prototype.updateRow = function() {
+//   // NOT TESTED // if not game over:
+  // knockDownPins();
+  // updateRunningTotal();
+  // recordBonuses();
+  // updateRollAndFrame();
+// }
+// make _hits into separate values to be less error prone:
 // _pinsDown _bonusScore
 // then _runningTotal = _runningTotal + _pinsDown + _bonusScore
+
+// to do
+// SRP and classes
+
+// write html and rethink for output

@@ -18,7 +18,8 @@ describe('Game', function() {
   });
 
   it("has 1 frame", function(){
-    expect(game.frames).toContain(frame);
+    expect(game.frame1).toBeDefined();
+
   });
 
 

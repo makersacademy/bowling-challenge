@@ -1,2 +1,3 @@
 Game = function() {
+
 };

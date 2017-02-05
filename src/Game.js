@@ -49,7 +49,6 @@ Game.prototype.roll = function(pins) {
 
   if (this._frame.isStrike()) { this._frame.addRoll(0); }
   if (this._frame.isComplete()) { this._close(this._frame); }
-
   this.isOver();
 };
 

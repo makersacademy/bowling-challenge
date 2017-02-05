@@ -6,7 +6,6 @@ function Frame(roll = new Roll()){
 Frame.prototype.bowl = function(){
   this.pinCheck()
   this.doTheThing()
-  console.log(this.roll.result())
   return this.roll.result()
 }
 

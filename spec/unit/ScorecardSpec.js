@@ -1,22 +1,34 @@
-describe("Scorecard", function(){
+describe("Scoreboard", function(){
   var scorecard
+  var score
 
   beforeEach(function(){
-    frameSpy = jasmine.createSpyObj('frame', ['bowl'])
-    scorecard = new Scorecard(frameSpy)
-  })
+    scorecard = new Scorecard;
+    score = 1;
+  });
 
-  describe('default', function(){
-    it('has an empty array of scores', function(){
-      expect(scorecard.scores).toEqual([])
+  describe('#addToScore', function(){
+    it('adds a score to the scores array', function(){
+      scorecard.addToScore(score);
+      expect(scorecard.scores()).toEqual([1])
     });
   });
 
-  describe("#bowl", function(){
-    it("bowls a ball and adds the score to the scorecard", function(){
-      frameSpy.bowl.and.callFake(function() { return 1 });
-      scorecard.bowl()
-      expect(scorecard.scores).toEqual([1])
+  describe('#frameOneScore', function(){
+    it('tells you the score of the first frame', function(){
+      scorecard.addToScore(score);
+      scorecard.addToScore(score);
+      expect(scorecard.frameOneScore()).toEqual(2)
     });
   });
-})
+
+  describe('#frameTwoScore', function(){
+    it('tells you the score of the second frame', function(){
+      scorecard.addToScore(score);
+      scorecard.addToScore(score);
+      scorecard.addToScore(score);
+      scorecard.addToScore(score);
+      expect(scorecard.frameTwoScore()).toEqual(4)
+    });
+  });
+});

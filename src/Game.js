@@ -1,13 +1,17 @@
 function Game() {
   this.totScore = 0;
   this.maxFrames = 10;
-  this._newFrame();
-
+  this.newFrame();
 }
 
-Game.prototype._newFrame = function () {
+Game.prototype.newFrame = function () {
+  this.frame = new Frame();
+};
+
+Game.prototype.framesCounter = function () {
   if(this.maxFrames-- > 0) {
-    this.frame = new Frame();
+    this.newFrame();
+    console.log("New frame");
   }
   else {
     console.log("Well Played! This is your Final Score: " + this.totScore);
@@ -15,19 +19,28 @@ Game.prototype._newFrame = function () {
   }
 };
 
+//   if(this.frame.rollsCounter == 0) {
+//     this.framesCounter();
+//   else {
+//     this.frame;
+//     console.log("Same frame");
+//   }
+// };
+
 Game.prototype.pinsKnockedDown = function(number) {
   this.frame.countPins(number);
   this.totScore += number;
   console.log(this.totScore);
-  this.nextFrame();
-};
-
-Game.prototype.nextFrame = function() {
-  if (this.frame.totPins === 0) {
-    this._newFrame();
-    console.log("New frame");
+  if (frame.isStrike()) {
+    this.framesCounter();
   }
 };
+
+// Game.prototype.isStrike = function() {
+//   if (this.frame.totPins === 0) {
+//     this.framesCounter();
+//   }
+// };
 
 // Game.prototype.limit = function(fn) {
 //   maxCalls = 10;

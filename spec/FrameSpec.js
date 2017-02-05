@@ -9,7 +9,7 @@ describe("Frame", function() {
     expect(frame.totPins).toEqual(10);
   });
 
-  describe("#countPins", function() {
+  describe("#countPins", function(){
     it("should throw an error if n. of pins knocked down above pins available", function() {
       expect( function(){frame.countPins(11);} ).toThrow(new Error("Please enter a number between 0 and 10"));
     });
@@ -18,15 +18,12 @@ describe("Frame", function() {
     });
   });
 
-  describe("#rollsCounter", function() {
-    it("allows a max of 2 rolls per frame", function() {
-      frame.rollsCounter(3);
-      frame.rollsCounter(3);
-      var frame = frame.rollsCounter(3);
-      console.log(frame)
-      expect(frame instanceof Frame).toBe(true);
-    });
-  });
+  // describe("#rollsCounter", function() {
+  //   it("records the number of rolls in a frame", function() {
+  //     frame.rollsCounter();
+  //     expect(frame.maxRolls).toEqual(1);
+  //   });
+  // });
   // describe("when song has been paused", function() {
   //   beforeEach(function() {
   //     player.play(song);

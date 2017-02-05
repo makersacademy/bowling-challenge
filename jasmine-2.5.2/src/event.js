@@ -1,17 +1,14 @@
 $( document ).ready(function() {
   var bowling = new Bowling();
-  $( '#addScore' ).click(function(event) {
-    event.preventDefault();
-    var hits = $('#scoreBox').val();
-    console.log(hits);
-    bowling.addRow(hits);
+  $( '#addScore' ).click(function() {
+    bowling.addRow(parseInt($('#scoreBox').val()));
     writeValues();
-    $('#scoreBox').html("");
+    $('#scoreBox').val(0);
     bowling.endOfRowProcessing();
   });
 
   function writeValues() {
-    $("#results").append("<tr>" +
+    $("table").append("<tr>" +
     "<td>" + bowling.getFrame() + "</td>" +
     "<td>" + bowling.getRoll() + "</td>" +
     "<td>" + bowling.getHits() + "</td>" +

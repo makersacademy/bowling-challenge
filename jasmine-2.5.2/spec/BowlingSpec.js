@@ -20,6 +20,7 @@ describe("Bowling", function() {
   });
 
   it('sets bonus when there is one', function() {
+    debugger;
     spyOn(bowling, 'getExtra').and.returnValue(2);
     bowling.setHits(6);
     bowling.updateBonus();

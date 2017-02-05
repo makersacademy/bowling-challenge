@@ -1,0 +1,41 @@
+* {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+h1{
+  text-align: center;
+}
+
+body{
+  background-color: #F0F0F0;
+
+}
+
+th, td {
+  text-align: center;
+   border: 1px solid black;
+   padding: 15px;
+}
+
+p {
+  text-align: right;
+  border: 1px solid black;
+  position: absolute;
+  padding: 5px;
+  left: 100px;
+}
+
+.buttons{
+  text-align: center;
+  padding: 15px;
+  margin: 10px;
+  border: none;
+}
+
+#one button {
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+font-weight: 300;
+border-radius: 10px;
+width: 100px;
+height: 40px;
+}

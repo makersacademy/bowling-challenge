@@ -37,7 +37,10 @@ describe('The Bowling Game', function() {
     expect(game.score()).toEqual(24);
   });
 
-
+  it('can roll a perfect game', function() {
+    rollManyTimes(10, 12);
+    expect(game.score()).toEqual(300);
+  });
 
 
 });

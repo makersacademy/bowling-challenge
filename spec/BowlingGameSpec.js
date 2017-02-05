@@ -29,7 +29,13 @@ describe('The Bowling Game', function() {
     expect(game.score()).toEqual(16);
   });
 
-
+  it('can roll a strike', function() {
+    game.roll(10);
+    game.roll(4);
+    game.roll(3);
+    rollManyTimes(0, 16);
+    expect(game.score()).toEqual(24);
+  });
 
 
 

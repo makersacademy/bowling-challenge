@@ -3,11 +3,18 @@
 describe("Game", function() {
     
     var game;
+    var game1;
     var shot;
     
     beforeEach(function () {
         shot = jasmine.createSpyObj('shot', ['bowl']);
         game = new Game(shot);
+        game1 = new Game;
+    });
+    
+    it("#showScore returns the current score", function() {
+        game1.throwBall;
+        expect(game1.showScore()).toEqual(10 - game1.currentFrame().pinsStanding());
     });
     
     describe ("#throwBall", function() {

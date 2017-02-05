@@ -41,4 +41,9 @@ describe('Feature Test:', function() {
         game.throwBall();
         expect(game.currentFrame().pinsStanding()).toEqual(10);
     });
+    
+    it("can return your score", function() {
+       game.throwBall();
+       expect(game.showScore()).toEqual(10 - game.currentFrame().pinsStanding());
+    });
 });

@@ -51,4 +51,11 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(20);
   });
 
+  it('should give the correct score of 300 for a perfect game', function(){
+    for (var i = 0; i < (game._TOTAL_FRAMES + 2); i++) {
+      game.roll(10);
+    }
+    expect(game.getScore()).toEqual(300);
+  });
+
 });

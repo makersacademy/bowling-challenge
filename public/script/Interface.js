@@ -1,8 +1,10 @@
 bowling = new Bowling()
-$("#name").text(bowling.player.name);
+$("#scoreArea").hide();
+$("#inputArea").hide();
 
 $(document).ready(function(){
-  $("#random").click(function (){bowl()});
+  $("#start").click(function (){startGame()})
+  $("#random").click(function (){bowl()})
   $("#0").click(function (){bowl(0)})
   $("#1").click(function (){bowl(1)})
   $("#2").click(function (){bowl(2)})
@@ -17,6 +19,17 @@ $(document).ready(function(){
 
   if (bowling.frame===9){updateFrame()}
 })
+
+function startGame(){
+  var name = $("#nameText").val();
+  console.log(name)
+  if (name === ""){player1 = new Player()} else {player1 = new Player(name)}
+  bowling = new Bowling(player1)
+  $("#name").text(bowling.player.name);
+  $("#gameOptions").hide();
+  $("#scoreArea").show();
+  $("#inputArea").show();
+}
 
 function bowl(pin=null){
   try {bowling.play(pin)}
@@ -37,7 +50,7 @@ function updateFrame(){
       $("#score"+i).text(result[i]);
     }
     var score = 0
-    for (var i=bowling.player.score.length-1; i >= 0; i--){
+    for (var i=bowling.player.score.length; i >= 0; i--){
       if (Number.isInteger(bowling.player.score[i])){score += bowling.player.score[i]}
     }
     $("#totalScore").text(score)

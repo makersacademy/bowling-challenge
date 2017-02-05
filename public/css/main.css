@@ -15,6 +15,27 @@
   z-index: 1000
 }
 
+#gameOptions {
+  position: relative;
+  top: 100px;
+  left: 20px;
+  width: 500px;
+  margin: 20px auto;
+  padding: 5px;
+  border: solid blue 10px;
+  background-color: white;
+  font-size: 3em;
+  font-family: serif;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 10px 10px 5px #888888;
+  z-index: 1000
+}
+
+#nameText {
+  font-size: 30px;
+}
+
 #gameArea {
   position: absolute;
   top: -20px;

@@ -32,8 +32,3 @@ Player.prototype.displayScore = function(frame){
   }
   return scoreBoard
 }
-
-Player.prototype.totalScore = function(frame){
-  var result = this.displayScore
-  return result[frame]
-}

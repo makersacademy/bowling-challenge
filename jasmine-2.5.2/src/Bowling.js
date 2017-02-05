@@ -28,8 +28,8 @@ Bowling.prototype.addRow = function(hits) { // hits = user input
   this.updateBonus();
   if (this.noPinsLeft()) { this.updateStrikeOrSpare();};
   this.updateRunningTotal();
-  this.writeRow();
-  this.endOfRowProcessing();
+  // this.writeRow();
+  // this.endOfRowProcessing();
 }
 Bowling.prototype.setHits = function(hits) {
   if (hits > this.getPins()) {
@@ -67,7 +67,7 @@ Bowling.prototype.endOfRowProcessing = function() {
   if (this.isNewFrame()) {
     this.setUpNewFrame();
   } else {
-    this.setUpNewRow();
+    this.setUpNewRoll();
   }
   this.updateExtras();
 }

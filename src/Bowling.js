@@ -8,27 +8,50 @@ function Bowling(player = new Player(), pins = new Pins()) {
 
 Bowling.prototype.play = function(knockedPin=null){
   if (knockedPin===null){knockedPin = this.pins.knockPin()}
-  // var knockedPin = this.checkForSpecial(knockedPin);
-  this.player.scoreWith(this.frame, knockedPin);
-  this.player.setNextRoll(this.frame);
-  this.setNextFrame(knockedPin);
+  var valid = this.checkIfPlayValid();
+  if (valid===null){
+    // var knockedPin = this.checkForSpecial(knockedPin);
+    this.player.scoreWith(this.frame, knockedPin);
+    this.player.setNextRoll(this.frame);
+    this.setNextFrame(knockedPin)
+  } else {
+    var error = this.errorHandling(valid)
+    console.log(error)
+  }
+}
 
+Bowling.prototype.errorHandling = function(error){
+  switch (error) {
+    case 1: return "Error: Pin value should be > 0"
+    case 2: return "Error: Pin value should be < 10"
+    case 3: return "Error: Game Over"
+  }
+}
+
+Bowling.prototype.checkIfPlayValid = function(knockedPin){
+  if (knockedPin<0){return 1}
+  if (knockedPin>10){return 2}
+  if (this.frame===9 && this.player.roll>1){
+    if (this.isStrike(9,0) || this.isSpare(9,0)){return null}
+    return 3
+  }
+  return null
 }
 
 Bowling.prototype.setNextFrame = function(knockedPin){
-  if (this.isStrike(this.frame)){this.player.setNextRoll()}
-  if (this.player.roll===0){
+  if (this.isStrike(this.frame) && this.frame != 9){this.player.setNextRoll()}
+  if (this.player.roll===0 && this.frame < 9){
     this.workOutScore()
     this.frame ++
   }
-  if (this.frame > 10){this.frame = 9}
+  if (this.frame > 8 && this.player.roll > 0 ){this.workOutScore()}
   // if (this.frame===10&&(!this.isStrike(this.frame-1)||!this.isSpare(this.frame-1))){console.log("NO MORE GAMES")}
 }
 
 Bowling.prototype.workOutScore = function(){
   var start = this.frame
-  if (this.frame>8){start = 8}
-  console.log(start)
+  if (this.frame>8){start = this.tenthFrameScore()}
+  console.log("FRAME = "+this.frame)
   for (var i=start; i>=0; i--){
     // console.log("i = " + i)
     var value = null
@@ -38,6 +61,12 @@ Bowling.prototype.workOutScore = function(){
     if (value === null){value = this.normalScore(i)}
     this.player.score[i] = value
   }
+}
+
+Bowling.prototype.tenthFrameScore = function(){
+  console.log("IM HERE")
+  this.player.score[9] = this.player.scoreCard[9][0] + this.player.scoreCard[9][1] + this.player.scoreCard[9][2]
+  return 8
 }
 
 Bowling.prototype.strikeScore = function(frame){
@@ -67,13 +96,13 @@ Bowling.prototype.addFrame = function(frame, roll){
   return this.player.scoreCard[frame][0] + this.player.scoreCard[frame][1]
 }
 
-Bowling.prototype.isStrike = function(frame){
-  if (this.player.scoreCard[frame][0]===10){return true}else{return false}
+Bowling.prototype.isStrike = function(frame,roll=0){
+  if (this.player.scoreCard[frame][roll]===10){return true}else{return false}
 }
 
-Bowling.prototype.isSpare = function(frame){
+Bowling.prototype.isSpare = function(frame,roll=0){
   var value = false
-  if (this.player.scoreCard[frame][0]+this.player.scoreCard[frame][1]===10){value = true}
-  if (value === true && this.player.scoreCard[frame][1]===null){value = false}
+  if (this.player.scoreCard[frame][roll]+this.player.scoreCard[frame][roll+1]===10){value = true}
+  if (value === true && this.player.scoreCard[frame][roll+1]===null){value = false}
   return value
 }

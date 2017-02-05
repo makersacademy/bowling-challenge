@@ -4,7 +4,6 @@ function Player(name="Player"){
   this.name = name;
   this.scoreCard = [[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null,null],[null]]
   this.score = [null,null,null,null,null,null,null,null,null,null]
-  // this.specialScore = [null,null,null,null,null,null,null,null,null,null]
   this.roll = 0
 }
 
@@ -15,11 +14,8 @@ Player.prototype.scoreWith = function(frame, knockedPin){
 
 Player.prototype.setNextRoll = function(frame){
   // Sets the players next roll number
-  if (frame === 9){
-    this.roll = 0
-  } else {
-    this.roll = Math.abs(-1 + this.roll);
-  }
+  if (frame === 9){return this.roll ++}
+  this.roll = Math.abs(-1 + this.roll);
 }
 
 Player.prototype.displayScoreCard = function(){
@@ -31,8 +27,11 @@ Player.prototype.displayScoreCard = function(){
 Player.prototype.displayScore = function(){
   // Displays Score
   console.log("SCORE")
-  console.log(this.score)
+  var scoreBoard = []
+  scoreBoard.push(this.score[0]);
+  for (var i=1; i<=9;i++){
+    scoreBoard.push(scoreBoard[i-1]+this.score[i])
+  }
+  console.log(scoreBoard)
 
-  console.log("SPECIAL")
-  console.log(this.specialScore)
 }

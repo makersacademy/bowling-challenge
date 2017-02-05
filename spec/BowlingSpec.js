@@ -19,19 +19,23 @@ describe('bowling', function(){
 
   describe('Game play', function() {
     it ('test', function(){
+      bowling.play(2);
+      bowling.play(5);
+      bowling.play(7);
+      bowling.play(3);
+      bowling.play(8);
+      bowling.play(1);
       bowling.play(10);
+      bowling.play(9);
+      bowling.play(1);
       bowling.play(10);
-      bowling.play(10);
-      bowling.play(10);
-      bowling.play(10);
-      bowling.play(10);
-      bowling.play(10);
-      bowling.play(10);
-      bowling.play(10);
+      bowling.play(6);
+      bowling.play(1);
       bowling.play(2);
       bowling.play(2);
-      // bowling.play(2);
-      // bowling.play(2);
+      bowling.play(10);
+      bowling.play(1);
+      bowling.play(1);
       // bowling.player.displayScore();
       // bowling.play(10);
       // // bowling.player.displayScore();

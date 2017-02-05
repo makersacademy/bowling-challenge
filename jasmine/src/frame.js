@@ -6,7 +6,7 @@ Frame = function() {
 };
 
 Frame.prototype.roll1 = function() {
-
+  // this._roll1 = 1;
 };
 
 Frame.prototype.roll2 = function() {

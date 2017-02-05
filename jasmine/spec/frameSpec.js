@@ -41,5 +41,12 @@ describe('Frame', function() {
     expect(frame.roll2).toBeDefined();
   });
 
+  it ('returns a number of pins knocked down after the first roll', function() {
+    frame.roll1();
+    expect(typeof frame._roll1).toEqual('number');
+  });
+
+
+
 
 });

@@ -17,6 +17,14 @@ describe('bowling', function(){
     })
   })
 
+  describe('Test random pins', function(){
+    it ('game select random amount of pins to knock down', function(){
+      spyOn(Math,'random').and.returnValue(0.1);
+      bowling.play();
+      expect(bowling.player.scoreCard).toContain([1,null])
+    })
+  })
+
   describe('Test one frame', function(){
     it ('allows you to play a normal frame', function(){
       bowling.play(2);
@@ -107,5 +115,4 @@ describe('bowling', function(){
       expect(function() {bowling.play(2)}).toThrowError("Error: Game Over");
     })
   })
-
 })

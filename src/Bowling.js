@@ -95,7 +95,6 @@ Bowling.prototype.normalScore = function(frame){
   return this.player.scoreCard[frame][0] + this.player.scoreCard[frame][1]
 }
 
-
 Bowling.prototype.addFrame = function(frame, roll){
   return this.player.scoreCard[frame][0] + this.player.scoreCard[frame][1]
 }

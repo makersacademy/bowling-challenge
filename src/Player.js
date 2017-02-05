@@ -17,16 +17,14 @@ Player.prototype.setNextRoll = function(frame){
 }
 
 Player.prototype.displayScoreCard = function(){
-  console.log("SCORE CARD")
-  console.log(this.scoreCard)
+  return this.scoreCard
 }
 
 Player.prototype.displayScore = function(frame){
-  console.log("SCORE")
   var scoreBoard = []
   scoreBoard.push(this.score[0]);
   for (var i=1; i<=frame;i++){
     scoreBoard.push(scoreBoard[i-1]+this.score[i])
   }
-  console.log(scoreBoard)
+  return scoreBoard
 }

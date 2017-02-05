@@ -3,5 +3,8 @@ Frame = function() {
   this._roll2 = 0;
   this._score = 0;
   this._bonus = "";
+};
+
+Frame.prototype.roll1 = function() {
 
 };

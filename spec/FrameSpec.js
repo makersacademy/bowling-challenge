@@ -17,6 +17,16 @@ describe("Frame", function(){
     });
   });
 
+  describe("#resetPins", function(){
+    it("resets the frame scores to 0", function(){
+      rollSpy.result.and.callFake(function() { return 3 });
+      frame.bowl();
+      frame.bowl();
+      frame.bowl();
+      expect(frame.scores).toEqual([3])
+    });;
+  });
+
   describe('#bowl', function(){
     beforeEach(function(){
       rollSpy.result.and.callFake(function() { return 3 });

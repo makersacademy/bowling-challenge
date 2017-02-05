@@ -4,6 +4,7 @@ function Frame(roll = new Roll()){
 }
 
 Frame.prototype.bowl = function(){
+  this.resetPins()
   this.roll.go(this.remainingPins());
   this.scores.push(this.roll.result())
 }
@@ -18,4 +19,9 @@ Frame.prototype.secondRollScore = function(){
 
 Frame.prototype.remainingPins = function(){
   return (this.scores.length == 0 ? 10 : 10 - this.scores[0])
+}
+
+Frame.prototype.resetPins = function(){
+  if (this.scores.length >= 2) this.scores.length = []
+
 }

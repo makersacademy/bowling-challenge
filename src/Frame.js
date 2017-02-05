@@ -7,6 +7,7 @@ Frame.prototype.bowl = function(){
   this.resetPins()
   this.roll.go(this.remainingPins());
   this.scores.push(this.roll.result())
+  return this.roll.result
 }
 
 Frame.prototype.firstRollScore = function(){
@@ -23,5 +24,6 @@ Frame.prototype.remainingPins = function(){
 
 Frame.prototype.resetPins = function(){
   if (this.scores.length >= 2) this.scores.length = []
-
 }
+
+// Frame.prototype.pinCheck = f

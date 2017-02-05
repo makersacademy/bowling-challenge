@@ -33,5 +33,9 @@ describe('Frame', function() {
     expect(frame._bonus).toBeDefined();
   });
 
+  it("has a roll1 method", function(){
+    expect(frame.roll1).toBeDefined();
+  });
+
 
 });

@@ -6,9 +6,17 @@ describe("Frame", function() {
   });
 
   it("should include 10 pins", function() {
-    expect(frame.PINS_NUM).toEqual(10);
+    expect(frame.totPins).toEqual(10);
   });
 
+  describe("#countPins", function() {
+    it("should throw an error if n. of pins knocked down above pins available", function() {
+      expect( function(){frame.countPins(11);} ).toThrow(new Error("Please enter a number between 0 and 10"));
+    });
+    it("should throw an error if entered n. of pins below 0", function() {
+      expect( function(){frame.countPins(-3);} ).toThrow(new Error("Please enter a number between 0 and 10"));
+    });
+  });
   // describe("when song has been paused", function() {
   //   beforeEach(function() {
   //     player.play(song);

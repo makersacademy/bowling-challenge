@@ -28,15 +28,28 @@ describe ('Frame', function() {
     });
   });
 
-  describe('#_isStrike', function() {
-    it('returns true when strike gets hit', function() {
+  describe('#isStrike', function() {
+    it('returns true when frame results in strike', function() {
       frame.roll(10);
       expect(frame.isStrike()).toBe(true);
     });
-    it('returns false when strike is not hit', function() {
+    it('returns false when frame does not result in strike', function() {
       frame.roll(0);
       frame.roll(10);
       expect(frame.isStrike()).toBe(false);
+    });
+  });
+
+  describe('#isSpare', function() {
+    it('returns true when frame results in spare', function() {
+      frame.roll(0);
+      frame.roll(10);
+      expect(frame.isSpare()).toBe(true);
+    });
+    it('returns false when frame does not result in spare', function() {
+      frame.roll(8);
+      frame.roll(1);
+      expect(frame.isSpare()).toBe(false);
     });
   });
 

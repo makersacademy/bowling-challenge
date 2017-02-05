@@ -18,3 +18,7 @@ Frame.prototype.calculateFrameScore = function(){
 Frame.prototype.isStrike = function(){
   return (this._frame[0] === 10) ? true : false ;
 };
+
+Frame.prototype.isSpare = function() {
+  return (this._frame[0] + this._frame[1] === 10 ) ? true : false ;
+};

@@ -10,6 +10,7 @@ Game.prototype._newFrame = function () {
     this.frame = new Frame();
   }
   else {
+    console.log("Well Played! This is your Final Score: " + this.totScore);
     throw new Error("Game Over");
   }
 };

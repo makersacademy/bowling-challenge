@@ -12,7 +12,7 @@ describe("Game", function() {
 
 describe("has frames", function(){
 
-  it("starts a new frame when strike or spare", function() {
+  it("#nextFrame starts a new frame when a strike is scored", function() {
     spyOn(game, "_newFrame");
     game.pinsKnockedDown(10);
     expect(game._newFrame).toHaveBeenCalled();

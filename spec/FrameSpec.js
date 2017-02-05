@@ -17,6 +17,16 @@ describe("Frame", function() {
       expect( function(){frame.countPins(-3);} ).toThrow(new Error("Please enter a number between 0 and 10"));
     });
   });
+
+  describe("#rollsCounter", function() {
+    it("allows a max of 2 rolls per frame", function() {
+      frame.rollsCounter(3);
+      frame.rollsCounter(3);
+      var frame = frame.rollsCounter(3);
+      console.log(frame)
+      expect(frame instanceof Frame).toBe(true);
+    });
+  });
   // describe("when song has been paused", function() {
   //   beforeEach(function() {
   //     player.play(song);

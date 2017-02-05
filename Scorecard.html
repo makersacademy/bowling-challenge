@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Our Thermostat</title>
+    <link type="text/css" href="master.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class='container'>
+      <h1>My Damn Fine Thermostat</h1>
+          <p><section>
+            <h3>Current temperature: <span id="current-temperature"><span></h3>
+          </section></p>
+          <p>
+            <button id="power-saving" type="button">Power Saving</button>
+          </p>
+          <p>
+          <button id="reset" type="button">RESET</button>
+          </p>
+          <h2><span id="temperature"></span>ºC</h2>
+          <h3 id="usage"></h3>
+          <p id="PSM" type="button"></p>
+          <p>
+            <button id="up" type="button">UP</button>
+          </p>
+          <p>
+          <button id="down" type="button">DOWN</button>
+          </p>
+      </div>
+    </div>
+  </body>
+  <script src="src/Thermostat.js"></script>
+  <script src="src/jquery.min.js"></script>
+  <script src="src/eventmanager.js"></script>
+</html>

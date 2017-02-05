@@ -1,0 +1,49 @@
+body {
+  font-family: futura, courier;
+  color: white;
+  background-color: #c9d5e8;
+  direction: rtl;
+}
+
+h1 {
+    display: block;
+    margin: auto;
+}
+
+button {
+  display: block;
+  margin: auto;
+  font-family: futura, courier;
+  background-color: skyblue;
+  border-width: 0px;
+}
+
+#current-temperature {
+  font-size: 18px;
+  border-style: 1px white solid;
+  border-radius: 25px;
+}
+
+#up {
+  background-color: orange;
+  padding: 10px;
+  border-radius: 25px;
+}
+
+#down {
+  background-color: yellow;
+  padding: 10px;
+  border-radius: 25px;
+}
+
+.low {
+  color: green;
+}
+
+.medium {
+  color: black;
+}
+
+.high {
+  color: red;
+}

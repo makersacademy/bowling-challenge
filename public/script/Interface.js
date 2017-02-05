@@ -1,4 +1,5 @@
-bowling = new Bowling()
+'use strict';
+var bowling = new Bowling()
 $("#scoreArea").hide();
 $("#inputArea").hide();
 
@@ -23,7 +24,7 @@ $(document).ready(function(){
 function startGame(){
   var name = $("#nameText").val();
   console.log(name)
-  if (name === ""){player1 = new Player()} else {player1 = new Player(name)}
+  if (name === ""){var player1 = new Player()} else {var player1 = new Player(name)}
   bowling = new Bowling(player1)
   $("#name").text(bowling.player.name);
   $("#gameOptions").hide();
@@ -44,7 +45,8 @@ function updateFrame(){
       $("#pin"+i+"-0").text(display[0]);
       $("#pin"+i+"-1").text(display[1]);
     }
-    $("#pin9-2").text(bowling.player.scoreCard[9][2]);
+    if ($("#pin9-1").text()===""){$("#pin9-1").text(checkStrike(bowling.player.scoreCard[9][1]))}
+    $("#pin9-2").text(checkStrike(bowling.player.scoreCard[9][2]));
     result = bowling.player.displayScore(bowling.frame-1)
     for (var i=0; i <= result.length; i++){
       $("#score"+i).text(result[i]);
@@ -61,4 +63,8 @@ function displayChar(text1, text2){
   if (text1===10){return ["X",""]}
   if (text1+text2===10){return [text1,"/"]}
   return [text1,text2]
+}
+
+function checkStrike(text){
+  if (text===10){return "X"}else{return text}
 }

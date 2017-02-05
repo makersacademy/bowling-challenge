@@ -26,10 +26,10 @@ Bowling.prototype.possiblePins = function(){
 
 Bowling.prototype.errorHandling = function(error){
   switch (error) {
-    case 1: return "Error: Pin value should be >= 0"
-    case 2: return "Error: Pin value should be <= 10"
-    case 3: return "Error: Combined pin total should be <= 10"
-    case 4: return "Error: Game Over"
+    case 1: return "Pin value should be >= 0"
+    case 2: return "Pin value should be <= 10"
+    case 3: return "Combined pin total should be <= 10"
+    case 4: return "Game Over"
   }
 }
 

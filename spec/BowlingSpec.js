@@ -98,21 +98,21 @@ describe('bowling', function(){
 
   describe('Error handling', function(){
     it ('displays an error if you select a pin less than 0', function(){
-      expect(function() {bowling.play(-1)}).toThrowError("Error: Pin value should be >= 0");
+      expect(function() {bowling.play(-1)}).toThrowError("Pin value should be >= 0");
     })
 
     it ('displays an error if you select a pin greater than 10', function(){
-      expect(function() {bowling.play(22)}).toThrowError("Error: Pin value should be <= 10");
+      expect(function() {bowling.play(22)}).toThrowError("Pin value should be <= 10");
     })
 
     it ('displays an error if you select two pins that combined are greater than 10', function(){
       bowling.play(9);
-      expect(function() {bowling.play(2)}).toThrowError("Error: Combined pin total should be <= 10");
+      expect(function() {bowling.play(2)}).toThrowError("Combined pin total should be <= 10");
     })
 
     it ('displays an error if you try and play after the game has finished', function(){
       for (var i = 0; i <= 11; i++){bowling.play(10)}
-      expect(function() {bowling.play(2)}).toThrowError("Error: Game Over");
+      expect(function() {bowling.play(2)}).toThrowError("Game Over");
     })
   })
 })

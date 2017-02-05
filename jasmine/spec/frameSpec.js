@@ -41,13 +41,36 @@ describe('Frame', function() {
     expect(frame.roll2).toBeDefined();
   });
 
-  it ('returns a number of pins knocked down after the first roll', function() {
-    frame.roll1();
-    expect(typeof frame._roll1).toEqual('number');
+  describe('#roll1', function() {
+    var frame;
+    beforeEach(function() {
+      frame = new Frame();
+    });
+
+    it ('returns a number of pins knocked down after the first roll', function() {
+      frame.roll1();
+      expect(typeof frame._roll1).toEqual('number');
+    });
+    it ('can knock down 0 - 10 pins', function() {
+      frame.roll1();
+      expect(frame._roll1).toBeLessThan(10);
+    });
   });
-  it ('can knock down 0 - 10 pins', function() {
-    frame.roll1();
-    expect(frame._roll1).toBeLessThan(10);
+
+  describe('#roll2', function() {
+    var frame;
+    beforeEach(function() {
+      frame = new Frame();
+    });
+
+    it ('returns a number of pins knocked down after the first roll', function() {
+      frame.roll2();
+      expect(typeof frame._roll2).toEqual('number');
+    });
+    it ('can knock down 0 - 10 pins', function() {
+      frame.roll2();
+      expect(frame._roll2).toBeLessThan(10);
+    });
   });
 
 

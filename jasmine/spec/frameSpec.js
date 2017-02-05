@@ -37,5 +37,9 @@ describe('Frame', function() {
     expect(frame.roll1).toBeDefined();
   });
 
+  it("has a roll2 method", function(){
+    expect(frame.roll2).toBeDefined();
+  });
+
 
 });

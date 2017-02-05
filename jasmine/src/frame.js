@@ -8,3 +8,7 @@ Frame = function() {
 Frame.prototype.roll1 = function() {
 
 };
+
+Frame.prototype.roll2 = function() {
+
+};

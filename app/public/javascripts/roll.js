@@ -1,11 +1,13 @@
-function roll() {
+function Roll() {
   this._score = 0;
 }
 
-roll.prototype.getScore = function(){
+Roll.prototype.getScore = function(){
   return this._score;
 }
 
-roll.prototype.setScore = function (value) {
+Roll.prototype.setScore = function (value) {
   this._score = value;
 };
+
+module.exports = Roll;

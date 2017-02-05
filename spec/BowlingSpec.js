@@ -2,13 +2,13 @@
 
 describe('bowling', function(){
   var bowling;
-  var player;
-  var pins;
+  // var player;
+  // var pins;
 
   beforeEach(function(){
-    player = new Player();
-    pins = new Pins();
-    bowling = new Bowling(player, pins);
+    // player = new Player();
+    // pins = new Pins();
+    bowling = new Bowling();
   })
 
   describe('#initialize', function(){

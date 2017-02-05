@@ -48,3 +48,27 @@ Game.prototype.frameScore = function (frame) {
       return this.frames[frame-1].total()
     }
 };
+
+Game.prototype.gameOutcome = function () {
+  if (this._gutterGame()) {
+    return this._gutterGame()
+  }
+  else if (this._perfectScore()) {
+    return this._perfectScore()
+  }
+  else {
+    return this.totalScore()
+  }
+};
+
+Game.prototype._gutterGame = function () {
+  if(this.totalScore() === 0) {
+    return "Gutter game :( !"
+  }
+};
+
+Game.prototype._perfectScore = function () {
+  if(this.totalScore() === 300) {
+    return "Perfect game! You go glen coco"
+  }
+};

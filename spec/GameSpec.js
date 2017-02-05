@@ -25,7 +25,7 @@ describe('Game', function(){
     expect(function(){game.roll(2,2)}).toThrow("Game finished")
   });
 
-  describe('game outcome', function(){
+  describe('total score', function(){
     it('calculates the total game score', function(){
       for (var i = 0; i < 10; i++) {
         game.roll(2,2)
@@ -66,6 +66,29 @@ describe('Game', function(){
         game.roll(10)
         game.roll(2,2)
         expect(game.frameScore(2)).toEqual(14)
+    });
+
+  });
+
+  describe('game outcome', function(){
+    it('shows a gutter game', function(){
+      for (var i = 0; i < 10; i++) {
+        game.roll(0,0)
+      }
+        expect(game.gameOutcome()).toEqual("Gutter game :( !")
+    });
+    it('shows a perfect game', function(){
+      for (var i = 0; i < 10; i++) {
+        game.roll(10)
+      }
+        expect(game.gameOutcome()).toEqual("Perfect game! You go glen coco")
+    });
+
+    it('shows total score otherwise', function(){
+      for (var i = 0; i < 10; i++) {
+        game.roll(5,2)
+      }
+        expect(game.gameOutcome()).toEqual(70)
     });
 
   });

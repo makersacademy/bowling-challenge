@@ -24,4 +24,14 @@ describe('Game', function(){
     }
     expect(function(){game.roll(2,2)}).toThrow("Game finished")
   });
+
+  describe('game outcome', function(){
+    it('calculates the total game score', function(){
+      for (var i = 0; i < 10; i++) {
+        game.roll(2,2)
+      }
+        expect(game.totalScore()).toEqual(40)
+    });
+
+  });
 });

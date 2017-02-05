@@ -4,10 +4,10 @@ function Shot() {
     
 }
 
-Shot.prototype._randomNumber = function() {
-    return Math.floor(Math.random() * 10);
+Shot.prototype._randomNumber = function(max) {
+    return Math.floor(Math.random() * max);
 };
 
-Shot.prototype.bowl = function() {
-    return this._randomNumber();
+Shot.prototype.bowl = function(pinsStanding) {
+    return this._randomNumber(pinsStanding);
 };

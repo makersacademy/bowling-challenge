@@ -20,6 +20,10 @@ describe('Roll', function(){
         expect(roll.result()).toBeLessThan(11);
         expect(roll.result()).not.toBeLessThan(0);
       });
+      it('can be passed a value representative of the remaining number of pins', function(){
+        roll.go(7);
+        expect(roll.result()).toBeLessThan(8);
+        expect(roll.result()).not.toBeLessThan(0);
+      })
     });
-
 });

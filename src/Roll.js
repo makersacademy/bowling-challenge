@@ -4,12 +4,11 @@ function Roll() {
 
 Roll.prototype = {
 
-  go: function(){
-    this._result = Math.floor(Math.random() * 11);
+  go: function(pins = 10){
+    this._result = Math.floor(Math.random() * (pins+1));
   },
 
   result: function(){
     return this._result
   }
-
 }

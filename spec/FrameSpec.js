@@ -12,23 +12,29 @@ describe("Frame", function(){
     it("has a roll within it?", function(){
       expect(frame.roll).toBe(rollSpy)
     });
-    it("has a null value first bowl score", function(){
-      expect(frame.firstRollScore).toBe(null)
-    });
     it("has a null value second bowl score", function() {
-      expect(frame.secondRollScore).toBe(null)
+      expect(frame.scores).toEqual([])
     });
   });
 
   describe('#bowl', function(){
-    it('saves the score of the first bowl', function(){
+    beforeEach(function(){
       rollSpy.result.and.callFake(function() { return 3 });
-      console.log(rollSpy.result())
+    });
+    it('saves the score of the first bowl', function(){
+
       frame.bowl()
-      expect(frame.firstRollScore).toBe(frame.roll.result())
+      expect(frame.firstRollScore()).toBe(frame.roll.result())
+    });
+    it('saves the score of the second bowl', function(){
+      frame.bowl();
+      frame.bowl();
+      expect(frame.secondRollScore()).toBe(frame.roll.result());
+    });
+    it('can calculate the the remaining number of pins after the first bowl', function(){
+      frame.bowl();
+      expect(frame.remainingPins()).toEqual(7)
     });
   });
-
-
 
 });

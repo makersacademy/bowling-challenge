@@ -2,7 +2,7 @@ body {
   font-family: futura, courier;
   color: white;
   background-color: #c9d5e8;
-  direction: rtl;
+  direction: ltr;
 }
 
 h1 {
@@ -16,6 +16,11 @@ button {
   font-family: futura, courier;
   background-color: skyblue;
   border-width: 0px;
+}
+
+#scorecard {
+  /*border-collapse: collapse;*/
+  border-style: 1px solid white;
 }
 
 #current-temperature {

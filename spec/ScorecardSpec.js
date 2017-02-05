@@ -33,11 +33,11 @@ describe('Scorecard', function(){
   });
 
   it('User cannot enter score for >10 frames', function(){
-    scorecard.frame = 10
-    expect(function() { scorecard.addScore(4, 5) }).toThrow('Cannot exceed 10 frames.');
+    scorecard.frame = 11
+    expect(function() { scorecard.addScore(4, 5) }).toThrow('Game ended.');
   });
 
-  it('When a strike is bowled, adds next frame score twice as bonus', function(){
+  it('When strike is bowled, double next frame score as bonus', function(){
     scorecard.addScore(10, 0);
     scorecard.addScore(7, 3);
     expect(scorecard.totalScore).toEqual(30);
@@ -54,7 +54,8 @@ describe('Scorecard', function(){
 // If loop: if item[0] of previous frame was 10 add total of current frame twice
 // if sum of previous frame was 10 (i.e. last item in score array == 10)
 // add item[0] of current frame
-// Special circumstances for 10th frame (perhaps add extra field in JQuery later)
+// Special circumstances for 10th frame (perhaps add extra field
+// in JQuery later)
 
 // User can visit the home page which displays welcome message;
 // Get to a page which has instructions for how to use it
@@ -67,6 +68,7 @@ describe('Scorecard', function(){
 // and table which updates each section of table with scores
 // rely on honesty for now
 // later add automatic moving on function if first roll of frame is 10
-// Can I use JQuery just to update the most recent piece of code and leave the rest alone,
+// Can I use JQuery just to update the most recent piece of code
+// and leave the rest alone,
 // i.e. use one iterative function to add each frame score up to number 10
 // using the same variables?

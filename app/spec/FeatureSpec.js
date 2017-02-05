@@ -38,7 +38,7 @@ describe("FEATURES:", function(){
       var field = this.driver.findElement(selenium.By.name('roll'));
       field.sendKeys('3');
       field.submit();
-      var scores = this.driver.findElement(selenium.By.id('player-scores'));
+      var scores = this.driver.findElement(selenium.By.id('scores-table'));
       expect(scores.getText()).toContain("3");
       done();
     });

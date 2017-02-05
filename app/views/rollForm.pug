@@ -1,8 +1,5 @@
-extends index.pug
-
-block form
-  form(action="/" method="get")
-    div.form-group
-      label(for="roll") Your Roll
-      input(type="text", name="roll", value="")
-      button.btn(type="submit", name="submit-roll") Submit
+form(action="/" method="get")
+  div.form-group
+    label(for="roll") Your Roll
+    input(type="text", name="roll", value="")
+    button.btn(type="submit", name="submit-roll") Submit

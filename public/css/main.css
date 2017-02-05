@@ -118,6 +118,20 @@
 .mainScoreResult.frame9 {left: 685px;}
 .mainScoreResult.frame10 {left: 753px;}
 
+.totalScoreArea {
+  position: absolute;
+  top: 120px;
+  width: 60px;
+  left: 830px;
+  height: 60px;
+  font-size: 30px;
+  text-align: center;
+  word-wrap: break-word;
+  line-height: 60px;
+  vertical-align:middle;
+  font-weight: bold;
+}
+
 #inputArea {
   position: relative;
   top: 500px;

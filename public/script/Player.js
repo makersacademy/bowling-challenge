@@ -24,7 +24,16 @@ Player.prototype.displayScore = function(frame){
   var scoreBoard = []
   scoreBoard.push(this.score[0]);
   for (var i=1; i<=frame;i++){
-    scoreBoard.push(scoreBoard[i-1]+this.score[i])
+    if (this.score[i]==="X" || this.score[i]==="/"){
+      scoreBoard.push("-")
+    } else {
+      scoreBoard.push(scoreBoard[i-1]+this.score[i])
+    }
   }
   return scoreBoard
+}
+
+Player.prototype.totalScore = function(frame){
+  var result = this.displayScore
+  return result[frame]
 }

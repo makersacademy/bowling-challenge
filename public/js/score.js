@@ -1,9 +1,12 @@
 'use strict';
 
 function Score() {
-    
+    this._score = 0;
 }
 
 Score.prototype.calculateScore = function(frames) {
-    return (10 - frames[0].pinsStanding());
+    for(var i = 0; i < frames.length; i++) {
+        this._score += (10 - frames[i].pinsStanding());
+    }
+    return this._score;
 };

@@ -39,6 +39,16 @@ describe('Game', function(){
         game.roll(10)
         expect(game.totalScore()).toEqual(42)
     });
+
+    it('calculates the total game score with a spare', function(){
+      for (var i = 0; i < 8; i++) {
+        game.roll(2,2)
+      }
+        game.roll(5,5)
+        game.roll(2,2)
+        expect(game.totalScore()).toEqual(48)
+    });
+
     it('calculates the total game score with a strike', function(){
       for (var i = 0; i < 8; i++) {
         game.roll(2,2)

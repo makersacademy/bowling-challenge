@@ -34,13 +34,14 @@ describe('Bowling', function(){
 
   it('gutter game', function(){
     for (var i = 0; i < 21; i++) {
-      game.roll(0);
-    }
+      game.roll(0);};
     expect(game.scoreSheet).toEqual([[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],
     [0,0,0]]);
   });
 
-
-
-
-});
+  it ('can deal with strikes in frame score', function(){
+    game.roll(0);
+    game.roll(10);
+    expect(game.frameScore).toEqual([10,0,0,0,0,0,0,0,0,0]);
+  });
+})

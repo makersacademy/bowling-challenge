@@ -23,11 +23,6 @@ Bowling.prototype.getRoll = function(){
 };
 
 
-Bowling.prototype.addScore = function(scoreToAdd){
-  this._currentFrameScore = this._currentFrameScore + scoreToAdd;
-
-};
-
 Bowling.prototype.roll = function(knockedDown){
   this.scoreSheet[this.getFrame()][this.getRoll()] = knockedDown
   this.addToFrameScore(knockedDown)
@@ -48,5 +43,9 @@ Bowling.prototype.roll = function(knockedDown){
 };
 
 Bowling.prototype.addToFrameScore = function(newScore){
-  this.frameScore[this.getFrame()] = (this.frameScore[this.getFrame()] += newScore)
+  if (newScore == 10) {
+    this.frameScore[this.getFrame()] = 10
+  } else {
+    this.frameScore[this.getFrame()] = (this.frameScore[this.getFrame()] += newScore)
+  };
 };

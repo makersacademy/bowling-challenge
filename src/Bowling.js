@@ -1,4 +1,3 @@
-'use strict';
 
 function Bowling(player = new Player(), pins = new Pins()) {
   this.player = player;

@@ -1,5 +1,4 @@
 var selenium = require('selenium-webdriver');
-var request = require('request');
 var base_url = "http://localhost:3000/";
 
 
@@ -35,12 +34,13 @@ describe("FEATURES:", function(){
 
   describe("Enter rolls onto scoreboard", function(){
 
-    it("Body contains title",function(done){
-      request.get(base_url, function(error, response, body) {
-        expect(body).toContain("Ten Pin Scores");
-        done();
-      });
+    it("Can enter roll into form and submit",function(done){
+      var field = this.driver.findElement(selenium.By.name('roll'));
+      field.sendKeys('3');
+      field.submit();
+      var scores = this.driver.findElement(selenium.By.id('player-scores'));
+      expect(scores.getText()).toContain("3");
+      done();
     });
   });
-
 });

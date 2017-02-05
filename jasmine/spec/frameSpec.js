@@ -45,7 +45,10 @@ describe('Frame', function() {
     frame.roll1();
     expect(typeof frame._roll1).toEqual('number');
   });
-
+  it ('can knock down 0 - 10 pins', function() {
+    frame.roll1();
+    expect(frame._roll1).toBeLessThan(10);
+  });
 
 
 

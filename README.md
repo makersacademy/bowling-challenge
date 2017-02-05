@@ -28,5 +28,10 @@ $ open -a safari index.html
 ```
 
 ## <a name="Shots">Screen Shots</a>
+### Sign Up Screen
+[![ScreenShot1](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot1.png)](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot1.png "Screen Shot 1")
+
+### Main Game Screen
+[![ScreenShot1](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot2.png)](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot2.png "Screen Shot 2")
 
 ## <a name="Heroku">Use live on Heroku</a>

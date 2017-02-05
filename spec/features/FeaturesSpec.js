@@ -74,7 +74,7 @@ describe("Game", function() {
       game.roll(2);
       game.roll(3);
     }
-    expect(function() { game._checkGameOver(); }).toThrowError('Game over!');
+    expect(function() { game.isComplete(); }).toThrowError('Game over!');
   });
 
   it('should end game after 11th frame in spare in 10th frame', function(){
@@ -82,14 +82,14 @@ describe("Game", function() {
       game.roll(5);
       game.roll(5);
     }
-    expect(function() { game._checkGameOver(); }).toThrowError('Game over!');
+    expect(function() { game.isComplete(); }).toThrowError('Game over!');
   });
 
   it('should end game after 12th frame in strike in 10th frame', function(){
     for (var i = 0; i < game._TOTAL_FRAMES + 2; i++) {
       game.roll(10);
     }
-    expect(function() { game._checkGameOver(); }).toThrowError('Game over!');
+    expect(function() { game.isComplete(); }).toThrowError('Game over!');
   });
 
 });

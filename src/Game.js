@@ -22,25 +22,25 @@ Game.prototype.getRolls = function() {
 };
 
 Game.prototype.getFrame = function() {
-  return this._frame.getFrame();
+  return this._frame;
 };
 
 Game.prototype.getFrames = function() {
   return this._frames;
 };
 
-Game.prototype.getLastFrame = function() {
-  return this.getFrames().slice(-1)[0]
-};
-
 Game.prototype.getLength = function() {
   return this.getFrames().length;
 }
 
+Game.prototype.lastFrame = function() {
+  return this.getFrames().slice(-1)[0]
+};
+
 // Object actions
 
 Game.prototype.roll = function(pins) {
-  this._validateRoll(pins);
+  this._frame.isWrong(pins);
 
   this._frame.addRoll(pins);
   this._addToRolls(pins);
@@ -48,14 +48,9 @@ Game.prototype.roll = function(pins) {
   this._setScore(pins);
 
   if (this._frame.isStrike()) { this._frame.addRoll(0); }
-  if (this._frame.isComplete()) { this._close(this.getFrame()); }
+  if (this._frame.isComplete()) { this._close(this._frame); }
 
-  try {
-    this._checkGameOver();
-  }
-  catch(err) {
-    var errorMessage = err;
-  }
+  this.isOver();
 };
 
 // ----------- PRIVATE ------------
@@ -79,19 +74,11 @@ Game.prototype._close = function(frame) {
 
 // Internal actions
 
-Game.prototype._checkSpare = function(frame) {
-  if (!this._checkStrike(frame)) {
-    return (this._sumFrame(frame) === 10);
-  }
-};
-
-Game.prototype._checkStrike = function(frame) {
-  if (typeof frame !== 'undefined') { return (frame[0] === 10); }
-};
-
 Game.prototype._scoreSpare = function(points) {
-  if (this._checkSpare(this.getLastFrame()) && this._frame.isNew() ) {
-    this._score += points;
+  if (typeof this.lastFrame() !== 'undefined') {
+    if (this.lastFrame().isSpare() && this._frame.isNew()) {
+      this._score += points;
+    }
   }
 }
 
@@ -107,31 +94,23 @@ Game.prototype._scoreStrike = function(points) {
   }
 }
 
-Game.prototype._sumFrame = function(frame) {
-  if (typeof frame !== 'undefined') { return ((frame[0]) + (frame[1])); }
-};
-
-Game.prototype._validateRoll = function(roll) {
-  if (roll > 10) {
-    throw Error('Out of range: maximum roll is 10');
-  }
-  if (this._frame.isNew() && this.getFrame()[0] + roll > 10) {
-    throw Error('Out of range: maximum roll total for a frame is 10');
-  }
-};
-
-Game.prototype._checkGameOver = function() {
-  if (this.getLength() >= 10 && !this._checkBonusFrames()) {
+Game.prototype.isComplete = function() {
+  if (this.getLength() >= 10 && !this.extraFrame()) {
     throw Error('Game over!');
   }
-  if (this.getLength() >= 11 && this._checkSpare(this.getLastFrame())) {
+  if (this.getLength() >= 11 && this.lastFrame().isSpare()) {
     throw Error('Game over!');
   }
-  if (this.getLength() >= 12 && this._checkStrike(this.getLastFrame())) {
+  if (this.getLength() >= 12 && this.lastFrame().isStrike()) {
     throw Error('Game over!');
   }
 };
 
-Game.prototype._checkBonusFrames = function() {
-  return (this._checkStrike(this.getLastFrame()) || this._checkSpare(this.getLastFrame()));
+Game.prototype.isOver = function() {
+  try { this.isComplete(); }
+  catch(err) { var errorMessage = err; }
+}
+
+Game.prototype.extraFrame = function() {
+  return (this.lastFrame().isStrike() || this.lastFrame().isSpare());
 }

@@ -28,7 +28,19 @@ Frame.prototype.isStrike = function() {
 };
 
 Frame.prototype.isSpare = function() {
-  if (!this._frame.isStrike()) {
-    return (this._frame.sumRolls() === 10);
+  if (!this.isStrike()) {
+    return (this.sumRolls() === 10);
+  }
+};
+
+Frame.prototype.isWrong = function(roll) {
+  if (typeof this._frame[0] !== 'undefined') {
+    if (this._frame[0] + roll > 10) {
+      throw Error('Out of range: maximum roll total for a frame is 10');
+    }
+  } else {
+    if (roll > 10) {
+      throw Error('Out of range: maximum roll is 10');
+    }
   }
 };

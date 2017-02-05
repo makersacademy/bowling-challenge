@@ -17,7 +17,7 @@ describe("Frame", function(){
     });
   });
 
-  describe("#resetPins", function(){
+  describe("#pinCheck", function(){
     it("resets the frame scores to 0", function(){
       rollSpy.result.and.callFake(function() { return 3 });
       frame.bowl();

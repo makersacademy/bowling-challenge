@@ -1,10 +1,15 @@
 'use strict';
 
 function Game() {
-    this._currentFrame = 1
+    this._currentFrame = 1;
+    this._framesRemaining = 10;
     this._frame = new Frame();
-    this._scorecard = [];
     this._score = 0;
+    this._frameScores = [];
+    this._scorecard = [];
+    this._SPARE_BONUS = 1;
+    this._STRIKE_BONUS = 2;
+
 }
 
 Game.prototype.nextFrame = function() {
@@ -20,31 +25,30 @@ Game.prototype.bowl = function(pins) {
 };
 
 Game.prototype.endFrame = function(scores) {
-    this.scorecard(scores);
-    this._scorecard.push(scores);
+    if(this._currentFrame <= 10) {this._score += scores[0];}
+    this._frameScores.push(scores[1].join(","));
+    this._scorecard.push(scores[2].join(","));
+    this.bonusHandler(this._STRIKE_BONUS);
     this.nextFrame();
 };
 
-Game.prototype.scorecard = function(scores) {
-    this._score += (scores[0] + scores[1]);
+Game.prototype.bonusHandler = function(rolls) {
+    var identifier = ["/", 'X'];
+    var checker = this._scorecard.length - (rolls + 1);
+    if(checker >= 0 && this._scorecard[checker] === identifier[rolls - 1]) {
+        for(var i = checker + 1; i <= (checker + rolls); i++) {
+            this._score += parseInt(this._frameScores[i])
+        }
+    }
 }
 
-Game.prototype.scoreboard = function() {
-    var output = "";
-    for(var i = 0; i <= (this._currentFrame - 1); i++) {
-        output += "Frame " + (i + 1) + ": " + this._scorecard[i] + "\n ";
+Game.prototype.spareHandler = function() {
+    var mon = this._scorecard.length - 3
+    if(mon >= 0 && this._scorecard[mon] === '/') {
+        this._score += this._frameScores[mon + 1]
     }
-    return output;
-};
+}
 
 Game.prototype.isEnded = function() {
-    if(this._currentFrame > 10) { return true; }
+    return this._framesRemaining === 0;
 }
-
-
-
-
-
-// pins = 10
-// frames = 10
-// bowls = 1 || 2 per frames

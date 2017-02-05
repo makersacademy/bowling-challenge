@@ -3,6 +3,7 @@
 function Game(){
   this._frames = [];
   this.MAX_FRAMES = 10;
+  this._total_score = 0
 }
 
 Game.prototype.totalsOfFrames = function () {

@@ -9,16 +9,11 @@ To see the correct score of my game
 Each game should accept no more than 10 frames
 ```
 
-```
-As a player
-To see the correct score of my frame
-Each frame should accept no more than two rolls
-```
 
 ```
 As a player
 To see the result of my frame
-Scoreboard should change the total score of the frame each time the pins are knocked
+Scoreboard should change the total score of the frame each time the roll knocks the pins
 ```
 
 ```

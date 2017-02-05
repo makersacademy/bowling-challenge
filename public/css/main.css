@@ -1,0 +1,170 @@
+#title {
+  position: relative;
+  top: -10px;
+  left: 20px;
+  width: 500px;
+  margin: 20px auto;
+  padding: 5px;
+  border: solid blue 10px;
+  background-color: white;
+  font-size: 3em;
+  font-family: serif;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 10px 10px 5px #888888;
+  z-index: 1000
+}
+
+#gameArea {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  background-image: url('../images/alley1.jpg');
+  background-repeat:no-repeat;
+  background-position:center center;
+  width:100%;
+  height:800px;
+}
+
+#scoreArea {
+  position: relative;
+  top: -50px;
+  height: 200px;
+  left: 20px;
+  width: 910px;
+  margin: 20px auto;
+  padding: 5px;
+  background-image: url('../images/blankscorecard.png');
+  background-repeat:no-repeat;
+  background-position:center center;
+  border: solid blue 10px;
+  background-color: white;
+  font-size: 3em;
+  font-family: serif;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 10px 10px 5px #888888;
+  z-index: 1000
+}
+
+#nameArea {
+  position: relative;
+  left: 10px;
+  top: 65px;
+  width: 125px;
+  height: 120px;
+  font-size: 30px;
+  text-align: center;
+  word-wrap: break-word;
+  line-height: 120px;
+  vertical-align:middle;
+}
+
+.scoreResult {
+  position: absolute;
+  top: 73px;
+  width: 20px;
+  height: 25px;
+  font-size: 20px;
+  text-align: center;
+  word-wrap: break-word;
+  line-height: 25px;
+  vertical-align:middle;
+}
+
+.scoreResult.frame1-1 {left: 166px;}
+.scoreResult.frame1-2 {left: 189px;}
+.scoreResult.frame2-1 {left: 234px;}
+.scoreResult.frame2-2 {left: 256px;}
+.scoreResult.frame3-1 {left: 302px;}
+.scoreResult.frame3-2 {left: 324px;}
+.scoreResult.frame4-1 {left: 368px;}
+.scoreResult.frame4-2 {left: 390px;}
+.scoreResult.frame5-1 {left: 435px;}
+.scoreResult.frame5-2 {left: 458px;}
+.scoreResult.frame6-1 {left: 503px;}
+.scoreResult.frame6-2 {left: 525px;}
+.scoreResult.frame7-1 {left: 571px;}
+.scoreResult.frame7-2 {left: 593px;}
+.scoreResult.frame8-1 {left: 638px;}
+.scoreResult.frame8-2 {left: 660px;}
+.scoreResult.frame9-1 {left: 705px;}
+.scoreResult.frame9-2 {left: 728px;}
+.scoreResult.frame10-1 {left: 773px;}
+.scoreResult.frame10-2 {left: 795px;}
+.scoreResult.frame10-3 {left: 818px;}
+
+.mainScoreResult {
+  position: absolute;
+  top: 120px;
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  text-align: center;
+  word-wrap: break-word;
+  line-height: 60px;
+  vertical-align:middle;
+  font-weight: bold;
+}
+
+.mainScoreResult.frame1 {left: 146px;}
+.mainScoreResult.frame2 {left: 214px;}
+.mainScoreResult.frame3 {left: 282px;}
+.mainScoreResult.frame4 {left: 349px;}
+.mainScoreResult.frame5 {left: 416px;}
+.mainScoreResult.frame6 {left: 483px;}
+.mainScoreResult.frame7 {left: 551px;}
+.mainScoreResult.frame8 {left: 618px;}
+.mainScoreResult.frame9 {left: 685px;}
+.mainScoreResult.frame10 {left: 753px;}
+
+#inputArea {
+  position: relative;
+  top: 500px;
+  left: 20px;
+  width: 900px;
+  margin: 20px auto;
+  padding: 5px;
+  border: solid blue 10px;
+  background-color: white;
+  font-size: 3em;
+  font-family: serif;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 10px 10px 5px #888888;
+  z-index: 1000
+}
+
+.numberButton {
+    padding: 10px 15px;
+    font-size: 20px;
+    background: #4479BA;
+    color: #FFF;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: solid 1px #20538D;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+.numberButton:hover {
+    background: #356094;
+    border: solid 1px #2A4E77;
+    text-decoration: none;
+}
+.numberButton:active {
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    background: #2E5481;
+    border: solid 1px #203E5F;
+}

@@ -11,5 +11,9 @@ describe('Game', function() {
       game = new Game();
     });
 
+  it("exists", function(){
+    expect(game).toBeDefined();
+  });
+
 
 });

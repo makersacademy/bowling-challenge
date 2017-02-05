@@ -9,7 +9,8 @@ describe('Game', function(){
   var game1 = [[10, 0], [3, 6], [7, 2], [3, 6], [4, 4], [5, 3], [3, 3], [4, 5], [8, 1], [1, 3]];
   var game2 = [[1, 2], [3, 4], [4, 1], [8, 1], [3, 2], [1, 6], [8, 1], [7, 2],[9, 0], [0, 9]];
   var game3= [[1, 9], [3, 6], [7, 2], [3, 6], [4, 4], [5, 3], [3, 3], [4, 5], [8, 1], [2, 6]];
-  //is 90. game2
+  var game4 = [[10, 0], [4, 6], [7, 2], [3, 6], [4, 4], [5, 3], [3, 3], [4, 5], [8, 1], [2, 3]]
+
 
 
     describe('frame property', function(){
@@ -44,7 +45,7 @@ describe('Game', function(){
         expect(bowl.strikes(game1)).toEqual([10,0]);
       });
       it('returns game score with strike', function(){
-        expect(bowl.checkGame(game1)).toEqual(90);
+        expect(bowl.gameScoreComplex(game1)).toEqual(90);
 
       });
     });
@@ -53,36 +54,15 @@ describe('Game', function(){
       it('finds a spare frame', function(){
         expect(bowl.spare(game3)).toEqual([1,9]);
       });
-
+      it('return game score with spare', function(){
+        expect(bowl.gameScoreComplex(game3)).toEqual(88);
+      })
     });
 
-     describe('checkGame ', function(){
-       describe('check strikes', function(){
-          it('method gameScoreComplex is called for game with strikes frames', function(){
-            spyOn(bowl, "gameScoreComplex")
-            bowl.checkGame(game1)
-            expect(bowl.gameScoreComplex).toHaveBeenCalledWith(game1);
-          });
+    describe('strike and spare', function(){
+      it('returns game score with strike and spare', function(){
+        expect(bowl.gameScoreComplex(game4)).toEqual(100);
+      });
 
-          it('method gameScoreOrdinary is called for game with no strike frames', function(){
-            spyOn(bowl, "gameScoreOrdinary")
-            bowl.checkGame(game2)
-            expect(bowl.gameScoreOrdinary).toHaveBeenCalledWith(game2);
-          });
-        });
-
-        describe('check spares', function(){
-          it('method gameScoreComplex is called for game with spare frames', function(){
-             spyOn(bowl,"gameScoreComplex")
-             bowl.checkGame(game3)
-            expect(bowl.gameScoreComplex).toHaveBeenCalledWith(game3);
-          });
-
-          it('methods gameScoreOrdinary is called for game with no spare frames', function(){
-            spyOn(bowl, "gameScoreOrdinary")
-            bowl.checkGame(game2)
-            expect(bowl.gameScoreOrdinary).toHaveBeenCalledWith(game2);
-          });
-        });
     });
 });

@@ -10,6 +10,11 @@ describe("Game", function() {
       game.roll(pins);
   }
 
+  function rollSpare() {
+    game.roll(5);
+    game.roll(5);
+  }
+
   describe("Gutter game", function() {
     it('should return 0', function() {
       // var n = 20;
@@ -28,11 +33,20 @@ describe("Game", function() {
 
   describe("Spare", function() {
     it('should return the correct number of points', function() {
-      game.roll(5);
-      game.roll(5);
+      rollSpare();
       game.roll(3);
       rollMany(17, 0);
       expect(game.getScore()).toEqual(16);
+    });
+  });
+
+  describe("Strike", function() {
+    it('should return the correct number of points', function() {
+      game.roll(10);
+      game.roll(3);
+      game.roll(4);
+      rollMany(16, 0);
+      expect(game.getScore()).toEqual(24);
     });
   });
 

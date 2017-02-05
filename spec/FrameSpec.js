@@ -18,6 +18,17 @@ describe("Frame", function() {
     });
   });
 
+  describe("#isStrike", function(){
+    it("should return true if all pins have been knocked down", function() {
+      frame.countPins(10)
+      expect(frame.isStrike()).toBeTruthy();
+    });
+    it("should return false if some pins are still standing after a roll", function() {
+      frame.countPins(7)
+      expect(frame.isStrike()).toBeFalsy();
+    });
+  });
+
   // describe("#rollsCounter", function() {
   //   it("records the number of rolls in a frame", function() {
   //     frame.rollsCounter();

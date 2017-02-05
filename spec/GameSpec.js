@@ -10,17 +10,10 @@ describe("Game", function() {
     expect(game.totScore).toEqual(4);
   });
 
-  describe("#isStrike", function(){
-    it("starts a new frame when a strike is scored", function() {
-      spyOn(game, "newFrame");
-      game.pinsKnockedDown(10);
-      expect(game.newFrame).toHaveBeenCalled();
-    });
-  });
 
   describe("#framesCounter", function(){
     it("allows the game to have a total of 10 frames maximum", function() {
-      for (var i = 0; i < 10; i++) {
+      for (var i = 0; i < 9; i++) {
         game.pinsKnockedDown(10);
         };
       expect( function(){game.pinsKnockedDown(10);} ).toThrow(new Error("Game Over"));

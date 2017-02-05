@@ -1,5 +1,3 @@
-function Roll() {}
-
-Roll.prototype.rollScore = function(number) {
-  this.score = number;
-};
+function Roll(score) {
+  this.score = score;
+}

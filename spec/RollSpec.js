@@ -2,13 +2,10 @@ describe("Roll", function() {
   var roll;
 
   beforeEach(function() {
-    roll = new Roll();
+    roll = new Roll(6);
   });
 
-  describe("#rollScore", function(){
-    it("should record the score of a single roll", function(){
-      roll.rollScore(6);
+  it("should record the score of a roll", function(){
       expect(roll.score).toEqual(6);
-    });
   });
 });

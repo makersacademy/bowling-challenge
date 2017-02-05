@@ -1,144 +1,101 @@
 'use strict';
 
-function Bowling(){
+function Bowling(player = new Player(), pins = new Pins()) {
+  this.player = player;
+  this.pins = pins;
   this.frame = 0;
-  this.totalRolls = [];
-  this.rolls = [null,null];
-  this.rollsNumber = 0;
-  this.bonus = [];
-  this.score = [];
 }
 
-Bowling.prototype.play = function(knockedPins=null){
-  if (knockedPins===null){var knockedPins = this.knockPins()}
-  if (this.frame === 9){
-    var returnValue = this.tenthFrame(knockedPins)}
-  else {
-    this.updateRolls(knockedPins)
-    var returnValue = this.returnValue(knockedPins);
-    this.finishRoll();
-  }
-  // console.log(this.totalRolls)
-  return returnValue;
+Bowling.prototype.play = function(knockedPin=null){
+  if (knockedPin===null){knockedPin = this.pins.knockPin()}
+  // var knockedPin = this.checkForSpecial(knockedPin);
+  this.player.scoreWith(this.frame, knockedPin);
+  this.player.setNextRoll(knockedPin);
+  this.setNextFrame(knockedPin);
+
 }
 
-Bowling.prototype.knockPins = function(){
-  return Math.floor(Math.random() * 11);
-}
+// Bowling.prototype.checkForSpecial = function(knockedPin){
+//   // Checks to see if the score is a Strike or Spare
+//   if (knockedPin===10 && this.player.roll===0){return "X"}
+//   if (this.player.scoreCard[this.frame][0] + knockedPin ===10){return "/"}
+//   return knockedPin
+// }
 
-Bowling.prototype.updateRolls = function(knockedPins){
-  // console.log("frame = "+this.frame)
-  // console.log("roll number = "+this.rollsNumber)
-  this.rolls[this.rollsNumber] = knockedPins;
-  // if (this.frame > 9){this.tenthFrame(); return}
-  this.swapRoll();
-  // console.log("HERE")
-  if (this.checkForStrike()){this.swapRoll()}
-}
-
-Bowling.prototype.tenthFrame = function(knockedPins){
-  // console.log("frame = "+this.frame)
-  if (this.rollsNumber===2 && this.checkLastRoll()){return Error}
-  this.rolls[this.rollsNumber] = knockedPins;
-  console.log(this.rolls)
-  this.rollsNumber+=1
-  // console.log(this.rollsNumber)
-  var returnValue = this.returnValue(knockedPins);
-
-  return returnValue
-}
-
-Bowling.prototype.checkLastRoll = function(knockedPins){
-  if (this.rolls[0]+this.rolls[1]===20){return false}
-  if (this.rolls[0]+this.rolls[1]===10){return false}
-  return true
-}
-
-Bowling.prototype.swapRoll = function(){
-  this.rollsNumber = Math.abs(-1 + this.rollsNumber);
-}
-
-Bowling.prototype.finishRoll = function(){
-  if (this.rolls[1] === null && !this.checkForStrike()){return}
-  this.totalRolls.push(this.rolls);
-  this.updateScore();
-  this.nextFrame();
-}
-
-Bowling.prototype.nextFrame = function(){
-  this.rolls = [null,null];
-  this.frame ++;
-  if (this.frame===9){this.rolls = [null,null,null]}
-  // if (this.frame<9){this.frame ++}else {this.rolls = [null,null,null]}
-}
-
-Bowling.prototype.updateScore = function(){
-  this.score[this.frame] = 0;
-  if (this.checkForStrike() || this.checkForSpare()){this.addBonus()}
-  this.score[this.frame] = this.totalRolls[this.frame][0] + this.totalRolls[this.frame][1]
-  if (this.bonus.length != 0 && this.checkForStrike()==false && this.checkForSpare()==false){this.addBonusScores()}
-  if (this.bonus.length >= 3){this.addSingleBonusScores()}
-}
-
-Bowling.prototype.addBonus = function(){
-  this.score[this.frame] = 10;
-  if (this.checkForStrike()){return this.bonus.push("X")}
-  if (this.checkForSpare ()){return this.bonus.push("/")}
-}
-
-Bowling.prototype.addBonusScores = function(){
-  // console.log("Im in addBonusScore and the bonus length = "+this.bonus.length)
-  for(var i=0; i < this.bonus.length; i++){
-    // console.log("IM HERE")
-    if (this.bonus[this.bonus.length-i-1]==="/"){this.addSpareScore(i)}
-    if (this.bonus[this.bonus.length-i-1]==="X"){this.addStrikeScore(i)}
-  }
-  this.bonus = [];
-  // console.log("The bonus now equals "+this.bonus)
-}
-
-Bowling.prototype.addSingleBonusScores = function(){
-  // console.log("Im in addSingleBonusScores")
-  if (this.bonus[0]==="/"){this.addSpareScore(1)}
-  if (this.bonus[0]==="X"){this.addStrikeScore(1)}
-  this.bonus.shift();
-  // console.log("The bonus now equals "+this.bonus)
-}
-
-Bowling.prototype.addStrikeScore = function(i){
-  // console.log("i = "+i)
-  // console.log("frame = "+this.frame)
-  this.score[this.frame-i-1] += this.totalRolls[this.frame-i][0] + this.totalRolls[this.frame-i][1]
-  // console.log("SCORE = "+this.score[this.frame-i-1])
-  if (this.totalRolls[this.frame-i][1] === null){
-    // console.log("IM HERE")
-    this.score[this.frame-i-1] += this.totalRolls[this.frame-(i-1)][0]
+Bowling.prototype.setNextFrame = function(knockedPin){
+  // Set up the next frame
+  // console.log("PIN = " + knockedPin)
+  // console.log(this.isStrike(this.frame))
+  // console.log(this.frame)
+  if (this.isStrike(this.frame)){this.player.setNextRoll()}
+  if (this.player.roll===0){
+    this.workOutScore()
+    this.frame ++
   }
 }
 
-Bowling.prototype.addSpareScore = function(i){
-  this.score[this.frame-i-1] += this.totalRolls[this.frame-i][0]
-  // this.bonus.shift();
-}
-
-Bowling.prototype.checkForStrike = function(){
-  if (this.rolls[0] === 10){return true}else{return false}
-}
-
-Bowling.prototype.checkForSpare= function(){
-  if (this.rolls[0] + this.rolls[1] === 10){return true}else{return false}
-}
-
-Bowling.prototype.returnValue = function(knockedPins){
-  if (this.checkForStrike()){return "X"}
-  if (this.checkForSpare ()){return "/"}
-  return String(knockedPins)
-}
-
-Bowling.prototype.returnTotalScore = function(knockedPins){
-  var result = [this.score[0]]
-  for (var i = 1; i < this.score.length; i++){
-    result.push(this.score[i]+result[i-1])
+Bowling.prototype.workOutScore = function(){
+  for (var i=this.frame; i>=0; i--){
+    console.log("i = " + i)
+    var value = null
+    if (this.isStrike(i)){value = this.strikeScore(i)}
+    console.log(value)
+    if (this.isSpare (i)){value = this.spareScore (i)}
+    if (value === null){value = this.normalScore(i)}
+    this.player.score[i] = value
   }
-  return result
+}
+
+Bowling.prototype.strikeScore = function(frame){
+  var value = 10
+  if (this.player.scoreCard[frame+1][0]===null){return "X"}
+  value += this.player.scoreCard[frame+1][0] + this.player.scoreCard[frame+1][1]
+  if (this.player.scoreCard[frame+1][1]===null){
+    if(this.player.scoreCard[frame+2][0]===null){return "X"}
+    value += this.player.scoreCard[frame+2][0]
+  }
+  return value
+}
+
+Bowling.prototype.spareScore = function(frame){
+  var value = 10
+  if (this.player.scoreCard[frame+1][0]===null){return "/"}
+  value += this.player.scoreCard[frame+1][0]
+  return value
+}
+
+Bowling.prototype.normalScore = function(frame){
+  return this.player.scoreCard[frame][0] + this.player.scoreCard[frame][1]
+}
+// Bowling.prototype.workOutSpecialScore = function(){
+//   for (var i=this.frame; i>=0; i--){
+//     score = this.player.score[i]
+//     if (this.isSpare(i,1)){score = this.addSpareScore(i)}
+//   }
+// }
+//
+// Bowling.prototype.addSpareScore = function(frame){
+//   if (this.player.scoreCard[frame+1][0]!= null){
+//     return 10
+//   }
+// }
+
+
+
+
+
+
+Bowling.prototype.addFrame = function(frame, roll){
+  return this.player.scoreCard[frame][0] + this.player.scoreCard[frame][1]
+}
+
+Bowling.prototype.isStrike = function(frame){
+  if (this.player.scoreCard[frame][0]===10){return true}else{return false}
+}
+
+Bowling.prototype.isSpare = function(frame){
+  var value = false
+  if (this.player.scoreCard[frame][0]+this.player.scoreCard[frame][1]===10){value = true}
+  if (value === true && this.player.scoreCard[frame][1]===null){value = false}
+  return value
 }

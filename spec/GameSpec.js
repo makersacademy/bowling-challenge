@@ -58,4 +58,15 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(300);
   });
 
+  // VALIDATIONS
+
+  it('should raise an error if passing pins greater than 10', function(){
+    expect(function() { game.roll(12); }).toThrowError('Out of range: maximum roll is 10');
+  });
+
+  it('should raise an error if passing pins to a frame that sums greater than 10', function(){
+    game.roll(8);
+    expect(function() { game.roll(4); }).toThrowError('Out of range: maximum roll total for a frame is 10');
+  });
+
 });

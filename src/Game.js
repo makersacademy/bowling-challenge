@@ -29,6 +29,10 @@ Game.prototype.getFrames = function() {
   return this._frames;
 };
 
+Game.prototype.getLastFrame = function() {
+  return this.getFrames().slice(-1)[0]
+};
+
 Game.prototype.getLength = function() {
   return this.getFrames().length;
 }
@@ -44,7 +48,7 @@ Game.prototype.roll = function(pins) {
   this._setScore(pins);
 
   if (this._frame.isStrike()) { this._frame.addRoll(0); }
-  if (this._frame.isComplete()) { this._closeFrame(this.getFrame()); }
+  if (this._frame.isComplete()) { this._close(this.getFrame()); }
 
   try {
     this._checkGameOver();
@@ -68,7 +72,7 @@ Game.prototype._addToRolls = function(roll) {
   this._rolls.push(roll);
 };
 
-Game.prototype._closeFrame = function(frame) {
+Game.prototype._close = function(frame) {
   this._frames.push(frame);
   this._frame = new Frame();
 };
@@ -86,7 +90,7 @@ Game.prototype._checkStrike = function(frame) {
 };
 
 Game.prototype._scoreSpare = function(points) {
-  if (this._checkSpare(this._getLastFrame()) && this._frame.isNew() ) {
+  if (this._checkSpare(this.getLastFrame()) && this._frame.isNew() ) {
     this._score += points;
   }
 }
@@ -107,10 +111,6 @@ Game.prototype._sumFrame = function(frame) {
   if (typeof frame !== 'undefined') { return ((frame[0]) + (frame[1])); }
 };
 
-Game.prototype._getLastFrame = function() {
-  return this.getFrames().slice(-1)[0]
-};
-
 Game.prototype._validateRoll = function(roll) {
   if (roll > 10) {
     throw Error('Out of range: maximum roll is 10');
@@ -124,14 +124,14 @@ Game.prototype._checkGameOver = function() {
   if (this.getLength() >= 10 && !this._checkBonusFrames()) {
     throw Error('Game over!');
   }
-  if (this.getLength() >= 11 && this._checkSpare(this._getLastFrame())) {
+  if (this.getLength() >= 11 && this._checkSpare(this.getLastFrame())) {
     throw Error('Game over!');
   }
-  if (this.getLength() >= 12 && this._checkStrike(this._getLastFrame())) {
+  if (this.getLength() >= 12 && this._checkStrike(this.getLastFrame())) {
     throw Error('Game over!');
   }
 };
 
 Game.prototype._checkBonusFrames = function() {
-  return (this._checkStrike(this._getLastFrame()) || this._checkSpare(this._getLastFrame()));
+  return (this._checkStrike(this.getLastFrame()) || this._checkSpare(this.getLastFrame()));
 }

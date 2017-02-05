@@ -36,3 +36,15 @@ Game.prototype.totalScore = function () {
   }
   return this.total;
 };
+
+Game.prototype.frameScore = function (frame) {
+    if(this.frames[frame-1]._isStrike()) {
+      return this.frames[frame-1].total(this.frames[frame])
+    }
+    else if (this.frames[frame-1]._isSpare()) {
+      return this.frames[frame-1].total(this.frames[frame])
+    }
+    else {
+      return this.frames[frame-1].total()
+    }
+};

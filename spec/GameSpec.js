@@ -32,6 +32,41 @@ describe('Game', function(){
       }
         expect(game.totalScore()).toEqual(40)
     });
+    it('calculates the total game score with a trailing strike', function(){
+      for (var i = 0; i < 8; i++) {
+        game.roll(2,2)
+      }
+        game.roll(10)
+        expect(game.totalScore()).toEqual(42)
+    });
+    it('calculates the total game score with a strike', function(){
+      for (var i = 0; i < 8; i++) {
+        game.roll(2,2)
+      }
+        game.roll(10)
+        game.roll(2,2)
+        expect(game.totalScore()).toEqual(50)
+    });
+
+  });
+
+  describe('frame score', function(){
+    it('calculates a frame\'s score', function(){
+        game.roll(2,2)
+        game.roll(3,4)
+        expect(game.frameScore(2)).toEqual(7)
+    });
+    it('calculates a frame\'s score with trailing strike', function(){
+        game.roll(2,2)
+        game.roll(10)
+        expect(game.frameScore(2)).toEqual(10)
+    });
+    it('calculates a frame\'s score with strike', function(){
+        game.roll(2,2)
+        game.roll(10)
+        game.roll(2,2)
+        expect(game.frameScore(2)).toEqual(14)
+    });
 
   });
 });

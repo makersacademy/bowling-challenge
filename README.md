@@ -35,3 +35,4 @@ $ open -a safari index.html
 [![ScreenShot1](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot2.png)](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot2.png "Screen Shot 2")
 
 ## <a name="Heroku">Use live on Heroku</a>
+[Bowling] (https://adrianeyre-bowling.herokuapp.com/index.html)

@@ -1,7 +1,28 @@
+Bowling Challenge:
+==================
+```
+Game
+  exists
+  has 1 frame
+Frame
+  exists
+  contains roll1 and roll2
+  has a score
+  has a bonus
+  has a roll1 method
+  has a roll2 method
+  #roll1
+    returns a number of pins knocked down after the first roll
+    can knock down 0 - 10 pins
+  #roll2
+    returns a number of pins knocked down after the first roll
+    can knock down 0 - 10 pins
+```
 
 Bowling Challenge - My Approach
 ================================
 Copy Jasmine into project directory
+
 
 
 

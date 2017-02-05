@@ -38,4 +38,19 @@ describe("Game", function() {
       expect(game.viewCurrentScore()).toBe(7)
     });
   });
+
+  // describe("at the end of the game", function(){
+  //
+  //   beforeEach(function() {
+  //     frame = new Frame();
+  //     for (var i = 0; i < 10; i++) {
+  //       game.addFrame(frame)
+  //     }
+  //   });
+  //
+  //   it("notifies the player that the game is over", function(){
+  //     frame.firstBowl(0)
+  //     frame.secondBowl(0)
+  //     expect(game.isComplete()).toBe(true)
+  //   })
 })

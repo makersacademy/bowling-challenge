@@ -2,7 +2,7 @@ function Game(){
 
   this._frames = [];
   this.currentScore = 0;
-  this.sum = 0;
+  this._complete = false;
 }
 
 Game.prototype.viewCurrentScore = function() {
@@ -18,12 +18,20 @@ Game.prototype.startGame = function(frame){
 
 Game.prototype.addFrame = function(frame) {
     const MAX_LENGTH = 10
+    this.isComplete;
   if (this._frames.length >= MAX_LENGTH) {
     throw new Error("The game is over!")
   } else {
      this._frames.push(frame);
   }
 }
+
+// Game.prototype.isComplete = function (){
+//   if (this._frames.length === 10 && this._frames[-1].isComplete === true) {
+//     this._complete = true;
+//     return this._complete
+//   }
+// }
 
 
 game = new Game();

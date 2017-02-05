@@ -29,4 +29,30 @@ describe("A frame of bowling", function(){
     expect(frame.rolls.length).toEqual(1)
   });
 
+  describe("multiple bonuses", function(){
+
+    it("calculates a total for two strikes", function(){
+      var frame = new Frame(10)
+      var next = new Frame(10)
+      var next2 = new Frame(4,2)
+      expect(frame.total(next, next2)).toEqual(26)
+    });
+
+    it("calculates a total for three strikes", function(){
+      var frame = new Frame(10)
+      var next = new Frame(10)
+      var next2 = new Frame(10)
+      expect(frame.total(next, next2)).toEqual(30)
+    });
+
+    it("calculates a total for a strike and a spare", function(){
+      var frame = new Frame(10)
+      var next = new Frame(5,5)
+      var next2 = new Frame(4,0)
+      expect(frame.total(next, next2)).toEqual(24)
+    });
+
+  });
+
+
 });

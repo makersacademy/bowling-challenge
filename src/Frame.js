@@ -9,11 +9,11 @@ Frame.prototype._firstRoll = function () {
   return this.rolls[0];
 };
 
-Frame.prototype.total = function (next_frame) {
-  return this._frameScore() + this._bonus(next_frame)
+Frame.prototype.total = function (next_frame, next_next_frame) {
+  return this._frameScore() + this._bonus1(next_frame) + this._bonus2(next_next_frame)
 };
 
-Frame.prototype._bonus = function (next_frame) {
+Frame.prototype._bonus1 = function (next_frame) {
   if (next_frame === undefined) {
     return 0;
   } else {
@@ -22,6 +22,16 @@ Frame.prototype._bonus = function (next_frame) {
     }
     if (this._isStrike()){
       return next_frame._frameScore()
+    }
+  }
+};
+
+Frame.prototype._bonus2 = function (next_next_frame) {
+  if (next_next_frame === undefined) {
+    return 0;
+  } else {
+    if (this._isStrike()){
+      return next_next_frame._frameScore()
     }
   }
 };

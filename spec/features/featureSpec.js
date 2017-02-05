@@ -35,4 +35,10 @@ describe('Feature Test:', function() {
         game.throwBall();
         expect(game.currentFrame().pinsStanding()).toEqual(10);
     });
+    
+    it("resets frame after a strike", function() {
+        spyOn(Math, 'random').and.returnValue(1);
+        game.throwBall();
+        expect(game.currentFrame().pinsStanding()).toEqual(10);
+    });
 });

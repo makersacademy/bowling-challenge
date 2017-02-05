@@ -24,5 +24,11 @@ describe("Game", function() {
             game.throwBall();
             expect(game.currentFrame().pinsStanding()).toEqual(10);
         });
+        
+        it("gets a new frame after a strike", function() {
+           shot.bowl.and.returnValue(10);
+           game.throwBall();
+           expect(game.currentFrame().pinsStanding()).toEqual(10);
+        });
     });
 })

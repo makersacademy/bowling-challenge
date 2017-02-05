@@ -15,6 +15,9 @@ Game.prototype.throwBall = function() {
     if(this._throws < 1) {
         this.currentFrame().knockDownPins(this._shot.bowl(this.currentFrame().pinsStanding()));
         this._throws += 1;
+        if(this.currentFrame().pinsStanding() === 0) {
+            this._resetFrame();
+        }
     }
     else {
         this.currentFrame().knockDownPins(this._shot.bowl(this.currentFrame().pinsStanding()));
@@ -29,6 +32,9 @@ Game.prototype.currentFrame = function() {
 Game.prototype._resetFrame = function() {
     var frame = new Frame
     this.frames.push(frame);
+    this._throws = 0;
 };
+
+
 
 

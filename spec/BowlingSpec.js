@@ -32,8 +32,12 @@ describe('Bowling', function(){
     expect(game.scoreSheet[1][1]).toEqual(4);
   });
 
-  it('gutter game!', funciton(){
-    
+  it('gutter game', function(){
+    for (var i = 0; i < 21; i++) {
+      game.roll(0);
+    }
+    expect(game.scoreSheet).toEqual([[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],
+    [0,0,0]]);
   });
 
 

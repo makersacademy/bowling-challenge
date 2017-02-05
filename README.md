@@ -3,9 +3,9 @@ Bowling Challenge
 =================
 
 ## My Notes
-* [ ] Gutter game
-* [ ] One frame
-* [ ] Multiple frames
+* [√] Gutter game
+* [√] One frame
+* [√] Multiple frames
 * [ ] Spares
 * [ ] Strikes
 * [ ] Final Frame

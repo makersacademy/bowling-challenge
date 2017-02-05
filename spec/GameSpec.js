@@ -48,5 +48,29 @@ describe('Game', function () {
       frame1 = game.getFrameNumber(1);
       expect(frame1).toEqual([6,4]);
     });
+
+    describe('If you roll a strike', function () {
+      it('the frame ends immediately', function () {
+        spyOn(Math,'random').and.returnValue(1);
+        game.rollNextFrame();
+        frame1 = game.getFrameNumber(1);
+        expect(frame1).toEqual([10,0]);
+      });
+      it('next frame you add double points to your score', function () {
+        spyOn(Math,'random').and.returnValue(1);
+        game.rollNextFrame();
+        game.rollNextFrame();
+        expect(game.getScore()).toEqual(30);
+      });
+    });
+
+    describe('If you roll a spare', function () {
+      it('next frame you add double points of first roll to your score', function () {
+        spyOn(Math,'random').and.returnValue(0.5);
+        game.rollNextFrame();
+        game.rollNextFrame();
+        expect(game.getScore()).toEqual(25);
+      });
+    });
   });
 })

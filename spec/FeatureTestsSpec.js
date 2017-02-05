@@ -56,6 +56,40 @@ describe('Feature tests.', function () {
 
   describe('Calculating bonuses:', function () {
 
+    // Strikes
+
+    // The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+
+    describe('If you roll a strike', function () {
+      it('the frame ends immediately', function () {
+        spyOn(Math,'random').and.returnValue(1);
+        game.rollNextFrame();
+        frame1 = game.getFrameNumber(1);
+        expect(frame1).toEqual([10,0]);
+      });
+      it('next time you add double points to your score', function () {
+        spyOn(Math,'random').and.returnValue(1);
+        game.rollNextFrame();
+        game.rollNextFrame();
+        expect(game.getScore()).toEqual(30);
+      });
+    });
+
+    // Spares
+
+    // The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+
+    describe('If you roll a spare', function () {
+      it('next time you add double points of first roll to your score', function () {
+        spyOn(Math,'random').and.returnValue(0.5);
+        game.rollNextFrame();
+        game.rollNextFrame();
+        expect(game.getScore()).toEqual(25);
+      });
+    });
+
+    //
+
   });
 
 });

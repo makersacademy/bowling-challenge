@@ -11,8 +11,14 @@ describe('Game', function() {
       game = new Game();
     });
 
+  var frame = jasmine.createSpy('frame')
+
   it("exists", function(){
     expect(game).toBeDefined();
+  });
+
+  it("has 1 frame", function(){
+    expect(game.frames).toContain(frame);
   });
 
 

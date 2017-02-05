@@ -11,8 +11,6 @@ describe('The Bowling Game', function() {
     }
   };
 
-describe('', function() {
-
   it('can roll a gutter game', function() {
     rollManyTimes(0, 20);
     expect(game.score()).toEqual(0);
@@ -23,7 +21,16 @@ describe('', function() {
     expect(game.score()).toEqual(20);
   });
 
-});
+  it('can roll a spare', function() {
+    game.roll(5);
+    game.roll(5);
+    game.roll(3);
+    rollManyTimes(0, 17);
+    expect(game.score()).toEqual(16);
+  });
+
+
+
 
 
 

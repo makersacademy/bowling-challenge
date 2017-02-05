@@ -1,39 +1,41 @@
 'use-strict';
 
 function Game() {
-  this.scoresheet = new Scoresheet();
+  this.gameScore = 0
+  this.playedFrames = []
+  this.currentFrame = new Frame(this)
+  this.GAME_LENGTH = 10
+  this.GAME_PINS = 10
 }
 
-Game.prototype.process(pins) {
-  this.scoresheet.currentFrame.addRoll(pins);
-  if (this.scoresheet.frame.length === 10) {
-    return 'Game over! You scored ' + this.scoresheet.score + 'points.'
+Game.prototype.sendToFrame = function(pins) {
+  if (!Number.isInteger(pins) || pins < 0 || pins > this.GAME_PINS) {
+    throw new Error('No way! There are ' + this.GAME_PINS + ' pins in this game and they only come as non-negative integers.')
   }
+
+  if (pins > this.GAME_PINS - this.currentFrame.rolls[0]) {
+    throw new Error('Hey! There are only ' + this.GAME_PINS + ' pins in the game!')
+  }
+
+  this.currentFrame.addRoll(pins)
 }
 
 Game.prototype.newCurrentFrame = function() {
-  if (this._frames.length === 10) {
-    return
+  if (this.playedFrames.length === this.GAME_LENGTH) {
+    throw new Error('Game over & chill from newCurrentFrame!')
   }
-  this._currentFrame = new Frame();
+  this.currentFrame = new Frame(this)
 }
 
 Game.prototype.addToScore = function(pins) {
-  if (this._currentFrame._rolls.length === 0) {
-    this._currentFrame.addRoll(pins)
-    this._score += pins
-  } else {
-    this._currentFrame.addRoll(pins)
-    this._score += pins
-    this.addFrame(this._currentFrame)
+  if (this.playedFrames.length === this.GAME_LENGTH) {
+    throw new Error('Game over & chill from addToScore!')
+  }
+
+  this.gameScore = this.currentFrame.frameScore
+  this.playedFrames.push(this.currentFrame)
+
+  if (this.playedFrames.length < this.GAME_LENGTH) {
     this.newCurrentFrame()
   }
-}
-
-Game.prototype.addFrame = function(frame) {
-  this._frames.push(frame);
-}
-
-Game.prototype.showScore = function() {
-  return this._score
 }

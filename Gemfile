@@ -7,3 +7,4 @@ gem 'rspec-sinatra'
 gem 'rspec'
 gem 'sinatra-json'
 gem 'sinatra-session'
+gem 'coveralls', require: false

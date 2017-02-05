@@ -8,8 +8,17 @@ function Game() {
   this.GAME_PINS = 10
 }
 
+Game.prototype.isInteger = function(data) {
+  if (data === parseInt(data, 10)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 Game.prototype.sendToFrame = function(pins) {
-  if (!Number.isInteger(pins) || pins < 0 || pins > this.GAME_PINS) {
+  if (!(this.isInteger(pins)) || pins < 0 || pins > this.GAME_PINS) {
+  // if (!Number.isInteger(pins) || pins < 0 || pins > this.GAME_PINS) {
     throw new Error('No way! There are ' + this.GAME_PINS + ' pins in this game and they only come as non-negative integers.')
   }
 

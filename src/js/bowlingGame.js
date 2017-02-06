@@ -29,18 +29,14 @@ Game.prototype._getNewFrameBonusResult = function(newFrame){
     this._frameScore[this._frameScore.length-2] += bonusScore;
   } else if (this._frameScore.length > 1 && this._lastSpareValue === "yes"){
     bonusScore = newFrame.getSpareBonusScore();
-    // console.log("previous", this._frameScore[this._frameScore.length-2])
-    // console.log("bonus", bonusScore)
     this._frameScore[this._frameScore.length-2] += bonusScore;
-    // console.log(this._frameScore)
   } else {
     bonusScore = 0
   }
-  // console.log("here",this._frameScore.length-2)
   return bonusScore;
 };
 
-Game.prototype._getStrikeAndSpareStatus = function () {
+Game.prototype._getStrikeAndSpareStatus = function (newFrame) {
   this._lastStrikeValue = newFrame._strike;
   this._lastSpareValue = newFrame._spare;
 };
@@ -49,21 +45,18 @@ Game.prototype.playEntireGame = function () {
   for(var i=1;i<=10;i++){
     var newFrame = this.createNewFrame();
     this._playNewFrame(newFrame);
-    // console.log(newFrame._results)
+    if (i===newFrame.INITIALNUMBERPINS && newFrame.getStrikeStatus()==="yes"){
+      var additionaFrame = this.createNewFrame();
+      additionaFrame.lastGameAdditionalsWhenStrike();
+      newFrame._results = newFrame._results.concat(additionaFrame._results);
+    }
+    if (i===newFrame.INITIALNUMBERPINS && newFrame.getSpareStatus()==="yes"){
+      var additionaFrame = this.createNewFrame();
+      additionaFrame.lastGameAdditionalsWhenSpare();
+      newFrame._results = newFrame._results.concat(additionaFrame._results);
+    }
     this._getNewFrameRegularResult(newFrame);
     this._getNewFrameBonusResult(newFrame);
-    // this._getStrikeAndSpareStatus();
-    // if (i=10 && newFrame.getStrikeStatus===true){
-    //   this.lastGame(newFrame);
-    // // }
-  }
-  console.log(this._frameScore)
-};
-
-Game.prototype.lastGame = function (lastFrame) {
-  if (lastFrame.getStrikeStatus === true){
-    var aditionalFrames = createNewFrame();
-    aditionalFrames.lastGameAdditionalsWhenStrike(aditionalFrames);
-    // console.log(aditionalFrames._results);
+    this._getStrikeAndSpareStatus(newFrame);
   }
 };

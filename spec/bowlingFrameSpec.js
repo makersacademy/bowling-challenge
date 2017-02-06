@@ -39,13 +39,13 @@ describe('Frame', function(){
   });
 
   // describe('#getBonusScore',function(){
-  // //   it('when strike the bonus is equal to the next frame regular score',function(){
-  // //     frame.updateResult(5);
-  // //     frame.updateResult(4);
-  // //     frame._strike = true;
-  // //     frame.getRegularScore();
-  // //     expect(frame.getBonusScore()).toBe(9);
-  // //   });
+  //   it('when strike the bonus is equal to the next frame regular score',function(){
+  //     frame.updateResult(5);
+  //     frame.updateResult(4);
+  //     frame._strike = true;
+  //     frame.getRegularScore();
+  //     expect(frame.getBonusScore()).toBe(9);
+  //   });
   //
   //   it('when spares the bonus is equal to the next frame 1st roll score',function(){
   //     frame.updateResult(5);
@@ -87,6 +87,20 @@ describe('Frame', function(){
       var frameScore = frame.getRegularScore()
       frame.checkSpare(frameScore);
       expect(frame.getSpareStatus()).toBe("yes");
+    });
+  });
+
+  describe('#lastGameAdditionalsWhenStrike', function(){
+    it('allows two more rolls if last game was strike',function(){
+      frame.lastGameAdditionalsWhenStrike()
+      expect(frame._results.length).toBe(2)
+    });
+  });
+
+  describe('#lastGameAdditionalsWhenSpare', function(){
+    it('allows one more roll if last game was spare',function(){
+      frame.lastGameAdditionalsWhenSpare()
+      expect(frame._results.length).toBe(1)
     });
   });
 });

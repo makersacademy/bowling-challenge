@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Bowling Scorecard</title>
+    <link type="text/css" href="master.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <label for="name">Player name:</label><input type="text" id="name">
+    <button id="submitname">Submit</button>
+
+    <h3>Running total for player ID <span id="name"></span>:</h3>
+
+    <tr id="tbody">
+    <label for="score1">Score 1:</label><input id="score1" type="number" min="0" max="10" value="1"/>
+    <label for="score2">Score 2:</label><input id="score1" type="number" min="0" max="10" value="1"/>
+    <button value="submitscore">Submit score for frame</button>
+
+    <tr id="scorecard">
+      <td>Frame number:</td><span id="frame"></span>
+      <td>Roll 1 score:</td><span id="score1"></span>
+      <td>Roll 2 score:</td><span id="score2"></span>
+      <td>Bonus from previous roll:</td><span id="bonus"></span>
+    </tr>
+
+    <p><label for="totalScore"></label>Running total:<span id="totalScore"></span></p>
+    <div><h2><span id="result"></span></h2></div>
+  </body>
+
+  <script src="src/Scorecard.js"></script>
+  <script src="src/jquery.min.js"></script>
+  <script src="src/eventmanager.js"></script>
+</html>

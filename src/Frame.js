@@ -1,8 +1,8 @@
 'use strict';
 
-function Frame (roll1, roll2){
+function Frame (roll1, roll2, roll3, frame){
   this.MAXIMUM_SCORE = 10;
-  this._rollSetter(roll1, roll2)
+  this._rollSetter(roll1, roll2, roll3, frame)
 };
 
 Frame.prototype._firstRoll = function () {
@@ -57,7 +57,7 @@ Frame.prototype._isSpare = function () {
 };
 
 Frame.prototype._isStrike = function () {
-  if(this.rolls.length === 1) {
+  if(this.rolls[0] === this.MAXIMUM_SCORE) {
     return true;
   }
   else {
@@ -65,10 +65,19 @@ Frame.prototype._isStrike = function () {
   }
 };
 
-Frame.prototype._rollSetter = function (roll1, roll2) {
-  if (roll1===this.MAXIMUM_SCORE) {
-    this.rolls = [roll1]
-  } else {
-    this.rolls = [roll1, roll2]
+Frame.prototype._rollSetter = function (roll1, roll2, roll3, frame) {
+  if(frame === undefined) {
+    if (roll1===this.MAXIMUM_SCORE) {
+      this.rolls = [roll1]
+    } else {
+      this.rolls = [roll1, roll2]
+    }
   }
+  if(frame === true) {
+    this._finalFrame(roll1, roll2, roll3)
+  }
+};
+
+Frame.prototype._finalFrame = function (roll1, roll2, roll3) {
+  this.rolls = [roll1, roll2, roll3]
 };

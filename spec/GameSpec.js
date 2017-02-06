@@ -102,4 +102,14 @@ describe('Game', function(){
     });
 
   });
+
+  describe("final frame", function(){
+    it("final frame has three rolls if strike or spare", function(){
+      for (var i = 0; i < 9; i++) {
+        game.roll(2,2)
+      }
+      game.roll(10,2,2)
+      expect(game.frames[9].rolls.length).toEqual(3)
+    });
+  });
 });

@@ -89,7 +89,7 @@ describe('Game', function () {
         for (var i = 0; i < 10; i++) {
           game.rollNextFrame();
         };
-        expect(game.getScore()).toEqual(300);
+        expect(game.getScore()).toEqual(190);
       });
     });
   });

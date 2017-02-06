@@ -55,7 +55,7 @@ Array.prototype._beforeLast = function () {
 Game.prototype.whichGame = function () {
   if (self._score == 0) {
     return 'Gutter Game';
-  } else if (self._score == 300) {
+  } else if (self._score == 190) {
     return 'Perfect Game';
   }
     else {

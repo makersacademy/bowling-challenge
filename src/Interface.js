@@ -52,9 +52,9 @@ function updateFrame(){
       if (displayMessage === null && display[0] !== null){var displayMessage=display}
     }
     console.log(displayMessage)
-    if (displayMessage[0] === "X"){scrollMessage("STRIKE!",5)}
-    if (displayMessage[1] === "X"){scrollMessage("STRIKE!",5)}
-    if (displayMessage[1] === "/"){scrollMessage("SPARE!",5)}
+    if (displayMessage[0] === "X"){scrollMessage("STRIKE!",8)}
+    if (displayMessage[1] === "X"){scrollMessage("STRIKE!",8)}
+    if (displayMessage[1] === "/"){scrollMessage("SPARE!",8)}
     if ($("#pin9-1").text()===""){$("#pin9-1").text(checkStrike(bowling.player.scoreCard[9][1]))}
     $("#pin9-2").text(checkStrike(bowling.player.scoreCard[9][2]));
     result = bowling.player.displayScore(bowling.frame-1)
@@ -83,5 +83,5 @@ function scrollMessage(message, time=5){
   $("#message").hide()
   time = time * 1000
   $("#scrollMessage").text(message)
-  $("#message").show().delay(5000).fadeOut();
+  $("#message").show().delay(time).fadeOut();
 }

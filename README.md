@@ -8,8 +8,10 @@ Unfortunately having not read the instructions properly most of my development s
 ## Constructor Functions
 So far there are two constructor functions:
  - Roll: Responsible for rolling a ball and returning a random number from 0 to 10.
- - Frame: Frame keeps track of the scores from the rolls within the current frame.
+ - Frame: Bowls twice before resetting the pins.
+ - Scorecard: Keeps track of the scores from the frames.
+ - Game: Passes the results from Frame to Scorecard.
 
- Further classes will likely be Game and Scoreboard. The Game class will keep track of the Frames, and the Scoreboard will keep track of the overall scores. The Scoreboard will contain the logic that calculates the effects of strikes. I may need a further class for FinalFrame although I'm sure I can refactor it into the main Frame class.  
+## Further work
 
- 
+I need to add the multiplication logic to the Scoreboard class. I also need to create a

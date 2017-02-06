@@ -1,9 +1,7 @@
 function Game() {
   this._score  = new Score();
-  this._frames = [];
-
-  this._rolls  = [];
   this._frame  = new Frame();
+  this._frames = [];
 
   this._TOTAL_FRAMES = 10;
 }
@@ -32,17 +30,19 @@ Game.prototype.lastFrame = function() {
   return this.getFrames().slice(-1)[0]
 };
 
+Game.prototype.closeFrame = function() {
+  this._frames.push(this._frame);
+  this.isOver();
+  this._frame = new Frame();
+};
+
 Game.prototype.roll = function(pins) {
   this._frame.isWrong(pins);
   this._frame.addRoll(pins);
   this._score.setScore(pins, this.lastFrame(), this.getFrame(), this.getLength());
 
   if (this._frame.isStrike()) { this._frame.addRoll(0); }
-  if (this._frame.isFull()) {
-    this._frames.push(this._frame);
-    this.isOver();
-    this._frame = new Frame();
-  }
+  if (this._frame.isFull()) { this.closeFrame(); }
 };
 
 Game.prototype.isOver = function() {

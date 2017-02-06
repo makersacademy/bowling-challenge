@@ -40,7 +40,7 @@ Score.prototype.recordRolls = function(roll) {
 Score.prototype.setScore = function(roll, last_frame, this_frame, game_length) {
   this.recordRolls(roll);
   this.scorePins(roll, this_frame);
-  this.scoreSpare(roll, last_frame, this_frame);
+  this.scoreSpare(roll, this_frame, last_frame);
   this.scoreStrike(roll, game_length);
   this._total = this._scoreboard.reduce(function(a,b) { return a + b });
 };
@@ -50,7 +50,7 @@ Score.prototype.scorePins = function(roll, current_frame) {
   else { this.addBonus(roll); }
 }
 
-Score.prototype.scoreSpare = function(roll, last_frame, current_frame) {
+Score.prototype.scoreSpare = function(roll, current_frame, last_frame) {
   if (typeof last_frame !== 'undefined') {
     if (last_frame.isSpare() && current_frame.isNew()) { this.addBonus(roll); }
   }

@@ -15,6 +15,23 @@
   z-index: 1000
 }
 
+#message {
+  position: relative;
+  top: 20px;
+  left: 20px;
+  width: 910px;
+  margin: 20px auto;
+  padding: 5px;
+  border: solid blue 10px;
+  background-color: white;
+  font-size: 3em;
+  font-family: serif;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 10px 10px 5px #888888;
+  z-index: 1000
+}
+
 #gameOptions {
   position: relative;
   top: 100px;
@@ -48,10 +65,11 @@
 }
 
 #scoreArea {
-  position: relative;
-  top: -50px;
+  position: absolute;
+  top: 280px;
   height: 200px;
-  left: 20px;
+  left: 51%;
+  transform: translateX(-50%);
   width: 910px;
   margin: 20px auto;
   padding: 5px;
@@ -154,9 +172,10 @@
 }
 
 #inputArea {
-  position: relative;
-  top: 500px;
-  left: 20px;
+  position: absolute;
+  top: 600px;
+  left: 51%;
+  transform: translateX(-50%);
   width: 900px;
   margin: 20px auto;
   padding: 5px;

@@ -2,6 +2,7 @@
 var bowling = new Bowling()
 $("#scoreArea").hide();
 $("#inputArea").hide();
+$("#message").hide();
 
 $(document).ready(function(){
   $("#start").click(function (){startGame()})
@@ -23,13 +24,13 @@ $(document).ready(function(){
 
 function startGame(){
   var name = $("#nameText").val();
-  console.log(name)
   if (name === ""){var player1 = new Player()} else {var player1 = new Player(name)}
   bowling = new Bowling(player1)
   $("#name").text(bowling.player.name);
   $("#gameOptions").hide();
   $("#scoreArea").show();
   $("#inputArea").show();
+  scrollMessage("Welcome to Super Bowl",10)
 }
 
 function bowl(pin=null){
@@ -45,6 +46,14 @@ function updateFrame(){
       $("#pin"+i+"-0").text(display[0]);
       $("#pin"+i+"-1").text(display[1]);
     }
+    var displayMessage = null;
+    for (var i=9; i >= 0; i--){
+      var display = displayChar(bowling.player.scoreCard[i][0],bowling.player.scoreCard[i][1])
+      if (displayMessage === null && display[0] !== null){var displayMessage=display}
+    }
+    if (displayMessage[0] === "X"){scrollMessage("STRIKE!",5)}
+    if (displayMessage[1] === "X"){scrollMessage("STRIKE!",5)}
+    if (displayMessage[1] === "/"){scrollMessage("SPARE!",5)}
     if ($("#pin9-1").text()===""){$("#pin9-1").text(checkStrike(bowling.player.scoreCard[9][1]))}
     $("#pin9-2").text(checkStrike(bowling.player.scoreCard[9][2]));
     result = bowling.player.displayScore(bowling.frame-1)
@@ -67,4 +76,11 @@ function displayChar(text1, text2){
 
 function checkStrike(text){
   if (text===10){return "X"}else{return text}
+}
+
+function scrollMessage(message, time=5){
+  $("#message").hide();
+  time = time * 1000;
+  $("#scrollMessage").text(message);
+  $("#message").show().delay(5000).fadeOut();
 }

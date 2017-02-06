@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "test": "./node_modules/.bin/jasmine-node --color --verbose spec"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "jasmine-node": "^1.14.5",
     "morgan": "~1.7.0",
     "node-sass-middleware": "0.9.8",
+    "nodemon": "^1.11.0",
     "pug": "~2.0.0-beta10",
     "request": "^2.79.0",
     "selenium-webdriver": "^3.0.1",

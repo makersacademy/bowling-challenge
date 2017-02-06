@@ -37,7 +37,8 @@ describe("FEATURES:", function(){
     it("Can enter roll into form and submit",function(done){
       var field = this.driver.findElement(selenium.By.name('roll'));
       field.sendKeys('3');
-      field.submit();
+      var link = this.driver.findElement(selenium.By.id('submit-roll'));
+      link.click();
       var scores = this.driver.findElement(selenium.By.id('scores-table'));
       expect(scores.getText()).toContain("3");
       done();

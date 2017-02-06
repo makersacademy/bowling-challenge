@@ -19,7 +19,7 @@ Frame.prototype.isNew = function() {
   return (this.getFrame().length === 1);
 };
 
-Frame.prototype.isComplete = function() {
+Frame.prototype.isFull = function() {
   return (this.getFrame().length === 2);
 };
 

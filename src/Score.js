@@ -29,6 +29,14 @@ Score.prototype.rollMinusTwo = function() {
   return this.getRolls().slice(-3)[0];
 }
 
+Score.prototype.addBonus = function(roll) {
+  this._scoreboard[this._scoreboard.length - 1] += roll;
+}
+
+Score.prototype.recordRolls = function(roll) {
+  this._rolls.push(roll);
+};
+
 Score.prototype.setScore = function(roll, last_frame, this_frame, game_length) {
   this.recordRolls(roll);
   this.scorePins(roll, this_frame);
@@ -38,32 +46,22 @@ Score.prototype.setScore = function(roll, last_frame, this_frame, game_length) {
 };
 
 Score.prototype.scorePins = function(roll, current_frame) {
-  if (current_frame.isNew()) {
-    this._scoreboard.push(roll);
-  }
-  else {
-    this._scoreboard[this._scoreboard.length - 1] += roll;
-  }
+  if (current_frame.isNew()) { this._scoreboard.push(roll); }
+  else { this.addBonus(roll); }
 }
 
 Score.prototype.scoreSpare = function(roll, last_frame, current_frame) {
   if (typeof last_frame !== 'undefined') {
-    if (last_frame.isSpare() && current_frame.isNew()) {
-      this._scoreboard[this._scoreboard.length - 2] += roll;
-    }
+    if (last_frame.isSpare() && current_frame.isNew()) { this.addBonus(roll); }
   }
 };
 
 Score.prototype.scoreStrike = function(roll, game_length) {
   if (this.getRolls().length === 1) { return 'undefined'; }
   if (game_length < 10 && this.rollNumber() > 1 && this.rollMinusOne() === 10) {
-    this._scoreboard[this._scoreboard.length - 2] += roll;
+    this.addBonus(roll);
   }
   if (game_length < 11 && this.rollNumber() > 2 && this.rollMinusTwo() === 10) {
-    this._scoreboard[this._scoreboard.length - 2] += roll;
+    this.addBonus(roll);
   }
-};
-
-Score.prototype.recordRolls = function(roll) {
-  this._rolls.push(roll);
 };

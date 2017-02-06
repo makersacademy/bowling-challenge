@@ -32,20 +32,17 @@ Game.prototype.lastFrame = function() {
   return this.getFrames().slice(-1)[0]
 };
 
-Game.prototype.closeFrame = function(frame) {
-  this._frames.push(frame);
-  this._frame = new Frame();
-};
-
 Game.prototype.roll = function(pins) {
   this._frame.isWrong(pins);
   this._frame.addRoll(pins);
   this._score.setScore(pins, this.lastFrame(), this.getFrame(), this.getLength());
 
   if (this._frame.isStrike()) { this._frame.addRoll(0); }
-  if (this._frame.isComplete()) { this.closeFrame(this._frame); }
-
-  this.isOver();
+  if (this._frame.isFull()) {
+    this._frames.push(this._frame);
+    this.isOver();
+    this._frame = new Frame();
+  }
 };
 
 Game.prototype.isOver = function() {

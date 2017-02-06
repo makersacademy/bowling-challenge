@@ -30,7 +30,7 @@ function startGame(){
   $("#gameOptions").hide();
   $("#scoreArea").show();
   $("#inputArea").show();
-  scrollMessage("Welcome to Super Bowl",10)
+  scrollMessage("Welcome "+bowling.player.name+", to Super Bowl",10)
 }
 
 function bowl(pin=null){
@@ -51,6 +51,7 @@ function updateFrame(){
       var display = displayChar(bowling.player.scoreCard[i][0],bowling.player.scoreCard[i][1])
       if (displayMessage === null && display[0] !== null){var displayMessage=display}
     }
+    console.log(displayMessage)
     if (displayMessage[0] === "X"){scrollMessage("STRIKE!",5)}
     if (displayMessage[1] === "X"){scrollMessage("STRIKE!",5)}
     if (displayMessage[1] === "/"){scrollMessage("SPARE!",5)}
@@ -79,8 +80,8 @@ function checkStrike(text){
 }
 
 function scrollMessage(message, time=5){
-  $("#message").hide();
-  time = time * 1000;
-  $("#scrollMessage").text(message);
+  $("#message").hide()
+  time = time * 1000
+  $("#scrollMessage").text(message)
   $("#message").show().delay(5000).fadeOut();
 }

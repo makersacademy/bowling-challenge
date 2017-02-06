@@ -2,7 +2,7 @@ var Scorecard = function() {
   this.frame = 1;
   this.score = [];
   this.frameScore = [];
-  this.bonusPoints = 0;
+  this.bonusPoints = [];
   this.totalScore = 0;
 }
 
@@ -24,11 +24,15 @@ Scorecard.prototype.strikeOrSpare = function (score1, score2) {
 };
 
 Scorecard.prototype.addStrike = function(score1, score2) {
-  this.bonusPoints += (score1 + score2);
+  this.bonusPoints.push ([score1 + score2]);
 }
 
 Scorecard.prototype.addSpare = function(score1) {
-  this.bonusPoints += (score1)};
+  this.bonusPoints.push ([score1])};
+
+Scorecard.prototype.bonus = function() {
+  this.bonus = this.bonusPoints.slice(-1);
+};
 
   Scorecard.prototype.addFrame = function (score1, score2) {
     if ((score1 + score2) > 10) { throw 'Cannot exceed 10.'}

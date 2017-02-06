@@ -11,12 +11,14 @@ $('#submitscore').on("click", function() {
   $('#totalScore').text(scorecard.totalScore());
   var score1 = $("#score1").val();
   var score2 = $("#score2").val();
-  $("table tbody").append(frameScore);
+  var thisroll = "<tr><td>" + score1 + "</td><td>" + score2 + "</td><td>" + bonus + "</td></tr>";
+  $("table tbody").append(thisroll);
 });
 
 function updateScore() {
   $('#score1').text(scorecard.addScore(score1));
   $('#score2').text(scorecard.addScore(score2));
+  $('#bonus').text(scorecard.bonus());
   $('#submitscore').on('click', scorecard.addScore(score1, score2));
 }
 

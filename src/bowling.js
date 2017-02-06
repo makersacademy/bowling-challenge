@@ -5,7 +5,6 @@ function Game() {
    this._new_game = Array(10).fill(this._frame);
 }
 
-
 Game.prototype.createFrame = function(throw1, throw2) {
   return this._frame.push(throw1, throw2);
 }
@@ -20,33 +19,28 @@ Game.prototype.gameScoreOrdinary = function(game) {
   });
     var final_score = flatten_array.reduce(function(a,b){
         return a + b;
-      });
+  });
   return final_score;
 };
 
 Game.prototype.gameScoreComplex = function(game){
   for (var i = 0; i < 9; i++) {
-    if (game[i][0] === 10) {
+    if (this.strikes(game[i])) {
      game[i].push(game[i+1][0], game[i+1][1]);
-    }
-    else if (game[i][0] !== 10 && (game[i][0] + game[i][1] === 10)){
+
+    } else if (this.spare(game[i])){
        game[i].push(game[i+1][0]);
+    } else {
+      game[i];
     }
   }
-
   return this.gameScoreOrdinary(game);
 };
 
-Game.prototype.strikes = function(game){
-  for (var i = 0; i < 10; i++) {
-    if (game[i][0] === 10){return game[i]}
-    else {return []}
-  }
-};
+Game.prototype.strikes = function(frame) {
+  return frame[0] === 10;
+}
 
-Game.prototype.spare = function(game){
-  for (var i = 0; i < 10; i++) {
-    if (game[i][0] !==10 && (game[i][0] + game[i][1] === 10)){return game[i]}
-    else {return []}
-  }
-};
+Game.prototype.spare = function(frame) {
+  return frame[0] !== 10 && (frame[0] + frame[1]) === 10;
+}

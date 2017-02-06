@@ -6,6 +6,10 @@ describe('Game', function(){
   var bowl = new Game();
   var a = 1;
   var b = 2;
+  var frame1 = [10, 0];
+  var frame2 = [9, 1];
+  var frame3 = [3, 5];
+
   var game1 = [[10, 0], [3, 6], [7, 2], [3, 6],
                [4, 4], [5, 3], [8, 1],[3, 3],
                [4, 5], [1, 3]];
@@ -52,9 +56,15 @@ describe('Game', function(){
     });
 
     describe('strikes', function(){
-      it('finds a strike frame',function(){
-        expect(bowl.strikes(game1)).toEqual([10,0]);
+
+      it('returns true for a strike frame',function(){
+        expect(bowl.strikes(frame1)).toEqual(true);
       });
+
+      it('returns false for a frame with no strike',function(){
+        expect(bowl.strikes(frame3)).toEqual(false);
+      });
+
       it('returns game score with strike', function(){
         expect(bowl.gameScoreComplex(game1)).toEqual(90);
 
@@ -62,10 +72,16 @@ describe('Game', function(){
     });
 
     describe('spares', function(){
-      it('finds a spare frame', function(){
-        expect(bowl.spare(game3)).toEqual([1,9]);
+
+      it('returns true for a spare frame', function(){
+        expect(bowl.spare(frame2)).toEqual(true);
       });
-      it('return game score with spare', function(){
+
+      it('returns false for frame with no a spare', function(){
+        expect(bowl.spare(frame3)).toEqual(false);
+      });
+
+      it('returns game score with spare', function(){
         expect(bowl.gameScoreComplex(game3)).toEqual(88);
       })
     });
@@ -74,6 +90,5 @@ describe('Game', function(){
       it('returns game score with strike and spare', function(){
         expect(bowl.gameScoreComplex(game4)).toEqual(100);
       });
-
     });
 });

@@ -35,10 +35,10 @@ Game.prototype.rollNextFrame = function () {
 Game.prototype._rollOneFrame = function () {
   var rollOne = this._roll();
   var rollTwo = Math.min(this._roll(), 10 - rollOne);
-  self._strike.push((rollOne == 10) ? self._strike._last()*2 : 1);
-  self._spare.push((rollOne+rollTwo == 10)&&(rollOne != 10) ? self._spare._last()*2 : 1);
+  self._strike.push((rollOne == 10) ? 2 : 1);
+  self._spare.push((rollOne+rollTwo == 10)&&(rollOne != 10) ? 2 : 1);
   return [rollOne, rollTwo];
-}
+};
 
 Game.prototype._roll = function () {
   return Math.floor(Math.random() * 10);
@@ -46,8 +46,19 @@ Game.prototype._roll = function () {
 
 Array.prototype._last = function () {
   return this[this.length - 1];
-}
+};
 
 Array.prototype._beforeLast = function () {
   return this[this.length - 2];
-}
+};
+
+Game.prototype.whichGame = function () {
+  if (self._score == 0) {
+    return 'Gutter Game';
+  } else if (self._score == 300) {
+    return 'Perfect Game';
+  }
+    else {
+      return 'Ordinary Game';
+    }
+};

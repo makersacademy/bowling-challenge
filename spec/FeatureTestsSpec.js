@@ -88,8 +88,51 @@ describe('Feature tests.', function () {
       });
     });
 
-    //
+    // 10th frame
 
+    // If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+
+    // Gutter Game
+
+    // A Gutter Game is when the player never hits a pin (20 zero scores).
+
+    describe('If you play a gutter game', function () {
+      it('announces gutter game', function () {
+        spyOn(Math,'random').and.returnValue(0);
+        for (var i = 0; i < 10; i++) {
+          game.rollNextFrame();
+        };
+        expect(game.whichGame()).toEqual('Gutter Game');
+      });
+      it('then score is 0', function () {
+        spyOn(Math,'random').and.returnValue(0);
+        for (var i = 0; i < 10; i++) {
+          game.rollNextFrame();
+        };
+        expect(game.getScore()).toEqual(0);
+      });
+    });
+
+    // Perfect Game
+
+    // A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+
+    describe('If you play a perfect game', function () {
+      it('announces perfect game', function () {
+        spyOn(Math,'random').and.returnValue(1);
+        for (var i = 0; i < 10; i++) {
+          game.rollNextFrame();
+        };
+        expect(game.whichGame()).toEqual('Perfect Game');
+      });
+      it('then score is 300', function () {
+        spyOn(Math,'random').and.returnValue(1);
+        for (var i = 0; i < 10; i++) {
+          game.rollNextFrame();
+        };
+        expect(game.getScore()).toEqual(300);
+      });
+    });
   });
 
 });

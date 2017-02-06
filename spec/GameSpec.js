@@ -72,5 +72,35 @@ describe('Game', function () {
         expect(game.getScore()).toEqual(25);
       });
     });
+
+    describe('If you play a gutter game', function () {
+      it('then score is 0', function () {
+        spyOn(Math,'random').and.returnValue(0);
+        for (var i = 0; i < 10; i++) {
+          game.rollNextFrame();
+        };
+        expect(game.getScore()).toEqual(0);
+      });
+    });
+
+    describe('If you play a perfect game', function () {
+      it('then score is 300', function () {
+        spyOn(Math,'random').and.returnValue(1);
+        for (var i = 0; i < 10; i++) {
+          game.rollNextFrame();
+        };
+        expect(game.getScore()).toEqual(300);
+      });
+    });
   });
-})
+
+  describe('#whichGame', function () {
+    it('announces perfect game', function () {
+      spyOn(Math,'random').and.returnValue(1);
+      for (var i = 0; i < 10; i++) {
+        game.rollNextFrame();
+      };
+      expect(game.whichGame()).toEqual('Perfect Game');
+    });
+  });
+});

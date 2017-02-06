@@ -35,7 +35,7 @@ function startGame(){
 
 function bowl(pin=null){
   try {bowling.play(pin)}
-  catch(err) {alert(err)}
+  catch(err) {scrollMessage(err,10)}
   updateFrame()
 }
 

@@ -1,0 +1,14 @@
+{
+  "name": "BowlingNode",
+  "version": "0.0.1",
+  "description": "Bowling in Node",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/jasmine-node/bin/jasmine-node spec/ --verbose"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
+}

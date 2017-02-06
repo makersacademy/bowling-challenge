@@ -3,7 +3,7 @@
 ### [Makers Academy] (http://www.makersacademy.com) - Week 5 Solo Weekend Project
 
 ## Index
-* [Installtion] (#Install)
+* [Installation] (#Install)
 * [Jasmine Tests] (#Jasmine)
 * [Running the game] (#Run)
 * [Screen Shots] (#Shots)
@@ -31,7 +31,10 @@ $ open -a safari index.html
 [![ScreenShot1](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot1.png)](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot1.png "Screen Shot 1")
 
 ### Main Game Screen
-[![ScreenShot1](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot2.png)](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot2.png "Screen Shot 2")
+[![ScreenShot2](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot2.png)](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot2.png "Screen Shot 2")
+
+### STRIKE scrolling text
+[![ScreenShot3](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot3.png)](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot2.png "Screen Shot 3")
 
 ## <a name="Heroku">Use live on Heroku</a>
 [Bowling Challange] (https://adrianeyre-bowling.herokuapp.com/index.html)

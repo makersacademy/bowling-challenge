@@ -3,7 +3,7 @@
 ### [Makers Academy] (http://www.makersacademy.com) - Week 5 Solo Weekend Project
 
 ## Index
-* [Installtion] (#Install)
+* [Installation] (#Install)
 * [Jasmine Tests] (#Jasmine)
 * [Running the game] (#Run)
 * [Screen Shots] (#Shots)

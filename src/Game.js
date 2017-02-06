@@ -1,6 +1,7 @@
 function Game() {
   this.totScore = 0;
   this.maxFrames = 10;
+  this.frames = [];
   this.framesCounter();
 }
 
@@ -24,8 +25,10 @@ Game.prototype.pinsKnockedDown = function(number) {
   this.totScore += number;
   console.log(this.totScore);
   if (this.frame.isStrike()) {
+    this.frames.push(this.frame);
     this.framesCounter();
   } else if (this.frame.rolls.length == 2) {
+    this.frames.push(this.frame);
     this.framesCounter();
   }
 };

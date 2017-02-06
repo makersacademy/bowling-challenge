@@ -1,4 +1,3 @@
-[Challenge Workflow](https://www.dropbox.com/s/494buy5bp7qqyc9/Workflow.pdf?dl=0)
 
 This project requires me to build a bowling game.
 The project code is  written in Javascript.

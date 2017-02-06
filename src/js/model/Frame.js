@@ -8,6 +8,7 @@ Frame.prototype.getFrame = function() {
 };
 
 Frame.prototype.addRoll = function(roll) {
+  this.isWrong(roll)
   this._frame.push(roll);
 };
 

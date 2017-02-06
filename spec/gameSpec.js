@@ -1,12 +1,63 @@
-// 'use strict';
-//
-// describe('Game', function() {
-//
-//     var game;
-//
-//     beforeEach(function() {
-//         game = new Game();
-//     });
+'use strict';
+
+describe('Game', function() {
+
+    var game;
+
+    beforeEach(function() {
+        game = new Game();
+    });
+
+    var bowlMany = function(n, pins) {
+        for (var i = 0; i < n; i++) {
+            game.bowl(pins)
+        }
+    }
+
+    var bowlSpare = function() {
+        game.bowl(5);
+        game.bowl(5);
+    }
+
+    var bowlStrike = function() {
+        game.bowl(10);
+    }
+
+    it('should handle a perfect game', function() {
+        bowlMany(12, 10);
+        expect(game.score()).toEqual(300);
+    });
+
+    it("should handle all ones", function() {
+        bowlMany(20, 1);
+        expect(game.score()).toEqual(20);
+    });
+
+    it("should handle gutter game", function() {
+        bowlMany(20, 0);
+        expect(game.score()).toEqual(0);
+    });
+
+    it("should handle all ones", function() {
+        bowlMany(20, 1);
+        expect(game.score()).toEqual(20);
+    });
+
+    it("should handle one spare", function() {
+        bowlSpare();
+        game.bowl(3);
+        game.bowl(0);
+        bowlMany(16, 0);
+        expect(game.score()).toEqual(16);
+    });
+
+    it("should handle one strike", function() {
+        bowlStrike();
+        game.bowl(3);
+        game.bowl(4);
+        bowlMany(16, 0);
+        expect(game.score()).toEqual(24);
+    });
 //
 //     it('exists', function() {
 //         expect(game).not.toBeUndefined();
@@ -48,4 +99,4 @@
 //     })
 //
 //
-// });
+});

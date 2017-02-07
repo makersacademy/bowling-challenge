@@ -1,15 +1,15 @@
 'use strict';
 
 function Bowling() {
-  this._frame = 1;
-  this._roll = 1;
-  this._hits = 0;
-  this._bonus = 0;
-  this._strikeOrSpare = "";
-  this._runningTotal = 0;
-  this._pins = 10;
-  this._extra = 0;
-  this._extraNext = 0;
+  this._frame = 1; // Game
+  this._roll = 1; // Game
+  this._hits = 0; // Scoring
+  this._bonus = 0; // Scoring
+  this._strikeOrSpare = ""; // StrikeOrSpare
+  this._runningTotal = 0; // Scoring
+  this._pins = 10; // Game
+  this._extra = 0; // SrikeOrSpare
+  this._extraNext = 0; // StrikeOrSpare
 };
 Bowling.prototype.getFrame = function() {return this._frame;};
 Bowling.prototype.getRoll = function() {return this._roll;};
@@ -56,7 +56,7 @@ Bowling.prototype.endOfRowProcessing = function() {
 Bowling.prototype.setUpNewFrame = function() {
   this._frame++;
   this._roll = 1;
-  this._pins = 10;
+  this._pins = 10;  
 };
 Bowling.prototype.setUpNewRoll = function() {
   this._roll = 2;

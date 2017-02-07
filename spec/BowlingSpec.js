@@ -6,8 +6,8 @@ describe('bowling', function(){
   var pins;
 
   beforeEach(function(){
-    player = new Player();
-    pins = new Pins();
+    // player = new Player();
+    // pins = new Pins();
     bowling = new Bowling();
   })
 

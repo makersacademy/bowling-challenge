@@ -4,7 +4,7 @@ function Game() {
   this._frame = [];
   this._currentGo = [];
   this._currentScore = 0;
-  this._nextGo = [];
+  this._nextGo = false;
   this._nextScore = 0;
   this.frameScore = 0;
   this.PINS = 10;
@@ -24,6 +24,7 @@ function Game() {
 
       this._currentGo = [ball1, ball2];
       this._frame.push([ball1, ball2]);
+      this.playerScore();
       // this._frame.push([ball1, ball2]);
   };
 
@@ -42,6 +43,7 @@ function Game() {
           this._strike = false;
           this._spare = true;
         }
+        this._nextGo = false;
       };
 
   Game.prototype.spare = function() {
@@ -58,11 +60,14 @@ function Game() {
              console.log(this.BONUS + this._currentGo);
                this._spare = false
            }
+           this._nextGo = false;
          };
 
   Game.prototype.open = function() {
     console.log(this._currentScore);
-    return this._currentScore;
+    // return this._currentScore;
+    this._strike = false;
+    this._spare = false;
   };
 
   Game.prototype.lastFrame = function(ball1, ball2, ball3) {
@@ -72,14 +77,16 @@ function Game() {
 
   Game.prototype.playerScore = function() {
           this.currentScore();
-      if (this._currentGo[0] == 10) {
+      if (this._currentGo[0] == 10 && this._nextGo == true) {
           this._strike = true;
           this.strike();
-      } else if (this._currentScore == 10) {
+      } else if (this._currentScore == 10 && this._nextGo == true) {
           this._spare = true;
           this.spare();
-      } else {
+      } else if (this._currentScore < 10 && this._nextGo == false ) {
         this.open();
+      } else {
+        this._nextGo = true;
       }
       this._currentGo = [];
       this._currentScore = 0;

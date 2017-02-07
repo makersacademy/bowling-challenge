@@ -18,7 +18,6 @@ describe('Game', function() {
 
       it('player gets a strike', function() {
       game.bowl(10,0);
-      game.playerScore();
       expect(game._strike).toBe(true);
       });
 
@@ -28,7 +27,6 @@ describe('Game', function() {
 
     it('player gets a spare', function() {
       game.bowl(8,2);
-      game.playerScore();
       expect(game._spare).toBe(true);
     });
 

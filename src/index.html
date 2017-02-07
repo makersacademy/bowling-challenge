@@ -18,38 +18,318 @@
       <div class="d-flex justify-content-center" id="scorecard-wrapper">
         <table border="1">
           <tr id="frames">
-          <td colspan="2">Round 1</td>
-          <td colspan="2">Round 2</td>
-          <td colspan="2">Round 3</td>
-          <td colspan="2">Round 4</td>
-          <td colspan="2">Round 5</td>
-          <td colspan="2">Round 6</td>
-          <td colspan="2">Round 7</td>
-          <td colspan="2">Round 8</td>
-          <td colspan="2">Round 9</td>
-          <td colspan="2">Round 10</td>
+            <td colspan="2">Round 1</td>
+            <td colspan="2">Round 2</td>
+            <td colspan="2">Round 3</td>
+            <td colspan="2">Round 4</td>
+            <td colspan="2">Round 5</td>
+            <td colspan="2">Round 6</td>
+            <td colspan="2">Round 7</td>
+            <td colspan="2">Round 8</td>
+            <td colspan="2">Round 9</td>
+            <td colspan="2">Round 10</td>
           </tr>
           <tr id="rolls">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+            <td>
+              <select id="roll-1.1" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-1.2" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-2.1" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-2.2" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-3.1" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-3.2" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-4.1" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-4.2" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-5.1" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-5.2" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-6.1" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-6.2" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-7.1" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-7.2" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-8.1" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-8.2" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-9.1" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-9.2" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-10.1" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
+            <td>
+              <select id="roll-10.2" onchange="SelectChanged(this)">
+                <option value=""></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </td>
           </tr>
           <tr id="scores">
           <td colspan="2"></td>

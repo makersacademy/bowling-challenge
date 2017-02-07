@@ -2,7 +2,8 @@
 
 function Player(name="Player"){
   this.name = name;
-  this.scoreCard = [[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null,null],[null]]
+  this.scoreCard = [[null,null],[null,null],[null,null],[null,null],[null,null],
+  [null,null],[null,null],[null,null],[null,null],[null,null,null],[null]]
   this.score = [null,null,null,null,null,null,null,null,null,null]
   this.roll = 0
 }

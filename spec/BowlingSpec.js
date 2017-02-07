@@ -1,13 +1,13 @@
-// 'use strict';
+'use strict'
 
 describe('bowling', function(){
   var bowling;
-  // var player;
-  // var pins;
+  var player;
+  var pins;
 
   beforeEach(function(){
-    // player = new Player();
-    // pins = new Pins();
+    player = new Player();
+    pins = new Pins();
     bowling = new Bowling();
   })
 

@@ -1,5 +1,6 @@
 'use strict';
 var bowling = new Bowling()
+var player1=new Player(name)
 $("#scoreArea").hide();
 $("#inputArea").hide();
 $("#message").hide();
@@ -24,7 +25,7 @@ $(document).ready(function(){
 
 function startGame(){
   var name = $("#nameText").val();
-  if (name === ""){var player1 = new Player()} else {var player1 = new Player(name)}
+  if (name===""){var player1 = new Player()}else{player1=new Player(name)}
   bowling = new Bowling(player1)
   $("#name").text(bowling.player.name);
   $("#gameOptions").hide();
@@ -42,16 +43,17 @@ function bowl(pin=null){
 function updateFrame(){
   $.when(bowling.player.scoreCard).then (function(result) {
     for (var i=0; i <= 9; i++){
-      var display = displayChar(bowling.player.scoreCard[i][0],bowling.player.scoreCard[i][1])
+      var display = displayChar(bowling.player.scoreCard[i][0],
+                                bowling.player.scoreCard[i][1])
       $("#pin"+i+"-0").text(display[0]);
       $("#pin"+i+"-1").text(display[1]);
     }
     var displayMessage = null;
     for (var i=9; i >= 0; i--){
-      var display = displayChar(bowling.player.scoreCard[i][0],bowling.player.scoreCard[i][1])
-      if (displayMessage === null && display[0] !== null){var displayMessage=display}
+      display = displayChar(bowling.player.scoreCard[i][0],
+                            bowling.player.scoreCard[i][1])
+      if (displayMessage===null && display[0] !== null){displayMessage=display}
     }
-    console.log(displayMessage)
     if (displayMessage[0] === "X"){scrollMessage("STRIKE!",8)}
     if (displayMessage[1] === "X"){scrollMessage("STRIKE!",8)}
     if (displayMessage[1] === "/"){scrollMessage("SPARE!",8)}
@@ -62,8 +64,8 @@ function updateFrame(){
       $("#score"+i).text(result[i]);
     }
     var score = 0
-    for (var i=bowling.player.score.length; i >= 0; i--){
-      if (Number.isInteger(bowling.player.score[i])){score += bowling.player.score[i]}
+    for (i=bowling.player.score.length; i >= 0; i--){
+      if (Number.isInteger(bowling.player.score[i])){score+=bowling.player.score[i]}
     }
     $("#totalScore").text(score)
   })

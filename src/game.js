@@ -28,15 +28,27 @@ Game.prototype.score = function() {
     var self = this;
     return this._frames.reduce(function(total, frame, num, frames) {
         var bonus = 0;
-        if (frame.isStrike() && num < 9 && frames[num + 1] && frames[num + 2]) {
-            bonus = self.strikeBonus(frame, frames[num + 1], frames[num + 2]);
-        }
-        if (frame.isSpare() && frames[num + 1]) {
-            bonus = self.spareBonus(frame, frames[num + 1]);
-        }
+        bonus += self.spareCheck(frame, frames[num + 1]);
+        bonus += self.strikeCheck(frame, num, frames[num + 1], frames[num + 2]);
         return total + bonus + frame.score();
     }, 0);
 };
+
+Game.prototype.strikeCheck = function(frame, num, framePlus1, framePlus2) {
+    if (frame.isStrike() && num < 9 && framePlus1 && framePlus2) {
+        return this.strikeBonus(frame, framePlus1, framePlus2);
+    } else {
+        return 0;
+    }
+}
+
+Game.prototype.spareCheck = function(frame, framePlus1) {
+    if (frame.isSpare() && framePlus1) {
+        return this.spareBonus(frame, framePlus1);
+    } else {
+        return 0;
+    }
+}
 
 Game.prototype.strikeBonus = function(frame, framePlus1, framePlus2) {
     var strikeBonus = 0;

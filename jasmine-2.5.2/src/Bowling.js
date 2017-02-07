@@ -7,34 +7,27 @@ function Bowling() {
   this._bonus = 0;
   this._strikeOrSpare = "";
   this._runningTotal = 0;
-
   this._pins = 10;
   this._extra = 0;
   this._extraNext = 0;
 };
-
 Bowling.prototype.getFrame = function() {return this._frame;};
 Bowling.prototype.getRoll = function() {return this._roll;};
 Bowling.prototype.getHits = function() {return this._hits;};
 Bowling.prototype.getBonus = function() {return this._bonus;};
 Bowling.prototype.getStrikeOrSpare = function() {return this._strikeOrSpare;};
 Bowling.prototype.getRunningTotal = function() {return this._runningTotal;};
-
 Bowling.prototype.getPins = function() {return this._pins;};
 Bowling.prototype.getExtra = function() {return this._extra;};
 
-Bowling.prototype.addRow = function(hits) { // hits = user input
+Bowling.prototype.addRow = function(hits) {
   this.setHits(hits);
   this.updateBonus();
   if (this.noPinsLeft()) { this.updateStrikeOrSpare();};
   this.updateRunningTotal();
 }
 Bowling.prototype.setHits = function(hits) {
-  if (hits > this.getPins()) {
-    this._hits = this.getPins();
-  } else {
-    this._hits = hits;
-  }
+  (hits > this.getPins())? this._hits = this.getPins() : this._hits = hits;
 };
 Bowling.prototype.updateBonus = function() {
   this._bonus = this.getHits() * this.getExtra();

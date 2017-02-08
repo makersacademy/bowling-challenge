@@ -26,10 +26,11 @@ function Game() {
       this._currentGo = [ball1, ball2];
       this._frame.push([ball1, ball2]);
       this.playerScore();
+
       this.frameScore.push(this.score);
-      // this.frameScore.shift();
-      this._tally = this.frameScore.slice(-1)[0];
-      console.log(this._tally);
+      // this.frameScore.shift(this.score);
+
+      // console.log(this._tally);
       // this._frame.push([ball1, ball2]);
   };
 
@@ -45,6 +46,15 @@ function Game() {
     this._currentScore = this._currentGo.reduce((a,b) => a + b, 0);
   };
 
+  Game.prototype.accumulator = function() {
+    if (this.frameScore.slice(-1)[0] !=  this.frameScore.NaN) {
+    this._tally = this.frameScore.slice(-1)[0];
+    this.score += this._tally;
+  } else {
+      this.score;
+  }
+  };
+
   Game.prototype.strike = function() {
     this.currentScore();
         if (this._currentGo[0] == 10){
@@ -54,6 +64,7 @@ function Game() {
         } else {
           this.score = this.BONUS + this._currentScore;
         };
+        this.accumulator();
           this._strike = false;
           this._bonusAward = false;
       };
@@ -68,12 +79,14 @@ function Game() {
            } else {
              this.score = this.BONUS + this._currentGo[0];
            };
+           this.accumulator();
             this._spare = false
            this._bonusAward = false;
          };
 
   Game.prototype.open = function() {
     this.score = this._currentScore;
+    this.accumulator();
     this._strike = false;
     this._spare = false;
   };

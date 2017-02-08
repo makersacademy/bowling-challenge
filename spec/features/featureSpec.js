@@ -57,4 +57,25 @@ describe('Feature Test:', function() {
             expect(game.showScore()).toEqual(20);
         });
     });
+    
+    describe("After a spare", function() {
+        
+        var number = 0.5;
+        
+        beforeEach(function() {
+            spyOn(Math, 'random').and.callFake(function() {
+                return number;
+            });
+            game.throwBall();
+            number = 1;
+            game.throwBall();
+        });
+        
+        it("award correct bonus points", function() {
+            number = 0.3;
+            game.throwBall();
+            game.throwBall();
+            expect(game.showScore()).toEqual(18)
+        });
+    });
 });

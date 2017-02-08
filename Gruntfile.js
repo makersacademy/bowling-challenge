@@ -1,0 +1,1 @@
+module.exports=function(grunt){grunt.initConfig({jasmine:{src:'src/**/*.js',options:{specs:'spec/**/*.js',keepRunner:false,vendor:['http://code.jquery.com/jquery-2.1.3.min.js','http://raw.githubusercontent.com/velesin/jasmine-jquery/master/lib/jasmine-jquery.js']}}});grunt.loadNpmTasks('grunt-contrib-jasmine');grunt.registerTask('default',['jasmine']);};

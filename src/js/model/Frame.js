@@ -8,7 +8,7 @@ Frame.prototype.getFrame = function() {
 };
 
 Frame.prototype.addRoll = function(roll) {
-  this.isWrong(roll)
+  // this.isWrong(roll)
   this._frame.push(roll);
 };
 
@@ -34,14 +34,14 @@ Frame.prototype.isSpare = function() {
   }
 };
 
-Frame.prototype.isWrong = function(roll) {
-  if (typeof this._frame[0] !== 'undefined') {
-    if (this._frame[0] + roll > 10) {
-      throw Error('Out of range: maximum roll total for a frame is 10');
-    }
-  } else {
-    if (roll > 10) {
-      throw Error('Out of range: maximum roll is 10');
-    }
-  }
-};
+// Frame.prototype.isWrong = function(roll) {
+//   if (typeof this._frame[0] !== 'undefined') {
+//     if (this._frame[0] + roll > 10) {
+//       throw Error('Out of range: maximum roll total for a frame is 10');
+//     }
+//   } else {
+//     if (roll > 10) {
+//       throw Error('Out of range: maximum roll is 10');
+//     }
+//   }
+// };

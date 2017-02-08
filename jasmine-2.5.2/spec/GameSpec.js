@@ -20,26 +20,52 @@ describe("Game", function() {
   it('knows when end of frame after second roll', function() {
     spyOn(game, 'getRoll').and.returnValue(2);
     expect(game.isEndOfFrame()).toEqual(true);
-  })
+  });
   it('knows when end of frame if no pins are standing', function() {
     spyOn(game, 'getPins').and.returnValue(0);
     expect(game.isEndOfFrame()).toEqual(true);
   });
-  it('increments roll when not end of frame', function() {
+  it('sets roll to 2 when not end of frame', function() {
     spyOn(game, 'isEndOfFrame').and.returnValue(false);
     game.updateRoll();
     expect(game.getRoll()).toEqual(2);
   });
-  it('decrements roll when it is end of frame', function() {
+  it('sets roll to 1 when it is end of frame', function() {
     spyOn(game, 'isEndOfFrame').and.returnValue(true);
     game.updateRoll();
     expect(game.getRoll()).toEqual(1);
+  });
+  it('increments frame if end of frame', function() {
+    spyOn(game, 'isEndOfFrame').and.returnValue(true);
+    game.updateFrame();
+    expect(game.getFrame()).toEqual(2);
+  });
+  it('doesn\'t increments frame if not end of frame', function() {
+    spyOn(game, 'isEndOfFrame').and.returnValue(false);
+    game.updateFrame();
+    expect(game.getFrame()).toEqual(1);
+  });
+  it('puts pins up again if end of frame', function() {
+    spyOn(game, 'isEndOfFrame').and.returnValue(true);
+    game.updatePins();
+    expect(game.getPins()).toEqual(10);
+  });
+  it('ends game after 10 frames if no strikes or bonus', function() {
+    spyOn(game, 'getFrame').and.returnValue(11);
+    spyOn(game, 'getExtraRolls').and.returnValue(0);
+    expect(game.isOver()).toEqual(true);
+  });
+  it('runs complete game', function() {
+    spyOn(game, 'knockDownPins').and.returnValue(4);
+    for (var i = 0; i < 20; i++) {
+      game.rollTheBall();
+    }
+    expect(game.isOver()).toEqual(true);
   })
 });
-// things it does:
-// increments frame unless frame 10
-// puts all pins up again
+
 // runs a game start to finish ignoring scoring and bonuses
+// awaits user input to knockDownPinsn to do each roll
 
 
 // old stuff from procedural version

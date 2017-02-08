@@ -1,9 +1,14 @@
 'use strict';
 
+// fix game logic
+// currently depends on order of updating pins, frame and roll
+// will not hold good as is if strike or spare probably
+// ==> investigate
 function Game() {
   this._frame = 1; // Game
   this._roll = 1; // Game
   this._pins = 10; // Game
+  this._extraRolls = 0; // to do replace test dummy with StrOrSpr call
 };
 Game.prototype.getFrame = function() {return this._frame;};
 Game.prototype.getRoll = function() {return this._roll;};
@@ -21,6 +26,39 @@ Game.prototype.isEndOfFrame = function() {
 Game.prototype.updateRoll = function() {
   this.isEndOfFrame() ? this._roll = 1 : this._roll = 2;
 };
+Game.prototype.updateFrame = function() {
+  if (this.isEndOfFrame()) { this._frame++; };
+};
+Game.prototype.updatePins = function() {
+  if (this.isEndOfFrame()) { this._pins = 10; };
+};
+Game.prototype.getExtraRolls = function() {
+  return this._extraRolls; // to do testing dummy replace via StrOrSpr
+};
+// to do note this depends when ask
+// also is over when frame = 10 and roll = 2
+// if ask at end of updatePFR will be over if frame == 11
+Game.prototype.isOver = function() {
+  return (this.getFrame() == 11 && this.getExtraRolls() == 0);
+};
+Game.prototype.makeReport = function() {
+  return "frame: " + this.getFrame() + "  roll: " +
+  this.getRoll() + "  pins: " + this.getPins();
+}
+// must be aske in this order
+Game.prototype.updatePFR = function() {
+  this.updatePins(); //
+  this.updateFrame(); // ++ if no pins or roll == 2
+  this.updateRoll(); // => 1 if end of frame frame++
+}
+Game.prototype.rollTheBall = function() {
+  if (!this.isOver()) {
+    this.knockDownPins(4); // to do testing dummy replace with user input and arg
+    this.makeReport(); // to do testing function replace later
+    this.updatePFR(); // insert score and StrOrSpr calls too
+  };
+};
+
 //
 // Game.prototype.addRow = function(hits) {
 //   this.updateBonus();

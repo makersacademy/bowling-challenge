@@ -25,31 +25,6 @@ describe("Game", function() {
     spyOn(game, 'getPins').and.returnValue(0);
     expect(game.isEndOfFrame()).toEqual(true);
   });
-  it('sets roll to 2 when not end of frame', function() {
-    spyOn(game, 'isEndOfFrame').and.returnValue(false);
-    game.updateRoll();
-    expect(game.getRoll()).toEqual(2);
-  });
-  it('sets roll to 1 when it is end of frame', function() {
-    spyOn(game, 'isEndOfFrame').and.returnValue(true);
-    game.updateRoll();
-    expect(game.getRoll()).toEqual(1);
-  });
-  it('increments frame if end of frame', function() {
-    spyOn(game, 'isEndOfFrame').and.returnValue(true);
-    game.updateFrame();
-    expect(game.getFrame()).toEqual(2);
-  });
-  it('doesn\'t increments frame if not end of frame', function() {
-    spyOn(game, 'isEndOfFrame').and.returnValue(false);
-    game.updateFrame();
-    expect(game.getFrame()).toEqual(1);
-  });
-  it('puts pins up again if end of frame', function() {
-    spyOn(game, 'isEndOfFrame').and.returnValue(true);
-    game.updatePins();
-    expect(game.getPins()).toEqual(10);
-  });
   it('ends game after 10 frames if no strikes or bonus', function() {
     spyOn(game, 'getFrame').and.returnValue(11);
     spyOn(game, 'getExtraRolls').and.returnValue(0);

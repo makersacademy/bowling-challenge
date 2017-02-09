@@ -17,7 +17,7 @@ describe('Game', function() {
   });
 
       it('player gets a strike', function() {
-      game.bowl(10,0);
+      game.bowl(10);
       expect(game._strike).toBe(true);
       });
 
@@ -26,7 +26,8 @@ describe('Game', function() {
   });
 
     it('player gets a spare', function() {
-      game.bowl(8,2);
+      game.bowl(8);
+      game.bowl(2);
       expect(game._spare).toBe(true);
     });
 

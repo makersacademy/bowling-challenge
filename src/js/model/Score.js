@@ -58,10 +58,14 @@ Score.prototype.scoreSpare = function(roll, current_frame, last_frame) {
 
 Score.prototype.scoreStrike = function(roll, game_length) {
   if (this.getRolls().length === 1) { return 'undefined'; }
+  if (game_length < 11 && this.rollNumber() > 2 && this.rollMinusTwo() === 10 && this.rollMinusOne() === 10) {
+    this._scoreboard[this._scoreboard.length - 3] += roll;;
+  }
+  else if (game_length < 11 && this.rollNumber() > 2 && this.rollMinusTwo() === 10) {
+    this._scoreboard[this._scoreboard.length - 2] += roll;;
+  }
   if (game_length < 10 && this.rollNumber() > 1 && this.rollMinusOne() === 10) {
     this._scoreboard[this._scoreboard.length - 2] += roll;
   }
-  if (game_length < 11 && this.rollNumber() > 2 && this.rollMinusTwo() === 10) {
-    this._scoreboard[this._scoreboard.length - 2] += roll;;
-  }
+
 };

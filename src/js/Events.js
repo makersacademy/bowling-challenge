@@ -2,7 +2,12 @@ $( document ).ready(function() {
   var game = new Game();
 
   $('table').on('change','select', function() {
-    game.roll(parseInt(this.value));
+    try {
+      game.roll(parseInt(this.value));
+    }
+    catch(err) {
+      alert(err);
+    }
     $("#round-1").text(game._score._scoreboard[0]);
     $("#round-2").text(game._score._scoreboard[1]);
     $("#round-3").text(game._score._scoreboard[2]);

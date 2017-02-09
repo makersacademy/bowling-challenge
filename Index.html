@@ -6,28 +6,93 @@
   <script src='src/Game.js'></script>
   <script src='src/Roll.js'></script>
   <script src='src/Scorecard.js'></script>
+  <link href='//fonts.googleapis.com/css?family=Amatic|Anton SC' rel='stylesheet'>
+  <link href='//fonts.googleapis.com/css?family=Anton' rel='stylesheet'>
   <link type='text/css' rel='stylesheet' href='css/bowling.css'/>
 </head>
 <body>
-  <h1>Test</h1>
-  <table class='scoreboard-table' border="1">
-    <tr>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-      <th>6</th>
-      <th>7</th>
-      <th>8</th>
-      <th>9</th>
-      <th>10</th>
-    </tr>
-    <tr>
-      <td>1</td>
-    </tr>
 
+  <div class='header'>
+    <h1>Kingpinners Ultimate Bowling Challenge Game</h1>
+  </div>
+
+  <div class='divider'>
+  </div>
+
+  <div class='pins'>
+
+    <div class='row-1'>
+      <button class='pin' type="button"></button>
+      <button class='pin' type="button"></button>
+      <button class='pin' type="button"></button>
+      <button class='pin' type="button"></button>
+    </div>
+    <div class='row-2'>
+      <button class='pin' type="button"></button>
+      <button class='pin' type="button"></button>
+      <button class='pin' type="button"></button>
+    </div>
+    <div class='row-3'>
+      <button class='pin' type="button"></button>
+      <button class='pin' type="button"></button>
+    </div>
+    <div class='row-4'>
+      <button class='pin' type="button"></button>
+    </div>
+
+    <button type=button class='ball'>Bowl!</button>
+
+</div>
+
+
+
+  <div class='scoreboard'>
+  <table class='scoreboard-table' >
+      <thead>
+        <tr>
+          <th class='scoreboard_title' colspan='10'>Bowling Score Sheet</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr class='frame'>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+        <th>10</th>
+      </tr>
+      <tr class='roll'>
+        <td>1 | 2</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class='total'>
+        <td>3</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
     </table>
+  </div>
 
 </body>
 </html

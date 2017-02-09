@@ -13,36 +13,29 @@ Game.prototype.createNewFrame = function () {
   return frame;
 };
 
-Game.prototype._playNewFrame = function(){
-  newFrame.playFrame();
-  this._frameResults.push(newFrame._results)
+Game.prototype._getFrameRegularResult = function(frame){
+  this._frameScore.push(frame.getRegularScore());
 };
 
-Game.prototype._getNewFrameRegularResult = function(newFrame){
-  this._frameScore.push(newFrame.getRegularScore());
-};
-
-Game.prototype._getNewFrameBonusResult = function(newFrame){
-  var bonusScore;
+Game.prototype._getFrameBonusResult = function(frame){
+  var bonusScore = 0
   if (this._frameScore.length > 1 && this._lastStrikeValue === "yes"){
-    bonusScore = newFrame.getStrikeBonusScore();
+    bonusScore = frame.getStrikeBonusScore();
     this._frameScore[this._frameScore.length-2] += bonusScore;
   } else if (this._frameScore.length > 1 && this._lastSpareValue === "yes"){
-    bonusScore = newFrame.getSpareBonusScore();
+    bonusScore = frame.getSpareBonusScore();
     this._frameScore[this._frameScore.length-2] += bonusScore;
-  } else {
-    bonusScore = 0
   }
-  return bonusScore;
 };
 
-Game.prototype._updateLastGameResults = function (newFrame){
-  this._frameScore[this._frameScore.length-1] += newFrame._results[newFrame._results.length-1]
+Game.prototype._updateLastGameResults = function (frame){
+
+  this._frameScore[this._frameScore.length-1] += frame._results[frame._results.length-1]
 }
 
-Game.prototype._getStrikeAndSpareStatus = function (newFrame) {
-  this._lastStrikeValue = newFrame._strike;
-  this._lastSpareValue = newFrame._spare;
+Game.prototype._getStrikeAndSpareStatus = function (frame) {
+  this._lastStrikeValue = frame._strike;
+  this._lastSpareValue = frame._spare;
 };
 
 Game.prototype._finalScore = function(frameResults){
@@ -51,24 +44,4 @@ Game.prototype._finalScore = function(frameResults){
     sum += score;
   });
   return sum;
-};
-
-Game.prototype.playEntireGame = function () {
-  for(var i=1;i<=10;i++){
-    var newFrame = this.createNewFrame();
-    this._playNewFrame(newFrame);
-    if (i===newFrame.INITIALNUMBERPINS && newFrame.getStrikeStatus()==="yes"){
-      var additionaFrame = this.createNewFrame();
-      additionaFrame.lastGameAdditionalsWhenStrike();
-      newFrame._results = newFrame._results.concat(additionaFrame._results);
-    }
-    if (i===newFrame.INITIALNUMBERPINS && newFrame.getSpareStatus()==="yes"){
-      var additionaFrame = this.createNewFrame();
-      additionaFrame.lastGameAdditionalsWhenSpare();
-      newFrame._results = newFrame._results.concat(additionaFrame._results);
-    }
-    this._getNewFrameRegularResult(newFrame);
-    this._getNewFrameBonusResult(newFrame);
-    this._getStrikeAndSpareStatus(newFrame);
-  }
 };

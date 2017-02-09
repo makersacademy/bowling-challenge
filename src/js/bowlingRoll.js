@@ -1,10 +1,8 @@
-function Roll(numberPins){
+function Roll(standingPins){
   'use strict'
-  this._result = 0
-  this._numberPins = numberPins
+  this._standingPins = standingPins
 }
 
 Roll.prototype.play = function(){
-  this._result = Math.floor((Math.random() * (this._numberPins + 1)));
-  return this._result
+  return Math.floor((Math.random() * (this._standingPins + 1)));
 };

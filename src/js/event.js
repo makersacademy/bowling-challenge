@@ -25,18 +25,18 @@ $(document).ready(function() {
   }
 
   function printResultsBeforeLastGame(){
-      $("#result-frame-" + (game._frameNumber-1)).html(game._frameScore[game._frameNumber-2]);
-      $("#total").html(game._finalScore(game._frameScore));
+    $("#result-frame-" + (game._frameNumber-1)).html(game._frameScore[game._frameNumber-2]);
+    $("#total").html(game._finalScore(game._frameScore));
   }
 
-    function printResultsLastGame(){
-      $("#result-frame-" + (game._frameNumber)).html(game._frameScore[game._frameScore.length-1]);
-      $("#total").html(game._finalScore(game._frameScore));
-    }
+  function printResultsLastGame(){
+    $("#result-frame-" + (game._frameNumber)).html(game._frameScore[game._frameScore.length-1]);
+    $("#total").html(game._finalScore(game._frameScore));
+  }
 
   function calculateResult(){
-    game._getNewFrameRegularResult(frame);
-    game._getNewFrameBonusResult(frame);
+    game._getFrameRegularResult(frame);
+    game._getFrameBonusResult(frame);
     game._getStrikeAndSpareStatus(frame);
   }
 
@@ -56,7 +56,7 @@ $(document).ready(function() {
 
   $("#ball-1").click(function(){
     $(this).hide();
-    Roll(1, frame.INITIALNUMBERPINS)
+    Roll(1, frame.INITIALSTANDINGPINS)
     frame.checkStrike();
 
     if (game._frameNumber<10){
@@ -68,13 +68,12 @@ $(document).ready(function() {
       } else {
         $("#ball-2").show();
       }
-
     } else if(game._frameNumber===10){
       if(frame.getStrikeStatus()==="yes"){
         $("#ball-add1").show()
         $("#10frame_add1").show();
         calculateResult();
-        printResultsBeforeLastGame();
+        printResults();
       } else {
         $("#ball-2").show();
       }
@@ -85,7 +84,7 @@ $(document).ready(function() {
 
   $("#ball-2").click(function(){
     $(this).hide();
-    Roll(2, frame.INITIALNUMBERPINS-frame._results[0]);
+    Roll(2, frame.INITIALSTANDINGPINS-frame._results[0]);
     frame.checkSpare();
     if (game._frameNumber<10){
       calculateResult();
@@ -96,7 +95,7 @@ $(document).ready(function() {
       $("#10frame_add1").show();
       $("#ball-add1").show();
       calculateResult();
-      printResultsBeforeLastGame();
+      printResultsBeforeLastGame();  // review this line. is it possible to delete this code
 
     } else {
       calculateResult();
@@ -105,7 +104,7 @@ $(document).ready(function() {
   });
 
   $("#ball-add1").click(function(){
-    additionalRoll(1, frame.INITIALNUMBERPINS);
+    additionalRoll(1, frame.INITIALSTANDINGPINS);
     $(this).hide();
     if (frame.getStrikeStatus() === 'yes'){
       game._updateLastGameResults(frame);
@@ -120,9 +119,9 @@ $(document).ready(function() {
   $("#ball-add2").click(function(){
     $(this).hide();
     if (frame._results[frame._results.length-1]===10){
-      leftPins = frame.INITIALNUMBERPINS
+      leftPins = frame.INITIALSTANDINGPINS
     } else {
-      leftPins = frame.INITIALNUMBERPINS - frame._results[frame._results.length-1]
+      leftPins = frame.INITIALSTANDINGPINS - frame._results[frame._results.length-1]
     }
     additionalRoll(2, leftPins);
     game._updateLastGameResults(frame);

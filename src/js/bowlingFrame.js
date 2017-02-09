@@ -1,38 +1,20 @@
 function Frame(){
   'use strict'
-  this.INITIALNUMBERPINS = 10
-  this._results = [];
+  this.INITIALSTANDINGPINS = 10
   this._strike = "no";
   this._spare = "no";
   this._regularScore = 0;
   this._bonusScore = 0;
+  this._results = [];
 }
 
-Frame.prototype.roll = function (numberOfPins) {
-  var roll = new Roll(numberOfPins)
+Frame.prototype.roll = function (standingPins) {
+  var roll = new Roll(standingPins)
   return roll.play()
-};
-
-Frame.prototype.isAnotherRoll = function (result) {
-  var anotherRoll = result === this.INITIALNUMBERPINS ? false : true;
-  return anotherRoll
 };
 
 Frame.prototype.updateResult = function(result){
   this._results.push(result);
-};
-
-Frame.prototype.playFrame = function () {
-  var firstRoll = this.roll(this.INITIALNUMBERPINS);
-  this.updateResult(firstRoll);
-  this.checkStrike();
-  if(this.isAnotherRoll(firstRoll) === true){
-    var leftPins = this.INITIALNUMBERPINS - firstRoll;
-    var secondRoll = this.roll(leftPins);
-    this.updateResult(secondRoll);
-    this.checkSpare();
-  }
-  return this._results
 };
 
 Frame.prototype.getRegularScore = function(){
@@ -42,10 +24,6 @@ Frame.prototype.getRegularScore = function(){
   });
   this._regularScore = sum
   return this._regularScore
-};
-
-Frame.prototype.getBonusScore = function(){
-  return this._bonusScore;
 };
 
 Frame.prototype.getStrikeBonusScore = function(){
@@ -58,41 +36,24 @@ Frame.prototype.getSpareBonusScore = function(){
   return this._bonusScore
 };
 
-Frame.prototype.getStrikeStatus = function(){
-  return this._strike;
-};
-
 Frame.prototype.checkStrike = function(){
-  if (this._results[0] === this.INITIALNUMBERPINS){
+  if (this._results[0] === this.INITIALSTANDINGPINS){
     this._strike = "yes";
   }
 };
 
-Frame.prototype.getSpareStatus = function(){
-  return this._spare;
-};
-
 Frame.prototype.checkSpare = function(){
   this.getRegularScore();
-  if (this._regularScore === this.INITIALNUMBERPINS && this._results.length === 2){
+  if (this._regularScore === this.INITIALSTANDINGPINS &&
+                                        this._results.length === 2){
     this._spare = "yes";
   }
 };
 
-Frame.prototype.lastGameAdditionalWhenStrike = function(){
-  var firstRoll = this.roll(this.INITIALNUMBERPINS);
-  this.updateResult(firstRoll);
-  if(firstRoll < this.INITIALNUMBERPINS){
-    var leftPins = this.INITIALNUMBERPINS - firstRoll;
-    var secondRoll = this.roll(leftPins);
-    this.updateResult(secondRoll);
-  } else {
-    var secondRoll = this.roll(this.INITIALNUMBERPINS);
-    this.updateResult(secondRoll);
-  }
+Frame.prototype.getStrikeStatus = function(){
+  return this._strike;
 };
 
-Frame.prototype.lastGameAdditionalsWhenSpare = function(){
-  var firstRoll = this.roll(this.INITIALNUMBERPINS);
-  this.updateResult(firstRoll);
+Frame.prototype.getSpareStatus = function(){
+  return this._spare;
 };

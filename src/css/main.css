@@ -5,7 +5,7 @@ html, body {
 
 #main-wrapper {
   height: 100%;
-  background: url(../bowling_alley.png) no-repeat center center fixed;
+  background: url(../bowling_alley-min.png) no-repeat center center fixed;
   background-size: cover;
 }
 

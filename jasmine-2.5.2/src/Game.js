@@ -51,6 +51,19 @@ Game.prototype.rollTheBall = function() {
     this.knockDownPins(4); // replace with user input
     this.makeReport(); // strOrSpr & Scoring methods go here
     this.updateFrameRollAndPins();
+
+    // like this:
+    // while !game.isOver()
+    //     game.knockDownPins()
+    //     game.assess():
+    //         bonus.getNext()
+    //         score.updateScore()
+    //         bonus.assessFutureBonuses()
+    //     output row to screen at this point
+    //     game.resetForNextRoll OR game.reset()
+    // end while
+    //   frame row  \s  hits strike strike spare  row-total \s running-total
+    // eg: 3    2        4    [+4]  strike [+4]      12           34
   };
 };
 

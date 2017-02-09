@@ -13,7 +13,7 @@ Game.prototype.createNewFrame = function () {
   return frame;
 };
 
-Game.prototype._playNewFrame = function(newFrame){
+Game.prototype._playNewFrame = function(){
   newFrame.playFrame();
   this._frameResults.push(newFrame._results)
 };
@@ -36,9 +36,21 @@ Game.prototype._getNewFrameBonusResult = function(newFrame){
   return bonusScore;
 };
 
+Game.prototype._updateLastGameResults = function (newFrame){
+  this._frameScore[this._frameScore.length-1] += newFrame._results[newFrame._results.length-1]
+}
+
 Game.prototype._getStrikeAndSpareStatus = function (newFrame) {
   this._lastStrikeValue = newFrame._strike;
   this._lastSpareValue = newFrame._spare;
+};
+
+Game.prototype._finalScore = function(frameResults){
+  var sum = 0;
+  frameResults.forEach(function(score){
+    sum += score;
+  });
+  return sum;
 };
 
 Game.prototype.playEntireGame = function () {

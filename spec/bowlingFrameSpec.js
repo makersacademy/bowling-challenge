@@ -67,7 +67,7 @@ describe('Frame', function(){
     it('does not set to "yes" strike neither spare if in the two frame rolls the score is under 10',function(){
       for(var i=1;i<=2;i++){
         frame.updateResult(4);
-      };
+      }
       var frameScore = frame.getRegularScore();
       frame.checkSpare(frameScore);
       expect(frame.getStrikeStatus()).toBe("no");
@@ -83,7 +83,7 @@ describe('Frame', function(){
     it('sets spare to "yes", if in the 1st and 2nd rolls all pins are knocked down',function(){
       for(var i=1;i<=2;i++){
         frame.updateResult(5);
-      };
+      }
       var frameScore = frame.getRegularScore()
       frame.checkSpare(frameScore);
       expect(frame.getSpareStatus()).toBe("yes");

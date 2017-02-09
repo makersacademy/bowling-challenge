@@ -79,7 +79,7 @@ Frame.prototype.checkSpare = function(){
   }
 };
 
-Frame.prototype.lastGameAdditionalsWhenStrike = function(){
+Frame.prototype.lastGameAdditionalWhenStrike = function(){
   var firstRoll = this.roll(this.INITIALNUMBERPINS);
   this.updateResult(firstRoll);
   if(firstRoll < this.INITIALNUMBERPINS){

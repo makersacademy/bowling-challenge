@@ -1,0 +1,49 @@
+#top {
+  margin-top: 25px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 25px;
+  background-color: #ff8c1a;
+}
+
+#center {
+  background-color: #ff8c1a;
+  height: 450px;
+}
+
+#down {
+  background-color: black;
+  height: 50px;
+  color: white
+}
+
+#total-row {
+  font-size: 30px;
+  color: white;
+}
+
+#pins-knocked-down {
+  margin-left: 20px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.btn.btn-primary {
+    color: white;
+    background-color: black;
+    border-color: black;
+}
+
+.btn.btn-primary:hover {
+    color: white;
+    background-color: #804000;
+    border-color: #804000;
+}
+
+.table-responsive {
+  text-align: center;
+}
+
+th {
+  text-align: center;
+}

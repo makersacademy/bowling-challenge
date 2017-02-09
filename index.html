@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+  <head>
+    <title>bowling</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- JavaScript -->
+    <script src="src/js/bowlingGame.js"></script>
+    <script src="src/js/bowlingFrame.js"></script>
+    <script src="src/js/bowlingRoll.js"></script>
+    <link href='http://assets.makersacademy.com/images/favicons/favicon-16x16.png' rel='icon' sizes='16x16' type='image/png'>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <!-- JQuery -->
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="src/js/event.js"></script>
+  </head>
+
+  <body>
+   <div id="center" class="container" align="center">
+     <button id="play-new-game" type="button" class="btn btn-primary btn-lg">Play New Game</button>
+     <button id="ball-1" type="button" class="btn btn-primary btn-lg">Ball 1!</button>
+     <button id="ball-2" type="button" class="btn btn-primary btn-lg">Ball 2!</button>
+     <button id="ball-add1" type="button" class="btn btn-primary btn-lg">Additional Ball 1!</button>
+     <button id="ball-add2" type="button" class="btn btn-primary btn-lg">Additional Ball 2!</button>
+     <!-- <p id="pins-knocked-down"></p> -->
+     <div class="table-responsive">
+     <table id="table" class="table">
+       <thead>
+         <tr>
+           <th></th>
+           <th>Frame<br>1</th>
+           <th>Frame<br>2</th>
+           <th>Frame<br>3</th>
+           <th>Frame<br>4</th>
+           <th>Frame<br>5</th>
+           <th>Frame<br>6</th>
+           <th>Frame<br>7</th>
+           <th>Frame<br>8</th>
+           <th>Frame<br>9</th>
+           <th>Frame<br>10</th>
+           <th>Total</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <th scope="row">Ball 1</th>
+           <td id="ball1-Frame1"></td>
+           <td id="ball1-Frame2"></td>
+           <td id="ball1-Frame3"></td>
+           <td id="ball1-Frame4"></td>
+           <td id="ball1-Frame5"></td>
+           <td id="ball1-Frame6"></td>
+           <td id="ball1-Frame7"></td>
+           <td id="ball1-Frame8"></td>
+           <td id="ball1-Frame9"></td>
+           <td id="ball1-Frame10"></td>
+           <td id=""</td>
+         </tr>
+         <tr>
+           <th scope="row">Ball 2</th>
+           <td id="ball2-Frame1"></td>
+           <td id="ball2-Frame2"></td>
+           <td id="ball2-Frame3"></td>
+           <td id="ball2-Frame4"></td>
+           <td id="ball2-Frame5"></td>
+           <td id="ball2-Frame6"></td>
+           <td id="ball2-Frame7"></td>
+           <td id="ball2-Frame8"></td>
+           <td id="ball2-Frame9"></td>
+           <td id="ball2-Frame10"></td>
+           <td id=""></td>
+         </tr>
+         <tr id="10frame_add1">
+           <th scope="row">10th Frame</th>
+           <td ></td>
+           <td ></td>
+           <td ></td>
+           <td ></td>
+           <td ></td>
+           <td ></td>
+           <td ></td>
+           <td ></td>
+           <td >1st ball</td>
+           <td id="add1-lastframe"></td>
+           <td id=""></td>
+         </tr>
+         <tr id="10frame_add2">
+           <th scope="row">10th Frame</th>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td>1st ball</td>
+           <td id="add2-lastframe"></td>
+           <td id=""></td>
+         </tr>
+         <tr id="total-row">
+           <th scope="row">Total</th>
+           <td id="result-frame-1"></td>
+           <td id="result-frame-2"></td>
+           <td id="result-frame-3"></td>
+           <td id="result-frame-4"></td>
+           <td id="result-frame-5"></td>
+           <td id="result-frame-6"></td>
+           <td id="result-frame-7"></td>
+           <td id="result-frame-8"></td>
+           <td id="result-frame-9"></td>
+           <td id="result-frame-10"></td>
+           <td id="total"></td>
+         </tr>
+       </tbody>
+     </table>
+     </div>
+   </div>
+
+     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+</html>

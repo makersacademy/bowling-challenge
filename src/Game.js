@@ -45,12 +45,12 @@ function Game() {
         } else {
           this.score = this.BONUS + this._currentScore;
         };
-        this.accumulator();
       };
+
 
   Game.prototype.spare = function() {
               this.score = this.BONUS + this._currentGo[0];
-              this.accumulator();
+
         };
 
   Game.prototype.open = function() {
@@ -81,12 +81,20 @@ function Game() {
 
 
  Game.prototype.bonusAdjust = function() {
+     this.accumulator();
    if (this._currentGo[0] == 10 && this._strike == false) {
     this.bonusApply();
   } else if (this._currentScore == 10 && this._currentGo[0] != 10 && this._spare == false) {
      this.bonusApply();
-  }
-  else {
+  }  else if (this._strike == true || this._spare == true){
+    this.frameScore.push(this._tally += this.score);
+    console.log(this.frameScore);
+      if (this._currentScore != 10) {
+          this.bonusApply();
+          this.frameScore.push(this._tally + this._currentScore);
+          console.log(this.frameScore);
+        };
+  } else {
     this.bonusApply();
     this.frameScore.push(this._tally += this.score);
   };

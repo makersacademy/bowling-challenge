@@ -1,14 +1,10 @@
 'use strict';
 
-// fix game logic
-// currently depends on order of updating pins, frame and roll
-// will not hold good as is if strike or spare probably
-// ==> investigate
 function Game() {
-  this._frame = 1; // Game
-  this._roll = 1; // Game
-  this._pins = 10; // Game
-  this._extraRolls = 0; // to do replace test dummy with StrOrSpr call
+  this._frame = 1;
+  this._roll = 1;
+  this._pins = 10;
+  this._extraRolls = 0; // to do dummy: delegate to StrikeOrSpare.getExtraRolls()
 };
 Game.prototype.getFrame = function() {return this._frame;};
 Game.prototype.getRoll = function() {return this._roll;};
@@ -24,29 +20,37 @@ Game.prototype.isEndOfFrame = function() {
   return (this.getRoll() == 2 || this.areNoPinsLeft());
 };
 Game.prototype.getExtraRolls = function() {
-  return this._extraRolls; // to do testing dummy replace via StrOrSpr
+  return this._extraRolls; // to do testing value see above
 };
 Game.prototype.isOver = function() {
   return (this.getFrame() == 11 && this.getExtraRolls() == 0);
 };
-Game.prototype.makeReport = function() { // to do testing dummy remove later
+Game.prototype.updateFrameRollAndPins = function() {
+  if (this.isEndOfFrame()) {
+    this.setUpNewFrame()
+  } else {
+    this.setUpNewRoll();
+  };
+};
+Game.prototype.setUpNewFrame = function() {
+  this._frame++;
+  this._pins = 10;
+  this._roll = 1;
+};
+Game.prototype.setUpNewRoll = function() {
+  this._roll = 2;
+};
+
+// to do:test functions to remove later
+Game.prototype.makeReport = function() {
   return "frame: " + this.getFrame() + "  roll: " +
   this.getRoll() + "  pins: " + this.getPins();
 }
-Game.prototype.updateFrameRollAndPins = function() {
-  if (this.isEndOfFrame()) {
-    this._frame++;
-    this._pins = 10;
-    this._roll = 1;
-  } else {
-    this._roll = 2;
-  };
-};
-Game.prototype.rollTheBall = function() { // to do remove this testing function later
+Game.prototype.rollTheBall = function() {
   if (!this.isOver()) {
-    this.knockDownPins(4); // to do testing dummy replace with user input and arg
-    this.makeReport(); // to do testing function replace later
-    this.updateFrameRollAndPins(); // insert score and StrOrSpr calls too
+    this.knockDownPins(4); // replace with user input
+    this.makeReport(); // strOrSpr & Scoring methods go here
+    this.updateFrameRollAndPins();
   };
 };
 

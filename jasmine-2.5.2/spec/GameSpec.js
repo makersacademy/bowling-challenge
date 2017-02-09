@@ -1,6 +1,9 @@
 describe("Game", function() {
   var game;
 
+  // other good tests:
+  // sets up new frame, sets up new roll
+
   beforeEach(function() {
     game = new Game();
   });

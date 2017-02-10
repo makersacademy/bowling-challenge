@@ -41,6 +41,7 @@ describe("Bowling Game: ", function(){
       game.roll(5);
     }
     game.roll(4);
+
     expect(game.getTotal()).toEqual(149);
   });
 
@@ -49,7 +50,18 @@ describe("Bowling Game: ", function(){
     game.roll(3);
     game.roll(2);
     rollMulti(game,17,0);
+
     expect(game.getTotal()).toEqual(14);
+  });
+
+  it("false spare", function(){
+    game.roll(0);
+    game.roll(5);
+    game.roll(5);
+    game.roll(3);
+    rollMulti(game,16,0);
+
+    expect(game.getTotal()).toEqual(13);
   });
   describe("no strike nor spare", function(){
 
@@ -57,6 +69,7 @@ describe("Bowling Game: ", function(){
       rollMulti(game,18,0);
       game.roll(4);
       game.roll(5);
+      
       expect(game.getTotal()).toEqual(9);
     });
 

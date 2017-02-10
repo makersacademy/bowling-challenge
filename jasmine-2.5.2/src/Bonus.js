@@ -9,13 +9,16 @@ Bonus.prototype.getStrikeOrSpare = function() {return this._strikeOrSpare;};
 Bonus.prototype.getNext = function() {return this._next;};
 Bonus.prototype.getNextButOne = function() {return this._nextButOne;};
 
-Bonus.prototype.assessFutureBonuses() = function(game) {
+Bonus.prototype.getFutureBonuses = function(game) {
   if (game.areNoPinsLeft()) {
-    // (game.getRolls == 1) ? this.record("Strike") : this.record("Spare");
-    this.record("Strike");
+    if (game.getRolls == 1) {
+      this.record("Strike");
+    } else {
+      this.record("Spare");
+    };
   };
 };
-Bonus.prototype.record(type) = function() {
+Bonus.prototype.record = function(type) {
   this._strikeOrSpare = type;
   this._next = this._nextButOne + 1;
   (type == "Strike") ? this._nextButOne = 1 : this._nextButOne = 0;

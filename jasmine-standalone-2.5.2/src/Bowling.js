@@ -1,8 +1,9 @@
-function Scorecard() {
-  this.playerScore = 0;
-  this.currentFrame = [];
+var Scorecard = function Scorecard() {
   this.firstBowl = 0;
   this.secondBowl = 0;
+  this.currentFrame = new Array;
+  this.allFrames = new Array;
+  this.playerScore = 0;
 };
 
 Scorecard.prototype.bowlOne = function(number){
@@ -14,6 +15,7 @@ Scorecard.prototype.bowlTwo = function(number){
 };
 
 Scorecard.prototype.finishFrame = function(){
-  this.currentFrame.push( (this.firstBowl), (this.secondBowl) );
+  this.currentFrame = [ (this.firstBowl), (this.secondBowl) ];
   this.playerScore += (this.firstBowl + this.secondBowl);
+  this.allFrames.push(this.currentFrame);
 };

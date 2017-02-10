@@ -1,5 +1,4 @@
-describe("First bowl", function(){
-
+describe("Gameplay", function(){
 
   var scorecard;
 
@@ -24,6 +23,17 @@ describe("First bowl", function(){
     scorecard.bowlTwo(4);
     scorecard.finishFrame();
     expect(scorecard.playerScore).toEqual(7);
+  });
+
+  it("saves multiple frames", function(){
+    scorecard.bowlOne(3);
+    scorecard.bowlTwo(4);
+    scorecard.finishFrame();
+    scorecard.bowlOne(5);
+    scorecard.bowlTwo(1);
+    scorecard.finishFrame();
+    expect(scorecard.allFrames).toEqual( [ [3,4] , [5,1] ] );
+    expect(scorecard.playerScore).toEqual(13);
   });
 
 });

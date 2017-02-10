@@ -1,34 +1,26 @@
 describe("Bonus", function() {
-  var bonus, game;
+  var bonus;
 
   beforeEach(function() {
     bonus = new Bonus();
-    game = new Game();
-    // game = {areNoPinsLeft: function() {return true;},
-    //   getRolls: function() {return 1;}
-    // };
   });
   it('initialises default settings', function() {
     expect(bonus.getStrikeOrSpare()).toEqual("");
-    expect(bonus.getNext()).toEqual(0);
-    expect(bonus.getNextButOne()).toEqual(0);
+    expect(bonus.getNextMultiplier()).toEqual(0);
+    expect(bonus.getNextButOneMultiplier()).toEqual(0);
   });
   it('knows when there is a strike', function() {
-    spyOn(game, 'areNoPinsLeft').and.returnValue(true);
-    spyOn(game, 'getRolls').and.returnValue(1);
-    bonus.getFutureBonuses(game);
+    bonus.addFutureBonuses(1);
     expect(bonus.getStrikeOrSpare()).toEqual("Strike");
-    expect(bonus.getNext()).toEqual(1);
-    expect(bonus.getNextButOne()).toEqual(1);
+    expect(bonus.getNextMultiplier()).toEqual(1);
+    expect(bonus.getNextButOneMultiplier()).toEqual(1);
   });
-  // it('knows when there is a spare', function() {
-    // spyOn(game, 'areNoPinsLeft').and.returnValue(true);
-    // spyOn(game, 'getRolls').and.returnValue(2);
-  //   bonus.getFutureBonuses(game);
-  //   expect(bonus.getStrikeOrSpare()).toEqual("Spare");
-  //   expect(bonus.getNext()).toEqual(1);
-  //   expect(bonus.getNextButOne()).toEqual(0);
-  // });
+  it('knows when there is a spare', function() {
+    bonus.addFutureBonuses(2);
+    expect(bonus.getStrikeOrSpare()).toEqual("Spare");
+    expect(bonus.getNextMultiplier()).toEqual(1);
+    expect(bonus.getNextButOneMultiplier()).toEqual(0);
+  });
 });
 
   // it('sets bonus when there is one', function() {

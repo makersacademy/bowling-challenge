@@ -2,27 +2,27 @@
 
 function Bonus() {
   this._strikeOrSpare = "";
-  this._next = 0;
-  this._nextButOne = 0;
+  this._nextMultiplier = 0;
+  this._nextButOneMultiplier = 0;
 };
 Bonus.prototype.getStrikeOrSpare = function() {return this._strikeOrSpare;};
-Bonus.prototype.getNext = function() {return this._next;};
-Bonus.prototype.getNextButOne = function() {return this._nextButOne;};
+Bonus.prototype.getNextMultiplier = function() {return this._nextMultiplier;};
+Bonus.prototype.getNextButOneMultiplier = function() {return this._nextButOneMultiplier;};
 
-Bonus.prototype.getFutureBonuses = function(game) {
-  if (game.areNoPinsLeft()) {
-    if (game.getRolls == 1) {
-      this.record("Strike");
-    } else {
-      this.record("Spare");
-    };
-  };
+Bonus.prototype.addFutureBonuses = function(roll) {
+    (roll == 1) ? this.record("Strike") : this.record("Spare");
 };
 Bonus.prototype.record = function(type) {
   this._strikeOrSpare = type;
-  this._next = this._nextButOne + 1;
-  (type == "Strike") ? this._nextButOne = 1 : this._nextButOne = 0;
+  this._nextMultiplier = this._nextButOneMultiplier + 1;
+  (type == "Strike") ? this._nextButOneMultiplier = 1 : this._nextButOneMultiplier = 0;
 };
+Bonus.prototype.resetBonuses = function() {
+  this._nextMultiplier = this._nextButOneMultiplier;
+  this._nextButOneMultiplier = 0;
+}
+
+
 
 
 // Bonus.prototype.updateBonus = function() {

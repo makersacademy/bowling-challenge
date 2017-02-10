@@ -1,5 +1,9 @@
 'use strict';
 
+// to do: call game something else
+// create game class that runs it all
+// nice to do: column manager class to put bonuses nicely in cols
+
 function Game() {
   this._frame = 1;
   this._roll = 1;
@@ -51,21 +55,19 @@ Game.prototype.rollTheBall = function() {
     this.knockDownPins(4); // replace with user input
     this.makeReport(); // strOrSpr & Scoring methods go here
     this.updateFrameRollAndPins();
+  };
+};
 
     // like this:
     // while !game.isOver()
     //     game.knockDownPins()
-    //     game.assess():
-    //         bonus.getNext()
-    //         score.updateScore()
-    //         bonus.assessFutureBonuses()
+    //     score.updateScore() // inc bonus.resetBonuses
+    //     bonus.addFutureBonuses(game.getPins()) if game.areNoPinsLeft()
     //     output row to screen at this point
     //     game.resetForNextRoll OR game.reset()
     // end while
     //   frame row  \s  hits strike strike spare  row-total \s running-total
     // eg: 3    2        4    [+4]  strike [+4]      12           34
-  };
-};
 
 //
 // Game.prototype.addRow = function(hits) {

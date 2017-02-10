@@ -16,7 +16,14 @@ describe("First bowl", function(){
     scorecard.bowlOne(3);
     scorecard.bowlTwo(4);
     scorecard.finishFrame();
-    expect(scorecard.currentFrame).toEqual( [ [3, 4] ] );
+    expect(scorecard.currentFrame).toEqual( [3, 4] );
+  });
+
+  it("calculates a total for the frame", function(){
+    scorecard.bowlOne(3);
+    scorecard.bowlTwo(4);
+    scorecard.finishFrame();
+    expect(scorecard.playerScore).toEqual(7);
   });
 
 });

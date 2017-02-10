@@ -1,57 +1,77 @@
 function TenPin(){
   this.scoreHistory = [];
-  this.roundCount = 1;
   this.score = 0;
-  this.frameCount = 0;
-  this.maximum = 10;
+  this.flatArray = [];
+  this.frameArray = [];
+  this.bonus = 0;
 
-};
+}
 
 TenPin.prototype.throw = function(number){
-  this.scoreHistory.push(number);
-  this.frame(number);
-};
-
-TenPin.prototype.frame = function(number){
-  if (number === 10){
-    this.frameCount += 2;
-    this.score += number;
+  if (number === 10 && this.frameArray.length === 0){
+     this.frameArray.push(parseInt(number));
+     this.frameArray.push(0);
+     this.scoreHistory.push(this.frameArray);
+     this.frameArray = [];
   }
-  else{ this.frameCount += 1;
-        this.score += number;
+  else if (this.frameArray.length === 0 && this.scoreHistory.length < 10){
+    this.frameArray.push(parseInt(number))
   }
-  if(this.frameCount % 2 == 0 && this.frameCount != 0 ){this.roundCount ++}
-};
+  else if (this.frameArray.length === 0 && this.scoreHistory.length === 10){
+    this.frameArray.push(parseInt(number))
+    this.frameArray.push(0);
+    this.scoreHistory.push(this.frameArray);
+    this.frameArray = [];
+  }
+  else if (this.frameArray.length === 1){
+    this.frameArray.push(parseInt(number));
+    this.scoreHistory.push(this.frameArray);
+    this.frameArray = [];
+  }
+}
 
 TenPin.prototype.reset = function(){
   this.scoreHistory = [];
   this.score = 0;
-  this.roundCount = 1;
-  this.frameCount = 0;
-};
+  this.flatArray = [];
+  this.frameArray = [];
+  this.bonus = 0;
+}
 
 TenPin.prototype.count = function(){
-  var i,scoreHistoryLength,strike,bonus,bonusSum,scoreSum,add;
-  scoreHistoryLength = this.scoreHistory.length;
-  strike = 10;
-  bonus = [];
-  add = 1;
-
-  for(i=0;i<scoreHistoryLength;i += add){
-    if(this.scoreHistory[i] === strike){
-      bonus.push(this.scoreHistory[i+1]+this.scoreHistory[i+2]);
-      add = 1;
-    }
-    else if(this.scoreHistory[i] + this.scoreHistory[i+1] === strike){
-      bonus.push(this.scoreHistory[i + 2]);
-      add = 2;
+  this.total();
+  for (var i = 0; i < Math.min(this.scoreHistory.length,10); i ++){
+    if(this.scoreHistory[i][0] === 10 && this.scoreHistory[i+1][0] !== 10
+      && this.scoreHistory[i+1] !== undefined)
+    {
+      this.bonus += this.scoreHistory[i+1][0];
+      console.log(this.bonus);
+      this.bonus += this.scoreHistory[i+1][1];
+      console.log(this.bonus);
     }
 
+    else if(this.scoreHistory[i][0] === 10 && this.scoreHistory[i+1][0] === 10
+      && this.scoreHistory[i+1] !== undefined)
+    {
+      this.bonus += this.scoreHistory[i+1][0];
+      console.log(this.bonus);
+      this.bonus += this.scoreHistory[i+2][0];
+      console.log(this.bonus);
+    }
+
+    else if(this.scoreHistory[i][0] + this.scoreHistory[i][1] === 10 && this.scoreHistory[i+1][0] !== undefined)
+            {
+        this.bonus += this.scoreHistory[i+1][0];
+        console.log(this.bonus);
+      }
   }
-  var bonusSum = bonus.reduce(function(a, b) {return a + b;}, 0);
-  var scoreSum = this.scoreHistory.reduce(function(a, b) {return a + b;}, 0);
-  console.log(this.scoreHistory);
-  console.log(bonus);
+  this.score += this.bonus;
+}
 
-  return this.score = bonusSum + scoreSum;
-};
+TenPin.prototype.total = function(){
+  var scoreSum = 0;
+  this.flatArray = [].concat.apply([], this.scoreHistory);
+  for (var i = 0; i < Math.min(this.flatArray.length,20); i ++){
+    scoreSum += parseInt(this.flatArray[i]);}
+  this.score = scoreSum;
+}

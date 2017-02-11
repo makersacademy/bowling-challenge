@@ -38,13 +38,24 @@ Scorecard.prototype.spare = function(){
 };
 
 Scorecard.prototype.addBonusPoints = function(number){
-  var lastScore = (this.playerScores.length - 1);
-  this.playerScores[lastScore] += number;
+  var lastScoreIndex = (this.playerScores.length - 1);
+  this.playerScores[lastScoreIndex] += number;
 };
-
 
 Scorecard.prototype.openFrame = function(){
   this.lastFrame = [ (this.firstBowl), (this.secondBowl) ];
-  this.playerScores.push(this.firstBowl + this.secondBowl);
   this.allFrames.push(this.lastFrame);
+  this.addScore();
+};
+
+Scorecard.prototype.addScore = function(){
+  var lastScoreIndex = (this.playerScores.length - 1);
+  if(lastScoreIndex >= 0){
+    var lastScore = this.playerScores[lastScoreIndex];
+    var totalScore = (this.firstBowl + this.secondBowl + lastScore);
+    this.playerScores.push(totalScore);
+  } else {
+    var totalScore = (this.firstBowl + this.secondBowl);
+    this.playerScores.push(totalScore);
+  }
 };

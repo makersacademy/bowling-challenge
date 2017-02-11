@@ -29,7 +29,7 @@ describe("Gameplay", function(){
     scorecard.bowlOne(5);
     scorecard.bowlTwo(1);
     expect(scorecard.allFrames).toEqual( [ [3,4] , [5,1] ] );
-    expect(scorecard.playerScores).toEqual( [7, 6] );
+    expect(scorecard.playerScores).toEqual( [7, 13] );
   });
 
   it("registers a strike if all pins are knocked over", function(){
@@ -58,7 +58,7 @@ describe("Strikes and spares", function(){
     scorecard.bowlOne(5);
     scorecard.bowlTwo(2);
     expect(scorecard.allFrames).toEqual( [ ['X'], [5, 2] ] );
-    expect(scorecard.playerScores).toEqual( [17, 7] );
+    expect(scorecard.playerScores).toEqual( [17, 24] );
   });
 
   it("adds bonus points from the next roll after a spare", function(){
@@ -67,7 +67,9 @@ describe("Strikes and spares", function(){
     scorecard.bowlOne(6);
     scorecard.bowlTwo(2);
     expect(scorecard.allFrames).toEqual( [ [9, '/'], [6, 2] ] );
-    expect(scorecard.playerScores).toEqual( [16, 8] );
+    expect(scorecard.playerScores).toEqual( [16, 24] );
   })
+
+
 
 });

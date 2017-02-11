@@ -1,5 +1,5 @@
 Game = function() {
-  this._f1Score = 0;
+  this._f1Score = 0; this._f1roll1 = 0; this._f1roll2 = 0;
   this._f2Score = 0;
   this._f3Score = 0;
   this._f4Score = 0;
@@ -15,10 +15,9 @@ Game = function() {
 
 Game.prototype.frame1 = function() {
   frame1 = new Frame();
-  a = frame1.roll1();
-  b = frame1.roll2();
-  c = frame1.getFrameScore();
-  this._f1Score = c;
+  this._f1roll1 = frame1.roll1();
+  this._f1roll2 = frame1.roll2();
+  this._f1Score = frame1.getFrameScore();
   this._totalScore.push(this._f1Score);
   d = frame1.getStrikeType();
   return this._f1Score;

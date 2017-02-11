@@ -75,6 +75,10 @@ describe('Frame', function() {
       frame.roll2();
       expect(frame._roll2).toBeLessThan(10);
     });
+    it ('adds the number of pins knocked down to the frame score', function() {
+      spyOn(frame, 'roll2').and.returnValue(5);
+      expect(frame._score).toEqual(frame._score + frame._roll2);
+    });
   });
 
 

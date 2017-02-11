@@ -10,7 +10,7 @@ describe('Lane', function() {
   })
 
   it('and a score of zero.', function() {
-    expect(lane.game.gameScore).toEqual(0)
+    expect(lane.game.currentFrame.frameScore).toEqual(0)
   })
 
   it('It can pass the number of downed pins to the game.', function() {

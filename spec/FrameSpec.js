@@ -29,7 +29,7 @@ describe('Frame', function() {
   })
 
   it('from which it initialises its own (frame) score,', function() {
-    expect(frame.frameScore).toEqual(frame.game.gameScore)
+    expect(frame.frameScore).toEqual(frame.game.currentFrame.frameScore)
   })
 
   it('which it updates after each roll.', function() {

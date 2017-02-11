@@ -9,8 +9,8 @@ describe('Game', function() {
     expect(aGame.playedFrames).toEqual([])
   })
 
-  it('a game score of zero,', function() {
-    expect(aGame.gameScore).toEqual(0)
+  it('a score of zero,', function() {
+    expect(aGame.currentFrame.frameScore).toEqual(0)
   })
 
   it('and with a current frame that is empty', function() {
@@ -47,7 +47,7 @@ describe('Game', function() {
     aGame.sendToFrame(4)
     aGame.sendToFrame(5)
     expect(aGame.playedFrames.length).toEqual(1)
-    expect(aGame.gameScore).toEqual(7)
+    expect(aGame.playedFrames[0].frameScore).toEqual(7)
     expect(aGame.currentFrame.frameScore).toEqual(12)
   })
 
@@ -56,7 +56,7 @@ describe('Game', function() {
       aGame.sendToFrame(3)
     }
     expect(aGame.playedFrames.length).toEqual(10)
-    expect(aGame.gameScore).toEqual(60)
+    expect(aGame.currentFrame.frameScore).toEqual(60)
     expect(function() {aGame.newCurrentFrame()}).toThrowError('Game over & chill from newCurrentFrame!')
     expect(function() {aGame.addToScore(0)}).toThrowError('Game over & chill from addToScore!')
   })

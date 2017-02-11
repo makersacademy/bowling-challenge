@@ -4,6 +4,7 @@ function Frame(game) {
   this.rolls = [];
   this.game = game;
   this.frameScore = game.gameScore;
+  this.frameScore = this.game.playedFrames[this.game.playedFrames.length - 1] ? this.game.playedFrames[this.game.playedFrames.length - 1].frameScore : 0
   this.FRAME_LENGTH = 2;
 }
 
@@ -16,11 +17,6 @@ Frame.prototype.addRoll = function(pins) {
   if (this.rolls.length === this.FRAME_LENGTH) {
     throw new Error('Impossibru - frame overflow!')
   }
-
-  if (this.rolls.length < this.FRAME_LENGTH - 1) {
-    this._updateFrame(pins);
-  } else {
-    this._updateFrame(pins);
-    this.game.addToScore(pins)
-  }
+  this._updateFrame(pins)
+  this.game.addToScore(pins)
 }

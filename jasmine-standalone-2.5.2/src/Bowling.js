@@ -28,13 +28,13 @@ Scorecard.prototype.bowlTwo = function(number){
 Scorecard.prototype.strike = function(){
   this.lastFrame = ['X'];
   this.allFrames.push(this.lastFrame);
-  this.playerScores.push(10);
+  this.addPoints(10);
 };
 
 Scorecard.prototype.spare = function(){
   this.lastFrame = [ (this.firstBowl), '/' ];
   this.allFrames.push(this.lastFrame);
-  this.playerScores.push(10);
+  this.addPoints(10);
 };
 
 Scorecard.prototype.addBonusPoints = function(number){
@@ -48,14 +48,21 @@ Scorecard.prototype.openFrame = function(){
   this.addScore();
 };
 
-Scorecard.prototype.addScore = function(){
-  var lastScoreIndex = (this.playerScores.length - 1);
-  if(lastScoreIndex >= 0){
-    var lastScore = this.playerScores[lastScoreIndex];
-    var totalScore = (this.firstBowl + this.secondBowl + lastScore);
-    this.playerScores.push(totalScore);
+Scorecard.prototype.lastScore = function(){
+  index = this.playerScores.length - 1;
+  if(index >= 0){
+    return this.playerScores[index];
   } else {
-    var totalScore = (this.firstBowl + this.secondBowl);
-    this.playerScores.push(totalScore);
+    return 0;
   }
+};
+
+Scorecard.prototype.addScore = function(){
+  var totalScore = (this.firstBowl + this.secondBowl + this.lastScore());
+  this.playerScores.push(totalScore);
+};
+
+Scorecard.prototype.addPoints = function(number){
+  var newScore = this.lastScore() + number;
+  this.playerScores.push(newScore);
 };

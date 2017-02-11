@@ -68,8 +68,19 @@ describe("Strikes and spares", function(){
     scorecard.bowlTwo(2);
     expect(scorecard.allFrames).toEqual( [ [9, '/'], [6, 2] ] );
     expect(scorecard.playerScores).toEqual( [16, 24] );
-  })
+  });
 
-
+  it("correctly scores a spare following a strike", function(){
+    scorecard.bowlOne(10);
+    scorecard.bowlOne(7);
+    scorecard.bowlTwo(3);
+    scorecard.bowlOne(9);
+    scorecard.bowlTwo(0);
+    scorecard.bowlOne(10);
+    scorecard.bowlOne(0);
+    scorecard.bowlTwo(8);
+    expect(scorecard.allFrames).toEqual( [ ['X'], [7, '/'], [9, 0], ['X'], [0, 8] ] );
+    expect(scorecard.playerScores).toEqual( [20, 39, 48, 66, 74] );
+  });
 
 });

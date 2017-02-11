@@ -26,7 +26,14 @@ Frame.prototype.getFrameScore = function() {
 };
 
 Frame.prototype.getBonus = function() {
-
-
-
+  if ( (this._roll1 === 10) || (this._roll2 === 10) ) {
+    this._bonus = "X"; //strike
+    return this._bonus;
+  } else if (this._roll1 + this._roll2 === 10) {
+      this._bonus = "/"; //half strike
+      return this._bonus;
+  } else {
+      this._bonus = "";
+      return this._bonus; //no bonus is ""
+  }
 };

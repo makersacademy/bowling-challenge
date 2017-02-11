@@ -95,7 +95,6 @@ describe('Frame', function() {
     beforeEach(function() {
       frame = new Frame();
     });
-
     it ('returns the total score for the frame', function() {
       spyOn(frame, 'roll1').and.returnValue(1);
       spyOn(frame, 'roll2').and.returnValue(2);
@@ -103,8 +102,45 @@ describe('Frame', function() {
       x = frame.getFrameScore();
       expect(frame._score).toEqual(x);
     });
+  });
+
+  describe('#getBonus', function() {
+    var frame;
+    beforeEach(function() {
+      frame = new Frame();
+    });
+    it ('is a strike (X) if roll1 is 10', function() {
+      spyOn(frame, 'roll1').and.returnValue(10);
+      var y = "";
+      y = frame.getBonus();
+      expect(frame._bonus).toEqual(y);
+    });
+
+    it ('is a strike (X) if roll2 is 10', function() {
+      spyOn(frame, 'roll2').and.returnValue(10);
+      var a = "";
+      a = frame.getBonus();
+      expect(frame._bonus).toEqual(a);
+    });
+
+    it ('is a half-strike (/) if sum of roll1 + roll2 is 10', function() {
+      spyOn(frame, 'roll1').and.returnValue(5);
+      spyOn(frame, 'roll2').and.returnValue(5);
+      var b = "";
+      b = frame.getBonus();
+      expect(frame._bonus).toEqual(b);
+    });
+
+    it ('is nothing ("") if sum of roll1 + roll2 is less than 10', function() {
+      spyOn(frame, 'roll1').and.returnValue(5);
+      spyOn(frame, 'roll2').and.returnValue(4);
+      var c = "";
+      c = frame.getBonus();
+      expect(frame._bonus).toEqual(c);
+    });
 
   });
+
 
 
 

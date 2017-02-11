@@ -34,12 +34,20 @@ Game.prototype.addBonus = function(strikeType, thisScore, lastScore) {
 
 Game.prototype.frame1 = function() {
   frame1 = new Frame();
-  this._f1Roll1 = frame1.roll1(); //ok
-  this._f1Roll2 = frame1.roll2(); //ok
-  this._f1Score = frame1.getFrameScore(); //ok
-  this._totalScore.push(this._f1Score); //
-  this._f1StrikeType = frame1.getStrikeType();
-  return this._f1Score;
+  this._f1Roll1 = frame1.roll1();
+  if (this._f1Roll1 === 10){ //if player gets a strike on 1st roll
+    this._f1StrikeType = frame1.getStrikeType();
+    this._f1Score = frame1.getFrameScore();
+    this._totalScore.push(this._f1Score);
+    return this._f1Score;
+  }
+  else {
+    this._f1Roll2 = frame1.roll2();
+    this._f1StrikeType = frame1.getStrikeType();
+    this._f1Score = frame1.getFrameScore();
+    this._totalScore.push(this._f1Score);
+    return this._f1Score;
+  }
 };
 
 Game.prototype.frame2 = function() {
@@ -50,14 +58,6 @@ Game.prototype.frame2 = function() {
   this._f2StrikeType = frame2.getStrikeType();
   this._totalScore.push(this._f2Score);
   this._f1Score = this.addBonus(this._f2StrikeType, this._f2Score, this._f1Score);
-    // if (this._f2StrikeType === "X") {
-    //   this._f1Score = this._f1Score + 10;
-    // }
-    // else if (this._f2StrikeType === "/") {
-    //   this._f1Score = this._f1Score + this._f2Score;
-    // } else {
-    //   this._f1Score = this._f1Score; //remains the same if no bonus
-    // }
   return this._f2Score;
 };
 

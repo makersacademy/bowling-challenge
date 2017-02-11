@@ -77,6 +77,12 @@ describe('Game', function() {
       a = game.frame1();
       expect(frame1._f1Score).toEqual(a);
     });
+    it ('finishes if a strike is made on the 1st roll', function() {
+      spyOn(frame1, 'getStrikeType').and.returnValue("strike");
+      expect(frame1._roll2).toEqual(0);
+    });
+
+    
   });
 
   describe('#frame2', function() {

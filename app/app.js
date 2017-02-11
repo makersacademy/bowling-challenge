@@ -4,6 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+//Require Mongo Connection
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/bowling_test');
+//Require session storage and DB connection
+var session = require('express-session')
+var MongoDBStore = require('connect-mongodb-session')(session);
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -27,6 +34,35 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Set up Sessions
+var store = new MongoDBStore(
+    {
+      uri: 'mongodb://localhost:27017/bowling_test',
+      collection: 'mySessions'
+    });
+
+  // Catch errors
+  store.on('error', function(error) {
+    assert.ifError(error);
+    assert.ok(false);
+  });
+
+  app.use(require('express-session')({
+    secret: 'This is a secret',
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+    },
+    store: store,
+    resave: true,
+    saveUninitialized: true
+  }));
+
+//Pass Mongo db to every new request
+app.use(function(req,res,next){
+  req.db = db;
+  next();
+});
 
 app.use('/', index);
 app.use('/users', users);

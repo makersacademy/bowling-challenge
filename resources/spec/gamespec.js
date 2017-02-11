@@ -30,8 +30,34 @@ describe("Joe's Ten Pin Bowling Game", function(){
     });
     it("Knows how to add the current roll score to the current frame", function(){
       game.roll = 10;
-      game.frame = []
+      game.frame = [];
       game.addToFrame();
       expect(game.getFrame()).toEqual([10])
+    });
+    it("Knows when a frame is full", function(){
+      game.frame = [5, 4];
+      expect(game.isFrameFull()).toEqual(true);
+      game.frame = [5];
+      expect(game.isFrameFull()).toEqual(false);
+      game.frame = [10]
+      expect(game.isFrameFull()).toEqual(true);
+    });
+    it("Knows when a frame is a strike or spare", function(){
+      game.frame = [10];
+      expect(game.isStrike()).toEqual(true);
+      expect(game.isSpare()).toEqual(false);
+      game.frame = [1, 9];
+      expect(game.isSpare()).toEqual(true);
+      expect(game.isStrike()).toEqual(false);
+      game.frame = [1];
+      expect(game.isSpare()).toEqual(false);
+      expect(game.isStrike()).toEqual(false);
+      game.frame = [1,3];
+      expect(game.isSpare()).toEqual(false);
+      expect(game.isStrike()).toEqual(false);
+    });
+    it("Can return the last frame completed", function(){
+      game.scoreBoard = [[1,2], [3,5], [8,1]];
+      expect(game.lastFrameBowled()).toEqual([8,1]);
     });
   });

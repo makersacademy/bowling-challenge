@@ -71,7 +71,7 @@ describe('Game', function() {
         game = new Game();
       });
     var frame1 = jasmine.createSpy('frame')
-    it ('returns the score for the first frame', function() {
+    it ('returns the score for the 1st frame', function() {
       var _f1Score;
       var a;
       a = game.frame1();
@@ -93,7 +93,7 @@ describe('Game', function() {
 
     var frame2 = jasmine.createSpy('frame')
 
-    it ('returns the score for the second frame', function() {
+    it ('returns the score for the 2nd frame', function() {
       var _f2Score;
       var b;
       b = game.frame2();
@@ -111,31 +111,32 @@ describe('Game', function() {
 
   });
 
-  // describe('#frame3', function() {
-  //   var game;
-  //     beforeEach(function() {
-  //       game = new Game();
-  //     });
-  //
-  //   var frame3 = jasmine.createSpy('frame')
-  //
-  //   it ('returns the score for the second frame', function() {
-  //     var _f3Score;
-  //     var c;
-  //     b = game.frame3();
-  //     expect(frame3._f3Score).toEqual(c);
-  //   });
-  //   it ('player receives bonus in the previous, previous game if strike is made', function() {
-  //     spyOn(frame3, 'getStrikeType').and.returnValue("strike");
-  //     expect(game._f1Score).toEqual(game._f1Score + 10);
-  //   });
-  //
-  //   it ('player receives bonus in previous game if half-strike is made', function() {
-  //     spyOn(frame2, 'getStrikeType').and.returnValue("strike");
-  //     expect(frame2._f1Score).toEqual(frame2._f1Score + frame2._f2Score);
-  //   });
-  //
-  // });
+  describe('#frame3', function() {
+    var game;
+      beforeEach(function() {
+        game = new Game();
+      });
+
+    var frame3 = jasmine.createSpy('frame')
+
+    it ('returns the score for the 3rd frame', function() {
+      var _f3Score;
+      var c;
+      b = game.frame3();
+      expect(frame3._f3Score).toEqual(c);
+    });
+    it ('player receives bonus in the previous and the previous, previous game if strike is made', function() {
+      spyOn(frame3, 'getStrikeType').and.returnValue("strike");
+      expect(game._f2Score).toEqual(game._f2Score + 10);
+      expect(game._f1Score).toEqual(game._f1Score + 10);
+    });
+
+    it ('player receives bonus in previous game if half-strike is made', function() {
+      spyOn(frame2, 'getStrikeType').and.returnValue("strike");
+      expect(frame2._f1Score).toEqual(frame2._f1Score + frame2._f2Score);
+    });
+
+  });
 
 
 

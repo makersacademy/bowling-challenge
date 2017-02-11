@@ -22,7 +22,7 @@ describe('Game', function() {
       });
 
   it('keeps a record of the score', function() {
-    expect(game.playerScore()).not.toBeNull();
+    expect(game.score()).not.toBeNull();
   });
 
     it('player gets a spare', function() {

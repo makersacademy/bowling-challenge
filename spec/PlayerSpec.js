@@ -13,6 +13,14 @@ describe("Player", function(){
       expect(player.throwBall()).not.toEqual(NaN);
   });
 
+    it("cannot have less than 10 pins - resets on 0", function(){
+      spyOn(player, 'pinsKnocked').and.returnValue(6);
+      player.throwBall();
+      player.throwBall();
+      expect(player.pins).toEqual(10);
+    });
+
+
   describe("Random", function(){
     it("can knock over 1 pin on each throw", function(){
       spyOn(player, 'pinsKnocked').and.returnValue(1);

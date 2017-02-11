@@ -1,8 +1,6 @@
 describe("Bowling", function() {
   var bowling;
 
-  // Bowling = interface between model and page
-
   beforeEach(function() {
     bowling = new Bowling();
   });

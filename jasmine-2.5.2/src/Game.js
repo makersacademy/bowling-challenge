@@ -2,7 +2,7 @@
 
 // to do: call game something else
 // create game class that runs it all
-// nice to do: column manager class to put bonuses nicely in cols
+// nice to do: column manager class to put bonus nicely in cols
 
 function Game() {
   this._frame = 1;

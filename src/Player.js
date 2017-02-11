@@ -1,9 +1,9 @@
-function Player(){
-  this._frameScore = 0
+function Player(game = new Game()){
+  this.game = game;
 };
 
 Player.prototype.throwBall = function(){
-  this._frameScore += this.pinsKnocked();
+  this.game.updateFrameScore(this.pinsKnocked());
 };
 
 Player.prototype.pinsKnocked = function(){

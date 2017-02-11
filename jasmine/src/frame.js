@@ -20,3 +20,7 @@ Frame.prototype.roll2 = function() {
   this._score = this._score + this._roll2;
   return this._roll2;
 };
+
+Frame.prototype.getFrameScore = function() {
+
+};

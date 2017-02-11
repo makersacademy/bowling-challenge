@@ -41,6 +41,10 @@ describe('Frame', function() {
     expect(frame.roll2).toBeDefined();
   });
 
+  it("has a getFrameScore method", function(){
+    expect(frame.getFrameScore).toBeDefined();
+  });
+
   describe('#roll1', function() {
     var frame;
     beforeEach(function() {

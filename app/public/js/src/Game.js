@@ -1,11 +1,11 @@
-function Game() {
+function Game () {
   this.rolls = []
   this._currentRoll = 0;
   this._score = 0;
 }
 
 Game.prototype.roll = function(pins) {
-  return this.rolls[this._currentRoll++] = pins;
+    return this.rolls[this._currentRoll++] = pins;
 }
 
 Game.prototype.getScore = function() {
@@ -24,6 +24,18 @@ Game.prototype.getScore = function() {
       frameIndex += 2;
     }
   return this._score;
+}
+
+Game.prototype._isNotNegativeNumber = function(number) {
+  if (number < 0) {
+    throw("Invalid input: negative number.");
+  }
+}
+
+Game.prototype._isNotANumber = function(number) {
+  if (isNaN(number)) {
+    throw("Invalid input. Please enter a number.");
+  }
 }
 
 Game.prototype._isStrike = function(frameIndex) {

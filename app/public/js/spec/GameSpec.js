@@ -61,6 +61,14 @@ describe("Game", function() {
     });
   });
 
-
+  // describe("Validations", function() {
+  //   it("should not accept negative numbers as pins", function() {
+  //     expect(function() { game.roll(-5) } ).toThrow("Invalid input: negative number.");
+  //   });
+  // 
+  //   it("should not accept anything except numbers as pins", function() {
+  //     expect(function() { game.roll("the amazing string") } ).toThrow('Invalid input. Please enter a number.');
+  //   });
+  // });
 
 });

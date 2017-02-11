@@ -14,7 +14,14 @@ Game = function() {
 };
 
 Game.prototype.frame1 = function() {
-
+  frame1 = new Frame();
+  a = frame1.roll1();
+  b = frame1.roll2();
+  c = frame1.getFrameScore();
+  this._f1Score = c;
+  this._totalScore.push(this._f1Score);
+  d = frame1.getStrikeType();
+  return this._f1Score;
 };
 
 Game.prototype.frame2 = function() {

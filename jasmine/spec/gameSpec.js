@@ -18,7 +18,7 @@ describe('Game', function() {
   });
 
   it("has 1 frame", function(){
-    expect(game.frame1).toBeDefined();
+    expect(game.frame).toBeDefined();
   });
 
   it("has 10 frames", function(){
@@ -63,17 +63,14 @@ describe('Game', function() {
         game = new Game();
       });
 
-    var frame;
-    beforeEach(function() {
-      frame = new Frame();
-    });
+    var frame1 = jasmine.createSpy('frame')
 
-    // it ('x', function() {
-    //   game.
-    //
-    //
-    //   expect(typeof frame._roll2).toEqual('number');
-    // });
+    it ('returns the score for the first frame', function() {
+      var _f1Score;
+      var a;
+      a = game.frame1();
+      expect(frame1._f1Score).toEqual(a);
+    });
 
   });
 
@@ -88,4 +85,4 @@ describe('Game', function() {
 
 
 
-});
+}); //end of entire test

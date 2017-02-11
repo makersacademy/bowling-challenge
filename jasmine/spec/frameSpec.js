@@ -18,7 +18,7 @@ describe('Frame', function() {
 
   it("contains roll1 and roll2", function(){
     var _roll1;
-    var _roll2
+    var _roll2;
     expect(frame._roll1).toBeDefined();
     expect(frame._roll2).toBeDefined();
   });

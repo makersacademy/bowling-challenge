@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>BowlingApp</title>
-    <!-- Bootstrap -->
+<link href="https://fonts.googleapis.com/css?family=Handlee|Permanent+Marker" rel="stylesheet">    <!-- Bootstrap -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="./styles.css">
+
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-static-top">
+    <nav id="mynav" class="navbar navbar-inverse navbar-static-top">
         <div class="container">
             <ul class="nav nav-pills">
                 <li role="presentation" class="active"><a href="/play">Play</a>
@@ -20,18 +23,22 @@
                 <li role="presentation"><a href="/rules">Rules</a>
                 </li>
                 <li role="presentation"><a href="/about">About</a>
-                </li>
             </ul>
         </div>
     </nav>
 
+    <div id="bottom-img" class="pull-right">
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="./js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="./css/styles.css">
     <script src="./js/scripts.js"></script>
+    <script type="text/javascript" src="js/scripts.js" ></script>
+    <!-- <script src="js/Events.js"></script> -->
+    <script src="js/src/Game.js"></script>
     <%= yield %>
 </body>
 </html>

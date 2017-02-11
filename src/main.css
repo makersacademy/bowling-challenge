@@ -1,0 +1,56 @@
+body{
+	text-align: center;
+	background-color: #010101;
+	color: white;
+	font-family: futura;
+	line-height: 120%;
+	font-size: 2em;	
+}
+
+button{
+	padding: 2%;
+	margin: 5%;
+	font-size: 20px;
+	width: 20%;
+	border-radius: 2%;
+	background-color: white;
+	font-weight: bold;
+}
+
+.result_container{
+	height: 25%;
+	border: 2px solid white ;
+}
+
+.result {
+	height: 100%;
+	border: 1px solid white;
+	width: 9%;
+	float:left;
+}
+
+.firstRoll{
+	position: top;
+	height: 50%;
+	border: 1px solid white;
+	width: 50%;
+	float:left;
+	line-height: 500%;
+}
+
+.secondRoll {
+	width: 49%;
+	height: 50%;
+	float:right;
+	line-height: 500%;
+}
+
+.score{
+	width: 100%;
+	text-align: left;
+	line-height: 500%;
+}
+
+.hidden{
+	display: none;
+}

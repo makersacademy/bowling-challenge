@@ -1,34 +1,43 @@
 var Scorecard = function Scorecard() {
-  this.firstBowl;
-  this.secondBowl;
-  this.currentFrame = new Array;
+  this.firstBowl = 0;
+  this.secondBowl = 0;
+  this.lastFrame = new Array;
   this.allFrames = new Array;
-  this.playerScore = 0;
-  this.strike = false;
-  this.spare = false;
+  this.playerScores = new Array;
 };
 
 Scorecard.prototype.bowlOne = function(number){
+  if(this.lastFrame == "X"){ this.addBonusPoints(number); }
+  if(this.lastFrame[1] == "/"){ this.addBonusPoints(number); }
   if(number == 10){
-    this.strike = true;
-    this.currentFrame = ['X']
-    this.allFrames.push(this.currentFrame);
+    this.lastFrame = ['X'];
+    this.allFrames.push(this.lastFrame);
+    this.playerScores.push(10);
   } else {
     this.firstBowl = number;
-  };
+  }
 };
 
 Scorecard.prototype.bowlTwo = function(number){
+  if(this.lastFrame == "X"){ this.addBonusPoints(number); }
   this.secondBowl = number;
-  if((this.firstBowl + this.secondBowl) == 10){
-    this.currentFrame = [ (this.firstBowl), '/' ]
+  if((this.firstBowl + this.secondBowl) === 10){
+    this.lastFrame = [ (this.firstBowl), '/' ];
+    this.allFrames.push(this.lastFrame);
+    this.playerScores.push(10);
   } else {
     this.openFrame();
-  };
+  }
 };
 
+Scorecard.prototype.addBonusPoints = function(number){
+  var lastScore = (this.playerScores.length - 1);
+  this.playerScores[lastScore] += number;
+};
+
+
 Scorecard.prototype.openFrame = function(){
-  this.currentFrame = [ (this.firstBowl), (this.secondBowl) ];
-  this.playerScore += (this.firstBowl + this.secondBowl);
-  this.allFrames.push(this.currentFrame);
+  this.lastFrame = [ (this.firstBowl), (this.secondBowl) ];
+  this.playerScores.push(this.firstBowl + this.secondBowl);
+  this.allFrames.push(this.lastFrame);
 };

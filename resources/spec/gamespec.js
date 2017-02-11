@@ -52,18 +52,18 @@ describe("Joe's Ten Pin Bowling Game", function(){
       expect(game.getFrame()).toEqual([10])
     });
     it("Knows when a frame is a strike or spare", function(){
-      game.frame = [10];
-      expect(game.isStrike()).toEqual(true);
-      expect(game.isSpare()).toEqual(false);
-      game.frame = [1, 9];
-      expect(game.isSpare()).toEqual(true);
-      expect(game.isStrike()).toEqual(false);
-      game.frame = [1];
-      expect(game.isSpare()).toEqual(false);
-      expect(game.isStrike()).toEqual(false);
-      game.frame = [1,3];
-      expect(game.isSpare()).toEqual(false);
-      expect(game.isStrike()).toEqual(false);
+      var frame = [10];
+      expect(game.isStrike(frame)).toEqual(true);
+      expect(game.isSpare(frame)).toEqual(false);
+      var frame = [1, 9];
+      expect(game.isSpare(frame)).toEqual(true);
+      expect(game.isStrike(frame)).toEqual(false);
+      var frame = [1];
+      expect(game.isSpare(frame)).toEqual(false);
+      expect(game.isStrike(frame)).toEqual(false);
+      var frame = [1,3];
+      expect(game.isSpare(frame)).toEqual(false);
+      expect(game.isStrike(frame)).toEqual(false);
     });
     it("Can add a completed frame to the scoreboard", function(){
       game.frame = [7, 2];
@@ -71,12 +71,22 @@ describe("Joe's Ten Pin Bowling Game", function(){
       expect(game.scoreBoard).toEqual([[7,2]])
     });
     it("Can add the values in a frame to return a score", function(){
-      game.frame = [2,3];
-      expect(game.sumFrame()).toEqual(5);
+      var frame = [2,3];
+      expect(game.sumFrame(frame)).toEqual(5);
     });
     it("Can calculate the total score", function(){
-      game.scoreBoard = [[1,3], [2,5], [10, 10]];
-      expect(game.returnTotalScore()).toEqual(31);
+      game.scoreBoard = [[1,3], [2,5], [10]];
+      expect(game.returnTotalScore()).toEqual(21);
+    }); 
+    it("Can add bonus points if the previous frame was a strike or spare", function(){
+      game.scoreBoard = [[1,4], [10]];
+      game.frame = [7,2]
+      game.addFrameToBoard();
+      expect(game.returnTotalScore()).toEqual(33);
+      game.scoreBoard = [[1,4], [2, 8]]
+      game.frame = [3, 4]
+      game.addFrameToBoard();
+      expect(game.returnTotalScore()).toEqual(25);
     });
 
   });

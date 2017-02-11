@@ -10,20 +10,20 @@ describe("Bonus", function() {
     expect(bonus.getNextButOneMultiplier()).toEqual(0);
   });
   it('records strikes', function() {
-    bonus.addFutureBonuses(1);
+    bonus.recordStrikeOrSpare(1);
     expect(bonus.getStrikeOrSpare()).toEqual("Strike");
     expect(bonus.getNextMultiplier()).toEqual(1);
     expect(bonus.getNextButOneMultiplier()).toEqual(1);
   });
   it('records spares', function() {
-    bonus.addFutureBonuses(2);
+    bonus.recordStrikeOrSpare(2);
     expect(bonus.getStrikeOrSpare()).toEqual("Spare");
     expect(bonus.getNextMultiplier()).toEqual(1);
     expect(bonus.getNextButOneMultiplier()).toEqual(0);
   });
   it('resets used bonuses', function() {
-    bonus.addFutureBonuses(1);
-    bonus.resetBonuses();
+    bonus.recordStrikeOrSpare(1);
+    bonus.useBonuses();
     expect(bonus.getNextMultiplier()).toEqual(1);
     expect(bonus.getNextButOneMultiplier()).toEqual(0);
   });

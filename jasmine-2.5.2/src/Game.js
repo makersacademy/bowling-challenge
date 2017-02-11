@@ -9,7 +9,7 @@ Game.prototype.getFrame = function() {return this._frame;};
 Game.prototype.getRoll = function() {return this._roll;};
 Game.prototype.getPins = function() {return this._pins;};
 
-Game.prototype.knockDownPins = function(hits) {
+Game.prototype.setPins = function(hits) {
   this.getPins() > hits ? this._pins -= hits : this._pins = 0;
 };
 

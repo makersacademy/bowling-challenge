@@ -10,11 +10,11 @@ describe("Game", function() {
     expect(game.getPins()).toEqual(10);
   });
   it('records pins still standing', function() {
-    game.knockDownPins(6);
+    game.setPins(6);
     expect(game.getPins()).toEqual(4);
   });
   it('knows when no pins are left standing', function() {
-    game.knockDownPins(10);
+    game.setPins(10);
     expect(game.areNoPinsLeft()).toEqual(true);
   });
   it('knows when end of frame after second roll', function() {
@@ -31,23 +31,23 @@ describe("Game", function() {
     expect(game.isOver(1)).toEqual(false);
   });
   it('sets up new frame correctly', function() {
-    game.knockDownPins(6);
+    game.setPins(6);
     game.setUpNewFrame();
     expect(game.getFrame()).toEqual(2);
     expect(game.getRoll()).toEqual(1);
     expect(game.getPins()).toEqual(10);
   });
   it('sets up new roll correctly', function() {
-    game.knockDownPins(6);
+    game.setPins(6);
     game.setUpNewRoll();
     expect(game.getFrame()).toEqual(1);
     expect(game.getRoll()).toEqual(2);
     expect(game.getPins()).toEqual(4);
   })
   it('can run complete game', function() {
-    spyOn(game, 'knockDownPins').and.returnValue(4);
+    spyOn(game, 'setPins').and.returnValue(4);
     for (var i = 0; i < 20; i++) {
-      game.knockDownPins(4);
+      game.setPins(4);
       game.updateFrameRollAndPins();
     };
     expect(game.isOver(0)).toEqual(true);

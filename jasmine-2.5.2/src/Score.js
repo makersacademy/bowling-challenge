@@ -11,6 +11,7 @@ Score.prototype.getBonus = function() {return this._bonus;};
 Score.prototype.getRollTotal = function() {return this._rollTotal;};
 Score.prototype.getRunningTotal = function() {return this._runningTotal;};
 
+// to do: currently if hits > pins left, will not error
 Score.prototype.setHits = function(hits) {
   this._hits = hits;
 };

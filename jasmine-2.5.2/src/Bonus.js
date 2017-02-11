@@ -17,37 +17,8 @@ Bonus.prototype.record = function(type) {
   this._nextMultiplier = this._nextButOneMultiplier + 1;
   (type == "Strike") ? this._nextButOneMultiplier = 1 : this._nextButOneMultiplier = 0;
 };
+
 Bonus.prototype.resetBonuses = function() {
   this._nextMultiplier = this._nextButOneMultiplier;
   this._nextButOneMultiplier = 0;
-}
-
-
-
-
-// Bonus.prototype.updateBonus = function() {
-//   this._bonus = this.getHits() * this.getExtra();
-// }
-// Bonus.prototype.updateStrikeOrSpare = function() {
-//   if (this.getRoll() == 1) {
-//     this._strikeOrSpare = "Strike";
-//   } else {
-//     this._strikeOrSpare = "Spare";
-//   }
-// }
-// Bonus.prototype.updateExtras = function() {
-//   this.removeSpentExtras();
-//   this.addNewExtras();
-// };
-// Bonus.prototype.removeSpentExtras = function() {
-//   this._extra = this._extraNext;
-//   this._extraNext = 0;
-// }
-// Bonus.prototype.addNewExtras = function() {
-//   if (this.getStrikeOrSpare() == "Strike") {
-//     this._extra++;
-//     this._extraNext++;
-//   } else if (this.getStrikeOrSpare() == "Spare") {
-//     this._extra++;
-//   }
-// }
+};

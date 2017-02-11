@@ -2,7 +2,7 @@ $( document ).ready(function() {
   var bowling = new Bowling();
   $( '#addScore' ).click(function() {
     bowling.addRow(parseInt($('#scoreBox').val()));
-    writeValues(); // to do return focus to scorebox always once written
+    writeValues();
     $('#scoreBox').val(0);
     bowling.endOfRowProcessing();
   });

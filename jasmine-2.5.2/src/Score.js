@@ -17,8 +17,9 @@ Score.prototype.setHits = function(hits) {
 Score.prototype.setBonus = function(multiplier) {
   this._bonus = this._hits * multiplier;
 };
-Score.prototype.updateRollTotal = function() {
-  this._rollTotal = this.getHits() + this.getBonus();
+Score.prototype.updateRollTotal = function(frame) {
+  this._rollTotal = this.getBonus();
+  if (frame < 11) this._rollTotal += this.getHits();
 };
 Score.prototype.updateRunningTotal = function() {
   this._runningTotal += this.getRollTotal();

@@ -86,5 +86,22 @@ describe('Frame', function() {
   });
 
 
+  describe('#getFrameScore', function() {
+    var frame;
+    beforeEach(function() {
+      frame = new Frame();
+    });
+
+    it ('returns the total score for the frame', function() {
+      spyOn(frame, 'roll1').and.returnValue(1);
+      spyOn(frame, 'roll2').and.returnValue(2);
+      var x = 0;
+      x = frame.getFrameScore();
+      expect(frame._score).toEqual(x);
+    });
+
+  });
+
+
 
 });

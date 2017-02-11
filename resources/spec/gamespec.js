@@ -46,6 +46,10 @@ describe("Joe's Ten Pin Bowling Game", function(){
       game.completeStrike();
       expect(game.frame).toEqual([10,0]);
     });
+    it("Knows if there are any more rolls left in the game", function(){
+      game.scoreBoard = [[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2]];
+      expect(game.nextFrame()).toEqual('GAME FINISHED');
+    });
   });
 
   describe("Game scoring", function(){
@@ -87,7 +91,7 @@ describe("Joe's Ten Pin Bowling Game", function(){
       game.scoreBoard = [[1,3], [2,5], [10]];
       expect(game.returnTotalScore()).toEqual(21);
     });
-    
+
     it("Can add bonus points if the previous frame was a strike or spare", function(){
       game.scoreBoard = [[1,4], [10]];
       game.frame = [7,2]

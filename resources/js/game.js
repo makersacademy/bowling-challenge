@@ -18,6 +18,14 @@ Game.prototype.getRoll = function() {
   return this.roll
 };
 
+Game.prototype.lastFrameBowled = function(){
+  if (this.scoreBoard.length > 0){
+    return this.scoreBoard[this.scoreBoard.length - 1];
+  }else {
+    return [];
+  }
+};
+
 Game.prototype.sumFrame = function(frame) {
   return frame.reduce((a, b) => a + b, 0);
 };
@@ -29,6 +37,13 @@ Game.prototype.isStrike = function(frame){
     return false;
   }
 };
+
+Game.prototype.completeStrike = function(){
+  if (this.frame.length === 1 && this.sumFrame(this.frame) === 10 ){
+    this.frame = [10,0]
+  }
+};
+
 Game.prototype.isSpare = function(frame){
   if (frame.length === 2 && this.sumFrame(frame) === 10){
     return true;
@@ -45,17 +60,17 @@ Game.prototype.bowl = function() {
   }
 };
 
-Game.prototype.addToFrame = function() {
-  if (this.isFrameFull() === false ) {
-    this.frame.push(this.getRoll());
-  }
-};
-
 Game.prototype.isFrameFull = function() {
   if (this.frame.length < 2 && this.sumFrame(this.frame) < 10){
     return false;
   } else {
     return true;
+  }
+};
+
+Game.prototype.addToFrame = function() {
+  if (this.isFrameFull() === false ) {
+    this.frame.push(this.getRoll());
   }
 };
 
@@ -75,13 +90,18 @@ Game.prototype.addFrameToBoard = function(){
   }
 };
 
-Game.prototype.lastFrameBowled = function(){
-  if (this.scoreBoard.length > 0){
-    return this.scoreBoard[this.scoreBoard.length - 1];
-  }else {
-    return [];
+Game.prototype.nextFrame = function(){
+  if (this.scoreBoard.length === 10 && this.isStrike(this.lastFrameBowled())){
+    return "2 BONUS ROLLS";
+  } else if (this.scoreBoard.length === 10 && this.isSpare(this.lastFrameBowled())){
+    return "1 BONUS ROLL";
+  } else if (this.scoreBoard.length === 10) {
+    return "GAME FINISHED";
+  } else {
+    return "NEXT FRAME";
   }
 };
+
 
 Game.prototype.returnTotalScore = function(){
   if (this.scoreBoard.length > 0){
@@ -91,11 +111,5 @@ Game.prototype.returnTotalScore = function(){
     return total;
     } else {
       return 0;
-    }
-  };
-
-  Game.prototype.completeStrike = function(){
-    if (this.frame.length === 1 && this.sumFrame(this.frame) === 10 ){
-      this.frame = [10,0]
     }
   };

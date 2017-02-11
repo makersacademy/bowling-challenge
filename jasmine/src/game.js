@@ -1,6 +1,15 @@
 Game = function() {
-  this._f1Score = 0; this._f1Roll1 = 0; this._f1Roll2 = 0; this._f1StrikeType = "";
+  this._f1Score = 0;
+  this._f1Roll1 = 0;
+  this._f1Roll2 = 0;
+  this._f1StrikeType = "";
+
   this._f2Score = 0;
+  this._f2Roll1 = 0;
+  this._f2Roll2 = 0;
+  this._f2StrikeType = "";
+
+
   this._f3Score = 0;
   this._f4Score = 0;
   this._f5Score = 0;
@@ -12,19 +21,48 @@ Game = function() {
 
   this._totalScore = [];
 };
+Game.prototype.addBonus = function(strikeType, thisScore, lastScore) {
+  if (strikeType === "X") {
+    return thisScore = thisScore + 10;
+  }
+  else if (strikeType === "/") {
+    return thisScore = thisScore + lastScore;
+  } else {
+    return thisScore = thisScore; //remains the same if no bonus
+  }
+};
 
 Game.prototype.frame1 = function() {
   frame1 = new Frame();
-  this._f1roll1 = frame1.roll1();
-  this._f1roll2 = frame1.roll2();
-  this._f1Score = frame1.getFrameScore();
-  this._totalScore.push(this._f1Score);
+  this._f1Roll1 = frame1.roll1(); //ok
+  this._f1Roll2 = frame1.roll2(); //ok
+  this._f1Score = frame1.getFrameScore(); //ok
+  this._totalScore.push(this._f1Score); //
   this._f1StrikeType = frame1.getStrikeType();
   return this._f1Score;
 };
 
 Game.prototype.frame2 = function() {
+  frame2 = new Frame();
+  this._f2Roll1 = frame2.roll1();
+  this._f2Roll2 = frame2.roll2();
+  this._f2Score = frame2.getFrameScore();
+  this._f2StrikeType = frame2.getStrikeType();
+  this._totalScore.push(this._f2Score);
+  this._f1Score = this.addBonus(this._f2StrikeType, this._f2Score, this._f1Score);
+    // if (this._f2StrikeType === "X") {
+    //   this._f1Score = this._f1Score + 10;
+    // }
+    // else if (this._f2StrikeType === "/") {
+    //   this._f1Score = this._f1Score + this._f2Score;
+    // } else {
+    //   this._f1Score = this._f1Score; //remains the same if no bonus
+    // }
+  return this._f2Score;
 };
+
+
+
 
 Game.prototype.frame3 = function() {
 };

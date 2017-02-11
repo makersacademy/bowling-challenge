@@ -70,19 +70,40 @@ describe('Game', function() {
       beforeEach(function() {
         game = new Game();
       });
-
     var frame1 = jasmine.createSpy('frame')
-
     it ('returns the score for the first frame', function() {
       var _f1Score;
       var a;
       a = game.frame1();
       expect(frame1._f1Score).toEqual(a);
     });
-
   });
 
+  describe('#frame2', function() {
+    var game;
+      beforeEach(function() {
+        game = new Game();
+      });
 
+    var frame2 = jasmine.createSpy('frame')
+
+    it ('returns the score for the second frame', function() {
+      var _f2Score;
+      var b;
+      b = game.frame2();
+      expect(frame2._f2Score).toEqual(b);
+    });
+    it ('player receives bonus in previous game if strike is made', function() {
+      spyOn(frame2, 'getStrikeType').and.returnValue("strike");
+      expect(frame2._f1Score).toEqual(frame2._f1Score + 10);
+    });
+
+    it ('player receives bonus in previous game if half-strike is made', function() {
+      spyOn(frame2, 'getStrikeType').and.returnValue("strike");
+      expect(frame2._f1Score).toEqual(frame2._f1Score + frame2._f2Score);
+    });
+
+  });
 
 
 

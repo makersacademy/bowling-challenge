@@ -9,8 +9,7 @@ describe('Feature Test:', function() {
     });
     
     it("can only knock down standing pins", function() {
-        game.throwBall();
-        game.throwBall();
+        twoThrows(game);
         expect(game.currentFrame().pinsStanding()).toBeGreaterThan(-1);
     });
     
@@ -52,8 +51,7 @@ describe('Feature Test:', function() {
         
         it("awards correct bonus points", function() {
             number = 0.3;
-            game.throwBall();
-            game.throwBall();
+            twoThrows(game);
             expect(game.showScore()).toEqual(20);
         });
     });
@@ -73,8 +71,7 @@ describe('Feature Test:', function() {
         
         it("award correct bonus points", function() {
             number = 0.3;
-            game.throwBall();
-            game.throwBall();
+            twoThrows(game);
             expect(game.showScore()).toEqual(18)
         });
     });

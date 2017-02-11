@@ -27,8 +27,7 @@ describe("Game", function() {
         
         it("gets a new frame afte two throws", function() {
             shot.bowl.and.returnValue(3);
-            game.throwBall();
-            game.throwBall();
+            twoThrows(game);
             expect(game.currentFrame().pinsStanding()).toEqual(10);
         });
         

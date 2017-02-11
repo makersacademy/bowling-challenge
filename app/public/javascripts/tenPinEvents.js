@@ -1,5 +1,5 @@
-$("#submit-roll").click(function(){
-  event.preventDefault();
-  console.log($("#roll-input").val());
-  
-});
+// $("#submit-roll").click(function(){
+//   event.preventDefault();
+//   console.log($("#roll-input").val());
+//
+// });

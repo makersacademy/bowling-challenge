@@ -25,6 +25,8 @@ Frame.prototype.getFrameScore = function() {
   return this._score;
 };
 
-Frame.prototype.hasBonus = function() {
+Frame.prototype.getBonus = function() {
+
+
 
 };

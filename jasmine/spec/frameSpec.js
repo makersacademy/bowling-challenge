@@ -45,8 +45,8 @@ describe('Frame', function() {
     expect(frame.getFrameScore).toBeDefined();
   });
 
-  it("has a hasBonus method", function(){
-    expect(frame.hasBonus).toBeDefined();
+  it("has a getBonus method", function(){
+    expect(frame.getBonus).toBeDefined();
   });
 
   describe('#roll1', function() {

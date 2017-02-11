@@ -7,27 +7,34 @@ var Scorecard = function Scorecard() {
 };
 
 Scorecard.prototype.bowlOne = function(number){
+  this.firstBowl = number;
   if(this.lastFrame == "X"){ this.addBonusPoints(number); }
   if(this.lastFrame[1] == "/"){ this.addBonusPoints(number); }
   if(number == 10){
-    this.lastFrame = ['X'];
-    this.allFrames.push(this.lastFrame);
-    this.playerScores.push(10);
-  } else {
-    this.firstBowl = number;
+    this.strike();
   }
 };
 
 Scorecard.prototype.bowlTwo = function(number){
-  if(this.lastFrame == "X"){ this.addBonusPoints(number); }
   this.secondBowl = number;
+  if(this.lastFrame == "X"){ this.addBonusPoints(number); }
   if((this.firstBowl + this.secondBowl) === 10){
-    this.lastFrame = [ (this.firstBowl), '/' ];
-    this.allFrames.push(this.lastFrame);
-    this.playerScores.push(10);
+    this.spare();
   } else {
     this.openFrame();
   }
+};
+
+Scorecard.prototype.strike = function(){
+  this.lastFrame = ['X'];
+  this.allFrames.push(this.lastFrame);
+  this.playerScores.push(10);
+};
+
+Scorecard.prototype.spare = function(){
+  this.lastFrame = [ (this.firstBowl), '/' ];
+  this.allFrames.push(this.lastFrame);
+  this.playerScores.push(10);
 };
 
 Scorecard.prototype.addBonusPoints = function(number){

@@ -1,7 +1,8 @@
 'use strict';
 
 function Frame () {
-    this._pins = 10;
+    this.FRAME_PINS = 10
+    this._pins = this.FRAME_PINS;
     this.throws = [];
 }
 
@@ -12,4 +13,8 @@ Frame.prototype.pinsStanding = function() {
 Frame.prototype.knockDownPins = function(number) {
     this._pins -= number;
     this.throws.push(number);
+};
+
+Frame.prototype.resetPins = function() {
+    this._pins = this.FRAME_PINS;
 };

@@ -1,7 +1,7 @@
 function oneThrowGame() {
-    var game = new Game;
-    game.throwBall();
-    return game.frames;
+    var game1 = new Game;
+    game1.throwBall();
+    return game1.frames;
 }
 
 function scoreTwelve() {
@@ -21,9 +21,7 @@ function scoreTwentyTwo() {
     shot.bowl.and.returnValue(10);
     game.throwBall();
     shot.bowl.and.returnValue(3);
-    game.throwBall();
-    game.throwBall();
-    console.log(game.frames);
+    twoThrows(game);
     return game.frames;
 }
 

@@ -1,21 +1,19 @@
 'use strict';
 
-// var Shot = require('shot');
-
 function Game(shot) {
-    this._shot = typeof shot !== 'undefined' ? shot : new Shot();
-    this._frame = new Frame
-    this._score = new Score
-    this.frames = [];
-    this.frames.push(this._frame);
-    // this._throws = 0;
+    this.LAST_FRAME = 10;
     
+    this._shot = typeof shot !== 'undefined' ? shot : new Shot();
+    this._score = new Score;
+    this.frames = [];
+    this._resetFrame();
 }
 
 Game.prototype.throwBall = function() {
+    if(this._isLastFrame()) { return this.finalFrame() }
     if(this.currentFrame().throws < 1) {
         this._bowl();
-        if(this.isStrike()) {
+        if(this._isStrike()) {
             this._resetFrame();
         }
     }
@@ -24,29 +22,48 @@ Game.prototype.throwBall = function() {
         this._resetFrame();
     }
 };
+Game.prototype.showScore = function() {
+    return this._score.calculateScore(this.frames);
+};
 
 Game.prototype.currentFrame = function() {
     return this.frames[this.frames.length - 1];
 };
 
+Game.prototype.finalFrame = function() {
+    this._bowl();
+    if((this._isStrike()) && (this.currentFrame().throws.length < 3)) {
+        this.currentFrame().resetPins();
+        return;
+    }
+    else if((this.currentFrame().throws.length === 2) && this._isStrike()) {
+        this.currentFrame().resetPins();
+        return;
+    }
+    else if(this.currentFrame().throws.length < 2) {
+        return;
+    }
+    else {
+        var finalScore = this.showScore();
+        this.frames = [];
+        this._resetFrame();
+        return finalScore;
+    }
+};
+
 Game.prototype._resetFrame = function() {
-    var frame = new Frame
+    var frame = new Frame;
     this.frames.push(frame);
-    // this._throws = 0;
 };
 
 Game.prototype._bowl = function() {
     this.currentFrame().knockDownPins(this._shot.bowl(this.currentFrame().pinsStanding()));
-    // this._throws += 1;
 };
 
-Game.prototype.isStrike = function() {
+Game.prototype._isStrike = function() {
     return this.currentFrame().pinsStanding() === 0;
 };
 
-Game.prototype.showScore = function() {
-    return this._score.calculateScore(this.frames);
+Game.prototype._isLastFrame = function() {
+    return this.frames.length === this.LAST_FRAME;
 };
-
-
-

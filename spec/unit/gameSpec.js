@@ -5,6 +5,7 @@ describe("Game", function() {
     var game;
     var game1;
     var shot;
+    var frame
     
     beforeEach(function () {
         shot = jasmine.createSpyObj('shot', ['bowl']);
@@ -37,4 +38,33 @@ describe("Game", function() {
            expect(game.currentFrame().pinsStanding()).toEqual(10);
         });
     });
-})
+    
+    describe("#finalFrame", function() {
+        
+        beforeEach(function() {
+            lastFrameGame(game, shot);
+            console.log(game.frames);
+        });
+        
+        // it("it resets the frames", function() {
+        //     console.log(game.frames);
+        //     var frame = new Frame;
+        //     var frames = [];
+        //     frames.push(frame);
+        //     game1.finalFrame();
+        //     expect(game1.frames).toEqual(frames);
+        // });
+        
+        // it("allows bonus rolls for a strike", function() {
+        //     shot.bowl.and.returnValue(10);
+        //     game.throwBall()
+        // });
+    });
+});
+
+function lastFrameGame(game, shot) {
+    shot.bowl.and.returnValue(4);
+    for(var i = 0; i < 18; i++) {
+        game.throwBall();
+    }
+}

@@ -4,9 +4,7 @@
 function Game() {
   this.frame = [];
   this.roll = 0;
-  this.rollbonus = 0;
   this.scoreBoard = [];
-  this.lastFrame = false;
 }
 
 var game = new Game()
@@ -25,11 +23,15 @@ Game.prototype.sumFrame = function() {
 };
 
 Game.prototype.bowl = function() {
-  this.roll = Math.floor(Math.random() * 11);
+  if (this.frame === []){
+    this.roll = Math.floor(Math.random() * 11);
+  }else {
+    this.roll = Math.floor(Math.random() * (11 - this.sumFrame()));
+  }
 };
 
 Game.prototype.addToFrame = function() {
-  if (this.frame.length < 2 && game.sumFrame() < 10) {
+  if (this.isFrameFull() === false ) {
     this.frame.push(this.getRoll());
   }
 };
@@ -39,6 +41,12 @@ Game.prototype.isFrameFull = function() {
     return false;
   }else {
     return true;
+  }
+};
+
+Game.prototype.addFrameToBoard = function(){
+  if (game.isFrameFull() === true){
+    game.scoreBoard.push(game.frame);
   }
 };
 

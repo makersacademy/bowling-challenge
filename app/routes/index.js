@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 router.post('/rolls', function(req, res, next) {
   var sessionID = req.sessionID
   var rollsCollection = req.db.get('rolls');
+  var roll = req.body.roll;
   // var rollsDoc = rollsCollection.find({'sessionID' : sessionID}, function(err, result){
   //   if (err) {
   //     console.log('cannot find sessionID');
@@ -23,7 +24,8 @@ router.post('/rolls', function(req, res, next) {
   // });
   // console.log(rollsDoc);
   rollsCollection.update({'sessionID' : sessionID},
-                         {'sessionID' : sessionID},
+                        //  {'sessionID' : sessionID,
+                          { $push: { rolls: roll }},
                          {upsert:true},
                           function(err, doc){
                             if (err) {

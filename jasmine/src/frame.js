@@ -24,3 +24,7 @@ Frame.prototype.roll2 = function() {
 Frame.prototype.getFrameScore = function() {
   return this._score;
 };
+
+Frame.prototype.hasBonus = function() {
+
+};

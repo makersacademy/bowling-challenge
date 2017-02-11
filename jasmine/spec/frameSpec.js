@@ -45,6 +45,10 @@ describe('Frame', function() {
     expect(frame.getFrameScore).toBeDefined();
   });
 
+  it("has a hasBonus method", function(){
+    expect(frame.hasBonus).toBeDefined();
+  });
+
   describe('#roll1', function() {
     var frame;
     beforeEach(function() {

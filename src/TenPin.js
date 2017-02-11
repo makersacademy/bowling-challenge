@@ -5,15 +5,23 @@ function TenPin(){
   this.frameArray = [];
   this.bonus = 0;
 }
+
 TenPin.prototype.throw = function(number){
   if (number === 10 && this.frameArray.length === 0){
-    this.push();
+    this.frameArray.push(number);
+    this.frameArray.push(0);
+    this.scoreHistory.push(this.frameArray);
+    this.frameArray = [];
+
   }
   else if (this.frameArray.length === 0 && this.scoreHistory.length < 10){
     this.frameArray.push(parseInt(number))
   }
   else if (this.frameArray.length === 0 && this.scoreHistory.length === 10){
-    this.push();
+    this.frameArray.push(number);
+    this.frameArray.push(0);
+    this.scoreHistory.push(this.frameArray);
+    this.frameArray = [];
   }
   else if (this.frameArray.length === 1){
     this.frameArray.push(parseInt(number));
@@ -22,12 +30,12 @@ TenPin.prototype.throw = function(number){
   }
 }
 
-TenPin.prototype.push = function(number){
-  this.frameArray.push(parseInt(number))
-  this.frameArray.push(0);
-  this.scoreHistory.push(this.frameArray);
-  this.frameArray = [];
-}
+// TenPin.prototype.write = function(number){
+//   this.frameArray.push(number)
+//   this.frameArray.push(0);
+//   this.scoreHistory.push(this.frameArray);
+//   this.frameArray = [];
+// }
 
 TenPin.prototype.reset = function(){
   this.scoreHistory = [];
@@ -44,18 +52,14 @@ TenPin.prototype.count = function(){
       && this.scoreHistory[i+1] !== undefined)
     {
       this.bonus += this.scoreHistory[i+1][0];
-      console.log(this.bonus);
       this.bonus += this.scoreHistory[i+1][1];
-      console.log(this.bonus);
     }
 
     else if(this.scoreHistory[i][0] === 10 && this.scoreHistory[i+1][0] === 10
           && this.scoreHistory[i+1] !== undefined)
           {
       this.bonus += this.scoreHistory[i+1][0];
-      console.log(this.bonus);
       this.bonus += this.scoreHistory[i+2][0];
-      console.log(this.bonus);
     }
 
     else if(this.scoreHistory[i][0] + this.scoreHistory[i][1] === 10
@@ -65,7 +69,7 @@ TenPin.prototype.count = function(){
         console.log(this.bonus);
       }
   }
-  this.score += this.bonus;
+ this.score += this.bonus;
 }
 
 TenPin.prototype.total = function(){

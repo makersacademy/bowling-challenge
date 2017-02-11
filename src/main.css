@@ -1,13 +1,12 @@
-body{
+body {
 	text-align: center;
 	background-color: #010101;
 	color: white;
 	font-family: futura;
 	line-height: 120%;
-	font-size: 2em;	
+	font-size: 2em;
 }
-
-button{
+button {
 	padding: 2%;
 	margin: 5%;
 	font-size: 20px;
@@ -16,41 +15,35 @@ button{
 	background-color: white;
 	font-weight: bold;
 }
-
-.result_container{
+.result_container {
 	height: 25%;
-	border: 2px solid white ;
+	border: 2px solid white;
 }
-
 .result {
 	height: 100%;
 	border: 1px solid white;
 	width: 9%;
-	float:left;
+	float: left;
 }
-
-.firstRoll{
+.firstRoll {
 	position: top;
 	height: 50%;
 	border: 1px solid white;
 	width: 50%;
-	float:left;
+	float: left;
 	line-height: 500%;
 }
-
 .secondRoll {
 	width: 49%;
 	height: 50%;
-	float:right;
+	float: right;
 	line-height: 500%;
 }
-
-.score{
+.score {
 	width: 100%;
 	text-align: left;
 	line-height: 500%;
 }
-
-.hidden{
+.hidden {
 	display: none;
 }

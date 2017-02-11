@@ -1,5 +1,5 @@
 Game = function() {
-  this._f1Score = 0; this._f1roll1 = 0; this._f1roll2 = 0;
+  this._f1Score = 0; this._f1Roll1 = 0; this._f1Roll2 = 0; this._f1StrikeType = "";
   this._f2Score = 0;
   this._f3Score = 0;
   this._f4Score = 0;
@@ -19,7 +19,7 @@ Game.prototype.frame1 = function() {
   this._f1roll2 = frame1.roll2();
   this._f1Score = frame1.getFrameScore();
   this._totalScore.push(this._f1Score);
-  d = frame1.getStrikeType();
+  this._f1StrikeType = frame1.getStrikeType();
   return this._f1Score;
 };
 

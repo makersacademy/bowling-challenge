@@ -33,7 +33,7 @@ describe('Game', function() {
     expect(game.frame9).toBeDefined();
     expect(game.frame10).toBeDefined();
   });
-  it("has a score for each frame and a total score for all frames", function(){
+  it("has a score, roll1, roll2 and strikeType value for each frame, and a total score for all frames in 1 game", function(){
     var _f1Score;
     var _f2Score;
     var _f3Score;
@@ -45,6 +45,9 @@ describe('Game', function() {
     var _f9Score;
     var _f10Score;
     var _totalScore;
+    var _f1Roll1;
+    var _f1Roll2;
+    var _f1StrikeType;
     expect(game._f1Score).toBeDefined();
     expect(game._f2Score).toBeDefined();
     expect(game._f3Score).toBeDefined();
@@ -55,7 +58,12 @@ describe('Game', function() {
     expect(game._f8Score).toBeDefined();
     expect(game._f9Score).toBeDefined();
     expect(game._f10Score).toBeDefined();
-  });
+    expect(game._f1Roll1).toBeDefined();
+    expect(game._f1Roll2).toBeDefined();
+    expect(game._f1StrikeType).toBeDefined();
+    expect(game._totalScore).toBeDefined();
+
+    });
 
   describe('#frame1', function() {
     var game;

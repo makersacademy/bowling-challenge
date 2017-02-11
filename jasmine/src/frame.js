@@ -9,6 +9,7 @@ Frame.prototype.roll1 = function() {
   var x = [];
   x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   this._roll1 = x[Math.floor(Math.random() * x.length)];
+  this._score = this._score + this._roll1;
   return this._roll1;
 };
 

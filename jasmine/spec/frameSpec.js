@@ -55,6 +55,10 @@ describe('Frame', function() {
       frame.roll1();
       expect(frame._roll1).toBeLessThan(10);
     });
+    it ('adds the number of pins knocked down to the frame score', function() {
+      spyOn(frame, 'roll1').and.returnValue(5);
+      expect(frame._score).toEqual(frame._score + frame._roll1);
+    });
   });
 
   describe('#roll2', function() {
@@ -63,7 +67,7 @@ describe('Frame', function() {
       frame = new Frame();
     });
 
-    it ('returns a number of pins knocked down after the first roll', function() {
+    it ('returns a number of pins knocked down after the second roll', function() {
       frame.roll2();
       expect(typeof frame._roll2).toEqual('number');
     });

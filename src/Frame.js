@@ -2,24 +2,33 @@
 
 function Frame (roll1, roll2, roll3, frame){
   this.MAXIMUM_SCORE = 10;
+  this.finalFrame = false;
   this._rollSetter(roll1, roll2, roll3, frame)
-};
+}
 
 Frame.prototype._firstRoll = function () {
   return this.rolls[0];
 };
 
 Frame.prototype.total = function (next_frame, next_next_frame) {
-  return this._frameScore() + this._bonus(next_frame, next_next_frame)
+  if (this.finalFrame === true) {
+    return this._frameScore()
+  }
+  else {
+    return this._frameScore() + this._bonus(next_frame, next_next_frame)
+  }
 };
 
-Frame.prototype._bonus = function(next_frame, next_next_frame) {
+Frame.prototype._bonus = function (next_frame, next_next_frame) {
   if (undefined === next_frame) {
     return 0;
   }
-  if (this._isStrike()) {
+  if (this._isStrike() && this.finalFrame === false) {
     if(next_frame._isSpare()) {
       return this.MAXIMUM_SCORE + next_next_frame._firstRoll();
+    }
+    else if (this._isStrike() && this.finalFrame === true) {
+      return this._frameScore()
     }
     else {
       return next_frame._strikeBonus(next_next_frame);
@@ -79,5 +88,6 @@ Frame.prototype._rollSetter = function (roll1, roll2, roll3, frame) {
 };
 
 Frame.prototype._finalFrame = function (roll1, roll2, roll3) {
+  this.finalFrame = true;
   this.rolls = [roll1, roll2, roll3]
 };

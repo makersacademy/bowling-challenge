@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 describe('Game', function(){
 
@@ -16,13 +16,6 @@ describe('Game', function(){
   it('returns a specific frame', function(){
     game.roll(2,2)
     expect(game.getRoll(1).rolls).toEqual([2,2])
-  });
-
-  it("has a maximum of 10 frames", function(){
-    for (var i = 0; i < 10; i++) {
-      game.roll(2,2)
-    }
-    expect(function(){game.roll(2,2)}).toThrow("Game finished")
   });
 
   describe('total score', function(){
@@ -87,10 +80,11 @@ describe('Game', function(){
       }
         expect(game.gameOutcome()).toEqual("Gutter game :( !")
     });
-    xit('shows a perfect game', function(){
-      for (var i = 0; i < 10; i++) {
+    it('shows a perfect game', function(){
+      for (var i = 0; i < 9; i++) {
         game.roll(10)
       }
+        game.roll(10,10,10)
         expect(game.gameOutcome()).toEqual("Perfect game! You go glen coco")
     });
 
@@ -104,7 +98,7 @@ describe('Game', function(){
   });
 
   describe("final frame", function(){
-    xit("final frame has three rolls if strike or spare", function(){
+    it("final frame has three rolls if strike or spare", function(){
       for (var i = 0; i < 9; i++) {
         game.roll(2,2)
       }

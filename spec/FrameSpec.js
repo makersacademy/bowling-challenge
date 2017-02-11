@@ -52,6 +52,30 @@ describe("A frame of bowling", function(){
       expect(frame.total(next, next2)).toEqual(24)
     });
 
+    it("calculates a total for three strikes in the last frame", function(){
+      var frame = new Frame(10,10,10,true)
+      expect(frame.total()).toEqual(30)
+    });
+
+    it("calculates a total for a spare in the last frame", function(){
+      var frame = new Frame(8,2,10,true)
+      expect(frame.total()).toEqual(20)
+    });
+
+    it("calculates a total for two strikes and a final frame strike", function(){
+      var frame = new Frame(10)
+      var next = new Frame(10)
+      var next2 = new Frame(10,2,2,true)
+      expect(frame.total(next, next2)).toEqual(34)
+    });
+
+    it("calculates a total for a strike, spare and a final frame strike", function(){
+      var frame = new Frame(10)
+      var next = new Frame(8,2)
+      var next2 = new Frame(8,10,2,true)
+      expect(frame.total(next, next2)).toEqual(28)
+    });
+
   });
 
 

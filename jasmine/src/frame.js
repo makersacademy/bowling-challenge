@@ -2,7 +2,7 @@ Frame = function() {
   this._roll1 = 0;
   this._roll2 = 0;
   this._score = 0;
-  this._bonus = "";
+  this._strikeType = "";
 };
 
 Frame.prototype.roll1 = function() {
@@ -25,15 +25,15 @@ Frame.prototype.getFrameScore = function() {
   return this._score;
 };
 
-Frame.prototype.getBonus = function() {
+Frame.prototype.getStrikeType = function() {
   if ( (this._roll1 === 10) || (this._roll2 === 10) ) {
-    this._bonus = "X"; //strike
-    return this._bonus;
+    this._strikeType = "X"; //strike
+    return this._strikeType;
   } else if (this._roll1 + this._roll2 === 10) {
-      this._bonus = "/"; //half strike
-      return this._bonus;
+      this._strikeType = "/"; //half strike
+      return this._strikeType;
   } else {
-      this._bonus = "";
-      return this._bonus; //no bonus is ""
+      this._strikeType = "";
+      return this._strikeType; //no bonus is ""
   }
 };

@@ -29,8 +29,8 @@ describe('Frame', function() {
   });
 
   it("has a bonus", function(){
-    var _bonus;
-    expect(frame._bonus).toBeDefined();
+    var _strikeType;
+    expect(frame._strikeType).toBeDefined();
   });
 
   it("has a roll1 method", function(){
@@ -45,8 +45,8 @@ describe('Frame', function() {
     expect(frame.getFrameScore).toBeDefined();
   });
 
-  it("has a getBonus method", function(){
-    expect(frame.getBonus).toBeDefined();
+  it("has a getStrikeType method", function(){
+    expect(frame.getStrikeType).toBeDefined();
   });
 
   describe('#roll1', function() {
@@ -104,7 +104,7 @@ describe('Frame', function() {
     });
   });
 
-  describe('#getBonus', function() {
+  describe('#getStrikeType', function() {
     var frame;
     beforeEach(function() {
       frame = new Frame();
@@ -112,31 +112,31 @@ describe('Frame', function() {
     it ('is a strike (X) if roll1 is 10', function() {
       spyOn(frame, 'roll1').and.returnValue(10);
       var y = "";
-      y = frame.getBonus();
-      expect(frame._bonus).toEqual(y);
+      y = frame.getStrikeType();
+      expect(frame._strikeType).toEqual(y);
     });
 
     it ('is a strike (X) if roll2 is 10', function() {
       spyOn(frame, 'roll2').and.returnValue(10);
       var a = "";
-      a = frame.getBonus();
-      expect(frame._bonus).toEqual(a);
+      a = frame.getStrikeType();
+      expect(frame._strikeType).toEqual(a);
     });
 
     it ('is a half-strike (/) if sum of roll1 + roll2 is 10', function() {
       spyOn(frame, 'roll1').and.returnValue(5);
       spyOn(frame, 'roll2').and.returnValue(5);
       var b = "";
-      b = frame.getBonus();
-      expect(frame._bonus).toEqual(b);
+      b = frame.getStrikeType();
+      expect(frame._strikeType).toEqual(b);
     });
 
     it ('is nothing ("") if sum of roll1 + roll2 is less than 10', function() {
       spyOn(frame, 'roll1').and.returnValue(5);
       spyOn(frame, 'roll2').and.returnValue(4);
       var c = "";
-      c = frame.getBonus();
-      expect(frame._bonus).toEqual(c);
+      c = frame.getStrikeType();
+      expect(frame._strikeType).toEqual(c);
     });
 
   });

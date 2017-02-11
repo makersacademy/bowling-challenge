@@ -33,6 +33,56 @@ describe('Game', function() {
     expect(game.frame9).toBeDefined();
     expect(game.frame10).toBeDefined();
   });
+  it("has a score for each frame and a total score for all frames", function(){
+    var _f1Score;
+    var _f2Score;
+    var _f3Score;
+    var _f4Score;
+    var _f5Score;
+    var _f6Score;
+    var _f7Score;
+    var _f8Score;
+    var _f9Score;
+    var _f10Score;
+    var _totalScore;
+    expect(game._f1Score).toBeDefined();
+    expect(game._f2Score).toBeDefined();
+    expect(game._f3Score).toBeDefined();
+    expect(game._f4Score).toBeDefined();
+    expect(game._f5Score).toBeDefined();
+    expect(game._f6Score).toBeDefined();
+    expect(game._f7Score).toBeDefined();
+    expect(game._f8Score).toBeDefined();
+    expect(game._f9Score).toBeDefined();
+    expect(game._f10Score).toBeDefined();
+  });
+
+  describe('#frame1', function() {
+    var game;
+      beforeEach(function() {
+        game = new Game();
+      });
+
+    var frame;
+    beforeEach(function() {
+      frame = new Frame();
+    });
+
+    // it ('x', function() {
+    //   game.
+    //
+    //
+    //   expect(typeof frame._roll2).toEqual('number');
+    // });
+
+  });
+
+
+
+
+
+
+
 
 
 

@@ -41,4 +41,11 @@ describe("Gameplay", function(){
     expect(scorecard.currentFrame).toEqual( ['X'] );
   })
 
+  it("registers a spare if the frame adds up to 10", function(){
+   scorecard.bowlOne(5);
+   scorecard.bowlTwo(5);
+   expect(scorecard.currentFrame).toEqual( [5, '/'] );
+ });
+
+
 });

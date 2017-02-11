@@ -20,10 +20,14 @@ Scorecard.prototype.bowlOne = function(number){
 
 Scorecard.prototype.bowlTwo = function(number){
   this.secondBowl = number;
-  this.finishFrame();
+  if((this.firstBowl + this.secondBowl) == 10){
+    this.currentFrame = [ (this.firstBowl), '/' ]
+  } else {
+    this.openFrame();
+  };
 };
 
-Scorecard.prototype.finishFrame = function(){
+Scorecard.prototype.openFrame = function(){
   this.currentFrame = [ (this.firstBowl), (this.secondBowl) ];
   this.playerScore += (this.firstBowl + this.secondBowl);
   this.allFrames.push(this.currentFrame);

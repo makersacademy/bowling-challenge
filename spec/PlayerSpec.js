@@ -1,9 +1,11 @@
 describe("Player", function(){
     var player;
     var game;
+    var scoreboard;
 
     beforeEach(function(){
-      game = new Game();
+      scoreboard = new Scoreboard;
+      game = new Game(scoreboard);
       player = new Player(game);
   });
 

@@ -1,10 +1,12 @@
 describe("Game", function(){
   var game;
   var player;
+  var scoreboard;
 
   beforeEach(function(){
     game = new Game();
     player = new Player(game);
+    scoreboard = new Scoreboard();
   });
 
   it("should track the framescore", function(){
@@ -57,6 +59,65 @@ describe("Game", function(){
     player.throwBall();
     player.throwBall();
     expect(game._frameScore).toEqual(0);
+  });
+
+  describe("scoreboard", function(){
+    it("should add each roll to an array", function(){
+      spyOn(player, 'pinsKnocked').and.returnValue(3);
+      player.throwBall();
+      expect(game.frameRolls).toEqual([3]);
+    })
+
+    it("should add the rolls to the scoreboard at the end of a frame", function(){
+      spyOn(player, 'pinsKnocked').and.returnValue(3);
+      player.throwBall();
+      player.throwBall();
+      expect(game.scoreboard.Frame1).toEqual([[3,3], 6]);
+    })
+    it("should take multiple frames", function(){
+      spyOn(player, 'pinsKnocked').and.returnValue(3);
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      expect(game.scoreboard.Frame1).toEqual([[3,3], 6]);
+      expect(game.scoreboard.Frame2).toEqual([[3,3], 6]);
+    })
+
+    it("should update scoreboard in case of a strike", function(){
+      spyOn(player, 'pinsKnocked').and.returnValue(10);
+      player.throwBall();
+      expect(game.scoreboard.Frame1).toEqual([[10,0], 10]);
+    })
   })
+
+  describe("Strike rules", function(){
+    it("should end the frame immediately in the case of a strike", function(){
+      spyOn(player, 'pinsKnocked').and.returnValue(10);
+      player.throwBall();
+      expect(game._frame).toEqual(2);
+    })
+
+    it("should update the total score with a bonus from the next two rolls", function(){
+      spyOn(player, 'pinsKnocked').and.returnValue(10);
+      player.throwBall();
+
+      player.pinsKnocked = jasmine.createSpy().and.returnValue(3)
+      player.throwBall();
+      player.throwBall();
+      expect(game._totalScore).toEqual(22);
+    })
+  })
+
+  it("updates the previous frame with the bonus from the last two rolls", function(){
+    spyOn(player, 'pinsKnocked').and.returnValue(10);
+    player.throwBall();
+
+    player.pinsKnocked = jasmine.createSpy().and.returnValue(3)
+    player.throwBall();
+    player.throwBall();
+    expect(game.scoreboard.Frame1).toEqual([[10,0], 16]);
+
+})
 
 })

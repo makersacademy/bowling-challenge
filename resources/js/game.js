@@ -72,3 +72,14 @@ Game.prototype.lastFrameBowled = function(){
     return [];
   }
 };
+
+Game.prototype.returnTotalScore = function(){
+  if (this.scoreBoard.length > 0){
+    var total = 0
+    for (var i = 0; i < this.scoreBoard.length; i++){
+      total += (this.scoreBoard[i]).reduce((a, b) => a + b, 0);}
+    return total;
+    } else {
+      return 0;
+    }
+  };

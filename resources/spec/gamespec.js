@@ -44,7 +44,7 @@ describe("Joe's Ten Pin Bowling Game", function(){
   });
 
   describe("Game scoring", function(){
-    
+
     it("Knows how to add the current roll score to the current frame", function(){
       game.roll = 10;
       game.frame = [];
@@ -73,6 +73,10 @@ describe("Joe's Ten Pin Bowling Game", function(){
     it("Can add the values in a frame to return a score", function(){
       game.frame = [2,3];
       expect(game.sumFrame()).toEqual(5);
+    });
+    it("Can calculate the total score", function(){
+      game.scoreBoard = [[1,3], [2,5], [10, 10]];
+      expect(game.returnTotalScore()).toEqual(31);
     });
 
   });

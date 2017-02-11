@@ -2,12 +2,31 @@
 Bowling Challenge
 =================
 
+###Rules
 
-* Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+First I ventured to Wikipedia for the rules of bowling as it's not often that I go.
+
+```
+
+- Player bowls 10 frames in a single match (each frame is up to 2 rolls and up to 3 in the final frame).
+
+- If a player knocks down less than 10 pins in 2 rolls, they receive as many points for the frame.
+
+- If a player knocks down 10 pins in 1 roll, they receive bonus points for their next 2 rolls. 
+
+- If a player gets a spare (knocks down 10 pins in 2 rolls), they receive bonus points for their next roll.
+
+- A player has a maximum of 21 rolls, 9 x 2 rolls (no strikes) and a strike in their final frame allowing 2 further rolls.
+
+- A player has a minimum of 11 rolls, 9 x strikes and 2 rolls without a spare or strike in their final frame.
+
+- A perfect game includes 10 strikes for the 10 frames and then 2 strikes from the bonus rolls giving a total of 300 points.
+
+- A gutter game is 20 rolls and no pins knocked over giving a total of 0 points, or nil points if you're a Eurovision fan.
+
+- Right, think that's the scoring sorted, let's bowl!
+
+```
 
 Task: 
 -----
@@ -15,12 +34,6 @@ Task:
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by 
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
 
 
 ### Optional Extra
@@ -55,25 +68,3 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-Code Review
------------
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
-
-CI
---
-
-We are running JSHint on our CI server - save yourself having to wait for a build to happen by linting your code on your machine first. [Here are installations for most popular editors](http://jshint.com/install/). Grab the `.jshintrc` from this repo and have better JS!
-
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
-
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.

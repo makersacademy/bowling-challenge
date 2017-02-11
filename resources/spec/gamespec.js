@@ -41,6 +41,11 @@ describe("Joe's Ten Pin Bowling Game", function(){
       game.scoreBoard = [[1,2], [3,5], [8,1]];
       expect(game.lastFrameBowled()).toEqual([8,1]);
     });
+    it("Adds 0 to array if strike on first roll", function(){
+      game.frame = [10];
+      game.completeStrike();
+      expect(game.frame).toEqual([10,0]);
+    });
   });
 
   describe("Game scoring", function(){
@@ -51,6 +56,7 @@ describe("Joe's Ten Pin Bowling Game", function(){
       game.addToFrame();
       expect(game.getFrame()).toEqual([10])
     });
+
     it("Knows when a frame is a strike or spare", function(){
       var frame = [10];
       expect(game.isStrike(frame)).toEqual(true);
@@ -65,19 +71,23 @@ describe("Joe's Ten Pin Bowling Game", function(){
       expect(game.isSpare(frame)).toEqual(false);
       expect(game.isStrike(frame)).toEqual(false);
     });
+
     it("Can add a completed frame to the scoreboard", function(){
       game.frame = [7, 2];
       game.addFrameToBoard();
       expect(game.scoreBoard).toEqual([[7,2]])
     });
+
     it("Can add the values in a frame to return a score", function(){
       var frame = [2,3];
       expect(game.sumFrame(frame)).toEqual(5);
     });
+
     it("Can calculate the total score", function(){
       game.scoreBoard = [[1,3], [2,5], [10]];
       expect(game.returnTotalScore()).toEqual(21);
-    }); 
+    });
+    
     it("Can add bonus points if the previous frame was a strike or spare", function(){
       game.scoreBoard = [[1,4], [10]];
       game.frame = [7,2]
@@ -87,6 +97,10 @@ describe("Joe's Ten Pin Bowling Game", function(){
       game.frame = [3, 4]
       game.addFrameToBoard();
       expect(game.returnTotalScore()).toEqual(25);
+      game.scoreBoard = [[1,4],[3,4]]
+      game.frame = [10]
+      game.addFrameToBoard();
+      expect(game.returnTotalScore()).toEqual(22);
     });
 
   });

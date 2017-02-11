@@ -54,25 +54,26 @@ Game.prototype.addToFrame = function() {
 Game.prototype.isFrameFull = function() {
   if (this.frame.length < 2 && this.sumFrame(this.frame) < 10){
     return false;
-  }else {
+  } else {
     return true;
   }
 };
 
 Game.prototype.addFrameToBoard = function(){
-  if (game.isStrike(game.lastFrameBowled()) && game.isFrameFull()) {
-    game.scoreBoard.push(game.frame);
-    game.scoreBoard[game.scoreBoard.length - 1][0] += game.sumFrame(this.lastFrameBowled());
-    game.frame = []
-  } else if (game.isSpare(game.lastFrameBowled()) && game.isFrameFull()) {
-    game.scoreBoard.push(game.frame);
-    game.scoreBoard[game.scoreBoard.length - 1][0] += (game.lastFrameBowled())[0];
-  } else if (game.isFrameFull() === true){
-    game.scoreBoard.push(game.frame);
+  if (this.isStrike(this.lastFrameBowled()) && this.isFrameFull()) {
+    var lastIndex = this.scoreBoard.length - 2
+    this.scoreBoard.push(this.frame);
+    this.scoreBoard[lastIndex][1] += this.sumFrame(this.lastFrameBowled());
+    this.frame = []
+  }else if (this.isSpare(this.lastFrameBowled()) && this.isFrameFull()) {
+    this.scoreBoard.push(this.frame);
+    var lastIndex = this.scoreBoard.length - 1
+    this.scoreBoard[lastIndex][1] += (this.lastFrameBowled())[0];
+  }else if(this.isFrameFull() === true){
+    this.completeStrike();
+    this.scoreBoard.push(this.frame);
   }
 };
-
-
 
 Game.prototype.lastFrameBowled = function(){
   if (this.scoreBoard.length > 0){
@@ -90,5 +91,11 @@ Game.prototype.returnTotalScore = function(){
     return total;
     } else {
       return 0;
+    }
+  };
+
+  Game.prototype.completeStrike = function(){
+    if (this.frame.length === 1 && this.sumFrame(this.frame) === 10 ){
+      this.frame = [10,0]
     }
   };

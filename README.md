@@ -2,78 +2,89 @@
 Bowling Challenge
 =================
 
+Task:
+-----
+The scope is to write a score keeper library for a ten pin bowling game.
+It has to account for all the bonuses and extrUSER STORY
+As a player can get when scoring spares or strikes.
+Optionally, it has to provide an interface with jQuery
 
-* Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+Installation:
+-----
+JUST RUN IT!
 
-Task: 
+User stories:
+-----
+The game of ten pin bowling can be (roughly) described with these user stories:
+
+----- EPIC ---
+USER STORY 1
+As a player
+So that I can track the game progress
+I want to keep the game scorings
 -----
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+USER STORY 2
+As a player
+So I can play my game
+I want my scoreboard to be created with 10 frames
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+USER STORY 3
+In order to play a new frame
+I want ten new pins to be created on each frame
 
-As usual please start by 
+USER STORY 4
+As a player
+So I can play every frame
+I want to roll 2 times for each frame
 
-* Forking this repo
+USER STORY 5
+As a player
+So I can score points
+I want to count how many pins I knocked down on each roll in one frame
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+USER STORY 6
+As a player
+In order to perform a strike
+I want my frame to end when all 10 pins are knocked down
 
+USER STORY 7
+As a player,
+In order to get the strike bonus,
+I want my bonus to be calculated as the number of pins knocked down by the next two rolls.
 
-### Optional Extra
+USER STORY 8
+As a player,
+In order to get the spare bonus,
+I want my bonus to be calculated as the number of pins knocked down by the next roll
 
-Create a nice interactive animated interface with jQuery.
+USER STORY 9
+As a player,
+In order to get the bonus rolls,
+when a strike or a spare occured in the 10th frame.
+I want to be able to roll up to a max of 3 times total in the frame.
 
-## Strikes
+USER STORY 10
+As a player,
+In order to get my bonus roll points calculated correctly,
+I want my bonus roll to add points only to the bonus (not to the regular count).
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+USER STORY 11
+As a player,
+In order to enjoy my game,
+I want a nice interface for the scoreboard.
+It will passess if take particoular care of displaying strike, spare, gutter game (no scores), perfect game (all strikes, 300 points).
+EPIC: 4h
 
-## Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-## 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-## Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-## Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-Code Review
------------
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
-
-CI
---
-
-We are running JSHint on our CI server - save yourself having to wait for a build to happen by linting your code on your machine first. [Here are installations for most popular editors](http://jshint.com/install/). Grab the `.jshintrc` from this repo and have better JS!
-
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
-
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.
+Domain Model:
+-----
+These user stories can be (roughly) translated in the following model:
+scoreboard		createFrames
+frame		createPins
+frame		createRolls
+roll		knockedDownPins
+frame		strike
+bonus		calculate
+strike		
+spare		
+frame		addBonusRoll

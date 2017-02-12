@@ -1,12 +1,13 @@
 function Player(game = new Game()){
-  this.game = game;
-  this.pins = 10;
+  thiz = this;
+  thiz.game = game;
+  thiz.pins = 10;
 };
 
 Player.prototype.throwBall = function(){
-  var roll = this.pinTracker(this.pinsKnocked());
-  this.game.updateFrameScore(roll);
-  this.frameOver();
+  var roll = thiz.pinTracker(thiz.pinsKnocked());
+  thiz.game.updateFrameScore(roll);
+  thiz.frameOver();
 };
 
 Player.prototype.pinsKnocked = function(){
@@ -14,19 +15,19 @@ Player.prototype.pinsKnocked = function(){
 }
 
 Player.prototype.pinTracker = function(pinsHit){
-  var pinChecker = this.pins;
+  var pinChecker = thiz.pins;
   if(pinsHit > pinChecker){
-    this.pins = 0;
+    thiz.pins = 0;
     return pinChecker;
   }
   else {
-    this.pins -= pinsHit;
+    thiz.pins -= pinsHit;
     return pinsHit;
   }
 }
 
 Player.prototype.frameOver = function(){
-  if (this.game._rollTracker === this.game.max_rolls){
-    this.pins = 10;
+  if (thiz.game._rollTracker === thiz.game.max_rolls){
+    thiz.pins = 10;
   }
 }

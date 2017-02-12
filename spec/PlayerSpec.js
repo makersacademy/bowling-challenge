@@ -1,11 +1,11 @@
 describe("Player", function(){
     var player;
     var game;
-    var scoreboard;
+    var scorecalc;
 
     beforeEach(function(){
-      scoreboard = new Scoreboard;
-      game = new Game(scoreboard);
+      scorecalc = new Scorecalc();
+      game = new Game(scorecalc);
       player = new Player(game);
   });
 
@@ -25,7 +25,7 @@ describe("Player", function(){
     it("can knock over 1 pin on each throw", function(){
       spyOn(player, 'pinsKnocked').and.returnValue(1);
       player.throwBall();
-      expect(game._frameScore).toEqual(1);
+      expect(player.pins).toEqual(9);
     });
 
     it("can knock over 0 pins on each throw", function(){
@@ -38,7 +38,7 @@ describe("Player", function(){
     it("can knock over 6 pins on each throw", function(){
       spyOn(player, 'pinsKnocked').and.returnValue(6);
       player.throwBall();
-      expect(game._frameScore).toEqual(6);
+      expect(player.pins).toEqual(4);
     });
 
   });

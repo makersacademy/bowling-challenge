@@ -1,11 +1,16 @@
-function BowlingScoreboard() {
-
-  // this need refactoring but I can't find how!!!
-  var framesN = 10;
-  this.frames = new Array();
-  for (i = 0; i < framesN; i++) {
-    this.frames.push(new Frame);
+class BowlingScoreboard {
+  // PRIVATE
+  _populateFrames(frameClassAsVar) {
+    var framesN = 10;
+    var frames = new Array();
+    for (var i = 0; i < framesN; i++) {
+      frames.push(new frameClassAsVar);
+    }
+    return frames
   }
 
+  constructor(frameClassAsVar) {
+    this.frames = this._populateFrames(frameClassAsVar)
+  };
 
 }

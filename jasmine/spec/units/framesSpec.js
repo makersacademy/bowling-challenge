@@ -10,6 +10,10 @@ describe("Frame", function() {
   });
 
   it("has 10 pins on new frame ", function() {
-    expect(frame.pins).toEqual(10);
+    expect(frame.standingPins).toEqual(10);
+  });
+
+  it("has 2 rolls on new frame ", function() {
+    expect(frame.rolls.length).toEqual(2);
   });
 });

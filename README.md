@@ -29,6 +29,7 @@ So I can play my game
 I want my scoreboard to be created with 10 frames
 
 USER STORY 3
+As a player
 In order to play a new frame
 I want ten new pins to be created on each frame
 
@@ -41,6 +42,7 @@ USER STORY 5
 As a player
 So I can score points
 I want to count how many pins I knocked down on each roll in one frame
+CRITERIA: cannot knock down more than standing pins
 
 USER STORY 6
 As a player
@@ -79,7 +81,7 @@ Domain Model:
 -----
 These user stories can be (roughly) translated in the following model:
 
-Domain | Actions 
+Domain | Actions
 --- | ---
 scoreboard | createFrames
 frame | createPins

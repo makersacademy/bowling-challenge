@@ -1,7 +1,8 @@
-function Frame(){
+function Frame(finalFrame){
   this._rolls = [];
   this._total = 0;
   this._bonus = null;
+  this._finalFrame = finalFrame;
 };
 
 Frame.prototype.getRolls = function () {
@@ -42,4 +43,8 @@ Frame.prototype.calculateBonus = function(bonusPremium) {
 
 Frame.prototype.isOver = function() {
   return this._rolls.length === 2 || this.isStrike();
+};
+
+Frame.prototype.final = function() {
+  return this._finalFrame === true;
 };

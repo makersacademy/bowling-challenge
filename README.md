@@ -45,3 +45,11 @@ Interface
 ![snap2](./app/public/images/interface2.png)
 
 
+Approach
+-----------
+1. Task seemed quite confusing at first, however, following excellent tutorial: http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata in Java, translated the Game into JavaScript
+2. Nonetheless, I wanted to do something more, especially to seperate the concerns into more classes as it seemed Game had too many responsibilities
+3. Created Frame class and working on incorporating this class to the Game - this step is still unfinished
+4. Created the UI, working to incorporate jQuery to the greater extend, some basic options work (accordion on the Rules page, for example, see above)
+5. However, there is still a lot work to do to finish off the Game, I feel like I have touched upon many different contexts, so that should be not a problem to work in future to complete the task successfully
+

@@ -12,13 +12,13 @@ describe('Frame', function() {
     it('adds each roll to the array', function(){
       frame.addRolls(5);
       expect(frame.sumRolls()).toEqual(5);
-    })
+    });
 
     it('accepts two rolls and calculates the sum score of them', function() {
      frame.addRolls(3);
      frame.addRolls(2);
      expect(frame.sumRolls()).toEqual(5);
-   });
+    });
   });
 
   describe("Gutter game", function() {
@@ -30,8 +30,7 @@ describe('Frame', function() {
   });
 
   describe("Strike", function() {
-
-    it('evaluates to true when first roll score is 10'), function() {
+    it('evaluates to true when first roll score is 10', function() {
       frame.addRolls(10);
       expect(frame.isStrike()).toBe(true);
     });
@@ -45,7 +44,7 @@ describe('Frame', function() {
   });
 
   describe("Spare", function() {
-    it('evaluates to true when the sume of both rolls is 10'), function() {
+    it('evaluates to true when the sume of both rolls is 10', function() {
       frame.addRolls(5);
       frame.addRolls(5);
       expect(frame.isSpare()).toBe(true);

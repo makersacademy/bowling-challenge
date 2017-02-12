@@ -1,0 +1,18 @@
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    width: 1100px;
+    text-align: center;
+}
+
+.scorecard {
+    background-color: lightgrey;
+    width: 1100px;
+    border: 10px solid green;
+    padding: 10px;
+    margin: 10px;
+}

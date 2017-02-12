@@ -17,6 +17,8 @@ Game.prototype.roll = function(pins){
 
 Game.prototype.resetGame = function(){
   this._rolls = [];
+  this._currentRoll = 0;
+  this._totalScore = 0;
 };
 
 Game.prototype.calculateFrameScores = function(){

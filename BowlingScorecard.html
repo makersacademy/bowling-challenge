@@ -27,45 +27,48 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="roll1"></td>
-              <td class="roll2"></td>
-              <td class="roll3"></td>
-              <td class="roll4"></td>
-              <td class="roll5"></td>
-              <td class="roll6"></td>
-              <td class="roll7"></td>
-              <td class="roll8"></td>
-              <td class="roll9"></td>
-              <td class="roll10"></td>
-              <td class="roll11"></td>
-              <td class="roll12"></td>
-              <td class="roll13"></td>
-              <td class="roll14"></td>
-              <td class="roll15"></td>
-              <td class="roll16"></td>
-              <td class="roll17"></td>
-              <td class="roll18"></td>
-              <td class="roll9"></td>
-              <td class="roll20"></td>
-              <td class="roll21"></td>
-              <td class="totalscore" colspan="2"></td>
+            <tr id="scores">
+              <td id="roll1" class="roll1"></td>
+              <td id="roll2" class="roll2"></td>
+              <td id="roll3" class="roll3"></td>
+              <td id="roll4" class="roll4"></td>
+              <td id="roll5" class="roll5"></td>
+              <td id="roll6" class="roll6"></td>
+              <td id="roll7" class="roll7"></td>
+              <td id="roll8" class="roll8"></td>
+              <td id="roll9" class="roll9"></td>
+              <td id="roll10" class="roll10"></td>
+              <td id="roll11" class="roll11"></td>
+              <td id="roll12" class="roll12"></td>
+              <td id="roll13" class="roll13"></td>
+              <td id="roll14" class="roll14"></td>
+              <td id="roll15" class="roll15"></td>
+              <td id="roll16" class="roll16"></td>
+              <td id="roll17" class="roll17"></td>
+              <td id="roll18" class="roll18"></td>
+              <td id="roll19" class="roll9"></td>
+              <td id="roll20" class="roll20"></td>
+              <td id="roll21" class="roll21"></td>
+              <td id="totalScore" class="totalscore" colspan="2"></td>
             </tr>
           </tbody>
         </table>
       </div>
 
   <div class="buttons">
-    <button type="button" id="one" name="1pin">1</button>
-    <button type="button" id="two" name="2pin">2</button>
-    <button type="button" id="three" name="3pin">3</button>
-    <button type="button" id="four" name="4pin">4</button>
-    <button type="button" id="five" name="5pin">5</button>
-    <button type="button" id="six" name="6pin">6</button>
-    <button type="button" id="seven" name="7pin">7</button>
-    <button type="button" id="eight" name="8pin">8</button>
-    <button type="button" id="nine" name="9pin">9</button>
-    <button type="button" id="ten" name="110pin">10</button>  
+    <button class="btn" type="button" id="score0" name="0pin">0</button>
+    <button class="btn" type="button" id="score1" name="1pin">1</button>
+    <button class="btn" type="button" id="score2" name="2pin">2</button>
+    <button class="btn" type="button" id="score3" name="3pin">3</button>
+    <button class="btn" type="button" id="score4" name="4pin">4</button>
+    <button class="btn" type="button" id="score5" name="5pin">5</button>
+    <button class="btn" type="button" id="score6" name="6pin">6</button>
+    <button class="btn" type="button" id="score7" name="7pin">7</button>
+    <button class="btn" type="button" id="score8" name="8pin">8</button>
+    <button class="btn" type="button" id="score9" name="9pin">9</button>
+    <button class="btn" type="button" id="score10" name="10pin">10</button>
+    <button type="button" id="reset" name="reset">Reset Game</button>
+    <button type="button" id="calculateTotalScore" name="calculate">Calculate Total Score</button>
   </div>
 
   <div id="rules">
@@ -80,5 +83,9 @@
       <li>If you score a strike or spare in frame 10 you will be given a bonus roll. </li>
     </ul>
   </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="src/Game.js"></script>
+    <script src="src/Events.js"></script>
   </body>
 </html>

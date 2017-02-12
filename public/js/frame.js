@@ -1,7 +1,7 @@
 'use strict';
 
 function Frame () {
-    this.FRAME_PINS = 10
+    this.FRAME_PINS = 10;
     this._pins = this.FRAME_PINS;
     this.throws = [];
 }

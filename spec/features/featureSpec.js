@@ -94,14 +94,14 @@ describe('Feature Test:', function() {
             var frames = [];
             frames.push(frame);
             game.throwBall();
-            expect(game.throwBall()).toEqual(70);
+            expect(game.throwBall()).toEqual("Gamover, your final score is: 70");
             expect(game.frames).toEqual(frames);
         });
         
         it("awards correct bonus points for a strike", function() {
             number = 1;
             twoThrows(game);
-            expect(game.throwBall()).toEqual(93);
+            expect(game.throwBall()).toEqual("Gamover, your final score is: 93");
         });
     });
 });

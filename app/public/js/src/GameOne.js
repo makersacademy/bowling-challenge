@@ -23,3 +23,15 @@ Game.prototype.lastFrame = function() {
 Game.prototype.currentFrame = function() {
   return this._frames.length;
 };
+
+Game.prototype.roll = function(pins) {
+};
+
+Game.prototype._addBonusToFrames = function(bonusRolls) {
+  this._frames = this._frames.map(function(frame) {
+    if (frame.isSpare() || frame.isStrike) {
+      frame.bonus(bonusRolls);
+    }
+    return frame;
+  });
+};

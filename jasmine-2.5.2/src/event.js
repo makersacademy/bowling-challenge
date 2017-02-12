@@ -46,13 +46,13 @@ $( document ).ready(function() {
 
   function printValues() {
     $("table").append("<tr>" +
-    "<td>" + game.getFrame() + "</td>" +
-    "<td>" + game.getRoll() + "</td>" +
-    "<td>" + score.getHits() + "</td>" +
-    "<td>" + score.getBonus() + "</td>" +
-    "<td>" + bonus.getStrikeOrSpare() + "</td>" +
-    "<td>" + score.getRollTotal() + "</td>" +
-    "<td>" + score.getRunningTotal() + "</td>" +
+    "<td class='t-frame'>" + game.getFrame() + "</td>" +
+    "<td class='t-roll'>" + game.getRoll() + "</td>" +
+    "<td class='t-hits'>" + score.getHits() + "</td>" +
+    "<td class='t-bonus'>" + score.getBonus() + "</td>" +
+    "<td class='t-sors'>" + bonus.getStrikeOrSpare() + "</td>" +
+    "<td class='t-rolltot'>" + score.getRollTotal() + "</td>" +
+    "<td class='t-tot'>" + score.getRunningTotal() + "</td>" +
     "</tr>");
   };
 

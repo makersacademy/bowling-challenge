@@ -54,7 +54,21 @@ describe("BowlingScoreboard", function() {
   // I want my frame to end when all 10 pins are knocked down
   it('ends the frame if 10 pins are knocked', function() {
     bowlingScoreboard.frames[2].setKnockedDownPins(10);
-    expect(function(){bowlingScoreboard.frames[2].nextRoll()}).toThrow('Cannot advance to the next roll: rolls have finished for this frame!');
+    expect(function(){bowlingScoreboard.frames[2].nextRoll()}).toThrow('Cannot advance to the next roll: pins have finished for this frame!');
+  });
+
+  // USER STORY 7
+  // As a player,
+  // In order to get the strike bonus,
+  // I want my bonus to be calculated as the number of pins knocked down by the next two rolls.
+  it('calculates the strike bonus as the number of pins knocked by the next two rolls', function() {
+    bowlingScoreboard.activeFrame().setKnockedDownPins(10);
+    bowlingScoreboard.nextRoll();
+    expect(bowlingScoreboard.frame[0].score).toEqual(10);
+    bowlingScoreboard.activeFrame().setKnockedDownPins(5);
+    bowlingScoreboard.nextRoll();
+    bowlingScoreboard.activeFrame().setKnockedDownPins(4);
+    expect(bowlingScoreboard.frame[0].score).toEqual(19);
   });
 
 });

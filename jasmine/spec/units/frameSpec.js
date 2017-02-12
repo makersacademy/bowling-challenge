@@ -9,7 +9,7 @@ describe("Frame", function() {
     expect(function(){new Frame(Object)}).not.toThrow();
   });
 
-  describe("standingPins", function() {
+  describe("getStandingPins()", function() {
     it("has 10 pins on new frame ", function() {
       expect(frame.getStandingPins()).toEqual(10);
     });
@@ -21,17 +21,29 @@ describe("Frame", function() {
     });
   });
 
-  describe("nextRoll", function() {
+  describe("bonus", function() {
+    it("starts at 0", function() {
+      expect(frame.bonus).toEqual(0);
+    });
+  });
+
+  describe("score", function() {
+    it("starts at 0", function() {
+      expect(frame.score).toEqual(0);
+    });
+  });
+
+  describe("nextRoll()", function() {
     it("switch active roll to the next one", function() {
       expect(function(){frame.nextRoll()}).not.toThrow();
     });
     it('fails to advance if 10 pins are knocked', function() {
       frame.setKnockedDownPins(10);
-      expect(function(){frame.nextRoll()}).toThrow('Cannot advance to the next roll: rolls have finished for this frame!');
+      expect(function(){frame.nextRoll()}).toThrow('Cannot advance to the next roll: pins have finished for this frame!');
     });
   });
 
-  describe("setKnockedDownPins", function() {
+  describe("setKnockedDownPins(pins)", function() {
     it("set the number of knocked down pins in this roll", function() {
       frame.setKnockedDownPins(4);
       frame.nextRoll();
@@ -42,10 +54,11 @@ describe("Frame", function() {
     });
 
     it("fails if try to knock down more pin than actually standing", function() {
-      expect(function(){frame.setKnockedDownPins(11)}).toThrow('Cannot set pins this way: you might be cheating!!!');
+      expect(function(){frame.setKnockedDownPins(11)}).toThrow('Cannot set pins number: are you cheating?!?!?!');
       frame.setKnockedDownPins(4);
       frame.nextRoll();
-      expect(function(){frame.setKnockedDownPins(25)}).toThrow('Cannot set pins this way: you might be cheating!!!');
+      expect(function(){frame.setKnockedDownPins(25)}).toThrow('Cannot set pins number: are you cheating?!?!?!');
     });
   });
+
 });

@@ -1,30 +1,34 @@
 var Frame = class {
   constructor(rollClass) {
-    this._standingPins = 10;
     this.rolls = [new rollClass, new rollClass];
+    this.bonus = 0
+    this.score = 0
+
+    this._standingPins = 10;
     this._activeRollNumber = 0
   };
 
   setKnockedDownPins(pins) {
     if (this._standingPins >= pins) {
       this._reduceStandingPins(pins);
-      this._activeRoll().knockedDownPins += pins;
-      return this._activeRoll().knockedDownPins;
+      this.activeRoll().knockedDownPins += pins;
+      return this.activeRoll().knockedDownPins;
     } else {
-      throw('Cannot set pins this way: you might be cheating!!!');
+      throw('Cannot set pins number: are you cheating?!?!?!');
     }
   };
 
   nextRoll() {
-    if (this._standingPins != 0) {
-      this._activeRollNumber += 1;
-    } else {
-      throw('Cannot advance to the next roll: rolls have finished for this frame!');
-    }
+    if (this._standingPins == 0) {throw('Cannot advance to the next roll: pins have finished for this frame!');}
+    this._activeRollNumber += 1;
   }
 
   getStandingPins() {
     return this._standingPins;
+  }
+
+  activeRoll() {
+    return this.rolls[this._activeRollNumber]
   }
 
   // PRIVATE
@@ -32,7 +36,4 @@ var Frame = class {
     return this._standingPins -= pins;
   }
 
-  _activeRoll() {
-    return this.rolls[this._activeRollNumber]
-  }
 };

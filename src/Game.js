@@ -6,6 +6,7 @@ function Game() {
   this.bonus_rolls = 0
   this.GAME_LENGTH = 10
   this.GAME_PINS = 10
+  this.STANDARD_GAME_PINS = this.GAME_PINS
 }
 
 Game.prototype.isInteger = function(data) {
@@ -25,13 +26,14 @@ Game.prototype.checkGameOver = function () {
 Game.prototype.sendToFrame = function(pins) {
   if (!(this.isInteger(pins)) || pins < 0 || pins > this.GAME_PINS) {
     throw new Error('No way! There are ' + this.GAME_PINS + ' pins in this game and they only come as non-negative integers.')
-  }
+  } else
 
   if (pins > this.GAME_PINS - this.currentFrame.rolls[0]) {
     throw new Error('Hey! There are only ' + this.GAME_PINS + ' pins in the game!')
-  }
+  } else {
 
   this.currentFrame.addRoll(pins)
+  }
 }
 
 Game.prototype.newCurrentFrame = function() {
@@ -51,11 +53,10 @@ Game.prototype.nextFrameAndBonus = function(bonus) {
   }
 }
 
-Game.prototype.handleSparesAndStrikes = function(pins) {
-  // handle previous strike(s)
+Game.prototype.handleStrikes = function(pins) {
   if (this.bonus_rolls > 0 && this.playedFrames[this.playedFrames.length - 1].rolls.length === 1 && this.playedFrames[this.playedFrames.length - 2] && this.playedFrames[this.playedFrames.length - 2].rolls.length === 1 && this.currentFrame.rolls.length === 1) {
     this.playedFrames[this.playedFrames.length - 2].frameScore += pins
-    this.playedFrames[this.playedFrames.length - 1].frameScore = this.playedFrames[this.playedFrames.length - 2].frameScore + this.GAME_PINS + pins
+    this.playedFrames[this.playedFrames.length - 1].frameScore = this.playedFrames[this.playedFrames.length - 2].frameScore + this.STANDARD_GAME_PINS + pins
     this.currentFrame.frameScore = this.playedFrames[this.playedFrames.length - 1].frameScore + pins
     this.bonus_rolls -= 1
   } else if (this.bonus_rolls > 0 && this.playedFrames[this.playedFrames.length - 1] && this.playedFrames[this.playedFrames.length - 1].rolls.length === 1) {
@@ -63,8 +64,9 @@ Game.prototype.handleSparesAndStrikes = function(pins) {
     this.currentFrame.frameScore = this.playedFrames[this.playedFrames.length - 1].frameScore + this.currentFrame.rolls.reduce(function(a, b) {return a + b}, 0)
     this.bonus_rolls -= 1
   }
+}
 
-  // handle previous spare
+Game.prototype.handleSpare = function(pins) {
   if (this.bonus_rolls > 0 && this.playedFrames[this.playedFrames.length - 1] && this.playedFrames[this.playedFrames.length - 1].rolls.length === 2 && this.playedFrames[this.playedFrames.length - 1].rolls.reduce(function(a, b) {return a + b}, 0) === 10) {
     this.playedFrames[this.playedFrames.length - 1].frameScore += pins
     this.currentFrame.frameScore = this.playedFrames[this.playedFrames.length - 1].frameScore + this.currentFrame.rolls.reduce(function(a, b) {return a + b}, 0)
@@ -72,20 +74,9 @@ Game.prototype.handleSparesAndStrikes = function(pins) {
   }
 }
 
-Game.prototype.addToScore = function(pins) {
+Game.prototype.addToScore = function(pins, bonus) {
   this.checkGameOver()
-  this.handleSparesAndStrikes(pins)
-  this.nextFrameAndBonus(0)
-}
-
-Game.prototype.addStrikeToScore = function(pins) {
-  this.checkGameOver()
-  this.handleSparesAndStrikes(pins)
-  this.nextFrameAndBonus(2)
-}
-
-Game.prototype.addSpareToScore = function(pins) {
-  this.checkGameOver()
-  this.handleSparesAndStrikes(pins)
-  this.nextFrameAndBonus(1)
+  this.handleStrikes(pins)
+  this.handleSpare(pins)
+  this.nextFrameAndBonus(bonus)
 }

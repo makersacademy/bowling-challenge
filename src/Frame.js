@@ -33,15 +33,20 @@ Frame.prototype.addRoll = function(pins) {
     throw new Error('Impossibru - frame overflow!')
   }
 
-  if (this.isAStrike(pins)) {
+  if (this.game.playedFrames.length === 9 && (this.isAStrike(pins) || this.isASpare(pins))) {
+    this.FRAME_LENGTH = 3
+    this.game.GAME_PINS = 30
+    this._updateFrame(pins)
+    this.game.addToScore(pins, 0)
+  } else if (this.isAStrike(pins)) {
     this.FRAME_LENGTH = 1
     this._updateFrame(pins)
-    this.game.addStrikeToScore(pins)
+    this.game.addToScore(pins, 2)
   } else if (this.isASpare(pins)) {
     this._updateFrame(pins)
-    this.game.addSpareToScore(pins)
+    this.game.addToScore(pins, 1)
   } else {
     this._updateFrame(pins)
-    this.game.addToScore(pins)
+    this.game.addToScore(pins, 0)
   }
 }

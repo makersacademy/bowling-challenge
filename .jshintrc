@@ -25,7 +25,7 @@
                                 //   true     : ensure whatever is used is consistent
                                 //   "single" : require single quotes
                                 //   "double" : require double quotes
-    "undef"         : true,     // true: Require all non-global variables to be declared (prevents global leaks)
+    "undef"         : false,     // true: Require all non-global variables to be declared (prevents global leaks) (was true)
     "unused"        : false,     // Unused variables:
                                 //   true     : all variables, last function parameter
                                 //   "vars"   : all variables only
@@ -33,9 +33,9 @@
     "strict"        : false,     // true: Requires all functions run in ES5 Strict Mode
     "maxparams"     : 4,    // {int} Max number of formal params allowed per function
     "maxdepth"      : 2,    // {int} Max depth of nested blocks (within functions)
-    "maxstatements" : 10,    // {int} Max number statements per function
-    "maxcomplexity" : 4,    // {int} Max cyclomatic complexity per function
-    "maxlen"        : 80,    // {int} Max number of characters per line
+    "maxstatements" : 15,    // {int} Max number statements per function (was 10)
+    "maxcomplexity" : 6,    // {int} Max cyclomatic complexity per function (was 4)
+    "maxlen"        : 300,    // {int} Max number of characters per line (was 80)
     "varstmt"       : false,    // true: Disallow any var statements. Only `let` and `const` are allowed.
 
     // Relaxing

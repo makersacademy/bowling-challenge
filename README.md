@@ -30,16 +30,25 @@ Progress:
   * `Frame`
     - initialises with an empty record of pins for each roll, with a maximum number of rolls (2 by default), and with its own score (frameScore) which equals the current gameScore.
     - adds the pins scored in each roll in its record and updates its frameScore. When it has reached its maximum number of rolls, it tells its Game to make the gameScore equal to its frameScore. This then triggers the creation of a new current Frame in Game.
-2. __Strike__
-  * Re-factored the game to eliminate the gameScore and replace it with the current frame's frameScore. The frameScore is now updated after each roll.
+2. __Strikes__
+  * Re-factored `Game` to eliminate the gameScore and replace it with the current frame's frameScore. The frameScore is now updated after each roll.
   * Added logic for the strike and the way it impacts its own and its subsequent 1 or 2 frames. This implicitly covers two consecutive strikes.
+3. __Spare__ and __Final Frame__
+  * TDD-driven development for the strike and the final frame. Refactored `Frame` and `Game` for clarity and simplicity.
+  * Discovered several bugs via new tests and debugged them.
+
 
 Issues:
 -----
 1. __Basic Game__
   * The game does not yet provide for strikes, spares and the special characteristics of the final frame.
   * Only the business layer is completed at this stage. There is no web interface yet.
-2. __Strike__
+2. __Strikes__
   * The current logic is cumbersome. It appears to work well, but:
     - even more testing may be needed
     - may create problems when adding spare logic in the future.
+3. __Spare__ and __Final Frame__
+  * The game's scoring system is not always easy to use manually/mentally. Writing tests before writing code saved me countless times in this assignment!
+  * The handling of strikes in `Game` is still hard to read. I could clarify it by writing #last, #secondToLast and #total functions that apply to arrays.
+  * Also, the #addRoll function in `Frame` should be simpler/shorter, but I don't know how to do that yet.
+  * I relaxed JSHint a bit so I can eliminate known issues (such as lines that are too long). I modified maxcomplexity (from 4 to 6), maxlen (from 80 to 300), maxstatements (from 10 to 15) and undef (from true to false).

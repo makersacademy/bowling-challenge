@@ -4,6 +4,7 @@ $( document ).ready(function() {
   var bonus = new Bonus();
   $('#scoreBox').val("");
   $('#scoreBox').focus();
+
   $('#addScore').click(addScore);
   $('html').keypress(function (e) {
    var key = e.which;
@@ -11,15 +12,10 @@ $( document ).ready(function() {
   });
 
   function addScore() {
-    // if ( == "") {
-    //   hits = 0;
-    // } else {
-    //   hits = parseInt($('#scoreBox').val());
-    // }
-    var hits = parseInt($('#scoreBox').val());
-    if (hits > game.getPins()) { hits = game.getPins()};
-    if (!game.isOver(bonus.getNextMultiplier())) {
-
+    if (game.isOver(bonus.getNextMultiplier())) {
+      gameOver();
+    } else {
+      var hits = validate($('#scoreBox').val());
       game.setPins(hits);
       score.setHits(hits);
       score.setBonus(bonus.getNextMultiplier()); bonus.useBonuses();
@@ -37,21 +33,25 @@ $( document ).ready(function() {
 
       $('#scoreBox').val("");
       $('#scoreBox').focus();
-    } else {
-      gameOver();
     };
   };
+
+  function validate(input) {
+    if (isNaN(input) || input === undefined || input == "") {return 0;}
+    input = parseInt(input);
+    if (input < 0) {return 0;}
+    if (input > game.getPins()) {input = game.getPins();}
+    return input;
+  }
 
   function printValues() {
     $("table").append("<tr>" +
     "<td>" + game.getFrame() + "</td>" +
     "<td>" + game.getRoll() + "</td>" +
-    "<td></td>" +
     "<td>" + score.getHits() + "</td>" +
     "<td>" + score.getBonus() + "</td>" +
     "<td>" + bonus.getStrikeOrSpare() + "</td>" +
     "<td>" + score.getRollTotal() + "</td>" +
-    "<td></td>" +
     "<td>" + score.getRunningTotal() + "</td>" +
     "</tr>");
   };
@@ -59,4 +59,5 @@ $( document ).ready(function() {
   function gameOver() {
     $('#info').text("Refresh page to start a new game.")
   };
+
 });

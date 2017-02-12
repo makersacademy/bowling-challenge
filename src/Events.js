@@ -7,6 +7,7 @@ $(document).ready(function(){
 
   $("#roll1").click(function(){
     game.roll(roll1, roll2)
+
   })
 
 });

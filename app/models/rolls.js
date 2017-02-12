@@ -13,6 +13,28 @@ Rolls.prototype.getCollection = function(req){
   return getCollectionPromise;
 }
 
+// Rolls.prototype.getRolls = function(req, sessionID){
+//   var that = this;
+//
+//   this.getCollection(req).then(function(result){
+//     result.find({'sessionID' : sessionID}, function(err,result){
+//       var rolls = []
+//       if (err) {
+//         console.log("Error on find rolls:");
+//         console.log(err);
+//       } else {
+//         console.log("Succesfully found rolls collection")
+//         if (result[0].rolls){
+//           rolls = result[0].rolls
+//         }
+//       }
+//       console.log('Rolls in rolls model is');
+//       console.log(rolls);
+//       return rolls;
+//     });
+//   });
+// };
+
 Rolls.prototype.updateRolls = function(req, sessionID){
   var that = this;
   var roll = req.body.roll;

@@ -3,6 +3,8 @@ var router = express.Router();
 
 var rolls = require('./rolls');
 router.use(rolls);
+var Rolls = require("../models/rolls.js");
+var RollsModel = new Rolls();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -24,7 +26,26 @@ router.get('/', function(req, res, next) {
       res.render('index', { title: 'Ten Pin Bowling Scores', rolls: rolls });
     }
   });
+
+  // console.log("In GET /");
+  // console.log(req.sessionID);
+  //
+  // var sessionID = req.sessionID
+  // var getRolls = new Promise(function(resolve,reject){
+  //   rolls = [];
+  //   console.log("test call");
+  //   console.log(RollsModel.getRolls(req, sessionID));
+  //   console.log('ROLLS IS');
+  //   console.log(rolls);
+  //   resolve(rolls);
+  // });
+  //
+  // getRolls.then(function(result){
+  //   res.render('index', { title: 'Ten Pin Bowling Scores', rolls: result });
+  // });
+
 });
+
 
 
 

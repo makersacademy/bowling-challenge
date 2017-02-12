@@ -26,36 +26,38 @@ Game.prototype.pinsKnockedDown = function(number) {
   console.log(this.totScore);
   if (this.frame.isSpare()) {
     console.log("Spare!");
-    // this.bonusSpare();
-    // this.bonusStrike();
+    this.addBonuses();
     this.frames.push(this.frame);
     this.framesCounter();
   }
   else if (this.frame.isStrike()) {
     console.log("Strike!");
-    // this.bonusSpare();
-    // this.bonusStrike();
+    this.addBonuses();
     this.frames.push(this.frame);
     this.framesCounter();
   }
   else if (this.frame.rolls.length == 2) {
-    // this.bonusSpare();
-    // this.bonusStrike();
+    this.addBonuses();
     this.frames.push(this.frame);
     this.framesCounter();
   }
 };
 
-Game.prototype.bonusSpare = function() {
-  if (this.frames.pop() && this.frames.pop().isSpare()) {
-    this.totScore += this.frame.rolls[0].score;
-    console.log("+ " + this.frame.rolls[0].score + " Bonus Spare!");
+Game.prototype.addBonuses = function() {
+  if (this.frames[this.frames.length -1] && this.frames[this.frames.length -1].isSpare()) {
+    this._bonusSpare();
+  }
+  else if (this.frames[this.frames.length -1] && this.frames[this.frames.length -1].isStrike()) {
+    this._bonusStrike();
   }
 };
 
-Game.prototype.bonusStrike = function() {
-  if (this.frames.pop() && this.frames.pop().isStrike()) {
+Game.prototype._bonusSpare = function() {
+    this.totScore += this.frame.rolls[0].score;
+    console.log("+ " + this.frame.rolls[0].score + " Bonus Spare!");
+};
+
+Game.prototype._bonusStrike = function() {
     this.totScore += this.frame.score;
     console.log("+ " + this.frame.score + " Bonus Strike!");
-  }
 };

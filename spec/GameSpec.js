@@ -20,26 +20,22 @@ describe("Game", function() {
     });
   });
 
-  describe("#bonusSpare", function(){
+  describe("#addBonuses", function(){
     it("in case of spare, adds the score of the 1st roll of the next frame to the total score", function() {
       game.pinsKnockedDown(5);
       game.pinsKnockedDown(5);
       game.pinsKnockedDown(3);
-      game.bonusSpare();
-      expect(game.totScore).toEqual(16);
+      game.pinsKnockedDown(4);
+      expect(game.totScore).toEqual(20);
+    });
+    it("in case of strike, adds the score of the next frame to the total score", function() {
+      game.pinsKnockedDown(10);
+      game.pinsKnockedDown(3);
+      game.pinsKnockedDown(4);
+      expect(game.totScore).toEqual(24);
     });
   });
 
-  describe("#bonusStrike", function(){
-    it("in case of strike, adds the score of the next frame to the total score", function() {
-      game.pinsKnockedDown(10);
-      game.pinsKnockedDown(5);
-      game.pinsKnockedDown(3);
-      console.log(game.frame.score)
-      game.bonusStrike();
-      expect(game.totScore).toEqual(26);
-    });
-  });
   // describe("when song has been paused", function() {
   //   beforeEach(function() {
   //     player.play(song);

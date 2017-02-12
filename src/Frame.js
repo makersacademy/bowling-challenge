@@ -14,11 +14,11 @@ Frame.prototype.countPins = function(number) {
   this.rolls.push(this.roll);
   this.totPins -= number;
   this.score += number;
-  console.log(this.score);
+  // console.log(this.score);
 };
 
 Frame.prototype.isStrike = function() {
-  return this.totPins === 0;
+  return this.totPins == 0;
 };
 
 Frame.prototype.isSpare = function() {

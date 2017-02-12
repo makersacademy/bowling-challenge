@@ -6,37 +6,43 @@ $( document ).ready(function() {
   $('#scoreBox').focus();
   var rowCounter = 0;
 
-  $('#addScore').click(addScore);
+  $('#addScore').click(addRow);
   $('html').keypress(function (e) {
    var key = e.which;
-   if(key == 13) {addScore();};
+   if(key == 13) {addRow();}
   });
 
-  function addScore() {
+  function addRow() {
     if (game.isOver(bonus.getNextMultiplier())) {
       gameOver();
     } else {
       var hits = validate($('#scoreBox').val());
-      game.setPins(hits);
-      score.setHits(hits);
-      score.setBonus(bonus.getNextMultiplier()); bonus.useBonuses();
-
-      if (game.getFrame() < 11) {score.addHitsToRollTotal();};
-      score.addBonusToRollTotal();
-      score.addRollTotalToRunningTotal();
+      setValues(hits);
+      updateTotals();
       if (game.areNoPinsLeft() && game.getFrame() <= 10) {
         bonus.recordStrikeOrSpare(game.getRoll());
       };
-
       printValues();
       score.resetRollTotal();
       game.resetFrameRollAndPins();
-
       $('#scoreBox').val("");
       $('#scoreBox').focus();
       rowCounter++;
     };
   };
+
+  function setValues(hits) {
+    game.setPins(hits);
+    score.setHits(hits);
+    score.setBonus(bonus.getNextMultiplier());
+    bonus.useBonuses();
+  };
+
+  function updateTotals() {
+    if (game.getFrame() < 11) {score.addHitsToRollTotal();};
+    score.addBonusToRollTotal();
+    score.addRollTotalToRunningTotal();
+  }
 
   function validate(input) {
     if (isNaN(input) || input === undefined || input == "") {return 0;}
@@ -48,11 +54,7 @@ $( document ).ready(function() {
 
   function printValues() {
     var tr
-    if (rowCounter % 2 == 1) {
-      tr = "<tr class='even'>";
-    } else {
-      tr = "<tr>"
-    }
+    (rowCounter % 2 == 1) ? tr = "<tr class='even'>" : tr = "<tr>";
     $("table").append(tr +
     "<td class='t-frame'>" + game.getFrame() + "</td>" +
     "<td class='t-roll'>" + game.getRoll() + "</td>" +

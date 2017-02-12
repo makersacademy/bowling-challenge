@@ -13,6 +13,7 @@ var game1;
 var game2;
 var game3;
 var game4;
+var gameSize;
 
 beforeEach(function() {
 
@@ -26,6 +27,9 @@ beforeEach(function() {
   game0 = [[10, 0], [3, 6], [7, 2], [3, 6],
                [4, 4], [5, 3], [8, 1],[3, 3],
                [4, 5], [1, 3], [2, 8], [7, 4]];
+               
+  gameSize = bowl.gameMaximumSize(game0);
+
 
   game1 = [[10, 0], [3, 6], [7, 2], [3, 6],
                [4, 4], [5, 3], [8, 1],[3, 3],
@@ -42,6 +46,7 @@ beforeEach(function() {
   game4 = [[10, 0], [4, 6], [7, 2], [3, 6],
                [4, 4], [5, 3], [3, 3], [4, 5],
                [8, 1], [2, 3]];
+
 });
 
 
@@ -65,8 +70,7 @@ beforeEach(function() {
 
     describe('game ', function(){
       it('maximum size of a game is 10', function(){
-        var gameMaximumSize = bowl.gameSize(game0)
-        expect(gameMaximumSize.length).toEqual(10);
+        expect(gameSize.length).toEqual(10);
       });
 
       it('game score is the sum of its frames', function(){

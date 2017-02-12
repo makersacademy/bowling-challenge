@@ -21,7 +21,7 @@ Game.prototype.spare = function(frame) {
   return frame[0] !== 10 && (frame[0] + frame[1]) === 10;
 }
 
-Game.prototype.gameSize = function(game){
+Game.prototype.gameMaximumSize = function(game){
   if (game.length > 10) {
     return game.slice(0,10);
   }

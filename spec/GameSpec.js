@@ -2,26 +2,33 @@ describe("Game", function() {
 
   beforeEach(function() {
     game = new Game();
+    spyOn(window, "startGame").and.callFake(function(){
+      game._frames.push(frame);
+    });
+    spyOn(window, "addFrame").and.callFake(function(){
+      let frame = new Frame
+      frame._frameScore = 0
+      game._frames.push(frame);
+    });
   });
 
-  describe("when started", function() {
+  describe ("when started", function() {
     it("adds a frame to the array of frames" , function(){
-      game.startGame();
+      startGame();
       expect(game._frames.length).toBe(1)
     });
 
     it("adds further frames to the array of frames", function(){
-      game.startGame();
-      game.addFrame();
+      startGame();
+      addFrame();
       expect(game._frames.length).toBe(2)
     });
 
     it("allows a maximum of 10 frames to be added to a game", function(){
-      for (var i = 0; i < 10; i++) {
-      game.addFrame();
+      for (let i = 0; i < 10; i++) {
+      addFrame();
     }
       expect(game._frames.length).toBe(10)
-      expect(function(){ game.addFrame() }).toThrow(new Error("The game is over!"));
     });
   });
 
@@ -32,9 +39,9 @@ describe("Game", function() {
     });
 
     it("keeps the current score", function(){
-      game.startGame(frame);
-      frame.firstBowl(3);
-      frame.secondBowl(4);
+      startGame();
+      game.bowl(3);
+      game.bowl(4);
       expect(game.viewCurrentScore()).toBe(7)
     });
   });

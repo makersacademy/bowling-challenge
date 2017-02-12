@@ -5,7 +5,7 @@ describe("Game", function() {
     game = new Game();
   });
 
-  it("should record the score", function() {
+  it("should keep track of the total score", function() {
     game.pinsKnockedDown(4);
     expect(game.totScore).toEqual(4);
   });
@@ -17,6 +17,27 @@ describe("Game", function() {
         game.pinsKnockedDown(10);
         };
       expect( function(){game.pinsKnockedDown(10);} ).toThrow(new Error("Game Over"));
+    });
+  });
+
+  describe("#bonusSpare", function(){
+    it("in case of spare, adds the score of the 1st roll of the next frame to the total score", function() {
+      game.pinsKnockedDown(5);
+      game.pinsKnockedDown(5);
+      game.pinsKnockedDown(3);
+      game.bonusSpare();
+      expect(game.totScore).toEqual(16);
+    });
+  });
+
+  describe("#bonusStrike", function(){
+    it("in case of strike, adds the score of the next frame to the total score", function() {
+      game.pinsKnockedDown(10);
+      game.pinsKnockedDown(5);
+      game.pinsKnockedDown(3);
+      console.log(game.frame.score)
+      game.bonusStrike();
+      expect(game.totScore).toEqual(26);
     });
   });
   // describe("when song has been paused", function() {

@@ -24,11 +24,38 @@ Game.prototype.pinsKnockedDown = function(number) {
   this.frame.countPins(number);
   this.totScore += number;
   console.log(this.totScore);
-  if (this.frame.isStrike()) {
+  if (this.frame.isSpare()) {
+    console.log("Spare!");
+    // this.bonusSpare();
+    // this.bonusStrike();
     this.frames.push(this.frame);
     this.framesCounter();
-  } else if (this.frame.rolls.length == 2) {
+  }
+  else if (this.frame.isStrike()) {
+    console.log("Strike!");
+    // this.bonusSpare();
+    // this.bonusStrike();
     this.frames.push(this.frame);
     this.framesCounter();
+  }
+  else if (this.frame.rolls.length == 2) {
+    // this.bonusSpare();
+    // this.bonusStrike();
+    this.frames.push(this.frame);
+    this.framesCounter();
+  }
+};
+
+Game.prototype.bonusSpare = function() {
+  if (this.frames.pop() && this.frames.pop().isSpare()) {
+    this.totScore += this.frame.rolls[0].score;
+    console.log("+ " + this.frame.rolls[0].score + " Bonus Spare!");
+  }
+};
+
+Game.prototype.bonusStrike = function() {
+  if (this.frames.pop() && this.frames.pop().isStrike()) {
+    this.totScore += this.frame.score;
+    console.log("+ " + this.frame.score + " Bonus Strike!");
   }
 };

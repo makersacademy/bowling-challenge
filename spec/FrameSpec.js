@@ -29,6 +29,23 @@ describe("Frame", function() {
     });
   });
 
+  describe("#isSpare", function(){
+    it("should return true if all pins have been knocked down in 2 rolls", function() {
+      frame.countPins(5)
+      frame.countPins(5)
+      expect(frame.isSpare()).toBeTruthy();
+    });
+    it("should return false if some pins are still standing after  2 rolls", function() {
+      frame.countPins(2)
+      frame.countPins(4)
+      expect(frame.isSpare()).toBeFalsy();
+    });
+    it("should return false if it was a strike", function() {
+      frame.countPins(10)
+      expect(frame.isSpare()).toBeFalsy();
+    });
+  });
+
   // describe("#rollsCounter", function() {
   //   it("records the number of rolls in a frame", function() {
   //     frame.rollsCounter();

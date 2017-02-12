@@ -15,9 +15,9 @@ $ open SpecRunner.html
 
 In console:
 $ var game = new Game()
-$ g.pinsKnockedDown(4)
+$ game.pinsKnockedDown(4)
 
-- Enter number of pins till end of the Game.
+- Enter number of pins till the end of the Game. You'll be able to see scores and bonuses.
 
 HAVE FUN!
 

@@ -41,15 +41,13 @@ describe('Game', function(){
 
   describe('#saveLastGameStrikeSpareStatus', function(){
     it('equals _lastStrikeValue to yes if strike',function(){
-      frame.getStrikeStatus="yes";
       game.saveLastGameStrikeSpareStatus(frame);
-      expect(game._lastStrikeValue).toBe("yes");
+      expect(frame.getStrikeStatus).toHaveBeenCalled();
     });
 
     it('equals _lastSpareValue to yes if spare',function(){
-      frame.getSpareStatus="yes";
       game.saveLastGameStrikeSpareStatus(frame);
-      expect(game._lastSpareValue).toBe("yes");
+      expect(frame.getSpareStatus).toHaveBeenCalled();
     });
   });
 

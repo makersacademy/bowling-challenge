@@ -111,6 +111,9 @@ $(document).ready(function() {
         function frame() {
             if (height <= 100) {
                 clearInterval(id);
+                if(game.isGameEnded()) {
+                    return;
+                }
                 powerUp();
             } else {
                 height--;

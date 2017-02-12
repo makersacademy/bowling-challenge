@@ -11,20 +11,20 @@ describe('A frame', function() {
     expect(frame.rolls).toEqual([])
   })
 
-  it('where it can store multiple roll pins,', function() {
+  it('where it can store multiple pin counts,', function() {
     frame.addRoll(5)
     frame.addRoll(2)
     expect(frame.rolls).toEqual([5, 2])
   })
 
-  it('but no more than FRAME_LENGTH (2) rolls.', function() {
+  it('but no more than FRAME_LENGTH (2).', function() {
     frame.addRoll(2)
     frame.addRoll(3)
     expect(frame.rolls).toEqual([2, 3])
     expect(function() {frame.addRoll(4)}).toThrowError('Impossibru - frame overflow!')
   })
 
-  it('It is linked to a game', function() {
+  it('The frame is linked to a game', function() {
     expect(frame.game).toBe(aGame)
   })
 

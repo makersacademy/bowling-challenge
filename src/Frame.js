@@ -3,7 +3,6 @@
 function Frame(game) {
   this.rolls = [];
   this.game = game;
-  this.frameScore = game.gameScore;
   this.frameScore = this.game.playedFrames[this.game.playedFrames.length - 1] ? this.game.playedFrames[this.game.playedFrames.length - 1].frameScore : 0
   this.FRAME_LENGTH = 2;
 }
@@ -21,16 +20,28 @@ Frame.prototype.isAStrike = function(pins) {
   }
 }
 
+Frame.prototype.isASpare = function(pins) {
+  if (this.rolls[0] && pins === this.game.GAME_PINS - this.rolls[0]) {
+    return true
+  } else {
+    return false
+  }
+}
+
 Frame.prototype.addRoll = function(pins) {
   if (this.rolls.length === this.FRAME_LENGTH) {
     throw new Error('Impossibru - frame overflow!')
   }
 
   if (this.isAStrike(pins)) {
-    this._updateFrame(pins);
+    this.FRAME_LENGTH = 1
+    this._updateFrame(pins)
     this.game.addStrikeToScore(pins)
+  } else if (this.isASpare(pins)) {
+    this._updateFrame(pins)
+    this.game.addSpareToScore(pins)
   } else {
-    this._updateFrame(pins);
+    this._updateFrame(pins)
     this.game.addToScore(pins)
   }
 }

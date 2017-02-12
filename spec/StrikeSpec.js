@@ -22,6 +22,17 @@ describe('A strike', function() {
     expect(aGame.currentFrame.frameScore).toEqual(30)
   })
 
+  it('or even a turkey,', function() {
+    aGame.sendToFrame(10)
+    aGame.sendToFrame(10)
+    aGame.sendToFrame(10)
+    expect(aGame.playedFrames.length).toEqual(3)
+    expect(aGame.playedFrames[0].frameScore).toEqual(30)
+    expect(aGame.playedFrames[1].frameScore).toEqual(50)
+    expect(aGame.playedFrames[2].frameScore).toEqual(60)
+    expect(aGame.currentFrame.frameScore).toEqual(60)
+  })
+
   it('gives its own frame a 2-roll bonus (from the next frame),', function() {
     aGame.sendToFrame(10)
     aGame.sendToFrame(2)
@@ -32,7 +43,7 @@ describe('A strike', function() {
     expect(aGame.currentFrame.frameScore).toEqual(24)
   })
 
-  it('gives its own frame a 2-roll bonus (from the next 2 frames, the first of them being a strike),', function() {
+  it('gives its own frame a 2-roll bonus (from the next 2 frames, the first one being another strike),', function() {
     aGame.sendToFrame(10)
     aGame.sendToFrame(10)
     aGame.sendToFrame(7)

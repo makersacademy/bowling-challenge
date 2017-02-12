@@ -5,7 +5,7 @@ describe('A lane', function() {
     lane = new Lane();
   })
 
-  it('starts with a scoresheet with no played frames,', function() {
+  it('starts with an empty array of played frames,', function() {
     expect(lane.game.playedFrames).toEqual([])
   })
 
@@ -13,7 +13,7 @@ describe('A lane', function() {
     expect(lane.game.currentFrame.frameScore).toEqual(0)
   })
 
-  it('It can pass the number of downed pins to the game.', function() {
+  it('The lane can pass the number of downed pins to the game.', function() {
     lane.pass(5);
     expect(lane.game.currentFrame.frameScore).toEqual(5)
   })

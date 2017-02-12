@@ -24,8 +24,6 @@ Game.prototype.spare = function(frame) {
 Game.prototype.gameSize = function(game){
   if (game.length > 10) {
     return game.slice(0,10);
-  } else {
-    return game;
   }
   return this.gameScoreComplex(game);
 }

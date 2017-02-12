@@ -39,10 +39,8 @@ Game.prototype.nextFrame = function() {
 Game.prototype.score = function() {
     var self = this;
     return this._frames.reduce(function(total, frame, num, frames) {
-        total += self.spareCheck(frame, frames[num + 1]);
-        // console.log(total);
+        total += self.spareCheck(frame, num, frames[num + 1]);
         total += self.strikeCheck(frame, num, frames[num + 1], frames[num + 2]);
-        // console.log(total);
         return total + frame.score();
     }, 0);
 }
@@ -53,8 +51,8 @@ Game.prototype.strikeCheck = function(frame, num, framePlus1, framePlus2) {
     } return 0;
 }
 
-Game.prototype.spareCheck = function(frame, framePlus1) {
-    if (frame.isSpare() && framePlus1) {
+Game.prototype.spareCheck = function(frame, num, framePlus1) {
+    if (frame.isSpare() && num < 9 && framePlus1) {
         return this.spareBonus(frame, framePlus1);
     } return 0;
 }
@@ -72,11 +70,10 @@ Game.prototype.spareBonus = function(frame, framePlus1) {
 }
 
 Game.prototype.isBonusFrame = function() {
-    var len = this._frames.length
-    for(var i = 9; i < len && len < 13; i++) {
-        if (this._frames[i].isSpare() || this._frames[i].isStrike()) {
-            return true;
-        }
+    var final = this._frames[9];
+    var finalBall = this.currentFrame().firstScore()
+    if ((final.isSpare() || final.isStrike()) && !finalBall) {
+        return true;
     }
 }
 

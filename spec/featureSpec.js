@@ -15,6 +15,11 @@ describe('Feature: ', function() {
         game.bowl(5);
     }
 
+    var bowlPerfectSpares = function() {
+        game.bowl(9);
+        game.bowl(1);
+    }
+
     var bowlStrike = function() {
         game.bowl(10);
     }
@@ -71,6 +76,14 @@ describe('Feature: ', function() {
         it('I can bowl a gutter game (hit no pins...ever)', function() {
             bowlMany(20, 0);
             expect(game.score()).toEqual(0);
+        });
+
+        it('I can bowl a perfect spares game (bowl 9, then 1 on each round with 9 for the final bowl)', function() {
+            for (var i = 0; i < 11; i++) {
+                bowlPerfectSpares();
+            }
+            game.bowl(9);
+            expect(game.score()).toEqual(190);
         });
 
         it('I can bowl a perfect game (all strikes)', function() {

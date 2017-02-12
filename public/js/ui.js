@@ -2,52 +2,48 @@ $(document).ready(function() {
     var game = new Game();
     game.start();
 
-    $('#bowl').click(function(event) {
-        game.bowl(10);
-        // if(game.currentFrame().firstScore()) {
-        //   secondRoll();
-        //   console.log(game.currentFrame().firstScore());
-        //
-        //   // insertScores();
-        // } else {
-        //   console.log(game.currentFrame().firstScore());
-        //   firstRoll();
-        //
-        //   // insertScores();
-        // }
-        // game.bowl(Math.floor(Math.random() * 10) + 1);
-        // game.bowl(Math.floor(Math.random() * (10 - firstScore)) + 1);
-        // alert(game.score());
-        // console.log(game._frames);
-        // console.log(game.currentFrame());
-        // console.log(game.currentFrame().score());
-        // console.log(game.score());
-        insertScores();
-        insertFrameScore();
-        if (game._currentFrame > 10) {
-            unhideBonusFrames();
-        }
-        // console.log(game._frames);
-        // console.log(game.score());
-        // console.log(game.currentFrame());
-        // console.log(game.currentFrame().score());
-        // console.log(game.score());
+    $('#power-up').click(function(event) {
+        powerUp();
     });
 
-    var firstRoll = function() {
-        // game.bowl(Math.floor(Math.random() * (10)) + 1);
-        // game.bowl(5);
-        game.bowl(5);
-        // var score = "#frame-" + game._currentFrame;
-        // $(score + "-score").text(game.score());
+    $('#bowl').click(function(event) {
+        if (game.currentFrame().firstScore()) {
+            secondRoll(power());
+        } else {
+            firstRoll(power());
+        }
+
+        insertScores();
+        insertFrameScore();
+        if (game._currentFrame > 10 && game.isBonusFrame()) {
+            unhideBonusFrames();
+        }
+    });
+
+    var strikeNotifier = function() {
+        if (game._frames[(game._currentFrame - 2)].isStrike()) {
+            $( "#notification" ).fadeIn( 500, function() {
+            });
+            $( "#notification" ).fadeOut( 2500, function() {
+            });
+        }
+    }
+
+    var power = function() {
+        var elem = document.getElementById("power");
+        var height = elem.style.height;
+        return (Math.floor(height.replace("%", "") / 10));
+    }
+
+    var firstRoll = function(power) {
+        game.bowl(power);
+        strikeNotifier();
     };
 
-    var secondRoll = function() {
-        firstScore = game.currentFrame().firstScore();
-        game.bowl(5);
-        // game.bowl(Math.floor(Math.random() * (10 - firstScore)) + 1);
-        // var score = "#frame-" + (game._currentFrame - 1);
-        // $(score + "-score").text(game.score());
+    var secondRoll = function(power) {
+        var firstScore = game.currentFrame().firstScore();
+        var pinsLeft = (10 - firstScore);
+        game.bowl(Math.floor((pinsLeft / 100) * (power * 10)));
     };
 
     var insertScores = function() {
@@ -55,8 +51,6 @@ $(document).ready(function() {
             var frame = "#frame-" + i;
             $(frame + "-roll-1").text(game._frames[i - 1].firstScore());
             $(frame + "-roll-2").text(game._frames[i - 1].secondScore());
-            // var score = "#frame-" + (i-1);
-            // $(score + "-score").text(game.score());
         }
     };
 
@@ -71,12 +65,44 @@ $(document).ready(function() {
         $("#frame-12").attr("class", "show-frame");
     }
 
+    var unhideSpareFrame = function() {
+        $("#bonus-scores").attr("class", "show-frame");
+        $("#frame-11").attr("class", "show-frame");
+        $("#frame-12").attr("class", "show-frame");
+    }
+
+    var unhideStrikeFrame = function() {
+        $("#frame-12").attr("class", "show-frame");
+    }
+
+    function powerUp() {
+        var elem = document.getElementById("power");
+        var height = 1;
+        var id = setInterval(frame, 10);
+        function frame() {
+            if (height >= 100) {
+                clearInterval(id);
+                powerDown();
+            } else {
+                height++;
+                elem.style.height = height + '%';
+            }
+        }
+    }
+
+    function powerDown() {
+        var elem = document.getElementById("power");
+        var height = 100;
+        var id = setInterval(frame, 10);
+        function frame() {
+            if (height <= 100) {
+                clearInterval(id);
+                powerUp();
+            } else {
+                height--;
+                elem.style.height = height + '%';
+            }
+        }
+    }
+
 });
-//
-// game.score()
-// game.currentFrame()
-// game.currentFrame().firstScore()
-// game.currentFrame().secondScore()
-// game.currentFrame().isStrike()
-// game.currentFrame().isSpare()
-// game.currentFrame().score()

@@ -10,7 +10,7 @@ Game.prototype.getRoll = function() {return this._roll;};
 Game.prototype.getPins = function() {return this._pins;};
 
 Game.prototype.setPins = function(hits) {
-  this.getPins() > hits ? this._pins -= hits : this._pins = 0;
+  this._pins -= hits;
 };
 
 Game.prototype.updateFrameRollAndPins = function() {
@@ -37,5 +37,5 @@ Game.prototype.setUpNewRoll = function() {
 };
 
 Game.prototype.isOver = function(extraRolls) {
-  return (this.getFrame() == 11 && extraRolls == 0);
+  return (this.getFrame() > 10 && extraRolls == 0);
 };

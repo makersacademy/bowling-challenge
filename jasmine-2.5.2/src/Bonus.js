@@ -16,6 +16,8 @@ Bonus.prototype.useBonuses = function() { // "use up" after applying to current 
   this._strikeOrSpare = "";
 };
 
+// to do put all logic in here? ie whether frame <=10 && pins == 0
+// no prob better to put decisions in caller
 Bonus.prototype.recordStrikeOrSpare = function(roll) { // add to next in either case and also to nextbut1 if strike
     (roll == 1) ? this.record("Strike") : this.record("Spare");
 };

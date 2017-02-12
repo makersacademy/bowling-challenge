@@ -141,12 +141,12 @@ body {
     width: 500px;
     margin: auto;
     position: absolute;
-    top: 15%;
+    bottom: 15%;
     left: 38%;
     text-align: center;
 }
 
-#strike-text {
+#notification-text {
     font-size: 5vw;
     font-family: monospace;
     color: #fff;

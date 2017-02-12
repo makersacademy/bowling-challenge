@@ -12,7 +12,6 @@ $(document).ready(function() {
         } else {
             firstRoll(power());
         }
-
         insertScores();
         insertFrameScore();
         if (game._currentFrame > 10 && game.isBonusFrame()) {
@@ -20,11 +19,31 @@ $(document).ready(function() {
         }
     });
 
-    var strikeNotifier = function() {
-        if (game._frames[(game._currentFrame - 2)].isStrike()) {
-            $( "#notification" ).fadeIn( 500, function() {
+    var spareNotifier = function() {
+        if (game._frames[(game._currentFrame - 2)].isSpare()) {
+            $("#notification-text").text("SPARE");
+            $("#notification" ).fadeIn( 500, function() {
             });
             $( "#notification" ).fadeOut( 2500, function() {
+            });
+        }
+    }
+
+    var strikeNotifier = function() {
+        if (game._frames[(game._currentFrame - 2)].isStrike()) {
+            $("#notification-text").text("STRIKE");
+            $("#notification" ).fadeIn( 500, function() {
+            });
+            $( "#notification" ).fadeOut( 2500, function() {
+            });
+        }
+    }
+
+    var perfectNotifier = function() {
+        console.log(game.score());
+        if (game.score() === 300) {
+            $("#notification-text").html("PERFECT GAME");
+            $("#notification" ).fadeIn( 500, function() {
             });
         }
     }
@@ -38,12 +57,14 @@ $(document).ready(function() {
     var firstRoll = function(power) {
         game.bowl(power);
         strikeNotifier();
+        perfectNotifier()
     };
 
     var secondRoll = function(power) {
         var firstScore = game.currentFrame().firstScore();
         var pinsLeft = (10 - firstScore);
         game.bowl(Math.floor((pinsLeft / 100) * (power * 10)));
+        spareNotifier();
     };
 
     var insertScores = function() {

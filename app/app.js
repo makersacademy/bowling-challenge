@@ -13,7 +13,8 @@ var session = require('express-session')
 var MongoDBStore = require('connect-mongodb-session')(session);
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+// var rolls = require('./routes/rolls');
+// var users = require('./routes/users');
 
 var app = express();
 
@@ -64,7 +65,10 @@ app.use(function(req,res,next){
   next();
 });
 
-app.use('/', index);
+//Use Routers
+app.use(index);
+// app.use('/', index);
+// app.use('/rolls', rolls);
 // app.use('/users', users);
 
 // catch 404 and forward to error handler

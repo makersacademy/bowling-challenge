@@ -41,5 +41,5 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 Interface
 -----------
 
-![Ten Pin Score Example](images/interface1.png)
-![Ten Pin Score Example](images/interface2.png)
+![Ten Pin Score Example](../images/interface1.png)
+![Ten Pin Score Example](../images/interface2.png)

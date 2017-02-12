@@ -2,7 +2,7 @@ describe("BowlingScoreboard", function() {
   var bowlingScoreboard;
 
   beforeEach(function() {
-    bowlingScoreboard = new BowlingScoreboard(Frame);
+    bowlingScoreboard = new BowlingScoreboard(Frame,Roll);
   });
 
   // USER STORY 2
@@ -20,7 +20,7 @@ describe("BowlingScoreboard", function() {
   // I want ten new pins to be created on each frame
   it("has 10 pins on each new frame ", function() {
     for (i = 0; i < 10; i++) {
-      expect(bowlingScoreboard.frames[i].standingPins).toEqual(10);
+      expect(bowlingScoreboard.frames[i].getStandingPins()).toEqual(10);
     };
   });
 
@@ -39,9 +39,13 @@ describe("BowlingScoreboard", function() {
   // So I can score points
   // I want to count how many pins I knocked down on each roll in one frame
   // CRITERIA: cannot knock down more than standing pins
-  xit("can roll 2 times per frame", function() {
-    bowlingScoreboard.frames[2].rolls[0].setKnockedDownPins = 4
-    expect(bowlingScoreboard.frames[i].standingPins).toEqual(6);
+  it("can roll 2 times per frame", function() {
+    bowlingScoreboard.frames[2].setKnockedDownPins(4);
+    bowlingScoreboard.frames[2].nextRoll();
+    bowlingScoreboard.frames[2].setKnockedDownPins(5);
+    expect(bowlingScoreboard.frames[2].rolls[0].getKnockedDownPins()).toEqual(4);
+    expect(bowlingScoreboard.frames[2].rolls[1].getKnockedDownPins()).toEqual(5);
+    expect(bowlingScoreboard.frames[2].getStandingPins()).toEqual(1);
   });
 
 });

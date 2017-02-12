@@ -1,3 +1,13 @@
 body {
   background-image: url("http://s.en.fishki.net/upload/en/201503/06/1454059/46d2c4b8a206a8acc12fae5841e370c4.jpg");
+  background-repeat: no-repeat;
+  background-position: 0px -80px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#scorecard {
+  margin-top: 30px;
 }

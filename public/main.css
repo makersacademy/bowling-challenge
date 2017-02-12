@@ -11,3 +11,7 @@ h1 {
 #scorecard {
   margin-top: 30px;
 }
+
+.hidden{
+  display:none;
+}

@@ -8,11 +8,11 @@ function Game (){
 
 Game.prototype.roll = function (roll1, roll2, roll3) {
   var frame;
-  if (this.frames.length === 9) {
-    this._finalFrame(roll1, roll2, roll3)
+  if (roll3 === undefined) {
+    frame = new Frame(roll1, roll2);
   }
   else {
-    frame = new Frame(roll1, roll2);
+    frame = new Frame(roll1, roll2, roll3, true)
   }
   this.frames.push(frame);
 };
@@ -55,18 +55,5 @@ Game.prototype._gutterGame = function () {
 Game.prototype._perfectScore = function () {
   if(this.totalScore() === 320) {
     return "Perfect game! You go glen coco"
-  }
-};
-
-Game.prototype._finalFrame = function (roll1, roll2, roll3) {
-  if (roll1 === 10 || roll2 === 10 || (roll1 + roll2 === 10)) {
-    var frame;
-    frame = new Frame(roll1, roll2, roll3, true);
-    this.frames.push(frame);
-  }
-  else {
-    var frame;
-    frame = new Frame(roll1, roll2)
-    this.frames.push(frame);
   }
 };

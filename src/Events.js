@@ -20,12 +20,13 @@ $(document).ready(function(){
   var roll9_2 = document.getElementById("roll-9.2");
   var roll10_1 = document.getElementById("roll-10.1");
   var roll10_2 = document.getElementById("roll-10.2");
+  var roll10_3 = document.getElementById("roll10E");
+  $("#roll10E").hide();
 
 
   $("#total-score").text(game.totalScore());
 
   $('table').on('change','select', function() {
-
     if ($(this).attr('id') === 'roll-1.1') {
       $(this).hide();
       $(this).parent().html(this.value);
@@ -166,10 +167,28 @@ $(document).ready(function(){
       $(this).parent().html(this.value);
       $("#round-10").text(roll10_1.value);
       $("#total-score").text(game.totalScore()+parseInt(roll10_1.value));
+      if(parseInt(roll10_1.value) === 10) {
+        $("#roll10E").show();
+      }
     }
 
     if ($(this).attr('id') === 'roll-10.2') {
-      game.roll(parseInt(roll10_1.value),parseInt(roll10_2.value));
+      $(this).hide();
+      $(this).parent().html(this.value);
+      if(parseInt(roll10_2.value) === 10 || (parseInt(roll10_1.value) + parseInt(roll10_2.value))===10) {
+        $("#roll10E").show();
+        $("#round-10").text(parseInt(roll10_1.value)+parseInt(roll10_2.value));
+        $("#total-score").text(game.totalScore()+parseInt(roll10_1.value)+parseInt(roll10_2.value));
+      }
+      else {
+        game.roll(parseInt(roll10_1.value),parseInt(roll10_2.value));
+        $("#round-10").text(game.frameScore(10));
+        $("#total-score").text(game.totalScore());
+      }
+    }
+
+    if ($(this).attr('id') === 'roll10E') {
+      game.roll(parseInt(roll10_1.value),parseInt(roll10_2.value),parseInt(roll10_3.value),true);
       $(this).hide();
       $(this).parent().html(this.value);
       $("#round-10").text(game.frameScore(10));

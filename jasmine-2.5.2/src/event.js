@@ -11,12 +11,12 @@ $( document ).ready(function() {
   });
 
   function addScore() {
-    var hits;
-    if ($('#scoreBox').val() == "") {
-      hits = 0;
-    } else {
-      hits = parseInt($('#scoreBox').val());
-    }
+    // if ( == "") {
+    //   hits = 0;
+    // } else {
+    //   hits = parseInt($('#scoreBox').val());
+    // }
+    var hits = parseInt($('#scoreBox').val());
     if (hits > game.getPins()) { hits = game.getPins()};
     if (!game.isOver(bonus.getNextMultiplier())) {
 
@@ -42,9 +42,6 @@ $( document ).ready(function() {
     };
   };
 
-
-
-
   function printValues() {
     $("table").append("<tr>" +
     "<td>" + game.getFrame() + "</td>" +
@@ -60,6 +57,6 @@ $( document ).ready(function() {
   };
 
   function gameOver() {
-    $('#info').text("Please refresh page to start a new game.")
+    $('#info').text("Refresh page to start a new game.")
   };
 });

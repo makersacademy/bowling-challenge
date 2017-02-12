@@ -12,11 +12,18 @@ Frame.prototype.turn = function(pins) {
 }
 
 Frame.prototype.addScore = function(pins) {
-  this._scores.push(pins);
+    this._scores.push(pins);
 }
 
 Frame.prototype.firstScore = function() {
     return this._scores[0];
+}
+
+Frame.prototype.secondScore = function() {
+    if (this.isStrike()) {
+        return 0;
+    }
+    return this._scores[1];
 }
 
 Frame.prototype.isStrike = function() {

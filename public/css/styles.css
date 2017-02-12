@@ -1,0 +1,117 @@
+body {
+    background: url(../img/alley.svg);
+    background-size: 100vw;
+    margin: 0;
+    background-position-y: 40%;
+    background-repeat: no-repeat;
+}
+
+.wrapper {
+    height: 100vh;
+    max-height: 100vh;
+    margin: auto;
+    max-width: 90vw;
+}
+
+.left {
+    width: 90%;
+    float: left;
+}
+
+.right {
+    width: 10%;
+    float: right;
+}
+
+#bonus-scores {
+    width: 14%;
+    position: absolute;
+    height: 100px;
+    margin: auto;
+    border: 2px solid black;
+    background-color: #fff;
+    top: 13%;
+    left: 43%;
+    opacity: 0.9;
+    text-align: center;
+    display: none;
+}
+
+#score {
+    width: 70%;
+    position: absolute;
+    height: 100px;
+    margin: auto;
+    border: 2px solid black;
+    background-color: #fff;
+    top: 1%;
+    left: 15%;
+    opacity: 0.9;
+    text-align: center;
+}
+
+.score-top, .score-bottom {
+    height: 50%;
+    width: 100%;
+    font-size: 2.3vw;
+    font-family: sans-serif;
+}
+
+.roll-1, .roll-2 {
+    box-shadow: 0 0 0px 1px black;
+    height: 100%;
+    width: 50%;
+    float: left;
+}
+
+.power-container {
+    height: 60%;
+    margin-top: 5%;
+    width: 80px;
+    max-width: 25%;
+    float: right;
+}
+
+#power-up, #bowl {
+    width: 100%;
+    border: 2px solid black;
+    background-color: #fff;
+    margin-bottom: .6em;
+    text-align: center;
+    font-size: 1.2vw;
+    font-family: sans-serif;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+#power {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 1em;
+    border: 2px solid black;
+    background-color: #fff;
+}
+
+#notification {
+
+}
+
+.frame {
+    width: 10%;
+    height: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    float: left;
+    display:none;
+}
+
+#frame-11, #frame-12 {
+    width: 50%;
+}
+
+.show-frame {
+    display:block!important;
+    box-shadow: 0 0 0px 1px black;
+    float: left;
+}

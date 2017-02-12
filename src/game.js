@@ -8,6 +8,7 @@ function Game() {
 
 Game.prototype.start = function() {
     this.addFrame(new Frame());
+    this._currentFrame++;
 }
 
 Game.prototype.bowl = function(pins) {
@@ -39,7 +40,9 @@ Game.prototype.score = function() {
     var self = this;
     return this._frames.reduce(function(total, frame, num, frames) {
         total += self.spareCheck(frame, frames[num + 1]);
+        // console.log(total);
         total += self.strikeCheck(frame, num, frames[num + 1], frames[num + 2]);
+        // console.log(total);
         return total + frame.score();
     }, 0);
 }
@@ -58,7 +61,7 @@ Game.prototype.spareCheck = function(frame, framePlus1) {
 
 Game.prototype.strikeBonus = function(frame, framePlus1, framePlus2) {
     if (framePlus1.isStrike()) {
-        return framePlus1.score() + framePlus2.firstScore();
+        return framePlus1.score() + framePlus2.score();
     } else {
         return framePlus1.score();
     }
@@ -78,5 +81,5 @@ Game.prototype.isBonusFrame = function() {
 }
 
 Game.prototype.isGameEnded = function() {
-    return this._currentFrame > 9 && !this.isBonusFrame();
+    return this._currentFrame > 10 && !this.isBonusFrame();
 }

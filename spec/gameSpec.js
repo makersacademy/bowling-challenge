@@ -34,8 +34,8 @@ describe('Game', function() {
           expect(game.score()).toEqual(24);
       });
 
-      it('starts on frame 0', function() {
-          expect(game._currentFrame).toEqual(0);
+      it('starts on frame 1', function() {
+          expect(game._currentFrame).toEqual(1);
       });
 
       it('allows the player to bowl', function() {

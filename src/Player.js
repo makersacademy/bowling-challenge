@@ -26,7 +26,7 @@ Player.prototype.pinTracker = function(pinsHit){
 }
 
 Player.prototype.frameOver = function(){
-  if (this.game._rollTracker === 1){
+  if (this.game._rollTracker === this.game.MAX_ROLLS){
     this.pins = 10;
-  } 
+  }
 }

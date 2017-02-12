@@ -17,7 +17,7 @@ describe("Game", function(){
 
   it("should update the roll tracker on each throw", function(){
     player.throwBall();
-    expect(game._rollTracker).toEqual(2);
+    expect(game._rollTracker).toEqual(1);
   });
 
   it("should update the frame number after 2 normal throws", function(){
@@ -40,7 +40,7 @@ describe("Game", function(){
     spyOn(player, 'pinsKnocked').and.returnValue(3);
     player.throwBall();
     player.throwBall();
-    expect(game._rollTracker).toEqual(1);
+    expect(game._rollTracker).toEqual(2);
   });
 
   it("should update the total score at the end of each frame", function(){
@@ -89,6 +89,22 @@ describe("Game", function(){
       player.throwBall();
       expect(game.scoreboard.Frame1).toEqual([[10,0], 10]);
     })
+
+    it("should allow for one bonus roll in the case of a spare", function(){
+      spyOn(player, 'pinsKnocked').and.returnValue(5);
+      player.throwBall();
+      player.throwBall();
+      expect(game.bonusCounter).toEqual(1);
+    })
+  })
+
+  it("should update a spare correctly after a strike", function(){
+    spyOn(player, 'pinsKnocked').and.returnValue(10);
+    player.throwBall();
+    player.pinsKnocked = jasmine.createSpy().and.returnValue(5);
+    player.throwBall();
+    player.throwBall();
+    expect(game.bonusCounter).toEqual(1);
   })
 
   describe("Strike rules", function(){

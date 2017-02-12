@@ -31,3 +31,11 @@ Frame.prototype.isStrike = function() {
 Frame.prototype.isSpare = function() {
   return this._rolls.length === 2 && this.sumRolls() === 10;
 };
+
+Frame.prototype.calculateBonus = function(bonusPremium) {
+  if (this.isStrike()) {
+    this._bonus = bonusPremium.reduce(function(sum, bonus) { return sum + (bonus*2); }, this._total);
+  } else if (this.isSpare()) {
+    this._bonus = bonusPremium[0]*2;
+  }
+};

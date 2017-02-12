@@ -37,9 +37,8 @@ describe('Frame', function() {
 
     it('should return the correct number of points', function() {
       frame.addRolls(10);
-      frame.addRolls(3);
-      frame.addRolls(4);
-      expect(frame.sumRolls()).toEqual(24);
+      frame.calculateBonus([1,6]);
+      expect(frame.totalScore()).toEqual(24);
     });
   });
 
@@ -53,8 +52,10 @@ describe('Frame', function() {
     it('should return the correct number of points', function() {
       frame.addRolls(5);
       frame.addRolls(5);
-      frame.addRolls(3);
-      expect(frame.sumRolls()).toEqual(16);
+      frame.calculateBonus([3]);
+      expect(frame.totalScore()).toEqual(16);
     });
   });
+
+
 });

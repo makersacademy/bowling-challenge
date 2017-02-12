@@ -15,10 +15,10 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 The features I have implemented:
 
-Basic functionality as described in 'Task'
-Strikes
-Spares
-Gutter Game
+- Basic functionality as described in 'Task'
+- Strikes
+- Spares
+- Gutter Game
 
 
 Please refer to the Workflow.pdf document to see how I plan and execute this project.

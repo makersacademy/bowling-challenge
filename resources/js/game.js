@@ -31,7 +31,7 @@ Game.prototype.sumFrame = function(frame) {
 };
 
 Game.prototype.isStrike = function(frame){
-  if (frame.length === 1 && this.sumFrame(frame) === 10){
+  if (frame.length === 2 && frame[0] === 10){
     return true;
   }else {
     return false;
@@ -45,7 +45,7 @@ Game.prototype.completeStrike = function(){
 };
 
 Game.prototype.isSpare = function(frame){
-  if (frame.length === 2 && this.sumFrame(frame) === 10){
+  if (frame.length === 2 && this.sumFrame(frame) === 10 && frame[0] != 10){
     return true;
   }else{
     return false;

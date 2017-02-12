@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>TenPin</title>
+        <style type="text/css">.form-inline {margin: 2em 0;}</style>
+        <style type="text/css">
+            body { padding: 2em;}
+            .form-inline {margin: 1em 0;}
+            .form-inline .form-control {
+                display: inline-block;
+                vertical-align: middle;
+                width: 30px;
+            }
+            .btn {
+                background-image: none;
+                border: 1px solid #2e6da4;
+                border-radius: 4px;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 1.42857;
+                margin-bottom: 0;
+                padding: 6px 12px;
+                text-align: center;
+                vertical-align: middle;
+                white-space: nowrap;
+                background-color: #337ab7;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+
+            <div class="row-fluid">
+                <div class="col-md-8 col-md-offset-2">
+
+                    <h1 class="header">Tenpin Bowling</h1>
+
+                    <div id="calc">
+
+                        <!-- The number buttons -->
+                        <div class="form-inline" id="calc-digits">
+                            <p class="btn btn-primary button-digit" data-type="digit" data-value="0">0</p>
+                            <p class="btn btn-primary button-digit" data-type="digit" data-value="1">1</p>
+                            <p class="btn btn-primary button-digit" data-type="digit" data-value="2">2</p>
+                            <p class="btn btn-primary button-digit" data-type="digit" data-value="3">3</p>
+                            <p class="btn btn-primary button-digit" data-type="digit" data-value="4">4</p>
+                            <p class="btn btn-primary button-digit" data-type="digit" data-value="5">5</p>
+                            <p class="btn btn-primary button-digit" data-type="digit" data-value="6">6</p>
+                            <p class="btn btn-primary button-digit" data-type="digit" data-value="7">7</p>
+                            <p class="btn btn-primary button-digit" data-type="digit" data-value="8">8</p>
+                            <p class="btn btn-primary button-digit" data-type="digit" data-value="9">9</p>
+                            <p class="btn btn-primary button-digit" data-type="digit" data-value="10">10</p>
+                          </div>
+
+                        <div class="form-inline" id="calc-enter">
+                            <p class="btn btn-primary button-clear" data-type="clear" data-value="clear">Clear game</p>
+                            <p class="btn btn-primary button-result" data-type="count" data-value="count">display final result</p>
+                        </div>
+
+                        <div id="score">
+                        </div>
+
+                        <div id="result">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="src/bowling.js"></script>
+          <script src="src/controlBowling.js"></script>
+        <!-- <script src="src/TenPin.js"></script>
+        <script src="src/control.js"></script> -->
+
+    </body>
+</html>

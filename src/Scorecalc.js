@@ -28,3 +28,23 @@ Scorecalc.prototype.resetBonus = function(){
 Scorecalc.prototype.updateTotalScore = function(frame){
   self._totalScore += (self.scoreboard["Frame" + frame][1] + self.bonusScore);
 }
+
+Scorecalc.prototype.gutterGame = function(){
+  if (self._totalScore === 0){
+    return true
+  }
+}
+
+Scorecalc.prototype.perfectGame = function(){
+  var perfectCheck = []
+  for(i = 1; i < 10; i++){
+      console.log(self.scoreboard["Frame" + i][0])
+      perfectCheck.push(self.scoreboard["Frame" + i][0][0])
+    }
+  for(i = 1; i <= perfectCheck.length; i++){
+    if(perfectCheck[i] !== 10) {
+      return false;
+    }
+  }
+  return true;
+}

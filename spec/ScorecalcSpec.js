@@ -46,7 +46,6 @@ describe("Strike Scoring", function(){
 
     it("should update the total score with a bonus from the next two rolls", function(){
       spyOn(player, 'pinsKnocked').and.returnValue(10);
-      console.log("relevant test")
       player.throwBall();
       player.pinsKnocked = jasmine.createSpy().and.returnValue(3)
       player.throwBall();
@@ -54,4 +53,52 @@ describe("Strike Scoring", function(){
       expect(scorecalc._totalScore).toEqual(22);
     })
   })
+
+  describe("Final score calculations", function(){
+    it("Should be a gutter game in the case of 0 score after frame 10", function(){
+      spyOn(player, 'pinsKnocked').and.returnValue(0);
+      game._frame = 10;
+      player.throwBall();
+      player.throwBall();
+      expect(scorecalc.gutterGame()).toEqual(true);
+    })
+
+    it("Should be not be a perfect game if one roll is not a strike", function(){
+      spyOn(player, 'pinsKnocked').and.returnValue(10);
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.pinsKnocked = jasmine.createSpy().and.returnValue(3)
+      player.throwBall();
+      player.throwBall();
+      expect(scorecalc.perfectGame()).toEqual(false);
+    })
+
+    it("Should be not be a perfect game if the strikes are not consecutive", function(){
+      spyOn(player, 'pinsKnocked').and.returnValue(10);
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.throwBall();
+      player.pinsKnocked = jasmine.createSpy().and.returnValue(0)
+      player.throwBall();
+      player.pinsKnocked = jasmine.createSpy().and.returnValue(10)
+      player.throwBall();
+      expect(scorecalc.perfectGame()).toEqual(false);
+    })
+
+  })
+
+
 })

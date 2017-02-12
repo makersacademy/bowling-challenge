@@ -4,17 +4,17 @@ function Frame(){
   this._score = 0
   this._roll_1 = 0
   this._roll_2 = 0
-  // this.MAX_ROLLS = 2
-  // this.MSX_ROLLS_10FR = 3
 }
 
 Frame.prototype.calcScore = function () {
-  this._score = this._roll_1 + this._roll_2;
   return this._score;
 };
 
 Frame.prototype.rollBallOne = function () {
   return this._roll_1 = getRandomInt(0, 10);
+   if(this._roll_1 === 10) {
+      this._score = 10;
+   }
 };
 
 Frame.prototype.rollBallTwo = function () {
@@ -24,10 +24,16 @@ Frame.prototype.rollBallTwo = function () {
   } else { throw new Error('You had a strike - no pins left to knock');
     this._roll_2 = 0
   }
+  this._score = this._roll_2 + this._roll_1
   return this._roll_2;
 };
-
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+// Frame.prototype.isStrike = function () {
+//   return this._roll_1 === 10
+//
+//   }
+// };

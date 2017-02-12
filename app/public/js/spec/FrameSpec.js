@@ -57,5 +57,17 @@ describe('Frame', function() {
     });
   });
 
+  describe('#isOver', function() {
+    it('is true when both rolls are completed', function() {
+      frame.addRolls(2);
+      frame.addRolls(5);
+      expect(frame.isOver()).toBe(true);
+    });
+
+    it('is true when there is a strike', function() {
+      frame.addRolls(10);
+      expect(frame.isOver()).toBe(true);
+    });
+  });
 
 });

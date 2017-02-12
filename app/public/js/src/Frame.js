@@ -39,3 +39,7 @@ Frame.prototype.calculateBonus = function(bonusPremium) {
     this._bonus = bonusPremium[0]*2;
   }
 };
+
+Frame.prototype.isOver = function() {
+  return this._rolls.length === 2 || this.isStrike();
+};

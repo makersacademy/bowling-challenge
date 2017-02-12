@@ -6,7 +6,7 @@ describe('Game', function(){
 
   beforeEach(function(){
     game = new Game();
-    frame = jasmine.createSpyObj("frame", ["_getRegularScore","_results"]);
+    frame = jasmine.createSpyObj("frame", ["_getRegularScore","_results","getStrikeStatus", "getSpareStatus"]);
   });
 
   describe('::new', function(){
@@ -29,14 +29,6 @@ describe('Game', function(){
       expect(frame._getRegularScore).toHaveBeenCalled();
     });
   });
-
-  // describe('#getFrameBonusResult', function(){
-  //   it('a game has 10 frames',function(){
-  //     game.playEntireGame()
-  //     expect(game._frameResults.length).toBe(10)
-  //     expect(frame._getRegularScore).toHaveBeenCalled()
-  //   });
-  // });
 
   describe('#updateLastGameResults', function(){
     it('updates game scores with frame results',function(){

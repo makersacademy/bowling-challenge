@@ -24,11 +24,6 @@ $(document).ready(function() {
     }
   }
 
-  function printResultsBeforeLastGame(){
-    $("#result-frame-" + (game._frameNumber-1)).html(game._frameScore[game._frameNumber-2]);
-    $("#total").html(game._finalScore(game._frameScore));
-  }
-
   function printResultsLastGame(){
     $("#result-frame-" + (game._frameNumber)).html(game._frameScore[game._frameScore.length-1]);
     $("#total").html(game._finalScore(game._frameScore));
@@ -58,71 +53,56 @@ $(document).ready(function() {
   $("#game-over").hide();
 
   $("#play-new-game").click(function(){
-    game = new Game()
     $(this).hide();
-    frame = game.createNewFrame();
+    game = new Game()
     $("#ball-1").show();
   });
 
   $("#ball-1").click(function(){
     $(this).hide();
-    Roll(1, frame.INITIALSTANDINGPINS)
+    frame = game.createNewFrame();
+    Roll(frame.BALL1, frame.INITIALSTANDINGPINS)
     frame.checkStrike();
-    if (game._frameNumber<10){
-      if (frame.getStrikeStatus()==="yes"){
+    if (game._frameNumber<10 && frame.getStrikeStatus()==="yes"){
         calculateResult();
         printResults();
-        frame = game.createNewFrame();
         $("#ball-1").show();
-      } else {
-        $("#ball-2").show();
-      }
-    } else if(game._frameNumber===10){
-      if(frame.getStrikeStatus()==="yes"){
+    } else if (game._frameNumber===10 && frame.getStrikeStatus()==="yes"){
         $("#ball-add1").show()
         $("#10frame_add1").show();
         calculateResult();
         printResults();
-      } else {
-        $("#ball-2").show();
-      }
     } else {
-      $("#play-new-game").show();
+        $("#ball-2").show();
     }
   });
 
   $("#ball-2").click(function(){
     $(this).hide();
-    Roll(2, frame.INITIALSTANDINGPINS-frame._results[0]);
+    Roll(frame.BALL2, frame.INITIALSTANDINGPINS-frame._results[0]);
     frame.checkSpare();
+    calculateResult();
+    printResults();
     if (game._frameNumber<10){
-      calculateResult();
-      printResults();
-      frame = game.createNewFrame();
       $("#ball-1").show();
-    } else if (game._frameNumber===10 && frame.getSpareStatus()==="yes") {
+    } else if (game._frameNumber===10 && frame.getSpareStatus()==="yes"){
       $("#10frame_add1").show();
       $("#ball-add1").show();
-      calculateResult();
-      printResultsBeforeLastGame();
     } else {
-      calculateResult();
-      printResults();
       gameType();
       $("#game-over").show();
     }
   });
 
   $("#ball-add1").click(function(){
-    additionalRoll(1, frame.INITIALSTANDINGPINS);
     $(this).hide();
+    additionalRoll(frame.BALL1, frame.INITIALSTANDINGPINS);
+    game.updateLastGameResults(frame);
+    printResultsLastGame();
     if (frame.getStrikeStatus() === 'yes'){
-      game.updateLastGameResults(frame);
       $("#ball-add2").show();
       $("#10frame_add2").show();
     } else {
-      game.updateLastGameResults(frame);
-      printResultsLastGame();
       $("#game-over").show();
     }
   });
@@ -134,7 +114,7 @@ $(document).ready(function() {
     } else {
       leftPins = frame.INITIALSTANDINGPINS - frame._results[frame._results.length-1]
     }
-    additionalRoll(2, leftPins);
+    additionalRoll(frame.BALL2, leftPins);
     game.updateLastGameResults(frame);
     printResultsLastGame();
     gameType();

@@ -1,6 +1,8 @@
 function Frame(){
   'use strict'
   this.INITIALSTANDINGPINS = 10
+  this.BALL1 = 1
+  this.BALL2 = 2
   this._strike = "no";
   this._spare = "no";
   this._regularScore = 0;

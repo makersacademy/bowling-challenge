@@ -38,6 +38,11 @@
   color: white;
 }
 
+#game-type {
+  padding-top: 0.4em;
+  color: white;
+}
+
 #total-points {
   color: white;
   font-size: 20px;

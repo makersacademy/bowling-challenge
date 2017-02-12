@@ -1,6 +1,6 @@
 'use strict';
 
-describe('player', function(){
+describe('Player', function(){
   var player;
   var blankScoreCard
   var blankScore

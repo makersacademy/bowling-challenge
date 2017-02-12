@@ -1,6 +1,6 @@
 'use strict';
 
-describe('pins', function(){
+describe('Pins', function(){
   var pins;
 
   beforeEach(function(){

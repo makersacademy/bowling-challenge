@@ -1,6 +1,6 @@
 'use strict'
 
-describe('bowling', function(){
+describe('Bowling', function(){
   var bowling;
   var player;
   var pins;

@@ -22,8 +22,10 @@ $ game.pinsKnockedDown(4)
 HAVE FUN!
 
 ```
+**Travis CI Status Budge:**
+[![Build Status](https://travis-ci.org/nenoch/bowling-challenge.svg?branch=master)](https://travis-ci.org/nenoch/bowling-challenge)
 
-* WIP: Refactoring and implementing jQuery interface.
+* WIP: Working on 10th frame features, refactoring and implementing jQuery interface.
 
 Task:
 -----

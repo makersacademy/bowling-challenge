@@ -12,18 +12,33 @@ describe("Bowling", function() {
      expect(game.score()).toEqual(20);
   });
 
-  it("Can roll gutterGame", function(){
+  it("Can roll gutter game", function(){
      rollMany(0, 20);
      expect(game.score()).toEqual(0);
   });
 
-  it('Can roll a spare (adds a bonus 3 to final score)', function(){
+  it('Can roll a spare (adds a bonus value of 3rd ball thrown)', function(){
      game.roll(5);
      game.roll(5);
      game.roll(2);
      rollMany(0,17);
      expect(game.score()).toBe(14);
   });
+
+  it('Can roll a Strike ', function(){
+    game.roll(10);
+    game.roll(8);
+    game.roll(1);
+    rollMany(0,16);
+    expect(game.score()).toBe(28);
+  });
+
+  it('can roll perfect game'), function(){
+    game.rollMany(10,22);
+    expect(game.score()).toBe(300);
+  });
+
+
 
   var rollMany = function (pins, rolls) {
     for (var i = 0; i < rolls; i++) {

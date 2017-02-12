@@ -32,9 +32,16 @@ describe('Game', function() {
     });
 
     it('player fails to knock over all pins', function() {
-      game.bowl(8,1);
+      game.bowl(8);
+      game.bowl(1);
       expect(game.open()).not.toEqual(game.PINS);
     });
+
+    it('An error message displays if a player enters a value greater than reamining pins', function() {
+      game.bowl(8);
+      expect(function(){ game.bowl(8); }).toThrowError('Pin entry exceeded number of remaining pins. please re-enter score');
+    });
+
 
     // it('calculates to bonus for a strike', function() {
     //   game.bowl(10,0);

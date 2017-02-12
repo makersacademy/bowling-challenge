@@ -13,30 +13,34 @@ function Game() {
   this._turkey = false;
   this.count = 0;
 }
-  Game.prototype.frameNumber = function () {
-    if (this.count == 9) {
-      console.log("last frame");
-      this.lastFrame();
-    };
-  };
+
+
 
   Game.prototype.bowl = function(ball) {
          this._rack.push(ball);
-         console.log(this._rack);
-      if (this._rack[0] == this.BONUS && this._rack.length == 1) {
+         this.currentScore();
+         this.errorMessage();
+    if (this.count == 9) {
+      this.lastFrame();
+  } else if (this._rack[0] == this.BONUS && this._rack.length == 1) {
         this.score();
-        console.log(this._strike);
         this.reRack();
         this.count ++
-    } else if (this._rack.length == 2) {
+  } else if (this._rack.length == 2) {
         this.score();
-        console.log(this._rack.length);
         this.reRack();
         this.count ++
-    }
-        this.frameNumber();
+    };
   };
 
+  Game.prototype.errorMessage = function() {
+    if (this.count < 9 && this._currentScore > this.PINS) {
+      this._rack.pop();
+      throw new Error('Pin entry exceeded number of remaining pins. please re-enter score');
+
+    }
+
+  };
 
   Game.prototype.reRack = function() {
     this._rack = [];
@@ -54,11 +58,10 @@ function Game() {
   };
 
   Game.prototype.score = function() {
-    this.currentScore();
+    // this.currentScore();
     this.accumulator();
      if (this._rack[0] == this.PINS && this._spare == false) {
        this.strike();
-       console.log(this._strike);
         if (this._turkey == true)  {
               // posts 2 backdated scores if x3 stikes (no previous spare)
               this.frameScore.push(this._tally += this.BONUS * 3);
@@ -125,7 +128,22 @@ function Game() {
       this._spare = false;
    };
 
-  Game.prototype.lastFrame = function(ball) {
-      console.log("last frame");
-      this._rack = [ball];
+  Game.prototype.lastFrame = function() {
+      // bowl strike on 1st bowl
+      if (this._rack[0] == this.PINS && this._rack.length == 1) {
+        this.frameScore.push(this._tally += this.BONUS * 3);
+      // bowl strike on second bowl
+    } else if (this._currentScore == this.PINS && this._rack.length == 2) {
+          this.frameScore.push(this._tally += (this._rack[0] + this.BONUS));
+    } else if (this._currentScore != this.PINS && this._rack.length == 2) {
+          this.score();
+          console.log('End of frame')
+          return 'End of frame';
+      //
+    } else if (this._rack.length == 3) {
+      this.currentScore();
+      this.frameScore.push(this._tally += this._currentScore);
+      console.log('End of frame')
+      return 'End of frame';
+    }
   };

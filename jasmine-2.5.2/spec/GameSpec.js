@@ -48,7 +48,7 @@ describe("Game", function() {
     spyOn(game, 'setPins').and.returnValue(4);
     for (var i = 0; i < 20; i++) {
       game.setPins(4);
-      game.updateFrameRollAndPins();
+      game.resetFrameRollAndPins();
     };
     expect(game.isOver(0)).toEqual(true);
   });

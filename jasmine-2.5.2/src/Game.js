@@ -13,7 +13,7 @@ Game.prototype.setPins = function(hits) {
   this._pins -= hits;
 };
 
-Game.prototype.updateFrameRollAndPins = function() {
+Game.prototype.resetFrameRollAndPins = function() {
   if (this.isEndOfFrame()) {
     this.setUpNewFrame()
   } else {

@@ -10,15 +10,13 @@ Bonus.prototype.getNextMultiplier = function() {return this._nextMultiplier;};
 Bonus.prototype.getNextButOneMultiplier = function() {return this._nextButOneMultiplier;};
 
 
-Bonus.prototype.useBonuses = function() { // "use up" after applying to current row; shift along one space
+Bonus.prototype.useBonuses = function() {
   this._nextMultiplier = this._nextButOneMultiplier;
   this._nextButOneMultiplier = 0;
   this._strikeOrSpare = "";
 };
 
-// to do put all logic in here? ie whether frame <=10 && pins == 0
-// no prob better to put decisions in caller
-Bonus.prototype.recordStrikeOrSpare = function(roll) { // add to next in either case and also to nextbut1 if strike
+Bonus.prototype.recordStrikeOrSpare = function(roll) {
     (roll == 1) ? this.record("Strike") : this.record("Spare");
 };
 Bonus.prototype.record = function(type) {

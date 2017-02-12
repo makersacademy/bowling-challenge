@@ -2,35 +2,50 @@ $( document ).ready(function() {
   var game = new Game();
   var score = new Score();
   var bonus = new Bonus();
-  $( '#addScore' ).click(function() { // to do: want to be able to enter by just pressing return as well as click
-    var hits = parseInt($('#scoreBox').val());
+  $('#scoreBox').val("");
+  $('#scoreBox').focus();
+  $('#addScore').click(addScore);
+  $('html').keypress(function (e) {
+   var key = e.which;
+   if(key == 13) {addScore();};
+  });
+
+  function addScore() {
+    var hits;
+    if ($('#scoreBox').val() == "") {
+      hits = 0;
+    } else {
+      hits = parseInt($('#scoreBox').val());
+    }
     if (hits > game.getPins()) { hits = game.getPins()};
-    // to do: need to catch hits > pins left probably in browser, as well as in model (currently doesin setPins not setHits)
     if (!game.isOver(bonus.getNextMultiplier())) {
-      game.setPins(hits); // to do: mv game scoreCard; scoreCard has a score; then scoreCard.nextRow()
-      score.setHits(hits); // to do: score has a bonusRecord
-      score.setBonus(bonus.getNextMultiplier()); bonus.useBonuses(); // to do: mv bonus bonusRecord and put in score
-      score.updateRollTotal(game.getFrame()); // to do: call in an  if within game(=scoreCard) then with true or false param
-      score.updateRunningTotal();
+
+      game.setPins(hits);
+      score.setHits(hits);
+      score.setBonus(bonus.getNextMultiplier()); bonus.useBonuses();
+
+      if (game.getFrame() < 11) {score.addHitsToRollTotal();};
+      score.addBonusToRollTotal();
+      score.addRollTotalToRunningTotal();
       if (game.areNoPinsLeft() && game.getFrame() <= 10) {
         bonus.recordStrikeOrSpare(game.getRoll());
       };
-      writeValues();
-      $('#scoreBox').val(0);
-      $('#scoreBox').focus(); // to do: doesn't get focus as I intended
-      game.updateFrameRollAndPins();
+
+      printValues();
+      score.resetRollTotal();
+      game.resetFrameRollAndPins();
+
+      $('#scoreBox').val("");
+      $('#scoreBox').focus();
     } else {
       gameOver();
     };
-    // to do:
-    //scoreCard.nextRow(hits)
-    // writeValues()
-    // $('#scoreBox').val(0);
-    // scoreCard.getReady()
-    // to do: stop game after 10 frames unless bonuses
-  });
+  };
 
-  function writeValues() {
+
+
+
+  function printValues() {
     $("table").append("<tr>" +
     "<td>" + game.getFrame() + "</td>" +
     "<td>" + game.getRoll() + "</td>" +

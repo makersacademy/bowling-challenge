@@ -1,4 +1,4 @@
-describe('Lane', function() {
+describe('A lane', function() {
   var lane;
 
   beforeEach(function() {

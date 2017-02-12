@@ -1,4 +1,4 @@
-describe('Frame', function() {
+describe('A frame', function() {
   var frame;
   var aGame;
 

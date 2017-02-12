@@ -13,10 +13,24 @@ Frame.prototype._updateFrame = function(pins) {
   this.frameScore += pins;
 }
 
+Frame.prototype.isAStrike = function(pins) {
+  if (pins === this.game.GAME_PINS) {
+    return true
+  } else {
+    return false
+  }
+}
+
 Frame.prototype.addRoll = function(pins) {
   if (this.rolls.length === this.FRAME_LENGTH) {
     throw new Error('Impossibru - frame overflow!')
   }
-  this._updateFrame(pins)
-  this.game.addToScore(pins)
+
+  if (this.isAStrike(pins)) {
+    this._updateFrame(pins);
+    this.game.addStrikeToScore(pins)
+  } else {
+    this._updateFrame(pins);
+    this.game.addToScore(pins)
+  }
 }

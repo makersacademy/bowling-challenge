@@ -43,14 +43,4 @@ describe('Game', function() {
     });
 
 
-    // it('calculates to bonus for a strike', function() {
-    //   game.bowl(10,0);
-    //   expect(game.strike()).toBe(true);
-    //   expect(game.bonus()).not.toBeNull();
-    // });
-
-    // it('calls final frame function when 9 games have been playes', function() {
-    //   game._frame.length = 8;
-    //   expect(game.lastFrame()).toHaveBeenCalled();
-    // });
 });

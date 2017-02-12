@@ -33,6 +33,7 @@ describe("Frame", function() {
     it("should return true if all pins have been knocked down in 2 rolls", function() {
       frame.countPins(5)
       frame.countPins(5)
+      console.log("HERE",frame.rollsNum)
       expect(frame.isSpare()).toBeTruthy();
     });
     it("should return false if some pins are still standing after  2 rolls", function() {
@@ -46,50 +47,18 @@ describe("Frame", function() {
     });
   });
 
-  // describe("#rollsCounter", function() {
-  //   it("records the number of rolls in a frame", function() {
-  //     frame.rollsCounter();
-  //     expect(frame.maxRolls).toEqual(1);
-  //   });
-  // });
-  // describe("when song has been paused", function() {
-  //   beforeEach(function() {
-  //     player.play(song);
-  //     player.pause();
-  //   });
-  //
-  //   it("should indicate that the song is currently paused", function() {
-  //     expect(player.isPlaying).toBeFalsy();
-  //
-  //     // demonstrates use of 'not' with a custom matcher
-  //     expect(player).not.toBePlaying(song);
-  //   });
-  //
-  //   it("should be possible to resume", function() {
-  //     player.resume();
-  //     expect(player.isPlaying).toBeTruthy();
-  //     expect(player.currentlyPlayingSong).toEqual(song);
-  //   });
-  // });
-  //
-  // // demonstrates use of spies to intercept and test method calls
-  // it("tells the current song if the user has made it a favorite", function() {
-  //   spyOn(song, 'persistFavoriteStatus');
-  //
-  //   player.play(song);
-  //   player.makeFavorite();
-  //
-  //   expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
-  // });
-  //
-  // //demonstrates use of expected exceptions
-  // describe("#resume", function() {
-  //   it("should throw an exception if song is already playing", function() {
-  //     player.play(song);
-  //
-  //     expect(function() {
-  //       player.resume();
-  //     }).toThrowError("song is already playing");
-  //   });
-  // });
+  describe("#tenthFrame", function(){
+    it("should add 1 bonus roll to the frame if spare", function() {
+      frame.countPins(3)
+      frame.countPins(7)
+      frame.tenthFrame()
+      expect(frame.rollsNum).toEqual(1);
+    });
+    it("should add 2 bonus rolls to the frame if strike", function() {
+      frame.countPins(10)
+      frame.tenthFrame()
+      expect(frame.rollsNum).toEqual(2);
+    });
+  });
+
 });

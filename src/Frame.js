@@ -1,5 +1,6 @@
 function Frame() {
   this.totPins = 10;
+  this.rollsNum = 2;
   this.rolls = [];
   this.score = 0;
 }
@@ -12,9 +13,9 @@ Frame.prototype.countPins = function(number) {
   this.roll = new Roll(number);
   console.log(this.roll.score);
   this.rolls.push(this.roll);
+  this.rollsNum -= 1;
   this.totPins -= number;
   this.score += number;
-  // console.log(this.score);
 };
 
 Frame.prototype.isStrike = function() {
@@ -22,5 +23,14 @@ Frame.prototype.isStrike = function() {
 };
 
 Frame.prototype.isSpare = function() {
-  return this.rolls.length == 2 && this.isStrike();
+  return this.rollsNum == 0 && this.isStrike();
+};
+
+Frame.prototype.tenthFrame = function() {
+  if (this.isSpare()){
+    this.rollsNum += 1;
+  }
+  else if (this.isStrike()) {
+    this.rollsNum += 1;
+  }
 };

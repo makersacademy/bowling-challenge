@@ -23,7 +23,7 @@ describe("Bonus", function() {
   });
   it('resets used bonuses', function() {
     bonus.recordStrikeOrSpare(1);
-    bonus.useBonuses();
+    bonus.deleteUsedMultipliers();
     expect(bonus.getNextMultiplier()).toEqual(1);
     expect(bonus.getNextButOneMultiplier()).toEqual(0);
   });

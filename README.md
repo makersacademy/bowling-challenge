@@ -14,5 +14,3 @@ Score ten pin bowling for one player (in JavaScript). Optionally create a nice i
  - bonus 1 per pin for the 2 rolls following a strike
  - bonus 1 per pin for the first roll following a spare
 - If get a strike or spare in final round, get 1 or 2 extra rolls respectively. These score 1 per pin with no extra bonus.
-- A gutter game is a final total of 0.
-- A perfect game is a final total of 300.

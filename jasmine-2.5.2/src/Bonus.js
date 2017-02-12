@@ -9,8 +9,7 @@ Bonus.prototype.getStrikeOrSpare = function() {return this._strikeOrSpare;};
 Bonus.prototype.getNextMultiplier = function() {return this._nextMultiplier;};
 Bonus.prototype.getNextButOneMultiplier = function() {return this._nextButOneMultiplier;};
 
-
-Bonus.prototype.useBonuses = function() {
+Bonus.prototype.deleteUsedMultipliers = function() {
   this._nextMultiplier = this._nextButOneMultiplier;
   this._nextButOneMultiplier = 0;
   this._strikeOrSpare = "";

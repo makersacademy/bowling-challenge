@@ -31,29 +31,29 @@ $( document ).ready(function() {
     };
   };
 
-  function setValues(hits) {
-    game.setPins(hits);
-    score.setHits(hits);
-    score.setBonus(bonus.getNextMultiplier());
-    bonus.useBonuses();
-  };
-
-  function updateTotals() {
-    if (game.getFrame() < 11) {score.addHitsToRollTotal();};
-    score.addBonusToRollTotal();
-    score.addRollTotalToRunningTotal();
-  }
-
   function validate(input) {
     if (isNaN(input) || input === undefined || input == "") {return 0;}
     input = parseInt(input);
     if (input < 0) {return 0;}
     if (input > game.getPins()) {input = game.getPins();}
     return input;
-  }
+  };
+
+  function setValues(hits) {
+    game.setPins(hits);
+    score.setHits(hits);
+    score.setBonus(bonus.getNextMultiplier());
+    bonus.deleteUsedMultipliers();
+  };
+
+  function updateTotals() {
+    if (game.getFrame() < 11) {score.addHitsToRollTotal();};
+    score.addBonusToRollTotal();
+    score.addRollTotalToRunningTotal();
+  };
 
   function printValues() {
-    var tr
+    var tr;
     (rowCounter % 2 == 1) ? tr = "<tr class='even'>" : tr = "<tr>";
     $("table").append(tr +
     "<td class='t-frame'>" + game.getFrame() + "</td>" +
@@ -66,17 +66,17 @@ $( document ).ready(function() {
     "</tr>");
   };
 
-  function formattedBonus() {
-    if (score.getBonus() > 0) {
-      return "+" + score.getBonus();
+  function formattedHits() {
+    if (game.getFrame() < 11) {
+      return score.getHits();
     } else {
       return "";
     }
   };
 
-  function formattedHits() {
-    if (game.getFrame() < 11) {
-      return score.getHits();
+  function formattedBonus() {
+    if (score.getBonus() > 0) {
+      return "+" + score.getBonus();
     } else {
       return "";
     }

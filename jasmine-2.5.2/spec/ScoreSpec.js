@@ -1,6 +1,5 @@
 describe("Score", function() {
   var score;
-  var bonus;
 
   beforeEach(function() {
     score = new Score();

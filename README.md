@@ -22,6 +22,12 @@ $ cd bowling-challenge
 $ open SpecRunner.html
 ```
 
+### Or to play the game in the browser:
+
+```
+$ open index.html
+```
+
 
 ### Optional Extra
 

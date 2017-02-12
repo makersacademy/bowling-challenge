@@ -9,6 +9,29 @@ Game = function() {
   this._frame8 = new Frame();
   this._frame9 = new Frame();
   this._frame10 = new Frame();
+  this._frameTotal = [];
+  this._gameTotal = 0;
+};
+
+Game.prototype.getGameTotal = function() {
+  var a = this._frame1._frameScore;
+  var b = this._frame2._frameScore;
+  var c = this._frame3._frameScore;
+  var d = this._frame4._frameScore;
+  var e = this._frame5._frameScore;
+  var f = this._frame6._frameScore;
+  var g = this._frame7._frameScore;
+  var h = this._frame8._frameScore;
+  var i = this._frame9._frameScore;
+  var j = this._frame10._frameScore;
+
+  this._frameTotal.push(a,b,c,d,e,f,g,h,i,j);
+
+  this._gameTotal = this._frameTotal.reduce(function(a, b) {
+    return a + b;
+  }, 0);
+
+  return this._gameTotal;
 };
 
 Game.prototype.getBonus = function(previousFrame, roll1) {
@@ -122,4 +145,5 @@ Game.prototype.playFrame10 = function(roll1, roll2) {
       this.getBonus(this._frame8, roll1);//prev prev frame gets a bonus
     }
   }
+  this.getGameTotal();
 };

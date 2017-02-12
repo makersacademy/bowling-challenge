@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <lang="en">
+    <meta charset="UTF-8">
     <title>Let's Bowl!</title>
     <!-- <link rel="stylesheet" type="text/css" href="./css/style.css"> -->
   </head>
-  <h1> Let's Bowl! </h1>
-  <h2> Enter your score: </h2>
   <body>
     <section>
-      <h1 id="bowling_score"></h1>
-      <p class= 'numbers'>
-        <button id="0">0</button>
-        <button id="1">1</button>
-        <button id="2">2</button>
-        <button id="3">3</button>
-        <button id="4">4</button>
-        <button id="5">5</button>
-        <button id="6">6</button>
-        <button id="7">7</button>
-        <button id="8">8</button>
-        <button id="9">9</button>
-        <button id="10">10</button>
-        <button id="next_frame">Next Frame</button>
-      </p>
+      <div class="play_game">
+      <h1 id="welcome">Welcome to the Bowling Scorecard!</h1>
+      <div class= 'button'>
+        <button id="0" class="butn--default">0</button>
+        <button id="1" class="butn--default">1</button>
+        <button id="2" class="butn--default">2</button>
+        <button id="3" class="butn--default">3</button>
+        <button id="4" class="butn--default">4</button>
+        <button id="5" class="butn--default">5</button>
+        <button id="6" class="butn--default">6</button>
+        <button id="7" class="butn--default">7</button>
+        <button id="8" class="butn--default">8</button>
+        <button id="9" class="butn--default">9</button>
+        <button id="10" class="butn--default">10</button>
+        <button id="new_game">New Game</button>
+      </div><br>
       <table border='1'>
       <tr>
         <th colspan='2'>Frame 1</th>
@@ -47,6 +48,7 @@
     </section>
 
     <script src='jquery-3.1.1.js'></script>
+      <script src="src/game_ui.js"></script>
     <script src='src/Frame.js'></script>
     <script src='src/Game.js'></script>
     <script src="src/App.js"></script>

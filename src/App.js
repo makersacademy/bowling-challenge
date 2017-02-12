@@ -9,6 +9,7 @@ function startGame(){
 
 function addFrame(){
   if (game._frames.length >= 10) {
+    game._complete = true
     console.log("The game is over! You scored " + game.currentScore);
   } else {
     let frame = new Frame();
@@ -18,3 +19,4 @@ function addFrame(){
 }
 
 startGame();
+GameUI.displayNext();

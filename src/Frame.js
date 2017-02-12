@@ -23,6 +23,7 @@ Frame.prototype.endFrame = function(num){
   this._scores.push(num);
   this.addScore();
   this._frameComplete = true;
+  game.updateScore();
   addFrame();
 };
 
@@ -31,9 +32,17 @@ Frame.prototype.bowl = function(num) {
     this.strikeScored(num);
     this._scores.push(num);
   } else if (this._scores.length === 1) {
-    this.spareScored(num);
-    this.endFrame(num);
+    if (this.isValidScore(num)) {
+      this.spareScored(num);
+      this.endFrame(num);
+    } else {
+      throw new Error("Score not correct! Try Again");
+    }
   }
+};
+
+Frame.prototype.isValidScore = function(num){
+  return (this._scores[0] + num <= 10);
 };
 
 Frame.prototype.strikeScored = function(num){

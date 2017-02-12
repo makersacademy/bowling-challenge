@@ -1,25 +1,50 @@
 $( document ).ready(function() {
   console.log("Ready to go!");
-  var game = new Game();
-  var frame = new Frame();
 
-  $('#0').on('click', function(){
-    frame.firstBowl(0);
-    $('#first_bowl').text(frame._firstBowlScore);
+
+  $('#0').on('click', function() {
+    game.bowl(0);
   });
 
-  $('#2').on('click', function(){
-    frame.secondBowl(2);
-    $('#second_bowl').text(frame._secondBowlScore);
-      $('#current_score').text(frame.viewScore());
+  $('#1').on('click', function() {
+    game.bowl(1);
   });
 
-  $('#current_score');
+  $('#2').on('click', function() {
+    game.bowl(2);
+  });
 
+  $('#3').on('click', function() {
+    game.bowl(3);
+  });
 
+  $('#4').on('click', function() {
+    game.bowl(4);
+  });
 
+  $('#5').on('click', function() {
+    game.bowl(5);
+  });
 
+  $('#6').on('click', function() {
+    game.bowl(6);
+  });
 
+  $('#7').on('click', function() {
+    game.bowl(7);
+  });
+
+  $('#8').on('click', function() {
+    game.bowl(8);
+  });
+
+  $('#9').on('click', function() {
+    game.bowl(9);
+  });
+
+  $('#10').on('click', function() {
+    game.bowl(10);
+  });
 });
 
 

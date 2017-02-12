@@ -9,13 +9,18 @@ function Game(){
   this._currentFrameIndex = 0;
 }
 
-Game.prototype.viewCurrentScore = function() {
-  this._frames.forEach(function(frame) {
-    this.currentScore += frame._frameScore;
-    console.log(frame._frameScore);
-    console.log(this.currentScore);
-  }, this);
+Game.prototype.viewCurrentScore = function(){
   return this.currentScore;
+};
+// Game.prototype.viewCurrentScore = function() {
+//   this._frames.forEach(function(frame) {
+//     this.currentScore += frame._frameScore;
+//   }, this);
+//   return this.currentScore;
+// };
+
+Game.prototype.updateScore = function() {
+  this.currentScore += this._frames[this._currentFrameIndex]._frameScore
 };
 
 Game.prototype.bowl = function(num) {
@@ -32,6 +37,10 @@ Game.prototype.startGame = function(){
       this._frames.push(frame);
     }
   };
+
+Game.prototype.isComplete = function(){
+  return this._complete === true;
+}
 
 // Game.prototype.addFrame = function(frame) {
 //     this.checkEnd();

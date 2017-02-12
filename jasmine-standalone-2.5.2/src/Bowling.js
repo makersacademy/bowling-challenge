@@ -1,13 +1,13 @@
 var Scorecard = function Scorecard() {
-  this.firstBowl = 0;
-  this.secondBowl = 0;
+  this.firstBowl = null;
+  this.secondBowl = null;
   this.lastFrame = new Array;
   this.allFrames = new Array;
   this.playerScores = new Array;
 };
 
 Scorecard.prototype.bowl = function(number){
-  if(this.firstBowl == 0) {
+  if(this.firstBowl == null) {
     this.bowlOne(number);
   } else {
     this.bowlTwo(number);
@@ -73,6 +73,6 @@ Scorecard.prototype.addScore = function(number){
 };
 
 Scorecard.prototype.resetBowls = function(number){
-  this.firstBowl = 0;
-  this.secondBowl = 0;
+  this.firstBowl = null;
+  this.secondBowl = null;
 };

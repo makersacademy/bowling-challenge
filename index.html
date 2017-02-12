@@ -4,27 +4,113 @@
   <head>
     <meta charset="utf-8">
     <title>Bowling Scorecard</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
 
   <body>
-    <h3>Click number of pins knocked down.</h3>
-    <button id="button-0" type="button">0</button>
-    <button id="button-1" type="button">1</button>
-    <button id="button-2" type="button">2</button>
-    <button id="button-3" type="button">3</button>
-    <button id="button-4" type="button">4</button>
-    <button id="button-5" type="button">5</button>
-    <button id="button-6" type="button">6</button>
-    <button id="button-7" type="button">7</button>
-    <button id="button-8" type="button">8</button>
-    <button id="button-9" type="button">9</button>
-    <button id="button-10" type="button">10</button>
 
-    <p><span id="score-1"></span></p>
+    <section class="pins">
+      <h3 id="title">Click number of pins knocked down.</h3>
+      <button id="button-0" type="button">0</button>
+      <button id="button-1" type="button">1</button>
+      <button id="button-2" type="button">2</button>
+      <button id="button-3" type="button">3</button>
+      <button id="button-4" type="button">4</button>
+      <button id="button-5" type="button">5</button>
+      <button id="button-6" type="button">6</button>
+      <button id="button-7" type="button">7</button>
+      <button id="button-8" type="button">8</button>
+      <button id="button-9" type="button">9</button>
+      <button id="button-10" type="button">10</button>
+    </section>
+
+    <br>
+    <br>
+
+    <table class="table">
+      <tr>
+        <th colspan="5">Player 1</th>
+      </tr>
+      <tr>
+        <td>Frame</td>
+        <td>Bowl 1</td>
+        <td>Bowl 2</td>
+        <td colspan="2">Total</td>
+      </tr>
+      <tr>
+        <td class="table-dark">1</td>
+        <td id="F1B1" class="table-dark"></td>
+        <td id="F1B2" class="table-dark"></td>
+        <td id="F1T" class="table-dark" colspan="2"></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td></td>
+        <td></td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="table-dark">3</td>
+        <td class="table-dark"></td>
+        <td class="table-dark"></td>
+        <td class="table-dark" colspan="2"></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td></td>
+        <td></td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="table-dark">5</td>
+        <td class="table-dark"></td>
+        <td class="table-dark"></td>
+        <td class="table-dark" colspan="2"></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td></td>
+        <td></td>
+        <td  colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="table-dark">7</td>
+        <td class="table-dark"></td>
+        <td class="table-dark"></td>
+        <td class="table-dark" colspan="2"></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td></td>
+        <td></td>
+        <td  colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="table-dark">9</td>
+        <td class="table-dark"></td>
+        <td class="table-dark"></td>
+        <td class="table-dark" colspan="2"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Bowl 1</td>
+        <td>Bowl 2</td>
+        <td>Bowl 3</td>
+        <td>Total</td>
+      </tr>
+      <tr>
+        <td class="table-dark">10</td>
+        <td class="table-dark"></td>
+        <td class="table-dark"></td>
+        <td class="table-dark"></td>
+        <td class="table-dark"></td>
+      </tr>
+    </table>
+
 
     <script src="jquery-3.1.1.js"></script>
     <script src="interface.js"></script>
-    <script src="bowling.js"></script>
+    <script src="./src/bowling.js"></script>
   </body>
 
 </html>

@@ -1,8 +1,8 @@
 function Game(scoreboard = new Scoreboard()){
-  this.MAX_ROLLS = 2;
+  this.max_rolls = 2;
 
   this._frameScore = 0;
-  this._rollTracker = this.MAX_ROLLS;
+  this._rollTracker = 2;
   this._frame = 1;
   this._totalScore = 0;
   this.frameRolls = [];
@@ -11,11 +11,11 @@ function Game(scoreboard = new Scoreboard()){
   this.bonusScore = 0;
 }
 
-
-
 Game.prototype.updateFrameScore = function(pins){
-  if (pins === 10){
+  if (this.isStrike(pins)){
     this.strikeLogic(pins);
+  } else if (this.isSpare(pins)) {
+    this.spareLogic(pins);
   } else {
   this.bonus(pins);
   this._frameScore += pins;
@@ -28,7 +28,6 @@ Game.prototype.updateRollTracker = function(){
   this._rollTracker -= 1;
   console.log(this._rollTracker)
   if (this._rollTracker === 0){
-    console.log("Hello");
     this.updateFrame();
   }
 }
@@ -36,12 +35,10 @@ Game.prototype.updateRollTracker = function(){
 Game.prototype.updateFrame = function(){
     this.updateTotalScore();
     this.updateScoreBoard();
-    this.spareChecker();
-    this.frameRolls = [];
-    this._frameScore = 0;
-    this.bonusScore = 0;
-    this._frame += 1;
-    this._rollTracker = this.MAX_ROLLS;
+    this.resetFrame();
+    if(this.isEnd()){
+      return "Game Over";
+    }
 }
 
 Game.prototype.updateTotalScore = function(){
@@ -51,9 +48,24 @@ Game.prototype.updateTotalScore = function(){
 Game.prototype.strikeLogic = function(pins){
   this._frameScore += pins;
   this.frameRolls.push(pins);
-  this.frameRolls.push(0);
-  this.bonusCounter += 2;
-  this.updateFrame();
+  if(this.isFrameTen()){
+    this.frameTenBonus();
+  } else {
+    this.frameRolls.push(0);
+    this.bonusCounter = 2;
+    this.updateFrame();
+  }
+}
+
+Game.prototype.spareLogic = function(pins){
+  this._frameScore += pins;
+  this.frameRolls.push(pins);
+  if(this.isFrameTen()){
+    this.frameTenBonus();
+  } else {
+    this.spareBonusUpdate();
+    this.updateFrame();
+  }
 }
 
 Game.prototype.updateScoreBoard = function(){
@@ -70,8 +82,47 @@ Game.prototype.bonus = function(pins){
   };
 }
 
-Game.prototype.spareChecker = function(){
-  if((this._frameScore === 10) && (!this.frameRolls.includes(0))){
-    this.bonusCounter += 1;
+Game.prototype.spareBonusUpdate = function(){
+    this.bonusCounter = 1;
+}
+
+Game.prototype.frameTenBonus = function(){
+  this.max_rolls = 3;
+  this.rollTracker = this.max_rolls - this.frameRolls.length;
+  if (this._rollTracker === 0){
+    this.updateFrame();
+  }
+}
+
+Game.prototype.resetFrame = function(){
+  this.frameRolls = [];
+  this._frameScore = 0;
+  this.bonusScore = 0;
+  this._frame += 1;
+  this._rollTracker = this.max_rolls;
+}
+
+
+Game.prototype.isEnd = function(){
+  if (this._frame > 10){
+    return true;
+  }
+}
+
+Game.prototype.isFrameTen = function(){
+  if (this._frame === 10){
+    return true;
+  }
+}
+
+Game.prototype.isStrike = function(pins){
+  if(pins === 10){
+    return true;
+  }
+}
+
+Game.prototype.isSpare = function(pins){
+  if((this._frameScore + pins) === 10){
+    return true;
   };
 }

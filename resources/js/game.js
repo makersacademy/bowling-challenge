@@ -38,14 +38,8 @@ Game.prototype.isStrike = function(frame){
   }
 };
 
-Game.prototype.completeStrike = function(){
-  if (this.frame.length === 1 && this.sumFrame(this.frame) === 10 ){
-    this.frame = [10,0]
-  }
-};
-
 Game.prototype.isSpare = function(frame){
-  if (frame.length === 2 && this.sumFrame(frame) === 10 && frame[0] != 10){
+  if (frame.length === 2 && this.sumFrame(frame) === 10 && frame[0] !== 10){
     return true;
   }else{
     return false;
@@ -63,6 +57,9 @@ Game.prototype.bowl = function() {
 Game.prototype.isFrameFull = function() {
   if (this.frame.length < 2 && this.sumFrame(this.frame) < 10){
     return false;
+  } else if (this.frame.length === 1 && this.frame[0] === 10){
+    this.frame = [10,0];
+    return true;
   } else {
     return true;
   }
@@ -85,7 +82,6 @@ Game.prototype.addFrameToBoard = function(){
     var lastIndex = this.scoreBoard.length - 1
     this.scoreBoard[lastIndex][1] += (this.lastFrameBowled())[0];
   }else if(this.isFrameFull() === true){
-    this.completeStrike();
     this.scoreBoard.push(this.frame);
   }
 };

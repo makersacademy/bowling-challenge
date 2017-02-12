@@ -43,7 +43,7 @@ describe("Joe's Ten Pin Bowling Game", function(){
     });
     it("Adds 0 to array if strike on first roll", function(){
       game.frame = [10];
-      game.completeStrike();
+      game.isFrameFull();
       expect(game.frame).toEqual([10,0]);
     });
     it("Knows if there are any more rolls left in the game", function(){

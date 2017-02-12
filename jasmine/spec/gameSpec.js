@@ -138,7 +138,32 @@ describe('Game', function() {
 
   });
 
+  describe('#frame4', function() {
+    var game;
+      beforeEach(function() {
+        game = new Game();
+      });
 
+    var frame4 = jasmine.createSpy('frame')
+
+    it ('returns the score for the 3rd frame', function() {
+      var _f4Score;
+      var d;
+      b = game.frame4();
+      expect(frame4._f4Score).toEqual(d);
+    });
+    it ('player receives bonus in the previous and the previous, previous game if strike is made', function() {
+      spyOn(frame4, 'getStrikeType').and.returnValue("strike");
+      expect(game._f3Score).toEqual(game._f3Score + 10); //previous
+      expect(game._f2Score).toEqual(game._f2Score + 10); //previous-previous
+    });
+
+    it ('player receives bonus in previous game if half-strike is made', function() {
+      spyOn(frame4, 'getStrikeType').and.returnValue("strike");
+      expect(frame3._f1Score).toEqual(frame3._f1Score + frame3._f2Score); //previous only
+    });
+
+  });
 
 
 

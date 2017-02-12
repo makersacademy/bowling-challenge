@@ -30,6 +30,7 @@ $(document).ready(function(){
       $(this).hide();
       $(this).parent().html(this.value);
       $("#round-1").text(roll1_1.value);
+      $("#total-score").text(roll1_1.value);
     }
 
     if ($(this).attr('id') === 'roll-1.2') {
@@ -44,6 +45,7 @@ $(document).ready(function(){
       $(this).hide();
       $(this).parent().html(this.value);
       $("#round-2").text(roll2_1.value);
+      $("#total-score").text(game.totalScore()+parseInt(roll2_1.value));
     }
 
     if ($(this).attr('id') === 'roll-2.2') {
@@ -58,6 +60,7 @@ $(document).ready(function(){
       $(this).hide();
       $(this).parent().html(this.value);
       $("#round-3").text(roll3_1.value);
+      $("#total-score").text(game.totalScore()+parseInt(roll3_1.value));
     }
 
     if ($(this).attr('id') === 'roll-3.2') {
@@ -72,6 +75,7 @@ $(document).ready(function(){
       $(this).hide();
       $(this).parent().html(this.value);
       $("#round-4").text(roll4_1.value);
+      $("#total-score").text(game.totalScore()+parseInt(roll4_1.value));
     }
 
     if ($(this).attr('id') === 'roll-4.2') {
@@ -86,6 +90,7 @@ $(document).ready(function(){
       $(this).hide();
       $(this).parent().html(this.value);
       $("#round-5").text(roll5_1.value);
+      $("#total-score").text(game.totalScore()+parseInt(roll5_1.value));
     }
 
     if ($(this).attr('id') === 'roll-5.2') {
@@ -100,6 +105,7 @@ $(document).ready(function(){
       $(this).hide();
       $(this).parent().html(this.value);
       $("#round-6").text(roll6_1.value);
+      $("#total-score").text(game.totalScore()+parseInt(roll6_1.value));
     }
 
     if ($(this).attr('id') === 'roll-6.2') {
@@ -114,6 +120,7 @@ $(document).ready(function(){
       $(this).hide();
       $(this).parent().html(this.value);
       $("#round-7").text(roll7_1.value);
+      $("#total-score").text(game.totalScore()+parseInt(roll7_1.value));
     }
 
     if ($(this).attr('id') === 'roll-7.2') {
@@ -128,6 +135,7 @@ $(document).ready(function(){
       $(this).hide();
       $(this).parent().html(this.value);
       $("#round-8").text(roll8_1.value);
+      $("#total-score").text(game.totalScore()+parseInt(roll8_1.value));
     }
 
     if ($(this).attr('id') === 'roll-8.2') {
@@ -142,6 +150,7 @@ $(document).ready(function(){
       $(this).hide();
       $(this).parent().html(this.value);
       $("#round-9").text(roll9_1.value);
+      $("#total-score").text(game.totalScore()+parseInt(roll9_1.value));
     }
 
     if ($(this).attr('id') === 'roll-9.2') {
@@ -156,6 +165,7 @@ $(document).ready(function(){
       $(this).hide();
       $(this).parent().html(this.value);
       $("#round-10").text(roll10_1.value);
+      $("#total-score").text(game.totalScore()+parseInt(roll10_1.value));
     }
 
     if ($(this).attr('id') === 'roll-10.2') {

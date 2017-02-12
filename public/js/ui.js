@@ -19,24 +19,12 @@ $(document).ready(function() {
         }
     });
 
-    var spareNotifier = function() {
-        if (game._frames[(game._currentFrame - 2)].isSpare()) {
-            $("#notification-text").text("SPARE");
-            $("#notification" ).fadeIn( 500, function() {
-            });
-            $( "#notification" ).fadeOut( 2500, function() {
-            });
-        }
-    }
-
-    var strikeNotifier = function() {
-        if (game._frames[(game._currentFrame - 2)].isStrike()) {
-            $("#notification-text").text("STRIKE");
-            $("#notification" ).fadeIn( 500, function() {
-            });
-            $( "#notification" ).fadeOut( 2500, function() {
-            });
-        }
+    var notifier = function(type) {
+        $("#notification-text").text(type);
+        $("#notification" ).fadeIn( 500, function() {
+        });
+        $( "#notification" ).fadeOut( 2500, function() {
+        });
     }
 
     var perfectNotifier = function() {
@@ -56,7 +44,9 @@ $(document).ready(function() {
 
     var firstRoll = function(power) {
         game.bowl(power);
-        strikeNotifier();
+        if(power === 10) {
+            notifier("STRIKE");
+        }
         perfectNotifier()
     };
 
@@ -64,7 +54,10 @@ $(document).ready(function() {
         var firstScore = game.currentFrame().firstScore();
         var pinsLeft = (10 - firstScore);
         game.bowl(Math.floor((pinsLeft / 100) * (power * 10)));
-        spareNotifier();
+        if (game._frames[(game._currentFrame - 2)].isSpare()) {
+            notifier("SPARE");
+        }
+
     };
 
     var insertScores = function() {

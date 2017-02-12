@@ -109,5 +109,12 @@ describe("Joe's Ten Pin Bowling Game", function(){
       game.addFrameToBoard();
       expect(game.returnTotalScore()).toEqual(22);
     });
+    it("Can reset the game to play again", function(){
+      game.scoreBoard = [[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2]];
+      game.roll = 2
+      game.frame = []
+      game.playAgain();
+      expect(game.scoreBoard).toEqual([]);
+    })
 
   });

@@ -81,8 +81,10 @@ Game.prototype.addFrameToBoard = function(){
     this.scoreBoard.push(this.frame);
     var lastIndex = this.scoreBoard.length - 1
     this.scoreBoard[lastIndex][1] += (this.lastFrameBowled())[0];
+    this.frame = []
   }else if(this.isFrameFull() === true){
     this.scoreBoard.push(this.frame);
+    this.frame = []
   }
 };
 
@@ -105,7 +107,13 @@ Game.prototype.returnTotalScore = function(){
     for (var i = 0; i < this.scoreBoard.length; i++){
       total += (this.scoreBoard[i]).reduce((a, b) => a + b, 0);}
     return total;
-    } else {
-      return 0;
-    }
-  };
+  } else {
+    return 0;
+  }
+};
+
+Game.prototype.playAgain = function(){
+  this.frame = [];
+  this.roll = 0;
+  this.scoreBoard = [];
+};

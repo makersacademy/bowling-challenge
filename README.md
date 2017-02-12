@@ -11,7 +11,7 @@ Count and sum the scores of a bowling game for one player (in JavaScript).
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
 User Stories:
-
+```
 As a bowler
 So that I know my score
 I want the score of the frame to be recorded
@@ -41,25 +41,30 @@ I want to calculate the score, including the strike
 As a bowler
 After I bowl a spare
 I want to include that spare frame in next frame
-
+```
 
 Domain Model
-![](http://imgur.com/cBad6nq)
+
+![](http://i.imgur.com/cBad6nq.png)
 
 To Play:
 enter `var game = new Game();` in the console
-![](http://imgur.com/Xq5kGbf)
+
+![](http://i.imgur.com/Xq5kGbf.png)
 
 To begin bowling:
 enter `game.bowl(<your score here>)`
-![](http://imgur.com/NbQMoEb)
+
+![](http://i.imgur.com/NbQMoEb.png)
 
 Until the game is over:
-![](http://imgur.com/tGOlXKx)
+
+![](http://i.imgur.com/tGOlXKx.png)
 
 To receive the total score:
 enter `game.checkFinalScore()`
-![](http://imgur.com/AMgZZZQ)
+
+![](http://i.imgur.com/AMgZZZQ.png)
 
 
 ### Optional Extra

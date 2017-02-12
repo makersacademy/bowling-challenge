@@ -4,6 +4,7 @@ $( document ).ready(function() {
   var bonus = new Bonus();
   $('#scoreBox').val("");
   $('#scoreBox').focus();
+  var rowCounter = 0;
 
   $('#addScore').click(addScore);
   $('html').keypress(function (e) {
@@ -33,6 +34,7 @@ $( document ).ready(function() {
 
       $('#scoreBox').val("");
       $('#scoreBox').focus();
+      rowCounter++;
     };
   };
 
@@ -45,15 +47,37 @@ $( document ).ready(function() {
   }
 
   function printValues() {
-    $("table").append("<tr>" +
+    var tr
+    if (rowCounter % 2 == 1) {
+      tr = "<tr class='even'>";
+    } else {
+      tr = "<tr>"
+    }
+    $("table").append(tr +
     "<td class='t-frame'>" + game.getFrame() + "</td>" +
     "<td class='t-roll'>" + game.getRoll() + "</td>" +
-    "<td class='t-hits'>" + score.getHits() + "</td>" +
-    "<td class='t-bonus'>" + score.getBonus() + "</td>" +
+    "<td class='t-hits'>" + formattedHits() + "</td>" +
+    "<td class='t-bonus'>" + formattedBonus() + "</td>" +
     "<td class='t-sors'>" + bonus.getStrikeOrSpare() + "</td>" +
     "<td class='t-rolltot'>" + score.getRollTotal() + "</td>" +
     "<td class='t-tot'>" + score.getRunningTotal() + "</td>" +
     "</tr>");
+  };
+
+  function formattedBonus() {
+    if (score.getBonus() > 0) {
+      return "+" + score.getBonus();
+    } else {
+      return "";
+    }
+  };
+
+  function formattedHits() {
+    if (game.getFrame() < 11) {
+      return score.getHits();
+    } else {
+      return "";
+    }
   };
 
   function gameOver() {

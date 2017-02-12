@@ -1,14 +1,14 @@
 table {
   text-align: center;
-  width: 550px;
+  width: 450px;
   height: auto;
   margin-left: auto;
   margin-right: auto;
 }
 #main {
-  font-family: cursive;;
+  font-family: Ubuntu, sans-serif;
   text-align: center;
-  width:600px;
+  width:500px;
   border: 2px solid black;
   padding: 10px;
   height: auto;
@@ -17,7 +17,7 @@ table {
   padding-bottom: 30px;
 }
 button {
-  font-family: cursive;
+  font-family: Ubuntu;
   font-size: 18px;
   width:100px;
   height: 30px;
@@ -27,7 +27,7 @@ button {
   margin-right: 30px;
 }
 input {
-  font-family: cursive;
+  font-family: Ubuntu, sans-serif;
   text-align: center;
   font-size: 18px;
   float: right;
@@ -41,9 +41,11 @@ h1 {
 }
 .t-frame {
   width: 10%;
+  text-align: right;
 }
 .t-roll {
   width: 10%;
+  text-align: right;
 }
 .t-hits {
   width: 20%;
@@ -67,4 +69,14 @@ h1 {
 }
 #info {
   color: red;
+}
+.even {
+  background-color: #bfbfbf;
+}
+td {
+  padding-right: 5px;
+}
+th {
+  vertical-align: bottom;
+  border-bottom: 1px solid grey;
 }

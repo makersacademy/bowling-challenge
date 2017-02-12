@@ -1,13 +1,15 @@
-var http = require('http');
 var express = require('express');
 
-var server = http.createServer(function(req, res) {
-  console.log("Request was made: " + req.url);
-  res.writeHead(200, {
-    'Content-Type': 'text/plain'
-  });
-  res.end('Hey, heres some plain text');
+var app = express();
+
+var port = 3000;
+
+app.use(express.static('public'));
+app.use(express.static('src/views'));
+
+app.get('/', function(req, res) {
+  res.send("Hi");
 });
 
-server.listen(3000, '127.0.0.1');
+app.listen(port, '127.0.0.1');
 console.log('You are live on port 3000');

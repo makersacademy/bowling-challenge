@@ -1,0 +1,30 @@
+---
+# 'apiKey' might feel redundant since 'client.apiKey' is what is being used.
+# But for backward-compability we need to have this here.
+apiKey:
+  file: null
+  id: null
+  secret: null
+client:
+  apiKey:
+    file: null
+    id: null
+    secret: null
+  cacheManager:
+    defaultTtl: 300
+    defaultTti: 300
+    caches:
+      account:
+        ttl: 300
+        tti: 300
+  baseUrl: "https://api.stormpath.com/v1"
+  connectionTimeout: 30
+  authenticationScheme: "SAUTHC1"
+  proxy:
+    port: null
+    host: null
+    username: null
+    password: null
+application:
+  name: null
+  href: null

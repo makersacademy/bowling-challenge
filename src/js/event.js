@@ -4,12 +4,12 @@ $(document).ready(function() {
   var frame;
 
   function Roll(ballNumber, pinsLeft){
-    frame.updateResult(frame.roll(pinsLeft));
+    frame.updateResult(frame._roll(pinsLeft));
     $("#ball"+ballNumber+"-Frame"+game._frameNumber).html(frame._results[ballNumber-1]);
   }
 
   function additionalRoll(ballNumber, pinsLeft){
-    frame.updateResult(frame.roll(pinsLeft));
+    frame.updateResult(frame._roll(pinsLeft));
     $("#add"+ballNumber+"-lastframe").html(frame._results[frame._results.length-1]);
   }
 
@@ -35,9 +35,18 @@ $(document).ready(function() {
   }
 
   function calculateResult(){
-    game._getFrameRegularResult(frame);
-    game._getFrameBonusResult(frame);
-    game._getStrikeAndSpareStatus(frame);
+    game.getFrameRegularResult(frame);
+    game.getFrameBonusResult(frame);
+    game.saveLastGameStrikeSpareStatus(frame);
+  }
+
+  function gameType(){
+    if (game._finalScore(game._frameScore)===210){
+      $("#game-type").html("Perfect Game")
+      $("#total").html(300)
+    } else if (game._finalScore(game._frameScore)===0){
+      $("#game-type").html("Gutter Game")
+    }
   }
 
   $("#ball-1").hide();
@@ -46,6 +55,7 @@ $(document).ready(function() {
   $("#ball-add2").hide();
   $("#10frame_add1").hide();
   $("#10frame_add2").hide();
+  $("#game-over").hide();
 
   $("#play-new-game").click(function(){
     game = new Game()
@@ -58,7 +68,6 @@ $(document).ready(function() {
     $(this).hide();
     Roll(1, frame.INITIALSTANDINGPINS)
     frame.checkStrike();
-
     if (game._frameNumber<10){
       if (frame.getStrikeStatus()==="yes"){
         calculateResult();
@@ -95,11 +104,12 @@ $(document).ready(function() {
       $("#10frame_add1").show();
       $("#ball-add1").show();
       calculateResult();
-      printResultsBeforeLastGame();  // review this line. is it possible to delete this code
-
+      printResultsBeforeLastGame();
     } else {
       calculateResult();
       printResults();
+      gameType();
+      $("#game-over").show();
     }
   });
 
@@ -107,12 +117,13 @@ $(document).ready(function() {
     additionalRoll(1, frame.INITIALSTANDINGPINS);
     $(this).hide();
     if (frame.getStrikeStatus() === 'yes'){
-      game._updateLastGameResults(frame);
+      game.updateLastGameResults(frame);
       $("#ball-add2").show();
       $("#10frame_add2").show();
     } else {
-      game._updateLastGameResults(frame);
+      game.updateLastGameResults(frame);
       printResultsLastGame();
+      $("#game-over").show();
     }
   });
 
@@ -124,7 +135,9 @@ $(document).ready(function() {
       leftPins = frame.INITIALSTANDINGPINS - frame._results[frame._results.length-1]
     }
     additionalRoll(2, leftPins);
-    game._updateLastGameResults(frame);
+    game.updateLastGameResults(frame);
     printResultsLastGame();
+    gameType();
+    $("#game-over").show();
   });
 });

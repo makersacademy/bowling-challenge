@@ -1,49 +1,54 @@
-#top {
-  margin-top: 25px;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  margin-top: 25px;
-  background-color: #ff8c1a;
+.container-fluid {
+  padding-top: 3em;
+  background-color: #bba077;
+  height: 50.0em;
+  align-content: center;
 }
 
-#center {
-  background-color: #ff8c1a;
-  height: 450px;
-}
-
-#down {
-  background-color: black;
-  height: 50px;
-  color: white
-}
-
-#total-row {
-  font-size: 30px;
-  color: white;
-}
-
-#pins-knocked-down {
-  margin-left: 20px;
-  font-size: 50px;
-  font-weight: bold;
+.play-buttons {
+  padding: 20px 20px 20px 20px;
+  background-color: #61976d;
+  border-radius: 8px;
 }
 
 .btn.btn-primary {
     color: white;
-    background-color: black;
-    border-color: black;
+    font-size: 2em;
+    background-color: #b2c062;
+    border-color: #b2c062;
 }
 
 .btn.btn-primary:hover {
     color: white;
-    background-color: #804000;
-    border-color: #804000;
+    background-color: #a07c7c;
+    border-color: #a07c7c;
 }
 
 .table-responsive {
   text-align: center;
 }
 
+#total {
+  padding-top: 0.2em;
+  color: white;
+}
+
+#game-over {
+  padding-top: 0.4em;
+  color: white;
+}
+
+#total-points {
+  color: white;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+button {
+  width: 10em;
+  height: 3em;
+}
+
 th {
   text-align: center;
-}
+  }

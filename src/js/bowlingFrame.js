@@ -8,16 +8,16 @@ function Frame(){
   this._results = [];
 }
 
-Frame.prototype.roll = function (standingPins) {
+Frame.prototype._roll = function (standingPins) {
   var roll = new Roll(standingPins)
-  return roll.play()
+  return roll._play()
 };
 
 Frame.prototype.updateResult = function(result){
   this._results.push(result);
 };
 
-Frame.prototype.getRegularScore = function(){
+Frame.prototype._getRegularScore = function(){
   var sum = 0;
   this._results.forEach(function(value){
     sum += value;
@@ -26,12 +26,12 @@ Frame.prototype.getRegularScore = function(){
   return this._regularScore
 };
 
-Frame.prototype.getStrikeBonusScore = function(){
+Frame.prototype._getStrikeBonusScore = function(){
   this._bonusScore = this._regularScore
   return this._bonusScore
 };
 
-Frame.prototype.getSpareBonusScore = function(){
+Frame.prototype._getSpareBonusScore = function(){
   this._bonusScore = this._results[0];
   return this._bonusScore
 };
@@ -43,7 +43,7 @@ Frame.prototype.checkStrike = function(){
 };
 
 Frame.prototype.checkSpare = function(){
-  this.getRegularScore();
+  this._getRegularScore();
   if (this._regularScore === this.INITIALSTANDINGPINS &&
                                         this._results.length === 2){
     this._spare = "yes";

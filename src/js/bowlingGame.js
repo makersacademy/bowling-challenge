@@ -13,35 +13,34 @@ Game.prototype.createNewFrame = function () {
   return frame;
 };
 
-Game.prototype._getFrameRegularResult = function(frame){
-  this._frameScore.push(frame.getRegularScore());
+Game.prototype.getFrameRegularResult = function(frame){
+  this._frameScore.push(frame._getRegularScore());
 };
 
-Game.prototype._getFrameBonusResult = function(frame){
+Game.prototype.getFrameBonusResult = function(frame){
   var bonusScore = 0
   if (this._frameScore.length > 1 && this._lastStrikeValue === "yes"){
-    bonusScore = frame.getStrikeBonusScore();
+    bonusScore = frame._getStrikeBonusScore();
     this._frameScore[this._frameScore.length-2] += bonusScore;
   } else if (this._frameScore.length > 1 && this._lastSpareValue === "yes"){
-    bonusScore = frame.getSpareBonusScore();
+    bonusScore = frame._getSpareBonusScore();
     this._frameScore[this._frameScore.length-2] += bonusScore;
   }
 };
 
-Game.prototype._updateLastGameResults = function (frame){
-
+Game.prototype.updateLastGameResults = function (frame){
   this._frameScore[this._frameScore.length-1] += frame._results[frame._results.length-1]
 }
 
-Game.prototype._getStrikeAndSpareStatus = function (frame) {
-  this._lastStrikeValue = frame._strike;
-  this._lastSpareValue = frame._spare;
+Game.prototype.saveLastGameStrikeSpareStatus = function (frame) {
+  this._lastStrikeValue = frame.getStrikeStatus();
+  this._lastSpareValue = frame.getSpareStatus();
 };
 
 Game.prototype._finalScore = function(frameResults){
   var sum = 0;
-  frameResults.forEach(function(score){
-    sum += score;
+  frameResults.forEach(function(result){
+    sum += result;
   });
   return sum;
 };

@@ -3,6 +3,6 @@ function Roll(standingPins){
   this._standingPins = standingPins
 }
 
-Roll.prototype.play = function(){
+Roll.prototype._play = function(){
   return Math.floor((Math.random() * (this._standingPins + 1)));
 };

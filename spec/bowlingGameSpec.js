@@ -6,7 +6,7 @@ describe('Game', function(){
 
   beforeEach(function(){
     game = new Game();
-    frame = {};
+    frame = jasmine.createSpyObj("frame", ["_getRegularScore","_results"]);
   });
 
   describe('::new', function(){
@@ -17,16 +17,53 @@ describe('Game', function(){
 
   describe('#createNewFrame', function(){
     it('creates a new frame every time is called',function(){
-      game.createNewFrame()
-      game.createNewFrame()
-      expect(game._frameNumber).toBe(2)
+      game.createNewFrame();
+      game.createNewFrame();
+      expect(game._frameNumber).toBe(2);
     });
   });
 
-  describe('#playEntireGame', function(){
-    it('a game has 10 frames',function(){
-      game.playEntireGame()
-      expect(game._frameResults.length).toBe(10)
+  describe('#getFrameRegularResult 1', function(){
+    it('game push the result of each frame',function(){
+      game.getFrameRegularResult(frame);
+      expect(frame._getRegularScore).toHaveBeenCalled();
+    });
+  });
+
+  // describe('#getFrameBonusResult', function(){
+  //   it('a game has 10 frames',function(){
+  //     game.playEntireGame()
+  //     expect(game._frameResults.length).toBe(10)
+  //     expect(frame._getRegularScore).toHaveBeenCalled()
+  //   });
+  // });
+
+  describe('#updateLastGameResults', function(){
+    it('updates game scores with frame results',function(){
+      frame._results=[1];
+      game._frameScore=[1];
+      game.updateLastGameResults(frame);
+      expect(game._frameScore[game._frameScore.length-1]).toBe(2);
+    });
+  });
+
+  describe('#saveLastGameStrikeSpareStatus', function(){
+    it('equals _lastStrikeValue to yes if strike',function(){
+      frame.getStrikeStatus="yes";
+      game.saveLastGameStrikeSpareStatus(frame);
+      expect(game._lastStrikeValue).toBe("yes");
+    });
+
+    it('equals _lastSpareValue to yes if spare',function(){
+      frame.getSpareStatus="yes";
+      game.saveLastGameStrikeSpareStatus(frame);
+      expect(game._lastSpareValue).toBe("yes");
+    });
+  });
+
+  describe('#_finalScore', function(){
+    it('calculates results according to each frame',function(){
+        expect(game._finalScore([1,2,3])).toBe(6)
     });
   });
 });

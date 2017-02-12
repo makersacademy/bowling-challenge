@@ -1,3 +1,5 @@
+var self = this;
+
 function Scorecalc() {
   self = this;
   self.bonusScore = 0;
@@ -37,12 +39,12 @@ Scorecalc.prototype.gutterGame = function(){
 
 Scorecalc.prototype.perfectGame = function(){
   var perfectCheck = []
-  for(i = 1; i < 10; i++){
+  for(var i = 1; i < 10; i++){
       console.log(self.scoreboard["Frame" + i][0])
       perfectCheck.push(self.scoreboard["Frame" + i][0][0])
     }
-  for(i = 1; i <= perfectCheck.length; i++){
-    if(perfectCheck[i] !== 10) {
+  for(var p = 1; p <= perfectCheck.length; p++){
+    if(perfectCheck[p] !== 10) {
       return false;
     }
   }

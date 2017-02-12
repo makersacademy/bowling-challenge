@@ -1,8 +1,10 @@
+var thiz = this;
+
 function Player(game = new Game()){
   thiz = this;
   thiz.game = game;
   thiz.pins = 10;
-};
+}
 
 Player.prototype.throwBall = function(){
   var roll = thiz.pinTracker(thiz.pinsKnocked());

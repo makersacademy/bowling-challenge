@@ -1,3 +1,5 @@
+var that = this;
+
 function Game(scorecalc = new Scorecalc()){
   that = this;
   that.max_rolls = 2;
@@ -62,7 +64,7 @@ Game.prototype.bonus = function(pins){
   if (that.bonusCounter > 0){
     that.scorecalc.addBonus(pins);
     that.bonusCounter -= 1;
-  };
+  }
 }
 
 Game.prototype.spareBonusUpdate = function(){
@@ -106,5 +108,5 @@ Game.prototype.isStrike = function(pins){
 Game.prototype.isSpare = function(pins){
   if((pins + that.frameRolls[0]) === 10){
     return true;
-  };
+  }
 }

@@ -23,13 +23,14 @@ describe("Gameplay", function(){
     expect(scorecard.playerScores).toEqual([7]);
   });
 
-  it("saves multiple frames and an accumalative total score", function(){
+  it("saves multiple frames and their scores", function(){
     scorecard.bowlOne(3);
     scorecard.bowlTwo(4);
     scorecard.bowlOne(5);
     scorecard.bowlTwo(1);
     expect(scorecard.allFrames).toEqual( [ [3,4] , [5,1] ] );
-    expect(scorecard.playerScores).toEqual( [7, 13] );
+    expect(scorecard.playerScores).toEqual( [7, 6] );
+    expect(scorecard.runningTotal).toEqual(13);
   });
 
   it("registers a strike if all pins are knocked over", function(){
@@ -50,7 +51,18 @@ describe("Gameplay", function(){
     scorecard.bowl(2);
     scorecard.bowl(4);
     expect(scorecard.allFrames).toEqual( [ [5, 3], ['X'], [2, 4] ] );
-    expect(scorecard.playerScores).toEqual( [8, 24, 30] );
+    expect(scorecard.playerScores).toEqual( [8, 16, 6] );
+    expect(scorecard.runningTotal).toEqual( 30 );
+  });
+
+  it("increments the current frame", function(){
+    scorecard.bowl(5);
+    scorecard.bowl(2);
+    expect(scorecard.currentFrame).toEqual(1);
+    scorecard.bowl(10);
+    expect(scorecard.currentFrame).toEqual(2);
+    scorecard.bowl(9);
+    expect(scorecard.currentFrame).toEqual(3);
   });
 
 });
@@ -68,7 +80,7 @@ describe("Strikes and spares", function(){
     scorecard.bowlOne(5);
     scorecard.bowlTwo(2);
     expect(scorecard.allFrames).toEqual( [ ['X'], [5, 2] ] );
-    expect(scorecard.playerScores).toEqual( [17, 24] );
+    expect(scorecard.playerScores).toEqual( [17, 7] );
   });
 
   it("adds bonus points from the next roll after a spare", function(){
@@ -77,7 +89,7 @@ describe("Strikes and spares", function(){
     scorecard.bowlOne(6);
     scorecard.bowlTwo(2);
     expect(scorecard.allFrames).toEqual( [ [9, '/'], [6, 2] ] );
-    expect(scorecard.playerScores).toEqual( [16, 24] );
+    expect(scorecard.playerScores).toEqual( [16, 8] );
   });
 
   it("correctly scores a spare following a strike", function(){
@@ -90,7 +102,10 @@ describe("Strikes and spares", function(){
     scorecard.bowlOne(0);
     scorecard.bowlTwo(8);
     expect(scorecard.allFrames).toEqual( [ ['X'], [7, '/'], [9, 0], ['X'], [0, 8] ] );
-    expect(scorecard.playerScores).toEqual( [20, 39, 48, 66, 74] );
+    expect(scorecard.playerScores).toEqual( [20, 19, 9, 18, 8] );
+    expect(scorecard.runningTotal).toEqual(74);
   });
+
+
 
 });

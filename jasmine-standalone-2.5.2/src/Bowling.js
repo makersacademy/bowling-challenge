@@ -4,12 +4,15 @@ var Scorecard = function Scorecard() {
   this.lastFrame = new Array;
   this.allFrames = new Array;
   this.playerScores = new Array;
+  this.runningTotal = 0;
+  this.currentFrame = 0;
+  this.currentBowl = 1;
 };
 
 Scorecard.prototype.bowl = function(number){
-  if(this.firstBowl == null) {
+  if(this.currentBowl == 1) {
     this.bowlOne(number);
-  } else {
+  } else if(this.currentBowl == 2) {
     this.bowlTwo(number);
   }
 }
@@ -21,6 +24,8 @@ Scorecard.prototype.bowlOne = function(number){
   if(number == 10){
     this.strike();
   }
+  this.currentBowl += 1;
+  this.currentFrame++;
 };
 
 Scorecard.prototype.bowlTwo = function(number){
@@ -67,12 +72,13 @@ Scorecard.prototype.lastScore = function(){
 };
 
 Scorecard.prototype.addScore = function(number){
-  var newScore = this.lastScore() + number;
-  this.playerScores.push(newScore);
-  this.resetBowls();
+  this.playerScores.push(number);
+  this.runningTotal = this.calculateTotal();
+  this.currentBowl -= 1;
 };
 
-Scorecard.prototype.resetBowls = function(number){
-  this.firstBowl = null;
-  this.secondBowl = null;
+Scorecard.prototype.calculateTotal = function(){
+  var scores = this.playerScores;
+  var sum = scores.reduce(function(a, b) { return a + b; }, 0);
+  return sum;
 };

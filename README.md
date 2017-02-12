@@ -17,12 +17,11 @@ User stories:
 -----
 The game of ten pin bowling can be (roughly) described with these user stories:
 
------ EPIC ---
+EPIC:
 USER STORY 1
 As a player
 So that I can track the game progress
-I want to keep the game scorings
------
+I want to keep the game scoring
 
 USER STORY 2
 As a player
@@ -79,12 +78,15 @@ EPIC: 4h
 Domain Model:
 -----
 These user stories can be (roughly) translated in the following model:
-scoreboard		createFrames
-frame		createPins
-frame		createRolls
-roll		knockedDownPins
-frame		strike
-bonus		calculate
-strike		
-spare		
-frame		addBonusRoll
+
+Domain | Actions 
+--- | ---
+scoreboard | createFrames
+frame | createPins
+frame | createRolls
+roll | knockedDownPins
+frame | strike
+bonus | calculate
+strike |  
+spare |  
+frame | addBonusRoll

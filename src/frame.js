@@ -38,10 +38,9 @@ Frame.prototype.setRoll2 = function(roll_value) {
 };
 
 Frame.prototype.getExtraRoll = function() {
-  // var y = [];
-  // y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  // this._roll3 = y[Math.floor(Math.random() * y.length)];
-  this._roll3 = 10;
+  var y = [];
+  y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  this._roll3 = y[Math.floor(Math.random() * y.length)];
   this.addBonus(this._roll3);
   return this._roll3;
 };

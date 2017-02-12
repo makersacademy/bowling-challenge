@@ -141,9 +141,9 @@ Game.prototype.playFrame10 = function(roll1, roll2) {
   }
   else {
     this.getFinalBonus(this._frame9, roll1, roll2); //prev frame may get a bonus
-    if (this._frame8.getStrikeType() === "X"){
-      this.getBonus(this._frame8, roll1);//prev prev frame gets a bonus
-    }
+      if (this._frame8.getStrikeType() === "X"){
+        this.getBonus(this._frame8, roll1);//prev prev frame gets a bonus
+      }
   }
   this.getGameTotal();
 };

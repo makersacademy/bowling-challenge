@@ -1,29 +1,19 @@
-Bowling Challenge:
-==================
-```
-Game
-  exists
-  has 1 frame
-Frame
-  exists
-  contains roll1 and roll2
-  has a score
-  has a bonus
-  has a roll1 method
-  has a roll2 method
-  #roll1
-    returns a number of pins knocked down after the first roll
-    can knock down 0 - 10 pins
-  #roll2
-    returns a number of pins knocked down after the first roll
-    can knock down 0 - 10 pins
-```
-
 Bowling Challenge - My Approach
 ================================
-Copy Jasmine into project directory
+* To use a test-driven approach (using Jasmine) to develop the business logic with JavaScript and the front-end with html, jQuery and JavaScript.
+* I got a long way into the business logic, then realised my tests hadn't been running properly!
+* At the same time, completely changed my approach with the game class (to be initialised with 10 frame objects, that could be accessed.)
+* I have created a basic interface where the following features can be demonstrated.
 
+Perfect Game:
+-------------
+![Perfect Game Example](images/PerfectGame.png)
 
+Gutter Game:
+-------------
+![Gutter Game Example](images/GutterGame.png)
+
+* I also included ability for a user to play a game themselves (however the logic behind the frame total in frame 10 needs investigating!)
 
 
 Challenge:

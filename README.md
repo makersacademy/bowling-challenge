@@ -1,4 +1,4 @@
-```
+
 Task :
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
@@ -12,7 +12,6 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 - 10th frame  
 - Gutter Game  
 - Perfect Game  
-```
 
 The features I have implemented:
 

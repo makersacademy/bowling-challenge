@@ -24,10 +24,13 @@ Bowling.prototype.getRoll = function(){
 
 
 Bowling.prototype.roll = function(knockedDown){
-  this.scoreSheet[this.getFrame()][this.getRoll()] = knockedDown
+  this.addToRollScore(knockedDown)
   this.addToFrameScore(knockedDown)
   if (this.getRoll() == 0) {
-    this._currentRoll++
+    if (knockedDown == 10) {
+    this.getFrame++;
+    } else {
+    this._currentRoll++ }
   } else if (this.getRoll() == 1) {
     if (this.getFrame() == 9) {
       this._currentRoll++;
@@ -38,7 +41,18 @@ Bowling.prototype.roll = function(knockedDown){
       this._currentFrame++;
     };
   } else if (this.getRoll() == 2) {
-    console.log("FINISHED");
+      this.results();
+  };
+};
+
+Bowling.prototype.addToRollScore = function(newScore){
+  if (newScore < 10) {
+    this.scoreSheet[this.getFrame()][this.getRoll()] = newScore
+  } else if (newScore == 10){
+    this.scoreSheet[this.getFrame()][this.getRoll()] = newScore
+    if (this.getRoll() == 0){
+      this._currentRoll++;
+    };
   };
 };
 
@@ -48,4 +62,15 @@ Bowling.prototype.addToFrameScore = function(newScore){
   } else {
     this.frameScore[this.getFrame()] = (this.frameScore[this.getFrame()] += newScore)
   };
+};
+
+Bowling.prototype.results = function(){
+  console.log("FINISHED. HERE IS YOUR SCORESHEET:");
+  console.log(this.scoreSheet);
+  console.log(this.frameScore);
+  console.log("AND YOUR TOTAL:")
+  function add(a, b) {
+    return a + b;
+  };
+  console.log(this.frameScore.reduce(add, 0));
 };

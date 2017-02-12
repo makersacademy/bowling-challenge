@@ -1,4 +1,13 @@
-/* table */
+.title {
+  text-align: center;
+  font: 400 100px/1.3 'Lobster Two', Helvetica, sans-serif;
+  font-size: 1em;
+   color: #e60c0c;
+   text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);
+
+ }
+
+
 .table  {
   border-collapse:collapse;
   border-spacing:0;
@@ -43,4 +52,5 @@
   max-width: 300px;
   font-family:Arial, sans-serif;
   font-size:14px;
+  text-align: right;
 }

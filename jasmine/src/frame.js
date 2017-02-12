@@ -16,7 +16,11 @@ var Frame = class {
   };
 
   nextRoll() {
-    this._activeRollNumber += 1;
+    if (this._standingPins != 0) {
+      this._activeRollNumber += 1;
+    } else {
+      throw('Cannot advance to the next roll: rolls have finished for this frame!');
+    }
   }
 
   getStandingPins() {

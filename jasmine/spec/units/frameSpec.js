@@ -25,6 +25,10 @@ describe("Frame", function() {
     it("switch active roll to the next one", function() {
       expect(function(){frame.nextRoll()}).not.toThrow();
     });
+    it('fails to advance if 10 pins are knocked', function() {
+      frame.setKnockedDownPins(10);
+      expect(function(){frame.nextRoll()}).toThrow('Cannot advance to the next roll: rolls have finished for this frame!');
+    });
   });
 
   describe("setKnockedDownPins", function() {

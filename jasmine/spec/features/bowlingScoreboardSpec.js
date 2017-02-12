@@ -48,4 +48,13 @@ describe("BowlingScoreboard", function() {
     expect(bowlingScoreboard.frames[2].getStandingPins()).toEqual(1);
   });
 
+  // USER STORY 6
+  // As a player
+  // In order to perform a strike
+  // I want my frame to end when all 10 pins are knocked down
+  it('ends the frame if 10 pins are knocked', function() {
+    bowlingScoreboard.frames[2].setKnockedDownPins(10);
+    expect(function(){bowlingScoreboard.frames[2].nextRoll()}).toThrow('Cannot advance to the next roll: rolls have finished for this frame!');
+  });
+
 });

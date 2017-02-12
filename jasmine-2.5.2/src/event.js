@@ -7,6 +7,7 @@ $( document ).ready(function() {
   var rowCounter = 0;
 
   $('#addScore').click(addRow);
+
   $('html').keypress(function (e) {
    var key = e.which;
    if(key == 13) {addRow();}
@@ -19,17 +20,11 @@ $( document ).ready(function() {
       var hits = validate($('#scoreBox').val());
       setValues(hits);
       updateTotals();
-      if (game.areNoPinsLeft() && game.getFrame() <= 10) {
-        bonus.recordStrikeOrSpare(game.getRoll());
-      };
+      recordStrikeOrSpare();
       printValues();
-      score.resetRollTotal();
-      game.resetFrameRollAndPins();
-      $('#scoreBox').val("");
-      $('#scoreBox').focus();
-      rowCounter++;
-    };
-  };
+      resetRow();
+    }
+  }
 
   function validate(input) {
     if (isNaN(input) || input === undefined || input == "") {return 0;}
@@ -37,20 +32,26 @@ $( document ).ready(function() {
     if (input < 0) {return 0;}
     if (input > game.getPins()) {input = game.getPins();}
     return input;
-  };
+  }
 
   function setValues(hits) {
     game.setPins(hits);
     score.setHits(hits);
     score.setBonus(bonus.getNextMultiplier());
     bonus.deleteUsedMultipliers();
-  };
+  }
 
   function updateTotals() {
-    if (game.getFrame() < 11) {score.addHitsToRollTotal();};
+    if (game.getFrame() < 11) {score.addHitsToRollTotal();}
     score.addBonusToRollTotal();
     score.addRollTotalToRunningTotal();
-  };
+  }
+
+  function recordStrikeOrSpare() {
+    if (game.areNoPinsLeft() && game.getFrame() <= 10) {
+      bonus.recordStrikeOrSpare(game.getRoll());
+    }
+  }
 
   function printValues() {
     var tr;
@@ -64,7 +65,15 @@ $( document ).ready(function() {
     "<td class='t-rolltot'>" + score.getRollTotal() + "</td>" +
     "<td class='t-tot'>" + score.getRunningTotal() + "</td>" +
     "</tr>");
-  };
+  }
+
+  function resetRow() {
+    score.resetRollTotal();
+    game.resetFrameRollAndPins();
+    $('#scoreBox').val("");
+    $('#scoreBox').focus();
+    rowCounter++;
+  }
 
   function formattedHits() {
     if (game.getFrame() < 11) {
@@ -72,7 +81,7 @@ $( document ).ready(function() {
     } else {
       return "";
     }
-  };
+  }
 
   function formattedBonus() {
     if (score.getBonus() > 0) {
@@ -80,10 +89,9 @@ $( document ).ready(function() {
     } else {
       return "";
     }
-  };
+  }
 
   function gameOver() {
     $('#info').text("Refresh page to start a new game.")
-  };
-
+  }
 });

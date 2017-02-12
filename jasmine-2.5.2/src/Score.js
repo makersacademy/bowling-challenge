@@ -5,7 +5,7 @@ function Score() {
   this._bonus = 0;
   this._rollTotal = 0;
   this._runningTotal = 0;
-};
+}
 Score.prototype.getHits = function() {return this._hits;};
 Score.prototype.getBonus = function() {return this._bonus;};
 Score.prototype.getRollTotal = function() {return this._rollTotal;};

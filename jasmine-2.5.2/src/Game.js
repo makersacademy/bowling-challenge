@@ -4,7 +4,7 @@ function Game() {
   this._frame = 1;
   this._roll = 1;
   this._pins = 10;
-};
+}
 Game.prototype.getFrame = function() {return this._frame;};
 Game.prototype.getRoll = function() {return this._roll;};
 Game.prototype.getPins = function() {return this._pins;};
@@ -18,7 +18,7 @@ Game.prototype.resetFrameRollAndPins = function() {
     this.setUpNewFrame()
   } else {
     this.setUpNewRoll();
-  };
+  }
 };
 Game.prototype.isEndOfFrame = function() {
   return (this.getRoll() == 2 || this.areNoPinsLeft());

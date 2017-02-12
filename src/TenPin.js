@@ -47,6 +47,7 @@ TenPin.prototype.reset = function(){
 
 TenPin.prototype.count = function(){
   this.total();
+  this.bonus = 0;
   for (var i = 0; i < Math.min(this.scoreHistory.length,10); i ++){
     if(this.scoreHistory[i][0] === 10 && this.scoreHistory[i+1][0] !== 10
       && this.scoreHistory[i+1] !== undefined)
@@ -66,7 +67,6 @@ TenPin.prototype.count = function(){
             && this.scoreHistory[i+1][0] !== undefined)
             {
         this.bonus += this.scoreHistory[i+1][0];
-        console.log(this.bonus);
       }
   }
  this.score += this.bonus;

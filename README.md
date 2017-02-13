@@ -69,6 +69,17 @@ game.bowl(3);
 ```
 $ open index.html
 ```
+
+Then click the "Power" button to start the power bar.
+
+Try to let the power bar get as close to the top as you can and then click the "Bowl" button.
+
+If you stop the power bar at the top, you'll knock ten pins down. The bottom of the power bar is zero pins.
+
+The scoreboard updates as you go along.
+
+See if you can get a perfect game!
+
 ## Screenshot
 
 ![Bowling Challenge in the browser](public/img/screenshot.png)

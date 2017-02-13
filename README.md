@@ -1,7 +1,68 @@
 
 Bowling Challenge
 =================
+##User Stories
 
+```
+As a player
+To see the correct score of my game
+Each game should accept no more than 10 frames
+```
+
+
+```
+As a player
+To see the result of my frame
+Scoreboard should change the total score of the frame each time the roll knocks the pins
+```
+
+```
+As a player
+To see the correct score of my frame
+Each roll can knock maximum 10 pins
+```
+
+```
+As a player
+To see the correct score in the case of strike (10 pins with a first roll)
+The frame ends immediately
+```
+
+```
+As a player
+To see the correct score of my frame
+Total score of the frame should be a sum of knocked pins from both rolls
+```
+
+```
+As a player
+To see the correct score of my frame in the case of strike
+Scoreboard should be able to give a bonus that is equal to the number of pins knocked from the next two rolls in the next frame
+```
+
+```
+As a player
+To see the correct score of my frame in the case of spare
+Scoreboard should be able to give a bonus that is equal to the number of pins knocked from the next roll in the next frame
+```
+
+```
+As a player
+To see the correct score of my 10th frame
+Scoreboard should allow additional rolls and overall 10th frame should not exceed 3 rolls
+```
+
+```
+As a player
+To see the correct score of the gutter game
+Scoreboard should show 0 points for the end result of the game
+```
+
+```
+As a player
+To see the correct score of the perfect game
+Scoreboard should show 300 points for the end result of the game
+```
 
 * Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own
@@ -9,14 +70,14 @@ Bowling Challenge
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday week
 
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Forking this repo
 
@@ -62,7 +123,7 @@ Code Review
 In code review we'll be hoping to see:
 
 * All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 

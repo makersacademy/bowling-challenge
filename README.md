@@ -63,14 +63,15 @@ game.start;
 game.bowl(5);
 game.bowl(3);
 ```
+The numbers above that are passed in to game.bowl are examples. You can pass in any number between one and ten.
 
-### Or to play the game in the browser using jQuery:
+### For a more realistic experience, play the game in the browser using jQuery:
 
 ```
 $ open index.html
 ```
 
-Then click the "Power" button to start the power bar.
+Click the "Power" button to start the power bar.
 
 Try to let the power bar get as close to the top as you can and then click the "Bowl" button.
 

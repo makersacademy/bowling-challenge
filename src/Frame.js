@@ -5,7 +5,7 @@ function Frame(roll = new Roll()){
 
 Frame.prototype.bowl = function(){
   this.pinCheck()
-  this.doTheThing()
+  this.rollTheBall()
   return this.roll.result()
 }
 
@@ -25,7 +25,7 @@ Frame.prototype.pinCheck = function(){
   if (this.scores.length >= 2) this.scores.length = []
 }
 
-Frame.prototype.doTheThing = function(){
+Frame.prototype.rollTheBall = function(){
   this.roll.go(this.remainingPins());
   this.scores.push(this.roll.result())
 };

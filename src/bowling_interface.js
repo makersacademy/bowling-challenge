@@ -1,55 +1,37 @@
 $(document).ready(function(){
 
-  var thermostat = new Thermostat()
+  var game = new Game()
 
-  var city = 'london'
-
-  function updateTemperature(){
-    $( "#temp" ).text(thermostat.temperature);
-    $('#temp').attr('class', thermostat.usage());
-    $( "#powersave" ).text(thermostat.powerSaveStatus());
-  };
-
-  $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
-    $('#current-temperature').text(data.main.temp)
-  })
-
-  $('#current-city').change(function() {
-  city = $('#current-city').val();
-  console.log(city)
-  $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
-    $('#current-temperature').text(data.main.temp)
-  })
-})
-
-  updateTemperature()
-
-  $( "#increase" ).click(function(){
-    thermostat.increase();
-    updateTemperature();
+  $( "#bowl" ).click(function(){
+    game.bowl()
+    $( "#pin_1" ).css( "background-color", 'black');
+    updateScores()
   });
 
-  $( "#decrease" ).click(function(){
-    thermostat.decrease();
-    updateTemperature();
-  });
+  function updateScores() {
+    $( "#frame_1_roll_1" ).text(game.scorecard.scores()[0]);
+    $( "#frame_1_roll_2" ).text(game.scorecard.scores()[1]);
+    $( "#frame_2_roll_1" ).text(game.scorecard.scores()[2]);
+    $( "#frame_2_roll_2" ).text(game.scorecard.scores()[3]);
+    $( "#frame_3_roll_1" ).text(game.scorecard.scores()[4]);
+    $( "#frame_3_roll_2" ).text(game.scorecard.scores()[5]);
+    $( "#frame_4_roll_1" ).text(game.scorecard.scores()[6]);
+    $( "#frame_4_roll_2" ).text(game.scorecard.scores()[7]);
+    $( "#frame_5_roll_1" ).text(game.scorecard.scores()[8]);
+    $( "#frame_5_roll_2" ).text(game.scorecard.scores()[9]);
+    $( "#frame_6_roll_1" ).text(game.scorecard.scores()[10]);
+    $( "#frame_6_roll_2" ).text(game.scorecard.scores()[11]);
+    $( "#frame_7_roll_1" ).text(game.scorecard.scores()[12]);
+    $( "#frame_7_roll_2" ).text(game.scorecard.scores()[13]);
+    $( "#frame_8_roll_1" ).text(game.scorecard.scores()[14]);
+    $( "#frame_8_roll_2" ).text(game.scorecard.scores()[15]);
+    $( "#frame_9_roll_1" ).text(game.scorecard.scores()[16]);
+    $( "#frame_9_roll_2" ).text(game.scorecard.scores()[17]);
+    $( "#frame_10_roll_1" ).text(game.scorecard.scores()[18]);
+    $( "#frame_10_roll_2" ).text(game.scorecard.scores()[19]);
+    $( "#frame_10_roll_3" ).text(game.scorecard.scores()[20]);
 
 
-  $( "#powerSaveOff_button" ).click(function(){
-      thermostat.powerSaveOff();
-      updateTemperature();
-  });
-
-  $( "#powerSaveOn_button" ).click(function(){
-      thermostat.powerSaveOn();
-      updateTemperature();
-  });
-
-  $( "#reset" ).click(function(){
-      thermostat.reset();
-      updateTemperature();
-  });
-
-
+  }
 
 });

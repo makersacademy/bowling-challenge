@@ -14,4 +14,6 @@ So far there are two constructor functions:
 
 ## Further work
 
-I need to add the multiplication logic to the Scoreboard class. I also need to create a
+I need to add the multiplication logic to the Scoreboard class. I also need to create a.
+
+Some sort of end of Frame function that resets the puins and lets you know the frame is over.

@@ -75,3 +75,8 @@ Game.prototype.hasPerfectGame = function() {
 Game.prototype.perfectGame = function() {
 	this._score = 300;
 }
+Game.prototype.hasGutter = function() {
+	if (this.score()== 0){
+		return true;
+	}
+}

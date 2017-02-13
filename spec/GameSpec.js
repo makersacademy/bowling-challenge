@@ -25,7 +25,7 @@ describe("Game", function() {
 		expect(game.score()).toEqual(14);
 	});
 	it("last 10th frame is a spare- 10th frame bonus", function() {
-		for (var i = 1; i < 10; i++) {
+		for (var i = 1; i < 11; i++) {
 			game.play(7);
 			game.secondPlay(3);
 			game.nextFrame();
@@ -33,7 +33,7 @@ describe("Game", function() {
 		expect(game.hasBonusPlay()).toEqual(true);
 	});
 	it("last 10th frame is a strike - 10th frame bonus", function() {
-		for (var i = 1; i < 10; i++) {
+		for (var i = 1; i < 11; i++) {
 			game.play(10);
 		};
 		expect(game.hasBonusPlay()).toEqual(true);
@@ -44,5 +44,11 @@ describe("Game", function() {
 		};
 		game.hasPerfectGame();
 		expect(game.score()).toEqual(300);
+	});
+	it("gutter game", function() {
+		for (var i = 1; i < 10; i++) {
+			game.play(0);
+		};
+		expect(game.hasGutter()).toEqual(true);
 	});
 });

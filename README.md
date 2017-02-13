@@ -77,3 +77,17 @@ If you don't follow the usual Jasmine convention of having your tests in `spec` 
 2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
 3. Adjust these to point to the correct directories
 4. Done.
+
+How to install and run
+------------
+1) Git clone and/or fork this repository `git clone https://github.com/herecomesjaycee/bowling-challenge.git`
+
+2) Navigate to the `src` folder and launch `index.html` in any web browser (JavaScript must be enabled)
+
+3) Enjoy the bowling game
+
+Screenshots
+-----------
+![screen shot 2017-02-13 at 08 56 21](https://cloud.githubusercontent.com/assets/13175171/22876860/88a66454-f1ca-11e6-8a56-8572f0a89541.png)
+![screen shot 2017-02-13 at 08 56 13](https://cloud.githubusercontent.com/assets/13175171/22876859/88a0e3e4-f1ca-11e6-93a1-b4e2b4ac0213.png)
+

@@ -12,5 +12,5 @@ do the following:
 5. To check your scores after two throws, use ```player.game.scorecalc.scoreboard```
 
 Note: Scores update accurately for strikes, spares, etc, but game currently
-needs to be reset manually. Additional refactoring to remove dependencies, and
+needs to be reset manually after frame 10. Additional refactoring to remove dependencies, and
 the setup of an HTML page with jQuery are also on the to-do list.

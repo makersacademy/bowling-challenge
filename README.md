@@ -2,21 +2,59 @@
 Bowling Challenge
 =================
 
+How to play:
+-----
+```
+In the Terminal:
 
-* Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+$ git clone git@github.com:nenoch/bowling-challenge.git
+$ cd bowling-challenge
+$ open SpecRunner.html
 
-Task: 
+- Right click on the page > Inspect > Dev Tools > Console
+
+In console:
+$ var game = new Game()
+$ game.pinsKnockedDown(4)
+
+- Enter number of pins till the end of the Game. You'll be able to see scores and bonuses.
+
+HAVE FUN!
+
+```
+**Travis CI Status Budge:**
+[![Build Status](https://travis-ci.org/nenoch/bowling-challenge.svg?branch=master)](https://travis-ci.org/nenoch/bowling-challenge)
+
+* WIP: Working on 10th frame features, refactoring and implementing jQuery interface.
+
+User Stories
+-----
+```
+As a bowling player
+so that I can keep record of the pins I knocked down in a frame
+I want to be able to enter their number after each roll.
+
+As a bowling player
+so that I can keep record of my score
+I want to see my score on the screen.
+
+As a bowling player
+so that I don't have to calculate bonuses
+I want to see my score inclusive of strikes and spares.
+
+As a bowling player
+so that I know when the game ends
+I want to be notified of the end of the game and see my final score.
+```
+
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Forking this repo
 
@@ -62,7 +100,7 @@ Code Review
 In code review we'll be hoping to see:
 
 * All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 

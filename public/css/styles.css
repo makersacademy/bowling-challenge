@@ -48,6 +48,7 @@ body {
     left: 15%;
     opacity: 0.9;
     text-align: center;
+    box-shadow: 0 0 7px -1px #222;
 }
 
 .score-top, .score-bottom {
@@ -98,6 +99,8 @@ body {
     transform: rotate(180deg);
     background-color: #fff;
     border: 2px solid black;
+    border-radius: 44px;
+    box-shadow: 0 0 7px -1px #222;
 }
 
 #power-up, #bowl {
@@ -106,13 +109,14 @@ body {
     background-color: #fff;
     margin-bottom: .6em;
     text-align: center;
-    font-size: 1.2vw;
+    border-radius: 30px;
+    font-size: 1vw;
     font-family: sans-serif;
     padding-top: 1vh;
     padding-bottom: 1vh;
     position: absolute;
     transform: rotate(180deg);
-    bottom: 100%;
+    box-shadow: 0 0 7px -1px #222;
 }
 
 #power-up {
@@ -121,7 +125,7 @@ body {
 }
 
 #bowl {
-    bottom: 115%;
+    bottom: 110%;
     background-color: yellow;
 }
 
@@ -133,6 +137,7 @@ body {
     vertical-align: bottom;
     background-color: red;
     position: absolute;
+    border-radius: 44px;
 }
 
 #notification {

@@ -7,7 +7,7 @@ $(document).ready(function() {
     });
 
     $('#bowl').click(function(event) {
-        if (game.currentFrame().firstScore()) {
+        if (game.currentFrame()._turnsRemaining < 2) {
             secondRoll(power());
         } else {
             firstRoll(power());
@@ -57,7 +57,6 @@ $(document).ready(function() {
         if (game._frames[(game._currentFrame - 2)].isSpare()) {
             notifier("SPARE");
         }
-
     };
 
     var insertScores = function() {
@@ -90,6 +89,7 @@ $(document).ready(function() {
     }
 
     function powerUp() {
+
         var elem = document.getElementById("power");
         var height = 1;
         var id = setInterval(frame, 10);

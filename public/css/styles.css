@@ -97,6 +97,7 @@ body {
     float: right;
     transform: rotate(180deg);
     background-color: #fff;
+    border: 2px solid black;
 }
 
 #power-up, #bowl {
@@ -116,10 +117,12 @@ body {
 
 #power-up {
     bottom: 100%;
+    background-color: deepskyblue;
 }
 
 #bowl {
     bottom: 115%;
+    background-color: yellow;
 }
 
 #power {

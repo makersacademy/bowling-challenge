@@ -31,7 +31,15 @@ Game.prototype.totalScore = function () {
 };
 
 Game.prototype.frameScore = function (frame) {
-  return this.frames[frame-1].total(this.frames[frame], this.frames[frame+1])
+  if (this.frames[frame] === undefined) {
+    return this.frames[frame-1].total();
+  }
+  else if (this.frames[frame+1] === undefined) {
+    return this.frames[frame-1].total(this.frames[frame]);
+  }
+  else {
+    return this.frames[frame-1].total(this.frames[frame], this.frames[frame+1])
+  }
 };
 
 Game.prototype.gameOutcome = function () {
@@ -53,7 +61,7 @@ Game.prototype._gutterGame = function () {
 };
 
 Game.prototype._perfectScore = function () {
-  if(this.totalScore() === 320) {
+  if(this.totalScore() === 300) {
     return "Perfect game! You go glen coco"
   }
 };

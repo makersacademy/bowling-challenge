@@ -162,7 +162,7 @@ $(document).ready(function(){
       }
       else {
         game.roll(parseInt(roll10_1.value),parseInt(roll10_2.value));
-        $("#round-10").text(game.frameScore(10));
+        Score($("#round-10"),$("#round-9"),10)
         $("#total-score").text(game.totalScore());
       }
     }
@@ -184,6 +184,10 @@ $(document).ready(function(){
     id.text(game.frameScore(frame));
     id2.empty();
     id2.text(game.frameScore(frame-1));
+  }
+
+  function Strike(id, id2, id3, frame) {
+
   }
 
 });

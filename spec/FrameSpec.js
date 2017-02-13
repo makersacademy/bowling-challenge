@@ -69,6 +69,12 @@ describe("A frame of bowling", function(){
       expect(frame.total(next, next2)).toEqual(34)
     });
 
+    it("calculates a total for a 9th frame strike and a final frame strike", function(){
+      var frame = new Frame(10)
+      var next = new Frame(10,2,2,true)
+      expect(frame.total(next)).toEqual(22)
+    });
+
     it("calculates a total for a strike, spare and a final frame strike", function(){
       var frame = new Frame(10)
       var next = new Frame(8,2)

@@ -20,21 +20,23 @@ Frame.prototype.total = function (next_frame, next_next_frame) {
 };
 
 Frame.prototype._bonus = function (next_frame, next_next_frame) {
-  if (undefined === next_frame) {
+  if (next_frame === undefined) {
     return 0;
   }
-  if (this._isStrike() && this.finalFrame === false) {
+
+  else if (this._isStrike() && this.finalFrame === false) {
     if(next_frame._isSpare()) {
       return this.MAXIMUM_SCORE + next_next_frame._firstRoll();
     }
-    else if (this._isStrike() && this.finalFrame === true) {
-      return this._frameScore()
-    }
-    else {
+
+    else if (this.finalFrame === false){
       return next_frame._strikeBonus(next_next_frame);
     }
   }
-  if (this._isSpare()) {
+  else if (this._isStrike() && this.finalFrame === true) {
+    return this._frameScore()
+  }
+  else if (this._isSpare()) {
     return next_frame._firstRoll();
   }
 
@@ -45,9 +47,24 @@ Frame.prototype._strikeBonus = function(next_next_frame) {
   if (this._isStrike() && next_next_frame !== undefined) {
     return this._frameScore() + next_next_frame._frameScore();
   }
-  return this._firstRoll() + this.rolls[1];
+
+  else if (next_next_frame === undefined){
+    console.log(this.finalFrame)
+    return this._rollChecker();
+  }
 };
 
+Frame.prototype._rollChecker = function () {
+  if (this._isStrike() && this.finalFrame===false) {
+    return this.MAXIMUM_SCORE
+  }
+  else if (this._isStrike() && this.finalFrame===true) {
+    return this.rolls[0] + this.rolls[1]
+  }
+  else {
+    return this.rolls[0] + this.rolls[1]
+  }
+};
 
 Frame.prototype._frameScore = function () {
   return this.rolls.reduce(function(score,roll) {

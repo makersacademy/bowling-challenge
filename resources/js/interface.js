@@ -6,12 +6,15 @@ $(document).ready(function() {
       if(game.nextFrame() === "NEXT FRAME") {
         if (game.isFrameFull()===false){
           addPoints();
+          game.addBonusPointsStrike();
+          game.addBonusPointsSpare();
         } else {
           game.addFrameToBoard();
         }
       } else if (game.nextFrame() === "BONUS ROLL"){
-          addBonusPoints();
-          console.log("I'M HERE");
+          //addBonusPoints();
+          game.addBonusPointsStrike();
+          game.addBonusPointsSpare();
           game.bonusRollTaken();
       }
       showCurrentRoll();

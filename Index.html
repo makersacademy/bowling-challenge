@@ -1,0 +1,101 @@
+<DOCTYPE! html>
+<html>
+<head>
+  <script src='src/jquery.js'></script>
+  <script src='src/cheats.js'></script>
+  <script src='src/Frame.js'></script>
+  <script src='src/Game.js'></script>
+  <script src='src/Roll.js'></script>
+  <script src='src/Scorecard.js'></script>
+  <script src='src/bowling_interface.js'></script>
+
+  </script>
+  <link href='//fonts.googleapis.com/css?family=Amatic SC' rel='stylesheet'>
+  <link type='text/css' rel='stylesheet' href='css/bowling.css'/>
+</head>
+<body>
+
+  <div class='header'>
+    <h1>Kingpinners Ultimate Bowling Challenge Game</h1>
+  </div>
+
+  <div class='divider'>
+  </div>
+
+  <div class='pins'>
+
+    <div class='row-1'>
+      <button class='pin' id='pin_1' type="button"></button>
+      <button class='pin' id='pin_3' type="button"></button>
+      <button class='pin' id='pin_7' type="button"></button>
+      <button class='pin' id='pin_10' type="button"></button>
+    </div>
+    <div class='row-2'>
+      <button class='pin' id='pin_2' type="button"></button>
+      <button class='pin' id='pin_4' type="button"></button>
+      <button class='pin' id='pin_8' type="button"></button>
+    </div>
+    <div class='row-3'>
+      <button class='pin' id='pin_5' type="button"></button>
+      <button class='pin' id='pin_9' type="button"></button>
+    </div>
+    <div class='row-4'>
+      <button class='pin' id='pin_6' type="button"></button>
+    </div>
+
+    <button type=button class='ball' id='bowl'>Bowl!</button>
+
+</div>
+
+
+
+  <div class='scoreboard'>
+  <table class='scoreboard-table' >
+      <thead>
+        <tr>
+          <th class='scoreboard_title' colspan='10'>Bowling Score Sheet</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr class='frame'>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+        <th>10</th>
+      </tr>
+      <tr class='roll'>
+        <td><span id='frame_1_roll_1'></span> | <span id='frame_1_roll_2'></span></td>
+        <td><span id='frame_2_roll_1'></span> | <span id='frame_2_roll_2'></span></td>
+        <td><span id='frame_3_roll_1'></span> | <span id='frame_3_roll_2'></span></td>
+        <td><span id='frame_4_roll_1'></span> | <span id='frame_4_roll_2'></span></td>
+        <td><span id='frame_5_roll_1'></span> | <span id='frame_5_roll_2'></span></td>
+        <td><span id='frame_6_roll_1'></span> | <span id='frame_6_roll_2'></span></td>
+        <td><span id='frame_7_roll_1'></span> | <span id='frame_7_roll_2'></span></td>
+        <td><span id='frame_8_roll_1'></span> | <span id='frame_8_roll_2'></span></td>
+        <td><span id='frame_9_roll_1'></span> | <span id='frame_9_roll_2'></span></td>
+        <td><span id='frame_10_roll_1'></span> | <span id='frame_10_roll_2'></span> | <span id='frame_10_roll_3'></span></td>
+      </tr>
+      <tr class='total'>
+        <td><span id='round_1_total'/></td>
+        <td><span id='round_2_total'/></td>
+        <td><span id='round_3_total'/></td>
+        <td><span id='round_4_total'/></td>
+        <td><span id='round_5_total'/></td>
+        <td><span id='round_6_total'/></td>
+        <td><span id='round_7_total'/></td>
+        <td><span id='round_8_total'/></td>
+        <td><span id='round_9_total'/></td>
+        <td><span id='round_10_total'/></td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+
+</body>
+</html

@@ -1,0 +1,113 @@
+body {
+  font-family: Amatic;
+  color: white;
+  background-color: #8e291f
+
+}
+
+/*.circle{
+  width:100px;
+  height:100px;
+  border-radius:50px;
+  font-size:20px;
+  color:#fff;
+  line-height:100px;
+  text-align:
+  center;background:#000
+}*/
+
+button {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.pins {
+  text-align: center;
+  vertical-align: middle;
+  margin: 10px;
+}
+
+.pin {
+    background-color: white;
+}
+
+.ball {
+  margin: 20px;
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+  background-color: black;
+  color: white;
+  font-size: 40px;
+  font-family: Amatic;
+}
+
+.ball:hover {
+  background-color: rgba(#212426, 0.9);
+}
+
+.row-1, .row-2, .row-3, .row-4 {
+  margin: 5px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 80px;
+}
+
+table, th {
+  background-color: white;
+  color: black;
+  border-radius: 25px;
+  border-collapse: collapse;
+}
+
+.scoreboard {
+
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  height: 20%;
+  font-family: Courier bold;
+  /*margin: 10px;*/
+}
+
+
+th, td {
+  padding: 10px;
+}
+
+.scoreboard_title {
+  font-family: Amatic ;
+  font-size: 40px;
+
+}
+
+.frame th {
+  border: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.roll {
+  font-weight: bold;
+  font-size: 17px;
+  text-align: right;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+}
+
+.divider {
+  background-color: white;
+  height: 7px;
+  width: 100%;
+}

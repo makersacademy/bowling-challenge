@@ -5,6 +5,8 @@ Bowling Challenge
 This work in progress bowling challenge can be run in-console. To run, please
 do the following:
 
+Clone this repo, then follow these instructions:
+
 1. Open SpecRunner.html
 2. Open dev tools, and navigate to the console.
 3. Create a new player with player = new Player();

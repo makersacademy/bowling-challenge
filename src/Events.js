@@ -63,6 +63,7 @@ $(document).ready(function(){
       game.roll(parseInt(roll3_1.value),parseInt(roll3_2.value));
       Hide(this)
       Score($("#round-3"),$("#round-2"),3)
+      $("#round-1").text(game.frameScore(1));
       $("#total-score").text(game.totalScore());
     }
 
@@ -75,6 +76,7 @@ $(document).ready(function(){
     if ($(this).attr('id') === 'roll-4.2') {
       game.roll(parseInt(roll4_1.value),parseInt(roll4_2.value));
       Hide(this)
+      $("#round-2").text(game.frameScore(2));
       Score($("#round-4"),$("#round-3"),4)
       $("#total-score").text(game.totalScore());
     }
@@ -89,6 +91,7 @@ $(document).ready(function(){
       game.roll(parseInt(roll5_1.value),parseInt(roll5_2.value));
       Hide(this)
       Score($("#round-5"),$("#round-4"),5)
+      $("#round-3").text(game.frameScore(3));
       $("#total-score").text(game.totalScore());
     }
 
@@ -102,6 +105,7 @@ $(document).ready(function(){
       game.roll(parseInt(roll6_1.value),parseInt(roll6_2.value));
       Hide(this)
       Score($("#round-6"),$("#round-5"),6)
+      $("#round-4").text(game.frameScore(4));
       $("#total-score").text(game.totalScore());
     }
 
@@ -114,6 +118,7 @@ $(document).ready(function(){
     if ($(this).attr('id') === 'roll-7.2') {
       game.roll(parseInt(roll7_1.value),parseInt(roll7_2.value));
       Hide(this)
+      $("#round-5").text(game.frameScore(5));
       Score($("#round-7"),$("#round-6"),7)
       $("#total-score").text(game.totalScore());
     }
@@ -127,12 +132,14 @@ $(document).ready(function(){
     if ($(this).attr('id') === 'roll-8.2') {
       game.roll(parseInt(roll8_1.value),parseInt(roll8_2.value));
       Hide(this)
+      $("#round-6").text(game.frameScore(6));
       Score($("#round-8"),$("#round-7"),8)
       $("#total-score").text(game.totalScore());
     }
 
     if ($(this).attr('id') === 'roll-9.1') {
       Hide(this)
+      rollRemover(roll9_2)
       $("#round-9").text(roll9_1.value);
       $("#total-score").text(game.totalScore()+parseInt(roll9_1.value));
     }
@@ -141,6 +148,7 @@ $(document).ready(function(){
       game.roll(parseInt(roll9_1.value),parseInt(roll9_2.value));
       Hide(this)
       Score($("#round-9"),$("#round-8"),9)
+      $("#round-7").text(game.frameScore(7));
       $("#total-score").text(game.totalScore());
     }
 
@@ -163,6 +171,7 @@ $(document).ready(function(){
       else {
         game.roll(parseInt(roll10_1.value),parseInt(roll10_2.value));
         Score($("#round-10"),$("#round-9"),10)
+        $("#round-8").text(game.frameScore(8));
         $("#total-score").text(game.totalScore());
       }
     }
@@ -171,6 +180,7 @@ $(document).ready(function(){
       game.roll(parseInt(roll10_1.value),parseInt(roll10_2.value),parseInt(roll10_3.value),true);
       Hide(this)
       $("#round-10").text(game.frameScore(10));
+      $("#round-8").text(game.frameScore(8));
       $("#total-score").text(game.totalScore());
     }
   });
@@ -186,8 +196,24 @@ $(document).ready(function(){
     id2.text(game.frameScore(frame-1));
   }
 
-  function Strike(id, id2, id3, frame) {
+  function Strike(roll1, id1, id2, frame) {
+      console.log(roll1)
+    if (roll1 === 10) {
+      game.roll(parseInt(roll1_1.value));
+      Hide(id1)
+      id1.hide();
+      Score(id1,id2,frame)
+      $("#total-score").text(game.totalScore());
+    }
+  }
 
+  function strikeClose(roll1, id) {
+    if (roll1.value === 10)
+    Hide(id)
+  }
+
+  function rollRemover(roll) {
+    $(roll, 'option:gt(0)').remove();
   }
 
 });

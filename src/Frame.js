@@ -26,7 +26,12 @@ Frame.prototype._bonus = function (next_frame, next_next_frame) {
 
   else if (this._isStrike() && this.finalFrame === false) {
     if(next_frame._isSpare()) {
+      if (next_next_frame !== undefined) {
       return this.MAXIMUM_SCORE + next_next_frame._firstRoll();
+      }
+      else {
+        return this.MAXIMUM_SCORE
+      }
     }
 
     else if (this.finalFrame === false){
@@ -49,7 +54,6 @@ Frame.prototype._strikeBonus = function(next_next_frame) {
   }
 
   else if (next_next_frame === undefined){
-    console.log(this.finalFrame)
     return this._rollChecker();
   }
 };

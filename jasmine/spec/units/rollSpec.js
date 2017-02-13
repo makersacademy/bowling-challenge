@@ -9,7 +9,7 @@ describe("Roll", function() {
     expect(function(){new Roll()}).not.toThrow();
   });
 
-  describe("getKnockedDownPins(pins)", function() {
+  xdescribe("getKnockedDownPins(pins)", function() {
     it("starts at 0", function() {
       expect(roll.getKnockedDownPins()).toEqual(0);
     });

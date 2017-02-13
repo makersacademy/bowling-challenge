@@ -1,11 +1,16 @@
 var Frame = class {
-  constructor(rollClass) {
-    this.rolls = [new rollClass, new rollClass];
+  constructor(id, rollClass) {
+    this.id = id;
+    this.rolls = new Array();
+    this.maxRolls = 2;
     this.bonus = 0
     this.score = 0
 
     this._standingPins = 10;
-    this._activeRollNumber = 0
+    this._activeRollNumber = -1;
+    this._rollClass = rollClass;
+
+    // this.createRoll();
   };
 
   setKnockedDownPins(pins) {
@@ -21,6 +26,8 @@ var Frame = class {
   nextRoll() {
     if (this._standingPins == 0) {throw('Cannot advance to the next roll: pins have finished for this frame!');}
     this._activeRollNumber += 1;
+    this.createRoll();
+    return this.activeRoll();
   }
 
   getStandingPins() {
@@ -30,6 +37,13 @@ var Frame = class {
   activeRoll() {
     return this.rolls[this._activeRollNumber]
   }
+
+  createRoll() {
+    if (this.rolls.length >= this.maxRolls) {throw('Cannot create roll: max number reached')};
+    roll = new this._rollClass(this._activeRollNumber);
+    this.rolls.push(roll);
+    return roll;
+  };
 
   // PRIVATE
   _reduceStandingPins(pins) {

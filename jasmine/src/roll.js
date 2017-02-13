@@ -1,6 +1,7 @@
 var Roll = class {
-  constructor() {
+  constructor(id) {
     this.knockedDownPins = 0
+    this.id = id;
   };
 
     getKnockedDownPins(pins) {

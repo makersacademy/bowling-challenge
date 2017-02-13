@@ -15,21 +15,21 @@ describe("Frame", function() {
     });
   });
 
-  describe("rolls", function() {
+  describe("maxRolls", function() {
     it("has 2 rolls on new frame ", function() {
-      expect(frame.rolls.length).toEqual(2);
+      expect(frame.maxRolls).toEqual(2);
     });
   });
 
-  describe("bonus", function() {
-    it("starts at 0", function() {
-      expect(frame.bonus).toEqual(0);
+  describe("createRoll()", function() {
+    it("adds a new roll to the frame", function() {
+      expect(function(){frame.createRoll()}).not.toThrow();
     });
-  });
-
-  describe("score", function() {
-    it("starts at 0", function() {
-      expect(frame.score).toEqual(0);
+    it("cannot create more rolls than maxRolls", function() {
+      for (var i = 0; i < frame.maxRolls; i++) {
+        expect(function(){frame.createRoll()}).not.toThrow();
+      }
+      expect(function(){frame.createRoll()}).toThrow('Cannot create roll: max number reached');
     });
   });
 
@@ -38,6 +38,7 @@ describe("Frame", function() {
       expect(function(){frame.nextRoll()}).not.toThrow();
     });
     it('fails to advance if 10 pins are knocked', function() {
+      frame.nextRoll();
       frame.setKnockedDownPins(10);
       expect(function(){frame.nextRoll()}).toThrow('Cannot advance to the next roll: pins have finished for this frame!');
     });
@@ -45,6 +46,7 @@ describe("Frame", function() {
 
   describe("setKnockedDownPins(pins)", function() {
     it("set the number of knocked down pins in this roll", function() {
+      frame.nextRoll();
       frame.setKnockedDownPins(4);
       frame.nextRoll();
       frame.setKnockedDownPins(5);
@@ -54,10 +56,23 @@ describe("Frame", function() {
     });
 
     it("fails if try to knock down more pin than actually standing", function() {
+      frame.nextRoll();
       expect(function(){frame.setKnockedDownPins(11)}).toThrow('Cannot set pins number: are you cheating?!?!?!');
       frame.setKnockedDownPins(4);
       frame.nextRoll();
       expect(function(){frame.setKnockedDownPins(25)}).toThrow('Cannot set pins number: are you cheating?!?!?!');
+    });
+  });
+
+  xdescribe("bonus", function() {
+    it("starts at 0", function() {
+      expect(frame.bonus).toEqual(0);
+    });
+  });
+
+  xdescribe("score", function() {
+    it("starts at 0", function() {
+      expect(frame.score).toEqual(0);
     });
   });
 

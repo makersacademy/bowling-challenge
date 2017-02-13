@@ -26,7 +26,7 @@ I want to keep the game scoring
 USER STORY 2
 As a player
 So I can play my game
-I want my scoreboard to be created with 10 frames
+I want to be able to run 10 frames
 
 USER STORY 3
 As a player

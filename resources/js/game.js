@@ -1,10 +1,13 @@
 'use strict'
 /*jshint esversion: 6 */
+/*jslint node: true */
+
 
 function Game() {
   this.frame = [];
   this.roll = 0;
   this.scoreBoard = [];
+  this.bonusTaken = 0;
 }
 
 var game = new Game()
@@ -47,11 +50,11 @@ Game.prototype.isSpare = function(frame){
 };
 
 Game.prototype.bowl = function() {
-  if (this.frame === []){
-    this.roll = Math.floor(Math.random() * 11);
-  }else {
-    this.roll = Math.floor(Math.random() * (11 - this.sumFrame(this.frame)));
-  }
+   if (this.frame === []){
+     this.roll = Math.floor(Math.random() * 11);
+   }else {
+     this.roll = Math.floor(Math.random() * (11 - this.sumFrame(this.frame)));
+   }
 };
 
 Game.prototype.isFrameFull = function() {
@@ -72,31 +75,47 @@ Game.prototype.addToFrame = function() {
 };
 
 Game.prototype.addFrameToBoard = function(){
-  if (this.isStrike(this.lastFrameBowled()) && this.isFrameFull()) {
-    var lastIndex = this.scoreBoard.length - 2
-    this.scoreBoard.push(this.frame);
-    this.scoreBoard[lastIndex][1] += this.sumFrame(this.lastFrameBowled());
-    this.frame = []
-  }else if (this.isSpare(this.lastFrameBowled()) && this.isFrameFull()) {
-    this.scoreBoard.push(this.frame);
-    var lastIndex = this.scoreBoard.length - 1
-    this.scoreBoard[lastIndex][1] += (this.lastFrameBowled())[0];
-    this.frame = []
-  }else if(this.isFrameFull() === true){
+  if(this.isFrameFull() === true){
     this.scoreBoard.push(this.frame);
     this.frame = []
   }
 };
 
-Game.prototype.nextFrame = function(){
-  if (this.scoreBoard.length === 10 && this.isStrike(this.lastFrameBowled())){
-    return "2 BONUS ROLLS";
-  } else if (this.scoreBoard.length === 10 && this.isSpare(this.lastFrameBowled())){
-    return "1 BONUS ROLL";
-  } else if (this.scoreBoard.length === 10) {
+Game.prototype.bonusRollTaken = function(){
+  this.bonusTaken++;
+};
+
+Game.prototype.assignFinalBonus = function(){
+  this.scoreBoard[9][1] += this.roll
+};
+
+
+Game.prototype.finalFrameStrike = function(bonusTaken){
+  if (bonusTaken === 2){
     return "GAME FINISHED";
-  } else {
+  } else if (bonusTaken === 0 || bonusTaken === 1){
+    return "BONUS ROLL";
+  }
+};
+
+Game.prototype.finalFrameSpare = function(){
+  if(this.bonusTaken >= 1){
+    return "GAME FINISHED";
+  }else{
+    return "BONUS ROLL";
+  }
+};
+
+
+Game.prototype.nextFrame = function(){
+  if (this.scoreBoard.length < 10){
     return "NEXT FRAME";
+  } else if (this.isStrike(this.lastFrameBowled())){
+    return this.finalFrameStrike(this.bonusTaken);
+  } else if (this.isSpare(this.lastFrameBowled()) === true){
+    return this.finalFrameSpare();
+  } else {
+    return "GAME FINISHED";
   }
 };
 
@@ -116,4 +135,5 @@ Game.prototype.playAgain = function(){
   this.frame = [];
   this.roll = 0;
   this.scoreBoard = [];
+  this.bonusTaken = 0;
 };

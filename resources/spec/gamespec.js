@@ -1,4 +1,5 @@
 "use strict";
+/*jslint node: true */
 
 describe("Joe's Ten Pin Bowling Game", function(){
   var game;
@@ -95,20 +96,7 @@ describe("Joe's Ten Pin Bowling Game", function(){
       expect(game.returnTotalScore()).toEqual(21);
     });
 
-    it("Can add bonus points if the previous frame was a strike or spare", function(){
-      game.scoreBoard = [[1,4], [10,0]];
-      game.frame = [7,2]
-      game.addFrameToBoard();
-      expect(game.returnTotalScore()).toEqual(33);
-      game.scoreBoard = [[1,4], [2, 8]]
-      game.frame = [3, 4]
-      game.addFrameToBoard();
-      expect(game.returnTotalScore()).toEqual(25);
-      game.scoreBoard = [[1,4],[3,4]]
-      game.frame = [10]
-      game.addFrameToBoard();
-      expect(game.returnTotalScore()).toEqual(22);
-    });
+
     it("Can reset the game to play again", function(){
       game.scoreBoard = [[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2]];
       game.roll = 2

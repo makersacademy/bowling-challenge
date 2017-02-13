@@ -139,7 +139,6 @@ $(document).ready(function(){
 
     if ($(this).attr('id') === 'roll-9.1') {
       Hide(this)
-      rollRemover(roll9_2)
       $("#round-9").text(roll9_1.value);
       $("#total-score").text(game.totalScore()+parseInt(roll9_1.value));
     }
@@ -205,15 +204,6 @@ $(document).ready(function(){
       Score(id1,id2,frame)
       $("#total-score").text(game.totalScore());
     }
-  }
-
-  function strikeClose(roll1, id) {
-    if (roll1.value === 10)
-    Hide(id)
-  }
-
-  function rollRemover(roll) {
-    $(roll, 'option:gt(0)').remove();
   }
 
 });

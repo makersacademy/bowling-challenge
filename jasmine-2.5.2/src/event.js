@@ -92,6 +92,6 @@ $( document ).ready(function() {
   }
 
   function gameOver() {
-    $('#info').text("Refresh page to start a new game.")
+    $('#info').text("Refresh page to branstart a new game.")
   }
 });

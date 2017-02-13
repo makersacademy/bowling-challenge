@@ -1,4 +1,4 @@
-// "use strict";
+'use strict';
 
 function Game () {
   this._frames = [];
@@ -26,51 +26,73 @@ Game.prototype.finalFrame = function(frame, firstRoll, secondRoll) {
 Game.prototype.whichGame = function () {
   if (this.getScore() === 0) {
     return 'Gutter Game';
-  } else if (this.getScore() === 300) {
+  }
+  else if (this.getScore() === 300) {
     return 'Perfect Game';
   }
-    else {
+  else {
       return 'Ordinary Game';
-    }
+  }
 };
 
 Game.prototype._calculateScore = function(frameNumber) {
   var frame = this._frames[frameNumber];
   if (frame.isStrike()) {
     this._scores[frameNumber+1] = null;
-    this._strike.push(true);
-    this._spare.push(false);
+    this._updateStikesAndSpares(true, false);
   }
   else if (frame.isSpare()) {
     this._scores[frameNumber+1] = null;
-    this._spare.push(true);
-    this._strike.push(false);
+    this._updateStikesAndSpares(false, true);
   }
   else {
-    // console.log('fm='+this._scores[frameNumber]);
     this._scores[frameNumber+1] = this._scores[frameNumber] + frame.getFrameScore();
-    this._spare.push(false);
-    this._strike.push(false);
+    this._updateStikesAndSpares(false, false);
   }
   this._fillInNullScores(frameNumber);
 };
 
 Game.prototype._fillInNullScores = function (frameNumber) {
   var frame = this._frames[frameNumber];
-  if (frameNumber >= 1 && this._spare[frameNumber - 1] == true) {
-     var delta = this._scores[frameNumber - 1] + this._frames[frameNumber-1].getFrameScore() + this._frames[frameNumber].getFrame()[0];
-     this._scores[frameNumber] += delta;
-     this._scores[frameNumber+1] += delta;
+  var delta;
+  if (frameNumber >= 1 && this._isPreviousFrameSpare(frameNumber)) {
+     delta = this._addingPreviousScores(frameNumber) + this._frames[frameNumber].getFrame()[0];
+     this._increaseScoresByDelta(frameNumber, delta);
   }
-  if (frameNumber >= 2 && this._strike[frameNumber - 1] == true && this._strike[frameNumber - 2] == true) {
+  if (frameNumber >= 2 && this._areTwoPreviousFramesStikes(frameNumber)) {
     this._scores[frameNumber-1] = this._scores[frameNumber - 2] + 30;
   }
-  if (!frame.isStrike() && this._strike[frameNumber - 1] == true) {
-    var delta = this._scores[frameNumber - 1] + this._frames[frameNumber-1].getFrameScore() + this._frames[frameNumber].getFrameScore();
-    this._scores[frameNumber] += delta;
-    this._scores[frameNumber+1] += delta;
+  if (!frame.isStrike() && this._isPreviousFrameStrike(frameNumber)) {
+    delta = this._addingPreviousScores(frameNumber) + this._frames[frameNumber].getFrameScore();
+    this._increaseScoresByDelta(frameNumber, delta);
   }
-}
+};
+
+Game.prototype._updateStikesAndSpares = function (strike, spare) {
+  this._strike.push(strike);
+  this._spare.push(spare);
+};
+
+Game.prototype._addingPreviousScores = function (frameNumber) {
+  return this._scores[frameNumber - 1] + this._frames[frameNumber-1].getFrameScore();
+};
+
+Game.prototype._increaseScoresByDelta = function (frameNumber, delta) {
+  this._scores[frameNumber] += delta;
+  this._scores[frameNumber+1] += delta;
+};
+
+Game.prototype._isPreviousFrameSpare = function (frameNumber) {
+  return (this._spare[frameNumber - 1] === true);
+};
+
+Game.prototype._isPreviousFrameStrike = function (frameNumber) {
+  return (this._strike[frameNumber - 1] === true);
+};
+
+Game.prototype._areTwoPreviousFramesStikes = function (frameNumber) {
+  return (this._strike[frameNumber - 1] === true && this._strike[frameNumber - 2] === true);
+};
 
 Game.prototype._finalCalculations = function () {
   var frame = new Frame();
@@ -80,8 +102,8 @@ Game.prototype._finalCalculations = function () {
   this._scores.pop();
 }
 
-// Can be moved to arrays
-
-Array.prototype._last = function () {
-  return this[this.length - 1];
+if (!Array.prototype._last){
+    Array.prototype._last = function(){
+        return this[this.length - 1];
+    };
 };

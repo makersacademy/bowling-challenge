@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
 function Frame () {
-  this._frame = new Array();
-  this._strikes = new Array();
-  this._spares = new Array();
-};
+  this._frame = [];
+  this._strikes = [];
+  this._spares = [];
+}
 
 Frame.prototype.getFrame = function () {
   return this._frame;
@@ -29,14 +29,12 @@ Frame.prototype.rollOneFrame = function (rollFirst, rollSecond) {
 };
 
 Frame.prototype.isStrike = function () {
-  return this._frame[0] == 10;
+  return this._frame[0] === 10;
 };
 
 Frame.prototype.isSpare = function () {
-  return this._frame[0]+this._frame[1] == 10;
+  return this._frame[0]+this._frame[1] === 10;
 };
-
-// not tested yet
 
 Frame.prototype.finalFrame = function(firstRoll, secondRoll) {
   if (this.isStrike()) {
@@ -44,11 +42,9 @@ Frame.prototype.finalFrame = function(firstRoll, secondRoll) {
   }
   else if (this.isSpare()) {
     return [firstRoll, 0];
-  };
+  }
   return [0,0];
 };
-
-//private
 
 Frame.prototype._randomRoll = function () {
   return Math.floor(Math.random() * 10);

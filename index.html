@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bowling Scoresheet</title>
+    <meta name="description" content="Bowling Scoresheet">
+    <meta name="author" content="Stefan Liute">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div class="row" style="margin-top:4em;">
+        <div class="col-md-1"></div>
+        <div class="col-md-1 text-right">
+          <p>
+            Frame 01
+          </p>
+          <p>
+            <span id="roll-1" class="lead bg-info">7</span>
+            <span id="roll-2" class="lead bg-info">2</span>
+          </p>
+          <p>
+            <h2 id="frame-01-score" class="bg-primary">20</h2>
+          </p>
+        </div>
+
+        <div class="col-md-1 text-right">
+          <p>
+            Frame 02
+          </p>
+          <p>
+            <span id="roll-1" class="lead bg-info">7</span>
+            <span id="roll-2" class="lead bg-info">2</span>
+          </p>
+          <p>
+            <h2 id="frame-01-score" class="bg-primary">20</h2>
+          </p>
+        </div>
+
+        <div class="col-md-1 text-right">
+          <p>
+            Frame 03
+          </p>
+          <p>
+            <span id="roll-1" class="lead bg-info">7</span>
+            <span id="roll-2" class="lead bg-info">2</span>
+          </p>
+          <p>
+            <h2 id="frame-01-score" class="bg-primary">20</h2>
+          </p>
+        </div>
+
+        <div class="col-md-1 text-right">
+          <p>
+            Frame 04
+          </p>
+          <p>
+            <span id="roll-1" class="lead bg-info">7</span>
+            <span id="roll-2" class="lead bg-info">2</span>
+          </p>
+          <p>
+            <h2 id="frame-01-score" class="bg-primary">20</h2>
+          </p>
+        </div>
+
+        <div class="col-md-1 text-right">
+          <p>
+            Frame 05
+          </p>
+          <p>
+            <span id="roll-1" class="lead bg-info">7</span>
+            <span id="roll-2" class="lead bg-info">2</span>
+          </p>
+          <p>
+            <h2 id="frame-01-score" class="bg-primary">20</h2>
+          </p>
+        </div>
+
+        <div class="col-md-1 text-right">
+          <p>
+            Frame 06
+          </p>
+          <p>
+            <span id="roll-1" class="lead bg-info">7</span>
+            <span id="roll-2" class="lead bg-info">2</span>
+          </p>
+          <p>
+            <h2 id="frame-01-score" class="bg-primary">20</h2>
+          </p>
+        </div>
+
+        <div class="col-md-1 text-right">
+          <p>
+            Frame 07
+          </p>
+          <p>
+            <span id="roll-1" class="lead bg-info">7</span>
+            <span id="roll-2" class="lead bg-info">2</span>
+          </p>
+          <p>
+            <h2 id="frame-01-score" class="bg-primary">20</h2>
+          </p>
+        </div>
+
+        <div class="col-md-1 text-right">
+          <p>
+            Frame 08
+          </p>
+          <p>
+            <span id="roll-1" class="lead bg-info">7</span>
+            <span id="roll-2" class="lead bg-info">2</span>
+          </p>
+          <p>
+            <h2 id="frame-01-score" class="bg-primary">20</h2>
+          </p>
+        </div>
+
+        <div class="col-md-1 text-right">
+          <p>
+            Frame 09
+          </p>
+          <p>
+            <span id="roll-1" class="lead bg-info">7</span>
+            <span id="roll-2" class="lead bg-info">2</span>
+          </p>
+          <p>
+            <h2 id="frame-01-score" class="bg-primary">20</h2>
+          </p>
+        </div>
+
+        <div class="col-md-1 text-right">
+          <p>
+            Frame 10
+          </p>
+          <p>
+            <span id="roll-1" class="lead bg-info">7</span>
+            <span id="roll-2" class="lead bg-info">2</span>
+          </p>
+          <p>
+            <h2 id="frame-01-score" class="bg-primary">20</h2>
+          </p>
+        </div>
+
+        <div class="col-md-1"></div>
+      </div>
+
+      <div class="row" style="margin-top:4em;">
+        <div class="col-md-4 text-center"></div>
+        <div class="col-md-4 text-center">
+          <p>
+            Please input your roll count:
+          </p>
+          <span>Roll 1: </span>
+          <span>
+            <form action="...">
+            <select name="count">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">X</option>
+            </select>
+            <input type="submit" value="Submit">
+            </form>
+          </span>
+        </div>
+        <div class="col-md-4 text-center"></div>
+      </div>
+    </div>
+
+    <script src="src/Game.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="src/Lane.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="src/jQHandler.js"></script>
+  </body>
+</html>

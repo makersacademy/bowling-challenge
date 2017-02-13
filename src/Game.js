@@ -1,11 +1,11 @@
-'use strict';
+// "use strict";
 
 function Game () {
-  this._frames = new Array();
+  this._frames = [];
   this._scores = [0];
   this._strike = [];
   this._spare = [];
-};
+}
 
 Game.prototype.getScore = function () {
   return this._scores._last();
@@ -24,9 +24,9 @@ Game.prototype.finalFrame = function(frame, firstRoll, secondRoll) {
 };
 
 Game.prototype.whichGame = function () {
-  if (this.getScore() == 0) {
+  if (this.getScore() === 0) {
     return 'Gutter Game';
-  } else if (this.getScore() == 300) {
+  } else if (this.getScore() === 300) {
     return 'Perfect Game';
   }
     else {

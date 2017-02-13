@@ -2,13 +2,6 @@
 Bowling Challenge
 =================
 
-
-* Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
 Task:
 -----
 
@@ -48,7 +41,19 @@ I want to be able to given a final score
 so I know if I have won.
 ```
 
+## Installation
 
+- Install `node.js`
+- Install `mongodb`
+- Install [chromedriver](https://sites.google.com/a/chromium.org/chromedriver/)
+- Open a new terminal window and run `mongod` to start the Mongodb server
+- Create a local mongodb called `bowling_test` on `localhost:27017`
+- Clone repo
+- `cd` into `app` directory
+- Run `npm install`
+- Open a new terminal window and run `nodemon ./bin/www` to start the app server
+- Run `npm test` to run the test suite
+- Open `http://localhost:3000/` to view the app
 
 
 ### Optional Extra

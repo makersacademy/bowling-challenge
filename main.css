@@ -40,31 +40,11 @@ h1 {
   color: grey;
   font-style: italic;
 }
-.t-frame {
+.t-frame, .t-roll, .t-rolltot, .t-bonus {
   width: 10%;
   text-align: right;
 }
-.t-roll {
-  width: 10%;
-  text-align: right;
-}
-.t-hits {
-  width: 20%;
-  text-align: right;
-}
-.t-bonus {
-  width: 10%;
-  text-align: right;
-}
-.t-sors {
-  width: 20%;
-  text-align: center;
-}
-.t-rolltot {
-  width: 10%;
-  text-align: right;
-}
-.t-tot {
+.t-hits, .t-sors, .t-tot {
   width: 20%;
   text-align: right;
 }

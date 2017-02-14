@@ -18,8 +18,8 @@ Score ten pin bowling for one player (in JavaScript). Optionally create a nice i
 
 ## Instructions
 
-Open **bowling-challenge/index.html**.
+Open bowling-challenge/index.html.
 
-Type number of pins knocked down for a roll and **Press Enter** or click **Add Score**.
+Enter number of pins knocked down for each roll.
 
-Once all rolls recorded, refresh page to start again.
+Once all rolls recorded, refresh page to start a new game. 

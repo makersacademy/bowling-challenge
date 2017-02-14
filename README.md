@@ -14,3 +14,11 @@ Score ten pin bowling for one player (in JavaScript). Optionally create a nice i
  - bonus 1 per pin for the 2 rolls following a strike
  - bonus 1 per pin for the first roll following a spare
 - If get a strike or spare in final round, get 1 or 2 extra rolls respectively. These score 1 per pin with no extra bonus.
+
+## Instructions
+
+Open bowling-challenge/index.html.
+
+Enter number of pins knocked down for each roll.
+
+Once all rolls recorded, refresh page to start again.

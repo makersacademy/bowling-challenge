@@ -45,7 +45,7 @@ https://jasmine.github.io/
 http://getbootstrap.com
 ```
 
-## Languages, Libraries and Framworks
+## Languages, Libraries and Frameworks
 
 Javascript, JQuery, HTLM, CSS and Bootstrap 4.0
 

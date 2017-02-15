@@ -4,5 +4,5 @@ function Roll(standingPins){
 }
 
 Roll.prototype._play = function(){
-  return 4//Math.floor((Math.random() * (this._standingPins + 1)));
+  return Math.floor((Math.random() * (this._standingPins + 1)));
 };

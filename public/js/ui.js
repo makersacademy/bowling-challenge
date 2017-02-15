@@ -6,6 +6,12 @@ $(document).ready(function() {
         powerUp();
     });
 
+    $('#restart').click(function(event) {
+        clearAll();
+        game = new Game();
+        game.start();
+    });
+
     $('#bowl').click(function(event) {
         if (game.currentFrame()._turnsRemaining < 2) {
             secondRoll(power());
@@ -28,7 +34,6 @@ $(document).ready(function() {
     }
 
     var perfectNotifier = function() {
-        console.log(game.score());
         if (game.score() === 300) {
             $("#notification-text").html("PERFECT GAME");
             $("#notification" ).fadeIn( 500, function() {
@@ -62,8 +67,11 @@ $(document).ready(function() {
     var insertScores = function() {
         for (var i = 1; i <= game._frames.length; i++) {
             var frame = "#frame-" + i;
-            $(frame + "-roll-1").text(game._frames[i - 1].firstScore());
-            $(frame + "-roll-2").text(game._frames[i - 1].secondScore());
+            var currFrame = game._frames[i - 1];
+            if (currFrame.isFrameStarted()) {
+                $(frame + "-roll-1").text(currFrame.firstScore());
+                $(frame + "-roll-2").text(currFrame.secondScore());
+            }
         }
     };
 
@@ -89,7 +97,6 @@ $(document).ready(function() {
     }
 
     function powerUp() {
-
         var elem = document.getElementById("power");
         var height = 1;
         var id = setInterval(frame, 10);
@@ -119,6 +126,15 @@ $(document).ready(function() {
                 height--;
                 elem.style.height = height + '%';
             }
+        }
+    }
+
+    var clearAll = function() {
+        for (var i = 1; i <= 12; i++) {
+            var frame = "#frame-" + i;
+            $(frame + "-score").text("");
+            $(frame + "-roll-1").text("");
+            $(frame + "-roll-2").text("");
         }
     }
 

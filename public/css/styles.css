@@ -103,7 +103,7 @@ body {
     box-shadow: 0 0 7px -1px #222;
 }
 
-#power-up, #bowl {
+#power-up, #bowl, #restart {
     width: 100%;
     border: 2px solid black;
     background-color: #fff;
@@ -127,6 +127,11 @@ body {
 #bowl {
     bottom: 110%;
     background-color: yellow;
+}
+
+#restart {
+    bottom: 120%;
+    background-color: red;
 }
 
 #power {

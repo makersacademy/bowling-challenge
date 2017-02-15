@@ -16,7 +16,9 @@ Frame.prototype.addScore = function(pins) {
 }
 
 Frame.prototype.firstScore = function() {
+  if (this._scores[0]) {
     return this._scores[0];
+  } return 0;
 }
 
 Frame.prototype.secondScore = function() {
@@ -38,6 +40,10 @@ Frame.prototype.score = function() {
     return this._scores.reduce(function(total, score) {
         return total + score;
     }, 0);
+}
+
+Frame.prototype.isFrameStarted = function() {
+    return this._scores.length > 0;
 }
 
 Frame.prototype.isFrameEnded = function() {

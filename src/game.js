@@ -47,12 +47,15 @@ Game.prototype.score = function() {
 
 Game.prototype.strikeCheck = function(frame, num, framePlus1, framePlus2) {
     if (frame.isStrike() && num < 9 && framePlus1 && framePlus2) {
+      console.log(framePlus1);
+      console.log(framePlus2);
         return this.strikeBonus(frame, framePlus1, framePlus2);
     } return 0;
 }
 
 Game.prototype.spareCheck = function(frame, num, framePlus1) {
     if (frame.isSpare() && num < 9 && framePlus1) {
+      console.log(framePlus1);
         return this.spareBonus(frame, framePlus1);
     } return 0;
 }

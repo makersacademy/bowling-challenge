@@ -32,6 +32,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src="src/Game.js"></script>
+    <script src="src/Frame.js"></script>
+
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -97,7 +100,10 @@
                 <p> You can either select scores below, or ... [provide explanation] </p>
                 <ul class="list-inline banner-social-buttons">
                     <li>
-                        <div class="btn btn-default btn-lg">1</div>
+                        <div class="btn btn-default btn-lg" id="choice-0">0</div>
+                    </li>
+                    <li>
+                        <div class="btn btn-default btn-lg" id="choice-1">1</div>
                     </li>
                     <li>
                         <div class="btn btn-default btn-lg">2</div>
@@ -129,36 +135,37 @@
                 </ul>
                 <ul class="list-inline banner-social-buttons">
                     <li>
-                        <div class="btn btn-default btn-lg">Random roll generator</div>
+                        <div class="btn btn-default btn-lg" id="random">Random roll generator</div>
                     </li>
                 </ul>
                 <p> Score table </p>
                 <table class="table table-bordered">
                   <tr>
-                    <td>--/--</td>
-                    <td>--/--</td>
-                    <td>--/--</td>
-                    <td>--/--</td>
-                    <td>--/--</td>
-                    <td>--/--</td>
-                    <td>--/--</td>
-                    <td>--/--</td>
-                    <td>--/--</td>
-                    <td>--/--</td>
+                    <td id="roll-1">--/--</td>
+                    <td id="roll-2">--/--</td>
+                    <td id="roll-3">--/--</td>
+                    <td id="roll-4">--/--</td>
+                    <td id="roll-5">--/--</td>
+                    <td id="roll-6">--/--</td>
+                    <td id="roll-7">--/--</td>
+                    <td id="roll-8">--/--</td>
+                    <td id="roll-9">--/--</td>
+                    <td id="roll-10">--/--</td>
                   </tr>
                   <tr>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td id="score-1">0</td>
+                    <td id="score-2">0</td>
+                    <td id="score-3">0</td>
+                    <td id="score-4">0</td>
+                    <td id="score-5">0</td>
+                    <td id="score-6">0</td>
+                    <td id="score-7">0</td>
+                    <td id="score-8">0</td>
+                    <td id="score-9">0</td>
+                    <td id="score-10">0</td>
                   </tr>
                 </table>
+              <p id="conclusion"></p>
             </div>
         </div>
     </section>
@@ -207,7 +214,7 @@
     </footer>
 
     <!-- jQuery -->
-    <!-- <script src="vendor/jquery/jquery.js"></script> -->
+    <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <!-- <script src="vendor/bootstrap/js/bootstrap.min.js"></script> -->
@@ -220,6 +227,9 @@
 
     <!-- Theme JavaScript -->
     <!-- <script src="js/grayscale.min.js"></script> -->
+
+    <!-- Bowling JavaScript -->
+    <script src="js/bowling_controller.js"></script>
 
 </body>
 

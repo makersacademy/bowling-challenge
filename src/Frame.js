@@ -11,7 +11,7 @@ Frame.prototype.getFrame = function () {
 };
 
 Frame.prototype.getFrameFinal = function (firstRoll = this._randomRoll(), secondRoll = this._randomRoll()) {
-  this.rollOneFrame(this.finalFrame(firstRoll, secondRoll)[0], this.finalFrame(firstRoll, secondRoll)[1])
+  this.rollOneFrame(this.finalFrame(firstRoll, secondRoll)[0], this.finalFrame(firstRoll, secondRoll)[1]);
 };
 
 Frame.prototype.getFrameScore = function () {

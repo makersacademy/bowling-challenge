@@ -1,6 +1,7 @@
 vendor/*
 lib/*
 spec/*
+js/*
 *.md
 **/*.html
 *.LICENSE

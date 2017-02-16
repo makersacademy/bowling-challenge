@@ -18,7 +18,7 @@ describe('Game', function () {
     it('returns current score of the game', function () {
       frame.rollOneFrame(3,2);
       game.addNewFrame(frame);
-      expect(game.getScore()).toEqual(5);
+      expect(game.getScore(1)).toEqual(5);
     });
   });
 
@@ -35,7 +35,7 @@ describe('Game', function () {
         game.addNewFrame(frameStrike);
         frame.rollOneFrame(3,2);
         game.addNewFrame(frame);
-        expect(game.getScore()).toEqual(20);
+        expect(game.getScore(2)).toEqual(20);
       });
     });
 
@@ -45,7 +45,7 @@ describe('Game', function () {
         game.addNewFrame(frameStrike);
         frame.rollOneFrame(3,2);
         game.addNewFrame(frame);
-        expect(game.getScore()).toEqual(18);
+        expect(game.getScore(2)).toEqual(18);
       });
     });
   });

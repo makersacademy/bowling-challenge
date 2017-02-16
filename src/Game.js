@@ -7,8 +7,8 @@ function Game () {
   this._spare = [];
 }
 
-Game.prototype.getScore = function () {
-  return this._scores._last();
+Game.prototype.getScore = function(frameNumber) {
+  return this._scores[frameNumber];
 };
 
 Game.prototype.addNewFrame = function(frame) {
@@ -24,10 +24,10 @@ Game.prototype.finalFrame = function(frame, firstRoll, secondRoll) {
 };
 
 Game.prototype.whichGame = function () {
-  if (this.getScore() === 0) {
+  if (this.getScore(this._scores.length-1) === 0) {
     return 'Gutter Game';
   }
-  else if (this.getScore() === 300) {
+  else if (this.getScore(this._scores.length-1) === 300) {
     return 'Perfect Game';
   }
   else {

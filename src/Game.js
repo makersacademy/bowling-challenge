@@ -31,7 +31,7 @@ Game.prototype.whichGame = function () {
     return 'Perfect Game';
   }
   else {
-      return 'Ordinary Game';
+    return 'Ordinary Game';
   }
 };
 

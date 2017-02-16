@@ -56,14 +56,14 @@ Game.prototype._fillInNullScores = function (frameNumber) {
   var frame = this._frames[frameNumber];
   var delta;
   if (frameNumber >= 1 && this._isPreviousFrameSpare(frameNumber)) {
-     delta = this._addingPreviousScores(frameNumber) + this._frames[frameNumber].getFrame()[0];
-     this._increaseScoresByDelta(frameNumber, delta);
+    this._scores[frameNumber] = this._scores[frameNumber-1] + 10 + this._frames[frameNumber].getFrame()[0];
+    this._scores[frameNumber+1] = this._scores[frameNumber] + this._frames[frameNumber].getFrame()[1];
   }
   if (frameNumber >= 2 && this._areTwoPreviousFramesStikes(frameNumber)) {
     this._scores[frameNumber-1] = this._scores[frameNumber - 2] + 30;
   }
   if (!frame.isStrike() && this._isPreviousFrameStrike(frameNumber)) {
-    delta = this._addingPreviousScores(frameNumber) + this._frames[frameNumber].getFrameScore();
+    delta = this._scores[frameNumber-1] + 10 + this._frames[frameNumber].getFrameScore();
     this._increaseScoresByDelta(frameNumber, delta);
   }
 };

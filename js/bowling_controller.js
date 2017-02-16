@@ -104,22 +104,15 @@ $(document).ready(function () {
     }
   }
 
-  var runOneFrame = function () {
-    $("#score-"+frameCount).text(game.getScore(frameCount));
-    $("#score-"+(frameCount-1)).text(game.getScore(frameCount-1));
-    $("#score-"+(frameCount-2)).text(game.getScore(frameCount-2));
-  }
-
   var calculateFinalFrame = function (frame, finalFrame, n) {
     $("#roll-"+n).text(frame._frame[0]+"/"+frame._frame[1]+"/"+finalFrame.getFrame()[0]+"/"+finalFrame.getFrame()[1]);
     game.finalFrame(frame, finalFrame.getFrame()[0], finalFrame.getFrame()[1]);
     updateScores(frameCount);
-    $("#conclusion").text("Your final score is "+game.getScore(10)+" and you has played "+game.whichGame());
+    $("#conclusion").text("Your final score is "+game.getScore(10)+" and you have played "+ game.whichGame());
   }
 
   var updateFrame = function (frame, n) {
     game.addNewFrame(frame);
-    console.log(frame._frame);
     $("#roll-"+frameCount).text(frame._frame[0]+"/"+frame._frame[1]);
     updateScores(frameCount);
   }
@@ -128,5 +121,6 @@ $(document).ready(function () {
     $("#score-"+frameCount).text(game.getScore(frameCount));
     $("#score-"+(frameCount-1)).text(game.getScore(frameCount-1));
     $("#score-"+(frameCount-2)).text(game.getScore(frameCount-2));
+    console.log(game._scores);
   }
 })

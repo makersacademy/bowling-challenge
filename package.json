@@ -2,7 +2,7 @@
   "name": "bowling-challenge",
   "version": "1.0.0",
   "description": "How to use ----- To download and run the tests just:",
-  "main": "index.js",
+  "main": "index.html",
   "directories": {
     "doc": "docs"
   },

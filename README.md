@@ -2,17 +2,16 @@
 
 How to use
 -----
-To download and run the tests just:
+To download and run the tests just
 
 ```
 $ git clone git@github.com:kateloschinina/bowling-challenge.git
 $ cd bowling-challenge
 $ open index.html
 ```
-Or alternatively you can go to online version of the website:
-[heroku link to be inserted]
+Or alternatively you can go to [online version of the website](https://kateloschinina-bowling.herokuapp.com/)
 
-The usage of the app is rather self-explanatory, please see the screenshot below. You can either pick up the scores you want or to use random score generator.
+The usage of the app is rather self-explanatory, please see the screenshot below. You can either pick the scores you want or use random rolls generator.
 
 ![Imgur](http://i.imgur.com/6msNMp7.png)
 
@@ -20,7 +19,7 @@ The program does not allow you to score more than 10 in one frame:
 
 ![Imgur](http://i.imgur.com/EkJH6Ch.png)
 
-And you are informed about your game in the end:
+And the type of the game you played is announced in the end:
 
 ![Imgur](http://i.imgur.com/1PWKPyY.png)
 

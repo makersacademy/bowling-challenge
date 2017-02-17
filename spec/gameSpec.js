@@ -34,22 +34,42 @@ describe('Game', function() {
   it("keeps score for each frame", function(){
     expect(game._frameTotal).toBeDefined();
   });
-
   it("has an overall game score", function(){
     expect(game._gameTotal).toBeDefined();
   });
 
   //2. Frame Methods
+
   it("has a playFrame1 method", function(){
     expect(game.playFrame1).toBeDefined();
   });
+  it("has a getBonus method", function(){
+    expect(game.getBonus).toBeDefined();
+  });
+  it("has a playFrame2 method", function(){
+    expect(game.playFrame2).toBeDefined();
+  });
 
   // 3. Detail of each Frame method
+
+
   describe('#frame1', function() {
     var game;
       beforeEach(function() {
         game = new Game();
       });
+    it ('sets the pins knocked down in the 1st frame', function() {
+      game.playFrame1(1,2);
+      expect(game._frame1._roll1).toEqual(1);
+      expect(game._frame1._roll2).toEqual(2);
+    });
+  });
+
+  describe('#getBonus', function() {
+    var game;
+    beforeEach(function() {
+      game = new Game();
+    });
 
     it ('sets the pins knocked down in the 1st frame', function() {
       game.playFrame1(1,2);
@@ -57,33 +77,31 @@ describe('Game', function() {
       expect(game._frame1._roll2).toEqual(2);
     });
   });
-  //
-  // describe('#frame2', function() {
-  //   var game;
-  //     beforeEach(function() {
-  //       game = new Game();
-  //     });
-  //
-  //   var frame2 = jasmine.createSpy('frame')
-  //
-  //   it ('returns the score for the 2nd frame', function() {
-  //     var _f2Score;
-  //     var b;
-  //     b = game.frame2();
-  //     expect(frame2._f2Score).toEqual(b);
-  //   });
-  //   it ('player receives bonus in previous game if strike is made', function() {
-  //     spyOn(frame2, 'getStrikeType').and.returnValue("strike");
-  //     expect(game._f1Score).toEqual(game._f1Score + 10);
-  //   });
-  //
-  //   it ('player receives bonus in previous game if half-strike is made', function() {
-  //     spyOn(frame2, 'getStrikeType').and.returnValue("strike");
-  //     expect(game._f1Score).toEqual(game._f1Score + frame2._f2Score);
-  //   });
-  //
-  // });
-  //
+
+  describe('#frame2', function() {
+    var game;
+      beforeEach(function() {
+        game = new Game();
+      });
+
+      it ('adds a bonus of 10 to the previous frame if the previous frame had a strike', function() {
+        game.playFrame1(10,0);
+        game.playFrame2(4,0);
+        game._frame1.addBonus(10);
+        expect(game._frame1._frameScore).toEqual(20);
+      });
+    // it ('player receives bonus in previous game if strike is made', function() {
+    //   spyOn(frame2, 'getStrikeType').and.returnValue("strike");
+    //   expect(game._f1Score).toEqual(game._f1Score + 10);
+    // });
+    //
+    // it ('player receives bonus in previous game if half-strike is made', function() {
+    //   spyOn(frame2, 'getStrikeType').and.returnValue("strike");
+    //   expect(game._f1Score).toEqual(game._f1Score + frame2._f2Score);
+    // });
+
+  });
+
   // describe('#frame3', function() {
   //   var game;
   //     beforeEach(function() {

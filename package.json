@@ -2,7 +2,7 @@
   "name": "bowling-challenge",
   "version": "1.0.0",
   "description": "How to use ----- To download and run the tests just:",
-  "main": "index.html",
+  "main": "index.js",
   "directories": {
     "doc": "docs"
   },
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/kateloschinina/bowling-challenge/issues"
   },
-  "homepage": "https://github.com/kateloschinina/bowling-challenge#readme"
+  "homepage": "https://github.com/kateloschinina/bowling-challenge#readme",
+  "dependencies": {
+    "http-server": "^0.9.0"
+  }
 }

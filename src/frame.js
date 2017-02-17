@@ -22,24 +22,21 @@ Frame.prototype.getStrikeType = function() {
   }
 };
 
-
-
 Frame.prototype.setRoll1 = function(roll_value) {
   this._roll1 = this._roll1 + roll_value;
   this._frameScore = this._frameScore + this._roll1;
   this.getStrikeType();
-  //if a strike
+
 };
-//
-//
-// Frame.prototype.setRoll2 = function(roll_value) {
-//   this._roll2 = this._roll2 + roll_value;
-//   this._frameScore += this._roll2;
-//   this.getStrikeType();
-// };
-//
-//
-//
+
+Frame.prototype.setRoll2 = function(roll_value) {
+  this._roll2 = this._roll2 + roll_value;
+  this._frameScore += this._roll2;
+  this.getStrikeType();
+};
+
+
+
 // Frame.prototype.playRandomRoll1 = function() {
 //   var x = [];
 //   x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

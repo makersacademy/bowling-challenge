@@ -41,7 +41,7 @@ describe('Feature tests.', function () {
         game.addNewFrame(frameStrike);
         frame.rollOneFrame(3,2);
         game.addNewFrame(frame);
-        expect(game.getScore(2)).toEqual(15);
+        expect(game.getScore(2)).toEqual(18);
       });
     });
 

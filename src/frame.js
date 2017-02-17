@@ -24,12 +24,12 @@ Frame.prototype.getStrikeType = function() {
 
 
 
-// Frame.prototype.setRoll1 = function(roll_value) {
-//   this._roll1 = this._roll1 + roll_value;
-//   this._frameScore = this._frameScore + this._roll1;
-//   this.getStrikeType();
-//   //if a strike
-// };
+Frame.prototype.setRoll1 = function(roll_value) {
+  this._roll1 = this._roll1 + roll_value;
+  this._frameScore = this._frameScore + this._roll1;
+  this.getStrikeType();
+  //if a strike
+};
 //
 //
 // Frame.prototype.setRoll2 = function(roll_value) {

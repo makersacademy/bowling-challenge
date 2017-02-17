@@ -42,9 +42,9 @@ describe('Frame', function() {
     expect(frame.getStrikeType).toBeDefined();
   });
 
-  // it("has a setRoll1 method", function(){
-  //   expect(frame.setRoll1).toBeDefined();
-  // });
+  it("has a setRoll1 method", function(){
+    expect(frame.setRoll1).toBeDefined();
+  });
 
 // 3. Detail of each Frame method
     describe('#getStrikeType', function() {
@@ -82,7 +82,25 @@ describe('Frame', function() {
       });
     });
 
+    describe('#setRoll1', function() {
+      var frame;
+      beforeEach(function() {
+        frame = new Frame();
+      });
 
+      it ('returns a number of pins knocked down after the first roll', function() {
+        frame.setRoll1(5);
+        expect(frame._roll1).toEqual(5);
+      });
+      it ('can knock down 0 - 10 pins', function() {
+        frame.setRoll1(10);
+        expect(frame._roll1).toBeLessThan(11);
+      });
+      it ('adds the number of pins knocked down to the frame score', function() {
+        frame.setRoll1(9);
+        expect(frame._frameScore).toEqual(9);
+      });
+    });
 
 
   // it("has a bonus", function(){
@@ -109,25 +127,7 @@ describe('Frame', function() {
   // });
   //
   //
-  // describe('#roll1', function() {
-  //   var frame;
-  //   beforeEach(function() {
-  //     frame = new Frame();
-  //   });
-  //
-  //   it ('returns a number of pins knocked down after the first roll', function() {
-  //     frame.roll1();
-  //     expect(typeof frame._roll1).toEqual('number');
-  //   });
-  //   it ('can knock down 0 - 10 pins', function() {
-  //     frame.roll1();
-  //     expect(frame._roll1).toBeLessThan(10);
-  //   });
-  //   it ('adds the number of pins knocked down to the frame score', function() {
-  //     spyOn(frame, 'roll1').and.returnValue(5);
-  //     expect(frame._score).toEqual(frame._score + frame._roll1);
-  //   });
-  // });
+
   //
   // describe('#roll2', function() {
   //   var frame;

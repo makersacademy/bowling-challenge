@@ -49,6 +49,9 @@ describe('Game', function() {
   it("has a playFrame2 method", function(){
     expect(game.playFrame2).toBeDefined();
   });
+  it("has a playFrame3 method", function(){
+    expect(game.playFrame3).toBeDefined();
+  });
 
   // 3. Detail of each Frame method
 
@@ -89,80 +92,59 @@ describe('Game', function() {
       });
   });
 
-  // describe('#frame2', function() {
-  //   var game;
-  //   beforeEach(function() {
-  //     game = new Game();
-  //   });
-  //
-  //   it ('sets the pins knocked down in the 2nd frame', function() {
-  //     game.playFrame2(1,2);
-  //     expect(game._frame2._roll1).toEqual(1);
-  //     expect(game._frame2._roll2).toEqual(2);
-  //   });
-  //   it ('can add a bonus to the previous frame received a strike (X)', function() {
-  //     game.playFrame1(10,0);
-  //     game.playFrame2(1,2);
-  //     // game.getBonus(game._frame1, 1);
-  //     console.log("it is " + game._frame1._frameScore);
-  //     expect(game._frame1._frameScore).toEqual(20);
-  //   });
-  //
-  //
-  // });
+  describe('#frame2', function() {
+    var game;
+    beforeEach(function() {
+      game = new Game();
+    });
 
-  // describe('#frame3', function() {
-  //   var game;
-  //     beforeEach(function() {
-  //       game = new Game();
-  //     });
-  //
-  //   var frame3 = jasmine.createSpy('frame')
-  //
-  //   it ('returns the score for the 3rd frame', function() {
-  //     var _f3Score;
-  //     var c;
-  //     b = game.frame3();
-  //     expect(frame3._f3Score).toEqual(c);
-  //   });
-  //   it ('player receives bonus in the previous and the previous, previous game if strike is made', function() {
-  //     spyOn(frame3, 'getStrikeType').and.returnValue("strike");
-  //     expect(game._f2Score).toEqual(game._f2Score + 10);
-  //     expect(game._f1Score).toEqual(game._f1Score + 10);
-  //   });
-  //
-  //   it ('player receives bonus in previous game if half-strike is made', function() {
-  //     spyOn(frame2, 'getStrikeType').and.returnValue("strike");
-  //     expect(frame2._f1Score).toEqual(frame2._f1Score + frame2._f2Score);
-  //   });
-  //
-  // });
-  //
-  // describe('#frame4', function() {
-  //   var game;
-  //     beforeEach(function() {
-  //       game = new Game();
-  //     });
-  //
-  //   var frame4 = jasmine.createSpy('frame')
-  //
-  //   it ('returns the score for the 3rd frame', function() {
-  //     var _f4Score;
-  //     var d;
-  //     b = game.frame4();
-  //     expect(frame4._f4Score).toEqual(d);
-  //   });
-  //   it ('player receives bonus in the previous and the previous, previous game if strike is made', function() {
-  //     spyOn(frame4, 'getStrikeType').and.returnValue("strike");
-  //     expect(game._f3Score).toEqual(game._f3Score + 10); //previous
-  //     expect(game._f2Score).toEqual(game._f2Score + 10); //previous-previous
-  //   });
-  //
-  //   it ('player receives bonus in previous game if half-strike is made', function() {
-  //     spyOn(frame4, 'getStrikeType').and.returnValue("strike");
-  //     expect(frame3._f1Score).toEqual(frame3._f1Score + frame3._f2Score); //previous only
-  //   });
-  // });
+    it ('sets the pins knocked down in the 2nd frame', function() {
+      game.playFrame2(1,2);
+      expect(game._frame2._roll1).toEqual(1);
+      expect(game._frame2._roll2).toEqual(2);
+    });
+    it ('will add a bonus to the previous frame received a strike (X)', function() {
+      game.playFrame1(10,0);
+      game.playFrame2(1,2);
+      expect(game._frame1._frameScore).toEqual(20);
+    });
+    it ('will add a bonus to the previous frame received a spare (/)', function() {
+      game.playFrame1(5,5);
+      game.playFrame2(4,5);
+      expect(game._frame1._frameScore).toEqual(14);
+    });
+  });
+
+  describe('#frame3', function() {
+    var game;
+    beforeEach(function() {
+      game = new Game();
+    });
+
+    it ('sets the pins knocked down in the 3rd frame', function() {
+      game.playFrame3(1,2);
+      expect(game._frame3._roll1).toEqual(1);
+      expect(game._frame3._roll2).toEqual(2);
+    });
+    it ('will add a bonus to the previous frame if it received a strike (X)', function() {
+      game.playFrame2(10,0);
+      game.playFrame3(1,2);
+      expect(game._frame2._frameScore).toEqual(20);
+    });
+    it ('will add a bonus to the previous frame if it received a spare (/)', function() {
+      game.playFrame2(5,5);
+      game.playFrame3(4,5);
+      expect(game._frame2._frameScore).toEqual(14);
+    });
+    it ('will add a bonus to the previous previous frame, if it received a strike (X)', function() {
+      game.playFrame1(10,0);
+      game.playFrame2(10,0);
+      game.playFrame3(1,2);
+      expect(game._frame2._frameScore).toEqual(20);
+      expect(game._frame1._frameScore).toEqual(30);
+    });
+  });
+
 
 
   // it ('finishes if a strike is made on the 1st roll', function() {

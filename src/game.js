@@ -33,14 +33,14 @@ Game.prototype.playFrame2 = function(roll1, roll2) {
   this.getBonus(this._frame1, roll1);
 };
 
-// Game.prototype.playFrame3 = function(roll1, roll2) {
-//   this._frame3.setRoll1(roll1);
-//   this._frame3.setRoll2(roll2);
-//   this.getBonus(this._frame2, roll1); //prev frame may get a bonus
-//   if (this._frame1.getStrikeType() === "X"){
-//     this.getBonus(this._frame1, roll1);//prev prev frame gets a bonus
-//   }
-// };
+Game.prototype.playFrame3 = function(roll1, roll2) {
+  this._frame3.setRoll1(roll1);
+  this._frame3.setRoll2(roll2);
+  this.getBonus(this._frame2, roll1); //prev frame may get a bonus
+  if (this._frame1.getStrikeType() === "X"){
+    this.getBonus(this._frame1, roll1);//prev prev frame gets a bonus
+  }
+};
 //
 // Game.prototype.playFrame4 = function(roll1, roll2) {
 //   this._frame4.setRoll1(roll1);

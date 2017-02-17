@@ -7,16 +7,8 @@ $(document).ready(function () {
   var rollSecond = null;
   var finalRollFirst = null;
   var finalRollSecond = null;
-
-  $("#random").click(function () {
-    frame.randomRollOneFrame();
-    finalFrame.randomRollOneFrame();
-    frameCount += 1;
-    (frameCount === 10) ? calculateFinalFrame(frame, finalFrame, frameCount) : updateFrame(frame);
-    if (frameCount === 11) {
-      location.reload();
-    }
-  })
+  var isFinalFrameStrike = false;
+  var isFinalFrameSpare = false;
 
   $("#new-game").click(function () {
     location.reload();
@@ -66,52 +58,147 @@ $(document).ready(function () {
     reactToChoice(10);
   })
 
+  $("#random").click(function () {
+    frame.randomRollOneFrame();
+    finalFrame.randomRollOneFrame();
+    frameCount += 1;
+    if (frameCount === 10) {
+      dealWithFinalFrame();
+    }
+    else if (frameCount >= 11) {
+      location.reload();
+    }
+    else {
+      updateFrame(frame);
+    }
+  })
+
+  var dealWithFinalFrame = function () {
+    if (frameCount === 10) {
+      if (frame.isStrike()){
+        finalFrameStrike();
+      }
+      else if (frame.isSpare()) {
+        calculateFinalFrameSpare(finalFrame.getFrame()[0])
+      }
+      else {
+        calculateFinalFrameOrdinary();
+      }
+    }
+    else {
+      updateFrame(frame);
+    }
+  }
+
   var reactToChoice = function (n) {
-    if (n === 10) {
+    if (frameCount === 10) {
+      dealWithFinalFrame();
+    }
+    // if (isFinalFrameStrike) {
+    //   finalFrameStrike(n)
+    // }
+    // else if (isFinalFrameSpare) {
+    //   calculateFinalFrameSpare(n)
+    // }
+    else if (n === 10) {
       frameCount += 1;
       frame.rollOneFrame(n, 0);
-      (frameCount >= 10) ?  finalFrameRoll(n, frame) : updateFrame(frame);
+      // (frameCount == 10) ?  setFinalFrameStrike() : updateFrame(frame);
+      updateFrame(frame);
       rollFirst = null;
     }
     else if (rollFirst === null) {
       rollFirst = n;
-      $("#roll-"+(frameCount+1)).text(rollFirst+"/--");
-      for(var i = 10-n+1; i<=10; i++) {
-        $("#choice-"+i).hide();
-      }
+      printFirstRoll(n);
     }
     else {
       frameCount += 1;
       frame.rollOneFrame(rollFirst, n);
-      (frameCount >= 10) ?  finalFrameRoll(n, frame) : updateFrame(frame);
-      for(var i = 0; i<=10; i++) {
-        $("#choice-"+i).show();
-      }
+      // (frameCount == 10) ?  setFinalFrameSpare() : updateFrame(frame);
+      updateFrame(frame);
+      showAllChoices();
       rollFirst = null;
     }
   }
 
-  var finalFrameRoll = function (n, frame) {
+  var setFinalFrameSpare = function () {
+    if (frame.isSpare) {
+      isFinalFrameSpare = true;
+    }
+  }
+
+  var calculateFinalFrameSpare = function (n) {
+    $("#roll-10").text(frame._frame[0]+"/"+frame._frame[1]+"/"+n);
+    game.finalFrame(frame, n);
+    updateScores(frameCount);
+    $("#conclusion").text("Your final score is "+game.getScore(10)+" and you have played "+ game.whichGame());
+  }
+
+  // var calculateFinalFrameSpare = function (n) {
+  //   $("#roll-10").text(frame._frame[0]+"/"+frame._frame[1]+"/"+finalFrame.getFrame()[0]+"/"+finalFrame.getFrame()[1]);
+  //   game.finalFrame(frame, finalFrame.getFrame()[0], finalFrame.getFrame()[1]);
+  //   updateScores(frameCount);
+  //   $("#conclusion").text("Your final score is "+game.getScore(10)+" and you have played "+ game.whichGame());
+  // }
+
+  var calculateFinalFrameOrdinary = function () {
+    $("#roll-10").text(frame.getFrame()[0]+"/"+frame.getFrame()[1]);
+    game.finalFrame(frame);
+    updateScores(frameCount);
+    $("#conclusion").text("Your final score is "+game.getScore(10)+" and you have played "+ game.whichGame());
+  }
+
+  // var calculateFinalFrame = function (frame, finalFrame, n) {
+  //   $("#roll-10").text(frame._frame[0]+"/"+frame._frame[1]+"/"+finalFrame.getFrame()[0]+"/"+finalFrame.getFrame()[1]);
+  //   game.finalFrame(frame, finalFrame.getFrame()[0], finalFrame.getFrame()[1]);
+  //   updateScores(frameCount);
+  //   $("#conclusion").text("Your final score is "+game.getScore(10)+" and you have played "+ game.whichGame());
+  // }
+
+  var setFinalFrameStrike = function () {
+    isFinalFrameStrike = true;
+  }
+
+  var printFirstRoll = function (n) {
+    $("#roll-"+(frameCount+1)).text(rollFirst+"/--");
+    hideIrrelevantChoices(n);
+  }
+
+  var hideIrrelevantChoices = function (n) {
+    for(var i = 10-n+1; i<=10; i++) {
+      $("#choice-"+i).hide();
+    }
+  }
+
+  var showAllChoices = function () {
+    for(var i = 0; i<=10; i++) {
+      $("#choice-"+i).show();
+    }
+  }
+
+  var finalFrameStrike = function (n) {
     if (finalRollFirst === null) {
       finalRollFirst = n;
     }
     else {
-      finalRollSecond = n;
-      finalFrame.rollOneFrame(finalRollFirst, finalRollSecond);
-      calculateFinalFrame(frame, finalFrame, 10);
+      if (finalFrame.getFrame()[1] === null) {
+        finalRollSecond = n;
+        finalFrame.rollOneFrame(finalRollFirst, finalRollSecond);
+      }
+      calculateFinalFrameStrike();
       finalRollFirst = null;
       finalRollSecond = null;
     }
   }
 
-  var calculateFinalFrame = function (frame, finalFrame, n) {
-    $("#roll-"+n).text(frame._frame[0]+"/"+frame._frame[1]+"/"+finalFrame.getFrame()[0]+"/"+finalFrame.getFrame()[1]);
+  var calculateFinalFrameStrike = function () {
+    $("#roll-10").text(10+"/"+finalFrame.getFrame()[0]+"/"+finalFrame.getFrame()[1]);
     game.finalFrame(frame, finalFrame.getFrame()[0], finalFrame.getFrame()[1]);
     updateScores(frameCount);
     $("#conclusion").text("Your final score is "+game.getScore(10)+" and you have played "+ game.whichGame());
   }
 
-  var updateFrame = function (frame, n) {
+  var updateFrame = function (frame) {
     game.addNewFrame(frame);
     $("#roll-"+frameCount).text(frame._frame[0]+"/"+frame._frame[1]);
     updateScores(frameCount);
@@ -121,6 +208,5 @@ $(document).ready(function () {
     $("#score-"+frameCount).text(game.getScore(frameCount));
     $("#score-"+(frameCount-1)).text(game.getScore(frameCount-1));
     $("#score-"+(frameCount-2)).text(game.getScore(frameCount-2));
-    console.log(game._scores);
   }
 })

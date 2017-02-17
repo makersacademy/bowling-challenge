@@ -67,40 +67,49 @@ describe('Game', function() {
 
   describe('#getBonus', function() {
     var game;
-    beforeEach(function() {
-      game = new Game();
-    });
-
-    it ('sets the pins knocked down in the 1st frame', function() {
-      game.playFrame1(1,2);
-      expect(game._frame1._roll1).toEqual(1);
-      expect(game._frame1._roll2).toEqual(2);
-    });
-  });
-
-  describe('#frame2', function() {
-    var game;
       beforeEach(function() {
         game = new Game();
       });
 
-      it ('adds a bonus of 10 to the previous frame if the previous frame had a strike', function() {
-        game.playFrame1(10,0);
-        game.playFrame2(4,0);
+      it ('adds a bonus of 10 to the previous frame if the previous frame had a strike (X)', function() {
+        game._frame1.setRoll1(10);
+        game._frame1.setRoll2(0);
         game._frame1.addBonus(10);
+        expect(game._frame1._strikeType).toEqual("X");
         expect(game._frame1._frameScore).toEqual(20);
       });
-    // it ('player receives bonus in previous game if strike is made', function() {
-    //   spyOn(frame2, 'getStrikeType').and.returnValue("strike");
-    //   expect(game._f1Score).toEqual(game._f1Score + 10);
-    // });
-    //
-    // it ('player receives bonus in previous game if half-strike is made', function() {
-    //   spyOn(frame2, 'getStrikeType').and.returnValue("strike");
-    //   expect(game._f1Score).toEqual(game._f1Score + frame2._f2Score);
-    // });
-
+      it ("adds a bonus of this frame's 1st roll score to the previous frame if the previous frame had a spare (/)", function() {
+        game._frame1.setRoll1(5);
+        game._frame1.setRoll2(5);
+        game._frame2.setRoll1(4);
+        game._frame2.setRoll2(5);
+        game._frame1.addBonus(4);
+        expect(game._frame1._strikeType).toEqual("/");
+        expect(game._frame1._frameScore).toEqual(14);
+      });
   });
+
+  // describe('#frame2', function() {
+  //   var game;
+  //   beforeEach(function() {
+  //     game = new Game();
+  //   });
+  //
+  //   it ('sets the pins knocked down in the 2nd frame', function() {
+  //     game.playFrame2(1,2);
+  //     expect(game._frame2._roll1).toEqual(1);
+  //     expect(game._frame2._roll2).toEqual(2);
+  //   });
+  //   it ('can add a bonus to the previous frame received a strike (X)', function() {
+  //     game.playFrame1(10,0);
+  //     game.playFrame2(1,2);
+  //     // game.getBonus(game._frame1, 1);
+  //     console.log("it is " + game._frame1._frameScore);
+  //     expect(game._frame1._frameScore).toEqual(20);
+  //   });
+  //
+  //
+  // });
 
   // describe('#frame3', function() {
   //   var game;

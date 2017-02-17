@@ -64,10 +64,10 @@ Frame.prototype.getRoll2Score = function() {
   return this._roll2;
 };
 
-//
-// Frame.prototype.addBonus = function(bonus) {
-//   this._frameScore += bonus;
-// };
+
+Frame.prototype.addBonus = function(bonus) {
+  this._frameScore += bonus;
+};
 
 // Frame.prototype.getExtraRoll = function() {
 //   var y = [];

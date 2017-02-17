@@ -70,6 +70,10 @@ describe('Frame', function() {
     expect(frame.getRoll2Score).toBeDefined();
   });
 
+  it("has a addBonus method", function(){
+    expect(frame.addBonus).toBeDefined();
+  });
+
 // 3. Detail of each Frame method
     describe('#getStrikeType', function() {
       var frame;
@@ -214,14 +218,17 @@ describe('Frame', function() {
       });
     });
 
-  // it("has a bonus", function(){
-  //   var _strikeType;
-  //   expect(frame._strikeType).toBeDefined();
-  // });
-
-
-  //
-
+    describe('#addBonus', function() {
+      var frame;
+      beforeEach(function() {
+        frame = new Frame();
+      });
+      it("can add a bonus to the frame score", function(){
+        frame._frameScore = 10;
+        frame.addBonus(5);
+        expect(frame._frameScore).toEqual(15);
+      });
+    });
 
 
 

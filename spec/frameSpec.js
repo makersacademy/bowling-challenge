@@ -42,54 +42,48 @@ describe('Frame', function() {
     expect(frame.getStrikeType).toBeDefined();
   });
 
-//3. Detail of each Frame method
-  // describe('#getStrikeType', function() {
-  //   var frame;
-  //   beforeEach(function() {
-  //     frame = new Frame();
-  //   });
-  //   it ('is a strike (X) if roll1 is 10', function() {
-  //     spyOn(frame, 'roll1').and.returnValue(10);
-  //     var y = "";
-  //     y = frame.getStrikeType();
-  //     expect(frame._strikeType).toEqual(y);
-  //   });
-  //
-  //   it ('is a strike (X) if roll2 is 10', function() {
-  //     spyOn(frame, 'roll2').and.returnValue(10);
-  //     var a = "";
-  //     a = frame.getStrikeType();
-  //     expect(frame._strikeType).toEqual(a);
-  //   });
-  //
-  //   it ('is a half-strike (/) if sum of roll1 + roll2 is 10', function() {
-  //     spyOn(frame, 'roll1').and.returnValue(5);
-  //     spyOn(frame, 'roll2').and.returnValue(5);
-  //     var b = "";
-  //     b = frame.getStrikeType();
-  //     expect(frame._strikeType).toEqual(b);
-  //   });
-  //
-  //   it ('is nothing ("") if sum of roll1 + roll2 is less than 10', function() {
-  //     spyOn(frame, 'roll1').and.returnValue(5);
-  //     spyOn(frame, 'roll2').and.returnValue(4);
-  //     var c = "";
-  //     c = frame.getStrikeType();
-  //     expect(frame._strikeType).toEqual(c);
-  //   });
+  // it("has a setRoll1 method", function(){
+  //   expect(frame.setRoll1).toBeDefined();
   // });
 
+// 3. Detail of each Frame method
+    describe('#getStrikeType', function() {
+      var frame;
+      beforeEach(function() {
+        frame = new Frame();
+      });
+
+      it ('is a strike (X) if roll1 is 10', function() {
+        frame._roll1 = 10;
+        var strikeType = frame.getStrikeType();
+        expect(frame._strikeType).toEqual(strikeType);
+      });
+
+      it ('is a half-strike (/) if roll1 is 0 + roll2 is 10', function() {
+        frame._roll1 = 0;
+        frame._roll2 = 10;
+        var strikeType = frame.getStrikeType();
+        expect(frame._strikeType).toEqual(strikeType);
+      });
+
+      it ('is a half-strike (/) if sum of roll1 + roll2 is 10', function() {
+        frame._roll1 = 5;
+        frame._roll2 = 5;
+        var strikeType = frame.getStrikeType();
+        expect(frame._strikeType).toEqual(strikeType);
+      });
+
+      it ('is neither a strike or a half-strike ("") if sum of roll1 + roll2 is less than 10', function() {
+        frame._roll1 = 5;
+        frame._roll2 = 4;
+        var strikeType = frame.getStrikeType();
+        console.log(strikeType);
+        expect(frame._strikeType).toEqual(strikeType);
+      });
+    });
 
 
 
-
-
-
-
-
-  // it("has a roll2 method", function(){
-  //   expect(frame.roll2).toBeDefined();
-  // });
 
   // it("has a bonus", function(){
   //   var _strikeType;
@@ -174,4 +168,4 @@ describe('Frame', function() {
 
 
 
-});
+}); //end of frame test - don't delete

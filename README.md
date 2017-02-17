@@ -14,15 +14,15 @@ Or alternatively you can go to online version of the website:
 
 The usage of the app is rather self-explanatory, please see the screenshot below. You can either pick up the scores you want or to use random score generator.
 
-[Imgur](http://i.imgur.com/6msNMp7.png)
+![Imgur](http://i.imgur.com/6msNMp7.png)
 
 The program does not allow you to score more than 10 in one frame:
 
-[Imgur](http://i.imgur.com/EkJH6Ch.png)
+![Imgur](http://i.imgur.com/EkJH6Ch.png)
 
 And you are informed about your game in the end:
 
-[Imgur](http://i.imgur.com/1PWKPyY.png)
+![Imgur](http://i.imgur.com/1PWKPyY.png)
 
 
 About the Task

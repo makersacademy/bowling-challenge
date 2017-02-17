@@ -6,6 +6,22 @@ Frame = function() {
   this._strikeType = "";
 };
 
+Frame.prototype.getStrikeType = function() {
+  if ( this._roll1 === 10 ) {
+    // this._strikeType = this._strikeType + "X"; //strike
+    this._strikeType = "X"; //strike
+    return this._strikeType;
+
+  } else if ( this._roll1 + this._roll2 === 10) {
+    // this._strikeType = this._strikeType + "/"; //half strike
+    this._strikeType = "/";
+    return this._strikeType;
+
+  } else {
+    return "BLAH!";//this._strikeType; //no bonus is ""
+  }
+};
+
 Frame.prototype.playRandomRoll1 = function() {
   var x = [];
   x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -59,20 +75,4 @@ Frame.prototype.getFrameScore = function() {
 
 Frame.prototype.addBonus = function(bonus) {
   this._frameScore += bonus;
-};
-
-Frame.prototype.getStrikeType = function() {
-  if ( this._roll1 === 10 ) {
-    // this._strikeType = this._strikeType + "X"; //strike
-    this._strikeType = "X"; //strike
-    return this._strikeType;
-
-  } else if ( this._roll1 + this._roll2 === 10) {
-      // this._strikeType = this._strikeType + "/"; //half strike
-      this._strikeType = "/";
-      return this._strikeType;
-
-  } else {
-      return "BLAH!";//this._strikeType; //no bonus is ""
-  }
 };

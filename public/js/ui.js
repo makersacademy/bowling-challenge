@@ -19,7 +19,6 @@ $(document).ready(function() {
             firstRoll(power());
         }
         insertScores();
-        insertFrameScore();
         if (game._currentFrame > 10 && game.isBonusFrame()) {
             unhideBonusFrames();
         }
@@ -50,6 +49,7 @@ $(document).ready(function() {
     var firstRoll = function(power) {
         game.bowl(power);
         if(power === 10) {
+            insertFrameScore();
             notifier("STRIKE");
         }
         perfectNotifier()
@@ -62,6 +62,7 @@ $(document).ready(function() {
         if (game._frames[(game._currentFrame - 2)].isSpare()) {
             notifier("SPARE");
         }
+        insertFrameScore();
     };
 
     var insertScores = function() {
@@ -69,8 +70,15 @@ $(document).ready(function() {
             var frame = "#frame-" + i;
             var currFrame = game._frames[i - 1];
             if (currFrame.isFrameStarted()) {
-                $(frame + "-roll-1").text(currFrame.firstScore());
-                $(frame + "-roll-2").text(currFrame.secondScore());
+                if (currFrame.isStrike()) {
+                    $(frame + "-roll-1").text("X");
+                } else if (currFrame.isSpare()) {
+                    $(frame + "-roll-1").text(currFrame.firstScore());
+                    $(frame + "-roll-2").text("/");
+                } else {
+                    $(frame + "-roll-1").text(currFrame.firstScore());
+                    $(frame + "-roll-2").text(currFrame.secondScore());
+                }
             }
         }
     };

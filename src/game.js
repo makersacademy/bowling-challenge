@@ -30,7 +30,7 @@ Game.prototype.addFrame = function(frame){
 }
 
 Game.prototype.nextFrame = function() {
-    if (this.currentFrame().isFrameEnded()) {
+    if (this.isNextFrame()) {
         this._currentFrame++;
         this.addFrame(new Frame());
     }

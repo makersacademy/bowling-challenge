@@ -43,6 +43,7 @@ Frame.prototype.score = function() {
 }
 
 Frame.prototype.isFrameStarted = function() {
+  console.log(this._scores.length);
     return this._scores.length > 0;
 }
 

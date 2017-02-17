@@ -74,6 +74,10 @@ describe('Frame', function() {
     expect(frame.addBonus).toBeDefined();
   });
 
+  it("has a getExtraRoll method", function(){
+    expect(frame.getExtraRoll).toBeDefined();
+  });
+
 // 3. Detail of each Frame method
     describe('#getStrikeType', function() {
       var frame;
@@ -230,6 +234,22 @@ describe('Frame', function() {
       });
     });
 
+    describe('#getExtraRoll', function() {
+      var frame;
+      beforeEach(function() {
+        frame = new Frame();
+      });
+      it ('can knock down 0 - 10 pins', function() {
+        frame.getExtraRoll();
+        expect(frame._roll3).toBeLessThan(11);
+      });
+      it ('adds the number of pins knocked as a bonus to the frame score', function() {
+        frame.setRoll1(10);
+        frame.setRoll2(10);
+        frame.getExtraRoll();
+        expect(frame._frameScore).toEqual(20 + frame._roll3);
+      });
+    });
 
 
 }); //end of frame test - don't delete

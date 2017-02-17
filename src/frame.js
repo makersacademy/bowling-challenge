@@ -69,10 +69,10 @@ Frame.prototype.addBonus = function(bonus) {
   this._frameScore += bonus;
 };
 
-// Frame.prototype.getExtraRoll = function() {
-//   var y = [];
-//   y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-//   this._roll3 = y[Math.floor(Math.random() * y.length)];
-//   this.addBonus(this._roll3);
-//   return this._roll3;
-// };
+Frame.prototype.getExtraRoll = function() {
+  var y = [];
+  y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  this._roll3 = y[Math.floor(Math.random() * y.length)];
+  this.addBonus(this._roll3);
+  return this._roll3;
+};

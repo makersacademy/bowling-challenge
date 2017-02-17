@@ -56,13 +56,13 @@ Frame.prototype.getFrameScore = function() {
   return this._frameScore;
 };
 
-// Frame.prototype.getRoll1Score = function() {
-//   return this._roll1;
-// };
-//
-// Frame.prototype.getRoll2Score = function() {
-//   return this._roll2;
-// };
+Frame.prototype.getRoll1Score = function() {
+  return this._roll1;
+};
+
+Frame.prototype.getRoll2Score = function() {
+  return this._roll2;
+};
 
 //
 // Frame.prototype.addBonus = function(bonus) {

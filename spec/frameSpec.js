@@ -62,6 +62,14 @@ describe('Frame', function() {
     expect(frame.getFrameScore).toBeDefined();
   });
 
+  it("has a getRoll1Score method", function(){
+    expect(frame.getRoll1Score).toBeDefined();
+  });
+
+  it("has a getRoll2Score method", function(){
+    expect(frame.getRoll2Score).toBeDefined();
+  });
+
 // 3. Detail of each Frame method
     describe('#getStrikeType', function() {
       var frame;
@@ -181,6 +189,28 @@ describe('Frame', function() {
         frame.setRoll1(1);
         frame.setRoll2(2);
         expect(frame.getFrameScore()).toEqual(3);
+      });
+    });
+
+    describe('#getRoll1Score', function() {
+      var frame;
+      beforeEach(function() {
+        frame = new Frame();
+      });
+      it ('returns the score for the first roll', function() {
+        frame.setRoll1(5);
+        expect(frame.getRoll1Score()).toEqual(5);
+      });
+    });
+
+    describe('#getRoll2Score', function() {
+      var frame;
+      beforeEach(function() {
+        frame = new Frame();
+      });
+      it ('returns the score for the second roll', function() {
+        frame.setRoll2(4);
+        expect(frame.getRoll2Score()).toEqual(4);
       });
     });
 

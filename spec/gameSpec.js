@@ -39,59 +39,24 @@ describe('Game', function() {
     expect(game._gameTotal).toBeDefined();
   });
 
+  //2. Frame Methods
+  it("has a playFrame1 method", function(){
+    expect(game.playFrame1).toBeDefined();
+  });
 
+  // 3. Detail of each Frame method
+  describe('#frame1', function() {
+    var game;
+      beforeEach(function() {
+        game = new Game();
+      });
 
-  // it("has a score, roll1, roll2 and strikeType value for each frame, and a total score for all frames in 1 game", function(){
-  //   var _f1Score;
-  //   var _f2Score;
-  //   var _f3Score;
-  //   var _f4Score;
-  //   var _f5Score;
-  //   var _f6Score;
-  //   var _f7Score;
-  //   var _f8Score;
-  //   var _f9Score;
-  //   var _f10Score;
-  //   var _totalScore;
-  //   var _f1Roll1;
-  //   var _f1Roll2;
-  //   var _f1StrikeType;
-  //   expect(game._f1Score).toBeDefined();
-  //   expect(game._f2Score).toBeDefined();
-  //   expect(game._f3Score).toBeDefined();
-  //   expect(game._f4Score).toBeDefined();
-  //   expect(game._f5Score).toBeDefined();
-  //   expect(game._f6Score).toBeDefined();
-  //   expect(game._f7Score).toBeDefined();
-  //   expect(game._f8Score).toBeDefined();
-  //   expect(game._f9Score).toBeDefined();
-  //   expect(game._f10Score).toBeDefined();
-  //   expect(game._f1Roll1).toBeDefined();
-  //   expect(game._f1Roll2).toBeDefined();
-  //   expect(game._f1StrikeType).toBeDefined();
-  //   expect(game._totalScore).toBeDefined();
-  //
-  //   });
-  //
-  // describe('#frame1', function() {
-  //   var game;
-  //     beforeEach(function() {
-  //       game = new Game();
-  //     });
-  //   var frame1 = jasmine.createSpy('frame')
-  //   it ('returns the score for the 1st frame', function() {
-  //     var _f1Score;
-  //     var a;
-  //     a = game.frame1();
-  //     expect(frame1._f1Score).toEqual(a);
-  //   });
-  //   it ('finishes if a strike is made on the 1st roll', function() {
-  //     spyOn(frame1, 'getStrikeType').and.returnValue("strike");
-  //     expect(frame1._roll2).toEqual(0);
-  //   });
-  //
-  //
-  // });
+    it ('sets the pins knocked down in the 1st frame', function() {
+      game.playFrame1(1,2);
+      expect(game._frame1._roll1).toEqual(1);
+      expect(game._frame1._roll2).toEqual(2);
+    });
+  });
   //
   // describe('#frame2', function() {
   //   var game;
@@ -173,6 +138,10 @@ describe('Game', function() {
   // });
 
 
+  // it ('finishes if a strike is made on the 1st roll', function() {
+  //   spyOn(frame1, 'getStrikeType').and.returnValue("strike");
+  //   expect(frame1._roll2).toEqual(0);
+  // });
 
 
 

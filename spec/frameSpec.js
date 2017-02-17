@@ -50,6 +50,18 @@ describe('Frame', function() {
     expect(frame.setRoll2).toBeDefined();
   });
 
+  it("has a playRandomRoll1 method", function(){
+    expect(frame.playRandomRoll1).toBeDefined();
+  });
+
+  it("has a playRandomRoll2 method", function(){
+    expect(frame.playRandomRoll2).toBeDefined();
+  });
+
+  it("has a getFrameScore method", function(){
+    expect(frame.getFrameScore).toBeDefined();
+  });
+
 // 3. Detail of each Frame method
     describe('#getStrikeType', function() {
       var frame;
@@ -129,47 +141,55 @@ describe('Frame', function() {
       });
     });
 
+    describe('#playRandomRoll1', function() {
+      var frame;
+      beforeEach(function() {
+        frame = new Frame();
+      });
+      it ('can knock down 0 - 10 pins', function() {
+        frame.playRandomRoll1();
+        expect(frame._roll1).toBeLessThan(11);
+      });
+      it ('adds the number of pins knocked down to the frame score', function() {
+        frame.playRandomRoll1();
+        expect(frame._frameScore).toEqual(frame._roll1);
+      });
+    });
+
+    describe('#playRandomRoll2', function() {
+      var frame;
+      beforeEach(function() {
+        frame = new Frame();
+      });
+      it ('can knock down 0 - 10 pins', function() {
+        frame.playRandomRoll2();
+        expect(frame._roll2).toBeLessThan(11);
+      });
+      it ('adds the number of pins knocked down to the frame score', function() {
+        frame._roll1 = 0;
+        frame.playRandomRoll2();
+        expect(frame._frameScore).toEqual(frame._roll1 + frame._roll2);
+      });
+    });
+
+    describe('#getFrameScore', function() {
+      var frame;
+      beforeEach(function() {
+        frame = new Frame();
+      });
+      it ('returns the total score for the frame', function() {
+        frame.setRoll1(1);
+        frame.setRoll2(2);
+        expect(frame.getFrameScore()).toEqual(3);
+      });
+    });
+
   // it("has a bonus", function(){
   //   var _strikeType;
   //   expect(frame._strikeType).toBeDefined();
   // });
 
-  // it("has a score", function(){
-  //   var _score;
-  //   expect(frame._score).toBeDefined();
-  // });
-  // it("contains roll1 and roll2", function(){
-  //   var _roll1;
-  //   var _roll2;
-  //   expect(frame._roll1).toBeDefined();
-  //   expect(frame._roll2).toBeDefined();
-  // });
-  //
-  //
-  //
-  //
-  // it("has a getFrameScore method", function(){
-  //   expect(frame.getFrameScore).toBeDefined();
-  // });
-  //
-  //
 
-  //
-  //
-  //
-  // describe('#getFrameScore', function() {
-  //   var frame;
-  //   beforeEach(function() {
-  //     frame = new Frame();
-  //   });
-  //   it ('returns the total score for the frame', function() {
-  //     spyOn(frame, 'roll1').and.returnValue(1);
-  //     spyOn(frame, 'roll2').and.returnValue(2);
-  //     var x = 0;
-  //     x = frame.getFrameScore();
-  //     expect(frame._score).toEqual(x);
-  //   });
-  // });
   //
 
 

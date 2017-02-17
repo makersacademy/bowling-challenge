@@ -35,35 +35,27 @@ Frame.prototype.setRoll2 = function(roll_value) {
   this.getStrikeType();
 };
 
+Frame.prototype.playRandomRoll1 = function() {
+  var pins = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  this._roll1 = pins[Math.floor(Math.random() * pins.length)];
+  this._frameScore = this._frameScore + this._roll1;
+  this.getStrikeType();
+  return this._roll1;
+}
 
+Frame.prototype.playRandomRoll2 = function() {
+  var y = [];
+  y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  this._roll2 = y[Math.floor(Math.random() * y.length)];
+  this._frameScore = this._frameScore + this._roll2;
+  this.getStrikeType();
+  return this._roll2;
+}
 
-// Frame.prototype.playRandomRoll1 = function() {
-//   var x = [];
-//   x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-//   this._roll1 = x[Math.floor(Math.random() * x.length)];
-//   this._frameScore = this._frameScore + this._roll1;
-//   this.getStrikeType();
-//   return this._roll1;
-// }
-//
-// Frame.prototype.playRandomRoll2 = function() {
-//   var y = [];
-//   y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-//   this._roll2 = y[Math.floor(Math.random() * y.length)];
-//   this._frameScore = this._frameScore + this._roll2;
-//   this.getStrikeType();
-//   return this._roll2;
-// }
-//
-//
-// Frame.prototype.getExtraRoll = function() {
-//   var y = [];
-//   y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-//   this._roll3 = y[Math.floor(Math.random() * y.length)];
-//   this.addBonus(this._roll3);
-//   return this._roll3;
-// };
-//
+Frame.prototype.getFrameScore = function() {
+  return this._frameScore;
+};
+
 // Frame.prototype.getRoll1Score = function() {
 //   return this._roll1;
 // };
@@ -71,11 +63,16 @@ Frame.prototype.setRoll2 = function(roll_value) {
 // Frame.prototype.getRoll2Score = function() {
 //   return this._roll2;
 // };
-//
-// Frame.prototype.getFrameScore = function() {
-//   return this._frameScore;
-// };
+
 //
 // Frame.prototype.addBonus = function(bonus) {
 //   this._frameScore += bonus;
+// };
+
+// Frame.prototype.getExtraRoll = function() {
+//   var y = [];
+//   y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+//   this._roll3 = y[Math.floor(Math.random() * y.length)];
+//   this.addBonus(this._roll3);
+//   return this._roll3;
 // };

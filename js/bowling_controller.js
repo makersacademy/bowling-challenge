@@ -10,10 +10,6 @@ $(document).ready(function () {
   var isFinalFrameStrike = false;
   var isFinalFrameSpare = false;
 
-  $("#new-game").click(function () {
-    location.reload();
-  })
-
   $("#choice-"+0).click(function () {
     reactToChoice(0);
   })
@@ -73,37 +69,33 @@ $(document).ready(function () {
     }
   })
 
-  var dealWithFinalFrame = function () {
-    if (frameCount === 10) {
+  $("#new-game").click(function () {
+    location.reload();
+  })
+
+  // To be moved to controller helpers
+
+  var dealWithFinalFrame = function (n) {
       if (frame.isStrike()){
-        finalFrameStrike();
+        finalFrameStrike(n);
+        console.log(n);
       }
       else if (frame.isSpare()) {
-        calculateFinalFrameSpare(finalFrame.getFrame()[0])
+        calculateFinalFrameSpare(n)
       }
       else {
         calculateFinalFrameOrdinary();
       }
-    }
-    else {
-      updateFrame(frame);
-    }
   }
 
   var reactToChoice = function (n) {
     if (frameCount === 10) {
-      dealWithFinalFrame();
+      finalFrame = new Frame();
+      dealWithFinalFrame(n);
     }
-    // if (isFinalFrameStrike) {
-    //   finalFrameStrike(n)
-    // }
-    // else if (isFinalFrameSpare) {
-    //   calculateFinalFrameSpare(n)
-    // }
     else if (n === 10) {
       frameCount += 1;
       frame.rollOneFrame(n, 0);
-      // (frameCount == 10) ?  setFinalFrameStrike() : updateFrame(frame);
       updateFrame(frame);
       rollFirst = null;
     }
@@ -114,7 +106,6 @@ $(document).ready(function () {
     else {
       frameCount += 1;
       frame.rollOneFrame(rollFirst, n);
-      // (frameCount == 10) ?  setFinalFrameSpare() : updateFrame(frame);
       updateFrame(frame);
       showAllChoices();
       rollFirst = null;
@@ -122,24 +113,22 @@ $(document).ready(function () {
   }
 
   var setFinalFrameSpare = function () {
-    if (frame.isSpare) {
+    if (frame.isSpare()) {
       isFinalFrameSpare = true;
     }
   }
 
   var calculateFinalFrameSpare = function (n) {
+    console.log("in in spare"+n);
+    if (n === undefined) {
+      n = finalFrame.getFrame()[0];
+    }
+    console.log(n);
     $("#roll-10").text(frame._frame[0]+"/"+frame._frame[1]+"/"+n);
     game.finalFrame(frame, n);
     updateScores(frameCount);
     $("#conclusion").text("Your final score is "+game.getScore(10)+" and you have played "+ game.whichGame());
   }
-
-  // var calculateFinalFrameSpare = function (n) {
-  //   $("#roll-10").text(frame._frame[0]+"/"+frame._frame[1]+"/"+finalFrame.getFrame()[0]+"/"+finalFrame.getFrame()[1]);
-  //   game.finalFrame(frame, finalFrame.getFrame()[0], finalFrame.getFrame()[1]);
-  //   updateScores(frameCount);
-  //   $("#conclusion").text("Your final score is "+game.getScore(10)+" and you have played "+ game.whichGame());
-  // }
 
   var calculateFinalFrameOrdinary = function () {
     $("#roll-10").text(frame.getFrame()[0]+"/"+frame.getFrame()[1]);
@@ -147,13 +136,6 @@ $(document).ready(function () {
     updateScores(frameCount);
     $("#conclusion").text("Your final score is "+game.getScore(10)+" and you have played "+ game.whichGame());
   }
-
-  // var calculateFinalFrame = function (frame, finalFrame, n) {
-  //   $("#roll-10").text(frame._frame[0]+"/"+frame._frame[1]+"/"+finalFrame.getFrame()[0]+"/"+finalFrame.getFrame()[1]);
-  //   game.finalFrame(frame, finalFrame.getFrame()[0], finalFrame.getFrame()[1]);
-  //   updateScores(frameCount);
-  //   $("#conclusion").text("Your final score is "+game.getScore(10)+" and you have played "+ game.whichGame());
-  // }
 
   var setFinalFrameStrike = function () {
     isFinalFrameStrike = true;
@@ -164,27 +146,26 @@ $(document).ready(function () {
     hideIrrelevantChoices(n);
   }
 
-  var hideIrrelevantChoices = function (n) {
-    for(var i = 10-n+1; i<=10; i++) {
-      $("#choice-"+i).hide();
-    }
-  }
-
-  var showAllChoices = function () {
-    for(var i = 0; i<=10; i++) {
-      $("#choice-"+i).show();
-    }
-  }
-
   var finalFrameStrike = function (n) {
     if (finalRollFirst === null) {
       finalRollFirst = n;
+      $("#roll-10").text(10+"/"+n+"/--");
+      console.log("1r"+finalRollFirst);
     }
     else {
-      if (finalFrame.getFrame()[1] === null) {
+      console.log("2r"+n);
+      console.log(finalFrame.getFrame()[1]);
+      if (finalFrame.getFrame()[1] === undefined) {
+        console.log(13);
+        console.log(n);
         finalRollSecond = n;
         finalFrame.rollOneFrame(finalRollFirst, finalRollSecond);
+        console.log(finalFrame._frame);
       }
+      console.log(finalFrame.getFrame()[0]);
+      console.log(finalFrame.getFrame()[1]);
+      console.log(finalRollFirst);
+      console.log(finalRollSecond);
       calculateFinalFrameStrike();
       finalRollFirst = null;
       finalRollSecond = null;
@@ -200,7 +181,18 @@ $(document).ready(function () {
 
   var updateFrame = function (frame) {
     game.addNewFrame(frame);
-    $("#roll-"+frameCount).text(frame._frame[0]+"/"+frame._frame[1]);
+    if (frameCount === 10) {
+      if (frame.isStrike()) {
+        $("#roll-10").text("10/--/--");
+      }
+      else if (frame.isSpare()) {
+        $("#roll-10").text(frame._frame[0]+"/"+frame._frame[1]+"/--");
+      } else {
+        $("#roll-"+frameCount).text(frame._frame[0]+"/"+frame._frame[1]);
+      }
+    } else {
+      $("#roll-"+frameCount).text(frame._frame[0]+"/"+frame._frame[1]);
+    }
     updateScores(frameCount);
   }
 
@@ -210,3 +202,15 @@ $(document).ready(function () {
     $("#score-"+(frameCount-2)).text(game.getScore(frameCount-2));
   }
 })
+
+var hideIrrelevantChoices = function (n) {
+  for(var i = 10-n+1; i<=10; i++) {
+    $("#choice-"+i).hide();
+  }
+}
+
+var showAllChoices = function () {
+  for(var i = 0; i<=10; i++) {
+    $("#choice-"+i).show();
+  }
+}

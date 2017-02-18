@@ -21,7 +21,7 @@ The program does not allow you to score more than 10 in one frame:
 
 And the type of the game you played is announced in the end:
 
-![Imgur](http://i.imgur.com/1PWKPyY.png)
+![Imgur](http://i.imgur.com/ApkxShp.png)
 
 
 About the Task

@@ -382,9 +382,35 @@ describe('Game', function() {
       expect(game._frame10._roll1).toEqual(1);
       expect(game._frame10._roll2).toEqual(2);
     });
-    it ('will allow an extra roll if the first 2 rolls are a strike (X)', function() {
-      game.playFrame10(10,0);
+    it ('will add a bonus to frame 9 if frame 9 received a strike (X)', function() {
+      game.playFrame9(10,0);
+      game.playFrame10(1,2);
+      expect(game._frame9._frameScore).toEqual(20);
+    });
+    it ('will add a bonus to frame 9 if frame 9 received a spare (/)', function() {
+      game.playFrame9(5,5);
+      game.playFrame10(4,5);
+      expect(game._frame9._frameScore).toEqual(14);
+    });
+    it ('will add a bonus to frame 8 if frame 8 received a strike (X)', function() {
+      game.playFrame8(10,0);
+      game.playFrame9(10,0);
+      game.playFrame10(1,2);
+      expect(game._frame9._frameScore).toEqual(20);
+      expect(game._frame8._frameScore).toEqual(30);
+    });
+
+
+    it ('will allow an extra roll if the first 2 rolls achieves a strike (X)', function() {
+      game._frame10.setRoll1(10);
+      game._frame10.setRoll2(0);
       game._frame10.getExtraRoll();
+
+      expect(game._frame10._frameScore).toEqual(game._frame10._roll1 + game._frame10._roll2 + game._frame10._roll3);
+    });
+    it ('will allow an extra roll if the first 2 rolls are a spare (/)', function() {
+      game._frame10.setRoll1(5);
+      game._frame10.setRoll2(5);
       expect(game._frame10._frameScore).toEqual(game._frame10._roll1 + game._frame10._roll2 + game._frame10._roll3);
     });
     // it ('will add a bonus to frame 9 if frame 9 received a strike (X)', function() {

@@ -76,6 +76,10 @@ describe('Game', function() {
   it("has a playFrame10 method", function(){
     expect(game.playFrame10).toBeDefined();
   });
+
+  it("has a getGameTotal method", function(){
+    expect(game.getGameTotal).toBeDefined();
+  });
   // 3. Detail of each Frame method
 
 
@@ -404,33 +408,37 @@ describe('Game', function() {
     it ('will allow an extra roll if the first 2 rolls achieves a strike (X)', function() {
       game._frame10.setRoll1(10);
       game._frame10.setRoll2(0);
-      game._frame10.getExtraRoll();
+      game._frame10.getExtraRoll(10);
 
       expect(game._frame10._frameScore).toEqual(game._frame10._roll1 + game._frame10._roll2 + game._frame10._roll3);
     });
     it ('will allow an extra roll if the first 2 rolls are a spare (/)', function() {
       game._frame10.setRoll1(5);
       game._frame10.setRoll2(5);
+      game._frame10.getExtraRoll(5);
       expect(game._frame10._frameScore).toEqual(game._frame10._roll1 + game._frame10._roll2 + game._frame10._roll3);
     });
-    // it ('will add a bonus to frame 9 if frame 9 received a strike (X)', function() {
-    //   game.playFrame9(10,0);
-    //   game.playFrame10(1,2);
-    //   expect(game._frame9._frameScore).toEqual(20);
-    // });
-    // it ('will add a bonus to frame 9 if frame 9 received a spare (/)', function() {
-    //   game.playFrame9(5,5);
-    //   game.playFrame10(4,5);
-    //   expect(game._frame8._frameScore).toEqual(14);
-    // });
-    // it ('will add a bonus to frame 7 if frame 7 received a strike (X)', function() {
-    //   game.playFrame7(10,0);
-    //   game.playFrame8(10,0);
-    //   game.playFrame9(1,2);
-    //   expect(game._frame8._frameScore).toEqual(20);
-    //   expect(game._frame7._frameScore).toEqual(30);
-    // });
   });
 
+  describe(getGameTotal, function() {
+    var game;
+    beforeEach(function() {
+      game = new Game();
+    });
+    it ('adds up all the scores from the frames', function() {
+      game.playFrame1(10,0);
+      game.playFrame2(10,0);
+      game.playFrame3(10,0);
+      game.playFrame4(10,0);
+      game.playFrame5(10,0);
+      game.playFrame6(10,0);
+      game.playFrame7(10,0);
+      game.playFrame8(10,0);
+      game.playFrame9(10,0);
+      game.playFrame10(10,10,10);
+      expect(game.gameTotal).toEqual(300);
+    });
+
+  });
 
 }); //end of entire test

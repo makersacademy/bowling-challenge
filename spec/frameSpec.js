@@ -240,13 +240,13 @@ describe('Frame', function() {
         frame = new Frame();
       });
       it ('can knock down 0 - 10 pins', function() {
-        frame.getExtraRoll();
+        frame.getExtraRoll(10);
         expect(frame._roll3).toBeLessThan(11);
       });
       it ('adds the number of pins knocked as a bonus to the frame score', function() {
         frame.setRoll1(10);
         frame.setRoll2(10);
-        frame.getExtraRoll();
+        frame.getExtraRoll(10);
         expect(frame._frameScore).toEqual(20 + frame._roll3);
       });
     });

@@ -17,6 +17,10 @@ Frame.prototype.getStrikeType = function() {
     this._strikeType = "/";
     return this._strikeType;
 
+  } else if ( this._roll3 === 10) {
+    this._strikeType = this._strikeType + "X"; strike
+    return this._strikeType;
+
   } else {
     return this._strikeType;
   }
@@ -69,10 +73,11 @@ Frame.prototype.addBonus = function(bonus) {
   this._frameScore += bonus;
 };
 
-Frame.prototype.getExtraRoll = function() {
-  var y = [];
-  y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  this._roll3 = y[Math.floor(Math.random() * y.length)];
+Frame.prototype.getExtraRoll = function(roll_value) {
+  // var y = [];
+  // y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  // this._roll3 = y[Math.floor(Math.random() * y.length)];
+  this._roll3 = roll_value;
   this.addBonus(this._roll3);
   return this._roll3;
 };

@@ -1,9 +1,11 @@
 Bowling Challenge - My Approach
 ================================
+https://travis-ci.org/shezdev/bowling-challenge
 * Overall - To use a test-driven approach (using Jasmine) to develop the business logic with JavaScript and the front-end with html, jQuery and JavaScript.
 * Initially I used diagramming firstly to draw out what I wanted the interface to look like from the user's perspective, and then I thought about what objects I would need and how they related to eachother.
 * I got a long way into the business logic, then realised my tests hadn't been running properly!
 * At the same time, completely changed my approach with the game class (to be initialised with 10 frame objects, that could be accessed.)
+* Tests have been re-written!
 * I have created a basic interface where the following features can be demonstrated.
 
 Perfect Game:

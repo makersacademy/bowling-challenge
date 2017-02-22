@@ -18,7 +18,7 @@ Frame.prototype.getStrikeType = function() {
     return this._strikeType;
 
   } else if ( this._roll3 === 10) {
-    this._strikeType = this._strikeType + "X"; strike
+    this._strikeType = this._strikeType + "X"; //strike
     return this._strikeType;
 
   } else {
@@ -79,5 +79,6 @@ Frame.prototype.getExtraRoll = function(roll_value) {
   // this._roll3 = y[Math.floor(Math.random() * y.length)];
   this._roll3 = roll_value;
   this.addBonus(this._roll3);
+  this.getStrikeType();
   return this._roll3;
 };

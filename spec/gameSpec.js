@@ -70,9 +70,6 @@ describe('Game', function() {
   it("has a playFrame9 method", function(){
     expect(game.playFrame9).toBeDefined();
   });
-  it("has a getFinalBonus method", function(){
-    expect(game.getFinalBonus).toBeDefined();
-  });
   it("has a playFrame10 method", function(){
     expect(game.playFrame10).toBeDefined();
   });
@@ -352,29 +349,6 @@ describe('Game', function() {
     });
   });
 
-  describe('#getFinalBonus', function() {
-    var game;
-    beforeEach(function() {
-      game = new Game();
-    });
-    it ('adds a bonus to the previous frame if the previous frame had a strike (X)', function() {
-      game._frame1.setRoll1(10);
-      game._frame1.setRoll2(0);
-      game.getFinalBonus(game._frame1, 10, 0)
-      expect(game._frame1._strikeType).toEqual("X");
-      expect(game._frame1._frameScore).toEqual(20);
-    });
-    it ('adds a bonus to the previous frame if the previous frame had a spare (X)', function() {
-      game._frame1.setRoll1(5);
-      game._frame1.setRoll2(5);
-      game._frame2.setRoll1(5);
-      game._frame2.setRoll2(5);
-      game.getFinalBonus(game._frame1, 5, 5)
-      expect(game._frame1._strikeType).toEqual("/");
-      expect(game._frame1._frameScore).toEqual(15);
-    });
-  });
-
   describe('#frame10', function() {
     var game;
     beforeEach(function() {
@@ -404,12 +378,10 @@ describe('Game', function() {
       expect(game._frame8._frameScore).toEqual(30);
     });
 
-
     it ('will allow an extra roll if the first 2 rolls achieves a strike (X)', function() {
       game._frame10.setRoll1(10);
       game._frame10.setRoll2(0);
       game._frame10.getExtraRoll(10);
-
       expect(game._frame10._frameScore).toEqual(game._frame10._roll1 + game._frame10._roll2 + game._frame10._roll3);
     });
     it ('will allow an extra roll if the first 2 rolls are a spare (/)', function() {
@@ -420,7 +392,7 @@ describe('Game', function() {
     });
   });
 
-  describe(getGameTotal, function() {
+  describe('#getGameTotal', function() {
     var game;
     beforeEach(function() {
       game = new Game();
@@ -435,10 +407,9 @@ describe('Game', function() {
       game.playFrame7(10,0);
       game.playFrame8(10,0);
       game.playFrame9(10,0);
-      game.playFrame10(10,10,10);
-      expect(game.gameTotal).toEqual(300);
+      game.playFrame10(10,10);
+      expect(game._gameTotal).toEqual(300);
     });
-
   });
 
 }); //end of entire test

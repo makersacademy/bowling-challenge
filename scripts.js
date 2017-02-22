@@ -62,7 +62,7 @@ $("#perfectGameButton").click(function(){
   $("#f8Score").text(game._frame8._frameScore);
   $("#f7Score").text(game._frame7._frameScore);
 
-  game.playFrame10(10,10,10);
+  game.playFrame10(10,10);
   $("#f10roll1").text(game._frame10._strikeType);
   $("#f10roll2").text(game._frame10._strikeType);
   $("#f10roll3").text(game._frame10._strikeType);
@@ -135,10 +135,10 @@ $("#perfectGameButton").click(function(){
     $("#f8Score").text(game._frame8._frameScore);
     $("#f7Score").text(game._frame7._frameScore);
 
-    game.playFrame10(0,0,0);
+    game.playFrame10(0,0);
     $("#f10roll1").text(game._frame10._roll1);
     $("#f10roll2").text(game._frame10._roll2);
-    $("#f10roll3").text(game._frame10._roll3);
+    $("#f10roll3").text(0);
     $("#f10Score").text(game._frame10._frameScore);
     $("#f9Score").text(game._frame9._frameScore);
     $("#f8Score").text(game._frame8._frameScore);

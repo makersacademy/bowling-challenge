@@ -13,12 +13,12 @@ Game = function() {
   this._gameTotal = 0;
 };
 
-Game.prototype.getBonus = function(previousFrame, roll1) {
+Game.prototype.getBonus = function(previousFrame, roll) {
   if (previousFrame.getStrikeType() === "X") {
     previousFrame.addBonus(10);
   }
   else if (previousFrame.getStrikeType() === "/") {
-    previousFrame.addBonus(roll1);
+    previousFrame.addBonus(roll);
   }
 };
 
@@ -115,8 +115,9 @@ Game.prototype.playFrame10 = function(roll1, roll2) {
     this.getBonus(this._frame8, roll1);//prev prev frame gets a bonus
   }
   if (this._frame10.getStrikeType() === "X" || this._frame10.getStrikeType() === "/"){
-    this._frame10.getExtraRoll();
-    this.getFinalBonus(this._frame9, roll1, roll2); //prev frame may get a bonus
+    var roll_3 = 10;
+    this._frame10.getExtraRoll(roll_3);
+    this.getBonus(this._frame9, roll_3);
     }
   this.getGameTotal();
 };

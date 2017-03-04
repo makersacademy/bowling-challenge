@@ -15,7 +15,7 @@ $ git clone https://github.com/sliute/bowling-challenge.git
 $ cd bowling-challenge
 $ open SpecRunner.html
 ```
-Also open the Chrome console for ad-hoc CLI feature-testing.
+Also open the Chrome console for ad-hoc CLI feature-testing. The file index.html is just a non-functional draft for the front-end side of the project.
 
 Progress:
 -----

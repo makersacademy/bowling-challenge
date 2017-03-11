@@ -2,7 +2,7 @@
   "name": "bowling-challenge",
   "version": "1.0.0",
   "description": "Makers Academy - Week 5 - Solo Weekend Challenge",
-  "main": "src/game.js",
+  "main": "src/index.js",
   "directories": {
     "doc": "docs"
   },

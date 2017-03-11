@@ -23,6 +23,8 @@
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-jasmine": "^1.1.0",
+    "grunt-jasmine-node-coverage": "^1.1.1",
+    "istanbul": "^0.4.5",
     "jasmine": "^2.5.3",
     "node-static": "^0.7.9"
   }

@@ -5,10 +5,15 @@ module.exports = function (grunt) {
         src: ['src/**.js'],
         options: {
           specs: ['spec/*Spec.js'],
-          vendor: []
+          vendor: [],
+          forceExit: true,
+          coverage: {
+            includeAllSources: true
+          },
         }
       }
     });
   grunt.loadNpmTasks('grunt-contrib-jasmine');
-  grunt.registerTask('default',['jasmine'])
+  grunt.loadNpmTasks('grunt-jasmine-node-coverage');
+  grunt.registerTask('default',['jasmine', 'jasmine_node'])
 };

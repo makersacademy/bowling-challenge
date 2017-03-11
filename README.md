@@ -11,6 +11,7 @@
 * [Jasmine v2.5.3](https://jasmine.github.io/)
 * [Grunt](https://gruntjs.com/)
 * [NPM](https://www.npmjs.com/)
+* [Node Static](https://github.com/cloudhead/node-static/)
 
 ## Jump To
 * [User Stories](#user-stories)

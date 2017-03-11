@@ -70,6 +70,30 @@ describe('Frame', function() {
 
     });
 
+    describe('#secondScore', function() {
+        it('returns zero if first roll was a strike', function() {
+            frame.turn(10);
+            expect(frame.secondScore()).toBe(0);
+        });
+
+        it('returns the second score if the first roll was not a strike', function() {
+            frame.turn(8);
+            frame.turn(2);
+            expect(frame.secondScore()).toBe(2);
+        });
+    })
+
+    describe('#isFrameStarted', function() {
+        it('returns true if the player has bowled', function() {
+            frame.turn(10);
+            expect(frame.isFrameStarted()).toBeTruthy();
+        });
+
+        it('returns false if the player has not bowled', function() {
+            expect(frame.isFrameStarted()).toBeFalsy();
+        });
+    })
+
     describe('frame ending', function() {
 
         it('ends the frame when both turns have been taken', function() {

@@ -3,17 +3,17 @@ $(document).ready(function() {
     game.start();
 
     $('#power-up').click(function(event) {
-        powerUp();
-    });
-
-    $('#restart').click(function(event) {
         clearAll();
         game = new Game();
         game.start();
+        powerUp();
+        $('#power-up').text('Restart')
     });
 
     $('#bowl').click(function(event) {
-        if (game.currentFrame()._turnsRemaining < 2) {
+        if (game.isGameEnded()) {
+            notifier("GAME OVER")
+        } else if (game.currentFrame()._turnsRemaining < 2) {
             secondRoll(power());
         } else {
             firstRoll(power());
@@ -24,7 +24,7 @@ $(document).ready(function() {
         }
     });
 
-    var notifier = function(type) {
+    var notifier = function(type, fadeIn=500, fadeOut=2500) {
         $("#notification-text").text(type);
         $("#notification" ).fadeIn( 500, function() {
         });
@@ -94,18 +94,7 @@ $(document).ready(function() {
         $("#frame-12").attr("class", "show-frame");
     }
 
-    var unhideSpareFrame = function() {
-        $("#bonus-scores").attr("class", "show-frame");
-        $("#frame-11").attr("class", "show-frame");
-        $("#frame-12").attr("class", "show-frame");
-    }
-
-    var unhideStrikeFrame = function() {
-        $("#frame-12").attr("class", "show-frame");
-    }
-
     function powerUp() {
-        var elem = document.getElementById("power");
         var height = 1;
         var id = setInterval(frame, 10);
         function frame() {
@@ -114,25 +103,24 @@ $(document).ready(function() {
                 powerDown();
             } else {
                 height++;
-                elem.style.height = height + '%';
+                $("#power").css("height", height + "%");
             }
         }
     }
 
     function powerDown() {
-        var elem = document.getElementById("power");
         var height = 100;
-        var id = setInterval(frame, 10);
+        var id = setInterval(frame, 8);
         function frame() {
-            if (height <= 100) {
+            if (game.isGameEnded()) {
                 clearInterval(id);
-                if(game.isGameEnded()) {
-                    return;
-                }
+                $("#power").css("height", "0%");
+            } else if (height === 0) {
+                clearInterval(id);
                 powerUp();
             } else {
                 height--;
-                elem.style.height = height + '%';
+                $("#power").css("height", height + "%");
             }
         }
     }

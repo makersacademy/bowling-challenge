@@ -1,7 +1,6 @@
 # Bowling Challenge
 
 [![Build Status](https://travis-ci.org/treborb/bowling-challenge.svg?branch=master)](https://travis-ci.org/treborb/bowling-challenge)
-[![codecov](https://codecov.io/gh/treborb/bowling-challenge/branch/master/graph/badge.svg)](https://codecov.io/gh/treborb/bowling-challenge)
 
 ## [Makers Academy](http://www.makersacademy.com) - Week 5/6 - Solo Weekend Challenge
 

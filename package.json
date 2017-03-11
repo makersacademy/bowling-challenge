@@ -23,6 +23,6 @@
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-jasmine": "^1.1.0",
-    "jasmine": "^2.5.3",
+    "jasmine": "^2.5.3"
   }
 }

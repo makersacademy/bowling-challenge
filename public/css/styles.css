@@ -1,0 +1,167 @@
+body {
+    background: url(../img/alley.svg);
+    background-size: 100vw;
+    margin: 0;
+    background-position-y: 40%;
+    background-repeat: no-repeat;
+}
+
+.wrapper {
+    height: 100vh;
+    max-height: 100vh;
+    margin: auto;
+    max-width: 90vw;
+}
+
+.left {
+    width: 90%;
+    float: left;
+}
+
+.right {
+    width: 10%;
+    float: right;
+}
+
+#bonus-scores {
+    width: 14%;
+    position: absolute;
+    height: 100px;
+    margin: auto;
+    border: 2px solid black;
+    background-color: #fff;
+    top: 13%;
+    left: 43%;
+    opacity: 0.9;
+    text-align: center;
+    display: none;
+}
+
+#score {
+    width: 70%;
+    position: absolute;
+    height: 100px;
+    margin: auto;
+    border: 2px solid black;
+    background-color: #fff;
+    top: 1%;
+    left: 15%;
+    opacity: 0.9;
+    text-align: center;
+    box-shadow: 0 0 7px -1px #222;
+}
+
+.score-top, .score-bottom {
+    height: 50%;
+    width: 100%;
+    font-size: 2.3vw;
+    font-family: sans-serif;
+}
+
+.roll-1, .roll-2 {
+    box-shadow: 0 0 0px 1px black;
+    height: 100%;
+    width: 50%;
+    float: left;
+}
+
+#notification {
+
+}
+
+.frame {
+    width: 10%;
+    height: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    float: left;
+    display:none;
+}
+
+#frame-11, #frame-12 {
+    width: 50%;
+}
+
+.show-frame {
+    display:block!important;
+    box-shadow: 0 0 0px 1px black;
+    float: left;
+}
+
+#power-container {
+    height: 60%;
+    margin-top: 5%;
+    width: 80px;
+    max-width: 25%;
+    position: relative;
+    float: right;
+    transform: rotate(180deg);
+    background-color: #fff;
+    border: 2px solid black;
+    border-radius: 44px;
+    box-shadow: 0 0 7px -1px #222;
+}
+
+#power-up, #bowl, #restart {
+    width: 100%;
+    border: 2px solid black;
+    background-color: #fff;
+    margin-bottom: .6em;
+    text-align: center;
+    border-radius: 30px;
+    font-size: 1vw;
+    font-family: sans-serif;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    position: absolute;
+    transform: rotate(180deg);
+    box-shadow: 0 0 7px -1px #222;
+}
+
+#power-up {
+    bottom: 100%;
+    background-color: deepskyblue;
+}
+
+#bowl {
+    bottom: 110%;
+    background-color: yellow;
+}
+
+#restart {
+    bottom: 120%;
+    background-color: red;
+}
+
+#power {
+    width: 95%;
+    height: 0%;
+    margin-bottom: 1em;
+    border: 2px solid black;
+    vertical-align: bottom;
+    background-color: red;
+    position: absolute;
+    border-radius: 44px;
+}
+
+#notification {
+    display: none;
+}
+
+#strike {
+    max-width: 65%;
+    width: 500px;
+    margin: auto;
+    position: absolute;
+    bottom: 15%;
+    left: 38%;
+    text-align: center;
+}
+
+#notification-text {
+    font-size: 5vw;
+    font-family: monospace;
+    color: #fff;
+    text-shadow: 0 2px 6px #000;
+}

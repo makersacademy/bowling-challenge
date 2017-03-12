@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bowling</title>
+    <meta name="Bowling" content="Bowling">
+    <script src="lib/jquery-3.1.1.min.js"></script>
+    <script src="src/game.js"></script>
+    <script src="src/frame.js"></script>
+    <script src="public/js/ui.js"></script>
+    <link rel="stylesheet" href="public/css/styles.css">
+
+</head>
+
+<body>
+</body>
+    <div class="wrapper">
+        <div id="notification">
+            <div id="strike">
+                <img src="public/img/strike.svg" />
+                <div id="notification-text"></div>
+            </div>
+        </div>
+        <div id="score">
+            <div class="frame show-frame" id="frame-1">
+                <div class="score-top">
+                    <div class="roll-1" id="frame-1-roll-1">
+                    </div>
+                    <div class="roll-2" id="frame-1-roll-2">
+                    </div>
+                </div>
+                <div class="score-bottom">
+                    <div class="score" id="frame-1-score">
+                    </div>
+                </div>
+            </div>
+            <div class="frame show-frame" id="frame-2">
+                <div class="score-top">
+                    <div class="roll-1" id="frame-2-roll-1">
+                    </div>
+                    <div class="roll-2" id="frame-2-roll-2">
+                    </div>
+                </div>
+                <div class="score-bottom">
+                    <div class="score" id="frame-2-score">
+                    </div>
+                </div>
+            </div>
+            <div class="frame show-frame" id="frame-3">
+                <div class="score-top">
+                    <div class="roll-1" id="frame-3-roll-1">
+                    </div>
+                    <div class="roll-2" id="frame-3-roll-2">
+                    </div>
+                </div>
+                <div class="score-bottom">
+                    <div class="score" id="frame-3-score">
+                    </div>
+                </div>
+            </div>
+            <div class="frame show-frame" id="frame-4">
+                <div class="score-top">
+                    <div class="roll-1" id="frame-4-roll-1">
+                    </div>
+                    <div class="roll-2" id="frame-4-roll-2">
+                    </div>
+                </div>
+                <div class="score-bottom">
+                    <div class="score" id="frame-4-score">
+                    </div>
+                </div>
+
+            </div>
+            <div class="frame show-frame" id="frame-5">
+                <div class="score-top">
+                    <div class="roll-1" id="frame-5-roll-1">
+                    </div>
+                    <div class="roll-2" id="frame-5-roll-2">
+                    </div>
+                </div>
+                <div class="score-bottom">
+                    <div class="score" id="frame-5-score">
+                    </div>
+                </div>
+            </div>
+            <div class="frame show-frame" id="frame-6">
+                <div class="score-top">
+                    <div class="roll-1" id="frame-6-roll-1">
+                    </div>
+                    <div class="roll-2" id="frame-6-roll-2">
+                    </div>
+                </div>
+                <div class="score-bottom">
+                    <div class="score" id="frame-6-score">
+                    </div>
+                </div>
+            </div>
+            <div class="frame show-frame" id="frame-7">
+                <div class="score-top">
+                    <div class="roll-1" id="frame-7-roll-1">
+                    </div>
+                    <div class="roll-2" id="frame-7-roll-2">
+                    </div>
+                </div>
+                <div class="score-bottom">
+                    <div class="score" id="frame-7-score">
+                    </div>
+                </div>
+            </div>
+            <div class="frame show-frame" id="frame-8">
+                <div class="score-top">
+                    <div class="roll-1" id="frame-8-roll-1">
+                    </div>
+                    <div class="roll-2" id="frame-8-roll-2">
+                    </div>
+                </div>
+                <div class="score-bottom">
+                    <div class="score" id="frame-8-score">
+                    </div>
+                </div>
+            </div>
+            <div class="frame show-frame" id="frame-9">
+                <div class="score-top">
+                    <div class="roll-1" id="frame-9-roll-1">
+                    </div>
+                    <div class="roll-2" id="frame-9-roll-2">
+                    </div>
+                </div>
+                <div class="score-bottom">
+                    <div class="score" id="frame-9-score">
+                    </div>
+                </div>
+            </div>
+            <div class="frame show-frame" id="frame-10">
+                <div class="score-top">
+                    <div class="roll-1" id="frame-10-roll-1">
+                    </div>
+                    <div class="roll-2" id="frame-10-roll-2">
+                    </div>
+                </div>
+                <div class="score-bottom">
+                    <div class="score" id="frame-10-score">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bonus-scores">
+            <div class="frame" id="frame-11">
+                <div class="score-top">
+                    <div class="roll-1" id="frame-11-roll-1">
+                    </div>
+                    <div class="roll-2" id="frame-11-roll-2">
+                    </div>
+                </div>
+                <div class="score-bottom">
+                    <div class="score" id="frame-11-score">
+                    </div>
+                </div>
+            </div>
+            <div class="frame" id="frame-12">
+                <div class="score-top">
+                    <div class="roll-1" id="frame-12-roll-1">
+                    </div>
+                    <div class="roll-2" id="frame-12-roll-2">
+                    </div>
+                </div>
+                <div class="score-bottom">
+                    <div class="score" id="frame-12-score">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="start-game">
+        </div>
+        <div id="power-container">
+            <div id="power"></div>
+            <div id="power-up">Start
+            </div>
+            <div id="bowl">Bowl
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

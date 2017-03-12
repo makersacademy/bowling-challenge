@@ -1,0 +1,32 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Makers Academy - Week 5 - Solo Weekend Challenge",
+  "main": "src/index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jasmine",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/treborb/bowling-challenge.git"
+  },
+  "author": "Rob Brentnall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/treborb/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/treborb/bowling-challenge#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-jasmine": "^1.1.0",
+    "grunt-template-jasmine-istanbul": "^0.5.0",
+    "istanbul": "^0.4.5",
+    "jasmine": "^2.5.3",
+    "node-static": "^0.7.9"
+  }
+}

@@ -9,6 +9,7 @@
 * [Javascript ES5](https://www.javascript.com/)
 * [jQuery v3.1.1](http://www.sinatrarb.com/)
 * [Jasmine v2.5.3](https://jasmine.github.io/)
+* [Node Static](https://www.npmjs.com/package/node-static)
 * [Grunt](https://gruntjs.com/)
 * [NPM](https://www.npmjs.com/)
 
@@ -85,6 +86,13 @@ game.bowl(n);   // where n is the number of pins to be knocked down
 
 ```
 $ open index.html
+```
+
+OR
+
+```
+$ npm start
+$ open http://localhost:3000
 ```
 
 Click the "Start" button to start the power bar.

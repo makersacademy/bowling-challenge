@@ -77,8 +77,8 @@ $ open SpecRunner.html
 From there, you can open the Chrome developer tools console and run the following example commands to play:
 
 ```javascript
-game = new Game;
-game.start;
+game = new Game();
+game.start();
 game.bowl(n);   // where n is the number of pins to be knocked down
 ```
 

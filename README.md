@@ -18,6 +18,7 @@
 * [Installation](#install)
 * [Usage](#usage)
 * [Tests](#tests)
+* [Heroku Demo](#demo)
 * [Screenshots](#screenshots)
 
 ## The Brief
@@ -112,6 +113,9 @@ Or to run the tests in the web browser:
 ```sh
 $ open SpecRunner.html
 ```
+
+## <a name="demo">[Heroku Demo](https://treborb-bowling.herokuapp.com/)</a>
+Click on the link above to see a live demo
 
 ## <a name="screenshots">Screenshots</a>
 

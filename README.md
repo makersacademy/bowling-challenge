@@ -7,8 +7,8 @@
 
 ## Technologies
 * [Javascript ES5](https://www.javascript.com/)
-* [jQuery v3.1.1](http://www.sinatrarb.com/)
-* [Jasmine v2.5.3](https://jasmine.github.io/)
+* [jQuery](http://www.sinatrarb.com/)
+* [Jasmine](https://jasmine.github.io/)
 * [Node Static](https://www.npmjs.com/package/node-static)
 * [Grunt](https://gruntjs.com/)
 * [NPM](https://www.npmjs.com/)

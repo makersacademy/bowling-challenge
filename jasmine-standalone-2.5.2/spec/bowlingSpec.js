@@ -134,14 +134,7 @@ describe("Bowling", function() {
   })
 
   it("score should be 225 when this is scored", function() {
-    bowling.enterScore(10);
-    bowling.enterScore(10);
-    bowling.enterScore(10);
-    bowling.enterScore(10);
-    bowling.enterScore(10);
-    bowling.enterScore(10);
-    bowling.enterScore(10);
-    bowling.enterScore(10);
+    rollMultiple(10, 8);
     bowling.enterScore(1);
     bowling.enterScore(2);
     bowling.enterScore(5);
@@ -251,5 +244,11 @@ describe("Bowling", function() {
     bowling.enterScore(5);
     expect(function(){ bowling.enterScore(6); }).toThrowError("Cannot enter score: please enter a valid number")
   })
+
+  var rollMultiple = function(score, rolls){
+    for(var i=0; i<rolls; i++) {
+      bowling.enterScore(score);
+    }
+  };
 
 });

@@ -21,21 +21,17 @@ describe("Bowling", function() {
   })
 
   it("should show score at end of the frame", function() {
-    bowling.enterScore(1);
-    bowling.enterScore(1);
+    rollMultiple(1, 2);
     expect(bowling.score).toEqual(2);
   })
 
   it("should increase frame by 1 every second time score is entered", function() {
-    bowling.enterScore(1);
-    bowling.enterScore(1);
+    rollMultiple(1, 2);
     expect(bowling.frame).toEqual(2);
   })
 
   it("seventh go frame should be 4", function() {
-    for(var i=0; i<7; i++) {
-    bowling.enterScore(1);
-    };
+    rollMultiple(1, 7);
     expect(bowling.frame).toEqual(4);
   })
 
@@ -66,8 +62,7 @@ describe("Bowling", function() {
 
   it("should double score of next frame after a strike", function() {
     bowling.enterScore(10);
-    bowling.enterScore(1);
-    bowling.enterScore(1);
+    rollMultiple(1, 2);
     expect(bowling.score).toEqual(14)
   });
 
@@ -78,58 +73,44 @@ describe("Bowling", function() {
 
   it("strike counter should reset after player does not score a strike", function() {
     bowling.enterScore(10);
-    bowling.enterScore(1);
-    bowling.enterScore(1);
+    rollMultiple(1, 2);
     expect(bowling.unscoredStrikes).toEqual(0)
   });
 
   it("strike counter should increment when multiple strikes are scored in a row", function() {
-    bowling.enterScore(10);
-    bowling.enterScore(10);
+    rollMultiple(10, 2);
     expect(bowling.unscoredStrikes).toEqual(2)
   });
 
   it("should correctly multiply scores if multiple strikes are scored", function() {
-    bowling.enterScore(10);
-    bowling.enterScore(10);
+    rollMultiple(10, 2);
     bowling.enterScore(1);
     expect(bowling.score).toEqual(21)
   });
 
   it("should give the correct score after multiple strikes are scored", function() {
-    bowling.enterScore(10);
-    bowling.enterScore(10);
-    bowling.enterScore(1);
-    bowling.enterScore(1);
+    rollMultiple(10, 2);
+    rollMultiple(1, 2);
     expect(bowling.score).toEqual(35)
   })
 
   it("score should be 30 when three strikes are scored in a row", function() {
-    bowling.enterScore(10);
-    bowling.enterScore(10);
-    bowling.enterScore(10);
+    rollMultiple(10, 3);
     expect(bowling.score).toEqual(30)
   })
 
   it("score should be 60 when four strikes are scored in a row", function() {
-    bowling.enterScore(10);
-    bowling.enterScore(10);
-    bowling.enterScore(10);
-    bowling.enterScore(10);
+    rollMultiple(10, 4);
     expect(bowling.score).toEqual(60)
   })
 
   it("score should be 180 when eight strikes are scored in a row", function() {
-    for(var i=0; i<8; i++) {
-    bowling.enterScore(10);
-    };
+    rollMultiple(10, 8);
     expect(bowling.score).toEqual(180)
   })
 
-  it("score should be 300 when ten strikes are scored in a row", function() {
-    for(var i=0; i<12; i++) {
-    bowling.enterScore(10);
-    };
+  it("score should be 300 when 12 strikes are scored in a row", function() {
+    rollMultiple(10, 12);
     expect(bowling.score).toEqual(300)
   })
 
@@ -142,7 +123,7 @@ describe("Bowling", function() {
     expect(bowling.score).toEqual(225)
   })
 
-  it("score should be equal to 43 when this is entered", function() {
+  it("score should be equal to 43 when a 7, 2, 10, 6, 3, 5, 1 is entered", function() {
     bowling.enterScore(7);
     bowling.enterScore(2);
     bowling.enterScore(10);
@@ -163,10 +144,8 @@ describe("Bowling", function() {
 
   it("should should equal to 36 after a 10,5,5,2,2 is scored", function() {
     bowling.enterScore(10);
-    bowling.enterScore(5);
-    bowling.enterScore(5);
-    bowling.enterScore(2);
-    bowling.enterScore(2);
+    rollMultiple(5, 2);
+    rollMultiple(2, 2);
     expect(bowling.score).toEqual(36)
   })
 
@@ -182,48 +161,35 @@ describe("Bowling", function() {
   })
 
   it("game over should be true when all ten frames are completed", function() {
-    for(var i=0; i<20; i++) {
-    bowling.enterScore(1)
-    };
+    rollMultiple(1, 20);
     expect(bowling.gameOver).toEqual(true)
   })
 
   it("should be game over if 12 strikes are scored in a row", function() {
-    for(var i=0; i<12; i++) {
-      bowling.enterScore(10)
-    };
+    rollMultiple(10, 12);
     expect(bowling.gameOver).toEqual(true)
   })
 
   it("score should be 272 if 11 strikes and a 1 are scored", function() {
-    for(var i=0; i<11; i++) {
-      bowling.enterScore(10)
-    };
+    rollMultiple(10, 11);
     bowling.enterScore(1);
     expect(bowling.score).toEqual(291)
   })
 
   it("gameover should be true if 11 strikes and a 1 are scored", function() {
-    for(var i=0; i<11; i++) {
-      bowling.enterScore(10)
-    };
+    rollMultiple(10, 11);
     bowling.enterScore(1);
     expect(bowling.gameOver).toEqual(true)
   })
 
   it("score should be 279 if 10 strikes and a 1, 1 are scored", function() {
-    for(var i=0; i<10; i++) {
-      bowling.enterScore(10);
-    };
-    bowling.enterScore(1);
-    bowling.enterScore(1);
+    rollMultiple(10, 10);
+    rollMultiple(1, 2);
     expect(bowling.score).toEqual(273)
   })
 
   it("score should be 286 if 10 strikes and a 6, 4 are scored", function() {
-    for(var i=0; i<10; i++) {
-      bowling.enterScore(10);
-    };
+    rollMultiple(10, 10);
     bowling.enterScore(6);
     bowling.enterScore(4);
     expect(bowling.score).toEqual(286)

@@ -1,3 +1,5 @@
 'use strict';
 
-var Game = function() {};
+var Game = function() {
+  this.currentScore = 0;
+};

@@ -33,7 +33,7 @@ Accept frames as input.
 
 As a game,
 so that the game is played properly,
-A game is instantiated with 0 points as a current score
+A game has a current score set as 0 initially.
 
 As a game,
 So that the player can see the scores calculated,

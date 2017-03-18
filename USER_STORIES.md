@@ -1,4 +1,4 @@
-# User/Player
+# User/Player/Interface
 
 As a player,
 So that I can play bowling,
@@ -29,8 +29,11 @@ I want to see a - if I've not hit any pins during the frame.
 
 As a game,
 so that the game is played properly,
-I want to have 10 frames.
+Accept frames as input.
 
+As a game,
+so that the game is played properly,
+A game is instantiated with 0 points as a current score
 
 As a game,
 So that the player can see the scores calculated,
@@ -42,7 +45,11 @@ If the player scores a strike, the score in the following frame is doubled.
 
 As a game,
 so that the scores are calculated properly,
-If a roll is a spare, the value of the next first roll is added .
+If a roll is a spare, the value of the next first roll is added.
+
+As a game,
+so that I can play another game of bowling,
+I want to be able to reset the game
 
 (Edge Casing)
 As a game,

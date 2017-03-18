@@ -1,13 +1,13 @@
 # Bowling Challenge
 #### Technologies: Javascript, Jasmine, Heroku, HTML, CSS
-### [Makers Academy] (http://www.makersacademy.com) - Week 5 Solo Weekend Project
+### [Makers Academy](http://www.makersacademy.com) - Week 5 Solo Weekend Project
 
 ## Index
-* [Installation] (#Install)
-* [Jasmine Tests] (#Jasmine)
-* [Running the game] (#Run)
-* [Screen Shots] (#Shots)
-* [Use live on Heroku] (#Heroku)
+* [Installation](#Install)
+* [Jasmine Tests](#Jasmine)
+* [Running the game](#Run)
+* [Screen Shots](#Shots)
+* [Use live on Heroku](#Heroku)
 
 ## <a name="Install">Installation</a>
 * To clone the repo
@@ -37,4 +37,5 @@ $ open -a safari index.html
 [![ScreenShot3](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot3.png)](https://raw.githubusercontent.com/adrianeyre/bowling-challenge/master/images/screenshot2.png "Screen Shot 3")
 
 ## <a name="Heroku">Use live on Heroku</a>
-[Bowling Challange] (https://adrianeyre-bowling.herokuapp.com/index.html)
+
+[![heroku-48](https://raw.githubusercontent.com/adrianeyre/codewars/master/Ruby/Authored/heroku.png)](https://adrianeyre-bowling.herokuapp.com) [Use on Heroku](https://adrianeyre-bowling.herokuapp.com)

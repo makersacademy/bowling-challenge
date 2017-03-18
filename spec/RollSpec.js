@@ -45,5 +45,19 @@ describe('Roll', function(){
 
   });
 
+  describe('#isStrike', function(){
+
+    it('returns true when 10 pins knocked in a roll', function(){
+      roll.setPinsKnocked(10);
+      expect(roll.isStrike()).toBe(true);
+    });
+
+    it('returns false when less than 10 pins knocked in a roll', function(){
+      roll.setPinsKnocked(5);
+      expect(roll.isStrike()).toBe(false);
+    });
+
+  });
+
 
 });

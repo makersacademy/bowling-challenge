@@ -17,3 +17,7 @@ Roll.prototype.getPinsKnocked = function(){
 Roll.prototype.isSet = function(){
   return this.set;
 };
+
+Roll.prototype.isStrike = function(){
+  return (this.pinsKnocked === 10);
+};

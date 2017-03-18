@@ -3,11 +3,13 @@
 describe ("Game", function() {
 
   var game
+  // declaring frame as a variable
   var frame
 
   beforeEach(function(){
-    game = new Game
+    game = new Game()
 
+    // create a new spy object to double frame
     var frame = jasmine.createSpyObj('frame', ['score1','score2']);
 
     frame.score1(10);
@@ -35,11 +37,12 @@ describe ("Game", function() {
       expect(game.totalScore).toEqual([])
     });
 
+    // As a game,
+    // So that the player can see the scores calculated,
+    // I want to add the number of pins knocked down in each frame and keep tally.
     it("accepts a new frame and adds to totalScore", function() {
       game.addCurrentFrame(frame)
       expect(game.totalScore).toEqual([frame])
-
-
     });
   });
 

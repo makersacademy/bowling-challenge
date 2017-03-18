@@ -36,6 +36,11 @@ so that the game is played properly,
 A game has a current score set as 0 initially.
 
 As a game,
+so that the game can do calculations,
+I want have an empty array for accepting messages from frames.
+
+
+As a game,
 So that the player can see the scores calculated,
 I want to add the number of pins knocked down in each frame and keep tally.
 

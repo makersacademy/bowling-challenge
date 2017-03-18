@@ -7,11 +7,10 @@ describe ("Game", function() {
   var frame
 
   beforeEach(function(){
-    game = new Game()
+    game = new Game();
 
     // create a new spy object to double frame
     var frame = jasmine.createSpyObj('frame', ['score1','score2']);
-
     frame.score1(10);
     frame.score2(0);
 
@@ -43,6 +42,7 @@ describe ("Game", function() {
     it("accepts a new frame and adds to totalScore", function() {
       game.addCurrentFrame(frame)
       expect(game.totalScore).toEqual([frame])
+      pending();
     });
   });
 

@@ -27,9 +27,19 @@ describe("Game", function() {
   });
 
   it("stores each frame", function() {
-    //frame.currentFrame.and.returnValue([1,1])
     game.play()
     expect(game.frames[0].length).toEqual(2)
+  })
+
+describe("displays game result", function() {
+
+  it("a game of 0 scores a Gutter Game", function() {
+    spyOn(game, "play").and.returnValue([0, 0]);
+    for(var i = 0; i < 10; i ++) {
+      game.play();
+    };
+    expect(game.result()).toEqual("Gutter Game!")
+  });
 
   })
 })

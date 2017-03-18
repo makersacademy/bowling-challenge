@@ -2,7 +2,7 @@
 
 function Frame (){
   this.frameScore = 0;
-  this.rolls = new Array(2);
+  this.rolls = [new Roll(), new Roll()];
 }
 
 Frame.prototype.getFrameScore = function(){

@@ -1,7 +1,10 @@
 'use strict';
 
   function Game (){
-    this.frames = new Array(10);
+    this.frames = [new Frame(), new Frame(), new Frame(),
+                  new Frame(), new Frame(),
+                  new Frame(), new Frame(), new Frame(),
+                  new Frame(), new Frame()];
     this.totalScore = 0;
   }
 

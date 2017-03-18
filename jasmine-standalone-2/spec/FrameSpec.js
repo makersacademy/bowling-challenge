@@ -1,5 +1,8 @@
 describe ("Frame", function() {
-  var frame = new Frame();
+
+  beforeEach(function() {
+    frame = new Frame();
+  });
 
   it("starts on roll 1", function() {
     expect(frame.roll).toEqual(1);
@@ -16,10 +19,28 @@ describe ("Frame", function() {
     });
   });
 
-  describe("adding points", function() {
+  describe("adds points", function() {
     it("adds points when the user inputs pins they knocked down", function() {
       frame.addPoints(5);
       expect(frame.score).toEqual(5);
+    });
+
+    it("moves to the next roll when the user inputs pins they knocked down", function() {
+      frame.addPoints(5);
+      expect(frame.roll).toEqual(2);
+    });
+  });
+
+  describe("checks if strike or spare", function() {
+    it("checks whether player got a strike", function() {
+      frame.addPoints(10);
+      expect(frame.strike).toEqual(true);
+    });
+
+    it("checks whether player got a strike", function() {
+      frame.addPoints(5);
+      frame.addPoints(5);
+      expect(frame.spare).toEqual(true);
     });
   });
 

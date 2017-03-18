@@ -1,8 +1,11 @@
 'use strict';
 
-function Frame (){
-  this.frameScore = 0;
-  this.rolls = [new Roll(), new Roll()];
+function Frame (numberOfRolls = 2){
+  this.numberOfRolls = numberOfRolls;
+  this.rolls = [];
+  for(var x = 0; x < this.numberOfRolls; x++) {
+    this.rolls.push(new Roll);
+  }
 }
 
 Frame.prototype.isDone = function() {
@@ -29,11 +32,11 @@ Frame.prototype._currentRoll = function(){
 };
 
 Frame.prototype.calculateFrameScore = function(){
-  var rollScores = this.getRolls().map(function(roll){
-    return roll.getPinsKnocked();
-  });
-  this.frameScore = rollScores.reduce(function(acc, val){ return acc + val},0);
-  return this.frameScore;
+  var frameScore = 0
+  for (var y = 0; y < 2; y++){
+    frameScore += this.getRolls()[y].getPinsKnocked()
+  }
+  return frameScore
 };
 
 Frame.prototype.hasStrike = function(){

@@ -22,21 +22,20 @@
         var frameScore = this.frames[i].calculateFrameScore();
         totalScore += frameScore
 
-        if (this.frames[i].isSpare()){
+        if (this.frames[i].hasStrike()){
+          bonus = this.frames[i+1].calculateFrameScore();
+          totalScore += bonus;
+        }
+
+        if (this.frames[i].isSpare() && !(this.frames[i].hasStrike())){
           bonus = this.frames[i+1].getRolls()[0].getPinsKnocked();
           totalScore += bonus;
         }
 
-        if (this.frames[i].hasStrike()){
-          bonus = this.frames[i+1].calculateFrameScore();
-          totalScore += bonus;
-          console.log(totalScore);
-        }
-
+        console.log(totalScore);
       }// end if
 
     } //end for
-
     return totalScore;
   };
 

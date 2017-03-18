@@ -15,6 +15,14 @@ describe('Bowling Challenge', function(){
       game.play(0);
       game.play(1);
       expect(game.getTotalScore()).toEqual(61);
+      game.play(7);
+      game.play(3);
+      game.play(6);
+      game.play(4);
+      game.play(10);
+      game.play(2);
+      game.play(7);
+      expect(game.getTotalScore()).toEqual(125);
   });
 
 });

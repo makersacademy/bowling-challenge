@@ -1,18 +1,31 @@
 function Game() {
-  this._frames = [];
+  this.frames = [];
 }
 
 Game.prototype.bowl = function (rolls) {
-  this._frames.push(rolls);
+  this.frames.push(new Frame(rolls));
 };
 
 Game.prototype.score = function () {
-  function flatten(a,b) {
-    return a.concat(b);
-  }
+  return this.frames.reduce(function(total, frame, i, frames){
+    return total + frame.total(frames[i + 1]);
+  },0);
+};
 
-  function add(a,b) {
-    return a + b;
+/////////////////////
+
+function Frame(rolls) {
+  this.rolls = rolls;
+}
+
+Frame.prototype.total = function (next) {
+  var score = this.rolls.reduce(function(a,b){
+    return a + b
+  },0);
+  if (next === undefined || score !== 10) {
+      return score;
+  } else {
+      var bonus = next.rolls[0];
+      return score + bonus
   }
-  return (this._frames.reduce(flatten,[])).reduce(add,0);
 };

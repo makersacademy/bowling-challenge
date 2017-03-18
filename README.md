@@ -1,7 +1,7 @@
 # Bowling Challenge
 ### Makers Academy Weekend Challenge No. 5
 
-[![Build Status](https://travis-ci.org/KatHicks/bowling-challenge.svg?branch=master)](https://travis-ci.org/KatHicks/bowling-challenge)
+[![Build Status](https://travis-ci.org/KatHicks/bowling-challenge.svg?branch=master)](https://travis-ci.org/KatHicks/bowling-challenge) [![Code Climate](https://codeclimate.com/github/KatHicks/bowling-challenge/badges/gpa.svg)](https://codeclimate.com/github/KatHicks/bowling-challenge)
 
 ### Instructions
 

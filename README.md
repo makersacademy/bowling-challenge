@@ -77,3 +77,34 @@ If you don't follow the usual Jasmine convention of having your tests in `spec` 
 2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
 3. Adjust these to point to the correct directories
 4. Done.
+
+--
+# Bowling Challenge
+
+## User Stories
+
+```
+As a player
+So that I can keep score
+I want to be able to record my score per roll
+```
+
+```
+As a player
+So that I can be scored accurately
+I want my scores to be calculated as I play
+```
+
+```
+As a player
+So that I can prevent cheating
+I want the rolls per frame restricted according to the rules
+```
+
+```
+As a player
+So that I can challenge myself
+I want bonuses to be calculated accurately
+```
+
+TBC

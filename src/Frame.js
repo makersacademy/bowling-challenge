@@ -3,15 +3,24 @@
 function Frame (){
   this.frameScore = 0;
   this.rolls = [new Roll(), new Roll()];
-  this.isDone = false;
+  this.Done = false;
+  this.Spare = false;
 }
+
+Frame.prototype.isDone = function() {
+  return this.getRolls().every(roll => (roll.isSet === true));
+};
+
+Frame.prototype.isSpare = function() {
+  return (this.calculateFrameScore() === 10);
+};
 
 Frame.prototype.getFrameScore = function(){
   return this.frameScore;
 };
 
 Frame.prototype.getRolls = function(){
-  return this.rolls
+  return this.rolls;
 };
 
 Frame.prototype.play = function(pinsKnocked){
@@ -20,9 +29,8 @@ Frame.prototype.play = function(pinsKnocked){
 
 Frame.prototype._currentRoll = function(){
   var currentRoll = this.getRolls().find(function(roll){
-    return roll.isSet === false
+    return roll.isSet === false;
   });
-  this.isDone = !!(currentRoll); 
   return currentRoll;
 };
 

@@ -6,7 +6,9 @@ describe('Bowling Challenge', function(){
       game.play(4);
       game.play(4);
       game.play(5);
-      expect(game.getTotalScore()).toEqual(14);
+      game.play(6);
+      game.play(4);
+      expect(game.getTotalScore()).toEqual(24);
   });
 
 });

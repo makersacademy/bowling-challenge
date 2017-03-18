@@ -27,7 +27,7 @@
 
  Game.prototype._currentFrame = function(){
    var currentFrame = this.getFrames().find(function(frame){
-     return frame.isDone === false;
+     return frame.isDone() === false;
    });
    return currentFrame;
  };

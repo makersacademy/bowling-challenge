@@ -48,4 +48,31 @@ describe('Frame', function(){
     });
   });
 
+  describe('#isDone', function(){
+    it('returns true when both rolls set', function(){
+      frame.play(4);
+      frame.play(6);
+      expect(frame.isDone()).toBe(true);
+    });
+
+    it('returns false when atleast one not set', function(){
+      frame.play(4);
+      expect(frame.isDone()).toBe(false);
+    });
+  });
+
+  describe('#isSpare', function(){
+    it('returns true when frameScore is 10', function(){
+      frame.play(4);
+      frame.play(6);
+      expect(frame.isSpare()).toBe(true);
+    });
+
+    it('returns false when frameScore is less than 10', function(){
+      frame.play(4);
+      frame.play(1);
+      expect(frame.isSpare()).toBe(false);
+    });
+  });
+
 });

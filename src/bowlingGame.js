@@ -20,7 +20,6 @@ BowlingGame.prototype.score = function(){
       this.getNormalScore();
       this.rollIndex+=2;
     }
-
   }
   return this.gameResult;
 }

@@ -4,5 +4,5 @@ function Game () {
 };
 
 Game.prototype.nextFrame = function() {
-  this.frame ++
+  this.frame ++;
 };

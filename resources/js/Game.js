@@ -1,6 +1,7 @@
 'use strict';
 
-var Game = function() {
+function Game()
+{
   this.currentScore = 0;
   this.totalScore = [];
 };

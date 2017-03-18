@@ -31,11 +31,11 @@ As a game,
 so that the game is played properly,
 Accept frames as input.
 
-As a game,
+1. As a game,
 so that the game is played properly,
 A game has a current score set as 0 initially.
 
-As a game,
+2. As a game,
 so that the game can do calculations,
 I want have an empty array for accepting messages from frames.
 

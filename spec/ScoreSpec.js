@@ -22,10 +22,14 @@ describe("Score", function() {
     expect(score.runningScore).toEqual(2);
   })
 
-  // it("calculates the running score of the game", function(){
-  //   spyOn(game, "play").and.returnValue([2, 5]);
-  //   game.play();
-  //   expect(score.runningScore()).toEqual(7);
-  // })
+  it("calculates the running score of the game", function(){
+    game.play();
+    var scoreOne = game.frames[0];
+    game.play();
+    var scoreTwo = game.frames[1];
+    var calculate = score.calculateScore(scoreOne);
+    calculate += score.calculateScore(scoreTwo);
+    expect(score.runningScore).toEqual(calculate);
+  })
 
 });

@@ -15,12 +15,20 @@ describe('The Bowling Game', function(){
     expect(game.score()).toBe(20);
   });
 
-  it('can roll a spare', function(){
+  it('can roll a Spare!', function(){
     game.roll(5);
     game.roll(5);
     game.roll(3);
     rollMany(0,17);
     expect(game.score()).toBe(16);
+  });
+
+  it('can roll a Strike!', function(){
+    game.roll(10);
+    game.roll(5);
+    game.roll(2);
+    rollMany(0,16);
+    expect(game.score()).toBe(24);
   });
 
   // Helper method

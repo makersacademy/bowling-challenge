@@ -15,10 +15,10 @@ describe('Frame', function(){
 
   });
 
-  describe('#getFrameScore', function(){
+  describe('#calculateFrameScore', function(){
 
     it('should be zero to begin with', function(){
-      expect(frame.getFrameScore()).toEqual(0);
+      expect(frame.calculateFrameScore()).toEqual(0);
     });
 
   });
@@ -72,6 +72,25 @@ describe('Frame', function(){
       frame.play(4);
       frame.play(1);
       expect(frame.isSpare()).toBe(false);
+    });
+  });
+
+  describe('#hasStrike', function(){
+    it('returns true when there is a strike in first roll', function () {
+      frame.play(10);
+      expect(frame.hasStrike()).toBe(true);
+    });
+
+    it('returns true when there is a strike in the second roll', function () {
+      frame.play(0);
+      frame.play(10);
+      expect(frame.hasStrike()).toBe(true);
+    });
+
+    it('returns a false when there are no strikes', function () {
+      frame.play(5);
+      frame.play(5);
+      expect(frame.hasStrike()).toBe(false);
     });
   });
 

@@ -3,20 +3,14 @@
 function Frame (){
   this.frameScore = 0;
   this.rolls = [new Roll(), new Roll()];
-  this.Done = false;
-  this.Spare = false;
 }
 
 Frame.prototype.isDone = function() {
-  return this.getRolls().every(roll => (roll.isSet() === true));
+  return this.getRolls()[0].isStrike() || this.getRolls().every(roll => (roll.isSet() === true));
 };
 
 Frame.prototype.isSpare = function() {
   return (this.calculateFrameScore() === 10);
-};
-
-Frame.prototype.getFrameScore = function(){
-  return this.frameScore;
 };
 
 Frame.prototype.getRolls = function(){
@@ -38,6 +32,10 @@ Frame.prototype.calculateFrameScore = function(){
   var rollScores = this.getRolls().map(function(roll){
     return roll.getPinsKnocked();
   });
-  var sum = rollScores.reduce(function(acc, val){ return acc + val},0);
-  return sum;
+  this.frameScore = rollScores.reduce(function(acc, val){ return acc + val},0);
+  return this.frameScore;
+};
+
+Frame.prototype.hasStrike = function(){
+  return this.getRolls().some(roll => roll.isStrike());
 };

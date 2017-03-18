@@ -3,9 +3,16 @@
 describe ("Game", function() {
 
   var game
+  var frame
 
   beforeEach(function(){
     game = new Game
+
+    var frame = jasmine.createSpyObj('frame', ['score1','score2']);
+
+    frame.score1(10);
+    frame.score2(0);
+
   });
 
   describe ("Upon instantiating", function() {
@@ -28,6 +35,12 @@ describe ("Game", function() {
       expect(game.totalScore).toEqual([])
     });
 
+    it("accepts a new frame and adds to totalScore", function() {
+      game.addCurrentFrame(frame)
+      expect(game.totalScore).toEqual([frame])
+
+
+    });
   });
 
 });

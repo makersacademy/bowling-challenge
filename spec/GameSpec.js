@@ -27,8 +27,7 @@ describe('Game', function(){
     it('The score will be recorded', function() {
       game.rollBall(4);
       game.rollBall(5);
-      game.rollBall(10);
-      expect(game.totalScores).toEqual([[4,5], 10])
+      expect(game.totalScores).toEqual([[4,5]])
     });
   });
 
@@ -37,6 +36,15 @@ describe('Game', function(){
       score = Math.floor(Math.random() * 11);
       game.rollBall(score);
       expect(game.latestRoll >= 0 && game.latestRoll <= 10).toBeTruthy();
+    });
+  });
+
+  describe('If I roll a strike', function() {
+    it('The next two rolls will be added to score as bonus', function() {
+      game.rollBall(10);
+      game.rollBall(5);
+      game.rollBall(4);
+      expect(game.totalScores).toEqual([[19], [5, 4]])
     });
   });
 });

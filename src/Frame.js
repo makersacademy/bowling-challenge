@@ -8,7 +8,7 @@ function Frame (){
 }
 
 Frame.prototype.isDone = function() {
-  return this.getRolls().every(roll => (roll.isSet === true));
+  return this.getRolls().every(roll => (roll.isSet() === true));
 };
 
 Frame.prototype.isSpare = function() {
@@ -29,7 +29,7 @@ Frame.prototype.play = function(pinsKnocked){
 
 Frame.prototype._currentRoll = function(){
   var currentRoll = this.getRolls().find(function(roll){
-    return roll.isSet === false;
+    return roll.isSet() === false;
   });
   return currentRoll;
 };

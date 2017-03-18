@@ -2,97 +2,98 @@
 <html>
 <head>
   <title>Bowling</title>
+  <link rel="stylesheet" type="text/css" href="public/indexStyle.css">
 
 </head>
 <body>
-  <div style="display:table-cell;">
-    <div id="bgMiddle"></div>
-  </div>
-
-  <h1 class="ribbon">
-    <strong class="ribbon-content">10 Pin Bowling Game</strong>
-  </h1>
-
-  <div id="btn-strip">
-    <div id="btn-title">
-      Select PINS to knock down!
+  <div class="main-container">
+    <div class="heading">
+      <h1>
+        <strong id="heading-content">10 Pin Bowling Game</strong>
+      </h1>
     </div>
 
-    <button id="btn0" class="btn">0</button>
-    <button id="btn1" class="btn">1</button>
-    <button id="btn2" class="btn">2</button>
-    <button id="btn3" class="btn">3</button>
-    <button id="btn4" class="btn">4</button>
-    <button id="btn5" class="btn">5</button>
-    <button id="btn6" class="btn">6</button>
-    <button id="btn7" class="btn">7</button>
-    <button id="btn8" class="btn">8</button>
-    <button id="btn9" class="btn">9</button>
-    <button id="btn10" class="btn">10</button>
+    <div id="btn-strip">
+      <div id="btn-title">
+        Select PINS to knock down!
+      </div>
 
-  </div>  <!--  btn-strip id  -->
+      <button id="pin0" class="pin">0</button>
+      <button id="pin1" class="pin">1</button>
+      <button id="pin2" class="pin">2</button>
+      <button id="pin3" class="pin">3</button>
+      <button id="pin4" class="pin">4</button>
+      <button id="pin5" class="pin">5</button>
+      <button id="pin6" class="pin">6</button>
+      <button id="pin7" class="pin">7</button>
+      <button id="pin8" class="pin">8</button>
+      <button id="pin9" class="pin">9</button>
+      <button id="pin10" class="pin">10</button>
 
-  <div id="score-card">
-    <table>
-      <thead>
-        <tr>
-          <th colspan="2">Frame 1</th>
-          <th colspan="2">Frame 2</th>
-          <th colspan="2">Frame 3</th>
-          <th colspan="2">Frame 4</th>
-          <th colspan="2">Frame 5</th>
-          <th colspan="2">Frame 6</th>
-          <th colspan="2">Frame 7</th>
-          <th colspan="2">Frame 8</th>
-          <th colspan="2">Frame 9</th>
-          <th colspan="3">Frame 10</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td id="roll1">1</td>
-          <td id="roll2">2</td>
-          <td id="roll3">1</td>
-          <td id="roll4">2</td>
-          <td id="roll5">1</td>
-          <td id="roll6">2</td>
-          <td id="roll7">1</td>
-          <td id="roll8">2</td>
-          <td id="roll9">1</td>
-          <td id="roll10">2</td>
-          <td id="roll11">1</td>
-          <td id="roll12">2</td>
-          <td id="roll13">1</td>
-          <td id="roll14">2</td>
-          <td id="roll15">1</td>
-          <td id="roll16">2</td>
-          <td id="roll17">1</td>
-          <td id="roll18">2</td>
-          <td id="roll19">1</td>
-          <td id="roll20">2</td>
-          <td id="roll21">3</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td id="f1-score" colspan="2">F1</td>
-          <td id="f2-score" colspan="2">F2</td>
-          <td id="f3-score" colspan="2">F3</td>
-          <td id="f4-score" colspan="2">F4</td>
-          <td id="f5-score" colspan="2">F5</td>
-          <td id="f6-score" colspan="2">F6</td>
-          <td id="f7-score" colspan="2">F7</td>
-          <td id="f8-score" colspan="2">F8</td>
-          <td id="f9-score" colspan="2">F9</td>
-          <td id="f10-score" colspan="3">F10</td>
-        </tr>
-      </tfoot>
-    </table>
+    </div>  <!--  btn-strip id  -->
 
-  </div>  <!--  Score Card ID -->
+    <div id="score-card">
+      <table>
+        <thead>
+          <tr>
+            <th id="frame1-title" colspan="2">Frame 1</th>
+            <th id="frame2-title" colspan="2">Frame 2</th>
+            <th id="frame3-title" colspan="2">Frame 3</th>
+            <th id="frame4-title" colspan="2">Frame 4</th>
+            <th id="frame5-title" colspan="2">Frame 5</th>
+            <th id="frame6-title" colspan="2">Frame 6</th>
+            <th id="frame7-title" colspan="2">Frame 7</th>
+            <th id="frame8-title" colspan="2">Frame 8</th>
+            <th id="frame9-title" colspan="2">Frame 9</th>
+            <th id="frame10-title" colspan="3">Frame 10</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="roll1-score">1</td>
+            <td id="roll2-score">2</td>
+            <td id="roll3-score">1</td>
+            <td id="roll4-score">2</td>
+            <td id="roll5-score">1</td>
+            <td id="roll6-score">2</td>
+            <td id="roll7-score">1</td>
+            <td id="roll8-score">2</td>
+            <td id="roll9-score">1</td>
+            <td id="roll10-score">2</td>
+            <td id="roll11-score">1</td>
+            <td id="roll12-score">2</td>
+            <td id="roll13-score">1</td>
+            <td id="roll14-score">2</td>
+            <td id="roll15-score">1</td>
+            <td id="roll16-score">2</td>
+            <td id="roll17-score">1</td>
+            <td id="roll18-score">2</td>
+            <td id="roll19-score">1</td>
+            <td id="roll20-score">2</td>
+            <td id="roll21-score">3</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td id="f1-score" colspan="2">F1</td>
+            <td id="f2-score" colspan="2">F2</td>
+            <td id="f3-score" colspan="2">F3</td>
+            <td id="f4-score" colspan="2">F4</td>
+            <td id="f5-score" colspan="2">F5</td>
+            <td id="f6-score" colspan="2">F6</td>
+            <td id="f7-score" colspan="2">F7</td>
+            <td id="f8-score" colspan="2">F8</td>
+            <td id="f9-score" colspan="2">F9</td>
+            <td id="f10-score" colspan="3">F10</td>
+          </tr>
+        </tfoot>
+      </table>
 
-  <div style="text-align:center;">
-    <button id="new-game">New Game</button>
-  </div>
+    </div>  <!--  Score Card ID -->
+
+    <div style="text-align:center;">
+      <button id="new-game">New Game</button>
+    </div>
+  </div>  <!--  Main Container  -->
 </body>
 </html>

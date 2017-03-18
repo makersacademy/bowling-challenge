@@ -4,7 +4,7 @@ function Frame (numberOfRolls = 2){
   this.numberOfRolls = numberOfRolls;
   this.rolls = [];
   for(var x = 0; x < this.numberOfRolls; x++) {
-    this.rolls.push(new Roll);
+    this.rolls.push(new Roll());
   }
 }
 

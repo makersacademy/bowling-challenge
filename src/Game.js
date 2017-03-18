@@ -5,7 +5,6 @@
                   new Frame(), new Frame(),
                   new Frame(), new Frame(), new Frame(),
                   new Frame(), new Frame()];
-    this.totalScore = 0;
   }
 
   Game.prototype.getFrames = function(){
@@ -13,11 +12,32 @@
   };
 
   Game.prototype.getTotalScore = function(){
-    var frameScores = this.getFrames().map(function(frame){
-      return frame.calculateFrameScore();
-    });
-    this.totalScore = frameScores.reduce(function(acc, val){ return acc + val},0);
-    return this.totalScore;
+    var totalScore = 0;
+    var bonus = 0;
+
+    for (var i = 0; i < 10; i++){
+      console.log(this.frames[i])
+
+      if(this.frames[i].isDone()){
+        var frameScore = this.frames[i].calculateFrameScore();
+        totalScore += frameScore
+
+        if (this.frames[i].isSpare()){
+          bonus = this.frames[i+1].getRolls()[0].getPinsKnocked();
+          totalScore += bonus;
+        }
+
+        if (this.frames[i].hasStrike()){
+          bonus = this.frames[i+1].calculateFrameScore();
+          totalScore += bonus;
+          console.log(totalScore);
+        }
+
+      }// end if
+
+    } //end for
+
+    return totalScore;
   };
 
   Game.prototype.play = function(knockedPins){
@@ -31,7 +51,3 @@
    });
    return currentFrame;
  };
-
- // Game.prototype.calculateTotalScore = function (){
- //
- // };

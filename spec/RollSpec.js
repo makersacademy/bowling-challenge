@@ -15,4 +15,21 @@ describe('Roll', function(){
 
   });
 
+  describe('setPinsKnocked', function(){
+
+    it('sets the value of pinsKnocked', function(){
+      expect(function(){roll.setPinsKnocked(4)}).not.toThrow();
+    });
+
+  });
+
+  describe('getPinsKnocked', function(){
+
+    it('gets the value of pinsKnocked', function(){
+      roll.setPinsKnocked(4);
+      expect(roll.getPinsKnocked()).toEqual(4);
+    });
+
+  });
+
 });

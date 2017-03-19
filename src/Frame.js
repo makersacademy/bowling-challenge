@@ -1,3 +1,3 @@
 var Frame = function() {
-  this.pins = 0;
+  this.pins = [];
 };

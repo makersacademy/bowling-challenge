@@ -8,17 +8,6 @@ describe("Game", function() {
     expect(game).toBeDefined();
   });
 
-  // it("starts a new frame", function () {
-  //   expect(newFrame).toBeDefined
-  // })
-
-  // it("stores the list of completed frames", function() {
-  //   var frame = new Frame;
-  //   frame.roll(1);
-  //   frame.roll(5);
-  //   expect(game.completedFrames.length).toEqual(1);
-  // });
-
   describe("score", function() {
 
     it("is defined", function() {
@@ -29,11 +18,17 @@ describe("Game", function() {
       expect(game.score).toEqual(0);
     });
 
-    it("calculates scores after every frame", function() {
-      var frame = new Frame;
+    it("remembers score after every roll", function() {
       game.roll(1);
       game.roll(5);
       expect(game.score).toEqual(6);
+    });
+
+    it("returns a current frame", function() {
+      var game = new Game;
+      game.roll(1);
+      game.roll(3);
+      expect(game.currentFrame).toEqual([1, 3]);
     });
 
   });

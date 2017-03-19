@@ -19,9 +19,9 @@ Game.prototype.play = function() {
 };
 
 Game.prototype.isGameFinished = function() {
-  if(this.frames.length >= 10) {
-    this.resetGame();
-    return "Game has finished."
+  if(this.frames.length > 10) {
+    // this.resetGame();
+    throw "Game has finished."
   } else {
     return "Next frame"
   }
@@ -40,4 +40,7 @@ Game.prototype.result = function()  {
 
 Game.prototype.resetGame = function () {
   this.frames = [];
+  score.runningScore = 0;
+  score.strike = false;
+  score.spare = false;
 };

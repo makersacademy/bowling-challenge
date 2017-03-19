@@ -21,8 +21,19 @@ $( document ).ready(function() {
     $ ("#totalScore").text(score.runningScore);
   });
 
-  // $ ("#reset").click(function() {
-  //   play.resetGame();
-  // });
+  $ ("#reset").click(function() {
+    game.resetGame();
+    $ ("#frame-1").text(" ");
+    $ ("#frame-2").text(" ");
+    $ ("#frame-3").text(" ");
+    $ ("#frame-4").text(" ");
+    $ ("#frame-5").text(" ");
+    $ ("#frame-6").text(" ");
+    $ ("#frame-7").text(" ");
+    $ ("#frame-8").text(" ");
+    $ ("#frame-9").text(" ");
+    $ ("#frame-10").text(" ");
+    $ ("#totalScore").text(score.runningScore);
+  });
 
 });

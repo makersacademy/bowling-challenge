@@ -41,7 +41,7 @@ I want have an empty array for accepting messages from frames.
 
 3. As a game,
 So that the player can see the scores calculated,
-I want to add the number of pins knocked down in each frame and keep tally.
+I want to add the number of pins knocked down in each frame and keep a current score.
 
 As a game,
 So that the scores are calculated properly,

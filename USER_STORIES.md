@@ -62,9 +62,6 @@ As a frame,
 so that the game is played properly,
 I want to know if the player gets one rolls or two rolls depending if they get a strike or not.
 
-As a frame,
-so that the game is played properly,
-I want to be able to count the score in the frame.
 
 (Edge Casing)
 As a frame

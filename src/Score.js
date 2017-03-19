@@ -13,7 +13,7 @@ Score.prototype.calculateScore = function (frameScore) {
   this._checkForStrike(frameScore)
   this.runningScore += (frameScore[0] + frameScore[1]);
   return frameScore[0] + frameScore[1];
-}
+  }
 };
 
 Score.prototype._checkForStrike = function (frameScore) {

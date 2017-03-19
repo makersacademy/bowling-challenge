@@ -32,26 +32,10 @@ describe("Score", function() {
     expect(score.runningScore).toEqual(calculate);
   })
 
-  it("does not add to running score after strike", function() {
-    spyOn(game, "play").and.returnValue([10, 0]);
-    score.calculateScore(game.play());
-    expect(score.runningScore).toEqual(0);
-  })
-
   it("keeps track of the run of strikes", function() {
     spyOn(game, "play").and.returnValue([10, 0]);
     score.calculateScore(game.play());
     expect(score.runOfStrikes).toEqual(1)
-  })
-
-  it("returns 300 points for the Perfect Game", function() {
-    spyOn(game, "play").and.returnValue([10, 0]);
-    for(var i = 0; i < 10; i ++) {
-      score.calculateScore(game.play());
-    };
-    expect(score.runOfStrikes).toEqual(10);
-
-    // expect(score.runningScore).toEqual(300);
   })
 
   it("stores strike", function() {

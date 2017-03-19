@@ -14,14 +14,17 @@ Game.prototype.play = function() {
   var frame = new Frame();
   frame.bowl();
   this.frames.push(frame.currentFrame);
-  console.log(frame.currentFrame)
   this.isGameFinished();
   return frame.currentFrame;
 };
 
 Game.prototype.isGameFinished = function() {
-  var finished = this.frames.length === 10 ? "Game has finished!" : "Next frame"
-  return finished;
+  if(this.frames.length >= 10) {
+    this.resetGame();
+    return "Game has finished."
+  } else {
+    return "Next frame"
+  }
 };
 
 Game.prototype.result = function() {
@@ -34,3 +37,7 @@ Game.prototype.result = function() {
         break;
   }
 }
+
+Game.prototype.resetGame = function () {
+  this.frames = [];
+};

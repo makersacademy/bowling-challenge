@@ -29,46 +29,18 @@ Game.prototype.calculateCurrentScoreFirstFrame = function() {
 
 Game.prototype.calculateCurrentScore = function() {
   if (this.isBonusStrikeMode === false && this.isBonusSpareMode === false) {
-    this.currentScore += this.totalScore[this._currentFrameID()].score1 + this.totalScore[this._currentFrameID()].score2
+    this._addScore1AndScore2();
   } else if (this.isBonusStrikeMode === true) {
-    this.currentScore += (this.totalScore[this._currentFrameID()].score1 + this.totalScore[this._currentFrameID()].score2) * 2
+    this._addStrikeScore();
     if (this.totalScore[this._currentFrameID()].isStrike === false) {
-      this.isBonusStrikeMode = false
+      this._setBonusStrikeModeOff();
     }
   } else if (this.isBonusSpareMode === true) {
-    this.currentScore += (this.totalScore[this._currentFrameID()].score1) * 2  + (this.totalScore[this._currentFrameID()].score2)
+    this._addSpareScore();
     if (this.totalScore[this._currentFrameID()].isSpare === false) {
-      this.isBonusSpareMode = false
+      this._setBonusSpareModeOff();
     }
   }
-};
-
-Game.prototype._isCurrentFrameASpare = function() {
-  this.totalScore[this._currentFrameID()].isSpare === true;
-};
-
-Game.prototype._isCurrentFrameAStrike = function() {
-  this.totalScore[this._currentFrameID()].isStrike === true;
-};
-
-Game.prototype._isCurrentFrameNotASpare = function() {
-  this.totalScore[this._currentFrameID()].isSpare === false;
-};
-
-Game.prototype._isCurrentFrameNotAStrike = function() {
-  this.totalScore[this._currentFrameID()].isStrike === false;
-};
-
-Game.prototype._isBonusSpareModeOn = function() {
-  this.isBonusSpareMode === true;
-};
-
-Game.prototype._isBonusStrikeModeOn = function() {
-  this.isBonusStrikeMode === true;
-};
-
-Game.prototype._isBothBonusModesOff = function() {
-  this.isBonusStrikeMode === false && this.isBonusSpareMode === false;
 };
 
 Game.prototype._setBonusSpareModeOff = function() {
@@ -87,14 +59,6 @@ Game.prototype._setBonusStrikeModeOn = function() {
   this.isBonusStrikeMode = true;
 };
 
-Game.prototype._isRollASpare = function() {
-  this.totalScore[this._currentFrameID()].isSpare === true;
-};
-
-Game.prototype._isRollAStrike = function() {
-  this.totalScore[this._currentFrameID()].isStrike === true;
-};
-
 Game.prototype._addScore1AndScore2 = function() {
   this.currentScore += this.totalScore[this._currentFrameID()].score1 + this.totalScore[this._currentFrameID()].score2;
 };
@@ -109,12 +73,4 @@ Game.prototype._addStrikeScore = function() {
 
 Game.prototype._currentFrameID = function(){
   return this.totalScore.length - 1;
-};
-
-Game.prototype._previousFrameID = function() {
-  return this.totalScore.length - 2;
-};
-
-Game.prototype._nextFrameID = function() {
-  return this.totalScore.length + 1;
 };

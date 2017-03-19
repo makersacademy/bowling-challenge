@@ -33,12 +33,12 @@ describe("Game", function() {
       expect(game.totalScore).toEqual(10)
     });
 
-    it("keeps the score from each frame", function() {
-      game.addPoints(5);
-      game.addPoints(6);
-      expect(game.scorecard).toEqual({1: 5,
-                                      2: 6})
-    });
+    // it("keeps the score from each frame", function() {
+    //   game.addPoints(5);
+    //   game.addPoints(6);
+    //   expect(game.scorecard).toEqual({1: 5,
+    //                                   2: 6})
+    // });
 
     describe("bonus points", function() {
       it("adds the points from the next two rolls if strike", function() {

@@ -15,5 +15,7 @@ Game.prototype.newFrame = function(pinsKnockedDown) {
   }
   else {
     this.currentFrame[1] = pinsKnockedDown;
+    (this.completedFrames).push(this.currentFrame);
+    this.currentFrame = [];
   };
 };

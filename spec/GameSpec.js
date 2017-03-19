@@ -28,7 +28,16 @@ describe("Game", function() {
       var game = new Game;
       game.roll(1);
       game.roll(3);
-      expect(game.currentFrame).toEqual([1, 3]);
+      expect(game.completedFrames).toEqual([[1, 3]]);
+    });
+
+    it("saves completed frames", function() {
+      var game = new Game;
+      game.roll(1);
+      game.roll(3);
+      game.roll(5);
+      game.roll(3);
+      expect(game.completedFrames).toEqual([[1, 3], [5, 3]]);
     });
 
   });

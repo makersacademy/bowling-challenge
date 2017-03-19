@@ -5,5 +5,5 @@ function Player(name) {
 }
 
 Player.prototype.bowlBall = function () {
-  return Math.floor(Math.random()*(10));
+  return Math.round(Math.random() * (10));
 };

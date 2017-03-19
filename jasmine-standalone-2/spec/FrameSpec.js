@@ -31,6 +31,13 @@ describe ("Frame", function() {
       expect(frame.roll).toEqual(2);
     });
 
+    it("sums the points", function() {
+      frame.addPoints(5);
+      frame.addPoints(2);
+      frame.sumPoints();
+      expect(frame.totalScore).toEqual(7);
+    });
+
   });
 
   describe("checks if strike or spare", function() {
@@ -39,12 +46,14 @@ describe ("Frame", function() {
       expect(frame.strike).toEqual(true);
     });
 
-    it("checks whether player got a strike", function() {
+    it("checks whether player got a spare", function() {
       frame.addPoints(5);
       frame.addPoints(5);
       expect(frame.spare).toEqual(true);
     });
   });
+
+
 
 
 });

@@ -27,30 +27,29 @@ describe("Game", function() {
 
   describe("scoring", function() {
     it("adds the score from each frame to the running total", function() {
-
-      game.addPoints(7);
-
-      expect(game.totalScore).toEqual(7)
+      firstFrame = {totalScore: 10}
+      game.saveFrame(firstFrame)
+      game.sumPoints();
+      expect(game.totalScore).toEqual(10)
     });
 
     it("keeps the score from each frame", function() {
-      console.log(game.log)
       game.addPoints(5);
-      console.log(game.log)
       game.addPoints(6);
-      console.log(game.log)
       expect(game.scorecard).toEqual({1: 5,
                                       2: 6})
     });
 
-    // describe("bonus points", function() {
-    //   it("adds the points from the next two rolls if strike", function() {
-    //     game.addPoints(10);
-    //     game.addPoints(7);
-    //     expect(game.scorecard).toEqual({1: 17,
-    //                                     2: 7})
-    //   })
-    // });
+    describe("bonus points", function() {
+      it("adds the points from the next two rolls if strike", function() {
+        firstFrame = {totalScore: 10, strike: true}
+        secondFrame = {totalScore: 7, strike: false}
+        game.saveFrame(firstFrame)
+        game.saveFrame(secondFrame)
+        game.addStrikeBonus();
+        expect(game.log[0].totalScore).toEqual(17)
+      })
+    });
   });
 
 

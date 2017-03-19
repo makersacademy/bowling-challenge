@@ -15,12 +15,23 @@ Game.prototype.addPoints = function(points) {
   this.nextFrame();
 };
 
+Game.prototype.sumPoints = function() {
+  total = 0
+  this.log.forEach(function(frame) {
+    total += frame.totalScore
+  })
+  this.totalScore = total
+}
+
 Game.prototype.addStrikeBonus = function() {
-  if (this.log[-2].strike === true) {
-    return this.log[-2].score += this.log[-1].score;
+  var lastIndex = (this.log.length - 2)
+  if (this.log[lastIndex].strike === true) {
+    return this.log[lastIndex].totalScore += this.log[lastIndex + 1].totalScore;
   }
 }
 
-Game.prototype.saveFrame = function() {
+
+
+Game.prototype.saveFrame = function(frame) {
   this.log.push(frame);
 }

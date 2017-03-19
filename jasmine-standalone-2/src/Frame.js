@@ -3,6 +3,7 @@ function Frame() {
   this.score = [];
   this.strike = false;
   this.spare = false;
+  this.totalScore = 0;
   // this.firstRollPoints = 0;
 };
 
@@ -34,4 +35,10 @@ Frame.prototype.addFirstRollPoints = function(points) {
   if (this.roll === 1) {
     return this.firstRollPoints = points;
   };
+};
+
+Frame.prototype.sumPoints = function() {
+  this.totalScore = this.score.reduce(function(a,b) {
+    return a + b;
+  })
 };

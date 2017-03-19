@@ -4,7 +4,7 @@ describe("Game", function() {
   var game = new Game()
 
   beforeEach(function() {
-    var game = new Game()
+    game = new Game()
   })
 
   it("allows players to enter roll scores to frame", function() {
@@ -14,8 +14,7 @@ describe("Game", function() {
   })
 
   it("keeps a record of all frames played", function () {
-    game.frame = [4, 5]
-    game.recordFrames(game.frame)
+    game.recordFrames([4, 5])
     game.recordFrames([10])
     expect(game.allFrames).toEqual([[4, 5], [10]])
   })

@@ -107,4 +107,16 @@ So that I can challenge myself
 I want bonuses to be calculated accurately
 ```
 
-TBC
+---
+## Current progress
+
+* Player can enter their roll score
+* No roll can be more than 10 points
+* No frame can total more than 10 points
+* Frames can be added to allFrames
+
+## To do
+
+* Frames added to allFrames once complete
+* Only 10 frames can be added
+* Tricky logic stuff for spares and strikes

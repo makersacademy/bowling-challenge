@@ -3,10 +3,6 @@ var Game = function() {
   this.completedFrames = [];
 };
 
-Game.prototype.calculateScore = function(frameTotal) {
-  this.score += frameTotal;
-};
-
 Game.prototype.roll = function(pins) {
-  this.pins += pins;
+  this.score += pins;
 };

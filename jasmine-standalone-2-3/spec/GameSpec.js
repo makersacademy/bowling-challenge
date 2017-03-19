@@ -34,4 +34,10 @@ describe("Game", function(){
     expect(game.score()).toEqual(28);
   })
 
+  it("calculates the score of three strikes in a row", function(){
+    setUpFrames([10,0],3);
+    setUpFrames([1,1],1);
+    expect(game.score()).toEqual(65);
+  })
+
 });

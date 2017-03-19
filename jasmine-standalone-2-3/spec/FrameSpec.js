@@ -12,4 +12,10 @@ describe("Frame", function(){
     expect(frame1.total(frame2)).toEqual(11);
   });
 
+  it("calculates the total for a spare", function() {
+    var frame1 = new Frame([10,0]);
+    var frame2 = new Frame([6,2]);
+    expect(frame1.total(frame2)).toEqual(18);
+  });
+
 });

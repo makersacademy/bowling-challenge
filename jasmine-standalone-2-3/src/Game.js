@@ -19,13 +19,17 @@ function Frame(rolls) {
 }
 
 Frame.prototype.total = function (next) {
-  var score = this.rolls.reduce(function(a,b){
-    return a + b
+  var score = this.rolls.reduce(function(sum,roll){
+    return sum + roll;
   },0);
+
   if (next === undefined || score !== 10) {
       return score;
+  } else if (this.rolls[0] === 10) {
+    var strikeBonus = next.rolls[0] + next.rolls[1];
+    return score + strikeBonus;
   } else {
-      var bonus = next.rolls[0];
-      return score + bonus
+      var spareBonus = next.rolls[0];
+      return score + spareBonus;
   }
 };

@@ -4,7 +4,12 @@ describe('Game', function() {
   var game;
 
   beforeEach(function() {
-    game = new Game();
+    var player = new Player("Bob");
+    game = new Game(player);
+  });
+
+  it('has a player', function(){
+    expect(game.player).toBeDefined();
   });
 
   describe('Frames one to nine', function(){

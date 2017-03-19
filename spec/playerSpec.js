@@ -8,12 +8,28 @@ describe('Player', function() {
   });
 
   it('has a name', function() {
-    expect(player.name).toBeDefined();
+    expect(player.name).toEqual("Bob");
   });
 
-  it('can bowl to return a random score between 0 and 10', function() {
-    spyOn(Math, 'random').and.returnValue(0);
-    expect(player.bowl()).toEqual(0);
+  describe('#bowlBall',function(){
+
+    it('can return 0', function() {
+      spyOn(Math, 'random').and.returnValue(0);
+      expect(player.bowlBall()).toEqual(0);
+    });
+
+    it('can return 5', function() {
+      spyOn(Math, 'random').and.returnValue(0.5);
+      console.log(player.bowlBall());
+      expect(player.bowlBall()).toEqual(5);
+    });
+
+    it('can return 10', function() {
+      spyOn(Math, 'random').and.returnValue(1);
+      console.log(player.bowlBall());
+      expect(player.bowlBall()).toEqual(10);
+    });
+
   });
 
-})
+});

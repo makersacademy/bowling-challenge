@@ -1,6 +1,5 @@
 'use strict';
 
-function Game() {
-  this.DEFAULT_TEMPERATURE = 20;
-
+function Game(player) {
+  this.player = player;
 }

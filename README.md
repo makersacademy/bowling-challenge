@@ -2,6 +2,10 @@
 ```
 
 As a game
+So that I can start a game
+I want to have at least one player
+
+As a game
 So that I follow the rules
 I want to have ten frames
 
@@ -17,6 +21,10 @@ As a game
 So that I can be fair
 I want to end a frame after the second turn unless I am at frame ten
 
+As a game
+So that the game doesn't go on forever
+I want to end a game after ten frames
+
 As a frame
 So that I can follow the rules
 I want to start with ten pins
@@ -26,7 +34,11 @@ So that I can help keep track of the score
 I want to store the number of pins knocked over by a ball
 
 As a player
-So that I can get bonuses
+So that I can play
+I want to be able to bowl a ball
+
+As a player
+So that I can get bonus points
 I want to know .........
 
 As a player
@@ -41,8 +53,6 @@ As a player
 If I scored 300 points
 I want to know I had a perfect game
 ```
-
-
 
 Bowling Challenge
 =================

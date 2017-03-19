@@ -1,18 +1,25 @@
 'use strict';
 
-function Frame(){
+function Frame(id){
+  this.id = id;
   this.totalFrame = [];
 }
 
-Frame.prototype.inputFirstBowl = function(pins) {
+Frame.prototype.inputBowls = function(first, second) {
+  var pins = first + second
   this.checkNumberOfPins(pins);
-  return this.totalFrame.push(pins);
+  this.totalFrame.push(first, second);
 };
 
-Frame.prototype.inputSecondBowl = function(pins) {
-  this.checkNumberOfPins(pins);
-  return this.totalFrame.push(pins);
-};
+// Frame.prototype.addToGame = function() {
+//   var game = new Game();
+//   game.frames.push(this.totalFrame);
+// };
+
+// Frame.prototype.inputSecondBowl = function(pins) {
+//   this.checkNumberOfPins(pins);
+//   this.totalFrame.push(pins);
+// };
 
 Frame.prototype.checkNumberOfPins = function(pins) {
   if (pins > 10) { throw new Error ("Score cannot be over 10"); }

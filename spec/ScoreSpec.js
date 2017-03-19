@@ -32,29 +32,44 @@ describe("Score", function() {
     expect(score.runningScore).toEqual(calculate);
   })
 
-  it("keeps track of the run of strikes", function() {
-    spyOn(game, "play").and.returnValue([10, 0]);
-    score.calculateScore(game.play());
-    expect(score.runOfStrikes).toEqual(1)
+  describe("stores high scoring status", function() {
+
+    it("stores strike", function() {
+      spyOn(game, "play").and.returnValue([10, 0]);
+      score.calculateScore(game.play());
+      expect(score.strike).toEqual(true);
+    })
+
+    it("stores a spare", function() {
+      spyOn(game, "play").and.returnValue([5, 5]);
+      score.calculateScore(game.play());
+      expect(score.spare).toEqual(true);
+    })
+
+    it("shows strike as false when no strike is scored", function() {
+      spyOn(game, "play").and.returnValue([5, 0]);
+      score.calculateScore(game.play());
+      expect(score.strike).toEqual(false);
+    })
+
   })
 
-  it("stores strike", function() {
-    spyOn(game, "play").and.returnValue([10, 0]);
-    score.calculateScore(game.play());
-    expect(score.strike).toEqual(true);
-  })
+  describe("gives bonus points for strikes and spares", function() {
 
-  // it("stores a spare", function() {
-  //   spyOn(game, "play").and.returnValue([5, 5]);
-  //   score.calculateScore(game.play());
-  //   expect(score.spare).toEqual(true);
-  // })
+    it("doubles the frame following a strike", function() {
+      spyOn(game, "play").and.returnValue([10, 0]);
+      score.calculateScore(game.play());
+      score.calculateScore(game.play());
+      expect(score.runningScore).toEqual(30);
+    })
 
-  it("doubles the frame following a strike", function() {
-    spyOn(game, "play").and.returnValue([10, 0]);
-    score.calculateScore(game.play());
-    score.calculateScore(game.play());
-    expect(score.runningScore).toEqual(30);
-  })
+    it("doubles the bowl following a spare", function() {
+      spyOn(game, "play").and.returnValue([5, 5]);
+      score.calculateScore(game.play());
+      score.calculateScore(game.play());
+      expect(score.runningScore).toEqual(25);
+    })
+
+  });
 
 });

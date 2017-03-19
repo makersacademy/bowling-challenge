@@ -27,7 +27,7 @@ Game.prototype.isGameFinished = function() {
   }
 };
 
-Game.prototype.result = function() {
+Game.prototype.result = function()  {
   switch(score.runningScore) {
     case 0:
         return "Gutter Game!";

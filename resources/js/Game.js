@@ -43,19 +43,19 @@ Game.prototype.calculateCurrentScore = function() {
   }
 };
 
-Game.prototype._isCurrentFrameNotASpare = function () {
+Game.prototype._isCurrentFrameNotASpare = function() {
   this.totalScore[this._currentFrameID()].isSpare === false;
 };
 
-Game.prototype._isCurrentFrameNotAStrike = function () {
+Game.prototype._isCurrentFrameNotAStrike = function() {
   this.totalScore[this._currentFrameID()].isStrike === false;
 };
 
-Game.prototype._isBonusSpareModeOn = function () {
+Game.prototype._isBonusSpareModeOn = function() {
   this.isBonusSpareMode === true;
 };
 
-Game.prototype._isBonusStrikeModeOn = function () {
+Game.prototype._isBonusStrikeModeOn = function() {
   this.isBonusStrikeMode === true;
 };
 

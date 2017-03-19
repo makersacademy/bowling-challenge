@@ -1,8 +1,9 @@
 'use strict';
 
+var PINS = 10;
+
 function Frame() {
-  this.PINS = 10;
-  this.pins = this.PINS;
+  this.pins = PINS;
   this.balls = []
   this.complete = false;
 }

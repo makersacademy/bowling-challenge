@@ -5,7 +5,6 @@ function Game(player) {
   this.frameCount = 0;
   this.frames = [];
   this.newFrame();
-  this.scoreCard = new ScoreCard();
 };
 
 Game.prototype.getCurrentFrame = function () {
@@ -27,23 +26,29 @@ Game.prototype.bowl = function() {
 
 
 Game.prototype.getScore = function () {
-  return this.scoreCard.getTotalScore(this.frames);
+  return this.getTotalScore(this.frames);
 };
 
-Game.prototype.getAllBalls = function () {
-  var ballArray = [];
+Game.prototype.wasGutterGame = function (score) {
+  return score === 0 ? true : false;
+};
+
+Game.prototype.wasPerfect = function (score) {
+  return score === 300 ? true : false;
+};
+
+Game.prototype.getTotalScore = function () {
+  var total = 0;
+  var bonusOne = 0;
+  var bonusTwo = 0;
   this.frames.forEach(function(element,index,array){
-    element.balls.forEach(function(){
-      ballArray.push(element);
-    });
+    total += Number(element.getFrameScore());
   });
-  return ballArray;
+  return total;
 };
 
 Game.prototype._checkFrame = function(){
   if(this.getCurrentFrame().isComplete){
     this.newFrame();
   };
-
-
-}
+};

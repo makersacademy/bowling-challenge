@@ -48,7 +48,7 @@ describe ("Game", function() {
     // As a game,
     // So that the scores are calculated properly,
     // If the player scores a strike, the score in the following frame is doubled.
-    it("calculates ")
+    
 
   });
 

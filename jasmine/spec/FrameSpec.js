@@ -36,7 +36,7 @@ describe("Frame", function() {
     it("assigns .isSpace to false if score1 plus score2 are not equal to 10", function() {
       expect(frame2.isSpace).toBeFalsy();
     });
-    
+
   });
 
 });

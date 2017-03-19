@@ -52,22 +52,58 @@ describe ("Game", function() {
       expect(game.currentScore).toEqual(10)
     });
 
-    // As a game,
-    // So that the scores are calculated properly,
-    // If the player scores a strike, the score in the following frame is doubled.
-    describe ("when player scores a strike ", function(){
-
+    describe ("when player rolls a strike ", function(){
+      // As a game,
+      // So that the scores are calculated properly,
+      // If the player scores a strike, the score in the following frame is doubled.
       it("sets bonusStrikeMode to true", function(){
         frame1 = new Frame(10,0)
         game.saveCurrentFrame(frame1)
         game.calculateCurrentScoreFirstFrame()
-        expect(game.bonusStrikeMode).toBe(true)
+        expect(game.isBonusStrikeMode).toBe(true)
       });
 
-      it("it doubles the following frames score", function(){
-
+      it("doubles the following frames score", function(){
+        frame1 = new Frame(10,0)
+        game.saveCurrentFrame(frame1)
+        game.calculateCurrentScoreFirstFrame()
+        frame2 = new Frame(5,4)
+        game.saveCurrentFrame(frame2)
+        game.calculateCurrentScore()
+        expect(game.currentScore).toEqual(28)
       });
 
+      it("upon recieving the bonus and player doesn't get another strike, sets bonusStrikeMode to false", function(){
+        frame1 = new Frame(10,0)
+        game.saveCurrentFrame(frame1)
+        game.calculateCurrentScoreFirstFrame()
+        frame2 = new Frame(5,4)
+        game.saveCurrentFrame(frame2)
+        game.calculateCurrentScore()
+        expect(game.isBonusStrikeMode).toBe(false)
+      });
+    });
+
+    describe ("When a player rolls a spare", function(){
+      // As a game,
+      // so that the scores are calculated properly,
+      // If a roll is a spare, the value of the next first roll is doubled.
+      it("sets bonusSpareMode to true", function(){
+        frame1 = new Frame(5,5)
+        game.saveCurrentFrame(frame1)
+        game.calculateCurrentScoreFirstFrame()
+        expect(game.isBonusSpareMode).toBe(true)
+      });
+
+      it("doubles the first value of the next roll", function(){
+        frame1 = new Frame(5,5)
+        game.saveCurrentFrame(frame1)
+        game.calculateCurrentScoreFirstFrame()
+        frame2 = new Frame(2,0)
+        game.saveCurrentFrame(frame2)
+        game.calculateCurrentScore()
+        expect(game.currentScore).toEqual(14)
+      });
     });
   });
 });

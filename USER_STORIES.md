@@ -27,10 +27,6 @@ I want to see a - if I've not hit any pins during the frame.
 
 # Game
 
-As a game,
-so that the game is played properly,
-Accept frames as input.
-
 1. As a game,
 so that the game is played properly,
 A game has a current score set as 0 initially.
@@ -43,11 +39,11 @@ I want have an empty array for accepting messages from frames.
 So that the player can see the scores calculated,
 I want to add the number of pins knocked down in each frame and keep a current score.
 
-As a game,
+4. As a game,
 So that the scores are calculated properly,
 If the player scores a strike, the score in the following frame is doubled.
 
-As a game,
+5. As a game,
 so that the scores are calculated properly,
 If a roll is a spare, the value of the next first roll is added.
 

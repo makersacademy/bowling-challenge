@@ -5,8 +5,8 @@ function Game()
   this.currentScore = 0;
   this.totalScore = []
   this.currentFrame = null
-  this.bonusStrikeMode = false
-  this.bonusSpareMode = false
+  this.isBonusStrikeMode = false
+  this.isBonusSpareMode = false
 };
 
 Game.prototype.addScoretoFrame = function(score1, score2 = 0) {
@@ -20,25 +20,25 @@ Game.prototype.saveCurrentFrame = function(frame = this.currentFrame) {
 Game.prototype.calculateCurrentScoreFirstFrame = function() {
   this.currentScore += this.totalScore[this._currentFrameID()].score1 + this.totalScore[this._currentFrameID()].score2
   if (this.totalScore[this._currentFrameID()].isStrike === true) {
-    this.bonusStrikeMode = true
+    this.isBonusStrikeMode = true
   }
   if (this.totalScore[this._currentFrameID()].isSpare === true) {
-    this.bonusSpareMode = true
+    this.isBonusSpareMode = true
   }
 };
 
 Game.prototype.calculateCurrentScore = function() {
-  if (this.bonusStrikeMode === false && this.bonusSpareMode === false) {
+  if (this.isBonusStrikeMode === false && this.isBonusSpareMode === false) {
     this.currentScore += this.totalScore[this._currentFrameID()].score1 + this.totalScore[this._currentFrameID()].score2
-  } else if (this.bonusStrikeMode === true) {
+  } else if (this.isBonusStrikeMode === true) {
     this.currentScore += (this.totalScore[this._currentFrameID()].score1 + this.totalScore[this._currentFrameID()].score2) * 2
     if (this.totalScore[this._currentFrameID()].isStrike === false) {
-      this.bonusStrikeMode = false
+      this.isBonusStrikeMode = false
     }
-  } else if (this.bonusSpareMode === true) {
+  } else if (this.isBonusSpareMode === true) {
     this.currentScore += (this.totalScore[this._currentFrameID()].score1) * 2  + (this.totalScore[this._currentFrameID()].score2)
     if (this.totalScore[this._currentFrameID()].isSpare === false) {
-      this.bonusStrikeMode = false
+      this.isBonusStrikeMode = false
     }
   }
 };

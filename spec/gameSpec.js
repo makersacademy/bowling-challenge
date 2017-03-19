@@ -19,4 +19,9 @@ describe("Game", function() {
     expect(game.checkAllScores()[0]).toEqual(6)
   });
 
+  it("records a strike as X when first roll is 10 points", function() {
+    game.calculateFrameTotal(10);
+    expect(game.checkAllScores()[0]).toEqual("X");
+  });
+
 });

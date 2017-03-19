@@ -12,8 +12,19 @@ describe('Game', function() {
     expect(game.player).toBeDefined();
   });
 
-  describe('Frames one to nine', function(){
+  it('has a .frameCount of 0 to start', function(){
+    expect(game.frameCount).toEqual(0);
+  });
 
+  it('returns the current frame', function(){
+    expect(game.getCurrentFrame()).toEqual(jasmine.any(Frame));
+  });
+
+  it('starts a new frame', function(){
+    expect(game.newFrame()).toEqual(jasmine.any(Frame));
+  });
+
+  describe('Frames one to nine', function(){
     xit('ends the current frame if the player got a strike on the last ball', function() {
       expect(game.endFrame()).toEqual(true);
     });

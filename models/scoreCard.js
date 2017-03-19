@@ -1,6 +1,6 @@
 'use strict';
 
-function ScoreCard(name) {
+function ScoreCard() {
 }
 
 ScoreCard.prototype.wasGutterGame = function (score) {
@@ -9,4 +9,12 @@ ScoreCard.prototype.wasGutterGame = function (score) {
 
 ScoreCard.prototype.wasPerfect = function (score) {
   return score === 300 ? true : false;
+};
+
+ScoreCard.prototype.getTotalScore = function (frames) {
+  var total = 0;
+  frames.forEach(function(element,index,array){
+    total += Number(element);
+  });
+  return total;
 };

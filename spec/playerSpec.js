@@ -11,23 +11,21 @@ describe('Player', function() {
     expect(player.name).toEqual("Bob");
   });
 
-  describe('#bowlBall',function(){
+  describe('#throwBall',function(){
 
     it('can return 0', function() {
       spyOn(Math, 'random').and.returnValue(0);
-      expect(player.bowlBall()).toEqual(0);
+      expect(player.throwBall()).toEqual(0);
     });
 
     it('can return 5', function() {
       spyOn(Math, 'random').and.returnValue(0.5);
-      console.log(player.bowlBall());
-      expect(player.bowlBall()).toEqual(5);
+      expect(player.throwBall()).toEqual(5);
     });
 
     it('can return 10', function() {
       spyOn(Math, 'random').and.returnValue(1);
-      console.log(player.bowlBall());
-      expect(player.bowlBall()).toEqual(10);
+      expect(player.throwBall()).toEqual(10);
     });
 
   });

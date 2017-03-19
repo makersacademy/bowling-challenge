@@ -19,12 +19,25 @@ describe('Frame', function() {
 
   it('#completeFrame completes frame', function(){
     expect(frame.complete).toBe(false);
-    frame.completeFrame();
+    frame._completeFrame();
     expect(frame.complete).toBe(true);
   });
 
-  xit('returns the score of the frame', function(){
+  it('returns the score of the frame', function(){
+    frame.addBall(5);
+    frame.addBall(1);
+    expect(frame.getFrameScore()).toEqual(6);
+  });
 
+  it('returns the score of the frame with bonuses', function(){
+    frame.addBall(10);
+    expect(frame.getFrameScore(1,2)).toEqual(13);
+  });
+
+  it('returns the correct score for the frame', function(){
+    frame.addBall(5);
+    frame.addBall(1);
+    expect(frame.getFrameScore(1,2)).toEqual(6);
   });
 
 })

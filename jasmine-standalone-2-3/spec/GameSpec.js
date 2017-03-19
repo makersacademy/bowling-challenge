@@ -22,9 +22,16 @@ describe("Game", function(){
     expect(game.score()).toEqual(20);
   })
 
-  it("can calculate score of a game with a spare", function(){
+  it("can calculate the score of a game with a spare", function(){
     setUpFrames([5,5],1);
     setUpFrames([6,1],1);
     expect(game.score()).toEqual(23);
   })
+
+  it("can calculate the score of a game with a strike", function(){
+    setUpFrames([10,0],1);
+    setUpFrames([6,3],1);
+    expect(game.score()).toEqual(28);
+  })
+
 });

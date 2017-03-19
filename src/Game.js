@@ -6,6 +6,7 @@ function Game() {
   this.totalScores = [];
   this.latestScore = [];
   this.bonusStrike = false;
+  this.bonusStrikeConsec = false;
   this.bonusSpare = false;
   this.bonusScoreAdded;
   this.bonusScores = [];
@@ -14,10 +15,13 @@ function Game() {
 Game.prototype.rollBall = function(score) {
   this.latestRoll = score;
   if (this.latestRoll === 10 && this.currentTurn === 0) {
-    this.bonusStrike = true
-    this.bonusScoreAdded = 10
-    this.strikeRoll();
-  }
+    if (this.bonusStrike === true) {
+      this.bonusStrikeConsec = true
+    }
+      this.bonusStrike = true
+      this.bonusScoreAdded = 10
+      this.bonusRoll();
+    }
   else if (this.latestRoll < 10 && this.currentTurn === 0) {
     if (this.bonusSpare === true) {
       this.bonusSparesRoll();
@@ -50,9 +54,14 @@ Game.prototype.bonusSparesRoll = function () {
 Game.prototype.bonusRoll = function () {
 
   if (this.latestRoll === 10 && this.currentTurn === 0) {
-    this.bonusScoreAdded = 10
-    this.currentFrame++;
-    this.currentTurn = 0;
+    if (this.bonusStrikeConsec === true) {
+      this.totalScores.push([20]);
+      this.bonusStrikeConsec = false
+    }
+    else {
+      this.bonusScoreAdded = 10
+      this.currentFrame++;
+    }
   }
   else if (this.latestRoll < 10 && this.currentTurn === 0) {
     this.standingPins = this.standingPins - this.latestRoll;
@@ -89,17 +98,6 @@ Game.prototype.secondRoll = function() {
     this.currentTurn = 0;
     this.standingPins = 10;
     this._addBothRollsToScore();
-  }
-};
-
-Game.prototype.strikeRoll = function () {
-  if (this.bonusStrike === true) {
-    this.bonusRoll();
-  }
-  else {
-    this.currentFrame++;
-    this.currentTurn = 0;
-    this.totalScores.push(this.latestRoll)
   }
 };
 

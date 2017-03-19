@@ -5,20 +5,20 @@ describe('Game', function(){
     game = new Game();
   });
 
-  describe('When starting a new game', function() {
+  describe('Start a new game', function() {
     it('The current frame is set to 1', function (){
       expect(game.currentFrame).toEqual(1)
     });
   });
 
-  describe('When taking a turn and scoring less than 10', function(){
+  describe('Take turn and score less than 10', function(){
     it('The player will get another turn for the frame, with the remaining pins standing', function() {
       game.rollBall(6);
       expect(game.standingPins).toEqual(10 - game.latestRoll)
     });
   });
 
-  describe('After a player completes their turn', function(){
+  describe('After completing turn', function(){
     it('The current frame will increment up by 1', function() {
       game.rollBall(10);
       expect(game.currentFrame).toEqual(2)
@@ -31,7 +31,7 @@ describe('Game', function(){
     });
   });
 
-  describe('When I roll the ball', function() {
+  describe('When rolling the ball', function() {
     it('up to 10 pins can be knocked down', function (){
       score = Math.floor(Math.random() * 11);
       game.rollBall(score);
@@ -39,16 +39,25 @@ describe('Game', function(){
     });
   });
 
-  describe('If I roll a strike', function() {
+  describe('Roll a strike', function() {
     it('The next two rolls will be added to previous score as bonus', function() {
       game.rollBall(10);
       game.rollBall(5);
       game.rollBall(4);
       expect(game.totalScores).toEqual([[19], [5, 4]])
     });
+
+    it('Check to see if this works over multiple frames', function() {
+      game.rollBall(10);
+      game.rollBall(10);
+      game.rollBall(10);
+      game.rollBall(4);
+      game.rollBall(3);
+      expect(game.totalScores).toEqual([[20], [20], [17], [4, 3]])
+    });
   });
 
-  describe('If the player knocks down 10 pins from their two rolls', function() {
+  describe('Knock down 10 pins from the two rolls', function() {
     it('The next roll will be added to previous score as bonus', function() {
       game.rollBall(4);
       game.rollBall(6);

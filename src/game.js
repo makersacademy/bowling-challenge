@@ -4,8 +4,13 @@ function Game() {
 
 Game.prototype.checkAllScores = function() {
   return this._frames;
-}
+};
 
-Game.prototype.roll = function(numberOfBowledPins) {
+Game.prototype.addFrameScore = function(numberOfBowledPins) {
   this._frames.push(numberOfBowledPins);
+};
+
+Game.prototype.calculateFrameTotal = function(firstBowl, secondBowl) {
+  var total = firstBowl + secondBowl;
+  this.addFrameScore(total);
 }

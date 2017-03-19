@@ -6,7 +6,11 @@ function Game () {
 };
 
 Game.prototype.nextFrame = function() {
-  this.frame ++;
+  if (this.isFinished()) {
+    return
+  } else {
+    this.frame ++;
+  };
 };
 
 // Game.prototype.addPoints = function(points) {
@@ -51,7 +55,10 @@ Game.prototype._previousFrameIsSpare = function() {
   return this.log[index].spare === true
 };
 
-
 Game.prototype.saveFrame = function(frame) {
   this.log.push(frame);
+};
+
+Game.prototype.isFinished = function() {
+  return this.frame === 10;
 };

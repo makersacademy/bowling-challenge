@@ -22,7 +22,12 @@ describe("Game", function() {
       frame = {}
       game.saveFrame(frame);
       expect(game.log).toEqual([frame])
-    })
+    });
+
+    it("ends the game after the 10th frame if no bonus", function() {
+      game.frame = 10;
+      expect(game.isFinished()).toEqual(true);
+    });
   });
 
   describe("scoring", function() {
@@ -58,9 +63,10 @@ describe("Game", function() {
         game.addSpareBonus();
         expect(game.log[0].totalScore).toEqual(14);
       });
-
     });
   });
+
+
 
 
 

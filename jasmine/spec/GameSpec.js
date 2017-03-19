@@ -104,6 +104,16 @@ describe ("Game", function() {
         game.calculateCurrentScore()
         expect(game.currentScore).toEqual(14)
       });
+
+      it("upon recieving the bonus and player doesn't get another spare, sets bonusSpareMode to false", function(){
+        frame1 = new Frame(5,5)
+        game.saveCurrentFrame(frame1)
+        game.calculateCurrentScoreFirstFrame()
+        frame2 = new Frame(2,0)
+        game.saveCurrentFrame(frame2)
+        game.calculateCurrentScore()
+        expect(game.isBonusSpareMode).toBe(false)
+      });
     });
   });
 });

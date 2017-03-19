@@ -18,7 +18,7 @@ Game.prototype.saveCurrentFrame = function(frame = this.currentFrame) {
 };
 
 Game.prototype.calculateCurrentScoreFirstFrame = function() {
-  this._addScore1AndScore2()
+  this.currentScore += this.totalScore[this._currentFrameID()].score1 + this.totalScore[this._currentFrameID()].score2;
   if (this.totalScore[this._currentFrameID()].isStrike === true) {
     this.isBonusStrikeMode = true
   }
@@ -38,7 +38,7 @@ Game.prototype.calculateCurrentScore = function() {
   } else if (this.isBonusSpareMode === true) {
     this.currentScore += (this.totalScore[this._currentFrameID()].score1) * 2  + (this.totalScore[this._currentFrameID()].score2)
     if (this.totalScore[this._currentFrameID()].isSpare === false) {
-      this.isBonusStrikeMode = false
+      this.isBonusSpareMode = false
     }
   }
 };

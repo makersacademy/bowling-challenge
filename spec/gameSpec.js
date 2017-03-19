@@ -35,6 +35,15 @@ describe("Game", function() {
     });
   });
 
+  describe("End of game", function() {
+    it("throws an error when trying to add 11th frame", function() {
+      for (var i = 1; i <= 10; i++) {
+        game.calculateFrameTotal(2, 6);
+      }
+      expect(function() {game.calculateFrameTotal(4, 5);}).toThrowError("Game over!");
+    });
+  });
+
 
 
 });

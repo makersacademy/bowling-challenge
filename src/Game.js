@@ -13,7 +13,6 @@ function Game() {
 
 Game.prototype.rollBall = function(score) {
   this.latestRoll = score;
-  // this.currentScore = Math.floor(Math.random() * 11);
   if (this.latestRoll === 10 && this.currentTurn === 0) {
     this.bonusStrike = true
     this.bonusScoreAdded = 10
@@ -38,18 +37,15 @@ Game.prototype.rollBall = function(score) {
   }
 };
 
-
-
-
 Game.prototype.bonusSparesRoll = function () {
   this.bonusScoreAdded = 10 + this.latestRoll
   this.totalScores.pop();
   this.totalScores.push([this.bonusScoreAdded])
-  this.totalScores.push(this.latestRoll)
   this.bonusSpare = false;
+  this.standingPins = this.standingPins - this.latestRoll;
+  this.currentTurn++;
+  this.latestScore.push(this.latestRoll)
 };
-
-
 
 Game.prototype.bonusRoll = function () {
 
@@ -72,11 +68,6 @@ Game.prototype.bonusRoll = function () {
     this._addBothRollsToScore();
   }
 };
-
-
-
-
-
 
 Game.prototype.firstRoll = function () {
   if (this.bonusStrike === true) {

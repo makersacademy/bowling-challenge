@@ -53,8 +53,18 @@ describe('Game', function(){
       game.rollBall(4);
       game.rollBall(6);
       game.rollBall(4);
-      // game.rollBall(3);
-      expect(game.totalScores).toEqual([[14], 4])
+      game.rollBall(3);
+      expect(game.totalScores).toEqual([[14], [4, 3]])
+    });
+
+    it('Check to see if this works over multiple frames', function() {
+      game.rollBall(4);
+      game.rollBall(6);
+      game.rollBall(4);
+      game.rollBall(6);
+      game.rollBall(4);
+      game.rollBall(3);
+      expect(game.totalScores).toEqual([[14],[14], [4, 3]])
     });
   });
 });

@@ -1,3 +1,48 @@
+##User Stories
+```
+
+As a game
+So that I follow the rules
+I want to have ten frames
+
+As a game
+So that I can continue
+I want to start a new frame
+
+As a game
+So that I can be fair
+I want to end the frame if the player gets a strike unless I am at frame ten
+
+As a game
+So that I can be fair
+I want to end a frame after the second turn unless I am at frame ten
+
+As a frame
+So that I can follow the rules
+I want to start with ten pins
+
+As a frame
+So that I can help keep track of the score
+I want to store the number of pins knocked over by a ball
+
+As a player
+So that I can get bonuses
+I want to know .........
+
+As a player
+So I can be proud
+I want to know my score
+
+As a player
+If i scored 0
+I want to know I had a gutter game
+
+As a player
+If I scored 300 points
+I want to know I had a perfect game
+```
+
+
 
 Bowling Challenge
 =================
@@ -9,14 +54,14 @@ Bowling Challenge
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday week
 
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Forking this repo
 
@@ -62,7 +107,7 @@ Code Review
 In code review we'll be hoping to see:
 
 * All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 

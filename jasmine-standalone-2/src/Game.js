@@ -30,6 +30,12 @@ Game.prototype.addStrikeBonus = function() {
   }
 }
 
+Game.prototype.addSpareBonus = function() {
+  var lastIndex = (this.log.length - 2)
+  if (this.log[lastIndex].spare === true) {
+    return this.log[lastIndex].totalScore += this.log[lastIndex + 1].score[0]
+  }
+}
 
 
 Game.prototype.saveFrame = function(frame) {

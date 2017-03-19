@@ -48,7 +48,17 @@ describe("Game", function() {
         game.saveFrame(secondFrame)
         game.addStrikeBonus();
         expect(game.log[0].totalScore).toEqual(17)
-      })
+      });
+
+      it("adds the points from the following roll if spare", function() {
+        firstFrame = {score: [5, 5], totalScore: 10, spare: true};
+        secondFrame = {score: [4, 5], totalScore: 9, spare: false};
+        game.saveFrame(firstFrame);
+        game.saveFrame(secondFrame);
+        game.addSpareBonus();
+        expect(game.log[0].totalScore).toEqual(14);
+      });
+
     });
   });
 

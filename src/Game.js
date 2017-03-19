@@ -1,12 +1,10 @@
 var Game = function() {
-  this.score = 0;
   this.currentFrame = [];
   this.completedFrames = [];
 };
 
 Game.prototype.roll = function(pinsKnockedDown) {
   this.newFrame(pinsKnockedDown);
-  this.score += pinsKnockedDown;
 };
 
 Game.prototype.newFrame = function(pinsKnockedDown) {
@@ -18,4 +16,15 @@ Game.prototype.newFrame = function(pinsKnockedDown) {
     (this.completedFrames).push(this.currentFrame);
     this.currentFrame = [];
   };
+};
+
+Game.prototype.score = function() {
+  var total = 0;
+  for (var i = 0; i < this.completedFrames.length; i++) {
+    var frame = this.completedFrames[i];
+    for (var j = 0; j < frame.length; j++) {
+      total += frame[j];
+    }
+  }
+  return total;
 };

@@ -27,3 +27,11 @@ Game.prototype._isStrike = function(firstBowl, secondBowl) {
     return false;
   }
 };
+
+Game.prototype._isSpare = function(firstBowl, secondBowl) {
+  if(firstBowl + secondBowl === 10) {
+    return true;
+  } else {
+    return false;
+  }
+};

@@ -3,11 +3,11 @@ describe("Feature", function() {
   var game;
   game = new Game();
 
-  it("adds 2 frames' scores (no strikes or spares)", function() {
+  it("adds 3 frames' scores", function() {
     game.calculateFrameTotal(3, 5);
-    game.checkAllScores();
-    game.calculateFrameTotal(10, 0);
-    expect(game.checkAllScores()).toEqual([8, 10]);
-  })
+    game.calculateFrameTotal(10); // strike
+    game.calculateFrameTotal(2, 8); // spare
+    expect(game.checkAllScores()).toEqual([8, "X", 10]);
+  });
 
 });

@@ -5,23 +5,36 @@ describe("Game", function() {
     game = new Game();
   });
 
-  it("starts with an empty array of frames by default", function() {
-    expect(game.checkAllScores()).toEqual([]);
+  describe("Adding frames", function() {
+    it("starts with an empty array of frames by default", function() {
+      expect(game.checkAllScores()).toEqual([]);
+    });
+
+    it("rolling adds a frame to frames array", function() {
+      game.calculateFrameTotal(4, 5);
+      expect(game.checkAllScores().length).toEqual(1);
+    });
+
+    it("adds the scores for 1 frame", function() {
+      game.calculateFrameTotal(3, 3);
+      expect(game.checkAllScores()[0]).toEqual(6)
+    });
   });
 
-  it("rolling adds a frame to frames array", function() {
-    game.calculateFrameTotal(4, 5);
-    expect(game.checkAllScores().length).toEqual(1);
+  describe("Recording strikes and spares", function() {
+    it("records a strike as X when first roll is 10 points", function() {
+      game.calculateFrameTotal(10);
+      expect(game.checkAllScores()[0]).toEqual("X");
+      expect(game._isStrike(10)).toEqual(true);
+    });
+
+    it("records a spare as a total of 10 when both rolls equal 10", function() {
+      game.calculateFrameTotal(1, 9);
+      expect(game.checkAllScores()[0]).toEqual(10);
+      expect(game._isSpare(1, 9)).toEqual(true);
+    });
   });
 
-  it("adds the scores for 1 frame", function() {
-    game.calculateFrameTotal(3, 3);
-    expect(game.checkAllScores()[0]).toEqual(6)
-  });
 
-  it("records a strike as X when first roll is 10 points", function() {
-    game.calculateFrameTotal(10);
-    expect(game.checkAllScores()[0]).toEqual("X");
-  });
 
 });

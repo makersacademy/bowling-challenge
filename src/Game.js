@@ -16,8 +16,8 @@
     var bonus = 0;
 
     for (var i = 0; i < 10; i++){
-      console.log(i);
-      console.log(this.frames[i]);
+      //console.log(i);
+      //console.log(this.frames[i]);
       var thisFrame = this.frames[i];
       var nextFrame = this.frames[i+1] || thisFrame;
       var nextToNextFrame = this.frames[i+2] || nextFrame;
@@ -28,22 +28,8 @@
 
         if (thisFrame.hasStrike()) {
           bonus = this._getStrikeBonus(nextFrame, nextToNextFrame);
-          /*
-          if (nextFrame.hasStrike()) {
-            if(nextToNextFrame.hasStrike()) {
-              bonus = 20;
-            } else {
-              bonus = nextFrame.calculateFrameScore() +
-                      nextToNextFrame.getRolls()[0];
-            }
-          } else {
-            bonus = (nextFrame === thisFrame) ?
-                    thisFrame.getRolls()[2].getPinsKnocked() :
-                    nextFrame.calculateFrameScore();
-          }
-          */
           totalScore += bonus;
-          console.log(bonus);
+          //console.log(bonus);
         }
 
         if (thisFrame.isSpare() && !(thisFrame.hasStrike())) {

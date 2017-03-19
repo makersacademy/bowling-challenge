@@ -47,4 +47,43 @@ describe('Bowling Challenge', function(){
     expect(game.getTotalScore()).toEqual(300);
   });
 
+  it('calculates score for a gutter game', function(){
+    game.play(0); // 1
+    game.play(0); // 2
+    game.play(0); // 3
+    game.play(0); // 4
+    game.play(0); // 5
+    game.play(0); // 6
+    game.play(0); // 7
+    game.play(0); // 8
+    game.play(0); // 9
+    game.play(0); // 10
+    expect(game.getTotalScore()).toEqual(0);
+  });
+
+  it('calculates score for a game with no strike or spare', function(){
+    game.play(4); // 1
+    game.play(3); // 1
+    game.play(2); // 2
+    game.play(1); // 2
+    game.play(5); // 3
+    game.play(1); // 3
+    game.play(6); // 4
+    game.play(3); // 4
+    game.play(2); // 5
+    game.play(3); // 5
+    game.play(4); // 6
+    game.play(3); // 6
+    game.play(2); // 7
+    game.play(1); // 7
+    game.play(5); // 8
+    game.play(1); // 8
+    game.play(6); // 9
+    game.play(3); // 9
+    expect(game.getTotalScore()).toEqual(55);
+    game.play(2); // 10
+    game.play(3); // 10
+    expect(game.getTotalScore()).toEqual(60);
+  });
+
 });

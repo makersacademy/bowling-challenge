@@ -9,8 +9,18 @@ function Frame (numberOfRolls = 2){
 }
 
 Frame.prototype.isDone = function() {
-  return (this.getRolls().length == 2 && this.getRolls()[0].isStrike()) ||
-          this.getRolls().every(roll => (roll.isSet() === true));
+  if (this.getRolls().length === 3){
+    if ( !this.hasStrike() &&
+            this.getRolls()[0].isSet() &&
+            this.getRolls()[1].isSet() &&
+            !(this.calculateFrameScore() === 10)) {
+          return true;
+      }
+  }
+  return (
+          (this.getRolls().length == 2 && this.getRolls()[0].isStrike()) ||
+          (this.getRolls().every(roll => (roll.isSet() === true)))
+        );
 };
 
 Frame.prototype.isSpare = function() {
@@ -36,7 +46,7 @@ Frame.prototype.calculateFrameScore = function() {
   if(this.hasStrike()) {
     return 10;
   }
-  
+
   var frameScore = 0
   for (var index = 0; index < 2; index++) {
     frameScore += this.getRolls()[index].getPinsKnocked()

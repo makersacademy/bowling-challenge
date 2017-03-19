@@ -41,5 +41,5 @@ describe("displays game result", function() {
     expect(game.result()).toEqual("Gutter Game!")
   });
 
-  })
+  });
 })

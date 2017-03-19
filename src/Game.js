@@ -14,7 +14,9 @@ Game.prototype.play = function() {
   var frame = new Frame();
   frame.bowl();
   this.frames.push(frame.currentFrame);
+  console.log(frame.currentFrame)
   this.isGameFinished();
+  return frame.currentFrame;
 };
 
 Game.prototype.isGameFinished = function() {
@@ -26,6 +28,9 @@ Game.prototype.result = function() {
   switch(score.runningScore) {
     case 0:
         return "Gutter Game!";
+        break;
+    case 300:
+        return "Perfect Game!";
         break;
   }
 }

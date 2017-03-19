@@ -3,7 +3,6 @@ describe('Bowling Challenge', function(){
 
   beforeEach(function(){
      game = new Game();
-     console.log(game)
   });
 
   it('calculates the total score for a game with spares and spikes', function () {
@@ -32,21 +31,20 @@ describe('Bowling Challenge', function(){
       expect(function(){game.play(5)}).toThrow();
   });
 
-  // it('calculates score for a perfect game', function(){
-  //   console.log(game);
-  //   game.play(10); // 1
-  //   game.play(10); // 2
-  //   game.play(10); // 3
-  //   game.play(10); // 4
-  //   game.play(10); // 5
-  //   game.play(10); // 6
-  //   game.play(10); // 7
-  //   game.play(10); // 8
-  //   game.play(10); // 9
-  //   game.play(10); // 10
-  //   // game.play(10); // bonus
-  //   // game.play(10); // bonus
-  //   expect(game.getTotalScore()).toEqual(300);
-  // });
+  it('calculates score for a perfect game', function(){
+    game.play(10); // 1
+    game.play(10); // 2
+    game.play(10); // 3
+    game.play(10); // 4
+    game.play(10); // 5
+    game.play(10); // 6
+    game.play(10); // 7
+    game.play(10); // 8
+    game.play(10); // 9
+    game.play(10); // 10
+    game.play(10); // bonus
+    game.play(10); // bonus
+    expect(game.getTotalScore()).toEqual(300);
+  });
 
 });

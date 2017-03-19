@@ -9,36 +9,41 @@ function Frame (numberOfRolls = 2){
 }
 
 Frame.prototype.isDone = function() {
-  return this.getRolls()[0].isStrike() || this.getRolls().every(roll => (roll.isSet() === true));
+  return (this.getRolls().length == 2 && this.getRolls()[0].isStrike()) ||
+          this.getRolls().every(roll => (roll.isSet() === true));
 };
 
 Frame.prototype.isSpare = function() {
   return (this.calculateFrameScore() === 10);
 };
 
-Frame.prototype.getRolls = function(){
+Frame.prototype.getRolls = function() {
   return this.rolls;
 };
 
-Frame.prototype.play = function(pinsKnocked){
+Frame.prototype.play = function(pinsKnocked) {
   this._currentRoll().setPinsKnocked(pinsKnocked);
 };
 
-Frame.prototype._currentRoll = function(){
+Frame.prototype._currentRoll = function() {
   var currentRoll = this.getRolls().find(function(roll){
     return roll.isSet() === false;
   });
   return currentRoll;
 };
 
-Frame.prototype.calculateFrameScore = function(){
+Frame.prototype.calculateFrameScore = function() {
+  if(this.hasStrike()) {
+    return 10;
+  }
+  
   var frameScore = 0
-  for (var y = 0; y < 2; y++){
-    frameScore += this.getRolls()[y].getPinsKnocked()
+  for (var index = 0; index < 2; index++) {
+    frameScore += this.getRolls()[index].getPinsKnocked()
   }
   return frameScore
 };
 
 Frame.prototype.hasStrike = function(){
-  return this.getRolls().some(roll => roll.isStrike());
+  return this.getRolls()[0].isStrike();
 };

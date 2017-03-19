@@ -68,6 +68,12 @@ describe('Frame', function(){
       expect(frame.isSpare()).toBe(true);
     });
 
+    it('returns true when frameScore is 10', function () {
+      frame.play(0);
+      frame.play(10);
+      expect(frame.isSpare()).toBe(true);
+    });
+
     it('returns false when frameScore is less than 10', function(){
       frame.play(4);
       frame.play(1);
@@ -77,12 +83,6 @@ describe('Frame', function(){
 
   describe('#hasStrike', function(){
     it('returns true when there is a strike in first roll', function () {
-      frame.play(10);
-      expect(frame.hasStrike()).toBe(true);
-    });
-
-    it('returns true when there is a strike in the second roll', function () {
-      frame.play(0);
       frame.play(10);
       expect(frame.hasStrike()).toBe(true);
     });

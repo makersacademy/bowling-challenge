@@ -22,4 +22,17 @@ describe('LastFrame', function () {
 
   });
 
+  // describe('#rollsLeft', function () {
+  //   it('two rolls left if first roll is a strike', function () {
+  //     lastFrame.play(10);
+  //     expect(lastFrame.rollsLeft()).toEqual(2);
+  //   });
+  //
+  //   it('one roll left if first two rolls resulted in a spare', function () {
+  //     lastFrame.play(4);
+  //     lastFrame.play(6);
+  //     expect(lastFrame.rollsLeft()).toEqual(1);
+  //   });
+  // });
+
 });

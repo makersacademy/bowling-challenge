@@ -40,11 +40,21 @@ describe('Game', function(){
   });
 
   describe('If I roll a strike', function() {
-    it('The next two rolls will be added to score as bonus', function() {
+    it('The next two rolls will be added to previous score as bonus', function() {
       game.rollBall(10);
       game.rollBall(5);
       game.rollBall(4);
       expect(game.totalScores).toEqual([[19], [5, 4]])
+    });
+  });
+
+  describe('If the player knocks down 10 pins from their two rolls', function() {
+    it('The next roll will be added to previous score as bonus', function() {
+      game.rollBall(4);
+      game.rollBall(6);
+      game.rollBall(4);
+      // game.rollBall(3);
+      expect(game.totalScores).toEqual([[14], 4])
     });
   });
 });

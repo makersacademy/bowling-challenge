@@ -1,19 +1,33 @@
 describe('Bowling Game', function() {
 
+  var game;
+
+  beforeEach(function() {
+    game = new Game();
+  });
+
   it('can roll a gutter game', function() {
-    var game = new Game();
-    for (var i = 0; i < 20; i++) {
-      game.roll(0);
-    }
+    rollMany(0, 20);
     expect(game.score()).toBe(0);
   });
 
   it('can roll all ones', function() {
-    var game = new Game();\
-    for (var i = 0; i < 20; i++) {
-      game.roll(1);
-    };
+    rollMany(1, 20);
     expect(game.score()).toBe(20);
   });
+
+  it('can roll a spare', function() {
+    game.roll(5);
+    game.roll(5);
+    game.roll(3);
+    rollMany(0, 17);
+    expect(game.score()).toBe(16)
+  })
+
+  var rollMany = function(pins, rolls) {
+    for (var i = 0; i < rolls; i++) {
+      game.roll(pins);
+    }
+  };
 
 });

@@ -22,19 +22,19 @@ describe("Frame", function() {
     });
 
     it("assigns .isStrike to true if score1 equals 10", function() {
-      expect(frame1.isStrike).toBeTruthy();
+      expect(frame1.isStrike).toBe(true);
     });
 
     it("assigns .isStrike to false if score1 is not equal to 10", function() {
-      expect(frame2.isStrike).toBeFalsy();
+      expect(frame2.isStrike).toBe(false);
     });
 
     it("assigns .isSpace to true if score1 and score2 add to make 10", function() {
-      expect(frame2.isSpace).toBeFalsy();
+      expect(frame2.isSpare).toBe(true);
     });
 
     it("assigns .isSpace to false if score1 plus score2 are not equal to 10", function() {
-      expect(frame2.isSpace).toBeFalsy();
+      expect(frame3.isSpare).toBe(false);
     });
 
   });

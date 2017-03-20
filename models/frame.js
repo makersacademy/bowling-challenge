@@ -10,10 +10,8 @@ function Frame() {
 
 Frame.prototype.addBall = function (score) {
   this.balls.push(score);
-  this.pins -= score;
-  if(this.balls.length > 1 || this.balls[1] == 10){
-    this._completeFrame();
-  }
+  this._removePins(score);
+  this._checkComplete();
 };
 
 Frame.prototype.isComplete = function () {
@@ -26,6 +24,16 @@ Frame.prototype.getFrameScore = function (nextBallOne = 0, nextBallTwo = 0) {
   }, 0);
   this.balls[0] === 10 ? score = score + nextBallOne + nextBallTwo : score = score;
   return score;
+};
+
+Frame.prototype._removePins = function (pins) {
+  return this.pins -= pins;
+};
+
+Frame.prototype._checkComplete = function () {
+  if(this.balls.length > 1 || this.balls[0] == 10){
+    this._completeFrame();
+  }
 };
 
 Frame.prototype._completeFrame = function () {

@@ -8,30 +8,40 @@ describe('Game', function() {
     game = new Game(player);
   });
 
-  it('has a player', function(){
-    expect(game.player).toBeDefined();
-  });
+  describe('~constructor', function() {
 
-  it('has a .frameCount of 0 to start', function(){
-    expect(game.frameCount).toEqual(0);
-  });
+    it('has a #player', function(){
+      expect(game.player).toBeDefined();
+    });
 
-  it('returns the current frame', function(){
-    expect(game.getCurrentFrame()).toEqual(jasmine.any(Frame));
-  });
+    it('has a #frameCount of 0 to start', function(){
+      expect(game.frameCount).toEqual(0);
+    });
 
-  it('starts a new frame', function(){
-    expect(game.newFrame()).toEqual(jasmine.any(Frame));
-  });
-
-  describe('Frames one to nine', function(){
-    xit('ends the current frame if the player got a strike on the last ball', function() {
-      expect(game.endFrame()).toEqual(true);
+    it('has a array of #frames', function(){
+      expect(game.frames).toEqual([]);
     });
 
   });
 
-  describe('#wasPerfect',function(){
+  describe('.getCurrentFrame',function(){
+
+    xit('returns the current frame', function(){
+      expect(game.getCurrentFrame()).toEqual(jasmine.any(Frame));
+    });
+
+  });
+
+  describe('.newFrame',function(){
+
+    xit('.newFrame starts a new frame', function(){
+      game.newFrame();
+      expect(game.frames.count).toEqual(2);
+    });
+
+  });
+
+  describe('.wasPerfect',function(){
 
     it('returns true if the player scored 300', function(){
       expect(game.wasPerfect(300)).toBe(true);
@@ -43,7 +53,7 @@ describe('Game', function() {
 
   });
 
-  describe('#wasGutterGame',function(){
+  describe('.wasGutterGame',function(){
 
     it('returns true if the player scored 0', function(){
       expect(game.wasGutterGame(0)).toBe(true);

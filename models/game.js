@@ -14,19 +14,14 @@ Game.prototype.getCurrentFrame = function () {
 Game.prototype.newFrame = function () {
   if(typeof this.getCurrentFrame() !== 'undefined'){
     this.frames.push(this.getCurrentFrame());
+    this.currentFrame = new Frame();
   }
-  return this.currentFrame = new Frame();
 };
 
 Game.prototype.bowl = function() {
   this._checkFrame();
   var score = this.player.throwBall();
   this.getCurrentFrame().addBall(score);
-};
-
-
-Game.prototype.getScore = function () {
-  return this.getTotalScore(this.frames);
 };
 
 Game.prototype.wasGutterGame = function (score) {
@@ -37,8 +32,8 @@ Game.prototype.wasPerfect = function (score) {
   return score === 300 ? true : false;
 };
 
-Game.prototype.getTotalScore = function () {
-  var total = 0;
+Game.prototype.getScore = function () {
+  var total, bonus = 0;
   var bonusOne = 0;
   var bonusTwo = 0;
   this.frames.forEach(function(element,index,array){

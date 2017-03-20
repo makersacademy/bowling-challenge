@@ -7,7 +7,7 @@ describe("Frame", function() {
     frame = new Frame();
   });
 
-  describe("calculates scores", function() {
+  describe("Calculates scores", function() {
     it("can put the score after a roll into the roll array", function() {
       frame.roll(7);
       expect(frame._rolls).toEqual([7]);
@@ -65,5 +65,36 @@ describe("Frame", function() {
       expect(frame.isComplete()).toBe(false);
     });
   });
+
+  describe("Adds bonus to score", function() {
+
+    it("calculates bonus for a strike based on the next two rolls", function() {
+      frame.roll(10);
+      frame.bonus([4,3]);
+      expect(frame.calculateFinalScore()).toEqual(17);
+    });
+
+    it("calculates bonus for a spare based on the next roll", function() {
+      frame.roll(3);
+      frame.roll(7);
+      frame.bonus([5]);
+      expect(frame.calculateFinalScore()).toEqual(15);
+    });
+
+    it("doesn't add second roll's score to spare as a bonus", function() {
+      frame.roll(3);
+      frame.roll(7);
+      frame.bonus([5, 2]);
+      expect(frame.calculateFinalScore()).toEqual(15);
+    });
+
+    it("doesn't add bonus if it's neither a strike, nor a spare", function() {
+      frame.roll(3);
+      frame.roll(5);
+      frame.bonus([5, 2]);
+      expect(frame.calculateFinalScore()).toEqual(8);
+    });
+  });
+
 
 });

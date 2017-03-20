@@ -1,5 +1,6 @@
 function Frame() {
   this._rolls = [];
+  this._bonus = null;
 }
 
 Frame.prototype.roll = function(value) {
@@ -22,4 +23,18 @@ Frame.prototype.isSpare = function () {
 
 Frame.prototype.isComplete = function () {
   return this._rolls.length === 2 || this.isStrike();
+};
+
+Frame.prototype.bonus = function(value) {
+  if (this.isStrike()) {
+  this._bonus = value.reduce(function(score1, score2) {
+    return score1 + score2;
+  }, 0);
+} else if (this.isSpare()) {
+  this._bonus = value[0];
+};
+};
+
+Frame.prototype.calculateFinalScore = function () {
+  return this.calculateFrameScore() + this._bonus;
 };

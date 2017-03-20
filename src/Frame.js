@@ -17,5 +17,9 @@ Frame.prototype.isStrike = function () {
 };
 
 Frame.prototype.isSpare = function () {
-  return this._rolls.length === 2 && this.calculateFrameScore() === 10;  
+  return this._rolls.length === 2 && this.calculateFrameScore() === 10;
+};
+
+Frame.prototype.isComplete = function () {
+  return this._rolls.length === 2 || this.isStrike();
 };

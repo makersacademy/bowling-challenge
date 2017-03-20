@@ -47,4 +47,23 @@ describe("Frame", function() {
     });
   });
 
+  describe("Completed frame", function() {
+
+    it("returns true after two rolls", function() {
+      frame.roll(4);
+      frame.roll(5);
+      expect(frame.isComplete()).toBe(true);
+    });
+
+    it("returns true after a strike", function() {
+      frame.roll(10);
+      expect(frame.isComplete()).toBe(true);
+    });
+
+    it("returns false after one roll if it isn't a strike", function() {
+      frame.roll(9);
+      expect(frame.isComplete()).toBe(false);
+    });
+  });
+
 });

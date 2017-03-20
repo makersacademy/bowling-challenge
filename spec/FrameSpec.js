@@ -96,5 +96,18 @@ describe("Frame", function() {
     });
   });
 
+  describe("End of frame alerts", function() {
 
+    it("tells if a frame is finished", function() {
+      frame.roll(1)
+      frame.roll(0)
+      expect(frame.isComplete()).toBe(true);
+      expect(frame.alert()).toEqual("This frame is finished.")
+    });
+
+    it("tells if the frame is the last one", function() {
+      var frame = new Frame(true);
+      expect(frame.final()).toBe(true);
+    });
+  });
 });

@@ -11,3 +11,11 @@ Frame.prototype.calculateFrameScore = function () {
     return score1 + score2;
   }, 0);
 };
+
+Frame.prototype.isStrike = function () {
+  return this._rolls.length === 1 && this.calculateFrameScore() === 10;
+};
+
+Frame.prototype.isSpare = function () {
+  return this._rolls.length === 2 && this.calculateFrameScore() === 10;  
+};

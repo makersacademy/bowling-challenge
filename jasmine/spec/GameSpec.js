@@ -5,6 +5,7 @@ describe ("Game", function() {
   var game
   var frame1
   var frame2
+  var lastframe
 
   beforeEach(function(){
     game = new Game();
@@ -113,6 +114,29 @@ describe ("Game", function() {
         game.saveCurrentFrame(frame2)
         game.calculateCurrentScore()
         expect(game.isBonusSpareMode).toBe(false)
+      });
+    });
+
+    describe ("Final Game", function (){
+
+      it("doubles points if bonusStrikeMode is true", function(){
+        frame1 = new Frame (10)
+        game.saveCurrentFrame(frame1)
+        game.calculateCurrentScore()
+        lastframe = new LastFrame (10,10,10)
+        game.saveCurrentFrame(lastframe)
+        game.calculateCurrentScoreLastFrame()
+        expect(game.currentScore).toEqual(70)
+      });
+
+      it("doubles the first value if bonusSpareMode is true", function(){
+        frame1 = new Frame (5,5)
+        game.saveCurrentFrame(frame1)
+        game.calculateCurrentScore()
+        lastframe = new LastFrame (10,0,0)
+        game.saveCurrentFrame(lastframe)
+        game.calculateCurrentScoreLastFrame()
+        expect(game.currentScore).toEqual(30)
       });
     });
   });

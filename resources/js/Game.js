@@ -30,6 +30,12 @@ Game.prototype.calculateCurrentScoreFirstFrame = function() {
 Game.prototype.calculateCurrentScore = function() {
   if (this.isBonusStrikeMode === false && this.isBonusSpareMode === false) {
     this._addScore1AndScore2();
+    if (this.totalScore[this._currentFrameID()].isStrike === true) {
+      this._setBonusStrikeModeOn();
+    }
+    if (this.totalScore[this._currentFrameID()].isSpare === true) {
+      this._setBonusSpareModeOn();
+    }
   } else if (this.isBonusStrikeMode === true) {
     this._addStrikeScore();
     if (this.totalScore[this._currentFrameID()].isStrike === false) {
@@ -40,6 +46,15 @@ Game.prototype.calculateCurrentScore = function() {
     if (this.totalScore[this._currentFrameID()].isSpare === false) {
       this._setBonusSpareModeOff();
     }
+  }
+};
+
+Game.prototype.calculateCurrentScoreLastFrame = function() {
+  if (this.isBonusStrikeMode === true) {
+    this.currentScore += (this.totalScore[this._currentFrameID()].score1 + this.totalScore[this._currentFrameID()].score2 + this.totalScore[this._currentFrameID()].score3) * 2;
+  }
+  if (this.isBonusSpareMode === true) {
+    this.currentScore += (this.totalScore[this._currentFrameID()].score1) * 2  + (this.totalScore[this._currentFrameID()].score2) + (this.totalScore[this._currentFrameID()].score3);
   }
 };
 

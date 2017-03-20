@@ -26,7 +26,8 @@ describe('Game', function() {
 
   describe('.getCurrentFrame',function(){
 
-    xit('returns the current frame', function(){
+    it('returns the current frame', function(){
+      game.newFrame();
       expect(game.getCurrentFrame()).toEqual(jasmine.any(Frame));
     });
 
@@ -34,9 +35,34 @@ describe('Game', function() {
 
   describe('.newFrame',function(){
 
-    xit('.newFrame starts a new frame', function(){
+    it('starts a new frame', function(){
       game.newFrame();
-      expect(game.frames.count).toEqual(2);
+      game.newFrame();
+      expect(game.frames.length).toEqual(2);
+    });
+
+  });
+
+  describe('.bowl',function(){
+
+    xit('calls throwBall on player', function(){
+
+    });
+
+    xit('adds ball to the current frame', function(){
+
+    });
+
+  });
+
+  describe('.getScore',function(){
+
+    xit('returns the correct score for the game', function(){
+
+    });
+
+    xit('returns the correct score for the game', function(){
+
     });
 
   });

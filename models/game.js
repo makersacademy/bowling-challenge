@@ -14,8 +14,8 @@ Game.prototype.getCurrentFrame = function () {
 Game.prototype.newFrame = function () {
   if(typeof this.getCurrentFrame() !== 'undefined'){
     this.frames.push(this.getCurrentFrame());
-    this.currentFrame = new Frame();
   }
+  this.currentFrame = new Frame();
 };
 
 Game.prototype.bowl = function() {

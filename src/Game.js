@@ -12,37 +12,37 @@ Game.prototype.score = function() {
     var game = this;
 
     for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-      if(isStrike()) {
-        result += getStrikeScore();
+      if(strike()) {
+        result += strikeScore();
         rollIndex ++;
-      } else if(isSpare()) {
-          result += getSpareScore();
+      } else if(spare()) {
+          result += spareScore();
           rollIndex += 2;
       } else {
-          result += getNormalScore();
+          result += normalScore();
           rollIndex += 2;
       }
     };
 
   return result;
 
-  function isStrike() {
+  function strike() {
       return game.rolls[rollIndex] == 10;
   }
 
-  function getNormalScore() {
+  function normalScore() {
       return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
   };
 
-  function isSpare() {
+  function spare() {
       return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10;
   };
 
-  function getSpareScore() {
+  function spareScore() {
       return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
   };
 
-  function getStrikeScore() {
+  function strikeScore() {
       return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
   };
 

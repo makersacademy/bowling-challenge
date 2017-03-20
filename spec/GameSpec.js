@@ -19,9 +19,9 @@ describe('Bowling Game', function() {
   it('can roll a spare', function() {
     game.roll(5);
     game.roll(5);
-    game.roll(3);
+    game.roll(4);
     rollMany(0, 17);
-    expect(game.score()).toBe(16)
+    expect(game.score()).toBe(18)
   })
 
   it('can roll a strike', function() {

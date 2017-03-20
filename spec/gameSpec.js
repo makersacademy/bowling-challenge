@@ -2,9 +2,10 @@
 
 describe('Game', function() {
   var game;
+  var player;
 
   beforeEach(function() {
-    var player = new Player("Bob");
+    player = new Player("Bob");
     game = new Game(player);
   });
 
@@ -24,15 +25,6 @@ describe('Game', function() {
 
   });
 
-  describe('.getCurrentFrame',function(){
-
-    it('returns the current frame', function(){
-      game.newFrame();
-      expect(game.getCurrentFrame()).toEqual(jasmine.any(Frame));
-    });
-
-  });
-
   describe('.newFrame',function(){
 
     it('starts a new frame', function(){
@@ -45,24 +37,42 @@ describe('Game', function() {
 
   describe('.bowl',function(){
 
-    xit('calls throwBall on player', function(){
-
+    it('responds', function (){
+      spyOn(game,'bowl');
+      game.bowl();
+      expect(game.bowl).toHaveBeenCalled();
     });
 
-    xit('adds ball to the current frame', function(){
-
+    it('calls ._checkFrame', function (){
+      spyOn(game,'_checkFrame');
+      game.bowl();
+      expect(game._checkFrame).toHaveBeenCalled();
     });
 
+    it('calls .throwBall on player', function (){
+      spyOn(player,'throwBall');
+      game.bowl();
+      expect(player.throwBall).toHaveBeenCalled();
+    });
+    
   });
 
   describe('.getScore',function(){
 
-    xit('returns the correct score for the game', function(){
-
+    it('returns the correct score for a perfect game', function(){
+      spyOn(Math, 'random').and.returnValue(1);
+      for(var i = 0; i < 13; i++){
+        game.bowl();
+      }
+      expect(game.getScore()).toEqual(300);
     });
 
-    xit('returns the correct score for the game', function(){
-
+    it('returns the correct score for a gutter game', function(){
+      spyOn(Math, 'random').and.returnValue(0);
+      for(var i = 0; i < 13; i++){
+        game.bowl();
+      }
+      expect(game.getScore()).toEqual(0);
     });
 
   });

@@ -60,5 +60,16 @@
         <td colspan='2' id="frame_10"> x </td>
       </tr>
     </table>
+      <h2>Number of pins:</h2>
+      <form method="POST" action='index.html'>
+        <button id='1' type='submit'>1</button>
+        <script>
+          $(document).ready(function() {
+            $("button#1").click(function() {
+              console.log('you clicked 1!');
+            });
+          });
+        </script>
+      </form>
   </body>
 </html>

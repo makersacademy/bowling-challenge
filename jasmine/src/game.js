@@ -3,6 +3,7 @@
 const MAX_ROLL_POINTS = 10
 
 function Game() {
+  this.runningTotal = 0
   this.frame = []
   this.allFrames = []
 }
@@ -11,10 +12,11 @@ Game.prototype.enterRoll = function(rollPoints) {
   if (rollPoints > MAX_ROLL_POINTS) {
     throw new Error("You cannot exceed 10 points per roll")
   }
-  if (this.frame.sum() + rollPoints > MAX_ROLL_POINTS) {
+  if (this.frame.reduce((a, e) => a + e, 0) + rollPoints > MAX_ROLL_POINTS) {
     throw new Error("You cannot exceed 10 points per frame")
   }
   this.frame.push(rollPoints)
+  this.runningTotal += rollPoints
 }
 
 Game.prototype.recordFrames = function(frame) {
@@ -26,12 +28,3 @@ Game.prototype.recordFrames = function(frame) {
 //     throw new Error("You cannot exceed 10 points per frame")
 //   }
 // }
-
-Array.prototype.sum = function() {
-  var a = this[0]
-  for (var i = 1; i < this.length; i++) {
-    a = a + this[i]
-  }
-  console.log(a)
-  return a
-}

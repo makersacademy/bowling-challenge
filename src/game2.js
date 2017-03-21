@@ -21,3 +21,16 @@ Game.prototype._checkIfGameOver = function() {
     throw new Error("Game over!");
   }
 };
+
+Game.prototype.calculateGameTotal = function() {
+  var total = 0;
+  var strike = 0;
+  for(var i = 0; i < this._frames.length; i++ ) {
+    if(this._frames[i].currentRoll() === "X") {
+      var strike = 10;
+    } else {
+      total += this._frames[i].currentRoll();
+    }
+  }
+  return total + strike;
+};

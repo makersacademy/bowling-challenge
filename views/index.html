@@ -26,26 +26,26 @@
         <th colspan='2'>Frame 10</th>
       </tr>
       <tr>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
-        <td class='roll'>x</td>
+        <td id='roll1'>x</td>
+        <td id='roll2'>x</td>
+        <td id='roll3'>x</td>
+        <td id='roll4'>x</td>
+        <td id='roll5'>x</td>
+        <td id='roll6'>x</td>
+        <td id='roll7'>x</td>
+        <td id='roll8'>x</td>
+        <td id='roll9'>x</td>
+        <td id='roll10'>x</td>
+        <td id='roll11'>x</td>
+        <td id='roll12'>x</td>
+        <td id='roll13'>x</td>
+        <td id='roll14'>x</td>
+        <td id='roll15'>x</td>
+        <td id='roll16'>x</td>
+        <td id='roll17'>x</td>
+        <td id='roll18'>x</td>
+        <td id='roll19'>x</td>
+        <td id='roll20'>x</td>
       </tr>
       <tr>
         <td colspan='2' id="frame_1"> x </td>
@@ -61,15 +61,28 @@
       </tr>
     </table>
       <h2>Number of pins:</h2>
-      <form method="POST" action='index.html'>
+      <!-- <form method="POST" action='index.html'> -->
         <button id='1' type='submit'>1</button>
+        <button id='2' type='submit'>2</button>
+        <button id='3' type='submit'>3</button>
+        <button id='4' type='submit'>4</button>
+        <button id='5' type='submit'>5</button>
+        <button id='6' type='submit'>6</button>
+        <button id='7' type='submit'>7</button>
+        <button id='8' type='submit'>8</button>
+        <button id='9' type='submit'>9</button>
+        <button id='10' type='submit'>10</button>
         <script>
           $(document).ready(function() {
             $("button#1").click(function() {
               console.log('you clicked 1!');
+              $("td#roll1").text('1');
+            });
+            $("button#2").click(function() {
+              console.log('you clicked 2!');
             });
           });
         </script>
-      </form>
+      <!-- </form> -->
   </body>
 </html>

@@ -5,7 +5,7 @@ function Player(name) {
 }
 
 Player.prototype.throwBall = function (frame) {
-  var score = Math.round(Math.random() * (10));
+  var score = Math.round(Math.random() * (10))
   frame.addBall(score);
   return score;
 };

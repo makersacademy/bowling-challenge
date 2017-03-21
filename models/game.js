@@ -7,17 +7,15 @@ function Game(player) {
   this._newFrame();
 };
 
-Game.prototype.bowl = function() {
+Game.prototype.bowl = function(score) {
   this._checkFrame();
   return this.player.throwBall(this._getCurrentFrame());
 };
 
 Game.prototype.getScore = function () {
-  var total = 0, ballCurrent = 0;
-  var ballArray = this._getAllBalls();
+  var total = 0, ballArray = this._getAllBalls();
   this.frames.forEach(function(element, index, array){
-    total += Number(element.getFrameScore(ballArray[ballCurrent + 1],ballArray[ballCurrent + 2]));
-    ballCurrent++;
+    total += Number(element.getFrameScore(ballArray[index + 1],ballArray[index + 2]));
   });
   return total;
 };

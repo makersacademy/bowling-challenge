@@ -26,6 +26,7 @@ Frame.prototype.getFrameScore = function (nextBallOne = 0, nextBallTwo = 0) {
   if(this.frameNumber < 10){
     this.balls[0] === 10 ? score = score + nextBallOne + nextBallTwo : score = score;
   }
+  console.log(score);
   return score;
 };
 

@@ -28,8 +28,8 @@ describe('Game', function() {
   describe('.newFrame',function(){
 
     it('starts a new frame', function(){
-      game.newFrame();
-      game.newFrame();
+      game._newFrame();
+      game._newFrame();
       expect(game.frames.length).toEqual(2);
     });
 
@@ -54,24 +54,26 @@ describe('Game', function() {
       game.bowl();
       expect(player.throwBall).toHaveBeenCalled();
     });
-    
+
   });
 
   describe('.getScore',function(){
 
     it('returns the correct score for a perfect game', function(){
       spyOn(Math, 'random').and.returnValue(1);
-      for(var i = 0; i < 13; i++){
+      for(var i = 1; i < 14; i++){
         game.bowl();
       }
+      console.log(game.frames);
       expect(game.getScore()).toEqual(300);
     });
 
     it('returns the correct score for a gutter game', function(){
       spyOn(Math, 'random').and.returnValue(0);
-      for(var i = 0; i < 13; i++){
+      for(var i = 1; i < 22 ; i++){
         game.bowl();
       }
+        console.log(game.frames)
       expect(game.getScore()).toEqual(0);
     });
 
@@ -101,4 +103,4 @@ describe('Game', function() {
 
   });
 
-})
+});

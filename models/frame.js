@@ -2,10 +2,12 @@
 
 var PINS = 10;
 
-function Frame() {
+function Frame(frameNum) {
   this.pins = PINS;
   this.balls = []
   this.complete = false;
+  this.frameNumber = frameNum;
+  console.log("Frame num: " + this.frameNumber);
 }
 
 Frame.prototype.addBall = function (score) {
@@ -31,8 +33,15 @@ Frame.prototype._removePins = function (pins) {
 };
 
 Frame.prototype._checkComplete = function () {
-  if(this.balls.length > 1 || this.balls[0] == 10){
-    this._completeFrame();
+  if(this.frameNumber < 10){
+    if(this.balls.length > 1 || this.balls[0] === 10){
+      this._completeFrame();
+    }
+  }
+  else {
+    if(this.balls.length > 2){
+      this._completeFrame();
+    }
   }
 };
 

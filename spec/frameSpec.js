@@ -4,7 +4,7 @@ describe('Frame', function() {
   var frame;
 
   beforeEach(function() {
-    frame = new Frame();
+    frame = new Frame(1);
   });
 
   describe('~constructor', function() {
@@ -25,14 +25,14 @@ describe('Frame', function() {
 
   describe('.addBall', function(){
 
-    it('can add a ball, remove pins, check complete on first ball', function() {
+    it('can add a ball, remove pins, not be complete on first ball', function() {
       frame.addBall(5);
       expect(frame.balls).toEqual([5]);
       expect(frame.pins).toEqual(5);
       expect(frame.isComplete()).toEqual(false);
     });
 
-    it('can add a ball, remove pins, check complete on first ball', function() {
+    it('can add two balls, remove pins, be complete on second ball', function() {
       frame.addBall(5);
       frame.addBall(1);
       expect(frame.balls).toEqual([5,1]);
@@ -40,7 +40,7 @@ describe('Frame', function() {
       expect(frame.isComplete()).toEqual(true);
     });
 
-    it('can add a ball, remove pins, check complete on first ball strike', function() {
+    it('can add a ball, remove pins, be complete on first ball strike', function() {
       frame.addBall(10);
       expect(frame.balls).toEqual([10]);
       expect(frame.pins).toEqual(0);

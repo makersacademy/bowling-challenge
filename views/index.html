@@ -62,6 +62,7 @@
     </table>
       <h2>Number of pins:</h2>
       <!-- <form method="POST" action='index.html'> -->
+        <button id='0' type='submit'>0</button>
         <button id='1' type='submit'>1</button>
         <button id='2' type='submit'>2</button>
         <button id='3' type='submit'>3</button>
@@ -74,12 +75,13 @@
         <button id='10' type='submit'>10</button>
         <script>
           $(document).ready(function() {
-            $("button#1").click(function() {
-              console.log('you clicked 1!');
-              $("td#roll1").text('1');
-            });
-            $("button#2").click(function() {
-              console.log('you clicked 2!');
+            var roll = 1
+            $("button").click(function(event) {
+              var pins = event.target.id
+              console.log("Roll number " + roll);
+              console.log("Pins: " + event.target.id);
+              $("td#roll" + roll).text(pins);
+              roll++;
             });
           });
         </script>

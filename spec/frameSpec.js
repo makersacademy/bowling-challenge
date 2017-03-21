@@ -9,9 +9,9 @@ describe('Frame', function() {
 
   describe('~constructor', function() {
 
-    it('starts with 10 pins', function(){
-        expect(frame.pins).toEqual(10);
-    });
+    it('starts with a frame number', function(){
+      expect(frame.frameNumber).toEqual(1);
+    })
 
     it('starts with an empty ball array', function(){
         expect(frame.balls).toEqual([]);
@@ -25,25 +25,22 @@ describe('Frame', function() {
 
   describe('.addBall', function(){
 
-    it('can add a ball, remove pins, not be complete on first ball', function() {
+    it('can add a ball and not be complete on first ball', function() {
       frame.addBall(5);
       expect(frame.balls).toEqual([5]);
-      expect(frame.pins).toEqual(5);
       expect(frame.isComplete()).toEqual(false);
     });
 
-    it('can add two balls, remove pins, be complete on second ball', function() {
+    it('can add two balls and be complete on second ball', function() {
       frame.addBall(5);
       frame.addBall(1);
       expect(frame.balls).toEqual([5,1]);
-      expect(frame.pins).toEqual(4);
       expect(frame.isComplete()).toEqual(true);
     });
 
-    it('can add a ball, remove pins, be complete on first ball strike', function() {
+    it('can add a ball and be complete on first ball strike', function() {
       frame.addBall(10);
       expect(frame.balls).toEqual([10]);
-      expect(frame.pins).toEqual(0);
       expect(frame.isComplete()).toEqual(true);
     });
 
@@ -60,30 +57,72 @@ describe('Frame', function() {
   });
 
   describe('.getFrameScore', function(){
+    describe('frames 1 to 9', function(){
+      it('returns the correct score of the frame when not a spare or strike', function(){
+        frame.addBall(5);
+        frame.addBall(1);
+        expect(frame.getFrameScore()).toEqual(6);
+      });
 
-    it('returns the correct score of the frame when not a spare or strike', function(){
-      frame.addBall(5);
-      frame.addBall(1);
-      expect(frame.getFrameScore()).toEqual(6);
+      it('returns the score of the frame with bonuses when a strike', function(){
+        frame.addBall(10);
+        expect(frame.getFrameScore(1,2)).toEqual(13);
+      });
+
+      it('returns the correct score for the frame when not a spare or strike but is passed bonus balls', function(){
+        frame.addBall(5);
+        frame.addBall(1);
+        expect(frame.getFrameScore(1,2)).toEqual(6);
+      });
+
+      it('returns the correct score for the frame when a spare', function(){
+        frame.addBall(5);
+        frame.addBall(5);
+        expect(frame.getFrameScore(1,2)).toEqual(10);
+      });
+
+      it('throws an error when trying to add a third ball', function(){
+        frame.addBall(5);
+        frame.addBall(5);
+        expect(function(){frame.addBall(5)}).toThrow('Cannot add ball to a frame that is already complete');
+        expect(frame.getFrameScore()).toEqual(10);
+      });
+
     });
 
-    it('returns the score of the frame with bonuses when a strike', function(){
-      frame.addBall(10);
-      expect(frame.getFrameScore(1,2)).toEqual(13);
-    });
+    describe('frame 10', function(){
 
-    it('returns the correct score for the frame when not a spare or strike but is passed bonus balls', function(){
-      frame.addBall(5);
-      frame.addBall(1);
-      expect(frame.getFrameScore(1,2)).toEqual(6);
-    });
+      beforeEach(function() {
+        frame = new Frame(10);
+      });
 
-    it('returns the correct score for the frame when a spare', function(){
-      frame.addBall(5);
-      frame.addBall(5);
-      expect(frame.getFrameScore(1,2)).toEqual(10);
-    });
+      it('returns the correct score of the frame when not a spare or strike', function(){
+        frame.addBall(5);
+        frame.addBall(1);
+        expect(frame.getFrameScore()).toEqual(6);
+      });
 
+      it('returns the score of the frame with bonuses when a strike', function(){
+        frame.addBall(10);
+        frame.addBall(10);
+        frame.addBall(10);
+        expect(frame.getFrameScore()).toEqual(30);
+      });
+
+      it('returns the correct score for the frame when a spare', function(){
+        frame.addBall(5);
+        frame.addBall(5);
+        frame.addBall(5);
+        expect(frame.getFrameScore()).toEqual(15);
+      });
+
+      it('throws an error when trying to add a third ball where the first two balls add up to less than 10', function(){
+        frame.addBall(5);
+        frame.addBall(4);
+        expect(function(){frame.addBall(5)}).toThrow('Cannot add ball to a frame that is already complete');
+        expect(frame.getFrameScore()).toEqual(9);
+      });
+    });
   });
 
 });

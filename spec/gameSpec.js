@@ -73,7 +73,6 @@ describe('Game', function() {
       for(var i = 1; i < 22 ; i++){
         game.bowl();
       }
-        console.log(game.frames)
       expect(game.getScore()).toEqual(0);
     });
 

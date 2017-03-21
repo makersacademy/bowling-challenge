@@ -36,12 +36,11 @@ describe("Game", function() {
       expect(game.completedFrames).toEqual([[1, 3], [5, 3]]);
     });
 
-    it("calculates score", function() {
+    it("saves frame if it's strike after first roll", function() {
       var game = new Game;
-      game.roll(1);
-      game.roll(3);
-      expect(game.score()).toEqual(4);
-    });
+      game.roll(10);
+      expect(game.completedFrames).toEqual([[10, 0]]);
+    })
 
   });
 

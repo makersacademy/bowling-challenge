@@ -4,7 +4,12 @@ var Game = function() {
 };
 
 Game.prototype.roll = function(pinsKnockedDown) {
-  this.newFrame(pinsKnockedDown);
+  if (pinsKnockedDown == 10) {
+    this.completedFrames.push([10, 0]);
+  }
+  else {
+    this.newFrame(pinsKnockedDown);
+  };
 };
 
 Game.prototype.newFrame = function(pinsKnockedDown) {

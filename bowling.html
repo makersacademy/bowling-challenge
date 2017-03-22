@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- metadata -->
+    <meta charset="utf-8">
+    <title>Bowl-o-Matic</title>
+    <!-- js -->
+    <script src="src/Bowling.js"></script>
+    <script src="script/jquery-2.2.3.min.js"></script>
+    <script src="interface.js"></script>
+
+  </head>
+  <body>
+    <div id="heading">
+      <h1>Bowl-o-matic</h1>
+    </div>
+    <div id="scoreboard">
+      <h3>frame: <span id="current-turn"></span></h3>
+      <h3>current ball: <span id="current-ball"></span></h3>
+      <h3>score: <span id="current-score"></span></h3>
+      <h3>Score sheet <p id="score-sheet"></p></h3>
+    </div>
+    <div id="input">
+        <input type="text" id="pins">
+        <button type="button" id="hit">Bowl!</button>
+    </div>
+
+    <p id="game-status"></p>
+  </body>
+</html>

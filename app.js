@@ -1,6 +1,23 @@
-var things = require('./things');
+var events = require('events');
 
-console.log(things.counter(["shaun", "john", "ryan"]));
+var util = require('util');
 
-console.log(things.adder(5, 8));
-console.log(things.adder(things.pi, 5));
+var Person = function(name) {
+  this.name = name;
+};
+
+util.inherits(Person, events.EventEmitter);
+
+var james = new Person("james");
+var mary = new Person("mary");
+var john = new Person("john");
+var people = [james, mary, john];
+
+people.forEach(function(person) {
+  person.on('speak', function(mssg) {
+    console.log(person.name + ' said: ' + mssg);
+  });
+});
+
+james.emit('speak', 'Hey Man');
+john.emit('speak', 'Im pretty good');

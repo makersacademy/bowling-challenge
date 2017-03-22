@@ -48,16 +48,16 @@
         <td id='roll20'>x</td>
       </tr>
       <tr>
-        <td colspan='2' id="frame_1"> x </td>
-        <td colspan='2' id="frame_2"> x </td>
-        <td colspan='2' id="frame_3"> x </td>
-        <td colspan='2' id="frame_4"> x </td>
-        <td colspan='2' id="frame_5"> x </td>
-        <td colspan='2' id="frame_6"> x </td>
-        <td colspan='2' id="frame_7"> x </td>
-        <td colspan='2' id="frame_8"> x </td>
-        <td colspan='2' id="frame_9"> x </td>
-        <td colspan='2' id="frame_10"> x </td>
+        <td colspan='2' id="frame1"> x </td>
+        <td colspan='2' id="frame2"> x </td>
+        <td colspan='2' id="frame3"> x </td>
+        <td colspan='2' id="frame4"> x </td>
+        <td colspan='2' id="frame5"> x </td>
+        <td colspan='2' id="frame6"> x </td>
+        <td colspan='2' id="frame7"> x </td>
+        <td colspan='2' id="frame8"> x </td>
+        <td colspan='2' id="frame9"> x </td>
+        <td colspan='2' id="frame10"> x </td>
       </tr>
     </table>
       <h2>Number of pins:</h2>
@@ -75,9 +75,15 @@
         <button id='10' type='submit'>10</button>
         <script>
           $(document).ready(function() {
+            game = new Game;
             var roll = 1
             $("button").click(function(event) {
-              var pins = event.target.id
+              var pins = parseInt(event.target.id);
+              game.roll(pins);
+              if (roll % 2 == 0) {
+                var score = game.score();
+                $("h1#score").text(score);
+              }
               console.log("Roll number " + roll);
               console.log("Pins: " + event.target.id);
               $("td#roll" + roll).text(pins);
@@ -85,6 +91,7 @@
             });
           });
         </script>
-      <!-- </form> -->
+      <h1>SCORE:</h1>
+      <h1 id='score'></h1>
   </body>
 </html>

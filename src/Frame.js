@@ -30,7 +30,11 @@ Frame.prototype.isStrike = function(pins) {
 };
 
 Frame.prototype.isSpare = function() {
-  return this.totalFrame.reduce(function (first, second){
+  return this.totalFrame.reduce(function (first, second) {
     return first + second === 10 ? true : false;
   });
+};
+
+Frame.prototype.calculateScore = function() {
+  return this.totalFrame.reduce((first, second) => first + second)
 };

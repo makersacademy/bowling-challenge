@@ -7,9 +7,9 @@ describe("BowlingGame", function() {
 
   beforeEach(function() {
     game = new Game();
-    frame = new Frame(1);
+    // frame = new Frame(1);
   });
-//
+
   describe("Beginning of game", function() {
 
     // it("instantiates a new frame", function() {
@@ -24,30 +24,24 @@ describe("BowlingGame", function() {
       expect(game.totalscore).toEqual(0);
     });
 
-    it("creates the first frame", function() {
-      expect(game.newFrame).toEqual(frame);
+    // it("creates the first frame", function() {
+    //   console.log(this.newFrame)
+    //   expect(game.newFrame).toEqual();
+    // });
+
+    it("player is able to bowl", function() {
+      expect(game.canBowl()).toEqual(true);
     });
 
-//     // it("player is able to bowl", function() {
-//     //   expect(game.canBowl()).toEqual(true);
-//     // });
-//   });
-//
   describe("Game play", function() {
-//
-    it("adds first bowl to frames", function() {
-      frame2 = new Frame(1);
-      game.addNewFrame(2, 3);
-      expect(game.frames).toEqual(game)
-    });
 
-    it("adds second bowl to frames", function() {
-      game.addNewFrame([2, 3]);
-      // game.newFrame();
-      game.addNewFrame([9, 0]);
-      expect(game.frames).toEqual([[2, 3], [10, 0]])
+
+    it("adds bowls to frames", function() {
+      game.addNewFrame(2, 3);
+      game.addNewFrame(9, 0);
+      expect(game.frames[0].totalFrame).toEqual([2, 3])
+      expect(game.frames[1].totalFrame).toEqual([9, 0])
     });
-//
   });
 //
 //   describe("#calculateScore", function() {

@@ -6,7 +6,6 @@ describe ("Frame", function() {
 
   beforeEach(function(){
     frame = new Frame();
-    game = new Game();
   });
 
   describe("First Bowl", function() {
@@ -31,7 +30,6 @@ describe ("Frame", function() {
     });
 
     it("check if IS spare", function() {
-      // spyOn(this.totalFrame).andReturn([5,5])
       frame.inputBowls(5, 5)
       expect(frame.isSpare()).toEqual(true);
     });
@@ -39,6 +37,11 @@ describe ("Frame", function() {
     it("check if NOT spare", function() {
       frame.inputBowls(5, 1)
       expect(frame.isSpare()).toEqual(false);
+    });
+
+    it("check the score of the frame", function() {
+      frame.inputBowls(5, 1)
+      expect(frame.calculateScore()).toEqual(6);
     });
 
     // it("adds the frame to game", function() {

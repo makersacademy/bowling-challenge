@@ -9,7 +9,6 @@ function Frame(frameNum) {
 Frame.prototype.addBall = function (score) {
   if(this.complete === false){
     this.balls.push(score);
-    this._removePins(score);
     this._checkComplete();
   }
   else{
@@ -21,17 +20,26 @@ Frame.prototype.isComplete = function () {
   return this.complete;
 };
 
-Frame.prototype.getFrameScore = function (nextBallOne = 0, nextBallTwo = 0) {
-  var score = this._calculateScore();
-  if(this.frameNumber < 10){
-    this.balls[0] === 10 ? score = score + nextBallOne + nextBallTwo : score = score;
-  }
-  console.log(score);
-  return score;
+Frame.prototype.isStrike = function () {
+  return this.balls[0] === 10 ? true : false;
 };
 
-Frame.prototype._removePins = function (pins) {
-  return this.pins -= pins;
+Frame.prototype.isSpare = function () {
+  return this.balls.length > 1 && this.balls[0] + this.balls[1] === 10 ? true : false;
+};
+
+Frame.prototype.getFrameScore = function (nextBallOne = 0, nextBallTwo = 0) {
+  var score = this._calculateScore();
+  console.log("Frame " + this.frameNumber + " base score: " + score);
+  console.log("Frame balls output: " + this.balls);
+  if(this.frameNumber < 10){
+    if(this.balls[0] === 10) { score = score + nextBallOne + nextBallTwo; }
+    if((this.balls[0] + this.balls[1]) > 9) { score = score + nextBallOne; }
+  }
+  console.log("Next Ball 1: " + nextBallOne);
+  console.log("Next Ball 2: " + nextBallTwo);
+  console.log("Frame " + this.frameNumber + " final score: " + score);
+  return score;
 };
 
 Frame.prototype._checkComplete = function () {

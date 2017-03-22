@@ -59,7 +59,7 @@ describe('Game', function() {
 
   describe('.getScore',function(){
 
-    it('returns the correct score for a perfect game', function(){
+    it('returns the correct score for a perfect game (all strikes)', function(){
       var balls = [10,10,10,10,10,10,10,10,10,10,10,10];
       var spy = spyOn(Math, 'random')
       for(var i = 0; i <= balls.length ; i++){
@@ -70,7 +70,7 @@ describe('Game', function() {
       expect(game.getScore()).toEqual(300);
     });
 
-    it('returns the correct score for a gutter game', function(){
+    it('returns the correct score for a gutter game (no score)', function(){
       var balls = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
       var spy = spyOn(Math, 'random')
       for(var i = 0; i <= balls.length ; i++){
@@ -81,7 +81,7 @@ describe('Game', function() {
       expect(game.getScore()).toEqual(0);
     });
 
-    xit('returns the correct score for a game with no strikes or spares', function(){
+    it('returns the correct score for a game with no strikes or spares', function(){
       var balls = [0,5,5,0,1,4,2,3,7,0,8,0,4,4,4,0,5,0,6,1];
       var spy = spyOn(Math, 'random')
       for(var i = 0; i <= balls.length ; i++){
@@ -102,8 +102,8 @@ describe('Game', function() {
       }
       expect(game.getScore()).toEqual(100);
     });
-// need to add one bonus for spares
-    xit('returns the correct score for a mixed game (A)', function(){
+
+    it('returns the correct score for a mixed game (A)', function(){
       var balls = [0,10,1,9,2,0,5,5,1,1,2,5,4,1,0,10,6,3,0,10,0]
       var spy = spyOn(Math, 'random')
       for(var i = 0; i <= balls.length ; i++){
@@ -111,18 +111,18 @@ describe('Game', function() {
         spy.and.returnValue(currentBall / 10);
         game.bowl();
       }
-      expect(game.getScore()).toEqual(75);
+      expect(game.getScore()).toEqual(85);
     });
 
-    xit('returns the correct score for a mixed game (B)', function(){
-      var balls = [0,10,1,9,2,0,5,5,1,1,2,5,4,1,0,10,6,3,0,10,0]
+    it('returns the correct score for a mixed game (B)', function(){
+      var balls = [10,0,1,9,1,0,10,5,1,1,3,2,4,10,10,10,10,10]
       var spy = spyOn(Math, 'random')
       for(var i = 0; i <= balls.length ; i++){
         var currentBall = balls[i];
         spy.and.returnValue(currentBall / 10);
         game.bowl();
       }
-      expect(game.getScore()).toEqual(75);
+      expect(game.getScore()).toEqual(143);
     });
 
   });

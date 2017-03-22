@@ -56,6 +56,71 @@ describe('Frame', function() {
 
   });
 
+  describe('.isStrike', function(){
+
+    describe('frames 1 to 9', function(){
+
+      it('returns true when first ball is 10', function(){
+        frame.addBall(10);
+        expect(frame.isStrike()).toBe(true);
+      })
+
+      it('returns false when first ball is not 10', function(){
+        frame.addBall(5);
+        expect(frame.isStrike()).not.toBe(true);
+      })
+    })
+
+    describe('frame 10', function(){
+
+      xit('returns true when first ball is 10', function(){
+        frame.addBall(10);
+        expect(frame.isStrike()).toBe(true);
+      })
+
+      xit('returns false when first ball is not 10', function(){
+        frame.addBall(5);
+        expect(frame.isStrike()).not.toBe(true);
+      })
+    })
+
+  })
+
+  describe('.isSpare', function(){
+
+    describe('frames 1 to 9', function(){
+
+      it('returns true when two balls sum to 10', function(){
+        frame.addBall(9);
+        frame.addBall(1);
+        expect(frame.isSpare()).toBe(true);
+        expect(frame.isStrike()).toBe(false);
+      })
+
+      it('returns false when two balls which do not sum to 10', function(){
+        frame.addBall(1);
+        frame.addBall(1);
+        expect(frame.isSpare()).toBe(false);
+        expect(frame.isStrike()).toBe(false);
+      })
+    })
+
+    describe('frame 10', function(){
+
+      xit('returns true when first ball is 10', function(){
+        frame.addBall(10);
+        expect(frame.isStrike()).toBe(true);
+      })
+
+      xit('returns false when first ball is not 10', function(){
+        frame.addBall(5);
+        expect(frame.isStrike()).not.toBe(true);
+      })
+    })
+
+  })
+
+
   describe('.getFrameScore', function(){
     describe('frames 1 to 9', function(){
       it('returns the correct score of the frame when not a spare or strike', function(){
@@ -78,7 +143,7 @@ describe('Frame', function() {
       it('returns the correct score for the frame when a spare', function(){
         frame.addBall(5);
         frame.addBall(5);
-        expect(frame.getFrameScore(1,2)).toEqual(10);
+        expect(frame.getFrameScore(1,2)).toEqual(11);
       });
 
       it('throws an error when trying to add a third ball', function(){

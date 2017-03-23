@@ -13,18 +13,10 @@ Game.prototype.bowl = function(score) {
 };
 
 Game.prototype.getScore = function () {
-  var total = 0, ballArray = this._getAllBalls();
-  console.log("Ball ARR: " + ballArray);
-  var ballCount = 0;
+  var total = 0, ballArray = this._getAllBalls(), ballCount = 0;
   this.frames.forEach(function(element, index, array){
     ballCount += element.balls.length;
-    var ballOne = ballArray[ballCount];
-    console.log("Ball one: " + ballOne);
-    var ballTwo = ballArray[ballCount + 1];
-    console.log("Ball two: " + ballTwo);
-    console.log("Ball count: " + ballCount);
-
-
+    var ballOne = ballArray[ballCount], ballTwo = ballArray[ballCount + 1];
     total += Number(element.getFrameScore(ballOne,ballTwo));
   });
   return total;

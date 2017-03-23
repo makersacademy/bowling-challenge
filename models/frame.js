@@ -1,7 +1,7 @@
 'use strict';
 
 function Frame(frameNum) {
-  this.balls = []
+  this.balls = [];
   this.complete = false;
   this.frameNumber = frameNum;
 }
@@ -30,15 +30,10 @@ Frame.prototype.isSpare = function () {
 
 Frame.prototype.getFrameScore = function (nextBallOne = 0, nextBallTwo = 0) {
   var score = this._calculateScore();
-  console.log("Frame " + this.frameNumber + " base score: " + score);
-  console.log("Frame balls output: " + this.balls);
   if(this.frameNumber < 10){
     if(this.balls[0] === 10) { score = score + nextBallOne + nextBallTwo; }
     if((this.balls[0] + this.balls[1]) > 9) { score = score + nextBallOne; }
   }
-  console.log("Next Ball 1: " + nextBallOne);
-  console.log("Next Ball 2: " + nextBallTwo);
-  console.log("Frame " + this.frameNumber + " final score: " + score);
   return score;
 };
 

@@ -7,12 +7,19 @@ describe('Frame', function() {
     expect(frame.roll()).toBeLessThan(11);
   });
 
-  xit('adds present frame hits to overall score', function(){
-    expect(frame.scoreTotal()).toEqual(frame.rollResult())
+  it('adds present frame hits to overall score', function(){
+    expect(frame.frameScore()).toEqual(frame.rollResult())
   });
 
   it('returns the number of pins standing', function(){
     expect(frame.pinsStanding()).toEqual(frame.PINS);
+  });
+
+xdescribe('Notifies', function(){
+    it('that the next frame is ready', function(){
+      click('roll');
+      expect(page).toHaveContent("ROLL 1 OF 2 READY")
+    });
   });
 
 

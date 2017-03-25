@@ -29,9 +29,36 @@ describe('Bowling', function(){
     it('completely empties the array', function(){
       bowling.pinsKnockedOver()
       bowling.check()
-      bowling.reset()
-      expect(scores.length).toEqual(0)
+      bowling.pinsKnockedOver()
+      bowling.check()
+      bowling.pinsKnockedOver()
+      bowling.check()
+      bowling.pinsKnockedOver()
+      bowling.check()
+      bowling.pinsKnockedOver()
+      bowling.check()
+      bowling.pinsKnockedOver()
+      bowling.check()
+      bowling.pinsKnockedOver()
+      bowling.check()
+      bowling.pinsKnockedOver()
+      bowling.check()
+      bowling.pinsKnockedOver()
+      bowling.check()
+      bowling.pinsKnockedOver()
+      bowling.check()
+      bowling.pinsKnockedOver()
+      bowling.check()
+      bowling.settingRollsPerGame()
+      expect(bowling.scores.length).toEqual(0)
     });
   });
-  describe 
+
+  describe('Score per frame', function(){
+    it('stores the total number of pins nocked over per frame', function(){
+       bowling.pinsKnockedOver()
+       bowling.check()
+       expect(bowling.scores.length).toEqual(1)
+    });
+  });
 });

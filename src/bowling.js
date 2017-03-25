@@ -23,18 +23,11 @@ Bowling.prototype.check = function() {
 
   }
 };
-Bowling.prototype.score = function () { return this.scores}
+Bowling.prototype.score = function() { return this.scores}
 
-
-
-
-
-// Bowling.prototype.reset = function() {
-//   scores.length = 0
-// };
 
 Bowling.prototype.settingRollsPerGame = function() {
-  if (scores.length === 10) {
-    scores.length=0
+  if (this.scores.length >= 11) {
+   return  this.scores.length=0
   }
 };

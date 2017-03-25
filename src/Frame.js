@@ -20,7 +20,7 @@ Frame.prototype.isDone = function() {
       }
   }
   return (
-          (this.getRolls().length == 2 && this.getRolls()[0].isStrike()) ||
+          (this.getRolls().length === 2 && this.getRolls()[0].isStrike()) ||
           (this.getRolls().every(roll => (roll.isSet() === true)))
         );
 };

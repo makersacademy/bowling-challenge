@@ -4,7 +4,7 @@ function Frame() {
   this.strike = false;
   this.spare = false;
   this.totalScore = 0;
-  // this.firstRollPoints = 0;
+  this.firstRollPoints = 0;
 };
 
 Frame.prototype.nextRoll = function() {
@@ -13,7 +13,7 @@ Frame.prototype.nextRoll = function() {
 
 Frame.prototype.addPoints = function(points) {
   this.score.push(points);
-  // this.addFirstRollPoints(points);
+  this.addFirstRollPoints(points);
   this.checkSpare();
   this.checkStrike();
   this.nextRoll();

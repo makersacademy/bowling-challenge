@@ -77,6 +77,28 @@ describe("Game", function() {
         game.addPoints(3)
         expect(game.log[0].totalScore).toEqual(10)
       });
+
+      it("can calculate 2 strikes in a row", function() {
+        game.addPoints(10)
+
+        game.addPoints(10)
+        game.addPoints(3)
+        game.addPoints(3)
+        console.log(game.log)
+        expect(game.totalScore).toEqual(45)
+      });
+
+
+
+      // it("gives the user an extra two rolls if 10th frame is a strike", function() {
+      //   for(i = 0; i < 10; i++) {
+      //     game.addPoints(10)
+      //   }
+      //   game.addPoints(3)
+      //   game.addPoints(3)
+      //   expect(game.totalScore).toEqual(300)
+      // })
+
     });
   });
 

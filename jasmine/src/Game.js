@@ -38,6 +38,7 @@ Game.prototype._move_to_next_frame = function() {
 Game.prototype.calculate_bonuses = function() {
   if (this.frame > 2) {
     this.addStrikeBonus();
+    this.addDoubleStrikeBonus();
     this.addSpareBonus();
   };
 };
@@ -58,6 +59,16 @@ Game.prototype.addStrikeBonus = function() {
     return this.log[index].totalScore += this.log[index + 1].totalScore;
   };
 };
+
+Game.prototype.addDoubleStrikeBonus = function() {
+  if (this.log.length > 2) {
+    var index = this._getPreviousFrameIndex() - 1
+    if (this._previousFrameIsStrike() && this.log[index].strike == true) {
+      return this.log[index].totalScore += this.current_frame.firstRollPoints
+    }
+  }
+};
+
 
 Game.prototype.addSpareBonus = function() {
   var index = this._getPreviousFrameIndex()

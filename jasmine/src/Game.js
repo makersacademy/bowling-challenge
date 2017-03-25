@@ -1,6 +1,7 @@
 function Game () {
   this.totalScore = 0;
   this.frame = 1;
+  this.current_frame = new Frame()
   // this.scorecard = {};
   this.log = [];
 };
@@ -18,6 +19,30 @@ Game.prototype.nextFrame = function() {
 //   this.totalScore += points;
 //   this.nextFrame();
 // };
+
+Game.prototype.addPoints = function(points) {
+  this.current_frame.addPoints(points)
+  this._move_to_next_frame()
+  this.sumPoints()
+};
+
+Game.prototype._move_to_next_frame = function() {
+  if (this.current_frame.roll === 2) {
+    this.saveFrame(this.current_frame)
+    this.nextFrame()
+    this.calculate_bonuses()
+    this.current_frame = new Frame
+  }
+};
+
+Game.prototype.calculate_bonuses = function() {
+  if (this.frame > 2) {
+    this.addStrikeBonus();
+    this.addSpareBonus();
+  };
+};
+
+
 
 Game.prototype.sumPoints = function() {
   total = 0;
@@ -42,7 +67,9 @@ Game.prototype.addSpareBonus = function() {
 };
 
 Game.prototype._getPreviousFrameIndex = function () {
-  return (this.log.length - 2)
+  if (this.log.length > 1) {
+    return (this.log.length - 2)
+  }
 };
 
 Game.prototype._previousFrameIsStrike = function() {

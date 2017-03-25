@@ -2,8 +2,10 @@
 
 <html>
 <head>
-  <!-- <script src="../jasmine/src/Game.js"></script> -->
-
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="./jasmine/src/Interface.js"></script>
+  <script src="./jasmine/src/Game.js"></script>
+  <script src="./jasmine/src/Frame.js"></script>
 </head>
 
 <body>
@@ -12,14 +14,8 @@
 
   <div class="entries">
 
-    
-
-  <form>
-    <input type="text" name="points">
-    <input type=submit value="Submit">
-  </form>
-
-
+    <input id="points" type="text" name>
+    <button id="sub" type=button>Submit</button>
 
   </div>
 
@@ -27,11 +23,12 @@
 
     <table id="scorecard" border='1'>
         <tr>
+            <th></th>
             <th>Roll 1</th>
-             <th>Roll 2</th>
-             <th>Bonus?</th>
-             <th>Frame Score</th>
-             <th>Total Score</th>
+            <th>Roll 2</th>
+            <th>Bonus?</th>
+            <th>Frame Score</th>
+            <th>Total Score</th>
         </tr>
     </table>
 

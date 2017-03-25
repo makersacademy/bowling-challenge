@@ -55,6 +55,13 @@ describe("Game", function() {
         expect(game.log[0].totalScore).toEqual(17)
       });
 
+      it("adds the points from the next two rolls if strike", function() {
+        game.addPoints(10)
+        game.addPoints(3)
+        game.addPoints(3)
+        expect(game.log[0].totalScore).toEqual(16)
+      });
+
       it("adds the points from the following roll if spare", function() {
         firstFrame = {score: [5, 5], totalScore: 10, spare: true};
         secondFrame = {score: [4, 5], totalScore: 9, spare: false};
@@ -62,6 +69,13 @@ describe("Game", function() {
         game.saveFrame(secondFrame);
         game.addSpareBonus();
         expect(game.log[0].totalScore).toEqual(14);
+      });
+
+      it("adds the points from the following roll if spare", function() {
+        game.addPoints(3)
+        game.addPoints(7)
+        game.addPoints(3)
+        expect(game.log[0].totalScore).toEqual(10)
       });
     });
   });

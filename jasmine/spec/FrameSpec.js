@@ -4,8 +4,8 @@ describe ("Frame", function() {
     frame = new Frame();
   });
 
-  it("starts on roll 1", function() {
-    expect(frame.roll).toEqual(1);
+  it("starts on roll 0", function() {
+    expect(frame.roll).toEqual(0);
   });
 
   it("starts with an empty score", function() {
@@ -15,7 +15,7 @@ describe ("Frame", function() {
   describe("tracks roll", function() {
     it("can move to next roll", function() {
       frame.nextRoll();
-      expect(frame.roll).toEqual(2);
+      expect(frame.roll).toEqual(1);
     });
   });
 
@@ -28,7 +28,7 @@ describe ("Frame", function() {
 
     it("moves to the next roll when the user inputs pins they knocked down", function() {
       frame.addPoints(5);
-      expect(frame.roll).toEqual(2);
+      expect(frame.roll).toEqual(1);
     });
 
     it("sums the points", function() {

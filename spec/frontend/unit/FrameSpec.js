@@ -21,6 +21,12 @@ describe('Frame', function(){
       expect(frame.calculateFrameScore()).toEqual(0);
     });
 
+    it('calculates score for a frame', function(){
+      frame.play(4);
+      frame.play(1);
+      expect(frame.calculateFrameScore()).toEqual(5);
+    });
+
   });
 
   describe('#getRolls', function(){
@@ -38,14 +44,6 @@ describe('Frame', function(){
         expect(function(){frame.play(4)}).not.toThrow();
     });
 
-  });
-
-  describe('#calculateFrameScore', function(){
-    it('calculates score for a frame', function(){
-      frame.play(4);
-      frame.play(1);
-      expect(frame.calculateFrameScore()).toEqual(5);
-    });
   });
 
   describe('#isDone', function(){

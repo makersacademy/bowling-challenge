@@ -26,24 +26,24 @@ Game.prototype.score = function() {
 
   return result;
 
-  function strike() {
-      return game.rolls[rollIndex] == 10;
-  }
+    function strike() {
+        return game.rolls[rollIndex] == 10;
+    }
 
-  function normalScore() {
-      return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
-  };
+    function normalScore() {
+        return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
+    };
 
-  function spare() {
-      return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10;
-  };
+    function spare() {
+        return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10;
+    };
 
-  function spareScore() {
-      return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
-  };
+    function spareScore() {
+        return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
+    };
 
-  function strikeScore() {
-      return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
-  };
+    function strikeScore() {
+        return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
+    };
 
 };

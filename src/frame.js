@@ -8,26 +8,32 @@ function Frame(){
   };
 
   Frame.prototype.roll = function(){
-    x = Math.floor((Math.random() * (this.PINS + 1)));
-    return x;
+    hits = Math.floor((Math.random() * (this.PINS + 1)));
+    console.log("Roll: "+hits);
+    return hits;
   };
 
   Frame.prototype.pinsRemaining = function(){
-      return this.PINS -= x;
+    return this.PINS -= hits;
   };
 
   Frame.prototype.rollResult = function(){
-    this.pinsRemaining();
-    return x;
+    return hits;
   };
 
   Frame.prototype.frameTotal = function(){
-    this.total.push(x);
+    this.total.push(hits);
     this.total.reduce(function(a, b){
     return c = a + b;
     }, 0);
     return c;
   }
+
+    // Frame.prototype.frameEnd = function({
+    //   if (this.total.length > 1){
+    //
+    //   }
+    // });
 
   Frame.prototype.strike = function(){
      return ((this.rollResult() == 10) && (this.checkWhichRoll() == 1)) ? true : false

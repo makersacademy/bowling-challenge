@@ -14,7 +14,7 @@ describe('Frame', function() {
     expect(frame.total).toEqual([frame.frameTotal()])
   });
 
-xdescribe('Notifies', function(){
+  xdescribe('Notifies', function(){
     it('that the next frame is ready', function(){
       click('roll');
       expect(page).toHaveContent("ROLL 1 OF 2 READY")

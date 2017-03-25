@@ -1,13 +1,23 @@
-describe("Feature", function() {
-
+describe("Feature Test", function() {
   var game;
-  game = new Game();
+  var frame;
 
-  it("adds 3 frames' scores", function() {
-    game.calculateFrameTotal(3, 5);
-    game.calculateFrameTotal(10); // strike
-    game.calculateFrameTotal(2, 8); // spare
-    expect(game.checkAllScores()).toEqual([8, "X", 10]);
+  beforeEach(function() {
+    game = new Game();
+    specHelper = new SpecHelper();
   });
+
+  it("bowls 3 frames and checks the game's frame array", function() {
+    myShortGame = specHelper.shortGame();
+    expect(myShortGame.checkAllScores().length).toEqual(3);
+    expect(myShortGame.checkAllScores()[0].currentRoll()).toEqual(7);
+    expect(myShortGame.checkAllScores()[1].currentRoll()).toEqual(10);
+    expect(myShortGame.checkAllScores()[2].currentRoll()).toEqual("X");
+  });
+
+  it("bowls 3 frames and calculates game total WITHOUT BONUSES", function() {
+    myShortGame = specHelper.shortGame();
+    expect(myShortGame.calculateGameTotal()).toEqual(27)
+  })
 
 });

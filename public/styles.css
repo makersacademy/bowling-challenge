@@ -1,0 +1,122 @@
+body {
+    /*background-image: url("https://static.pexels.com/photos/344034/pexels-photo-344034.jpeg");*/
+    /*background-size: cover;*/
+    background-color: #92CCE1;
+    font-family: 'Lobster Two', cursive;
+}
+
+.ribbon {
+ font-size: 26px !important;
+ width: 50%;
+ position: relative;
+ background: #ba89b6;
+ color: #fff;
+ text-align: center;
+ padding: 1em 2em;
+ margin: 2em auto 3em;
+}
+.ribbon:before, .ribbon:after {
+ content: "";
+ position: absolute;
+ display: block;
+ bottom: -1em;
+ border: 1.5em solid #986794;
+ z-index: -1;
+}
+.ribbon:before {
+ left: -2em;
+ border-right-width: 1.5em;
+ border-left-color: transparent;
+}
+.ribbon:after {
+ right: -2em;
+ border-left-width: 1.5em;
+ border-right-color: transparent;
+}
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+ content: "";
+ position: absolute;
+ display: block;
+ border-style: solid;
+ border-color: #804f7c transparent transparent transparent;
+ bottom: -1em;
+}
+.ribbon .ribbon-content:before {
+ left: 0;
+ border-width: 1em 0 0 1em;
+}
+.ribbon .ribbon-content:after {
+ right: 0;
+ border-width: 1em 1em 0 0;
+}
+
+.panel-body {
+  font-size: 24px;
+  color: #63A5C7;
+  padding-bottom: 40px;
+  height: 50px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.btn {
+  padding: 10px;
+  color: black;
+  width: 37px;
+  height: 37px;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  color: #333333;
+  background-color: #829db6;
+}
+
+table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 0.5em;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: orange;
+    color: white;
+}
+
+tbody {
+    background-color: lightgrey;
+    font-weight: thin;
+}
+
+tfoot {
+    background-color: lightblue;
+}
+
+th, td {
+    border: 5px solid white;
+    text-align: center;
+    padding: 8px;
+}
+
+#newgame {
+  font-size: 12px;
+  color: grey;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+  padding: 5px;
+}
+
+#bgMiddle {
+  position: fixed;
+  background-color: white;
+  width: 50%;
+  height: 100%;
+  z-index: -10;
+  margin-left: 25%;
+}

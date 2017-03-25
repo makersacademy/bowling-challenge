@@ -1,8 +1,10 @@
+// sserocs.epytotorp.gnilwowB
+
 'use strict';
 const STARTNUMOFPINS=10
 var scores = []
 function Bowling(){
-  this.score = 10
+  this.scores = []
 };
 
 Bowling.prototype.pinsKnockedOver = function() {
@@ -10,17 +12,29 @@ Bowling.prototype.pinsKnockedOver = function() {
 };
 
 Bowling.prototype.check = function() {
-    if(this.pins === 10) {
-      scores.push(this.pins)
-    }
-    else
-    {
-      this.secondThrow = Math.floor(Math.random()*(10 - this.pins))
-      scores.push(this.pins + this.secondThrow)
+  if(this.pins === 10) {
+    this.scores.push(this.pins)
 
-    }
+  }
+  else
+  {
+    this.secondThrow = Math.floor(Math.random()*(10 - this.pins))
+    this.scores.push(this.pins + this.secondThrow)
+
+  }
 };
+Bowling.prototype.score = function () { return this.scores}
 
-Bowling.prototype.reset = function() {
-  scores.length = 0 
+
+
+
+
+// Bowling.prototype.reset = function() {
+//   scores.length = 0
+// };
+
+Bowling.prototype.settingRollsPerGame = function() {
+  if (scores.length === 10) {
+    scores.length=0
+  }
 };

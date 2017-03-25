@@ -1,15 +1,19 @@
 $ (document).ready(function(){
-var bowling = new Bowling ();
+  var bowling = new Bowling ();
 
-$('#roll').click(function(){
- bowling.pinsKnockedOver();
- $('#pins').html(bowling.pinsKnockedOver());
-});
-$('#pins').html(bowling.pinsKnockedOver());
+  // $('#pins').html(bowling.pinsKnockedOver());
 
-$('#reset').click(function(){
- bowling.reset();
-});
+  $('#roll').click(function(){
+    bowling.pinsKnockedOver();
+    bowling.check();
+    $('#pins').html(bowling.score());
+  });
+
+
+  $('#score').html(bowling.score());
+  // $('#reset').click(function(){
+  //  bowling.reset();
+  // });
 
 
 

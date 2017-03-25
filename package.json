@@ -1,0 +1,22 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "bowling scoresheet",
+  "main": "index.js",
+  "devDependencies": {
+    "jasmine-node": "~1.14.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Noora-q/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Noora-q/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/Noora-q/bowling-challenge#readme"
+}

@@ -1,3 +1,5 @@
+"use strict"
+
 function Game () {
   this.totalScore = 0;
   this.frame = 1;
@@ -46,7 +48,7 @@ Game.prototype.calculate_bonuses = function() {
 
 
 Game.prototype.sumPoints = function() {
-  total = 0;
+  var total = 0;
   this.log.forEach(function(frame) {
     total += frame.totalScore;
   });
@@ -64,7 +66,7 @@ Game.prototype.addDoubleStrikeBonus = function() {
   if (this.log.length > 2) {
     var index = this._getPreviousFrameIndex() - 1
     if (this._previousFrameIsStrike() && this.log[index].strike == true) {
-      return this.log[index].totalScore += this.current_frame.firstRollPoints
+      return this.log[index].totalScore += this.current_frame.score[0]
     }
   }
 };

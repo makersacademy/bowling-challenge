@@ -1,3 +1,5 @@
+"use strict"
+
 function Frame() {
   this.roll = 0;
   this.score = [];

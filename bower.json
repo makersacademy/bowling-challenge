@@ -1,0 +1,21 @@
+{
+  "name": "bowling-challenge",
+  "description": "Bowling Challenge =================",
+  "main": "app.js",
+  "authors": [
+    "John Chang"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/JohnChangUK/bowling-challenge",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0"
+  }
+}

@@ -1,18 +1,17 @@
 describe('Frame', function() {
   var frame;
 
-
   it('returns a random number between 0 and 10', function(){
     frame = new Frame();
     expect(frame.roll()).toBeLessThan(11);
   });
 
-  it('adds present frame hits to overall score', function(){
-    expect(frame.frameScore()).toEqual(frame.rollResult())
+  it('returns the number of pins standing', function(){
+    expect(frame.pinsRemaining()).toEqual(frame.PINS);
   });
 
-  it('returns the number of pins standing', function(){
-    expect(frame.pinsStanding()).toEqual(frame.PINS);
+  it('returns the total of a frame', function(){
+    expect(frame.total).toEqual([frame.frameTotal()])
   });
 
 xdescribe('Notifies', function(){

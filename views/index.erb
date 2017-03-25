@@ -1,18 +1,107 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Bowling Challange</title>
+<head>
+  <meta charset="utf-8">
+  <title>Bowling Challange</title>
+  <script src="js/lib/jquery-3.2.0.min.js"></script>
+  <script src="js/Frame.js"></script>
+  <script src="js/Game.js"></script>
+  <script src="js/LastFrame.js"></script>
+  <script src="js/Roll.js"></script>
+  <script async src="js/index.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/reset.css">
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+  <h3>Welcome to Bowling Challenge</h3>
+  <button type="button" id="play">Play</button>
+  <button type="button" id="getscore">Get Score</button>
 
-    <script src="js/lib/jquery-3.2.0.min.js"></script>
-    <script src="js/Frame.js"></script>
-    <script src="js/Game.js"></script>
-    <script src="js/LastFrame.js"></script>
-    <script src="js/Roll.js"></script>
-  </head>
-  <body>
-    <h3>Welcome to Bowling Challenge</h3>
-    <button type="button" name="play">Play</button>
-    <button type="button" name="getscore">Get Score</button>
-  </body>
+  <div style="display:table-cell;">
+    <div id="bgMiddle"></div>
+  </div>
+
+  <h1 class="ribbon">
+    <strong class="ribbon-content">Super Awesome Bowling Scoresheet</strong>
+  </h1>
+
+  <div class='panel-body'>
+    <div style="padding-bottom: 50px; font-size: 21px;">Enter Your Score</div>
+    <button id="btn0" class="btn" onclick="roll(0)">0</button>
+    <button id="btn1" class="btn" onclick="roll(1)">1</button>
+    <button id="btn2" class="btn" onclick="roll(2)">2</button>
+    <button id="btn3" class="btn" onclick="roll(3)">3</button>
+    <button id="btn4" class="btn" onclick="roll(4)">4</button>
+    <button id="btn5" class="btn" onclick="roll(5)">5</button>
+    <button id="btn6" class="btn" onclick="roll(6)">6</button>
+    <button id="btn7" class="btn" onclick="roll(7)">7</button>
+    <button id="btn8" class="btn" onclick="roll(8)">8</button>
+    <button id="btn9" class="btn" onclick="roll(9)">9</button>
+    <button id="btn10" class="btn" onclick="roll(10)">10</button>
+  </div>
+
+  <div class="bowlingTable">
+    <table >
+      <thead>
+        <tr>
+          <th colspan="2">Frame 1</th>
+          <th colspan="2">Frame 2</th>
+          <th colspan="2">Frame 3</th>
+          <th colspan="2">Frame 4</th>
+          <th colspan="2">Frame 5</th>
+          <th colspan="2">Frame 6</th>
+          <th colspan="2">Frame 7</th>
+          <th colspan="2">Frame 8</th>
+          <th colspan="2">Frame 9</th>
+          <th colspan="3">Frame 10</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="f1r1">0</td>
+          <td id="f1r2">0</td>
+          <td id="f2r1">0</td>
+          <td id="f2r2">0</td>
+          <td id="f3r1">0</td>
+          <td id="f3r2">0</td>
+          <td id="f4r1">0</td>
+          <td id="f4r2">0</td>
+          <td id="f5r1">0</td>
+          <td id="f5r2">0</td>
+          <td id="f6r1">0</td>
+          <td id="f6r2">0</td>
+          <td id="f7r1">0</td>
+          <td id="f7r2">0</td>
+          <td id="f8r1">0</td>
+          <td id="f8r2">0</td>
+          <td id="f9r1">0</td>
+          <td id="f9r2">0</td>
+          <td id="f10r1">0</td>
+          <td id="f10r2">0</td>
+          <td id="f10r3">0</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td id="f1score" colspan="2">0</td>
+          <td id="f2score" colspan="2">0</td>
+          <td id="f3score" colspan="2">0</td>
+          <td id="f4score" colspan="2">0</td>
+          <td id="f5score" colspan="2">0</td>
+          <td id="f6score" colspan="2">0</td>
+          <td id="f7score" colspan="2">0</td>
+          <td id="f8score" colspan="2">0</td>
+          <td id="f9score" colspan="2">0</td>
+          <td id="f10score" colspan="3">0</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div style="text-align:center;">
+    <button id="newgame">New Scoresheet</button>
+  </div>
+
+</body>
 </html>

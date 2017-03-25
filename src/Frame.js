@@ -1,3 +1,5 @@
+(function(exports){
+
 'use strict';
 
 function Frame (numberOfRolls = 2){
@@ -57,3 +59,6 @@ Frame.prototype.calculateFrameScore = function() {
 Frame.prototype.hasStrike = function(){
   return this.getRolls()[0].isStrike();
 };
+
+exports.Frame = Frame;
+})(this);

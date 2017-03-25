@@ -1,3 +1,5 @@
+(function(exports){
+
 'use strict';
 
 function LastFrame() {
@@ -24,3 +26,6 @@ LastFrame.prototype._currentRoll = function () {
   });
   return currentRoll;
 };
+
+exports.LastFrame = LastFrame;
+})(this);

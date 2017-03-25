@@ -1,3 +1,5 @@
+(function(exports){
+
 'use strict';
 
 function Roll() {
@@ -21,3 +23,6 @@ Roll.prototype.isSet = function(){
 Roll.prototype.isStrike = function(){
   return (this.pinsKnocked === 10);
 };
+
+exports.Roll = Roll;
+})(this);

@@ -1,3 +1,5 @@
+(function(exports){
+
 'use strict';
 
   function Game (){
@@ -82,3 +84,6 @@
              rollsFromFrame1[2].getPinsKnocked();
     }
   };
+
+  exports.Game = Game;
+  })(this);

@@ -23,28 +23,28 @@ describe('Frame', function() {
 
 
   describe("Strike", function() {
+    x = 0;
     beforeEach(function(){
-      spyOn(frame, 'rollResult').and.returnValue(10)
+      spyOn(frame, 'roll').and.returnValue(10)
     });
 
     it('is registered on the first roll when all ten pins have been knocked down.', function(){
       spyOn(frame, 'checkWhichRoll').and.returnValue(1)
-      expect(frame.strike()).toBe(true)
+      expect(frame.bonus()).toBe(true);
     });
 
     it('is not registered on the second roll when all ten pins have been knocked down.', function(){
       spyOn(frame, 'checkWhichRoll').and.returnValue(2)
-      expect(frame.strike()).toBe(false)
+      expect(frame.bonus()).toBe(false);
     });
   });
 
   describe("Spare", function() {
     it('is registered on the second roll when all ten pins have been knocked down.', function(){
-      spyOn(frame, 'rollResult').and.returnValue(10)
       spyOn(frame, 'checkWhichRoll').and.returnValue(2)
-      expect(frame.spare()).toBe(true)
+      spyOn(frame, 'roll').and.returnValue(10)
+      expect(frame.bonus()).toBe(false);
     });
   });
-
 
 });

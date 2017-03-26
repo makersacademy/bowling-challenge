@@ -21,8 +21,8 @@
     var bonus = 0;
 
     for (var i = 0; i < 10; i++){
-      console.log(`index:${i}`);
-      console.log(this.getFrames()[i]);
+      // console.log(`index:${i}`);
+      // console.log(this.getFrames()[i]);
       var thisFrame = this.getFrames()[i];
       var nextFrame = this.getFrames()[i+1] || thisFrame;
       var nextToNextFrame = this.getFrames()[i+2] || nextFrame;
@@ -33,7 +33,7 @@
         bonus = this._calculateBonus(thisFrame, nextFrame, nextToNextFrame)
         totalScore += bonus
       }// end if done
-       console.log(`totalScore: ${totalScore}`);
+      //  console.log(`totalScore: ${totalScore}`);
     } //end for
     return totalScore;
   };
@@ -87,12 +87,12 @@ Game.prototype._calculateBonus = function (thisFrame, nextFrame, nextToNextFrame
 
   if (thisFrame.hasStrike()) {
     bonus = this._getStrikeBonus(nextFrame, nextToNextFrame) || 'x'
-    console.log(`strike : ${bonus}`);
+    // console.log(`strike : ${bonus}`);
   }
 
   if (thisFrame.isSpare()) {
     bonus = this._getSpareBonue(thisFrame, nextFrame) || '/'
-    console.log(`spare: ${bonus}`);
+    // console.log(`spare: ${bonus}`);
   }
 
   return bonus;

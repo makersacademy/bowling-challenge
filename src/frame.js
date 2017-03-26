@@ -1,7 +1,7 @@
 function Frame() {
   this._roll = null;
-  this._firstBall = 0;
-  this._secondBall = 0;
+  this._firstBall = null;
+  this._secondBall = null;
   this._isComplete = false;
 }
 
@@ -18,6 +18,9 @@ Frame.prototype.currentRoll = function() {
 };
 
 Frame.prototype.bowlFirstBall = function(numberofBowledPins) {
+  if(this._firstBall) {
+    throw new Error("You have already bowled your first ball for this frame.")
+  }
   if(numberofBowledPins > 10) {
     throw new Error("Attempted to knock over more than 10 pins.");
   }
@@ -32,6 +35,9 @@ Frame.prototype.bowlFirstBall = function(numberofBowledPins) {
 };
 
 Frame.prototype.bowlSecondBall = function(numberofBowledPins) {
+  if(this._secondBall) {
+    throw new Error("You have already bowled your second ball for this frame.")
+  }
   if(this._firstBall + numberofBowledPins > 10) {
     throw new Error("Attempted to knock over more than 10 pins.");
   }

@@ -16,14 +16,15 @@ describe("Feature Test", function() {
     expect(myShortGame.checkAllScores()[3].currentRoll()).toEqual(5);
   });
 
-  it("bowls 3 frames and calculates game total WITHOUT BONUSES", function() {
-    myShortGame = specHelper.shortGame();
-    expect(myShortGame.calculateGameTotal()).toEqual(47);
-  });
-
   describe("Bonus scoring", function() {
+
+    it("bowls 3 frames and calculates game total", function() {
+      myShortGame = specHelper.shortGame();
+      expect(myShortGame.calculateGameTotal()).toEqual(47);
+    });
+
     describe("Spare bonuses", function() {
-      it("adds a 2 frame game's spare's bonus score", function() {
+      it("adds a 2 frame game's spare bonus score", function() {
         spareBonusGame = specHelper.spareBonusScoringGame();
         expect(spareBonusGame.calculateGameTotal()).toEqual(23);
       });

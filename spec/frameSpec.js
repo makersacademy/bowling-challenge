@@ -24,6 +24,17 @@ describe("Frame", function() {
       expect(frame.bowlSecondBall(3)).toEqual(3);
     });
 
+    it("doesn't allow rolling first ball again in the same frame", function() {
+      frame.bowlFirstBall(4);
+      expect( function(){frame.bowlFirstBall(5)}).toThrowError("You have already bowled your first ball for this frame.")
+    });
+
+    it("doesn't allow rolling second ball again in the same frame", function() {
+      frame.bowlFirstBall(6);
+      frame.bowlSecondBall(2);
+      expect( function(){frame.bowlSecondBall(2)}).toThrowError("You have already bowled your second ball for this frame.")
+    });
+
     describe("More than 10 pins can't be bowled over", function() {
       it("In first roll, doesn't allow more than 10 pins to be knocked over", function() {
         expect( function(){frame.bowlFirstBall(11)}).toThrowError("Attempted to knock over more than 10 pins.")

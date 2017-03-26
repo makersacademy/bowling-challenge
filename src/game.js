@@ -33,6 +33,5 @@ Game.prototype.calculateGameTotal = function() {
       this._scoreLog[i] = 10 + this._frames[i+1]._firstBall + this._frames[i+1]._secondBall;
     }
   }
-  var sum = this._scoreLog.reduce((a, b) => a + b, 0);
-  return sum;
+  return this._scoreLog.reduce((a, b) => a + b, 0);
 };

@@ -17,7 +17,7 @@ describe("Feature Test", function() {
 
   it("bowls 3 frames and calculates game total WITHOUT BONUSES", function() {
     myShortGame = specHelper.shortGame();
-    expect(myShortGame.calculateGameTotal()).toEqual(27)
-  })
+    expect(myShortGame.calculateGameTotal()).toEqual(27);
+  });
 
 });

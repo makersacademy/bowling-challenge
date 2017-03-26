@@ -2,6 +2,7 @@ function Frame() {
   this._roll = null;
   this._firstBall = 0;
   this._secondBall = 0;
+  this._isComplete = false;
 }
 
 Frame.prototype.calculateFrameTotal = function() {
@@ -16,13 +17,31 @@ Frame.prototype.currentRoll = function() {
   return this._roll;
 };
 
+Frame.prototype.isComplete = function() {
+  return this._isComplete;
+};
+
 Frame.prototype.bowlFirstBall = function(numberofBowledPins) {
-  this._firstBall = numberofBowledPins;
-  return numberofBowledPins;
+  if(numberofBowledPins > 10) {
+    throw new Error("Attempted to knock over more than 10 pins.");
+  } else if(numberofBowledPins === 10) {
+    this._isComplete = true;
+    this._firstBall = numberofBowledPins;
+    this.calculateFrameTotal();
+    return numberofBowledPins;
+  } else {
+    this._firstBall = numberofBowledPins;
+    return numberofBowledPins;
+  }
 };
 
 Frame.prototype.bowlSecondBall = function(numberofBowledPins) {
+  if(this._firstBall + numberofBowledPins > 10) {
+    throw new Error("Attempted to knock over more than 10 pins.");
+  }
   this._secondBall = numberofBowledPins;
+  this._isComplete = true;
+  this.calculateFrameTotal();
   return numberofBowledPins;
 };
 

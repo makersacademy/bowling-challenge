@@ -2,31 +2,20 @@
 
 'use strict';
 
-function Frame (numberOfRolls = 2){
-  this.numberOfRolls = numberOfRolls;
-  this.rolls = [];
-  for(var x = 0; x < this.numberOfRolls; x++) {
-    this.rolls.push(new Roll());
-  }
+function Frame (){
+  this.rolls = [new Roll(), new Roll()];
 }
 
 Frame.prototype.isDone = function() {
-  if (this.getRolls().length === 3){
-    if ( !this.hasStrike() &&
-            this.getRolls()[0].isSet() &&
-            this.getRolls()[1].isSet() &&
-            !(this.calculateFrameScore() === 10)) {
-          return true;
-      }
-  }
   return (
-          (this.getRolls().length === 2 && this.getRolls()[0].isStrike()) ||
+          this.hasStrike() ||
           (this.getRolls().every(roll => (roll.isSet() === true)))
         );
 };
 
 Frame.prototype.isSpare = function() {
-  return (this.calculateFrameScore() === 10);
+  return (this.getRolls().every(roll => (roll.isSet() === true)) &&
+          this.calculateFrameScore() === 10);
 };
 
 Frame.prototype.getRolls = function() {
@@ -45,19 +34,17 @@ Frame.prototype._currentRoll = function() {
 };
 
 Frame.prototype.calculateFrameScore = function() {
-  if(this.hasStrike()) {
-    return 10;
-  }
-
-  var frameScore = 0
-  for (var index = 0; index < 2; index++) {
-    frameScore += this.getRolls()[index].getPinsKnocked()
-  }
-  return frameScore
+  return this.getRolls().reduce(function(acc, roll){
+    return acc + roll.getPinsKnocked();
+  }, 0);
 };
 
 Frame.prototype.hasStrike = function(){
   return this.getRolls()[0].isStrike();
+};
+
+Frame.prototype.getRollScore = function (index) {
+  return this.getRolls()[index].getPinsKnocked();
 };
 
 exports.Frame = Frame;

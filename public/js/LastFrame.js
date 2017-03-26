@@ -15,7 +15,7 @@ LastFrame.prototype.play = function (pinsKnocked) {
 };
 
 LastFrame.prototype.rollsLeft = function () {
-  if (!this.isSpare() && !this.hasStrike()){
+  if (this.getRolls()[0].isSet() && this.getRolls()[1].isSet() && !this.isSpare() && !this.hasStrike()){
     return 0
   }
   return this.getRolls().filter(function (roll) {
@@ -31,11 +31,11 @@ LastFrame.prototype._currentRoll = function () {
 };
 
 LastFrame.prototype.isSpare = function () {
-  return (this.getRolls()[0].getPinsKnocked()+ this.getRolls()[1].getPinsKnocked() === 10)
+  return (this.getRollScore(0)+ this.getRollScore(1) === 10)
 };
 
 LastFrame.prototype.hasStrike = function () {
-  return (this.getRolls()[0].getPinsKnocked() === 10)
+  return (this.getRollScore(0) === 10)
 };
 
 LastFrame.prototype.isDone = function () {
@@ -43,9 +43,14 @@ LastFrame.prototype.isDone = function () {
 };
 
 LastFrame.prototype.calculateFrameScore = function () {
-  return this.getRolls().reduce(function(acc, roll){
-    return acc + roll.getPinsKnocked();
-  }, 0);
+  if (this.hasStrike()){
+    return this.getRollScore(0)
+  }
+  return (this.getRollScore(0) + this.getRollScore(1))
+};
+
+LastFrame.prototype.getRollScore = function (index) {
+  return this.getRolls()[index].getPinsKnocked();
 };
 
 exports.LastFrame = LastFrame;

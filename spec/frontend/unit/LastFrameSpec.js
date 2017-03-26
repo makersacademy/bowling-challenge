@@ -44,6 +44,10 @@ describe('LastFrame', function () {
 
   describe('#isSpare', function(){
 
+    it('returns false to begin with', function(){
+      expect(lastFrame.isSpare()).toBe(false);
+    });
+
     it('returns true when frameScore is 10', function(){
       lastFrame.play(4);
       lastFrame.play(6);
@@ -106,4 +110,15 @@ describe('LastFrame', function () {
     });
   });
 
+  describe('#getRollScore', function(){
+
+    it('returns the score for that roll', function(){
+      lastFrame.play(5);
+      lastFrame.play(5);
+      lastFrame.play(4)
+      expect(lastFrame.getRollScore(0)).toEqual(5);
+      expect(lastFrame.getRollScore(2)).toEqual(4);
+    });
+  });
+    
 });

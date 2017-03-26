@@ -92,4 +92,15 @@ describe('Frame', function(){
     });
   });
 
+  describe('#getRollScore', function(){
+
+    it('returns the score for that roll', function(){
+      frame.play(5);
+      frame.play(4);
+      expect(frame.getRollScore(0)).toEqual(5);
+      expect(frame.getRollScore(1)).toEqual(4);
+    });
+
+  });
+
 });

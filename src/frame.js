@@ -17,34 +17,26 @@ Frame.prototype.currentRoll = function() {
   return this._roll;
 };
 
-Frame.prototype.bowlFirstBall = function(numberofBowledPins) {
-  if(this._firstBall) {
-    throw new Error("You have already bowled your first ball for this frame.")
-  }
-  if(numberofBowledPins > 10) {
-    throw new Error("Attempted to knock over more than 10 pins.");
-  }
-  this._firstBall = numberofBowledPins;
+Frame.prototype.bowlFirstBall = function(bowledPins) {
+  this._checkIfFirstBallAlreadyBowled();
+  this._checkLessThan10Pins(bowledPins);
+  this._firstBall = bowledPins;
   if(this._isStrike()) {
     this._isComplete = true;
     this.calculateFrameTotal();
-    return numberofBowledPins;
+    return bowledPins;
   } else {
-    return numberofBowledPins;
+    return bowledPins;
   }
 };
 
-Frame.prototype.bowlSecondBall = function(numberofBowledPins) {
-  if(this._secondBall) {
-    throw new Error("You have already bowled your second ball for this frame.")
-  }
-  if(this._firstBall + numberofBowledPins > 10) {
-    throw new Error("Attempted to knock over more than 10 pins.");
-  }
-  this._secondBall = numberofBowledPins;
+Frame.prototype.bowlSecondBall = function(bowledPins) {
+  this._checkifSecondBallAlreadyBowled();
+  this._checkLessThan10Pins(bowledPins);
+  this._secondBall = bowledPins;
   this._isComplete = true;
   this.calculateFrameTotal();
-  return numberofBowledPins;
+  return bowledPins;
 };
 
 Frame.prototype.isComplete = function() {
@@ -53,4 +45,22 @@ Frame.prototype.isComplete = function() {
 
 Frame.prototype._isStrike = function() {
   return (this._firstBall === 10) ? true : false
-}
+};
+
+Frame.prototype._checkIfFirstBallAlreadyBowled = function() {
+  if(this._firstBall) {
+    throw new Error("You have already bowled your first ball for this frame.")
+  }
+};
+
+Frame.prototype._checkifSecondBallAlreadyBowled = function() {
+  if(this._secondBall) {
+    throw new Error("You have already bowled your second ball for this frame.")
+  }
+};
+
+Frame.prototype._checkLessThan10Pins = function(bowledPins) {
+  if(this._firstBall + bowledPins > 10) {
+    throw new Error("Attempted to knock over more than 10 pins.");
+  }
+};

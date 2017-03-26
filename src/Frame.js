@@ -1,6 +1,7 @@
 'use strict';
 
 function Frame(id){
+  this.MAX_SCORE = 10
   this.id = id;
   this.totalFrame = [];
 }
@@ -12,16 +13,16 @@ Frame.prototype.inputBowls = function(first, second) {
 };
 
 Frame.prototype.checkNumberOfPins = function(pins) {
-  if (pins > 10) { throw new Error ("Score cannot be over 10"); }
+  if (pins > this.MAX_SCORE) { throw new Error ("Score cannot be over 10"); }
 };
 
 Frame.prototype.isStrike = function(pins) {
-  return pins === 10 ? true : false;
+  return pins === this.MAX_SCORE
 };
 
 Frame.prototype.isSpare = function() {
   return this.totalFrame.reduce(function (first, second) {
-    return first + second === 10 ? true : false;
+    return first + second === this.MAX_SCORE
   });
 };
 

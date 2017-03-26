@@ -1,5 +1,5 @@
 function Game() {
-  this.currentFrame = 1
+  this.currentFrame = 1;
   this.latestRoll;
   this.standingPins = 10;
   this.currentTurn = 0;
@@ -45,8 +45,6 @@ Game.prototype.bonusSparesRoll = function () {
   this.bonusScoreAdded = 10 + this.latestRoll;
   this.totalScores.pop();
   this.totalScores.push([this.bonusScoreAdded]);
-  this.bonusSpare = false;
-  this.standingPins = this.standingPins - this.latestRoll;
   this.currentTurn++;
   this.latestScore.push(this.latestRoll);
 };
@@ -56,26 +54,19 @@ Game.prototype.bonusRoll = function () {
   if ((this.latestRoll === 10) && (this.currentTurn === 0)) {
     if (this.bonusStrikeConsec === true) {
       this.totalScores.push([20]);
-      this.bonusStrikeConsec = false;
-      this.currentFrame++;
     }
     else {
-      this.bonusScoreAdded = 10;
       this.currentFrame++;
     }
   }
   else if ((this.latestRoll < 10) && (this.currentTurn === 0)) {
-    this.standingPins = this.standingPins - this.latestRoll;
-    this.bonusScoreAdded = this.bonusScoreAdded + this.latestRoll;
+    this.bonusScoreAdded = (this.bonusScoreAdded + this.latestRoll);
     this.currentTurn++;
     this.latestScore.push(this.latestRoll);
   }
   else if ((this.latestRoll <= 10) && (this.currentTurn === 1)) {
-    this.bonusScoreAdded = this.bonusScoreAdded + this.latestRoll;
-    this.currentFrame++;
-    this.currentTurn = 0;
-    this.standingPins = 10;
-    this._addBothRollsToScore();
+    this.bonusScoreAdded = (this.bonusScoreAdded + this.latestRoll);
+    this._nextTurn();
   }
 };
 
@@ -84,7 +75,7 @@ Game.prototype.firstRoll = function () {
     this.bonusRoll();
   }
   else {
-    this.standingPins = this.standingPins - this.latestRoll;
+    this.standingPins = (this.standingPins - this.latestRoll);
     this.currentTurn++;
     this.latestScore.push(this.latestRoll);
   }
@@ -95,10 +86,7 @@ Game.prototype.secondRoll = function() {
     this.bonusRoll();
   }
   else {
-    this.currentFrame++;
-    this.currentTurn = 0;
-    this.standingPins = 10;
-    this._addBothRollsToScore();
+    this._nextTurn();
   }
 };
 
@@ -106,14 +94,23 @@ Game.prototype._addBothRollsToScore = function () {
   if (this.bonusStrike === true) {
     this.bonusScores.push(this.bonusScoreAdded);
     this.latestScore.push(this.latestRoll);
-    this.totalScores.push(this.bonusScores);
-    this.totalScores.push(this.latestScore);
-    this.latestScore = [];
-    this.bonusStrike = false;
+    this.totalScores.push(this.bonusScores, this.latestScore);
+    this._resetStrike();
   }
   else {
     this.latestScore.push(this.latestRoll);
     this.totalScores.push(this.latestScore);
-    this.latestScore = [];
+    this._resetStrike();
   }
+};
+
+Game.prototype._resetStrike = function () {
+  this.latestScore = [];
+  this.bonusStrike = false;
+};
+
+Game.prototype._nextTurn = function () {
+  this.currentFrame++;
+  this.currentTurn = 0;
+  this._addBothRollsToScore();
 };

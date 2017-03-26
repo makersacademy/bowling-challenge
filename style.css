@@ -1,20 +1,36 @@
+html {
+  background-image: url("https://images.unsplash.com/photo-1422913687378-69480576789e");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #9ab5d1;
+  text-align: center;
+}
+
 body {
-  background-color: pink;
+  background-color: #55B3F3;
   width: 800px;
   margin-left: auto;
   margin-right: auto;
-  font-family: 'Fredoka One';
+  font-family: 'Montserrat', sans-serif;
   letter-spacing: 2px;
-  color: rgba(48, 64, 84, 1.0);
+  border-color: white;
+  padding: 10px;
+  border-radius: 15px 50px;
+  border-style: solid;
+  border-width: 5px;
 }
 
 div {
   display: inline-block;
-  padding: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding bottom: 0px;
+  padding-right: 20px;
 }
 
 button {
-  font-family: 'Fredoka One';
+  font-family: 'Montserrat', sans-serif;
   color: inherit;
   font-size: 20px;
   border-style: none;
@@ -23,6 +39,10 @@ button {
   margin: 10px;
   padding: 10px;
   font-style: bold;
+}
+
+button:focus {
+  outline: 0;
 }
 
 img {

@@ -18,9 +18,15 @@ $( document ).ready(function() {
     $ ("#frame-8").text(game.frames[7]);
     $ ("#frame-9").text(game.frames[8]);
     $ ("#frame-10").text(game.frames[9]);
-    $ ("#frame-11").text(game.frames[10]);
+    if (game.frames[9] != null) {
+      if (game._checkLastFrame() !== false) {
+        $ ("#frame-11").text(game.frames[10]);
+      };
+    };
+
     $ ("#totalScore").text(score.runningScore);
   });
+
 
   $ ("#reset").click(function() {
     game.resetGame();

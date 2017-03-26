@@ -22,4 +22,9 @@ describe("Frame", function() {
     frame.bowl();
     expect(frame.currentFrame[0] + frame.currentFrame[1]).toBeLessThan(11);
   })
+
+  it("has a special single roll for players bowling a spare in 10th frame", function() {
+    frame.bonusFrame();
+    expect(frame.currentFrame.length).toEqual(1)
+  })
 })

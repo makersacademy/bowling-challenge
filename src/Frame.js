@@ -18,3 +18,8 @@ Frame.prototype.calculateBowlTwo = function(bowlOne) {
 Frame.prototype.clearFrame = function() {
   this.currentFrame = [];
 }
+
+Frame.prototype.bonusFrame = function() {
+  var bonusBowl = Math.floor((Math.random() * 10) + 1);
+  this.currentFrame.push(bonusBowl);
+}

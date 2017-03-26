@@ -35,10 +35,6 @@ Frame.prototype.bowlFirstBall = function(numberofBowledPins) {
   }
 };
 
-Frame.prototype.strike = function() {
-
-}
-
 Frame.prototype.bowlSecondBall = function(numberofBowledPins) {
   if(this._firstBall + numberofBowledPins > 10) {
     throw new Error("Attempted to knock over more than 10 pins.");
@@ -50,5 +46,5 @@ Frame.prototype.bowlSecondBall = function(numberofBowledPins) {
 };
 
 Frame.prototype._isStrike = function() {
-  return (this._firstBall === 10 && this._secondBall === 0) ? true : false
+  return (this._firstBall === 10) ? true : false
 }

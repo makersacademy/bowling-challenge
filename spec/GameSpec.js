@@ -18,6 +18,11 @@ describe('Game', function() {
   });
 
   it('each frame consists of a maximum of two rolls', function() {
+    for (var i=0; i < 2; i++) {
+      game.bowl();
+    };
+    expect(game.frames.length).toEqual(1);
+
   });
 
   it('the max number of pins that can be knocked down is ten', function() {

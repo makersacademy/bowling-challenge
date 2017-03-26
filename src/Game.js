@@ -8,27 +8,42 @@ Game.prototype.roll = function(pinsKnockedDown) {
   this.currentRoll++;
 };
 
-Game.prototype.isSpare = function(frameNumber) {
-  return this.rolls[frameNumber] + this.rolls[frameNumber + 1] == 10
+Game.prototype.isSpare = function(rollIndex) {
+  return this.rolls[rollIndex] + this.rolls[rollIndex + 1] == 10
 };
+
+Game.prototype.isStrike = function(rollIndex) {
+  return this.rolls[rollIndex] == 10
+};
+
+Game.prototype.sumOfPinsInFrame = function(rollIndex) {
+  return this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+}
+
+Game.prototype.spareBonus = function(rollIndex) {
+  return this.rolls[rollIndex + 2];
+}
+
+Game.prototype.strikeBonus = function(rollIndex) {
+  return this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+}
 
 Game.prototype.score = function() {
 
   var total = 0;
-  var frameNumber = 0;
+  var rollIndex = 0;
   for (var frame = 0; frame < 10; frame++) {
-    if (this.rolls[frameNumber] == 10) {
-      total += 10 + this.rolls[frameNumber + 1]
-                  + this.rolls[frameNumber + 2];
-      frameNumber++;
+    if (this.isStrike(rollIndex)) {
+      total += 10 + this.strikeBonus(rollIndex);
+      rollIndex++;
     }
-    else if (this.isSpare(frameNumber)) {
-      total += 10 + this.rolls[frameNumber + 2];
-      frameNumber += 2;
+    else if (this.isSpare(rollIndex)) {
+      total += 10 + this.spareBonus(rollIndex);
+      rollIndex += 2;
     }
     else {
-    total += this.rolls[frameNumber] + this.rolls[frameNumber + 1];
-    frameNumber += 2;
+      total += this.sumOfPinsInFrame(rollIndex);
+      rollIndex += 2;
     }
   }
   return total;

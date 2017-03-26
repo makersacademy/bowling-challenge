@@ -50,6 +50,11 @@ describe("Game", function() {
       expect(game.score()).toEqual(22);
     });
 
+    it("scores perfect game", function() {
+      rollMany(13, 10);
+      expect(game.score()).toEqual(300);
+    });
+
   });
 
 });

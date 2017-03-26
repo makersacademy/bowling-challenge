@@ -27,7 +27,7 @@ Frame.prototype.checkUserInput = function(points) {
   if (points > 10) {
     throw "Maximum score exceeded, please input a score of less than 10";
   };
-  if (this.score[0] + points > 10) {
+  if ((this.score[0] + points) > 10) {
     throw "Maximum score for frame exceeded, rolls must add up to 10 or less";
   };
 };

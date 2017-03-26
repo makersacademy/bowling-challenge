@@ -21,16 +21,12 @@ Game.prototype.addNewFrame = function(first, second) {
 
 Game.prototype.calculateScore = function() {
   return this.frames.reduce(function(memo, frame, index, arr) {
+    if (arr[index].isStrike()) {
+      return (memo + frame.totalFrameScore(arr[index + 1], arr[index + 2])) + arr[index + 1].totalFrameScore();
+    }
     if (arr[index].isSpare()) {
       return (memo + frame.totalFrameScore(arr[index + 1], arr[index + 2])) + arr[index + 1]._firstRoll();
-    } else {
-      return memo + frame.totalFrameScore(arr[index + 1], arr[index + 2]);
     }
-
-    // return arr[0].isStrike(); // This is what I should be checking!
+    return memo + frame.totalFrameScore(arr[index + 1], arr[index + 2]);
   }, 0);
-
-  // Frame.prototype.spareBonus = function () {
-  //
-  // };
 };

@@ -47,11 +47,18 @@ describe("BowlingGame", function() {
       expect(game.calculateScore()).toEqual(23);
     });
 
-    it ("calculates a game with spares", function() {
+    it("calculates a game with spares", function() {
       game.addNewFrame(5, 5);
       game.addNewFrame(2, 8);
       game.addNewFrame(4, 3);
       expect(game.calculateScore()).toEqual(33);
     });
+
+    it("calculates a game with strikes", function() {
+      game.addNewFrame(10, 0);
+      game.addNewFrame(10, 0);
+      game.addNewFrame(4, 3);
+      expect(game.calculateScore()).toEqual(44);
+    })
   });
 });

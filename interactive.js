@@ -21,12 +21,7 @@ $( document ).ready(function() {
 
     $ ("#which-roll").text(x);
 
-    $ ("#pins-standing").text(frame.PINS);
-    $ ("#frame-total").text(0);
-
-    $ ("#hits").text(0);
-
-    $ ("#frame-number").text(frameNumber);
+    $ ("#grand-total").text(game.grandTotal());
 
   };
 

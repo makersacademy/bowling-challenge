@@ -30,10 +30,10 @@ Frame.prototype.frameTotal = function(hits){
 }
 
 Frame.prototype.bonus = function(){
-  // return this.checkWhichRoll() == 2 ? console.log("STRIKE!") : console.log("SPARE!")
-  return this.checkWhichRoll() == 1 ? true : false
+  return this.checkWhichRoll() == 2 ? console.log("STRIKE!") : console.log("SPARE!")
+  // return this.checkWhichRoll() == 1 ? true : false
 };
 
 Frame.prototype.checkWhichRoll = function(){
-  return $.fn.helper();
+  return $.fn.helper();//
 };

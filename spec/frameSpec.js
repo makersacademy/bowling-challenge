@@ -41,6 +41,8 @@ describe('Frame', function() {
       spyOn(frame, 'roll').and.returnValue(10)
       expect(frame.bonus()).toBe(false);
     });
+
+
   });
 
 });

@@ -24,11 +24,11 @@ Frame.prototype.isSpare = function() {
   return this.totalFrameScore() === this.MAX_SCORE;
 };
 
-// Frame.prototype.firstRoll = function () {
-//   return this.totalFrame.reduce(function (first, second) {
-//     return first
-//   });
-// };
+Frame.prototype.firstRoll = function () {
+  return this.totalFrame.reduce(function (first, second) {
+    return first
+  });
+};
 
 Frame.prototype.totalFrameScore = function() {
   return this.totalFrame.reduce((first, second) => first + second)

@@ -44,9 +44,9 @@ describe ("Frame", function() {
       expect(frame.totalFrameScore()).toEqual(6);
     });
 
-    // it("returns the first roll of the frame", function() {
-    //   frame.inputBowls(5, 1)
-    //   expect(frame.firstRoll()).toEqual(5);
-    // });
+    it("returns the first roll of the frame", function() {
+      frame.inputBowls(5, 1)
+      expect(frame.firstRoll()).toEqual(5);
+    });
   });
 });

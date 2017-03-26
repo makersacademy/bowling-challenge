@@ -24,10 +24,32 @@ describe('Game', function(){
       expect(game.currentFrame).toEqual(2)
     });
 
+    it('Check to see if this works after multiple rolls', function(){
+      game.rollBall(10);
+      game.rollBall(6);
+      game.rollBall(4);
+      game.rollBall(3);
+      game.rollBall(7);
+      game.rollBall(10);
+      expect(game.currentFrame).toEqual(5)
+    });
+
     it('The score will be recorded', function() {
       game.rollBall(4);
       game.rollBall(5);
       expect(game.totalScores).toEqual([[4,5]])
+    });
+
+    it('Check to see multiple scores will be recorded', function(){
+      game.rollBall(10);
+      game.rollBall(4);
+      game.rollBall(5);
+      game.rollBall(10);
+      game.rollBall(2);
+      game.rollBall(8);
+      game.rollBall(3);
+      game.rollBall(4);
+      expect(game.totalScores).toEqual([[19], [4,5], [20], [13], [3,4]])
     });
   });
 

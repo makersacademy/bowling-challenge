@@ -20,7 +20,6 @@ describe('Game', function(){
 
     it('should contain 10 instances of Frame', function(){
       expect(game.getFrames().length).toEqual(10);
-      expect(game.getFrames().every(frame => frame instanceof Frame)).toBe(true);
     });
 
   });

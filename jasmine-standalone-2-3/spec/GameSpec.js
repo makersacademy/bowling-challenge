@@ -40,4 +40,9 @@ describe("Game", function(){
     expect(game.score()).toEqual(65);
   })
 
+  it("calculates the score of a game ending with spare", function(){
+    setUpFrames([10,0],9);
+    setUpFrames([6,4,5],1);
+    expect(game.score()).toEqual(271);
+  })
 });

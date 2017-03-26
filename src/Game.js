@@ -1,49 +1,18 @@
+var Frame = require('../src/frame');
+
 var Game = function() {
-    this.rolls = [];
+  this.frames = [];
 };
 
-Game.prototype.roll = function(pins) {
-    this.rolls.push(pins);
-};
+Game.prototype.roll = function(rolls) {
+  frame = new Frame(rolls)
+    this.frames.push(frame);
+  };
 
-Game.prototype.score = function() {
-    var result = 0;
-    var rollIndex = 0;
-    var game = this;
+  Game.prototype.score = function() {
+    return this.frames.reduce(function(score, frame, index, frames) {
+      return score + frame.total(frames[index + 1], frames[index + 2]);
+    }, 0);
+  };
 
-    for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-      if(strike()) {
-        result += strikeScore();
-        rollIndex ++;
-      } else if(spare()) {
-          result += spareScore();
-          rollIndex += 2;
-      } else {
-          result += normalScore();
-          rollIndex += 2;
-      }
-    };
-
-  return result;
-
-    function strike() {
-        return game.rolls[rollIndex] == 10;
-    }
-
-    function normalScore() {
-        return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
-    };
-
-    function spare() {
-        return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10;
-    };
-
-    function spareScore() {
-        return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
-    };
-
-    function strikeScore() {
-        return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
-    };
-
-};
+module.exports = Game;

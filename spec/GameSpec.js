@@ -1,46 +1,47 @@
-describe('Bowling Game', function() {
+var Frame = require('../src/frame.js');
 
-  var game;
+describe("A frame of bowling", function(){
 
-  beforeEach(function() {
-    game = new Game();
+  it("calculates a total for two roles", function(){
+    var frame = new Frame([1,3]);
+    var next = new Frame([0,0]);
+    expect(frame.total()).toEqual(4);
   });
 
-  it('can roll a gutter game', function() {
-    rollMany(0, 20);
-    expect(game.score()).toBe(0);
+  it("calculates a total for a spare", function(){
+    var frame = new Frame([5,5]);
+    var next = new Frame([5,2]);
+    expect(frame.total(next)).toEqual(15);
   });
 
-  it('can roll all ones', function() {
-    rollMany(1, 20);
-    expect(game.score()).toBe(20);
+  it("calculates a total for a strike", function(){
+    var frame = new Frame([10]);
+    var next = new Frame([5,2]);
+    expect(frame.total(next)).toEqual(17);
   });
 
-  it('can roll a spare', function() {
-    game.roll(5);
-    game.roll(5);
-    game.roll(4);
-    rollMany(0, 17);
-    expect(game.score()).toBe(18)
-  })
-
-  it('can roll a strike', function() {
-    game.roll(10);
-    game.roll(4);
-    game.roll(3);
-    rollMany(0, 16);
-    expect(game.score()).toBe(24);
+  it("calculates a total for two strikes in a row", function(){
+    var frame = new Frame([10]);
+    var next = new Frame([10]);
+    var next_but_next = new Frame([5, 2]);
+    expect(frame.total(next, next_but_next)).toEqual(25);
   });
 
-  it('can roll a perfect game', function() {
-    rollMany(10, 12);
-    expect(game.score()).toBe(300);
+  it("calculates three strikes in a row", function(){
+    var frame = new Frame([10]);
+    var next = new Frame([10]);
+    var next_but_next = new Frame([10]);
+    expect(frame.total(next, next_but_next)).toEqual(30);
   });
 
-  var rollMany = function(pins, rolls) {
-    for (var i = 0; i < rolls; i++) {
-      game.roll(pins);
-    }
-  };
+  it ("calculates a strike in the final frame", function(){
+    var frame = new Frame([10,10,10]);
+    expect(frame.total()).toEqual(30);
+  });
 
+  it ("calculates a strike in the final frame but one", function(){
+    var frame = new Frame([10]);
+    var next = new Frame([10,10,10]);
+    expect(frame.total(next)).toEqual(30);
+  });
 });

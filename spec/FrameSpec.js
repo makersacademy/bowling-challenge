@@ -21,7 +21,7 @@ describe ("Frame", function() {
 
     it("checks if strike", function() {
       expect(frame.isStrike(10)).toEqual(true);
-      expect(frame.isStrike(5)).toEqual(false);
+      expect(frame.isStrike(5, 3)).toEqual(false);
     });
 
     it("puts both rolls into the frame", function() {
@@ -43,5 +43,10 @@ describe ("Frame", function() {
       frame.inputBowls(5, 1)
       expect(frame.totalFrameScore()).toEqual(6);
     });
+
+    // it("returns the first roll of the frame", function() {
+    //   frame.inputBowls(5, 1)
+    //   expect(frame.firstRoll()).toEqual(5);
+    // });
   });
 });

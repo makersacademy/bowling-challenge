@@ -19,9 +19,9 @@ Frame.prototype.framePoints = function() {
 
 Frame.prototype.bonusPoints = function (next_first, next_second) {
   if (this.isStrike()) {
-    if (next_first.isStrike()) {
+    if (next_first.isStrike() && next_second !== undefined) {
       return next_first.rolls[0] + next_second.rolls[0];
-    }
+  }
       return next_first.rolls[0] + next_first.rolls[1];
   } else if (this.isSpare()) {
     return next_first.rolls[0];

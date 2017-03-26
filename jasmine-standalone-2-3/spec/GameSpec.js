@@ -45,4 +45,11 @@ describe("Game", function(){
     setUpFrames([6,4,5],1);
     expect(game.score()).toEqual(271);
   })
+
+  it("calculates the score of a perfect game", function(){
+    setUpFrames([10,0],9);
+    setUpFrames([10,10,10],1);
+    expect(game.score()).toEqual(300);
+  })
+
 });

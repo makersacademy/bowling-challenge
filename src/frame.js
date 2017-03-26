@@ -17,6 +17,14 @@ Frame.prototype.currentRoll = function() {
   return this._roll;
 };
 
+Frame.prototype.firstBall = function() {
+  return this._firstBall;
+}
+
+Frame.prototype.secondBall = function() {
+  return this._secondBall;
+}
+
 Frame.prototype.bowlFirstBall = function(bowledPins) {
   this._checkIfFirstBallAlreadyBowled();
   this._checkLessThan10Pins(bowledPins);

@@ -8,26 +8,28 @@ SpecHelper.prototype.shortGame = function() {
   frame1.bowlFirstBall(4);
   frame1.bowlSecondBall(3);
   myShortGame.addFrame(frame1);
+
   frame2 = new Frame();
   frame2.bowlFirstBall(8);
-  frame2.bowlSecondBall(2); // SPARE
+  frame2.bowlSecondBall(2);
   myShortGame.addFrame(frame2);
+
   frame3 = new Frame();
-  frame3.bowlFirstBall(10); // STRIKE
+  frame3.bowlFirstBall(10);
   myShortGame.addFrame(frame3);
+
   frame4 = new Frame();
   frame4.bowlFirstBall(3);
   frame4.bowlSecondBall(2);
   myShortGame.addFrame(frame4);
   return myShortGame;
-  // 47
 }
 
 SpecHelper.prototype.spareBonusScoringGame = function() {
   testBonusGame = new Game(2);
   frame1 = new Frame();
   frame1.bowlFirstBall(4);
-  frame1.bowlSecondBall(6); // SPARE
+  frame1.bowlSecondBall(6);
   testBonusGame.addFrame(frame1);
 
   frame2 = new Frame();
@@ -35,19 +37,18 @@ SpecHelper.prototype.spareBonusScoringGame = function() {
   frame2.bowlSecondBall(5);
   testBonusGame.addFrame(frame2);
   return testBonusGame;
-  // first frame 10 + next roll 4 + second frame => 10 + 4 + 9 = 23
 }
 
 SpecHelper.prototype.complexSpareBonusScoringGame = function() {
   complexTestBonusGame = new Game(6);
   frame1 = new Frame();
   frame1.bowlFirstBall(4);
-  frame1.bowlSecondBall(6); // SPARE
+  frame1.bowlSecondBall(6);
   complexTestBonusGame.addFrame(frame1);
 
   frame2 = new Frame();
   frame2.bowlFirstBall(4);
-  frame2.bowlSecondBall(6); // SPARE
+  frame2.bowlSecondBall(6);
   complexTestBonusGame.addFrame(frame2);
 
   frame3 = new Frame();
@@ -62,7 +63,7 @@ SpecHelper.prototype.complexSpareBonusScoringGame = function() {
 
   frame5 = new Frame();
   frame5.bowlFirstBall(5);
-  frame5.bowlSecondBall(5); // SPARE
+  frame5.bowlSecondBall(5);
   complexTestBonusGame.addFrame(frame5);
 
   frame6 = new Frame();
@@ -70,13 +71,12 @@ SpecHelper.prototype.complexSpareBonusScoringGame = function() {
   frame6.bowlSecondBall(5);
   complexTestBonusGame.addFrame(frame6);
   return complexTestBonusGame;
-  // => 69
 }
 
 SpecHelper.prototype.strikeBonusScoringGame = function() {
   testBonusGame = new Game(2);
   frame1 = new Frame();
-  frame1.bowlFirstBall(10); // STRIKE
+  frame1.bowlFirstBall(10);
   testBonusGame.addFrame(frame1);
 
   frame2 = new Frame();
@@ -84,6 +84,35 @@ SpecHelper.prototype.strikeBonusScoringGame = function() {
   frame2.bowlSecondBall(5);
   testBonusGame.addFrame(frame2);
   return testBonusGame;
-  // first frame 10 + next roll 4 + next roll 5 + next frame 9
-  // => 28
+}
+
+SpecHelper.prototype.consecutiveStrikeBonusScoringGame = function() {
+  consecutiveStrikeBonusGame = new Game(6);
+  frame1 = new Frame();
+  frame1.bowlFirstBall(10);
+  consecutiveStrikeBonusGame.addFrame(frame1);
+
+  frame2 = new Frame();
+  frame2.bowlFirstBall(4);
+  frame2.bowlSecondBall(6);
+  consecutiveStrikeBonusGame.addFrame(frame2);
+
+  frame3 = new Frame();
+  frame3.bowlFirstBall(10);
+  consecutiveStrikeBonusGame.addFrame(frame3);
+
+  frame4 = new Frame();
+  frame4.bowlFirstBall(10);
+  consecutiveStrikeBonusGame.addFrame(frame4);
+
+  frame5 = new Frame();
+  frame5.bowlFirstBall(5);
+  frame5.bowlSecondBall(5);
+  consecutiveStrikeBonusGame.addFrame(frame5);
+
+  frame6 = new Frame();
+  frame6.bowlFirstBall(3);
+  frame6.bowlSecondBall(5);
+  consecutiveStrikeBonusGame.addFrame(frame6);
+  return consecutiveStrikeBonusGame;
 }

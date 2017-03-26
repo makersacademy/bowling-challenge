@@ -36,7 +36,7 @@ describe("Game", function() {
       expect( function(){game.addFrame(frame)}).toThrowError("Game over!")
     });
 
-    it("calculates the total score before bonuses", function() {
+    it("calculates the total score", function() {
       spyOn(frame, 'currentRoll').and.returnValue(6);
       var shortGame = new Game(3);
       for(var i = 1; i <= 3; i++) {

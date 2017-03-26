@@ -23,6 +23,11 @@ describe("Feature Test", function() {
       expect(myShortGame.calculateGameTotal()).toEqual(47);
     });
 
+    it("bowls a 6 frame game with consecutive strikes and calculates game total", function() {
+      complexTestGame = specHelper.consecutiveStrikeBonusScoringGame();
+      expect(complexTestGame.calculateGameTotal()).toEqual(106);
+    });
+
     describe("Spare bonuses", function() {
       it("adds a 2 frame game's spare bonus score", function() {
         spareBonusGame = specHelper.spareBonusScoringGame();

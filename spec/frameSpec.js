@@ -17,11 +17,13 @@ describe("Frame", function() {
 
   describe("Bowling balls", function() {
     it("stores the first ball's score", function() {
-      expect(frame.bowlFirstBall(5)).toEqual(5);
+      frame.bowlFirstBall(5);
+      expect(frame.firstBall()).toEqual(5);
     });
 
     it("stores the second ball's score", function() {
-      expect(frame.bowlSecondBall(3)).toEqual(3);
+      frame.bowlSecondBall(3);
+      expect(frame.secondBall()).toEqual(3);
     });
 
     it("doesn't allow rolling first ball again in the same frame", function() {
@@ -56,6 +58,11 @@ describe("Frame", function() {
       it("sets the frame as complete after a strike on the first roll", function() {
         frame.bowlFirstBall(10);
         expect(frame.isComplete()).toEqual(true);
+      });
+
+      it("frame is not complete after non-strike on the first roll", function() {
+        frame.bowlFirstBall(3);
+        expect(frame.isComplete()).toEqual(false);
       });
     });
   });

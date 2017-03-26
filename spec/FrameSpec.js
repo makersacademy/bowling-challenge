@@ -46,7 +46,8 @@ describe ("Frame", function() {
 
     it("returns the first roll of the frame", function() {
       frame.inputBowls(5, 1)
-      expect(frame.firstRoll()).toEqual(5);
+      expect(frame._firstRoll()).toEqual(5);
     });
+
   });
 });

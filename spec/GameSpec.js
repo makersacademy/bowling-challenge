@@ -30,19 +30,6 @@ describe("BowlingGame", function() {
       expect(game.frames[0].totalFrame).toEqual([2, 3])
       expect(game.frames[1].totalFrame).toEqual([9, 0])
     });
-
-  //   it("wont allow more than 10 bowls")
-  //   game.addNewFrame(2, 3);
-  //   game.addNewFrame(9, 0);
-  //   game.addNewFrame(2, 3);
-  //   game.addNewFrame(9, 0);
-  //   game.addNewFrame(2, 3);
-  //   game.addNewFrame(9, 0);
-  //   game.addNewFrame(2, 3);
-  //   game.addNewFrame(9, 0);
-  //   game.addNewFrame(2, 3);
-  //   game.addNewFrame(9, 0);
-  //   expect(game.addNewFrame).to
   });
 
   describe("#calculateScore", function() {
@@ -60,10 +47,11 @@ describe("BowlingGame", function() {
       expect(game.calculateScore()).toEqual(23);
     });
 
-    xit ("calculates a game with spares", function() {
+    it ("calculates a game with spares", function() {
+      game.addNewFrame(5, 5);
       game.addNewFrame(2, 8);
       game.addNewFrame(4, 3);
-      expect(game.calculateScore()).toEqual(14);
+      expect(game.calculateScore()).toEqual(33);
     });
   });
 });

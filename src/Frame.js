@@ -24,7 +24,7 @@ Frame.prototype.isSpare = function() {
   return this.totalFrameScore() === this.MAX_SCORE;
 };
 
-Frame.prototype.firstRoll = function () {
+Frame.prototype._firstRoll = function() {
   return this.totalFrame.reduce(function (first, second) {
     return first
   });

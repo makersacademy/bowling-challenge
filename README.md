@@ -1,6 +1,5 @@
 
-# Bowling Challenge
-=================
+# Bowling Challenge: Makers Weekend Challenge 5
 
 ## Task:
 
@@ -16,9 +15,16 @@ Create a nice interactive animated interface with jQuery.
 
 There are three clear areas of responsibility within my bowling game:
 
-(1) creating a frame of two bowls, owned by the Frame function
-(2) calculating score, including bonus scores, owned by the Score function
-(3) user interface function, which calls on score and frame, the Game function
+- One: creating a frame of two bowls, owned by the Frame function
+- Two: calculating score, including bonus scores, owned by the Score function
+- Three: user interface function, which calls on score and frame, the Game function
+
+## How To Run
+
+- Clone this repo from your CLI to your local machine `git clone [url]`
+- Navigate to the rps-challenge folder `cd bowling-challenge`
+- Open the game in your browser by running `open index.html`
+- Start playing the game!
 
 ## User interface
 
@@ -26,11 +32,11 @@ Using JQuery, I created a simple site where the player play endless games of bow
 
 The user bowls a frame every 'play' and is rewarded with bonus plays if they score a spare or strike in their 10th frame.
 
-![Screenshot](http://imgur.com/LHR4evH)     
+![Screenshot](http://imgur.com/LHR4evH)   
 
 ## Limitations
 
-I found this challenge particularly difficult - as an inexperienced bowler - and I found it tricky to write code for the layers of bonus points without becoming heavily bogged down in conditionals.
+I found this challenge particularly difficult (in part because I'm a terrible bowler so don't play often). The greatest challenge was accounting for bonus points and bowls without creating many nested conditionals.
 
 I wish to return to this challenge to resolve:
 - Players who score a strike or spare in the 11th frame do not have the opportunity to bowl again.

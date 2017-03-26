@@ -1,34 +1,44 @@
 'use strict'
 
-describe("Game", function() {
-  var game = new Game()
+describe("Bowling Game", function() {
+  var game
 
   beforeEach(function() {
     game = new Game()
   })
 
-  it("allows players to enter roll scores to frame", function() {
-    game.enterRoll(3)
-    game.enterRoll(5)
-    expect(game.frame).toEqual([3, 5])
-  })
+  describe("scores", function() {
+    it("for a gutter game", function() {
+      multipleRolls(0, 20)
+      expect(game.result()).toEqual(0)
+    })
 
-  it("keeps a record of all frames played", function () {
-    game.recordFrames([4, 5])
-    game.recordFrames([10])
-    expect(game.allFrames).toEqual([[4, 5], [10]])
-  })
+    it("for a normal game without bonuses", function() {
+      multipleRolls(1, 20)
+      expect(game.result()).toEqual(20)
+    })
 
-  it("restricts maximum points per roll to 10", function () {
-    expect(function(){
-      game.enterRoll(11)
-    }).toThrowError("You cannot exceed 10 points per roll")
-  })
+    it("for a game with spares", function() {
+      multipleRolls(5, 2)
+      multipleRolls(1, 18)
+      expect(game.result()).toEqual(29)
+    })
 
-  it("restricts maximum points per frame to 10", function () {
-    game.enterRoll(5)
-    expect(function () {
-      game.enterRoll(6)
-    }).toThrowError("You cannot exceed 10 points per frame")
+    it("for a game with strikes", function() {
+      game.roll(10)
+      multipleRolls(3, 2)
+      multipleRolls(0, 16)
+      expect(game.result()).toEqual(22)
+    })
+
+    it("for a perfect game", function() {
+      multipleRolls(10, 12)
+      expect(game.result()).toEqual(300)
+    })
   })
+  var multipleRolls = function(roll, pins) {
+    for (var i = 0; i < pins; i++) {
+      game.roll(roll)
+    }
+  }
 })

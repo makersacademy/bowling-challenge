@@ -1,30 +1,53 @@
 'use strict'
 
-const MAX_ROLL_POINTS = 10
-
-function Game() {
-  this.runningTotal = 0
-  this.frame = []
-  this.allFrames = []
+var Game = function() {
+  this.rolls = []
 }
 
-Game.prototype.enterRoll = function(rollPoints) {
-  if (rollPoints > MAX_ROLL_POINTS) {
-    throw new Error("You cannot exceed 10 points per roll")
+Game.prototype.roll = function(pins) {
+  this.rolls.push(pins)
+}
+
+Game.prototype.result =  function () {
+  var score = 0
+  var rollIndex = 0
+  var that = this
+
+  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+    if (isStrike()) {
+      score += bonusScore()
+      rollIndex += 1
+    } else if (isSpare()) {
+      score += bonusScore()
+      rollIndex += 2
+    } else {
+    score += noBonusScore()
+    rollIndex += 2
+    }
   }
-  if (this.frame.reduce((a, e) => a + e, 0) + rollPoints > MAX_ROLL_POINTS) {
-    throw new Error("You cannot exceed 10 points per frame")
+  return score
+
+  function firstRoll() {
+    return that.rolls[rollIndex]
   }
-  this.frame.push(rollPoints)
-  this.runningTotal += rollPoints
-}
 
-Game.prototype.recordFrames = function(frame) {
-  this.allFrames.push(frame)
-}
+  function noBonusScore() {
+    return firstRoll() + addRollIndex(1)
+  }
+  
+  function bonusScore() {
+    return noBonusScore() + addRollIndex(2)
+  }
 
-// Game.prototype.checkFrame = function() {
-//   if (this.frame.sum() > MAX_ROLL_POINTS) {
-//     throw new Error("You cannot exceed 10 points per frame")
-//   }
-// }
+  function isSpare() {
+    return noBonusScore() == 10
+  }
+
+  function addRollIndex(increment) {
+    return that.rolls[rollIndex + increment]
+  }
+
+  function isStrike() {
+    return firstRoll() == 10
+  }
+}

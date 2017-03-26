@@ -1,6 +1,11 @@
 describe('The Bowling Game', function(){
 
   var game;
+  var rollMany = function (pins,rolls) {
+    for (var i = 0; i < rolls; i++){
+      game.roll(pins);
+    }
+  };
 
   beforeEach(function(){
     game = new BowlingGame();
@@ -36,11 +41,5 @@ describe('The Bowling Game', function(){
     rollMany(10, 12);
     expect(game.score()).toBe(300);
   });
-
-  var rollMany = function (pins,rolls) {
-    for (var i = 0; i < rolls; i++){
-      game.roll(pins);
-    }
-  };
 
 });

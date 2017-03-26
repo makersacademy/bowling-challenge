@@ -1,4 +1,7 @@
+"use strict";
+
 describe("Game", function() {
+  var game;
 
   beforeEach(function() {
     game = new Game();
@@ -19,7 +22,7 @@ describe("Game", function() {
     });
 
     it("saves the frame object", function() {
-      frame = {}
+      var frame = {};
       game.saveFrame(frame);
       expect(game.log).toEqual([frame])
     });
@@ -30,7 +33,7 @@ describe("Game", function() {
     });
 
     it("gives the user one bonus roll if the 10th frame is a spare", function() {
-      for(i = 0; i < 18; i++) {
+      for(var i = 0; i < 18; i++) {
           game.addPoints(3)
         }
       game.addPoints(5)
@@ -44,14 +47,14 @@ describe("Game", function() {
 
   describe("scoring", function() {
     it("adds the score from each frame to the running total", function() {
-      firstFrame = {totalScore: 10}
+      var firstFrame = {totalScore: 10}
       game.saveFrame(firstFrame)
       game.sumPoints();
       expect(game.totalScore).toEqual(10)
     });
 
     it("adds the score for a complete game where no bonuses", function() {
-      for(i = 0; i < 20; i++) {
+      for(var i = 0; i < 20; i++) {
           game.addPoints(3)
         }
       expect(game.totalScore).toEqual(60)
@@ -102,7 +105,7 @@ describe("Game", function() {
       });
 
       it("adds the score for a complete game where 10th frame is spare", function() {
-        for(i = 0; i < 19; i++) {
+        for(var i = 0; i < 19; i++) {
             game.addPoints(3)
           }
         game.addPoints(7)
@@ -111,7 +114,7 @@ describe("Game", function() {
       });
 
       it("calculates the score for a perfect game", function() {
-        for(i = 0; i < 10; i++) {
+        for(var i = 0; i < 10; i++) {
           game.addPoints(10)
         }
         game.addFinalBonusPoints(10)

@@ -1,4 +1,8 @@
+"use strict";
+
 describe("BonusFrame", function() {
+
+  var bonusFrame;
 
   beforeEach(function() {
     bonusFrame = new BonusFrame("spare");

@@ -133,13 +133,13 @@ Game.prototype.isFinished = function() {
 };
 
 Game.prototype.finalFrameIsSpare = function() {
-  if (game.isFinished()) {
-    return game.log[9].spare;
+  if (this.isFinished()) {
+    return this.log[9].spare;
   }
 };
 
 Game.prototype.finalFrameIsStrike = function() {
-  if (game.isFinished()) {
-    return game.log[9].strike;
+  if (this.isFinished()) {
+    return this.log[9].strike;
   }
 };

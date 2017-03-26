@@ -28,6 +28,18 @@ describe("Game", function() {
       game.frame = 10;
       expect(game.isFinished()).toEqual(true);
     });
+
+    it("gives the user one bonus roll if the 10th frame is a spare", function() {
+      for(i = 0; i < 18; i++) {
+          game.addPoints(3)
+        }
+      game.addPoints(5)
+      game.addPoints(5)
+      game.addFinalBonusPoints(2)
+
+      expect(game.totalScore).toEqual(66)
+    });
+
   });
 
   describe("scoring", function() {
@@ -38,37 +50,21 @@ describe("Game", function() {
       expect(game.totalScore).toEqual(10)
     });
 
-    // it("keeps the score from each frame", function() {
-    //   game.addPoints(5);
-    //   game.addPoints(6);
-    //   expect(game.scorecard).toEqual({1: 5,
-    //                                   2: 6})
-    // });
+    it("adds the score for a complete game where no bonuses", function() {
+      for(i = 0; i < 20; i++) {
+          game.addPoints(3)
+        }
+      expect(game.totalScore).toEqual(60)
+    });
+
 
     describe("bonus points", function() {
-      it("adds the points from the next two rolls if strike", function() {
-        firstFrame = {totalScore: 10, strike: true}
-        secondFrame = {totalScore: 7, strike: false}
-        game.saveFrame(firstFrame)
-        game.saveFrame(secondFrame)
-        game.addStrikeBonus();
-        expect(game.log[0].totalScore).toEqual(17)
-      });
 
       it("adds the points from the next two rolls if strike", function() {
         game.addPoints(10)
         game.addPoints(3)
         game.addPoints(3)
         expect(game.log[0].totalScore).toEqual(16)
-      });
-
-      it("adds the points from the following roll if spare", function() {
-        firstFrame = {score: [5, 5], totalScore: 10, spare: true};
-        secondFrame = {score: [4, 5], totalScore: 9, spare: false};
-        game.saveFrame(firstFrame);
-        game.saveFrame(secondFrame);
-        game.addSpareBonus();
-        expect(game.log[0].totalScore).toEqual(14);
       });
 
       it("adds the points from the following roll if spare", function() {
@@ -80,24 +76,48 @@ describe("Game", function() {
 
       it("can calculate 2 strikes in a row", function() {
         game.addPoints(10)
-
         game.addPoints(10)
         game.addPoints(3)
         game.addPoints(3)
-        console.log(game.log)
         expect(game.totalScore).toEqual(45)
       });
 
+      it("can calculate 3 strikes in a row", function() {
+        game.addPoints(10)
+        game.addPoints(10)
+        game.addPoints(10)
+        game.addPoints(3)
+        game.addPoints(3)
+        expect(game.totalScore).toEqual(75)
+      });
 
+      it("can calculate 2 spares in a row", function() {
+        game.addPoints(3)
+        game.addPoints(7)
+        game.addPoints(3)
+        game.addPoints(7)
+        game.addPoints(3)
+        game.addPoints(3)
+        expect(game.totalScore).toEqual(32)
+      });
 
-      // it("gives the user an extra two rolls if 10th frame is a strike", function() {
-      //   for(i = 0; i < 10; i++) {
-      //     game.addPoints(10)
-      //   }
-      //   game.addPoints(3)
-      //   game.addPoints(3)
-      //   expect(game.totalScore).toEqual(300)
-      // })
+      it("adds the score for a complete game where 10th frame is spare", function() {
+        for(i = 0; i < 19; i++) {
+            game.addPoints(3)
+          }
+        game.addPoints(7)
+        game.addFinalBonusPoints(3)
+        expect(game.totalScore).toEqual(67)
+      });
+
+      it("calculates the score for a perfect game", function() {
+        for(i = 0; i < 10; i++) {
+          game.addPoints(10)
+        }
+        game.addFinalBonusPoints(10)
+        game.addFinalBonusPoints(10)
+        expect(game.totalScore).toEqual(300)
+      })
 
     });
   });

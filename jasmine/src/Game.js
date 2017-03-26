@@ -1,26 +1,22 @@
-"use strict"
+"use strict";
 
 function Game () {
   this.totalScore = 0;
   this.frame = 1;
   this.current_frame = new Frame()
-  // this.scorecard = {};
+  this.bonusFramePoints = []
+  this.bonusFrame = 0
   this.log = [];
 };
 
 Game.prototype.nextFrame = function() {
   if (this.isFinished()) {
+    this.giveBonusFrame()
     return
   } else {
     this.frame ++;
   };
 };
-
-// Game.prototype.addPoints = function(points) {
-//   this.scorecard[this.frame] = points
-//   this.totalScore += points;
-//   this.nextFrame();
-// };
 
 Game.prototype.addPoints = function(points) {
   this.current_frame.addPoints(points)
@@ -32,19 +28,42 @@ Game.prototype._move_to_next_frame = function() {
   if (this.current_frame.roll === 2) {
     this.saveFrame(this.current_frame)
     this.nextFrame()
-    this.calculate_bonuses()
+    this.calculateBonuses()
     this.current_frame = new Frame
   }
 };
 
-Game.prototype.calculate_bonuses = function() {
-  if (this.frame > 2) {
-    this.addStrikeBonus();
-    this.addDoubleStrikeBonus();
-    this.addSpareBonus();
+Game.prototype.giveBonusFrame = function() {
+  if (this.frame == 10) {
+    if (this.finalFrameIsStrike()) {
+      this.bonusFrame = new BonusFrame("strike");
+    } else if (this.finalFrameIsSpare()) {
+      this.bonusFrame = new BonusFrame("spare");
+    };
   };
 };
 
+Game.prototype.addFinalBonusPoints = function(points) {
+  this.bonusFrame.addPoints(points)
+  this.bonusFrame.nextRoll()
+  if (this.bonusFrame.endGame === true) {
+    this.sumFinalBonusPoints(this.bonusFrame.score)
+  };
+  this.sumPoints();
+};
+
+
+
+Game.prototype.sumFinalBonusPoints = function(points) {
+  this.addPenultimateFrameStrikeBonus();
+  this.log[9].totalScore += points;
+};
+
+Game.prototype.addPenultimateFrameStrikeBonus = function() {
+  if (this.log[8].strike) {
+    this.log[8].totalScore += this.bonusFrame.scores[0];
+  }
+};
 
 
 Game.prototype.sumPoints = function() {
@@ -53,6 +72,14 @@ Game.prototype.sumPoints = function() {
     total += frame.totalScore;
   });
   this.totalScore = total;
+};
+
+Game.prototype.calculateBonuses = function() {
+  if (this.frame > 2) {
+    this.addStrikeBonus();
+    this.addDoubleStrikeBonus();
+    this.addSpareBonus();
+  };
 };
 
 Game.prototype.addStrikeBonus = function() {
@@ -65,34 +92,36 @@ Game.prototype.addStrikeBonus = function() {
 Game.prototype.addDoubleStrikeBonus = function() {
   if (this.log.length > 2) {
     var index = this._getPreviousFrameIndex() - 1
-    if (this._previousFrameIsStrike() && this.log[index].strike == true) {
+    if (this._previousTwoFramesAreStrikes()) {
       return this.log[index].totalScore += this.current_frame.score[0]
     }
   }
 };
 
+Game.prototype._previousTwoFramesAreStrikes = function() {
+  var index = this._getPreviousFrameIndex() - 1
+  return this._previousFrameIsStrike() && this.log[index].strike
+}
 
 Game.prototype.addSpareBonus = function() {
   var index = this._getPreviousFrameIndex()
   if (this._previousFrameIsSpare()) {
-    return this.log[index].totalScore += this.log[index + 1].score[0];
+    return this.log[index].totalScore += this.current_frame.score[0];
   };
 };
 
 Game.prototype._getPreviousFrameIndex = function () {
-  if (this.log.length > 1) {
-    return (this.log.length - 2)
-  }
+  return (this.log.length - 2)
 };
 
 Game.prototype._previousFrameIsStrike = function() {
   var index = this._getPreviousFrameIndex()
-  return this.log[index].strike === true
+  return this.log[index].strike
 };
 
 Game.prototype._previousFrameIsSpare = function() {
   var index = this._getPreviousFrameIndex()
-  return this.log[index].spare === true
+  return this.log[index].spare
 };
 
 Game.prototype.saveFrame = function(frame) {
@@ -101,4 +130,16 @@ Game.prototype.saveFrame = function(frame) {
 
 Game.prototype.isFinished = function() {
   return this.frame === 10;
+};
+
+Game.prototype.finalFrameIsSpare = function() {
+  if (game.isFinished()) {
+    return game.log[9].spare;
+  }
+};
+
+Game.prototype.finalFrameIsStrike = function() {
+  if (game.isFinished()) {
+    return game.log[9].strike;
+  }
 };

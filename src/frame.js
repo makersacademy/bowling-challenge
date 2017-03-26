@@ -24,16 +24,20 @@ Frame.prototype.isComplete = function() {
 Frame.prototype.bowlFirstBall = function(numberofBowledPins) {
   if(numberofBowledPins > 10) {
     throw new Error("Attempted to knock over more than 10 pins.");
-  } else if(numberofBowledPins === 10) {
+  }
+  this._firstBall = numberofBowledPins;
+  if(this._isStrike()) {
     this._isComplete = true;
-    this._firstBall = numberofBowledPins;
     this.calculateFrameTotal();
     return numberofBowledPins;
   } else {
-    this._firstBall = numberofBowledPins;
     return numberofBowledPins;
   }
 };
+
+Frame.prototype.strike = function() {
+
+}
 
 Frame.prototype.bowlSecondBall = function(numberofBowledPins) {
   if(this._firstBall + numberofBowledPins > 10) {

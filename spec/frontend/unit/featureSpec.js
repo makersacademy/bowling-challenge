@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Bowling Challenge', function(){
   var game;
 

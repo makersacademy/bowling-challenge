@@ -1,3 +1,5 @@
+'use strict';
+
 describe('LastFrame', function () {
   var lastFrame;
 
@@ -120,5 +122,5 @@ describe('LastFrame', function () {
       expect(lastFrame.getRollScore(2)).toEqual(4);
     });
   });
-    
+
 });

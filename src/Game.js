@@ -1,4 +1,3 @@
-var Frame = require('../src/frame');
 
 var Game = function() {
   this.frames = [];
@@ -14,5 +13,3 @@ Game.prototype.roll = function(rolls) {
       return score + frame.total(frames[index + 1], frames[index + 2]);
     }, 0);
   };
-
-module.exports = Game;

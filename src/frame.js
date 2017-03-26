@@ -50,5 +50,3 @@ Frame.prototype.firstRoll = function() {
   return this.rolls[0];
 };
 
-
-module.exports = Frame;

@@ -1,47 +1,52 @@
-var Frame = require('../src/frame.js');
+var Game = function() {
+  this.frames = [];
+};
 
-describe("A frame of bowling", function(){
+Game.prototype.roll = function(rolls) {
+  frame = new Frame(rolls)
+    this.frames.push(frame);
+  };
 
-  it("calculates a total for two roles", function(){
-    var frame = new Frame([1,3]);
-    var next = new Frame([0,0]);
-    expect(frame.total()).toEqual(4);
+  Game.prototype.score = function() {
+    return this.frames.reduce(function(score, frame, index, frames) {
+      return score + frame.total(frames[index + 1], frames[index + 2]);
+    }, 0);
+  };
+
+
+describe("A game", function() {
+
+  var game;
+
+  beforeEach(function() {
+    game = new Game();
   });
 
-  it("calculates a total for a spare", function(){
-    var frame = new Frame([5,5]);
-    var next = new Frame([5,2]);
-    expect(frame.total(next)).toEqual(15);
+  it('calculates a gutter game', function() {
+    generateFrames([0, 0]);
+    expect(game.score()).toEqual(0);
   });
 
-  it("calculates a total for a strike", function(){
-    var frame = new Frame([10]);
-    var next = new Frame([5,2]);
-    expect(frame.total(next)).toEqual(17);
+  it('calculates a normal game', function() {
+    generateFrames([1, 3]);
+    expect(game.score()).toEqual(40);
   });
 
-  it("calculates a total for two strikes in a row", function(){
-    var frame = new Frame([10]);
-    var next = new Frame([10]);
-    var next_but_next = new Frame([5, 2]);
-    expect(frame.total(next, next_but_next)).toEqual(25);
+  it('calculates a game with spares', function() {
+    generateFrames([5, 5], [5, 5, 5]);
+    expect(game.score()).toEqual(150);
   });
 
-  it("calculates three strikes in a row", function(){
-    var frame = new Frame([10]);
-    var next = new Frame([10]);
-    var next_but_next = new Frame([10]);
-    expect(frame.total(next, next_but_next)).toEqual(30);
+  it('calculates a game with strikes', function() {
+    generateFrames([10], [10, 10, 10]);
+    expect(game.score()).toEqual(300);
   });
 
-  it ("calculates a strike in the final frame", function(){
-    var frame = new Frame([10,10,10]);
-    expect(frame.total()).toEqual(30);
-  });
+  function generateFrames(frame, last_frame) {
+    for(var i = 0; i < 9; i++) {
+      game.roll(frame);
+    };
 
-  it ("calculates a strike in the final frame but one", function(){
-    var frame = new Frame([10]);
-    var next = new Frame([10,10,10]);
-    expect(frame.total(next)).toEqual(30);
-  });
+    game.roll(last_frame || frame);
+  };
 });

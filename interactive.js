@@ -40,7 +40,7 @@ $ ("#roll").click(function(){
 
     $ ("#pins-standing").text(frame.pinsRemaining());
 
-    $ ("#frame-total").text(frame.frameTotal());
+    $ ("#frame-total").text(frame.frameTotal(hit));
 
     $ ("#which-roll").text(x);
 

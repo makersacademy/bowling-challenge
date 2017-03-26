@@ -1,26 +1,22 @@
 function Frame(){
   this.total = [];
   this.PINS = 10;
+  game = new Game();
 };
 
-var game;
-game = new Game();
-
 Frame.prototype.roll = function(){
-  hits = Math.floor((Math.random() * (this.PINS + 1)));
-  console.log(game.eachFrameScore)
-  return hits;
+  return hit = Math.floor((Math.random() * (this.PINS + 1)));
 };
 
 Frame.prototype.pinsRemaining = function(){
-  return this.PINS -= hits;
+  return this.PINS -= hit;
 };
 
 Frame.prototype.rollResult = function(){
-  return hits;
+  return hit;
 };
 
-Frame.prototype.frameTotal = function(){
+Frame.prototype.frameTotal = function(hits){
   this.total.push(hits);
   this.total.reduce(function(a, b){
   return c = a + b;
@@ -29,7 +25,7 @@ Frame.prototype.frameTotal = function(){
   if (this.total.length > 1){
     game.eachFrameScore.push(c)
   }
-  console.log(game.eachFrameScore)
+  game.grandTotal();//
   return c;
 }
 

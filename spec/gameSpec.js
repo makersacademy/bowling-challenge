@@ -5,11 +5,9 @@ describe('Game', function(){
   game = new Game();
 
   it('store the scores of each frame as they are played', function(){
-    spyOn(frame, 'frameTotal').and.returnValue(99)
-    expect(game.frameScores).toEqual([99])
-  })
+    frame.frameTotal(20)
+    frame.frameTotal(1)
+    expect(game.grandTotal()).toEqual(21);
+  });
 
-
-
-
-})
+});

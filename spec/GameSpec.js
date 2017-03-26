@@ -10,17 +10,19 @@ describe("Game", function() {
 
   describe("score", function () {
 
-    it("scores gutter game", function() {
-      for (var i = 0; i < 20; i++) {
-        game.roll(0);
+    function rollMany(n, pinsKnockedDown) {
+      for (var i = 0; i < n; i++) {
+        game.roll(pinsKnockedDown);
       }
+    }
+
+    it("scores gutter game", function() {
+      rollMany(20, 0);
       expect(game.score).toEqual(0);
     });
 
     it("scores every roll", function() {
-      for (var i = 0; i < 20; i++) {
-        game.roll(1);
-      }
+      rollMany(20, 1);
       expect(game.score).toEqual(20);
     });
 

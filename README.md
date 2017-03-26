@@ -42,3 +42,9 @@ I wish to return to this challenge to resolve:
 - Players who score a strike or spare in the 11th frame do not have the opportunity to bowl again.
 - Strike bonuses are taken from the next frame, rather than the next two bowls. Therefore, if the player bowls multiple strikes, only the following strike counts towards the bonus.
 - The perfect game is currently unaccounted for.
+
+## Languages and Technologies
+
+- JavaScript
+- jQuery
+- Jasmine

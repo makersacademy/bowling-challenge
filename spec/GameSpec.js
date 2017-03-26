@@ -26,6 +26,14 @@ describe("Game", function() {
       expect(game.score).toEqual(20);
     });
 
+    it("scores 1 spare", function() {
+      game.roll(9);
+      game.roll(1);
+      game.roll(3);
+      rollMany(17, 0);
+      expect(game.score).toEqual(16);
+        });
+
   });
 
 });

@@ -20,7 +20,7 @@ Game.prototype.play = function() {
 
 Game.prototype.isGameFinished = function() {
   if(this.frames.length > 10) {
-    // this.resetGame();
+    this._checkLastFrame();
     throw "Game has finished."
   } else {
     return "Next frame"
@@ -35,6 +35,15 @@ Game.prototype.result = function()  {
     case 300:
         return "Perfect Game!";
         break;
+  }
+}
+
+Game.prototype._checkLastFrame = function () {
+  if (this.frames[9][0] == 10) {
+    var frame = new Frame();
+    frame.bowl();
+    this.frames.push(frame.currentFrame);
+  //  this.isGameFinished();
   }
 }
 

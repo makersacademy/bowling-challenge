@@ -20,7 +20,10 @@ describe("Game", function() {
   });
 
   it("the game ends when the player has bowled 10 frames", function(){
-    game.frames.length = 9;
+    for(var i = 0; i < 9; i ++) {
+      game.play();
+    };
+    game.frames.push([5, 0]);
     expect(function() {game.play()}).toThrow("Game has finished.");
   });
 
@@ -29,13 +32,13 @@ describe("Game", function() {
     expect(game.frames[0].length).toEqual(2)
   })
 
-  // it("clears the game when it has finished", function() {
-  //   for(var i = 0; i < 10; i ++) {
-  //     game.play();
-  //   };
-  //   game.isGameFinished()
-  //   expect(game.frames.length).toEqual(0);
-  // })
+  it("clears the game when it has finished", function() {
+    for(var i = 0; i < 10; i ++) {
+      game.play();
+    };
+    game.resetGame()
+    expect(game.frames.length).toEqual(0);
+  })
 
 describe("displays game result", function() {
 
@@ -48,4 +51,17 @@ describe("displays game result", function() {
   });
 
   });
+
+  describe("checks for a final frame", function() {
+      it("if found, player has another bowl", function() {
+        for(var i = 0; i < 9; i ++) {
+          game.play();
+        };
+        game.frames.push([10,0]);
+        game._checkLastFrame()
+        expect(game.frames.length).toEqual(11)
+    });
+
+  });
+
 })

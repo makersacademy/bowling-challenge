@@ -12,7 +12,7 @@ Frame.prototype.bowl = function() {
 
 Frame.prototype.calculateBowlTwo = function(bowlOne) {
   var remainingPins = 10 - bowlOne;
-  return Math.floor((Math.random() * remainingPins));
+  return Math.round((Math.random() * remainingPins));
 }
 
 Frame.prototype.clearFrame = function() {

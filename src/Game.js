@@ -43,7 +43,13 @@ Game.prototype._checkLastFrame = function () {
     var frame = new Frame();
     frame.bowl();
     this.frames.push(frame.currentFrame);
+    console.log("I checked here")
   //  this.isGameFinished();
+} else if (this.frames[9][0] + this.frames[9][1] == 10){
+    console.log("I got here")
+    var frame = new Frame();
+    frame.bowl();
+    this.frames.push(frame.currentFrame);
   }
 }
 

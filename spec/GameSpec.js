@@ -30,6 +30,8 @@ describe("Game", function() {
   it("stores each frame", function() {
     game.play()
     expect(game.frames[0].length).toEqual(2)
+
+    expect(game.frames.length).toEqual(1)
   })
 
   it("clears the game when it has finished", function() {
@@ -53,14 +55,27 @@ describe("displays game result", function() {
   });
 
   describe("checks for a final frame", function() {
-      it("if found, player has another bowl", function() {
-        for(var i = 0; i < 9; i ++) {
-          game.play();
-        };
+
+    beforeEach(function() {
+      score = new Score
+      for(var i = 0; i < 9; i ++) {
+        game.play();
+      };
+    });
+
+      it("if a strike is found, player has another bowl", function() {
         game.frames.push([10,0]);
         game._checkLastFrame()
         expect(game.frames.length).toEqual(11)
     });
+
+    it("if a spare is found, player has another bowl", function() {
+      spyOn(score, "spare").and.returnValue(true);  
+      game.frames.push([5,5]);
+      game._checkLastFrame()
+      score.spare = true
+      expect(game.frames.length).toEqual(11)
+    })
 
   });
 

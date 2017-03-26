@@ -18,6 +18,7 @@ $( document ).ready(function() {
     $ ("#frame-8").text(game.frames[7]);
     $ ("#frame-9").text(game.frames[8]);
     $ ("#frame-10").text(game.frames[9]);
+    $ ("#frame-11").text(game.frames[10]);
     $ ("#totalScore").text(score.runningScore);
   });
 
@@ -33,6 +34,7 @@ $( document ).ready(function() {
     $ ("#frame-8").text(" ");
     $ ("#frame-9").text(" ");
     $ ("#frame-10").text(" ");
+    $ ("#frame-11").text(" ");
     $ ("#totalScore").text(score.runningScore);
   });
 

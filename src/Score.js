@@ -21,12 +21,10 @@ Score.prototype.calculateScore = function (frameScore) {
 
 Score.prototype._checkForStrike = function (frameScore) {
   this.strike = frameScore[0] === 10 ? true : false;
-  console.log(this.strike)
 };
 
 Score.prototype._checkForSpare = function (frameScore) {
   this.spare = (frameScore[0] != 10 && (frameScore[0] + frameScore[1]) === 10) ? true : false;
-  console.log(this.spare)
 };
 
 // strikes score = continued to add to

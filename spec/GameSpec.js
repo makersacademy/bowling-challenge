@@ -7,9 +7,14 @@ describe('Game', function() {
  });
 
   it('can keep a score count', function() {
+    expect(game.score).toEqual(0);
   });
 
   it('can only have ten frames', function() {
+    for (var i=0; i < 20; i++) {
+      game.bowl();
+    };
+    expect(game.bowl()).toEqual("Game Over");
   });
 
   it('each frame consists of a maximum of two rolls', function() {

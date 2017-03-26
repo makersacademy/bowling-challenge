@@ -4,6 +4,7 @@ describe('Game', function() {
 
  beforeEach(function() {
   game = new Game();
+  frame = new Frame();
  });
 
   it('can keep a score count', function() {
@@ -26,9 +27,12 @@ describe('Game', function() {
   });
 
   it('the max number of pins that can be knocked down is ten', function() {
+    game.bowl();
+    expect(game.currentResult).toBeLessThan(11);
   });
 
   it('the pins are reset after every frame', function() {
+    expect(new Frame().pins).toEqual(10);
   });
 
 

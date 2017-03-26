@@ -20,6 +20,7 @@ Game.prototype.bowl = function() {
 
 function Frame() {
   this.score = [];
+  this.pins = 10;
   this.complete = false;
 }
 

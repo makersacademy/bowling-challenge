@@ -1,11 +1,113 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
 
-  </body>
-  <script src="resources/js/BowlingGame.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>first_draft_bowling_challenge</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Shrikhand">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" style="padding:102px;">
+                    <h1 class="text-center" data-bs-hover-animate="bounce" style="font-family:'Shrikhand';"><i class="icon ion-trophy"></i> Albert's Bowling Calculator</h1></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <table class="table table-bordered table-condensed">
+                            <thead>
+                                <tr>
+                                    <th rowspan="1" colspan="2" class="ColHeadings">1</th>
+                                    <th rowspan="1" colspan="2" class="ColHeadings">2</th>
+                                    <th rowspan="1" colspan="2" class="ColHeadings">3 </th>
+                                    <th rowspan="1" colspan="2" class="ColHeadings"> 4</th>
+                                    <th rowspan="1" colspan="2" class="ColHeadings">5 </th>
+                                    <th rowspan="1" colspan="2" class="ColHeadings">6 </th>
+                                    <th rowspan="1" colspan="2" class="ColHeadings">7 </th>
+                                    <th rowspan="1" colspan="2" class="ColHeadings">8 </th>
+                                    <th rowspan="1" colspan="2" class="ColHeadings">9 </th>
+                                    <th rowspan="1" colspan="3" class="ColHeadings">10 </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="1" id="Roll1" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll2" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll3" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll4" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll5" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll6" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll7" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll8" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll9" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll10" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll11" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll12" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll13" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll14" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll15" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll16" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll17" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll18" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll19" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll20" class="Rolls"> </td>
+                                    <td rowspan="1" id="Roll21" class="Rolls"> </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1" colspan="2" id="ScoreFrame1" class="Scores"> </td>
+                                    <td rowspan="1" colspan="2" id="ScoreFrame2" class="Scores"> </td>
+                                    <td rowspan="1" colspan="2" id="ScoreFrame3" class="Scores"> </td>
+                                    <td rowspan="1" colspan="2" id="ScoreFrame4" class="Scores"> </td>
+                                    <td rowspan="1" colspan="2" id="ScoreFrame5" class="Scores"> </td>
+                                    <td rowspan="1" colspan="2" id="ScoreFrame6" class="Scores"> </td>
+                                    <td rowspan="1" colspan="2" id="ScoreFrame7" class="Scores"> </td>
+                                    <td rowspan="1" colspan="2" id="ScoreFrame8" class="Scores"> </td>
+                                    <td rowspan="1" colspan="2" id="ScoreFrame9" class="Scores"> </td>
+                                    <td rowspan="1" colspan="3" id="ScoreFrame10" class="Scores"> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <nav class="navbar navbar-default navbar-fixed-bottom" data-bs-hover-animate="bounce" style="padding:20px;padding-left:220px;">
+            <div class="container-fluid">
+                <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Number of Pins :</a>
+                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                </div>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav">
+                        <li role="presentation"><a href="#">1 </a></li>
+                        <li role="presentation"><a href="#">2 </a></li>
+                        <li role="presentation"><a href="#">3 </a></li>
+                        <li role="presentation"><a href="#">4 </a></li>
+                        <li role="presentation"><a href="#">5 </a></li>
+                        <li role="presentation"><a href="#">6 </a></li>
+                        <li role="presentation"><a href="#">7 </a></li>
+                        <li role="presentation"><a href="#">8 </a></li>
+                        <li role="presentation"><a href="#">9 </a></li>
+                        <li role="presentation"><a href="#">10 </a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
+    <script src="resources/js/BowlingGame.js"></script>
+    <script src="resources/js/scripts.js"></script>
+</body>
+
 </html>

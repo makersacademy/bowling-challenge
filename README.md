@@ -3,9 +3,10 @@ Bowling Challenge
 =================
 
 Instructions for use:
-  Clone repo local
-  Open ./index.html in Chrome.
-  Start bowling...
+  - Clone repo local
+  - Run tests by opening jasmine-standalone-2.5.2/SpecRunner.html in Chrome
+  - Open ./index.html in Chrome.
+  - Start bowling...
 
 
 Task:

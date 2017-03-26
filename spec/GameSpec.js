@@ -18,12 +18,12 @@ describe("Game", function() {
 
     it("scores gutter game", function() {
       rollMany(20, 0);
-      expect(game.score).toEqual(0);
+      expect(game.score()).toEqual(0);
     });
 
     it("scores every roll", function() {
       rollMany(20, 1);
-      expect(game.score).toEqual(20);
+      expect(game.score()).toEqual(20);
     });
 
     it("scores 1 spare", function() {
@@ -31,7 +31,7 @@ describe("Game", function() {
       game.roll(1);
       game.roll(3);
       rollMany(17, 0);
-      expect(game.score).toEqual(16);
+      expect(game.score()).toEqual(16);
         });
 
   });

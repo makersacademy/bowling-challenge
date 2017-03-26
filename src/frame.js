@@ -32,7 +32,7 @@ Frame.prototype.isSpare = function() {
 };
 
 Frame.prototype.isStrike = function() {
-  return this.firstRoll() = this.MAX_SCORE;
+  return this.firstRoll() == this.MAX_SCORE;
 };
 
 Frame.prototype.spareBonus = function() {

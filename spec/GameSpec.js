@@ -16,6 +16,11 @@ describe("Game", function() {
       }
     }
 
+    function rollSpare() {
+      game.roll(9);
+      game.roll(1);
+    }
+
     it("scores gutter game", function() {
       rollMany(20, 0);
       expect(game.score()).toEqual(0);
@@ -27,12 +32,19 @@ describe("Game", function() {
     });
 
     it("scores 1 spare", function() {
-      game.roll(9);
-      game.roll(1);
+      rollSpare();
       game.roll(3);
       rollMany(17, 0);
       expect(game.score()).toEqual(16);
-        });
+    });
+
+    it("scores 1 strike", function () {
+      game.roll(10);
+      game.roll(3);
+      game.roll(3);
+      rollMany(16, 0);
+      expect(game.score()).toEqual(22);
+    });
 
   });
 

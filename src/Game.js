@@ -10,7 +10,7 @@ Game.prototype.roll = function(pinsKnockedDown) {
 
 Game.prototype.isSpare = function(frameNumber) {
   return this.rolls[frameNumber] + this.rolls[frameNumber + 1] == 10
-}
+};
 
 Game.prototype.score = function() {
 

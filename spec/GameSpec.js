@@ -1,47 +1,65 @@
+debugger;
 'use strict';
 
 describe('Game', function() {
   var game;
+  var frame;
   var frames = [];
 
   beforeEach(function() {
     game = new Game();
+    frame = new Frame();
   });
 
+  //
+  // it('has a maximum of 10 frames', function() {
+  //   for (var i=0; i<10; i++) {
+  //     frame.playFixedFrame(4,3);
+  //   }
+  //   expect(frame.playFixedFrame(4,3)).toEqual("Sorry, there are only 10 frames per game!");
+  // });
 
-  it('can roll with score less than or equal to 10', function() {
-    spyOn(Math, 'random').and.returnValue(0.5);
-    expect(game._roll()).toEqual(5);
-  });
+  // it('can add a frame', function() {
+  //   // frame.playNextFrame();
+  //   game.addFrame([3,6]);
+  //   expect(game._frames).toEqual([[3,6]]);
+  //   // expect(game._scores).toEqual([9]);
+  // });
+
+  // it('can calculate the current game score', function() {
+  //   // frame.playNextFrame();
+  //   game.addFrame([3,6]);
+  //   game.addFrame([4,5]);
+  //   game.addFrame([5,5]);
+  //   expect(game._scores[2]).toEqual([28]);
+  // });
+
+  // it('can get the current score', function() {
+  //   game.addFrame([3,6]);
+  //   expect(game.currentScore()).toEqual(9);
+  // });
 
 
-  it('has a standard frame with two rolls', function() {
-    spyOn(Math, 'random').and.returnValue(0.5);
-    expect(game._oneFrame()).toEqual([5,5]);
-  });
-
-  it('can get a specific frame', function() {
-    game._frames = [[1,3],[2,2],[3,6]];
-    expect(game.getFrame(3)).toEqual([3,6]);
-  });
-
-  it('can play a frame', function(){
-    spyOn(Math, 'random').and.returnValue(0.5);
-    game.playNextFrame();
-    expect(game._score).toEqual(10);
-  });
-
-  it('has a maximum of 10 frames', function() {
-    for (var i=0; i<10; i++) {
-      game.playNextFrame();
-    }
-    expect(game.playNextFrame()).toEqual("Sorry, there are only 10 frames per game!");
-  });
-
-  it('can get the current game score', function() {
-    spyOn(Math, 'random').and.returnValue(0.5);
-    game.playNextFrame();
-    expect(game.currentScore()).toEqual(10)
-  });
+  // describe('gutter game', function() {
+  //
+  //   it('has a total score of 0', function() {
+  //     for (var i = 0; i < 10; i++) {
+  //         game.addFrame([0,0]);
+  //     }
+  //     expect(game._calculateScore(10)).toEqual(0);
+  //   });
+  //
+  // });
+  //
+  // describe('the perfect game', function() {
+  //
+  //   it('has a total score of 300', function() {
+  //     for (var i = 0; i < 10; i++) {
+  //         game.addFrame([10,0]);
+  //     }
+  //     expect(game._game._calculateScore(10)calculateScore(10)).toEqual(300);
+  //   });
+  //
+  // });
 
 });

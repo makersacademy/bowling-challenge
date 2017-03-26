@@ -2,78 +2,88 @@
 Bowling Challenge
 =================
 
-
-* Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-
-### Optional Extra
-
-Create a nice interactive animated interface with jQuery.
-
-## Strikes
-
+Strikes
+----
 The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
 
-## Spares
-
+Spares
+----
 The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
 
-## 10th frame
-
+10th frame
+----
 If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-## Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-## Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-Code Review
------------
+## User Stories
 
-In code review we'll be hoping to see:
+Based on the spec above, I worked out the following user stories that my scoring programme should fulfil.
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+```
+As a player
+So I can keep track of my score
+I want to fill in the number of pins I knocked down after each roll
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+As a player
+So I can see if I'm winning or losing
+I want to be able to see my total score
 
-CI
---
+As a player
+So I know how many turns I have left
+I want to see which frame I am on
 
-We are running JSHint on our CI server - save yourself having to wait for a build to happen by linting your code on your machine first. [Here are installations for most popular editors](http://jshint.com/install/). Grab the `.jshintrc` from this repo and have better JS!
+As a player
+So I know whether my next roll will count towards a bonus
+I want to be alerted if I win a strike or a spare
 
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
+As a player
+So I can win bonus points
+I want bonus points for strikes and spares to be calculated and added to my score
 
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.
+As a player
+So I can see how well I played
+I want to see a list of scores for all previous frames
+```
+
+## Using the application
+
+You can interact with my application by:
+- Downloading the source code
+- Opening the scorecard.html file at bowling-challenge/src/index.html in the browser (best to use Chrome)
+- Enter a number in the far left dropdown and an initial score should appear in the table
+- Note that the interface has not yet been fully implemented, so you can only view the pins knocked down in the table without adding bonuses
+- You can run my tests by opening the SpecRunner.html file in Chrome
+
+
+## Technologies used
+
+- Code was written using JavaScript
+- Code was tested using the Jasmine testing framework (developed by Pivotal Labs)
+- User interaction was partially implemented using jQuery
+
+## Approach taken
+
+- When writing the user stories, I assumed that the user should be able to see a running total of their score, and see their bonus points updated in real time, i.e. as soon as the points for the following frame are input.
+- Implemented first user story using Game and Frame classes to add points
+- Implemented second user story allowing Game to sum running total points assuming normal game, based on total points in each frame
+- Implemented third user story by allowing a frame to decide whether it is a strike or spare
+- Implementing bonus points - here it got tricky as I rethought the way Game tracked points. I decided that in order to retroactively add bonus points to a frame based on the following frame's points, I would have Game keep a record of frames within an array, and could recalculate frame scores using indices
+- I had trouble counting bonus points when it got to the tenth frame. I implemented the final scoring bit by bit, first adding a BonusFrame class that could decide how many rolls it should have based on whether the player scored a strike or spare. I then extended the Game logic to account for whether the player scored a strike in the 9th frame followed by a strike in the 10th frame, meaning they should be awarded a single bonus roll.
+- I then added checks on the user input to ensure they can not add a score that adds up to greater than 10 for a frame.
+- I attempted to add an interface using html and jQuery, but ran out of time before completing it. I created a table using jQuery but then had trouble with dynamically filling it out with the user's input values.
+
+## Possible extension
+
+- I would like to finish the user interface, allowing the user to view their running total and bonus points as they fill in their scores
+- I would also like to simplify my business logic, as there is some repetition within the BonusFrame class and the Frame class.
+- I would also like to extract the responsibility of scoring out of the game class. I took the approach that the function Game.addPoints(points) would complete all further Game and Frame actions such as tracking frame and roll and checking bonus points. Although this makes the app cleaner to interact with in the console, I think I would have found the interface easier to implement if I had called these functions one by one.
+- I would like to inject the BonusFrame into the Game class rather than instantiating it directly within a Game function
+- I want to clean up the calculation of bonus points - particularly that of the 'double strike bonus'. My solution, was to write a function to check if there have been two strikes in a row, and if so, adding the first roll points of the following frame to the 'previous previous' frame. I think this can be cleaned up but would possibly need a rethink of the objects I'm using.

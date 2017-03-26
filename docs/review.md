@@ -48,7 +48,7 @@ You will need to host your images somewhere, e.g.:
 
 ## Read Over Your Pull Request Before Submitting
 
-Watch out for things like having any unnecessary files, e.g. your Bowling.js in both `src/` and `public/` folders.  Remove all commented code.  Remove all logging statements, e.g. `console.log`
+Watch out for things like having any unnecessary files, e.g. your Bowling.js in both `src/` and `public/` folders.  Remove all commented code.  Remove all pointsLogging statements, e.g. `console.pointsLog`
 
 ## Following Style Guidelines
 

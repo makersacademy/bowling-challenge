@@ -6,9 +6,12 @@
     this.frames = [new Frame(), new Frame(), new Frame(),
                   new Frame(), new Frame(),
                   new Frame(), new Frame(), new Frame(),
-                  new Frame(), new Frame(3)];
+                  new Frame(), new LastFrame()];
   }
 
+  Game.prototype.isOver = function () {
+    return this.getFrames().every(frame => frame.isDone() === true);
+  };
   Game.prototype.getFrames = function(){
     return this.frames;
   };
@@ -18,31 +21,19 @@
     var bonus = 0;
 
     for (var i = 0; i < 10; i++){
-      //console.log(i);
-      //console.log(this.frames[i]);
-      var thisFrame = this.frames[i];
-      var nextFrame = this.frames[i+1] || thisFrame;
-      var nextToNextFrame = this.frames[i+2] || nextFrame;
+      console.log(`index:${i}`);
+      console.log(this.getFrames()[i]);
+      var thisFrame = this.getFrames()[i];
+      var nextFrame = this.getFrames()[i+1] || thisFrame;
+      var nextToNextFrame = this.getFrames()[i+2] || nextFrame;
 
       if(thisFrame.isDone()) {
-        var frameScore = this.frames[i].calculateFrameScore();
+        var frameScore = thisFrame.calculateFrameScore();
         totalScore += frameScore;
-
-        if (thisFrame.hasStrike()) {
-          bonus = this._getStrikeBonus(nextFrame, nextToNextFrame);
-          totalScore += bonus;
-          //console.log(bonus);
-        }
-
-        if (thisFrame.isSpare() && !(thisFrame.hasStrike())) {
-          bonus = (nextFrame === thisFrame) ?
-                    thisFrame.getRolls()[2].getPinsKnocked() :
-                    nextFrame.getRolls()[0].getPinsKnocked();
-          totalScore += bonus;
-          //console.log(bonus);
-        }
+        bonus = this._calculateBonus(thisFrame, nextFrame, nextToNextFrame)
+        totalScore += bonus
       }// end if done
-      // console.log(totalScore);
+       console.log(`totalScore: ${totalScore}`);
     } //end for
     return totalScore;
   };
@@ -84,6 +75,28 @@
              rollsFromFrame1[2].getPinsKnocked();
     }
   };
+
+  Game.prototype._getSpareBonue = function (thisFrame, nextFrame) {
+    return (nextFrame === thisFrame) ?
+              thisFrame.getRolls()[2].getPinsKnocked() :
+              nextFrame.getRolls()[0].getPinsKnocked();
+  };
+
+Game.prototype._calculateBonus = function (thisFrame, nextFrame, nextToNextFrame) {
+  var bonus = 0;
+
+  if (thisFrame.hasStrike()) {
+    bonus += this._getStrikeBonus(nextFrame, nextToNextFrame) || 'strike'
+    console.log(`strike : ${bonus}`);
+  }
+
+  if (thisFrame.isSpare()) {
+    bonus += this._getSpareBonue(thisFrame, nextFrame) || 'spare'
+    console.log(`spare: ${bonus}`);
+  }
+
+  return bonus;
+};
 
   exports.Game = Game;
   })(this);

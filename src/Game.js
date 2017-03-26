@@ -17,7 +17,12 @@ Game.prototype.score = function() {
   var total = 0;
   var frameNumber = 0;
   for (var frame = 0; frame < 10; frame++) {
-    if (this.isSpare(frameNumber)) {
+    if (this.rolls[frameNumber] == 10) {
+      total += 10 + this.rolls[frameNumber + 1]
+                  + this.rolls[frameNumber + 2];
+      frameNumber++;
+    }
+    else if (this.isSpare(frameNumber)) {
       total += 10 + this.rolls[frameNumber + 2];
       frameNumber += 2;
     }

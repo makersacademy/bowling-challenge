@@ -1,11 +1,21 @@
 var Game = function() {
   this.score = 0;
+  this.rolls = [];
+  this.currentRoll = 0;
   // this.completedFrames = [];
 };
 
 Game.prototype.roll = function(pinsKnockedDown) {
   this.score += pinsKnockedDown;
+  this.rolls[this.currentRoll] = pinsKnockedDown;
 };
+
+Game.prototype.score = function() {
+  for (i = 0; i < rolls.length; i++) {
+    this.score += this.rolls[i];
+  }
+  return this.score;
+}
 
 // Game.prototype.newFrame = function(pinsKnockedDown) {
 //   if (this.currentFrame.length == 0) {

@@ -52,4 +52,11 @@ describe("Game", function(){
     expect(game.score()).toEqual(300);
   })
 
+  it("throws an error when adding 11th frame", function(){
+    setUpFrames([0,0],10);
+    msg = "Game finished. Please start new game.";
+    expect(function() {game.bowl([0,0])}).toThrowError(msg);
+    })
+
+
 });

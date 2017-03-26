@@ -5,35 +5,35 @@ function Frame(rolls) {
 
 Frame.prototype.total = function (next_first, next_second) {
   if (next_first === undefined){
-    return this.framePoints();
+    return this._calculateFrame();
   } else {
-    return this.framePoints() + this.bonusPoints(next_first,next_second);
+    return this._calculateFrame() + this._calculateBonus(next_first,next_second);
   }
 };
 
-Frame.prototype.framePoints = function() {
+Frame.prototype._calculateFrame = function() {
   return this.rolls.reduce(function(sum,roll){
     return sum + roll;
   },0);
 };
 
-Frame.prototype.bonusPoints = function (next_first, next_second) {
-  if (this.isStrike()) {
-    if (next_first.isStrike() && next_second !== undefined) {
+Frame.prototype._calculateBonus = function (next_first, next_second) {
+  if (this._isStrike()) {
+    if (next_first._isStrike() && next_second !== undefined) {
       return next_first.rolls[0] + next_second.rolls[0];
   }
       return next_first.rolls[0] + next_first.rolls[1];
-  } else if (this.isSpare()) {
+  } else if (this._isSpare()) {
     return next_first.rolls[0];
   } else {
     return 0;
   }
 };
 
-Frame.prototype.isSpare = function() {
+Frame.prototype._isSpare = function() {
   return this.rolls[0] + this.rolls[1] === this.noOfPins
 };
 
-Frame.prototype.isStrike = function() {
+Frame.prototype._isStrike = function() {
   return this.rolls[0] === this.noOfPins
 };

@@ -1,5 +1,6 @@
 function Game(frames = 10) {
   this._frames = [];
+  this._scoreLog = [];
   this._maxFrames = frames;
 }
 
@@ -23,14 +24,15 @@ Game.prototype._checkIfGameOver = function() {
 };
 
 Game.prototype.calculateGameTotal = function() {
-  var total = 0;
-  var strike = 0;
   for(var i = 0; i < this._frames.length; i++ ) {
+    this._scoreLog.push(this._frames[i].currentRoll());
+    if(this._frames[i].currentRoll() === 10) {
+      this._scoreLog[i] += this._frames[i+1]._firstBall;
+    }
     if(this._frames[i].currentRoll() === "X") {
-      var strike = 10;
-    } else {
-      total += this._frames[i].currentRoll();
+      this._scoreLog[i] = 10 + this._frames[i+1]._firstBall + this._frames[i+1]._secondBall;
     }
   }
-  return total + strike;
+  var sum = this._scoreLog.reduce((a, b) => a + b, 0);
+  return sum;
 };

@@ -17,10 +17,6 @@ Frame.prototype.currentRoll = function() {
   return this._roll;
 };
 
-Frame.prototype.isComplete = function() {
-  return this._isComplete;
-};
-
 Frame.prototype.bowlFirstBall = function(numberofBowledPins) {
   if(numberofBowledPins > 10) {
     throw new Error("Attempted to knock over more than 10 pins.");
@@ -43,6 +39,10 @@ Frame.prototype.bowlSecondBall = function(numberofBowledPins) {
   this._isComplete = true;
   this.calculateFrameTotal();
   return numberofBowledPins;
+};
+
+Frame.prototype.isComplete = function() {
+  return this._isComplete;
 };
 
 Frame.prototype._isStrike = function() {

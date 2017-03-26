@@ -67,7 +67,7 @@
       return frame1.calculateFrameScore();
     } else if (rollsFromFrame1.length === 3) {
 
-      if (frame1 === frame2) {
+      if (frame1 === frame2 && !frame1.hasStrike()) {
         return rollsFromFrame1[0].getPinsKnocked() +
                rollsFromFrame1[1].getPinsKnocked();
       }
@@ -86,12 +86,12 @@ Game.prototype._calculateBonus = function (thisFrame, nextFrame, nextToNextFrame
   var bonus = 0;
 
   if (thisFrame.hasStrike()) {
-    bonus += this._getStrikeBonus(nextFrame, nextToNextFrame) || 'strike'
+    bonus = this._getStrikeBonus(nextFrame, nextToNextFrame) || 'x'
     console.log(`strike : ${bonus}`);
   }
 
   if (thisFrame.isSpare()) {
-    bonus += this._getSpareBonue(thisFrame, nextFrame) || 'spare'
+    bonus = this._getSpareBonue(thisFrame, nextFrame) || '/'
     console.log(`spare: ${bonus}`);
   }
 

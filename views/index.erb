@@ -14,35 +14,32 @@
   <link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 <body>
-  <h3>Welcome to Bowling Challenge</h3>
-  <button type="button" id="play">Play</button>
-  <button type="button" id="getscore">Get Score</button>
 
   <div style="display:table-cell;">
     <div id="bgMiddle"></div>
   </div>
 
   <h1 class="ribbon">
-    <strong class="ribbon-content">Super Awesome Bowling Scoresheet</strong>
+    <strong class="ribbon-content">Welcome to 10-pin Bowling</strong>
   </h1>
 
   <div class='panel-body'>
     <div style="padding-bottom: 50px; font-size: 21px;">Enter Your Score</div>
-    <button id="btn0" class="btn" onclick="roll(0)">0</button>
-    <button id="btn1" class="btn" onclick="roll(1)">1</button>
-    <button id="btn2" class="btn" onclick="roll(2)">2</button>
-    <button id="btn3" class="btn" onclick="roll(3)">3</button>
-    <button id="btn4" class="btn" onclick="roll(4)">4</button>
-    <button id="btn5" class="btn" onclick="roll(5)">5</button>
-    <button id="btn6" class="btn" onclick="roll(6)">6</button>
-    <button id="btn7" class="btn" onclick="roll(7)">7</button>
-    <button id="btn8" class="btn" onclick="roll(8)">8</button>
-    <button id="btn9" class="btn" onclick="roll(9)">9</button>
-    <button id="btn10" class="btn" onclick="roll(10)">10</button>
+    <button id="btn0" name="btn0" class="btn" onclick="roll(0)">0</button>
+    <button id="btn1" name="btn1" class="btn" onclick="roll(1)">1</button>
+    <button id="btn2" name="btn2" class="btn" onclick="roll(2)">2</button>
+    <button id="btn3" name="btn3" class="btn" onclick="roll(3)">3</button>
+    <button id="btn4" name="btn4" class="btn" onclick="roll(4)">4</button>
+    <button id="btn5" name="btn5" class="btn" onclick="roll(5)">5</button>
+    <button id="btn6" name="btn6" class="btn" onclick="roll(6)">6</button>
+    <button id="btn7" name="btn7" class="btn" onclick="roll(7)">7</button>
+    <button id="btn8" name="btn8" class="btn" onclick="roll(8)">8</button>
+    <button id="btn9" name="btn9" class="btn" onclick="roll(9)">9</button>
+    <button id="btn10" name="btn10" class="btn" onclick="roll(10)">10</button>
   </div>
 
   <div class="bowlingTable">
-    <table >
+    <table>
       <thead>
         <tr>
           <th colspan="2">Frame 1</th>
@@ -84,16 +81,16 @@
       </tbody>
       <tfoot>
         <tr>
-          <td id="f1score" colspan="2">0</td>
-          <td id="f2score" colspan="2">0</td>
-          <td id="f3score" colspan="2">0</td>
-          <td id="f4score" colspan="2">0</td>
-          <td id="f5score" colspan="2">0</td>
-          <td id="f6score" colspan="2">0</td>
-          <td id="f7score" colspan="2">0</td>
-          <td id="f8score" colspan="2">0</td>
-          <td id="f9score" colspan="2">0</td>
-          <td id="f10score" colspan="3">0</td>
+          <td id="f1score" name="f1score" colspan="2">0</td>
+          <td id="f2score" name="f2score" colspan="2">0</td>
+          <td id="f3score" name="f3score" colspan="2">0</td>
+          <td id="f4score" name="f4score" colspan="2">0</td>
+          <td id="f5score" name="f5score" colspan="2">0</td>
+          <td id="f6score" name="f6score" colspan="2">0</td>
+          <td id="f7score" name="f7score" colspan="2">0</td>
+          <td id="f8score" name="f8score" colspan="2">0</td>
+          <td id="f9score" name="f9score" colspan="2">0</td>
+          <td id="f10score" name="f10score" colspan="3">0</td>
         </tr>
       </tfoot>
     </table>

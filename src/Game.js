@@ -9,24 +9,24 @@ Game.prototype.roll = function(pinsKnockedDown) {
 };
 
 Game.prototype.isSpare = function(rollIndex) {
-  return this.rolls[rollIndex] + this.rolls[rollIndex + 1] == 10
+  return this.rolls[rollIndex] + this.rolls[rollIndex + 1] == 10;
 };
 
 Game.prototype.isStrike = function(rollIndex) {
-  return this.rolls[rollIndex] == 10
+  return this.rolls[rollIndex] == 10;
 };
 
 Game.prototype.sumOfPinsInFrame = function(rollIndex) {
   return this.rolls[rollIndex] + this.rolls[rollIndex + 1];
-}
+};
 
 Game.prototype.spareBonus = function(rollIndex) {
   return this.rolls[rollIndex + 2];
-}
+};
 
 Game.prototype.strikeBonus = function(rollIndex) {
   return this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
-}
+};
 
 Game.prototype.score = function() {
 

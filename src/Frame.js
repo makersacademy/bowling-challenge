@@ -11,16 +11,6 @@ Frame.prototype.inputBowls = function(first, second) {
   this.totalFrame.push(first, second);
 };
 
-// Frame.prototype.addToGame = function() {
-//   var game = new Game();
-//   game.frames.push(this.totalFrame);
-// };
-
-// Frame.prototype.inputSecondBowl = function(pins) {
-//   this.checkNumberOfPins(pins);
-//   this.totalFrame.push(pins);
-// };
-
 Frame.prototype.checkNumberOfPins = function(pins) {
   if (pins > 10) { throw new Error ("Score cannot be over 10"); }
 };
@@ -35,6 +25,6 @@ Frame.prototype.isSpare = function() {
   });
 };
 
-Frame.prototype.calculateScore = function() {
+Frame.prototype.totalFrameScore = function() {
   return this.totalFrame.reduce((first, second) => first + second)
 };

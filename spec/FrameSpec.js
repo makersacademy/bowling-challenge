@@ -41,11 +41,7 @@ describe ("Frame", function() {
 
     it("check the score of the frame", function() {
       frame.inputBowls(5, 1)
-      expect(frame.calculateScore()).toEqual(6);
+      expect(frame.totalFrameScore()).toEqual(6);
     });
-
-    // it("adds the frame to game", function() {
-    //   expect(frame.addToGame(this.total))
-    // });
   });
 });

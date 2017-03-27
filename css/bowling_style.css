@@ -9,3 +9,8 @@ h3 {
 p {
   font-family:Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+
+body {
+  background-image: url("http://www.compranotamil.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/s/k/skte_0008.jpg");
+  background-repeat: none;
+}

@@ -12,7 +12,7 @@ describe("Turn", function() {
 describe("Frame", function() {
   var frame = new Frame(1);
   it("can store the frames scores", function() {
-    expect(frame.points).toEqual([]);
+    expect(frame.pinsDown).toEqual([]);
   });
   describe("play", function() {
     it("accepts a frame number", function() {
@@ -20,7 +20,7 @@ describe("Frame", function() {
     });
     it("can give the frame's scores", function() {
       frame.play();
-      var total = frame.points.reduce(function(a,b) {return a + b;}, 0);
+      var total = frame.pinsDown.reduce(function(a,b) {return a + b;}, 0);
       expect(total <= 10).toBeTruthy();
     });
     it("delegates to tenthFramePlay on the tenth frame", function() {
@@ -30,17 +30,17 @@ describe("Frame", function() {
       tenthFrame.play();
       expect(tenthFrame.tenthFramePlay).toHaveBeenCalledWith([5]);
     });
-    it("can apply a bonus for a strike", function() {
+    it("can apply a bonus score for a strike", function() {
       var strikeFrame = new Frame(2);
       spyOn(Turn.prototype, "roll").and.returnValue(10);
       strikeFrame.play();
-      expect(strikeFrame.bonus).toEqual("X");
+      expect(strikeFrame.scorer).toEqual(["X"]);
     });
-    it("can apply a bonus for a spare", function() {
+    it("can apply a bonus score for a spare", function() {
       var spareFrame = new Frame(3);
       spyOn(Turn.prototype, "roll").and.returnValue(5);
       spareFrame.play();
-      expect(spareFrame.bonus).toEqual("/");
+      expect(spareFrame.scorer).toEqual([5,"/"]);
     });
   });
   describe("tenthFramePlay", function() {
@@ -60,16 +60,23 @@ describe("Game", function() {
     game = new Game();
   });
 
-  describe('play', function() {
+  describe('autoplay', function() {
     it("gives a list of all the frames from a full game", function() {
       spyOn(Turn.prototype, "roll").and.returnValue(10);
-      var frames = game.play();
+      var frames = game.autoplay();
       expect(frames[0]).toEqual(jasmine.objectContaining({
-        points: [10]
+        pinsDown: [10]
       }));
       expect(frames[9]).toEqual(jasmine.objectContaining({
-        points: [10,10,10]
+        pinsDown: [10,10,10]
       }));
     });
   });
+
+  describe('begin', function() {
+    it("sets up a game", function() {
+      expect(game.begin()).toEqual([]);
+    });
+  });
+
 });

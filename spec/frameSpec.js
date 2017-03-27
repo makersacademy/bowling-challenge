@@ -18,7 +18,7 @@ describe('Frame', function() {
   });
 
 
-  describe('A strike', function() {
+  xdescribe('A strike', function() {
     x = 0;
     beforeEach(function() {
       spyOn(frame, 'roll').and.returnValue(10)
@@ -26,27 +26,27 @@ describe('Frame', function() {
 
     it('is registered on the first roll when all ten pins have been knocked down.', function() {
       spyOn(frame, 'checkWhichRoll').and.returnValue(2)
-      expect(frame.bonus()).toEqual("STRIKE! Next roll doubled!");
+      expect(frame.applyPoints('strike')).toEqual("STRIKE!");
     });
 
     it('is not registered on the second roll when all ten pins have been knocked down.', function() {
       spyOn(frame, 'checkWhichRoll').and.returnValue(3)
-      expect(frame.bonus()).not_toEqual("STRIKE! Next roll doubled!");
+      expect(frame.applyPoints('spare')).not.toEqual("STRIKE!");
     });
   });
 
-  describe('A spare', function() {
+  xdescribe('A spare', function() {
 
     it('is registered on the second roll when all ten pins have been knocked down.', function() {
       spyOn(frame, 'checkWhichRoll').and.returnValue(3)
       frame.calculate(10)
-      expect(page).toContain("SPARE! Next roll doubled!");
+      expect(frame.applyPoints('spare')).toEqual("SPARE!");
     });
 
     it('is not registered on the first roll when all ten pins have been knocked down.', function() {
       spyOn(frame, 'checkWhichRoll').and.returnValue(2)
       spyOn(frame, 'roll').and.returnValue(10)
-      expect(frame.spare()).toEqual("SPARE! Next roll doubled!");
+      expect(frame.applyPoints('strike')).not.toEqual("SPARE!");
     });
 
   });

@@ -15,15 +15,12 @@ BowlingGame.prototype.score = function() {
     if (isStrike()){
       result += getStrikeScore();
       rollIndex ++;
-      console.log(result)
     } else if (isSpare()) {
       result += getSpareScore();
       rollIndex += 2
-      console.log(result)
     } else {
       result += getNormalScore();
       rollIndex += 2;
-      console.log(result)
     }
   }
 

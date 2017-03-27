@@ -4,7 +4,7 @@ function Game() {
   this.frameTotals = [];
   this.frame = new Frame();
   this.currentResult = 0;
-  this.frameInPlay = false;
+  this.frameInPlay = true;
 }
 
 Game.prototype.bowl = function() {

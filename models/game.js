@@ -2,7 +2,6 @@
 
 function Game(player) {
   this.player = player;
-  this.frameCount = 0;
   this.frames = [];
   this._newFrame();
 };

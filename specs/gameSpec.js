@@ -15,12 +15,9 @@ describe('Game', function() {
       expect(game.player).toBeDefined();
     });
 
-    it('has a #frameCount of 0 to start', function(){
-      expect(game.frameCount).toEqual(0);
-    });
-
-    it('has a array of #frames', function(){
+    it('has an empty array of #frames', function(){
       expect(game.frames).toEqual([]);
+      expect(game.frames.length).toEqual(0);
     });
 
   });

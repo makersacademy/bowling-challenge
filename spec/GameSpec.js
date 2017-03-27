@@ -39,6 +39,7 @@ describe('Game', function() {
   describe('Strikes', function() {
 
     it('reports "strike" if ten pins are knocked down on the first roll', function() {
+      expect(frame.updateScore(10)).toEqual("Strike");
     });
 
     it('ends the frame if a strike is bowled on the first go', function() {
@@ -54,6 +55,8 @@ describe('Game', function() {
   describe('Spares', function() {
 
     it('reports a "spare" if ten pins are knocked down after the second roll', function() {
+      frame.updateScore(6);
+      expect(frame.updateScore(4)).toEqual("Spare");
     });
 
     it('adds a bonus score for a spare', function() {

@@ -37,6 +37,14 @@ Frame.prototype.knockDownPins = function(pins) {
 
 Frame.prototype.updateScore = function(result) {
   this.score.push(result);
+  switch (true) {
+    case (result === 10):
+      return "Strike";
+    case ((this.score[0] + this.score[1]) === 10):
+      return "Spare";
+    default:
+      this.pins -= result;
+    }
 }
 
 Frame.prototype.isFrameComplete = function() {

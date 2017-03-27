@@ -1,5 +1,7 @@
 'use strict'
 
+const frames = 10
+
 var Game = function() {
   this.rolls = []
 }
@@ -13,13 +15,11 @@ Game.prototype.result =  function () {
   var rollIndex = 0
   var that = this
 
-  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+  for (var frameIndex = 0; frameIndex < frames; frameIndex++) {
     if (isStrike()) {
-      score += bonusScore()
-      rollIndex += 1
+      whichBonusScore(1)
     } else if (isSpare()) {
-      score += bonusScore()
-      rollIndex += 2
+      whichBonusScore(2)
     } else {
     score += noBonusScore()
     rollIndex += 2
@@ -27,27 +27,28 @@ Game.prototype.result =  function () {
   }
   return score
 
-  function firstRoll() {
-    return that.rolls[rollIndex]
-  }
-
-  function noBonusScore() {
-    return firstRoll() + addRollIndex(1)
-  }
-  
-  function bonusScore() {
-    return noBonusScore() + addRollIndex(2)
-  }
-
   function isSpare() {
     return noBonusScore() == 10
+  }
+
+  function isStrike() {
+    return addRollIndex(0) == 10
   }
 
   function addRollIndex(increment) {
     return that.rolls[rollIndex + increment]
   }
 
-  function isStrike() {
-    return firstRoll() == 10
+  function noBonusScore() {
+    return addRollIndex(0) + addRollIndex(1)
+  }
+
+  function bonusScore() {
+    return noBonusScore() + addRollIndex(2)
+  }
+
+  function whichBonusScore(number){
+    score += bonusScore()
+    rollIndex += number
   }
 }

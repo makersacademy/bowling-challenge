@@ -1,13 +1,13 @@
 'use strict';
 
 function Frame(id){
-  this.MAX_SCORE = 10
+  this.MAX_SCORE = 10;
   this.id = id;
   this.totalFrame = [];
 }
 
 Frame.prototype.inputBowls = function(first, second) {
-  var pins = first + second
+  var pins = first + second;
   this.checkNumberOfPins(pins);
   this.totalFrame.push(first, second);
 };
@@ -18,12 +18,12 @@ Frame.prototype.checkNumberOfPins = function(pins) {
 
 Frame.prototype._firstRoll = function() {
   return this.totalFrame.reduce(function (first, second) {
-    return first
+    return first;
   });
 };
 
 Frame.prototype.isStrike = function() {
-  return this._firstRoll() === this.MAX_SCORE
+  return this._firstRoll() === this.MAX_SCORE;
 };
 
 Frame.prototype.isSpare = function() {
@@ -31,5 +31,5 @@ Frame.prototype.isSpare = function() {
 };
 
 Frame.prototype.totalFrameScore = function() {
-  return this.totalFrame.reduce((first, second) => first + second)
+  return this.totalFrame.reduce((first, second) => first + second);
 };

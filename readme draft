@@ -1,0 +1,27 @@
+How I tackled the challenge
+
+Having only had 5 days learning Javascript prior to this challenge
+I was looking forward to this challenge.
+
+I started off by creating two different functions in two different
+files and trying to get these both to work with each other.
+I ran into some issues here which I could not resolve, and
+due to the time constraints, I decided to write this program
+using only the Game.js file and then see if I can split it up afterwards
+
+Ruby differs from Javascript, but this challenge helped me to cement
+my understanding of JS, and using the TDD techniques learnt with
+Ruby and Rspec, I could now apply this to Jasmine.
+
+I made certain to write a test before implimenting the code, and using this
+process really helped break down the challenge for me.
+This challenge was a lot more logic heavy than previous ones
+and focusing on small bits at a time helped me get my test passing, bit by bit.
+
+
+Stuggles
+
+Have yet to refactor this properly yet, but I'm still getting to grips with
+writing shorter functions in JS and making them single responsiblity.
+
+This was especially challenging for the functions that had a lot of logic involved.

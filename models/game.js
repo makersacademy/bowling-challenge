@@ -22,10 +22,6 @@ Game.prototype.getScore = function () {
   return total;
 };
 
-// Game.prototype.maxAvailable = function(){
-//   return
-// }
-
 Game.prototype.wasGutterGame = function (score) {
   return score === 0 ? true : false;
 };

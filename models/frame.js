@@ -20,14 +20,6 @@ Frame.prototype.isComplete = function () {
   return this.complete;
 };
 
-Frame.prototype.isStrike = function () {
-  return this.balls[0] === 10 ? true : false;
-};
-
-Frame.prototype.isSpare = function () {
-  return this.balls.length > 1 && this.balls[0] + this.balls[1] === 10 ? true : false;
-};
-
 Frame.prototype.getFrameScore = function (nextBallOne = 0, nextBallTwo = 0) {
   var score = this._calculateScore();
   if(this.frameNumber < 10){

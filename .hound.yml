@@ -1,3 +1,2 @@
-javascript:
++jshint:
   ignore_file: .jshintignore
-  config_file: .jshintrc

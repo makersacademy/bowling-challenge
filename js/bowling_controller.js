@@ -146,6 +146,8 @@ $(document).ready(function () {
     $("#roll-10").text(10+"/"+finalFrame.getFrame()[0]+"/"+finalFrame.getFrame()[1]);
     game.finalFrame(frame, finalFrame.getFrame()[0], finalFrame.getFrame()[1]);
     updateScores(frameCount);
+    console.log(game.whichGame());
+    console.log(game);
     $("#conclusion").text("Your final score is "+game.getScore(10)+" and you have played "+ game.whichGame());
   }
 

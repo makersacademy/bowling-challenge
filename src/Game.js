@@ -27,7 +27,7 @@ Game.prototype.whichGame = function () {
   if (this.getScore(this._scores.length-1) === 0) {
     return 'Gutter Game';
   }
-  else if (this.getScore(this._scores.length-1) === 300) {
+  else if (this.getScore(this._scores.length-1) >= 300) {
     return 'Perfect Game';
   }
   else {

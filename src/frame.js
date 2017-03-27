@@ -39,7 +39,7 @@ Frame.prototype.bowlFirstBall = function(bowledPins) {
 };
 
 Frame.prototype.bowlSecondBall = function(bowledPins) {
-  this._checkifSecondBallAlreadyBowled();
+  this._checkIfSecondBallAlreadyBowled();
   this._checkLessThan10Pins(bowledPins);
   this._secondBall = bowledPins;
   this._isComplete = true;
@@ -61,7 +61,7 @@ Frame.prototype._checkIfFirstBallAlreadyBowled = function() {
   }
 };
 
-Frame.prototype._checkifSecondBallAlreadyBowled = function() {
+Frame.prototype._checkIfSecondBallAlreadyBowled = function() {
   if(this._secondBall) {
     throw new Error("You have already bowled your second ball for this frame.")
   }

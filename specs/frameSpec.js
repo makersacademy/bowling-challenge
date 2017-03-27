@@ -56,6 +56,91 @@ describe('Frame', function() {
 
   });
 
+  describe('.isComplete', function(){
+    describe('frames 1 to 9', function(){
+
+      it('returns true after a strike on the first ball', function(){
+        frame.addBall(10);
+        expect(frame.isComplete()).toBe(true);
+      });
+
+      it('returns false after a 5 on the first ball', function(){
+        frame.addBall(5);
+        expect(frame.isComplete()).toBe(false);
+      });
+
+      it('returns true after a spare', function(){
+        frame.addBall(5);
+        frame.addBall(5);
+        expect(frame.isComplete()).toBe(true);
+      });
+
+      it('returns true after two gutter balls', function(){
+        frame.addBall(0);
+        frame.addBall(0);
+        expect(frame.isComplete()).toBe(true);
+      });
+
+    });
+
+    describe('frames 10', function(){
+
+      beforeEach(function() {
+        frame = new Frame(10);
+      });
+
+      it('returns false after a strike on the first ball', function(){
+        frame.addBall(10);
+        expect(frame.isComplete()).toBe(false);
+      });
+
+      it('returns false after a strike on the first two balls', function(){
+        frame.addBall(10);
+        frame.addBall(10);
+        expect(frame.isComplete()).toBe(false);
+      });
+
+      it('returns false after a spare', function(){
+        frame.addBall(5);
+        frame.addBall(5);
+        expect(frame.isComplete()).toBe(false);
+      });
+
+      it('returns true after two 3 balls', function(){
+        frame.addBall(3);
+        frame.addBall(3);
+        expect(frame.isComplete()).toBe(true);
+      });
+
+      it('returns true after two 2 gutter balls', function(){
+        frame.addBall(0);
+        frame.addBall(0);
+        expect(frame.isComplete()).toBe(true);
+      });
+
+      it('returns true after three strikes', function(){
+        frame.addBall(0);
+        frame.addBall(0);
+        expect(frame.isComplete()).toBe(true);
+      });
+
+      it('returns true after a spare and a strike', function(){
+        frame.addBall(5);
+        frame.addBall(5);
+        frame.addBall(10);
+        expect(frame.isComplete()).toBe(true);
+      });
+
+      it('returns true after a spare and a 5', function(){
+        frame.addBall(5);
+        frame.addBall(5);
+        frame.addBall(5);
+        expect(frame.isComplete()).toBe(true);
+      });
+
+    });
+  });
+
   describe('.getFrameScore', function(){
     describe('frames 1 to 9', function(){
       it('returns the correct score of the frame when not a spare or strike', function(){

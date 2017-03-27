@@ -25,8 +25,8 @@ describe('Game', function() {
   describe('.newFrame',function(){
 
     it('starts a new frame', function(){
-      game._newFrame();
-      game._newFrame();
+      game._getNewFrame();
+      game._getNewFrame();
       expect(game.frames.length).toEqual(2);
     });
 
@@ -50,6 +50,17 @@ describe('Game', function() {
       spyOn(player,'throwBall');
       game.bowl();
       expect(player.throwBall).toHaveBeenCalled();
+    });
+
+    it('raises an error if the game is over', function(){
+      var balls = [10,10,10,10,10,10,10,10,10,10,10,10];
+      var spy = spyOn(Math, 'random')
+      for(var i = 0; i <= balls.length ; i++){
+        var currentBall = balls[i];
+        spy.and.returnValue(currentBall / 10);
+        game.bowl();
+      }
+      expect(function(){game.bowl()}).toThrow("You cannot bowl again! The game is finished.");
     });
 
   });

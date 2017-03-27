@@ -31,7 +31,7 @@ describe('Frame', function() {
 
     it('is not registered on the second roll when all ten pins have been knocked down.', function() {
       spyOn(frame, 'checkWhichRoll').and.returnValue(3)
-      expect(frame.bonus()).toBe(false);
+      expect(frame.bonus()).not_toEqual("STRIKE! Next roll doubled!");
     });
   });
 

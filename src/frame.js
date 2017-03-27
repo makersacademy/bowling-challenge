@@ -59,6 +59,7 @@ Frame.prototype.applyPoints = function(strikeOrSpare){
     if (strikeOrSpare == 'strike'){
         strikeOrSpare = '';
     }
+
     else if (strikeOrSpare == 'spare'){
         console.log('SPARE!')
     }

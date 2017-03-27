@@ -4,7 +4,7 @@ var score;
 function Game() {
   this.frames = [];
   score = new Score();
-};
+}
 
 Game.prototype.newGame = function() {
   this.frames = [];
@@ -21,9 +21,9 @@ Game.prototype.play = function() {
 Game.prototype.isGameFinished = function() {
   if(this.frames.length > 10) {
     this._checkLastFrame();
-    throw "Game has finished."
+    throw "Game has finished.";
   } else {
-    return "Next frame"
+    return "Next frame";
   }
 };
 
@@ -31,10 +31,8 @@ Game.prototype.result = function()  {
   switch(score.runningScore) {
     case 0:
         return "Gutter Game!";
-        break;
     case 300:
         return "Perfect Game!";
-        break;
   }
 }
 
@@ -48,7 +46,7 @@ Game.prototype._checkLastFrame = function () {
     frame.bonusFrame();
     this.frames.push(frame.currentFrame);
   } else {
-    false
+    false;
   }
 }
 

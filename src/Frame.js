@@ -5,7 +5,7 @@ function Frame() {
 };
 
 Frame.prototype.bowl = function() {
-  var bowlOne = Math.floor((Math.random() * 10) + 1);
+  var bowlOne = Math.floor((Math.random() * 11));
   var bowlTwo = bowlOne === 10 ? 0 : this.calculateBowlTwo(bowlOne);
   this.currentFrame.push(bowlOne, bowlTwo);
 }

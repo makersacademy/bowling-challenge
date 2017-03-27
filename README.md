@@ -11,17 +11,22 @@ $ open index.html
 ```
 Or alternatively you can go to [online version of the website](https://kateloschinina-bowling.herokuapp.com/)
 
+To see all the tests run:
+```
+$ open SpecRunner.html
+```
+
 The usage of the app is rather self-explanatory, please see the screenshot below. You can either pick the scores you want or use random rolls generator.
 
-![Imgur](http://i.imgur.com/6msNMp7.png)
+![Imgur](http://i.imgur.com/RES1PCo.png)
 
 The program does not allow you to score more than 10 in one frame:
 
-![Imgur](http://i.imgur.com/EkJH6Ch.png)
+![Imgur](http://i.imgur.com/gMsZZp4.png)
 
 And the type of the game you played is announced in the end:
 
-![Imgur](http://i.imgur.com/ApkxShp.png)
+![Imgur](http://i.imgur.com/GgeTOE5.png)
 
 
 About the Task
@@ -53,3 +58,8 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 ### Perfect Game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+
+Reflections
+-----
+Although the app is on and working, I can see further opportunities for refactoring.
+There might be a reason to split some of the functionality from controller into a separate file, that will serve as a buffer between client interface and internal calculations. Some of the functions might be refactored to improve logic readability.

@@ -1,0 +1,91 @@
+body {
+    /*background-image: url("https://static.pexels.com/photos/344034/pexels-photo-344034.jpeg");*/
+    /*background-size: cover;*/
+    background-color: #A7D7C5;
+    font-family: 'Lobster Two', cursive;
+}
+
+.ribbon {
+ font-size: 26px !important;
+ width: 50%;
+ position: relative;
+ background: #5C8D89;
+ color: #fff;
+ text-align: center;
+ padding: 1em 2em;
+ margin: 2em auto 3em;
+}
+
+.panel-body {
+  font-size: 24px;
+  color: #63A5C7;
+  padding-bottom: 40px;
+  height: 50px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.btn {
+  background-color: #779977;
+  padding: 10px;
+  color: black;
+  width: 37px;
+  height: 37px;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  color: #333333;
+  background-color: #829db6;
+}
+
+table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 0.5em;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #74B49B;
+    color: white;
+}
+
+tbody {
+    background-color: lightgrey;
+    font-weight: thin;
+}
+
+tfoot {
+    background-color: lightblue;
+}
+
+th, td {
+    border: 5px solid white;
+    text-align: center;
+    padding: 8px;
+}
+
+#newgame {
+  background-color: #779977;
+  font-size: 12px;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+#bgMiddle {
+  position: fixed;
+  background-color: #D3F6D1;
+  width: 50%;
+  height: 100%;
+  z-index: -10;
+  margin-left: 25%;
+}

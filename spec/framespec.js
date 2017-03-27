@@ -25,4 +25,6 @@ describe('frame', function(){
     frame.second()
     expect(frame.outcome.length).toBe(2)
   });
+
+  
 })

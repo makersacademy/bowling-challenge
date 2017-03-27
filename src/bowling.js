@@ -25,6 +25,6 @@ Bowl.prototype.roll2 = function(roll1){
   return getRandomInt(0, 10 - roll1)
 }
 
-Bowl.prototype.saveOutcome = function(){
-
-}
+// Bowl.prototype.saveOutcome = function(){
+// 
+// }

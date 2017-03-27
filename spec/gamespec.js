@@ -9,7 +9,7 @@ describe('game', function(){
     expect(game.frames).toEqual([])
   });
 
-  it('saves frame outcomes', function(){
+  xit('saves frame outcomes', function(){
     spyOn(frame, 'outcome').and.returnValue([5,5])
     game.advance()
     expect(game.frames).toContain([5,5])
@@ -19,4 +19,11 @@ describe('game', function(){
     game.play()
     expect(game.frames.length).toBe(10)
   })
+
+  it('adds up all frame outcomes', function(){
+    game.play()
+    console.log(game.scoring())
+    expect(game.scoring()).toEqual(jasmine.any(Number))
+  })
+
 })

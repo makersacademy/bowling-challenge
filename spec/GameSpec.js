@@ -43,6 +43,8 @@ describe('Game', function() {
     });
 
     it('ends the frame if a strike is bowled on the first go', function() {
+      frame.updateScore(10);
+      expect(frame.isFrameComplete()).toEqual(true);
     });
 
     it('adds a bonus score for a strike', function() {

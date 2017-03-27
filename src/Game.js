@@ -39,12 +39,17 @@ Frame.prototype.updateScore = function(result) {
   this.score.push(result);
   switch (true) {
     case (result === 10):
+      this.updateScoreForStrike(result);
       return "Strike";
     case ((this.score[0] + this.score[1]) === 10):
       return "Spare";
     default:
       this.pins -= result;
     }
+}
+
+Frame.prototype.updateScoreForStrike = function(result) {
+  this.score.push(0);
 }
 
 Frame.prototype.isFrameComplete = function() {

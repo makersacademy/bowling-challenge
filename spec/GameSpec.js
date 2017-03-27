@@ -71,21 +71,21 @@ describe('Game', function() {
 
   });
 
-  describe('the 10th frame', function() {
-
-    it('calculates the bonus for a strike in the 10th frame', function() {
-
-    });
-
-    it('calculates the bonus for a spare in the 10th frame', function() {
-
-    });
-
-    it('player cannot roll more than three times in the 10th frame', function() {
-
-    });
-
-  });
+  // describe('the 10th frame', function() {
+  //
+  //   it('calculates the bonus for a strike in the 10th frame', function() {
+  //
+  //   });
+  //
+  //   it('calculates the bonus for a spare in the 10th frame', function() {
+  //
+  //   });
+  //
+  //   it('player cannot roll more than three times in the 10th frame', function() {
+  //
+  //   });
+  //
+  // });
 
   describe('gutter game', function() {
 
@@ -99,11 +99,11 @@ describe('Game', function() {
 
   describe('the perfect game', function() {
 
-    xit('the perfect game scores 300 points', function() {
-      // game.frames = [[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[8,0]];
-      // expect(game.sumFrames());
-      // expect(game.calculateScore()).toEqual(300);
-    });
+    // xit('the perfect game scores 300 points', function() {
+    //   // game.frames = [[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[8,0]];
+    //   // expect(game.sumFrames());
+    //   // expect(game.calculateScore()).toEqual(300);
+    // });
 
   });
 

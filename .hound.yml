@@ -2,5 +2,4 @@ javascript:
   ignore_file: .jshintignore
   config_file: .jshintrc
 
-  eslint:
-  enabled: true
+  

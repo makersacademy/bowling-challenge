@@ -4,6 +4,8 @@ First I read about the game and rules on wikipedia. I proceeded to decide what m
 
 I wish I had not hardcoded the creation of Frames and Rolls. It would have been good if I could create the objects on document load and inject them inside the Game.Hopefully next week with JavaScript would give me some more idea about how to decouple the objects even more.
 
+Looked at Mary's count program for dir structure :)
+
 ## User Stories
 ```
 As a player,

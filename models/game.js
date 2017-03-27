@@ -1,20 +1,20 @@
 'use strict';
 
-function Game(player) {
-  this.player = player;
+function Game() {
   this.frames = [];
   this.currentFrame = new Frame(1);
   this.complete = false;
 };
 
-Game.prototype.bowl = function() {
+Game.prototype.bowl = function(score) {
   this._checkFinished();
   this._checkFrame();
 
   if(this.complete === true){
     throw "You cannot bowl again! The game is finished.";
   }
-  return this.player.throwBall(this._getCurrentFrame());
+  this._getCurrentFrame().addBall(score);
+  return score;
 };
 
 Game.prototype.getScore = function () {

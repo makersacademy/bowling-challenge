@@ -22,16 +22,12 @@ describe("Score", function() {
     expect(score.runningScore).toEqual(2);
   })
 
-  // Test currently failing when a spare or strike is scored. Otherwise passes.
-  // it("calculates the running score of the game", function(){
-  //   game.play();
-  //   var scoreOne = game.frames[0];
-  //   game.play();
-  //   var scoreTwo = game.frames[1];
-  //   var calculate = score.calculateScore(scoreOne);
-  //   calculate += score.calculateScore(scoreTwo);
-  //   expect(score.runningScore).toEqual(calculate);
-  // })
+  it("calculates the running score of the game", function(){
+    spyOn(game, "play").and.returnValue([4, 5]);
+    score.calculateScore(game.play());
+    score.calculateScore(game.play());
+    expect(score.runningScore).toEqual(18);
+  })
 
   describe("stores high scoring status", function() {
 

@@ -31,6 +31,62 @@ Frame.prototype.getFrameScore = function (nextBallOne = 0, nextBallTwo = 0) {
   return score;
 };
 
+Frame.prototype.printFrame = function(){
+  if(this.frameNumber < 10){
+    return this._printBallBasic();
+  }
+  else{
+    return this._printBallFinal();
+  }
+};
+
+Frame.prototype._printBallBasic = function(){
+  if(this.balls.length === 1){
+    if(this.balls[0] === 10){
+      return "X";
+    }
+    else{
+      return this.balls[0];
+    }
+  }
+  else{
+    var spares = [[1,9],[2,8],[3,7],[4,6],[5,5],[6,4],[7,3],[8,2],[9,1]];
+    console.log(spares);
+    console.log(this.balls);
+    if(spares.contains(this.balls)){
+      return this.balls[0] + " | /";
+    }
+    else if(this.balls[0] === 10){
+      return "X";
+    }
+    else {
+      return this.balls[0] + " | " + this.balls[1];
+    }
+  }
+};
+
+Frame.prototype._printBallFinal = function(){
+  var spares = [[1,9],[2,8],[3,7],[4,6],[5,5],[6,4],[7,3],[8,2],[9,1]];
+  if(spares.contains(this.balls)){
+    return this.balls[0] + " | /";
+  }
+  else if(this.balls.length === 1 && this.balls[0] === 10){
+    return "X";
+  }
+  else {
+    return this.balls[0] + " | " + this.balls[1];
+  }
+};
+
+Array.prototype.contains = function (itemSearch) {
+  this.forEach(function(item){
+    console.log(item)
+    console.log(itemSearch)
+    if (item === Array(itemSearch)) return true;
+  });
+  return false;
+}
+
 Frame.prototype._getPins = function () {
   return this.pins;
 };

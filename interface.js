@@ -28,25 +28,8 @@ function updateBlurb(score){
 
 function updateFrameScore(){
   frame = game._getCurrentFrame();
+  $('#Tf' + frame.frameNumber).text(frame.printFrame());
   $('#Bf' + frame.frameNumber).text(frame.getFrameScore());
-  content = "";
-
-  if(frame.balls[0] == 10){
-    content = "X";
-  }
-  else if ((frame.balls[0] + frame.balls[1]) === 10) {
-    content = frame.balls[0] + " | /";
-  }
-  else{
-    if(typeof frame.balls[1] !== 'undefined') {
-      content = frame.balls[0] + " | " + frame.balls[1];
-    }
-    else {
-      content = frame.balls[0];
-    }
-  }
-
-  $('#Tf' + frame.frameNumber).text(content);
 };
 
 function updateGameScore(){

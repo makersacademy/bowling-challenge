@@ -1,4 +1,5 @@
 var game;
+var printer;
 
 $( document ).ready(function() {
   startGame();
@@ -12,6 +13,7 @@ $( document ).ready(function() {
 
 function startGame(){
   game = new Game();
+  printer = new Printer();
 };
 
 function takeTurn(score){
@@ -28,11 +30,12 @@ function updateBlurb(score){
 
 function updateFrameScore(){
   frame = game._getCurrentFrame();
-  $('#Tf' + frame.frameNumber).text(frame.printFrame());
+  $('#Tf' + frame.frameNumber).text(printer.printFrameBalls(frame.balls, frame.frameNumber));
   $('#Bf' + frame.frameNumber).text(frame.getFrameScore());
 };
 
 function updateGameScore(){
+  console.log(game.frames);
   $('#score').text(game.getScore());
 };
 

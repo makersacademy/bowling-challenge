@@ -2,19 +2,17 @@
 
 function Game() {
   this.frames = [];
-  this.currentFrame = new Frame(1);
+  this._createFrame();
   this.complete = false;
 };
 
 Game.prototype.bowl = function(score) {
   this._checkFinished();
   this._checkFrame();
-
   if(this.complete === true){
     throw "You cannot bowl again! The game is finished.";
   }
   this._getCurrentFrame().addBall(score);
-  return score;
 };
 
 Game.prototype.getScore = function () {
@@ -25,6 +23,10 @@ Game.prototype.getScore = function () {
     total += Number(frame.getFrameScore(ballOne,ballTwo));
   });
   return total;
+};
+
+Game.prototype.gameComplete = function () {
+  return this.complete;
 };
 
 Game.prototype.wasGutterGame = function (score) {
@@ -54,23 +56,25 @@ Game.prototype._getFrameBalls = function () {
 };
 
 Game.prototype._getCurrentFrame = function () {
-  return this.currentFrame;
+  return this.frames[this.frames.length -1];
 };
 
 Game.prototype._checkFrame = function(){
-  if(this._getCurrentFrame().isComplete() && !this.complete){
-    this._getNewFrame();
+  if(this._getCurrentFrame().isComplete() && !this.gameComplete()){
+    this._createFrame();
   };
 };
 
 Game.prototype._checkFinished = function(){
-  if(this.frames.length === 10 && this.frames[9].isComplete()){
-    this.complete = true;
+  if(this.frames.length === 10 && this.frames[this.frames.length -1].isComplete()){
+    return this.complete = true;
   }
-  return this.complete;
 }
 
-Game.prototype._getNewFrame = function () {
-  this.frames.push(this._getCurrentFrame());
-  this.currentFrame = new Frame(this.frames.length + 1);
+Game.prototype._pushFrame = function (frame) {
+  this.frames.push(frame);
+};
+
+Game.prototype._createFrame = function () {
+  this._pushFrame(new Frame(this.frames.length + 1));
 };

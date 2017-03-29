@@ -9,9 +9,8 @@ describe('Game', function() {
 
   describe('~constructor', function() {
 
-    it('has an empty array of #frames', function(){
-      expect(game.frames).toEqual([]);
-      expect(game.frames.length).toEqual(0);
+    it('has a #frames array with 1 item', function(){
+      expect(game.frames.length).toEqual(1);
     });
 
   });
@@ -19,9 +18,9 @@ describe('Game', function() {
   describe('.newFrame',function(){
 
     it('starts a new frame', function(){
-      game._getNewFrame();
-      game._getNewFrame();
-      expect(game.frames.length).toEqual(2);
+      game._createFrame();
+      game._createFrame();
+      expect(game.frames.length).toEqual(3);
     });
 
   });
@@ -43,7 +42,7 @@ describe('Game', function() {
 
     it('raises an error if the game is over', function(){
       var balls = [10,10,10,10,10,10,10,10,10,10,10,10];
-      for(var i = 0; i <= balls.length ; i++){
+      for(var i = 0; i <= balls.length -1 ; i++){
         game.bowl(balls[i]);
       }
       expect(function(){game.bowl()}).toThrow("You cannot bowl again! The game is finished.");
@@ -55,7 +54,7 @@ describe('Game', function() {
 
     it('returns the correct score for a perfect game (all strikes)', function(){
       var balls = [10,10,10,10,10,10,10,10,10,10,10,10];
-      for(var i = 0; i <= balls.length ; i++){
+      for(var i = 0; i <= balls.length -1 ; i++){
         game.bowl(balls[i]);
       }
       expect(game.getScore()).toEqual(300);
@@ -63,7 +62,7 @@ describe('Game', function() {
 
     it('returns the correct score for a gutter game (no score)', function(){
       var balls = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-      for(var i = 0; i <= balls.length ; i++){
+      for(var i = 0; i <= balls.length -1 ; i++){
         game.bowl(balls[i]);
       }
       expect(game.getScore()).toEqual(0);
@@ -71,7 +70,7 @@ describe('Game', function() {
 
     it('returns the correct score for a game with no strikes or spares', function(){
       var balls = [0,5,5,0,1,4,2,3,7,0,8,0,4,4,4,0,5,0,6,1];
-      for(var i = 0; i <= balls.length ; i++){
+      for(var i = 0; i <= balls.length -1; i++){
         game.bowl(balls[i]);
       }
       expect(game.getScore()).toEqual(59);
@@ -79,7 +78,7 @@ describe('Game', function() {
 
     it('returns the correct score for a game with only spares', function(){
       var balls = [0,10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,0]
-      for(var i = 0; i <= balls.length ; i++){
+      for(var i = 0; i <= balls.length -1 ; i++){
         game.bowl(balls[i]);
       }
       expect(game.getScore()).toEqual(100);
@@ -87,7 +86,7 @@ describe('Game', function() {
 
     it('returns the correct score for a mixed game (A)', function(){
       var balls = [0,10,1,9,2,0,5,5,1,1,2,5,4,1,0,10,6,3,0,10,0]
-      for(var i = 0; i <= balls.length ; i++){
+      for(var i = 0; i <= balls.length -1 ; i++){
         game.bowl(balls[i]);
       }
       expect(game.getScore()).toEqual(85);
@@ -95,7 +94,7 @@ describe('Game', function() {
 
     it('returns the correct score for a mixed game (B)', function(){
       var balls = [10,0,1,9,1,0,10,5,1,1,3,2,4,10,10,10,10,10]
-      for(var i = 0; i <= balls.length ; i++){
+      for(var i = 0; i <= balls.length -1; i++){
         game.bowl(balls[i]);
       }
       expect(game.getScore()).toEqual(143);

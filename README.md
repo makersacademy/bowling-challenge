@@ -2,10 +2,6 @@
 ```
 
 As a game
-So that I can start a game
-I want to have at least one player
-
-As a game
 So that I follow the rules
 I want to have ten frames
 
@@ -19,7 +15,7 @@ I want to end the frame if the player gets a strike unless I am at frame ten
 
 As a game
 So that I can be fair
-I want to end a frame after the second turn unless I am at frame ten
+I want to end a frame after the second turn unless the player got a strike or I am at frame ten
 
 As a game
 So that the game doesn't go on forever
@@ -33,25 +29,50 @@ As a frame
 So that I can help keep track of the score
 I want to store the number of pins knocked over by a ball
 
-As a player
-So that I can play
+As a game
+So that the player can play
 I want to be able to bowl a ball
 
-As a player
-So that I can get bonus points
-I want to know .........
+As a game
+So that I can award bonus points after a strike in the previous frame in frames 1 to 9
+I want to add the score of the next two balls to the score of the previous frame
 
-As a player
-So I can be proud
-I want to know my score
+As a game
+So that I can award bonus points after a spare in the previous frame in frames 1 to 9
+I want to add the score of the next ball to the score of the previous frame
 
-As a player
-If i scored 0
-I want to know I had a gutter game
+As a game
+So that I can award a bonus throw after a strike on the first ball of the tenth frame
+I want to let the player bowl again
 
-As a player
-If I scored 300 points
-I want to know I had a perfect game
+As a game
+So that I can award a bonus throw after a strike on the first and second balls of the tenth frame
+I want to let the player bowl again
+
+As a game
+So that I can award a bonus throw after a spare on the two balls of the tenth frame
+I want to let the player bowl again
+
+As a game
+So the player can be proud
+I want to report the score
+
+As a game
+If the player scored 0
+I want to report a gutter game
+
+As a game
+If the player scored 300 points
+I want to report a perfect game
+
+
+As a printer
+So that the player can see the current score
+I want to report the current score of the game
+
+As a printer
+So that the player can see how the frame went
+I want to report the score of the frame in a format the player will recognise
 ```
 
 Bowling Challenge

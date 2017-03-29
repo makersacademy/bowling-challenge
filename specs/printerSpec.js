@@ -103,6 +103,9 @@ describe('Printer', function() {
         });
 
       });
+
     });
+
   });
+  
 });

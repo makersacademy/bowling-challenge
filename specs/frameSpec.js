@@ -300,6 +300,7 @@ describe('Frame', function() {
       });
 
     });
+    
   });
 
 });

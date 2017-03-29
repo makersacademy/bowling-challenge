@@ -52,6 +52,33 @@ describe('Frame', function() {
 
     });
 
+    describe('.getBalls', function(){
+        it('returns the frames balls when one ball', function(){
+          frame.addBall(10);
+          expect(frame.getBalls()).toEqual([10]);
+        });
+
+        it('returns the frames balls when two balls', function(){
+          frame.addBall(5);
+          frame.addBall(5);
+          expect(frame.getBalls()).toEqual([5,5]);
+        });
+
+        it('returns the frames balls when three balls', function(){
+          frame = new Frame(10);
+          frame.addBall(5);
+          frame.addBall(5);
+          frame.addBall(5);
+          expect(frame.getBalls()).toEqual([5,5,5]);
+        });
+    });
+
+    describe('.getFrameNumber', function(){
+        it('returns the frames number', function(){
+          expect(frame.getFrameNumber()).toEqual(1);
+        });
+    });
+
     describe('frames 10', function(){
 
       beforeEach(function() {

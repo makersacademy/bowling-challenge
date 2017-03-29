@@ -7,7 +7,6 @@ function Game() {
 };
 
 Game.prototype.bowl = function(score) {
-
   if(this.complete === true){
     throw "You cannot bowl again! The game is finished.";
   }

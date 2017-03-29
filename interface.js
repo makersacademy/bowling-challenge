@@ -1,7 +1,7 @@
 var game;
 var printer;
 
-$( document ).ready(function() {
+$(document).ready(function() {
   startGame();
   for(var i = 0; i < 11; i++){
     $( "#" + i ).click(function(){
@@ -39,8 +39,7 @@ function updateFrameScore(){
       $('#Tf' + frame.getFrameNumber()).text(printer.printFrameBalls(frame.getBalls(), frame.getFrameNumber()));
       $('#Bf' + frame.getFrameNumber()).text(frame.getFrameScore());
     }
-  })
-
+  });
 };
 
 function updateGameScore(){

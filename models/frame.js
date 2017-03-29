@@ -18,6 +18,14 @@ Frame.prototype.addBall = function (score) {
   }
 };
 
+Frame.prototype.getBalls = function () {
+  return this.balls;
+};
+
+Frame.prototype.getFrameNumber = function(){
+  return this.frameNumber;
+}
+
 Frame.prototype.isComplete = function () {
   return this.complete;
 };

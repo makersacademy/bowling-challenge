@@ -47,6 +47,26 @@ h3{
   cursor: hand;
 }
 
+.btnPin:disabled,
+.btnPin[disabled]{
+  font-family: 'Lobster', cursive;
+  border-width: 2px;
+  border-color: #fdda16;
+  border-radius: 5px;
+  overflow: hidden;
+  background: gray;
+  font-weight: bold;
+  outline: none;
+  font-size: 25px;
+  color: #fdda16;
+  /*padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;*/
+  width: 55px;
+  cursor: not-allowed;
+}
+
 .btnPin{
   font-family: 'Lobster', cursive;
   border-width: 2px;

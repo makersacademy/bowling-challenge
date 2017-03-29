@@ -25,25 +25,40 @@ function takeTurn(score){
 };
 
 function updateBlurb(score){
-  $('#blurb').text("' You knocked down " + score + " pins '");
+  if(!game.gameComplete()){
+    $('#blurb').text("' You knocked down " + score + " pins '");
+  }
+  else{
+      $('#blurb').text("' Game over! You scored " + game.getScore() +" '");
+  }
 };
 
 function updateFrameScore(){
-  frame = game._getCurrentFrame();
-  $('#Tf' + frame.frameNumber).text(printer.printFrameBalls(frame.balls, frame.frameNumber));
-  $('#Bf' + frame.frameNumber).text(frame.getFrameScore());
+  game.frames.forEach(function(frame){
+    if(frame.getBalls().length > 0){
+      $('#Tf' + frame.getFrameNumber()).text(printer.printFrameBalls(frame.getBalls(), frame.getFrameNumber()));
+      $('#Bf' + frame.getFrameNumber()).text(frame.getFrameScore());
+    }
+  })
+
 };
 
 function updateGameScore(){
-  console.log(game.frames);
   $('#score').text(game.getScore());
 };
 
 function updateBowlButtons(){
-  max = game._getCurrentFrame()._getPins();
-  for(var i = 0; i < 11; i++){
-    if(i > max){$( "#" + i ).css("background-color","yellow")};
-    if(i <= max){$( "#" + i ).css("background-color","pink")};
+  if(!game.gameComplete()){
+    max = game._getCurrentFrame()._getPins();
+    for(var i = 0; i < 11; i++){
+      if(i > max){$( "#" + i ).prop("disabled",true)};
+      if(i <= max){$( "#" + i ).prop("disabled",false)};
+    }
+  }
+  else{
+    for(var i = 0; i < 11; i++){
+      $( "#" + i ).prop("disabled",true)
+    }
   }
 };
 

@@ -7,12 +7,13 @@ function Game() {
 };
 
 Game.prototype.bowl = function(score) {
-  this._checkFinished();
-  this._checkFrame();
+
   if(this.complete === true){
     throw "You cannot bowl again! The game is finished.";
   }
   this._getCurrentFrame().addBall(score);
+  this._checkFinished();
+  this._checkFrame();
 };
 
 Game.prototype.getScore = function () {

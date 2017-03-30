@@ -4,8 +4,8 @@ var printer;
 $(document).ready(function() {
   startGame();
   for(var i = 0; i < 11; i++){
-    $( "#" + i ).click(function(){
-      takeTurn($(this).attr("value"));
+    $( '#' + i ).click(function(){
+      takeTurn($(this).attr('value'));
     });
   }
   $('#reset').click(newGame);
@@ -26,10 +26,10 @@ function takeTurn(score){
 
 function updateBlurb(score){
   if(!game.gameComplete()){
-    $('#blurb').text("' You knocked down " + score + " pins '");
+    $('#blurb').text('\' You knocked down ' + score + ' pins \'');
   }
   else{
-      $('#blurb').text("' Game over! You scored " + game.getScore() +" '");
+      $('#blurb').text('\' Game over! You scored ' + game.getScore() +' \'');
   }
 };
 
@@ -50,13 +50,13 @@ function updateBowlButtons(){
   if(!game.gameComplete()){
     max = game._getCurrentFrame()._getPins();
     for(var i = 0; i < 11; i++){
-      if(i > max){$( "#" + i ).prop("disabled",true)};
-      if(i <= max){$( "#" + i ).prop("disabled",false)};
+      if(i > max){$( '#' + i ).prop('disabled',true)};
+      if(i <= max){$( '#' + i ).prop('disabled',false)};
     }
   }
   else{
     for(var i = 0; i < 11; i++){
-      $( "#" + i ).prop("disabled",true)
+      $( '#' + i ).prop('disabled',true)
     }
   }
 };

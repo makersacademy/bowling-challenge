@@ -81,6 +81,11 @@ describe('Game', function() {
 
   });
 
+  describe("fuzzing a game tests", function(){
+
+
+  });
+
   describe('.wasPerfect',function(){
 
     it('returns true if the player scored 300', function(){

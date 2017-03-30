@@ -1,4 +1,5 @@
 'use strict';
+var MAXFRAMES = 10;
 
 function Game() {
   this.frames = [];
@@ -8,7 +9,7 @@ function Game() {
 
 Game.prototype.bowl = function(score) {
   if(this.complete === true){
-    throw "You cannot bowl again! The game is finished.";
+    throw 'You cannot bowl again! The game is finished.';
   }
   this._getCurrentFrame().addBall(score);
   this._checkFinished();
@@ -66,7 +67,7 @@ Game.prototype._checkFrame = function(){
 };
 
 Game.prototype._checkFinished = function(){
-  if(this.frames.length === 10 && this.frames[this.frames.length -1].isComplete()){
+  if(this.frames.length === MAXFRAMES && this.frames[this.frames.length -1].isComplete()){
     return this.complete = true;
   }
 }

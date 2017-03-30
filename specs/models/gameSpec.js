@@ -41,11 +41,8 @@ describe('Game', function() {
 
 
     it('raises an error if the game is over', function(){
-      var balls = [10,10,10,10,10,10,10,10,10,10,10,10];
-      for(var i = 0; i <= balls.length -1 ; i++){
-        game.bowl(balls[i]);
-      }
-      expect(function(){game.bowl()}).toThrow("You cannot bowl again! The game is finished.");
+      bowlGame(game, [10,10,10,10,10,10,10,10,10,10,10,10]);
+      expect(function(){game.bowl()}).toThrow('You cannot bowl again! The game is finished.');
     });
 
   });
@@ -53,50 +50,32 @@ describe('Game', function() {
   describe('.getScore',function(){
 
     it('returns the correct score for a perfect game (all strikes)', function(){
-      var balls = [10,10,10,10,10,10,10,10,10,10,10,10];
-      for(var i = 0; i <= balls.length -1 ; i++){
-        game.bowl(balls[i]);
-      }
+      bowlGame(game, [10,10,10,10,10,10,10,10,10,10,10,10]);
       expect(game.getScore()).toEqual(300);
     });
 
     it('returns the correct score for a gutter game (no score)', function(){
-      var balls = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-      for(var i = 0; i <= balls.length -1 ; i++){
-        game.bowl(balls[i]);
-      }
+      bowlGame(game, [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
       expect(game.getScore()).toEqual(0);
     });
 
     it('returns the correct score for a game with no strikes or spares', function(){
-      var balls = [0,5,5,0,1,4,2,3,7,0,8,0,4,4,4,0,5,0,6,1];
-      for(var i = 0; i <= balls.length -1; i++){
-        game.bowl(balls[i]);
-      }
+      bowlGame(game, [0,5,5,0,1,4,2,3,7,0,8,0,4,4,4,0,5,0,6,1]);
       expect(game.getScore()).toEqual(59);
     });
 
     it('returns the correct score for a game with only spares', function(){
-      var balls = [0,10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,0]
-      for(var i = 0; i <= balls.length -1 ; i++){
-        game.bowl(balls[i]);
-      }
+      bowlGame(game, [0,10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,0,10,0]);
       expect(game.getScore()).toEqual(100);
     });
 
     it('returns the correct score for a mixed game (A)', function(){
-      var balls = [0,10,1,9,2,0,5,5,1,1,2,5,4,1,0,10,6,3,0,10,0]
-      for(var i = 0; i <= balls.length -1 ; i++){
-        game.bowl(balls[i]);
-      }
+      bowlGame(game, [0,10,1,9,2,0,5,5,1,1,2,5,4,1,0,10,6,3,0,10,0]);
       expect(game.getScore()).toEqual(85);
     });
 
     it('returns the correct score for a mixed game (B)', function(){
-      var balls = [10,0,1,9,1,0,10,5,1,1,3,2,4,10,10,10,10,10]
-      for(var i = 0; i <= balls.length -1; i++){
-        game.bowl(balls[i]);
-      }
+      bowlGame(game, [10,0,1,9,1,0,10,5,1,1,3,2,4,10,10,10,10,10]);
       expect(game.getScore()).toEqual(143);
     });
 

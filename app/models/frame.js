@@ -1,10 +1,11 @@
 'use strict';
+var STARTPINS = 10;
 
 function Frame(frameNum) {
   this.balls = [];
   this.complete = false;
   this.frameNumber = frameNum;
-  this.pins = 10;
+  this.pins = STARTPINS;
 }
 
 Frame.prototype.addBall = function (score) {
@@ -32,7 +33,7 @@ Frame.prototype.isComplete = function () {
 
 Frame.prototype.getFrameScore = function (nextBallOne = 0, nextBallTwo = 0) {
   var score = this._calculateScore();
-  if(this.frameNumber < 10){
+  if(this.frameNumber < MAXFRAMES){
     if(this.balls[0] === 10) { score = score + nextBallOne + nextBallTwo; }
     if((this.balls[0] + this.balls[1]) > 9) { score = score + nextBallOne; }
   }
@@ -46,15 +47,15 @@ Frame.prototype._getPins = function () {
 Frame.prototype._checkPins = function(score){
   this.pins -= score;
   if(this.balls.length === 1 && this.balls[0] === 10){
-    this.pins = 10;
+    this.pins = STARTPINS;
   }
   if(this.balls.length === 2 && this.balls[0] + this.balls[1] > 9){
-    this.pins = 10;
+    this.pins = STARTPINS;
   }
 };
 
 Frame.prototype._checkComplete = function () {
-  if(this.frameNumber < 10){
+  if(this.frameNumber < MAXFRAMES){
     if(this.balls.length > 1 || this.balls[0] === 10){
       this._completeFrame();
     }

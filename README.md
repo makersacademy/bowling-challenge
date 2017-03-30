@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/joemaidman/thermostat-final/blob/master/screenshots/logo.png"/>
+<img src="https://github.com/joemaidman/bowling-challenge/blob/master/screenshots/logo.png"/>
 </p>
 
 Bowling Challenge is a web application build on the Sinatra framework that emulates the core functionality of Twitter. Users are able to register with a unique email address and once signed-in, can post 'Peeps' (tweets) with tags and images to a public stream. A demo of the application can be found on Heroku at https://chitter-week4.herokuapp.com/

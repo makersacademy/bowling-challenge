@@ -62,5 +62,5 @@ function updateBowlButtons(){
 };
 
 function newGame(){
-  location.reload();
+  window.location.href = window.location.href;
 };

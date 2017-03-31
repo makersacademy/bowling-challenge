@@ -2,7 +2,7 @@
 <img src="https://github.com/joemaidman/bowling-challenge/blob/master/screenshots/logo.png"/>
 </p>
 
-Bowling Challenge is a front end javascript application that allows a user to score a game of ten pin bowling. Users are able to enter their score for each bowl and view a running score of both the frame and game. A demo of the application can be found at https://chitter-week4.herokuapp.com/
+Bowling Challenge is a front end javascript application that allows a user to score a game of ten pin bowling. Users are able to enter their score for each bowl and view a running score of both the frame and game. A demo of the application can be found at http://bowling-challenge.netlify.com/
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Play Bowling - why not? </title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="./css/grayscale.min.css" rel="stylesheet">
+
+    <!-- Bowling CSS -->
+    <link href="./css/bowling_style.css" rel="stylesheet">
+
+    <script src="src/Game.js"></script>
+    <script src="src/Frame.js"></script>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <img class="logo" src="images/bowling_logo.png">
+                    <i class="fa fa-play-circle"></i> <span class="light">Play</span> Bowling
+                </a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="page-scroll" href="https://github.com/kateloschinina/bowling-challenge">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Game Section -->
+    <section id="about" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <p>Pick the score, or just random generate a roll!</p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <div class="btn btn-default btn-lg" id="choice-0">0</div>
+                    </li>
+                    <li>
+                        <div class="btn btn-default btn-lg" id="choice-1">1</div>
+                    </li>
+                    <li>
+                        <div class="btn btn-default btn-lg" id="choice-2">2</div>
+                    </li>
+                    <li>
+                        <div class="btn btn-default btn-lg" id="choice-3">3</div>
+                    </li>
+                    <li>
+                        <div class="btn btn-default btn-lg" id="choice-4">4</div>
+                    </li>
+                    <li>
+                        <div class="btn btn-default btn-lg" id="choice-5">5</div>
+                    </li>
+                    <li>
+                        <div class="btn btn-default btn-lg" id="choice-6">6</div>
+                    </li>
+                    <li>
+                        <div class="btn btn-default btn-lg" id="choice-7">7</div>
+                    </li>
+                    <li>
+                        <div class="btn btn-default btn-lg" id="choice-8">8</div>
+                    </li>
+                    <li>
+                        <div class="btn btn-default btn-lg" id="choice-9">9</div>
+                    </li>
+                    <li>
+                        <div class="btn btn-default btn-lg" id="choice-10">10</div>
+                    </li>
+                </ul>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <div class="btn btn-default btn-lg" id="random">Random roll generator</div>
+                    </li>
+                </ul>
+                <h3> Score table </h3>
+                <table class="table table-bordered">
+                  <tr>
+                    <td id="roll-1">--/--</td>
+                    <td id="roll-2">--/--</td>
+                    <td id="roll-3">--/--</td>
+                    <td id="roll-4">--/--</td>
+                    <td id="roll-5">--/--</td>
+                    <td id="roll-6">--/--</td>
+                    <td id="roll-7">--/--</td>
+                    <td id="roll-8">--/--</td>
+                    <td id="roll-9">--/--</td>
+                    <td id="roll-10">--/--</td>
+                  </tr>
+                  <tr>
+                    <td id="score-1">0</td>
+                    <td id="score-2">0</td>
+                    <td id="score-3">0</td>
+                    <td id="score-4">0</td>
+                    <td id="score-5">0</td>
+                    <td id="score-6">0</td>
+                    <td id="score-7">0</td>
+                    <td id="score-8">0</td>
+                    <td id="score-9">0</td>
+                    <td id="score-10">0</td>
+                  </tr>
+                </table>
+                <p id="conclusion"></p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <div class="btn btn-default btn-lg" id="new-game">New Game</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <h6>Copyright &copy; Katerina Loschinina 2017</h6>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bowling JavaScript -->
+    <script src="js/bowling_controller.js"></script>
+
+</body>
+
+</html>

@@ -83,7 +83,8 @@ describe('Game', function() {
 
   describe("fuzzing a game", function(){
 
-    it('can bowl a game without violating the rules', function(){
+    it('can bowl many game without violating the rules', function(){
+      //Warning, bowls 1,000 games, may take several seconds to load results page
       for(var i = 0; i < 1000;i++){
         game = new Game();
         fuzzGame(game);

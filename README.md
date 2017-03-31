@@ -2,42 +2,24 @@
 <img src="https://github.com/joemaidman/bowling-challenge/blob/master/screenshots/logo.png"/>
 </p>
 
-Bowling Challenge is a web application build on the Sinatra framework that emulates the core functionality of Twitter. Users are able to register with a unique email address and once signed-in, can post 'Peeps' (tweets) with tags and images to a public stream. A demo of the application can be found on Heroku at https://chitter-week4.herokuapp.com/
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
+Bowling Challenge is a front end javascript application that allows a user to score a game of ten pin bowling. Users are able to enter their score for each bowl and view a running score of both the frame and game. A demo of the application can be found at https://chitter-week4.herokuapp.com/
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
 ## Strikes
-
 The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
 
 ## Spares
-
 The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
 
 ## 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count. 10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus). 1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
 
 ## Gutter Game
-
 A Gutter Game is when the player never hits a pin (20 zero scores).
 
 ## Perfect Game
-
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-Users can also:
-- View user profiles
-- Update a user profile
-- Sign out
-- Reply to Peeps
-- Search Peeps by tag
-- Sort peeps in ascending or descending order
 
 ## User Stories
 ```
@@ -113,14 +95,6 @@ As a printer
 So that the player can see how the frame went
 I want to report the score of the frame in a format the player will recognise
 ```
-## Notes on functionality
-* Users sign up to chitter with their Email, Password, Name,  Handle, Biography and Avatar.
-* The Email and Handle must be unique.
-* The Biography and Avatar are optional.
-* Peeps (posts to chitter) show the handle of the authoring user.
-* Users can only can peep if logged in.
-* Users don't have to be logged in to see peeps or view user profiles.
-* Peeps can be created with an image URL which will display in the peep.
 
 ## Screenshots
 **Scorecard**

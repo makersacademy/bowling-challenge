@@ -17,7 +17,7 @@ Frame.prototype.addBall = function (score) {
   else{
     throw 'Cannot add ball to a frame that is already complete'
   }
-};
+}
 
 Frame.prototype.getBalls = function () {
   return this.balls;

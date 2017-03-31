@@ -81,8 +81,23 @@ describe('Game', function() {
 
   });
 
-  describe("fuzzing a game tests", function(){
+  describe("fuzzing a game", function(){
 
+    it('can bowl a game without violating the rules', function(){
+      for(var i = 0; i < 1000;i++){
+        game = new Game();
+        fuzzGame(game);
+        expect(game.gameComplete()).toBe(true);
+        expect(game.frames.length).toEqual(10);
+        expect(game.getScore()).toBeLessThan(301);
+        game.frames.forEach(function(frame){
+          expect(frame.balls.length).toBeLessThan(4);
+          expect(frame.getFrameScore()).toBeLessThan(31);
+          expect(frame.isComplete()).toBe(true);
+        });
+      }
+
+    });
 
   });
 

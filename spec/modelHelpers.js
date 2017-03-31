@@ -3,3 +3,9 @@ function bowlGame(game, balls){
     game.bowl(balls[i]);
   }
 }
+
+function fuzzGame(game){
+  while(!game.gameComplete()){
+    game.bowl(Math.round(Math.random() * (game._getCurrentFrame()._getPins())));
+  }
+}

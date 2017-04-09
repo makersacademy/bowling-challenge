@@ -9,19 +9,88 @@ Bowling Challenge
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday week
 
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Forking this repo
 
 * Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+*
 
+User Stories
+------------
+
+<!-- As a Player
+In order to play a game
+I want to play 10 rounds
+
+As a Player
+In order to play a game
+I want to have up to 2 balls per round
+
+As a Player
+In order to play a game
+I want to have 10 pins per round
+
+As a Player
+In order to play  a game
+I want to start a round
+
+As a Player
+In order to start a round
+I want to roll a ball -->
+
+<!-- As a Player
+In order to play a round
+I want to record the number of pins my ball knocks down -->
+
+<!-- As a Player
+In order to finish a round
+I want to bowl a second ball -->
+
+<!-- As a Player
+In order to finish a round
+I don't want to play a second ball if I have already knocked down all balls -->
+
+As a Player
+In order to finish a round
+I want to sum my score from my balls
+
+As a Player
+In order to play a game
+I want to start a new round when my round is finished
+
+
+As a Player
+In order to finish a game
+I only want to play the max number of rounds
+
+
+As a Player
+Because I am bad at counting
+I want to see my total score
+
+As a Player
+In order to play properly and need put a score in per ball
+I want to be able to enter scores twice per frame
+
+As a Player
+In order not to score too much (if there is such a thing)
+I only want to be able to score 10 max per frame
+
+As a Player
+In order to get strikes
+I want to get the points doubled for the next two sets of balls if I score a 10 on the first ball of the frame
+
+As a Player
+In order to score a spare
+I want to be able to double the points of the next ball rolled if I score 10 in the previous frame
 
 ### Optional Extra
 
@@ -62,7 +131,7 @@ Code Review
 In code review we'll be hoping to see:
 
 * All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 

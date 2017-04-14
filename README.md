@@ -1,7 +1,7 @@
 
 # Bowling Challenge
 
-## User
+## User Stories
 
 ```
 As a player,
@@ -34,7 +34,7 @@ If I get a strike or spare in the 10th frame I get 3 bowls.
 
 As a player,
 So I can score more points,
-If I get a spare the first bowl score is added to my spare score.
+If I get a spare the first bowl score from the next frame is added to my spare score.
 
 As a player,
 So I can score more points,
@@ -52,7 +52,7 @@ BONUS:
 
 As a player,
 So I can have an amazing visual experience,
-I would like to have a stunning interface.
+I would like to have a stunning animated interface.
 ```
 
 * Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am

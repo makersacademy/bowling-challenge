@@ -17,7 +17,13 @@ describe('Frame', function(){
     expect(frame.getFirstRoll()).toEqual(3);
   });
 
+  it('logs the knocked pins of second roll', function(){
+    frame.secondRoll(5);
+    expect(frame._secondRoll).toEqual(5);
+  });
 
-
+  it('checks if roll is a strike', function(){
+    
+  })
 
 })

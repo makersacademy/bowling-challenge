@@ -1,4 +1,4 @@
-'use strict';
+'use strict()';
 
 function Game() {
   this._frames = []
@@ -23,9 +23,5 @@ Game.prototype.total = function() {
 Game.prototype._storeFrame = function() {
   this._frames.push(this._currentFrame);
   this._currentFrame = new Frame();
+  this._addSpareBonus
 }
-
-// Game.prototype._strikeBonus = function() {
-//   this._frames.forEach(function(frame) {
-//   })
-// }

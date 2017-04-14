@@ -32,4 +32,15 @@ describe('Game', function() {
     expect(game.total()).toEqual(30)
   });
 
+  it('calculates spare strike score', function() {
+    spyOn(game._currentFrame, 'points').and.returnValue(5)
+    spyOn(game._currentFrame, 'isSpare').and.returnValue(true)
+    game.roll()
+    game.roll()
+    spyOn(game._currentFrame, 'points').and.returnValue(3)
+    game.roll()
+    game.roll()
+    expect(game.total()).toEqual(11)
+  });
+
 });

@@ -17,10 +17,17 @@ describe("Frame", function() {
     });
   });
 
-  // describe("rollScore", function() {
-  //   it("Should generate a number between 0 and 10", function() {
-  //     expect(frame.rollScore() >= 0 && frame.rollScore() <= 10).toBeTruthy;
-  //   });
-  // });
+  describe("play", function() {
+    it('should decrease number of pins', function() {
+      spyOn(frame, 'rollScore').and.returnValue(5);
+      frame.play();
+      expect(frame.pins).toEqual(5);
+    });
+
+    it('should decrease number of roll left', function() {
+      frame.play();
+      expect(frame.rollsLeft).toEqual(1);
+    });
+  });
 
 });

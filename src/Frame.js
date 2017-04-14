@@ -12,5 +12,5 @@ Frame.prototype.rollScore = function() {
 
 Frame.prototype.play = function() {
   this.pins -= this.rollScore();
-
+  this.rollsLeft -= 1;
 };

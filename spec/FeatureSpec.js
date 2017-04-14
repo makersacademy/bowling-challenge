@@ -12,6 +12,7 @@ describe("Feature spec", function() {
       spyOn(frame, 'rollScore').and.returnValue(7)
       frame.play();
       expect(frame.pins).toEqual(3);
+      expect(frame.rollsLeft).toEqual(1);
     });
   });
 });

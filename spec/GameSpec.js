@@ -41,7 +41,7 @@ describe('Game', function() {
     expect(game.total()).toEqual(26)
   });
 
-  it('adds correct bonus points if two stirkes in a row', function() {
+  it('adds correct bonus points if two strikes in a row', function() {
     spyOn(game._currentFrame, '_hit').and.returnValue(10)
     game.roll()
     spyOn(game._currentFrame, '_hit').and.returnValue(10)
@@ -49,8 +49,7 @@ describe('Game', function() {
     spyOn(game._currentFrame, '_hit').and.returnValue(7)
     game.roll()
     game.roll()
-    expect(game.total()).toEqual(58)
-
+    expect(game.total()).toEqual(65)
   });
 
 

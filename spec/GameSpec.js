@@ -16,10 +16,10 @@ describe('Game', function() {
   });
 
   it('calculates total points', function(){
-    spyOn(game._currentFrame, 'points').and.returnValue(4)
-    spyOn(game._currentFrame, 'isFinished').and.returnValue(true)
+    spyOn(game._currentFrame, '_hit').and.returnValue(4)
     game.roll()
-    expect(game.total()).toEqual(4)
+    game.roll()
+    expect(game.total()).toEqual(8)
   });
 
   it('adds bonus points for a spare', function() {
@@ -30,6 +30,15 @@ describe('Game', function() {
     game.roll()
     game.roll()
     expect(game.total()).toEqual(22)
+  });
+
+  it('adds bonus points for a strike', function() {
+    spyOn(game._currentFrame, '_hit').and.returnValue(10)
+    game.roll()
+    spyOn(game._currentFrame, '_hit').and.returnValue(4)
+    game.roll()
+    game.roll()
+    expect(game.total()).toEqual(26)
   });
 
 

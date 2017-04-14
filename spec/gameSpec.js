@@ -3,10 +3,17 @@
 describe ('Game', function(){
 
   var game;
+  var frame;
 
   beforeEach(function(){
     game = new Game;
+    frame = jasmine.createSpy('frame');
   });
+
+  it('can track how many frames have been played', function(){
+    expect(game._framesInPlay).toEqual([]);
+  });
+
 
   describe('Random Rolls', function(){
     it('#generateRandRoll1 - randomly generates number of knocked pins between 1 - 10', function(){

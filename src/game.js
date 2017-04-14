@@ -2,6 +2,7 @@
 
 function Game(){
 
+this._framesInPlay = [];
 this._randRoll1 = 0;
 this._randRoll2 = 0;
 }

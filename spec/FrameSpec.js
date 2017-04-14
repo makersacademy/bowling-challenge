@@ -45,5 +45,10 @@ describe('Frame', function() {
     expect(frame.isFinished()).toBeTruthy()
   });
 
+  it('has a method for returning points', function() {
+    frame.roll()
+    expect(frame.points()).toEqual(frame._points)
+  });
+
 
 });

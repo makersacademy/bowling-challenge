@@ -10,8 +10,12 @@ describe('Frame', function(){
   });
 
   it('should keep track of how many rolls have been made', function(){
-    expect(frame.getRollNumber()).toEqual(0);
+    expect(frame.getRollNumber()).toEqual(1);
   });
+
+  it('should keep track of frame total score', function(){
+    expect(frame._score).toEqual(0);
+  })
 
   describe('first roll', function(){
 

@@ -1,7 +1,8 @@
 'use strict';
 
 function Frame(knockedPins){
-  this._rollNumber = 0;
+  this._rollNumber = 1;
+  this._score = 0;
   this._firstRoll = knockedPins;
   this._secondRoll = 0;
   this._isStrike = false;
@@ -22,7 +23,7 @@ Frame.prototype.secondRoll = function (knockedPins) {
 
 Frame.prototype.checkStrike = function (knockedPins) {
   if ( knockedPins === 10 ) {
-    this._isStrike = true
+    this._isStrike = true;
   }
 };
 

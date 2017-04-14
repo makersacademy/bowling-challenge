@@ -25,10 +25,11 @@ describe('Frame', function() {
     expect(frame._rolls).toEqual(1)
   });
 
-  it('recognises a strike', function() {
+  it('recognises a strike, and that the strike ends the frame', function() {
     spyOn(frame, '_hit').and.returnValue(10)
     frame.roll()
     expect(frame.isStrike()).toBeTruthy()
+    expect(frame.isFinished()).toBeTruthy()
   });
 
   it('recognises a spare', function() {
@@ -36,6 +37,12 @@ describe('Frame', function() {
     frame.roll()
     frame.roll()
     expect(frame.isSpare()).toBeTruthy()
+  });
+
+  it('recognises when it is finished', function() {
+    frame.roll()
+    frame.roll()
+    expect(frame.isFinished()).toBeTruthy()
   });
 
 

@@ -14,7 +14,7 @@ Frame.prototype.roll = function() {
 }
 
 Frame.prototype._hit = function() {
-  return Math.floor(Math.random() * (this.points + 1))
+  return Math.floor(Math.random() * (this._pins + 1))
 }
 
 Frame.prototype.isStrike = function() {
@@ -26,6 +26,13 @@ Frame.prototype.isStrike = function() {
 
 Frame.prototype.isSpare = function() {
   if(this._rolls === 2 && this._points === 10) {
+    return true
+  }
+  return false
+}
+
+Frame.prototype.isFinished = function() {
+  if(this.isStrike() || this._rolls === 2) {
     return true
   }
   return false

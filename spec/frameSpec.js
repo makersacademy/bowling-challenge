@@ -5,12 +5,19 @@ describe('Frame', function(){
   var frame;
 
   beforeEach(function(){
-    frame = new Frame;
+    var knockedPins = 3
+    frame = new Frame(knockedPins);
   });
 
-  it('a roll generates a number between 1 - 10', function(){
-    expect(frame.roll()).toBeLessThan(11);
+  it('should keep track of how many rolls have been made', function(){
+    expect(frame.getRollNumber()).toEqual(0);
   });
+
+  it('logs the knocked pins of first roll', function(){
+    expect(frame.getFirstRoll()).toEqual(3);
+  });
+
+
 
 
 })

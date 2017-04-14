@@ -20,27 +20,17 @@ describe('Game', function() {
     spyOn(game._currentFrame, 'isFinished').and.returnValue(true)
     game.roll()
     expect(game.total()).toEqual(4)
-  })
-
-  it('calculates bonus strike score', function() {
-    spyOn(game._currentFrame, 'points').and.returnValue(10)
-    spyOn(game._currentFrame, 'isFinished').and.returnValue(true)
-    game.roll()
-    spyOn(game._currentFrame, 'points').and.returnValue(10)
-    spyOn(game._currentFrame, 'isFinished').and.returnValue(true)
-    game.roll()
-    expect(game.total()).toEqual(30)
   });
 
-  it('calculates spare strike score', function() {
-    spyOn(game._currentFrame, 'points').and.returnValue(5)
-    spyOn(game._currentFrame, 'isSpare').and.returnValue(true)
+  it('adds bonus points for a spare', function() {
+    spyOn(game._currentFrame, '_hit').and.returnValue(5)
     game.roll()
     game.roll()
-    spyOn(game._currentFrame, 'points').and.returnValue(3)
+    spyOn(game._currentFrame, '_hit').and.returnValue(4)
     game.roll()
     game.roll()
-    expect(game.total()).toEqual(11)
+    expect(game.total()).toEqual(22)
   });
+
 
 });

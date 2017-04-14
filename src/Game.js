@@ -21,7 +21,18 @@ Game.prototype.total = function() {
 }
 
 Game.prototype._storeFrame = function() {
+  if(this._frames.length > 0) {
+    this._addBonus(this._frames[this._frames.length - 1], this._currentFrame)
+  }
   this._frames.push(this._currentFrame);
   this._currentFrame = new Frame();
-  this._addSpareBonus
+}
+
+Game.prototype._addBonus = function(lastFrame, thisFrame){
+  if(lastFrame.isSpare()) {
+    lastFrame.addBonus(thisFrame.spareBonus())
+  }
+  if(lastFrame.isStrike()) {
+    lastFrame.addBonus(thisFrame.points())
+  }
 }

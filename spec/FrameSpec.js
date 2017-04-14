@@ -6,14 +6,14 @@ describe('Frame', function() {
   })
 
   it('is initiated with zero points', function() {
-    expect(frame.points.toEqual(0)
+    expect(frame._points).toEqual(0)
   });
 
   it('adds up points', function() {
     spyOn(frame, '_hit').and.returnValue(4)
     frame.roll()
     frame.roll()
-    expect(frame._points.toEqual(8)
+    expect(frame._points).toEqual(8)
   });
 
   it('is initiated with ten pins', function() {
@@ -23,7 +23,7 @@ describe('Frame', function() {
   it('rolling increases the points and decreases the pins', function() {
     spyOn(frame, '_hit').and.returnValue(4);
     frame.roll()
-    expect(frame._points.toEqual(4)
+    expect(frame._points).toEqual(4)
     expect(frame._pins).toEqual(6)
   });
 
@@ -59,6 +59,7 @@ describe('Frame', function() {
 
   it('calculates spare bonus', function() {
     spyOn(frame, '_hit').and.returnValue(7)
+    frame.roll()
     frame.roll()
     expect(frame.spareBonus()).toEqual(7)
   });

@@ -61,3 +61,7 @@ MVP - 1 player
 RESOURCES
 [Latest jasmine build](https://github.com/jasmine/jasmine/releases)
 [Setting up jasmine](https://github.com/makersacademy/course/blob/master/thermostat/walkthroughs/setting_up_jasmine.md)
+
+BACKGROUND INFO / READING
+- [Using Strict Mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
+- ['this' in Javascript](http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/)

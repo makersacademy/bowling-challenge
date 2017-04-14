@@ -13,7 +13,7 @@ GAME
 - A bowling game consists of 10 frames in which the player tries to knock down the 10 pins.
 - After every frame the 10 pins are reset.
 
-ROLL
+FRAME
 - In every frame the player can roll one or two times. The actual number depends on strikes and spares.
 
 SCORE

@@ -30,4 +30,11 @@ describe('Scoring', function(){
     expect(scoring.getBowlTwoScore()).toEqual(5);
   });
 
+  describe('when calculating total score', function(){
+    it('',function(){
+        
+    });
+
+  });
+
 })

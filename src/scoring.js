@@ -17,3 +17,11 @@ Scoring.prototype.getBowlTwoScore = function () {
 Scoring.prototype.getTotalScore = function () {
   return this.totalScore;
 };
+
+Scoring.prototype.firstBowl = function (points) {
+  this.bowlOneScore = points
+};
+
+Scoring.prototype.secondBowl = function (points) {
+  this.bowlTwoScore = points
+};

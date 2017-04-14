@@ -22,8 +22,9 @@ describe('Frame', function(){
     expect(frame._secondRoll).toEqual(5);
   });
 
-  it('checks if roll is a strike', function(){
-    
-  })
+  it('logs first roll as a strike if knocked pins = 10', function(){
+    frame.checkStrike(10);
+    expect(frame._isStrike).toBe(true);
+  });
 
 })

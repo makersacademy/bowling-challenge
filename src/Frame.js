@@ -3,40 +3,41 @@
 function Frame() {
   this._pins = 10
   this._rolls = 0
-  this._points = 0
+  this._rollOnePoints = 0
+  this._rollTwoPoints = 0
+  this._bonusPoints = 0
 }
 
 Frame.prototype.roll = function() {
   var hit = this._hit()
-  if(this._rolls === 0) {
-    this._spareBonus = hit}
-  this._points += hit
+  this._rolls === 0 ? this._rollOnePoints = hit : this._rollTwoPoints = hit
   this._pins -= hit
   this._rolls +=1
 }
 
 Frame.prototype.points = function() {
-  return this._points
+  return this._rollOnePoints + this._rollTwoPoints + this._bonusPoints
 }
 
+
 Frame.prototype.spareBonus = function() {
-  return this._spareBonus
+  return this._rollOnePoints
 }
 
 Frame.prototype.addBonus = function(points) {
-  this._points += points
+  this._bonusPoints += points
 }
 
 
 Frame.prototype.isStrike = function() {
-  if(this._rolls === 1 && this._points === 10) {
+  if(this._rollOnePoints === 10) {
     return true
   }
   return false
 }
 
 Frame.prototype.isSpare = function() {
-  if(this._rolls === 2 && this._points === 10) {
+  if(this._rollTwoPoints + this._rollOnePoints === 10 && this._rollOnePoints !== 10) {
     return true
   }
   return false

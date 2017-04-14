@@ -38,7 +38,10 @@ describe('Frame', function(){
       expect(frame._isSpare).toBe(true);
     });
 
-  })
+    it('throws error if trying to log number higher than number of pins left', function(){
+      expect(function(){ frame.checkSpare(10); }).toThrowError('Cheater. Too many pins.');
+    });
 
-// throws error if trying to log number higher than number of pins left
+  });
+
 })

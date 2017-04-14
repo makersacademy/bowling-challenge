@@ -23,12 +23,12 @@ Frame.prototype.secondRoll = function (knockedPins) {
 Frame.prototype.checkStrike = function (knockedPins) {
   if ( knockedPins === 10 ) {
     this._isStrike = true
-  };
+  }
+};
 
 Frame.prototype.checkSpare = function (knockedPins) {
   if ( this._firstRoll + knockedPins === 10 ) {
     this._isSpare = true
+  } else { throw TypeError("Cheater. Too many pins.")
   }
-};
-
 };

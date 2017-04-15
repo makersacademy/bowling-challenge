@@ -4,7 +4,6 @@ function Game() {
   this._frames = []
   this._frame = 1
   this._currentFrame = new Frame(this._frame)
-  this._bakfast = false
 }
 
 Game.prototype.roll = function() {
@@ -40,10 +39,18 @@ Game.prototype.total = function() {
 
 Game.prototype._addBonuses = function() {
   if(this._lastFrame().bonusFeature() === 'spare') {
-    this._lastFrame().addBonus(this._currentFrame.spareBonus())
+    this._spareBonus()
   } else if(this._lastFrame().bonusFeature() === 'strike') {
-    this._lastFrame().addBonus(this._currentFrame.points())
+    this._strikeBonus()
   }
+}
+
+Game.prototype._spareBonus = function() {
+  this._lastFrame().addBonus(this._currentFrame.spareBonus())
+}
+
+Game.prototype._strikeBonus = function() {
+  this._lastFrame().addBonus(this._currentFrame.points())
 }
 
 Game.prototype._storeFrame = function() {

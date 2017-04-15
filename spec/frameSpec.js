@@ -28,6 +28,10 @@ describe('Frame', function(){
       expect(frame._isStrike).toBe(true);
     });
 
+    it('throws an error if knocked pins exceed 10', function(){
+      expect(function(){ frame.checkStrike(11); }).toThrowError('Cheater. Too many pins.');
+    })
+
   })
 
   describe('second roll', function(){

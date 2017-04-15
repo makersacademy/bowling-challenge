@@ -12,12 +12,15 @@ describe('Game', function(){
     it('game starts with zero points', function(){
       expect(game.getScore()).toEqual(0);
     });
+
     it('game starts on frame 1', function(){
       expect(game.getFrameNo()).toEqual(1);
     })
+
     it('game starts on roll 0', function(){
       expect(game.getRollCount()).toEqual(0);
     })
+
     it('initializes with 0 bonus points', function(){
       expect(game.getBonusPoints()).toEqual(0);
     })
@@ -30,6 +33,7 @@ describe('Game', function(){
       }
       expect(game.getFrameNo()).toEqual(4);
     })
+
     it('frame increases by one after 3 rolls', function(){
       for(var i=0; i<3; i++){
       game.makeRoll(5);
@@ -58,12 +62,30 @@ describe('Game', function(){
     })
   })
 
-  describe('bonus', function(){
+  describe('is roll a strike', function(){
     it('returns true if first roll is a strike', function(){
       expect(game.isStrike(10)).toBe(true)
     });
+
     it('returns false if first roll is not a strike', function(){
       expect(game.isStrike(3)).toBe(false)
+    })
+  });
+
+  describe('is frame bonusy', function(){
+    it('returns true if last frame had a strike', function(){
+      game.currentFrame = [10];
+      expect(game.isFrameBonus()).toBe(true)
+    })
+
+    it('returns true if last frame had a spare', function(){
+      game.currentFrame = [7,3];
+      expect(game.isFrameBonus()).toBe(true)
+    })
+
+    it('returns false if last frame was not bonusy', function(){
+      game.currentFrame = [5,1];
+      expect(game.isFrameBonus()).toBe(false)
     })
   });
 

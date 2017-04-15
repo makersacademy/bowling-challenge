@@ -62,8 +62,13 @@ Game.prototype.isStrike = function(points){
   return points === 10
 }
 
+Game.prototype.isFrameBonus = function(){
+  return this.currentFrame[0] === 10 || (this.currentFrame[0] + this.currentFrame[1]) === 10
+}
+
 Game.prototype.makeFrame = function(){
   this.frameHistory.push(this.currentFrame);
+  this.isFrameBonus();
   this.nextFrame();
 }
 

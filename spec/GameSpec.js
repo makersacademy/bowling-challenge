@@ -6,7 +6,7 @@ describe('Game', function(){
 
   beforeEach(function(){
     game = new Game();
-  })
+  });
 
   describe('initialize', function(){
     it('game starts with zero points', function(){
@@ -16,7 +16,7 @@ describe('Game', function(){
         expect(game.getFrameNo()).toEqual(1);
     })
     it('game starts on roll 0', function(){
-        expect(game.getRollNo()).toEqual(1);
+        expect(game.getRollCount()).toEqual(0);
     })
   });
 
@@ -35,15 +35,8 @@ describe('Game', function(){
     })
   })
 
-  // describe('frame score', function(){
-  //   it('equals 5 after a roll of 5', function(){
-  //     game.makeRoll(5);
-  //     expect(game.getFrameScore()).toEqual(5);
-  //   })
-  // })
-
   describe('frame storage', function(){
-    it('stores frame scores in an array', function(){
+    it('stores frame scores in frame history array', function(){
       game.makeRoll(5);
       game.makeRoll(3);
       expect(game.getFrameHistory()).toEqual([[5,3]])

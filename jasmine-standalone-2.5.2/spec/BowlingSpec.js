@@ -13,14 +13,12 @@ describe('Bowling', function() {
   it('User can make a second roll and both score accumulate for a frame', function(){
     bowling.firstThrow(3);
     bowling.secondThrow(6);
-    // debugger;
     expect(bowling.frameScore()).toEqual(9);
   });
 
   it('User can make a Strike', function(){
     bowling.firstThrow(10);
     bowling.isStrike();
-    // debugger;
     expect(bowling.strike).toEqual(true);
   });
 
@@ -28,7 +26,6 @@ describe('Bowling', function() {
     bowling.firstThrow(5);
     bowling.secondThrow(5);
     bowling.isStrike();
-    // debugger;
     expect(bowling.strike).toEqual(false);
   });
 
@@ -36,9 +33,23 @@ describe('Bowling', function() {
     bowling.firstThrow(5);
     bowling.secondThrow(5);
     bowling.isSpare();
-    debugger;
     expect(bowling.spare).toEqual(true);
   });
 
+  it("Scores does not update after a strike", function(){
+    bowling.firstThrow(10);
+    expect(bowling.currentScore).toEqual(0);
+  });
+
+  it("Scores is set correctly after multiple strikes", function(){
+    bowling.firstThrow(10);
+    // bowling.firstThrow(10);
+    // bowling.firstThrow(10);
+    // bowling.firstThrow(7);
+    // bowling.secondThrow(2);
+    // bowling.firstThrow(3);
+    // bowling.secondThrow(4);
+    expect(bowling.currentScore).toEqual(92);
+  });
 
 });

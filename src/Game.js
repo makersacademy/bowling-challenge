@@ -5,11 +5,11 @@ function Game() {
   this._frame = this.createFrame();
 }
 
+Game.prototype.DEFAULTFRAMESLEFT = 10;
+
 Game.prototype.createFrame = function() {
   return new Frame();
 };
-
-Game.prototype.DEFAULTFRAMESLEFT = 10;
 
 Game.prototype.play = function() {
   if(this.rollsLeft(this._frame) === 2) {

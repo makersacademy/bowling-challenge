@@ -1,19 +1,17 @@
 describe("Feature spec", function() {
-  var frame;
   var game;
 
   beforeEach(function(){
-    frame = new Frame();
     game = new Game();
   });
 
   describe("Playing one ball", function() {
     it("Should reduce number of pins and increase the score", function() {
-      spyOn(frame, 'rollScore').and.returnValue(7);
-      frame.play();
-      expect(frame.pins).toEqual(3);
-      expect(frame.rollsLeft).toEqual(1);
-      expect(frame.score).toEqual(7);
+      spyOn(game._frame, 'rollScore').and.returnValue(7);
+      game.play();
+      expect(game._frame.pins).toEqual(3);
+      expect(game._frame.rollsLeft).toEqual(1);
+      expect(game._frame.score).toEqual(7);
     });
   });
 
@@ -28,5 +26,4 @@ describe("Feature spec", function() {
       expect(game.currentFrame).toEqual(2);
     });
   });
-
 });

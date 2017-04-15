@@ -29,5 +29,5 @@ Frame.prototype.play = function() {
 Frame.prototype.setStrike = function() {
   this.isStrike = true;
   this.rollsLeft = 0;
-  console.log('STRIKE!\n No pins left.')
+  console.log('STRIKE!\n No pins left.');
 };

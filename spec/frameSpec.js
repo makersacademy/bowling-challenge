@@ -5,13 +5,10 @@ console.log('frameSpec file has been required correctly')
 describe('Frame', function (){
 
   var frame;
-  var game;
 
   beforeEach(function(){
     frame = new Frame();
-    game = new BowlingGame(); //jasmine.createSpy('frame');
   })
-
 
   describe('Should be initialized', function () {
     it('with zero score', function (){
@@ -19,16 +16,20 @@ describe('Frame', function (){
     });
   });
 
-  it('Adds to score', function(){
-    expect(frame.addToScore(8)).toEqual('Score added')
+  it('adds to score', function (){
+    frame.addToScore(8)
     expect(frame.score).toEqual(8);
   });
 
-  // describe('Player can roll twice in a single frame', function (){
-  //   it('frame holds two rolls', function (){
-  //     game.roll();
-  //     game.roll();
-  //     expect(frame.rollNum).toEqual(2);
-  //   });
-  // });
+  it('a player can bowl a random number between 0-10', function (){
+    var pins = 10
+    expect(frame.bowl(pins) >= 0 && frame.bowl(pins) <= 10).toBeTruthy();
+  });
+
+  it('resets pins to 10', function () {
+    var pins = 10
+    frame.bowl(pins);
+    frame.resetFrame()
+    expect(frame.pins).toEqual(10);
+  });
 });

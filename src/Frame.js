@@ -2,7 +2,7 @@ function Frame () {
   this.pins = this.DEFAULTPINS;
   this.rollsLeft = this.DEFAULTROLLS;
   this.score = 0;
-};
+}
 
 Frame.prototype.DEFAULTPINS = 10;
 Frame.prototype.DEFAULTROLLS = 2;

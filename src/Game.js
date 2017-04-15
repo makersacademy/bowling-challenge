@@ -13,7 +13,16 @@ Game.prototype.roll = function() {
     if(this._frames.length > 0) {
       this._addBonuses()
     }
+    if(this._frames.length > 1) {
+      this._checkIfBakfast()
+    }
     this._storeFrame()
+  }
+}
+
+Game.prototype._checkIfBakfast = function() {
+  if(this._lastFrame().bonusFeature() === 'strike' && this._lastLastFrame().bonusFeature() === 'strike') {
+    this._bakBonus()
   }
 }
 
@@ -26,24 +35,20 @@ Game.prototype.total = function() {
 }
 
 Game.prototype._addBonuses = function() {
-  if(this._bakfast === true) {
-    this._bakBonus()
-  }
   if(this._lastFrame().bonusFeature() === 'spare') {
     this._addSpareBonus()
   } else if(this._lastFrame().bonusFeature() === 'strike') {
     this._addStrikeBonus()
   }
-  this._setBakfast()
 }
 
-Game.prototype._setBakfast = function() {
-  if(this._lastFrame().bonusFeature() === 'strike' && this._currentFrame.bonusFeature() === 'strike') {
-    this._bakfast = true
-  } else {
-    this._bakfast = false
-  }
-}
+// Game.prototype._setBakfast = function() {
+//   if(this._lastFrame().bonusFeature() === 'strike' && this._currentFrame.bonusFeature() === 'strike') {
+//     this._bakfast = true
+//   } else {
+//     this._bakfast = false
+//   }
+// }
 
 Game.prototype._storeFrame = function() {
   this._frames.push(this._currentFrame);

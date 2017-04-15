@@ -10,13 +10,16 @@ describe('Game', function(){
 
   describe('initialize', function(){
     it('game starts with zero points', function(){
-        expect(game.getScore()).toEqual(0);
+      expect(game.getScore()).toEqual(0);
     });
     it('game starts on frame 1', function(){
-        expect(game.getFrameNo()).toEqual(1);
+      expect(game.getFrameNo()).toEqual(1);
     })
     it('game starts on roll 0', function(){
-        expect(game.getRollCount()).toEqual(0);
+      expect(game.getRollCount()).toEqual(0);
+    })
+    it('initializes with 0 bonus points', function(){
+      expect(game.getBonusPoints()).toEqual(0);
     })
   });
 
@@ -42,6 +45,15 @@ describe('Game', function(){
       expect(game.getFrameHistory()).toEqual([[5,3]])
     })
   })
+
+  describe('bonus', function(){
+    it('returns true if first roll is a strike', function(){
+      expect(game.isStrike(10)).toBe(true)
+    });
+    it('returns false if first roll is not a strike', function(){
+      expect(game.isStrike(3)).toBe(false)
+    })
+  });
 
 
 });

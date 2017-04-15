@@ -70,16 +70,44 @@ describe('Bowling', function() {
       expect(bowling.getCurrentFrame()).toEqual(2);
     });
 
-    it('resets roll', function() {
-      bowling.bowl(4);
-      bowling.bowl(3);
-      expect(bowling.getCurrentRoll()).toEqual(1);
-    });
 
     it('updates score by adding frameScore', function() {
       bowling.bowl(4);
       bowling.bowl(3);
       expect(bowling.getCurrentScore()).toEqual(7);
     });
+
+    it('adds presentFrame into frameHistory', function() {
+      bowling.bowl(4);
+      bowling.bowl(3);
+      expect(bowling.getFrameHistory()).toEqual([[4,3]]);
+    });
+  });
+
+  describe('presentFrame', function() {
+    it('stores the first bowl in the array', function() {
+      bowling.bowl(4);
+      expect(bowling.getPresentFrame()).toEqual([4]);
+    });
+  });
+
+  describe('resetFrame', function() {
+    it('resets presentFrame', function() {
+      bowling.bowl(4);
+      bowling.bowl(3);
+      expect(bowling.getPresentFrame()).toEqual([]);
+    });
+
+    it('resets roll', function() {
+      bowling.bowl(4);
+      bowling.bowl(3);
+      expect(bowling.getCurrentRoll()).toEqual(1);
+    });
+
+    it('resets pinsStanding', function() {
+      bowling.bowl(4);
+      bowling.bowl(3);
+      expect(bowling.getPinsStanding()).toEqual(10);
+    })
   });
 });

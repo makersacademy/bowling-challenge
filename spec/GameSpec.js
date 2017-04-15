@@ -44,6 +44,18 @@ describe('Game', function(){
       game.makeRoll(3);
       expect(game.getFrameHistory()).toEqual([[5,3]])
     })
+
+    it('stores frame on roll 1 if it is a strike', function(){
+      game.makeRoll(3);
+      game.makeRoll(4);
+      game.makeRoll(10);
+      expect(game.getFrameHistory()).toEqual([[3,4],[10]])
+    })
+
+    it('does not store frame on roll 1 if not a strike', function(){
+      game.makeRoll(6);
+      expect(game.getFrameHistory()).toEqual([])
+    })
   })
 
   describe('bonus', function(){

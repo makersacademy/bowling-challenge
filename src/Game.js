@@ -40,8 +40,10 @@ Game.prototype.makeRoll = function(points){
   if (this.isWhichRoll() === 2){
     this.makeFrame();
   }
-  else{
-    this.isStrike(points)
+  else {
+    if (this.isStrike(points)){
+      this.makeFrame();
+    }
   }
 }
 

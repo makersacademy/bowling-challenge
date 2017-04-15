@@ -24,6 +24,10 @@ describe('Bowling', function() {
     it('frame complete is false', function() {
       expect(bowling.isFrameComplete()).toBeFalsy();
     })
+
+    it('starts at pins standing: 10', function() {
+      expect(bowling.getPinsStanding()).toEqual(10);
+    })
   });
 
   describe('score', function() {
@@ -42,6 +46,20 @@ describe('Bowling', function() {
     it('returns number of pins scored', function() {
       bowling.bowl(5);
       expect(bowling.getFrameScore()).toEqual(5);
+    });
+
+    it('reduces pins standing by pins scored', function() {
+      bowling.bowl(4);
+      expect(bowling.getPinsStanding()).toEqual(6);
+    });
+
+    it('raises error if bowl knocks over more than 10', function() {
+      expect(function() { bowling.bowl(11); }).toThrowError("Invalid number of pins knocked over");
+    });
+
+    it('raises error if bowl knocks over more pins then are standing', function() {
+      bowling.bowl(7);
+      expect(function() { bowling.bowl(4); }).toThrowError("Invalid number of pins knocked over")
     });
   });
 

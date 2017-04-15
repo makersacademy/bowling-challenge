@@ -5,6 +5,7 @@ function Bowling() {
   this.frame = 1;
   this.roll = 1;
   this.frameScore = 0;
+  this.pinsStanding = 10;
 }
 
 Bowling.prototype.getCurrentScore = function () {
@@ -19,11 +20,19 @@ Bowling.prototype.getCurrentRoll = function () {
   return this.roll;
 };
 
+Bowling.prototype.getPinsStanding = function () {
+  return this.pinsStanding;
+};
+
 Bowling.prototype.add = function (number) {
   this.score += number;
 };
 
 Bowling.prototype.bowl = function (pins) {
+  if(pins > this.pinsStanding){
+    throw new TypeError("Invalid number of pins knocked over")
+  }
+  this.pinsStanding -= pins;
   this.frameScore += pins;
   this.isFrameComplete();
 };

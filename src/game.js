@@ -4,18 +4,15 @@ function Game() {
   this.scoreboard = [];
   this.totalScore = 0;
   this.pins = 10;
-  this.frame = 0;
-  this.roll = 0;
+  this.frame = 1;
+  this.roll = 1;
   this.pinsKnocked = 0;
 }
 
 Game.prototype.letsPlay = function() {
-  if (this.frame === 0) {
-    this.frame += 1;
-    this.roll = 1;
+  if (this.roll === 1) {
     this.firstRound();
-  } else if (this.frame === 1) {
-    this.roll = 2;
+  } else if (this.roll === 2) {
     this.secondRound();
   }
   else {
@@ -27,6 +24,7 @@ Game.prototype.firstRound = function() {
   if (this.pinsKnocked < 10) {
       this.addScore();
       this.documentFirstRound();
+      this.roll = 2;
   } else {
 
   }
@@ -35,6 +33,7 @@ Game.prototype.secondRound = function() {
   this.rollBall();
   this.addScore();
   this.documentSecondRound();
+  this.reset();
 }
 
 Game.prototype.rollBall = function() {
@@ -46,6 +45,13 @@ Game.prototype.rollBall = function() {
 Game.prototype.addScore = function () {
   this.totalScore = this.totalScore + this.pinsKnocked
 };
+
+Game.prototype.reset = function () {
+  this.frame += 1;
+  this.roll = 1;
+  this.pins = 10;
+  this.pinsKnocked = 0;
+}
 
 Game.prototype.documentFirstRound = function () {
   var obj = {};

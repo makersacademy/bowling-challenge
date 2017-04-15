@@ -1,0 +1,169 @@
+body {
+  font-family: Helvetica, Arial, 'Lucida Grande', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+#scorecard {
+  height: 150px;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.frame_box {
+  border: solid black;
+  display: inline-block;
+  width: 9%;
+  height: 95%;
+}
+
+.frame_name {
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue';
+  border: solid black;
+  border-width: 0 0 2px;
+  font-weight: 100;
+  text-align: center;
+  line-height: 175%;
+  font-size: 150%;
+  font-style: italic;
+  width: 100%;
+  height: 30%;
+  display: block;
+}
+
+.score_box {
+  border: solid black;
+  border-width: 0 0 2px 2px;
+  float: right;
+  line-height: 225%;
+  font-size: 100%;
+  text-align: center;
+  width: 35%;
+  height: 25%;
+  display: block;
+}
+
+.score_box_final {
+  border: solid black;
+  border-width: 0 0 2px 2px;
+  float: right;
+  line-height: 225%;
+  font-size: 100%;
+  text-align: center;
+  width: 25%;
+  height: 25%;
+  display: block;
+}
+
+.frame_score {
+  border: solid black;
+  border-width: 0 0 0 0;
+  font-weight: 300;
+  text-align: center;
+  line-height: 215%;
+  font-size: 180%;
+  font-style: italic;
+  float: right;
+  width: 100%;
+  height: 40%;
+  display: block;
+}
+
+#running_score_box {
+  font-weight: 200;
+  margin-left: 41%;
+  margin-right: 50%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size: 200%;
+  font-style: italic;
+  width: 300px;
+}
+
+#pin_box {
+  float: left;
+  height: 169px;
+  width: 80%;
+  margin-left: 9.5%;
+  margin-right: 10%;
+}
+
+.pin_outline {
+  display: inline-block;
+  height: 97%;
+  width: 8%;
+  border: solid black;
+  border-radius: 10px;
+}
+
+.pin_stripe_1 {
+  width: 90%;
+  margin-top: 52%;
+  border: solid black;
+  border-width: 4.5px;
+}
+
+.pin_stripe_2 {
+  width: 90%;
+  margin-top: 8%;
+  border: solid black;
+  border-width: 4.5px;
+}
+
+.pin_number_box {
+  color: black;
+  font-size: 250%;
+  font-style: italic;
+  font-weight: 100;
+  text-align: center;
+  width: 92%;
+  height: 40%;
+  margin-left: 0%;
+  margin-top: 19%;
+  line-height: 163%;
+}
+
+#pin_selection_message {
+  margin-top: 5%;
+  margin-left: 9.5%;
+  font-size: 120%;
+  font-weight: 100;
+  font-style: italic;
+  margin-bottom: 0.4%;
+}
+
+#new_game {
+  margin-top: 8%;
+  margin-left: 45%;
+  font-size: 150%;
+  font-weight: 100;
+  font-style: italic;
+  padding-top: 0%;
+  display: block;
+}
+
+
+/* if(game.frames[i].spare && game.currentRoll == ((2*i) + 2)) {
+        console.log("spare hide");
+        $('#frame_score_' + i).hide();
+      } else {
+        console.log("spare show");
+        $('#frame_score_' + i).show();
+      };
+      if(game.frames[i].strike && (game.currentRoll == ((2*i) + 2) || game.currentRoll == ((2*i) + 3))) {
+        console.log("strike hide");
+        $('#frame_score_' + i).hide();
+      } else {
+        console.log("strike show");
+        $('#frame_score_' + i).show();
+      };*/
+
+
+
+
+
+
+

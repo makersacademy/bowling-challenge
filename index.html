@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+
+  <head>
+    <link rel="stylesheet" type="text/css" href="public/style.css">
+    <meta charset="utf-8">
+    <title>Bowling Scorecard</title>
+  </head>
+
+  <body>
+
+  <div class="whatever"><div>
+
+  <div id="running_score_box">
+    <span id="score_text">Scorecard</span> <span id="game_score"></span>
+  </div>
+
+  <div id="scorecard">
+    <div class="frame_box" id="frame_0">
+      <div class="frame_name">
+        1
+      </div>
+      <div class="score_box" id="score_box_0_2"></div> 
+      <div class="score_box" id="score_box_0_1"></div>  
+      <div class="frame_score" id="frame_score_0"></div>
+    </div>
+    <div class="frame_box" id="frame_1">
+      <div class="frame_name">
+        2
+      </div>
+      <div class="score_box" id="score_box_1_2"></div> 
+      <div class="score_box" id="score_box_1_1"></div>  
+      <div class="frame_score" id="frame_score_1"></div>
+    </div>
+    <div class="frame_box" id="frame_2">
+      <div class="frame_name">
+        3
+      </div>
+      <div class="score_box" id="score_box_2_2"></div> 
+      <div class="score_box" id="score_box_2_1"></div>  
+      <div class="frame_score" id="frame_score_2"></div>
+    </div>
+    <div class="frame_box" id="frame_3">
+      <div class="frame_name">
+        4
+      </div>
+      <div class="score_box" id="score_box_3_2"></div> 
+      <div class="score_box" id="score_box_3_1"></div>  
+      <div class="frame_score" id="frame_score_3"></div>
+    </div>
+    <div class="frame_box" id="frame_4">
+      <div class="frame_name">
+        5
+      </div>
+      <div class="score_box" id="score_box_4_2"></div> 
+      <div class="score_box" id="score_box_4_1"></div>  
+      <div class="frame_score" id="frame_score_4"></div>
+    </div>
+    <div class="frame_box" id="frame_5">
+      <div class="frame_name">
+        6
+      </div>
+      <div class="score_box" id="score_box_5_2"></div> 
+      <div class="score_box" id="score_box_5_1"></div>  
+      <div class="frame_score" id="frame_score_5"></div>
+    </div>
+    <div class="frame_box" id="frame_6">
+      <div class="frame_name">
+        7
+      </div>
+      <div class="score_box" id="score_box_6_2"></div> 
+      <div class="score_box" id="score_box_6_1"></div>  
+      <div class="frame_score" id="frame_score_6"></div>
+    </div>
+    <div class="frame_box" id="frame_7">
+      <div class="frame_name">
+        8
+      </div>
+      <div class="score_box" id="score_box_7_2"></div> 
+      <div class="score_box" id="score_box_7_1"></div>  
+      <div class="frame_score" id="frame_score_7"></div>
+    </div>
+    <div class="frame_box" id="frame_8">
+      <div class="frame_name">
+        9
+      </div>
+      <div class="score_box" id="score_box_8_2"></div> 
+      <div class="score_box" id="score_box_8_1"></div>  
+      <div class="frame_score" id="frame_score_8"></div>
+    </div>
+    <div class="frame_box" id="frame_9">
+      <div class="frame_name">
+        10
+      </div>
+      <div class="score_box_final" id="score_box_9_3"></div> 
+      <div class="score_box_final" id="score_box_9_2"></div>  
+      <div class="score_box_final" id="score_box_9_1"></div>  
+      <div class="frame_score" id="frame_score_9"></div>
+    </div>
+  </div>
+
+  <div id="pin_selection_message">
+    Select the number of pins you knocked down
+  </div>
+
+  <div id="pin_box">
+    <a href="#" class="pin">
+      <div class="pin_outline" id="pin_outline_0">
+        <div class="pin_stripe_1" id="pin_stripe_1_0"></div>
+        <div class="pin_stripe_2" id="pin_stripe_2_0"></div>
+        <div class="pin_number_box" id="pin_number_0"><span id="number_0">0</span></div>
+      </div>
+    </a>
+    <a href="#" class="pin" id="pin_1">
+      <div class="pin_outline" id="pin_outline_1">
+        <div class="pin_stripe_1" id="pin_stripe_1_1"></div>
+        <div class="pin_stripe_2" id="pin_stripe_2_1"></div>
+        <div class="pin_number_box" id="pin_number_1"><span id="number_1">1</span></div>
+      </div>
+    </a>
+    <a href="#" class="pin">
+      <div class="pin_outline" id="pin_outline_2">
+        <div class="pin_stripe_1" id="pin_stripe_1_2"></div>
+        <div class="pin_stripe_2" id="pin_stripe_2_2"></div>
+        <div class="pin_number_box" id="pin_number_2"><span id="number_2">2</span></div>
+      </div>
+    </a>
+    <a href="#" class="pin">
+      <div class="pin_outline" id="pin_outline_3">
+        <div class="pin_stripe_1" id="pin_stripe_1_3"></div>
+        <div class="pin_stripe_2" id="pin_stripe_2_3"></div>
+        <div class="pin_number_box" id="pin_number_3"><span id="number_3">3</span></div>
+      </div>
+    </a>
+    <a href="#" class="pin">
+      <div class="pin_outline" id="pin_outline_4">
+        <div class="pin_stripe_1" id="pin_stripe_1_4"></div>
+        <div class="pin_stripe_2" id="pin_stripe_2_4"></div>
+        <div class="pin_number_box" id="pin_number_4"><span id="number_4">4</span></div>
+      </div>
+    </a>
+    <a href="#" class="pin">
+      <div class="pin_outline" id="pin_outline_5">
+        <div class="pin_stripe_1" id="pin_stripe_1_5"></div>
+        <div class="pin_stripe_2" id="pin_stripe_2_5"></div>
+        <div class="pin_number_box" id="pin_number_5"><span id="number_5">5</span></div>
+      </div>
+    </a>
+    <a href="#" class="pin">
+      <div class="pin_outline" id="pin_outline_6">
+        <div class="pin_stripe_1" id="pin_stripe_1_6"></div>
+        <div class="pin_stripe_2" id="pin_stripe_2_6"></div>
+        <div class="pin_number_box" id="pin_number_6"><span id="number_6">6</span></div>
+      </div>
+    </a>
+    <a href="#" class="pin">
+      <div class="pin_outline" id="pin_outline_7">
+        <div class="pin_stripe_1" id="pin_stripe_1_7"></div>
+        <div class="pin_stripe_2" id="pin_stripe_2_7"></div>
+        <div class="pin_number_box" id="pin_number_7"><span id="number_7">7</span></div>
+      </div>
+    </a>
+    <a href="#" class="pin">
+      <div class="pin_outline" id="pin_outline_8">
+        <div class="pin_stripe_1" id="pin_stripe_1_8"></div>
+        <div class="pin_stripe_2" id="pin_stripe_2_8"></div>
+        <div class="pin_number_box" id="pin_number_8"><span id="number_8">8</span></div>
+      </div>
+    </a>
+    <a href="#" class="pin">
+      <div class="pin_outline" id="pin_outline_9">
+        <div class="pin_stripe_1" id="pin_stripe_1_9"></div>
+        <div class="pin_stripe_2" id="pin_stripe_2_9"></div>
+        <div class="pin_number_box" id="pin_number_9"><span id="number_9">9</span></div>
+      </div>
+    </a>
+    <a href="#" class="pin">
+      <div class="pin_outline" id="pin_outline_10">
+        <div class="pin_stripe_1" id="pin_stripe_1_10"></div>
+        <div class="pin_stripe_2" id="pin_stripe_2_10"></div>
+        <div class="pin_number_box" id="pin_number_10"><span id="number_10">10</span></div>
+      </div>
+    </a>
+  </div>
+
+  
+  <a id="new_game" onClick="window.location.reload()" style="/* display: inline; */">New Game</a>
+
+
+
+
+  </body>
+
+  <script src="lib/jquery.js"></script>
+  <script src="src/application.js"></script>
+  <script src="src/Frame.js"></script>
+  <script src="src/Game.js"></script>
+  <script src="src/LastFrame.js"></script>
+
+
+</html>

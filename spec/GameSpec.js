@@ -12,12 +12,21 @@ describe("Game", function() {
   });
 
   describe("play", function(){
-    it("moves the current frame's score to frames", function() {
+    it("moves the current frame to frames array", function() {
       spyOn(game._frame, "rollScore").and.returnValue(4);
+      var frame = game._frame
       for(i = 1; i <= 2; i++) {
         game.play();
       };
-      expect(game.frames).toContain(8);
+      expect(game.frames).toContain(frame);
     });
+
+    it("changes frame once played twice", function(){
+      spyOn(game._frame, "rollScore").and.returnValue(4);
+      for(i = 1; i <= 2; i++) {
+        game.play();
+      }
+      expect(game.currentFrame).toEqual(2);
+    })
   });
 });

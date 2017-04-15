@@ -2,22 +2,40 @@ function Game() {
   this.framesLeft = this.DEFAULTFRAMESLEFT;
   this.frames = [];
   this.currentFrame = 1;
-  this._frame = new Frame();
+  this._frame = this.createFrame();
+}
+
+Game.prototype.createFrame = function() {
+  return new Frame();
 }
 
 Game.prototype.DEFAULTFRAMESLEFT = 10;
 
 Game.prototype.play = function() {
-  if(this._frame.rollsLeft === 2) {
+  if(this.rollsLeft(this._frame) === 2) {
     this._frame.play();
   }
-  else if(this._frame.rollsLeft === 1){
+  else if(this.rollsLeft(this._frame) === 1){
     this._frame.play();
-    this.frames.push(this._frame.score);
-    this.framesLeft -= 1;
+    this.addFrame(this._frame);
+    this.changeFrame();
   }
   else {
-    this.frames.push(this._frame.score);
-    this.framesLeft -= 1;
+    this.addFrame(this._frame);
+    this.changeFrame();
   }
 };
+
+Game.prototype.addFrame = function(frame) {
+  this.frames.push(frame)
+};
+
+Game.prototype.changeFrame = function() {
+  this.framesLeft -= 1;
+  this.currentFrame += 1;
+  this._frame = this.createFrame();
+};
+
+Game.prototype.rollsLeft = function(frame) {
+  return frame.rollsLeft;
+}

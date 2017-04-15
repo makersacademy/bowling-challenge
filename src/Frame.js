@@ -16,6 +16,7 @@ Frame.prototype.play = function() {
     throw 'No more frames. Start a new frame!';
   } else {
     var score = this.rollScore();
+    console.log('Score:' + score + '\n'+ (this.pins - score) + ' pins left.');
     this.pins -= score;
     this.score += score;
     this.rollsLeft -= 1;

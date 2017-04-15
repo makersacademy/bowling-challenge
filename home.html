@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    BOWLARAMA!
+  </title>
+  <script src="lib/jquery-2.1.4.js"></script>
+  <script src="src/interface/Location.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  <link rel="shortcut icon" href="/images/bowling-icon.ico" />
+</head>
+
+
+
+<body >
+  <header>
+    <div id='logo'>
+      BOWLARAMA! <img id='header-image' src="images/bowling.png"/>
+    </div>
+  </header>
+
+  <div id='top'>
+    <div id='frame-display'>
+      <!-- Frame table data is generated here -->
+    </div>
+  </div>
+
+  <div id='celebration'>
+    Beef
+  </div>
+
+  <div id='bottom'>
+    <div id='bottom-left'>
+
+      <div class='bowling-controls'>
+        <button id='bowl' >
+          <img class='face' id='sad-face' src="images/Sad-face.png"/>
+          <img class='face' id='happy-face' src="images/Happy_face.png" hidden/>
+          <br>Bowl!
+        </button>
+      </div>
+
+      <div class='bowling-controls' id='roll-input' hidden>
+        <button class='manual-input' id='0' >0</button>
+        <button class='manual-input' id='1' >1</button>
+        <button class='manual-input' id='2' >2</button>
+        <button class='manual-input' id='3' >3</button>
+        <button class='manual-input' id='4' >4</button>
+        <button class='manual-input' id='5' >5</button>
+        <button class='manual-input' id='6' >6</button>
+        <button class='manual-input' id='7' >7</button>
+        <button class='manual-input' id='8' >8</button>
+        <button class='manual-input' id='9' >9</button>
+        <button class='manual-input' id='10' >10</button>
+      </div>
+
+      <div class='game-controls'>
+        <button class='game-buttons' id='reset'>
+          Reset
+        </button>
+        <button class='game-buttons' id='game-switch'>
+          Manual / Random Switch
+        </button>
+      </div>
+
+    </div>
+    <div id='bottom-right'>
+
+      <span id='bowling-near-you'>Bowling alleys near you now:</span>
+      <div id='map'>
+      </div>
+    </div>
+  </div>
+
+  <script src="src/application/Ball.js"></script>
+  <script src="src/application/Frame.js"></script>
+  <script src="src/application/Game.js"></script>
+  <script src="src/interface/Bowlarama.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSsh7DRy4BsQ1OWx6ZhJWfOkpnlXV04IM&signed_in=true&sensor=true&libraries=places&types=bowling_alley&callback=initMap" async defer></script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+body {
+  text-align: center;
+  font-family: monospace;
+  font-size: x-large;
+  width: 1600px;
+  height: 920px;
+  margin: 0 auto;
+}
+
+table {
+  empty-cells: show;
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+}
+
+  #score {
+    width: 95%;
+    height: 90%;
+    position: relative;
+    left: 2.5%;
+    right: 2.5%
+
+  }
+
+  .frame-table {
+    width: 95%;
+    height: 95%;
+    border: 0.5px;
+    border: solid;
+    margin: 2px;
+    background-color: #F1F18F;
+  }
+
+    #game-total {
+      font-size: -webkit-xxx-large;
+    }
+
+  .roll {
+    float: right;
+    position: relative;
+    display: inline;
+    width: 22%;
+    height: 30px;
+    font-weight: bold;
+    border-style: dashed;
+    margin: 1px;
+  }
+
+  .individual-total {
+    float: left;
+    position: relative;
+    margin-left: 5%;
+    font-size: xx-large;
+    min-height: 32px;
+  }
+
+div#logo {
+    border: 4px solid;
+    margin: 2px;
+    background-color: #D2F390;
+    position: relative;
+    height: 170px;
+    font-size: 140px;
+    font-style: italic;
+  }
+
+  #top {
+    border: 4px solid;
+    height: 200px;
+    margin: 2px;
+    background-color: #C0FFFF;
+  }
+
+    #frame-display {
+      border: 4px solid;
+      position: relative;
+      margin: 1% 3%;
+      height: 80%;
+      background-color: white;
+    }
+
+  #bottom {
+    display: -webkit-box;
+    display: flex;
+    position: relative;
+    margin: 2px;
+    border: none;
+    height: 550px;
+    background-color: white;
+  }
+
+    #bottom-left {
+      float: left;
+      border: 4px solid;
+      width: 40%;
+      margin-right: 1px;
+      height: 100%;
+      background-color: #380202;
+    }
+
+    #bottom-right {
+      float: right;
+      width: 60%;
+      margin-left: 1px;
+      height: 100%;
+      border: 4px solid;
+      padding: 2px;
+      font-size: -webkit-xxx-large;
+    }
+
+      #map {
+        position: relative;
+        width: 90%;
+        height: 90%;
+        margin-left: 5%;
+        margin-top: 3px;
+      }
+
+      .bowling-controls {
+        float: left;
+        position: relative;
+        width: 70%;
+        height: 90%;
+        border: none;
+        margin-top: 7%;
+
+      }
+
+      .game-controls {
+        float: right;
+        display: inline-block;
+        position: relative;
+        width: 25%;
+        height: 40%;
+        margin-right: 5%;
+        margin-top: 7%;
+        border: none;
+      }
+
+  #celebration {
+    position: relative;
+    z-index: 10;
+    font-size: 0;
+  }
+
+button#bowl {
+    position: relative;
+    width: 80%;
+    height: 90%;
+    margin: 12px;
+    font-size: -webkit-xxx-large;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #6666CC;
+    border: 10px solid white;
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 2px rgba(0,0,0,0.4);
+  }
+
+  .manual-input {
+    position: relative;
+    width: 80%;
+    height: 8%;
+    display: list-item;
+    margin-left: 10%;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-align: left;
+    background-color: #6666CC;
+    color: white;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-radius: 5px;
+    border: 3px solid white;
+    font-size: large;
+    text-shadow: 0 0 2px rgba(0,0,0,0.4);
+  }
+
+  .game-buttons {
+    position: relative;
+    width: 100%;
+    height: 90%;
+    display: list-item;
+    margin-top: 20%;
+    border-radius: 5px;
+    border: 10px solid white;
+    text-shadow: 0 0 2px rgba(0,0,0,0.4);
+    text-align: center;
+    cursor: pointer;
+    padding: 2px;
+    background-color: #6666CC;
+    font-size: inherit;
+    color: white;
+  }
+
+  #reset {
+    background-color: #FF4660;
+  }
+
+  #game-switch {
+    background-color: #509843;
+  }
+
+img.face {
+  position: relative;
+  height: 60%;
+  width: 80%;
+  margin-left: 5%;
+  bottom: 10px;
+}
+
+  #happy-face {
+    margin-top: 15%;
+    margin-left: 7%;
+  }
+
+  #header-image {
+    position: relative;
+    height: 60%;
+    margin-top: 20px;
+  }
+
+  .pin-image {
+    position: relative;
+    float: right;
+    height: 80%;
+  }
+

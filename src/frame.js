@@ -24,6 +24,7 @@ Frame.prototype.secondRoll = function (knockedPins) {
 Frame.prototype.checkStrike = function (knockedPins) {
   if ( knockedPins === 10 ) {
     this._isStrike = true;
+    this._rollNumber += 1;
   }
 };
 

@@ -20,16 +20,30 @@ describe ('Game', function(){
   });
 
   describe('Frames 1 - 9:', function(){
-    it('first roll initiates a new frame', function(){
+    it('first roll of game initiates a new frame', function(){
       game.roll(5);
       expect(game._currentFrame).toBeTruthy();
     });
 
-    it('frame stored after second roll', function(){
+    it('frame stored on third roll', function(){
       game.roll(5);
       game.roll(3);
+      game.roll(2);
       expect(game._framesInPlay.length).toEqual(1);
     })
+
+    it('initiates new frame when previous frame has had 2 rolls', function(){
+      game.roll(6);
+      game.roll(2);
+      game.roll(3);
+      expect(game._currentFrame.getFirstRoll()).toEqual(3);
+    });
+
+    it('stores frame (i.e. frame complete) if roll 1 is a strike', function(){
+      game.roll(10);
+      game.roll(2);
+      expect(game._framesInPlay.length).toEqual(1);
+    });
   });
 
   describe('Score 1 - 9', function(){

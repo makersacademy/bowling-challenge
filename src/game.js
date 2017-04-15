@@ -16,8 +16,8 @@ Game.prototype.roll = function (knockedPins) {
     this._currentFrame.secondRoll = knockedPins;
     this._currentFrame.checkSpare(knockedPins);
     this._currentFrame._rollNumber += 1;
-    this._framesInPlay.push(this._currentFrame);
   } else {
+    this._framesInPlay.push(this._currentFrame);
     this._currentFrame = new Frame( knockedPins );
     };
   }

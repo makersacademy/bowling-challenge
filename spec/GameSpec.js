@@ -103,8 +103,37 @@ describe('Game', function(){
 
     it('returns false if previous game was not bonusy', function(){
       game.makeRoll(7);
-      game.makeRoll(1);
+      game.makeRoll(3);
+      game.makeRoll(9);
+      game.makeRoll(0);
       expect(game.isPreviousBonus()).toBe(false)
+    })
+  })
+
+  describe('final frame', function(){
+    it('returns true if frame no is 10', function(){
+      for(var i=0; i<9; i++){
+        game.makeRoll(5);
+        game.makeRoll(3);
+      }
+      expect(game.isFinalFrame()).toBe(true)
+    })
+
+    it('returns true if frame no is 10 and one roll has been made', function(){
+      for(var i=0; i<9; i++){
+        game.makeRoll(5);
+        game.makeRoll(3);
+      }
+      game.makeRoll(7);
+      expect(game.isFinalFrame()).toBe(true)
+    })
+
+    it('returns false if frame no is not 10', function(){
+      for(var i=0; i<3; i++){
+        game.makeRoll(5);
+        game.makeRoll(3);
+      }
+      expect(game.isFinalFrame()).toBe(false)
     })
   })
 

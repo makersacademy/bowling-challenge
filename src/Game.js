@@ -70,9 +70,15 @@ Game.prototype.isPreviousBonus = function(){
   return this.frameHistory.slice(-1)[0][0] === 10 || this.frameHistory.slice(-1)[0][0] + this.frameHistory.slice(-1)[0][1] === 10
 }
 
+Game.prototype.isFinalFrame = function(){
+  return this.frameNo == 10
+}
+
 Game.prototype.makeFrame = function(){
   this.frameHistory.push(this.currentFrame);
-  this.isFrameBonus();
+  // if (this.isFrameBonus()){
+  //   this.finalFrame();
+  // }
   this.nextFrame();
 }
 

@@ -29,9 +29,7 @@ BowlingGame.prototype.currentSpareScore = function() {
 }
 
 BowlingGame.prototype.frameScoreReset = function() {
-  if(this.frameScore < 10) {
     this.frameScore = 0;
-  }
 }
 
 BowlingGame.prototype.currentStrikeScore = function() {

@@ -89,5 +89,24 @@ describe('Game', function(){
     })
   });
 
+  describe('was previous frame bonusy', function(){
+    it('returns true if previous frame had a strike', function(){
+      game.makeRoll(10)
+      expect(game.isPreviousBonus()).toBe(true)
+    })
+
+    it('returns true if previous frame had a spare', function(){
+      game.makeRoll(8);
+      game.makeRoll(2);
+      expect(game.isPreviousBonus()).toBe(true)
+    })
+
+    it('returns false if previous game was not bonusy', function(){
+      game.makeRoll(7);
+      game.makeRoll(1);
+      expect(game.isPreviousBonus()).toBe(false)
+    })
+  })
+
 
 });

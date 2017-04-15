@@ -1,3 +1,4 @@
+// responsible for the scoring for a single frame
 'use strict';
 
 var Frame = function(){

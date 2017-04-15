@@ -1,0 +1,38 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "node_modules/jasmine-node/bin/jasmine-node spec/ --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srMarquinho/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srMarquinho/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/srMarquinho/bowling-challenge#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-webdriver": "^2.0.1",
+    "jasmine-node": "^1.14.5",
+    "mocha": "^2.5.3",
+    "selenium-standalone": "^5.1.1",
+    "wdio-jasmine-framework": "^0.2.2",
+    "wdio-mocha-framework": "^0.3.4",
+    "webdriverio": "^4.1.1"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "jquery": "^3.0.0"
+  }
+}

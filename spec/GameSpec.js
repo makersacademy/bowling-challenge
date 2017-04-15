@@ -13,10 +13,10 @@ describe('Game', function(){
         expect(game.getScore()).toEqual(0);
     });
     it('game starts on frame 1', function(){
-        expect(game.getFrame()).toEqual(1);
+        expect(game.getFrameNo()).toEqual(1);
     })
     it('game starts on roll 0', function(){
-        expect(game.getRoll()).toEqual(0);
+        expect(game.getRollNo()).toEqual(1);
     })
   });
 
@@ -25,20 +25,28 @@ describe('Game', function(){
       for(var i=0; i<6; i++){
         game.makeRoll(5);
       }
-      expect(game.getFrame()).toEqual(4);
+      expect(game.getFrameNo()).toEqual(4);
     })
     it('frame increases by one after 3 rolls', function(){
       for(var i=0; i<3; i++){
       game.makeRoll(5);
       }
-      expect(game.getFrame()).toEqual(2);
+      expect(game.getFrameNo()).toEqual(2);
     })
   })
 
-  describe('frame score', function(){
-    it('equals 5 after a roll of 5', function(){
+  // describe('frame score', function(){
+  //   it('equals 5 after a roll of 5', function(){
+  //     game.makeRoll(5);
+  //     expect(game.getFrameScore()).toEqual(5);
+  //   })
+  // })
+
+  describe('frame storage', function(){
+    it('stores frame scores in an array', function(){
       game.makeRoll(5);
-      expect(game.getFrameScore()).toEqual(5);
+      game.makeRoll(3);
+      expect(game.getFrameHistory()).toEqual([[5,3]])
     })
   })
 

@@ -3,11 +3,17 @@ $(document).ready(function() {
   var game = new Game();
 
   updateFrame();
+  updateScore();
 
   $('#roll').on('click', function() {
     game.roll();
     updateFrame();
+    updateScore();
   });
+
+  function updateScore() {
+    $('#total-score').text(game.total());
+  }
 
   function updateFrame() {
     $('#frame-number').text(game._currentFrame.number());

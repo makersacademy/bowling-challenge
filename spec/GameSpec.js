@@ -23,15 +23,22 @@ describe('Game', function(){
   describe('frame transition', function(){
     it('frame increases by three after six rolls', function(){
       for(var i=0; i<6; i++){
-        game.makeRoll();
+        game.makeRoll(5);
       }
       expect(game.getFrame()).toEqual(4);
     })
     it('frame increases by one after 3 rolls', function(){
       for(var i=0; i<3; i++){
-      game.makeRoll();
+      game.makeRoll(5);
       }
       expect(game.getFrame()).toEqual(2);
+    })
+  })
+
+  describe('frame score', function(){
+    it('equals 5 after a roll of 5', function(){
+      game.makeRoll(5);
+      expect(game.getFrameScore()).toEqual(5);
     })
   })
 

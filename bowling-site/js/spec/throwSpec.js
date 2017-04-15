@@ -2,13 +2,13 @@ describe('Throw',function(){
   var ballThrow;
   var normalThrowScore = 7
   beforeEach(function(){
-    ballThrow = new BallThrow();
+    ballThrow = new Throw();
   });
 
   describe('Initalize',function(){
     it('defaults to full frame unless specified',function(){
       expect(ballThrow.pinsLeft).toEqual(10);
-      ballThrow = new BallThrow(2);
+      ballThrow = new Throw(2);
       expect(ballThrow.pinsLeft).toEqual(2);
     });
   });

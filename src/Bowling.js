@@ -24,8 +24,8 @@ Bowling.prototype.add = function (number) {
 };
 
 Bowling.prototype.bowl = function (pins) {
-  this.roll += 1;
   this.frameScore += pins;
+  this.isFrameComplete();
 };
 
 Bowling.prototype.getFrameScore = function () {
@@ -34,9 +34,17 @@ Bowling.prototype.getFrameScore = function () {
 
 Bowling.prototype.isFrameComplete = function () {
   if(this.roll === 1){
+    this.roll += 1;
     return false;
   }
   else {
+    this.resetFrame();
     return true;
   }
+};
+
+Bowling.prototype.resetFrame = function () {
+  this.score += this.frameScore;
+  this.roll = 1;
+  return this.frame += 1;
 };

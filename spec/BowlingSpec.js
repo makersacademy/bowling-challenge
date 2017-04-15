@@ -9,15 +9,15 @@ describe('Bowling', function() {
   });
 
   describe('initially', function() {
-    it('starts at 0 points', function() {
+    it('starts at score: 0', function() {
       expect(bowling.getCurrentScore()).toEqual(0);
     });
 
-    it('starts at frame 1', function() {
+    it('starts at frame: 1', function() {
       expect(bowling.getCurrentFrame()).toEqual(1);
     });
 
-    it('starts at roll 1', function() {
+    it('starts at roll: 1', function() {
       expect(bowling.getCurrentRoll()).toEqual(1);
     });
 
@@ -46,10 +46,22 @@ describe('Bowling', function() {
   });
 
   describe('frame complete', function() {
-    it('is true after 2 bowls', function() {
+    it('increments frame', function() {
       bowling.bowl(4);
       bowling.bowl(3);
-      expect(bowling.isFrameComplete()).toBeTruthy();
+      expect(bowling.getCurrentFrame()).toEqual(2);
+    });
+
+    it('resets roll', function() {
+      bowling.bowl(4);
+      bowling.bowl(3);
+      expect(bowling.getCurrentRoll()).toEqual(1);
+    });
+
+    it('updates score by adding frameScore', function() {
+      bowling.bowl(4);
+      bowling.bowl(3);
+      expect(bowling.getCurrentScore()).toEqual(7);
     });
   });
 });

@@ -1,4 +1,3 @@
-
 # Bowling Challenge
 
 ## User Stories
@@ -42,11 +41,11 @@ If I get a strike the next two bowls scores are added to my strike score.
 
 As a player,
 So I can get a gutter game,
-I would like to score 0 points for the entire game.
+I would like to score 0 points for the entire game (20 0 scores).
 
 As a player,
 So I can score a perfect game,
-I would like to get all strikes (score 300) for the entire game.
+I would like to get all strikes (score 300/12 strikes) for the entire game.
 
 BONUS:
 

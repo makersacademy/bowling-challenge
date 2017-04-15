@@ -30,6 +30,7 @@ Frame.prototype.checkStrike = function (knockedPins) {
 Frame.prototype.checkSpare = function (knockedPins) {
   if ( this._firstRoll + knockedPins === 10 ) {
     this._isSpare = true
-  } else { throw TypeError("Cheater. Too many pins.")
-  }
+  } else if ( this._firstRoll + knockedPins > 10 ) {
+    throw TypeError("Cheater. Too many pins.")
+  };
 };

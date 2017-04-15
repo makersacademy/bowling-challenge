@@ -2,6 +2,7 @@ function Frame () {
   this.pins = this.DEFAULTPINS;
   this.rollsLeft = this.DEFAULTROLLS;
   this.score = 0;
+  this.isStrike = false;
 }
 
 Frame.prototype.DEFAULTPINS = 10;
@@ -12,13 +13,21 @@ Frame.prototype.rollScore = function() {
 };
 
 Frame.prototype.play = function() {
-  if(this.rollsLeft === 0) {
-    throw 'No more frames. Start a new frame!';
+  var score = this.rollScore();
+  if(score === 10) {
+    this.pins -= score;
+    this.score += score;
+    this.setStrike();
   } else {
-    var score = this.rollScore();
-    console.log('Score:' + score + '\n'+ (this.pins - score) + ' pins left.');
+    console.log('Score: ' + score + '\n'+ (this.pins - score) + ' pins left.');
     this.pins -= score;
     this.score += score;
     this.rollsLeft -= 1;
   }
+};
+
+Frame.prototype.setStrike = function() {
+  this.isStrike = true;
+  this.rollsLeft = 0;
+  console.log('STRIKE!\n No pins left.')
 };

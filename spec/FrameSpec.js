@@ -40,14 +40,19 @@ describe("Frame", function() {
       frame.play();
       expect(frame.score).toEqual(5);
     });
+  });
 
-    it('should throw error if there are no frames left', function() {
-      spyOn(frame, 'rollScore').and.returnValue(4);
-      for(i = 1; i <= 2 ; i++ ) {
-        frame.play();
-      };
-      expect(function() {frame.play()}).toThrow('No more frames. Start a new frame!');
-    })
+  describe("setStrike", function() {
+    it('should set strike to true', function() {
+      frame.setStrike();
+      expect(frame.isStrike).toEqual(true);
+    });
+
+    it('should set rollsLeft to 0', function() {
+      frame.setStrike();
+      expect(frame.rollsLeft).toEqual(0);
+    });
+
   });
 
 });

@@ -7,7 +7,7 @@ function Game() {
 
 Game.prototype.createFrame = function() {
   return new Frame();
-}
+};
 
 Game.prototype.DEFAULTFRAMESLEFT = 10;
 
@@ -38,4 +38,4 @@ Game.prototype.changeFrame = function() {
 
 Game.prototype.rollsLeft = function(frame) {
   return frame.rollsLeft;
-}
+};

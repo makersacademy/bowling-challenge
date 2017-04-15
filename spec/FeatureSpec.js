@@ -18,12 +18,12 @@ describe("Feature spec", function() {
   });
 
   describe("Playing a whole frame", function() {
-    it("Should move the frame to the frames array and move to next frame", function() {
+    it("Should move frame to frames array and move to next frame", function() {
       spyOn(game._frame, 'rollScore').and.returnValue(4);
       var frame = game._frame
       for(i = 1; i <= 2; i++) {
         game.play();
-      };
+      }
       expect(game.frames).toContain(frame);
       expect(game.currentFrame).toEqual(2);
     });

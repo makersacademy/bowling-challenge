@@ -10,10 +10,10 @@ describe('Features', function() {
 
   // As a bowler,
   // so that I can record my score
-  // I would like to input my score after each throw
-  it('User can record score after each throw', function() {
-    game.throw(1);
-    expect(game.score()).toEqual(1);
+  // I would like to input my score after each roll
+  it('User can record score after each roll', function() {
+    game.roll(1);
+    expect(game.getScore()).toEqual(1);
   });
 
 

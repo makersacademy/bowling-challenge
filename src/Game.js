@@ -10,14 +10,18 @@ function Game() {
 Game.prototype.roll = function() {
   this._currentFrame.roll()
   if(this._currentFrame.isFinished()) {
-    if(this._frame > 1) {
-      this._addBonuses()
-    }
-    if(this._frame > 2) {
-      this._checkIfBakfast()
-    }
-    this._storeFrame()
+    this._processFrame()
   }
+}
+
+Game.prototype._processFrame = function() {
+  if(this._frame > 1) {
+    this._addBonuses()
+  }
+  if(this._frame > 2) {
+    this._checkIfBakfast()
+  }
+  this._storeFrame()
 }
 
 Game.prototype._checkIfBakfast = function() {
@@ -36,9 +40,9 @@ Game.prototype.total = function() {
 
 Game.prototype._addBonuses = function() {
   if(this._lastFrame().bonusFeature() === 'spare') {
-    this._addSpareBonus()
+    this._lastFrame().addBonus(this._currentFrame.spareBonus())
   } else if(this._lastFrame().bonusFeature() === 'strike') {
-    this._addStrikeBonus()
+    this._lastFrame().addBonus(this._currentFrame.points())
   }
 }
 
@@ -46,14 +50,6 @@ Game.prototype._storeFrame = function() {
   this._frames.push(this._currentFrame);
   this._frame += 1
   this._currentFrame = new Frame(this._frame);
-}
-
-Game.prototype._addSpareBonus = function() {
-  this._lastFrame().addBonus(this._currentFrame.spareBonus())
-}
-
-Game.prototype._addStrikeBonus = function() {
-  this._lastFrame().addBonus(this._currentFrame.points())
 }
 
 Game.prototype._bakBonus = function() {

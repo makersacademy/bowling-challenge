@@ -10,7 +10,9 @@ function Game() {
 Game.prototype.roll = function() {
   this._currentFrame.roll()
   if(this._currentFrame.isFinished()) {
-    this._addBonuses()
+    if(this._frames.length > 0) {
+      this._addBonuses()
+    }
     this._storeFrame()
   }
 }
@@ -25,12 +27,18 @@ Game.prototype.total = function() {
 
 Game.prototype._addBonuses = function() {
   if(this._bakfast === true) {
-    this.bakBonus()
+    this._bakBonus()
   }
-  if(this._frames.length > 0) {
-    this._addBonus(this._frames[this._frames.length - 1], this._currentFrame)
+  if(this._lastFrame().bonusFeature() === 'spare') {
+    this._addSpareBonus()
+  } else if(this._lastFrame().bonusFeature() === 'strike') {
+    this._addStrikeBonus()
   }
-
+  if(this._lastFrame().bonusFeature() === 'strike' && this._currentFrame.bonusFeature() === 'strike') {
+    this._bakfast = true
+  } else {
+    this._bakfast = false
+  }
 }
 
 Game.prototype._storeFrame = function() {
@@ -39,19 +47,22 @@ Game.prototype._storeFrame = function() {
   this._currentFrame = new Frame(this._frame);
 }
 
-Game.prototype._addBonus = function(lastFrame, thisFrame) {
-  if(lastFrame.bonusFeature() === 'spare') {
-    lastFrame.addBonus(thisFrame.spareBonus())
-  } else if(lastFrame.bonusFeature() === 'strike') {
-    lastFrame.addBonus(thisFrame.points())
-  }
-  if(lastFrame.bonusFeature() === 'strike' && thisFrame.bonusFeature() === 'strike') {
-    this._bakfast = true
-  } else {
-    this._bakfast = false
-  }
+Game.prototype._addSpareBonus = function() {
+  this._lastFrame().addBonus(this._currentFrame.spareBonus())
 }
 
-Game.prototype.bakBonus = function() {
-  this._frames[this._frames.length - 2].addBonus(this._currentFrame.spareBonus())
+Game.prototype._addStrikeBonus = function() {
+  this._lastFrame().addBonus(this._currentFrame.points())
+}
+
+Game.prototype._bakBonus = function() {
+  this._lastLastFrame().addBonus(this._currentFrame.spareBonus())
+}
+
+Game.prototype._lastFrame = function() {
+  return this._frames[this._frames.length - 1]
+}
+
+Game.prototype._lastLastFrame = function() {
+  return this._frames[this._frames.length - 2]
 }

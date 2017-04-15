@@ -4,18 +4,18 @@ $(document).ready(function() {
 
   updateFrame();
   updateScore();
+  updateImage();
 
   $('#roll').on('click', function() {
     game.roll();
     updateFrame();
     updateScore();
+    updateImage();
   });
 
   function updateScore() {
     $('#total-score').text(game.total());
-    // if(game.total() > 20) {
-    //   $('#total-score').css('color', 'red')
-    // }
+
   }
 
   function updateFrame() {
@@ -24,5 +24,9 @@ $(document).ready(function() {
     $('#this-frame-roll').text(game._currentFrame.currentRoll());
     $('#this-frame-pins').text(game._currentFrame.pins());
   };
+
+  function updateImage() {
+    $("#pins").attr("src", 'pins/' + game._currentFrame._pins + '_pins.jpeg');
+  }
 
 });

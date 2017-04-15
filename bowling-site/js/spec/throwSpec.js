@@ -29,7 +29,15 @@ describe('Throw',function(){
   describe('#updatePins',function(){
     it('changes the number of pins when called',function(){
         ballThrow.updatePins(normalThrowScore)
-        expect(ballThrow.pinsLeft).toEqual(normalThrowScore)
+        expect(ballThrow.pinsLeft).toEqual(10-normalThrowScore)
+    });
+  });
+
+  describe('#resetPins',function(){
+    it('sets the pins back to 10',function(){
+      this.pinsLeft = 5
+      ballThrow.resetPins()
+      expect(ballThrow.pinsLeft).toEqual(10);
     });
   });
 

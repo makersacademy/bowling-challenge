@@ -3,9 +3,14 @@
 describe('Frame', function(){
   var frame;
   var normalThrowScore = 7
+  var ballThrower = {
+    pinsLeft: 10,
+    throwBall: function(){return true},
+    updatePins: function(){return true}
+  }
 
   beforeEach(function(){
-    frame = new Frame();
+    frame = new Frame(ballThrower);
   });
 
   describe('Initialize', function(){
@@ -17,7 +22,35 @@ describe('Frame', function(){
     });
     it('frame starts with 10 pins', function(){
       expect(frame.pins).toEqual(10);
-    })
+    });
+  });
+
+  describe('#result', function(){
+    it('returns scores in an object', function(){
+      frame.scoreThrow1 = 3;
+      frame.scoreThrow2 = 3;
+      expect(frame.result().score1).toEqual(3)
+      expect(frame.result().score2).toEqual(3)
+
+    });
+  });
+
+  describe('#playFrame',function(){
+    beforeEach(function(){
+      // spyOn(frame,"pins").and.returnValue(default)
+      spyOn(frame.ballThrower, 'throwBall')
+      spyOn(frame.ballThrower, 'updatePins')
+
+    });
+    it('calls updatePins on a BallThrow class', function(){
+      this.pins = normalThrowScore;
+      frame.throwBall();
+      expect(frame.ballThrower.updatePins).toHaveBeenCalled();
+    });
+    it('calls throwBall on a BallThrow class', function(){
+      frame.throwBall();
+      expect(frame.ballThrower.throwBall).toHaveBeenCalled();
+    });
   });
 
   describe('#isReadyForTurn2', function(){
@@ -38,6 +71,7 @@ describe('Frame', function(){
       expect(frame.scoreThrow2).toEqual(8);
     });
   });
+
   describe('#endThrow', function(){
     it('ends the turn', function(){
       frame.endThrow();

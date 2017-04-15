@@ -34,6 +34,10 @@ Game.prototype._addBonuses = function() {
   } else if(this._lastFrame().bonusFeature() === 'strike') {
     this._addStrikeBonus()
   }
+  this._setBakfast()
+}
+
+Game.prototype._setBakfast = function() {
   if(this._lastFrame().bonusFeature() === 'strike' && this._currentFrame.bonusFeature() === 'strike') {
     this._bakfast = true
   } else {

@@ -10,6 +10,7 @@ function Game() {
 Game.prototype.roll = function() {
   this._currentFrame.roll()
   if(this._currentFrame.isFinished()) {
+    this._addBonuses()
     this._storeFrame()
   }
 }
@@ -22,13 +23,17 @@ Game.prototype.total = function() {
   return total
 }
 
-Game.prototype._storeFrame = function() {
+Game.prototype._addBonuses = function() {
   if(this._bakfast === true) {
     this.bakBonus()
   }
   if(this._frames.length > 0) {
     this._addBonus(this._frames[this._frames.length - 1], this._currentFrame)
   }
+
+}
+
+Game.prototype._storeFrame = function() {
   this._frames.push(this._currentFrame);
   this._frame += 1
   this._currentFrame = new Frame(this._frame);

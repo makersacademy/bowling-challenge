@@ -1,8 +1,9 @@
 'use strict';
 
-function Frame() {
+function Frame(num) {
+  this._number = num
   this._pins = 10
-  this._rolls = 0
+  this._roll = 1
   this._rollOnePoints = 0
   this._rollTwoPoints = 0
   this._bonusPoints = 0
@@ -10,13 +11,25 @@ function Frame() {
 
 Frame.prototype.roll = function() {
   var hit = this._hit()
-  this._rolls === 0 ? this._rollOnePoints = hit : this._rollTwoPoints = hit
+  this._roll === 1 ? this._rollOnePoints = hit : this._rollTwoPoints = hit
   this._pins -= hit
-  this._rolls +=1
+  this._roll +=1
+}
+
+Frame.prototype.number = function() {
+  return this._number;
+}
+
+Frame.prototype.currentRoll = function() {
+  return this._roll
 }
 
 Frame.prototype.points = function() {
   return this._rollOnePoints + this._rollTwoPoints + this._bonusPoints
+}
+
+Frame.prototype.pins = function() {
+  return this._pins
 }
 
 
@@ -37,7 +50,7 @@ Frame.prototype.bonusFeature = function() {
 }
 
 Frame.prototype.isFinished = function() {
-  if(this.bonusFeature() === 'strike' || this._rolls === 2) {
+  if(this.bonusFeature() === 'strike' || this._roll === 3) {
     return true
   } else {
     return false

@@ -2,7 +2,8 @@
 
 function Game() {
   this._frames = []
-  this._currentFrame = new Frame()
+  this._frame = 1
+  this._currentFrame = new Frame(this._frame)
 }
 
 Game.prototype.roll = function() {
@@ -25,7 +26,8 @@ Game.prototype._storeFrame = function() {
     this._addBonus(this._frames[this._frames.length - 1], this._currentFrame)
   }
   this._frames.push(this._currentFrame);
-  this._currentFrame = new Frame();
+  this._frame += 1
+  this._currentFrame = new Frame(this._frame);
 }
 
 Game.prototype._addBonus = function(lastFrame, thisFrame) {

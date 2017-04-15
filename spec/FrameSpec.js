@@ -2,8 +2,12 @@ describe('Frame', function() {
 
   var frame;
   beforeEach(function() {
-    frame = new Frame()
+    frame = new Frame(2)
   })
+
+  it('has a number', function() {
+    expect(frame.number()).toEqual(2)
+  });
 
   it('is initiated with zero points', function() {
     expect(frame._rollOnePoints).toEqual(0)
@@ -33,7 +37,7 @@ describe('Frame', function() {
 
   it('keeps track of rolls', function() {
     frame.roll()
-    expect(frame._rolls).toEqual(1)
+    expect(frame._roll).toEqual(2)
   });
 
   it('recognises a strike, and that the strike ends the frame', function() {

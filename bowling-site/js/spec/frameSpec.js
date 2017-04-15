@@ -20,28 +20,27 @@ describe('Frame', function(){
     })
   });
 
-  describe('#rollBall', function(){
-    it('uses Math.random to return a number between 1 and 10', function(){
-      spyOn(Math,'random');
-      frame.rollBall();
-      expect(Math.random).toHaveBeenCalled();
+  describe('#isReadyForTurn2', function(){
+    it('ends the frame if a strike is rolled on turn 1', function(){
+      frame.updateScore(10);
+      expect(frame.isReadyForTurn2()).toEqual(false);
     });
   });
 
   describe('#updateScore', function(){
     it('updates the score for throw 1',function(){
-      frame.updateScore(normalThrowScore)
-      expect(frame.scoreThrow1).toEqual(normalThrowScore)
+      frame.updateScore(normalThrowScore);
+      expect(frame.scoreThrow1).toEqual(normalThrowScore);
     });
     it('updates the score for throw 2', function(){
-      frame.throwNumber=2
-      frame.updateScore(8)
-      expect(frame.scoreThrow2).toEqual(8)
+      frame.throwNumber=2;
+      frame.updateScore(8);
+      expect(frame.scoreThrow2).toEqual(8);
     });
   });
   describe('#endThrow', function(){
     it('ends the turn', function(){
-      frame.endThrow()
+      frame.endThrow();
       expect(frame.throwNumber).toEqual(2);
     });
   });
@@ -49,7 +48,7 @@ describe('Frame', function(){
   describe('#endFrame', function(){
     it('ends the frame',function(){
       frame.endFrame();
-      expect(frame.isFinished).toEqual(true)
+      expect(frame.isFinished).toEqual(true);
     });
   });
 });

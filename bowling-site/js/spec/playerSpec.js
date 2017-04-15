@@ -2,7 +2,7 @@
 
 describe('Player', function(){
   var player;
-  var testName = 'Rick'
+  var testName = 'The Dude'
   beforeEach(function(){
     player = new Player(testName);
   });

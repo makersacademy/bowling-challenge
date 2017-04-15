@@ -22,7 +22,10 @@ Frame.prototype.updateScore= function(score){
   }
 }
 
-Frame.prototype.rollBall = function(){
-    randomNumber = Math.random()
-    return Math.floor(randomNumber * 11);
+Frame.prototype.isReadyForTurn2 = function(){
+  return this._isNotStrike();
+}
+
+Frame.prototype._isNotStrike = function(){
+  return !(this.scoreThrow1 == 10);
 }

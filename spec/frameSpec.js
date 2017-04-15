@@ -21,7 +21,7 @@ describe('Frame', function(){
     expect(frame.firstBowlRemainder).toEqual(7);
   });
 
-  it('second bowl knocks down a random number of pins that is remainder from first', function(){
+  it('second bowl knocks down random number of pins left from first', function(){
     spyOn(Math, 'random').and.returnValue(0.2);
     frame.firstBowl();
     expect(frame.secondBowl()).toEqual(2);
@@ -49,8 +49,8 @@ describe('Frame', function(){
     expect(frame.secondBowl()).toContain('Gutterball!')
   });
 
-  it('returns spare message if 10 pins are knocked down over 2 bowls', function(){
-    spyOn(frame, 'totalScore').and.returnValue(10);
+  it('returns spare if 10 pins are knocked down over 2 bowls', function(){
+    spyOn(frame, 'pinsDown').and.returnValue(5);
     frame.firstBowl();
     expect(frame.secondBowl()).toContain('Spare!')
   });

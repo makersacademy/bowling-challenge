@@ -20,5 +20,11 @@ describe('Feature test:', function() {
     });
   });
 
-  
+  describe('Bowling twice in a frame', function () {
+    it('frame score is resets when changing frames', function () {
+      frame.bowl(frame.pins);
+      frame.bowl(frame.pins);
+      expect(frame.score).toEqual(0);
+    });
+  });
 });

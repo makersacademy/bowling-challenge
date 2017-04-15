@@ -32,4 +32,16 @@ describe('Frame', function (){
     frame.resetFrame()
     expect(frame.pins).toEqual(10);
   });
+
+  describe('Players number of bowls', function () {
+    it('returns true if its a players first bowl', function () {
+      expect(frame.isFirstBowl()).toEqual(true);
+    });
+
+    it('returns false if its NOT a players first bowl', function () {
+      var pins = 10
+      frame.bowl(pins);
+      expect(frame.isFirstBowl()).toEqual(false);
+    });
+  });
 });

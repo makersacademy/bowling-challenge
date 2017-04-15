@@ -1,3 +1,5 @@
+![Travis CI](https://travis-ci.org/makersacademy/bowling-challenge.svg?branch=master)
+
 # Bowling Challenge
 
 ## User Stories

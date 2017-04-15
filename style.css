@@ -1,0 +1,33 @@
+body {
+  background-color: #e75933;
+  margin-top: 70px;
+  margin-left: 10%;
+  font-family: "futura"
+}
+h1 {
+  color: #231f20;
+}
+div{
+  position: absolute;
+}
+li{
+  list-style-type: none; /*Removes bullet points*/
+  float:left; /*Moves div to next row if the window is too narrow*/
+  background:#fcf5e7;
+  border-top: 5px solid #231f20;
+  border-top-left-radius: 20px;
+  border-bottom: 5px solid #06618f;
+  border-left: 1px solid #231f20;
+  width: 50px;
+  height: 30px;
+  padding: 10px 10px 13px 10px;
+  text-align: center;
+  font-size: 25px;
+}
+li.heading {
+  width: 100px;
+}
+li.number {
+  width: 50px;
+}
+

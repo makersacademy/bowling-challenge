@@ -51,6 +51,11 @@ describe('Frame', function(){
       frame.throwBall();
       expect(frame.ballThrower.throwBall).toHaveBeenCalled();
     });
+    it('calls update score',function(){
+      spyOn(frame, 'updateScore')
+      frame.throwBall();
+      expect(frame.updateScore).toHaveBeenCalled();
+    });
   });
 
   describe('#isReadyForTurn2', function(){

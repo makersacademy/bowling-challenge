@@ -16,13 +16,13 @@ describe('Throw',function(){
   describe('#rollBall', function(){
     it('uses Math.random to return a number between 1 and 10', function(){
       spyOn(Math,'random');
-      ballThrow.rollBall();
+      ballThrow.throwBall();
       expect(Math.random).toHaveBeenCalled();
     });
     it("Can't return a number greater than the amount of pins left", function(){
       spyOn(Math,'random').and.returnValue(0.99);
       ballThrow.pinsLeft = normalThrowScore
-      expect(ballThrow.rollBall()).toEqual(normalThrowScore);
+      expect(ballThrow.throwBall()).toEqual(normalThrowScore);
     });
   });
 

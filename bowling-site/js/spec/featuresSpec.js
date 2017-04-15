@@ -2,14 +2,30 @@
 
 describe('Feature Tests', function(){
 
-  var testName = "Rick"
 
-  beforeEach(function(){
-    player = new Player(testName);
-    frame  = new Frame(player);
-  });
+  describe('Scenario: Regular Frame', function(){
 
-  describe('Player with a name plays a frame', function(){
 
+    beforeEach(function(){
+      var testName = "Rick"
+      var normalThrowScore = 4
+    });
+    it('logs correct score for a frame of regular throws',function(){
+    });
+
+    it('starts the frame as unfinished',function(){
+      var ballThrow = new BallThrow;
+      var frame  = new Frame(ballThrow);
+
+      spyOn(ballThrow,'throwBall').and.returnValue(3);
+      debugger;
+      frame.throwBall();
+      frame.throwBall();
+      frame.endFrame();
+      debugger;
+      expect(frame.result().score1).toEqual(3);
+      expect(frame.result().score2).toEqual(3);
+
+    })
   });
 });

@@ -2,7 +2,7 @@ function BallThrow(pins=10){
   this.pinsLeft = pins
 }
 
-BallThrow.prototype.rollBall=function(){
+BallThrow.prototype.throwBall=function(){
     randomNumber = Math.random()
     return Math.floor(randomNumber * (this.pinsLeft + 1));
 }

@@ -9,7 +9,8 @@ function Frame(ballThrowClass){
 
 Frame.prototype.throwBall= function(){
   this._updateThrowPins();
-  this._startThrow();
+  var throw_result = this._startThrow();
+  this.updateScore(throw_result);
 }
 
 

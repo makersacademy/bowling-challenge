@@ -5,6 +5,7 @@ function Bowling(){
   this.currentScore = 0
   this.frame = {first: 0, second: 0}
   this.strike = false
+  this.spare = false
 };
 
 Bowling.prototype.firstThrow = function(score){
@@ -28,5 +29,13 @@ Bowling.prototype.isStrike = function(){
     this.strike = true
   } else {
     this.strike = false
+  }
+};
+
+Bowling.prototype.isSpare = function(){
+  if(this.frameScore() === 10) {
+    this.spare = true
+  } else {
+    this.spare = false
   }
 };

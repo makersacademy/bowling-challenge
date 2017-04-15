@@ -36,6 +36,7 @@ describe('Bowling', function() {
     bowling.firstThrow(5);
     bowling.secondThrow(5);
     bowling.isSpare();
+    debugger;
     expect(bowling.spare).toEqual(true);
   });
 

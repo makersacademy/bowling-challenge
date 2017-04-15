@@ -28,26 +28,20 @@ Frame.prototype.addBonus = function(points) {
   this._bonusPoints += points
 }
 
-
-Frame.prototype.isStrike = function() {
+Frame.prototype.bonusFeature = function() {
   if(this._rollOnePoints === 10) {
-    return true
+    return 'strike'
+  } else if (this._rollTwoPoints + this._rollOnePoints === 10) {
+    return 'spare'
   }
-  return false
-}
-
-Frame.prototype.isSpare = function() {
-  if(this._rollTwoPoints + this._rollOnePoints === 10 && this._rollOnePoints !== 10) {
-    return true
-  }
-  return false
 }
 
 Frame.prototype.isFinished = function() {
-  if(this.isStrike() || this._rolls === 2) {
+  if(this.bonusFeature() === 'strike' || this._rolls === 2) {
     return true
+  } else {
+    return false
   }
-  return false
 }
 
 Frame.prototype._hit = function() {

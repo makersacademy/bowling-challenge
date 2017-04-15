@@ -29,10 +29,9 @@ Game.prototype._storeFrame = function() {
 }
 
 Game.prototype._addBonus = function(lastFrame, thisFrame) {
-  if(lastFrame.isSpare()) {
+  if(lastFrame.bonusFeature() === 'spare') {
     lastFrame.addBonus(thisFrame.spareBonus())
-  }
-  if(lastFrame.isStrike()) {
+  } else if(lastFrame.bonusFeature() === 'strike') {
     lastFrame.addBonus(thisFrame.points())
   }
 }

@@ -9,9 +9,15 @@ $(document).ready(function() {
 
 
   $('#roll').on('click', function() {
+    $('#ball').animate({
+      left: '250px',
+      bottom: '100px',
+      height: '80px',
+      width: '80px'
+    }, 'slow');
     game.roll();
     if(game._currentFrame.isFinished() && game.isFinalFrame()) {
-      game._storeFrame()
+      game.updateAndStore()
       endGame()
     }
     if(game._currentFrame.isFinished()) {

@@ -11,7 +11,18 @@ Game.prototype.roll = function() {
   this._currentFrame.roll()
 }
 
-Game.prototype.processFrame = function() {
+Game.prototype.updateAndStore = function () {
+  this._processFrame()
+  this._storeFrame()
+}
+
+Game.prototype._storeFrame = function() {
+  this._frames.push(this._currentFrame);
+  this._frame += 1
+  this._currentFrame = new Frame(this._frame);
+}
+
+Game.prototype._processFrame = function() {
   if(this._frame > 1) {
     this._addBonuses()
   }
@@ -74,12 +85,7 @@ Game.prototype._strikeBonus = function() {
   this._lastFrame().addBonus(this._currentFrame.strikeBonus())
 }
 
-Game.prototype._storeFrame = function() {
-  this.processFrame()
-  this._frames.push(this._currentFrame);
-  this._frame += 1
-  this._currentFrame = new Frame(this._frame);
-}
+
 
 Game.prototype._bakBonus = function() {
   this._lastLastFrame().addBonus(this._currentFrame.spareBonus())

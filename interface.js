@@ -14,7 +14,7 @@ $(document).ready(function() {
       bottom: '100px',
       height: '80px',
       width: '80px'
-    }, 'slow');
+    }, 'slow', function () { $(this).removeAttr('style'); });
     game.roll();
     if(game._currentFrame.isFinished() && game.isFinalFrame()) {
       game.updateAndStore()
@@ -27,7 +27,10 @@ $(document).ready(function() {
   });
 
   $('#new-frame').on('click', function() {
-    game._storeFrame()
+    game.updateAndStore()
+    var num = game._lastFrame().number();
+    var points = game._lastFrame().points();
+    $('#game-stats').append('<p>frame ' + num + ': ' + points + ' points</p>')
     updateAll();
     startFrame();
   });
@@ -47,11 +50,18 @@ $(document).ready(function() {
   }
 
   function updateAll() {
+    // game._frames.forEach(function(frame) {
+    //   $('#frame_' + frame.number()).text(frame.points());
+    // });
+    // game._frames.forEach(function(frame) {
+    //   var num = frame.number();
+    //   var points = frame.points();
+    //   $('#game-stats').append('<p>frame ' + num + ': ' + points + 'points</p>')
+    // });
     $('#total-score').text(game.total());
     $('#this-frame-number').text(game._currentFrame.number());
     $('#this-frame-points').text(game._currentFrame.points());
     $('#this-frame-roll').text(game._currentFrame.currentRoll());
-    // $('#this-frame-pins').text(game._currentFrame.pins());
     $("#pins").attr("src", 'pins/' + game._currentFrame.pins() + '_pins.jpeg');
   };
 
@@ -59,7 +69,6 @@ $(document).ready(function() {
     $('#game-over').show();
     $('#frame-stats').hide();
     $('#controls').hide();
-
   }
 
 });

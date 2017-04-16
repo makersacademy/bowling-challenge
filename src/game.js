@@ -14,10 +14,10 @@ Game.prototype.startGame = function(){
 };
 
 Game.prototype.playFrame = function(frame){
-  this.frames[frame].firstBowl();
-  if (this.pinsDown < 10) {
-  this.frames[frame].secondBowl();
-}
+  var firstFrameResult = this.frames[frame].firstBowl();
+  if (firstFrameResult !== 'Strike!') {
+    this.frames[frame].secondBowl();
+  }
 };
 
 Game.prototype.totalGameScore = function(){

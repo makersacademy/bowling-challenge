@@ -49,7 +49,7 @@ Game.prototype.strikeORSpare = function() {
   if(getNextRoll() === 1) {
     this.isASpare()
   } else {
-    this.isAStrike
+    this.isAStrike();
   }
 };
 

@@ -30,7 +30,8 @@ $(document).ready(function() {
     game.updateAndStore()
     var num = game._lastFrame().number();
     var points = game._lastFrame().points();
-    $('#game-stats').append('<p>frame ' + num + ': ' + points + ' points</p>')
+    $('#game-stats').append('<p>frame ' + num + ': <span id="frame_' + num + '"></span></p>')
+    $('#frame_' + num).text(points)
     updateAll();
     startFrame();
   });

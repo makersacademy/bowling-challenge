@@ -10,6 +10,9 @@ function BowlingGame() {
   this.strike = false;
   this.pins = 10;
   this.secondShotScore = 0;
+  this.firstShotScore = 0;
+  this.frame1 = []
+  this.frame2 = []
 }
 
 BowlingGame.prototype.total = function() {
@@ -19,6 +22,7 @@ BowlingGame.prototype.total = function() {
 BowlingGame.prototype.firstShot = function(pins) {
   this.total = this.total + pins;
   this.frameScore += pins;
+  this.firstShotScore += pins;
 }
 
 BowlingGame.prototype.secondShot = function(pins) {
@@ -27,8 +31,20 @@ BowlingGame.prototype.secondShot = function(pins) {
   this.secondShotScore += pins;
 }
 
+BowlingGame.prototype.calculateFrame1Score = function() {
+  var t = this.firstShotScore + this.secondShotScore;
+  this.frame1.push(t);
+}
+
+BowlingGame.prototype.calculateFrame2Score = function () {
+    var t = this.firstShotScore + this.secondShotScore;
+    this.frame2.push(t);
+
+}
+
+
 BowlingGame.prototype.currentSpareScore = function() {
-  if(this.frameScore === 10) {
+  if(this.firstShotScore + this.secondShotScore === 10) {
     this.spare = !this.spare;
   }
 }
@@ -39,7 +55,7 @@ BowlingGame.prototype.frameScoreReset = function() {
 }
 
 BowlingGame.prototype.currentStrikeScore = function() {
-  if(this.frameScore === 10) {
+  if(this.firstShotScore === 10) {
     this.strike = !this.Strike;
   }
 }

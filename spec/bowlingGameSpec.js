@@ -44,7 +44,7 @@ describe("bowling game", function() {
     // At the end of the second shot,
     // I want the pins to reset,
     // so that I can play a new frame
-    it("resets pins at start of next frame", function() {
+    it("resets pins at start of next frame ", function() {
       bowlingGame.firstShot(2);
       bowlingGame.secondShot(7);
       bowlingGame.pinsInUse();

@@ -6,9 +6,14 @@ var Game = function(){
 };
 
 Game.prototype.startGame = function(){
+  var self = this;
   this.frames.forEach(function(frame, index, array) {
-    frame.firstBowl();
-    frame.secondBowl();
+    self.playFrame(index);
   })
   return this.frames
+};
+
+Game.prototype.playFrame = function(frame){
+  this.frames[frame].firstBowl();
+  this.frames[frame].secondBowl();
 };

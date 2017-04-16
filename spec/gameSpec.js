@@ -13,8 +13,15 @@ describe('Game', function(){
   });
 
   it('lets a player start the game', function(){
-    spyOn(Math, 'random').and.returnValue(0.3)
-    expect(game.startGame(frame)).toEqual(5);
+    spyOn(Math, 'random').and.returnValue(0.3);
+    var completedGame = game.startGame();
+    expect(completedGame[completedGame.length -1].frameScore()).toEqual(5);
   });
 
+  it('a player can play a frame', function(){
+    spyOn(Math, 'random').and.returnValue(0.3);
+    game.playFrame(5);
+    expect(game.frames[0]).toEqual(frame);
+    expect(game.frames[5].frameScore()).toEqual(5);
+  });
 });

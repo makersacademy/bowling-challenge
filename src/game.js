@@ -5,6 +5,7 @@ function Game() {
   this.pinsRemaining = 10;
   this.currentFrameNumber = 1;
   this.currentFrame = [];
+  this.previousFrameScore = 0;
   this.frameHistory = [];
 }
 
@@ -46,6 +47,8 @@ Game.prototype.addToCurrentFrame = function(points) {
     this.addCurrentFrameToFrameHistory(this.currentFrame);
     this.resetCurrentFrame();
     this.resetPins();
+    this.calculateFrameScore(this.currentFrameNumber);
+    this.updateTotalScore();
   }
 };
 
@@ -76,11 +79,17 @@ Game.prototype.resetPins = function() {
   this.pinsRemaining = 10;
 };
 
-Game.prototype.getTotalScore = function () {
-  return this.score;
+Game.prototype.calculateFrameScore = function(frameNumber) {
   var frameScore = 0;
   for (var i = 0; i < 2; i++) {
-    frameScore += this.currentFrame[i];
+    frameScore += this.frameHistory[frameNumber - 1][i]
+  }
+  if(frameNumber === this.currentFrameNumber) {
+    return this.previousFrameScore = frameScore;
   }
   return frameScore;
+};
+
+Game.prototype.updateTotalScore = function () {
+  this.totalScore += this.previousFrameScore
 };

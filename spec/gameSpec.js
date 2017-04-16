@@ -20,7 +20,7 @@ describe('Game', function(){
   });
 
   it('throws an error if points entered are greater than the pins remaining', function(){
-    game.roll(3)
+    game.roll(3);
     expect(function(){game.roll(8);}).toThrowError("Invalid roll: only 7 pins remaining");
   });
 
@@ -45,7 +45,7 @@ describe('Game', function(){
   });
 
   it('returns the number of pins remaining', function(){
-    game.roll(1)
+    game.roll(1);
     expect(game.pinsRemaining).toEqual(9);
   })
 
@@ -59,7 +59,7 @@ describe('Game', function(){
   it('each frame conists of two rolls per player', function(){
     for(var i=0; i<3; i++) {
       game.roll(1);
-      game.roll(4)
+      game.roll(4);
     }
     expect(game.frameHistory).toEqual([[1,4],[1,4],[1,4]]);
   });
@@ -86,5 +86,25 @@ describe('Game', function(){
     game.roll(8);
     game.roll(1);
     expect(game.currentFrame).toEqual([]);
+  });
+
+  it('calculates the score of the frame specified', function(){
+    game.roll(1);
+    game.roll(5);
+    expect(game.previousFrameScore).toEqual(6);
+  });
+
+  it('calculates the score of the frame specified', function(){
+    game.roll(1);
+    game.roll(5);
+    expect(game.calculateFrameScore(1)).toEqual(6);
+  });
+
+  it('returns the total score', function(){
+    for(var i=0; i<6; i++) {
+      game.roll(1);
+      game.roll(4);
+    }
+    expect(game.totalScore).toEqual(30);
   });
 });

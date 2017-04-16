@@ -34,18 +34,6 @@ Game.prototype.getBonusPoints = function(){
   return this.bonusPoints
 }
 
-Game.prototype.makeRoll = function(points){
-  this.increaseRollNo();
-  this.currentFrame.push(points);
-  if (this.isWhichRoll() === 2){
-    this.makeFrame();
-  }
-  else {
-    if (this.isStrike(points)){
-      this.makeFrame();
-    }
-  }
-}
 
 Game.prototype.increaseRollNo = function(){
   this.rollCount += 1;
@@ -83,17 +71,30 @@ Game.prototype.strikeOrSpare = function(){
   }
 }
 
-Game.prototype.makeFrame = function(){
+Game.prototype.makeRoll = function(points){
+  this.increaseRollNo();
+  this.currentFrame.push(points);
   if (this.isFrameBonus() && this.isFinalFrame()){
-    // which kind of bonus? if spare 1 more roll. if strike 2 more rolls.
     this.strikeOrSpare();
-  } else {
-    this.frameHistory.push(this.currentFrame);
-    this.nextFrame();
+  }
+  else if (this.isWhichRoll() === 2){
+    this.makeFrame();
+  }
+  else {
+    if (this.isStrike(points)){
+      this.makeFrame();
+    }
   }
 }
 
+Game.prototype.makeFrame = function(){
+  // later: if is bonus but not final, dont want to store the score
+  this.frameHistory.push(this.currentFrame);
+  this.nextFrame();
+}
+
 Game.prototype.nextFrame = function(){
+  // game over?
   this.frameNo += 1;
   this.currentFrame = [];
 }

@@ -5,6 +5,7 @@ var Frame = function(){
   this.pins = 10;
   this.firstBowlRemainder = 0;
   this.totalScore = 0;
+  this.status = ''
 };
 
 Frame.prototype.pinsDown = function(max) {
@@ -16,6 +17,7 @@ Frame.prototype.firstBowl = function(){
   this.firstBowlRemainder = 10 - result;
   this.totalScore = result;
   if (this.totalScore === 10) {
+    this.status = 'Strike!'
     return 'Strike!';
   } else if (this.totalScore === 0) {
     return 'Gutterball!';
@@ -30,6 +32,7 @@ Frame.prototype.secondBowl = function(){
   if (result === 0) {
     return 'Gutterball!';
   } else if (this.totalScore === 10) {
+    this.status = 'Spare!'
     return 'Spare!';
   } else {
     return result;

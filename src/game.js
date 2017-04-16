@@ -10,7 +10,7 @@ Game.prototype.startGame = function(){
   this.frames.forEach(function(frame, index, array) {
     self.playFrame(index);
   });
-  return this.frames
+  return this.frames;
 };
 
 Game.prototype.playFrame = function(frame){
@@ -23,7 +23,7 @@ Game.prototype.playFrame = function(frame){
 Game.prototype.totalGameScore = function(){
   var totalScore = 0;
   this.frames.forEach(function(frame, index, array){
-    totalScore += frame.frameScore()
+    totalScore += frame.frameScore();
   });
-  return totalScore
+  return totalScore;
 };

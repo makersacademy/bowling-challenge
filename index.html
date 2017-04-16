@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <style>
+      td {
+        border: solid 1px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Bowling Scorecard</h1>
+      <h2>BYOB (Bring your own balls. And skittles.)</h2>
+    </header>
+    <table>
+      <tr>
+        <td id="frame1-1"></td>
+        <td id="frame1-2"></td>
+        <td id="frame2-1"></td>
+        <td id="frame2-2"></td>
+        <td id="frame3-1"></td>
+        <td id="frame3-2"></td>
+        <td id="frame4-1"></td>
+        <td id="frame4-2"></td>
+        <td id="frame5-1"></td>
+        <td id="frame5-2"></td>
+        <td id="frame6-1"></td>
+        <td id="frame6-2"></td>
+        <td id="frame7-1"></td>
+        <td id="frame7-2"></td>
+        <td id="frame8-1"></td>
+        <td id="frame8-2"></td>
+        <td id="frame9-1"></td>
+        <td id="frame9-2"></td>
+        <td id="frame10-1"></td>
+        <td id="frame10-2"></td>
+        <td id="frame10-3"></td>
+        <td rowspan="2" id="totalscore"></td>
+      </tr>
+      <tr>
+        <td id="frame1" colspan="2"></td>
+        <td id="frame2" colspan="2"></td>
+        <td id="frame3" colspan="2"></td>
+        <td id="frame4" colspan="2"></td>
+        <td id="frame5" colspan="2"></td>
+        <td id="frame6" colspan="2"></td>
+        <td id="frame7" colspan="2"></td>
+        <td id="frame8" colspan="2"></td>
+        <td id="frame9" colspan="2"></td>
+        <td id="frame10" colspan="3"></td>
+      </tr>
+    </table>
+
+    <p>Add points with the buttons below</p>
+
+    <button id="0">0</button>
+    <button id="1">1</button>
+    <button id="2">2</button>
+    <button id="3">3</button>
+    <button id="4">4</button>
+    <button id="5">5</button>
+    <button id="6">6</button>
+    <button id="7">7</button>
+    <button id="8">8</button>
+    <button id="9">9</button>
+    <button id="strike">X</button>
+    <button id="spare">/</button>
+
+
+  </body>
+
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="src/Bowling.js"></script>
+  <script src="src/Interface.js"></script>
+
+</html>

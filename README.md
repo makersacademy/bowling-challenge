@@ -2,15 +2,15 @@
 Bowling Challenge
 =================
 
-Task:
------
+Task
+----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-Features:
----------
+Features
+--------
 
 ### Strikes
 
@@ -35,13 +35,8 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
-In the image below you can find some score examples.
-
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
---
 
 Usage:
 ------

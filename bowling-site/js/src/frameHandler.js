@@ -19,6 +19,13 @@ FrameHandler.prototype.startRound = function(){
   this.postThrowUpdates();
 }
 
+FrameHandler.prototype.postThrowUpdates = function(){
+  this._endThrow();
+  if(this._isFrameOver()){
+    this._endFrame();
+    this._incrementFrameNumber();
+  }
+}
 FrameHandler.prototype._resetThrowerPins = function(){
   this.thrower.resetPins();
 }
@@ -53,13 +60,6 @@ FrameHandler.prototype.throw= function(){
 
 }
 
-FrameHandler.prototype.postThrowUpdates = function(){
-  this._endThrow();
-  if(this._isFrameOver()){
-    this._endFrame();
-    this._incrementFrameNumber();
-  }
-}
 
 FrameHandler.prototype._incrementFrameNumber=function(){
   this.frameNumber ++;
@@ -69,7 +69,8 @@ FrameHandler.prototype._isFrameOver = function(){
   var strike = this._isStrike();
   var notFrame10 = this._isNotInFrame10();
   var noThrowsLeft = this._isThrowLimitExceeded();
-  return ((notFrame10 && strike) || noThrowsLeft );
+  var normalFrame10 = this._isNormalFrame10();
+  return ((notFrame10 && strike) || noThrowsLeft || normalFrame10);
 }
 
 FrameHandler.prototype._isThrowLimitExceeded = function(){
@@ -79,6 +80,11 @@ FrameHandler.prototype._isThrowLimitExceeded = function(){
     return (this.throwNumber > 2)
   }
 
+}
+
+FrameHandler.prototype._isNormalFrame10 = function(){
+  frameTotal = this.result.throw1 + this.result.throw2
+  return (frameTotal < 10 && this.throwNumber == 2)
 }
 
 FrameHandler.prototype._isNotInFrame10 = function(){

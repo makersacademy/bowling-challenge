@@ -96,7 +96,12 @@ describe('FrameHandler', function(){
       beforeEach(function(){
         frame.frameNumber = 9;
       });
-      it('does not roll a third ball normally', function(){
+      it('does not roll a third without strike or spare', function(){
+        spyOn(frame.thrower, 'throw').and.returnValue(4);
+        frame.startRound();
+        frame.startRound();
+        // frame.startRound();
+        expect(function(){frame.startRound()}).toThrowError("Frame is over, can't throw" );
 
       });
       it('rolls a third ball after spare',function(){

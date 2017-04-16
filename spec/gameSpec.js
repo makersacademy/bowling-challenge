@@ -43,11 +43,15 @@ describe('Game', function(){
   });
 
   it('returns strike score plus next two bowls score(non-strike bowls)', function(){
-    spyOn(Frame.prototype, 'pinsDown').and.returnValues(10,5,2,10,5,2,10,5,2,10,5,2,10,5,2)
+    spyOn(Frame.prototype, 'pinsDown').and.returnValues(10,5,2,10,5,2,10,5,2,10,5,2,10,5,2);
     game.startGame();
     expect(game.totalGameScore()).toEqual(120);
   });
 
-
+  it('returns strike score plus next two bowls score(strike bowls)', function(){
+    spyOn(Frame.prototype, 'pinsDown').and.returnValues(10,10,10,10,10,10,10,10,10,10);
+    game.startGame();
+    expect(game.totalGameScore()).toEqual(270);
+  });
 
 });

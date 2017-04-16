@@ -24,10 +24,16 @@ Game.prototype.totalGameScore = function(){
   var totalScore = 0;
   this.frames.forEach(function(frame, index, array){
     var nextArray = array[index+1];
-    if (frame.status === 'Spare!' && frame.status !== 'Strike!' && nextArray){
-      totalScore += 10 + (10 - nextArray.firstBowlRemainder);
-    } else if (frame.status === 'Strike!' && frame.status !== 'Spare!' && nextArray){
-      totalScore += 10 + (nextArray.frameScore());
+    if (nextArray){
+      if (frame.status === 'Spare!'){
+        totalScore += 10 + (10 - nextArray.firstBowlRemainder);
+      } else if (frame.status === 'Strike!' && nextArray.status === 'Strike!' && array[index+2]){
+        totalScore += 20 + (10 - array[index+2].firstBowlRemainder);
+      } else if (frame.status === 'Strike!'){
+        totalScore += 10 + (nextArray.frameScore());
+      } else {
+        totalScore += frame.frameScore();
+      }
     } else {
       totalScore += frame.frameScore();
     }

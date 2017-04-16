@@ -32,8 +32,16 @@ Bowling.prototype.secondThrow = function(score){
 };
 
 Bowling.prototype.bonusScore = function () {
-  if(this.strikeFrame.length && this.frame.first < 10) {
+  if(this.strikeFrame.length === 1 && this.frame.first < 10) {
     return this.strikeFrame[0] + this.frameScore();
+    this.strikeFrame.shift();
+  } else if(this.strikeFrame.length === 2 && this.frame.first < 10) {
+    return this.strikeFrame[0] + this.strikeFrame[1] + this.strikeFrame[1] + this.frame.first + this.frameScore();
+    this.strikeFrame.shift();
+    this.strikeFrame.shift();
+  } else if(this.strikeFrame.length === 3) {
+    return this.strikeFrame[0] + this.strikeFrame[1] + this.strikeFrame[2]
+    this.strikeFrame.shift();
   } else {
     return 0
   }

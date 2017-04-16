@@ -73,16 +73,25 @@ describe('Bowling', function() {
       expect(bowling.currentScore).toEqual(20);
     });
 
-    // it("Scores is set correctly after multiple strikes", function(){
-    //   bowling.firstThrow(10);
-    //   // bowling.firstThrow(10);
-    //   // bowling.firstThrow(10);
-    //   // bowling.firstThrow(7);
-    //   // bowling.secondThrow(2);
-    //   // bowling.firstThrow(3);
-    //   // bowling.secondThrow(4);
-    //   expect(bowling.currentScore).toEqual(92);
-    // });
+    it("Scores after 2 strikes updates after a two non-strike throw", function(){
+      bowling.firstThrow(10);
+      bowling.firstThrow(10);
+      bowling.firstThrow(4);
+      bowling.secondThrow(1);
+      expect(bowling.currentScore).toEqual(44);
+    });
+
+    it("Scores is set correctly after multiple strikes", function(){
+      bowling.firstThrow(10);
+      bowling.firstThrow(10);
+      bowling.firstThrow(10);
+      bowling.firstThrow(7);
+      bowling.secondThrow(2);
+      bowling.firstThrow(3);
+      bowling.secondThrow(4);
+      debugger;
+      expect(bowling.currentScore).toEqual(92);
+    });
 
   });
 

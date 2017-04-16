@@ -92,18 +92,29 @@ Game.prototype.makeRoll = function(points){
   else if (this.isWhichRoll() === 2){
     //if last frame was a strike, add current frame sum to bonus
     if (this.frameNo > 1){
-      if (this.isLastFrameStriky() === true){
+      if (this.isLastFrameStriky()){
         this.bonusPoints += this.tallyFrame()
       }
     }
     this.makeFrame();
   }
   else {
-  //if last frame was a spare, add this roll to bonus and update score
+    //if last frame was a spare, add this roll to bonus and update score
+
+    if (this.frameNo > 1) {
+      if (this.isLastFrameSparey()){
+        this.bonusPoints += this.currentFrame[0]
+        this.score += this.bonusPoints
+      }
+    }
     if (this.isStrike(points)){
       this.makeFrame();
     }
   }
+}
+
+Game.prototype.isLastFrameSparey = function(){
+  return this.frameHistory.slice(-1)[0][0] + this.frameHistory.slice(-1)[0][1] === 10
 }
 
 Game.prototype.isLastFrameStriky = function(){

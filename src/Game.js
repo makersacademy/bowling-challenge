@@ -17,7 +17,7 @@ Game.prototype.play = function() {
   }
   else if(this.rollsLeft(this._frame) === 1){
     this._frame.play();
-    console.log("End of frame " + this.currentFrame + "!")
+    console.log("End of frame " + this.currentFrame + "!");
     this.addFrame(this._frame);
     this.changeFrame();
   }

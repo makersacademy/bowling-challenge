@@ -97,10 +97,26 @@ describe ('Game', function(){
       game.roll(10);
       game.roll(10);
       game.roll(10);
-      game.roll(3);
-      game.roll(7);
+      game.roll(4);
+      game.roll(6);
       game.roll(3);
       expect(game._currentFrame._bonusRoll).toEqual(3);
+    })
+
+    it('game holds all frames after 10th frame', function(){
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(8);
+      game.roll(1);
+      game.roll(1);
+      expect(game._framesInPlay.length).toEqual(10);
     })
   });
 

@@ -35,8 +35,8 @@ Game.prototype._tenthRoll = function (knockedPins) {
     this._currentFrame._rollNumber += 1;
   } else if ( this._currentFrame._isSpare ) {
     this._currentFrame.playBonusRoll(knockedPins);
-  }
-
+  } else { this._framesInPlay.push(this._currentFrame);
+    };
 }
 
 Game.prototype.getFrameScore = function () {

@@ -2,14 +2,9 @@
 
 var Bowling = function() {
   this.rollHistory = [];
-  this.currentScore = 0;
   this.frameNumber = 1;
   this.rollsThisFrame = 0;
   this.pinsRemaining = 10;
-};
-
-Bowling.prototype.getCurrentScore = function () {
-  return this.currentScore;
 };
 
 Bowling.prototype.getFrameNumber = function () {
@@ -42,12 +37,12 @@ Bowling.prototype.nextFrame = function () {
   this.frameNumber += 1;
 };
 
-Bowling.prototype.finalScore = function () {
+Bowling.prototype.getCurrentScore = function () {
   var gameResult = 0;
   var rollIndex = 0;
   var game = this;
 
-  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+  for (var frameIndex = 0; frameIndex < this.frameNumber-1; frameIndex++) {
     if (isStrike()) {
       gameResult += getStrikeScore();
       rollIndex += 1;
@@ -70,11 +65,21 @@ Bowling.prototype.finalScore = function () {
   }
 
   function getStrikeScore() {
-    return game.rollHistory[rollIndex] + game.rollHistory[rollIndex + 1] + game.rollHistory[rollIndex + 2];
+    if (typeof game.rollHistory[rollIndex + 2] === 'undefined') {
+        return 0;
+    }
+    else {
+        return game.rollHistory[rollIndex] + game.rollHistory[rollIndex + 1] + game.rollHistory[rollIndex + 2];
+    }
   }
 
   function getSpareScore() {
-    return game.rollHistory[rollIndex] + game.rollHistory[rollIndex + 1] + game.rollHistory[rollIndex + 2];
+    if (typeof game.rollHistory[rollIndex + 2] === 'undefined') {
+        return 0;
+    }
+    else {
+        return game.rollHistory[rollIndex] + game.rollHistory[rollIndex + 1] + game.rollHistory[rollIndex + 2];
+    }
   }
 
   function getNormalScore() {

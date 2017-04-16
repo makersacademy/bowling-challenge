@@ -28,7 +28,16 @@ describe('Game', function() {
     expect(function(){game.roll(1);}).toThrowError("The game has finished. Start a new game to throw again.");
   });
 
-  it('tracks the current frame number', function(){
+  it('returns the current roll number of each frame e.g. the 1st roll', function() {
+    expect(game.getNextRoll()).toEqual(1);
+  });
+
+  it('returns the current roll number of each frame e.g. the 2nd roll', function() {
+    game.roll(1);
+    expect(game.getNextRoll()).toEqual(2);
+  });
+
+  it('returns the current frame number', function(){
     for(var i=0; i<2; i++) {
       game.roll(1);
     }

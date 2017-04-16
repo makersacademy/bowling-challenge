@@ -20,11 +20,11 @@ Game.prototype.roll = function(points) {
   this.isNextFrame();
 };
 
-Game.prototype.getRoll = function() {
+Game.prototype.getNextRoll = function() {
   if(this.rolls % 2 === 0) {
-    return 2;
-  } else {
     return 1;
+  } else {
+    return 2;
   }
 };
 
@@ -34,7 +34,7 @@ Game.prototype.getFrameNumber = function() {
 
 Game.prototype.addToCurrentFrame = function(points) {
   this.currentFrame.push(points);
-  if (this.getRoll() === 2) {
+  if (this.getNextRoll() === 1) {
     this.addCurrentFrameToFrameHistory(this.currentFrame);
     this.resetCurrentFrame();
   }
@@ -49,7 +49,7 @@ Game.prototype.getFrameScore = function() {
 };
 
 Game.prototype.isNextFrame = function() {
-  if(this.getRoll() === 1) {
+  if(this.getNextRoll() === 2) {
     return;
   }
   this.currentFrameNumber += 1

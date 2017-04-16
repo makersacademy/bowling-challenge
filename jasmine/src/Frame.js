@@ -11,6 +11,11 @@ Frame.prototype.bowl_two = function(pins) {
   this.pins -= pins
 }
 
+Frame.prototype.bowl = function() {
+  this.bowl_one(this.rand_num())
+  this.bowl_two(this.rand_num())
+}
+
 Frame.prototype.complete = function(one,two) {
   if(one === 10) {
     this.bowl_one(one)
@@ -22,5 +27,10 @@ Frame.prototype.complete = function(one,two) {
     else {
       this.bowl_one(one)
       this.bowl_two(two)
+      return this.pins
     }
+}
+
+Frame.prototype.rand_num = function() {
+  return Math.floor(Math.random() * this.pins) 
 }

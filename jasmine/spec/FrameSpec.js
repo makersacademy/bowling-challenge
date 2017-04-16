@@ -50,4 +50,19 @@ describe("Frame", function() {
       expect(frame.pins).toBe(2)
     });
   });
+  describe('returns random numbers', function(){
+    it('returns a number between 0 & 10', function(){
+      expect(frame.rand_num() >= 0 && frame.rand_num() <= 10).toBeTruthy()
+    })
+    it('returns a number between 0 & 3 after scoring 7 on bowl_one', function(){
+      frame.bowl_one(7)
+      expect(frame.rand_num() >= 0 && frame.rand_num() <= 3).toBeTruthy()
+    })
+  })
+  describe('bowl two random balls', function(){
+    it('pins are at least 0', function(){
+      frame.bowl()
+      expect(frame.pins >= 0).toBeTruthy()
+    })
+  })
 });

@@ -29,9 +29,7 @@ $(document).ready(function() {
   $('#new-frame').on('click', function() {
     game.updateAndStore()
     var num = game._lastFrame().number();
-    var points = game._lastFrame().points();
     $('#game-stats').append('<p>frame ' + num + ': <span id="frame_' + num + '"></span></p>')
-    $('#frame_' + num).text(points)
     updateAll();
     startFrame();
   });
@@ -51,14 +49,9 @@ $(document).ready(function() {
   }
 
   function updateAll() {
-    // game._frames.forEach(function(frame) {
-    //   $('#frame_' + frame.number()).text(frame.points());
-    // });
-    // game._frames.forEach(function(frame) {
-    //   var num = frame.number();
-    //   var points = frame.points();
-    //   $('#game-stats').append('<p>frame ' + num + ': ' + points + 'points</p>')
-    // });
+    game._frames.forEach(function(frame) {
+      $('#frame_' + frame.number()).text(frame.points());
+    });
     $('#total-score').text(game.total());
     $('#this-frame-number').text(game._currentFrame.number());
     $('#this-frame-points').text(game._currentFrame.points());

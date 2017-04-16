@@ -3,14 +3,14 @@
 describe('Frame', function(){
   var frame;
   var normalThrowScore = 7
-  var ballThrower = {
+  var thrower = {
     pinsLeft: 10,
     throwBall: function(){},
     resetPins: function(){}
   }
 
   beforeEach(function(){
-    frame = new Frame(ballThrower);
+    frame = new Frame(thrower);
   });
 
   describe('Initialize', function(){
@@ -28,17 +28,17 @@ describe('Frame', function(){
   describe('#playFrame',function(){
     beforeEach(function(){
       // spyOn(frame,"pins").and.returnValue(default)
-      spyOn(frame.ballThrower, 'throwBall')
-      spyOn(frame.ballThrower, 'resetPins')
+      spyOn(frame.thrower, 'throwBall')
+      spyOn(frame.thrower, 'resetPins')
 
     });
     it('calls updatePins on a BallThrow class', function(){
       frame.throwBall();
-      expect(frame.ballThrower.resetPins).toHaveBeenCalled();
+      expect(frame.thrower.resetPins).toHaveBeenCalled();
     });
     it('calls throwBall on a BallThrow class', function(){
       frame.throwBall();
-      expect(frame.ballThrower.throwBall).toHaveBeenCalled();
+      expect(frame.thrower.throwBall).toHaveBeenCalled();
     });
     it('calls update score',function(){
       spyOn(frame, 'updateScore')
@@ -82,9 +82,9 @@ describe('Frame', function(){
 
   describe('#start', function(){
     it('calls reset on the ball throw pins',function(){
-      spyOn(frame.ballThrower, 'resetPins');
+      spyOn(frame.thrower, 'resetPins');
       frame.start();
-      expect(frame.ballThrower.resetPins).toHaveBeenCalled();
+      expect(frame.thrower.resetPins).toHaveBeenCalled();
     });
 
     it('resets the score1',function(){
@@ -98,5 +98,10 @@ describe('Frame', function(){
       frame.start();
       expect(frame.result.throw2).toEqual(0);
     });
+    it('returns the throw number to 1', function(){
+      frame.throwNumber=2
+      frame.start()
+      expect(frame.throwNumber).toEqual(1);
+    })
   });
 });

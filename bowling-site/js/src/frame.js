@@ -3,20 +3,26 @@
 function Frame(ballThrowClass){
   this.isFinished = false;
   this.throwNumber= 1;
-  this.ballThrower= ballThrowClass
-  this.resetScores();
+  this.thrower= ballThrowClass
+  this._resetScores();
 }
 
 Frame.prototype.start = function(){
-  this.ballThrower.resetPins()
-  this.resetScores();
+  this.thrower.resetPins()
+  this._resetScores();
+  this._resetThrowNumber();
 }
 
-Frame.prototype.resetScores = function(){
+
+Frame.prototype._resetScores = function(){
   this.result= {
     throw1: 0,
     throw2: 0
   }
+}
+
+Frame.prototype._resetThrowNumber = function(){
+  this.throwNumber = 1;
 }
 
 Frame.prototype.throwBall= function(){
@@ -53,9 +59,9 @@ Frame.prototype._isNotStrike = function(){
 
 
 Frame.prototype._resetThrowPins = function(){
-  this.ballThrower.resetPins();
+  this.thrower.resetPins();
 }
 
 Frame.prototype._startThrow = function(){
-  this.ballThrower.throwBall();
+  this.thrower.throwBall();
 }

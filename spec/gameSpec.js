@@ -54,6 +54,13 @@ describe ('Game', function(){
       expect(game.getFrameScore(this._framesInPlay)).toEqual(8);
     });
 
+    it('can calculate score for a Spare', function(){
+      game.roll(6);
+      game.roll(4);
+      game.roll(2);
+      expect(game.getFrameScore(this._framesInPlay)).toEqual(12);
+    })
+
   });
 
 

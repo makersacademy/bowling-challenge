@@ -13,6 +13,14 @@ Frame.prototype.getRollNumber = function () {
   return this._rollNumber;
 };
 
+Frame.prototype.getScore = function () {
+  return this._score;
+};
+
+Frame.prototype.setScore = function (score) {
+  this._score = score;
+};
+
 Frame.prototype.getFirstRoll = function () {
   return this._firstRoll;
 };

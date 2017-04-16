@@ -24,7 +24,13 @@ Game.prototype.roll = function (knockedPins) {
 
 Game.prototype.getFrameScore = function () {
   var frame = this._framesInPlay[this._framesInPlay.length - 1];
-  return frame.getFirstRoll() + frame.getSecondRoll();
+
+  if ( frame._isSpare ){
+  frame.setScore( frame.getFirstRoll() + frame.getSecondRoll() + this._currentFrame.getFirstRoll());
+  return frame.getScore();
+  }
+  frame.setScore( frame.getFirstRoll() + frame.getSecondRoll());
+  return frame.getScore();
 };
 
 

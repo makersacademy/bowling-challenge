@@ -21,4 +21,10 @@ describe('Feature Tests', function(){
 
     })
   });
+
+  describe('Scenario: User plays a game of normal throws ',function(){
+    var thrower = new Thrower;
+    var frameHandler = new FrameHandler(thrower);
+    var game = new Game(frameHandler);
+  });
 });

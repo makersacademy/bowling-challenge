@@ -40,10 +40,10 @@ describe('FrameHandler', function(){
       frame.startFrame();
       expect(frame.result.throw2).toEqual(0);
     });
-    it('returns the throw number to 1', function(){
+    it('returns the throw number to 0', function(){
       frame.throwNumber=2
       frame.startFrame()
-      expect(frame.throwNumber).toEqual(1);
+      expect(frame.throwNumber).toEqual(0);
     })
     it('returns the frame to an incomplete state',function(){
       frame.isComplete = true;
@@ -67,17 +67,40 @@ describe('FrameHandler', function(){
     });
     it('updates turn number after ball is thrown',function(){
       frame.startRound();
-      expect(frame.throwNumber).toEqual(2);
+      expect(frame.throwNumber).toEqual(1);
     });
     it('updates scores correctly on round 1',function(){
-      spyOn(frame, '_throwBall').and.returnValue(normalThrowScore)
+      spyOn(frame.thrower, 'throw').and.returnValue(normalThrowScore)
       frame.startRound();
       expect(frame.result.throw1).toEqual(normalThrowScore)
     });
     it('ends the round when there is a strike',function(){
-      spyOn(frame, '_throwBall').and.returnValue(strikeThrowScore)
+      spyOn(frame.thrower, 'throw').and.returnValue(strikeThrowScore)
       frame.startRound();
       expect(frame.isComplete).toEqual(true);
+    });
+    it('ends the round when the throw limit is exceeded',function(){
+      spyOn(frame.thrower, 'throw').and.returnValue(normalThrowScore)
+      frame.startRound();
+      frame.startRound();
+      expect(frame.isComplete).toEqual(true);
+    });
+    it('increments the frame number when a frame is over',function(){
+      spyOn(frame.thrower, 'throw').and.returnValue(normalThrowScore)
+      frame.startRound();
+      frame.startRound();
+      expect(frame.frameNumber).toEqual(1)
+    });
+
+    describe('Context: 10th Frame', function(){
+      it('rolls a third ball after spare',function(){
+        frame.frameNumber = 9;
+        spyOn(frame.thrower, 'throw').and.returnValue(5);
+        frame.startRound()
+        frame.startRound()
+        frame.startRound()
+        expect(frame.result.throw3).toEqual(5);
+      });
     });
   });
 
@@ -107,7 +130,7 @@ describe('FrameHandler', function(){
       expect(frame.result.throw1).toEqual(normalThrowScore);
     });
     it('updates the score for throw 2', function(){
-      frame.throwNumber=2;
+      frame.throwNumber=1;
       frame.updateScore(8);
       expect(frame.result.throw2).toEqual(8);
     });

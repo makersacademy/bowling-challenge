@@ -2,6 +2,7 @@
 
 function FrameHandler(throwerClass){
   this.thrower= throwerClass
+  this.frameNumber = 0
   this.startFrame();
 }
 
@@ -25,12 +26,13 @@ FrameHandler.prototype._resetThrowerPins = function(){
 FrameHandler.prototype._resetScores = function(){
   this.result= {
     throw1: 0,
-    throw2: 0
+    throw2: 0,
+    throw3: 0,
   }
 }
 
 FrameHandler.prototype._resetThrowNumber = function(){
-  this.throwNumber = 1;
+  this.throwNumber = 0;
 }
 
 FrameHandler.prototype._resetCompletion=function(){
@@ -53,10 +55,29 @@ FrameHandler.prototype.throw= function(){
 
 FrameHandler.prototype.postThrowUpdates = function(){
   this._endThrow();
-
-  if(this._isStrike()){
+  if(this._isFrameOver()){
     this._endFrame();
+    this._incrementFrameNumber();
   }
+}
+
+FrameHandler.prototype._incrementFrameNumber=function(){
+  this.frameNumber ++;
+}
+
+FrameHandler.prototype._isFrameOver = function(){
+  var strike = this._isStrike();
+  var noThrowsLeft = this._isThrowLimitExceeded();
+  return (strike || noThrowsLeft );
+}
+
+FrameHandler.prototype._isThrowLimitExceeded = function(){
+  if (this.frameNumber < 9){
+    return (this.throwNumber > 1)
+  }else{
+    return (this.throwNumber > 2)
+  }
+
 }
 
 
@@ -69,11 +90,15 @@ FrameHandler.prototype._endThrow = function(){
 }
 
 FrameHandler.prototype.updateScore= function(score){
-  if(this.throwNumber === 1){
+  var throwNumber = this.throwNumber
+  if(throwNumber === 0){
     this.result.throw1 = score;
-  }else{
+  }else if (throwNumber === 1){
     this.result.throw2 = score;
+  }else {
+    this.result.throw3 = score;
   }
+
 }
 
 FrameHandler.prototype._isStrike = function(){
@@ -81,5 +106,6 @@ FrameHandler.prototype._isStrike = function(){
 }
 
 FrameHandler.prototype._throwBall = function(){
-  this.thrower.throw();
+  return this.thrower.throw();
+
 }

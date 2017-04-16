@@ -35,10 +35,30 @@ Game.prototype.getNextRoll = function() {
 
 Game.prototype.updatePinsRemaining = function(points) {
   this.pinsRemaining -= points
+  // if (this.pinsRemaining === 0) {
+  //   this.strikeORSpare
+  // }
+  // if(this.getNextRoll === 2) {this.}
 }
 
 Game.prototype.getFrameNumber = function() {
   return this.currentFrameNumber;
+};
+
+Game.prototype.strikeORSpare = function() {
+  if(getNextRoll() === 1) {
+    this.isASpare()
+  } else {
+    this.isAStrike
+  }
+};
+
+Game.prototype.isASpare = function(){
+  return true;
+};
+
+Game.prototype.isAStrike = function(){
+  return true
 };
 
 Game.prototype.addToCurrentFrame = function(points) {

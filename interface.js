@@ -16,8 +16,11 @@ $(document).ready(function() {
       width: '80px'
     }, 'slow', function () { $(this).removeAttr('style'); });
     game.roll();
-    if(game._currentFrame.isFinished() && game.isFinalFrame()) {
+    if(game.isFinished()) {
       game.updateAndStore()
+      var num = game._lastFrame().number();
+      $('#game-stats').append('<p>frame ' + num + ': <span id="frame_' + num + '"></span></p>')
+      updateAll();
       endGame()
     }
     if(game._currentFrame.isFinished()) {

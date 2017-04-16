@@ -31,8 +31,8 @@ Game.prototype._processFrame = function() {
 }
 
 
-Game.prototype.isFinalFrame = function() {
-  if(this._frame === 10) {
+Game.prototype.isFinished = function() {
+  if(this._frame === 10 && this._currentFrame.isFinished() ) {
     return true
   } else {
     return false

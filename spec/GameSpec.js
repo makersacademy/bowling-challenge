@@ -68,7 +68,10 @@ describe('Game', function() {
       game.roll()
       game.updateAndStore()
     }
-      expect(game.isFinalFrame()).toBeTruthy()
+    spyOn(game._currentFrame, '_hit').and.returnValue(4)
+    game.roll()
+    game.roll()
+    expect(game.isFinished()).toBeTruthy()
   });
 
 

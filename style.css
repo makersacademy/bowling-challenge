@@ -1,3 +1,8 @@
+body {
+  font-family: 'Reenie Beanie', cursive;
+  font-size:  40px;
+}
+
 #ball {
   width:100px;
   height:100px;
@@ -6,6 +11,7 @@
 }
 
 #game-stats {
+  font-family: 'Reenie Beanie', cursive;
   text-align: left;
 }
 

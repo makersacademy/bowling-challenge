@@ -76,6 +76,7 @@ Game.prototype.strikeOrSpare = function(){
 }
 
 Game.prototype.makeRoll = function(points){
+  this.isGameOver();
   this.increaseRollNo();
   this.currentFrame.push(points);
   if (this.isFrameBonus() && this.isFinalFrame()){
@@ -100,10 +101,14 @@ Game.prototype.makeFrame = function(){
 }
 
 Game.prototype.nextFrame = function(){
-  // game over?
   this.frameNo += 1;
   this.currentFrame = [];
 }
 
+Game.prototype.isGameOver = function(){
+  if (this.frameNo === 11){
+    throw new Error("Game Over")
+  }
+}
 
 

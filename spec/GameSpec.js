@@ -138,56 +138,67 @@ describe('Game', function(){
   })
 
   describe('strike or spare', function(){
-    it('returns strike if strike', function(){
+
+    beforeEach(function(){
       for(var i=0; i<9; i++){
-        game.makeRoll(5);
+        game.makeRoll(4);
         game.makeRoll(3);
       }
+    });
+
+    it('returns strike if strike', function(){
       game.makeRoll(10);
       expect(game.strikeOrSpare()).toEqual('strike')
     })
 
     it('returns spare if spare', function(){
-      for(var i=0; i<9; i++){
-        game.makeRoll(5);
-        game.makeRoll(3);
-      }
       game.makeRoll(8);
       game.makeRoll(2);
       expect(game.strikeOrSpare()).toEqual('spare')
     })
   })
 
-  describe('final frame is bonusy', function(){
-    it('strike on first roll doesnt make frame after 2nd roll', function(){
+  describe('final frame', function(){
+
+    beforeEach(function(){
       for(var i=0; i<9; i++){
         game.makeRoll(4);
         game.makeRoll(3);
       }
+    });
+
+    it('strike on first roll doesnt make frame after 2nd roll', function(){
       game.makeRoll(10);
       game.makeRoll(5);
       expect(game.getFrameNo()).toEqual(10)
     })
 
     it('spare in final frame doesnt make frame after 2nd roll', function(){
-      for(var i=0; i<9; i++){
-        game.makeRoll(4);
-        game.makeRoll(3);
-      }
       game.makeRoll(5);
       game.makeRoll(5);
       expect(game.getFrameNo()).toEqual(10)
     })
 
     it('no bonus in final frame makes frame', function(){
-      for(var i=0; i<9; i++){
-        game.makeRoll(4);
-        game.makeRoll(3);
-      }
       game.makeRoll(4);
       game.makeRoll(4);
       expect(game.getFrameNo()).toEqual(11)
     })
   })
+
+  describe('game over', function(){
+
+    beforeEach(function(){
+      for(var i=0; i<10; i++){
+        game.makeRoll(4);
+        game.makeRoll(3);
+      }
+    });
+
+    it('throws an error if user makes a roll and frame is 11', function(){
+      expect(function(){game.makeRoll(8);}).toThrowError('Game Over')
+    })
+  })
+
 
 });

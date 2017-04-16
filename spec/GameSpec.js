@@ -203,5 +203,13 @@ describe('Game', function(){
     })
   })
 
+  describe('score', function(){
+    it('adds score for non bonusy rolls', function(){
+      game.makeRoll(5);
+      game.makeRoll(3);
+      expect(game.getScore()).toEqual(8)
+    })
+  })
+
 
 });

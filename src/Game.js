@@ -106,8 +106,17 @@ Game.prototype.makeFrame = function(){
 }
 
 Game.prototype.nextFrame = function(){
+  this.tallyFrame();
   this.frameNo += 1;
   this.currentFrame = [];
+}
+
+Game.prototype.tallyFrame = function(){
+  if (this.currentFrame[0] === 10){
+    this.score += 10
+  } else {
+  this.score += (this.currentFrame[0] + this.currentFrame[1])
+  }
 }
 
 Game.prototype.isGameOver = function(){

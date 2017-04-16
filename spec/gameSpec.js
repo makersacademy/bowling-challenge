@@ -71,11 +71,19 @@ describe ('Game', function(){
   });
 
   describe('Frame 10:', function(){
-    it('enables bonus roll if a Spare', function(){
-      this._framesInPlay = [[frame],[frame],[frame],[frame],[frame],[frame],[frame],[frame],[frame]];
-      game.roll(3);
+    it('enables bonus roll if a Strike', function(){
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
       game.roll(7);
-      expect(game._currentFrame._rollNumber).toEqual(3);
+      expect(game._currentFrame._bonusRoll).toEqual(7);
     });
   });
 

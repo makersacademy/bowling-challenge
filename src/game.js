@@ -9,7 +9,9 @@ this._currentFrame;
 }
 
 Game.prototype.roll = function (knockedPins) {
-  if ( this._currentFrame == undefined  ) {
+  if ( this._framesInPlay.length === 9 ) {
+    this._tenthRoll(knockedPins);
+  } else if ( this._currentFrame == undefined  ) {
     this._currentFrame = new Frame(knockedPins);
     this._currentFrame.checkStrike(knockedPins);
   } else if ( this._currentFrame._rollNumber === 1 ) {
@@ -18,9 +20,17 @@ Game.prototype.roll = function (knockedPins) {
     this._currentFrame._rollNumber += 1;
   } else {
     this._framesInPlay.push(this._currentFrame);
-    this._currentFrame = new Frame( knockedPins );
+    this._currentFrame = new Frame(knockedPins);
     this._currentFrame.checkStrike(knockedPins);
     };
+}
+
+Game.prototype._tenthRoll = function (knockedPins) {
+  if ( this._currentFrame._isStrike && this._currentFrame._rollNumber === 2 ){
+    this._currentFrame.playBonusRoll(knockedPins);
+  };
+  // this._currentFrame.checkSpare(knockedPins);
+
 }
 
 Game.prototype.getFrameScore = function () {
@@ -35,7 +45,6 @@ Game.prototype.getFrameScore = function () {
     };
 
   return frame.getScore();
-
 }
 
 

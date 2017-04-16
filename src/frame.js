@@ -7,6 +7,7 @@ function Frame(knockedPins){
   this._secondRoll = 0;
   this._isStrike = false;
   this._isSpare = false;
+  this._bonusRoll = 0;
 }
 
 Frame.prototype.getRollNumber = function () {
@@ -31,6 +32,14 @@ Frame.prototype.getSecondRoll = function () {
 
 Frame.prototype.playSecondRoll = function (knockedPins) {
   this._secondRoll = knockedPins;
+};
+
+Frame.prototype.playBonusRoll = function (knockedPins) {
+  this._bonusRoll += knockedPins;
+};
+
+Frame.prototype.getBonusRoll = function () {
+  return this._bonusRoll;
 };
 
 Frame.prototype.checkStrike = function (knockedPins) {

@@ -52,4 +52,12 @@ describe('Frame', function(){
 
   });
 
+  describe('bonus rolls', function(){
+    it('can track bonus roll 1', function(){
+      frame.playBonusRoll(3);
+      expect(frame.getBonusRoll()).toEqual(3);
+    });
+    
+  })
+
 })

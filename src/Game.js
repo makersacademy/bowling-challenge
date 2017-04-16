@@ -90,19 +90,22 @@ Game.prototype.makeRoll = function(points){
     }
   }
   else if (this.isWhichRoll() === 2){
-    //if last frame was a strike, add current frame sum to bonus
     if (this.frameNo > 1){
       if (this.isLastFrameStriky()){
+        // this and last are striky, add to bonus but dont make frame
         this.bonusPoints += this.tallyFrame()
       }
     }
     this.makeFrame();
   }
   else {
-    //on roll 1 if last frame was a spare, add this roll to bonus and update score
     if (this.frameNo > 1) {
       if (this.isLastFrameSparey()){
         this.updateScoreWithSpare();
+      }
+      if (this.frameNo > 2) {
+        if (this.isLastFrameStriky() && this.isFrameBeforeStriky())
+          this.bonusPoints += this.currentFrame[0]
       }
     }
     if (this.isStrike(points)){
@@ -128,6 +131,10 @@ Game.prototype.isLastFrameSparey = function(){
 
 Game.prototype.isLastFrameStriky = function(){
   return this.frameHistory.slice(-1)[0][0] === 10
+}
+
+Game.prototype.isFrameBeforeStriky = function(){
+  return this.frameHistory.slice(-2)[0][0] === 10
 }
 
 Game.prototype.makeFrame = function(){
@@ -156,6 +163,7 @@ Game.prototype.updateBonus = function(){
 
 Game.prototype.shouldUpdateScore = function(){
   if (this.tallyFrame() < 10){
+    // if last 2 were strikes, add first of frame to 
     this.updateScore()
   }
   else {

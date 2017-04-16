@@ -242,13 +242,25 @@ describe('Game', function(){
       expect(game.getScore()).toEqual(39)
     })
 
-    it('2 strikes and a non-bonusy frame', function(){
+    it('two strikes and a non-bonusy frame', function(){
       game.makeRoll(10);
       game.makeRoll(10);
       game.makeRoll(7);
       game.makeRoll(1);
-      expect(game.getScore()).toEqual(46)
+      expect(game.getScore()).toEqual(53)
     });
+
+    it('three spares, non-bonusy', function(){
+      game.makeRoll(7);
+      game.makeRoll(3);
+      game.makeRoll(8);
+      game.makeRoll(2);
+      game.makeRoll(3);
+      game.makeRoll(7);
+      game.makeRoll(6);
+      game.makeRoll(3);
+      expect(game.getScore()).toEqual(56)
+    })
   })
 
 

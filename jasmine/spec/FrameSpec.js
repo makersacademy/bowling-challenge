@@ -32,21 +32,27 @@ describe("Frame", function() {
       expect(frame.pins).toBe(2)
     })
     it('returns 0 pins if bowl_one knocks 10 pins down', function() {
-      frame.complete(10,4)
+      spyOn(frame, 'rand_num').and.returnValue(10);
+      frame.complete()
       expect(frame.pins).toBe(0)
     })
     it('returns a strike if bowl_one knocks 10 pins down', function() {
-      expect(frame.complete(10,4)).toBe('strike')
+      spyOn(frame, 'rand_num').and.returnValue(10);
+      expect(frame.complete()).toBe('strike')
     });
     it('returns a spare if complete bowl knocks 10 pins down', function() {
-      expect(frame.complete(6,4)).toBe('spare')
+      spyOn(frame, 'rand_num').and.returnValue(10);
+      spyOn(frame, 'bowl_one').and.returnValue(0);
+      expect(frame.complete()).toBe('spare')
     });
     it('returns 0 pins if complete bowl knocks 10 pins down', function() {
-      frame.complete(1,9)
+      spyOn(frame, 'rand_num').and.returnValue(5);
+      frame.complete()
       expect(frame.pins).toBe(0)
     });
     it('returns 2 if complete bowl knocks 8 pins down', function() {
-      frame.complete(3,5)
+      spyOn(frame, 'rand_num').and.returnValue(4);
+      frame.complete()
       expect(frame.pins).toBe(2)
     });
   });

@@ -16,21 +16,20 @@ Frame.prototype.bowl = function() {
   this.bowl_two(this.rand_num())
 }
 
-Frame.prototype.complete = function(one,two) {
-  if(one === 10) {
-    this.bowl_one(one)
-    return 'strike' }
-    else if(one + two === 10) {
-      this.bowl_one(one)
-      this.bowl_two(two)
-      return 'spare' }
-    else {
-      this.bowl_one(one)
-      this.bowl_two(two)
-      return this.pins
-    }
+Frame.prototype.complete = function() {
+    this.bowl_one(this.rand_num())
+    if(this.pins === 0) {
+      return 'strike'
+    } else {
+      this.bowl_two(this.rand_num())
+      if(this.pins === 0) {
+        return 'spare' }
+        else if(this.pins > 0) {
+          return this.pins
+        }
+      }
 }
 
 Frame.prototype.rand_num = function() {
-  return Math.floor(Math.random() * this.pins) 
+  return Math.floor(Math.random() * this.pins)
 }

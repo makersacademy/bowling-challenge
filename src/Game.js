@@ -4,6 +4,7 @@ function Game() {
   this._frames = []
   this._frame = 1
   this._currentFrame = new Frame(this._frame)
+  // this._gameOver = false
 }
 
 Game.prototype.roll = function() {
@@ -17,8 +18,31 @@ Game.prototype.processFrame = function() {
   if(this._frame > 2) {
     this._checkIfBakfast()
   }
-  this._storeFrame()
+
+  // if(this._frame === 11) {
+  //   this._endGame()
+  // }
 }
+
+// Game.prototype._endGame = function() {
+//   if(this._lastFrame().bonusFeature() === 'strike') {
+//     this._bonusRolls = 2
+//   } else if(this._lastFrame().bonusFeature() === 'spare') {
+//     this._bonusRolls = 1
+//   } else if(this._lastLastFrame().bonusFeature() === 'strike') {
+//     this._bonusRolls = 1
+//   } else
+//   this._gameOver = true
+// }
+//
+Game.prototype.isFinalFrame = function() {
+  if(this._frame === 10) {
+    return true
+  } else {
+    return false
+  }
+}
+
 
 Game.prototype._checkIfBakfast = function() {
   if(this._lastFrame().bonusFeature() === 'strike' && this._lastLastFrame().bonusFeature() === 'strike') {
@@ -51,6 +75,7 @@ Game.prototype._strikeBonus = function() {
 }
 
 Game.prototype._storeFrame = function() {
+  this.processFrame()
   this._frames.push(this._currentFrame);
   this._frame += 1
   this._currentFrame = new Frame(this._frame);

@@ -3,12 +3,17 @@ $(document).ready(function() {
   var game = new Game();
 
   updateAll();
-  $('#new-frame').hide();
-  $('#frame-outcome').hide();
+  startFrame();
+  $('#game-over').hide();
+
 
 
   $('#roll').on('click', function() {
     game.roll();
+    if(game._currentFrame.isFinished() && game.isFinalFrame()) {
+      game._storeFrame()
+      endGame()
+    }
     if(game._currentFrame.isFinished()) {
       endFrame()
     }
@@ -16,9 +21,9 @@ $(document).ready(function() {
   });
 
   $('#new-frame').on('click', function() {
-    game.processFrame();
+    game._storeFrame()
     updateAll();
-    startFrame()
+    startFrame();
   });
 
 
@@ -43,5 +48,12 @@ $(document).ready(function() {
     // $('#this-frame-pins').text(game._currentFrame.pins());
     $("#pins").attr("src", 'pins/' + game._currentFrame.pins() + '_pins.jpeg');
   };
+
+  function endGame() {
+    $('#game-over').show();
+    $('#frame-stats').hide();
+    $('#controls').hide();
+
+  }
 
 });

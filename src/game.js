@@ -13,7 +13,7 @@ Game.prototype.roll = function (knockedPins) {
     this._currentFrame = new Frame(knockedPins);
     this._currentFrame.checkStrike(knockedPins);
   } else if ( this._currentFrame._rollNumber === 1 ) {
-    this._currentFrame.secondRoll = knockedPins;
+    this._currentFrame.playSecondRoll(knockedPins);
     this._currentFrame.checkSpare(knockedPins);
     this._currentFrame._rollNumber += 1;
   } else {
@@ -22,7 +22,10 @@ Game.prototype.roll = function (knockedPins) {
     };
   }
 
-
+Game.prototype.getFrameScore = function () {
+  var frame = this._framesInPlay[this._framesInPlay.length - 1];
+  return frame.getFirstRoll() + frame.getSecondRoll();
+};
 
 
 

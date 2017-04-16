@@ -17,7 +17,11 @@ Frame.prototype.getFirstRoll = function () {
   return this._firstRoll;
 };
 
-Frame.prototype.secondRoll = function (knockedPins) {
+Frame.prototype.getSecondRoll = function () {
+  return this._secondRoll;
+};
+
+Frame.prototype.playSecondRoll = function (knockedPins) {
   this._secondRoll = knockedPins;
 };
 

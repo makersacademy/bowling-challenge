@@ -37,7 +37,7 @@ describe('Frame', function(){
   describe('second roll', function(){
 
     it('logs the knocked pins of second roll', function(){
-      frame.secondRoll(5);
+      frame.playSecondRoll(5);
       expect(frame._secondRoll).toEqual(5);
     });
 

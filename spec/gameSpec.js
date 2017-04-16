@@ -30,7 +30,7 @@ describe ('Game', function(){
       game.roll(3);
       game.roll(2);
       expect(game._framesInPlay.length).toEqual(1);
-    })
+    });
 
     it('initiates new frame when previous frame has had 2 rolls', function(){
       game.roll(6);
@@ -46,14 +46,16 @@ describe ('Game', function(){
     });
   });
 
-  describe('Score 1 - 9', function(){
-
-    xit('initiates new frame if roll 1 is a strike', function(){
-      game.roll(10);
-      // frame._isStrike = true
-      expect(game._framesInPlay.length).toEqual(2);
+  describe('Scoring Frames 1 - 9:', function(){
+    it('can retrieve score for most recent non-strike/spare frame', function(){
+      game.roll(5);
+      game.roll(3);
+      game.roll(2);
+      expect(game.getFrameScore(this._framesInPlay)).toEqual(8);
     });
-  })
+
+  });
+
 
   describe('Random Rolls', function(){
     it('#generateRandRoll1 - randomly generates number of knocked pins between 1 - 10', function(){

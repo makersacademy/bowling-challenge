@@ -122,7 +122,7 @@ describe('Game', function(){
     it('returns true if frame no is 10 and one roll has been made', function(){
       for(var i=0; i<9; i++){
         game.makeRoll(5);
-        game.makeRoll(3);
+        game.makeRoll(4);
       }
       game.makeRoll(7);
       expect(game.isFinalFrame()).toBe(true)
@@ -158,5 +158,36 @@ describe('Game', function(){
     })
   })
 
+  describe('final frame is bonusy', function(){
+    it('strike on first roll doesnt make frame after 2nd roll', function(){
+      for(var i=0; i<9; i++){
+        game.makeRoll(4);
+        game.makeRoll(3);
+      }
+      game.makeRoll(10);
+      game.makeRoll(5);
+      expect(game.getFrameNo()).toEqual(10)
+    })
+
+    it('spare in final frame doesnt make frame after 2nd roll', function(){
+      for(var i=0; i<9; i++){
+        game.makeRoll(4);
+        game.makeRoll(3);
+      }
+      game.makeRoll(5);
+      game.makeRoll(5);
+      expect(game.getFrameNo()).toEqual(10)
+    })
+
+    it('no bonus in final frame makes frame', function(){
+      for(var i=0; i<9; i++){
+        game.makeRoll(4);
+        game.makeRoll(3);
+      }
+      game.makeRoll(4);
+      game.makeRoll(4);
+      expect(game.getFrameNo()).toEqual(11)
+    })
+  })
 
 });

@@ -40,6 +40,9 @@ Game.prototype.increaseRollNo = function(){
 }
 
 Game.prototype.isWhichRoll = function(){
+  if (this.rollCount === 21){
+    return 3;
+  }
   if (this.rollCount % 2 === 1){
     return 1;
   }
@@ -63,11 +66,12 @@ Game.prototype.isFinalFrame = function(){
 }
 
 Game.prototype.strikeOrSpare = function(){
-  console.log(this.currentFrame)
   if(this.currentFrame[0] === 10){
     return 'strike'
+    //add points to bonus tally
   } else {
     return 'spare'
+    //add points to bonus tally
   }
 }
 
@@ -75,7 +79,9 @@ Game.prototype.makeRoll = function(points){
   this.increaseRollNo();
   this.currentFrame.push(points);
   if (this.isFrameBonus() && this.isFinalFrame()){
-    this.strikeOrSpare();
+    if (this.isWhichRoll() === 3){
+      this.makeFrame();
+    }
   }
   else if (this.isWhichRoll() === 2){
     this.makeFrame();

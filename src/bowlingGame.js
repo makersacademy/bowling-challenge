@@ -42,7 +42,6 @@ BowlingGame.prototype.calculateFrame2Score = function () {
 
 }
 
-
 BowlingGame.prototype.currentSpareScore = function() {
   if(this.firstShotScore + this.secondShotScore === 10) {
     this.spare = !this.spare;
@@ -52,6 +51,8 @@ BowlingGame.prototype.currentSpareScore = function() {
 BowlingGame.prototype.frameScoreReset = function() {
     this.frameScore = 0;
     this.pins = 0;
+    this.firstShotScore = 0;
+    this.secondShotScore = 0;
 }
 
 BowlingGame.prototype.currentStrikeScore = function() {

@@ -60,6 +60,11 @@ describe('Game', function(){
       game.makeRoll(6);
       expect(game.getFrameHistory()).toEqual([])
     })
+
+    it('increases frame no by 2 if a strike', function(){
+      game.makeRoll(10);
+      expect(game.rollCount).toEqual(2)
+    })
   })
 
   describe('is roll a strike', function(){
@@ -159,7 +164,6 @@ describe('Game', function(){
   })
 
   describe('final frame', function(){
-
     beforeEach(function(){
       for(var i=0; i<9; i++){
         game.makeRoll(4);
@@ -187,7 +191,6 @@ describe('Game', function(){
   })
 
   describe('game over', function(){
-
     beforeEach(function(){
       for(var i=0; i<10; i++){
         game.makeRoll(4);

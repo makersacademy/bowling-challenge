@@ -23,4 +23,6 @@ describe('Game', function() {
   it ('pinsKnocked is initialized with 0', function() {
     expect(game.pinsKnocked).toEqual(0)
   });
+
+  
 });

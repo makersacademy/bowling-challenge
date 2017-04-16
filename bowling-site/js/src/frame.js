@@ -4,12 +4,23 @@ function Frame(ballThrowClass){
   this.isFinished = false;
   this.throwNumber= 1;
   this.ballThrower= ballThrowClass
+  this.resetScores();
 }
 
+Frame.prototype.start = function(){
+  this.ballThrower.resetPins()
+  this.resetScores();
+}
 
+Frame.prototype.resetScores = function(){
+  this.result= {
+    throw1: 0,
+    throw2: 0
+  }
+}
 
 Frame.prototype.throwBall= function(){
-  this._updateThrowPins();
+  this._resetThrowPins();
   var throw_result = this._startThrow();
   this.updateScore(throw_result);
 }
@@ -25,28 +36,23 @@ Frame.prototype.endThrow = function(){
 
 Frame.prototype.updateScore= function(score){
   if(this.throwNumber === 1){
-    this.scoreThrow1 = score;
+    this.result.throw1 = score;
   }else{
-    this.scoreThrow2 = score;
+    this.result.throw2 = score;
   }
 }
 
-Frame.prototype.result = function(){
-  return result = {
-    score1: this.scoreThrow1,
-    score2: this.scoreThrow2
-  }
-}
+
 Frame.prototype.isReadyForTurn2 = function(){
   return this._isNotStrike();
 }
 
 Frame.prototype._isNotStrike = function(){
-  return !(this.scoreThrow1 == 10);
+  return !(this.result.throw1 == 10);
 }
 
 
-Frame.prototype._updateThrowPins = function(){
+Frame.prototype._resetThrowPins = function(){
   this.ballThrower.resetPins();
 }
 

@@ -5,8 +5,8 @@ describe('Frame', function(){
   var normalThrowScore = 7
   var ballThrower = {
     pinsLeft: 10,
-    throwBall: function(){return true},
-    resetPins: function(){return true}
+    throwBall: function(){},
+    resetPins: function(){}
   }
 
   beforeEach(function(){
@@ -23,15 +23,7 @@ describe('Frame', function(){
 
   });
 
-  describe('#result', function(){
-    it('returns scores in an object', function(){
-      frame.scoreThrow1 = 3;
-      frame.scoreThrow2 = 3;
-      expect(frame.result().score1).toEqual(3)
-      expect(frame.result().score2).toEqual(3)
 
-    });
-  });
 
   describe('#playFrame',function(){
     beforeEach(function(){
@@ -65,12 +57,12 @@ describe('Frame', function(){
   describe('#updateScore', function(){
     it('updates the score for throw 1',function(){
       frame.updateScore(normalThrowScore);
-      expect(frame.scoreThrow1).toEqual(normalThrowScore);
+      expect(frame.result.throw1).toEqual(normalThrowScore);
     });
     it('updates the score for throw 2', function(){
       frame.throwNumber=2;
       frame.updateScore(8);
-      expect(frame.scoreThrow2).toEqual(8);
+      expect(frame.result.throw2).toEqual(8);
     });
   });
 
@@ -85,6 +77,26 @@ describe('Frame', function(){
     it('ends the frame',function(){
       frame.endFrame();
       expect(frame.isFinished).toEqual(true);
+    });
+  });
+
+  describe('#start', function(){
+    it('calls reset on the ball throw pins',function(){
+      spyOn(frame.ballThrower, 'resetPins');
+      frame.start();
+      expect(frame.ballThrower.resetPins).toHaveBeenCalled();
+    });
+
+    it('resets the score1',function(){
+      frame.result.throw1 = normalThrowScore;
+      frame.start();
+      expect(frame.result.throw1).toEqual(0);
+
+    });
+    it('resets the score2',function(){
+      frame.result.throw2 = normalThrowScore;
+      frame.start();
+      expect(frame.result.throw2).toEqual(0);
     });
   });
 });

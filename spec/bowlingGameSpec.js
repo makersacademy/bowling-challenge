@@ -18,4 +18,13 @@ describe("bowling game", function() {
     });
   });
 
+  describe("on start", function() {
+    // As a bowler,
+    // I want to start a game of bowling,
+    // so that I can get points
+    it("has a total of 0", function() {
+      expect(bowlingGame.total).toEqual(0);
+    });
+  });
+
 });

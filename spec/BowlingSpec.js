@@ -1,4 +1,4 @@
-'use script';
+'use strict';
 
 describe('Bowling', function() {
 
@@ -9,105 +9,87 @@ describe('Bowling', function() {
   });
 
   describe('initially', function() {
-    it('starts at score: 0', function() {
+    it('currentScore: 0', function() {
       expect(bowling.getCurrentScore()).toEqual(0);
     });
 
-    it('starts at frame: 1', function() {
-      expect(bowling.getCurrentFrame()).toEqual(1);
-    });
-
-    it('starts at roll: 1', function() {
-      expect(bowling.getCurrentRoll()).toEqual(1);
-    });
-
-    it('frame complete is false', function() {
-      expect(bowling.isFrameComplete()).toBeFalsy();
-    })
-
-    it('starts at pins standing: 10', function() {
-      expect(bowling.getPinsStanding()).toEqual(10);
-    })
-  });
-
-  describe('score', function() {
-    it('increases score with add()', function() {
-      bowling.add(1);
-      expect(bowling.getCurrentScore()).toEqual(1);
+    it('frameNumber: 1', function() {
+      expect(bowling.getFrameNumber()).toEqual(1);
     });
   });
 
-  describe('bowl', function() {
-    it('increments roll by 1', function() {
-      bowling.bowl(1);
-      expect(bowling.getCurrentRoll()).toEqual(2);
+  describe('nextFrame', function() {
+    it('increments frameNumber', function() {
+      bowling.nextFrame();
+      expect(bowling.getFrameNumber()).toEqual(2);
     });
 
-    it('returns number of pins scored', function() {
-      bowling.bowl(5);
-      expect(bowling.getFrameScore()).toEqual(5);
-    });
-
-    it('reduces pins standing by pins scored', function() {
-      bowling.bowl(4);
-      expect(bowling.getPinsStanding()).toEqual(6);
-    });
-
-    it('raises error if bowl knocks over more than 10', function() {
-      expect(function() { bowling.bowl(11); }).toThrowError("Invalid number of pins knocked over");
-    });
-
-    it('raises error if bowl knocks over more pins then are standing', function() {
-      bowling.bowl(7);
-      expect(function() { bowling.bowl(4); }).toThrowError("Invalid number of pins knocked over")
+    it('resets pinsRemaining to 10', function() {
+      bowling.nextFrame();
+      expect(bowling.pinsRemaining).toEqual(10);
     });
   });
 
-  describe('frame complete', function() {
-    it('increments frame', function() {
-      bowling.bowl(4);
-      bowling.bowl(3);
-      expect(bowling.getCurrentFrame()).toEqual(2);
+  describe('isFrameComplete', function() {
+    it('frameNumber increments if bowled twice', function() {
+      multiRoll(3,2);
+      expect(bowling.getFrameNumber()).toEqual(2);
     });
 
-
-    it('updates score by adding frameScore', function() {
-      bowling.bowl(4);
-      bowling.bowl(3);
-      expect(bowling.getCurrentScore()).toEqual(7);
-    });
-
-    it('adds presentFrame into frameHistory', function() {
-      bowling.bowl(4);
-      bowling.bowl(3);
-      expect(bowling.getFrameHistory()).toEqual([[4,3]]);
+    it('frameNumber increments if strike bowled', function() {
+      bowling.roll(10);
+      expect(bowling.getFrameNumber()).toEqual(2);
     });
   });
 
-  describe('presentFrame', function() {
-    it('stores the first bowl in the array', function() {
-      bowling.bowl(4);
-      expect(bowling.getPresentFrame()).toEqual([4]);
+  describe('roll', function() {
+    it('reduces pins remaining', function() {
+      bowling.roll(8);
+      expect(bowling.pinsRemaining).toEqual(2);
+    });
+
+    it('raises error if pins > pinsRemaining', function() {
+      bowling.roll(2);
+      expect(function() { bowling.roll(9); }).toThrowError("Invalid number of pins knocked over");
     });
   });
 
-  describe('resetFrame', function() {
-    it('resets presentFrame', function() {
-      bowling.bowl(4);
-      bowling.bowl(3);
-      expect(bowling.getPresentFrame()).toEqual([]);
+  describe('finalScore', function() {
+    it('can roll a gutter game', function() {
+      multiRoll(0,20);
+      expect(bowling.finalScore()).toEqual(0);
     });
 
-    it('resets roll', function() {
-      bowling.bowl(4);
-      bowling.bowl(3);
-      expect(bowling.getCurrentRoll()).toEqual(1);
+    it('can roll all threes', function() {
+      multiRoll(3,20);
+      expect(bowling.finalScore()).toEqual(60);
     });
 
-    it('resets pinsStanding', function() {
-      bowling.bowl(4);
-      bowling.bowl(3);
-      expect(bowling.getPinsStanding()).toEqual(10);
-    })
+    it('can roll a spare', function() {
+      bowling.roll(5);
+      bowling.roll(5);
+      bowling.roll(3);
+      multiRoll(0,17);
+      expect(bowling.finalScore()).toEqual(16);
+    });
+
+    it('can roll a strike', function() {
+      bowling.roll(10);
+      bowling.roll(4);
+      bowling.roll(3);
+      multiRoll(0,16);
+      expect(bowling.finalScore()).toEqual(24);
+    });
+
+    it('can roll a perfect game', function() {
+      multiRoll(10,12);
+      expect(bowling.finalScore()).toEqual(300);
+    });
   });
+
+  var multiRoll = function(pins, rolls) {
+    for (var i = 0; i < rolls; i++) {
+      bowling.roll(pins);
+    }
+  };
 });

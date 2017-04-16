@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Frame', function(){
+describe('FrameHandler', function(){
   var frame;
   var normalThrowScore = 7;
   var strikeThrowScore = 10;
@@ -12,7 +12,7 @@ describe('Frame', function(){
   }
 
   beforeEach(function(){
-    frame = new Frame(thrower);
+    frame = new FrameHandler(thrower);
   });
 
   describe('Initialize', function(){
@@ -22,32 +22,32 @@ describe('Frame', function(){
     });
 
   });
-  describe('#start', function(){
+  describe('#startFrame', function(){
     it('calls reset on the ball throw pins',function(){
       spyOn(frame.thrower, 'resetPins');
-      frame.start();
+      frame.startFrame();
       expect(frame.thrower.resetPins).toHaveBeenCalled();
     });
 
     it('resets the score1',function(){
       frame.result.throw1 = normalThrowScore;
-      frame.start();
+      frame.startFrame();
       expect(frame.result.throw1).toEqual(0);
 
     });
     it('resets the score2',function(){
       frame.result.throw2 = normalThrowScore;
-      frame.start();
+      frame.startFrame();
       expect(frame.result.throw2).toEqual(0);
     });
     it('returns the throw number to 1', function(){
       frame.throwNumber=2
-      frame.start()
+      frame.startFrame()
       expect(frame.throwNumber).toEqual(1);
     })
     it('returns the frame to an incomplete state',function(){
       frame.isComplete = true;
-      frame.start();
+      frame.startFrame();
       expect(frame.isComplete).toEqual(false);
 
     });

@@ -123,12 +123,17 @@ describe('Game', function(){
     it('recognises if a spare is acheived', function(){
       game.roll(1);
       game.roll(9);
-      expect(game.isASpare()).toEqual(true);
+      expect(game.isASpare).toEqual(true);
     })
 
-    it('recognises if a spare is acheived', function(){
+    it('recognises if a strike is acheived', function(){
       game.roll(10);
-      expect(game.isAStrike()).toEqual(true);
+      expect(game.isAStrike).toEqual(true);
+    })
+
+    it('moves to the next frame if strike is achieved', function(){
+      game.roll(10);
+      expect(game.currentFrameNumber).toEqual(2);
     })
   });
 

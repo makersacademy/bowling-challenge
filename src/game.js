@@ -2,11 +2,14 @@
 function Game() {
   this.rolls = 0;
   this.totalScore = 0;
+  this.bonusPoints = 0;
   this.pinsRemaining = 10;
   this.currentFrameNumber = 1;
   this.currentFrame = [];
   this.previousFrameScore = 0;
   this.frameHistory = [];
+  this.isASpare = false;
+  this.isAStrike = false;
 }
 
 Game.prototype.roll = function(points) {
@@ -25,50 +28,40 @@ Game.prototype.roll = function(points) {
   this.isNextFrame();
 };
 
-Game.prototype.getNextRoll = function() {
-  if(this.rolls % 2 === 0) {
-    return 1;
-  } else {
-    return 2;
-  }
-};
 
 Game.prototype.updatePinsRemaining = function(points) {
   this.pinsRemaining -= points
-  // if (this.pinsRemaining === 0) {
-  //   this.strikeORSpare
-  // }
-  // if(this.getNextRoll === 2) {this.}
-}
+  if (this.pinsRemaining === 0) {
+    this.strikeORSpare();
+  }
+};
 
 Game.prototype.getFrameNumber = function() {
   return this.currentFrameNumber;
 };
 
 Game.prototype.strikeORSpare = function() {
-  if(getNextRoll() === 1) {
-    this.isASpare()
+  if(this.getNextRoll() === 1) {
+    this.isASpare = true;
   } else {
-    this.isAStrike();
+    this.isAStrike = true;
+    this.rolls += 1
   }
-};
-
-Game.prototype.isASpare = function(){
-  return true;
-};
-
-Game.prototype.isAStrike = function(){
-  return true
 };
 
 Game.prototype.addToCurrentFrame = function(points) {
   this.currentFrame.push(points);
   if (this.getNextRoll() === 1) {
     this.addCurrentFrameToFrameHistory(this.currentFrame);
-    this.resetCurrentFrame();
-    this.resetPins();
-    this.calculateFrameScore(this.currentFrameNumber);
-    this.updateTotalScore();
+    this.prepareNextFrame();
+  }
+};
+
+Game.prototype.getNextRoll = function() {
+  if(this.rolls % 2 === 0) {
+    return 1;
+  } else {
+    return 2;
   }
 };
 
@@ -89,6 +82,13 @@ Game.prototype.isNextFrame = function() {
 
 Game.prototype.addCurrentFrameToFrameHistory = function(frame) {
   this.frameHistory.push(frame);
+};
+
+Game.prototype.prepareNextFrame = function() {
+  this.resetCurrentFrame();
+  this.resetPins();
+  this.calculateFrameScore(this.currentFrameNumber);
+  this.updateTotalScore();
 };
 
 Game.prototype.resetCurrentFrame = function() {

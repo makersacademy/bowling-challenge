@@ -26,10 +26,16 @@ Game.prototype.roll = function (knockedPins) {
 }
 
 Game.prototype._tenthRoll = function (knockedPins) {
-  if ( this._currentFrame._isStrike && this._currentFrame._rollNumber === 2 ){
+  if ( this._currentFrame._isStrike && (this._currentFrame._rollNumber === 2 || this._currentFrame._rollNumber === 3) ){
     this._currentFrame.playBonusRoll(knockedPins);
-  };
-  // this._currentFrame.checkSpare(knockedPins);
+    this._currentFrame._rollNumber += 1;
+  } else if ( this._currentFrame._rollNumber === 1 ) {
+    this._currentFrame.playSecondRoll(knockedPins);
+    this._currentFrame.checkSpare(knockedPins);
+    this._currentFrame._rollNumber += 1;
+  } else if ( this._currentFrame._isSpare ) {
+    this._currentFrame.playBonusRoll(knockedPins);
+  }
 
 }
 

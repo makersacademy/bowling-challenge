@@ -71,7 +71,7 @@ describe ('Game', function(){
   });
 
   describe('Frame 10:', function(){
-    it('enables bonus roll if a Strike', function(){
+    it('enables bonus 2 rolls if a Strike', function(){
       game.roll(10);
       game.roll(10);
       game.roll(10);
@@ -83,8 +83,25 @@ describe ('Game', function(){
       game.roll(10);
       game.roll(10);
       game.roll(7);
-      expect(game._currentFrame._bonusRoll).toEqual(7);
+      game.roll(2)
+      expect(game._currentFrame._bonusRoll).toEqual(9);
     });
+
+    it('enables bonus roll if a Spare', function(){
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(3);
+      game.roll(7);
+      game.roll(3);
+      expect(game._currentFrame._bonusRoll).toEqual(3);
+    })
   });
 
 

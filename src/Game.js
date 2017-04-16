@@ -16,6 +16,7 @@ Game.prototype.play = function() {
     this._frame.play();
     if(this._frame.isStrike === true) {
       console.log("End of frame " + this.currentFrame + "!");
+      this.bonusCalculator();
       this.addFrame(this._frame);
       this.changeFrame();
     }
@@ -23,10 +24,12 @@ Game.prototype.play = function() {
   else if(this.rollsLeft(this._frame) === 1){
     this._frame.play();
     console.log("End of frame " + this.currentFrame + "!");
+    this.bonusCalculator();
     this.addFrame(this._frame);
     this.changeFrame();
   }
   else {
+    this.bonusCalculator();
     this.addFrame(this._frame);
     this.changeFrame();
   }
@@ -44,4 +47,14 @@ Game.prototype.changeFrame = function() {
 
 Game.prototype.rollsLeft = function(frame) {
   return frame.rollsLeft;
+};
+
+Game.prototype.bonusCalculator = function() {
+  if (this.frames.length > 0) {
+    if (this.frames[this.frames.push(this.frames.pop())-1].isStrike === true) {
+      this.frames[this.frames.push(this.frames.pop())-1].score = 10 + this._frame.score;
+    } else if (this.frames[this.frames.push(this.frames.pop())-1].isSpare === true) {
+      this.frames[this.frames.push(this.frames.pop())-1].score = 10 + this._frame.firstShot;
+    }
+  }
 };

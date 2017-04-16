@@ -1,15 +1,17 @@
 function Frame () {
   this.pins = this.DEFAULTPINS;
   this.rollsLeft = this.DEFAULTROLLS;
+  this.firstShot = 0;
   this.score = 0;
   this.isStrike = false;
+  this.isSpare = false;
 }
 
 Frame.prototype.DEFAULTPINS = 10;
 Frame.prototype.DEFAULTROLLS = 2;
 
 Frame.prototype.rollScore = function() {
-  return Math.floor(Math.random() * this.pins) + 0;
+  return Math.floor(Math.random() * (this.pins + 1)) + 0;
 };
 
 Frame.prototype.play = function() {
@@ -22,6 +24,12 @@ Frame.prototype.play = function() {
     this.pins -= score;
     this.score += score;
     this.setSpare();
+  } else if(this.rollsLeft === 2 && score !== this.pins) {
+    console.log('Score: ' + score + '\n'+ (this.pins - score) + ' pins left.');
+    this.firstShot = score;
+    this.pins -= score;
+    this.score += score;
+    this.rollsLeft -= 1;
   } else {
     console.log('Score: ' + score + '\n'+ (this.pins - score) + ' pins left.');
     this.pins -= score;

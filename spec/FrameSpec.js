@@ -31,7 +31,8 @@ describe("Frame", function() {
       expect(frame.pins).toEqual(5);
     });
 
-    it('should decrease number of roll left', function() {
+    it('should decrease number of rolls left', function() {
+      spyOn(frame, 'rollScore').and.returnValue(5);
       frame.play();
       expect(frame.rollsLeft).toEqual(1);
     });

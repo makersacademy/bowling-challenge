@@ -10,3 +10,7 @@ function Game() {
 Game.prototype.addFrames = function(frame) {
   this._frames.push(frame);
 };
+
+Game.prototype.updateScore = function() {
+  
+}

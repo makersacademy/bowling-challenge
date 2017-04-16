@@ -9,11 +9,19 @@ Game.prototype.startGame = function(){
   var self = this;
   this.frames.forEach(function(frame, index, array) {
     self.playFrame(index);
-  })
+  });
   return this.frames
 };
 
 Game.prototype.playFrame = function(frame){
   this.frames[frame].firstBowl();
   this.frames[frame].secondBowl();
+};
+
+Game.prototype.totalGameScore = function(){
+  var totalScore = 0;
+  this.frames.forEach(function(frame, index, array){
+    totalScore += frame.frameScore()
+  });
+  return totalScore
 };

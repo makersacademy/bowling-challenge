@@ -48,14 +48,18 @@ Frame.prototype.preThrowChecks = function(){
 Frame.prototype.throw= function(){
   var throw_result = this._startThrow();
   this.updateScore(throw_result);
+
 }
 
 Frame.prototype.postThrowUpdates = function(){
   this._endThrow();
+  if(this._isStrike){
+    this._endFrame();
+  }
 }
 
 
-Frame.prototype.endFrame = function (){
+Frame.prototype._endFrame = function (){
   this.isComplete = true;
 }
 

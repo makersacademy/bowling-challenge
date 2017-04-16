@@ -2,7 +2,8 @@
 
 describe('Frame', function(){
   var frame;
-  var normalThrowScore = 7
+  var normalThrowScore = 7;
+  var strikeThrowScore = 10;
   var thrower = {
     pinsLeft: 10,
     throw: function(){},
@@ -68,6 +69,16 @@ describe('Frame', function(){
       frame.startThrow();
       expect(frame.throwNumber).toEqual(2);
     });
+    it('updates scores correctly on round 1',function(){
+      spyOn(frame, '_startThrow').and.returnValue(normalThrowScore)
+      frame.startThrow();
+      expect(frame.result.throw1).toEqual(normalThrowScore)
+    });
+    it('ends the round when there is a strike',function(){
+      spyOn(frame, '_startThrow').and.returnValue(strikeThrowScore)
+      frame.startThrow();
+      expect(frame.isComplete).toEqual(true);
+    });
   });
 
   describe('#playFrame',function(){
@@ -102,18 +113,6 @@ describe('Frame', function(){
     });
   });
 
-  describe('#_endThrow', function(){
-    it('ends the turn', function(){
-      frame._endThrow();
-      expect(frame.throwNumber).toEqual(2);
-    });
-  });
 
-  describe('#endFrame', function(){
-    it('ends the frame',function(){
-      frame.endFrame();
-      expect(frame.isComplete).toEqual(true);
-    });
-  });
 
 });

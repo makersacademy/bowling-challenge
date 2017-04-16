@@ -98,18 +98,6 @@ describe('Game', function(){
       expect(game.getSecondRollScore()).toEqual(3);
     });
 
-    it('calculates the score of the frame specified', function(){
-      game.roll(1);
-      game.roll(5);
-      expect(game.previousFrameScore).toEqual(6);
-    });
-
-    it('calculates the score of the frame specified', function(){
-      game.roll(1);
-      game.roll(5);
-      expect(game.calculateFrameScore(1)).toEqual(6);
-    });
-
     it('updates the player\'s total score after each frame', function(){
       for(var i=0; i<6; i++) {
         game.roll(1);
@@ -117,6 +105,14 @@ describe('Game', function(){
       }
       expect(game.totalScore).toEqual(30);
     });
+
+    it('returns the player\'s cumulative score', function(){
+      for(var i=0; i<6; i++) {
+        game.roll(1);
+        game.roll(4);
+      }
+      expect(game.cumulativeFrameScores).toEqual([5,10,15,20,25,30])
+    })
   });
 
   describe ('bonus points', function(){
@@ -136,12 +132,5 @@ describe('Game', function(){
       expect(game.currentFrameNumber).toEqual(2);
     })
   });
-
-
-
-
-
-
-
 
 });

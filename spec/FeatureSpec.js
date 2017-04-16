@@ -26,4 +26,15 @@ describe("Feature spec", function() {
       expect(game.currentFrame).toEqual(2);
     });
   });
+
+  describe("Throwing a strike", function() {
+    it("Should end the frame and flag that a strike has taken place", function() {
+      spyOn(game._frame, 'rollScore').and.returnValue(10);
+      var frame = game._frame
+      game.play();
+      expect(game.frames).toContain(frame);
+      expect(game.currentFrame).toEqual(2);
+      expect(frame.isStrike).toBe(true);
+    })
+  })
 });

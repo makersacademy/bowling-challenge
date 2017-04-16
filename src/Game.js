@@ -14,6 +14,11 @@ Game.prototype.createFrame = function() {
 Game.prototype.play = function() {
   if(this.rollsLeft(this._frame) === 2) {
     this._frame.play();
+    if(this._frame.isStrike === true) {
+      console.log("End of frame " + this.currentFrame + "!");
+      this.addFrame(this._frame);
+      this.changeFrame();
+    }
   }
   else if(this.rollsLeft(this._frame) === 1){
     this._frame.play();

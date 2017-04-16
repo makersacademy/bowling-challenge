@@ -57,4 +57,16 @@ describe("Frame", function() {
 
   });
 
+  describe("setSpare", function() {
+    it('should set spare to true', function() {
+      frame.setSpare();
+      expect(frame.isSpare).toEqual(true);
+    });
+
+    it('should set rollsLeft to 0', function() {
+      frame.setSpare();
+      expect(frame.rollsLeft).toEqual(0);
+    });
+  });
+
 });

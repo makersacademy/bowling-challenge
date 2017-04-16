@@ -4,8 +4,8 @@ function Bowl() {
   this.pinDomino = {0: [1, 2], 1: [3, 4], 2: [4, 5], 3: [6, 7], 4: [7, 8], 5: [8, 9]}
 }
 
-Bowl.prototype.throw = function(angle) {
-  if (angle < -15 || angle > 15) return 0;
+Bowl.prototype.throw = function() {
+  angle = ((Math.random()) - 0.5) * 30
   for(i = 0; i <= 10; i++) {
     if ([4, 7, 8].includes(i)) continue;
     if (Math.abs((this.pinAngle[i]) - angle) <= 2.5) {
@@ -26,8 +26,7 @@ Bowl.prototype.knockDown = function(pin) {
 
 Bowl.prototype.domino = function() {
   for(i = 0; i < 6; i++) {
-    if (this.pins[i] == 'X')
-    this.knockDown(i);
+    if (this.pins[i] == 'X') this.knockDown(i);
   }
 }
 

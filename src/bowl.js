@@ -10,6 +10,6 @@ Bowl.prototype.throw = function(angle) {
     if ([5, 8, 9].contains(i)) continue;
     if ((pinAngle[i] - angle) <= 2.5)
       return i;
-    }
-  }
-}
+    };
+  };
+};

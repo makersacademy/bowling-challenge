@@ -160,6 +160,9 @@ Game.prototype.tallyFrame = function(){
     return 10
   }
   else {
+    if (this.frameNo > 3 && this.isLastFrameStriky() && this.isFrameBeforeStriky() && this.isFrameBeforeThatStriky()) {
+      return this.currentFrame[0] + this.currentFrame[1] + 10
+    }
     return this.currentFrame[0] + this.currentFrame[1]
   }
 }
@@ -169,10 +172,7 @@ Game.prototype.updateBonus = function(){
 }
 
 Game.prototype.shouldUpdateScore = function(){
-  if (this.frameNo > 3 && this.isLastFrameStriky() && this.isFrameBeforeStriky() && this.isFrameBeforeThatStriky()) {
-    console.log("HELLO")
-  }
-  else if (this.bonusPoints === 20) {
+  if (this.bonusPoints === 20) {
     this.updateScore()
   }
   else if (this.tallyFrame() < 10) {

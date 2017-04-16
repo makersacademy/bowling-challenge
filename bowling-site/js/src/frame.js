@@ -23,7 +23,6 @@ Frame.prototype._resetScores = function(){
   }
 }
 
-
 Frame.prototype._resetThrowNumber = function(){
   this.throwNumber = 1;
 }
@@ -32,7 +31,7 @@ Frame.prototype._resetCompletion=function(){
   this.isComplete = false;
 }
 
-Frame.prototype.startThrow = function(){
+Frame.prototype.startRound = function(){
   this.preThrowChecks();
   this.throw();
   this.postThrowUpdates();
@@ -46,14 +45,15 @@ Frame.prototype.preThrowChecks = function(){
 }
 
 Frame.prototype.throw= function(){
-  var throw_result = this._startThrow();
+  var throw_result = this._throwBall();
   this.updateScore(throw_result);
 
 }
 
 Frame.prototype.postThrowUpdates = function(){
   this._endThrow();
-  if(this._isStrike){
+  
+  if(this._isStrike()){
     this._endFrame();
   }
 }
@@ -75,15 +75,10 @@ Frame.prototype.updateScore= function(score){
   }
 }
 
-
-
-
 Frame.prototype._isStrike = function(){
   return (this.result.throw1 == 10);
 }
 
-
-
-Frame.prototype._startThrow = function(){
+Frame.prototype._throwBall = function(){
   this.thrower.throw();
 }

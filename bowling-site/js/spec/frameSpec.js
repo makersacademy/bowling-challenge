@@ -53,30 +53,30 @@ describe('Frame', function(){
     });
   });
 
-  describe('#startThrow',function(){
+  describe('#startRound',function(){
     it('does not throw if it does not pass checks ', function(){
       frame.isComplete = true;
       expect(frame.isComplete).toEqual(true);
-      expect(function(){frame.startThrow();}).toThrowError("Frame is over, can't throw");
+      expect(function(){frame.startRound();}).toThrowError("Frame is over, can't throw");
 
     });
     it('makes a call to the thrower class for a score',function(){
       spyOn(frame.thrower, 'throw');
-      frame.startThrow();
+      frame.startRound();
       expect(frame.thrower.throw).toHaveBeenCalled();
     });
     it('updates turn number after ball is thrown',function(){
-      frame.startThrow();
+      frame.startRound();
       expect(frame.throwNumber).toEqual(2);
     });
     it('updates scores correctly on round 1',function(){
-      spyOn(frame, '_startThrow').and.returnValue(normalThrowScore)
-      frame.startThrow();
+      spyOn(frame, '_throwBall').and.returnValue(normalThrowScore)
+      frame.startRound();
       expect(frame.result.throw1).toEqual(normalThrowScore)
     });
     it('ends the round when there is a strike',function(){
-      spyOn(frame, '_startThrow').and.returnValue(strikeThrowScore)
-      frame.startThrow();
+      spyOn(frame, '_throwBall').and.returnValue(strikeThrowScore)
+      frame.startRound();
       expect(frame.isComplete).toEqual(true);
     });
   });
@@ -112,6 +112,7 @@ describe('Frame', function(){
       expect(frame.result.throw2).toEqual(8);
     });
   });
+
 
 
 

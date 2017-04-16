@@ -261,6 +261,30 @@ describe('Game', function(){
       game.makeRoll(3);
       expect(game.getScore()).toEqual(56)
     })
+
+    it('three strikes', function(){
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      expect(game.getScore()).toEqual(30)
+    })
+
+    it('three strikes and a 5', function(){
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(5);
+      expect(game.getScore()).toEqual(55)
+    })
+
+    it('three strikes and a non-bonusy frame', function(){
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(5);
+      game.makeRoll(3);
+      expect(game.getScore()).toEqual(81)
+    })
   })
 
 

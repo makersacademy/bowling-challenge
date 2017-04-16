@@ -4,6 +4,7 @@ function Bowling(){
   this.pins = 10
   this.currentScore = 0
   this.frame = {first: 0, second: 0}
+  this.strikeFrame = {first: 0}
   this.strike = false
   this.spare = false
   this.frameCollection = []
@@ -18,13 +19,13 @@ Bowling.prototype.firstThrow = function(score){
 
 Bowling.prototype.secondThrow = function(score){
   if(this.pins === 0) {
-    this.frame.second = 0
+    throw new Error("Can't throw again after a strike")
   } else {
     this.pins -= score
     this.frame.second += score
+    this.currentScore += (this.frame.first + this.frame.second)
+    this.frameCollection.push(this.frame)
   }
-  this.currentScore += (this.frame.first + this.frame.second)
-  this.frameCollection.push(this.frame)
 };
 
 Bowling.prototype.frameScore = function () {

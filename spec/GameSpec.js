@@ -209,6 +209,20 @@ describe('Game', function(){
       game.makeRoll(3);
       expect(game.getScore()).toEqual(8)
     })
+
+    it('adds spare bonus in next non-bonusy frame', function(){
+      game.makeRoll(7);
+      game.makeRoll(3);
+      game.makeRoll(4);
+      expect(game.getScore()).toEqual(14)
+    })
+
+    it('adds strike bonus in at end of next non-bonusy frame', function(){
+      game.makeRoll(10);
+      game.makeRoll(5);
+      game.makeRoll(4);
+      expect(game.getScore()).toEqual(28)
+    })
   })
 
 

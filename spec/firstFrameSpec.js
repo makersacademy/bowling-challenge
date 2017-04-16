@@ -1,4 +1,6 @@
-"use strict";
+(function () {
+   'use strict';
+}());
 
 describe("first frame", function() {
   var bowlingGame;
@@ -56,7 +58,8 @@ describe("first frame", function() {
       bowlingGame.currentStrikeScore()
       bowlingGame.firstShot(2)
       bowlingGame.firstShot(6)
-      expect(bowlingGame.total).toEqual(18)
+      expect(bowlingGame.strike).toBe(true)
+      bowlingGame.frameScoreReset;
     });
   });
 });

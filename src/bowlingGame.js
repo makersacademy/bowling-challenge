@@ -1,4 +1,6 @@
-"use strict";
+(function () {
+   'use strict';
+}());
 
 function BowlingGame() {
   this.total = 0;
@@ -6,6 +8,7 @@ function BowlingGame() {
   this.spare = false;
   this.frameScore = 0;
   this.strike = false;
+  this.pins = 10;
 }
 
 BowlingGame.prototype.total = function() {
@@ -37,4 +40,8 @@ BowlingGame.prototype.currentStrikeScore = function() {
     this.strike = !this.Strike;
   }
 }
+
+BowlingGame.prototype.pinsInUse = function() {
+  this.pins = this.pins - this.frameScore;
+  }
 

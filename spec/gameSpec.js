@@ -1,41 +1,41 @@
 'use strict';
-describe('Game', function() {
+describe('Game', function(){
   var game;
 
-  beforeEach( function() {
+  beforeEach( function(){
     game = new Game();
   });
 
-  it('records the player\'s score', function() {
+  it('records the player\'s score', function(){
     game.roll(1);
     expect(game.currentFrame).toEqual([1]);
   });
 
-  it('throws an error if points entered are less than 0', function() {
+  it('throws an error if points entered are less than 0', function(){
     expect(function(){game.roll(-1);}).toThrowError("Invalid roll: points must be between 0-10");
   });
 
-  it('throws an error if points entered are greater than 10', function() {
+  it('throws an error if points entered are greater than 10', function(){
     expect(function(){game.roll(11);}).toThrowError("Invalid roll: points must be between 0-10");
   });
 
-  it('throws an error if points entered are greater than the pins remaining', function() {
+  it('throws an error if points entered are greater than the pins remaining', function(){
     game.roll(3)
     expect(function(){game.roll(8);}).toThrowError("Invalid roll: only 7 pins remaining");
   });
 
-  it('finishes once each player has completed 20 rolls', function() {
+  it('finishes once each player has completed 20 rolls', function(){
     for(var i=0; i<20; i++) {
       game.roll(1);
     }
     expect(function(){game.roll(1);}).toThrowError("The game has finished. Start a new game to throw again.");
   });
 
-  it('returns the next roll number of each frame e.g. the 1st roll', function() {
+  it('returns the next roll number of each frame e.g. the 1st roll', function(){
     expect(game.getNextRoll()).toEqual(1);
   });
 
-  it('returns the next roll number of each frame e.g. the 2nd roll', function() {
+  it('returns the next roll number of each frame e.g. the 2nd roll', function(){
     game.roll(1);
     expect(game.getNextRoll()).toEqual(2);
   });
@@ -44,7 +44,10 @@ describe('Game', function() {
     expect(game.pinsRemaining).toEqual(10);
   });
 
-  it('returns the number of pins remaining')
+  it('returns the number of pins remaining', function(){
+    game.roll(1)
+    expect(game.pinsRemaining).toEqual(9);
+  })
 
   it('returns the current frame number', function(){
     for(var i=0; i<2; i++) {
@@ -68,9 +71,15 @@ describe('Game', function() {
     expect(game.currentFrame).toEqual([2]);
   });
 
-  it('returns the remaining pins', function() {
+  it('returns the score of the current frame\'s first roll', function(){
     game.roll(3);
-    expect(game.getFrameScore()).toEqual(3);
+    expect(game.getFirstRollScore()).toEqual(3);
+  });
+
+  it('returns the score of the current frame\'s second roll', function(){
+    game.roll(6);
+    game.roll(3);
+    expect(game.getSecondRollScore()).toEqual(3);
   });
 
   it('each new frame starts empty', function(){

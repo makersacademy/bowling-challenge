@@ -1,7 +1,7 @@
 'use strict';
 function Game() {
   this.rolls = 0;
-  this.score = 0;
+  this.totalScore = 0;
   this.pinsRemaining = 10;
   this.currentFrameNumber = 1;
   this.currentFrame = [];
@@ -50,11 +50,11 @@ Game.prototype.addToCurrentFrame = function(points) {
 };
 
 Game.prototype.getFirstRollScore = function() {
-
+  return this.currentFrame[0];
 };
 
 Game.prototype.getSecondRollScore = function() {
-
+  return this.frameHistory[(this.currentFrameNumber-2)][1];
 };
 
 Game.prototype.isNextFrame = function() {

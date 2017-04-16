@@ -65,9 +65,18 @@ describe ('Game', function(){
       game.roll(10);
       game.roll(2);
       game.roll(4);
-      expect(game.getFrameScore(this._framesInPlay)).toEqual(16); 
+      expect(game.getFrameScore(this._framesInPlay)).toEqual(16);
     })
 
+  });
+
+  describe('Frame 10:', function(){
+    it('enables bonus roll if a Spare', function(){
+      this._framesInPlay = [[frame],[frame],[frame],[frame],[frame],[frame],[frame],[frame],[frame]];
+      game.roll(3);
+      game.roll(7);
+      expect(game._currentFrame._rollNumber).toEqual(3);
+    });
   });
 
 

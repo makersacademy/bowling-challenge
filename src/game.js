@@ -19,6 +19,7 @@ Game.prototype.roll = function (knockedPins) {
   } else {
     this._framesInPlay.push(this._currentFrame);
     this._currentFrame = new Frame( knockedPins );
+    this._currentFrame.checkStrike(knockedPins);
     };
 }
 

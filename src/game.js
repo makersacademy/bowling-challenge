@@ -4,11 +4,9 @@ function Game() {
   this.score = 0;
   this.pinsRemaining = 10;
   this.currentFrameNumber = 1;
-  this.framesHistory = [];
-  this.currentFrameScore = [];
-
+  this.currentFrame = [];
+  this.frameHistory = [];
 }
-
 
 Game.prototype.roll = function(points) {
   if(this.getFrameNumber() > 10) {
@@ -23,18 +21,11 @@ Game.prototype.roll = function(points) {
 };
 
 Game.prototype.getRoll = function() {
-  if(this.rolls % 2 == 0) {
+  if(this.rolls % 2 === 0) {
     return 2;
   } else {
     return 1;
   }
-};
-
-Game.prototype.isNextFrame = function() {
-  if(this.rolls % 2 !== 0) {
-    return;
-  }
-  this.currentFrameNumber += 1
 };
 
 Game.prototype.getFrameNumber = function() {
@@ -42,24 +33,36 @@ Game.prototype.getFrameNumber = function() {
 };
 
 Game.prototype.addToCurrentFrame = function(points) {
-  this.currentFrameScore.push(points);
-  if (this.getRoll == 2) {
-    this.addCurrentFrameToFrameHistory(this.currentFrameScore);
+  this.currentFrame.push(points);
+  if (this.getRoll() === 2) {
+    this.addCurrentFrameToFrameHistory(this.currentFrame);
+    this.resetCurrentFrame();
   }
-};
-
-Game.prototype.addCurrentFrameToFrameHistory = function(frame) {
-  this.framesHistory.push(points);
 };
 
 Game.prototype.getFrameScore = function() {
   var frameScore = 0;
   for (var i = 0; i < 2; i++) {
-    frameScore += this.currentFrameScore[i];
+    frameScore += this.currentFrame[i];
   }
   return frameScore;
 };
 
-Game.prototype.getTotalScore = function (){
+Game.prototype.isNextFrame = function() {
+  if(this.getRoll() === 1) {
+    return;
+  }
+  this.currentFrameNumber += 1
+};
+
+Game.prototype.addCurrentFrameToFrameHistory = function(frame) {
+  this.frameHistory.push(frame);
+};
+
+Game.prototype.resetCurrentFrame = function() {
+  this.currentFrame = [];
+};
+
+Game.prototype.getTotalScore = function () {
   return this.score;
 };

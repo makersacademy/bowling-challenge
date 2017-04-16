@@ -20,18 +20,22 @@ Game.prototype.roll = function (knockedPins) {
     this._framesInPlay.push(this._currentFrame);
     this._currentFrame = new Frame( knockedPins );
     };
-  }
+}
 
 Game.prototype.getFrameScore = function () {
   var frame = this._framesInPlay[this._framesInPlay.length - 1];
 
-  if ( frame._isSpare ){
-  frame.setScore( frame.getFirstRoll() + frame.getSecondRoll() + this._currentFrame.getFirstRoll());
+  if ( frame._isStrike ){
+    frame.setScore( frame.getFirstRoll() + frame.getSecondRoll() + this._currentFrame.getFirstRoll() + this._currentFrame.getSecondRoll() );
+  } else if ( frame._isSpare ){
+    frame.setScore( frame.getFirstRoll() + frame.getSecondRoll() + this._currentFrame.getFirstRoll() );
+  } else {
+    frame.setScore( frame.getFirstRoll() + frame.getSecondRoll() );
+    };
+
   return frame.getScore();
-  }
-  frame.setScore( frame.getFirstRoll() + frame.getSecondRoll());
-  return frame.getScore();
-};
+
+}
 
 
 

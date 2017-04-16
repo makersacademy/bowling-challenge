@@ -61,6 +61,13 @@ describe ('Game', function(){
       expect(game.getFrameScore(this._framesInPlay)).toEqual(12);
     })
 
+    it('can calculate score for a Strike', function(){
+      game.roll(10);
+      game.roll(2);
+      game.roll(4);
+      expect(game.getFrameScore(this._framesInPlay)).toEqual(16); 
+    })
+
   });
 
 

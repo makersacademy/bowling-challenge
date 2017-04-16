@@ -142,9 +142,13 @@ Game.prototype.nextFrame = function(){
 }
 
 Game.prototype.tallyFrame = function(){
-  return this.currentFrame[0] + this.currentFrame[1]
+  if (this.currentFrame[0] === 10){
+    return 10
+  }
+  else {
+    return this.currentFrame[0] + this.currentFrame[1]
+  }
 }
-
 
 Game.prototype.updateBonus = function(){
   this.bonusPoints += 10

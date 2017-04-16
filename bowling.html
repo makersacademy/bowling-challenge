@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Bowling</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="src/bowling.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' type='text/css'>
+ </head>
+ <body>
+
+<h1>Bowling</h1>
+<div>
+<div id="roller1">
+  <p>Roll 1</p>
+  <input type="textbox" id="roll1">
+  <button id="getTextBoxValue1">Submit</button>
+</div>
+
+<div id="roller2">
+  <p>Roll 2</p>
+  <input type="textbox" id="roll2">
+  <button id="getTextBoxValue2">Submit</button>
+</div>
+</div>
+  <div class="ball"></div>
+  <div class="lane"></div>
+  <div class="strike"></div>
+  <div class="score"></div>
+
+
+  <script type="text/javascript">
+
+  var bowling = new Bowling();
+
+    $('#getTextBoxValue1').on("click", function(){
+      $(".prepended").remove();
+      $(".ball").animate({ "left": "+=1000px" },{duration: 3000} );
+        var value = $("#roll1").val();
+        console.log(value)
+        value = parseInt(value)
+        bowling.score = value
+        if(value === 10){
+          $(".strike").append('<span class="prepended">STRIKE</span>')
+        }else{
+          (".score").append(bowling.score)
+        }
+         $(".ball").animate({ "left": "-=1000px" },{duration: 100} );
+
+    });
+
+
+</script>
+ </body>
+</html>
+

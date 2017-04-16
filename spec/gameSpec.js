@@ -100,11 +100,12 @@ describe('Game', function(){
     expect(game.calculateFrameScore(1)).toEqual(6);
   });
 
-  it('returns the total score', function(){
+  it('updates the player\'s total score after each frame', function(){
     for(var i=0; i<6; i++) {
       game.roll(1);
       game.roll(4);
     }
     expect(game.totalScore).toEqual(30);
   });
+
 });

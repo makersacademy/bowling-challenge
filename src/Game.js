@@ -74,12 +74,28 @@ Game.prototype.isFinalFrame = function(){
   return this.frameNo == 10
 }
 
+Game.prototype.strikeOrSpare = function(){
+  console.log(this.currentFrame)
+  if(this.currentFrame[0] === 10){
+    return 'strike'
+  } else {
+    return 'spare'
+  }
+}
+
 Game.prototype.makeFrame = function(){
-  this.frameHistory.push(this.currentFrame);
-  // if (this.isFrameBonus()){
-  //   this.finalFrame();
-  // }
-  this.nextFrame();
+  if (this.isFrameBonus()){
+    if (this.isFinalFrame()){
+      // which kind of bonus? if spare 1 more roll. if strike 2 more rolls.
+      this.strikeOrSpare();
+    } else {
+      this.frameHistory.push(this.currentFrame);
+      this.nextFrame();
+    }
+  } else {
+    this.frameHistory.push(this.currentFrame);
+    this.nextFrame();
+  }
 }
 
 Game.prototype.nextFrame = function(){

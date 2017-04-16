@@ -5,8 +5,9 @@ describe('Frame', function(){
   var normalThrowScore = 7
   var thrower = {
     pinsLeft: 10,
-    throwBall: function(){},
-    resetPins: function(){}
+    throw: function(){},
+    resetPins: function(){},
+    throw: function(){}
   }
 
   beforeEach(function(){
@@ -14,72 +15,12 @@ describe('Frame', function(){
   });
 
   describe('Initialize', function(){
-    it('starts the frame as unfinished',function(){
-      expect(frame.isFinished).toEqual(false);
-    })
-    it('frame starts on throw 1',function(){
-      expect(frame.throwNumber).toEqual(1);
+
+    it('receives a thrower class',function(){
+      expect(frame.thrower).toBeDefined();
     });
 
   });
-
-
-
-  describe('#playFrame',function(){
-    beforeEach(function(){
-      // spyOn(frame,"pins").and.returnValue(default)
-      spyOn(frame.thrower, 'throwBall')
-      spyOn(frame.thrower, 'resetPins')
-
-    });
-    it('calls updatePins on a BallThrow class', function(){
-      frame.throwBall();
-      expect(frame.thrower.resetPins).toHaveBeenCalled();
-    });
-    it('calls throwBall on a BallThrow class', function(){
-      frame.throwBall();
-      expect(frame.thrower.throwBall).toHaveBeenCalled();
-    });
-    it('calls update score',function(){
-      spyOn(frame, 'updateScore')
-      frame.throwBall();
-      expect(frame.updateScore).toHaveBeenCalled();
-    });
-  });
-
-  describe('#isReadyForTurn2', function(){
-    it('ends the frame if a strike is rolled on turn 1', function(){
-      frame.updateScore(10);
-      expect(frame.isReadyForTurn2()).toEqual(false);
-    });
-  });
-
-  describe('#updateScore', function(){
-    it('updates the score for throw 1',function(){
-      frame.updateScore(normalThrowScore);
-      expect(frame.result.throw1).toEqual(normalThrowScore);
-    });
-    it('updates the score for throw 2', function(){
-      frame.throwNumber=2;
-      frame.updateScore(8);
-      expect(frame.result.throw2).toEqual(8);
-    });
-  });
-
-  describe('#endThrow', function(){
-    it('ends the turn', function(){
-      frame.endThrow();
-      expect(frame.throwNumber).toEqual(2);
-    });
-  });
-
-  describe('#endFrame', function(){
-    it('ends the frame',function(){
-      frame.endFrame();
-      expect(frame.isFinished).toEqual(true);
-    });
-  });
-
   describe('#start', function(){
     it('calls reset on the ball throw pins',function(){
       spyOn(frame.thrower, 'resetPins');
@@ -103,5 +44,76 @@ describe('Frame', function(){
       frame.start()
       expect(frame.throwNumber).toEqual(1);
     })
+    it('returns the frame to an incomplete state',function(){
+      frame.isComplete = true;
+      frame.start();
+      expect(frame.isComplete).toEqual(false);
+
+    });
   });
+
+  describe('#startThrow',function(){
+    it('does not throw if it does not pass checks ', function(){
+      frame.isComplete = true;
+      expect(frame.isComplete).toEqual(true);
+      expect(function(){frame.startThrow();}).toThrowError("Frame is over, can't throw");
+
+    });
+    it('makes a call to the thrower class for a score',function(){
+      spyOn(frame.thrower, 'throw');
+      frame.startThrow();
+      expect(frame.thrower.throw).toHaveBeenCalled();
+    });
+    it('updates turn number after ball is thrown',function(){
+      frame.startThrow();
+      expect(frame.throwNumber).toEqual(2);
+    });
+  });
+
+  describe('#playFrame',function(){
+    beforeEach(function(){
+      spyOn(frame.thrower, 'resetPins')
+
+      spyOn(frame.thrower, 'throw')
+    });
+
+    it('calls throw on a BallThrow class', function(){
+      frame.throw();
+      expect(frame.thrower.throw).toHaveBeenCalled();
+    });
+    it('calls update score',function(){
+      spyOn(frame, 'updateScore')
+      frame.throw();
+      expect(frame.updateScore).toHaveBeenCalled();
+    });
+  });
+
+
+
+  describe('#updateScore', function(){
+    it('updates the score for throw 1',function(){
+      frame.updateScore(normalThrowScore);
+      expect(frame.result.throw1).toEqual(normalThrowScore);
+    });
+    it('updates the score for throw 2', function(){
+      frame.throwNumber=2;
+      frame.updateScore(8);
+      expect(frame.result.throw2).toEqual(8);
+    });
+  });
+
+  describe('#_endThrow', function(){
+    it('ends the turn', function(){
+      frame._endThrow();
+      expect(frame.throwNumber).toEqual(2);
+    });
+  });
+
+  describe('#endFrame', function(){
+    it('ends the frame',function(){
+      frame.endFrame();
+      expect(frame.isComplete).toEqual(true);
+    });
+  });
+
 });

@@ -1,18 +1,20 @@
 // manages the play through of a single bowling frame
 
-function Frame(ballThrowClass){
-  this.isFinished = false;
-  this.throwNumber= 1;
-  this.thrower= ballThrowClass
-  this._resetScores();
+function Frame(throwerClass){
+  this.thrower= throwerClass
+  this.start();
 }
 
 Frame.prototype.start = function(){
-  this.thrower.resetPins()
+  this._resetThrowerPins();
   this._resetScores();
   this._resetThrowNumber();
+  this._resetCompletion();
 }
 
+Frame.prototype._resetThrowerPins = function(){
+  this.thrower.resetPins();
+}
 
 Frame.prototype._resetScores = function(){
   this.result= {
@@ -21,22 +23,43 @@ Frame.prototype._resetScores = function(){
   }
 }
 
+
 Frame.prototype._resetThrowNumber = function(){
   this.throwNumber = 1;
 }
 
-Frame.prototype.throwBall= function(){
-  this._resetThrowPins();
+Frame.prototype._resetCompletion=function(){
+  this.isComplete = false;
+}
+
+Frame.prototype.startThrow = function(){
+  this.preThrowChecks();
+  this.throw();
+  this.postThrowUpdates();
+}
+
+
+Frame.prototype.preThrowChecks = function(){
+  if (this.isComplete){
+    throw new TypeError("Frame is over, can't throw")
+  }
+}
+
+Frame.prototype.throw= function(){
   var throw_result = this._startThrow();
   this.updateScore(throw_result);
 }
 
-
-Frame.prototype.endFrame = function (){
-  this.isFinished = true;
+Frame.prototype.postThrowUpdates = function(){
+  this._endThrow();
 }
 
-Frame.prototype.endThrow = function(){
+
+Frame.prototype.endFrame = function (){
+  this.isComplete = true;
+}
+
+Frame.prototype._endThrow = function(){
   this.throwNumber += 1;
 }
 
@@ -49,19 +72,14 @@ Frame.prototype.updateScore= function(score){
 }
 
 
-Frame.prototype.isReadyForTurn2 = function(){
-  return this._isNotStrike();
-}
 
-Frame.prototype._isNotStrike = function(){
-  return !(this.result.throw1 == 10);
+
+Frame.prototype._isStrike = function(){
+  return (this.result.throw1 == 10);
 }
 
 
-Frame.prototype._resetThrowPins = function(){
-  this.thrower.resetPins();
-}
 
 Frame.prototype._startThrow = function(){
-  this.thrower.throwBall();
+  this.thrower.throw();
 }

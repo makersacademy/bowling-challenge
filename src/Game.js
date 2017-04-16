@@ -8,12 +8,9 @@ function Game() {
 
 Game.prototype.roll = function() {
   this._currentFrame.roll()
-  if(this._currentFrame.isFinished()) {
-    this._processFrame()
-  }
 }
 
-Game.prototype._processFrame = function() {
+Game.prototype.processFrame = function() {
   if(this._frame > 1) {
     this._addBonuses()
   }
@@ -50,7 +47,7 @@ Game.prototype._spareBonus = function() {
 }
 
 Game.prototype._strikeBonus = function() {
-  this._lastFrame().addBonus(this._currentFrame.points())
+  this._lastFrame().addBonus(this._currentFrame.strikeBonus())
 }
 
 Game.prototype._storeFrame = function() {

@@ -37,6 +37,10 @@ Frame.prototype.spareBonus = function() {
   return this._rollOnePoints
 }
 
+Frame.prototype.strikeBonus = function() {
+  return this._rollOnePoints + this._rollTwoPoints
+}
+
 Frame.prototype.addBonus = function(points) {
   this._bonusPoints += points
 }
@@ -46,7 +50,10 @@ Frame.prototype.bonusFeature = function() {
     return 'strike'
   } else if (this._rollTwoPoints + this._rollOnePoints === 10) {
     return 'spare'
-  }
+  } else if (this._rollTwoPoints + this._rollOnePoints === 0) {
+    return 'gutterball'
+  } else
+    return this.points()
 }
 
 Frame.prototype.isFinished = function() {

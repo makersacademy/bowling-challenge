@@ -35,4 +35,19 @@ describe('Game', function(){
     game.playFrame(5);
     expect(Frame.prototype.secondBowl).not.toHaveBeenCalled()
   });
+
+  it('returns the spare score as 10 plus 1st bowl next frame', function(){
+    spyOn(Frame.prototype, 'pinsDown').and.returnValue(5)
+    game.startGame();
+    expect(game.totalGameScore()).toEqual(145);
+  });
+
+  it('returns strike score plus next two bowls score(non-strike bowls)', function(){
+    spyOn(Frame.prototype, 'pinsDown').and.returnValues(10,5,2,10,5,2,10,5,2,10,5,2,10,5,2)
+    game.startGame();
+    expect(game.totalGameScore()).toEqual(120);
+  });
+
+
+
 });

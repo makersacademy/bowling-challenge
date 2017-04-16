@@ -23,7 +23,14 @@ Game.prototype.playFrame = function(frame){
 Game.prototype.totalGameScore = function(){
   var totalScore = 0;
   this.frames.forEach(function(frame, index, array){
-    totalScore += frame.frameScore();
+    var nextArray = array[index+1];
+    if (frame.status === 'Spare!' && frame.status !== 'Strike!' && nextArray){
+      totalScore += 10 + (10 - nextArray.firstBowlRemainder);
+    } else if (frame.status === 'Strike!' && frame.status !== 'Spare!' && nextArray){
+      totalScore += 10 + (nextArray.frameScore());
+    } else {
+      totalScore += frame.frameScore();
+    }
   });
   return totalScore;
 };

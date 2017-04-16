@@ -93,13 +93,26 @@ describe('FrameHandler', function(){
     });
 
     describe('Context: 10th Frame', function(){
-      it('rolls a third ball after spare',function(){
+      beforeEach(function(){
         frame.frameNumber = 9;
+      });
+      it('does not roll a third ball normally', function(){
+
+      });
+      it('rolls a third ball after spare',function(){
         spyOn(frame.thrower, 'throw').and.returnValue(5);
         frame.startRound()
         frame.startRound()
         frame.startRound()
         expect(frame.result.throw3).toEqual(5);
+      });
+      it('allows for 3 strikes',function(){
+
+        spyOn(frame.thrower, 'throw').and.returnValue(10);
+        frame.startRound()
+        frame.startRound()
+        frame.startRound()
+        expect(frame.result.throw3).toEqual(10);
       });
     });
   });

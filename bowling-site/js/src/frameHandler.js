@@ -67,17 +67,22 @@ FrameHandler.prototype._incrementFrameNumber=function(){
 
 FrameHandler.prototype._isFrameOver = function(){
   var strike = this._isStrike();
+  var notFrame10 = this._isNotInFrame10();
   var noThrowsLeft = this._isThrowLimitExceeded();
-  return (strike || noThrowsLeft );
+  return ((notFrame10 && strike) || noThrowsLeft );
 }
 
 FrameHandler.prototype._isThrowLimitExceeded = function(){
-  if (this.frameNumber < 9){
+  if (this._isNotInFrame10()){
     return (this.throwNumber > 1)
   }else{
     return (this.throwNumber > 2)
   }
 
+}
+
+FrameHandler.prototype._isNotInFrame10 = function(){
+  return this.frameNumber < 9
 }
 
 
@@ -102,7 +107,7 @@ FrameHandler.prototype.updateScore= function(score){
 }
 
 FrameHandler.prototype._isStrike = function(){
-  return (this.result.throw1 == 10);
+  return (this.result.throw1 == 10  );
 }
 
 FrameHandler.prototype._throwBall = function(){

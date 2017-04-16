@@ -6,7 +6,7 @@ describe('Frame', function(){
   var ballThrower = {
     pinsLeft: 10,
     throwBall: function(){return true},
-    updatePins: function(){return true}
+    resetPins: function(){return true}
   }
 
   beforeEach(function(){
@@ -20,9 +20,7 @@ describe('Frame', function(){
     it('frame starts on throw 1',function(){
       expect(frame.throwNumber).toEqual(1);
     });
-    it('frame starts with 10 pins', function(){
-      expect(frame.pins).toEqual(10);
-    });
+
   });
 
   describe('#result', function(){
@@ -39,13 +37,12 @@ describe('Frame', function(){
     beforeEach(function(){
       // spyOn(frame,"pins").and.returnValue(default)
       spyOn(frame.ballThrower, 'throwBall')
-      spyOn(frame.ballThrower, 'updatePins')
+      spyOn(frame.ballThrower, 'resetPins')
 
     });
     it('calls updatePins on a BallThrow class', function(){
-      this.pins = normalThrowScore;
       frame.throwBall();
-      expect(frame.ballThrower.updatePins).toHaveBeenCalled();
+      expect(frame.ballThrower.resetPins).toHaveBeenCalled();
     });
     it('calls throwBall on a BallThrow class', function(){
       frame.throwBall();

@@ -3,9 +3,10 @@
 function Frame(ballThrowClass){
   this.isFinished = false;
   this.throwNumber= 1;
-  this.pins = 10;
   this.ballThrower= ballThrowClass
 }
+
+
 
 Frame.prototype.throwBall= function(){
   this._updateThrowPins();
@@ -46,7 +47,7 @@ Frame.prototype._isNotStrike = function(){
 
 
 Frame.prototype._updateThrowPins = function(){
-  this.ballThrower.updatePins(this.pins);
+  this.ballThrower.resetPins();
 }
 
 Frame.prototype._startThrow = function(){

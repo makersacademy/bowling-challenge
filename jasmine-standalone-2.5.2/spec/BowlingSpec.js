@@ -89,7 +89,6 @@ describe('Bowling', function() {
       bowling.secondThrow(2);
       bowling.firstThrow(3);
       bowling.secondThrow(4);
-      debugger;
       expect(bowling.currentScore).toEqual(92);
     });
 

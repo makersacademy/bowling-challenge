@@ -110,9 +110,8 @@ describe('Bowling', function() {
         expect(bowling.getCurrentScore()).toEqual(24);
       });
 
-      it('can roll a perfect game', function() {
+      it('can roll a 12 strike perfect game', function() {
         multiRoll(10,12);
-        console.log(bowling.frameNumber);
         expect(bowling.getCurrentScore()).toEqual(300);
       });
     });

@@ -5,17 +5,116 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="mystyle.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 </head>
+
 <body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img alt="Brand" src="images/bowling.svg">
+        </a>
+      </div>
+      <button type="button" class="btn btn-default navbar-btn navbar-right">Sign in</button>
+    </div>
+  </nav>
 
-<div class="container">
-  <h1>Bowling</h1>
-</div>
+  <div class="container">
+    <div class="row">
+      <div class="text-center">
+        <h1>Let's Bowl</h1>
+      </div>
+    </div>
+  </div>
 
-<script src="src/Bowling.js"></script>
-<script src="Interface.js"></script>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-md-offset-4">
+        <div class="btn-group" role="group" aria-label="...">
+          <button type="button" class="btn btn-danger">0</button>
+          <button type="button" class="btn btn-warning">1</button>
+          <button type="button" class="btn btn-warning">2</button>
+          <button type="button" class="btn btn-warning">3</button>
+          <button type="button" class="btn btn-warning">4</button>
+          <button type="button" class="btn btn-info">5</button>
+          <button type="button" class="btn btn-info">6</button>
+          <button type="button" class="btn btn-info">7</button>
+          <button type="button" class="btn btn-info">8</button>
+          <button type="button" class="btn btn-success">9</button>
+          <button type="button" class="btn btn-success">10</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+
+  <div class="container">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">Scorecard</div>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">Frame</th>
+                <td colspan="2">1</td>
+                <td colspan="2">2</td>
+                <td colspan="2">3</td>
+                <td colspan="2">4</td>
+                <td colspan="2">5</td>
+                <td colspan="2">6</td>
+                <td colspan="2">7</td>
+                <td colspan="2">8</td>
+                <td colspan="2">9</td>
+                <td colspan="3">10</td>
+              </tr>
+              <tr>
+                <th scope="row">Rolls</th>
+                <td>1</td>
+                <td>9</td>
+                <td>2</td>
+                <td>9</td>
+                <td>3</td>
+                <td>7</td>
+                <td>4</td>
+                <td>6</td>
+                <td>5</td>
+                <td>5</td>
+                <td>6</td>
+                <td>4</td>
+                <td>7</td>
+                <td>3</td>
+                <td>8</td>
+                <td>2</td>
+                <td>9</td>
+                <td>1</td>
+                <td>0</td>
+                <td>10</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <th scope="row">Score</th>
+                <td colspan="2">10</td>
+                <td colspan="2">10</td>
+                <td colspan="2">10</td>
+                <td colspan="2">10</td>
+                <td colspan="2">10</td>
+                <td colspan="2">10</td>
+                <td colspan="2">10</td>
+                <td colspan="2">10</td>
+                <td colspan="2">10</td>
+                <td colspan="3">10</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="src/Bowling.js"></script>
+  <script src="Interface.js"></script>
 </body>
 </html>

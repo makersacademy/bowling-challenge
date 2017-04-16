@@ -38,23 +38,23 @@ Bowling.prototype.nextFrame = function () {
 };
 
 Bowling.prototype.getCurrentScore = function () {
-  var gameResult = 0;
+  var gameScore = 0;
   var rollIndex = 0;
   var game = this;
 
   for (var frameIndex = 0; frameIndex < this.frameNumber-1; frameIndex++) {
     if (isStrike()) {
-      gameResult += getStrikeScore();
+      gameScore += getStrikeScore();
       rollIndex += 1;
     } else if (isSpare()) {
-      gameResult += getSpareScore();
+      gameScore += getSpareScore();
       rollIndex += 2;
     } else {
-      gameResult += getNormalScore();
+      gameScore += getNormalScore();
       rollIndex += 2;
     }
   }
-  return gameResult;
+  return gameScore;
 
   function isStrike() {
     return game.rollHistory[rollIndex] === 10;
@@ -67,8 +67,7 @@ Bowling.prototype.getCurrentScore = function () {
   function getStrikeScore() {
     if (typeof game.rollHistory[rollIndex + 2] === 'undefined') {
         return 0;
-    }
-    else {
+    } else {
         return game.rollHistory[rollIndex] + game.rollHistory[rollIndex + 1] + game.rollHistory[rollIndex + 2];
     }
   }
@@ -76,8 +75,7 @@ Bowling.prototype.getCurrentScore = function () {
   function getSpareScore() {
     if (typeof game.rollHistory[rollIndex + 2] === 'undefined') {
         return 0;
-    }
-    else {
+    } else {
         return game.rollHistory[rollIndex] + game.rollHistory[rollIndex + 1] + game.rollHistory[rollIndex + 2];
     }
   }

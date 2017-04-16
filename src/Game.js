@@ -84,14 +84,9 @@ Game.prototype.strikeOrSpare = function(){
 }
 
 Game.prototype.makeFrame = function(){
-  if (this.isFrameBonus()){
-    if (this.isFinalFrame()){
-      // which kind of bonus? if spare 1 more roll. if strike 2 more rolls.
-      this.strikeOrSpare();
-    } else {
-      this.frameHistory.push(this.currentFrame);
-      this.nextFrame();
-    }
+  if (this.isFrameBonus() && this.isFinalFrame()){
+    // which kind of bonus? if spare 1 more roll. if strike 2 more rolls.
+    this.strikeOrSpare();
   } else {
     this.frameHistory.push(this.currentFrame);
     this.nextFrame();

@@ -21,6 +21,7 @@ describe("Frame", function() {
     it('Should be zero initially', function(){
       expect(frame.score).toEqual(0);
     });
+
   });
 
   describe("play", function() {
@@ -40,6 +41,7 @@ describe("Frame", function() {
       frame.play();
       expect(frame.score).toEqual(5);
     });
+
   });
 
   describe("setStrike", function() {

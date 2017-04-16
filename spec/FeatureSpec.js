@@ -7,8 +7,7 @@ describe("Feature spec", function() {
 
   describe("Playing one ball", function() {
     it("Should reduce number of pins and increase the score", function() {
-      spyOn(game._frame, 'rollScore').and.returnValue(7);
-      game.play();
+      game.play(7);
       expect(game._frame.pins).toEqual(3);
       expect(game._frame.rollsLeft).toEqual(1);
       expect(game._frame.score).toEqual(7);
@@ -17,10 +16,9 @@ describe("Feature spec", function() {
 
   describe("Playing a whole frame", function() {
     it("Should move frame to frames array and move to next frame", function() {
-      spyOn(game._frame, 'rollScore').and.returnValue(4);
       var frame = game._frame
       for(i = 1; i <= 2; i++) {
-        game.play();
+        game.play(4);
       }
       expect(game.frames).toContain(frame);
       expect(game.currentFrame).toEqual(2);
@@ -29,12 +27,29 @@ describe("Feature spec", function() {
 
   describe("Throwing a strike", function() {
     it("Should end the frame and flag that a strike has taken place", function() {
-      spyOn(game._frame, 'rollScore').and.returnValue(10);
       var frame = game._frame
-      game.play();
+      game.play(10);
       expect(game.frames).toContain(frame);
       expect(game.currentFrame).toEqual(2);
       expect(frame.isStrike).toBe(true);
+    })
+
+    it("Should add combined score of next roll to total", function() {
+      game.play(10);
+      game.play(4);
+      game.play(3);
+      expect(game.frames[0].score).toEqual(17);
+    })
+  })
+
+  describe("Throwing a spare", function() {
+    it("Should end the frame and flag that a spare has taken place", function() {
+      var frame = game._frame
+      game.play(1);
+      game.play(9);
+      expect(game.frames).toContain(frame);
+      expect(game.currentFrame).toEqual(2);
+      expect(frame.isSpare).toBe(true);
     })
   })
 });

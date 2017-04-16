@@ -10,12 +10,7 @@ function Frame () {
 Frame.prototype.DEFAULTPINS = 10;
 Frame.prototype.DEFAULTROLLS = 2;
 
-Frame.prototype.rollScore = function() {
-  return Math.floor(Math.random() * (this.pins + 1)) + 0;
-};
-
-Frame.prototype.play = function() {
-  var score = this.rollScore();
+Frame.prototype.play = function(score) {
   if(this.rollsLeft === 2 && score === this.pins) {
     this.pins -= score;
     this.score += score;

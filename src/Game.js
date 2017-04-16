@@ -11,9 +11,9 @@ Game.prototype.createFrame = function() {
   return new Frame();
 };
 
-Game.prototype.play = function() {
+Game.prototype.play = function(score) {
   if(this.rollsLeft(this._frame) === 2) {
-    this._frame.play();
+    this._frame.play(score);
     if(this._frame.isStrike === true) {
       console.log("End of frame " + this.currentFrame + "!");
       this.bonusCalculator();
@@ -22,7 +22,7 @@ Game.prototype.play = function() {
     }
   }
   else if(this.rollsLeft(this._frame) === 1){
-    this._frame.play();
+    this._frame.play(score);
     console.log("End of frame " + this.currentFrame + "!");
     this.bonusCalculator();
     this.addFrame(this._frame);

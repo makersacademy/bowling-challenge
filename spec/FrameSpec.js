@@ -26,20 +26,17 @@ describe("Frame", function() {
 
   describe("play", function() {
     it('should decrease number of pins', function() {
-      spyOn(frame, 'rollScore').and.returnValue(5);
-      frame.play();
+      frame.play(5);
       expect(frame.pins).toEqual(5);
     });
 
     it('should decrease number of rolls left', function() {
-      spyOn(frame, 'rollScore').and.returnValue(5);
-      frame.play();
+      frame.play(5);
       expect(frame.rollsLeft).toEqual(1);
     });
 
     it('should increase score when roll is higher than zero', function() {
-      spyOn(frame, 'rollScore').and.returnValue(5);
-      frame.play();
+      frame.play(5);
       expect(frame.score).toEqual(5);
     });
 

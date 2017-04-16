@@ -217,6 +217,14 @@ describe('Game', function(){
       expect(game.getScore()).toEqual(14)
     })
 
+    it('totals score correctly', function(){
+      game.makeRoll(7);
+      game.makeRoll(3);
+      game.makeRoll(4);
+      game.makeRoll(3);
+      expect(game.getScore()).toEqual(21)
+    })
+
     it('adds strike bonus in at end of next non-bonusy frame', function(){
       game.makeRoll(10);
       game.makeRoll(5);

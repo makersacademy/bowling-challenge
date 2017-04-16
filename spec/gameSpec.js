@@ -28,4 +28,11 @@ describe('Game', function(){
     game.startGame();
     expect(game.totalGameScore()).toEqual(50)
   });
+
+  it('does not allow second bowl if strike', function(){
+    spyOn(Frame.prototype, 'secondBowl')
+    spyOn(Frame.prototype, 'pinsDown').and.returnValue(10)
+    game.playFrame(5);
+    expect(Frame.prototype.secondBowl).not.toHaveBeenCalled()
+  });
 });

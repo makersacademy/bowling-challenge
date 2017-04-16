@@ -44,3 +44,6 @@ Usage
 - cd bowling-challenge
 - open SpecRunner.html
 
+Things I want to complete in the future:
+- The logic was quite difficult so it is a WIP
+- Adding front end

@@ -1,4 +1,4 @@
-![Travis CI](https://travis-ci.org/makersacademy/bowling-challenge.svg?branch=master)
+![Travis CI](https://travis-ci.org/kittysquee/bowling-challenge.svg?branch=master)
 
 # Bowling Challenge
 

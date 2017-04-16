@@ -12,30 +12,30 @@ Frame.prototype.pinsDown = function(max) {
 };
 
 Frame.prototype.firstBowl = function(){
-  var result = this.pinsDown(this.pins)
-  this.firstBowlRemainder = 10 - result
-  this.totalScore = result
+  var result = this.pinsDown(this.pins);
+  this.firstBowlRemainder = 10 - result;
+  this.totalScore = result;
   if (this.totalScore === 10) {
-    return "Strike!"
+    return 'Strike!';
   } else if (this.totalScore === 0) {
-    return "Gutterball!"
+    return 'Gutterball!';
   } else {
-    return result
+    return result;
   }
 };
 
 Frame.prototype.secondBowl = function(){
-  var result = this.pinsDown(this.firstBowlRemainder)
-  this.totalScore += result
+  var result = this.pinsDown(this.firstBowlRemainder);
+  this.totalScore += result;
   if (result === 0) {
-    return 'Gutterball!'
+    return 'Gutterball!';
   } else if (this.totalScore === 10) {
-    return 'Spare!'
+    return 'Spare!';
   } else {
-    return result
+    return result;
   }
 };
 
 Frame.prototype.frameScore = function(){
-  return this.totalScore
+  return this.totalScore;
 };

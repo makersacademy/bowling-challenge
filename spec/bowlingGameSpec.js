@@ -39,5 +39,16 @@ describe("bowling game", function() {
       bowlingGame.pinsInUse();
       expect(bowlingGame.pins).toEqual(8)
     });
+
+    // As a bowler,
+    // At the end of the second shot,
+    // I want the pins to reset,
+    // so that I can play a new frame
+    it("resets pins at start of next frame", function() {
+      bowlingGame.firstShot(2);
+      bowlingGame.secondShot(7);
+      bowlingGame.pinsInUse();
+      expect(bowlingGame.pins).toEqual(10)
+    });
   });
 });

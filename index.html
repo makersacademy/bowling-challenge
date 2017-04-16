@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bowling Calculator</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<ul>
+
+  <li id="balls">
+    <ul>Frame
+    <li><p id="frame-one-ball-one"><p></li>
+    <li><p id="frame-one-ball-two"></p></li>
+    <li><p id="frame-two-ball-one"></p></li>
+    <li><p id="frame-two-ball-two"></p></li>
+    <li><p id="frame-three-ball-one"></p></li>
+    <li><p id="frame-three-ball-two"></p></li>
+    <li><p id="frame-four-ball-one"><p></li>
+    <li><p id="frame-four-ball-two"></p></li>
+    <li><p id="frame-five-ball-one"></p></li>
+    <li><p id="frame-five-ball-two"></p></li>
+    <li><p id="frame-six-ball-one"></p></li>
+    <li><p id="frame-six-ball-two"></p></li>
+    <li><p id="frame-seven-ball-one"><p></li>
+    <li><p id="frame-seven-ball-two"></p></li>
+    <li><p id="frame-eight-ball-one"></p></li>
+    <li><p id="frame-eight-ball-two"></p></li>
+    <li><p id="frame-nine-ball-one"></p></li>
+    <li><p id="frame-nine-ball-two"></p></li>
+    <li><p id="frame-ten-ball-one"><p></li>
+    <li><p id="frame-ten-ball-two"></p></li>
+    <li><p id="frame-ten-ball-three"></p></li>
+    </ul>
+  </li>
+  <li id="frame-scores">
+    <ul>Score
+    <li><p id="frame-one-score"></p></li>
+    <li><p id="frame-two-score"></p></li>
+    <li><p id="frame-three-score"></p></li>
+    <li><p id="frame-four-score"></p></li>
+    <li><p id="frame-five-score"></p></li>
+    <li><p id="frame-six-score"></p></li>
+    <li><p id="frame-seven-score"></p></li>
+    <li><p id="frame-eight-score"></p></li>
+    <li><p id="frame-nine-score"></p></li>
+    <li><p id="frame-ten-score"></p></li>
+    </ul>
+  </li>
+</ul>
+
+
+<table id="holder">
+    <tr>
+      <td id="zerobutton" class="button"><a href="#">0</a></td>
+      <td id="onebutton" class="button"><a href="#">1</a></td>
+      <td id="twobutton" class="button"><a href="#">2</a></td>
+      <td id="threebutton" class="button"><a href="#">3</a></td>
+      <td id="fourbutton" class="button"><a href="#">4</a></td>
+      <td id="fivebutton" class="button"><a href="#">5</a></td>
+      <td id="sixbutton" class="button"><a href="#">6</a></td>
+      <td id="sevenbutton" class="button"><a href="#">7</a></td>
+      <td id="eightbutton" class="button"><a href="#">8</a></td>
+      <td id="ninebutton" class="button"><a href="#">9</a></td>
+      <td id="strikebutton" class="button"><a href="#">X</a></td>
+    </tr>
+</table>
+
+<script src="src/Scorer.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+$(document).ready(function() {
+  var scorer = new Scorer();
+  var myArray = new Array();
+    myArray = scorer.rolls;
+    var balls = ['#frame-one-ball-one',"#frame-one-ball-two","#frame-two-ball-one","#frame-two-ball-two","#frame-three-ball-one","#frame-three-ball-two","#frame-four-ball-one","#frame-four-ball-two","#frame-five-ball-one","#frame-five-ball-two","#frame-six-ball-one","#frame-six-ball-two","#frame-seven-ball-one","#frame-seven-ball-two","#frame-eight-ball-one","#frame-eight-ball-two","#frame-nine-ball-one","#frame-nine-ball-two","#frame-ten-ball-one","#frame-ten-ball-two","#frame-ten-ball-three"];
+    var currentBall = scorer.rolls.length;
+
+    enterScore = function() {
+      $(balls[currentBall]).text(scorer.rolls.slice(-1)[0]);
+      currentBall +=1;
+    };
+
+  $('#zerobutton').on('click', function(e) {
+    e.preventDefault();
+    scorer.roll(0);
+    console.log(scorer.frameNumber());
+    enterScore();
+  });
+
+  $('#onebutton').on('click', function(e) {
+    e.preventDefault();
+    scorer.roll(1);
+    enterScore();
+  });
+
+  $('#twobutton').on('click', function(e) {
+    e.preventDefault();
+    scorer.roll(2);
+    enterScore();
+  });
+
+  $('#threebutton').on('click', function(e) {
+   e.preventDefault();
+    scorer.roll(3);
+    enterScore();
+  });
+
+  $('#fourbutton').on('click', function(e) {
+    e.preventDefault();
+    scorer.roll(4);
+    enterScore();
+  });
+
+  $('#fivebutton').on('click', function(e) {
+    e.preventDefault();
+    scorer.roll(5);
+    enterScore();
+  });
+
+  $('#sixbutton').on('click', function(e) {
+    e.preventDefault();
+    scorer.roll(6);
+    enterScore();
+  });
+
+  $('#sevenbutton').on('click', function(e) {
+    e.preventDefault();
+    scorer.roll(7);
+    enterScore();
+  });
+
+  $('#eightbutton').on('click', function(e) {
+    e.preventDefault();
+    scorer.roll(8);
+    enterScore();
+  });
+
+  $('#ninebutton').on('click', function(e) {
+    e.preventDefault();
+    scorer.roll(9);
+    enterScore();
+  });
+
+  $('#strikebutton').on('click', function(e) {
+    e.preventDefault();
+    scorer.roll(10);
+    currentBall +=1;
+    $(balls[currentBall]).text('X');
+    currentBall +=1;
+  });
+
+
+
+});
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -115,19 +115,17 @@ I want to report the score of the frame in a format the player will recognise
 ## Installation
 - Clone the repo
 - `cd` to the project folder
-- Run `open `
-- Create two local postrgresql databases called `chitter_development` and `chitter_test`
 
-To test:
+## Testing
 - `cd` to the project folder
 - Run `open SpecRunner.html`
 
-To run the application locally:
+## Running the application
 - `cd` to the project folder
 - Run `open public/index.html`
 
 ## Potential feature improvements
 * Score more than one player.
-* Name players
+* Name players.
 * Add game functionality.
 * Refactor printer logic.

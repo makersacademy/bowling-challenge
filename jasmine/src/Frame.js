@@ -1,6 +1,9 @@
+'use strict';
+
 function Frame() {
   this.pins = 10
   this.bowls = 2
+  this.scores = 0
 }
 
 Frame.prototype.bowl_one = function(pins) {
@@ -22,14 +25,18 @@ Frame.prototype.complete = function() {
       return 'strike'
     } else {
       this.bowl_two(this.rand_num())
-      if(this.pins === 0) {
-        return 'spare' }
-        else if(this.pins > 0) {
-          return this.pins
-        }
-      }
+      return this.score()
+    }
 }
 
+
+Frame.prototype.score = function() {
+    if(this.pins === 0) {
+      return 'spare'
+    } else {
+      return this.pins
+      }
+}
 Frame.prototype.rand_num = function() {
-  return Math.floor(Math.random() * this.pins)
+  return Math.floor(Math.random() * (this.pins + 1))
 }

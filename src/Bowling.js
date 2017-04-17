@@ -13,7 +13,7 @@ Bowling.prototype.getFrameNumber = function () {
 
 Bowling.prototype.roll = function (pins) {
   if (pins > this.pinsRemaining) {
-    throw new TypeError("Invalid number of pins knocked over")
+    throw new TypeError('Invalid number of pins knocked over');
   } else {
     this.rollsThisFrame += 1;
     this.rollHistory.push(pins);

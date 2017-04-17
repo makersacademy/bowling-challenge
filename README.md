@@ -1,3 +1,36 @@
+# Example of use
+
+```
+> game = bowling.getStandaloneFramesGame();
+[ [ 4, 4 ],
+  [ 10, null ],
+  [ 7, 1 ],
+  [ 7, 0 ],
+  [ 4, 5 ],
+  [ 1, 1 ],
+  [ 6, 0 ],
+  [ 1, 5 ],
+  [ 2, 7 ],
+  [ 2, 6 ] ]
+> scores = bowling.findStandaloneScores(game);
+[ 8, 10, 8, 7, 9, 2, 6, 6, 9, 8 ]
+> allocateBonuses(game, scores);
+ReferenceError: allocateBonuses is not defined
+    at repl:1:1
+    at REPLServer.defaultEval (repl.js:132:27)
+    at bound (domain.js:254:14)
+    at REPLServer.runBound [as eval] (domain.js:267:12)
+    at REPLServer.<anonymous> (repl.js:279:12)
+    at REPLServer.emit (events.js:107:17)
+    at REPLServer.Interface._onLine (readline.js:214:10)
+    at REPLServer.Interface._line (readline.js:553:8)
+    at REPLServer.Interface._ttyWrite (readline.js:830:14)
+    at ReadStream.onkeypress (readline.js:109:10)
+> bowling.allocateBonuses(game, scores);
+i = 1 game[(i + 1)][1] = 1
+[ 8, 18, 8, 7, 9, 2, 6, 6, 9, 8 ]
+```
+
 
 Bowling Challenge
 =================
@@ -9,14 +42,14 @@ Bowling Challenge
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday week
 
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Forking this repo
 

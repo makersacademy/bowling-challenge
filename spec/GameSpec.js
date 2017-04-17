@@ -8,6 +8,10 @@ describe("Game", function(){
     expect(game.allFrames).toEqual([]);
   });
 
+  it("initializes with a score of 0", function() {
+    expect(game.runningTotal).toEqual(0);
+  });
+
   it("initializes with an empty current frame", function() {
     expect(game.currentFrame.frameScores).toEqual([]);
   });
@@ -18,6 +22,13 @@ describe("Game", function(){
       spyOn(Math, 'floor').and.returnValue(5);
       game.play();
       expect(game.currentFrame.frameScores).toEqual([5]);
+    });
+
+    it("pushes the frame score to allFrames on completion", function() {
+      spyOn(Math, 'floor').and.returnValue(5);
+      game.play();
+      game.play();
+      expect(game.allFrames[0].frameScores).toEqual([5, 5]);
     });
   });
 

@@ -1,6 +1,7 @@
 function Game() {
   this.allFrames = [];
   this.currentFrame = new Frame;
+  this.runningTotal = 0;
 }
 
 Game.prototype.play = function() {

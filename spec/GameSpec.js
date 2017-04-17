@@ -5,26 +5,29 @@ describe('Game', function() {
   var frame;
   beforeEach(function() {
     game = new Game();
-    frame = jasmine.createSpy('frame');
+    frame = new Frame();
   });
-
 
   it('has a starting score of 0', function() {
     expect(game.score).toEqual(0);
   });
 
   it('starts off with no frames', function() {
-    expect(game._frames).toEqual([]);
+    expect(game.frames).toEqual([]);
   });
 
   it('adds frames to the game', function() {
     game.addFrames(frame);
-    expect(game._frames).toEqual([frame]);
+    expect(game.frames).toEqual([frame]);
   });
 
-  xit('updates game score', function() {
+  it('updates game score', function() {
+    spyOn(Math, 'floor').and.returnValue(4)
     game.addFrames(frame);
-    game.updateScore(frame).toEqual(10);
+    game.frames[0].bowl();
+    game.frames[0].bowl();
+    game.updateScore();
+    expect(game.score).toEqual(8);
   });
 
 });

@@ -6,9 +6,12 @@ function Frame() {
 };
 
 Frame.prototype.bowl = function() {
+  if(this.currentFrame.length === 2){
+    throw new Error("Cannot bowl, frame is complete")
+  } else {
   var fallenPins = Math.floor((Math.random() * 11));
   this.remainingPins = this.remainingPins - (fallenPins);
-  this.updateFrame();
+  this.updateFrame();}
 };
 
 Frame.prototype.updateFrame = function() {

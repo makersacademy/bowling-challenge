@@ -34,4 +34,11 @@ describe("Frame", function() {
     frame.bowl();
     expect(frame.currentFrame).toEqual([10, 0]);
     });
+
+  it("does not allow further bowling if frame is complete", function() {
+    spyOn(Math, 'floor').and.returnValue(4);
+    frame.bowl();
+    frame.bowl();
+    expect(function(){frame.bowl()}).toThrowError("Cannot bowl, frame is complete")
+  });
   });

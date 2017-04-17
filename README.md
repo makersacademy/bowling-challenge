@@ -1,5 +1,5 @@
 
-Bowling Challenge
+Bowling Challenge [![Build Status](https://travis-ci.org/hsheikhm/bowling-challenge.svg?branch=master)](https://travis-ci.org/hsheikhm/bowling-challenge)
 =================
 
 

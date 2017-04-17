@@ -5,6 +5,8 @@ function Bowling() {
   this.roll = 1;
   this.frameScore = 0;
   this.total = 0;
+
+  this.isFrameComplete = false;
 };
 
 Bowling.prototype.getFrame = function () {
@@ -24,14 +26,13 @@ Bowling.prototype.getTotal = function () {
 };
 
 Bowling.prototype.bowl = function (pins) {
+  this.isFrameComplete = false;
   this.roll += 1;
   this.frameScore += pins;
-};
-
-Bowling.prototype.isFrameComplete = function () {
-  if (this.roll === 1) {
-    return false;
-  } else {
-    return true;
+  if (this.roll > 2) {
+    this.roll = 1;
+    this.isFrameComplete = true;
+    this.total += this.frameScore;
+    this.frameScore = 0;
   }
 };

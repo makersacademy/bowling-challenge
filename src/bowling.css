@@ -1,0 +1,177 @@
+
+h1{
+  font-family: 'Paytone One', sans-serif;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+
+#rollForm{
+  text-align: center;
+  margin-top: 24px;
+}
+
+form{
+  width: 100%;
+  margin: auto 0;
+  font-family: 'Paytone One', sans-serif;
+  font-size: 20px;
+}
+
+h2{
+  font-family: 'Paytone One', sans-serif;
+}
+
+#second_label{
+  margin-left: 10px;
+}
+
+.test123{
+  border: 2px solid black;
+  height: 20px;
+  width: 30px;
+}
+
+/*styling for bowling score boxes*/
+#score_box{
+  border: 1px solid black;
+  margin: auto;
+  width: 85%;
+  margin-top:25px;
+}
+
+
+.box{
+  border: 2px solid black;
+  height: 20px;
+  width: 30px;
+}
+
+.first_score{
+  height: 20px;
+  width: 65px;
+}
+
+.second_score{
+  height: 20px;
+  width: 65px;
+}
+
+.frame_score{
+  border: 2px solid black;
+  height: 40px;
+  width: 130px;
+}
+
+#game-result{
+  border: 2px solid black;
+  width: 180px;
+
+}
+
+
+
+
+/*STYLING RELATING TO BACKGROUND*/
+*{
+margin:0;
+  padding:0;
+}
+
+
+html,body{
+ position:relative;
+  background-color:LightSkyBlue;
+  width:100%;
+  height:100%;
+
+
+}
+
+#score_heading{
+  font-family: 'Paytone One', sans-serif;
+  margin-top: 40px;
+
+}
+
+#frames_heading{
+  font-family: 'Paytone One', sans-serif;
+  margin-top: 55px;
+}
+
+
+.pin:before {
+  content:"";
+
+  position:absolute;
+  z-index:0;
+  top:-26px;
+  left:3px;
+  width:34px;
+  height:44px;
+  background-color:transparent;
+  background-image:-webkit-linear-gradient(
+    top, white 0%, whitesmoke 100%
+    );
+  background-image:-moz-linear-gradient(
+    top, white 0%, whitesmoke 100%
+    );
+  background-image:linear-gradient(
+    top, white 0%, whitesmoke 100%
+    );
+  clip:rect(0px,100px,38px,0px);
+  border-radius:100%;
+ box-shadow:inset 2px 0px 10px rgba(0,0,0,0.3),
+            inset -2px 0 10px rgba(0,0,0,0.3);
+}
+
+.pin{
+  margin:90px auto 0 auto;
+  display:block;
+
+  position:relative;
+  width:40px;
+   height:112px;
+  background-color:whitesmoke;
+  background-image:-webkit-linear-gradient(
+    top, whitesmoke, whitesmoke 12px,
+          red 12px, red 19px,
+          whitesmoke 19px, whitesmoke 25px,
+          red 25px, red 32px,
+          whitesmoke 32px
+    );
+  background-image:-moz-linear-gradient(
+    top, whitesmoke, whitesmoke 12px,
+          red 12px, red 19px,
+          whitesmoke 19px, whitesmoke 25px,
+          red 25px, red 32px,
+          whitesmoke 32px
+    );
+  background-image:linear-gradient(
+    top, whitesmoke, whitesmoke 12px,
+          red 12px, red 19px,
+          whitesmoke 19px, whitesmoke 25px,
+          red 25px, red 32px,
+          whitesmoke 32px
+    );
+  border-radius:100%;
+  box-shadow:inset 2px 0px 10px rgba(0,0,0,0.3),
+            inset -2px 0 10px rgba(0,0,0,0.3);
+
+
+
+}
+
+
+.pin:after {
+    content:"";
+  z-index:10;
+  position:absolute;
+  width:14px;
+  height:2px;
+  left:13px;
+  bottom:0px;
+  background-color:rgb(19,100,240);
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+}

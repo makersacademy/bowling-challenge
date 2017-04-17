@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bowling Game</title>
+  <link rel="stylesheet" type="text/css" href="bowling.css">
+  <link href='http://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+  <h1>Let's Play Bowls!</h1>
+  <div id="rollForm">
+    <form id="bowlsform">
+      <label for="bowl_1">First Bowl</label>
+      <input name="bowl_1" id="bowl_1" type="text" size=4>
+      <label for="bowl_2" id="second_label">Second Bowl</label>
+      <input name="bowl_2" id="bowl_2" type="text" size=4>
+      <input name="Hit to register bowls!" type="submit">
+
+    </form>
+
+  <h2 id="score_heading">Total Score</h2>
+
+    <p id="score"><p>
+
+  <table class="box" id="score_box">
+    <tbody class="box">
+      <tr class="box">
+        <td class="first_score box">
+          <div id="frame1-1"></div>
+        </td>
+        <td class="second_score box">
+          <div id="frame1-2"></div>
+        </td>
+        <td class="first_score box" id="score3">
+          <div id="frame2-1"></div>
+        </td>
+        <td class="second_score box" id="score4">
+          <div id="frame2-2"></div>
+        </td>
+        <td class="first_score box" id="score5">
+          <div id="frame3-1"></div>
+        </td>
+        <td class="second_score box" id="score6">
+          <div id="frame3-2"></div>
+        </td>
+        <td class="first_score box" id="score7">
+          <div id="frame4-1"></div>
+        </td>
+        <td class="second_score box" id="score8">
+          <div id="frame4-2"></div>
+        </td>
+        <td class="first_score box" id="score9">
+          <div id="frame5-1"></div>
+        </td>
+        <td class="second_score box" id="score10">
+          <div id="frame5-2"></div>
+        </td>
+        <td class="first_score box" id="score11">
+          <div id="frame6-1"></div>
+        </td>
+        <td class="second_score box" id="score12">
+          <div id="frame6-2"></div>
+        </td>
+        <td class="first_score box" id="score13">
+          <div id="frame7-1"></div>
+        </td>
+        <td class="second_score box" id="score14">
+          <div id="frame7-2"></div>
+        </td>
+        <td class="first_score box" id="score15">
+          <div id="frame8-1"></div>
+        </td>
+        <td class="second_score box" id="score16">
+          <div id="frame8-2"></div>
+        </td>
+        <td class="first_score box" id="score17">
+          <div id="frame9-1"></div>
+        </td>
+        <td class="second_score box" id="score18">
+          <div id="frame9-2"></div>
+        </td>
+        <td class="first_score box" id="score19">
+          <div id="frame10-1"></div>
+        </td>
+        <td class="second_score box" id="score20">
+            <div id="frame10-2"></div>
+        </td>
+        <td class="first_score box" id="score21">
+          <div id="frame11-1"></div>
+        </td>
+        <td rowspan="2" id="game-result">
+          <div id="game_result_val"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="frame_score" colspan="2">
+          <div id="frameOutcome1"></div>
+        </td>
+        <td class="frame_score" id="frame2" colspan="2">
+          <div id="frameOutcome2"></div>
+        </td>
+        <td class="frame_score" id="frame3" colspan="2">
+          <div id="frameOutcome3"></div>
+        </td>
+        <td class="frame_score" id="frame4" colspan="2">
+          <div id="frameOutcome4"></div>
+        </td>
+        <td class="frame_score" id="frame5" colspan="2">
+          <div id="frameOutcome5"></div>
+        </td>
+        <td class="frame_score" id="frame6" colspan="2">
+          <div id="frameOutcome6"></div>
+        </td>
+        <td class="frame_score" id="frame7" colspan="2">
+          <div id="frameOutcome7"></div>
+        </td>
+        <td class="frame_score" id="frame8" colspan="2">
+          <div id="frameOutcome8"></div>
+        </td>
+        <td class="frame_score" id="frame9" colspan="2">
+          <div id="frameOutcome9"></div>
+        </td>
+        <td class="frame_score" id="frame10" colspan="3">
+          <div id="frameOutcome10"></div>
+        </td>
+      </tr>
+
+
+
+    </tbody>
+
+  </table>
+
+  </div>
+
+  <h2>Weather for bowling - London</h2>
+  <p id="weather">test message</p>
+
+<i class="pin"></i>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="bowling.js"></script>
+<script type="text/javascript" src="bowlingjquery.js"></script>
+</body>
+</html>

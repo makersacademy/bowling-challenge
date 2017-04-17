@@ -168,21 +168,6 @@ describe ('Game', function(){
   });
 
   describe('End Sequence', function(){
-    it('initiates end sequence once tenth frame complete', function(){
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(8);
-      game.roll(1);
-      game.roll(3)
-      expect(game._endSequence()).toEqual("Game Finished");
-    });
 
     it('calculates game total score', function(){
       game.roll(1);
@@ -206,8 +191,42 @@ describe ('Game', function(){
       game.roll(1);
       game.roll(2);
       game.roll(3);
-      expect(game._totalScore()).toEqual(30);
+      expect(game._calculateTotalScore()).toEqual(30);
     });
+
+    it('returns score for average game', function(){
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(8);
+      game.roll(1);
+      game.roll(3);
+      expect(game._endSequence()).toEqual("Your score is 266!");
+    });
+
+    it('returns score and Perfect game message for Perfect game', function(){
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(3);
+      expect(game._endSequence()).toEqual("Your score is 300. Congratulations! You played a Perfect Game!");
+    });
+
   })
 
   describe('Random Rolls', function(){

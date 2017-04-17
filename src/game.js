@@ -7,13 +7,11 @@ this._randRoll1 = 0;
 this._randRoll2 = 0;
 this._currentFrame;
 this._gameIsFinished = false;
+this._finalScore = 0;
 }
 
 Game.prototype.roll = function (knockedPins) {
-  if ( this._framesInPlay.length === 10 ) {
-    this._gameFinished();
-    this._endSequence();
-  } else if ( this._framesInPlay.length === 9 ) {
+  if ( this._framesInPlay.length === 9 ) {
     this._tenthRoll(knockedPins);
   } else if ( this._currentFrame == undefined  ) {
     this._currentFrame = new Frame(knockedPins);
@@ -33,7 +31,7 @@ Game.prototype._tenthRoll = function (knockedPins) {
   if ( this._currentFrame._isStrike && this._currentFrame.getRollNumber() === 3 ){
     this._currentFrame.playBonusRoll(knockedPins);
     this._currentFrame.addRollNumber();
-  } else if( this._currentFrame._isStrike && this._currentFrame.getRollNumber() === 2 ) {
+  } else if ( this._currentFrame._isStrike && this._currentFrame.getRollNumber() === 2 ) {
     this._currentFrame.playSecondRoll(knockedPins);
     this._currentFrame.addRollNumber();
   } else if ( this._currentFrame.getRollNumber() === 1 ) {
@@ -43,6 +41,8 @@ Game.prototype._tenthRoll = function (knockedPins) {
   } else if ( this._currentFrame._isSpare ) {
     this._currentFrame.playBonusRoll(knockedPins);
   } else { this._framesInPlay.push(this._currentFrame);
+    this._gameFinished();
+    this._endSequence();
     };
 }
 
@@ -86,7 +86,7 @@ Game.prototype.getFrameScoreTen = function () {
   return frame.getScore();
 }
 
-Game.prototype._totalScore = function () {
+Game.prototype._calculateTotalScore = function () {
   var total_score = 0
   for (var i = 0; i < 8; i++) {
     total_score += this.getFrameScore(i);
@@ -102,7 +102,17 @@ Game.prototype._gameFinished = function () {
 };
 
 Game.prototype._endSequence = function () {
-  return "Game Finished";
+
+  this._finalScore = this._calculateTotalScore();
+
+  if ( this._finalScore === 300 ) {
+    return "Your score is 300. Congratulations! You played a Perfect Game!"
+  } else if (this._finalScore === 0 ) {
+    return "Your score is 0. Congratulations! You played a Gutter Game!"
+  } else {
+    return "Your score is " + this._finalScore + "!";
+  }
+
 };
 
 Game.prototype.generateRandRoll1 = function () {

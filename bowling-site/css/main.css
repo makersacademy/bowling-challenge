@@ -14,6 +14,22 @@ body,html {
     width:100%;
 }
 
+.button-div{
+  float: bottom;
+  background-color: orange;
+  height:10%;
+  width:100%;
+  text-align: center;
+  position:absolute;
+  bottom:0;
+
+}
+.bowling-button{
+  height: 100%;
+  width:100%
+  }
+
+
 .score-table{
   text-align: center;
   margin: auto 0px;
@@ -27,7 +43,7 @@ body,html {
 }
 .frame-table{
   background-color:#9C924B;
-  width:9.8%;
+  width:9.75%;
   height:100%;
   float:left;
 
@@ -43,7 +59,7 @@ body,html {
 .throw2-score{
   width:50%;
   height:33.3%;
-  float:right;
+  float:left;
   background-color: #9C1159;
 }
 .throw-number{
@@ -56,4 +72,22 @@ body,html {
   background-color:#E875B1;
   width:100%;
   height:33.3%;
+}
+
+#frame-10 .throw1-score{
+
+  width: 33%;
+  background-color: orange;
+}
+
+#frame-10 .throw2-score{
+  width: 33%;
+
+}
+
+.throw3-score{
+  width: 33%;
+  height: 33.3%;
+  background-color: red;
+  float: left;
 }

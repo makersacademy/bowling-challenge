@@ -27,7 +27,7 @@ describe('Initialize', function() {
     });
 
     it ('message is initialized with false', function() {
-      expect(game.message).toEqual(false);
+      expect(game.message).toEqual(' ');
     });
 
     describe('addScore', function() {
@@ -45,14 +45,14 @@ describe('Initialize', function() {
   describe('documentFirstRound', function() {
   it ('documentFirstRound creates an array with scorecard', function() {
     game.firstRoll(5);
-    expect(game.frames).toEqual([[1, 1, 5, 5, "Good job!"]]);
+    expect(game.frames).toEqual([[1, 1, 5, 5, ' ']]);
   });
 });
 
   describe('documentStrike', function() {
     it ('documentStrike creates a default second roll', function() {
       game.firstRoll(10);
-      expect(game.frames).toEqual([[1, 1, 10, 10, "Strike!"], [1, 2, "", 10, ""]]);
+      expect(game.frames).toEqual([[1, 1, 10, 10, "Strike!"], [1, 2, ' ', 10, ' ']]);
     });
   });
 
@@ -99,32 +99,22 @@ describe('Initialize', function() {
 
   });
 
-  describe('getMessage', function() {
-  it ('message to be "Unlucky" when score is 0', function() {
-    game.getMessage(0);
-    expect(game.message).toEqual("Unlucky");
+  describe('secondRoll', function() {
+  it ('adds a spare bonus to the next round', function() {
+    game.firstRoll(5);
+    game.secondRoll(5);
+    game.firstRoll(3);
+    game.secondRoll(4);
+    expect(game.totalScore).toEqual(20);
   });
-  it ('message to be "Better luck next time!" when score is between 1 and 3', function() {
-    for (var number = 1; number < 4; number++) {
-      game.getMessage(number);
-    } expect(game.message).toEqual("Better luck next time!");
-  });
+});
 
-  it ('message to be "Good job"!" when score is between 4 and 7', function() {
-    for (var number = 4; number < 8; number++) {
-      game.getMessage(number);
-    } expect(game.message).toEqual("Good job!");
-  });
-
-  it ('message to be "Awesome!" when score is between 8 and 10', function() {
-    for (var number = 8; number < 10; number++) {
-      game.getMessage(number);
-    } expect(game.message).toEqual("Awesome!");
-  });
-
-  it ('message to be "Strike!" when score is 10 the first time', function() {
-      game.firstRoll(10);
-      expect(game.message).toEqual("Strike!");
-  });
+  describe('tenthFrame', function() {
+    it ('if in the 10th frame, player can play three times', function() {
+      game.tenthFrame(5);
+      game.tenthFrame(5);
+      game.tenthFrame(5);
+      expect(game.totalScore).toEqual(15);
+    });
   });
 });

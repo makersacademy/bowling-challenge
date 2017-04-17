@@ -1,0 +1,73 @@
+html {
+  height: 100%;
+  text-align: center;
+  background-color: rgba(240, 255, 255, 0.75);
+}
+
+body {
+  height: 100%;
+}
+
+h1 {
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+table.scorecard {
+  position: relative;
+  top: 7.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  border: 3px solid black;
+}
+
+table.scorecard tr:nth-child(2) td:nth-last-child(1) {
+  border-right: 3px solid black;
+}
+
+table, td, th {
+  border: 1px solid black;
+  padding: 5px;
+  margin-bottom: 100px;
+  height: 25px;
+}
+
+table.scorecard th {
+  width: 75px;
+}
+
+.buttons {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.buttons li {
+  display: inline;
+}
+
+.buttons input {
+  position: relative;
+  height: 30px;
+  width: 50px;
+  margin: 3px;
+  border-radius: 5px;
+  background-color: white;
+  -webkit-transition: all .1s;
+  -moz-transition: all .1s;
+  -ms-transition: all .1s;
+  -o-transition: all .1s;
+  transition: all .1s;
+  -webkit-box-shadow: 2px 3px 0px grey;
+  -moz-box-shadow: 2px 3px 0px grey;
+  box-shadow: 2px 3px 0px grey;
+}
+
+input:active {
+  position: relative;
+  -webkit-box-shadow: 0px 0px 0px;
+  -moz-box-shadow: 0px 0px 0px;
+  box-shadow: 0px 0px 0px;
+  top: 2px;
+  left: 2px;
+}

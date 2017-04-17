@@ -1,6 +1,12 @@
 
 Bowling Challenge
 =================
+[![Build Status](https://travis-ci.org/adrianw1832/bowling-challenge.svg?branch=master)](https://travis-ci.org/adrianw1832/bowling-challenge)
+
+How I approached the challenge
+------------------------------
+
+I initally started by implementing all the basic features first, without considering spares and strikes. After that, I considered adding spares and strikes and at the end, the tenth frame, and game ending conidtions. I stuck to SRP as much as possbile but the game logic did get a bit much near the end, especially considering the fact that in my implementation, I am also tracking the frame total. I did underestimate it at the beginning but I came through in the end. There was actually one big design change which drove me to change how I tracked the frame number, when I was implementing the GUI for the scorecard. In my original implementation, the frame number would automatically increase at the end of a strike or two rolls, but this caused some problems when I tried to log the rolls and scores on the table. The reason was that I would always be trying to log things from the previous frame number, and this would cause further complications in the tenth frame. My code would be a lot cleaner if I changed it to increase the frame number only when the next ball is rolled. I felt this challenge really reinforced the importance of TDD, MVP, and SRP, and the importance to write robust tests that really cover the different possiblities to ensure that everything is working as intended.
 
 
 * Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
@@ -9,14 +15,14 @@ Bowling Challenge
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday week
 
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Forking this repo
 

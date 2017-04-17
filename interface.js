@@ -54,7 +54,7 @@ $(document).ready(function() {
     $('#this-frame-number').text(game._currentFrame.number());
     $('#this-frame-points').text(game._currentFrame.points());
     $('#this-frame-roll').text(game._currentFrame.currentRoll());
-    $("#pins").attr("src", 'pins/' + game._currentFrame.pins() + '_pins.jpeg');
+    $("#pins").attr("src", 'pins/' + game._currentFrame.pins() + '_pins.png');
   };
 
   function endGame() {

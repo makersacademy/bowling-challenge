@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Bowling Scorecard</title>
+    <link rel='stylesheet' type='text/css' href='stylesheets/index.css'>
+  </head>
+
+  <body>
+    <table style="width:100%">
+      <tr>
+        <th colspan="2">1</th>
+        <th colspan="2">2</th>
+        <th colspan="2">3</th>
+        <th colspan="2">4</th>
+        <th colspan="2">5</th>
+        <th colspan="2">6</th>
+        <th colspan="2">7</th>
+        <th colspan="2">8</th>
+        <th colspan="2">9</th>
+        <th colspan="2">10</th>
+        <th id="total">Total</th>
+      </tr>
+
+      <tr class="rollScore">
+        <td id="f1r1"></td>
+        <td id="f1r2"></td>
+
+        <td id="f2r1"></td>
+        <td id="f2r2"></td>
+
+        <td id="f3r1"></td>
+        <td id="f3r2"></td>
+
+        <td id="f4r1"></td>
+        <td id="f4r2"></td>
+
+        <td id="f5r1"></td>
+        <td id="f5r2"></td>
+
+        <td id="f6r1"></td>
+        <td id="f6r2"></td>
+
+        <td id="f7r1"></td>
+        <td id="f7r2"></td>
+
+        <td id="f8r1"></td>
+        <td id="f8r2"></td>
+
+        <td id="f9r1"></td>
+        <td id="f9r2"></td>
+
+        <td id="f10r1"></td>
+        <td id="f10r2"></td>
+
+        <td rowspan="2"></td>
+      </tr>
+
+      <tr class="frameScore">
+        <td id="f1" colspan="2"></td>
+        <td id="f2" colspan="2"></td>
+        <td id="f3" colspan="2"></td>
+        <td id="f4" colspan="2"></td>
+        <td id="f5" colspan="2"></td>
+        <td id="f6" colspan="2"></td>
+        <td id="f7" colspan="2"></td>
+        <td id="f8" colspan="2"></td>
+        <td id="f9" colspan="2"></td>
+        <td id="f10" colspan="2"></td>
+      </tr>
+
+    </table>
+    <br>
+    <div style="text-align: center">
+        Number of pins knocked down:
+        <br><br>
+
+          <input id="textField" type="number" name="roll_score" min="0" max="10" autofocus required>
+          <input id="submitButton" type="submit" value="submit">
+
+        <p id="errorMessenger"></p>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="javascripts/bowling.js"></script>
+    <script type="text/javascript" src="javascripts/app.js"></script>
+
+
+  </body>
+</html>

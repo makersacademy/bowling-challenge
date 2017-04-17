@@ -27,4 +27,14 @@ describe("bowling game", function() {
     });
   });
 
+  describe("adding scores to frame 1", function() {
+    // As a bowler,
+    // I want to knock some pins on my first shot
+    // so that I can get some points
+    it("on first frame shot", function() {
+      bowlingGame.firstShot(2);
+      expect(bowlingGame.frames[0].firstShotScore).toEqual(2)
+    });
+  });
+
 });

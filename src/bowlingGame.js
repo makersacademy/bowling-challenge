@@ -9,4 +9,11 @@ function BowlingGame() {
   }
 
   this.total = 0;
+  this.firstScore = 0;
 }
+
+BowlingGame.prototype.firstShot = function(pins) {
+  this.frames[0].firstShotScore = pins;
+
+}
+

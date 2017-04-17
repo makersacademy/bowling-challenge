@@ -9,7 +9,9 @@ this._currentFrame;
 }
 
 Game.prototype.roll = function (knockedPins) {
-  if ( this._framesInPlay.length === 9 ) {
+  if ( this._framesInPlay.length === 10 ) {
+    this._endSequence();
+  } else if ( this._framesInPlay.length === 9 ) {
     this._tenthRoll(knockedPins);
   } else if ( this._currentFrame == undefined  ) {
     this._currentFrame = new Frame(knockedPins);
@@ -53,8 +55,16 @@ Game.prototype.getFrameScore = function () {
   return frame.getScore();
 }
 
+Game.prototype.getFrameScoreTen = function () {
+  var frame = this._framesInPlay[this._framesInPlay.length - 1];
 
+  frame.setScore( frame.getFirstRoll() + frame.getSecondRoll() + frame.getBonusRoll() );
+  return frame.getScore();
+}
 
+Game.prototype._endSequence = function () {
+  return "Game Finished";
+};
 
 Game.prototype.generateRandRoll1 = function () {
   this._randRoll1 = Math.floor(Math.random() * 11);

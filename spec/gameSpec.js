@@ -46,29 +46,6 @@ describe ('Game', function(){
     });
   });
 
-  describe('Scoring Frames 1 - 9:', function(){
-    it('can retrieve score for most recent non-strike/spare frame', function(){
-      game.roll(5);
-      game.roll(3);
-      game.roll(2);
-      expect(game.getFrameScore(this._framesInPlay)).toEqual(8);
-    });
-
-    it('can calculate score for a Spare', function(){
-      game.roll(6);
-      game.roll(4);
-      game.roll(2);
-      expect(game.getFrameScore(this._framesInPlay)).toEqual(12);
-    })
-
-    it('can calculate score for a Strike', function(){
-      game.roll(10);
-      game.roll(2);
-      game.roll(4);
-      expect(game.getFrameScore(this._framesInPlay)).toEqual(16);
-    })
-
-  });
 
   describe('Frame 10:', function(){
     it('enables bonus 2 rolls if a Strike', function(){
@@ -120,6 +97,65 @@ describe ('Game', function(){
     })
   });
 
+  describe('Scoring Frames 1 - 9:', function(){
+    it('can retrieve score for most recent non-strike/spare frame', function(){
+      game.roll(5);
+      game.roll(3);
+      game.roll(2);
+      expect(game.getFrameScore(this._framesInPlay)).toEqual(8);
+    });
+
+    it('can calculate score for a Spare', function(){
+      game.roll(6);
+      game.roll(4);
+      game.roll(2);
+      expect(game.getFrameScore(this._framesInPlay)).toEqual(12);
+    })
+
+    it('can calculate score for a Strike', function(){
+      game.roll(10);
+      game.roll(2);
+      game.roll(4);
+      expect(game.getFrameScore(this._framesInPlay)).toEqual(16);
+    })
+
+  });
+
+  describe('Scoring Frame 10:', function(){
+    it('can retrieve score', function(){
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(8);
+      game.roll(1);
+      game.roll(3);
+      expect(game.getFrameScoreTen(this._framesInPlay)).toEqual(9);
+    });
+  });
+
+  describe('End Sequence', function(){
+    it('initiates end sequence once tenth frame complete', function(){
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(8);
+      game.roll(1);
+      game.roll(3)
+      expect(game._endSequence()).toEqual("Game Finished");
+    });
+  })
 
   describe('Random Rolls', function(){
     it('#generateRandRoll1 - randomly generates number of knocked pins between 1 - 10', function(){

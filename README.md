@@ -65,3 +65,4 @@ RESOURCES
 BACKGROUND INFO / READING
 - [Using Strict Mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
 - ['this' in Javascript](http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/)
+- [Bowling score calculator] (http://www.bowlinggenius.com/)

@@ -227,6 +227,32 @@ describe ('Game', function(){
       expect(game._endSequence()).toEqual("Your score is 300. Congratulations! You played a Perfect Game!");
     });
 
+    it('returns score and Gutter game message for Gutter game', function(){
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      expect(game._endSequence()).toEqual("Your score is 0. Congratulations! You played a Gutter Game!");
+    });
+
+
   })
 
   describe('Random Rolls', function(){

@@ -1,4 +1,9 @@
+<h1>Bowling Challenge</h1>
+Creating a model in javascript that can track the score in a game of bowling.
 
+<<<<<<< HEAD
+Note that the term (property) "Sprike" is referring to a frame being either a Spare or a Strike.
+=======
 Bowling Challenge
 =================
 
@@ -77,3 +82,4 @@ If you don't follow the usual Jasmine convention of having your tests in `spec` 
 2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
 3. Adjust these to point to the correct directories
 4. Done.
+>>>>>>> 139_add_jshint_ci

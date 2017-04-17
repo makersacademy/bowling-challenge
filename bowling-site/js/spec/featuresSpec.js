@@ -28,4 +28,12 @@ describe('Feature Tests', function(){
     var frameHandler = new FrameHandler(thrower);
     var game = new Game(frameHandler);
   });
+
+
+  // describe('Context: Frame 10', function(){
+  //   describe('Returns the correct results for a three strike game',function(){
+  //     it('handles a three strike game')
+  //   })
+  //   game.framesPlayed = 9
+  // });
 });

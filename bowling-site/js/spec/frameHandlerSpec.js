@@ -42,7 +42,111 @@ describe('FrameHandler', function(){
     });
 
   });
+
+  describe('#startRound',function(){
+
+    it('makes a call to the thrower class for a score',function(){
+      spyOn(frame,'throw');
+      frame.startRound();
+      expect(frame.throw).toHaveBeenCalled();
+    });
+    it('makes a call to the thrower class for a score',function(){
+      spyOn(frame,'preThrowChecks');
+      frame.startRound();
+      expect(frame.preThrowChecks).toHaveBeenCalled();
+    });
+    it('makes a call to the thrower class for a score',function(){
+      spyOn(frame,'postThrowUpdates');
+      frame.startRound();
+      expect(frame.postThrowUpdates).toHaveBeenCalled();
+    });
+  });
+
+  describe('#preThrowChecks',function(){
+    it('does not throw if it does not pass checks ', function(){
+      frame.isComplete = true;
+      expect(frame.isComplete).toEqual(true);
+      expect(function(){frame.startRound();}).toThrowError("Frame is over, can't throw");
+    });
+  });
+
+
+  describe('#postShowUpdates',function(){
+    it('ends the round where appropriate using Frame Terminator',function(){
+      spyOn(frame.frameTerminator, 'isFrameOver')
+      frame.startRound();
+      expect(frame.frameTerminator.isFrameOver).toHaveBeenCalled();
+    });
+    describe('Context: frameTerminator returns True', function(){
+      beforeEach(function(){
+        spyOn(frame.frameTerminator, 'isFrameOver').and.returnValue(true);
+      });
+
+      it('increments the frame number',function(){
+        frame.postThrowUpdates();
+        expect(frame.framesPlayed).toEqual(1)
+      });
+
+      it('ends the frame', function(){
+        frame.postThrowUpdates();
+        expect(frame.isComplete).toEqual(true)
+      });
+    });
+
+    describe('Context: frameTerminator returns false',function(){
+
+    });
+
+  });
+
+
+  describe('#throw',function(){
+
+    beforeEach(function(){
+      spyOn(frame.thrower, 'resetPins')
+      spyOn(frame.thrower, 'throw')
+    });
+
+    it('calls throw on the thrower class', function(){
+      frame.throw();
+      expect(frame.thrower.throw).toHaveBeenCalled();
+    });
+    it('calls update score',function(){
+      spyOn(frame, 'updateScore')
+      frame.throw();
+      expect(frame.updateScore).toHaveBeenCalled();
+    });
+    it('updates throwsMade after ball is thrown',function(){
+      frame.throw();
+      expect(frame.throwsMade).toEqual(1);
+    });
+  });
+
+  describe('#updateScore', function(){
+    it('updates the score for throw 1',function(){
+      frame.throwsMade=1
+      frame.updateScore(normalThrowScore);
+      expect(frame.result.throw1).toEqual(normalThrowScore);
+    });
+    it('updates the score for throw 2', function(){
+      frame.throwsMade=2;
+      frame.updateScore(8);
+      expect(frame.result.throw2).toEqual(8);
+    });
+    describe('Context: Strike/Spare Frame 10', function(){
+      it('updates the score for throw 3', function(){
+        frame.throwsMade=3;
+        frame.updateScore(8);
+        expect(frame.result.throw3).toEqual(8);
+      });
+
+    });
+  });
+
+
+
   describe('#startFrame', function(){
+
     it('calls reset on the ball throw pins',function(){
       spyOn(frame.thrower, 'resetPins');
       frame.startFrame();
@@ -72,92 +176,6 @@ describe('FrameHandler', function(){
 
     });
   });
-
-  describe('#startRound',function(){
-    it('does not throw if it does not pass checks ', function(){
-      frame.isComplete = true;
-      expect(frame.isComplete).toEqual(true);
-      expect(function(){frame.startRound();}).toThrowError("Frame is over, can't throw");
-
-    });
-    it('makes a call to the thrower class for a score',function(){
-      spyOn(frame.thrower, 'throw');
-      frame.startRound();
-      expect(frame.thrower.throw).toHaveBeenCalled();
-    });
-    it('updates throws made after ball is thrown',function(){
-      frame.startRound();
-      expect(frame.throwsMade).toEqual(1);
-    });
-    it('updates scores correctly on round 1',function(){
-      spyOn(frame.thrower, 'throw').and.returnValue(normalThrowScore)
-      frame.startRound();
-      expect(frame.result.throw1).toEqual(normalThrowScore)
-    });
-
-    it('ends the round where appropriate using Frame Terminator',function(){
-      spyOn(frame.frameTerminator, 'isFrameOver')
-      frame.startRound();
-      expect(frame.frameTerminator.isFrameOver).toHaveBeenCalled();
-    })
-
-
-    it('increments the frame number when a frame is over',function(){
-      spyOn(frame.thrower, 'throw').and.returnValue(normalThrowScore);
-      frame.startRound();
-      spyOn(frame.frameTerminator, 'isFrameOver').and.returnValue(true);
-      frame.startRound();
-      expect(frame.frameNumber).toEqual(1)
-    });
-
-
-
-
-    //
-    // it('rolls a ball when frameTerminator outputs false',function(){
-    //
-    // });
-    // it('does not roll a ball when frameTerminator outputs true', function(){
-    //
-    // });
-
-
-  });
-
-  describe('#playFrame',function(){
-    beforeEach(function(){
-      spyOn(frame.thrower, 'resetPins')
-
-      spyOn(frame.thrower, 'throw')
-    });
-
-    it('calls throw on a BallThrow class', function(){
-      frame.throw();
-      expect(frame.thrower.throw).toHaveBeenCalled();
-    });
-    it('calls update score',function(){
-      spyOn(frame, 'updateScore')
-      frame.throw();
-      expect(frame.updateScore).toHaveBeenCalled();
-    });
-  });
-
-
-
-  describe('#updateScore', function(){
-    it('updates the score for throw 1',function(){
-      frame.throwsMade=1
-      frame.updateScore(normalThrowScore);
-      expect(frame.result.throw1).toEqual(normalThrowScore);
-    });
-    it('updates the score for throw 2', function(){
-      frame.throwsMade=2;
-      frame.updateScore(8);
-      expect(frame.result.throw2).toEqual(8);
-    });
-  });
-
-
 
 
 });

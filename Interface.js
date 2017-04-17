@@ -33,7 +33,7 @@ $(document).ready(function() {
     if (rollIndex===19){
       roll19 = lastRoll();
       if (roll19 === 10){
-        $('#rollIndex-19').text("X");
+        $('#rollIndex-19').text('X');
       } else {
         $('#rollIndex-19').text(roll19);
       }
@@ -43,10 +43,10 @@ $(document).ready(function() {
       if (roll19 === 10) {
         $('#rollIndex-20').text(roll20);
       } else if (roll19 + roll20 === 10){
-        $('#rollIndex-20').text("/");
+        $('#rollIndex-20').text('/');
       } else {
         $('#rollIndex-20').text(roll20);
-        $('#rollIndex-21').text("-");
+        $('#rollIndex-21').text('-');
         scoreFrames[frameIndex]=(bowling.getCurrentScore());
         frameIndex += 1;
       }
@@ -58,21 +58,21 @@ $(document).ready(function() {
         scoreFrames[frameIndex]=(bowling.getCurrentScore());
         frameIndex += 1;
       } else {
-        $('#rollIndex-21').text("-");
+        $('#rollIndex-21').text('-');
       }
     }
   }
 
   function strike() {
-    $('#rollIndex-' + rollIndex).text(" ");
-    $('#rollIndex-' + (rollIndex+1)).text("X");
+    $('#rollIndex-' + rollIndex).text(' ');
+    $('#rollIndex-' + (rollIndex+1)).text('X');
     scoreFrames[frameIndex]=(bowling.getCurrentScore());
     rollIndex += 2;
     frameIndex += 1;
   }
 
   function spare() {
-    $('#rollIndex-' + rollIndex).text("/")
+    $('#rollIndex-' + rollIndex).text('/')
     scoreFrames[frameIndex]=(bowling.getCurrentScore());
     rollIndex += 1;
     frameIndex += 1;
@@ -91,11 +91,11 @@ $(document).ready(function() {
   }
 
   function lastRoll() {
-    return bowling.rollHistory[bowling.rollHistory.length-1]
+    return bowling.rollHistory[bowling.rollHistory.length-1];
   }
 
   function nextLastRoll() {
-    return bowling.rollHistory[bowling.rollHistory.length-2]
+    return bowling.rollHistory[bowling.rollHistory.length-2];
   }
 
   function isASpare(){
@@ -160,4 +160,4 @@ $(document).ready(function() {
     bowling.roll(10);
     updateVisuals();
   });
-})
+});

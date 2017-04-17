@@ -50,6 +50,11 @@ Game.prototype.startPlay=function(){
 
 }
 
+Game.prototype.reset = function(){
+  this.results=[];
+  this.framesPlayed=0;
+
+}
 
 Game.prototype.printResults = function(){
   for (i = 0; i < game.results.length; i++) {

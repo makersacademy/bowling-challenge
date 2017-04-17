@@ -95,9 +95,9 @@ FrameHandler.prototype._resetThrowerPins = function(){
 
 FrameHandler.prototype._resetScores = function(){
   this.result= {
-    throw1: 0,
-    throw2: 0,
-    throw3: 0,
+    throw1: NaN,
+    throw2: NaN,
+    throw3: NaN,
   }
 }
 

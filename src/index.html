@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <center>
+
+    <h1>Bowling Calculator</h1>
+
+  <link rel="stylesheet" type="text/css" href="./stylesheets/index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+</head>
+
+<body>
+
+<br>
+Click on number of pins knocked down:
+
+<br>
+<div id="buttons">
+  <button class='button' value=1 type="Submit">1</button>
+  <button class='button' value=2 type="Submit">2</button>
+  <button class='button' value=3 type="Submit">3</button>
+  <button class='button' value=4 type="Submit">4</button>
+  <button class='button' value=5 type="Submit">5</button>
+  <button class='button' value=6 type="Submit">6</button>
+  <button class='button' value=7 type="Submit">7</button>
+  <button class='button' value=8 type="Submit">8</button>
+  <button class='button' value=9 type="Submit">9</button>
+  <button class='button' value=10 type="Submit">10</button>
+</div>
+
+<br>
+<br>
+
+<table>
+  <tr>
+    <th colspan="2">Frame 1</th>
+    <th colspan="2">Frame 2</th>
+    <th colspan="2">Frame 3</th>
+    <th colspan="2">Frame 4</th>
+    <th colspan="2">Frame 5</th>
+    <th colspan="2">Frame 6</th>
+    <th colspan="2">Frame 7</th>
+    <th colspan="2">Frame 8</th>
+    <th colspan="2">Frame 9</th>
+    <th colspan="3">Frame 10</th>
+  </tr>
+  <tr>
+    <td id='1' class=space rowspan="1" height=20 width=20></td>
+    <td id='2' class=col1 rowspan="1" height=20 width=20></td>
+    <td id='3' rowspan="1" height=20 width=20></td>
+    <td id='4' class=col1 rowspan="1" height=20 width=20></td>
+    <td id='5' rowspan="1" height=20 width=20></td>
+    <td id='6' class=col1 rowspan="1" height=20 width=20></td>
+    <td id='7' rowspan="1" height=20 width=20></td>
+    <td id='8' class=col1 rowspan="1" height=20 width=20></td>
+    <td id='9' rowspan="1" height=20 width=20></td>
+    <td id='10' class=col1 rowspan="1" height=20 width=20></td>
+    <td id='11' rowspan="1" height=20 width=20></td>
+    <td id='12' class=col1 rowspan="1" height=20 width=20></td>
+    <td id='13' rowspan="1" height=20 width=20></td>
+    <td id='14' class=col1 rowspan="1" height=20 width=20></td>
+    <td id='15' rowspan="1" height=20 width=20></td>
+    <td id='16' class=col1 rowspan="1" height=20 width=20></td>
+    <td id='17' rowspan="1" height=20 width=20></td>
+    <td id='18' class=col1 rowspan="1" height=20 width=20></td>
+    <td id='19' rowspan="1" height=20 width=20></td>
+    <td id='20' class=col1 rowspan="1" height=20 width=20></td>
+    <td id='21' class=col1 rowspan="1" height=20 width=20></td>
+  </tr>
+  <tr>
+    <td class=total value=1 colspan="2" height=30 width=40></td>
+    <td class=total value=2 colspan="2" height=20 width=40></td>
+    <td class=total value=3 colspan="2" height=20 width=40></td>
+    <td class=total value=4 colspan="2" height=20 width=40></td>
+    <td class=total value=5 colspan="2" height=20 width=40></td>
+    <td class=total value=6 colspan="2" height=20 width=40></td>
+    <td class=total value=7 colspan="2" height=20 width=40></td>
+    <td class=total value=8 colspan="2" height=20 width=40></td>
+    <td class=total value=9 colspan="2" height=20 width=40></td>
+    <td class=total value=10 colspan="3" height=20 width=40></td>
+  </tr>
+</table>
+
+<script src="javascripts/bowling.js"></script>
+<script src="javascripts/app.js"></script>
+
+</center>
+</body>
+</html>

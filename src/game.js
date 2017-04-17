@@ -2,7 +2,7 @@
 function Game() {
   this.rolls = 0;
   this.totalScore = 0;
-  this.bonusPoints = 0;
+  this.bonusPoints = 10;
   this.pinsRemaining = 10;
   this.currentFrameNumber = 1;
   this.currentFrame = [];
@@ -46,7 +46,6 @@ Game.prototype.strikeORSpare = function() {
     this.isAStrike = true;
     this.rolls += 1
   }
-  this.bonusPoints = 10
 };
 
 Game.prototype.addToCurrentFrame = function(points) {
@@ -54,7 +53,8 @@ Game.prototype.addToCurrentFrame = function(points) {
   if (this.getNextRoll() === 1) {
     this.addCurrentFrameToFrameHistory(this.currentFrame);
     this.updateScores();
-    this.prepareNextFrame();
+  } else if(this.spareInPreviousFrame() === true) {
+    this.calculatePreviousFrameScore();
   }
 };
 
@@ -71,14 +71,15 @@ Game.prototype.getFirstRollScore = function() {
 };
 
 Game.prototype.getSecondRollScore = function() {
-  return this.frameHistory[(this.currentFrameNumber-2)][1];
+  return this.currentFrame[1];
 };
 
 Game.prototype.isNextFrame = function() {
   if(this.getNextRoll() === 2) {
     return;
   }
-  this.currentFrameNumber += 1
+  this.currentFrameNumber += 1;
+  this.prepareNextFrame();
 };
 
 Game.prototype.addCurrentFrameToFrameHistory = function(frame) {
@@ -88,12 +89,59 @@ Game.prototype.addCurrentFrameToFrameHistory = function(frame) {
 Game.prototype.prepareNextFrame = function() {
   this.resetCurrentFrame();
   this.resetPins();
+  this.resetStrikeorSpare();
 };
 
 Game.prototype.updateScores = function(){
-  this.calculateFrameScore();
-  this.updateTotalScore();
+  if(this.strikeInPreviousFrame() === true){ this.calculatePreviousFrameScore() }
+  if(this.isAStrike !== true && this.isASpare !== true){
+    this.calculateFrameScore();
+    this.updateTotalScore();
+  }
+};
+
+Game.prototype.calculateFrameScore = function() {
+    var frameScore = this.getFirstRollScore() + this.getSecondRollScore();
+    this.updateCumulativeFrameScore(frameScore);
 }
+
+Game.prototype.calculatePreviousFrameScore = function() {
+  var previousFrameScore = this.bonusPoints + this.getFirstRollScore()
+  if(this.getSecondRollScore() !== undefined){
+    console.log('Here');
+    previousFrameScore += this.getSecondRollScore();
+  }
+  console.log(previousFrameScore);
+  this.updateCumulativeFrameScore(previousFrameScore);
+}
+
+Game.prototype.strikeInPreviousFrame = function() {
+  if(this.currentFrameNumber === 1){
+    return false;
+  } else if(this.frameHistory[this.currentFrameNumber - 2][0] === 10) {
+    return true;
+  }
+}
+
+Game.prototype.spareInPreviousFrame = function() {
+  if(this.currentFrameNumber === 1){
+    return false;
+  } else if((this.frameHistory[this.currentFrameNumber - 2][0] + this.frameHistory[this.currentFrameNumber - 2][1]) === 10) {
+    return true;
+  }
+}
+
+Game.prototype.updateCumulativeFrameScore = function(frameScore) {
+  if(typeof this.cumulativeFrameScores[0] === 'undefined') {
+    this.cumulativeFrameScores.push(frameScore);
+  } else {
+    this.cumulativeFrameScores.push(this.cumulativeFrameScores[(this.cumulativeFrameScores.length -1)] + frameScore);
+  }
+};
+
+Game.prototype.updateTotalScore = function () {
+  this.totalScore = this.cumulativeFrameScores[this.cumulativeFrameScores.length -1]
+};
 
 Game.prototype.resetCurrentFrame = function() {
   this.currentFrame = [];
@@ -103,29 +151,7 @@ Game.prototype.resetPins = function() {
   this.pinsRemaining = 10;
 };
 
-Game.prototype.calculateFrameScore = function() {
-  var frameScore = 0;
-  for (var i = 0; i < 2; i++) {
-    frameScore += this.frameHistory[this.currentFrameNumber - 1][i]
-  }
-  this.updateCumulativeFrameScore(frameScore);
-  return frameScore;
-}
-
-Game.prototype.calculatePreviousFrameScore = function() {
-
-}
-
-Game.prototype.updateCumulativeFrameScore = function(frameScore) {
-  if(typeof this.cumulativeFrameScores[0] === 'undefined') {
-    // console.log(frameScore);
-    this.cumulativeFrameScores.push(frameScore);
-  } else {
-    console.log(frameScore);
-    this.cumulativeFrameScores.push(this.cumulativeFrameScores[(this.cumulativeFrameScores.length -1)] + frameScore);
-  }
-};
-
-Game.prototype.updateTotalScore = function () {
-  this.totalScore = this.cumulativeFrameScores[this.cumulativeFrameScores.length -1]
+Game.prototype.resetStrikeorSpare = function() {
+  this.isASpare = false;
+  this.isAStrike = false;
 };

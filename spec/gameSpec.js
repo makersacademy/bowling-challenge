@@ -92,12 +92,6 @@ describe('Game', function(){
       expect(game.getFirstRollScore()).toEqual(3);
     });
 
-    it('returns the score of the current frame\'s second roll', function(){
-      game.roll(6);
-      game.roll(3);
-      expect(game.getSecondRollScore()).toEqual(3);
-    });
-
     it('updates the player\'s total score after each frame', function(){
       for(var i=0; i<6; i++) {
         game.roll(1);
@@ -116,21 +110,61 @@ describe('Game', function(){
   });
 
   describe ('bonus points', function(){
-    it('recognises if a spare is acheived', function(){
+
+    it('recognises if a spare has not been acheived', function(){
       game.roll(1);
-      game.roll(9);
-      expect(game.isASpare).toEqual(true);
+      game.roll(8);
+      expect(game.isASpare).toEqual(false);
     })
 
-    it('recognises if a strike is acheived', function(){
-      game.roll(10);
-      expect(game.isAStrike).toEqual(true);
+    it('recognises if a strike has not been acheived', function(){
+      game.roll(9);
+      expect(game.isAStrike).toEqual(false);
     })
 
     it('moves to the next frame if strike is achieved', function(){
       game.roll(10);
       expect(game.currentFrameNumber).toEqual(2);
     })
+
+    it('if strike: calculation of cumulative score delayed', function(){
+      game.roll(10);
+      expect(game.cumulativeFrameScores).toEqual([]);
+    });
+
+    it('if strike: calculation of prior frame\s cumulative score occurs after second roll of next frame', function(){
+      game.roll(10);
+      game.roll(4);
+      game.roll(4);
+      expect(game.cumulativeFrameScores).toEqual([18, 26]);
+    });
+
+    xit('if strike: previous frame score equals 10 plus the sum of the next two rolls', function(){
+      game.roll(10);
+      game.roll(10);
+      game.roll(3);
+      game.roll(3);
+      expect(game.cumulativeFrameScores).toEqual([30, 46, 52]);
+    });
+
+    it('can get multiple strikes in a row', function(){
+      game.roll(10);
+      game.roll(10);
+      expect(game.cumulativeFrameScores).toEqual([30]);
+    });
+
+    it('if spare: calculation of cumulative score delayed', function(){
+      game.roll(9);
+      game.roll(1);
+      expect(game.cumulativeFrameScores).toEqual([]);
+    });
+
+    it('if spare: calculation of prior frame\s cumulative score occurs after first roll of next frame', function(){
+      game.roll(4);
+      game.roll(6);
+      game.roll(4)
+      expect(game.cumulativeFrameScores).toEqual([14]);
+    });
   });
 
 });

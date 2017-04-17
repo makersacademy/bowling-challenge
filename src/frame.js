@@ -27,7 +27,7 @@ Frame.prototype.secondBall = function() {
 
 Frame.prototype.bowlFirstBall = function(bowledPins) {
   this._checkIfFirstBallAlreadyBowled();
-  this._checkLessThan10Pins(bowledPins);
+  this._checkNoMoreThan10PinsTotalWereBowled(bowledPins);
   this._firstBall = bowledPins;
   if(this._isStrike()) {
     this._isComplete = true;
@@ -40,7 +40,7 @@ Frame.prototype.bowlFirstBall = function(bowledPins) {
 
 Frame.prototype.bowlSecondBall = function(bowledPins) {
   this._checkIfSecondBallAlreadyBowled();
-  this._checkLessThan10Pins(bowledPins);
+  this._checkNoMoreThan10PinsTotalWereBowled(bowledPins);
   this._secondBall = bowledPins;
   this._isComplete = true;
   this.calculateFrameTotal();
@@ -52,7 +52,7 @@ Frame.prototype.isComplete = function() {
 };
 
 Frame.prototype._isStrike = function() {
-  return (this._firstBall === 10) ? true : false
+  return this._firstBall === 10;
 };
 
 Frame.prototype._checkIfFirstBallAlreadyBowled = function() {
@@ -67,7 +67,7 @@ Frame.prototype._checkIfSecondBallAlreadyBowled = function() {
   }
 };
 
-Frame.prototype._checkLessThan10Pins = function(bowledPins) {
+Frame.prototype._checkNoMoreThan10PinsTotalWereBowled = function(bowledPins) {
   if(this._firstBall + bowledPins > 10) {
     throw new Error("Attempted to knock over more than 10 pins.");
   }

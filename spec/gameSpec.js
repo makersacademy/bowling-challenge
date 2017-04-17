@@ -40,9 +40,9 @@ describe("Game", function() {
       spyOn(frame, 'currentRoll').and.returnValue(6);
       var shortGame = new Game(3);
       for(var i = 1; i <= 3; i++) {
-        game.addFrame(frame);
+        shortGame.addFrame(frame);
       }
-      expect(game.calculateGameTotal()).toEqual(18);
+      expect(shortGame.calculateGameTotal()).toEqual(18);
     });
   });
 });

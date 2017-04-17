@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>Bowling Game</title>
+  </head>
+
+  <body>
+      <container id="bowlingGame"
+        <section>
+          <div id="title">
+            <p>Your Bowling Game: <span id="bowlingTitle"></span></p>
+          </div>
+
+          <div id="scoresTable">
+            <p>Yours Scores: <span id="allScores"></span></p>
+            </div>
+            <div id='table'>
+            <table width="100%" border="1" id="tableName">
+                <tr>
+                  <td>Frame 1</td>
+                  <td>Frame 2</td>
+                  <td>Frame 3</td>
+                  <td>Frame 4</td>
+                  <td>Frame 5</td>
+                  <td>Frame 6</td>
+                  <td>Frame 7</td>
+                  <td>Frame 8</td>
+                  <td>Frame 9</td>
+                  <td>Frame 10</td>
+                </tr>
+                <tr>
+                  <td id='frame'>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+          </table>
+        </div>
+
+            <p>Total Score: <span id="totalScore"></span></p>
+            <div>
+              <p>
+                <button class="buttons" id="newGame">New Game</button>
+                <button class="buttons" id="rollBall">Roll your bowling ball!</button>
+              </p>
+          </div>
+        </section>
+    </container>
+    <script src="../jquery.js"></script>
+    <script src="../public/application.js"></script>
+    <script src="../src/bowling.js"></script>
+  </body>
+</html>

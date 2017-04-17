@@ -5,24 +5,35 @@ function Game() {
   this.frames = [];
   this.pins = 10;
   this.totalScore = 0;
+  this.message = false;
 }
-
-const STRIKE = 10;
 
 Game.prototype.firstRoll = function(number) {
   this.addScore(number);
   this.pins -= number;
-  message = "Well done!"
-  this.documentRoll(number, message);
+  this.getMessage(number);
+  this.documentRoll(number, this.message);
   this.roll = 2;
 }
 
 Game.prototype.secondRoll = function(number) {
   this.addScore(number);
-  message = "Awesome job!"
-  this.documentRoll(number, message);
+  this.getMessage(number);
+  this.documentRoll(number, this.message);
   this.reset();
 }
+
+Game.prototype.getMessage = function(number) {
+  if (number === 0) {
+    this.message = "Unlucky"
+  } else if (number > 0 && number < 4) {
+    this.message = "Better luck next time!"
+  } else if (number > 3 && number < 8) {
+    this.message = "Good job!"
+  } else if (number > 7 && number < 11) {
+    this.message = "Awesome!"
+  }
+};
 
 Game.prototype.reset = function(number) {
   this.frame += 1;

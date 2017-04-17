@@ -22,7 +22,7 @@ Rules:
 * If strike, roll another ball
 * If another strike, roll additional ball
 
-## GUTTED GAME
+## GUTTER GAME
 * Player doesn't hit any pins during the 10 frames
 
 ## PERFECT GAME
@@ -40,7 +40,6 @@ I'd like to have 10 pins and roll a ball.
 As a player,
 So that I can play bowling,
 I'd like to have two rolls for each frame.
-
 
 ## User Story 3
 As a player,

@@ -1,0 +1,66 @@
+Features:
+strike = 0
+spare = 0
+
+FRAME 1
+
+If first roll 8,
+- get score 8
+- frame 1 score +8
+- game score +8
+- second roll
+
+If second roll 1,
+- get score 1
+- frame 1 score +1 = 9
+- game score +1 = 9
+
+If second roll 2,
+- get score 2
+- frame 1 score +2 = 10
+- game score +2 = 10
+- TOGGLE: spare = 1
+
+FRAME 2
+
+If third roll 10,
+- get score 10
+- frame 2 score +10
+- game score +10 = 20
+- COUNT: strike +3 = 3
+
+- Because spare = 1, frame 1 score +10 = 20
+- Because spare = 1, game score +10 = 30
+- TOGGLE: spare = 0
+
+(Because strike > 2, no fourth roll)
+- COUNT strike -1 = 2
+
+FRAME 3
+
+If fifth roll 5,
+- get score 5
+- frame 3 score +5
+- game score +5 = 35
+- Because strike > 0, frame 2 score +5 = 25
+- Because strike > 0, game score +5 = 40
+- COUNT strike -1 = 1
+
+If fifth roll 10,
+- get score 10
+- frame 3 score +10
+- game score +10 = 40
+- COUNT strike +1 = 3
+
+(Because strike > 2, no sixth roll)
+- COUNT strike -1 = 2
+
+- Because strike > 0, frame 2 score +10 = 30
+- Because strike > 0, game score +10 = 50
+- COUNT strike -1 = 2
+
+
+Input:
+- log score
+- if end of frame, update frameScore
+-

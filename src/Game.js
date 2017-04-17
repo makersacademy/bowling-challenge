@@ -125,6 +125,7 @@ Game.prototype.updateScoreWithSpare = function(){
 
 Game.prototype.updateScore = function(){
   this.score += (this.tallyFrame() + this.bonusPoints)
+  this.frameScores.push(this.score)
   this.bonusPoints = 0
 }
 

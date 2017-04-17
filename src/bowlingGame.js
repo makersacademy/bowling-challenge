@@ -14,6 +14,9 @@ function BowlingGame() {
 
 BowlingGame.prototype.firstShot = function(pins) {
   this.frames[0].firstShotScore = pins;
+}
 
+BowlingGame.prototype.secondShot = function(pins) {
+  this.frames[0].secondShotScore = pins;
 }
 

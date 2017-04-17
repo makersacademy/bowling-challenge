@@ -35,6 +35,13 @@ describe("bowling game", function() {
       bowlingGame.firstShot(2);
       expect(bowlingGame.frames[0].firstShotScore).toEqual(2)
     });
+
+    it("ending frame shot", function() {
+      bowlingGame.secondShot(4);
+      expect(bowlingGame.frames[0].secondShotScore).toEqual(4)
+    });
+
+
   });
 
 });

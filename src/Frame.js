@@ -4,6 +4,7 @@ function Frame() {
   this.frameTotalScore = 0;
   this.wasAStrike = false;
   this.wasASpare = false
+  this.frameComplete = false
 }
 
 Frame.prototype.bowl = function() {
@@ -11,6 +12,7 @@ Frame.prototype.bowl = function() {
   this.pinsremaining -= bowlScore;
   this.frameScores.push(bowlScore);
   this.frameTotalScore += bowlScore;
+  this._isComplete();
   this._isFrameAStrike();
   this._isFrameASpare();
 }
@@ -18,9 +20,9 @@ Frame.prototype.bowl = function() {
 
 Frame.prototype._isComplete = function() {
   if(this.pinsremaining === 0 || this.frameScores.length === 2) {
-    return true
+    this.frameComplete = true
   } else {
-    return false
+    this.frameComplete = false
   }
 }
 

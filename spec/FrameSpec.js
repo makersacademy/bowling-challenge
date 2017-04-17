@@ -37,7 +37,7 @@ describe("Frame", function(){
       spyOn(Math, 'floor').and.returnValue(4);
       frame.bowl();
       frame.bowl();
-      expect(frame._isComplete()).toBe(true);
+      expect(frame.frameComplete).toBe(true);
     });
   });
 

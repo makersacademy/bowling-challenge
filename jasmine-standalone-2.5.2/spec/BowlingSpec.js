@@ -43,6 +43,17 @@ describe('Bowling', function() {
         expect(bowling.spare).toEqual(true);
       });
 
+      it("User has one more throw on the 10th frame if spare of strike", function(){
+        for (var i = 1; i <= 9; i++) {
+          bowling.firstThrow(6);
+          bowling.secondThrow(1);
+        }
+        bowling.firstThrow(10);
+        bowling.secondThrow(6);
+        bowling.thirdThrow(1);
+        expect(bowling.currentScore).toEqual(80);
+      });
+
   });
 
   describe("Tests for Scoring", function(){
@@ -81,7 +92,7 @@ describe('Bowling', function() {
       expect(bowling.currentScore).toEqual(44);
     });
 
-    it("Scores is set correctly after multiple strikes", function(){
+    it("Scores is set correctly after three strikes", function(){
       bowling.firstThrow(10);
       bowling.firstThrow(10);
       bowling.firstThrow(10);
@@ -92,7 +103,7 @@ describe('Bowling', function() {
       expect(bowling.currentScore).toEqual(92);
     });
 
-    it("Scores is set correctly after multiple strikes, break and more strikes", function(){
+    it("Scores is set correctly after three strikes, break and two more strikes", function(){
       bowling.firstThrow(10);
       bowling.firstThrow(10);
       bowling.firstThrow(10);
@@ -105,6 +116,13 @@ describe('Bowling', function() {
       bowling.firstThrow(1);
       bowling.secondThrow(3);
       expect(bowling.currentScore).toEqual(131);
+    });
+
+    it("Scores is set correctly after only three strikes", function(){
+      bowling.firstThrow(10);
+      bowling.firstThrow(10);
+      bowling.firstThrow(10);
+      expect(bowling.currentScore).toEqual(30);
     });
 
     it("Scores is set correctly after a spare", function(){
@@ -125,6 +143,26 @@ describe('Bowling', function() {
       expect(bowling.currentScore).toEqual(41);
     });
 
+    // it("Scores a perfect game: 300 points", function(){
+    //   for (var i = 1; i <= 10; i++) {
+    //     bowling.firstThrow(10);
+    //   }
+    //   debugger;
+    //   bowling.secondThrow(10);
+    //   bowling.thirdThrow(10);
+    //   expect(bowling.currentScore).toEqual(300);
+    // });
+
+  });
+
+  it("Checks that the turn calculator is right", function(){
+    bowling.firstThrow(8);
+    bowling.secondThrow(2);
+    bowling.firstThrow(6);
+    bowling.secondThrow(1);
+    bowling.firstThrow(10);
+    bowling.firstThrow(10);
+    expect(bowling.turnNumber).toEqual(4)
   });
 
 });

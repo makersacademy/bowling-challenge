@@ -15,4 +15,12 @@ describe("Frame", function(){
       expect(frame.pinsremaining).toEqual(5)
     });
   });
+  describe("_complete", function() {
+    it("a frame is complete after two bowls", function() {
+      spyOn(Math, 'floor').and.returnValue(4);
+      frame.bowl();
+      frame.bowl();
+      expect(frame._complete()).toBe(true);
+    });
+  });
 });

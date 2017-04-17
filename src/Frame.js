@@ -1,12 +1,19 @@
 function Frame() {
-  this.pinsremaining = 10
-  this.currentFrame = []
+  this.pinsremaining = 10;
+  this.currentFrame = [];
 }
 
 Frame.prototype.bowl = function() {
-  this.pinsremaining -= Math.floor(Math.random() * 11);
+  bowlScore = Math.floor(Math.random() * 11);
+  this.pinsremaining -= bowlScore;
+  this.currentFrame.push(bowlScore)
 }
 
-Frame.prototype.isComplete = function() {
-  if this.pinsremaining === 0 || this.currentFrame.length === 2
+
+Frame.prototype._complete = function() {
+  if(this.pinsremaining === 0 || this.currentFrame.length === 2) {
+    return true
+  } else {
+    return false
+  }
 }

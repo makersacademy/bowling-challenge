@@ -92,6 +92,39 @@ describe('Bowling', function() {
       expect(bowling.currentScore).toEqual(92);
     });
 
+    it("Scores is set correctly after multiple strikes, break and more strikes", function(){
+      bowling.firstThrow(10);
+      bowling.firstThrow(10);
+      bowling.firstThrow(10);
+      bowling.firstThrow(7);
+      bowling.secondThrow(2);
+      bowling.firstThrow(3);
+      bowling.secondThrow(4);
+      bowling.firstThrow(10);
+      bowling.firstThrow(10);
+      bowling.firstThrow(1);
+      bowling.secondThrow(3);
+      expect(bowling.currentScore).toEqual(131);
+    });
+
+    it("Scores is set correctly after a spare", function(){
+      bowling.firstThrow(9);
+      bowling.secondThrow(1);
+      bowling.firstThrow(8);
+      bowling.secondThrow(1);
+      expect(bowling.currentScore).toEqual(27);
+    });
+
+    it("Scores is set correctly after multiple spares", function(){
+      bowling.firstThrow(9);
+      bowling.secondThrow(1);
+      bowling.firstThrow(8);
+      bowling.secondThrow(2);
+      bowling.firstThrow(6);
+      bowling.secondThrow(1);
+      expect(bowling.currentScore).toEqual(41);
+    });
+
   });
 
 });

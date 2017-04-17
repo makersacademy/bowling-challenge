@@ -4,7 +4,7 @@ function Bowling(){
   this.reset();
   this.currentScore = 0
   this.strikeFrame = []
-  // this.frameCollection = []
+  this.spareFrame = []
 };
 
 Bowling.prototype.firstThrow = function(score){
@@ -14,11 +14,10 @@ Bowling.prototype.firstThrow = function(score){
   if(this.pins === 0) {
     this.strike = true
     this.strikeFrame.push(this.frame.first)
-    // if(this.strikeFrame === 3) {
-    //   this.currentScore += this.bonusScore();
-    // };
-    // this.frameCollection.push(this.frame)
   };
+  if(this.spareFrame.length) {
+    this.currentScore += (this.bonusScore());
+  }
 };
 
 Bowling.prototype.secondThrow = function(score){
@@ -27,10 +26,11 @@ Bowling.prototype.secondThrow = function(score){
   }
   this.pins -= score
   this.frame.second += score
-  this.currentScore += (this.frame.first + this.frame.second + this.bonusScore());
-  // this.frameCollection.push(this.frame)
   if(this.pins === 0) {
     this.spare = true
+    this.spareFrame.push(10)
+  } else {
+    this.currentScore += (this.frame.first + this.frame.second + this.bonusScore());
   }
 };
 
@@ -47,6 +47,9 @@ Bowling.prototype.bonusScore = function () {
     score = this.strikeFrame[0] + this.strikeFrame[1] + this.strikeFrame[2]
     this.strikeFrame.shift();
     score += this.bonusScore(); /* it's called recursion - it means self referential */
+  } else if(this.spareFrame.length === 1) {
+    score = this.spareFrame[0] + this.frame.first
+    this.spareFrame.shift();
   } else {
     score = 0
   }

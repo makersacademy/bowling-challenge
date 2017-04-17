@@ -21,7 +21,6 @@ FrameHandler.prototype.startRound = function(){
 }
 
 FrameHandler.prototype.postThrowUpdates = function(){
-  this._endThrow();
   if(this._isFrameOver()){
     this._endFrame();
     this._incrementFrameNumber();
@@ -57,6 +56,7 @@ FrameHandler.prototype.preThrowChecks = function(){
 
 FrameHandler.prototype.throw= function(){
   var throw_result = this._throwBall();
+  this._endThrow();
   this.updateScore(throw_result);
 
 }
@@ -92,9 +92,9 @@ FrameHandler.prototype._endThrow = function(){
 
 FrameHandler.prototype.updateScore= function(score){
   var throwsMade = this.throwsMade
-  if(throwsMade === 0){
+  if(throwsMade === 1){
     this.result.throw1 = score;
-  }else if (throwsMade === 1){
+  }else if (throwsMade === 2){
     this.result.throw2 = score;
   }else {
     this.result.throw3 = score;

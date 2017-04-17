@@ -85,7 +85,7 @@ describe('FrameHandler', function(){
       frame.startRound();
       expect(frame.thrower.throw).toHaveBeenCalled();
     });
-    it('updates turn number after ball is thrown',function(){
+    it('updates throws made after ball is thrown',function(){
       frame.startRound();
       expect(frame.throwsMade).toEqual(1);
     });
@@ -146,11 +146,12 @@ describe('FrameHandler', function(){
 
   describe('#updateScore', function(){
     it('updates the score for throw 1',function(){
+      frame.throwsMade=1
       frame.updateScore(normalThrowScore);
       expect(frame.result.throw1).toEqual(normalThrowScore);
     });
     it('updates the score for throw 2', function(){
-      frame.throwsMade=1;
+      frame.throwsMade=2;
       frame.updateScore(8);
       expect(frame.result.throw2).toEqual(8);
     });

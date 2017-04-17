@@ -10,6 +10,7 @@ function Game(frameClass) {
 
   this.frameHandler = frameClass
   this.results = []
+  this.framesPlayed=0;
 }
 
 Game.prototype.logResult = function(){
@@ -31,8 +32,12 @@ Game.prototype._updateCumulativeScore = function(result){
 }
 
 Game.prototype.playBowling = function(){
-  if (this.frameHandler.isComplete){
+  if(this.framesPlayed === 10){
+    throw new TypeError("Game is over, reset to play again")
+  }
+  else if (this.frameHandler.isComplete){
     this.logResult();
+    this.framesPlayed ++;
     this.frameHandler.startFrame();
   }
   this.frameHandler.startRound();

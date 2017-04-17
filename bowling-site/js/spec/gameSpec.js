@@ -64,6 +64,15 @@ describe("Game",function(){
         expect(game.frameHandler.startRound).toHaveBeenCalled();
       });
 
+      it('increments the frame count', function(){
+        startingFrameCount = game.framesPlayed;
+        game.playBowling();
+        endingFrameCount = game.framesPlayed;
+        difference = endingFrameCount-startingFrameCount;
+        expect(difference).toEqual(1);
+
+      });
+
     });
     describe('Context: If the frame is in progress',function(){
       beforeEach(function(){
@@ -80,6 +89,14 @@ describe("Game",function(){
         expect(game.logResult).not.toHaveBeenCalled();
       });
     })
+
+    describe('Context: after all 10 frames have been played', function(){
+      it('throws error when called', function(){
+        game.framesPlayed = 10;
+        expect(function(){game.playBowling();}).toThrowError("Game is over, reset to play again");
+
+      });
+    });
   });
 
 

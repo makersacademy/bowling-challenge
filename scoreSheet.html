@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"></meta>
+  <title>Bowling Score Sheet</title>
+
+  <!-- include source files here... -->
+  <script src="jquery-2.1.4.js"></script>
+  <script src="src/player.js"></script>
+  <script src="src/game.js"></script>
+  <script src="application.js"></script>
+  <link rel="stylesheet" href="public/css/bootstrap.css"/>
+  <!-- include spec files here... -->
+</head>
+  <body>
+    <div>
+      <div class="col-md-12a text-center">
+        <div id="background">
+          <img src="public/images/bowling.jpg" class="stretch" alt="" />
+        </div>
+        <h1 style= 'color: white'>Score Sheet<h1>
+      </div>
+    </div>
+    <div class="col-md-2 col-md-offset-5 text-center">
+      <form>
+        <input class="form-control" name="pins" placeholder="Pins knocked down">
+        <button type="button" class="btn btn-default" id="score" >Submit</button>
+      </form>
+    </div>
+    <div style = 'margin-top: 10%'>
+      <table class="tg">
+        <tr>
+          <th class="tg-yw4l" colspan="2">Frame 1</th>
+          <th class="tg-pxng" colspan="2">Frame 2</th>
+          <th class="tg-yw4l" colspan="2">Frame 3</th>
+          <th class="tg-yw4l" colspan="2">Frame 4</th>
+          <th class="tg-yw4l" colspan="2">Frame 5</th>
+          <th class="tg-yw4l" colspan="2">Frame 6</th>
+          <th class="tg-yw4l" colspan="2">Frame 7</th>
+          <th class="tg-yw4l" colspan="2">Frame 8</th>
+          <th class="tg-yw4l" colspan="2">Frame 9</th>
+          <th class="tg-yw4l" colspan="3">Frame 10</th>
+        </tr>
+        <tr>
+          <td class="tg-yw4l" id = frame1></td>
+          <td class="tg-yw4l" id = frame1t2></td>
+          <td class="tg-yw4l" id = frame2></td>
+          <td class="tg-yw4l" id = frame2t2></td>
+          <td class="tg-yw4l" id = frame3></td>
+          <td class="tg-yw4l" id = frame3t2></td>
+          <td class="tg-yw4l" id = frame4></td>
+          <td class="tg-yw4l" id = frame4t2></td>
+          <td class="tg-yw4l" id = frame5></td>
+          <td class="tg-yw4l" id = frame5t2></td>
+          <td class="tg-yw4l" id = frame6></td>
+          <td class="tg-yw4l" id = frame6t2></td>
+          <td class="tg-yw4l" id = frame7></td>
+          <td class="tg-yw4l" id = frame7t2></td>
+          <td class="tg-yw4l" id = frame8></td>
+          <td class="tg-yw4l" id = frame8t2></td>
+          <td class="tg-yw4l" id = frame9></td>
+          <td class="tg-yw4l" id = frame9t2></td>
+          <td class="tg-yw4l" id = frame10></td>
+          <td class="tg-yw4l" id = frame10t2></td>
+          <td class="tg-yw4l" id = frame10t3></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

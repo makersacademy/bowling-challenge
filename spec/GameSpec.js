@@ -20,4 +20,13 @@ describe("Game", function(){
       expect(game.currentFrame.frameScores).toEqual([5]);
     });
   });
+
+  describe("_frameReset", function() {
+    it("resets the frame on completion", function() {
+      spyOn(Math, 'floor').and.returnValue(5);
+      game.play();
+      game.play();
+      expect(game.currentFrame.frameScores).toEqual([]);
+    });
+  });
 });

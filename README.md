@@ -1,7 +1,38 @@
-
 Bowling Challenge
 =================
+This program is written by Sara Tateno in response to the Makers Academy Weekend
+Challenge #5. It is written in JavaScript and uses jQuery, HTML and CSS. It has been test-driven using Jasmine.
 
+It has three classes: Game, Frame and Bonus.
+
+The Game initialises with a frame class and the number of frames to be played as optional arguments.
+
+The Game class tracks the frame the player is currently bowling in. It passes a submitted score in to the current frame as well as to any outstanding bonuses.
+
+The Frame class tracks any points scored in that particular frame. If a strike or a spare is scored, it initialises a bonus object which accepts either 1 or 2 additional bowls. The bonus object marks itself as complete when all bonus bowls have been awarded. This triggers the frame object to mark itself as finalised.
+
+This design avoids the need for a separate 'lastFrame' class. Instead, the final frame operates the same as any other frame - a strike scored in the final frame simple needs two additional bowls to be passed in to its bonus before the frame can be marked as complete. It also avoids any complexity around a strike potentially needing to know about the following two frames (i.e. if a strike is scored in the next frame).
+
+To install this program:-
+```
+$ git clone git@github.com:saratateno/bowling-challenge.git
+$ cd bowling-challenge
+$ open bowling.html
+```
+
+
+Builds
+-----
+* Implement Spies to isolate the unit tests
+* Return the running total for the game at each frame
+* Add a 'Game Complete' message.
+
+
+
+
+------
+Original Challenge Instructions:
+---------------------
 
 * Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own
@@ -9,14 +40,14 @@ Bowling Challenge
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday week
 
-Task: 
+Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by 
+As usual please start by
 
 * Forking this repo
 
@@ -62,7 +93,7 @@ Code Review
 In code review we'll be hoping to see:
 
 * All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 

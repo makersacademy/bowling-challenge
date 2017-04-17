@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Bowling Score Calculator</title>
+</head>
+
+<body>
+  <main>
+
+    <h1>Bowling Score Calculator</h1>
+
+    <div id="page-wrap">
+
+
+      <table>
+        <tr class="frame-num">
+          <th scope="col" class="frame1" colspan="2">1</th>
+          <th scope="col" class="frame2" colspan="2">2</th>
+          <th scope="col" class="frame3" colspan="2">3</th>
+          <th scope="col" class="frame4" colspan="2">4</th>
+          <th scope="col" class="frame5" colspan="2">5</th>
+          <th scope="col" class="frame6" colspan="2">6</th>
+          <th scope="col" class="frame7" colspan="2">7</th>
+          <th scope="col" class="frame8" colspan="2">8</th>
+          <th scope="col" class="frame9" colspan="2">9</th>
+          <th scope="col" class="frame10" colspan="3">10</th>
+        </tr>
+
+        <tr class="frame-score">
+          <td class="frame1 first" id="frame-1-1"></td>
+          <td class="frame1 second" id="frame-1-2"></td>
+          <td class="frame2 first" id="frame-2-1"></td>
+          <td class="frame2 second" id="frame-2-2"></td>
+          <td class="frame3 first" id="frame-3-1"></td>
+          <td class="frame3 second" id="frame-3-2"></td>
+          <td class="frame4 first" id="frame-4-1"></td>
+          <td class="frame4 second" id="frame-4-2"></td>
+          <td class="frame5 first" id="frame-5-1"></td>
+          <td class="frame5 second" id="frame-5-2"></td>
+          <td class="frame6 first" id="frame-6-1"></td>
+          <td class="frame6 second" id="frame-6-2"></td>
+          <td class="frame7 first" id="frame-7-1"></td>
+          <td class="frame7 second" id="frame-7-2"></td>
+          <td class="frame8 first" id="frame-8-1"></td>
+          <td class="frame8 second" id="frame-8-2"></td>
+          <td class="frame9 first" id="frame-9-1"></td>
+          <td class="frame9 second" id="frame-9-2"></td>
+          <td class="frame10 first" id="frame-10-1"></td>
+          <td class="frame10 second" id="frame-10-2"></td>
+          <td class="frame10 third" id="frame-10-3"></td>
+
+
+        </tr>
+
+        <tr class="running-total">
+          <td class="frame1 total" colspan="2"></td>
+          <td class="frame2 total" colspan="2"></td>
+          <td class="frame3 total" colspan="2"></td>
+          <td class="frame4 total" colspan="2"></td>
+          <td class="frame5 total" colspan="2"></td>
+          <td class="frame6 total" colspan="2"></td>
+          <td class="frame7 total" colspan="2"></td>
+          <td class="frame8 total" colspan="2"></td>
+          <td class="frame9 total" colspan="2"></td>
+          <td class="frame10 total" colspan="3"></td>
+
+        </tr>
+      </table>
+
+      <section id="enter-scores">
+        <div class="btn valid" id="score0">0</div>
+        <div class="btn valid" id="score1">1</div>
+        <div class="btn valid" id="score2">2</div>
+        <div class="btn valid" id="score3">3</div>
+        <div class="btn valid" id="score4">4</div>
+        <div class="btn valid" id="score5">5</div>
+        <div class="btn valid" id="score6">6</div>
+        <div class="btn valid" id="score7">7</div>
+        <div class="btn valid" id="score8">8</div>
+        <div class="btn valid" id="score9">9</div>
+        <div class="btn valid" id="score10">10</div>
+      </section>
+    </div>
+
+    <div class="total-score">Total Score: <span id="total-score"></span></div>
+
+  </main>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="src/bonus.js"></script>
+  <script src="src/frame.js"></script>
+  <script src="src/game.js"></script>
+  <script src="src/interface.js"></script>
+</body>
+
+</html>

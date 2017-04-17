@@ -1,4 +1,18 @@
 
+
+My Approach 
+=================
+
+* Create an object(hash) for each round scores
+* Variable to hold the total score
+* If statement function to calculate the score
+* Random number generator function for number of 
+	knocked down pins
+* Strike score calculator function
+* Spare score calculator function
+* Jquery for score animation
+* HTML & CSS pages
+
 Bowling Challenge
 =================
 

@@ -26,6 +26,9 @@ Bowling.prototype.getTotal = function () {
 };
 
 Bowling.prototype.bowl = function (pins) {
+  if (pins > 10 || pins < 0) throw new TypeError("Nope, try again");
+  if ( (pins + this.frameScore) > 10 ) throw new TypeError("Impossible! There were only 10 pins to knock down");
+
   this.isFrameComplete = false;
   this.roll += 1;
   this.frameScore += pins;

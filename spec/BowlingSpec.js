@@ -60,6 +60,15 @@ describe ('Bowling', function(){
       bowling.bowl(6);
       expect(bowling.getFrameScore()).toEqual(6);
     });
+
+    xit('only accepts knocked pins amount between 0 and 10', function(){
+      expect(bowling.bowl(14)).toThrowError("Nope, try again");
+    });
+
+    xit('only hits maximum of 10 pins per pin-set', function(){
+      bowling.bowl(9);
+      expect(bowling.bowl(4)).toThrowError("Impossible! There were only 10 pins to knock down");
+    });
   });
 
   describe('frame complete', function(){

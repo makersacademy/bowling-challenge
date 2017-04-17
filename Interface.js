@@ -2,10 +2,44 @@
 
 $(document).ready(function() {
   var bowling = new Bowling();
-  var rollIndex = 0;
+  var rollIndex = 1;
 
   function updateScoreboard() {
-    
+    if (lastRoll() === 10 && (rollIndex % 2 != 0)){
+      strike();
+    } else if (rollIndex % 2 === 0 && isASpare()){
+      spare();
+    } else {
+      $('#rollIndex-' + rollIndex).text(lastRoll());
+      rollIndex += 1;
+    }
+  }
+
+  function strike() {
+    $('#rollIndex-' + rollIndex).text(lastRoll());
+    $('#rollIndex-' + (rollIndex+1)).text("-");
+    rollIndex += 2;
+  }
+
+  function spare() {
+    $('#rollIndex-' + rollIndex).text("/")
+    rollIndex += 1;
+  }
+
+  function lastRoll() {
+    return bowling.rollHistory[bowling.rollHistory.length-1]
+  }
+
+  function nextLastRoll() {
+    return bowling.rollHistory[bowling.rollHistory.length-2]
+  }
+
+  function isASpare(){
+    if ((lastRoll() + nextLastRoll()) === 10){
+      return true;
+    } else {
+      return false;
+    }
   }
 
   $('#roll-0').click(function(){

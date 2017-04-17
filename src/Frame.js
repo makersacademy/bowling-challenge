@@ -3,6 +3,7 @@ function Frame() {
   this.frameScores = [];
   this.frameTotalScore = 0;
   this.wasAStrike = false;
+  this.wasASpare = false
 }
 
 Frame.prototype.bowl = function() {
@@ -11,6 +12,7 @@ Frame.prototype.bowl = function() {
   this.frameScores.push(bowlScore);
   this.frameTotalScore += bowlScore;
   this._isFrameAStrike();
+  this._isFrameASpare();
 }
 
 
@@ -27,5 +29,13 @@ Frame.prototype._isFrameAStrike = function() {
     this.wasAStrike = true
   } else {
     this.wasAStrike = false
+  }
+}
+
+Frame.prototype._isFrameASpare = function() {
+  if(this.frameScores.length === 2 && this.frameTotalScore === 10) {
+    this.wasASpare = true
+  } else {
+    this.wasASpare = false
   }
 }

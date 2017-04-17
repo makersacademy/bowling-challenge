@@ -48,5 +48,28 @@ describe("Frame", function(){
       frame.bowl();
       expect(frame.wasAStrike).toBe(true);
     });
+
+    it("isn't a strike if 10 pins are knocked down on first ball", function() {
+      spyOn(Math, 'floor').and.returnValue(2);
+      frame.bowl();
+      expect(frame.wasAStrike).toBe(false);
+    });
+  });
+
+  describe("_isFrameASpare", function() {
+
+    it("is a spare if 10 pins are knocked down in two bowls", function() {
+      spyOn(Math, 'floor').and.returnValue(5);
+      frame.bowl();
+      frame.bowl();
+      expect(frame.wasASpare).toBe(true)
+    });
+
+    it("isn't a spare if less than 10 pins are knocked down in two bowls", function() {
+      spyOn(Math, 'floor').and.returnValue(4);
+      frame.bowl();
+      frame.bowl();
+      expect(frame.wasASpare).toBe(false)
+    });
   });
 });

@@ -11,4 +11,13 @@ describe("Game", function(){
   it("initializes with an empty current frame", function() {
     expect(game.currentFrame.frameScores).toEqual([]);
   });
+
+  describe("play", function(){
+
+    it("bowls a ball on the frame", function() {
+      spyOn(Math, 'floor').and.returnValue(5);
+      game.play();
+      expect(game.currentFrame.frameScores).toEqual([5]);
+    });
+  });
 });

@@ -7,7 +7,7 @@ function Frame() {
 }
 
 Frame.prototype.bowl = function() {
-  bowlScore = Math.floor(Math.random() * (this.pinsremaning + 1));
+  var bowlScore = Math.floor(Math.random() * (this.pinsremaining + 1));
   this.pinsremaining -= bowlScore;
   this.frameScores.push(bowlScore);
   this.frameTotalScore += bowlScore;

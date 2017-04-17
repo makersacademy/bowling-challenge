@@ -51,6 +51,13 @@ describe("bowling game", function() {
       bowlingGame.secondShot(8);
       expect(bowlingGame.spare).toBe(true)
     });
+    // As a bowler,
+    // I want to do a strike shot in my first frame
+    // So that I can get double points on my next frame
+    it("make a strike", function() {
+      bowlingGame.firstShot(10);
+      expect(bowlingGame.strike).toBe(true)
+    });
   });
 
 });

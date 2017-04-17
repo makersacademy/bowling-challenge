@@ -10,6 +10,10 @@
     table, td {
       border: 2px solid black;
     }
+
+    container {
+      text-align: center;
+    }
   </style>
 
   <body>
@@ -18,48 +22,50 @@
       Bowling Scorecard
     </h1>
 
-    <div>
-      <button type="button" id="1pin">7</button>
-      <button type="button" id="1pin">8</button>
-      <button type="button" id="1pin">9</button>
-      <button type="button" id="1pin">10</button>
-    </div>
+    <container>
+      <div>
+        <button type="button" id="1pin">7</button>
+        <button type="button" id="1pin">8</button>
+        <button type="button" id="1pin">9</button>
+        <button type="button" id="1pin">10</button>
+      </div>
 
-    <div>
-      <button type="button" id="1pin">4</button>
-      <button type="button" id="1pin">5</button>
-      <button type="button" id="1pin">6</button>
-    </div>
+      <div>
+        <button type="button" id="1pin">4</button>
+        <button type="button" id="1pin">5</button>
+        <button type="button" id="1pin">6</button>
+      </div>
 
-    <div>
-      <button type="button" id="1pin">2</button>
-      <button type="button" id="1pin">3</button>
-    </div>
+      <div>
+        <button type="button" id="1pin">2</button>
+        <button type="button" id="1pin">3</button>
+      </div>
 
-    <div>
-      <button type="button" id="1pin">1</button>
-    </div>
+      <div>
+        <button type="button" id="1pin">1</button>
+      </div>
+    </container>
 
     <table style="width:100%">
-  <tr>
-    <td>Frame</td>
-    <td>Roll</td>
-    <td>Knocked-down Pins</td>
-    <td>Total Score</td>
-  </tr>
-  <tr>
-    <td>Frame 1</td>
-    <td>Roll 1</td>
-    <td>4</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>Frame 1</td>
-    <td>Roll 2</td>
-    <td>5</td>
-    <td>9</td>
-  </tr>
-</table>
+      <tr>
+        <td>Frame</td>
+        <td>Roll</td>
+        <td>Knocked-down Pins</td>
+        <td>Total Score</td>
+      </tr>
+      <tr>
+        <td>Frame 1</td>
+        <td>Roll 1</td>
+        <td>4</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Frame 1</td>
+        <td>Roll 2</td>
+        <td>5</td>
+        <td>9</td>
+      </tr>
+    </table>
 
     <script src="src/Bowling.js"></script>
     <script src="interface.js"></script>

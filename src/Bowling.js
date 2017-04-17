@@ -26,12 +26,27 @@ Bowling.prototype.getTotal = function () {
 };
 
 Bowling.prototype.bowl = function (pins) {
+  this.isValidBowl(pins);
+  this.isFrameComplete = false;
+  this.updateRoll();
+  this.updateFrameScore(pins);
+  this.resetPinsIfAppropriate();
+};
+
+Bowling.prototype.isValidBowl = function(pins) {
   if (pins > 10 || pins < 0) throw new TypeError("Nope, try again");
   if ( (pins + this.frameScore) > 10 ) throw new TypeError("Impossible! There were only 10 pins to knock down");
+};
 
-  this.isFrameComplete = false;
+Bowling.prototype.updateRoll = function () {
   this.roll += 1;
+};
+
+Bowling.prototype.updateFrameScore = function (pins) {
   this.frameScore += pins;
+};
+
+Bowling.prototype.resetPinsIfAppropriate = function(){
   if (this.roll > 2) {
     this.roll = 1;
     this.isFrameComplete = true;

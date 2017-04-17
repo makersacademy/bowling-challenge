@@ -69,6 +69,14 @@ describe ('Bowling', function(){
       bowling.bowl(9);
       expect(bowling.bowl(4)).toThrowError("Impossible! There were only 10 pins to knock down");
     });
+
+    xit('cannot bowl if all 10 frames have been played', function(){
+      for (var i = 1; i < 10; i++) {
+        bowling.bowl(4);
+        bowling.bowl(5);
+      }
+      expect(bowling.bowl(4)).toThrowError("Game over! Start a fresh game.")
+    });
   });
 
   describe('frame complete', function(){
@@ -93,6 +101,18 @@ describe ('Bowling', function(){
       bowling.bowl(3);
       bowling.bowl(4);
       expect(bowling.getFrame()).toEqual(2)
+    });
+  });
+
+  describe('resetPinsIfAppropriate', function(){
+    it('allows a third bowl on 10th Frame if preceded by two strikes or a spare', function(){
+      for (var i = 1; i < 10; i++) {
+        bowling.bowl(4);
+        bowling.bowl(5);
+      }
+      bowling.bowl(4);
+      bowling.bowl(6);
+      expect(bowling.bowl(4)).not.toThrow();
     });
   });
 

@@ -9,6 +9,8 @@ function Bowling() {
   this.isFrameComplete = false;
 };
 
+// ==== Readers ====
+
 Bowling.prototype.getFrame = function () {
   return this.frame;
 };
@@ -25,6 +27,9 @@ Bowling.prototype.getTotal = function () {
   return this.total;
 };
 
+// ==== ==== ==== ====
+
+
 Bowling.prototype.bowl = function (pins) {
   this.isValidBowl(pins);
   this.isFrameComplete = false;
@@ -33,9 +38,13 @@ Bowling.prototype.bowl = function (pins) {
   this.resetPinsIfAppropriate();
 };
 
+// ==== Functions inside bowl function ====
+
 Bowling.prototype.isValidBowl = function(pins) {
   if (pins > 10 || pins < 0) throw new TypeError("Nope, try again");
   if ( (pins + this.frameScore) > 10 ) throw new TypeError("Impossible! There were only 10 pins to knock down");
+  if ( this.frame === 10 && this.frameScore === 10 ) { return true; }
+  if ( this.frame > 10 ) throw new TypeError("Game over! Start a fresh game.")
 };
 
 Bowling.prototype.updateRoll = function () {
@@ -47,6 +56,10 @@ Bowling.prototype.updateFrameScore = function (pins) {
 };
 
 Bowling.prototype.resetPinsIfAppropriate = function(){
+  // if () {
+  //
+  // }
+
   if (this.roll > 2) {
     this.roll = 1;
     this.isFrameComplete = true;
@@ -55,3 +68,5 @@ Bowling.prototype.resetPinsIfAppropriate = function(){
     this.frame += 1;
   }
 };
+
+// ==== ==== ==== ==== ==== ==== ==== ====

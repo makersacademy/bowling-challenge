@@ -1,0 +1,63 @@
+body {
+  width: 750px ;
+  margin: 0 auto;
+  /*border: 3px solid black;*/
+  border-style: solid;
+  border-width: 8px;
+  display: block;
+  overflow: auto;
+  background-color: lightskyblue;
+}
+<style type="text/css">
+.card  {border-collapse:collapse;border-spacing:0;border-color:#aaa;}
+.card td{font-family:Arial, sans-serif;font-size:16px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aaa;color:#333;background-color:#fff;}
+.card th{font-family:Arial, sans-serif;font-size:16px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aaa;color:#fff;background-color:#f38630;}
+.card .framenames{color:#000000;text-align:center;font-family:"Comic Sans MS"}
+.card .total{color:#000000;text-align:center;font-family:"Comic Sans MS"}
+.card .roll{background-color:#FCFBE3;text-align:center;font-family:"Comic Sans MS"}
+.card .frameTotal{text-align:center;font-family:"Comic Sans MS"}
+</style>
+
+h1 {
+  font-family:"Comic Sans MS";
+  text-align: center
+}
+
+h2 {
+  font-family:"Comic Sans MS";
+  color: mediumorchid;
+  text-align: center
+}
+
+h3 {
+  font-family:"Comic Sans MS";
+  color: purple;
+  text-align: center
+}
+
+.container {
+  text-align: center;
+  font-family:"Comic Sans MS";
+}
+
+img {
+  height: 250px;
+  width: 300px;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pins {
+  text-align: center;
+  font-family:"Comic Sans MS";
+  height:40px;
+  width:40px;
+}
+
+.reset {
+  text-align: center;
+  font-family:"Comic Sans MS";
+  height:40px;
+  width:80px;
+}

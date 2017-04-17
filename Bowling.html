@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="./styles.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <title>Bowling Scorecard</title>
+</head>
+
+<body>
+<!-- <img src=""> -->
+
+<div class=container>
+  <h1>Bowling Scorecard</h1>
+  <img src="./images/bowling.gif">
+  <h2>Click number of pins knocked down</h2>
+<div class="btn-group">
+  <button class="pins" type="button" id="p0">0</button>
+  <button class="pins" type="button" id="p1">1</button>
+  <button class="pins" type="button" id="p2">2</button>
+  <button class="pins" type="button" id="p3">3</button>
+  <button class="pins" type="button" id="p4">4</button>
+  <button class="pins" type="button" id="p5">5</button>
+  <button class="pins" type="button" id="p6">6</button>
+  <button class="pins" type="button" id="p7">7</button>
+  <button class="pins" type="button" id="p8">8</button>
+  <button class="pins" type="button" id="p9">9</button>
+  <button class="pins" type="button" id="p10">10</button>
+</div>
+  <br>
+<h3></h3>
+  <div class=container>
+
+  <!-- <button type="button" id="submit">Submit</button> -->
+  <button class="reset" type="button" id="reset">reset</button>
+  </div>
+  <br>
+
+  <table class="card">
+    <tr>
+      <th class="framenames" colspan="2">Frame 1<br></th>
+      <th class="framenames" colspan="2">Frame 2<br></th>
+      <th class="framenames" colspan="2">Frame 3<br></th>
+      <th class="framenames" colspan="2">Frame 4<br></th>
+      <th class="framenames" colspan="2">Frame 5<br></th>
+      <th class="framenames" colspan="2">Frame 6<br></th>
+      <th class="framenames" colspan="2">Frame 7<br></th>
+      <th class="framenames" colspan="2">Frame 8<br></th>
+      <th class="framenames" colspan="2">Frame 9<br></th>
+      <th class="framenames" colspan="3">Frame 10<br></th>
+      <th class="total" colspan="3">Total<br></th>
+
+    </tr>
+    <tr>
+      <td class="roll" id="1"></td>
+      <td class="roll" id="2"></td>
+      <td class="roll" id="3"></td>
+      <td class="roll" id="4"></td>
+      <td class="roll" id="5"></td>
+      <td class="roll" id="6"></td>
+      <td class="roll" id="7"></td>
+      <td class="roll" id="8"></td>
+      <td class="roll" id="9"></td>
+      <td class="roll" id="10"></td>
+      <td class="roll" id="11"></td>
+      <td class="roll" id="12"></td>
+      <td class="roll" id="13"></td>
+      <td class="roll" id="14"></td>
+      <td class="roll" id="15"></td>
+      <td class="roll" id="16"></td>
+      <td class="roll" id="17"></td>
+      <td class="roll" id="18"></td>
+      <td class="roll" id="19"></td>
+      <td class="roll" id="20"></td>
+      <td class="roll" id="21"></td>
+      <td class="roll" colspan="3" rowspan="2" id="runningTotal"></td>
+    </tr>
+    <tr>
+      <td class="frameTotal" colspan="2" id="f1"></td>
+      <td class="frameTotal" colspan="2" id="f2"></td>
+      <td class="frameTotal" colspan="2" id="f3"></td>
+      <td class="frameTotal" colspan="2" id="f4"></td>
+      <td class="frameTotal" colspan="2" id="f5"></td>
+      <td class="frameTotal" colspan="2" id="f6"></td>
+      <td class="frameTotal" colspan="2" id="f7"></td>
+      <td class="frameTotal" colspan="2" id="f8"></td>
+      <td class="frameTotal" colspan="2" id="f9"></td>
+      <td class="frameTotal" colspan="3" id="f10"></td>
+    </tr>
+  </table>
+
+
+</body>
+<script type="text/javascript" src="src/Scorecard.js"></script>
+<script type="text/javascript" src="app/appScorecard.js"></script>
+
+</html>

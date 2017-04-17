@@ -52,7 +52,11 @@ Game.prototype.addToCurrentFrame = function(points) {
   this.currentFrame.push(points);
   if (this.getNextRoll() === 1) {
     this.addCurrentFrameToFrameHistory(this.currentFrame);
-    this.updateScores();
+    if (this.consecutiveStrikes() !== true) {
+      this.updateScores();
+    } else if(this.currentFrameNumber > 2){
+      this.calculateSecondPreviousFrameScore();
+    }
   } else if(this.spareInPreviousFrame() === true) {
     this.calculatePreviousFrameScore();
   }
@@ -103,22 +107,33 @@ Game.prototype.updateScores = function(){
 Game.prototype.calculateFrameScore = function() {
     var frameScore = this.getFirstRollScore() + this.getSecondRollScore();
     this.updateCumulativeFrameScore(frameScore);
-}
+};
 
 Game.prototype.calculatePreviousFrameScore = function() {
   var previousFrameScore = this.bonusPoints + this.getFirstRollScore()
   if(this.getSecondRollScore() !== undefined){
-    console.log('Here');
     previousFrameScore += this.getSecondRollScore();
   }
-  console.log(previousFrameScore);
   this.updateCumulativeFrameScore(previousFrameScore);
+}
+
+Game.prototype.calculateSecondPreviousFrameScore = function() {
+  if(this.frameHistory[this.currentFrameNumber-2][0] === 10 && this.frameHistory[this.currentFrameNumber-3][0] === 10) {
+    var secondPreviousFrameScore = this.bonusPoints + 10 + 10;
+    this.updateCumulativeFrameScore(secondPreviousFrameScore);
+  }
 }
 
 Game.prototype.strikeInPreviousFrame = function() {
   if(this.currentFrameNumber === 1){
     return false;
   } else if(this.frameHistory[this.currentFrameNumber - 2][0] === 10) {
+    return true;
+  }
+}
+
+Game.prototype.consecutiveStrikes = function() {
+  if(this.isAStrike === true && this.strikeInPreviousFrame() === true) {
     return true;
   }
 }

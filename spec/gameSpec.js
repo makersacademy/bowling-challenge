@@ -150,6 +150,7 @@ describe('Game', function(){
     it('can get multiple strikes in a row', function(){
       game.roll(10);
       game.roll(10);
+      game.roll(10);
       expect(game.cumulativeFrameScores).toEqual([30]);
     });
 
@@ -164,6 +165,22 @@ describe('Game', function(){
       game.roll(6);
       game.roll(4)
       expect(game.cumulativeFrameScores).toEqual([14]);
+    });
+
+    it('can get multiple spares in a row', function(){
+      game.roll(4);
+      game.roll(6);
+      game.roll(4);
+      game.roll(6);
+      game.roll(2);
+      expect(game.cumulativeFrameScores).toEqual([14, 26]);
+    });
+
+    it('strike followed by a spare', function() {
+      game.roll(10);
+      game.roll(4);
+      game.roll(6);
+      expect(game.cumulativeFrameScores).toEqual([20]);
     });
   });
 

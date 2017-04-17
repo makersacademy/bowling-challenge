@@ -30,6 +30,13 @@ describe("Game", function(){
       game.play();
       expect(game.allFrames[0].frameScores).toEqual([5, 5]);
     });
+
+    it("adds the frame score to the running total", function() {
+      spyOn(Math, 'floor').and.returnValue(4);
+      game.play();
+      game.play();
+      expect(game.runningTotal).toEqual(8)
+    })
   });
 
   describe("_frameReset", function() {

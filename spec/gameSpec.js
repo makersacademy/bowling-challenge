@@ -20,8 +20,20 @@ describe ('Game', function(){
   });
 
   it('knows if game has finished', function(){
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
     game.roll(3);
-    expect(game._gameIsFinished).toBe(false);
+    expect(game.roll(3)).toEqual("Game has finished");
   });
 
   describe('Frames 1 - 9:', function(){

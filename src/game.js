@@ -11,7 +11,9 @@ this._finalScore = 0;
 }
 
 Game.prototype.roll = function (knockedPins) {
-  if ( this._framesInPlay.length === 9 ) {
+  if ( this._gameIsFinished ) {
+    return "Game has finished";
+  } else if ( this._framesInPlay.length === 9 ) {
     this._tenthRoll(knockedPins);
   } else if ( this._currentFrame == undefined  ) {
     this._currentFrame = new Frame(knockedPins);
@@ -34,14 +36,15 @@ Game.prototype._tenthRoll = function (knockedPins) {
   } else if ( this._currentFrame._isStrike && this._currentFrame.getRollNumber() === 2 ) {
     this._currentFrame.playSecondRoll(knockedPins);
     this._currentFrame.addRollNumber();
+  } else if ( this._currentFrame._isSpare && this._currentFrame.getRollNumber() === 2 ) {
+    this._currentFrame.playBonusRoll(knockedPins);
+    this._currentFrame.addRollNumber();
   } else if ( this._currentFrame.getRollNumber() === 1 ) {
     this._currentFrame.playSecondRoll(knockedPins);
     this._currentFrame.checkSpare(knockedPins);
     this._currentFrame.addRollNumber();
-  } else if ( this._currentFrame._isSpare ) {
-    this._currentFrame.playBonusRoll(knockedPins);
   } else { this._framesInPlay.push(this._currentFrame);
-    this._gameFinished();
+    this._finishGame();
     this._endSequence();
     };
 }
@@ -97,8 +100,8 @@ Game.prototype._calculateTotalScore = function () {
   return total_score;
 };
 
-Game.prototype._gameFinished = function () {
-  this._gameFinished = true;
+Game.prototype._finishGame = function () {
+  this._gameIsFinished = true;
 };
 
 Game.prototype._endSequence = function () {

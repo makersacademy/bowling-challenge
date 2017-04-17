@@ -5,6 +5,11 @@
 - RESOURCES
 
 
+HOW TO
+=======
+Final roll is required to calculate total score and finish game. This roll does not count towards score.
+
+
 
 1. BUSINESS LOGIC
 =================

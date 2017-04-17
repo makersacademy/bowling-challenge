@@ -1,27 +1,32 @@
 body {
   font-family: 'Reenie Beanie', cursive;
   font-size:  40px;
+  background-color: rgb(248,248,236);
 }
 
-#ball {
-  width:100px;
-  height:100px;
+p {
+  margin: 3px;
+}
+
+
+
+#frame-stats {
   position: relative;
-  margin-left: 400px;
+  top: 0px;
+  text-align: center;
 }
 
 #game-stats {
-  font-family: 'Reenie Beanie', cursive;
+  position: absolute;
+  top: 0px;
   text-align: left;
 }
+
 
 #game-over {
   text-align: center;
 }
 
-#frame-stats {
-  text-align: center;
-}
 
 #pins {
   display: block;
@@ -30,4 +35,12 @@ body {
 
 #controls {
   text-align: center;
+}
+
+
+#ball {
+  width:100px;
+  height:100px;
+  position: relative;
+  margin-left: 400px;
 }

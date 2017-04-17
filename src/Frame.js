@@ -50,10 +50,9 @@ Frame.prototype.bonusFeature = function() {
     return 'strike'
   } else if (this._rollTwoPoints + this._rollOnePoints === 10) {
     return 'spare'
-  } else if (this._rollTwoPoints + this._rollOnePoints === 0) {
-    return 'gutterball'
-  } else
-    return this.points()
+  } else {
+    return ''
+  }
 }
 
 Frame.prototype.isFinished = function() {

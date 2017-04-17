@@ -9,17 +9,11 @@ $(document).ready(function() {
 
 
   $('#roll').on('click', function() {
-    $('#ball').animate({
-      left: '250px',
-      bottom: '100px',
-      height: '80px',
-      width: '80px'
-    }, 'slow', function () { $(this).removeAttr('style'); });
+    animateBall();
     game.roll();
     if(game.isFinished()) {
       game.updateAndStore()
-      var num = game._lastFrame().number();
-      $('#game-stats').append('<p>frame ' + num + ': <span id="frame_' + num + '"></span></p>')
+      writeLog();
       updateAll();
       endGame()
     }
@@ -31,8 +25,7 @@ $(document).ready(function() {
 
   $('#new-frame').on('click', function() {
     game.updateAndStore()
-    var num = game._lastFrame().number();
-    $('#game-stats').append('<p>frame ' + num + ': <span id="frame_' + num + '"></span></p>')
+    writeLog();
     updateAll();
     startFrame();
   });
@@ -40,12 +33,14 @@ $(document).ready(function() {
 
   function startFrame() {
     $('#roll').show();
+    $('#this-is-how-it-rolls').show();
     $('#new-frame').hide();
     $('#frame-outcome').hide();
   }
 
   function endFrame() {
     $('#roll').hide();
+    $('#this-is-how-it-rolls').hide();
     $('#new-frame').show();
     $('#frame-outcome').show();
     $('#bonus-feature').text(game._currentFrame.bonusFeature());
@@ -63,9 +58,25 @@ $(document).ready(function() {
   };
 
   function endGame() {
+    $('#frame-10-points').text(game._lastFrame().points());
+    $('#frame-10-bonus-feature').text(game._lastFrame().bonusFeature());
     $('#game-over').show();
     $('#frame-stats').hide();
     $('#controls').hide();
+  }
+
+  function writeLog() {
+    var num = game._lastFrame().number();
+    $('#game-stats').append('<p>frame ' + num + ': <span id="frame_' + num + '"></span></p>')
+  }
+
+  function animateBall() {
+    $('#ball').animate({
+      left: '250px',
+      bottom: '100px',
+      height: '80px',
+      width: '80px'
+    }, 'slow', function () { $(this).removeAttr('style'); });
   }
 
 });

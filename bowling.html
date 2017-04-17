@@ -16,26 +16,36 @@
         <p>total score: <span id='total-score'></span></p>
       </section>
 
+      <div class='lane'>
+
       <section id='game-over'>
         <p>game over!<p>
+        <p>frame: 10</p>
+        <p>points: <span id='frame-10-points'></span></p>
+        <p><span id='frame-10-bonus-feature'></span></p>
+        <script>
+          game._lastFrame().points();
+        </script>
       </section>
 
       <section id='frame-stats'>
         <p>frame: <span id='this-frame-number'></span></p>
         <p>points: <span id='this-frame-points'></span></p>
-        <p>roll: <span id='this-frame-roll'></span></p>
-        <p id='frame-outcome'><span id='bonus-feature'></span>!!!</p>
+        <p id='this-is-how-it-rolls'>roll: <span id='this-frame-roll'></span></p>
+        <p id='frame-outcome'><span id='bonus-feature'></span></p>
       </section>
 
       <section>
         <img id='pins' src='pins/10_pins.jpeg' style='width:553px;height:400px'>
-        <div><img id='ball' src='pins/bowlingball.jpeg'></div>
+        <div><img id='ball' src='pins/ball.png'></div>
       </section>
 
       <section id='controls'>
         <button style='font-family:Reenie Beanie,cursive;font-size:40px' id='roll'>roll</button>
         <button style='font-family:Reenie Beanie,cursive;font-size:40px' id='new-frame'>next frame</button>
       </section>
+
+    </div>
 
       <script src='src/Game.js'></script>
       <script src='src/Frame.js'></script>

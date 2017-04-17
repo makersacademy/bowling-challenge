@@ -1,0 +1,25 @@
+# As a player
+# So I can play a game
+# I want to be able to bowl a ball
+#
+# As a player
+# So I know how well I'm doing
+# I want to be able to check my score
+#
+# As a player
+# So I know how well I'm doing
+# I want to be able to see my score for each frame
+#
+# As a player
+# So i know when the game has finished
+# I want to know when I have finished the 10th frame
+
+#Records strikes properly in the frameslog
+
+As a player
+So I can keep proper score
+I want strike's to be scored correctly
+
+#As a player
+#So I can keep proper score
+#I want spare's to be scored correctly

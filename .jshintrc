@@ -44,7 +44,7 @@
     "debug"         : false,     // true: Allow debugger statements e.g. browser breakpoints.
     "eqnull"        : false,     // true: Tolerate use of `== null`
     "es5"           : false,     // true: Allow ES5 syntax (ex: getters and setters)
-    "esnext"        : false,     // true: Allow ES.next (ES6) syntax (ex: `const`)
+    "esnext"        : true,     // true: Allow ES.next (ES6) syntax (ex: `const`)
     "moz"           : false,     // true: Allow Mozilla specific syntax (extends and overrides esnext features)
                                  // (ex: `for each`, multiple try/catch, function expression…)
     "evil"          : false,     // true: Tolerate use of `eval` and `new Function()`
@@ -72,7 +72,7 @@
     "couch"         : false,    // CouchDB
     "devel"         : true,     // Development/debugging (alert, confirm, etc)
     "dojo"          : false,    // Dojo Toolkit
-    "jasmine"       : false,    // Jasmine
+    "jasmine"       : true,     // Jasmine
     "jquery"        : false,    // jQuery
     "mocha"         : true,     // Mocha
     "mootools"      : false,    // MooTools
@@ -89,5 +89,5 @@
     "yui"           : false,    // Yahoo User Interface
 
     // Custom Globals
-    "globals"       : {}        // additional predefined global variables
+    "globals"       : {"Frame" : true, "Game" : true}        // additional predefined global variables
 }

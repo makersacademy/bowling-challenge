@@ -43,14 +43,14 @@ describe('Bowling', function() {
         expect(bowling.spare).toEqual(true);
       });
 
-      it("User has one more throw on the 10th frame if spare of strike", function(){
+      it("User has one more throw on the 10th frame if spare or strike", function(){
         for (var i = 1; i <= 9; i++) {
           bowling.firstThrow(6);
           bowling.secondThrow(1);
         }
         bowling.firstThrow(10);
-        bowling.secondThrow(6);
-        bowling.thirdThrow(1);
+        bowling.firstThrow(6);
+        bowling.secondThrow(1);
         expect(bowling.currentScore).toEqual(80);
       });
 
@@ -143,15 +143,35 @@ describe('Bowling', function() {
       expect(bowling.currentScore).toEqual(41);
     });
 
-    // it("Scores a perfect game: 300 points", function(){
-    //   for (var i = 1; i <= 10; i++) {
-    //     bowling.firstThrow(10);
-    //   }
-    //   debugger;
-    //   bowling.secondThrow(10);
-    //   bowling.thirdThrow(10);
-    //   expect(bowling.currentScore).toEqual(300);
-    // });
+    it("Scores a perfect game: 300 points", function(){
+      for (var i = 1; i <= 10; i++) {
+        bowling.firstThrow(10);
+      }
+      // debugger;
+      bowling.firstThrow(10);
+      bowling.secondThrow(10);
+      expect(bowling.currentScore).toEqual(300);
+    });
+
+    it("Scores an almost perfect game: 285 points - ending with a spare", function(){
+      for (var i = 1; i <= 10; i++) {
+        bowling.firstThrow(10);
+      }
+      // debugger;
+      bowling.firstThrow(5);
+      bowling.secondThrow(5);
+      expect(bowling.currentScore).toEqual(285);
+    });
+
+    it("Scores an almost perfect game AGAIN: 295 points", function(){
+      for (var i = 1; i <= 10; i++) {
+        bowling.firstThrow(10);
+      }
+      // debugger;
+      bowling.firstThrow(10);
+      bowling.secondThrow(5);
+      expect(bowling.currentScore).toEqual(295);
+    });
 
   });
 

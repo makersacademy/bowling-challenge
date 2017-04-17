@@ -8,6 +8,14 @@ function Bowling(){
   this.spareFrame = []
 };
 
+Bowling.prototype.reset = function() {
+  this.pins = 10
+  this.frame = {first: 0, second: 0}
+  this.strike = false
+  this.spare = false
+  this.turnNumber += 1
+};
+
 Bowling.prototype.firstThrow = function(score){
   this.reset();
   this.pins -= score
@@ -27,21 +35,32 @@ Bowling.prototype.firstThrow = function(score){
 
 Bowling.prototype.secondThrow = function(score){
 
-  if(this.strike && this.turnNumber < 10 ) {
+  if(this.strike && this.turnNumber <= 10) {
     throw new Error("Can't throw again after a strike")
   }
+
   if(this.turnNumber === 10) {
     this.pins = 10
   }
+
   this.pins -= score
   this.frame.second += score
 
-  if(this.pins === 0) {
+
+  if(this.strike === true) {
+    this.strikeFrame.push(this.frame.second)
+    this.currentScore += this.bonusStrike();
+  };
+
+  if(this.pins === 0 && this.turnNumber <= 10) {
     this.spare = true
     this.spareFrame.push(10)
-
   } else {
-    this.currentScore += (this.frame.first + this.frame.second + this.bonusStrike());
+    if(this.turnNumber > 10) {
+      this.currentScore += this.bonusStrike()
+    } else {
+      this.currentScore += (this.frameScore() + this.bonusStrike());
+    }
   }
 };
 
@@ -88,12 +107,4 @@ Bowling.prototype.bonusSpare = function () {
 
 Bowling.prototype.frameScore = function () {
   return this.frame.first + this.frame.second
-};
-
-Bowling.prototype.reset = function() {
-  this.pins = 10
-  this.frame = {first: 0, second: 0}
-  this.strike = false
-  this.spare = false
-  this.turnNumber += 1
 };

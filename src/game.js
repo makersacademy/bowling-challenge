@@ -29,14 +29,28 @@ Game.prototype.totalGameScore = function(){
         totalScore += 10 + (10 - nextArray.firstBowlRemainder);
       } else if (frame.status === 'Strike!' && nextArray.status === 'Strike!' && array[index+2]){
         totalScore += 20 + (10 - array[index+2].firstBowlRemainder);
+
+
+      } else if (frame.status === 'Strike!' && nextArray.status === 'Strike!'){
+        if (index === 8) { console.log('here 3') }
+
+        totalScore += 20 + (10 - array[+1].firstBowlRemainder);
+
+
+
+
       } else if (frame.status === 'Strike!'){
         totalScore += 10 + (nextArray.frameScore());
       } else {
         totalScore += frame.frameScore();
       }
+    } else if (frame.status === "Strike!"){
+      totalScore += frame.frameScore() + frame.extraBowl() + frame.extraBowl();
     } else {
       totalScore += frame.frameScore();
     }
+    console.log('------');
+    console.log('FRAME: ', (index + 1), totalScore);
   });
   return totalScore;
 };

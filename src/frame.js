@@ -42,3 +42,7 @@ Frame.prototype.secondBowl = function(){
 Frame.prototype.frameScore = function(){
   return this.totalScore;
 };
+
+Frame.prototype.extraBowl = function(){
+  return this.pinsDown(10);
+};

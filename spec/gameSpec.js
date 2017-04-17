@@ -48,10 +48,24 @@ describe('Game', function(){
     expect(game.totalGameScore()).toEqual(120);
   });
 
-  it('returns strike score plus next two bowls score(strike bowls)', function(){
-    spyOn(Frame.prototype, 'pinsDown').and.returnValues(10,10,10,10,10,10,10,10,10,10);
+  it('returns strike score plus next 2 bowls score(strike bowls)', function(){
+    spyOn(Frame.prototype, 'pinsDown').and.returnValues(10,10,10,10,10,10,10,10,10,10,10,10);
     game.startGame();
-    expect(game.totalGameScore()).toEqual(270);
+    expect(game.totalGameScore()).toEqual(300);
+  });
+
+  it('Adds 3rd bowl for final frame if strike in first bowl', function(){
+    spyOn(Frame.prototype, 'pinsDown').and.returnValues(10,10,10,10,10,10,10,10,10,10,2,6);
+    game.startGame();
+    expect(game.totalGameScore()).toEqual(280);
+  });
+
+  xit('If spare in 10th frame allows 3rd bowl', function(){
+
+  });
+
+  xit('Does not allow 3rd bowl in 10th frame if non strike/spare', function(){
+
   });
 
 });

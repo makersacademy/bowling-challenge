@@ -103,25 +103,29 @@ describe ('Game', function(){
   });
 
   describe('Scoring Frames 1 - 9:', function(){
-    it('can retrieve score for most recent non-strike/spare frame', function(){
+    it('can calculate score for non-strike/spare frame', function(){
       game.roll(5);
       game.roll(3);
       game.roll(2);
-      expect(game.getFrameScore(this._framesInPlay)).toEqual(8);
+      expect(game.getFrameScore(0)).toEqual(8);
     });
 
     it('can calculate score for a Spare', function(){
       game.roll(6);
       game.roll(4);
       game.roll(2);
-      expect(game.getFrameScore(this._framesInPlay)).toEqual(12);
+      game.roll(0);
+      game.roll(0);
+      expect(game.getFrameScore(0)).toEqual(12);
     })
 
     it('can calculate score for a Strike', function(){
       game.roll(10);
       game.roll(2);
       game.roll(4);
-      expect(game.getFrameScore(this._framesInPlay)).toEqual(16);
+      game.roll(0);
+      game.roll(0);      
+      expect(game.getFrameScore(0)).toEqual(16);
     })
 
   });
@@ -159,6 +163,31 @@ describe ('Game', function(){
       game.roll(1);
       game.roll(3)
       expect(game._endSequence()).toEqual("Game Finished");
+    });
+
+    it('calculates game total score', function(){
+      game.roll(1);
+      game.roll(2);
+      game.roll(1);
+      game.roll(2);
+      game.roll(1);
+      game.roll(2);
+      game.roll(1);
+      game.roll(2);
+      game.roll(1);
+      game.roll(2);
+      game.roll(1);
+      game.roll(2);
+      game.roll(1);
+      game.roll(2);
+      game.roll(1);
+      game.roll(2);
+      game.roll(1);
+      game.roll(2);
+      game.roll(1);
+      game.roll(2);
+      game.roll(3);
+      expect(game._totalScore()).toEqual(30);
     });
   })
 

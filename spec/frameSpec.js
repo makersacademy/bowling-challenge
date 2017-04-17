@@ -17,6 +17,10 @@ describe('Frame', function(){
     expect(frame._score).toEqual(0);
   })
 
+  it('knows if frame is finished', function(){
+    expect(frame._frameIsFinished).toBe(false);
+  })
+
   describe('first roll', function(){
 
     it('logs the knocked pins of first roll', function(){
@@ -57,7 +61,7 @@ describe('Frame', function(){
       frame.playBonusRoll(3);
       expect(frame.getBonusRoll()).toEqual(3);
     });
-    
+
   })
 
 })

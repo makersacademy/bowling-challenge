@@ -8,6 +8,7 @@ function Frame(knockedPins){
   this._isStrike = false;
   this._isSpare = false;
   this._bonusRoll = 0;
+  this._frameIsFinished = false;
 }
 
 Frame.prototype.getRollNumber = function () {

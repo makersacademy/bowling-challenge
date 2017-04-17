@@ -1,0 +1,27 @@
+#frame{
+    width: 100px;
+    height: 100px;
+    border: solid black;
+    float: left ;
+
+}
+
+#small{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    float: right;
+    float: top;
+    text-align: left;
+    border-left: solid black;
+    border-bottom: solid black;
+}
+
+#scoreInput{
+  margin-left: 10px;
+}
+
+#score1{
+  width: 50px;
+}
+

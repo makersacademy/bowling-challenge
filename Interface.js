@@ -31,7 +31,7 @@ $(document).ready(function() {
 
   function tenthframe() {
     if (rollIndex===19){
-      var roll19 = lastRoll();
+      roll19 = lastRoll();
       if (roll19 === 10){
         $('#rollIndex-19').text("X");
       } else {
@@ -39,7 +39,7 @@ $(document).ready(function() {
       }
       rollIndex += 1;
     } else if (rollIndex===20){
-      var roll20 = lastRoll();
+      roll20 = lastRoll();
       if (roll19 === 10) {
         $('#rollIndex-20').text(roll20);
       } else if (roll19 + roll20 === 10){
@@ -52,7 +52,7 @@ $(document).ready(function() {
       }
       rollIndex += 1;
     } else if (rollIndex===21){
-      var roll21 = lastRoll();
+      roll21 = lastRoll();
       if (roll19 === 10 || (roll19 + roll20 === 10)){
         $('#rollIndex-21').text(roll21);
         scoreFrames[frameIndex]=(bowling.getCurrentScore());

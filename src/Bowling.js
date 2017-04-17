@@ -34,7 +34,11 @@ Bowling.prototype.nextFrame = function () {
   this.rollsThisFrame = 0;
   this.pinsRemaining = 10;
   this.strikeThisFrame = false;
-  this.frameNumber += 1;
+  if (this.frameNumber < 11) {
+    this.frameNumber += 1;
+  } else {
+    this.frameNumber = 11;
+  }
 };
 
 Bowling.prototype.getCurrentScore = function () {

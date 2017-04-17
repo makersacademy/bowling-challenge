@@ -117,6 +117,32 @@ describe('Bowling', function() {
     });
   });
 
+  describe('tenth frame', function() {
+    it('gets bonus if strike', function() {
+      multiRoll(1,18);
+      bowling.roll(10);
+      bowling.roll(2);
+      bowling.roll(5);
+      expect(bowling.getCurrentScore()).toEqual(35);
+    });
+
+    it('gets bonus if spare', function() {
+      multiRoll(2,18);
+      bowling.roll(1);
+      bowling.roll(9);
+      bowling.roll(10);
+      expect(bowling.getCurrentScore()).toEqual(56);
+    });
+
+    it('doesnt get a bonus if no strike or spare', function() {
+      multiRoll(3,18);
+      bowling.roll(2);
+      bowling.roll(6);
+      bowling.roll(5);
+      expect(bowling.getCurrentScore()).toEqual(62);
+    });
+  });
+
   var multiRoll = function(pins, rolls) {
     for (var i = 0; i < rolls; i++) {
       bowling.roll(pins);

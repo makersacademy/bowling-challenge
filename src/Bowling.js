@@ -34,5 +34,6 @@ Bowling.prototype.bowl = function (pins) {
     this.isFrameComplete = true;
     this.total += this.frameScore;
     this.frameScore = 0;
+    this.frame += 1;
   }
 };

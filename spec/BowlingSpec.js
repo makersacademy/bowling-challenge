@@ -79,6 +79,12 @@ describe ('Bowling', function(){
       bowling.bowl(7);
       expect(bowling.isFrameComplete).toBeFalsy();
     });
+
+    it('frame is incremented when a frame is completed', function(){
+      bowling.bowl(3);
+      bowling.bowl(4);
+      expect(bowling.getFrame()).toEqual(2)
+    });
   });
 
 

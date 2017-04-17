@@ -14,6 +14,10 @@ Frame.prototype.getRollNumber = function () {
   return this._rollNumber;
 };
 
+Frame.prototype.addRollNumber = function () {
+  this._rollNumber += 1;
+};
+
 Frame.prototype.getScore = function () {
   return this._score;
 };

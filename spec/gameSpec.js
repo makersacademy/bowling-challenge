@@ -19,6 +19,11 @@ describe ('Game', function(){
     expect(game._currentFrame).toBeTruthy();
   });
 
+  it('knows if game has finished', function(){
+    game.roll(3);
+    expect(game._gameIsFinished).toBe(false);
+  });
+
   describe('Frames 1 - 9:', function(){
     it('first roll of game initiates a new frame', function(){
       game.roll(5);
@@ -61,7 +66,7 @@ describe ('Game', function(){
       game.roll(10);
       game.roll(7);
       game.roll(2)
-      expect(game._currentFrame._bonusRoll).toEqual(9);
+      expect(game._currentFrame._bonusRoll).toEqual(2);
     });
 
     it('enables bonus roll if a Spare', function(){

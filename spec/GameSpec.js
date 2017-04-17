@@ -36,15 +36,27 @@ describe("Game", function(){
       game.play();
       game.play();
       expect(game.runningTotal).toEqual(8)
-    })
+    });
   });
 
   describe("_frameReset", function() {
+
     it("resets the frame on completion", function() {
       spyOn(Math, 'floor').and.returnValue(5);
       game.play();
       game.play();
       expect(game.currentFrame.frameScores).toEqual([]);
+    });
+  });
+
+  describe("_scoreCalculator", function() {
+    it("calculates the score if there are three strikes in a row", function() {
+      spyOn(Math, 'floor').and.returnValue(10);
+      game.play();
+      game.play();
+      game.play();
+      game._scoreCalculator();
+      expect(game.allFrames[0].frameTotalScore).toEqual(30);
     });
   });
 });

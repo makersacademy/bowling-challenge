@@ -40,8 +40,17 @@ describe("bowling game", function() {
       bowlingGame.secondShot(4);
       expect(bowlingGame.frames[0].secondShotScore).toEqual(4)
     });
+  });
 
-
+  describe("shots in a frame", function() {
+    // As a bowler,
+    // I want to do a spare shot in a frame
+    // so that I can add an extra score to this frame
+    it("make a spare", function() {
+      bowlingGame.firstShot(2);
+      bowlingGame.secondShot(8);
+      expect(bowlingGame.spare).toBe(true)
+    });
   });
 
 });

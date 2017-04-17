@@ -16,13 +16,14 @@ Task:
 -----
 
 In this project I implemented a simple bowling scorecard, which accepts a score of knocked down pins for each frame bowled.  
+  
 The frame constructor is responsible for handling the current roll and knocked over pins.  
 The game constructor handles the running score, adding bonus scores for strikes and spares where appropriate.  
-  
+
 The user interface is unfinished, and if I were to come back to this project it would be relatively straightforward to link up to the game logic. I have started by randomising the number of pins bowled when the user clicks 'bowl' so this currently acts as a bowling game, rather than a scorecard where the user can track their live bowling score.
 
 
-## Rules
+# Rules
 
 ## Strikes
 

@@ -9,8 +9,9 @@ describe('Feature Tests', function(){
 
 
     it('logs correct score for a frame of regular throws',function(){
-      var thrower = new Thrower;
-      var frame  = new FrameHandler(thrower);
+      var thrower = new Thrower();
+      var frameTerminator = new FrameTerminator();
+      var frame  = new FrameHandler(thrower, frameTerminator);
 
       spyOn(frame,'_throwBall').and.returnValue(normalThrowScore);
       frame.startFrame();

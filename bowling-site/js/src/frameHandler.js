@@ -1,7 +1,8 @@
 // manages the play through of a single bowling frame
 
-function FrameHandler(throwerClass){
+function FrameHandler(throwerClass, frameTerminatorClass){
   this.thrower= throwerClass
+  this.frameTerminator = frameTerminatorClass
   this.frameNumber = 0
   this.startFrame();
 }
@@ -39,7 +40,7 @@ FrameHandler.prototype._resetScores = function(){
 }
 
 FrameHandler.prototype._resetThrowNumber = function(){
-  this.throwNumber = 0;
+  this.throwsMade = 0;
 }
 
 FrameHandler.prototype._resetCompletion=function(){
@@ -66,29 +67,18 @@ FrameHandler.prototype._incrementFrameNumber=function(){
 }
 
 FrameHandler.prototype._isFrameOver = function(){
-  var strike = this._isStrike();
-  var notFrame10 = this._isNotInFrame10();
-  var noThrowsLeft = this._isThrowLimitExceeded();
-  var normalFrame10 = this._isNormalFrame10();
-  return ((notFrame10 && strike) || noThrowsLeft || normalFrame10);
+  return this.frameTerminator.isFrameOver(this.currentFrameState());
 }
 
-FrameHandler.prototype._isThrowLimitExceeded = function(){
-  if (this._isNotInFrame10()){
-    return (this.throwNumber > 1)
-  }else{
-    return (this.throwNumber > 2)
+FrameHandler.prototype.currentFrameState = function(){
+  var expectedFrameState = {
+    framesFinished: this.frameNumber,
+    throwsMade: this.throwsMade,
+    throw1: this.result.throw1,
+    throw2: this.result.throw2,
+    throw3: this.result.throw3
   }
-
-}
-
-FrameHandler.prototype._isNormalFrame10 = function(){
-  frameTotal = this.result.throw1 + this.result.throw2
-  return (frameTotal < 10 && this.throwNumber == 2)
-}
-
-FrameHandler.prototype._isNotInFrame10 = function(){
-  return this.frameNumber < 9
+  return expectedFrameState;
 }
 
 
@@ -97,23 +87,19 @@ FrameHandler.prototype._endFrame = function (){
 }
 
 FrameHandler.prototype._endThrow = function(){
-  this.throwNumber += 1;
+  this.throwsMade += 1;
 }
 
 FrameHandler.prototype.updateScore= function(score){
-  var throwNumber = this.throwNumber
-  if(throwNumber === 0){
+  var throwsMade = this.throwsMade
+  if(throwsMade === 0){
     this.result.throw1 = score;
-  }else if (throwNumber === 1){
+  }else if (throwsMade === 1){
     this.result.throw2 = score;
   }else {
     this.result.throw3 = score;
   }
 
-}
-
-FrameHandler.prototype._isStrike = function(){
-  return (this.result.throw1 == 10  );
 }
 
 FrameHandler.prototype._throwBall = function(){

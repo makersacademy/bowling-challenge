@@ -10,15 +10,35 @@ describe('FrameHandler', function(){
     resetPins: function(){},
     throw: function(){}
   }
+  var frameTerminator = {
+    isFrameOver: function(frameState){}
+  }
 
   beforeEach(function(){
-    frame = new FrameHandler(thrower);
+    frame = new FrameHandler(thrower,frameTerminator);
+  });
+
+  describe('currentFrameState', function(){
+
+    it('correctly parses the current framestate for use in frameTerminator',function(){
+      var expectedFrameState = {
+        framesFinished: 0,
+        throwsMade: 0,
+        throw1: 0,
+        throw2: 0,
+        throw3: 0
+      }
+      expect(frame.currentFrameState()).toEqual(expectedFrameState);
+    });
   });
 
   describe('Initialize', function(){
 
     it('receives a thrower class',function(){
       expect(frame.thrower).toBeDefined();
+    });
+    it('receives a frameTerminator class',function(){
+      expect(frame.frameTerminator).toBeDefined();
     });
 
   });
@@ -41,9 +61,9 @@ describe('FrameHandler', function(){
       expect(frame.result.throw2).toEqual(0);
     });
     it('returns the throw number to 0', function(){
-      frame.throwNumber=2
+      frame.throwsMade=2
       frame.startFrame()
-      expect(frame.throwNumber).toEqual(0);
+      expect(frame.throwsMade).toEqual(0);
     })
     it('returns the frame to an incomplete state',function(){
       frame.isComplete = true;
@@ -67,63 +87,41 @@ describe('FrameHandler', function(){
     });
     it('updates turn number after ball is thrown',function(){
       frame.startRound();
-      expect(frame.throwNumber).toEqual(1);
+      expect(frame.throwsMade).toEqual(1);
     });
     it('updates scores correctly on round 1',function(){
       spyOn(frame.thrower, 'throw').and.returnValue(normalThrowScore)
       frame.startRound();
       expect(frame.result.throw1).toEqual(normalThrowScore)
     });
-    it('ends the round when there is a strike',function(){
-      spyOn(frame.thrower, 'throw').and.returnValue(strikeThrowScore)
+
+    it('ends the round where appropriate using Frame Terminator',function(){
+      spyOn(frame.frameTerminator, 'isFrameOver')
       frame.startRound();
-      expect(frame.isComplete).toEqual(true);
-    });
-    it('ends the round when the throw limit is exceeded',function(){
-      spyOn(frame.thrower, 'throw').and.returnValue(normalThrowScore)
-      frame.startRound();
-      frame.startRound();
-      expect(frame.isComplete).toEqual(true);
-    });
+      expect(frame.frameTerminator.isFrameOver).toHaveBeenCalled();
+    })
+
+
     it('increments the frame number when a frame is over',function(){
-      spyOn(frame.thrower, 'throw').and.returnValue(normalThrowScore)
+      spyOn(frame.thrower, 'throw').and.returnValue(normalThrowScore);
       frame.startRound();
+      spyOn(frame.frameTerminator, 'isFrameOver').and.returnValue(true);
       frame.startRound();
       expect(frame.frameNumber).toEqual(1)
     });
 
-    describe('Context: 10th Frame', function(){
-      beforeEach(function(){
-        frame.frameNumber = 9;
-      });
-      it('does not roll a third without strike or spare', function(){
-        spyOn(frame.thrower, 'throw').and.returnValue(4);
-        frame.startRound();
-        frame.startRound();
-        // frame.startRound();
-        expect(function(){frame.startRound()}).toThrowError("Frame is over, can't throw" );
 
-      });
-      it('rolls a third ball after spare',function(){
-        spyOn(frame.thrower, 'throw').and.returnValue(5);
-        frame.startRound()
-        frame.startRound()
-        frame.startRound()
-        expect(frame.result.throw3).toEqual(5);
-      });
-      it('allows for 3 strikes',function(){
 
-        spyOn(frame.thrower, 'throw').and.returnValue(10);
-        frame.startRound()
-        frame.startRound()
-        frame.startRound()
-        expect(frame.result.throw3).toEqual(10);
-      });
 
-      it('resets the frame number after frame 10 is over',function(){
+    //
+    // it('rolls a ball when frameTerminator outputs false',function(){
+    //
+    // });
+    // it('does not roll a ball when frameTerminator outputs true', function(){
+    //
+    // });
 
-      });
-    });
+
   });
 
   describe('#playFrame',function(){
@@ -152,7 +150,7 @@ describe('FrameHandler', function(){
       expect(frame.result.throw1).toEqual(normalThrowScore);
     });
     it('updates the score for throw 2', function(){
-      frame.throwNumber=1;
+      frame.throwsMade=1;
       frame.updateScore(8);
       expect(frame.result.throw2).toEqual(8);
     });

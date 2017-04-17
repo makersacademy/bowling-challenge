@@ -29,82 +29,47 @@ Rules:
 * 12 Strikes
 * Gives 300 points
 
-## Plan
+# User Stories
 
-### Initialize
-* Frame: 0
-* Roll: 0
-* Pins: 0
-* pins_knocked_down_first_roll: 0
-* pins_knocked_down_second_roll: 0
-* Total score: 0
-* Message
-* Scoreboard_first_roll = [frame, roll = 1, pins_knocked_down_first_roll]
-* Scoreboard_second_roll = [frame, roll = 2, pins_knocked_down_second_roll, total_score, message]
+## User Story 1
+As a player,
+So that I can play bowling,
+I'd like to have 10 pins and roll a ball.
 
+## User Story 2
+As a player,
+So that I can play bowling,
+I'd like to have two rolls for each frame.
 
 
+## User Story 3
+As a player,
+So that I can roll a strike.
+I'd like to get bonus points if I do so.
+
+## User Story 4
+As a player,
+So that I can roll a spare,
+I'd like to get bonus points if I do so.
 
 
+## User Story 5
+As a player,
+So that I can play bowling,
+I'd like a message saying Gutted Game if I don't hit any pins during the 10 frames.
 
 
+## User Story 6
+As a player,
+So that I can play bowling,
+I'd like a message saying Perfect Game and 300 points if I get 12 strikes.
 
+## User Story 7
+As a player,
+So that I can play bowling,
+I'd like to roll the ball twice.
 
-
-
-
-
-* Method: first_roll
-frame += 1
-roll = 1
-pins_knocked_down
-pins_knocked_down_first_roll = pins_knocked_down
-- if pins_knocked_down_first_roll 0 >= && < 10
-pins -= pins_knocked_down
-scoreboard_first_roll(frame, roll, pins_knocked_down_first_roll)
-second_roll
-- else if pins_knocked_down === 10
-strike
-
-
-
-
-
-pins_knocked_down
-rand(pins)
-
-
-second_roll
-roll = 2
-pins_knocked_down
-if pins_knocked_down + pins_knocked_down_first_roll < 10
-pins_knocked_down_second_roll = pins_knocked_down
-add_score
-scoreboard_second_roll(frame, roll, pins_knocked_down_second_roll, total_score, message = default)
-
-
-add_score
-- if scoreboard_second_roll, hash is equal to spare?
-spare_score
-if scoreboard_second_roll, strike?
-strike_score
-- else if
-
-
-- if pins_knocked_down_first_roll = 10
-add_score = 0
-- else if total_pins < 10
-add_score = total_pins
-Total score = pins_knocked_down_first_roll + pins_knocked_down_second_roll
-
-
-strike
-pins_knocked_down_first_roll = pins_knocked_down_second_roll
-scoreboard_second_roll[, frame, roll = 1, 10, total_score, "Strike"]
-
-
-
-
-* Functions (strike, spare)
-* Functions (10th frame bonus, gutted and perfect game)
-*
+## User Story 7
+As a player,
+So that I can play bowling,
+I'd like a to roll an additional ball if I get a strike on the 10th frame.

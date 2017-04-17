@@ -8,8 +8,34 @@
     <link href="stylesheet.css" rel="stylesheet"></link>
   </head>
   <body>
+    <section>
     <center>
+    <p>Frame:</p> <p id="frame"></p> <p>Roll:</p> <p id="roll"></p> <p>Pins:</p> <p id="pins"></p> <p>Pins knocked:</p> <p id="pins-knocked"></p>
     <button type="button" id="lets-play">Roll</button>
+  </section>
+
+  <script>
+  $(document).ready(function() {
+      var game = new Game ();
+      updateFrame();
+      updateRoll();
+      updatePins();
+      updatePinsKnocked();
+
+      function updateFrame(){
+          $('#frame').text(game.frame);
+          }
+          function updateRoll(){
+              $('#roll').text(game.roll);
+              }
+              function updatePins(){
+                  $('#pins').text(game.pins);
+                  }
+                  function updatePinsKnocked(){
+                      $('#pins-knocked').text(game.pinsKnocked);
+                      }
+        });
+  </script>
   </center>
   </body>
 </html>

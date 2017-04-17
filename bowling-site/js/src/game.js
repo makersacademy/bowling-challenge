@@ -23,7 +23,7 @@ Game.prototype.logResult = function(){
 
 
 Game.prototype._appendFrameResult = function(result){
-  this.results.push(result);
+  this.results[this.framesPlayed]=result;
 }
 
 Game.prototype._updateCumulativeScore = function(result){
@@ -32,16 +32,24 @@ Game.prototype._updateCumulativeScore = function(result){
 }
 
 Game.prototype.playBowling = function(){
-  if(this.framesPlayed === 10){
-    throw new TypeError("Game is over, reset to play again")
-  }
-  else if (this.frameHandler.isComplete){
-    this.logResult();
+  if (this.frameHandler.isComplete){
     this.framesPlayed ++;
     this.frameHandler.startFrame();
+    this.startPlay();
+  }else{
+    this.startPlay();
+  }
+  this.logResult();
+}
+
+Game.prototype.startPlay=function(){
+  if(this.framesPlayed >= 10){
+    throw new TypeError("Game is over, reset to play again")
   }
   this.frameHandler.startRound();
+
 }
+
 
 Game.prototype.printResults = function(){
   for (i = 0; i < game.results.length; i++) {

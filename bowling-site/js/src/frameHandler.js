@@ -30,6 +30,14 @@ FrameHandler.prototype.postThrowUpdates = function(){
     this._endFrame();
     this._incrementFrameNumber();
   }
+  if(this._isNotF10NormalRound()){
+    this.thrower.resetPins()
+  }
+}
+
+FrameHandler.prototype._isNotF10NormalRound = function(){
+  var scoreTotal =(this.result.throw1 + this.result.throw2)
+  return (this.throwsMade === 2 && scoreTotal >= 10);
 }
 
 FrameHandler.prototype._incrementFrameNumber=function(){
@@ -72,7 +80,6 @@ FrameHandler.prototype.updateScore= function(score){
   }else {
     this.result.throw3 = score;
   }
-
 }
 
 FrameHandler.prototype.startFrame = function(){

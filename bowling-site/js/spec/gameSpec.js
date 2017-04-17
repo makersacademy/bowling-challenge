@@ -1,9 +1,10 @@
 describe("Game",function(){
 
-  frameResultBuilder = function (score1=4, score2=4){
+  frameResultBuilder = function (score1=4, score2=4,score3=0){
     return ({
       throw1: score1,
-      throw2: score2
+      throw2: score2,
+      throw3: score3
     })
   }
   beforeEach(function(){
@@ -15,25 +16,28 @@ describe("Game",function(){
       startFrame: function(){}
     }
     game = new Game(frameHandler);
-    normalFrameResult = frameResultBuilder(3,3);
+    normalFrameResult = frameResultBuilder(3,3,0);
+    halfFinishedFrameResult = frameResultBuilder(2,0,0)
 
   })
   describe("#logResult",function(){
     it('takes the result from a completed frame and logs it',function(){
+      game.frameHandler.isComplete = true
+      game.framesPlayed = 4;
       game.frameHandler.result = normalFrameResult;
       game.logResult();
-      expect(game.results).toContain(normalFrameResult);
+      expect(game.results[4]).toEqual(normalFrameResult);
     });
 
-    it('changes the total score by the correct amount', function(){
-      game.score = 20;
-      startScore = game.score;
-      game.frameHandler.result = normalFrameResult;
-      expectedDifference = normalFrameResult.throw1 + normalFrameResult.throw2;
-      game.logResult();
-      endScore = game.score;
-      expect(endScore-startScore).toEqual(expectedDifference)
-    });
+    it('takes the result from an incomplete frame and logs it the correct place', function(){
+        game.frameHandler.isComplete = false
+        game.framesPlayed = 7;
+        game.frameHandler.result = halfFinishedFrameResult;
+        game.logResult();
+        expect(game.results[7]).toEqual(halfFinishedFrameResult);
+    })
+
+
 
 
 
@@ -83,11 +87,7 @@ describe("Game",function(){
         game.playBowling();
         expect(game.frameHandler.startRound).toHaveBeenCalled();
       });
-      it('it does not log the result',function(){
-        spyOn(game, 'logResult');
-        game.playBowling();
-        expect(game.logResult).not.toHaveBeenCalled();
-      });
+
     })
 
     describe('Context: after all 10 frames have been played', function(){

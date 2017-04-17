@@ -93,8 +93,18 @@ describe('FrameHandler', function(){
       });
     });
 
-    describe('Context: frameTerminator returns false',function(){
 
+
+    describe('Context: Frame 10',function(){
+      it('pins reset after a spare or strike', function(){
+        frame.framesPlayed=9;
+        frame.throwsMade=2;
+        frame.result.throw1=5;
+        frame.result.throw2=5;
+        spyOn(frame.thrower, 'resetPins')
+        frame.postThrowUpdates();
+        expect(frame.thrower.resetPins).toHaveBeenCalled();
+      });
     });
 
   });

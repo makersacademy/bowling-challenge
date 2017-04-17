@@ -49,7 +49,7 @@ describe('Game', function(){
   });
 
   it('returns strike score plus next 2 bowls score(strike bowls)', function(){
-    spyOn(Frame.prototype, 'pinsDown').and.returnValues(10,10,10,10,10,10,10,10,10,10,10,10);
+    spyOn(Frame.prototype, 'pinsDown').and.returnValue(10);
     game.startGame();
     expect(game.totalGameScore()).toEqual(300);
   });

@@ -22,35 +22,34 @@ Game.prototype.playFrame = function(frame){
 
 Game.prototype.totalGameScore = function(){
   var totalScore = 0;
+  var second = this.frames[this.frames.length-1].extraBowl();
   this.frames.forEach(function(frame, index, array){
     var nextArray = array[index+1];
+    var nextNextArray = array[index+2]
+    var strike = frame.status === 'Strike!'
     if (nextArray){
+      var twoStrikes = strike && nextArray.status === 'Strike!'
       if (frame.status === 'Spare!'){
         totalScore += 10 + (10 - nextArray.firstBowlRemainder);
-      } else if (frame.status === 'Strike!' && nextArray.status === 'Strike!' && array[index+2]){
-        totalScore += 20 + (10 - array[index+2].firstBowlRemainder);
-
-
-      } else if (frame.status === 'Strike!' && nextArray.status === 'Strike!'){
-        if (index === 8) { console.log('here 3') }
-
+      } else if (twoStrikes && nextNextArray){
+        totalScore += 20 + (10 - nextNextArray.firstBowlRemainder);
+      } else if (twoStrikes && nextNextArray === undefined){
+        totalScore += 20 + second;
+      } else if (twoStrikes){
         totalScore += 20 + (10 - array[+1].firstBowlRemainder);
-
-
-
-
-      } else if (frame.status === 'Strike!'){
+      } else if (strike){
         totalScore += 10 + (nextArray.frameScore());
       } else {
         totalScore += frame.frameScore();
       }
-    } else if (frame.status === "Strike!"){
-      totalScore += frame.frameScore() + frame.extraBowl() + frame.extraBowl();
+    } else if (strike){
+      totalScore += frame.frameScore() + second + frame.extraBowl();
     } else {
       totalScore += frame.frameScore();
     }
-    console.log('------');
-    console.log('FRAME: ', (index + 1), totalScore);
+
+
   });
+
   return totalScore;
 };

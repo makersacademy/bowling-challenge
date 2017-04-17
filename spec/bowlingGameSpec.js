@@ -44,6 +44,13 @@ describe("bowling game", function() {
       expect(bowlingGame.spare).toBe(true)
     });
 
+    it("adds extra score to next frame when spare", function() {
+      bowlingGame.firstShot(2);
+      bowlingGame.secondShot(8);
+      bowlingGame.firstShot(2);
+      expect(bowlingGame.frames[0].score).toEqual(12)
+    });
+
     // As a bowler,
     // I want to do a strike shot in my first frame
     // So that I can get double points on my next frame
@@ -60,7 +67,7 @@ describe("bowling game", function() {
     it("when reaching score of 10", function() {
       bowlingGame.firstShot(2);
       bowlingGame.secondShot(4);
-      expect(bowlingGame.frames[0].Score).toEqual(6)
+      expect(bowlingGame.frames[0].score).toEqual(6)
     });
   });
 

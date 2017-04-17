@@ -1,17 +1,19 @@
 function Frame() {
   this.pinsremaining = 10;
-  this.currentFrame = [];
+  this.frameScores = [];
+  this.frameTotalScore = 0;
 }
 
 Frame.prototype.bowl = function() {
-  bowlScore = Math.floor(Math.random() * 11);
+  bowlScore = Math.floor(Math.random() * (this.pinsremaning + 1));
   this.pinsremaining -= bowlScore;
-  this.currentFrame.push(bowlScore)
+  this.frameScores.push(bowlScore);
+  this.frameTotalScore += bowlScore;
 }
 
 
 Frame.prototype._complete = function() {
-  if(this.pinsremaining === 0 || this.currentFrame.length === 2) {
+  if(this.pinsremaining === 0 || this.frameScores.length === 2) {
     return true
   } else {
     return false

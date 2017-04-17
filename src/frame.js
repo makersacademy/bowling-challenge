@@ -63,3 +63,7 @@ Frame.prototype.checkSpare = function (knockedPins) {
     throw TypeError("Cheater. Too many pins.")
   };
 };
+
+Frame.prototype.markFrameAsFinished = function () {
+  this._frameIsFinished = true;
+};

@@ -54,6 +54,7 @@ describe('Frame', function(){
       expect(function(){ frame.checkSpare(10); }).toThrowError('Cheater. Too many pins.');
     });
 
+
   });
 
   describe('bonus rolls', function(){

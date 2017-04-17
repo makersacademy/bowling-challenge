@@ -124,10 +124,29 @@ describe ('Game', function(){
       game.roll(2);
       game.roll(4);
       game.roll(0);
-      game.roll(0);      
+      game.roll(0);
       expect(game.getFrameScore(0)).toEqual(16);
     })
 
+  });
+
+  describe('Scoring Frame 9', function(){
+    it('can calculate score for non-strike/spare', function(){
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(8);
+      game.roll(1);
+      game.roll(2);
+      game.roll(3);
+      game.roll(4);
+      expect(game.getFrameScoreNine()).toEqual(9)
+    });
   });
 
   describe('Scoring Frame 10:', function(){

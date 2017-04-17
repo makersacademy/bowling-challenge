@@ -48,11 +48,15 @@ Game.prototype._tenthRoll = function (knockedPins) {
 
 Game.prototype.getFrameScore = function (i) {
   var frame = this._framesInPlay[i];
+  var next_frame = this._framesInPlay[i+1];
+  var second_next_frame = this._framesInPlay[i+2] ;
 
-  if ( frame._isStrike ){
-    frame.setScore( frame.getFirstRoll() + this._framesInPlay[i+1].getFirstRoll() + this._framesInPlay[i+1].getSecondRoll() );
+  if ( frame._isStrike && next_frame._isStrike ) {
+    frame.setScore( frame.getFirstRoll() + next_frame.getFirstRoll() + second_next_frame.getFirstRoll() );
+  } else if ( frame._isStrike ){
+    frame.setScore( frame.getFirstRoll() + next_frame.getFirstRoll() + next_frame.getSecondRoll() );
   } else if ( frame._isSpare ){
-    frame.setScore( frame.getFirstRoll() + frame.getSecondRoll() + this._framesInPlay[i+1].getFirstRoll() );
+    frame.setScore( frame.getFirstRoll() + frame.getSecondRoll() + next_frame.getFirstRoll() );
   } else {
     frame.setScore( frame.getFirstRoll() + frame.getSecondRoll() );
     };
@@ -60,17 +64,37 @@ Game.prototype.getFrameScore = function (i) {
   return frame.getScore();
 }
 
+Game.prototype.getFrameScoreNine = function () {
+  var frame = this._framesInPlay[8];
+  var next_frame = this._framesInPlay[9];
+
+  if ( frame._isStrike ){
+    frame.setScore( frame.getFirstRoll() + next_frame.getFirstRoll() + next_frame.getSecondRoll());
+  } else if (frame._isSpare ) {
+    frame.setScore( frame.getFirstRoll() + frame.getSecondRoll() + next_frame.getFirstRoll());
+  } else {
+    frame.setScore( frame.getFirstRoll() + frame.getSecondRoll());
+  };
+
+  return frame.getScore();
+};
+
 Game.prototype.getFrameScoreTen = function () {
-  var frame = this._framesInPlay[this._framesInPlay.length - 1];
+  var frame = this._framesInPlay[9];
 
   frame.setScore( frame.getFirstRoll() + frame.getSecondRoll() + frame.getBonusRoll() );
   return frame.getScore();
 }
 
 Game.prototype._totalScore = function () {
-  for (i = 0; i < 9; i++) {
+  var total_score = 0
+  for (var i = 0; i < 8; i++) {
+    total_score += this.getFrameScore(i);
+  };
 
-  }
+  total_score += this.getFrameScoreNine() + this.getFrameScoreTen();
+
+  return total_score;
 };
 
 Game.prototype._gameFinished = function () {

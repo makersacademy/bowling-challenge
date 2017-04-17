@@ -6,20 +6,30 @@ function Game() {
   this.pins = 10;
   this.totalScore = 0;
   this.message = false;
+  this.strikes = 0;
 }
 
+const STRIKE = 10;
+
 Game.prototype.firstRoll = function(number) {
-  this.addScore(number);
   this.pins -= number;
+  this.addScore(number);
   this.getMessage(number);
   this.documentRoll(number, this.message);
-  this.roll = 2;
+  if (number === 10) {
+    this.strikes += 1;
+    this.documentStrike();
+    this.reset();
+  } else {
+    this.roll = 2;
+  }
 }
 
 Game.prototype.secondRoll = function(number) {
   this.addScore(number);
   this.getMessage(number);
   this.documentRoll(number, this.message);
+  this.strikes = 0;
   this.reset();
 }
 
@@ -30,8 +40,10 @@ Game.prototype.getMessage = function(number) {
     this.message = "Better luck next time!"
   } else if (number > 3 && number < 8) {
     this.message = "Good job!"
-  } else if (number > 7 && number < 11) {
+  } else if (number > 7 && number < 10) {
     this.message = "Awesome!"
+  } else if (number === 10) {
+    this.message = "Strike!"
   }
 };
 
@@ -42,20 +54,30 @@ Game.prototype.reset = function(number) {
 }
 
 Game.prototype.rollBall = function() {
-  number = 5;
+  number = Math.floor(Math.random() * this.pins)
   if (this.roll === 1) {
     this.firstRoll(number);
   }
   else {
     this.secondRoll(number);
   }
-  // Math.floor(Math.random() * this.pins)
+
 };
 
+
 Game.prototype.addScore = function (number) {
+  if (this.strikes > 0 && number !== 10) {
+  this.totalScore += number + (number * this.strikes);
+} else {
     this.totalScore += number;
+  }
+
 };
 
 Game.prototype.documentRoll = function (number, message) {
   this.frames.push([this.frame, this.roll, number, this.totalScore, message])
+}
+
+Game.prototype.documentStrike = function () {
+  this.frames.push([this.frame, 2, "", this.totalScore, ""])
 }

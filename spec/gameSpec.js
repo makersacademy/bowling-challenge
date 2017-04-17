@@ -15,14 +15,23 @@ describe("Game", function() {
   describe('frame', function() {
     it('should push the score to the board', function() {
       game.frameSet();
-      expect(game.scores.length).toEqual(1);
+      expect(game.rollBreakdown.length).toEqual(1);
     });
   });
 
   describe('play', function() {
     it ('has ten scores', function() {
       game.play();
+      console.log('Scores: ');
       console.log(game.scores);
+      console.log('Rollbreakdown: ');
+      console.log(game.rollBreakdown);
+      console.log('Results: ');
+      console.log(game.results);
+      console.log('Bonuses: ');
+      console.log(game.bonus);
+      console.log('Total scores: ');
+      console.log(game.totalScore());
       expect(game.scores.length).toEqual(10);
     });
   });

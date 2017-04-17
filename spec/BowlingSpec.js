@@ -8,17 +8,17 @@ describe ('Bowling', function(){
   });
 
   describe('intialize', function(){
-    it('starts at zero', function(){
+    it('score starts at zero', function(){
       expect(bowling.getCurrentScore()).toEqual(0);
     });
 
-    it('is false', function(){
+    it('isFrameComplete returns false', function(){
       expect(bowling.isFrameComplete()).toBeFalsy();
     });
   });
 
   describe('add', function(){
-    it('can have be added to', function(){
+    it('score can have be added to', function(){
       bowling.add(1);
       expect(bowling.getCurrentScore()).toEqual(1);
     });
@@ -42,7 +42,7 @@ describe ('Bowling', function(){
       expect(bowling.getCurrentRoll()).toEqual(2);
     });
 
-    it('returns the number of pins knocked down on a roll', function(){
+    it('getFrameScore returns the number of pins knocked down on a roll', function(){
       bowling.bowl(4);
       expect(bowling.getFrameScore()).toEqual(4);
     });

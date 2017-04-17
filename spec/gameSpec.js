@@ -154,6 +154,13 @@ describe('Game', function(){
       expect(game.cumulativeFrameScores).toEqual([30]);
     });
 
+    it('two strikes followed by non-bonus point score', function(){
+      game.roll(10);
+      game.roll(10);
+      game.roll(5);
+      expect(game.cumulativeFrameScores).toEqual([25]);
+    });
+
     it('if spare: calculation of cumulative score delayed', function(){
       game.roll(9);
       game.roll(1);

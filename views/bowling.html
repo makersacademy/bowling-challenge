@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+
+  <head>
+    <title>Bowling</title>
+      <link rel="stylesheet" href="../public/stylesheet.css">
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script src="../src/bowl.js"></script>
+      <script src="../src/game.js"></script>
+      <script src="../src/interface.js"></script>
+  </head>
+
+<body>
+
+
+  <h3>Scores!</h3>
+  <table>
+    <script>
+      for (i = 0; i < game.rollBreakdown.length; i++)
+    <tr>
+      <td>Scores:</td>
+      <td>game.rollBreakdown[i][0]</td>
+      <td>game.rollBreakdown[i][1]</td>
+      </tr>
+    </script>
+  </table>
+
+  <button id='play'>Play!</button>
+
+
+</body>
+
+</html>

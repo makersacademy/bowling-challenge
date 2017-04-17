@@ -5,7 +5,8 @@ function Bowl() {
 }
 
 Bowl.prototype.throw = function() {
-  angle = ((Math.random()) - 0.5) * 30
+  var angle = prompt("Choose your angle", "0");
+  if (angle < -15 || angle > 15) return 0;
   for(i = 0; i <= 10; i++) {
     if ([4, 7, 8].includes(i)) continue;
     if (Math.abs((this.pinAngle[i]) - angle) <= 2.5) {

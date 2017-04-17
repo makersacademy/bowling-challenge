@@ -119,6 +119,10 @@ describe('FrameHandler', function(){
         frame.startRound()
         expect(frame.result.throw3).toEqual(10);
       });
+
+      it('resets the frame number after frame 10 is over',function(){
+
+      });
     });
   });
 

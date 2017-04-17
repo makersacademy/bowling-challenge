@@ -29,3 +29,9 @@ Game.prototype.playBowling = function(){
   }
   this.frameHandler.startRound();
 }
+
+Game.prototype.printResults = function(){
+  for (i = 0; i < game.results.length; i++) {
+    console.log(game.results[i]);
+}
+}

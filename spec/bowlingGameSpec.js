@@ -9,15 +9,6 @@ describe("bowling game", function() {
     bowlingGame = new BowlingGame();
   });
 
-  describe("rules", function() {
-    // As a bowler,
-    // I want to follow bowling game rules,
-    // so that I can finish my game after 10 frames
-    it("has 10 frames", function() {
-      expect(bowlingGame.frames.length).toEqual(10);
-    });
-  });
-
   describe("on start", function() {
     // As a bowler,
     // I want to start a game of bowling,
@@ -33,19 +24,14 @@ describe("bowling game", function() {
     // so that I can get some points
     it("on first frame shot", function() {
       bowlingGame.firstShot(2);
-      expect(bowlingGame.frames[0].firstShotScore).toEqual(2)
+      expect(bowlingGame.firstScore).toEqual(2)
     });
 
     it("ending frame shot", function() {
       bowlingGame.secondShot(4);
-      expect(bowlingGame.frames[0].secondShotScore).toEqual(4)
+      expect(bowlingGame.secondScore).toEqual(4)
     });
 
-    it("updates a total at end of frame", function() {
-      bowlingGame.firstShot(2);
-      bowlingGame.secondShot(6);
-      expect(bowlingGame.total).toEqual(8);
-    });
   });
 
   describe("scores in a frame", function() {
@@ -67,17 +53,15 @@ describe("bowling game", function() {
     });
   });
 
-
-
-  // describe("complete frame", function() {
-  //   // As a bowler,
-  //   // I reach a score of 10
-  //   // so that I can complete a frame
-  //   it("when reaching score of 10", function() {
-  //     bowlingGame.firstShot(2);
-  //     bowlingGame.secondShot(8);
-  //     expect(bowlingGame.frameComplete).toBe(true)
-  //   });
-  // });
+  describe("complete frame", function() {
+    // As a bowler,
+    // I take both shots
+    // so that I can complete a frame
+    it("when reaching score of 10", function() {
+      bowlingGame.firstShot(2);
+      bowlingGame.secondShot(4);
+      expect(bowlingGame.frames[0].Score).toEqual(6)
+    });
+  });
 
 });

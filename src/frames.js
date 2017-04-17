@@ -6,4 +6,5 @@ function Frame() {
   this.firstShotScore = 0;
   this.secondShotScore = 0;
   this.spareScore = 0;
+  this.pinsCount = 10;
 }

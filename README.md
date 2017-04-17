@@ -77,3 +77,7 @@ If you don't follow the usual Jasmine convention of having your tests in `spec` 
 2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
 3. Adjust these to point to the correct directories
 4. Done.
+
+
+
+

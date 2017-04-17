@@ -4,7 +4,7 @@ $(document).ready(function() {
   var bowling = new Bowling();
   var rollIndex = 1;
   var frameIndex = 0;
-  scoreFrames = [];
+  var scoreFrames = [];
 
   function updateVisuals() {
     updateScoreBoard();
@@ -14,7 +14,7 @@ $(document).ready(function() {
     if (frameIndex > 8){
       tenthframe();
     } else {
-      if (lastRoll() === 10 && (rollIndex % 2 != 0)){
+      if (lastRoll() === 10 && (rollIndex % 2 !== 0)){
         strike();
       } else if (rollIndex % 2 === 0 && isASpare()){
         spare();
@@ -24,7 +24,7 @@ $(document).ready(function() {
         normalScore();
       }
     }
-    for (i = 0; i < frameIndex; i++){
+    for (var i = 0; i < frameIndex; i++){
       $('#scoreIndex-' + i).text(scoreFrames[i]);
     }
   }

@@ -8,7 +8,8 @@ describe('Feature test:', function() {
   var game;
 
   beforeEach(function(){
-    frame = new Frame();//jasmine.createSpyObj('frame', ['bowl']);
+    // frame = jasmine.createSpyObj('frame', ['bowl', 'frameScore', 'addToScore']);
+    frame = new Frame();
     game = new Game();
   })
 
@@ -16,15 +17,16 @@ describe('Feature test:', function() {
     it('cumulates scores', function () {
       frame.addToScore(4);
       frame.addToScore(5);
-      expect(frame.score).toEqual(9)
+      expect(frame.frameScore()).toEqual(9)
     });
   });
 
-  describe('Bowling twice in a frame', function () {
-    it('frame score is resets when changing frames', function () {
-      frame.bowl(frame.pins);
-      frame.bowl(frame.pins);
-      expect(frame.score).toEqual(0);
+  describe('Bowling twice in a frame:', function () {
+    it('score is resets when changing frames', function () {
+      game.bowl();
+      game.bowl();
+      game.resetFrame();
+      expect(game.frames[0]).not.toEqual(game.getCurrentFrame());
     });
   });
 });

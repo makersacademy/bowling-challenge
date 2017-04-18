@@ -16,26 +16,46 @@ describe('Game', function () {
     it('with frames being empty', function () {
       expect(game.frames).toEqual([]);
     });
-  });
 
-  it('should return current frame', function () {
-    game.addFrame(frame);
-    expect(game.getCurrentFrame()).toEqual(frame)
-  });
+    it('with creating a new frame', function () {
+      expect(game._currentFrame).toEqual(frame);
+    });
 
-  describe('Bowling a single frame', function () {
-    it('can increase frames', function () {
-      game.addFrame(frame);
-      expect(game.frames.length).toEqual(1);
-      expect(game.frames).toContain(frame);
+    it('with the score being set to zero', function () {
+      expect(game.gameScore).toEqual(0);
     });
   });
 
-  // describe('A 10 frame game', function (){
-  //   it('should throw error if 10 frames have been bowled', function (){
-  //     spyOn(game, 'currentFrame').and.returnValue(11);
-  //     expect(function (){game.bowl(frame);}).toThrowError("Game over!")
-  //   });
-  // });
+  it('should return current frame', function () {
+    expect(game.getCurrentFrame()).toEqual(game._currentFrame)
+  });
+
+  it('can increase frames', function () {
+    game.addFrame(frame);
+    expect(game.frames.length).toEqual(1);
+    expect(game.frames).toContain(frame);
+  });
+
+  it('returns the current score', function () {
+    game.bowl();
+    game.bowl();
+    game.updateScore();
+    expect(game.getCurrentScore()).toEqual(game.gameScore);
+  });
+
+  it('resets frames', function () {
+    game.bowl();
+    game.resetFrame();
+    expect(game.frames[0]).not.toEqual(frame);
+  });
+
+  describe('Bowling', function () {
+
+    // not sure this is applicable anymore...
+    xit('raises error when already bowled twice', function () {
+      spyOn(frame, 'isFirstBowl', 'canBowl').and.returnValue(false, false);
+      expect(function(){ game.bowl();}).toThrowError('Already bowled, next frame');
+    });
+  });
 
 });

@@ -48,7 +48,7 @@ describe("bowling game", function() {
       bowlingGame.firstShot(2);
       bowlingGame.secondShot(8);
       bowlingGame.firstShot(2);
-      expect(bowlingGame.frames[0].score).toEqual(12)
+      expect(bowlingGame.frames[0].score).toEqual(bowlingGame.total + 12)
     });
 
     // As a bowler,
@@ -58,17 +58,19 @@ describe("bowling game", function() {
       bowlingGame.firstShot(10);
       expect(bowlingGame.strike).toBe(true)
     });
-  });
 
-  describe("complete frame", function() {
     // As a bowler,
-    // I take both shots
-    // so that I can complete a frame
-    it("when reaching score of 10", function() {
+    // I want my strike to give a special value
+    // so that I can add it to my total
+    it("strike has a value", function() {
+      expect(bowlingGame.strikeValue).toEqual(10)
+    });
+
+    it("adds 2 extra scores to next frame when strike", function() {
+      bowlingGame.firstShot(10);
       bowlingGame.firstShot(2);
-      bowlingGame.secondShot(4);
-      expect(bowlingGame.frames[0].score).toEqual(6)
+      bowlingGame.secondShot(2);
+      expect(bowlingGame.frames[0].score).toEqual(14)
     });
   });
-
 });

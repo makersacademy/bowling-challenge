@@ -15,41 +15,51 @@ function BowlingGame() {
 }
 
 BowlingGame.prototype.firstShot = function(pins) {
-  this.firstScore += pins; //2
+  this.firstScore += pins; // 2
   this.total += pins;
-  this.nextScore += pins;
+  // this.nextScore += pins;
   if(this.spare === true) {
-    this.addScores();
+    this.addScoresWithSpare();
   }
   this.ifFirstShotIsTen();
 }
 
 BowlingGame.prototype.secondShot = function(pins) {
-  this.secondScore += pins; // 2
+  this.secondScore += pins; // 8
   this.total += pins;
-  this.nextScore += pins;
-  if(this.firstScore + this.secondScore === 10) {
-    this.spare = !this.spare;
-  }
-  this.ifStrike();
+  // this.nextScore += pins;
+  this.ifFirstAndSecondAreTen();
+  this.checkTypeOfScore();
   // this.ifSpare();
+  this.resetScores();
 }
-BowlingGame.prototype.ifStrike = function(test) {
+BowlingGame.prototype.checkTypeOfScore = function(test) {
   if(this.strike === true) {
       this.addFrame(this.strikeValue + this.firstScore + this.secondScore); //10 2 2
       this.addFrame(this.total + this.firstScore + this.secondScore);
       this.strike = !this.strike;
+    } else if(this.spare === true) {
+        this.resetScores();
     } else {
-      this.addFrame(this.total + this.firstScore + this.secondScore);
-  }
+      if(this.frames.length > 0) {
+        this.addFrame(this.total + this.firstScore + this.secondScore);
+      } else {
+        this.addFrame(this.firstScore + this.secondScore);
+      }
+    }
 }
 
 BowlingGame.prototype.addFrame = function(score) {
   this.frames.push({ score: score });
 }
 
-BowlingGame.prototype.addScores = function() {
-  this.addFrame(this.total + this.nextScore);
+BowlingGame.prototype.addScoresWithSpare = function() {
+  // this.addFrame(this.total + this.nextScore);
+  if(this.spare === true) {
+      this.addFrame(this.spareValue + this.firstScore);
+      this.addFrame(this.total + this.firstScore + this.secondScore);
+      this.spare = !this.spare;
+  }
 }
 
 BowlingGame.prototype.resetScores = function() {
@@ -73,5 +83,11 @@ BowlingGame.prototype.ifFirstShotIsTen = function() {
   if(this.firstScore === 10) {
     this.strike = !this.strike;
     this.resetScores();
+  }
+}
+
+BowlingGame.prototype.ifFirstAndSecondAreTen = function() {
+  if(this.firstScore + this.secondScore === 10) {
+    this.spare = !this.spare;
   }
 }

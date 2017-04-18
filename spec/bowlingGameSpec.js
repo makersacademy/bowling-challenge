@@ -28,8 +28,9 @@ describe("bowling game", function() {
     });
 
     it("ending frame shot", function() {
+      bowlingGame.firstShot(0)
       bowlingGame.secondShot(4);
-      expect(bowlingGame.secondScore).toEqual(4)
+      expect(bowlingGame.frames[0].score).toEqual(4)
     });
 
   });
@@ -55,7 +56,7 @@ describe("bowling game", function() {
       bowlingGame.firstShot(2);
       bowlingGame.secondShot(8);
       bowlingGame.firstShot(2);
-      expect(bowlingGame.frames[0].score).toEqual(bowlingGame.total + 12)
+      expect(bowlingGame.frames[0].score).toEqual(12)
     });
 
     // As a bowler,

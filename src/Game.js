@@ -8,6 +8,7 @@ function Game() {
 
 Game.prototype.roll = function() {
   this._currentFrame.roll()
+  // this.updateAndStore()
 }
 
 Game.prototype.updateAndStore = function () {
@@ -32,6 +33,9 @@ Game.prototype._processFrame = function() {
 
 
 Game.prototype.isFinished = function() {
+  // if(this._frame === 10 && this._currentFrame.bonusFeature()) {
+  //   return ''
+  // }
   if(this._frame === 10 && this._currentFrame.isFinished() ) {
     return true
   } else {

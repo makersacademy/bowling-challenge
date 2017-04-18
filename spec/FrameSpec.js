@@ -11,13 +11,12 @@ describe('Frame', function() {
 
   it('is initiated with zero points', function() {
     expect(frame._rollOnePoints).toEqual(0)
-    expect(frame._rollOnePoints).toEqual(0)
+    expect(frame._rollTwoPoints).toEqual(0)
   });
 
   it('adds up points', function() {
     spyOn(frame, '_hit').and.returnValue(4)
-    frame.roll()
-    frame.roll()
+    twoRolls()
     expect(frame.points()).toEqual(8)
   });
 
@@ -49,14 +48,12 @@ describe('Frame', function() {
 
   it('recognises a spare', function() {
     spyOn(frame, '_hit').and.returnValue(5)
-    frame.roll()
-    frame.roll()
+    twoRolls()
     expect(frame.bonusFeature()).toEqual('spare')
   });
 
   it('recognises when it is finished', function() {
-    frame.roll()
-    frame.roll()
+    twoRolls()
     expect(frame.isFinished()).toBeTruthy()
   });
 
@@ -67,10 +64,13 @@ describe('Frame', function() {
 
   it('calculates spare bonus', function() {
     spyOn(frame, '_hit').and.returnValue(7)
-    frame.roll()
-    frame.roll()
+    twoRolls()
     expect(frame.spareBonus()).toEqual(7)
   });
 
+  twoRolls = function() {
+    frame.roll()
+    frame.roll()
+  }
 
 });

@@ -5,6 +5,7 @@
     "maxerr"        : 50,       // {int} Maximum error before stopping
 
     // Enforcing
+
     "bitwise"       : true,     // true: Prohibit bitwise operators (&, |, ^, etc.)
     "camelcase"     : false,    // true: Identifiers must be in camelCase
     "curly"         : true,     // true: Require {} for every new block or scope
@@ -37,6 +38,7 @@
     "maxcomplexity" : 4,    // {int} Max cyclomatic complexity per function
     "maxlen"        : 80,    // {int} Max number of characters per line
     "varstmt"       : false,    // true: Disallow any var statements. Only `let` and `const` are allowed.
+    "jasmine"       : true
 
     // Relaxing
     "asi"           : true,     // true: Tolerate Automatic Semicolon Insertion (no semicolons)

@@ -1,0 +1,40 @@
+html, body {
+  font-family:  AppleGothic, sans-serif;
+}
+
+button {
+
+  font-size: 20px;
+  padding: 15px;
+  border: none;
+  background: none;
+  outline: 0;
+
+}
+
+/*button:active {
+  vertical-align: top;
+  padding: 8px 13px 6px;
+}*/
+
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+
+}
+th, td {
+    padding: 5px;
+    text-align: center;
+    height: 30px;
+    width: 30px;
+
+}
+
+.odd {
+  border-bottom: 0;
+}
+
+.scores {
+  border-top: 0;
+}

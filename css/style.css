@@ -1,0 +1,16 @@
+#score-sheet {
+  width: 100%; }
+  #score-sheet .frame {
+    display: inline-block;
+    width: 10%;
+    height: 50px;
+    border: 1px solid #888; }
+  #score-sheet .roll {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #888; }
+  #score-sheet .current-roll {
+    background: pink; }
+
+/*# sourceMappingURL=style.css.map */

@@ -44,6 +44,13 @@ describe("bowling game", function() {
       expect(bowlingGame.spare).toBe(true)
     });
 
+    // As a bowler,
+    // I want my spare to give a special value
+    // so that I can add it to my total
+    it("strike has a value", function() {
+      expect(bowlingGame.spareValue).toEqual(10)
+    });
+
     it("adds extra score to next frame when spare", function() {
       bowlingGame.firstShot(2);
       bowlingGame.secondShot(8);

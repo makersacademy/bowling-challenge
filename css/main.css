@@ -1,0 +1,199 @@
+body{
+  background-color: #41786A;
+}
+
+h1 {
+    font: 80px 'BazarMedium';
+}
+
+h2 {
+  font-size: 30px;
+  padding-top: 30px;
+}
+
+h4 {
+  text-align: center;
+  color: #73612D;
+  font-family: 'Great Vibes', cursive;
+  text-shadow: 1px 1.5px 1px #e0c99f, 2px 5px 1px #402804;
+  margin-top: 35px;
+  margin-bottom: 30px;
+  font-size: 35px;
+}
+
+h5 {
+  color: #73612D;
+  font-family: 'Unica One', cursive;
+  text-shadow: 1px 1px 0px #e0c99f, 2px 4px 0.5px #402804;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-size: 25px;
+  float: right;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: inline;
+  margin-left: 10px;
+}
+
+button:focus {
+   outline:0;
+}
+
+ #thermostat_body {
+  width: 700px;
+  height: 430px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #631303;
+  border: 2px solid #7b723b;
+  border-radius: 25px;
+  -moz-box-shadow:    inset 0 0 60px #3B0F06;
+  -webkit-box-shadow: inset 0 0 60px #3B0F06;
+  box-shadow:         inset 0 0 60px #3B0F06;
+ }
+
+ #temperature {
+  text-align: center;
+  font-family: 'Unica One', cursive;
+ }
+
+ #screens{
+  width:560px;
+  margin-left: 100px;
+  margin-right: 50px;
+  }
+
+#main-temp-screen {
+  width: 400px;
+  height: 200px;
+  display: inline-block;
+  background-color: #e0c99f;
+  border: 3px solid #7b723b;
+  box-shadow: 2px 2px 5px #402804;
+  border-radius: 25px;
+  float:left;
+  -moz-box-shadow:    inset 0 0 50px #000000;
+  -webkit-box-shadow: inset 0 0 50px #000000;
+  box-shadow:         inset 0 0 50px #000000;
+}
+
+ #outdoor-temp{
+  margin-bottom: 40px;
+  margin-left: 30px;
+  width: 110px;
+  height: 80px;
+  display: inline-block;
+  border: 3px solid #7b723b;
+  box-shadow: 2px 2px 5px #402804;
+  border-radius: 15px;
+  font-family: 'Unica One', cursive;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+ }
+
+ .cold-temp{
+  background-color: #8FBEBF;
+ }
+
+ .warm-temp{
+  background-color: #BF968F;
+ }
+
+.regular-temp{
+  background-color: #e0c99f;
+}
+
+ #api-temp {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 20px;
+ }
+
+#buttons {
+  margin-top: 15px;
+  margin-left: 50px;
+  margin-right: 10px;
+  float: left;
+}
+
+#notification {
+  width: 12px;
+  height: 12px;
+  background: #5ea94f; /*a9794f orrange and 9c4547 for red*/
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  display: inline-block;
+  margin-left: 10px;
+  box-shadow: 2px 1px 5px #a9514f;
+}
+
+#up-arrow, #down-arrow{
+  font-size: 30px;
+  padding: 5px 15px;
+}
+
+#reset-temp, #power-saving {
+  padding: 10px 24px;
+}
+
+/*#power-saving-notification {
+  display: inline-block;
+  font-family: 'Unica One', cursive;
+}*/
+
+.power-saving-on {
+  display: inline-block;
+  font-family: 'Unica One', cursive;
+  color: #402804;
+}
+
+.power-saving-off {
+  display: inline-block;
+  font-family: 'Unica One', cursive;
+  color: #E63712;
+}
+
+.headding {
+  text-align: center;
+  color: #e0c99f;
+  text-shadow: 2px 3px 0px #433a31, 3px 5px 0px #264A41;
+  font: 'BazarMedium';
+  letter-spacing: 10px;
+  text-decoration: none;
+}
+
+.small-headding {
+  text-align: center;
+  color: #e0c99f;
+  text-shadow: 2px 2px 0px #433a31, 3px 3px 0px #264A41;
+  font: 'BazarMedium';
+  letter-spacing: 10px;
+  text-decoration: none;
+}
+
+.control_button {
+  background-color: #470D01;
+  border: 2px solid #b2a160;
+  color: #b2a160;
+  text-align: center;
+  border-radius: 25px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  box-shadow: 1px 5px 8px #402804,
+              inset 2px 2px 5px #99655A;
+  font-family: 'Unica One', cursive;
+}
+
+.control_button:active{
+  box-shadow: 1px 3px 8px #402804,
+        inset 1px 1px 4px #99655A;
+  transform: translateY(1px);
+}

@@ -11,8 +11,6 @@ function Game() {
   this.tenthFrameCount = 0;
 }
 
-const STRIKE = 10;
-
 Game.prototype.firstRoll = function(number) {
   this.pins -= number;
   this.addScore(number);
@@ -42,7 +40,6 @@ Game.prototype.firstRollMessage = function(number) {
   if (number === 10)  {
     this.message = "Strike!"
   }
-  else { }
 };
 
 Game.prototype.secondRollMessage = function() {
@@ -60,7 +57,7 @@ Game.prototype.reset = function(number) {
 }
 
 Game.prototype.rollBall = function() {
-    number = Math.floor(Math.random() * this.pins)
+    var number = Math.floor(Math.random() * this.pins)
     if (this.frame === 10) {
     this.tenthFrame(number);
   } else if (this.roll === 1) {
@@ -78,7 +75,6 @@ Game.prototype.tenthFrame = function(number) {
     this.documentRoll(number, this.message);
     this.tenthFrameReset();
   }
-  else {}
 };
 
 

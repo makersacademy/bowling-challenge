@@ -4,16 +4,36 @@ function Game() {
   this._frames = []
   this._frame = 1
   this._currentFrame = new Frame(this._frame)
+  this._gameOver = false
 }
 
 Game.prototype.roll = function() {
   this._currentFrame.roll()
-  // this.updateAndStore()
+  if(this._currentFrame.isFinished()) {
+    this.updateAndStore()
+  }
 }
 
 Game.prototype.updateAndStore = function () {
   this._processFrame()
-  this._storeFrame()
+  if(this._frame === 10)  {
+   this._endGame()
+  } else {
+    this._storeFrame()
+  }
+}
+
+Game.prototype._endGame = function () {
+  if(this._currentFrame.BonusFeature() === 'strike') {
+    this._frames.push(this._currentFrame);
+    this._currentFrame = new BonusRolls(2);
+  } else if (this._currentFrame.BonusFeature() === 'spare') {
+    this._frames.push(this._currentFrame);
+    this._currentFrame = new BonusRolls(1);
+  } else {
+    this._gameOver = true
+  }
+
 }
 
 Game.prototype._storeFrame = function() {
@@ -31,17 +51,13 @@ Game.prototype._processFrame = function() {
   }
 }
 
-
 Game.prototype.isFinished = function() {
-  // if(this._frame === 10 && this._currentFrame.bonusFeature()) {
-  //   return ''
-  // }
-  if(this._frame === 10 && this._currentFrame.isFinished() ) {
-    return true
-  } else {
+  if(this._gameOver === true) {
+    return true } else {
     return false
   }
 }
+
 
 
 Game.prototype._checkIfBakfast = function() {

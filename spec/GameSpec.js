@@ -47,26 +47,14 @@ describe('Game', function() {
     expect(game.total()).toEqual(65)
   });
 
-  it('reports that the game is over', function() {
-    for(var x = 0; x<9; x++) {
-      spyOn(game._currentFrame, '_hit').and.returnValue(4)
-      doubleRoll()
-    }
-    spyOn(game._currentFrame, '_hit').and.returnValue(4)
-    game.roll()
-    game.roll()
-    expect(game.isFinished()).toBeTruthy()
-  });
 
   doubleRoll = function() {
     game.roll()
     game.roll()
-    game.updateAndStore()
   }
 
   singleRoll = function() {
     game.roll()
-    game.updateAndStore()
   }
 
 });

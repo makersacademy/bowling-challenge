@@ -1,0 +1,39 @@
+body {
+  font-family: 'Inconsolata', monospace;
+}
+
+h1 {
+  font-size: 40px;
+  text-align: center;
+}
+
+.title {
+  margin: 0 auto;
+}
+
+.container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.frames-box {
+  width: 870px;
+  height: 80px;
+  background-color: green;
+}
+
+.frame {
+  width: 85px;
+    height: 85px;
+    background-color: grey;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    float: left;
+}
+
+.frame p {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 45px;
+}

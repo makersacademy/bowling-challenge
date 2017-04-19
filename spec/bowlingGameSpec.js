@@ -23,62 +23,62 @@ describe("bowling game", function() {
     // I want to knock some pins on my first shot
     // so that I can get some points
     it("on first frame shot", function() {
-      bowlingGame.firstShot(2);
-      expect(bowlingGame.firstScore).toEqual(2)
+      bowlingGame.addShot(2);
+      expect(bowlingGame.shots).toEqual(2)
     });
 
     it("ending frame shot", function() {
-      bowlingGame.firstShot(0)
-      bowlingGame.secondShot(4);
-      expect(bowlingGame.frames[0].score).toEqual(4)
+      bowlingGame.addShot(2);
+      bowlingGame.addShot(2);
+      expect(bowlingGame.shots).toEqual(4)
     });
 
   });
 
-  describe("scores in a frame", function() {
-    // As a bowler,
-    // I want to do a spare shot in a frame
-    // so that I can add an extra score to this frame
-    it("make a spare", function() {
-      bowlingGame.firstShot(2);
-      bowlingGame.secondShot(8);
-      expect(bowlingGame.spare).toBe(true)
-    });
+  // describe("scores in a frame", function() {
+  //   // As a bowler,
+  //   // I want to do a spare shot in a frame
+  //   // so that I can add an extra score to this frame
+  //   it("make a spare", function() {
+  //     bowlingGame.firstShot(2);
+  //     bowlingGame.secondShot(8);
+  //     expect(bowlingGame.spare).toBe(true)
+  //   });
 
-    // As a bowler,
-    // I want my spare to give a special value
-    // so that I can add it to my total
-    it("strike has a value", function() {
-      expect(bowlingGame.spareValue).toEqual(10)
-    });
+  //   // As a bowler,
+  //   // I want my spare to give a special value
+  //   // so that I can add it to my total
+  //   it("strike has a value", function() {
+  //     expect(bowlingGame.spareValue).toEqual(10)
+  //   });
 
-    it("adds extra score to next frame when spare", function() {
-      bowlingGame.firstShot(2);
-      bowlingGame.secondShot(8);
-      bowlingGame.firstShot(2);
-      expect(bowlingGame.frames[0].score).toEqual(12)
-    });
+  //   it("adds extra score to next frame when spare", function() {
+  //     bowlingGame.firstShot(2);
+  //     bowlingGame.secondShot(8);
+  //     bowlingGame.firstShot(2);
+  //     expect(bowlingGame.frames[0].score).toEqual(12)
+  //   });
 
-    // As a bowler,
-    // I want to do a strike shot in my first frame
-    // So that I can get double points on my next frame
-    it("make a strike", function() {
-      bowlingGame.firstShot(10);
-      expect(bowlingGame.strike).toBe(true)
-    });
+  //   // As a bowler,
+  //   // I want to do a strike shot in my first frame
+  //   // So that I can get double points on my next frame
+  //   it("make a strike", function() {
+  //     bowlingGame.firstShot(10);
+  //     expect(bowlingGame.strike).toBe(true)
+  //   });
 
-    // As a bowler,
-    // I want my strike to give a special value
-    // so that I can add it to my total
-    it("strike has a value", function() {
-      expect(bowlingGame.strikeValue).toEqual(10)
-    });
+  //   // As a bowler,
+  //   // I want my strike to give a special value
+  //   // so that I can add it to my total
+  //   it("strike has a value", function() {
+  //     expect(bowlingGame.strikeValue).toEqual(10)
+  //   });
 
-    it("adds 2 extra scores to next frame when strike", function() {
-      bowlingGame.firstShot(10);
-      bowlingGame.firstShot(2);
-      bowlingGame.secondShot(2);
-      expect(bowlingGame.frames[0].score).toEqual(14)
-    });
-  });
+  //   it("adds 2 extra scores to next frame when strike", function() {
+  //     bowlingGame.firstShot(10);
+  //     bowlingGame.firstShot(2);
+  //     bowlingGame.secondShot(2);
+  //     expect(bowlingGame.frames[0].score).toEqual(14)
+  //   });
+  // });
 });

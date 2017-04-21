@@ -33,7 +33,7 @@ BonusRolls.prototype.spareBonus = function() {
 }
 
 BonusRolls.prototype.strikeBonus = function() {
-  return this._rollOnePoints + this.rollTwoPoints
+  return this._rollOnePoints + this._rollTwoPoints
 }
 
 BonusRolls.prototype.isFinished = function() {
@@ -44,8 +44,8 @@ BonusRolls.prototype.isFinished = function() {
   }
 }
 
-BonusRolls.prototype.BonusFeature = function() {
-  return nil
+BonusRolls.prototype.bonusFeature = function() {
+  return ''
 }
 
 BonusRolls.prototype._hit = function() {

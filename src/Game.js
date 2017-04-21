@@ -22,11 +22,11 @@ Game.prototype.updateAndStore = function () {
    this._storeFrame()
   }
 }
+
 Game.prototype._endGame = function () {
   if(this._currentFrame.bonusFeature() === 'strike') {
     this._frames.push(this._currentFrame);
     this._currentFrame = new BonusRolls(2);
-    debugger
   } else if (this._currentFrame.bonusFeature() === 'spare') {
     this._frames.push(this._currentFrame);
     this._currentFrame = new BonusRolls(1);

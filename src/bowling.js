@@ -1,16 +1,28 @@
-"use strict";
 
+var button = document.getElementById("firstThrow");
 function BowlingGame(){
   this.allScores = []
 
 }
 
+BowlingGame.prototype.bowl = function() {
+  console.log(button.value)
+  if(button.value === "first click"){this.firstBowl()}
+  else if  (button.value === "second click")
+  {this.secondBowl()
+  }
+}
+
 BowlingGame.prototype.firstBowl = function() {
-  return this.randomNum = Math.round(Math.random()*10)
+  this.randomNum =( Math.round(Math.random()*10))
+  this.allScores.push(this.randomNum)
+  return this.randomNum
 };
 
 BowlingGame.prototype.secondBowl = function() {
-  return this.secondRandomNum =Math.round(Math.random()*(10 - this.randomNum))
+  this.secondRandomNum =(Math.round(Math.random()*(10- this.randomNum)))
+  this.allScores.push(this.secondRandomNum)
+  return this.secondRandomNum
 };
 
 BowlingGame.prototype.thirdBowl = function() {
@@ -22,10 +34,9 @@ BowlingGame.prototype.fourthBowl = function() {
 };
 
 BowlingGame.prototype.spare = function() {
-  if (this.randomNum + this.secondRandomNum === 10)
+  if (this.score === 10)
   {this.score = this.randomNum + this.secondRandomNum + this.thirdRandomNum}
 };
-
 BowlingGame.prototype.strike = function () {
   if (this.randomNum === 10)
   {this.score = this.randomNum + this.thirdRandomNum + this.fourthRandomNum}
@@ -36,8 +47,7 @@ BowlingGame.prototype.scoresPerFrame = function() {
 };
 
 BowlingGame.prototype.storingScores = function() {
-  console.log(this.allScores)
-  console.log(this.score)
+
   return this.allScores.push(this.score)
 };
 
@@ -50,6 +60,6 @@ BowlingGame.prototype.addingScores = function(a,b) {
 };
 
 BowlingGame.prototype.clearArray = function() {
-  if(this.allScores.length > 10)
+  if(this.allScores.length >= 10)
   {this.allScores.length = 0 }
 }

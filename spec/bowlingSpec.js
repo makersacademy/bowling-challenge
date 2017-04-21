@@ -1,4 +1,4 @@
-"use strict"
+
 
 describe("BowlingGame", function(){
   var bowlingGame
@@ -14,12 +14,24 @@ describe("BowlingGame", function(){
       expect(bowlingGame.randomNum).toBeLessThan(11)
     })
 
+ it('checks that the number of pins knocked over by the first throw is stored', function(){
+   bowlingGame.firstBowl()
+   expect(bowlingGame.allScores.length).toEqual(1)
+ })
+
     it('returns the number of pins knocked over by the second throw', function(){
       bowlingGame.firstBowl()
       bowlingGame.secondBowl()
       expect(bowlingGame.secondRandomNum).toBeGreaterThan(-1)
       expect(bowlingGame.secondRandomNum).toBeLessThan(11-bowlingGame.randomNum)
     })
+
+    it('checks that the number of pins knocked over by the second throw is stored', function(){
+      bowlingGame.firstBowl()
+      bowlingGame.secondBowl()
+      expect(bowlingGame.allScores.length).toEqual(2)
+    })
+
 
     it('returns the number of pins knocked over by the third throw', function(){
       bowlingGame.thirdBowl()
@@ -34,6 +46,14 @@ describe("BowlingGame", function(){
       expect(bowlingGame.fourthRandomNum).toBeLessThan(11-bowlingGame.thirdRandomNum)
     })
   })
+
+  // it('checks that first bowl is run when you first click the button', function() {
+  //   var button = document.getElementById("firstThrow")
+  //   var spy = spyOn(document,'getElementById').and.returnValue("first click")
+  //   bowlingGame.bowl()
+  //   expect(bowlingGame.firstBowl).toHaveBeenCalled
+  //
+  // })
 
   describe("Score", function(){
     it('adds the number of pins knocked over in the first and second throw together', function(){
@@ -78,18 +98,15 @@ describe("BowlingGame", function(){
       while (i < 10){
         bowlingGame.firstBowl()
         bowlingGame.secondBowl()
-        bowlingGame.scoresPerFrame()
-        bowlingGame.storingScores()
         i+=1}
         bowlingGame.firstBowl()
         bowlingGame.secondBowl()
-        bowlingGame.scoresPerFrame()
-        bowlingGame.storingScores()
         bowlingGame.clearArray()
         expect(bowlingGame.allScores.length).toEqual(0)
       })
       describe("Spare", function(){
         it("checks if the player total score for the frame is ten and adds a third role if it's", function(){
+
           bowlingGame.randomNum = 8
           bowlingGame.secondRandomNum = 2
           bowlingGame.thirdRandomNum = 5
@@ -101,6 +118,7 @@ describe("BowlingGame", function(){
       describe("Strike", function(){
         it("checks if the player got ten on there first throw and adds teh thrid an fourth role to the score if they did", function(){
           bowlingGame.randomNum = 10
+
           bowlingGame.secondRandomNum= 0
           bowlingGame.thirdRandomNum = 5
           bowlingGame.fourthRandomNum = 2
@@ -108,4 +126,18 @@ describe("BowlingGame", function(){
           expect(bowlingGame.score).toEqual(17)
         })
       })
+
+      describe("spying", function(){
+        it("should allow me to spy on my object", function(){
+          var spy =spyOn(bowlingGame, 'firstBowl');
+          bowlingGame.firstBowl()
+          expect(spy).toHaveBeenCalled()
+        })
+      })
+
+        it("should allow me to spy on my object", function(){
+          var spy =spyOn(bowlingGame, 'firstBowl').and.returnValue(10)
+          bowlingGame.firstBowl()
+          expect(spy).toHaveBeenCalled()})
+
     })

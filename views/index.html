@@ -4,14 +4,23 @@
   <script src="../jquery-3.2.0.js"></script>
 </head>
 <body>
-  <button id='firstThrow'>First bowl</button>
-  <button id= 'secondThrow'>Second bowl</button>
+  <button id='firstThrow' onclick ="change()" value = "second click">Bowl</button>
+  <button id= 'emptyArray'>Reset</button>
   <script src= "../src/bowling.js"></script>
   <script src= "../src/interface.js"></script>
   <div id='show'></div>
   <div id='secondshow'></div>
   <div id='thirdshow'></div>
   <div id='fourthshow'></div>
-  <div id='array'></div>
+   <p id ='array'></p>
+<script>
+function change() {
+var button = document.getElementById("firstThrow");
+  if(button.value == "first click") {button.value = "second click"}
+  else {
+    button.value = "first click"
+  }
+}
+</script>
 </body>
 </html>

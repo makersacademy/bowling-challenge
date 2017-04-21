@@ -64,13 +64,15 @@ describe('Game', function() {
   });
 
   it('adds the bonus roll to the score', function() {
-    for(var x = 0; x < 10; x++) {
-      spyOn(game._currentFrame, '_hit').and.returnValue(5)
+    for(var x = 0; x < 9; x++) {
+      spyOn(game._currentFrame, '_hit').and.returnValue(1)
       doubleRoll()
     }
+    spyOn(game._currentFrame, '_hit').and.returnValue(5)
+    doubleRoll()
     spyOn(game._currentFrame, '_hit').and.returnValue(7)
     game.roll()
-    expect(game.total()).toEqual(152)
+    expect(game.total()).toEqual(35)
   });
 
   it('reports the game is finished after one bonus roll for a spare', function() {
@@ -93,14 +95,16 @@ describe('Game', function() {
   });
 
   it('adds the points from two bonus rolls to the score', function() {
-    for(var x = 0; x < 10; x++) {
-      spyOn(game._currentFrame, '_hit').and.returnValue(10)
-      singleRoll()
+    for(var x = 0; x < 9; x++) {
+      spyOn(game._currentFrame, '_hit').and.returnValue(1)
+      doubleRoll()
     }
+    spyOn(game._currentFrame, '_hit').and.returnValue(10)
+    game.roll()
     spyOn(game._currentFrame, '_hit').and.returnValue(7)
     game.roll()
     game.roll()
-    expect(game.total()).toEqual(316)
+    expect(game.total()).toEqual(42)
   });
 
   doubleRoll = function() {

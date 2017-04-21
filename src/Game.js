@@ -16,7 +16,7 @@ Game.prototype.roll = function() {
 
 Game.prototype.updateAndStore = function () {
   this._processFrame()
-  if(this._frame === 10)  {
+  if(this._frame >= 10)  {
    this._endGame()
   } else {
    this._storeFrame()
@@ -26,12 +26,11 @@ Game.prototype._endGame = function () {
   if(this._currentFrame.bonusFeature() === 'strike') {
     this._frames.push(this._currentFrame);
     this._currentFrame = new BonusRolls(2);
+    debugger
   } else if (this._currentFrame.bonusFeature() === 'spare') {
     this._frames.push(this._currentFrame);
     this._currentFrame = new BonusRolls(1);
   } else {
-    this._frames.push(this._currentFrame);
-    this._frame += 1
     this._gameOver = true
   }
 

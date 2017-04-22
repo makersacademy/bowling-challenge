@@ -39,7 +39,7 @@ describe('Game', function(){
   it('returns the spare score as 10 plus 1st bowl next frame', function(){
     spyOn(Frame.prototype, 'pinsDown').and.returnValue(5)
     game.startGame();
-    expect(game.totalGameScore()).toEqual(145);
+    expect(game.totalGameScore()).toEqual(150);
   });
 
   it('returns strike score plus next two bowls score(non-strike bowls)', function(){
@@ -63,13 +63,12 @@ describe('Game', function(){
   it('If spare in 10th frame allows 3rd bowl', function(){
     spyOn(Frame.prototype, 'pinsDown').and.returnValues(10,10,10,10,10,10,10,10,10,6,4,3);
     game.startGame();
-    expect(game.totalGameScore()).toEqual(273);
+    expect(game.totalGameScore()).toEqual(269);
   });
 
-  xit('Does not allow 3rd bowl in 10th frame if non strike/spare', function(){
+  it('Does not allow 3rd bowl in 10th frame if non strike/spare', function(){
     spyOn(Frame.prototype, 'pinsDown').and.returnValues(10,10,10,10,10,10,10,10,10,6,2);
     game.startGame();
-    expect(game.totalGameScore()).toEqual(266);
+    expect(game.totalGameScore()).toEqual(262);
   });
-
 });

@@ -65,11 +65,7 @@ describe('Game',function(){
       expect(game.throwsLeft).toEqual(20);
     });
 
-    it('activates a bonus on a spare',function(){
-      game.throwBall(5);
-      game.throwBall(5);
-      expect(game.bonusArray[0]).toEqual({ frameIndex: 0, updatesLeft: 1 });
-    });
+
     it("doesn't update score after a bonus frame",function(){
       game.throwBall(5);
       game.throwBall(5);
@@ -131,16 +127,8 @@ describe('Game',function(){
       expect(game.results[0].throw1).toEqual(10);
     });
 
-    it('activates a strike bonus after a strike',function(){
-      game.throwBall(10);
-      expect(game.bonusArray[0]).toEqual({ frameIndex: 0, updatesLeft: 2 });
-    });
 
-    it('updates the bonus array after the first throw after a strike',function(){
-      game.throwBall(10);
-      game.throwBall(5);
-      expect(game.bonusArray[0]).toEqual({ frameIndex: 0, updatesLeft: 1 });
-    });
+    
     it('updates the bonus points of the correct frame after 1 throw',function(){
       game.throwBall(10);
       game.throwBall(5);

@@ -35,6 +35,7 @@ function Game(){
   this.results=[]
   this.isStrikeRound = false
   this.bonusHandler = new BonusHandler();
+  this.score
 
   this.updateIfStrike = function(score){
     if(score == 10){
@@ -47,53 +48,28 @@ function Game(){
     this.currentFrameScores.push(score);
   }
 
-  //PRIMED FOR REMOVAL
-  this.updateTotalScoreAfterBonus=function(frameNumber){
-    frameResults = this.results[frameNumber]
-    throw1= frameResults.throw1
-    throw2= frameResults.throw2
-    bonus = frameResults.bonus
-    total = throw1 + throw2 + bonus
-    this.totalScore += total
+
+  this.isBonusActive = function(){
+    return this.bonusHandler.isBonusActive();
   }
 
-  //PRIMED FOR REMOVAL
-  this.applyBonus = function(score){
-    bonus = this.bonusArray.shift();
-    frameNumber = bonus.frameIndex;
-    throwsLeft = bonus.updatesLeft;
-    this.results[frameNumber].bonus += score;
-    bonus.updatesLeft=throwsLeft-1;
-    if (bonus.updatesLeft > 0){
-      this.bonusArray.push(bonus)
-    }else{
-      this.updateTotalScoreAfterBonus(frameNumber)
-    }
-  }
-
-  //PRIMED FOR REMOVAL
   this.applyBonusPointsIfRequired = function(score){
-    if(this.isBonusActive()){
-      numberOfBonuses = this.bonusArray.length
-      for (i = 0; i < numberOfBonuses; i++) {
-        this.applyBonus(score);
-      }
-
-    }
-
+    this.updateBonusHandlerState();
+    this.results = this.bonusHandler.updateBonusPointsIfRequired()
+    this.totalScore = this.bonusHandler.totalScore;
   }
 
   this.throwBall = function(score){
+    this.score=score
     if (this.throwsLeft>0){
       this.updateCurrentFrameScores(score);
       this.updateIfStrike(score);
 
 
-      //PRIMED TO UPDATE
+
       this.applyBonusPointsIfRequired(score);
 
       if(this.isFrameOver()||this.isStrikeRound){
-        //Append the Results to the scoresheet regardless of bonus
         if(this.isStrikeRound){
           this.results[this.framesPlayed]={
             throw1: this.currentFrameScores[0],
@@ -108,16 +84,14 @@ function Game(){
           }
         }
         this.currentFrameScores=[]
-        //Check if there is a bonus and if yes then activate bonus
 
 
         if(this.isBonus()){
 
-          //PRIMED TO UPDATE
           if(this.isStrikeRound){
-            this.activateStrikeBonus();
+            this.bonusHandler.activateStrikeBonus();
           }else{
-            this.activateSpareBonus();
+            this.bonusHandler.activateSpareBonus();
           }
 
 
@@ -135,11 +109,9 @@ function Game(){
       this.updateThrowsLeft();
       this.isStrikeRound = false
     }
-    // this.updateFramesPlayed();
 
-    console.log("Ball Thrown, throwsLeft:" + this.throwsLeft);
-    console.log("Frames Played:" + this.framesPlayed);
   }
+
 
   this.updateThrowsLeft = function(){
     if(this.isStrikeRound){
@@ -161,19 +133,9 @@ function Game(){
     throw2 = this.results[this.framesPlayed].throw2
       return (throw1+throw2==10)
   }
-  ///PRIMED TO REMOVE
-  this.isBonusActive = function(){
-    return this.bonusArray.length>0
-  }
 
-  this.activateSpareBonus = function(){
-    this.bonusArray.push({frameIndex:this.framesPlayed, updatesLeft: 1})
 
-  }
 
-  this.activateStrikeBonus = function(){
-    this.bonusArray.push({frameIndex:this.framesPlayed, updatesLeft: 2})
-  }
 
   this.isFrameOver=function(){
 
@@ -186,11 +148,6 @@ function Game(){
   this.throwsDone =function(){
     Math.modulus(this.throwsLeft-21)
   }
-  // this.updateFramesPlayed = function(){
-  //    if ((this.throwsLeft<21 && this.throwsLeft%2 == 1)||this.throwsLeft ==0) {
-  //     this.framesPlayed+=1;
-  //   }
-  // }
 
   this.finishGame = function(){
     if(this.throwsLeft==0){
@@ -199,10 +156,11 @@ function Game(){
   }
 
   this.updateBonusHandlerState = function(){
-    input={score: this.score,
-    results: inputs.results,
+    inputs = {score: this.score,
+    results: this.results,
     framesPlayed: this.framesPlayed,
-    isStrikeRound: this.isStrikeRound
+    isStrikeRound: this.isStrikeRound,
+    totalScore: this.totalScore
     }
     this.bonusHandler.updatePlayState(inputs)
   }

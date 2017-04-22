@@ -34,4 +34,20 @@ describe('Bonus Handler',function(){
     });
   });
 
+  //EXTRACTED TESTS
+  // it('activates a bonus on a spare',function(){
+  //   game.throwBall(5);
+  //   game.throwBall(5);
+  //   expect(game.bonusArray[0]).toEqual({ frameIndex: 0, updatesLeft: 1 });
+  // });
+  // it('activates a strike bonus after a strike',function(){
+  //   game.throwBall(10);
+  //   expect(game.bonusArray[0]).toEqual({ frameIndex: 0, updatesLeft: 2 });
+  // });
+  // it('updates the bonus array after the first throw after a strike',function(){
+  //   game.throwBall(10);
+  //   game.throwBall(5);
+  //   expect(game.bonusArray[0]).toEqual({ frameIndex: 0, updatesLeft: 1 });
+  // });
+
 });

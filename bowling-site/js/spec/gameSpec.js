@@ -78,7 +78,7 @@ describe('Game',function(){
     it('appends the throw scores to the results array after a frame',function(){
       game.throwBall(5);
       game.throwBall(4);
-      expect(game.results[0]).toEqual({throw1:5, throw2:4})
+      expect(game.results[0]).toEqual({throw1:5, throw2:4, bonus:0})
     });
     it('adds the bonus score to the previous frame 1 throw after a spare',function(){
       game.throwBall(5);
@@ -115,6 +115,42 @@ describe('Game',function(){
       game.throwBall(5);
       expect(game.currentFrameScores.length).toEqual(0)
 
+    });
+
+    it('ends the current frame after a strike',function(){
+      game.throwBall(10);
+      expect(game.framesPlayed).toEqual(1);
+    });
+
+    it('updates the throws left by two after a strike',function(){
+      game.throwBall(10);
+      expect(game.throwsLeft).toEqual(19)
+    });
+    it('results are in the right format after a strike',function(){
+      game.throwBall(10);
+      expect(game.results[0].throw1).toEqual(10);
+    });
+
+    it('activates a strike bonus after a strike',function(){
+      game.throwBall(10);
+      expect(game.bonusArray[0]).toEqual([0,2]);
+    });
+
+    it('updates the bonus array after the first throw after a strike',function(){
+      game.throwBall(10);
+      game.throwBall(5);
+      expect(game.bonusArray[0]).toEqual([0,1]);
+    });
+    it('updates the bonus points of the correct frame after 1 throw',function(){
+      game.throwBall(10);
+      game.throwBall(5);
+      expect(game.results[0].bonus).toEqual(5);
+    });
+    it('updates the bonus points of the correct frame after 2 throws',function(){
+      game.throwBall(10);
+      game.throwBall(4);
+      game.throwBall(4);
+      expect(game.results[0].bonus).toEqual(8);
     });
   });
   // describe('#updateFramesPlayed',function(){

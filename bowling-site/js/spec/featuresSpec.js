@@ -40,6 +40,9 @@ describe('Features',function(){
       expect(game.totalScore).toEqual(135);
     });
 
+
+
+
     // As a player who's just started the game
     // and I can keep playing
     // I want to play a whole frame
@@ -62,6 +65,46 @@ describe('Features',function(){
           game.throwBall(3);
         expect(game.totalScore).toEqual(25);
 
+      });
+
+      it('Counts the bonus for a strike frame',function(){
+        game.throwBall(10);
+        game.throwBall(6);
+        game.throwBall(3);
+        expect(game.totalScore).toEqual(28);
+
+      });
+
+      it('Counts the bonus for a two strikes in a row',function(){
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(6);
+        game.throwBall(3);
+        expect(game.totalScore).toEqual(26+19+9)
+      });
+
+      it('Counts the bonus for a three strikes in a row',function(){
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(6);
+        game.throwBall(3);
+        expect(game.totalScore).toEqual(84)
+      });
+
+      it('Counts the bonus for a 9 strikes in a row',function(){
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(5);
+        game.throwBall(4);
+        expect(game.totalScore).toEqual(263)
       });
     });
 

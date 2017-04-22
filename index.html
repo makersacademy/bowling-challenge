@@ -8,24 +8,80 @@
 <body>
   <h1>bowling scorecard</h1>
 
-  <div>
-  <ul>
-    <li class="heading">player</li>
-    <li class="number">1</li>
-    <li class="number">2</li>
-    <li class="number">3</li>
-    <li class="number">4</li>
-    <li class="number">5</li>
-    <li class="number">6</li>
-    <li class="number">7</li>
-    <li class="number">8</li>
-    <li class="number">9</li>
-    <li class="number">10</li>
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">player</th>
+        <th scope="col" colspan="2">1</th>
+        <th scope="col" colspan="2">2</th>
+        <th scope="col" colspan="2">3</th>
+        <th scope="col" colspan="2">4</th>
+        <th scope="col" colspan="2">5</th>
+        <th scope="col" colspan="2">6</th>
+        <th scope="col" colspan="2">7</th>
+        <th scope="col" colspan="2">8</th>
+        <th scope="col" colspan="2">9</th>
+        <th scope="col" colspan="3">10</th>
+        <th scope="col" colspan="1">total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">Billy</td>
+        <td scope="row" id='f1r1'></td>
+        <td scope="row" id='f1r2'></td>
+        <td scope="row">9</td>
+        <td scope="row">3</td>
+        <td scope="row">6</td>
+        <td scope="row">7</td>
+        <td scope="row">7</td>
+        <td scope="row">9</td>
+        <td scope="row">8</td>
+        <td scope="row">7</td>
+        <td scope="row">9</td>
+        <td scope="row">3</td>
+        <td scope="row">6</td>
+        <td scope="row">/</td>
+        <td scope="row">7</td>
+        <td scope="row">9</td>
+        <td scope="row">7</td>
+        <td scope="row">/</td>
+        <td scope="row">X</td>
+        <td scope="row">5</td>
+        <td scope="row">3</td>
+        <td rowspan="2" id="total-score">201</td>
+      </tr>
+      <tr>
+        <td scope="row" colspan="2">5</td>
+        <td scope="row" colspan="2">10</td>
+        <td scope="row" colspan="2">22</td>
+        <td scope="row" colspan="2">30</td>
+        <td scope="row" colspan="2">44</td>
+        <td scope="row" colspan="2">60</td>
+        <td scope="row" colspan="2">79</td>
+        <td scope="row" colspan="2">95</td>
+        <td scope="row" colspan="2">104</td>
+        <td scope="row" colspan="3">120</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id='buttons'>
+  <button id='roll-a-1'>1</button>
+  <button id='roll-a-2'>2</button>
+  <button id='roll-a-3'>3</button>
+  <button id='roll-a-4'>4</button>
+  <button id='roll-a-5'>5</button>
+  <button id='roll-a-6'>6</button>
+  <button id='roll-a-7'>7</button>
+  <button id='roll-a-8'>8</button>
+  <button id='roll-a-9'>9</button>
+  <button id='roll-a-10'>10</button>
   </div>
 
 
 <script src="jquery.js"></script>
+<script src="interface.js"></script>
 <script src="src/Game.js"></script>
 
 </body>

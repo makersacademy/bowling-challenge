@@ -4,6 +4,7 @@ function Game() {
   this.score = INITIAL_SCORE
   this.frameNo = INITIAL_FRAME_NO
   this.rollCount = INITIAL_ROLL_COUNT
+  this.rollHistory = []
   this.frameHistory = []
   this.frameScores = []
   this.currentFrame = []
@@ -83,6 +84,7 @@ Game.prototype.strikeOrSpare = function(){
 Game.prototype.makeRoll = function(points){
   this.isGameOver();
   this.increaseRollNo(points);
+  this.rollHistory.push(points);
   this.currentFrame.push(points);
   if (this.isFrameBonus() && this.isFinalFrame()){
     if (this.isWhichRoll() === 3){

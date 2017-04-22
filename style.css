@@ -1,33 +1,38 @@
 body {
-  background-color: #e75933;
-  margin-top: 70px;
+  font-family: "Futura";
+  font-size: 24px;
   margin-left: 10%;
-  font-family: "futura"
+  margin-top: 7%;
+  background-color: tomato;
 }
 h1 {
-  color: #231f20;
+  font-size: 40px;
 }
-div{
-  position: absolute;
+table{
+ background-color: #fcf5e7;
+/*  padding: 10px; */
+ text-align: center;
+ border: 10px solid #231f20;
+ border-radius: 10px;
 }
-li{
-  list-style-type: none; /*Removes bullet points*/
-  float:left; /*Moves div to next row if the window is too narrow*/
-  background:#fcf5e7;
-  border-top: 5px solid #231f20;
-  border-top-left-radius: 20px;
-  border-bottom: 5px solid #06618f;
-  border-left: 1px solid #231f20;
-  width: 50px;
-  height: 30px;
-  padding: 10px 10px 13px 10px;
-  text-align: center;
-  font-size: 25px;
+th {
+/*   padding: 10px; */
+/*   border: 2px solid #06618f; */
+  font-size: 20px;
+  border-bottom: 10px solid #06618f;
+  border-top: 10px solid #06618f;
+/*   border-radius: 20px; */
 }
-li.heading {
-  width: 100px;
+td {
+  padding: 10px;
+  border: 2px solid #06618f;
 }
-li.number {
-  width: 50px;
+div#buttons {
+  color
 }
-
+button {
+  margin-top: 10px;
+  border-radius: 30px;
+  height: 40px;
+  width: 40px;
+}

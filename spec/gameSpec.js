@@ -71,4 +71,10 @@ describe('Game', function(){
     game.startGame();
     expect(game.totalGameScore()).toEqual(262);
   });
+
+  it('Allows me to have a guttergame', function(){
+    spyOn(Frame.prototype, 'pinsDown').and.returnValue(0);
+    game.startGame();
+    expect(game.totalGameScore()).toEqual(0);
+  });
 });

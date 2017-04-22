@@ -18,6 +18,7 @@ Game.prototype.playFrame = function(frame){
   if (firstFrameResult !== 'Strike!') {
     this.frames[frame].secondBowl();
   }
+  return this.frames[frame].frameScore();
 };
 
 Game.prototype.totalGameScore = function(){
@@ -45,7 +46,7 @@ Game.prototype.totalGameScore = function(){
       totalScore += frame.frameScore() + second + frame.extraBowl();
     } else if (spare){
       var scoreframe = frame.frameScore();
-      totalScore += scoreframe + second
+      totalScore += scoreframe + second;
     } else {
       totalScore += frame.frameScore();
     }

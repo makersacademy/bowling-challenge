@@ -35,35 +35,51 @@ function Game(){
   this.results=[]
   this.isStrikeRound = false
 
-  this.throwBall = function(score){
-    if (this.throwsLeft>0){
-      this.currentFrameScores.push(score);
-      if(score == 10){
-        this.isStrikeRound = true;
+  this.updateIfStrike = function(score){
+    if(score == 10){
+      this.isStrikeRound = true;
+    }
+
+  }
+
+  this.updateCurrentFrameScores=function(score){
+    this.currentFrameScores.push(score);
+  }
+
+  this.applyBonus = function(score){
+    bonus = this.bonusArray.shift();
+    frameNumber = bonus.frameIndex;
+    throwsLeft = bonus.updatesLeft;
+    this.results[frameNumber].bonus += score;
+    bonus.updatesLeft=throwsLeft-1;
+    if (bonus.updatesLeft > 0){
+      this.bonusArray.push(bonus)
+    }else{
+      frameResults = this.results[frameNumber]
+      throw1= frameResults.throw1
+      throw2= frameResults.throw2
+      bonus = frameResults.bonus
+      total = throw1 + throw2 + bonus
+      this.totalScore += total
+    }
+  }
+
+  this.applyBonusPointsIfRequired = function(score){
+    if(this.isBonusActive()){
+      numberOfBonuses = this.bonusArray.length
+      for (i = 0; i < numberOfBonuses; i++) {
+        this.applyBonus(score);
       }
 
-      if(this.isBonusActive()){
-        updatedBonusArray =[]
-        numberOfBonuses = this.bonusArray.length
-        for (i = 0; i < numberOfBonuses; i++) {
-          bonus = this.bonusArray.pop();
-          frameNumber = bonus[0];
-          throwsLeft = bonus[1];
-          this.results[frameNumber].bonus += score;
-          bonus[1]=throwsLeft-1;
-          if (bonus[1] > 0){
-            updatedBonusArray.push(bonus)
-          }else{
-            frameResults = this.results[frameNumber]
-            throw1= frameResults.throw1
-            throw2= frameResults.throw2
-            bonus = frameResults.bonus
-            total = throw1 + throw2 + bonus
-            this.totalScore += total
-          }
-        }
-        this.bonusArray = updatedBonusArray
-      }
+    }
+
+  }
+
+  this.throwBall = function(score){
+    if (this.throwsLeft>0){
+      this.updateCurrentFrameScores(score);
+      this.updateIfStrike(score);
+      this.applyBonusPointsIfRequired(score);
 
       if(this.isFrameOver()||this.isStrikeRound){
         //Append the Results to the scoresheet regardless of bonus
@@ -133,12 +149,12 @@ function Game(){
   }
 
   this.activateSpareBonus = function(){
-    this.bonusArray.push([this.framesPlayed, 1])
+    this.bonusArray.push({frameIndex:this.framesPlayed, updatesLeft: 1})
 
   }
 
   this.activateStrikeBonus = function(){
-    this.bonusArray.push([this.framesPlayed,2])
+    this.bonusArray.push({frameIndex:this.framesPlayed, updatesLeft: 2})
   }
 
   this.isFrameOver=function(){

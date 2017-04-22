@@ -32,6 +32,7 @@ Game.prototype._spareCalculator = function() {
   var framesSoFar = this.allFrames.length - 1;
   if(this.allFrames[framesSoFar - 1].wasASpare) {
     this.allFrames[framesSoFar - 1].frameTotalScore += this.currentFrame.frameScores[0];
+    this.runningTotal += this.currentFrame.frameScores[0];
   }
 }
 
@@ -39,6 +40,7 @@ Game.prototype._strikeCalculator = function() {
   var framesSoFar = this.allFrames.length - 1;
   if(this.allFrames[framesSoFar - 1].wasAStrike) {
     this.allFrames[framesSoFar - 1].frameTotalScore += this.currentFrame.frameTotalScore;
+    this.runningTotal += this.currentFrame.frameTotalScore;
   }
 }
 
@@ -46,5 +48,6 @@ Game.prototype._doubleStrikeCalculator = function() {
   var framesSoFar = this.allFrames.length - 1;
   if(this.allFrames[framesSoFar - 1].wasAStrike && this.allFrames[framesSoFar - 2].wasAStrike) {
     this.allFrames[framesSoFar - 2].frameTotalScore += this.currentFrame.frameScores[0];
+    this.runningTotal += this.currentFrame.frameScores[0];
   }
 }

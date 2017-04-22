@@ -23,9 +23,9 @@ BonusRolls.prototype.points = function() {
   return this._rollOnePoints + this._rollTwoPoints
 }
 
-// BonusRolls.prototype.number = function() {
-//   return this._roll
-// }
+BonusRolls.prototype.number = function() {
+  return this._roll
+}
 
 BonusRolls.prototype.pins = function() {
   return this._pins

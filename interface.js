@@ -2,31 +2,31 @@ $(document).ready(function() {
 
   var game = new Game();
 
-  updateAll();
+  updateFrame();
   startFrame();
   $('#game-over').hide();
 
 
 
   $('#roll').on('click', function() {
-    animateBall();
+    // animateBall();
     game.roll();
     if(game.isFinished()) {
       game.updateAndStore()
       writeLog();
-      updateAll();
+      updateFrame();
       endGame()
     }
     if(game._currentFrame.isFinished()) {
       endFrame()
     }
-    updateAll();
+    updateFrame();
   });
 
   $('#new-frame').on('click', function() {
     game.updateAndStore()
     writeLog();
-    updateAll();
+    updateFrame();
     startFrame();
   });
 
@@ -46,7 +46,7 @@ $(document).ready(function() {
     $('#bonus-feature').text(game._currentFrame.bonusFeature());
   }
 
-  function updateAll() {
+  function updateFrame() {
     game._frames.forEach(function(frame) {
       $('#frame_' + frame.number()).text(frame.points());
     });
@@ -70,13 +70,13 @@ $(document).ready(function() {
     $('#game-stats').append('<p>frame ' + num + ': <span id="frame_' + num + '"></span></p>')
   }
 
-  function animateBall() {
-    $('#ball').animate({
-      left: '250px',
-      bottom: '100px',
-      height: '80px',
-      width: '80px'
-    }, 'slow', function () { $(this).removeAttr('style'); });
-  }
+  // function animateBall() {
+  //   $('#ball').animate({
+  //     left: '250px',
+  //     bottom: '100px',
+  //     height: '80px',
+  //     width: '80px'
+  //   }, 'slow', function () { $(this).removeAttr('style'); });
+  // }
 
 });

@@ -60,12 +60,16 @@ describe('Game', function(){
     expect(game.totalGameScore()).toEqual(280);
   });
 
-  xit('If spare in 10th frame allows 3rd bowl', function(){
-
+  it('If spare in 10th frame allows 3rd bowl', function(){
+    spyOn(Frame.prototype, 'pinsDown').and.returnValues(10,10,10,10,10,10,10,10,10,6,4,3);
+    game.startGame();
+    expect(game.totalGameScore()).toEqual(273);
   });
 
   xit('Does not allow 3rd bowl in 10th frame if non strike/spare', function(){
-
+    spyOn(Frame.prototype, 'pinsDown').and.returnValues(10,10,10,10,10,10,10,10,10,6,2);
+    game.startGame();
+    expect(game.totalGameScore()).toEqual(266);
   });
 
 });

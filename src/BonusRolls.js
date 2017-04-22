@@ -19,6 +19,10 @@ BonusRolls.prototype.roll = function() {
   this._roll += 1
 }
 
+BonusRolls.prototype.numberAllowed = function() {
+  return this._numberAllowed
+}
+
 
 BonusRolls.prototype.points = function() {
   return this._rollOnePoints + this._rollTwoPoints

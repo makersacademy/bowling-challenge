@@ -12,12 +12,12 @@ $(document).ready(function() {
     // animateBall();
     game.roll();
     updateFrame();
-    if(game._currentFrame.isFinished() && game._frame >= 10) {
-     game._endGame()
+    if(game.currentFrame().isFinished() && game.frameNumber() >= 10) {
+     game.endGame()
      writeLog();
      updateLog();
      endGame()
-    } else if (game._currentFrame.isFinished()) {
+    } else if (game.currentFrame().isFinished()) {
       game.updateAndStore()
       endFrame()
     }
@@ -26,10 +26,10 @@ $(document).ready(function() {
   $('#bonus-roll-button').on('click', function() {
     game.roll();
     updateBonusRolls()
-    if(game._currentFrame.isFinished()) {
-      game._endGame()
+    if(game.currentFrame().isFinished()) {
+      game.endGame()
       $('#game-stats').append('<p>bonus roll points: <span id="final-bonus"></span></p>')
-      $('#final-bonus').text(game._currentFrame.points());
+      $('#final-bonus').text(game.currentFrame().points());
       endGame()
     }
   });
@@ -53,20 +53,20 @@ $(document).ready(function() {
     $('#roll').hide();
     $('#new-frame').show();
     $('#frame-stats').hide();
-    $('#last-frame-points').text(game._lastFrame().points());
-    $('#bonus-feature').text(game._lastFrame().bonusFeature());
+    $('#last-frame-points').text(game.lastFrame().points());
+    $('#bonus-feature').text(game.lastFrame().bonusFeature());
     $('#frame-over').show();
   }
 
   function updateFrame() {
-    $('#this-frame-number').text(game._currentFrame.number());
-    $('#this-frame-points').text(game._currentFrame.points());
-    $('#this-frame-roll').text(game._currentFrame.currentRoll());
-    $("#pins").attr("src", 'pins/' + game._currentFrame.pins() + '_pins.png');
+    $('#this-frame-number').text(game.currentFrame().number());
+    $('#this-frame-points').text(game.currentFrame().points());
+    $('#this-frame-roll').text(game.currentFrame().currentRoll());
+    $("#pins").attr("src", 'pins/' + game.currentFrame().pins() + '_pins.png');
   };
 
   function writeLog() {
-    var num = game._lastFrame().number();
+    var num = game.lastFrame().number();
     $('#game-stats').append('<p>frame ' + num + ': <span id="frame_' + num + '"></span></p>')
   }
 
@@ -92,9 +92,9 @@ $(document).ready(function() {
   }
 
   function updateBonusRolls() {
-    $('#bonus-rolls-points').text(game._currentFrame.points());
-    $('#bonus-rolls-allowed').text(game._currentFrame._numberAllowed);
-    $("#pins").attr("src", 'pins/' + game._currentFrame.pins() + '_pins.png');
+    $('#bonus-rolls-points').text(game.currentFrame().points());
+    $('#bonus-rolls-allowed').text(game.currentFrame().numberAllowed());
+    $("#pins").attr("src", 'pins/' + game.currentFrame().pins() + '_pins.png');
 
   }
 

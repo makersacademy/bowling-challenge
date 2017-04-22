@@ -34,6 +34,7 @@ function Game(){
   this.bonusArray=[]
   this.results=[]
   this.isStrikeRound = false
+  this.bonusHandler = new BonusHandler();
 
   this.updateIfStrike = function(score){
     if(score == 10){
@@ -46,6 +47,17 @@ function Game(){
     this.currentFrameScores.push(score);
   }
 
+  //PRIMED FOR REMOVAL
+  this.updateTotalScoreAfterBonus=function(frameNumber){
+    frameResults = this.results[frameNumber]
+    throw1= frameResults.throw1
+    throw2= frameResults.throw2
+    bonus = frameResults.bonus
+    total = throw1 + throw2 + bonus
+    this.totalScore += total
+  }
+
+  //PRIMED FOR REMOVAL
   this.applyBonus = function(score){
     bonus = this.bonusArray.shift();
     frameNumber = bonus.frameIndex;
@@ -55,15 +67,11 @@ function Game(){
     if (bonus.updatesLeft > 0){
       this.bonusArray.push(bonus)
     }else{
-      frameResults = this.results[frameNumber]
-      throw1= frameResults.throw1
-      throw2= frameResults.throw2
-      bonus = frameResults.bonus
-      total = throw1 + throw2 + bonus
-      this.totalScore += total
+      this.updateTotalScoreAfterBonus(frameNumber)
     }
   }
 
+  //PRIMED FOR REMOVAL
   this.applyBonusPointsIfRequired = function(score){
     if(this.isBonusActive()){
       numberOfBonuses = this.bonusArray.length
@@ -79,6 +87,9 @@ function Game(){
     if (this.throwsLeft>0){
       this.updateCurrentFrameScores(score);
       this.updateIfStrike(score);
+
+
+      //PRIMED TO UPDATE
       this.applyBonusPointsIfRequired(score);
 
       if(this.isFrameOver()||this.isStrikeRound){
@@ -98,12 +109,19 @@ function Game(){
         }
         this.currentFrameScores=[]
         //Check if there is a bonus and if yes then activate bonus
+
+
         if(this.isBonus()){
+
+          //PRIMED TO UPDATE
           if(this.isStrikeRound){
             this.activateStrikeBonus();
           }else{
             this.activateSpareBonus();
           }
+
+
+
         }else{
           frameScore = this.results[this.framesPlayed].throw1 + this.results[this.framesPlayed].throw2;
           this.totalScore += frameScore;
@@ -143,7 +161,7 @@ function Game(){
     throw2 = this.results[this.framesPlayed].throw2
       return (throw1+throw2==10)
   }
-
+  ///PRIMED TO REMOVE
   this.isBonusActive = function(){
     return this.bonusArray.length>0
   }
@@ -158,7 +176,11 @@ function Game(){
   }
 
   this.isFrameOver=function(){
-    return ((this.throwsLeft<21 && this.throwsLeft%2 ==0)|| (this.throwsLeft ==0 && this.framesPlayed!=10))
+
+    notFirstThrow = this.throwsLeft<21;
+    endOfRegularFrame = this.throwsLeft%2 == 0;
+    endOfGame = this.throwsLeft ==1;
+    return ((notFirstThrow && endOfRegularFrame)|| endOfGame)
   }
 
   this.throwsDone =function(){

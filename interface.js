@@ -95,13 +95,17 @@ $(document).ready(function() {
 
     if(game.isFinished()) {
       updateLog()
-      $('#bonus-rolls').hide();
-      $('#frame-stats').hide();
-      $('#game-over').show();
-      $('#controls').hide();
+      gameOver()
     } else {
       bonusRolls()
     }
+  }
+
+  function gameOver() {
+    $('#bonus-rolls').hide();
+    $('#frame-stats').hide();
+    $('#game-over').show();
+    $('#controls').hide();
   }
 
   function updateBonusRolls() {
@@ -115,8 +119,7 @@ $(document).ready(function() {
     $('#frame-stats').hide();
     $("#pins").show();
     updateBonusRolls()
-    $('#bonus-rolls').show();
-    $('#bonus-roll-button').show();
+    $('.bonus-rolls-feature').show();
     $('#roll').hide();
   }
 

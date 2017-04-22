@@ -64,6 +64,6 @@ Frame.prototype.isFinished = function() {
 }
 
 Frame.prototype._hit = function() {
-  // return 10
-  return Math.floor(Math.random() * (this._pins + 1))
+  return 10
+  // return Math.floor(Math.random() * (this._pins + 1))
 }

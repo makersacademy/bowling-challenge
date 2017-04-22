@@ -32,13 +32,13 @@ describe('Features',function(){
     });
 
 
-    // it('Spare Game',function(){
-    //   expect(game.throwsLeft).toEqual(21);
-    //   for (i = 0; i < maximumThrows; i++) {
-    //     game.throwBall(5);
-    //   }
-    //   expect(game.totalScore).toEqual(150);
-    // });
+    it('Spare Game for 9 throws',function(){
+      expect(game.throwsLeft).toEqual(21);
+      for (i = 0; i < maximumThrows-1; i++) {
+        game.throwBall(5);
+      }
+      expect(game.totalScore).toEqual(135);
+    });
 
     // As a player who's just started the game
     // and I can keep playing
@@ -53,14 +53,16 @@ describe('Features',function(){
         expect(game.totalScore).toEqual(8);
 
       });
-      // it('Counts the bonus for a spare frame',function(){
-      //   spareThrowScore = 5
-      //   for (i = 0; i < 3; i++) {
-      //     game.throwBall(spareThrowScore);
-      //   }
-      //   expect(game.totalScore).toEqual(15);
-      //
-      // });
+      it('Counts the bonus for a spare frame',function(){
+        spareThrowScore = 5
+        for (i = 0; i < 2; i++) {
+          game.throwBall(spareThrowScore);
+        }
+          game.throwBall(6);
+          game.throwBall(3);
+        expect(game.totalScore).toEqual(25);
+
+      });
     });
 
 

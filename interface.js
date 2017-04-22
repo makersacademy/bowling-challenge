@@ -28,6 +28,8 @@ $(document).ready(function() {
     updateBonusRolls()
     if(game._currentFrame.isFinished()) {
       game._endGame()
+      $('#game-stats').append('<p>bonus roll points: <span id="final-bonus"></span></p>')
+      $('#final-bonus').text(game._currentFrame.points());
       endGame()
     }
   });
@@ -81,6 +83,7 @@ $(document).ready(function() {
     if(game.isFinished()) {
       updateLog()
       $('#bonus-rolls').hide();
+      $('#frame-stats').hide();
       $('#game-over').show();
       $('#controls').hide();
     } else {
@@ -92,6 +95,7 @@ $(document).ready(function() {
     $('#bonus-rolls-points').text(game._currentFrame.points());
     $('#bonus-rolls-allowed').text(game._currentFrame._numberAllowed);
     $("#pins").attr("src", 'pins/' + game._currentFrame.pins() + '_pins.png');
+
   }
 
   function bonusRolls() {

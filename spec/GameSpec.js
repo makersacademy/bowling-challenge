@@ -107,6 +107,16 @@ describe('Game', function() {
     expect(game.total()).toEqual(42)
   });
 
+  it('correctly adds up the total score after ten rolls', function() {
+    for(var x = 0; x < 10; x++) {
+      spyOn(game._currentFrame, '_hit').and.returnValue(4)
+      doubleRoll()
+    }
+    expect(game.total()).toEqual(80)
+  });
+
+
+
   doubleRoll = function() {
     game.roll()
     game.roll()

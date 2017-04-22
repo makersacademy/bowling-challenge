@@ -26,12 +26,18 @@ Game.prototype.updateAndStore = function () {
 Game.prototype._endGame = function () {
   if(this._currentFrame.bonusFeature() === 'strike') {
     this._frames.push(this._currentFrame);
+    this._frame += 1
     this._currentFrame = new BonusRolls(2);
   } else if (this._currentFrame.bonusFeature() === 'spare') {
     this._frames.push(this._currentFrame);
+    this._frame += 1
     this._currentFrame = new BonusRolls(1);
   } else {
     this._gameOver = true
+    if(this._frame === 10) {
+      this._frames.push(this._currentFrame);
+      this._frame += 1
+    }
   }
 
 }
@@ -89,8 +95,6 @@ Game.prototype._spareBonus = function() {
 Game.prototype._strikeBonus = function() {
   this._lastFrame().addBonus(this._currentFrame.strikeBonus())
 }
-
-
 
 Game.prototype._bakBonus = function() {
   this._lastLastFrame().addBonus(this._currentFrame.spareBonus())

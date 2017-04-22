@@ -24,20 +24,7 @@ $(document).ready(function() {
     }
   }
 
-  $('#bonus-roll-button').on('click', function() {
-    game.roll();
-    updateBonusRolls()
-    if(game.currentFrame().isFinished()) {
-      game.endGame()
-      logBonusPoints()
-      endGame()
-    }
-  });
 
-  function logBonusPoints() {
-    $('#game-stats').append('<p>bonus roll points: <span id="final-bonus"></span></p>')
-    $('#final-bonus').text(game.currentFrame().points());
-  }
 
   $('#new-frame').on('click', function() {
     log();
@@ -92,9 +79,7 @@ $(document).ready(function() {
   }
 
   function endGame() {
-
     if(game.isFinished()) {
-      updateLog()
       gameOver()
     } else {
       bonusRolls()
@@ -102,6 +87,7 @@ $(document).ready(function() {
   }
 
   function gameOver() {
+    updateLog()
     $('#bonus-rolls').hide();
     $('#frame-stats').hide();
     $('#game-over').show();
@@ -121,6 +107,21 @@ $(document).ready(function() {
     updateBonusRolls()
     $('.bonus-rolls-feature').show();
     $('#roll').hide();
+  }
+
+  $('#bonus-roll-button').on('click', function() {
+    game.roll();
+    updateBonusRolls()
+    if(game.currentFrame().isFinished()) {
+      game.endGame()
+      logBonusPoints()
+      gameOver()
+    }
+  });
+
+  function logBonusPoints() {
+    $('#game-stats').append('<p>bonus roll points: <span id="final-bonus"></span></p>')
+    $('#final-bonus').text(game.currentFrame().points());
   }
 
 

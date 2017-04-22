@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+  <html>
+
+    <head>
+
+      <title>bowling</title>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+      <section id='game-stats'>
+        <p>total score: <span id='total-score'></span></p>
+      </section>
+
+      <div>
+
+      <section id='game-over'>
+        <p>game over!<p>
+        <p><span id='final frame'></span></p>
+
+      </section>
+
+      <section id='frame-stats'>
+        <p>frame: <span id='this-frame-number'></span></p>
+        <p>points: <span id='this-frame-points'></span></p>
+        <p>roll: <span id='this-frame-roll'></span></p>
+      </section>
+
+      <section class='bonus-rolls-feature' id='bonus-rolls'>
+        <p>bonus rolls!</p>
+        <p>points: <span id='bonus-rolls-points'></span></p>
+        <p>rolls allowed: <span id='bonus-rolls-allowed'></span></p>
+      </section>
+
+      <section id='frame-over'>
+        <p>frame over</p>
+        <p>points: <span id='last-frame-points'></span></p>
+        <p><span id='bonus-feature'></span></p>
+      </section>
+
+      <section>
+        <img id='pins' src='pins/10_pins.png'>
+        <!-- <div><img id='ball' src='pins/ball.png'></div> -->
+      </section>
+
+      <section id='controls'>
+        <button style='font-family:Reenie Beanie,cursive;font-size:40px' id='roll'>roll</button>
+        <button style='font-family:Reenie Beanie,cursive;font-size:40px' id='new-frame'>next frame</button>
+        <button style='font-family:Reenie Beanie,cursive;font-size:40px' class='bonus-rolls-feature' id='bonus-roll-button'>roll</button>
+      </section>
+
+    </div>
+
+      <script src='src/Game.js'></script>
+      <script src='src/Frame.js'></script>
+      <script src='src/BonusRolls.js'></script>
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script src='interface.js'></script>
+
+    </body>
+
+  </html>

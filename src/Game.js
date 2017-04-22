@@ -9,22 +9,22 @@ function Game() {
 
 Game.prototype.roll = function() {
   this._currentFrame.roll()
-  // if(this._currentFrame.isFinished()) {
-  //   this.updateAndStore()
-  // }
+  if(this._currentFrame.isFinished() && this._frame >= 10) {
+   this._endGame()
+ } else if (this._currentFrame.isFinished()) {
+    this.updateAndStore()
+  }
 }
 
 Game.prototype.updateAndStore = function () {
   this._processFrame()
-  if(this._frame >= 10)  {
-   this._endGame()
-  } else {
-   this._storeFrame();
-   this._currentFrame = new Frame(this._frame);
-  }
+  this._storeFrame();
+  this._currentFrame = new Frame(this._frame);
 }
 
+
 Game.prototype._endGame = function () {
+  this._processFrame()
   if(this._frame === 10) {
      this._storeFrame();
   }

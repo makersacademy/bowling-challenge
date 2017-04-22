@@ -67,6 +67,7 @@ describe('Game', function() {
       Roll()
       Roll()
     }
+    debugger
     expect(game.isFinished()).toEqual(false)
   });
 
@@ -132,9 +133,9 @@ describe('Game', function() {
 
   Roll = function() {
     game.roll()
-    if(game._currentFrame.isFinished()) {
-      game.updateAndStore()
-    }
+    // if(game._currentFrame.isFinished()) {
+    //   game.updateAndStore()
+    // }
   }
 
 });

@@ -40,6 +40,13 @@ describe("Feature spec", function() {
       game.play(3);
       expect(game.frames[0].score).toEqual(17);
     })
+
+    it("Should be able to reach maximum score of 30 in one frame", function() {
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      expect(game.frames[0].score).toEqual(30);
+    })
   })
 
   describe("Throwing a spare", function() {

@@ -36,6 +36,13 @@ describe("Game", function() {
       expect(game.frames[0].score).toEqual(13);
     })
 
+    it("adds three bowls if three strikes take place", function() {
+      game.play(10);
+      game.play(10);
+      game.play(10);
+      expect(game.frames[0].score).toEqual(30);
+    })
+
     it("adds first bowl to score is spare has taken place", function() {
       game.play(9);
       game.play(1);

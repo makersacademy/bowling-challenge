@@ -50,11 +50,21 @@ Game.prototype.rollsLeft = function(frame) {
 };
 
 Game.prototype.bonusCalculator = function() {
-  if (this.frames.length > 0) {
-    if (this.frames[this.frames.push(this.frames.pop())-1].isStrike === true) {
-      this.frames[this.frames.push(this.frames.pop())-1].score = 10 + this._frame.score;
-    } else if (this.frames[this.frames.push(this.frames.pop())-1].isSpare === true) {
-      this.frames[this.frames.push(this.frames.pop())-1].score = 10 + this._frame.firstShot;
+  if (this.frames.length > 1) {
+    if (this.frames[this.frames.length - 1].isStrike === true &&
+        this.frames[this.frames.length - 2].isStrike === true) {
+      this.frames[this.frames.length - 2].score = 20 + this._frame.score;
+    } else if (this.frames[this.frames.length - 1].isStrike === true) {
+      this.frames[this.frames.length - 1].score = 10 + this._frame.score;
+    } else if (this.frames[this.frames.length - 1].isSpare === true) {
+      this.frames[this.frames.length - 1].score = 10 + this._frame.firstShot;
+    }
+  }
+  else if (this.frames.length === 1) {
+    if (this.frames[this.frames.length - 1].isStrike === true) {
+      this.frames[this.frames.length - 1].score = 10 + this._frame.score;
+    } else if (this.frames[this.frames.length - 1].isSpare === true) {
+      this.frames[this.frames.length - 1].score = 10 + this._frame.firstShot;
     }
   }
 };

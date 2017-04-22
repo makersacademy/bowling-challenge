@@ -39,11 +39,23 @@ describe('Game',function(){
     it('returns true for a spare game',function(){
       game.throwBall(5);
       game.throwBall(5);
-      expect(game.isBonus()).toEqual(true)
+      expect(game.isBonus()).toEqual(true);
     })
+
   })
 
+  describe('#isFrameOver',function(){
+    it('returns true for the end of a regular round',function(){
 
+      for (i = 19; i >=3 ; i-=2) {
+        game.throwsLeft=i
+        expect(game.isFrameOver()).toEqual(true);
+      }
+    });
+    it('returns false during the middle of a regular round',function(){
+      expect(game.isFrameOver()).toEqual(false);
+    });
+  });
   // describe('#updateFramesPlayed',function(){
   //   beforeEach(function(){
   //     changeFromUpdateFramesPlayed = function(){

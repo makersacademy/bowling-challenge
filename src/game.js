@@ -38,6 +38,9 @@ Game.prototype.bowl = function bowl() {
   } else {
     this.updateScore();
     this.resetFrame();
-    throw new Error('Already bowled, next frame');
   }
+};
+
+Game.prototype.getFrameNumber = function getFrameNumber() {
+  return (this.frames.length + 1);
 };

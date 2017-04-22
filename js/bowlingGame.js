@@ -1,13 +1,33 @@
 $(document).ready(function BowlingGame() {
   var game = new Game();
-  var frame = new Frame();
+  var bowlNum = 0;
 
   function updateScore() {
-    $('#currentBowlScore').text(frame.score);
+    $('#gameScore').text(game.getCurrentScore());
+  }
+
+  function updateFrame() {
+    $('#frameNumber').text(game.getFrameNumber());
+  }
+
+  function updateBowlScore() {
+    $('#bowlIndex-' + bowlNum).text(game._currentFrame.bowled[bowlNum]);
+  }
+
+// WIP
+  function updateFrameScore() {
+    $('#scoreIndex-' + bowlNum).text(game._currentFrame.frameScore());
   }
 
   $('#bowl').click(function (event) {
-    frame.bowl(frame.pins);
+    game.bowl();
+    updateBowlScore();
+    updateFrameScore();
     updateScore();
+    updateFrame();
+    bowlNum += 1;
   });
+
+
+
 });

@@ -6,17 +6,68 @@
   </head>
   <body>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <section id="current-bowl">
-      <h1 id="currentBowlScore">0</h1>
+    <section id="game">
+      <h1>Game score: <span id="gameScore">0</span></h1>
       <button id="bowl">Bowl</button>
     </section>
     <br>
-    <section id="game">
+    <section id="current-frame">
       Frame: <span id="frameNumber">1</span>
-      Game score: <span id="gameScore">0</span>
+
     </section>
-    <script src="js/bowlingGame.js"></script>
+
+    <table>
+      <tr>
+        <td colspan="2">Frame 1</td>
+        <td colspan="2">Frame 2</td>
+        <td colspan="2">Frame 3</td>
+        <td colspan="2">Frame 4</td>
+        <td colspan="2">Frame 5</td>
+        <td colspan="2">Frame 6</td>
+        <td colspan="2">Frame 7</td>
+        <td colspan="2">Frame 8</td>
+        <td colspan="2">Frame 9</td>
+        <td colspan="3">Frame 10</td>
+      </tr>
+      <tr>
+        <td id="bowlIndex-0"></td>
+        <td id="bowlIndex-1"></td>
+        <td id="bowlIndex-2"></td>
+        <td id="bowlIndex-3"></td>
+        <td id="bowlIndex-4"></td>
+        <td id="bowlIndex-5"></td>
+        <td id="bowlIndex-6"></td>
+        <td id="bowlIndex-7"></td>
+        <td id="bowlIndex-8"></td>
+        <td id="bowlIndex-9"></td>
+        <td id="bowlIndex-10"></td>
+        <td id="bowlIndex-11"></td>
+        <td id="bowlIndex-12"></td>
+        <td id="bowlIndex-13"></td>
+        <td id="bowlIndex-14"></td>
+        <td id="bowlIndex-15"></td>
+        <td id="bowlIndex-16"></td>
+        <td id="bowlIndex-17"></td>
+        <td id="bowlIndex-18"></td>
+        <td id="bowlIndex-19"></td>
+        <td id="bowlIndex-20"></td>
+      </tr>
+      <tr>
+        <td colspan="2" id="scoreIndex-1"></td>
+        <td colspan="2" id="scoreIndex-2"></td>
+        <td colspan="2" id="scoreIndex-3"></td>
+        <td colspan="2" id="scoreIndex-4"></td>
+        <td colspan="2" id="scoreIndex-5"></td>
+        <td colspan="2" id="scoreIndex-6"></td>
+        <td colspan="2" id="scoreIndex-7"></td>
+        <td colspan="2" id="scoreIndex-8"></td>
+        <td colspan="2" id="scoreIndex-9"></td>
+        <td colspan="3" id="scoreIndex-10"></td>
+      </tr>
+    </table>
+
     <script src="src/frame.js"></script>
     <script src="src/game.js"></script>
+    <script src="js/bowlingGame.js"></script>
   </body>
 </html>

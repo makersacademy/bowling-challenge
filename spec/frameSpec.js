@@ -57,7 +57,7 @@ describe('Frame', function (){
     });
 
     it('returns true if player can bowl i.e. not already bowled twice', function () {
-      frame.bowl(10);
+      frame.bowl(7);
       expect(frame.canBowl()).toBe(true);
     });
 
@@ -67,8 +67,9 @@ describe('Frame', function (){
       expect(frame.canBowl()).toBe(false);
     });
 
-    xit('is a strike', function () {
-      spyOn(frame, 'bowl').and.returnValue(0);
+    it('is a strike', function () {
+      // spyOn(frame, 'bowl').and.returnValue(0);
+      frame.pins = 0;
       frame.incrementBowl();
       expect(frame.isStrike()).toEqual(true);
     });

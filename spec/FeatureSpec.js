@@ -8,16 +8,23 @@ describe('Feature test:', function() {
   var game;
 
   beforeEach(function(){
-    // frame = jasmine.createSpyObj('frame', ['bowl', 'frameScore', 'addToScore']);
-    frame = new Frame();
+    frame = jasmine.createSpyObj('frame', ['bowl', 'frameScore', 'addToScore', 'resetFrame']);
+    // frame = new Frame();
     game = new Game();
   })
 
   describe('Scoring', function () {
-    it('cumulates scores', function () {
-      frame.addToScore(4);
-      frame.addToScore(5);
+    xit('cumulates scores', function () {
+      // frame.addToScore(4);
+      // frame.addToScore(5);
+      // spyOn(frame, 'bowl').and.returnValue(9);
+      frame.bowl.and.returnValue(4);
+      frame.bowl.and.returnValue(5);
       expect(frame.frameScore()).toEqual(9)
+    });
+
+    it('if first bowl is a strike move to next frame', function () {
+      game.bowl();
     });
   });
 

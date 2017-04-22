@@ -19,7 +19,7 @@ Frame.prototype.bowl = function bowl(pins) {
 };
 
 Frame.prototype.frameScore = function frameScore() {
-  return this.bowled.reduce((a,b) => a+b, 0)
+  return this.bowled.reduce((a, b) => a+b, 0)
 };
 
 Frame.prototype.isFirstBowl = function isFirstBowl() {

@@ -49,13 +49,14 @@ describe('Game', function () {
     expect(game.frames[0]).not.toEqual(frame);
   });
 
+  it('returns the current frame number', function () {
+    game.bowl(); game.bowl(); game.bowl();
+    expect(game.getFrameNumber()).toEqual(2)
+  });
+
   describe('Bowling', function () {
 
-    // not sure this is applicable anymore...
-    xit('raises error when already bowled twice', function () {
-      spyOn(frame, 'isFirstBowl', 'canBowl').and.returnValue(false, false);
-      expect(function(){ game.bowl();}).toThrowError('Already bowled, next frame');
-    });
+
   });
 
 });

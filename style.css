@@ -10,22 +10,26 @@ h1 {
 }
 table{
  background-color: #fcf5e7;
-/*  padding: 10px; */
  text-align: center;
  border: 10px solid #231f20;
  border-radius: 10px;
+ table-layout: fixed;
+ width: 1300px;
+ font-size: 16px;
+}
+#name {
+  width: 80px;
 }
 th {
-/*   padding: 10px; */
-/*   border: 2px solid #06618f; */
   font-size: 20px;
   border-bottom: 10px solid #06618f;
   border-top: 10px solid #06618f;
-/*   border-radius: 20px; */
 }
 td {
   padding: 10px;
   border: 2px solid #06618f;
+  height: 20px;
+  width: 20px;
 }
 div#buttons {
   color

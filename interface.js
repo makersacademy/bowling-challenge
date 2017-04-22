@@ -2,6 +2,11 @@ $(document).ready(function(){
   var game = new Game;
   updateScore();
 
+  $('#roll-a-0').on('click',function(){
+    game.makeRoll(0);
+    updateScore();
+  })
+
   $('#roll-a-1').on('click',function(){
     game.makeRoll(1);
     updateScore();

@@ -12,11 +12,6 @@ $(document).ready(function(){
     updateScore();
   })
 
-  $('#roll-a-2').on('click',function(){
-    game.makeRoll(2);
-    updateScore();
-  })
-
   $('#roll-a-3').on('click',function(){
     game.makeRoll(3);
     updateScore();
@@ -58,8 +53,8 @@ $(document).ready(function(){
   })
   function updateScore () {
     $('#total-score').text(game.getScore());
-    if (game.frameNo === 1 && game.rollCount === 1)
-      $('#f1r1').on()
+    roll = game.rollCount;
+    $('#r' + roll).text(game.rollHistory[roll -1]);
   }
 
 

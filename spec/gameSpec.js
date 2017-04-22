@@ -139,12 +139,13 @@ describe('Game', function(){
       expect(game.cumulativeFrameScores).toEqual([18, 26]);
     });
 
-    xit('if strike: previous frame score equals 10 plus the sum of the next two rolls', function(){
+    it('if strike: previous frame score equals 10 plus the sum of the next two rolls', function(){
+      game.roll(10);
       game.roll(10);
       game.roll(10);
       game.roll(3);
       game.roll(3);
-      expect(game.cumulativeFrameScores).toEqual([30, 46, 52]);
+      expect(game.cumulativeFrameScores).toEqual([30, 53, 69, 75]);
     });
 
     it('can get multiple strikes in a row', function(){
@@ -191,4 +192,38 @@ describe('Game', function(){
     });
   });
 
+  describe('tenth frame', function() {
+
+    beforeEach( function() {
+      for(var i=0; i<9; i++) {
+        game.roll(1);
+        game.roll(4);
+      }
+    });
+
+    it('recognises its occurrence', function() {
+      expect(game.isTenthFrame()).toEqual(true);
+    });
+
+    it('if spare, players gets additional roll', function() {
+      game.roll(1);
+      game.roll(9);
+      expect(function(){game.roll(1);}).not.toThrowError("The game has finished. Start a new game to throw again.");
+    });
+
+    it('additional roll is part of the tenth frame', function() {
+      game.roll(1);
+      game.roll(9);
+      game.roll(1);
+      expect(game.frameHistory[9]).toEqual([1, 9, 1]);
+    });
+
+    it('player only gets one additional roll', function() {
+      game.roll(1);
+      game.roll(9);
+      game.roll(1);
+      expect(function(){game.roll(1);}).toThrowError("The game has finished. Start a new game to throw again.");
+    });
+
+  });
 });

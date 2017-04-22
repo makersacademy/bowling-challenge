@@ -35,8 +35,12 @@ div#buttons {
   color
 }
 button {
-  margin-top: 10px;
-  border-radius: 30px;
-  height: 40px;
-  width: 40px;
+  margin-top: 30px;
+  margin-right: 10px;
+  border-radius: 60px;
+  color: #fcf5e7;
+  font-size: 16px;
+  background-color: #231f20;
+  height: 60px;
+  width: 60px;
 }

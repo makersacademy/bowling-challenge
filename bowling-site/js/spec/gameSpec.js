@@ -29,6 +29,20 @@ describe('Game',function(){
     });
   });
 
+  describe('#isBonus',function(){
+    it('returns false for regular game',function(){
+      game.throwBall(5);
+      game.throwBall(4);
+      expect(game.isBonus()).toEqual(false)
+
+    })
+    it('returns true for a spare game',function(){
+      game.throwBall(5);
+      game.throwBall(5);
+      expect(game.isBonus()).toEqual(true)
+    })
+  })
+
 
   // describe('#updateFramesPlayed',function(){
   //   beforeEach(function(){

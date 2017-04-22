@@ -20,17 +20,17 @@ describe('Features',function(){
         expect(game.throwsLeft).toEqual(0);
         // expect(game.framesPlayed).toEqual(10);
       });
-    });
-
-    it('Regular Game',function(){
-      expect(game.throwsLeft).toEqual(21);
+      it('Regular Game',function(){
+        expect(game.throwsLeft).toEqual(21);
         for (i = 0; i < maximumThrows; i++) {
           game.throwBall(4);
         }
         expect(game.totalScore).toEqual(80);
         expect(game.throwsLeft).toEqual(0);
         // expect(game.framesPlayed).toEqual(10);
+      });
     });
+
 
     // it('Spare Game',function(){
     //   expect(game.throwsLeft).toEqual(21);

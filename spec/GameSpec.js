@@ -10,7 +10,7 @@ describe('Game', function() {
     strike = [10,0];
   });
 
-  it('starts off with an empty scoresheet', function() {
+  xit('starts off with an empty scoresheet', function() {
     expect(game.scoresheet).toEqual([[]]);
   });
 
@@ -20,13 +20,13 @@ describe('Game', function() {
 
   it('adds one frame to the game', function() {
     game.addFrames(frame);
-    expect(game.scoresheet).toEqual([[frame]]);
+    expect(game.viewFrame(1)).toEqual(frame);
   });
 
   it('adds the score of the turn to the game', function() {
     game.addFrames(frame);
-    game.updateScore(frame);
-    expect(game.scoresheet).toEqual([[frame,9]]);
+    game.updateScore();
+    expect(game.viewScore(1)).toEqual(9);
   });
 
   it('increases the turn counter by one', function() {
@@ -36,13 +36,40 @@ describe('Game', function() {
 
   it('updates score accordingly when player bowls a strike', function() {
     game.addFrames(strike);
-    game.updateScore(strike);
+    game.updateScore();
     game.nextTurn();
     game.addFrames(frame);
-    game.updateScore(frame);
-    expect(game.scoresheet).toEqual([[strike, 19],[frame,9]]);
+    game.updateScore();
+    expect(game.viewScore(1)).toEqual(19);
   });
 
+  it('updates score accordingly when player bowls 2 consecutive strikes', function() {
+    game.addFrames(strike);
+    game.updateScore();
+    game.nextTurn();
+    game.addFrames(strike);
+    game.updateScore();
+    game.nextTurn();
+    game.addFrames(frame);
+    game.updateScore()
+    expect(game.viewScore(1)).toEqual(29);
+  });
+
+  it('updates score accordingly when player bowls 3 consecutive strikes', function() {
+    game.addFrames(strike);
+    game.updateScore();
+    game.nextTurn();
+    game.addFrames(strike);
+    game.updateScore();
+    game.nextTurn();
+    game.addFrames(strike);
+    game.updateScore();
+    game.nextTurn();
+    game.addFrames(frame);
+    game.updateScore()
+    expect(game.viewScore(1)).toEqual(30);
+    expect(game.viewScore(2)).toEqual(59);
+  });
 
   // it('calculates frame score', function() {
   //   spyOn(Math, 'floor').and.returnValue(4)

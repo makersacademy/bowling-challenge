@@ -44,3 +44,7 @@ button {
   height: 60px;
   width: 60px;
 }
+button#reset {
+  background-color: #06618f;
+  color: #fcf5e7;
+}

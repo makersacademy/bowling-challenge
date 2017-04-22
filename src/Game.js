@@ -16,6 +16,17 @@ const INITIAL_FRAME_NO = 1
 const INITIAL_ROLL_COUNT = 0
 const INITIAL_BONUS_POINTS = 0
 
+Game.prototype.reset = function(){
+  this.score = 0
+  this.frameNo = 0
+  this.rollCount = 0
+  this.rollHistory = []
+  this.frameHistory = []
+  this.frameScores = []
+  this.currentFrame = []
+  this.bonusPoints = 0
+}
+
 Game.prototype.getScore = function(){
   return this.score
 }

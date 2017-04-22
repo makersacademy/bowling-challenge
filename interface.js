@@ -57,14 +57,19 @@ $(document).ready(function(){
     updateScore();
   })
 
+  $('#reset').on('click', function(){
+    game.reset();
+    $('.rolls').text('');
+    $('.frames').text('');
+    updateScore();
+  })
+
   function updateScore () {
     $('#total-score').text(game.getScore());
     roll = game.rollCount;
     $('#r' + roll).text(game.rollHistory[roll -1]);
-
     frame = game.frameNo -1;
     $('#f' + frame).text(game.frameScores[frame - 1]);
   }
-
 
 })

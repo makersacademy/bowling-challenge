@@ -30,13 +30,6 @@ describe("Game", function(){
       game.play();
       expect(game.allFrames[0].frameScores).toEqual([5, 5]);
     });
-
-    it("adds the frame score to the running total", function() {
-      spyOn(Math, 'floor').and.returnValue(4);
-      game.play();
-      game.play();
-      expect(game.runningTotal).toEqual(8)
-    });
   });
 
   describe("_frameReset", function() {
@@ -50,13 +43,21 @@ describe("Game", function(){
   });
 
   describe("_scoreCalculator", function() {
-    it("calculates the score if there are three strikes in a row", function() {
-      spyOn(Math, 'floor').and.returnValue(10);
+
+    it("adds the score of the frame on completion", function() {
+      spyOn(Math, 'floor').and.returnValue(3);
+      game.play();
+      game.play();
+      expect(game.runningTotal).toEqual(6);
+    });
+
+    it("adds the first bowl to the previous frame if it was a spare", function() {
+      spyOn(Math, 'floor').and.returnValue(5);
       game.play();
       game.play();
       game.play();
-      game._scoreCalculator();
-      expect(game.allFrames[0].frameTotalScore).toEqual(30);
+      game.play();
+      expect(game.allFrames[0].frameTotalScore).toEqual(15)
     });
   });
 });

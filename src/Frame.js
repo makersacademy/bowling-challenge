@@ -3,8 +3,8 @@ function Frame() {
   this.frameScores = [];
   this.frameTotalScore = 0;
   this.wasAStrike = false;
-  this.wasASpare = false
-  this.frameComplete = false
+  this.wasASpare = false;
+  this.frameComplete = false;
 }
 
 Frame.prototype.bowl = function() {

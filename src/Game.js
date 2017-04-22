@@ -6,11 +6,12 @@ function Game() {
 
 Game.prototype.play = function() {
   this.currentFrame.bowl();
-
   if(this.currentFrame.frameComplete === true) {
     this.allFrames.push(this.currentFrame);
-    this.runningTotal += this.currentFrame.frameTotalScore;
-    this._scoreCalculator;
+    this._scoreCalculator();
+    if(this.allFrames.length > 1) {
+    this._spareCalculator();
+    }
     this.frameReset();
   }
 }
@@ -20,8 +21,14 @@ Game.prototype.frameReset = function() {
 }
 
 Game.prototype._scoreCalculator = function() {
-  var lastFrame = this.allFrames.length;
-  if(this.allFrames[lastFrame -1].wasAStrike && this.allFrames[lastFrame -2].wasAStrike) {
-    this.allFrames[lastFrame -2].frameTotalScore += this.currentFrame[0];
+  this.runningTotal += this.currentFrame.frameTotalScore;
+}
+
+
+
+Game.prototype._spareCalculator = function () {
+  var framesSoFar = this.allFrames.length - 1;
+  if(this.allFrames[framesSoFar - 1].wasASpare) {
+    this.allFrames[framesSoFar - 1].frameTotalScore += this.currentFrame.frameScores[0];
   }
 }

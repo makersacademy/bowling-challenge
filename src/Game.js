@@ -57,7 +57,11 @@ Game.prototype._doubleStrikeCalculator = function() {
 }
 
 Game.prototype._gameOver = function() {
+  var framesSoFar = this.allFrames.length - 1;
   if(this.allFrames.length >= MAXFRAMES && !this.extraFrame()) {
+    this.isGameOver = true;
+  }
+  if(this.allFrames.length >= MAXFRAMES + 1 && this.allFrames[framesSoFar - 1].wasASpare) {
     this.isGameOver = true;
   }
 }

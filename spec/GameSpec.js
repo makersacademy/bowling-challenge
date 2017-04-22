@@ -91,7 +91,7 @@ describe("Game", function(){
 
   describe("_gameOver", function() {
 
-    it("the game is over after the tenth frame", function() {
+    it("the game is over after the tenth frame if no spare or strike", function() {
       spyOn(Math, 'floor').and.returnValue(4);
       for(var i=0; i<20; i++) {
         game.play();
@@ -105,6 +105,14 @@ describe("Game", function(){
         game.play();
       }
       expect(game.isGameOver).toBe(false);
+    });
+
+    it("the is over after the 11th frame if the tenth is a spare but no strike or spare after", function() {
+      spyOn(Math, 'floor').and.returnValue(5);
+      for(var i=0; i<23; i++) {
+        game.play();
+      }
+      expect(game.isGameOver).toBe(true);
     });
   });
 });

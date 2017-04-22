@@ -9,7 +9,8 @@ describe('Bonus Handler',function(){
       inputs ={
         score: 2,
         results:[],
-        framesPlayed:3
+        framesPlayed:3,
+        isStrikeRound:true
       }
       bonusHandler.score='Fo';
       bonusHandler.framesPlayed='Sho';
@@ -27,6 +28,9 @@ describe('Bonus Handler',function(){
 
     it('updates the framesPlayed',function(){
       expect(bonusHandler.framesPlayed).toEqual(3)
+    });
+    it('updates the isStrikeRound',function(){
+      expect(bonusHandler.isStrikeRound).toEqual(true)
     });
   });
 

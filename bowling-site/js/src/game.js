@@ -198,5 +198,14 @@ function Game(){
     }
   }
 
+  this.updateBonusHandlerState = function(){
+    input={score: this.score,
+    results: inputs.results,
+    framesPlayed: this.framesPlayed,
+    isStrikeRound: this.isStrikeRound
+    }
+    this.bonusHandler.updatePlayState(inputs)
+  }
+
 
 }

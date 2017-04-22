@@ -54,9 +54,10 @@ function BonusHandler(){
   }
 
   this.updatePlayState = function(inputs){
-    this.score=inputs.score
-    this.results=inputs.results
-    this.framesPlayed = inputs.framesPlayed
+    this.score=inputs.score;
+    this.results=inputs.results;
+    this.framesPlayed = inputs.framesPlayed;
+    this.isStrikeRound = inputs.isStrikeRound;
   }
 
   this.updateTotalScoreAfterBonus=function(frameNumber){

@@ -90,12 +90,21 @@ describe("Game", function(){
   });
 
   describe("_gameOver", function() {
+
     it("the game is over after the tenth frame", function() {
       spyOn(Math, 'floor').and.returnValue(4);
       for(var i=0; i<20; i++) {
         game.play();
       }
       expect(game.isGameOver).toBe(true);
+    });
+
+    it("the game isn't over after the tenth frame if a strike or spare is bowled", function() {
+      spyOn(Math, 'floor').and.returnValue(10);
+      for(var i=0; i<10; i++) {
+        game.play();
+      }
+      expect(game.isGameOver).toBe(false);
     });
   });
 });

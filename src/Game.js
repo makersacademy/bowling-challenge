@@ -9,11 +9,11 @@ function Game() {
 
 Game.prototype.roll = function() {
   this._currentFrame.roll()
-  if(this._currentFrame.isFinished() && this._frame >= 10) {
-   this._endGame()
- } else if (this._currentFrame.isFinished()) {
-    this.updateAndStore()
-  }
+  // if(this._currentFrame.isFinished() && this._frame >= 10) {
+  //  this._endGame()
+  //  } else if (this._currentFrame.isFinished()) {
+  //   this.updateAndStore()
+  // }
 }
 
 Game.prototype.updateAndStore = function () {

@@ -133,9 +133,11 @@ describe('Game', function() {
 
   Roll = function() {
     game.roll()
-    // if(game._currentFrame.isFinished()) {
-    //   game.updateAndStore()
-    // }
+    if(game._currentFrame.isFinished() && game._frame >= 10) {
+     game._endGame()
+    } else if (game._currentFrame.isFinished()) {
+      game.updateAndStore()
+    }
   }
 
 });

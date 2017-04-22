@@ -20,19 +20,24 @@
 
       <section id='game-over'>
         <p>game over!<p>
-        <p>frame: 10</p>
-        <p>points: <span id='frame-10-points'></span></p>
-        <p><span id='frame-10-bonus-feature'></span></p>
-        <!-- <script>
-          game._lastFrame().points();
-        </script> -->
       </section>
 
       <section id='frame-stats'>
         <p>frame: <span id='this-frame-number'></span></p>
         <p>points: <span id='this-frame-points'></span></p>
-        <p id='this-is-how-it-rolls'>roll: <span id='this-frame-roll'></span></p>
-        <p id='frame-outcome'><span id='bonus-feature'></span></p>
+        <p>roll: <span id='this-frame-roll'></span></p>
+      </section>
+
+      <section id='bonus-rolls'>
+        <p>bonus rolls!</p>
+        <p>points: <span id='bonus-rolls-points'></span></p>
+        <p>rolls allowed: <span id='bonus-rolls-allowed'></span></p>
+      </section>
+
+      <section id='frame-over'>
+        <p>frame over</p>
+        <p>points: <span id='last-frame-points'></span></p>
+        <p><span id='bonus-feature'></span></p>
       </section>
 
       <section>
@@ -43,6 +48,7 @@
       <section id='controls'>
         <button style='font-family:Reenie Beanie,cursive;font-size:40px' id='roll'>roll</button>
         <button style='font-family:Reenie Beanie,cursive;font-size:40px' id='new-frame'>next frame</button>
+        <button style='font-family:Reenie Beanie,cursive;font-size:40px' id='bonus-roll-button'>roll</button>
       </section>
 
     </div>

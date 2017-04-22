@@ -64,6 +64,9 @@ Game.prototype._gameOver = function() {
   if(this.allFrames.length >= MAXFRAMES + 1 && this.allFrames[framesSoFar - 1].wasASpare) {
     this.isGameOver = true;
   }
+  if(this.allFrames.length >= MAXFRAMES + 2 && this.allFrames[framesSoFar - 1].wasAStrike) {
+    this.isGameOver = true;
+  }
 }
 
 

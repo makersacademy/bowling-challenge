@@ -28,11 +28,6 @@ Game.prototype.play = function(score) {
     this.addFrame(this._frame);
     this.changeFrame();
   }
-  else {
-    this.bonusCalculator();
-    this.addFrame(this._frame);
-    this.changeFrame();
-  }
 };
 
 Game.prototype.addFrame = function(frame) {

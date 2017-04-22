@@ -17,7 +17,7 @@ describe('BonusRolls', function() {
   });
 
   it('has no bonus feature', function() {
-    expect(bonusRolls.bonusFeature()).toEqual('')
+    expect(bonusRolls.bonusFeature()).toBeFalsy()
   });
 
   describe('bonus rolls for a spare', function() {
@@ -29,7 +29,7 @@ describe('BonusRolls', function() {
 
     it('is finished after one roll', function() {
       bonusRolls.roll()
-      expect(bonusRolls.isFinished()).toEqual(true)
+      expect(bonusRolls.isFinished()).toBeTruthy()
     });
 
 
@@ -50,9 +50,9 @@ describe('BonusRolls', function() {
 
     it('is finished after two rolls', function() {
       bonusRolls.roll()
-      expect(bonusRolls.isFinished()).toEqual(false)
+      expect(bonusRolls.isFinished()).toBeFalsy()
       bonusRolls.roll()
-      expect(bonusRolls.isFinished()).toEqual(true)
+      expect(bonusRolls.isFinished()).toBeTruthy()
     });
 
     it('returns a bonus for a strike', function() {
@@ -65,7 +65,6 @@ describe('BonusRolls', function() {
     it('resets the pins after a strike', function() {
       spyOn(bonusRolls, '_hit').and.returnValue(10);
       expect(bonusRolls.pins()).toEqual(10)
-
     });
 
   });

@@ -126,6 +126,7 @@ describe('Game', function() {
     expect(game.total()).toEqual(300)
   });
 
+
   doubleRoll = function() {
     game.roll()
     game.roll()

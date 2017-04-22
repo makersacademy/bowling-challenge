@@ -2,7 +2,10 @@ function Game() {
   this.allFrames = [];
   this.currentFrame = new Frame;
   this.runningTotal = 0;
+  this.isGameOver = false;
 }
+
+var MAXFRAMES = 10
 
 Game.prototype.play = function() {
   this.currentFrame.bowl();
@@ -17,6 +20,7 @@ Game.prototype.play = function() {
       this._doubleStrikeCalculator();
     }
     this.frameReset();
+    this._gameOver();
   }
 }
 
@@ -49,5 +53,11 @@ Game.prototype._doubleStrikeCalculator = function() {
   if(this.allFrames[framesSoFar - 1].wasAStrike && this.allFrames[framesSoFar - 2].wasAStrike) {
     this.allFrames[framesSoFar - 2].frameTotalScore += this.currentFrame.frameScores[0];
     this.runningTotal += this.currentFrame.frameScores[0];
+  }
+}
+
+Game.prototype._gameOver = function() {
+  if(this.allFrames.length === MAXFRAMES) {
+    this.isGameOver = true;
   }
 }

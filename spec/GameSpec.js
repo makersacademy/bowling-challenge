@@ -88,4 +88,14 @@ describe("Game", function(){
       expect(game.allFrames[0].frameTotalScore).toEqual(30)
     });
   });
+
+  describe("_gameOver", function() {
+    it("the game is over after the tenth frame", function() {
+      spyOn(Math, 'floor').and.returnValue(4);
+      for(var i=0; i<20; i++) {
+        game.play();
+      }
+      expect(game.isGameOver).toBe(true);
+    });
+  });
 });

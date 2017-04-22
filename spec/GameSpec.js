@@ -50,6 +50,9 @@ describe("Game", function(){
       game.play();
       expect(game.runningTotal).toEqual(6);
     });
+  });
+
+  describe("_spareCalculator", function() {
 
     it("adds the first bowl to the previous frame if it was a spare", function() {
       spyOn(Math, 'floor').and.returnValue(5);
@@ -58,6 +61,31 @@ describe("Game", function(){
       game.play();
       game.play();
       expect(game.allFrames[0].frameTotalScore).toEqual(15)
+    });
+  });
+
+  describe("_strikeCalculator", function(){
+
+    it("if this frame has two bowls, it adds them both the the previous strike", function() {
+      game.currentFrame.wasAStrike = true;
+      game.currentFrame.frameTotalScore = 10;
+      game.allFrames.push(game.currentFrame);
+      game.frameReset();
+      spyOn(Math, 'floor').and.returnValue(4);
+      game.play();
+      game.play();
+      expect(game.allFrames[0].frameTotalScore).toEqual(18)
+    });
+  });
+
+  describe("_doubleStrikeCalculator", function() {
+
+    it("if there are three strikes in a row, the first ball is worth 30", function() {
+      spyOn(Math, 'floor').and.returnValue(10);
+      game.play();
+      game.play();
+      game.play();
+      expect(game.allFrames[0].frameTotalScore).toEqual(30)
     });
   });
 });

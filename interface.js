@@ -14,24 +14,20 @@ $(document).ready(function() {
   });
 
   function checkGameStatus() {
-    if (game.frameNumber() >= 10) {
-     game.endGame();
-     log();
-     endGame()
+    if (game.frameNumber() === 10) {
+      game.endGame();
+      endGame()
     } else {
       game.updateAndStore()
       endFrame()
     }
   }
 
-
-
   $('#new-frame').on('click', function() {
     log();
     updateFrame();
     startFrame();
   });
-
 
   function startFrame() {
     $('#frame-over').hide();
@@ -62,8 +58,7 @@ $(document).ready(function() {
 
   function log() {
     writeLog()
-    updateLog()
-    $('#total-score').text(game.total());
+    updateLog()  
   }
 
   function writeLog() {
@@ -71,14 +66,15 @@ $(document).ready(function() {
     $('#game-stats').append('<p>frame ' + num + ': <span id="frame_' + num + '"></span></p>')
   }
 
-
   function updateLog() {
+    $('#total-score').text(game.total());
     game._frames.forEach(function(frame) {
       $('#frame_' + frame.number()).text(frame.points());
     });
   }
 
   function endGame() {
+    log();
     if(game.isFinished()) {
       gameOver()
     } else {
@@ -90,15 +86,14 @@ $(document).ready(function() {
     updateLog()
     $('#bonus-rolls').hide();
     $('#frame-stats').hide();
-    $('#game-over').show();
     $('#controls').hide();
+    $('#game-over').show();
   }
 
   function updateBonusRolls() {
     $('#bonus-rolls-points').text(game.currentFrame().points());
     $('#bonus-rolls-allowed').text(game.currentFrame().numberAllowed());
     $("#pins").attr("src", 'pins/' + game.currentFrame().pins() + '_pins.png');
-
   }
 
   function bonusRolls() {

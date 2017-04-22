@@ -71,7 +71,7 @@ describe('Game', function() {
     spyOn(game._currentFrame, '_hit').and.returnValue(5)
     doubleRoll()
     spyOn(game._currentFrame, '_hit').and.returnValue(7)
-    game.roll()
+    singleRoll()
     expect(game.total()).toEqual(35)
   });
 
@@ -81,7 +81,7 @@ describe('Game', function() {
       doubleRoll()
     }
     spyOn(game._currentFrame, '_hit').and.returnValue(7)
-    game.roll()
+    singleRoll()
     expect(game.isFinished()).toEqual(true)
   });
 
@@ -90,8 +90,11 @@ describe('Game', function() {
       spyOn(game._currentFrame, '_hit').and.returnValue(10)
       singleRoll()
     }
-    game.roll()
+    spyOn(game._currentFrame, '_hit').and.returnValue(4)
+    singleRoll()
     expect(game.isFinished()).toEqual(false)
+    singleRoll()
+    expect(game.isFinished()).toEqual(true)
   });
 
   it('adds the points from two bonus rolls to the score', function() {
@@ -100,10 +103,9 @@ describe('Game', function() {
       doubleRoll()
     }
     spyOn(game._currentFrame, '_hit').and.returnValue(10)
-    game.roll()
+    singleRoll()
     spyOn(game._currentFrame, '_hit').and.returnValue(7)
-    game.roll()
-    game.roll()
+    doubleRoll()
     expect(game.total()).toEqual(42)
   });
 
@@ -115,7 +117,14 @@ describe('Game', function() {
     expect(game.total()).toEqual(80)
   });
 
-
+  it('correctly adds up the total score after twelve strikes', function() {
+    for(var x = 0; x < 11; x++) {
+      spyOn(game._currentFrame, '_hit').and.returnValue(10)
+      singleRoll()
+    }
+    singleRoll()
+    expect(game.total()).toEqual(300)
+  });
 
   doubleRoll = function() {
     game.roll()

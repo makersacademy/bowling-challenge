@@ -11,6 +11,9 @@ function BonusRolls(num) {
 BonusRolls.prototype.roll = function() {
   var hit = this._hit()
   this._pins -= hit
+  if(this._pins === 0) {
+    this._pins = 10
+  }
   this._roll === 1 ? this._rollOnePoints = hit : this._rollTwoPoints = hit
   this._numberAllowed -= 1
   this._roll += 1
@@ -20,9 +23,9 @@ BonusRolls.prototype.points = function() {
   return this._rollOnePoints + this._rollTwoPoints
 }
 
-BonusRolls.prototype.number = function() {
-  return this._roll
-}
+// BonusRolls.prototype.number = function() {
+//   return this._roll
+// }
 
 BonusRolls.prototype.pins = function() {
   return this._pins

@@ -62,6 +62,12 @@ describe('BonusRolls', function() {
       expect(bonusRolls.strikeBonus()).toEqual(8)
     });
 
+    it('resets the pins after a strike', function() {
+      spyOn(bonusRolls, '_hit').and.returnValue(10);
+      expect(bonusRolls.pins()).toEqual(10)
+
+    });
+
   });
-  
+
 });

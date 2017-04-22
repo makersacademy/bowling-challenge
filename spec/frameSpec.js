@@ -36,22 +36,22 @@ describe('Frame', function(){
 
   it('returns strike message if 10 pins are knocked down', function(){
     spyOn(frame, 'pinsDown').and.returnValue(10);
-    expect(frame.firstBowl()).toContain('Strike!')
+    expect(frame.firstBowl()).toContain('X')
   });
 
   it('returns gutterball message if 0 pins are knocked down', function(){
     spyOn(frame, 'pinsDown').and.returnValue(0);
-    expect(frame.firstBowl()).toContain('Gutterball!')
+    expect(frame.firstBowl()).toEqual(0)
   });
 
   it('returns gutterball message if 0 pins are knocked down', function(){
     spyOn(frame, 'pinsDown').and.returnValue(0);
-    expect(frame.secondBowl()).toContain('Gutterball!')
+    expect(frame.secondBowl()).toEqual(0)
   });
 
   it('returns spare if 10 pins are knocked down over 2 bowls', function(){
     spyOn(frame, 'pinsDown').and.returnValue(5);
     frame.firstBowl();
-    expect(frame.secondBowl()).toContain('Spare!')
+    expect(frame.secondBowl()).toContain('/')
   });
 });

@@ -17,10 +17,8 @@ Frame.prototype.firstBowl = function(){
   this.firstBowlRemainder = 10 - result;
   this.totalScore = result;
   if (this.totalScore === 10) {
-    this.status = 'Strike!';
-    return 'Strike!';
-  } else if (this.totalScore === 0) {
-    return 'Gutterball!';
+    this.status = 'X';
+    return 'X';
   } else {
     return result;
   }
@@ -29,11 +27,9 @@ Frame.prototype.firstBowl = function(){
 Frame.prototype.secondBowl = function(){
   var result = this.pinsDown(this.firstBowlRemainder);
   this.totalScore += result;
-  if (result === 0) {
-    return 'Gutterball!';
-  } else if (this.totalScore === 10) {
-    this.status = 'Spare!';
-    return 'Spare!';
+    if (this.totalScore === 10) {
+    this.status = '/';
+    return '/';
   } else {
     return result;
   }

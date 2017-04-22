@@ -15,10 +15,14 @@ Game.prototype.startGame = function(){
 
 Game.prototype.playFrame = function(frame){
   var firstFrameResult = this.frames[frame].firstBowl();
-  if (firstFrameResult !== 'Strike!') {
+  if (firstFrameResult !== 'X') {
     this.frames[frame].secondBowl();
   }
   return this.frames[frame].frameScore();
+};
+
+Game.prototype.scoreFrame = function(frameIndex, frame) {
+  this.frames[frameIndex] = frame;
 };
 
 Game.prototype.totalGameScore = function(){
@@ -27,10 +31,10 @@ Game.prototype.totalGameScore = function(){
   this.frames.forEach(function(frame, index, array){
     var nextArray = array[index+1];
     var nextNextArray = array[index+2];
-    var strike = frame.status === 'Strike!';
-    var spare = frame.status === 'Spare!';
+    var strike = frame.status === 'X';
+    var spare = frame.status === '/';
     if (nextArray){
-      var twoStrikes = strike && nextArray.status === 'Strike!';
+      var twoStrikes = strike && nextArray.status === 'X';
       if (spare){
         totalScore += 10 + (10 - nextArray.firstBowlRemainder);
       } else if (twoStrikes && nextNextArray){

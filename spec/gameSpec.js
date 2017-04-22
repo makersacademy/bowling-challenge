@@ -18,7 +18,7 @@ describe('Game', function () {
     });
 
     it('with creating a new frame', function () {
-      expect(game._currentFrame).toEqual(frame);
+      expect(game.currentFrame).toEqual(frame);
     });
 
     it('with the score being set to zero', function () {
@@ -27,7 +27,7 @@ describe('Game', function () {
   });
 
   it('should return current frame', function () {
-    expect(game.getCurrentFrame()).toEqual(game._currentFrame)
+    expect(game.getCurrentFrame()).toEqual(game.currentFrame)
   });
 
   it('can increase frames', function () {

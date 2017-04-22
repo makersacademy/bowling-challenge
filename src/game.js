@@ -1,13 +1,13 @@
 function Game() {
   this.frames = [];
-  this._currentFrame = new Frame();
+  this.currentFrame = new Frame();
   this.DEFAULT_PINS = 10;
   this.MAX_FRAMES = 10;
   this.gameScore = 0;
 }
 
 Game.prototype.getCurrentFrame = function getCurrentFrame() {
-  return this._currentFrame;
+  return this.currentFrame;
 };
 
 Game.prototype.addFrame = function addFrame(frame) {
@@ -19,22 +19,38 @@ Game.prototype.getCurrentScore = function getCurrentScore() {
 };
 
 Game.prototype.resetFrame = function resetFrame() {
-  this.addFrame(this._currentFrame);
-  this._currentFrame = new Frame();
+  this.addFrame(this.currentFrame);
+  this.currentFrame = new Frame();
 };
 
 Game.prototype.updateScore = function updateScore() {
-  var frame = this._currentFrame;
+  var frame = this.currentFrame;
   this.gameScore += frame.frameScore();
 };
 
 Game.prototype.bowl = function bowl() {
-  if (this._currentFrame.isFirstBowl()) {
-    this._currentFrame.bowl(this.DEFAULT_PINS);
-    this._currentFrame.incrementBowl();
-  } else if (this._currentFrame.canBowl()) {
-    this._currentFrame.bowl(this._currentFrame.pins); // remaining pins
-    this._currentFrame.incrementBowl();
+  if (this.currentFrame.isFirstBowl()) {
+    this.currentFrame.bowl(this.DEFAULT_PINS);
+
+    if (this.currentFrame.isStrike()) {
+      this.currentFrame.incrementBowl();
+      this.updateScore();
+      this.resetFrame();
+    }
+    this.updateScore();
+    this.currentFrame.incrementBowl();
+
+  } else if (this.currentFrame.canBowl()) {
+    this.currentFrame.bowl(this.currentFrame.pins); // remaining pins
+
+    if (this.currentFrame.isStrike()) {
+      this.updateScore();
+      this.resetFrame();
+    } else {
+      this.updateScore();
+      this.currentFrame.incrementBowl();
+    }
+
   } else {
     this.updateScore();
     this.resetFrame();

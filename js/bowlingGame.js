@@ -11,12 +11,12 @@ $(document).ready(function BowlingGame() {
   }
 
   function updateBowlScore() {
-    $('#bowlIndex-' + bowlNum).text(game._currentFrame.bowled[bowlNum]);
+    $('#bowlIndex-' + bowlNum).text(game.currentFrame.bowled[bowlNum]);
   }
 
 // WIP
   function updateFrameScore() {
-    $('#scoreIndex-' + bowlNum).text(game._currentFrame.frameScore());
+    $('#scoreIndex-' + bowlNum).text(game.currentFrame.frameScore());
   }
 
   $('#bowl').click(function (event) {

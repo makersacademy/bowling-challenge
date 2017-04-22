@@ -1,5 +1,3 @@
-'use strict';
-
 function Frame() {
   this.bowled = [];
   this.timesBowled = 0;
@@ -27,7 +25,7 @@ Frame.prototype.isFirstBowl = function isFirstBowl() {
 };
 
 Frame.prototype.incrementBowl = function incrementBowl() {
-  return this.timesBowled++;
+  return this.timesBowled += this.timesBowled;
 };
 
 Frame.prototype.canBowl = function canBowl() {

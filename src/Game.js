@@ -9,9 +9,9 @@ function Game() {
 
 Game.prototype.roll = function() {
   this._currentFrame.roll()
-  if(this._currentFrame.isFinished()) {
-    this.updateAndStore()
-  }
+  // if(this._currentFrame.isFinished()) {
+  //   this.updateAndStore()
+  // }
 }
 
 Game.prototype.updateAndStore = function () {
@@ -25,14 +25,13 @@ Game.prototype.updateAndStore = function () {
 }
 
 Game.prototype._endGame = function () {
+  if(this._frame === 10) {
+     this._storeFrame();
+  }
   if(this._currentFrame.bonusFeature() === 'strike' || this._currentFrame.bonusFeature() === 'spare') {
-    this._storeFrame();
     this._applyBonusRolls()
   } else {
     this._gameOver = true
-    if(this._frame === 10) {
-       this._storeFrame();
-    }
   }
 }
 

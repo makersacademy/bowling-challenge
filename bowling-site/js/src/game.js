@@ -30,20 +30,18 @@ function Game(){
   this.throwsLeft = 21;
   this.framesPlayed = 0;
   this.totalScore = 0;
+  // this.currentFrameScores={ throw1: 0,
+  //                           throw2:0,
+  //                           throw3:0,
+  //                           bonus:0}
   this.currentFrameScores=[]
   this.bonusArray=[]
   this.results=[]
-  this.isStrikeRound = false
   this.bonusHandler = new BonusHandler();
   this.frameTerminator = new FrameTerminator();
-  this.score
+  this.score = 0
 
-  this.updateIfStrike = function(){
-    if(this.score == 10){
-      this.isStrikeRound = true;
-    }
 
-  }
 
   this.updateCurrentFrameScores=function(){
     this.currentFrameScores.push(this.score);
@@ -52,59 +50,61 @@ function Game(){
 
   this.throwBall = function(score){
     this.score=score
+
     if (this.throwsLeft>0){
       this.updateCurrentFrameScores();
-      this.updateIfStrike();
-
       this.applyBonusPointsIfRequired();
 
-      if(this.isFrameOver()||this.isStrikeRound){
-        if(this.isStrikeRound){
-          this.results[this.framesPlayed]={
-            throw1: this.currentFrameScores[0],
-            throw2: 0,
-            bonus: 0
-          }
-        }else{
-            this.results[this.framesPlayed]={
-            throw1: this.currentFrameScores[0],
-            throw2: this.currentFrameScores[1],
-            bonus: 0
-          }
-        }
-        this.currentFrameScores=[]
+      this.logFrameScores()
 
+      if(this.isBonus()){
+        this.activateBonus();
+      }
+      if(this.isFrameOver()){
+        this.resetCurrentFrameScores();
 
-        if(this.isBonus()){
-
-          if(this.isStrikeRound){
-            this.bonusHandler.activateStrikeBonus();
-          }else{
-            this.bonusHandler.activateSpareBonus();
-          }
-
-        }else{
-          frameScore = this.results[this.framesPlayed].throw1 + this.results[this.framesPlayed].throw2;
-          this.totalScore += frameScore;
-          this.currentFrameScores=[];
+        if(!this.isBonus()){
+          this.updateCurrentTotal();
+          this.resetCurrentFrameScores();
         }
         //Update frames at the end of the frame over check for correct referencing
-        this.framesPlayed +=1
+        this.incrementFrameNumber();
       }
-
-
       this.updateThrowsLeft();
-      this.isStrikeRound = false
     }
 
   }
 
-  this.resetCurrentFrameScores=function(){
+  this.incrementFrameNumber = function(){
+    this.framesPlayed +=1
+  }
+
+  this.logFrameScores=function(){
+    if(this.isStrikeRound()){
+      this.results[this.framesPlayed]={throw1: this.currentFrameScores[0],
+                                      throw2: 0,
+                                      bonus: 0}
+    }else{
+      this.results[this.framesPlayed]={
+      throw1: this.currentFrameScores[0],
+      throw2: this.currentFrameScores[1],
+      bonus: 0
+      }
+    }
 
   }
 
+  this.updateCurrentTotal = function(){
+    frameScore = this.results[this.framesPlayed].throw1 + this.results[this.framesPlayed].throw2;
+    this.totalScore += frameScore;
+  }
+
+  this.resetCurrentFrameScores=function(){
+    this.currentFrameScores=[]
+  }
+
   this.updateThrowsLeft = function(){
-    if(this.isStrikeRound){
+    if(this.isStrikeRound()){
       this.throwsLeft-=2;
     }
     else if (this.throwsLeft > 2){
@@ -132,7 +132,8 @@ function Game(){
     notFirstThrow = this.isNotFirstThrow();
     endOfRegularFrame = this.isEndOfRegularFrame();
     endOfGame = this.isEndOfGame();
-    return ((notFirstThrow && endOfRegularFrame)|| endOfGame);
+    strikeRound = this.isStrikeRound();
+    return ((notFirstThrow && endOfRegularFrame)|| endOfGame||strikeRound);
   }
 
   this.isNotFirstThrow = function(){
@@ -147,6 +148,9 @@ function Game(){
     return (this.throwsLeft <= 1);
   }
 
+  this.isStrikeRound= function(){
+    return (this.score == 10);
+  }
 
   //BONUS HANDLER CLASS INTERACTIONS
 
@@ -154,7 +158,7 @@ function Game(){
     inputs = {score: this.score,
     results: this.results,
     framesPlayed: this.framesPlayed,
-    isStrikeRound: this.isStrikeRound,
+    isStrikeRound: this.isStrikeRound(),
     totalScore: this.totalScore
     }
     this.bonusHandler.updatePlayState(inputs)
@@ -168,5 +172,13 @@ function Game(){
 
   this.isBonusActive = function(){
     return this.bonusHandler.isBonusActive();
+  }
+
+  this.activateBonus=function(){
+    if(this.isStrikeRound()){
+      this.bonusHandler.activateStrikeBonus();
+    }else{
+      this.bonusHandler.activateSpareBonus();
+    }
   }
 }

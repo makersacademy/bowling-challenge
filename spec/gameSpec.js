@@ -39,7 +39,7 @@ describe('Game', function () {
   it('returns the current score', function () {
     game.bowl();
     game.bowl();
-    game.updateScore();
+    game.updateGameScore();
     expect(game.getCurrentScore()).toEqual(game.gameScore);
   });
 

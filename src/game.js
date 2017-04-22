@@ -23,7 +23,7 @@ Game.prototype.resetFrame = function resetFrame() {
   this.currentFrame = new Frame();
 };
 
-Game.prototype.updateScore = function updateScore() {
+Game.prototype.updateGameScore = function updateGameScore() {
   var frame = this.currentFrame;
   this.gameScore += frame.frameScore();
 };
@@ -34,25 +34,25 @@ Game.prototype.bowl = function bowl() {
 
     if (this.currentFrame.isStrike()) {
       this.currentFrame.incrementBowl();
-      this.updateScore();
+      this.updateGameScore();
       this.resetFrame();
     }
-    this.updateScore();
+    this.updateGameScore();
     this.currentFrame.incrementBowl();
 
   } else if (this.currentFrame.canBowl()) {
     this.currentFrame.bowl(this.currentFrame.pins); // remaining pins
 
     if (this.currentFrame.isStrike()) {
-      this.updateScore();
+      this.updateGameScore();
       this.resetFrame();
     } else {
-      this.updateScore();
+      this.updateGameScore();
       this.currentFrame.incrementBowl();
     }
 
   } else {
-    this.updateScore();
+    this.updateGameScore();
     this.resetFrame();
   }
 };

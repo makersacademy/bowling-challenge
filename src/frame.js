@@ -25,7 +25,7 @@ Frame.prototype.isFirstBowl = function isFirstBowl() {
 };
 
 Frame.prototype.incrementBowl = function incrementBowl() {
-  return this.timesBowled += this.timesBowled;
+  return this.timesBowled += 1;
 };
 
 Frame.prototype.canBowl = function canBowl() {

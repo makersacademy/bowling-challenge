@@ -4,10 +4,12 @@ describe('Game', function() {
   var game;
   var frame;
   var strike;
+  var spare;
   beforeEach(function() {
     game = new Game();
     frame = [4,5];
     strike = [10,0];
+    spare = [5,5];
   });
 
   xit('starts off with an empty scoresheet', function() {
@@ -68,7 +70,20 @@ describe('Game', function() {
     game.addFrames(frame);
     game.updateScore()
     expect(game.viewScore(1)).toEqual(30);
-    expect(game.viewScore(2)).toEqual(59);
+    expect(game.viewScore(2)).toEqual(29);
+  });
+
+  it('updates score accordingly when player bowls a spare', function() {
+    game.addFrames(strike);
+    game.updateScore();
+    game.nextTurn();
+    game.addFrames(spare);
+    game.updateScore();
+    game.nextTurn();
+    game.addFrames(frame);
+    game.updateScore()
+    expect(game.viewScore(1)).toEqual(20);
+    expect(game.viewScore(2)).toEqual(14);
   });
 
   // it('calculates frame score', function() {

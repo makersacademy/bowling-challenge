@@ -1,3 +1,15 @@
+//
+//
+// 88
+// 88
+// 88
+// 88,dPPYba,   ,adPPYba,  8b,dPPYba,  88       88 ,adPPYba,
+// 88P'    "8a a8"     "8a 88P'   `"8a 88       88 I8[    ""
+// 88       d8 8b       d8 88       88 88       88  `"Y8ba,
+// 88b,   ,a8" "8a,   ,a8" 88       88 "8a,   ,a88 aa    ]8I
+// 8Y"Ybbd8"'   `"YbbdP"'  88       88  `"YbbdP'Y8 `"YbbdP"'
+//
+
 
 function BonusHandler(){
 

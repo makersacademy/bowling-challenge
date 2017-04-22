@@ -35,39 +35,28 @@ function Game(){
   this.results=[]
   this.isStrikeRound = false
   this.bonusHandler = new BonusHandler();
+  this.frameTerminator = new FrameTerminator();
   this.score
 
-  this.updateIfStrike = function(score){
-    if(score == 10){
+  this.updateIfStrike = function(){
+    if(this.score == 10){
       this.isStrikeRound = true;
     }
 
   }
 
-  this.updateCurrentFrameScores=function(score){
-    this.currentFrameScores.push(score);
+  this.updateCurrentFrameScores=function(){
+    this.currentFrameScores.push(this.score);
   }
 
-
-  this.isBonusActive = function(){
-    return this.bonusHandler.isBonusActive();
-  }
-
-  this.applyBonusPointsIfRequired = function(score){
-    this.updateBonusHandlerState();
-    this.results = this.bonusHandler.updateBonusPointsIfRequired()
-    this.totalScore = this.bonusHandler.totalScore;
-  }
 
   this.throwBall = function(score){
     this.score=score
     if (this.throwsLeft>0){
-      this.updateCurrentFrameScores(score);
-      this.updateIfStrike(score);
+      this.updateCurrentFrameScores();
+      this.updateIfStrike();
 
-
-
-      this.applyBonusPointsIfRequired(score);
+      this.applyBonusPointsIfRequired();
 
       if(this.isFrameOver()||this.isStrikeRound){
         if(this.isStrikeRound){
@@ -94,8 +83,6 @@ function Game(){
             this.bonusHandler.activateSpareBonus();
           }
 
-
-
         }else{
           frameScore = this.results[this.framesPlayed].throw1 + this.results[this.framesPlayed].throw2;
           this.totalScore += frameScore;
@@ -112,6 +99,9 @@ function Game(){
 
   }
 
+  this.resetCurrentFrameScores=function(){
+
+  }
 
   this.updateThrowsLeft = function(){
     if(this.isStrikeRound){
@@ -135,25 +125,30 @@ function Game(){
   }
 
 
-
+//FRAME TERMINATOR EXTRACTION
 
   this.isFrameOver=function(){
 
-    notFirstThrow = this.throwsLeft<21;
-    endOfRegularFrame = this.throwsLeft%2 == 0;
-    endOfGame = this.throwsLeft ==1;
-    return ((notFirstThrow && endOfRegularFrame)|| endOfGame)
+    notFirstThrow = this.isNotFirstThrow();
+    endOfRegularFrame = this.isEndOfRegularFrame();
+    endOfGame = this.isEndOfGame();
+    return ((notFirstThrow && endOfRegularFrame)|| endOfGame);
   }
 
-  this.throwsDone =function(){
-    Math.modulus(this.throwsLeft-21)
+  this.isNotFirstThrow = function(){
+    return (this.throwsLeft < 21);
   }
 
-  this.finishGame = function(){
-    if(this.throwsLeft==0){
-      this.finalScore = this.totalScore
-    }
+  this.isEndOfRegularFrame = function(){
+    return (this.throwsLeft % 2 == 0);
   }
+
+  this.isEndOfGame = function(){
+    return (this.throwsLeft <= 1);
+  }
+
+
+  //BONUS HANDLER CLASS INTERACTIONS
 
   this.updateBonusHandlerState = function(){
     inputs = {score: this.score,
@@ -165,5 +160,13 @@ function Game(){
     this.bonusHandler.updatePlayState(inputs)
   }
 
+  this.applyBonusPointsIfRequired = function(){
+    this.updateBonusHandlerState();
+    this.results = this.bonusHandler.updateBonusPointsIfRequired()
+    this.totalScore = this.bonusHandler.totalScore;
+  }
 
+  this.isBonusActive = function(){
+    return this.bonusHandler.isBonusActive();
+  }
 }

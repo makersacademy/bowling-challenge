@@ -4,24 +4,26 @@ $(document).ready(function() {
 
   updateFrame();
   startFrame();
-  $('#bonus-rolls').hide();
-  $('#bonus-roll-button').hide();
+  $('.bonus-rolls-feature').hide();
   $('#game-over').hide();
 
   $('#roll').on('click', function() {
-    // animateBall();
     game.roll();
     updateFrame();
-    if(game.currentFrame().isFinished() && game.frameNumber() >= 10) {
+    if(game.currentFrame().isFinished()) { checkGameStatus() }
+  });
+
+  function checkGameStatus() {
+    if (game.frameNumber() >= 10) {
      game.endGame()
      writeLog();
      updateLog();
      endGame()
-    } else if (game.currentFrame().isFinished()) {
+    } else {
       game.updateAndStore()
       endFrame()
     }
-  });
+  }
 
   $('#bonus-roll-button').on('click', function() {
     game.roll();

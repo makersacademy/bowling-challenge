@@ -11,4 +11,10 @@ describe("A frame of bowling", function(){
     var next_frame = new Frame([1,4]);
     expect(frame.total(next_frame)).toEqual(11);
   });
+
+  it("calculates a total for a strike", function(){
+    var frame = new Frame([10]);
+    var next_frame = new Frame([3,6]);
+    expect(frame.total(next_frame)).toEqual(19);
+  });
 });

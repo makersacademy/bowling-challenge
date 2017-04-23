@@ -1,8 +1,50 @@
+html {
+  min-height: 100%;
+  position: relative;
+}
 table {
   width: 80%;
-
+  margin: auto;
 }
-
+body {
+  background-image: url('biglebowski.jpg');
+  background-size: cover;
+  color: black;
+  font-family: helvetica,sans-serif;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 100px;
+}
+button {
+  font-size: 14px;
+  background-color: slateblue;
+  border-radius: 10px;
+  padding: 5px;
+}
+footer {
+  color: rgb(53,27,102);
+  bottom: 0;
+  height: 80px;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+a {
+  display: inline-block;
+  font-size: 14px;
+  background-color: slateblue;
+  border-radius: 12px;
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 100px;
+  margin: 0 auto;
+  text-decoration: none;
+  color: rgb(53,27,102);
+  font-size: 14px;
+}
+a:visited {
+  color: rgb(53,27,102);
+}
 .tg  {
   border-collapse:collapse;
   border-spacing:0;

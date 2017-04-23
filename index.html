@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Game</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="public/style.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  </head>
+  <body>
+
+    <div>
+      <section id="game">
+        <h1>Game score: <span id="gameScore">0</span></h1>
+      </section>
+      <br>
+      <section id="current-frame">
+        Current frame: <span id="frameNumber">1</span>
+      </section>
+    </div>
+
+    <div id="frameTable">
+      <table>
+        <tr>
+          <td colspan="2">Frame 1</td>
+          <td colspan="2">Frame 2</td>
+          <td colspan="2">Frame 3</td>
+          <td colspan="2">Frame 4</td>
+          <td colspan="2">Frame 5</td>
+          <td colspan="2">Frame 6</td>
+          <td colspan="2">Frame 7</td>
+          <td colspan="2">Frame 8</td>
+          <td colspan="2">Frame 9</td>
+          <td colspan="3">Frame 10</td>
+        </tr>
+        <tr class="bowlValues">
+          <td id="bowlIndex-1"></td>
+          <td id="bowlIndex-2"></td>
+          <td id="bowlIndex-3"></td>
+          <td id="bowlIndex-4"></td>
+          <td id="bowlIndex-5"></td>
+          <td id="bowlIndex-6"></td>
+          <td id="bowlIndex-7"></td>
+          <td id="bowlIndex-8"></td>
+          <td id="bowlIndex-9"></td>
+          <td id="bowlIndex-10"></td>
+          <td id="bowlIndex-11"></td>
+          <td id="bowlIndex-12"></td>
+          <td id="bowlIndex-13"></td>
+          <td id="bowlIndex-14"></td>
+          <td id="bowlIndex-15"></td>
+          <td id="bowlIndex-16"></td>
+          <td id="bowlIndex-17"></td>
+          <td id="bowlIndex-18"></td>
+          <td id="bowlIndex-19"></td>
+          <td id="bowlIndex-20"></td>
+          <td id="bowlIndex-21"></td>
+        </tr>
+        <tr class="scoreValues">
+          <td colspan="2" id="scoreIndex-1"></td>
+          <td colspan="2" id="scoreIndex-2"></td>
+          <td colspan="2" id="scoreIndex-3"></td>
+          <td colspan="2" id="scoreIndex-4"></td>
+          <td colspan="2" id="scoreIndex-5"></td>
+          <td colspan="2" id="scoreIndex-6"></td>
+          <td colspan="2" id="scoreIndex-7"></td>
+          <td colspan="2" id="scoreIndex-8"></td>
+          <td colspan="2" id="scoreIndex-9"></td>
+          <td colspan="3" id="scoreIndex-10"></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="btn-toolbar">
+      <button id="btn0" type="button" style="display: inline;" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="No pins knocked down" value="0">0</button>
+      <button id="btn1" type="button" style="display: inline;" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="1 pin knocked down" value="1">1</button>
+      <button id="btn2" type="button" style="display: inline;" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="2 pins knocked down" value="2">2</button>
+      <button id="btn3" type="button" style="display: inline;" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="3 pins knocked down" value="3">3</button>
+      <button id="btn4" type="button" style="display: inline;" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="4 pins knocked down" value="4">4</button>
+      <button id="btn5" type="button" style="display: inline;" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="5 pins knocked down" value="5">5</button>
+      <button id="btn6" type="button" style="display: inline;" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="6 pins knocked down" value="6">6</button>
+      <button id="btn7" type="button" style="display: inline;" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="7 pins knocked down" value="7">7</button>
+      <button id="btn8" type="button" style="display: inline;" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="8 pins knocked down" value="8">8</button>
+      <button id="btn9" type="button" style="display: inline;" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="9 pins knocked down" value="9">9</button>
+      <button id="btn10" type="button" style="display: inline;" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="10 pins knocked down" value="10">10</button>
+    </div>
+    <br>
+    <div>
+      <button id="resetGame" class="btn btn-primary" type"button">Reset game</button>
+    </div>
+
+
+    <script src="src/frame.js"></script>
+    <script src="src/game.js"></script>
+    <script src="src/bowlingGame.js"></script>
+  </body>
+</html>

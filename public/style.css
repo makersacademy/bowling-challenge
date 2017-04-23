@@ -1,0 +1,40 @@
+h1 {
+  font-size: 25px;
+}
+
+body {
+  margin-left: 15px;
+}
+
+table {
+  width: 90%;
+}
+
+#frameTable {
+  padding: 20px;
+}
+
+table, th, td {
+border: 1px solid black;
+border-collapse: collapse;
+table-layout: fixed;
+}
+
+td, th {
+padding: 5px;
+text-align: left;
+height: 20px;
+width: 80px;
+}
+
+.btn-toolbar {
+  margin-left: 10px;
+}
+
+.btn-toolbar .btn {
+  margin-left: 10px;
+}
+
+#resetGame {
+  margin-left: 20px;
+}

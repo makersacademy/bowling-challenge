@@ -5,4 +5,10 @@ describe("A frame of bowling", function(){
     var frame = new Frame([5,2]);
     expect(frame.total()).toEqual(7);
   });
+
+  it("calculates a total for a spare", function(){
+    var frame = new Frame([8,2]);
+    var next_frame = new Frame([1,4]);
+    expect(frame.total(next_frame)).toEqual(11);
+  });
 });

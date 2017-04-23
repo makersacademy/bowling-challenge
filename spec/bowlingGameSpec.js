@@ -13,9 +13,14 @@ describe("bowling game", function() {
     // As a bowler,
     // I want to start a game of bowling,
     // so that I can get points
-    it("score starts at 0", function() {
+    it("score is 0", function() {
       expect(bowlingGame.total).toEqual(0);
     });
+
+    it("frames has no scores", function() {
+      expect(bowlingGame.frames.length).toEqual(0);
+    });
+
   });
 
   describe("adding scores to frame 1", function() {
@@ -48,8 +53,8 @@ describe("bowling game", function() {
     // As a bowler,
     // I want my spare to give a special value
     // so that I can add it to my total
-    it("strike has a value", function() {
-      expect(bowlingGame.spareValue).toEqual(10)
+    it("spare has a value", function() {
+      expect(SPARE_VALUE).toEqual(10)
     });
 
     it("adds extra score to next frame when spare", function() {
@@ -71,14 +76,14 @@ describe("bowling game", function() {
     // I want my strike to give a special value
     // so that I can add it to my total
     it("strike has a value", function() {
-      expect(bowlingGame.strikeValue).toEqual(10)
+      expect(STRIKE_VALUE).toEqual(10)
     });
 
     it("adds 2 extra scores to next frame when strike", function() {
       bowlingGame.firstShot(10);
       bowlingGame.firstShot(2);
       bowlingGame.secondShot(2);
-      frame = bowlingScore.frames
+      frame = bowlingGame.frames
       expect(bowlingGame.frames[0].score).toEqual(14)
     });
   });

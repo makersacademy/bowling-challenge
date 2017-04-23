@@ -16,13 +16,29 @@ function BowlingGame() {
 
 }
 
+// BowlingGame.prototype.addShot = function(pins) {
+//   this.isfirstShot = !this.isfirstShot
+
+//   if (this.isfirstShot) {
+//     this.firstShot(pins);
+//   } else {
+//     this.secondShot(pins);
+//   }
+// }
+
 BowlingGame.prototype.firstShot = function(pins) {
-  this.firstScore += pins; //10
+  this.firstScore += pins;
   this.total += pins;
   if (this.spare) {
-    this.addScoresWithSpare();
+      if (this.frames.length === 0) {
+        this.addFrame(SPARE_VALUE + pins);
+        this.spare = !this.spare;
+    } else {
+        this.addFrame(this.total + pins);
+        this.spare = !this.spare;
+    }
   }
-  this.handleStrikes(); //10
+  this.handleStrikes();
 }
 
 BowlingGame.prototype.secondShot = function(pins) {
@@ -53,15 +69,17 @@ BowlingGame.prototype.addFrame = function(score) {
   this.frames.push({ score: score });
 
   // //assuming the frames are already on the html
-  // $('.frame > p') //select all the elements with class .frames
-  //   .eq(this.frames.length - 1) //limit selection only to element 5
-  //   .text(score); //set text to value of pins
+  $('.frame > p') //select all the elements with class .frames
+    .eq(this.frames.length - 1) //limit selection only to element 5
+    .text(score); //set text to value of pins
+  $('.total > p')
+    .text(this.total);
 
 }
 
 
 BowlingGame.prototype.addScoresWithSpare = function() {
-  if(this.spare) {
+  if (this.spare) {
       this.addFrame(SPARE_VALUE + this.firstScore);
       this.addFrame(this.total);
       this.spare = !this.spare;
@@ -74,14 +92,23 @@ BowlingGame.prototype.resetScores = function() {
 }
 
 BowlingGame.prototype.handleStrikes = function() {
-  if(this.firstScore === 10) {
+  if (this.firstScore === 10) {
     this.strike = !this.strike;
     this.resetScores();
   }
 }
 
 BowlingGame.prototype.handleSpares = function() {
-  if(this.firstScore + this.secondScore === 10) {
+  if (this.firstScore + this.secondScore === 10) {
     this.spare = !this.spare;
   }
 }
+
+BowlingGame.prototype.emptyFrames = function() {
+  if (this.frames.length === 0) {
+    false
+  } else {
+    true
+  }
+}
+

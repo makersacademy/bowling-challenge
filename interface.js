@@ -1,15 +1,17 @@
-$(document).ready(function() {
-  var bowlingGame = new BowlingGame();
+// $(document).ready(function() {
+//   var bowlingGame = new BowlingGame();
+//   var frame = bowlingGame.frames;
 
-  $('.button-a').on('click', function() {
-    var currentValue = $(".button-a").text();
-    var pin = parseInt(parseFloat(currentValue));
-    bowlingGame.firstShot(pin);
-  });
+  // $('.button-a').on('click', shoot)
+  // $('.button-b').on('click', shoot);
 
-  $('.buttonb').on('click', function() {
-    // $('.firstShot').text('1');
-    bowlingGame.secondShot(2);
-  });
+  // function shoot (shoot) {
+  //   var currentValue = $(event.target).text();
+  //   var pin = parseInt(parseFloat(currentValue));
+  //   bowlingGame.shoot(pin);
+  // }
 
-});
+//   // $('.frame > p').text(bowlingGame.frame[frame.length-1]);
+
+// });
+

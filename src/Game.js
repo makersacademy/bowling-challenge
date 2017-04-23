@@ -3,7 +3,6 @@
 'use strict';
 
 function Game() {
-  // this.frames = []
   this.turn = 0
   this.scoresheet = [[],[],[],[],[],[],[],[],[],[],[]]
 }
@@ -40,28 +39,33 @@ Game.prototype.previousTwoAreStrikes = function() {
   }
 };
 
-// Game.prototype.previousIsSpare = function() {
-//   if(this.scoresheet[this.turn-1][0][0] + this.scoresheet[this.turn-1][0][1] == 10){
-//     return true
-//   } else {
-//     return false
-//   }
-// };
+Game.prototype.previousIsSpare = function() {
+  var score1 = this.scoresheet[this.turn-1][0][0];
+  var score2 = this.scoresheet[this.turn-1][0][1];
+  if((score1 + score2 == 10) && (score1 != 10) && (score2 != 0)){
+    return true
+  } else {
+    return false
+  }
+};
 
 Game.prototype.updateScore = function() {
   var frameSum = this.scoresheet[this.turn][0][0]+ this.scoresheet[this.turn][0][1];
   var firstBowl = this.scoresheet[this.turn][0][0]
   if(this.turn === 0) {
     this.scoresheet[this.turn].push(frameSum);}
-  // else if(this.previousIsSpare()) {
-  //   this.scoresheet[this.turn].push(frameSum);
-  //   this.scoresheet[this.turn-1][1] = this.scoresheet[this.turn-1][1] + firstBowl;
-  // }
+  else if(this.previousIsSpare()) {
+    console.log('is spare');
+    this.scoresheet[this.turn].push(frameSum);
+    this.scoresheet[this.turn-1][1] = this.scoresheet[this.turn-1][1] + firstBowl;
+  }
   else if(this.turn >= 2 && this.previousTwoAreStrikes) {
+    console.log('two strikes');
     this.scoresheet[this.turn].push(frameSum);
     this.scoresheet[this.turn-1][1] = this.scoresheet[this.turn-1][1] + frameSum;
     this.scoresheet[this.turn-2][1] = this.scoresheet[this.turn-2][1] + frameSum;}
   else if(this.previousIsStrike()) {
+    console.log('one strike');
     this.scoresheet[this.turn].push(frameSum);
     this.scoresheet[this.turn-1][1] = this.scoresheet[this.turn-1][1] + frameSum;
     } else {
@@ -72,43 +76,3 @@ Game.prototype.updateScore = function() {
 Game.prototype.nextTurn = function() {
   this.turn += 1;
 };
-
-
-// Game.prototype.currentPlayingFrame = function() {
-//   this.frames[this.frames.length-1];
-// };
-
-// Game.prototype.currentTurn = function() {
-//   return(this.frames[this.frames.length-1]);
-// };
-//
-// Game.prototype.currentPlayingFrame = function() {
-//   return(this.frames[this.frames.length-1][0]);
-// };
-//
-// Game.prototype.currentActualFrame = function() {
-//   return(this.frames[this.frames.length-1][0][0]);
-// };
-//
-//
-// Game.prototype.currentFirstBonus = function() {
-//   return(this.frames[this.frames.length-1][1]);
-// };
-//
-// Game.prototype.currentSecondBonus = function() {
-//   return(this.frames[this.frames.length-1][2]);
-// };
-
-
-
-// Game.prototype.updateScore = function() {
-//   for (var i = 0; i<this.frames.length; i++) {
-//     this.score = this.score + (this.frames[i].currentFrame[0] + this.frames[i].currentFrame[1]);
-//   };
-// };
-//
-// Game.prototype._strike = function() {
-//   if(this.frames[0].currentFrame[0] === 10){
-//     return true;
-//   } else {return false;}
-// };

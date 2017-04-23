@@ -16,8 +16,8 @@ table.scoresheet td {height:30px; background: #F0F8FF;}
 table.scoresheet tr td:not(:last-child) {border-right:1px solid;}
 table.scoresheet tr:nth-child(2) td:nth-child(even) {border-bottom:1px solid;}
 table.scoresheet tr:nth-child(2) td:last-child {border-bottom:1px solid;}
-table.scoresheet #l10 {border-bottom: 1px solid;}
-table.scoresheet #ts {background-color: #E6E6FA; border-bottom: none;}
+table.scoresheet #r21 {border-bottom: 1px solid;}
+table.scoresheet #total-score {background-color: #E6E6FA; border-bottom: none;}
 
 button {
   width: 50px;

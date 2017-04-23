@@ -59,4 +59,14 @@ describe("Feature spec", function() {
       expect(frame.isSpare).toBe(true);
     })
   })
+
+  describe("Final frame", function() {
+    it("should produce one more roll if either a strike or space takes place", function() {
+      for(i = 1; i <= 10; i++)
+      game.play(10);
+      var frame = game._frame
+      expect(game.currentFrame).toEqual(10);
+      expect(game.rollsLeft(frame)).toEqual(3);
+    })
+  })
 });

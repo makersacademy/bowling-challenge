@@ -12,21 +12,26 @@ Game.prototype.createFrame = function() {
 };
 
 Game.prototype.play = function(score) {
-  if(this.rollsLeft(this._frame) === 2) {
-    this._frame.play(score);
-    if(this._frame.isStrike === true) {
+  if (this.framesLeft === 1) {
+    this.finalFrame();
+  }
+  else {
+    if(this.rollsLeft(this._frame) === 2) {
+      this._frame.play(score);
+      if(this._frame.isStrike === true) {
+        console.log("End of frame " + this.currentFrame + "!");
+        this.bonusCalculator();
+        this.addFrame(this._frame);
+        this.changeFrame();
+      }
+    }
+    else {
+      this._frame.play(score);
       console.log("End of frame " + this.currentFrame + "!");
       this.bonusCalculator();
       this.addFrame(this._frame);
       this.changeFrame();
     }
-  }
-  else if(this.rollsLeft(this._frame) === 1){
-    this._frame.play(score);
-    console.log("End of frame " + this.currentFrame + "!");
-    this.bonusCalculator();
-    this.addFrame(this._frame);
-    this.changeFrame();
   }
 };
 
@@ -42,6 +47,10 @@ Game.prototype.changeFrame = function() {
 
 Game.prototype.rollsLeft = function(frame) {
   return frame.rollsLeft;
+};
+
+Game.prototype.finalFrame = function() {
+  this._frame.rollsLeft += 1;
 };
 
 Game.prototype.bonusCalculator = function() {

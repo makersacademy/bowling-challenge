@@ -66,5 +66,4 @@ describe("Frame", function() {
       expect(frame.rollsLeft).toEqual(0);
     });
   });
-
 });

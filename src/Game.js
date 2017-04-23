@@ -3,6 +3,7 @@ function Game() {
   this.frames = [];
   this.currentFrame = 1;
   this._frame = this.createFrame();
+  this.totalScores = [];
 }
 
 Game.prototype.DEFAULTFRAMESLEFT = 10;
@@ -16,6 +17,7 @@ Game.prototype.play = function(score) {
     this.finalPlay(score);
   } else if (this.framesLeft === 2) {
     this.gamePlay(score);
+    this.bonusCalculator();
     this.changeFinalFrame();
   }
   else {
@@ -49,20 +51,25 @@ Game.prototype.reduceFrameSize = function() {
 Game.prototype.finalPlay = function(score) {
   if(this.rollsLeft(this._frame) === 3) {
     this._frame.finalPlay(score);
+    this.finalBonusCalculator();
   }
   else if(this.rollsLeft(this._frame) === 2) {
     this._frame.finalPlay(score);
+    this.finalBonusCalculator();
     if(this._frame.isSpare !== true || this._frame.isStrike !== true)
     {
       this.reduceFrameSize();
-      console.log("Game over!");
       this.addFrame(this._frame);
+      this.calculateScore();
+      console.log("Game over!");
     }
   }
   else if (this.rollsLeft(this._frame) === 1) {
     this._frame.finalPlay(score);
-    console.log("Game over!");
     this.addFrame(this._frame);
+    this.finalBonusCalculator();
+    this.calculateScore();
+    console.log("Game over!");
   }
 };
 
@@ -102,5 +109,25 @@ Game.prototype.bonusCalculator = function() {
     } else if (this.frames[this.frames.length - 1].isSpare === true) {
       this.frames[this.frames.length - 1].score = 10 + this._frame.firstShot;
     }
+  }
+};
+
+Game.prototype.finalBonusCalculator = function(score) {
+  if (this.frames[this.frames.length - 1].isStrike === true &&
+      this.frames[this.frames.length - 2].isStrike === true) {
+        this.frames[this.frames.length - 2].score = 20 + this._frame.firstShot;
+      }
+      else if (this.frames[this.frames.length - 1].isStrike === true) {
+        this.frames[this.frames.length - 1].score = 10 + this._frame.score;
+      }
+      else if (this.frames[this.frames.length - 1].isSpare === true) {
+        this.frames[this.frames.length - 1].score = 10 + this._frame.firstShot;
+      }
+};
+
+Game.prototype.calculateScore = function() {
+  var arrayLength = this.frames.length
+  for(var i = 0; i < arrayLength ; i++) {
+    this.totalScores.push(this.frames[i].score)
   }
 };

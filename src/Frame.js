@@ -11,7 +11,8 @@ Frame.prototype.DEFAULTPINS = 10;
 Frame.prototype.DEFAULTROLLS = 2;
 
 Frame.prototype.play = function(score) {
-  if(this.rollsLeft === 2 && score === this.pins) {
+  if(this.rollsLeft > 1 && score === this.pins) {
+    this.firstShot = score;
     this.pins -= score;
     this.score += score;
     this.setStrike();
@@ -19,7 +20,7 @@ Frame.prototype.play = function(score) {
     this.pins -= score;
     this.score += score;
     this.setSpare();
-  } else if(this.rollsLeft === 2 && score !== this.pins) {
+  } else if(this.rollsLeft > 1 && score !== this.pins) {
     console.log('Score: ' + score + '\n'+ (this.pins - score) + ' pins left.');
     this.firstShot = score;
     this.pins -= score;
@@ -35,12 +36,13 @@ Frame.prototype.play = function(score) {
 
 Frame.prototype.finalPlay = function(score) {
   if(this.rollsLeft === 3 && score === this.pins) {
+    this.firstShot = score;
     this.score += score;
     this.setFinalStrike();
   } else if(this.rollsLeft === 2 && score === this.pins) {
     this.score += score;
     this.setFinalSpare();
-  } else if(this.rollsLeft === 2 && score != this.pins) {
+  } else if(this.rollsLeft === 2 && score !== this.pins) {
     this.score += score;
     this.pins -= score;
     this.rollsLeft -= 1;
@@ -61,7 +63,7 @@ Frame.prototype.setFinalStrike = function() {
   this.isStrike = true;
   this.rollsLeft -= 1;
   console.log('Strike!\n Well done!')
-}
+};
 
 Frame.prototype.setSpare = function() {
   this.isSpare = true;

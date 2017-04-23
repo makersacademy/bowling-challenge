@@ -12,6 +12,10 @@ describe('Game', function () {
     frame = new Frame(); //jasmine.createSpy('frame');
   });
 
+  afterEach(function () {
+    game.resetFrame();
+  });
+
   describe('Should be initialized', function () {
     it('with frames being empty', function () {
       expect(game.frames).toEqual([]);
@@ -36,12 +40,23 @@ describe('Game', function () {
     expect(game.frames).toContain(frame);
   });
 
-  it('returns the current score', function () {
-    game.bowl();
-    game.bowl();
-    game.updateGameScore();
-    expect(game.getCurrentScore()).toEqual(game.gameScore);
+  describe('Scoring: ', function () {
+    it('returns the current score', function () {
+      game.bowl(4);
+      game.bowl(2);
+      expect(game.getCurrentScore()).toEqual(game.gameScore);
+      expect(game.gameScore).toEqual(6);
+    });
+
+    it('if first miss and second bowl a strike score should be 10', function () {
+      game.bowl(0);
+      game.bowl(10);
+      expect(game.getCurrentScore()).toEqual(game.gameScore);
+      expect(game.gameScore).toEqual(10);
+    });
   });
+
+
 
   it('resets frames', function () {
     game.bowl();
@@ -54,9 +69,15 @@ describe('Game', function () {
     expect(game.getFrameNumber()).toEqual(2)
   });
 
-  describe('Bowling', function () {
+  it('returns the correct frame number after 2 bowls', function () {
+    game.bowl(); game.bowl();
+    expect(game.getFrameNumber()).toEqual(2)
+  });
 
-
+  it('resets the game', function () {
+    game.resetGame();
+    expect(game.frames).toEqual([]);
+    expect(game.getCurrentScore()).toEqual(0);
   });
 
 });

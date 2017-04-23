@@ -10,14 +10,14 @@ Frame.prototype.addToScore = function addToScore(pins) {
 };
 
 Frame.prototype.bowl = function bowl(pins) {
-  var pinsKnockedDown = Math.floor(Math.random() * (pins - 0 + 1) + 0);
-  this.addToScore(pinsKnockedDown);
-  this.pins -= pinsKnockedDown;
-  return pinsKnockedDown;
+  this.addToScore(pins);
+  this.incrementBowl();
+  this.pins -= pins;
+  return pins;
 };
 
 Frame.prototype.frameScore = function frameScore() {
-  return this.bowled.reduce((a, b) => a+b, 0)
+  return this.bowled.reduce((a, b) => a + b, 0);
 };
 
 Frame.prototype.isFirstBowl = function isFirstBowl() {
@@ -25,7 +25,7 @@ Frame.prototype.isFirstBowl = function isFirstBowl() {
 };
 
 Frame.prototype.incrementBowl = function incrementBowl() {
-  return this.timesBowled += 1;
+  this.timesBowled += 1;
 };
 
 Frame.prototype.canBowl = function canBowl() {
@@ -34,4 +34,8 @@ Frame.prototype.canBowl = function canBowl() {
 
 Frame.prototype.isStrike = function isStrike() {
   return (this.pins === 0 && this.timesBowled === 1);
+};
+
+Frame.prototype.isSpare = function isSpare() {
+  return (this.pins === 0 && this.timesBowled === 2);
 };

@@ -24,16 +24,6 @@ describe('Frame', function (){
     });
   });
 
-  it('adds to score', function (){
-    frame.addToScore(8)
-    expect(frame.bowled).toEqual([8]);
-  });
-
-  it('a player can bowl a random number between 0-10', function (){
-    var pins = 10
-    expect(frame.bowl(pins) >= 0 && frame.bowl(pins) <= 10).toBeTruthy();
-  });
-
   describe('Bowling a frame', function () {
     it('returns total frame score', function () {
       // spyOn(frame, 'bowled').and.returnValue([3, 5]);
@@ -61,17 +51,31 @@ describe('Frame', function (){
       expect(frame.canBowl()).toBe(true);
     });
 
-    it('returns false if a player cannot bowl', function () {
-      frame.incrementBowl();
-      frame.incrementBowl();
+    it('a player cannot bowl if already bowled twice', function () {
+      frame.bowl(7);
+      frame.bowl(2);
       expect(frame.canBowl()).toBe(false);
     });
-
-    it('is a strike', function () {
-      // spyOn(frame, 'bowl').and.returnValue(0);
-      frame.pins = 0;
-      frame.incrementBowl();
-      expect(frame.isStrike()).toEqual(true);
-    });
   });
+
+    describe('Scoring', function () {
+      it('adds to score', function (){
+        frame.addToScore(8)
+        expect(frame.bowled).toEqual([8]);
+      });
+
+      it('is a strike', function () {
+        // spyOn(frame, 'bowl').and.returnValue(0);
+        frame.bowl(10);
+        expect(frame.isStrike()).toEqual(true);
+      });
+
+      it('is a spare', function () {
+        // spyOn(frame, 'bowl').and.returnValue(0);
+        frame.bowl(1);
+        frame.bowl(9);
+        expect(frame.isSpare()).toEqual(true);
+      });
+    })
+
 });

@@ -3,5 +3,5 @@ javascript:
   config_file: .jshintrc
 
 eslint:
-  enabled: true
+  enabled: false
   config_file: .eslintrc

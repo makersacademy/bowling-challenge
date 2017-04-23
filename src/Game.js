@@ -61,8 +61,11 @@ Game.prototype.previousIsSpare = function() {
 };
 
 Game.prototype._bonus = function() {
-  if(this.previousIsStrike() === false && this.previousIsSpare() === false){
-    console.log("Game Over")
+  if(this.previousIsStrike() === false){
+    console.log("Game Over");
+    this.finalScore();}
+  else if(this.previousIsStrike() && this.turn === 12) {
+    console.log("Game Over. 12th Frame strike");
     this.finalScore();}
     // return "Game Over";}
   else {
@@ -73,7 +76,8 @@ Game.prototype._bonus = function() {
 
 Game.prototype.addBonusFrame = function(frame) {
   this.scoresheet.push([]);
-  this.addFrames(frame)
+  this.addFrames(frame);
+  this.scoresheet[this.scoresheet.length-1].push(0);
 };
 
 Game.prototype.updateScore = function() {
@@ -81,14 +85,17 @@ Game.prototype.updateScore = function() {
   var firstBowl = this.scoresheet[this.turn][0][0]
   if(this.turn === 0) {
     this.scoresheet[this.turn].push(frameSum);}
-  else if(this.turn === 10) {
+  else if(this.turn === 10 && this.previousTwoAreStrikes()) {
     this.scoresheet[this.turn-1][1] += frameSum;
     this.scoresheet[this.turn-2][1] += this.scoresheet[this.turn][0][0]}
+  else if(this.turn === 10) {
+    this.scoresheet[this.turn-1][1] += frameSum;}
+  else if(this.turn === 11) {
+    this.scoresheet[this.turn-1][1] += frameSum;}
   else if(this.previousIsSpare()) {
     console.log('is spare');
     this.scoresheet[this.turn].push(frameSum);
-    this.scoresheet[this.turn-1][1] = this.scoresheet[this.turn-1][1] + firstBowl;
-  }
+    this.scoresheet[this.turn-1][1] = this.scoresheet[this.turn-1][1] + firstBowl;}
   else if(this.turn === 9 && this.previousTwoAreStrikes()){
     console.log('final bowl is spare');
     this.scoresheet[this.turn].push(frameSum);
@@ -110,8 +117,8 @@ Game.prototype.updateScore = function() {
 
 Game.prototype.nextTurn = function() {
   if(this.turn < 9) {
-    this.turn += 1;
-  } else {
+    this.turn += 1;}
+  else {
     this.turn += 1;
     this._bonus()
   }

@@ -5,11 +5,13 @@ describe('Game', function() {
   var frame;
   var strike;
   var spare;
+  var nonStrikeFinal;
   beforeEach(function() {
     game = new Game();
     frame = [4,5];
     strike = [10,0];
     spare = [5,5];
+    nonStrikeFinal = [4,0];
   });
 
   xit('starts off with an empty scoresheet', function() {
@@ -104,43 +106,37 @@ describe('Game', function() {
       game.nextTurn();};
       game.addBonusFrame(frame);
       game.updateScore();
+      game.nextTurn();
       expect(game.viewScore(9)).toEqual(24);
       expect(game.viewScore(10)).toEqual(19);
+      expect(game.totalScore).toEqual(283)
   });
 
-  // it('calculates frame score', function() {
-  //   spyOn(Math, 'floor').and.returnValue(4)
-  //   game.addFrames(frame);
-  //   game.currentPlayingFrame.bowl();
-  //   game.currentPlayingFrame.bowl();
-  //   game.calculateFrameScore()
-  // })
+  it('adds a 12th frame to the game when 11th frame is strike', function() {
+    for(var i=0; i<10; i++) {
+      game.addFrames(strike);
+      game.updateScore();
+      game.nextTurn();};
+      game.addBonusFrame(strike);
+      game.updateScore();
+      game.nextTurn();
+      game.addBonusFrame(nonStrikeFinal);
+      game.updateScore();
+      game.nextTurn();
+      expect(game.totalScore).toEqual(294)
+  });
 
-  // var game = new Game();
-  // var strike = [10,0];
-  // var frame = [4,5];
-
-  // it('updates game score', function() {
-  //   spyOn(Math, 'floor').and.returnValue(4)
-  //   game.addFrames(frame);
-  //   game.frames[0].bowl();
-  //   game.frames[0].bowl();
-  //   game.updateScore();
-  //   expect(game.score).toEqual(8);
-  // });
-
-  // it('returns true if frame is a strike', function() {
-  //   spyOn(Math, 'floor').and.returnValue(10);
-  //   game.addFrames(frame);
-  //   game.frames[0].bowl();
-  //   expect(game._strike()).toBe(true);
-  // });
-  //
-  // it('adds bonus if frame is a strike', function() {
-  //   spyOn(Math, 'floor').and.returnValue(5);
-  //   game.addFrames([10, 0]);
-  //   game.frames[0].bowl();
-  //   game.addFrames(frame);
-  //   expect(game.score).toEqual
-  // })
+  it('calculates score for perfect game', function() {
+    for(var i=0; i<10; i++) {
+      game.addFrames(strike);
+      game.updateScore();
+      game.nextTurn();};
+      game.addBonusFrame(strike);
+      game.updateScore();
+      game.nextTurn();
+      game.addBonusFrame(strike);
+      game.updateScore();
+      game.nextTurn();
+      expect(game.totalScore).toEqual(300)
+  });
 });

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" type="text/css" href='main.css'>
+    <title>Space Bowl</title>
+  </head>
+
+  <body>
+
+    <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+
+    <section>
+      <h1 id='Game'>GAME</h1>
+      <h2>This is frame: <span id="frame-count">1</span></h2>
+      <p>
+        <button id='bowl1'>Bowl 1</button>
+        <button id='bowl2'>Bowl 2</button>
+      </p>
+      <h3>You rolled a: <span id='roll'> X</span></h3>
+    </section>
+
+    <div class="wrapper">
+      <div class="name">Player 1</div>
+      <div class="frame-1 title">1</div>
+        <div class="score f1-roll-0"></div>
+        <div class="score f1-roll-1"><span id="f1-r1">-</span></div>
+        <div class="score f1-roll-2"><span id="f1-r2">-</span></div>
+        <div class="score f1-roll-total"><span id="f1-total">Total</span></div>
+      <div class="frame-2 title">2</div>
+        <div class="score f2-roll-0"></div>
+        <div class="score f2-roll-1"><span id="f2-r1">-</span></div>
+        <div class="score f2-roll-2"><span id="f2-r2">-</span></div>
+        <div class="score f2-roll-total">total</div>
+
+    </div>
+
+    <script src='src/game.js'></script>
+    <script src='src/frame.js'></script>
+    <script src='interface.js'></script>
+
+    <!-- <ul>
+      <li>
+        <div class='frame' id='frame1'>Frame 1</div>
+      </li>
+    </ul> -->
+    <section>
+      <h1 id='temperature'>TEMPERATURE</h1>
+    </section>
+
+    <section>
+      <h3>Current Temperature: <span id= "current-temperature">20</span></h3>
+      <select id="current-city">
+        <option value="london">London</option>
+        <option value="losangeles">Los Angeles</option>
+      </select>
+    </section>
+
+  </body>
+</html>

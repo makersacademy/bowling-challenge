@@ -1,3 +1,7 @@
 javascript:
   ignore_file: .jshintignore
   config_file: .jshintrc
+
+
+jshint:
+  enabled: false

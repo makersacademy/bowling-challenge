@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title> Barney's Bowlarama </title>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+  </head>
+
+  <body>
+    <h3 id='introText'> Hello Springfield and welcome to Barney's Bowlarama!</h3>
+
+    <div id='pins'>
+      <button class='pin' value='1'>1</button>
+      <button class='pin' value='2'>2</button>
+      <button class='pin' value='3'>3</button>
+      <button class='pin' value='4'>4</button>
+      <button class='pin' value='5'>5</button>
+      <button class='pin' value='6'>6</button>
+      <button class='pin' value='7'>7</button>
+      <button class='pin' value='8'>8</button>
+      <button class='pin' value='9'>9</button>
+      <button class='pin' value='10'>10</button>
+    </div>
+
+    <table class="scoresheet">
+      <tr>
+        <th>Frame Number</th>
+        <th>Frame 1</th>
+        <th>Frame 2</th>
+        <th>Frame 3</th>
+        <th>Frame 4</th>
+        <th>Frame 5</th>
+        <th>Frame 6</th>
+        <th>Frame 7</th>
+        <th>Frame 8</th>
+        <th>Frame 9</th>
+        <th>Frame 10</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <th>Score</th>
+        <td><div class='throw1'></div><div class='throw2'></div></td>
+        <td><div class='throw1'></div><div class='throw2'></div></td>
+        <td><div class='throw1'></div><div class='throw2'></div></td>
+        <td><div class='throw1'></div><div class='throw2'></div></td>
+        <td><div class='throw1'></div><div class='throw2'></div></td>
+        <td><div class='throw1'></div><div class='throw2'></div></td>
+        <td><div class='throw1'></div><div class='throw2'></div></td>
+        <td><div class='throw1'></div><div class='throw2'></div></td>
+        <td><div class='throw1'></div><div class='throw2'></div></td>
+        <td><div class='throw1'></div><div class='throw2'></div><div class='throw3'></div></td>
+        <td class="total"></td>
+
+      </tr>
+    </table>
+
+    <script src='src/Bowling.js'></script>
+    <script src='jquery.js'></script>
+    <script>
+      $( document ).ready(function() {
+        var bowling = new Bowling();
+
+        $( ".pin" ).click(function(){
+          var score = Number($(this).val())
+          if(bowling.frame.first != 0) {
+            bowling.secondThrow(score)
+            $('td .throw2')[bowling.turnNumber - 1].innerHTML = score
+            console.log(bowling.turnNumber)
+            calculateTotalScore()
+          } else {
+            bowling.firstThrow(score)
+            $('td .throw1')[bowling.turnNumber - 1].innerHTML = score
+          }
+        });
+
+        function calculateTotalScore () {
+          document.querySelector('.total').innerHTML = bowling.currentScore
+        }
+      });
+
+    </script>
+
+
+
+  </body>
+
+
+</html>

@@ -1,0 +1,48 @@
+@font-face {
+    font-family: Akbar;
+    src: url(akbar.ttf);
+    font-weight: ;
+}
+
+body {
+  background-color: yellow;
+  background-image: url("http://www.crackingace.com//wp-content/gallery/bowlarama/bowlarama-homer-vs-18th-amendment.png");
+}
+
+h3 {
+  font-family: 'Akbar', 'Times', serif;
+  color: white;
+}
+
+table, th, td {
+  border: 3px solid black;
+  padding: 8px;
+  background-color: yellow;
+}
+
+table {
+  width: 70%;
+}
+
+.scoresheet div {
+  display: inline-block;
+  padding: 10px 5px;
+}
+
+.scoresheet div:first-child {
+  border-right: 3px solid black;
+}
+
+/*.bowling-scoresheet {
+  width: 70%;
+  border: 3px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading, .scores {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}*/

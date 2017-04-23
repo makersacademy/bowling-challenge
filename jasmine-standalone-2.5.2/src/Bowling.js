@@ -28,7 +28,7 @@ Bowling.prototype.firstThrow = function(score){
   };
 
   if(this.spareFrame.length) {
-    this.currentScore += (this.bonusSpare());
+    this.currentScore += this.bonusSpare();
   }
 
 };
@@ -47,7 +47,7 @@ Bowling.prototype.secondThrow = function(score){
   this.frame.second += score
 
 
-  if(this.strike === true) {
+  if(this.strike) {
     this.strikeFrame.push(this.frame.second)
     this.currentScore += this.bonusStrike();
   };

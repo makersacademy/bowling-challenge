@@ -17,7 +17,7 @@ Bowl.prototype.throw = function() {
 };
 
 Bowl.prototype.pushPins = function(behindPins, i) {
-  if (Math.random() > 0.2) this.pins[behindPins[i]] = 'X';
+  if (Math.random() > 0.4) this.pins[behindPins[i]] = 'X';
 }
 
 Bowl.prototype.knockDown = function(pin) {

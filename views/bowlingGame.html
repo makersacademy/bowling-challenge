@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+
+  <head>
+    <title>Bowling</title>
+      <link rel="stylesheet" href="../public/stylesheet.css">
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script src="../src/bowl.js"></script>
+      <script src="../src/game.js"></script>
+      <script src="../src/interface.js"></script>
+  </head>
+
+<body>
+
+
+  <h3>Individual scores</h3>
+  <table class="scores">
+    <tr>
+      <td><span id='roll1'></span></td>
+      <td><span id='roll2'></span></td>
+      <td><span id='roll3'></span></td>
+      <td><span id='roll4'></span></td>
+      <td><span id='roll5'></span></td>
+      <td><span id='roll6'></span></td>
+      <td><span id='roll7'></span></td>
+      <td><span id='roll8'></span></td>
+      <td><span id='roll9'></span></td>
+      <td><span id='roll10'></span></td>
+      <td><span id='roll11'></span></td>
+      <td><span id='roll12'></span></td>
+      <td><span id='roll13'></span></td>
+      <td><span id='roll14'></span></td>
+      <td><span id='roll15'></span></td>
+      <td><span id='roll16'></span></td>
+      <td><span id='roll17'></span></td>
+      <td><span id='roll18'></span></td>
+      <td><span id='roll19'></span></td>
+      <td><span id='roll20'></span></td>
+      <td><span id='roll21'></span></td>
+    </tr>
+  </table>
+
+  <h3>Scores!</h3>
+  <table class="scores">
+    <tr>
+      <td>Round</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+      <td>10</td>
+    </tr>
+
+      <tr>
+        <td>Score:</td>
+        <td><span id='score1'></span></td>
+        <td><span id='score2'></span></td>
+        <td><span id='score3'></span></td>
+        <td><span id='score4'></span></td>
+        <td><span id='score5'></span></td>
+        <td><span id='score6'></span></td>
+        <td><span id='score7'></span></td>
+        <td><span id='score8'></span></td>
+        <td><span id='score9'></span></td>
+        <td><span id='score10'></span></td>
+      </tr>
+      <tr>
+        <td>Bonus:</td>
+        <td><span id='bonus1'></span></td>
+        <td><span id='bonus2'></span></td>
+        <td><span id='bonus3'></span></td>
+        <td><span id='bonus4'></span></td>
+        <td><span id='bonus5'></span></td>
+        <td><span id='bonus6'></span></td>
+        <td><span id='bonus7'></span></td>
+        <td><span id='bonus8'></span></td>
+        <td><span id='bonus9'></span></td>
+        <td><span id='bonus10'></span></td>
+      </tr>
+      <tr>
+        <td>Total score:</td>
+        <td><span id='total1'></span></td>
+        <td><span id='total2'></span></td>
+        <td><span id='total3'></span></td>
+        <td><span id='total4'></span></td>
+        <td><span id='total5'></span></td>
+        <td><span id='total6'></span></td>
+        <td><span id='total7'></span></td>
+        <td><span id='total8'></span></td>
+        <td><span id='total9'></span></td>
+        <td><span id='total10'></span></td>
+      </tr>
+  </table>
+<br>
+  <table class='pins'>
+<tr><td>
+  <span id="pin6"><img src="https://s-media-cache-ak0.pinimg.com/736x/7e/31/1b/7e311b2be358c4112ea706840e24ca8d.jpg" width='30px' height="60px" ></span>
+  <span id="pin7"><img src="https://s-media-cache-ak0.pinimg.com/736x/7e/31/1b/7e311b2be358c4112ea706840e24ca8d.jpg" width='30px' height="60px" ></span>
+  <span id="pin8"><img src="https://s-media-cache-ak0.pinimg.com/736x/7e/31/1b/7e311b2be358c4112ea706840e24ca8d.jpg" width='30px' height="60px" ></span>
+  <span id="pin9"><img src="https://s-media-cache-ak0.pinimg.com/736x/7e/31/1b/7e311b2be358c4112ea706840e24ca8d.jpg" width='30px' height="60px" ></span>
+</td></tr>
+<tr><td>
+  <span id="pin3"><img src="https://s-media-cache-ak0.pinimg.com/736x/7e/31/1b/7e311b2be358c4112ea706840e24ca8d.jpg" width='30px' height="60px" ></span>
+  <span id="pin4"><img src="https://s-media-cache-ak0.pinimg.com/736x/7e/31/1b/7e311b2be358c4112ea706840e24ca8d.jpg" width='30px' height="60px" ></span>
+  <span id="pin5"><img src="https://s-media-cache-ak0.pinimg.com/736x/7e/31/1b/7e311b2be358c4112ea706840e24ca8d.jpg" width='30px' height="60px" ></span>
+</td></tr>
+<tr><td>
+  <span id="pin1"><img src="https://s-media-cache-ak0.pinimg.com/736x/7e/31/1b/7e311b2be358c4112ea706840e24ca8d.jpg" width='30px' height="60px" ></span>
+  <span id="pin2"><img src="https://s-media-cache-ak0.pinimg.com/736x/7e/31/1b/7e311b2be358c4112ea706840e24ca8d.jpg" width='30px' height="60px" ></span>
+</td></tr>
+<tr><td>
+  <span id="pin0"><img src="https://s-media-cache-ak0.pinimg.com/736x/7e/31/1b/7e311b2be358c4112ea706840e24ca8d.jpg" width='30px' height="60px" ></span>
+</td></tr>
+
+  </table>
+
+
+<br><br>
+  <form>
+<input class="button" type="button" id="play" value="Play!"/>
+</form>
+
+
+</body>
+
+</html>

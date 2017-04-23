@@ -1,95 +1,135 @@
 function Game() {
-  this.totalScores = [];
-  this.scores = [];
-  this.rollBreakdown = [];
-  this.results = [];
+  this.scores = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"];
+  this.scoresRaw = [];
+  this.rollBreakdown = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"];
+  this.rollBreakdownRaw = [];
   this.bonus = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-}
-
-Game.prototype.turn = function(bowl) {
-  bowl.throw();
-  bowl.domino();
-  return bowl.score();
+  this.totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  this.pins = [];
 }
 
 Game.prototype.frameSet = function() {
-  bowl = new Bowl();
-  var score1 = this.turn(bowl)
-  if (score1 == 10) {
-    this.rollBreakdown.push([score1, 0])
-    return 'Strike!';
+  if (this.scoresRaw.length == 10) {
+    // return score message
+    console.log('Finished!')
+  } else if (this.scoresRaw.length == 9) {
+    this.tripleTurn();
+    if (this.rollBreakdownRaw.length == 21) {
+      this.scoresRaw.push(this.rollBreakdownRaw[20] + this.rollBreakdownRaw[19] + this.rollBreakdownRaw[18]);
+    } else {
+      this.scoresRaw.push(this.rollBreakdownRaw[18] + this.rollBreakdownRaw[19]);
+    }
+  } else {
+    this.doubleTurn();
+    var i = this.rollBreakdownRaw.length - 1;
+    this.scoresRaw.push(this.rollBreakdownRaw[i] + this.rollBreakdownRaw[i-1]);
   }
-  var score2 = (this.turn(bowl) - score1)
-  this.rollBreakdown.push([score1, score2])
-  if ((score2 + score1) == 10) return 'Spare!';
-  if (score2 < 10) return 'Standard';
 }
 
-Game.prototype.lastFrame = function() {
-  bowl = new Bowl();
-  var score1 = this.turn(bowl)
+Game.prototype.rollBUpdate = function() {
+  if (this.rollBreakdownRaw.length == 21) {
+    for (var c = 0; c < 3; c++)
+    this.rollBreakdown[c+18] = this.rollBreakdownRaw[c+18];
+  } else {
+    a = this.rollBreakdownRaw.length -1;
+    this.rollBreakdown[a] = this.rollBreakdownRaw[a]
+    this.rollBreakdown[a-1] = this.rollBreakdownRaw[a-1]
+  }
+}
+
+Game.prototype.scoreUpdate = function() {
+  b = this.scoresRaw.length -1;
+  this.scores[b] = this.scoresRaw[b]
+}
+
+Game.prototype.turn = function(b) {
+  b.throw();
+  b.domino();
+  score = b.score();
+  return score;
+}
+
+Game.prototype.doubleTurn = function() {
+  var bowl = new Bowl;
+  score1 = this.turn(bowl);
+  this.rollBreakdownRaw.push(score1);
   if (score1 == 10) {
-    var newBowl = new Bowl;
-    score2 = this.turn(newBowl);
+    this.rollBreakdownRaw.push(0);
+    alert("Strike!!");
+    this.pins = bowl.pins;
+    return score1;
+  }
+  score2 = this.turn(bowl);
+  if (score2 == 10) alert("Spare!");
+  this.rollBreakdownRaw.push(score2 - score1);
+  this.pins = bowl.pins;
+}
+
+Game.prototype.tripleTurn = function() {
+  var bowl = new Bowl;
+  score1 = this.turn(bowl);
+  this.rollBreakdownRaw.push(score1);
+  if (score1 == 10) {
+    alert("Strike!!");
+    bowl = new Bowl;
+    score2 = this.turn(bowl);
+    this.rollBreakdownRaw.push(score2);
     if (score2 == 10) {
-      score3 = this.turn(new Bowl);
-      this.rollBreakdown.push([score1, score2, score3])
-      this.bonus[9] = (score2 + score3);
-      return 'Strike!'
-    } else {
-      score3 = (this.turn(newBowl) - score2)
-      this.rollBreakdown.push([score1, score2, score3])
-      this.bonus[9] = (score2 + score3);
-      return 'Strike!'
+      alert("Strike!!");
+      bowl = new Bowl;
+      score3 = this.turn(bowl);
+      this.rollBreakdownRaw.push(score3);
+      this.bonus[9] = score2 + score3;
+      this.pins = bowl.pins;
+      return score3;
     }
-  } else {
-    var score2 = (this.turn(bowl) - score1)
-    if (score2 + score1 == 10) {
-      score3 = this.turn(new Bowl);
-      this.rollBreakdown.push([score1, score2, score3])
-      this.bonus[9] = (score2 + score3);
-      return 'Spare!'
-    } else {
-      this.rollBreakdown.push([score1, score2])
-      return 'Standard'
-    }
+    score3 = this.turn(bowl);
+    this.rollBreakdownRaw.push(score3 - score2);
+    this.bonus[9] = score3;
+    this.pins = bowl.pins;
+    return score3;
   }
-  var score3 = this.turn(bowl)
-  this.rollBreakdown.push([score1, score2, score3])
+  score2 = this.turn(bowl);
+  this.rollBreakdownRaw.push(score2 - score1);
+  if (score2 == 10) {
+    alert("Spare!");
+    bowl = new Bowl;
+    score3 = this.turn(bowl);
+    this.rollBreakdownRaw.push(score3);
+    this.bonus[9] = score3;
+    this.pins = bowl.pins;
+    return score3
+  }
+  this.pins = bowl.pins;
+  return score2
 }
 
-Game.prototype.play = function() {
-  for (y = 0; y < 9; y++) {
-    this.results.push(this.frameSet());
-    if (y > 0) {
-      if (this.results[y-1] === 'Strike!') {
-        this.bonus[y-1] = (this.rollBreakdown[y][0]+this.rollBreakdown[y][1]);
-      } else if (this.results[y-1] === 'Spare!') {
-        this.bonus[y-1] = (this.rollBreakdown[y][0]);
-      } else {
-        this.bonus[y-1] = 0;
-      }
-      this.scores.push(this.bonus[y-1] + this.rollBreakdown[y-1][0] + this.rollBreakdown[y-1][1]);
+Game.prototype.strikeLogic = function() {
+  var d = this.rollBreakdownRaw.length;
+  if (d > 2 && d < 20) {
+    if (this.rollBreakdownRaw[d-4] == 10) {
+      this.bonus[(d/2)-2] = (this.rollBreakdownRaw[d-1] + this.rollBreakdownRaw[d-2]);
+    } else if (this.rollBreakdownRaw[d-4] + this.rollBreakdownRaw[d-3] == 10) {
+      this.bonus[(d/2)-2] = this.rollBreakdownRaw[d-2];
+    }
+  } else if (d > 19) {
+    if (this.rollBreakdownRaw[16] == 10) {
+      this.bonus[8] = (this.rollBreakdownRaw[18] + this.rollBreakdownRaw[19]);
+    } else if (this.rollBreakdownRaw[17] + this.rollBreakdownRaw[16] == 10) {
+      this.bonus[8] = this.rollBreakdownRaw[18];
     }
   }
-  this.results.push(this.lastFrame());
-  if (this.results[8] == 'Strike!') {
-    this.bonus[8] = (this.rollBreakdown[9][0] + this.rollBreakdown[9][1]);
-  } else if (this.results[8] == 'Spare!') {
-    this.bonus[8] = this.rollBreakdown[9][0];
-  }
-  this.scores.push(this.bonus[8] + this.rollBreakdown[8][0] + this.rollBreakdown[8][1]);
-  if (this.bonus[9] == 0) {
-    this.scores.push(this.rollBreakdown[9][0] + this.rollBreakdown[9][1]);
-  } else {
-    this.scores.push(this.rollBreakdown[9][0] + this.rollBreakdown[9][1] + this.rollBreakdown[9][2]);
-  }
-}
 
-Game.prototype.totalScore = function() {
-  this.totalScores.push(this.scores[0]);
-  for (j = 1; j < 10; j++) {
-    this.totalScores.push(this.totalScores[j-1]+this.scores[j]);
+  Game.prototype.total = function() {
+    var e = this.scoresRaw.length;
+    if (e == 2) {
+      this.totals[0] = this.scores[0] + this.bonus[0];
+    } else if (e > 2 && e <= 9) {
+      this.totals[e-2] = this.scores[e-2] + this.bonus[e-2] + this.totals[e-3];
+    } else if (e == 10) {
+      this.totals[8] = (this.totals[7] + this.scores[8] + this.bonus[8])
+      this.totals[9] = (this.totals[8] + this.scores[9]);
+    }
   }
-  return this.totalScores;
+
 }

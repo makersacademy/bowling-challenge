@@ -7,6 +7,6 @@ describe('Frame', function(){
   });
 
   it('starts at frame 1', function(){
-    expect(frame.count).toEqual(1);
+    expect(frame.index).toEqual(1);
   });
 });

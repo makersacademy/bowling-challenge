@@ -1,11 +1,11 @@
 'use strict';
 
 function Frame(){
-  this.count = 1;
+  this.index = 1;
 }
 
-  Frame.prototype.count = function(){
-    return (this.count);
+  Frame.prototype.index= function(){
+    return (this.index);
   };
 
 

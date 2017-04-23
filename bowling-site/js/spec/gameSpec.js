@@ -79,13 +79,13 @@ describe('Game',function(){
       it('appends the throw scores to the results array after a frame',function(){
         game.throwBall(5);
         game.throwBall(4);
-        expect(game.results[0]).toEqual({throw1:5, throw2:4, bonus:0})
+        expect(game.results[0]).toEqual({throw1:5, throw2:4, throw3:0, bonus:0})
       });
       it('adds the bonus score to the previous frame 1 throw after a spare',function(){
         game.throwBall(5);
         game.throwBall(5);
         game.throwBall(4);
-        expect(game.results[0]).toEqual({throw1:5, throw2:5, bonus:4})
+        expect(game.results[0]).toEqual({throw1:5, throw2:5, throw3: 0, bonus:4})
       });
       it('removes the bonus score instance after the bonus has been fully applied',function(){
         game.throwBall(5);
@@ -158,8 +158,7 @@ describe('Game',function(){
       it('ends frame at the end of a normal round',function(){
         game.throwBall(0);
         game.throwBall(0);
-        expect(game.framesPlayed).toEqual(9);
-        //SWAPPED FROM 10 TO 9 FOR A QUICK FIX
+        expect(game.framesPlayed).toEqual(10);
       });
       it('ends the frame at the end of the third throw',function(){
         game.throwBall(10);

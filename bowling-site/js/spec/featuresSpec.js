@@ -92,21 +92,42 @@ describe('Features',function(){
         expect(game.totalScore).toEqual(84)
       });
 
-      // it('Counts the bonus for a 9 strikes in a row',function(){
-      //   game.throwBall(10);
-      //   game.throwBall(10);
-      //   game.throwBall(10);
-      //   game.throwBall(10);
-      //   game.throwBall(10);
-      //   game.throwBall(10);
-      //   game.throwBall(10);
-      //   game.throwBall(10);
-      //   game.throwBall(10);
-      //   game.throwBall(5);
-      //   game.throwBall(4);
-      //   expect(game.totalScore).toEqual(263)
-      // });
+      it('Counts the bonus for a 9 strikes in a row',function(){
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(5);
+        game.throwBall(4);
+        expect(game.totalScore).toEqual(263)
+      });
     });
+
+
+
+    it('passes some serious heavyTesting' ,function(){
+
+      testArray = [
+                  [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],0],
+                  [[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],20],
+                  [[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6],151],]
+
+      for (i = 0; i < testArray.length; i++) {
+        test = testArray[i]
+        throws = test[0]
+        expectation = test[1]
+        for (i = 0; i < throws.length; i++) {
+          game.throwBall(throws[i])
+        }
+        expect(game.totalScore).toEqual(expectation)
+      }
+    });
+
 
 
 

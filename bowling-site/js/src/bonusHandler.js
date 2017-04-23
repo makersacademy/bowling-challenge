@@ -70,8 +70,9 @@ function BonusHandler(){
     frameResults = this.results[frameNumber]
     throw1= frameResults.throw1
     throw2= frameResults.throw2
+    throw3= frameResults.throw3
     bonus = frameResults.bonus
-    total = throw1 + throw2 + bonus
+    total = throw1 + throw2 + throw3 + bonus
     this.totalScore += total
   }
 

@@ -50,6 +50,7 @@ function Game(){
 
   this.throwBall = function(score){
     this.score=score
+    this.currentFramesPlayed=this.framesPlayed
 
     if (this.throwsLeft>0){
       this.updateCurrentFrameScores();
@@ -80,22 +81,31 @@ function Game(){
   }
 
   this.logFrameScores=function(){
-    if(this.isStrikeRound()){
-      this.results[this.framesPlayed]={throw1: this.currentFrameScores[0],
-                                      throw2: 0,
-                                      bonus: 0}
-    }else{
-      this.results[this.framesPlayed]={
-      throw1: this.currentFrameScores[0],
-      throw2: this.currentFrameScores[1],
-      bonus: 0
-      }
-    }
 
+    noOfThrows = this.currentFrameScores.length
+
+    if (noOfThrows == 1){
+      this.results[this.currentFramesPlayed]={throw1: this.currentFrameScores[0],
+        throw2: 0,
+        throw3: 0,
+        bonus: 0}
+    }else if (noOfThrows == 2){
+      this.results[this.currentFramesPlayed]={
+        throw1: this.currentFrameScores[0],
+        throw2: this.currentFrameScores[1],
+        throw3: 0,
+        bonus: 0}
+    }else{
+      this.results[this.currentFramesPlayed]={
+        throw1: this.currentFrameScores[0],
+        throw2: this.currentFrameScores[1],
+        throw3: this.currentFrameScores[2],
+        bonus: 0}
+    }
   }
 
   this.updateCurrentTotal = function(){
-    frameScore = this.results[this.framesPlayed].throw1 + this.results[this.framesPlayed].throw2;
+    frameScore = this.results[this.currentFramesPlayed].throw1 + this.results[this.framesPlayed].throw2;
     this.totalScore += frameScore;
   }
 
@@ -120,30 +130,24 @@ function Game(){
         this.throwsLeft -=1;
       }
     }
-
-
   }
-
 
   this.isBonus = function(){
     //QUICK FIX TO PREVENT INDEX ERROR
-    if(this.framesPlayed==10){
-      this.framesPlayed--
-    }
+
 
     if(!this.isEndOfGameThrow()){
-      throw1 = this.results[this.framesPlayed].throw1
+      throw1 = this.results[this.currentFramesPlayed].throw1
       if (throw1 == 10){
         return true
       }
-      throw2 = this.results[this.framesPlayed].throw2
+      throw2 = this.results[this.currentFramesPlayed].throw2
       return (throw1+throw2==10)
     }else{
       return false
     }
 
   }
-
 
 //FRAME TERMINATOR EXTRACTION
 
@@ -161,7 +165,7 @@ function Game(){
 
 
   this.isInFrame10 = function(){
-    return (this.framesPlayed >= 9)
+    return (this.currentFramesPlayed >= 9)
   }
   this.isNotFirstThrow = function(){
     return (this.throwsLeft < 21);
@@ -185,7 +189,7 @@ function Game(){
   this.updateBonusHandlerState = function(){
     inputs = {score: this.score,
     results: this.results,
-    framesPlayed: this.framesPlayed,
+    framesPlayed: this.currentFramesPlayed,
     isStrikeRound: this.isStrikeRound(),
     totalScore: this.totalScore
     }

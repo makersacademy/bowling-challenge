@@ -13,25 +13,13 @@ Game.prototype.createFrame = function() {
 
 Game.prototype.play = function(score) {
   if (this.framesLeft === 1) {
-    this.finalFrame();
+    this.finalPlay(score);
+  } else if (this.framesLeft === 2) {
+    this.gamePlay(score);
+    this.changeFinalFrame();
   }
   else {
-    if(this.rollsLeft(this._frame) === 2) {
-      this._frame.play(score);
-      if(this._frame.isStrike === true) {
-        console.log("End of frame " + this.currentFrame + "!");
-        this.bonusCalculator();
-        this.addFrame(this._frame);
-        this.changeFrame();
-      }
-    }
-    else {
-      this._frame.play(score);
-      console.log("End of frame " + this.currentFrame + "!");
-      this.bonusCalculator();
-      this.addFrame(this._frame);
-      this.changeFrame();
-    }
+    this.gamePlay(score);
   }
 };
 
@@ -49,8 +37,52 @@ Game.prototype.rollsLeft = function(frame) {
   return frame.rollsLeft;
 };
 
-Game.prototype.finalFrame = function() {
+Game.prototype.changeFinalFrame = function() {
+  this._frame = this.createFrame();
   this._frame.rollsLeft += 1;
+};
+
+Game.prototype.reduceFrameSize = function() {
+  this._frame.rollsLeft -= 1;
+};
+
+Game.prototype.finalPlay = function(score) {
+  if(this.rollsLeft(this._frame) === 3) {
+    this._frame.finalPlay(score);
+  }
+  else if(this.rollsLeft(this._frame) === 2) {
+    this._frame.finalPlay(score);
+    if(this._frame.isSpare !== true || this._frame.isStrike !== true)
+    {
+      this.reduceFrameSize();
+      console.log("Game over!");
+      this.addFrame(this._frame);
+    }
+  }
+  else if (this.rollsLeft(this._frame) === 1) {
+    this._frame.finalPlay(score);
+    console.log("Game over!");
+    this.addFrame(this._frame);
+  }
+};
+
+Game.prototype.gamePlay = function(score) {
+  if(this.rollsLeft(this._frame) === 2) {
+    this._frame.play(score);
+    if(this._frame.isStrike === true) {
+      console.log("End of frame " + this.currentFrame + "!");
+      this.bonusCalculator();
+      this.addFrame(this._frame);
+      this.changeFrame();
+    }
+  }
+  else {
+    this._frame.play(score);
+    console.log("End of frame " + this.currentFrame + "!");
+    this.bonusCalculator();
+    this.addFrame(this._frame);
+    this.changeFrame();
+  }
 };
 
 Game.prototype.bonusCalculator = function() {

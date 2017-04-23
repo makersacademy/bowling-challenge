@@ -61,12 +61,23 @@ describe("Feature spec", function() {
   })
 
   describe("Final frame", function() {
-    it("should produce one more roll if either a strike or space takes place", function() {
-      for(i = 1; i <= 10; i++)
-      game.play(10);
+    it("should add one more roll if either a strike or space takes place", function() {
+      for(i = 1; i < 10; i++) {
+        game.play(10);
+      }
       var frame = game._frame
       expect(game.currentFrame).toEqual(10);
       expect(game.rollsLeft(frame)).toEqual(3);
+    })
+
+    it("should reduce the number of rolls if neither a strike nor spare take place", function() {
+      for(i = 1; i < 10; i++) {
+        game.play(10);
+      }
+      var frame = game._frame
+      game.play(1);
+      game.play(1);
+      expect(game.rollsLeft(frame)).toEqual(0);
     })
   })
 });

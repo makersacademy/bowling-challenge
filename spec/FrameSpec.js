@@ -66,4 +66,15 @@ describe("Frame", function() {
       expect(frame.rollsLeft).toEqual(0);
     });
   });
+
+  describe("finalPlay", function() {
+    it("Should decrease number of pins", function() {
+      frame.finalPlay(5);
+      expect(frame.pins).toEqual(5);
+    })
+    it("Should reduce number of rolls", function() {
+      frame.finalPlay(5);
+      expect(frame.rollsLeft).toEqual(1);
+    })
+  })
 });

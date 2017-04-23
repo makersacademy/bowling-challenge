@@ -51,9 +51,9 @@ describe("Game", function() {
       expect(game.frames[0].score).toEqual(15);
     });
   });
-  describe("finalFrame", function() {
+  describe("changeFinalFrame", function() {
     it("should change the number of rolls left to 3", function() {
-      for(i = 1;i <= 10; i++) {
+      for(i = 1;i < 10; i++) {
         game.play(10);
       }
       expect(game._frame.rollsLeft).toEqual(3);

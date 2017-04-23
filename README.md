@@ -1,24 +1,6 @@
-As a player
-So I can throw a ball
-I want to throw a ball and return a score between 1 and 10
 
-As a player
-So I can play a frame
-I want to have two throws
-
-As a player
-So I can see my score
-I want to be able to save the score of my frame
-
-As a player
-so I can get a strike
-I want to end the frame if I get a strike
-
-As a player
-so I can be scored correctly
-I want to correctly calculate the score from a strike or a spare
-
-
+22/4/2017 - Restart from scratch
+23/4/2017 - Needs some serious refactoring and class extraction, but underlying programme functional. 
 
 
 Bowling Challenge

@@ -67,7 +67,11 @@ $(document).ready(function(){
   function updateScore () {
     $('#total-score').text(game.score);
     roll = game.rollCount;
-    $('#r' + roll).text(game.rollHistory[roll -1]);
+    if (game.frameNo > 1 && game.isWhichRoll() === 2 && game.tallyLast() === 10){
+      $('#r' + roll).text('/');
+    } else {
+      $('#r' + roll).text(game.rollHistory[roll -1]);
+    }
     frame = game.frameNo -1;
     $('#f' + frame).text(game.frameScores[frame - 1]);
   }

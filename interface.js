@@ -58,6 +58,10 @@ $(document).ready(function() {
   playStrikeAnimation();
   });
 
+  $('#restart-btn').click(function(){
+    location.reload();
+  });
+
   function updateFrame(pins) {
     if(pins === 10) {$('#r' + game.rolls).text('X');}
     else if (game.spareInPreviousFrame() === true && game.rolls % 2 === 0){$('#r' + game.rolls).text('/');}

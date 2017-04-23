@@ -69,6 +69,8 @@ $(document).ready(function(){
     roll = game.rollCount;
     if (game.frameNo > 1 && game.isWhichRoll() === 2 && game.tallyLast() === 10){
       $('#r' + roll).text('/');
+    } else if (game.rollHistory.slice(-1)[0] === 10) {
+      $('#r' + roll).text('X');
     } else {
       $('#r' + roll).text(game.rollHistory[roll -1]);
     }

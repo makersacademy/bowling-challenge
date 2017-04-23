@@ -22,14 +22,19 @@ table{
 }
 th {
   font-size: 20px;
-  border-bottom: 10px solid #06618f;
-  border-top: 10px solid #06618f;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* border-bottom: 10px solid #06618f; */
+  /* border-top: 10px solid #06618f; */
 }
 td {
   padding: 10px;
   border: 2px solid #06618f;
   height: 20px;
   width: 20px;
+}
+td#r21 {
+  background-color: #cfbbac;
 }
 div#buttons {
   color

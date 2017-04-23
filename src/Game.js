@@ -37,6 +37,10 @@ Game.prototype.makeRoll = function(points) {
     this.makeFrame();
   } else {
     // is frame a strike? if so, make frame.
+    if (points === 10){
+      this.history.push(this.currentFrame);
+      this.nextFrame();
+    }
     // if not see if last frame was a spare, make that frame with r1
     if (this.tallyLast() === 10){
       this.score += (10 + points);

@@ -32,13 +32,13 @@ describe('Features',function(){
     });
 
 
-    it('Spare Game for 9 throws',function(){
-      expect(game.throwsLeft).toEqual(21);
-      for (i = 0; i < maximumThrows-1; i++) {
-        game.throwBall(5);
-      }
-      expect(game.totalScore).toEqual(135);
-    });
+    // it('Spare Game for 9 throws',function(){
+    //   expect(game.throwsLeft).toEqual(21);
+    //   for (i = 0; i < maximumThrows-1; i++) {
+    //     game.throwBall(5);
+    //   }
+    //   expect(game.totalScore).toEqual(135);
+    // });
 
 
 
@@ -92,20 +92,20 @@ describe('Features',function(){
         expect(game.totalScore).toEqual(84)
       });
 
-      it('Counts the bonus for a 9 strikes in a row',function(){
-        game.throwBall(10);
-        game.throwBall(10);
-        game.throwBall(10);
-        game.throwBall(10);
-        game.throwBall(10);
-        game.throwBall(10);
-        game.throwBall(10);
-        game.throwBall(10);
-        game.throwBall(10);
-        game.throwBall(5);
-        game.throwBall(4);
-        expect(game.totalScore).toEqual(263)
-      });
+      // it('Counts the bonus for a 9 strikes in a row',function(){
+      //   game.throwBall(10);
+      //   game.throwBall(10);
+      //   game.throwBall(10);
+      //   game.throwBall(10);
+      //   game.throwBall(10);
+      //   game.throwBall(10);
+      //   game.throwBall(10);
+      //   game.throwBall(10);
+      //   game.throwBall(10);
+      //   game.throwBall(5);
+      //   game.throwBall(4);
+      //   expect(game.totalScore).toEqual(263)
+      // });
     });
 
 

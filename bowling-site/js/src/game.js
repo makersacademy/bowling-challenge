@@ -104,38 +104,65 @@ function Game(){
   }
 
   this.updateThrowsLeft = function(){
-    if(this.isStrikeRound()){
-      this.throwsLeft-=2;
+    if(!this.isInFrame10()){
+      if(this.isStrikeRound()){
+        this.throwsLeft-=2;
+      }
+      else if (this.throwsLeft > 2){
+        this.throwsLeft -= 1;
+      }else if (this.throwsLeft == 2){
+        this.throwsLeft -= 2;
+      }
+    }else{
+      if(this.throwsLeft==2 && !this.isBonus()){
+        this.throwsLeft -=2;
+      }else{
+        this.throwsLeft -=1;
+      }
     }
-    else if (this.throwsLeft > 2){
-      this.throwsLeft -= 1;
-    }else if (this.throwsLeft == 2){
-      this.throwsLeft -= 2;
-    }
+
+
   }
 
 
   this.isBonus = function(){
-    throw1 = this.results[this.framesPlayed].throw1
-    if (throw1 == 10){
-      return true
+    //QUICK FIX TO PREVENT INDEX ERROR
+    if(this.framesPlayed==10){
+      this.framesPlayed--
     }
-    throw2 = this.results[this.framesPlayed].throw2
+
+    if(!this.isEndOfGameThrow()){
+      throw1 = this.results[this.framesPlayed].throw1
+      if (throw1 == 10){
+        return true
+      }
+      throw2 = this.results[this.framesPlayed].throw2
       return (throw1+throw2==10)
+    }else{
+      return false
+    }
+
   }
 
 
 //FRAME TERMINATOR EXTRACTION
 
   this.isFrameOver=function(){
-
-    notFirstThrow = this.isNotFirstThrow();
     endOfRegularFrame = this.isEndOfRegularFrame();
-    endOfGame = this.isEndOfGame();
-    strikeRound = this.isStrikeRound();
-    return ((notFirstThrow && endOfRegularFrame)|| endOfGame||strikeRound);
+    if(!this.isInFrame10()){
+      notFirstThrow = this.isNotFirstThrow();
+      strikeRound = this.isStrikeRound();
+      return ((notFirstThrow && endOfRegularFrame)||strikeRound);
+    }else{
+      endOfGameThrow=this.isEndOfGameThrow();
+      return((endOfRegularFrame&& !this.isBonus())||endOfGameThrow);
+    }
   }
 
+
+  this.isInFrame10 = function(){
+    return (this.framesPlayed >= 9)
+  }
   this.isNotFirstThrow = function(){
     return (this.throwsLeft < 21);
   }
@@ -144,12 +171,13 @@ function Game(){
     return (this.throwsLeft % 2 == 0);
   }
 
-  this.isEndOfGame = function(){
-    return (this.throwsLeft <= 1);
-  }
+
 
   this.isStrikeRound= function(){
     return (this.score == 10);
+  }
+  this.isEndOfGameThrow = function(){
+    return (this.throwsLeft == 1);
   }
 
   //BONUS HANDLER CLASS INTERACTIONS

@@ -79,17 +79,13 @@ Game.prototype.tenthFrame = function(number) {
 
 
 Game.prototype.tenthFrameReset = function(number) {
-  if (this.pins === 0) {
-    this.roll = 1;
-    this.pins = 10;
-  } else if (this.tenthFrameCount === 2) {
+  if (this.pins === 0 || this.tenthFrameCount === 2 ) {
     this.roll = 1;
     this.pins = 10;
   } else {
     this.roll = 2;
   }
 }
-
 
 Game.prototype.addScore = function (number) {
   if (this.strikes > 0 && number !== 10) {

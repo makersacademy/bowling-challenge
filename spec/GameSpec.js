@@ -81,9 +81,31 @@ describe('Game', function() {
     game.updateScore();
     game.nextTurn();
     game.addFrames(frame);
-    game.updateScore()
+    game.updateScore();
     expect(game.viewScore(1)).toEqual(20);
     expect(game.viewScore(2)).toEqual(14);
+  });
+
+  it('ends game and returns final score if 10th frame is not strike', function() {
+    for(var i=0; i<9; i++) {
+      game.addFrames(strike);
+      game.updateScore();
+      game.nextTurn();};
+      game.addFrames(frame);
+      game.updateScore();
+      game.nextTurn();
+      expect(game.totalScore).toEqual(262)
+  });
+
+  it('adds a bonus frame to the game if 10th frame is strike', function() {
+    for(var i=0; i<10; i++) {
+      game.addFrames(strike);
+      game.updateScore();
+      game.nextTurn();};
+      game.addBonusFrame(frame);
+      game.updateScore();
+      expect(game.viewScore(9)).toEqual(24);
+      expect(game.viewScore(10)).toEqual(19);
   });
 
   // it('calculates frame score', function() {
@@ -93,6 +115,10 @@ describe('Game', function() {
   //   game.currentPlayingFrame.bowl();
   //   game.calculateFrameScore()
   // })
+
+  // var game = new Game();
+  // var strike = [10,0];
+  // var frame = [4,5];
 
   // it('updates game score', function() {
   //   spyOn(Math, 'floor').and.returnValue(4)

@@ -44,7 +44,7 @@ Game.prototype.strikeOrSpare = function() {
     this.isASpare = true;
   } else {
     this.isAStrike = true;
-    this.rolls += 1
+    if(this.isTenthFrame() !== true) { this.rolls += 1 }
   }
 };
 
@@ -81,10 +81,10 @@ Game.prototype.getSecondRollScore = function() {
 };
 
 Game.prototype.isNextFrame = function() {
-  if(this.getNextRoll() === 2 && this.rolls < 21) {
+  if(this.getNextRoll() === 2 && this.rolls < 21 && this.isAStrike === false) {
     return;
   }
-  if(this.tenthFrameBonus() === true) {
+  if(this.tenthFrameBonus() === true && this.rolls < 21) {
     this.prepareNextFrame();
     return;
   }
@@ -93,7 +93,7 @@ Game.prototype.isNextFrame = function() {
 };
 
 Game.prototype.tenthFrameBonus = function() {
-  if(this.isTenthFrame() === true && this.isASpare === true) {
+  if(this.isTenthFrame() === true && (this.isASpare === true || this.isAStrike === true)) {
       return true;
   }
 };
@@ -172,6 +172,7 @@ Game.prototype.updateCumulativeFrameScore = function(frameScore) {
   } else {
     this.cumulativeFrameScores.push(this.cumulativeFrameScores[(this.cumulativeFrameScores.length -1)] + frameScore);
   }
+  this.updateTotalScore();
 };
 
 Game.prototype.isTenthFrame = function() {

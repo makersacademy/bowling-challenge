@@ -211,6 +211,11 @@ describe('Game', function(){
       expect(function(){game.roll(1);}).not.toThrowError("The game has finished. Start a new game to throw again.");
     });
 
+    it('if strike, players gets additional roll', function() {
+      game.roll(10);
+      expect(function(){game.roll(1);}).not.toThrowError("The game has finished. Start a new game to throw again.");
+    });
+
     it('additional roll is part of the tenth frame', function() {
       game.roll(1);
       game.roll(9);
@@ -222,6 +227,13 @@ describe('Game', function(){
       game.roll(1);
       game.roll(9);
       game.roll(1);
+      expect(function(){game.roll(1);}).toThrowError("The game has finished. Start a new game to throw again.");
+    });
+
+    it('player only gets one additional roll', function() {
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
       expect(function(){game.roll(1);}).toThrowError("The game has finished. Start a new game to throw again.");
     });
 

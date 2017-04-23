@@ -69,8 +69,15 @@ So I can have an amazing visual experience,
 I would like to have a stunning animated interface.
 ```
 
-##Task
------
+## How to run
+In the terminal:
+```
+$ git clone git@github.com:kittysquee/bowling-challenge.git
+$ cd bowling-challenge
+$ open index.html
+```
+
+## Task
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 

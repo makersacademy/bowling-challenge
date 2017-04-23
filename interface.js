@@ -75,6 +75,11 @@ $(document).ready(function(){
       $('#r' + roll).text(game.rollHistory[roll -1]);
     }
     frame = game.frameNo -1;
+    // update frame before if needed
+    // if was strike
+    if (game.rollCount > 3 && game.wasStrike()){
+      $('#f' + (frame - 1)).text(game.frameScores[frame - 2]);
+    }
     $('#f' + frame).text(game.frameScores[frame - 1]);
   }
 

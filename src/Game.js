@@ -31,18 +31,20 @@ Game.prototype.isFinalFrame = function(){
 Game.prototype.makeRoll = function(points) {
   this.isGameOver();
   this.increaseRollNo(points);
+  if (points === 10){
+    this.rollHistory.push(0);
+  }
   this.rollHistory.push(points);
   this.currentFrame.push(points);
   if (this.isWhichRoll() === 2){
-    this.makeFrame();
-  } else {
-    // is frame a strike? if so, make frame.
     if (points === 10){
-      this.history.push(this.currentFrame);
-      this.nextFrame();
+      this.makeFrame();
+    } else {
+      this.makeFrame();
     }
+  } else {
     // if not see if last frame was a spare, make that frame with r1
-    if (this.tallyLast() === 10){
+    if (this.frameNo > 1 && this.tallyLast() === 10){
       this.score += (10 + points);
       this.frameScores.push(this.score)
     }
@@ -52,7 +54,7 @@ Game.prototype.makeRoll = function(points) {
 
 Game.prototype.increaseRollNo = function(points){
   if(points !== 10 || this.frameNo === 10){
-    this.rollCount +=1;
+    this.rollCount += 1;
   }
   else {
     this.rollCount += 2;
@@ -71,8 +73,19 @@ Game.prototype.isWhichRoll = function(){
 
 Game.prototype.makeFrame = function(){
   this.history.push(this.currentFrame);
-  this.shouldUpdateScore();
+  if (this.rollCount > 2 && this.wasStrike()){
+    console.log('WAS STRIKE')
+    this.score += 10;
+    this.updateScore();
+  }
+  if (this.currentFrame[0] !== 10){
+    this.shouldUpdateScore();
+  }
   this.nextFrame();
+}
+
+Game.prototype.wasStrike = function(){
+  return this.rollHistory.slice(-3)[0] === 10
 }
 
 Game.prototype.shouldUpdateScore = function(){

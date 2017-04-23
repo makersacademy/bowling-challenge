@@ -20,10 +20,12 @@ function Game() {
 
   this.players = [];
 
+  this.lastRoll = 0;
+
 }
 
 Game.prototype.addPlayer = function(name) {
-    player = new Player(name);
+    var player = new Player(name);
     this.players.push(player);
 };
 
@@ -108,8 +110,9 @@ Game.prototype.scoredOpen = function(roll) {
         if(this.frame === 10) {
           this.endGame();
           return
-        } else
-        this.newFrame();
+        } else {
+          this.newFrame();
+        }
 };
 
 Game.prototype.roll = function() {
@@ -117,17 +120,17 @@ Game.prototype.roll = function() {
         throw new Error("Game is over!");
     }
     var roll = this._calculateRoll();
-    console.log(roll);
-    console.log(this);
+    this.lastRoll = roll;
     if(this.frame === 11 ) {
       this.score += roll;
       if(this.isSpare) {
         this.addBonus();
         this.endGame();
-      } else
+      } else {
       this.addBonus();
       this.newFrame();
       return;
+      }
     }
     if(this.frame === 12) {
       this.score += roll;

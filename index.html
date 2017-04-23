@@ -12,27 +12,38 @@
 
   <body>
 
+    <button class="new-game">
+      New Game
+    </button>
+
+    <div class="game">
     <div class="top-half">
+      Last Roll: <span id="last-roll"></span>
       <button class = "roll">
         Roll
       </button>
     </div>
 
     <div class="display">
-      <div class="pins">
+      <div class="strike">
+      <img src="images/giphy-downsized.gif" alt="Strike!">
       </div>
-    </div>
+      <div class="spare">
+        <img src="images/giphy-downsized-copy.gif" alt="Spare!">
+      </div>
+      </div>
 
     <div class="info">
       <div class="score">
-        Score:
+        Score:<span id="score"></span>
       </div>
       <div class="frame">
-        Frame:
+        Frame:<span id="frame"></span>
       </div>
-      <div class="roll">
-        Roll:
+      <div class="pins">
+        Pins: <span id="pins"></span>
       </div>
+    </div>
     </div>
 
 

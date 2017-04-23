@@ -13,7 +13,7 @@ function Game() {
 }
 
 Game.prototype.roll = function(points) {
-  if(this.getFrameNumber() > 10) {
+  if(this.currentFrameNumber > 10) {
     throw new Error("The game has finished. Start a new game to throw again.");
   }
   if(points < 0 || points > 10) {
@@ -35,13 +35,10 @@ Game.prototype.updatePinsRemaining = function(points) {
   }
 };
 
-Game.prototype.getFrameNumber = function() {
-  return this.currentFrameNumber;
-};
-
 Game.prototype.strikeOrSpare = function() {
   if(this.getNextRoll() === 1) {
     this.isASpare = true;
+    console.log(this.tenthFrameBonus())
   } else {
     this.isAStrike = true;
     if(this.isTenthFrame() !== true) { this.rolls += 1 }
@@ -65,11 +62,8 @@ Game.prototype.addToCurrentFrame = function(points) {
 };
 
 Game.prototype.getNextRoll = function() {
-  if(this.rolls % 2 === 0) {
-    return 1;
-  } else {
-    return 2;
-  }
+  if(this.rolls % 2 === 0) { return 1; }
+  else { return 2; }
 };
 
 Game.prototype.getFirstRollScore = function() {
@@ -103,7 +97,7 @@ Game.prototype.addCurrentFrameToFrameHistory = function(frame) {
 };
 
 Game.prototype.prepareNextFrame = function() {
-  if(this.tenthFrameBonus() !== true) {this.resetCurrentFrame();}
+  if(this.tenthFrameBonus() !== true) { this.resetCurrentFrame(); }
   this.resetPins();
   this.resetStrikeOrSpare();
 };
@@ -117,11 +111,16 @@ Game.prototype.updateScores = function(){
 };
 
 Game.prototype.calculateFrameScore = function() {
-    var frameScore = this.getFirstRollScore() + this.getSecondRollScore();
+    var frameScore;
+    if (this.rolls === 21) { console.log(frameScore = this.frameHistory[9][0] + this.frameHistory[9][1] + this.frameHistory[9][2]) }
+    else { frameScore = this.getFirstRollScore() + this.getSecondRollScore();}
     this.updateCumulativeFrameScore(frameScore);
 };
 
 Game.prototype.calculatePreviousFrameScore = function() {
+  if(this.rolls === 21) {
+    return;
+  }
   var previousFrameScore = this.strikePoints + this.getFirstRollScore()
   if(this.getSecondRollScore() !== undefined){
     previousFrameScore += this.getSecondRollScore();

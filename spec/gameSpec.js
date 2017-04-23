@@ -53,7 +53,7 @@ describe('Game', function(){
       for(var i=0; i<2; i++) {
         game.roll(1);
       }
-      expect(game.getFrameNumber()).toEqual(2);
+      expect(game.currentFrameNumber).toEqual(2);
     });
 
     it('returns the status of the current frame', function(){

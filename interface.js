@@ -1,5 +1,11 @@
 $(document).ready(function() {
   var game = new Game();
+  $("img").hide();
+
+  $('#pin0').click(function(){
+  game.roll(0);
+  updateFrame(0);
+  });
 
   $('#pin1').click(function(){
   game.roll(1);
@@ -49,6 +55,7 @@ $(document).ready(function() {
   $('#pin10').click(function(){
   game.roll(10);
   updateFrame(10);
+  playStrikeAnimation();
   });
 
   function updateFrame(pins) {
@@ -65,9 +72,20 @@ $(document).ready(function() {
 
   function updateCumulativeScores() {
     for(var i=1; i<11; i++) {
-      console.log(game.cumulativeFrameScores[i-1]);
+      game.cumulativeFrameScores[i-1];
       $('#cumulative-score-f' + i).text(game.cumulativeFrameScores[i-1])
     }
+  }
+
+  function playStrikeAnimation() {
+    $("img").show();
+    // var counter = 5;
+    // var id = setInterval(function() {
+    //   counter--;
+    //   if(counter < 0) {
+    //       clearInterval(id);
+    //       $("img").hide();
+    // }, 1000);
   }
 
 });

@@ -34,8 +34,20 @@ describe('Features', function() {
     }
     game.roll(10)
     game.roll(10)
-    expect(game.frameHistory).toEqual([[10],[10],[10],[10],[10],[10],[10],[10],[10],[10, 10, 10],]);
+    expect(game.frameHistory).toEqual([[10],[10],[10],[10],[10],[10],[10],[10],[10],[10, 10, 10]]);
     expect(game.totalScore).toEqual(300);
+  });
+
+  // As a bowler,
+  // I can get spares for each frame
+  it('Bowler can play a "spare game"', function() {
+    for(var i=0; i<10; i++) {
+      game.roll(5);
+      game.roll(5);
+    }
+    game.roll(5)
+    expect(game.frameHistory).toEqual([[5,5],[5,5],[5,5],[5,5],[5,5],[5,5],[5,5],[5,5],[5,5],[5,5,5]]);
+    expect(game.totalScore).toEqual(150);
   });
 
 

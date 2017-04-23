@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Bowling</title>
+  <link rel='stylesheet' type='text/css' href='public/main.css' />
+  <link href="https://fonts.googleapis.com/css?family=Nixie+One|Hind|Emblema+One" rel="stylesheet">
+</head>
+  <body>
+    <div class='grid'>
+      <h1> Bowling Night</h1>
+      <div class='rowSec scorecard'>
+        <div class='col-1 outer-box'>
+          <div class='inner-box'>
+            <div class='col-6 top-row' id='0-left'></div>
+            <div class='col-6 top-row' id='0-right'></div>
+          </div>
+          <div class='inner-box bottom' id='0-bottom'></div>
+        </div>
+        <div class='col-1 outer-box'>
+          <div class='inner-box'>
+            <div class='col-6 top-row' id='1-left'></div>
+            <div class='col-6 top-row' id='1-right'></div>
+          </div>
+          <div class='inner-box bottom' id='1-bottom'></div>
+        </div>
+        <div class='col-1 outer-box'>
+          <div class='inner-box'>
+            <div class='col-6 top-row' id='2-left'></div>
+            <div class='col-6 top-row' id='2-right'></div>
+          </div>
+          <div class='inner-box bottom' id='2-bottom'></div>
+        </div>
+        <div class='col-1 outer-box'>
+          <div class='inner-box'>
+            <div class='col-6 top-row' id='3-left'></div>
+            <div class='col-6 top-row' id='3-right'></div>
+          </div>
+          <div class='inner-box bottom' id='3-bottom'></div>
+        </div>
+        <div class='col-1 outer-box'>
+          <div class='inner-box'>
+            <div class='col-6 top-row' id='4-left'></div>
+            <div class='col-6 top-row' id='4-right'></div>
+          </div>
+          <div class='inner-box bottom' id='4-bottom'></div>
+        </div>
+        <div class='col-1 outer-box'>
+          <div class='inner-box'>
+            <div class='col-6 top-row' id='5-left'></div>
+            <div class='col-6 top-row' id='5-right'></div>
+          </div>
+          <div class='inner-box bottom' id='5-bottom'></div>
+        </div>
+        <div class='col-1 outer-box'>
+          <div class='inner-box'>
+            <div class='col-6 top-row' id='6-left'></div>
+            <div class='col-6 top-row' id='6-right'></div>
+          </div>
+          <div class='inner-box bottom' id='6-bottom'></div>
+        </div>
+        <div class='col-1 outer-box'>
+          <div class='inner-box'>
+            <div class='col-6 top-row' id='7-left'></div>
+            <div class='col-6 top-row' id='7-right'></div>
+          </div>
+          <div class='inner-box bottom' id='7-bottom'></div>
+        </div>
+        <div class='col-1 outer-box'>
+          <div class='inner-box'>
+            <div class='col-6 top-row' id='8-left'></div>
+            <div class='col-6 top-row' id='8-right'></div>
+          </div>
+          <div class='inner-box bottom' id='8-bottom'></div>
+        </div>
+        <div class='col-1 outer-box'>
+          <div class='inner-box'>
+            <div class='col-6 top-row' id='9-left'></div>
+            <div class='col-6 top-row' id='9-right'></div>
+          </div>
+          <div class='inner-box bottom' id='9-bottom'></div>
+        </div>
+      </div>
+
+      <section class='rowSec' id='alleysection'>
+        <div class='rowSec' id='alley'>
+          <div class='col-12 ball-box' >
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            width="63.167px" height="63px" viewBox="0 0 63.167 63" enable-background="new 0 0 63.167 63" xml:space="preserve" class="bowling-ball">
+            <title>bowling_ball</title>
+            <ellipse fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="43.5" cy="23.833" rx="12.917" ry="17.833"/>
+            <g>
+              <path d="M20.143,3.99c3.681-1.574,7.541-2.36,11.581-2.36s7.9,0.787,11.581,2.36c3.681,1.573,6.856,3.695,9.526,6.366
+              c2.67,2.67,4.793,5.846,6.365,9.526c1.573,3.68,2.36,7.541,2.36,11.581s-0.787,7.9-2.36,11.581
+              c-1.572,3.681-3.695,6.856-6.365,9.526c-2.67,2.671-5.847,4.793-9.526,6.367c-3.681,1.572-7.541,2.358-11.581,2.358
+              s-7.9-0.787-11.581-2.358c-3.681-1.574-6.856-3.696-9.526-6.367c-2.671-2.67-4.793-5.846-6.366-9.526
+              c-1.573-3.68-2.36-7.541-2.36-11.581s0.787-7.9,2.36-11.581c1.573-3.681,3.695-6.856,6.366-9.526
+              C13.287,7.685,16.462,5.562,20.143,3.99z M38.119,30.735c1.176,0,2.18-0.418,3.016-1.253c0.835-0.835,1.253-1.84,1.253-3.016
+              c0-1.176-0.418-2.18-1.253-3.016c-0.836-0.835-1.84-1.252-3.016-1.252c-1.175,0-2.18,0.417-3.016,1.252
+              c-0.835,0.835-1.252,1.84-1.252,3.016c0,1.176,0.417,2.18,1.252,3.016C35.939,30.317,36.944,30.735,38.119,30.735z M44.136,17.42
+              c0.854-0.836,1.281-1.84,1.281-3.016c0-1.175-0.428-2.18-1.281-3.015c-0.836-0.835-1.842-1.253-3.016-1.253
+              c-1.176,0-2.181,0.418-3.016,1.253s-1.253,1.84-1.253,3.015c0,1.176,0.418,2.18,1.253,3.016c0.834,0.835,1.84,1.253,3.016,1.253
+              C42.294,18.673,43.3,18.255,44.136,17.42z M45.914,23.466c0,1.175,0.416,2.18,1.252,3.015c0.834,0.835,1.84,1.253,3.016,1.253
+              c1.175,0,2.18-0.418,3.015-1.253s1.253-1.84,1.253-3.015c0-1.175-0.418-2.18-1.253-3.016c-0.834-0.835-1.84-1.252-3.015-1.252
+              c-1.176,0-2.182,0.417-3.016,1.252C46.33,21.286,45.914,22.291,45.914,23.466z"/>
+            </g>
+          </svg>
+
+          </div>
+          <div class='col-4 pins' style='transform: rotateZ(90deg)'>
+            <div class='col-3 pins-row'>
+              <div class='col-1 pin'></div>
+              <div class='col-1 pin'></div>
+              <div class='col-1 pin'></div>
+              <div class='col-1 pin'></div>
+            </div>
+            <div class='col-2 pins-row2'>
+              <div class='col-1 pin' id='pin-left'></div>
+              <div class='col-1 pin'></div>
+              <div class='col-1 pin' id='pin-right'></div>
+            </div>
+            <div class='col-2 pins-row2'>
+              <div class='col-1 pin' id='pin-right'></div>
+              <div class='col-1 pin'></div>
+            </div>
+            <div class='col-1 pins-row2'>
+              <div class='col-1 pin'></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+
+      <button id='play' value='play'>Play</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="src/Game.js"></script>
+    <script src="src/Score.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="src/Scorecard.js"></script>
+    <script src="src/Pins.js"></script>
+    <script src="src/FrameLog.js"></script>
+    <script src='public/scorecard.js'></script>
+  </body>
+</html>

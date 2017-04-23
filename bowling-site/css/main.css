@@ -1,0 +1,135 @@
+* {
+  font-family: helvetica;
+}
+
+#page-title {
+  text-align: center;
+
+}
+
+body,html {
+    /*background-image: url(http://www.pickwickbowl.com/wp-content/uploads/2015/08/Bowling-Lanes-2-.jpg);*/
+    background-size:cover;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom:60px;
+    height:100%;
+    width:100%;
+}
+
+#total-score{
+  text-align: center;
+  width:100%;
+  height: 50px;
+}
+.button-div{
+  float: bottom;
+  background-color: orange;
+  height:10%;
+  width:100%;
+  text-align: center;
+
+
+}
+
+.header{
+  text-align:center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  background-color: orange;
+  width: 100%;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  background-color: orange;
+  width: 100%;
+}
+  .box-2 {
+    background-color: yellow;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    margin: 1em;
+  }
+  .score-button{
+    display: inline-block;
+    width: 7%;
+    height: 25px;
+    margin: 1em;
+  }
+
+
+.bowling-button{
+  height: 100%;
+  width:100%
+  }
+
+
+.score-table{
+  font-size: 1em;
+  text-align: center;
+  margin: auto 0px;
+  background-color: #E8D125;
+  width:100%;
+  height:10%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left:2px
+
+}
+.frame-table{
+  background-color:#9C924B;
+  width:9.75%;
+  height:100%;
+  float:left;
+
+  margin: auto 0px;
+  padding: 1px;
+}
+.throw1-score{
+  width: 50%;
+  height:60%;
+  float: left;
+  background-color: #B50B64;
+}
+.throw2-score{
+  width:50%;
+  height:60%;
+  float:left;
+  background-color: #9C1159;
+}
+.throw-number{
+  height:40%;
+  width: 100%;
+  background-color:#E8CFE5;
+}
+
+.cumulative-total{
+  background-color:#E875B1;
+  width:100%;
+  height:33.3%;
+}
+
+#frame-10 .throw1-score{
+
+  width: 33%;
+  background-color: orange;
+}
+
+#frame-10 .throw2-score{
+  width: 33%;
+
+}
+
+.throw3-score{
+  width: 33%;
+  height: 60%;
+  background-color: red;
+  float: left;
+}

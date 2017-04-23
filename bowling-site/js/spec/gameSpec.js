@@ -31,22 +31,6 @@ describe('Game',function(){
 
   });
 
-  // describe('#isBonus',function(){
-  //   it('returns false for regular game',function(){
-  //     game.throwBall(5);
-  //     debugger;
-  //     game.throwBall(4);
-  //     expect(game.isBonus()).toEqual(false)
-  //
-  //   })
-  //   it('returns true for a spare game',function(){
-  //     game.throwBall(5);
-  //     game.throwBall(5);
-  //     expect(game.isBonus()).toEqual(true);
-  //   })
-  //
-  // })
-
   describe('#isFrameOver',function(){
     it('returns true for the end of a regular round',function(){
 
@@ -186,13 +170,6 @@ describe('Game',function(){
         expect(game.throwsLeft).toEqual(0);
       });
 
-      describe('#isBonus',function(){
-        it('does not activate bonus on last round throw 3',function(){
-          game.throwBall(10);
-          game.throwBall(10);
-          expect(game.isBonus()).toEqual(false);
-        });
-      });
 
     });
 

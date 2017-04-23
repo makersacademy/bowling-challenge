@@ -7,188 +7,102 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <script src="js/src/thrower.js"></script>
-    <script src="js/src/frameHandler.js"></script>
-    <script src="js/src/frameTerminator.js"></script>
+    <script src="js/src/bonusHandler.js"></script>
     <script src="js/src/game.js"></script>
-    <script src="js/src/interface.js"></script>
+    <script src='js/src/interface.js'></script>
+    <script src='js/src/frameTerminator.js'></script>
+
 
 
     <title>The Big Lebowlski</title>
 
-    <div class='Header'>
-      <h1 id='page-title'> The Big Lebowlski</h1>
-    </div>
 
   </head>
 
   <body>
 
 
+    <div class='header'>
+      <h1 id='page-title'> The Big Lebowlski</h1>
+    </div>
+
+
+    <div id='total-score'>Total: 0</div>
 
     <div class = 'score-table'>
 
       <div class = 'frame-table' id ='frame-1'>
-        <div class = 'throw-number'>
-          1
-        </div>
-        <div class = 'cumulative-total'>
-
-        </div>
-        <div class = 'throw1-score'>
-
-        </div>
-        <div class = 'throw2-score'>
-
-        </div>
+        <div class = 'throw-number'>1</div>
+        <!-- <div class = 'cumulative-total'></div> -->
+        <div class = 'throw1-score'></div>
+        <div class = 'throw2-score'></div>
       </div>
 
       <div class = 'frame-table' id ='frame-2'>
-        <div class = 'throw-number'>
-          2
-        </div>
-        <div class = 'cumulative-total'>
-
-        </div>
-        <div class = 'throw1-score'>
-
-        </div>
-        <div class = 'throw2-score'>
-
-        </div>
+        <div class = 'throw-number'>2</div>
+        <!-- <div class = 'cumulative-total'></div> -->
+        <div class = 'throw1-score'></div>
+        <div class = 'throw2-score'></div>
       </div>
 
       <div class = 'frame-table' id ='frame-3'>
-        <div class = 'throw-number'>
-          3
-        </div>
-        <div class = 'cumulative-total'>
-
-        </div>
-        <div class = 'throw1-score'>
-
-        </div>
-        <div class = 'throw2-score'>
-
-        </div>
+        <div class = 'throw-number'>3</div>
+        <!-- <div class = 'cumulative-total'></div> -->
+        <div class = 'throw1-score'></div>
+        <div class = 'throw2-score'></div>
       </div>
 
       <div class = 'frame-table' id ='frame-4'>
-        <div class = 'throw-number'>
-          4
-        </div>
-        <div class = 'cumulative-total'>
-
-        </div>
-        <div class = 'throw1-score'>
-
-        </div>
-        <div class = 'throw2-score'>
-
-        </div>
+        <div class = 'throw-number'>4</div>
+        <!-- <div class = 'cumulative-total'></div> -->
+        <div class = 'throw1-score'></div>
+        <div class = 'throw2-score'></div>
       </div>
 
       <div class = 'frame-table' id ='frame-5'>
-        <div class = 'throw-number'>
-          5
-        </div>
-        <div class = 'cumulative-total'>
-
-        </div>
-        <div class = 'throw1-score'>
-
-        </div>
-        <div class = 'throw2-score'>
-
-        </div>
+        <div class = 'throw-number'>5</div>
+        <!-- <div class = 'cumulative-total'></div> -->
+        <div class = 'throw1-score'></div>
+        <div class = 'throw2-score'></div>
       </div>
 
       <div class = 'frame-table' id ='frame-6'>
-        <div class = 'throw-number'>
-          6
-        </div>
-        <div class = 'cumulative-total'>
-
-        </div>
-        <div class = 'throw1-score'>
-
-        </div>
-        <div class = 'throw2-score'>
-
-        </div>
+        <div class = 'throw-number'>6</div>
+        <!-- <div class = 'cumulative-total'></div> -->
+        <div class = 'throw1-score'></div>
+        <div class = 'throw2-score'></div>
       </div>
 
       <div class = 'frame-table' id ='frame-7'>
-        <div class = 'throw-number'>
-          7
-        </div>
-        <div class = 'cumulative-total'>
-
-        </div>
-        <div class = 'throw1-score'>
-
-        </div>
-        <div class = 'throw2-score'>
-
-        </div>
+        <div class = 'throw-number'>7</div>
+        <!-- <div class = 'cumulative-total'></div> -->
+        <div class = 'throw1-score'></div>
+        <div class = 'throw2-score'></div>
       </div>
 
       <div class = 'frame-table' id ='frame-8'>
-        <div class = 'throw-number'>
-          8
-        </div>
-        <div class = 'cumulative-total'>
-
-        </div>
-        <div class = 'throw1-score'>
-
-        </div>
-        <div class = 'throw2-score'>
-
-        </div>
+        <div class = 'throw-number'>8</div>
+        <!-- <div class = 'cumulative-total'></div> -->
+        <div class = 'throw1-score'></div>
+        <div class = 'throw2-score'></div>
       </div>
 
       <div class = 'frame-table' id ='frame-9'>
-        <div class = 'throw-number'>
-          9
-        </div>
-        <div class = 'cumulative-total'>
-
-        </div>
-        <div class = 'throw1-score'>
-
-        </div>
-        <div class = 'throw2-score'>
-
-        </div>
+        <div class = 'throw-number'>9</div>
+        <!-- <div class = 'cumulative-total'></div> -->
+        <div class = 'throw1-score'></div>
+        <div class = 'throw2-score'></div>
       </div>
 
       <div class = 'frame-table' id ='frame-10'>
-        <div class = 'throw-number'>
-          10
-        </div>
-        <div class = 'cumulative-total'>
-
-        </div>
-        <div class = 'throw1-score'>
-
-        </div>
-        <div class = 'throw2-score'>
-
-        </div>
-        <div class = 'throw3-score'>
-
-        </div>
-
-
-    </div>
+        <div class = 'throw-number'>10</div>
+        <!-- <div class = 'cumulative-total'></div> -->
+        <div class = 'throw1-score'></div>
+        <div class = 'throw2-score'></div>
+        <div class = 'throw3-score'></div>
+      </div>
   </div>
 
-    <div class = 'button-div'>
-      <button class = 'bowling-button' id ='bowling-button'>
-        Bowl!
-      </button>
-    </div>
 
     <div class = 'button-div'>
       <button class = 'bowling-button' id ='reset-button'>
@@ -196,6 +110,24 @@
       </button>
     </div>
 
+
+    <div class='footer'>
+        <button class='score-button'id='roll-0'>0</button>
+
+      <button class='score-button'id='roll-1' >1</button>
+
+      <button class='score-button'id='roll-2'>2</button>
+      <button class='score-button'id='roll-3'>3</button>
+      <button class='score-button'id='roll-4'>4</button>
+      <button class='score-button'id='roll-5'>5</button>
+      <button class='score-button'id='roll-6'>6</button>
+      <button class='score-button'id='roll-7'>7</button>
+      <button class='score-button'id='roll-8'>8</button>
+      <button class='score-button'id='roll-9'>9</button>
+      <button class='score-button'id='roll-10'>10</button>
+
+
+    </div>
 
   </body>
 

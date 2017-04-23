@@ -40,7 +40,7 @@ function Game(){
   this.bonusHandler = new BonusHandler();
   this.frameTerminator = new FrameTerminator();
   this.score = 0
-
+  this.frameTotals =[]
 
 
   this.updateCurrentFrameScores=function(){
@@ -62,18 +62,24 @@ function Game(){
         this.activateBonus();
       }
       if(this.isFrameOver()){
-        this.resetCurrentFrameScores();
 
         if(!this.isBonus()){
           this.updateCurrentTotal();
-          this.resetCurrentFrameScores();
+          this.updateFrameTotals();
         }
+        this.resetCurrentFrameScores();
         //Update frames at the end of the frame over check for correct referencing
         this.incrementFrameNumber();
       }
       this.updateThrowsLeft();
     }
 
+  }
+
+  this.updateFrameTotals = function(){
+    results = this.results[this.currentFramesPlayed]
+    total = results.throw1 + results.throw1 + results.throw3 + results.bonus
+    this.frameTotals.push(total)
   }
 
   this.incrementFrameNumber = function(){
@@ -136,7 +142,7 @@ function Game(){
     //QUICK FIX TO PREVENT INDEX ERROR
 
 
-    if(!this.isEndOfGameThrow()){
+    if(!this.throwsLeft<=2){
       throw1 = this.results[this.currentFramesPlayed].throw1
       if (throw1 == 10){
         return true
@@ -201,6 +207,7 @@ function Game(){
     this.results = this.bonusHandler.updateBonusPointsIfRequired()
     this.totalScore = this.bonusHandler.totalScore;
   }
+
 
   this.isBonusActive = function(){
     return this.bonusHandler.isBonusActive();

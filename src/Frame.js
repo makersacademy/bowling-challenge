@@ -25,3 +25,9 @@ Frame.prototype.updateFrame = function() {
     this.currentFrame.push(10-(this.remainingPins + previousBowl))
   }
 };
+
+Frame.prototype.bonusBowl = function() {
+  var fallenPins = Math.floor((Math.random() * 11));
+  this.remainingPins = this.remainingPins - (fallenPins);
+  this.currentFrame.push(fallenPins, 0);
+};

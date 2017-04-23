@@ -30,10 +30,6 @@ Game.prototype.finalScore = function() {
   return this.totalScore;
 };
 
-// Game.prototype.addBonusFrame = function(frame) {
-//   if(this._bonus
-// }
-
 Game.prototype.previousIsStrike = function() {
   if(this.scoresheet[this.turn-1][0][0] == 10 && this.scoresheet[this.turn-1][0][1]== 0){
     return true

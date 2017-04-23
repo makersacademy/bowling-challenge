@@ -14,8 +14,8 @@ describe('Game', function() {
     nonStrikeFinal = [4,0];
   });
 
-  xit('starts off with an empty scoresheet', function() {
-    expect(game.scoresheet).toEqual([[]]);
+  it('starts off with an empty scoresheet', function() {
+    expect(game.scoresheet).toEqual([[],[],[],[],[],[],[],[],[],[]]);
   });
 
   it('has a turn counter', function() {

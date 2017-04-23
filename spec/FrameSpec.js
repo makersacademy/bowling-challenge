@@ -41,4 +41,10 @@ describe("Frame", function() {
     frame.bowl();
     expect(function(){frame.bowl()}).toThrowError("Cannot bowl, frame is complete")
   });
+
+  it("completes 12th frame if bowl is not a strike", function() {
+    spyOn(Math, 'floor').and.returnValue(4);
+    frame.bonusBowl();
+    expect(frame.currentFrame).toEqual([4,0])
   });
+});

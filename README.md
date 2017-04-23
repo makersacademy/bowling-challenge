@@ -45,6 +45,7 @@ So that I can get double points on my next frame
 As a bowler,
 I want my strike to give a special value
 so that I can add it to my total
+```
 
 ## To install:
 

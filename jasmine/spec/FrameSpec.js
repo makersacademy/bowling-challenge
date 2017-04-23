@@ -5,78 +5,44 @@ describe("Frame", function() {
     frame = new Frame();
   });
 
-  it('starts with 10 pins', function() {
+  describe('set up', function(){
+    it('starts with 10 pins', function() {
     expect(frame.pins).toBe(10)
+    });
   });
-
-  it('starts with 2 bowls', function() {
-    expect(frame.bowls).toBe(2)
-  });
-
-  describe('bowling', function(){
-    it('bowls the first ball(5)', function(){
-      frame.bowl_one(5)
-      expect(frame.pins).toBe(5)
-    })
-    it('bowls the first ball(10)', function(){
-      frame.bowl_one(10)
-      expect(frame.pins).toBe(0)
-    })
-    it('bowls the second ball(5)', function(){
-      frame.bowl_two(5)
-      expect(frame.pins).toBe(5)
-    })
-    it('bowls two balls(3 & 5)', function(){
-      frame.bowl_one(3)
-      frame.bowl_two(5)
-      expect(frame.pins).toBe(2)
-    })
-    it('returns 0 pins if bowl_one knocks 10 pins down', function() {
-      spyOn(frame, 'rand_num').and.returnValue(10);
-      frame.complete()
-      expect(frame.pins).toBe(0)
-    })
-    it('returns a strike if bowl_one knocks 10 pins down', function() {
-      spyOn(frame, 'rand_num').and.returnValue(10);
-      expect(frame.complete()).toBe('strike')
-    });
-    it('returns a spare if complete bowl knocks 10 pins down', function() {
-      spyOn(frame, 'bowl_one').and.returnValue(0);
-      spyOn(frame, 'rand_num').and.returnValue(10);
-      expect(frame.complete()).toBe('spare')
-    });
-    it('returns 0 pins if complete bowl knocks 10 pins down', function() {
-      spyOn(frame, 'rand_num').and.returnValue(5);
-      frame.complete()
-      expect(frame.pins).toBe(0)
-    });
-    it('returns 2 if complete bowl knocks 8 pins down', function() {
+  describe('bowl a frame', function(){
+    it('can add two bowls to frame.bowls', function(){
       spyOn(frame, 'rand_num').and.returnValue(4);
-      frame.complete()
-      expect(frame.pins).toBe(2)
+      frame.bowl_round()
+      expect(frame.bowls[0]).toBeTruthy()
+      expect(frame.bowls[1]).toBeTruthy()
+    });
+    it('returns first bowl', function(){
+      spyOn(frame, 'rand_num').and.returnValue(4);
+      frame.bowl_round()
+      expect(frame.firstBowl()).toBe(4)
+    });
+    it('returns second bowl', function(){
+      spyOn(frame, 'rand_num').and.returnValue(4);
+      frame.bowl_round()
+      expect(frame.secondBowl()).toBe(4)
     });
   });
-  describe('returns random numbers', function(){
-    it('returns a number between 0 & 10', function(){
-      expect(frame.rand_num() >= 0 && frame.rand_num() <= 10).toBeTruthy()
+  describe('score calculation', function(){
+    it('is not a strike', function(){
+      spyOn(frame, 'rand_num').and.returnValue(4);
+      frame.bowl_round()
+      expect(frame.outcome()).toEqual('')
     });
-    it('returns a number between 0 & 3 after scoring 7 on bowl_one', function(){
-      frame.bowl_one(7)
-      expect(frame.rand_num() >= 0 && frame.rand_num() <= 3).toBeTruthy()
+    it('is a strike', function(){
+      spyOn(frame, 'rand_num').and.returnValue(10);
+      frame.bowl_round()
+      expect(frame.outcome()).toBe('X')
+    });
+    it('is a spare', function(){
+      spyOn(frame, 'rand_num').and.returnValue(5);
+      frame.bowl_round()
+      expect(frame.outcome()).toBe('/')
     });
   });
-  describe('bowl two random balls', function() {
-    it('pins are at least 0', function(){
-      frame.bowl()
-      expect(frame.pins >= 0).toBeTruthy()
-    })
-  describe('check for spare', function() {
-    it('basic check', function(){
-      frame.bowl_one(10)
-      expect(frame.score()).toEqual('spare')
-
-    })
-  })
-
-  })
 });

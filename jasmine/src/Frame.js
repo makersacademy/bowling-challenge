@@ -2,41 +2,44 @@
 
 function Frame() {
   this.pins = 10
-  this.bowls = 2
-  this.scores = 0
+  this.bowls = [null,null]
 }
 
-Frame.prototype.bowl_one = function(pins) {
-  this.pins -= pins
+Frame.prototype.bowl_round = function() {
+  var bowl1 = this.rand_num()
+  this.pins -= bowl1
+  this.bowls[0] = bowl1
+  var bowl2 = this.rand_num()
+  this.pins -= bowl2
+  this.bowls[1] = bowl2
 }
 
-Frame.prototype.bowl_two = function(pins) {
-  this.pins -= pins
+Frame.prototype.bowlBonus = function() {
+  var bowl1 = this.rand_num()
+  this.pins -= bowl1
+  this.bowls[0] = bowl1
+  var bowl2 = 0
+  this.pins -= bowl2
+  this.bowls[1] = bowl2
 }
 
-Frame.prototype.bowl = function() {
-  this.bowl_one(this.rand_num())
-  this.bowl_two(this.rand_num())
+Frame.prototype.outcome = function() {
+  if(this.bowls[0] === 10) {
+    return 'X'
+  } else if (this.bowls[0] + this.bowls[1] === 10) {
+    return '/' } else {
+    return ''
+  }
 }
 
-Frame.prototype.complete = function() {
-    this.bowl_one(this.rand_num())
-    if(this.pins === 0) {
-      return 'strike'
-    } else {
-      this.bowl_two(this.rand_num())
-      return this.score()
-    }
+Frame.prototype.firstBowl = function() {
+  return this.bowls[0]
 }
 
-
-Frame.prototype.score = function() {
-    if(this.pins === 0) {
-      return 'spare'
-    } else {
-      return this.pins
-      }
+Frame.prototype.secondBowl = function() {
+  return this.bowls[1]
 }
+
 Frame.prototype.rand_num = function() {
   return Math.floor(Math.random() * (this.pins + 1))
 }

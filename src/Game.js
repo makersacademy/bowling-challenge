@@ -18,7 +18,7 @@ const INITIAL_BONUS_POINTS = 0
 
 Game.prototype.reset = function(){
   this.score = 0
-  this.frameNo = 0
+  this.frameNo = 1
   this.rollCount = 0
   this.rollHistory = []
   this.frameHistory = []
@@ -59,11 +59,11 @@ Game.prototype.increaseRollNo = function(points){
 Game.prototype.isWhichRoll = function(){
   if (this.rollCount === 21){
     return 3;
-  }
-  if (this.rollCount % 2 === 1){
+  } else if (this.rollCount % 2 === 1){
     return 1;
-  }
+  } else {
   return 2;
+  }
 }
 
 Game.prototype.isStrike = function(points){

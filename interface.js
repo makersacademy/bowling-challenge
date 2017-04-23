@@ -65,7 +65,7 @@ $(document).ready(function(){
   })
 
   function updateScore () {
-    $('#total-score').text(game.getScore());
+    $('#total-score').text(game.score);
     roll = game.rollCount;
     $('#r' + roll).text(game.rollHistory[roll -1]);
     frame = game.frameNo -1;

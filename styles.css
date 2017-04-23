@@ -19,16 +19,17 @@ h1 {
 .frames-box {
   width: 870px;
   height: 80px;
-  background-color: green;
+
 }
 
 .frame {
-  width: 85px;
+    position: relative;
+    width: 85px;
     height: 85px;
-    background-color: grey;
+    background-color: #FFF;
     border-style: solid;
     border-width: 1px;
-    border-color: white;
+    border-color: #000;
     float: left;
 }
 
@@ -36,4 +37,16 @@ h1 {
     font-size: 25px;
     text-align: center;
     margin-top: 45px;
+    margin-left: -1px;
+}
+
+.first-shot-box {
+  position: absolute;
+  top: -1px;
+  left: 44px;
+  width: 40px;
+  height: 40px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000;
 }

@@ -52,12 +52,22 @@ $(document).ready(function() {
   });
 
   function updateFrame(pins) {
-    $('#r' + game.rolls).text(pins);
+    if(pins === 10) {$('#r' + game.rolls).text('X');}
+    else if (game.spareInPreviousFrame() === true && game.rolls % 2 === 0){$('#r' + game.rolls).text('/');}
+    else {$('#r' + game.rolls).text(pins);}
+    updateCumulativeScores();
     updateTotalScore();
   }
 
   function updateTotalScore() {
     $('#total-score').text(game.totalScore);
+  }
+
+  function updateCumulativeScores() {
+    for(var i=1; i<11; i++) {
+      console.log(game.cumulativeFrameScores[i-1]);
+      $('#cumulative-score-f' + i).text(game.cumulativeFrameScores[i-1])
+    }
   }
 
 });

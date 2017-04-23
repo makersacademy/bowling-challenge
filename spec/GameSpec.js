@@ -147,20 +147,20 @@ describe('Game', function(){
       expect(game.score).toEqual(8)
     })
 
-    // it('adds spare bonus in next non-bonusy frame', function(){
-    //   game.makeRoll(7);
-    //   game.makeRoll(3);
-    //   game.makeRoll(4);
-    //   expect(game.score).toEqual(14)
-    // })
+    it('adds spare bonus in next non-bonusy frame', function(){
+      game.makeRoll(7);
+      game.makeRoll(3);
+      game.makeRoll(4);
+      expect(game.score).toEqual(14)
+    })
 
-    // it('spare and a non-bonusy frame', function(){
-    //   game.makeRoll(7);
-    //   game.makeRoll(3);
-    //   game.makeRoll(4);
-    //   game.makeRoll(3);
-    //   expect(game.score).toEqual(21)
-    // })
+    it('spare and a non-bonusy frame', function(){
+      game.makeRoll(7);
+      game.makeRoll(3);
+      game.makeRoll(4);
+      game.makeRoll(3);
+      expect(game.score).toEqual(21)
+    })
 
     // it('adds strike bonus in at end of next non-bonusy frame', function(){
     //   game.makeRoll(10);
@@ -169,15 +169,15 @@ describe('Game', function(){
     //   expect(game.score).toEqual(28)
     // })
 
-    // it('2 spares and a non-bonusy frame', function(){
-    //   game.makeRoll(7);
-    //   game.makeRoll(3);
-    //   game.makeRoll(4);
-    //   game.makeRoll(6);
-    //   game.makeRoll(7);
-    //   game.makeRoll(1);
-    //   expect(game.score).toEqual(39)
-    // })
+    it('2 spares and a non-bonusy frame', function(){
+      game.makeRoll(7);
+      game.makeRoll(3);
+      game.makeRoll(4);
+      game.makeRoll(6);
+      game.makeRoll(7);
+      game.makeRoll(1);
+      expect(game.score).toEqual(39)
+    })
 
     // it('two strikes and a non-bonusy frame', function(){
     //   game.makeRoll(10);
@@ -187,17 +187,17 @@ describe('Game', function(){
     //   expect(game.score).toEqual(53)
     // });
 
-    // it('three spares, non-bonusy', function(){
-    //   game.makeRoll(7);
-    //   game.makeRoll(3);
-    //   game.makeRoll(8);
-    //   game.makeRoll(2);
-    //   game.makeRoll(3);
-    //   game.makeRoll(7);
-    //   game.makeRoll(6);
-    //   game.makeRoll(3);
-    //   expect(game.score).toEqual(56)
-    // })
+    it('three spares, non-bonusy', function(){
+      game.makeRoll(7);
+      game.makeRoll(3);
+      game.makeRoll(8);
+      game.makeRoll(2);
+      game.makeRoll(3);
+      game.makeRoll(7);
+      game.makeRoll(6);
+      game.makeRoll(3);
+      expect(game.score).toEqual(56)
+    })
 
     // it('three strikes', function(){
     //   game.makeRoll(10);

@@ -38,6 +38,10 @@ Game.prototype.makeRoll = function(points) {
   } else {
     // is frame a strike? if so, make frame.
     // if not see if last frame was a spare, make that frame with r1
+    if (this.tallyLast() === 10){
+      this.score += (10 + points);
+      this.frameScores.push(this.score)
+    }
     // if 2 rolls ago in roll history was strike, make that frame with r1
   }
 }
@@ -75,6 +79,12 @@ Game.prototype.shouldUpdateScore = function(){
 
 Game.prototype.tallyFrame = function(){
   return this.currentFrame[0] + this.currentFrame[1]
+}
+
+Game.prototype.tallyLast = function(){
+  if (this.frameNo > 1){
+    return this.history.slice(-1)[0][0] + this.history.slice(-1)[0][1]
+  }
 }
 
 Game.prototype.updateScore = function(){

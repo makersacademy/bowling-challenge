@@ -1,50 +1,45 @@
 'use strict';
 
 function Game() {
-  this.score = INITIAL_SCORE
-  this.frameNo = INITIAL_FRAME_NO
-  this.rollCount = INITIAL_ROLL_COUNT
+  this.score = 0
+  this.frameNo = 1
+  this.rollCount = 0
   this.rollHistory = []
-  this.frameHistory = []
+  this.history = []
   this.frameScores = []
   this.currentFrame = []
-  this.bonusPoints = INITIAL_BONUS_POINTS
 }
-
-const INITIAL_SCORE = 0
-const INITIAL_FRAME_NO = 1
-const INITIAL_ROLL_COUNT = 0
-const INITIAL_BONUS_POINTS = 0
 
 Game.prototype.reset = function(){
   this.score = 0
   this.frameNo = 1
   this.rollCount = 0
   this.rollHistory = []
-  this.frameHistory = []
+  this.history = []
   this.frameScores = []
   this.currentFrame = []
-  this.bonusPoints = 0
 }
 
-Game.prototype.getScore = function(){
-  return this.score
+Game.prototype.isStrike = function(points){
+  return points === 10
 }
 
-Game.prototype.getFrameNo = function(){
-  return this.frameNo
+Game.prototype.isFinalFrame = function(){
+  return this.frameNo == 10
 }
 
-Game.prototype.getRollCount = function(){
-  return this.rollCount
-}
-
-Game.prototype.getFrameHistory = function(){
-  return this.frameHistory
-}
-
-Game.prototype.getBonusPoints = function(){
-  return this.bonusPoints
+Game.prototype.makeRoll = function(points) {
+  this.isGameOver();
+  this.increaseRollNo(points);
+  this.rollHistory.push(points);
+  this.currentFrame.push(points);
+  if (this.isWhichRoll() === 2){
+    this.makeFrame();
+  } else {
+    // is frame a strike? if so, make frame.
+    // if not see if last frame was a spare, make that frame with r1
+    // if 2 rolls ago in roll history was strike, make that frame with r1
+  }
 }
 
 Game.prototype.increaseRollNo = function(points){
@@ -66,102 +61,25 @@ Game.prototype.isWhichRoll = function(){
   }
 }
 
-Game.prototype.isStrike = function(points){
-  return points === 10
+Game.prototype.makeFrame = function(){
+  this.history.push(this.currentFrame);
+  this.shouldUpdateScore();
+  this.nextFrame();
 }
 
-Game.prototype.isFrameBonus = function(){
-  return this.currentFrame[0] === 10 || this.currentFrame[0] + this.currentFrame[1] === 10
-}
-
-Game.prototype.isPreviousBonus = function(){
-  return this.frameHistory.slice(-1)[0][0] === 10 || this.frameHistory.slice(-1)[0][0] + this.frameHistory.slice(-1)[0][1] === 10
-}
-
-Game.prototype.isFinalFrame = function(){
-  return this.frameNo == 10
-}
-
-Game.prototype.strikeOrSpare = function(){
-  if(this.currentFrame[0] === 10){
-    return 'strike'
-    //add points to bonus tally
-  } else {
-    return 'spare'
-    //add points to bonus tally
+Game.prototype.shouldUpdateScore = function(){
+  if (this.tallyFrame() < 10) {
+    this.updateScore();
   }
 }
 
-Game.prototype.makeRoll = function(points){
-  this.isGameOver();
-  this.increaseRollNo(points);
-  this.rollHistory.push(points);
-  this.currentFrame.push(points);
-  if (this.isFrameBonus() && this.isFinalFrame()){
-    if (this.isWhichRoll() === 3){
-      this.makeFrame();
-    }
-  }
-  else if (this.isWhichRoll() === 2){
-    if (this.frameNo > 1){
-      if (this.isLastFrameStriky()){
-        // this and last are striky, add to bonus but dont make frame
-        this.bonusPoints += this.tallyFrame()
-      }
-    }
-    this.makeFrame();
-  }
-  else {
-    if (this.frameNo > 1) {
-      if (this.isLastFrameSparey()) {
-        this.updateScoreWithSpare();
-      }
-    }
-    if (this.frameNo > 2) {
-      if (this.isLastFrameStriky() && this.isFrameBeforeStriky()) {
-        this.bonusPoints += this.currentFrame[0]
-        this.score += this.bonusPoints
-        this.bonusPoints = 0
-      }
-    }
-    if (this.isStrike(points)){
-      this.makeFrame();
-    }
-  }
-}
-
-Game.prototype.updateScoreWithSpare = function(){
-  this.bonusPoints += this.currentFrame[0]
-  this.score += this.bonusPoints
-  this.bonusPoints = 0
+Game.prototype.tallyFrame = function(){
+  return this.currentFrame[0] + this.currentFrame[1]
 }
 
 Game.prototype.updateScore = function(){
-  this.score += (this.tallyFrame() + this.bonusPoints)
+  this.score += (this.tallyFrame())
   this.frameScores.push(this.score)
-  this.bonusPoints = 0
-}
-
-Game.prototype.isLastFrameSparey = function(){
-  return this.frameHistory.slice(-1)[0][0] + this.frameHistory.slice(-1)[0][1] === 10
-}
-
-Game.prototype.isLastFrameStriky = function(){
-  return this.frameHistory.slice(-1)[0][0] === 10
-}
-
-Game.prototype.isFrameBeforeStriky = function(){
-  return this.frameHistory.slice(-2)[0][0] === 10
-}
-
-Game.prototype.isFrameBeforeThatStriky = function(){
-  return this.frameHistory.slice(-3)[0][0] === 10
-}
-
-Game.prototype.makeFrame = function(){
-  this.frameHistory.push(this.currentFrame);
-  this.shouldUpdateScore();
-  this.nextFrame();
 }
 
 Game.prototype.nextFrame = function(){
@@ -169,38 +87,8 @@ Game.prototype.nextFrame = function(){
   this.currentFrame = [];
 }
 
-Game.prototype.tallyFrame = function(){
-  if (this.currentFrame[0] === 10){
-    return 10
-  }
-  else {
-    if (this.frameNo > 3 && this.isLastFrameStriky() && this.isFrameBeforeStriky() && this.isFrameBeforeThatStriky()) {
-      return this.currentFrame[0] + this.currentFrame[1] + 10
-    }
-    return this.currentFrame[0] + this.currentFrame[1]
-  }
-}
-
-Game.prototype.updateBonus = function(){
-  this.bonusPoints += 10
-}
-
-Game.prototype.shouldUpdateScore = function(){
-  if (this.bonusPoints === 20) {
-    this.updateScore()
-  }
-  else if (this.tallyFrame() < 10) {
-    this.updateScore()
-  }
-  else {
-    this.updateBonus()
-  }
-}
-
 Game.prototype.isGameOver = function(){
   if (this.frameNo === 11){
     throw new Error("Game Over")
   }
 }
-
-

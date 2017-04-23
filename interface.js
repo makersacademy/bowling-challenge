@@ -6,6 +6,7 @@ var game = new Game;
 var totalScoreDisplay = function(extra){
   var totalScore = game.totalGameScore() + extra;
   $('#total-score').text(totalScore);
+  $('#pins-down').empty();
   for(var x=0; x < totalScore; x++) {
     $('#pins-down').append('🎳');
   }
@@ -16,19 +17,18 @@ var lastFrameDone = false;
 
 $(document).ready(function(){
   totalScoreDisplay(0);
-  $('#start-game').click(function(){
-    frameNumber = 0;
-    for(var x=0; x<10; x++) {
-      $('#bowl').click();
-    }
+  $('#new-game').click(function(){
+    $('#shut-up')[0].play();
   });
-
+  $("#shut-up").bind('ended', function(){
+    location.reload();
+});
   $('#bowl').click(function(){
-    $('#bowling-sound')[0].currentTime = 0;
-    $('#bowling-sound')[0].play();
     var extra = 0;
     if (frameNumber <= 9){
       frame = new Frame;
+      $('#bowling-sound')[0].currentTime = 0;
+      $('#bowling-sound')[0].play();
       $('#score-' + frameNumber + '-1').text(frame.firstBowl());
       $('#score-' + frameNumber + '-2').text(frame.secondBowl());
       game.scoreFrame(frameNumber, frame);

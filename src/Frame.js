@@ -40,11 +40,6 @@ Frame.prototype.secondBowl = function() {
   return this.bowls[1]
 }
 
-Frame.prototype.restart = function() {
-  this.pins = 10
-  this.bowls = [null,null]
-}
-
 Frame.prototype.rand_num = function() {
   return Math.floor(Math.random() * (this.pins + 1))
 }

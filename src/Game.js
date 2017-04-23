@@ -41,7 +41,6 @@ Game.prototype.calculateScores = function() {
   }
 }
 
-
 Game.prototype.complete = function(bonusFrame) {
   if(this._frames[8].outcome() === 'X' || this._frames[9].outcome() === 'X' || this._frames[9].outcome() === '/') {
     return this._frames.push(bonusFrame)

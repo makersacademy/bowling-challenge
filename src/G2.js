@@ -61,7 +61,7 @@ Game.prototype.makeFrame = function(){
 
 Game.prototype.shouldUpdateScore = function(){
   if (this.tallyFrame() < 10) {
-    this.updateScore()
+    this.updateScore();
   }
 }
 
@@ -72,4 +72,15 @@ Game.prototype.tallyFrame = function(){
 Game.prototype.updateScore = function(){
   this.score += (this.tallyFrame())
   this.frameScores.push(this.score)
+}
+
+Game.prototype.nextFrame = function(){
+  this.frameNo += 1;
+  this.currentFrame = [];
+}
+
+Game.prototype.isGameOver = function(){
+  if (this.frameNo === 11){
+    throw new Error("Game Over")
+  }
 }

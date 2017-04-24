@@ -7,10 +7,6 @@ var Bowling = function() {
   this.pinsRemaining = 10;
 };
 
-Bowling.prototype.getFrameNumber = function () {
-  return this.frameNumber;
-};
-
 Bowling.prototype.roll = function (pins) {
   if (pins > this.pinsRemaining) {
     throw new TypeError('Invalid number of pins knocked over');
@@ -39,6 +35,10 @@ Bowling.prototype.nextFrame = function () {
   } else {
     this.frameNumber = 11;
   }
+};
+
+Bowling.prototype.getFrameNumber = function () {
+  return this.frameNumber;
 };
 
 Bowling.prototype.getCurrentScore = function () {

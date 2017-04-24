@@ -160,4 +160,8 @@ $(document).ready(function() {
     bowling.roll(10);
     updateVisuals();
   });
+
+  $('#github-button').click(function(){
+    window.location.href="https://github.com/petewilkins";
+  });
 });

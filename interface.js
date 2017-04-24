@@ -81,8 +81,13 @@ $(document).ready(function(){
     frame = game.frameNo -1;
     // update frame before if needed
     // if was strike
-    if (game.rollCount > 3 && game.wasStrike()){
-      $('#f' + (frame - 1)).text(game.frameScores[frame - 2]);
+    if (game.literalRollCount >= 3 && game.wasStrike()){
+      // if strike strike strike
+      if (game.literalRollHistory.slice(-3)[0] === 10 && game.literalRollHistory.slice(-3)[1] === 10 && game.literalRollHistory.slice(-3)[2] === 10){
+         $('#f' + (frame - 2)).text(game.frameScores[frame - 3]);
+      } else {
+        $('#f' + (frame - 1)).text(game.frameScores[frame - 2]);
+      }
     }
     $('#f' + frame).text(game.frameScores[frame - 1]);
   }

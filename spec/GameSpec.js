@@ -199,28 +199,28 @@ describe('Game', function(){
       expect(game.score).toEqual(56)
     })
 
-    // it('three strikes', function(){
-    //   game.makeRoll(10);
-    //   game.makeRoll(10);
-    //   game.makeRoll(10);
-    //   expect(game.score).toEqual(30)
-    // })
+    it('three strikes', function(){
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      expect(game.score).toEqual(30)
+    })
 
-    // it('three strikes and a 5', function(){
-    //   game.makeRoll(10);
-    //   game.makeRoll(10);
-    //   game.makeRoll(10);
-    //   game.makeRoll(5);
-    //   expect(game.score).toEqual(55)
-    // })
+    it('three strikes and a 5', function(){
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(5);
+      expect(game.score).toEqual(55)
+    })
 
-    // it('three strikes and a non-bonusy frame', function(){
-    //   game.makeRoll(10);
-    //   game.makeRoll(10);
-    //   game.makeRoll(10);
-    //   game.makeRoll(5);
-    //   game.makeRoll(3);
-    //   expect(game.score).toEqual(81)
-    // })
+    it('three strikes and a non-bonusy frame', function(){
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(5);
+      game.makeRoll(3);
+      expect(game.score).toEqual(81)
+    })
   })
 });

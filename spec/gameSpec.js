@@ -6,7 +6,7 @@ describe('Game', function(){
     game = new Game();
   });
 
-  describe ('errors', function(){
+  describe ('error messages thrown', function(){
     it('throws an error if points entered are less than 0', function(){
       expect(function(){game.roll(-1);}).toThrowError("Invalid roll: points must be between 0-10");
     });
@@ -109,23 +109,54 @@ describe('Game', function(){
     })
   });
 
-  describe ('bonus points', function(){
+  describe ('spare', function(){
 
     it('recognises if a spare has not been acheived', function(){
       game.roll(1);
       game.roll(8);
       expect(game.isASpare).toEqual(false);
-    })
+    });
 
+    it('if spare: calculation of cumulative score delayed', function(){
+      game.roll(9);
+      game.roll(1);
+      expect(game.cumulativeFrameScores).toEqual([]);
+    });
+
+    it('if spare: calculation of prior frame\s cumulative score occurs after first roll of next frame', function(){
+      game.roll(4);
+      game.roll(6);
+      game.roll(4)
+      expect(game.cumulativeFrameScores).toEqual([14]);
+    });
+
+    it('can get multiple spares in a row', function(){
+      game.roll(4);
+      game.roll(6);
+      game.roll(4);
+      game.roll(6);
+      game.roll(2);
+      expect(game.cumulativeFrameScores).toEqual([14, 26]);
+    });
+
+    it('strike followed by a spare', function() {
+      game.roll(10);
+      game.roll(4);
+      game.roll(6);
+      expect(game.cumulativeFrameScores).toEqual([20]);
+    });
+  });
+
+  describe ('strike', function(){
     it('recognises if a strike has not been acheived', function(){
       game.roll(9);
       expect(game.isAStrike).toEqual(false);
-    })
+    });
 
     it('moves to the next frame if strike is achieved', function(){
       game.roll(10);
       expect(game.currentFrameNumber).toEqual(2);
-    })
+    });
 
     it('if strike: calculation of cumulative score delayed', function(){
       game.roll(10);
@@ -161,35 +192,6 @@ describe('Game', function(){
       game.roll(5);
       expect(game.cumulativeFrameScores).toEqual([25]);
     });
-
-    it('if spare: calculation of cumulative score delayed', function(){
-      game.roll(9);
-      game.roll(1);
-      expect(game.cumulativeFrameScores).toEqual([]);
-    });
-
-    it('if spare: calculation of prior frame\s cumulative score occurs after first roll of next frame', function(){
-      game.roll(4);
-      game.roll(6);
-      game.roll(4)
-      expect(game.cumulativeFrameScores).toEqual([14]);
-    });
-
-    it('can get multiple spares in a row', function(){
-      game.roll(4);
-      game.roll(6);
-      game.roll(4);
-      game.roll(6);
-      game.roll(2);
-      expect(game.cumulativeFrameScores).toEqual([14, 26]);
-    });
-
-    it('strike followed by a spare', function() {
-      game.roll(10);
-      game.roll(4);
-      game.roll(6);
-      expect(game.cumulativeFrameScores).toEqual([20]);
-    });
   });
 
   describe('tenth frame', function() {
@@ -223,14 +225,14 @@ describe('Game', function(){
       expect(game.frameHistory[9]).toEqual([1, 9, 1]);
     });
 
-    it('player only gets one additional roll', function() {
+    it('player only gets one additional roll e.g. spare', function() {
       game.roll(1);
       game.roll(9);
       game.roll(1);
       expect(function(){game.roll(1);}).toThrowError("The game has finished. Start a new game to throw again.");
     });
 
-    it('player only gets one additional roll', function() {
+    it('player only gets one additional roll e.g. strike', function() {
       game.roll(10);
       game.roll(10);
       game.roll(10);

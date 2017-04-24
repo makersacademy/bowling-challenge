@@ -38,7 +38,6 @@ Game.prototype.updatePinsRemaining = function(points) {
 Game.prototype.strikeOrSpare = function() {
   if(this.getNextRoll() === 1) {
     this.isASpare = true;
-    console.log(this.tenthFrameBonus())
   } else {
     this.isAStrike = true;
     if(this.isTenthFrame() !== true) { this.rolls += 1 }
@@ -94,7 +93,6 @@ Game.prototype.tenthFrameBonus = function() {
 
 Game.prototype.addCurrentFrameToFrameHistory = function(frame) {
   this.frameHistory.push(frame);
-  console.log(this.frameHistory);
 };
 
 Game.prototype.prepareNextFrame = function() {

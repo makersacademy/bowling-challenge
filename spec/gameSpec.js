@@ -13,13 +13,6 @@ describe("Game", function() {
     });
   });
 
-  describe('frameset', function() {
-    it('should add to scores table', function() {
-      console.log = jasmine.createSpy("log");
-      spyOn(game, "scoresRaw").and.returnValue([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
-      game.frameSet();
-      expect(console.log).toHaveBeenCalledWith('Finished!');
-    });
-  });
+
 
 });

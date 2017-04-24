@@ -19,10 +19,10 @@ Game.prototype.score = function(){
       rollIndex++;
     } else if (isSpare()) {
       result += getSpareScore();
-      rollIndex += 2; //gives us two rolls per frame
+      rollIndex += 2;
     } else {
       result += getNormalScore();
-      rollIndex += 2; //gives us two rolls per frame
+      rollIndex += 2;
     }
   }
   return result;
@@ -42,7 +42,6 @@ Game.prototype.score = function(){
   function getStrikeScore(){
     return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
   }
-
   function getNormalScore(){
     return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
   }

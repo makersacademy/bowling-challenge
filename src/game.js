@@ -22,14 +22,14 @@ Game.prototype.roll = function(points) {
   if(points > this.pinsRemaining) {
     throw new Error("Invalid roll: only " + this.pinsRemaining + " pins remaining")
   }
-  this.rolls += 1
+  this.rolls += 1;
   this.updatePinsRemaining(points);
   this.addToCurrentFrame(points);
   this.isNextFrame();
 };
 
 Game.prototype.updatePinsRemaining = function(points) {
-  this.pinsRemaining -= points
+  this.pinsRemaining -= points;
   if (this.pinsRemaining === 0) {
     this.strikeOrSpare();
   }
@@ -40,7 +40,7 @@ Game.prototype.strikeOrSpare = function() {
     this.isASpare = true;
   } else {
     this.isAStrike = true;
-    if(this.isTenthFrame() !== true) { this.rolls += 1 }
+    if(this.isTenthFrame() !== true) { this.rolls += 1; }
   }
 };
 
@@ -86,7 +86,7 @@ Game.prototype.isNextFrame = function() {
 };
 
 Game.prototype.tenthFrameBonus = function() {
-  if(this.isTenthFrame() === true && (this.isASpare === true || this.isAStrike === true)) {
+  if(this.isTenthFrame() === true && (this.isASpare === true || this.isAStrike === true || this.currentFrame[0] === 10)) {
       return true;
   }
 };
@@ -102,7 +102,7 @@ Game.prototype.prepareNextFrame = function() {
 };
 
 Game.prototype.updateScores = function(){
-  if(this.strikeInPreviousFrame() === true){ this.calculatePreviousFrameScore() }
+  if(this.strikeInPreviousFrame() === true){ this.calculatePreviousFrameScore(); }
   if((this.isAStrike !== true && this.isASpare !== true) || this.rolls === 21){
     this.calculateFrameScore();
     this.updateTotalScore();

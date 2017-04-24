@@ -1,6 +1,5 @@
 $(document).ready(function() {
   var game = new Game();
-  $("img").hide();
 
   $('#pin0').click(function(){
   game.roll(0);

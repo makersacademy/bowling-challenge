@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bowling</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="mystyle.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img alt="Brand" src="images/bowling.svg">
+        </a>
+        <p class="navbar-text">Bowling</p>
+      </div>
+      <button type="button" class="btn btn-default navbar-btn navbar-right" id="github-button">Github</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="text-center">
+        <h1>Let's Bowl</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-md-offset-4">
+        <div class="btn-group" role="group" aria-label="...">
+          <button type="button" class="btn btn-danger" id="roll-0">0</button>
+          <button type="button" class="btn btn-warning" id="roll-1">1</button>
+          <button type="button" class="btn btn-warning" id="roll-2">2</button>
+          <button type="button" class="btn btn-warning" id="roll-3">3</button>
+          <button type="button" class="btn btn-warning" id="roll-4">4</button>
+          <button type="button" class="btn btn-info" id="roll-5">5</button>
+          <button type="button" class="btn btn-info" id="roll-6">6</button>
+          <button type="button" class="btn btn-info" id="roll-7">7</button>
+          <button type="button" class="btn btn-info" id="roll-8">8</button>
+          <button type="button" class="btn btn-success" id="roll-9">9</button>
+          <button type="button" class="btn btn-success" id="roll-10">10</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+
+  <div class="container">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">Scorecard</div>
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th scope="row">Frame</th>
+                <td colspan="2">1</td>
+                <td colspan="2">2</td>
+                <td colspan="2">3</td>
+                <td colspan="2">4</td>
+                <td colspan="2">5</td>
+                <td colspan="2">6</td>
+                <td colspan="2">7</td>
+                <td colspan="2">8</td>
+                <td colspan="2">9</td>
+                <td colspan="3">10</td>
+              </tr>
+              <tr>
+                <th scope="row">Rolls</th>
+                <td id="rollIndex-1"></td>
+                <td id="rollIndex-2"></td>
+                <td id="rollIndex-3"></td>
+                <td id="rollIndex-4"></td>
+                <td id="rollIndex-5"></td>
+                <td id="rollIndex-6"></td>
+                <td id="rollIndex-7"></td>
+                <td id="rollIndex-8"></td>
+                <td id="rollIndex-9"></td>
+                <td id="rollIndex-10"></td>
+                <td id="rollIndex-11"></td>
+                <td id="rollIndex-12"></td>
+                <td id="rollIndex-13"></td>
+                <td id="rollIndex-14"></td>
+                <td id="rollIndex-15"></td>
+                <td id="rollIndex-16"></td>
+                <td id="rollIndex-17"></td>
+                <td id="rollIndex-18"></td>
+                <td id="rollIndex-19"></td>
+                <td id="rollIndex-20"></td>
+                <td id="rollIndex-21"></td>
+              </tr>
+              <tr>
+                <th scope="row">Score</th>
+                <td colspan="2" id="scoreIndex-0"></td>
+                <td colspan="2" id="scoreIndex-1"></td>
+                <td colspan="2" id="scoreIndex-2"></td>
+                <td colspan="2" id="scoreIndex-3"></td>
+                <td colspan="2" id="scoreIndex-4"></td>
+                <td colspan="2" id="scoreIndex-5"></td>
+                <td colspan="2" id="scoreIndex-6"></td>
+                <td colspan="2" id="scoreIndex-7"></td>
+                <td colspan="2" id="scoreIndex-8"></td>
+                <td colspan="3" id="scoreIndex-9"></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="src/Bowling.js"></script>
+  <script type="text/javascript" src="Interface.js"></script>
+</body>
+</html>

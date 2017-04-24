@@ -1,5 +1,9 @@
+function game(){
+  game = new Game;
+}
+
 $(document).ready(function(){
-  var game = new Game;
+  game();
   updateScore();
 
   $('#roll-a-0').on('click',function(){

@@ -8,9 +8,12 @@ function Game() {
   this.pins = [];
 }
 
+Game.prototype.scoresRaw = function() {
+  return scoresRaw;
+}
+
 Game.prototype.frameSet = function() {
-  if (this.scoresRaw.length == 10) {
-    // return score message
+  if (this.scoresRaw().length == 10) {
     console.log('Finished!')
   } else if (this.scoresRaw.length == 9) {
     this.tripleTurn();

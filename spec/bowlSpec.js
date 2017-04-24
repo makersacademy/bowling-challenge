@@ -8,15 +8,15 @@ describe("Bowl", function () {
 
   describe('throw', function(){
     it('should return 6 with input 11', function(){
-      spyOn(Math, 'random').and.returnValue(1);
-      expect(bowl.throw()).toEqual(9);
+      spyOn(window, "prompt").and.returnValue("11");
+      expect(bowl.throw()).toEqual(5);
     });
     it('should return 7 with input -13', function(){
-      spyOn(Math, 'random').and.returnValue(0.475);
-      expect(bowl.throw()).toEqual(0);
+      spyOn(window, "prompt").and.returnValue("-13");
+      expect(bowl.throw()).toEqual(6);
     });
     it('should return 0 with input 0', function(){
-      spyOn(Math, 'random').and.returnValue(0.501);
+      spyOn(window, "prompt").and.returnValue("0");
       expect(bowl.throw()).toEqual(0);
     });
   });
@@ -31,20 +31,22 @@ describe("Bowl", function () {
 
   describe('domino', function() {
     it('should push pins to array and return score', function() {
-      spyOn(Math, 'random').and.returnValue(0);
+      spyOn(Math, 'random').and.returnValue(0.5);
+      spyOn(window, "prompt").and.returnValue("0");
       bowl.throw();
       bowl.domino();
-      expect(bowl.score()).toEqual(1);
+      expect(bowl.score()).toEqual(10);
     });
   });
 
   describe('runninng throw twice', function() {
     it('should be able to return score after two throws', function() {
-      spyOn(Math, 'random').and.returnValue(0);
+      spyOn(window, "prompt").and.returnValue("0");
       bowl.throw();
       bowl.throw();
+      spyOn(Math, 'random').and.returnValue(0.5);
       bowl.domino();
-      expect(bowl.score()).toEqual(1);
+      expect(bowl.score()).toEqual(10);
     });
   });
 

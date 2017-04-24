@@ -94,6 +94,7 @@ Game.prototype.tenthFrameBonus = function() {
 
 Game.prototype.addCurrentFrameToFrameHistory = function(frame) {
   this.frameHistory.push(frame);
+  console.log(this.frameHistory);
 };
 
 Game.prototype.prepareNextFrame = function() {
@@ -112,15 +113,13 @@ Game.prototype.updateScores = function(){
 
 Game.prototype.calculateFrameScore = function() {
     var frameScore;
-    if (this.rolls === 21) { console.log(frameScore = this.frameHistory[9][0] + this.frameHistory[9][1] + this.frameHistory[9][2]) }
+    if (this.rolls === 21) { frameScore = this.frameHistory[9][0] + this.frameHistory[9][1] + this.frameHistory[9][2] }
     else { frameScore = this.getFirstRollScore() + this.getSecondRollScore();}
     this.updateCumulativeFrameScore(frameScore);
 };
 
 Game.prototype.calculatePreviousFrameScore = function() {
-  if(this.rolls === 21) {
-    return;
-  }
+  if(this.rolls === 21 || (this.rolls === 20 && this.strikeInPreviousFrame() !== true)) { return; }
   var previousFrameScore = this.strikePoints + this.getFirstRollScore()
   if(this.getSecondRollScore() !== undefined){
     previousFrameScore += this.getSecondRollScore();
@@ -169,6 +168,7 @@ Game.prototype.updateCumulativeFrameScore = function(frameScore) {
   if(typeof this.cumulativeFrameScores[0] === 'undefined') {
     this.cumulativeFrameScores.push(frameScore);
   } else {
+    console.log(frameScore);
     this.cumulativeFrameScores.push(this.cumulativeFrameScores[(this.cumulativeFrameScores.length -1)] + frameScore);
   }
   this.updateTotalScore();

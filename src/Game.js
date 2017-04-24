@@ -60,16 +60,14 @@ Game.prototype.finalPlay = function(score) {
     {
       this.reduceFrameSize();
       this.addFrame(this._frame);
-      this.calculateScore();
-      console.log("Game over!");
+      console.log("Game over! Your score was: " + this.calculateScore());
     }
   }
   else if (this.rollsLeft(this._frame) === 1) {
     this._frame.finalPlay(score);
     this.addFrame(this._frame);
     this.finalBonusCalculator();
-    this.calculateScore();
-    console.log("Game over!");
+    console.log("Game over! Your score was: " + this.calculateScore());
   }
 };
 
@@ -130,4 +128,5 @@ Game.prototype.calculateScore = function() {
   for(var i = 0; i < arrayLength ; i++) {
     this.totalScores.push(this.frames[i].score)
   }
+  return this.totalScores.reduce(function(pv, cv) { return pv + cv; }, 0);
 };

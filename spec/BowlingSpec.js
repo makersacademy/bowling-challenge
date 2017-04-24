@@ -61,21 +61,21 @@ describe ('Bowling', function(){
       expect(bowling.getFrameScore()).toEqual(6);
     });
 
-    xit('only accepts knocked pins amount between 0 and 10', function(){
-      expect(bowling.bowl(14)).toThrowError("Nope, try again");
+    it('only accepts knocked pins amount between 0 and 10', function(){
+      expect(function(){bowling.bowl(14)}).toThrowError("Nope, try again");
     });
 
-    xit('only hits maximum of 10 pins per pin-set', function(){
+    it('only hits maximum of 10 pins per pin-set', function(){
       bowling.bowl(9);
-      expect(bowling.bowl(4)).toThrowError("Impossible! There were only 10 pins to knock down");
+      expect(function(){bowling.bowl(4)}).toThrowError("Impossible! There were only 10 pins to knock down");
     });
 
-    xit('cannot bowl if all 10 frames have been played', function(){
-      for (var i = 1; i < 10; i++) {
+    it('cannot bowl if all 10 frames have been played', function(){
+      for (var i = 1; i < 11; i++) {
         bowling.bowl(4);
         bowling.bowl(5);
       }
-      expect(bowling.bowl(4)).toThrowError("Game over! Start a fresh game.")
+      expect(function(){bowling.bowl(4)}).toThrowError("Game over! Start a fresh game.")
     });
   });
 
@@ -105,7 +105,7 @@ describe ('Bowling', function(){
   });
 
   describe('resetPinsIfAppropriate', function(){
-    it('allows a third bowl on 10th Frame if preceded by two strikes or a spare', function(){
+    xit('allows a third bowl on 10th Frame if preceded by two strikes or a spare', function(){
       for (var i = 1; i < 10; i++) {
         bowling.bowl(4);
         bowling.bowl(5);

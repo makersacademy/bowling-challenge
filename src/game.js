@@ -46,6 +46,7 @@ Game.prototype.strikeOrSpare = function() {
 
 Game.prototype.addToCurrentFrame = function(points) {
   this.currentFrame.push(points);
+  //End of Frame - break down method to explain reasons that result in end of frame
   if ((this.getNextRoll() === 1 && this.tenthFrameBonus() !== true)|| this.rolls === 21) {
     this.addCurrentFrameToFrameHistory(this.currentFrame);
     if (this.consecutiveStrikes() !== true) {
@@ -53,6 +54,8 @@ Game.prototype.addToCurrentFrame = function(points) {
     } else if(this.currentFrameNumber > 2){
       this.calculateSecondPreviousFrameScore();
     }
+  } else if(this.strikeInPreviousFrame() === true && this.rolls === 20) {
+    this.calculatePreviousFrameScore();
   } else if(this.spareInPreviousFrame() === true) {
     this.calculatePreviousFrameScore();
   } else if(this.twoPrecedingStrikes() === true) {

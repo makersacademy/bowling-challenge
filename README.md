@@ -1,13 +1,3 @@
-
-User Stories
-================
-* User has a default score of zero.
-* User can try to knock down the 10 pins.
-* User can roll one or two times per frame.
-* User can see their score.
-* After each frame the 10 pins are reset.
-* Bonuses for strikes and spares.
-
 Bowling Challenge
 =================
 

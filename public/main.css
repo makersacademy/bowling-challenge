@@ -8,6 +8,20 @@ h1 {
   color: #00FF00;
 }
 
+h4, #github-link {
+  font-family: 'Press Start 2P'; cursive;
+  font-size: 10px;
+  color: #00FF00;
+  background-color: blue;
+}
+
+#github-link {
+  font-family: 'Press Start 2P'; cursive;
+  font-size: 10px;
+  color: #FF00FF;
+  background-color: blue;
+}
+
 table.scoresheet {margin: 0 auto; width:80%; font-size:12px; border:1px solid; text-align: center; table-layout: fixed; margin-bottom: 40px;}
 table.scoresheet th, tr, td {padding: 0; vertical-align: middle; font-family: 'Press Start 2P'; cursive; Helvetica; font-weight: bold;}
 table.scoresheet th {border-bottom:1px solid; background-color:#D3D3D3; height:30px;}

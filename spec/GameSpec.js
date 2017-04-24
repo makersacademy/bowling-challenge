@@ -179,13 +179,13 @@ describe('Game', function(){
       expect(game.score).toEqual(39)
     })
 
-    // it('two strikes and a non-bonusy frame', function(){
-    //   game.makeRoll(10);
-    //   game.makeRoll(10);
-    //   game.makeRoll(7);
-    //   game.makeRoll(1);
-    //   expect(game.score).toEqual(53)
-    // });
+    it('two strikes and a non-bonusy frame', function(){
+      game.makeRoll(10);
+      game.makeRoll(10);
+      game.makeRoll(7);
+      game.makeRoll(1);
+      expect(game.score).toEqual(53)
+    });
 
     it('three spares, non-bonusy', function(){
       game.makeRoll(7);
@@ -223,6 +223,4 @@ describe('Game', function(){
     //   expect(game.score).toEqual(81)
     // })
   })
-
-
 });

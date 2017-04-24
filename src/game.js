@@ -103,7 +103,7 @@ Game.prototype.prepareNextFrame = function() {
 
 Game.prototype.updateScores = function(){
   if(this.strikeInPreviousFrame() === true){ this.calculatePreviousFrameScore() }
-  if(this.isAStrike !== true && this.isASpare !== true){
+  if((this.isAStrike !== true && this.isASpare !== true) || this.rolls === 21){
     this.calculateFrameScore();
     this.updateTotalScore();
   }

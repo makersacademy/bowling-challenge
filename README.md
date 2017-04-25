@@ -14,6 +14,7 @@ This is the repository for my week 5 and 6 weekend challenge for [Makers Academy
 * JSlinter
 * HTML
 * CSS
+* Heroku
 
 ## User Stories
 
@@ -76,6 +77,7 @@ $ git clone git@github.com:kittysquee/bowling-challenge.git
 $ cd bowling-challenge
 $ open index.html
 ```
+Or better yet visit my app [online](https://biglebowlski.herokuapp.com/)!
 
 ## Task
 

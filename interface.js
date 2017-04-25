@@ -1,7 +1,5 @@
-var game = new Game();
-
 $(document).ready(function() {
-
+  var game = new Game();
 
   $('#pin0').click(function(){
   game.roll(0);

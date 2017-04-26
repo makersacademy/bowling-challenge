@@ -12,6 +12,7 @@ function Game() {
   this.isAStrike = false;
 }
 
+
 Game.prototype.roll = function(points) {
   if(this.currentFrameNumber > 10) {
     throw new Error("The game has finished. Start a new game to throw again.");

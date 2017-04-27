@@ -170,7 +170,6 @@ Game.prototype.updateCumulativeFrameScore = function(frameScore) {
   if(typeof this.cumulativeFrameScores[0] === 'undefined') {
     this.cumulativeFrameScores.push(frameScore);
   } else {
-    console.log(frameScore);
     this.cumulativeFrameScores.push(this.cumulativeFrameScores[(this.cumulativeFrameScores.length -1)] + frameScore);
   }
   this.updateTotalScore();

@@ -79,15 +79,5 @@ $(document).ready(function() {
     }
   }
 
-  function playStrikeAnimation() {
-    // $("img").show();
-    // var counter = 5;
-    // var id = setInterval(function() {
-    //   counter--;
-    //   if(counter < 0) {
-    //       clearInterval(id);
-    //       $("img").hide();
-    // }, 1000);
-  }
 
 });

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Blundell's Bowling </title>
+    <link href="https://fonts.googleapis.com/css?family=Monofett|Press+Start+2P" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href='public/main.css'>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  </head>
+
+  <center>
+    <body>
+
+        <h1 id="blundell"> Blundell's Bowling </h1>
+        <div id='scoresheet'>
+          <table id='scoresheetTable' class='scoresheet' cellpadding='1' cellspacing='0'>
+            <tr>
+              <th colspan='6'>Frame 1</th>
+              <th colspan='6'>Frame 2</th>
+              <th colspan='6'>Frame 3</th>
+              <th colspan='6'>Frame 4</th>
+              <th colspan='6'>Frame 5</th>
+              <th colspan='6'>Frame 6</th>
+              <th colspan='6'>Frame 7</th>
+              <th colspan='6'>Frame 8</th>
+              <th colspan='6'>Frame 9</th>
+              <th colspan='6'>Frame 10</th>
+              <th colspan='6'>Total Score</th>
+            </tr>
+            <tr>
+              <td id='r1' colspan='3'></td><td id='r2' colspan='3'></td>
+              <td id='r3' colspan='3'></td><td id='r4' colspan='3'></td>
+              <td id='r5' colspan='3'></td><td id='r6' colspan='3'></td>
+              <td id='r7' colspan='3'></td><td id='r8' colspan='3'></td>
+              <td id='r9' colspan='3'></td><td id='r10' colspan='3'></td>
+              <td id='r11' colspan='3'></td><td id='r12' colspan='3'></td>
+              <td id='r13' colspan='3'></td><td id='r14' colspan='3'></td>
+              <td id='r15' colspan='3'></td><td id='r16' colspan='3'></td>
+              <td id='r17' colspan='3'></td><td id='r18' colspan='3'></td>
+              <td id='r19' colspan='2'></td><td id='r20' colspan='2'></td><td id='r21' colspan='2'></td>
+              <td id='total-score' colspan='6'></td>
+            </tr>
+            <tr>
+              <td id='cumulative-score-f1' colspan='6'></td>
+              <td id='cumulative-score-f2' colspan='6'></td>
+              <td id='cumulative-score-f3' colspan='6'></td>
+              <td id='cumulative-score-f4' colspan='6'></td>
+              <td id='cumulative-score-f5' colspan='6'></td>
+              <td id='cumulative-score-f6' colspan='6'></td>
+              <td id='cumulative-score-f7' colspan='6'></td>
+              <td id='cumulative-score-f8' colspan='6'></td>
+              <td id='cumulative-score-f9' colspan='6'></td>
+              <td id='cumulative-score-f10' colspan='6'></td>
+              <td id='total-score' colspan='6'></td>
+            </tr>
+          </table>
+        </div>
+        <div id='pins'>
+          <button id='pin0'>0</button>
+          <button id='pin1'>1</button>
+          <button id='pin2'>2</button>
+          <button id='pin3'>3</button>
+          <button id='pin4'>4</button>
+          <button id='pin5'>5</button>
+          <button id='pin6'>6</button>
+          <button id='pin7'>7</button>
+          <button id='pin8'>8</button>
+          <button id='pin9'>9</button>
+          <button id='pin10'>10</button>
+        </div>
+        <div id='restart'>
+          <br><br>
+          <button id='restart-btn'>Restart</button>
+        </div>
+        <script src="src/BowlingGame.js"></script>
+        <script src="src/Interface.js"></script>
+    </body>
+    <br><br>
+    <footer>
+      <h4>Powered by <a id='github-link' href='https://github.com/Simba14'>Blundell</a><h4>
+    </footer>
+  </center>
+</html>

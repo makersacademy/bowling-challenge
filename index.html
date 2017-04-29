@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>bowling scorecard</title>
+</head>
+
+<body>
+  <h1>bowling scorecard</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" colspan="2">1</th>
+        <th scope="col" colspan="2">2</th>
+        <th scope="col" colspan="2">3</th>
+        <th scope="col" colspan="2">4</th>
+        <th scope="col" colspan="2">5</th>
+        <th scope="col" colspan="2">6</th>
+        <th scope="col" colspan="2">7</th>
+        <th scope="col" colspan="2">8</th>
+        <th scope="col" colspan="2">9</th>
+        <th scope="col" colspan="3">10</th>
+        <th scope="col" colspan="1">total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row" id='r1' class='rolls'></td>
+        <td scope="row" id='r2' class='rolls'></td>
+        <td scope="row" id='r3' class='rolls'></td>
+        <td scope="row" id='r4' class='rolls'></td>
+        <td scope="row" id='r5' class='rolls'></td>
+        <td scope="row" id='r6' class='rolls'></td>
+        <td scope="row" id='r7' class='rolls'></td>
+        <td scope="row" id='r8' class='rolls'></td>
+        <td scope="row" id='r9' class='rolls'></td>
+        <td scope="row" id='r10' class='rolls'></td>
+        <td scope="row" id='r11' class='rolls'></td>
+        <td scope="row" id='r12' class='rolls'></td>
+        <td scope="row" id='r13' class='rolls'></td>
+        <td scope="row" id='r14' class='rolls'></td>
+        <td scope="row" id='r15' class='rolls'></td>
+        <td scope="row" id='r16' class='rolls'></td>
+        <td scope="row" id='r17' class='rolls'></td>
+        <td scope="row" id='r18' class='rolls'></td>
+        <td scope="row" id='r19' class='rolls'></td>
+        <td scope="row" id='r20' class='rolls'></td>
+        <td scope="row" id='r21' class='rolls'></td>
+        <td rowspan="2" id="total-score"></td>
+      </tr>
+      <tr>
+        <td scope="row" colspan="2" id='f1' class='frames'></td>
+        <td scope="row" colspan="2" id='f2' class='frames'></td>
+        <td scope="row" colspan="2" id='f3' class='frames'></td>
+        <td scope="row" colspan="2" id='f4' class='frames'></td>
+        <td scope="row" colspan="2" id='f5' class='frames'></td>
+        <td scope="row" colspan="2" id='f6' class='frames'></td>
+        <td scope="row" colspan="2" id='f7' class='frames'></td>
+        <td scope="row" colspan="2" id='f8' class='frames'></td>
+        <td scope="row" colspan="2" id='f9' class='frames'></td>
+        <td scope="row" colspan="3" id='f10' class='frames'></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id='buttons'>
+    <button id='roll-a-0'>0</button>
+    <button id='roll-a-1'>1</button>
+    <button id='roll-a-2'>2</button>
+    <button id='roll-a-3'>3</button>
+    <button id='roll-a-4'>4</button>
+    <button id='roll-a-5'>5</button>
+    <button id='roll-a-6'>6</button>
+    <button id='roll-a-7'>7</button>
+    <button id='roll-a-8'>8</button>
+    <button id='roll-a-9'>9</button>
+    <button id='roll-a-10'>10</button>
+    <button id='reset'>reset</button>
+  </div>
+
+
+
+<script src="jquery.js"></script>
+<script src="interface.js"></script>
+<script src="src/Game.js"></script>
+
+</body>
+<footer>
+  <p>developed and designed by <a href="https://github.com/nazwhale">Naz</a></p>
+</footer>
+</html>

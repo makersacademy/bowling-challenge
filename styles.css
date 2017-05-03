@@ -1,0 +1,170 @@
+body {
+    font-family: 'Inconsolata', monospace;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+}
+
+
+
+.title {
+    margin: 0 auto;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 82px;
+}
+
+.frames-box {
+  height: 80px;
+
+}
+
+.frame {
+    position: relative;
+    width: 85px;
+    height: 113px;
+    background-color: #FFF;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+    float: left;
+    margin-left: -1px;
+}
+
+.frame-title {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+    height: 30px;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: 85px;
+}
+
+.frame-title h2 {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 7px;
+    margin-left: 2px;
+}
+
+.frame p {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 79px;
+
+}
+
+.first-shot-box {
+    position: absolute;
+    top: 30px;
+    left: 1px;
+    width: 40px;
+    height: 40px;
+
+}
+
+.first-shot-box p {
+    margin-top: 8px;
+    margin-left: 3px;
+}
+
+.second-shot-box {
+    position: absolute;
+    top: 30px;
+    left: 44px;
+    width: 40px;
+    height: 40px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+}
+
+.second-shot-box p {
+    margin-top: 7px;
+
+}
+
+.tenth-frame {
+    position: relative;
+    width: 126px;
+    background-color: #FFF;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+    float: left;
+    margin-left: -1px;
+    height: 113px;
+}
+
+.tenth-frame-title {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+    height: 30px;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: 126px;
+}
+
+.tenth-frame-title h2 {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 7px;
+    margin-left: 2px;
+}
+
+.third-shot-box {
+    position: absolute;
+    top: 30px;
+    left: 85px;
+    width: 40px;
+    height: 40px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+}
+
+.total-box {
+    position: relative;
+    width: 85px;
+    height: 113px;
+    background-color: #FFF;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+    float: left;
+    margin-left: -1px;
+}
+
+.total-box p {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 56px;
+}
+
+.total-title {
+    height: 30px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 85px;
+    background-color: #001a33;
+}
+
+.total-title h2 {
+    color: #FFF;
+    text-align: center;
+    margin-top: 1px;
+}
+

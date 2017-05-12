@@ -1,6 +1,0 @@
-vendor/*
-lib/*
-spec/*
-*.md
-**/*.html
-*.LICENSE

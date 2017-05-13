@@ -9,9 +9,9 @@ Player.prototype.bowl = function() {
 };
 
 Player.prototype.roll1 = function(){
-  this.score = 1;
+  this.score = this.roll1Score;
 };
 
 Player.prototype.roll2 = function(){
-  this.score  = this.roll1Score + 2;
+  this.score  = this.roll2Score + this.roll1Score;
 };

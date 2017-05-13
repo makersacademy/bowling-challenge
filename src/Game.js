@@ -4,5 +4,9 @@ function Game() {
 };
 
 Game.prototype.bowl = function(n) {
-  this.score.bowl(5);
+  this.score.bowl(n);
 };
+
+Game.prototype.checkScore = function() {
+  return this.score.total;
+}

@@ -6,7 +6,7 @@ describe("Game", function() {
   beforeEach(function() {
     game = new Game();
   });
-
+  
   it('is defined', function() {
     expect(game).toBeDefined();
   });
@@ -18,5 +18,11 @@ describe("Game", function() {
 
   it('starts at first frame', function() {
     expect(game.frameNumber).toEqual(1);
+  });
+
+  it('can display the total score', function() {
+    game.bowl(1);
+    game.bowl(2);
+    expect(game.checkScore()).toEqual(3);
   });
 });

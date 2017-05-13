@@ -20,5 +20,10 @@ describe("Player", function() {
   it('should be able to bowl 2 rolls together', function() {
     player.bowl();
     expect(player.score).toEqual(3);
-  })
+  });
+
+  it('should reduce the number of frames by 1 when bowl method called', function() {
+    player.bowl();
+    expect(player.frames).toEqual(8)
+  });
 });

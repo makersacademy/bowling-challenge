@@ -7,6 +7,7 @@ function Player() {
 Player.prototype.bowl = function() {
    this.roll1(1);
    this.roll2(2);
+   this.frames -= 1;
 };
 
 Player.prototype.roll1 = function (number) {

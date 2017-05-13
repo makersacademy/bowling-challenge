@@ -25,9 +25,9 @@ ScoreAdder.prototype.updateSpares = function(game) {
       frameNumber = 0,
       nextFrame = '';
   for (frame in game) {
-    frameNumber = parseInt(frame.slice(-1), 6);
-    if (this[frame] === 10 && frameNumber < Object.keys(this).length) {
-      nextFrame = game['frame' + (frameNumber + 1)];
+    frameNumber = parseInt(frame.slice(-1), 10);
+    nextFrame = game['frame' + (frameNumber + 1)];
+    if (this[frame] === 10 && nextFrame.length > 0) {
       this[frame] += nextFrame[0];
     }
   }
@@ -36,11 +36,13 @@ ScoreAdder.prototype.updateSpares = function(game) {
 ScoreAdder.prototype.updateStrikes = function(game) {
   var frame = '',
       frameNumber = 0,
-      frameScores = [];
+      frameScores = [],
+      nextFrame = '';
   for (frame in game) {
-    frameNumber = parseInt(frame.slice(-1), 6);
+    frameNumber = parseInt(frame.slice(-1), 10);
     frameScores = game[frame]
-    if (frameScores[0] === 10 && frameNumber < Object.keys(this).length) {
+    nextFrame = game['frame' + (frameNumber + 1)];
+    if (frameScores[0] === 10 && nextFrame.length > 0) {
       this.workoutStrike(game, frameNumber)
     }
   }

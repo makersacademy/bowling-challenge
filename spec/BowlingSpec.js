@@ -52,8 +52,8 @@ describe('Bowling', function() {
 
       it('gives 3 balls to tenth frame spare', function() {
         bowling.currentFrame = 10
-        bowling.bowl(5);
-        bowling.bowl(5);
+        bowling.bowl(7);
+        bowling.bowl(3);
         expect(bowling.currentBall).toEqual(3);
       })
 

@@ -7,7 +7,7 @@ describe("Thermostat", function() {
   describe("intialization", function() {
 
     it("is not decided yet", function(){
-      expect(true).toBe(true);
+      expect(true).toBe(false);
     });
 
   });

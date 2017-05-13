@@ -32,6 +32,7 @@ describe("Player", function() {
     for (var i = 0; i <= 9; i ++) {
       player.bowl();
     }
-        expect(player.frames).toEqual(0)
+    expect(player.frames).toEqual(0)
+    expect(player.finish()).toBe(true);
   });
 });

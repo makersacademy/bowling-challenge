@@ -14,4 +14,17 @@ describe('Frame', function() {
     });
   });
 
+  describe('Roll', function() {
+    it('stores the number of pins knocked down on each roll in an array', function() {
+      frame.Roll(3);
+      expect(frame.pinsKnockedDown[0]).toEqual(3);
+    });
+    it('only stores 2 throws', function() {
+      frame.Roll(2);
+      frame.Roll(5);
+      frame.Roll(3);
+      expect(frame.pinsKnockedDown).toEqual([2,5]);
+    });
+  });
+
 });

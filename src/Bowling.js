@@ -1,6 +1,8 @@
+'use strict';
+
 function Player() {
   this.score = 0;
-  this.frames = 9;
+  this.frames = 10;
   this.roll1Score = 0;
   this.roll2Score = 0;
 }

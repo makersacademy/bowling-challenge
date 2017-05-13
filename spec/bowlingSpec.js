@@ -1,3 +1,4 @@
+'use strict';
 describe("Player", function() {
   var player;
   var frames = 9;
@@ -24,6 +25,13 @@ describe("Player", function() {
 
   it('should reduce the number of frames by 1 when bowl method called', function() {
     player.bowl();
-    expect(player.frames).toEqual(8)
+    expect(player.frames).toEqual(9)
+  });
+
+  it('expects the game to end when the frames === 0', function() {
+    for (var i = 0; i <= 9; i ++) {
+      player.bowl();
+    }
+        expect(player.frames).toEqual(0)
   });
 });

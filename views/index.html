@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/main.css">
+    <title>Bowling Scorecard</title>
+  </head>
+  <body>
+    <br>
+    <h1>Bowl Me Up</h1>
+    <div class="d-flex justify-content-center" id="scorecard-container">
+      <table style="width:100%" id="scorecard">
+        <tr id="frames">
+          <td colspan="1">Player Name</td>
+          <td colspan="2">Round 1</td>
+          <td colspan="2">Round 2</td>
+          <td colspan="2">Round 3</td>
+          <td colspan="2">Round 4</td>
+          <td colspan="2">Round 5</td>
+          <td colspan="2">Round 6</td>
+          <td colspan="2">Round 7</td>
+          <td colspan="2">Round 8</td>
+          <td colspan="2">Round 9</td>
+          <td colspan="3">Round 10</td>
+          <td colspan="1">Total Score</td>
+        </tr>
+        <tr id="rolls">
+          <td rowspan="2"><b>Mitchell</b></td>
+          <td id="1.1">
+                <select id="roll-1.1">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-1.2">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-2.1">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-2.2">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-3.1">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-3.2">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-4.1">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-4.2">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-5.1">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-5.2">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-6.1">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-6.2">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-7.1">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-7.2">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-8.1">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-8.2">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-9.1">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-9.2">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-10.1">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll-10.2">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td>
+                <select id="roll10E">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+              </td>
+              <td id="total-score"></td>
+            </tr>
+            <tr id="scores">
+              <td colspan="2" id="round-1"></td>
+              <td colspan="2" id="round-2"></td>
+              <td colspan="2" id="round-3"></td>
+              <td colspan="2" id="round-4"></td>
+              <td colspan="2" id="round-5"></td>
+              <td colspan="2" id="round-6"></td>
+              <td colspan="2" id="round-7"></td>
+              <td colspan="2" id="round-8"></td>
+              <td colspan="2" id="round-9"></td>
+              <td colspan="3" id="round-10"></td>
+            </tr>
+      </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script src="../src/Events.js"></script>
+    <script src="../src/Game.js"></script>
+    <script src="../src/Frame.js"></script>
+    <script>console.log("test")</script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "bowling-app",
+  "version": "1.0.0",
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  }
+}

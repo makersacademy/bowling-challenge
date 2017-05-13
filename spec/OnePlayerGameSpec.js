@@ -26,7 +26,7 @@
       it('results in call of processRoll on active frames', function() {
 	spyOn(frame1, 'processRoll').and.returnValue(true);
 	onePlayerGame.roll(10);
-	expect(frame1.processRoll).toHaveBeenCalled();
+	expect(frame1.processRoll).toHaveBeenCalledWith(10);
       });
     });
 	

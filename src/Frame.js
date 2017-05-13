@@ -6,7 +6,7 @@ var FrameFile = (function() {
   Frame.prototype.isActive = function() {
     return this._active;
   };
-  Frame.prototype.processRoll = function() {
+  Frame.prototype.processRoll = function(pinsKnockedOver) {
     return 1;
   };
   Frame.prototype.activate = function() {

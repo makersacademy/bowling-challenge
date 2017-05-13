@@ -9,7 +9,7 @@ Frame.prototype.add = function(n) {
 };
 
 Frame.prototype.total = function() {
-  return this.current[0] + this.current[1];
+  return Number(this.current[0]) + Number(this.current[1]);
 }
 
 // Private

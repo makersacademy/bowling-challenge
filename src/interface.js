@@ -1,15 +1,24 @@
 var game = new Game();
 var count = 0;
+var clickCount = 0;
 
 $('.bowl-number').on('click', function() {
+  clickCount++
   var choice = $(this).val();
-  var position = game._position();
   count++
-  console.log(count);
+  game._checkStatus();
   game.bowl(choice);
-  // console.log(game.score.card);
-  // console.log(game.frameNumber);
-  // console.log(game.score.card);
   $('#frame' + count).text(choice);
-  if (count === 20) { count = 0 };
+    if (count === 20) { count = 0 };
+    if (clickCount % 2 === 0) {
+      $('#score' + (count / 2)).text(game.score.total)
+    }
+    if (clickCount === 20) {
+      endGame();
+    }
 });
+
+function endGame() {
+  $('.bowl-number').hide();
+  $('#restart').show();
+}

@@ -16,7 +16,7 @@ Game.prototype.checkScore = function() {
 // Private
 
 Game.prototype._checkStatus = function() {
-  if (this.score.card.length === 10) {
+  if (this.score.card.length === 10 && this.score.frame.position === 2) {
     console.log('Game ended');
     this._restart();
   };

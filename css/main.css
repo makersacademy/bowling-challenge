@@ -23,3 +23,7 @@ td {
   width:40px;
 
 }
+
+#restart {
+  display:none;
+}

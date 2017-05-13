@@ -16,12 +16,12 @@
       expect(frame.isActive()).toBe(false);
     });
 
-    it('activate method renders frame active', function() {
+    it('has an activate method that renders frame active', function() {
       frame.activate();
       expect(frame.isActive()).toBe(true);
     });
 
-    it('has a method deactivate', function() {
+    it('has a deactivate method', function() {
       expect(frame.deactivate()).toBeDefined();
     });
 

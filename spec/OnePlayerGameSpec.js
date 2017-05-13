@@ -14,10 +14,13 @@
       expect(onePlayerGame.frames.length).toBe(10);
     });
 
+    it('has an array "activeFrames" initially containing 1 object', function() {
+      expect(onePlayerGame.activeFrames.length).toBe(1);
+    });
+
     it('has an activated frame1 upon creation', function() {
       expect(frame1.isActive()).toBe(true);
     });
-      
 
     it('has a method "roll"', function() {
       expect(onePlayerGame.roll()).toBe(1);

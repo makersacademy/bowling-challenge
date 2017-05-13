@@ -17,13 +17,12 @@ Player.prototype.bowl = function() {
 
 Player.prototype.roll1 = function (number) {
   this.roll1Score = number
-  this.score = this.roll1Score;
 };
 
 Player.prototype.roll2 = function (number) {
   this.roll2Score = number
   this.frameScore  = this.roll2Score + this.roll1Score;
-  this.score =+ this.frameScore
+  this.score += this.frameScore
 };
 
 Player.prototype.finish = function() {

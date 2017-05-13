@@ -6,7 +6,7 @@ describe("Game", function() {
   beforeEach(function() {
     game = new Game();
   });
-  
+
   it('is defined', function() {
     expect(game).toBeDefined();
   });
@@ -24,5 +24,13 @@ describe("Game", function() {
     game.bowl(1);
     game.bowl(2);
     expect(game.checkScore()).toEqual(3);
+  });
+
+  it('resets total score after game completion', function() {
+    var i = 0
+    for (; i < 20; i++) {
+      game.bowl(2);
+    }
+    expect(game.checkScore()).toEqual(0);
   });
 });

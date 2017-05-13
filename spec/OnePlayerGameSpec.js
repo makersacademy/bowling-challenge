@@ -10,6 +10,11 @@
       frame1 = onePlayerGame.frame1;
     });
 
+    it('has an array "frames" containing 10 objects', function() {
+      expect(onePlayerGame.frames.length).toBe(10);
+    });
+      
+
     it('has a method "roll"', function() {
       expect(onePlayerGame.roll()).toBe(1);
     });

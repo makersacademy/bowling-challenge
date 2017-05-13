@@ -12,7 +12,8 @@ describe("Player", function() {
   });
 
   it('should be able to bowl the second roll and score 2 points', function () {
-    player.roll2();
+    player.roll1(1);
+    player.roll2(2);
     expect(player.score).toEqual(3);
   });
 });

@@ -13,7 +13,7 @@ describe("Game", function() {
 
   it('holds current score', function() {
     game.bowl(5);
-    expect(game.scoreCard.frame).toEqual([5]);
+    expect(game.scoreCard.frame.current).toEqual([5]);
   });
 
   it('starts at first frame', function() {

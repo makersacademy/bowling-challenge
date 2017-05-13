@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bowling Trackr</title>
+  <link href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="src/jquery.js"></script>
+  <script src="src/Game.js"></script>
+
+  
+</head>
+
+<body>
+  <div class="tile"></div>
+  <div class="container">
+    <h1>10 Pin Bowling Counter</h1>
+    <form>
+      <input type="number" name="value" min="0" max="10">
+      <input id="add" type="button" value="Add Score">
+    </form>
+  </div>
+<script>
+  game = new Game();
+  $('#currentFrame').html(game.currentFrame + 1);
+  $('#frameTotal').html(game.frameTotal());
+  $('#gameTotal').html(game.total());
+
+  $("#add").click(function( event ) {
+    game.addScore(parseInt($('form').serializeArray()[0].value));
+    $('#currentFrame').html(game.currentFrame + 1);
+    $('#frameTotal').html(game.frameTotal());
+    $('#gameTotal').html(game.total());
+  });
+</script>
+<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</body>
+</html>

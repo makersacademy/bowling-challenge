@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+  <center><head><h1>Bowling Challenge</h1>
+  </head>
+
+  <body>
+    <p>Select your roll:</p>
+    <div id='roll_buttons'>
+      <button type='button' class='roll' value='1'>1</button>
+      <button type='button' class='roll' value='2'>2</button>
+      <button type='button' class='roll' value='3'>3</button>
+      <button type='button' class='roll' value='4'>4</button>
+      <button type='button' class='roll' value='5'>5</button>
+      <button type='button' class='roll' value='6'>6</button>
+      <button type='button' class='roll' value='7'>7</button>
+      <button type='button' class='roll' value='8'>8</button>
+      <button type='button' class='roll' value='9'>9</button>
+      <button type='button' class='roll' value='10'>10</button>
+    </div>
+
+    <div id='this_score'></div>
+    <div id='current_frame'></div>
+    <div id='frames'></div>
+    <div id='check'></div>
+    <div id='totalScore'></div>
+    
+
+
+    <script src="src/Game.js"></script>
+    <script src="jquery-3.0.0.min.js"></script>
+    <script type='text/javascript'>
+      
+      $(document).ready(function(){
+
+        var game = new Game();
+        var frames;
+        var pinsRemaining;
+        var currentFrame;
+
+
+
+        $('.roll').click(function(){
+
+          // console.log($('.hello').attr('class'))
+
+          
+
+          game.roll($(this).val());
+          $('#this_score').text('You rolled: ' + $(this).val());
+          frames = 'Frame Score: '
+          for (var i = 0; i < 10; i++) {
+            if (game.cumulativeScore[i] > 0) {
+              frames += '| ' + game.cumulativeScore[i] + ' ';
+            };
+          };
+          $('#frames').text(frames + ' |');
+          $('#check').text(game.checkEndGame());
+
+          if (game.currentFrameIndex < 9) {
+            pinsRemaining = 10 - game.pins(game.currentFrameIndex);
+          } else if (game.currentFrame().length === 3 || game.currentFrame().length === 2 && game.pins(game.currentFrameIndex) < 10) {
+            pinsRemaining = 0;
+          } else if (game.pins(game.currentFrameIndex) < 10) {
+            pinsRemaining = 10 - game.pins(game.currentFrameIndex);
+          } else {
+            pinsRemaining = 20 - game.pins(game.currentFrameIndex);
+          };
+
+            // console.log('pins down: ' + game.pins(game.currentFrameIndex));
+            // console.log('value of current button press: ' + parseInt(this.value);
+
+
+
+
+          if (10 - game.pins(game.currentFrameIndex) === 10) {
+            $('.roll').addClass('show');
+          } else {
+            $('.roll').addClass(function(){
+              if(parseInt(this.value) > pinsRemaining) {
+                return 'hide';
+              } else {
+                return 'show';
+              }
+            });
+          };
+
+          $('.hide').hide();
+          $('.show').show();
+
+          $('.roll').removeClass('hide');
+          $('.roll').removeClass('show');
+
+          currentFrame = game.currentFrameIndex + 1;
+          $('#current_frame').text('Current Frame: ' + currentFrame)
+          
+
+
+          
+        
+          
+
+        });
+
+      });
+
+
+
+    </script>
+  </body></center>
+
+</html>
+

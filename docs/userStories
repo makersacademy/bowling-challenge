@@ -1,0 +1,19 @@
+As a user
+So that I can bowl a frame
+I want a 'bowl' button
+
+As a user
+So that I can see how well I did
+I want to see the number of pins knocked down
+
+As a user
+So that I can track my score
+I want a table of my current points
+
+As a user
+So that I know how far into the the game I am
+I want to see the current frame
+
+As a user
+So that I can start again
+I want an option to reset the game

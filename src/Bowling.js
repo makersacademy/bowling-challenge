@@ -8,7 +8,8 @@ Player.prototype.bowl = function() {
    this.roll1();
 };
 
-Player.prototype.roll1 = function(){
+Player.prototype.roll1 = function (number) {
+  this.roll1Score = number
   this.score = this.roll1Score;
 };
 

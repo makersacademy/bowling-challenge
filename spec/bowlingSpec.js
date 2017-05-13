@@ -7,7 +7,7 @@ describe("Player", function() {
   });
 
   it('should be able to bowl the first roll and score 1 point', function () {
-    player.roll1();
+    player.roll1(1);
     expect(player.score).toEqual(1);
   });
 

@@ -1,23 +1,16 @@
-function Frame() {
-  this.current = [];
-  this.position = 1;
-};
-
-Frame.prototype.add = function(n) {
-  this.current.push(n);
-  this.position === 1 ? this.position = 2 : this.position = 1;
-};
-
-Frame.prototype.total = function() {
-  return Number(this.current[0]) + Number(this.current[1]);
+function Frame(first, second) {
+  this.score = [first, second].filter(Boolean);
 }
 
-// Private
+Frame.prototype.isSpare = function() {
+  return this.score.length > 1 && this.score[0] + this.score[1] === 10
+}
 
-Frame.prototype._isEnded = function() {
-  if (this.current.length === 2) {
-    return true;
-  } else {
-    return false;
-  };
-};
+Frame.prototype.isStrike = function() {
+  return this.score[0] === 10
+}
+
+Frame.prototype.calculate = function() {
+  if (this.score.length === 1) { return this.score[0] }
+  else { return Number(this.score[0] + this.score[1]) };
+}

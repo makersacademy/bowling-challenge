@@ -11,25 +11,16 @@ describe("Game", function() {
     expect(game).toBeDefined();
   });
 
-  it('holds current score', function() {
-    game.bowl(5);
-    expect(game.score.frame.current).toEqual([5]);
+  it('starts with no score', function() {
+    expect(game.totalScore).toEqual(0);
   });
 
-  it('starts at first frame', function() {
-    expect(game.frameNumber).toEqual(1);
+  it('starts with established frames', function() {
+    expect(game.frames.length).toEqual(10);
   });
 
-  it('can display the total score', function() {
-    game.bowl(1);
-    game.bowl(2);
-    expect(game.checkScore()).toEqual(3);
-  });
-
-  it('resets total score after game completion', function() {
-    for (var i = 0; i < 20; i++) {
-      game.bowl(2);
-    }
-    expect(game.checkScore()).toEqual(0);
+  it('can calculate the total score', function() {
+    game.calculateTotal();
+    expect(game.totalScore).toEqual(157);
   });
 });

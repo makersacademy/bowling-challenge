@@ -1,32 +1,36 @@
 function Game() {
-  this.frameNumber = 1;
-  this.score = new Score();
-};
-
-Game.prototype.bowl = function(n) {
-  this.frameNumber = this.score.card.length + 1;
-  this.score.bowl(n);
-  this._checkStatus();
-};
-
-Game.prototype.checkScore = function() {
-  return this.score.total;
+  this.frames = [
+    new Frame(1, 3),
+    new Frame(10),  // Strike
+    new Frame(2, 5),
+    new Frame(6, 4), // Spare
+    new Frame(4, 2),
+    new Frame(10),
+    new Frame(10),
+    new Frame(10),
+    new Frame(10),
+    new Frame(3, 5)
+  ]
+  this.totalScore = 0;
 }
 
-// Private
-
-Game.prototype._checkStatus = function() {
-  if (this.score.card.length === 10 && this.score.frame.position === 2) {
-    console.log('Game ended');
-    this._restart();
+Game.prototype.calculateTotal = function() {
+    for (i = 0; i < this.frames.length; i++) {
+      if (this.frames[i].isSpare()) {
+        this.totalScore += this.frames[i].calculate() + this.frames[i + 1].score[0];
+      } else if (this.frames[i].isStrike()) {
+        this.totalScore += this.strikeCalc(i);
+      } else {
+        this.totalScore += this.frames[i].calculate()
+    };
   };
 };
 
-Game.prototype._restart = function() {
-  this.score = new Score();
-  this.frameNumber = 1;
-}
-
-Game.prototype._position = function() {
-  return this.score.frame.position;
-}
+Game.prototype.strikeCalc = function(i) {
+  if (i + 1 === this.frames.length) { return " " };
+  if (this.frames[i + 1].isStrike()) {
+    return Number(10 + this.frames[i + 1].score[0] + this.frames[i + 2].score[0]);
+  } else {
+    return Number(10 + this.frames[i + 1].score[0] + this.frames[i + 1].score[1]);
+  };
+};

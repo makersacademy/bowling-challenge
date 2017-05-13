@@ -2,24 +2,32 @@
 
 describe("Frame", function() {
   var frame;
+  var spare;
+  var strike;
 
   beforeEach(function() {
-    frame = new Frame();
+    frame = new Frame(3, 5);
+    spare = new Frame(4, 6);
+    strike = new Frame(10);
   });
 
   it('is defined', function() {
     expect(frame).toBeDefined();
   });
 
-  it('adds score to current frame', function() {
-    frame.add(5);
-    frame.add(2);
-    expect(frame.current).toEqual([5, 2]);
+  it('can detect a spare', function() {
+    expect(spare.isSpare()).toEqual(true);
   });
 
-  it('confirms end of frame appropriately', function() {
-    frame.add(1);
-    frame.add(7);
-    expect(frame._isEnded()).toEqual(true);
+  it('can detect a strike', function() {
+    expect(strike.isStrike()).toEqual(true);
+  });
+
+  it('does not falsely detect a spare', function() {
+    expect(frame.isSpare()).toEqual(false);
+  });
+
+  it('does not falsely detect a strike', function() {
+    expect(frame.isStrike()).toEqual(false);
   });
 });

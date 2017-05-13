@@ -24,6 +24,7 @@
     <input class='bowl-number' type='button' id='eight' value='8' />
     <input class='bowl-number' type='button' id='nine' value='9' />
     <input class='bowl-number' type='button' id='ten' value='10' />
+    <input class='bowl-number' type='button' id='calculate' value='CALCULATE' />
     <form>
       <input type='submit' id='restart' value='Play Again' />
     </form>
@@ -45,18 +46,19 @@
         <th colspan='6'>Frame 10</th>
       </tr>
       <tr>
-        <td id="frame1" colspan='3'></td><td id="frame2" colspan='3'></td>
-        <td id="frame3" colspan='3'></td><td id="frame4" colspan='3'></td>
-        <td id="frame5" colspan='3'></td><td id="frame6" colspan='3'></td>
-        <td id="frame7" colspan='3'></td><td id="frame8" colspan='3'></td>
-        <td id="frame9" colspan='3'></td><td id="frame10" colspan='3'></td>
-        <td id="frame11" colspan='3'></td><td id="frame12" colspan='3'></td>
-        <td id="frame13" colspan='3'></td><td id="frame14" colspan='3'></td>
-        <td id="frame15" colspan='3'></td><td id="frame16" colspan='3'></td>
-        <td id="frame17" colspan='3'></td><td id="frame18" colspan='3'></td>
-        <td id="frame19" colspan='3'></td><td id="frame20" colspan='3'></td>
+        <td id="frame0-1" colspan='3'></td><td id="frame0-2" colspan='3'></td>
+        <td id="frame1-1" colspan='3'></td><td id="frame1-2" colspan='3'></td>
+        <td id="frame2-1" colspan='3'></td><td id="frame2-2" colspan='3'></td>
+        <td id="frame3-1" colspan='3'></td><td id="frame3-2" colspan='3'></td>
+        <td id="frame4-1" colspan='3'></td><td id="frame4-2" colspan='3'></td>
+        <td id="frame5-1" colspan='3'></td><td id="frame5-2" colspan='3'></td>
+        <td id="frame6-1" colspan='3'></td><td id="frame6-2" colspan='3'></td>
+        <td id="frame7-1" colspan='3'></td><td id="frame7-2" colspan='3'></td>
+        <td id="frame8-1" colspan='3'></td><td id="frame8-2" colspan='3'></td>
+        <td id="frame9-1" colspan='3'></td><td id="frame9-2" colspan='3'></td>
       </tr>
       <tr>
+        <td colspan='6'id="score0"></td>
         <td colspan='6'id="score1"></td>
         <td colspan='6'id="score2"></td>
         <td colspan='6'id="score3"></td>
@@ -66,7 +68,6 @@
         <td colspan='6'id="score7"></td>
         <td colspan='6'id="score8"></td>
         <td colspan='6'id="score9"></td>
-        <td colspan='6'id="score0"></td>
       </tr>
     </table>
 
@@ -75,7 +76,6 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="src/frame.js"></script>
-  <script src="src/score.js"></script>
   <script src="src/game.js"></script>
   <script src="src/interface.js"></script>
 </body>

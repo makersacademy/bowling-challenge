@@ -10,5 +10,10 @@ function Bowling() {
     frame8: [],
     frame9: [],
     frame10: []
-  };
+  }
+}
+
+Bowling.prototype.bowl = function(frame, ball, score) {
+  var frameKey = 'frame' + frame
+  this.game[frameKey].push(score)
 }

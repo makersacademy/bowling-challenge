@@ -1,3 +1,13 @@
+#Bowling Challenge
+
+#How to play
+
+Slide the slider to your desired position and click "Bowl!". The nearer you are to the middle the more pins you'll knock down. The programme doesn't remember which pins were knocked down on the first go and effectively moves all remaining pins into the middle. Thus the middle will always yield the highest pin-knock-downage.
+
+![example](images/Bowling.png)
+
+See below for the rules of the game.
+
 
 Bowling Challenge
 =================

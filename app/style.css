@@ -1,0 +1,38 @@
+*{
+  font-family: Helvetica;
+  color: white;
+}
+
+body{
+  background: red;
+}
+
+main{
+  width: 400px;
+  margin: auto;
+}
+
+h1{
+  width: 300px;
+  text-decoration: underline;
+  font-weight: 500;
+  margin:  5px;
+}
+
+#controls{
+  width: 300px;
+  margin:3px;
+}
+
+button{
+  background: blue;
+}
+
+table{
+  border: 2px white solid;
+  margin: 5px;
+}
+
+td{
+  border: 1px white solid;
+}

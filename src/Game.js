@@ -1,15 +1,27 @@
 function Game() {
   this.frames = [
-    new Frame(1, 3),
+    new Frame(2, 6),
     new Frame(10),  // Strike
-    new Frame(2, 5),
-    new Frame(6, 4), // Spare
+    new Frame(4, 6),
+    new Frame(8, 2), // Spare
+    new Frame(10),
+    new Frame(1, 1),
+    new Frame(3, 1),
+    new Frame(5, 4),
+    new Frame(10),
+    new Frame(1, 4)
+  ]
+  this.testFrames = [
+    new Frame(3, 5),
+    new Frame(10),
+    new Frame(10),
+    new Frame(10),
+    new Frame(10),
     new Frame(4, 2),
-    new Frame(10),
-    new Frame(10),
-    new Frame(10),
-    new Frame(10),
-    new Frame(3, 5)
+    new Frame(6, 4), // Spare
+    new Frame(2, 5),
+    new Frame(10),  // Strike
+    new Frame(1, 3),
   ]
   this.totalScore = 0;
 }
@@ -29,8 +41,10 @@ Game.prototype.calculateTotal = function() {
 Game.prototype.strikeCalc = function(i) {
   if (i + 1 === this.frames.length) { return " " };
   if (this.frames[i + 1].isStrike()) {
+    console.log('The if!')
     return Number(10 + this.frames[i + 1].score[0] + this.frames[i + 2].score[0]);
   } else {
+    console.log("The else!")
     return Number(10 + this.frames[i + 1].score[0] + this.frames[i + 1].score[1]);
   };
 };

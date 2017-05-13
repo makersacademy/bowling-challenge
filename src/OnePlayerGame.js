@@ -3,6 +3,7 @@ var OnePlayerGameFile = (function() {
   var Frame = FrameFile.Frame;
   var OnePlayerGame = function() {
     this.frame1 = new Frame();
+    this.frame1.activate();
     this.frame2 = new Frame();
     this.frame3 = new Frame();
     this.frame4 = new Frame();

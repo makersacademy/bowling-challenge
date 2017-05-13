@@ -12,8 +12,13 @@
       expect(frame.processRoll()).toBeDefined();
     });
 
-    it('has a method activate', function() {
-      expect(frame.activate()).toBeDefined();
+    it('is inactive upon creation', function() {
+      expect(frame.isActive()).toBe(false);
+    });
+
+    it('activate method renders frame active', function() {
+      frame.activate();
+      expect(frame.isActive()).toBe(true);
     });
 
     it('has a method deactivate', function() {

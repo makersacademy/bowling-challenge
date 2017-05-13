@@ -5,6 +5,12 @@ var FrameFile = (function() {
   Frame.prototype.processRoll = function() {
     return 1;
   };
+  Frame.prototype.activate = function() {
+    return 1;
+  };
+  Frame.prototype.deactivate = function() {
+    return 1;
+  };
 
   return { Frame : Frame };
 }());

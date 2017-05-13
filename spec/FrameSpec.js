@@ -12,6 +12,13 @@
       expect(frame.processRoll()).toBeDefined();
     });
 
+    it('has a method activate', function() {
+      expect(frame.activate()).toBeDefined();
+    });
+
+    it('has a method deactivate', function() {
+      expect(frame.deactivate()).toBeDefined();
+    });
 
 
   });

@@ -26,10 +26,13 @@ Player.prototype.roll2 = function (number) {
   this.roll2Score = number;
   this.frameScore  = this.roll2Score + this.roll1Score;
   this.score += this.frameScore;
+  if (this.frameScore === 10) {
+    this.spare();
+  }
 };
 
 Player.prototype.spare = function (number) {
-  return 12;
+  this.score = 12;
 };
 
 Player.prototype.finish = function () {

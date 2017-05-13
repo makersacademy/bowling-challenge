@@ -1,9 +1,9 @@
 'use strict';
-describe("Player", function() {
+describe('Player', function () {
   var player;
   var frames = 9;
 
-  beforeEach(function() {
+  beforeEach(function () {
     player = new Player();
   });
 
@@ -18,12 +18,12 @@ describe("Player", function() {
     expect(player.frameScore).toEqual(3);
   });
 
-  it('should be able to bowl 2 rolls together', function() {
+  it('should be able to bowl 2 rolls together', function () {
     player.bowl(1);
     expect(player.frameScore).toEqual(2);
   });
 
-  it('should be able to bowl 2 turns together', function() {
+  it('should be able to bowl 2 turns together', function () {
     player.bowl(1);
     player.bowl(1);
     expect(player.score).toEqual(4);
@@ -33,19 +33,20 @@ describe("Player", function() {
     player.roll1(5);
     player.roll2(5);
     expect(player.frameScore).toEqual(10);
-    expect(player.spare()).toEqual(12);
+    expect(player.score).toEqual(12);
   });
 
-  it('should reduce the number of frames by 1 when bowl method called', function() {
+  it('should reduce the number of frames by 1 when bowl method called', function () {
     player.bowl();
-    expect(player.frames).toEqual(9)
+    expect(player.frames).toEqual(9);
   });
 
-  it('expects the game to end when the frames === 0', function() {
-    for (var i = 0; i <= 9; i ++) {
+  it('expects the game to end when the frames === 0', function () {
+    for (var i = 0; i <= 9; i++) {
       player.bowl();
     }
-    expect(player.frames).toEqual(0)
+
+    expect(player.frames).toEqual(0);
     expect(player.finish()).toBe(true);
   });
 });

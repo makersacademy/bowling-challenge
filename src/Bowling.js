@@ -11,7 +11,7 @@ function Player() {
 Player.prototype.bowl = function (number) {
   this.number = number;
   this.roll1(this.number);
-  this.roll2(2);
+  this.roll2(this.number);
   this.frames -= 1;
   if (this.frames === 0) {
     this.finish();

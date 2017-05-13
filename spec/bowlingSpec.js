@@ -16,4 +16,9 @@ describe("Player", function() {
     player.roll2(2);
     expect(player.score).toEqual(3);
   });
+
+  it('should be able to bowl 2 rolls together', function() {
+    player.bowl();
+    expect(player.score).toEqual(3);
+  })
 });

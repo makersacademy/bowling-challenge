@@ -5,7 +5,8 @@ function Player() {
   this.roll2Score = 0;
 }
 Player.prototype.bowl = function() {
-   this.roll1();
+   this.roll1(1);
+   this.roll2(2);
 };
 
 Player.prototype.roll1 = function (number) {

@@ -20,21 +20,31 @@ Player.prototype.bowl = function (number) {
 
 Player.prototype.roll1 = function (number) {
   this.roll1Score = number;
+  console.log('Congrats, you knocked over ' + this.roll1Score + ' pins!');
 };
 
 Player.prototype.roll2 = function (number) {
   this.roll2Score = number;
   this.frameScore  = this.roll2Score + this.roll1Score;
   this.score += this.frameScore;
+  console.log('Congrats, you knocked over ' + this.roll2Score + ' pins!');
   if (this.frameScore === 10) {
-    this.spare();
+    this.spare(number);
   }
 };
 
 Player.prototype.spare = function (number) {
-  this.score = 12;
+  this.number = number;
+  this.spareRoll1Score = number * 2;
+  console.log('Congrats, you knocked over ' + this.spareRoll1Score + ' pins!');
+  this.spareRoll2Score = number;
+  console.log('Congrats, you knocked over ' + this.spareRoll1Score + ' pins!');
+  this.spareFrameScore = this.spareRoll2Score + this.spareRoll1Score;
+  this.score += this.spareFrameScore;
+  this.frames -= 1;
 };
 
 Player.prototype.finish = function () {
+  console.log("The game is over!");
   return true;
 };

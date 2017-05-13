@@ -30,10 +30,10 @@ describe('Player', function () {
   });
 
   it('should be able to bowl a spare', function () {
-    player.roll1(5);
-    player.roll2(5);
+    player.bowl(5);
     expect(player.frameScore).toEqual(10);
-    expect(player.score).toEqual(12);
+    expect(player.spareFrameScore).toEqual(15)
+    expect(player.score).toEqual(25);
   });
 
   it('should reduce the number of frames by 1 when bowl method called', function () {

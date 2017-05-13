@@ -24,15 +24,20 @@ describe("A Game", function() {
     });
 
     it("a zero game", function() {
-      spyOn(game, 'roll').and.returnValue(0);
+      rollDownsPins(0);
       expect(game.score()).toEqual(0);
     });
 
     it("can roll a games of ones", function() {
-      spyOn(game, 'roll').and.returnValue(1);
+      rollDownsPins(1);
       expect(game.score()).toEqual(20);
     });
+
   });
 
+
+  var rollDownsPins = function(pins) {
+    spyOn(game, 'roll').and.returnValue(pins);
+  };
 
 });

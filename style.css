@@ -1,0 +1,39 @@
+body {
+    position: center;
+    background-size: cover;
+    background-image: url("http://www.cranekalmanbrighton.com/_site/wp-content/uploads/2014/10/CFS_Bowling-Alley.jpg");
+    background-color: #cccccc;
+}
+
+
+h1 {
+  color: white;
+  font-family: helvetica;
+  font-weight: bold;
+  font-size: 120px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+p {
+  color: black;
+  font-family: helvetica;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+ol {
+  color: blue;
+  font-family: helvetica;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.button-holder{
+  width: 100px;
+  margin: 0 auto;
+}

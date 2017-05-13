@@ -1,0 +1,25 @@
+.bowl-number {
+
+  font-size:95px;
+  width:50px;
+  margin:20px 5px;
+
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th {
+
+  padding:5px;
+  width:80px;
+
+}
+
+td {
+
+  height:30px;
+  width:40px;
+
+}

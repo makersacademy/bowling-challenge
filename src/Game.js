@@ -4,9 +4,9 @@ function Game() {
 };
 
 Game.prototype.bowl = function(n) {
+  this.frameNumber = this.score.card.length + 1;
   this.score.bowl(n);
   this._checkStatus();
-  this.frameNumber = this.score.card.length + 1;
 };
 
 Game.prototype.checkScore = function() {
@@ -25,4 +25,8 @@ Game.prototype._checkStatus = function() {
 Game.prototype._restart = function() {
   this.score = new Score();
   this.frameNumber = 1;
+}
+
+Game.prototype._position = function() {
+  return this.score.frame.position;
 }

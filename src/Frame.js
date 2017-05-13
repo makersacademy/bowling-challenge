@@ -1,9 +1,11 @@
 function Frame() {
   this.current = [];
+  this.position = 1;
 };
 
 Frame.prototype.add = function(n) {
   this.current.push(n);
+  this.position === 1 ? this.position = 2 : this.position = 1;
 };
 
 Frame.prototype.total = function() {

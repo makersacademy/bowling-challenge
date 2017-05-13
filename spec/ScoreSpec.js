@@ -6,7 +6,7 @@ describe("Score", function() {
   beforeEach(function() {
     score = new Score();
   });
-  
+
   it('tracks scores', function() {
     score.bowl(5);
     expect(score.frame.current).toEqual([5]);

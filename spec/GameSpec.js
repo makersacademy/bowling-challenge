@@ -27,8 +27,7 @@ describe("Game", function() {
   });
 
   it('resets total score after game completion', function() {
-    var i = 0
-    for (; i < 20; i++) {
+    for (var i = 0; i < 20; i++) {
       game.bowl(2);
     }
     expect(game.checkScore()).toEqual(0);

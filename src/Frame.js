@@ -1,5 +1,8 @@
 function Frame(first, second) {
-  this.score = [first, second].filter(Boolean);
+  this.score = [first, second]
+  this.score = this.score.filter(function(element) {
+   return element !== undefined;
+  });
 }
 
 Frame.prototype.isSpare = function() {

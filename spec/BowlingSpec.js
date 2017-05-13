@@ -3,24 +3,23 @@ describe('Bowling', function() {
   var bowling;
 
   beforeEach(function() {
-    bowling = new Bowling()
+    var fakeGame = {
+      frame1: [],
+      frame2: [],
+      frame3: [],
+      frame10: []
+    };
+    bowling = new Bowling(fakeGame);
   })
 
   describe('default state', function() {
 
-    it('has a default game array', function() {
-      expect(bowling.game).toEqual({
-        frame1: [],
-        frame2: [],
-        frame3: [],
-        frame4: [],
-        frame5: [],
-        frame6: [],
-        frame7: [],
-        frame8: [],
-        frame9: [],
-        frame10: []
-      });
+    it('knows it is the first frame', function() {
+      expect(bowling.currentFrame).toEqual(1);
+    })
+
+    it('knows it is the first ball', function() {
+      expect(bowling.currentBall).toEqual(1);
     })
   })
 
@@ -43,14 +42,30 @@ describe('Bowling', function() {
       expect(bowling.currentFrame).toEqual(2);
     })
 
-    it('gives 3 balls to tenth frame', function() {
-      bowling.currentFrame = 10
-      bowling.nextBall();
-      bowling.nextBall();
-      expect(bowling.currentBall).toEqual(3);
+    describe('tenth-frame logic', function() {
+
+      it('gives 3 balls to tenth frame strikes', function() {
+        bowling.currentFrame = 10
+        bowling.bowl(10);
+        bowling.bowl(10);
+        expect(bowling.currentBall).toEqual(3);
+      })
+
+      it('gives 3 balls to tenth frame spare', function() {
+        bowling.currentFrame = 10
+        bowling.bowl(5);
+        bowling.bowl(5);
+        expect(bowling.currentBall).toEqual(3);
+      })
+
+      it('stops after 2 non-strikes in tenth frame', function() {
+        bowling.currentFrame = 10
+        bowling.bowl(5);
+        bowling.bowl(3);
+        expect(bowling.currentBall).toEqual(2);
+      })
     })
   })
-
   describe('adding scores', function() {
 
     it('can record 2 frames', function() {
@@ -62,12 +77,24 @@ describe('Bowling', function() {
         frame1: [5, 3],
         frame2: [6, 1],
         frame3: [],
-        frame4: [],
-        frame5: [],
-        frame6: [],
-        frame7: [],
-        frame8: [],
-        frame9: [],
+        frame10: []
+      });
+    });
+
+    it('recognises a strike', function() {
+      bowling.bowl(10);
+      expect(bowling.currentFrame).toEqual(2);
+    });
+
+    it('can record a strike, followed by next ball in frame 2', function() {
+      bowling.bowl(10);
+      bowling.bowl(3);
+      bowling.bowl(6);
+      bowling.bowl(1);
+      expect(bowling.game).toEqual({
+        frame1: [10],
+        frame2: [3, 6],
+        frame3: [1],
         frame10: []
       });
     });

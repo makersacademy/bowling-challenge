@@ -2,13 +2,13 @@ describe('Bowling', function() {
   var bowling;
 
   beforeEach(function() {
-    var fakeGame = {
+    var fakeGameCard = {
       frame1: [],
       frame2: [],
       frame3: [],
       frame10: []
     };
-    bowling = new Bowling(fakeGame);
+    bowling = new Bowling(fakeGameCard);
   })
 
   describe('default state', function() {

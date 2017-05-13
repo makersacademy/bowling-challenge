@@ -1,5 +1,5 @@
-function Bowling(game = new GameCard()) {
-  this.game = game
+function Bowling(gameCard = new GameCard()) {
+  this.game = gameCard
   this.currentFrame = 1
   this.currentBall = 1
 }

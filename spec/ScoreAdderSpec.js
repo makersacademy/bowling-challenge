@@ -10,19 +10,19 @@ describe('ScoreAdder', function() {
 
     it('evaluates first ball', function(){
       game = {frame1: [5]};
-      scoreAdder.updateScores(game)
+      scoreAdder.updateScores(game);
       expect(scoreAdder.frame1).toEqual(5);
     })
 
     it('evaluates second ball', function(){
       game = {frame1: [5, 2]};
-      scoreAdder.updateScores(game)
+      scoreAdder.updateScores(game);
       expect(scoreAdder.frame1).toEqual(7);
     })
 
     it('evaluates second frame', function(){
       game = {frame1: [5, 2], frame2: [5, 3]};
-      scoreAdder.updateScores(game)
+      scoreAdder.updateScores(game);
       expect(scoreAdder.frame2).toEqual(8);
     })
 
@@ -38,7 +38,7 @@ describe('ScoreAdder', function() {
         frame9: [0, 10],
         frame10: [5, 5, 5]
       };
-      scoreAdder.updateScores(game)
+      scoreAdder.updateScores(game);
       expect(scoreAdder.frame2).toEqual(8);
       expect(scoreAdder.frame7).toEqual(4);
       expect(scoreAdder.frame9).toEqual(10);
@@ -51,18 +51,39 @@ describe('ScoreAdder', function() {
 
     it('evaluates a spare', function(){
       game = {frame1: [5, 5], frame2: [5, 5]};
-      scoreAdder.updateScores(game)
-      scoreAdder.updateSpares(game)
+      scoreAdder.updateScores(game);
+      scoreAdder.updateSpares(game);
       expect(scoreAdder.frame1).toEqual(15);
       expect(scoreAdder.frame2).toEqual(10);
     })
 
     it('evaluates two spares', function(){
       game = {frame1: [5, 5], frame2: [5, 5], frame3: [5, 5]};
-      scoreAdder.updateScores(game)
-      scoreAdder.updateSpares(game)
+      scoreAdder.updateScores(game);
+      scoreAdder.updateSpares(game);
       expect(scoreAdder.frame1).toEqual(15);
       expect(scoreAdder.frame2).toEqual(15);
+    })
+  })
+
+  describe('adds strike scores', function() {
+
+    it('evaluates a strike', function(){
+      game = {frame1: [10], frame2: [5, 5]};
+      scoreAdder.updateScores(game);
+      scoreAdder.updateSpares(game);
+      scoreAdder.updateStrikes(game);
+      expect(scoreAdder.frame1).toEqual(20);
+      expect(scoreAdder.frame2).toEqual(10);
+    })
+
+    it('evaluates two strikes', function(){
+      game = {frame1: [10], frame2: [10], frame3: [5, 3]};
+      scoreAdder.updateScores(game);
+      scoreAdder.updateSpares(game);
+      scoreAdder.updateStrikes(game);
+      expect(scoreAdder.frame1).toEqual(25);
+      expect(scoreAdder.frame2).toEqual(18);
     })
   })
 })

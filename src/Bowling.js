@@ -5,7 +5,9 @@ function Player() {
   this.frames = 10;
   this.roll1Score = 0;
   this.roll2Score = 0;
+  this.frameScore = 0
 }
+
 Player.prototype.bowl = function() {
    this.roll1(1);
    this.roll2(2);
@@ -20,7 +22,8 @@ Player.prototype.roll1 = function (number) {
 
 Player.prototype.roll2 = function (number) {
   this.roll2Score = number
-  this.score  = this.roll2Score + this.roll1Score;
+  this.frameScore  = this.roll2Score + this.roll1Score;
+  this.score =+ this.frameScore
 };
 
 Player.prototype.finish = function() {

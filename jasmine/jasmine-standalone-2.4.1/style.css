@@ -1,0 +1,29 @@
+body {
+	text-align: center;
+}
+
+table {
+	text-align: center;
+	margin: 20px auto;
+	border: 1px solid black;
+}
+
+td {
+	padding: 10px 20px;
+	text-align: center;
+	border-right: 1px solid black;
+
+}
+
+input{
+	width: 35px;
+}
+
+input[type=submit]{
+	width: auto;
+	font-size: 18;
+}
+
+td.score {
+	padding: 10px 5px;
+}

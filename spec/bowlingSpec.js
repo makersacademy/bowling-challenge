@@ -10,4 +10,9 @@ describe("Player", function() {
     player.roll1();
     expect(player.score).toEqual(1);
   });
+
+  it('should be able to bowl the second roll and score 2 points', function () {
+    player.roll2();
+    expect(player.score).toEqual(3);
+  });
 });

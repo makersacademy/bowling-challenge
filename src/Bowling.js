@@ -25,6 +25,10 @@ Player.prototype.roll2 = function (number) {
   this.score += this.frameScore
 };
 
+Player.prototype.spare = function (number) {
+  
+}
+
 Player.prototype.finish = function() {
   return true;
 };

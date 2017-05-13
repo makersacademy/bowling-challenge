@@ -12,7 +12,7 @@ Player.prototype.bowl = function () {
   this.roll1(1);
   this.roll2(2);
   this.frames -= 1;
-  if (this.frames === 5) {
+  if (this.frames === 0) {
     this.finish();
   }
 };

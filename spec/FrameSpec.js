@@ -25,6 +25,18 @@ describe('Frame', function() {
       frame.Roll(3);
       expect(frame.pinsKnockedDown).toEqual([2,5]);
     });
+
+  });
+
+  describe('checkRoll', function() {
+    it('will not accept a number higher than 10 or below 0', function() {
+      expect(function() {
+        frame.checkRoll(11);
+      }).toThrowError('The number entered must be between 0 - 10');
+      expect(function() {
+        frame.checkRoll(-1);
+      }).toThrowError('The number entered must be between 0 - 10');
+    });
   });
 
 });

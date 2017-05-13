@@ -3,32 +3,35 @@ var game = new Game();
 $('#calculate').on('click', function() {
   for (i = 0; i < game.frames.length; i++) {
     if (game.frames[i].isSpare()) {
-      if ( i + 1 === game.frames.length ) { endWithSpare() }
-      else { calculateSpare() };
+      spareLogic();
+    } else if (game.frames[i].isStrike() && i + 1 === game.frames.length) {
+      endWithStrike();
+      break;
     } else if (game.frames[i].isStrike()) {
-      if (i + 1 === game.frames.length) {
-        endWithStrike()
-        break;
-      } else if (i + 2 === game.frames.length && game.frames[i+1].isStrike()) {
-        $('#frame' + i + '-2').text('X');
-        $('#frame' + (i + 1) + '-2').text('X');
-        $('#score' + i).text(" ");
-      } else {
-        calculateStrike()
-      };
+      strikeLogic();
     } else {
       calculate();
     };
   };
 });
-//
-//
-// function testFunk() {
-//   console.log(game.frames);
-// }
 
 
 
+function strikeLogic() {
+  if (i + 2 === game.frames.length && game.frames[i+1].isStrike()) {
+    endWithTwoStrikes();
+  } else {
+    calculateStrike()
+  };
+}
+
+function spareLogic() {
+  if ( i + 1 === game.frames.length ) {
+    endWithSpare()
+  } else {
+    calculateSpare()
+  };
+}
 
 function calculateSpare() {
   $('#frame' + i + '-1').text(game.frames[i].score[0]);
@@ -62,5 +65,11 @@ function endWithSpare() {
 
 function endWithStrike() {
   $('#frame' + i + '-2').text('X');
+  $('#score' + i).text(" ");
+}
+
+function endWithTwoStrikes() {
+  $('#frame' + i + '-2').text('X');
+  $('#frame' + (i + 1) + '-2').text('X');
   $('#score' + i).text(" ");
 }

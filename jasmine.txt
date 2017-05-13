@@ -1,0 +1,10 @@
+<!-- jasmine javacsript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.1/jasmine.js"></script>
+<!-- jasmine css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.1/jasmine.css">
+<!-- jasmine HTML -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.1/jasmine-html.min.js"></script>
+<!-- jasmine boot -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.1/boot.js"></script>
+<!-- jasmine jquery -->
+<script src="https://cdn.jsdelivr.net/jasmine.jquery/2.0.3/jasmine-jquery.js"></script>

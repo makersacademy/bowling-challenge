@@ -8,10 +8,6 @@
       frame = new Frame();
     });
 
-    it('has a method processRoll', function() {
-      expect(frame.processRoll()).toBeDefined();
-    });
-
     it('is inactive upon creation', function() {
       expect(frame.isActive()).toBe(false);
     });
@@ -22,9 +18,19 @@
     });
 
     it('has a deactivate method', function() {
-      expect(frame.deactivate()).toBeDefined();
+      frame.activate();
+      frame.deactivate();
+      expect(frame.isActive()).toBe(false);
     });
 
+    it('has a setter method for prior score', function() {
+      expect(frame.setPriorScore()).toBeUndefined();
+    });
 
+    describe('processRoll', function() {
+      it('has a method processRoll', function() {
+	expect(frame.processRoll()).toBeDefined();
+      });
+    });
   });
 }());

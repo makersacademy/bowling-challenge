@@ -22,12 +22,8 @@
       expect(frame1.isActive()).toBe(true);
     });
 
-    it('has a method "roll"', function() {
-      expect(onePlayerGame.roll()).toBe(1);
-    });
-
     describe('roll', function() {
-      it('results in call of processRoll on frame1', function() {
+      it('results in call of processRoll on active frames', function() {
 	spyOn(frame1, 'processRoll').and.returnValue(true);
 	onePlayerGame.roll(10);
 	expect(frame1.processRoll).toHaveBeenCalled();

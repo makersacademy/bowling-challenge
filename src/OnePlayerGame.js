@@ -18,7 +18,9 @@ var OnePlayerGameFile = (function() {
   };
 
   OnePlayerGame.prototype.roll = function(pinsKnockedOver) {
-    return 1;
+    this.activeFrames.forEach(function(frame) {
+      frame.processRoll(pinsKnockedOver);
+    });
   };
 
   OnePlayerGame.prototype.updateBoxes = function() {

@@ -1,13 +1,23 @@
 {
   "name": "bowling-challenge",
   "version": "1.0.0",
-  "description": "Bowling Game Javascript",
-  "main": "js/bowling.js",
+  "description": "Bowling Challenge =================",
+  "main": ".eslintrc.js",
   "directories": {
     "doc": "docs"
   },
+  "dependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-import": "^2.2.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-node": "^4.2.2"
+  },
   "scripts": {
-    "test": "lint"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

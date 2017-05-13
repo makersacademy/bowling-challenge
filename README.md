@@ -1,3 +1,4 @@
+![travis build](https://travis-ci.org/Robert-G-J/bowling-challenge.svg?branch=master)
 Bowling Challenge- Makers Academy, Week 5
 ------------------------------------------
 Installation

@@ -68,6 +68,27 @@ describe('Bowling', function() {
   })
   describe('adding scores', function() {
 
+    it('can record a gutterball', function() {
+      bowling.bowl(0);
+      expect(bowling.game).toEqual({
+        frame1: [0],
+        frame2: [],
+        frame3: [],
+        frame10: []
+      });
+    });
+
+    it('can record gutterball and spare', function() {
+      bowling.bowl(0);
+      bowling.bowl(10);
+      expect(bowling.game).toEqual({
+        frame1: [0, 10],
+        frame2: [],
+        frame3: [],
+        frame10: []
+      });
+    });
+
     it('can record 2 frames', function() {
       bowling.bowl(5);
       bowling.bowl(3);

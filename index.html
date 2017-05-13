@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bowling ScoreCard</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="css/base.css">
+
+    <script src="src/bowling.js"></script>
+    <script src="src/scorecard.js"></script>
+    <script src="src/interface.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1> Bowling ScoreCard </h1>
+      <div class="row">
+        <div class="col-xs-6">
+          <button class="btn btn-large btn-success" id="play">Play!</button>
+        </div>
+        <div class="col-xs-6">
+          <button class="btn btn-large btn-danger" id="reset">Reset the
+            game</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <table class="table table-bordered table-striped">
+          <caption>ScoreCard</caption>
+          <thead>
+            <tr>
+              <td>Frame</td>
+              <td>Roll 1</td>
+              <td>Roll 2</td>
+              <td>Extra Roll</td>
+              <td>Total score</td>
+            </tr>
+          </thead>
+          <tbody id="scores-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

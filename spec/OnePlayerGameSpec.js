@@ -11,5 +11,16 @@
     it('has a method "storeRoll"', function() {
       expect(onePlayerGame.storeRoll()).toBe(1);
     });
+
+    describe('storeRoll', function() {
+      it('results in call of updateBoxes on Game', function() {
+	spyOn(onePlayerGame, 'updateBoxes');
+	onePlayerGame.storeRoll(10);
+	expect(onePlayerGame.updateBoxes).toHaveBeenCalled();
+      });
+    });
+	
+	
+      
   });
 }());

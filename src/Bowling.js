@@ -8,8 +8,9 @@ function Player() {
   this.frameScore = 0;
 }
 
-Player.prototype.bowl = function () {
-  this.roll1(1);
+Player.prototype.bowl = function (number) {
+  this.number = number;
+  this.roll1(this.number);
   this.roll2(2);
   this.frames -= 1;
   if (this.frames === 0) {

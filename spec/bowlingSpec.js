@@ -19,13 +19,13 @@ describe("Player", function() {
   });
 
   it('should be able to bowl 2 rolls together', function() {
-    player.bowl();
+    player.bowl(1);
     expect(player.frameScore).toEqual(3);
   });
 
   it('should be able to bowl 2 turns together', function() {
-    player.bowl();
-    player.bowl();
+    player.bowl(1);
+    player.bowl(1);
     expect(player.score).toEqual(6)
   });
 

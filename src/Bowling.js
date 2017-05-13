@@ -11,9 +11,21 @@ function Bowling() {
     frame9: [],
     frame10: []
   }
+  this.currentFrame = 1
+  this.currentBall = 1
 }
 
-Bowling.prototype.bowl = function(frame, ball, score) {
-  var frameKey = 'frame' + frame
+Bowling.prototype.bowl = function(score) {
+  var frameKey = 'frame' + this.currentFrame
   this.game[frameKey].push(score)
+  this.nextBall();
+}
+
+Bowling.prototype.nextBall = function() {
+  if (this.currentBall === 2  && this.currentFrame < 10) {
+    this.currentBall = 1;
+    this.currentFrame++;
+  }else{
+    this.currentBall++;
+  }
 }

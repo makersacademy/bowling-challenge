@@ -1,0 +1,19 @@
+body {
+    background-image: url(https://s-media-cache-ak0.pinimg.com/736x/1a/19/f2/1a19f267070d73bbf7e668e4a2336baf.jpg);
+    background-repeat: no-repeat;
+    image-resolution: from-image;
+    background-size: cover;
+    color: white;
+    font-size: 20px
+
+  }
+
+button {
+background-color: black;
+border-color: white;
+font-size: 20px;
+}
+
+table {
+  border: 3px solid black;  
+}

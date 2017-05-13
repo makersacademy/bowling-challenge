@@ -32,7 +32,7 @@ describe("Player", function() {
   it('should be able to bowl a spare', function () {
     player.roll1(5)
     player.roll2(5)
-    expect(player.spare()).toHaveBeenCalled
+    expect(player.spare()).toBe(true);
   });
 
   it('should reduce the number of frames by 1 when bowl method called', function() {

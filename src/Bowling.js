@@ -26,7 +26,7 @@ Player.prototype.roll2 = function (number) {
 };
 
 Player.prototype.spare = function (number) {
-  
+  return true
 }
 
 Player.prototype.finish = function() {

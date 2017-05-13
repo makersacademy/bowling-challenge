@@ -16,13 +16,22 @@ describe("A Game", function() {
   });
 
   describe("#roll", function() {
-    it("a zero game", function() {
+
+    beforeEach(function() {
       for (var i = 0; i < 20; i++) {
         game.roll();
       }
+    });
+
+    it("a zero game", function() {
+      spyOn(game, 'roll').and.returnValue(0);
       expect(game.score()).toEqual(0);
     });
 
+    it("can roll a games of ones", function() {
+      spyOn(game, 'roll').and.returnValue(1);
+      expect(game.score()).toEqual(20);
+    });
   });
 
 

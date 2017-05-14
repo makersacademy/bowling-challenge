@@ -34,6 +34,18 @@
 	frame.processRoll(3);
 	expect(frame.box2()).toBe(3);
       });
+      it('updates box variables with a spare', function() {
+	frame.processRoll(5);
+	expect(frame.box1()).toBe(5);
+	frame.processRoll(5);
+	expect(frame.box2()).toBe('/');
+      });
+      it('updates box variables with a strike', function() {
+	frame.processRoll(10);
+	expect(frame.box1()).toBe('X');
+	frame.processRoll(5);
+	expect(frame.box2()).toBe(null);
+      });
 
       xit('deactivates frame if two rolls < 10', function() {
 	frame.processRoll(5);

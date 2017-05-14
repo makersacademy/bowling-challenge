@@ -22,10 +22,10 @@ var FrameFile = (function() {
   };
 
   Frame.prototype.processRoll = function(pinsKnockedOver) {
-    this.updateBox(pinsKnockedOver);
+    this._updateBox(pinsKnockedOver);
   };
 
-  Frame.prototype.updateBox = function(pinsKnockedOver) {
+  Frame.prototype._updateBox = function(pinsKnockedOver) {
     if (this._roll1 === null) {
       this._roll1 = pinsKnockedOver;
     } else if (this._roll2 === null) {

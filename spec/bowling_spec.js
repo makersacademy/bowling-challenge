@@ -20,14 +20,27 @@ describe('Bowling, when starting a new game:', function() {
       expect(theDude._pins).toEqual(10);
     });
   });
-  describe('it knows the current frames\' points', function() {
+
+  describe('it knows the current frames\' points,', function() {
     it('returns null.', function() {
-      expect(theDude._framePoints).toEqual(null);
+      expect(theDude._framePoints).toEqual([]);
     });
   });
-  describe('it knows the current throws\' points', function() {
+
+  describe('it knows the current throws\' points,', function() {
     it('returns null.', function() {
       expect(theDude._firstThrow).toEqual(null);
+    });
+  });
+
+  describe('it knows if the current round is a Strike round', function() {
+    it('returns false', function() {
+      expect(theDude._strikeRound).toEqual(false);
+    })
+  })
+  describe('it knows if the current round is a Spare round', function() {
+    it('returns false', function() {
+      expect(theDude._spareRound).toEqual(false)
     });
   });
 });

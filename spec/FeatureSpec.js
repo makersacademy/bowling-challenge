@@ -20,5 +20,14 @@ describe('Features', function() {
       expect(function(){ bowling.bowl(); }).toThrowError('Game over!!');
   });
 
+  describe('Player DOES throw strike', function() {
+
+
+    it('sets strike to true and adds 2 to bonus count', function() {
+      bowling.bowl(10);
+      expect(bowling.getIsStrike()).toEqual(true);
+      expect(bowling.getBonusPoints()).toEqual(2);      
+    });
+  });
 
 });

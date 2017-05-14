@@ -36,6 +36,17 @@ describe('Player', function () {
     expect(player.score).toEqual(25);
   });
 
+
+  it('should be able to bowl a strike', function () {
+    player.bowl(10);
+    expect(player.frameScore).toEqual(10);
+    // expect(player.score).toEqual(10);
+    player.strike(2);
+    expect(player.strikeFrameScore).toEqual(8);
+    console.log(player.score);
+    expect(player.score).toEqual(18);
+  });
+
   it('should reduce the number of frames by 1 when bowl method called', function () {
     player.bowl();
     expect(player.frames).toEqual(9);

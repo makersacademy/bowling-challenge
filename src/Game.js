@@ -41,6 +41,8 @@ Game.prototype._finalBowl = function(n) {
     this.finalFrame = this.frames.push(new FinalFrame(n));
     if (this.frames[index-1].isSpare()) {
       finalSpareScore(n);
+    } else if (n === 10) {
+      enableOptions();
     } else if (this.frames[index-2].isStrike() && this.frames[index-1].isStrike()) {
       strikeUpdate();
       enableOptions();

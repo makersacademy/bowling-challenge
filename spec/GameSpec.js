@@ -34,6 +34,14 @@ describe("A Game", function() {
       expect(game.score()).toEqual(16);
     });
 
+    it("can roll a strike", function() {
+      game.roll(10);
+      game.roll(2);
+      game.roll(4);
+      rollMany(16,0);
+      expect(game.score()).toEqual(22);
+    });
+
   });
 
 

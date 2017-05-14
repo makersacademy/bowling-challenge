@@ -46,3 +46,7 @@ I want to add my next two scores to this score
 Technologies:
 ------------------
 Written in Javascript and tested with Jasmine. Test and style checks with Travis CI and Hound CI.
+
+Acknowledgements:
+------------------
+Written borrowing heavily from David Donahue after 20 hours of banging my head against a desk: https://www.youtube.com/watch?v=-qA_MjNmpVU

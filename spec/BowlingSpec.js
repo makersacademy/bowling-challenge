@@ -26,4 +26,10 @@ describe('Bowling', function() {
     expect(bowling._isStrike).toEqual(false);
   });
 
+  it('adds bonus points and toggles frame bowl number', function() {
+    bowling.bowl(5);
+    bowling.applyBonus();
+    expect(bowling._isFirstBowlOfFrame).toEqual(false);
+  });
+
 });

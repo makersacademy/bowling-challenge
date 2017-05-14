@@ -44,14 +44,14 @@ describe('Features', function() {
     it('sets strike to true and adds 2 to  strike bonus count', function() {
       bowling.bowl(10);
       expect(bowling._isStrike).toEqual(true);
-      expect(bowling.getBonusCounter()).toEqual(2);
+      expect(bowling._bonusCounter).toEqual(2);
     });
 
     it('adds points from following 2 rolls to bonus', function() {
       bowling.bowl(bowling.STRIKE);
       bowling.bowl(5);
       bowling.bowl(2);
-      expect(bowling.getBonusCounter()).toEqual(0);
+      expect(bowling._bonusCounter).toEqual(0);
       expect(bowling._bonusPoints).toEqual(7);
       expect(bowling._isStrike).toEqual(false);
     });
@@ -62,7 +62,7 @@ describe('Features', function() {
     it('adds points from following roll to bonus', function() {
       bowling.bowl(8);
       bowling.bowl(2);
-      expect(bowling.getBonusCounter()).toEqual(1);
+      expect(bowling._bonusCounter).toEqual(1);
       expect(bowling._isSpare).toEqual(true);
     });
   });

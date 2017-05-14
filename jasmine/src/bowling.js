@@ -1,9 +1,11 @@
 function Bowling(){
   this.bowlCount = []
+  this.remainingBowls = 2
  };
 
 Bowling.prototype.frame = function () {
   this.bowlCount.push(_randomBowl())
+  this.remainingBowls--
 };
 
 function _randomBowl() {

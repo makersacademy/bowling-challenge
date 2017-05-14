@@ -22,5 +22,10 @@ describe('Bowling', function(){
       bowling.frame()
       expect(bowling.bowlCount).toContain(5)
     });
+    it('reduces remainingBowls by 1', function(){
+      bowling.frame()
+      expect(bowling.remainingBowls).toEqual(1)
+    });
   });
+
 });

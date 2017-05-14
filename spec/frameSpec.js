@@ -7,13 +7,23 @@ describe('Frame', function () {
   })
 
   describe('initialization', function () {
-    it('can be created', function () {
+    it('frames can be created', function () {
       expect(frame instanceof Frame).toBe(true)
+    })
+    it('frames have a default score of 0', function () {
+      expect(frame._score).toEqual(0)
     })
   })
 
+  describe('score function', function () {
+    it('returns the score attribute', function () {
+      var score = 2
+      frame._score = score
+      expect(frame.scoreIs()).toEqual(score)
+    })
+  })
   describe('hit function', function () {
-    it('drops a number of pins grom a given roll in a frame', function () {
+    it('drops a number of pins from a given roll in a frame', function () {
       var rollIndex = 0
       var pinsDown = 5
       frame.hit(rollIndex, pinsDown)
@@ -23,10 +33,19 @@ describe('Frame', function () {
       frame.hit(rollIndex, pinsDown)
       expect(frame._rolls[rollIndex]._pinsDown).toEqual(pinsDown)
     })
+    it('contributes to score for that frame', function () {
+      var rollIndex = 0
+      var pinsDown1 = 5
+      frame.hit(rollIndex, pinsDown1)
+      var rollIndex = 1
+      var pinsDown2 = 4
+      frame.hit(rollIndex, pinsDown2)
+      expect(frame.scoreIs()).toEqual(pinsDown1 + pinsDown2)
+    })
   })
 
   describe('spare', function () {
-    it('can be determined', function () {
+    it('can be confirmed', function () {
       var rollIndex = 0
       var pinsDown = 5
       frame.hit(rollIndex, pinsDown)

@@ -29,4 +29,9 @@ Frame.prototype.isStrike = function () {
 
 Frame.prototype.hit = function (roll, pinsDown) {
   this._rolls[roll]._pinsDown = pinsDown
+  this._score += pinsDown
+};
+
+Frame.prototype.scoreIs = function () {
+  return this._score
 };

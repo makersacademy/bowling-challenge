@@ -1,0 +1,23 @@
+.low_usage {
+  background-color: green;
+}
+
+.medium_usage {
+  background-color: black;
+}
+
+.high_usage {
+  background-color: red;
+}
+
+.basic {
+  background-color: white;
+  border-color: blue;
+  text-align: center;
+  margin-left : 30%;
+  margin-right : 30%;
+}
+
+.thermostat {
+  margin-top: 10%;
+}

@@ -1,0 +1,43 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Thermostat_Challenge</title>
+    <meta name="description" content="Thermostat in JS">
+    <meta name="author" content="Makers">
+
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <script type="text/javascript" src="./js/jquery.js"></script>
+
+  </head>
+  <body>
+    <div class='thermostat'>
+      <div class='basic'>
+        <br>
+          <p id="current"></p>
+          <p id="min"></p>
+          <p id="max"></p>
+          <p id="power_status"></p>
+        <br>
+      </div>
+      <div class='basic'>
+        <br>
+        <button type="button" id="decreasetemp">Decrease Temp</button>
+        <button type="button" id="increasetemp">Increase Temp</button>
+      </div>
+
+      <div class='basic'>
+        <br><br>
+        <button type="button" id="temp_reset"> Reset temperature</button>
+      </div>
+      <div class='basic'>
+        <form>
+          <br><input type="checkbox" id="power_saver" checked> Power Save On<br>
+        </form><br>
+      </div>
+      <div class='basic'>
+        <p id="weather"> </p>
+      </div>
+    </div>
+  </body>
+</html>

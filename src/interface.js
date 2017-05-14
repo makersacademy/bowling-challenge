@@ -45,8 +45,19 @@ function calculateFinalScore(frame) {
 function updateFinalFrame(frame) {
   console.log(frame.score);
   var i = 1;
+  var previousScore = 0;
   frame.score.forEach( function(value) {
-    $('#frame9' + '-' + i).text(value);
+    if (Number(value) === 10) {
+      $('#frame9' + '-' + i).text('X');
+    } else if (Number(value) + previousScore === 10) {
+      console.log("HERE")
+      $('#frame9' + '-' + i).text('/');
+      previousScore = 0;
+    } else {
+      console.log("THERE")
+      $('#frame9' + '-' + i).text(value);
+      previousScore = Number(value);
+    };
     i++;
   });
 };

@@ -1,6 +1,12 @@
 var game = new Game();
 
-$('#calculate').on('click', function() {
+$('.bowl-number').on('click', function() {
+  game.bowl($(this).val())
+  console.log(game.savedBowl);
+  console.log(game.frames.length);
+});
+
+function updateScores() {
   for (i = 0; i < game.frames.length; i++) {
     if (game.frames[i].isSpare()) {
       spareLogic();
@@ -13,7 +19,7 @@ $('#calculate').on('click', function() {
       calculate();
     };
   };
-});
+};
 
 
 

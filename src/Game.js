@@ -1,16 +1,5 @@
 function Game() {
-  this.frames = [
-    new Frame(3, 5),
-    new Frame(10),
-    new Frame(10),
-    new Frame(10),
-    new Frame(10),
-    new Frame(4, 2),
-    new Frame(6, 4), // Spare
-    new Frame(2, 5),
-    new Frame(10),  // Strike
-    new Frame(1, 3),
-  ]
+  this.frames = []
   this.testFrames = [
     new Frame(3, 5),
     new Frame(10),
@@ -24,19 +13,19 @@ function Game() {
     new Frame(1, 3),
   ]
   this.totalScore = 0;
+  this.savedBowl = -1;
 }
 
-Game.prototype.calculateTotal = function() {
-    for (i = 0; i < this.frames.length; i++) {
-      if (this.frames[i].isSpare()) {
-        this.totalScore += this.frames[i].calculate() + this.frames[i + 1].score[0];
-      } else if (this.frames[i].isStrike()) {
-        this.totalScore += this.strikeCalc(i);
-      } else {
-        this.totalScore += this.frames[i].calculate()
-    };
-  };
-};
+Game.prototype.bowl = function(n) {
+  if (this.savedBowl !== -1) {
+    this.frames.push(new Frame(this.savedBowl, Number(n)));
+    this.savedBowl = -1;
+    updateScores();
+    this.totalScore = 0;
+  } else {
+    this.savedBowl = Number(n);
+  }
+}
 
 Game.prototype.strikeCalc = function(i) {
   if (i + 1 === this.frames.length) { return " " };

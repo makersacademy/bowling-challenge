@@ -33,11 +33,8 @@ Game.prototype._calculateRoll = function() {
     return Math.floor((Math.random() * 11));
 };
 
-Game.prototype.bankBonus = function(score) {
-    this.bonus += score;
-};
 
-Game.prototype.reset = function() {
+Game.prototype.resetBonus = function() {
     this.bonus = RESET;
     this.isSpare = false;
     this.isStrike = false;
@@ -45,11 +42,14 @@ Game.prototype.reset = function() {
 
 Game.prototype.addBonus = function() {
     this.score += this.bonus;
-    this.reset();
+    this.resetBonus();
 };
 
 Game.prototype.addScore = function(roll) {
     this.score += ((ALLPINS - this.pins) + roll);
+};
+Game.prototype.bankBonus = function(score) {
+  this.bonus += score;
 };
 
 Game.prototype.firstRollOpen = function(roll) {
@@ -154,7 +154,6 @@ Game.prototype.newFrame = function() {
     this.isSecondRoll = false;
     this.frame += 1;
     this.pins = ALLPINS;
-    console.log("score: " + this.score);
 };
 
 

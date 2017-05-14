@@ -9,4 +9,19 @@ describe('Game', function() {
   it('contains and array of frames', function() {
     expect(game._frames).toEqual([]);
   });
+
+  describe('throwFirstBall', function() {
+
+    beforeEach(function() {
+      game = new Game();
+      pins = new Pins();
+    });
+
+    it('allows user to throw first ball', function() {
+      game.throwFirstBall(pins)
+      expect(game._frames[0].length).toBe(1)
+    });
+  });
+
+  
 });

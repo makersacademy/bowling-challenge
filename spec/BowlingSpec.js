@@ -20,12 +20,19 @@ describe('Bowling', function() {
       expect(game.score()).toEqual(7);
     });
 
-    it('knows how to calculate a spare', function(){
+    it('knows how to calculate a spare', function() {
       game.roll(5);
       game.roll(5);
       game.roll(4);
       game.roll(2);
       expect(game.score()).toEqual(20);
+    });
+
+    it('knows how to calculate a strike', function() {
+      game.roll(10);
+      game.roll(2);
+      game.roll(6);
+      expect(game.score()).toEqual(26);
     });
   });
 

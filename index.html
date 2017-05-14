@@ -12,14 +12,23 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <script src="js/test.js"></script>
+
   <style>
   body { padding-bottom: 70px; }
+
+  table.table td {
+    font-size: 90%;
+}
+
+
   </style>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed">
+  <nav class="navbar navbar-inverse navbar-fixed">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -76,40 +85,86 @@
   <div class="container">
     <br><br>
 
-    <div class="panel panel-default"> <div class=panel-heading>Panel heading</div> <div class=panel-body> <p>Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> </div> <table class=table> <thead> <tr> <th>#</th> <th>First Name</th> <th>Last Name</th> <th>Username</th> </tr> </thead> <tbody> <tr> <th scope=row>1</th> <td>Mark</td> <td>Otto</td> <td>@mdo</td> </tr> <tr> <th scope=row>2</th> <td>Jacob</td> <td>Thornton</td> <td>@fat</td> </tr> <tr> <th scope=row>3</th> <td>Larry</td> <td>the Bird</td> <td>@twitter</td> </tr> </tbody> </table> </div> </div>
-    
-    <br><br>
-    <div class="row text-center">
-      <div class="col-sm-12 col-md-12 col-lg-12">
-      <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default">0</button>
-        <button type="button" class="btn btn-default">1</button>
-        <button type="button" class="btn btn-default">2</button>
-        <button type="button" class="btn btn-default">4</button>
-        <button type="button" class="btn btn-default">5</button>
-        <button type="button" class="btn btn-default">6</button>
-        <button type="button" class="btn btn-default">7</button>
-        <button type="button" class="btn btn-default">8</button>
-        <button type="button" class="btn btn-default">9</button>
-        <button type="button" class="btn btn-default">10</button>
+    <div class="panel panel-default">
+      <div class=panel-heading>Bowling Challenge</div>
+      <div class=panel-body>
+        <p>Click on a number to knock down that many pins</p>
       </div>
+      <table class=table>
+        <thead>
+          <tr> <th colspan="2" class="text-center">Frame 1</th> <th colspan="2" class="text-center">Frame 2</th> <th colspan="2" class="text-center">Frame 3</th> <th colspan="2" class="text-center">Frame 4</th> <th colspan="2" class="text-center">Frame 5</th> <th colspan="2" class="text-center">Frame 3</th> <th colspan="2" class="text-center">Frame 7</th> <th colspan="2" class="text-center">Frame 8</th> <th colspan="2" class="text-center">Frame 9</th> <th colspan="2" class="text-center">Frame 10</th> </tr>
+        </thead>
+        <tbody class="text-canter">
+          <tr> <!-- start rolls -->
+            <td class="text-center" id="frame-1-roll-1" >0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+            <td class="text-center">0</td>
+           </tr> <!-- end rolls -->
+
+
+
+          <tr> <!-- start frames -->
+            <td colspan="2" class="text-center">0</td>
+            <td colspan="2" class="text-center">0</td>
+            <td colspan="2" class="text-center">0</td>
+            <td colspan="2" class="text-center">0</td>
+            <td colspan="2" class="text-center">0</td>
+            <td colspan="2" class="text-center">0</td>
+            <td colspan="2" class="text-center">0</td>
+            <td colspan="2" class="text-center">0</td>
+            <td colspan="2" class="text-center">0</td>
+            <td colspan="2" class="text-center">0</td>
+          </tr> <!-- end frame score -->
+
+        </tbody>
+      </table>
     </div>
   </div>
 
   <br><br>
   <div class="row text-center">
     <div class="col-sm-12 col-md-12 col-lg-12">
-    <div class="thumbnail">
-      <img src="http://pngimg.com/uploads/bowling/bowling_PNG67.png" alt="bowling">
-
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>Lorem Ipsum Dolem</p>
+      <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-default btn-lg">0</button>
+        <button type="button" class="btn btn-default btn-lg">1</button>
+        <button type="button" class="btn btn-default btn-lg">2</button>
+        <button type="button" class="btn btn-default btn-lg">4</button>
+        <button type="button" class="btn btn-default btn-lg">5</button>
+        <button type="button" class="btn btn-default btn-lg">6</button>
+        <button type="button" class="btn btn-default btn-lg">7</button>
+        <button type="button" class="btn btn-default btn-lg">8</button>
+        <button type="button" class="btn btn-default btn-lg">9</button>
+        <button type="button" class="btn btn-default btn-lg">10</button>
       </div>
-
     </div>
   </div>
-</div>
+
+  <script>
+  var buttons = document.getElementsByClassName('btn-lg');
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].onclick = function () {
+      var value = this.innerHTML;
+      alert(value)
+    }
+  }
+  </script>
 
 </div>
 

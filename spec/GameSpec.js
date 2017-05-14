@@ -8,7 +8,6 @@ describe("A Game", function() {
       game = new Game();
   });
 
-
   describe("::new", function() {
     it("creates a new Game instance", function() {
       expect(game instanceof Game).toBe(true);
@@ -17,27 +16,33 @@ describe("A Game", function() {
 
   describe("#roll", function() {
 
-    beforeEach(function() {
-      for (var i = 0; i < 20; i++) {
-        game.roll();
-      }
-    });
-
     it("a zero game", function() {
-      rollDownsPins(0);
+      rollMany(20, 0);
       expect(game.score()).toEqual(0);
     });
 
-    it("can roll a games of ones", function() {
-      rollDownsPins(1);
+    it("can roll a game of ones", function() {
+      rollMany(20, 1);
       expect(game.score()).toEqual(20);
+    });
+
+    it("can roll a spare", function() {
+      game.roll(7);
+      game.roll(3); //spare
+      game.roll(3);
+      rollMany(17, 0);
+      expect(game.score()).toEqual(16);
     });
 
   });
 
 
-  var rollDownsPins = function(pins) {
-    spyOn(game, 'roll').and.returnValue(pins);
+  var rollMany = function(rolls, pins) {
+    for (var i = 0; i < rolls; i++) { game.roll(pins); }
   };
+
+  // var rollKnocksDown = function(pins) {
+  //   spyOn(game, 'roll').and.returnValue(pins);
+  // };
 
 });

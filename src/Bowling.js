@@ -56,16 +56,11 @@ Player.prototype.spare = function (number) {
 Player.prototype.bowlStrike = function (number) {
   this.number = number;
   this.strikeRoll1Score = number * 2;
-  console.log('Congrats, you knocked over ' + this.number + 'pins!');
   this.strikeRoll2Score = number * 2;
-  console.log('Congrats, you knocked over ' + this.number + 'pins!');
   this.strikeFrameScore = this.strikeRoll2Score + this.strikeRoll1Score;
-  console.log(this.strikeFrameScore);
   this.score += this.strikeFrameScore;
+  this.printStrikeScore();
   this.frames -= 1;
-  console.log('Score on this frame: ' + this.bowlStrikeFrameScore + '.');
-  console.log('Total score: ' + this.score + '.');
-  console.log('Frames remaining: ' + this.frames + '.');
 };
 
 Player.prototype.finish = function () {
@@ -98,6 +93,14 @@ Player.prototype.printRoll2 = function () {
   console.log('Congrats, you knocked over ' + this.roll2Score + ' pins!');
 
   console.log('Score on this frame: ' + this.frameScore + '.');
+  console.log('Total score: ' + this.score + '.');
+  console.log('Frames remaining: ' + this.frames + '.');
+};
+
+Player.prototype.printStrikeScore = function () {
+  console.log('Congrats, you knocked over ' + this.number + 'pins!');
+  console.log('Congrats, you knocked over ' + this.number + 'pins!');
+  console.log('Score on this frame: ' + this.StrikeFrameScore + '.');
   console.log('Total score: ' + this.score + '.');
   console.log('Frames remaining: ' + this.frames + '.');
 };

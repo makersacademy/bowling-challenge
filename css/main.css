@@ -1,9 +1,15 @@
 .bowl-number {
 
-  font-size:95px;
+  font-size:30px;
   width:50px;
   margin:20px 5px;
+  background-color:aliceblue;
+  border-radius:15%;
 
+}
+
+.bowl-number:disabled {
+  background-color:black;
 }
 
 table, th, td {

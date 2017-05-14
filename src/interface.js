@@ -1,11 +1,7 @@
 var game = new Game();
 
 $('.bowl-number').on('click', function() {
-  game.bowl($(this).val())
-});
-
-$('#calculate').on('click', function() {
-  updateScores();
+  game.bowl($(this).val());
 });
 
 function updateScores() {
@@ -25,7 +21,9 @@ function updateScores() {
     };
   };
   game.cachedScore = game.totalScore;
-  if (game.frames[9] && game.frames[9].isEnded()) { gameOver() };
+  if (game.frames[9] && game.frames[9].isEnded()) {
+    gameOver();
+  };
 };
 
 function gameOver() {
@@ -45,7 +43,7 @@ function enableOptions() {
 }
 
 function finalFrameLogic() {
-  var frame = game.frames[game.frames.length - 1]
+  var frame = game.frames[game.frames.length - 1];
   updateFinalFrame(frame);
   calculateFinalScore(frame);
 }
@@ -53,7 +51,7 @@ function finalFrameLogic() {
 function calculateFinalScore(frame) {
   var finalScore = game.cachedScore;
   frame.score.forEach( function(num) {
-      finalScore += num
+      finalScore += num;
   });
   $('#score9').text(finalScore);
 };
@@ -82,11 +80,13 @@ function strikeUpdate() {
 
 function updatePartialBowl(num) {
   $('#frame' + game.frames.length + '-1').text(num);
-  if (game.spare) { spareUpdate(num) };
+  if (game.spare) {
+    spareUpdate(num);
+  };
 };
 
 function calculate() {
-  game.totalScore += game.frames[i].calculate()
+  game.totalScore += game.frames[i].calculate();
   $('#frame' + i + '-1').text(game.frames[i].score[0]);
   $('#frame' + i + '-2').text(game.frames[i].score[1]);
   $('#score' + i).text(game.totalScore);

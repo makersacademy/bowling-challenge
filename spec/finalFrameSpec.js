@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 describe("FinalFrame", function() {
   var frame;

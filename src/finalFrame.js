@@ -1,5 +1,5 @@
 function FinalFrame(first) {
-  this.score = [first]
+  this.score = [first];
 };
 
 FinalFrame.prototype.isEnded = function() {

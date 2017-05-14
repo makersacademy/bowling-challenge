@@ -18,7 +18,6 @@ Player.prototype.bowl = function (number) {
   }
   else
   this.roll2(this.number);
-  this.frames -= 1;
   if (this.frames === 0) {
     this.finish();
   }
@@ -26,32 +25,15 @@ Player.prototype.bowl = function (number) {
 
 Player.prototype.roll1 = function (number) {
   this.roll1Score = number;
-  if (this.roll1Score === 0) {
-    console.log('Oops, you didn\'t score anything.  Try again on the second roll!');
-  }
-
-  else if (this.roll1Score === 1) {
-    console.log('You knocked over 1 pin...kind of pathetic but better than 0.');
-  }
-
-  else
-  console.log('Congrats, you knocked over ' + this.roll1Score + ' pins!');
+  this.printRoll1();
 };
 
 Player.prototype.roll2 = function (number) {
   this.roll2Score = number;
   this.frameScore  = this.roll2Score + this.roll1Score;
   this.score += this.frameScore;
-  if (this.roll2Score === 0) {
-    console.log('Oops, you didn\'t score anything.  Better luck next frame!');
-  }
-
-  else if (this.roll2Score === 1) {
-    console.log('You knocked over 1 pin...kind of pathetic but better than 0.');
-  }
-
-  else
-  console.log('Congrats, you knocked over ' + this.roll2Score + ' pins!');
+  this.frames -= 1;
+  this.printRoll2();
   if (this.frameScore === 10) {
     this.spare(number);
   }
@@ -89,4 +71,33 @@ Player.prototype.bowlStrike = function (number) {
 Player.prototype.finish = function () {
   console.log("The game is over!");
   return true;
+};
+
+Player.prototype.printRoll1 = function () {
+  if (this.roll1Score === 0) {
+    console.log('Oops, you didn\'t score anything.  Try again on the second roll!');
+  }
+  else if (this.roll1Score === 1) {
+    console.log('You knocked over 1 pin...kind of pathetic but better than 0.');
+  }
+
+  else
+  console.log('Congrats, you knocked over ' + this.roll1Score + ' pins!');
+};
+
+Player.prototype.printRoll2 = function () {
+  if (this.roll2Score === 0) {
+    console.log('Oops, you didn\'t score anything.  Better luck next frame!');
+  }
+
+  else if (this.roll2Score === 1) {
+    console.log('You knocked over 1 pin...kind of pathetic but better than 0.');
+  }
+
+  else
+  console.log('Congrats, you knocked over ' + this.roll2Score + ' pins!');
+
+  console.log('Score on this frame: ' + this.frameScore + '.');
+  console.log('Total score: ' + this.score + '.');
+  console.log('Frames remaining: ' + this.frames + '.');
 };

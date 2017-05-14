@@ -1,4 +1,4 @@
-describe('Bowling', function() {
+describe('Bowling, when starting a new game:', function() {
   var theDude;
   beforeEach(function() {
     theDude = new Bowling();
@@ -20,5 +20,14 @@ describe('Bowling', function() {
       expect(theDude._pins).toEqual(10);
     });
   });
-
+  describe('it knows the current frames\' points', function() {
+    it('returns null.', function() {
+      expect(theDude._framePoints).toEqual(null);
+    });
+  });
+  describe('it knows the current throws\' points', function() {
+    it('returns null.', function() {
+      expect(theDude._firstThrow).toEqual(null);
+    });
+  });
 });

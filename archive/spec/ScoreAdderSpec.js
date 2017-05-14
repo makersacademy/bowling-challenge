@@ -84,12 +84,12 @@ describe('ScoreAdder', function() {
 
   describe('adds strike scores', function() {
 
-    it('evaluates a strike', function(){
+    it('evaluates first part of a strike', function(){
       game.frame1 = [10];
-      game.frame2 = [5, 5];
+      game.frame2 = [5];
       scoreAdder.updateAll(game);
-      expect(scoreAdder.frame1).toEqual(20);
-      expect(scoreAdder.frame2).toEqual(10);
+      expect(scoreAdder.frame1).toEqual(15);
+      expect(scoreAdder.frame2).toEqual(5);
     })
 
     it('evaluates two strikes', function() {

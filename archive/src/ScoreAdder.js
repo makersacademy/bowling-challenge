@@ -1,5 +1,6 @@
-function ScoreAdder() {
+function ScoreAdder(game) {
   this.total = 0;
+  this.updateAll(game)
 }
 
 function add(score1, score2) {
@@ -39,17 +40,19 @@ ScoreAdder.prototype.updateSpares = function(game) {
 ScoreAdder.prototype.updateStrikes = function(game) {
   var frame = '',
       frameNumber = 0,
-      frameScores = [],
-      nextFrame = '';
+      frameScores = [];
   for (frame in game) {
     frameNumber = parseInt(frame.slice(-1), 10);
-    frameScores = game[frame]
-    nextFrame = game['frame' + (frameNumber + 1)];
-    if (frameScores[0] === 10 && nextFrame.length > 0 && frameNumber > 0) {
+    frameScores = game[frame];
+    if (isStrike(frameScores[0]) && frameNumber > 0) {
       this.workoutStrike(game, frameNumber)
     }
   }
 }
+
+ScoreAdder.prototype.XworkoutStrike = function(game, frameNumber) {
+
+  }
 
 ScoreAdder.prototype.workoutStrike = function(game, frameNumber) {
   var frameScores = [];

@@ -9,9 +9,12 @@ $('#calculate').on('click', function() {
 });
 
 function updateScores() {
+  console.log("FLAGGLE")
   checkForSpare();
   for (i = 0; i < game.frames.length; i++) {
-    if (game.frames[i].isSpare()) {
+    if (i === 9) {
+      finalFrameLogic();
+    } else if (game.frames[i].isSpare()) {
       spareLogic();
     } else if (game.frames[i].isStrike() && i + 1 === game.frames.length) {
       endWithStrike();
@@ -23,6 +26,29 @@ function updateScores() {
     };
   };
   game.cachedScore = game.totalScore;
+};
+
+function finalFrameLogic() {
+  var frame = game.frames[game.frames.length - 1]
+  updateFinalFrame(frame);
+  calculateFinalScore(frame);
+}
+
+function calculateFinalScore(frame) {
+  var finalScore = game.cachedScore;
+  frame.score.forEach( function(num) {
+      finalScore += Number(num)
+  });
+  $('#score9').text(finalScore);
+};
+
+function updateFinalFrame(frame) {
+  console.log(frame.score);
+  var i = 1;
+  frame.score.forEach( function(value) {
+    $('#frame9' + '-' + i).text(value);
+    i++;
+  });
 };
 
 function updatePartialBowl(num) {

@@ -30,4 +30,16 @@ describe("Frame", function() {
   it('does not falsely detect a strike', function() {
     expect(frame.isStrike()).toEqual(false);
   });
+
+  it('calculates standard frame score correctly', function() {
+    expect(frame.calculate()).toEqual(8);
+  });
+
+  it('calculates spare score correctly', function() {
+    expect(spare.calculate()).toEqual(10);
+  });
+
+  it('calculates strike frame score correctly', function() {
+    expect(strike.calculate()).toEqual(10);
+  });
 });

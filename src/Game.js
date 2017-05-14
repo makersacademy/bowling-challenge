@@ -32,6 +32,7 @@ function Game() {
 
 Game.prototype.bowl = function(n) {
   if (this.frames.length >= 9) {
+    console.log('Final frame!')
     this._finalBowl(n);
   } else {
     this._standardBowl(n);
@@ -85,7 +86,14 @@ Game.prototype._addStrike = function() {
 };
 
 Game.prototype._finalFrameCheck = function() {
+  console.log("Shoop da woop")
   var frame = this.frames[this.frames.length-1];
-  console.log(frame.score[0] + frame.score[1]);
-  if (frame.isEnded()) { return 'Game over!' }
-}
+  console.log(frame);
+  console.log(frame.isEnded())
+  if (frame.isEnded()) {
+    console.log("Frame is ended apaz")
+    updateScores()
+  } else {
+    updateFinalFrame(frame);
+  };
+};

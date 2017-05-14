@@ -1,12 +1,17 @@
 var FrameFile = (function() {
   'use strict';
-  var Frame = function(game) {
+  var Frame = function(game, isTenth) {
     this.active = false;
     this._priorScore = null;
     this._roll1 = null;
     this._roll2 = null;
     this._roll3 = null;
     this._game = game;
+    if (isTenth) {
+      this._isTenth = true;
+    } else {
+      this._isTenth = false;
+    }
   };
   Frame.prototype.setPriorScore = function(priorScore) {
     this._priorScore = priorScore;
@@ -95,6 +100,31 @@ var FrameFile = (function() {
       return '/';
     } else { 
       return this._roll2;
+    }
+  };
+
+  Frame.prototype.frame10Box2 = function() {
+    if (this._isTenth === false) {
+      throw "Error: This isn't a tenth frame";
+    }
+    if (this._roll2 === 10) {
+      return 'X';
+    } else if (this._roll1 + this._roll2 === 10) {
+      return '/';
+    } else {
+      return this._roll2;
+    }
+  };
+  Frame.prototype.frame10Box3 = function() {
+    if (this._isTenth === false) {
+      throw "Error: This isn't a tenth frame";
+    }
+    if (this._roll3 === 10) {
+      return 'X';
+    } else if (this._roll2 + this._roll3 === 10) {
+      return '/';
+    } else {
+      return this._roll3;
     }
   };
 

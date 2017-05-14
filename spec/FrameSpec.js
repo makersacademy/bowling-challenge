@@ -72,6 +72,14 @@
 	frame.processRoll(5);
 	expect(frame.box2()).toBe(null);
       });
+      it('correctly handles box variables for tenth frame', function() {
+	var frame10 = new Frame(game, true); 
+	for (var i = 1; i <= 3; i++) { frame10.processRoll(10); }
+	expect(frame10.box1()).toBe('X');
+	expect(frame10.frame10Box2()).toBe('X');
+	expect(frame10.frame10Box3()).toBe('X');
+      });
+	  
 
       it('deactivates frame if two rolls < 10', function() {
 	frame.activate();

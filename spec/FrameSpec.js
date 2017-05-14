@@ -32,8 +32,7 @@
     describe('totalScore', function() {
       beforeEach(function() {
 	frame.setPriorScore(20);
-	frame.processRoll(10);
-	frame.processRoll(10);
+	for (var i = 1; i <= 2; i++) { frame.processRoll(10); }
       });
 
       it('returns null when unavailable', function() {
@@ -49,9 +48,7 @@
     describe('processRoll', function() {
       it('tells game to pass on score to next frame when it is available', function() {
 	frame.setPriorScore(20);
-	frame.processRoll(10);
-	frame.processRoll(10);
-	frame.processRoll(10);
+	for (var i = 1; i <= 3; i++) { frame.processRoll(10); }
 	expect(game.passOnScore).toHaveBeenCalledWith(frame.totalScore(), frame);
       });
       it('updates box variables with scores', function() {
@@ -83,14 +80,12 @@
 
       it('deactivates frame if two rolls < 10', function() {
 	frame.activate();
-	frame.processRoll(0);
-	frame.processRoll(0);
+	for (var i = 1; i <= 2; i++) { frame.processRoll(0); }
 	expect(frame.isActive()).toBe(false);
       });
       it('deactivates frame after three rolls if first 2 >= 10', function() {
 	frame.activate();
-	frame.processRoll(5);
-	frame.processRoll(5);
+	for (var i = 1; i <= 2; i++) { frame.processRoll(5); }
 	expect(frame.isActive()).toBe(true);
 	frame.processRoll(5);
 	expect(frame.isActive()).toBe(false);
@@ -100,8 +95,7 @@
 	expect(game.activateNextFrame).toHaveBeenCalled();
       });
       it('calls activateNextFrame on game after two rolls', function() {
-	frame.processRoll(0);
-	frame.processRoll(0);
+	for (var i = 1; i <= 2; i++) { frame.processRoll(0); }
 	expect(game.activateNextFrame).toHaveBeenCalled();
       });
     });

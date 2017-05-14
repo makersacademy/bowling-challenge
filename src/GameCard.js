@@ -9,4 +9,5 @@ function GameCard() {
   this.frame8 = [];
   this.frame9 = [];
   this.frame10 = [];
+  this.player = '';
 }

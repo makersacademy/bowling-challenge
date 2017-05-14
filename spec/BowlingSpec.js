@@ -65,7 +65,7 @@ describe('Bowling', function() {
       })
     })
   })
-  describe('adding scores', function() {
+  describe('recording scores', function() {
 
     it('can record a gutterball', function() {
       bowling.bowl(0);

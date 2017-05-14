@@ -92,7 +92,7 @@ describe('ScoreAdder', function() {
       expect(scoreAdder.frame2).toEqual(10);
     })
 
-    it('evaluates two strikes', function(){
+    it('evaluates two strikes', function() {
       game.frame1 = [10];
       game.frame2 = [0, 10];
       game.frame3 = [5, 3];
@@ -100,52 +100,70 @@ describe('ScoreAdder', function() {
       expect(scoreAdder.frame1).toEqual(20);
       expect(scoreAdder.frame2).toEqual(15);
     })
+  })
 
-    it('evaluates tenthframe', function(){
-      game.frame10 = [10, 5, 2];
-      scoreAdder.updateAll(game);
-      expect(scoreAdder.frame10).toEqual(17);
+    describe('tenthframes', function() {
+
+      it('evaluates basic tenthframe', function(){
+        game.frame10 = [5, 4];
+        scoreAdder.updateAll(game);
+        expect(scoreAdder.frame10).toEqual(9);
+      })
+
+      it('evaluates tenthframe with one spare', function(){
+        game.frame10 = [5, 5, 2];
+        scoreAdder.updateAll(game);
+        expect(scoreAdder.frame10).toEqual(12);
+      })
+
+      it('evaluates tenthframe with one strike', function(){
+        game.frame10 = [10, 5, 2];
+        scoreAdder.updateAll(game);
+        expect(scoreAdder.frame10).toEqual(17);
+      })
+
+      it('evaluates tenthframe with two strikes', function(){
+        game.frame10 = [10, 10, 2];
+        scoreAdder.updateAll(game);
+        expect(scoreAdder.frame10).toEqual(22);
+      })
     })
 
-    it('evaluates tenthframe', function(){
-      game.frame10 = [10, 10, 2];
-      scoreAdder.updateAll(game);
-      expect(scoreAdder.frame10).toEqual(22);
-    })
+    describe('total games', function() {
 
-    it('evaluates all scores', function(){
-      game.frame1 = [0, 2];
-      game.frame2 = [7, 3];
-      game.frame3 = [10];
-      game.frame4 = [5, 3];
-      game.frame5 = [10];
-      game.frame6 = [10];
-      game.frame7 = [7, 3];
-      game.frame8 = [10];
-      game.frame9 = [10];
-      game.frame10 = [7, 3, 5];
-      scoreAdder.updateAll(game);
-      expect(scoreAdder.frame2).toEqual(20);
-      expect(scoreAdder.frame3).toEqual(18);
-      expect(scoreAdder.frame8).toEqual(27);
-      expect(scoreAdder.frame9).toEqual(20);
-      expect(scoreAdder.frame10).toEqual(15);
-    })
+      it('evaluates all scores', function(){
+        game.frame1 = [0, 2];
+        game.frame2 = [7, 3];
+        game.frame3 = [10];
+        game.frame4 = [5, 3];
+        game.frame5 = [10];
+        game.frame6 = [10];
+        game.frame7 = [7, 3];
+        game.frame8 = [10];
+        game.frame9 = [10];
+        game.frame10 = [7, 3, 5];
+        scoreAdder.updateAll(game);
+        expect(scoreAdder.frame2).toEqual(20);
+        expect(scoreAdder.frame3).toEqual(18);
+        expect(scoreAdder.frame8).toEqual(27);
+        expect(scoreAdder.frame9).toEqual(20);
+        expect(scoreAdder.frame10).toEqual(15);
+      })
 
-    it('scores a perfect game', function(){
-      game.frame1 = [10];
-      game.frame2 = [10];
-      game.frame3 = [10];
-      game.frame4 = [10];
-      game.frame5 = [10];
-      game.frame6 = [10];
-      game.frame7 = [10];
-      game.frame8 = [10];
-      game.frame9 = [10];
-      game.frame10 = [10, 10, 10];
-      scoreAdder.updateAll(game);
-      expect(scoreAdder.total).toEqual(300);
-      console.log(scoreAdder)
+      it('scores a perfect game', function(){
+        game.frame1 = [10];
+        game.frame2 = [10];
+        game.frame3 = [10];
+        game.frame4 = [10];
+        game.frame5 = [10];
+        game.frame6 = [10];
+        game.frame7 = [10];
+        game.frame8 = [10];
+        game.frame9 = [10];
+        game.frame10 = [10, 10, 10];
+        scoreAdder.updateAll(game);
+        expect(scoreAdder.total).toEqual(300);
+        console.log(scoreAdder)
+      })
     })
   })
-})

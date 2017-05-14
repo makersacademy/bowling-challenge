@@ -14,18 +14,14 @@
 
     it('activates next frame after two rolls of <10 combined', function() {
       spyOn(frame2, 'activate');
-      onePlayerGame.roll(4);
-      onePlayerGame.roll(4);
+      for (var i = 1; i <= 2; i++) { onePlayerGame.roll(4); }
       expect(frame2.activate).toHaveBeenCalled();
     });
 
     it('returns score as totalScore from most recently calculated frame', function() {
-      onePlayerGame.roll(4);
-      onePlayerGame.roll(4);
+      for (var i = 1; i <= 2; i++) { onePlayerGame.roll(4); }
       expect(onePlayerGame.getScore()).toBe(8);
-      onePlayerGame.roll(10);
-      onePlayerGame.roll(10);
-      onePlayerGame.roll(10);
+      for (var j = 1; j <= 3; j++) { onePlayerGame.roll(10); }
       expect(onePlayerGame.getScore()).toBe(38);
     });
 

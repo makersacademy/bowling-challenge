@@ -75,8 +75,8 @@
 
       it('deactivates frame if two rolls < 10', function() {
 	frame.activate();
-	frame.processRoll(5);
-	frame.processRoll(3);
+	frame.processRoll(0);
+	frame.processRoll(0);
 	expect(frame.isActive()).toBe(false);
       });
       it('deactivates frame after three rolls if first 2 >= 10', function() {
@@ -87,9 +87,13 @@
 	frame.processRoll(5);
 	expect(frame.isActive()).toBe(false);
       });
-      it('calls activateNextFrame on game when score reaches 10', function() {
-	frame.processRoll(5);
-	frame.processRoll(5);
+      it('calls activateNextFrame on game when strike', function() {
+	frame.processRoll(10);
+	expect(game.activateNextFrame).toHaveBeenCalled();
+      });
+      it('calls activateNextFrame on game after two rolls', function() {
+	frame.processRoll(0);
+	frame.processRoll(0);
 	expect(game.activateNextFrame).toHaveBeenCalled();
       });
     });

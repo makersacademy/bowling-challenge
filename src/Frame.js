@@ -43,7 +43,12 @@ var FrameFile = (function() {
   };
 
   Frame.prototype._activateNextFrameIfAppropriate = function() {
-    if (this._roll1 + this._roll2 + this._roll3 === 10) {
+    if (this._roll3 !== null) {
+      return;
+    }
+    if (this._roll1 === 10 && this._roll2 === null) {
+      this._game.activateNextFrame();
+    } else if (this._roll1 !== 10 && this._roll2 !== null) {
       this._game.activateNextFrame();
     }
   };
@@ -56,8 +61,8 @@ var FrameFile = (function() {
 
   Frame.prototype.processRoll = function(pinsKnockedOver) {
     this._updateRoll(pinsKnockedOver);
-    this._deactivateSelfIfAppropriate();
     this._activateNextFrameIfAppropriate();
+    this._deactivateSelfIfAppropriate();
     this._passOnScoreIfAvailable();
   };
 

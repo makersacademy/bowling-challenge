@@ -12,6 +12,13 @@
       frame2 = onePlayerGame.frame2;
     });
 
+    it('activates next frame after two rolls of <10 combined', function() {
+      spyOn(frame2, 'activate');
+      onePlayerGame.roll(4);
+      onePlayerGame.roll(4);
+      expect(frame2.activate).toHaveBeenCalled();
+    });
+
     it('has an array "frames" containing 10 objects', function() {
       expect(onePlayerGame.frames.length).toBe(10);
     });
@@ -42,7 +49,7 @@
       onePlayerGame.passOnScore(30, frame1);
       expect(frame2.setPriorScore).toHaveBeenCalledWith(30);
     });
-    it('does not try to pass on frame 10 score', function() {
+    xit('does not try to pass on frame 10 score', function() {
       spyOn(onePlayerGame.frame10, 'setPriorScore');
       onePlayerGame.passOnScore(30, onePlayerGame.frame10);
     });

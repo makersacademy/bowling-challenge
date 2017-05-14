@@ -19,10 +19,14 @@ Frame.prototype.isSpare = function () {
 
 Frame.prototype.isStrike = function () {
 
-  // if ( (this._rolls[0]._pinsDown == 10 ){
-  //   return true
-  // } else {
-  //   return false
-  // }
+  if ( this._rolls[0]._pinsDown == 10 ){
+    return true
+  } else {
+    return false
+  }
 
+};
+
+Frame.prototype.hit = function (roll, pinsDown) {
+  this._rolls[roll]._pinsDown = pinsDown
 };

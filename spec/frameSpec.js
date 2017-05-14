@@ -12,19 +12,53 @@ describe('Frame', function () {
     })
   })
 
+  describe('hit function', function () {
+    it('drops a number of pins grom a given roll in a frame', function () {
+      var rollIndex = 0
+      var pinsDown = 5
+      frame.hit(rollIndex, pinsDown)
+      expect(frame._rolls[rollIndex]._pinsDown).toEqual(pinsDown)
+      var rollIndex = 1
+      var pinsDown = 8
+      frame.hit(rollIndex, pinsDown)
+      expect(frame._rolls[rollIndex]._pinsDown).toEqual(pinsDown)
+    })
+  })
+
   describe('spare', function () {
     it('can be determined', function () {
-      for(var i = 0; i < frame._rolls.length; i++) {
-        frame._rolls[i]._pinsDown = 5
-      }
+      var rollIndex = 0
+      var pinsDown = 5
+      frame.hit(rollIndex, pinsDown)
+      var rollIndex = 1
+      var pinsDown = 5
+      frame.hit(rollIndex, pinsDown)
       expect(frame.isSpare()).toBe(true)
+    })
+    it('can be disproved', function () {
+      var rollIndex = 0
+      var pinsDown = 3
+      frame.hit(rollIndex, pinsDown)
+      var rollIndex = 1
+      var pinsDown = 4
+      frame.hit(rollIndex, pinsDown)
+      expect(frame.isSpare()).toBe(false)
     })
   })
 
   describe('strike', function () {
-    it('can be determined', function () {
-      frame._rolls[0]._pinsDown = 10
-      expect(frame.isSpare()).toBe(true)
+    it('can be confirmed', function () {
+      var rollIndex = 0
+      var pinsDown = 10
+      frame.hit(rollIndex, pinsDown)
+      expect(frame.isStrike()).toBe(true)
+    })
+
+    it('can be disproved', function () {
+      var rollIndex = 0
+      var pinsDown = 9
+      frame.hit(rollIndex, pinsDown)
+      expect(frame.isStrike()).toBe(false)
     })
   })
 

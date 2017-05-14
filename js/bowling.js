@@ -14,23 +14,37 @@ Bowling.prototype.roll = function (pinsDown) {
 
   var frameToPlay = framesToPlay[0]
 
-  var rolls = frameToPlay._rolls.filter(function(roll){
-    return roll._finished === false
-  })
+  var index = this._frames.indexOf(frameToPlay)
 
-  var roll = rolls[0]
+  if ( index <= 8 ) {
 
-  roll._pinsDown = pinsDown;
-  roll._finished = true
+    //console.log(index)
 
-  function allRollsOver(roll, index, array){
-    return roll._finished === true
-  }
+    var rolls = frameToPlay._rolls.filter(function(roll){
+      return roll._finished === false
+    })
+
+    var roll = rolls[0]
+
+    roll._pinsDown = pinsDown;
+    roll._finished = true
+    
+    var rollIndex = frameToPlay._rolls.indexOf(roll)
+
+    //console.log(rollIndex)
+
+    function allRollsOver(roll, index, array){
+      return roll._finished === true
+    }
 
 
-  if (  frameToPlay._rolls.every(allRollsOver)  ){
-    frameToPlay._finished = true
-  } else {
+    if (  frameToPlay._rolls.every(allRollsOver)  ){
+      frameToPlay._finished = true
+    } else {
+
+    }
+
+  } else if (index == 9) { //tenth frame
 
   }
 

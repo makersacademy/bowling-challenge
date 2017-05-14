@@ -1,4 +1,4 @@
-describe('Bowling', function() {
+describe('Features', function() {
 
   var bowling;
   var frames;

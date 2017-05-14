@@ -14,16 +14,31 @@ var OnePlayerGameFile = (function() {
     this.frame9 = new Frame(this);
     this.frame10 = new Frame(this);
     this.frames = [this.frame1, this.frame2, this.frame3, this.frame4, this.frame5, this.frame6, this.frame7, this.frame8, this.frame9, this.frame10];
-    this.activeFrames = this.frames.filter(function(frame) { return frame.isActive(); });
+  };
+
+  OnePlayerGame.prototype.activeFrames = function() {
+    return this.frames.filter(function(frame) {
+      return frame.isActive();
+    });
+  };
+
+  OnePlayerGame.prototype.nextInactiveFrame = function() {
+    return this.frames.filter(function(frame) {
+      return frame.isActive() === false;
+    })[0];
   };
 
   OnePlayerGame.prototype.roll = function(pinsKnockedOver) {
-    this.activeFrames.forEach(function(frame) {
+    this.activeFrames().forEach(function(frame) {
       frame.processRoll(pinsKnockedOver);
     });
   };
 
   OnePlayerGame.prototype.updateBoxes = function() {
+  };
+
+  OnePlayerGame.prototype.activateNextFrame = function() {
+    this.nextInactiveFrame().activate();
   };
     
 

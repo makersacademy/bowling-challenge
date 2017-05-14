@@ -15,11 +15,16 @@
     });
 
     it('has an array "activeFrames" initially containing 1 object', function() {
-      expect(onePlayerGame.activeFrames.length).toBe(1);
+      expect(onePlayerGame.activeFrames().length).toBe(1);
     });
 
     it('has an activated frame1 upon creation', function() {
       expect(frame1.isActive()).toBe(true);
+    });
+
+    it('knows how to activate the next inactive frame', function() {
+      onePlayerGame.activateNextFrame();
+      expect(onePlayerGame.frame2.isActive()).toBe(true);
     });
 
     describe('roll', function() {

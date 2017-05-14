@@ -37,8 +37,6 @@ var FrameFile = (function() {
       this._game.activateNextFrame();
     }
   };
-    
-      
 
   Frame.prototype.processRoll = function(pinsKnockedOver) {
     this._updateBox(pinsKnockedOver);

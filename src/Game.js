@@ -13,7 +13,9 @@ function Game() {
     new Frame(1, 3),
   ]
   this.totalScore = 0;
+  this.cachedScore;
   this.savedBowl = -1;
+  this.spare;
 }
 
 Game.prototype.bowl = function(n) {
@@ -22,7 +24,12 @@ Game.prototype.bowl = function(n) {
     this.savedBowl = -1;
     updateScores();
     this.totalScore = 0;
+  } else if (n == 10) {
+    this.frames.push(new Frame(10));
+    updateScores();
+    this.totalScore = 0;
   } else {
+    updatePartialBowl(n);
     this.savedBowl = Number(n);
   }
 }

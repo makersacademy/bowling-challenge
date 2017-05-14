@@ -23,5 +23,17 @@ describe('Game', function() {
     });
   });
 
-  
+  describe('throwSecondBall', function() {
+
+    beforeEach(function() {
+      game = new Game();
+      pins = new Pins();
+    });
+
+    it('allows user to throw second ball', function() {
+      game.throwFirstBall(pins)
+      game.throwSecondBall(pins)
+      expect(game._frames[0].length).toBe(2)
+    });
+  });
 });

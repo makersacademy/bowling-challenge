@@ -45,4 +45,11 @@ describe("Play Bowling", function() {
     expect(bowling.frame).toEqual(2)
   });
 
+  it('game does not go beyond 10 rounds', function () {
+    for (var i=0; i < 20; i++ ) {
+      bowling.process_roll(3)
+    }
+    expect(bowling.finish).toEqual(true)
+  });
+
 });

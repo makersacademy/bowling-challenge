@@ -131,5 +131,21 @@ describe('ScoreAdder', function() {
       expect(scoreAdder.frame9).toEqual(20);
       expect(scoreAdder.frame10).toEqual(15);
     })
+
+    it('scores a perfect game', function(){
+      game.frame1 = [10];
+      game.frame2 = [10];
+      game.frame3 = [10];
+      game.frame4 = [10];
+      game.frame5 = [10];
+      game.frame6 = [10];
+      game.frame7 = [10];
+      game.frame8 = [10];
+      game.frame9 = [10];
+      game.frame10 = [10, 10, 10];
+      scoreAdder.updateAll(game);
+      expect(scoreAdder.total).toEqual(300);
+      console.log(scoreAdder)
+    })
   })
 })

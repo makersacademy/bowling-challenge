@@ -1,4 +1,5 @@
 function ScoreAdder() {
+  this.total = 0;
 }
 
 function add(score1, score2) {
@@ -16,6 +17,7 @@ ScoreAdder.prototype.updateScores = function(game) {
   for (frame in game) {
     if (frame.substring(0, 5) === 'frame') {
       this[frame] = game[frame].reduce(add, 0);
+      this.total += this[frame];
     }
   }
 }
@@ -29,6 +31,7 @@ ScoreAdder.prototype.updateSpares = function(game) {
     nextFrame = game['frame' + (frameNumber + 1)];
     if (this[frame] === 10 && nextFrame.length > 0) {
       this[frame] += nextFrame[0];
+      this.total += nextFrame[0];
     }
   }
 }
@@ -42,7 +45,7 @@ ScoreAdder.prototype.updateStrikes = function(game) {
     frameNumber = parseInt(frame.slice(-1), 10);
     frameScores = game[frame]
     nextFrame = game['frame' + (frameNumber + 1)];
-    if (frameScores[0] === 10 && nextFrame.length > 0) {
+    if (frameScores[0] === 10 && nextFrame.length > 0 && frameNumber > 0) {
       this.workoutStrike(game, frameNumber)
     }
   }
@@ -53,8 +56,10 @@ ScoreAdder.prototype.workoutStrike = function(game, frameNumber) {
   if (game['frame' + (frameNumber + 1)].length === 1) {
     frameScores = game['frame' + (frameNumber + 2)];
     this['frame' + frameNumber] += frameScores[0];
+    this.total += frameScores[0];
   }else{
     frameScores = game['frame' + (frameNumber + 1)];
     this['frame' + frameNumber] += frameScores[1];
+    this.total += frameScores[1];
   }
 }

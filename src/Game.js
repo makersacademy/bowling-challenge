@@ -1,5 +1,6 @@
 Game = function() {
   this._frames = [];
+  this._currentRound = 1;
 };
 
 Game.prototype.throwFirstBall = function(pins) {

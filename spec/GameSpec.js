@@ -10,6 +10,10 @@ describe('Game', function() {
     expect(game._frames).toEqual([]);
   });
 
+  it('contains the current round', function() {
+    expect(game._currentRound).toBe(1);
+  });
+
   describe('throwFirstBall', function() {
 
     beforeEach(function() {

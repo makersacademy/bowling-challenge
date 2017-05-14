@@ -7,23 +7,23 @@ describe('Bowling', function() {
   });
 
   it('has an array storing results, empty by default', function() {
-    expect(bowling.getFrames()).toEqual([]);
+    expect(bowling._frames).toEqual([]);
   });
 
   it('has a frame counter, 1 by default', function() {
-    expect(bowling.getFrameCounter()).toEqual(1);
+    expect(bowling._frameCounter).toEqual(1);
   });
 
   it('has a frame counter, 1 by default', function() {
-    expect(bowling.getFrameCounter()).toEqual(1);
+    expect(bowling._frameCounter).toEqual(1);
   });
 
   it('has a bonus points counter, 0 by default', function() {
-    expect(bowling.getBonusPoints()).toEqual(0);
+    expect(bowling._bonusPoints).toEqual(0);
   });
 
   it('has a boolean value for strike set to false by default', function() {
-    expect(bowling.getIsStrike()).toEqual(false);
+    expect(bowling._isStrike).toEqual(false);
   });
 
 });

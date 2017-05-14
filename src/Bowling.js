@@ -11,17 +11,8 @@ function Bowling () {
   this._isSpare = true;
   this._spareArray = [];
 }
-Bowling.prototype.getFrames = function () {
-  return this._frames;
-};
 Bowling.prototype.setFrames = function (value) {
   this._frames.push(value);
-};
-Bowling.prototype.getFrameCounter = function () {
-  return this._frameCounter;
-};
-Bowling.prototype.setFrameCounter = function (value) {
-  this._frameCounter += value;
 };
 Bowling.prototype.getBonusCounter = function () {
   return this._bonusCounter;
@@ -29,26 +20,14 @@ Bowling.prototype.getBonusCounter = function () {
 Bowling.prototype.setBonusCounter = function (value) {
   this._bonusCounter += value;
 };
-Bowling.prototype.getBonusPoints = function () {
-  return this._bonusPoints;
-};
 Bowling.prototype.setBonusPoints = function (value) {
   this._bonusPoints += value;
-};
-Bowling.prototype.getIsStrike = function () {
-  return this._isStrike;
 };
 Bowling.prototype.setIsStrike = function (value) {
   this._isStrike = value;
 };
-Bowling.prototype.getIsSpare = function () {
-  return this._isSpare;
-};
 Bowling.prototype.setIsSpare = function (value) {
   this._isSpare = value;
-};
-Bowling.prototype.getSpareArray = function () {
-  return this._spareArray;
 };
 Bowling.prototype.setSpareArray = function (value) {
   this._spareArray = value;

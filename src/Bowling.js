@@ -102,9 +102,9 @@ Player.prototype.printSpareScore = function () {
 };
 
 Player.prototype.printStrikeScore = function () {
-  console.log('Congrats, you knocked over ' + this.number + 'pins!');
-  console.log('Congrats, you knocked over ' + this.number + 'pins!');
-  console.log('Score on this frame: ' + this.StrikeFrameScore + '.');
+  console.log('Congrats, you knocked over ' + this.number + ' pins!');
+  console.log('Congrats, you knocked over ' + this.number + ' pins!');
+  console.log('Score on this frame: ' + this.strikeFrameScore + '.');
   console.log('Total score: ' + this.score + '.');
   console.log('Frames remaining: ' + this.frames + '.');
 };

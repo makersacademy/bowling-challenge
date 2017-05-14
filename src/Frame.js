@@ -82,9 +82,7 @@ var FrameFile = (function() {
   };
 
   Frame.prototype.box1 = function() {
-    if (this._roll1 === null) {
-      return null;
-    } else if (this._roll1 === 10) {
+    if (this._roll1 === 10) {
       return 'X';
     } else { 
       return this._roll1;
@@ -92,9 +90,7 @@ var FrameFile = (function() {
   };
 
   Frame.prototype.box2 = function() {
-    if (this._roll2 === null) {
-      return null;
-    } else if (this._roll1 + this._roll2 > 10) {
+    if (this._roll1 + this._roll2 > 10) {
       return null;
     } else if (this._roll1 + this._roll2 === 10) {
       return '/';

@@ -54,12 +54,20 @@ Game.prototype.strikeCalc = function(i) {
 // Private
 
 Game.prototype._finalBowl = function(n) {
+  var index = this.frames.length-1
   if (this.finalFrame) {
-    this.frames[this.frames.length-1].addBowl(n);
+    this.frames[index].addBowl(n);
+    if (this.frames[index-1].isStrike()) {
+      finalStrikeScore(index);
+    }
     this._finalFrameCheck();
   } else {
     this.finalFrame = this.frames.push(new FinalFrame(n));
-    if (this.frames[this.frames.length-2].isSpare()) { finalSpareScore(n) };
+    if (this.frames[index-1].isSpare()) {
+      finalSpareScore(n)
+    } else if (this.frames[index-2].isStrike() && this.frames[index-1].isStrike()) {
+      strikeUpdate();
+    }
     this._finalFrameCheck();
   };
 };

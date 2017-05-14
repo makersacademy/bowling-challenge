@@ -26,7 +26,13 @@ function updateScores() {
     };
   };
   game.cachedScore = game.totalScore;
+  if (game.frames[9] && game.frames[9].isEnded()) { gameOver() };
 };
+
+function gameOver() {
+  $('.bowl-number').hide();
+  $('#restart').show();
+}
 
 function finalFrameLogic() {
   var frame = game.frames[game.frames.length - 1]
@@ -59,6 +65,11 @@ function updateFinalFrame(frame) {
     i++;
   });
 };
+
+function strikeUpdate() {
+  game.cachedScore += 30;
+  $('#score7').text(game.cachedScore);
+}
 
 function updatePartialBowl(num) {
   $('#frame' + game.frames.length + '-1').text(num);

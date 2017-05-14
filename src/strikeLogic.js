@@ -27,3 +27,9 @@ function endWithTwoStrikes() {
   $('#score' + i).text(" ");
   console.log("HereTWO?")
 };
+
+function finalStrikeScore(index) {
+  console.log(game.cachedScore);
+  game.cachedScore += 10 + Number(game.frames[index].score[0]) + Number(game.frames[index].score[1]);
+  $('#score8').text(game.cachedScore);
+}

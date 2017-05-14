@@ -18,7 +18,13 @@
       expect(frame2.activate).toHaveBeenCalled();
     });
 
-    it('returns score as totalScore from most recently calculated frame', function() {
+    it('activates next frame after one rolls if strike', function() {
+      spyOn(frame2, 'activate');
+      onePlayerGame.roll(10);
+      expect(frame2.activate).toHaveBeenCalled();
+    });
+
+    it('getScore returns most recent calculated score', function() {
       for (var i = 1; i <= 2; i++) { onePlayerGame.roll(4); }
       expect(onePlayerGame.getScore()).toBe(8);
       for (var j = 1; j <= 3; j++) { onePlayerGame.roll(10); }
@@ -37,21 +43,10 @@
       expect(frame1.isActive()).toBe(true);
     });
 
-    it('knows to activate no further frames after 10', function() {
-      onePlayerGame.frame1.deactivate();
-      onePlayerGame.frame10.activate();
-      onePlayerGame.activateNextFrame();
-      expect(onePlayerGame.frame1.isActive()).toBe(false);
-    });
-    
     it('passes on score to appropriate frame when instructed', function() {
       spyOn(frame2, 'setPriorScore');
       onePlayerGame.passOnScore(30, frame1);
       expect(frame2.setPriorScore).toHaveBeenCalledWith(30);
-    });
-    xit('does not try to pass on frame 10 score', function() {
-      spyOn(onePlayerGame.frame10, 'setPriorScore');
-      onePlayerGame.passOnScore(30, onePlayerGame.frame10);
     });
 
     describe('roll', function() {
@@ -62,6 +57,11 @@
       });
     });
 	
+    it('can deactivate frame 10 and end game without error', function() {
+      for (var j = 1; j <= 11; j++) { onePlayerGame.roll(10); }
+      expect(function(){onePlayerGame.roll(10);}).not.toThrow();
+      expect(onePlayerGame.frame10.isActive()).toBe(false);
+    });
 	
       
   });

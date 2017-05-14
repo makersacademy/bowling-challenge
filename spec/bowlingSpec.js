@@ -41,7 +41,7 @@ describe('Player', function () {
     player.bowl(10);
     expect(player.frameScore).toEqual(10);
     // expect(player.score).toEqual(10);
-    player.strike(2);
+    player.bowlStrike(2);
     expect(player.strikeFrameScore).toEqual(8);
     console.log(player.score);
     expect(player.score).toEqual(18);

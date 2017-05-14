@@ -8,15 +8,24 @@ describe('Bowling', function() {
 
   describe('#roll', function() {
     it('adds the knocked down pins to the rolls',function() {
-      game.roll(5)
+      game.roll(5);
       expect(game.rolls).toContain(5);
     });
   });
 
   describe('#score', function() {
     it('returns the total score',function() {
-      game.roll(5)
-      expect(game.score()).toEqual(5);
+      game.roll(5);
+      game.roll(2);
+      expect(game.score()).toEqual(7);
+    });
+
+    it('knows how to calculate a spare', function(){
+      game.roll(5);
+      game.roll(5);
+      game.roll(4);
+      game.roll(2);
+      expect(game.score()).toEqual(20);
     });
   });
 

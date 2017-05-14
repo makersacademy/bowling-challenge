@@ -7,6 +7,11 @@
   <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.6.1/jasmine_favicon.png">
   <link rel="stylesheet" href="lib/jasmine-2.6.1/jasmine.css">
 
+  <link rel="stylesheet" type="text/css" href=".grunt/grunt-contrib-jasmine/jasmine.css">
+
+  <script src="./.grunt/grunt-contrib-jasmine/jasmine.js"></script>
+  <script src="./.grunt/grunt-contrib-jasmine/jasmine-html.js"></script>
+
   <script src="lib/jasmine-2.6.1/jasmine.js"></script>
   <script src="lib/jasmine-2.6.1/jasmine-html.js"></script>
   <script src="lib/jasmine-2.6.1/boot.js"></script>
@@ -20,12 +25,19 @@
   <script src='src/spareLogic.js'></script>
   <script src='src/strikeLogic.js'></script>
 
+  <script type="text/javascript">
+    var ALGOLIA_APPLICATION_ID = '<%= options.application_id %>';
+    var ALGOLIA_API_KEY = '<%= options.api_key %>';
+  </script>
+
 
   <!-- include spec files here... -->
   <script src="spec/gameSpec.js"></script>
   <script src='spec/frameSpec.js'></script>
   <script src='spec/finalFrameSpec.js'></script>
 
+  <script src="./.grunt/grunt-contrib-jasmine/reporter.js"></script>
+  <script src="./.grunt/grunt-contrib-jasmine/jasmine-helper.js"></script>
 </head>
 
 <body>

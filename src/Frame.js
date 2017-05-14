@@ -32,19 +32,36 @@ var FrameFile = (function() {
     }
   };
 
+  Frame.prototype.totalScore = function() {
+    if (this._roll2 === null) {
+      return null;
+    } else if (this._roll1 + this._roll2 >= 10 && this._roll3 === null)
+      return null;
+    else {
+      return this._priorScore + this._roll1 + this._roll2 + this._roll3;
+    }
+  };
+
   Frame.prototype._activateNextFrameIfAppropriate = function() {
     if (this._roll1 + this._roll2 + this._roll3 === 10) {
       this._game.activateNextFrame();
     }
   };
 
-  Frame.prototype.processRoll = function(pinsKnockedOver) {
-    this._updateBox(pinsKnockedOver);
-    this._deactivateSelfIfAppropriate();
-    this._activateNextFrameIfAppropriate();
+  Frame.prototype._passOnScoreIfAvailable = function() {
+    if (this.totalScore() !== null) {
+      this._game.passOnScore(this.totalScore(), this);
+    }
   };
 
-  Frame.prototype._updateBox = function(pinsKnockedOver) {
+  Frame.prototype.processRoll = function(pinsKnockedOver) {
+    this._updateRoll(pinsKnockedOver);
+    this._deactivateSelfIfAppropriate();
+    this._activateNextFrameIfAppropriate();
+    this._passOnScoreIfAvailable();
+  };
+
+  Frame.prototype._updateRoll = function(pinsKnockedOver) {
     if (this._roll1 === null) {
       this._roll1 = pinsKnockedOver;
     } else if (this._roll2 === null) {

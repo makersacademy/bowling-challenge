@@ -23,8 +23,16 @@
     });
 
     it('knows how to activate the next inactive frame', function() {
+      onePlayerGame.frame1.deactivate();
+      onePlayerGame.frame2.activate();
       onePlayerGame.activateNextFrame();
-      expect(onePlayerGame.frame2.isActive()).toBe(true);
+      expect(onePlayerGame.frame3.isActive()).toBe(true);
+    });
+    it('knows to activate no further frames after 10', function() {
+      onePlayerGame.frame1.deactivate();
+      onePlayerGame.frame10.activate();
+      onePlayerGame.activateNextFrame();
+      expect(onePlayerGame.frame1.isActive()).toBe(false);
     });
 
     describe('roll', function() {

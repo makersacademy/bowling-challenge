@@ -6,7 +6,7 @@
     var game;
 
     beforeEach(function() {
-      game = jasmine.createSpyObj('game', ['activateNextFrame']);
+      game = jasmine.createSpyObj('game', ['activateNextFrame', 'passOnScore']);
       frame = new Frame(game);
     });
 
@@ -29,7 +29,31 @@
       expect(frame.setPriorScore()).toBeUndefined();
     });
 
+    describe('totalScore', function() {
+      beforeEach(function() {
+	frame.setPriorScore(20);
+	frame.processRoll(10);
+	frame.processRoll(10);
+      });
+
+      it('returns null when unavailable', function() {
+	expect(frame.totalScore()).toBe(null);
+      });
+
+      it('returns total score when available', function() {
+	frame.processRoll(10);
+	expect(frame.totalScore()).toBe(50);
+      });
+    });
+
     describe('processRoll', function() {
+      it('tells game to pass on score to next frame when it is available', function() {
+	frame.setPriorScore(20);
+	frame.processRoll(10);
+	frame.processRoll(10);
+	frame.processRoll(10);
+	expect(game.passOnScore).toHaveBeenCalledWith(frame.totalScore(), frame);
+      });
       it('updates box variables with scores', function() {
 	frame.processRoll(5);
 	expect(frame.box1()).toBe(5);

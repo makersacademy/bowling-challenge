@@ -4,6 +4,7 @@ var OnePlayerGameFile = (function() {
   var OnePlayerGame = function() {
     this.frame1 = new Frame(this);
     this.frame1.activate();
+    this.frame1.setPriorScore(0);
     this.frame2 = new Frame(this);
     this.frame3 = new Frame(this);
     this.frame4 = new Frame(this);
@@ -22,10 +23,13 @@ var OnePlayerGameFile = (function() {
     });
   };
 
-  OnePlayerGame.prototype.nextInactiveFrame = function() {
-    return this.frames.filter(function(frame) {
-      return frame.isActive() === false;
-    })[0];
+  OnePlayerGame.prototype.nextInactiveFrameIndex = function() {
+    var highestActiveFrame;
+    var activeFrames = this.frames.filter(function(frame) {
+      return frame.isActive();
+    });
+    highestActiveFrame = activeFrames[activeFrames.length -1];
+    return this.frames.indexOf(highestActiveFrame) + 1;
   };
 
   OnePlayerGame.prototype.roll = function(pinsKnockedOver) {
@@ -38,7 +42,10 @@ var OnePlayerGameFile = (function() {
   };
 
   OnePlayerGame.prototype.activateNextFrame = function() {
-    this.nextInactiveFrame().activate();
+    if (this.frame10.isActive()) {
+      return;
+    }
+    this.frames[this.nextInactiveFrameIndex()].activate();
   };
     
 

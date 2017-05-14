@@ -33,6 +33,17 @@ function gameOver() {
   $('#restart').show();
 }
 
+function disableOptions(n) {
+  var i = 11 - n;
+  for (; i <= 10; i++) {
+    $('#' + i).attr("disabled", true);
+  }
+}
+
+function enableOptions() {
+  $('.bowl-number').attr("disabled", false);
+}
+
 function finalFrameLogic() {
   var frame = game.frames[game.frames.length - 1]
   updateFinalFrame(frame);

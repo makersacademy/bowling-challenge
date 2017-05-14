@@ -7,12 +7,13 @@ function Game() {
   this.finalFrame = undefined;
 }
 
-Game.prototype.bowl = function(n) {
-  n = Number(n);
+Game.prototype.bowl = function(roll) {
+  roll = Number(roll);
+  disableOptions(roll);
   if (this.frames.length >= 9) {
-    this._finalBowl(n);
+    this._finalBowl(roll);
   } else {
-    this._standardBowl(n);
+    this._standardBowl(roll);
   };
 };
 
@@ -36,12 +37,14 @@ Game.prototype._finalBowl = function(n) {
       finalStrikeScore(index);
     }
     this._finalFrameCheck();
+    enableOptions();
   } else {
     this.finalFrame = this.frames.push(new FinalFrame(n));
     if (this.frames[index-1].isSpare()) {
       finalSpareScore(n)
     } else if (this.frames[index-2].isStrike() && this.frames[index-1].isStrike()) {
       strikeUpdate();
+      enableOptions();
     }
     this._finalFrameCheck();
   };
@@ -50,8 +53,10 @@ Game.prototype._finalBowl = function(n) {
 Game.prototype._standardBowl = function(n) {
   if (this.savedBowl !== -1) {
     this._addFrame(n);
+    enableOptions();
   } else if (n == 10) {
     this._addStrike();
+    enableOptions();
   } else {
     updatePartialBowl(n);
     this.savedBowl = n;

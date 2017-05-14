@@ -44,9 +44,9 @@ Bowling.prototype.calculateFrameCount = function () {
 Bowling.prototype.randomNumberOfPins = function () {
   this.previousNum = ( this.STRIKE - this._frames.slice(-1).pop() );
   if (this._isFirstBowlOfFrame) {
-    return Math.floor( Math.random () * ( this.FRAME_COUNT_LIMIT - 1 + 1)) + 1;
+    return Math.floor( Math.random () * ( this.FRAME_COUNT_LIMIT - 0 + 1)) + 0;
   } else {
-    return Math.floor( Math.random () * ( this.previousNum - 1 + 1)) + 1;
+    return Math.floor( Math.random () * ( this.previousNum - 0 + 1)) + 0;
   }
 };
 Bowling.prototype.finalScore = function () {

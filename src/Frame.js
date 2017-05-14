@@ -21,8 +21,20 @@ var FrameFile = (function() {
     this.active = false;
   };
 
+  Frame.prototype._deactivateIfAppropriate = function() {
+    if (this._roll1 === null || this._roll2 === null) {
+      return false;
+    } else if (this._roll1 + this._roll2 < 10) {
+      this.deactivate();
+    } else if (this._roll3 !== null) {
+      this.deactivate();
+    }
+  };
+      
+
   Frame.prototype.processRoll = function(pinsKnockedOver) {
     this._updateBox(pinsKnockedOver);
+    this._deactivateIfAppropriate();
   };
 
   Frame.prototype._updateBox = function(pinsKnockedOver) {

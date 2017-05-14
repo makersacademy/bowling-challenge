@@ -86,10 +86,14 @@ Bowling.prototype.strike = function () {
   this.setFrames(0);
   this.calculateFrameCount();
 };
+Bowling.prototype.spare = function () {
+  console.log('Spare! /');
+  this.setIsSpare(true);
+  this.setBonusCounter(1);
+  this.resetCurrentFrame([]);
+};
 Bowling.prototype.spareChecker = function (pins) {
-  this.setFrames(pins);
-  this.calculateFrameCount();
-  this._currentFrame.push(pins);
+  this.applyPinsToFrame(pins);
 
   if (this._currentFrame.length === 1) {
     this.setIsSpare(false);
@@ -98,9 +102,11 @@ Bowling.prototype.spareChecker = function (pins) {
     this.setIsSpare(false);
     this.resetCurrentFrame([]);
   } else {
-    console.log('Spare! /');
-    this.setIsSpare(true);
-    this.setBonusCounter(1);
-    this.resetCurrentFrame([]);
+    this.spare();
   }
+};
+Bowling.prototype.applyPinsToFrame = function (pins) {
+  this.setFrames(pins);
+  this.calculateFrameCount();
+  this._currentFrame.push(pins);
 };

@@ -31,17 +31,21 @@ Player.prototype.roll1 = function (number) {
 Player.prototype.roll2 = function (number) {
   this.roll2Score = number;
   this.frameScore  = this.roll2Score + this.roll1Score;
-  this.score += this.frameScore;
   this.frames -= 1;
   this.printRoll2();
   if (this.frameScore === 10) {
     this.spare(number);
   }
+  else {
+    this.score += this.frameScore;
+  }
 };
 
 Player.prototype.spare = function (number) {
   this.number = number;
-  this.spareRoll1Score = number * 2;
+  this.frameScore += this.number;
+  this.score += this.frameScore;
+  this.spareRoll1Score = number;
   this.spareRoll2Score = number;
   this.spareFrameScore = this.spareRoll2Score + this.spareRoll1Score;
   this.score += this.spareFrameScore;

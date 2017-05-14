@@ -1,7 +1,7 @@
 describe('Bowling', function () {
 
   //var Bowling = require('../js/bowling');
-  var bowlingGame;
+  var bowlingGame, bg;
 
   beforeEach(function () {
     bowlingGame = new Bowling ();
@@ -9,7 +9,8 @@ describe('Bowling', function () {
 
   describe('Games', function () {
     it('can be created', function () {
-      expect(bowlingGame.constructor.name).toBe('Bowling')
+      var bG = new Bowling ();
+      expect(bG.constructor.name).toBe('Bowling')
     })
   })
 

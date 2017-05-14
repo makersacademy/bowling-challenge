@@ -23,6 +23,14 @@ var OnePlayerGameFile = (function() {
     });
   };
 
+  OnePlayerGame.prototype.passOnScore = function(score, previousFrame) {
+    if (previousFrame === this.frame10) {
+      return;
+    }
+    var nextFrameIndex = this.frames.indexOf(previousFrame) + 1;
+    this.frames[nextFrameIndex].setPriorScore(score);
+  };
+
   OnePlayerGame.prototype.nextInactiveFrameIndex = function() {
     var highestActiveFrame;
     var activeFrames = this.frames.filter(function(frame) {

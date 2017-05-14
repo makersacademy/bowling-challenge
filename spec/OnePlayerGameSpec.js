@@ -4,10 +4,12 @@
     var OnePlayerGame = OnePlayerGameFile.OnePlayerGame;
     var onePlayerGame;
     var frame1;
+    var frame2;
 
     beforeEach(function() {
       onePlayerGame = new OnePlayerGame();
       frame1 = onePlayerGame.frame1;
+      frame2 = onePlayerGame.frame2;
     });
 
     it('has an array "frames" containing 10 objects', function() {
@@ -33,6 +35,16 @@
       onePlayerGame.frame10.activate();
       onePlayerGame.activateNextFrame();
       expect(onePlayerGame.frame1.isActive()).toBe(false);
+    });
+    
+    it('passes on score to appropriate frame when instructed', function() {
+      spyOn(frame2, 'setPriorScore');
+      onePlayerGame.passOnScore(30, frame1);
+      expect(frame2.setPriorScore).toHaveBeenCalledWith(30);
+    });
+    it('does not try to pass on frame 10 score', function() {
+      spyOn(onePlayerGame.frame10, 'setPriorScore');
+      onePlayerGame.passOnScore(30, onePlayerGame.frame10);
     });
 
     describe('roll', function() {

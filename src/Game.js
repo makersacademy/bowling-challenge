@@ -8,6 +8,6 @@ Game.prototype.throwFirstBall = function(pins) {
 };
 
 Game.prototype.throwSecondBall = function(pins) {
-  this._frames[0].push(pins)
+  this._frames[this._currentRound - 1].push(pins)
   this._currentRound++
 };

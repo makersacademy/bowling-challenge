@@ -32,18 +32,28 @@ describe('Game', function() {
     beforeEach(function() {
       game = new Game();
       pins = new Pins();
+      game.throwFirstBall(pins);
+      game.throwSecondBall(pins);
     });
 
     it('allows user to throw second ball', function() {
-      game.throwFirstBall(pins)
-      game.throwSecondBall(pins)
       expect(game._frames[0].length).toBe(2);
     });
 
     it('increases _currentRound by 1', function() {
-      game.throwFirstBall(pins)
-      game.throwSecondBall(pins)
       expect(game._currentRound).toBe(2);
+    });
+
+    it('second round does not overwrite _frames', function() {
+      game.throwFirstBall(pins);
+      game.throwSecondBall(pins);
+      expect(game._frames.length).toBe(2);
+    });
+
+    it('second round does not add to _frames[0]', function() {
+      game.throwFirstBall(pins);
+      game.throwSecondBall(pins);
+      expect(game._frames[0].length).toBe(2);
     });
   });
 });

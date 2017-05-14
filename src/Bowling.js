@@ -44,30 +44,17 @@ Bowling.prototype.calculateFrameCount = function () {
 Bowling.prototype.randomNumberOfPins = function () {
   this.previousNum = ( this.STRIKE - this._frames.slice(-1).pop() );
   if (this._isFirstBowlOfFrame) {
-    console.log('upto 10')
     return Math.floor( Math.random () * ( this.FRAME_COUNT_LIMIT - 1 + 1)) + 1;
   } else {
-    console.log('upto previous num -1')
     return Math.floor( Math.random () * ( this.previousNum - 1 + 1)) + 1;
   }
 };
-Bowling.prototype.spareChecker = function (pins) {
-  this._spareArray.push(pins);
-  if (this._spareArray.length === 1) {
-    this.setIsSpare(false);
-  } else if ((this._spareArray.length === 2) && (this._spareArray[0] + this._spareArray[1] !== this.STRIKE)) {
-    this.setIsSpare(false);
-    this.setSpareArray([]);
-  } else {
-    console.log('Spare! /');
-    this.setIsSpare(true);
-    this.setBonusCounter(1);
-    this.setSpareArray([]);
-  }
+Bowling.prototype.finalScore = function () {
+  this.frameTotal = 0;
+  for(var i in this._frames) { this.frameTotal += this._frames[i]; }
+  return 'Final score is! ' + (this.frameTotal + this._bonusPoints);
 };
 Bowling.prototype.bowl = function (number) {
-  console.log(this._isFirstBowlOfFrame);
-
   if(this._frameCounter === this.FRAME_COUNT_LIMIT) {
     throw new Error('Game over!!');
   }
@@ -95,4 +82,18 @@ Bowling.prototype.strike = function () {
   this.setFrames(this.STRIKE);
   this.setFrames(0);
   this.calculateFrameCount();
+};
+Bowling.prototype.spareChecker = function (pins) {
+  this._spareArray.push(pins);
+  if (this._spareArray.length === 1) {
+    this.setIsSpare(false);
+  } else if ((this._spareArray.length === 2) && (this._spareArray[0] + this._spareArray[1] !== this.STRIKE)) {
+    this.setIsSpare(false);
+    this.setSpareArray([]);
+  } else {
+    console.log('Spare! /');
+    this.setIsSpare(true);
+    this.setBonusCounter(1);
+    this.setSpareArray([]);
+  }
 };

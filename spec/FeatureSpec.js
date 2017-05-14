@@ -49,4 +49,19 @@ describe('Features', function() {
       expect(bowling._isSpare).toEqual(true);
     });
   });
+
+  describe('Complete game', function() {
+    it('returns score of all frames including any bonus points', function () {
+      bowling.bowl(2);
+      bowling.bowl(7);
+      bowling.bowl(5);
+      bowling.bowl(3);
+      bowling.bowl(9);
+      bowling.bowl(1);
+      bowling.bowl(10);
+      bowling.bowl(5);
+      bowling.bowl(1);
+      expect(bowling.finalScore()).toEqual('Final score is! 59');
+    });
+  });
 });

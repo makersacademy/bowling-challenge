@@ -23,7 +23,7 @@ describe('Bowling, when starting a new game:', function() {
 
   describe('it knows the current frames\' points,', function() {
     it('returns null.', function() {
-      expect(theDude._framePoints).toEqual([]);
+      expect(theDude._framePoints).toEqual(0);
     });
   });
 
@@ -42,5 +42,5 @@ describe('Bowling, when starting a new game:', function() {
     it('returns false', function() {
       expect(theDude._spareRound).toEqual(false)
     });
-  });
+    });
 });

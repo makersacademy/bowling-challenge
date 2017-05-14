@@ -13,8 +13,8 @@ describe('Bowling, throwing first ball and hitting 3 pins:', function() {
     });
   });
   describe('it keeps count of the frame', function() {
-    it('returns \'currentFrame = 2\' after first roll', function() {
-      expect(theDude._currentFrame).toEqual(2);
+    it('returns \'currentFrame = 1\' after first roll', function() {
+      expect(theDude._currentFrame).toEqual(1);
     });
   });
   describe('it moves to the next roll', function() {
@@ -24,18 +24,24 @@ describe('Bowling, throwing first ball and hitting 3 pins:', function() {
   });
   describe('it stores the frame points', function() {
     it('framePoints equals 3 on the first throw', function() {
-      expect(theDude._framePoints).toEqual([3])
+      expect(theDude._scoreCard).toEqual([3])
     })
   })
   describe('the second roll hits 3 pins', function() {
     beforeEach(function() {
       theDude.throw()
     })
-    it('stores secondThrows points', function() {
-      expect(theDude._secondThrow).toEqual(3)
+      it('stores secondThrows points', function() {
+        expect(theDude._secondThrow).toEqual(3)
+      })
+      it('stores the points for the first, second roll and total', function(){
+        expect(theDude._framePoints).toEqual(6)
+      })
+    it('stores the game so far on the scoreCard', function() {
+      expect(theDude._scoreCard).toEqual([3,3,6])
     })
-    it('stores the points for the first, second roll and total', function(){
-      expect(theDude._framePoints).toEqual([3,3,6])
+    it('current roll is second', function() {
+      expect(theDude._currentThrow).toEqual('first')
     })
-  })
+  });
 });

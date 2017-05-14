@@ -6,8 +6,10 @@ function Bowling () {
   this._frames = [];
   this._frameCounter = 1;
   this._bonusPoints = 0;
-  this._strikeBonusCounter = 0;
+  this._bonusCounter = 0;
   this._isStrike = false;
+  this._isSpare = true;
+  this._spareArray = [];
 }
 Bowling.prototype.getFrames = function () {
   return this._frames;
@@ -21,11 +23,11 @@ Bowling.prototype.getFrameCounter = function () {
 Bowling.prototype.setFrameCounter = function (value) {
   this._frameCounter += value;
 };
-Bowling.prototype.getIsStrike = function () {
-  return this._isStrike;
+Bowling.prototype.getBonusCounter = function () {
+  return this._bonusCounter;
 };
-Bowling.prototype.setIsStrike = function (value) {
-  this._isStrike = value;
+Bowling.prototype.setBonusCounter = function (value) {
+  this._bonusCounter += value;
 };
 Bowling.prototype.getBonusPoints = function () {
   return this._bonusPoints;
@@ -33,11 +35,23 @@ Bowling.prototype.getBonusPoints = function () {
 Bowling.prototype.setBonusPoints = function (value) {
   this._bonusPoints += value;
 };
-Bowling.prototype.getStrikeBonusCounter = function () {
-  return this._strikeBonusCounter;
+Bowling.prototype.getIsStrike = function () {
+  return this._isStrike;
 };
-Bowling.prototype.setStrikeBonusCounter = function (value) {
-  this._strikeBonusCounter += value;
+Bowling.prototype.setIsStrike = function (value) {
+  this._isStrike = value;
+};
+Bowling.prototype.getIsSpare = function () {
+  return this._isSpare;
+};
+Bowling.prototype.setIsSpare = function (value) {
+  this._isSpare = value;
+};
+Bowling.prototype.getSpareArray = function () {
+  return this._spareArray;
+};
+Bowling.prototype.setSpareArray = function (value) {
+  this._spareArray = value;
 };
 Bowling.prototype.calculateFrameCount = function () {
   var numberOfBowls = this._frames.length;
@@ -47,7 +61,19 @@ Bowling.prototype.calculateFrameCount = function () {
 Bowling.prototype.randomNumberOfPins = function () {
   return Math.floor( Math.random () * ( 10 - 1 + 1)) + 1;
 };
-
+Bowling.prototype.spareChecker = function (pins) {
+  this._spareArray.push(pins);
+  if (this._spareArray.length === 1) {
+    this.setIsSpare(false);
+  } else if ((this._spareArray.length === 2) && (this._spareArray[0] + this._spareArray[1] !== 10)) {
+    this.setIsSpare(false);
+    this.setSpareArray([]);
+  } else {
+    this.setIsSpare(true);
+    this.setBonusCounter(1);
+    this.setSpareArray([]);
+  }
+};
 Bowling.prototype.bowl = function (number) {
   if(this._frameCounter === this.FRAME_COUNT_LIMIT) {
     throw new Error('Game over!!');
@@ -56,9 +82,9 @@ Bowling.prototype.bowl = function (number) {
   this.setIsStrike(false);
 
   var pins =  number || this.randomNumberOfPins();
-  if (this.getStrikeBonusCounter() >= 1) {
+  if (this.getBonusCounter() >= 1) {
     this.setBonusPoints(pins);
-    this.setStrikeBonusCounter(-1);
+    this.setBonusCounter(-1);
   }
 
   if (pins === this.STRIKE) {
@@ -68,14 +94,14 @@ Bowling.prototype.bowl = function (number) {
   if (pins !== this.STRIKE) {
     this.setFrames(pins);
     this.calculateFrameCount();
+    this.spareChecker(pins);
   }
 
   return pins;
 };
-
 Bowling.prototype.strike = function () {
   this.setIsStrike(true);
-  this.setStrikeBonusCounter(2);
+  this.setBonusCounter(2);
   this.setFrames(10);
   this.setFrames(0);
   this.calculateFrameCount();

@@ -20,21 +20,31 @@ describe('Features', function() {
       expect(function(){ bowling.bowl(); }).toThrowError('Game over!!');
   });
 
-  describe('Player DOES throw strike', function() {
+  describe('Player DOES roll strike', function() {
 
     it('sets strike to true and adds 2 to  strike bonus count', function() {
       bowling.bowl(10);
       expect(bowling.getIsStrike()).toEqual(true);
-      expect(bowling.getStrikeBonusCounter()).toEqual(2);
+      expect(bowling.getBonusCounter()).toEqual(2);
     });
 
     it('adds points from following 2 rolls to bonus', function() {
       bowling.bowl(10);
       bowling.bowl(5);
       bowling.bowl(2);
-      expect(bowling.getStrikeBonusCounter()).toEqual(0);
+      expect(bowling.getBonusCounter()).toEqual(0);
       expect(bowling.getBonusPoints()).toEqual(7);
       expect(bowling.getIsStrike()).toEqual(false);
+    });
+  });
+
+  describe('Player DOES roll spare', function() {
+
+    it('adds points from following roll to bonus', function() {
+      bowling.bowl(8);
+      bowling.bowl(2);
+      expect(bowling.getBonusCounter()).toEqual(1);
+      expect(bowling.getIsSpare()).toEqual(true);
     });
   });
 });

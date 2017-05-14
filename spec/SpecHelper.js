@@ -13,3 +13,8 @@ beforeEach(function () {
     }
   });
 });
+
+
+// it("raises an error if more than 20 balls are bowled", function() {
+//   expect(function(){ fullgame(); }).toThrowError("You cannot bowl more than 20 balls per game");
+// });

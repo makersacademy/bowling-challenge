@@ -14,23 +14,29 @@ describe("A Bowling game", function() {
   });
 
   it("can count score frame totals", function() {
-    for (var frame = 0; frame <20; frame++){
+    for (var frame = 0; frame < 20; frame++){
       game.bowl(3);
     }
     expect(game.score()).toEqual(60);
   });
 
   it("raises an error if more than ten is bowled", function() {
-    expect(function(){ game.bowl(11); }).toThrowError("You cannot bowl more than 10 in one ball");
+    expect(function(){ game.bowl(11); }).toThrowError("You cannot knock over more than 10 pins with one ball");
   });
 
-  // it("can check a frame score", function() {
-  //   for (var frame = 0; frame <4; frame++){
-  //     game.bowl(4);
-  //   }
-  //     game.bowl(5);
-  //     game.bowl(2);
-  //   expect(game.frame_score(3)).toEq(7);
-  // });
+});
+
+
+describe("A frame", function() {
+
+  var game = new Game();
+
+  beforeEach(function() {
+    fullgame = function(){
+      for (var frame = 0; frame < 20; frame++){
+        game.bowl(3);
+      }
+    };
+  });
 
 });

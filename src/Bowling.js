@@ -16,18 +16,23 @@ Bowling.prototype.score = function() {
   var game = this;
 
   for ( var frameIndex = 0; frameIndex < this.frames(); frameIndex++) {
-    var bonus = strike() || spare() || 0
+    var bonus = strikesInARow() || strike() || spare() || 0
     totalScore += frameScore(bonus)
+    console.log(totalScore)
     rollIndex += 2;
   }
   return totalScore;
 
-  function spare() {
-    if (game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10) return 1
+  function strikesInARow() {
+    if (game.rolls[rollIndex] == 10 && game.rolls[rollIndex + 2] == 10) return 3
   }
 
   function strike() {
     if (game.rolls[rollIndex] == 10) return 2
+  }
+
+  function spare() {
+    if (game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10) return 1
   }
 
   function frameScore(bonus) {

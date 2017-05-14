@@ -35,10 +35,19 @@ describe('Bowling', function() {
       expect(game.score()).toEqual(26);
     });
 
-    it('knows how to calculate unfinished frames', function(){
-      game.roll(8)
-      expect(game.score()).toEqual(8)
-    })
+    it('knows how to calculate unfinished frames', function() {
+      game.roll(8);
+      expect(game.score()).toEqual(8);
+    });
+
+    it('knows how to calculate strikes in a row', function() {
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(5);
+      game.roll(3);
+      expect(game.score()).toEqual(81);
+    });
   });
 
 });

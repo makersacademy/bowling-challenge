@@ -4,6 +4,12 @@ var Frame = function () {
   this._rolls = [new Roll, new Roll]
 }
 
+Frame.prototype.rollsToPlay = function(){
+  return this._rolls.filter(function(roll){
+    return roll._finished === false
+  })
+}
+
 Frame.prototype.isSpare = function () {
 
   if ( ( (this._rolls[0]._pinsDown != 10 ) && this._rolls[0]._pinsDown + this._rolls[1]._pinsDown) == 10 ){

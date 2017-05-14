@@ -6,21 +6,34 @@ var Bowling = function () {
   }
 }
 
+Bowling.prototype.framesToPlay = function(){
+  return this._frames.filter(function(frame){
+    return frame._finished === false
+  })
+}
+
+Bowling.prototype.rollsToPlay = function(){
+  return this._rolls.filter(function(roll){
+    return roll._finished === false
+  })
+}
+
 Bowling.prototype.roll = function (pinsDown) {
 
   for(var i=0; i<=10; i++ ){
     document.getElementById('num-' + i).style.display = "block";
   }
 
-  var framesToPlay = this._frames.filter(function(frame){
-    return frame._finished === false
-  })
+  var framesToPlay = this.framesToPlay()
 
   var frameToPlay = framesToPlay[0]
 
   var frameIndex = this._frames.indexOf(frameToPlay)
 
   if ( frameIndex <= 8 ) {
+
+    var rolls = frameToPlay.rollsToPlay()
+
 
     var rolls = frameToPlay._rolls.filter(function(roll){
       return roll._finished === false
@@ -72,7 +85,7 @@ Bowling.prototype.roll = function (pinsDown) {
     }
 
   } else if (frameIndex == 9) { //tenth frame
-      console.log('this is frame number ' + frameIndex)
+      console.log('this is frame number ' + (frameIndex + 1))
   }
 
 };

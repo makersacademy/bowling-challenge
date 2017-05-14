@@ -57,7 +57,6 @@ describe('Bowling', function() {
     it('goes to frame 2', function() {
       bowling.bowl(1);
       bowling.bowl(2);
-      console.log(bowling.currentFrame)
       expect(bowling.frameNumber).toEqual(2);
     })
 
@@ -124,13 +123,49 @@ describe('Bowling', function() {
     })
   })
 
-  describe('tenth frame', function() {
+  describe('tenth frame extra ball', function() {
 
-    it('allows a third ball' , function(){
+    it('allows a third ball on spare' , function(){
       bowling.frameNumber = 10;
       bowling.bowl(2);
       bowling.bowl(8);
-      expect(bowling.frameNumber).toEqual(10)
+      expect(bowling.frameNumber).toEqual(10);
+      expect(bowling.currentBall).toEqual(3);
+    })
+    it('allows a third ball on strikes' , function(){
+      bowling.frameNumber = 10;
+      bowling.bowl(10);
+      bowling.bowl(10);
+      expect(bowling.currentBall).toEqual(3);
+      expect(bowling.frameNumber).toEqual(10);
+    })
+
+    it('third ball gets recorded' , function(){
+      bowling.frameNumber = 10;
+      bowling.bowl(2);
+      bowling.bowl(8);
+      bowling.bowl(7);
+      expect(bowling.completedFrames[0].bonusScore).toEqual(7);
+    })
+  })
+
+  describe('ending the game', function() {
+
+    it('ends after two balls in frame 10' , function(){
+      bowling.frameNumber = 10;
+      bowling.bowl(2);
+      bowling.bowl(4);
+      expect(bowling.currentFrame).toEqual(null);
+    })
+    it('ends after three balls in frame 10' , function(){
+      bowling.frameNumber = 10;
+      bowling.bowl(10);
+      bowling.bowl(9);
+      bowling.bowl(1);
+      expect(bowling.currentFrame).toEqual(null);
+      expect(bowling.completedFrames[0].ballOne).toEqual(10);
+      expect(bowling.completedFrames[0].ballTwo).toEqual(9);
+      expect(bowling.completedFrames[0].bonusScore).toEqual(1);
     })
   })
 })

@@ -10,15 +10,17 @@ Bowling.prototype.bowl = function(pins) {
   this.addBonusScores(pins);
   if (this.currentBall === 1) {
     this.ballOneScore(pins);
-  }else{
+  }else if (this.currentBall === 2) {
     this.ballTwoScore(pins);
+  }else{
+    this.tenthFrameFinalBall(pins);
   }
 }
 
 Bowling.prototype.ballOneScore = function(pins) {
   this.currentFrame.ballOne = pins;
-  if (pins === 10) {
-    this.strikeFrame(pins);
+  if (pins === 10 && this.frameNumber < 10) {
+    this.strikeFrame();
   }else{
     this.currentBall++;
   }
@@ -26,18 +28,13 @@ Bowling.prototype.ballOneScore = function(pins) {
 
 Bowling.prototype.ballTwoScore = function(pins) {
   this.currentFrame.ballTwo = pins;
-  this.currentBall = 1;
-  if (isSpare(this.currentFrame)) {
-    this.spareFrame();
-  }else{
-    this.completedFrames.push(this.currentFrame)
+  if (this.frameNumber < 10) {
+    this.currentBall = 1;
+    if (this.currentFrame.ballOne + this.currentFrame.ballTwo == 10) {
+      this.spareFrame();
+    }
   }
   this.nextFrame();
-}
-
-function isSpare(frame) {
-  var scores = [frame.ballOne, frame.ballTwo]
-  return scores.reduce(add, 0) == 10;
 }
 
 Bowling.prototype.spareFrame = function() {
@@ -45,10 +42,10 @@ Bowling.prototype.spareFrame = function() {
   this.pendingFrames.push(this.currentFrame)
 }
 
-Bowling.prototype.strikeFrame = function(pins) {
-  this.currentFrame.pendingFrames = 2;
-  this.pendingFrames.push(this.currentFrame)
-  this.nextFrame();
+Bowling.prototype.strikeFrame = function() {
+      this.currentFrame.pendingFrames = 2;
+      this.pendingFrames.push(this.currentFrame);
+      this.nextFrame();
 }
 
 Bowling.prototype.addBonusScores = function(pins) {
@@ -65,18 +62,28 @@ Bowling.prototype.addBonusScores = function(pins) {
 }
 
 Bowling.prototype.nextFrame = function() {
-  if (this.frameNumber === 10) { this.finalFrame()
+  if (this.frameNumber === 10) {
+    this.finalFrame();
   }else{
     this.frameNumber++;
+    this.completedFrames.push(this.currentFrame);
     if (this.currentFrame.fakeFrame != true) {
       this.currentFrame = new Frame(this.frameNumber);
     }
   }
 }
 
-Bowling.prototype
+Bowling.prototype.finalFrame = function() {
+  if (this.currentFrame.ballOne + this.currentFrame.ballTwo > 9) {
+    this.currentBall++;
+  }else{
+    this.completedFrames.push(this.currentFrame);
+    this.currentFrame = null;
+  }
+}
 
-//helpers
-function add(score1, score2) {
-  return score1 + score2;
+Bowling.prototype.tenthFrameFinalBall = function(pins) {
+  this.currentFrame.bonusScore = pins;
+  this.completedFrames.push(this.currentFrame);
+  this.currentFrame = null;
 }

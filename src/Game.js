@@ -1,12 +1,17 @@
 function Game() {
-  this.pin_count = [];
+  this.pinCount = [];
+  this.maxPins = 10;
 
 Game.prototype.bowl = function(pins){
-  this.pin_count.push(pins);
+  if (pins > 10) {
+    throw new TypeError ("You cannot bowl more than 10 in one ball");
+  }
+  else
+    this.pinCount.push(pins);
 };
 
 Game.prototype.score = function(){
-  return this.pin_count.reduce(function(a,b){
+  return this.pinCount.reduce(function(a,b){
     return a + b;
   }, 0);
 };

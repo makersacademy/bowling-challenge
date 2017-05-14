@@ -19,6 +19,16 @@
       expect(frame2.activate).toHaveBeenCalled();
     });
 
+    it('returns score as totalScore from most recently calculated frame', function() {
+      onePlayerGame.roll(4);
+      onePlayerGame.roll(4);
+      expect(onePlayerGame.getScore()).toBe(8);
+      onePlayerGame.roll(10);
+      onePlayerGame.roll(10);
+      onePlayerGame.roll(10);
+      expect(onePlayerGame.getScore()).toBe(38);
+    });
+
     it('has an array "frames" containing 10 objects', function() {
       expect(onePlayerGame.frames.length).toBe(10);
     });
@@ -31,12 +41,6 @@
       expect(frame1.isActive()).toBe(true);
     });
 
-    it('knows how to activate the next inactive frame', function() {
-      onePlayerGame.frame1.deactivate();
-      onePlayerGame.frame2.activate();
-      onePlayerGame.activateNextFrame();
-      expect(onePlayerGame.frame3.isActive()).toBe(true);
-    });
     it('knows to activate no further frames after 10', function() {
       onePlayerGame.frame1.deactivate();
       onePlayerGame.frame10.activate();

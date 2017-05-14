@@ -6,7 +6,7 @@ var Frame = function () {
 
 Frame.prototype.isSpare = function () {
 
-  if ( (this._rolls[0]._pinsDown + this._rolls[1]._pinsDown) == 10 ){
+  if ( ( (this._rolls[0]._pinsDown != 10 ) && this._rolls[0]._pinsDown + this._rolls[1]._pinsDown) == 10 ){
     return true
   } else {
     return false

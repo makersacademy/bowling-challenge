@@ -1,11 +1,12 @@
 var FrameFile = (function() {
   'use strict';
-  var Frame = function() {
+  var Frame = function(game) {
     this.active = false;
     this._priorScore = null;
     this._roll1 = null;
     this._roll2 = null;
     this._roll3 = null;
+    this._game = game;
   };
   Frame.prototype.setPriorScore = function(priorScore) {
     this._priorScore = priorScore;
@@ -21,7 +22,7 @@ var FrameFile = (function() {
     this.active = false;
   };
 
-  Frame.prototype._deactivateIfAppropriate = function() {
+  Frame.prototype._deactivateSelfIfAppropriate = function() {
     if (this._roll1 === null || this._roll2 === null) {
       return false;
     } else if (this._roll1 + this._roll2 < 10) {
@@ -30,11 +31,19 @@ var FrameFile = (function() {
       this.deactivate();
     }
   };
+
+  Frame.prototype._activateNextFrameIfAppropriate = function() {
+    if (this._roll1 + this._roll2 + this._roll3 === 10) {
+      this._game.activateNextFrame();
+    }
+  };
+    
       
 
   Frame.prototype.processRoll = function(pinsKnockedOver) {
     this._updateBox(pinsKnockedOver);
-    this._deactivateIfAppropriate();
+    this._deactivateSelfIfAppropriate();
+    this._activateNextFrameIfAppropriate();
   };
 
   Frame.prototype._updateBox = function(pinsKnockedOver) {

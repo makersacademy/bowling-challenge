@@ -3,9 +3,11 @@
   describe('Frame', function() {
     var Frame = FrameFile.Frame;
     var frame;
+    var game;
 
     beforeEach(function() {
-      frame = new Frame();
+      game = jasmine.createSpyObj('game', ['activateNextFrame']);
+      frame = new Frame(game);
     });
 
     it('is inactive upon creation', function() {
@@ -60,6 +62,11 @@
 	expect(frame.isActive()).toBe(true);
 	frame.processRoll(5);
 	expect(frame.isActive()).toBe(false);
+      });
+      it('calls activateNextFrame on game when score reaches 10', function() {
+	frame.processRoll(5);
+	frame.processRoll(5);
+	expect(game.activateNextFrame).toHaveBeenCalled();
       });
     });
   });

@@ -23,7 +23,7 @@ describe('Game', function() {
 
     it('allows user to throw first ball', function() {
       game.throwFirstBall(pins)
-      expect(game._frames[0].length).toBe(1)
+      expect(game._frames[0].length).toBe(1);
     });
   });
 
@@ -37,7 +37,13 @@ describe('Game', function() {
     it('allows user to throw second ball', function() {
       game.throwFirstBall(pins)
       game.throwSecondBall(pins)
-      expect(game._frames[0].length).toBe(2)
+      expect(game._frames[0].length).toBe(2);
+    });
+
+    it('increases _currentRound by 1', function() {
+      game.throwFirstBall(pins)
+      game.throwSecondBall(pins)
+      expect(game._currentRound).toBe(2);
     });
   });
 });

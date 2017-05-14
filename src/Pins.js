@@ -1,4 +1,7 @@
 Pins = function() {
-  this._pinsDown = Math.floor(Math.random() * 11)
-  return this._pinsDown
+  this.pinsDownFirstThrow = Math.floor(Math.random() * 11)
+};
+
+Pins.prototype.pinsDownSecondThrow = function() {
+  return Math.floor(Math.random() * (11 - this.pinsDownFirstThrow))
 };

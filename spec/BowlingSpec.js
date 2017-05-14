@@ -48,6 +48,14 @@ describe('Bowling', function() {
       game.roll(3);
       expect(game.score()).toEqual(81);
     });
+
+    it('knows how to calculate perfect score', function() {
+      for (i = 0; i < 12; i++) {
+          game.roll(10);
+      }
+      console.log(game.rolls)
+      expect(game.score()).toEqual(300)
+    });
   });
 
 });

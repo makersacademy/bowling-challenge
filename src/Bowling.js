@@ -1,24 +1,19 @@
 function Bowling() {
   this.rolls = [];
-};
-
-Bowling.prototype.roll = function(pins) {
-  ( pins == 10 ) ? this.rolls.push(pins, 0) : this.rolls.push(pins);
 }
 
-Bowling.prototype.frames = function() {
-  return this.rolls.length / 2 + this.rolls.length % 2
+Bowling.prototype.roll = function(pins) {
+  ( pins == 10 && this.rolls.length < 20) ? this.rolls.push(pins, 0) : this.rolls.push(pins);
 }
 
 Bowling.prototype.score = function() {
   var totalScore = 0;
-  var rollIndex = 0
+  var rollIndex = 0;
   var game = this;
 
-  for ( var frameIndex = 0; frameIndex < this.frames(); frameIndex++) {
+  for ( var frameIndex = 0; frameIndex < 10; frameIndex++) {
     var bonus = strikesInARow() || strike() || spare() || 0
     totalScore += frameScore(bonus)
-    console.log(totalScore)
     rollIndex += 2;
   }
   return totalScore;

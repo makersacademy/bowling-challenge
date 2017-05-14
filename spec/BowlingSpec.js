@@ -10,8 +10,8 @@ describe('Bowling', function() {
     expect(bowling.getFrames()).toEqual([]);
   });
 
-  it('has a frame counter, 0 by default', function() {
-    expect(bowling.getFrameCounter()).toEqual(0);
+  it('has a frame counter, 1 by default', function() {
+    expect(bowling.getFrameCounter()).toEqual(1);
   });
 
 });

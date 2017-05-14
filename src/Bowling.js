@@ -1,8 +1,9 @@
 'use strict';
 
 function Bowling () {
+  this.FRAME_COUNT_LIMIT = 10
   this._frames = [];
-  this._frameCounter = this.calculateFrameCount();
+  this._frameCounter = 1;
 }
 Bowling.prototype.getFrames = function () {
   return this._frames;
@@ -13,12 +14,18 @@ Bowling.prototype.setFrames = function (value) {
 Bowling.prototype.getFrameCounter = function () {
   return this._frameCounter;
 };
+Bowling.prototype.setFrameCounter = function (value) {
+  this._frameCounter += value;
+};
 Bowling.prototype.calculateFrameCount = function () {
   var numberOfBowls = this._frames.length;
   var frameCount = this._frameCounter = ( numberOfBowls / 2 );
   return frameCount;
 };
 Bowling.prototype.bowl = function (number) {
+  if(this._frameCounter === this.FRAME_COUNT_LIMIT) {
+    throw new Error('Game over!!');
+  }
   var pins =  number || this.randomNumberOfPins();
   this.setFrames(pins);
   this.calculateFrameCount();

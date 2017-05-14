@@ -13,4 +13,12 @@ describe('Features', function() {
     expect(bowling.getFrameCounter()).toEqual(1);
   });
 
+  it('throws an error if player attempts to play after 10 frames', function () {
+    for (var i = 1; i < 10; i++) {
+      bowling.setFrameCounter(1);
+    }
+      expect(function(){ bowling.bowl(); }).toThrowError('Game over!!');
+  });
+
+
 });

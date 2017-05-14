@@ -1,6 +1,6 @@
 describe('Bowling', function () {
 
-  var Bowling = require('../js/bowling');
+  //var Bowling = require('../js/bowling');
   var bowlingGame;
 
   beforeEach(function () {
@@ -9,7 +9,7 @@ describe('Bowling', function () {
 
   describe('Games', function () {
     it('can be created', function () {
-      var name = bowlingGame .constructor.name
+      var name = bowlingGame.constructor.name
       expect(name).toBe('Bowling')
     })
   })
@@ -42,7 +42,7 @@ describe('Bowling', function () {
   })
 
   var multiRoll = function (pinsDown, rolls) {
-    for (var i=0; i<rolls; i++) {
+    for (var i = 0; i < rolls; i++) {
       bowlingGame.roll(pinsDown);
     }
   }

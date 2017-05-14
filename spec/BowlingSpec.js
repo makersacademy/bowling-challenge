@@ -34,6 +34,11 @@ describe('Bowling', function() {
       game.roll(6);
       expect(game.score()).toEqual(26);
     });
+
+    it('knows how to calculate unfinished frames', function(){
+      game.roll(8)
+      expect(game.score()).toEqual(8)
+    })
   });
 
 });

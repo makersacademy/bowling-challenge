@@ -7,8 +7,7 @@ Bowling.prototype.roll = function(pins) {
 }
 
 Bowling.prototype.frames = function() {
-  var framesPlayed = this.rolls.length / 2
-  return framesPlayed
+  return this.rolls.length / 2 + this.rolls.length % 2
 }
 
 Bowling.prototype.score = function() {
@@ -24,7 +23,6 @@ Bowling.prototype.score = function() {
   return totalScore;
 
   function spare() {
-
     if (game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10) return 1
   }
 
@@ -33,9 +31,9 @@ Bowling.prototype.score = function() {
   }
 
   function frameScore(bonus) {
-    rollsPlusBonus = Math.min(2 + bonus, game.rolls.length - rollIndex)
+    rollsInFramePlusBonus = Math.min(2 + bonus, game.rolls.length - rollIndex)
     var score = 0;
-    for ( i = 0; i < rollsPlusBonus; i++) {
+    for ( i = 0; i < rollsInFramePlusBonus; i++) {
         score += game.rolls[rollIndex + i];
     }
     return score

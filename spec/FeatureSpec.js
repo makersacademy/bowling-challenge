@@ -22,12 +22,19 @@ describe('Features', function() {
 
   describe('Player DOES throw strike', function() {
 
-
-    it('sets strike to true and adds 2 to bonus count', function() {
+    it('sets strike to true and adds 2 to  strike bonus count', function() {
       bowling.bowl(10);
       expect(bowling.getIsStrike()).toEqual(true);
-      expect(bowling.getBonusPoints()).toEqual(2);      
+      expect(bowling.getStrikeBonusCounter()).toEqual(2);
+    });
+
+    it('adds points from following 2 rolls to bonus', function() {
+      bowling.bowl(10);
+      bowling.bowl(5);
+      bowling.bowl(2);
+      expect(bowling.getStrikeBonusCounter()).toEqual(0);
+      expect(bowling.getBonusPoints()).toEqual(7);
+      expect(bowling.getIsStrike()).toEqual(false);
     });
   });
-
 });

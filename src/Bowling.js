@@ -1,18 +1,19 @@
 'use strict';
 
 function Bowling () {
-  this.FRAME_COUNT_LIMIT = 10
+  this.FRAME_COUNT_LIMIT = 10;
+  this.STRIKE = 10;
   this._frames = [];
   this._frameCounter = 1;
   this._bonusPoints = 0;
-  this._bonusCounter = 0;
+  this._strikeBonusCounter = 0;
   this._isStrike = false;
 }
 Bowling.prototype.getFrames = function () {
   return this._frames;
 };
 Bowling.prototype.setFrames = function (value) {
-  return ( this._frames.push(value) );
+  this._frames.push(value);
 };
 Bowling.prototype.getFrameCounter = function () {
   return this._frameCounter;
@@ -32,6 +33,12 @@ Bowling.prototype.getBonusPoints = function () {
 Bowling.prototype.setBonusPoints = function (value) {
   this._bonusPoints += value;
 };
+Bowling.prototype.getStrikeBonusCounter = function () {
+  return this._strikeBonusCounter;
+};
+Bowling.prototype.setStrikeBonusCounter = function (value) {
+  this._strikeBonusCounter += value;
+};
 Bowling.prototype.calculateFrameCount = function () {
   var numberOfBowls = this._frames.length;
   var frameCount = this._frameCounter = ( numberOfBowls / 2 );
@@ -45,16 +52,31 @@ Bowling.prototype.bowl = function (number) {
   if(this._frameCounter === this.FRAME_COUNT_LIMIT) {
     throw new Error('Game over!!');
   }
+
+  this.setIsStrike(false);
+
   var pins =  number || this.randomNumberOfPins();
-  if (pins === 10) {
+  if (this.getStrikeBonusCounter() >= 1) {
+    this.setBonusPoints(pins);
+    this.setStrikeBonusCounter(-1);
+  }
+
+  if (pins === this.STRIKE) {
     this.strike();
   }
-  this.setFrames(pins);
-  this.calculateFrameCount();
+
+  if (pins !== this.STRIKE) {
+    this.setFrames(pins);
+    this.calculateFrameCount();
+  }
+
   return pins;
 };
 
 Bowling.prototype.strike = function () {
   this.setIsStrike(true);
-  this.setBonusPoints(2);
+  this.setStrikeBonusCounter(2);
+  this.setFrames(10);
+  this.setFrames(0);
+  this.calculateFrameCount();
 };

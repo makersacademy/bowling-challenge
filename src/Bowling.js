@@ -52,7 +52,11 @@ Bowling.prototype.randomNumberOfPins = function () {
 Bowling.prototype.finalScore = function () {
   this.frameTotal = 0;
   for(var i in this._frames) { this.frameTotal += this._frames[i]; }
-  return 'Final score is! ' + (this.frameTotal + this._bonusPoints);
+  this.frameTotal += this._bonusPoints;
+  if (  this.frameTotal !== 0 )
+    return 'Final score is! ' + (this.frameTotal);
+  else
+    return 'Gutter game! Better luck next time...';
 };
 Bowling.prototype.bowl = function (number) {
   if(this._frameCounter === this.FRAME_COUNT_LIMIT) {

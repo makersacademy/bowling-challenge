@@ -6,6 +6,23 @@ describe('Features', function() {
     bowling = new Bowling();
   });
 
+  it('returns score of all frames including any bonus points', function () {
+    bowling.bowl(2);
+    bowling.bowl(7);
+    bowling.bowl(5);
+    bowling.bowl(3);
+    bowling.bowl(9);
+    bowling.bowl(1);
+    bowling.bowl(10);
+    bowling.bowl(5);
+    bowling.bowl(1);
+    expect(bowling.finalScore()).toEqual('Final score is! 59');
+  });
+
+  it('returns "Gutter game!" if score is 0', function() {
+    expect(bowling.finalScore()).toEqual('Gutter game! Better luck next time...');
+  });
+
   describe('Player DOESN\'T roll a strike or spare', function() {
     it('Player can bowl a ball', function(){
       expect(bowling.bowl(5)).toEqual(5);
@@ -47,21 +64,6 @@ describe('Features', function() {
       bowling.bowl(2);
       expect(bowling.getBonusCounter()).toEqual(1);
       expect(bowling._isSpare).toEqual(true);
-    });
-  });
-
-  describe('Complete game', function() {
-    it('returns score of all frames including any bonus points', function () {
-      bowling.bowl(2);
-      bowling.bowl(7);
-      bowling.bowl(5);
-      bowling.bowl(3);
-      bowling.bowl(9);
-      bowling.bowl(1);
-      bowling.bowl(10);
-      bowling.bowl(5);
-      bowling.bowl(1);
-      expect(bowling.finalScore()).toEqual('Final score is! 59');
     });
   });
 });

@@ -20,14 +20,9 @@ function Game() {
 
 Game.prototype.bowl = function(n) {
   if (this.savedBowl !== -1) {
-    this.frames.push(new Frame(this.savedBowl, Number(n)));
-    this.savedBowl = -1;
-    updateScores();
-    this.totalScore = 0;
+    this._addFrame(n);
   } else if (n == 10) {
-    this.frames.push(new Frame(10));
-    updateScores();
-    this.totalScore = 0;
+    this._addStrike();
   } else {
     updatePartialBowl(n);
     this.savedBowl = Number(n);
@@ -42,3 +37,18 @@ Game.prototype.strikeCalc = function(i) {
     return Number(10 + this.frames[i + 1].score[0] + this.frames[i + 1].score[1]);
   };
 };
+
+// Private
+
+Game.prototype._addFrame = function(n) {
+  this.frames.push(new Frame(this.savedBowl, Number(n)));
+  this.savedBowl = -1;
+  updateScores();
+  this.totalScore = 0;
+}
+
+Game.prototype._addStrike = function() {
+  this.frames.push(new Frame(10));
+  updateScores();
+  this.totalScore = 0;
+}

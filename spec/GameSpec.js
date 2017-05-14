@@ -22,7 +22,6 @@ describe("Game", function() {
   it('adds to frames with normal bowls', function() {
     game.bowl(4);
     game.bowl(5);
-    console.log(game.frames)
     expect(game.frames.length).toEqual(1);
   });
 

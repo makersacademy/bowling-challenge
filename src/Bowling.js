@@ -13,7 +13,8 @@ Player.prototype.bowl = function (number) {
   this.roll1(this.number);
   if (this.number === 10) {
     this.frameScore = 10;
-    this.bowlStrike();
+    this.score += this.frameScore;
+    this.bowlStrike(2);
   }
   else
   this.roll2(this.number);
@@ -77,6 +78,7 @@ Player.prototype.bowlStrike = function (number) {
   this.strikeRoll2Score = number * 2;
   console.log('Congrats, you knocked over ' + this.number + 'pins!');
   this.strikeFrameScore = this.strikeRoll2Score + this.strikeRoll1Score;
+  console.log(this.strikeFrameScore);
   this.score += this.strikeFrameScore;
   this.frames -= 1;
   console.log('Score on this frame: ' + this.bowlStrikeFrameScore + '.');

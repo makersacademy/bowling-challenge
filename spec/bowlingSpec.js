@@ -1,9 +1,17 @@
-describe('Thermostat', function () {
+describe('Bowling', function () {
+
+  var Bowling = require('../js/bowling');
+  var bowling;
+
   beforeEach(function () {
+    bowling = new Bowling ();
   })
-  describe('intialization', function () {
-    it('is not decided yet', function () {
-      expect(true).toBe(true)
+
+  describe('Games', function () {
+    it('can be created', function () {
+      var name = bowling.constructor.name
+      expect(name).toBe('Bowling')
     })
   })
+
 })

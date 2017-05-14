@@ -10,6 +10,7 @@ function Bowling () {
   this._isStrike = false;
   this._isSpare = true;
   this._spareArray = [];
+  this._isFirstBowlOfFrame = true;
 }
 Bowling.prototype.setFrames = function (value) {
   this._frames.push(value);
@@ -32,13 +33,23 @@ Bowling.prototype.setIsSpare = function (value) {
 Bowling.prototype.setSpareArray = function (value) {
   this._spareArray = value;
 };
+Bowling.prototype.toggleFirstBowlOfGame = function ( value ) {
+  this._isFirstBowlOfFrame = this._isFirstBowlOfFrame ? false : true;
+};
 Bowling.prototype.calculateFrameCount = function () {
   var numberOfBowls = this._frames.length;
   var frameCount = this._frameCounter = ( numberOfBowls / 2 );
   return frameCount;
 };
 Bowling.prototype.randomNumberOfPins = function () {
-  return Math.floor( Math.random () * ( this.FRAME_COUNT_LIMIT - 1 + 1)) + 1;
+  this.previousNum = ( this.STRIKE - this._frames.slice(-1).pop() );
+  if (this._isFirstBowlOfFrame) {
+    console.log('upto 10')
+    return Math.floor( Math.random () * ( this.FRAME_COUNT_LIMIT - 1 + 1)) + 1;
+  } else {
+    console.log('upto previous num -1')
+    return Math.floor( Math.random () * ( this.previousNum - 1 + 1)) + 1;
+  }
 };
 Bowling.prototype.spareChecker = function (pins) {
   this._spareArray.push(pins);
@@ -48,26 +59,28 @@ Bowling.prototype.spareChecker = function (pins) {
     this.setIsSpare(false);
     this.setSpareArray([]);
   } else {
+    console.log('Spare! /');
     this.setIsSpare(true);
     this.setBonusCounter(1);
     this.setSpareArray([]);
   }
 };
 Bowling.prototype.bowl = function (number) {
+  console.log(this._isFirstBowlOfFrame);
+
   if(this._frameCounter === this.FRAME_COUNT_LIMIT) {
     throw new Error('Game over!!');
   }
 
   this.setIsStrike(false);
   var pins = number || this.randomNumberOfPins();
+  this.toggleFirstBowlOfGame();
 
   if (this.getBonusCounter() >= 1) {
     this.setBonusPoints(pins);
     this.setBonusCounter(-1);
   }
-  if (pins === this.STRIKE) {
-    this.strike();
-  }
+  if (pins === this.STRIKE) { this.strike(); }
   if (pins !== this.STRIKE) {
     this.setFrames(pins);
     this.calculateFrameCount();
@@ -76,6 +89,7 @@ Bowling.prototype.bowl = function (number) {
   return pins;
 };
 Bowling.prototype.strike = function () {
+  console.log('Strike! X');
   this.setIsStrike(true);
   this.setBonusCounter(2);
   this.setFrames(this.STRIKE);

@@ -6,18 +6,20 @@ describe('Features', function() {
     bowling = new Bowling();
   });
 
-  it('Player can bowl a ball', function(){
-    expect(bowling.bowl(5)).toEqual(5);
-    expect(bowling.bowl(3)).toEqual(3);
-    expect(bowling._frames).toEqual([5, 3]);
-    expect(bowling._frameCounter).toEqual(1);
-  });
+  describe('Player DOESN\'T roll a strike or spare', function() {
+    it('Player can bowl a ball', function(){
+      expect(bowling.bowl(5)).toEqual(5);
+      expect(bowling.bowl(3)).toEqual(3);
+      expect(bowling._frames).toEqual([5, 3]);
+      expect(bowling._frameCounter).toEqual(1);
+    });
 
-  it('throws an error if player attempts to play after 10 frames', function () {
-    for (var i = 1; i < 10; i++) {
-      bowling._frameCounter += 1;
-    }
-      expect(function(){ bowling.bowl(); }).toThrowError('Game over!!');
+    it('throws an error if player attempts to play after 10 frames', function () {
+      for (var i = 1; i < 10; i++) {
+        bowling._frameCounter += 1;
+      }
+        expect(function(){ bowling.bowl(); }).toThrowError('Game over!!');
+    });
   });
 
   describe('Player DOES roll strike', function() {
@@ -29,7 +31,7 @@ describe('Features', function() {
     });
 
     it('adds points from following 2 rolls to bonus', function() {
-      bowling.bowl(10);
+      bowling.bowl(bowling.STRIKE);
       bowling.bowl(5);
       bowling.bowl(2);
       expect(bowling.getBonusCounter()).toEqual(0);

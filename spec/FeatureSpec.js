@@ -7,7 +7,7 @@ describe('Features', function() {
   });
 
   it('Player can bowl a ball', function(){
-    expect(bowling.bowl()).toEqual(bowling.getFrames());
+    expect(bowling.bowl(5)).toEqual(5);
   });
 
 });

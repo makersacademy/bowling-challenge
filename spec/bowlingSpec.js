@@ -9,8 +9,7 @@ describe('Bowling', function () {
 
   describe('Games', function () {
     it('can be created', function () {
-      var bG = new Bowling ();
-      expect(bG.constructor.name).toBe('Bowling')
+      expect(bowlingGame instanceof Bowling).toBe(true)
     })
   })
 

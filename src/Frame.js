@@ -6,8 +6,6 @@ var FrameFile = (function() {
     this._roll1 = null;
     this._roll2 = null;
     this._roll3 = null;
-    this._rolls = [this._roll1, this._roll2, this._roll3];
-    this._nextRoll = this._rolls.filter(function(roll) { return roll === null; })[0];
   };
   Frame.prototype.setPriorScore = function(priorScore) {
     this._priorScore = priorScore;
@@ -24,6 +22,10 @@ var FrameFile = (function() {
   };
 
   Frame.prototype.processRoll = function(pinsKnockedOver) {
+    this.updateBox(pinsKnockedOver);
+  };
+
+  Frame.prototype.updateBox = function(pinsKnockedOver) {
     if (this._roll1 === null) {
       this._roll1 = pinsKnockedOver;
     } else if (this._roll2 === null) {

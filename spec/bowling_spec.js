@@ -2,6 +2,7 @@ describe('Bowling, when starting a new game:', function() {
   var theDude;
   beforeEach(function() {
     theDude = new Bowling();
+    theDude.newGame()
   });
 
   describe('it knows which frame it is,', function() {

@@ -45,13 +45,13 @@ describe('Player', function () {
   });
 
   it('should reduce the number of frames by 1 when bowl method called', function () {
-    player.bowl();
+    player.bowl(1);
     expect(player.frames).toEqual(9);
   });
 
   it('expects the game to end when the frames === 0', function () {
     for (var i = 0; i <= 9; i++) {
-      player.bowl();
+      player.bowl(1);
     }
 
     expect(player.frames).toEqual(0);

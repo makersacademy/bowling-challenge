@@ -18,11 +18,11 @@ describe('Bowling', function() {
     bowling.bowl(10);
     bowling.bowl(5);
     bowling.bowl(1);
-    expect(bowling.frames.finalScore()).toEqual('Final score is! 59');
+    expect(bowling.finalScore()).toEqual('Final score is! 59');
   });
 
   it('returns "Gutter game!" if score is 0', function() {
-    expect(bowling.frames.finalScore()).toEqual('Gutter game! Better luck next time...');
+    expect(bowling.finalScore()).toEqual('Gutter game! Better luck next time...');
   });
 
   describe('Player DOESN\'T roll a strike or spare', function() {
@@ -45,7 +45,7 @@ describe('Bowling', function() {
 
     it('sets strike to true and adds 2 to  strike bonus count', function() {
       bowling.bowl(10);
-      expect(bowling._isStrike).toEqual(true);
+      expect(bowling.frames._isStrike).toEqual(true);
       expect(bowling.frames._bonusCounter).toEqual(2);
     });
 
@@ -55,7 +55,7 @@ describe('Bowling', function() {
       bowling.bowl(2);
       expect(bowling.frames._bonusCounter).toEqual(0);
       expect(bowling.frames._bonusPoints).toEqual(7);
-      expect(bowling._isStrike).toEqual(false);
+      expect(bowling.frames._isStrike).toEqual(false);
     });
   });
 
@@ -65,7 +65,7 @@ describe('Bowling', function() {
       bowling.bowl(8);
       bowling.bowl(2);
       expect(bowling.frames._bonusCounter).toEqual(1);
-      expect(bowling._isSpare).toEqual(true);
+      expect(bowling.frames._isSpare).toEqual(true);
     });
   });
 });

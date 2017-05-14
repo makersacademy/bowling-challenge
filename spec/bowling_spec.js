@@ -9,5 +9,9 @@ describe('Bowling', function() {
       expect(theDude._currentFrame).toEqual(1);
     });
   });
-
+  describe('it knows which throw it is, ', function() {
+    it('returns \'first\' at the start of game.', function() {
+      expect(theDude._currentThrow).toEqual('first');
+    });
+  });
 });

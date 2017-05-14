@@ -1,23 +1,28 @@
 var Bowling = function () {
-  this._rolls = []
+  this._frames = []
+  for (var i=0; i<10; i++){
+    this._frames.push(new Frame)
+  }
 }
 
 Bowling.prototype.roll = function (pinsDown) {
-  this._rolls.push(pinsDown)
-}
 
-Bowling.prototype.scoreIs = function () {
-  var score = 0
-  var rollIndex = 0
-  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    if (this._rolls[rollIndex] + this._rolls[rollIndex + 1] === 10) {
-      score += this._rolls[rollIndex] + this._rolls[rollIndex + 1] + this._rolls[rollIndex + 2]
-    } else {
-      score += this._rolls[rollIndex] + this._rolls[rollIndex + 1]
-    }
-    rollIndex += 2
-  }
-  return score
-}
+  var frameToPlay = this._frames.filter(function(frame){
+    return frame._finished === false
+  })
 
-// module.exports = Bowling
+  var frameToPlay = frameToPlay[0]
+
+  var roll = frameToPlay._rolls.filter(function(roll){
+    return roll._finished === false
+  })
+
+  var roll = roll[0]
+
+  roll._pinsDown = pinsDown;
+  roll._finished = true
+
+  console.log(frameToPlay)
+
+
+};

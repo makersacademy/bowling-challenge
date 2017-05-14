@@ -13,17 +13,15 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-  <script src="js/test.js"></script>
+  <script src="js/roll.js"></script>
+  <script src="js/frame.js"></script>
+  <script src="js/bowling.js"></script>
 
   <style>
   body { padding-bottom: 70px; }
-
-  table.table td {
-    font-size: 90%;
-}
-
-
+  .navbar { border-radius: 0; }
   </style>
+
 </head>
 
 <body>
@@ -86,9 +84,11 @@
     <br><br>
 
     <div class="panel panel-default">
-      <div class=panel-heading>Bowling Challenge</div>
+      <div class=panel-heading>
+        <h3>Bowling Challenge<h3>
+      </div>
       <div class=panel-body>
-        <p>Click on a number to knock down that many pins</p>
+        <p class="text-center">Click on a number to knock down that many pins</p>
       </div>
       <table class=table>
         <thead>
@@ -132,6 +132,9 @@
             <td colspan="2" class="text-center">0</td>
             <td colspan="2" class="text-center">0</td>
           </tr> <!-- end frame score -->
+          <tr>
+            <td colspan="18" class="text-center total-score">Total Score : </td>
+          </tr>
 
         </tbody>
       </table>
@@ -156,15 +159,7 @@
     </div>
   </div>
 
-  <script>
-  var buttons = document.getElementsByClassName('btn-lg');
-  for (var i = 0; i < buttons.length; i++) {
-    buttons[i].onclick = function () {
-      var value = this.innerHTML;
-      alert(value)
-    }
-  }
-  </script>
+  <script src="js/game.js"></script>
 
 </div>
 

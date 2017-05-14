@@ -9,4 +9,10 @@ describe("Game", function() {
     game.bowl();
     expect(game.score).toEqual(1);
   });
+
+  it('should be able to add up scores', function (){
+    game.bowl();
+    game.secondBowl();
+    expect(game.total).toEqual(2);
+  });
 });

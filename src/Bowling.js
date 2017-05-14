@@ -12,3 +12,7 @@ Bowling.prototype.getFrames = function () {
 Bowling.prototype.getFrameCounter = function () {
   return this._framecounter;
 };
+
+Bowling.prototype.bowl = function () {
+  return this.getFrames();
+};

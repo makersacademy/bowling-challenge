@@ -28,8 +28,24 @@
     });
 
     describe('processRoll', function() {
-      it('has a method processRoll', function() {
-	expect(frame.processRoll()).toBeDefined();
+      it('updates box variables with scores', function() {
+	frame.processRoll(5);
+	expect(frame.box1()).toBe(5);
+	frame.processRoll(3);
+	expect(frame.box2()).toBe(3);
+      });
+
+      xit('deactivates frame if two rolls < 10', function() {
+	frame.processRoll(5);
+	frame.processRoll(3);
+	expect(frame.isActive()).toBe(false);
+      });
+      xit('activates frame after three rolls if first 2 >= 10', function() {
+	frame.processRoll(5);
+	frame.processRoll(5);
+	expect(frame.isActive()).toBe(true);
+	frame.processRoll(5);
+	expect(frame.isActive()).toBe(false);
       });
     });
   });

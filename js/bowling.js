@@ -34,11 +34,6 @@ Bowling.prototype.roll = function (pinsDown) {
 
     var rolls = frameToPlay.rollsToPlay()
 
-
-    var rolls = frameToPlay._rolls.filter(function(roll){
-      return roll._finished === false
-    })
-
     var roll = rolls[0]
 
     var rollIndex = frameToPlay._rolls.indexOf(roll)

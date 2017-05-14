@@ -1,5 +1,5 @@
 function spareUpdate(num) {
-  var spareUpdate = Number(game.cachedScore) + Number(num);
+  var spareUpdate = game.cachedScore + num;
   var index = game.frames.length - 1;
   $('#score' + index).text(spareUpdate);
   game.spare = undefined;
@@ -15,7 +15,7 @@ function checkForSpare() {
 function calculateSpare() {
   $('#frame' + i + '-1').text(game.frames[i].score[0]);
   $('#frame' + i + '-2').text('/');
-  var result = Number(game.frames[i].calculate()) + Number(game.frames[i + 1].score[0]);
+  var result = game.frames[i].calculate() + game.frames[i + 1].score[0];
   game.totalScore += result;
   game.cachedScore = game.totalScore;
   $('#score' + i).text(game.totalScore);
@@ -30,7 +30,7 @@ function spareLogic() {
 };
 
 function finalSpareScore(n) {
-  $('#score8').text(game.cachedScore + Number(n));
+  $('#score8').text(game.cachedScore + n);
 }
 
 function endWithSpare() {

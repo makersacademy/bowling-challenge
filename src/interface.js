@@ -9,7 +9,6 @@ $('#calculate').on('click', function() {
 });
 
 function updateScores() {
-  console.log("FLAGGLE");
   checkForSpare();
   for (i = 0; i < game.frames.length; i++) {
     if (i === 9) {
@@ -43,7 +42,7 @@ function finalFrameLogic() {
 function calculateFinalScore(frame) {
   var finalScore = game.cachedScore;
   frame.score.forEach( function(num) {
-      finalScore += Number(num)
+      finalScore += num
   });
   $('#score9').text(finalScore);
 };
@@ -52,7 +51,6 @@ function updateFinalFrame(frame) {
   var i = 1;
   var previousScore = 0;
   frame.score.forEach( function(value) {
-    value = Number(value);
     if (value === 10) {
       $('#frame9' + '-' + i).text('X');
     } else if (value + previousScore === 10) {

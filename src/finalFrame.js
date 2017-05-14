@@ -4,10 +4,7 @@ function FinalFrame(first) {
 
 FinalFrame.prototype.isEnded = function() {
   var frame = this.score;
-  var first = Number(frame[0]);
-  var second = Number(frame[1]);
-  console.log("BRACED:");
-  return frame.length === 2 && first + second < 10 || frame.length === 3;
+  return frame.length === 2 && frame[0] + frame[1] < 10 || frame.length === 3;
 };
 
 FinalFrame.prototype.addBowl = function(n) {

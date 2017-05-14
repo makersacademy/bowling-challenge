@@ -15,5 +15,5 @@ Frame.prototype.isStrike = function() {
 
 Frame.prototype.calculate = function() {
   if (this.score.length === 1) { return this.score[0] }
-  else { return Number(this.score[0] + this.score[1]) };
+  else { return this.score[0] + this.score[1] };
 };

@@ -1,28 +1,5 @@
 function Game() {
-  this.frames = [
-    // new Frame(3, 5),
-    // new Frame(10),
-    // new Frame(10),
-    // new Frame(10),
-    // new Frame(10),
-    // new Frame(4, 2),
-    // new Frame(6, 4), // Spare
-    // new Frame(2, 5),
-    // new Frame(10),  // Strike
-    // new Frame(1, 8),
-  ]
-  this.testFrames = [
-    new Frame(3, 5),
-    new Frame(10),
-    new Frame(10),
-    new Frame(10),
-    new Frame(10),
-    new Frame(4, 2),
-    new Frame(6, 4), // Spare
-    new Frame(2, 5),
-    new Frame(10),  // Strike
-    new Frame(1, 3),
-  ]
+  this.frames = []
   this.totalScore = 0;
   this.cachedScore;
   this.savedBowl = -1;
@@ -31,8 +8,8 @@ function Game() {
 }
 
 Game.prototype.bowl = function(n) {
+  n = Number(n);
   if (this.frames.length >= 9) {
-    console.log('Final frame!')
     this._finalBowl(n);
   } else {
     this._standardBowl(n);
@@ -42,11 +19,9 @@ Game.prototype.bowl = function(n) {
 Game.prototype.strikeCalc = function(i) {
   if (i + 1 === this.frames.length) { return " " };
   if (this.frames[i + 1].isStrike()) {
-    console.log('lol')
-    return 10 + Number(this.frames[i + 1].score[0]) + Number(this.frames[i + 2].score[0]);
+    return 10 + this.frames[i + 1].score[0] + this.frames[i + 2].score[0];
   } else {
-    console.log('cats')
-    return 10 + Number(this.frames[i + 1].score[0]) + Number(this.frames[i + 1].score[1]);
+    return 10 + this.frames[i + 1].score[0] + this.frames[i + 1].score[1];
   };
 };
 
@@ -79,12 +54,12 @@ Game.prototype._standardBowl = function(n) {
     this._addStrike();
   } else {
     updatePartialBowl(n);
-    this.savedBowl = Number(n);
+    this.savedBowl = n;
   };
 };
 
 Game.prototype._addFrame = function(n) {
-  this.frames.push(new Frame(this.savedBowl, Number(n)));
+  this.frames.push(new Frame(this.savedBowl, n));
   this.savedBowl = -1;
   updateScores();
   this.totalScore = 0;
@@ -97,12 +72,8 @@ Game.prototype._addStrike = function() {
 };
 
 Game.prototype._finalFrameCheck = function() {
-  console.log("Shoop da woop")
   var frame = this.frames[this.frames.length-1];
-  console.log(frame);
-  console.log(frame.isEnded())
   if (frame.isEnded()) {
-    console.log("Frame is ended apaz")
     updateScores()
   } else {
     updateFinalFrame(frame);

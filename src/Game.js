@@ -42,9 +42,11 @@ Game.prototype.bowl = function(n) {
 Game.prototype.strikeCalc = function(i) {
   if (i + 1 === this.frames.length) { return " " };
   if (this.frames[i + 1].isStrike()) {
-    return Number(10 + this.frames[i + 1].score[0] + this.frames[i + 2].score[0]);
+    console.log('lol')
+    return 10 + Number(this.frames[i + 1].score[0]) + Number(this.frames[i + 2].score[0]);
   } else {
-    return Number(10 + this.frames[i + 1].score[0] + this.frames[i + 1].score[1]);
+    console.log('cats')
+    return 10 + Number(this.frames[i + 1].score[0]) + Number(this.frames[i + 1].score[1]);
   };
 };
 
@@ -57,6 +59,7 @@ Game.prototype._finalBowl = function(n) {
     this._finalFrameCheck();
   } else {
     this.finalFrame = this.frames.push(new FinalFrame(n));
+    if (this.frames[this.frames.length-2].isSpare()) { finalSpareScore(n) };
     this._finalFrameCheck();
   };
 };
@@ -70,7 +73,7 @@ Game.prototype._standardBowl = function(n) {
     updatePartialBowl(n);
     this.savedBowl = Number(n);
   };
-}
+};
 
 Game.prototype._addFrame = function(n) {
   this.frames.push(new Frame(this.savedBowl, Number(n)));

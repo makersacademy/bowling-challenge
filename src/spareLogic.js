@@ -15,17 +15,23 @@ function checkForSpare() {
 function calculateSpare() {
   $('#frame' + i + '-1').text(game.frames[i].score[0]);
   $('#frame' + i + '-2').text('/');
-  game.totalScore += game.frames[i].calculate() + game.frames[i + 1].score[0];
+  var result = Number(game.frames[i].calculate()) + Number(game.frames[i + 1].score[0]);
+  game.totalScore += result;
+  game.cachedScore = game.totalScore;
   $('#score' + i).text(game.totalScore);
-}
+};
 
 function spareLogic() {
   if ( i + 1 === game.frames.length ) {
-    endWithSpare()
+    endWithSpare();
   } else {
-    calculateSpare()
+    calculateSpare();
   };
 };
+
+function finalSpareScore(n) {
+  $('#score8').text(game.cachedScore + Number(n));
+}
 
 function endWithSpare() {
   $('#frame' + i + '-1').text(game.frames[i].score[0]);

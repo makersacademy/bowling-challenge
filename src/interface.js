@@ -9,7 +9,7 @@ $('#calculate').on('click', function() {
 });
 
 function updateScores() {
-  console.log("FLAGGLE")
+  console.log("FLAGGLE");
   checkForSpare();
   for (i = 0; i < game.frames.length; i++) {
     if (i === 9) {
@@ -43,20 +43,18 @@ function calculateFinalScore(frame) {
 };
 
 function updateFinalFrame(frame) {
-  console.log(frame.score);
   var i = 1;
   var previousScore = 0;
   frame.score.forEach( function(value) {
-    if (Number(value) === 10) {
+    value = Number(value);
+    if (value === 10) {
       $('#frame9' + '-' + i).text('X');
-    } else if (Number(value) + previousScore === 10) {
-      console.log("HERE")
+    } else if (value + previousScore === 10) {
       $('#frame9' + '-' + i).text('/');
       previousScore = 0;
     } else {
-      console.log("THERE")
       $('#frame9' + '-' + i).text(value);
-      previousScore = Number(value);
+      previousScore = value;
     };
     i++;
   });

@@ -4,6 +4,10 @@ $('.bowl-number').on('click', function() {
   game.bowl($(this).val())
 });
 
+$('#calculate').on('click', function() {
+  updateScores();
+});
+
 function updateScores() {
   checkForSpare();
   for (i = 0; i < game.frames.length; i++) {

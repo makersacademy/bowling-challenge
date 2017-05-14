@@ -1,5 +1,16 @@
 function Game() {
-  this.frames = []
+  this.frames = [
+    // new Frame(3, 5),
+    // new Frame(10),
+    // new Frame(10),
+    // new Frame(10),
+    // new Frame(10),
+    // new Frame(4, 2),
+    // new Frame(6, 4), // Spare
+    // new Frame(2, 5),
+    // new Frame(10),  // Strike
+    // new Frame(1, 8),
+  ]
   this.testFrames = [
     new Frame(3, 5),
     new Frame(10),
@@ -16,18 +27,16 @@ function Game() {
   this.cachedScore;
   this.savedBowl = -1;
   this.spare;
+  this.finalFrame = undefined;
 }
 
 Game.prototype.bowl = function(n) {
-  if (this.savedBowl !== -1) {
-    this._addFrame(n);
-  } else if (n == 10) {
-    this._addStrike();
+  if (this.frames.length >= 9) {
+    this._finalBowl(n);
   } else {
-    updatePartialBowl(n);
-    this.savedBowl = Number(n);
-  }
-}
+    this._standardBowl(n);
+  };
+};
 
 Game.prototype.strikeCalc = function(i) {
   if (i + 1 === this.frames.length) { return " " };
@@ -38,17 +47,45 @@ Game.prototype.strikeCalc = function(i) {
   };
 };
 
+
 // Private
+
+Game.prototype._finalBowl = function(n) {
+  if (this.finalFrame) {
+    this.frames[this.frames.length-1].addBowl(n);
+    this._finalFrameCheck();
+  } else {
+    this.finalFrame = this.frames.push(new FinalFrame(n));
+    this._finalFrameCheck();
+  };
+};
+
+Game.prototype._standardBowl = function(n) {
+  if (this.savedBowl !== -1) {
+    this._addFrame(n);
+  } else if (n == 10) {
+    this._addStrike();
+  } else {
+    updatePartialBowl(n);
+    this.savedBowl = Number(n);
+  };
+}
 
 Game.prototype._addFrame = function(n) {
   this.frames.push(new Frame(this.savedBowl, Number(n)));
   this.savedBowl = -1;
   updateScores();
   this.totalScore = 0;
-}
+};
 
 Game.prototype._addStrike = function() {
   this.frames.push(new Frame(10));
   updateScores();
   this.totalScore = 0;
+};
+
+Game.prototype._finalFrameCheck = function() {
+  var frame = this.frames[this.frames.length-1];
+  console.log(frame.score[0] + frame.score[1]);
+  if (frame.isEnded()) { return 'Game over!' }
 }

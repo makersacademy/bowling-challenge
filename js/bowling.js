@@ -32,7 +32,8 @@ Bowling.prototype.roll = function (pinsDown) {
 
     var rollIndex = frameToPlay.rollIndex(roll)
 
-    roll._pinsDown = pinsDown;
+    roll.knockPinsDown(pinsDown)
+
     frameToPlay._score += roll._pinsDown
 
     if (rollIndex == 0 ){
@@ -43,13 +44,13 @@ Bowling.prototype.roll = function (pinsDown) {
     }
 
     if ( frameToPlay.isStrike() ){
+        console.log('a strike frame')
       var nextRoll = frameToPlay.returnRolls()[rollIndex + 1]
       nextRoll._finished = true
     }
 
     if ( frameToPlay.isSpare() ){
-
-
+      console.log('a spare frame')
     }
 
     roll._finished = true

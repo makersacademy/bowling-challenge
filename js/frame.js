@@ -19,7 +19,11 @@ Frame.prototype.rollIndex = function(roll){
 
 Frame.prototype.isSpare = function () {
 
-  if ( ( (this._rolls[0]._pinsDown != 10 ) && this._rolls[0]._pinsDown + this._rolls[1]._pinsDown) == 10 ){
+  var firstRoll = parseInt(this._rolls[0]._pinsDown)
+  var secondRoll = parseInt(this._rolls[1]._pinsDown)
+  var total = firstRoll + secondRoll
+
+  if ( total == 10 && firstRoll != 10){
     return true
   } else {
     return false

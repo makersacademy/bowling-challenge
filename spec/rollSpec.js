@@ -12,4 +12,12 @@ describe('Roll', function () {
     })
   })
 
+  describe('function knockPinsDown', function () {
+    it('knocks a specified number of pins down for that roll', function () {
+      pinsDown = 9
+      roll.knockPinsDown(pinsDown)
+      expect(roll._pinsDown).toEqual(pinsDown)
+    })
+  })
+
 })

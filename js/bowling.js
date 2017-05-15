@@ -33,8 +33,8 @@ Bowling.prototype.updateTotalScore = function () {
   var totalScore = 0
   this._frames.forEach(function(frame){
     totalScore += frame._score
-    document.getElementById('total-score').innerHTML = totalScore
   })
+  document.getElementById('total-score').innerHTML = totalScore
 };
 
 Bowling.prototype.hideButtons = function (rollIndex, pinsDown) {

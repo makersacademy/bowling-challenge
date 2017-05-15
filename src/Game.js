@@ -43,6 +43,7 @@ Game.prototype._finalBowl = function(n) {
       finalSpareScore(n);
     } else if (n === 10) {
       enableOptions();
+      strikeUpdate();
     } else if (this.frames[index-2].isStrike() && this.frames[index-1].isStrike()) {
       strikeUpdate();
       enableOptions();

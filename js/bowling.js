@@ -17,10 +17,34 @@ Bowling.prototype.frameIndex = function(frame){
 }
 
 
-Bowling.prototype.updateScoreSheet = function(frameIndex, rollIndex, pinsDown){
+Bowling.prototype.updateRollScoreSheet = function(frameIndex, rollIndex, pinsDown){
   var element = 'frame-' + (frameIndex + 1) + '-roll-' + (rollIndex + 1)
   document.getElementById(element).innerHTML = pinsDown
 }
+
+Bowling.prototype.updateFrameScoreSheet = function (frameIndex, frameToPlay) {
+  var element = 'frame-' + ( parseInt(frameIndex) + 1)
+  var score = frameToPlay._score
+  document.getElementById(element).innerHTML = score
+
+}
+
+Bowling.prototype.updateTotalScore = function () {
+  var totalScore = 0
+  this._frames.forEach(function(frame){
+    totalScore += frame._score
+    document.getElementById('total-score').innerHTML = totalScore
+  })
+};
+
+Bowling.prototype.hideButtons = function (rollIndex, pinsDown) {
+  if (rollIndex == 0 && pinsDown != 10 ){
+    var upto = 10 - pinsDown
+    for( i = upto+1; i<=10; i++    ){
+      document.getElementById('num-' + i).style.display = "none";
+    }
+  }
+};
 
 
 Bowling.prototype.roll = function (pinsDown) {
@@ -42,14 +66,9 @@ Bowling.prototype.roll = function (pinsDown) {
 
     roll.knockPinsDown(pinsDown)
 
-    frameToPlay._score += roll._pinsDown
+    frameToPlay._score += parseInt(roll._pinsDown)
 
-    if (rollIndex == 0 && pinsDown != 10 ){
-      var upto = 10 - pinsDown
-      for( i = upto+1; i<=10; i++    ){
-        document.getElementById('num-' + i).style.display = "none";
-      }
-    }
+    this.hideButtons(rollIndex, pinsDown)
 
     if ( frameToPlay.isStrike() ){
         console.log('a strike frame')
@@ -63,7 +82,7 @@ Bowling.prototype.roll = function (pinsDown) {
 
     roll._finished = true
 
-    this.updateScoreSheet(frameIndex, rollIndex, pinsDown)
+    this.updateRollScoreSheet(frameIndex, rollIndex, pinsDown)
 
     function allRollsOver(roll, index, array){
       return roll._finished === true
@@ -71,8 +90,12 @@ Bowling.prototype.roll = function (pinsDown) {
 
 
     if (  frameToPlay._rolls.every(allRollsOver)  ){
+      this.updateFrameScoreSheet(frameIndex, frameToPlay)
       frameToPlay._finished = true
     }
+
+    this.updateTotalScore()
+
 
   } else if (frameIndex == 9) { //tenth frame
       console.log('this is frame number ' + frameIndex)

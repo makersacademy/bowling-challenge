@@ -7,6 +7,14 @@ describe('Player', function () {
     player = new Player();
   });
 
+  it('expects the first bowl to have a random number method', function () {
+    spyOn(player, 'roll3').and.returnValue(5);
+    player.roll3();
+    console.log("hi" + player.roll3());
+    console.log("hi again" + player.roll3Score);
+    expect(player.roll3Score).toEqual(5);
+  });
+
   it('should be able to bowl the first roll and score 1 point', function () {
     player.roll1(1);
     expect(player.roll1Score).toEqual(1);

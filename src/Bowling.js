@@ -5,6 +5,7 @@ function Player() {
   this.frames = 10;
   this.roll1Score = 0;
   this.roll2Score = 0;
+  this.roll3Score = 0;
   this.frameScore = 0;
 }
 
@@ -21,6 +22,10 @@ Player.prototype.bowl = function (number) {
   if (this.frames === 0) {
     this.finish();
   }
+};
+
+Player.prototype.roll3 = function () {
+  this.roll3Score = 5;
 };
 
 Player.prototype.roll1 = function (number) {
@@ -66,7 +71,7 @@ Player.prototype.bowlStrike = function (number) {
 };
 
 Player.prototype.finish = function () {
-  console.log("The game is over!");
+  this.printFinish();
   return true;
 };
 
@@ -113,4 +118,8 @@ Player.prototype.printStrikeScore = function () {
   console.log('Score on this frame: ' + this.strikeFrameScore + '.');
   console.log('Total score: ' + this.score + '.');
   console.log('Frames remaining: ' + this.frames + '.');
+};
+
+Player.prototype.printFinish = function () {
+    console.log("The game is over!");
 };

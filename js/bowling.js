@@ -23,14 +23,11 @@ Bowling.prototype.updateRollScoreSheet = function(frameIndex, rollIndex, pinsDow
 }
 
 Bowling.prototype.updateFrameScoreSheet = function () {
-
   this._frames.forEach(function(frame, index, array){
     var frameIndex = index
     var element = 'frame-' + ( parseInt(frameIndex) + 1)
     document.getElementById(element).innerHTML = frame._score
-
   })
-
 }
 
 Bowling.prototype.updateTotalScore = function () {
@@ -39,6 +36,7 @@ Bowling.prototype.updateTotalScore = function () {
     totalScore += frame._score
   })
   document.getElementById('total-score').innerHTML = totalScore
+  this._score = totalScore
 };
 
 Bowling.prototype.hideButtons = function (rollIndex, pinsDown) {
@@ -84,6 +82,9 @@ Bowling.prototype.roll = function (pinsDown) {
       nextRoll._finished = true
     }
 
+
+    // update spare bonus
+    // does not update until next frame is complete
     this._frames.forEach(function(frame, index, array){
       if ( frame.isSpare() && frame._updated == false) {
       var nextFrame = array[index + 1]
@@ -110,6 +111,7 @@ Bowling.prototype.roll = function (pinsDown) {
     }
 
     this.updateTotalScore()
+    console.log('total score is ' + this._score)
 
 
   } else if (frameIndex == 9) { //tenth frame

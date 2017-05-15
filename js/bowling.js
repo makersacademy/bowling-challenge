@@ -46,13 +46,16 @@ Bowling.prototype.hideButtons = function (rollIndex, pinsDown) {
   }
 };
 
-
-Bowling.prototype.roll = function (pinsDown) {
-
+Bowling.prototype.showButtons = function () {
   for(var i=0; i<=10; i++ ){
     document.getElementById('num-' + i).style.display = "block";
   }
+};
 
+
+Bowling.prototype.roll = function (pinsDown) {
+
+  this.showButtons()
 
   var frameToPlay = this.framesToPlay()[0]
 

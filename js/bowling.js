@@ -16,12 +16,16 @@ Bowling.prototype.frameIndex = function(frame){
   return this._frames.indexOf(frame)
 }
 
+
+Bowling.prototype.updateScoreSheet = function(frameIndex, rollIndex, pinsDown){
+  var element = 'frame-' + (frameIndex + 1) + '-roll-' + (rollIndex + 1)
+  document.getElementById(element).innerHTML = pinsDown
+}
+
+
 Bowling.prototype.roll = function (pinsDown) {
 
-
-
   for(var i=0; i<=10; i++ ){
-    console.log(pinsDown)
     document.getElementById('num-' + i).style.display = "block";
   }
 
@@ -59,9 +63,7 @@ Bowling.prototype.roll = function (pinsDown) {
 
     roll._finished = true
 
-    var element = 'frame-' + (frameIndex + 1) + '-roll-' + (rollIndex + 1)
-
-    document.getElementById(element).innerHTML = roll._pinsDown
+    this.updateScoreSheet(frameIndex, rollIndex, pinsDown)
 
     function allRollsOver(roll, index, array){
       return roll._finished === true

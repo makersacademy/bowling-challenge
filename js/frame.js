@@ -2,6 +2,7 @@ var Frame = function () {
   this._score = 0
   this._finished = false
   this._rolls = [new Roll, new Roll]
+  this._updated = false
 }
 
 

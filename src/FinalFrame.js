@@ -2,6 +2,7 @@ FinalFrame = function(Roll) {
   this.startingBallIndex = null
   this.roll = Roll
   this.rollOne = null; this.rollTwo = null; this.rollThree = null;
+  this.rollOneLogged = false; this.rollTwoLogged = false;
   this.isStrike = false; this.isSpare = false;
   this.finalFrameScore = 0
 };
@@ -17,7 +18,6 @@ FinalFrame.prototype.takeTurn = function(startingBallIndex) {
     }
   } else if(this.rollOne < 10 && this.rollTwo === null) {
     this.rollTwo = this.roll(10 - this.rollOne);
-    this.isFinished = true;
 
     if(this.rollOne + this.rollTwo === 10) {
       this.isSpare = true;

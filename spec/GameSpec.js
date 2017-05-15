@@ -30,11 +30,36 @@ describe("Game", function() {
     expect(game.ballPins[1] >= 0 && game.ballPins[1] <= 10).toBeTruthy();
   });
 
+  it("correctly scores a full game", function() {
+    game.frames[0].roll = function() { return 8 }; game.bowl();
+    game.frames[0].roll = function() { return 2 }; game.bowl();
+    game.frames[1].roll = function() { return 5 }; game.bowl();
+    game.frames[1].roll = function() { return 4 }; game.bowl();
+    game.frames[2].roll = function() { return 9 }; game.bowl();
+    game.frames[2].roll = function() { return 0 }; game.bowl();
+    game.frames[3].roll = function() { return 10 }; game.bowl();
+    game.frames[4].roll = function() { return 10 }; game.bowl();
+    game.frames[5].roll = function() { return 5 }; game.bowl();
+    game.bowl();
+    game.frames[6].roll = function() { return 5 }; game.bowl();
+    game.frames[6].roll = function() { return 3 }; game.bowl();
+    game.frames[7].roll = function() { return 6 }; game.bowl();
+    game.frames[7].roll = function() { return 3 }; game.bowl();
+    game.frames[8].roll = function() { return 9 }; game.bowl();
+    game.frames[8].roll = function() { return 1 }; game.bowl();
+    game.frames[9].roll = function() { return 9 }; game.bowl();
+    game.frames[9].roll = function() { return 1 }; game.bowl();
+    game.frames[9].roll = function() { return 10 }; game.bowl();
+    expect(game.runningTotal()).toEqual(149)
+  });
+
   it("calculates a total of 300 points for a perfect game", function() {
       var game = new Game(function(parameter) { return 10; })
       var times = 12;
       for(var i=1; i <= times; i++){ game.bowl(); }
       expect(game.runningTotal()).toEqual(300)
   })
+
+
 
 });

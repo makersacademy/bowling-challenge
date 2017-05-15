@@ -3,6 +3,7 @@ Frame = function(frameNumber, roller) {
   this.startingBallIndex = null
   this.roll = roller
   this.rollOne = null; this.rollTwo = null;
+  this.rollOneLogged = false; this.rollTwoLogged = false;
   this.isStrike = false; this.isSpare = false
   this.isFinished = false;
   this.finalFrameScore = 0

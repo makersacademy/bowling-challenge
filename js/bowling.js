@@ -22,9 +22,15 @@ Bowling.prototype.updateRollScoreSheet = function(frameIndex, rollIndex, pinsDow
   document.getElementById(element).innerHTML = pinsDown
 }
 
-Bowling.prototype.updateFrameScoreSheet = function (frameIndex, frameToPlay) {
-  var element = 'frame-' + ( parseInt(frameIndex) + 1)
-  document.getElementById(element).innerHTML = frameToPlay._score
+Bowling.prototype.updateFrameScoreSheet = function () {
+
+  this._frames.forEach(function(frame, index, array){
+    var frameIndex = index
+    var element = 'frame-' + ( parseInt(frameIndex) + 1)
+    document.getElementById(element).innerHTML = frame._score
+
+  })
+
 }
 
 Bowling.prototype.updateTotalScore = function () {
@@ -79,14 +85,14 @@ Bowling.prototype.roll = function (pinsDown) {
     }
 
     this._frames.forEach(function(frame, index, array){
-
       if ( frame.isSpare() && frame._updated == false) {
       var nextFrame = array[index + 1]
       if (nextFrame._finished == true ) {
         frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
-        console.log('just updated one spare score')
+        console.log('just updated one')
         frame._updated = true
       }
+    }
     })
 
     roll._finished = true

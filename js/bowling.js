@@ -12,10 +12,8 @@ Bowling.prototype.framesToPlay = function(){
   })
 }
 
-Bowling.prototype.rollsToPlay = function(){
-  return this._rolls.filter(function(roll){
-    return roll._finished === false
-  })
+Bowling.prototype.frameIndex = function(frame){
+  return this._frames.indexOf(frame)
 }
 
 Bowling.prototype.roll = function (pinsDown) {
@@ -24,19 +22,15 @@ Bowling.prototype.roll = function (pinsDown) {
     document.getElementById('num-' + i).style.display = "block";
   }
 
-  var framesToPlay = this.framesToPlay()
+  var frameToPlay = this.framesToPlay()[0]
 
-  var frameToPlay = framesToPlay[0]
-
-  var frameIndex = this._frames.indexOf(frameToPlay)
+  var frameIndex = this.frameIndex(frameToPlay)
 
   if ( frameIndex <= 8 ) {
 
-    var rolls = frameToPlay.rollsToPlay()
+    var roll = frameToPlay.returnRolls()[0]
 
-    var roll = rolls[0]
-
-    var rollIndex = frameToPlay._rolls.indexOf(roll)
+    var rollIndex = frameToPlay.rollIndex(roll)
 
     roll._pinsDown = pinsDown;
     frameToPlay._score += roll._pinsDown
@@ -48,14 +42,8 @@ Bowling.prototype.roll = function (pinsDown) {
       }
     }
 
-
-    if (pinsDown == 10 && rollIndex == 0 ){
-      var nextRoll = rolls[rollIndex + 1]
-      nextRoll._finished = true
-    }
-
     if ( frameToPlay.isStrike() ){
-      var nextRoll = rolls[rollIndex + 1]
+      var nextRoll = frameToPlay.returnRolls()[rollIndex + 1]
       nextRoll._finished = true
     }
 
@@ -80,7 +68,7 @@ Bowling.prototype.roll = function (pinsDown) {
     }
 
   } else if (frameIndex == 9) { //tenth frame
-      console.log('this is frame number ' + (frameIndex + 1))
+      console.log('this is frame number ' + frameIndex)
   }
 
 };

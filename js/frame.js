@@ -4,11 +4,18 @@ var Frame = function () {
   this._rolls = [new Roll, new Roll]
 }
 
-Frame.prototype.rollsToPlay = function(){
+
+Frame.prototype.returnRolls = function () {
   return this._rolls.filter(function(roll){
     return roll._finished === false
   })
+};
+
+
+Frame.prototype.rollIndex = function(roll){
+  return this._rolls.indexOf(roll)
 }
+
 
 Frame.prototype.isSpare = function () {
 

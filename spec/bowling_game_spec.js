@@ -13,7 +13,7 @@ describe("Play Bowling", function() {
   });
 
   it('goes to next frame upon frame record', function() {
-    bowling.reset_frame()
+    bowling.record_frame_result()
     expect(bowling.frame).toEqual(2)
   });
 
@@ -38,11 +38,23 @@ describe("Play Bowling", function() {
     bowling.process_roll(3)
     bowling.process_roll(4)
     expect(bowling.game_results[0].roll_results[0]).toEqual(3)
+    expect(bowling.game_results[0].roll_results[1]).toEqual(4)
   });
 
   it('finsihes frame if strike is returned', function () {
     bowling.process_roll(10)
     expect(bowling.frame).toEqual(2)
+  });
+
+  it("records spare if all pins are rolled", function () {
+    bowling.process_roll(3)
+    bowling.process_roll(7)
+    expect(bowling.game_results[0].bonus).toEqual('spare')
+  });
+
+  it('allows max of 7 pins to be rolled if 3 in previous roll', function () {
+    bowling.process_roll(3)
+    expect(bowling.pins_available).toEqual(7)
   });
 
   it('game does not go beyond 10 rounds', function () {

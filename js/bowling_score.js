@@ -4,11 +4,11 @@ function Bowling_score() {
   this.frame_roll_results = [];
   this.score = 0;
   this.frame_roll = 1;
-  this.penultimate = false;
-  this.antepenultimate = false;
   this.finish = false;
   this.DEFAULT_ROLLS = 2;
   this.DEFAULT_ROUNDS = 10;
+  this.DEFAULT_PINS = 10;
+  this.pins_available = this.DEFAULT_PINS;
 };
 
 Bowling_score.prototype.process_roll = function(roll_result) {
@@ -24,6 +24,7 @@ Bowling_score.prototype.finish_frame_or_not = function() {
     this.reset_frame();
   } else {
     this.frame_roll++
+    this.pins_available -= this.frame_roll_results[0]
   };
 };
 
@@ -47,27 +48,48 @@ Bowling_score.prototype.bonus_checker = function() {
 
  Bowling_score.prototype.reset_frame = function() {
    this.frame_roll = 1;
-   //this.score_adder();
-   this.frame++;
+   this.pins_available = this.DEFAULT_PINS;
    this.frame_roll_results = [];
-   console.log('1' + this.finish);
    this.query_finish_game();
-   console.log('2' + this.finish);
  };
 
  Bowling_score.prototype.query_finish_game = function() {
-   console.log('3' + this.finish);
    if (this.game_results.length === 10) this.finish = true;
-   console.log('4' + this.finish);
  };
 
  Bowling_score.prototype.record_frame_result = function(if_bonus) {
-   result = {frame: this.frame, roll_results: this.frame_roll_results, bonus: if_bonus};
+   result = {
+     frame: this.frame,
+     roll_results: this.frame_roll_results,
+     bonus: if_bonus,
+     round_score: 0,
+   };
    this.game_results.push(result);
+   this.frame++;
+   this.score_logic_process();
  };
 
- Bowling_score.prototype.logic_engine = function() {
-   current = this.game_results[this.game_results.length - 1].bonus
-   penultimate = this.game_results[this.game_results.length - 2].bonus
-   antepenultimate = this.game_results[this.game_results.length - 3].bonus
+ Bowling_score.prototype.score_logic_process = function() {
+   this.current = this.game_results[this.game_results.length - 1];
+   this.penultimate = this.game_results[this.game_results.length - 2];
+   this.antepenultimate = this.game_results[this.game_results.length - 3];
+   sum = current.roll_results.reduce(this.add, 0);
+   this.frame_logic_engine(sum);
  };
+
+ Bowling_score.prototype.frame_logic_engine = function(frame_sum) {
+   this.check_previous_two_frames();
+   if (current.bonus ==! 'strike' || current.bonus ==! 'spare') {
+     current.round_score += frame_sum;
+   };
+   this.score_accumulator();
+ };
+
+ Bowling_score.prototype.score_accumulator = function() {
+    this.score = 0;
+    for (var i=0; i < this.frame-1 ; i++ ) {
+      this.score += this.game_results[i].round_score
+    }
+ };
+
+ Bowling_score.prototype.add = function(a, b) { return a + b };

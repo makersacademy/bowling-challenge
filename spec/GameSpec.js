@@ -36,4 +36,5 @@ describe("Game", function() {
       for(var i=1; i <= times; i++){ game.bowl(); }
       expect(game.runningTotal()).toEqual(300)
   })
+
 });

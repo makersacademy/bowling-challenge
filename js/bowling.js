@@ -18,9 +18,13 @@ Bowling.prototype.frameIndex = function(frame){
 
 Bowling.prototype.roll = function (pinsDown) {
 
+
+
   for(var i=0; i<=10; i++ ){
+    console.log(pinsDown)
     document.getElementById('num-' + i).style.display = "block";
   }
+
 
   var frameToPlay = this.framesToPlay()[0]
 
@@ -36,7 +40,7 @@ Bowling.prototype.roll = function (pinsDown) {
 
     frameToPlay._score += roll._pinsDown
 
-    if (rollIndex == 0 ){
+    if (rollIndex == 0 && pinsDown != 10 ){
       var upto = 10 - pinsDown
       for( i = upto+1; i<=10; i++    ){
         document.getElementById('num-' + i).style.display = "none";

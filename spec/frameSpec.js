@@ -81,4 +81,14 @@ describe('Frame', function () {
     })
   })
 
+  describe('returnRolls function', function () {
+    it('returns unfinished rolls', function () {
+      expect(frame.returnRolls().length).toEqual(2)
+      var finishedRoll = frame._rolls[0]
+      finishedRoll._finished = true
+      expect(frame.returnRolls().length).toEqual(1)
+      expect(frame.returnRolls().indexOf(finishedRoll)).toEqual(-1)
+    })
+  })
+
 })

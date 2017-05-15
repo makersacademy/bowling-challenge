@@ -11,10 +11,13 @@ describe('Bowling', function () {
     it('can be created', function () {
       expect(bowlingGame instanceof Bowling).toBe(true)
     })
+    it('initial score is 0', function () {
+      expect(bowlingGame.score()).toEqual(0)
+    })
   })
 
   describe('framesToPlay function', function () {
-    it('returns unfinished frames', function () {
+    it('returns unplayed frames', function () {
       expect(bowlingGame.framesToPlay().length).toEqual(10)
       var finishedFrameOne = bowlingGame._frames[0]
       var finishedFrameTwo = bowlingGame._frames[1]
@@ -26,8 +29,9 @@ describe('Bowling', function () {
     })
   })
 
-  describe('Spare', function () {
-    it('is calculaed correctly', function () {
+  describe('calculates', function () {
+    it('spare score correctly', function () {
+      expect(bowlingGame.score()).toEqual(0)
       bowlingGame.roll(5)
       bowlingGame.roll(5)
       bowlingGame.roll(5)

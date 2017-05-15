@@ -6,6 +6,10 @@ var Bowling = function () {
   }
 }
 
+Bowling.prototype.score = function(){
+  return this._score
+}
+
 Bowling.prototype.framesToPlay = function(){
   return this._frames.filter(function(frame){
     return frame._finished === false

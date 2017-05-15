@@ -3,6 +3,7 @@ describe('Bowling', function () {
   var bowlingGame;
 
   beforeEach(function () {
+    setUpHTMLFixture()
     bowlingGame = new Bowling ();
   })
 
@@ -22,6 +23,18 @@ describe('Bowling', function () {
       expect(bowlingGame.framesToPlay().indexOf(finishedFrameOne)).toEqual(-1)
       expect(bowlingGame.framesToPlay().indexOf(finishedFrameTwo)).toEqual(-1)
       expect(bowlingGame.framesToPlay().length).toEqual(8)
+    })
+  })
+
+  describe('Spare', function () {
+    it('is calculaed correctly', function () {
+      bowlingGame.roll(5)
+      bowlingGame.roll(5)
+      bowlingGame.roll(5)
+      bowlingGame.roll(5)
+      bowlingGame.roll(0)
+      bowlingGame.roll(0)
+      expect(bowlingGame.score()).toEqual(25)
     })
   })
 

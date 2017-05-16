@@ -25,6 +25,13 @@ describe('Features', function() {
     expect(bowling.finalScore()).toEqual('Gutter game! Better luck next time...');
   });
 
+  it('resets pins and score to start a new game', function() {
+    bowling.bowl(10);
+    bowling.resetPins();
+    expect(bowling.frames._frames).toEqual([]);
+    expect(bowling.finalScore()).toEqual('Gutter game! Better luck next time...');
+  });
+
   describe('Player DOESN\'T roll a strike or spare', function() {
     it('Player can bowl a ball', function(){
       expect(bowling.bowl(5)).toEqual(5);

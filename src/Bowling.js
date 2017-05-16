@@ -51,3 +51,6 @@ Bowling.prototype.applyPinsToFrame = function (pins) {
   this.frames.calculateFrameCount();
   this.frames._currentFrame.push(pins);
 };
+Bowling.prototype.resetPins = function () {
+  this.frames.resetPins();
+};

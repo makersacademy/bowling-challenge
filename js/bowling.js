@@ -143,19 +143,35 @@ Bowling.prototype.roll = function (pinsDown) {
   } else if (frameIndex == 9) { //tenth frame
       console.log('this is frame number ' + parseInt(frameIndex + 1))
 
+      var frameToPlay = this.framesToPlay()[0]
+      var frameIndex = this.frameIndex(frameToPlay)
+      var roll = frameToPlay.returnRolls()[0]
+      var rollIndex = frameToPlay.rollIndex(roll)
+      roll.knockPinsDown(pinsDown)
+      roll._finished = true
+      frameToPlay._score += parseInt(roll._pinsDown)
+      this.updateRollScoreSheet(frameIndex, rollIndex, pinsDown)
+
+      function allRollsOver(roll, index, array){
+        return roll._finished === true
+      }
 
 
-      
+      if ( frameToPlay.isStrike() ){
 
+      } else if ( frameToPlay.isSpare() ){
 
+      } else {
 
+      }
 
+      if (  frameToPlay._rolls.every(allRollsOver)  ){
+        this.updateFrameScoreSheet(frameIndex, frameToPlay)
+        frameToPlay._finished = true
+      }
 
+      this.updateTotalScore()
 
-
-
-
-
-  }
+  } // close 10th frame
 
 };

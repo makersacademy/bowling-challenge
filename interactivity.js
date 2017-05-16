@@ -1,5 +1,5 @@
 $( document ).ready(function() {
 
-  $( '#frames' ).text('jQuery test');
+  $( '#frames' ).text('bOwL-a-RaMa!!');
 
 });

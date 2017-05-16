@@ -1,0 +1,38 @@
+body {
+  background-image: url("zig-zag.png");
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 200px;
+  font-size: 72px;
+}
+button {
+  border-radius: 8px;
+  background-color: rgba(255, 16, 16, 0.66);
+  border: none;
+  color: #ffeaea;
+  text-align: center;
+  font-size: 32px;
+  padding: 16px;
+  width: 220px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 10px;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
+}
+
+button{
+  cursor: -webkit-grab;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+button:hover{
+  padding-right: 24px;
+  padding-left: 18px;
+}
+
+button:hover:after {
+  opacity: 1;
+}

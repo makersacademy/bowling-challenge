@@ -10,24 +10,12 @@ function Frames () {
   this._isStrike = false;
   this._isSpare = true;
 }
-Frames.prototype.setIsStrike = function (value) {
-  this._isStrike = value;
-};
-Frames.prototype.setIsSpare = function (value) {
-  this._isSpare = value;
-};
-Frames.prototype.setFrames = function (value) {
-  this._frames.push(value);
-};
-Frames.prototype.setBonusCounter = function (value) {
-  this._bonusCounter += value;
-};
-Frames.prototype.setBonusPoints = function (value) {
-  this._bonusPoints += value;
-};
-Frames.prototype.resetCurrentFrame = function (value) {
-  this._currentFrame = value;
-};
+Frames.prototype.setIsStrike = function (value) { this._isStrike = value; };
+Frames.prototype.setIsSpare = function (value) { this._isSpare = value; };
+Frames.prototype.setFrames = function (value) { this._frames.push(value); };
+Frames.prototype.setBonusCounter = function (value) { this._bonusCounter += value; };
+Frames.prototype.setBonusPoints = function (value) { this._bonusPoints += value; };
+Frames.prototype.resetCurrentFrame = function (value) { this._currentFrame = value; };
 Frames.prototype.calculateFrameCount = function () {
   var numberOfBowls = this._frames.length;
   var frameCount = this._frameCounter = ( numberOfBowls / 2 );
@@ -49,7 +37,6 @@ Frames.prototype.spareChecker = function (pins) {
   }
 };
 Frames.prototype.strike = function () {
-  console.log('Strike! X');
   this.setIsStrike(true);
   this.setBonusCounter(2);
   this.setFrames(this.STRIKE);
@@ -57,7 +44,6 @@ Frames.prototype.strike = function () {
   this.calculateFrameCount();
 };
 Frames.prototype.spare = function () {
-  console.log('Spare! /');
   this.setIsSpare(true);
   this.setBonusCounter(1);
   this.resetCurrentFrame([]);

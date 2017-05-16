@@ -72,20 +72,46 @@ describe("Score Bowling - When bonus (strike/spare) is incurred", function() {
 
 });
 
-describe("Score Bowling - 10th round", function() {
+describe("Score Bowling - 10th round with bonus", function() {
   var bowling;
 
   beforeEach(function() {
     bowling = new Bowling_score();
-    for (var i=0; i < 10; i++ ) {
-      bowling.process_roll(10)
-    }
   });
 
   it('Will give a score of 300 on consistent strikes', function () {
-    bowling.process_roll(10)
-    bowling.process_roll(10)
+    for (var i=0; i < 12; i++ ) {
+      bowling.process_roll(10)
+    }
     expect(bowling.score).toEqual(300)
+  });
+
+  it('Will give a score of 150 on consistent spares by rolling 5', function () {
+    for (var i=0; i < 21; i++ ) {
+      bowling.process_roll(5)
+    }
+    expect(bowling.score).toEqual(150)
+  });
+
+  it('Will give a score of 200 on oscilation of spare and strike', function () {
+    bowling.process_roll(5)
+    bowling.process_roll(5)
+    bowling.process_roll(10)
+    bowling.process_roll(5)
+    bowling.process_roll(5)
+    bowling.process_roll(10)
+    bowling.process_roll(5)
+    bowling.process_roll(5)
+    bowling.process_roll(10)
+    bowling.process_roll(5)
+    bowling.process_roll(5)
+    bowling.process_roll(10)
+    bowling.process_roll(5)
+    bowling.process_roll(5)
+    bowling.process_roll(10)
+    bowling.process_roll(5)
+    bowling.process_roll(5)
+    expect(bowling.score).toEqual(200)
   });
 
 });

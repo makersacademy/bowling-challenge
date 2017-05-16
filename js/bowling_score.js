@@ -1,22 +1,21 @@
 function Bowling_score() {
+  this.DEFAULT_FRAMES = 10;
+  this.DEFAULT_PINS = 10;
+  this.BONUS_SCORE = 10;
   this.frame = 1;
   this.game_results = [];
   this.frame_roll_results = [];
   this.score = 0;
-  this.frame_roll = 1;
+  this.current_roll = 1;
   this.finish = false;
-  this.available_rolls = 2;
-  this.DEFAULT_FRAMES = 10;
-  this.DEFAULT_PINS = 10;
-  this.BONUS_SCORE = 10;
-
+  this.frame_rolls = 2;
   this.pins_available = this.DEFAULT_PINS;
 };
 
 Bowling_score.prototype.process_roll = function(roll_result) {
   if (this.finish === true) { throw 'Game is finished' };
   this.frame_roll_results.push(roll_result);
-  if (this.frame === 10 && this.frame_roll === 2) this.frame_10_logic();
+  if (this.frame === 10 && this.current_roll === 2) this.frame_10_logic();
   this.query_finish_frame();
 };
 
@@ -27,15 +26,15 @@ Bowling_score.prototype.finish_frame = function() {
 
 Bowling_score.prototype.frame_10_logic = function() {
   if ((this.frame_roll_results[0] + this.frame_roll_results[1]) >= this.DEFAULT_PINS) {
-    this.available_rolls = 3;
+    this.frame_rolls = 3;
   };
 };
 
 Bowling_score.prototype.query_finish_frame = function() {
-  if ( this.frame !== 10 && "undefined" !== typeof this.bonus_checker() || this.frame_roll >= this.available_rolls ) {
+  if ( this.frame !== 10 && "undefined" !== typeof this.bonus_checker() || this.current_roll >= this.frame_rolls ) {
     this.finish_frame();
   } else {
-    this.frame_roll++;
+    this.current_roll++;
     this.pins_available -= this.frame_roll_results[0];
   };
 };
@@ -49,7 +48,7 @@ Bowling_score.prototype.bonus_checker = function() {
 };
 
 Bowling_score.prototype.reset_frame = function() {
-  this.frame_roll = 1;
+  this.current_roll = 1;
   this.pins_available = this.DEFAULT_PINS;
   this.frame_roll_results = [];
   this.query_finish_game();
@@ -83,6 +82,7 @@ Bowling_score.prototype.frame_logic_engine = function() {
     this.current.round_score += this.frame_sum;
   };
   if (this.frame > 2) this.check_last_two_frames();
+  if (this.frame === this.DEFAULT_FRAMES + 1) this.final_frame_scoring();
   this.score_accumulator();
 };
 
@@ -90,6 +90,10 @@ Bowling_score.prototype.check_last_two_frames = function() {
   this.penultimate = this.game_results[this.game_results.length - 2];
   if (this.penultimate.bonus === 'strike') this.accumulate_strike();
   if (this.penultimate.bonus === 'spare') this.accumulate_spare();
+};
+
+Bowling_score.prototype.final_frame_scoring = function() {
+  //this.penultimate.round_score = this.BONUS_SCORE + this.game_results[this.DEFAULT_FRAMES].roll_results[0];
 };
 
 Bowling_score.prototype.accumulate_strike = function() {

@@ -18,9 +18,9 @@ describe("Play Bowling - Frame Logic", function() {
   });
 
   it('resets frame roll to 1 after frame', function() {
-    bowling.frame_roll = 10
+    bowling.current_roll = 10
     bowling.reset_frame()
-    expect(bowling.frame_roll).toEqual(1)
+    expect(bowling.current_roll).toEqual(1)
   });
 
   it('completes frame 1 after two rolls', function () {
@@ -94,13 +94,13 @@ describe("10th Round Mechanics Logic", function() {
 
   it('Allows play of two rolls (3 in total) on strike on 10th', function () {
     bowling.process_roll(10)
-    expect(bowling.available_rolls).toEqual(3)
+    expect(bowling.frame_rolls).toEqual(3)
   });
 
   it('Will not end frame if roll two strikes on 10th round', function () {
     bowling.process_roll(10)
     expect(bowling.finish).toEqual(false)
-    expect(bowling.available_rolls).toEqual(3)
+    expect(bowling.frame_rolls).toEqual(3)
   });
 
 });

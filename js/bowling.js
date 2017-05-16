@@ -148,9 +148,18 @@ Bowling.prototype.roll = function (pinsDown) {
       var roll = frameToPlay.returnRolls()[0]
       var rollIndex = frameToPlay.rollIndex(roll)
       roll.knockPinsDown(pinsDown)
-      roll._finished = true
+
       frameToPlay._score += parseInt(roll._pinsDown)
       this.updateRollScoreSheet(frameIndex, rollIndex, pinsDown)
+
+      if ( frameToPlay.isStrike() ){
+        console.log('a strike frame')
+        frameToPlay._isStrike = true
+        var nextRoll = frameToPlay.returnRolls()[rollIndex + 1]
+        nextRoll._finished = true
+      }
+
+      roll._finished = true
 
       function allRollsOver(roll, index, array){
         return roll._finished === true

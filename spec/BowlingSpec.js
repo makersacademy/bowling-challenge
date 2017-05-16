@@ -15,5 +15,9 @@
       game.throwBall(1);
       expect(game.pinsLeft()).toBe(9);
     });
+    it('starts a new frame', function() {
+      game.newFrame();
+      expect(game.getFrames()).toContain(new Frame());
+    });
   });
 }());

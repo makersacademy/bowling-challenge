@@ -1,0 +1,1 @@
+var Frame = function() {};

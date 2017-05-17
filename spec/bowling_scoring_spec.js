@@ -11,12 +11,12 @@ describe("Score Bowling - general frames", function() {
     expect(bowling.score).toEqual(6)
   });
 
-  it('Does not increase score strike roll', function () {
+  it('Does not increase score on strike frame', function () {
     bowling.process_roll(10)
     expect(bowling.score).toEqual(0)
   });
 
-  it('Does not increase score spare frame', function () {
+  it('Does not increase score on spare frame', function () {
     bowling.process_roll(7)
     bowling.process_roll(3)
     expect(bowling.score).toEqual(0)
@@ -27,6 +27,13 @@ describe("Score Bowling - general frames", function() {
       bowling.process_roll(3)
     }
     expect(bowling.score).toEqual(12)
+  });
+
+  it('Will give a score of 80 on consistent 4 rolls', function () {
+    for (var i=0; i < 20; i++ ) {
+      bowling.process_roll(4)
+    }
+    expect(bowling.score).toEqual(80)
   });
 
 });

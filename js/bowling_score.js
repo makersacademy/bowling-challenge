@@ -82,7 +82,7 @@ Bowling_score.prototype.frame_logic_engine = function() {
   if (this.current.bonus !== 'strike' && this.current.bonus !== 'spare') {
     this.current.round_score += this.frame_sum;
   };
-  if (this.frame > 1) this.check_last_two_frames();
+  if (this.frame >= 2) this.check_last_two_frames();
   if (this.frame === this.DEFAULT_FRAMES) this.final_frame_scoring();
   this.score_accumulator();
   this.frame++;
@@ -103,8 +103,12 @@ Bowling_score.prototype.check_last_two_frames = function() {
 };
 
 Bowling_score.prototype.final_frame_scoring = function() {
-  this.penultimate.round_score = this.BONUS_SCORE + this.game_results[this.DEFAULT_FRAMES-1].roll_results[0];
-  if (this.penultimate.bonus === 'strike') this.penultimate.round_score += this.current.roll_results[1];
+  base_bonus = this.BONUS_SCORE + this.current.roll_results[0];
+  if (this.penultimate.bonus === 'spare') {
+    this.penultimate.round_score = base_bonus;
+  } else if (this.penultimate.bonus === 'strike') {
+    this.penultimate.round_score = base_bonus + this.current.roll_results[1];
+  }
   this.game_results[this.DEFAULT_FRAMES-1].round_score = this.frame_sum
 };
 

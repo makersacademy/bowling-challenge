@@ -2,17 +2,34 @@ function Game() {
   this.score = 0;
   this.frame = 1;
   this.hitPins = 0;
-  this.DEFAULT_PINS = 10;
+  this.remainedPins = 10;
   this.countRoll = 1;
   this.MAXIMUM_PINS = 10;
   this.MAXIMUM_FRAME = 10;
 }
 
 Game.prototype.play = function() {
-  this.hitPins = Math.floor(Math.random() * (this.DEFAULT_PINS + 1));
+  this.hitPins = Math.floor(Math.random() * (this.remainedPins + 1));
+  this.updateRoll();
+  this.increaseGameScore();
+  this.countRoll;
+  this.score;
 };
 
-Game.prototype.gameScore = function() {
+Game.prototype.increaseGameScore = function() {
+  if(this.hitPins === this.MAXIMUM_PINS)
+  {
+    this.score += this.MAXIMUM_PINS;
+    this.remainedPins = this.MAXIMUM_PINS;
+  } else
+  {
+    this.score += this.hitPins;
+    this.remainedPins = this.MAXIMUM_PINS - this.hitPins;
+  }
+    return this.score;
+};
+
+Game.prototype.gameScore = function(value) {
   return this.score;
 };
 

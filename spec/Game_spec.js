@@ -40,8 +40,16 @@ describe('Game', function() {
     expect(game.currentFrame()).toEqual(1);
   });
 
+  it('increases the game score with 4 if 4 pins fall on rolling', function() {
+    spyOn(Math,'random').and.returnValue(4);
+    game.play();
+    expect(game.gameScore()).toEqual(4);
+  });
 
+  it('shows score equal to 6', function() {
+    spyOn(Math, 'random').and.returnValue(6);
+    game.play();
+    expect(game.gameScore()).toEqual(6);
+  });
 
-
-
-})
+});

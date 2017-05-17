@@ -14,6 +14,10 @@ describe('Game', function() {
     });
   });
 
+    it('starts the game with frame 1', function() {
+      expect(game.currentFrame()).toEqual(1);
+    });
+
 
 
 

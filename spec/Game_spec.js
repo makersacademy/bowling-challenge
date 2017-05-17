@@ -18,6 +18,9 @@ describe('Game', function() {
       expect(game.currentFrame()).toEqual(1);
     });
 
+    it('allows the user the option to play', function() {
+      expect(game.gameScore()).toEqual(0);
+    });
 
 
 

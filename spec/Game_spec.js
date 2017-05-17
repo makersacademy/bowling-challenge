@@ -22,6 +22,26 @@ describe('Game', function() {
       expect(game.gameScore()).toEqual(0);
     });
 
+    it('should have 2 rolls in each frame', function() {
+      game.play();
+      expect(game.currentFrame()).toEqual(1);
+    });
+
+    it('allows the user to get duck', function() {
+      spyOn(Math, 'random').and.returnValue(0);
+      expect(game.gameScore()).toEqual(0);
+    });
+
+    it('should not allow the user to play the eleventh frame', function(){
+    for(var i; i<21; i++)
+    {
+      game.increaseFrame();
+    }
+    expect(game.currentFrame()).toEqual(1);
+  });
+
+
+
 
 
 })

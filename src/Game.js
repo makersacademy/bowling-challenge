@@ -3,7 +3,7 @@ function Game() {
   this.frame = 1;
   this.hitPins = 0;
   this.DEFAULT_PINS = 10;
-  this.countMove = 1;
+  this.countRoll = 1;
   this.MAXIMUM_PINS = 10;
   this.MAXIMUM_FRAME = 10;
 }
@@ -17,23 +17,34 @@ Game.prototype.gameScore = function() {
 };
 
 Game.prototype.currentFrame = function() {
-  return this.frame;
+  return Math.floor(this.frame);
 };
 
 Game.prototype.hitPins = function() {
   return this.hitPins;
 };
 
-Game.prototype.updateMove = function() {
+Game.prototype.updateRoll = function() {
   if(this.frame < 10)
   {
-    if(this.countMove === 1)
+    if(this.countRoll === 1)
     {
-      this.countMove = 2;
+      this.countRoll = 2;
     } else
     {
-      this.countMove =1;
+      this.countRoll =1;
       this.frame++;
     }
+  } else
+  {
+    this.frame =1;
   }
-}
+};
+
+Game.prototype.getRollNumber = function() {
+  return this.countRoll;
+};
+
+Game.prototype.pinsKnockDown = function() {
+  return this.hitPins;
+};

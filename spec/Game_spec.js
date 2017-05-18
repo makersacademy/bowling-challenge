@@ -12,6 +12,44 @@ describe("feature test", function(){ "use strict";
       spyOn(game, 'pinsKnockdown').and.returnValue(3);
       expect(game.pinsKnockdown()).toEqual(3);
     });
+
+    it("checks if is a strike", function(){
+      spyOn(bowling, 'pinsKnockdown').and.returnValue(10);
+      bowling.bowl();
+      expect(bowling._sKsP).toEqual("Strike!");
+    });
+
+    it("checks if is a spare", function(){
+      spyOn(bowling, 'pinsKnockdown').and.returnValues(5, 5);
+      bowling.bowl();
+      bowling.bowl();
+      expect(bowling._sKsP).toEqual("Spare!");
+    });
+
+    it("records correct total score", function(){
+      bowling._totalScore = 0;
+      spyOn(bowling, 'pinsKnockdown').and.returnValues(5, 2);
+      bowling.bowl();
+      bowling.bowl();
+      expect(bowling._totalScore).toEqual(7);
+    });
+
+    it("adds correct amount to score when a strike is recoreded", function(){
+      spyOn(bowling, 'pinsKnockdown').and.returnValues(10, 2, 7);
+      bowling.bowl();
+      bowling.bowl();
+      bowling.bowl();
+      expect(bowling._totalScore).toEqual(28);
+  });
+
+  it("adds correct amount to score when a spare is recoreded", function(){
+    spyOn(bowling, 'pinsKnockdown').and.returnValues(5, 5, 5, 2);
+    bowling.bowl();
+    bowling.bowl();
+    bowling.bowl();
+    bowling.bowl();
+    expect(bowling._totalScore).toEqual(22);
+  });
   });
 
 

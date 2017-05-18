@@ -7,6 +7,7 @@ function Game() {"use strict";
   this._totalScore = 0;
   this._currentKnockdown = 0;
   this._maxRounds = 10;
+  this._sKsP = "";
 };
 
 Game.prototype.bowl = function() {
@@ -45,5 +46,38 @@ Game.prototype.frameAndRoll = function(){
 Game.prototype.endGameCheck = function(){
   if(this._frame === 10 && this._standingPins === 0){
     this._maxRounds = 11
+  }
+}
+
+
+
+
+Game.prototype.frameIncrement = function(){
+  if(this._roll === 2 || this._standingPins === 0){
+    this._frame ++
+    this.totalScoreUpdate();
+  }
+}
+
+Game.prototype.totalScoreUpdate = function(){
+  this._totalScore += (this._rollScore1 + this._rollScore2);
+  this.checkBonus();
+  this.strikeOrSpare();
+}
+
+Game.prototype.checkBonus = function(){
+  if (this._sKsP === "Strike!") {
+    this._totalScore += (this._rollScore1 + this._rollScore2);
+  } else if (this._sKsP === "Spare!") {
+    this._totalScore += this._rollScore1;
+  }
+  this._sKsP = "";
+}
+
+Game.prototype.strikeOrSpare = function(){
+  if (this._rollScore1 === 10) {
+    this._sKsP = "Strike!"
+  } else if (this._rollScore1 + this._rollScore2 === 10) {
+    this._sKsP = "Spare!"
   }
 }

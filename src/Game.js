@@ -43,28 +43,32 @@ Game.prototype.frameAndRoll = function(){
     this.frameIncrement();
     this.rollAlternate();
   }
-}
+};
 
 Game.prototype.endGameCheck = function(){
-  if(this._frame === 10 && this._standingPins === 0){
-    this._maxRounds = 11
-  }
+  if(this._frame === 10 ){
+    throw new Error ("You reached the maximum number of frames!\nGame is finished!");
 }
+};
+
+
+
+
 
 // Increments the frame, updatea the score check the bonuses
 
 Game.prototype.frameIncrement = function(){
   if(this._roll === 2 || this._standingPins === 0){
-    this._frame ++
+    this._frame ++;
     this.totalScoreUpdate();
   }
-}
+};
 
 Game.prototype.totalScoreUpdate = function(){
   this._totalScore += (this._rollScore1 + this._rollScore2);
   this.checkBonus();
   this.strikeOrSpare();
-}
+};
 
 Game.prototype.checkBonus = function(){
   if (this._sKsP === "Strike!") {
@@ -73,16 +77,23 @@ Game.prototype.checkBonus = function(){
     this._totalScore += this._rollScore1;
   }
   this._sKsP = "";
-}
+};
 
 Game.prototype.strikeOrSpare = function(){
   if (this._rollScore1 === 10) {
-    this._sKsP = "Strike!"
+    this._sKsP = "Strike!";
   } else if (this._rollScore1 + this._rollScore2 === 10) {
-    this._sKsP = "Spare!"
+    this._sKsP = "Spare!";
   }
-}
+};
 
+// Throwing errors
+
+// Game.prototype.errors = function(){
+//   if(this._frame === 10 && this._standingPins === 0) {
+//     throw new Error ("You reached the maximum number of frames!\nGame is finished!");
+//   }
+// };
 // End of the game, reset frame, reset roll
 
 Game.prototype.rollAlternate = function(){
@@ -92,7 +103,7 @@ Game.prototype.rollAlternate = function(){
     this._roll = 1;
     this.frameReset();
   }
-}
+};
 
 Game.prototype.frameReset = function(){
   this._rollScore1 = 0;
@@ -100,7 +111,7 @@ Game.prototype.frameReset = function(){
   this._currentKnockdown = 0;
   this._standingPins = 10;
   this._maxRounds = 10;
-}
+};
 
 Game.prototype.newGame = function(){
   this._frame = 1;
@@ -112,4 +123,4 @@ Game.prototype.newGame = function(){
   this._standingPins = 10;
   this._sKsP = "";
   this._maxRounds = 10;
-}
+};

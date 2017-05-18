@@ -43,6 +43,15 @@ describe('Game', function() {
       });
     });
 
+    describe('Normal frame', function() {
+      it("does not allow a player to score more than 10 in total for every two rolls", function(){
+        game.roll(5);
+        expect(function() {
+          game.roll(6);
+        }).toThrowError("Cannot knock down more than 10 pins");
+      });
+    });
+
     describe('Strike bonus', function() {
 
       it("allows a player to have a strike and adds up its related bonus", function() {

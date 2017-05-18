@@ -22,6 +22,11 @@ Game.prototype.roll = function(number) {
   if (this._rolls.length === 20 - this._strikeCounter()) {
     throw new Error('Game over');
   }
+if (number !== 10) {
+    if (this._rolls[this._rolls.length -1] + number > 10 && this._rolls[this._rolls.length -1] !== 10) {
+    throw new Error('Cannot knock down more than 10 pins');
+  }
+  }
 
   if (this._bonusRounds > 0) {
     this._bonusRounds -= 1;

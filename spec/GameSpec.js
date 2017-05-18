@@ -5,7 +5,7 @@ describe('Game', function() {
     game = new Game();
   });
 
-  describe("#roll", function() {
+  describe("roll", function() {
     describe('One frame', function() {
 
       it("allows a player to bowl two rolls and knock down a specified number of pins", function() {
@@ -143,7 +143,7 @@ describe('Game', function() {
     });
   });
 
-  describe('#isAgutterGame', function() {
+  describe('isAgutterGame', function() {
     it("allows a player to complete a game without knocking down any pins", function() {
 
       var i;
@@ -160,7 +160,6 @@ describe('Game', function() {
       }
       expect(game.isAgutterGame()).toBe(false);
     });
-
   });
 
 });

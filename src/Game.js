@@ -1,18 +1,23 @@
+"use strict";
 
-function Game() {"use strict";
+function Game() {
   this._frame = 1;
   this._roll = 1;
   this._rollScore1 = 0;
   this._rollScore2 = 0;
   this._totalScore = 0;
   this._currentKnockdown = 0;
-  this._maxRounds = 10;
+  this._standingPins = 10;
   this._sKsP = "";
+  this._maxRounds = 10;
 };
 
 Game.prototype.bowl = function() {
   this.rollScoreMethod();
+  this.frameAndRoll();
 };
+
+// Random generator and counteer of rolls and frames
 
 Game.prototype.rollScoreMethod = function(){
   this._currentKnockdown = this.pinsKnockdown();
@@ -32,9 +37,6 @@ Game.prototype.remainingPins = function(){
   this._standingPins -= this._currentKnockdown
 }
 
-
-
-
 Game.prototype.frameAndRoll = function(){
   this.endGameCheck();
   if(this._frame < this._maxRounds) {
@@ -49,8 +51,7 @@ Game.prototype.endGameCheck = function(){
   }
 }
 
-
-
+// Increments the frame, updatea the score check the bonuses
 
 Game.prototype.frameIncrement = function(){
   if(this._roll === 2 || this._standingPins === 0){
@@ -81,6 +82,8 @@ Game.prototype.strikeOrSpare = function(){
     this._sKsP = "Spare!"
   }
 }
+
+// End of the game, reset frame, reset roll
 
 Game.prototype.rollAlternate = function(){
   if(this._roll === 1 && this._standingPins > 0){

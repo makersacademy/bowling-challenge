@@ -1,4 +1,4 @@
-describe("feature test", function(){ "use strict";
+describe("#Games features", function(){"use strict";
 
   var game;
 

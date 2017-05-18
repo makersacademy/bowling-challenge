@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+  <title>10 Pin Bowling</title>
+</head>
+
+<body>
+  <h1>10 Pin Bowling</h1>
+  <h2>Score board</h2>
+
+  <style>
+    thead {
+      color: green;
+    }
+
+    tbody {
+      color: blue;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+  </style>
+  </head>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Rolls</th>
+        <th>Score</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>R 1</th>
+        <td scope="column" id='r1' class='rolls'></td>
+      </tr>
+      <tr>
+        <th>R 2</th>
+        <td scope="column" id='r2' class='rolls'></td>
+        <td scope="column" id='r2total'></td>
+      </tr>
+      <tr>
+        <th>R 3</th>
+        <td scope="column" id='r3' class='rolls'></td>
+      </tr>
+      <tr>
+        <th>R 4</th>
+        <td scope="column" id='r4' class='rolls'></td>
+        <td scope="column" id='r4total'></td>
+      </tr>
+      <tr>
+        <th>R 5</th>
+        <td scope="column" id='r5' class='rolls'></td>
+      </tr>
+      <tr>
+        <th>R 6</th>
+        <td scope="column" id='r6' class='rolls'></td>
+        <td scope="column" id='r6total'></td>
+      </tr>
+      <tr>
+        <th>R 7</th>
+        <td scope="column" id='r7' class='rolls'></td>
+      </tr>
+      <tr>
+        <th>R 8</th>
+        <td scope="column" id='r8' class='rolls'></td>
+        <td scope="column" id='r8total'></td>
+      </tr>
+      <tr>
+        <th>R 9</th>
+        <td scope="column" id='r9' class='rolls'></td>
+      </tr>
+      <tr>
+        <th>R 10</th>
+        <td scope="column" id='r10' class='rolls'></td>
+        <td scope="column" id='r10total'></td>
+      </tr>
+      <tr>
+        <th>R 11</th>
+        <td scope="column" id='r11' class='rolls'></td>
+      </tr>
+      <tr>
+        <th>R 12</th>
+        <td scope="column" id='r12' class='rolls'></td>
+        <td scope="column" id='r12total'></td>
+      </tr>
+      <tr>
+        <th>R 13</th>
+        <td scope="column" id='r13' class='rolls'></td>
+      </tr>
+      <tr>
+        <th>R 14</th>
+        <td scope="column" id='r14' class='rolls'></td>
+        <td scope="column" id='r14total'></td>
+      </tr>
+      <tr>
+        <th>R 15</th>
+        <td scope="column" id='r15' class='rolls'></td>
+      </tr>
+      <tr>
+        <th>R 16</th>
+        <td scope="column" id='r16' class='rolls'></td>
+        <td scope="column" id='r16total'></td>
+      </tr>
+      <tr>
+        <th>R 17</th>
+        <td scope="column" id='r17' class='rolls'></td>
+      </tr>
+      <tr>
+        <th>R 18</th>
+        <td scope="column" id='r18' class='rolls'></td>
+        <td scope="column" id='r18total'></td>
+      </tr>
+      <tr>
+        <th>R 19</th>
+        <td scope="column" id='r19' class='rolls'></td>
+      </tr>
+      <tr>
+        <th>R 20</th>
+        <td scope="column" id='r20' class='rolls'></td>
+        <td scope="column" id='r20total'></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <div id='buttons'>
+    <button id='roll-0'>0</button>
+    <button id='roll-1'>1</button>
+    <button id='roll-2'>2</button>
+    <button id='roll-3'>3</button>
+    <button id='roll-4'>4</button>
+    <button id='roll-5'>5</button>
+    <button id='roll-6'>6</button>
+    <button id='roll-7'>7</button>
+    <button id='roll-8'>8</button>
+    <button id='roll-9'>9</button>
+    <button id='roll-10'>10</button>
+    <button id='reset'>RESET</button>
+  </div>
+
+  <script src="src/Game.js"></script>
+  <script src="interface.js"></script>
+</body>
+
+</html>

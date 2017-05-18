@@ -3,6 +3,7 @@
 
 <head>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./style/interface.css">
   <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
   <title>10 Pin Bowling</title>
 </head>
@@ -10,22 +11,6 @@
 <body>
   <h1>10 Pin Bowling</h1>
   <h2>Score board</h2>
-
-  <style>
-    thead {
-      color: green;
-    }
-
-    tbody {
-      color: blue;
-    }
-
-    table,
-    th,
-    td {
-      border: 1px solid black;
-    }
-  </style>
   </head>
 
   <table id='scoretable'>
@@ -133,18 +118,18 @@
   <br>
 
   <div id='buttons'>
-    <button id='roll-0'>0</button>
-    <button id='roll-1'>1</button>
-    <button id='roll-2'>2</button>
-    <button id='roll-3'>3</button>
-    <button id='roll-4'>4</button>
-    <button id='roll-5'>5</button>
-    <button id='roll-6'>6</button>
-    <button id='roll-7'>7</button>
-    <button id='roll-8'>8</button>
-    <button id='roll-9'>9</button>
-    <button id='roll-10'>10</button>
-    <button id='reset'>RESET</button>
+    <button id='roll-0' class="button">0</button>
+    <button id='roll-1' class="button">1</button>
+    <button id='roll-2' class="button">2</button>
+    <button id='roll-3' class="button">3</button>
+    <button id='roll-4' class="button">4</button>
+    <button id='roll-5' class="button">5</button>
+    <button id='roll-6' class="button">6</button>
+    <button id='roll-7' class="button">7</button>
+    <button id='roll-8' class="button">8</button>
+    <button id='roll-9' class="button">9</button>
+    <button id='roll-10' class="button">10</button>
+    <button id='reset' class="button">RESET</button>
   </div>
 
   <script src="src/Game.js"></script>

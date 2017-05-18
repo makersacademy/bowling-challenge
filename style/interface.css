@@ -1,0 +1,63 @@
+title {
+  font-size: large;
+  font-weight: bold;
+  color: #9400D3;
+}
+
+body {
+  background-image: url("https://lh6.googleusercontent.com/8ZxFeviRYgp-BbxC6WLpKfpjeqhxEEPTEiut-592Fs9KxHqoLvD96vNdZy9BcljToWRPXk0XBCtzXgr0VaxFzq0Hb0PdKsf3dwaCfT7ighrzHKPwSrF_NKLWVxOruK7F=s1600");
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-color: #B0C4DE;
+  background-size: 500px 300px;
+}
+
+table {
+    width: 30%;
+}
+
+th {
+    height: 25px;
+    text-align: center;
+}
+
+thead {
+  color: #9400D3;
+}
+
+tbody {
+  color: 	#0000FF;
+  text-align: center;
+  font-size: 20px;
+  font-family: fantasy;
+}
+
+table,
+th,
+td {
+  border: 2px solid black;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+button {
+  background-color: #BA55D3;
+    border: 2px solid black;
+    color: black;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.button:hover {background-color: #9400D3}
+
+.button:active {
+  background-color: #9400D3;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

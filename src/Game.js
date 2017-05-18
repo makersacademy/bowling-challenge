@@ -81,3 +81,32 @@ Game.prototype.strikeOrSpare = function(){
     this._sKsP = "Spare!"
   }
 }
+
+Game.prototype.rollAlternate = function(){
+  if(this._roll === 1 && this._standingPins > 0){
+    this._roll = 2;
+  } else {
+    this._roll = 1;
+    this.frameReset();
+  }
+}
+
+Game.prototype.frameReset = function(){
+  this._rollScore1 = 0;
+  this._rollScore2 = 0;
+  this._currentKnockdown = 0;
+  this._standingPins = 10;
+  this._maxRounds = 10;
+}
+
+Game.prototype.newGame = function(){
+  this._frame = 1;
+  this._roll = 1;
+  this._rollScore1 = 0;
+  this._rollScore2 = 0;
+  this._totalScore = 0;
+  this._currentKnockdown = 0;
+  this._standingPins = 10;
+  this._sKsP = "";
+  this._maxRounds = 10;
+}

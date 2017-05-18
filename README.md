@@ -16,12 +16,12 @@ Installation
 
 Clone repository:
 ```
-$ git clone git@github.com:enonnai/bowling.git
+$ git clone git@github.com:enonnai/bowling-challenge.git
 $ cd bowling
 
 To run the Jasmine tests, please copy the path to SpecRunner.html to your browser.
 
-`file:///home/cristina/Projects/bowling/SpecRunner.html`
+`file:///home/cristina/Projects/bowling-challenge/SpecRunner.html`
 
 Screenshots
 ----------

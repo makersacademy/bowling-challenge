@@ -30,3 +30,20 @@ Game.prototype.pinsKnockdown = function(){
 Game.prototype.remainingPins = function(){
   this._standingPins -= this._currentKnockdown
 }
+
+
+
+
+Game.prototype.frameAndRoll = function(){
+  this.endGameCheck();
+  if(this._frame < this._maxRounds) {
+    this.frameIncrement();
+    this.rollAlternate();
+  }
+}
+
+Game.prototype.endGameCheck = function(){
+  if(this._frame === 10 && this._standingPins === 0){
+    this._maxRounds = 11
+  }
+}

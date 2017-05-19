@@ -25,6 +25,11 @@ describe('Frame', function() {
       frame.Roll(3);
       expect(frame.pinsKnockedDown).toEqual([2,5]);
     });
+    it('only allows a total of 10 pins to be entered over 2 rolls', function() {
+      frame.Roll(9);
+      expect( function() {
+        frame.Roll(5);}).toThrowError('You cannot enter more than a total of 10 over 2 rolls');
+    });
 
   });
 

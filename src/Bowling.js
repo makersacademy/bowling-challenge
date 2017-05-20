@@ -24,10 +24,6 @@ Player.prototype.bowl = function (number) {
   }
 };
 
-Player.prototype.roll3 = function () {
-  this.roll3Score = 5;
-};
-
 Player.prototype.roll1 = function (number) {
   this.roll1Score = number;
   this.printRoll1();

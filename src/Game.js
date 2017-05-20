@@ -1,82 +1,56 @@
 function Game() {
   this.frames = [];
   this.totalScore = 0;
-  this.cachedScore = 0;
-  this.savedBowl = null;
+  this.currentFrame = null;
   this.spare = undefined;
-  this.finalFrame = undefined;
+  this.finalFrame = new FinalFrame();
+  this.spareBonus = 0;
 };
 
 Game.prototype.bowl = function(roll) {
   roll = Number(roll);
-  disableOptions(roll);
-  if (this.frames.length >= 9) {
-    this._finalBowl(roll);
-  } else {
-    this._standardBowl(roll);
-  };
+  this.frames.length >= 9 ? this._finalBowl(roll) : this._standardBowl(roll);
 };
-
-Game.prototype.strikeCalc = function(i) {
-  if (this.frames[i + 1].isStrike()) {
-    return 10 + this.frames[i + 1].score[0] + this.frames[i + 2].score[0];
-  } else {
-    return 10 + this.frames[i + 1].score[0] + this.frames[i + 1].score[1];
-  };
-};
-
 
 // Private
 
-Game.prototype._finalBowl = function(n) {
-  var index = this.frames.length - 1;
-  if (this.finalFrame) {
-    this.frames[index].addBowl(n);
-    if (this.frames[index-1].isStrike()) {
-      finalStrikeScore(index);
-    };
-    this._finalFrameCheck();
-    enableOptions();
-  } else {
-    this.finalFrame = this.frames.push(new FinalFrame(n));
-    if (this.frames[index-1].isSpare()) {
-      finalSpareScore(n);
-    } else if (n === 10) {
-      enableOptions();
-      strikeUpdate();
-    } else if (this.frames[index-2].isStrike() && this.frames[index-1].isStrike()) {
-      strikeUpdate();
-      enableOptions();
-    }
-    this._finalFrameCheck();
-  };
-};
-
 Game.prototype._standardBowl = function(n) {
-  if (this.savedBowl) {
-    this._addFrame(n);
-    enableOptions();
-    this.totalScore += n;
-  } else if (n == 10) {
-    this._addStrike();
-    enableOptions();
+  if (this.currentFrame) {
+    this.frames.push(new Frame([this.currentFrame, n]));
+    this.currentFrame = null;
+  } else if (n === 10) {
+    this.frames.push(new Frame([n]));
   } else {
-    updatePartialBowl(n);
-    this.savedBowl = n;
-    this.totalScore += n;
+    this.currentFrame = n;
+  }
+  this._calculateScore();
+};
+
+Game.prototype._finalBowl = function(n) {
+  this.currentFrame ? this.currentFrame = null : this.currentFrame = n;
+  this.finalFrame.addBowl(n);
+  this._calculateScore();
+};
+
+Game.prototype._calculateScore = function() {
+  if (this.finalFrame.isEnded()) {
+    this.totalScore = this._gameOver();
+  } else {
+    this.totalScore = this._currentScore() + this.currentFrame;
   };
-};
+}
 
-Game.prototype._addFrame = function(n) {
-  this.frames.push(new Frame(this.savedBowl, n));
-  this.savedBowl = null;
-  updateScores();
-};
+Game.prototype._gameOver = function() {
+  this.frames.push(this.finalFrame);
+  return this._currentScore() + this.currentFrame;
+}
 
-Game.prototype._addStrike = function() {
-  this.frames.push(new Frame(10));
-  updateScores();
-  this.totalScore = 0;
+Game.prototype._currentScore = function() {
+  var score = 0;
+  this.frames.forEach(function(frame){
+    score += frame.score.reduce((a, b) => a + b, 0);
+  });
+  return score
 };
 
 Game.prototype._finalFrameCheck = function() {

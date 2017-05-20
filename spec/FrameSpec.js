@@ -6,9 +6,9 @@ describe("Frame", function() {
   var strike;
 
   beforeEach(function() {
-    frame = new Frame(3, 5);
-    spare = new Frame(4, 6);
-    strike = new Frame(10);
+    frame = new Frame([3, 5]);
+    spare = new Frame([4, 6]);
+    strike = new Frame([10]);
   });
 
   it('is defined', function() {

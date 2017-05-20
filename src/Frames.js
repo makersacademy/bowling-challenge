@@ -1,5 +1,3 @@
-'use strict';
-
 function Frames () {
   this.STRIKE = 10;
   this._frames = [];

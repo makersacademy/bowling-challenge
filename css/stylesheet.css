@@ -1,9 +1,9 @@
 body {
   background-image: url("zig-zag.png");
   text-align: center;
-  margin-top: 100px;
   font-size: 72px;
   font-family: 'Bangers', cursive;
+  color: #232323;
 }
 button {
   border-radius: 8px;
@@ -20,19 +20,22 @@ button {
   margin: 10px;
   box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
 }
-
 button{
   cursor: -webkit-grab;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
-
 button:hover{
   padding-right: 24px;
   padding-left: 18px;
 }
-
 button:hover:after {
   opacity: 1;
+}
+h2 {
+  text-shadow: 2px 2px #cccccc;
+}
+#display-frames {
+  font-family: 'Allan', cursive;
 }

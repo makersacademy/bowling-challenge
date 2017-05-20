@@ -1,12 +1,10 @@
-'use strict';
-
 function Bowling (frames) {
   this.frames = new Frames();
   this.FRAME_COUNT_LIMIT = 10;
   this.STRIKE = 10;
   this._isFirstBowlOfFrame = true;
 }
-Bowling.prototype.toggleFirstBowlOfGame = function ( value ) {
+Bowling.prototype.toggleFirstBowlOfGame = function (value) {
   this._isFirstBowlOfFrame = this._isFirstBowlOfFrame ? false : true;
 };
 Bowling.prototype.randomNumberOfPins = function () {
@@ -28,7 +26,7 @@ Bowling.prototype.finalScore = function () {
   if ( this.frameTotal === 0 )
     return 'Gutter game! Better luck next time...';
   else
-    return 'Final score is! ' + (this.frameTotal);
+    return 'Final score is ' + (this.frameTotal) + "!";
 };
 Bowling.prototype.bowl = function (number) {
   if(this.frames._frameCounter == this.FRAME_COUNT_LIMIT) throw Error('Game over!!');

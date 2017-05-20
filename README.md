@@ -1,5 +1,5 @@
 
-## Bowling
+# Bowling
 
 A Javascript programme built in a test-driven environment, using Jasmine for testing. The program has a html/css front end along with a jQuery User Interface.
 
@@ -48,4 +48,4 @@ The program uses [Jasmine](https://jasmine.github.io/)
 ### CSS styling
 CSS buttons sourced from [codepen.io](http://codepen.io/konradwax/pen/woPNqJ)
 
-Fonts sources from from [Google Fonts](https://fonts.google.com/)
+Fonts sourced from [Google Fonts](https://fonts.google.com/)

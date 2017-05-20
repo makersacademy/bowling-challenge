@@ -3,17 +3,29 @@
     <head>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="src/Game.js"></script>
-    <script src='src/interface.js'></script>  <title>Thermostat </title>
+    <script src='src/interface.js'></script>
+    <link rel="stylesheet" type="text/css" href="./public/style.css">
+     <title>Thermostat </title>
     </head>
     <body>
-    <section>
+            <!-- <center> -->
       <h1 id="bowling">Hello</h1>
-      <p>
-         <div class='top'>
+
+
+        <div >
+        <h2 class="top" > Total score : </h2 ><h2  class="top" id='total_score'></h2>
+        <h2 class="top"> Current frame : </h2><h2 class="top" id='current_frame'></h2>
+         <h2 class="top"> Current roll : </h2><h2 class="top"  id='current_roll'></h2>
+        <h2 class="top"> Spare or Stike: </h2><h2 class="top"  id='sKsP'></h2>
+        <h2 class="top"> Test </h2><h2 class="top" id='test'></h2>
+        <h2 class="top"> You have </h2> <h2 class="top" id='error'></h2> <h2>pins more to hit</h2>
+        <h2 class="top"> Roll 1 : </h2><h2 class="top" id='roll_1'></h2>
+        <h2 class="top"> Roll 2 : </h2><h2 class="top" id='roll_2'></h2>
+    </div>
+    <div class ='button'>
         <button id='bowl'>Bowl</button>
         <button id='new_game'>New Game</button>
-        </div>
-      </p>
-     </section>
+    </div>
+   <!-- </center> -->
     </body>
 </html>

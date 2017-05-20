@@ -1,0 +1,26 @@
+body {
+    background-color: lightblue;
+
+}
+
+.top {
+
+  /*display: inline-block;*/
+    margin: 10px;
+
+
+
+}
+.button button{
+    position:relative;
+  transition: .5s ease;
+  background-color: 	#1E90FF; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  width: 100px;
+}

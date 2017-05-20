@@ -15,9 +15,11 @@ function Game() {
 Game.prototype.bowl = function() {
   this.rollScoreMethod();
   this.frameAndRoll();
-};
+  };
 
-// Random generator and counteer of rolls and frames
+
+
+// Random generator and counter for rolls and frames
 
 Game.prototype.rollScoreMethod = function(){
   this._currentKnockdown = this.pinsKnockdown();
@@ -48,12 +50,8 @@ Game.prototype.frameAndRoll = function(){
 Game.prototype.endGameCheck = function(){
   if(this._frame === 10 ){
     throw new Error ("You reached the maximum number of frames!\nGame is finished!");
-}
+  }
 };
-
-
-
-
 
 // Increments the frame, updatea the score check the bonuses
 
@@ -87,13 +85,6 @@ Game.prototype.strikeOrSpare = function(){
   }
 };
 
-// Throwing errors
-
-// Game.prototype.errors = function(){
-//   if(this._frame === 10 && this._standingPins === 0) {
-//     throw new Error ("You reached the maximum number of frames!\nGame is finished!");
-//   }
-// };
 // End of the game, reset frame, reset roll
 
 Game.prototype.rollAlternate = function(){

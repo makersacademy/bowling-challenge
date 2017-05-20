@@ -10,10 +10,10 @@ Frame.prototype.isStrike = function() {
   return this.score[0] === 10;
 };
 
-Frame.prototype.calculate = function() {
-  if (this.score.length === 1) {
-    return this.score[0];
+Frame.prototype.bonus = function(second_frame, third_frame) {
+  if (second_frame && this.isSpare()) {
+    return second_frame.score[0];
   } else {
-    return this.score[0] + this.score[1];
-  };
+    return 0;
+  }
 };

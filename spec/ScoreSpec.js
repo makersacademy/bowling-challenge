@@ -1,23 +1,55 @@
 describe('Score', function() {
 
   var score;
-  var pins;
   var game;
 
-  beforeEach(function() {
+  beforeEach(function(done) {
     game = new Game();
-    pins = new Pins();
-    game.throwFirstBall(pins.pinsDownFirstThrow);
-    game.throwSecondBall(pins.pinsDownSecondThrow());
-    score = new Score(game._frames, game._currentRound);
+    score = new Score();
+    game.throwFirstBall(5);
+    game.throwSecondBall(3);
+    done();
   });
 
-  it('sums up score for first frame', function() {
-    console.log(game)
-    console.log(game._frames)
-    console.log(game._currentRound)
-    console.log(score)
-    console.log(score._currentScore)
+  it('sums up score for the first frame', function(done) {
+    score._calculateScore(game._frames);
     expect(score._currentScore).toBe(game._frames[0][0] + game._frames[0][1]);
+    done();
+  });
+
+  it('sums up score for the second frame', function(done) {
+    game.throwFirstBall(5);
+    game.throwSecondBall(3);
+    score._calculateScore(game._frames);
+    expect(score._currentScore).toBe(16);
+    done();
+  });
+
+  it('sums up score for the third frame', function(done) {
+    game.throwFirstBall(5);
+    game.throwSecondBall(3);
+    game.throwFirstBall(6);
+    game.throwSecondBall(2);
+    score._calculateScore(game._frames);
+    expect(score._currentScore).toBe(24);
+    done();
+  });
+
+  describe('spareScore', function() {
+
+    var score;
+    var game;
+
+    it('counts a bonus when player does a spare', function(done) {
+      game = new Game();
+      score = new Score();
+      game.throwFirstBall(9);
+      game.throwSecondBall(1);
+      game.throwFirstBall(4);
+      game.throwSecondBall(3);
+      score._calculateScore(game._frames);
+      expect(score._currentScore).toBe(21);
+      done();
+    });
   });
 });

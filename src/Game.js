@@ -1,4 +1,4 @@
-Game = function() {
+function Game() {
   this._frames = [];
   this._currentRound = 1;
 };

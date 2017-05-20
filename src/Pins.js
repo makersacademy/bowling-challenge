@@ -1,4 +1,4 @@
-Pins = function() {
+function Pins() {
   this.pinsDownFirstThrow = Math.floor(Math.random() * 11)
 };
 

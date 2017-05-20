@@ -1,8 +1,7 @@
 $(document).ready(function() {
 
   var addTableOutline = function() {
-    $('body').append('<div class="bowling-scorecard"></div>');
-    $('.bowling-scorecard').append('<table><thead></thead><tbody></tbody></table');
+    $('.bowling-scorecard').prepend('<table><thead></thead><tbody></tbody></table');
     $('thead').append('<tr id="column-headings"></tr>');
     $('tbody').append('<tr id="score-boxes"></tr>');
     $('tbody').append('<tr id="frame-scores"></tr>');
@@ -27,7 +26,7 @@ $(document).ready(function() {
     // Add boxes for frames 1-10
     for (var k=1; k<=21; k++) {
       $('#score-boxes').append('<td colspan="1"></td>');
-      $('#score-boxes td:nth-last-child(1)').attr('id', k);
+      $('#score-boxes td:nth-last-child(1)').attr('id', 'box-' + k);
     }
     // Add space for final score
     $('#score-boxes').append('<td colspan="4"></td>');
@@ -54,5 +53,6 @@ $(document).ready(function() {
   $('#frame-scores td:nth-child(1)').attr('id', 'player-name');
   $('#column-headings th:nth-last-child(1)').attr('id', 'player-score');
 
+  $('#new-game').hide();
 });
 

@@ -2,7 +2,7 @@ describe('Frame', function() {
   var frame
 
   beforeEach(function() {
-    frame = new Frame;
+    frame = new Frame();
   })
 
   it('begins a frame with an bonus of 0', function() {

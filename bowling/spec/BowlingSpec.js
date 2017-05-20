@@ -1,5 +1,5 @@
 describe('Bowling', function() {
-  var bowling = new Bowling
+  var bowling = new Bowling()
 
   it('begins a game with an empty score card', function() {
     expect(bowling.score).toEqual(0);
@@ -9,9 +9,9 @@ describe('Bowling', function() {
     expect(bowling.frameCounter).toEqual(0);
   })
 
-  // describe('#gameController', function() {
-  //   it('creates a new frame if the last frame is complete', function() {
-  //
-  //   })
-  // })
+  describe('#startGame', function() {
+    it('creates a new frame at the start of a new game', function() {
+      bowling
+    })
+  })
 })

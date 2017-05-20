@@ -7,5 +7,9 @@ class Bowling < Sinatra::Base
     erb :bowling_score
   end
 
+  get '/play' do
+    erb :play
+  end
+
   run! if app_file == $PROGRAM_NAME
 end

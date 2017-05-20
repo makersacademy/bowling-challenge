@@ -5,9 +5,12 @@ $(document).ready(function() {
   $('#bowl').click(function() {
     game.bowl();
     gameFunctionality();
-
-
   });
+
+  $('#play').click(function(){
+    $('embed').remove();
+    $('body').append('<embed src="/path/to/your/sound.wav" autostart="true" hidden="true" loop="false">');
+});
 
   $('#new_game').click(function() {
     game.newGame();

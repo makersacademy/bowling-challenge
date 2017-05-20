@@ -1,16 +1,23 @@
 body {
     background-color: lightblue;
-
+     text-align: center;
 }
 
 .top {
-
-  /*display: inline-block;*/
-    margin: 10px;
+display: inline-block;
+margin: 10px;
 
 
 
 }
+
+.top1 {
+  display: inline-block;
+  margin: 10px;
+
+}
+
+
 .button button{
     position:relative;
   transition: .5s ease;

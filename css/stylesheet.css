@@ -9,7 +9,7 @@ button {
   border-radius: 8px;
   background-color: rgba(255, 16, 16, 0.66);
   border: none;
-  font-family: 'Allan', cursive;
+  font-family: 'Crete Round', sans-serif;
   color: #ffeaea;
   text-align: center;
   font-size: 32px;
@@ -37,5 +37,8 @@ h2 {
   text-shadow: 2px 2px #cccccc;
 }
 #display-frames {
+  font-family: 'Allan', cursive;
+}
+#print-score {
   font-family: 'Allan', cursive;
 }

@@ -8,13 +8,13 @@ $( document ).ready(function() {
   });
 
   $( '#score' ).click(function() {
-    bowling.finalScore();
     displayScore();
   });
 
   $( '#reset-game' ).click(function() {
     bowling.resetPins();
     $( '#frames' ).text( "" );
+    $( '#print-score' ).text( "" );
   });
 
   function displayFrames(){
@@ -22,7 +22,7 @@ $( document ).ready(function() {
   }
 
   function displayScore(){
-    $( '#frames' ).text( bowling.finalScore());
+    $( '#print-score' ).text( bowling.finalScore());
   }
 
 });

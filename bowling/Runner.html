@@ -33,14 +33,24 @@
   </form>
 </div>
 
-<div class='totalScore'>
+<div class='Score'>
   <h2>
-    <span id='totalScore'>0</span>
+    Total Score<span id='totalScore'>0</span>
+  </h2>
+
+  <h2>
+    Possible Score<span id='possibleScore'>0</span>
   </h2>
 </div>
 
 <script>
   var bowling =  new Bowling
+
+  function Update() {
+    $('#possibleScore').html(bowling.possibleScore);
+  }
+
+  Update();
 
   $('#start').click(function() {
     bowling.startGame();
@@ -49,6 +59,7 @@
   $(function() {
       $('input[type="button"]').click(function() {
         bowling.gameController(parseInt(this.value));
+        Update();
       });
   });
 

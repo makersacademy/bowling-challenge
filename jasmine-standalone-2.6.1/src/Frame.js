@@ -13,3 +13,20 @@ Frame.prototype.secondBowl = function(pins){
     this.score = this.score
   };
 };
+
+function Game(){
+  this.total = []
+}
+
+Game.prototype.addFrame = function(){
+var frame = this.score
+this.total = this.total.push(frame)
+}
+
+Game.prototype.addScore = function(){
+this.total.reduce(add, 0);
+}
+
+function add(a, b) {
+    return a + b;
+}

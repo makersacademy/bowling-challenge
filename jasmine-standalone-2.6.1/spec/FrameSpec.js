@@ -1,11 +1,13 @@
-describe("Frame", function() {
+describe("Bowling", function() {
   var frame;
+  var game
 
   beforeEach(function() {
+    game = new Game();
     frame = new Frame();
   });
 
-describe('score', function(){
+describe('frame score', function(){
   it("it collects the score for one frame with no strike or spare", function(){
     frame.firstBowl(5);
     frame.secondBowl(3);
@@ -17,4 +19,8 @@ describe('score', function(){
     expect(frame.score).toEqual(10)
   });
   });
+describe('game score', function(){
+  it("adds the frame score to the total")
+   game.
+}
 });

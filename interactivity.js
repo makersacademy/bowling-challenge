@@ -4,6 +4,7 @@ $( document ).ready(function() {
 
   $( '#bowl' ).click(function() {
     bowling.bowl();
+    printStrike();
     displayFrames();
   });
 
@@ -23,6 +24,13 @@ $( document ).ready(function() {
 
   function displayScore(){
     $( '#print-score' ).text( bowling.finalScore());
+  }
+
+  function printStrike(){
+    if(bowling.frames._isStrike === true)
+      $( '#print-score' ).text( 'Strike! X');
+    else
+    $( '#print-score' ).text( "" );
   }
 
 });

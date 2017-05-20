@@ -44,9 +44,11 @@
   });
 
   $(function() {
-      $('input[type="button"]').click(function() { alert('You clicked button with ID:' + this.id); });
+      $('input[type="button"]').click(function() {
+        console.log(parseInt(this.value))
+      });
   });
-  
+
 </script>
 
 

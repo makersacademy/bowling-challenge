@@ -36,9 +36,8 @@ describe('Frame', function() {
       frame.takeAGo(4);
       expect(frame.rollArray[1]).toEqual(4);
     })
-
-    it('returns ')
   })
+
 
   describe('#maxScore', function() {
     it('returns 10 minus rollArray[0]', function() {

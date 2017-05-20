@@ -13,7 +13,7 @@ describe("Feature Tests", function() {
     expect(game.totalScore).toEqual(9);
   });
 
-  it('calculates basic no-bonus game', function() {
+  it('calculates basic no-bonus full game', function() {
     var i = 0;
     for (; i < 9; i++) {
       game.bowl(4);
@@ -42,7 +42,7 @@ describe("Feature Tests", function() {
     expect(game.totalScore).toEqual(37);
   });
 
-  it('calculates basic game with spares', function() {
+  it('calculates basic full game with spares', function() {
     var i = 0;
     for (; i < 10; i++) {
       game.bowl(4);
@@ -50,5 +50,13 @@ describe("Feature Tests", function() {
     }
     game.bowl(4);
     expect(game.totalScore).toEqual(140);
+  });
+
+  it('calculates basic strike scores', function() {
+    game.bowl(10);
+    expect(game.totalScore).toEqual(10);
+    game.bowl(4);
+    game.bowl(5);
+    expect(game.totalScore).toEqual(28)
   });
 });

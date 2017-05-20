@@ -47,8 +47,7 @@ Game.prototype._currentScore = function() {
   var score = 0;
   for (i = 0; i < this.frames.length; i++) {
     var frame = this.frames[i]
-    score += frame.score.reduce((a, b) => a + b, 0) + frame.bonus(this.frames[i+1], this.frames[i+2]);
-    console.log(frame.bonus())
+    score += frame.score.reduce((a, b) => a + b, 0) + frame.bonus(this.frames[i+1], this.frames[i+2], this.currentFrame);
   };
   return score
 };

@@ -33,8 +33,10 @@ Bowling.prototype.bowl = function (number) {
 
   this.toggleFirstBowlOfGame();
 
-  if (pins === this.STRIKE) this.frames.strike();
-  if (pins !== this.STRIKE) {
+  if (pins === this.STRIKE) {
+    this.frames.strike();
+    this._isFirstBowlOfFrame = true;
+  } else if (pins !== this.STRIKE) {
     this.applyPinsToFrame(pins);
     this.frames.spareChecker(pins);
   }

@@ -13,10 +13,6 @@ $( document ).ready(function() {
     runningTotal();
   });
 
-  $( '#score' ).click(function() {
-    displayFinalScore();
-  });
-
   $( '#reset-game' ).click(function() {
     bowling.resetPins();
     $( '#frames' ).text( "" );

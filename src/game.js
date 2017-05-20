@@ -5,4 +5,17 @@ function Game(player_name) {
     this.playerName = player_name;
   }
 
+  this.currentFrame = 1;
+  this.frames = {};
+
 }
+
+Game.prototype.newFrame = function() {
+  if (this.currentFrame < 10) {
+    this.frames['frame ' + this.currentFrame] = "blah";
+    this.currentFrame ++;
+  }
+
+};
+
+module.exports = Game;

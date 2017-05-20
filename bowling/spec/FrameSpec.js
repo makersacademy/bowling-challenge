@@ -38,16 +38,6 @@ describe('Frame', function() {
     })
   })
 
-
-  describe('#maxScore', function() {
-    it('returns 10 minus rollArray[0]', function() {
-      frame.rollArray[0] = 5;
-      expect(frame.maxScore()).toEqual(5);
-      frame.rollArray[0] = 2;
-      expect(frame.maxScore()).toEqual(8);
-    })
-  })
-
   describe('#finishedFrame', function() {
     it('returns true if the frame is finished', function() {
       frame.rollArray = [2, 3];

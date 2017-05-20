@@ -1,7 +1,9 @@
-function Bowling(frame = new Frame()) {
+function Bowling(frame = new Frame(), authRoll = new AuthenticateRoll()) {
   this.score = 0;
   this.frameCounter = 0;
   this.frame = frame;
+  this.authRoll = authRoll;
+  this.possibleScore = 10;
 }
 
 Bowling.prototype.startGame = function() {
@@ -10,7 +12,14 @@ Bowling.prototype.startGame = function() {
 
 Bowling.prototype.gameController = function(score) {
   if ( this.frame.finishedFrame() == true ) { var frame = new Frame() }
-  console.log(score);
+  this.frame.takeAGo(score);
+
+  if ( this.frame.finishedFrame() == false ) {
+    if ( this.authRoll.maxScore(score) !=  true ) {
+      this.possibleScore = this.authRoll.possibleScore(score);
+      console.log(this.possibleScore)    
+    }
+  }
 }
 
 

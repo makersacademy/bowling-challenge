@@ -128,8 +128,6 @@ $('document').ready(function() {
         }
       }
     }
-    console.log(game.frame10.totalScore());
-    console.log(game.frame10.isActive());
 
   };
 });

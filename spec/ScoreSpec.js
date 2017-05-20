@@ -40,7 +40,7 @@ describe('Score', function() {
     var score;
     var game;
 
-    it('counts a bonus when player does a spare', function(done) {
+    it('counts spare bonus', function(done) {
       game = new Game();
       score = new Score();
       game.throwFirstBall(9);
@@ -51,5 +51,65 @@ describe('Score', function() {
       expect(score._currentScore).toBe(21);
       done();
     });
+
+    it('counts spare bonus when there is a double spare', function(done) {
+      game = new Game();
+      score = new Score();
+      game.throwFirstBall(9);
+      game.throwSecondBall(1);
+      game.throwFirstBall(9);
+      game.throwSecondBall(1);
+      game.throwFirstBall(4);
+      game.throwSecondBall(3);
+      score._calculateScore(game._frames);
+      expect(score._currentScore).toBe(40);
+      done();
+    });
+  });
+
+  describe('strikeScore', function() {
+
+    var score;
+    var game;
+
+    it('counts strike bonus', function(done) {
+      game = new Game();
+      score = new Score();
+      game.throwFirstBall(10);
+      game.throwSecondBall(0);
+      game.throwFirstBall(4);
+      game.throwSecondBall(3);
+      score._calculateScore(game._frames);
+      expect(score._currentScore).toBe(24);
+      done();
+    });
+
+    it('counts strike followed by strike bonus', function(done) {
+      game = new Game();
+      score = new Score();
+      game.throwFirstBall(10);
+      game.throwSecondBall(0);
+      game.throwFirstBall(10);
+      game.throwSecondBall(0);
+      game.throwFirstBall(4);
+      game.throwSecondBall(3);
+      score._calculateScore(game._frames);
+      expect(score._currentScore).toBe(44);
+      done();
+    });
+  });
+
+  it('counts strike, spare, normal', function(done) {
+    game = new Game();
+    score = new Score();
+    game.throwFirstBall(10);
+    game.throwSecondBall(0);
+    game.throwFirstBall(9);
+    game.throwSecondBall(1);
+    game.throwFirstBall(4);
+    game.throwSecondBall(3);
+    score._calculateScore(game._frames);
+    expect(score._currentScore).toBe(41);
+    done();
   });
 });

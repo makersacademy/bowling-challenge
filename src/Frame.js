@@ -17,8 +17,9 @@ Frame.prototype.Roll = function(pins) {
   } else if (this.pinsKnockedDown.length === 1){
     this.pinsKnockedDown.push(this.check2ndRoll(pins));
   } else if (this.pinsKnockedDown.length === 2 && this.frameNo === this.FINAL_FRAME) {
-    this.pinsKnockedDown.push(this.checkRoll(pins));
+    this.pinsKnockedDown.push(this.check3rdRoll(pins));
   }
+  console.log(this.pinsKnockedDown);
 };
 
 Frame.prototype.checkRoll = function(num) {
@@ -39,3 +40,14 @@ Frame.prototype.check2ndRoll = function(num) {
     return num;
   }
 };
+
+Frame.prototype.check3rdRoll = function(num) {
+  sum = this.pinsKnockedDown[0] + this.pinsKnockedDown[1];
+  if (sum === this.MAX_PINS) {
+    return this.checkRoll(num);
+  } else {
+    throw new Error("Sorry you don't get a 3rd bowl");
+  }
+};
+
+module.exports = Frame;

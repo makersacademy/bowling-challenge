@@ -58,6 +58,15 @@ describe('Frame', function() {
         frame.Roll(5);
         expect(frame.pinsKnockedDown).toEqual([3, 7, 5]);
       });
+
+      it("If a spare or a strike isn't bowled it will not store a third bowl", function() {
+        frame.Roll(4);
+        frame.Roll(3);
+        expect(function() {
+          frame.Roll(5);
+        }).toThrowError("Sorry you don't get a 3rd bowl");
+        expect(frame.pinsKnockedDown).toEqual([4, 3]);
+      });
     });
   });
 

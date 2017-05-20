@@ -1,6 +1,6 @@
 function Score() {
   this._currentScore = 0;
-};
+}
 
 Score.prototype.normalScore = function(frame, i) {
   return frame[i][0] + frame[i][1];

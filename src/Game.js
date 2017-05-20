@@ -1,7 +1,7 @@
 function Game() {
   this._frames = [];
   this._currentRound = 1;
-};
+}
 
 Game.prototype.throwFirstBall = function(pins) {
   this._frames.push([pins])

@@ -9,5 +9,8 @@ describe('Game', function(){
     it('starts on 0 points', function(){
       expect(game.viewScore()).toEqual(0);
     });
+    it('starts on roll 0', function(){
+      expect(game.viewRoll()).toEqual(0);
+    });
   });
   });

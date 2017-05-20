@@ -7,11 +7,11 @@ Score.prototype.normalScore = function(frame, i) {
 };
 
 Score.prototype.spareScore = function(frame, i) {
-  return frame[i][0] + frame[i][1] + frame[i + 1][0];
+  return this.normalScore(frame, i) + frame[i + 1][0];
 };
 
 Score.prototype.strikeScore = function(frame, i) {
-  return frame[i][0] + frame[i][1] + frame[i + 1][0] + frame[i + 1][1];
+  return this.spareScore(frame, i) + frame[i + 1][1];
 };
 
 Score.prototype._calculateScore = function(frame) {

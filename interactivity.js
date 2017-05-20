@@ -15,9 +15,9 @@ $( document ).ready(function() {
 
   $( '#reset-game' ).click(function() {
     bowling.resetPins();
-    $( '#frames' ).text( "" );
-    $( '#print-final-score' ).text( "" );
-    $( '#print-running-total' ).text( "" );
+    $( '#frames' ).text( '' );
+    $( '#print-final-score' ).text( '' );
+    $( '#print-running-total' ).text( '' );
   });
 
   function displayFrames(){
@@ -38,7 +38,7 @@ $( document ).ready(function() {
     else if(bowling.frames._isSpare === true)
       $( '#print-final-score' ).text( 'Spare! /' );
     else
-      $( '#print-final-score' ).text( '' );    
+      $( '#print-final-score' ).text( '' );
   }
 
   function runningTotal(){

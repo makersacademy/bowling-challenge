@@ -22,11 +22,7 @@ Bowling.prototype.finalScore = function () {
   { this.frameTotal += this.frames._frames[i]; }
 
   this.frameTotal += this.frames._bonusPoints;
-
-  if ( this.frameTotal === 0 )
-    return 'Gutter game! Better luck next time...';
-  else
-    return 'Final score is ' + (this.frameTotal) + "!";
+  return this.frameTotal;
 };
 Bowling.prototype.bowl = function (number) {
   if(this.frames._frameCounter == this.FRAME_COUNT_LIMIT) throw Error('Game over!!');

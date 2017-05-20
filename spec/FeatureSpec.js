@@ -18,18 +18,18 @@ describe('Features', function() {
     bowling.bowl(10);
     bowling.bowl(5);
     bowling.bowl(1);
-    expect(bowling.finalScore()).toEqual('Final score is! 59');
+    expect(bowling.finalScore()).toEqual(59);
   });
 
   it('returns "Gutter game!" if score is 0', function() {
-    expect(bowling.finalScore()).toEqual('Gutter game! Better luck next time...');
+    expect(bowling.finalScore()).toEqual(0);
   });
 
   it('resets pins and score to start a new game', function() {
     bowling.bowl(10);
     bowling.resetPins();
     expect(bowling.frames._frames).toEqual([]);
-    expect(bowling.finalScore()).toEqual('Gutter game! Better luck next time...');
+    expect(bowling.finalScore()).toEqual(0);
   });
 
   describe('Player DOESN\'T roll a strike or spare', function() {

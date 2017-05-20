@@ -6,6 +6,7 @@ $( document ).ready(function() {
     bowling.bowl();
     printStrike();
     displayFrames();
+    runningTotal();
   });
 
   $( '#score' ).click(function() {
@@ -16,6 +17,7 @@ $( document ).ready(function() {
     bowling.resetPins();
     $( '#frames' ).text( "" );
     $( '#print-final-score' ).text( "" );
+    $( '#print-running-total' ).text( "" );
   });
 
   function displayFrames(){
@@ -23,7 +25,11 @@ $( document ).ready(function() {
   }
 
   function displayFinalScore(){
-    $( '#print-final-score' ).text( bowling.finalScore());
+    if(bowling.finalScore() === 0)
+      $( '#print-final-score' ).text( 'Gutter game! Better luck next time...');
+    else
+    $( '#print-final-score' ).text('Final score is ' + bowling.finalScore() + '!' );
+
   }
 
   function printStrike(){
@@ -31,6 +37,10 @@ $( document ).ready(function() {
       $( '#print-final-score' ).text( 'Strike! X');
     else
     $( '#print-final-score' ).text( "" );
+  }
+
+  function runningTotal(){
+    $( '#print-running-total' ).text( bowling.finalScore());
   }
 
 });

@@ -22,6 +22,16 @@ describe('AuthenticateRoll', function() {
     })
   })
 
+  describe('#roll2Check', function() {
+    it('returns true if the roll is less than the possibleScore', function() {
+      expect(authRoll.roll2Check(4, 5)).toEqual(true);
+    })
+
+    it('returns false if the roll is more than the possibleScore', function() {
+      expect(authRoll.roll2Check(6, 5)).toEqual(false);
+    })
+  })
+
   describe('#strike', function() {
     it('returns true if the score is 10', function() {
       expect(authRoll.maxScore(10)).toEqual(true);

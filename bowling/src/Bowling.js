@@ -11,17 +11,20 @@ Bowling.prototype.startGame = function() {
   this.frame = new Frame();
 }
 
-Bowling.prototype.gameController = function(score) {
-  if ( this.frame.finishedFrame() == true ) { var frame = new Frame() }
+Bowling.prototype.gameController = function(score) { gameController:{
+  if ( this.frame.finishedFrame() == true ) { this.frame = new Frame() }
+  console.log(this.frame.finishedFrame());
   this.frame.takeAGo(score);
 
   if ( this.frame.finishedFrame() == false
     && this.authRoll.maxScore(score) ==  false ) {
       this.possibleScore = this.authRoll.possibleScore(score);
-    }
+      break gameController;
+  }
 
+  console.log(this.frame.rollArray);
   //set bonus
-}
+}}
 
 Bowling.prototype.setBonus = function(frame) {
   if ( frame[0] == 10) { return 2 }

@@ -10,5 +10,10 @@ $('document').ready(function() {
     }
   });
     
-  
+  var Frame = FrameFile.Frame;
+  var Game = OnePlayerGameFile.Game;
+  var game = new Game();
+  $(document).on("click", ".score-buttons button", function() {
+
+  });
 });

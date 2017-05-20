@@ -7,6 +7,7 @@ $(document).ready(function () {
 });
 
 function displayScore() {
+  $('#frame_score').text(player.frameScore);
   $('#total_score').text(player.score);
-  $('#frames').text(player.frames);
+  $('#frames_left').text(player.frames);
 }

@@ -3,6 +3,10 @@ $( document ).ready(function() {
   var bowling = new Bowling(frames);
 
   $( '#bowl' ).click(function() {
+    if(bowling.frames._frameCounter == bowling.FRAME_COUNT_LIMIT)
+      $( '#print-running-total' ).text( 'Game over! Final score is ' + bowling.finalScore() );
+      displayFrames();
+
     bowling.bowl();
     printStrike();
     displayFrames();

@@ -26,6 +26,7 @@ Bowling.prototype.finalScore = function () {
 };
 Bowling.prototype.bowl = function (number) {
   if(this.frames._frameCounter == this.FRAME_COUNT_LIMIT) throw Error('Game over!!');
+  
   this.frames.setIsStrike(false);
   var pins = number || this.randomNumberOfPins();
 

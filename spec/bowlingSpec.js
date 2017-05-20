@@ -40,6 +40,55 @@ describe('Bowling', function () {
       bowlingGame.roll(0)
       expect(bowlingGame.score()).toEqual(25)
     })
+    it('spare score correctly', function () {
+      expect(bowlingGame.score()).toEqual(0)
+      bowlingGame.roll(5)
+      bowlingGame.roll(5)
+      bowlingGame.roll(5)
+      bowlingGame.roll(5)
+      bowlingGame.roll(5)
+      bowlingGame.roll(0)
+      bowlingGame.roll(0)
+      bowlingGame.roll(0)
+      expect(bowlingGame.score()).toEqual(35)
+    })
+    it('spare score correctly', function () {
+      expect(bowlingGame.score()).toEqual(0)
+      for (var i=0; i<20; i++) {
+        bowlingGame.roll(4)
+      }
+      expect(bowlingGame.score()).toEqual(80)
+    })
+    it('spare score correctly', function () {
+      expect(bowlingGame.score()).toEqual(0)
+      for (var i=0; i<20; i++) {
+        bowlingGame.roll(5)
+      }
+      expect(bowlingGame.score()).toEqual(145)
+    })
+    it('all gutter score correctly', function () {
+      expect(bowlingGame.score()).toEqual(0)
+      for (var i=0; i<12; i++) {
+        bowlingGame.roll(0)
+      }
+      expect(bowlingGame.score()).toEqual(0)
+    })
+    it('spare score correctly', function () {
+      expect(bowlingGame.score()).toEqual(0)
+      for (var i=0; i<12; i++) {
+        bowlingGame.roll(10)
+      }
+      expect(bowlingGame.score()).toEqual(300)
+    })
+    it('spare score correctly', function () {
+      expect(bowlingGame.score()).toEqual(0)
+      for (var i=0; i<11; i++) {
+        bowlingGame.roll(10)
+      }
+      bowlingGame.roll(0)
+      expect(bowlingGame.score()).toEqual(290)
+    })
+
   })
 
 })

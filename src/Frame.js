@@ -19,7 +19,6 @@ Frame.prototype.Roll = function(pins) {
   } else if (this.pinsKnockedDown.length === 2 && this.frameNo === this.FINAL_FRAME) {
     this.pinsKnockedDown.push(this.checkRoll(pins));
   }
-  console.log(this.pinsKnockedDown);
 };
 
 Frame.prototype.checkRoll = function(num) {

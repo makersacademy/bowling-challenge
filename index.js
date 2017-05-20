@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
   $('#roll_frame').click(function (clickEvent) {
-    player.bowl(Math.floor((Math.random() * 11) + 1));
+    player.bowl(Math.floor((Math.random() * 10) + 1));
     displayScore();
   });
 });

@@ -11,6 +11,14 @@ margin: 10px;
 
 }
 
+#total_score {
+    background-color: white;
+}
+
+#sKsP {
+    background-color: red;
+}
+
 .top1 {
   display: inline-block;
   margin: 10px;
@@ -19,15 +27,20 @@ margin: 10px;
 
 
 .button button{
-    position:relative;
-  transition: .5s ease;
-  background-color: 	#1E90FF; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
+  padding: 15px 25px;
+  font-size: 24px;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  width: 100px;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }

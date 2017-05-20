@@ -51,8 +51,9 @@ $(document).ready(function() {
   addFrameScoresRow();
 
   $('#frame-scores td:nth-child(1)').attr('id', 'player-name-box');
-  $('#column-headings th:nth-last-child(1)').attr('id', 'player-score-box');
+  $('#frame-scores td:nth-last-child(1)').attr('id', 'player-score-box');
   $('#frame-scores').attr('height', '49px');
+  $('#score-boxes').attr('height', '49px');
 
   $('#new-game').hide();
   $('.score-buttons').hide();

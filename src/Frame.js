@@ -93,6 +93,8 @@ var FrameFile = (function() {
   Frame.prototype.box2 = function() {
     if (this._roll1 + this._roll2 > 10) {
       return null;
+    } else if (this._roll2 === null) {
+      return null;
     } else if (this._roll1 + this._roll2 === 10) {
       return '/';
     } else { 
@@ -103,9 +105,10 @@ var FrameFile = (function() {
   Frame.prototype.frame10Box2 = function() {
     if (this._isTenth === false) {
       throw "Error: This isn't a tenth frame";
-    }
-    if (this._roll2 === 10) {
+    } else if (this._roll2 === 10) {
       return 'X';
+    } else if (this._roll2 === null) {
+      return null;
     } else if (this._roll1 + this._roll2 === 10) {
       return '/';
     } else {
@@ -118,6 +121,8 @@ var FrameFile = (function() {
     }
     if (this._roll3 === 10) {
       return 'X';
+    } else if (this._roll3 === null) {
+      return null;
     } else if (this._roll2 + this._roll3 === 10) {
       return '/';
     } else {

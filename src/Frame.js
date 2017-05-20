@@ -8,6 +8,7 @@ function Frame(FrameNo) {
   this.pinsKnockedDown = [];
   this.MIN_PINS = 0;
   this.MAX_PINS = 10;
+  this.FINAL_FRAME = 10;
 }
 
 Frame.prototype.Roll = function(pins) {
@@ -15,12 +16,18 @@ Frame.prototype.Roll = function(pins) {
     this.pinsKnockedDown.push(this.checkRoll(pins));
   } else if (this.pinsKnockedDown.length === 1){
     this.pinsKnockedDown.push(this.check2ndRoll(pins));
+  } else if (this.pinsKnockedDown.length === 2 && this.frameNo === this.FINAL_FRAME) {
+    this.pinsKnockedDown.push(this.checkRoll(pins));
   }
+  console.log(this.pinsKnockedDown);
 };
 
 Frame.prototype.checkRoll = function(num) {
   if (num < this.MIN_PINS || num > this.MAX_PINS) {
     throw new RangeError('The number entered must be between ' + this.MIN_PINS + ' - ' + this.MAX_PINS);
+  } else if (num === this.MAX_PINS && this.pinsKnockedDown.length < 1){
+    this.pinsKnockedDown.push(num);
+    return 0;
   } else {
     return num;
   }

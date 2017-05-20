@@ -39,6 +39,9 @@ h2 {
 #display-frames {
   font-family: 'Allan', cursive;
 }
-#print-score {
+#print-final-score {
+  font-family: 'Allan', cursive;
+}
+#print-running-total {
   font-family: 'Allan', cursive;
 }

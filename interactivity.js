@@ -9,28 +9,28 @@ $( document ).ready(function() {
   });
 
   $( '#score' ).click(function() {
-    displayScore();
+    displayFinalScore();
   });
 
   $( '#reset-game' ).click(function() {
     bowling.resetPins();
     $( '#frames' ).text( "" );
-    $( '#print-score' ).text( "" );
+    $( '#print-final-score' ).text( "" );
   });
 
   function displayFrames(){
     $( '#frames' ).text( bowling.frames._frames );
   }
 
-  function displayScore(){
-    $( '#print-score' ).text( bowling.finalScore());
+  function displayFinalScore(){
+    $( '#print-final-score' ).text( bowling.finalScore());
   }
 
   function printStrike(){
     if(bowling.frames._isStrike === true)
-      $( '#print-score' ).text( 'Strike! X');
+      $( '#print-final-score' ).text( 'Strike! X');
     else
-    $( '#print-score' ).text( "" );
+    $( '#print-final-score' ).text( "" );
   }
 
 });

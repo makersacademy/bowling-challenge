@@ -51,4 +51,5 @@ Bowling.prototype.applyPinsToFrame = function (pins) {
 };
 Bowling.prototype.resetPins = function () {
   this.frames.resetPins();
+  this._isFirstBowlOfFrame = true;
 };

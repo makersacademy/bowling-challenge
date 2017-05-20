@@ -25,5 +25,19 @@
       game.throwBall(1);
       expect(game.getCurrentFrame().getFirstScore()).toBe(1);
     });
+    it('scores a frame when two balls are thrown', function() {
+      game.newFrame();
+      game.throwBall(1);
+      game.throwBall(2);
+      expect(game.getCurrentFrame().getSecondScore()).toBe(2);
+    });
+    it('starts a new frame when the current frame is over', function() {
+      game.newFrame();
+      game.throwBall(1);
+      game.throwBall(2);
+      game.throwBall(3);
+      expect(game.getFrames().length).toBe(2);
+      expect(game.getCurrentFrame().getFirstScore()).toBe(3);
+    });
   });
 }());

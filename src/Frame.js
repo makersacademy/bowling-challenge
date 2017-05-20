@@ -109,6 +109,8 @@ var FrameFile = (function() {
       return 'X';
     } else if (this._roll2 === null) {
       return null;
+    } else if (this._roll2 === 0) {
+      return 0;
     } else if (this._roll1 + this._roll2 === 10) {
       return '/';
     } else {

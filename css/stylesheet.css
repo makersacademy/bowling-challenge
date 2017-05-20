@@ -15,8 +15,6 @@ button {
   font-size: 24px;
   padding: 16px;
   width: 160px;
-  transition: all 0.5s;
-  cursor: pointer;
   margin: 10px;
   box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
 }

@@ -11,7 +11,6 @@ function Bowling_score() {
   this.frame_rolls = 2;
   this.pins_available = this.DEFAULT_PINS;
 };
-console.log('checking it works')
 Bowling_score.prototype.process_roll = function(roll_result) {
   if (this.finish === true) { throw 'Game is finished' };
   this.frame_roll_results.push(roll_result);

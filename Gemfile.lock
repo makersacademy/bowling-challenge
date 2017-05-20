@@ -23,6 +23,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
+    mustermann (1.0.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     parser (2.4.0.0)
@@ -34,6 +35,8 @@ GEM
       slop (~> 3.4)
     public_suffix (2.0.5)
     rack (2.0.2)
+    rack-protection (2.0.0)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rainbow (2.2.2)
@@ -65,7 +68,13 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
     ruby_dep (1.5.0)
+    sinatra (2.0.0)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.0)
+      tilt (~> 2.0)
     slop (3.6.0)
+    tilt (2.0.7)
     unicode-display_width (1.2.1)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -79,6 +88,7 @@ DEPENDENCIES
   rerun
   rspec
   rubocop
+  sinatra
 
 BUNDLED WITH
-   1.14.6
+   1.15.0

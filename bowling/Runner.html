@@ -38,14 +38,15 @@
 </div>
 
 <script>
+  var bowling = new Bowling;
 
   $('#start').click(function() {
-    var bowling = new Bowling;
+
   });
 
   $(function() {
       $('input[type="button"]').click(function() {
-        console.log(parseInt(this.value))
+        bowling.gameController(parseInt(this.value));
       });
   });
 

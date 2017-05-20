@@ -47,4 +47,16 @@ describe('Frame', function() {
       expect(frame.maxScore()).toEqual(8);
     })
   })
+
+  describe('#finishedFrame', function() {
+    it('returns true if the frame is finished', function() {
+      frame.rollArray = [2, 3];
+      expect(frame.finishedFrame()).toEqual(true);
+    })
+
+    it('returns false if the frame is not finished', function() {
+      frame.rollArray = [2];
+      expect(frame.finishedFrame()).toEqual(false);
+    })
+  })
 })

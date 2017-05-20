@@ -15,3 +15,8 @@ Frame.prototype.takeAGo =  function(score = 0, maxScore = 10) {
 Frame.prototype.maxScore = function() {
   return 10 - this.rollArray[0];
 }
+
+Frame.prototype.finishedFrame = function() {
+  if ( this.rollArray[1] != null ) { return true };
+  return false;
+}

@@ -1,6 +1,5 @@
-function AuthenticateRoll(score, roll) {
+function AuthenticateRoll(score) {
   this.score = score;
-  this.roll = roll;
 }
 
 AuthenticateRoll.prototype.checkScore = function() {

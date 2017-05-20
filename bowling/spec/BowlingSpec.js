@@ -10,7 +10,7 @@ describe('Bowling', function() {
   })
 
   // describe('#gameController', function() {
-  //   it('creates a new Frame', function() {
+  //   it('creates a new frame if the last frame is complete', function() {
   //
   //   })
   // })

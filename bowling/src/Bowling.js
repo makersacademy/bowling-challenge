@@ -2,10 +2,13 @@ function Bowling() {
   this.score = 0;
   this.frameCounter = 0;
   this.test;
+  var frame = new Frame;
 }
 
-Bowling.prototype.gameController = function() {
-  
+Bowling.prototype.gameController = function(score) {
+  //if ( frame.rollArray[1] != null ) { frame = new Frame }
+
+
 }
 
 

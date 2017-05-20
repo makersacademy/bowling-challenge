@@ -16,4 +16,13 @@ describe('Game', function(){
       expect(game.viewFrame()).toEqual(1);
     });
   });
+
+  describe('moving to frame 2', function(){
+    it('moves the frame 2 after roll 2', function(){
+      for(var i=0; i<3; i++){
+        game.rollBall();
+      }
+      expect(game.viewFrame()).toEqual(2);
+    });
+  });
   });

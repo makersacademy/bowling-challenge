@@ -19,3 +19,15 @@ function Game() {
  Game.prototype.viewFrame = function () {
    return this.frame;
  };
+
+ Game.prototype.rollBall = function () {
+   this.roll += 1;
+   this.newFrame();
+ };
+
+ Game.prototype.newFrame = function () {
+   if (this.roll === 2){
+     this.frame += 1;
+     this.roll = STARTING_ROLL;
+   }
+ };

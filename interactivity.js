@@ -35,12 +35,14 @@ $( document ).ready(function() {
   function printStrike(){
     if(bowling.frames._isStrike === true)
       $( '#print-final-score' ).text( 'Strike! X');
+    else if(bowling.frames._isSpare === true)
+      $( '#print-final-score' ).text( 'Spare! /' );
     else
-    $( '#print-final-score' ).text( "" );
+      $( '#print-final-score' ).text( '' );    
   }
 
   function runningTotal(){
-    $( '#print-running-total' ).text( bowling.finalScore());
+    $( '#print-running-total' ).text('Running total: ' + bowling.finalScore());
   }
 
 });

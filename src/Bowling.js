@@ -16,8 +16,7 @@ Player.prototype.bowl = function (number) {
     this.frameScore = 10;
     this.frames -= 1;
     this.bowlStrike(number);
-  }
-  else
+  } else
   this.roll2(this.number);
   if (this.frames === 0) {
     this.finish();
@@ -36,8 +35,7 @@ Player.prototype.roll2 = function (number) {
   this.printRoll2();
   if (this.frameScore === 10) {
     this.spare(number);
-  }
-  else {
+  } else {
     this.score += this.frameScore;
   }
 };

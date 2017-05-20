@@ -12,12 +12,18 @@
       expect(game.pinsLeft()).toBe(10);
     });
     it('can knock down a pin with a bowling ball', function() {
+      game.newFrame();
       game.throwBall(1);
       expect(game.pinsLeft()).toBe(9);
     });
     it('starts a new frame', function() {
       game.newFrame();
       expect(game.getFrames()).toContain(new Frame());
+    });
+    it('scores a frame when the ball is thrown', function() {
+      game.newFrame();
+      game.throwBall(1);
+      expect(game.getCurrentFrame().getFirstScore()).toBe(1);
     });
   });
 }());

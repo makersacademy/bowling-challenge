@@ -42,7 +42,7 @@ $( document ).ready(function() {
   }
 
   function runningTotal(){
-    $( '#print-running-total' ).text('Running total: ' + bowling.finalScore());
+    $( '#print-running-total' ).text('Score: ' + bowling.finalScore());
   }
 
 });

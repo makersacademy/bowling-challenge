@@ -12,9 +12,9 @@ button {
   font-family: 'Crete Round', sans-serif;
   color: #ffeaea;
   text-align: center;
-  font-size: 32px;
+  font-size: 24px;
   padding: 16px;
-  width: 220px;
+  width: 160px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 10px;
@@ -38,10 +38,13 @@ h2 {
 }
 #display-frames {
   font-family: 'Allan', cursive;
+  font-size: 48px;
 }
 #print-final-score {
   font-family: 'Allan', cursive;
+  font-size: 48px;
 }
 #print-running-total {
   font-family: 'Allan', cursive;
+  font-size: 48px;
 }

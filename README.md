@@ -21,14 +21,20 @@ As usual please start by
 
 * Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+### Testing
 
+The bowling challenge was built using a test driven approach using Jasmine. See the instructions below to run the test specs.
 
 ### Instructions
 
 $ git clone https://github.com/chrisjmit/bowling-challenge.git
 $ cd bowling-challenge
 $ open SpecRunner.html via Google Chrome
+
+### To do
+
+* Add the final frame bonus ball functionality
+* Build a user interface
 
 
 ### Optional Extras

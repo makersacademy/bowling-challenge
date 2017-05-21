@@ -17,6 +17,9 @@ Bowling_score.prototype.process_roll = function(roll_result) {
   this.frame_roll_results.push(roll_result);
   if (this.frame === 10 && this.current_roll === 2) this.frame_10_logic();
   this.query_finish_frame();
+  if (this.frame === 10 && this.frame_roll_results[0] === 10 ) {
+    this.pins_available = this.DEFAULT_PINS;
+  }
 };
 
 Bowling_score.prototype.finish_frame = function() {
@@ -27,6 +30,7 @@ Bowling_score.prototype.finish_frame = function() {
 Bowling_score.prototype.frame_10_logic = function() {
   if ((this.frame_roll_results[0] + this.frame_roll_results[1]) >= this.DEFAULT_PINS) {
     this.frame_rolls = 3;
+    this.pins_available = this.DEFAULT_PINS;
   };
 };
 

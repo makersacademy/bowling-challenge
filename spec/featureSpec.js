@@ -11,4 +11,11 @@ describe("Feature test:", function() {
     })
   })
 
+  describe("first roll", function() {
+    it("has a total of 1", function() {
+      play.knockDown(1)
+      expect(play.calculate()).toEqual(1)
+    })
+  })
+
 })

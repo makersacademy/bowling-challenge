@@ -28,11 +28,26 @@ Bowling.prototype.getFrames = function() { return this._frames; };
 Bowling.prototype.getCurrentFrame = function() {
   return this._frames[this._currentFrameId];
 };
+Bowling.prototype.getNextFrame = function() {
+  return this._frames[this._currentFrameId-1];
+};
+Bowling.prototype.getPreviousFrame = function() {
+  return this._frames[this._currentFrameId+1];
+};
 Bowling.prototype.totalScore = function() {
   var totalScore = 0;
   this._frames.forEach(function(frame) {
-    totalScore += frame.getFirstScore();
-     if (frame.getSecondScore()) {totalScore += frame.getSecondScore();}
+    totalScore += frame.getFrameScore();
   });
+  for (var index = 0; index < this._frames.length; ++index) {
+    if (this._frames[index].isSpare()) {
+      totalScore += this._frames[index+1].getFirstScore();
+    } else if (this._frames[index].isStrike()) {
+      totalScore += this._frames[index+1].getFrameScore();
+      if (this._frames[index+1].isStrike()) {
+        totalScore += this._frames[index+2].getFirstScore();
+      }
+    }
+  }
   return totalScore;
 };

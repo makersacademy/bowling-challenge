@@ -48,6 +48,11 @@
       }
       expect(function() {game.newFrame();}).toThrow(new Error('Game over bud, go home.'));
     });
+    it('frame ends after strike', function() {
+      game.throwBall(10);
+      expect(game.getCurrentFrame().isOver()).toBe(true);
+    });
+
     describe('Scoring', function() {
       it('can give a running total score from all frames played', function() {
         game.throwBall(1);
@@ -56,6 +61,25 @@
         game.throwBall(4);
         game.throwBall(5);
         expect(game.totalScore()).toBe(15);
+      });
+      it('adds the first score of the frame if the previous frame was a spare', function() {
+        game.throwBall(5);
+        game.throwBall(5);
+        game.throwBall(3);
+        expect(game.totalScore()).toBe(16);
+      });
+      it('adds the total score of the frame if the previous frame was a strike', function() {
+        game.throwBall(10);
+        game.throwBall(5);
+        game.throwBall(3);
+        expect(game.totalScore()).toBe(26);
+      });
+      it('correctly accumulates bonus points for multiple strikes', function() {
+        game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(1);
+        game.throwBall(2);
+        expect(game.totalScore()).toBe(37);
       });
     });
   });

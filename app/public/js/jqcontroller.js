@@ -10,8 +10,8 @@ $(document).ready(function() {
 
 
   function update_buttons() {
-    for ( i = 0; i < bowling_game.pins_available + 1; i++ ) {
-      $("#create_buttons").append("<button id='process_roll' class='btn btn-lg btn-default'>"+ i +"</button>  " );
+    for ( i = 0; i < bowling_game.pins_available+1; i++ ) {
+      $("#create_buttons").append("<button id='process_roll' class='btn btn-lg btn-default'>" + i + "</button>  " );
       $( "button" ).eq( i ).on( "click", { value: i }, function( event ) {
         bowling_game.process_roll(event.data.value);
         reset_window();
@@ -49,11 +49,9 @@ $(document).ready(function() {
   }
 
   function current_frame_roll() {
-    console.log('test in function')
     if ("undefined" !== typeof bowling_game.frame_roll_results[0]
     && "undefined" === typeof bowling_game.frame_roll_results[1]
     && bowling_game.frame !== 10) {
-      console.log('test working')
         roll = bowling_game.frame_roll_results[0]
         $("#frames-rolls").append("<div class='col-md-1'>" + roll + '|' + "</div>");
     }
@@ -80,11 +78,14 @@ $(document).ready(function() {
   }
 
   function last_round_display() {
-
+    for ( i = 0; i < bowling_game.game_results.length; i++ ) {
+        display_score = hide_bonus_score_until_complete();
+        $("#frames-result").append("<div class='col-md-1'>" + display_score + "</div>")
+    }
   }
 
   function hide_bonus_score_until_complete() {
-    if (bowling_game.game_results[i].bonus !== 'undefined' && bowling_game.game_results[i].round_score === 0) return '';
+    if ("undefined" !== typeof bowling_game.game_results[i].bonus && bowling_game.game_results[i].round_score === 0) return '';
     return bowling_game.game_results[i].round_score
   }
 

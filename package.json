@@ -26,10 +26,5 @@
     "eslint-plugin-import": "^2.2.0"
   },
   "dependencies": {
-    "chai": "^3.5.0",
-    "express": "^4.15.3",
-    "express-session": "^1.15.3",
-    "mocha": "^3.4.1",
-    "zombie": "^5.0.5"
   }
 }

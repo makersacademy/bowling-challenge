@@ -1,4 +1,4 @@
-function Bowling(frame = new Frame(1), scoreCard = new ScoreCard()) {
+function Bowling() {
   this.currentBall = 1;
   this.frameNumber = 1;
   this.currentFrame = frame;

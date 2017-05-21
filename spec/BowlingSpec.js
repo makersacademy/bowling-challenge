@@ -11,7 +11,7 @@ describe('Bowling', function() {
     fakeScoreCard: true,
     updateFrame: function(x){}
   };
-  var bowling = new Bowling(fakeFrame, fakeScoreCard);
+  var bowling = new Bowling();
 
   beforeEach(function() {
     var fakeFrame = {

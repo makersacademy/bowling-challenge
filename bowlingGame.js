@@ -8,16 +8,14 @@ app.controller('bowling', function($scope){
 
   $scope.allframes = frame.gameFrames
 
-  $scope.frameNow = frame.currentFrame
-
-  $scope.frameNumber = frame.frameNumber
-
+  $scope.coneReset = 1
   $scope.bowl = function(){
     frame.frameSet(frame.frameNumber)
     bowling.throwBowl(frame.currentFrame)
-    frame.statusChecker()
-    frame.frameSet($scope.frameNumber)
+    if(frame.statusChecker() == true) {
+      bowling.remainingCones = 10
+    };
+    frame.frameSet(frame.frameNumber)
     $scope.cones = bowling.remainingCones
   };
-
 });

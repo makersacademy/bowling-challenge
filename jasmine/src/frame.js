@@ -24,5 +24,6 @@ Frame.prototype.statusChecker = function(){
   if(this.currentFrame.length >= 2 ||
     this.currentFrame[0] === 10) {
     this.frameNumber++
+    return true
   };
 };

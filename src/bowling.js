@@ -1,22 +1,19 @@
-function Bowling() {
-  this._currentFrame = 1;
+function Bowling(game) {
   this._currentThrow = 'first';
   this._pins = 10;
-  this._scoreCard = [];
   this._framePoints = 0;
   this._firstThrow = null;
   this._secondThrow = null;
   this._strikeRound = false;
   this._spareRound = false;
+  this.game = game;
 };
 
-Bowling.prototype.newGame = function () {
-    for (var i = 0; i < 12; i ++) {
-      this._scoreCard[i] = [];
-  };
-};
 Bowling.prototype.throw = function() {
-  if (this._currentThrow === 'first') {
+  if (this.game.status == 'ended'){
+    throw "The game has ended";
+  }
+  else if (this._currentThrow === 'first') {
     this.firstRoll();
   } else {
       this.secondRoll();
@@ -39,10 +36,10 @@ Bowling.prototype.ballThrown = function () {
 
 Bowling.prototype.moveToSecondRoll = function() {
   if (this._spareRound) {
-    this._scoreCard[this._currentFrame-2].push(this._framePoints+this._firstThrow)
+    this.game.scoreCard[this.game.currentFrame-2].push(this._framePoints+this._firstThrow)
   }
   this._currentThrow = 'second';
-  this._scoreCard[this._currentFrame-1].push(this._firstThrow);
+  this.game.scoreCard[this.game.currentFrame-1].push(this._firstThrow);
 }
 
 Bowling.prototype.secondRoll = function () {
@@ -56,7 +53,8 @@ Bowling.prototype.secondRoll = function () {
 
 Bowling.prototype.secondBallThrown = function () {
   this._secondThrow = this._hook();
-  this._scoreCard[this._currentFrame-1].push(this._secondThrow);
+  this.game.scoreCard[this.game.currentFrame-1].push(this._secondThrow);
+  // this._strikeRound = false;
 };
 
 Bowling.prototype.spare = function () {
@@ -67,19 +65,19 @@ Bowling.prototype.spare = function () {
 
 Bowling.prototype.moveToFirstRoll = function() {
   this._framePoints += (this._firstThrow  +  this._secondThrow);
-  this._scoreCard[this._currentFrame-1].push(this._framePoints)
+  this.game.scoreCard[this.game.currentFrame-1].push(this._framePoints)
   this.nextTurn();
 }
 
 Bowling.prototype.strike = function () {
   this.nextTurn();
-  this._scoreCard.push(this._firstThrow);
-  this._scoreCard.push('-');
+  this.game.scoreCard.push(this._firstThrow);
+  this.game.scoreCard.push('-');
   this._strikeRound = true;
 };
 Bowling.prototype.nextTurn = function () {
   this._currentThrow = 'first';
-  this._currentFrame ++;
+  this.game.currentFrame ++;
 };
 Bowling.prototype._hook = function () {
   return Math.floor(Math.random()*(this._pins-this._firstThrow+1));

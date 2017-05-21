@@ -1,13 +1,15 @@
 describe('Bowling, when starting a new game:', function() {
   var theDude;
+  var game;
   beforeEach(function() {
-    theDude = new Bowling();
-    theDude.newGame()
+    game = new Game;
+    game.newGame();
+    theDude = new Bowling(game);
   });
 
   describe('it knows which frame it is,', function() {
     it('returns 1 for first game.', function() {
-      expect(theDude._currentFrame).toEqual(1);
+      expect(theDude.game.currentFrame).toEqual(1);
     });
   });
 

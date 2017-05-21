@@ -26,7 +26,7 @@ $(document).ready(function() {
     // Add boxes for frames 1-10
     for (var k=1; k<=21; k++) {
       $('#score-boxes').append('<td colspan="1"></td>');
-      $('#score-boxes td:nth-last-child(1)').attr('id', 'box-' + k);
+      $('#score-boxes td:nth-last-child(1)').attr('id', 'box' + k);
     }
     // Add space for final score
     $('#score-boxes').append('<td colspan="4"></td>');
@@ -37,7 +37,7 @@ $(document).ready(function() {
     $('#frame-scores').append('<td colspan="8"></td>');
     // Add frames 1-9
     for (var j=1; j<=9; j++) {
-      $('#frame-scores').append('<td colspan="2" id="score-' + j + '"></td>');
+      $('#frame-scores').append('<td colspan="2" id="score' + j + '"></td>');
     }
     // Add tenth frame
     $('#frame-scores').append('<td colspan="3" id="score-10"></td>');
@@ -51,7 +51,7 @@ $(document).ready(function() {
   addFrameScoresRow();
 
   $('#frame-scores td:nth-child(1)').attr('id', 'player-name-box');
-  $('#frame-scores td:nth-last-child(1)').attr('id', 'player-score-box');
+  $('#frame-scores td:nth-last-child(1)').attr('id', 'player_score_box');
   $('#frame-scores').attr('height', '49px');
   $('#score-boxes').attr('height', '49px');
 

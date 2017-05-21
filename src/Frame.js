@@ -39,15 +39,6 @@ var FrameFile = (function() {
   Frame.prototype.deactivate = function() {
     this.active = false;
   };
-  Frame.prototype.getRoll1 = function() {
-    return this._rolls[1];
-  };
-  Frame.prototype.getRoll2 = function() {
-    return this._rolls[2];
-  };
-  Frame.prototype.getRoll3 = function() {
-    return this._rolls[3];
-  };
 
   Frame.prototype._nextRollIsBonus = function() {
     return (this._nextRoll > 2 && this._rollSum() >= 10);

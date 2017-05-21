@@ -35,8 +35,8 @@
       expect(onePlayerGame.frames.length).toBe(10);
     });
 
-    it('has an array "activeFrames" initially containing 1 object', function() {
-      expect(onePlayerGame.activeFrames().length).toBe(1);
+    it('has an array "_activeFrames" initially containing 1 object', function() {
+      expect(onePlayerGame._activeFrames().length).toBe(1);
     });
 
     it('has an activated frame1 upon creation', function() {
@@ -45,7 +45,7 @@
 
     it('passes on score to appropriate frame when instructed', function() {
       spyOn(frame2, 'setPriorScore');
-      onePlayerGame.passOnScore(30, frame1);
+      for (var k = 1; k <= 3; k++) { onePlayerGame.roll(10); }
       expect(frame2.setPriorScore).toHaveBeenCalledWith(30);
     });
 

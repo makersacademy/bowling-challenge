@@ -26,6 +26,13 @@ var FrameFile = (function() {
   Frame.prototype.isActive = function() {
     return this.active;
   };
+  Frame.prototype.isComplete = function() {
+    if (this.totalScore()) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   Frame.prototype.activate = function() {
     this.active = true;
   };
@@ -80,7 +87,8 @@ var FrameFile = (function() {
 
   Frame.prototype._passOnScoreIfAvailable = function() {
     if (this.totalScore() !== null) {
-      this._game.passOnScore(this.totalScore(), this);
+      this._game.setScore(this.totalScore());
+      this._game.passOnScore(this.totalScore());
     }
   };
 

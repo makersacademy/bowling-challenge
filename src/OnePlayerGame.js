@@ -19,10 +19,27 @@ var OnePlayerGameFile = (function() {
     this.score = 0;
   };
 
-  OnePlayerGame.prototype.activeFrames = function() {
+  OnePlayerGame.prototype._activeFrames = function() {
     return this.frames.filter(function(frame) {
       return frame.isActive();
     });
+  };
+
+  OnePlayerGame.prototype._nextInactiveFrameIndex = function() {
+    var highestActiveFrame = this._activeFrames()[this._activeFrames().length - 1];
+    return this.frames.indexOf(highestActiveFrame) + 1;
+  };
+
+
+  OnePlayerGame.prototype._completedFrames = function() {
+    return this.frames.filter(function(frame) {
+      return frame.isComplete();
+    });
+  };
+
+  OnePlayerGame.prototype._nextIncompleteFrameIndex = function() {
+    var latestCompletedFrame = this._completedFrames()[this._completedFrames().length - 1];
+    return this.frames.indexOf(latestCompletedFrame) + 1;
   };
 
   OnePlayerGame.prototype.setScore = function(points) {
@@ -32,28 +49,20 @@ var OnePlayerGameFile = (function() {
     return this.score;
   };
 
-  OnePlayerGame.prototype.passOnScore = function(score, previousFrame) {
-    this.setScore(score);
-    if (previousFrame === this.frame10) { return; }
-    var nextFrameIndex = this.frames.indexOf(previousFrame) + 1;
-    this.frames[nextFrameIndex].setPriorScore(score);
-  };
-
-  OnePlayerGame.prototype.nextInactiveFrameIndex = function() {
-    var highestActiveFrame = this.activeFrames()[this.activeFrames().length - 1];
-    return this.frames.indexOf(highestActiveFrame) + 1;
+  OnePlayerGame.prototype.passOnScore = function(score) {
+    if (this._nextIncompleteFrameIndex() === 10) { return; }
+    this.frames[this._nextIncompleteFrameIndex()].setPriorScore(score);
   };
 
   OnePlayerGame.prototype.roll = function(pinsKnockedOver) {
-    this.activeFrames().forEach(function(frame) {
+    this._activeFrames().forEach(function(frame) {
       frame.processRoll(pinsKnockedOver);
     });
   };
 
   OnePlayerGame.prototype.activateNextFrame = function() {
     if (this.frame10.isActive()) { return; }
-    this.latestActiveFrame = this.frames[this.nextInactiveFrameIndex()];
-    this.frames[this.nextInactiveFrameIndex()].activate();
+    this.frames[this._nextInactiveFrameIndex()].activate();
   };
     
 

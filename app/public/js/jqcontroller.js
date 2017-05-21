@@ -27,6 +27,7 @@ $(document).ready(function() {
     $("#score_container").append("</div><div class='row' id='frames-rolls'>");
     $("#frames-rolls").append("<div class='col-md-2'>ROLLS:</div>");
     display_rolls();
+    current_frame_roll();
     $("#score_container").append("</div><div class='row' id='frames-result'>");
     $("#frames-result").append("<div class='col-md-2'>SCORE:</div>");
     display_frame_score();
@@ -42,8 +43,19 @@ $(document).ready(function() {
 
   function display_rolls() {
     for ( i = 0; i < bowling_game.game_results.length; i++ ) {
-        display = check_bonus_display();
+        display = process_roll_display();
         $("#frames-rolls").append("<div class='col-md-1'>" + display + "</div>")
+    }
+  }
+
+  function current_frame_roll() {
+    console.log('test in function')
+    if ("undefined" !== typeof bowling_game.frame_roll_results[0]
+    && "undefined" === typeof bowling_game.frame_roll_results[1]
+    && bowling_game.frame !== 10) {
+      console.log('test working')
+        roll = bowling_game.frame_roll_results[0]
+        $("#frames-rolls").append("<div class='col-md-1'>" + roll + '|' + "</div>");
     }
   }
 
@@ -52,16 +64,23 @@ $(document).ready(function() {
         display_score = hide_bonus_score_until_complete();
         $("#frames-result").append("<div class='col-md-1'>" + display_score + "</div>")
     }
+
   }
 
-  function check_bonus_display() {
-    if (bowling_game.game_results[i].bonus === 'strike') {
+  function process_roll_display() {
+    if (i === 9) {
+      last_round_display();
+    } else if (bowling_game.game_results[i].bonus === 'strike') {
       return 'X'
     } else if (bowling_game.game_results[i].bonus === 'spare') {
       return '/'
     } else {
     return bowling_game.game_results[i].roll_results[0] + '|' + bowling_game.game_results[i].roll_results[1]
     }
+  }
+
+  function last_round_display() {
+
   }
 
   function hide_bonus_score_until_complete() {

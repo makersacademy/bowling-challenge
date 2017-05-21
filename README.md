@@ -4,15 +4,15 @@ Bowling Challenge
 
 ## User stories
 
-As a player 
+- As a player 
 so that I can play
 I want to start a game of bowling
 
-As a player 
+- As a player 
 so that I can score 
 I want to roll 
 
-As a player
+- As a player
 I want to have two rolls per frame
 
 As a player

@@ -11,3 +11,4 @@ Roll.prototype.randomInt = function(remainder) {
 Roll.prototype.score = function(remainder) {
 	return this.randomInt(remainder);
 };
+

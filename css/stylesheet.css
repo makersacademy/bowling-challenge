@@ -1,0 +1,48 @@
+body {
+  background-image: url("zig-zag.png");
+  text-align: center;
+  font-size: 72px;
+  font-family: 'Bangers', cursive;
+  color: #232323;
+}
+button {
+  border-radius: 8px;
+  background-color: rgba(255, 16, 16, 0.66);
+  border: none;
+  font-family: 'Crete Round', sans-serif;
+  color: #ffeaea;
+  text-align: center;
+  font-size: 24px;
+  padding: 16px;
+  width: 160px;
+  margin: 10px;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
+}
+button{
+  cursor: -webkit-grab;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+button:hover{
+  padding-right: 24px;
+  padding-left: 18px;
+}
+button:hover:after {
+  opacity: 1;
+}
+h2 {
+  text-shadow: 2px 2px #cccccc;
+}
+#display-frames {
+  font-family: 'Allan', cursive;
+  font-size: 48px;
+}
+#print-final-score {
+  font-family: 'Allan', cursive;
+  font-size: 48px;
+}
+#print-running-total {
+  font-family: 'Allan', cursive;
+  font-size: 48px;
+}

@@ -94,6 +94,42 @@
         expect(game.getCurrentFrame().getThirdScore()).toBe(5);
         expect(function() {game.throwBall(5);}).toThrow(new Error('Game over bud, go home.'));
       });
+      it('has an extra two throws if strike', function() {
+        var i;
+        for (i=0;i<18;i++) {
+          game.throwBall(0);
+        }
+        game.throwBall(10);
+        game.throwBall(0);
+        expect(function() {game.throwBall(5);}).not.toThrow(new Error('Game over bud, go home.'));
+        expect(game.getCurrentFrame().getThirdScore()).toBe(5);
+        expect(function() {game.throwBall(5);}).toThrow(new Error('Game over bud, go home.'));
+      });
+      it('scores the spare bonus', function() {
+        var i;
+        for (i=0;i<18;i++) {
+          game.throwBall(0);
+        }
+        game.throwBall(9);
+        expect(game.totalScore()).toBe(9);
+        game.throwBall(1);
+        expect(game.totalScore()).toBe(10);
+        game.throwBall(5);
+        expect(game.totalScore()).toBe(15);
+      });
+      it('scores the strike bonus', function() {
+        var i;
+        for (i=0;i<18;i++) {
+          game.throwBall(0);
+        }
+        game.throwBall(10);
+        expect(game.totalScore()).toBe(10);
+        game.throwBall(1);
+        expect(game.totalScore()).toBe(11);
+        game.throwBall(5);
+        expect(game.totalScore()).toBe(16);
+
+      });
     });
   });
 }());

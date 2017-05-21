@@ -52,7 +52,7 @@ Bowling.prototype.totalScore = function() {
   this._frames.forEach(function(frame) {
     totalScore += frame.getFrameScore();
   });
-  for (var index = 0; index < this._frames.length; ++index) {
+  for (var index = 0; index < (this._frames.length - 1); index++) {
     if (this._frames[index].isSpare()) {
       totalScore += this._frames[index+1].getFirstScore();
     } else if (this._frames[index].isStrike()) {
@@ -63,4 +63,11 @@ Bowling.prototype.totalScore = function() {
     }
   }
   return totalScore;
+};
+Bowling.prototype.getFinalFrameScore = function() {
+  var finalFrameScore = 0;
+  if (this.isFinalFrame()) {
+     finalFrameScore += this.getCurrentFrame().getFrameScore();
+  }
+  return finalFrameScore;
 };

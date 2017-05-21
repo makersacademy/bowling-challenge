@@ -23,13 +23,6 @@ $('document').ready(function() {
   });
 
   var updateScorecard = function() {
-//    for (var datum in game.gameData) {
-//      if (game.gameData.hasOwnProperty(datum)) {
-//        console.log(datum);
-//        console.log(game.gameData.datum);
-//        $('#' + datum).text(game.gameData.datum);
-//      }
-//    }
     //Unfortunately my domain model requires a long list somewhere to update everything, and I've decided to put it here.
     $('#box1').text(game.frame1.box1());
     $('#box2').text(game.frame1.box2());

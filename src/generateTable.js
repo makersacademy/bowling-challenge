@@ -40,7 +40,7 @@ $(document).ready(function() {
       $('#frame-scores').append('<td colspan="2" id="score' + j + '"></td>');
     }
     // Add tenth frame
-    $('#frame-scores').append('<td colspan="3" id="score-10"></td>');
+    $('#frame-scores').append('<td colspan="3" id="score10"></td>');
     // Add space for final score
     $('#frame-scores').append('<td colspan="4"></td>');
   };

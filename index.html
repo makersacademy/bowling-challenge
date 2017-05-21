@@ -5,6 +5,7 @@
     <script src="src/Game.js"></script>
     <script src='src/interface.js'></script>
     <link rel="stylesheet" type="text/css" href="./public/style.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
      <title>Thermostat </title>
     </head>
     <body>
@@ -16,14 +17,14 @@
         <div >
         <h2 class="top"> Current frame : </h2><h2 class="top" id='current_frame'></h2>
          <h2 class="top"> Current roll : </h2><h2 class="top"  id='current_roll'></h2>
-        <h2 class="top"> Spare or Stike: </h2><h2 class="top"  id='sKsP'></h2>
 
      </div>
+     <h2 class="top"  id='sKsP'></h2>
+
 
     <div class ='button'>
-        <button id='bowl'>Bowl</button>
-        <button id='new_game'>New Game</button>
-        <button id='play'>Play</button>
+        <button id='bowl'><a onmousedown="beep1.play();">Bowl</button></a>
+        <button id='new_game'><a onmousedown="beep2.play();">New Game</button></a>
     </div>
 
     <div >
@@ -33,7 +34,9 @@
 
 </div>
 <h2 class="top" id='test'></h2>
-
+<div class="se-pre-con"></div>
+<div></div>
+<img src="giphy.gif">
 
     </body>
 </html>

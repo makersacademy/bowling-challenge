@@ -117,3 +117,7 @@ Game.prototype.newGame = function(){
   this._maxRounds = 10;
   this._gameOver ="";
 };
+var beep1 = new Audio();
+var beep2 = new Audio();
+beep1.src = 'bowl_shot.wav';
+beep2.src = 'new_game.wav';

@@ -3,10 +3,13 @@ var FrameFile = (function() {
   var Frame = function(game, isTenth) {
     this.active = false;
     this._priorScore = null;
-    this._roll1 = null;
-    this._roll2 = null;
-    this._roll3 = null;
     this._game = game;
+    this._rolls = {
+      1 : null,
+      2 : null,
+      3 : null,
+    };
+    this._nextRoll = 1;
     if (isTenth) {
       this._isTenth = true;
     } else {
@@ -27,6 +30,15 @@ var FrameFile = (function() {
   Frame.prototype.deactivate = function() {
     this.active = false;
   };
+  Frame.prototype._setRoll1 = function(value) {
+    this._roll1 = value;
+  };
+  Frame.prototype._setRoll2 = function(value) {
+    this._roll1 = value;
+  };
+  Frame.prototype._setRoll3 = function(value) {
+    this._roll1 = value;
+  };
 
   Frame.prototype.processRoll = function(pinsKnockedOver) {
     this._updateRoll(pinsKnockedOver);
@@ -36,13 +48,8 @@ var FrameFile = (function() {
   };
 
   Frame.prototype._updateRoll = function(pinsKnockedOver) {
-    if (this._roll1 === null) {
-      this._roll1 = pinsKnockedOver;
-    } else if (this._roll2 === null) {
-      this._roll2 = pinsKnockedOver;
-    } else {
-      this._roll3 = pinsKnockedOver;
-    }
+    this._rolls[this._nextRoll] = pinsKnockedOver;
+    this._nextRoll += 1;
   };
 
   Frame.prototype._activateNextFrameIfAppropriate = function() {

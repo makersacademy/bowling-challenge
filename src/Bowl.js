@@ -1,5 +1,5 @@
 bowl = function() {
-  
+
   this.frames[this.currentFrame - 1].takeTurn(this.ballPins.length)
 
   if(this.frames[this.currentFrame - 1].rollOneLogged === false) { this.ballPins.push(this.frames[this.currentFrame - 1].rollOne);

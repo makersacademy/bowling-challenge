@@ -13,7 +13,7 @@ function Bowling_score() {
 };
 
 Bowling_score.prototype.process_roll = function(roll_result) {
-  if (this.finish === true) { throw 'Game is finished' };
+  if (this.finish === true) throw 'Game is finished';
   this.frame_roll_results.push(roll_result);
   if (this.frame === 10 && this.current_roll === 2) this.frame_10_logic();
   this.query_finish_frame();
@@ -39,7 +39,7 @@ Bowling_score.prototype.query_finish_frame = function() {
     this.finish_frame();
   } else {
     this.current_roll++;
-    this.pins_available -= this.frame_roll_results[0];
+    if (this.current_roll !== 3) this.pins_available -= this.frame_roll_results[0];
   };
 };
 

@@ -1,12 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+  <script src="./lib/jquery-3.2.1.min.js"></script>
   <script src="./src/Bowling.js"></script>
   <script src="./src/Frame.js"></script>
+  <script src="./src/ScoreCard.js"></script>
+  <script src="./app.js"></script>
+
+  <link rel="stylesheet" href="style.css">
   <link rel="icon" href="./images/bowling-114-274207.png">
 </head>
 <body>
-
-
+<p>
+  <div>
+  <h1>TEN PIN BOWLING</h1>
+  </div>
+  <table class="frames">
+    <tr>
+      <th class="frames" colspan="2">Frame 1</th>
+      <th class="frames" colspan="2">Frame 2</th>
+      <th class="frames" colspan="2">Frame 3</th>
+      <th class="frames" colspan="2">Frame 4</th>
+      <th class="frames" colspan="2">Frame 5</th>
+      <th class="frames" colspan="2">Frame 6</th>
+      <th class="frames" colspan="2">Frame 7</th>
+      <th class="frames" colspan="2">Frame 8</th>
+      <th class="frames" colspan="2">Frame 9</th>
+      <th class="frames" colspan="3">Frame 10</th>
+      <th class="frames">Total Score</th>
+    </tr>
+    <tr>
+      <td class="frames" id="f1b1"></td>
+      <td class="frames" id="f1b2"></td>
+      <td class="frames" id="f2b1"></td>
+      <td class="frames" id="f2b2"></td>
+      <td class="frames" id="f3b1"></td>
+      <td class="frames" id="f3b2"></td>
+      <td class="frames" id="f4b1"></td>
+      <td class="frames" id="f4b2"></td>
+      <td class="frames" id="f5b1"></td>
+      <td class="frames" id="f5b2"></td>
+      <td class="frames" id="f6b1"></td>
+      <td class="frames" id="f6b2"></td>
+      <td class="frames" id="f7b1"></td>
+      <td class="frames" id="f7b2"></td>
+      <td class="frames" id="f8b1"></td>
+      <td class="frames" id="f8b2"></td>
+      <td class="frames" id="f9b1"></td>
+      <td class="frames" id="f9b2"></td>
+      <td class="frames" id="f10b1"></td>
+      <td class="frames" id="f10b2"></td>
+      <td class="frames" id="f10b3"></td>
+      <th class="frames" rowspan="2" id="total"></td>
+</tr>
+    <tr>
+      <th class="frames" colspan="2" id="f1tot"></th>
+      <th class="frames" colspan="2" id="f2tot"></th>
+      <th class="frames" colspan="2" id="f3tot"></th>
+      <th class="frames" colspan="2" id="f4tot"></th>
+      <th class="frames" colspan="2" id="f5tot"></th>
+      <th class="frames" colspan="2" id="f6tot"></th>
+      <th class="frames" colspan="2" id="f7tot"></th>
+      <th class="frames" colspan="2" id="f8tot"></th>
+      <th class="frames" colspan="2" id="f9tot"></th>
+      <th class="frames" colspan="3" id="f10tot"></th>
+    </tr>
+  </table>
+  <br>
+  <div>
+    <p id="frame"></p><p id="ball"></p>
+  </div>
+  <form id="bowl">
+    <input type="button" value=0 id=0>
+    <input type="button" value=1 id=1>
+    <input type="button" value=2 id=2>
+    <input type="button" value=3 id=3>
+    <input type="button" value=4 id=4>
+    <input type="button" value=5 id=5>
+    <input type="button" value=6 id=6>
+    <input type="button" value=7 id=7>
+    <input type="button" value=8 id=8>
+    <input type="button" value=9 id=9>
+    <input type="button" value=10 id=10>
+  </form>
 </body>
 </html>

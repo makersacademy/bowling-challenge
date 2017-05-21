@@ -10,7 +10,11 @@ describe('Bowling', function() {
       bonusScore: 0,
       fakeFrame: true
     };
-    bowling = new Bowling(fakeFrame);
+    var fakeScoreCard = {
+      fakeScoreCard: true,
+      updateFrame: function(x){}
+    };
+    bowling = new Bowling(fakeFrame, fakeScoreCard);
   })
 
   describe('default state', function() {

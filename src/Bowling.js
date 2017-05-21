@@ -1,4 +1,3 @@
-
 function Bowling(frame = new Frame(1), scoreCard = new ScoreCard()) {
   this.currentBall = 1;
   this.frameNumber = 1;
@@ -10,16 +9,20 @@ function Bowling(frame = new Frame(1), scoreCard = new ScoreCard()) {
 
 Bowling.prototype.bowl = function(pins) {
   this.addBonusScores(pins);
-  this.scoreCard.updateFrame(this.frameNumber, this.currentBall, pins)
+  this.scoreCard.updateFrame(this.frameNumber, this.currentBall, pins);
+  this.chooseScoreType(pins);
+  if (this.scoreCard.fakeScoreCard != true) {
+    this.scoreCard.updateTotals(this.completedFrames);
+  }
+}
+
+Bowling.prototype.chooseScoreType = function(pins) {
   if (this.currentBall === 1) {
     this.ballOneScore(pins);
   }else if (this.currentBall === 2) {
     this.ballTwoScore(pins);
   }else{
     this.tenthFrameFinalBall(pins);
-  }
-  if (this.scoreCard.fakeScoreCard != true) {
-    this.scoreCard.updateTotals(this.completedFrames);
   }
 }
 
@@ -34,14 +37,19 @@ Bowling.prototype.ballOneScore = function(pins) {
 
 Bowling.prototype.ballTwoScore = function(pins) {
   this.currentFrame.ballTwo = pins;
+  this.chooseFrameAction();
+  this.nextFrame();
+}
+
+Bowling.prototype.chooseFrameAction = function() {
   if (this.frameNumber < 10) {
     this.currentBall = 1;
     if (this.currentFrame.ballOne + this.currentFrame.ballTwo == 10) {
       this.spareFrame();
-    }else{this.completedFrames.push(this.currentFrame);
+    }else{
+      this.completedFrames.push(this.currentFrame);
     }
   }
-  this.nextFrame();
 }
 
 Bowling.prototype.spareFrame = function() {
@@ -63,6 +71,10 @@ Bowling.prototype.addBonusScores = function(pins) {
     bonusFrame.pendingFrames--;
     bonusFrame.bonusScore += pins;
   }
+  this.removeCompletedFrames()
+}
+
+Bowling.prototype.removeCompletedFrames = function() {
   for (frame = this.pendingFrames.length - 1; frame >= 0; --frame) {
     bonusFrame = this.pendingFrames[frame];
       if (bonusFrame.pendingFrames === 0) {

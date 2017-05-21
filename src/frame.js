@@ -12,7 +12,7 @@ Frame.prototype.firstRollScore = function() {
 }
 
 Frame.prototype.isComplete = function() {
-  return (this._secondRoll !== null)
+  return (this._firstRoll === 10 || this._secondRoll !== null)
 }
 
 Frame.prototype.firstAndSecondRollScore = function() {
@@ -24,5 +24,5 @@ Frame.prototype.isAStrike = function() {
 }
 
 Frame.prototype.isASpare = function() {
-  return (this._firstRoll + this._secondRoll === 10)
+  return (this._firstRoll + this._secondRoll === 10 && !this.isAStrike())
 }

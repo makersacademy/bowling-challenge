@@ -1,10 +1,12 @@
 describe('Bowling, when starting a new game:', function() {
   var theDude;
   var game;
+  var score;
   beforeEach(function() {
     game = new Game;
     game.newGame();
-    theDude = new Bowling(game);
+    score = new Score();
+    theDude = new Bowling(game, score);
   });
 
   describe('it knows which frame it is,', function() {
@@ -15,7 +17,7 @@ describe('Bowling, when starting a new game:', function() {
 
   describe('it knows which throw it is,', function() {
     it('returns \'first\' at the start of game.', function() {
-      expect(theDude._currentThrow).toEqual('first');
+      expect(theDude.game.currentThrow).toEqual('first');
     });
   });
   describe('it knows how many pins there are,', function() {
@@ -26,7 +28,7 @@ describe('Bowling, when starting a new game:', function() {
 
   describe('it knows the current frames\' points,', function() {
     it('returns null.', function() {
-      expect(theDude._framePoints).toEqual(0);
+      expect(theDude.score.framePoints).toEqual(0);
     });
   });
 

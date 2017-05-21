@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="./src/Bowling.js"></script>
+<script src="./angBowling.js"></script>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+
+  </div>
+
+  <div ng-repeat="x in [1,2,3,4,5,6,7,8,9,10]">
+  <br>
+  <button ng-click="roll(x)">{{x}}</button>
+
+</div>
+  <p>{{ rolls }}</p>
+  <p>{{ score() }}</p>
+
+</body>
+</html>

@@ -19,7 +19,7 @@ Bowling.prototype.score = function() {
   return totalScore;
 
   function strikesInARow() {
-    if (game.rolls[rollIndex] == 10 && game.rolls[rollIndex + 2] == 10) return 3
+    if (game.rolls[rollIndex] + game.rolls[rollIndex + 2] == 20) return 3
   }
 
   function strike() {

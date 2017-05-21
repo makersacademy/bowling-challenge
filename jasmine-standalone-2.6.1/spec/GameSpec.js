@@ -32,6 +32,11 @@ describe('Game', function(){
       expect(game.score()).toBe(24);
     });
 
+    it('can roll a perfect game', function (){
+      rollMany(10, 12);
+      expect(game.score()).toBe(300);
+    });
+
     var rollMany = function (pins, rolls) {
       for (var i = 0; i < rolls; i++) {
         game.roll(pins);

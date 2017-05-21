@@ -1,5 +1,5 @@
 describe('Bowling', function() {
-  var bowling;
+  var bowling = new Bowling();
 
   beforeEach(function() {
     var fakeFrame = {
@@ -14,7 +14,7 @@ describe('Bowling', function() {
       fakeScoreCard: true,
       updateFrame: function(x){}
     };
-    bowling = new Bowling(fakeFrame, fakeScoreCard);
+    // bowling = new Bowling(fakeFrame, fakeScoreCard);
   })
 
   describe('default state', function() {

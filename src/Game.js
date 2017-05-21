@@ -51,12 +51,3 @@ Game.prototype._currentScore = function() {
   };
   return score
 };
-
-Game.prototype._finalFrameCheck = function() {
-  var frame = this.frames[this.frames.length-1];
-  if (frame.isEnded()) {
-    updateScores();
-  } else {
-    updateFinalFrame(frame);
-  };
-};

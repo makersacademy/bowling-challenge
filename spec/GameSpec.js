@@ -34,10 +34,6 @@ describe("A Bowling game", function() {
     expect(function(){ game.bowl(11); }).toThrowError("You cannot knock over more than 10 pins with one ball");
   });
 
-  it("has a maximum of 10 frames", function() {
-    threesgame();
-    expect(function(){ game.bowl(3); }).toThrowError("Game over");
-  });
 });
 
 describe("A frame", function() {
@@ -49,10 +45,19 @@ describe("A frame", function() {
     game.bowl(3);
     expect(game.frameCount.length).toBe(0);
   });
+});
 
-  describe("A spare", function() {
-    // it("records the spare when it is bowled", function(){
-    //
-    // });
+
+describe("A spare", function() {
+  var game = new Game();
+
+  it("records the spare when it is bowled", function(){
+    game.bowl(4);
+    game.bowl(6);
+    game.bowl(3);
+    game.bowl(7);
+    game.bowl(3);
+    game.bowl(4);
+    expect(game.score()).toBe(33);
   });
 });

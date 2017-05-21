@@ -5,27 +5,28 @@ describe('Bowling', function(){
     spyOn(Math,'random').and.returnValue(0.5);
   })
 
+  describe('Bowling functionality', function(){
+    it('it is initiated with 10 cones', function(){
+      expect(bowling.remainingCones).toEqual(10)
+    });
+  });
+
   describe('randomBowl', function(){
-    it('produces a number from 0 to 10', function(){
-      expect(_randomBowl()).toEqual(5)
+    it('produces a number from 0 to remainingCones', function(){
+      expect(bowling.randomBowl()).toEqual(5)
+    });
+    it('subtracts cones taken out from remainingCones', function(){
+      bowling.randomBowl()
+      expect(bowling.remainingCones).not.toEqual(10)
     });
   });
 
-  describe('Bowling', function(){
-    it('it is initiated with a an array of bowls', function(){
-      expect(bowling.bowlCount).toEqual([])
-    });
-  });
 
-  describe('#frame', function(){
+  describe('#throwBowl', function(){
     it('inputs a bowl into the array', function(){
-      bowling.frame()
-      expect(bowling.bowlCount).toContain(5)
-    });
-    it('reduces remainingBowls by 1', function(){
-      bowling.frame()
-      expect(bowling.remainingBowls).toEqual(1)
+      var bowls = []
+      bowling.throwBowl(bowls)
+      expect(bowls).toContain(5)
     });
   });
-
 });

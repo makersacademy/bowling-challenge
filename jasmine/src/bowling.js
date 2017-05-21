@@ -1,13 +1,13 @@
 function Bowling(){
-  this.bowlCount = []
-  this.remainingBowls = 2
+  this.remainingCones = 10
  };
 
-Bowling.prototype.frame = function () {
-  this.bowlCount.push(_randomBowl())
-  this.remainingBowls--
+Bowling.prototype.throwBowl = function(frame) {
+  frame.push(this.randomBowl())
 };
 
-function _randomBowl() {
-  return Math.floor(Math.random()*10)+0
+Bowling.prototype.randomBowl = function() {
+  var conesHit = Math.floor(Math.random()*this.remainingCones)+0
+  this.remainingCones-=conesHit
+  return conesHit
 };

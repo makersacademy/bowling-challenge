@@ -46,4 +46,8 @@ Game.prototype.score = function () {
   function getNormalScore() {
     return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
   }
+
+  function randomPins() {
+    Math.floor(Math.ramdom() * 11);
+  }
 };

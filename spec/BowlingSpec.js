@@ -41,5 +41,12 @@
       game.throwBall(2);
       expect(game.pinsLeft()).toBe(10);
     });
+    it('maximum of 10 frames to a game', function() {
+      var i;
+      for (i=0;i<20;i++) {
+        game.throwBall(0);
+      }
+      expect(function() {game.newFrame();}).toThrow(new Error('Game over bud, go home.'));
+    });
   });
 }());

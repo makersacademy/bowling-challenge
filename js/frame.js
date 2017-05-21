@@ -1,3 +1,5 @@
+var roll = require('roll.js');
+
 var Frame = function () {
   this._score = 0
   this._finished = false

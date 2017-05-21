@@ -38,6 +38,13 @@
       game.throwBall(3);
       expect(game.getFrames().length).toBe(2);
       expect(game.getCurrentFrame().getFirstScore()).toBe(3);
+      expect(game.pinsLeft()).toBe(7);
+    });
+    it('resets the pins before starting a new frame', function() {
+      game.newFrame();
+      game.throwBall(1);
+      game.throwBall(2);
+      expect(game.pinsLeft()).toBe(10);
     });
   });
 }());

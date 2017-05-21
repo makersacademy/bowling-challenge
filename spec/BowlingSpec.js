@@ -62,10 +62,11 @@ it('calculates Spare bonus and adds it to an array', function() {
 
 it ('calculates total score up the this moment', function(){
   spyOn(game, 'currentFramePoints').and.returnValue(7);
-  game.frameTotal = game.currentFramePoints();
+  game.framesScores.push(game.currentFramePoints());
   spyOn(game, 'strikeBonus').and.returnValue(8);
   game.strikeBonuses.push(game.strikeBonus());
   spyOn(game, 'spareBonus').and.returnValue(5);
   game.spareBonuses.push(game.spareBonus());
+
   expect(game.calculateScore()).toEqual(20);
 });

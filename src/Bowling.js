@@ -71,12 +71,8 @@ Bowling.prototype.spareBonus = function() {
 };
 
 Bowling.prototype.calculateScore = function() {
-  var score = this.framesScores + this.spareBonuses + this.strikeBonuses
-
-  var sum = [1, 2, 3].reduce(add, 0);
-
-
-
+  var score = (this.framesScores.reduce(add, 0)) + (this.spareBonuses.reduce(add, 0)) + (this.strikeBonuses.reduce(add, 0));
+  return score;
 };
 
 function add(a, b) {

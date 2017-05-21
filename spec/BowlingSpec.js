@@ -1,18 +1,6 @@
 describe('Bowling', function() {
-  var fakeFrame = {
-    frameNumber: 1,
-    pendingFrames: 0,
-    ballOne: 0,
-    ballTwo: 0,
-    bonusScore: 0,
-    fakeFrame: true
-  };
-  var fakeScoreCard = {
-    fakeScoreCard: true,
-    updateFrame: function(x){}
-  };
-  var bowling = new Bowling();
-
+  var bowling;
+  
   beforeEach(function() {
     var fakeFrame = {
       frameNumber: 1,

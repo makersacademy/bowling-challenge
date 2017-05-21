@@ -1,10 +1,10 @@
-function Bowling() {
+function Bowling(frame, scoreCard) {
   this.currentBall = 1;
   this.frameNumber = 1;
-  this.currentFrame = new Frame(1);
+  this.currentFrame = frame || new Frame(1);
   this.pendingFrames = [];
   this.completedFrames = [];
-  this.scoreCard = new ScoreCard();
+  this.scoreCard = scoreCard || new ScoreCard();
 }
 
 Bowling.prototype.bowl = function(pins) {

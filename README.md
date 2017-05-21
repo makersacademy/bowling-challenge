@@ -1,3 +1,4 @@
+![image](https://travis-ci.org/adamjohnsnow/bowling-challenge.svg?branch=master)
 
 Bowling Challenge
 =================

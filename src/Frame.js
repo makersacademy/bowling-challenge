@@ -43,7 +43,7 @@ var FrameFile = (function() {
     this._updateRoll(pinsKnockedOver);
     this._activateNextFrameIfAppropriate();
     this._deactivateSelfIfAppropriate();
-//    this._passOnScoreIfAvailable();
+    this._passOnScoreIfAvailable();
   };
 
   Frame.prototype._updateRoll = function(pinsKnockedOver) {
@@ -85,29 +85,29 @@ var FrameFile = (function() {
   };
 
   Frame.prototype.box1 = function() {
-    if (this._roll1 === 10) {
+    if (this._rolls[1] === 10) {
       return 'X';
     } else { 
-      return this._roll1;
+      return this._rolls[1];
     }
   };
 
   Frame.prototype.box2 = function() {
-    if (this._roll1 + this._roll2 > 10) {
+    if (this.box1() === 'X') {
       return null;
-    } else if (this._roll2 === null) {
-      return null;
-    } else if (this._roll1 + this._roll2 === 10) {
+//  } else if (this._rolls[2] === null) {
+//    return null;
+    } else if (this._rolls[1] + this._rolls[2] === 10) {
       return '/';
     } else { 
-      return this._roll2;
+      return this._rolls[2];
     }
   };
 
   Frame.prototype.frame10Box2 = function() {
     if (this._isTenth === false) {
       throw "Error: This isn't a tenth frame";
-    } else if (this._roll2 === 10) {
+    } else if (this._rolls[2] === 10) {
       return 'X';
     } else if (this._roll2 === null) {
       return null;

@@ -39,8 +39,4 @@ describe("Frame", function() {
     var next_frame = {score: [4, 3]}
     expect(spare.bonus(next_frame)).toEqual(4);
   });
-
-  // it('calculates strike frame score correctly', function() {
-  //   expect(strike.calculate()).toEqual(10);
-  // });
 });

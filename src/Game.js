@@ -14,22 +14,22 @@ Game.prototype.bowl = function(roll) {
 
 // Private
 
-Game.prototype._standardBowl = function(n) {
+Game.prototype._standardBowl = function(roll) {
   if (this.currentFrame !== null) {
-    this.frames.push(new Frame([this.currentFrame, n]));
+    this.frames.push(new Frame([this.currentFrame, roll]));
     this.currentFrame = null;
-  } else if (n === 10) {
-    this.frames.push(new Frame([n]));
+  } else if (roll === 10) {
+    this.frames.push(new Frame([roll]));
   } else {
-    this.currentFrame = n;
+    this.currentFrame = roll;
   }
   this._calculateScore();
 };
 
-Game.prototype._finalBowl = function(bowl) {
-  this.storedBowl = this.storedBowl || bowl;
-  this.currentFrame = bowl;
-  this.finalFrame.addBowl(bowl);
+Game.prototype._finalBowl = function(roll) {
+  this.storedBowl = this.storedBowl || roll;
+  this.currentFrame = roll;
+  this.finalFrame.addBowl(roll);
   this._calculateScore();
 };
 

@@ -7,7 +7,6 @@
     "doc": "docs"
   },
   "dependencies": {
-    "eslint": "^3.19.0"
   },
   "devDependencies": {
     "eslint": "^3.19.0",

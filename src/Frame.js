@@ -1,4 +1,5 @@
 
+
 function Frame(FrameNo) {
   if ( typeof FrameNo === 'undefined') {
     this.frameNo = 1;
@@ -19,7 +20,6 @@ Frame.prototype.Roll = function(pins) {
   } else if (this.pinsKnockedDown.length === 2 && this.frameNo === this.FINAL_FRAME) {
     this.pinsKnockedDown.push(this.check3rdRoll(pins));
   }
-  console.log(this.pinsKnockedDown);
 };
 
 Frame.prototype.checkRoll = function(num) {

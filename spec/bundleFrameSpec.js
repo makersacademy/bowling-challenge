@@ -1,3 +1,4 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var Frame = require('./../src/Frame');
 
 describe('Frame', function() {
@@ -84,3 +85,60 @@ describe('Frame', function() {
   });
 
 });
+
+},{"./../src/Frame":2}],2:[function(require,module,exports){
+
+
+function Frame(FrameNo) {
+  if ( typeof FrameNo === 'undefined') {
+    this.frameNo = 1;
+  } else {
+    this.frameNo = FrameNo;
+  }
+  this.pinsKnockedDown = [];
+  this.MIN_PINS = 0;
+  this.MAX_PINS = 10;
+  this.FINAL_FRAME = 10;
+}
+
+Frame.prototype.Roll = function(pins) {
+  if (this.pinsKnockedDown.length === 0) {
+    this.pinsKnockedDown.push(this.checkRoll(pins));
+  } else if (this.pinsKnockedDown.length === 1){
+    this.pinsKnockedDown.push(this.check2ndRoll(pins));
+  } else if (this.pinsKnockedDown.length === 2 && this.frameNo === this.FINAL_FRAME) {
+    this.pinsKnockedDown.push(this.check3rdRoll(pins));
+  }
+};
+
+Frame.prototype.checkRoll = function(num) {
+  if (num < this.MIN_PINS || num > this.MAX_PINS) {
+    throw new RangeError('The number entered must be between ' + this.MIN_PINS + ' - ' + this.MAX_PINS);
+  } else if (num === this.MAX_PINS && this.pinsKnockedDown.length < 1){
+    this.pinsKnockedDown.push(num);
+    return 0;
+  } else {
+    return num;
+  }
+};
+
+Frame.prototype.check2ndRoll = function(num) {
+  if (this.pinsKnockedDown[0] + this.checkRoll(num) > this.MAX_PINS) {
+    throw new RangeError('You cannot enter more than a total of ' + this.MAX_PINS + ' over 2 rolls');
+  } else {
+    return num;
+  }
+};
+
+Frame.prototype.check3rdRoll = function(num) {
+  sum = this.pinsKnockedDown[0] + this.pinsKnockedDown[1];
+  if (sum === this.MAX_PINS) {
+    return this.checkRoll(num);
+  } else {
+    throw new Error("Sorry you don't get a 3rd bowl");
+  }
+};
+
+module.exports = Frame;
+
+},{}]},{},[1]);

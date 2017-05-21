@@ -1,3 +1,5 @@
+var Game = require('../src/game.js');
+
 describe('Game', function() {
   var game;
 
@@ -14,24 +16,24 @@ describe('Game', function() {
     expect(game.playerName).toBe('Simon');
   });
 
-  it('keeps track of the frame number and starts with 1', function() {
-    expect(game.currentFrame).toEqual(1);
+  it('keeps track of the frame number and starts with 0', function() {
+    expect(game.currentFrame).toEqual(0);
   });
 
   it('has an array for storing frames', function() {
     expect(game.frames).toEqual({});
-  })
+  });
 
   describe('newFrame', function() {
     it('updates the frame number each time a new frame is started', function() {
       game.newFrame();
-      expect(game.currentFrame).toEqual(2);
+      expect(game.currentFrame).toEqual(1);
       game.newFrame();
-      expect(game.currentFrame).toEqual(3);
+      expect(game.currentFrame).toEqual(2);
       for (i=1; i<=5; i++) {
         game.newFrame();
       }
-      expect(game.currentFrame).toEqual(8);
+      expect(game.currentFrame).toEqual(7);
     });
 
     it('will not allow more than 10 frames in a game', function() {
@@ -40,9 +42,14 @@ describe('Game', function() {
       }
       expect(game.currentFrame).toEqual(10);
     });
+  });
 
-
-
+  describe('addScore', function() {
+    it('takes the no. of pins knocked over and saves it to the current frame', function() {
+      game.newFrame();
+      game.addScore(8);
+      expect(game.frames['frame 1'].pinsKnockedDown).toContain(8);
+    });
   });
 
 });

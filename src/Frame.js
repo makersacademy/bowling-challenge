@@ -10,7 +10,6 @@ var FrameFile = (function() {
       3 : null,
     };
     this._nextRoll = 1;
-    this._rollSum = this._rolls[1] + this._rolls[2] + this._rolls[3];
     if (isTenth) {
       this._isTenth = true;
     } else {
@@ -33,7 +32,10 @@ var FrameFile = (function() {
     this.active = false;
   };
   Frame.prototype._nextRollIsBonus = function() {
-    return (this._nextRoll > 2 && this._rollSum >= 10);
+    return (this._nextRoll > 2 && this._rollSum() >= 10);
+  };
+  Frame.prototype._rollSum = function() {
+    return this._rolls[1] + this._rolls[2] + this._rolls[3];
   };
     
 
@@ -41,7 +43,7 @@ var FrameFile = (function() {
     this._updateRoll(pinsKnockedOver);
     this._activateNextFrameIfAppropriate();
     this._deactivateSelfIfAppropriate();
-    this._passOnScoreIfAvailable();
+//    this._passOnScoreIfAvailable();
   };
 
   Frame.prototype._updateRoll = function(pinsKnockedOver) {
@@ -61,11 +63,9 @@ var FrameFile = (function() {
   };
 
   Frame.prototype._deactivateSelfIfAppropriate = function() {
-    if (this._roll1 === null || this._roll2 === null) {
-      return false;
-    } else if (this._roll1 + this._roll2 < 10) {
+    if (this._nextRoll > 3) {
       this.deactivate();
-    } else if (this._roll3 !== null) {
+    } else if (this._nextRoll === 3 && !this._nextRollIsBonus()) {
       this.deactivate();
     }
   };
@@ -77,10 +77,10 @@ var FrameFile = (function() {
   };
 
   Frame.prototype.totalScore = function() {
-    if (this.isActive) {
+    if (this.isActive()) {
       return null;
     } else {
-      return this._priorScore + this._rollSum;
+      return this._priorScore + this._rollSum();
     }
   };
 

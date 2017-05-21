@@ -31,6 +31,7 @@
 
     describe('totalScore', function() {
       beforeEach(function() {
+        frame.activate();
 	frame.setPriorScore(20);
 	for (var i = 1; i <= 2; i++) { frame.processRoll(10); }
       });

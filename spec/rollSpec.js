@@ -1,5 +1,5 @@
 describe('Roll', function () {
-  var Roll = require('../js/roll')
+  // var Roll = require('../js/roll')
   var roll;
 
   beforeEach(function () {

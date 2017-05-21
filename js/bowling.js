@@ -1,3 +1,5 @@
+// var Frame = require('../js/frame')
+
 var Bowling = function () {
   this._score = 0
   this._frames = []
@@ -23,14 +25,16 @@ Bowling.prototype.frameIndex = function(frame){
 
 Bowling.prototype.updateRollScoreSheet = function(frameIndex, rollIndex, pinsDown){
   var element = 'frame-' + (frameIndex + 1) + '-roll-' + (rollIndex + 1)
-  document.getElementById(element).innerHTML = pinsDown
+  $('#' + element).html(pinsDown)
+  // document.getElementById(element).innerHTML = pinsDown
 }
 
 Bowling.prototype.updateFrameScoreSheet = function () {
   this._frames.forEach(function(frame, index, array){
     var frameIndex = index
     var element = 'frame-' + ( parseInt(frameIndex) + 1)
-    document.getElementById(element).innerHTML = frame._score
+    $('#' + element).html(frame._score)
+    // document.getElementById(element).innerHTML = frame._score
   })
 }
 
@@ -231,4 +235,4 @@ Bowling.prototype.roll = function (pinsDown) {
 
 };
 
-module.exports = Bowling;
+// module.exports = Bowling;

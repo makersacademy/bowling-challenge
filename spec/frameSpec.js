@@ -1,5 +1,5 @@
 describe('Frame', function () {
-  var Frame = require('../js/frame.js')
+  // var Frame = require('../js/frame.js')
   // var Roll = require('../js/roll')
   var frame;
 

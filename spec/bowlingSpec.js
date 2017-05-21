@@ -1,9 +1,16 @@
 describe('Bowling', function () {
 
-  var setUp2 = require('../lib/jasmine-2.6.1/jasmine-jquery.js');
-  var setUpHTMLFixture = require('../js/htmlFixtures');
+  // var $ = require('jquery')(require("jsdom").jsdom().parentWindow);
+  // var jsdom = require("jsdom");
+  // $ = require("jquery")(jsdom.jsdom().createWindow());
+  //
+  // var setUp2 = require('../lib/jasmine-2.6.1/jasmine-jquery');
+  // var setUpHTMLFixture = require('../js/htmlFixtures');
+  // var jq = require('../lib/jasmine-2.6.1/jquery-3.2.1');
+
 
   var bowlingGame;
+  // var Bowling = require('../js/bowling')
 
   beforeEach(function () {
     setUpHTMLFixture();
@@ -24,10 +31,20 @@ describe('Bowling', function () {
       expect(bowlingGame.framesToPlay().length).toEqual(10)
       var finishedFrameOne = bowlingGame._frames[0]
       var finishedFrameTwo = bowlingGame._frames[1]
-      finishedFrameOne._finished = true
-      finishedFrameTwo._finished = true
+      bowlingGame.roll(5)
+      bowlingGame.roll(5)
+      bowlingGame.roll(5)
+      bowlingGame.roll(5)
       expect(bowlingGame.framesToPlay().indexOf(finishedFrameOne)).toEqual(-1)
       expect(bowlingGame.framesToPlay().indexOf(finishedFrameTwo)).toEqual(-1)
+      expect(bowlingGame.framesToPlay().length).toEqual(8)
+    })
+    it('returns unplayed frames', function () {
+      expect(bowlingGame.framesToPlay().length).toEqual(10)
+      bowlingGame.roll(5)
+      bowlingGame.roll(5)
+      bowlingGame.roll(5)
+      bowlingGame.roll(5)
       expect(bowlingGame.framesToPlay().length).toEqual(8)
     })
   })

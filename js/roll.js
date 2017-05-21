@@ -7,4 +7,4 @@ Roll.prototype.knockPinsDown = function (pinsDown) {
   this._pinsDown = pinsDown;
 };
 
-module.exports = Roll;
+// module.exports = Roll;

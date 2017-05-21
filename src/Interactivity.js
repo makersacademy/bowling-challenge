@@ -105,7 +105,9 @@ $('document').ready(function() {
     $('#score-9').text(game.frame9.totalScore());
     $('#score-10').text(game.frame10.totalScore());
     $('#player-score-box').text(game.getScore());
-    if (game.frame10.totalScore() && !game.frame10.isActive()) {
+    if (game.frame10.totalScore()) {
+      $('.score-buttons').hide();
+    } else if (game.frame10.totalScore() === 0) {
       $('.score-buttons').hide();
     } else if (game.frame10.frame10Box2() && game.frame10.isActive() || game.latestActiveFrame.box1() === null) {
       for (var h = 1; h <= 10; h++) {

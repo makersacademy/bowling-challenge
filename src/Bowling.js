@@ -5,7 +5,7 @@ var Bowling = function() {
 };
 Bowling.prototype.pinsLeft = function() { return this._pinsLeft; };
 Bowling.prototype.throwBall = function(pinsHit) {
-  if (this.getCurrentFrame().isOver()) {
+  if (this._currentFrame === -1 || this.getCurrentFrame().isOver()) {
     this.newFrame();
     this._pinsLeft -= pinsHit;
     this.getCurrentFrame().score(pinsHit);

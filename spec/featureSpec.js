@@ -24,6 +24,12 @@ describe("Feature test:", function() {
       bowling.knockDown(1)
       expect(bowling.calculateTotal()).toEqual(2)
     })
+
+    it("raise error if first+second roll is greater than 10", function() {
+      var error = "Can't score more than 10 per frame!"
+      bowling.knockDown(5)
+      expect(function() {bowling.knockDown(6)}).toThrowError(error)
+    })
   })
 
   describe("spare, then 1", function() {

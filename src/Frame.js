@@ -124,10 +124,10 @@ var FrameFile = (function() {
   Frame.prototype.frame10Box2 = function() {
     if (this._rolls[2] === null) {
       return null;
+    } else if (this._rolls[1] + this._rolls[2] === 10 && this._rolls[2] !== 0) {
+      return '/';
     } else if (this._rolls[2] === 10) {
       return 'X';
-    } else if (this._rolls[1] + this._rolls[2] === 10) {
-      return '/';
     } else {
       return this._rolls[2];
     }
@@ -135,10 +135,10 @@ var FrameFile = (function() {
   Frame.prototype.frame10Box3 = function() {
     if (this._rolls[3] === null) {
       return null;
-    } else if (this._rolls[3] === 10) {
-      return 'X';
     } else if (this._rolls[2] + this._rolls[3] === 10) {
       return '/';
+    } else if (this._rolls[3] === 10) {
+      return 'X';
     } else {
       return this._rolls[3];
     }

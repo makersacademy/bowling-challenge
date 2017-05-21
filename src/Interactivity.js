@@ -58,36 +58,46 @@ $('document').ready(function() {
     $('#player_score_box').text(game.getScore());
     // Long list complete.
   };
-  var reRenderButtons = function(score) {
+  var resetButtons = function() {
+    for (var value = 1; value <= 10; value++) {
+      $('#' + value).show();
+      if (value < 10) {
+        $('#' + value).text(value);
+      } else if (value === 10) {
+        $('#' + value).text('X');
+      }
+    }
+  };
+  var hideInvalidScoreButtons = function(score) {
+    var pinsLeft = 10 - score;
+    for (var button = 1; button <= 10; button++) {
+      if (button > pinsLeft) {
+        $('#' + button).hide();
+      } else if (button === pinsLeft) {
+        $('#' + button).text('/');
+      }
+    }
+  };
   
+  var reRenderButtons = function(score) {
+    if (game.latestActiveFrame.box1() === null) {
+      resetButtons();
+    } else if (game.latestActiveFrame.box2() === null && score < 10) {
+      hideInvalidScoreButtons(score);
+    }
+
     //Frame 10
 
     if (game.frame10.totalScore()) {
       $('.score-buttons').hide();
     } else if (game.frame10.totalScore() === 0) {
       $('.score-buttons').hide();
-    
-
-
-
-    } else if (game.frame10.frame10Box2() && game.frame10.isActive() || game.latestActiveFrame.box1() === null) {
-      for (var h = 1; h <= 10; h++) {
-        $('#' + h).show();
-        if (h < 10) {
-          $('#' + h).text(h);
-        } else if (h === 10) {
-          $('#' + h).text('X');
-        }
-      }
-    } else if (game.latestActiveFrame.box2() === null && score < 10) {
-      var pinsLeft = 10 - score;
-      for (var i = 1; i <= 10; i++) {
-        if (i > pinsLeft) {
-          $('#' + i).hide();
-        } else if (i === pinsLeft) {
-          $('#' + i).text('/');
-        }
-      }
+    } else if (game.frame10.frame10Box2() === 'X' && game.frame10._nextRoll === 3) {
+      resetButtons();
+    } else if (game.frame10.frame10Box2() === '/' && game.frame10._nextRoll === 3) {
+      resetButtons();
+    } else if (game.frame10._nextRoll === 3) {
+      hideInvalidScoreButtons(game.frame10.box2());
     }
 
   };

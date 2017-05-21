@@ -30,4 +30,10 @@ var bowlingBall;
     expect(bowlsTracker.bowlsRecord[0]).toEqual(6);
   });
 
+  it("should record a regular strike", function(){
+    bowlingBall.roll(pins, bowlsTracker, 10);
+    expect(bowlsTracker.bowlsLeft).toEqual(19);
+    expect(bowlsTracker.bowlsRecord.length).toEqual(1);
+    expect(bowlsTracker.bowlsRecord[0]).toEqual(10);
+  });
 });

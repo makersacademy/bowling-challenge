@@ -7,7 +7,7 @@ Bowling.prototype.throwBowl = function(frame) {
 };
 
 Bowling.prototype.randomBowl = function() {
-  var conesHit = Math.floor(Math.random()*this.remainingCones)+0
+  var conesHit = Math.floor(Math.random()*this.remainingCones)+1
   this.remainingCones-=conesHit
   return conesHit
 };

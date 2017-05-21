@@ -2,7 +2,7 @@ describe('Bowling', function(){
 
   beforeEach(function(){
     bowling = new Bowling()
-    spyOn(Math,'random').and.returnValue(0.5);
+    spyOn(Math,'random').and.returnValue(0.4);
   })
 
   describe('Bowling functionality', function(){

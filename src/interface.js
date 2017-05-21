@@ -1,5 +1,4 @@
 var game = new Game();
-const finalCounter = 0;
 
 $('.bowl-number').on('click', function() {
   bowl = Number($(this).val())
@@ -24,21 +23,19 @@ function updateScores() {
         total += game._calculateFrame(frame, i);
         $('#score' + (i)).text(total);
       };
-      i++;
     } else if (frame.isStrike()) {
         $('#frame' + i + '-2').text('X');
         if (game._calculateBonus(frame, i) !== null) {
           total += game._calculateFrame(frame, i)
           $('#score' + (i)).text(total);
         };
-        i++;
     } else {
       $('#frame' + i + '-1').text(frame.score[0]);
       $('#frame' + i + '-2').text(frame.score[1]);
-      i++;
       total += game._calculateFrame(frame, i - 1)
-      $('#score' + (i - 1)).text(total);
+      $('#score' + (i)).text(total);
     };
+    i++;
   });
 };
 
@@ -58,7 +55,7 @@ function updateFinalFrame(bowl) {
   if (frame.isEnded()) {
     $('#score9').text(game.totalScore);
     disableOptions(11);
-  }
+  };
   game.storedBowl = null;
   for (i = 1; i <= frame.score.length; i++) {
     if ($('#frame9-' + i).text() == 10) {
@@ -88,17 +85,14 @@ function toggleOptions(choice) {
     enableOptions();
   } else if (choice !== 10) {
     disableOptions(choice);
-  }
-}
-
-function disableOptions(choice) {
-  var i = 11 - choice;
-  for (; i <= 10; i++) {
-    $('#' + i).attr("disabled", true);
   };
 };
 
+function disableOptions(choice) {
+  var i = 11 - choice;
+  for (; i <= 10; i++) { $('#' + i).attr("disabled", true); };
+};
+
 function enableOptions() {
-  console.log('hi')
   $('.bowl-number').attr("disabled", false);
 };

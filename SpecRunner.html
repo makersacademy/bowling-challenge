@@ -6,6 +6,7 @@
 
   <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.6.1/jasmine_favicon.png">
   <link rel="stylesheet" href="lib/jasmine-2.6.1/jasmine.css">
+  <link rel="stylesheet" href="css/main.css">
 
   <script src="lib/jasmine-2.6.1/jasmine.js"></script>
   <script src="lib/jasmine-2.6.1/jasmine-html.js"></script>
@@ -16,7 +17,6 @@
   <script src="src/frame.js"></script>
   <script src="src/finalFrame.js"></script>
   <script src="src/game.js"></script>
-  <script src='src/interface.js'></script>
 
   <script type="text/javascript">
     var ALGOLIA_APPLICATION_ID = '<%= options.application_id %>';
@@ -29,9 +29,70 @@
   <script src='spec/frameSpec.js'></script>
   <script src='spec/finalFrameSpec.js'></script>
   <script src='spec/features/bowlingSpec.js'></script>
+  <script src='spec/features/interfaceSpec.js'></script>
 
 </head>
 
 <body>
+    <!-- For testing front end jQuery interface -->
+    <div style='display:none;'>
+      <input class='bowl-number' type='button' id='0' value='0' />
+      <input class='bowl-number' type='button' id='1' value='1' />
+      <input class='bowl-number' type='button' id='2' value='2' />
+      <input class='bowl-number' type='button' id='3' value='3' />
+      <input class='bowl-number' type='button' id='4' value='4' />
+      <input class='bowl-number' type='button' id='5' value='5' />
+      <input class='bowl-number' type='button' id='6' value='6' />
+      <input class='bowl-number' type='button' id='7' value='7' />
+      <input class='bowl-number' type='button' id='8' value='8' />
+      <input class='bowl-number' type='button' id='9' value='9' />
+      <input class='bowl-number' type='button' id='10' value='10' />
+      <form>
+        <input type='submit' id='restart' value='Play Again' />
+      </form>
+
+
+      <br />
+
+      <table id='scorecardTable' class='scorecard' cellpadding='1' cellspacing='0'>
+        <tr>
+          <th colspan='6'>Frame 1</th>
+          <th colspan='6'>Frame 2</th>
+          <th colspan='6'>Frame 3</th>
+          <th colspan='6'>Frame 4</th>
+          <th colspan='6'>Frame 5</th>
+          <th colspan='6'>Frame 6</th>
+          <th colspan='6'>Frame 7</th>
+          <th colspan='6'>Frame 8</th>
+          <th colspan='6'>Frame 9</th>
+          <th colspan='6'>Frame 10</th>
+        </tr>
+        <tr>
+          <td id="frame0-1" colspan='3'></td><td id="frame0-2" colspan='3'></td>
+          <td id="frame1-1" colspan='3'></td><td id="frame1-2" colspan='3'></td>
+          <td id="frame2-1" colspan='3'></td><td id="frame2-2" colspan='3'></td>
+          <td id="frame3-1" colspan='3'></td><td id="frame3-2" colspan='3'></td>
+          <td id="frame4-1" colspan='3'></td><td id="frame4-2" colspan='3'></td>
+          <td id="frame5-1" colspan='3'></td><td id="frame5-2" colspan='3'></td>
+          <td id="frame6-1" colspan='3'></td><td id="frame6-2" colspan='3'></td>
+          <td id="frame7-1" colspan='3'></td><td id="frame7-2" colspan='3'></td>
+          <td id="frame8-1" colspan='3'></td><td id="frame8-2" colspan='3'></td>
+          <td id="frame9-1" colspan='2'></td><td id="frame9-2" colspan='2'><td id="frame9-3" colspan='2'></td>
+        </tr>
+        <tr>
+          <td colspan='6'id="score0"></td>
+          <td colspan='6'id="score1"></td>
+          <td colspan='6'id="score2"></td>
+          <td colspan='6'id="score3"></td>
+          <td colspan='6'id="score4"></td>
+          <td colspan='6'id="score5"></td>
+          <td colspan='6'id="score6"></td>
+          <td colspan='6'id="score7"></td>
+          <td colspan='6'id="score8"></td>
+          <td colspan='6'id="score9"></td>
+        </tr>
+      </table>
+    </div>
+  <script src='src/interface.js'></script>
 </body>
 </html>

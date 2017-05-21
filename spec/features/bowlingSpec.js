@@ -88,7 +88,7 @@ describe("Feature Tests", function() {
     expect(game.totalScore).toEqual(257);
   });
 
-  it('calculates full game with strikes', function() {
+  it('calculates perfect game with strikes', function() {
     var i = 0;
     for (; i < 12; i++) {
       game.bowl(10);

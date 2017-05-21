@@ -12,6 +12,21 @@ describe("Play", function() {
     })
   })
 
+  describe("calculate score message", function() {
+    it("returns the message for standard game", function() {
+      spyOn(play._scoreCalculator,"calculateTotal").and.returnValue(23)
+      expect(play.gameOverMessage()).toEqual(2)
+    })
+    it("returns the message for gutter game", function() {
+      spyOn(play._scoreCalculator,"calculateTotal").and.returnValue(0)
+      expect(play.gameOverMessage()).toEqual(0)
+    })
+    it("returns the message for gutter game", function() {
+      spyOn(play._scoreCalculator,"calculateTotal").and.returnValue(300)
+      expect(play.gameOverMessage()).toEqual(1)
+    })
+  })
+
   describe("number of frames", function() {
     it("starts at 0", function() {
       expect(play._frames.length).toEqual(0)
@@ -31,23 +46,23 @@ describe("Play", function() {
 
   describe("permitted value", function() {
     it("returns the true if first roll <= 10", function() {
-      expect(play.permittedValue(10)).toBeTruthy()
+      expect(play.isPermittedValue(10)).toBeTruthy()
     })
 
     it("returns the false if first roll > 10", function() {
-      expect(play.permittedValue(11)).toBeFalsy()
+      expect(play.isPermittedValue(11)).toBeFalsy()
     })
 
     it("returns the true if first+second roll <= 10", function() {
       play.knockDown(5)
       spyOn(play._lastFrame(),"isComplete").and.returnValue(false)
-      expect(play.permittedValue(5)).toBeTruthy()
+      expect(play.isPermittedValue(5)).toBeTruthy()
     })
 
     it("returns the false if first+second roll > 10", function() {
       play.knockDown(5)
       spyOn(play._lastFrame(),"isComplete").and.returnValue(false)
-      expect(play.permittedValue(6)).toBeFalsy()
+      expect(play.isPermittedValue(6)).toBeFalsy()
     })
   })
 

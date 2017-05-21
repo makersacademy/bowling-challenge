@@ -63,7 +63,16 @@ describe("Feature test:", function() {
   describe("strike x 10", function() {
     it("has a total of 30", function() {
       [1,2,3,4,5,6,7,8,9,10,11,12].forEach(function(i) {bowling.knockDown(10)})
-      expect(bowling.calculateTotal()).toEqual("Game over! You scored 300")
+      expect(bowling.calculateTotal()).toEqual("Perfect game! You scored 300")
+    })
+  })
+
+  describe("gutter game", function() {
+    it("has a total of 0", function() {
+      for (var i = 1; i <= 20; i++) {
+        bowling.knockDown(0)
+      }
+      expect(bowling.calculateTotal()).toEqual("Gutter game! You scored 0")
     })
   })
 

@@ -11,10 +11,18 @@ describe("Bowling", function() {
       expect(bowling.calculateTotal()).toEqual(1)
     })
 
-    it("returns the score from the play", function() {
+    it("returns the score from the play if perfect", function() {
       spyOn(bowling._play,"isGameOver").and.returnValue(true)
+      spyOn(bowling._play,"gameOverMessage").and.returnValue(1)
       spyOn(bowling._play,"calculate").and.returnValue(300)
-      expect(bowling.calculateTotal()).toEqual("Game over! You scored 300")
+      expect(bowling.calculateTotal()).toEqual("Perfect game! You scored 300")
+    })
+
+    it("returns the score from the play if gutter", function() {
+      spyOn(bowling._play,"isGameOver").and.returnValue(true)
+      spyOn(bowling._play,"gameOverMessage").and.returnValue(0)
+      spyOn(bowling._play,"calculate").and.returnValue(300)
+      expect(bowling.calculateTotal()).toEqual("Gutter game! You scored 300")
     })
   })
 
@@ -49,6 +57,17 @@ describe("Bowling", function() {
     it("returns the score from the play", function() {
       spyOn(bowling._play,"calculate").and.returnValue(1);
       expect(bowling.calculateTotal()).toEqual(1)
+    })
+  })
+
+  describe("check if permitted value for roll", function() {
+    it("returns false when first+second roll score > 10", function() {
+      spyOn(bowling._play,"isPermittedValue").and.returnValue(false);
+      expect(bowling.isPermittedValue()).toBeFalsy()
+    })
+    it("returns true when first+second roll score <= 10", function() {
+      spyOn(bowling._play,"isPermittedValue").and.returnValue(true);
+      expect(bowling.isPermittedValue()).toBeTruthy()
     })
   })
 

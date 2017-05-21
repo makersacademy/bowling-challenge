@@ -2,74 +2,23 @@ $('document').ready(function() {
 
   $(document).on("click", "#submit-name", function() {
     if ($('#player-name').val() !== "") {
-      var player_name = $('#player-name').val();
-      $('#player-name-box').append(player_name);
+      $('#player-name-box').append($('#player-name').val());
       $('#name-input-form').hide();
       $('.score-buttons').show();
       $('#new-game').show();
     }
   });
     
-  var Frame = FrameFile.Frame;
   var Game = OnePlayerGameFile.OnePlayerGame;
   var game = new Game();
   $(document).on("click", "#new-game", function() {
     location.reload();
   });
 
-  $(document).on("click", "#0", function() {
-    game.roll(0);
-    updateScorecard(0);
-  });
-
-  $(document).on("click", "#1", function() {
-    game.roll(1);
-    updateScorecard(1);
-  });
-
-  $(document).on("click", "#2", function() {
-    game.roll(2);
-    updateScorecard(2);
-  });
-
-  $(document).on("click", "#3", function() {
-    game.roll(3);
-    updateScorecard(3);
-  });
-
-  $(document).on("click", "#4", function() {
-    game.roll(4);
-    updateScorecard(4);
-  });
-
-  $(document).on("click", "#5", function() {
-    game.roll(5);
-    updateScorecard(5);
-  });
-
-  $(document).on("click", "#6", function() {
-    game.roll(6);
-    updateScorecard(6);
-  });
-
-  $(document).on("click", "#7", function() {
-    game.roll(7);
-    updateScorecard(7);
-  });
-
-  $(document).on("click", "#8", function() {
-    game.roll(8);
-    updateScorecard(8);
-  });
-
-  $(document).on("click", "#9", function() {
-    game.roll(9);
-    updateScorecard(9);
-  });
-
-  $(document).on("click", "#10", function() {
-    game.roll(10);
-    updateScorecard(10);
+  $(document).on("click", ".score-button", function() {
+    var pinsKnockedOver = parseInt(this.id);
+    game.roll(pinsKnockedOver);
+    updateScorecard(pinsKnockedOver);
   });
 
   var updateScorecard = function(score) {

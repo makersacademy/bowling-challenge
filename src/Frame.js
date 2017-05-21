@@ -13,6 +13,8 @@ Frame.prototype.isStrike = function() {
 Frame.prototype.bonus = function(second_frame, third_frame, unfinished_frame) {
   if (!this.isStrike() && !this.isSpare()) {
     return 0;
+  } else if (this.isSpare() && !second_frame && unfinished_frame === 0) {
+    return 0;
   } else if (second_frame && this.isSpare()) {
     return this.spareBonus(second_frame);
   } else if (this.isStrike() && second_frame && !second_frame.isStrike()) {
@@ -28,7 +30,7 @@ Frame.prototype.bonus = function(second_frame, third_frame, unfinished_frame) {
   } else if (unfinished_frame && this.isSpare()) {
     return unfinished_frame;
   } else {
-    return 0;
+    return null;
   };
 };
 
@@ -42,6 +44,6 @@ Frame.prototype.strikeBonus = function(second_frame, third_frame, unfinished_fra
   } else if (third_frame) {
     return second_frame.score[0] + third_frame.score[0]
   } else {
-    return 0;
+    return null;
   };
 };

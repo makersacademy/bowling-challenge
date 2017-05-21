@@ -4,6 +4,7 @@ function Game() {
   this.currentFrame = null;
   this.finalFrame = new FinalFrame();
   this.storedBowl = null;
+  this.displayedValue;
 };
 
 Game.prototype.bowl = function(roll) {
@@ -14,7 +15,7 @@ Game.prototype.bowl = function(roll) {
 // Private
 
 Game.prototype._standardBowl = function(n) {
-  if (this.currentFrame) {
+  if (this.currentFrame !== null) {
     this.frames.push(new Frame([this.currentFrame, n]));
     this.currentFrame = null;
   } else if (n === 10) {
@@ -48,15 +49,17 @@ Game.prototype._gameOver = function() {
 Game.prototype._currentScore = function() {
   var score = 0;
   for (i = 0; i < this.frames.length; i++) {
-    score += this._calculateFrame(this.frames[i], i)
+    score += this._calculateFrame(this.frames[i], i);
   };
-  return score
+  return score;
 };
 
 Game.prototype._calculateFrame = function(frame, i) {
-  return frame.score.reduce((a, b) => a + b, 0) + frame.bonus(this.frames[i+1], this.frames[i+2], this.currentFrame);
-}
+  return (
+    frame.score.reduce((a, b) => a + b, 0) + this._calculateBonus(frame, i)
+  );
+};
 
 Game.prototype._calculateBonus = function(frame, i) {
   return frame.bonus(this.frames[i+1], this.frames[i+2], this.currentFrame);
-}
+};

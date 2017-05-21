@@ -1,15 +1,16 @@
 var game = new Game();
+const finalCounter = 0;
 
 $('.bowl-number').on('click', function() {
   bowl = Number($(this).val())
   game.bowl(bowl);
+  updateScores();
   if (game.finalFrame.score.length > 0) {
-    updateScores();
     updateFinalFrame(bowl);
-  } else {
-    if (game.currentFrame) $('#frame' + game.frames.length + '-1').text(bowl);
-    updateScores();
+  } else if (game.currentFrame !== null) {
+    $('#frame' + game.frames.length + '-1').text(bowl);
   };
+  toggleOptions(bowl);
 });
 
 function updateScores() {
@@ -17,17 +18,16 @@ function updateScores() {
   var total = 0;
   game.frames.forEach(function(frame) {
     if (frame.isSpare()) {
-      console.log('Going here')
       $('#frame' + i + '-1').text(frame.score[0]);
       $('#frame' + i + '-2').text('/');
-      if (game._calculateBonus(frame, i) !== 0) {
-        total += game._calculateFrame(frame, i)
+      if (game._calculateBonus(frame, i) !== null) {
+        total += game._calculateFrame(frame, i);
         $('#score' + (i)).text(total);
-        i++;
-      }
+      };
+      i++;
     } else if (frame.isStrike()) {
         $('#frame' + i + '-2').text('X');
-        if (game._calculateBonus(frame, i) !== 0) {
+        if (game._calculateBonus(frame, i) !== null) {
           total += game._calculateFrame(frame, i)
           $('#score' + (i)).text(total);
         };
@@ -44,35 +44,61 @@ function updateScores() {
 
 function updateFinalFrame(bowl) {
   var frame = game.finalFrame;
-  var index = game.finalFrame.score.length;
-  for (i = 1; i <= game.finalFrame.score.length; i++) {
+  var index = frame.score.length;
+  for (i = 1; i <= frame.score.length; i++) {
     if (bowl !== 10) {
-      $('#frame9-' + i).text(bowl);
+      $('#frame9-' + index).text(game.storedBowl);
     } else {
-      $('#frame9-' + i).text('X');
+      $('#frame9-' + index).text('X');
     };
   };
   if (frame.score[0] + frame.score[1] === 10) {
     $('#frame9-2').text('/');
   };
   if (frame.isEnded()) {
-    console.log('Game over!')
     $('#score9').text(game.totalScore);
+    disableOptions(11);
   }
+  game.storedBowl = null;
+  for (i = 1; i <= frame.score.length; i++) {
+    if ($('#frame9-' + i).text() == 10) {
+      ($('#frame9-' + i).text('X'));
+    };
+  };
+  finalChecks();
 };
 
-function disableOptions(n) {
-  var i = 11 - n;
-  for (; i <= 10; i++) {
-    $('#' + i).attr("disabled", true);
+function finalChecks() {
+  if (game.frames[7].isStrike() && game.frames[8].isStrike()) {
+    game.frames[7].total = game.frames[7].total || $('#score7').text();
+    $('#score7').text(game.frames[7].total);
+  };
+  if (game.frames[8].isStrike() && game.finalFrame.score.length === 2) {
+    var bonus = game.finalFrame.score[0] + game.finalFrame.score[1] + 10;
+    var currentTotal = Number($('#score7').text());
+    game.frames[8].total = game.frames[8].total || currentTotal + bonus;
+    $('#score8').text(game.frames[8].total);
+  };
+};
+
+function toggleOptions(choice) {
+  if (game.finalFrame.score.length === 2 && !game.finalFrame.isEnded()) {
+    enableOptions();
+  } else if (game.currentFrame === null) {
+    enableOptions();
+  } else if (choice !== 10) {
+    disableOptions(choice);
   }
 }
 
-function gameOver() {
-  $('.bowl-number').hide();
-  $('#restart').show();
-}
+function disableOptions(choice) {
+  var i = 11 - choice;
+  for (; i <= 10; i++) {
+    $('#' + i).attr("disabled", true);
+  };
+};
 
 function enableOptions() {
+  console.log('hi')
   $('.bowl-number').attr("disabled", false);
-}
+};

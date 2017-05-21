@@ -53,13 +53,20 @@ Bowling.prototype.totalFrameScore = function() {
 };
 Bowling.prototype.totalBonus = function() {
   var totalBonus = 0;
-  for (var index = 0; index < (this._frames.length - 1); index++) {
-    if (this._frames[index].isSpare()) {
-      totalBonus += this._frames[index+1].getFirstScore();
-    } else if (this._frames[index].isStrike()) {
-      totalBonus += this._frames[index+1].getFrameScore();
-      if (this._frames[index+1] && this._frames[index+1].isStrike()) {
-        totalBonus += this._frames[index+2].getFirstScore();
+  for (var index = 1; index < (this._frames.length); index++) {
+    if (this._frames[index-1].isSpare()) {
+      totalBonus += this._frames[index].getFirstScore();
+    } else if (this._frames[index-1].isStrike()) {
+      if (index !== 9) {
+        if (!this._frames[index].isStrike()) {
+          totalBonus += this._frames[index].getFrameScore();
+        } else {
+          totalBonus += this._frames[index].getFrameScore();
+          totalBonus += this._frames[index+1].getFirstScore();
+        }
+      } else {
+         totalBonus += this._frames[index].getSecondScore();
+         totalBonus += this._frames[index].getThirdScore();
       }
     }
   }

@@ -77,6 +77,14 @@
       it('correctly accumulates bonus points for multiple strikes', function() {
         game.throwBall(10);
         game.throwBall(10);
+        game.throwBall(10);
+        game.throwBall(1);
+        game.throwBall(2);
+        expect(game.totalScore()).toBe(67);
+      });
+      it('correctly accumulates bonus points for multiple strikes', function() {
+        game.throwBall(10);
+        game.throwBall(10);
         game.throwBall(1);
         game.throwBall(2);
         expect(game.totalScore()).toBe(37);
@@ -130,6 +138,20 @@
         expect(game.totalScore()).toBe(16);
 
       });
+    });
+    it('can play a gutter game',function() {
+      var i;
+      for (i=0;i<20;i++) {
+        game.throwBall(0);
+      }
+      expect(game.totalScore()).toBe(0);
+    });
+    it('can play a perfect game',function() {
+      var i;
+      for (i=0;i<12;i++) {
+        game.throwBall(10);
+      }
+      expect(game.totalScore()).toBe(300);
     });
   });
 }());

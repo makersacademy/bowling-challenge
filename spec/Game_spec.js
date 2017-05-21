@@ -86,22 +86,6 @@ describe("#frame/roll functionality", function(){
     expect(game._standingPins).toEqual(10);
   });
 
-  // it("manages end game - frame not increased after 10", function(){
-  //     game._frame = 10
-  //     spyOn(game, 'pinsKnockdown').and.returnValues(5, 2);
-  //     game.bowl();
-  //     game.bowl();
-  //     expect(game._frame).toEqual(10);
-  //   });
-
-  // it("manages end game - extra roll for strike/spare", function(){
-  //     game._frame = 10
-  //     spyOn(game, 'pinsKnockdown').and.returnValues(5, 5);
-  //     game.bowl();
-  //     game.bowl();
-  //     expect(game._frame).toEqual(11);
-  //   });
-
   it("resets frame and roll on new game", function(){
       game._frame = 10;
       game._roll = 2;

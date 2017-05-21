@@ -10,7 +10,7 @@ function Frame(){
     {frame: []},
     {frame: []},
     {frame: []},
-    {bonusframe: []}
+    {frame: []}
   ]
   this.frameNumber = 0
   this.currentFrame = ''

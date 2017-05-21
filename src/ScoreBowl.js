@@ -12,8 +12,8 @@ ScoreBowl.prototype.evaluateScore = function(pinsObject, bowlsTrackerObject) {
 
 ScoreBowl.prototype.regularScore = function(pinsObject, bowlsTrackerObject) {
   if (_isfirstBowlInFrame(bowlsTrackerObject) && _isAStrike(pinsObject, bowlsTrackerObject)) {
-    this.record.push("X");
     this.record.push(null);
+    this.record.push("X");
   } else if (!_isfirstBowlInFrame(bowlsTrackerObject) && _isASpare(pinsObject, bowlsTrackerObject)) {
     this.record.push("/");
   } else if (_isAGutterBall(pinsObject, bowlsTrackerObject)) {

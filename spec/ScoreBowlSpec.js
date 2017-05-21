@@ -29,8 +29,8 @@ var scoreBowl;
 
   it("should record a regular strike", function(){
     bowlingBall.roll(pins, bowlsTracker, 10, scoreBowl);
-    expect(scoreBowl.record[0]).toBe("X");
-    expect(scoreBowl.record[1]).toBe(null);
+    expect(scoreBowl.record[0]).toBe(null);
+    expect(scoreBowl.record[1]).toBe("X");
   });
 
   it("should record a regular spare", function(){

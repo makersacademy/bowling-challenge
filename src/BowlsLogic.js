@@ -45,6 +45,14 @@ _isASpare = function(pinsObject, bowlsTrackerObject) {
   }
 };
 
+_isARegularFrame = function(pinsObject, bowlsTrackerObject) {
+  if ((bowlsTrackerObject._framePinsKnockedOver() <= 9) && (!_isfirstBowlInFrame(bowlsTrackerObject))) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 _finalFrameExtraBowlAcquired = function(pinsObject, bowlsTrackerObject) {
   if (bowlsTrackerObject._framePinsKnockedOver() >= 10) {
     return true;

@@ -1,9 +1,8 @@
 describe("Bowling", function() {
   var frame;
-  var game
+
 
   beforeEach(function() {
-    game = new Game();
     frame = new Frame();
   });
 
@@ -18,9 +17,11 @@ describe('frame score', function(){
     frame.secondBowl(0);
     expect(frame.score).toEqual(10)
   });
+  it('resets frame score in next frame', function(){
+    frame.firstBowl(6);
+    frame.nextFrame();
+    expect(frame.score).toEqual(0)
   });
-describe('game score', function(){
-  it("adds the frame score to the total")
-   game.
-}
-});
+  });
+
+})

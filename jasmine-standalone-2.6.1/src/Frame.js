@@ -14,6 +14,10 @@ Frame.prototype.secondBowl = function(pins){
   };
 };
 
+Frame.prototype.nextFrame = function(){
+this.score = 0
+};
+
 function Game(){
   this.total = []
 }

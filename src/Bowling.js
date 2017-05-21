@@ -1,5 +1,6 @@
 function Bowling() {
   this.rolls = [];
+  this.frameScores = [];
 }
 
 Bowling.prototype.roll = function(pins) {

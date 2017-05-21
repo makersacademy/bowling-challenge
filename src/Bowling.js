@@ -77,4 +77,8 @@ Bowling.prototype.calculateScore = function() {
 
 function add(a, b) {
     return a + b;
-}
+};
+
+Bowling.prototype.isGutterGame = function() {
+  return (this.calculateScore() === 0);
+};

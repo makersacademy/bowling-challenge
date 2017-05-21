@@ -70,3 +70,10 @@ it ('calculates total score up the this moment', function(){
 
   expect(game.calculateScore()).toEqual(20);
 });
+
+it ('knows when to declare Gutter Game', function(){
+  spyOn(game, 'calculateScore').and.returnValue(0);
+  spyOn(game, 'currentFrame').and.returnValue(11);
+  
+  expect(game.isGutterGame()).toEqual(true);
+});

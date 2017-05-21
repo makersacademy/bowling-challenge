@@ -2,6 +2,7 @@ var FrameFile = (function() {
   'use strict';
   var Frame = function(game, isTenth) {
     this.active = false;
+    this._nextFrameActivated = false;
     this._priorScore = null;
     this._game = game;
     this._rolls = {
@@ -52,15 +53,22 @@ var FrameFile = (function() {
   };
 
   Frame.prototype._activateNextFrameIfAppropriate = function() {
-    if (this._roll3 !== null) {
-      return;
-    }
-    if (this._roll1 === 10 && this._roll2 === null) {
-      this._game.activateNextFrame();
-    } else if (this._roll1 !== 10 && this._roll2 !== null) {
-      this._game.activateNextFrame();
+    if (this._nextFrameShouldBeActive()) {
+      this._activateNextFrame();
     }
   };
+
+  Frame.prototype._nextFrameShouldBeActive = function() {
+    return (this.box1() === 'X' || this._nextRoll === 3);
+  };
+
+  Frame.prototype._activateNextFrame = function() {
+    if (this._nextFrameActivated === false) {
+      this._game.activateNextFrame();
+      this._nextFrameActivated = true;
+    }
+  };
+
 
   Frame.prototype._deactivateSelfIfAppropriate = function() {
     if (this._nextRoll > 3) {
@@ -95,8 +103,6 @@ var FrameFile = (function() {
   Frame.prototype.box2 = function() {
     if (this.box1() === 'X') {
       return null;
-//  } else if (this._rolls[2] === null) {
-//    return null;
     } else if (this._rolls[1] + this._rolls[2] === 10) {
       return '/';
     } else { 
@@ -109,26 +115,26 @@ var FrameFile = (function() {
       throw "Error: This isn't a tenth frame";
     } else if (this._rolls[2] === 10) {
       return 'X';
-    } else if (this._roll2 === null) {
+    } else if (this._rolls[2] === null) {
       return null;
-    } else if (this._roll1 + this._roll2 === 10) {
+    } else if (this._rolls[1] + this._rolls[2] === 10) {
       return '/';
     } else {
-      return this._roll2;
+      return this._rolls[2];
     }
   };
   Frame.prototype.frame10Box3 = function() {
     if (this._isTenth === false) {
       throw "Error: This isn't a tenth frame";
     }
-    if (this._roll3 === 10) {
+    if (this._rolls[3] === 10) {
       return 'X';
-    } else if (this._roll3 === null) {
+    } else if (this._rolls[3] === null) {
       return null;
-    } else if (this._roll2 + this._roll3 === 10) {
+    } else if (this._rolls[2] + this._rolls[3] === 10) {
       return '/';
     } else {
-      return this._roll3;
+      return this._rolls[3];
     }
   };
 

@@ -58,7 +58,7 @@ Bowling.prototype.showButtons = function () {
   }
 };
 
-Bowling.prototype.addBonuses = function (array) {
+Bowling.prototype.addBonusesTenthFrame = function (array) {
   array.forEach(function(frame, index, array){
     if ( frame.isSpare() && frame._updated == false) {
       if (index < 9) {
@@ -98,6 +98,33 @@ Bowling.prototype.addBonuses = function (array) {
   }) // close forEach
 
 } // close function
+
+Bowling.prototype.addBonusesFrameNinthFrameOrLess = function (array) {
+  array.forEach(function(frame, index, array){
+    if ( frame.isStrike() && frame._updated == false) {
+      var nextFrame = array[index + 1]
+      var twoFramesAfter = array[index + 2]
+      if (nextFrame._finished == true ) {
+        if ( nextFrame.isStrike() ) {
+          frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
+          frame._score += parseInt(twoFramesAfter._rolls[0]._pinsDown)
+        } else {
+          frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
+          frame._score += parseInt(nextFrame._rolls[1]._pinsDown)
+        }
+        // console.log('just updated a strike frame')
+        frame._updated = true
+      }
+    } else if ( frame.isSpare() && frame._updated == false) {
+      var nextFrame = array[index + 1]
+      if (nextFrame._finished == true ) {
+        frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
+        // console.log('just updated a spare frame')
+        frame._updated = true
+      }
+    }
+  }) // close forEach
+}
 
 
 function allRollsOver(roll, index, array){
@@ -139,30 +166,8 @@ Bowling.prototype.roll = function (pinsDown) {
 
       // update strike bonus
       // does not update until next frame is complete
-      this._frames.forEach(function(frame, index, array){
-        if ( frame.isStrike() && frame._updated == false) {
-          var nextFrame = array[index + 1]
-          var twoFramesAfter = array[index + 2]
-          if (nextFrame._finished == true ) {
-            if ( nextFrame.isStrike() ) {
-              frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
-              frame._score += parseInt(twoFramesAfter._rolls[0]._pinsDown)
-            } else {
-              frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
-              frame._score += parseInt(nextFrame._rolls[1]._pinsDown)
-            }
-            // console.log('just updated a strike frame')
-            frame._updated = true
-          }
-        } else if ( frame.isSpare() && frame._updated == false) {
-          var nextFrame = array[index + 1]
-          if (nextFrame._finished == true ) {
-            frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
-            // console.log('just updated a spare frame')
-            frame._updated = true
-          }
-        }
-      }) // close forEach
+      this.addBonusesFrameNinthFrameOrLess(this._frames)
+
 
     } else if ( frameIndex == 9 ) { // close if (frameIndex <= 9 )
       // update strike bonus
@@ -212,7 +217,7 @@ Bowling.prototype.roll = function (pinsDown) {
     }
 
     // adding bonuses
-    this.addBonuses(this._frames);
+    this.addBonusesTenthFrame(this._frames);
 
   } // close 10th frame
 

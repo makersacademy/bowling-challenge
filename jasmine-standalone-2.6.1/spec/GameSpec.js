@@ -24,6 +24,14 @@ describe('Game', function(){
       expect(game.score()).toBe(16);
     });
 
+    it('can roll a strike', function (){
+      game.roll(10);
+      game.roll(6);
+      game.roll(1);
+      rollMany(0, 16);
+      expect(game.score()).toBe(24);
+    });
+
     var rollMany = function (pins, rolls) {
       for (var i = 0; i < rolls; i++) {
         game.roll(pins);

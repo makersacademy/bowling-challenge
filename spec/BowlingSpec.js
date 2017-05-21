@@ -48,5 +48,15 @@
       }
       expect(function() {game.newFrame();}).toThrow(new Error('Game over bud, go home.'));
     });
+    describe('Scoring', function() {
+      it('can give a running total score from all frames played', function() {
+        game.throwBall(1);
+        game.throwBall(2);
+        game.throwBall(3);
+        game.throwBall(4);
+        game.throwBall(5);
+        expect(game.totalScore()).toBe(15);
+      });
+    });
   });
 }());

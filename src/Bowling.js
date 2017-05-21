@@ -28,3 +28,11 @@ Bowling.prototype.getFrames = function() { return this._frames; };
 Bowling.prototype.getCurrentFrame = function() {
   return this._frames[this._currentFrameId];
 };
+Bowling.prototype.totalScore = function() {
+  var totalScore = 0;
+  this._frames.forEach(function(frame) {
+    totalScore += frame.getFirstScore();
+     if (frame.getSecondScore()) {totalScore += frame.getSecondScore();}
+  });
+  return totalScore;
+};

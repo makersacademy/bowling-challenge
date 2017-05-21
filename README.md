@@ -23,6 +23,14 @@ As usual please start by
 
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
+
+### Instructions
+
+$ git clone https://github.com/chrisjmit/bowling-challenge.git
+$ cd bowling-challenge
+$ open SpecRunner.html via Google Chrome
+
+
 ### Optional Extras
 
 In any order you like:

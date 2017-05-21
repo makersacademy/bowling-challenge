@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <link rel="stylesheet" href="jquery.progressbar.css">
+    <script src='jquery-3.2.1.js' > </script>
+  <script type = "text/javascript" language = "javascript">
+          $(document).ready(function() {
+             $("p").css("background-color", "yellow");
+          });
+       </script>
+
+
+</head>
+
+<body>
+
+  <div id="steps"></div>
+
+  <div class='container'>
+    <h1> BOWLING SCORER </h1>
+    <h2> Frame Score  <span id='pins'></span> </h2>
+    <h3> Total Score </h3>
+
+  </div>
+        <label>
+          <button onclick='firstFrame()'; id = 'firstFrame' > Add to 1st Frame </button>
+        </label>
+        <label>
+          <button onclick='secondFrame()'; id = 'secondFrame' > Add to 2nd Frame </button>
+</label>
+<label>
+  <button onclick='next()'; > NEXT </button>
+</label>
+
+<script type='text/javascript' src="jasmine-standalone-2.6.1/src/bowling.js"></script>
+<script>
+var frame = new Frame
+function firstFrame(){
+frame.firstBowl(1)
+$('#pins').text(frame.score);
+;}
+function secondFrame(){
+frame.firstBowl(1)
+$('#pins').text(frame.score);
+;}
+function next(){
+frame.nextFrame()
+$('#pins').text(frame.score);
+};
+</script>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="jquery.progressbar.js"></script>
+
+</body>
+</html>

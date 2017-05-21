@@ -1,3 +1,4 @@
+var bowling = require('bowling.js')
 var game = new Bowling ();
 
 var buttons = document.getElementsByClassName('btn-lg');

@@ -1,5 +1,5 @@
 describe('Bowling', function () {
-  var setUpHTMLFixture = = require('./js/htmlFixtures.js');
+  var setUpHTMLFixture = require('./js/htmlFixtures.js');
   var bowlingGame;
 
   beforeEach(function () {

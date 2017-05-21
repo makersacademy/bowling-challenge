@@ -4,11 +4,13 @@ describe("Frame Logic", function() {
 var bowlsTracker
 var pins;
 var bowlingBall;
+var scoreBowl;
 
   beforeEach(function() {
     bowlsTracker = new BowlsTracker();
     pins = new Pins();
     bowlingBall = new BowlingBall();
+    scoreBowl = new ScoreBowl();
   });
 
 it("can evaluate that it is the first bowl in a frame", function(){
@@ -16,7 +18,7 @@ it("can evaluate that it is the first bowl in a frame", function(){
 });
 
 it("can evaluate that it is the second bowl in a frame", function(){
-  bowlingBall.roll(pins, bowlsTracker, 6);
+  bowlingBall.roll(pins, bowlsTracker, 6, scoreBowl);
   expect(_isfirstBowlInFrame(bowlsTracker)).toBe(false);
 });
 

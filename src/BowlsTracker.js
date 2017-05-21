@@ -3,8 +3,9 @@ function BowlsTracker() {
   this.bowlsRecord = [];
 }
 
-BowlsTracker.prototype._recordRoll = function (pinsKnockedDown, pinsObject) {
+BowlsTracker.prototype._recordRoll = function (pinsKnockedDown, pinsObject, scoreBowlObject) {
   this.bowlsRecord.push(pinsKnockedDown);
+  scoreBowlObject.evaluateScore(pinsObject, this)
   _evaluateBowl(pinsObject, this);
   this._reduceAvailableBowls();
 }
@@ -15,6 +16,10 @@ BowlsTracker.prototype._reduceAvailableBowls = function () {
 
 BowlsTracker.prototype._currentPinsKnockedOver = function () {
   return this.bowlsRecord[(this._currentBowl())];
+}
+
+BowlsTracker.prototype._previousPinsKnockedOver = function () {
+  return this.bowlsRecord[(this._previousBowl())];
 }
 
 BowlsTracker.prototype._framePinsKnockedOver = function () {

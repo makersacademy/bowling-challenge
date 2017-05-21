@@ -7,7 +7,7 @@ describe("Play", function() {
 
   describe("calculate score", function() {
     it("returns the score from the scoreCalculator", function() {
-      spyOn(play._scoreCalculator,"calculateTotal").and.returnValue(1);
+      spyOn(play._scoreCalculator,"calculateTotal").and.returnValue(1)
       expect(play.calculate()).toEqual(1)
     })
   })
@@ -29,5 +29,26 @@ describe("Play", function() {
     })
   })
 
+  describe("permitted value", function() {
+    it("returns the true if first roll <= 10", function() {
+      expect(play.permittedValue(10)).toBeTruthy()
+    })
+
+    it("returns the false if first roll > 10", function() {
+      expect(play.permittedValue(11)).toBeFalsy()
+    })
+
+    it("returns the true if first+second roll <= 10", function() {
+      play.knockDown(5)
+      spyOn(play._lastFrame(),"isComplete").and.returnValue(false)
+      expect(play.permittedValue(5)).toBeTruthy()
+    })
+
+    it("returns the false if first+second roll > 10", function() {
+      play.knockDown(5)
+      spyOn(play._lastFrame(),"isComplete").and.returnValue(false)
+      expect(play.permittedValue(6)).toBeFalsy()
+    })
+  })
 
 })

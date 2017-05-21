@@ -2,10 +2,20 @@ function Bowling(play) {
   this._play = typeof play !== "undefined" ?
                           play : new Play()
   this._tableCell = 0
+  this._rolls = []
 }
 
 Bowling.prototype.knockDown = function(pins) {
-  this._play.knockDown(pins)
+  if(this.permittedValue(pins)) {
+    this._play.knockDown(pins)
+    this.addRoll(pins)
+  } else {
+    throw new Error("Can't score more than 10 per frame!")
+  }
+}
+
+Bowling.prototype.addRoll = function(pins) {
+  this._rolls.push(pins)
 }
 
 Bowling.prototype.calculateTotal = function() {
@@ -22,4 +32,12 @@ Bowling.prototype.incrementTableCell = function(pinsDown) {
   } else {
     return this._tableCell += 1
   }
+}
+
+Bowling.prototype.rolls = function() {
+  return this._rolls
+}
+
+Bowling.prototype.permittedValue = function (pinsDown) {
+  return this._play.permittedValue(pinsDown)
 }

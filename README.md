@@ -3,7 +3,7 @@ Bowling Challenge
 =================
 
 ```
-![Image of the Scorecard](scorecard.png)
+![Image of the Scorecard](images/scorecard.png)
 ```
 
 An interactive bowling scorecard written in Javascript.

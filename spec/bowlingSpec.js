@@ -1,7 +1,8 @@
 describe('Bowling', function () {
-  
+
   var setUp2 = require('../lib/jasmine-2.6.1/jasmine-jquery.js');
   var setUpHTMLFixture = require('../js/htmlFixtures');
+
   var bowlingGame;
 
   beforeEach(function () {

@@ -74,6 +74,12 @@ it ('calculates total score up the this moment', function(){
 it ('knows when to declare Gutter Game', function(){
   spyOn(game, 'calculateScore').and.returnValue(0);
   spyOn(game, 'currentFrame').and.returnValue(11);
-  
+
   expect(game.isGutterGame()).toEqual(true);
+});
+
+it ('knows when to declare Perfect Game', function(){
+  spyOn(game, 'calculateScore').and.returnValue(300);
+  spyOn(game, 'currentFrame').and.returnValue(11);
+  expect(game.isPerfectGame()).toEqual(true);
 });

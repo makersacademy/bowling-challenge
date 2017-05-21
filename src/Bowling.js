@@ -82,3 +82,7 @@ function add(a, b) {
 Bowling.prototype.isGutterGame = function() {
   return (this.calculateScore() === 0);
 };
+
+Bowling.prototype.isPerfectGame = function() {
+  return (this.calculateScore() === 300);
+};

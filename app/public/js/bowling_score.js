@@ -119,6 +119,7 @@ Bowling_score.prototype.final_frame_scoring = function() {
 Bowling_score.prototype.antepenultimate_accumulate_strike_strike = function() {
   if (this.current_roll !== 3) {
     this.antepenultimate.round_score = (this.BONUS_SCORE * 2) + this.frame_sum;
+    this.penultimate_accumulate_strike();
   } else {
     this.antepenultimate_accumulator_on_finish();
   };

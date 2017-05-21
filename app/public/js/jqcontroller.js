@@ -49,7 +49,8 @@ $(document).ready(function() {
 
   function display_frame_score() {
     for ( i = 0; i < bowling_game.game_results.length; i++ ) {
-        $("#frames-result").append("<div class='col-md-1'>" + bowling_game.game_results[i].round_score + "</div>")
+        display_score = hide_bonus_score_until_complete();
+        $("#frames-result").append("<div class='col-md-1'>" + display_score + "</div>")
     }
   }
 
@@ -59,8 +60,13 @@ $(document).ready(function() {
     } else if (bowling_game.game_results[i].bonus === 'spare') {
       return '/'
     } else {
-    return bowling_game.game_results[i].roll_results[0] + '  ' + bowling_game.game_results[i].roll_results[1]
+    return bowling_game.game_results[i].roll_results[0] + '|' + bowling_game.game_results[i].roll_results[1]
     }
+  }
+
+  function hide_bonus_score_until_complete() {
+    if (bowling_game.game_results[i].bonus !== 'undefined' && bowling_game.game_results[i].round_score === 0) return '';
+    return bowling_game.game_results[i].round_score
   }
 
   function reset_window() {

@@ -82,5 +82,18 @@
         expect(game.totalScore()).toBe(37);
       });
     });
+    describe('Final Frame', function() {
+      it('has an extra throw if spare', function() {
+        var i;
+        for (i=0;i<18;i++) {
+          game.throwBall(0);
+        }
+        game.throwBall(5);
+        game.throwBall(5);
+        expect(function() {game.throwBall(5);}).not.toThrow(new Error('Game over bud, go home.'));
+        expect(game.getCurrentFrame().getThirdScore()).toBe(5);
+        expect(function() {game.throwBall(5);}).toThrow(new Error('Game over bud, go home.'));
+      });
+    });
   });
 }());

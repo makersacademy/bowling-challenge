@@ -3,6 +3,7 @@ function Game() {
   this.totalScore = 0;
   this.currentFrame = null;
   this.finalFrame = new FinalFrame();
+  this.storedBowl = null;
 };
 
 Game.prototype.bowl = function(roll) {
@@ -24,9 +25,10 @@ Game.prototype._standardBowl = function(n) {
   this._calculateScore();
 };
 
-Game.prototype._finalBowl = function(n) {
-  this.currentFrame = n;
-  this.finalFrame.addBowl(n);
+Game.prototype._finalBowl = function(bowl) {
+  this.storedBowl = this.storedBowl || bowl;
+  this.currentFrame = bowl;
+  this.finalFrame.addBowl(bowl);
   this._calculateScore();
 };
 
@@ -56,6 +58,5 @@ Game.prototype._calculateFrame = function(frame, i) {
 }
 
 Game.prototype._calculateBonus = function(frame, i) {
-  console.log('current frame is', this.currentFrame)
   return frame.bonus(this.frames[i+1], this.frames[i+2], this.currentFrame);
 }

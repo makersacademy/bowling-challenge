@@ -3,8 +3,13 @@ var game = new Game();
 $('.bowl-number').on('click', function() {
   bowl = Number($(this).val())
   game.bowl(bowl);
-  if (game.currentFrame) { $('#frame' + game.frames.length + '-1').text(bowl) };
-  updateScores();
+  if (game.finalFrame.score.length > 0) {
+    updateScores();
+    updateFinalFrame(bowl);
+  } else {
+    if (game.currentFrame) $('#frame' + game.frames.length + '-1').text(bowl);
+    updateScores();
+  };
 });
 
 function updateScores() {
@@ -12,6 +17,7 @@ function updateScores() {
   var total = 0;
   game.frames.forEach(function(frame) {
     if (frame.isSpare()) {
+      console.log('Going here')
       $('#frame' + i + '-1').text(frame.score[0]);
       $('#frame' + i + '-2').text('/');
       if (game._calculateBonus(frame, i) !== 0) {
@@ -20,10 +26,7 @@ function updateScores() {
         i++;
       }
     } else if (frame.isStrike()) {
-        console.log('what even')
         $('#frame' + i + '-2').text('X');
-        console.log(i);
-        console.log('the bonus is', game._calculateBonus(frame, i))
         if (game._calculateBonus(frame, i) !== 0) {
           total += game._calculateFrame(frame, i)
           $('#score' + (i)).text(total);
@@ -39,19 +42,23 @@ function updateScores() {
   });
 };
 
-function updateFirstBowl(bowl) {
-  if (game.frames.length >= 9) {
-    finalFrameScore(bowl);
-  } else {
-    $('#frame' + game.frames.length + '-1').text(bowl);
+function updateFinalFrame(bowl) {
+  var frame = game.finalFrame;
+  var index = game.finalFrame.score.length;
+  for (i = 1; i <= game.finalFrame.score.length; i++) {
+    if (bowl !== 10) {
+      $('#frame9-' + i).text(bowl);
+    } else {
+      $('#frame9-' + i).text('X');
+    };
   };
-};
-
-function finalFrameScore(bowl) {
-  $('#frame9-' + game.finalFrame.score.length).text(bowl);
-  if (game.finalFrame.isEnded()) {
-    updateScores();
+  if (frame.score[0] + frame.score[1] === 10) {
+    $('#frame9-2').text('/');
   };
+  if (frame.isEnded()) {
+    console.log('Game over!')
+    $('#score9').text(game.totalScore);
+  }
 };
 
 function disableOptions(n) {

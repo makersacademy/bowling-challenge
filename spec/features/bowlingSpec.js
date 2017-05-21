@@ -75,7 +75,7 @@ describe("Feature Tests", function() {
       game.bowl(10);
     }
     game.bowl(3);
-    expect(game.totalScore).toEqual(23);
+    expect(game.totalScore).toEqual(36);
   });
 
   it('calculates basic full game with strikes', function() {

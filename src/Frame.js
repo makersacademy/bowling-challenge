@@ -11,6 +11,9 @@ Frame.prototype.isStrike = function() {
 };
 
 Frame.prototype.bonus = function(second_frame, third_frame, unfinished_frame) {
+  if (this.isStrike() && second_frame && second_frame.isStrike() && unfinished_frame === 0) {
+    return 10 + unfinished_frame;
+  };
   if (!this.isStrike() && !this.isSpare()) {
     return 0;
   } else if (this.isSpare() && !second_frame && unfinished_frame === 0) {

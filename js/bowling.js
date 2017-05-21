@@ -230,3 +230,5 @@ Bowling.prototype.roll = function (pinsDown) {
   this.updateTotalScore()
 
 };
+
+module.exports = Bowling;

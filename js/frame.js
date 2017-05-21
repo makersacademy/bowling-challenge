@@ -1,4 +1,4 @@
-var roll = require('roll.js');
+var roll = require('Roll');
 
 var Frame = function () {
   this._score = 0

@@ -63,13 +63,13 @@ describe("#frame/roll functionality", function(){
   });
 
   it("increments frame ", function(){
-    game._standingPins = 0
+    game._standingPins = 0;
     game.frameIncrement();
     expect(game._frame).toEqual(2);
   });
 
   it("manages frame and roll logic", function(){
-    game._standingPins = 0
+    game._standingPins = 0;
     game.frameAndRoll();
     expect(game._frame).toEqual(2);
     expect(game._roll).toEqual(1);
@@ -103,8 +103,8 @@ describe("#frame/roll functionality", function(){
   //   });
 
   it("resets frame and roll on new game", function(){
-      game._frame = 10
-      game._roll = 2
+      game._frame = 10;
+      game._roll = 2;
       game.newGame();
       expect(game._frame).toEqual(1);
       expect(game._frame).toEqual(1);

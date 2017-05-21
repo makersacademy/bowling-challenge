@@ -50,6 +50,10 @@ Game.prototype.frameAndRoll = function(){
 
 Game.prototype.endGameCheck = function(){
   if(this._frame === 10){
+    this._rollScore1 =this.pinsKnockdown();
+    this._rollScore2 = 0;
+    this._standingPins = 0;
+    this._maxRounds = 10;
     this._gameOver = ("You reached the maximum number of frames!\nGame is finished!");
   }
 };

@@ -6,11 +6,10 @@
     <script src='src/interface.js'></script>
     <link rel="stylesheet" type="text/css" href="./public/style.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-     <title>Thermostat </title>
+     <title>Bowling </title>
     </head>
-    <body>
-            <!-- <center> -->
-      <h1 id="bowling">Hello</h1>
+    <body>            <!-- <center> -->
+      <h1 id="bowling">Welcome to bowling challenge</h1>
 
       <h2 class="top" > Total score : </h2 ><h2  class="top" id='total_score'></h2>
 
@@ -23,8 +22,8 @@
 
 
     <div class ='button'>
-        <button id='bowl'><a onmousedown="beep1.play();">Bowl</button></a>
-        <button id='new_game'><a onmousedown="beep2.play();">New Game</button></a>
+        <button id='bowl' onmousedown="beep1.play();">Bowl</button>
+        <button id='new_game' onmousedown="beep2.play();">New Game</button>
     </div>
 
     <div >
@@ -37,6 +36,12 @@
 <div class="se-pre-con"></div>
 <div></div>
 <img src="giphy.gif">
+<div class= 'video_wrapper' >
 
+<video poster = 'poster.png' autoplay='true' preload='auto' loop='loop'>
+    <source src='video.mp4'  type='video/mp4'>
+    <source src='video.webm'  type='video/webm'>
+</video>
+</div>
     </body>
 </html>

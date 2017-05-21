@@ -58,6 +58,51 @@ Bowling.prototype.showButtons = function () {
   }
 };
 
+Bowling.prototype.addBonuses = function (array) {
+  array.forEach(function(frame, index, array){
+    if ( frame.isSpare() && frame._updated == false) {
+      if (index < 9) {
+      var nextFrame = array[index + 1]
+      if (nextFrame._finished == true ) {
+        frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
+        frame._updated = true
+      }
+      }
+    }
+
+    if ( frame.isStrike() && frame._updated == false) {
+
+      if ( index == 7 ) { // 8th frame
+        var nextFrame = array[index + 1]
+        var twoFramesAfter = array[index + 2]
+        if (nextFrame._finished == true ) {
+          if ( nextFrame.isStrike() ) {
+            frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
+            frame._score += parseInt(twoFramesAfter._rolls[0]._pinsDown)
+          } else {
+            frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
+            frame._score += parseInt(nextFrame._rolls[1]._pinsDown)
+          }
+          frame._updated = true
+        }
+      } else if (index == 8) {  // 9th frame
+        var nextFrame = array[index + 1]
+        if (nextFrame._finished == true) {
+          frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
+          frame._score += parseInt(nextFrame._rolls[1]._pinsDown)
+          frame._updated = true
+        }
+      }
+    }
+
+  }) // close forEach
+
+} // close function
+
+
+function allRollsOver(roll, index, array){
+  return roll._finished === true
+}
 
 Bowling.prototype.roll = function (pinsDown) {
 
@@ -144,6 +189,8 @@ Bowling.prototype.roll = function (pinsDown) {
 
     roll.knockPinsDown(pinsDown)
 
+    this.hideButtons(rollIndex, pinsDown)
+
     frameToPlay._score += parseInt(roll._pinsDown)
 
     this.updateRollScoreSheet(frameIndex, rollIndex, pinsDown)
@@ -157,9 +204,7 @@ Bowling.prototype.roll = function (pinsDown) {
     }
 
     roll._finished = true
-    function allRollsOver(roll, index, array){
-      return roll._finished === true
-    }
+
 
     if (  frameToPlay._rolls.every(allRollsOver)  ){
       this.updateFrameScoreSheet(frameIndex, frameToPlay)
@@ -167,52 +212,10 @@ Bowling.prototype.roll = function (pinsDown) {
     }
 
     // adding bonuses
-    this._frames.forEach(function(frame, index, array){
-      if ( frame.isSpare() && frame._updated == false) {
-        if (index < 9) {
-        var nextFrame = array[index + 1]
-        // console.log(index + ' ok')
-        if (nextFrame._finished == true ) {
-          frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
-          // console.log('just updated a spare frame')
-          frame._updated = true
-        }
-        }
-      }
-
-      if ( frame.isStrike() && frame._updated == false) {
-
-        if ( index == 7 ) { // 8th frame
-          var nextFrame = array[index + 1]
-          var twoFramesAfter = array[index + 2]
-          if (nextFrame._finished == true ) {
-            if ( nextFrame.isStrike() ) {
-              frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
-              frame._score += parseInt(twoFramesAfter._rolls[0]._pinsDown)
-            } else {
-              frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
-              frame._score += parseInt(nextFrame._rolls[1]._pinsDown)
-            }
-            frame._updated = true
-          }
-        } else if (index == 8) {  // 9th frame
-          var nextFrame = array[index + 1]
-          if (nextFrame._finished == true) {
-            frame._score += parseInt(nextFrame._rolls[0]._pinsDown)
-            frame._score += parseInt(nextFrame._rolls[1]._pinsDown)
-            // frame._score += parseInt(nextFrame._rolls[1]._pinsDown)
-            frame._updated = true
-          }
-        }
-      }
-
-    }) // close forEach
+    this.addBonuses(this._frames);
 
   } // close 10th frame
 
-  function allRollsOver(roll, index, array){
-    return roll._finished === true
-  }
 
   if (  frameToPlay._rolls.every(allRollsOver)  ){
     this.updateFrameScoreSheet(frameIndex, frameToPlay)

@@ -2,6 +2,7 @@ var FrameFile = (function() {
   'use strict';
   var Frame = function(game, isTenth) {
     this.active = false;
+    this._hasBeenDeactivated = false;
     this._nextFrameActivated = false;
     this._priorScore = null;
     this._game = game;
@@ -38,6 +39,7 @@ var FrameFile = (function() {
   };
   Frame.prototype.deactivate = function() {
     this.active = false;
+    this._hasBeenDeactivated = true;
   };
 
   Frame.prototype._nextRollIsBonus = function() {
@@ -94,7 +96,7 @@ var FrameFile = (function() {
   };
 
   Frame.prototype.totalScore = function() {
-    if (this.isActive()) {
+    if (!this._hasBeenDeactivated) {
       return null;
     } else {
       return this._priorScore + this._rollSum();

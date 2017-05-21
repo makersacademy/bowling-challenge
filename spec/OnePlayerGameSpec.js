@@ -18,6 +18,11 @@
       expect(frame2.activate).toHaveBeenCalled();
     });
 
+    it('updates latest active frame when activating new frame', function() {
+      for (var i = 1; i <= 2; i++) { onePlayerGame.roll(4); }
+      expect(onePlayerGame.latestActiveFrame).toBe(frame2);
+    });
+
     it('activates next frame after one rolls if strike', function() {
       spyOn(frame2, 'activate');
       onePlayerGame.roll(10);

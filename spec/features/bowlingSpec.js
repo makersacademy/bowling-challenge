@@ -59,4 +59,40 @@ describe("Feature Tests", function() {
     game.bowl(5);
     expect(game.totalScore).toEqual(28)
   });
+
+  it('calculates sequential strike scores', function() {
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(4);
+    game.bowl(3);
+    expect(game.totalScore).toEqual(78);
+  });
+
+  it('calculates strikes scores with partial frames', function() {
+    var i = 0;
+    for (; i < 2; i++) {
+      game.bowl(10);
+    }
+    game.bowl(3);
+    expect(game.totalScore).toEqual(23);
+  });
+
+  it('calculates basic full game with strikes', function() {
+    var i = 0;
+    for (; i < 9; i++) {
+      game.bowl(10);
+    }
+    game.bowl(3);
+    game.bowl(4);
+    expect(game.totalScore).toEqual(257);
+  });
+
+  it('calculates full game with strikes', function() {
+    var i = 0;
+    for (; i < 12; i++) {
+      game.bowl(10);
+    }
+    expect(game.totalScore).toEqual(300);
+  });
 });

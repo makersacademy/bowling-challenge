@@ -1,28 +1,26 @@
 var Bowling = function() {
   this._pinsLeft = 10;
   this._frames = [];
-  this._currentFrameId = -1;
+  this._currentFrameID = -1;
 };
-Bowling.prototype.pinsLeft = function() { return this._pinsLeft; };
+Bowling.prototype.isNewGame = function() { return this._currentFrameID === -1; };
 Bowling.prototype.throwBall = function(pinsHit) {
-  if ((!this.isFinalFrame()) &&
-      (this._currentFrameId === -1 ||
-       this.getCurrentFrame().isOver())) {
+  if (!this.isFinalFrame() &&
+      (this.isNewGame() || this.getCurrentFrame().isOver())) {
     this.newFrame();
-    this._pinsLeft -= pinsHit;
-    this.getCurrentFrame().score(pinsHit);
-    this.resetPins();
+    this.hitPins(pinsHit);
   } else if (this.isFinalFrame() && !this.isFinalFrameOver()) {
-    this._pinsLeft -= pinsHit;
-    this.getCurrentFrame().score(pinsHit);
-    this.resetPins();
+    this.hitPins(pinsHit);
   } else if (this.isGameOver()) {
     throw new Error('Game over bud, go home.');
   } else {
-    this._pinsLeft -= pinsHit;
-    this.getCurrentFrame().score(pinsHit);
-    this.resetPins();
+    this.hitPins(pinsHit);
   }
+};
+Bowling.prototype.hitPins = function(pinsHit) {
+  this._pinsLeft -= pinsHit;
+  this.getCurrentFrame().score(pinsHit);
+  this.resetPins();
 };
 Bowling.prototype.isFinalFrame = function() { return (this._frames.length === 10); };
 Bowling.prototype.isFinalFrameOver = function() {
@@ -40,34 +38,33 @@ Bowling.prototype.isGameOver = function() {
 };
 Bowling.prototype.newFrame = function() {
   if (this.isGameOver()) { throw new Error('Game over bud, go home.'); }
-  this._currentFrameId += 1;
+  this._currentFrameID += 1;
   this._frames.push(new Frame());
 };
-Bowling.prototype.getFrames = function() { return this._frames; };
 Bowling.prototype.getCurrentFrame = function() {
-  return this._frames[this._currentFrameId];
+  return this._frames[this._currentFrameID];
 };
-Bowling.prototype.totalScore = function() {
-  var totalScore = 0;
+Bowling.prototype.totalFrameScore = function() {
+  var totalFrameScore = 0;
   this._frames.forEach(function(frame) {
-    totalScore += frame.getFrameScore();
+    totalFrameScore += frame.getFrameScore();
   });
+  return totalFrameScore;
+};
+Bowling.prototype.totalBonus = function() {
+  var totalBonus = 0;
   for (var index = 0; index < (this._frames.length - 1); index++) {
     if (this._frames[index].isSpare()) {
-      totalScore += this._frames[index+1].getFirstScore();
+      totalBonus += this._frames[index+1].getFirstScore();
     } else if (this._frames[index].isStrike()) {
-      totalScore += this._frames[index+1].getFrameScore();
-      if (this._frames[index+1].isStrike()) {
-        totalScore += this._frames[index+2].getFirstScore();
+      totalBonus += this._frames[index+1].getFrameScore();
+      if (this._frames[index+1] && this._frames[index+1].isStrike()) {
+        totalBonus += this._frames[index+2].getFirstScore();
       }
     }
   }
-  return totalScore;
+  return totalBonus;
 };
-Bowling.prototype.getFinalFrameScore = function() {
-  var finalFrameScore = 0;
-  if (this.isFinalFrame()) {
-     finalFrameScore += this.getCurrentFrame().getFrameScore();
-  }
-  return finalFrameScore;
+Bowling.prototype.totalScore = function() {
+  return this.totalFrameScore() + this.totalBonus();
 };

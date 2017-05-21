@@ -1,16 +1,8 @@
 describe('ScoreCard', function() {
   var scoreCard = new ScoreCard();
 
-    it('has complete hash by default', function() {
-      expect(scoreCard.f1b1).toBe('');
-      expect(scoreCard.f1b2).toBe('');
-      expect(scoreCard.f1tot).toBe('');
-      expect(scoreCard.f2b2).toBe('');
-      expect(scoreCard.f5b2).toBe('');
-      expect(scoreCard.f7b1).toBe('');
-      expect(scoreCard.f9tot).toBe('');
-      expect(scoreCard.f10b3).toBe('');
-      expect(scoreCard.total).toBe(0);
+    it('has total by default', function() {
+      expect(scoreCard.total).toBe('');
     })
 
     it('updates after first ball', function(){

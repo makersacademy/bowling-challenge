@@ -53,6 +53,7 @@ function bowl(pins) {
   }else{
     showButtons();
   }
+  if (bowling.frameNumber == "GAME") { hideAllButtons();}
 }
 
 function hideButtons() {

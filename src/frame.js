@@ -18,3 +18,11 @@ Frame.prototype.isComplete = function() {
 Frame.prototype.firstAndSecondRollScore = function() {
   return this._firstRoll + this._secondRoll
 }
+
+Frame.prototype.isAStrike = function() {
+  return (this._firstRoll === 10)
+}
+
+Frame.prototype.isASpare = function() {
+  return (this._firstRoll + this._secondRoll === 10)
+}

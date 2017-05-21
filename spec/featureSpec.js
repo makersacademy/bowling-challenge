@@ -12,9 +12,9 @@ describe("Feature test:", function() {
   })
 
   describe("first roll", function() {
-    it("has a total of 1", function() {
+    it("has a total of 0 as frame not complete", function() {
       bowling.knockDown(1)
-      expect(bowling.calculateTotal()).toEqual(1)
+      expect(bowling.calculateTotal()).toEqual(0)
     })
   })
 

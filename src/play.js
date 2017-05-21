@@ -29,5 +29,5 @@ Play.prototype._lastFrame = function() {
 }
 
 Play.prototype._hasAnActiveFrame = function() {
-  return (this._lastFrame() === undefined || this._lastFrame().isComplete())
+  return (this._frames.length === 0 || this._lastFrame().isComplete())
 }

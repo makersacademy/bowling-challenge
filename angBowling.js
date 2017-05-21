@@ -4,9 +4,9 @@ app.controller('myCtrl', function($scope) {
 
     var game = new Bowling;
 
-    var arrayCreator = function(s, e, j = 1){
+    var pins = function(){
       array = []
-      for ( i = s; i <= e; i += j) {
+      for ( i = 1; i <= 10; i++) {
         array.push(i);
       }
       return array
@@ -23,7 +23,7 @@ app.controller('myCtrl', function($scope) {
         return array
       };
 
-    $scope.pins = arrayCreator(1, 10);
+    $scope.pins = pins();
     $scope.numberOfRolls = frameStructure();
     $scope.rolls = game.rolls;
     $scope.roll = game.roll;

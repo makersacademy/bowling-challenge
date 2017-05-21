@@ -7,12 +7,12 @@ Bowling.prototype.roll = function(pins) {
   ( pins == 10 && this.rolls.length < 20) ? this.rolls.push(pins, 0) : this.rolls.push(pins);
 }
 
-Bowling.prototype.score = function() {
+Bowling.prototype.score = function(startRollIndex = 0, startFrameIndex = 0, endFrameIndex = 10) {
   var totalScore = 0;
-  var rollIndex = 0;
+  var rollIndex = startRollIndex;
   var game = this;
 
-  for ( var frameIndex = 0; frameIndex < 10; frameIndex++) {
+  for ( var frameIndex = startFrameIndex; frameIndex < endFrameIndex; frameIndex++) {
     var bonus = strikesInARow() || strike() || spare() || 0
     totalScore += frameScore(bonus)
     rollIndex += 2;

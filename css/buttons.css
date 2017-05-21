@@ -1,0 +1,43 @@
+#restart {
+  display:block;
+  margin:0 auto;
+  width:170px;
+  margin-top:20px;
+}
+
+.buttons-container {
+  margin:0 auto;
+  width:864px;
+  margin-top:40px;
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  margin:0 5px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  text-shadow:3px 3px 3px black;
+  outline: none;
+  color: #fff;
+  background-color: #F6CC1E;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #333333;
+}
+
+.button:disabled {
+  background-color:black !important;
+}
+
+.button:hover {
+  background-color: #dcb209;
+}
+
+.button:active {
+  background-color: #dcb209;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

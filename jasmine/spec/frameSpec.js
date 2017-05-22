@@ -7,11 +7,11 @@ describe('Frame', function(){
 
   describe('frames are keys to arrays with scores', function(){
     it('has an empty array for scores', function(){
-      expect(frame.gameFrames[0].frame).toEqual([])
+      expect(frame.gameFrames[0].frame).toEqual([0, 0])
     });
 
     it('has a current frame', function(){
-      expect(frame.currentFrame).toEqual([])
+      expect(frame.currentFrame).toEqual([0, 0])
     });
 
 
@@ -20,16 +20,15 @@ describe('Frame', function(){
       frame.statusChecker()
       expect(frame.frameNumber).toEqual(1)
       frame.frameSet(frame.frameNumber)
-      expect(frame.currentFrame).toEqual([])
+      expect(frame.currentFrame).toEqual([0, 0])
     });
 
     it('switches currentFrame if player hits a strike', function(){
-      console.log(frame.frameNumber)
       frame.currentFrame.push(10)
       frame.statusChecker()
       expect(frame.frameNumber).toEqual(1)
       frame.frameSet(frame.frameNumber)
-      expect(frame.currentFrame).toEqual([])
+      expect(frame.currentFrame).toEqual([0, 0])
     });
   });
 

@@ -1,16 +1,16 @@
 function Frame(){
   this.gameFrames = [
-    {frame: []},
-    {frame: []},
-    {frame: []},
-    {frame: []},
-    {frame: []},
-    {frame: []},
-    {frame: []},
-    {frame: []},
-    {frame: []},
-    {frame: []},
-    {frame: []}
+    {frame: [0, 0], score: 0},
+    {frame: [0, 0], score: 0},
+    {frame: [0, 0], score: 0},
+    {frame: [0, 0], score: 0},
+    {frame: [0, 0], score: 0},
+    {frame: [0, 0], score: 0},
+    {frame: [0, 0], score: 0},
+    {frame: [0, 0], score: 0},
+    {frame: [0, 0], score: 0},
+    {frame: [0, 0], score: 0},
+    {frame: [0, 0], score: 0}
   ]
   this.frameNumber = 0
   this.currentFrame = ''

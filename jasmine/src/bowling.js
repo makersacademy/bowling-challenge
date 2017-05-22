@@ -3,7 +3,11 @@ function Bowling(){
  };
 
 Bowling.prototype.throwBowl = function(frame) {
-  frame.push(this.randomBowl())
+  if(frame.length === 0) {
+    frame[0] = this.randomBowl()
+  } else {
+    frame[1] = this.randomBowl()
+  }
 };
 
 Bowling.prototype.randomBowl = function() {

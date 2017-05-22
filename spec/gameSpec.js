@@ -55,14 +55,20 @@ describe('Game', function() {
   });
 
   describe('getScore', function() {
-    it('returns to score at any given time', function() {
+    it('returns the score total at any given time', function() {
       game.newFrame();
       game.addScore(10);
       game.newFrame();
       game.addScore(5);
       game.addScore(4);
       expect(game.getScore()).toEqual(28);
+      game.newFrame();
+      game.addScore(8);
+      game.addScore(1);
+      expect(game.getScore()).toEqual(37)
     });
+
+    
   });
 
 });

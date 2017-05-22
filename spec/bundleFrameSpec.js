@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var Frame = require('./../src/Frame');
+var Frame = require('../src/Frame');
 
 describe('Frame', function() {
   var frame;
@@ -48,10 +48,11 @@ describe('Frame', function() {
         frame.frameNo = 10;
       });
 
-      it('If I roll a strike and another strike it will store 10, 0, 10 in the array pinsKnockedDown', function() {
+      it('If I roll a strike and another strike it will store 10, 10, 10 in the array pinsKnockedDown', function() {
         frame.Roll(10);
         frame.Roll(10);
-        expect(frame.pinsKnockedDown).toEqual([10, 0, 10]);
+        frame.Roll(10);
+        expect(frame.pinsKnockedDown).toEqual([10, 10, 10]);
       });
 
       it('If I roll a spare on my 1st two rolls I will get a 3rd roll e.g. 3, 7, 5, will be stored in the array',
@@ -86,7 +87,7 @@ describe('Frame', function() {
 
 });
 
-},{"./../src/Frame":2}],2:[function(require,module,exports){
+},{"../src/Frame":2}],2:[function(require,module,exports){
 
 
 function Frame(FrameNo) {
@@ -114,7 +115,7 @@ Frame.prototype.Roll = function(pins) {
 Frame.prototype.checkRoll = function(num) {
   if (num < this.MIN_PINS || num > this.MAX_PINS) {
     throw new RangeError('The number entered must be between ' + this.MIN_PINS + ' - ' + this.MAX_PINS);
-  } else if (num === this.MAX_PINS && this.pinsKnockedDown.length < 1){
+  } else if (num === this.MAX_PINS && this.pinsKnockedDown.length < 1 && this.frameNo !== this.FINAL_FRAME){
     this.pinsKnockedDown.push(num);
     return 0;
   } else {
@@ -123,7 +124,7 @@ Frame.prototype.checkRoll = function(num) {
 };
 
 Frame.prototype.check2ndRoll = function(num) {
-  if (this.pinsKnockedDown[0] + this.checkRoll(num) > this.MAX_PINS) {
+  if (this.pinsKnockedDown[0] + this.checkRoll(num) > this.MAX_PINS && this.frameNo !== this.FINAL_FRAME) {
     throw new RangeError('You cannot enter more than a total of ' + this.MAX_PINS + ' over 2 rolls');
   } else {
     return num;
@@ -132,7 +133,7 @@ Frame.prototype.check2ndRoll = function(num) {
 
 Frame.prototype.check3rdRoll = function(num) {
   sum = this.pinsKnockedDown[0] + this.pinsKnockedDown[1];
-  if (sum === this.MAX_PINS) {
+  if (sum === this.MAX_PINS || sum === this.MAX_PINS * 2 ) {
     return this.checkRoll(num);
   } else {
     throw new Error("Sorry you don't get a 3rd bowl");

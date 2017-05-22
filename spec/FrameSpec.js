@@ -1,4 +1,4 @@
-var Frame = require('./../src/Frame');
+var Frame = require('../src/Frame');
 
 describe('Frame', function() {
   var frame;
@@ -47,10 +47,11 @@ describe('Frame', function() {
         frame.frameNo = 10;
       });
 
-      it('If I roll a strike and another strike it will store 10, 0, 10 in the array pinsKnockedDown', function() {
+      it('If I roll a strike and another strike it will store 10, 10, 10 in the array pinsKnockedDown', function() {
         frame.Roll(10);
         frame.Roll(10);
-        expect(frame.pinsKnockedDown).toEqual([10, 0, 10]);
+        frame.Roll(10);
+        expect(frame.pinsKnockedDown).toEqual([10, 10, 10]);
       });
 
       it('If I roll a spare on my 1st two rolls I will get a 3rd roll e.g. 3, 7, 5, will be stored in the array',

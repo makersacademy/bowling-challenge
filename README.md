@@ -2,6 +2,39 @@
 Bowling Challenge
 =================
 
+Game instructions:
+
+#I have my game structured in single class which has multiple functions
+#that help the user getting the necessary information regarding his
+#progress in the challenge
+
+#You can roll the bowl:
+ Game.prototype.bowl();
+
+#There is a random number generator :
+Game.prototype.pinsKnockdown();
+
+#Functions that gets the number of frames and rolls:
+Game.prototype.frameAndRoll();
+Game.prototype.frameIncrement();
+
+#Functions that verify if your hit was a stryke/spare :
+Game.prototype.strikeOrSpare();
+Game.prototype.checkBonus();
+
+#Functions that resets the game,frames and rolls:
+Game.prototype.frameReset();
+Game.prototype.newGame();
+Game.prototype.endGameCheck();
+
+#Function that displays the total_score of the game:
+Game.prototype.totalScoreUpdate();
+
+#I created a jQuery file to make the game alive on the UI and created #an index.html file as well which include audio and video format.
+#CSS file created too for more powerful animation
+#Screenshot of UI 
+
+
 
 * Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own

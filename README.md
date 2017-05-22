@@ -32,7 +32,7 @@ Option 2: Open `index.html` in your preferred web browser.
        etc.
    ```
 
-   There must be a better way.
+   There must be a better way. I got myself into this hole by trying to think about my UI whilst designing my business logic, and I didn't think it through thoroughly enough. As a result my business logic interface is half-baked. I tried to do too much at once, and next week I will only think about one thing at a time.
 
 4. No separate constructor for 10th frames. I couldn't figure out inheritance in ES5, which meant I couldn't create custom 10th frame objects. Instead I wrote two hacky frame methods to handle frame 10 box rendering and some hacky jQuery to handle frame 10 button behaviour. They ended up constituting almost all of my code smells, so I want to learn more about handling this type of scenario in Javascript. 
 

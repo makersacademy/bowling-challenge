@@ -21,7 +21,7 @@ Bowling.prototype.playRoll = function(index) {
   if (index == 2) {
     var pins2 = Math.floor(Math.random() * (11 - this.pins1));
     this.pins2.push(pins2);
-    this.addFrame();
+    //this.addFrame();
     return pins2;
   }
 };

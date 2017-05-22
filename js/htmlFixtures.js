@@ -52,5 +52,3 @@ setFixtures(
         +'</tr></tbody></table>'
             );
  }
-
-module.exports = setUpHTMLFixture();

@@ -1,5 +1,3 @@
-// var Roll = require('../js/roll')
-
 var Frame = function () {
   this._score = 0
   this._finished = false
@@ -52,5 +50,3 @@ Frame.prototype.hit = function (roll, pinsDown) {
 Frame.prototype.scoreIs = function () {
   return this._score
 };
-
-// module.exports = Frame;

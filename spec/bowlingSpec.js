@@ -1,16 +1,6 @@
 describe('Bowling', function () {
 
-  // var $ = require('jquery')(require("jsdom").jsdom().parentWindow);
-  // var jsdom = require("jsdom");
-  // $ = require("jquery")(jsdom.jsdom().createWindow());
-  //
-  // var setUp2 = require('../lib/jasmine-2.6.1/jasmine-jquery');
-  // var setUpHTMLFixture = require('../js/htmlFixtures');
-  // var jq = require('../lib/jasmine-2.6.1/jquery-3.2.1');
-
-
   var bowlingGame;
-  // var Bowling = require('../js/bowling')
 
   beforeEach(function () {
     setUpHTMLFixture();

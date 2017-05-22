@@ -1,16 +1,18 @@
 'use strict'
 
 describe("Frame Logic", function() {
-var bowlsTracker
-var pins;
-var bowlingBall;
-var scoreBowl;
+  var bowlsTracker;
+  var pins;
+  var bowlingBall;
+  var scoreBowl;
+  var totalScoreCalculator;
 
-  beforeEach(function() {
-    bowlsTracker = new BowlsTracker();
-    pins = new Pins();
-    bowlingBall = new BowlingBall();
-    scoreBowl = new ScoreBowl();
+    beforeEach(function() {
+      bowlsTracker = new BowlsTracker();
+      pins = new Pins();
+      bowlingBall = new BowlingBall();
+      scoreBowl = new ScoreBowl();
+      totalScoreCalculator = new TotalScoreCalculator()
   });
 
 it("can evaluate that it is the first bowl in a frame", function(){

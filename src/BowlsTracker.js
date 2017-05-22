@@ -6,10 +6,7 @@ function BowlsTracker() {
 BowlsTracker.prototype._recordRoll = function (pinsKnockedDown, pinsObject, scoreBowlObject) {
   this.bowlsRecord.push(pinsKnockedDown);
   scoreBowlObject.evaluateScore(pinsObject, this);
-  // ScoreCardEntry Logic not completed for Final Frames...
-  if (!_isFinalFrame) {
-    scoreCardEntry(pinsKnockedDown, pinsObject, this);
-  }
+    scorecardEntry(pinsKnockedDown, pinsObject, this);
   _evaluateBowl(pinsObject, this);
   this._reduceAvailableBowls();
 };

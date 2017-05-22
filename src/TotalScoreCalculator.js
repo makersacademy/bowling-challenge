@@ -1,16 +1,20 @@
+function TotalScoreCalculator() {
 // Array of Hashes
-var scorecard = [
-  {name: "First Frame", status: "open", scores:[]},
-  {name: "Second Frame", status: "pending", scores:[]},
-  {name: "Third Frame", status: "pending", scores:[]},
-  {name: "Fourth Frame", status: "pending", scores:[]},
-  {name: "Fifth Frame", status: "pending", scores:[]},
-  {name: "Sixth Frame", status: "pending", scores:[]},
-  {name: "Seventh Frame", status: "pending", scores:[]},
-  {name: "Eight Frame", status: "pending", scores:[]},
-  {name: "Ninth Frame", status: "pending", scores:[]},
-  {name: "Final Frame", status: "pending", scores:[]}
+this.scorecard = [
+  {name: "First Frame", status: "open", scores:[], totalScore: null },
+  {name: "Second Frame", status: "pending", scores:[], totalScore: null },
+  {name: "Third Frame", status: "pending", scores:[], totalScore: null },
+  {name: "Fourth Frame", status: "pending", scores:[], totalScore: null },
+  {name: "Fifth Frame", status: "pending", scores:[], totalScore: null },
+  {name: "Sixth Frame", status: "pending", scores:[], totalScore: null },
+  {name: "Seventh Frame", status: "pending", scores:[], totalScore: null },
+  {name: "Eight Frame", status: "pending", scores:[], totalScore: null },
+  {name: "Ninth Frame", status: "pending", scores:[], totalScore: null },
+  {name: "Final Frame", status: "pending", scores:[], totalScore: null }
 ];
+var scorecard = this.scorecard;
+this.currentScore = 0;
+var currentScore = this.currentScore;
 
 // Give points to open frames
 enterBowl = function(pinsKnockedDown) {
@@ -54,7 +58,7 @@ closeFrames = function(pinsObject, bowlsTrackerObject) {
   var pinsObject = pinsObject;
   var bowlsTrackerObject = bowlsTrackerObject;
   scorecard.forEach(function(frame) {
-    if ((frame.scores.length === 3) || ((frame.status === "open") && (_isARegularFrame(pinsObject, bowlsTrackerObject)))) {
+    if ((frame.scores.length === 3) || ((frame.status === "open") && (_isARegularFrame(pinsObject, bowlsTrackerObject)) && (frame.scores.length === 2))) {
       frame.status = "closed";
     };
   });
@@ -62,8 +66,28 @@ closeFrames = function(pinsObject, bowlsTrackerObject) {
 
 //Post score
 
-scoreCardEntry = function (pinsKnockedDown, pinsObject, bowlsTrackerObject) {
+scorecardEntry = function (pinsKnockedDown, pinsObject, bowlsTrackerObject) {
   enterBowl(pinsKnockedDown);
   closeFrames(pinsObject, bowlsTrackerObject);
-  openFrames(pinsObject, bowlsTrackerObject);
+  scorecardTotalScorer();
+  scorecardTotalScorer();
+  scorecardTotalScorer();
+  if (!_isFinalFrame(bowlsTrackerObject)) {
+    openFrames(pinsObject, bowlsTrackerObject);
+  };
 };
+
+// Calculate current Total Score
+scorecardTotalScorer = function () {
+      scorecard.find(function(frame) {
+        if (frame.status === "closed") {
+          frame.totalScore = frame.scores.reduce(function(acc, val) {
+            return acc + val;
+          }, currentScore);
+          frame.status = "scored";
+        };
+        currentScore = frame.totalScore;
+      });
+    };
+
+}

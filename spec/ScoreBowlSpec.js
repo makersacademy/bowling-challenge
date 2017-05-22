@@ -5,12 +5,14 @@ var bowlsTracker;
 var pins;
 var bowlingBall;
 var scoreBowl;
+var totalScoreCalculator;
 
   beforeEach(function() {
     bowlsTracker = new BowlsTracker();
     pins = new Pins();
     bowlingBall = new BowlingBall();
     scoreBowl = new ScoreBowl();
+    totalScoreCalculator = new TotalScoreCalculator()
   });
 
   it("exists!", function() {

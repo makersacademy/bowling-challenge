@@ -101,21 +101,11 @@ describe("Score Bowling - 10th round with bonus", function() {
   });
 
   it('Will give a score of 200 on oscilation of spare and strike', function () {
-    bowling.process_roll(5)
-    bowling.process_roll(5)
-    bowling.process_roll(10)
-    bowling.process_roll(5)
-    bowling.process_roll(5)
-    bowling.process_roll(10)
-    bowling.process_roll(5)
-    bowling.process_roll(5)
-    bowling.process_roll(10)
-    bowling.process_roll(5)
-    bowling.process_roll(5)
-    bowling.process_roll(10)
-    bowling.process_roll(5)
-    bowling.process_roll(5)
-    bowling.process_roll(10)
+    for (i=0; i < 5; i++) {
+      bowling.process_roll(5)
+      bowling.process_roll(5)
+      bowling.process_roll(10)
+    };
     bowling.process_roll(5)
     bowling.process_roll(5)
     expect(bowling.score).toEqual(200)

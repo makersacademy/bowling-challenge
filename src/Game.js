@@ -2,12 +2,12 @@ function Game() {
   this.frames = [];
   this.totalScore = 0;
   this.currentFrame = null;
-  this.finalFrame = new FinalFrame();
   this.storedBowl = null;
   this.displayedValue;
 };
 
 Game.prototype.bowl = function(roll) {
+  this.finalFrame = this.finalFrame || new FinalFrame();
   roll = Number(roll);
   this.frames.length >= 9 ? this._finalBowl(roll) : this._standardBowl(roll);
 };
@@ -61,5 +61,12 @@ Game.prototype._calculateFrame = function(frame, i) {
 };
 
 Game.prototype._calculateBonus = function(frame, i) {
-  return frame.bonus(this.frames[i+1], this.frames[i+2], this.currentFrame);
+  var frames = this.frames;
+  if (frame === this.finalFrame) { return 0 };
+  if (frame.isStrike()) {
+    return frame.strikeBonus(frames[i+1], frames[i+2], this.currentFrame);
+  } else if (frame.isSpare()) {
+    return frame.spareBonus(this.frames[i+1], this.currentFrame);
+  }
+  return 0;
 };

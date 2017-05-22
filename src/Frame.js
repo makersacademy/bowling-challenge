@@ -10,43 +10,19 @@ Frame.prototype.isStrike = function() {
   return this.score[0] === 10 && this.score.length === 1;
 };
 
-Frame.prototype.bonus = function(second_frame, third_frame, unfinished_frame) {
-  if (this.isStrike() && second_frame && second_frame.isStrike() && unfinished_frame === 0) {
-    return 10 + unfinished_frame;
+Frame.prototype.strikeBonus = function(next_frame, third_frame, half_frame) {
+  if (game.finalFrame === next_frame) { return game.storedBowl + half_frame };
+  if (next_frame) {
+    var base_score = next_frame.score[0];
+    if (!next_frame.isStrike()) { return base_score + next_frame.score[1] };
+    if (third_frame) { return base_score + third_frame.score[0] };
+    if (half_frame) { return base_score + half_frame };
   };
-  if (!this.isStrike() && !this.isSpare()) {
-    return 0;
-  } else if (this.isSpare() && !second_frame && unfinished_frame === 0) {
-    return 0;
-  } else if (second_frame && this.isSpare()) {
-    return this.spareBonus(second_frame);
-  } else if (this.isStrike() && second_frame && !second_frame.isStrike()) {
-    return second_frame.score[0] + second_frame.score[1];
-  } else if (second_frame && second_frame.isStrike() && third_frame) {
-    return second_frame.score[0] + third_frame.score[0];
-  } else if (this.isStrike() && game.finalFrame.score.length >= 2) {
-    return game.storedBowl + game.currentFrame;
-  } else if (second_frame && unfinished_frame && this.isStrike()) {
-    return second_frame.score[0] + unfinished_frame;
-  } else if (second_frame && this.isStrike()) {
-    return this.strikeBonus(second_frame, third_frame, unfinished_frame);
-  } else if (unfinished_frame && this.isSpare()) {
-    return unfinished_frame;
-  } else {
-    return null;
-  };
+  return null;
 };
 
-Frame.prototype.spareBonus = function(second_frame) {
-  return second_frame.score[0];
-}
-
-Frame.prototype.strikeBonus = function(second_frame, third_frame, unfinished_frame) {
-  if (!second_frame.isStrike()) {
-    return second_frame.score[0] + second_frame.score[1];
-  } else if (third_frame) {
-    return second_frame.score[0] + third_frame.score[0]
-  } else {
-    return null;
-  };
+Frame.prototype.spareBonus = function(next_frame, half_frame) {
+  if (next_frame) { return next_frame.score[0] };
+  if (half_frame || half_frame === 0) { return half_frame };
+  return null;
 };

@@ -31,12 +31,12 @@ describe("Frame", function() {
     expect(frame.isStrike()).toEqual(false);
   });
 
-  it('calculates standard frame bonus correctly', function() {
-    expect(frame.bonus()).toEqual(0);
-  });
+  // it('calculates standard frame bonus correctly', function() {
+  //   expect(frame.bonus()).toEqual(0);
+  // });
 
   it('calculates spare bonus correctly', function() {
     var next_frame = {score: [4, 3]}
-    expect(spare.bonus(next_frame)).toEqual(4);
+    expect(spare.spareBonus(next_frame)).toEqual(4);
   });
 });

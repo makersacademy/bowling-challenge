@@ -12,7 +12,7 @@ function Game() {
       throw new TypeError ("You cannot knock over more than 10 pins with one ball");
     }
     else if
-      (this.isOver());
+      (this._isOver());
     else
       this.addToFrame(pins);
   };
@@ -34,15 +34,15 @@ function Game() {
   };
 
   Game.prototype.checkScore = function(){
-    this.isStrike();
-    this.isSpare();
+    this._isStrike();
+    this._isSpare();
     var flattened = [].concat.apply([], this.pinCount);
     return flattened.reduce(function(a,b){
       return a + b;
     }, 0);
   };
 
-  Game.prototype.isSpare = function(){
+  Game.prototype._isSpare = function(){
     for (var i = 0; i < this.pinCount.length; i++){
       var result = this.pinCount[i][0] + this.pinCount[i][1];
       if (result === this.maxPins) {
@@ -51,7 +51,7 @@ function Game() {
     }
   };
 
-  Game.prototype.isStrike = function(){
+  Game.prototype._isStrike = function(){
     for (var a = 0; a < this.pinCount.length; a++){
       if (this.pinCount[a][0] === 10) {
         this.pinCount[a].push(this.pinCount[a+1][0]);
@@ -60,7 +60,7 @@ function Game() {
     }
   };
 
-  Game.prototype.isOver = function(){
+  Game.prototype._isOver = function(){
     if (this.pinCount.length === this.maxFrames){
       throw new TypeError ("Game over");
     }

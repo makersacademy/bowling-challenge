@@ -56,6 +56,8 @@ Frame.prototype.roll = function() {
 		var roll = new Roll();
 		this.updateScore(roll.score(this.remainder()));
 		this.updateFrame();
+	} else if (this.getScore().length <= 1) {
+		this.updateScore(0);
 	}
 };
 

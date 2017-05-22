@@ -3,19 +3,20 @@
 function Game() {
 	this.scoreCard = [];
     this.totalScore = 0;
+    
 }
 
 Game.prototype.play = function() {
 	var frame = new Frame;
 	frame.roll();
-	frame.getScore();
+	this.updateScoreCard(frame.getScore());
 };
 
-Game.prototype.totalScore = function() {
+Game.prototype.getTotalScore = function() {
     return this.totalScore;
 };
 
-Game.prototype.scoreCard = function() {
+Game.prototype.getScoreCard = function() {
     return this.scoreCard;
 };
 

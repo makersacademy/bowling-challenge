@@ -4,8 +4,8 @@ function Roll() {
 }
 
 Roll.prototype.randomInt = function(remainder) {
-    var max = Math.floor(remainder);
-    return Math.floor(Math.random() * (max + 1));
+    var max = Math.round(remainder);
+    return Math.round(Math.random() * (max));
 };
 
 Roll.prototype.score = function(remainder) {

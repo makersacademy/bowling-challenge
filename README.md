@@ -2,6 +2,16 @@
 Bowling Challenge
 =================
 
+## Instructions
+
+To run tests type the following in your terminal:
+
+'''
+$ git clone https://github.com/sblausten/bowling-challenge.git
+$ cd bowling-challenge
+$ open SpecRunner.html
+'''
+
 ## User stories
 
 - As a player 
@@ -15,13 +25,13 @@ I want to roll
 - As a player
 I want to have two rolls per frame
 
-As a player
+- As a player
 I want to end a frame when I score 10 in first roll
 
-As a player 
+- As a player 
 I want to keep track of my score for each roll including skipped ones
 
-As a player 
+- As a player 
 I want to keep track of my score for each frame including bonuses
 
 As a player 

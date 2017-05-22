@@ -19,7 +19,7 @@ Game.prototype._strikeCounter = function() {
 };
 
 Game.prototype.roll = function(number) {
-  if (this._rolls.length === 20 - this._strikeCounter()) {
+  if (this.isOver()) {
     throw new Error('Game over');
   }
 if (number !== 10) {
@@ -56,4 +56,8 @@ Game.prototype.isAgutterGame = function(){
   } else {
       return false;
   }
+};
+
+Game.prototype.isOver = function() {
+  return (this._rolls.length === 20 - this._strikeCounter())
 };

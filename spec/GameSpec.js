@@ -171,4 +171,17 @@ describe('Game', function() {
     });
   });
 
+  describe('isOver', function() {
+    it('returns false if a game is not over', function(){
+      expect(game.isOver()).toBe(false);
+    });
+
+    it('returns true if a game is over', function(){
+      for (var i = 0; i < 20; i++) {
+        game.roll(0);
+      }
+      expect(game.isOver()).toBe(true);
+    });
+  });
+
 });

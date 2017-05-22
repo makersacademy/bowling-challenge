@@ -58,14 +58,14 @@ Bowling.prototype.spareFrame = function() {
 }
 
 Bowling.prototype.strikeFrame = function() {
-      this.currentFrame.pendingFrames = 2;
-      this.pendingFrames.push(this.currentFrame);
-      this.nextFrame();
+  this.currentFrame.pendingFrames = 2;
+  this.pendingFrames.push(this.currentFrame);
+  this.nextFrame();
 }
 
 Bowling.prototype.addBonusScores = function(pins) {
   var frame,
-      bonusFrame;
+  bonusFrame;
   for (frame in this.pendingFrames) {
     bonusFrame = this.pendingFrames[frame];
     bonusFrame.pendingFrames--;
@@ -77,7 +77,7 @@ Bowling.prototype.addBonusScores = function(pins) {
 Bowling.prototype.removeCompletedFrames = function() {
   for (frame = this.pendingFrames.length - 1; frame >= 0; --frame) {
     bonusFrame = this.pendingFrames[frame];
-      if (bonusFrame.pendingFrames === 0) {
+    if (bonusFrame.pendingFrames === 0) {
       this.pendingFrames.splice(parseInt(frame), 1);
       this.completedFrames.push(bonusFrame);
     }

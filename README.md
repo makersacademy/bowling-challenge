@@ -39,8 +39,14 @@ Option 2: Open `index.html` in your preferred web browser.
 ## Strengths:
 
 1. Functionality: I'm pleased with how much my project does. The buttons change to reflect the possible outcomes for any given roll, and the table displays all information as it becomes available. The information displayed is complete—individual rolls are shown as well as scores.
+
 2. Domain model: I've handled bonus rolls by building three rolls into each frame, which adds the complexity of processing a single roll in multiple frames, but means that frames do not need to know about each other. I'm very happy with this trade-off.
+
 3. Refactoring: The advantage of overcomplicating at first was that I got to practice refactoring, and excepting the problems mentioned above, I'm pleased with how much I managed to improve my code.
+
+4. Diagramming was essential for this challenge, and I think I did a decent job:
+
+   ![Domain model diagram](images/domain-model.png)
 
 ## Technologies:
 

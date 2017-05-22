@@ -1,8 +1,12 @@
 
 Bowling Challenge
+
+Using a single class, my approach was to start with the simplest functionality. You can play a roll with an argument of 1 and it will return a random value from 1 to 10 that is pushed into an array. Then you play a roll with an argument of 2 and it returns a random value between 0 and the difference between 10 the value returned when rolled with argument 1 (pushed in another array). At the end of roll 2, you add a new frame. There is a function that returns current frame and a function that calculates the frame score and pushes it in yet another array.
+The game recognizes a Strike and a Spare, Gutter Game and Perfect Game, by comparing scores. Then it calculates bonuses according to the rules.
+
+Limitations - no UI and jQuery; errors not raised and edge cases not tested - this is just basic; no 10th frame;
+
 =================
-
-
 * Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README

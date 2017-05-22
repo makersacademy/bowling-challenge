@@ -1,17 +1,17 @@
 (function() {
   'use strict';
+  var game = new Bowling();
   $(document).ready(function() {
-    var game = new Bowling();
-    updateBowlingDisplay();
+    $("span#pins_left").text(game._pinsLeft);
 
     $("input").click(function() {
       var pinsHit = $("select#bowl").val();
       game.throwBall(pinsHit);
-      updateBowlingDisplay();
+      $("span#total_score").html(function() { return game.totalScore(); });
     });
 
     function updateBowlingDisplay() {
-      $("#pins_left").text(game._pinsLeft);
+      $("span#pins_left").text(game._pinsLeft);
     }
   });
 }());

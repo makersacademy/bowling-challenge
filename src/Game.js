@@ -3,27 +3,26 @@
 function Game() {
 	this.scoreCard = [];
     this.totalScore = 0;
-    
+    this.turn = 0;
+    this.MAX_TURNS = 10;
+    this.currentFrame = null;
+    const scoreCard = new ScoreCard();
 }
 
 Game.prototype.play = function() {
-	var frame = new Frame;
-	frame.roll();
+	this.roll();
+	this.checkFrame();
 	this.updateScoreCard(frame.getScore());
 };
 
-Game.prototype.getTotalScore = function() {
-    return this.totalScore;
+Game.prototype.rollCount = function() {
+	this.get
 };
 
-Game.prototype.getScoreCard = function() {
-    return this.scoreCard;
+Game.prototype.roll = function() {
+	if (this.currentFrame === null){
+		this.currentFrame = new Frame;
+	}
+	this.currentFrame.roll();
 };
 
-Game.prototype.updateTotalScore = function(subtotal) {
-    this.totalScore += subtotal;
-};
-
-Game.prototype.updateScoreCard = function(subtotal) {
-    this.scoreCard.push(subtotal);
-};

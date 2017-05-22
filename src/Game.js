@@ -4,7 +4,7 @@ function Game() {
   this.frameCount = [];
   this.pinCount = [];
   this.maxPins = 10;
-  this.remainingPins = 10
+  this.remainingPins = 10;
   this.maxFrames = 10;
 
   Game.prototype.bowl = function(pins){

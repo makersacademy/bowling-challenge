@@ -2,18 +2,25 @@
 
 function Frame() {
     this.score = [];
-    this.frameTotal = 0;
-    this.strike = false;
-    this.spare = false;
 }
 
 Frame.prototype.roll = function() {
-	if (this.getScore().length <= 1 && this.remainder() > 0) {	
-		var roll = new Roll();
-		this.updateScore(roll.score(this.remainder()));
-		// this.updateFrame();
-	} else if (this.getScore().length <= 1) {
+	if (this.rollCount() <= 1 && this.remainder() > 0) {	
+		var roll = new Roll().score(this.remainder());
+		this.updateScore(roll);
+	} else if (this.rollCount() <= 1) {
 		this.updateScore(0);
+	}
+	this.checkEnd();
+};
+
+Frame.prototype.rollCount = function() {
+	return this.getScore().length;
+};
+
+Frame.prototype.checkEnd = function() {
+	if (this.rollCount() === 2) {
+		scoreCard.updateFrames(this.getScore());
 	}
 };
 
@@ -26,44 +33,9 @@ Frame.prototype.updateScore = function(rollScore) {
 };
 
 Frame.prototype.remainder = function() {
-    if (this.score.length > 0) {
+    if (this.rollCount() > 0) {
     	return 10 - this.score[0];
     }
     return 10;
 };
-
-// Frame.prototype.updateFrame = function() {
-// 	this.isStrike();
-// 	this.isSpare();
-// };
-
-// Frame.prototype.isStrike = function() {
-// 	if (this.getScore[0] === 10) {
-// 		//this.updateStrike();
-// 		this.updateScore(0);
-// 	}
-// };
-
-// Frame.prototype.updateStrike = function() {
-// 	this.strike = true;
-// };
-
-// Frame.prototype.getStrike = function() {
-// 	return this.strike;
-// };
-
-// Frame.prototype.isSpare = function() {
-// 	if (this.getScore().reduce( function(a, b) { return a + b; }) === 10 
-// 		&& this.getScore[0] !== 10) {
-// 		this.spare = true;
-// 	}
-// };
-
-// Frame.prototype.updateSpare = function() {
-// 	this.spare = true;
-// };
-
-// Frame.prototype.getSpare = function() {
-// 	return this.spare;
-// };
 

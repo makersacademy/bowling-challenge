@@ -2,26 +2,65 @@
 Bowling Challenge
 =================
 
+## Instructions
 
-* Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+To run tests type the following in your terminal:
+
+'''
+$ git clone https://github.com/sblausten/bowling-challenge.git
+$ cd bowling-challenge
+$ open SpecRunner.html
+'''
+
+## User stories
+
+- As a player 
+so that I can play
+I want to start a game of bowling
+
+- As a player 
+so that I can score 
+I want to roll 
+
+- As a player
+I want to have two rolls per frame
+
+- As a player
+I want to end a frame when I score 10 in first roll
+
+- As a player 
+I want to keep track of my score for each roll including skipped ones
+
+- As a player 
+I want to keep track of my score for each frame including bonuses
+
+As a player 
+I want to add this frame to the last frame if it was a strike
+
+As a player 
+I want to add the first roll to the last frame if it was a spare
+
+As a player
+I want the game to end after 10 frames
+
+As a player
+I want the game to continue after 10 frames if the last frame is a strike
+
+As a player 
+I want the game to only continue past 10 frames when the frame is a strike
+
+As a player 
+I want the game to end after 13 frames if the last four frames are strikes.
+
+
+
+
 
 ## The Task
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
 ### Optional Extras
 

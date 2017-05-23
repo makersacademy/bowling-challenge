@@ -1,4 +1,4 @@
-var Game = require('../src/game.js');
+// var Game = require('../src/game.js');
 
 describe('Game', function() {
   var game;
@@ -54,6 +54,15 @@ describe('Game', function() {
     });
   });
 
+  describe('getFrameScore', function() {
+    it('gets the array of scores from a specified frame', function() {
+      game.newFrame();
+      game.addScore(1);
+      game.addScore(3);
+      expect(game.getFrameScore(1)).toEqual([1, 3]);
+    });
+  });
+
   describe('getScore', function() {
     it('returns the score total at any given time', function() {
       game.newFrame();
@@ -65,10 +74,28 @@ describe('Game', function() {
       game.newFrame();
       game.addScore(8);
       game.addScore(1);
-      expect(game.getScore()).toEqual(37)
+      expect(game.getScore()).toEqual(37);
+      game.newFrame();
+      game.addScore(8);
+      game.addScore(2);
+      expect(game.getScore()).toEqual(47);
+      game.newFrame();
+      game.addScore(5);
+      game.addScore(2);
+      expect(game.getScore()).toEqual(59);
     });
 
-    
+    it('returns a Perfect score of 300 if every bowl results in a strike', function() {
+      for (i=1; i<=9; i++) {
+        game.newFrame();
+        game.addScore(10);
+      }
+      game.newFrame();
+      for (i=1; i<=3; i++) {
+        game.addScore(10);
+      }
+      expect(game.getScore()).toEqual(300);
+    });
   });
 
 });

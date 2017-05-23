@@ -1,4 +1,4 @@
-var Frame = require('../src/Frame');
+// var Frame = require('../src/Frame');
 
 describe('Frame', function() {
   var frame;
@@ -81,6 +81,17 @@ describe('Frame', function() {
       expect(function() {
         frame.checkRoll(-1);
       }).toThrowError('The number entered must be between 0 - 10');
+    });
+  });
+
+  describe('bonus', function() {
+    it('has a default value of false upon instantiation', function() {
+      expect(frame.bonus).toBe(false);
+    });
+
+    it("gets set to 'Strike' when a strike is bowled", function() {
+      frame.Roll(10);
+      expect(frame.bonus).toBe('Strike');
     });
   });
 

@@ -85,6 +85,17 @@ describe('Frame', function() {
     });
   });
 
+  describe('bonus', function() {
+    it('has a default value of false upon instantiation', function() {
+      expect(frame.bonus).toBe(false);
+    });
+
+    it("gets set to 'Strike' when a strike is bowled", function() {
+      frame.Roll(10);
+      expect(frame.bonus).toBe('Strike');
+    })
+  })
+
 });
 
 },{"../src/Frame":2}],2:[function(require,module,exports){

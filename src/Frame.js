@@ -10,6 +10,7 @@ function Frame(FrameNo) {
   this.MIN_PINS = 0;
   this.MAX_PINS = 10;
   this.FINAL_FRAME = 10;
+  this.bonus = false;
 }
 
 Frame.prototype.Roll = function(pins) {

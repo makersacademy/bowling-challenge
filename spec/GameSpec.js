@@ -1,8 +1,8 @@
-var game = new Game();
-
 describe("A Bowling game", function() {
+  var game;
 
   beforeEach(function() {
+    game = new Game();
     guttergame = function(){
       for (var frame = 0; frame < 20 ; frame++){
         game.bowl(0);
@@ -36,9 +36,10 @@ describe("A finished game", function(){
 });
 
 describe("Has a maximum amount of balls bowled", function() {
-
+  var game = new Game();
   it("over ten frames", function(){
     for (var ball = 0; ball < 20 ; ball++){
+      game.bowl(3);
     }
       expect(function(){ game.bowl(3); }).toThrowError("Game over");
   });

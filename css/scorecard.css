@@ -1,0 +1,38 @@
+table, th, td {
+  border: 1px solid darkred;
+  background-color:beige;
+  text-align:center;
+}
+
+table {
+  width:1000px;
+  height:150px;
+  margin:0 auto;
+}
+
+th {
+  font-family: 'Lobster', cursive;
+  font-size:20px;
+  padding:5px;
+  width:80px;
+}
+
+td {
+  font-family: 'Lobster', cursive;
+  font-size:20px;
+  height:30px;
+  width:40px;
+}
+
+.table-container {
+  background-color:blue;
+  width:1000px;
+  height:150px;
+  overflow:hidden;
+  border:3px solid darkred;
+  border-top-left-radius:30px;
+  border-top-right-radius:30px;
+  border-bottom-left-radius:30px;
+  border-bottom-right-radius:30px;
+  margin:0 auto;
+}

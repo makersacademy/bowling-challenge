@@ -1,0 +1,28 @@
+body {
+  background-color: #E14F26;
+  margin:0;
+  padding:0;
+  background-image: url('../images/bowling.png');
+  background-repeat:space;
+  background-position: bottom;
+  background-blend-mode: luminosity;
+}
+
+h1 {
+  color:white;
+  font-family: 'Lobster', cursive;
+  font-size:100px;
+  text-shadow:7px 7px 5px black;
+  text-align: center;
+}
+
+.icon {
+  width:50px;
+  position:absolute;
+  right:15px;
+  bottom:15px;
+}
+
+.icon:hover {
+  opacity:0.5;
+}

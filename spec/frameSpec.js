@@ -34,13 +34,24 @@ describe('Frame', function(){
   it('can recognise a strike', function() {
     frame.addFirstScore(10);
     frame.addSecondScore(10);
-    expect(frame._isStrike()).toEqual(true);
+    expect(frame.strike).toEqual(true);
   });
+
+  it('does not give false positives for a strike', function() {
+    frame.addFirstScore(5);
+    frame.addSecondScore(1);
+    expect(frame.strike).toEqual(null);
+  })
 
   it('can recognise a spare', function() {
     frame.addFirstScore(5);
     frame.addSecondScore(5);
-    expect(frame._isSpare()).toEqual(true);
+    expect(frame.spare).toEqual(true);
   });
+
+  it('does not give false positives for a spare', function() {
+    frame.addFirstScore(10);
+    expect(frame.spare).toEqual(null);
+  })
 
 });

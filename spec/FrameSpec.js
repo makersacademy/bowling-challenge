@@ -14,4 +14,12 @@ describe('Frame', function() {
     });
 
   });
+
+  describe('bowl', function() {
+
+    it('Updates the first bowl', function() {
+      frame.bowl(5)
+      expect(frame.bowls()).toEqual([5, 10])
+    })
+  });
 });

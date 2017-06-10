@@ -2,6 +2,7 @@
 
 var Frame = function() {
   this._bowls = [null, null];
+  this._currentBowl = 0
 }
 
 Frame.prototype.bowls = function() {
@@ -9,5 +10,6 @@ Frame.prototype.bowls = function() {
 }
 
 Frame.prototype.bowl = function(pinsAmount) {
-  this._bowls[0] = pinsAmount;
+  this._bowls[this._currentBowl] = pinsAmount;
+  this._currentBowl ++
 }

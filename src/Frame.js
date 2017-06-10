@@ -31,3 +31,7 @@ Frame.prototype.score = function() {
 Frame.prototype.isStrike = function() {
   return this._bowls[0] === 10 ? true : false;
 }
+
+Frame.prototype.isSpare = function() {
+  return this._bowls[0] !== 10 && this._remainingPins === 0 ? true : false;
+}

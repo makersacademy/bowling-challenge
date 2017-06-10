@@ -15,4 +15,8 @@ describe('Frame', function(){
     expect(frame.getSecondBallScore()).toEqual(0);
   });
 
+  it('can return a total of the two frames', function() {
+    expect(frame.getTotalFrameScore()).toEqual(getFirstBallScore + getSecondBallScore)
+  });
+
 });

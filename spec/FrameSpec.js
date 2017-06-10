@@ -38,6 +38,10 @@ describe('Frame', function() {
       frame.bowl(10);
       expect(function(){ frame.bowl(0); }).toThrow(new Error('Cannot bowl - this frame is complete'))
     });
+
+    it('Prevents player from scoring more than the remaining pins', function() {
+      expect(function(){ frame.bowl(11); }).toThrow(new Error('Error - cannot knock down more pins than are here! (10)'))
+    })
   });
 
   describe('isComplete', function() {

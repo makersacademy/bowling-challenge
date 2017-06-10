@@ -33,6 +33,11 @@ describe('Frame', function() {
       frame.bowl(3);
       expect(function(){ frame.bowl(1); }).toThrow(new Error('Cannot bowl - this frame is complete'));
     });
+
+    it('Does not allow player to bowl a second time after scoring 10', function() {
+      frame.bowl(10);
+      expect(function(){ frame.bowl(0); }).toThrow(new Error('Cannot bowl - this frame is complete'))
+    });
   });
 
   describe('isComplete', function() {

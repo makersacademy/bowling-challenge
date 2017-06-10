@@ -3,6 +3,7 @@
 var Frame = function() {
   this._bowls = [null, null];
   this._currentBowl = 0
+  this._remainingPins = 10
 }
 
 Frame.prototype.bowls = function() {
@@ -10,8 +11,9 @@ Frame.prototype.bowls = function() {
 }
 
 Frame.prototype.bowl = function(pinsAmount) {
-  if(this._currentBowl === 2) throw new Error('Cannot bowl - this frame is complete')
+  if(this._currentBowl === 2 || this._remainingPins === 0) throw new Error('Cannot bowl - this frame is complete')
   this._bowls[this._currentBowl] = pinsAmount;
+  this._remainingPins -= pinsAmount
   this._currentBowl ++
 }
 

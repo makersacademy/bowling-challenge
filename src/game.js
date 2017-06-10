@@ -13,3 +13,12 @@ Game.prototype.calculateTotalScore = function () {
   };
   return currentTotalScore
 };
+
+Game.prototype.start = function () {
+  for (var i = 0; i < 10; i++) {
+    var frame = new Frame();
+    frame.play();
+    this.frames.push(frame);
+  };
+  alert("Your score is: " + this.calculateScore);
+};

@@ -30,7 +30,6 @@ describe("Game", function () {
   it("has functionality to calculate total score", function() {
     game.add(frame1);
     game.add(frame2);
-    console.log(game);
     expect(game.calculateTotalScore()).toEqual(13);
   });
 });

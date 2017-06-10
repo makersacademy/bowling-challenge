@@ -8,15 +8,21 @@ describe('Frame', function(){
   });
 
   it('has a score for the first ball', function(){
-    expect(frame.getFirstBallScore()).toEqual(0);
+    expect(frame.getFirstScore()).toEqual(0);
   });
 
   it('has a score for the second ball', function() {
-    expect(frame.getSecondBallScore()).toEqual(0);
+    expect(frame.getSecondScore()).toEqual(0);
   });
 
   it('can return a total of the two frames', function() {
-    expect(frame.getTotalFrameScore()).toEqual(getFirstBallScore + getSecondBallScore)
+    expect(frame.getTotalFrameScore()).toEqual(frame.getFirstScore() + frame.getSecondScore())
+  });
+
+  it('can adjust scores', function() {
+    frame.addFirstScore(3);
+    frame.addSecondScore(2);
+    expect(frame.getTotalFrameScore()).toEqual(5);
   });
 
 });

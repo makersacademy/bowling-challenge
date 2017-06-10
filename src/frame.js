@@ -1,12 +1,16 @@
 function Frame() {
-  this.firstBallScore = 0;
-  this.secondBallScore = 0;
+  this.firstScore = 0;
+  this.secondScore = 0;
 }
 
-Frame.prototype.getFirstBallScore = function () {
-  return this.firstBallScore
+Frame.prototype.getFirstScore = function () {
+  return this.firstScore
 };
 
-Frame.prototype.getSecondBallScore = function () {
-  return this.secondBallScore
+Frame.prototype.getSecondScore = function () {
+  return this.secondScore
+};
+
+Frame.prototype.getTotalFrameScore = function () {
+  return (this.getFirstScore() + this.getSecondScore())
 };

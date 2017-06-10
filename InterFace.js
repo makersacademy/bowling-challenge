@@ -7,6 +7,11 @@ $(document).ready(function() {
 		updateScore();
 	});
 	
+	$('#roll-two').click(function() {
+		bowling.rollTwo();
+		updateScore();
+	});
+
 	function updateScore() {
 		$('#frames').text(bowling.frame)
 	};

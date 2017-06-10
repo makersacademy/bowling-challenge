@@ -12,8 +12,8 @@ Frame.prototype.bowls = function() {
 }
 
 Frame.prototype.bowl = function(pinsAmount) {
-  if(this._remainingPins < pinsAmount) throw new Error('Error - cannot knock down more pins than are here! (' + this._remainingPins + ')')
-  if(this._currentBowl === 2 || this._remainingPins === 0) throw new Error('Cannot bowl - this frame is complete')
+  if(this._remainingPins < pinsAmount) throw new Error('Error - cannot knock down more pins than are here! (' + this._remainingPins + ')');
+  if(this._currentBowl === 2 || this._remainingPins === 0) throw new Error('Cannot bowl - this frame is complete');
   this._bowls[this._currentBowl] = pinsAmount;
   this._remainingPins -= pinsAmount;
   this._score += pinsAmount;
@@ -21,7 +21,7 @@ Frame.prototype.bowl = function(pinsAmount) {
 }
 
 Frame.prototype.isComplete = function() {
-  return this._currentBowl === 2 ? true : false;
+  return this._currentBowl === 2 || this.isStrike() ? true : false;
 }
 
 Frame.prototype.score = function() {

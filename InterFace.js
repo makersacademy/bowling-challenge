@@ -5,14 +5,18 @@ $(document).ready(function() {
 	$('#roll').click(function() {
 		bowling.roll();
 		var score = new Score(bowling.framesNumbers)
-		updateScore(score);
+		$('#throw').text("You threw: " + bowling.rollPoints);
+			updateScore(score);
 	});
 	
 	function updateScore(score) {
 		score.checkAdditionalPoints();
 		$('#points').text(score.points);
 	//	bowling.convertFrames();
-		$('#frames').text(bowling.framesNumbers)
+		for(var i=0; i<bowling.framesNumbers.length; i++) {
+			$('ul').append("[" +  bowling.framesNumbers[i] + "]")
+			//debugger
+		};
 	};
 
 });

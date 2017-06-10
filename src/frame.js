@@ -1,4 +1,5 @@
-function Frame() {
+function Frame(number) {
+  this.idNumber = number
   this.firstScore = null;
   this.secondScore = null;
   this.frameTotal = null;

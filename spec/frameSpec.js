@@ -4,7 +4,11 @@ describe('Frame', function(){
   var frame;
 
   beforeEach(function(){
-    frame = new Frame();
+    frame = new Frame(1);
+  });
+
+  it('has an identifying number', function(){
+    expect(frame.idNumber).toEqual(1)
   });
 
   it('has a score for the first ball', function(){

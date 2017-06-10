@@ -8,11 +8,11 @@ describe('Frame', function(){
   });
 
   it('has a score for the first ball', function(){
-    expect(frame.getFirstScore()).toEqual(0);
+    expect(frame.getFirstScore()).toEqual(null);
   });
 
   it('has a score for the second ball', function() {
-    expect(frame.getSecondScore()).toEqual(0);
+    expect(frame.getSecondScore()).toEqual(null);
   });
 
   it('can return a total of the two frames', function() {
@@ -24,5 +24,11 @@ describe('Frame', function(){
     frame.addSecondScore(2);
     expect(frame.getTotalFrameScore()).toEqual(5);
   });
+
+  it('has a maximum score of ten', function() {
+    frame.addFirstScore(10);
+    frame.addSecondScore(1);
+    expect(frame.getTotalFrameScore()).toEqual(10);
+  })
 
 });

@@ -1,32 +1,51 @@
 function Bowling() {
 		this.frame = [];
+		this.frames = [];
+		this.framesSymbols = [];
+		
+		this.roll = function() {
+			if (this.frame[0] === undefined) { 
+				this.rollOne();
+			}	else {
+				this.rollTwo();
+			}		
+			return this.frames;
+		};
 
 		this.rollOne = function() {
 			this.frame[0] = Math.round((Math.random() * 10));
-						return this.frame;
+			this.frames.push(this.frame);
+			console.log("roll one: " + this.frame[0]);
 		};
 		
 		this.rollTwo = function() {
 			this.frame[1] = Math.round((Math.random()) * (10 - this.frame[0]));
-			return this.frame;
+			console.log("roll two: " + this.frame[1]);
+			this.frame = [];
 		};
 
-		this.checkStrike = function() {
-			if(this.frame[0] === 10)	{
-				this.frame = ['X', '-'];		
+		this.convertFrames = function() {
+			var frames = this.frames;
+			for(var i=0; i< frames.length; i++) {
+				if(frames[i][0] === 10) {
+					frames[i] = ['X', '-'];
+				} else if(frames[i][0] + frames[i][1] === 10) {
+					frames[i][1] = '/';
+				};
 			};
+			this.framesSymbols = frames;
 		};
 
-		this.checkSpare = function() {
-			if(this.frame[0] + this.frame[1] === 10) {
-				this.frame[1] = '/'
-			};
 		};
-};
-
+/*
 bowling = new Bowling();
 
-console.log(bowling.rollOne());
-console.log(bowling.rollTwo());
-bowling.checkStrike();
-console.log(bowling.frame);
+bowling.roll();
+console.log(bowling.frames[0]);
+bowling.roll();
+console.log(bowling.frames[0]);
+bowling.roll();
+bowling.roll();
+console.log(bowling.frames);
+bowling.convertFrames();
+console.log(bowling.framesSymbols);*/

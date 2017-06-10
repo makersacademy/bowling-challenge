@@ -7,29 +7,33 @@ describe('Bowling', function() {
 	
 	describe('a frame', function() {
 		it('displays a number between 0 and 10 with every roll', function() {
-			expect(bowling.rollOne()).toBeGreaterThan(-1);
-			expect(bowling.rollOne()).toBeLessThan(11);
+			bowling.roll();
+			expect(bowling.frame[0]).toBeGreaterThan(-1);
+			expect(bowling.frame[0]).toBeLessThan(11);
 		});
 		it('two rolls in a frame never exceed 10', function() {
-			bowling.rollOne();
-			bowling.rollTwo();
-			expect(bowling.frame[0] + bowling.frame[1]).toBeLessThan(11);
+			bowling.roll();
+			bowling.roll();
+			console.log(bowling.frames[0][0]) 
+			console.log(bowling.frames[0][1])
+			console.log(bowling.frames);
+			expect(bowling.frames[0][0] + bowling.frames[0][1]).toBeLessThan(11);
 		});
 	});
 
-	describe('a strike', function() {
+	 describe('a strike', function() {
 		it('shows an X when a strike is thrown', function() {
-			bowling.frame = [10, 0];
-			bowling.checkStrike();
-			expect(bowling.frame).toEqual(['X','-'])
+			bowling.frames = [[10,0]]
+			bowling.convertFrames();
+			expect(bowling.framesSymbols).toEqual([['X','-']])
 		});
 	});
 
 	describe('a spare', function() {
 		it('shows a "/" when a spare is thrown', function() {
-			bowling.frame = [3,7];
-			bowling.checkSpare();
-			expect(bowling.frame).toEqual([3,'/']);
+			bowling.frames = [[3,7]];
+			bowling.convertFrames();
+			expect(bowling.framesSymbols).toEqual([[3,'/']]);
 		});
 	});
 });

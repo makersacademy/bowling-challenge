@@ -29,6 +29,18 @@ describe('Frame', function(){
     frame.addFirstScore(10);
     frame.addSecondScore(1);
     expect(frame.getTotalFrameScore()).toEqual(10);
-  })
+  });
+
+  it('can recognise a strike', function() {
+    frame.addFirstScore(10);
+    frame.addSecondScore(10);
+    expect(frame._isStrike()).toEqual(true);
+  });
+
+  it('can recognise a spare', function() {
+    frame.addFirstScore(5);
+    frame.addSecondScore(5);
+    expect(frame._isSpare()).toEqual(true);
+  });
 
 });

@@ -2,13 +2,14 @@
 
 var Game;
 
-Game = function(pins) {
+Game = function() {
+  this.stored_pins = [];
 };
 
 Game.prototype.rolls_current_pins = function(pins) {
-  return 0;
+  return this.stored_pins.push(pins);
 };
 
 Game.prototype.score = function() {
-  return 0;
+  return this.stored_pins.reduce((total, roll) => total + roll);
 };

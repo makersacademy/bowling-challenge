@@ -22,8 +22,7 @@ describe("Frame", function() {
   it("should have functionality to calculate the score of the frame", function () {
     frame.add(role1);
     frame.add(role2);
-    frame.calculateScore()
-    console.log(frame);
+    frame.calculateScore();
     expect(frame.score).toEqual(8);
   });
 });

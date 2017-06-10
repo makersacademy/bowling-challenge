@@ -6,8 +6,8 @@ describe("Role", function() {
     role = new Role();
   })
 
-  it("has the functionality to have points added.", function () {
+  it("has functionality to have points added.", function () {
     role.addPoints(5);
-    expect(role.points.toEqual(5);
+    expect(role.points).toEqual(5);
   });
 });

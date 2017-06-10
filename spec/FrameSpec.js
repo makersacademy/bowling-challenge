@@ -54,6 +54,11 @@ describe('Frame', function() {
       frame.bowl(3);
       expect(frame.isComplete()).toEqual(true);
     });
+
+    it('Knows the frame is complete after a strike', function() {
+      frame.bowl(10);
+      expect(frame.isComplete()).toEqual(true);
+    });
   });
 
   describe('score', function() {

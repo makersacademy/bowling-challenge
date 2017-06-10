@@ -10,6 +10,7 @@ Frame.prototype.bowls = function() {
 }
 
 Frame.prototype.bowl = function(pinsAmount) {
+  if(this._currentBowl === 2) throw new Error('Cannot bowl - this frame is complete')
   this._bowls[this._currentBowl] = pinsAmount;
   this._currentBowl ++
 }

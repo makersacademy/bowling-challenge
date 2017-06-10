@@ -1,7 +1,7 @@
+[![Build Status](https://travis-ci.org/charlottebrf/bowling-challenge.svg?branch=master)](https://travis-ci.org/charlottebrf/bowling-challenge)
 
 Bowling Challenge
 =================
-
 
 * Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own

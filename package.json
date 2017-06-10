@@ -1,0 +1,26 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge",
+  "main": "bowling.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jasmine ./spec/*[sS]pec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makersacademy/bowling-challenge.git"
+  },
+  "author": "y0m0",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/makersacademy/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/makersacademy/bowling-challenge#readme",
+  "dependencies": {
+    "jasmine": "^2.6.0",
+    "jasmine-spec-reporter": "^4.1.0"
+  }
+}

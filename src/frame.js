@@ -1,6 +1,7 @@
 function Frame() {
   this.firstScore = null;
   this.secondScore = null;
+  this.frameTotal = null;
 }
 
 Frame.prototype.getFirstScore = function () {
@@ -17,9 +18,11 @@ Frame.prototype.getTotalFrameScore = function () {
 
 Frame.prototype.addFirstScore = function (number) {
   this.firstScore = number
+  this.frameTotal += this.firstScore
 };
 
 Frame.prototype.addSecondScore = function (number) {
-  if (this.firstScore != null)
+  if (this.firstScore != null && (this.frameTotal + number) < 10)
     this.secondScore = number
+  this.frameTotal += this.secondScore
 };

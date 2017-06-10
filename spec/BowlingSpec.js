@@ -14,9 +14,6 @@ describe('Bowling', function() {
 		it('two rolls in a frame never exceed 10', function() {
 			bowling.roll();
 			bowling.roll();
-			console.log(bowling.frames[0][0]) 
-			console.log(bowling.frames[0][1])
-			console.log(bowling.frames);
 			expect(bowling.frames[0][0] + bowling.frames[0][1]).toBeLessThan(11);
 		});
 	});

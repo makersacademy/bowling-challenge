@@ -2,7 +2,8 @@ function Bowling() {
 		this.frame = [];
 		this.frames = [];
 		this.framesSymbols = [];
-		
+		this.framesPoints = [];
+
 		this.roll = function() {
 			if (this.frame[0] === undefined) { 
 				this.rollOne();
@@ -15,12 +16,11 @@ function Bowling() {
 		this.rollOne = function() {
 			this.frame[0] = Math.round((Math.random() * 10));
 			this.frames.push(this.frame);
-			console.log("roll one: " + this.frame[0]);
 		};
 		
 		this.rollTwo = function() {
 			this.frame[1] = Math.round((Math.random()) * (10 - this.frame[0]));
-			console.log("roll two: " + this.frame[1]);
+			this.framesPoints.push(this.frame[0] + this.frame[1]);
 			this.frame = [];
 		};
 

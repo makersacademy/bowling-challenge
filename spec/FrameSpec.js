@@ -64,7 +64,20 @@ describe('Frame', function() {
       expect(frame.score()).toEqual(4);
       frame.bowl(6);
       expect(frame.score()).toEqual(10);
+    });
+  });
 
+  describe('isStrike', function() {
+
+    it('Knows when it is a strike', function() {
+      frame.bowl(10);
+      expect(frame.isStrike()).toEqual(true);
     })
-  })
+
+    it('Knows when it is not a strike', function() {
+      frame.bowl(9);
+      frame.bowl(1);
+      expect(frame.isStrike()).toEqual(false);
+    });
+  });
 });

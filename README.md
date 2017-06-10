@@ -30,21 +30,27 @@ Project Structure
 User Stories
 ------------
 
-* As a **player**
-  So I can see how well I bowled
+
+* As a **player**<br>
+  So I can see how well I bowled<br>
   I want to *score* my **game**
-* As a **player**
-  So I can see how well I am bowling
+
+* As a **player**<br>
+  So I can see how well I am bowling<br>
   I want to *score* each **frame**
-* As a **player**
-  So I can get bonus points
+
+* As a **player**<br>
+  So I can get bonus points<br>
   I want to *score* **strikes** and **spares**
-* As a **player**
-  So I can play a **perfect game**
+
+* As a **player**<br>
+  So I can play a **perfect game**<br>
   I want **extra frames** if I *strike* on the **last frame**
-* As a **player**
-  So I can relive past glory
+
+* As a **player**<br>
+  So I can relive past glory<br>
   I want to *save* and *load* my **game history**
+
 
   Usage
 -----

@@ -80,4 +80,19 @@ describe('Frame', function() {
       expect(frame.isStrike()).toEqual(false);
     });
   });
+
+  describe('isSpare', function() {
+
+    it('Knows when it is a spare', function() {
+      frame.bowl(9);
+      frame.bowl(1);
+      expect(frame.isSpare()).toEqual(true);
+    });
+
+    it('Knows when it is not a spare', function() {
+      frame.bowl(8);
+      frame.bowl(1);
+      expect(frame.isSpare()).toEqual(false);
+    });
+  });
 });

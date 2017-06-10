@@ -30,11 +30,13 @@ function Score(frameNumbers) {
 			};
 			this.boardSymbols = frames;
 		};
-
-}
-
+};
+/*
 var frameNumbers = [[5,2],[10,0],[2,4],[4,6],[2,4]];
 score = new Score(frameNumbers);
 console.log(score.points);
 score.checkAdditionalPoints();
 console.log(score.points);
+score.convertFrames();
+console.log(score.boardSymbols)
+*/

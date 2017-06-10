@@ -1,4 +1,4 @@
-function Score(frameNumbers, frameSymbols) {
+function Score(frameNumbers) {
 	this.scoreBoard = frameNumbers; 
 	this.points = [];
 
@@ -11,6 +11,8 @@ function Score(frameNumbers, frameSymbols) {
 			if(frameNumbers[i+1]) {
 				if(frameNumbers[i][0] === 10) {
 					this.points[i] += this.points[i+1];
+				} else if(this.points[i] === 10) {
+					this.points[i] += this.scoreBoard[i+1][0];
 				};
 			};
 		};
@@ -18,9 +20,8 @@ function Score(frameNumbers, frameSymbols) {
 
 }
 
-var frameSymbols = [[5,2],['X','-'],[2,4],[4,6],[2,4]];
 var frameNumbers = [[5,2],[10,0],[2,4],[4,6],[2,4]];
-score = new Score(frameNumbers, frameSymbols);
+score = new Score(frameNumbers);
 console.log(score.points);
 score.checkAdditionalPoints();
 console.log(score.points);

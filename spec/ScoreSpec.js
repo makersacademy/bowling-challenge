@@ -17,6 +17,10 @@ describe('Score', function() {
 			score.checkAdditionalPoints();
 			expect(score.points[1]).toEqual(16);
 		});
+		it('adds the points of the first next throw with a spare', function() {
+			score.checkAdditionalPoints();
+			expect(score.points[3]).toEqual(12);
+		});
 	});
 
 });

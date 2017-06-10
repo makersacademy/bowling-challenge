@@ -21,5 +21,11 @@ describe('Frame', function() {
       frame.bowl(5)
       expect(frame.bowls()).toEqual([5, null])
     })
+
+    it('Updates the second bowl', function() {
+      frame.bowl(5)
+      frame.bowl(3)
+      expect(frame.bowls()).toEqual([5, 3])
+    })
   });
 });

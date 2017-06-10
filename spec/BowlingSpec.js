@@ -18,19 +18,4 @@ describe('Bowling', function() {
 		});
 	});
 
-	 describe('a strike', function() {
-		it('shows an X when a strike is thrown', function() {
-			bowling.frames = [[10,0]]
-			bowling.convertFrames();
-			expect(bowling.framesSymbols).toEqual([['X','-']])
-		});
-	});
-
-	describe('a spare', function() {
-		it('shows a "/" when a spare is thrown', function() {
-			bowling.frames = [[3,7]];
-			bowling.convertFrames();
-			expect(bowling.framesSymbols).toEqual([[3,'/']]);
-		});
-	});
 });

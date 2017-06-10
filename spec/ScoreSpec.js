@@ -22,5 +22,19 @@ describe('Score', function() {
 			expect(score.points[3]).toEqual(12);
 		});
 	});
+	
+	describe('convert frames', function() {
+		it('shows an X when a strike is thrown', function() {
+			score.convertFrames();
+			expect(score.boardSymbols[1]).toEqual(['X','-'])
+		});
+	});
+
+	describe('a spare', function() {
+		it('shows a "/" when a spare is thrown', function() {
+			score.convertFrames();
+			expect(score.boardSymbols[3]).toEqual([4,'/']);
+		});
+	});
 
 });

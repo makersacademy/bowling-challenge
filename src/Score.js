@@ -1,6 +1,7 @@
 function Score(frameNumbers) {
 	this.scoreBoard = frameNumbers; 
 	this.points = [];
+	this.boardSymbols = [];
 
 	for(var i=0; i<frameNumbers.length; i++) {
 		this.points[i] = this.scoreBoard[i][0] + this.scoreBoard[i][1];
@@ -17,6 +18,18 @@ function Score(frameNumbers) {
 			};
 		};
 	};
+
+	this.convertFrames = function() {
+			var frames = this.scoreBoard;
+			for(var i=0; i< frames.length; i++) {
+				if(frames[i][0] === 10) {
+					frames[i] = ['X', '-'];
+				} else if(frames[i][0] + frames[i][1] === 10) {
+					frames[i][1] = '/';
+				};
+			};
+			this.boardSymbols = frames;
+		};
 
 }
 

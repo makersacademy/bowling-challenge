@@ -40,8 +40,10 @@ describe('Frame', function() {
     });
 
     it('Prevents player from scoring more than the remaining pins', function() {
-      expect(function(){ frame.bowl(11); }).toThrow(new Error('Error - cannot knock down more pins than are here! (10)'))
-    })
+      expect(function(){ frame.bowl(11) }).toThrow(new Error('Error - cannot knock down more pins than are here! (10)'));
+      frame.bowl(5)
+      expect(function(){ frame.bowl(8) }).toThrow(new Error('Error - cannot knock down more pins than are here! (5)'))
+    });
   });
 
   describe('isComplete', function() {

@@ -16,4 +16,20 @@ describe('Bowling', function() {
 			expect(bowling.frame[0] + bowling.frame[1]).toBeLessThan(11);
 		});
 	});
+
+	describe('a strike', function() {
+		it('shows an X when a strike is thrown', function() {
+			bowling.frame = [10, 0];
+			bowling.checkStrike();
+			expect(bowling.frame).toEqual(['X','-'])
+		});
+	});
+
+	describe('a spare', function() {
+		it('shows a "/" when a spare is thrown', function() {
+			bowling.frame = [3,7];
+			bowling.checkSpare();
+			expect(bowling.frame).toEqual([3,'/']);
+		});
+	});
 });

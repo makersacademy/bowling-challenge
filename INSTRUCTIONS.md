@@ -1,5 +1,13 @@
+
 Bowling Challenge
 =================
+
+
+* Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
+* Feel free to use google, your notes, books, etc. but work on your own
+* If you refer to the solution of another coach or student, please put a link to that in your README
+* If you have a partial solution, **still check in a partial solution**
+* You must submit a pull request to this repo with your code by 9am Monday week
 
 ## The Task
 
@@ -57,17 +65,11 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
+## Code Review
 
+In code review we'll be hoping to see:
 
-=======
-| Object  | Message   |
-|---      |---        |
-| Player  |           |
-| Ball    | Roll      |
-| Pins    | Knocked   |
-| Frame   | Score     |
-|         | Knocked   |
-|         | Strikes   |
-|         | Spares    |
-|         | Gutter    |
-|         | Perfect   |
+* All tests passing
+* The code is elegant: every class has a clear responsibility, methods are short etc.
+
+Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

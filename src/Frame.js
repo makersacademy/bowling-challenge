@@ -14,3 +14,7 @@ Frame.prototype.bowl = function(pinsAmount) {
   this._bowls[this._currentBowl] = pinsAmount;
   this._currentBowl ++
 }
+
+Frame.prototype.isComplete = function() {
+  return this._currentBowl === 2 ? true : false;
+}

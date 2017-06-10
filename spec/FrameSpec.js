@@ -34,4 +34,13 @@ describe('Frame', function() {
       expect(function(){ frame.bowl(1); }).toThrow(new Error('Cannot bowl - this frame is complete'));
     });
   });
+
+  describe('isComplete', function() {
+    it('Knows if the frame is complete', function() {
+      expect(frame.isComplete()).toEqual(false);
+      frame.bowl(5);
+      frame.bowl(3);
+      expect(frame.isComplete()).toEqual(true);
+    });
+  });
 });

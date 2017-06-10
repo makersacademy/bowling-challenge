@@ -27,3 +27,7 @@ Frame.prototype.isComplete = function() {
 Frame.prototype.score = function() {
   return this._score;
 }
+
+Frame.prototype.isStrike = function() {
+  return this._bowls[0] === 10 ? true : false;
+}

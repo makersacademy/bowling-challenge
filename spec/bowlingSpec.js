@@ -11,9 +11,15 @@ describe ('bowling', function() {
     });
   });
 
-  describe('returns a players roll score', function() {
-    it('shows the players score from their roll', function() {
+  describe('#firstRoll', function() {
+    it('shows the players score from their first roll', function() {
       expect(bowling.firstRoll()).toBeLessThan(11);
+    });
+  });
+
+  describe('#secondRoll', function() {
+    it('shows the players score from their second roll', function() {
+      expect(bowling.secondRoll()).toBeLessThan(11);
     });
   });
 

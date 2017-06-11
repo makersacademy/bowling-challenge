@@ -1,0 +1,12 @@
+input {
+    text-align: center;
+    font-weight: bold;
+}
+
+table {
+    background: #aaa;
+    color: lightcoral;
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+}

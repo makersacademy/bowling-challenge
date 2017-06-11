@@ -9,23 +9,22 @@ describe('Frame', function(){
 
   describe('score', function(){
     it('starts with a score of zero', function(){
-      expect(frame.score).toEqual(0);
+      expect(frame.score).toEqual([0,0]);
     });
 
     it('adds the first ball score to the frame total', function(){
-      frame.score = null
+      frame.score = [null, 0]
       frame.bowl();
-      expect(frame.score).not.toEqual(null)
-      expect(frame.score).toBeLessThan(11);
+      expect(frame.score[0]).not.toEqual(null)
+      expect(frame.score[0] + frame.score[1]).toBeLessThan(11);
     });
 
     it('adds the second ball score to the frame total', function(){
-      frame.firstBallScore = 4;
-      frame.score = frame.firstBallScore;
+      frame.score = [4, 0]
       frame.isFirstBall = false;
       spyOn(frame, "knockDownPins").and.returnValue(2);
       frame.bowl();
-      expect(frame.score).toEqual(6);
+      expect(frame.score[0] + frame.score[1]).toEqual(6);
     });
   });
 

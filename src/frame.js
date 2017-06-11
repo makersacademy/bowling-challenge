@@ -1,19 +1,15 @@
 "use strict";
 
 function Frame() {
-  this.score = 0;
-  this.firstBallScore = 0;
-  this.secondBallScore = 0;
+  this.score = [0, 0];
   this.isFirstBall = true;
 }
 
 Frame.prototype.bowl = function(){
   if (this.isFirstBall) {
-    this.firstBallScore = this.knockDownPins(10);
-    this.score += this.firstBallScore;
+    this.score[0] = this.knockDownPins(10);
   } else {
-    this.secondBallScore = this.knockDownPins(10 - this.firstBallScore);
-    this.score += this.secondBallScore;
+    this.score[1] = this.knockDownPins(10 - this.score[0]);
   }
   this.secondBall();
 }

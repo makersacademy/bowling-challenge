@@ -10,4 +10,8 @@ describe("Bowling", function(){
     game.bowlBall();
     expect(game.getPlayedFrames()[0]).not.toBe(undefined);
   });
+
+  it("Has a score of 0 by default", function(){
+    expect(game.getScore()).toEqual(0);
+  });
 });

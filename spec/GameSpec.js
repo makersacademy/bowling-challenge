@@ -48,5 +48,11 @@ it ('can roll 3 strikes in the last frame', function() {
   expect(game.score()).toEqual(300);
 })
 
+it ('can check the score after only one frame (no strikes or spares)', function() {
+  game.roll(4);
+  game.roll(2);
+  expect(game.currentScore).toEqual(6);
+})
+
 
 });

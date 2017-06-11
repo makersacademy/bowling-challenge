@@ -12,7 +12,6 @@ describe('Frame', function() {
     it('starts out as an array containing null, null', function() {
       expect(frame.bowls()).toEqual([null, null]);
     });
-
   });
 
   describe('bowl', function() {
@@ -20,13 +19,13 @@ describe('Frame', function() {
     it('Updates the first bowl', function() {
       frame.bowl(5);
       expect(frame.bowls()).toEqual([5, null]);
-    })
+    });
 
     it('Updates the second bowl', function() {
       frame.bowl(5);
       frame.bowl(3);
       expect(frame.bowls()).toEqual([5, 3]);
-    })
+    });
 
     it('Does not allow player to bowl more than twice in one frame', function() {
       frame.bowl(5);
@@ -77,7 +76,7 @@ describe('Frame', function() {
     it('Knows when it is a strike', function() {
       frame.bowl(10);
       expect(frame.isStrike()).toEqual(true);
-    })
+    });
 
     it('Knows when it is not a strike', function() {
       frame.bowl(9);

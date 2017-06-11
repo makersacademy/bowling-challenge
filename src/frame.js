@@ -14,5 +14,4 @@ describe("Frame", function() {
     expect(frame.rolls).toEqual([4,5]);
   });
 
-
 });

@@ -1,29 +1,15 @@
 'use strict'
 
 var Game = function() {
-  this.score = 0;
-  this.frame = 1;
-  this.rollsThisFrame = 0;
+  this.rolls = 0;
 }
 
 Game.prototype.roll = function (pins) {
-  if (pins === 10) {
-    this.score = 'X';
-  } else {
-  this.score += pins;
-  this.rollsThisFrame++;
-  this.updateFrame();
-};
+  this.rolls = pins;
 };
 
-Game.prototype.frame = function () {
-  return this.frame;
-};
-
-Game.prototype.updateFrame = function () {
-  if (this.rollsThisFrame < 2 ) {
-    this.rollsThisFrame++;
-  } else {
-    this.frame++;
-  };
+Game.prototype.score = function () {
+  var result = 0;
+  result += this.rolls;
+  return result;
 };

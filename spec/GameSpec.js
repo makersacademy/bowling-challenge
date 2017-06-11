@@ -8,27 +8,11 @@ beforeEach(function() {
 });
 
 it ('starts with the score 0', function() {
-  expect(game.score).toEqual(0);
+  expect(game.score()).toEqual(0);
 });
 
 it ('can increase the score depending on the roll', function() {
   game.roll(5)
-  expect(game.score).toEqual(5);
-});
-
-it ('the score is classed as a X if a 10 is rolled', function() {
-  game.roll(10)
-  expect(game.score).toEqual('X');
-});
-
-it ('goes to the next frame if a strike is bowled', function() {
-  game.roll(10)
-  expect(game.frame).toEqual(2);
-})
-
-it ('starts the second frame after 2 bowls', function() {
-  game.roll(5)
-  game.roll(4)
-  expect(game.frame).toEqual(2);
+  expect(game.score()).toEqual(5);
 });
 });

@@ -1,16 +1,18 @@
 "use strict";
 
 $(document).ready(function(){
-  var frame = new Frame();
+  var game = new Game();
 
   updateScore();
 
   $("#bowl").on("click", function(){
-    frame.bowl();
+    game.bowl();
     updateScore();
   });
 
   function updateScore() {
-    $('#currentScore').text(frame.score);
+    $('#currentScore').text(game.scoreCard[game.turn - 1]);
+    $('#currentTurn').text(game.turn);
   }
+
 });

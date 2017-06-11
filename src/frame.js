@@ -1,5 +1,6 @@
 "use strict";
 
+// The Frame
 function Frame() {
   this.score = [0, 0];
   this.isFirstBall = true;

@@ -6,10 +6,16 @@ Game = function() {
   this.stored_pins = [];
 };
 
-Game.prototype.rolls_current_pins = function(pins) {
+Game.prototype.rolls = function(pins) {
   return this.stored_pins.push(pins);
 };
 
 Game.prototype.score = function() {
-  return this.stored_pins.reduce((total, roll) => total + roll);
+  var sum = 0;
+  var pins = this.stored_pins;
+
+  for (var index = 0; index < pins.length; index++) {
+    sum += pins[index];
+  }
+  return sum;
 };

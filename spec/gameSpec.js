@@ -26,6 +26,13 @@ describe("Game", function() {
     expect(game.score()).toEqual(27);
   });
 
+  it('can handle a strike', function() {
+    game.addFrame(new Frame(10));
+    game.addFrame(new Frame(4,3));
+    playGame(0,0,8);
+    expect(game.score()).toEqual(24);
+  });
+
 
   function playGame(firstRoll, secondRoll, n) {
     for(var i = 0;i < n; i++) {

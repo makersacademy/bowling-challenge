@@ -9,7 +9,9 @@ Game.prototype.addFrame = function(frame) {
 Game.prototype.score = function() {
   var score = 0;
   for(var i = 0; i < 10; i++) {
-    if(this.isSpare(this.frames[i])) {
+    if(this.isStrike(this.frames[i])) {
+      score += (10 + this.frames[i+1][0] + this.frames[i+1][1]);
+    } else if(this.isSpare(this.frames[i])) {
       score += 10 + this.frames[i+1][0];
     } else {
       score += (this.frames[i][0] + this.frames[i][1]);
@@ -20,4 +22,8 @@ Game.prototype.score = function() {
 
 Game.prototype.isSpare = function(frame) {
   return frame[0] + frame[1]  === 10;
+};
+
+Game.prototype.isStrike = function(frame) {
+  return frame[0] === 10;
 };

@@ -1,16 +1,15 @@
 function Game(){
 
   this.playedFrames = [];
-  this.score = 0
+  this.totalScore = 0
 
-  Game.prototype.getScore = function() {
-    return this.score;
+  Game.prototype.getTotalScore = function() {
+    return this.totalScore;
   };
 
-  Game.prototype.bowlBall = function () {
-    frame01 = "frame01";
-    this.playedFrames.push(frame01);
-  };
+  Game.prototype.startFrame = function(frame) {
+    this.playedFrames.push(frame);
+  }
 
   Game.prototype.getPlayedFrames = function () {
     return this.playedFrames;

@@ -1,19 +1,22 @@
 describe("Bowling a frame", function(){
 
   var game;
+  var frame;
 
   beforeEach(function(){
     game = new Game;
+    frame = new Frame(new Rack)
   });
 
   it("Starts with a score of 0", function(){
-    expect(game.score).toEqual(0);
+    expect(game.totalScore).toEqual(0);
   });
 
-  it("Creates a new frame when ball is bowled", function(){
-    game.bowlBall();
-    expect(game.getPlayedFrames()).toContain(frame01);
+  it("Creates a new frame", function(){
+    game.startFrame(frame);
+    expect(game.getPlayedFrames()).toContain(frame);
   });
+
 
 
 });

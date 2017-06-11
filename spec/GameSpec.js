@@ -28,7 +28,7 @@ describe('Game', function() {
     it('(after one frame) knows the current score', function() {
       game.addNewFrame()
       spyOn(Math, 'random').and.returnValue(0.4);
-      for(var i = 0; i < 2; i++) { game.bowl(); }
+      for(var i = 0; i < 2; i++) { game.bowl(); };
       expect(game.currentScore()).toEqual(8);
     });
   });

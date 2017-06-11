@@ -11,3 +11,11 @@ Game.prototype.frames = function() {
 Game.prototype.addNewFrame = function() {
   this._frames.push(new Frame);
 }
+
+Game.prototype.bowl = function() {
+  this._frames[0].bowl(Math.floor(Math.random() * 11));
+}
+
+Game.prototype.currentScore = function() {
+  return this._frames[0].score();
+}

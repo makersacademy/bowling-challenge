@@ -45,4 +45,13 @@ describe('Game', function() {
       expect(game.currentScore()).toEqual(12);
     });
   });
+
+  describe('bowl', function() {
+
+    it('Throws an error unless the argument passed is a number between 0 and 10', function() {
+      expect(function() { game.bowl((-4)) }).toThrow(new Error('Argument must be an integer between 0 and 10'))
+      expect(function() { game.bowl(("hi")) }).toThrow(new Error('Argument must be an integer between 0 and 10'))
+      expect(function() { game.bowl((3.5)) }).toThrow(new Error('Argument must be an integer between 0 and 10'))
+    });
+  });
 });

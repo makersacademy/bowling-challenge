@@ -15,6 +15,13 @@ function Score(frameNumbers) {
 				} else if(this.points[i] === 10) {
 					this.points[i] += board[i+1][0];
 				};
+			} else if(this.scoreBoard.length === 10) {
+				if(board[board.length - 1][0] === 10) {
+					this.points[board.length - 1] += this.scoreBoard[board.length - 1][2] + 10;
+					return this.points;
+				} else if(this.points[board.length - 1] === 10) {
+					this.points[board.length - 1] += this.scoreBoard[board.length - 1][2];
+				};
 			};
 		};
 	};

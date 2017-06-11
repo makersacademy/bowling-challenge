@@ -6,8 +6,6 @@ function Bowling() {
 		this.isFullFrame = false;
 
 		this.roll = function() {
-			console.log(this.framesNumbers.length)
-			console.log(this.framesNumbers);
 			if (this.frame[0] === undefined) { 
 				this.rollOne();
 			}	else if(this.frame[1] == undefined) {
@@ -35,7 +33,6 @@ function Bowling() {
 		};
 
 		this.rollThree = function() {
-			console.log('roll three')
 			this.rollPoints = Math.round(Math.random() * 10);
 			this.frame[2] = this.rollPoints;
 			this.isFullFrame = true;

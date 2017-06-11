@@ -5,6 +5,9 @@ function Frame() {
 }
 
 Frame.prototype.bowl = function(){
-  this.score += 10;
-  return 'You bowled a ball'
+  this.score += [0,1,2,3,4,5,6,7,8,9,10].sample();
+}
+
+Array.prototype.sample = function(){
+  return this[Math.floor(Math.random()*this.length)];
 }

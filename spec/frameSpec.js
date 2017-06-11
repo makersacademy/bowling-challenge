@@ -13,18 +13,14 @@ describe('Frame', function(){
     })
 
     it('increments the score cumulatively', function(){
+      frame.score = 10
+      spyOn(frame, "bowl").and.callFake(function(){
+        this.score += 5
+      });
       frame.bowl();
-      expect(frame.score).toEqual(10);
-      frame.bowl();
-      expect(frame.score).toEqual(20);
+      expect(frame.bowl).toHaveBeenCalled();
+      expect(frame.score).toEqual(15);
     })
-  });
-
-  describe('bowling', function(){
-    it('bowls a ball', function(){
-      expect(frame.bowl()).toMatch("You bowled a ball");
-      expect(frame.score).toEqual(10);
-    });
   });
 
 });

@@ -20,5 +20,5 @@ Game.prototype.start = function () {
     frame.play();
     this.frames.push(frame);
   };
-  alert("Your score is: " + this.calculateScore);
+  alert("Your score is: " + this.calculateTotalScore);
 };

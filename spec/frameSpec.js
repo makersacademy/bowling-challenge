@@ -12,14 +12,20 @@ describe('Frame', function(){
       expect(frame.score).toEqual(0);
     });
 
-    it('increments the score cumulatively', function(){
-      frame.score = 10
-      spyOn(frame, "bowl").and.callFake(function(){
-        this.score += 5
-      });
+    it('adds the first ball score to the frame total', function(){
+      frame.score = null
       frame.bowl();
-      expect(frame.bowl).toHaveBeenCalled();
-      expect(frame.score).toEqual(15);
+      expect(frame.score).not.toEqual(null)
+      expect(frame.score).toBeLessThan(11);
+    });
+
+    it('adds the second ball score to the frame total', function(){
+      frame.firstBallScore = 4;
+      frame.score = frame.firstBallScore;
+      frame.isFirstBall = false;
+      spyOn(frame, "knockDownPins").and.returnValue(2);
+      frame.bowl();
+      expect(frame.score).toEqual(6);
     });
   });
 

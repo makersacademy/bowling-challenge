@@ -13,9 +13,17 @@ Game.prototype.score = function () {
   var rollNumber = 0;
 
   for (var frameNumber = 0; frameNumber < 10; frameNumber++) {
+    if (this.rolls[rollNumber] === 10) {
+      result += this.rolls[rollNumber] + this.rolls[rollNumber + 1] + this.rolls[rollNumber + 2];
+      rollNumber ++;
+    } else if (this.rolls[rollNumber] + this.rolls[rollNumber + 1] === 10) {
+        result += this.rolls[rollNumber] + this.rolls[rollNumber + 1] + this.rolls[rollNumber + 2];
+        rollNumber += 2;
+    } else {
     result += this.rolls[rollNumber] + this.rolls[rollNumber + 1];
-    console.log(this.rolls[rollNumber])
     rollNumber += 2;
-  }
+  };
+
+};
 return result;
 };

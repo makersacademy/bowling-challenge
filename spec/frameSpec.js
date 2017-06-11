@@ -18,9 +18,5 @@ describe("Frame", function() {
     expect(strike.rolls).toEqual([10,0]);
   });
 
-  it('can add up score for frame', function() {
-    expect(frame.sumOfFrame()).toEqual(9);
-  });
-
 
 });

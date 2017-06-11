@@ -1,3 +1,8 @@
+function Game() {
+  this.frame = new Frame;
+
+};
+
 // function Player() {
 // }
 // Player.prototype.play = function(song) {

@@ -11,11 +11,9 @@ function Score(frameNumbers) {
 		for(var i=0; i< board.length; i++) {
 			if(this.points[i+1]) {
 				if(board[i][0] === 10) {
-					console.log('strike!');
 					this.points[i] += this.points[i+1];
 				} else if(this.points[i] === 10) {
 					this.points[i] += board[i+1][0];
-					console.log('frame number 2: ' + board[i+1][0]);
 				};
 			};
 		};

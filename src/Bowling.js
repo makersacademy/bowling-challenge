@@ -3,29 +3,43 @@ function Bowling() {
 		this.framesNumbers = [];
 		this.framesSymbols = [];
 		this.rollPoints = undefined;
+		this.isFullFrame = false;
 
 		this.roll = function() {
-			if(this.framesNumbers.length >= 10) {
-				alert('Maximum throws reached!')
-			};
-
+			console.log(this.framesNumbers.length)
+			console.log(this.framesNumbers);
 			if (this.frame[0] === undefined) { 
 				this.rollOne();
-			}	else {
+			}	else if(this.frame[1] == undefined) {
 				this.rollTwo();
+			} else if(this.framesNumbers.length >= 10) {
+				this.rollThree();
 			};		
 		};
 
 		this.rollOne = function() {
-			this.rollPoints = Math.round((Math.random() * 10));
+			this.rollPoints = Math.round(Math.random() * 10);
 			this.frame[0] = this.rollPoints;
 			this.framesNumbers.push(this.frame);
+			this.isFullFrame = false;
 		};
 		
 		this.rollTwo = function() {
-			this.rollPoints =	Math.round((Math.random()) * (10 - this.frame[0]));
+			this.rollPoints =	Math.round(Math.random() * (10 - this.frame[0]));
 			this.frame[1] = this.rollPoints;
-			this.frame = [];
+			if(this.framesNumbers.length <10) { 
+				this.frame = [];
+				return this.isFullFrame = true;
+			};
+			this.isFullFrame = false;
+		};
+
+		this.rollThree = function() {
+			console.log('roll three')
+			this.rollPoints = Math.round(Math.random() * 10);
+			this.frame[2] = this.rollPoints;
+			this.isFullFrame = true;
+			alert('Maximum throws reached!')
 		};
 /*
 		this.convertFrames = function() {

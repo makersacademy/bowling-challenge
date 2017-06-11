@@ -14,7 +14,7 @@ $(document).ready(function() {
 		$('#points').text(score.points);
 	//	bowling.convertFrames();
 
-			if(!bowling.frame[0]) {
+			if(bowling.isFullFrame) {
 				$('ul').append("[" +  bowling.framesNumbers[bowling.framesNumbers.length - 1] + "]")
 			};
 	};

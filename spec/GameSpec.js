@@ -18,7 +18,8 @@ describe('Game', function() {
 
     it('Adds a new frame to the array', function() {
       game.addNewFrame();
-      expect(game.frames.length()).toEqual(1)
-    })
-  })
+      var frames = game.frames();
+      expect(frames.length).toEqual(1);
+    });
+  });
 });

@@ -4,6 +4,7 @@ describe("Frame", function() {
 
   beforeEach(function() {
     frame = new Frame();
+    anotherFrame = new Frame();
     role1 = new Role();
     role2 = new Role();
     role3 = new Role();
@@ -26,7 +27,7 @@ describe("Frame", function() {
   it("should have functionality to calculate the score of the frame", function () {
     frame.add(role1);
     frame.add(role2);
-    frame.calculateScore();
+    frame.calculateRegularScore();
     expect(frame.score).toEqual(8);
   });
 
@@ -48,5 +49,12 @@ describe("Frame", function() {
   it("is expected to record spare in bonus mode if spare is scored", function () {
     frame.play(8,2);
     expect(frame.bonusMode).toEqual("spare");
+  });
+
+  it("in case of strike, should have functionality to update its bonus points with the points of another frame", function() {
+    frame.play(10);
+    anotherFrame.play(3,4);
+    frame.adjustForBonus(anotherFrame);
+    expect(frame.score).toEqual(17);
   });
 });

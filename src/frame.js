@@ -3,6 +3,7 @@ function Frame () {
   this.roles = [];
   this.score = undefined;
   this.bonusMode = "none";
+  this.bonusScore = 0;
 };
 
 Frame.prototype.play = function (a,b) {
@@ -12,7 +13,7 @@ Frame.prototype.play = function (a,b) {
     this.normalOrStrike(role, inputArr[i]);
     this.add(role);
   };
-  this.calculateScore();
+  this.calculateRegularScore();
   this.assignBonusMode();
 };
 
@@ -31,7 +32,7 @@ Frame.prototype.add = function (role) {
   this.roles.push(role);
 };
 
-Frame.prototype.calculateScore = function () {
+Frame.prototype.calculateRegularScore = function () {
   this.score = this.roles[0].points + this.roles[1].points;
 };
 
@@ -48,5 +49,18 @@ Frame.prototype.checkInRangeOfRegularScore = function (role) {
     if (this.roles[0].points + role.points > 10) {
       throw Error("Max total regular points are 10");
     };
+  };
+};
+
+Frame.prototype.adjustForBonus = function (anotherFrame) {
+  this.updateBonus(anotherFrame);
+  this.score += this.bonusScore;
+}
+
+Frame.prototype.updateBonus = function (anotherFrame) {
+  if (this.bonusMode === "strike") {
+    this.bonusScore = anotherFrame.score;
+  } else if (this.bonusMode === "spare") {
+    this.bonusScore = anotherFrame.roles[0].points
   };
 };

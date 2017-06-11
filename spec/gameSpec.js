@@ -11,7 +11,7 @@ describe("Game", function () {
     role2.addPoints(5);
     frame1.add(role1);
     frame1.add(role2);
-    frame1.calculateScore();
+    frame1.calculateRegularScore();
     frame2 = new Frame();
     role3 = new Role();
     role4 = new Role();
@@ -19,7 +19,7 @@ describe("Game", function () {
     role4.addPoints(1);
     frame2.add(role3);
     frame2.add(role4);
-    frame2.calculateScore();
+    frame2.calculateRegularScore();
   });
 
   it("has functionality to add frames", function() {

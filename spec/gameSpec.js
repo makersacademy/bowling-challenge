@@ -14,9 +14,16 @@ describe("Game", function() {
     expect(game.score()).toEqual(0);
   });
 
+  it('can handle normal frames', function() {
+    playGame(2,3);
+    expect(game.score()).toEqual(50);
+  });
+
+
+
   function playGame(firstRoll, secondRoll) {
     for(var i = 0;i < 10; i++) {
-      game.addFrame(firstRoll, secondRoll);
+      game.addFrame(new Frame(firstRoll, secondRoll));
     };
   };
 

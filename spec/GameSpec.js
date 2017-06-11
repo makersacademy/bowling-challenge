@@ -26,10 +26,19 @@ describe('Game', function() {
   describe('currentScore', function() {
 
     it('(after one frame) knows the current score', function() {
-      game.addNewFrame()
+      game.addNewFrame();
       spyOn(Math, 'random').and.returnValue(0.4);
       for(var i = 0; i < 2; i++) { game.bowl(); };
       expect(game.currentScore()).toEqual(8);
     });
+
+    it('(after two frames, no bonuses) knows the current score', function() {
+      game.addNewFrame();
+      spyOn(Math, 'random').and.returnValue(0.3);
+      for(var i = 0; i < 2; i++) { game.bowl(); };
+      game.addNewFrame();
+      for(var i = 0; i < 2; i++) { game.bowl(); };
+      expect(game.currentScore()).toEqual(12);
+    })
   });
 });

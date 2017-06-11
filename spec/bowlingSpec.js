@@ -13,7 +13,7 @@ describe ('bowling', function() {
 
   describe('returns a players roll score', function() {
     it('shows the players score from their roll', function() {
-      expect(bowling.firstRoll()).toBeLessThan(10);
+      expect(bowling.firstRoll()).toBeLessThan(11);
     });
   });
 

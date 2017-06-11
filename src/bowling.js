@@ -5,8 +5,9 @@ var Bowling = function() {
   this.score = STARTING_TOTAL;
 
 
-  Bowling.prototype.firstRoll() = function() {
+  Bowling.prototype.firstRoll = function() {
     this.score = ROLL_ONE;
+    return this.score
   };
 
 };

@@ -14,12 +14,12 @@ Frame.prototype.calculateScore = function () {
   this.score = this.roles[0].points + this.roles[1].points;
 };
 
-Frame.prototype.play = function () {
+Frame.prototype.play = function (a,b) {
+  inputArr = [a,b]
+  console.log(inputArr);
   for(var i = 0; i<2; i++) {
     var role = new Role();
-    var userInput = prompt("How many pins did you knock down?");
-    var knockedDownPins = Number(userInput)
-    role.addPoints(knockedDownPins);
+    this.normalOrStrike(role, inputArr[i]);
     this.add(role);
   };
   this.calculateScore();
@@ -27,9 +27,18 @@ Frame.prototype.play = function () {
 
 Frame.prototype.checkInRangeOfRegularScore = function (role) {
   if (this.roles.length === 1) {
-    console.log(this.roles[0].points);
     if (this.roles[0].points + role.points > 10) {
       throw Error("Max total regular points are 10");
     };
+  };
+};
+
+Frame.prototype.normalOrStrike = function (role, inputArrVal) {
+  if (this.roles.length > 0 && this.roles[0].points === 10) {
+    role.addPoints(0);
+  } else {
+    var userInput = inputArrVal || prompt("How many pins did you knock down?");
+    var knockedDownPins = Number(userInput);
+    role.addPoints(knockedDownPins);
   };
 };

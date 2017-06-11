@@ -7,9 +7,11 @@ describe("Frame", function() {
     role1 = new Role();
     role2 = new Role();
     role3 = new Role();
+    role4 = new Role();
     role1.addPoints(3);
     role2.addPoints(5);
     role3.addPoints(8);
+    role4.addPoints(10);
   });
 
   it("should be initialized with undefined number", function () {
@@ -31,5 +33,10 @@ describe("Frame", function() {
   it("should allow for a maximum of 10 regular points per frame", function() {
     frame.add(role1);
     expect( function(){frame.add(role3); } ).toThrow(new Error("Max total regular points are 10"))
+  });
+
+  it("should add a second 0-point role automatically if the first role was 10 points (strike)", function() {
+    frame.play(10);
+    expect(frame.roles[1].points).toEqual(0);
   });
 });

@@ -14,8 +14,8 @@ Game.prototype.addNewFrame = function() {
   this._currentFrame = this._frames.length - 1;
 }
 
-Game.prototype.bowl = function() {
-  this._frames[this._currentFrame].bowl(Math.floor(Math.random() * 11));
+Game.prototype.bowl = function(pinsAmount) {
+  this._frames[this._currentFrame].bowl(pinsAmount);
   if(this._frames[this._currentFrame].isComplete()) this.addNewFrame();
 }
 

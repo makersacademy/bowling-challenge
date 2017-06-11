@@ -28,8 +28,7 @@ describe('Game', function() {
 
     it('Knows the index of the current frame', function() {
       expect(game._currentFrame).toEqual(0)
-      spyOn(Math, 'random').and.returnValue(0.4);
-      for(var i = 0; i < 2; i++) { game.bowl(); };
+      for(var i = 0; i < 2; i++) { game.bowl(4); };
       expect(game._currentFrame).toEqual(1);
     })
   })
@@ -37,15 +36,13 @@ describe('Game', function() {
   describe('currentScore', function() {
 
     it('(after one frame) knows the current score', function() {
-      spyOn(Math, 'random').and.returnValue(0.4);
-      for(var i = 0; i < 2; i++) { game.bowl(); };
+      for(var i = 0; i < 2; i++) { game.bowl(4); };
       expect(game.currentScore()).toEqual(8);
     });
 
     it('(after two frames, no bonuses) knows the current score', function() {
-      spyOn(Math, 'random').and.returnValue(0.3);
-      for(var i = 0; i < 4; i++) { game.bowl(); };
+      for(var i = 0; i < 4; i++) { game.bowl(3); };
       expect(game.currentScore()).toEqual(12);
-    })
+    });
   });
 });

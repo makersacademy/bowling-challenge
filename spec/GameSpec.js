@@ -54,5 +54,12 @@ it ('can check the score after only one frame (no strikes or spares)', function(
   expect(game.currentScore).toEqual(6);
 })
 
+it ('can check the current score if a strike or spare is scored', function () {
+  game.roll(10);
+  game.roll(7);
+  game.roll(1);
+  expect(game.currentScore).toEqual(26);
+});
+
 
 });

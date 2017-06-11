@@ -8,6 +8,7 @@ var Game = function() {
 Game.prototype.roll = function (pins) {
   this.rolls.push(pins);
   this.currentScore += pins;
+  console.log(this.currentScore);
 };
 
 Game.prototype.score = function () {

@@ -9,7 +9,7 @@ Game.prototype.addFrame = function(frame) {
 Game.prototype.score = function() {
   var score = 0;
   for(var i = 0; i < 10; i++) {
-    score += this.frames[i].rolls.reduce((a,b)=> a+b);
+    score += this.frames[i].sumOfFrame();
   };
   return score;
 };

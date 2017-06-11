@@ -2,7 +2,28 @@ function Frame () {
   this.number = undefined;
   this.roles = [];
   this.score = undefined;
+  this.bonusMode = "none";
+};
 
+Frame.prototype.play = function (a,b) {
+  inputArr = [a,b]
+  for(var i = 0; i<2; i++) {
+    var role = new Role();
+    this.normalOrStrike(role, inputArr[i]);
+    this.add(role);
+  };
+  this.calculateScore();
+  this.assignBonusMode();
+};
+
+Frame.prototype.normalOrStrike = function (role, inputArrVal) {
+  if (this.roles.length > 0 && this.roles[0].points === 10) {
+    role.addPoints(0);
+  } else {
+    var userInput = inputArrVal || prompt("How many pins did you knock down?");
+    var knockedDownPins = Number(userInput);
+    role.addPoints(knockedDownPins);
+  };
 };
 
 Frame.prototype.add = function (role) {
@@ -14,15 +35,12 @@ Frame.prototype.calculateScore = function () {
   this.score = this.roles[0].points + this.roles[1].points;
 };
 
-Frame.prototype.play = function (a,b) {
-  inputArr = [a,b]
-  console.log(inputArr);
-  for(var i = 0; i<2; i++) {
-    var role = new Role();
-    this.normalOrStrike(role, inputArr[i]);
-    this.add(role);
+Frame.prototype.assignBonusMode = function () {
+  if (this.roles[0].points === 10) {
+    this.bonusMode = "strike";
+  } else if (this.score === 10) {
+    this.bonusMode = "spare";
   };
-  this.calculateScore();
 };
 
 Frame.prototype.checkInRangeOfRegularScore = function (role) {
@@ -30,15 +48,5 @@ Frame.prototype.checkInRangeOfRegularScore = function (role) {
     if (this.roles[0].points + role.points > 10) {
       throw Error("Max total regular points are 10");
     };
-  };
-};
-
-Frame.prototype.normalOrStrike = function (role, inputArrVal) {
-  if (this.roles.length > 0 && this.roles[0].points === 10) {
-    role.addPoints(0);
-  } else {
-    var userInput = inputArrVal || prompt("How many pins did you knock down?");
-    var knockedDownPins = Number(userInput);
-    role.addPoints(knockedDownPins);
   };
 };

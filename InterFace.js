@@ -13,10 +13,10 @@ $(document).ready(function() {
 		score.checkAdditionalPoints();
 		$('#points').text(score.points);
 	//	bowling.convertFrames();
-		for(var i=0; i<bowling.framesNumbers.length; i++) {
-			$('ul').append("[" +  bowling.framesNumbers[i] + "]")
-			//debugger
-		};
+
+			if(!bowling.frame[0]) {
+				$('ul').append("[" +  bowling.framesNumbers[bowling.framesNumbers.length - 1] + "]")
+			};
 	};
 
 });

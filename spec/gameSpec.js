@@ -32,6 +32,11 @@ describe("Game", function () {
     game.add(frame2);
     expect(game.calculateTotalScore()).toEqual(13);
   });
+
+  it("should have functionality to handle bonus on final frame", function() {
+    game.start([[1,4],[4,5],[6,4],[5,5],[10],[0,1],[7,3],[6,4],[10],[2,8]],[6])
+    expect(game.calculateTotalScore()).toEqual(133);
+  });
 });
 
 // data for testing: allRolesDataArrayofArrays = [[1,4],[4,5],[6,4],[5,5],[10],[0,1],[7,3],[6,4],[10],[2,8]]

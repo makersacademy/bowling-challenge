@@ -6,11 +6,10 @@ function Frame () {
   this.bonusScore = 0;
 };
 
-Frame.prototype.play = function (a,b) {
-  inputArr = [a,b]
+Frame.prototype.play = function (frameScoresArray) {
   for(var i = 0; i<2; i++) {
     var role = new Role();
-    this.normalOrStrike(role, inputArr[i]);
+    this.normalOrStrike(role, frameScoresArray[i]);
     this.add(role);
   };
   this.calculateRegularScore();
@@ -18,13 +17,16 @@ Frame.prototype.play = function (a,b) {
 };
 
 Frame.prototype.normalOrStrike = function (role, inputArrVal) {
+  var knockedDownPins;
   if (this.roles.length > 0 && this.roles[0].points === 10) {
-    role.addPoints(0);
+    knockedDownPins = 0;
+  } else if ( inputArrVal === 0 ) {
+    knockedDownPins = 0;
   } else {
     var userInput = inputArrVal || prompt("How many pins did you knock down?");
-    var knockedDownPins = Number(userInput);
-    role.addPoints(knockedDownPins);
+    knockedDownPins = Number(userInput);
   };
+  role.addPoints(knockedDownPins);
 };
 
 Frame.prototype.add = function (role) {

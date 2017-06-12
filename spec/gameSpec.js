@@ -33,3 +33,7 @@ describe("Game", function () {
     expect(game.calculateTotalScore()).toEqual(13);
   });
 });
+
+// data for testing: allRolesDataArrayofArrays = [[1,4],[4,5],[6,4],[5,5],[10],[0,1],[7,3],[6,4],[10],[2,8]]
+// data for testing: bonusArray = [6]
+//data for testing: allRolesDataArrayofArrays = [[10 ],[10],[10],[10],[10],[10],[10],[10],[10],[10]]

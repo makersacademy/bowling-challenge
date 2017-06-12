@@ -37,23 +37,23 @@ describe("Frame", function() {
   });
 
   it("should add a second 0-point role automatically if the first role was 10 points (strike)", function() {
-    frame.play(10);
+    frame.play([10]);
     expect(frame.roles[1].points).toEqual(0);
   });
 
   it("is expected to record strike in bonus mode if strike is scored", function () {
-    frame.play(10);
+    frame.play([10]);
     expect(frame.bonusMode).toEqual("strike");
   });
 
   it("is expected to record spare in bonus mode if spare is scored", function () {
-    frame.play(8,2);
+    frame.play([8,2]);
     expect(frame.bonusMode).toEqual("spare");
   });
 
   it("in case of strike, should have functionality to update its bonus points with the points of another frame", function() {
-    frame.play(10);
-    anotherFrame.play(3,4);
+    frame.play([10]);
+    anotherFrame.play([3,4]);
     frame.adjustForBonus(anotherFrame);
     expect(frame.score).toEqual(17);
   });

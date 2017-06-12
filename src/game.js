@@ -15,14 +15,14 @@ Game.prototype.calculateTotalScore = function () {
   return currentTotalScore
 };
 
-Game.prototype.start = function () {
+Game.prototype.start = function (allRolesDataArrayofArrays, bonusArray) {
   for (var i = 0; i < 10; i++) {
     var frame = new Frame();
-    frame.play();
+    frame.play(allRolesDataArrayofArrays[i]);
     this.frames.push(frame);
     if (i>0) {
       this.frames[i-1].adjustForBonus(frame);
     };
   };
-  alert("Your score is: " + this.calculateTotalScore());
+  alert("Your final score is: " + this.calculateTotalScore());
 };

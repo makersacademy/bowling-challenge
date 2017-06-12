@@ -2,7 +2,7 @@ var Bowling = function() {
   var STARTING_TOTAL = 0;
   var ROLL_ONE = Math.floor(Math.random() * 11);
   var ROLL_TWO = Math.floor(Math.random() * 11);
-  var MAX_SCORE = 10
+  var X = 10
 
   this.score = STARTING_TOTAL;
   var firstRoll;
@@ -22,9 +22,14 @@ var Bowling = function() {
     return secondRoll;
   };
 
-  Bowling.prototype.frameScore = function (){
+  Bowling.prototype.frameScore = function () {
     var frameScores = this.firstRoll() + this.secondRoll()
     return frameScores;
+  };
+
+  Bowling.prototype.strikeScore = function() {
+    strike = X;
+    return strike;
   };
 
   // Bowling.prototype.score1 = function(){

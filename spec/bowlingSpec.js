@@ -30,4 +30,10 @@ describe ('bowling', function() {
     });
   });
 
+  describe('#strikeScore', function() {
+    it('shows a player has scored a strike', function() {
+      expect(bowling.strikeScore()).toEqual(10)
+    });
+  });
+
 });

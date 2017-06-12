@@ -19,3 +19,14 @@ Game.prototype.score = function() {
   }
   return sum;
 };
+
+Game.prototype.strike = function() {
+  // take the index to the left & to the right of the strike
+  // this.stored_pins.forEach(function callback(currentValue, index, array) {
+  //     //your iterator
+  // }[, thisArg]);
+};
+
+
+//if the pins knocked down on rolls == 10 then take the 1st & 2nd index & add them together & add the bonus point
+//If there is a strike on the rolls then go through the index

@@ -22,7 +22,7 @@ describe('Game', function() {
     expect(game.score()).toEqual(20);
   });
 
-  xit("can score a strike and get a bonus point on the third frame", function(){
+  it("can score a strike and get a bonus point on the third frame", function(){
     game.rolls(10);
     game.rolls(5);
     game.rolls(4);

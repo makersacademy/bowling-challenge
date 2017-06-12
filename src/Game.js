@@ -16,6 +16,7 @@ Game.prototype.roll = function (pins) {
 };
 };
 
+
 Game.prototype.frame = function () {
   return this.frame;
 };

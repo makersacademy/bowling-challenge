@@ -22,6 +22,12 @@ Game.prototype.start = function (allRolesDataArrayofArrays, bonusArray) {
     this.frames.push(frame);
     if (i>0) {
       this.frames[i-1].adjustForBonus(frame);
+      if (this.frames[i-1].bonusMode === "strike" && i > 1) {
+        console.log(i);
+        var adjustmentFrame = new Frame();
+        adjustmentFrame.play([frame.roles[0].points,0]);
+        this.frames[i-2].adjustForBonus(adjustmentFrame);
+      };
     };
   };
   alert("Your final score is: " + this.calculateTotalScore());

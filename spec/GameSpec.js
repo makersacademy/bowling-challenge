@@ -8,9 +8,6 @@ beforeEach(function() {
 });
 
 it ('starts with the score 0', function() {
-  // for (var i = 0; i < 20; i++) {
-  //   game.roll(0)
-  // };
   expect(game.currentScore).toEqual(0);
 });
 
@@ -29,6 +26,13 @@ it ('can roll a spare', function() {
     game.roll(0)
   };
   expect(game.score()).toEqual(24);
+})
+
+it ('adds up all spares accurately', function() {
+  for (var i = 0; i < 21; i++) {
+    game.roll(5)
+  };
+  expect(game.score()).toEqual(150);
 })
 
 it ('can roll a strike', function() {

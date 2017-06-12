@@ -99,4 +99,13 @@ describe('Frame', function() {
       expect(frame.isSpare()).toEqual(false);
     });
   });
+
+  describe('addSpareBonus', function() {
+
+    it('Stores the bonus value', function() {
+      frame.bowl(5);
+      frame.addSpareBonus();
+      expect(frame._bonusScore).toEqual(5);
+    });
+  });
 });

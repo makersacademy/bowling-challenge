@@ -5,6 +5,7 @@ var Frame = function() {
   this._currentBowl = 0
   this.remainingPins = 10
   this._score = 0
+  this._bonusScore = 0;
 }
 
 Frame.prototype.bowls = function() {
@@ -34,4 +35,9 @@ Frame.prototype.isStrike = function() {
 
 Frame.prototype.isSpare = function() {
   return this._bowls[0] !== 10 && this.remainingPins === 0 ? true : false;
+}
+
+Frame.prototype.addSpareBonus = function() {
+  this._bonusScore = this._bowls[0];
+  this._score += this._bonusScore;
 }

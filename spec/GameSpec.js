@@ -37,11 +37,13 @@ describe('Game', function() {
 
     it('(after one frame) knows the current score', function() {
       for(var i = 0; i < 2; i++) { game.bowl(4); };
+      game.calculateScore();
       expect(game.currentScore()).toEqual(8);
     });
 
     it('(after two frames, no bonuses) knows the current score', function() {
       for(var i = 0; i < 4; i++) { game.bowl(3); };
+      game.calculateScore();
       expect(game.currentScore()).toEqual(12);
     });
   });
@@ -52,6 +54,15 @@ describe('Game', function() {
       expect(function() { game.bowl(-4); }).toThrow(new Error('Argument must be an integer between 0 and 10'))
       expect(function() { game.bowl("hi"); }).toThrow(new Error('Argument must be an integer between 0 and 10'))
       expect(function() { game.bowl(3.5); }).toThrow(new Error('Argument must be an integer between 0 and 10'))
+    });
+  });
+
+  describe('calculateBonus', function() {
+
+    it('Can calculate the spare bonus (after scoring a non-strike on the current frame)', function() {
+      for(var i = 0; i < 3; i++) { game.bowl(5); };
+      game.calculateScore()
+      expect(game.currentScore).toEqual(20);
     });
   });
 });

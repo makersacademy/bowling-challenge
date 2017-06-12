@@ -19,7 +19,14 @@ describe ('bowling', function() {
 
   describe('#secondRoll', function() {
     it('shows the players score from their second roll', function() {
+      bowling.firstRoll()
       expect(bowling.secondRoll()).toBeLessThan(11);
+    });
+  });
+
+  describe('#frameScore', function() {
+    it('returns players total score for one frame', function() {
+      expect(bowling.frameScore()).toBeLessThan(11);
     });
   });
 

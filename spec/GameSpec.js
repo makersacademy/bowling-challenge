@@ -8,10 +8,10 @@ beforeEach(function() {
 });
 
 it ('starts with the score 0', function() {
-  for (var i = 0; i < 20; i++) {
-    game.roll(0)
-  };
-  expect(game.score()).toEqual(0);
+  // for (var i = 0; i < 20; i++) {
+  //   game.roll(0)
+  // };
+  expect(game.currentScore).toEqual(0);
 });
 
 it ('can increase the score depending on the roll', function() {

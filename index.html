@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bowling </title>
+            <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+            <script src="src/Game.js"></script>
+            <script src='src/interface.js'></script>
+            <link rel="stylesheet" type="text/css" href="./public/style.css">
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    </head>
+    <body>            <!-- <center> -->
+      <h1 id="bowling">W e l c o m e</h1>
+        <h2 class="top" > Total score : </h2 ><h2  class="top" id='total_score'></h2>
+
+        <div>
+            <h2 class="top"> Current frame : </h2><h2 class="top" id='current_frame'></h2>
+            <h2 class="top"> Current roll : </h2><h2 class="top"  id='current_roll'></h2>
+        </div>
+            <h2 class="top"  id='sKsP'></h2>
+
+        <div class ='button'>
+            <button id='bowl' onmousedown="beep1.play();">Bowl</button>
+            <button id='new_game' onmousedown="beep2.play();">New Game</button>
+        </div>
+
+        <div>
+            <h2 class="top1"> Roll 1 : </h2><h2 class="top1" id='roll_1'></h2>
+            <h2 class="top1"> Roll 2 : </h2><h2 class="top1" id='roll_2'></h2>
+            <h2 class="top1"> You have </h2><h2 class="top1" id='error'></h2><h2 class="top1">more pins to hit</h2>
+        </div>
+            <h2 class="top" id='test'></h2>
+        <div class="se-pre-con"></div>
+        <div></div>
+        <img src="mp3-mp4/giphy.gif">
+
+        <div class= 'video_wrapper' >
+            <video poster = 'mp3-mp4/poster.png' autoplay='true' preload='auto' loop='loop'>
+                <source src='mp3-mp4/video.mp4'  type='video/mp4'>
+                <source src='mp3-mp4/video.webm'  type='video/webm'>
+            </video>
+        </div>
+    </body>
+</html>

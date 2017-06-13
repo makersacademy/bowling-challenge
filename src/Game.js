@@ -25,16 +25,11 @@ Game.prototype.score = function() {
 
 Game.prototype.strike = function() {
   var pinsAfterStrike = 0;
+  var storedPins = this.stored_pins;
   this.stored_pins.forEach(function(pin, index) {
     if(pin == 10) {
-      pinsAfterStrike = (pin[index + 1] + pin[index + 2]) * 2;
+      pinsAfterStrike = (storedPins[index + 1] + storedPins[index + 2]) * 2;
     }
-  })
+  });
   return pinsAfterStrike + 10;
 };
-
-};
-
-
-//if the pins knocked down on rolls == 10 then take the 1st & 2nd index & add them together & add the bonus point
-//If there is a strike on the rolls then go through the index

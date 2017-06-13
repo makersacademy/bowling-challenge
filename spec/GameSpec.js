@@ -27,7 +27,8 @@ describe('Game', function() {
     game.rolls(5);
     game.rolls(4);
     gutter(0, 18);
-    expect(game.score()).toEqual(28);
+    // game.strike();
+    expect(game.strike()).toEqual(28);
   });
 
 });

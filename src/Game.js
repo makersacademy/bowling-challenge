@@ -7,6 +7,9 @@ Game = function() {
 };
 
 Game.prototype.rolls = function(pins) {
+  if (pins == 10) {
+  this.strike();
+}
   return this.stored_pins.push(pins);
 };
 
@@ -21,10 +24,15 @@ Game.prototype.score = function() {
 };
 
 Game.prototype.strike = function() {
-  // take the index to the left & to the right of the strike
-  // this.stored_pins.forEach(function callback(currentValue, index, array) {
-  //     //your iterator
-  // }[, thisArg]);
+  var pinsAfterStrike = 0;
+  this.stored_pins.forEach(function(pin, index) {
+    if(pin == 10) {
+      pinsAfterStrike = (pin[index + 1] + pin[index + 2]) * 2;
+    }
+  })
+  return pinsAfterStrike + 10;
+};
+
 };
 
 

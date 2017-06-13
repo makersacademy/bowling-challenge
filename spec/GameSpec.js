@@ -8,7 +8,7 @@ beforeEach(function() {
 });
 
 it ('starts with the score 0', function() {
-  expect(game.currentScore).toEqual(0);
+  expect(game.currentScore(0)).toEqual(0);
 });
 
 it ('can increase the score depending on the roll', function() {
@@ -55,14 +55,15 @@ it ('can roll 3 strikes in the last frame', function() {
 it ('can check the score after only one frame (no strikes or spares)', function() {
   game.roll(4);
   game.roll(2);
-  expect(game.currentScore).toEqual(6);
+  expect(game.currentScore(1)).toEqual(6);
 })
 
 it ('can check the current score if a strike or spare is scored', function () {
   game.roll(10);
+  game.roll(10);
   game.roll(7);
   game.roll(1);
-  expect(game.currentScore).toEqual(26);
+  expect(game.currentScore(3)).toEqual(53);
 });
 
 

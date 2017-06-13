@@ -1,3 +1,9 @@
+## Contributors
+
+- Sam Pritchard [@sampritchard](https://github.com/sampritchard)
+- Kavita Kalaichelvan [@kkavita92](https://github.com/kkavita92)
+
+
 
 Bowling Challenge
 =================

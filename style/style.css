@@ -10,3 +10,13 @@ table {
     font-size: 10px;
     font-weight: bold;
 }
+
+button {
+    background: cyan;
+    color: firebrick;
+}
+
+body {
+    width: 100%;
+    margin-left: 100px;
+}

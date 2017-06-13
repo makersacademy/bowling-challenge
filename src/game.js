@@ -38,11 +38,12 @@ Game.prototype.tenthFrameBonus = function (bonusArray) {
     bonusRole2 = bonusArray[1] || prompt("How many pins did you knock down?");
     if (bonusRole1 === 10) {
       var bonusFrame1 = new Frame();
-      bonusFrame1.play(bonusRole1,0);
+      bonusFrame1.play([bonusRole1,0]);
       var bonusFrame2 = new Frame();
-      bonusFrame2.play(bonusRole2,0);
+      bonusFrame2.play([bonusRole2,0]);
       this.add(bonusFrame1);
       this.add(bonusFrame2);
+      this.frames[8].adjustForBonus(bonusFrame1);
     } else {
       var bonusFrame1 = new Frame();
       bonusFrame1.play(bonusRole1,bonusRole2);

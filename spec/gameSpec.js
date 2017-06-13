@@ -11,8 +11,8 @@ describe('Game', function(){
   describe('turns', function(){
     it('has a scorecard of 10 turns', function(){
       expect(game.scoreCard[8]).toEqual([0, 0]);
-      expect(game.scoreCard[9]).toEqual([0, 0, 0]);
-      expect(game.scoreCard[10]).toBe(undefined);
+      expect(game.scoreCard[9]).toEqual([0, 0]);
+      expect(game.scoreCard[10]).toEqual([0]);
     });
 
     it('shows the scores after one turn', function(){
@@ -28,6 +28,22 @@ describe('Game', function(){
       game.bowl();
       expect(game.scoreCard[game.turn]).not.toEqual([null, null])
       expect(game.scoreCard[game.turn + 1]).toEqual([0, 0]);
+    });
+
+    it('generates a quirky response', function(){
+      var sassyGameOverMessages = ['Message'];
+      expect(sassyGameOverMessages.sample()).toEqual('Message');
+    });
+
+    it('gives a quirky response when you finish a game', function(){
+      for ( var i = 0; i < 10; i++ ){
+          game.bowl();
+      }
+      spyOn(sassyGameOverMessages, 'sample').and.callFake(function(){
+        return 'Message';
+      });
+      game.bowl()
+      expect(game.turn).toMatch('Message');
     });
   });
 

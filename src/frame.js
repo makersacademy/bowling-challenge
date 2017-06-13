@@ -1,6 +1,7 @@
 "use strict";
 
-// The Frame
+// The Frame is responsible for bowling in turns
+
 function Frame() {
   this.score = [0, 0];
   this.isFirstBall = true;

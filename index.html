@@ -3,22 +3,39 @@
   <head>
     <title>Bowling</title>
     <!-- <link rel='stylesheet' href='style.css'> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
   <body>
-    <h1>Bannastre's Lanes</h1>
-    <h2>Let's go bowling!</h2>
-    <section>
-      <h3> Turn: <span id="currentTurn"></span></h3>
-      <h3> Your Score: <span id="currentScore"></span></h3>
+    <div class="container" style="border: 20px; padding: 50px; text-align: center">
+      <h1>Bannastre's Lanes</h1>
+      <h2>Let's go bowling!</h2>
+      <section>
+        <h3> Turn: <span id="currentTurn"></span></h3>
+        </br>
+        <h3> Your Score: <span id="currentScore"></span></h3>
+          </br>
+            <div class="container" style="padding: 50px;">
+            <div class="row">
+              <div class="col-md-1" id="score1"> 0 | 0</div>
+              <div class="col-md-1" id="score2"> 0 | 0</div>
+              <div class="col-md-1" id="score3"> 0 | 0</div>
+              <div class="col-md-1" id="score4"> 0 | 0</div>
+              <div class="col-md-1" id="score5"> 0 | 0</div>
+              <div class="col-md-1" id="score6"> 0 | 0</div>
+              <div class="col-md-1" id="score7"> 0 | 0</div>
+              <div class="col-md-1" id="score8"> 0 | 0</div>
+              <div class="col-md-1" id="score9"> 0 | 0</div>
+              <div class="col-md-1" id="score10"> 0 | 0</div>
+              <div class="col-md-1" id="scoreExtra"> 0 </div>
+            </div></br>
+        </div>
+        <button class="btn btn-primary btn-lg" id="bowl">Bowl!</button>
     </section>
-    <section>
-      <h1 id="Bowling"></h1>
-      <p>
-        <button id="bowl">Bowl!</button>
-    </section>
+    </div>
   </body>
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="src/frame.js"></script>
   <script src="src/game.js"></script>
   <script src="src/interface.js"></script>

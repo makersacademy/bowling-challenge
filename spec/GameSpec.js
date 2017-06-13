@@ -31,6 +31,10 @@ describe('Game', function() {
     expect(game.strike()).toEqual(28);
   });
 
-  it("")
+  it("goes on to next frame if there is a strike", function(){
+    game.rolls(10);
+    expect(game.strikeMessage()).toEqual("Congratulations you got a strike! Move on to the next frame");
+  });
+  // work out how to deal with frames 
 
 });

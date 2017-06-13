@@ -8,8 +8,8 @@ Game = function() {
 
 Game.prototype.rolls = function(pins) {
   if (pins == 10) {
-  this.strike();
-}
+    this.strikeMessage();
+  }
   return this.stored_pins.push(pins);
 };
 
@@ -32,4 +32,8 @@ Game.prototype.strike = function() {
     }
   });
   return pinsAfterStrike + 10;
+};
+
+Game.prototype.strikeMessage = function() {
+  return "Congratulations you got a strike! Move on to the next frame";
 };

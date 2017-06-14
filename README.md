@@ -4,6 +4,8 @@ Bowling Challenge
 
 Makers Academy week five weekend project to build a program to score 10-pin bowling with JavaScript. 
 
+![screen shot 2017-06-14 at 18 26 46](https://user-images.githubusercontent.com/20523607/27145876-2edb064a-512f-11e7-9e46-854aa2fab1d5.png)
+
 Installation & Testing
 --------
 

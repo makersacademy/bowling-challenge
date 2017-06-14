@@ -7,10 +7,13 @@ Game = function() {
 };
 
 Game.prototype.rolls = function(pins) {
+  if (this.stored_pins) 
   if (pins == 10) {
     this.strikeMessage();
+    return this.stored_pins.push(pins, 0);
+  } else {
+    return this.stored_pins.push(pins);
   }
-  return this.stored_pins.push(pins);
 };
 
 Game.prototype.score = function() {
@@ -28,11 +31,12 @@ Game.prototype.strike = function() {
   var storedPins = this.stored_pins;
   this.stored_pins.forEach(function(pin, index) {
     if(pin == 10) {
-      pinsAfterStrike = (storedPins[index + 1] + storedPins[index + 2]) * 2;
+      pinsAfterStrike = (storedPins[index + 2] + storedPins[index + 3]) * 2;
     }
   });
   return pinsAfterStrike + 10;
 };
+
 
 Game.prototype.strikeMessage = function() {
   return "Congratulations you got a strike! Move on to the next frame";

@@ -26,15 +26,20 @@ describe('Game', function() {
     game.rolls(10);
     game.rolls(5);
     game.rolls(4);
-    gutter(0, 18);
+    gutter(0, 16);
     game.strike();
     expect(game.strike()).toEqual(28);
   });
 
-  it("goes on to next frame if there is a strike", function(){
+  it("adds a zero to the next roll if there is a strike", function(){
+    game.rolls(10);
+    game.rolls(5);
+    expect(game.stored_pins).toEqual([10,0,5]);
+  });
+
+  it("displays a congratulations message for a strike", function(){
     game.rolls(10);
     expect(game.strikeMessage()).toEqual("Congratulations you got a strike! Move on to the next frame");
   });
-  // work out how to deal with frames 
 
 });

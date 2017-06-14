@@ -12,6 +12,8 @@ describe('Game', function() {
     for (var single = 0; single < up_to; single++) { game.rolls(pins_knocked_down); };
   };
 
+  // TODO separate out the tests using the functions as titles
+
   it("returns a score of zero for a gutter game", function(){
     gutter(0,20);
     expect(game.score()).toEqual(0);
@@ -40,6 +42,16 @@ describe('Game', function() {
   it("displays a congratulations message for a strike", function(){
     game.rolls(10);
     expect(game.strikeMessage()).toEqual("Congratulations you got a strike! Move on to the next frame");
+  });
+
+  it("allows a maximum of 21 rolls per game", function(){
+    gutter(1, 21);
+    expect(game.stored_pins.length).toEqual(21);
+  });
+
+  it("displays an end of game message once there have been 21 rolls", function(){
+    gutter(1, 21);
+    expect(game.endGameMessage()).toEqual("Congratulations you have finished the game!");
   });
 
 });

@@ -7,7 +7,10 @@ Game = function() {
 };
 
 Game.prototype.rolls = function(pins) {
-  if (this.stored_pins) 
+  if (this.stored_pins.length == 21) {
+    this.endGameMessage();
+    return;
+  }
   if (pins == 10) {
     this.strikeMessage();
     return this.stored_pins.push(pins, 0);
@@ -37,7 +40,11 @@ Game.prototype.strike = function() {
   return pinsAfterStrike + 10;
 };
 
-
+// TODO add in a display object for console log messages
 Game.prototype.strikeMessage = function() {
   return "Congratulations you got a strike! Move on to the next frame";
+};
+
+Game.prototype.endGameMessage = function() {
+  return "Congratulations you have finished the game!";
 };

@@ -22,5 +22,9 @@
   "dependencies": {
     "jasmine": "^2.6.0",
     "jasmine-spec-reporter": "^4.1.0"
+  },
+  "devDependencies": {
+    "jasmine-expect": "^3.7.0",
+    "jasmine-matchers": "^0.2.3"
   }
 }

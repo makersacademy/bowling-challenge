@@ -5,6 +5,9 @@ var Game = function() {
 };
 
 Game.prototype.roll = function (pins) {
+  if (pins > 10) {
+    throw('Cheater!');
+  }
   this.rolls.push(pins);
 };
 

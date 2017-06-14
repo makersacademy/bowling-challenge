@@ -67,4 +67,8 @@ it ('can check the current score if a strike or spare is scored', function () {
 });
 
 
+it ('throws an error if you roll higher than 10', function () {
+  expect(function() { game.roll(11) }).toThrow('Cheater!');
+})
+
 });

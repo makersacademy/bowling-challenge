@@ -10,34 +10,55 @@ function Score(frameNumbers) {
 		var board = this.scoreBoard;
 		for(var i=0; i< board.length; i++) {
 			if(this.points[i+1]) {
-			 	this.checkStrike(board, i)
-				this.checkSpare(board, i) 
-				//if(this.points[i] === 10) {
-				//	this.points[i] += board[i+1][0];
-				//};
-			} else if(this.scoreBoard.length === 10) {
-				if(board[board.length - 1][0] === 10) {
-					this.points[board.length - 1] += this.scoreBoard[board.length - 1][2] + 10;
-					return this.points;
-				} else if(this.points[board.length - 1] === 10) {
-					this.points[board.length - 1] += this.scoreBoard[board.length - 1][2];
-				};
+				this.addPointsNormalRoll(board, i);
+			} else if(i === 9) {
+				this.addPointsFinalRoll(board)
 			};
 		};
 	};
+	
+	this.isFinalRoll = function(board) {
+		if(board.length === 10 && !this.points[i+1]) { return true }
+	};	
 
-	this.checkStrike = function(scoreboard, frame) {
-		if(scoreboard[frame][0] === 10) {
+	this.addPointsNormalRoll = function(board, i) {
+		if(this.isStrike(board, i)) {
+			this.addStrike(board, i);
+		} else if(this.isSpare(board, i)) {
+			this.addSpare(board, i);
+		};
+	};
+	
+	this.addPointsFinalRoll = function(board) {
+		if(this.isStrike(board, (board.length - 1))) {
+			console.log(this.points[board.length - 1])
+			console.log(this.scoreBoard[board.length - 1][2])
+			this.points[board.length - 1] += this.scoreBoard[board.length - 1][2] + 10;
+			return this.points;
+		} else if(this.isSpare(board, (board.length - 1))) {
+			this.points[board.length - 1] += this.scoreBoard[board.length - 1][2];
+		};	
+	};
+
+	this.isStrike = function(board, frame) {
+		if(board[frame][0] === 10) { return true }
+	};
+
+	this.isSpare = function(board, frame) {
+		if(board[frame][0] !== 10 && this.points[frame] === 10) { return true }
+	};
+
+	this.addStrike = function(board, frame) {
+		if(board[frame][0] === 10) {
 			this.points[frame] += this.points[frame + 1]
 		};
 	};
 	
-	this.checkSpare = function(scoreboard, frame) {
-		if(scoreboard[frame][0] !== 10 && this.points[frame] === 10) {
-			this.points[frame] += scoreboard[frame + 1][0]
+	this.addSpare = function(board, frame) {
+		if(board[frame][0] !== 10 && this.points[frame] === 10) {
+			this.points[frame] += board[frame + 1][0]
 		};
 	};
-
 };
 
 /*

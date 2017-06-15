@@ -1,14 +1,9 @@
-function Frame(rack){
+function Frame(firstBowl, secondBowl){
 
-  this.rack = rack
-
-  Frame.prototype.bowlBall = function() {
-
-  };
+  this.firstBowl = firstBowl
+  this.secondBowl = secondBowl
 
   Frame.prototype.getScore = function(){
-    return 10 - this.rack.getStandingPinsAmount();
+    return this.firstBowl + this.secondBowl
   };
-
-
 };

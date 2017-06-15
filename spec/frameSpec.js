@@ -2,13 +2,9 @@ describe("Frames", function() {
 
   var frame;
 
-  beforeEach(function(){
-    frame = new Frame(new Rack);
-  });
-
-  it("has a score based on the number of downed pins", function(){
-    frame.bowlBall();
-    expect(frame.getScore()).not.toBeNaN();
+  it("has a score based on passed in scores", function(){
+    frame = new Frame(1, 1);
+    expect(frame.getScore()).toEqual(2);
   });
 
 });

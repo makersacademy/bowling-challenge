@@ -11,12 +11,12 @@ describe("Bowling", function(){
   });
 
   it("Starting a frame logs a new frame", function(){
-    game.startFrame("frame");
+    game.addFrame(new Frame(1,1));
     expect(game.getPlayedFrames()[0]).not.toBe(undefined);
   });
 
   it("Total score is calculated by the sum of each frames score", function(){
-    game.startFrame(new Frame(new Rack));
+    game.addFrame(new Frame(1, 1));
     expect(game.getTotalScore()).toEqual(game.getPlayedFrames()[0].getScore());
   });
 

@@ -61,8 +61,15 @@ describe('Game', function() {
 
     it('Can calculate the spare bonus (after scoring a non-strike on the current frame)', function() {
       for(var i = 0; i < 3; i++) { game.bowl(5); };
-      game.calculateScore()
+      game.calculateScore();
       expect(game.currentScore()).toEqual(20);
     });
+
+    it('Can calculate the strike bonus for the first throw (non-strike)', function() {
+      game.bowl(10);
+      game.bowl(5);
+      game.calculateScore();
+      expect(game.currentScore()).toEqual(20);
+    })
   });
 });

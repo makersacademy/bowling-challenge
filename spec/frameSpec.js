@@ -58,4 +58,11 @@ describe('Frame', function(){
     expect(frame.spare).toEqual(null);
   })
 
+  it('can be marked as finished', function() {
+    frame.addFirstScore(5);
+    frame.addSecondScore(5);
+    frame._isComplete();
+    expect(frame.complete).toEqual(true);
+  })
+
 });

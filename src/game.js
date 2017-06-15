@@ -1,3 +1,3 @@
 function Game() {
-
+  this.scores = []
 }

@@ -10,11 +10,11 @@ function Score(frameNumbers) {
 		var board = this.scoreBoard;
 		for(var i=0; i< board.length; i++) {
 			if(this.points[i+1]) {
-				if(board[i][0] === 10) {
-					this.points[i] += this.points[i+1];
-				} else if(this.points[i] === 10) {
-					this.points[i] += board[i+1][0];
-				};
+			 	this.checkStrike(board, i)
+				this.checkSpare(board, i) 
+				//if(this.points[i] === 10) {
+				//	this.points[i] += board[i+1][0];
+				//};
 			} else if(this.scoreBoard.length === 10) {
 				if(board[board.length - 1][0] === 10) {
 					this.points[board.length - 1] += this.scoreBoard[board.length - 1][2] + 10;
@@ -23,6 +23,18 @@ function Score(frameNumbers) {
 					this.points[board.length - 1] += this.scoreBoard[board.length - 1][2];
 				};
 			};
+		};
+	};
+
+	this.checkStrike = function(scoreboard, frame) {
+		if(scoreboard[frame][0] === 10) {
+			this.points[frame] += this.points[frame + 1]
+		};
+	};
+	
+	this.checkSpare = function(scoreboard, frame) {
+		if(scoreboard[frame][0] !== 10 && this.points[frame] === 10) {
+			this.points[frame] += scoreboard[frame + 1][0]
 		};
 	};
 

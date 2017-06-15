@@ -64,6 +64,5 @@ bowling.roll();
 bowling.roll();
 bowling.roll();
 bowling.roll();
-console.log(bowling.framesNumbers);
 //bowling.convertFrames();
 //console.log(bowling.framesSymbols);

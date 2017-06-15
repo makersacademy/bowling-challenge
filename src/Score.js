@@ -1,4 +1,5 @@
 function Score(frameNumbers) {
+	const gameSize = 10;
 	this.scoreBoard = frameNumbers; 
 	this.points = [];
 
@@ -11,28 +12,22 @@ function Score(frameNumbers) {
 		for(var i=0; i< board.length; i++) {
 			if(this.points[i+1]) {
 				this.addPointsNormalRoll(board, i);
-			} else if(i === 9) {
+			} else if(i === gameSize - 1) {
 				this.addPointsFinalRoll(board)
 			};
 		};
 	};
 	
-	this.isFinalRoll = function(board) {
-		if(board.length === 10 && !this.points[i+1]) { return true }
-	};	
-
-	this.addPointsNormalRoll = function(board, i) {
-		if(this.isStrike(board, i)) {
-			this.addStrike(board, i);
-		} else if(this.isSpare(board, i)) {
-			this.addSpare(board, i);
+	this.addPointsNormalRoll = function(board, frame) {
+		if(this.isStrike(board, frame)) {
+			this.addStrike(board, frame);
+		} else if(this.isSpare(board, frame)) {
+			this.addSpare(board, frame);
 		};
 	};
 	
 	this.addPointsFinalRoll = function(board) {
 		if(this.isStrike(board, (board.length - 1))) {
-			console.log(this.points[board.length - 1])
-			console.log(this.scoreBoard[board.length - 1][2])
 			this.points[board.length - 1] += this.scoreBoard[board.length - 1][2] + 10;
 			return this.points;
 		} else if(this.isSpare(board, (board.length - 1))) {
@@ -49,15 +44,11 @@ function Score(frameNumbers) {
 	};
 
 	this.addStrike = function(board, frame) {
-		if(board[frame][0] === 10) {
-			this.points[frame] += this.points[frame + 1]
-		};
+		this.points[frame] += this.points[frame + 1]
 	};
 	
 	this.addSpare = function(board, frame) {
-		if(board[frame][0] !== 10 && this.points[frame] === 10) {
-			this.points[frame] += board[frame + 1][0]
-		};
+		this.points[frame] += board[frame + 1][0]
 	};
 };
 

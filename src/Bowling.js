@@ -1,16 +1,17 @@
-function Bowling() {
+function Bowling(gamesize = 10) {
+	const gameSize = gamesize;
 		this.frame = [];
 		this.framesNumbers = [];
 		this.framesSymbols = [];
 		this.rollPoints = undefined;
 		this.isFullFrame = false;
-
+			
 		this.roll = function() {
 			if (this.frame[0] === undefined) { 
 				this.rollOne();
 			}	else if(this.frame[1] == undefined) {
 				this.rollTwo();
-			} else if(this.framesNumbers.length >= 10) {
+			} else if(this.framesNumbers.length >= gameSize) {
 				this.rollThree();
 			};		
 		};

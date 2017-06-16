@@ -2,74 +2,66 @@
 Bowling Challenge
 =================
 
+![Image of the Scorecard](images/scorecard.png)
 
-* Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+An interactive bowling scorecard written in Javascript.
 
-## The Task
+## Installation:
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+`git clone git@github.com:adc17/bowling-challenge.git`
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+## Usage:
 
-As usual please start by
+Option 1: Visit the app [here](https://adc17.github.io/bowling-challenge/).
 
-* Forking this repo
+Option 2: Open `index.html` in your preferred web browser.
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+## Challenges:
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+1. Simplicity: I overcomplicated my code by looking too far ahead regarding functionality. I plan to address this next week by taking the simplest steps possible at any given time, erring on the side of being deliberately obstructive, and trusting that good design principles are enough to keep my code extensible.
 
-### Optional Extras
+2. Tests: I wasn't always clear on the right things to test for, or how to test for them, and I found that my tests didn't always keep me safe from bugs. This was perhaps due to a need for a mishmash of feature and unit testing in my unit tests, (I don't know enough about Karma to write proper feature tests). It is definitely an area where I can improve.
 
-In any order you like:
+3. Updating scorecard using jQuery. There is a point in my code where this happens:
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+   ```javascript
+     var updateScorecard = function() {
+       $('#box1').text(game.frame1.box1());
+       $('#box2').text(game.frame1.box2());
+       $('#box3').text(game.frame2.box1());
+       etc.
+   ```
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+   There must be a better way. I got myself into this hole by trying to think about my UI whilst designing my business logic, and I didn't think it through thoroughly enough. As a result my business logic interface is half-baked. I tried to do too much at once, and next week I will work on thinking about one thing at a time.
 
-## Bowling — how does it work?
+4. No separate constructor for 10th frames. I couldn't figure out inheritance in ES5, which meant I couldn't create custom 10th frame objects. Instead I wrote two hacky frame methods to handle frame 10 box rendering and some hacky jQuery to handle frame 10 button behaviour. They ended up constituting almost all of my code smells, so I want to learn more about handling this type of scenario in Javascript. 
 
-### Strikes
+## Strengths:
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+1. Functionality: I'm pleased with how much my project does. The buttons change to reflect the possible outcomes for any given roll, and the table displays all information as it becomes available. The information displayed is complete—individual rolls are shown as well as scores.
 
-### Spares
+2. Domain model: I've handled bonus rolls by building three rolls into each frame, which adds the complexity of processing a single roll in multiple frames, but means that frames do not need to know about each other. I'm very happy with this trade-off.
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+3. Refactoring: The advantage of overcomplicating at first was that I got to practice refactoring, and excepting the problems mentioned above, I'm pleased with how much I managed to improve my code.
 
-### 10th frame
+4. Diagramming was essential for this challenge, and I think I did a decent job:
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+   ![Domain model diagram](http://i.imgur.com/uGk405S.png)
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+## Technologies:
 
-### Gutter Game
+* ES5
+* JQuery
+* Skeleton.css
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+## Tests:
 
-### Perfect Game
+Open `SpecRunner.html` in your preferred web browser.
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+## Help Received:
 
-In the image below you can find some score examples.
+I got the idea of building the scorecard with a `<table>` and `colspan` attributes from a fellow student. But the jQuery I used to render the table was my own work.
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+## Other Notes:
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+A four day solo challenge during the [Makers Academy](http://www.makersacademy.com) Bootcamp.

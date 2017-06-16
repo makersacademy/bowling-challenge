@@ -1,0 +1,28 @@
+.bowling-scorecard {
+  margin: 5% 5px;
+}
+
+table, tr, td, th {
+  border: 1px solid black;
+}
+
+#player-name {
+  min-width: 25px;
+}
+#player-score {
+  min-width: 50px;
+}
+
+th,
+td {
+  text-align: center;
+  min-width: 10px;
+}
+
+th:first-child,
+td:first-child {
+  padding-left: 10px; }
+th:last-child,
+td:last-child {
+  padding-right: 10px; }
+

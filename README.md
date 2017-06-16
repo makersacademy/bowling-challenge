@@ -46,7 +46,7 @@ Option 2: Open `index.html` in your preferred web browser.
 
 4. Diagramming was essential for this challenge, and I think I did a decent job:
 
-   ![Domain model diagram](images/domain-model.png)
+   ![Domain model diagram](http://i.imgur.com/uGk405S.png)
 
 ## Technologies:
 

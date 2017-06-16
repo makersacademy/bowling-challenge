@@ -12,7 +12,7 @@ describe('Game', function(){
   })
 
   it('can get a total score from a designated frame', function(){
-    expect(game.framescore(1)).toEqual(5)
+    expect(game.frameScore(1)).toEqual(5)
   });
 
 })

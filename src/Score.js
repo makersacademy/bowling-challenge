@@ -2,6 +2,7 @@ function Score(frameNumbers) {
 	const gameSize = 10;
 	this.scoreBoard = frameNumbers; 
 	this.points = [];
+	this.scoreSymbols = frameNumbers;
 
 	for(var i=0; i<frameNumbers.length; i++) {
 		this.points[i] = this.scoreBoard[i][0] + this.scoreBoard[i][1];
@@ -27,10 +28,10 @@ function Score(frameNumbers) {
 	};
 	
 	this.addPointsFinalRoll = function(board) {
-		if(this.isStrike(board, (board.length - 1))) {
+		if(this.isStrike(board, (gameSize - 1))) {
 			this.points[board.length - 1] += this.scoreBoard[board.length - 1][2] + 10;
 			return this.points;
-		} else if(this.isSpare(board, (board.length - 1))) {
+		} else if(this.isSpare(board, (gameSize - 1))) {
 			this.points[board.length - 1] += this.scoreBoard[board.length - 1][2];
 		};	
 	};
@@ -50,20 +51,23 @@ function Score(frameNumbers) {
 	this.addSpare = function(board, frame) {
 		this.points[frame] += board[frame + 1][0]
 	};
+
+	this.convertFrames = function() {
+		for(var i = 0; i < gameSize - 1; i++) {
+			if(this.scoreSymbols[i][0] === 10) {
+				console.log(this.scoreSymbols[i])
+				this.scoreSymbols[i] = ['X','-'];
+			};
+		};
+	};
 };
 
-/*
-var numbers = [[5,2],[10,0],[2,4],[4,6],[2,4]];
+var numbers = [[5,2],[10,0],[2,4],[4,6],[2,4],[0,0],[10,0],[9,1],[2,0],[0,10,2]];
 score = new Score(numbers);
-console.log(score.points);
-score.checkAdditionalPoints();
-console.log(score.points);
 
-console.log('round 2')
-numbers.push([2,8])
-numbers.push([2,0])
-score = new Score(numbers);
-console.log(score.points);
+//console.log(score.scoreBoard);
 score.checkAdditionalPoints();
-console.log(score.points);
-*/
+console.log("points: " + score.points);
+score.convertFrames();
+console.log("final console: " + score.scoreSymbols)
+console.log("numbers: " + score.scoreBoard);

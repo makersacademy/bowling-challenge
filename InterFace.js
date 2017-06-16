@@ -12,10 +12,10 @@ $(document).ready(function() {
 	function updateScore(score) {
 		score.checkAdditionalPoints();
 		$('#points').text(score.points);
-	//	bowling.convertFrames();
+		score.convertFrames();
 
 			if(bowling.isFullFrame) {
-				$('ul').append("[" +  bowling.framesNumbers[bowling.framesNumbers.length - 1] + "]")
+				$('ul').append("[" +  score.scoreSymbols[score.gameSize - 1] + "]")
 			};
 	};
 

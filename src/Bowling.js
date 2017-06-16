@@ -39,6 +39,7 @@ function Bowling(gamesize = 10) {
 			this.isFullFrame = true;
 			alert('Maximum throws reached!')
 		};
+
 /*
 		this.convertFrames = function() {
 			for(var i=0; i<board.length; i++) {

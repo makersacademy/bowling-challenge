@@ -1,10 +1,12 @@
 'use strict';
 
 describe('Frame', function () {
-  var frame, ball, firstBall, secondBall;
+  var frame, nextFrame;
+  var ball, firstBall, secondBall;
 
   beforeEach(function () {
     frame = new Frame();
+    nextFrame = new Frame();
     firstBall = new Ball();
     secondBall = new Ball();
     ball = new Ball();
@@ -25,7 +27,7 @@ describe('Frame', function () {
   it('can have maximum partial score per frame of 10', function () {
     frame.addBall(firstBall);
     frame.addBall(secondBall);
-    expect(frame.getFramePartialScore()).toBeLessThan(11);
+    expect(frame._getFramePartialScore()).toBeLessThan(11);
     expect(firstBall.getThrow).toHaveBeenCalled();
     expect(secondBall.getThrow).toHaveBeenCalled();
   });
@@ -40,6 +42,15 @@ describe('Frame', function () {
     frame.addBall(firstBall);
     frame.addBall(secondBall);
     expect(frame.isSpare()).toEqual(true);
+  });
+
+  it('can calculate the spare bonus on next throw for the current frame', function () {
+    spyOn(ball, "getThrow").and.returnValue(7);
+    frame.addBall(firstBall);
+    frame.addBall(secondBall);
+    nextFrame.addBall(ball);
+    expect(frame.getFrameTotalScore(nextFrame)).toEqual(17);
+
   });
 
 });

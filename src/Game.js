@@ -20,7 +20,7 @@ Game.prototype.rolls = function(pins) {
 };
 
 Game.prototype.score = function() {
-  return this.normalScore();
+   return this.normalScore() + this.strikeBonus();
 };
 
 Game.prototype.normalScore = function() {
@@ -33,10 +33,17 @@ Game.prototype.normalScore = function() {
   return score;
 };
 
-Game.prototype.strikeBonus = function(pins) {
-  return pins[0] + pins[1];
-};
+Game.prototype.strikeBonus = function() {
+  var pins = this.stored_pins;
+  var bonus = 0;
 
+  for(var index = 0; index < pins.length; index+=2) {
+    if(pins[index] === 10) {
+      bonus += (pins[index + 2] + pins[index + 3]);
+    }
+  }
+  return bonus;
+};
 
 Game.prototype.isStrike = function(pin) {
   return pin === 10;

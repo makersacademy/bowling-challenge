@@ -39,7 +39,6 @@ describe('Game', function() {
     game.rolls(5);
     game.rolls(4);
     repeatedRolls(0, 16);
-    game.strikeBonus();
     expect(game.strikeBonus()).toEqual(9);
   });
 

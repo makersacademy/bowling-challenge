@@ -1,11 +1,5 @@
 var Game = function() {
-  var DEFAULT_SCORE = 0;
-  this.score = DEFAULT_SCORE;
   this.frames = [];
-
- Game.prototype.finalScore = function(){
-   return this.score;
- }
 
  Game.prototype.add_frame = function(frame){
    if(this.frames.length >= 10){
@@ -13,6 +7,14 @@ var Game = function() {
    }else{
      return this.frames.push(frame);
  }
+ }
+
+ Game.prototype.finalScore = function(){
+   var score = 0;
+   this.frames.forEach(function(frame, index){
+     score += frame.score_no_bonus();
+   });
+   return score;
  }
 
 

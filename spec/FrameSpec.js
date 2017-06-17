@@ -37,4 +37,10 @@ describe('Frame', function () {
     expect(frame.isStrike()).toEqual(true);
   });
 
+  it('can set a spare in current frame', function () {
+    frame.addBall(firstBall);
+    frame.addBall(secondBall);
+    expect(frame.isSpare()).toEqual(true);
+  });
+
 });

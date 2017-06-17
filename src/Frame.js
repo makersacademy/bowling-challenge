@@ -23,3 +23,7 @@ Frame.prototype.getFramePartialScore = function () {
 Frame.prototype.isStrike = function () {
   return this.frame[0].getThrow() === this.MAX_PINS;
 };
+
+Frame.prototype.isSpare = function () {
+  return (this.frame[0].getThrow() + this.frame[1].getThrow()) === this.MAX_PINS;
+};

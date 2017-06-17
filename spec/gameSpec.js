@@ -7,12 +7,9 @@ describe('Game', function(){
     game = new Game();
   });
 
-  it('has an empty array for scores', function(){
-    expect(game.scores).toEqual([])
-  })
-
-  it('can get a total score from a designated frame', function(){
-    expect(game.frameScore(1)).toEqual(5)
+  it('instantiates with at least one frame', function(){
+    expect(game.frame1).toBeDefined();
   });
+
 
 })

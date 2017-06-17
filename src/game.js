@@ -1,13 +1,6 @@
-require('./frame');
-
 function Game() {
-  this.scores = []
-  this.gameFrames = []
+  this.frame1 = new Frame(1);
 }
-
-Game.prototype.frameScore = function () {
-
-};
 
 Game.prototype.makeFrame = function (number) {
   frame = new Frame(number)

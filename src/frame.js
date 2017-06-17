@@ -30,5 +30,12 @@ var Frame = function() {
    return false
  }
 
+ Frame.prototype.is_spare = function(){
+   if (this.rolls[0] + this.rolls[1] === 10){
+     return true
+   }
+   return false
+ }
+
 
  }

@@ -24,8 +24,15 @@ Game.prototype.bowl = function(pinsAmount) {
 
 Game.prototype.addBonuses = function(pinsThisTurn) {
   if(this._frames[this._currentFrame - 1].isSpare()) this._frames[this._currentFrame - 1].addSpareBonus(pinsThisTurn);
-  if(this._frames[this._currentFrame - 1].isStrike()) this._frames[this._currentFrame - 1].addStrikeBonus(pinsThisTurn);
+  if(this._frames[this._currentFrame - 1].isStrike()) {
+    this._frames[this._currentFrame - 1].addStrikeBonus(pinsThisTurn);
+    if(this._frames.length > 2) this.addDoubleStrikeBonus(pinsThisTurn);
+  };
 };
+
+Game.prototype.addDoubleStrikeBonus = function(pinsThisTurn) {
+  if(this._frames[this._currentFrame - 2].isStrike()) this._frames[this._currentFrame - 2].addStrikeBonus(pinsThisTurn);
+}
 
 Game.prototype.calculateScore = function() {
   var score = 0;

@@ -6,6 +6,7 @@ var Frame = function() {
   this.remainingPins = 10
   this._score = 0
   this._bonusScore = 0;
+  this._strikeBonusesAdded = 0;
 };
 
 Frame.prototype.bowls = function() {
@@ -45,6 +46,9 @@ Frame.prototype.addSpareBonus = function(pinsAmount) {
 };
 
 Frame.prototype.addStrikeBonus = function(pinsAmount) {
-  this._bonusScore += pinsAmount;
-  this._score += pinsAmount;
+  if(this._strikeBonusesAdded < 2) {
+    this._bonusScore += pinsAmount;
+    this._score += pinsAmount;
+    this._strikeBonusesAdded ++;
+  };
 };

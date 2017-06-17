@@ -121,6 +121,13 @@ describe('Frame', function() {
       expect(frame._bonusScore).toEqual(5);
       frame.addStrikeBonus(5);
       expect(frame._bonusScore).toEqual(10);
+    });
+
+    it('Only adds the bonus for the first two bowls', function() {
+      frame.addStrikeBonus(10);
+      frame.addStrikeBonus(5);
+      frame.addStrikeBonus(2);
+      expect(frame._bonusScore).toEqual(15);
     })
-  })
+  });
 });

@@ -1,5 +1,4 @@
 'use strict';
-//var Frame = require("../src/frame");
 
 describe('Frame', function () {
   var frame, ball, firstBall, secondBall;

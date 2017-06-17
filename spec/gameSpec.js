@@ -8,6 +8,10 @@ describe("Game", function() {
     game = new Game();
   });
 
+  it('throws an error if frame total is above 10', function () {
+    expect(function() {game.addFrame(4,7)}).toThrow('Maximum frame score is 10');
+  });
+
 
   it('can handle gutter game', function() {
     playGame(0,0,10);
@@ -37,7 +41,6 @@ describe("Game", function() {
     game.addFrame(10);
     game.addFrame(10);
     game.addFrame(4,0);
-    console.log(game.frames[2][0]);
     expect(game.score(3)).toEqual(42);
   });
 
@@ -47,6 +50,25 @@ describe("Game", function() {
     expect(game.score(2)).toEqual(24);
   });
 
+  describe('calculates score correctly if final frame is', function() {
+    it('a spare and normal roll', function () {
+      playGame(0,0,9);
+      game.addFinalFrame(5,5,4);
+      expect(game.score(10)).toEqual(14);
+    });
+
+    it('a strike and a spare', function () {
+      playGame(0,0,9);
+      game.addFinalFrame(10,5,5);
+      expect(game.score(10)).toEqual(20);
+    });
+
+    it('two strikes and a normal roll', function () {
+      playGame(0,0,9);
+      game.addFinalFrame(10,10,5);
+      expect(game.score(10)).toEqual(25);
+    });
+  });
 
   function playGame(firstRoll, secondRoll, frames) {
     for(var i = 0;i < frames; i++) {

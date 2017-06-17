@@ -57,13 +57,21 @@ describe('Game', function() {
     });
   });
 
-  describe('calculateBonus', function() {
+  describe('addBonuses', function() {
 
     it('Can calculate the spare bonus (after scoring a non-strike on the current frame)', function() {
       for(var i = 0; i < 3; i++) { game.bowl(5); };
       game.calculateScore();
       expect(game.currentScore()).toEqual(20);
     });
+
+    it('Only adds the spare bonus for one bowl', function() {
+      for(var i = 0; i < 2; i++) { game.bowl(5); };
+      game.bowl(7);
+      game.bowl(2);
+      game.calculateScore();
+      expect(game.currentScore()).toEqual(26);
+    })
 
     it('Can calculate the strike bonus for the first bowl (non-strike)', function() {
       game.bowl(10);

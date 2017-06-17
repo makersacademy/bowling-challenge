@@ -106,6 +106,12 @@ describe('Frame', function() {
       frame.addSpareBonus(5);
       expect(frame._bonusScore).toEqual(5);
     });
+
+    it('Only adds the bonus for the first bowl', function() {
+      frame.addSpareBonus(7);
+      frame.addSpareBonus(2);
+      expect(frame._bonusScore).toEqual(7);
+    })
   });
 
   describe('addStrikeBonus', function() {

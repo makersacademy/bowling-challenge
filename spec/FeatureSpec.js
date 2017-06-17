@@ -8,4 +8,12 @@ describe('Feature test', function () {
 
     });
 
+    describe('A Bowling Game ', function () {
+
+        it('calculates a gutter game', function () {
+            expect(bowlingGame.getTotalScore()).toEqual(0);
+        });
+    });
+
+
 });

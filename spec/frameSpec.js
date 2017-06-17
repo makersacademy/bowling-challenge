@@ -9,7 +9,7 @@ describe('Frame', function() {
   });
 
   it('start with a score of 0', function() {
-    expect(frame.score).toBe(0);
+    expect(frame.score()).toEqual(0);
   });
 
   it('can save the score for the first roll', function() {
@@ -22,7 +22,11 @@ describe('Frame', function() {
     expect(frame.rolls).toEqual([0, 3]);
   });
 
-  it('can calculate the total score of the frame')
+  it('can calculate the total score of the frame', function() {
+    frame.firstRoll(1);
+    frame.secondRoll(7);
+    expect(frame.score()).toEqual(8);
+  });
 
   it('can calculate the bonus score if there is a spare')
 

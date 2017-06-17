@@ -20,24 +20,26 @@ Game.prototype.rolls = function(pins) {
 };
 
 Game.prototype.score = function() {
-  var sum = 0;
-  var pins = this.stored_pins;
-
-  for (var index = 0; index < pins.length; index++) {
-    sum += pins[index];
-  }
-  return sum;
+  return this.normalScore();
 };
 
-Game.prototype.strike = function() {
-  var pinsAfterStrike = 0;
-  var storedPins = this.stored_pins;
-  this.stored_pins.forEach(function(pin, index) {
-    if(pin == 10) {
-      pinsAfterStrike = (storedPins[index + 2] + storedPins[index + 3]) * 2;
-    }
-  });
-  return pinsAfterStrike + 10;
+Game.prototype.normalScore = function() {
+  var pins = this.stored_pins;
+  var score = 0;
+
+  for(var index = 0; index < pins.length; index+=1) {
+    score +=pins[index];
+  }
+  return score;
+};
+
+Game.prototype.strikeBonus = function(pins) {
+  return pins[0] + pins[1];
+};
+
+
+Game.prototype.isStrike = function(pin) {
+  return pin === 10;
 };
 
 // TODO add in a display object for console log messages

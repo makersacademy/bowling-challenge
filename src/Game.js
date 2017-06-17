@@ -32,7 +32,7 @@ Game.prototype.calculateScore = function() {
   this._frames.forEach(function(frame) {
     score += frame.score();
   });
-  this._score += score;
+  this._score = score;
 }
 
 Game.prototype.currentScore = function() {

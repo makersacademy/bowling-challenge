@@ -20,4 +20,9 @@ describe("Bowling", function(){
     expect(game.getTotalScore()).toEqual(game.getPlayedFrames()[0].getScore());
   });
 
+  it("Won't add a new frame if it is created with an illegal score", function(){
+    expect(function() { game.addFrame(new Frame(6, 6)) }).toThrow(new Error("Illegal Score."))
+    expect(game.playedFrames.length).toEqual(0)
+  });
+
 });

@@ -1,23 +1,34 @@
 'use strict';
+//var Frame = require("../src/frame");
 
 describe('Frame', function () {
-  var ball, firstBall, secondBall;
-  var frame;
+  var frame, ball, firstBall, secondBall;
 
-  beforeEach(function() {
-      firstBall = new Ball();
-      secondBall = new Ball();
-      ball = new Ball();
-      frame = new Frame();
+  beforeEach(function () {
+    frame = new Frame();
+    firstBall = new Ball();
+    secondBall = new Ball();
+    ball = new Ball();
+
+    spyOn(firstBall, "getThrow").and.returnValue(4);
+    spyOn(secondBall, "getThrow").and.returnValue(5);
   });
 
-  it('can get number of balls in a frame', function() {
+  it('can get number of balls in a frame', function () {
     expect(frame.getFrameSize()).toEqual(0);
   });
 
-  it('can add ball to a frame', function (){
+  it('can add ball to a frame', function () {
     frame.addBall(ball);
     expect(frame.getFrameSize()).toEqual(1);
+  });
+
+  it('can have maximum score per frame of 10', function () {
+    frame.addBall(firstBall);
+    frame.addBall(secondBall);
+    expect(frame.getFramePartialScore()).toBeLessThan(11);
+    expect(firstBall.getThrow).toHaveBeenCalled();
+    expect(secondBall.getThrow).toHaveBeenCalled();
   });
 
 });

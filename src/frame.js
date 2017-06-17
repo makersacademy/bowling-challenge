@@ -10,5 +10,5 @@ Frame.prototype.bowl = function() {
 }
 
 Frame.prototype.pinsKnockedDown = function(pinsRemaining) {
-  return Math.floor((Math.random() * pinsRemaining) + 1);
+  return Math.floor((Math.random() * pinsRemaining));
 }

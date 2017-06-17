@@ -24,18 +24,11 @@ var Frame = function() {
  }
 
  Frame.prototype.is_strike = function(){
-   if(this.rolls[0] === 10 && this.rolls[1] !== null){
-     return true
-   }
-   return false
+   return this.rolls[0] === 10 && this.rolls[1] !== null;
  }
 
  Frame.prototype.is_spare = function(){
-   if (this.rolls[0] + this.rolls[1] === 10){
-     return true
-   }
-   return false
- }
-
+   return this.rolls[0] + this.rolls[1] === 10;
+}
 
  }

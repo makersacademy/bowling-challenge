@@ -6,6 +6,7 @@ describe('Game', function(){
 
   beforeEach(function(){
     game = new Game();
+    frame = new Frame();
   });
 
   describe('turns', function(){
@@ -30,20 +31,15 @@ describe('Game', function(){
       expect(game.scoreCard[game.turn + 1]).toEqual([0, 0]);
     });
 
-    it('generates a quirky response', function(){
-      var sassyGameOverMessages = ['Message'];
-      expect(sassyGameOverMessages.sample()).toEqual('Message');
-    });
-
-    it('gives a quirky response when you finish a game', function(){
-      for ( var i = 0; i < 10; i++ ){
+    it('wont bowl again after 10 turns', function(){
+      for ( var i =0 ; i < 20; i++ ){
           game.bowl();
       }
-      spyOn(sassyGameOverMessages, 'sample').and.callFake(function(){
-        return 'Message';
-      });
-      game.bowl()
-      expect(game.turn).toMatch('Message');
+      expect(game.turn).toEqual(10);
+    });
+
+    it('knows a game is over', function(){
+      expect(game.over()).toMatch('Game Over -');
     });
   });
 

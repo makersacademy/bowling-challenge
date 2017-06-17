@@ -11,7 +11,8 @@ Bowling.prototype.firstRoll = function () {
 };
 
 Bowling.prototype.secondRoll = function () {
-  this.secondScore = Math.floor(Math.random() * 11 - this.firstScore);
+  var firstRollScore = this.firstScore
+  this.secondScore = Math.floor(Math.random() * (11 - firstRollScore))
   return this.secondScore;
 
 };

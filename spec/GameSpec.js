@@ -85,10 +85,18 @@ describe('Game', function() {
       game.bowl(5);
       game.calculateScore();
       expect(game.currentScore()).toEqual(20);
-    })
+    });
 
     it('Can calculate the strike bonus for the first bowl (scoring a strike again)', function() {
       for(var i = 0; i < 2; i++) { game.bowl(10) };
+      game.calculateScore();
+      expect(game.currentScore()).toEqual(30);
+    });
+
+    it('Can calculate the strike bonus for the next two bowls (scoring a spare in current frame)', function() {
+      game.bowl(10);
+      game.bowl(7);
+      game.bowl(3);
       game.calculateScore();
       expect(game.currentScore()).toEqual(30);
     })

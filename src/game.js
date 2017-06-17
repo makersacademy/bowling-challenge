@@ -11,7 +11,7 @@ var Game = function() {
    if(this.frames.length >= 10){
      throw new Error('Each game has 10 frames');
    }else{
-     this.frames.push(frame);
+     return this.frames.push(frame);
  }
  }
 

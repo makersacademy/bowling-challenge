@@ -20,6 +20,16 @@ describe ('Game', function() {
 //   });
 
   describe('Add frame to the game', function(){
+    it('can have more than one frame to the game', function(){
+      for(var i=0; i<2; i++){
+      game.add_frame(frame)
+    }
+    expect(game.frames.length).toBeGreaterThan(1);
+    });
+  });
+
+
+  describe('Add frame to the game', function(){
     it('has 10 frames', function(){
       for(var i=0; i<10; i++){
       game.add_frame(frame)

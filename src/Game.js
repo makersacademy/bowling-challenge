@@ -20,7 +20,10 @@ Game.prototype.rolls = function(pins) {
 };
 
 Game.prototype.score = function() {
-   return this.normalScore() + this.strikeBonus();
+   var normal = this.normalScore();
+   var strike = this.strikeBonus();
+   var spare = this.spareBonus();
+   return normal + strike + spare;
 };
 
 Game.prototype.normalScore = function() {
@@ -40,6 +43,18 @@ Game.prototype.strikeBonus = function() {
   for(var index = 0; index < pins.length; index+=2) {
     if(pins[index] === 10) {
       bonus += (pins[index + 2] + pins[index + 3]);
+    }
+  }
+  return bonus;
+};
+
+Game.prototype.spareBonus = function() {
+  var pins = this.stored_pins;
+  var bonus = 0;
+  // TODO correct this so that it does not add strikes as well as spares
+  for(var index = 0; index < pins.length; index+=2) {
+    if(pins[index] + pins[index + 1] == 10 && pins[index + 1] !== 0) {
+      bonus += pins[index + 2];
     }
   }
   return bonus;

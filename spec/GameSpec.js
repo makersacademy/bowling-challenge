@@ -50,6 +50,26 @@ describe('Game', function() {
     expect(game.score()).toEqual(44);
   });
 
+  it("gives the spare points of a strike", function() {
+    game.rolls(6);
+    game.rolls(4);
+    game.rolls(3);
+    repeatedRolls(1, 16);
+    expect(game.spareBonus()).toEqual(3);
+  });
+
+  it("gives the score of the game including any bonus points from a strike and a spare", function() {
+    game.rolls(10);
+    game.rolls(5);
+    game.rolls(4);
+    game.rolls(4);
+    game.rolls(6);
+    game.rolls(4);
+    game.rolls(2);
+    repeatedRolls(0, 12);
+    expect(game.score()).toEqual(48);
+  })
+
   it("displays a congratulations message for a strike", function(){
     game.rolls(10);
     expect(game.strikeMessage()).toEqual("Congratulations you got a strike! Move on to the next frame");

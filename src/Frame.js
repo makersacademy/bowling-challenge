@@ -14,8 +14,8 @@ Frame.prototype.addBall = function (ball) {
   this.frame.push(ball);
 };
 
-Frame.prototype.getFrameTotalScore = function (nextFrame) {
-  return ( this._getFramePartialScore() + this._getBonus(nextFrame) );
+Frame.prototype.getFrameTotalScore = function (nextFrame, nextOneMoreFrame) {
+  return ( this._getFramePartialScore() + this._getBonus(nextFrame, nextOneMoreFrame) );
 };
 
 Frame.prototype.isStrike = function () {
@@ -32,12 +32,12 @@ Frame.prototype._getFramePartialScore = function () {
   }, 0);
 };
 
-Frame.prototype._getBonus = function (nextFrame) {
+Frame.prototype._getBonus = function (nextFrame, nextOneMoreFrame) {
   if (nextFrame === undefined) {
     return 0;
   }
   if (this.isStrike()) {
-    return nextFrame._getStrikeBonus();
+    return nextFrame._getStrikeBonus(nextOneMoreFrame);
   }
   if (this.isSpare()) {
     return nextFrame._getSpareBonus();
@@ -49,7 +49,10 @@ Frame.prototype._getSpareBonus = function () {
   return this._firstThrow();
 };
 
-Frame.prototype._getStrikeBonus = function () {
+Frame.prototype._getStrikeBonus = function (nextFrame) {
+  if (this.isStrike() && nextFrame !== undefined) {
+   return (this._getFramePartialScore() + nextFrame._firstThrow());
+  }
   return this._getFramePartialScore();
 };
 

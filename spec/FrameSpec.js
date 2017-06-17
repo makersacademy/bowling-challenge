@@ -1,12 +1,13 @@
 'use strict';
 
 describe('Frame', function () {
-  var frame, nextFrame;
+  var frame, nextFrame, extraFrame;
   var ball, firstBall, secondBall;
 
   beforeEach(function () {
     frame = new Frame();
     nextFrame = new Frame();
+    extraFrame = new Frame();
     firstBall = new Ball();
     secondBall = new Ball();
     ball = new Ball();
@@ -58,6 +59,14 @@ describe('Frame', function () {
     nextFrame.addBall(firstBall);
     nextFrame.addBall(secondBall);
     expect(frame.getFrameTotalScore(nextFrame)).toEqual(20);
+  });
+
+  it('can calculate the strike bonus on next 2 frames for the current frame if next frame is a strike too', function () {
+    spyOn(ball, "getThrow").and.returnValue(10);
+    frame.addBall(ball);
+    nextFrame.addBall(ball);
+    extraFrame.addBall(firstBall);
+    expect(frame.getFrameTotalScore(nextFrame, extraFrame)).toEqual(25);
   });
 
 });

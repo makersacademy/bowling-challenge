@@ -15,9 +15,12 @@ describe('Frame', function() {
   it('can save the score for the first roll', function() {
     frame.firstRoll(5);
     expect(frame.rolls).toEqual([5, 0]);
-  })
+  });
 
-  it('can save the score for the second roll')
+  it('can save the score for the second roll', function() {
+    frame.secondRoll(3);
+    expect(frame.rolls).toEqual([0, 3]);
+  });
 
   it('can calculate the total score of the frame')
 

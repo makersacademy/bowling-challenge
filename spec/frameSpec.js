@@ -50,4 +50,12 @@ describe ('Frame', function() {
     });
   });
 
+  describe('Frame score', function(){
+    it('calculates the score for one single frame with spare', function(){
+      frame.add_roll(3);
+      frame.add_roll(3);
+      expect(frame.is_spare()).toBe(false)
+    });
+  });
+
 });

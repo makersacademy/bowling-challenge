@@ -23,7 +23,12 @@ var Frame = function() {
    return score;
  }
 
-
+ Frame.prototype.is_strike = function(){
+   if(this.rolls[0] === 10){
+     return true
+   }
+   return false
+ }
 
 
  }

@@ -9,5 +9,10 @@ function Ball() {
 }
 
 Ball.prototype.roll = function () {
-  return Math.floor((Math.random() * 10));
+  this.throw =  Math.floor((Math.random() * 10));
+  return this.throw;
+};
+
+Ball.prototype.isStrike = function () {
+  return this.throw === this.MAX_THROW;
 };

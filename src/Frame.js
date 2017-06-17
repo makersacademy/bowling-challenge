@@ -3,6 +3,7 @@
 function Frame() {
 
   this.MAX_PINS = 10;
+  this.MAX_FRAME_SCORE = 30;
   this.frame = [];
 }
 

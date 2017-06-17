@@ -69,4 +69,12 @@ describe('Frame', function () {
     expect(frame.getFrameTotalScore(nextFrame, extraFrame)).toEqual(25);
   });
 
+  it('can calculate the strike bonus on next 3 frames for the current frame if next 2 frames are a strike too', function () {
+    spyOn(ball, "getThrow").and.returnValue(10);
+    frame.addBall(ball);
+    nextFrame.addBall(ball);
+    extraFrame.addBall(ball);
+    expect(frame.getFrameTotalScore(nextFrame, extraFrame)).toEqual(frame.MAX_FRAME_SCORE);
+  });
+
 });

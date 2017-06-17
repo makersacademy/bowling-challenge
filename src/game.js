@@ -9,8 +9,17 @@ function Game(){
 
   Game.prototype.calculateTotalScore = function() {
     var current_game = this
-    this.playedFrames.forEach(function(frame){
-      current_game.totalScore += frame.getScore();
+    this.totalScore = 0;
+    this.playedFrames.forEach(function(frame, index){
+      if(frame.getStatus() == "spare"){
+        current_game.totalScore += frame.getScore();
+        // Guards against using getscore on undefined object before next frame is played
+        if(typeof current_game.playedFrames[index + 1] != "undefined") {
+          current_game.totalScore += current_game.playedFrames[index + 1].getScore();
+        };
+      } else {
+        current_game.totalScore += frame.getScore();
+      };
     });
   };
 

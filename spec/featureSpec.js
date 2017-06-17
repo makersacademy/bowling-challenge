@@ -21,7 +21,7 @@ describe("Bowling", function(){
   });
 
   it("Won't add a new frame if it is created with an illegal score", function(){
-    expect(function() { game.addFrame(new Frame(6, 6)) }).toThrow(new Error("Illegal Score."))
+    expect(function() { game.addFrame(new Frame(6, 6)) }).toThrow(new Error("Illegal Score: Can't be greater than 10"))
     expect(game.playedFrames.length).toEqual(0)
   });
 

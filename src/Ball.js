@@ -8,8 +8,11 @@ function Ball() {
   this.throw = this.MIN_THROW;
 }
 
-Ball.prototype.roll = function () {
-  this.throw =  Math.floor((Math.random() * 10));
+Ball.prototype.roll = function (pins) {
+  this.throw =  Math.floor((Math.random() * pins));
+};
+
+Ball.prototype.getThrow = function () {
   return this.throw;
 };
 

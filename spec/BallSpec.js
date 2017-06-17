@@ -8,16 +8,17 @@ describe('Ball', function () {
   });
 
   it('can get points when thrown', function (){
-    expect(ball.roll()).toMatch(/\d{0,}/);
+    ball.roll(10);
+    expect(ball.getThrow()).toMatch(/\d{0,}/);
   });
 
   it('can get max 10 points when thrown', function (){
-    expect(ball.roll()).toBeLessThan(11);
+    ball.roll(10);
+    expect(ball.getThrow()).toBeLessThan(11);
   });
 
   it('can tell if the roll is a strike', function() {
-    Math.seed = 6;
-    ball.roll();
+    ball.roll(9);
     expect(ball.isStrike()).toBe(false);
   });
 

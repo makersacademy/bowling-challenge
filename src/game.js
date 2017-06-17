@@ -20,10 +20,10 @@ Game.prototype.isStrike = function(frame) {
 };
 
 Game.prototype.strikeBonus = function(index) {
-  if (this.frames[index + 1][0] === 10) { 
+  if (this.isStrike(this.frames[index + 1])) {
     return this.frameTotal(this.frames[index + 1]) + this.frames[index + 2][0];
   } else {
-  return this.frameTotal(this.frames[index + 1]);
+    return this.frameTotal(this.frames[index + 1]);
   };
 };
 

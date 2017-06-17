@@ -34,5 +34,8 @@ describe('Frame', function() {
     expect(frame.isSpare).toBe(true);
   });
 
-  it('can determine if the firstRoll is a strike')
+  it('can determine if the firstRoll is a strike', function() {
+    frame.firstRoll(10);
+    expect(frame.isStrike).toBe(true);
+  });
 });

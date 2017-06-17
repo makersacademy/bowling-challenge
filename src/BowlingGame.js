@@ -1,6 +1,7 @@
 'use strict';
 
 function BowlingGame(){
+  this.MAXIMUM_SCORE = 300;
   this._frames = [];
 }
 

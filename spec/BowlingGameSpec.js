@@ -7,7 +7,7 @@ describe('BowlingGame', function () {
   beforeEach(function () {
     bowlingGame = new BowlingGame();
     frame = new Frame();
-    nextFrame = new Ball();
+    nextFrame = new Frame();
   });
 
   it('can add a frame to the game', function () {

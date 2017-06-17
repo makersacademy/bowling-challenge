@@ -34,4 +34,11 @@ describe("Bowling a frame", function(){
     expect(game.getTotalScore()).toEqual(14);
   });
 
+  it("Frames with a Strike accumulate the next two frame's score", function(){
+    game.addFrame(strike);
+    game.addFrame(frame);
+    game.addFrame(frame);
+    expect(game.getTotalScore()).toEqual(18);
+  });
+
 });

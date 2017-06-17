@@ -17,6 +17,13 @@ function Game(){
         if(typeof current_game.playedFrames[index + 1] != "undefined") {
           current_game.totalScore += current_game.playedFrames[index + 1].getScore();
         };
+      } else if(frame.getStatus() == "strike") {
+        current_game.totalScore += frame.getScore();
+        // Guards against using getscore on undefined object before next frame is played
+        if(typeof current_game.playedFrames[index + 1] != "undefined" && typeof current_game.playedFrames[index + 2] != "undefined" ) {
+          current_game.totalScore += current_game.playedFrames[index + 1].getScore();
+          current_game.totalScore += current_game.playedFrames[index + 2].getScore();
+        };
       } else {
         current_game.totalScore += frame.getScore();
       };

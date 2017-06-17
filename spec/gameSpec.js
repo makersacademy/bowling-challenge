@@ -23,5 +23,9 @@ describe('Game', function(){
     expect(game.frame10).toBeDefined();
   });
 
+  it('has an an empty array for scores', function(){
+    expect(game.scores).toEqual([])
+  })
+
 
 })

@@ -9,4 +9,6 @@ function Game() {
   this.frame8 = new Frame(8);
   this.frame9 = new Frame(9);
   this.frame10 = new Frame(10);
+
+  this.scores = []
 }

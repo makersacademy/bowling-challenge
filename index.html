@@ -9,13 +9,15 @@
     <div class="container" style="border: 20px; padding: 50px; text-align: center">
       <h1>Bannastre's Lanes</h1>
       <h2>Let's go bowling!</h2>
-      <section>
-        <h3> Turn: <span id="currentTurn"></span></h3>
-        </br>
-        <h3> Your Score: <span id="currentScore"></span></h3>
+      <h3><span id="currentFrame"></span>  <span id="currentScore"></span></h3>
+      <section id='scoreCard'>
           </br>
             <div class="container" style="padding: 50px;">
-            <div class="row">
+              <div class="row">
+                <div class="col-md-1" id="frameScore"> 0 | 0</div>
+              </div>
+            <!-- <div class="row">
+              <div class="col-md-1" id="score0"> 0 | 0</div>
               <div class="col-md-1" id="score1"> 0 | 0</div>
               <div class="col-md-1" id="score2"> 0 | 0</div>
               <div class="col-md-1" id="score3"> 0 | 0</div>
@@ -25,9 +27,8 @@
               <div class="col-md-1" id="score7"> 0 | 0</div>
               <div class="col-md-1" id="score8"> 0 | 0</div>
               <div class="col-md-1" id="score9"> 0 | 0</div>
-              <div class="col-md-1" id="score10"> 0 | 0</div>
               <div class="col-md-1" id="scoreExtra"> 0 </div>
-            </div></br>
+            </div></br> -->
         </div>
         <button class="btn btn-primary btn-lg" id="bowl">Bowl!</button>
     </section>
@@ -38,5 +39,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="src/frame.js"></script>
   <script src="src/game.js"></script>
+  <script src="src/ai.js"></script>
   <script src="src/interface.js"></script>
 </html>

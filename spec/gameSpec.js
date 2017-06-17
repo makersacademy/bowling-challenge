@@ -9,37 +9,32 @@ describe('Game', function(){
     frame = new Frame();
   });
 
-  describe('turns', function(){
-    it('has a scorecard of 10 turns', function(){
-      expect(game.scoreCard[8]).toEqual([0, 0]);
+  describe('scoreCard', function(){
+    it('holds scores for 10 frames and an extra ball', function(){
+      expect(game.scoreCard[0]).toEqual([0, 0]);
       expect(game.scoreCard[9]).toEqual([0, 0]);
       expect(game.scoreCard[10]).toEqual([0]);
     });
 
-    it('shows the scores after one turn', function(){
-      game.scoreCard[0] = [null, null];
-      game.bowl();
-      expect(game.scoreCard[0]).not.toEqual([null, null])
-      expect(game.scoreCard[1]).toEqual([0, 0]);
-    });
-
-    it('shows the scores after a second turn', function(){
-      game.scoreCard[1] = [null, null];
-      game.turn = 1;
-      game.bowl();
-      expect(game.scoreCard[game.turn]).not.toEqual([null, null])
-      expect(game.scoreCard[game.turn + 1]).toEqual([0, 0]);
-    });
-
-    it('wont bowl again after 10 turns', function(){
+    it('wont change the scorecard after 10 frames', function(){
       for ( var i =0 ; i < 20; i++ ){
-          game.bowl();
+          game.incrementFrame();
       }
-      expect(game.turn).toEqual(10);
+      expect(game.frame).toEqual(10);
+    });
+  });
+
+  describe('scores', function(){
+    it('records a frame score', function(){
+      game.addFrameScore([5,4]);
+      expect(game.scoreCard[0]).toEqual([5,4]);
     });
 
-    it('knows a game is over', function(){
-      expect(game.over()).toMatch('Game Over -');
+    it('adds all the scores on the scoreCard', function(){
+      game.addFrameScore([5,4]);
+      game.sumScores();
+      console.log(game.sumScores());
+      expect(game.sumScores()).toEqual(9);
     });
   });
 

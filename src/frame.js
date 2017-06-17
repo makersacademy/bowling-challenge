@@ -3,15 +3,15 @@
 // The Frame is responsible for bowling in turns
 
 function Frame() {
-  this.score = [0, 0];
+  this.pins = [0,0];
   this.isFirstBall = true;
 }
 
 Frame.prototype.bowl = function(){
   if (this.isFirstBall) {
-    this.score[0] = this.knockDownPins(10);
+    this.pins[0] = this.knockDownPins(10);
   } else {
-    this.score[1] = this.knockDownPins(10 - this.score[0]);
+    this.pins[1] = this.knockDownPins(10 - this.pins[0]);
   }
   this.secondBall();
 }

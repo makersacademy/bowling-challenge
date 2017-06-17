@@ -7,28 +7,11 @@ describe('Frame', function(){
     frame = new Frame();
   });
 
-  describe('score', function(){
-    it('starts with a score of zero', function(){
-      expect(frame.score).toEqual([0,0]);
-    });
+  describe('turns', function(){
+    it('starts on the first ball', function(){
+      expect(frame.isFirstBall).toEqual(true);
+    })
 
-    it('adds the first ball score to the frame total', function(){
-      frame.score = [null, 0]
-      frame.bowl();
-      expect(frame.score[0]).not.toEqual(null)
-      expect(frame.score[0] + frame.score[1]).toBeLessThan(11);
-    });
-
-    it('adds the second ball score to the frame total', function(){
-      frame.score = [4, 0]
-      frame.isFirstBall = false;
-      spyOn(frame, "knockDownPins").and.returnValue(2);
-      frame.bowl();
-      expect(frame.score[0] + frame.score[1]).toEqual(6);
-    });
-  });
-
-  describe('bowling', function(){
     it("splits one frame into two balls", function(){
       expect(frame.isFirstBall).toEqual(true);
       frame.bowl();
@@ -37,5 +20,28 @@ describe('Frame', function(){
       expect(frame.isFirstBall).toEqual(true);
     });
   });
+
+  describe('pins', function(){
+    it('starts with a frame of zero pins knocked down', function(){
+      expect(frame.pins).toEqual([0,0]);
+    });
+
+    it('adds the first ball pins to the frame total', function(){
+      frame.pins = [null, 0]
+      frame.bowl();
+      expect(frame.pins[0]).not.toEqual(null)
+      expect(frame.pins[0] + frame.pins[1]).toBeLessThan(11);
+    });
+
+    it('adds the second ball pins to the frame total', function(){
+      frame.pins = [4, 0]
+      frame.isFirstBall = false;
+      spyOn(frame, "knockDownPins").and.returnValue(2);
+      frame.bowl();
+      expect(frame.pins[0] + frame.pins[1]).toEqual(6);
+    });
+  });
+
+
 
 });

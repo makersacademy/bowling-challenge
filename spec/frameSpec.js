@@ -12,7 +12,10 @@ describe('Frame', function() {
     expect(frame.score).toBe(0);
   });
 
-  it('can save the score for the current roll')
+  it('can save the score for the first roll', function() {
+    frame.firstRoll(5);
+    expect(frame.rolls).toEqual([5, 0]);
+  })
 
   it('can save the score for the second roll')
 

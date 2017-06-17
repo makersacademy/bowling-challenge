@@ -18,12 +18,13 @@ Game.prototype.addNewFrame = function() {
 Game.prototype.bowl = function(pinsAmount) {
   if(!Number.isInteger(pinsAmount) || pinsAmount < 0) throw new Error('Argument must be an integer between 0 and 10');
   this._frames[this._currentFrame].bowl(pinsAmount);
-  if(this._frames.length > 1) this.calculateBonus(pinsAmount);
+  if(this._frames.length > 1) this.addBonuses(pinsAmount);
   if(this._frames[this._currentFrame].isComplete()) this.addNewFrame();
 };
 
-Game.prototype.calculateBonus = function(pinsThisTurn) {
+Game.prototype.addBonuses = function(pinsThisTurn) {
   if(this._frames[this._currentFrame - 1].isSpare()) this._frames[this._currentFrame - 1].addSpareBonus(pinsThisTurn);
+  if(this._frames[this._currentFrame - 1].isStrike()) this._frames[this._currentFrame - 1].addStrikeBonus(pinsThisTurn);
 };
 
 Game.prototype.calculateScore = function() {

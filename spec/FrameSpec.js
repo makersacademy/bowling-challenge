@@ -107,4 +107,14 @@ describe('Frame', function() {
       expect(frame._bonusScore).toEqual(5);
     });
   });
+
+  describe('addStrikeBonus', function() {
+
+    it('Updates the bonus value', function() {
+      frame.addStrikeBonus(5);
+      expect(frame._bonusScore).toEqual(5);
+      frame.addStrikeBonus(5);
+      expect(frame._bonusScore).toEqual(10);
+    })
+  })
 });

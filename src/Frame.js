@@ -39,5 +39,10 @@ Frame.prototype.isSpare = function() {
 
 Frame.prototype.addSpareBonus = function(pinsAmount) {
   this._bonusScore = pinsAmount;
-  this._score += this._bonusScore;
+  this._score += pinsAmount;
+}
+
+Frame.prototype.addStrikeBonus = function(pinsAmount) {
+  this._bonusScore += pinsAmount;
+  this._score += pinsAmount;
 }

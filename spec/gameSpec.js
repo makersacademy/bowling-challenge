@@ -18,10 +18,11 @@ describe("Bowling a frame", function(){
   });
 
   it("Can't add more than 10 frames", function(){
-    for(i=0;i<11;i++1){
+    for(i = 0; i < 10 ; i ++ ){
       game.addFrame(frame);
-      // Expect an error saying "You can't have more than 10 frames in a game"
-    }
+    };
+    expect(function() { game.addFrame(frame) }).toThrow(new Error("You can only play 10 frames per game."));
+    expect(game.playedFrames.length).toEqual(10);
   });
 
 });

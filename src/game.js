@@ -15,6 +15,9 @@ function Game(){
   };
 
   Game.prototype.addFrame = function(frame) {
+    if (this.playedFrames.length >= 10) {
+      throw new Error("You can only play 10 frames per game.")
+    }
     this.playedFrames.push(frame);
     this.calculateTotalScore();
   };

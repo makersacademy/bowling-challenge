@@ -28,7 +28,11 @@ describe('Frame', function() {
     expect(frame.score()).toEqual(8);
   });
 
-  it('can calculate the bonus score if there is a spare')
+  it('can determine if the rolls result in a spare', function() {
+    frame.firstRoll(5);
+    frame.secondRoll(5);
+    expect(frame.isSpare).toBe(true);
+  });
 
-  it('can calculate the bonus score if there is a strike')
+  it('can determine if the firstRoll is a strike')
 });

@@ -10,7 +10,7 @@ describe('Frame', function () {
     secondBall = new Ball();
     ball = new Ball();
 
-    spyOn(firstBall, "getThrow").and.returnValue(4);
+    spyOn(firstBall, "getThrow").and.returnValue(5);
     spyOn(secondBall, "getThrow").and.returnValue(5);
   });
 
@@ -23,12 +23,18 @@ describe('Frame', function () {
     expect(frame.getFrameSize()).toEqual(1);
   });
 
-  it('can have maximum score per frame of 10', function () {
+  it('can have maximum partial score per frame of 10', function () {
     frame.addBall(firstBall);
     frame.addBall(secondBall);
     expect(frame.getFramePartialScore()).toBeLessThan(11);
     expect(firstBall.getThrow).toHaveBeenCalled();
     expect(secondBall.getThrow).toHaveBeenCalled();
+  });
+
+  it('can set a strike in current frame', function () {
+    spyOn(ball, "getThrow").and.returnValue(10);
+    frame.addBall(ball);
+    expect(frame.isStrike()).toEqual(true);
   });
 
 });

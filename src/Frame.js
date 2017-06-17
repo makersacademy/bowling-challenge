@@ -19,3 +19,7 @@ Frame.prototype.getFramePartialScore = function () {
     return (score + ball.getThrow());
   }, 0);
 };
+
+Frame.prototype.isStrike = function () {
+  return this.frame[0].getThrow() === this.MAX_PINS;
+};

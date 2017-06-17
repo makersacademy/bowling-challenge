@@ -49,3 +49,17 @@ Frame.prototype._isComplete = function () {
   if (this.firstScore != null && this.secondScore != null)
   this.complete = true
 };
+
+function Game() {
+  this.scores = []
+  this.gameFrames = []
+}
+
+Game.prototype.frameScore = function () {
+
+};
+
+Game.prototype.makeFrame = function (number) {
+  frame = new Frame(number)
+  this.gameFrames << frame
+};

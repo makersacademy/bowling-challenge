@@ -103,8 +103,7 @@ describe('Frame', function() {
   describe('addSpareBonus', function() {
 
     it('Stores the bonus value', function() {
-      frame.bowl(5);
-      frame.addSpareBonus();
+      frame.addSpareBonus(5);
       expect(frame._bonusScore).toEqual(5);
     });
   });

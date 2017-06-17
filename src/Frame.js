@@ -37,7 +37,7 @@ Frame.prototype.isSpare = function() {
   return this._bowls[0] !== 10 && this.remainingPins === 0 ? true : false;
 }
 
-Frame.prototype.addSpareBonus = function() {
-  this._bonusScore = this._bowls[0];
+Frame.prototype.addSpareBonus = function(pinsAmount) {
+  this._bonusScore = pinsAmount;
   this._score += this._bonusScore;
 }

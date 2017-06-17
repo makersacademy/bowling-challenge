@@ -65,7 +65,7 @@ describe('Game', function() {
       expect(game.currentScore()).toEqual(20);
     });
 
-    it('Can calculate the strike bonus for the first throw (non-strike)', function() {
+    it('Can calculate the strike bonus for the first bowl (non-strike)', function() {
       game.bowl(10);
       game.bowl(5);
       game.calculateScore();

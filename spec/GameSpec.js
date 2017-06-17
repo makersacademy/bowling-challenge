@@ -73,6 +73,13 @@ describe('Game', function() {
       expect(game.currentScore()).toEqual(26);
     })
 
+    it('Can calculate the spare bonus after scoring a strike on the current frame', function() {
+      for(var i = 0; i < 2; i++) { game.bowl(5); };
+      game.bowl(10);
+      game.calculateScore();
+      expect(game.currentScore()).toEqual(30);
+    });
+
     it('Can calculate the strike bonus for the first bowl (non-strike)', function() {
       game.bowl(10);
       game.bowl(5);

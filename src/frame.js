@@ -5,7 +5,7 @@ function Frame(number) {
   this.frameTotal = null;
   this.strike = null;
   this.spare = null;
-  this.complete = null;
+  this.finished = null;
 }
 
 Frame.prototype.getFirstScore = function () {
@@ -47,5 +47,5 @@ Frame.prototype._isSpare = function () {
 
 Frame.prototype._isComplete = function () {
   if (this.firstScore != null && this.secondScore != null)
-  this.complete = true
+  this.finished = true
 };

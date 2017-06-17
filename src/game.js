@@ -1,14 +1,13 @@
 function Game() {
-  this.frame1 = new Frame(1);
-  this.frame2 = new Frame(2);
-  this.frame3 = new Frame(3);
-  this.frame4 = new Frame(4);
-  this.frame5 = new Frame(5);
-  this.frame6 = new Frame(6);
-  this.frame7 = new Frame(7);
-  this.frame8 = new Frame(8);
-  this.frame9 = new Frame(9);
-  this.frame10 = new Frame(10);
-
+  this.frameArray = [(frame1 = new Frame(1)),
+                     (frame2 = new Frame(2)),
+                     (frame3 = new Frame(3)),
+                     (frame4 = new Frame(4)),
+                     (frame5 = new Frame(5)),
+                     (frame6 = new Frame(6)),
+                     (frame7 = new Frame(7)),
+                     (frame8 = new Frame(8)),
+                     (frame9 = new Frame(9)),
+                     (frame10 = new Frame(10))]
   this.scores = []
 }

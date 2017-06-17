@@ -62,7 +62,7 @@ describe('Frame', function(){
     frame.addFirstScore(5);
     frame.addSecondScore(5);
     frame._isComplete();
-    expect(frame.complete).toEqual(true);
+    expect(frame.finished).toEqual(true);
   })
 
 });

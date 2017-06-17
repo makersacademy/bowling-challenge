@@ -99,6 +99,13 @@ describe('Game', function() {
       game.bowl(3);
       game.calculateScore();
       expect(game.currentScore()).toEqual(30);
-    })
+    });
+
+    it('Can calculate the strike bonus for two strike-scoring frames in a row', function() {
+      for(var i = 0; i < 2; i++) { game.bowl(10) };
+      for(var i = 0; i < 2; i++) { game.bowl(2) };
+      game.calculateScore();
+      expect(game.currentScore()).toEqual(40);
+    });
   });
 });

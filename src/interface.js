@@ -3,20 +3,27 @@
 $( document ).ready(function(){
 
   var frame = new Frame();
+  var game = new Game();
 
   $('#bowl').on('click', function(){
-    console.log(frame.remainingPins);
-    updateScore()
+    var pins = frame.bowl()
+    console.log(pins);
+    console.log(frame.ball);
+    recordScore(pins);
+    updateScore(pins);
   });
 
-  function updateScore() {
-    if ( frame.ball < 2 ) {
-      var pins = frame.bowl()
-      $('#currentScore').text('Your total points: ' + frame.currentScore );
+  function updateScore(pins) {
+    if ( frame.ball <= 2 ) {
+      $('#currentScore').text('Your total points: ' + game.totalScore() );
       $('#score').text('You knocked down ' + pins + ' ' + _pinS(pins) );
     } else {
       $('#score').text('Frame Over!');
     }
+  }
+
+  function recordScore(pins) {
+    game.recordScore(pins);
   }
 
   function _pinS(pins) {

@@ -1,17 +1,20 @@
-function Frame(firstBowl, secondBowl = 0){
+function Frame(firstBowl, secondBowl){
 
-  if (firstBowl + secondBowl > 10) {
+  this.MaxScore = 10;
+  this.MinScore = 0;
+
+  if (firstBowl + secondBowl > this.MaxScore) {
     throw new Error("Illegal Score: Can't be greater than 10")
   };
 
+
   this.bowls = new Object();
   this.bowls.firstBowl = firstBowl;
-  this.bowls.secondBowl = secondBowl;
-  this.bowls.bonusBowl = "undefined"
+  this.bowls.secondBowl = secondBowl || this.MinScore;
 
   this.score = this.bowls.firstBowl + this.bowls.secondBowl;
-  this.bonusScore = 0
-  this.totalScore = 0
+  this.bonusScore = this.MinScore
+  this.totalScore = this.MinScore
 
   Frame.prototype.getScore = function(){
     this.calculateScore();
@@ -19,11 +22,11 @@ function Frame(firstBowl, secondBowl = 0){
   };
 
   Frame.prototype.getStatus = function(){
-    if(this.bowls.firstBowl === 10) {
+    if(this.bowls.firstBowl === this.MaxScore) {
       return "strike";
-    }else if(this.bowls.firstBowl != 10 && this.score === 10) {
+    }else if(this.bowls.firstBowl != this.MaxScore && this.score === this.MaxScore) {
       return "spare";
-    }else if(this.getScore() === 0) {
+    }else if(this.getScore() === this.MinScore) {
       return "gutter";
     };
     return;

@@ -15,11 +15,8 @@ var Game = function() {
    var game = this;
    frames.forEach(function(frame, index){
      score += frame.score_no_bonus();
-          console.log(index + " no bonus: " + score);
      score += game.calculateSpareBonus(index);
-          console.log(index + " spare: " + score);
      score += game.calculateStrikeBonus(index);
-     console.log(index + " strike: " + score);
    });
    return score;
  };
@@ -54,26 +51,6 @@ var Game = function() {
     }
     return 0;
   };
-
-
-  // Game.prototype.calculateStrikeBonus = function(index){
-  //   if(this.frames[index].is_strike()){
-  //     if(index + 1 < this.frames.length){
-  //       var bonus = this.frames[index+1].rolls[0];
-  //       if (this.frames[index+1].rolls.length == 2) {
-  //         return bonus + this.frames[index + 1].rolls[1];
-  //       } else {
-  //         return bonus + this.frames[index + 2].rolls[0];
-  //       }
-  //     }else{
-  //       return this.frames[index].rolls[2];
-  //     }
-  //   }
-  //   return 0;
-  // };
-
-
-
 
 
 

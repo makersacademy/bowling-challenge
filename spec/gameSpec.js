@@ -15,10 +15,6 @@ describe('Game', function(){
     expect(game.frameArray.length).toEqual(10)
   });
 
-  it('has an an empty array for scores', function(){
-    expect(game.scores).toEqual([])
-  });
-
   xit('adds scores from a frame to an array', function(){
     game.frameArray[0].addFirstScore(5);
     game.frameArray[0].addSecondScore(2);

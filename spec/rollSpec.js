@@ -6,7 +6,10 @@ describe('Roll features', function() {
   });
 
   it('bowl function gives a random number', function() {
+    spyOn(roll, 'randomNumberGenerator').and.returnValue(10)
     roll.bowl(10);
-    expect(roll.score).toBeLessThan(11);
+    expect(roll.score).toBe(10);
   });
+
+
 })

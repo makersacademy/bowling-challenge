@@ -73,7 +73,50 @@ describe ('Game', function() {
     });
   });
 
-
+  describe('Sample game', function() {
+    it('returns the right score for the sample score card', function() {
+      frame = new Frame;
+      frame.add_roll(1);
+      frame.add_roll(4);
+      game.add_frame(frame);
+      frame = new Frame;
+      frame.add_roll(4);
+      frame.add_roll(5);
+      game.add_frame(frame);
+      frame = new Frame;
+      frame.add_roll(6);
+      frame.add_roll(4);
+      game.add_frame(frame);
+      frame = new Frame;
+      frame.add_roll(5);
+      frame.add_roll(5);
+      game.add_frame(frame);
+      frame = new Frame;
+      frame.add_roll(10);
+      game.add_frame(frame);
+      frame = new Frame;
+      frame.add_roll(0);
+      frame.add_roll(1);
+      game.add_frame(frame);
+      frame = new Frame;
+      frame.add_roll(7);
+      frame.add_roll(3);
+      game.add_frame(frame);
+      frame = new Frame;
+      frame.add_roll(6);
+      frame.add_roll(4);
+      game.add_frame(frame);
+      frame = new Frame;
+      frame.add_roll(10);
+      game.add_frame(frame);
+      frame = new Frame(true);
+      frame.add_roll(2);
+      frame.add_roll(8);
+      frame.add_roll(6);
+      game.add_frame(frame);
+      expect(game.finalScore()).toEqual(133);
+    })
+  })
 
 
 });

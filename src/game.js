@@ -32,7 +32,6 @@ var Game = function() {
     return 0;
   };
 
-
   Game.prototype.calculateStrikeBonus = function(index){
     var frame = this.frames[index];
     if(frame.is_strike()){

@@ -1,0 +1,8 @@
+npm i --save-dev eslint
+npm init
+./node_modules/.bin/eslint --init
+npm i eslint-plugin-import@latest --save-dev
+npm i eslint-plugin-node@latest --save-dev
+npm i eslint@latest --save-dev
+./node_modules/.bin/eslint interface.js 
+

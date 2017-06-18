@@ -8,34 +8,39 @@ describe('Frame', function(){
     frame = new Frame();
   });
 
-  it('start with a score of 0', function(){
-    expect(frame.score()).toEqual(0);
+  it('starts empty', function(){
+    expect(frame.rolls).toBeEmptyArray();
   });
 
-  it('can save the score for the first roll', function(){
-    frame.firstRoll(5);
-    expect(frame.rolls).toEqual([5, 0]);
-  });
+  describe('#addRoll', function(){
 
-  it('can save the score for the second roll', function(){
-    frame.secondRoll(3);
-    expect(frame.rolls).toEqual([0, 3]);
+    it('can save the score for the first roll', function(){
+      frame.addRoll(5);
+      expect(frame.rolls).toEqual([5]);
+    });
+
+    it('can save the score for the second roll', function(){
+      frame.addRoll(5);
+      frame.addRoll(3);
+      expect(frame.rolls).toEqual([5, 3]);
+    });
   });
 
   it('can calculate the total score of the frame', function(){
-    frame.firstRoll(1);
-    frame.secondRoll(7);
+    frame.addRoll(1);
+    frame.addRoll(7);
     expect(frame.score()).toEqual(8);
   });
 
   describe('it is a spare', function(){
 
     beforeEach(function(){
-      frame.firstRoll(5);
-      frame.secondRoll(5);
+      frame.addRoll(5);
+      frame.addRoll(5);
     });
 
     it('can determine if the rolls result in a spare', function(){
+      console.log(frame.rolls)
       expect(frame.isSpare).toBe(true);
     });
 
@@ -47,7 +52,7 @@ describe('Frame', function(){
   describe('it is a strike', function(){
 
     beforeEach(function(){
-      frame.firstRoll(10);
+      frame.addRoll(10);
     });
 
     it('can determine if the firstRoll is a strike', function(){

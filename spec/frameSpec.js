@@ -29,4 +29,10 @@ describe('Frame', function(){
     frame.bowl();
     expect(frame.bowl()).toEqual(0);
   });
+
+  it('knows when the player bowled a strike', function(){
+    spyOn(frame, 'pinsKnockedDown').and.returnValue(10);
+    frame.bowl();
+    expect(frame.isStrike).toEqual(true);
+  });
 });

@@ -14,4 +14,10 @@ describe('Frame', function(){
     frame.roll();
     expect(frame.rollCount).toEqual(2);
   });
+  it('throws an error if three rolls are taken', function(){
+    frame.roll();
+    expect(function(){
+      frame.roll();
+    }).toThrow("Only two rolls allowed!");
+  });
 });

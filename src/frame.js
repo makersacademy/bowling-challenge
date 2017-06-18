@@ -6,6 +6,7 @@ var Frame = function(){
 }
 
 Frame.prototype.roll = function(){
-  this.score = Math.floor(Math.random() * 11)
+  if (this.rollCount > 2) throw ('Only two rolls allowed!');
+  this.score = Math.floor(Math.random() * 11);
   this.rollCount ++;
 }

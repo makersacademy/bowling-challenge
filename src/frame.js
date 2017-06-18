@@ -1,4 +1,4 @@
-'use-strict';
+'use strict';
 // Frame is responsible for knocking down up to 10 pins
 
 var Frame = function() {

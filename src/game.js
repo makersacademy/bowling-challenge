@@ -1,4 +1,4 @@
-'use-strict';
+'use strict';
 // Game is responsible for recording the scores across 10 frames
 
 var Game = function() {

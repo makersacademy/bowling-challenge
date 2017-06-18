@@ -1,4 +1,4 @@
-'use-strict';
+"use strict";
 
 describe('Frame', function(){
   var frame;

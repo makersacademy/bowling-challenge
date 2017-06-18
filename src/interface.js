@@ -1,9 +1,10 @@
-'use-strict';
+'use strict';
 
 $( document ).ready(function(){
 
   var game = new Game();
   var frame = new Frame();
+  var ai = new Ai();
 
   controller();
   updateFrame();
@@ -71,5 +72,4 @@ $( document ).ready(function(){
   function updateFrame() {
     $('#currentFrame').text('Frame: ' + ( game.isFrame() + 1 ) + '  |  ');
   }
-
 });

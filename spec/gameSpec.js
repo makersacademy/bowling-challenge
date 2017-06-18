@@ -29,4 +29,24 @@ describe('Game', function(){
     expect(game.totalScore()).toEqual(80);
     expect(game.over).toEqual(true);
   });
+
+  describe('Bowling strikes', function(){
+
+    beforeEach(function(){
+      expect(game.totalScore()).toEqual(12);
+      game.recordScore(10);
+    });
+
+    it('knows when the player bowled a strike', function(){
+      game.recordScore(10);
+      expect(game.isStrike).toEqual(true);
+    });
+
+    it('adds a bonus for a strike', function(){
+      game.isStrike = true;
+      game.recordScore(5);
+      expect(game.totalScore()).toEqual(32);
+    });
+  });
+
 });

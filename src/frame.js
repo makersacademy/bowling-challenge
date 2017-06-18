@@ -1,16 +1,20 @@
-var Frame = function() {
+var Frame = function(last_frame) {
   this.rolls = [];
+  this.last_frame = !!last_frame;
 
  Frame.prototype.add_roll = function(knocked_down_pins){
    var max_knocked_down_pins = knocked_down_pins;
    this.rolls.forEach(function (roll, index) {
      max_knocked_down_pins += roll;
    });
-   if(max_knocked_down_pins > 10){
+   if(!this.last_frame && max_knocked_down_pins > 10){
      throw new Error('Maximum knocked down pins in each frame is 10');
    }
-   if(this.rolls.length >= 2){
+   if(!this.last_frame && this.rolls.length >= 2){
      throw new Error('Each frame can have at most two rolls');
+   }
+   if(this.last_frame && this.rolls.length >= 3){
+     throw new Error('Last frame can have at most three rolls');
    }
    this.rolls.push(knocked_down_pins);
  }

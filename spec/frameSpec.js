@@ -3,18 +3,29 @@ describe ('Frame', function() {
 
   beforeEach(function() {
     frame = new Frame;
+    last_frame = new Frame(true);
   });
 
+
   describe('Frame size', function() {
-    it('can have at most two rolls', function() {
+    it('can have at most two rolls unless 10th frame', function() {
       frame.add_roll(1);
       frame.add_roll(2);
       expect(function(){frame.add_roll(4)}).toThrow(new Error('Each frame can have at most two rolls'));
     });
   });
 
+  describe('Frame size', function() {
+    it('In the last frame, there is at most three rolls', function() {
+      last_frame.add_roll(1);
+      last_frame.add_roll(2);
+      last_frame.add_roll(1);
+      expect(function(){last_frame.add_roll(4)}).toThrow(new Error('Last frame can have at most three rolls'));
+    });
+  });
+
   describe('Total sum of pins', function(){
-    it('Maximum knocked down pins in each frame is 10', function(){
+    it('Maximum knocked down pins in each frame is 10 unless in 10th frame', function(){
       frame.add_roll(6);
       expect(function(){frame.add_roll(8)}).toThrow(new Error('Maximum knocked down pins in each frame is 10'));
     });

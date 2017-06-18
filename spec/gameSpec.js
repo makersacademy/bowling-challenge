@@ -57,10 +57,12 @@ describe ('Game', function() {
     });
   });
 
-
-  //
   // describe('Perfect game', function() {
   //   it('The Perfect Game scores 300 points.', function() {
+  //     for(var i=0; i<12; i++){
+  //     game.add_frame(frame1)
+  //     frame1.add_roll(10);
+  //   }
   //     expect(game.finalScore()).toEqual(300);
   //   });
   // });

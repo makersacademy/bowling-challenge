@@ -23,12 +23,12 @@ var Frame = function() {
    return score;
  }
 
- Frame.prototype.is_strike = function(){
-   return this.rolls[0] === 10 && this.rolls[1] !== null;
- }
-
  Frame.prototype.is_spare = function(){
    return this.rolls[0] + this.rolls[1] === 10;
 }
+
+ Frame.prototype.is_strike = function(){
+   return this.rolls[0] === 10 && this.rolls[1] !== null;
+ }
 
  }

@@ -1,0 +1,44 @@
+body {
+    background-color: DarkGray ;
+    font-family: sans-serif;
+}
+
+.num_pins {
+    width: 100%;
+    padding: 4px 3px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid DarkGrey;
+    border-radius: 6px;
+}
+
+
+table {
+  background-color: LightGrey ;
+  border-collapse:separate;
+  border:solid black 1px;
+  border-radius:6px;
+  -moz-border-radius:6px;
+  margin-top: 10px;
+}
+
+tr th {
+  border: none;
+}
+tr td {
+  border: none;
+  text-align: center;
+}
+
+button {
+    border-radius: 6px;
+}
+
+button:hover {
+    background-color: #F8F8FF;
+    color: Black;
+}
+
+#final_score {
+  border-radius: 6px;
+}

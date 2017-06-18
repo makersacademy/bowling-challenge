@@ -13,7 +13,7 @@ $(document).ready(function () {
     $('#frame_' + (i + 1) + '_' + j + '_pins').change(function () {
       var frame = game.frames[i]
       frame.add_roll(parseInt($('#frame_' + (i + 1) + '_' + j + '_pins').val()))
-      $('#frame_' + (i + 1) + '_' + j + '_score').text(frame.score_no_bonus())
+      $('#frame_' + (i + 1) + '_' + Math.max(j,2) + '_score').text(frame.score_no_bonus())
     })
   }
 

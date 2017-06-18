@@ -14,16 +14,12 @@ describe('Game', function() {
 
   it("returns a score of zero for a repeatedRolls game", function(){
     repeatedRolls(0,20);
-    expect(game.score()).toEqual(0);
+    expect(game.totalScore()).toEqual(0);
   });
 
   it("returns a score of 20 for a game where 1 is rolled each time", function(){
     repeatedRolls(1,20);
-    expect(game.score()).toEqual(20);
-  });
-
-  it("returns true if the pin is a strike", function(){
-    expect(game.isStrike(10)).toEqual(true);
+    expect(game.totalScore()).toEqual(20);
   });
 
   it("returns the bonus points of a strike", function(){
@@ -39,7 +35,7 @@ describe('Game', function() {
     game.rolls(5);
     game.rolls(4);
     repeatedRolls(1, 16);
-    expect(game.score()).toEqual(44);
+    expect(game.totalScore()).toEqual(44);
   });
 
   it("gives the spare points of a strike", function() {
@@ -59,16 +55,20 @@ describe('Game', function() {
     game.rolls(4);
     game.rolls(2);
     repeatedRolls(0, 12);
-    expect(game.score()).toEqual(46);
+    expect(game.totalScore()).toEqual(46);
   });
 
-  it("gives bonus points of 20 for two strikes", function() {
+  it("gives bonus points of 21 for two strikes", function() {
     game.rolls(10);
     game.rolls(10);
     game.rolls(5);
     game.rolls(1);
     expect(game.strikeBonus()).toEqual(21);
-    // expect(game.score()).toEqual(300);
+  });
+
+  it("gives a score of 300 for a perfect game", function() {
+    repeatedRolls(10, 11);
+    expect(game.totalScore()).toEqual(300);
   });
 
   it("displays a congratulations message for a strike", function(){

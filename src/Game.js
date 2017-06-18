@@ -11,19 +11,14 @@ Game.prototype.rolls = function(pins) {
     this.endGameMessage();
     return;
   }
-  if (pins == 10) {
+  if (pins === 10) {
     this.strikeMessage();
-    return this.stored_pins.push(pins);
-  } else {
-    return this.stored_pins.push(pins);
   }
+    return this.stored_pins.push(pins);
 };
 
-Game.prototype.score = function() {
-   var normal = this.normalScore();
-   var strike = this.strikeBonus();
-   var spare = this.spareBonus();
-   return normal + strike + spare;
+Game.prototype.totalScore = function() {
+   return this.normalScore() + this.strikeBonus() + this.spareBonus();
 };
 
 Game.prototype.normalScore = function() {
@@ -57,10 +52,6 @@ Game.prototype.spareBonus = function() {
     }
   }
   return bonus;
-};
-
-Game.prototype.isStrike = function(pin) {
-  return pin === 10;
 };
 
 // TODO add in a display object for console log messages

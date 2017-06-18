@@ -5,8 +5,9 @@
     <title>Bowling Scorecard</title>
   </head>
   <body>
-    <section>
-      <h1>Bowling Scorecard</h1>
+    <h1>Bowling Scorecard</h1>
+    <div id="score-buttons">
+      <h3>Enter your score for the current bowl:</h3>
       <p>
         <button id="bowl0">0</button>
         <button id="bowl1">1</button>
@@ -20,12 +21,24 @@
         <button id="bowl9">9</button>
         <button id="bowl10">10</button>
       </p>
-    </section>
+    </div>
+    <div id="scorecard-container">
+      <div class="frame-box">1</div>
+      <div class="frame-box">2</div>
+      <div class="frame-box">3</div>
+      <div class="frame-box">4</div>
+      <div class="frame-box">5</div>
+      <div class="frame-box">6</div>
+      <div class="frame-box">7</div>
+      <div class="frame-box">8</div>
+      <div class="frame-box">9</div>
+      <div class="frame-box">10</div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="src/Game.js"></script>
     <script src="src/Frame.js"></script>
     <script src="src/TenthFrame.js"></script>
-
+    <link rel="stylesheet" href="style.css">
   </body>
 </html>

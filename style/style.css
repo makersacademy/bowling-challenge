@@ -16,6 +16,7 @@ table {
     text-align: center;
     font-size: 10px;
     font-weight: bold;
+    border-style: outset;
 }
 
 td {
@@ -27,7 +28,7 @@ button {
     background: cyan;
     color: firebrick;
     font-weight: bold;
-    height: 30;
+    height: 30px;
     width: 150px;
     margin-left: 10px;
 }

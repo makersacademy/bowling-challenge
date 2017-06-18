@@ -1,7 +1,10 @@
 function Game(){
 
+  this.MinScore = 0;
+  this.MaxFrames = 10
+
   this.playedFrames = [];
-  this.totalScore = 0;
+  this.totalScore = this.MinScore;
 
   Game.prototype.getTotalScore = function() {
     return this.totalScore;
@@ -9,10 +12,10 @@ function Game(){
 
   Game.prototype.calculateTotalScore = function() {
     var current_game = this
-    this.totalScore = 0;
+    this.totalScore = this.MinScore;
     this.playedFrames.forEach(function(frame, index){
       // Resets the bonus score to avoid unwanted accumulation
-      frame.bonusScore = 0;
+      frame.bonusScore = frame.MinScore;
       // All frames regardless of bonus status have their own total added to the total score
       if(frame.getStatus() == "spare"){
         // Guards against using getscore on undefined object before next frame is played
@@ -31,7 +34,7 @@ function Game(){
           // Strikes pickup the next two played bowls
           frame.bonusScore += current_game.playedFrames[index + 1].getBowls().firstBowl;
             // Will pickup the firstBowl of the frame after the next frame if next frame is a strike
-            if(current_game.playedFrames[index + 1].getBowls().firstBowl === 10) {
+            if(current_game.playedFrames[index + 1].getBowls().firstBowl === frame.MaxScore) {
               frame.bonusScore += current_game.playedFrames[index + 2].getBowls().firstBowl;
             // Otherwise it will get the next frame's secondBowl
             }else{
@@ -44,7 +47,7 @@ function Game(){
   };
 
   Game.prototype.addFrame = function(frame) {
-    if (this.playedFrames.length >= 10) {
+    if (this.playedFrames.length >= this.MaxFrames) {
       throw new Error("You can only play 10 frames per game.")
     }
     this.playedFrames.push(frame);

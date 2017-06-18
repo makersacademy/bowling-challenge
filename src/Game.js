@@ -51,7 +51,6 @@ Game.prototype.strikeBonus = function() {
 Game.prototype.spareBonus = function() {
   var pins = this.stored_pins;
   var bonus = 0;
-  // TODO correct this so that it does not add strikes as well as spares
   for(var index = 0; index < pins.length; index+=2) {
     if(pins[index] + pins[index + 1] == 10 && pins[index + 1] !== 0) {
       bonus += pins[index + 2];

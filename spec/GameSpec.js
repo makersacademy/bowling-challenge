@@ -12,8 +12,6 @@ describe('Game', function() {
     for (var single = 0; single < up_to; single++) { game.rolls(pins_knocked_down); };
   };
 
-  // TODO separate out the tests using the functions as titles
-
   it("returns a score of zero for a repeatedRolls game", function(){
     repeatedRolls(0,20);
     expect(game.score()).toEqual(0);
@@ -68,7 +66,16 @@ describe('Game', function() {
     game.rolls(2);
     repeatedRolls(0, 12);
     expect(game.score()).toEqual(48);
-  })
+  });
+
+  xit("gives bonus points of 20 for two strikes", function() {
+    game.rolls(10);
+    game.rolls(10);
+    game.rolls(5);
+    game.rolls(1);
+    expect(game.strikeBonus()).toEqual(21);
+    // expect(game.score()).toEqual(300);
+  });
 
   it("displays a congratulations message for a strike", function(){
     game.rolls(10);

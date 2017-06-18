@@ -10,6 +10,9 @@ var Frame = function(last_frame) {
    if(!this.last_frame && max_knocked_down_pins > 10){
      throw new Error('Maximum knocked down pins in each frame is 10');
    }
+   if(this.last_frame && max_knocked_down_pins > 30){
+     throw new Error('Maximum knocked down pins in last frame is 30');
+   }
    if(!this.last_frame && this.rolls.length >= 2){
      throw new Error('Each frame can have at most two rolls');
    }

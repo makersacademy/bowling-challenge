@@ -31,6 +31,15 @@ describe ('Frame', function() {
     });
   });
 
+  describe('Total sum of pins', function(){
+    it('Maximum knocked down pins in last frame is 30', function(){
+      last_frame.add_roll(10);
+      last_frame.add_roll(10);
+      last_frame.add_roll(10);
+      expect(function(){last_frame.add_roll(8)}).toThrow(new Error('Maximum knocked down pins in last frame is 30'));
+    });
+  });
+
   describe('Frame score', function(){
     it('calculates the score for one single frame with no bonus', function(){
       frame.add_roll(1);

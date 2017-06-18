@@ -20,6 +20,9 @@ Frame.prototype._bonus = function(nextFrame, nextnextFrame) {
   if ( this._isNoBonus() ) {
     return 0;
   }
+  if ( this._isStrike() ) {
+    return nextFrame._strikeBonus();
+  }
   if ( this._isSpare() ) {
     return nextFrame._spareBonus();
   }
@@ -37,8 +40,16 @@ Frame.prototype._isSpare = function() {
   return ( this._rollTotal() == this.TOTAL_PINS );
 };
 
+Frame.prototype._isStrike = function() {
+  return ( this._firstRoll() == this.TOTAL_PINS );
+};
+
 Frame.prototype._spareBonus = function() {
   return this._firstRoll();
+};
+
+Frame.prototype._strikeBonus = function() {
+  return this._rollTotal();
 };
 
 Frame.prototype._firstRoll = function() {

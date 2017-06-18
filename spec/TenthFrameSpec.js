@@ -43,5 +43,20 @@ describe('TenthFrame', function() {
       for(var i = 0; i < 2; i++) { tenthframe.bowl(5) };
       expect(tenthframe.isComplete()).toEqual(false);
     });
+
+    it('Leaves the frame open after scoring two strikes with the first two bowls', function() {
+      for(var i = 0; i < 2; i++) { tenthframe.bowl(10) };
+      expect(tenthframe.isComplete()).toEqual(false);
+    });
+
+    it('Knows the frame is complete after three bowls', function() {
+      for(var i = 0; i < 3; i++) { tenthframe.bowl(5) };
+      expect(tenthframe.isComplete()).toEqual(true);
+    });
+
+    it('Knows the frame is complete after three strikes', function() {
+      for(var i = 0; i < 3; i++) { tenthframe.bowl(5) };
+      expect(tenthframe.isComplete()).toEqual(true);
+    });
   });
 });

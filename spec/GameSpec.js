@@ -22,12 +22,6 @@ describe('Game', function() {
     expect(game.score()).toEqual(20);
   });
 
-  it("adds a zero to the next roll if there is a strike", function(){
-    game.rolls(10);
-    game.rolls(5);
-    expect(game.stored_pins).toEqual([10,0,5]);
-  });
-
   it("returns true if the pin is a strike", function(){
     expect(game.isStrike(10)).toEqual(true);
   });
@@ -49,10 +43,10 @@ describe('Game', function() {
   });
 
   it("gives the spare points of a strike", function() {
-    game.rolls(6);
-    game.rolls(4);
+    game.rolls(8);
+    game.rolls(2);
     game.rolls(3);
-    repeatedRolls(1, 16);
+    repeatedRolls(0, 17);
     expect(game.spareBonus()).toEqual(3);
   });
 
@@ -65,10 +59,10 @@ describe('Game', function() {
     game.rolls(4);
     game.rolls(2);
     repeatedRolls(0, 12);
-    expect(game.score()).toEqual(48);
+    expect(game.score()).toEqual(46);
   });
 
-  xit("gives bonus points of 20 for two strikes", function() {
+  it("gives bonus points of 20 for two strikes", function() {
     game.rolls(10);
     game.rolls(10);
     game.rolls(5);

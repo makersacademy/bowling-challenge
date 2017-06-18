@@ -13,7 +13,7 @@ Game.prototype.rolls = function(pins) {
   }
   if (pins == 10) {
     this.strikeMessage();
-    return this.stored_pins.push(pins, 0);
+    return this.stored_pins.push(pins);
   } else {
     return this.stored_pins.push(pins);
   }
@@ -40,9 +40,9 @@ Game.prototype.strikeBonus = function() {
   var pins = this.stored_pins;
   var bonus = 0;
 
-  for(var index = 0; index < pins.length; index+=2) {
+  for(var index = 0; index < pins.length; index+=1) {
     if(pins[index] === 10) {
-      bonus += (pins[index + 2] + pins[index + 3]);
+      bonus += (pins[index + 1] + pins[index + 2]);
     }
   }
   return bonus;
@@ -52,7 +52,7 @@ Game.prototype.spareBonus = function() {
   var pins = this.stored_pins;
   var bonus = 0;
   for(var index = 0; index < pins.length; index+=2) {
-    if(pins[index] + pins[index + 1] == 10 && pins[index + 1] !== 0) {
+    if(pins[index] + pins[index + 1] == 10) {
       bonus += pins[index + 2];
     }
   }

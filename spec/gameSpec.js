@@ -50,6 +50,7 @@ describe ('Game', function() {
     it('When strike, the score is 10 plus bonus from the next 2 rolls', function(){
       game.add_frame(frame1);
       frame1.add_roll(10);
+      frame1.add_roll(0);
       game.add_frame(frame2);
       frame2.add_roll(2);
       frame2.add_roll(3);
@@ -93,6 +94,7 @@ describe ('Game', function() {
       game.add_frame(frame);
       frame = new Frame;
       frame.add_roll(10);
+      frame.add_roll(0);
       game.add_frame(frame);
       frame = new Frame;
       frame.add_roll(0);
@@ -108,6 +110,7 @@ describe ('Game', function() {
       game.add_frame(frame);
       frame = new Frame;
       frame.add_roll(10);
+      frame.add_roll(0);
       game.add_frame(frame);
       frame = new Frame(true);
       frame.add_roll(2);

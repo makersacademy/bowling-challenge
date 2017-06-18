@@ -3,6 +3,9 @@ var Frame = function(last_frame) {
   this.last_frame = !!last_frame;
 
  Frame.prototype.add_roll = function(knocked_down_pins){
+   if (this.is_strike() && knocked_down_pins === 0) {
+     return;
+   }
    var max_knocked_down_pins = knocked_down_pins;
    this.rolls.forEach(function (roll, index) {
      max_knocked_down_pins += roll;

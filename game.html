@@ -2,174 +2,157 @@
 <html>
   <head>
      <title>Bowling game</title>
+     <style>
+     table, th, td {
+         border: 1px solid black;
+     }
+     </style>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
 
-
-
-
-  <style>
-  table, th, td {
-      border: 1px solid black;
-  }
-  </style>
-  </head>
   <body>
-<form>
-
+  <div>
+       <input type="button" value="Calculate score" id="calculate_score">
+       <input type="text" id="final_score">
+   </div>
   <table>
     <tr>
       <th>Frame</th>
       <th>Roll</th>
       <th>knocked down pins</th>
-      <th>Total score</th>
+      <th>Frame score</th>
     </tr>
     <tr>
       <td>1</td>
       <td>1</td>
-      <td><input type="text" name=""></input></td>
-      <td>0</td>
+      <td><input type="text" id="frame_1_1_pins"></td>
+      <td id="frame_1_1_score"></td>
     </tr>
     <tr>
       <td>1</td>
       <td>2</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_1_2_pins"></td>
+      <td id="frame_1_2_score"></td>
     </tr>
     <tr>
       <td>2</td>
       <td>1</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_2_1_pins"></td>
+      <td id="frame_2_1_score"></td>
     </tr>
     <tr>
       <td>2</td>
       <td>2</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_2_2_pins"></td>
+      <td id="frame_2_2_score"></td>
     </tr>
     <tr>
       <td>3</td>
       <td>1</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_3_1_pins"></td>
+      <td id="frame_3_1_score"></td>
     </tr>
     <tr>
       <td>3</td>
       <td>2</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_3_2_pins"></td>
+      <td id="frame_3_2_score"></td>
     </tr>
     <tr>
       <td>4</td>
       <td>1</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_4_1_pins"></td>
+      <td id="frame_4_1_score"></td>
     </tr>
     <tr>
       <td>4</td>
       <td>2</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_4_2_pins"></td>
+      <td id="frame_4_2_score"></td>
     </tr>
     <tr>
       <td>5</td>
       <td>1</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_5_1_pins"></td>
+      <td id="frame_5_1_score"></td>
     </tr>
     <tr>
       <td>5</td>
       <td>2</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_5_2_pins"></td>
+      <td id="frame_5_2_score"></td>
     </tr>
     <tr>
       <td>6</td>
       <td>1</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_6_1_pins"></td>
+      <td id="frame_6_1_score"></td>
     </tr>
     <tr>
       <td>6</td>
       <td>2</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_6_2_pins"></td>
+      <td id="frame_6_2_score"></td>
     </tr>
     <tr>
       <td>7</td>
       <td>1</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_7_1_pins"></td>
+      <td id="frame_7_1_score"></td>
     </tr>
     <tr>
       <td>7</td>
       <td>2</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_7_2_pins"></td>
+      <td id="frame_7_2_score"></td>
     </tr>
     <tr>
       <td>8</td>
       <td>1</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_8_1_pins"></td>
+      <td id="frame_8_1_score"></td>
     </tr>
     <tr>
       <td>8</td>
       <td>2</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_8_2_pins"></td>
+      <td id="frame_8_2_score"></td>
     </tr>
     <tr>
       <td>9</td>
       <td>1</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_9_1_pins"></td>
+      <td id="frame_9_1_score"></td>
     </tr>
     <tr>
       <td>9</td>
       <td>2</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_9_2_pins"></td>
+      <td id="frame_9_2_score"></td>
     </tr>
     <tr>
       <td>10</td>
       <td>1</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_10_1_pins"></td>
+      <td id="frame_10_1_score"></td>
     </tr>
     <tr>
       <td>10</td>
       <td>2</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_10_2_pins"></td>
+      <td id="frame_10_2_score"></td>
     </tr>
     <tr>
       <td>10</td>
       <td>3</td>
-      <td><input type="text" name=""></input></td>
-      <td>5</td>
+      <td><input type="text" id="frame_10_3_pins"></td>
+      <td id="frame_10_3_score"></td>
     </tr>
   </table>
 
-</form>
-
-
-
-
-
-
-
-
-    <!-- <section>
-      <h1 id="game"></h1>
-      <p>
-        <button id="roll_a_ball">Roll a ball</button>
-      </p>
-    </section>
-    <script src="src/game.js"></script>
-    <script src="src/frame.js"></script> -->
-
-
+<script src="src/game.js"></script>
+<script src="src/frame.js"></script>
+<script src="interface.js"></script>
 
   </body>
 </html>

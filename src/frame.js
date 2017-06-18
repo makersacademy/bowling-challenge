@@ -23,6 +23,15 @@ var Frame = function(last_frame) {
  }
 
  Frame.prototype.score_no_bonus = function(){
+
+   if (this.last_frame) {
+     if (this.is_spare()) {
+       return this.rolls[0] + this.rolls[1];
+     }
+     if (this.is_strike()) {
+       return this.rolls[0];
+     }
+   }
    var score = 0;
    this.rolls.forEach(function (roll, index) {
      score += roll;

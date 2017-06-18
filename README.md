@@ -1,6 +1,8 @@
 Bowling Challenge
 =================
 
+[![Build Status](https://api.travis-ci.org/marioribeiro/bowling-challenge.svg?branch=master)](https://travis-ci.org/marioribeiro/bowling-challenge)
+
 ## The Task
 
 Count and sum the scores of a bowling game for one player (in JavaScript).

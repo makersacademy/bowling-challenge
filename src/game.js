@@ -17,7 +17,7 @@ Game.prototype.runGame = function(){
   while (i < 9);
 }
 
-Game.propotype.lastFrame = function(){
+Game.prototype.lastFrame = function(){
   var frame = new Frame();
   this.score.push(frame.lastFrame());
   return this.score;

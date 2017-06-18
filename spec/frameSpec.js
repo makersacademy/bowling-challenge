@@ -10,4 +10,8 @@ describe('Frame', function(){
     frame.roll();
     expect(frame.score).toBeLessThan(10);
   });
+  it('can count the number of rolls', function(){
+    frame.roll();
+    expect(frame.rollCount).toEqual(2);
+  });
 });

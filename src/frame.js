@@ -7,4 +7,5 @@ var Frame = function(){
 
 Frame.prototype.roll = function(){
   this.score = Math.floor(Math.random() * 11)
+  this.rollCount ++;
 }

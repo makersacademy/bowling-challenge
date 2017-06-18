@@ -3,6 +3,7 @@ describe("Frames", function() {
   var frame;
   var strike;
   var spare;
+  var gutter;
 
   beforeEach(function(){
     frame = new Frame(1, 1);

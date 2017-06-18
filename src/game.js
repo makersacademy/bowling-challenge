@@ -11,22 +11,35 @@ function Game(){
     var current_game = this
     this.totalScore = 0;
     this.playedFrames.forEach(function(frame, index){
+      // Resets the bonus score to avoid unwanted accumulation
+      frame.bonusScore = 0;
+      // All frames regardless of bonus status have their own total added to the total score
       if(frame.getStatus() == "spare"){
-        current_game.totalScore += frame.getScore();
         // Guards against using getscore on undefined object before next frame is played
-        if(typeof current_game.playedFrames[index + 1] != "undefined") {
-          current_game.totalScore += current_game.playedFrames[index + 1].getScore();
+        if(current_game.playedFrames[index + 1]) {
+          // Spares pickup the next bowl's score
+          frame.bonusScore += current_game.playedFrames[index + 1].getBowls().firstBowl;
         };
       } else if(frame.getStatus() == "strike") {
-        current_game.totalScore += frame.getScore();
+        // special case for panultimate frame
+        if(current_game.playedFrames[index + 1]  && index == 8) {
+          frame.bonusScore += current_game.playedFrames[index + 1].getBowls().firstBowl;
+          frame.bonusScore += current_game.playedFrames[index + 1].getBowls().secondBowl;
+        }
         // Guards against using getscore on undefined object before next frame is played
-        if(typeof current_game.playedFrames[index + 1] != "undefined" && typeof current_game.playedFrames[index + 2] != "undefined" ) {
-          current_game.totalScore += current_game.playedFrames[index + 1].getScore();
-          current_game.totalScore += current_game.playedFrames[index + 2].getScore();
+        if(current_game.playedFrames[index + 1] && current_game.playedFrames[index + 2]) {
+          // Strikes pickup the next two played bowls
+          frame.bonusScore += current_game.playedFrames[index + 1].getBowls().firstBowl;
+            // Will pickup the firstBowl of the frame after the next frame if next frame is a strike
+            if(current_game.playedFrames[index + 1].getBowls().firstBowl === 10) {
+              frame.bonusScore += current_game.playedFrames[index + 2].getBowls().firstBowl;
+            // Otherwise it will get the next frame's secondBowl
+            }else{
+              frame.bonusScore += current_game.playedFrames[index + 1].getBowls().secondBowl;
+            }
         };
-      } else {
-        current_game.totalScore += frame.getScore();
       };
+      current_game.totalScore += frame.getScore();
     });
   };
 

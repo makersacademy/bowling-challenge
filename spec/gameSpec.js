@@ -1,7 +1,10 @@
-describe("Bowling a frame", function(){
+describe("Bowling a game", function(){
 
   var game;
   var frame;
+  var strike;
+  var spare;
+  var gutter;
 
   beforeEach(function(){
     game = new Game;
@@ -31,14 +34,14 @@ describe("Bowling a frame", function(){
   it("Frames with a spare accumulate the next frames score", function(){
     game.addFrame(spare);
     game.addFrame(frame);
-    expect(game.getTotalScore()).toEqual(14);
+    expect(game.getTotalScore()).toEqual(13);
   });
 
   it("Frames with a Strike accumulate the next two frame's score", function(){
     game.addFrame(strike);
     game.addFrame(frame);
     game.addFrame(frame);
-    expect(game.getTotalScore()).toEqual(18);
+    expect(game.getTotalScore()).toEqual(16);
   });
 
 });

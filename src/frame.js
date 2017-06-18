@@ -25,10 +25,6 @@ Frame.prototype.getFrameResult = function(){
   return this.frameScore.push(this.frameResult(this.result));
 }
 
-Frame.prototype.frameResult = function(arr){
-  arr.reduce((x, y) => x + y);
-}
-
 Frame.prototype.frameStatus = function(){
   if (this.rollCount === 1 && this.score === 10) {
     return ('Strike!');

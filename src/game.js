@@ -9,6 +9,7 @@ function Game() {
 
 Game.prototype.roll = function(frameNumber, rollNumber) {
   this.frames[frameNumber].roll(this.frames[frameNumber].rolls, rollNumber)
+  
 }
 
 Game.prototype.fullFrame = function(frame) {

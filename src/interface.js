@@ -13,7 +13,7 @@ $("#bowl").click(function(){
     })
 
     function updateText() {
-      $( "#Results" ).text(game.scores[frameNumber][rollNumber]);
+      $( "#Results" ).text(game.scores[frameNumber]);
       $( "#Frametotals" ).text(game.frametotals);
     }
 
@@ -21,7 +21,6 @@ $("#bowl").click(function(){
         game.frames[frameNumber].calculateFrameScore(game.frames[frameNumber].rolls)
         game.updateGameScores(frameNumber)
         game.updateFrameTotals(frameNumber)
-
     }
 
     function updateCounter() {

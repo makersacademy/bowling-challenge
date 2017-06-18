@@ -22,26 +22,22 @@ var Game = function() {
  };
 
   Game.prototype.calculateSpareBonus = function(index){
-    var frame = this.frames[index];
-    var next_index = index + 1;
-    if(frame.is_spare()){
-      if(next_index < this.frames.length){
-        return this.frames[next_index].rolls[0];
+    if(this.frames[index].is_spare()){
+      if(index + 1 < this.frames.length){
+        return this.frames[index + 1].rolls[0];
       }else{
-        return frame.rolls[2];
+        return this.frames[index].rolls[2];
       }
     }
     return 0;
   };
 
   Game.prototype.calculateStrikeBonus = function(index){
-    var frame = this.frames[index];
-    var next_index = index + 1;
-    if(frame.is_strike()){
-      if(next_index < this.frames.length){
-        return (this.frames[next_index].rolls[0] + this.frames[next_index].rolls[1]);
+    if(this.frames[index].is_strike()){
+      if(index + 1 < this.frames.length){
+        return (this.frames[index + 1].rolls[0] + this.frames[index + 1].rolls[1]);
       }else{
-        return frame.rolls[2];
+        return this.frames[index].rolls[2];
       }
     }
     return 0;

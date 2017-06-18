@@ -22,7 +22,6 @@ describe('Frame', function(){
   it('throws an error if three rolls are taken', function(){
     frame.roll();
     frame.roll();
-    frame.roll();
     expect(function(){
       frame.roll();
     }).toThrow("Only two rolls allowed!");

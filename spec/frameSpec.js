@@ -16,7 +16,13 @@ describe('Frame', function(){
   it("calculates the total for a spare", function() {
     var frame = new Frame([1,9]);
     var nextFrame = new Frame([8,1]);
-    expect(frame.total(nextFrame)).toEqual(18)
+    expect(frame.total(nextFrame)).toEqual(18);
+  });
+
+  it("calculates the total for a strike", function() {
+    var frame = new Frame([10,0]);
+    var nextFrame = new Frame([8,1]);
+    expect(frame.total(nextFrame)).toEqual(19);
   });
 
 });

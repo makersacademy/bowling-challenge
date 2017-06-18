@@ -9,13 +9,13 @@ describe('Ai', function(){
 
   describe('interaction', function(){
     it('samples an array', function(){
-      var sassyGameOverMessages = ['Message'];
-      expect(sassyGameOverMessages.sample()).toEqual('Message');
+      ai.sassyMessages = ['Message'];
+      expect(ai.sassyMessages.sample()).toEqual('Message');
     });
 
     it('delivers a sassy response', function(){
-      spyOn(sassyGameOverMessages, 'sample').and.returnValue(sassyGameOverMessages[0]);
-      expect(ai.gameOver()).toEqual('Frame Over');
+      spyOn(ai.sassyMessages, 'sample').and.returnValue(ai.sassyMessages[0]);
+      expect(ai.sassPlayer()).toEqual('Frame Over');
     });
   });
 });

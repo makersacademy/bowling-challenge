@@ -29,11 +29,6 @@ $( document ).ready(function(){
     var pins = frame.bowl()
     recordScore(pins);
     updateScore(pins);
-    console.log('Frame: ' + game.isFrame());
-    console.log('Ball: ' + frame.ball);
-    console.log('Score: ' + pins);
-    console.log('Frame Score: ' + frame.currentScore);
-    console.log('Frame over: ' + frame.over);
     controller();
   });
 
@@ -52,6 +47,7 @@ $( document ).ready(function(){
   function recordScore(pins) {
     if (pins === 10) {
       game.recordScore(0);
+      alert('Strike - ' + ai.sassPlayer());
     }
     game.recordScore(pins);
   }

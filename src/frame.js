@@ -32,13 +32,11 @@ Frame.prototype._updateFrame = function(score) {
 Frame.prototype._isStrike = function(score){
   if ( this.currentScore === 10 && this.ball === 1) {
     this.over = true;
-    alert('Strike!')
   }
 }
 
 Frame.prototype._isSpare = function(score){
   if ( this.currentScore === 10 && this.ball === 2 ){
     this.over = true;
-    alert('Spare!')
   }
 }

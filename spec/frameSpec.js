@@ -10,4 +10,10 @@ describe('Frame', function(){
     frame.calculateScore()
     expect(frame._score).toEqual(7)
   })
+
+  it('accounts for Strike', function(){
+    var frame = new Frame([10,0])
+    frame.calculateScore()
+    expect(frame.isStrike).toEqual(true)
+  })
 })

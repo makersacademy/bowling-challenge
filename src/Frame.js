@@ -1,6 +1,7 @@
 function Frame(rolls){
   this._score = 0
   this.rolls = rolls
+  this.isStrike = false
 }
 
 Frame.prototype.firstRoll = function() {
@@ -12,5 +13,8 @@ Frame.prototype.secondRoll = function() {
 }
 
 Frame.prototype.calculateScore = function() {
+  if (this.firstRoll() == 10) {
+    this.isStrike = true
+  }
   this._score += this.firstRoll() + this.secondRoll()
 }

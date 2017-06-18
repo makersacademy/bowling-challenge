@@ -36,4 +36,23 @@ describe('Game', function(){
     game.roll([4,3])
     expect(game.framesLeft()).toEqual(9);
   })
+
+  it('is active if there are still frames to be played', function(){
+    game.roll([4,3])
+    expect(game.isActive()).toEqual(true);
+  })
+
+  it('is not active if all the frames were played', function(){
+    game.roll([4,4])
+    game.roll([4,1])
+    game.roll([10,0])
+    game.roll([9,0])
+    game.roll([5,3])
+    game.roll([4,4])
+    game.roll([4,1])
+    game.roll([10,0])
+    game.roll([9,0])
+    game.roll([5,3])
+    expect(game.isActive()).toEqual(false);
+  })
 })

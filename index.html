@@ -5,68 +5,97 @@
     <title>Bowling Game for 10 pins</title>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="src/interface.js"></script>
+    <script type="text/javascript" src="src/Ball.js"></script>
     <script type="text/javascript" src="src/Frame.js"></script>
+    <script type="text/javascript" src="src/BowlingGame.js"></script>
     <link rel="stylesheet" type="text/css" href="style/style.css">
   </head>
   <body>
 
 <section>
 
-  <h1>Bowling Table: <span id="player"></span></h1>
+  <h1>Bowling Game Table <span id="player"></span></h1>
   <div>
 
     <table>
       <tr>
-        <td colspan='2' id='frame1'>Frame 1</td>
-        <td colspan='2' id='frame2'>Frame 2</td>
-        <td colspan='2' id='frame3'>Frame 3</td>
-        <td colspan='2' id='frame4'>Frame 4</td>
-        <td colspan='2' id='frame5'>Frame 5</td>
-        <td colspan='2' id='frame6'>Frame 6</td>
-        <td colspan='2' id='frame7'>Frame 7</td>
-        <td colspan='2' id='frame8'>Frame 8</td>
-        <td colspan='2' id='frame9'>Frame 9</td>
-        <td colspan='2' id='frame10'>Frame 10</td>
+        <td colspan='2'>Frame 1</td>
+        <td colspan='2'>Frame 2</td>
+        <td colspan='2'>Frame 3</td>
+        <td colspan='2'>Frame 4</td>
+        <td colspan='2'>Frame 5</td>
+        <td colspan='2'>Frame 6</td>
+        <td colspan='2'>Frame 7</td>
+        <td colspan='2'>Frame 8</td>
+        <td colspan='2'>Frame 9</td>
+        <td colspan='3'>Frame 10</td>
       </tr>
       <tr>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
-        <td><input type='text' name='ball' size='3' maxLength='1'/></td>
+        <span id='frame0'>
+          <td><input id='ball01' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+          <td><input id='ball02' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+        </span>
+        <span id='frame1'>
+          <td><input id='ball11' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+          <td><input id='ball12' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+        </span>
+        <span id='frame2'>
+          <td><input id='ball21' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+          <td><input id='ball22' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+        </span>
+        <span id='frame3'>
+          <td><input id='ball31' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+          <td><input id='ball32' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+        </span>
+        <span id='frame4'>
+          <td><input id='ball41' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+          <td><input id='ball42' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+        </span>
+        <span id='frame5'>
+          <td><input id='ball51' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+          <td><input id='ball52' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+        </span>
+        <span id='frame6'>
+          <td><input id='ball61' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+          <td><input id='ball62' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+        </span>
+        <span id='frame7'>
+          <td><input id='ball71' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+          <td><input id='ball72' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+        </span>
+        <span id='frame8'>
+          <td><input id='ball81' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+          <td><input id='ball82' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+        </span>
+        <span id='frame9'>
+          <td><input id='ball91' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+          <td><input id='ball92' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
+          <td><input id='ball93' type='text' name='ball' size='3' maxLength='1' readOnly='true'/></td>
       </tr>
 
       <tr>
-        <td colspan='2'><input type='text' name='score' size='10' readOnly='true' /></td>
-        <td colspan='2'><input type='text' name='score' size='10' readOnly='true' /></td>
-        <td colspan='2'><input type='text' name='score' size='10' readOnly='true' /></td>
-        <td colspan='2'><input type='text' name='score' size='10' readOnly='true' /></td>
-        <td colspan='2'><input type='text' name='score' size='10' readOnly='true' /></td>
-        <td colspan='2'><input type='text' name='score' size='10' readOnly='true' /></td>
-        <td colspan='2'><input type='text' name='score' size='10' readOnly='true' /></td>
-        <td colspan='2'><input type='text' name='score' size='10' readOnly='true' /></td>
-        <td colspan='2'><input type='text' name='score' size='10' readOnly='true' /></td>
-        <td colspan='2'><input type='text' name='score' size='10' readOnly='true' /></td>
+        <td colspan='2'><input id='score0' type='text' name='score' size='10' readOnly='true' /></td>
+        <td colspan='2'><input id='score1' type='text' name='score' size='10' readOnly='true' /></td>
+        <td colspan='2'><input id='score2' type='text' name='score' size='10' readOnly='true' /></td>
+        <td colspan='2'><input id='score3' type='text' name='score' size='10' readOnly='true' /></td>
+        <td colspan='2'><input id='score4' type='text' name='score' size='10' readOnly='true' /></td>
+        <td colspan='2'><input id='score5' type='text' name='score' size='10' readOnly='true' /></td>
+        <td colspan='2'><input id='score6' type='text' name='score' size='10' readOnly='true' /></td>
+        <td colspan='2'><input id='score7' type='text' name='score' size='10' readOnly='true' /></td>
+        <td colspan='2'><input id='score8' type='text' name='score' size='10' readOnly='true' /></td>
+        <td colspan='3'><input id='score9' type='text' name='score' size='14' readOnly='true' /></td>
       </tr>
     </table>
-    <br/>
-    <button type='submit' name='Submit'>Calculate Score</button>
-    <button type='reset' name='Reset'>Reset</button>
+    <br/><br/>
+
+    <span>Total Game Score:
+      <input id='total_score' type='text' name='total_score' size='10' readOnly='true' />
+    </span>
+
+    <br/><br/><br/><br/>
+    <button id='start-game' type='submit'>Start Game</button>
+    <button id='calculate-game-score' type='submit' name='Submit'>Calculate Score</button>
+    <button id='reset-game' type='reset' name='Reset'>Reset</button>
   </div>
 
 </section>

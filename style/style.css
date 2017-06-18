@@ -1,6 +1,12 @@
+#total_score {
+  border-width: medium;
+  border-style: dotted;
+}
+
 input {
     text-align: center;
     font-weight: bold;
+    font-size: 15px;
 }
 
 table {
@@ -11,9 +17,18 @@ table {
     font-weight: bold;
 }
 
+td {
+  font-weight: bold;
+  font-size: 15px;
+}
+
 button {
     background: cyan;
     color: firebrick;
+    font-weight: bold;
+    height: 30;
+    width: 150px;
+    margin-left: 10px;
 }
 
 body {

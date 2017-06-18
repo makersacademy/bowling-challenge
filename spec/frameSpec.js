@@ -23,4 +23,10 @@ describe('Frame', function(){
     expect(frame.currentScore).toEqual(8);
   });
 
+  it('plays only two balls per frame', function(){
+    frame.bowl();
+    expect(frame.ball).toEqual(1)
+    frame.bowl();
+    expect(frame.bowl()).toEqual(0);
+  });
 });

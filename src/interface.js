@@ -5,13 +5,18 @@ $( document ).ready(function(){
   var frame = new Frame();
 
   $('#bowl').on('click', function(){
+    console.log(frame.remainingPins);
     updateScore()
   });
 
   function updateScore() {
-    var pins = frame.bowl()
-    $('#score').text('You knocked down ' + pins + ' ' + _pinS(pins) );
-    $('#currentScore').text('Your total points: ' + frame.currentScore );
+    if ( frame.ball < 2 ) {
+      var pins = frame.bowl()
+      $('#currentScore').text('Your total points: ' + frame.currentScore );
+      $('#score').text('You knocked down ' + pins + ' ' + _pinS(pins) );
+    } else {
+      $('#score').text('Frame Over!');
+    }
   }
 
   function _pinS(pins) {

@@ -4,14 +4,26 @@
 var Frame = function() {
   this.remainingPins = 10
   this.currentScore = 0
+  this.ball = 0
 }
 
 Frame.prototype.bowl = function() {
-  var score = this.pinsKnockedDown(this.remainingPins);
-  this.currentScore += score
-  return score
+  if ( this.ball < 2 ) {
+    var score = this.pinsKnockedDown(this.remainingPins);
+    this._updateFrame(score);
+    return score;
+  } else {
+    console.log( "Frame over" );
+    return 0
+  }
 }
 
-Frame.prototype.pinsKnockedDown = function(pinsRemaining) {
-  return Math.floor((Math.random() * pinsRemaining));
+Frame.prototype.pinsKnockedDown = function(remainingPins) {
+  return Math.floor((Math.random() * remainingPins));
+}
+
+Frame.prototype._updateFrame = function(score) {
+  this.currentScore += score;
+  this.remainingPins = 10 - score;
+  this.ball += 1;
 }

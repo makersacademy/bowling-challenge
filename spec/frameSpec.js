@@ -35,14 +35,13 @@ describe('Frame', function(){
       frame.secondRoll(5);
     });
 
-    it('can determine if the rolls result in a spare', function() {
+    it('can determine if the rolls result in a spare', function(){
       expect(frame.isSpare).toBe(true);
     });
 
     it('completes the frame', function(){
       expect(frame.isComplete).toBe(true);
     });
-
   });
 
   describe('it is a strike', function(){
@@ -51,7 +50,7 @@ describe('Frame', function(){
       frame.firstRoll(10);
     });
 
-    it('can determine if the firstRoll is a strike', function() {
+    it('can determine if the firstRoll is a strike', function(){
       expect(frame.isStrike).toBe(true);
     });
 

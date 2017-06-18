@@ -17,7 +17,16 @@ describe('Game', function(){
 
   it('has an an empty array for scores', function(){
     expect(game.scores).toEqual([])
-  })
+  });
 
+  xit('adds scores from a frame to an array', function(){
+    game.frameArray[0].addFirstScore(5);
+    game.frameArray[0].addSecondScore(2);
+    game.logFrameScore(0)
+    expect(game.scores).toEqual([[5,2]])
+  });
 
+  it('has a running total for the game', function(){
+    expect(game.runningTotal).toBeDefined();
+  });
 })

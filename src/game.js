@@ -10,4 +10,13 @@ function Game() {
                      (frame9 = new Frame(9)),
                      (frame10 = new Frame(10))]
   this.scores = []
+  this.frameScore = []
+  this.runningTotal = 0
 }
+
+Game.prototype.logFrameScore = function (number) {
+  var scoreArray = [];
+  scoreArray.push(this.frameArray[number].firstScore);
+  scoreArray.push(this.frameArray[number].secondScore);
+  this.frameScore.push(scoreArray);
+};

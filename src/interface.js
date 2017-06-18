@@ -3,13 +3,21 @@
 $( document ).ready(function(){
 
   var game = new Game();
+  var frame = new Frame();
+
+  updateFrame();
 
   $('#bowl').on('click', function(){
-    var frame = new Frame();
-    var pins = frame.bowl()
-    recordScore(pins);
-    updateScore(pins);
-    updateFrame();
+    if ( !game.over ) {
+      var pins = frame.bowl()
+      recordScore(pins);
+      updateScore(pins);
+      updateFrame();
+      console.log('Frame: ' + game.isFrame());
+      console.log('Ball: ' + frame.ball);
+      console.log('Score: ' + pins);
+      console.log('Total Score: ' + game.totalScore());
+    }
   });
 
   function recordScore(pins) {

@@ -7,6 +7,7 @@ var Frame = function() {
   this.ball = 0
   this.isStrike = false;
   this.isSpare = false;
+  this.over = false;
 }
 
 Frame.prototype.bowl = function() {
@@ -16,7 +17,7 @@ Frame.prototype.bowl = function() {
     this._isStrike(score);
     this._isSpare(score);
   } else {
-    console.log( "Frame over" );
+    this.over = true;
     score = 0
   }
   return score;
@@ -40,7 +41,6 @@ Frame.prototype._isStrike = function(score){
 }
 
 Frame.prototype._isSpare = function(score){
-  console.log('ball: ' + this.ball);
   if ( this.currentScore === 10 && this.isStrike === false ){
     this.isSpare = true;
     alert('Spare!')

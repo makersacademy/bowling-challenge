@@ -28,6 +28,7 @@ describe('Frame', function(){
     expect(frame.ball).toEqual(1)
     frame.bowl();
     expect(frame.bowl()).toEqual(0);
+    expect(frame.over).toEqual(true);
   });
 
   it('knows when the player bowled a strike', function(){

@@ -3,10 +3,15 @@
 
 var Game = function() {
   this.score = [];
+  this.over = false;
 }
 
 Game.prototype.recordScore = function(pins){
-  this.score.push(pins);
+  if ( this.score.length < 20 ) {
+    this.score.push(pins);
+  } else {
+    this.over = true;
+  }
 }
 
 Game.prototype.totalScore = function(){

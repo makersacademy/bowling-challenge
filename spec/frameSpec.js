@@ -40,7 +40,6 @@ describe('Frame', function(){
     });
 
     it('can determine if the rolls result in a spare', function(){
-      console.log(frame.rolls)
       expect(frame.isSpare).toBe(true);
     });
 

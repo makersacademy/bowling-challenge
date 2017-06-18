@@ -16,18 +16,20 @@ describe('Game', function(){
     expect(game.frames).toBeNonEmptyArray();
   });
 
-  it('can add the roll score to the frame', function(){
+  it('has maximum 10 frames', function(){
+    for(var i = 0; i < 20; i++){
+      game.roll(3);
+    }
+    expect(function(){
+      game.roll(3);
+    }).toThrowError('No new rolls allowed');
+  });
+
+  it('can add the score of the roll to the frame', function(){
     var frame = jasmine.createSpyObj('frame', ['addRoll']);
     game.frames.push(frame);
     game.roll(3);
     expect(frame.addRoll).toHaveBeenCalledWith(3);
-  });
-
-  it('scores 0 in case of a Gutter game', function(){
-    for(var i; i <= 20; i++) {
-      game.roll(0);
-    }
-    expect(game.score).toEqual(0);
   });
 
   describe('#getCurrentFrame', function(){

@@ -35,4 +35,11 @@ describe('Frame', function(){
     frame.bowl();
     expect(frame.isStrike).toEqual(true);
   });
+
+  it('knows when the player bowled a spare', function(){
+    spyOn(frame, 'pinsKnockedDown').and.returnValue(5);
+    frame.bowl();
+    frame.bowl();
+    expect(frame.isSpare).toEqual(true);
+  });
 });

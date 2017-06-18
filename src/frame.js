@@ -6,13 +6,15 @@ var Frame = function() {
   this.currentScore = 0
   this.ball = 0
   this.isStrike = false;
+  this.isSpare = false;
 }
 
 Frame.prototype.bowl = function() {
-  if ( this.ball < 2 ) {
+  if ( this.ball < 2 && this.isStrike === false) {
     var score = this.pinsKnockedDown(this.remainingPins);
     this._updateFrame(score);
     this._isStrike(score);
+    this._isSpare(score);
     return score;
   } else {
     console.log( "Frame over" );
@@ -21,7 +23,7 @@ Frame.prototype.bowl = function() {
 }
 
 Frame.prototype.pinsKnockedDown = function(remainingPins) {
-  return Math.floor((Math.random() * remainingPins));
+  return Math.floor((Math.random() * remainingPins) + 1);
 }
 
 Frame.prototype._updateFrame = function(score) {
@@ -33,5 +35,14 @@ Frame.prototype._updateFrame = function(score) {
 Frame.prototype._isStrike = function(score){
   if ( score === 10 ) {
     this.isStrike = true;
+    alert('Strike!')
+  }
+}
+
+Frame.prototype._isSpare = function(score){
+  console.log('ball: ' + this.ball);
+  if ( this.currentScore === 10 && this.isStrike === false ){
+    this.isSpare = true;
+    alert('Spare!')
   }
 }

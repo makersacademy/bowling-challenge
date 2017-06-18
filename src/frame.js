@@ -17,3 +17,9 @@ Frame.prototype.roll = function(){
   this.rollCount ++;
   this.result.push(this.score);
 }
+
+Frame.prototype.getFrameResult = function(){
+  this.roll();
+  this.roll();
+  return this.result;
+}

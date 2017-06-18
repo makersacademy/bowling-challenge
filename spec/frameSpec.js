@@ -29,9 +29,12 @@ describe('Frame', function(){
   it('starts with a result of an empty array', function(){
     expect(frame.result).toEqual([])
   });
-  it('can return the score after each frame', function(){
+  it('can add the score to an array after each roll', function(){
     frame.roll();
     frame.roll();
-    expect(frame.result.length).not.toBe(null);
+    expect(frame.result.length).toBe(2);
   });
+  it('can return the result at the end of the frame', function(){
+    expect(frame.getFrameResult).not.toBe(null)
+  })
 });

@@ -30,6 +30,16 @@ describe('TenthFrame', function() {
       for(var i = 0; i < 2; i++) {tenthframe.bowl(4) };
       expect(function() { tenthframe.bowl(2) }).toThrow(new Error('Cannot bowl - this frame is complete'));
     });
+
+    it('Allows the player to bowl a third time after scoring a spare', function() {
+      for(var i = 0; i < 3; i++) { tenthframe.bowl(5) };
+      expect(tenthframe._bowls).toEqual([5, 5, 5]);
+    });
+
+    it('Allows the player to bowl a third time after scoring two strikes', function() {
+      for(var i = 0; i < 3; i++) { tenthframe.bowl(10) };
+      expect(tenthframe._bowls).toEqual([10, 10, 10]);
+    });
   });
 
   describe('isComplete', function() {

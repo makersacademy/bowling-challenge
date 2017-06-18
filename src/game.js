@@ -43,7 +43,6 @@ Game.prototype.updatePreviousFrameTotals = function(frameNumber) {
 }
 
 Game.prototype.getFrameScore = function(frameNumber) {
-
   return this.frames[frameNumber].score
 }
 

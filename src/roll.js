@@ -5,9 +5,9 @@ function Roll() {
 }
 
 Roll.prototype.bowl = function(maxvalue) {
-     this.score = this.randomNumberGenerator(maxvalue)
+      this.score = this.randomNumberGenerator(maxvalue)
 };
 
 Roll.prototype.randomNumberGenerator = function(maxvalue) {
-  Math.floor(Math.random() * (maxvalue))
+  return Math.floor(Math.random() * (maxvalue))
 }

@@ -10,6 +10,10 @@ describe('Roll features', function() {
     roll.bowl(10);
     expect(roll.score).toBe(10);
   });
+  it('bowl function gives a random number', function() {
+    roll.bowl(10);
+    expect(roll.score).toBeLessThan(11);
+  });
 
 
 })

@@ -79,3 +79,18 @@ describe('Game with 10th frame bonus', function() {
     expect(function() { game.bowl(0) }).toThrow(new Error('Cannot bowl - game is complete'));
   });
 });
+
+describe('Perfect game', function() {
+  var game;
+
+  beforeEach(function() {
+    game = new Game();
+  });
+
+  it('Has a final score of 300, knows it is finished', function() {
+    for(var i = 0; i < 12; i++) { game.bowl(10) };
+    game.calculateScore();
+    expect(game.currentScore()).toEqual(300);
+    expect(function() { game.bowl(0) }).toThrow(new Error('Cannot bowl - game is complete'));
+  });
+});

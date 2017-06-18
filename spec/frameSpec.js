@@ -34,7 +34,4 @@ describe('Frame', function(){
     frame.roll();
     expect(frame.result.length).toBe(2);
   });
-  it('can return the result at the end of the frame', function(){
-    expect(frame.getFrameResult).not.toBe(null)
-  })
 });

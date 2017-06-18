@@ -5,6 +5,7 @@ var Frame = function(){
   this.score = 0;
   this.MAXSCORE = 10;
   this.result = [];
+  this.frameScore = 0;
 }
 
 Frame.prototype.roll = function(){
@@ -21,7 +22,11 @@ Frame.prototype.roll = function(){
 Frame.prototype.getFrameResult = function(){
   this.roll();
   this.roll();
-  return this.result;
+  return this.frameScore.push(this.frameResult(this.result));
+}
+
+Frame.prototype.frameResult = function(arr){
+  arr.reduce((x, y) => x + y);
 }
 
 Frame.prototype.frameStatus = function(){
@@ -32,6 +37,12 @@ Frame.prototype.frameStatus = function(){
   } else if (this.rollCount >= 3) {
     throw ('Only two rolls allowed!');}
 }
-// Frame.prototype.lastFrame = function(){
-//
-// }
+
+Frame.prototype.lastFrame = function(){
+  this.getFrameResult();
+  if (this.result == 10) {
+    this.score += Math.floor(Math.random() * (this.MAXSCORE)+1);
+  }
+  this.result.push(this.score);
+  this.rollCount ++;
+}

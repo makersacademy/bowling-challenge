@@ -4,6 +4,8 @@ var Bowling = function () {
   this.score = STARTING_TOTAL; // remains unused; did you mean "totalScore"?
   this.firstScore = 0;
   this.secondScore = 0;
+  this.totalCurrentFrameScore = 0;
+  this.rolls = [];
 };
 
 function randomInt(maxNum) {
@@ -17,6 +19,7 @@ var rollTwo = randomInt(maxRoll - rollOne)
 
 
 Bowling.prototype.firstRoll = function () {
+  this.score
   this.firstScore = rollOne
   return this.firstScore;
 };
@@ -27,34 +30,24 @@ Bowling.prototype.secondRoll = function () {
 
 };
 
+Bowling.prototype.totalScore = function () {
+  this.totalCurrentFrameScore = this.firstScore + this.secondScore
+  return this.totalCurrentFrameScore;
+};
+
+
 Bowling.prototype.frameScore = function () {
-  this.totalScore = this.firstScore + this.secondScore
-  return this.totalScore;
+
+  this.rolls.push(this.firstScore, this.secondScore);
+  return this.rolls;
 };
 
 
 
 
-// var Bowling = function () {
-//   var STARTING_TOTAL = 0;
-//   this.score = STARTING_TOTAL; // remains unused; did you mean "totalScore"?
-//   this.firstScore = 0;
-//   this.secondScore = 0;
-// };
+// var numbers = [2, 5, 8];
+// var numbersSum = 0;
 //
-// Bowling.prototype.firstRoll = function () {
-//   this.firstScore = Math.floor(Math.random() * 11);
-//   return this.firstScore;
-// };
-//
-// Bowling.prototype.secondRoll = function () {
-//   var firstRollScore = this.firstScore
-//   this.secondScore = Math.floor(Math.random() * (11 - firstRollScore))
-//   return this.secondScore;
-//
-// };
-//
-// Bowling.prototype.frameScore = function () {
-//   this.totalScore = this.firstScore + this.secondScore
-//   return this.totalScore;
-// };
+// for (var i = 0; i < numbers.length; i++) {
+//   numbersSum += numbers[i]
+// }

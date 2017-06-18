@@ -24,16 +24,17 @@ describe ('Bowling', function() {
     });
   });
   //
-  describe('#frameScore', function() {
+  describe('#totalScore', function() {
     it('returns players total score for one frame', function() {
-      expect(bowling.frameScore()).toBeLessThan(11);
+      expect(bowling.totalScore()).toBeLessThan(11);
     });
   });
-  //
-  // describe('#strikeScore', function() {
-  //   it('shows a player has scored a strike', function() {
-  //     expect(bowling.strikeScore()).toEqual(10)
-  //   });
+
+  // it('Allows a gutter game', function() {
+  //   for (var i = 0; i < 20; i++)
+  //   bowling.firstRoll(0);
+  //   bowling.secondRoll(0);
+  //   expect(bowling.totalScore).toEqual(0);
   // });
 
-  });
+});

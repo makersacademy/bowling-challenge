@@ -1,4 +1,18 @@
- var BowlingGame = function(){
+$(document).ready(function(){
+  game = new Game();
+  var firstRoll;
+  var runScore;
+  pinHit = function(pins){
+    if(isRollValid(pins) == false){
+      return;
+    }
+    isGameOver();
+    game.roll(pins);
+    frameScore();
+    totalScore();
+  };
+  
+var BowlingGame = function(){
   this.rolls = [];
 };
 

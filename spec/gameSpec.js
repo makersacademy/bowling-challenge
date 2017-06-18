@@ -46,17 +46,16 @@ describe ('Game', function() {
     });
   });
 
-  // describe('score', function(){
-  //   it('When strike, the score is 10 plus bonus from the next 2 rolls', function(){
-  //     game.add_frame(frame1);
-  //     frame1.add_roll(3);
-  //     frame1.add_roll(7);
-  //     game.add_frame(frame2);
-  //     frame2.add_roll(2);
-  //     frame2.add_roll(3);
-  //     expect(game.finalScore()).toEqual(20);
-  //   });
-  // });
+  describe('score', function(){
+    it('When strike, the score is 10 plus bonus from the next 2 rolls', function(){
+      game.add_frame(frame1);
+      frame1.add_roll(10);
+      game.add_frame(frame2);
+      frame2.add_roll(2);
+      frame2.add_roll(3);
+      expect(game.finalScore()).toEqual(20);
+    });
+  });
 
 
   //

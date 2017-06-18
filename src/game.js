@@ -16,10 +16,10 @@ var Game = function() {
    frames.forEach(function(frame, index){
      score += frame.score_no_bonus();
      score += game.calculateSpareBonus(index);
+     score += game.calculateStrikeBonus(index);
    });
    return score;
  };
-
 
   Game.prototype.calculateSpareBonus = function(index){
     var frame = this.frames[index];
@@ -33,6 +33,23 @@ var Game = function() {
     }
     return 0;
   };
+
+  Game.prototype.calculateStrikeBonus = function(index){
+    var frame = this.frames[index];
+    var next_index = index + 1;
+    if(frame.is_strike()){
+      if(next_index < this.frames.length){
+        return (this.frames[next_index].rolls[0] + this.frames[next_index].rolls[1]);
+      }else{
+        return frame.rolls[2];
+      }
+    }
+    return 0;
+  };
+
+
+
+
 
 
  }

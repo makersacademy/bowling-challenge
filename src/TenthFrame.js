@@ -8,6 +8,7 @@ var TenthFrame = function() {
 }
 
 TenthFrame.prototype.bowl = function(pinsAmount) {
+  if(this.isComplete()) throw(new Error('Cannot bowl - this frame is complete'))
   this._bowls[this._currentBowl] = pinsAmount;
   this._currentBowl ++;
   this._score += pinsAmount;

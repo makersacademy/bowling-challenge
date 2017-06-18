@@ -1,27 +1,44 @@
-"use strict";
+'use strict';
+// Frame is responsible for knocking down up to 10 pins
 
-// The Frame is responsible for bowling in turns
-
-function Frame() {
-  this.pins = [0,0];
-  this.isFirstBall = true;
+var Frame = function() {
+  this.remainingPins = 10
+  this.currentScore = 0
+  this.ball = 0
+  this.over = false;
 }
 
-Frame.prototype.bowl = function(){
-  if (this.isFirstBall) {
-    this.pins[0] = this.knockDownPins(10);
-  } else {
-    this.pins[1] = this.knockDownPins(10 - this.pins[0]);
+Frame.prototype.bowl = function() {
+  if ( this.ball === 1 ) {
+    this.over = true;
   }
-  this.secondBall();
+  var score = this.pinsKnockedDown(this.remainingPins);
+  this._updateFrame(score);
+  this._isStrike(score);
+  this._isSpare(score);
+  return score;
 }
 
-Frame.prototype.secondBall = function(){
-  this.isFirstBall ? (this.isFirstBall = false) : (this.isFirstBall = true)
+Frame.prototype.pinsKnockedDown = function(remainingPins) {
+  return Math.floor((Math.random() * remainingPins) + 1);
 }
 
-Frame.prototype.knockDownPins = function(max){
-  var min = Math.ceil(0);
-  max = Math.floor(max + 1);
-  return Math.floor(Math.random() * (max - min)) + min;
+Frame.prototype._updateFrame = function(score) {
+  this.currentScore += score;
+  this.remainingPins = 10 - score;
+  this.ball += 1;
+}
+
+Frame.prototype._isStrike = function(score){
+  if ( this.currentScore === 10 && this.ball === 1) {
+    this.over = true;
+    alert('Strike!')
+  }
+}
+
+Frame.prototype._isSpare = function(score){
+  if ( this.currentScore === 10 && this.ball === 2 ){
+    this.over = true;
+    alert('Spare!')
+  }
 }

@@ -4,44 +4,42 @@ describe('Frame', function(){
   var frame;
 
   beforeEach(function(){
-    frame = new Frame();
+    frame = new Frame
   });
 
-  describe('turns', function(){
-    it('starts on the first ball', function(){
-      expect(frame.isFirstBall).toEqual(true);
-    })
-
-    it("splits one frame into two balls", function(){
-      expect(frame.isFirstBall).toEqual(true);
-      frame.bowl();
-      expect(frame.isFirstBall).toEqual(false);
-      frame.bowl();
-      expect(frame.isFirstBall).toEqual(true);
-    });
+  it('can knock down pins', function(){
+    expect(frame.bowl()).toBeLessThan(11);
   });
 
-  describe('pins', function(){
-    it('starts with a frame of zero pins knocked down', function(){
-      expect(frame.pins).toEqual([0,0]);
-    });
-
-    it('adds the first ball pins to the frame total', function(){
-      frame.pins = [null, 0]
-      frame.bowl();
-      expect(frame.pins[0]).not.toEqual(null)
-      expect(frame.pins[0] + frame.pins[1]).toBeLessThan(11);
-    });
-
-    it('adds the second ball pins to the frame total', function(){
-      frame.pins = [4, 0]
-      frame.isFirstBall = false;
-      spyOn(frame, "knockDownPins").and.returnValue(2);
-      frame.bowl();
-      expect(frame.pins[0] + frame.pins[1]).toEqual(6);
-    });
+  it('can knock down the remaining pins', function(){
+    spyOn(frame, 'pinsKnockedDown').and.returnValue(4);
+    expect(frame.bowl()).toBeLessThan(5);
   });
 
+  it('increments the score', function(){
+    spyOn(frame, 'pinsKnockedDown').and.returnValue(4);
+    frame.bowl();
+    frame.bowl();
+    expect(frame.currentScore).toEqual(8);
+  });
 
+  it('plays only two balls per frame', function(){
+    frame.bowl();
+    expect(frame.ball).toEqual(1)
+    frame.bowl();
+    expect(frame.over).toEqual(true);
+  });
 
+  it('knows when the player bowled a strike', function(){
+    spyOn(frame, 'pinsKnockedDown').and.returnValue(10);
+    frame.bowl();
+    expect(frame.over).toEqual(true);
+  });
+
+  it('knows when the player bowled a spare', function(){
+    spyOn(frame, 'pinsKnockedDown').and.returnValue(5);
+    frame.bowl();
+    frame.bowl();
+    expect(frame.over).toEqual(true);
+  });
 });

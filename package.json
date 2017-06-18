@@ -8,9 +8,10 @@
   "devDependencies": {
     "jasmine-core": "*",
     "karma": "^1.7.0",
-    "karma-coverage": "^0.1.5",
+    "karma-cli": "^1.0.1",
+    "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.0",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "nyc": "^11.0.2"
+    "karma-jasmine-jquery": "^0.1.1",
+    "karma-phantomjs-launcher": "^1.0.4"
   }
 }

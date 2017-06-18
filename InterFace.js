@@ -11,12 +11,19 @@ $(document).ready(function() {
 	
 	function updateScore(score) {
 		score.checkAdditionalPoints();
-		$('#points').text(score.points);
+		//$('#points').text(score.points);
 		//score.convertFrames();
 
 			if(bowling.isFullFrame) {
-				$('#frames').append("<p> [" +  score.scoreBoard[score.scoreBoard.length - 1] + "] </p>")
+			$('#frames').text('')
+			$('#points').text('')
+				score.scoreBoard.forEach(function(frame, i) {
+					$('#frames').append("<p> [" + frame + "] </br>" + score.points[i]+ "</p>") 
+				});
 			};
+			/*			
+						"<p> [" +  score.scoreBoard[score.scoreBoard.length - 1] + "] </br> " + score.points[score.points.length - 1] + " </p>")
+			*/
 	};
 
 });

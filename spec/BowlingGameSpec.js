@@ -8,12 +8,10 @@ describe('BowlingGame', function () {
     bowlingGame = new BowlingGame();
     frame = new Frame();
     nextFrame = new Frame();
-
-
   });
 
   it('can add a frame to the game', function () {
-    bowlingGame.addFrame();
+    bowlingGame.addFrame(frame);
     expect(bowlingGame.getFramesNum()).toEqual(1);
   });
 

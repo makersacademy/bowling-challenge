@@ -11,7 +11,9 @@ BowlingGame.prototype.getFramesNum = function () {
 
 BowlingGame.prototype.addFrame = function (frame) {
   // we can have 1, 2 throws per frame, and 3 throws if last frame and previous frame was a strike.
-  this._frames.push(frame);
+  if (!frame.isLastFrame) {
+    this._frames.push(frame);
+  }
 };
 
 BowlingGame.prototype.getTotalScore = function () {

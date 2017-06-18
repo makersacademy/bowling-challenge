@@ -4,7 +4,10 @@ function Frame() {
 
   this.MAX_PINS = 10;
   this.MAX_FRAME_SCORE = 30;
+
   this.frame = [];
+  this.isLastFrame = false;
+  this.remainingPins = this.MAX_PINS;
 }
 
 Frame.prototype.getFrameSize = function () {
@@ -12,7 +15,11 @@ Frame.prototype.getFrameSize = function () {
 };
 
 Frame.prototype.addBall = function (ball) {
-  this.frame.push(ball);
+  if (this.remainingPins) {
+    ball.roll(this.remainingPins);
+    this.remainingPins -= ball.getThrow();
+    this.frame.push(ball);
+  }
 };
 
 Frame.prototype.getFrameTotalScore = function (nextFrame, nextOneMoreFrame) {

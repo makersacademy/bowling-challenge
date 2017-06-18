@@ -8,6 +8,7 @@ describe('Frame', function () {
     frame = new Frame();
     nextFrame = new Frame();
     extraFrame = new Frame();
+    
     firstBall = new Ball();
     secondBall = new Ball();
     ball = new Ball();

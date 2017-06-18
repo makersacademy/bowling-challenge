@@ -24,6 +24,11 @@ describe('TenthFrame', function() {
     it('Updates the second bowl', function() {
       for(var i = 0; i < 2; i++) { tenthframe.bowl(5) };
       expect(tenthframe._bowls).toEqual([5, 5, null]);
-    })
+    });
+
+    it('Throws an error if trying to bowl a third time without knocking down all pins', function() {
+      for(var i = 0; i < 2; i++) {tenthframe.bowl(4) };
+      expect(function() { tenthframe.bowl(2) }).toThrow(new Error('Cannot bowl - this frame is complete'));
+    });
   });
 });

@@ -1,12 +1,13 @@
-#total_score {
+input#total-score {
   border-width: medium;
-  border-style: dotted;
+  border-style: groove;
 }
 
 input {
     text-align: center;
     font-weight: bold;
     font-size: 15px;
+    color: darkred;
 }
 
 table {

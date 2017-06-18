@@ -23,7 +23,7 @@ describe('Game', function(){
   });
 
   it('only plays 10 frames', function(){
-    for ( i = 0; i < 200; i++ ) {
+    for ( var i = 0; i < 200; i++ ) {
       game.recordScore(4);
     }
     expect(game.totalScore()).toEqual(80);

@@ -5,7 +5,7 @@ function Frame(number) {
   this.frameTotal = null;
   this.strike = null;
   this.spare = null;
-  this.finished = null;
+  this.finished = false;
 }
 
 Frame.prototype.getFirstScore = function () {
@@ -21,10 +21,11 @@ Frame.prototype.getTotalFrameScore = function () {
 };
 
 Frame.prototype.addFirstScore = function (number) {
-  this.firstScore = number
-  this.frameTotal += this.firstScore
-  this._isStrike();
-  this._isComplete();
+  if (this.firstScore === null)
+    this.firstScore = number
+    this.frameTotal += this.firstScore
+    this._isStrike();
+    this._isComplete();
 };
 
 Frame.prototype.addSecondScore = function (number) {
@@ -37,11 +38,11 @@ Frame.prototype.addSecondScore = function (number) {
 
 Frame.prototype._isStrike = function () {
   if (this.firstScore === 10)
-    this.strike = true
+    this.strike = true;
 };
 
 Frame.prototype._isSpare = function () {
-  if (this.frameTotal === 10)
+  if (this.firstScore != 10 && this.frameTotal === 10)
     this.spare = true
 };
 

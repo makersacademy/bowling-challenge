@@ -16,4 +16,11 @@ describe('Frame', function(){
     frame.calculateScore()
     expect(frame.isStrike).toEqual(true)
   })
+
+  it('accounts for Spare', function(){
+    var frame = new Frame([8,2])
+    frame.calculateScore()
+    expect(frame.isSpare).toEqual(true)
+  })
+
 })

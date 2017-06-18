@@ -18,7 +18,12 @@ describe('TenthFrame', function() {
 
     it('Updates the first bowl', function() {
       tenthframe.bowl(5);
-      expect(tenthframe._bowls).toEqual([5, null, null])
+      expect(tenthframe._bowls).toEqual([5, null, null]);
     });
+
+    it('Updates the second bowl', function() {
+      for(var i = 0; i < 2; i++) { tenthframe.bowl(5) };
+      expect(tenthframe._bowls).toEqual([5, 5, null]);
+    })
   });
 });

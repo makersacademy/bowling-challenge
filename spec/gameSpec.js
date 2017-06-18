@@ -30,20 +30,20 @@ describe('Game', function(){
     expect(game.over).toEqual(true);
   });
 
-  describe('Bowling strikes', function(){
+  describe('Bowling spares', function(){
 
     beforeEach(function(){
       expect(game.totalScore()).toEqual(12);
       game.recordScore(10);
     });
 
-    it('knows when the player bowled a strike', function(){
+    it('knows when the player bowled a spare', function(){
       game.recordScore(10);
-      expect(game.isStrike).toEqual(true);
+      expect(game.isSpare).toEqual(true);
     });
 
-    it('adds a bonus for a strike', function(){
-      game.isStrike = true;
+    it('adds a bonus for a spare', function(){
+      game.isSpare= true;
       game.recordScore(5);
       expect(game.totalScore()).toEqual(32);
     });

@@ -4,15 +4,15 @@
 var Game = function() {
   this.score = [];
   this.over = false;
-  this.isStrike = false;
+  this.isSpare = false;
 }
 
 Game.prototype.recordScore = function(pins){
-  if (this.isStrike) {
+  if (this.isSpare) {
     this.score.push(pins)
   }
   this.checkOver(pins)
-  this.recordStrike();
+  this.recordSpare();
 }
 
 Game.prototype.totalScore = function(){
@@ -28,8 +28,8 @@ Game.prototype.isFrame = function(){
   return parseInt(length.toFixed());
 }
 
-Game.prototype.recordStrike = function(score){
-  this.score[this.score.length - 1] === 10 ? this.isStrike = true : this.isStrike = false;
+Game.prototype.recordSpare = function(score){
+  this.score[this.score.length - 1] === 10 ? this.isSpare = true : this.isSpare = false;
 }
 
 Game.prototype.checkOver = function(pins) {

@@ -7,5 +7,5 @@ var Game = function(){
 
 Game.prototype.addFrame = function(){
   var frame = new Frame();
-  return this.frameCount += 1;
+  return this.frameCount ++;
 };

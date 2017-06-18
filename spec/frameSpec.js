@@ -6,4 +6,8 @@ describe('Frame', function(){
   it('starts a frame with a roll count of 0', function(){
     expect(frame.rollCount).toEqual(0);
   });
+  it('can roll and knock down a random number of pins less than 10', function(){
+    frame.roll();
+    expect(frame.score).toBeLessThan(10);
+  });
 });

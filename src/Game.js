@@ -20,3 +20,7 @@ Game.prototype.totalScore = function() {
 Game.prototype.framesPlayed = function(){
   return this._frames.length
 }
+
+Game.prototype.framesLeft = function() {
+  return this._MAX_FRAMES - this.framesPlayed()
+}

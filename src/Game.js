@@ -39,9 +39,14 @@ Game.prototype.strikeBonus = function() {
   var pins = this.stored_pins;
   var bonus = 0;
 
-  for(var index = 0; index < pins.length; index+=1) {
+  var index = 0;
+  for(var frame = 0; frame < 10; frame+=1) {
+
     if(pins[index] === 10) {
       bonus += (pins[index + 1] + pins[index + 2]);
+      index += 1;
+    } else {
+      index += 2;
     }
   }
   return bonus;
@@ -74,7 +79,7 @@ Game.prototype.tenthFrameBonus = function() {
   return bonus;
 };
 
-// TODO add in a display object for console log messages
+
 Game.prototype.strikeMessage = function() {
   return "Congratulations you got a strike! Move on to the next frame";
 };

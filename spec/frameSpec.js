@@ -27,20 +27,19 @@ describe('Frame', function(){
     frame.bowl();
     expect(frame.ball).toEqual(1)
     frame.bowl();
-    expect(frame.bowl()).toEqual(0);
     expect(frame.over).toEqual(true);
   });
 
   it('knows when the player bowled a strike', function(){
     spyOn(frame, 'pinsKnockedDown').and.returnValue(10);
     frame.bowl();
-    expect(frame.isStrike).toEqual(true);
+    expect(frame.over).toEqual(true);
   });
 
   it('knows when the player bowled a spare', function(){
     spyOn(frame, 'pinsKnockedDown').and.returnValue(5);
     frame.bowl();
     frame.bowl();
-    expect(frame.isSpare).toEqual(true);
+    expect(frame.over).toEqual(true);
   });
 });

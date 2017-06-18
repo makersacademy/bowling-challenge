@@ -5,21 +5,17 @@ var Frame = function() {
   this.remainingPins = 10
   this.currentScore = 0
   this.ball = 0
-  this.isStrike = false;
-  this.isSpare = false;
   this.over = false;
 }
 
 Frame.prototype.bowl = function() {
-  if ( this.ball < 2 && this.isStrike === false) {
-    var score = this.pinsKnockedDown(this.remainingPins);
-    this._updateFrame(score);
-    this._isStrike(score);
-    this._isSpare(score);
-  } else {
+  if ( this.ball === 1 ) {
     this.over = true;
-    score = 0
   }
+  var score = this.pinsKnockedDown(this.remainingPins);
+  this._updateFrame(score);
+  this._isStrike(score);
+  this._isSpare(score);
   return score;
 }
 
@@ -34,15 +30,15 @@ Frame.prototype._updateFrame = function(score) {
 }
 
 Frame.prototype._isStrike = function(score){
-  if ( score === 10 ) {
-    this.isStrike = true;
+  if ( this.currentScore === 10 && this.ball === 1) {
+    this.over = true;
     alert('Strike!')
   }
 }
 
 Frame.prototype._isSpare = function(score){
-  if ( this.currentScore === 10 && this.isStrike === false ){
-    this.isSpare = true;
+  if ( this.currentScore === 10 && this.ball === 2 ){
+    this.over = true;
     alert('Spare!')
   }
 }

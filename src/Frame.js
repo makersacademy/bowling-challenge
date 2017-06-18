@@ -6,7 +6,7 @@ function Frame() {
   this.MAX_FRAME_SCORE = 30;
 
   this.frame = [];
-  this.isLastFrame = false;
+  this.isLastFrameWithBonus = false;
   this.remainingPins = this.MAX_PINS;
 }
 
@@ -15,6 +15,10 @@ Frame.prototype.getFrameSize = function () {
 };
 
 Frame.prototype.addBall = function (ball) {
+  if (this.isLastFrameWithBonus) {
+    this.remainingPins = this.MAX_PINS;
+  }
+
   if (this.remainingPins) {
     ball.roll(this.remainingPins);
     this.remainingPins -= ball.getThrow();

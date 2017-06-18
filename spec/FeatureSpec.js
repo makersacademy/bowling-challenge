@@ -7,6 +7,7 @@ describe('Feature test', function () {
     beforeEach(function () {
       bowlingGame = new BowlingGame();
       frame = new Frame();
+      lastFrame = new Frame();
       firstBall = new Ball();
       secondBall = new Ball();
       ball = new Ball();
@@ -26,20 +27,43 @@ describe('Feature test', function () {
         expect(bowlingGame.getTotalScore()).toEqual(90);
       });
 
+      it('calculates a game with spares', function () {
+        spyOn(firstBall, "getThrow").and.returnValue(5);
+        spyOn(secondBall, "getThrow").and.returnValue(5);
+        spyOn(ball, "getThrow").and.returnValue(5);
+        generateGameFrames(frame, lastFrame);
+        expect(bowlingGame.getTotalScore()).toEqual(150);
+      });
+
+      it('calculates a game with strikes', function () {
+        spyOn(firstBall, "getThrow").and.returnValue(10);
+        spyOn(ball, "getThrow").and.returnValue(10);
+        generateGameFrames(frame, lastFrame);
+        console.log('inside feature strikes', bowlingGame.getFramesNum());
+        expect(bowlingGame.getTotalScore()).toEqual(300);
+      });
 
     });
 
-    function generateGameFrames(frame, lastFrame) {
+    function generateGameFrames(frame, lastF) {
+
       for(var i = 0; i < 9; i++) {
         frame.addBall(firstBall);
         frame.addBall(secondBall);
         bowlingGame.addFrame(frame);
       }
 
-      if (lastFrame !== undefined) {
-        bowlingGame.addFrame(lastFrame);
+      if (lastF) {
+        lastF.isLastFrameWithBonus = true;
+        lastF.addBall(firstBall);
+        lastF.addBall(ball);
+        lastF.addBall(ball);
+        bowlingGame.addFrame(lastF);
+        console.log('inside lastF,', lastF.getFrameSize(), lastF.getFrameTotalScore(), bowlingGame.getFramesNum());
       }
       else {
+        frame.addBall(firstBall);
+        frame.addBall(secondBall);
         bowlingGame.addFrame(frame);
       }
     }

@@ -12,7 +12,7 @@ describe('BowlingGame', function () {
 
   it('can add a frame to the game', function () {
     bowlingGame.addFrame(frame);
-    expect(bowlingGame.getFramesNum()).toEqual(1);
+    expect(bowlingGame.getNumOfFrames()).toEqual(1);
   });
 
   it('can calculate total score for the game', function () {

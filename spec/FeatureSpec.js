@@ -32,15 +32,15 @@ describe('Feature test', function () {
         spyOn(secondBall, "getThrow").and.returnValue(5);
         spyOn(ball, "getThrow").and.returnValue(5);
         generateGameFrames(frame, lastFrame);
-        expect(bowlingGame.getTotalScore()).toEqual(150);
+        expect(bowlingGame.getTotalScore()).toEqual(frame.MAX_FRAME_SCORE * 5);
       });
 
       it('calculates a game with strikes', function () {
         spyOn(firstBall, "getThrow").and.returnValue(10);
         spyOn(ball, "getThrow").and.returnValue(10);
         generateGameFrames(frame, lastFrame);
-        console.log('inside feature strikes', bowlingGame.getFramesNum());
-        expect(bowlingGame.getTotalScore()).toEqual(300);
+        console.log('inside feature strikes', bowlingGame.getNumOfFrames());
+        expect(bowlingGame.getTotalScore()).toEqual(frame.MAX_FRAME_SCORE * 10);
       });
 
     });
@@ -59,7 +59,7 @@ describe('Feature test', function () {
         lastF.addBall(ball);
         lastF.addBall(ball);
         bowlingGame.addFrame(lastF);
-        console.log('inside lastF,', lastF.getFrameSize(), lastF.getFrameTotalScore(), bowlingGame.getFramesNum());
+        console.log('inside lastF,', lastF.getFrameSize(), lastF.getFrameTotalScore(), bowlingGame.getNumOfFrames());
       }
       else {
         frame.addBall(firstBall);

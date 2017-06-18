@@ -11,7 +11,11 @@ Game.prototype.frames = function() {
 };
 
 Game.prototype.addNewFrame = function() {
-  if(this._frames.length < 10) this._frames.push(new Frame);
+  if(this._frames.length < 9) {
+    this._frames.push(new Frame);
+  } else if(this._frames.length === 9) {
+    this._frames.push(new TenthFrame);
+  };
   this._currentFrame = this._frames.length - 1;
 };
 

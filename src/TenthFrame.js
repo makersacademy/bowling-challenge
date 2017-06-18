@@ -21,3 +21,7 @@ TenthFrame.prototype.isComplete = function() {
   if(this._currentBowl < 3 && (this._score === 10 || this._score === 20)) return false;
   return true;
 }
+
+TenthFrame.prototype.score = function() {
+  return this._score;
+}

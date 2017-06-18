@@ -18,7 +18,11 @@ Game.prototype.rolls = function(pins) {
 };
 
 Game.prototype.totalScore = function() {
-   return this.normalScore() + this.strikeBonus() + this.spareBonus();
+   var normal = this.normalScore();
+  var strike = this.strikeBonus();
+  var bonus = this.spareBonus();
+  var tenth = this.tenthFrameBonus();
+  return normal + strike + bonus + tenth;
 };
 
 Game.prototype.normalScore = function() {
@@ -46,9 +50,25 @@ Game.prototype.strikeBonus = function() {
 Game.prototype.spareBonus = function() {
   var pins = this.stored_pins;
   var bonus = 0;
+
   for(var index = 0; index < pins.length; index+=2) {
     if(pins[index] + pins[index + 1] == 10) {
       bonus += pins[index + 2];
+    }
+  }
+  return bonus;
+};
+
+Game.prototype.tenthFrameBonus = function() {
+  var pins = this.stored_pins;
+  var bonus = 0;
+  var finalFrame = pins.slice(pins.length - 3,pins.length);
+
+  for(var index = 0; index <finalFrame.length; index+=2) {
+    if(finalFrame[index] === 10 && finalFrame[index + 1] === 10 && finalFrame[index +2] === 10) {
+      bonus += (finalFrame[index + 1] + finalFrame[index + 2]);
+    } else if(finalFrame[index] + finalFrame[index + 1] === 10) {
+      bonus += (finalFrame[index + 2]);
     }
   }
   return bonus;

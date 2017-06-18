@@ -58,7 +58,7 @@ describe('Game', function() {
     expect(game.totalScore()).toEqual(46);
   });
 
-  it("gives bonus points of 21 for two strikes", function() {
+  it("gives bonus points for multiple strikes", function() {
     game.rolls(10);
     game.rolls(10);
     game.rolls(5);
@@ -66,10 +66,24 @@ describe('Game', function() {
     expect(game.strikeBonus()).toEqual(21);
   });
 
-  it("gives a score of 300 for a perfect game", function() {
-    repeatedRolls(10, 11);
+  it("gives bonus points for 10th frame strike", function() {
+    repeatedRolls(10, 12);
+    expect(game.tenthFrameBonus()).toEqual(20);
+  });
+
+  it("gives the total score for a perfect game", function() {
+    repeatedRolls(10, 12);
     expect(game.totalScore()).toEqual(300);
   });
+
+  it("gives bonus points for 10th frame spare", function() {
+    repeatedRolls(0, 18);
+    game.rolls(9);
+    game.rolls(1);
+    game.rolls(4);
+    expect(game.tenthFrameBonus()).toEqual(4);
+  });
+
 
   it("displays a congratulations message for a strike", function(){
     game.rolls(10);

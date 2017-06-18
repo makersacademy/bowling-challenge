@@ -1,12 +1,12 @@
 p {
 	color: red;
 	float: left;
+	border-style: double;
 }
 
 #box {
 	position: absolute;
 	margin-top: 50px;
-	border-style: double;
 }
 
 #points {
@@ -17,4 +17,15 @@ p {
 #throw {
 	position: absolute;
 	margin-left: 800px;
+}
+
+#total-box {
+	position: absolute;
+	margin-left: 820px;
+	margin-top: 100px;
+}
+
+#total-points {
+	position: relative;
+	margin-top: -30px;
 }

@@ -3,6 +3,7 @@ function Score(frameNumbers) {
 	this.scoreBoard = frameNumbers; 
 	this.points = [];
 	this.scoreSymbols = frameNumbers;
+	this.total = 0;
 
 	for(var i=0; i<frameNumbers.length; i++) {
 		this.points[i] = this.scoreBoard[i][0] + this.scoreBoard[i][1];
@@ -51,6 +52,13 @@ function Score(frameNumbers) {
 	this.addSpare = function(board, frame) {
 		this.points[frame] += board[frame + 1][0]
 	};
+
+	this.calculateTotal = function() {
+		for(var i=0; i < frameNumbers.length- 1; i++) {
+			this.total += this.points[i];	
+		};
+			console.log(this.total)
+	}
 
 	this.convertFrames = function() {
 		for(var i = 0; i < gameSize - 1; i++) {

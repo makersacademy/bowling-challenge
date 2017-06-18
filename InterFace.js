@@ -5,8 +5,10 @@ $(document).ready(function() {
 	$('#roll').click(function() {
 		bowling.roll();
 		var score = new Score(bowling.framesNumbers)
+		
 		$('#throw').text("You threw: " + bowling.rollPoints);
-			updateScore(score);
+		updateScore(score);
+		calculateTotal(score);
 	});
 	
 	function updateScore(score) {
@@ -21,12 +23,12 @@ $(document).ready(function() {
 					$('#frames').append("<p> [" + frame + "] </br>" + score.points[i]+ "</p>") 
 				});
 			};
-			/*			
-						"<p> [" +  score.scoreBoard[score.scoreBoard.length - 1] + "] </br> " + score.points[score.points.length - 1] + " </p>")
-			*/
 	};
 
+	function calculateTotal(score) {
+		score.calculateTotal();
+		$('#total-points').text(score.total);
+	};
 });
-
 
 

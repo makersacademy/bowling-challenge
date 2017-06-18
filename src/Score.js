@@ -54,6 +54,7 @@ function Score(frameNumbers) {
 
 	this.convertFrames = function() {
 		for(var i = 0; i < gameSize - 1; i++) {
+			console.log(this.scoreBoard[i][0])
 			if(this.scoreSymbols[i][0] === 10) {
 				console.log(this.scoreSymbols[i])
 				this.scoreSymbols[i] = ['X','-'];
@@ -65,9 +66,9 @@ function Score(frameNumbers) {
 var numbers = [[5,2],[10,0],[2,4],[4,6],[2,4],[0,0],[10,0],[9,1],[2,0],[0,10,2]];
 score = new Score(numbers);
 
-//console.log(score.scoreBoard);
+console.log(score.scoreBoard);
 score.checkAdditionalPoints();
 console.log("points: " + score.points);
-score.convertFrames();
+//score.convertFrames();
 console.log("final console: " + score.scoreSymbols)
 console.log("numbers: " + score.scoreBoard);

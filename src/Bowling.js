@@ -35,7 +35,9 @@ function Bowling(gamesize = 10) {
 
 		this.rollThree = function() {
 			this.rollPoints = Math.round(Math.random() * 10);
-			this.frame[2] = this.rollPoints;
+			if(this.frame[0] + this.frame[1] === 10) {
+				this.frame[2] = this.rollPoints;
+			};
 			this.isFullFrame = true;
 			alert('Maximum throws reached!')
 		};

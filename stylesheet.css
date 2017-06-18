@@ -1,0 +1,20 @@
+p {
+	color: red;
+	float: left;
+}
+
+#box {
+	position: absolute;
+	margin-top: 50px;
+	border: 2px;
+}
+
+#points {
+/* position: absolute;
+ margin-top: 200px;*/
+}
+
+#throw {
+	position: absolute;
+	margin-left: 800px;
+}

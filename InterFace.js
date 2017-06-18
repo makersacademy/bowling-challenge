@@ -12,10 +12,10 @@ $(document).ready(function() {
 	function updateScore(score) {
 		score.checkAdditionalPoints();
 		$('#points').text(score.points);
-		score.convertFrames();
+		//score.convertFrames();
 
 			if(bowling.isFullFrame) {
-				$('ul').append("[" +  score.scoreSymbols[score.gameSize - 1] + "]")
+				$('#frames').append("<p> [" +  score.scoreBoard[score.scoreBoard.length - 1] + "] </p>")
 			};
 	};
 

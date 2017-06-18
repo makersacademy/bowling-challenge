@@ -13,4 +13,12 @@ describe('TenthFrame', function() {
       expect(tenthframe._bowls).toEqual([null, null, null]);
     });
   });
+
+  describe('bowl', function() {
+
+    it('Updates the first bowl', function() {
+      tenthframe.bowl(5);
+      expect(tenthframe._bowls).toEqual([5, null, null])
+    });
+  });
 });

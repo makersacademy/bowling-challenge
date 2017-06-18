@@ -31,4 +31,17 @@ describe('TenthFrame', function() {
       expect(function() { tenthframe.bowl(2) }).toThrow(new Error('Cannot bowl - this frame is complete'));
     });
   });
+
+  describe('isComplete', function() {
+
+    it('Knows the frame is complete after two bowls totalling less than 10', function() {
+      for(var i = 0; i < 2; i++) {tenthframe.bowl(4) };
+      expect(tenthframe.isComplete()).toEqual(true);
+    });
+
+    it('Leaves the frame open after scoring a spare with the first two bowls', function (){
+      for(var i = 0; i < 2; i++) { tenthframe.bowl(5) };
+      expect(tenthframe.isComplete()).toEqual(false);
+    });
+  });
 });

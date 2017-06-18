@@ -1,6 +1,6 @@
 function Game(){
   this._frames = []
-  this.score = 0;
+  this.score = 0
   this._MAX_FRAMES = 10
   this.active = true
 }

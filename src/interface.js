@@ -2,28 +2,26 @@
 
 $( document ).ready(function(){
 
-  var frame = new Frame();
   var game = new Game();
 
   $('#bowl').on('click', function(){
+    var frame = new Frame();
     var pins = frame.bowl()
-    console.log(pins);
-    console.log(frame.ball);
     recordScore(pins);
     updateScore(pins);
+    updateFrame();
   });
 
-  function updateScore(pins) {
-    if ( frame.ball <= 2 ) {
-      $('#currentScore').text('Your total points: ' + game.totalScore() );
-      $('#score').text('You knocked down ' + pins + ' ' + _pinS(pins) );
-    } else {
-      $('#score').text('Frame Over!');
+  function recordScore(pins) {
+    if (pins === 10) {
+      game.recordScore(0);
     }
+    game.recordScore(pins);
   }
 
-  function recordScore(pins) {
-    game.recordScore(pins);
+  function updateScore(pins) {
+      $('#currentScore').text('Your total points: ' + game.totalScore() );
+      $('#score').text('You knocked down ' + pins + ' ' + _pinS(pins) );
   }
 
   function _pinS(pins) {
@@ -32,6 +30,10 @@ $( document ).ready(function(){
     } else {
       return 'pins'
     }
+  }
+
+  function updateFrame() {
+    $('#currentFrame').text('Frame: ' + game.isFrame() + '  |  ');
   }
 
 });

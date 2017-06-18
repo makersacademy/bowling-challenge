@@ -15,11 +15,11 @@ Frame.prototype.bowl = function() {
     this._updateFrame(score);
     this._isStrike(score);
     this._isSpare(score);
-    return score;
   } else {
     console.log( "Frame over" );
-    return 0
+    score = 0
   }
+  return score;
 }
 
 Frame.prototype.pinsKnockedDown = function(remainingPins) {

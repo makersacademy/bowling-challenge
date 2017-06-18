@@ -16,3 +16,8 @@ Game.prototype.totalScore = function(){
   });
   return totalScore;
 }
+
+Game.prototype.isFrame = function(){
+  var length = this.score.length / 2
+  return parseInt(length.toFixed());
+}

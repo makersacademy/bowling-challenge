@@ -15,4 +15,12 @@ describe('Frame', function(){
     spyOn(frame, 'pinsKnockedDown').and.returnValue(4);
     expect(frame.bowl()).toBeLessThan(5);
   });
+
+  it('increments the score', function(){
+    spyOn(frame, 'pinsKnockedDown').and.returnValue(4);
+    frame.bowl();
+    frame.bowl();
+    expect(frame.currentScore).toEqual(8);
+  });
+
 });

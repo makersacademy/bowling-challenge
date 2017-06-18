@@ -10,14 +10,16 @@ $( document ).ready(function(){
 
   function updateScore() {
     var pins = frame.bowl()
-    function pinS() {
-      if (pins === 1) {
-        return 'pin'
-      } else {
-        return 'pins'
-      }
+    $('#score').text('You knocked down ' + pins + ' ' + _pinS(pins) );
+    $('#currentScore').text('Your total points: ' + frame.currentScore );
+  }
+
+  function _pinS(pins) {
+    if (pins === 1) {
+      return 'pin'
+    } else {
+      return 'pins'
     }
-    $('#currentScore').text('You knocked down ' + pins + ' ' + pinS() );
   }
 
 });

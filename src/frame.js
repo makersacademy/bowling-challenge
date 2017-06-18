@@ -3,10 +3,13 @@
 
 var Frame = function() {
   this.remainingPins = 10
+  this.currentScore = 0
 }
 
 Frame.prototype.bowl = function() {
-  return this.pinsKnockedDown(this.remainingPins);
+  var score = this.pinsKnockedDown(this.remainingPins);
+  this.currentScore += score
+  return score
 }
 
 Frame.prototype.pinsKnockedDown = function(pinsRemaining) {

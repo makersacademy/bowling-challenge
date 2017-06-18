@@ -14,11 +14,11 @@ Game.prototype.rolls = function(pins) {
   if (pins === 10) {
     this.strikeMessage();
   }
-    return this.stored_pins.push(pins);
+  return this.stored_pins.push(pins);
 };
 
 Game.prototype.totalScore = function() {
-   var normal = this.normalScore();
+  var normal = this.normalScore();
   var strike = this.strikeBonus();
   var bonus = this.spareBonus();
   var tenth = this.tenthFrameBonus();
@@ -78,7 +78,6 @@ Game.prototype.tenthFrameBonus = function() {
   }
   return bonus;
 };
-
 
 Game.prototype.strikeMessage = function() {
   return "Congratulations you got a strike! Move on to the next frame";

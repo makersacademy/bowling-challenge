@@ -29,4 +29,11 @@ describe('Game', function(){
   it('has a running total for the game', function(){
     expect(game.runningTotal).toBeDefined();
   });
+
+  it('can add a frame total to the running total', function(){
+    game.frameArray[0].addFirstScore(5);
+    game.frameArray[0].addSecondScore(2);
+    game.logFrameScore(0)
+    expect(game.runningTotal).toEqual(7);
+  })
 })

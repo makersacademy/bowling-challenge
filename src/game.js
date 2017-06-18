@@ -15,8 +15,9 @@ function Game() {
 }
 
 Game.prototype.logFrameScore = function (number) {
-  var scoreArray = [];
-  scoreArray.push(this.frameArray[number].firstScore);
-  scoreArray.push(this.frameArray[number].secondScore);
-  this.frameScore.push(scoreArray);
+  // var scoreArray = [];
+  // scoreArray.push(this.frameArray[number].firstScore);
+  // scoreArray.push(this.frameArray[number].secondScore);
+  // this.frameScore.push(scoreArray);
+  this.runningTotal += this.frameArray[number].frameTotal;
 };

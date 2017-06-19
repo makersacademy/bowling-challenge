@@ -70,7 +70,6 @@ $(document).ready(function() {
   $('#calculate-score').on('click', function() {
     game.calculateScore();
     $('#current-score>p').text(game.currentScore());
-    console.log("Button working")
   })
 
 });

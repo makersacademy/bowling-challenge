@@ -28,6 +28,7 @@ $(document).ready(function () {
     }
     //fill in the random balls throw values for each frame
     for(var i = 0; i < bowlingGame.MAX_FRAMES - 1; i++) {
+      console.log(i, bowlingGame._frames);
       throwBalls(i);
     }
     throwBallsLastFrame();
@@ -46,9 +47,9 @@ $(document).ready(function () {
     var frameN = bowlingGame._frames[n];
 
     frameN.addBall(new Ball());
-    frameN[0].roll(frameN.remainingPins);
+    frameN.balls[0].roll(frameN.remainingPins);
 
-    if ( frameN[0].getThrow() === 10) {
+    if ( frameN.balls[0].getThrow() === 10) {
       return; // this throw was a strike
     }
     else {
@@ -91,7 +92,7 @@ $(document).ready(function () {
     var ballThrow;
 
     for(var i = 1; i < lastFrame.getFrameSize() + 1; i++) {
-      ballThrow = lastFrame[i].getThrow();
+      ballThrow = lastFrame.balls[i].getThrow();
 
       if (ballThrow === 10) {
         $(ballId + i).val('x');

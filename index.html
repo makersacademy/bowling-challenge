@@ -6,25 +6,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src='src/frame.js'></script>
     <script src='src/game.js'></script>
+    <script src='interface.js'></script>
   </head>
 
   <body>
 
   <div id='title' class='title'><h1>Bowling Scoresheet</h1></div>
 
-  <div id='buttons' class='buttons'>
-    <button id='button0' type="button">0</button>
-    <button id='button1' type="button">1</button>
-    <button id='button2' type="button">2</button>
-    <button id='button3' type="button">3</button>
-    <button id='button4' type="button">4</button>
-    <button id='button5' type="button">5</button>
-    <button id='button6' type="button">6</button>
-    <button id='button7' type="button">7</button>
-    <button id='button8' type="button">8</button>
-    <button id='button9' type="button">9</button>
-    <button id='button10' type="button">10</button>
-  </div><br>
+  <div id='buttons' class='buttons'></div><br>
 
   <div id='scoresheet'>
     <table id='scoresheetTable' class='scoresheet' cellpadding='1' cellspacing='0'>
@@ -42,20 +31,20 @@
       </tr>
       <tr>
         <td colspan='3'></td><td colspan='3'></td>
-        <td colspan='3'>5</td><td colspan='3'>/</td>
-        <td colspan='3'>X</td><td colspan='3'></td>
-        <td colspan='3'>4</td><td colspan='3'>5</td>
-        <td colspan='3'>7</td><td colspan='3'>2</td>
-        <td colspan='3'>6</td><td colspan='3'>/</td>
-        <td colspan='3'>9</td><td colspan='3'>0</td>
-        <td colspan='3'>8</td><td colspan='3'>1</td>
-        <td colspan='3'>2</td><td colspan='3'>/</td>
-        <td colspan='2'>X</td><td colspan='2'>X</td><td colspan='2'>7</td>
+        <td colspan='3'></td><td colspan='3'></td>
+        <td colspan='3'></td><td colspan='3'></td>
+        <td colspan='3'></td><td colspan='3'></td>
+        <td colspan='3'></td><td colspan='3'></td>
+        <td colspan='3'></td><td colspan='3'></td>
+        <td colspan='3'></td><td colspan='3'></td>
+        <td colspan='3'></td><td colspan='3'></td>
+        <td colspan='3'></td><td colspan='3'></td>
+        <td colspan='2'></td><td colspan='2'></td><td colspan='2'></td>
       </tr>
       <tr>
         <td colspan='6'></td>
-        <td colspan='6'>20</td>
-        <td colspan='6'>30</td>
+        <td colspan='6'></td>
+        <td colspan='6'></td>
         <td colspan='6'></td>
         <td colspan='6'></td>
         <td colspan='6'></td>
@@ -67,7 +56,9 @@
     </table>
   </div>
 
-  <div id='gameOver'></div>
+  <div id='restart'>
+    <button type='button'>Restart Game</button>
+  </div>
 
   </body>
 

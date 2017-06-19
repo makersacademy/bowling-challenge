@@ -27,8 +27,8 @@ BowlingGame.prototype.getFrameN = function (n) {
 
 BowlingGame.prototype.getTotalScore = function () {
   return this._frames.reduce(function (score, frame, i, frames) {
-    console.log(score, frame, i, frames);
-    console.log(frame.getFrameTotalScore(frames[i + 1], frames[i + 2]));
+    //console.log(score, frame, i, frames);
+    //console.log(frame.getFrameTotalScore(frames[i + 1], frames[i + 2]));
     return (score + frame.getFrameTotalScore(frames[i + 1], frames[i + 2]));
   }, 0);
 };

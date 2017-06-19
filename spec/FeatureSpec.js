@@ -39,7 +39,6 @@ describe('Feature test', function () {
         spyOn(firstBall, "getThrow").and.returnValue(10);
         spyOn(ball, "getThrow").and.returnValue(10);
         generateGameFrames(frame, lastFrame);
-        console.log('inside feature strikes', bowlingGame.getNumOfFrames());
         expect(bowlingGame.getTotalScore()).toEqual(frame.MAX_FRAME_SCORE * 10);
       });
 
@@ -59,7 +58,6 @@ describe('Feature test', function () {
         lastF.addBall(ball);
         lastF.addBall(ball);
         bowlingGame.addFrame(lastF);
-        console.log('inside lastF,', lastF.getFrameSize(), lastF.getFrameTotalScore(), bowlingGame.getNumOfFrames());
       }
       else {
         frame.addBall(firstBall);

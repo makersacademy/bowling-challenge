@@ -62,10 +62,11 @@ Frame.prototype._getSpareBonus = function () {
 };
 
 Frame.prototype._getStrikeBonus = function (nextFrame) {
-  if (this.isStrike() && nextFrame !== undefined) {
-   return (this._getFramePartialScore() + nextFrame._firstThrow());
+  if (this.isStrike() && nextFrame) {
+    return (this._getFramePartialScore() + nextFrame._firstThrow());
   }
-  return this._getFramePartialScore();
+  // this case is for last frame, we only add balls value for 2 out of 3 in case of frame9 being a strike!!!
+  return (this.balls[0].getThrow()) + (this.balls[1].getThrow());
 };
 
 Frame.prototype._firstThrow = function () {

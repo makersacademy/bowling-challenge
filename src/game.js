@@ -16,3 +16,10 @@ function Game() {
                     [0]];  // Extra ball
   this.frame = 0;
 }
+
+Games.prototype.addFrame = function(frame){
+  this.scoreCard.push(frame);
+}
+
+game = new Game();
+game.addFrame(new Frame());

@@ -21,6 +21,7 @@ Frame.prototype._bonus = function(nextFrame, nextnextFrame) {
     return 0;
   }
   if ( this._isStrike() ) {
+
     return nextFrame._strikeBonus(nextnextFrame);
   }
   if ( this._isSpare() ) {
@@ -50,10 +51,16 @@ Frame.prototype._spareBonus = function() {
 
 Frame.prototype._strikeBonus = function(nextFrame) {
   if ( this._isStrike() ) {
-    return this._rollTotal() + nextFrame._strikeBonus(this);
+    return this._rollTotal() + nextFrame._doubleStrikeBonus();
   }
   return this._rollTotal();
 };
+
+Frame.prototype._doubleStrikeBonus = function() {
+  return this._rollTotal()
+};
+
+
 
 // Frame.prototype._strikeBonus = function(next_frame) {
 //   if (this._isStrike() && next_frame !== undefined) {

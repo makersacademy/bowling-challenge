@@ -8,8 +8,8 @@ describe('BowlingGame', function() {
 
   })
 
-  it('starts with a score of 0')
+  it('starts with a score of 0', function() {
     expect(bowlingGame.getCurrentScore()).toEqual(0);
+  });
 
-
-})
+});

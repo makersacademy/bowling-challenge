@@ -21,4 +21,13 @@ describe("Game", function(){
     for(var i = 0; i < 10; i++) {
       game.addFrame()} expect(function(){game.addFrame();}).toThrow("You can only have 10 frames")
   });
+
+  it("should return 0 if frames are all 0", function() {
+      for(var i = 0; i < 10; i++) {
+        game.addFrame()
+        game.frames[i].getFirstBowl(0);
+        game.frames[i].getSecondBowl(0);
+        }
+      expect(game.calculateFinalScore()).toEqual(0)
+    });
 });

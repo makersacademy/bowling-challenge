@@ -47,5 +47,4 @@ Game.prototype.score = function () {
     };
   };
   return result;
-
 };

@@ -66,9 +66,13 @@ it ('can check the current score if a strike or spare is scored', function () {
   expect(game.currentScore(3)).toEqual(53);
 });
 
-
 it ('throws an error if you roll higher than 10', function () {
   expect(function() { game.roll(11) }).toThrow('Cheater!');
 })
+
+// it ('throws an error if combined total of frame sums to more than 10', function () {
+//   game.roll(5);
+//   expect(function() { game.roll(5) }).toThrow('Cheater!');
+// })
 
 });

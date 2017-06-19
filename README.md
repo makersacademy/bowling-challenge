@@ -27,13 +27,13 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 
 ## How to Use
 
-Create a new game instance:
+### Create a new game instance:
 
 ```javascript
 game = new Game()
 ```
 
-Register a roll
+### Register a roll
 The roll method accepts an array as the argument. The array contains the score for the first and second roll.
 
 ```javascript

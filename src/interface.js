@@ -11,7 +11,7 @@ $(document).ready(function () {
 
   $('#calculate-game-score').on('click', function () {
     if (allFramesPlayed) {
-      $('#total-score').text(bowlingGame.getTotalScore());
+      $('#total-score').val(bowlingGame.getTotalScore());
     }
     $('#total-score').val('nil');
   });
@@ -27,19 +27,26 @@ $(document).ready(function () {
       bowlingGame.addFrame(new Frame());
     }
     //fill in the random balls throw values for each frame
-    while (!allFramesPlayed) {
-      bowlingGame._frames.forEach(function(frame) {
-        frame.addBall(new Ball());
-
-      })
-
-      // display each frame ball throws values
-
-      return;
+    throwBalls();
+    throwBallsLastFrame();
+    // display each frame ball throws values
+    for(var i = 0; i < bowlingGame.MAX_FRAMES - 1; i++) {
+      displayFrame(i);
     }
+    displayLastFrame();
+    allFramesPlayed = true;
   }
 
+  function throwBalls() {
+
+  }
+
+  function throwBallsLastFrame() {
+
+  }
+  
   function resetGame() {
+    allFramesPlayed = false;
     // clear all ball throws values from the UI
     $('input').val('');
     // clear total score
@@ -53,8 +60,7 @@ $(document).ready(function () {
       bowlingGame._frames[i] = null;
       delete bowlingGame._frames[i];
     }
-    return;
-  }
+  } // end of resetGame()
 
   function displayFrame(n) {
     if (n > bowlingGame.MAX_FRAMES - 1) {

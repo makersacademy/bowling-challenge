@@ -39,11 +39,21 @@ describe('Game', function(){
       expect(game.getCurrentFrame()).toEqual(game.frames[0]);
     });
 
-    it('returns a new frame if the frame isComplete', function(){
+    it('returns a new frame if the previous frame isComplete', function(){
       game.roll(10);
       var frameStrike = game.frames[0];
       game.roll(2);
       expect(game.frames[-1]).not.toBe(frameStrike);
+    });
+  });
+
+  describe('#totalScore', function(){
+
+    it('returns 0 for a Gutter game', function(){
+      for(var i = 0; i < 20; i++) {
+        game.roll(0);
+      }
+      expect(game.totalScore()).toBe(0);
     });
   });
 });

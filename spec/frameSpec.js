@@ -26,10 +26,12 @@ describe('Frame', function(){
     });
   });
 
-  it('can calculate the total score of the frame', function(){
-    frame.addRoll(1);
-    frame.addRoll(7);
-    expect(frame.score()).toEqual(8);
+  describe('#score', function(){
+    it('can calculate the total score of the frame', function(){
+      frame.addRoll(1);
+      frame.addRoll(7);
+      expect(frame.score()).toEqual(8);
+    });
   });
 
   describe('it is a spare', function(){
@@ -54,7 +56,7 @@ describe('Frame', function(){
       frame.addRoll(10);
     });
 
-    it('can determine if the firstRoll is a strike', function(){
+    it('can determine if the first roll is a strike', function(){
       expect(frame.isStrike).toBe(true);
     });
 

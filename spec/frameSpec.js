@@ -24,6 +24,47 @@ describe('Frame', function(){
       frame.addRoll(3);
       expect(frame.rolls).toEqual([5, 3]);
     });
+
+    it('can save only 2 rolls', function(){
+      frame.addRoll(5);
+      frame.addRoll(4);
+      frame.addRoll(1);
+      expect(frame.rolls).toEqual([5, 4]);
+    });
+  });
+
+  describe('#isStrike', function(){
+    it('returns true if first roll is a strike', function(){
+      frame.rolls[0] = 10;
+      expect(frame.isStrike()).toBeTrue();
+    });
+  });
+
+  describe('#isSpare', function(){
+    it('returns true if the second roll results in a spare', function(){
+      frame.rolls[0] = 5;
+      frame.rolls[1] = 5;
+      expect(frame.isSpare()).toBeTrue();
+    });
+  });
+
+  describe('#isComplete', function(){
+    it('returns true after 2 rolls', function(){
+      frame.addRoll(2);
+      frame.addRoll(5);
+      expect(frame.isComplete()).toBeTrue();
+    });
+
+    it('returns true after maximum score of 10 is reached', function(){
+      frame.addRoll(4);
+      frame.addRoll(6);
+      expect(frame.isComplete()).toBeTrue();
+    });
+
+    it('returns true when first roll is strike', function(){
+      frame.addRoll(10);
+      expect(frame.isComplete()).toBeTrue();
+    });
   });
 
   describe('#score', function(){
@@ -34,34 +75,4 @@ describe('Frame', function(){
     });
   });
 
-  describe('it is a spare', function(){
-
-    beforeEach(function(){
-      frame.addRoll(5);
-      frame.addRoll(5);
-    });
-
-    it('can determine if the rolls result in a spare', function(){
-      expect(frame.isSpare).toBe(true);
-    });
-
-    it('completes the frame', function(){
-      expect(frame.isComplete).toBe(true);
-    });
-  });
-
-  describe('it is a strike', function(){
-
-    beforeEach(function(){
-      frame.addRoll(10);
-    });
-
-    it('can determine if the first roll is a strike', function(){
-      expect(frame.isStrike).toBe(true);
-    });
-
-    it('completes the frame', function(){
-      expect(frame.isComplete).toBe(true);
-    });
-  });
 });

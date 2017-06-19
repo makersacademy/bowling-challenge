@@ -12,12 +12,12 @@ describe('Game', function(){
     expect(game.frames).toBeEmptyArray();
     // spyOn(game, 'newFrame');
     game.roll(2);
-    // expect(game.newFrame).toHaveBeenCalled();
+    //  expect(game.newFrame).toHaveBeenCalled();
     expect(game.frames).toBeNonEmptyArray();
   });
 
   it('has maximum 10 frames', function(){
-    for(var i = 0; i < 20; i++){
+    for(var rolls = 0; rolls < 20; rolls++){
       game.roll(3);
     }
     expect(function(){
@@ -26,7 +26,7 @@ describe('Game', function(){
   });
 
   it('can add the score of the roll to the frame', function(){
-    var frame = jasmine.createSpyObj('frame', ['addRoll']);
+    var frame = jasmine.createSpyObj('frame', ['addRoll', 'isComplete']);
     game.frames.push(frame);
     game.roll(3);
     expect(frame.addRoll).toHaveBeenCalledWith(3);
@@ -50,7 +50,7 @@ describe('Game', function(){
   describe('#totalScore', function(){
 
     it('returns 0 for a Gutter game', function(){
-      for(var i = 0; i < 20; i++) {
+      for(var rolls = 0; rolls < 20; rolls++) {
         game.roll(0);
       }
       expect(game.totalScore()).toBe(0);

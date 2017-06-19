@@ -25,3 +25,7 @@ TenthFrame.prototype.isComplete = function() {
 TenthFrame.prototype.score = function() {
   return this._score;
 }
+
+TenthFrame.prototype.fetchCurrentBowl = function() {
+  return this._currentBowl + 1
+}

@@ -50,3 +50,7 @@ Game.prototype.calculateScore = function() {
 Game.prototype.currentScore = function() {
   return this._score;
 }
+
+Game.prototype.fetchCurrentBowl = function() {
+  return "#frame" + (this._currentFrame + 1) + "-bowl" + (this._frames[this._currentFrame].fetchCurrentBowl());
+}

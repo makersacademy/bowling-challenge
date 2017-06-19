@@ -52,3 +52,7 @@ Frame.prototype.addStrikeBonus = function(pinsAmount) {
     this._strikeBonusesAdded ++;
   };
 };
+
+Frame.prototype.fetchCurrentBowl = function() {
+  return this._currentBowl + 1
+}

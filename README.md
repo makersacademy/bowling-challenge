@@ -1,3 +1,16 @@
+## Instructions:
+
+- open bowling.html or SpecRunner.html in Chrome
+- open console
+- create new game by typing 'var game = new Game();'
+- run calculation by using 'game.start(points)'
+- points should be an array of array with the following format: game.start([[1,4],[4,5],[6,4],[5,5],[10],[0,1],[7,3],[6,4],[10],[2,6]]);
+- if spare or strike in last frame, add bonus points in additional array after the main array:
+game.start([[1,4],[4,5],[6,4],[5,5],[10],[0,1],[7,3],[6,4],[10],[2,8]]);
+- results will be displayed
+
+
+
 
 Bowling Challenge
 =================

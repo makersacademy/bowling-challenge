@@ -5,7 +5,7 @@ $(document).ready(function () {
   var bowlingGame = new BowlingGame();
   var allFramesPlayed = false;
 
-  $('#start_game').on('click', function () {
+  $('#start-game').on('click', function () {
     startGame();
   });
 
@@ -27,7 +27,9 @@ $(document).ready(function () {
       bowlingGame.addFrame(new Frame());
     }
     //fill in the random balls throw values for each frame
-    throwBalls();
+    for(var i = 0; i < bowlingGame.MAX_FRAMES - 1; i++) {
+      throwBalls(i);
+    }
     throwBallsLastFrame();
     // display each frame ball throws values
     for(var i = 0; i < bowlingGame.MAX_FRAMES - 1; i++) {
@@ -37,30 +39,27 @@ $(document).ready(function () {
     allFramesPlayed = true;
   }
 
-  function throwBalls() {
+  function throwBalls(n) {
+    if (n > bowlingGame.MAX_FRAMES - 1) {
+      throw new TypeError("Cannot play such frame!");
+    }
+    var frameN = bowlingGame._frames[n];
 
-  }
+    frameN.addBall(new Ball());
+    frameN[0].roll(frameN.remainingPins);
+
+    if ( frameN[0].getThrow() === 10) {
+      return; // this throw was a strike
+    }
+    else {
+      frameN.addBall(new Ball());
+      frameN[1].roll(frameN.remainingPins);
+    }
+  } //end of throwBalls(n)
 
   function throwBallsLastFrame() {
 
-  }
-  
-  function resetGame() {
-    allFramesPlayed = false;
-    // clear all ball throws values from the UI
-    $('input').val('');
-    // clear total score
-    $('#total-score').val('');
-    // delete all frame instances and ball instances
-    for(var i = 0; i < bowlingGame.MAX_FRAMES; i++) {
-      for(var j = 0; j < bowlingGame.getFrameSize(); j++) {
-        bowlingGame._frames[i][j] = null;
-        delete bowlingGame._frames[i][j];
-      }
-      bowlingGame._frames[i] = null;
-      delete bowlingGame._frames[i];
-    }
-  } // end of resetGame()
+  } //end of throwBallsLastFrame()
 
   function displayFrame(n) {
     if (n > bowlingGame.MAX_FRAMES - 1) {
@@ -102,5 +101,22 @@ $(document).ready(function () {
       }
     }
   } // end of displayLastFrame()
+
+  function resetGame() {
+    allFramesPlayed = false;
+    // clear all ball throws values from the UI
+    $('input').val('');
+    // clear total score
+    $('#total-score').val('');
+    // delete all frame instances and ball instances
+    for(var i = 0; i < bowlingGame.MAX_FRAMES; i++) {
+      for(var j = 0; j < bowlingGame.getFrameSize(); j++) {
+        bowlingGame._frames[i][j] = null;
+        delete bowlingGame._frames[i][j];
+      }
+      bowlingGame._frames[i] = null;
+      delete bowlingGame._frames[i];
+    }
+  } // end of resetGame()
 
 })

@@ -31,6 +31,8 @@ Game.prototype.addBonuses = function(pinsThisTurn) {
   if(this._frames[this._currentFrame - 1].isSpare()) this._frames[this._currentFrame - 1].addSpareBonus(pinsThisTurn);
   if(this._frames[this._currentFrame - 1].isStrike()) {
     this._frames[this._currentFrame - 1].addStrikeBonus(pinsThisTurn);
+    // This makes sure addDoubleStrikeBonus doesn't get called when we score a strike on the first frame
+    // (which would break the program because this._frames[this._currentFrame - 2] doesn't exist yet)
     if(this._frames.length > 2) this.addDoubleStrikeBonus(pinsThisTurn);
   };
 };

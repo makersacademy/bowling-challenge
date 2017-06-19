@@ -21,7 +21,7 @@ Frame.prototype._bonus = function(nextFrame, nextnextFrame) {
     return 0;
   }
   if ( this._isStrike() ) {
-    return nextFrame._strikeBonus();
+    return nextFrame._strikeBonus(nextnextFrame);
   }
   if ( this._isSpare() ) {
     return nextFrame._spareBonus();
@@ -48,9 +48,20 @@ Frame.prototype._spareBonus = function() {
   return this._firstRoll();
 };
 
-Frame.prototype._strikeBonus = function() {
+Frame.prototype._strikeBonus = function(nextFrame) {
+  if ( this._isStrike() ) {
+    return this._rollTotal() + nextFrame._strikeBonus(this);
+  }
   return this._rollTotal();
 };
+
+// Frame.prototype._strikeBonus = function(next_frame) {
+//   if (this._isStrike() && next_frame !== undefined) {
+//     return this._rollTotal() + next_frame._firstRoll();
+//   }
+//
+//   return this._firstRoll() + this.rolls[1];
+// };
 
 Frame.prototype._firstRoll = function() {
   return this.rolls[0];

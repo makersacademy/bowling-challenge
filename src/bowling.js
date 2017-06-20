@@ -9,45 +9,34 @@ var Bowling = function () {
 };
 
 function randomInt(maxNum) {
-    return Math.floor(Math.random() * maxNum)
+    return Math.floor(Math.random() * maxNum);
 }
 
 var maxRoll = 11
 
-var rollOne = randomInt(maxRoll)
-var rollTwo = randomInt(maxRoll - rollOne)
-
 
 Bowling.prototype.firstRoll = function () {
-  this.score
-  this.firstScore = rollOne
-  return this.firstScore;
+  var rollOne = randomInt(maxRoll);
+  this.firstScore = rollOne;
+  this.rolls.push(this.firstScore)
+  return this.rolls;
 };
 
 Bowling.prototype.secondRoll = function () {
-  this.secondScore = rollTwo
-  return this.secondScore;
+  var rollTwo = randomInt(maxRoll - this.firstScore);
+  this.secondScore = rollTwo;
+  this.rolls.push(this.secondScore)
+  return this.rolls;
 
 };
 
-Bowling.prototype.totalScore = function () {
-  this.totalCurrentFrameScore = this.firstScore + this.secondScore
+Bowling.prototype.frameScore = function () {
+  this.totalCurrentFrameScore = this.firstScore + this.secondScore;
   return this.totalCurrentFrameScore;
 };
 
 
-Bowling.prototype.frameScore = function () {
-
-  this.rolls.push(this.firstScore, this.secondScore);
+Bowling.prototype.frames = function () {
   return this.rolls;
+
 };
-
-
-
-
-// var numbers = [2, 5, 8];
-// var numbersSum = 0;
-//
-// for (var i = 0; i < numbers.length; i++) {
-//   numbersSum += numbers[i]
-// }

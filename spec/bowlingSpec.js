@@ -24,17 +24,9 @@ describe ('Bowling', function() {
     });
   });
   //
-  describe('#totalScore', function() {
-    it('returns players total score for one frame', function() {
-      expect(bowling.totalScore()).toBeLessThan(11);
+  describe('#frameScore', function() {
+    it('returns players total score for the current frame', function() {
+      expect(bowling.frameScore()).toBeLessThan(11);
     });
   });
-
-  // it('Allows a gutter game', function() {
-  //   for (var i = 0; i < 20; i++)
-  //   bowling.firstRoll(0);
-  //   bowling.secondRoll(0);
-  //   expect(bowling.totalScore).toEqual(0);
-  // });
-
 });

@@ -23,4 +23,10 @@ describe('BowlingGame', function () {
     expect(bowlingGame.getTotalScore()).toEqual(17);
   });
 
+  it('can throw an error if wrong frame number', function () {
+    bowlingGame.addFrame(frame);
+    bowlingGame.addFrame(nextFrame);
+    expect(function () { bowlingGame.getFrameN(3) }).toThrowError(TypeError, "No such frame in this game!");
+  });
+
 });

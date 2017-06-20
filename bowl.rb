@@ -19,11 +19,14 @@ class Frame
     
     def setRoll1Score score
         @roll1Score = score
-        calculateScore
+        if @roll1 == 10
+           @frameScore = 10  
+           puts "Strike!"
+           @strike=true
+        end
     end
     
     def setRoll2Score score
-        return if @roll1Score == 10
         @roll2Score = score
         calculateScore
     end
@@ -33,7 +36,7 @@ class Frame
     end
     
     def setSpare
-        @spare =true
+        @spare=true
     end
     
     def strike?
@@ -45,11 +48,7 @@ class Frame
     end
     
     private def calculateScore
-        if @roll1 == 10
-           @frameScore = 10  
-           puts "Strike!"
-           @strike=true
-        elsif @strike == false
+        if @strike == false
             @frameScore = roll1Score + roll2Score
             if @frameScore >=10 
                @framescore = 10
@@ -87,6 +86,7 @@ class Bowling
       @maxFrames = 10
       @turn = 0
       @frames = []
+      @lastRoll = 0
    end
    
    def play
@@ -95,13 +95,19 @@ class Bowling
          @frames << Frame.new(@turn)
          print "Frame #{@turn+1}: Please enter the first roll:"
          @frames[@turn].setRoll1Score gets.strip.to_i 
-         if @frames[@turn].roll1Score != 10
+         if @frames[@turn].strike? == false
              print "Frame #{@turn+1}: Please enter the second roll:"
              @frames[@turn].setRoll2Score gets.strip.to_i 
          end
          calculateBonus
          displayScores
          @turn+=1
+       end # end while
+       #final frame bonus
+       if @frames[@turn].strike? || @frames[@turn].strike?
+           print "Frame #{@turn+1}: Final frame ended with a strike or spare. Please enter the additional third roll:"
+           @lastRoll = gets.strip.to_i
+           displayScores
        end
        puts "Thank you for playing!"
    end

@@ -1,5 +1,8 @@
 
 class Frame 
+    
+    attr_accessor :roll1Score, :roll2Score, :frameScore, :frameNumber, :strike, :spare
+    
     def initialize frameNumber
         @roll1Score = 0
         @roll2Score = 0
@@ -9,45 +12,12 @@ class Frame
         @spare = false
     end # end initialize
     
-    def frameNumber num
-        @frameNumber = num
-    end
-    
-    def frameNumber
-        @frameNumber
-    end
-    
-    def setRoll1Score score
-        @roll1Score = score
-        if @roll1 == 10
+    def calculateScore
+        if @roll1Score == 10
            @frameScore = 10  
            puts "Strike!"
            @strike=true
         end
-    end
-    
-    def setRoll2Score score
-        @roll2Score = score
-        calculateScore
-    end
-    
-    def setStrike
-        @strike=true
-    end
-    
-    def setSpare
-        @spare=true
-    end
-    
-    def strike?
-        @strike
-    end
-    
-    def spare?
-        @spare
-    end
-    
-    private def calculateScore
         if @strike == false
             @frameScore = roll1Score + roll2Score
             if @frameScore >=10 
@@ -58,24 +28,12 @@ class Frame
         end
     end
     
-    def addStrikeBonus frame
-        @frameScore += frame.frameScore
+    def addStrikeBonus frame1 
+        @frameScore += frame1.frameScore
     end
     
     def addSpareBonus frame
         @frameScore += frame.roll1Score
-    end
-    
-    def frameScore
-        @frameScore
-    end
-    
-    def roll1Score
-        @roll1Score
-    end
-    
-    def roll2Score
-        @roll2Score
     end
     
 end # end frame
@@ -83,46 +41,59 @@ end # end frame
 class Bowling
    def initialize 
       @totalScore = 0
-      @maxFrames = 10
       @turn = 0
       @frames = []
-      @lastRoll = 0
+      @bonusRoll = 0
    end
    
    def play
        puts "Let's bowl!"
-       while @turn < @maxFrames
+       while @turn < 10
          @frames << Frame.new(@turn)
          print "Frame #{@turn+1}: Please enter the first roll:"
-         @frames[@turn].setRoll1Score gets.strip.to_i 
-         if @frames[@turn].strike? == false
+         @frames[@turn].roll1Score = getRoll
+         @frames[@turn].calculateScore
+         if @frames[@turn].strike == false
              print "Frame #{@turn+1}: Please enter the second roll:"
-             @frames[@turn].setRoll2Score gets.strip.to_i 
+             @frames[@turn].roll2Score = getRoll
+             @frames[@turn].calculateScore
          end
          calculateBonus
          displayScores
          @turn+=1
        end # end while
+       @turn-=1 # to reset to current frame
        #final frame bonus
-       if @frames[@turn].strike? || @frames[@turn].strike?
+       if @frames[@turn].strike || @frames[@turn].spare
            print "Frame #{@turn+1}: Final frame ended with a strike or spare. Please enter the additional third roll:"
-           @lastRoll = gets.strip.to_i
+           @bonusRoll = getRoll
            displayScores
        end
        puts "Thank you for playing!"
    end
    
+   def getRoll
+        roll = -1
+        until roll >=0 and roll <=10
+            roll = gets.strip
+            if roll.to_i.is_a?(Integer)
+                roll = roll.to_i
+                break
+            else
+                puts "Please enter a number between 0 and 10"
+                roll = -1
+            end
+        end
+        roll
+    end
+   
    def calculateBonus
         return if @turn==0
-        if @frames[@turn].strike?
+        if @frames[@turn].strike
             @frames[@turn-1].addStrikeBonus @frames[@turn]
-        elsif @frames[@turn].spare?
+        elsif @frames[@turn].spare
             @frames[@turn-1].addSpareBonus @frames[@turn]
         end
-   end
-   
-   def totalScore
-      @totalScore 
    end
    
    def displayScores
@@ -131,11 +102,8 @@ class Bowling
           puts "Frame #{frame.frameNumber + 1}: frame score = #{frame.frameScore}" 
           @totalScore += frame.frameScore
        end
+       @totalScore+=@bonusRoll
        puts "Game Score = #{@totalScore}"
-   end
-   
-   def calculateTotalScore
-       
    end
    
 end

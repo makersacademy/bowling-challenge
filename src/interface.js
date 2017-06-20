@@ -12,8 +12,9 @@ $(document).ready(function () {
   $('#calculate-game-score').on('click', function () {
     if (allFramesPlayed) {
       $('#total-score').val(bowlingGame.getTotalScore());
+    } else {
+      $('#total-score').val('nil');
     }
-    $('#total-score').val('nil');
   });
 
   $('#reset-game').on('click', function () {
@@ -47,19 +48,25 @@ $(document).ready(function () {
     var frameN = bowlingGame._frames[n];
 
     frameN.addBall(new Ball());
-    frameN.balls[0].roll(frameN.remainingPins);
 
     if ( frameN.balls[0].getThrow() === 10) {
       return; // this throw was a strike
     }
     else {
       frameN.addBall(new Ball());
-      frameN[1].roll(frameN.remainingPins);
     }
   } //end of throwBalls(n)
 
   function throwBallsLastFrame() {
+    var frameN = bowlingGame._frames[bowlingGame.MAX_FRAMES - 1];
+    frameN.addBall(new Ball());
 
+    if ( frameN.balls[0].getThrow() === 10) {
+      return; // this throw was a strike
+    }
+    else {
+      frameN.addBall(new Ball());
+    }
   } //end of throwBallsLastFrame()
 
   function displayFrame(n) {
@@ -68,7 +75,8 @@ $(document).ready(function () {
     }
     var ballId = '#ball' + n;
     var frameN = bowlingGame._frames[n];
-    var firstThrow = frameN._firstThrow();
+    var firstThrow = frameN.balls[0].getThrow();
+    var secondThrow = frameN.balls[1].getThrow();
 
     if (firstThrow === 10) {
       $(ballId + 1).val('x'); // this throw was a strike
@@ -80,7 +88,7 @@ $(document).ready(function () {
         $(ballId + 2).val('/'); // this throw was a spare
       }
       else {
-        $(ballId + 2).val(firstThrow.toString());
+        $(ballId + 2).val(secondThrow.toString());
       }
     }
   } //end of displayFrame(n)
@@ -92,7 +100,7 @@ $(document).ready(function () {
     var ballThrow;
 
     for(var i = 1; i < lastFrame.getFrameSize() + 1; i++) {
-      ballThrow = lastFrame.balls[i].getThrow();
+      ballThrow = lastFrame.balls[i - 1].getThrow();
 
       if (ballThrow === 10) {
         $(ballId + i).val('x');

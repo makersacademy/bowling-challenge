@@ -4,13 +4,25 @@ describe('Game', function() {
 
   var game;
 
+  var frame;
+
   beforeEach(function() {
     game = new Game();
+  });
+
+  beforeEach(function() {
+    frame = new Frame();
   });
 
   var repeatedRolls = function(pins_knocked_down, up_to) {
     for (var single = 0; single < up_to; single++) { game.rolls(pins_knocked_down); };
   };
+
+  describe('storedFrames', function () {
+    it("stores the pins in a frame array", function() {
+      expect(game.storedFrames).toEqual([frame]);
+    })
+  });
 
   describe('normalScore', function () {
     it("returns a score of zero for a repeatedRolls game", function(){
@@ -90,7 +102,7 @@ describe('Game', function() {
       expect(game.totalScore()).toEqual(46);
     });
 
-    xit("gives the total score for a perfect game", function() {
+    it("gives the total score for a perfect game", function() {
       repeatedRolls(10, 12);
       expect(game.totalScore()).toEqual(300);
     });

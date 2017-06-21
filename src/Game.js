@@ -4,6 +4,7 @@ var Game;
 
 Game = function() {
   this.stored_pins = [];
+  this.storedFrames = [new Frame];
 };
 
 Game.prototype.rolls = function(pins) {

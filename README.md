@@ -2,7 +2,7 @@
 Bowl'd Away
 =================
 
-![Home Page](http://imgur.com/L2UI3dy)
+![Home Page](http://imgur.com/L2UI3dy.png)
 
 ## How To Play
 
@@ -26,7 +26,7 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ## Screenshots
 
-![Mid-game](http://imgur.com/p2xsS7Q)
-![Perfect game](http://imgur.com/zu7MCb2)
+![Mid-game](http://imgur.com/p2xsS7Q.png)
+![Perfect game](http://imgur.com/zu7MCb2.png)
 
 ## Process

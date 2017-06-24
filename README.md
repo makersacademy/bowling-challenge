@@ -1,8 +1,6 @@
-10 Pin Bowling Score board
-
 Task
 -------
-I created a program capable of calculating the score of a game of bowling (single player) based on the amount of pins knocked down, and it takes into consideration possible strikes or spares and their bonuses.
+As a weekend challenge at Makers Academy, over two days I created a program capable of calculating the score of a game of a 10 pin bowling game (single player) based on the amount of pins knocked down, and it takes into consideration possible strikes or spares and their bonuses.
 
 The UI consists of a score board with three columns: rolls, score and frame total. Each game consists of 20 rolls and 10 pins per frame. Two rolls make up one frame, hence the board displays the total score for each frame. The 10 pins are reset after every frame.
 

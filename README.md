@@ -7,7 +7,7 @@ Bowl'd Away
 ## How To Play
 
 * Clone the repo
-* Copy full path of index.html within repo
+* Copy full path of ```index.html``` within repo
 * Run in your favourite browser (Chrome, I hope)
 * Get, set and BOWL
 
@@ -29,4 +29,41 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 ![Mid-game](http://imgur.com/p2xsS7Q.png)
 ![Perfect game](http://imgur.com/zu7MCb2.png)
 
-## Process
+## My Approach
+
+### User Stories
+```
+As a bowler,
+So that I can keep track of my score while bowling,
+I want to be able to log the scores of each roll I play.
+```
+```
+As a bowler,
+So that I can see how much I have to roll to win,
+I want the scoresheet to be updated after each roll.
+```
+```
+As a bowler,
+So that I can see if I have beat my friends or not,
+I want to be able to see a final score at the end of the game.
+```
+```
+As a bowler,
+So that I can see if I have beat my friends or not,
+I want to be able to see a final score at the end of the game.
+```
+```
+As a bowler,
+So I don't accidentally enter an invalid score, 
+I want the buttons to be updated to reflect the pins left after each frame.
+```
+```
+As a bowler,
+So that I have a realistic bowling experience,
+I want spares(/) and strikes(X) to be displayed in correct form.
+```
+```
+As a bowler,
+So that I can keep my bowling-addiction going,
+I want to be able to start a new game whenever I want.
+```

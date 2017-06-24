@@ -20,15 +20,11 @@ function buttons(pins) {
 function roll(pins) {
   if (isFinalFrame() && rollIndex == 2) {
     updateFinalFrame(pins);
-    addFinal();
-    updateScore(10);
-    updateButtons();
+    finishGame();
   } else if (isFinalFrame() && rollIndex == 1 && (firstRoll + pins < 10)){
     updateFinalFrame(pins);
     rolls.push(0);
-    addFinal();
-    updateScore(10);
-    updateButtons();
+    finishGame();
   } else if (isFinalFrame()) {
     updateFinalFrame(pins);
   } else {
@@ -38,6 +34,12 @@ function roll(pins) {
 
 function addFinal() {
   game.addFinalFrame(rolls[0], rolls[1], rolls[2]);
+};
+
+function finishGame() {
+  addFinal();
+  updateScore(10);
+  updateButtons();
 };
 
 function updateFrame(pins) {

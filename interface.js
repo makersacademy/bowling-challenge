@@ -1,5 +1,10 @@
 $( document ).ready(function() {
   buttons(0);
+
+  $('#restart').click(function() {
+    location.reload();
+  });
+
 });
 
 var game = new Game();

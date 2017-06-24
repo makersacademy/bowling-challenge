@@ -7,6 +7,7 @@ var game = new Game();
 var frameIndex = 0;
 var firstRoll = 0;
 var rollIndex = 0;
+var rolls = [];
 
 function buttons(pins) {
   var buttonStr = '';
@@ -17,16 +18,67 @@ function buttons(pins) {
 };
 
 function roll(pins) {
+  if (isFinalFrame() && rollIndex == 2) {
+    updateFinalFrame(pins);
+    addFinal();
+    updateScore(10);
+    updateButtons();
+  } else if (isFinalFrame() && rollIndex == 1 && (firstRoll + pins < 10)){
+    updateFinalFrame(pins);
+    rolls.push(0);
+    addFinal();
+    updateScore(10);
+    updateButtons();
+  } else if (isFinalFrame()) {
+    updateFinalFrame(pins);
+  } else {
+    updateFrame(pins);
+  }
+};
+
+function addFinal() {
+  game.addFinalFrame(rolls[0], rolls[1], rolls[2]);
+};
+
+function updateFrame(pins) {
   if (pins == 10) {
-    updateWithStrike(game.frames.length);
-    updateScore();
+    updateWithStrike();
+    updateScore(game.frames.length);
   } else if (rollIndex == 1 && (firstRoll + pins == 10)) {
     updateWithSpare(pins);
     updateScore(game.frames.length);
   } else {
     updateWithRoll(pins);
   };
+}
+
+function isFinalFrame() {
+  return game.frames.length == 9;
 };
+
+function updateFinalFrame(pins) {
+  if (pins == 10) {
+    $('#scoresheetTable tr:eq(1) td:eq(' + frameIndex + ')').html('X');
+    frameIndex++;
+    rollIndex++;
+    rolls.push(pins);
+    updateButtons(0);
+  } else if (rollIndex == 1 && (firstRoll + pins == 10)) {
+    $('#scoresheetTable tr:eq(1) td:eq(' + frameIndex + ')').html('/');
+    frameIndex++;
+    rollIndex++;
+    rolls.push(pins);
+    updateButtons(0);
+  } else {
+    $('#scoresheetTable tr:eq(1) td:eq(' + frameIndex + ')').html(pins);
+    frameIndex++;
+    rollIndex++;
+    firstRoll = pins;
+    rolls.push(pins);
+    updateButtons(pins);
+  };
+};
+
 
 function updateScore(index) {
   for(var i = 1; i < index + 1; i++) {

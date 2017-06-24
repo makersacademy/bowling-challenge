@@ -2,8 +2,7 @@
 Bowl'd Away
 =================
 
-
-* Insert some sort of picture here
+![Home Page](http://imgur.com/L2UI3dy)
 
 ## How To Play
 
@@ -12,11 +11,11 @@ Bowl'd Away
 * Run in your favourite browser (Chrome, I hope)
 * Get, set and BOWL
 
-## What it Does
+## Description
 
 Bowl'd Away counts and sums the scores of a bowling game for one player (in JavaScript). Click buttons to generate 'rolls' and your score is returned to you.
-Bowl'd Away aims to simulate as much of the bowling scoring experience as possible.
-This means 'X' for strikes, '/' for spares and a realistic bowling scoresheet.
+
+Bowl'd Away aims to simulate as much of the bowling scoring experience as possible. This means 'X' for strikes, '/' for spares and a realistic bowling scoresheet.
 
 ### Rules
 
@@ -26,5 +25,8 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 
 ## Screenshots
+
+![Mid-game](http://imgur.com/p2xsS7Q)
+![Perfect game](http://imgur.com/zu7MCb2)
 
 ## Process

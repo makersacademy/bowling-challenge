@@ -9,10 +9,11 @@ var firstRoll = 0;
 var rollIndex = 0;
 var rolls = [];
 
+
 function buttons(pins) {
   var buttonStr = '';
   for(var i = 0; i < (11-pins); i++) {
-    buttonStr += '<button type="button" class="button" onclick="roll(' + i + ')">' + i + '</button>';
+    buttonStr += '<button type="button" class="button" onclick="roll(' + i + ')">' + i + '</button> ';
   };
   $('#buttons').html(buttonStr);
 };
@@ -40,6 +41,12 @@ function finishGame() {
   addFinal();
   updateScore(10);
   updateButtons();
+  printFinalScore();
+};
+
+function printFinalScore() {
+  var finalScore = game.score(10);
+  $('#score').text(`Your final score is ${finalScore}`);
 };
 
 function updateFrame(pins) {

@@ -1,15 +1,36 @@
 
 .title {
   text-align: center;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 25px;
+  padding-top: 10px;
+}
 
+h1 {
+  margin: 0px;
+  padding: 10px;
 }
 
 .buttons {
   text-align: center;
 }
 
-.restart {
+.button {
+  background-color: white;
+  border-radius: 10px;
+}
+
+#restart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#score {
   text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Luckiest Guy', cursive;
 }
 
 table.scoresheet {

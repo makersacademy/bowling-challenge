@@ -1,5 +1,5 @@
 #scorecard-container {
-  width: 1020px;
+  width: 1070px;
   height: 117px;
   border: 2px solid;
 }
@@ -9,6 +9,18 @@
   text-align: center;
   float: left;
   width: 100px;
+  height: 35px;
+  line-height: 35px;
+  vertical-align: middle;
+  border: 1px solid;
+  border-bottom: 2px solid;
+}
+
+.tenth-frame-header {
+  position: relative;
+  text-align: center;
+  float: left;
+  width: 150px;
   height: 35px;
   line-height: 35px;
   vertical-align: middle;
@@ -41,6 +53,19 @@
   border-right: 2px solid;
 }
 
+.tenth-frame-third-bowl {
+  width: 50px;
+  height: 49px;
+  line-height: 49px;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  top: -101px;
+  left: 100px;
+  border-right: 2px solid;
+  border-bottom: 1px solid;
+}
+
 .frame-score {
   width: 100px;
   height: 29px;
@@ -53,11 +78,24 @@
   border: 1px solid;
 }
 
+.tenth-frame-score {
+  width: 150px;
+  height: 29px;
+  line-height: 29px;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  top: -102px;
+  left: -1px;
+  border: 1px solid;
+  border-top: 2px solid;
+}
+
 #current-score {
   width: 100px;
   height: 50px;
   text-align: center;
   position: relative;
   bottom: 30px;
-  left: 1050px;
+  left: 1100px;
 }

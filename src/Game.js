@@ -1,8 +1,8 @@
 'use strict';
 
 var Game = function() {
-  this._frames = [new Frame];
-  this._currentFrame = 0;
+  this._frames = [new Frame()];
+  this._currentFrameIndex = 0;
   this._score = 0;
 };
 
@@ -16,29 +16,29 @@ Game.prototype.addNewFrame = function() {
   } else if(this._frames.length === 9) {
     this._frames.push(new TenthFrame);
   };
-  this._currentFrame = this._frames.length - 1;
+  this._currentFrameIndex = this._frames.length - 1;
 };
 
 Game.prototype.bowl = function(pinsAmount) {
-  if(this._frames.length === 10 && this._frames[this._currentFrame].isComplete()) throw new Error('Cannot bowl - game is complete');
+  if(this._frames.length === 10 && this._frames[this._currentFrameIndex].isComplete()) throw new Error('Cannot bowl - game is complete');
   if(!Number.isInteger(pinsAmount) || pinsAmount < 0) throw new Error('Argument must be an integer between 0 and 10');
-  this._frames[this._currentFrame].bowl(pinsAmount);
+  this._frames[this._currentFrameIndex].bowl(pinsAmount);
   if(this._frames.length > 1) this.addBonuses(pinsAmount);
-  if(this._frames[this._currentFrame].isComplete()) this.addNewFrame();
+  if(this._frames[this._currentFrameIndex].isComplete()) this.addNewFrame();
 };
 
 Game.prototype.addBonuses = function(pinsThisTurn) {
-  if(this._frames[this._currentFrame - 1].isSpare()) this._frames[this._currentFrame - 1].addSpareBonus(pinsThisTurn);
-  if(this._frames[this._currentFrame - 1].isStrike()) {
-    this._frames[this._currentFrame - 1].addStrikeBonus(pinsThisTurn);
+  if(this._frames[this._currentFrameIndex - 1].isSpare()) this._frames[this._currentFrameIndex - 1].addSpareBonus(pinsThisTurn);
+  if(this._frames[this._currentFrameIndex - 1].isStrike()) {
+    this._frames[this._currentFrameIndex - 1].addStrikeBonus(pinsThisTurn);
     // This makes sure addDoubleStrikeBonus doesn't get called when we score a strike on the first frame
-    // (which would break the program because this._frames[this._currentFrame - 2] doesn't exist yet)
+    // (which would break the program because this._frames[this._currentFrameIndex - 2] doesn't exist yet)
     if(this._frames.length > 2) this.addDoubleStrikeBonus(pinsThisTurn);
   };
 };
 
 Game.prototype.addDoubleStrikeBonus = function(pinsThisTurn) {
-  if(this._frames[this._currentFrame - 2].isStrike()) this._frames[this._currentFrame - 2].addStrikeBonus(pinsThisTurn);
+  if(this._frames[this._currentFrameIndex - 2].isStrike()) this._frames[this._currentFrameIndex - 2].addStrikeBonus(pinsThisTurn);
 }
 
 Game.prototype.calculateScore = function() {
@@ -54,5 +54,5 @@ Game.prototype.currentScore = function() {
 }
 
 Game.prototype.fetchCurrentBowl = function() {
-  return "#frame" + (this._currentFrame + 1) + "-bowl" + (this._frames[this._currentFrame].fetchCurrentBowl());
+  return "#frame" + (this._currentFrameIndex + 1) + "-bowl" + (this._frames[this._currentFrameIndex].fetchCurrentBowl());
 }

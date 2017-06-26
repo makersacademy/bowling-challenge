@@ -24,12 +24,12 @@ describe('Game', function() {
     });
   });
 
-  describe('_currentFrame', function() {
+  describe('_currentFrameIndex', function() {
 
     it('Knows the index of the current frame', function() {
-      expect(game._currentFrame).toEqual(0)
+      expect(game._currentFrameIndex).toEqual(0)
       for(var i = 0; i < 2; i++) { game.bowl(4); };
-      expect(game._currentFrame).toEqual(1);
+      expect(game._currentFrameIndex).toEqual(1);
     })
   })
 

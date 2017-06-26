@@ -14,6 +14,15 @@ function randomInt(maxNum) {
 
 var maxRoll = 11
 
+// Bowling.prototype.roll = function() {
+//   var rollOne = randomInt(maxRoll);
+//   this.firstScore = rollOne;
+//   this.rolls.push(this.firstScore)
+//   var rollTwo = randomInt(maxRoll - this.firstScore);
+//   this.secondScore = rollTwo;
+//   this.rolls.push(this.secondScore)
+//   return this.rolls
+// };
 
 Bowling.prototype.firstRoll = function () {
   var rollOne = randomInt(maxRoll);
@@ -37,6 +46,11 @@ Bowling.prototype.frameScore = function () {
 
 
 Bowling.prototype.frames = function () {
-  return this.rolls;
+var rollsScore = this.rolls
+if(rollsScore.length > 20) {
+  throw "Game Over!"
+} else {
+  return rollsScore
+}
 
 };

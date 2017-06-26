@@ -4,7 +4,6 @@ var Frame = function() {
   this._bowls = [null, null];
   this._currentBowl = 0
   this.remainingPins = 10
-  this._score = 0
   this._bonusScore = 0;
   this._strikeBonusesAdded = 0;
 };
@@ -18,7 +17,6 @@ Frame.prototype.bowl = function(pinsAmount) {
   if(this._currentBowl === 2 || this.remainingPins === 0) throw new Error('Cannot bowl - this frame is complete');
   this._bowls[this._currentBowl] = pinsAmount;
   this.remainingPins -= pinsAmount;
-  this._score += pinsAmount;
   this._currentBowl ++
 };
 
@@ -27,7 +25,7 @@ Frame.prototype.isComplete = function() {
 };
 
 Frame.prototype.score = function() {
-  return this._score;
+  return this._bowls[0] + this._bowls[1] + this._bonusScore;
 };
 
 Frame.prototype.isStrike = function() {

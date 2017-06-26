@@ -24,6 +24,21 @@ describe('Game', function() {
     });
   });
 
+  describe('updateCurrentFrame', function() {
+    it('Updates the index of the current frame', function() {
+      game._frames = [new Frame(), new Frame()];
+      game.updateCurrentFrame();
+      expect(game._currentFrameIndex).toEqual(1);
+    })
+
+    it('Updates the ._currentFrame property to point to the most recent frame', function() {
+      var frameSpy = createSpyObj('frame');
+      game._frames = [new Frame(), frameSpy];
+      game.updateCurrentFrame();
+      expect(game._currentFrame).toEqual(frameSpy);
+    })
+  })
+
   describe('_currentFrameIndex', function() {
 
     it('Knows the index of the current frame', function() {

@@ -32,7 +32,7 @@ describe('Game', function() {
     })
 
     it('Updates the ._currentFrame property to point to the most recent frame', function() {
-      var frameSpy = createSpyObj('frame');
+      var frameSpy = jasmine.createSpyObj('frame', ['score']);
       game._frames = [new Frame(), frameSpy];
       game.updateCurrentFrame();
       expect(game._currentFrame).toEqual(frameSpy);

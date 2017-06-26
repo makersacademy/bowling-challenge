@@ -1,7 +1,8 @@
 'use strict';
 
 var Game = function() {
-  this._frames = [new Frame()];
+  this._currentFrame = new Frame();
+  this._frames = [this._currentFrame];
   this._currentFrameIndex = 0;
   this._score = 0;
 };
@@ -16,15 +17,20 @@ Game.prototype.addNewFrame = function() {
   } else if(this._frames.length === 9) {
     this._frames.push(new TenthFrame);
   };
-  this._currentFrameIndex = this._frames.length - 1;
+  this.updateCurrentFrame();
 };
 
+Game.prototype.updateCurrentFrame = function() {
+  this._currentFrame = this._frames[this._frames.length - 1];
+  this._currentFrameIndex = this._frames.length - 1;
+}
+
 Game.prototype.bowl = function(pinsAmount) {
-  if(this._frames.length === 10 && this._frames[this._currentFrameIndex].isComplete()) throw new Error('Cannot bowl - game is complete');
+  if(this._frames.length === 10 && this._currentFrame.isComplete()) throw new Error('Cannot bowl - game is complete');
   if(!Number.isInteger(pinsAmount) || pinsAmount < 0) throw new Error('Argument must be an integer between 0 and 10');
-  this._frames[this._currentFrameIndex].bowl(pinsAmount);
+  this._currentFrame.bowl(pinsAmount);
   if(this._frames.length > 1) this.addBonuses(pinsAmount);
-  if(this._frames[this._currentFrameIndex].isComplete()) this.addNewFrame();
+  if(this._currentFrame.isComplete()) this.addNewFrame();
 };
 
 Game.prototype.addBonuses = function(pinsThisTurn) {
@@ -54,5 +60,5 @@ Game.prototype.currentScore = function() {
 }
 
 Game.prototype.fetchCurrentBowl = function() {
-  return "#frame" + (this._currentFrameIndex + 1) + "-bowl" + (this._frames[this._currentFrameIndex].fetchCurrentBowl());
+  return "#frame" + (this._currentFrameIndex + 1) + "-bowl" + (this._currentFrame.fetchCurrentBowl());
 }

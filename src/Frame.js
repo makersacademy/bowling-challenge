@@ -13,7 +13,7 @@ Frame.prototype.bowls = function() {
 };
 
 Frame.prototype.bowl = function(pinsAmount) {
-  if(this.remainingPins < pinsAmount) throw new Error('Error - cannot knock down more pins than are here! (' + this.remainingPins + ')');
+  if(this.remainingPins < pinsAmount) throw new Error(`Error - only ${this.remainingPins} pins remaining`);
   if(this._currentBowl === 2 || this.remainingPins === 0) throw new Error('Cannot bowl - this frame is complete');
   this._bowls[this._currentBowl] = pinsAmount;
   this.remainingPins -= pinsAmount;
@@ -39,14 +39,12 @@ Frame.prototype.isSpare = function() {
 Frame.prototype.addSpareBonus = function(pinsAmount) {
   if(this._bonusScore === 0) {
     this._bonusScore = pinsAmount;
-    this._score += pinsAmount;
   };
 };
 
 Frame.prototype.addStrikeBonus = function(pinsAmount) {
   if(this._strikeBonusesAdded < 2) {
     this._bonusScore += pinsAmount;
-    this._score += pinsAmount;
     this._strikeBonusesAdded ++;
   };
 };

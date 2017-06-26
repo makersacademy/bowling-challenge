@@ -11,7 +11,7 @@ describe('Game', function() {
 
     it('Starts out containing one frame', function() {
       var frames = game.frames();
-      expect(frames.length).toEqual(1)
+      expect(frames.length).toEqual(1);
     });
   });
 
@@ -42,7 +42,7 @@ describe('Game', function() {
   describe('_currentFrameIndex', function() {
 
     it('Knows the index of the current frame', function() {
-      expect(game._currentFrameIndex).toEqual(0)
+      expect(game._currentFrameIndex).toEqual(0);
       for(var i = 0; i < 2; i++) { game.bowl(4); };
       expect(game._currentFrameIndex).toEqual(1);
     })
@@ -66,9 +66,9 @@ describe('Game', function() {
   describe('bowl', function() {
 
     it('Throws an error unless the argument passed is a number between 0 and 10', function() {
-      expect(function() { game.bowl(-4); }).toThrow(new Error('Argument must be an integer between 0 and 10'))
-      expect(function() { game.bowl("hi"); }).toThrow(new Error('Argument must be an integer between 0 and 10'))
-      expect(function() { game.bowl(3.5); }).toThrow(new Error('Argument must be an integer between 0 and 10'))
+      expect(function() { game.bowl(-4); }).toThrow(new Error('Argument must be an integer between 0 and 10'));
+      expect(function() { game.bowl("hi"); }).toThrow(new Error('Argument must be an integer between 0 and 10'));
+      expect(function() { game.bowl(3.5); }).toThrow(new Error('Argument must be an integer between 0 and 10'));
     });
   });
 

@@ -25,7 +25,7 @@ Game.prototype.updateCurrentFrame = function() {
   this._currentFrame = this._frames[this._frames.length - 1];
   this._currentFrameIndex = this._frames.length - 1;
   this._lastFrame = this._frames[this._frames.length - 2];
-}
+};
 
 Game.prototype.bowl = function(pinsAmount) {
   if(this._frames.length === 10 && this._currentFrame.isComplete()) throw new Error('Cannot bowl - game is complete');
@@ -47,7 +47,7 @@ Game.prototype.addBonuses = function(pinsThisTurn) {
 
 Game.prototype.addDoubleStrikeBonus = function(pinsThisTurn) {
   if(this._frames[this._currentFrameIndex - 2].isStrike()) this._frames[this._currentFrameIndex - 2].addStrikeBonus(pinsThisTurn);
-}
+};
 
 Game.prototype.calculateScore = function() {
   var score = 0;
@@ -55,12 +55,12 @@ Game.prototype.calculateScore = function() {
     score += frame.score();
   });
   this._score = score;
-}
+};
 
 Game.prototype.currentScore = function() {
   return this._score;
-}
+};
 
 Game.prototype.fetchCurrentBowl = function() {
   return "#frame" + (this._currentFrameIndex + 1) + "-bowl" + (this._currentFrame.fetchCurrentBowl());
-}
+};

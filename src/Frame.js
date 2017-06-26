@@ -2,8 +2,8 @@
 
 var Frame = function() {
   this._bowls = [null, null];
-  this._currentBowl = 0
-  this.remainingPins = 10
+  this._currentBowl = 0;
+  this.remainingPins = 10;
   this._bonusScore = 0;
   this._strikeBonusesAdded = 0;
 };
@@ -50,5 +50,5 @@ Frame.prototype.addStrikeBonus = function(pinsAmount) {
 };
 
 Frame.prototype.fetchCurrentBowl = function() {
-  return this._currentBowl + 1
-}
+  return this._currentBowl + 1;
+};

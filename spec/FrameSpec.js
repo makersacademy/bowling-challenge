@@ -40,7 +40,7 @@ describe('Frame', function() {
 
     it('Prevents player from scoring more than the remaining pins', function() {
       expect(function(){ frame.bowl(11) }).toThrow(new Error('Error - only 10 pins remaining'));
-      frame.bowl(5)
+      frame.bowl(5);
       expect(function(){ frame.bowl(8) }).toThrow(new Error('Error - only 5 pins remaining'));
     });
   });
@@ -111,7 +111,7 @@ describe('Frame', function() {
       frame.addSpareBonus(7);
       frame.addSpareBonus(2);
       expect(frame._bonusScore).toEqual(7);
-    })
+    });
   });
 
   describe('addStrikeBonus', function() {
@@ -128,6 +128,6 @@ describe('Frame', function() {
       frame.addStrikeBonus(5);
       frame.addStrikeBonus(2);
       expect(frame._bonusScore).toEqual(15);
-    })
+    });
   });
 });

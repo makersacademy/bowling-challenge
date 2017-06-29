@@ -1,7 +1,24 @@
+[![Build Status](https://travis-ci.org/y0m0/bowling-challenge.svg?branch=master)](https://travis-ci.org/charlottebrf/bowling-challenge)
+
+
+## User Stories
+```
+As a player
+so that I can play a game of bowling
+I want to be able to roll
+
+
+As a player
+so that I can see how well I'am playing
+I want to see my score for the current frame
+
+As a player
+so that I can calculate my score
+I want to see my score for the frame including any bonus
+```
 
 Bowling Challenge
 =================
-
 
 * Challenge time: rest of the day and weekend, and the entire of Makersbnb week if you need it, until Monday 9am
 * Feel free to use google, your notes, books, etc. but work on your own

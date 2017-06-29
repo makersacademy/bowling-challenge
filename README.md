@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/charlottebrf/bowling-challenge.svg?branch=master)](https://travis-ci.org/charlottebrf/bowling-challenge)
+[![Build Status](https://travis-ci.org/y0m0/bowling-challenge.svg?branch=master)](https://travis-ci.org/charlottebrf/bowling-challenge)
 
 
 ## User Stories

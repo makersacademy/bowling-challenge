@@ -1,0 +1,67 @@
+body {
+  margin: auto;
+  text-align: center;
+  font-family: impact;
+  background: white; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, white, #efefda); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, white, #efefda); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, white, #efefda); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, white, #efefda); /* Standard syntax (must be last) */
+}
+
+.frames  {
+  border-collapse:collapse;
+  border-spacing:0;
+  border-color:#ccc;
+  margin: auto;
+}
+.frames td{font-family:Arial, sans-serif;
+  font-size:14px;
+  padding:10px 5px;
+  border-style:solid;
+  border-width:1px;
+  overflow:hidden;
+  word-break:normal;
+  border-color:#ccc;
+  color:#333;
+  background-color:#fff;
+  width: 25px;
+  height: 20px;
+}
+.frames th{font-family:Arial, sans-serif;
+  font-size:14px;
+  font-weight:bold;
+  padding:10px 5px;
+  border-style:solid;
+  border-width:1px;
+  overflow:hidden;
+  word-break:normal;
+  border-color:#ccc;
+  color:#333;
+  background-color:#91abd6;
+  height: 20px;
+  color: white;
+}
+
+h1 {
+  background-color: #0441a3;
+  color: white;
+  font-size:300%;
+}
+
+h2 {
+  background-color: #cc110e;
+  color: white;
+}
+
+button {
+  font-size:150%;
+  font-weight:bold;
+  background-color:#91abd6;
+  color: white;
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}

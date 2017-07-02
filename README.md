@@ -4,10 +4,9 @@ Bowling Scoreboard
 ==================
 #### Quickstart
 
-```sh
+```
 $ git clone git@github.com:adamjohnsnow/bowling-challenge.git
 $ cd bowling-challenge
-$ open jasmineRunner.html
 $ open bowling.html
 ```
 #### Screenshot

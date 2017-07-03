@@ -28,3 +28,4 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 * It does not need to be run through a server.
 * Open index.html in your browser.
 * Click the link in the top right hand corner for the Jasmine SpecRunner test suite.
+* The tests use HTMLFixtures

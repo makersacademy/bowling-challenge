@@ -23,7 +23,7 @@ describe('Game', function() {
     });
 
     it('allows user to throw first ball', function() {
-      game.throwFirstBall(pins)
+      game.throwFirstBall(pins.pinsDownFirstThrow)
       expect(game.frames[0].length).toBe(1);
     });
   });

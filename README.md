@@ -1,5 +1,4 @@
 # Bowling Challenge
-=================
 A program written in JavaScript in 2 days to model the functionality of a game of bowling and its surprisingly tricky scoring system.
 
 ## Approach
@@ -18,7 +17,7 @@ Load the SpecRunner.html file path on the browser:
 ## How to run the program:
 - Open the dev tools in the browser tab where the tests are running
 - Click on the console tab
-- Example:
+- Simple example:
 ```
 var game = new Game();
 
@@ -40,7 +39,7 @@ score.calculateScore(game.frames);
 7
 ```
 ## If I had more time
-I would add a front end interactive web page for the user to be able to play. Also, I would probably switch the logic to run it in NodeJS so I could make use of libraries such as Express for setting up the server and Angular for calling the functions when I wanted them to be triggered.
+I would add a front end interactive web page for the user to be able to play. Also, I would probably switch the logic to run it in NodeJS so I could make use of frameworks such as Express for setting up the server and Angular for calling the functions when I wanted them to be triggered.
 
 ## If you want an example of how bowling scoring works:
 

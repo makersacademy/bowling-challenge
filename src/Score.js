@@ -17,11 +17,11 @@ Score.prototype.strikeScore = function(frame, i) {
 Score.prototype.calculateScore = function(frame) {
   for(i = 0; i < frame.length; i++) {
     if (frame[i][0] + frame[i][1] < 10) {
-      this.currentScore = this.currentScore + this.normalScore(frame, i);
+      this.currentScore += this.normalScore(frame, i);
     } else if ((frame[i][0] + frame[i][1] == 10) && (frame[i][0] !== 10)) {
-      this.currentScore = this.currentScore + this.spareScore(frame, i);
+      this.currentScore += this.spareScore(frame, i);
     } else {
-      this.currentScore = this.currentScore + this.strikeScore(frame, i);
+      this.currentScore += this.strikeScore(frame, i);
     }
   };
   return this.currentScore;

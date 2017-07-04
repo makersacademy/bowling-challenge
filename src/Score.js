@@ -23,6 +23,6 @@ Score.prototype._calculateScore = function(frame) {
     } else {
       this._currentScore = this._currentScore + this.strikeScore(frame, i);
     }
-  }
+  };
   return this._currentScore;
 };

@@ -12,16 +12,16 @@ describe('Score', function() {
   });
 
   it('sums up score for the first frame', function(done) {
-    score._calculateScore(game._frames);
-    expect(score._currentScore).toBe(game._frames[0][0] + game._frames[0][1]);
+    score.calculateScore(game.frames);
+    expect(score.currentScore).toBe(game.frames[0][0] + game.frames[0][1]);
     done();
   });
 
   it('sums up score for the second frame', function(done) {
     game.throwFirstBall(5);
     game.throwSecondBall(3);
-    score._calculateScore(game._frames);
-    expect(score._currentScore).toBe(16);
+    score.calculateScore(game.frames);
+    expect(score.currentScore).toBe(16);
     done();
   });
 
@@ -30,8 +30,8 @@ describe('Score', function() {
     game.throwSecondBall(3);
     game.throwFirstBall(6);
     game.throwSecondBall(2);
-    score._calculateScore(game._frames);
-    expect(score._currentScore).toBe(24);
+    score.calculateScore(game.frames);
+    expect(score.currentScore).toBe(24);
     done();
   });
 
@@ -47,8 +47,8 @@ describe('Score', function() {
       game.throwSecondBall(1);
       game.throwFirstBall(4);
       game.throwSecondBall(3);
-      score._calculateScore(game._frames);
-      expect(score._currentScore).toBe(21);
+      score.calculateScore(game.frames);
+      expect(score.currentScore).toBe(21);
       done();
     });
 
@@ -61,8 +61,8 @@ describe('Score', function() {
       game.throwSecondBall(1);
       game.throwFirstBall(4);
       game.throwSecondBall(3);
-      score._calculateScore(game._frames);
-      expect(score._currentScore).toBe(40);
+      score.calculateScore(game.frames);
+      expect(score.currentScore).toBe(40);
       done();
     });
   });
@@ -79,8 +79,8 @@ describe('Score', function() {
       game.throwSecondBall(0);
       game.throwFirstBall(4);
       game.throwSecondBall(3);
-      score._calculateScore(game._frames);
-      expect(score._currentScore).toBe(24);
+      score.calculateScore(game.frames);
+      expect(score.currentScore).toBe(24);
       done();
     });
 
@@ -93,8 +93,8 @@ describe('Score', function() {
       game.throwSecondBall(0);
       game.throwFirstBall(4);
       game.throwSecondBall(3);
-      score._calculateScore(game._frames);
-      expect(score._currentScore).toBe(44);
+      score.calculateScore(game.frames);
+      expect(score.currentScore).toBe(44);
       done();
     });
   });
@@ -108,8 +108,8 @@ describe('Score', function() {
     game.throwSecondBall(1);
     game.throwFirstBall(4);
     game.throwSecondBall(3);
-    score._calculateScore(game._frames);
-    expect(score._currentScore).toBe(41);
+    score.calculateScore(game.frames);
+    expect(score.currentScore).toBe(41);
     done();
   });
 });

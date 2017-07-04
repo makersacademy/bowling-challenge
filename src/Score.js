@@ -1,5 +1,5 @@
 function Score() {
-  this._currentScore = 0;
+  this.currentScore = 0;
 }
 
 Score.prototype.normalScore = function(frame, i) {
@@ -14,15 +14,15 @@ Score.prototype.strikeScore = function(frame, i) {
   return this.spareScore(frame, i) + frame[i + 1][1];
 };
 
-Score.prototype._calculateScore = function(frame) {
+Score.prototype.calculateScore = function(frame) {
   for(i = 0; i < frame.length; i++) {
     if (frame[i][0] + frame[i][1] < 10) {
-      this._currentScore = this._currentScore + this.normalScore(frame, i);
+      this.currentScore = this.currentScore + this.normalScore(frame, i);
     } else if ((frame[i][0] + frame[i][1] == 10) && (frame[i][0] !== 10)) {
-      this._currentScore = this._currentScore + this.spareScore(frame, i);
+      this.currentScore = this.currentScore + this.spareScore(frame, i);
     } else {
-      this._currentScore = this._currentScore + this.strikeScore(frame, i);
+      this.currentScore = this.currentScore + this.strikeScore(frame, i);
     }
   };
-  return this._currentScore;
+  return this.currentScore;
 };

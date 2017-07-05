@@ -112,19 +112,22 @@ $(document).ready(function () {
   } // end of displayLastFrame()
 
   function resetGame() {
-    allFramesPlayed = false;
-    // clear all ball throws values from the UI
-    $('input').val('');
-    // clear total score
-    $('#total-score').val('');
-    // delete all frame instances and ball instances
-    for(var i = 0; i < bowlingGame.MAX_FRAMES; i++) {
-      for(var j = 0; j < bowlingGame.getFrameSize(); j++) {
-        bowlingGame._frames[i][j] = null;
-        delete bowlingGame._frames[i][j];
+    if (allFramesPlayed) {
+      allFramesPlayed = false;
+      // clear all ball throws values from the UI
+      $('input').val('');
+      // clear total score
+      $('#total-score').val('');
+      // delete all frame instances and ball instances
+      for(var i = 0; i < bowlingGame.MAX_FRAMES; i++) {
+        for(var j = 0; j < bowlingGame.getFrameSize(); j++) {
+          bowlingGame._frames[i][j] = null;
+          delete bowlingGame._frames[i][j];
+        }
+        bowlingGame._frames[i] = null;
+        delete bowlingGame._frames[i];
       }
-      bowlingGame._frames[i] = null;
-      delete bowlingGame._frames[i];
+      bowlingGame._frames = []
     }
   } // end of resetGame()
 

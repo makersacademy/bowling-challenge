@@ -9,7 +9,7 @@ function Ball() {
 }
 
 Ball.prototype.roll = function (pins) {
-  this.throw =  Math.floor((Math.random() * pins));
+  this.throw =  Math.floor((Math.random() * (pins + 1) ));
 };
 
 Ball.prototype.getThrow = function () {

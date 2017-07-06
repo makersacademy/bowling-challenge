@@ -76,7 +76,6 @@ $(document).ready(function () {
     var ballId = '#ball' + n;
     var frameN = bowlingGame._frames[n];
     var firstThrow = frameN.balls[0].getThrow();
-    var secondThrow = frameN.balls[1].getThrow();
 
     if (firstThrow === 10) {
       $(ballId + 1).val('x'); // this throw was a strike
@@ -84,6 +83,7 @@ $(document).ready(function () {
     else {
       $(ballId + 1).val(firstThrow);
       // ball no.2 should exist
+      var secondThrow = frameN.balls[1].getThrow();
       if (frameN.remainingPins === 0) {
         $(ballId + 2).val('/'); // this throw was a spare
       }
@@ -119,8 +119,8 @@ $(document).ready(function () {
       // clear total score
       $('#total-score').val('');
       // delete all frame instances and ball instances
-      for(var i = 0; i < bowlingGame.MAX_FRAMES; i++) {
-        for(var j = 0; j < bowlingGame.getFrameSize(); j++) {
+      for(var i = 0; i < bowlingGame.getNumOfFrames(); i++) {
+        for(var j = 0; j < bowlingGame._frames[i].getFrameSize(); j++) {
           bowlingGame._frames[i][j] = null;
           delete bowlingGame._frames[i][j];
         }

@@ -109,4 +109,36 @@ describe("BowlingGame", function () {
       });
     });
   });
+
+  describe("#score", function () {
+    beforeEach(function () {
+      bowlingGame.startGame();
+      bowlingGame.roll(5);
+      bowlingGame.roll(2);
+
+      bowlingGame.roll(8);
+      bowlingGame.roll(2);
+    });
+
+    it("returns the player's current score", function () {
+      expect(bowlingGame.score()).toEqual(17);
+    });
+
+    describe("After a Spare", function () {
+      it("returns the correct score", function () {
+        bowlingGame.roll(3);
+        bowlingGame.roll(6);
+        expect(bowlingGame.score()).toEqual(28);
+      });
+    });
+
+    describe("After a Strike", function () {
+      it("returns the correct score", function () {
+        bowlingGame.roll(10);
+        bowlingGame.roll(2);
+        bowlingGame.roll(2);
+        expect(bowlingGame.score()).toEqual(47);
+      });
+    });
+  });
 });

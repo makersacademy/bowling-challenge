@@ -3,6 +3,33 @@ function BowlingGame() {
   this.frames = [];
 };
 
+BowlingGame.prototype.startGame = function () {
+  for (var i = 0; i < 2; i++) {
+    this._newFrame();
+  }
+  this.frameIndex = 1;
+};
+
+BowlingGame.prototype.roll = function (pins) {
+  this._currentFrame().numberOfRolls++;
+  if (this._currentFrame().numberOfRolls === 2) {
+    this._currentFrame().ball2 = pins;
+    this._checkSpare();
+    this._calculateFrameScore();
+  } else {
+    this._checkStrike(pins);
+    this._currentFrame().ball1 = pins;
+  }
+};
+
+BowlingGame.prototype.score = function () {
+  var score = 0;
+  for (var i = 0; i < this.frames.length; i++) {
+    score += this.frames[i].score
+  }
+  return score;
+};
+
 BowlingGame.prototype._newFrame = function () {
   frame = {
     ball1: 0,
@@ -72,22 +99,5 @@ BowlingGame.prototype._checkStrike = function (pins) {
     this._currentFrame().ball1 = this._previousFrame().ball2
     this._currentFrame().ball2 = pins
     this._calculateFrameScore();
-  }
-};
-
-BowlingGame.prototype.startGame = function () {
-  this.frames.push(0);
-  this._newFrame();
-};
-
-BowlingGame.prototype.roll = function (pins) {
-  this._currentFrame().numberOfRolls++;
-  if (this._currentFrame().numberOfRolls === 2) {
-    this._currentFrame().ball2 = pins;
-    this._checkSpare();
-    this._calculateFrameScore();
-  } else {
-    this._checkStrike(pins);
-    this._currentFrame().ball1 = pins;
   }
 };

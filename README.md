@@ -6,21 +6,21 @@ Bowling Challenge
 
 To run tests type the following in your terminal:
 
-'''
-$ git clone https://github.com/sblausten/bowling-challenge.git
-$ cd bowling-challenge
-$ open SpecRunner.html
+'''bash
+git clone https://github.com/sblausten/bowling-challenge.git
+cd bowling-challenge
+open SpecRunner.html
 '''
 
 ## User stories
 
-- As a player 
+- As a player
 so that I can play
 I want to start a game of bowling
 
-- As a player 
-so that I can score 
-I want to roll 
+- As a player
+so that I can score
+I want to roll
 
 - As a player
 I want to have two rolls per frame
@@ -28,28 +28,25 @@ I want to have two rolls per frame
 - As a player
 I want to end a frame when I score 10 in first roll
 
-- As a player 
+- As a player
 I want to keep track of my score for each roll including skipped ones
 
-- As a player 
+- As a player
 I want to keep track of my score for each frame including bonuses
 
-As a player 
+As a player
 I want to add this frame to the last frame if it was a strike
 
-As a player 
+As a player
 I want to add the first roll to the last frame if it was a spare
 
-As a player
+- As a player
 I want the game to end after 10 frames
 
-As a player
-I want the game to continue after 10 frames if the last frame is a strike
-
-As a player 
+- As a player
 I want the game to only continue past 10 frames when the frame is a strike
 
-As a player 
+- As a player
 I want the game to end after 13 frames if the last four frames are strikes.
 
 

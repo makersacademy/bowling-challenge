@@ -9,4 +9,8 @@ describe("Game", function() {
   it('initializes with an empty array for the frames', function(){
     expect(game.frames).toEqual([]);
   });
+
+  it('initializes with a score of 0', function() {
+    expect(game.score).toEqual(0);
+  });
 });

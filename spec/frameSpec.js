@@ -20,6 +20,12 @@ describe("Frame", function(){
     it("will create a max score of ten", function(){
       expect(frame.MAX_SCORE).toEqual(10)
     });
-
   });
+
+  describe("#total", function(){
+    it("will sum the score of rolls", function(){
+      expect(frame.total()).toEqual(12);
+    });
+  });
+
 });

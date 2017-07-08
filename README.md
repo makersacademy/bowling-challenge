@@ -4,13 +4,17 @@ Bowling Challenge
 
 ## Instructions
 
-To run tests type the following in your terminal:
-
-'''bash
+### To get a local copy:
+```bash
 git clone https://github.com/sblausten/bowling-challenge.git
 cd bowling-challenge
-open SpecRunner.html
-'''
+```
+
+### To run tests
+
+```bash
+jasmine
+```
 
 ## User stories
 

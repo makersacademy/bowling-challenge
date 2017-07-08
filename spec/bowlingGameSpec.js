@@ -15,9 +15,9 @@ describe("BowlingGame", function () {
     });
   });
 
-  describe("#newFrame", function () {
+  describe("#startGame", function () {
     beforeEach(function () {
-      bowlingGame.newFrame();
+      bowlingGame.startGame();
     });
 
     it("creates a new frame", function () {
@@ -31,11 +31,15 @@ describe("BowlingGame", function () {
     it("has a score", function () {
       expect(bowlingGame.frames[1].score).toBe(0)
     });
+
+    it("tracks if the frame was a spare", function () {
+      expect(bowlingGame.frames[1].spare).toBe(false)
+    });
   })
 
   describe("#roll", function () {
     beforeEach(function () {
-      bowlingGame.newFrame();
+      bowlingGame.startGame();
       bowlingGame.roll(5);
       bowlingGame.roll(3);
     });
@@ -58,14 +62,21 @@ describe("BowlingGame", function () {
       });
     });
 
-    describe("Strike", function () {
+    describe("Spare", function () {
       beforeEach(function () {
-        bowlingGame.newFrame();
-        bowlingGame.roll(10);
+        bowlingGame.roll(8);
+        bowlingGame.roll(2);
+
+        bowlingGame.roll(2);
+        bowlingGame.roll(4);
       });
 
-      xit("", function () {
+      it("registers a spare", function () {
+        expect(bowlingGame.frames[2].spare).toBeTruthy();
+      });
 
+      it("correctly scores the next frame", function () {
+        expect(bowlingGame.frames[3].score).toEqual(8);
       });
     });
   });

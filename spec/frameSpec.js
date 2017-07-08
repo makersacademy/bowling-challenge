@@ -64,4 +64,21 @@ describe('Frame', function() {
       }).toThrowError('The sum cannot be bigger than 10');
     });
   });
+
+  describe('#isStrike', function() {
+    it('checks whether the first roll is a 10', function() {
+      frame.recordRoll(10);
+      expect(frame.isStrike()).toEqual(true);
+      expect
+    });
+  });
+
+  describe('#isSpare', function() {
+    it('checks whether the two rolls add up to 10', function() {
+      frame.recordRoll(4);
+      frame.recordRoll(6);
+      expect(frame.isSpare()).toEqual(true);
+      expect
+    });
+  });
 });

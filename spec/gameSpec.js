@@ -3,15 +3,15 @@ describe("Game", function(){
 
   var game;
 
-  beforeEach() {
+  beforeEach(function(){
     game = new Game();
-  };
+  });
 
   describe("init", function(){
     it("will have an empty record of frames", function(){
-      expect(frame._rolls.constructor).toBe(Array);
-      expect(frame._rolls.length).toEqual(0);
+      expect(game._frames.constructor).toBe(Array);
+      expect(game._frames.length).toEqual(0);
     });
   });
-  
+
 });

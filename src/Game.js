@@ -1,19 +1,20 @@
 'use strict';
+var scoreCard;
 
-function Game() {
+function Game () {
   this.scoreCard = [];
   this.totalScore = 0;
   this.MAX_FRAMES = 10;
   this.currentFrame = null;
-  const scoreCard = new ScoreCard();
+  scoreCard = new ScoreCard();
 }
 
-Game.prototype.play = function() {
+Game.prototype.play = function () {
   this.roll();
   this.checkFrame();
 };
 
-Game.prototype.checkGameEnd = function() {
+Game.prototype.checkGameEnd = function () {
   if (this.turn < this.MAX_TURNS ||
     (scorecard[scorecard.length - 1][0] === 10 || scorecard.length < 14)) {
     return;
@@ -21,20 +22,20 @@ Game.prototype.checkGameEnd = function() {
   this.endGame();
 };
 
-Game.prototype.countFrames = function() {
+Game.prototype.countFrames = function () {
   return scorecard.length;
 };
 
-Game.prototype.checkFrame = function() {
+Game.prototype.checkFrame = function () {
   if (this.currentFrame === null) {
-    this.currentFrame = new Frame;
+    this.currentFrame = new Frame();
   }
 };
 
-Game.prototype.roll = function() {
+Game.prototype.roll = function () {
   this.currentFrame.roll();
 };
 
-Gamr.prototype.endGame = function() {
-  return "Game over!";
+Game.prototype.endGame = function () {
+  return 'Game over!';
 };

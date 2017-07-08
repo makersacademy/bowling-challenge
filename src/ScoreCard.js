@@ -1,20 +1,22 @@
-function ScoreCard() {
+'use strict';
+
+function ScoreCard () {
   this.frames = [];
   this.total = 0;
 }
 
-Game.prototype.getTotal = function() {
-  return this.totalScore;
+ScoreCard.prototype.getTotal = function () {
+  return this.total;
 };
 
-Game.prototype.getFrames = function() {
-  return this.scoreCard;
+ScoreCard.prototype.getFrames = function () {
+  return this.frames;
 };
 
-Game.prototype.updateTotal = function(subtotal) {
-  this.totalScore += subtotal;
+ScoreCard.prototype.updateTotal = function (subtotal) {
+  this.total += subtotal;
 };
 
-Game.prototype.updateFrames = function(frame) {
-  this.scoreCard.push(frame);
+ScoreCard.prototype.updateFrames = function (frame) {
+  this.frames.push(frame);
 };

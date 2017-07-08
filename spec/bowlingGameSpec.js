@@ -7,7 +7,7 @@ describe("BowlingGame", function () {
 
   describe("Initialisation", function () {
     it("has a frame index", function () {
-      expect(bowlingGame.frameIndex).toEqual(1)
+      expect(bowlingGame.frameIndex).toEqual(0)
     });
 
     it("has a frames array", function () {
@@ -34,6 +34,10 @@ describe("BowlingGame", function () {
 
     it("tracks if the frame was a spare", function () {
       expect(bowlingGame.frames[1].spare).toBe(false)
+    });
+
+    it("tracks if the frame was a strike", function () {
+      expect(bowlingGame.frames[1].strike).toBe(false)
     });
   })
 
@@ -77,6 +81,31 @@ describe("BowlingGame", function () {
 
       it("correctly scores the next frame", function () {
         expect(bowlingGame.frames[3].score).toEqual(8);
+      });
+    });
+
+    describe("Strike", function () {
+      beforeEach(function () {
+        bowlingGame.roll(10);
+      });
+
+      it("registers a strike", function () {
+        expect(bowlingGame.frames[2].strike).toBeTruthy();
+      });
+
+      it("continues to the next frame", function () {
+        expect(bowlingGame.frameIndex).toBe(3)
+      });
+
+      it("correctly scores the next frame", function () {
+        bowlingGame.roll(4);
+        bowlingGame.roll(4);
+        expect(bowlingGame.frames[3].score).toEqual(21)
+      });
+
+      it("correctly scores multiple strikes", function () {
+        bowlingGame.roll(10);
+        expect(bowlingGame.frames[3].score).toEqual(33)
       });
     });
   });

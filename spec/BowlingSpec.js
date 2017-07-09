@@ -8,6 +8,12 @@ describe('Bowling', function() {
     bowling = new Bowling();
   });
 
+  var helperRoll = function(pins, rolls) {
+    for (var i = 0; i < rolls; i++) {
+      bowling.roll(pins);
+  }
+}; 
+
   describe('Inital conditions', function() {
     it('frameNumber set to 1', function() {
       expect(bowling.getFrameNumber()).toEqual(1);
@@ -49,11 +55,64 @@ describe('Bowling', function() {
     });
   });
 
+  describe('getCurrentScore', function() {
+    it('of a simple frame', function() {
+      bowling.roll(3);
+      bowling.roll(4);
+      expect(bowling.getCurrentScore()).toEqual(7);
+    });
 
-  var helperRoll = function(pins, rolls) {
-    for (var i = 0; i < rolls; i++) {
-      bowling.roll(pins);
-    }
-  };
+    it('of a strike', function() {
+      bowling.roll(10);
+      bowling.roll(4);
+      bowling.roll(5);
+      expect(bowling.getCurrentScore()).toEqual(28);
+    });
+
+    it('of a spare', function() {
+      helperRoll(5,3);
+      bowling.roll(3);
+      expect(bowling.getCurrentScore()).toEqual(23);
+    });
+
+    it('of an incomplete strike (without next 2 rolls)', function() {
+      helperRoll(3,2);
+      bowling.roll(10);
+      expect(bowling.getCurrentScore()).toEqual(6);
+    });
+
+    it('of an incomplete spare (without next roll)', function() {
+      helperRoll(3,2);
+      bowling.roll(4);
+      bowling.roll(6);
+      expect(bowling.getCurrentScore()).toEqual(6);
+    });
+  });
+
+  describe('tenth frame', function() {
+    it('gets bonus if strike', function() {
+      helperRoll(1,18);
+      bowling.roll(10);
+      bowling.roll(2);
+      bowling.roll(5);
+      expect(bowling.getCurrentScore()).toEqual(35);
+    });
+
+    it('gets bonus if spare', function() {
+      helperRoll(2,18);
+      bowling.roll(1);
+      bowling.roll(9);
+      bowling.roll(10);
+      expect(bowling.getCurrentScore()).toEqual(56);
+    });
+
+    it('doesnt get a bonus if no strike or spare', function() {
+      helperRoll(3,18);
+      bowling.roll(2);
+      bowling.roll(6);
+      bowling.roll(5);
+      expect(bowling.getCurrentScore()).toEqual(62);
+    });
+  });
 });
 

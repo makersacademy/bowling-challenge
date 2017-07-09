@@ -35,3 +35,52 @@ Bowling.prototype.isFrameComplete = function() {
     return false;
   }
 };
+
+Bowling.prototype.getCurrentScore = function() {
+  var gameScore = 0;
+  var rollIndex = 0;
+  var game = this;
+
+  function isStrike() {
+    return game.rolls[rollIndex] === 10;
+  }
+
+  function isSpare() {
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] === 10;
+  }
+
+  function getStrikeScore() {
+    if (typeof game.rolls[rollIndex + 2] === 'undefined') {
+        return 0;
+    } else {
+        return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
+    }
+  }
+
+  function getSpareScore() {
+    if (typeof game.rolls[rollIndex + 2] === 'undefined') {
+        return 0;
+    } else {
+        return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];
+    }
+  }
+
+  function getNormalScore() {
+    return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
+  }
+
+
+  for (var frameIndex = 0; frameIndex < this.frameNumber-1; frameIndex++) {
+    if (isStrike()) {
+      gameScore += getStrikeScore();
+      rollIndex += 1;
+    } else if (isSpare()) {
+      gameScore += getSpareScore();
+      rollIndex += 2;
+    } else {
+      gameScore += getNormalScore();
+      rollIndex += 2;
+    }
+  }
+  return gameScore;
+}

@@ -56,19 +56,6 @@ Frame.prototype.totalScore = function(nextFrame, thirdFrame) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
  function Game(){
    this._frames = []
  };

@@ -31,11 +31,10 @@ Frame.prototype = {
 
   updateFrameScore: function (rollScore) {
     if (this.getFrameScore().length > 1) {
-      throw Error('Game has tried to play a full frame');
+      throw Error('Game has tried to play another roll on a full frame');
+    } else if (rollScore < 0 || rollScore > 10 || rollScore === undefined) {
+      throw TypeError('not passed a valid number - score is ' + rollScore);
     }
-    // else if (!(rollScore instanceof 'Integer'){
-    //   throw TypeError('not passed a number');
-    // }
     this.frameScore.push(rollScore);
     this.updateRollCount();
   },
@@ -49,7 +48,7 @@ Frame.prototype = {
   },
 
   checkFullFrame: function () {
-    if (this.getRollCount() === 2) {
+    if (this.getRollCount() > 1) {
       this.updateIsFinished(true);
     }
   },
@@ -62,19 +61,23 @@ Frame.prototype = {
     this.isFinished = boolean;
   },
 
+  getScoreCard: function () {
+    return this.scoreCard;
+  },
+
   updateScoreCard: function () {
     this.getScoreCard().updateCard(this.getFrameScore());
   },
 
   getFrameScore: function () {
     return this.frameScore;
-  },
-
-  getLastFrameScore: function () {
-    var lastScore = this.getFrameScore()[this.getFameScore().length - 1];
-    if (lastScore === 'undefined') {
-      throw Error('Tried to update scorecard with no score in frame');
-    }
-    return lastScore;
   }
+
+  // getLastFrameScore: function () {
+  //   var lastScore = this.getFrameScore()[this.getFameScore().length - 1];
+  //   if (lastScore === 'undefined') {
+  //     throw Error('Tried to update scorecard with no score in frame');
+  //   }
+  //   return lastScore;
+  // }
 };

@@ -43,6 +43,14 @@ describe('ScoreCard', function () {
     });
   });
 
+  describe('isFullFrame', function () {
+    it('returns true if 2 items in last array of card', function () {
+      spyOn(card, 'getLastFrame').and.returnValue([1, 3]);
+      expect(card.isFullFrame()).toBe(true);
+      expect(card.getLastFrame).toHaveBeenCalled();
+    });
+  });
+
   describe('getLastFrame', function () {
     it('returns last item in this.card as an array', function () {
       card.card = [[1, 1], [5, 0]];

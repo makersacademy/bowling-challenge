@@ -1,122 +1,47 @@
 describe("BowlingGame", function () {
-  var bowlingGame;
+  var bowlingGame,
+      scoreMock;
 
   beforeEach(function () {
     bowlingGame = new BowlingGame();
-    bowlingGame.startGame();
+    scoreMock = jasmine.createSpyObj('score', ['record', 'total', 'newFrame'])
   });
 
   describe("Initialisation", function () {
-    it("has a frame index", function () {
-      expect(bowlingGame.frameIndex).toEqual(1)
-    });
-
-    it("has a frames array", function () {
-      expect(bowlingGame.frames.constructor).toBe(Array)
+    it("has a blank score", function () {
+      expect(bowlingGame.score).toEqual(0);
     });
   });
 
-  describe("#startGame", function () {
-    it("creates a new frame", function () {
-      expect(bowlingGame.frames[1].constructor).toBe(Frame)
-    });
-  });
-
-  describe("#roll", function () {
+  describe("Methods", function () {
     beforeEach(function () {
-      bowlingGame.roll(5);
-      bowlingGame.roll(3);
+      bowlingGame.begin(scoreMock);
     });
-
-    it("adds the score for the first roll to the current frame", function () {
-      expect(bowlingGame.frames[1].ball1).toBe(5)
-    });
-
-    it("adds the score for the second roll to the current frame", function () {
-      expect(bowlingGame.frames[1].ball2).toBe(3)
-    });
-
-    it("continues to the next frame", function () {
-      expect(bowlingGame.frameIndex).toBe(2)
-    });
-
-    describe("Neither a strike nor spare", function () {
-      it("calculates the score", function () {
-        expect(bowlingGame.frames[1].score).toBe(8)
+    
+    describe("#begin", function () {
+      it("starts a new game", function () {
+        expect(bowlingGame.score).not.toBe(0)
       });
     });
 
-    describe("Spare", function () {
+    describe("#roll", function () {
+      it("returns the number of pins knocked down", function () {
+        expect(bowlingGame.roll(10)).toEqual(10);
+      });
+    });
+
+    describe("#getScore", function () {
       beforeEach(function () {
+        bowlingGame.roll(5);
+        bowlingGame.roll(2);
+
         bowlingGame.roll(8);
         bowlingGame.roll(2);
-
-        bowlingGame.roll(2);
-        bowlingGame.roll(4);
       });
 
-      it("registers a spare", function () {
-        expect(bowlingGame.frames[2].spare).toBeTruthy();
-      });
-
-      it("correctly scores the next frame", function () {
-        expect(bowlingGame.frames[3].score).toEqual(8);
-      });
-    });
-
-    describe("Strike", function () {
-      beforeEach(function () {
-        bowlingGame.roll(10);
-      });
-
-      it("registers a strike", function () {
-        expect(bowlingGame.frames[2].strike).toBeTruthy();
-      });
-
-      it("continues to the next frame", function () {
-        expect(bowlingGame.frameIndex).toBe(3)
-      });
-
-      it("correctly scores the next frame", function () {
-        bowlingGame.roll(4);
-        bowlingGame.roll(4);
-        expect(bowlingGame.frames[3].score).toEqual(21)
-      });
-
-      it("correctly scores multiple strikes", function () {
-        bowlingGame.roll(10);
-        expect(bowlingGame.frames[3].score).toEqual(33)
-      });
-    });
-  });
-
-  describe("#score", function () {
-    beforeEach(function () {
-      bowlingGame.roll(5);
-      bowlingGame.roll(2);
-
-      bowlingGame.roll(8);
-      bowlingGame.roll(2);
-    });
-
-    it("returns the player's current score", function () {
-      expect(bowlingGame.score()).toEqual(17);
-    });
-
-    describe("After a Spare", function () {
-      it("returns the correct score", function () {
-        bowlingGame.roll(3);
-        bowlingGame.roll(6);
-        expect(bowlingGame.score()).toEqual(28);
-      });
-    });
-
-    describe("After a Strike", function () {
-      it("returns the correct score", function () {
-        bowlingGame.roll(10);
-        bowlingGame.roll(2);
-        bowlingGame.roll(2);
-        expect(bowlingGame.score()).toEqual(47);
+      it("returns the player's current score", function () {
+        scoreMock.total.and.returnValue(17);
+        expect(bowlingGame.getScore()).toEqual(17);
       });
     });
   });

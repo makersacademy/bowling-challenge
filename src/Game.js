@@ -1,41 +1,44 @@
 'use strict';
-var scoreCard;
+// const MAX_TURNS = 13;
 
 function Game () {
-  this.scoreCard = [];
-  this.totalScore = 0;
-  this.MAX_FRAMES = 10;
-  this.currentFrame = null;
-  scoreCard = new ScoreCard();
+  this.scoreCard = new ScoreCard();
+  this.currentFrame = new Frame(this.scoreCard);
 }
 
-Game.prototype.play = function () {
-  this.roll();
-  this.checkFrame();
-};
+Game.prototype = {
+  play: function () {
+    this.getCurrentFrame().processRoll();
+    this.nextFrame();
+  },
 
-Game.prototype.checkGameEnd = function () {
-  if (this.turn < this.MAX_TURNS ||
-    (scorecard[scorecard.length - 1][0] === 10 || scorecard.length < 14)) {
-    return;
+  getCurrentFrame: function () {
+    return this.currentFrame;
+  },
+
+  startNewFrame: function () {
+    this.currentFrame = new Frame(this.scoreCard);
+  },
+
+  nextFrame: function () {
+    if (this.isFrameFinished()) {
+      this.startNewFrame();
+    }
+  },
+
+  isFrameFinished: function () {
+    return this.getCurrentFrame().getIsFinished();
+  },
+
+  getScoreCard: function () {
+    return this.scoreCard;
   }
-  this.endGame();
 };
 
-Game.prototype.countFrames = function () {
-  return scorecard.length;
-};
-
-Game.prototype.checkFrame = function () {
-  if (this.currentFrame === null) {
-    this.currentFrame = new Frame();
-  }
-};
-
-Game.prototype.roll = function () {
-  this.currentFrame.roll();
-};
-
-Game.prototype.endGame = function () {
-  return 'Game over!';
-};
+// Game.prototype.checkGameEnd = function () {
+//   if (this.turn < MAX_TURNS ||
+//     (scorecard[scorecard.length - 1][0] === 10 || scorecard.length < 14)) {
+//     return;
+//   }
+//   this.endGame();
+// };

@@ -13,20 +13,22 @@ cd bowling-challenge
 ### To run tests
 
 ```bash
-jasmine
+npm i
+open SpecRunner.html
 ```
+If open command does not work on your machine, just copy the full path of the SpecRunner file into your browser's address bar after.
 
 ## User stories
 
--[] I want to start a game of bowling
+-[x] I want to start a game of bowling
 
--[] I want to roll
+-[x] I want to roll
 
--[] I want to have two rolls per frame
+-[x] I want to have two rolls per frame
 
 -[] I want to end a frame when I score 10 in first roll
 
--[] I want to keep track of my score for each roll including skipped ones
+-[x] I want to keep track of my score for each roll including skipped ones
 
 -[] I want to keep track of my score for each frame including bonuses
 

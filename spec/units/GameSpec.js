@@ -1,45 +1,71 @@
 'use strict';
 
 describe('Game', function () {
-  var game;
+  var game, frame;
 
   beforeEach(function () {
     game = new Game();
-  });
-
-  describe('getScoreCard', function () {
-    it('returns each frame that has been started', function () {
-      for (var i = 0; i < 6; i++) {
-        game.play();
-      }
-      expect(game.getScoreCard().length).toEqual(6);
-    });
-    xit('returns both rolls for each frame', function () {
-      for (var i = 0; i < 6; i++) {
-        game.play();
-      }
-      expect(game.getScoreCard()[1].length).toEqual(2);
-    });
+    frame = game.currentFrame;
   });
 
   describe('play', function () {
-    it('rolls a ball and updates the frame score', function () {
-      spyOn(Math, 'random').and.returnValue(0.5);
+    it('calls processroll on currentFrame', function () {
+      spyOn(frame, 'processRoll');
       game.play();
-      expect(game.getScoreCard()).toEqual([
-        [5]
-      ]);
+      expect(frame.processRoll).toHaveBeenCalled();
+    });
+    it('calls nextFrame', function () {
+      spyOn(game, 'nextFrame');
+      game.play();
+      expect(game.nextFrame).toHaveBeenCalled();
     });
   });
 
-  describe('getTotalScore', function () {
-    it('returns total score', function () {
-      spyOn(Math, 'random').and.returnValues(0.5, 0.9, 0.1, 0.5);
-      for (var i = 0; i < 5; i++) {
-        game.play();
-        console.log(game.getScoreCard()[i]);
-      }
-      expect(game.getTotalScore()).toEqual();
+  describe('getCurrentFrame', function () {
+    it('returns a frame object', function () {
+      expect(frame instanceof Frame).toBeTruthy();
+    });
+  });
+
+  describe('startNewFrame', function () {
+    it('updates currentFrame with new Frame instance', function () {
+      game.startNewFrame();
+      var newFrame = game.getCurrentFrame();
+      expect(frame).not.toBe(newFrame);
+    });
+  });
+
+  describe('nextFrame', function () {
+    beforeEach(function () {
+      spyOn(game, 'isFrameFinished');
+      spyOn(game, 'startNewFrame');
+    });
+    it('calls startNewFrame if isFrameFinished returns true', function () {
+      game.isFrameFinished.and.returnValue(true);
+      game.nextFrame();
+      expect(game.isFrameFinished).toHaveBeenCalled();
+      expect(game.startNewFrame).toHaveBeenCalled();
+    });
+    it('does not call startNewFrame if isFrameFinished returns false', function () {
+      game.isFrameFinished.and.returnValue(false);
+      game.nextFrame();
+      expect(game.isFrameFinished).toHaveBeenCalled();
+      expect(game.startNewFrame).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('isFrameFinished', function () {
+    it('calls getIsFinished on currentFrame', function () {
+      spyOn(frame, 'getIsFinished');
+      game.isFrameFinished();
+      expect(frame.getIsFinished).toHaveBeenCalled();
+    });
+  });
+
+  describe('getScoreCard', function () {
+    it('returns a frame object', function () {
+      var card = game.getScoreCard();
+      expect(card instanceof ScoreCard).toBeTruthy();
     });
   });
 });

@@ -1,52 +1,67 @@
 'use strict';
 
-describe('Frame', function() {
+describe('Frame', function () {
   var frame;
-  beforeEach(function() {
+
+  beforeEach(function () {
     frame = new Frame();
   });
-  describe('roll', function() {
-    it('returns a number between 0 and 10', function() {
-      frame.roll();
-      expect(frame.getScore()[0]).toBeLessThan(11);
+
+  describe('processRoll', function () {
+    it('calls checkFullFrame', function () {
+      spyOn(frame, 'checkFullFrame');
+      frame.processRoll();
+      expect(frame.checkFullFrame).toHaveBeenCalled();
     });
-    it('does not roll more than 2 times', function() {
-      for (var i = 0; i < 3; i++) {
-        frame.roll();
-      }
-      expect(frame.getScore().length).toBeLessThan(3);
+    it('calls updateFrameScore and passes roll() if rollcount is less than 2 and remainder greater than 0', function () {
+      spyOn(frame, 'getRollCount');
+      frame.getRollCount.and.returnValue(1);
+      spyOn(frame, 'remainder');
+      frame.remainder.and.returnValue(10);
+      spyOn(Math, 'random').and.returnValue(0.51);
+      spyOn(frame, 'updateFrameScore');
+      frame.processRoll();
+      expect(frame.updateFrameScore).toHaveBeenCalledWith(5);
+    });
+    it('calls updateFrameScore and passes 0 if rollcount is less than 2 but remainder is 0', function () {
+      spyOn(frame, 'getRollCount');
+      frame.getRollCount.and.returnValue(1);
+      spyOn(frame, 'remainder');
+      frame.remainder.and.returnValue(0);
+      spyOn(frame, 'updateFrameScore');
+      frame.processRoll();
+      expect(frame.updateFrameScore).toHaveBeenCalledWith(0);
+    });
+    it('does not call updateFrameScore if rollcount is >= 2', function () {
+      spyOn(frame, 'getRollCount');
+      frame.getRollCount.and.returnValue(2);
+      spyOn(frame, 'remainder');
+      frame.remainder.and.returnValue(5);
+      spyOn(frame, 'updateFrameScore');
+      frame.processRoll();
+      expect(frame.updateFrameScore).not.toHaveBeenCalled();
     });
   });
-  describe('isSpare', function() {
-    it('sets this.spare to true when first and second score = 10', function() {
-      spyOn(Math, "random").and.returnValues(0.51, 0.9);
-      frame.roll();
-      frame.roll();
-      expect(frame.getScore()).toEqual([5, 5]);
-      expect(frame.getSpare()).toBeTrue;
-    });
-    it('does not set spare to true when strike', function() {
-      spyOn(Math, "random").and.returnValue(0.97);
-      frame.roll();
-      frame.roll();
-      expect(frame.getScore()).toEqual([10, 0]);
-      expect(frame.getSpare()).toBeFalse;
+
+  describe('getRollCount', function () {
+    it('returns rollCount', function () {
+      frame.rollCount = 4;
+      expect(frame.getRollCount()).toEqual(4);
     });
   });
-  describe('isStrike', function() {
-    it('sets this.strike to true when first score = 10', function() {
-      spyOn(Math, "random").and.returnValues(0.95, 0.5);
-      frame.roll();
-      frame.roll();
-      expect(frame.getScore()).toEqual([10, 0]);
-      expect(frame.getStrike()).toBeTrue;
+
+  describe('remainder', function () {
+    it('defaults to return 10 if no roll has been taken', function () {
+      spyOn(frame, 'getRollCount');
+      frame.getRollCount.and.returnValue(0);
+      expect(frame.remainder()).toEqual(10);
     });
-    it('does not set strike to true when second roll is 10', function() {
-      spyOn(Math, "random").and.returnValues(0, 0.97);
-      frame.roll();
-      frame.roll();
-      expect(frame.getScore()).toEqual([0, 10]);
-      expect(frame.getStrike()).toBeFalse;
+    it('returns points left after a roll has been taken', function () {
+      spyOn(frame, 'getRollCount');
+      frame.getRollCount.and.returnValue(1);
+      spyOn(frame, 'getFrameScore');
+      frame.getFrameScore.and.returnValue([4]);
+      expect(frame.remainder()).toEqual(6);
     });
   });
 });

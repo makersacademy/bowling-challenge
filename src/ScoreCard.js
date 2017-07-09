@@ -1,22 +1,25 @@
 'use strict';
 
 function ScoreCard () {
-  this.frames = [];
-  this.total = 0;
+  this.card = [[]];
 }
 
-ScoreCard.prototype.getTotal = function () {
-  return this.total;
+ScoreCard.prototype.getCard = function () {
+  return this.card;
 };
 
-ScoreCard.prototype.getFrames = function () {
-  return this.frames;
+ScoreCard.prototype.updateCard = function (rollScore) {
+  if (this.isFullFrame()) {
+    this.card.push([rollScore]);
+  } else {
+    this.getLastFrame().push(rollScore);
+  }
 };
 
-ScoreCard.prototype.updateTotal = function (subtotal) {
-  this.total += subtotal;
+ScoreCard.prototype.isFullFrame = function () {
+  return this.getLastFrame().length > 1;
 };
 
-ScoreCard.prototype.updateFrames = function (frame) {
-  this.frames.push(frame);
+ScoreCard.prototype.getLastFrame = function () {
+  return this.getCard()[this.getCard().length - 1];
 };

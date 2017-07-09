@@ -2,9 +2,9 @@ describe("Frame", function() {
 
   var frame;
 
-beforeEach (function() {
-  frame = new Frame();
-});
+  beforeEach (function() {
+    frame = new Frame();
+  });
 
   it("starts with an empty array of scores", function() {
     expect(frame.turn).toEqual([]);

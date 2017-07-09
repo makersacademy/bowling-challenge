@@ -19,7 +19,7 @@ Frame.prototype.totalFrameScore = function() {
 }
 
 Frame.prototype._isStrike = function() {
-    if (this.turn[0] == 10) {
+  if (this.turn[0] == 10) {
     this.strike = true
     this.turn[1] = 0
   }

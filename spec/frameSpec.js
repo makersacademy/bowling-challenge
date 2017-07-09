@@ -7,8 +7,8 @@ describe("Frame", function(){
   var rollTwo;
 
   beforeEach(function(){
-    rollOne = 5;
-    rollTwo = 5;
+    rollOne = 4;
+    rollTwo = 6;
     frame = new Frame(rollOne, rollTwo);
   });
 
@@ -18,11 +18,11 @@ describe("Frame", function(){
       expect(frame._rolls.length).toEqual(2);
     });
     it("will create a max score of ten", function(){
-      expect(frame.MAX_SCORE).toEqual(10)
+      expect(frame.MAX_PINS).toEqual(10)
     });
   });
 
-  describe("#total", function(){
+  describe("#regularScore", function(){
     it("will sum the score of rolls", function(){
       expect(frame.regularScore()).toEqual(10);
     });
@@ -41,6 +41,14 @@ describe("Frame", function(){
     spareFrame = new Frame(5, 5);
     it("will return true when frame is a spare", function(){
       expect(spareFrame.isSpare()).toBeTruthy();
+    });
+  });
+
+  describe("#isIllegal", function(){
+    var illegalFrame;
+    illegalFrame = new Frame(6, 5);
+    it("will return true when frame is a spare", function(){
+      expect(illegalFrame.isIllegal()).toBeTruthy()
     });
   });
 

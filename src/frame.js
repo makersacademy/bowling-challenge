@@ -2,8 +2,10 @@
 var rollOne;
 var rollTwo;
 
+MAX_PINS = 10;
+
 function Frame(rollOne, rollTwo) {
-  this.MAX_SCORE = 10,
+  this.MAX_PINS = 10,
   this._rolls = [rollOne, rollTwo]
 };
 
@@ -15,13 +17,33 @@ Frame.prototype.regularScore = function() {
    return totalScore
  };
 
+ Frame.prototype.isIllegal = function(){
+   return this._rolls[0] + this._rolls[1] > MAX_PINS
+ };
+
+
+
+
+
+
  Frame.prototype.isStrike = function(){
-   return this._rolls[0] === 10
+   return this._rolls[0] === MAX_PINS
  };
 
  Frame.prototype.isSpare = function(){
-   return this._rolls[0] + this._rolls[1] === 10
+   return this._rolls[0] + this._rolls[1] === MAX_PINS
  };
+
+
+
+
+
+
+
+
+
+
+
 
 
  function Game(){

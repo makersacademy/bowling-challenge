@@ -12,4 +12,8 @@ $(document).ready(function() {
     $('#current-score>p').text(game.currentScore());
   });
 
+  $(window).on("error", function(event) {
+    alert(event.originalEvent.message);
+  })
+
 });

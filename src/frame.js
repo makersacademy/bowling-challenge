@@ -60,32 +60,12 @@ Frame.prototype.totalScore = function(nextFrame, thirdFrame) {
    this._frames = []
  };
 
- Game.prototype._buildScore = function() {
-   return Math.floor(Math.random() * 11);
- };
-
- Game.prototype._takeTurn = function() {
-   roll = 10;
-   anotherRoll = 5;
-   this._frames.push(new Frame(roll, anotherRoll));
- };
-
  Game.prototype._new = function() {
   this._frames = [];
  };
 
- Game.prototype._getTotal = function() {
-   var total = 0;
-   this._frames.forEach(function(frame){
-     total += frame.regularScore();
-   });
-   return total;
- };
-
- Game.prototype.playRound = function() {
-   this._new();
-   for(i = 0; i <= 9; i++) {
-     this._takeTurn();
-   };
-
+ Game.prototype.checkRollIsLegal = function(frame) {
+  if (frame.isIllegal()) {
+    throw new Error("That cannot be!")
+  }
  };

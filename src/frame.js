@@ -5,6 +5,7 @@ var rollTwo;
 MAX_PINS = 10;
 
 function Frame(rollOne, rollTwo) {
+  'use strict';
   this.MAX_PINS = 10,
   this._rolls = [rollOne, rollTwo]
 };
@@ -22,10 +23,6 @@ Frame.prototype.regularScore = function() {
  };
 
 
-
-
-
-
  Frame.prototype.isStrike = function(){
    return this._rolls[0] === MAX_PINS
  };
@@ -33,6 +30,11 @@ Frame.prototype.regularScore = function() {
  Frame.prototype.isSpare = function(){
    return this._rolls[0] + this._rolls[1] === MAX_PINS
  };
+
+ Frame.prototype.spareScore = function(nextFrame){
+   return this.regularScore() + nextFrame._rolls[0];
+ };
+
 
 
 

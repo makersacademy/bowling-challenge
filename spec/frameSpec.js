@@ -52,6 +52,15 @@ describe("Frame", function(){
     });
   });
 
+  describe("#spareScore", function(){
+    it("will return the total as well as the next's first roll", function(){
+      var nextFrame;
+      nextFrame = new Frame(5, 2);
+      expect(frame.spareScore(nextFrame)).toEqual(15)
+    });
+  });
+
+
 
 
 });

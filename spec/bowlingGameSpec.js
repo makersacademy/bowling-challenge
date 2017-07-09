@@ -18,25 +18,9 @@ describe("BowlingGame", function () {
 
   describe("#startGame", function () {
     it("creates a new frame", function () {
-      expect(bowlingGame.frames[1].ball1).toBe(0)
+      expect(bowlingGame.frames[1].constructor).toBe(Frame)
     });
-
-    it("tracks how many rolls are made in the frame", function () {
-      expect(bowlingGame.frames[1].numberOfRolls).toBe(0)
-    });
-
-    it("has a score", function () {
-      expect(bowlingGame.frames[1].score).toBe(0)
-    });
-
-    it("tracks if the frame was a spare", function () {
-      expect(bowlingGame.frames[1].spare).toBe(false)
-    });
-
-    it("tracks if the frame was a strike", function () {
-      expect(bowlingGame.frames[1].strike).toBe(false)
-    });
-  })
+  });
 
   describe("#roll", function () {
     beforeEach(function () {

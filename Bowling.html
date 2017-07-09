@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling Scorecard</title>
+  </head>
+  <body>
+    <h1>Bowling Scorecard</h1>
+    <div id="score-buttons">
+      <h3>Enter your score for your last turn:</h3>
+      <p>
+        <button class="bowl-button" id="0">0</button>
+        <button class="bowl-button" id="1">1</button>
+        <button class="bowl-button" id="2">2</button>
+        <button class="bowl-button" id="3">3</button>
+        <button class="bowl-button" id="4">4</button>
+        <button class="bowl-button" id="5">5</button>
+        <button class="bowl-button" id="6">6</button>
+        <button class="bowl-button" id="7">7</button>
+        <button class="bowl-button" id="8">8</button>
+        <button class="bowl-button" id="9">9</button>
+        <button class="bowl-button" id="10">10</button>
+        <button id="calculate-score">Calculate score</button>
+      </p>
+    </div>
+    <div id="scorecard-container">
+      <div class="frame-header">
+        1
+        <div class="frame-first-bowl" id="frame1-bowl1"></div>
+        <div class="frame-second-bowl" id="frame1-bowl2"></div>
+        <div class="frame-score" id="frame1-score"></div>
+      </div>
+      <div class="frame-header">
+        2
+        <div class="frame-first-bowl" id="frame2-bowl1"></div>
+        <div class="frame-second-bowl" id="frame2-bowl2"></div>
+        <div class="frame-score" id="frame2-score"></div>
+      </div>
+      <div class="frame-header">
+        3
+        <div class="frame-first-bowl" id="frame3-bowl1"></div>
+        <div class="frame-second-bowl" id="frame3-bowl2"></div>
+        <div class="frame-score" id="frame3-score"></div>
+      </div>
+      <div class="frame-header">
+        4
+        <div class="frame-first-bowl" id="frame4-bowl1"></div>
+        <div class="frame-second-bowl" id="frame4-bowl2"></div>
+        <div class="frame-score" id="frame4-score"></div>
+      </div>
+      <div class="frame-header">
+        5
+        <div class="frame-first-bowl" id="frame5-bowl1"></div>
+        <div class="frame-second-bowl" id="frame5-bowl2"></div>
+        <div class="frame-score" id="frame5-score"></div>
+      </div>
+      <div class="frame-header">
+        6
+        <div class="frame-first-bowl" id="frame6-bowl1"></div>
+        <div class="frame-second-bowl" id="frame6-bowl2"></div>
+        <div class="frame-score" id="frame6-score"></div>
+      </div>
+      <div class="frame-header">
+        7
+        <div class="frame-first-bowl" id="frame7-bowl1"></div>
+        <div class="frame-second-bowl" id="frame7-bowl2"></div>
+        <div class="frame-score" id="frame7-score"></div>
+      </div>
+      <div class="frame-header">
+        8
+        <div class="frame-first-bowl" id="frame8-bowl1"></div>
+        <div class="frame-second-bowl" id="frame8-bowl2"></div>
+        <div class="frame-score" id="frame8-score"></div>
+      </div>
+      <div class="frame-header">
+        9
+        <div class="frame-first-bowl" id="frame9-bowl1"></div>
+        <div class="frame-second-bowl" id="frame9-bowl2"></div>
+        <div class="frame-score" id="frame9-score"></div>
+      </div>
+      <div class="tenth-frame-header">
+        10
+        <div class="frame-first-bowl" id="frame10-bowl1"></div>
+        <div class="frame-second-bowl" id="frame10-bowl2"></div>
+        <div class="tenth-frame-third-bowl" id="frame10-bowl3"></div>
+        <div class="tenth-frame-score" id="frame10-score"></div>
+      </div>
+      <div id="current-score">
+        <h2>Score:</h2>
+        <p>0</p>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="src/jquery.js"></script>
+    <script src="src/Game.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="src/TenthFrame.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </body>
+</html>

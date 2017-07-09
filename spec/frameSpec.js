@@ -8,7 +8,7 @@ describe("Frame", function(){
 
   beforeEach(function(){
     rollOne = 5;
-    rollTwo = 7;
+    rollTwo = 5;
     frame = new Frame(rollOne, rollTwo);
   });
 
@@ -24,8 +24,26 @@ describe("Frame", function(){
 
   describe("#total", function(){
     it("will sum the score of rolls", function(){
-      expect(frame.total()).toEqual(12);
+      expect(frame.regularScore()).toEqual(10);
     });
   });
+
+  describe("#isStrike", function(){
+    var strikeFrame;
+    strikeFrame = new Frame(10, 0);
+    it("will return true when frame is a strike", function(){
+      expect(strikeFrame.isStrike()).toBeTruthy();
+    });
+  });
+
+  describe("#isSpare", function(){
+    var spareFrame;
+    spareFrame = new Frame(5, 5);
+    it("will return true when frame is a spare", function(){
+      expect(spareFrame.isSpare()).toBeTruthy();
+    });
+  });
+
+
 
 });

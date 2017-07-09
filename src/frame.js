@@ -7,12 +7,20 @@ function Frame(rollOne, rollTwo) {
   this._rolls = [rollOne, rollTwo]
 };
 
-Frame.prototype.total = function() {
+Frame.prototype.regularScore = function() {
    var totalScore = 0;
    this._rolls.forEach(function(roll){
      totalScore += roll
    });
    return totalScore
+ };
+
+ Frame.prototype.isStrike = function(){
+   return this._rolls[0] === 10
+ };
+
+ Frame.prototype.isSpare = function(){
+   return this._rolls[0] + this._rolls[1] === 10
  };
 
 
@@ -37,7 +45,7 @@ Frame.prototype.total = function() {
  Game.prototype._getTotal = function() {
    var total = 0;
    this._frames.forEach(function(frame){
-     total += frame.total();
+     total += frame.regularScore();
    });
    return total;
  };

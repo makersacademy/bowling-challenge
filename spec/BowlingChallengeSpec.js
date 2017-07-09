@@ -15,9 +15,15 @@ describe("#game", function () {
       var a = game.roll();
       expect(a).toBeWithinRange(0, 10);
     });
+    
+    it("returns a number between 0 and remaining number of pins in the second round", function() {
+      game.hasKnockedDown(5);
+      var a = game.roll();
+      expect(a).toBeWithinRange(0, 5);
+    });
   });
   
-  describe("#roll", function() {
+  describe("#recordScore", function() {
     it("marks the numbers of pins knocked down in the correct round", function() {
       var game = new Game();
       for (var i = 1; i<=4; i++) {
@@ -27,18 +33,17 @@ describe("#game", function () {
     });
   });
   
-  describe("when 10 pins knocked-down in one round", function() {
-    it("shows strike", function() {
+  describe("#setTypeFrame", function() {
+    it("shows strike when 10 pins knocked-down in one round", function() {
       game.hasKnockedDown(10);
-      expect(game.checkTypeFrame(game.board[0])).toEqual("Strike");
-    })
-  });
-  
-  describe("when 10 pins knocked-down in one frame", function() {
-    it("shows spare", function() {
+      expect(game.setTypeFrame(game.board[0])).toEqual("Strike");
+    });
+    
+    
+    it("shows spare when 10 pins knocked-down in one frame", function() {
       game.hasKnockedDown(5);
       game.hasKnockedDown(5);
-      expect(game.checkTypeFrame(game.board[0])).toEqual("Spare");
-    })
+      expect(game.setTypeFrame(game.board[0])).toEqual("Spare");
+    });
   });
 });

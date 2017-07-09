@@ -1,8 +1,8 @@
 function Frame() {
-  this.turn = []
-  this.strike = false
-  this.spare = false
-  this.score = 0
+  this.turn = [];
+  this.strike = false;
+  this.spare = false;
+  this.score = 0;
 }
 
 Frame.prototype.firstBowl = function(firstScore) {

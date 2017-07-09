@@ -1,6 +1,8 @@
 function Frame() {
   this.turn = []
-  this.bowls = []
+  this.strike = false
+  this.spare = false
+  this.score = 0
 }
 
 Frame.prototype.firstBowl = function(firstScore) {
@@ -10,9 +12,21 @@ Frame.prototype.firstBowl = function(firstScore) {
 
 Frame.prototype.secondBowl = function(secondScore) {
   this.turn.push(secondScore);
-  this.bowls.push(this.turn)
 }
 
 Frame.prototype.totalFrameScore = function() {
-  return this.turn.reduce((a, b) => a + b, 0);
+  this.score = (this.turn.reduce((a, b) => a + b, 0));
+}
+
+Frame.prototype._isStrike = function() {
+    if (this.turn[0] == 10) {
+    this.strike = true
+    this.turn[1] = 0
+  }
+}
+
+Frame.prototype._isSpare = function() {
+  if (this.turn[0] + this.turn[1] == 10) {
+    this.spare = true
+  }
 }

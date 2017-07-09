@@ -20,27 +20,27 @@ If open command does not work on your machine, just copy the full path of the Sp
 
 ## User stories
 
--[x] I want to start a game of bowling
+- [x] I want to start a game of bowling
 
--[x] I want to roll
+- [x] I want to roll
 
--[x] I want to have two rolls per frame
+- [x] I want to have two rolls per frame
 
--[] I want to end a frame when I score 10 in first roll
+- [ ] I want to end a frame when I score 10 in first roll
 
--[x] I want to keep track of my score for each roll including skipped ones
+- [x] I want to keep track of my score for each roll including skipped ones
 
--[] I want to keep track of my score for each frame including bonuses
+- [ ] I want to keep track of my score for each frame including bonuses
 
--[] I want to add this frame to the last frame if it was a strike
+- [ ] I want to add this frame to the last frame if it was a strike
 
--[] I want to add the first roll to the last frame if it was a spare
+- [ ] I want to add the first roll to the last frame if it was a spare
 
--[] I want the game to end after 10 frames
+- [ ] I want the game to end after 10 frames
 
--[] I want the game to only continue past 10 frames when the frame is a strike
+- [ ] I want the game to only continue past 10 frames when the frame is a strike
 
--[] I want the game to end after 13 frames if the last four frames are strikes.
+- [ ] I want the game to end after 13 frames if the last four frames are strikes.
 
 
 
@@ -91,12 +91,3 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

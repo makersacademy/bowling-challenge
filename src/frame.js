@@ -35,6 +35,16 @@ Frame.prototype.regularScore = function() {
    return this.regularScore() + nextFrame._rolls[0];
  };
 
+ Frame.prototype.strikeScore = function(nextFrame, thirdFrame){
+   if (nextFrame.isStrike()) {
+   return this.regularScore() + nextFrame.regularScore() + thirdFrame._rolls[0]
+ } else {
+   return this.regularScore() + nextFrame.regularScore()
+ }
+ };
+
+
+
 
 
 

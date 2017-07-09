@@ -60,6 +60,28 @@ describe("Frame", function(){
     });
   });
 
+  describe("#strikeScore", function(){
+    describe("when next frame is also a strike", function(){
+      it("will return two totals and the third frame's first roll", function(){
+        var nextFrame;
+        var thirdFrame;
+        nextFrame = new Frame(10, 0);
+        thirdFrame = new Frame(7, 2);
+        expect(frame.strikeScore(nextFrame, thirdFrame)).toEqual(27)
+      });
+    });
+
+    describe("when next frame is not a strike", function(){
+      it("will return two totals", function(){
+        var nextFrame;
+        var thirdFrame;
+        nextFrame = new Frame(7, 2);
+        thirdFrame = new Frame(7, 2);
+        expect(frame.strikeScore(nextFrame, thirdFrame)).toEqual(19)
+      });
+    });
+  });
+
 
 
 

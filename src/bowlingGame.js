@@ -30,15 +30,7 @@ BowlingGame.prototype.score = function () {
   return score;
 };
 
-BowlingGame.prototype._newFrame = function () {
-  frame = {
-    ball1: 0,
-    ball2: 0,
-    numberOfRolls: 0,
-    score: 0,
-    spare: false,
-    strike: false
-  };
+BowlingGame.prototype._newFrame = function ( frame = new Frame() ) {
   this.frames.push(frame);
   this.frameIndex++;
 };
@@ -88,6 +80,7 @@ BowlingGame.prototype._calculateFrameScore = function () {
 BowlingGame.prototype._checkSpare = function () {
   total = this._currentFrame().ball1 + this._currentFrame().ball2
   rolls = this._currentFrame().numberOfRolls
+  console.log(this._currentFrame().numberOfRolls);
   if (total === 10 && rolls === 2) {
     this._currentFrame().spare = true
   }

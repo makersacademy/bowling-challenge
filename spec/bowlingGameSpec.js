@@ -3,11 +3,12 @@ describe("BowlingGame", function () {
 
   beforeEach(function () {
     bowlingGame = new BowlingGame();
+    bowlingGame.startGame();
   });
 
   describe("Initialisation", function () {
     it("has a frame index", function () {
-      expect(bowlingGame.frameIndex).toEqual(0)
+      expect(bowlingGame.frameIndex).toEqual(1)
     });
 
     it("has a frames array", function () {
@@ -16,10 +17,6 @@ describe("BowlingGame", function () {
   });
 
   describe("#startGame", function () {
-    beforeEach(function () {
-      bowlingGame.startGame();
-    });
-
     it("creates a new frame", function () {
       expect(bowlingGame.frames[1].ball1).toBe(0)
     });
@@ -43,7 +40,6 @@ describe("BowlingGame", function () {
 
   describe("#roll", function () {
     beforeEach(function () {
-      bowlingGame.startGame();
       bowlingGame.roll(5);
       bowlingGame.roll(3);
     });
@@ -112,7 +108,6 @@ describe("BowlingGame", function () {
 
   describe("#score", function () {
     beforeEach(function () {
-      bowlingGame.startGame();
       bowlingGame.roll(5);
       bowlingGame.roll(2);
 

@@ -6,9 +6,7 @@ function Frame() {
 }
 
 Frame.prototype.recordRoll = function (num) {
-  if (num > this.MAX_SCORE) {
-    throw new Error('Cannot knock down more than 10 pins');
-  }
+  if (num > this.MAX_SCORE) throw new Error('Cannot knock down more than 10 pins');
   if (this.firstRoll === null) {
       this.firstRoll = num;
   } else if (this.secondRoll === null) {

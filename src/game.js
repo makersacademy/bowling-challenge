@@ -1,4 +1,4 @@
-function Game() {
+function Game(frameClass) {
   this.frames = [];
-  this.score = 0;
+  this.totalScore = 0;
 }

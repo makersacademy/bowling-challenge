@@ -14,10 +14,6 @@ Frame.prototype.secondBowl = function(secondScore) {
   this.turn.push(secondScore);
 }
 
-Frame.prototype.totalFrameScore = function() {
-  this.score = (this.turn.reduce((a, b) => a + b, 0));
-}
-
 Frame.prototype._isStrike = function() {
   if (this.turn[0] == 10) {
     this.strike = true
@@ -25,8 +21,12 @@ Frame.prototype._isStrike = function() {
   }
 }
 
+Frame.prototype.totalFrameScore = function() {
+  this.score = (this.turn.reduce((a, b) => a + b, 0));
+}
+
 Frame.prototype._isSpare = function() {
-  if (this.turn[0] + this.turn[1] == 10) {
+  if (this.turn[0] != 10 && this.score == 10) {
     this.spare = true
   }
 }

@@ -58,6 +58,7 @@ describe("Frame", function() {
     it("recognises a spare", function() {
       frame.firstBowl(5);
       frame.secondBowl(5);
+      frame.totalFrameScore();
       frame._isSpare();
       expect(frame.spare).toEqual(true)
     });

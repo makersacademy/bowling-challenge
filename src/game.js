@@ -2,22 +2,26 @@ function Game() {
   this.rolls = [];
   this.score = 0;
   this.frame = 1;
+  this.frameRollCount = 1;
 }
-var secondRoll = false;
 
 Game.prototype.roll = function(roll) {
-  if (roll === 10){
-    this.rolls.push("X");
-    this.frame++;
-  } else if ((roll + this.rolls[this.rolls.length -1] === 10) && (secondRoll == true)) {
-    this.rolls.push("/");
-    this.frame++;
-    secondRoll = false;
-  } else {
-    this.rolls.push(roll);
-    secondRoll = false ? secondRoll = true :this.frame++;
-  }
-  this.calculateScore();
+  if (this.frame >= 10) {
+    this.finalFrame(roll);
+    } else {
+    if (roll === 10){
+      this.rolls.push("X");
+      this.frame++;
+    } else if ((roll + this.rolls[this.rolls.length -1] === 10) && (this.frameRollCount == 2)) {
+      this.rolls.push("/");
+      this.frame++;
+      this.frameRollCount = 1;
+    } else {
+      this.rolls.push(roll);
+      this.frameRollCount === 1 ? this.frameRollCount = 2 : (this.frame++, this.frameRollCount = 1);
+    };
+    this.calculateScore();
+  };
 };
 
 Game.prototype.calculateScore = function() {
@@ -32,4 +36,25 @@ Game.prototype.calculateScore = function() {
     }
   };
   this.score = score;
+};
+
+Game.prototype.finalFrame = function(roll) {
+  if (this.frameRollCount === 4) {
+    this.endGame();
+  }
+  if (roll === 10){
+    this.rolls.push("X");
+    this.frameRollCount++;
+  } else if ((roll + this.rolls[this.rolls.length -1] === 10) && (this.frameRollCount == 2)) {
+    this.rolls.push("/");
+    this.frameRollCount++;
+  } else {
+    this.rolls.push(roll);
+    this.frameRollCount === 1 ? this.frameRollCount++ : this.endGame();
+  };
+  this.calculateScore();
+};
+
+Game.prototype.endGame = function() {
+  throw new Error("The game has ended");
 };

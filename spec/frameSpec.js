@@ -83,6 +83,40 @@ describe("Frame", function(){
   });
 
 
+  describe("#totalScore", function(){
+
+    describe("when the frame is a strike", function(){
+      it("will return a strike score", function(){
+        var strikeFrame;
+        strikeFrame = new Frame(10, 0);
+        nextFrame = new Frame(2, 2);
+        thirdFrame = new Frame(5, 5);
+        expect(strikeFrame.totalScore(nextFrame, thirdFrame)).toEqual(14)
+      });
+    });
+
+    describe("when the frame is a spare", function(){
+      it("will return a spare score", function(){
+        var spareFrame;
+        spareFrame = new Frame(5, 5);
+        nextFrame = new Frame(5, 2);
+        thirdFrame = new Frame(5, 5);
+        expect(spareFrame.totalScore(nextFrame, thirdFrame)).toEqual(15)
+      });
+    });
+
+    describe("when the frame is neither a strike or spare", function(){
+      it("will return a regular score", function(){
+        var spareFrame;
+        normalFrame = new Frame(4, 3);
+        nextFrame = new Frame(5, 2);
+        thirdFrame = new Frame(5, 5);
+        expect(normalFrame.totalScore(nextFrame, thirdFrame)).toEqual(7)
+      });
+    });
+
+  });
+
 
 
 });

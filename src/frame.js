@@ -5,7 +5,7 @@ var rollTwo;
 MAX_PINS = 10;
 
 function Frame(rollOne, rollTwo) {
-  'use strict';
+
   this.MAX_PINS = 10,
   this._rolls = [rollOne, rollTwo]
 };
@@ -42,6 +42,17 @@ Frame.prototype.regularScore = function() {
    return this.regularScore() + nextFrame.regularScore()
  }
  };
+
+
+Frame.prototype.totalScore = function(nextFrame, thirdFrame) {
+  if (this.isStrike()) {
+    return this.strikeScore(nextFrame, thirdFrame);
+  } else if (this.isSpare()) {
+    return this.spareScore(nextFrame);
+  } else {
+    return this.regularScore();
+  }
+};
 
 
 

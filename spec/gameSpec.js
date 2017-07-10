@@ -17,6 +17,15 @@ describe("Game", function(){
 
   });
 
+  describe("#roll", function(){
+    xit("will clear any old frames", function(){
+      game._takeTurn();
+      game._new();
+      expect(game._frames.length).toBe(0);
+    });
+  });
+
+
   describe("#new", function(){
     xit("will clear any old frames", function(){
       game._takeTurn();
@@ -24,6 +33,7 @@ describe("Game", function(){
       expect(game._frames.length).toBe(0);
     });
   });
+
 
   describe("#checkRollIsLegal", function(){
     it("will throw error if roll is non-legit", function(){
@@ -40,7 +50,30 @@ describe("Game", function(){
      };
      expect(game.isFinished()).toBeTruthy()
    });
+   it("will return false when the game is extant", function(){
+     for(i=0; i <= 3; i++) {
+      game._frames.push(new Frame(5, 5))
+     };
+     expect(game.isFinished()).toBeFalsy()
+   });
  });
+
+ describe("#checkGame", function(){
+   it("will throw en error if the game is over", function(){
+     for(i=0; i <= 9; i++) {
+      game._frames.push(new Frame(5, 5))
+     };
+     expect(function() {game.checkGame()}).toThrowError("Game's done!")
+   });
+   it("will throw nothing if the game is not over", function(){
+     for(i=0; i <= 5; i++) {
+      game._frames.push(new Frame(5, 5))
+     };
+     expect(function() {game.checkGame()}).not.toThrowError("Game's done!")
+   });
+ });
+
+
 
 
 });

@@ -69,10 +69,25 @@ Frame.prototype.totalScore = function(nextFrame, thirdFrame) {
    return this.MAX_FRAME;
  };
 
+}
+
+Game.prototype.roll = function(rolls) {
+    var frame = new Frame(rolls);
+    this.checkRollIsLegal(frame);
+    this.checkGame();
+    this._frames.push(frame);
+  },
+
  Game.prototype.checkRollIsLegal = function(frame) {
   if (frame.isIllegal()) {
     throw new Error("That cannot be!")
   }
+}
+
+Game.prototype.checkGame = function(frame) {
+ if (this.isFinished()) {
+   throw new Error("Game's done!")
+ }
 }
 
 Game.prototype.isFinished = function(frame) {

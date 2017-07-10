@@ -5,11 +5,6 @@ describe("#game", function () {
     game = new Game();
   });
   
-  
-  it("shows the current score", function () {
-    expect(game.currentScore).toBeDefined();
-  });
-  
   describe("#roll", function() {
     it("returns a number between 0 and 10 in the first round", function() {
       var a = game.roll();
@@ -29,21 +24,29 @@ describe("#game", function () {
       for (var i = 1; i<=4; i++) {
         game.hasKnockedDown(i);
       }
-      expect(game.board[1][1]).toEqual(4);
+      expect(game.board[1]['frame'][1]).toEqual(4);
     });
   });
   
   describe("#setTypeFrame", function() {
     it("shows strike when 10 pins knocked-down in one round", function() {
       game.hasKnockedDown(10);
-      expect(game.setTypeFrame(game.board[0])).toEqual("Strike");
+      expect(game.board[0]['type']).toEqual("Strike");
     });
     
     
     it("shows spare when 10 pins knocked-down in one frame", function() {
       game.hasKnockedDown(5);
       game.hasKnockedDown(5);
-      expect(game.setTypeFrame(game.board[0])).toEqual("Spare");
+      expect(game.board[0]['type']).toEqual("Spare");
+    });
+  });
+  
+  describe("#score", function() {
+    it("shows score immediately after a regular round", function() {
+      game.hasKnockedDown(3);
+      game.hasKnockedDown(5);
+      expect(game.board[0]['score']).toEqual(8);
     });
   });
 });

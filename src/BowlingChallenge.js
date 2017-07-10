@@ -1,13 +1,18 @@
 function Game() {
   this.board = [],
-  this.currentScore = []
-  this.currentFrame = [];
+  this.currentScore = 0,
+  this.currentFrame = []
 };
 
 Game.prototype.hasKnockedDown = function (pins) {
   this.recordPins(pins);
 };
 
+function getLastElement(array) {
+  if (array.length > 1) {
+    return array.splice(-1)[0]
+  }
+};
 
 Game.prototype.roll = function() {
   if (this.isGameFinished()) {
@@ -31,13 +36,17 @@ Game.prototype.setPinsOnLane = function () {
   }
 };
 
+Game.prototype.addNewFrame = function () {
+  this.board.push({frame: this.currentFrame, score: this.setScore(this.currentFrame), type: this.setTypeFrame(this.currentFrame)});
+};
+
 Game.prototype.recordPins = function (pins) {
   this.currentFrame.push(pins)
   if ((pins === 10 || this.currentFrame.length === 2) && !this.isBonusRound()) {
-    this.board.push(this.currentFrame);
+    this.addNewFrame();
     this.currentFrame = [];
   } else if (this.isBonusRound() && this.currentFrame.length === 3) {
-    this.board.push(this.currentFrame);
+    this.addNewFrame();
   }
 };
 
@@ -62,9 +71,6 @@ Game.prototype.setTypeFrame = function (frame) {
 };
 
 
-// var game = new Game();
-//
-//
-// for (var i = 1; i <= 18; i++) {
-//   game.hasKnockedDown(2);
-// };
+Game.prototype.setScore = function (frame) {
+  return  this.currentScore += (frame[0] + frame[1]);
+};

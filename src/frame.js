@@ -57,22 +57,24 @@ Frame.prototype.totalScore = function(nextFrame, thirdFrame) {
 
 
  function Game(){
-   this._frames = []
+   this._frames = [],
+   this.MAX_FRAME = 10
  };
 
  Game.prototype._new = function() {
   this._frames = [];
  };
 
+ Game.prototype._gameSpan = function() {
+   return this.MAX_FRAME;
+ };
+
  Game.prototype.checkRollIsLegal = function(frame) {
   if (frame.isIllegal()) {
     throw new Error("That cannot be!")
   }
+}
 
-  Game.prototype.checkRollIsLegal = function(frame) {
-   if (frame.isIllegal()) {
-     throw new Error("That cannot be!")
-   };
-
-
- };
+Game.prototype.isFinished = function(frame) {
+    return this._frames.length >= this.MAX_FRAME
+}

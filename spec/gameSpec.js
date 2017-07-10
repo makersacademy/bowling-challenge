@@ -14,9 +14,7 @@ describe("Game", function(){
       expect(game._frames.constructor).toBe(Array);
       expect(game._frames.length).toEqual(0);
     });
-    it("will have a max game length", function(){
-      expect(game._gameSpan).toEqual(10);
-    });
+
   });
 
   describe("#new", function(){
@@ -34,6 +32,15 @@ describe("Game", function(){
     expect(function() {game.checkRollIsLegal(illegalFrame)}).toThrowError("That cannot be!");
   });
 });
+
+ describe("#isFinished", function(){
+   it("will return true when frames are equal or more than a game's def", function(){
+     for(i=0; i <= 9; i++) {
+      game._frames.push(new Frame(5, 5))
+     };
+     expect(game.isFinished()).toBeTruthy()
+   });
+ });
 
 
 });

@@ -1,4 +1,6 @@
 
+
+
 describe("Game", function(){
 
   var game;
@@ -11,6 +13,9 @@ describe("Game", function(){
     it("will have an empty record of frames", function(){
       expect(game._frames.constructor).toBe(Array);
       expect(game._frames.length).toEqual(0);
+    });
+    it("will have a max game length", function(){
+      expect(game._gameSpan).toEqual(10);
     });
   });
 
@@ -29,5 +34,6 @@ describe("Game", function(){
     expect(function() {game.checkRollIsLegal(illegalFrame)}).toThrowError("That cannot be!");
   });
 });
+
 
 });

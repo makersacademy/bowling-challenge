@@ -68,4 +68,11 @@ Frame.prototype.totalScore = function(nextFrame, thirdFrame) {
   if (frame.isIllegal()) {
     throw new Error("That cannot be!")
   }
+
+  Game.prototype.checkRollIsLegal = function(frame) {
+   if (frame.isIllegal()) {
+     throw new Error("That cannot be!")
+   };
+
+
  };

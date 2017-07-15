@@ -7,7 +7,7 @@ describe("Frame", function() {
   });
 
   it("starts with an empty array of scores", function() {
-    expect(frame.turn).toEqual([]);
+    expect(frame.bowls).toEqual([]);
   });
 
   it("starts with a score of 0", function() {
@@ -17,48 +17,36 @@ describe("Frame", function() {
   describe("firstBowl", function() {
     it("adds the first score to the array", function() {
       frame.firstBowl(5);
-      expect(frame.turn).toEqual([5]);
-    });
-
-    it("clears the array at the start of the method", function() {
-      frame.firstBowl(5);
-      frame.secondBowl(4);
-      frame.firstBowl(6);
-      expect(frame.turn).toEqual([6]);
+      expect(frame.bowls).toEqual([5]);
     });
   });
 
   describe("secondBowl", function() {
     it("adds the second score to the array", function() {
       frame.firstBowl(5);
-      frame.secondBowl(4);
-      expect(frame.turn).toEqual([5,4]);
+      frame.secondBowl(5);
+      expect(frame.bowls).toEqual([5,5]);
+      expect(frame.spare).toEqual(true);
     });
-  });
 
-  describe("totalFrameScore", function() {
-    it("adds the score for the frame", function(){
+    it("calculates the score for the frame", function(){
       frame.firstBowl(5);
       frame.secondBowl(4);
-      frame.totalFrameScore()
+      frame._totalScore();
       expect(frame.score).toEqual(9);
     });
-  });
 
-  describe("_isStrike", function() {
-    it("recognises a strike", function() {
+    it("checks if the frame has a strike", function() {
       frame.firstBowl(10);
       frame._isStrike();
       expect(frame.strike).toEqual(true);
-      expect(frame.turn).toEqual([10,0]);
+      expect(frame.bowls).toEqual([10,0]);
     });
-  });
 
-  describe("_isSpare", function(){
-    it("recognises a spare", function() {
+    it("checks if the frame has a spare", function() {
       frame.firstBowl(5);
       frame.secondBowl(5);
-      frame.totalFrameScore();
+      frame._totalScore();
       frame._isSpare();
       expect(frame.spare).toEqual(true)
     });

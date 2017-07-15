@@ -4,33 +4,33 @@ function Game() {
 }
 
 Game.prototype.addFrame = function(frame) {
-  this.frames.push(frame)
+  if (this.frames.length === 11) {
+    throw "Game over!"
+  } else if (this.frames.length === 10 && this.frames[9].score < 10) {
+    throw "Game over!"
+  } else {
+    this.frames.push(frame)
+  }
 }
 
-Game.prototype.totalGameScore = function() {
-  var gameScore = 0;
-  this.frames.forEach(function(element) {
-    gameScore = gameScore + element.score;
-  });
-  this.score = this.score + gameScore
+Game.prototype.totalScore = function() {
+  this.frames.forEach(function(frame) {
+    this.score += frame.score;
+  }.bind(this));
+  this._strikeBonus();
+  this._spareBonus();
 }
 
-Game.prototype.spareBonus = function() {
-  indices = this.frames.reduce((a, e, i) => (e.spare === true) ? a.concat(i) : a, [])
-  var arrayOfArrays = this.frames;
-  var spareScore = 0;
-  indices.forEach(function(element) {
-    spareScore = spareScore + arrayOfArrays[element + 1].turn[0];
-  });
-  this.score = this.score + spareScore
+Game.prototype._spareBonus = function() {
+  spareIndx = this.frames.reduce((a, e, i) => (e.spare === true) ? a.concat(i) : a, [])
+  spareIndx.forEach(function(frame) {
+    this.score += this.frames[frame + 1].bowls[0];
+  }.bind(this));
 }
 
-Game.prototype.strikeBonus = function() {
-  indices = this.frames.reduce((a, e, i) => (e.strike === true) ? a.concat(i) : a, [])
-  var arrayOfArrays = this.frames;
-  var strikeScore = 0;
-  indices.forEach(function(element) {
-    strikeScore = strikeScore + arrayOfArrays[element + 1].score;
-  });
-  this.score = this.score + strikeScore
+Game.prototype._strikeBonus = function() {
+  strikeIndx = this.frames.reduce((a, e, i) => (e.strike === true) ? a.concat(i) : a, [])
+  strikeIndx.forEach(function(frame) {
+    this.score += this.frames[frame + 1].score;
+  }.bind(this));
 }

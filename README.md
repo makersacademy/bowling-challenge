@@ -2,7 +2,11 @@
 Bowling Challenge
 =================
 
-One day kata attempt at the ten pin bowling challenge in JavaScript!
+One day kata attempt at the ten pin bowling challenge in JavaScript.
+
+### To do:
+- Revise checkScore() to not break the law of idempotence
+- Build user interface
 
 -----------------
 

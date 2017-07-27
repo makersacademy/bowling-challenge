@@ -23,5 +23,9 @@ ScoreCard.prototype = {
 
   getLastFrame: function () {
     return this.getCard()[this.getCard().length - 1];
+  },
+
+  isSpareFrame: function () {
+    this.getLastFrame().reduce(function (total, val) { return total + val; }, 0) === 10;
   }
 };

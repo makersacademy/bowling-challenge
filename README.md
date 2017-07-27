@@ -26,7 +26,7 @@ If open command does not work on your machine, just copy the full path of the Sp
 
 - [x] I want to have two rolls per frame
 
-- [ ] I want to end a frame when I score 10 in first roll
+- [x] I want to end a frame when I score 10 in first roll
 
 - [x] I want to keep track of my score for each roll including skipped ones
 

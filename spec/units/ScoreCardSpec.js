@@ -57,4 +57,11 @@ describe('ScoreCard', function () {
       expect(card.getLastFrame()).toEqual([5, 0]);
     });
   });
+
+  describe('checkSpare', function () {
+    it('sets spare to true if second score in frame brings total to 10', function () {
+      card.card = [[1, 1], [5, 5]];
+      expect(card.isSpareFrame()).toBeTrue;
+    });
+  });
 });

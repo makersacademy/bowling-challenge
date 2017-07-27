@@ -8,6 +8,7 @@ function Frame (card) {
 }
 
 Frame.prototype = {
+
   processRoll: function () {
     if (this.getRollCount() < 2 && this.remainder() > 0) {
       var roll = this.roll();

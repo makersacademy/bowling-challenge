@@ -26,6 +26,13 @@ ScoreCard.prototype = {
   },
 
   isSpareFrame: function () {
-    this.getLastFrame().reduce(function (total, val) { return total + val; }, 0) === 10;
+    if (!this.isStrikeFrame()) {
+      this.getLastFrame().reduce(function (total, val) { return total + val; }, 0) === 10;
+    }
+    return false;
+  },
+
+  isStrikeFrame: function () {
+    this.getLastFrame()[0] === 10;
   }
 };

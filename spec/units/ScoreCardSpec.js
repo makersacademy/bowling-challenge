@@ -58,10 +58,25 @@ describe('ScoreCard', function () {
     });
   });
 
-  describe('checkSpare', function () {
-    it('sets spare to true if second score in frame brings total to 10', function () {
+  describe('isSpareFrame', function () {
+    it('returns true if frame total is 10', function () {
       card.card = [[1, 1], [5, 5]];
       expect(card.isSpareFrame()).toBeTrue;
+    });
+    it('returns false if frame total not equal to 10', function () {
+      card.card = [[1, 1], [5, 4]];
+      expect(card.isSpareFrame()).toBeFalse;
+    });
+  });
+
+  describe('isStrikeFrame', function () {
+    it('returns true if frame total is 10', function () {
+      card.card = [[1, 1], [10, 0]];
+      expect(card.isStrikeFrame()).toBeTrue;
+    });
+    it('returns false if first roll not equal to 10', function () {
+      card.card = [[1, 1], [9, 1]];
+      expect(card.isStrikeFrame()).toBeFalse;
     });
   });
 });

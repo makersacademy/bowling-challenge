@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Play a frame', function () {
-  it('updates the scorecard with correct frame scores', function () {
+  xit('updates the scorecard with correct frame scores', function () {
     var game, scorecard;
     game = new Game();
     spyOn(Math, 'random').and.returnValues(0.51, 0.9);

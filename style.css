@@ -1,7 +1,12 @@
+body {
+  font-family: sans-serif;
+}
+
 #scorecard-container {
   width: 1070px;
   height: 117px;
   border: 2px solid;
+  background-color: #d6e3f9;
 }
 
 .frame-header {

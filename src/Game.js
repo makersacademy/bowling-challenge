@@ -30,10 +30,26 @@ Game.prototype = {
     return this.getCurrentFrame().getIsFinished();
   },
 
+  getTotalScore: function () {
+    return sumArray(flatten(this.getScoreCard().getCard()));
+  },
+
   getScoreCard: function () {
     return this.scoreCard;
   }
 };
+
+function flatten (ar) {
+  if (!(ar instanceof Array)) throw new TypeError('Passed: ' + ar);
+  if (ar === [[]]) { return []; }
+  return ar.reduce(function (newArr, val) { return newArr.concat(val); });
+}
+
+function sumArray (ar) {
+  if (!(ar instanceof Array)) { throw new TypeError('Passed: ' + ar); }
+  if (ar.length === 0) { return 0; }
+  return ar.reduce(function (sum, val) { return sum + val; });
+}
 
 // Game.prototype.checkGameEnd = function () {
 //   if (this.turn < MAX_TURNS ||

@@ -8,15 +8,27 @@ function Frame (card) {
 }
 
 Frame.prototype = {
+  // Public interface
 
+  // Called by Game.play()
   processRoll: function () {
-    if (this.getRollCount() < 2 && this.remainder() > 0) {
-      var roll = this.roll();
-      this.updateFrameScore(roll);
-    } else if (this.getRollCount() < 2) {
+    if (!this.isFullFrame() && !this.isStrike()) {
+      this.updateFrameScore(this.roll());
+    } else if (!this.isFullFrame() && this.isStrike()) {
       this.updateFrameScore(0);
+    } else if (this.isFullFrame()) {
+      throw new Error('ProcessRoll called on full frame');
     }
-    this.checkFullFrame();
+  },
+
+  // Called by Game.isFrameFinished()
+  getIsFinished: function () {
+    return this.isFinished;
+  },
+
+  // Private methods
+  isStrike: function () {
+    return this.getFrameScore()[0] === 10;
   },
 
   getRollCount: function () {
@@ -31,12 +43,15 @@ Frame.prototype = {
   },
 
   updateFrameScore: function (rollScore) {
-    if (this.getFrameScore().length > 1) {
+    if (this.isFullFrame()) {
       throw Error('Game has tried to play another roll on a full frame');
-    } else if (rollScore < 0 || rollScore > 10 || rollScore === undefined) {
+    } else if (rollScore < 0 ||
+        rollScore > 10 ||
+        rollScore === undefined) {
       throw TypeError('not passed a valid number - score is ' + rollScore);
     }
     this.frameScore.push(rollScore);
+    this.updateScoreCard();
     this.updateRollCount();
   },
 
@@ -46,16 +61,15 @@ Frame.prototype = {
 
   updateRollCount: function () {
     this.rollCount ++;
+    this.isFullFrame();
   },
 
-  checkFullFrame: function () {
+  isFullFrame: function () {
     if (this.getRollCount() > 1) {
       this.updateIsFinished(true);
+      return true;
     }
-  },
-
-  getIsFinished: function () {
-    return this.isFinished;
+    return false;
   },
 
   updateIsFinished: function (boolean) {
@@ -67,11 +81,15 @@ Frame.prototype = {
   },
 
   updateScoreCard: function () {
-    this.getScoreCard().updateCard(this.getFrameScore());
+    this.getScoreCard().updateCard(this.getLastRoll());
   },
 
   getFrameScore: function () {
     return this.frameScore;
+  },
+
+  getLastRoll: function () {
+    return this.getFrameScore()[this.getFrameScore().length - 1];
   }
 
   // getLastFrameScore: function () {

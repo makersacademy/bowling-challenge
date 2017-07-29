@@ -15,6 +15,8 @@ describe('Game', function () {
       expect(frame.processRoll).toHaveBeenCalled();
     });
     it('calls nextFrame', function () {
+      var frame = { processRoll: function () {} };
+      spyOn(game, 'getCurrentFrame').and.returnValue(frame);
       spyOn(game, 'nextFrame');
       game.play();
       expect(game.nextFrame).toHaveBeenCalled();
@@ -62,10 +64,57 @@ describe('Game', function () {
     });
   });
 
+  describe('getTotalScore', function () {
+    it('calculates and return total score', function () {
+      var card = { getCard: function () { return [[1, 2], [5, 2]]; } };
+      spyOn(game, 'getScoreCard').and.returnValue(card);
+      expect(game.getTotalScore()).toEqual(10);
+    });
+  });
+
   describe('getScoreCard', function () {
-    it('returns a frame object', function () {
+    it('returns a ScoreCard object', function () {
       var card = game.getScoreCard();
       expect(card instanceof ScoreCard).toBeTruthy();
+    });
+  });
+
+  describe('flatten', function () {
+    it('returns a flattened array', function () {
+      var array = [[1, 2], [5, 2]];
+      expect(flatten(array)).toEqual([1, 2, 5, 2]);
+    });
+    it('returns a flattened array', function () {
+      var array = [[0]];
+      expect(flatten(array)).toEqual([0]);
+    });
+    it('returns a flattened array', function () {
+      var array = [[0, 0]];
+      expect(flatten(array)).toEqual([0, 0]);
+    });
+    it('throws TypeError if not passed an array', function () {
+      expect(function () { flatten(1); }).toThrow(new TypeError('Passed: 1'));
+    });
+    it('returns a empty flat array if passed [[]]', function () {
+      var array = [[]];
+      expect(flatten(array)).toEqual([]);
+    });
+  });
+
+  describe('sumArray', function () {
+    it('returns sum of a flat array', function () {
+      var array = [1, 2, 5, 2];
+      expect(sumArray(array)).toEqual(10);
+    });
+    it('can take array with 0', function () {
+      expect(sumArray([0])).toEqual(0);
+    });
+    it('throws TypeError if not passed an array', function () {
+      expect(function () { sumArray(1); }).toThrow(new TypeError('Passed: 1'));
+    });
+    it('returns 0 if array is empty', function () {
+      var array = [];
+      expect(sumArray(array)).toEqual(0);
     });
   });
 });

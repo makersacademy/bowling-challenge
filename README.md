@@ -1,6 +1,7 @@
 
-Bowling Challenge
-=================
+Bowling Game
+============
+Project to implement the business logic for a single player bowling game in JavaScript.  
 
 ## Instructions
 
@@ -16,7 +17,7 @@ cd bowling-challenge
 npm i
 open SpecRunner.html
 ```
-If open command does not work on your machine, just copy the full path of the SpecRunner file into your browser's address bar after.
+If open command does not work on your machine, just copy the full path of the SpecRunner file into your browser's address bar.
 
 ## User stories
 
@@ -30,11 +31,11 @@ If open command does not work on your machine, just copy the full path of the Sp
 
 - [x] I want to keep track of my score for each roll including skipped ones
 
-- [ ] I want to keep track of my score for each frame including bonuses
+- [x] I want to keep track of my score for each frame including bonuses
 
-- [ ] I want to add this frame to the last frame if it was a strike
+- [x] I want to add this frame to the last frame if it was a strike
 
-- [ ] I want to add the first roll to the last frame if it was a spare
+- [x] I want to add the first roll to the last frame if it was a spare
 
 - [ ] I want the game to end after 10 frames
 

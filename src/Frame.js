@@ -91,12 +91,4 @@ Frame.prototype = {
   getLastRoll: function () {
     return this.getFrameScore()[this.getFrameScore().length - 1];
   }
-
-  // getLastFrameScore: function () {
-  //   var lastScore = this.getFrameScore()[this.getFameScore().length - 1];
-  //   if (lastScore === 'undefined') {
-  //     throw Error('Tried to update scorecard with no score in frame');
-  //   }
-  //   return lastScore;
-  // }
 };

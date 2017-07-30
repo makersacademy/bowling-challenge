@@ -1,5 +1,6 @@
 'use strict';
-// const MAX_TURNS = 13;
+const MAX_EXTRA_TURNS = 13;
+const MAX_TURNS = 10;
 
 function Game () {
   this.scoreCard = new ScoreCard();
@@ -36,6 +37,16 @@ Game.prototype = {
 
   getScoreCard: function () {
     return this.scoreCard;
+  },
+
+  checkGameEnd: function () {
+    var frames = this.getScoreCard().getCard();
+    var lastIndex = frames.length - 1;
+    return (frames.length === MAX_TURNS &&
+        frames[lastIndex].length === 2 &&
+        frames[lastIndex][0] !== 10) ||
+      (frames.length === MAX_EXTRA_TURNS &&
+        frames[lastIndex].length === 2);
   }
 };
 
@@ -46,9 +57,15 @@ function flatten (ar) {
 }
 
 function sumArray (ar) {
-  if (!(ar instanceof Array)) { throw new TypeError('Passed: ' + ar); }
-  if (ar.length === 0) { return 0; }
-  return ar.reduce(function (sum, val) { return sum + val; });
+  if (!(ar instanceof Array)) {
+    throw new TypeError('Passed: ' + ar);
+  }
+  if (ar.length === 0) {
+    return 0;
+  }
+  return ar.reduce(function (sum, val) {
+    return sum + val;
+  });
 }
 
 // Game.prototype.checkGameEnd = function () {

@@ -117,4 +117,27 @@ describe('Game', function () {
       expect(sumArray(array)).toEqual(0);
     });
   });
+
+  describe('checkGameEnd', function () {
+    it('returns true if 10 full frames played and last was not strike', function () {
+      var array = {getCard: function () { return [[], [], [], [], [], [], [], [], [], [1, 1]]; }};
+      spyOn(game, 'getScoreCard').and.returnValue(array);
+      expect(game.checkGameEnd()).toEqual(true);
+    });
+    it('returns false if 10 full frames played and last was a strike', function () {
+      var array = {getCard: function () { return [[], [], [], [], [], [], [], [], [], [10, 0]]; }};
+      spyOn(game, 'getScoreCard').and.returnValue(array);
+      expect(game.checkGameEnd()).toEqual(false);
+    });
+    it('returns false if 11 full frames played and last was a strike', function () {
+      var array = {getCard: function () { return [[], [], [], [], [], [], [], [], [], [10, 0, 10, 0], [10, 0, 10, 0]]; }};
+      spyOn(game, 'getScoreCard').and.returnValue(array);
+      expect(game.checkGameEnd()).toEqual(false);
+    });
+    it('returns true if 13 full frames played and last was a strike', function () {
+      var array = {getCard: function () { return [[], [], [], [], [], [], [], [], [], [], [], [10, 0, 10, 0], [10, 0]]; }};
+      spyOn(game, 'getScoreCard').and.returnValue(array);
+      expect(game.checkGameEnd()).toEqual(true);
+    });
+  });
 });

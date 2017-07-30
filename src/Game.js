@@ -9,6 +9,7 @@ function Game () {
 
 Game.prototype = {
   play: function () {
+    if (this.checkGameEnd()) { console.log('Game over!'); return; }
     this.getCurrentFrame().processRoll();
     this.nextFrame();
   },

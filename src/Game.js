@@ -67,11 +67,3 @@ function sumArray (ar) {
     return sum + val;
   });
 }
-
-// Game.prototype.checkGameEnd = function () {
-//   if (this.turn < MAX_TURNS ||
-//     (scorecard[scorecard.length - 1][0] === 10 || scorecard.length < 14)) {
-//     return;
-//   }
-//   this.endGame();
-// };

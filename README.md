@@ -19,50 +19,23 @@ open SpecRunner.html
 ```
 If open command does not work on your machine, just copy the full path of the SpecRunner file into your browser's address bar.
 
+## Things I'd like to do to extend
+- Add a user interface
+- Add some more edge case integration tests for end game scenarios.
+
 ## User stories
 
-- [x] I want to start a game of bowling
+- [x] Play two rolls per frame
+- [x] End a frame when I score 10 in first roll
+- [x] Keep track of my score for each roll including skipped ones
+- [x] Keep track of my score for each frame including bonuses
+- [x] Add this frame to the last frame if it was a strike
+- [x] Add the first roll to the last frame if it was a spare
+- [x] End game after 10 frames
+- [x] Continue game past 10 frames when the previous frame is a strike
+- [x] End game after 13 frames if the last four frames are strikes.
 
-- [x] I want to roll
-
-- [x] I want to have two rolls per frame
-
-- [x] I want to end a frame when I score 10 in first roll
-
-- [x] I want to keep track of my score for each roll including skipped ones
-
-- [x] I want to keep track of my score for each frame including bonuses
-
-- [x] I want to add this frame to the last frame if it was a strike
-
-- [x] I want to add the first roll to the last frame if it was a spare
-
-- [ ] I want the game to end after 10 frames
-
-- [ ] I want the game to only continue past 10 frames when the frame is a strike
-
-- [ ] I want the game to end after 13 frames if the last four frames are strikes.
-
-
-
-## The Task
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
-
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
+## Rule details
 
 ### Strikes
 
@@ -88,7 +61,5 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
 In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)

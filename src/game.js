@@ -4,9 +4,7 @@ function Game() {
 }
 
 Game.prototype.addFrame = function(frame) {
-  if (this.frames.length === 11) {
-    throw "Game over!"
-  } else if (this.frames.length === 10 && this.frames[9].score < 10) {
+  if (this.frames.length === 11 || (this.frames.length === 10 && this.frames[9].score < 10)) {
     throw "Game over!"
   } else {
     this.frames.push(frame)
@@ -14,6 +12,15 @@ Game.prototype.addFrame = function(frame) {
 }
 
 Game.prototype.totalScore = function() {
+  if (this.frames.slice(-1)[0].score === 10) {
+    this.frames.pop()
+    this._calculateScore();
+  } else {
+    this._calculateScore();
+  }
+}
+
+Game.prototype._calculateScore = function() {
   this.frames.forEach(function(frame) {
     this.score += frame.score;
   }.bind(this));

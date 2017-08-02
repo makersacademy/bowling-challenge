@@ -12,7 +12,6 @@
 
 ## Known issues
 
-- The tenth frame will not display the third bowl (although the end score will still be accurate)
 - No obvious error messages will be displayed (although you can see these in the console log)
 - The score layout doesn't look as nice as I would like (X and / for strikes and spares, and showing a running total in the space under each frame would be nice)
 - I would like to remove the calculate score button and automate this process in the future

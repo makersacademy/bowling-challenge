@@ -27,6 +27,10 @@ describe('Frame', function() {
     it('is not a spare', function() {
       expect(frame.isASpare()).toBe(false);
     });
+
+    it('has a score of zero', function() {
+      expect(frame.getScore()).toEqual(0);
+    });
   });
 
   describe('setFirstRoll', function() {
@@ -72,6 +76,15 @@ describe('Frame', function() {
       frame.setFirstRoll(6);
       frame.setSecondRoll(3);
       expect(frame.isASpare()).toBe(false);
+    });
+  });
+
+  describe('calculate score', function() {
+    it('calculates score given previous total and bonus', function() {
+      frame.setFirstRoll(6);
+      frame.setSecondRoll(4);
+      frame.calculateScore(0,7); //Frame 1: 6 4, Frame 2: 7
+      expect(frame.getScore()).toEqual(17);
     });
   });
 });

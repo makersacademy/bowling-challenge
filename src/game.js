@@ -1,6 +1,6 @@
 'use strict';
 
-var Game = function(player, frameClass, playerClass) {
+var Game = function(playerName, frameClass, playerClass) {
   this._frameClass = frameClass || Frame;
   this._playerClass = playerClass || Player;
 
@@ -8,7 +8,7 @@ var Game = function(player, frameClass, playerClass) {
   this._createEmptyFrames();
   this._currentFrame  = 1;
 
-  this._player = new this._playerClass(player);
+  this._player = new this._playerClass(playerName);
 };
 
 Game.prototype._createEmptyFrames = function () {

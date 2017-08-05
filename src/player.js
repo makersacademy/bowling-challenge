@@ -1,7 +1,7 @@
 'use strict';
 
 var Player = function(name) {
-  this._name = name;
+  this._name = name || '';
 };
 
 Player.prototype.getName = function() {

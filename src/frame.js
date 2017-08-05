@@ -1,6 +1,7 @@
-function Frame() {
-  this._roll1 = 0;
-  this._roll2 = 0;
+function Frame(number) {
+  this.frameNumber = number;
+  this._roll1 = null;
+  this._roll2 = null;
 }
 
 Frame.prototype.getScore = function () {
@@ -14,4 +15,8 @@ Frame.prototype.firstRoll = function(pins) {
 
 Frame.prototype.secondRoll = function(pins) {
   this._roll2 = pins;
+};
+
+Frame.prototype.isStrike = function () {
+  return this._roll1 === 10;
 };

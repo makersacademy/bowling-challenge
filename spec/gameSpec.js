@@ -15,6 +15,15 @@ describe("Game", function () {
     });
   });
 
+  describe("playing a game", function() {
+    it("does not roll a second roll if a frame is a strike", function() {
+      spyOn(Frame.prototype, "isStrike").and.returnValue(true);
+      spyOn(Frame.prototype, "secondRoll");
+      game.play();
+      expect(Frame.prototype.secondRoll).not.toHaveBeenCalled();
+    });
+  });
+
   describe("getting the score", function() {
     it("should calculate the score from all its frames", function () {
       spyOn(Frame.prototype, "getScore").and.returnValue(5);

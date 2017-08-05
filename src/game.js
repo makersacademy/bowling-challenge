@@ -40,8 +40,7 @@ Game.prototype.play = function() {
 };
 
 Game.prototype.createBonus = function(frame) {
-  var bonus = new Bonus(frame.bonusType());
-  bonus.calculate(frame);
+  var bonus = new Bonus(frame.bonusType(), frame.frameNumber);
   this.bonuses.push(bonus);
 };
 

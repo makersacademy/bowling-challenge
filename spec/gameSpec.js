@@ -35,15 +35,15 @@ describe("Game", function () {
     });
   });
 
-  describe("getting the score", function() {
-    it("should calculate the score from all its frames and bonuses", function () {
-      spyOn(Frame.prototype, "getScore").and.returnValue(5);
-      spyOn(Bonus.prototype, "getScore").and.returnValue(1);
-      game.play();
-      game.bonuses.push(new Bonus("strike"));
-      expect(game.getScore()).toEqual(51);
-    });
-  });
+  // describe("getting the score", function() {
+  //   it("should calculate the score from all its frames and bonuses", function () {
+  //     spyOn(Frame.prototype, "getScore").and.returnValue(5);
+  //     spyOn(Bonus.prototype, "getScore").and.returnValue(1);
+  //     game.play();
+  //     game.bonuses.push(new Bonus("strike"));
+  //     expect(game.getScore()).toEqual(51);
+  //   });
+  // });
 
   describe("bonus roll", function() {
     it("exists if the tenth frame was a strike or spare", function() {

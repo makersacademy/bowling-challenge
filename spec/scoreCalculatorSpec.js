@@ -27,10 +27,16 @@ describe("ScoreCalculator", function() {
   });
 
   describe("calculating bonus scores", function() {
-    it("calculates bonus scores", function() {
+    it("can calculate a strike bonus", function() {
       spyOn(Frame.prototype, "getScore").and.returnValue(5);
       bonuses.push(new Bonus("strike", 5));
       expect(calculator.bonusScores()).toEqual(5);
+    });
+
+    it("can calculate a spare bonus", function() {
+      spyOn(Frame.prototype, "firstRoll").and.returnValue(2);
+      bonuses.push(new Bonus("spare", 5));
+      expect(calculator.bonusScores()).toEqual(2);
     });
   });
 });

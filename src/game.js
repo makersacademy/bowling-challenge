@@ -1,5 +1,6 @@
 function Game() {
   this.frames = [];
+  this.bonuses = [];
   this._score = 0;
 }
 
@@ -23,13 +24,23 @@ Game.prototype.setFrames = function() {
 };
 
 Game.prototype.play = function() {
-  this.frames.forEach(function (frame) {
+  var game = this;
+  game.frames.forEach(function (frame) {
     var roll = randomPins(10);
+    var lastFrame = new Frame();
     frame.firstRoll(roll);
     if (!frame.isStrike()) {
       frame.secondRoll(randomPins(10 - roll));
     }
+    if (lastFrame.bonusType()) {
+      game.createBonus(frame);
+    }
   });
+};
+
+Game.prototype.createBonus = function(frame) {
+  var bonus = new Bonus(frame.bonusType());
+  this.bonuses.push(bonus);
 };
 
 function randomPins(max) {

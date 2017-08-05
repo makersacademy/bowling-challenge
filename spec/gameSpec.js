@@ -22,6 +22,18 @@ describe("Game", function () {
       game.play();
       expect(Frame.prototype.secondRoll).not.toHaveBeenCalled();
     });
+
+    it("creates a bonus if the last frame was a strike", function() {
+      spyOn(Frame.prototype, "isStrike").and.returnValue(true);
+      game.play();
+      expect(game.bonuses[0] instanceof Bonus).toBeTruthy();
+    });
+
+    it("creates a bonus if the last frame was a spare", function() {
+      spyOn(Frame.prototype, "isSpare").and.returnValue(true);
+      game.play();
+      expect(game.bonuses[0] instanceof Bonus).toBeTruthy();
+    });
   });
 
   describe("getting the score", function() {

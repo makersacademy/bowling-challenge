@@ -37,4 +37,24 @@ describe("Frame", function () {
       expect(frame.isSpare()).toBe(true);
     });
   });
+
+  describe("bonus type", function() {
+    it("returns strike if the next frame will give a strike bonus", function() {
+      frame.firstRoll(10);
+      expect(frame.bonusType()).toEqual("strike");
+    });
+
+    it("returns spare if the next frame will give a spare bonus", function() {
+      frame.firstRoll(5);
+      frame.secondRoll(5);
+      expect(frame.bonusType()).toEqual("spare");
+    });
+  });
+
+  describe("getFirstRoll", function() {
+    it("returns the first roll for spare calculation", function() {
+      frame.firstRoll(5);
+      expect(frame.getFirstRoll()).toEqual(5);
+    });
+  });
 });

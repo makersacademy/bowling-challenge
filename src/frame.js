@@ -24,3 +24,15 @@ Frame.prototype.isStrike = function() {
 Frame.prototype.isSpare = function() {
   return this.getScore() === 10;
 };
+
+Frame.prototype.bonusType = function() {
+  if (this.isStrike()) {
+    return "strike";
+  } else if (this.isSpare()) {
+    return "spare";
+  }
+};
+
+Frame.prototype.getFirstRoll = function() {
+  return this._roll1;
+};

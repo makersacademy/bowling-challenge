@@ -1,7 +1,7 @@
 
 Bowling Challenge
 =================
-
+[![Build Status](https://travis-ci.org/i-hardy/bowling-challenge.svg?branch=master)](https://travis-ci.org/i-hardy/bowling-challenge)
 
 ## User Stories
 ```

@@ -7,7 +7,9 @@ describe('Frame', function() {
     frame = new Frame(1);
   });
 
-  it('has an ID', function() {
-    expect(frame.getID()).toEqual(1);
+  describe('constructor', function() {
+    it('has an ID', function() {
+      expect(frame.getID()).toEqual(1);
+    });
   });
 });

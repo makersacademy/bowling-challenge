@@ -19,4 +19,11 @@ describe('Bowling Game', function() {
     expect(game.score()).toEqual(0);
   });
 
+  it('can score 20 rolls which knock down one pin per roll', function() {
+    for (var i = 0; i < 20; i++) {
+      game.roll(1);
+    }
+    expect(game.score()).toEqual(20);
+  });
+
 });

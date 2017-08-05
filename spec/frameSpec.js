@@ -20,6 +20,13 @@ describe('Frame', function() {
       expect(frame.getSecondRoll()).toEqual(0);
     });
 
+    it('is not a strike', function() {
+      expect(frame.isAStrike()).toBe(false);
+    });
+
+    it('is not a spare', function() {
+      expect(frame.isASpare()).toBe(false);
+    });
   });
 
   describe('setFirstRoll', function() {
@@ -30,6 +37,16 @@ describe('Frame', function() {
 
     it('cannot set first roll to more than 10 pins', function() {
       expect(function() { frame.setFirstRoll(11); }).toThrowError('Pins cannot exceed a maximum of 10');
+    });
+
+    it('is a strike if 10 pins are knocked down', function() {
+      frame.setFirstRoll(10);
+      expect(frame.isAStrike()).toBe(true);
+    });
+
+    it('is not a strike if less than 10 pins are knocked down', function() {
+      frame.setFirstRoll(6);
+      expect(frame.isAStrike()).toBe(false);
     });
   });
 
@@ -43,6 +60,18 @@ describe('Frame', function() {
     it('cannot set second roll if the total is more than 10 pins', function() {
       frame.setFirstRoll(6);
       expect(function() { frame.setSecondRoll(5); }).toThrowError('Pins cannot exceed a maximum of 10');
+    });
+
+    it('is a spare if 10 pins are knocked down', function() {
+      frame.setFirstRoll(6);
+      frame.setSecondRoll(4);
+      expect(frame.isASpare()).toBe(true);
+    });
+
+    it('is not a spare if less than 10 pins are knocked down', function() {
+      frame.setFirstRoll(6);
+      frame.setSecondRoll(3);
+      expect(frame.isASpare()).toBe(false);
     });
   });
 });

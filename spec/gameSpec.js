@@ -3,7 +3,6 @@ describe("Game", function () {
 
   beforeEach(function () {
     game = new Game();
-    game.setFrames();
   });
 
   describe("initialization", function() {
@@ -37,10 +36,33 @@ describe("Game", function () {
   });
 
   describe("getting the score", function() {
-    it("should calculate the score from all its frames", function () {
+    it("should calculate the score from all its frames and bonuses", function () {
       spyOn(Frame.prototype, "getScore").and.returnValue(5);
+      spyOn(Bonus.prototype, "getScore").and.returnValue(1);
       game.play();
-      expect(game.getScore()).toEqual(50);
+      game.bonuses.push(new Bonus("strike"));
+      expect(game.getScore()).toEqual(51);
+    });
+  });
+
+  describe("bonus roll", function() {
+    it("exists if the tenth frame was a strike or spare", function() {
+      spyOn(Frame.prototype, "bonusType").and.returnValue("strike");
+      expect(game.bonusRoll()).toBeTruthy();
+    });
+
+    it("rolls twice if the tenth frame was a strike", function() {
+      spyOn(Frame.prototype, "bonusType").and.returnValue("strike");
+      spyOn(Frame.prototype, "secondRoll");
+      game.bonusRoll();
+      expect(Frame.prototype.secondRoll).toHaveBeenCalled();
+    });
+
+    it("only rolls once if the tenth frame was a spare", function() {
+      spyOn(Frame.prototype, "bonusType").and.returnValue("spare");
+      spyOn(Frame.prototype, "secondRoll");
+      game.bonusRoll();
+      expect(Frame.prototype.secondRoll).not.toHaveBeenCalled();
     });
   });
 });

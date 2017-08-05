@@ -1,10 +1,14 @@
 'use strict';
 
-var Game = function(frameClass) {
-  this._frameClass = frameClass;
+var Game = function(player, frameClass, playerClass) {
+  this._frameClass = frameClass || Frame;
+  this._playerClass = playerClass || Player;
+
   this._frames = [];
   this._createEmptyFrames();
   this._currentFrame  = 1;
+
+  this._player = new this._playerClass(player);
 };
 
 Game.prototype._createEmptyFrames = function () {
@@ -17,4 +21,8 @@ Game.prototype.getFrames = function() {
 
 Game.prototype.getCurrentFrame = function() {
   return this._currentFrame;
+};
+
+Game.prototype.getPlayer = function() {
+  return this._player;
 };

@@ -31,7 +31,7 @@ Game.prototype.play = function() {
   var game = this;
   game.frames.forEach(function (frame) {
     var lastFrame = lastFrame || new Frame();
-    var currentFrame = rollFrame(frame);
+    var currentFrame = Game.rollFrame(frame);
     if (lastFrame && lastFrame.bonusType()) {
       game.createBonus(currentFrame);
     }
@@ -49,29 +49,37 @@ Game.prototype.bonusRoll = function () {
   var bonusRoll;
   var type = this.frames[9].bonusType();
   if (type) {
-    bonusRoll = rollBonusFrame(new Frame(), type);
+    bonusRoll = Game.rollBonusFrame(new Frame(), type);
   }
-  return bonusRoll;
+  this.frames.push(bonusRoll);
 };
 
-function randomPins(max) {
-  return Math.floor(Math.random() * (max - 1));
-}
+Game.prototype.isPerfect = function() {
+  return this.getScore() === 300;
+};
 
-function rollFrame(frame) {
-  var roll = randomPins(10);
+Game.prototype.isGutter = function () {
+  return this.getScore() === 0;
+};
+
+Game.randomPins = function(max) {
+  return Math.floor(Math.random() * (max + 1));
+};
+
+Game.rollFrame = function(frame) {
+  var roll = Game.randomPins(10);
   frame.firstRoll(roll);
   if (!frame.isStrike()) {
-    frame.secondRoll(randomPins(10 - roll));
+    frame.secondRoll(Game.randomPins(10 - roll));
   }
   return frame;
-}
+};
 
-function rollBonusFrame(frame, type) {
-  var roll = randomPins(10);
+Game.rollBonusFrame = function(frame, type) {
+  var roll = Game.randomPins(10);
   frame.firstRoll(roll);
   if (type === "strike") {
-    frame.secondRoll(randomPins(10 - roll));
+    frame.secondRoll(Game.randomPins(10 - roll));
   }
   return frame;
-}
+};

@@ -48,7 +48,8 @@ describe("Game", function () {
   describe("bonus roll", function() {
     it("exists if the tenth frame was a strike or spare", function() {
       spyOn(Frame.prototype, "bonusType").and.returnValue("strike");
-      expect(game.bonusRoll()).toBeTruthy();
+      game.bonusRoll();
+      expect(game.frames.length).toEqual(11);
     });
 
     it("rolls twice if the tenth frame was a strike", function() {
@@ -63,6 +64,20 @@ describe("Game", function () {
       spyOn(Frame.prototype, "secondRoll");
       game.bonusRoll();
       expect(Frame.prototype.secondRoll).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("a perfect game", function() {
+    it("returns true if a game had ten strikes", function() {
+      spyOn(game, "getScore").and.returnValue(300);
+      expect(game.isPerfect()).toBe(true);
+    });
+  });
+
+  describe("a gutter game", function() {
+    it("returns true if a game has a zero score", function() {
+      spyOn(game, "getScore").and.returnValue(0);
+      expect(game.isGutter()).toBe(true);
     });
   });
 });

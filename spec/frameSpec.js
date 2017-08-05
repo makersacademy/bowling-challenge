@@ -42,11 +42,13 @@ describe("Frame", function () {
     it("returns strike if the next frame will give a strike bonus", function() {
       frame.firstRoll(10);
       expect(frame.bonusType()).toEqual("strike");
+      expect(frame.bonusType()).not.toEqual("spare");
     });
 
     it("returns spare if the next frame will give a spare bonus", function() {
       frame.firstRoll(5);
       frame.secondRoll(5);
+      expect(frame.bonusType()).not.toEqual("strike");
       expect(frame.bonusType()).toEqual("spare");
     });
   });

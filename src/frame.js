@@ -1,12 +1,11 @@
-function Frame(number) {
-  this.frameNumber = number;
+function Frame(index) {
+  this.frameIndex = index;
   this._roll1 = null;
   this._roll2 = null;
 }
 
 Frame.prototype.getScore = function () {
-  this._score = this._roll1 + this._roll2;
-  return this._score;
+  return this._roll1 + this._roll2;
 };
 
 Frame.prototype.firstRoll = function(pins) {
@@ -18,7 +17,7 @@ Frame.prototype.secondRoll = function(pins) {
 };
 
 Frame.prototype.isStrike = function() {
-  return this._roll1 === 10;
+  return this.getFirstRoll() === 10;
 };
 
 Frame.prototype.isSpare = function() {

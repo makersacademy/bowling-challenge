@@ -1,56 +1,42 @@
 function Game() {
   this.frames = [];
   this.bonuses = [];
-  this._score = 0;
   this._setFrames();
 }
 
 Game.prototype.getScore = function() {
-  this.calculateScore();
-  return this._score;
-};
-
-Game.prototype.calculateScore = function() {
-  var score = 0;
-  this.frames.forEach(function(frame) {
-    score += frame.getScore();
-  });
-  this.bonuses.forEach(function(bonus) {
-    score += bonus.getScore();
-  });
-  this._score = score;
+  var calculator = new ScoreCalculator(this.frames, this.bonuses);
+  return calculator.totalScore();
 };
 
 Game.prototype._setFrames = function() {
-  for (var i = 1; i < 11; i++) {
+  for (var i = 0; i < 10; i++) {
     this.frames.push(new Frame(i));
   }
 };
 
 Game.prototype.play = function() {
   var game = this;
+  var lastFrame = lastFrame || new Frame();
   game.frames.forEach(function (frame) {
-    var lastFrame = lastFrame || new Frame();
     var currentFrame = Game.rollFrame(frame);
-    if (lastFrame && lastFrame.bonusType()) {
-      game.createBonus(currentFrame);
+    if (lastFrame.bonusType()) {
+      game.createBonus(lastFrame.bonusType(), currentFrame);
     }
     lastFrame = currentFrame;
   });
+  game.bonusRoll();
 };
 
-Game.prototype.createBonus = function(frame) {
-  var bonus = new Bonus(frame.bonusType(), frame.frameNumber);
-  this.bonuses.push(bonus);
+Game.prototype.createBonus = function(type, frame) {
+  this.bonuses.push(new Bonus(type, frame.frameIndex));
 };
 
 Game.prototype.bonusRoll = function () {
-  var bonusRoll;
   var type = this.frames[9].bonusType();
   if (type) {
-    bonusRoll = Game.rollBonusFrame(new Frame(), type);
+    this.frames.push(Game.rollBonusFrame(new Frame(), type));
   }
-  this.frames.push(bonusRoll);
 };
 
 Game.prototype.isPerfect = function() {

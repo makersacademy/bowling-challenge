@@ -5,7 +5,7 @@ describe("ScoreCalculator", function() {
 
   beforeEach(function() {
     frames = [];
-    for (var i = 1; i < 11; i++) {
+    for (var i = 0; i < 10; i++) {
       frames.push(new Frame(i));
     }
     bonuses = [];
@@ -16,6 +16,14 @@ describe("ScoreCalculator", function() {
     it("has an array of frames and an array of bonuses", function() {
       expect(calculator.frames instanceof Array).toBeTruthy();
       expect(calculator.bonuses instanceof Array).toBeTruthy();
+    });
+  });
+
+  describe("calulating the total score", function() {
+    it("adds the total and bonus scores together", function() {
+      spyOn(Frame.prototype, "getScore").and.returnValue(5);
+      bonuses.push(new Bonus("strike", 5));
+      expect(calculator.totalScore()).toEqual(55);
     });
   });
 
@@ -34,7 +42,7 @@ describe("ScoreCalculator", function() {
     });
 
     it("can calculate a spare bonus", function() {
-      spyOn(Frame.prototype, "firstRoll").and.returnValue(2);
+      spyOn(Frame.prototype, "getFirstRoll").and.returnValue(2);
       bonuses.push(new Bonus("spare", 5));
       expect(calculator.bonusScores()).toEqual(2);
     });

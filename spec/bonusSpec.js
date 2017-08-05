@@ -8,14 +8,14 @@ describe("Bonus", function() {
 
   describe("type", function() {
     it("returns the type of the bonus", function() {
-      bonus = new Bonus("strike", frame.frameNumber);
+      bonus = new Bonus("strike", frame.frameIndex);
       expect(bonus.type()).toEqual("strike");
     });
   });
 
   describe("frame to apply to", function() {
     it("knows the frame number that the bonus is calculated from", function() {
-      expect(bonus.getFrameNumber()).toEqual(1);
+      expect(bonus.getFrameIndex()).toEqual(1);
     });
   });
 });

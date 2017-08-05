@@ -16,7 +16,8 @@ describe("Game", function () {
 
   describe("playing a game", function() {
     it("does not roll a second roll if a frame is a strike", function() {
-      spyOn(Frame.prototype, "isStrike").and.returnValue(true);
+      spyOn(game, "bonusRoll").and.callFake(function() { });
+      spyOn(Frame.prototype, "getFirstRoll").and.returnValue(10);
       spyOn(Frame.prototype, "secondRoll");
       game.play();
       expect(Frame.prototype.secondRoll).not.toHaveBeenCalled();
@@ -35,15 +36,13 @@ describe("Game", function () {
     });
   });
 
-  // describe("getting the score", function() {
-  //   it("should calculate the score from all its frames and bonuses", function () {
-  //     spyOn(Frame.prototype, "getScore").and.returnValue(5);
-  //     spyOn(Bonus.prototype, "getScore").and.returnValue(1);
-  //     game.play();
-  //     game.bonuses.push(new Bonus("strike"));
-  //     expect(game.getScore()).toEqual(51);
-  //   });
-  // });
+  describe("getting the score", function() {
+    it("should create a score calculator and pass it the frames and bonuses", function () {
+      spyOn(ScoreCalculator.prototype, "totalScore");
+      game.getScore();
+      expect(ScoreCalculator.prototype.totalScore).toHaveBeenCalled();
+    });
+  });
 
   describe("bonus roll", function() {
     it("exists if the tenth frame was a strike or spare", function() {

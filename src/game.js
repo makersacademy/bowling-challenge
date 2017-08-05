@@ -1,5 +1,4 @@
 function Game() {
-  this.PIN_NUMBER = 10;
   this.frames = [];
   this._score = 0;
 }
@@ -25,14 +24,14 @@ Game.prototype.setFrames = function() {
 
 Game.prototype.play = function() {
   this.frames.forEach(function (frame) {
-    var roll = randomPins();
+    var roll = randomPins(10);
     frame.firstRoll(roll);
     if (!frame.isStrike()) {
-      frame.secondRoll(this.PIN_NUMBER - roll);
+      frame.secondRoll(randomPins(10 - roll));
     }
   });
 };
 
-function randomPins() {
-  return Math.floor(Math.random() * 10);
+function randomPins(max) {
+  return Math.floor(Math.random() * (max - 1));
 }

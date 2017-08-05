@@ -17,6 +17,10 @@ Frame.prototype.secondRoll = function(pins) {
   this._roll2 = pins;
 };
 
-Frame.prototype.isStrike = function () {
+Frame.prototype.isStrike = function() {
   return this._roll1 === 10;
+};
+
+Frame.prototype.isSpare = function() {
+  return this.getScore() === 10;
 };

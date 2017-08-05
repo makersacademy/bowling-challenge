@@ -28,4 +28,13 @@ describe("Frame", function () {
       expect(frame.isStrike()).toBe(true);
     });
   });
+
+  describe("scoring a spare", function() {
+    it("knows if it is a spare", function() {
+      frame.firstRoll(5);
+      frame.secondRoll(5);
+      expect(frame.isStrike()).toBe(false);
+      expect(frame.isSpare()).toBe(true);
+    });
+  });
 });

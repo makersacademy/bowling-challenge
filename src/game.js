@@ -6,9 +6,11 @@ var Game = function(playerName, frameClass, playerClass) {
 
   this._frames = [];
   this._createEmptyFrames();
-  this._currentFrame  = 1;
+  this._currentFrame  = 0;
 
   this._player = new this._playerClass(playerName);
+
+  this._isFirstRoll = true;
 };
 
 Game.prototype._createEmptyFrames = function () {
@@ -25,4 +27,11 @@ Game.prototype.getCurrentFrame = function() {
 
 Game.prototype.getPlayer = function() {
   return this._player;
+};
+
+Game.prototype.receiveRoll = function(pins) {
+  var frame = this._frames[this._currentFrame];
+  this._isFirstRoll ? frame.setFirstRoll(pins) : frame.setSecondRoll(pins);
+  this._isFirstRoll = !this._isFirstRoll;
+  if (this._isFirstRoll) this._currentFrame += 1;
 };

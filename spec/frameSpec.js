@@ -80,11 +80,28 @@ describe('Frame', function() {
   });
 
   describe('calculate score', function() {
-    it('calculates score given previous total and bonus', function() {
+    beforeEach(function() {
       frame.setFirstRoll(6);
       frame.setSecondRoll(4);
+    });
+
+    it('calculates score given previous total and bonus', function() {
       frame.calculateScore(0,7); //Frame 1: 6 4, Frame 2: 7
       expect(frame.getScore()).toEqual(17);
+    });
+
+    it('throws an error if previous total is missing', function() {
+      expect(function() { frame.calculateScore(); }).toThrowError('Previous total required');
+    });
+
+    it('throws an error if bonus is missing for a strike/spare frame', function() {
+      expect(function() { frame.calculateScore(0); }).toThrowError('Bonus required');
+    });
+
+    it('does not throw an error if bonus is missing for an open frame', function() {
+      frame.setSecondRoll(3);
+      frame.calculateScore(0);
+      expect(frame.getScore()).toEqual(9);
     });
   });
 });

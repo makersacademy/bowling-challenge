@@ -16,14 +16,14 @@ Frame.prototype.setFirstRoll = function(pins) {
   pins = pins || 0;
   this._checkPinsExceeded(pins);
   this._firstRoll = pins;
-  if (this._firstRoll === 10) this._bonus = 'strike';
+  this._bonus = (this._firstRoll === 10) ? 'strike' : 'none';
 };
 
 Frame.prototype.setSecondRoll = function(pins) {
   pins = pins || 0;
   this._checkPinsExceeded(pins);
   this._secondRoll = pins;
-  if (this._firstRoll + this._secondRoll === 10) this._bonus = 'spare';
+  this._bonus = (this._firstRoll + this._secondRoll === 10) ? 'spare' : 'none';
 };
 
 Frame.prototype.getFirstRoll = function() {
@@ -48,6 +48,9 @@ Frame.prototype.isASpare = function() {
 };
 
 Frame.prototype.calculateScore = function(previousTotal, bonus) {
+  if (previousTotal === undefined) throw new Error('Previous total required');
+  if (bonus === undefined && (this.isAStrike() || this.isASpare())) throw new Error('Bonus required');
+  bonus = bonus || 0;
   this._score = previousTotal + this._firstRoll + this._secondRoll + bonus;
 };
 

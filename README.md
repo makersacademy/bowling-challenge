@@ -11,7 +11,11 @@ I would like to play a bowling game of ten frames
 
 As a bowler
 So that the game can be accurately soothing
-I want each frame to contain two roles
+I want each frame to contain two rolls
+
+As a bowler
+So the game isn't completely pointless
+I would like it to record my score
 
 As a bowler
 So I can feel appropriately glorious

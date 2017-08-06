@@ -48,6 +48,18 @@ bowlingGame.prototype.calculateScore = function() {
 };
 
 bowlingGame.prototype.score = function() {
+  if (this.isStrike()) {
+    this.addStrikeScore();
+  } else {
+    if (this.isSpare()) {
+        this.addSpareScore();
+    }
+    this.addStandardScore();
+  }
+  return this.result;
+};
+
+bowlingGame.prototype.finalScore = function() {
   this.calculateScore();
   return this.result;
 };

@@ -9,6 +9,10 @@ Scorer.prototype.frame = function() {
   return this._frame;
 };
 
+Scorer.prototype.score = function() {
+  return this._score;
+}
+
 Scorer.prototype.isSpare = function(a, b) {
   return a + b === 10;
 };
@@ -31,4 +35,24 @@ Scorer.prototype.incrementFrame = function() {
 
 Scorer.prototype.islessTen = function(roll) {
   return roll !== 10;
+};
+
+Scorer.prototype.calcOpenFrameScore = function(rollA, rollB){
+  this._score += (rollA + rollB)
+  this.incrementFrame();
+};
+
+Scorer.prototype.calcSpareScore = function(rollA){
+  this._score += (10 + rollA)
+  this.incrementFrame();
+};
+
+Scorer.prototype.calcSingleStrikeScore = function(rollA, rollB){
+  this._score += (10 + rollA + rollB)
+  this.incrementFrame();
+};
+
+Scorer.prototype.calcDoubleStrikeScore = function(rollA){
+  this._score += (20 + rollA)
+  this.incrementFrame();
 };

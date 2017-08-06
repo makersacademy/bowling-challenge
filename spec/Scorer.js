@@ -36,4 +36,23 @@ describe('Scorer unit tests:', function(){
     expect(scorer.islessTen(10)).toBeFalsy();
   });
 
+  it('#calcOpenFrameScore returns sum of roll A and roll B', function(){
+    scorer.calcOpenFrameScore(6, 3);
+    expect(scorer.score()).toEqual(9);
+  });
+
+  it('#calcSpareScore returns 10 plus roll A', function() {
+    scorer.calcSpareScore(6);
+    expect(scorer.score()).toEqual(16);
+  });
+
+  it('#calcSingleStrikeScore returns 10 plus roll A plus roll B', function() {
+    scorer.calcSingleStrikeScore(4, 2);
+    expect(scorer.score()).toEqual(16);
+  })
+
+  it('#calcDoubleStrikeScore returns 20 plus roll A', function() {
+    scorer.calcDoubleStrikeScore(4);
+    expect(scorer.score()).toEqual(24);
+  })
 });

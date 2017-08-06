@@ -57,6 +57,10 @@ Scorer.prototype.calcDoubleStrikeScore = function(rollA){
   this.incrementFrame();
 };
 
+// Scorer.prototype.isGameOver = function() {
+//   this.frame() >= 11
+// };
+
 Scorer.prototype.play = function(){
   if (this.frame() >= 11) {
     console.log('end')
@@ -71,7 +75,12 @@ Scorer.prototype.play = function(){
 };
 
 Scorer.prototype.whichRoute = function() {
-  if (this.islessTen(rollA)) {
+  if (this.frame() >= 11) {
+    console.log('end')
+    return
+  }
+
+  else if (this.islessTen(rollA)) {
     this.rollB(rollA)
     this.playLessTenRoute()
     return
@@ -85,12 +94,16 @@ Scorer.prototype.whichRoute = function() {
 
 Scorer.prototype.playLessTenRoute = function() {
     console.log(rollB);
-    if (this.isSpare(rollA, rollB)) {
+    if (this.frame() >= 11) {
+      console.log('end')
+      return
+    }
+    else if (this.isSpare(rollA, rollB)) {
       this.rollA()
       console.log(rollA)
       this.calcSpareScore(rollA)
       console.log('score ' + this.score())
-      this.play()
+      this.whichRoute()
     }
     else {
       console.log('no spare')
@@ -103,8 +116,12 @@ Scorer.prototype.playLessTenRoute = function() {
 Scorer.prototype.playTenRoute = function() {
     console.log('First ten scored')
     console.log(rollA)
+    if (this.frame() >= 11) {
+      console.log('end')
+      return
+    }
 
-    if (this.islessTen(rollA)) {
+    else if (this.islessTen(rollA)) {
       this.rollB(rollA);
       console.log(rollB);
       this.calcSingleStrikeScore(rollA, rollB);

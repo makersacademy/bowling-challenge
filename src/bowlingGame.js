@@ -1,47 +1,51 @@
 function bowlingGame() {
-  this.scores = [];
+  this.pinfall = [];
+  this.pinfallIndex = 0;
+  this.result = 0;
 }
 
 bowlingGame.prototype.roll = function(pins) {
-  this.scores.push(pins);
+  this.pinfall.push(pins);
+};
+
+bowlingGame.prototype.isStrike = function() {
+  return this.pinfall[this.pinfallIndex] === 10;
+};
+
+bowlingGame.prototype.strikeScore = function() {
+  return this.pinfall[this.pinfallIndex] + this.pinfall[this.pinfallIndex + 1] + this.pinfall[this.pinfallIndex + 2];
+};
+
+bowlingGame.prototype.standardScore = function() {
+  return (this.pinfall[this.pinfallIndex] + this.pinfall[this.pinfallIndex + 1]);
+};
+
+bowlingGame.prototype.isSpare = function() {
+  return (this.pinfall[this.pinfallIndex] + this.pinfall[this.pinfallIndex + 1] === 10);
+};
+
+bowlingGame.prototype.spareScore = function() {
+  return this.pinfall[this.pinfallIndex + 2];
+};
+
+bowlingGame.prototype.calculateScore = function() {
+  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+
+    if (this.isStrike()) {
+      this.result += this.strikeScore();
+      this.pinfallIndex += 1;
+    } else {
+      this.result += this.standardScore();
+      if (this.isSpare()) {
+          this.result += this.spareScore();
+      }
+      this.pinfallIndex += 2;
+    }
+  }
 };
 
 bowlingGame.prototype.score = function() {
-  var result = 0;
-  var scoreIndex = 0;
-  var game = this;
-  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+  this.calculateScore();
 
-    if (isStrike()) {
-      result += strikeScore();
-      scoreIndex += 1;
-    } else {
-      result += standardScore();
-      if (isSpare()) {
-          result += spareScore();
-      }
-      scoreIndex += 2;
-    }
-  }
-  return result;
-
-  function isStrike() {
-    return game.scores[scoreIndex] === 10;
-  }
-
-  function strikeScore() {
-    return (game.scores[scoreIndex] + game.scores[scoreIndex + 1] + game.scores[scoreIndex + 2]);
-  }
-
-  function isSpare() {
-    return (game.scores[scoreIndex] + game.scores[scoreIndex + 1] === 10);
-  }
-
-  function spareScore () {
-    return game.scores[scoreIndex + 2];
-  }
-
-  function standardScore() {
-    return (game.scores[scoreIndex] + game.scores[scoreIndex + 1]);
-  }
+  return this.result;
 };

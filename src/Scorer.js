@@ -58,41 +58,65 @@ Scorer.prototype.calcDoubleStrikeScore = function(rollA){
 };
 
 Scorer.prototype.play = function(){
-  if (this.frame() === 10) {
+  if (this.frame() >= 11) {
+    console.log('end')
     return
   }
-  this.rollA();
-  console.log(rollA)
+  else {
+    console.log('Frame: ' + this.frame())
+    this.rollA();
+    console.log(rollA)
+    this.whichRoute();
+  }
+};
+
+Scorer.prototype.whichRoute = function() {
   if (this.islessTen(rollA)) {
     this.rollB(rollA)
+    this.playLessTenRoute()
+    return
+  }
+  else {
+    this.rollA()
+    this.playTenRoute()
+    return
+  }
+};
+
+Scorer.prototype.playLessTenRoute = function() {
     console.log(rollB);
     if (this.isSpare(rollA, rollB)) {
       this.rollA()
       console.log(rollA)
       this.calcSpareScore(rollA)
-      console.log(this.score())
-      return
+      console.log('score ' + this.score())
+      this.play()
     }
-    console.log('no spare')
-    this.calcOpenFrameScore(rollA, rollB)
-    console.log(this.score())
-    return
+    else {
+      console.log('no spare')
+      this.calcOpenFrameScore(rollA, rollB)
+      console.log('score ' + this.score())
+      this.play()
   }
-  console.log('Ten scored')
-  this.rollA();
-  console.log(rollA)
+};
 
-  if (this.islessTen(rollA)) {
-    this.rollB(rollA);
-    console.log(rollB);
-    this.calcSingleStrikeScore(rollA, rollB);
-    console.log(this.score());
-    return
-  }
-    console.log('Ten scored')
-    this.rollA();
+Scorer.prototype.playTenRoute = function() {
+    console.log('First ten scored')
     console.log(rollA)
-    this.calcDoubleStrikeScore(rollA)
-    console.log(this.score());
 
+    if (this.islessTen(rollA)) {
+      this.rollB(rollA);
+      console.log(rollB);
+      this.calcSingleStrikeScore(rollA, rollB);
+      console.log('score ' + this.score())
+      this.playLessTenRoute()
+    }
+    else {
+      console.log('Second ten scored')
+      this.rollA();
+      console.log(rollA)
+      this.calcDoubleStrikeScore(rollA)
+      console.log('score ' + this.score())
+      this.playTenRoute()
+    }
 };

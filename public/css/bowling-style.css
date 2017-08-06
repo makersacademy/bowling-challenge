@@ -1,0 +1,14 @@
+@font-face
+{
+font-family: bowlorama;
+src: url('../fonts/BOWLOR_.ttf'),
+}
+
+body {
+  font-size:20px;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'bowlorama', cursive;
+}

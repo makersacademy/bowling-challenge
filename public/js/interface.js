@@ -1,6 +1,7 @@
 $(document).ready(function(){
   var bowlingScorecard = new BowlingScorecard();
   var i = 0;
+  var string = "";
   updateDisplay();
 
   function updateDisplay() {
@@ -11,9 +12,27 @@ $(document).ready(function(){
     $('.current-score').text(bowlingScorecard.score());
  }
 
- function updateFrameDisplay(number) {
-   $('.frame' + number).text("Frame" + number + ": " + bowlingScorecard.getFrameScore(number));
+ function stringify(score) {
+   return (score) ? (score + " - ") : "- ";
+ }
 
+ function updateFrameDisplay(number) {
+   string = "Frame " + stringify(number);
+   if (bowlingScorecard.getFrame(number)) {
+     string += "Roll 1: " + stringify(bowlingScorecard.getFrame(number).score1);
+     string += "Roll 2: " + stringify(bowlingScorecard.getFrame(number).score2);
+     if (bowlingScorecard.isLastFrame() && bowlingScorecard.currentFrame().score() >= 10) {
+       string += "Bonus Roll: " + stringify(bowlingScorecard.getFrame(number).score3);
+     }
+     if (bowlingScorecard.getFrame(number).isSpare()) {
+       string += "Spare! -";
+     }
+     else if (bowlingScorecard.getFrame(number).isStrike()) {
+       string += "Strike! -";
+     }
+     string += " Score: " + stringify(bowlingScorecard.getFrame(number).score());
+   }
+   $('.frame' + number).text(string);
  }
 
  $(".score").on('click', function() {
@@ -43,8 +62,7 @@ $(document).ready(function(){
  });
 
  $(".reset").on('click', function() {
-   bowlingScorecard.reset();
-   updateDisplay();
+   location.reload();
  });
 
 });

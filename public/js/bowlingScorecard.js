@@ -12,6 +12,7 @@ BowlingScorecard.prototype.reset = function() {
 };
 
 BowlingScorecard.prototype.setGameComplete = function() {
+  this.currentFrame().setComplete();
   this.complete = true;
 };
 
@@ -49,10 +50,6 @@ BowlingScorecard.prototype.getFrame = function(number) {
   return this.frames[number - 1];
 };
 
-BowlingScorecard.prototype.getFrameScore = function(number) {
-  return (this.frames[number - 1] ? this.frames[number - 1].score() : "-");
-};
-
 BowlingScorecard.prototype.isLastFrame = function() {
   return this.frames.length === 10;
 };
@@ -65,40 +62,44 @@ BowlingScorecard.prototype.isBonusRoll = function() {
   return this.isLastFrame() && this.currentFrame().score() >= 10;
 };
 
-BowlingScorecard.prototype.addScore = function(score) {
-  if (this.isGameComplete()) {
-    alert("Game over, refresh the page to play again!");
-    return;
+BowlingScorecard.prototype.checkSpareBonus = function(score) {
+  if (this.previousFrame() && this.previousFrame().isSpare()) {
+    this.previousFrame().addBonus(score);
   }
+};
+
+BowlingScorecard.prototype.checkStrikeBonusFirstBowl = function(score) {
+  if (this.secondPreviousFrame() && this.secondPreviousFrame().isStrike()) {
+    this.secondPreviousFrame().addBonus(this.previousFrame().score() + score);
+  }
+};
+
+BowlingScorecard.prototype.checkStrikeBonusSecondBowl = function(score) {
+  if (this.previousFrame() && this.previousFrame().isStrike()) {
+      this.previousFrame().addBonus(this.currentFrame().score());
+  }
+};
+
+BowlingScorecard.prototype.addScore = function(score) {
   if (this.currentFrame().isFirstBowl()) {
     this.currentFrame().setScore1(score);
     if (this.currentFrame().isStrike() && this.isNotLastFrame()) {
       this.currentFrame().setComplete();
     }
-    if (this.previousFrame() && this.previousFrame().isSpare()) {
-      this.previousFrame().addBonus(score);
-    }
-    if (this.secondPreviousFrame() && this.secondPreviousFrame().isStrike()) {
-      this.secondPreviousFrame().addBonus(this.previousFrame().score() + score);
-    }
+    this.checkSpareBonus(score);
+    this.checkStrikeBonusFirstBowl(score);
   }
   else if(this.currentFrame().isSecondBowl()) {
     this.currentFrame().setScore2(score);
     if (this.isLastFrame() && this.currentFrame().score() < 10) {
-      this.currentFrame().setComplete();
       this.setGameComplete();
     }
     if (this.isNotLastFrame()) { this.currentFrame().setComplete(); }
-    if (this.previousFrame() && this.previousFrame().isStrike()) {
-        this.previousFrame().addBonus(this.currentFrame().score());
-    }
+    this.checkStrikeBonusSecondBowl();
   }
   else if (this.isBonusRoll()) {
-    if (this.currentFrame().isStrike() || this.currentFrame().isSpare()) {
-      this.currentFrame().setScore3(score);
-      this.currentFrame().setComplete();
-      this.setGameComplete();
-    }
+    this.currentFrame().setScore3(score);
+    this.setGameComplete();
   }
   if (this.isNotLastFrame() && this.currentFrame().isComplete()) {
     this.addFrame();

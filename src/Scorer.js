@@ -56,3 +56,43 @@ Scorer.prototype.calcDoubleStrikeScore = function(rollA){
   this._score += (20 + rollA)
   this.incrementFrame();
 };
+
+Scorer.prototype.play = function(){
+  if (this.frame() === 10) {
+    return
+  }
+  this.rollA();
+  console.log(rollA)
+  if (this.islessTen(rollA)) {
+    this.rollB(rollA)
+    console.log(rollB);
+    if (this.isSpare(rollA, rollB)) {
+      this.rollA()
+      console.log(rollA)
+      this.calcSpareScore(rollA)
+      console.log(this.score())
+      return
+    }
+    console.log('no spare')
+    this.calcOpenFrameScore(rollA, rollB)
+    console.log(this.score())
+    return
+  }
+  console.log('Ten scored')
+  this.rollA();
+  console.log(rollA)
+
+  if (this.islessTen(rollA)) {
+    this.rollB(rollA);
+    console.log(rollB);
+    this.calcSingleStrikeScore(rollA, rollB);
+    console.log(this.score());
+    return
+  }
+    console.log('Ten scored')
+    this.rollA();
+    console.log(rollA)
+    this.calcDoubleStrikeScore(rollA)
+    console.log(this.score());
+
+};

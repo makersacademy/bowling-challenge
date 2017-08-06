@@ -55,4 +55,8 @@ describe('Scorer unit tests:', function(){
     scorer.calcDoubleStrikeScore(4);
     expect(scorer.score()).toEqual(24);
   })
+
+  it('#play returns true', function() {
+    expect(scorer.play()).toBeTruthy();
+  })
 });

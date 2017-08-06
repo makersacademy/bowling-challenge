@@ -32,6 +32,6 @@ Game.prototype.getPlayer = function() {
 Game.prototype.receiveRoll = function(pins) {
   var frame = this._frames[this._currentFrame];
   this._isFirstRoll ? frame.setFirstRoll(pins) : frame.setSecondRoll(pins);
-  this._isFirstRoll = !this._isFirstRoll;
+  if (!frame.isAStrike()) this._isFirstRoll = !this._isFirstRoll;
   if (this._isFirstRoll) this._currentFrame += 1;
 };

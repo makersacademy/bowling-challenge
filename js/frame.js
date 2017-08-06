@@ -1,33 +1,75 @@
 'use strict';
 
-function Frame() {
+function Frame(maxRolls) {
+  this.maxRolls = maxRolls;
   this.MAX_PINS = 10;
+  this.rolls = [];
   this.complete = false;
-  this.rollsCount = 0;
-  this.pinsKnocked = 0;
+  this.strike = false;
+  this.spare = false;
+  this.isLast = false;
 };
 
 Frame.prototype.isComplete = function() {
   return this.complete;
 };
 
-Frame.prototype.getPinsKnocked = function() {
-  return this.pinsKnocked;
+Frame.prototype.getScore = function() {
+  var sum = this.rolls.reduce((a, b) => a + b, 0);
+  return sum;
 };
 
 Frame.prototype.roll = function(pins) {
-  this.rollsCount += 1;
-  this._increaseScoreBy(pins);
-  this._CompleteFrameIfRequired();
+  this._addRoll(pins);
+  this._completeFrameIfRequired();
+  this._registerBonusIfRequired();
 };
+
+Frame.prototype.hasStrike = function() {
+  return this.strike;
+};
+
+Frame.prototype.hasSpare = function() {
+  return this.spare;
+};
+
+Frame.prototype.addBonus = function(nextFrame, nextNextFrame) {
+  if(this.hasSpare()) { this._increaseKnockedPins(nextFrame.getScore())};
+  if(this.hasStrike()) {
+    this._increaseKnockedPins(nextFrame.getScore());
+    this._increaseKnockedPins(nextNextFrame.getScore());
+  };
+};
+
+Frame.prototype.makeLast = function() {
+  this.isLast = true;
+};
+
+Frame.prototype.getFirstRoll = function() {
+  return this.rolls[0];
+};
+
+Frame.prototype.getFirst2Rolls = function() {
+  return (this.rolls[0] + this.rolls[1]);
+}
 
 
 // Private implementation
 
-Frame.prototype._increaseScoreBy = function(n) {
-  this.pinsKnocked += n;
+Frame.prototype._addRoll = function(pins) {
+  this.rolls.push(pins);
 };
 
-Frame.prototype._CompleteFrameIfRequired = function() {
-  if(this.getPinsKnocked() === 10 || this.rollsCount === 2) { this.complete = true };
+Frame.prototype._registerBonusIfRequired = function() {
+  if(this.getScore() === this.MAX_PINS) {
+    if(this.rolls.length === 1) {
+      this.strike = true;
+    } else {
+      this.spare = true;
+    };
+  };
+};
+
+Frame.prototype._completeFrameIfRequired = function() {
+  if(this.getScore() === this.MAX_PINS || this.rolls.length === this.maxRolls) { this.complete = true };
 };

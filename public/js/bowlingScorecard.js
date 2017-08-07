@@ -4,13 +4,6 @@ function BowlingScorecard() {
   this.complete = false;
 }
 
-BowlingScorecard.prototype.reset = function() {
-  for (var i=0; i<this.frames.length; i++) {
-    this.frames.pop();
-  }
-  this.addFrame();
-};
-
 BowlingScorecard.prototype.setGameComplete = function() {
   this.currentFrame().setComplete();
   this.complete = true;

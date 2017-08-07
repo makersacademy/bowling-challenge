@@ -7,8 +7,21 @@ src: url('../fonts/BOWLOR_.ttf'),
 body {
   font-size:20px;
   text-align: center;
+  background-color: grey;
 }
 
 h1 {
   font-family: 'bowlorama', cursive;
+}
+
+table {
+  border-radius:4px;
+  border-bottom-left-radius:4px;
+
+}
+
+.scorebox {
+  width: 100px;
+  height: 100px;
+  border: solid 3px black;
 }

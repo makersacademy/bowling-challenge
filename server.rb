@@ -5,6 +5,8 @@ require 'sinatra/base'
 
 class BowlingScorecard < Sinatra::Base
 
+  enable :sessions
+
   get '/' do
     erb :index
   end

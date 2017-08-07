@@ -45,14 +45,9 @@ Frame.prototype.makeLast = function() {
   this.isLast = true;
 };
 
-Frame.prototype.getFirstRoll = function() {
-  return this.rolls[0];
+Frame.prototype.getRoll = function(n) {
+  return this.rolls[n];
 };
-
-Frame.prototype.getFirst2Rolls = function() {
-  return (this.rolls[0] + this.rolls[1]);
-}
-
 
 // Private implementation
 

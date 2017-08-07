@@ -19,20 +19,18 @@ Game.prototype.roll = function(pins) {
 
 Game.prototype.getScore = function() {
   var score = 0;
-
+  var self = this;
   this.frames.forEach(function(frame, i, frames) {
+
     score += frame.getScore();
+    console.log(score);
 
     if(frame.hasStrike()) {
-      if(frames[i+1].hasStrike()) {
-        score += (frames[i+1].getScore() + frames[i+2].getFirstRoll());
-      } else {
-        score += frames[i+1].getFirst2Rolls();
-      };
+      score += self._next2Rolls(i);
     };
 
     if(frame.hasSpare()) {
-      score += frames[i+1].getFirstRoll();
+      score += self._nextRoll(i);
     };
   });
 
@@ -64,5 +62,27 @@ Game.prototype._finaliseFrameIfRequired = function() {
 Game.prototype._completeGameIfRequired = function() {
   if(this.frames.length === 10) {
     this.complete = true;
+  };
+};
+
+Game.prototype._next2Rolls = function(i) {
+  console.log('i:' + i);
+
+  if(i < 9) {
+    if(this.frames[i+1].hasStrike()) {
+      return (this.frames[i+1].getRoll(0) + this.frames[i+2].getRoll(0));
+    } else {
+      return (this.frames[i+1].getRoll(0) + this.frames[i+1].getRoll(1));
+    };
+  } else {
+    return (this.frames[i].getRoll(1) + this.frames[i].getRoll(2));
+  };
+};
+
+Game.prototype._nextRoll = function(i) {
+  if(i < 9) {
+    return this.frames[i+1].getRoll(0);
+  } else {
+    return this.frames[i].getRoll(2);
   };
 };

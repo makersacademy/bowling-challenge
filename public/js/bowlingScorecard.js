@@ -1,16 +1,15 @@
 function BowlingScorecard() {
   this.frames = [];
   this.addFrame();
-  this.complete = false;
+  this._complete = false;
 }
 
 BowlingScorecard.prototype.setGameComplete = function() {
-  this.currentFrame().setComplete();
-  this.complete = true;
+  this._complete = true;
 };
 
 BowlingScorecard.prototype.isGameComplete = function() {
-  return this.complete;
+  return this._complete;
 };
 
 BowlingScorecard.prototype.score = function () {
@@ -23,7 +22,7 @@ BowlingScorecard.prototype.addFrame = function() {
   this.frames.push(new Frame());
 };
 
-BowlingScorecard.prototype.currentFrame = function() {
+BowlingScorecard.prototype.frame = function() {
   return this.frames[this.frames.length -1];
 };
 
@@ -35,7 +34,7 @@ BowlingScorecard.prototype.secondPreviousFrame = function() {
   return this.frames[this.frames.length -3];
 };
 
-BowlingScorecard.prototype.currentFrameNumber = function() {
+BowlingScorecard.prototype.frameNumber = function() {
   return this.frames.length;
 };
 
@@ -52,7 +51,7 @@ BowlingScorecard.prototype.isNotLastFrame = function() {
 };
 
 BowlingScorecard.prototype.isBonusRoll = function() {
-  return this.isLastFrame() && this.currentFrame().score() >= 10;
+  return this.isLastFrame() && this.frame().score() >= 10;
 };
 
 BowlingScorecard.prototype.checkSpareBonus = function(score) {
@@ -69,32 +68,28 @@ BowlingScorecard.prototype.checkStrikeBonusFirstBowl = function(score) {
 
 BowlingScorecard.prototype.checkStrikeBonusSecondBowl = function(score) {
   if (this.previousFrame() && this.previousFrame().isStrike()) {
-      this.previousFrame().addBonus(this.currentFrame().score());
+      this.previousFrame().addBonus(this.frame().score());
   }
 };
 
 BowlingScorecard.prototype.addScore = function(score) {
-  if (this.currentFrame().isFirstBowl()) {
-    this.currentFrame().setScore1(score);
-    if (this.currentFrame().isStrike() && this.isNotLastFrame()) {
-      this.currentFrame().setComplete();
-    }
+  if (this.frame().isFirstBowl()) {
+    this.frame().setScore1(score);
     this.checkSpareBonus(score);
     this.checkStrikeBonusFirstBowl(score);
   }
-  else if(this.currentFrame().isSecondBowl()) {
-    this.currentFrame().setScore2(score);
-    if (this.isLastFrame() && this.currentFrame().score() < 10) {
+  else if(this.frame().isSecondBowl()) {
+    this.frame().setScore2(score);
+    if (this.isLastFrame() && this.frame().score() < 10) {
       this.setGameComplete();
+      return;
     }
-    if (this.isNotLastFrame()) { this.currentFrame().setComplete(); }
     this.checkStrikeBonusSecondBowl();
   }
   else if (this.isBonusRoll()) {
-    this.currentFrame().setScore3(score);
+    this.frame().addBonus(score);
     this.setGameComplete();
+    return;
   }
-  if (this.isNotLastFrame() && this.currentFrame().isComplete()) {
-    this.addFrame();
-  }
+  if (this.isNotLastFrame() && this.frame().isComplete()) this.addFrame();
 };

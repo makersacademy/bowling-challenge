@@ -1,12 +1,6 @@
 <div class="container-fluid">
 <h1 class = "neon-pink">Bowling Scorecard</h1>
 <br>
-<!-- <p><form class="navbar-form navbar-left" role="search">
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Name">
-  </div>
-  <button type="submit" class="btn btn-default">Name</button>
-</form></p> -->
 <div class="well">
 <p class="current-score">0</p>
 <p class="display"></p>
@@ -25,17 +19,7 @@
   <button type="button" class="btn-lg btn-default score score10">10</button>
 </div>
 <br>
-<ul class="list-group">
-  <li class="list-group-item frame1">-</p></li>
-  <li class="list-group-item frame2">-</p></li>
-  <li class="list-group-item frame3">-</p></li>
-  <li class="list-group-item frame4">-</p></li>
-  <li class="list-group-item frame5">-</p></li>
-  <li class="list-group-item frame6">-</p></li>
-  <li class="list-group-item frame7">-</p></li>
-  <li class="list-group-item frame8">-</p></li>
-  <li class="list-group-item frame9">-</p></li>
-  <li class="list-group-item frame10">-</p></li>
+<ul class="list-group frames">
 </ul>
 
 <button type="button" class="btn btn-default reset">Reset Game</button>
@@ -53,36 +37,22 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Bowling — how does it work?</h4>
       </div>
-      <div class="modal-body">
-        <!-- <div class="card card-block well"> -->
-
-          <h3>Strikes</h3>
-      <p>
+      <div class="modal-body" align="left">
+          <h4>Strikes</h4>
           The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-      </p>
-          <h3>Spares</h3>
-      <p>
+          <h4>Spares</h4>
           The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-      </p>
-          <h3>10th frame</h3>
-      <p>
+          <h4>10th frame</h4>
           If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-      </p>
-      <p>
+          <br>
             10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
           1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-      </p>
-          <h3>Gutter Game</h3>
-      <p>
+          <h4>Gutter Game</h4>
           A Gutter Game is when the player never hits a pin (20 zero scores).
-      </p>
-          <h3>Perfect Game</h3>
-      <p>
+          <h4>Perfect Game</h4>
           A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-      </p>
-        <p>
+          <br>
           More about ten pin bowling <a href="http://en.wikipedia.org/wiki/Ten-pin_bowling">here</a>. </div>
-      </p>
       <div style="text-align:center;" class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
@@ -91,11 +61,14 @@
     </div>
   </div>
 
+<br>
+-
+  <p>
+    <a href="https://github.com/ryandav">Created by Ryan Davidson</a><br>
+    <a href="https://github.com/ryandav/bowling-challenge">click here to see repo on Github</a>
+  </p>
+
 </div>
-  <br>
-<p class="well">
-  <a href="https://github.com/ryandav">Created by Ryan Davidson</a><br>
-  <a href="#">click here to see repo on Github</a>
-</p>
+
 
 </div>

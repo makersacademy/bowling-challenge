@@ -7,7 +7,6 @@ src: url('../fonts/BOWLOR_.ttf'),
 body {
   font-size:20px;
   text-align: center;
-  background-color: grey;
 }
 
 h1 {

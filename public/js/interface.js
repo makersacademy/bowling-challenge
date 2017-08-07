@@ -9,43 +9,45 @@ $(document).ready(function(){
     if (bowlingScorecard.isGameComplete()) {
       $('.display').text('Game over! Click on reset to play again.');
     }
-    for(i = 1; i <= 10; i++) {
-      updateFrameDisplay(i);
-    }
+    updateFramesDisplay();
     updateScore();
  }
 
  function updateScore() {
-   string = "Frame " + bowlingScorecard.currentFrameNumber();
-   if (bowlingScorecard.isLastFrame() && bowlingScorecard.currentFrame().score() >= 10) {
+   string = "Frame " + bowlingScorecard.frameNumber();
+   if (bowlingScorecard.isLastFrame() && bowlingScorecard.frame().score() >= 10) {
      string += ", Bonus Roll";
    }
    else {
-     string += ", Roll " + (bowlingScorecard.currentFrame().isFirstBowl() ? 1 : 2);
+     string += ", Roll " + (bowlingScorecard.frame().isFirstBowl() ? 1 : 2);
    }
    string += ", Total Score: " + bowlingScorecard.score();
    $('.current-score').text(string);
  }
 
- function updateFrameDisplay(number) {
-   string = "| Frame " + number + " | ";
-   var frame = bowlingScorecard.getFrame(number);
-   if (frame) {
-      string += "Roll 1: " + (frame.isStrike() ? "Strike!" : (frame.score1 ? frame.score1 : 0));
-      string += " | Roll 2: " + (frame.score2 ? (frame.score2 === 10 ? "Strike! " : ((frame.score2 + frame.score2 === 10) ? "Spare! " : frame.score2)) : 0);
-      if (bowlingScorecard.isLastFrame() && number === 10) {
-        string += " | Bonus Roll: " + (frame.score3 ? (frame.score3 === 10 ? "Strike! " : frame.score3) : 0);
-      }
-      else string += " | Roll 2: " + (frame.isSpare() ? "Spare!" : (frame.score2 ? frame.score2 : 0));
-      string += " | Score: " + frame.score() + " |";
+ function updateFramesDisplay() {
+   string = "";
+   for(i = bowlingScorecard.frameNumber(); i > 0; i--) {
+     string += "<li class='list-group-item'>| Frame " + i + " | ";
+     var frame = bowlingScorecard.getFrame(i);
+     if (frame) {
+        string += "Roll 1: " + (frame.isStrike() ? "Strike!" : (frame.score1 ? frame.score1 : 0));
+        if (bowlingScorecard.isLastFrame() && i === 10) {
+          string += " | Roll 2: " + (frame.isSpare() ? "Spare!" : (frame.score2 ? (frame.score2 === 10 ? "Strike! " : frame.score2) : 0));
+          string += " | Bonus Roll: " + (frame.bonus ? (frame.bonus === 10 ? "Strike! " : frame.bonus) : 0);
+        }
+        else string += " | Roll 2: " + (frame.isSpare() ? "Spare!" : (frame.score2 ? frame.score2 : 0));
+        string += " | Score: " + frame.score() + " |";
+     }
+     string += "</li>";
    }
-   $('.frame' + number).text(string);
+   $('.frames').html(string);
  }
 
  $(".score").on('click', function() {
    var score = this.innerHTML;
    bowlingScorecard.addScore(parseInt(score));
-   if (score < 10 && bowlingScorecard.currentFrame().isFirstBowl() === false && bowlingScorecard.currentFrame().isComplete() === false) {
+   if (bowlingScorecard.frame().isSecondBowl()) {
       for (i = 11 - score; i<= 10; i++) {
         $(".score" + i).addClass("disabled invisible");
       }
@@ -55,9 +57,14 @@ $(document).ready(function(){
        $(".score" + i).removeClass("disabled invisible");
      }
    }
+   if (bowlingScorecard.isBonusRoll()) {
+     for (i = 0; i<= 10; i++) {
+       $(".score" + i).removeClass("disabled invisible");
+     }
+   }
    if (bowlingScorecard.isGameComplete()) {
      for (i = 0; i<= 10; i++) {
-       $(".score" + i).addClass("disabled invisible");
+       $(".score" + i).hide();
      }
    }
    updateDisplay();

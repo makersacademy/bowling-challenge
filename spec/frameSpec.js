@@ -30,7 +30,13 @@ describe ("Frame", function(){
 
   describe('complete', function() {
     it('after two rolls', function(){
-      frame.setComplete();
+      frame.setScore1(5);
+      frame.setScore2(5);
+      expect(frame.isComplete()).toBeTruthy();
+    });
+    it('after strike', function(){
+      frame.setScore1(5);
+      frame.setScore2(5);
       expect(frame.isComplete()).toBeTruthy();
     });
   });

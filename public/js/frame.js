@@ -1,25 +1,13 @@
 function Frame(){
   this.score1 = null;
   this.score2 = null;
-  this.score3 = null;
-  this.complete = false;
-  this.strike = false;
-  this.spare = false;
   this.bonus = null;
+  this._strike = false;
+  this._spare = false;
 }
 
-Frame.prototype.reset = function () {
-  this.score1 = null;
-  this.score2 = null;
-  this.score3 = null;
-  this.complete = false;
-  this.strike = false;
-  this.spare = false;
-  this.bonus = null;
-};
-
 Frame.prototype.setStrike = function () {
-  this.strike = true;
+  this._strike = true;
 };
 
 Frame.prototype.isFirstBowl = function () {
@@ -31,23 +19,19 @@ Frame.prototype.isSecondBowl = function () {
 };
 
 Frame.prototype.isStrike = function () {
-  return this.strike;
+  return this._strike;
 };
 
 Frame.prototype.setSpare = function () {
-  this.spare = true;
+  this._spare = true;
 };
 
 Frame.prototype.isSpare = function () {
-  return this.spare;
+  return this._spare;
 };
 
 Frame.prototype.isComplete = function () {
-  return this.complete;
-};
-
-Frame.prototype.setComplete = function() {
-  this.complete = true;
+  return (this.isStrike() || (this.score1 && this.score2));
 };
 
 Frame.prototype.setScore1 = function (score) {
@@ -64,14 +48,10 @@ Frame.prototype.setScore2 = function (score) {
   }
 };
 
-Frame.prototype.setScore3 = function (score) {
-  this.score3 = score;
-};
-
 Frame.prototype.addBonus = function (score) {
   this.bonus = score;
 };
 
 Frame.prototype.score = function() {
-  return this.score1 + this.score2 + this.score3 + this.bonus;
+  return this.score1 + this.score2 + this.bonus;
 };

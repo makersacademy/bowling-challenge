@@ -4,35 +4,31 @@ describe ("BowlingScorecard", function(){
     bowlingScorecard = new BowlingScorecard();
   });
 
-  describe('setGameComplete()', function(){
-    it('isGameComplete returns false before setGameComplete()', function(){
-      expect(bowlingScorecard.isGameComplete()).toBeFalsy();
-    });
-    it('isGameComplete returns true after setGameComplete()', function(){
-      bowlingScorecard.setGameComplete();
-      expect(bowlingScorecard.isGameComplete()).toBeTruthy();
-    });
-  });
-
-  describe('score()', function(){
+  describe('#score', function(){
     it('returns score', function(){
       bowlingScorecard.addScore(5);
       expect(bowlingScorecard.score()).toEqual(5);
     });
   });
 
-  describe('addScore()', function() {
+  describe('#frameNumber', function(){
+    it('returns 1 for first frame', function(){
+      expect(bowlingScorecard.frameNumber()).toEqual(1);
+    });
+  });
+
+  describe('#addScore', function() {
     it('should add a score to a frame', function(){
       bowlingScorecard.addScore(5);
-      expect(bowlingScorecard.currentFrame().score()).toEqual(5);
+      expect(bowlingScorecard.frame().score()).toEqual(5);
     });
-    describe('add two scored to a frame', function(){
+    describe('add two scores to a frame', function(){
       beforeEach(function(){
         bowlingScorecard.addScore(5);
         bowlingScorecard.addScore(5);
       });
       it('should create a new frame', function(){
-        expect(bowlingScorecard.currentFrameNumber()).toEqual(2);
+        expect(bowlingScorecard.frameNumber()).toEqual(2);
       });
       it('should complete the frame', function(){
         expect(bowlingScorecard.previousFrame().isComplete()).toBeTruthy();
@@ -56,22 +52,17 @@ describe ("BowlingScorecard", function(){
     });
   });
 
-  describe('a perfect game with score of 300', function() {
-    it('score not equal 300 after 11 rolls', function(){
-      for (var i=0; i< 11; i++) {
-        bowlingScorecard.addScore(10);
-      }
-      expect(bowlingScorecard.score()).not.toEqual(300);
+  describe('#setGameComplete', function(){
+    it('isGameComplete returns false before setGameComplete()', function(){
+      expect(bowlingScorecard.isGameComplete()).toBeFalsy();
     });
-    it('score equals 300 after 12 rolls', function(){
-      for (var i=0; i< 12; i++) {
-        bowlingScorecard.addScore(10);
-      }
-      expect(bowlingScorecard.score()).toEqual(300);
+    it('isGameComplete returns true after setGameComplete()', function(){
+      bowlingScorecard.setGameComplete();
+      expect(bowlingScorecard.isGameComplete()).toBeTruthy();
     });
   });
 
-  describe('isGameComplete', function(){
+  describe('#isGameComplete', function(){
     it('should not be true when game starts', function(){
       expect(bowlingScorecard.isGameComplete()).toBeFalsy();
     });

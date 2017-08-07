@@ -67,9 +67,7 @@ Scorer.prototype.play = function(){
     return
   }
   else {
-    console.log('Frame: ' + this.frame())
     this.rollA();
-    console.log(rollA)
     this.whichRoute();
   }
 };
@@ -93,47 +91,34 @@ Scorer.prototype.whichRoute = function() {
 };
 
 Scorer.prototype.playLessTenRoute = function() {
-    console.log(rollB);
     if (this.frame() >= 11) {
       this.displayScore()
       return
     }
     else if (this.isSpare(rollA, rollB)) {
       this.rollA()
-      console.log(rollA)
       this.calcSpareScore(rollA)
-      console.log('score ' + this.score())
       this.whichRoute()
     }
     else {
-      console.log('no spare')
       this.calcOpenFrameScore(rollA, rollB)
-      console.log('score ' + this.score())
       this.play()
   }
 };
 
 Scorer.prototype.playTenRoute = function() {
-    console.log('First ten scored')
-    console.log(rollA)
     if (this.frame() >= 11) {
-      console.log('End. Score = ' + this.score())
       return
     }
 
     else if (this.islessTen(rollA)) {
       this.rollB(rollA);
-      console.log(rollB);
       this.calcSingleStrikeScore(rollA, rollB);
-      console.log('score ' + this.score())
       this.playLessTenRoute()
     }
     else {
-      console.log('Second ten scored')
       this.rollA();
-      console.log(rollA)
       this.calcDoubleStrikeScore(rollA)
-      console.log('score ' + this.score())
       this.playTenRoute()
     }
 };

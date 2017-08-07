@@ -5,7 +5,7 @@ $( document ).ready(function() {
 
   $("#bowl").click(function( event ) {
     var result = document.getElementById("score").value;
-    player.bowl(result);
+    player.bowl(Number(result));
     $("#current-score").text(scoreGenerator.returnScore(player.scoreCard.results));
     if(player.gameOver) { $("#game-over").text("Game over!")}
   });

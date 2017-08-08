@@ -4,7 +4,7 @@ Bowling Challenge
 
 Makers Academy week 5 weekend challenge.
 
-![bowling scorecard page](imges/bowling.png)
+![Bowling Scorecard App Image](images/bowling.png)
 
 ## The Task
 

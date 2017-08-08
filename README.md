@@ -15,7 +15,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 ## Technologies
 - HTML, CSS and Bootstrap for display
 - JavaScript for BowlingScorecard and Frame functions and JQuery for interface controller.
-- Deployed as a php app on heroku using this [advice](https://stackoverflow.com/questions/10551273/is-it-possible-to-upload-a-simple-html-and-javascript-file-structure-to-heroku).
+- Deployed as a ruby and sinatra on heroku.
 - Jasmine for test framework
 
 The Frame function keeps track of the scores in a frame as well as whether it is a strike or spare.

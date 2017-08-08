@@ -32,7 +32,7 @@ To use locally:
 ```
 git clone git@github.com:ryandav/bowling-challenge.git
 cd bowling-challenge
-open home.html
+rackup
 ```
 
 To run the tests `open SpecRunner.html`. The using tests are in the `spec` folder and feature tests in the `spec/features` folder.

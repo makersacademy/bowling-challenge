@@ -10,15 +10,15 @@ function Frame(){
   this._score = 0;
 }
 
-Frame.prototype.getScore1 = function() {
+Frame.prototype.score1 = function() {
   return this._score1;
 };
 
-Frame.prototype.getScore2 = function() {
+Frame.prototype.score2 = function() {
   return this._score2;
 };
 
-Frame.prototype.getBonusScore = function() {
+Frame.prototype.bonusScore = function() {
   return this._bonus;
 };
 

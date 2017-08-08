@@ -2,7 +2,7 @@ function BowlingScorecard() {
   this._frames = [];
   this._complete = false;
   this._score = 0;
-  this.addFrame();
+  this._addFrame();
 }
 
 BowlingScorecard.prototype.setGameComplete = function() {
@@ -23,7 +23,7 @@ BowlingScorecard.prototype._calculateScore = function() {
   }, 0);
 };
 
-BowlingScorecard.prototype.addFrame = function() {
+BowlingScorecard.prototype._addFrame = function() {
   this._frames.push(new Frame());
 };
 
@@ -97,6 +97,6 @@ BowlingScorecard.prototype.addScore = function(score) {
     this.setGameComplete();
     return;
   }
-  if (this.isNotLastFrame() && this.frame().isComplete()) this.addFrame();
+  if (this.isNotLastFrame() && this.frame().isComplete()) this._addFrame();
   this._calculateScore();
 };

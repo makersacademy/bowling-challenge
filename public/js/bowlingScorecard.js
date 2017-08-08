@@ -1,7 +1,8 @@
 function BowlingScorecard() {
-  this.frames = [];
-  this.addFrame();
+  this._frames = [];
   this._complete = false;
+  this._score = 0;
+  this.addFrame();
 }
 
 BowlingScorecard.prototype.setGameComplete = function() {
@@ -13,37 +14,41 @@ BowlingScorecard.prototype.isGameComplete = function() {
 };
 
 BowlingScorecard.prototype.score = function () {
-  return this.frames.reduce(function(sum, frame) {
+  return this._score;
+};
+
+BowlingScorecard.prototype._calculateScore = function() {
+  this._score = this._frames.reduce(function(sum, frame) {
       return sum + frame.score();
   }, 0);
 };
 
 BowlingScorecard.prototype.addFrame = function() {
-  this.frames.push(new Frame());
+  this._frames.push(new Frame());
 };
 
 BowlingScorecard.prototype.frame = function() {
-  return this.frames[this.frames.length -1];
+  return this._frames[this._frames.length -1];
 };
 
 BowlingScorecard.prototype.previousFrame = function() {
-  return this.frames[this.frames.length -2];
+  return this._frames[this._frames.length -2];
 };
 
 BowlingScorecard.prototype.secondPreviousFrame = function() {
-  return this.frames[this.frames.length -3];
+  return this._frames[this._frames.length -3];
 };
 
 BowlingScorecard.prototype.frameNumber = function() {
-  return this.frames.length;
+  return this._frames.length;
 };
 
 BowlingScorecard.prototype.getFrame = function(number) {
-  return this.frames[number - 1];
+  return this._frames[number - 1];
 };
 
 BowlingScorecard.prototype.isLastFrame = function() {
-  return this.frames.length === 10;
+  return this._frames.length === 10;
 };
 
 BowlingScorecard.prototype.isNotLastFrame = function() {
@@ -86,10 +91,12 @@ BowlingScorecard.prototype.addScore = function(score) {
     }
     this.checkStrikeBonusSecondBowl();
   }
-  else if (this.isBonusRoll()) {
+  else if (this.isLastFrame()) {
     this.frame().addBonus(score);
+    this._calculateScore();
     this.setGameComplete();
     return;
   }
   if (this.isNotLastFrame() && this.frame().isComplete()) this.addFrame();
+  this._calculateScore();
 };

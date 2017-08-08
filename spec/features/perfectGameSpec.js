@@ -1,5 +1,8 @@
 describe('A perfect game', function() {
-  var bowlingScorecard = new BowlingScorecard();
+  var bowlingScorecard;
+  beforeEach(function(){
+    bowlingScorecard = new BowlingScorecard();
+  });
   it('score not equal 300 after 11 rolls', function(){
     for (var i=0; i< 11; i++) {
       bowlingScorecard.addScore(10);

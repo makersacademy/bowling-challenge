@@ -31,12 +31,15 @@ $(document).ready(function(){
      string += "<li class='list-group-item'>| Frame " + i + " | ";
      var frame = bowlingScorecard.getFrame(i);
      if (frame) {
-        string += "Roll 1: " + (frame.isStrike() ? "Strike!" : (frame.score1 ? frame.score1 : 0));
+        string += "Roll 1: " + (frame.isStrike() ? "X " : (frame.score1 ? frame.score1 : 0));
         if (bowlingScorecard.isLastFrame() && i === 10) {
-          string += " | Roll 2: " + (frame.isSpare() ? "Spare!" : (frame.score2 ? (frame.score2 === 10 ? "Strike! " : frame.score2) : 0));
-          string += " | Bonus Roll: " + (frame.bonus ? (frame.bonus === 10 ? "Strike! " : frame.bonus) : 0);
+          string += " | Roll 2: " + (frame.isSpare() ? "/" : (frame.score2 ? (frame.score2 === 10 ? "X " : frame.score2) : 0));
+          string += " | Bonus: " + (frame.bonus ? (frame.bonus === 10 ? "X " : frame.bonus) : 0);
         }
-        else string += " | Roll 2: " + (frame.isSpare() ? "Spare!" : (frame.score2 ? frame.score2 : 0));
+        else {
+          string += " | Roll 2: " + (frame.isSpare() ? "/ " : (frame.score2 ? frame.score2 : 0));
+          string += " | Bonus: " + (frame.bonus ? frame.bonus : 0);
+        }
         string += " | Score: " + frame.score() + " |";
      }
      string += "</li>";
@@ -45,9 +48,9 @@ $(document).ready(function(){
  }
 
  $(".score").on('click', function() {
-   var score = this.innerHTML;
-   bowlingScorecard.addScore(parseInt(score));
-   if (bowlingScorecard.frame().isSecondBowl()) {
+   var score = parseInt(this.innerHTML) ? parseInt(this.innerHTML) : 0;
+   bowlingScorecard.addScore(score);
+   if (score > 0 && bowlingScorecard.frame().isSecondBowl()) {
       for (i = 11 - score; i<= 10; i++) {
         $(".score" + i).addClass("disabled invisible");
       }

@@ -12,15 +12,3 @@ body {
 h1 {
   font-family: 'bowlorama', cursive;
 }
-
-table {
-  border-radius:4px;
-  border-bottom-left-radius:4px;
-
-}
-
-.scorebox {
-  width: 100px;
-  height: 100px;
-  border: solid 3px black;
-}

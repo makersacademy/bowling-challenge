@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/bowling-style.css" type="text/css">
+    <!-- <script src="../public/js/bootstrap.min.js"></script> -->
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script src="../js/Frame.js"></script>
+    <script src="../js/BowlingScorecard.js"></script>
+    <script src="../js/interface.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <title>Bowling Scorecard</title>
+</head>
+<body>
+
+  <div class="container-fluid">
+  <h1 class = "neon-pink">Bowling Scorecard</h1>
+  <br>
+  <div class="well">
+  <p class="current-score">0</p>
+  <p class="display"></p>
+  </div>
+  <div role="group" aria-label="...">
+    <button type="button" class="btn-lg btn-default score score0">0</button>
+    <button type="button" class="btn-lg btn-default score score1">1</button>
+    <button type="button" class="btn-lg btn-default score score2">2</button>
+    <button type="button" class="btn-lg btn-default score score3">3</button>
+    <button type="button" class="btn-lg btn-default score score4">4</button>
+    <button type="button" class="btn-lg btn-default score score5">5</button>
+    <button type="button" class="btn-lg btn-default score score6">6</button>
+    <button type="button" class="btn-lg btn-default score score7">7</button>
+    <button type="button" class="btn-lg btn-default score score8">8</button>
+    <button type="button" class="btn-lg btn-default score score9">9</button>
+    <button type="button" class="btn-lg btn-default score score10">10</button>
+  </div>
+  <br>
+  <ul class="list-group frames">
+  </ul>
+
+  <button type="button" class="btn btn-default reset">Reset Game</button>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+    Bowling - Rules
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Bowling — how does it work?</h4>
+        </div>
+        <div class="modal-body" align="left">
+            <h4>Strikes (X)</h4>
+            The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+            <h4>Spares (/)</h4>
+            The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+            <h4>10th frame</h4>
+            If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+            <br>
+              10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
+            1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+            <h4>Gutter Game</h4>
+            A Gutter Game is when the player never hits a pin (20 zero scores).
+            <h4>Perfect Game</h4>
+            A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+            <br>
+            More about ten pin bowling <a href="http://en.wikipedia.org/wiki/Ten-pin_bowling">here</a>. </div>
+        <div style="text-align:center;" class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+
+  <br>
+  <hr />
+    <p>
+      <a href="https://github.com/ryandav">Created by Ryan Davidson</a><br>
+      <a href="https://github.com/ryandav/bowling-challenge">click here to see repo on Github</a>
+    </p>
+
+  </div>
+
+
+  </div>
+
+
+</body>
+
+</html>

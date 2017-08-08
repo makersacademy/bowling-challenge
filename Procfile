@@ -1,1 +1,1 @@
-web: harp server --port $PORT
+web: bundle exec rackup -p $PORT

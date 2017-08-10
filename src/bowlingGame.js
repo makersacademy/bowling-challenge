@@ -15,22 +15,46 @@ bowlingGame.prototype.isStrike = function() {
   return this.pinfall[this.ballRoll] === this.STRIKE;
 };
 
+bowlingGame.prototype.calculateStrikeScore = function() {
+  return this.pinfall[this.ballRoll] + this.pinfall[this.ballRoll + 1] + this.pinfall[this.ballRoll + 2];
+};
+
 bowlingGame.prototype.addStrikeScore = function() {
-  this.result += this.pinfall[this.ballRoll] + this.pinfall[this.ballRoll + 1] + this.pinfall[this.ballRoll + 2];
-  this.ballRoll += 1;
+  if (!isNaN(this.calculateStrikeScore())) {
+    this.result += this.calculateStrikeScore();
+    this.ballRoll += 1;
+  }
+  // this.result += this.pinfall[this.ballRoll] + this.pinfall[this.ballRoll + 1] + this.pinfall[this.ballRoll + 2];
+  // this.ballRoll += 1;
+};
+
+bowlingGame.prototype.calculateStandardScore = function() {
+  return this.pinfall[this.ballRoll] + this.pinfall[this.ballRoll + 1];
 };
 
 bowlingGame.prototype.addStandardScore = function() {
-  this.result += this.pinfall[this.ballRoll] + this.pinfall[this.ballRoll + 1];
-  this.ballRoll += 2;
+  if (!isNaN(this.calculateStandardScore())) {
+    this.result += this.calculateStandardScore();
+    this.ballRoll += 2;
+  }
+  // this.result += this.pinfall[this.ballRoll] + this.pinfall[this.ballRoll + 1];
+
 };
 
 bowlingGame.prototype.isSpare = function() {
   return this.pinfall[this.ballRoll] + this.pinfall[this.ballRoll + 1] === this.SPARE;
 };
 
+bowlingGame.prototype.calculateSpareScore = function() {
+  return this.pinfall[this.ballRoll + 2];
+};
+
 bowlingGame.prototype.addSpareScore = function() {
-  this.result += this.pinfall[this.ballRoll + 2];
+  if (!isNaN(this.calculateSpareScore())) {
+    this.result += this.calculateSpareScore();
+  }
+
+  // this.result += this.pinfall[this.ballRoll + 2];
 };
 
 bowlingGame.prototype.calculateScore = function() {
@@ -47,17 +71,17 @@ bowlingGame.prototype.calculateScore = function() {
   }
 };
 
-bowlingGame.prototype.score = function() {
-  if (this.isStrike()) {
-    this.addStrikeScore();
-  } else {
-    if (this.isSpare()) {
-        this.addSpareScore();
-    }
-    this.addStandardScore();
-  }
-  return this.result;
-};
+// bowlingGame.prototype.score = function() {
+//   if (this.isStrike()) {
+//     this.addStrikeScore();
+//   } else {
+//     if (this.isSpare()) {
+//         this.addSpareScore();
+//     }
+//     this.addStandardScore();
+//   }
+//   return this.result;
+// };
 
 bowlingGame.prototype.finalScore = function() {
   this.calculateScore();

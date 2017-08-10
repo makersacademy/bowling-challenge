@@ -9,7 +9,7 @@ describe('Bowling Game', function() {
   });
 
   it('has no score by default', function() {
-    expect(game.finalScore()).toEqual(NaN);
+    expect(game.finalScore()).toEqual(0);
   });
 
   it('can score a gutter game', function() {
@@ -45,8 +45,16 @@ describe('Bowling Game', function() {
 
   it('can score a frame of two rolls of one', function() {
     rollMany(2, 1);
-    expect(game.score()).toEqual(2);
+    expect(game.finalScore()).toEqual(2);
   });
+
+  it('can score four rolls of one but will not update the score mid frame', function() {
+    rollMany(3,1);
+    expect(game.finalScore()).toEqual(2);
+    game.roll(1);
+    expect(game.finalScore()).toEqual(4);
+  });
+// score can be called at any point in the game although it will only return the total of the frame.
 
   function rollMany(rolls, score) {
     for (var i = 0; i < rolls; i++) {

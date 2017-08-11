@@ -26,25 +26,9 @@ $(document).ready(function(){
  }
 
  function updateFramesDisplay() {
-   string = "";
-   for(i = bowlingScorecard.frameNumber; i > 0; i--) {
-     string += "<li class='list-group-item'>| Frame " + i + " | ";
-     var frame = bowlingScorecard.getFrame(i);
-     if (frame) {
-        string += "Roll 1: " + (frame.isStrike() ? "X " : (frame.score1 ? frame.score1 : 0));
-        if (bowlingScorecard.frameNumber === 10 && i === 10) {
-          string += " | Roll 2: " + (frame.isSpare() ? "/" : (frame.score2 ? (frame.score2 === 10 ? "X " : frame.score2) : 0));
-          string += " | Bonus: " + (frame.bonus ? (frame.bonus === 10 ? "X " : frame.bonus) : 0);
-        }
-        else {
-          string += " | Roll 2: " + (frame.isSpare() ? "/ " : (frame.score2 ? frame.score2 : 0));
-          string += " | Bonus: " + (frame.bonus ? frame.bonus : 0);
-        }
-        string += " | Score: " + frame.totalScore + " |";
-     }
-     string += "</li>";
-   }
-   $('.frames').html(bowlingScorecard.score());
+   display = new Display();
+   var table = display.framesToHTMLTable(bowlingScorecard._frames);
+   $('.frames').html(table);
  }
 
  $(".score").on('click', function() {

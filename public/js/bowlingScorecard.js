@@ -1,9 +1,14 @@
 function BowlingScorecard() {
-  this._frames = new Array(10).fill(new Frame());
+  this._frames = [];
+  this.addFrame();
   this._complete = false;
   this._score = 0;
   this.frameNumber = 1;
 }
+
+BowlingScorecard.prototype.addFrame = function() {
+  this._frames.push(new Frame());
+};
 
 BowlingScorecard.prototype.setGameComplete = function() {
   this._complete = true;
@@ -19,8 +24,14 @@ BowlingScorecard.prototype.score = function() {
 
 BowlingScorecard.prototype.updateGameStatus = function () {
   if (this.frame().isComplete()) {
-    if (this.frameNumber < 10) this.frameNumber += 1;
-    else if (this.frame().totalScore < 10 || this.frame().bonus) {
+    if (this.frameNumber < 10) {
+      this.addFrame();
+      this.frameNumber += 1;
+      if (this.frameNumber === 10) {
+        this.frame().setLastFrame();
+      }
+    }
+    else if ((this.frame().isComplete() && this.frame().totalScore < 10) || this.frame().bonus) {
       this.setGameComplete();
     }
   }
@@ -49,32 +60,38 @@ BowlingScorecard.prototype.secondPreviousFrame = function() {
 };
 
 BowlingScorecard.prototype.isBonusRoll = function() {
-  return this.frameNumber === 10 && this.frame().totalScore >= 10;
+  return this.frameNumber === 10 && this.frame().isComplete();
 };
 
-BowlingScorecard.prototype.checkFrameBonus = function(frames, frameNumber, score) {
-  if (this.frameNumber < 2) return;
-  if (this.frame().isFirstBowl) {
-    if (this.previousFrame().isSpare()) {
-      this.previousFrame().addBonus(score);
+BowlingScorecard.prototype.checkFrameBonus = function(score) {
+  if (this.frameNumber === 1) return;
+  console.log("checkFrameBonus");
+  if (this.frame().isComplete()) {
+    console.log("frame complete");
+    if (this.previousFrame().isStrike()) {
+      this.previousFrame().addBonus(this.frame().score1 + this.frame().score2);
     }
-    else if (this.frameNumber > 2 && this.secondPreviousFrame().isStrike()) {
-      this.secondPreviousFrame().addBonus(this.previousFrame().totalScore + score);
+    if (this.frameNumber > 2 && this.secondPreviousFrame().isStrike() && this.previousFrame().isStrike()) {
+      if (this.frameNumber === 10 && this.frame.score2) return;
+      this.secondPreviousFrame().addBonus(10);
     }
   }
-  else if (this.previousFrame().isStrike()) {
-    this.previousFrame().addBonus(this.frame().totalScore);
+  else {
+    console.log("first roll");
+    if (this.previousFrame().isSpare()) {
+      console.log("spare bonus");
+      this.previousFrame().addBonus(score);
+    }
   }
 };
 
 BowlingScorecard.prototype.addScore = function(score) {
-  if (this.isBonusRoll()) {
-    this.frame().addBonus(score);
+  if (this.frameNumber === 10) {
+    if (this.frame().score2 === null) this.frame().addScore(score);
+    else this.frame().addBonus(score);
   }
-  else {
-    this.frame().addScore(score);
-  }
-  //this.checkFrameBonus(score);
+  else this.frame().addScore(score);
+  this.checkFrameBonus(score);
   this.updateScore();
   this.updateGameStatus();
 };

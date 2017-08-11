@@ -7,6 +7,6 @@ describe('A gutter game', function() {
     for (var i=0; i< 10; i++) {
       bowlingScorecard.addScore(0);
     }
-    expect(bowlingScorecard.score()).toEqual(0);
+    expect(bowlingScorecard.score.toEqual(0);
   });
 });

@@ -4,7 +4,7 @@ Bowling Challenge
 
 Makers Academy week 5 weekend challenge.
 
-![Bowling Scorecard App Image](images/bowling.png)
+![Bowling Scorecard App Image](public/images/bowling.png)
 
 ## The Task
 
@@ -23,6 +23,36 @@ The Frame function keeps track of the scores in a frame as well as whether it is
 The BowlingScorecard function tracks the current state of play. The rules for adding bonuses in bowling are a little complex so the `addScore` function has checks to see whether it is the frame's first or second roll, and whether to add bonus scores for strikes and spares. I tried taking as much out of this method as I could, such as functions to check for bonus scores.
 
 The `interface.js` is uses JQuery to interact with the BowlingScorecard instance for the current game, as well as updating the display by updating the html in the display.
+
+## Domain Map
+
+|Frame | |
+|--|--|
+| Variables: | |
+| firstRoll | |
+| secondRoll | |
+| bonus | |
+|totalScore | |
+| Methods: | |
+| addScore() | |
+| isComplete() | |
+
+| BowlingScorecard | |
+|-|-|
+| frames | |
+| score | |
+| addScore() | |
+| | |
+| | |
+
+| Display | |
+|-|-|
+| frameToTable(frame) |  |
+| scorecardToTable(scorecard) | |
+
+BonusChecker
+Checks the last 3 frames and updates the bonuses
+
 
 ## Instructions
 
@@ -68,7 +98,7 @@ In the image below you can find some score examples.
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+![Ten Pin Score Example](public/images/example_ten_pin_scoring.png)
 
 ## Code Review
 

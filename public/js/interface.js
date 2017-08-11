@@ -14,12 +14,12 @@ $(document).ready(function(){
  }
 
  function updateScore() {
-   string = "Frame " + bowlingScorecard.frameNumber();
-   if (bowlingScorecard.isLastFrame() && bowlingScorecard.frame().score() >= 10) {
+   string = "Frame " + bowlingScorecard.frameNumber;
+   if (bowlingScorecard.frameNumber === 10 && bowlingScorecard.frame().totalScore >= 10) {
      string += ", Bonus Roll";
    }
    else {
-     string += ", Roll " + (bowlingScorecard.frame().isFirstBowl() ? 1 : 2);
+     string += ", Roll " + (bowlingScorecard.frame().isFirstBowl ? 1 : 2);
    }
    string += ", Total Score: " + bowlingScorecard.score();
    $('.current-score').text(string);
@@ -27,12 +27,12 @@ $(document).ready(function(){
 
  function updateFramesDisplay() {
    string = "";
-   for(i = bowlingScorecard.frameNumber(); i > 0; i--) {
+   for(i = bowlingScorecard.frameNumber; i > 0; i--) {
      string += "<li class='list-group-item'>| Frame " + i + " | ";
      var frame = bowlingScorecard.getFrame(i);
      if (frame) {
         string += "Roll 1: " + (frame.isStrike() ? "X " : (frame.score1 ? frame.score1 : 0));
-        if (bowlingScorecard.isLastFrame() && i === 10) {
+        if (bowlingScorecard.frameNumber === 10 && i === 10) {
           string += " | Roll 2: " + (frame.isSpare() ? "/" : (frame.score2 ? (frame.score2 === 10 ? "X " : frame.score2) : 0));
           string += " | Bonus: " + (frame.bonus ? (frame.bonus === 10 ? "X " : frame.bonus) : 0);
         }
@@ -40,17 +40,17 @@ $(document).ready(function(){
           string += " | Roll 2: " + (frame.isSpare() ? "/ " : (frame.score2 ? frame.score2 : 0));
           string += " | Bonus: " + (frame.bonus ? frame.bonus : 0);
         }
-        string += " | Score: " + frame.score() + " |";
+        string += " | Score: " + frame.totalScore + " |";
      }
      string += "</li>";
    }
-   $('.frames').html(string);
+   $('.frames').html(bowlingScorecard.score());
  }
 
  $(".score").on('click', function() {
    var score = parseInt(this.innerHTML) ? parseInt(this.innerHTML) : 0;
    bowlingScorecard.addScore(score);
-   if (score > 0 && bowlingScorecard.frame().isSecondBowl()) {
+   if (score > 0 && !bowlingScorecard.frame().isFirstBowl) {
       for (i = 11 - score; i<= 10; i++) {
         $(".score" + i).addClass("disabled invisible");
       }

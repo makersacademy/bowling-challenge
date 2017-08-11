@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.rounds {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  background-color: #5995DA;  /* Blue */
+  padding: 20px 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  background-color: yellow;
+  padding: 20px 0;
+}
+
+.single-round {
+  border: 2px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  background-color: green;
+  padding: 20px 10px;
+  margin: 0px 5px;
+}
+
+.button {
+  padding: 20px 20px;
+  margin: 0px 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.menu {
+  border: 1px solid #fff;  /* For debugging */
+  width: 900px;
+}

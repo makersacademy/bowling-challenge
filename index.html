@@ -3,25 +3,53 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="app/styles/styles.css">
 
   </head>
 
   <body>
     <h1>Player 1</h1>
-
-      Enter score: <input type='text' id="score">
-      <button id='bowl'>Submit</button>
+    <h2>Round: <span id="round">1</span>, roll: <span id="roll">1</span></h2>
 
     <h1>Current Score: <span id="current-score">0</span></h1>
+
+    <div id='round-scores' class="rounds">
+      Round Scores:
+      <p>1</p>
+      <div id='scoore-0' class="single-round">0</div>
+      <div id='scoore-1' class="single-round">0</div>
+      <div id='scoore-2' class="single-round">0</div>
+      <div id='scoore-3' class="single-round">0</div>
+      <div id='scoore-4' class="single-round">0</div>
+      <div id='scoore-5' class="single-round">0</div>
+      <div id='scoore-6' class="single-round">0</div>
+      <div id='scoore-7' class="single-round">0</div>
+      <div id='scoore-8' class="single-round">0</div>
+      <div id='scoore-9' class="single-round">0</div>
+    </div>
+
+    <div id='scores' class="buttons">
+      Score:
+      <button id='0' class="button">0</button>
+      <button id='1' class="button">1</button>
+      <button id='2' class="button">2</button>
+      <button id='3' class="button">3</button>
+      <button id='4' class="button">4</button>
+      <button id='5' class="button">5</button>
+      <button id='6' class="button">6</button>
+      <button id='7' class="button">7</button>
+      <button id='8' class="button">8</button>
+      <button id='9' class="button">9</button>
+      <button id='10' class="button">X</button>
+    </div>
 
     <h2><span id="game-over"></span></h2>
 
     <script src="jquery.js"></script>
-    <script src="src/player.js"></script>
-    <script src="src/scoreCard.js"></script>
-    <script src="src/scoreGenerator.js"></script>
-    <script src="src/helpers.js"></script>
-    <script src="scripts/functions.js"></script>
+    <script src="app/src/player.js"></script>
+    <script src="app/src/scoreCard.js"></script>
+    <script src="app/src/scoreGenerator.js"></script>
+    <script src="app/src/helpers.js"></script>
+    <script src="app/scripts/functions.js"></script>
   </body>
 </html>

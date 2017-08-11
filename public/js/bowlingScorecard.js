@@ -74,7 +74,7 @@ BowlingScorecard.prototype.addScore = function(score) {
   else {
     this.frame().addScore(score);
   }
-  this.checkFrameBonus(score);
+  //this.checkFrameBonus(score);
   this.updateScore();
   this.updateGameStatus();
 };

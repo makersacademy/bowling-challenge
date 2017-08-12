@@ -73,6 +73,22 @@ describe('Game', function() {
           expect(game.getScore()).toEqual(16);
         });
       });
+
+      describe('second frame in the consecutive pair is a spare', function () {
+        beforeEach(function () {
+          frame = game.getCurrentFrame();
+          game.receiveRoll(2);
+          game.receiveRoll(8);
+        });
+
+        it('does not update the frame\'s score as of now', function() {
+          expect(frame.getScore()).toEqual(0);
+        });
+
+        it('does not update the games\'s score as of now', function() {
+          expect(game.getScore()).toEqual(9);
+        });
+      });
     });
 
     describe('current frame is a spare', function() {

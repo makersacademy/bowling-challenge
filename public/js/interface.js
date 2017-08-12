@@ -1,50 +1,23 @@
 $(document).ready(function(){
   var bowlingScorecard = new BowlingScorecard();
-  var i = 0;
-  var string = "";
   var display = new Display();
-  $('.display').text('Click on the number of pins you knocked down.');
   updateDisplay();
 
   function updateDisplay() {
-    if (bowlingScorecard.isGameComplete()) {
-      $('.display').text('Game over! Click on reset to play again.');
-    }
-    updateFramesDisplay();
-    updateScore();
- }
-
- function updateScoreDisplay() {
-   $('.current-score').text(display.scoreInfo(bowlingScorecard.frameNumber, bowlingScorecard.frame().isFirstBowl));
- }
-
- function updateFramesDisplay() {
-   $('.frames').html(display.framesToHTMLTable(bowlingScorecard._frames));
+    $('.display').text(display.gameInstructions(bowlingScorecard));
+    $('.current-score').text(display.scoreInfo(bowlingScorecard));
+    $('.frames').html(display.framesToHTMLTable(bowlingScorecard._frames));
  }
 
  $(".score").on('click', function() {
+   var i = 0;
    var score = parseInt(this.innerHTML) ? parseInt(this.innerHTML) : 0;
+   console.log(score);
    bowlingScorecard.addScore(score);
-   if (score > 0 && !bowlingScorecard.frame().isFirstBowl) {
-      for (i = 11 - score; i<= 10; i++) {
-        $(".score" + i).addClass("disabled invisible");
-      }
-   }
-   else {
-     for (i = 0; i<= 10; i++) {
-       $(".score" + i).removeClass("disabled invisible");
-     }
-   }
-   if (bowlingScorecard.isBonusRoll()) {
-     for (i = 0; i<= 10; i++) {
-       $(".score" + i).removeClass("disabled invisible");
-     }
-   }
-   if (bowlingScorecard.isGameComplete()) {
-     for (i = 0; i<= 10; i++) {
-       $(".score" + i).hide();
-     }
-   }
+   if (bowlingScorecard.isFirstBowl()) for (i = 0; i<= 10; i++) $(".score" + i).show();
+   else for (i = 11 - score; i<= 10; i++) $(".score" + i).hide();
+   if (bowlingScorecard.isBonusRoll()) for (i = 0; i<= 10; i++) $(".score" + i).show();
+   if (bowlingScorecard.isGameComplete()) for (i = 0; i<= 10; i++) $(".score" + i).hide();
    updateDisplay();
  });
 

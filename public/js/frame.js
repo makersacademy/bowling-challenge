@@ -19,7 +19,7 @@ Frame.prototype.isSpare = function () {
 };
 
 Frame.prototype.isComplete = function () {
-  return (this.isStrike() || this.isSpare() || (this.score1 && this.score2));
+  return (this.isStrike() || (this.score2 != null));
 };
 
 Frame.prototype.addScore = function(score) {

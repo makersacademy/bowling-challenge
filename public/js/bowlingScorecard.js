@@ -18,6 +18,10 @@ BowlingScorecard.prototype.isGameComplete = function() {
   return this._complete;
 };
 
+BowlingScorecard.prototype.isFirstBowl = function() {
+  return this.frame().isFirstBowl;
+};
+
 BowlingScorecard.prototype.score = function() {
   return this._score;
 };
@@ -60,11 +64,9 @@ BowlingScorecard.prototype.isBonusRoll = function() {
   return this.frameNumber === 10 && this.frame().isComplete();
 };
 
-BowlingScorecard.prototype.checkFrameBonus = function(score) {
+BowlingScorecard.prototype.checkBonus = function(score) {
   if (this.frameNumber === 1) return;
-  console.log("checkFrameBonus");
   if (this.frame().isComplete()) {
-    console.log("frame complete");
     if (this.previousFrame().isStrike()) {
       this.previousFrame().addBonus(this.frame().score1 + this.frame().score2);
     }
@@ -74,9 +76,7 @@ BowlingScorecard.prototype.checkFrameBonus = function(score) {
     }
   }
   else {
-    console.log("first roll");
     if (this.previousFrame().isSpare()) {
-      console.log("spare bonus");
       this.previousFrame().addBonus(score);
     }
   }
@@ -88,7 +88,7 @@ BowlingScorecard.prototype.addScore = function(score) {
     else this.frame().addBonus(score);
   }
   else this.frame().addScore(score);
-  this.checkFrameBonus(score);
+  this.checkBonus(score);
   this.updateScore();
   this.updateGameStatus();
 };

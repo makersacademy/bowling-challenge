@@ -45,7 +45,7 @@ The `interface.js` is uses JQuery to interact with the BowlingScorecard instance
 | |
 | |
 
-| Display | 
+| Display |
 |-|
 | frameToTable(frame) |  
 | scorecardToTable(scorecard) |
@@ -62,7 +62,8 @@ To use locally:
 ```
 git clone git@github.com:ryandav/bowling-challenge.git
 cd bowling-challenge
-rackup
+npm install
+DEBUG=myapp:* npm start
 ```
 
 To run the tests `open SpecRunner.html`. The using tests are in the `spec` folder and feature tests in the `spec/features` folder.

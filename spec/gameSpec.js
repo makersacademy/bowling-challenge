@@ -29,7 +29,7 @@ describe('Game', function() {
   });
 
   describe('receive roll', function() {
-    describe('current frame is an open frame', function() {
+    describe('first frame in a consecutive pair is an open frame', function() {
       beforeEach(function() {
         frame = game.getCurrentFrame();
         game.receiveRoll(6);
@@ -48,13 +48,29 @@ describe('Game', function() {
         expect(game.getCurrentFrameNumber()).toEqual(1);
       });
 
-      describe('when it is the first frame', function() {
+      describe('there is no previous frame', function() {
         it('updates the frame\'s score', function() {
           expect(frame.getScore()).toEqual(9);
         });
 
         it('updates the game\'s score', function() {
           expect(game.getScore()).toEqual(9);
+        });
+      });
+
+      describe('second frame in the consecutive pair is an open frame', function () {
+        beforeEach(function () {
+          frame = game.getCurrentFrame();
+          game.receiveRoll(0);
+          game.receiveRoll(7);
+        });
+
+        it('updates the frame\'s score', function() {
+          expect(frame.getScore()).toEqual(16);
+        });
+
+        it('updates the games\'s score', function() {
+          expect(game.getScore()).toEqual(16);
         });
       });
     });

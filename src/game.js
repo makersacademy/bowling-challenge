@@ -35,6 +35,10 @@ Game.prototype.getPlayer = function() {
   return this._player;
 };
 
+Game.prototype.getScore = function() {
+  return this._runningTotal;
+};
+
 Game.prototype.receiveRoll = function(pins) {
   var frame = this._frames[this._currentFrameNumber];
   this._updateFrame(frame,pins);
@@ -49,15 +53,16 @@ Game.prototype._updateFrame = function(frame, pins) {
 };
 
 Game.prototype._calculateScore = function() {
-  if (this._isFirstRoll) return;
   var frame = this._frames[this._currentFrameNumber];
-
-  if (this._currentFrameNumber == 0) {
-    frame.calculateScore(0,0);
-    this._runningTotal += frame.getScore();
-  }
+  if (this._isScoreComputable()) this._runningTotal = frame.calculateScore(this._runningTotal,0);
 };
 
-Game.prototype.getScore = function() {
-  return this._runningTotal;
+Game.prototype._isScoreComputable = function() {
+  // Current frame is the first one, and only first roll has completed
+  if (this._currentFrameNumber == 0 && this._isFirstRoll) return false;
+
+  //Only first roll has completed
+  if (this._isFirstRoll) return false;
+
+  return true;
 };

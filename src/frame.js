@@ -51,7 +51,7 @@ Frame.prototype.calculateScore = function(previousTotal, bonus) {
   if (previousTotal === undefined) throw new Error('Previous total required');
   if (bonus === undefined && (this.isAStrike() || this.isASpare())) throw new Error('Bonus required');
   bonus = bonus || 0;
-  this._score = previousTotal + this._firstRoll + this._secondRoll + bonus;
+  return this._score = previousTotal + this._firstRoll + this._secondRoll + bonus;
 };
 
 Frame.prototype.getScore = function() {

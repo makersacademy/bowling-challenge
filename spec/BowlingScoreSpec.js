@@ -49,18 +49,27 @@ describe("BowlingScore", function() {
     });
 
     describe("#showFrameScore", function() {
-      it("can show the total score of first frame", function() {
-        bowlingscore.enterBowlingScore(5);
-        bowlingscore.enterBowlingScore(5);
-        expect(bowlingscore.showFrameScore(1)).toEqual(10);
-      });
+        it("can show the total score of first frame", function() {
+            bowlingscore.enterBowlingScore(5);
+            bowlingscore.enterBowlingScore(5);
+            expect(bowlingscore.showFrameScore(1)).toEqual(10);
+        });
 
-      it("can show the total score of second frame", function() {
-        bowlingscore.enterBowlingScore(2);
-        bowlingscore.enterBowlingScore(4);
-        bowlingscore.enterBowlingScore(5);
-        bowlingscore.enterBowlingScore(5);
-        expect(bowlingscore.showFrameScore(2)).toEqual(10);
-      });
+        it("can show the total score of second frame", function() {
+            bowlingscore.enterBowlingScore(2);
+            bowlingscore.enterBowlingScore(4);
+            bowlingscore.enterBowlingScore(5);
+            bowlingscore.enterBowlingScore(5);
+            expect(bowlingscore.showFrameScore(2)).toEqual(10);
+        });
+    });
+
+    describe("#endOfGame", function() {
+        it("can not enter a score after 10 frames", function() {
+            for (var i = 0; i < 20; i++) {
+                bowlingscore.enterBowlingScore(2);
+            }
+        expect(function() { bowlingscore.enterBowlingScore(2); }).toThrow("End of Game!");
+        });
     });
 });

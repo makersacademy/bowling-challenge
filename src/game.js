@@ -64,8 +64,8 @@ Game.prototype._calculateScore = function() {
       this._runningTotal = previousFrame.calculateScore(this._runningTotal,frame.getFirstRoll());
     }
   } else {
-    if (this._currentFrameNumber !== 0) {
-      // check for previous strike
+    if (this._currentFrameNumber !== 0 && previousFrame.isAStrike()) {
+      this._runningTotal = previousFrame.calculateScore(this._runningTotal,frame.getFirstRoll() + frame.getSecondRoll());
     }
     if (frame.isOpen()) this._runningTotal = frame.calculateScore(this._runningTotal,0);
   }

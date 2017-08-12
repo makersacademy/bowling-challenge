@@ -64,6 +64,7 @@ describe('Bowling Game', function() {
   it('stops the score at 10 frames and returns the final score', function() {
     rollMany(20,1);
     expect(game.roll(1)).toEqual('game over');
+    expect(game.score()).toEqual(20);
   });
 
   function rollMany(rolls, score) {

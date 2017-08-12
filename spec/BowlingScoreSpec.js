@@ -1,5 +1,5 @@
 describe("BowlingScore", function() {
-    "use strict";
+    // "use strict";
 
     var bowlingscore;
 
@@ -38,12 +38,20 @@ describe("BowlingScore", function() {
         });
     });
 
-    describe("#showFrameScore", function() {
-      it("can show the frame scores", function () {
+    describe("#showBowlScore", function() {
+      it("can show the individual bowling scores - pins knocked down", function () {
         bowlingscore.enterBowlingScore(5);
         bowlingscore.enterBowlingScore(5);
         expect(bowlingscore.showBowlScore(1)).toEqual(5);
         expect(bowlingscore.showBowlScore(2)).toEqual(5);
+      });
+    });
+
+    describe("#showFrameScore", function() {
+      it("can show the total score of each frame", function() {
+        bowlingscore.enterBowlingScore(5);
+        bowlingscore.enterBowlingScore(5);
+        expect(bowlingscore.showFrameScore(1)).toEqual(10);
       });
     });
 });

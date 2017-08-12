@@ -37,4 +37,13 @@ describe("BowlingScore", function() {
           expect(bowlingscore.isThisFirstBowl()).toEqual(false);
         });
     });
+
+    describe("#showFrameScore", function() {
+      it("can show the frame scores", function () {
+        bowlingscore.enterBowlingScore(5);
+        bowlingscore.enterBowlingScore(5);
+        expect(bowlingscore.showBowlScore(1)).toEqual(5);
+        expect(bowlingscore.showBowlScore(2)).toEqual(5);
+      });
+    });
 });

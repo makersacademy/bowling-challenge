@@ -26,29 +26,29 @@ The `interface.js` is uses JQuery to interact with the BowlingScorecard instance
 
 ## Domain Map
 
-|Frame | |
-|--|--|
-| Variables: | |
-| firstRoll | |
-| secondRoll | |
-| bonus | |
-|totalScore | |
-| Methods: | |
-| addScore() | |
-| isComplete() | |
+|Frame |
+|--|
+| Variables: |
+| score1 |
+| score2 |
+| bonus |
+|totalScore |
+| Methods: |
+| addScore() |
+| isComplete() |
 
-| BowlingScorecard | |
-|-|-|
-| frames | |
-| score | |
-| addScore() | |
-| | |
-| | |
+| BowlingScorecard |
+|-|
+| frames |
+| score |
+| addScore() |
+| |
+| |
 
-| Display | |
-|-|-|
-| frameToTable(frame) |  |
-| scorecardToTable(scorecard) | |
+| Display | 
+|-|
+| frameToTable(frame) |  
+| scorecardToTable(scorecard) |
 
 BonusChecker
 Checks the last 3 frames and updates the bonuses

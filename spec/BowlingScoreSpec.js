@@ -14,7 +14,8 @@ describe("BowlingScore", function() {
     describe("#enterBowlingScore", function() {
         it("can increase the score when score is entered", function() {
             bowlingscore.enterBowlingScore(1);
-            expect(bowlingscore.showTotalScore()).toEqual(1);
+            bowlingscore.enterBowlingScore(1);
+            expect(bowlingscore.showTotalScore()).toEqual(2);
         });
 
         it("cannot enter a score higher than 10 pins on first bowl", function() {

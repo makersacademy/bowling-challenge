@@ -13,11 +13,16 @@ function BowlingScore() {
 }
 
 BowlingScore.prototype.enterBowlingScore = function (score) {
-  if (this.isFirstBowl) {
+  if (this.isThisFirstBowl() && score != 10) {
     if (score > this.maxScore) throw "Maximum score is 10"
     if (this._isItEndOfGame()) throw "End of Game!"
     this.bowlScore.push(score)
     this._changeFirstBowl();
+    this._incrementBowlCount();
+  } else if (this.isThisFirstBowl() && score == 10) {
+    if (this._isItEndOfGame()) throw "End of Game!"
+    this.bowlScore.push(score)
+    this.bowlScore.push(0)
     this._incrementBowlCount();
   } else {
     if ((this.bowlScore[0] + score) > this.maxScore) throw "Maximum total score is 10"
@@ -63,9 +68,4 @@ BowlingScore.prototype._updateFrameScore = function () {
 
 BowlingScore.prototype._isItEndOfGame = function () {
   return this.bowlCount === this.endOfGameCount;
-};
-
-BowlingScore.prototype._Count = function () {
-  return this.bowlCount;
-  return this.endOfGameCount;
 };

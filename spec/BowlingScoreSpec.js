@@ -65,11 +65,20 @@ describe("BowlingScore", function() {
     });
 
     describe("#endOfGame", function() {
-        it("can not enter a score after 10 frames", function() {
+        it("can not enter a score after 10 frames if 10th frame is not a strike or a spare", function() {
             for (var i = 0; i < 20; i++) {
                 bowlingscore.enterBowlingScore(2);
             }
         expect(function() { bowlingscore.enterBowlingScore(2); }).toThrow("End of Game!");
+        });
+    });
+
+    describe("#strike", function() {
+        it("if the score of the first bowl of a frame is 10, the next score will be entered into the first bowl of the next frame", function() {
+            bowlingscore.enterBowlingScore(10);
+            expect(bowlingscore.isThisFirstBowl()).toEqual(true);
+            bowlingscore.enterBowlingScore(3);
+            expect(bowlingscore.showBowlScore(3)).toEqual(3);
         });
     });
 });

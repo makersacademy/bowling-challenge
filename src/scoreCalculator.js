@@ -19,13 +19,17 @@ ScoreCalculator.prototype.bonusScores = function() {
   var bonusTotal = 0;
   var calculator = this;
   calculator.bonuses.forEach(function(bonus) {
-    if (bonus.type() === "strike") {
-      bonusTotal += calculator._strikeHandler(bonus);
-    } else if (bonus.type() === "spare") {
-      bonusTotal += calculator._getFrameForBonus(bonus).getFirstRoll();
-    }
+    bonusTotal += calculator.singleBonusScore(bonus);
   });
   return bonusTotal;
+};
+
+ScoreCalculator.prototype.singleBonusScore = function(bonus) {
+  if (bonus.type() === "strike") {
+    return this._strikeHandler(bonus);
+  } else if (bonus.type() === "spare") {
+    return this._getFrameForBonus(bonus).getFirstRoll();
+  }
 };
 
 ScoreCalculator.prototype._strikeHandler = function(bonus) {

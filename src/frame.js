@@ -47,6 +47,10 @@ Frame.prototype.isASpare = function() {
   return this._bonus === 'spare' ? true : false;
 };
 
+Frame.prototype.isOpen = function() {
+  return this._bonus === 'none' ? true : false;
+};
+
 Frame.prototype.calculateScore = function(previousTotal, bonus) {
   if (previousTotal === undefined) throw new Error('Previous total required');
   if (bonus === undefined && (this.isAStrike() || this.isASpare())) throw new Error('Bonus required');

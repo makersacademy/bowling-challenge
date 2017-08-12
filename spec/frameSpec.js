@@ -77,6 +77,12 @@ describe('Frame', function() {
       frame.setSecondRoll(3);
       expect(frame.isASpare()).toBe(false);
     });
+
+    it('is open if less than 10 pins are knocked down', function() {
+      frame.setFirstRoll(6);
+      frame.setSecondRoll(3);
+      expect(frame.isOpen()).toBe(true);
+    });
   });
 
   describe('calculate score', function() {

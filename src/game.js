@@ -54,12 +54,16 @@ Game.prototype._updateFrame = function(frame, pins) {
 
 Game.prototype._calculateScore = function() {
   var frame = this._frames[this._currentFrameNumber];
-  if (this._isScoreComputable(frame)) this._runningTotal = frame.calculateScore(this._runningTotal,0);
-};
 
-Game.prototype._isScoreComputable = function(frame) {
-  if (this._currentFrameNumber == 0 && this._isFirstRoll) return false; // Current frame is the first one, and only first roll has completed
-  if (this._isFirstRoll) return false;                                  // Only first roll has completed
-  if (frame.isASpare()) return false;                                   // Current frame is a spare
-  return true;
+  if (this._currentFrameNumber === 0 && frame.isOpen()) {
+    this._runningTotal = frame.calculateScore(0,0);
+    return;
+  }
+
+  if (this._isFirstRoll) {
+
+  } else {
+    if (frame.isOpen()) this._runningTotal = frame.calculateScore(this._runningTotal,0);
+  }
+
 };

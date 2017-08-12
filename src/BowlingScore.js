@@ -75,6 +75,7 @@ BowlingScore.prototype._strike = function () {
   if (this.bowlCount > 2 && this.bowlCount < 18) {
     if (this.bowlScore[this.bowlCount - 4] === 10) {
       this.frameScore[this.bowlCount - 4] += (this.bowlScore[this.bowlCount - 2] + this.bowlScore[this.bowlCount -1])
+      this._updateTotalScore(this.frameScore);
     }
   }
 };

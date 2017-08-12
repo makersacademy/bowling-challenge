@@ -16,5 +16,9 @@ describe("BowlingScore", function() {
             bowlingscore.enterBowlingScore(1)
             expect(bowlingscore.showTotalScore()).toEqual(1)
         });
+
+        it("cannot enter a score higher than 10", function() {
+            expect(function() { bowlingscore.enterBowlingScore(11); }).toThrow("Maximum score is 10")
+        });
     });
 });

@@ -30,6 +30,12 @@ describe('Bowling Game', function() {
     expect(game.finalScore()).toEqual(14);
   });
 
+  it('can score multiple spares', function() {
+    rollMany(20, 5);
+    game.roll(5);
+    expect(game.finalScore()).toEqual(150);
+  });
+
   it('can score a strike', function() {
     game.roll(10);
     game.roll(2);
@@ -55,6 +61,11 @@ describe('Bowling Game', function() {
     expect(game.finalScore()).toEqual(4);
   });
 // score can be called at any point in the game although it will only return the total of the frame.
+
+  it('stops the score at 10 frames and returns the final score', function() {
+    rollMany(20,1);
+    expect(game.roll(1)).toEqual('game over');
+  });
 
   function rollMany(rolls, score) {
     for (var i = 0; i < rolls; i++) {

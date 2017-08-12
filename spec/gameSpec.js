@@ -15,68 +15,82 @@ describe('Game', function() {
       expect(game.getFrames().length).toEqual(10);
     });
 
-    it('the current frame is 1', function() {
-      expect(game.getCurrentFrame()).toEqual(0);
+    it('the current frame number is 0', function() {
+      expect(game.getCurrentFrameNumber()).toEqual(0);
     });
 
     it('has the player', function() {
       expect(player.getName()).toEqual('Nutbrown');
     });
+
+    it('has a score of 0', function() {
+      expect(game.getScore()).toEqual(0);
+    });
   });
 
   describe('receive roll', function() {
-    describe('open frame', function() {
+    describe('current frame is an open frame', function() {
       beforeEach(function() {
-        frame = game.getFrames()[game.getCurrentFrame()];
+        frame = game.getCurrentFrame();
         game.receiveRoll(6);
         game.receiveRoll(3);
       });
 
-      it('updates the first roll', function() {
+      it('updates the frame\'s first roll', function() {
         expect(frame.getFirstRoll()).toEqual(6);
       });
 
-      it('updates the second roll', function() {
+      it('updates the frame\'s second roll', function() {
         expect(frame.getSecondRoll()).toEqual(3);
       });
 
-      it('updates the current frame', function() {
-        expect(game.getCurrentFrame()).toEqual(1);
+      it('updates the current frame number', function() {
+        expect(game.getCurrentFrameNumber()).toEqual(1);
+      });
+
+      describe('when it is the first frame', function() {
+        it('updates the frame\'s score', function() {
+          expect(frame.getScore()).toEqual(9);
+        });
+
+        it('updates the game\'s score', function() {
+          expect(game.getScore()).toEqual(9);
+        });
       });
     });
 
-    describe('spare', function() {
+    describe('current frame is a spare', function() {
       beforeEach(function() {
-        frame = game.getFrames()[game.getCurrentFrame()];
+        frame = game.getCurrentFrame();
         game.receiveRoll(6);
         game.receiveRoll(4);
       });
 
-      it('updates the first roll', function() {
+      it('updates the frame\'s first roll', function() {
         expect(frame.getFirstRoll()).toEqual(6);
       });
 
-      it('updates the second roll', function() {
+      it('updates the frame\'s second roll', function() {
         expect(frame.getSecondRoll()).toEqual(4);
       });
 
-      it('updates the current frame', function() {
-        expect(game.getCurrentFrame()).toEqual(1);
+      it('updates the current frame number', function() {
+        expect(game.getCurrentFrameNumber()).toEqual(1);
       });
     });
 
-    describe('strike', function() {
+    describe('current frame is a strike', function() {
       beforeEach(function() {
-        frame = game.getFrames()[game.getCurrentFrame()];
+        frame = game.getCurrentFrame();
         game.receiveRoll(10);
       });
 
-      it('updates the first roll', function() {
+      it('updates the frame\'s first roll', function() {
         expect(frame.getFirstRoll()).toEqual(10);
       });
 
-      it('updates the current frame', function() {
-        expect(game.getCurrentFrame()).toEqual(1);
+      it('updates the current frame number', function() {
+        expect(game.getCurrentFrameNumber()).toEqual(1);
       });
     });
   });

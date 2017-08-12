@@ -31,6 +31,10 @@ Game.prototype.getCurrentFrame = function() {
   return this._frames[this._currentFrameNumber];
 };
 
+Game.prototype.getPreviousFrame = function() {
+  if (this._currentFrameNumber !== 0) return this._frames[this._currentFrameNumber - 1]
+};
+
 Game.prototype.getPlayer = function() {
   return this._player;
 };
@@ -53,17 +57,19 @@ Game.prototype._updateFrame = function(frame, pins) {
 };
 
 Game.prototype._calculateScore = function() {
-  var frame = this._frames[this._currentFrameNumber];
-
-  if (this._currentFrameNumber === 0 && frame.isOpen()) {
-    this._runningTotal = frame.calculateScore(0,0);
-    return;
-  }
+  var frame = this.getCurrentFrame();
+  var previousFrame = this.getPreviousFrame();
 
   if (this._isFirstRoll) {
-
+    if (this._currentFrameNumber !== 0 && previousFrame.isASpare()) {
+      debugger;
+      this._runningTotal = previousFrame.calculateScore(this._runningTotal,frame.getFirstRoll());
+    }
   } else {
+    if (this._currentFrameNumber !== 0) {
+      // check for previous strike
+    }
+    debugger;
     if (frame.isOpen()) this._runningTotal = frame.calculateScore(this._runningTotal,0);
   }
-
 };

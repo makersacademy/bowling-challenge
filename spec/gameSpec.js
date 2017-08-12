@@ -3,7 +3,6 @@
 describe('Game', function() {
   var game;
   var player;
-  var frame;
 
   beforeEach(function() {
     game = new Game('Nutbrown');
@@ -30,6 +29,8 @@ describe('Game', function() {
 
   describe('receive roll', function() {
     describe('first frame in a consecutive pair is an open frame', function() {
+      var frame;
+
       beforeEach(function() {
         frame = game.getCurrentFrame();
         game.receiveRoll(6);
@@ -59,14 +60,16 @@ describe('Game', function() {
       });
 
       describe('second frame in the consecutive pair is an open frame', function () {
+        var frame2;
+
         beforeEach(function () {
-          frame = game.getCurrentFrame();
+          frame2 = game.getCurrentFrame();
           game.receiveRoll(0);
           game.receiveRoll(7);
         });
 
         it('updates the frame\'s score', function() {
-          expect(frame.getScore()).toEqual(16);
+          expect(frame2.getScore()).toEqual(16);
         });
 
         it('updates the games\'s score', function() {
@@ -75,14 +78,16 @@ describe('Game', function() {
       });
 
       describe('second frame in the consecutive pair is a spare', function () {
+        var frame2;
+
         beforeEach(function () {
-          frame = game.getCurrentFrame();
+          frame2 = game.getCurrentFrame();
           game.receiveRoll(2);
           game.receiveRoll(8);
         });
 
         it('does not update the frame\'s score as of now', function() {
-          expect(frame.getScore()).toEqual(0);
+          expect(frame2.getScore()).toEqual(0);
         });
 
         it('does not update the games\'s score as of now', function() {
@@ -91,13 +96,15 @@ describe('Game', function() {
       });
 
       describe('second frame in the consecutive pair is a strike', function () {
+        var frame2;
+
         beforeEach(function () {
-          frame = game.getCurrentFrame();
+          frame2 = game.getCurrentFrame();
           game.receiveRoll(10);
         });
 
         it('does not update the frame\'s score as of now', function() {
-          expect(frame.getScore()).toEqual(0);
+          expect(frame2.getScore()).toEqual(0);
         });
 
         it('does not update the games\'s score as of now', function() {
@@ -106,7 +113,9 @@ describe('Game', function() {
       });
     });
 
-    describe('current frame is a spare', function() {
+    describe('first frame in a consecutive pair is a spare', function() {
+      var frame;
+
       beforeEach(function() {
         frame = game.getCurrentFrame();
         game.receiveRoll(6);
@@ -124,9 +133,43 @@ describe('Game', function() {
       it('updates the current frame number', function() {
         expect(game.getCurrentFrameNumber()).toEqual(1);
       });
+
+      describe('there is no previous frame', function() {
+        it('does not update the frame\'s score', function() {
+          expect(frame.getScore()).toEqual(0);
+        });
+
+        it('does not update the game\'s score', function() {
+          expect(game.getScore()).toEqual(0);
+        });
+      });
+
+      describe('second frame in the consecutive pair is an open frame', function () {
+        var frame2;
+
+        beforeEach(function () {
+          frame2 = game.getCurrentFrame();
+          game.receiveRoll(7);
+          game.receiveRoll(1);
+        });
+
+        it('updates the first frame\'s score', function() {
+          expect(frame.getScore()).toEqual(17);
+        });
+
+        it('updates the second frame\'s score', function() {
+          expect(frame2.getScore()).toEqual(25);
+        });
+
+        it('updates the games\'s score', function() {
+          expect(game.getScore()).toEqual(25);
+        });
+      });
+
     });
 
-    describe('current frame is a strike', function() {
+    describe('first frame in a consecutive pair is a strike', function() {
+      var frame;
       beforeEach(function() {
         frame = game.getCurrentFrame();
         game.receiveRoll(10);

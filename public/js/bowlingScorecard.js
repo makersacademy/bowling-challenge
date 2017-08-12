@@ -27,9 +27,6 @@ BowlingScorecard.prototype.updateGameStatus = function () {
     if (this.frameNumber < 10) {
       this.addFrame();
       this.frameNumber += 1;
-      if (this.frameNumber === 10) {
-        this.frame().setLastFrame();
-      }
     }
     else if ((this.frame().isComplete() && this.frame().totalScore < 10) || this.frame().bonus) {
       this.setGameComplete();

@@ -2,6 +2,7 @@ $(document).ready(function(){
   var bowlingScorecard = new BowlingScorecard();
   var i = 0;
   var string = "";
+  var display = new Display();
   $('.display').text('Click on the number of pins you knocked down.');
   updateDisplay();
 
@@ -13,22 +14,12 @@ $(document).ready(function(){
     updateScore();
  }
 
- function updateScore() {
-   string = "Frame " + bowlingScorecard.frameNumber;
-   if (bowlingScorecard.frameNumber === 10 && bowlingScorecard.frame().totalScore >= 10) {
-     string += ", Bonus Roll";
-   }
-   else {
-     string += ", Roll " + (bowlingScorecard.frame().isFirstBowl ? 1 : 2);
-   }
-   string += ", Total Score: " + bowlingScorecard.score();
-   $('.current-score').text(string);
+ function updateScoreDisplay() {
+   $('.current-score').text(display.scoreInfo(bowlingScorecard.frameNumber, bowlingScorecard.frame().isFirstBowl));
  }
 
  function updateFramesDisplay() {
-   display = new Display();
-   var table = display.framesToHTMLTable(bowlingScorecard._frames);
-   $('.frames').html(table);
+   $('.frames').html(display.framesToHTMLTable(bowlingScorecard._frames));
  }
 
  $(".score").on('click', function() {

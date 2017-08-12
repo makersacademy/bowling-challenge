@@ -22,10 +22,6 @@ Frame.prototype.isComplete = function () {
   return (this.isStrike() || this.isSpare() || (this.score1 && this.score2));
 };
 
-Frame.prototype.setLastFrame = function() {
-  this._isLastFrame = true;
-};
-
 Frame.prototype.addScore = function(score) {
   if (this.isFirstBowl) {
     this.isFirstBowl = false;
@@ -36,7 +32,7 @@ Frame.prototype.addScore = function(score) {
     this.score2 = score;
     if (this.score1 + this.score2 === 10) this._isSpare = true;
   }
-  this.totalScore += score;
+  this.calculateScore();
 };
 
 Frame.prototype.addBonus = function (score) {

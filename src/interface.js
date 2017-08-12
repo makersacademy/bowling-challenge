@@ -1,6 +1,8 @@
 $(document).ready(function() {
   var game;
   var calculator;
+  var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', 'http://www.freesfx.co.uk/rx2/mp3s/2/13789_1459797859.mp3');
 
   $(window).on('load', function () {
     $('#show-scores').hide();
@@ -11,8 +13,17 @@ $(document).ready(function() {
     game  = new Game();
     game.play();
     calculator = new ScoreCalculator(game.frames, game.bonuses);
-    scoreTable();
+    audioElement.play();
+    showGame();
   });
+
+  function showGame() {
+    scoreTable();
+    tenthFrame();
+    specialScores();
+    $('#show-scores').show();
+    $('#total-score').text(calculator.totalScore());
+  }
 
   function scoreTable() {
     $('#score-table tr').each(function(i) {
@@ -25,9 +36,6 @@ $(document).ready(function() {
         total(frame, row);
       }
     });
-    tenthFrame();
-    $('#show-scores').show();
-    $('#total-score').text(calculator.totalScore());
   }
 
   function rolls(frame, row) {
@@ -80,5 +88,13 @@ $(document).ready(function() {
     $('#bonus-roll').find('#bonus').text("");
     $('#bonus-roll').find('#total').text("");
     $('#bonus-roll').show();
+  }
+
+  function specialScores() {
+    if (game.isPerfect()) {
+      $('#special-score').text("PERFECT GAME!");
+    } else if (game.isGutter()) {
+      $('#special-score').text("GUTTER GAME!");
+    }
   }
 });

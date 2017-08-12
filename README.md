@@ -3,6 +3,23 @@ Bowling Challenge
 =================
 [![Build Status](https://travis-ci.org/i-hardy/bowling-challenge.svg?branch=master)](https://travis-ci.org/i-hardy/bowling-challenge)
 
+## How to Use
+
+```
+$ git clone git@github.com:i-hardy/bowling-challenge.git
+$ cd bowling-challenge
+$ open bowling.html
+```
+
+## Appearance
+
+![screenshot](http://imgur.com/FqjeNes.jpg)
+
+![screenshot](http://imgur.com/J01BM9c.jpg)
+
+![screenshot](http://imgur.com/ZbJ2EmW.jpg)
+
+
 ## User Stories
 ```
 As a bowler

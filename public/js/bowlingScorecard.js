@@ -19,7 +19,7 @@ BowlingScorecard.prototype.isGameComplete = function() {
 };
 
 BowlingScorecard.prototype.isFirstBowl = function() {
-  return this.frame().isFirstBowl;
+  return this.frame().isFirstBowl();
 };
 
 BowlingScorecard.prototype.score = function() {
@@ -44,10 +44,6 @@ BowlingScorecard.prototype.updateScore = function() {
   }, 0);
 };
 
-BowlingScorecard.prototype.getFrame = function(i) {
-  return this._frames[i -1];
-};
-
 BowlingScorecard.prototype.frame = function() {
   return this._frames[this.frameNumber -1];
 };
@@ -68,7 +64,7 @@ BowlingScorecard.prototype.checkBonus = function(score) {
   if (this.frameNumber === 1) return;
   if (this.frame().isComplete()) {
     if (this.previousFrame().isStrike()) {
-      this.previousFrame().addBonus(this.frame().score1 + this.frame().score2);
+      this.previousFrame().addBonus(this.frame().totalScore);
     }
     if (this.frameNumber > 2 && this.secondPreviousFrame().isStrike() && this.previousFrame().isStrike()) {
       if (this.frameNumber === 10 && this.frame.score2) return;

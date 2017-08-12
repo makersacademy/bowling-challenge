@@ -74,7 +74,13 @@ BowlingScore.prototype._updateFrameScore = function () {
 BowlingScore.prototype._strike = function () {
   if (this.bowlCount > 2 && this.bowlCount < 18) {
     if (this.bowlScore[this.bowlCount - 4] === 10) {
-      this.frameScore[this.bowlCount - 4] += (this.bowlScore[this.bowlCount - 2] + this.bowlScore[this.bowlCount -1])
+      this.frameScore[this.bowlCount - 4] += (this.frameScore[this.bowlCount - 3])
+      this._updateTotalScore(this.frameScore);
+    }
+  }
+  if (this.bowlCount > 4 && this.bowlCount < 18) {
+    if (this.bowlScore[this.bowlCount - 6] === 10 && this.bowlScore[this.bowlCount - 4] == 10) {
+      this.frameScore[this.bowlCount - 6] += (this.frameScore[this.bowlCount - 5])
       this._updateTotalScore(this.frameScore);
     }
   }

@@ -94,5 +94,12 @@ describe("BowlingScore", function() {
             bowlingscore.enterBowlingScore(3);
             expect(bowlingscore.showTotalScore()).toEqual(22);
         });
+
+        it("if the score of the first bowl of a frame is 10 AND the follwoing 2 bowls are also a strikes, the next 2 bowl scores will be added to the total score of the frame where the strike occured", function() {
+            bowlingscore.enterBowlingScore(10);
+            bowlingscore.enterBowlingScore(10);
+            bowlingscore.enterBowlingScore(10);
+            expect(bowlingscore.showFrameScore(1)).toEqual(30);
+        });
     });
 });

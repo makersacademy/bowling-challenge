@@ -6,3 +6,7 @@ function BowlingScore() {
 BowlingScore.prototype.showTotalScore = function () {
   return this.totalScore;
 };
+
+BowlingScore.prototype.enterBowlingScore = function (score) {
+  this.totalScore += score;
+};

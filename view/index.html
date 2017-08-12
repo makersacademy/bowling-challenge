@@ -1,0 +1,124 @@
+<meta charset="utf-8">
+
+<html>
+  <head>
+    <title>Bowling scoresheet</title>
+    <link rel="stylesheet" href="../public/stylesheets/simple-grid.css">
+    <link rel="stylesheet" href="../public/stylesheets/stylesheet.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet"> -->
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1>Bowling!</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <h4>It's player 1's turn</h4>
+      </div>
+      <div class="row centre">
+        <p>Enter score:</p>
+        <button id='roll0' class="button curved" value="0">0</button>
+        <button id='roll1' class="button curved" value="1">1</button>
+        <button id='roll2' class="button curved" value="2">2</button>
+        <button id='roll3' class="button curved" value="3">3</button>
+        <button id='roll4' class="button curved" value="4">4</button>
+        <button id='roll5' class="button curved" value="5">5</button>
+        <button id='roll6' class="button curved" value="6">6</button>
+        <button id='roll7' class="button curved" value="7">7</button>
+        <button id='roll8' class="button curved" value="8">8</button>
+        <button id='roll9' class="button curved" value="9">9</button>
+        <button id='roll10' class="button curved"value="10">10</button>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <table>
+            <tr id="tablehead">
+              <th>Players</th>
+              <th colspan="2">1</th>
+              <th colspan="2">2</th>
+              <th colspan="2">3</th>
+              <th colspan="2">4</th>
+              <th colspan="2">5</th>
+              <th colspan="2">6</th>
+              <th colspan="2">7</th>
+              <th colspan="2">8</th>
+              <th colspan="2">9</th>
+              <th colspan="2">10</th>
+              <th>-</th>
+              <th>-</th>
+              <th>TOTAL</th>
+            </tr>
+            <tr id="player1">
+              <td id="player1name">-</td>
+              <td id="frame1player1score1">-</td>
+              <td id="frame1player1score2">-</td>
+              <td id="frame2player1score1">-</td>
+              <td id="frame2player1score2">-</td>
+              <td id="frame3player1score1">-</td>
+              <td id="frame3player1score2">-</td>
+              <td id="frame4player1score1">-</td>
+              <td id="frame4player1score2">-</td>
+              <td id="frame5player1score1">-</td>
+              <td id="frame5player1score2">-</td>
+              <td id="frame6player1score1">-</td>
+              <td id="frame6player1score2">-</td>
+              <td id="frame7player1score1">-</td>
+              <td id="frame7player1score2">-</td>
+              <td id="frame8player1score1">-</td>
+              <td id="frame8player1score2">-</td>
+              <td id="frame9player1score1">-</td>
+              <td id="frame9player1score2">-</td>
+              <td id="frame10player1score1">-</td>
+              <td id="frame10player1score2">-</td>
+              <td id="bonus1player1">-</td>
+              <td id="bonus2player1">-</td>
+              <td id="player1total">0</td>
+            </tr>
+            <tr id="player2">
+              <td id="player2name">-</td>
+              <td id="frame1player2score1">-</td>
+              <td id="frame1player2score2">-</td>
+              <td id="frame2player2score1">-</td>
+              <td id="frame2player2score2">-</td>
+              <td id="frame3player2score1">-</td>
+              <td id="frame3player2score2">-</td>
+              <td id="frame4player2score1">-</td>
+              <td id="frame4player2score2">-</td>
+              <td id="frame5player2score1">-</td>
+              <td id="frame5player2score2">-</td>
+              <td id="frame6player2score1">-</td>
+              <td id="frame6player2score2">-</td>
+              <td id="frame7player2score1">-</td>
+              <td id="frame7player2score2">-</td>
+              <td id="frame8player2score1">-</td>
+              <td id="frame8player2score2">-</td>
+              <td id="frame9player2score1">-</td>
+              <td id="frame9player2score2">-</td>
+              <td id="frame10player2score1">-</td>
+              <td id="frame10player2score2">-</td>
+              <td id="bonus1player2">-</td>
+              <td id="bonus2player2">-</td>
+              <td id="player2total">0</td>
+            </tr>
+          </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="../src/game.js"></script>
+    <script src="../src/player.js"></script>
+    <script src="../src/scorecard.js"></script>
+    <script src="../src/interface.js"></script>
+  </body>
+</html>

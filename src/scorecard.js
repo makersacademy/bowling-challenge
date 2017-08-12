@@ -29,5 +29,6 @@ Scorecard.prototype.roll = function(amount, frame) {
   } else {
     this._framescores[frame].push(amount);
     this._totalscore += amount;
+    console.log(this._totalscore);
   }
 };

@@ -8,35 +8,45 @@
   </head>
 
   <body>
-    <h1>Player 1</h1>
-    <h2>Round: <span id="round">1</span>, roll: <span id="roll">1</span></h2>
-
-    <h1>Current Score: <span id="current-score">0</span></h1>
-
+    <div class='header'>
+      <h2>Current Score: <span id="current-score">0</span></h1>
+      <h2>Player 1</h1>
+      <h2>Round: <span id="round">1</span>, roll: <span id="roll">1</span></h2>
+    </div>
+    <div class='round-numbers'>
+      <div class='round-number'>1</div>
+      <div class='round-number'>2</div>
+      <div class='round-number'>3</div>
+      <div class='round-number'>4</div>
+      <div class='round-number'>5</div>
+      <div class='round-number'>6</div>
+      <div class='round-number'>7</div>
+      <div class='round-number'>8</div>
+      <div class='round-number'>9</div>
+      <div class='round-number'>10</div>
+    </div>
     <div id='round-scores' class="rounds">
-      Round Scores:
-      <p>1</p>
       <div id='scoore-0' class="single-round">0</div>
-      <div id='scoore-1' class="single-round">0</div>
-      <div id='scoore-2' class="single-round">0</div>
-      <div id='scoore-3' class="single-round">0</div>
-      <div id='scoore-4' class="single-round">0</div>
-      <div id='scoore-5' class="single-round">0</div>
-      <div id='scoore-6' class="single-round">0</div>
-      <div id='scoore-7' class="single-round">0</div>
-      <div id='scoore-8' class="single-round">0</div>
-      <div id='scoore-9' class="single-round">0</div>
+      <div id='scoore-1' class="single-round">-</div>
+      <div id='scoore-2' class="single-round">-</div>
+      <div id='scoore-3' class="single-round">-</div>
+      <div id='scoore-4' class="single-round">-</div>
+      <div id='scoore-5' class="single-round">-</div>
+      <div id='scoore-6' class="single-round">-</div>
+      <div id='scoore-7' class="single-round">-</div>
+      <div id='scoore-8' class="single-round">-</div>
+      <div id='scoore-9' class="single-round">-</div>
     </div>
 
+    <h1>Enter Score:</h1>
     <div id='scores' class="buttons">
-      Score:
       <button id='0' class="button">0</button>
       <button id='1' class="button">1</button>
       <button id='2' class="button">2</button>
       <button id='3' class="button">3</button>
       <button id='4' class="button">4</button>
       <button id='5' class="button">5</button>
-      <button id='6' class="button">6</button>
+    <br><button id='6' class="button">6</button>
       <button id='7' class="button">7</button>
       <button id='8' class="button">8</button>
       <button id='9' class="button">9</button>
@@ -46,8 +56,11 @@
     <h2><span id="game-over"></span></h2>
 
     <script src="jquery.js"></script>
+    <script src="app/src/game.js"></script>
     <script src="app/src/player.js"></script>
     <script src="app/src/scoreCard.js"></script>
+    <script src="app/src/scoreCardParser.js"></script>
+    <script src="app/src/round.js"></script>
     <script src="app/src/scoreGenerator.js"></script>
     <script src="app/src/helpers.js"></script>
     <script src="app/scripts/functions.js"></script>

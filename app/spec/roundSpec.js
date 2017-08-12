@@ -7,17 +7,17 @@ describe('Round', function() {
     lastRound = new Round(true);
   });
   it('begins as an empty array', function() {
-    expect(round.result.length).toEqual(0);
+    expect(round.results.length).toEqual(0);
   });
   describe('first roll', function() {
     describe('accepts a number between 0 and 10', function() {
       it('less than or equal to 10', function() {
         round.store(8);
-        expect(round.result.length).toEqual(1);
+        expect(round.results.length).toEqual(1);
       });
       it('greater than 10', function() {
         round.store(15);
-        expect(round.result.length).toEqual(0);
+        expect(round.results.length).toEqual(0);
       });
     });
   });
@@ -27,11 +27,11 @@ describe('Round', function() {
     })
     it('does not allow round total to exceed 10', function() {
       round.store(10);
-      expect(round.result.length).toEqual(1)
+      expect(round.results.length).toEqual(1)
     });
     it('allows round total 10 or less', function() {
       round.store(5);
-      expect(round.result.length).toEqual(2);
+      expect(round.results.length).toEqual(2);
     });
   });
   describe('end of the round', function() {
@@ -55,8 +55,7 @@ describe('Round', function() {
           }
         });
         it('stores all three rolls and ends the round', function() {
-          // console.log(lastRound.result);
-          expect(lastRound.result.length).toEqual(3);
+          expect(lastRound.results.length).toEqual(3);
           expect(lastRound.complete).toEqual(true);
         });
       })
@@ -70,7 +69,6 @@ describe('Round', function() {
           expect(lastRound.complete).toEqual(false);
         });
         it('it ends round if last two throws sum to 10 or less', function() {
-          console.log(lastRound.result);
           lastRound.store(5);
           expect(lastRound.complete).toEqual(true);
         });
@@ -81,7 +79,7 @@ describe('Round', function() {
         });
         it('does not allow sum of first two rolls to exceed 10', function() {
           lastRound.store(10);
-          expect(lastRound.result.length).toEqual(1);
+          expect(lastRound.results.length).toEqual(1);
         });
         describe('spare', function() {
           beforeEach(function() {

@@ -3,76 +3,23 @@
 describe('ScoreCard', function() {
   var scoreCard;
   beforeEach(function() {
-    scoreCard = new ScoreCard();
+    var rounds = [];
+    for(var i = 0; i < 10; i++) {
+      var round = jasmine.createSpyObj('round', ['store', 'isRoundOver'])
+      rounds.push(round);
+    }
+    scoreCard = new ScoreCard(rounds);
   });
-  it('created with an empty results array of arrays', function() {
-    expect(scoreCard.results).toEqual(get2DArray(10));
+  it('created with an empty results array', function() {
+    expect(scoreCard.results.length).toEqual(10);
   });
-  describe('adding results to the array', function() {
-    describe('not the last round', function() {
-      it('strike', function() {
-        scoreCard.store(10, 0);
-        expect(scoreCard.results[0]).toEqual([10])
-      });
-      it('not strike', function() {
-        scoreCard.store(5, 0);
-        scoreCard.store(5, 0);
-        expect(scoreCard.results[0]).toEqual([5,5])
-      });
-      it('error - result exceeds 10', function() {
-        scoreCard.store(20, 0);
-        expect(scoreCard.results[0]).toEqual([10])
-      });
-      it('error - two shot score exceeds 10', function() {
-        scoreCard.store(5, 0);
-        scoreCard.store(10, 0);
-        expect(scoreCard.results[0]).toEqual([5,5])
-      });
-    });
-    describe('last round', function() {
-      beforeEach(function() {
-        for(var i = 0; i < 9; i++) {
-          scoreCard.store(10, i);
-        }
-      });
-      it('two strikes + final shot', function() {
-        for(var i = 0; i < 3; i++) {
-          scoreCard.store(10, 9);
-        }
-        expect(scoreCard.results[9]).toEqual([10,10,10])
-      });
-      describe('one strike + two more shots', function() {
-        beforeEach(function() {
-          scoreCard.store(10, 9);
-          scoreCard.store(5, 9);
-        })
-        it('correct entry', function() {
-          scoreCard.store(5, 9);
-          expect(scoreCard.results[9]).toEqual([10,5,5])
-        });
-        it('incorrect entry', function() {
-          scoreCard.store(8, 9);
-          expect(scoreCard.results[9]).toEqual([10,5,5])
-        });
-      })
-      describe('spare + additional shot', function() {
-        beforeEach(function() {
-          scoreCard.store(5, 9);
-        });
-        it('correct entry', function() {
-          for(var i = 0; i < 2; i++) {
-            scoreCard.store(5, 9);
-          }
-          expect(scoreCard.results[9]).toEqual([5,5,5])
-        });
-        it('incorrect entry', function() {
-          for(var i = 0; i < 2; i++) {
-            scoreCard.store(8, 9);
-          }
-          expect(scoreCard.results[9]).toEqual([5,5,8])
-        });
-      })
-
-    });
+  it('asks round to store the score', function() {
+    scoreCard.process(10, 0);
+    expect(scoreCard.results[0].store).toHaveBeenCalledWith(10);
+  });
+  it('does not ask round to store if scorecard is complete', function() {
+    scoreCard.results[9].isRoundOver.and.returnValue(true);
+    scoreCard.process(10, 9);
+    expect(scoreCard.results[0].store).not.toHaveBeenCalled();
   });
 });

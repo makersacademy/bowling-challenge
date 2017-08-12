@@ -1,26 +1,46 @@
 $( document ).ready(function() {
 
-  var player = new Player(new ScoreCard);
-  var scoreGenerator = new ScoreGenerator();
+  var rounds, parser, scoreCard, player, scoreGenerator;
+  rounds = [];
+  for(var i = 0; i < 9; i++) {
+    rounds.push(new Round());
+  }
+  rounds.push(new Round(true));
+  parser = new ScoreCardParser();
+  scoreCard = new ScoreCard(rounds, parser)
+  player = new Player(scoreCard);
+  game = new Game(player);
 
-  var eachRoundScore = function() {
-    var card = player.scoreCard.results
+  scoreGenerator = new ScoreGenerator();
+
+  var updateFields = function() {
+    var card = scoreCard.parse()
+    $("#current-score").text(scoreGenerator.returnScore(card));
+    if(game.over) {
+      $("#game-over").text("Game over!");
+    } else {
+      $("#round").text(game.round + 1);
+      $("#roll").text(game.roll());
+    }
+  }
+
+  var updateRoundScores = function() {
+    var card = scoreCard.parse(), score = 0;
     card.forEach(function(item, index) {
-      var score = scoreGenerator.getRoundScore(index, card);
-      var id = "#score-" + index;
-      var id2 = "#scoore-" + index;
+      if(index > game.round) {
+        score = "-";
+      } else if(index < game.round || game.over) {
+        score += scoreGenerator.getRoundScore(index, card);
+      } else { score = scoreGenerator.getRoundScore(index, card); }
+      var id = "#scoore-" + index;
       $(id).text(score);
-      $(id2).text(score);
     });
   };
 
   $("#scores").click(function( event ) {
     var result = Number(event.target.id)
-    player.bowl(result);
-    $("#current-score").text(scoreGenerator.returnScore(player.scoreCard.results));
-    $("#round").text(player.roundNumber + 1);
-    $("#roll").text(player.rollNumber + 1);
-    eachRoundScore();
-    if(player.gameOver) { $("#game-over").text("Game over!"); }
+    game.play(result);
+    updateFields();
+    updateRoundScores();
   });
 });

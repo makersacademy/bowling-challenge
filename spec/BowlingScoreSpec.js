@@ -20,6 +20,11 @@ describe("BowlingScore", function() {
         it("cannot enter a score higher than 10 pins on first bowl", function() {
             expect(function() { bowlingscore.enterBowlingScore(11); }).toThrow("Maximum score is 10")
         });
+
+        it("cannot enter a score higher than a total of 10 pins on second bowl", function() {
+            bowlingscore.enterBowlingScore(5);
+            expect(function() { bowlingscore.enterBowlingScore(6); }).toThrow("Maximum total score is 10")
+        });
     });
 
     describe("#isThisFirstBowl", function() {

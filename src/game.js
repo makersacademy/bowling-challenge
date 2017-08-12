@@ -19,7 +19,7 @@ Game.prototype.play = function() {
   var game = this;
   var lastFrame = lastFrame || new Frame();
   game.frames.forEach(function (frame) {
-    var currentFrame = Game.rollFrame(frame);
+    var currentFrame = Player.rollFrame(frame);
     if (lastFrame.bonusType()) {
       game.createBonus(lastFrame.bonusType(), currentFrame);
     }
@@ -35,7 +35,7 @@ Game.prototype.createBonus = function(type, frame) {
 Game.prototype.bonusRoll = function () {
   var type = this.frames[9].bonusType();
   if (type) {
-    this.frames.push(Game.rollBonusFrame(new Frame(), type));
+    this.frames.push(Player.rollBonusFrame(new Frame(), type));
   }
 };
 
@@ -45,26 +45,4 @@ Game.prototype.isPerfect = function() {
 
 Game.prototype.isGutter = function () {
   return this.getScore() === 0;
-};
-
-Game.randomPins = function(max) {
-  return Math.floor(Math.random() * (max + 1));
-};
-
-Game.rollFrame = function(frame) {
-  var roll = Game.randomPins(10);
-  frame.firstRoll(roll);
-  if (!frame.isStrike()) {
-    frame.secondRoll(Game.randomPins(10 - roll));
-  }
-  return frame;
-};
-
-Game.rollBonusFrame = function(frame, type) {
-  var roll = Game.randomPins(10);
-  frame.firstRoll(roll);
-  if (type === "strike") {
-    frame.secondRoll(Game.randomPins(10 - roll));
-  }
-  return frame;
 };

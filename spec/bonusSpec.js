@@ -4,11 +4,11 @@ describe("Bonus", function() {
 
   beforeEach(function() {
     frame = new Frame(1);
+    bonus = new Bonus("strike", frame.frameIndex);
   });
 
   describe("type", function() {
     it("returns the type of the bonus", function() {
-      bonus = new Bonus("strike", frame.frameIndex);
       expect(bonus.type()).toEqual("strike");
     });
   });

@@ -44,5 +44,5 @@ ScoreCalculator.prototype._getFrameForBonus = function(bonus) {
 };
 
 ScoreCalculator.prototype._getDoubleStrikeBonus = function(frameIndex) {
-  return this.frames[frameIndex].getFirstRoll() + this.frames[frameIndex - 1].getFirstRoll();
+  return this.frames[frameIndex].getFirstRoll() + this.frames[frameIndex + 1].getFirstRoll();
 };

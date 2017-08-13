@@ -120,4 +120,16 @@ describe("BowlingScore", function() {
             expect(bowlingscore.showFrameScore(1)).toEqual(15);
         });
     });
+
+    describe("#tenthFrame", function() {
+        it("it allows for 2 extra bowls if a strike is bowled on the 10th frame", function() {
+          for (var i = 0; i < 18; i++) {
+              bowlingscore.enterBowlingScore(2);
+          }
+          bowlingscore.enterBowlingScore(10);
+          expect(function() { bowlingscore.enterBowlingScore(10); }).not.toThrow("End of Game!");
+          bowlingscore.enterBowlingScore(10);
+          expect(function() { bowlingscore.enterBowlingScore(10); }).toThrow("End of Game!");
+        });
+    });
 });

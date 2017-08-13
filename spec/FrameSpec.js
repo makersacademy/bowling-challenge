@@ -16,15 +16,20 @@ describe ('Frame', function() {
 
 	describe('the frame score', function() {
 
-
-
-		it('should increase by the roll score', function () {
+		beforeEach(function() {
 			frame.setFirstRoll(4);
 			frame.setSecondRoll(3);
-			console.log(this.firstRoll)
-			console.log(this.secondRoll)
+		});
+
+		it('should increase by the roll score', function() {
 			expect(frame.getFrameScore()).toEqual(7);
 		});
+
+		it('should increase with the bonus scores', function(){
+			frame.addBonus(5)
+			expect(frame.getFrameScore()).toEqual(12);
+		});
+		
 	});
 
 });

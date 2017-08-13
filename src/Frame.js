@@ -26,3 +26,7 @@ Frame.prototype.setSecondRoll = function(score) {
 Frame.prototype.calculateFrameScore = function(score) {
 	this.frameScore = this.rolls.reduce(function (a, b) { return a + b; }, 0);
 };
+
+Frame.prototype.addBonus = function(bonus) {
+	this.rolls.push(bonus);
+};

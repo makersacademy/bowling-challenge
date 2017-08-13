@@ -10,6 +10,8 @@ function BowlingScore() {
   this.bowlCount = this.DEFAULT_BOWL_COUNT;
   this.DEFAULT_END_OF_GAME_COUNT = 20;
   this.endOfGameCount = this.DEFAULT_END_OF_GAME_COUNT;
+  this.DEFAULT_FRAME_COUNT = 0;
+  this.frameCount = this.DEFAULT_FRAME_COUNT;
 }
 
 BowlingScore.prototype.enterBowlingScore = function (score) {
@@ -24,20 +26,23 @@ BowlingScore.prototype.enterBowlingScore = function (score) {
     this.bowlScore.push(score)
     this.bowlScore.push(0)
     this._incrementBowlCount();
+    this._incrementBowlCount();
+    this._incrementFrameCount();
     this._updateFrameScore();
     this._updateTotalScore(this.frameScore);
-    this._incrementBowlCount();
     this._strike();
   } else {
     if ((this.bowlScore[this.bowlCount - 1] + score) > this.maxScore) throw "Maximum total score is 10"
     this.bowlScore.push(score)
+    this._incrementBowlCount();
+    this._incrementFrameCount();
     this._updateFrameScore();
     this._updateTotalScore(this.frameScore);
     this._changeFirstBowl();
-    this._incrementBowlCount();
     this._strike();
   }
 };
+
 
 BowlingScore.prototype.showTotalScore = function () {
   return this.totalScore;
@@ -67,20 +72,24 @@ BowlingScore.prototype._incrementBowlCount = function () {
   this.bowlCount++;
 };
 
+BowlingScore.prototype._incrementFrameCount = function () {
+  this.frameCount++;
+};
+
 BowlingScore.prototype._updateFrameScore = function () {
-  this.frameScore.push(this.bowlScore[this.bowlCount - 1] + this.bowlScore[this.bowlCount]);
+  this.frameScore.push(this.bowlScore[this.bowlCount - 2] + this.bowlScore[this.bowlCount - 1]);
 };
 
 BowlingScore.prototype._strike = function () {
-  if (this.bowlCount > 2 && this.bowlCount < 18) {
+  if (this.frameCount > 1 && this.frameCount < 10) {
     if (this.bowlScore[this.bowlCount - 4] === 10) {
-      this.frameScore[this.bowlCount - 4] += (this.frameScore[this.bowlCount - 3])
+      this.frameScore[this.frameCount - 2] += (this.frameScore[this.frameCount - 1]);
       this._updateTotalScore(this.frameScore);
     }
   }
-  if (this.bowlCount > 4 && this.bowlCount < 18) {
-    if (this.bowlScore[this.bowlCount - 6] === 10 && this.bowlScore[this.bowlCount - 4] == 10) {
-      this.frameScore[this.bowlCount - 6] += (this.frameScore[this.bowlCount - 5])
+  if (this.frameCount > 2 && this.frameCount < 10) {
+    if (this.bowlScore[this.bowlCount - 6] === 10 && this.bowlScore[this.bowlCount - 4] === 10) {
+      this.frameScore[this.frameCount - 3] += (this.bowlScore[this.bowlCount - 2]);
       this._updateTotalScore(this.frameScore);
     }
   }

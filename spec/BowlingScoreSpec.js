@@ -95,11 +95,19 @@ describe("BowlingScore", function() {
             expect(bowlingscore.showTotalScore()).toEqual(22);
         });
 
-        it("if the score of the first bowl of a frame is 10 AND the follwoing 2 bowls are also a strikes, the next 2 bowl scores will be added to the total score of the frame where the strike occured", function() {
+        it("if the score of the first bowl of a frame is 10 AND the follwoing 2 bowls are also a strikes, 2 bowl scores will be added to the total score of the frame where the strike occured", function() {
             bowlingscore.enterBowlingScore(10);
             bowlingscore.enterBowlingScore(10);
             bowlingscore.enterBowlingScore(10);
             expect(bowlingscore.showFrameScore(1)).toEqual(30);
+        });
+
+        it("if the score of the first bowl of a frame is 10, the follwoing bowl is also a strike, but the next bowl is NOT a strike, 2 bowl scores will be added to the total score of the frame where the strike occured", function() {
+            bowlingscore.enterBowlingScore(10);
+            bowlingscore.enterBowlingScore(10);
+            bowlingscore.enterBowlingScore(5);
+            bowlingscore.enterBowlingScore(3);
+            expect(bowlingscore.showFrameScore(1)).toEqual(25);
         });
     });
 });

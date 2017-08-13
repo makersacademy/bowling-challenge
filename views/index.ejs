@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/head.ejs %>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1><%= title %></h1>
+      <% include partials/game-status.ejs %>
+      <% include partials/score-buttons.ejs %>
+      <% include partials/frames-table.ejs %>
+      <% include partials/reset-button.ejs %>
+      <% include partials/modal.ejs %>
+      <% include partials/footer.ejs %>
+    </div>
+  </body>
+</html>

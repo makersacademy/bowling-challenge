@@ -49,19 +49,9 @@ BowlingScorecard.prototype.isBonusRoll = function() {
   return this.frameNumber === 10 && this.frame().isComplete();
 };
 
-BowlingScorecard.prototype.previousFrame = function() {
-  return this._frames[this.frameNumber() -2];
-};
-
-BowlingScorecard.prototype.secondPreviousFrame = function() {
-  return this._frames[this.frameNumber() -3];
-};
-
 BowlingScorecard.prototype.checkBonus = function(score) {
-  var i;
-  if (this.frameNumber() === 1) return;
-  else if (this.frameNumber() === 2) i = 0;
-  else i = this.frameNumber() - 3;
+  var i = this.frameNumber() - 3;
+  if (i<0) i=0;
   for (i; i < this.frameNumber()-1; i++) {
     this._frames[i].addBonus(score);
   }

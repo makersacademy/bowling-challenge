@@ -37,8 +37,6 @@ Frame.prototype.addBonus = function (score) {
     this.bonus += score;
     this.bonusRolls -= 1;
   }
-  //this.bonus += score;
-  //if (this.bonus > 20) this.bonus = 20;
 };
 
 Frame.prototype.score = function (score) {

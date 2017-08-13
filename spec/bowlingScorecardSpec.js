@@ -4,6 +4,14 @@ describe ("BowlingScorecard", function(){
     bowlingScorecard = new BowlingScorecard();
   });
 
+  previousFrame = function() {
+    return bowlingScorecard._frames[bowlingScorecard._frames.length-2];
+  };
+
+  secondPreviousFrame = function() {
+    return bowlingScorecard._frames[bowlingScorecard._frames.length-3];
+  };
+
   describe('#score', function(){
     it('returns score', function(){
       bowlingScorecard.addScore(5);
@@ -41,24 +49,24 @@ describe ("BowlingScorecard", function(){
         expect(bowlingScorecard.frameNumber()).toEqual(2);
       });
       it('should complete the frame', function(){
-        expect(bowlingScorecard.previousFrame().isComplete()).toBeTruthy();
+        expect(previousFrame().isComplete()).toBeTruthy();
       });
       it('should store the total of two rolls', function(){
-        expect(bowlingScorecard.previousFrame().score()).toEqual(10);
+        expect(previousFrame().score()).toEqual(10);
       });
     });
     it('should add a bonus of next roll score to a frame that is a spare', function(){
       bowlingScorecard.addScore(5);
       bowlingScorecard.addScore(5);
       bowlingScorecard.addScore(5);
-      expect(bowlingScorecard.previousFrame().score()).toEqual(15);
+      expect(previousFrame().score()).toEqual(15);
     });
     it('should add a bonus of next two roll scores to a frame that is a strike', function(){
       bowlingScorecard.addScore(10);
-      expect(bowlingScorecard.previousFrame().isStrike()).toBeTruthy();
+      expect(previousFrame().isStrike()).toBeTruthy();
       bowlingScorecard.addScore(4);
       bowlingScorecard.addScore(4);
-      expect(bowlingScorecard.secondPreviousFrame().score()).toEqual(18);
+      expect(secondPreviousFrame().score()).toEqual(18);
     });
   });
 

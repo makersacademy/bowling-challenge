@@ -25,11 +25,25 @@ describe ('Frame', function() {
 			expect(frame.getFrameScore()).toEqual(7);
 		});
 
-		it('should increase with the bonus scores', function(){
+		it('should increase with the bonus scores', function() {
 			frame.addBonus(5)
 			expect(frame.getFrameScore()).toEqual(12);
 		});
-		
+
+	});
+
+	describe('special rounds', function() {
+		it('identifies a strike', function() {
+			frame.setFirstRoll(10);
+			expect(frame.strikeScored()).toEqual(true);
+		});
+
+		it('identifies a spare', function() {
+			frame.setFirstRoll(5);
+			frame.setSecondRoll(5);
+			frame.calculateFrameScore();
+			expect(frame.spareScored()).toEqual(true);
+		});
 	});
 
 });

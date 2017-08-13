@@ -6,6 +6,8 @@ function Frame () {
 	this.rolls = [];
 	this.firstRoll = 0;
 	this.secondRoll = 0;
+	this.strike = false;
+	this.spare = false;
 };
 
 Frame.prototype.getFrameScore = function() {
@@ -29,4 +31,30 @@ Frame.prototype.calculateFrameScore = function(score) {
 
 Frame.prototype.addBonus = function(bonus) {
 	this.rolls.push(bonus);
+};
+
+Frame.prototype.strikeScored = function() {
+	this.checkStrike();
+	return this.strike;
+};
+
+Frame.prototype.spareScored = function() {
+	this.checkSpare();
+	return this.spare;
+};
+
+Frame.prototype.checkStrike = function() {
+	if (this.rolls[0] === 10) {
+		this.strike = true;
+		this.setSecondRoll(0);
+	};
+	if (this.rolls[1] === 10) {
+		this.strike = true;
+	};
+};
+
+Frame.prototype.checkSpare = function() {
+	if (this.firstRoll + this.secondRoll === 10) {
+		this.spare = true
+	};
 };

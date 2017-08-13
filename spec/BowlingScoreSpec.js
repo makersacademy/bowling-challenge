@@ -74,40 +74,50 @@ describe("BowlingScore", function() {
     });
 
     describe("#strike", function() {
-        it("if the score of the first bowl of a frame is 10, the next score will be entered into the first bowl of the next frame", function() {
+        it("if a strike, the next score will be entered into the first bowl of the next frame", function() {
             bowlingscore.enterBowlingScore(10);
             expect(bowlingscore.isThisFirstBowl()).toEqual(true);
             bowlingscore.enterBowlingScore(3);
             expect(bowlingscore.showBowlScore(3)).toEqual(3);
         });
 
-        it("if the score of the first bowl of a frame is 10, the next 2 bowl scores will be added to the total score of the frame where the strike occured", function() {
+        it("if a strike, the next 2 bowl scores will be added to the total score of the frame where the strike occured", function() {
             bowlingscore.enterBowlingScore(10);
             bowlingscore.enterBowlingScore(3);
             bowlingscore.enterBowlingScore(3);
             expect(bowlingscore.showFrameScore(1)).toEqual(16);
         });
 
-        it("if the score of the first bowl of a frame is 10, the next 2 bowl scores will be added to the totalscore", function() {
+        it("if a strike, the next 2 bowl scores will be added to the totalscore", function() {
             bowlingscore.enterBowlingScore(10);
             bowlingscore.enterBowlingScore(3);
             bowlingscore.enterBowlingScore(3);
             expect(bowlingscore.showTotalScore()).toEqual(22);
         });
 
-        it("if the score of the first bowl of a frame is 10 AND the follwoing 2 bowls are also a strikes, 2 bowl scores will be added to the total score of the frame where the strike occured", function() {
+        it("if a strike AND the follwoing 2 bowls are also a strikes, 2 bowl scores will be added to the total score of the frame where the strike occured", function() {
             bowlingscore.enterBowlingScore(10);
             bowlingscore.enterBowlingScore(10);
             bowlingscore.enterBowlingScore(10);
             expect(bowlingscore.showFrameScore(1)).toEqual(30);
         });
 
-        it("if the score of the first bowl of a frame is 10, the follwoing bowl is also a strike, but the next bowl is NOT a strike, 2 bowl scores will be added to the total score of the frame where the strike occured", function() {
+        it("if a strike, the following bowl is also a strike, but the next bowl is NOT a strike, 2 bowl scores will be added to the total score of the frame where the strike occured", function() {
             bowlingscore.enterBowlingScore(10);
             bowlingscore.enterBowlingScore(10);
             bowlingscore.enterBowlingScore(5);
             bowlingscore.enterBowlingScore(3);
             expect(bowlingscore.showFrameScore(1)).toEqual(25);
+        });
+    });
+
+    describe("#spare", function() {
+        it("if a spare, the following bowl score will be added to the total score of the frame where the spare occured", function() {
+            bowlingscore.enterBowlingScore(5);
+            bowlingscore.enterBowlingScore(5);
+            bowlingscore.enterBowlingScore(5);
+            bowlingscore.enterBowlingScore(3);
+            expect(bowlingscore.showFrameScore(1)).toEqual(15);
         });
     });
 });

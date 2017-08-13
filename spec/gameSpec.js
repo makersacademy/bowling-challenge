@@ -86,11 +86,11 @@ describe('Game', function() {
           game.receiveRoll(8);
         });
 
-        it('does not update the frame\'s score as of now', function() {
+        it('does not update the frame\'s score', function() {
           expect(frame2.getScore()).toEqual(0);
         });
 
-        it('does not update the games\'s score as of now', function() {
+        it('does not update the games\'s score', function() {
           expect(game.getScore()).toEqual(9);
         });
       });
@@ -103,11 +103,11 @@ describe('Game', function() {
           game.receiveRoll(10);
         });
 
-        it('does not update the frame\'s score as of now', function() {
+        it('does not update the frame\'s score', function() {
           expect(frame2.getScore()).toEqual(0);
         });
 
-        it('does not update the games\'s score as of now', function() {
+        it('does not update the games\'s score', function() {
           expect(game.getScore()).toEqual(9);
         });
       });
@@ -183,7 +183,7 @@ describe('Game', function() {
           expect(frame2.getScore()).toEqual(0);
         });
 
-        it('does not update the games\'s score', function() {
+        it('updates the games\'s score', function() {
           expect(game.getScore()).toEqual(12);
         });
       });
@@ -204,7 +204,7 @@ describe('Game', function() {
           expect(frame2.getScore()).toEqual(0);
         });
 
-        it('does not update the games\'s score', function() {
+        it('updates the games\'s score', function() {
           expect(game.getScore()).toEqual(20);
         });
       });
@@ -274,7 +274,7 @@ describe('Game', function() {
           expect(frame2.getScore()).toEqual(0);
         });
 
-        it('does not update the games\'s score', function() {
+        it('updates the games\'s score', function() {
           expect(game.getScore()).toEqual(20);
         });
       });

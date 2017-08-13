@@ -13,16 +13,16 @@
       <h3>
         Please select the number of pins knocked down
         <br><br>
-        <input class="buttons" id="pins-00" type="button" value="0"/>
-        <input class="buttons" id="pins-01" type="button" value="1"/>
-        <input class="buttons" id="pins-02" type="button" value="2"/>
-        <input class="buttons" id="pins-03" type="button" value="3"/>
-        <input class="buttons" id="pins-04" type="button" value="4"/>
-        <input class="buttons" id="pins-05" type="button" value="5"/>
-        <input class="buttons" id="pins-06" type="button" value="6"/>
-        <input class="buttons" id="pins-07" type="button" value="7"/>
-        <input class="buttons" id="pins-08" type="button" value="8"/>
-        <input class="buttons" id="pins-09" type="button" value="9"/>
+        <input class="buttons" id="pins-0" type="button" value="0"/>
+        <input class="buttons" id="pins-1" type="button" value="1"/>
+        <input class="buttons" id="pins-2" type="button" value="2"/>
+        <input class="buttons" id="pins-3" type="button" value="3"/>
+        <input class="buttons" id="pins-4" type="button" value="4"/>
+        <input class="buttons" id="pins-5" type="button" value="5"/>
+        <input class="buttons" id="pins-6" type="button" value="6"/>
+        <input class="buttons" id="pins-7" type="button" value="7"/>
+        <input class="buttons" id="pins-8" type="button" value="8"/>
+        <input class="buttons" id="pins-9" type="button" value="9"/>
         <input class="buttons" id="pins-10" type="button" value="10"/>
       </h3>
     </section>
@@ -94,7 +94,6 @@
 
         function knockedPins() {
           game.receiveRoll(Number($(this).val()));
-          // Disable buttons based on firstRoll
           updateFrames();
         };
 
@@ -102,27 +101,50 @@
           var frames = game.getFrames();
           var n = game.getCurrentFrameNumber();
           for (var i = 0; i <= n; i++) {
-            if (i < n || ( i == n && !game.isFirstRoll())) {
-              $('#frame-' + String(i+1) + '-roll-1').text(frames[i].getFirstRoll());
-            }
+            if (i < n || ( i == n && !game.isFirstRoll())) updateFirstRoll(i, frames);
             if (i < n) {
-              $('#frame-' + String(i+1) + '-roll-2').text(frames[i].getSecondRoll());
-              $('#frame-total-' + String(i+1)).text(frames[i].getScore());
+              updateSecondRoll(i, frames);
+              updateFrameScore(i, frames);
             }
-          };
+          }
+          updateGameScore();
+        };
+
+        function updateFirstRoll(i, frames) {
+          var roll;
+          if (frames[i].isAStrike()) roll = 'X';
+          else roll = frames[i].getFirstRoll();
+          $('#frame-' + String(i+1) + '-roll-1').text(roll);
+        };
+
+        function updateSecondRoll(i, frames) {
+          var roll;
+          if (frames[i].isASpare()) roll = '/';
+          else roll = frames[i].getSecondRoll();
+          $('#frame-' + String(i+1) + '-roll-2').text(roll);
+        };
+
+        function updateFrameScore(i, frames) {
+          var frameScore = frames[i].getScore();
+          if (frameScore == 0) frameScore = ' ';
+          $('#frame-total-' + String(i+1)).text(frameScore);
+        };
+
+        function updateGameScore() {
           $('#game-total').text(game.getScore());
         };
 
-        document.getElementById("pins-00").onclick = knockedPins;
-        document.getElementById("pins-01").onclick = knockedPins;
-        document.getElementById("pins-02").onclick = knockedPins;
-        document.getElementById("pins-03").onclick = knockedPins;
-        document.getElementById("pins-04").onclick = knockedPins;
-        document.getElementById("pins-05").onclick = knockedPins;
-        document.getElementById("pins-06").onclick = knockedPins;
-        document.getElementById("pins-07").onclick = knockedPins;
-        document.getElementById("pins-08").onclick = knockedPins;
-        document.getElementById("pins-09").onclick = knockedPins;
+        // Check how to DRY the following onclicks
+        document.getElementById("pins-0").onclick = knockedPins;
+        document.getElementById("pins-1").onclick = knockedPins;
+        document.getElementById("pins-2").onclick = knockedPins;
+        document.getElementById("pins-3").onclick = knockedPins;
+        document.getElementById("pins-4").onclick = knockedPins;
+        document.getElementById("pins-5").onclick = knockedPins;
+        document.getElementById("pins-6").onclick = knockedPins;
+        document.getElementById("pins-7").onclick = knockedPins;
+        document.getElementById("pins-8").onclick = knockedPins;
+        document.getElementById("pins-9").onclick = knockedPins;
         document.getElementById("pins-10").onclick = knockedPins;
 
       });

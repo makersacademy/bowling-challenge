@@ -3,10 +3,88 @@
   <head>
     <meta charset="utf-8">
     <script src="jquery-3.2.1.js"></script>
+    <link rel="stylesheet" href="/css/bowling.css">
     <script type="text/javascript" src="src/BowlingScore.js" ></script>
-    <title></title>
+    <title>Bowling</title>
   </head>
   <body>
-    Hello World!
+    <header>
+      <h1 style="text-color: white">Bowling Score Board</h1>
+      <br/>
+    </header>
+    <section>
+      <div>
+        <table class="table" style="width:80%; margin:auto">
+          <body>
+            <section>
+              <div class="buttons" style="width:80%; margin:auto">
+                <button id="button 0" style="background-color: #ff9900">0</button>
+                <button id="button 1" style="background-color: #ff9900">1</button>
+                <button id="button 2" style="background-color: #ff9900">2</button>
+                <button id="button 3" style="background-color: #ff9900">3</button>
+                <button id="button 4" style="background-color: #ff9900">4</button>
+                <button id="button 5" style="background-color: #ff9900">5</button>
+                <button id="button 6" style="background-color: #ff9900">6</button>
+                <button id="button 7" style="background-color: #ff9900">7</button>
+                <button id="button 8" style="background-color: #ff9900">8</button>
+                <button id="button 9" style="background-color: #ff9900">9</button>
+                <button id="button 10" style="background-color: #ff9900">10</button>
+              </div>
+            </section>
+            <br>
+            <tr style="background-color: white; font-weight: bold">
+              <td colspan="2">Frame 1</td>
+              <td colspan="2">Frame 2</td>
+              <td colspan="2">Frame 3</td>
+              <td colspan="2">Frame 4</td>
+              <td colspan="2">Frame 5</td>
+              <td colspan="2">Frame 6</td>
+              <td colspan="2">Frame 7</td>
+              <td colspan="2">Frame 8</td>
+              <td colspan="2">Frame 9</td>
+              <td colspan="2">Frame 10</td>
+              <td colspan="2">Total</td>
+            </tr>
+            <tr style="background-color: white">
+              <td id="bowl 1">0</td>
+              <td id="bowl 2">0</td>
+              <td id="bowl 3">0</td>
+              <td id="bowl 4">0</td>
+              <td id="bowl 5">0</td>
+              <td id="bowl 6">0</td>
+              <td id="bowl 7">0</td>
+              <td id="bowl 8">0</td>
+              <td id="bowl 9">0</td>
+              <td id="bowl 10">0</td>
+              <td id="bowl 11">0</td>
+              <td id="bowl 12">0</td>
+              <td id="bowl 13">0</td>
+              <td id="bowl 14">0</td>
+              <td id="bowl 15">0</td>
+              <td id="bowl 16">0</td>
+              <td id="bowl 17">0</td>
+              <td id="bowl 18">0</td>
+              <td id="bowl 19">0</td>
+              <td id="bowl 20">0</td>
+              <td id="total"colspan="2" rowspan="2">0</td>
+            </tr>
+            <tr style="background-color: white">
+              <td id="frame 1" colspan="2">0</td>
+              <td id="frame 2" colspan="2">0</td>
+              <td id="frame 3" colspan="2">0</td>
+              <td id="frame 4" colspan="2">0</td>
+              <td id="frame 5" colspan="2">0</td>
+              <td id="frame 6" colspan="2">0</td>
+              <td id="frame 7" colspan="2">0</td>
+              <td id="frame 8" colspan="2">0</td>
+              <td id="frame 9" colspan="2">0</td>
+              <td id="frame 10" colspan="2">0</td>
+            </tr>
+          </body>
+        </table>
+    </section>
+    <footer>
+      <h3>Author: Coasters</h3>
+    </footer>
   </body>
 </html>

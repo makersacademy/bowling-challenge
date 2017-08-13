@@ -49,13 +49,6 @@ Bowling.prototype.enterBowlingScore = function (score) {
     this._spare();
     this._tenthFrame();
   }
-<<<<<<< HEAD:src/BowlingScore.js
-  console.log(this.bowlScore);
-  console.log(this.frameScore);
-  console.log(this.totalScore);
-  console.log(this.bowlCount);
-=======
->>>>>>> update:public/src/BowlingScore.js
 };
 
 
@@ -95,11 +88,7 @@ Bowling.prototype._updateFrameScore = function () {
   this.frameScore.push(this.bowlScore[this.bowlCount - 2] + this.bowlScore[this.bowlCount - 1]);
 };
 
-<<<<<<< HEAD:src/BowlingScore.js
-BowlingScore.prototype._strike = function () {
-=======
 Bowling.prototype._strike = function () {
->>>>>>> update:public/src/BowlingScore.js
   if (this.frameCount > 1 && this.frameCount < 11) {
     if (this.bowlScore[this.bowlCount - 4] === 10) {
       this.frameScore[this.frameCount - 2] += (this.frameScore[this.frameCount - 1]);
@@ -114,11 +103,7 @@ Bowling.prototype._strike = function () {
   }
 };
 
-<<<<<<< HEAD:src/BowlingScore.js
-BowlingScore.prototype._spare = function () {
-=======
 Bowling.prototype._spare = function () {
->>>>>>> update:public/src/BowlingScore.js
     if (this.frameCount > 1 && this.frameCount < 11) {
       if ((this.bowlScore[this.bowlCount - 4] + this.bowlScore[this.bowlCount - 3] === 10) && this.bowlScore[this.bowlCount - 4] != 10) {
       this.frameScore[this.frameCount - 2] += (this.bowlScore[this.bowlCount - 2]);

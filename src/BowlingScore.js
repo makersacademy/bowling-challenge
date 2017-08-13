@@ -49,6 +49,10 @@ BowlingScore.prototype.enterBowlingScore = function (score) {
     this._spare();
     this._tenthFrame();
   }
+  console.log(this.bowlScore);
+  console.log(this.frameScore);
+  console.log(this.totalScore);
+  console.log(this.bowlCount);
 };
 
 
@@ -95,7 +99,7 @@ BowlingScore.prototype._strike = function () {
       this._updateTotalScore(this.frameScore);
     }
   }
-  if (this.frameCount > 2 && this.frameCount < 11) {
+  if (this.frameCount > 2 && this.frameCount < 12) {
     if (this.bowlScore[this.bowlCount - 6] === 10 && this.bowlScore[this.bowlCount - 4] === 10) {
       this.frameScore[this.frameCount - 3] += (this.bowlScore[this.bowlCount - 2]);
       this.totalScore += this.bowlScore[this.bowlCount - 2];
@@ -122,18 +126,6 @@ BowlingScore.prototype._tenthFrame = function () {
     }
   }
 };
-
-// Game.prototype.tenthFrame = function () {
-//   if (game.showFrameCount() == 9) {
-//     if (this.roll[0] === 10) {
-//       this.endOfGameCount = 11;
-//     }
-//     if ((this.roll[0] + this.roll[1] === 10) && this.roll[0] != 10) {
-//       this.spareEndOfGame = true;
-//       this.endOfGameCount = 10;
-//     }
-//   }
-// };
 
 BowlingScore.prototype._isItEndOfGame = function () {
   return this.bowlCount === this.endOfGameCount;

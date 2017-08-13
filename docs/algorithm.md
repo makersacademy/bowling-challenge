@@ -18,5 +18,6 @@ Algorithm for calculateScore function of Game class
         * update running total
       2. If current frame is Open
         * calculate score on current frame with current value of running total and bonus = 0
+        * update running total
 
 Note: Three strikes yet to be factored in

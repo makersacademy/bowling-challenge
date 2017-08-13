@@ -25,6 +25,22 @@ describe('Game', function() {
     it('has a score of 0', function() {
       expect(game.getScore()).toEqual(0);
     });
+
+    it('is first roll is true', function() {
+      expect(game.isFirstRoll()).toBe(true);
+    });
+  });
+
+  describe('is first roll', function() {
+    it('first roll has knocked down less than ten pins', function() {
+      game.receiveRoll(7);
+      expect(game.isFirstRoll()).toBe(false);
+    });
+
+    it('first roll has knocked down ten pins', function() {
+      game.receiveRoll(10);
+      expect(game.isFirstRoll()).toBe(true);
+    });
   });
 
   describe('receive roll', function() {

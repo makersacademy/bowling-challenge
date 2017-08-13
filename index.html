@@ -39,41 +39,43 @@
           <th colspan='2'>8</th>
           <th colspan='2'>9</th>
           <th colspan='3'>10</th>
+          <th>Total</th>
         </tr>
         <tr>
-          <td id='frame-01-roll-01'>&nbsp;</td>
-          <td id='frame-01-roll-02'>&nbsp;</td>
-          <td id='frame-02-roll-01'>&nbsp;</td>
-          <td id='frame-02-roll-02'>&nbsp;</td>
-          <td id='frame-03-roll-01'>&nbsp;</td>
-          <td id='frame-03-roll-02'>&nbsp;</td>
-          <td id='frame-04-roll-01'>&nbsp;</td>
-          <td id='frame-04-roll-02'>&nbsp;</td>
-          <td id='frame-05-roll-01'>&nbsp;</td>
-          <td id='frame-05-roll-02'>&nbsp;</td>
-          <td id='frame-06-roll-01'>&nbsp;</td>
-          <td id='frame-06-roll-02'>&nbsp;</td>
-          <td id='frame-07-roll-01'>&nbsp;</td>
-          <td id='frame-07-roll-02'>&nbsp;</td>
-          <td id='frame-08-roll-01'>&nbsp;</td>
-          <td id='frame-08-roll-02'>&nbsp;</td>
-          <td id='frame-09-roll-01'>&nbsp;</td>
-          <td id='frame-09-roll-02'>&nbsp;</td>
-          <td id='frame-10-roll-01'>&nbsp;</td>
-          <td id='frame-10-roll-02'>&nbsp;</td>
-          <td id='frame-10-roll-03'>&nbsp;</td>
+          <td><span id='frame-1-roll-1'>&nbsp;</span></td>
+          <td><span id='frame-1-roll-2'>&nbsp;</span></td>
+          <td><span id='frame-2-roll-1'>&nbsp;</span></td>
+          <td><span id='frame-2-roll-2'>&nbsp;</span></td>
+          <td><span id='frame-3-roll-1'>&nbsp;</span></td>
+          <td><span id='frame-3-roll-2'>&nbsp;</span></td>
+          <td><span id='frame-4-roll-1'>&nbsp;</span></td>
+          <td><span id='frame-4-roll-2'>&nbsp;</span></td>
+          <td><span id='frame-5-roll-1'>&nbsp;</span></td>
+          <td><span id='frame-5-roll-2'>&nbsp;</span></td>
+          <td><span id='frame-6-roll-1'>&nbsp;</span></td>
+          <td><span id='frame-6-roll-2'>&nbsp;</span></td>
+          <td><span id='frame-7-roll-1'>&nbsp;</span></td>
+          <td><span id='frame-7-roll-2'>&nbsp;</span></td>
+          <td><span id='frame-8-roll-1'>&nbsp;</span></td>
+          <td><span id='frame-8-roll-2'>&nbsp;</span></td>
+          <td><span id='frame-9-roll-1'>&nbsp;</span></td>
+          <td><span id='frame-9-roll-2'>&nbsp;</span></td>
+          <td><span id='frame-10-roll-1'>&nbsp;</span></td>
+          <td><span id='frame-10-roll-2'>&nbsp;</span></td>
+          <td><span id='frame-10-roll-3'>&nbsp;</span></td>
+          <td rowspan='2'><span id='game-total'>&nbsp;</span></td>
         </tr>
         <tr>
-          <td colspan='2'>&nbsp;</td>
-          <td colspan='2'>&nbsp;</td>
-          <td colspan='2'>&nbsp;</td>
-          <td colspan='2'>&nbsp;</td>
-          <td colspan='2'>&nbsp;</td>
-          <td colspan='2'>&nbsp;</td>
-          <td colspan='2'>&nbsp;</td>
-          <td colspan='2'>&nbsp;</td>
-          <td colspan='2'>&nbsp;</td>
-          <td colspan='3'>&nbsp;</td>
+          <td colspan='2'><span id='frame-total-1'>&nbsp;</span></td>
+          <td colspan='2'><span id='frame-total-2'>&nbsp;</span></td>
+          <td colspan='2'><span id='frame-total-3'>&nbsp;</span></td>
+          <td colspan='2'><span id='frame-total-4'>&nbsp;</span></td>
+          <td colspan='2'><span id='frame-total-5'>&nbsp;</span></td>
+          <td colspan='2'><span id='frame-total-6'>&nbsp;</span></td>
+          <td colspan='2'><span id='frame-total-7'>&nbsp;</span></td>
+          <td colspan='2'><span id='frame-total-8'>&nbsp;</span></td>
+          <td colspan='2'><span id='frame-total-9'>&nbsp;</span></td>
+          <td colspan='3'><span id='frame-total-10'>&nbsp;</span></td>
         </tr>
       </table>
     </section>
@@ -91,7 +93,24 @@
         var game = new Game;
 
         function knockedPins() {
-          alert('Knocked pins: ' + $(this).val());
+          game.receiveRoll(Number($(this).val()));
+          // Disable buttons based on firstRoll
+          updateFrames();
+        };
+
+        function updateFrames() {
+          var frames = game.getFrames();
+          var n = game.getCurrentFrameNumber();
+          for (var i = 0; i <= n; i++) {
+            if (i < n || ( i == n && !game.isFirstRoll())) {
+              $('#frame-' + String(i+1) + '-roll-1').text(frames[i].getFirstRoll());
+            }
+            if (i < n) {
+              $('#frame-' + String(i+1) + '-roll-2').text(frames[i].getSecondRoll());
+              $('#frame-total-' + String(i+1)).text(frames[i].getScore());
+            }
+          };
+          $('#game-total').text(game.getScore());
         };
 
         document.getElementById("pins-00").onclick = knockedPins;

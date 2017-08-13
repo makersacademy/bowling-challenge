@@ -43,6 +43,10 @@ Game.prototype.getScore = function() {
   return this._runningTotal;
 };
 
+Game.prototype.isFirstRoll = function () {
+  return this._isFirstRoll;
+};
+
 Game.prototype.receiveRoll = function(pins) {
   var frame = this._frames[this._currentFrameNumber];
   this._updateFrame(frame,pins);

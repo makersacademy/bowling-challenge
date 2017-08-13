@@ -32,12 +32,19 @@ table {
   width: 1400px;
   background-color: #fafad2;
 }
-table, th {
+table {
   border: 1px solid black;
   text-align: center;
 }
-td {
-  position: relative;
-  width: auto;
+th {
   border: 1px solid black;
+  text-align: center;
+  width: 50px;
+  padding: none;
+  font-size: 120%
+}
+td {
+  border: 1px solid black;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 120%
 }

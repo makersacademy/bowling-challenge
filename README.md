@@ -16,7 +16,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 - HTML, CSS and Bootstrap for display
 - JavaScript for BowlingScorecard, Frame and Display functions
 - JQuery for interface.js controller.
-- Deployed as a ruby and sinatra app on heroku.
+- Deployed as a node and express app on heroku.
 - Jasmine for test framework
 
 ## Domain Models
@@ -39,9 +39,11 @@ Frame responsibilities: to keep track of the score for the frame and add scores 
 
 Frame responsibilities: to keep track of the score for the frame and add scores and bonus according to bowling logic. It is used by the BowlingScorecard function.
 
-| BowlingScorecard |
-|-|
+| BowlingScorecard | |
+|-| -|
+| Variables: | |
 | _frames | contains the frames in an array |
+| Methods: | |
 | score() | returns a current total score |
 | isGameComplete() | returns true if the game is complete |
 | pinsAvailableToHit() | returns the amount of pins available, used by the interface for displaying score buttons for the current bowl
@@ -62,7 +64,7 @@ Display responsibilities: to return info from the bowlingScorecard instance to p
 
 Interface responsibilities: uses JQuery to load the page info on start up, as well as the methods below...
 
-| interface | Description |
+| Interface | Description |
 |-| |
 | updateDisplay | updates the instructions, score info and frames info on the html page |
 | click on buttons with .score class | passes the score of the buttons clicked to the bowling scorecard and changes the status of score buttons to be available or disabled depending on current pins available to hit |
@@ -73,12 +75,12 @@ Interface responsibilities: uses JQuery to load the page info on start up, as we
 
 Use the app online at [bowling-scorecard-app.herokuapp.com](https://bowling-scorecard-app.herokuapp.com/).
 
-To use locally:
+To use locally, first install npm, then in the terminal:
 ```
 git clone git@github.com:ryandav/bowling-challenge.git
 cd bowling-challenge
 npm install
-DEBUG=myapp:* npm start
+npm start
 ```
 
 To run the tests `open SpecRunner.html`. The using tests are in the `spec` folder and feature tests in the `spec/features` folder.

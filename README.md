@@ -3,7 +3,7 @@ Bowling Challenge
 =================
 
 <p align="center">
-  <img src="./public/bowling2.jpg"/>
+  <img src="./public/images/bowling.jpg"/>
 </p>
 
 #### How to run ####

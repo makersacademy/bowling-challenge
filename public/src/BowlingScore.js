@@ -1,4 +1,4 @@
-function BowlingScore() {
+function Bowling() {
   this.DEFAULT_TOTAL_SCORE = 0;
   this.totalScore = this.DEFAULT_TOTAL_SCORE;
   this.MAX_SCORE = 10;
@@ -14,7 +14,7 @@ function BowlingScore() {
   this.frameCount = this.DEFAULT_FRAME_COUNT;
 }
 
-BowlingScore.prototype.enterBowlingScore = function (score) {
+Bowling.prototype.enterBowlingScore = function (score) {
   if (this.isThisFirstBowl() && score != 10) {
     if (score > this.maxScore) throw "Maximum score is 10"
     if (this._isItEndOfGame()) throw "End of Game!"
@@ -49,50 +49,57 @@ BowlingScore.prototype.enterBowlingScore = function (score) {
     this._spare();
     this._tenthFrame();
   }
+<<<<<<< HEAD:src/BowlingScore.js
   console.log(this.bowlScore);
   console.log(this.frameScore);
   console.log(this.totalScore);
   console.log(this.bowlCount);
+=======
+>>>>>>> update:public/src/BowlingScore.js
 };
 
 
-BowlingScore.prototype.showTotalScore = function () {
+Bowling.prototype.showTotalScore = function () {
   return this.totalScore;
 };
 
-BowlingScore.prototype.isThisFirstBowl = function () {
+Bowling.prototype.isThisFirstBowl = function () {
   return this.isFirstBowl;
 };
 
-BowlingScore.prototype.showBowlScore = function (bowl) {
+Bowling.prototype.showBowlScore = function (bowl) {
   return this.bowlScore[bowl - 1];
 };
 
-BowlingScore.prototype.showFrameScore = function (frame) {
+Bowling.prototype.showFrameScore = function (frame) {
   return this.frameScore[frame - 1]
 };
 
-BowlingScore.prototype._updateTotalScore = function (numbers) {
+Bowling.prototype._updateTotalScore = function (numbers) {
   this.totalScore = numbers.reduce(function(sum, framescore) { return sum + framescore; });
 };
 
-BowlingScore.prototype._changeFirstBowl = function () {
+Bowling.prototype._changeFirstBowl = function () {
   this.isFirstBowl = !this.isFirstBowl;
 };
 
-BowlingScore.prototype._incrementBowlCount = function () {
+Bowling.prototype._incrementBowlCount = function () {
   this.bowlCount++;
 };
 
-BowlingScore.prototype._incrementFrameCount = function () {
+Bowling.prototype._incrementFrameCount = function () {
   this.frameCount++;
 };
 
-BowlingScore.prototype._updateFrameScore = function () {
+Bowling.prototype._updateFrameScore = function () {
   this.frameScore.push(this.bowlScore[this.bowlCount - 2] + this.bowlScore[this.bowlCount - 1]);
 };
 
+<<<<<<< HEAD:src/BowlingScore.js
 BowlingScore.prototype._strike = function () {
+=======
+Bowling.prototype._strike = function () {
+>>>>>>> update:public/src/BowlingScore.js
   if (this.frameCount > 1 && this.frameCount < 11) {
     if (this.bowlScore[this.bowlCount - 4] === 10) {
       this.frameScore[this.frameCount - 2] += (this.frameScore[this.frameCount - 1]);
@@ -107,7 +114,11 @@ BowlingScore.prototype._strike = function () {
   }
 };
 
+<<<<<<< HEAD:src/BowlingScore.js
 BowlingScore.prototype._spare = function () {
+=======
+Bowling.prototype._spare = function () {
+>>>>>>> update:public/src/BowlingScore.js
     if (this.frameCount > 1 && this.frameCount < 11) {
       if ((this.bowlScore[this.bowlCount - 4] + this.bowlScore[this.bowlCount - 3] === 10) && this.bowlScore[this.bowlCount - 4] != 10) {
       this.frameScore[this.frameCount - 2] += (this.bowlScore[this.bowlCount - 2]);
@@ -116,7 +127,7 @@ BowlingScore.prototype._spare = function () {
   }
 };
 
-BowlingScore.prototype._tenthFrame = function () {
+Bowling.prototype._tenthFrame = function () {
   if (this.frameCount === 10) {
     if (this.bowlScore[this.bowlCount - 2] === 10) {
       this.endOfGameCount = 24;
@@ -127,6 +138,6 @@ BowlingScore.prototype._tenthFrame = function () {
   }
 };
 
-BowlingScore.prototype._isItEndOfGame = function () {
+Bowling.prototype._isItEndOfGame = function () {
   return this.bowlCount === this.endOfGameCount;
 };

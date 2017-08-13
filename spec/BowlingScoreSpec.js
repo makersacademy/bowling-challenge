@@ -131,5 +131,15 @@ describe("BowlingScore", function() {
           bowlingscore.enterBowlingScore(10);
           expect(function() { bowlingscore.enterBowlingScore(10); }).toThrow("End of Game!");
         });
+
+        it("it allows for 1 extra bowl if a spare is bowled on the 10th frame", function() {
+          for (var i = 0; i < 18; i++) {
+              bowlingscore.enterBowlingScore(2);
+          }
+          bowlingscore.enterBowlingScore(5);
+          bowlingscore.enterBowlingScore(5);
+          expect(function() { bowlingscore.enterBowlingScore(5); }).not.toThrow("End of Game!");
+          expect(function() { bowlingscore.enterBowlingScore(5); }).toThrow("End of Game!");
+        });
     });
 });

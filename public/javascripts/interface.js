@@ -3,20 +3,20 @@ $(document).ready(function(){
   var display = new Display();
   updateDisplay();
 
-  function updateDisplay() {
+ function updateDisplay() {
     $('.display').text(display.gameInstructions(bowlingScorecard));
     $('.current-score').text(display.scoreInfo(bowlingScorecard));
     $('.frames').html(display.framesToHTMLTable(bowlingScorecard._frames));
  }
 
  $(".score").on('click', function() {
-   var i = 0;
-   var score = parseInt(this.innerHTML);
-   bowlingScorecard.addScore(score);
-   if (bowlingScorecard.isFirstBowl()) for (i = 0; i<= 10; i++) $(".score" + i).show();
-   else for (i = 11 - score; i<= 10; i++) $(".score" + i).hide();
-   if (bowlingScorecard.isBonusRoll()) for (i = 0; i<= 10; i++) $(".score" + i).show();
-   if (bowlingScorecard.isGameComplete()) for (i = 0; i<= 10; i++) $(".score" + i).hide();
+   bowlingScorecard.addScore(parseInt(this.innerHTML));
+   for (var i = 0; i<= 10; i++) {
+      if (i > bowlingScorecard.pinsAvailableToHit()) {
+        $(".score" + i).prop("disabled", true).css('opacity',0.5);
+      }
+      else $(".score" + i).prop("disabled", false).css('opacity',1.0);
+   }
    updateDisplay();
  });
 

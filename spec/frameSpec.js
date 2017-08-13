@@ -6,25 +6,25 @@ describe ("Frame", function(){
 
   it("should add a score", function(){
     frame.addScore(5);
-    expect(frame.totalScore).toEqual(5);
+    expect(frame.score()).toEqual(5);
   });
 
   it("should two scores that total less than 10", function(){
     frame.addScore(5);
     frame.addScore(4);
-    expect(frame.totalScore).toEqual(9);
+    expect(frame.score()).toEqual(9);
   });
 
   it("should be a strike if first score is 10", function() {
     frame.addScore(10);
-    expect(frame.totalScore).toEqual(10);
+    expect(frame.score()).toEqual(10);
     expect(frame.isStrike()).toBeTruthy();
   });
 
   it("should be a spare if two scores total 10", function() {
     frame.addScore(5);
     frame.addScore(5);
-    expect(frame.totalScore).toEqual(10);
+    expect(frame.score()).toEqual(10);
     expect(frame.isSpare()).toBeTruthy();
   });
 

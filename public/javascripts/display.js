@@ -10,7 +10,7 @@ Display.prototype.gameInstructions = function(bowlingScorecard) {
 Display.prototype.scoreInfo = function(bowlingScorecard) {
   string = "";
   string = "Frame " + bowlingScorecard.frameNumber;
-  if (bowlingScorecard.frameNumber === 10 && bowlingScorecard.frame().totalScore >= 10) {
+  if (bowlingScorecard.frameNumber === 10 && bowlingScorecard.frame().score() >= 10) {
     string += ", Bonus Roll";
   }
   else {
@@ -34,7 +34,7 @@ Display.prototype.framesToHTMLTable = function(frames) {
      string += "<td>" + (frame.score1 != null ? frame.score1 : "-") + "</td>";
      string += "<td>" + (frame.score2 != null ? frame.score2 : "-") + "</td>";
      string += "<td>" + (frame.bonus != null ? frame.bonus : "-") + "</td>";
-     string += "<td>" + frame.totalScore + "</td>";
+     string += "<td>" + frame.score() + "</td>";
      string += "</tr>";
    }
    string += "</tbody></table>";

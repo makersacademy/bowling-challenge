@@ -13,14 +13,24 @@ describe ("BowlingScorecard", function(){
 
   describe('frameNumber', function(){
     it('returns 1 for first frame', function(){
-      expect(bowlingScorecard.frameNumber).toEqual(1);
+      expect(bowlingScorecard.frameNumber()).toEqual(1);
+    });
+  });
+
+  describe('#pinsAvailableToHit', function(){
+    it('returns 10 at start of frame', function(){
+      expect(bowlingScorecard.pinsAvailableToHit()).toEqual(10);
+    });
+    it('returns 5 if 5 pins hit on first bowl', function(){
+      bowlingScorecard.addScore(5);
+      expect(bowlingScorecard.pinsAvailableToHit()).toEqual(5);
     });
   });
 
   describe('#addScore', function() {
     it('should add a score to a frame', function(){
       bowlingScorecard.addScore(5);
-      expect(bowlingScorecard.frame().totalScore).toEqual(5);
+      expect(bowlingScorecard.frame().score()).toEqual(5);
     });
     describe('add two scores to a frame', function(){
       beforeEach(function(){
@@ -28,27 +38,27 @@ describe ("BowlingScorecard", function(){
         bowlingScorecard.addScore(5);
       });
       it('should create a new frame', function(){
-        expect(bowlingScorecard.frameNumber).toEqual(2);
+        expect(bowlingScorecard.frameNumber()).toEqual(2);
       });
       it('should complete the frame', function(){
         expect(bowlingScorecard.previousFrame().isComplete()).toBeTruthy();
       });
       it('should store the total of two rolls', function(){
-        expect(bowlingScorecard.previousFrame().totalScore).toEqual(10);
+        expect(bowlingScorecard.previousFrame().score()).toEqual(10);
       });
     });
     it('should add a bonus of next roll score to a frame that is a spare', function(){
       bowlingScorecard.addScore(5);
       bowlingScorecard.addScore(5);
       bowlingScorecard.addScore(5);
-      expect(bowlingScorecard.previousFrame().totalScore).toEqual(15);
+      expect(bowlingScorecard.previousFrame().score()).toEqual(15);
     });
     it('should add a bonus of next two roll scores to a frame that is a strike', function(){
       bowlingScorecard.addScore(10);
       expect(bowlingScorecard.previousFrame().isStrike()).toBeTruthy();
       bowlingScorecard.addScore(4);
       bowlingScorecard.addScore(4);
-      expect(bowlingScorecard.secondPreviousFrame().totalScore).toEqual(18);
+      expect(bowlingScorecard.secondPreviousFrame().score()).toEqual(18);
     });
   });
 

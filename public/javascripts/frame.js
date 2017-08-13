@@ -2,7 +2,7 @@ function Frame(){
   this.score1 = null;
   this.score2 = null;
   this.bonus = null;
-  this.totalScore = 0;
+  this.bonusRolls = 0;
 }
 
 Frame.prototype.isStrike = function () {
@@ -22,17 +22,25 @@ Frame.prototype.isComplete = function () {
 };
 
 Frame.prototype.addScore = function(score) {
-  if (this.isFirstBowl()) this.score1 = score;
-  else this.score2 = score;
-  this.calculateScore();
+  if (this.isFirstBowl()) {
+    this.score1 = score;
+    if (this.isStrike()) this.bonusRolls = 2;
+  }
+  else {
+    this.score2 = score;
+    if (this.isSpare()) this.bonusRolls = 1;
+  }
 };
 
 Frame.prototype.addBonus = function (score) {
-  this.bonus += score;
-  if (this.bonus > 20) this.bonus = 20;
-  this.calculateScore();
+  if (this.bonusRolls > 0) {
+    this.bonus += score;
+    this.bonusRolls -= 1;
+  }
+  //this.bonus += score;
+  //if (this.bonus > 20) this.bonus = 20;
 };
 
-Frame.prototype.calculateScore = function (score) {
-  this.totalScore = this.score1 + this.score2 + this.bonus;
+Frame.prototype.score = function (score) {
+  return this.score1 + this.score2 + this.bonus;
 };

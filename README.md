@@ -24,7 +24,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 Frame responsibilities: to keep track of the score for the frame and add scores and bonus according to bowling logic. It is used by the BowlingScorecard function.
 
 |Frame | Description |
-|--| |
+|--|--|
 | Variables: |  |
 | score1 | holds score for first bowl |
 | score2 | holds score for second bowl |
@@ -40,7 +40,7 @@ Frame responsibilities: to keep track of the score for the frame and add scores 
 Frame responsibilities: to keep track of the score for the frame and add scores and bonus according to bowling logic. It is used by the BowlingScorecard function.
 
 | BowlingScorecard | |
-|-| -|
+|-|-|
 | Variables: | |
 | _frames | contains the frames in an array |
 | Methods: | |
@@ -57,7 +57,7 @@ Frame responsibilities: to keep track of the score for the frame and add scores 
 Display responsibilities: to return info from the bowlingScorecard instance to present in the html page. It is used by interface.js.
 
 | Display | Description |
-|-|- |
+|-|-|
 | scoreInfo(bowlingScorecard) | returns a string of the current roll and score |
 | framesToHTMLTable(frames) | formats the frame data into an HTML table for the HTML page |
 | gameInstructions(bowlingScorecard) | returns a string of to instruct the user how to play the game |
@@ -65,7 +65,7 @@ Display responsibilities: to return info from the bowlingScorecard instance to p
 Interface responsibilities: uses JQuery to load the page info on start up, as well as the methods below...
 
 | Interface | Description |
-|-| |
+|-|-|
 | updateDisplay | updates the instructions, score info and frames info on the html page |
 | click on buttons with .score class | passes the score of the buttons clicked to the bowling scorecard and changes the status of score buttons to be available or disabled depending on current pins available to hit |
 | reset | reloads the page for a new game |

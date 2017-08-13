@@ -14,44 +14,59 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 ## Technologies
 - HTML, CSS and Bootstrap for display
-- JavaScript for BowlingScorecard and Frame functions and JQuery for interface controller.
+- JavaScript for BowlingScorecard, Frame and Display functions
+- JQuery for interface.js controller.
 - Deployed as a ruby and sinatra app on heroku.
 - Jasmine for test framework
 
-The Frame function keeps track of the scores in a frame as well as whether it is a strike or spare.
+## Domain Models
 
-The BowlingScorecard function tracks the current state of play. The rules for adding bonuses in bowling are a little complex so the `addScore` function has checks to see whether it is the frame's first or second roll, and whether to add bonus scores for strikes and spares. I tried taking as much out of this method as I could, such as functions to check for bonus scores.
+Frame responsibilities: to keep track of the score for the frame and add scores and bonus according to bowling logic. It is used by the BowlingScorecard function.
 
-The `interface.js` is uses JQuery to interact with the BowlingScorecard instance for the current game, as well as updating the display by updating the html in the display.
+|Frame | Description |
+|--| |
+| Variables: |  |
+| score1 | holds score for first bowl |
+| score2 | holds score for second bowl |
+| bonus | holds score for bonus |
+| Methods: | |
+| addScore() | adds a score to score 1 or score2 depending if it is the first or second bowl|
+| isComplete() | returns true if the frame has a score for first and second bowl or is a strike or spare |
+| isStrike() | returns true if the frame is a strike |
+| isSpare() | returns true if the frame is a spare |
+| addBonus(score) | adds a bonus score if the frame is a strike or spare, one score for spare and two for strike |
+| score() | returns total score for the frame |
 
-## Domain Map
-
-|Frame |
-|--|
-| Variables: |
-| score1 |
-| score2 |
-| bonus |
-|totalScore |
-| Methods: |
-| addScore() |
-| isComplete() |
+Frame responsibilities: to keep track of the score for the frame and add scores and bonus according to bowling logic. It is used by the BowlingScorecard function.
 
 | BowlingScorecard |
 |-|
-| frames |
-| score |
-| addScore() |
-| |
-| |
+| _frames | contains the frames in an array |
+| score() | returns a current total score |
+| isGameComplete() | returns true if the game is complete |
+| pinsAvailableToHit() | returns the amount of pins available, used by the interface for displaying score buttons for the current bowl
+| updateFrames | this adds a frame if the current frame is less than 10 and the frame is complete |
+| frameNumber() | returns the current frame number |
+| frame() | returns the current frame |
+| isBonusRoll() | returns true if it is the last frame and the third bowl |
+| checkBonus(score) | checks the last 3 frames to see if they need a bonus added, score is passed to the frame.addBonus(score) method |
+| addScore(score) | passes the score to the frame.addScore(score) method, also calls checkBonus() and updateFrames() |
 
-| Display |
-|-|
-| frameToTable(frame) |  
-| scorecardToTable(scorecard) |
+Display responsibilities: to return info from the bowlingScorecard instance to present in the html page. It is used by interface.js.
 
-BonusChecker
-Checks the last 3 frames and updates the bonuses
+| Display | Description |
+|-|- |
+| scoreInfo(bowlingScorecard) | returns a string of the current roll and score |
+| framesToHTMLTable(frames) | formats the frame data into an HTML table for the HTML page |
+| gameInstructions(bowlingScorecard) | returns a string of to instruct the user how to play the game |
+
+Interface responsibilities: uses JQuery to load the page info on start up, as well as the methods below...
+
+| interface | Description |
+|-| |
+| updateDisplay | updates the instructions, score info and frames info on the html page |
+| click on buttons with .score class | passes the score of the buttons clicked to the bowling scorecard and changes the status of score buttons to be available or disabled depending on current pins available to hit |
+| reset | reloads the page for a new game |
 
 
 ## Instructions

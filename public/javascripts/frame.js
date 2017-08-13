@@ -13,16 +13,12 @@ Frame.prototype.isSpare = function () {
   return (!this.isStrike() && (this.score1 + this.score2 === 10));
 };
 
-Frame.prototype.isFirstBowl = function () {
-  return (this.score1 === null);
-};
-
 Frame.prototype.isComplete = function () {
   return (this.isStrike() || (this.score2 != null));
 };
 
 Frame.prototype.addScore = function(score) {
-  if (this.isFirstBowl()) {
+  if (this.score1 === null) {
     this.score1 = score;
     if (this.isStrike()) this.bonusRolls = 2;
   }

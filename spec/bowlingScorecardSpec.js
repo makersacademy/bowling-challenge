@@ -70,16 +70,6 @@ describe ("BowlingScorecard", function(){
     });
   });
 
-  describe('#setGameComplete', function(){
-    it('isGameComplete returns false before setGameComplete()', function(){
-      expect(bowlingScorecard.isGameComplete()).toBeFalsy();
-    });
-    it('isGameComplete returns true after setGameComplete()', function(){
-      bowlingScorecard.setGameComplete();
-      expect(bowlingScorecard.isGameComplete()).toBeTruthy();
-    });
-  });
-
   describe('#isGameComplete', function(){
     it('should not be true when game starts', function(){
       expect(bowlingScorecard.isGameComplete()).toBeFalsy();

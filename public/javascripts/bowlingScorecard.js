@@ -1,19 +1,17 @@
 function BowlingScorecard() {
   this._frames = [];
   this.addFrame();
-  this._complete = false;
 }
 
 BowlingScorecard.prototype.addFrame = function() {
   this._frames.push(new Frame());
 };
 
-BowlingScorecard.prototype.setGameComplete = function() {
-  this._complete = true;
-};
-
 BowlingScorecard.prototype.isGameComplete = function() {
-  return this._complete;
+  if (this.frameNumber() === 10) {
+    return ((this.frame().isComplete() && this.frame().score() < 10) || this.frame().bonus != null);
+  }
+  return false;
 };
 
 BowlingScorecard.prototype.score = function() {
@@ -28,13 +26,8 @@ BowlingScorecard.prototype.pinsAvailableToHit = function () {
   else return 10 - this.frame().score1;
 };
 
-BowlingScorecard.prototype.updateGameStatus = function () {
-  if (this.frame().isComplete()) {
-    if (this.frameNumber() < 10) this.addFrame();
-    else if ((this.frame().isComplete() && this.frame().score() < 10) || this.frame().bonus) {
-      this.setGameComplete();
-    }
-  }
+BowlingScorecard.prototype.updateFrames = function () {
+  if (this.frame().isComplete() && this.frameNumber() < 10) this.addFrame();
 };
 
 BowlingScorecard.prototype.frameNumber = function() {
@@ -64,5 +57,5 @@ BowlingScorecard.prototype.addScore = function(score) {
   }
   else this.frame().addScore(score);
   this.checkBonus(score);
-  this.updateGameStatus();
+  this.updateFrames();
 };

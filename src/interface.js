@@ -25,60 +25,106 @@ $(document).ready(function() {
       $("#frame9player1score2").text(scorecard._framescores[9][1]);
       $("#frame10player1score1").text(scorecard._framescores[10][0]);
       $("#frame10player1score2").text(scorecard._framescores[10][1]);
+      $("#error").text(" ");
     }
 
   $('#roll0').click(function() {
-    player.roll(0, game.getFrame(scorecard), scorecard);
-    updateTable();
+    try {
+      player.roll(0, game.getFrame(scorecard), scorecard);
+      updateTable();
+    } catch(err) {
+      document.getElementById("error").innerHTML = err.message;
+    }
   });
 
   $('#roll1').click(function() {
-    player.roll(1, game.getFrame(scorecard), scorecard);
-    updateTable();
+    try {
+      player.roll(1, game.getFrame(scorecard), scorecard);
+      updateTable();
+    } catch(err) {
+      document.getElementById("error").innerHTML = err.message;
+    }
   });
 
   $('#roll2').click(function() {
-    player.roll(2, game.getFrame(scorecard), scorecard);
-    updateTable();
+    try {
+      player.roll(2, game.getFrame(scorecard), scorecard);
+      updateTable();
+    } catch(err) {
+      document.getElementById("error").innerHTML = err.message;
+    }
   });
 
   $('#roll3').click(function() {
-    player.roll(3, game.getFrame(scorecard), scorecard);
-    updateTable();
+    try {
+      player.roll(3, game.getFrame(scorecard), scorecard);
+      updateTable();
+    } catch(err) {
+      document.getElementById("error").innerHTML = err.message;
+    }
   });
 
   $('#roll4').click(function() {
-    player.roll(4, game.getFrame(scorecard), scorecard);
-    updateTable();
+    try {
+      player.roll(4, game.getFrame(scorecard), scorecard);
+      updateTable();
+    } catch(err) {
+      document.getElementById("error").innerHTML = err.message;
+    }
   });
 
   $('#roll5').click(function() {
-    player.roll(5, game.getFrame(scorecard), scorecard);
-    updateTable();
+    try {
+      player.roll(5, game.getFrame(scorecard), scorecard);
+      updateTable();
+    } catch(err) {
+      document.getElementById("error").innerHTML = err.message;
+    }
   });
 
   $('#roll6').click(function() {
-    player.roll(6, game.getFrame(scorecard), scorecard);
-    updateTable();
+    try {
+      player.roll(6, game.getFrame(scorecard), scorecard);
+      updateTable();
+    } catch(err) {
+      document.getElementById("error").innerHTML = err.message;
+    }
   });
 
   $('#roll7').click(function() {
-    player.roll(7, game.getFrame(scorecard), scorecard);
-    updateTable();
+    try {
+      player.roll(7, game.getFrame(scorecard), scorecard);
+      updateTable();
+    } catch(err) {
+      document.getElementById("error").innerHTML = err.message;
+    }
   });
 
+
   $('#roll8').click(function() {
-    player.roll(8, game.getFrame(scorecard), scorecard);
-    updateTable();
+    try {
+      player.roll(8, game.getFrame(scorecard), scorecard);
+      updateTable();
+    } catch(err) {
+      document.getElementById("error").innerHTML = err.message;
+    }
   });
 
   $('#roll9').click(function() {
-    player.roll(9, game.getFrame(scorecard), scorecard);
-    updateTable();
+    try {
+      player.roll(9, game.getFrame(scorecard), scorecard);
+      updateTable();
+    } catch(err) {
+      document.getElementById("error").innerHTML = err.message;
+    }
   });
 
   $('#roll10').click(function() {
-    player.roll(10, game.getFrame(scorecard), scorecard);
-    updateTable();
+    try {
+      player.roll(10, game.getFrame(scorecard), scorecard);
+      updateTable();
+    } catch(err) {
+      document.getElementById("error").innerHTML = err.message;
+    }
   });
 });

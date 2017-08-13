@@ -48,3 +48,8 @@ button:focus {outline:0;}
 .curved {
   border-radius: 50px;
 }
+
+#error {
+  height: 2vh;
+  text-align: center;
+}

@@ -10,7 +10,9 @@ function Scorecard() {
     7:[],
     8:[],
     9:[],
-    10:[]
+    10:[],
+    strike1:[],
+    strike2:[]
   };
 }
 
@@ -29,6 +31,5 @@ Scorecard.prototype.roll = function(amount, frame) {
   } else {
     this._framescores[frame].push(amount);
     this._totalscore += amount;
-    console.log(this._totalscore);
   }
 };

@@ -47,7 +47,7 @@ Scorecard.prototype.roll = function(amount, frame) {
   }
   if(frame === 11) {
     this._framescores[frame].push(amount);
-    if(this._framescores[10][0] === 10) {
+    if(this._framescores[9][0] === 10) {
       this._totalscore += amount;
     }
     return this._totalscore += amount;

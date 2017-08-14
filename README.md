@@ -21,4 +21,4 @@ Bowling Challenge
 - Costas Kiteou, **Makers Academy Student** - _July, 2017 Cohort_
 
 #### Acknowledgements ####
-- My beautiful wife who gave me advice me on HTML & CSS styling
+- My beautiful wife who gave me advice on HTML & CSS styling...and cooked me breakfast

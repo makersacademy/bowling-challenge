@@ -1,7 +1,5 @@
 body {
   background-image:
-  /*url("http://framesngames.com/wp-content/uploads/2011/10/fng_img_background.jpg");*/
-  /*url("http://www.lincolnbowl.co.uk/wp-content/uploads/2016/02/bggg.jpg");*/
   url("http://www.truckersnews.com/wp-content/uploads/sites/117/2017/01/truck-stop-bowling-alley.jpg");
 
   background-repeat: no-repeat;
@@ -23,12 +21,12 @@ h1 {
   text-align: center;
   color: white;
   font-size: 80px;
+  text-shadow: 2px 2px red;
 }
 
-footer {
-  display: block;
-  text-align: center;
+h3 {
   color: white;
   font-size: 20px;
   font-style: italic;
+  text-align: center;
 }

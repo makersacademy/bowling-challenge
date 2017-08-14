@@ -88,6 +88,14 @@ Bowling.prototype._updateFrameScore = function () {
   this.frameScore.push(this.bowlScore[this.bowlCount - 2] + this.bowlScore[this.bowlCount - 1]);
 };
 
+Bowling.prototype._showBowlCount = function () {
+  return this.bowlCount;
+};
+
+Bowling.prototype._showFrameCount = function () {
+  return this.frameCount;
+};
+
 Bowling.prototype._strike = function () {
   if (this.frameCount > 1 && this.frameCount < 11) {
     if (this.bowlScore[this.bowlCount - 4] === 10) {
@@ -101,6 +109,11 @@ Bowling.prototype._strike = function () {
       this.totalScore += this.bowlScore[this.bowlCount - 2];
     }
   }
+  if (this.frameCount > 10) {
+    if (this.frameScore[9] != null) {
+      this.frameScore[9] += this.bowlScore[this.bowlCount - 2]};
+      this.totalScore -= 10;
+  }
 };
 
 Bowling.prototype._spare = function () {
@@ -108,6 +121,7 @@ Bowling.prototype._spare = function () {
       if ((this.bowlScore[this.bowlCount - 4] + this.bowlScore[this.bowlCount - 3] === 10) && this.bowlScore[this.bowlCount - 4] != 10) {
       this.frameScore[this.frameCount - 2] += (this.bowlScore[this.bowlCount - 2]);
       this.totalScore += this.bowlScore[this.bowlCount - 2];
+      if (this.frameScore[9] != null) { this.frameScore[9] += this.bowlScore[this.bowlCount - 2]};
     }
   }
 };

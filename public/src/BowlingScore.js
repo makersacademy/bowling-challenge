@@ -34,6 +34,7 @@ Bowling.prototype.enterBowlingScore = function (score) {
     this._incrementFrameCount();
     this._updateFrameScore();
     this._updateTotalScore(this.frameScore);
+    this._spare();
     this._strike();
     this._tenthFrame();
   } else {

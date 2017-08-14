@@ -8,14 +8,22 @@ function ScoreCard(rounds, parser) {
 
 ScoreCard.prototype.process = function(score, roundNumber) {
   if(this.isComplete()) { return; }
-  this.results[roundNumber].store(score);
+  return this.results[roundNumber].store(score);
 };
 
-ScoreCard.prototype.roll = function(round) {
-  console.log(round)
-  console.log(this.results[round]);
-  return this.results[round].rollNumber();
+ScoreCard.prototype.getMaximumScore = function(round) {
+  return this.results[round].maxPossibleScore();
+};
+
+ScoreCard.prototype.getRound = function(round) {
+  var round = this.results[round];
+  if(round) { return round.results; }
+  return [];
 }
+
+ScoreCard.prototype.roll = function(round) {
+  return this.results[round].rollNumber();
+};
 
 ScoreCard.prototype.isComplete = function() {
   if(this.results[this.lastRound].isRoundOver()) { return true; }

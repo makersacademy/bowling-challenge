@@ -10,6 +10,9 @@ describe('Round', function() {
     expect(round.results.length).toEqual(0);
   });
   describe('first roll', function() {
+    it('knows maximum score possible', function() {
+      expect(round.maxPossibleScore()).toEqual(10);
+    });
     describe('accepts a number between 0 and 10', function() {
       it('less than or equal to 10', function() {
         round.store(8);
@@ -25,6 +28,9 @@ describe('Round', function() {
     beforeEach(function() {
       round.store(5);
     })
+    it('knows maximum score possible', function() {
+      expect(round.maxPossibleScore()).toEqual(5);
+    });
     it('does not allow round total to exceed 10', function() {
       round.store(10);
       expect(round.results.length).toEqual(1)
@@ -48,6 +54,31 @@ describe('Round', function() {
       });
     });
     describe('final round', function() {
+      describe('maximum score possible', function() {
+        describe('second roll', function() {
+          it('allows 10 if first roll is 10', function() {
+            lastRound.store(10);
+            expect(lastRound.maxPossibleScore()).toEqual(10);
+          });
+        });
+        describe('third roll', function() {
+          it('allows 10 if preceded by two strikes', function() {
+            lastRound.store(10);
+            lastRound.store(10);
+            expect(lastRound.maxPossibleScore()).toEqual(10);
+          });
+          it('allows 10 if preceded by a spare', function() {
+            lastRound.store(5);
+            lastRound.store(5);
+            expect(lastRound.maxPossibleScore()).toEqual(10);
+          });
+          it('reduces max possible score if preceded by a strike plus not a strike', function() {
+            lastRound.store(10);
+            lastRound.store(5);
+            expect(lastRound.maxPossibleScore()).toEqual(5);
+          });
+        });
+      });
       describe('two strikes + another throw', function() {
         beforeEach(function() {
           for(var i = 0; i < 3; i++) {

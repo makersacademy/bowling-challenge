@@ -12,12 +12,25 @@ Algorithm for calculateScore function of Game class
       1. If previous frame exists and it is a Spare
         * calculate score on previous frame with current value of running total and bonus = current frame's first roll
         * update running total
+
+      2. If current frame is a Strike
+        1. Add it to a strike chain
+        2. If the length of the strike chain is 3
+          * calculate score on first frame in strike chain with current value of running total and bonus = 20
+          * update running total
+          * remove first element from strike chain
+      3. Else
+        1. If length of the strike chain is 2
+          * calculate score on first frame in strike chain with current value of running total and bonus = 10 + current frame's first roll
+          * update running total
+          * remove first element from strike chain
 1.  Else
       1. If previous frame exists and it is a Strike
         * calculate score on previous frame with current value of running total and bonus = current frame's first roll + current frame's second roll
         * update running total
+        * remove first element from strike chain (become empty now)
       2. If current frame is Open
         * calculate score on current frame with current value of running total and bonus = 0
         * update running total
 
-Note: Three strikes yet to be factored in
+Note: Final frame yet to be factored in

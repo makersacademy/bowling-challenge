@@ -11,8 +11,8 @@ var Game = function(playerName, frameClass, playerClass) {
   this._player = new this._playerClass(playerName);
 
   this._isFirstRoll = true;
-
   this._runningTotal = 0;
+  this._strikeChain = [];
 };
 
 Game.prototype._createEmptyFrames = function () {
@@ -64,13 +64,42 @@ Game.prototype._calculateScore = function() {
   var previousFrame = this.getPreviousFrame();
 
   if (this._isFirstRoll) {
-    if (this._currentFrameNumber !== 0 && previousFrame.isASpare()) {
-      this._runningTotal = previousFrame.calculateScore(this._runningTotal,frame.getFirstRoll());
+    this._updateIfPreviousSpare(frame, previousFrame);
+    this._updateIfTwoOrThreeStrikes(frame, this._currentFrameNumber);
+  } else {
+    this._updateIfPreviousStrike(frame, previousFrame);
+    this._updateIfCurrentOpen(frame);
+  }
+};
+
+Game.prototype._updateIfPreviousSpare = function(frame, previousFrame) {
+  if (this._currentFrameNumber !== 0 && previousFrame.isASpare()) {
+    this._runningTotal = previousFrame.calculateScore(this._runningTotal,frame.getFirstRoll());
+  }
+};
+
+Game.prototype._updateIfPreviousStrike = function(frame, previousFrame) {
+  if (this._currentFrameNumber !== 0 && previousFrame.isAStrike()) {
+    this._runningTotal = previousFrame.calculateScore(this._runningTotal,frame.getFirstRoll() + frame.getSecondRoll());
+    this._strikeChain.shift();
+  }
+};
+
+Game.prototype._updateIfCurrentOpen = function(frame) {
+  if (frame.isOpen()) this._runningTotal = frame.calculateScore(this._runningTotal,0);
+};
+
+Game.prototype._updateIfTwoOrThreeStrikes = function(frame, currentFrameNumber) {
+  if (frame.isAStrike()) {
+    this._strikeChain.push(currentFrameNumber);
+    if (this._strikeChain.length == 3) {
+      this._runningTotal = this._frames[this._strikeChain[0]].calculateScore(this._runningTotal,20);
+      this._strikeChain.shift();
     }
   } else {
-    if (this._currentFrameNumber !== 0 && previousFrame.isAStrike()) {
-      this._runningTotal = previousFrame.calculateScore(this._runningTotal,frame.getFirstRoll() + frame.getSecondRoll());
+    if (this._strikeChain.length == 2) {
+      this._runningTotal = this._frames[this._strikeChain[0]].calculateScore(this._runningTotal,10 + frame.getFirstRoll());
+      this._strikeChain.shift();
     }
-    if (frame.isOpen()) this._runningTotal = frame.calculateScore(this._runningTotal,0);
   }
 };

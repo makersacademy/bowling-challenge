@@ -316,5 +316,93 @@ describe('Game', function() {
         });
       });
     });
+
+    describe ('first and second frames in a consecutive triple are strikes', function() {
+      var frame, frame2;
+
+      beforeEach(function() {
+        frame = game.getCurrentFrame();
+        game.receiveRoll(10);
+        frame2 = game.getCurrentFrame();
+        game.receiveRoll(10);
+      });
+
+      describe('third frame in the consecutive triple is an open frame', function() {
+        var frame3;
+
+        beforeEach(function() {
+          frame3 = game.getCurrentFrame();
+          game.receiveRoll(3);
+          game.receiveRoll(4);
+        });
+
+        it('updates the first frame\'s score', function() {
+          expect(frame.getScore()).toEqual(23);
+        });
+
+        it('updates the second frame\'s score', function() {
+          expect(frame2.getScore()).toEqual(40);
+        });
+
+        it('updates the third frame\'s score', function() {
+          expect(frame3.getScore()).toEqual(47);
+        });
+
+        it('updates the games\'s score', function() {
+          expect(game.getScore()).toEqual(47);
+        });
+      });
+
+      describe('third frame in the consecutive triple is a spare', function() {
+        var frame3;
+
+        beforeEach(function() {
+          frame3 = game.getCurrentFrame();
+          game.receiveRoll(8);
+          game.receiveRoll(2);
+        });
+
+        it('updates the first frame\'s score', function() {
+          expect(frame.getScore()).toEqual(28);
+        });
+
+        it('updates the second frame\'s score', function() {
+          expect(frame2.getScore()).toEqual(48);
+        });
+
+        it('does not update the third frame\'s score', function() {
+          expect(frame3.getScore()).toEqual(0);
+        });
+
+        it('updates the games\'s score', function() {
+          expect(game.getScore()).toEqual(48);
+        });
+      });
+
+      describe('third frame in the consecutive triple is a strike', function() {
+        var frame3;
+
+        beforeEach(function() {
+          frame3 = game.getCurrentFrame();
+          game.receiveRoll(10);
+        });
+
+        it('updates the first frame\'s score', function() {
+          expect(frame.getScore()).toEqual(30);
+        });
+
+        it('does not update the second frame\'s score', function() {
+          expect(frame2.getScore()).toEqual(0);
+        });
+
+        it('does not update the third frame\'s score', function() {
+          expect(frame3.getScore()).toEqual(0);
+        });
+
+        it('updates the games\'s score', function() {
+          expect(game.getScore()).toEqual(30);
+        });
+      });
+    });
   });
 });

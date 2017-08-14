@@ -1,10 +1,11 @@
 'use strict';
 
 describe('Frame', function() {
-  var frame;
+  var frame, finalFrame;
 
   beforeEach(function() {
     frame = new Frame(1);
+    finalFrame = new Frame(10);
   });
 
   describe('constructor', function() {
@@ -18,6 +19,14 @@ describe('Frame', function() {
 
     it('has zero pins recorded for second roll', function() {
       expect(frame.getSecondRoll()).toEqual(0);
+    });
+
+    it('has zero pins recorderd for first extra roll', function() {
+      expect(frame.getFirstExtraRoll()).toEqual(0);
+    });
+
+    it('has zero pins recorderd for second extra roll', function() {
+      expect(frame.getSecondExtraRoll()).toEqual(0);
     });
 
     it('is not a strike', function() {
@@ -82,6 +91,60 @@ describe('Frame', function() {
       frame.setFirstRoll(6);
       frame.setSecondRoll(3);
       expect(frame.isOpen()).toBe(true);
+    });
+  });
+
+  describe('setFirstExtraRoll', function() {
+    it('cannot be set for frames 1 - 9',function() {
+      expect(function() { frame.setFirstExtraRoll(5); }).toThrowError('Extra first roll only available for final frame');
+    });
+
+    it('cannot be set for final frame if it is Open', function() {
+      expect(function() { finalFrame.setFirstExtraRoll(5); }).toThrowError('Extra first roll only available for bonus final frame');
+    });
+
+    it('cannot be set to more than 10 pins', function() {
+      expect(function() { frame.setFirstExtraRoll(11); }).toThrowError('Pins cannot exceed a maximum of 10');
+    });
+
+    it('can be set for final frame if it is a Spare', function() {
+      finalFrame.setFirstRoll(6);
+      finalFrame.setSecondRoll(4);
+      finalFrame.setFirstExtraRoll(5);
+      expect(finalFrame.getFirstExtraRoll()).toEqual(5);
+    });
+
+    it('can be set for final frame if it is a Strike', function() {
+      finalFrame.setFirstRoll(10);
+      finalFrame.setFirstExtraRoll(5);
+      expect(finalFrame.getFirstExtraRoll()).toEqual(5);
+    });
+  });
+
+  describe('setSecondExtraRoll', function() {
+    it('cannot be set for frames 1 - 9',function() {
+      expect(function() { frame.setSecondExtraRoll(5); }).toThrowError('Extra second roll only available for final frame');
+    });
+
+    it('cannot be set for final frame if is Open', function() {
+      expect(function() { finalFrame.setSecondExtraRoll(5); }).toThrowError('Extra second roll only available for strike final frame');
+    });
+
+    it('cannot be set for final frame if is a Spare', function() {
+      finalFrame.setFirstRoll(6);
+      finalFrame.setSecondRoll(4);
+      expect(function() { finalFrame.setSecondExtraRoll(5); }).toThrowError('Extra second roll only available for strike final frame');
+    });
+
+    it('cannot be set if the total of extra rolls is more than 10 pins', function() {
+      expect(function() { frame.setSecondExtraRoll(11); }).toThrowError('Pins cannot exceed a maximum of 10');
+    });
+
+    it('can be set for final frame if it is a Strike', function() {
+      finalFrame.setFirstRoll(10);
+      finalFrame.setFirstExtraRoll(2);
+      finalFrame.setSecondExtraRoll(3);
+      expect(finalFrame.getSecondExtraRoll()).toEqual(3);
     });
   });
 

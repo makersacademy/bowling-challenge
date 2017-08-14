@@ -10,8 +10,12 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 ## To use the scorecard
 
-- Currently, you can clone the repository, go to the project root folder, and run the following:
+Currently, you can run the app from the repository:  
+$ git clone   git@github.com:Alexander-Blair/bowling-challenge.git  
+$ cd bowling-challenge  
 $ open index.html
+
+Enter your roll! 
 
 ![main page](app/images/screenshot.png)
 

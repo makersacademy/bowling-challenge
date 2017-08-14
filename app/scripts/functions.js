@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-  var rounds, parser, scoreCard, player, game, scoreGenerator;
+  var rounds, parser, scoreCard, player, scoreGenerator;
   rounds = [];
   for(var i = 0; i < 9; i++) {
     rounds.push(new Round());

@@ -1,0 +1,55 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 8px;
+    height: 50px;
+    width: 4%;
+}
+
+tr {
+  /*visibility:hidden*/
+}
+
+tr#tablehead {
+  visibility:visible
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.centre {
+  text-align: center;
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 1%;
+}
+
+.button:active {
+  background-color: #3e8e41;
+}
+
+button:focus {outline:0;}
+
+.curved {
+  border-radius: 50px;
+}
+
+#error {
+  height: 2vh;
+  text-align: center;
+}

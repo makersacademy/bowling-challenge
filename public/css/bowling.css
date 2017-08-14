@@ -2,6 +2,7 @@ body {
   background-image: url("http://www.truckersnews.com/wp-content/uploads/sites/117/2017/01/truck-stop-bowling-alley.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: grey;
 }
 
 .table {

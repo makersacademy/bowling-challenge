@@ -8,8 +8,6 @@ get '/' do
   redirect '/index.html'
 end
 
-
-
 run! if app_file == $0
 
 end

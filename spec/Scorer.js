@@ -56,7 +56,4 @@ describe('Scorer unit tests:', function(){
     expect(scorer.score()).toEqual(24);
   })
 
-  it('#play returns true', function() {
-    expect(scorer.play()).toBeTruthy();
-  })
 });

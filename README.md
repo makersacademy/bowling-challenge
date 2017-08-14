@@ -15,3 +15,12 @@ Algorithm for calculating score
 ---
 
 [Algorithm](docs/algorithm.md)
+
+Screenshot
+---
+
+![Screenshot](images/bowling_challenge.png)  
+
+Testing
+---
+[Testing](docs/testing.pdf)

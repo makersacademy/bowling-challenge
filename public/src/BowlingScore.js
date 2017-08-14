@@ -52,7 +52,6 @@ Bowling.prototype.enterBowlingScore = function (score) {
   }
 };
 
-
 Bowling.prototype.showTotalScore = function () {
   return this.totalScore;
 };

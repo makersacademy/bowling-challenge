@@ -4,7 +4,7 @@ describe("BowlingScore", function() {
     var bowlingscore;
 
     beforeEach(function() {
-        bowlingscore = new BowlingScore();
+        bowlingscore = new Bowling();
     });
 
     it("has a score", function() {

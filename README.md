@@ -2,9 +2,6 @@
 # Bowling Challenge
 =================
 
-```
-
-
 Overview
 ---------
 A bowling score calculator for one player written in Javascript.
@@ -28,12 +25,9 @@ Running tests
 `Jasmine`
 
 
-```
-
-```
-
 
 Further development options
+---------
 
 * refactor jQuery code
 
@@ -47,8 +41,6 @@ Further development options
 
 * add option for player 2
 
-
-```
 
 ## Bowling — how does it work?
 

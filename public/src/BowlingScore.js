@@ -50,6 +50,9 @@ Bowling.prototype.enterBowlingScore = function (score) {
     this._spare();
     this._tenthFrame();
   }
+  console.log(this.showTotalScore());
+  console.log(this.showFrameScore());
+  console.log(this.showBowlScore());
 };
 
 Bowling.prototype.showTotalScore = function () {
@@ -65,7 +68,7 @@ Bowling.prototype.showBowlScore = function (bowl) {
 };
 
 Bowling.prototype.showFrameScore = function (frame) {
-  return this.frameScore[frame - 1]
+  return this.frameScore[frame - 1];
 };
 
 Bowling.prototype._updateTotalScore = function (numbers) {
@@ -118,7 +121,7 @@ Bowling.prototype._strike = function () {
 
 Bowling.prototype._spare = function () {
     if (this.frameCount > 1 && this.frameCount < 11) {
-      if ((this.bowlScore[this.bowlCount - 4] + this.bowlScore[this.bowlCount - 3] === 10) && this.bowlScore[this.bowlCount - 4] != 10) {
+      if ((c) && this.bowlScore[this.bowlCount - 4] != 10) {
       this.frameScore[this.frameCount - 2] += (this.bowlScore[this.bowlCount - 2]);
       this.totalScore += this.bowlScore[this.bowlCount - 2];
       if (this.frameScore[9] != null) { this.frameScore[9] += this.bowlScore[this.bowlCount - 2]};

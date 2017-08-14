@@ -125,16 +125,14 @@
           $('#button-0').on('click', function() {
             bowling.enterBowlingScore(0);
             var bowlcount = bowling._showBowlCount();
-            var framecount = bowling._showFrameCount();
             $("#bowl-"+bowlcount).text("0");
-              updateTotalScore();
+              updateFrameScore();
               $("#total").text(bowling.showTotalScore());
           })
 
           $('#button-1').on('click', function() {
             bowling.enterBowlingScore(1);
             var bowlcount = bowling._showBowlCount();
-            var framecount = bowling._showFrameCount();
             $("#bowl-"+bowlcount).text("1");
               updateFrameScore()
               $("#total").text(bowling.showTotalScore())
@@ -143,7 +141,6 @@
           $('#button-2').on('click', function() {
             bowling.enterBowlingScore(2);
             var bowlcount = bowling._showBowlCount();
-            var framecount = bowling._showFrameCount();
             $("#bowl-"+bowlcount).text("2");
               updateFrameScore()
               $("#total").text(bowling.showTotalScore())
@@ -152,7 +149,6 @@
           $('#button-3').on('click', function() {
             bowling.enterBowlingScore(3);
             var bowlcount = bowling._showBowlCount();
-            var framecount = bowling._showFrameCount();
             $("#bowl-"+bowlcount).text("3");
               updateFrameScore()
               $("#total").text(bowling.showTotalScore())
@@ -161,7 +157,6 @@
           $('#button-4').on('click', function() {
             bowling.enterBowlingScore(4);
             var bowlcount = bowling._showBowlCount();
-            var framecount = bowling._showFrameCount();
             $("#bowl-"+bowlcount).text("4");
               updateFrameScore()
               $("#total").text(bowling.showTotalScore())
@@ -170,19 +165,18 @@
           $('#button-5').on('click', function() {
             bowling.enterBowlingScore(5);
             var bowlcount = bowling._showBowlCount();
-            var framecount = bowling._showFrameCount();
-            $("#bowl-"+bowlcount).text("/");
-            if (!bowling.isThisFirstBowl()) {
+            if (bowling.isThisFirstBowl() && (bowling.bowlScore[bowlcount-2] === 5)) {
+              $("#bowl-"+bowlcount).text("/");
+            } else {
               $("#bowl-"+bowlcount).text("5");
+            }
               updateFrameScore()
               $("#total").text(bowling.showTotalScore())
-            }
           })
 
           $('#button-6').on('click', function() {
             bowling.enterBowlingScore(6);
             var bowlcount = bowling._showBowlCount();
-            var framecount = bowling._showFrameCount();
             $("#bowl-"+bowlcount).text("6");
               updateFrameScore()
               $("#total").text(bowling.showTotalScore())
@@ -191,7 +185,6 @@
           $('#button-7').on('click', function() {
             bowling.enterBowlingScore(7);
             var bowlcount = bowling._showBowlCount();
-            var framecount = bowling._showFrameCount();
             $("#bowl-"+bowlcount).text("7");
               updateFrameScore()
               $("#total").text(bowling.showTotalScore())
@@ -209,7 +202,6 @@
           $('#button-9').on('click', function() {
             bowling.enterBowlingScore(9);
             var bowlcount = bowling._showBowlCount();
-            var framecount = bowling._showFrameCount();
             $("#bowl-"+bowlcount).text("9");
               updateFrameScore()
               $("#total").text(bowling.showTotalScore())
@@ -218,9 +210,6 @@
           $('#button-10').on('click', function() {
             bowling.enterBowlingScore(10);
             var bowlcount = bowling._showBowlCount();
-            var framecount = bowling._showFrameCount();
-            console.log(bowling._showFrameCount())
-            console.log(bowling._showBowlCount())
             if (bowling._showBowlCount() < 19) {
               $("#bowl-"+bowlcount).text("X");
               updateFrameScore()

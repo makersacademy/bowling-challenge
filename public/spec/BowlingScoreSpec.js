@@ -1,5 +1,5 @@
 describe("BowlingScore", function() {
-    // "use strict";
+    "use strict";
 
     var bowlingscore;
 

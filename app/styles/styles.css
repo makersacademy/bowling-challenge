@@ -64,7 +64,7 @@ span {
   background-color: blue;
 }
 
-.buttons-0, .buttons-1, .buttons-2 {
+.buttons {
   display: flex;
   width: 1200px;
   justify-content: center;
@@ -78,6 +78,7 @@ span {
 
 .title {
   width: 350px;
+  height: 80px;
   background-color: black;
   text-align: center;
   margin: 10px 10px;

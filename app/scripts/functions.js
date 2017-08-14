@@ -10,27 +10,27 @@ $( document ).ready(function() {
   scoreCard = new ScoreCard(rounds, parser)
   player = new Player(scoreCard);
   game = new Game(player);
-
   scoreGenerator = new ScoreGenerator();
 
   var updateAll = function(round, roll, result, card) {
     updateRollFields(round, roll, result);
     updateGameFields(roll, card);
     updateRoundScores(card);
-    updateButtons();
+    updateButtons(round, roll);
   }
 
   var updateRollFields = function(round, roll, result) {
-    var roundArray = game.getRound(round);
-    if (result === 10 ) {
+    var roundArray = game.getRound(round), finalRoll = roll;
+    if (result === 10) {
       result = "X";
-      if(round < 9 && roll === 1) { roll += 1; }
+      if(round < 9 && roll === 1) { finalRoll += 1; }
     }
-    if (roundArray[0] + roundArray[1] === 10 && roll !== 1) {
+    if (((roundArray[roll - 2] || 0) + (roundArray[roll - 1] || 0) === 10) && roll !== 1) {
       result = "/";
+      finalRoll = roll;
     }
     var roundField = "#rolls-" + round;
-    var rollField = "#roll-" + roll;
+    var rollField = "#roll-" + finalRoll;
     $(".score-container").find(roundField).find(rollField).text(result);
     if(game.over) { $("#game-over").text("Game over!"); }
   }
@@ -43,6 +43,7 @@ $( document ).ready(function() {
 
   var updateButtons = function() {
     var max = game.maximumScore();
+    if(game.over) { gameOver(); }
     for(var i = 0; i <= 10; i++) {
       var id = "#" + i;
       if(i < max) {
@@ -52,11 +53,28 @@ $( document ).ready(function() {
         $(id).hide()
       } else if(i === max) {
         $(id).show()
-        var display = max === 10 ? "X" : "/" ;
+        var display = strikeOrSpare()
         $(id).text(display);
       }
     }
   }
+
+  var gameOver = function() {
+    $(".buttons").hide();
+    $("#_round").hide();
+    $("#enter-score").text("GAME OVER!")
+    $(".button-container").height('100px')
+  }
+
+  var strikeOrSpare = function() {
+    var round = game.round, roll = game.roll();
+    var roundArray = game.getRound(round);
+    if(roll === 1
+       || (roundArray[0] === 10 && roll === 2)
+       || ((roundArray[0] + roundArray[1]) % 10 === 0 && roll === 3)) {
+         return "X";
+    } else { return "/"; }
+  };
 
   var updateRoundScores = function(card) {
     var score = 0;

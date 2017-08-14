@@ -38,6 +38,7 @@ $( document ).ready(function() {
   var updateGameFields = function(roll, card) {
     $("#current-score").text(scoreGenerator.returnScore(card));
     $("#round").text(game.round + 1);
+    $("#round-b").text(game.round + 1);
     $("#roll").text(roll);
   }
 

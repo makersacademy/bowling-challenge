@@ -36,7 +36,7 @@ body {
 
 .score-container-0, .score-container-1 {
   display: flex;
-  width: 1200px;
+  width: 1800px;
   justify-content: center;
 }
 
@@ -66,12 +66,12 @@ span {
 
 .buttons {
   display: flex;
-  width: 1200px;
+  width: 1800px;
   justify-content: center;
 }
 
 .headers {
-  width: 1200px;
+  width: 1800px;
   display: flex;
   justify-content: center;
 }

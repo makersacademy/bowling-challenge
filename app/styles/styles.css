@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+body {
+  background-image: url('../images/background.jpg');
+  display: block;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100%;
+}
+
+.menu {
+
+}
+
+.menu-container, .button-container, .score-container {
+  padding: 20px 0;
+  justify-content: center;
+  display: flex;
+  margin: 10px 0px 50px 0px;
+  flex-wrap: wrap;
+}
+
+
+.button-container {
+  height: 500px;
+}
+
+.score-container {
+  margin-top: 100px;
+}
+
+.score-container-0, .score-container-1 {
+  display: flex;
+  width: 1800px;
+  justify-content: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  width: 1000px;
+  margin: 30px 0px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  border: 2px solid white;
+  border-radius: 50px;
+  background-color: blue;
+}
+
+h1, h2 {
+  font-size: 2em;
+}
+
+span {
+  background-color: blue;
+}
+
+.buttons {
+  display: flex;
+  width: 1800px;
+  justify-content: center;
+}
+
+.headers {
+  width: 1800px;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  width: 350px;
+  height: 80px;
+  background-color: black;
+  text-align: center;
+  margin: 10px 10px;
+  padding: 20px 0px;
+  border: 2px solid white;
+}
+
+.button {
+  background-color: blue;
+  height: 100px;
+  padding: 25px 50px;
+  margin: 10px 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-size: 1.5em;
+}
+
+.button:hover {
+  background-color: red;
+}
+
+.roll-score-container {
+  font-size: 1.8em;
+  display: flex;
+  height: 35px;
+  width: 90px;
+  justify-content: space-between;
+  background-color: black;
+}
+
+.roll-score {
+  padding: 2px 5px;
+}
+
+.round-score-container {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  width: 90px;
+  justify-content: center;
+  background-color: black;
+  margin-top: 10px;
+}
+
+.round-score {
+  margin-bottom: 5px;
+  font-size: 2.5em;
+}
+
+.menu {
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.score-box {
+  margin: 10px 10px;
+  background-color: lightGray;
+  display: float;
+  justify-content: center;
+  padding: 10px 10px 10px 10px;
+}
+
+.scores-0, .scores-1 {
+  display: flex;
+  border: 1px solid #fff;
+  background-color: darkGray;
+  width: 700px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}

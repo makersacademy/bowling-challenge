@@ -2,37 +2,37 @@
 Bowling Challenge
 =================
 
-
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
 ## The Task
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
+## To use the scorecard
 
-* Forking this repo
+Currently, you can run the app from the repository:  
+$ git clone   git@github.com:Alexander-Blair/bowling-challenge.git  
+$ cd bowling-challenge  
+$ open index.html
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+Enter your roll! 
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+![main page](app/images/screenshot.png)
 
-### Optional Extras
+## Approach
 
-In any order you like:
+The page interacts with a number of Javascript objects in order to process the game, as follows:
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+- Game (holds the player (or players, at some point));
+- Player (has a scorecard and will have a name);
+- Scorecard (holds an array of rounds);
+- ScoreCardParser (parses scoreCard results into arrays);
+- Round (holds the scores and verifies the entries)
+- ScoreGenerator (calculates the score for each round and the whole game)
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+The number of pins you are able to choose is tightly controlled on the view and inside the round object.
+
+The basic logic - if the sum of the current round is a multiple of 10 (or empty), the next roll can be up to 10, otherwise it's 10 minus the previous throw.
 
 ## Bowling — how does it work?
 
@@ -64,12 +64,3 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

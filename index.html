@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <title>Welcome to Bowling!</title>
+    <link rel='stylesheet' href='app/styles/styles.css'/>
+  </head>
+  <body>
+    <!-- <div class='menu-container'>
+      <div class='menu'>
+        <div class='button'>New Game</div>
+      </div>
+    </div> -->
+    <div class='header-container'>
+      <div class='header'>
+        <h2>Current Score: <span id="current-score">0</span></h1>
+        <h2>Player 1</h1>
+        <h2>Round: <span id="round">1</span>, roll: <span id="roll">1</span></h2>
+      </div>
+    </div>
+
+    <div id='button-container' class='button-container'>
+      <div class='headers'>
+        <div id='_round' class='title'>
+          <h1>ROUND <span id="round-b">1</span></h1>
+        </div>
+      </div>
+      <div class='headers'>
+        <div class='title'>
+          <h2 id='enter-score'>ENTER SCORE:</h2>
+        </div>
+      </div>
+      <div id='scores' class="buttons">
+        <button id='0' class="button">0</button>
+        <button id='1' class="button">1</button>
+        <button id='2' class="button">2</button>
+        <button id='3' class="button">3</button>
+      </div>
+      <div id='scores' class="buttons">
+        <button id='4' class="button">4</button>
+        <button id='5' class="button">5</button>
+        <button id='6' class="button">6</button>
+        <button id='7' class="button">7</button>
+      </div>
+      <div id='scores' class="buttons">
+        <button id='8' class="button">8</button>
+        <button id='9' class="button">9</button>
+        <button id='10' class="button">X</button>
+      </div>
+    </div>
+    <div class='score-container'>
+      <div class='headers'>
+        <div class='title'>
+          <h1>SCORES:</h1>
+        </div>
+      </div>
+      <div class='score-container-0'>
+        <div class='scores-0'>
+          <div class='score-box'>
+            <div id='rolls-0' class='roll-score-container'>
+              <div id='roll-1' class='roll-score'></div>
+              <div id='roll-2' class='roll-score'></div>
+            </div>
+            <div class='round-score-container'>
+              <div id='score-0' class='round-score'>0</div>
+            </div>
+          </div>
+          <div class='score-box'>
+            <div id='rolls-1' class='roll-score-container'>
+              <div id='roll-1' class='roll-score'></div>
+              <div id='roll-2' class='roll-score'></div>
+            </div>
+            <div class='round-score-container'>
+              <div id='score-1' class='round-score'>-</div>
+            </div>
+          </div>
+          <div class='score-box'>
+            <div id='rolls-2' class='roll-score-container'>
+              <div id='roll-1' class='roll-score'></div>
+              <div id='roll-2' class='roll-score'></div>
+            </div>
+            <div class='round-score-container'>
+              <div id='score-2' class='round-score'>-</div>
+            </div>
+          </div>
+          <div class='score-box'>
+            <div id='rolls-3' class='roll-score-container'>
+              <div id='roll-1' class='roll-score'></div>
+              <div id='roll-2' class='roll-score'></div>
+            </div>
+            <div class='round-score-container'>
+              <div id='score-3' class='round-score'>-</div>
+            </div>
+          </div>
+          <div class='score-box'>
+            <div id='rolls-4' class='roll-score-container'>
+              <div id='roll-1' class='roll-score'></div>
+              <div id='roll-2' class='roll-score'></div>
+            </div>
+            <div class='round-score-container'>
+              <div id='score-4' class='round-score'>-</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='score-container-1'>
+        <div class='scores-1'>
+          <div class='score-box'>
+            <div id='rolls-5' class='roll-score-container'>
+              <div id='roll-1' class='roll-score'></div>
+              <div id='roll-2' class='roll-score'></div>
+            </div>
+            <div class='round-score-container'>
+              <div id='score-5' class='round-score'>-</div>
+            </div>
+          </div>
+          <div class='score-box'>
+            <div id='rolls-6' class='roll-score-container'>
+              <div id='roll-1' class='roll-score'></div>
+              <div id='roll-2' class='roll-score'></div>
+            </div>
+            <div class='round-score-container'>
+              <div id='score-6' class='round-score'>-</div>
+            </div>
+          </div>
+          <div class='score-box'>
+            <div id='rolls-7' class='roll-score-container'>
+              <div id='roll-1' class='roll-score'></div>
+              <div id='roll-2' class='roll-score'></div>
+            </div>
+            <div class='round-score-container'>
+              <div id='score-7' class='round-score'>-</div>
+            </div>
+          </div>
+          <div class='score-box'>
+            <div id='rolls-8' class='roll-score-container'>
+              <div id='roll-1' class='roll-score'></div>
+              <div id='roll-2' class='roll-score'></div>
+            </div>
+            <div class='round-score-container'>
+              <div id='score-8' class='round-score'>-</div>
+            </div>
+          </div>
+          <div class='score-box'>
+            <div id='rolls-9' class='roll-score-container'>
+              <div id='roll-1' class='roll-score'></div>
+              <div id='roll-2' class='roll-score'></div>
+              <div id='roll-3' class='roll-score'></div>
+            </div>
+            <div class='round-score-container'>
+              <div id='score-9' class='round-score'>-</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="jquery.js"></script>
+    <script src="app/src/game.js"></script>
+    <script src="app/src/player.js"></script>
+    <script src="app/src/scoreCard.js"></script>
+    <script src="app/src/scoreCardParser.js"></script>
+    <script src="app/src/round.js"></script>
+    <script src="app/src/scoreGenerator.js"></script>
+    <script src="app/src/helpers.js"></script>
+    <script src="app/scripts/functions.js"></script>
+  </body>
+</html>

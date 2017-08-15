@@ -121,7 +121,7 @@ Bowling.prototype._strike = function () {
 
 Bowling.prototype._spare = function () {
     if (this.frameCount > 1 && this.frameCount < 11) {
-      if ((c) && this.bowlScore[this.bowlCount - 4] != 10) {
+      if ((this.bowlScore[this.bowlCount - 4] + this.bowlScore[this.bowlCount - 3] === 10) && this.bowlScore[this.bowlCount - 4] != 10) {
       this.frameScore[this.frameCount - 2] += (this.bowlScore[this.bowlCount - 2]);
       this.totalScore += this.bowlScore[this.bowlCount - 2];
       if (this.frameScore[9] != null) { this.frameScore[9] += this.bowlScore[this.bowlCount - 2]};

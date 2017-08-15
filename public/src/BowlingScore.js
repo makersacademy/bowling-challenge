@@ -20,7 +20,8 @@ Bowling.prototype.enterBowlingScore = function (score) {
     if (this._isItEndOfGame()) throw "End of Game!"
     this.bowlScore.push(score)
     if (this.endOfGameCount === 21) {
-    this.totalScore += score;
+      this.totalScore += score;
+      this.frameScore[9] += this.bowlScore[this.bowlCount - 2];
     }
     this._changeFirstBowl();
     this._incrementBowlCount();
@@ -120,11 +121,10 @@ Bowling.prototype._strike = function () {
 };
 
 Bowling.prototype._spare = function () {
-    if (this.frameCount > 1 && this.frameCount < 11) {
+    if (this.frameCount > 1 && this.frameCount <= 11) {
       if ((this.bowlScore[this.bowlCount - 4] + this.bowlScore[this.bowlCount - 3] === 10) && this.bowlScore[this.bowlCount - 4] != 10) {
       this.frameScore[this.frameCount - 2] += (this.bowlScore[this.bowlCount - 2]);
       this.totalScore += this.bowlScore[this.bowlCount - 2];
-      if (this.frameScore[9] != null) { this.frameScore[9] += this.bowlScore[this.bowlCount - 2]};
     }
   }
 };

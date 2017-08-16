@@ -5,7 +5,7 @@ Bowling Challenge
 This model (written in JavaScript) counts and sums the scores of a bowling game for one player.
 
 
-## How to ue
+## How to use
 
 * Clone or download this repo.
 * Run tests by opening SpecRunner.html

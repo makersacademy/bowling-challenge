@@ -3,8 +3,8 @@
 describe ('Frame', function() {
   var frame;
 
-  beforeEach(function(){
-    frame = new Frame(2);
+  beforeEach(function() {
+    frame = new Frame();
   });
 
   describe('Should allow rolls and return the number of pins knocked', function() {
@@ -14,12 +14,12 @@ describe ('Frame', function() {
       expect(frame.getScore()).toEqual(pins);
     });
 
-    it('Receives two rolls and returns correct number of pins knocked', function() {
-      var pins1 = Math.floor(Math.random() * 10);
-      frame.roll(pins1);
-      var pins2 = Math.floor(Math.random() * 11 - pins1);
-      frame.roll(pins2);
-      expect(frame.getScore()).toEqual(pins1 + pins2);
+    it('Receives two rolls and returns total number of pins knocked', function() {
+      var roll1score = Math.floor(Math.random() * 10);
+      frame.roll(roll1score);
+      var roll2score = Math.floor(Math.random() * 11 - roll1score);
+      frame.roll(roll2score);
+      expect(frame.getScore()).toEqual(roll1score + roll2score);
     });
   });
 
@@ -46,37 +46,39 @@ describe ('Frame', function() {
     });
   });
 
-  describe('10th frame', function() {
-    beforeEach(function(){
-      frame = new Frame(3);
-    });
-
-    it('Complete after 3 rolls', function(){
-      frame.roll(2);
-      frame.roll(3);
-      expect(frame.isComplete()).toEqual(false);
-      frame.roll(1);
-      expect(frame.isComplete()).toEqual(true);
-    });
-  });
-
   describe('Should handle strikes and spares', function() {
     it('Has no strikes and spares at the beginning', function(){
-      expect(frame.hasStrike()).toEqual(false);
-      expect(frame.hasSpare()).toEqual(false);
+      expect(frame.needsBonus()).toEqual(false);
     });
 
     it('Has strike if 10 pins knocked by first roll', function(){
       frame.roll(10);
-      expect(frame.hasStrike()).toEqual(true);
-      expect(frame.hasSpare()).toEqual(false);
+      expect(frame.needsBonus()).toEqual(true);
     });
 
     it('Has spare if 10 pins knocked by two rolls', function(){
       frame.roll(3);
-      expect(frame.hasSpare()).toEqual(false);
+      expect(frame.needsBonus()).toEqual(false);
       frame.roll(7);
-      expect(frame.hasSpare()).toEqual(true);
+      expect(frame.needsBonus()).toEqual(true);
+    });
+  });
+
+  describe('Should handle strike and spare bonus points', function(){
+    it('Requires two bonus point top-ups after strike', function(){
+      frame.roll(10);
+      frame.addBonus(5);
+      expect(frame.needsBonus()).toEqual(true);
+      frame.addBonus(3);
+      expect(frame.needsBonus()).toEqual(false);
+    });
+
+    it('Requires one bonus point top-up after spare', function(){
+      frame.roll(3);
+      frame.roll(7);
+      expect(frame.needsBonus()).toEqual(true);
+      frame.addBonus(3);
+      expect(frame.needsBonus()).toEqual(false);
     });
   });
 });

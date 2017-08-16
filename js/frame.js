@@ -1,70 +1,74 @@
 'use strict';
 
-function Frame(maxRolls) {
-  this.maxRolls = maxRolls;
-  this.MAX_PINS = 10;
-  this.rolls = [];
-  this.complete = false;
-  this.strike = false;
-  this.spare = false;
-  this.isLast = false;
-};
-
-Frame.prototype.isComplete = function() {
-  return this.complete;
-};
-
-Frame.prototype.getScore = function() {
-  var sum = this.rolls.reduce((a, b) => a + b, 0);
-  return sum;
+function Frame() {
+  this.score = 0;
+  this.rollCount = 0;
+  this.bonusRollsNeeded = 0;
+  this.completion = false;
 };
 
 Frame.prototype.roll = function(pins) {
-  this._addRoll(pins);
-  this._completeFrameIfRequired();
-  this._registerBonusIfRequired();
+  this._rollCountUp();
+  this._increaseScore(pins);
+  this._setBonusIfEligible();
+  this._completeFrameIfEligible();
 };
 
-Frame.prototype.hasStrike = function() {
-  return this.strike;
+Frame.prototype.needsBonus = function() {
+  return this.bonusRollsNeeded > 0;
 };
 
-Frame.prototype.hasSpare = function() {
-  return this.spare;
+Frame.prototype.addBonus = function(pins) {
+  this._increaseScore(pins);
+  this.bonusRollsNeeded--;
 };
 
-Frame.prototype.addBonus = function(nextFrame, nextNextFrame) {
-  if(this.hasSpare()) { this._increaseKnockedPins(nextFrame.getScore())};
-  if(this.hasStrike()) {
-    this._increaseKnockedPins(nextFrame.getScore());
-    this._increaseKnockedPins(nextNextFrame.getScore());
-  };
+Frame.prototype.getScore = function() {
+  return this.score;
 };
 
-Frame.prototype.makeLast = function() {
-  this.isLast = true;
-};
-
-Frame.prototype.getRoll = function(n) {
-  return this.rolls[n];
+Frame.prototype.isComplete = function() {
+  return this.completion;
 };
 
 // Private implementation
 
-Frame.prototype._addRoll = function(pins) {
-  this.rolls.push(pins);
-};
-
-Frame.prototype._registerBonusIfRequired = function() {
-  if(this.getScore() === this.MAX_PINS) {
-    if(this.rolls.length === 1) {
-      this.strike = true;
+Frame.prototype._setBonusIfEligible = function(){
+  if(this.getScore() === 10){
+    if(this._getRollCount() === 1){
+      this._setStrike();
     } else {
-      this.spare = true;
+      this._setSpare();
     };
   };
 };
 
-Frame.prototype._completeFrameIfRequired = function() {
-  if(this.getScore() === this.MAX_PINS || this.rolls.length === this.maxRolls) { this.complete = true };
+Frame.prototype._increaseScore = function(pins) {
+  this.score += pins;
+};
+
+Frame.prototype._getRollCount = function(){
+  return this.rollCount;
+};
+
+Frame.prototype._rollCountUp = function() {
+  this.rollCount++;
+};
+
+Frame.prototype._setStrike = function() {
+  this.bonusRollsNeeded = 2;
+};
+
+Frame.prototype._setSpare = function() {
+  this.bonusRollsNeeded = 1;
+};
+
+Frame.prototype._completeFrameIfEligible = function(){
+  if(this._getRollCount() === 2 || this.getScore() === 10) {
+    this._completeFrame();
+  };
+};
+
+Frame.prototype._completeFrame = function() {
+  this.completion = true;
 };

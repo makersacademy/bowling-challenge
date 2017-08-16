@@ -12,13 +12,7 @@ Getting started
 
 1. `git clone https://github.com/BDCraven/bowling-challenge.git`
 2. cd bowling-challenge
-3. Run the command `gem install bundle` (if you don't have bundle already)
-4. When the installation completes, run `bundle`
-6. Open browser at index.html
-
-Usage
-
-`browser`
+3. Open browser at index.html
 
 Running tests
 

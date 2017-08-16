@@ -404,5 +404,76 @@ describe('Game', function() {
         });
       });
     });
+
+    describe('final frame is a bonus frame', function() {
+      beforeEach(function() {
+        game.receiveRoll(1);
+        game.receiveRoll(4);
+        game.receiveRoll(4);
+        game.receiveRoll(5);
+        game.receiveRoll(6);
+        game.receiveRoll(4);
+        game.receiveRoll(5);
+        game.receiveRoll(5);
+        game.receiveRoll(10);
+        game.receiveRoll(0);
+        game.receiveRoll(1);
+        game.receiveRoll(7);
+        game.receiveRoll(3);
+        game.receiveRoll(6);
+        game.receiveRoll(4);
+        game.receiveRoll(10);
+      });
+
+      describe('final frame is a spare', function() {
+        var frame;
+
+        beforeEach(function() {
+          game.receiveRoll(2);
+          game.receiveRoll(8);
+          frame = game.getCurrentFrame();
+          game.receiveRoll(6);
+        });
+
+        it('updates the final frame\'s first roll', function() {
+          expect(frame.getFirstRoll()).toEqual(2);
+        });
+
+        it('updates the final frame\'s first roll', function() {
+          expect(frame.getSecondRoll()).toEqual(8);
+        });
+
+        it('updates the final frame\'s first extra roll', function() {
+          expect(frame.getFirstExtraRoll()).toEqual(6);
+        });
+      });
+
+      describe('final frame is a spare', function() {
+        var frame;
+
+        beforeEach(function() {
+          game.receiveRoll(10);
+          frame = game.getCurrentFrame();
+          game.receiveRoll(6);
+          game.receiveRoll(2);
+        });
+
+        it('updates the final frame\'s first roll', function() {
+          expect(frame.getFirstRoll()).toEqual(2);
+        });
+
+        it('updates the final frame\'s first roll', function() {
+          expect(frame.getSecondRoll()).toEqual(8);
+        });
+
+        it('updates the final frame\'s first extra roll', function() {
+          expect(frame.getFirstExtraRoll()).toEqual(6);
+        });
+
+        it('updates the final frame\'s second extra roll', function() {
+          expect(frame.getSecondExtraRoll()).toEqual(6);
+        });
+      });
+    });
   });
 });

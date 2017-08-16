@@ -13,6 +13,8 @@ var Game = function(playerName, frameClass, playerClass) {
   this._isFirstRoll = true;
   this._runningTotal = 0;
   this._strikeChain = [];
+  this._hasExtraRolls = false;
+  this._isFirstExtraRolls = false;
 };
 
 Game.prototype._createEmptyFrames = function () {
@@ -49,14 +51,36 @@ Game.prototype.isFirstRoll = function () {
 
 Game.prototype.receiveRoll = function(pins) {
   var frame = this._frames[this._currentFrameNumber];
+  this._updateHasExtraRolls(frame);
   this._updateFrame(frame,pins);
   this._calculateScore();
-  if (!frame.isAStrike()) this._isFirstRoll = !this._isFirstRoll;
-  if (this._isFirstRoll) this._currentFrameNumber += 1;
+  this._updateFirstRoll(frame);
+  this._updateCurrentFrameNumber();
 };
 
 Game.prototype._updateFrame = function(frame, pins) {
-  this._isFirstRoll ? frame.setFirstRoll(pins) : frame.setSecondRoll(pins);
+  if (this._hasExtraRolls) {
+    this._isFirstExtraRoll ? frame.setFirstExtraRoll(pins) : frame.setSecondExtraRoll(pins);
+    this._isFirstExtraRoll = !this._isFirstExtraRoll;
+  } else {
+    this._isFirstRoll ? frame.setFirstRoll(pins) : frame.setSecondRoll(pins);
+  }
+};
+
+Game.prototype._updateFirstRoll = function(frame) {
+  if (!frame.isAStrike()) this._isFirstRoll = !this._isFirstRoll;
+};
+
+Game.prototype._updateHasExtraRolls = function(frame) {
+  if (this._currentFrameNumber === 9) {
+    debugger;
+    if (!frame.isOpen()) this.hasExtraRolls = true;
+  }
+};
+
+Game.prototype._updateCurrentFrameNumber = function() {
+  if (this._isFirstRoll) this._currentFrameNumber += 1;
+  if (this._currentFrameNumber === 10) this._currentFrameNumber = 9;
 };
 
 Game.prototype._calculateScore = function() {

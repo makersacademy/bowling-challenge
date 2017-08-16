@@ -24,3 +24,8 @@ Screenshot
 Testing
 ---
 [Testing](docs/testing.pdf)
+
+Self Review
+---
+
+[Self Review](docs/self_review.md)

@@ -26,6 +26,7 @@ describe ('Frame', function() {
   describe('Should throw', function() {
     it('When given wrong number of pins', function() {
       expect(function() {frame.roll(11)}).toThrow();
+      expect(function() {frame.roll(-1)}).toThrow();
     });
   });
 

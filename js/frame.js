@@ -9,7 +9,7 @@ function Frame() {
 };
 
 Frame.prototype.roll = function(pins) {
-  if(pins + this.getScore() > this.MAX_PINS ) { throw('Wrong number of pins') };
+  if(pins + this.getScore() > this.MAX_PINS || pins < 0) { throw('Received wrong number of pins') };
   this._rollCountUp();
   this._increaseScore(pins);
   this._setBonusIfEligible();

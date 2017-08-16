@@ -25,20 +25,20 @@ Game.prototype.isComplete = function() {
   return this.completion;
 };
 
-Game.prototype.getFrame = function(n) {
+// Private implementation
+
+Game.prototype._getFrame = function(n) {
   return this.frames[n-1];
 };
 
-// Private implementation
-
 Game.prototype._giveBonusPointsToEligibleFrames = function(pins) {
   if(this.currentFrameNo > 1) {
-    if(this.getFrame(this.currentFrameNo - 1).needsBonus()){
-      this.getFrame(this.currentFrameNo - 1).addBonus(pins);
+    if(this._getFrame(this.currentFrameNo - 1).needsBonus()){
+      this._getFrame(this.currentFrameNo - 1).addBonus(pins);
     };
     if(this.currentFrameNo > 2) {
-      if(this.getFrame(this.currentFrameNo - 2).needsBonus()){
-        this.getFrame(this.currentFrameNo - 2).addBonus(pins);
+      if(this._getFrame(this.currentFrameNo - 2).needsBonus()){
+        this._getFrame(this.currentFrameNo - 2).addBonus(pins);
       };
     };
   };

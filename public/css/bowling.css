@@ -1,0 +1,39 @@
+body {
+  background-image: url("http://www.truckersnews.com/wp-content/uploads/sites/117/2017/01/truck-stop-bowling-alley.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: grey;
+}
+
+.table {
+  border: 1px solid black;
+  padding: 15px;
+  text-align: center;
+  font-size: 150%;
+  font-family: Georgia;
+  border-style: dotted;
+  border-width: 3px;
+  border-color: white;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  font-size: 80px;
+  text-shadow: 2px 2px red;
+}
+
+h3 {
+  color: white;
+  font-size: 20px;
+  font-style: italic;
+  text-align: center;
+}
+
+img {
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+    max-height: 100%;
+    max-width: 100%;
+}

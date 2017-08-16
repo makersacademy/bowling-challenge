@@ -1,6 +1,7 @@
 'use strict';
 
 function Frame() {
+  this.MAX_PINS = 10;
   this.score = 0;
   this.rollCount = 0;
   this.bonusRollsNeeded = 0;
@@ -8,6 +9,7 @@ function Frame() {
 };
 
 Frame.prototype.roll = function(pins) {
+  if(pins + this.getScore() > this.MAX_PINS ) { throw('Wrong number of pins') };
   this._rollCountUp();
   this._increaseScore(pins);
   this._setBonusIfEligible();

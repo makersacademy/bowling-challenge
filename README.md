@@ -4,11 +4,13 @@ Bowling Challenge
 
 This model (written in JavaScript) counts and sums the scores of a bowling game for one player.
 
+
 ## How to ue
 
 * Clone or download this repo.
 * Run tests by opening SpecRunner.html
 * Wire `game.js` and `frame.js` to your project.
+
 
 ## Game method reference
 
@@ -36,6 +38,7 @@ Returns game score.
 ```
 game.getScore() // 300
 ```
+
 
 ## The Rules
 

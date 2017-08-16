@@ -1,0 +1,50 @@
+body {
+  font-family: fantasy;
+}
+section {
+  padding: 10px;
+}
+h1 {
+  text-align: center;
+  font-size: 250%;
+  padding: 10px;
+}
+h3 {
+  padding: 10px;
+}
+.buttons {
+  border-radius: 5px;
+  height: 30px;
+  width: 50px;
+  border: 1px solid;
+  background: #888888;
+  font-size: 100%;
+  color: #FFF;
+  margin-right: 10px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+.buttons:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+table {
+  border: 1px solid black;
+  width: 1400px;
+  background-color: #fafad2;
+}
+table {
+  border: 1px solid black;
+  text-align: center;
+}
+th {
+  border: 1px solid black;
+  text-align: center;
+  width: 50px;
+  padding: none;
+  font-size: 120%
+}
+td {
+  border: 1px solid black;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 120%
+}

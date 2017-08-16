@@ -61,8 +61,8 @@ Game.prototype.getFrame = function(n) {
   return this.frames[n-1];
 };
 
-
 // Private implementation
+
 Game.prototype._giveBonusPointsToEligibleFrames = function(pins) {
   if(this.currentFrameNo > 1) {
     if(this.getFrame(this.currentFrameNo - 1).needsBonus()){

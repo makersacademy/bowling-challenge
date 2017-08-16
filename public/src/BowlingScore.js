@@ -21,7 +21,7 @@ Bowling.prototype.enterBowlingScore = function (score) {
     this.bowlScore.push(score)
     if (this.endOfGameCount === 21) {
       this.totalScore += score;
-      this.frameScore[9] += this.bowlScore[this.bowlCount - 2];
+      this.frameScore[9] += this.bowlScore[this.bowlCount];
     }
     this._changeFirstBowl();
     this._incrementBowlCount();

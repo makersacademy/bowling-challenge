@@ -21,7 +21,7 @@ Game.prototype.roll = function(pins) {
 
   // Make final bonus rolls if needed
   if(!this.isComplete()){
-    if(this.frames.length === this.MAX_FRAMES){
+    if(this._maxFramesAchieved()){
       if(this.currentFrame.needsBonus()) {
         this.currentFrame.addBonus(pins);
       };
@@ -29,18 +29,16 @@ Game.prototype.roll = function(pins) {
   };
 
   // Update frames if required
-  if(this.currentFrame.isComplete()){
-    if(this.frames.length < this.MAX_FRAMES){
-      this._saveFrame(this.currentFrame);
-      if(this.frames.length < this.MAX_FRAMES) {
-        this.currentFrame = new Frame();
-        this._frameCountUp();
-      };
+  if(this.currentFrame.isComplete() && !this._maxFramesAchieved()){
+    this._saveFrame(this.currentFrame);
+    if(!this._maxFramesAchieved()) {
+      this.currentFrame = new Frame();
+      this._frameCountUp();
     };
   };
 
   // Complete the game if required
-  if(this.frames.length === this.MAX_FRAMES){
+  if(this._maxFramesAchieved()){
     if(!this._bonusRollNeeded()){
       this._setComplete();
     };
@@ -49,10 +47,8 @@ Game.prototype.roll = function(pins) {
 
 Game.prototype.getScore = function() {
   this.score = 0;
-  this.frame_no = 1
   this.frames.forEach(function(frame) {
     this.score += frame.getScore();
-    this.frame_no++;
   }, this);
   return this.score;
 };
@@ -78,6 +74,10 @@ Game.prototype._giveBonusPointsToEligibleFrames = function(pins) {
       };
     };
   };
+};
+
+Game.prototype._maxFramesAchieved = function() {
+  return this.frames.length === this.MAX_FRAMES;
 };
 
 Game.prototype._saveFrame = function(frame) {

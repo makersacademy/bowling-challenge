@@ -10,15 +10,15 @@ function Game(){
 
 Game.prototype.roll = function(pins) {
   this._giveBonusPointsToEligibleFrames(pins);
-  this._rollToCurrentFrame(pins);
-  this._finalBonusRollIfRequired(pins);
+  this._rollToCurrentFrameIfEligible(pins);
+  this._makeFinalBonusRollIfRequired(pins);
   this._saveCurrentFrameIfRequired();
   this._startNewFrameIfRequired();
   this._completeTheGameIfRequired();
 };
 
 Game.prototype.getScore = function() {
-  return this.frames.reduce(this._sumeFrameScores, 0);
+  return this.frames.reduce(this._sumFrameScores, 0);
 };
 
 Game.prototype.isComplete = function() {
@@ -44,13 +44,19 @@ Game.prototype._giveBonusPointsToEligibleFrames = function(pins) {
   };
 };
 
-Game.prototype._maxFramesAchieved = function() {
-  return this.frames.length === this.MAX_FRAMES;
-};
-
-Game.prototype._rollToCurrentFrame = function(pins) {
+Game.prototype._rollToCurrentFrameIfEligible = function(pins) {
   if(!this.currentFrame.isComplete()) {
     this.currentFrame.roll(pins);
+  };
+};
+
+Game.prototype._makeFinalBonusRollIfRequired = function(pins) {
+  if(this._maxFramesAchieved()){
+    if(!this.isComplete()){
+      if(this.currentFrame.needsBonus()) {
+        this.currentFrame.addBonus(pins);
+      };
+    };
   };
 };
 
@@ -75,14 +81,8 @@ Game.prototype._completeTheGameIfRequired = function() {
   };
 };
 
-Game.prototype._finalBonusRollIfRequired = function(pins) {
-  if(this._maxFramesAchieved()){
-    if(!this.isComplete()){
-      if(this.currentFrame.needsBonus()) {
-        this.currentFrame.addBonus(pins);
-      };
-    };
-  };
+Game.prototype._maxFramesAchieved = function() {
+  return this.frames.length === this.MAX_FRAMES;
 };
 
 Game.prototype._saveFrame = function(frame) {
@@ -107,6 +107,6 @@ Game.prototype._bonusRollNeeded = function() {
   return toReturn;
 };
 
-Game.prototype._sumeFrameScores = function(sum, frame) {
+Game.prototype._sumFrameScores = function(sum, frame) {
     return sum + frame.getScore();
 };

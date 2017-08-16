@@ -30,7 +30,7 @@ describe('Game', function() {
       expect(game.getScore()).toEqual(300);
     });
 
-    it('Example score', function() {
+    it('Given example score', function() {
       var rolls = [1,4,4,5,6,4,5,5,10,0,1,7,3,6,4,10,2,8,6];
       rolls.forEach(function(pins){
         game.roll(pins);

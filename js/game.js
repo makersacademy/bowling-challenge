@@ -6,51 +6,19 @@ function Game(){
   this.currentFrame = new Frame();
   this.frames = [];
   this.currentFrameNo = 1;
-  this.score = 0;
 };
 
 Game.prototype.roll = function(pins) {
-
-  // Give bonus points to the eligible frames
   this._giveBonusPointsToEligibleFrames(pins);
-
-  // Roll to the current frame if it's not yet complete
-  if(!this.currentFrame.isComplete()) {
-    this.currentFrame.roll(pins);
-  };
-
-  // Make final bonus rolls if needed
-  if(!this.isComplete()){
-    if(this._maxFramesAchieved()){
-      if(this.currentFrame.needsBonus()) {
-        this.currentFrame.addBonus(pins);
-      };
-    };
-  };
-
-  // Update frames if required
-  if(this.currentFrame.isComplete() && !this._maxFramesAchieved()){
-    this._saveFrame(this.currentFrame);
-    if(!this._maxFramesAchieved()) {
-      this.currentFrame = new Frame();
-      this._frameCountUp();
-    };
-  };
-
-  // Complete the game if required
-  if(this._maxFramesAchieved()){
-    if(!this._bonusRollNeeded()){
-      this._setComplete();
-    };
-  };
+  this._rollToCurrentFrame(pins);
+  this._finalBonusRollIfRequired(pins);
+  this._saveCurrentFrameIfRequired();
+  this._startNewFrameIfRequired();
+  this._completeTheGameIfRequired();
 };
 
 Game.prototype.getScore = function() {
-  this.score = 0;
-  this.frames.forEach(function(frame) {
-    this.score += frame.getScore();
-  }, this);
-  return this.score;
+  return this.frames.reduce(this._sumeFrameScores, 0);
 };
 
 Game.prototype.isComplete = function() {
@@ -80,6 +48,43 @@ Game.prototype._maxFramesAchieved = function() {
   return this.frames.length === this.MAX_FRAMES;
 };
 
+Game.prototype._rollToCurrentFrame = function(pins) {
+  if(!this.currentFrame.isComplete()) {
+    this.currentFrame.roll(pins);
+  };
+};
+
+Game.prototype._saveCurrentFrameIfRequired = function() {
+  if(this.currentFrame.isComplete() && !this._maxFramesAchieved()){
+    this._saveFrame(this.currentFrame);
+  };
+};
+
+Game.prototype._startNewFrameIfRequired = function() {
+  if(this.currentFrame.isComplete() && !this._maxFramesAchieved()){
+      this.currentFrame = new Frame();
+      this._frameCountUp();
+  };
+};
+
+Game.prototype._completeTheGameIfRequired = function() {
+  if(this._maxFramesAchieved()){
+    if(!this._bonusRollNeeded()){
+      this._setComplete();
+    };
+  };
+};
+
+Game.prototype._finalBonusRollIfRequired = function(pins) {
+  if(this._maxFramesAchieved()){
+    if(!this.isComplete()){
+      if(this.currentFrame.needsBonus()) {
+        this.currentFrame.addBonus(pins);
+      };
+    };
+  };
+};
+
 Game.prototype._saveFrame = function(frame) {
   this.frames.push(frame);
 };
@@ -100,4 +105,8 @@ Game.prototype._bonusRollNeeded = function() {
     };
   });
   return toReturn;
+};
+
+Game.prototype._sumeFrameScores = function(sum, frame) {
+    return sum + frame.getScore();
 };

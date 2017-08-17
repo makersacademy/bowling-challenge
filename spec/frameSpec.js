@@ -15,11 +15,14 @@ describe ('Frame', function() {
     });
 
     it('Receives two rolls and returns total number of pins knocked', function() {
-      var roll1score = Math.floor(Math.random() * 10);
-      frame.roll(roll1score);
-      var roll2score = Math.floor(Math.random() * 11 - roll1score);
-      frame.roll(roll2score);
-      expect(frame.getScore()).toEqual(roll1score + roll2score);
+      for(var i = 0; i <= 10; i++) {
+        var roll1score = Math.floor(Math.random() * 11);
+        frame.roll(roll1score);
+        var roll2score = Math.floor(Math.random() * (11 - roll1score));
+        frame.roll(roll2score);
+        expect(frame.getScore()).toEqual(roll1score + roll2score);
+        frame = new Frame();
+      };
     });
   });
 

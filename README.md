@@ -1,5 +1,5 @@
 
-Bowling Challenge
+MakersAcademy Bowling Challenge
 =================
 
 

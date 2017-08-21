@@ -1,0 +1,65 @@
+body {
+  background: url('http://rivercityrecreation.townsquareinteractive.com/files/2013/03/light-wood-BK.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.input {
+  padding-top: 10%;
+  height: 15%;
+  background: transparent;
+}
+
+.box {
+  margin-left: 35%;
+  margin-right: 35%;
+  background:#fff;
+  transition:all 0.2s ease;
+  border:2px solid #dadada;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-clip: padding-box;
+  min-height:150px;
+  box-shadow: 0px 0px 3px 3px black;
+}
+
+.box .box-content{
+ margin-top: 5%;
+ padding-bottom: 5%;
+ height: 50%;
+ border-radius: 0 0 2px 2px;
+ background-clip: padding-box;
+ box-sizing: border-box;
+ min-width: 100px;
+ min-height:100px;
+}
+
+.box .box-header{
+ margin-top: 50px;
+ height: 50%;
+ border-radius: 0 0 2px 2px;
+ background-clip: padding-box;
+ box-sizing: border-box;
+}
+
+.box .turn-buttons{
+ margin-top: 5%;
+ height: 50%;
+}
+
+.input-number {
+  margin: 0 5% 0 5%;
+}
+
+.table{
+background-color: white;
+ border-collapse: separate !important;
+ border-radius: 2px 2px 2px 2px;
+ width: 75%;
+ table-layout: fixed;
+ text-align: center;
+ box-shadow: 0px 0px 3px 3px black;
+
+}

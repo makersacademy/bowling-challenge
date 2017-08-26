@@ -1,0 +1,48 @@
+h1 {
+  color: red;
+  text-shadow: 0 0 4px black;
+}
+
+h4 {
+  color: black;
+}
+
+button {
+  bakground-color: lightyellow;
+}
+
+body {
+  background-color: #D4AF37;
+}
+
+/*input[type="button"] {
+  background-color: Cornflowerblue;
+  color: white;
+}*/
+
+#scores {
+  width: 100%;
+}
+
+#score, th {
+  background-color: red;
+  color: black;
+}
+
+#scores, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+padding: 5px;
+text-align: left;
+}
+
+td {
+  background-color: white;
+}
+
+#murray {
+  width: 100%;
+}

@@ -5,7 +5,7 @@
 ## Instructions
 
 - Clone this repo
-- Open Bowling.html in your browser
+- Open Bowling.html in your browser - you will see a scorecard like the image below
 - Click the numbered buttons to log your score for each bowl
 - Click "Calculate score" to update your current score
 

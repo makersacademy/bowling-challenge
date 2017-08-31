@@ -8,11 +8,11 @@
 - Open Bowling.html in your browser
 - Click the numbered buttons to log your score for each bowl
 - Click "Calculate score" to update your current score
-- If you click a button which is more than the remaining pins, nothing will happen
+
+![Screenshot of scorecard](https://raw.githubusercontent.com/Kynosaur/bowling-challenge/master/bowling-scorecard-screenshot.png)
 
 ## Known issues
 
-- No obvious error messages will be displayed (although you can see these in the console log)
 - The score layout doesn't look as nice as I would like (X and / for strikes and spares, and showing a running total in the space under each frame would be nice)
 - I would like to remove the calculate score button and automate this process in the future
 

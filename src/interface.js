@@ -4,8 +4,16 @@ $(document).ready(function() {
   $('#ballnumber').text(player.ball);
 
   $('#bowl').on('click', function() {
-  if (player.bowled == 20 && player.ball == 1) {
-    alert( 'You have finished your game!' );
+  if (player.bowled >= 20 && player.ball == 1) {
+    if (player.hasStrike == true || player.hasSpare == true){
+      player.tenthFrame();
+      $('#results').append(
+        '<tr><td>' + player.frame + '</td><td>' + player.ball + '</td><td>' + player.ball3 + '</td><td>' + player.scoreCard.total + '</td></tr>');
+        player.hasSpare = false;
+        player.hasStrike = false;
+    }else{
+      alert ( 'You have finished your game!' );
+    };
   }else{
       var score;
       player.bowl();

@@ -67,5 +67,13 @@ Player.prototype.updateFrame = function (){
   };
 };
 
+Player.prototype.tenthFrame = function (){
+  this.ball3 = _getRandomInt(0,10);
+  this.scoreCard.calculateScore(this.ball, this.ball3, this.hasSpare, this.hasStrike);
+  this.scoreCard.recordScore(this.scoreCard.score);
+  this.scoreCard.calcTotal();
+
+};
+
 
 // //////////////

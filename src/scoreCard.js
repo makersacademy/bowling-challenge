@@ -1,16 +1,20 @@
 var ScoreCard = function () {
   this.results = [];
-  this.total = 0;
+  // this.total = 0;
   this.score = 0;
 };
 
-ScoreCard.prototype.calculateScore = function(ball1, ball2, hasSpare, hasStrike) {
-  if (hasSpare === false && hasStrike === false) {
-    this.score = ball1 + ball2;
+ScoreCard.prototype.calculateScore = function(ball, pins, hasSpare, hasStrike) {
+  if (hasStrike === true) {
+    this.score = pins * 2;
   }else if (hasSpare === true){
-    this.score = (ball1 * 2) + ball2;
+    if (ball === 1){
+      this.score = pins * 2;
+    }else{
+      this.score = pins;
+    };
   }else{
-    this.score = (ball1 + ball2)*2;
+    this.score = pins;
   };
 };
 
@@ -19,8 +23,7 @@ ScoreCard.prototype.recordScore = function(score){
 };
 
 ScoreCard.prototype.calcTotal = function(){
-  console.log('hello');
-  console.log(this.total);
+  this.total = 0;
   for (var scoreIndex =0; scoreIndex < this.results.length; scoreIndex++){
     this.total += this.results[scoreIndex];
   };

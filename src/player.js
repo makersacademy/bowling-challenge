@@ -3,6 +3,7 @@ var Player = function () {
   this.ball2 = 0;
   this.ball = 1;
   this.bowled = 0;
+  this.frame = 1;
   // this.score = 0;
   this.hasSpare = false;
   this.hasStrike = false;
@@ -18,27 +19,48 @@ _getRandomInt = function(min, max) {
 
 Player.prototype.bowl = function() {
   if (this.ball === 2){
-    // console.log('bowls ball2');
-    this.ball2 += _getRandomInt(this.ball1,10);
-    this.ball --;
+    this.ball2 = _getRandomInt(0,10-this.ball1);
   }else{
-    // console.log('bowls ball1');
-    this.ball1 += _getRandomInt(0,10);
-    this.ball ++;
+    this.ball1 = _getRandomInt(0,10);
   };
   this.bowled ++;
 };
 
+Player.prototype.switchBall = function() {
+  if (this.ball === 2){
+    this.ball --;
+  }else{
+    this.ball ++;
+  };
+};
+
+
 Player.prototype.finishTurn = function() {
-  this.scoreCard.calculateScore(this.ball1, this.ball2, this.hasSpare, this.hasStrike);
+  var score;
+  if (this.ball === 1){
+    score = this.ball1;
+  }else{
+    score = this.ball2;
+  };
+  this.scoreCard.calculateScore(this.ball, score, this.hasSpare, this.hasStrike);
   this.scoreCard.recordScore(this.scoreCard.score);
   this.scoreCard.calcTotal();
-  if (this.ball1 + this.ball2 === 10){
-    if (this.ball1 === 10){
-      this.hasStrike = true;
-    }else{
-      this.hasSpare = true;
-    };
+};
+
+Player.prototype.calcSparesAndStrikes = function(){
+  if (this.ball1 === 10){
+    this.hasStrike = true;
+  }else if (this.ball1 + this.ball2 === 10){
+    this.hasSpare = true;
+  }else{
+    this.hasStrike = false;
+    this.hasSpare = false;
+  };
+};
+
+Player.prototype.updateFrame = function (){
+  if (this.bowled % 2 == 0){
+    this.frame ++;
   };
 };
 

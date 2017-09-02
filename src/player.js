@@ -47,14 +47,17 @@ Player.prototype.finishTurn = function() {
   this.scoreCard.calcTotal();
 };
 
+// only do these after ball2
 Player.prototype.calcSparesAndStrikes = function(){
-  if (this.ball1 === 10){
-    this.hasStrike = true;
-  }else if (this.ball1 + this.ball2 === 10){
-    this.hasSpare = true;
-  }else{
-    this.hasStrike = false;
-    this.hasSpare = false;
+  if (this.bowled % 2 == 0){
+    if (this.ball1 === 10){
+      this.hasStrike = true;
+    }else if (this.ball1 + this.ball2 === 10){
+      this.hasSpare = true;
+    }else{
+      this.hasStrike = false;
+      this.hasSpare = false;
+    };
   };
 };
 
@@ -63,5 +66,6 @@ Player.prototype.updateFrame = function (){
     this.frame ++;
   };
 };
+
 
 // //////////////

@@ -4,19 +4,23 @@ $(document).ready(function() {
   $('#ballnumber').text(player.ball);
 
   $('#bowl').on('click', function() {
-    var score;
-    player.bowl();
-    player.finishTurn();
-    if (player.ball === 1){
-      score = player.ball1;
-    }else{
-      score = player.ball2;
+  if (player.bowled == 20 && player.ball == 1) {
+    alert( 'You have finished your game!' );
+  }else{
+      var score;
+      player.bowl();
+      player.finishTurn();
+      if (player.ball === 1){
+        score = player.ball1;
+      }else{
+        score = player.ball2;
+      };
+      $('#results').append(
+        '<tr><td>' + player.frame + '</td><td>' + player.ball + '</td><td>' + score + '</td><td>' + player.scoreCard.total + '</td></tr>');
+      player.calcSparesAndStrikes();
+      player.switchBall();
+      player.updateFrame();
     };
-    $('#results').append(
-      '<tr><td>' + player.frame + '</td><td>' + player.ball + '</td><td>' + score + '</td><td>' + player.scoreCard.total + '</td></tr>');
-    player.calcSparesAndStrikes();
-    player.switchBall();
-    player.updateFrame();
   });
 
 });

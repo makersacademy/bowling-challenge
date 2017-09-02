@@ -1,8 +1,11 @@
 $(document).ready(function() {
   var player = new Player;
 
-  $('#ballnumber').text(player.ball);
+  function updateBallNumber() {
+    $('#ballnumber').text(player.ball);
+  };
 
+  updateBallNumber();
   $('#bowl').on('click', function() {
   if (player.bowled >= 20 && player.ball == 1) {
     if (player.hasStrike == true || player.hasSpare == true){
@@ -29,6 +32,7 @@ $(document).ready(function() {
       player.switchBall();
       player.updateFrame();
     };
+    updateBallNumber();
   });
 
 });

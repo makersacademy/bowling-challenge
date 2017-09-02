@@ -17,7 +17,6 @@ _getRandomInt = function(min, max) {
 };
 
 Player.prototype.bowl = function() {
-  console.log('hello');
   if (this.ball === 2){
     // console.log('bowls ball2');
     this.ball2 += _getRandomInt(this.ball1,10);
@@ -32,6 +31,8 @@ Player.prototype.bowl = function() {
 
 Player.prototype.finishTurn = function() {
   this.scoreCard.calculateScore(this.ball1, this.ball2, this.hasSpare, this.hasStrike);
+  this.scoreCard.recordScore(this.scoreCard.score);
+  this.scoreCard.calcTotal();
   if (this.ball1 + this.ball2 === 10){
     if (this.ball1 === 10){
       this.hasStrike = true;

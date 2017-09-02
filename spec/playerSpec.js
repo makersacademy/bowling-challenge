@@ -23,8 +23,8 @@ describe('Player', function() {
     player.bowl = function() {player.ball2 = 5};
     player.bowl();
     player.finishTurn();
-    console.log(player.ball1);
-    console.log(player.ball2);
+    // console.log(player.ball1);
+    // console.log(player.ball2);
     expect(player.hasSpare).toBeTruthy();
   });
 

@@ -19,7 +19,7 @@ Game.prototype.tryFinalize = function (frame, index) {
 
   // does the frame require a bonus?
   if (frame.total() != 10) {
-    return false;
+    return true;
   }
   // is this the last frame?
   else if (index == 11) {

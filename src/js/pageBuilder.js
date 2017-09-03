@@ -30,8 +30,8 @@ function drawControls (game) {
 }
 
 function reDraw (game) {
-  
-  if (game.frameIndex < 11) {
+
+  if ( (game.frameIndex == 10 && game.frames[9].total() === 10) || game.frameIndex < 10) {
     document.getElementById("game-controls").innerHTML = drawControls(game);
   }
   else {

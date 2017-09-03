@@ -1,3 +1,8 @@
-"scripts": {
-  "test": "grunt travis --verbose"
-}
+"devDependencies": {
+   "grunt": "~0.4",
+   "grunt-contrib-jasmine": "~0.4.2",
+   "phantomjs": "1.9.0-1"
+ },
+ "scripts": {
+   "test": "grunt test"
+ },

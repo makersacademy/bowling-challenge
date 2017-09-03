@@ -1,10 +1,10 @@
 var Player = function () {
   this.ball1 = 0;
   this.ball2 = 0;
+  this.currentPins = 0;
   this.ball = 1;
   this.bowled = 0;
-  this.frame = 1;
-  // this.score = 0;
+  this.frame = 0;
   this.hasSpare = false;
   this.hasStrike = false;
   this.scoreCard = new ScoreCard;
@@ -20,8 +20,10 @@ _getRandomInt = function(min, max) {
 Player.prototype.bowl = function() {
   if (this.ball === 2){
     this.ball2 = _getRandomInt(0,10-this.ball1);
+    this.currentPins = this.ball2;
   }else{
     this.ball1 = _getRandomInt(0,10);
+    this.currentPins = this.ball1;
   };
   this.bowled ++;
 };
@@ -36,13 +38,7 @@ Player.prototype.switchBall = function() {
 
 
 Player.prototype.finishTurn = function() {
-  var score;
-  if (this.ball === 1){
-    score = this.ball1;
-  }else{
-    score = this.ball2;
-  };
-  this.scoreCard.calculateScore(this.ball, score, this.hasSpare, this.hasStrike);
+  this.scoreCard.calculateScore(this.ball, this.currentPins, this.hasSpare, this.hasStrike);
   this.scoreCard.recordScore(this.scoreCard.score);
   this.scoreCard.calcTotal();
 };
@@ -68,6 +64,7 @@ Player.prototype.updateFrame = function (){
 };
 
 Player.prototype.tenthFrame = function (){
+  this.ball = 3;
   this.ball3 = _getRandomInt(0,10);
   this.scoreCard.calculateScore(this.ball, this.ball3, this.hasSpare, this.hasStrike);
   this.scoreCard.recordScore(this.scoreCard.score);

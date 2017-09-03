@@ -3,6 +3,7 @@ jasmine: {
     src: jsFiles,
     options: {
       specs: 'spec/*Spec.js',
+      keepRunner: true
       // template: "SpecRunner.html",
       // templateOptions: {
       //   application_id: process.env.ALGOLIA_APPLICATION_ID,
@@ -10,4 +11,8 @@ jasmine: {
       // }
     }
   }
-},
+}
+
+grunt.registerTask('travis', [
+       'jasmine'
+   ]);

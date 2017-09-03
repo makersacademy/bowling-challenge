@@ -4,12 +4,12 @@ var FrameType = {
     GUTTER : 1,
     OPEN : 2,
     SPARE : 3,
-    STRIKE : 4,
-    BONUS : 5
+    STRIKE : 4
 };
 
 var Frame = function () {
   this.scores = [];
+  this.bonus = 0;
   this.frameType = FrameType.PENDING;
 };
 
@@ -21,17 +21,18 @@ Frame.prototype.total = function () {
   if (score > 10) {
     score = 10;
   }
-  return score;
+  return score + this.bonus;
 };
+
+Frame.prototype.setBonus = function (score) {
+  this.bonus = score;
+}
 
 Frame.prototype.getFrameType = function () {
   var frameTotal = this.total()
   var balls = this.scores.length
 
-  if (balls > 2) {
-    return FrameType.BONUS;
-  }
-  else if (balls === 1 && frameTotal === 10) {
+  if (balls === 1 && frameTotal === 10) {
     return FrameType.STRIKE;
   }
   else if (balls === 2 && frameTotal === 10) {
@@ -49,10 +50,7 @@ Frame.prototype.getFrameType = function () {
 };
 
 Frame.prototype.addScore = function (score) {
-  currentTotal = this.total()
-  if (currentTotal + score > 10) {
-    score = 10 - currentTotal;
-  }
+  currentTotal = this.total();
   this.scores.push(score);
   this.frameType = this.getFrameType();
 };

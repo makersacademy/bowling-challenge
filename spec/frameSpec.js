@@ -19,6 +19,10 @@ describe('Frame', function(){
     it('starting total is 0', function(){
       expect(frame.total()).toEqual(0);
     });
+
+    it('starting bonus is 0', function(){
+      expect(frame.bonus).toEqual(0);
+    });
   });
 
   describe('when a score is added', function(){
@@ -48,10 +52,17 @@ describe('Frame', function(){
       expect(frame.total()).toEqual(8);
     });
 
-    it('score can not be over 10', function(){
+    it('score can not be over 10 without bonus', function(){
       frame.addScore(8);
       frame.addScore(8);
       expect(frame.total()).toEqual(10);
+    });
+
+    it('includes bonus', function(){
+      frame.addScore(5);
+      frame.addScore(3);
+      frame.setBonus(5);
+      expect(frame.total()).toEqual(13);
     });
   });
 
@@ -90,14 +101,6 @@ describe('Frame', function(){
       it('when 1 ball has been played with a score of 10', function(){
         frame.addScore(10);
         expect(frame.frameType).toEqual(FrameType.STRIKE);
-      });
-    });
-    describe('frame type: BONUS', function(){
-      it('when 1 ball has been played with a score of 10', function(){
-        frame.addScore(10);
-        frame.addScore(2);
-        frame.addScore(2);
-        expect(frame.frameType).toEqual(FrameType.BONUS);
       });
     });
   });

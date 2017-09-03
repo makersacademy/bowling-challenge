@@ -35,17 +35,17 @@ describe('Player', function() {
     expect(player.hasStrike).toBeTruthy();
   });
 
-  it('gets an error message if they try to bowl after the end', function() {
-    alert_msg = '_default_';
-    spy = spyOn($(document), 'alert').andCallFake(function(msg) {
-     alert_msg = msg;
-    });
-    player.bowled = 20;
-    player.hasSpare = false;
-    player.hasStrike = false;
-    player.bowl();
-    expect(alert_msg).toEqual('You have finished your game!');
-  });
+  // it('gets an error message if they try to bowl after the end', function() {
+  //   alert_msg = '_default_';
+  //   spy = spyOn($(document), 'alert').andCallFake(function(msg) {
+  //    alert_msg = msg;
+  //   });
+  //   player.bowled = 20;
+  //   player.hasSpare = false;
+  //   player.hasStrike = false;
+  //   player.bowl();
+  //   expect(alert_msg).toEqual('You have finished your game!');
+  // });
 
   it('gets an extra turn if he bowls a spare in the tenth frame', function() {
     player.bowled = 20;

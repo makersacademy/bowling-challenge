@@ -14,54 +14,55 @@ Game.prototype.currentFrame = function () {
 
 Game.prototype.tryFinalize = function (frame, index) {
 
-  if (index == 11) {
-    return true;
-  }
-
   balls = frame.scores.length;
   bonus = 0;
 
   // does the frame require a bonus?
-  if (frame.total() === 10) {
+  if (frame.total() != 10) {
+    return false;
+  }
+  // is this the last frame?
+  else if (index == 11) {
+    return true;
+  }
 
-    nextFrame = this.frames[index + 1];
+  nextFrame = this.frames[index + 1];
 
-    // is it a spare bonus?
-    if (balls === 2) {
+  // is it a spare bonus?
+  if (balls === 2) {
 
-      if (nextFrame.scores.length > 0) {
-        bonus += nextFrame.scores[0]
+    if (nextFrame.scores.length > 0) {
+      bonus += nextFrame.scores[0]
+    }
+    // otherwise try again next ball
+    else {
+      return false;
+    }
+  }
+
+  // is it a strike bonus?
+  else if (balls === 1) {
+
+    // are the next 2 balls both in the next frame?
+    if ( nextFrame.scores.length === 2) {
+      bonus += nextFrame.total();
+    }
+
+    // was the next frame a strike?
+    else if (nextFrame.frameType == FrameType.STRIKE) {
+
+      // get second bonus from the frame after
+      frameAfter = this.frames[index + 2];
+      if (frameAfter.scores.length > 0) {
+        bonus += frameAfter.scores[0] + 10;
       }
-      // otherwise try again next ball
       else {
         return false;
       }
     }
-
-    // is it a strike bonus?
-    else if (balls === 1) {
-
-      // are the next 2 balls both in the next frame?
-      if ( nextFrame.scores.length === 2) {
-        bonus += nextFrame.total();
-      }
-
-      // was the next frame a strike?
-      else if (nextFrame.scores.length === 1 && nextFrame.scores[0] === 10) {
-
-        // get second bonus from the frame after
-        frameAfter = this.frames[index + 2];
-        if (frameAfter.scores.length > 0) {
-          bonus += frameAfter.scores[0] + 10;
-        }
-        else {
-          return false;
-        }
-      }
-      // if not try again next ball
-      else {
-        return false;
-      }
+    // if not try again next ball
+    else {
+      return false;
     }
   }
   frame.setBonus(bonus);

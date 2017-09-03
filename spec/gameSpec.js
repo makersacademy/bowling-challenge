@@ -32,7 +32,7 @@ describe('Game', function(){
     it('returns the correct frame (0)', function(){
       expect(game.currentFrame()).toEqual(game.frames[0]);
     });
-    it('returns the correct frame (0)', function(){
+    it('returns the correct frame (1)', function(){
       game.ball(4);
       game.ball(4);
       game.ball(4);

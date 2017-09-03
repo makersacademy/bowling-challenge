@@ -1,10 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="thermostat.js"></script>
-    <link rel="stylesheet" type="text/css" href="thermostat.css">
-  </head>
-  <body>
+    <meta charset="utf-8" />
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="js/frame.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/pageBuilder.js"></script>
+
+    <script>
+      var game = new Game();
+
+      $(document).ready(function(){
+        reDraw(game);
+      });
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="css/bowlingScores.css">
+  </head>
+
+  <body>
+    <div class="page">
+
+      <div class="title">
+        <center>
+          <h1 class="title">
+            Bowling Score Calculator
+          </h1>
+        </center>
+      </div>
+
+      <center>
+        <div class="game-controls" id="game-controls">
+          <!-- the javascript will complete this -->
+        </div>
+      </center>
+
+      <br />
+
+      <div class="game-holder">
+        <center>
+          <table class="game-table">
+            <tr class="game" id="game-table-row">
+              <!-- the javascript will complete this -->
+            </tr>
+          </table>
+        </center>
+      </div>
+
+      <div class="total">
+        <center>
+          <h2 class="total" id="score-total"></h2>
+        </center>
+      </div>
+    </div>
   </body>
 </html>

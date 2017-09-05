@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling Challenge</title>
+    <script src="src/jquery.js"></script>
+    <script src="src/game.js"></script>
+    <script src="src/frame.js"></script>
+    <script src="src/role.js"></script>
+    <script src="src/jQueryInterface.js"></script>
+    <link rel="stylesheet" type="text/css" href="CSS/bowlingStylesheet.css">
+  </head>
+  <body>
+    <div class="header">
+      <h1>Bowling Calculator</h1>
+    </div>
+    <div class="beforeGame">
+      <p>To start a game, please press start</p>
+      <button id="startGame" type="button" name="startGame">Start</button>
+    </div>
+    <div class="duringGame">
+      <p>Please enter points as an array. See example of format below.</p>
+      <input id="text" type="text" name="numberInput" placeholder="Points scored">
+      <button id="submit" type="submit" name="inputButton">Submit</button>
+      <p>Example: [[1,4],[4,5],[6,4],[5,5],[10],[0,1],[7,3],[6,4],[10],[2,8]],[6]</p>
+      <p>All regular points in array of arrays. Separate array for one array. If you hit a strike enter [10,0] for that frame. In case of strike or spare in last frame: enter a separate array after the 'regular' array with either one entry( in case of spare) or 2 entries(strike). </p>
+    </div>
+
+
+  </body>
+</html>

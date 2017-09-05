@@ -23,6 +23,8 @@ As usual please start by
 
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
+Also, don't generate random rolls. Trust us on this one.
+
 ### Optional Extras
 
 In any order you like:

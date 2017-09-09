@@ -1,10 +1,7 @@
 var Player = function () {
-  this.ball1 = undefined;
-  this.ball2 = undefined;
-  this.currentPins = 0;
+  this.frame = 0;
   this.ball = 1;
   this.bowled = 0;
-  this.frame = 0;
   this.hasSpare = false;
   this.hasStrike = false;
   this.scoreCard = new ScoreCard;

@@ -14,10 +14,10 @@ describe('Player', function() {
   it('bowls a spare and records it', function() {
     player.bowl(5);
     player.finishBall();
+    player.calcSparesAndStrikes();
     player.switchBall();
     player.bowl(5);
     player.finishBall();
-    player.switchBall();
     player.calcSparesAndStrikes();
     expect(player.hasSpare).toBeTruthy();
   });
@@ -25,7 +25,10 @@ describe('Player', function() {
   it('bowls a strike and records it', function() {
     player.bowl(10);
     player.finishBall();
+    player.calcSparesAndStrikes();
     player.switchBall();
+    player.bowl(0);
+    player.finishBall();
     player.calcSparesAndStrikes();
     expect(player.hasStrike).toBeTruthy();
   });
@@ -43,6 +46,7 @@ describe('Player', function() {
     player.ball = 2;
     player.hasSpare = true;
     player.switchBall();
+    player.bowl(4);
     expect(player.ball).toEqual(3);
   });
 

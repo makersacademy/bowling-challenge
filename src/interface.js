@@ -12,8 +12,6 @@ $(document).ready(function() {
     player.updateFrame();
     player.bowl(pins);
     player.finishBall();
-    console.log(player.ball);
-    console.log(player.hasSpare);
     $('#results').append(
       '<tr><td>' + player.frame + '</td><td>' + player.ball + '</td><td>' + player.currentPins + '</td><td>' + player.scoreCard.total + '</td></tr>');
     player.calcSparesAndStrikes();

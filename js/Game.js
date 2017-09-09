@@ -20,6 +20,10 @@ Game.prototype.score = function(){
 		return frame.turns[turnNumber] == 10;
 	}
 
+	// function strikeTenthFrame(){
+		
+	// }
+
 	function strikeScore(){
 		return frame.turns[turnNumber] + frame.turns[turnNumber + 1] + frame.turns[turnNumber + 2];
 	} // <--- It calculates the number of pins of the first 3 turns for a strike bonus. ~

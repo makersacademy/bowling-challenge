@@ -22,7 +22,7 @@ describe("Game", function() {
     expect(game.score()).toEqual(0);
   });
 
-  it("rolls 3 every turns", function(){
+  it("rolls 3 every turn", function(){
     for (var i = 0; i < 20; i++) {
       game.roll(3);
     };
@@ -54,6 +54,56 @@ describe("Game", function() {
       game.roll(10);
     };
     expect(game.score()).toEqual(300);
+  });
+
+  it("rolls 1 strike and 2 standard turns in the 10th frame", function(){
+    for (var i = 0; i < 18; i++) {
+      game.roll(1);
+    };
+    game.roll(10);
+    game.roll(1);
+    game.roll(1);
+    expect(game.score()).toEqual(30);
+  });
+
+  it("rolls 1 strike and 1 spare in the 10th frame", function(){
+    for (var i = 0; i < 18; i++) {
+      game.roll(1);
+    };
+    game.roll(10);
+    game.roll(5);
+    game.roll(5);
+    expect(game.score()).toEqual(38);
+  });
+
+  it("rolls 1 spare and 1 standard turn in the 10th frame", function(){
+    for (var i = 0; i < 18; i++) {
+      game.roll(1);
+    };
+    game.roll(5);
+    game.roll(5);
+    game.roll(1);
+    expect(game.score()).toEqual(29);
+  });
+
+  it("rolls 2 strikes and a standard turn in the 10th frame", function(){
+    for (var i = 0; i < 18; i++) {
+      game.roll(1);
+    };
+    game.roll(10);
+    game.roll(10);
+    game.roll(1);
+    expect(game.score()).toEqual(39);
+  });
+
+  it("rolls 3 strikes in the 10th frame", function(){
+    for (var i = 0; i < 18; i++) {
+      game.roll(1);
+    };
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    expect(game.score()).toEqual(48);
   });
 
 });

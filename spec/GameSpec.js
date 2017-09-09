@@ -37,6 +37,16 @@ describe("Game", function() {
       game.roll(1);
     };
     expect(game.score()).toEqual(31);
-  })
+  });
+
+  it("rolls a strike", function(){
+    game.roll(10);
+    game.roll(3);
+    game.roll(3);
+    for (var i = 0; i < 16; i++) {
+      game.roll(1);
+    };
+    expect(game.score()).toEqual(38);
+  });
 
 });

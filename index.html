@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>game</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src='interface.js'></script>
+</head>
+
+<body>
+    <section>
+        <h1>Bowling game</h1>
+        <div id="pinsStruck"></div>
+    </section>
+    <br>
+    <div>
+      <span>
+        <button type='button' id='play'> PLAY </button>
+      </span>
+      <span>
+        <button type='button' id='reset'> NEW GAME </button>
+      </span>
+    </div>
+    <table id="score_table" style="width:100%">
+      <thead>
+        <tr>
+            <td>FRAME</td>
+            <td>ROLL</td>
+            <td>KNOCKED DOWN PINS</td>
+            <td>TOTAL SCORE</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+        </table>
+        <script src='src/game.js'></script>
+</body>
+
+</html>

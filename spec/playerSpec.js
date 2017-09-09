@@ -6,52 +6,44 @@ describe('Player', function() {
     player = new Player();
   });
 
-  it('bowls one ball and receives a score for ball1 between 0 and 10', function() {
-    player.bowl();
-    expect(player.ball1 >= 0 && player.ball1 <= 10).toBeTruthy();
-  });
-
-  it('bowls a second ball and receives a score for ball2 between 0 and the number of remaining pins', function() {
-    player.bowl();
-    player.bowl();
-    expect(player.ball2 <= player.ball1 && player.ball1 <= 10).toBeTruthy();
-  });
+  // afterEach(function(){
+  //   player.ball1 = undefined;
+  //   player.ball2 = undefined;
+  // });
 
   it('bowls a spare and records it', function() {
-    player.bowl = function() {player.ball1 = 5};
-    player.bowl();
-    player.bowl = function() {player.ball2 = 5};
-    player.bowl();
-    player.finishTurn();
+    player.bowl(5);
+    player.finishBall();
+    player.switchBall();
+    player.bowl(5);
+    player.finishBall();
+    player.switchBall();
     player.calcSparesAndStrikes();
     expect(player.hasSpare).toBeTruthy();
   });
 
   it('bowls a strike and records it', function() {
-    player.bowl = function() {player.ball1 = 10 };
-    player.bowl();
-    player.finishTurn();
+    player.bowl(10);
+    player.finishBall();
+    player.switchBall();
     player.calcSparesAndStrikes();
     expect(player.hasStrike).toBeTruthy();
   });
 
-  // it('gets an error message if they try to bowl after the end', function() {
-  //   alert_msg = '_default_';
-  //   spy = spyOn($(document), 'alert').andCallFake(function(msg) {
-  //    alert_msg = msg;
-  //   });
-  //   player.bowled = 20;
-  //   player.hasSpare = false;
-  //   player.hasStrike = false;
-  //   player.bowl();
-  //   expect(alert_msg).toEqual('You have finished your game!');
-  // });
-
-  it('gets an extra turn if he bowls a spare in the tenth frame', function() {
+  it('cannot bowl after he has bowled 10 frames', function() {
     player.bowled = 20;
+    player.ball = 2;
+    player.hasSpare = false;
+    player.hasStrike = false;
+    expect(function(){ player.switchBall() } ).toThrow('Your game is over!');
+  });
+
+  it('can bowl a third ball if he bowls a spare in the last frame', function() {
+    player.bowled = 20;
+    player.ball = 2;
     player.hasSpare = true;
-    player.tenthFrame();
-    expect(player.ball3 >= 0 && player.ball3 <= 10).toBeTruthy();
+    player.switchBall();
+    expect(player.ball).toEqual(3);
   });
 
 

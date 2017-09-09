@@ -1,6 +1,6 @@
 var Player = function () {
-  this.ball1 = 0;
-  this.ball2 = 0;
+  this.ball1 = undefined;
+  this.ball2 = undefined;
   this.currentPins = 0;
   this.ball = 1;
   this.bowled = 0;
@@ -8,36 +8,39 @@ var Player = function () {
   this.hasSpare = false;
   this.hasStrike = false;
   this.scoreCard = new ScoreCard;
-  _getRandomInt(this);
 };
 
-_getRandomInt = function(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-};
 
-Player.prototype.bowl = function() {
-  if (this.ball === 2){
-    this.ball2 = _getRandomInt(0,10-this.ball1);
-    this.currentPins = this.ball2;
-  }else{
-    this.ball1 = _getRandomInt(0,10);
-    this.currentPins = this.ball1;
+Player.prototype.bowl = function(number) {
+  if (this.ball === 1){
+    this.ball1 = parseInt(number);
+  }else if (this.ball === 2){
+    this.ball2 = parseInt(number);
+  }else if (this.ball === 3){
+    this.ball3 = number;
   };
+  this.currentPins = parseInt(number);
   this.bowled ++;
 };
 
 Player.prototype.switchBall = function() {
-  if (this.ball === 2){
-    this.ball --;
+  if(this.bowled === 20 && this.ball === 2 && (this.hasSpare === true|| this.hasStrike == true) ) {
+    this.ball = 3;
+  }else if(this.bowled === 20 && this.ball ===2 && this.hasSpare === false && this.hasStrike === false ) {
+    throw 'Your game is over!';
+  }else if(this.bowled > 19){
+    throw 'Your game is over!';
   }else{
-    this.ball ++;
+    if (this.ball === 2){
+      this.ball --;
+    }else{
+      this.ball ++;
+    };
   };
 };
 
 
-Player.prototype.finishTurn = function() {
+Player.prototype.finishBall = function() {
   this.scoreCard.calculateScore(this.ball, this.currentPins, this.hasSpare, this.hasStrike);
   this.scoreCard.recordScore(this.scoreCard.score);
   this.scoreCard.calcTotal();
@@ -45,7 +48,7 @@ Player.prototype.finishTurn = function() {
 
 // only do these after ball2
 Player.prototype.calcSparesAndStrikes = function(){
-  if (this.bowled % 2 == 0){
+  if (this.ball % 2 == 0) {
     if (this.ball1 === 10){
       this.hasStrike = true;
     }else if (this.ball1 + this.ball2 === 10){
@@ -57,20 +60,17 @@ Player.prototype.calcSparesAndStrikes = function(){
   };
 };
 
+// only do these after ball2
 Player.prototype.updateFrame = function (){
   if (this.bowled % 2 == 0){
     this.frame ++;
   };
 };
 
-Player.prototype.tenthFrame = function (){
-  this.ball = 3;
-  this.ball3 = _getRandomInt(0,10);
-  this.scoreCard.calculateScore(this.ball, this.ball3, this.hasSpare, this.hasStrike);
-  this.scoreCard.recordScore(this.scoreCard.score);
-  this.scoreCard.calcTotal();
-
+// only do these after ball2
+Player.prototype.resetBalls = function (){
+  if (this.ball % 2 == 0) {
+    this.ball1 = undefined;
+    this.ball2 = undefined;
+  };
 };
-
-
-// //////////////

@@ -1,0 +1,16 @@
+{
+  "name": "bowling-challenge",
+  "description": "calculates score from a standard game of bowling",
+  "version": "0.0.1",
+  "scripts": {
+   "test": "karma start karma.conf.js --single-run"
+ },
+  "devDependencies": {
+    "jasmine-core": "*",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4"
+  }
+}

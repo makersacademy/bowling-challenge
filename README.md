@@ -1,4 +1,6 @@
 
+[![Build Status](https://travis-ci.org/dmcd84/bowling-challenge.svg?branch=master)](https://travis-ci.org/dmcd84/bowling-challenge)
+
 Bowling Challenge
 =================
 

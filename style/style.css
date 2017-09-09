@@ -1,0 +1,39 @@
+input#total-score {
+  border-width: medium;
+  border-style: groove;
+}
+
+input {
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    color: darkred;
+}
+
+table {
+    background: lightskyblue;
+    color: midnightblue;
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+    border-style: outset;
+}
+
+td {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+button {
+    background: cyan;
+    color: firebrick;
+    font-weight: bold;
+    height: 30px;
+    width: 150px;
+    margin-left: 10px;
+}
+
+body {
+    width: 100%;
+    margin-left: 100px;
+}

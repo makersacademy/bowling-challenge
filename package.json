@@ -1,0 +1,16 @@
+{
+  "name": "bowling-challenge",
+  "description": "Manage the scoring of a bowling game for one player.",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "karma start karma.conf.js --single-run"
+  },
+  "devDependencies": {
+    "jasmine-core": "*",
+    "karma": "^1.7.0",
+    "karma-coverage": "^0.1.5",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "nyc": "^11.0.2"
+  }
+}

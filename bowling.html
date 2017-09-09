@@ -1,0 +1,20 @@
+<html>
+
+
+<head>
+<script type="text/javascript" src="jasmine/src/bowling.js"></script>
+<script type="text/javascript" src="jasmine/src/frame.js"></script>
+<script type="text/javascript" src="jasmine/src/scoreCalculator.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script src="bowlingGame.js"></script>
+</head>
+
+<body ng-app="bowlingGame" ng-controller="bowling">
+  Cones hit:{{conesHit}}
+  <br>
+  Remaining Cones:{{cones}}
+  <button ng-click="bowl()">ClickMe</button>
+  <li ng-repeat="item in allframes">{{item.frame}}</li>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./public/style.css">
+    <script src='https://code.jquery.com/jquery-3.2.1.js'></script>
+    <script src="src/Bowling.js"></script>
+    <script src='src/Frame.js'></script>
+    <script src='src/AuthenticateRoll.js'></script>
+  </head>
+
+<h1>Ready for a game... of 10 PIN BOWLING?</h1>
+
+<div class='start'>
+  <form>
+    <input type='submit' id='start' value='START GAME'>
+  </form>
+</div>
+
+<div>
+  <form id='scoreForm'>
+    Enter Score:<br>
+    <input type='button' id='zero' value='0'>
+    <input type='button' id='one' value='1'>
+    <input type='button' id='two' value='2'>
+    <input type='button' id='three' value='3'>
+    <input type='button' id='four' value='4'>
+    <input type='button' id='five' value='5'>
+    <input type='button' id='six' value='6'>
+    <input type='button' id='seven' value='7'>
+    <input type='button' id='eight' value='8'>
+    <input type='button' id='nine' value='9'>
+    <input type='button' id='ten' value='10'>
+  </form>
+</div>
+
+<div class='Score'>
+  <h2>
+    Total Score<span id='totalScore'>0</span>
+  </h2>
+
+  <h2>
+    Possible Score<span id='possibleScore'>0</span>
+  </h2>
+</div>
+
+<script>
+  var bowling =  new Bowling
+
+  function Update() {
+    $('#possibleScore').html(bowling.possibleScore);
+  }
+
+  Update();
+
+  $('#start').click(function() {
+    bowling.startGame();
+  });
+
+  $(function() {
+      $('input[type="button"]').click(function() {
+        bowling.gameController(parseInt(this.value));
+        Update();
+      });
+  });
+
+</script>
+
+
+</html>

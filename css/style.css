@@ -1,0 +1,23 @@
+body {
+
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  color: #465870;
+  background-image: url("./bowling.jpg");
+  background-size: 100%;
+  font-size: 100%;
+  text-align: center;
+}
+
+button {
+  color: blue;
+}
+
+.roll {
+  display: inline-block;
+  margin: auto;
+  padding: 1px;
+}
+
+.score-table {
+  display: inline-block;
+}

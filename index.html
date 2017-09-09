@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="./src/Bowling.js"></script>
+  <script src="./angBowling.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<div>
+  <table class="score-table" ng-repeat="n in numberOfRolls">
+    <tr>
+      <th colspan="4">Frame {{n[0]}}</th>
+    </tr>
+    <tr>
+      <td>{{ (rolls[n[1]] === 10) ? "X" : rolls[n[1]] }}</td>
+      <td>{{ ((rolls[n[1]] === 10) ? "" : (rolls[n[1]] != 10 && rolls[n[1]] + rolls[n[2]] === 10) ? "/" : rolls[n[2]] )}}</td>
+    </tr>
+    <tr>
+      <td>{{ score(n[1], 0, 1) }}</td>
+    </tr>
+  </table>
+</div>
+
+    <p>{{ score() }}</p>
+
+  <div class="roll" ng-repeat="p in pins">
+    <button ng-click="roll(p)">{{p}}</button>
+  </div>
+
+
+
+</body>
+</html>

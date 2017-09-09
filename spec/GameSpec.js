@@ -49,4 +49,11 @@ describe("Game", function() {
     expect(game.score()).toEqual(38);
   });
 
+  it("rolls a perfect score", function(){
+    for (var i = 0; i < 12; i++) {
+      game.roll(10);
+    };
+    expect(game.score()).toEqual(300);
+  });
+
 });

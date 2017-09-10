@@ -49,11 +49,13 @@ describe('Bowling Game', function() {
 				});
 			});
 
-			it('displays an error if roll is illegal', function(done) {
+			it('does not add to score if roll is illegal', function(done) {
 				browser.visit(url + 'play', function() {
 					browser.pressButton('[type="submit"][value="8"]', function() {
 						browser.pressButton('[type="submit"][value="3"]', function() {
-							expect(browser.text('body')).to.include('Only 2 pins left!');
+							expect(browser.text('body')).to.include('Last roll: 8');
+							expect(browser.text('body')).to.not.include('Last roll: 3');
+							expect(browser.text('body')).to.include('Current frame: 1');
 							done();
 						});
 					});

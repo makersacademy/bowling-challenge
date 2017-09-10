@@ -14,11 +14,13 @@ var BowlingGame = function() {
 BowlingGame.prototype.roll = function(pins) {
 	this.lastRoll = pins;
 	this.rolls.push(pins);
+
 	if (pins > this.pinsLeft) {
-		throw (new Error('Only ' + this.pinsLeft + ' pins left!'));
+		console.log('Only ' + this.pinsLeft + ' pins left!');
+		this.rolls.splice(-1, 1);
+		this.lastRoll = this.rolls[this.rolls.length-1];
 	} else if (this.currentFrame > 12) {
-		// WRITE TEST FOR THIS
-		throw (new Error('No more rolls left!'));
+		console.log('No more rolls left!');
 	} else if (pins === 10) {
 		this.strike();
 	} else {

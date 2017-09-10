@@ -6,13 +6,15 @@ Screenshots
 
 How to run the app
 -----------------
-All you need to do is clone the repo, install the gems and run the server using rackup! For example:
+Clone the repo, install the gems and run the server using nodemon. For example:
 ````
 $ git clone git@github.com:stephengeller/bowling-challenge.git
 $ cd bowling-challenge
 $ npm install
 $ nodemon
 ````
+You can also access the app on [Heroku](http://bowlinggame-sg.herokuapp.com/) (but beware, bugs!).  
+
 
 Approach to solving the challenge
 ---------

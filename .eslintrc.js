@@ -1,6 +1,10 @@
 module.exports = {
     "env": {
-        "browser": true
+        "browser": true,
+        "node": true,
+        "mocha": true,
+        "amd": true,
+        "jasmine": true
     },
     "extends": "eslint:recommended",
     "rules": {
@@ -19,6 +23,6 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
     }
 };

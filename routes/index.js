@@ -1,14 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var session = require('express-session');
 var BowlingGame = require('../src/BowlingGame');
 
 var sess;
 var game;
 var errors;
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
 	res.render('index', {
 		title: 'Bowling Game'
 	});

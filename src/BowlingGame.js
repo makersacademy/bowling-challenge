@@ -40,8 +40,6 @@ BowlingGame.prototype.addToTotal = function() {
 	this.totalScore += this.currentFrameScore;
 	this.frames.push(this.currentFrameScore);
 	this.reset();
-	if (this.currentFrame === 13) {
-	}
 };
 
 BowlingGame.prototype.reset = function() {
@@ -52,7 +50,6 @@ BowlingGame.prototype.reset = function() {
 
 BowlingGame.prototype.strike = function() {
 	this.currentFrameScore += 10;
-	console.log('strike!');
 	this.addToTotal();
 };
 
@@ -105,7 +102,6 @@ BowlingGame.prototype.score = function() {
 BowlingGame.prototype.framesTotal = function() {
 	var total = 0;
 	for(var i = 0; i < this.frames.length; i++) {
-		console.log('adding ' + this.frames[i] + ' to total of ' + total);
 		total += this.frames[i];
 	}
 	return total;
@@ -118,15 +114,11 @@ BowlingGame.prototype.incrementFrames = function() {
 	var result = 0;
 	this.frames.forEach(function(frame) {
 		if (isNaN(frame)) {
-			console.log(frame);
 			frame = '...';
 			arr.push(frame);
 		} else {
-			console.log(frame + 'not NaN');
 			result += frame;
-			console.log(result);
 			arr.push(result);
-			console.log(arr);
 		}
 	});
 

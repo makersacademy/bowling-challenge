@@ -6,9 +6,9 @@ var BowlingGame = function() {
     this.pinsLeft = 10;
     this.name = 'hello';
     this.frames = [];
-    this.frameScores = [];
     this.rolls = [];
     this.lastRoll;
+    this.framesAdded = [];
 };
 
 BowlingGame.prototype.roll = function(pins) {
@@ -30,6 +30,8 @@ BowlingGame.prototype.roll = function(pins) {
     if (this.rollsInFrame === 2) {
         this.addToTotal()
     }
+
+    this.incrementFrames()
 
 };
 
@@ -90,25 +92,14 @@ BowlingGame.prototype.score = function() {
         return game.rolls[rollIndex] === 10;
     }
     function getSpareScore() {
-        console.log(game.rolls[rollIndex] + ' hello');
         return game.rolls[rollIndex] + game.rolls[rollIndex+1] + game.rolls[rollIndex+2]
     }
     function getStrikeScore() {
-        console.log(game.rolls[rollIndex] + ' hello');
         return game.rolls[rollIndex] + game.rolls[rollIndex+1] + game.rolls[rollIndex+2]
     }
     function getNormalScore() {
         return game.rolls[rollIndex] + game.rolls[rollIndex+1];
     }
-};
-
-BowlingGame.prototype.rollsTotal = function() {
-    var total = 0;
-    for(var i = 0; i < this.rolls.length; i++) {
-        console.log('adding ' + this.rolls[i] + ' to total of ' + total);
-        total += this.rolls[i]
-    }
-    return total
 };
 
 BowlingGame.prototype.framesTotal = function() {
@@ -120,12 +111,26 @@ BowlingGame.prototype.framesTotal = function() {
     return total
 };
 
+BowlingGame.prototype.incrementFrames = function() {
+    var arr = [];
+    var game = this;
 
-// TO ADD TOTAL OF FRAME
-// CHECK IF isNaN(this.score)
-// IF YES, DON'T CALCULATE SCORE
-// IF NO, ADD SCORE TO FRAME
+    var result = 0;
+         this.frames.forEach(function(frame) {
+             if (isNaN(frame)) {
+                 console.log(frame);
+                frame = '...';
+                 arr.push(frame)
+             } else {
+                 console.log(frame + 'not NaN');
+                 result += frame;
+                 console.log(result);
+                 arr.push(result);
+                 console.log(arr);
+             }
+         });
 
-
+    game.framesAdded = arr;
+};
 
 module.exports = BowlingGame;

@@ -13,6 +13,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
+    "eslint": "^4.6.1",
     "express": "~4.15.2",
     "express-session": "^1.15.5",
     "mocha": "^3.5.0",
@@ -21,5 +22,12 @@
     "package.json": "^2.0.1",
     "serve-favicon": "~2.4.2",
     "zombie": "^5.0.7"
+  },
+  "devDependencies": {
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
   }
 }

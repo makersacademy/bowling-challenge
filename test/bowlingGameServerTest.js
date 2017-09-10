@@ -109,19 +109,6 @@ describe('Bowling Game', function() {
             })
         });
 
-        it('displays previous frames', function(done) {
-            browser.visit(url, function() {
-                browser.pressButton('[type="submit"][value="startGame"]', function() {
-                    browser.pressButton('[type="submit"][value="8"]', function() {
-                        browser.pressButton('[type="submit"][value="1"]', function() {
-                            expect(browser.text('body')).to.include('Frames: 9');
-                            done()
-                        });
-                    });
-                });
-            })
-        });
-
         it('does not display spare total until next roll', function(done) {
             browser.visit(url, function() {
                 browser.pressButton('[type="submit"][value="startGame"]', function() {
@@ -145,7 +132,7 @@ describe('Bowling Game', function() {
                         browser.pressButton('[type="submit"][value="2"]', function() {
                             expect(browser.text('body')).to.include('Frames: ...');
                             browser.pressButton('[type="submit"][value="2"]', function() {
-                                expect(browser.text('body')).to.include('Frames: 14, 4');
+                                expect(browser.text('body')).to.include('Frames: 14, 18');
                                 done()
                             });
                         });
@@ -161,7 +148,7 @@ describe('Bowling Game', function() {
                         browser.pressButton('[type="submit"][value="2"]', function() {
                             expect(browser.text('body')).to.include('Added frames: ...');
                             browser.pressButton('[type="submit"][value="2"]', function() {
-                                expect(browser.text('body')).to.include('Added frames: 14, 18');
+                                expect(browser.text('body')).to.include('Frames: 14, 18');
                                 done()
                             });
                         });

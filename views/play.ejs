@@ -2,7 +2,7 @@
 
 <body>
 
-<div id="totalScore" class="display-1">
+<div id="totalScore" class="">
     <% if (isNaN(game.score())) { %>
     <h3>Minimum score: <%= game.framesTotal() %> </h3>
     <% } else { %>
@@ -10,52 +10,56 @@
     <% } %>
 </div>
 
+<div id="currentFrame">
+    <% if (game.currentFrame > 12) { %>
+    <h3>Game has ended!</h3>
+    <%} else if (game.currentFrame > 10) { %>
+    <h3>Current frame: Bonus frame </h3>
+    <% } else { %>
+    <h3>Current frame: <%= game.currentFrame %> </h3>
+    <% } %>
+</div>
+
 <div id="lastRoll">
     <h3>Last roll: <%= game.lastRoll %></h3>
 </div>
 
-<div id="currentFrame">
-    <h3>Current frame: <%= game.currentFrame %></h3>
-</div>
-
+<% if (game.currentFrame < 13) { %>
 <div id="remainingPins">
     <h3>Remaining pins: <%= game.pinsLeft %></h3>
 </div>
-
-<div id="frames">
-    <h3> Frames:
-    <% game.frames.forEach(function(frame) { %>
-        <% if (isNaN(frame)) { %>
-            <% frame = '...'%>
-        <% } %>
-        <%= frame %>,
-    <% }) %>
-    </h3>
-</div>
+<% } %>
 
 <div id="addedFrames">
-    <h3> Added rames:
-        <% game.frames.forEach(function(frame) { %>
-        <% if (isNaN(frame)) { %>
-        <% frame = '...'%>
-        <% } %>
-        <%= frame %>,
+    <h3> Frames:
+        <% result = 0 %>
+        <% game.frames.forEach(function(frame, i) { %>
+            <% if (isNaN(frame)) { %>
+                <% frame = '...'%>
+                <%= frame %>,
+            <% } else { %>
+                <% result += frame %>
+                <% if (i < 10) { %>
+                    <%= result %>,
+                <% } %>
+            <% } %>
         <% }) %>
     </h3>
 </div>
 
+<% if (!(game.currentFrame >= 13)) { %>
 <form method="POST" action="/play">
     <% for(i = 0; i <= 10; i++) { %>
-    <button type="submit" name="action" value="<%= i %>"><%= i %></button>
+    <button class="btn btn-primary" type="submit" name="action" value="<%= i %>"><%= i %></button>
     <% } %>
 </form>
+<% } %>
 
 <form method="POST" action="/start">
     <button type="submit" name="action" value="restart">Restart game</button>
 </form>
 
-
-
 </body>
+
 
 <% include partials/footer %>

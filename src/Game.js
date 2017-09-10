@@ -1,25 +1,71 @@
-var Game = function( score = 0, frameNo = 1, rollNo = 1, scoreTable = []) {
+var Game = function(frameNo = 1, rollNo = 1, firstRoll = 0, secondRoll = 0, runningScore = 0) {
 
-  this.score = score;
-  this.allowedToRoll = true;
-  this.scoreTable = new Array(10)
-  this.rollNo = rollNo
-  this.frame = []
-  this.frameNo = frameNo
+  this.frameNo = frameNo;
+  this.rollNo = rollNo;
+  this.firstRoll = firstRoll;
+  this.secondRoll = secondRoll;
+  this.frameTable = [];
+  this.scoreTable = [];
+  this.runningScore = runningScore
 
   this.roll = function() {
-    var rollNo1 = Math.floor(Math.random() * 11);
-    this.frame.push(rollNo1);
-    return rollNo1;
+    if (this.rollNo === 1) {
+      this.firstRoll = Math.floor(Math.random() * 11);
+      this.frameTable.push(this.firstRoll);
+      this.rollNo += 1;
+      return this.firstRoll;
+    } else if (this.rollNo === 2) {
+      this.secondRoll = Math.floor(Math.random() * (11 - this.firstRoll));
+      this.frameTable.push(this.secondRoll);
+      this.scoreTable.push(this.frameTable);
+      this.frameTable = [];
+      this.rollNo = 1;
+      this.frameNo += 1;
+      return this.secondRoll;
+    };
   };
 
-  // this.roll2 = function() {
-  //   var rollNo = Math.floor(Math.random() * 11);
-  //   this.frame.push(rollNo);
-  // };
-
-
 };
+
+
+
+
+// var Game = function( score = 0, frameNo = 1, rollNo = 1, scoreTable = []) {
+
+//   this.score = score;
+//   this.allowedToRoll = true;
+//   this.scoreTable = []
+//   this.frame = []
+//   this.frameNo = frameNo
+//   var rollNo1 = Math.floor(Math.random() * 11);
+//   var rollNo2 = Math.floor(Math.random() * (11 - rollNo1));
+
+//   this.roll1 = function() {
+//     // var rollNo1 = Math.floor(Math.random() * 11);
+//     this.frame.push(rollNo1);
+//     return rollNo1
+    
+//   };
+
+//   this.roll2 = function(rollNo1) {
+//     if (this.frame[0] === 10) {
+//       throw Error ("You got a strike, only 1 roll this frame")
+//     } else {
+//       // var rollNo2 = Math.floor(Math.random() * (11 - rollNo1));
+//       this.frame.push(rollNo2);
+//       return rollNo2;
+//     };
+//   };
+   
+
+//   this.frameScore = function() {
+//     this.scoreTable.push(rollNo1 + rollNo2)
+//     return this.scoreTable.last
+//   }
+
+  
+
+// };
 
 
 // var scoreTable = [];
@@ -41,3 +87,6 @@ var Game = function( score = 0, frameNo = 1, rollNo = 1, scoreTable = []) {
 //     return rollNo;
 //     frame[0] = rollNo;
 //   };
+
+// for scoreTable[0]..scoreTable[8]
+

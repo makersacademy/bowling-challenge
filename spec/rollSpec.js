@@ -9,22 +9,9 @@ describe('Roll Unit Tests', function() {
   });
 
   describe('.roll', function() {
-    it('increases roll number by 1', function() {
-      game.roll();
-      expect(game.getCurrentRollNumber()).toEqual(1);
-    });
-    it('adjusts pins_knocked_down', function() {
-      game.roll();
-      expect(game.getCurrentPinsKnockedDown()).toEqual(5);
-    });
     it('adjusts frames', function() {
-      game.roll();
+      game.roll(5);
       expect(game.getCurrentFrames()).toEqual([5]);
     });
-    it('adjusts total score', function() {
-      game.roll();
-      expect(game.getCurrentScore()).toEqual(5);
-    });
   });
-
 });

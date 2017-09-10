@@ -12,24 +12,18 @@ describe('Feature Tests', function() {
     });
 
     it('user can knock down pins', function() {
-      game.roll();
-      expect(game.getCurrentPinsKnockedDown()).toEqual(5);
-    });
-
-    it('total score is recorded', function() {
-      game.roll();
-      expect(game.getCurrentScore()).toEqual(5);
-    });
-
-    it('score per frame is recorded', function() {
-      game.roll();
+      game.roll(5);
       expect(game.getCurrentFrames()).toEqual([5]);
     });
 
-    it('pins are reset after each frame', function() {
-      game.roll();
-      game.roll();
-      game.resetPins();
-      expect(game.getCurrentPinsKnockedDown()).toEqual(0);
+    it('total score is recorded', function() {
+      game.roll(5);
+      game.updateTotalScore;
+      expect(game.getCurrentTotalScore()).toEqual(5);
+    });
+
+    it('score per frame is recorded', function() {
+      game.roll(5);
+      expect(game.getCurrentFrames()).toEqual([5]);
     });
   });

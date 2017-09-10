@@ -13,7 +13,7 @@ describe('Feature Tests', function() {
 
     it('user can knock down pins', function() {
       game.roll(5);
-      expect(game.getCurrentFrames()).toEqual([5]);
+      expect(game.frames.getAllFrameScores()).toEqual([5]);
     });
 
     it('total score is recorded', function() {
@@ -24,6 +24,6 @@ describe('Feature Tests', function() {
 
     it('score per frame is recorded', function() {
       game.roll(5);
-      expect(game.getCurrentFrames()).toEqual([5]);
+      expect(game.frames.getAllFrameScores()).toEqual([5]);
     });
   });

@@ -1,29 +1,24 @@
 'use strict';
 /**
+ * Insert Comment
  * @param {int} totalScore The total score the player has.
- * @param {int} frames Frame scores recorded in an array.
+ * @param {int} frame New instance of frame class.
  */
 function Game() {
     this.DEFAULT_TOTAL_SCORE = 0;
-    this.DEFAULT_FRAMES = [];
 
     this.totalScore = this.DEFAULT_TOTAL_SCORE;
-    this.frames = this.DEFAULT_FRAMES;
+    this.frames = new Frames();
   };
 
   Game.prototype.getCurrentTotalScore = function() {
     return this.totalScore;
   };
 
-  Game.prototype.getCurrentFrames = function() {
-    return this.frames;
-  };
-
-  Game.prototype.roll = function(pinsHit) {
-    this.frames.push(pinsHit);
+  Game.prototype.roll = function(hit) {
+    this.frames.frameScores.push(hit);
   };
 
   Game.prototype.updateTotalScore = function() {
-    var reduce = this.frames.reduce((a, b) => a + b, 0);
-    this.totalScore = reduce
-  }
+    this.totalScore = frames.frameScores.reduce((a, b) => a + b, 0);
+  };

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./src/bowling.js"></script>
+    <script src="./src/interface.js"></script>
+  </head>
+  <body>
+
+      <h1>FC Pin Bowling</h1>
+      <br>
+      <h1 id= "score"></h1>
+      </div>
+
+      <div id="buttons">
+        <div class = "roll">
+        <button id= "roll0">0</button>
+        <button id= "roll1">1</button>
+        <button id= "roll2">2</button>
+        <button id= "roll3">3</button>
+        <button id= "roll4">4</button>
+        <button id= "roll5">5</button>
+        <button id= "roll6">6</button>
+        <button id= "roll7">7</button>
+        <button id= "roll8">8</button>
+        <button id= "roll9">9</button>
+        <button id= "roll10">10</button>
+        </div>
+        <button id="calculateScore">calculaterScore</button>
+        <button id="reset">reset</button>
+        <button id="generate">generate</button>
+      </div>
+      <br>
+<!--TABLE STUFF  -->
+      <h3>Frames</h3>
+        <div id="tablestuff" >
+        <style type="text/css">
+          .tg  {border-collapse:collapse;border-spacing:0;}
+          .tg td{text-align:center;vertical-align:top;font-family:Arial, sans-serif;font-size:14px;padding:10px 10px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+          .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 10px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+          .tg .tg-baqh{text-align:center;vertical-align:top}
+          .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+        </style>
+        <table class="tg">
+          <tr>
+            <th class="tg-amwm" colspan="2">Frame 1</th>
+            <th class="tg-amwm" colspan="2">Frame 2</th>
+            <th class="tg-amwm" colspan="2">Frame 3</th>
+            <th class="tg-amwm" colspan="2">Frame 4</th>
+            <th class="tg-amwm" colspan="2">Frame 5</th>
+            <th class="tg-amwm" colspan="2">Frame 6</th>
+            <th class="tg-amwm" colspan="2">Frame 7</th>
+            <th class="tg-amwm" colspan="2">Frame 8</th>
+            <th class="tg-amwm" colspan="2">Frame 9</th>
+            <th class="tg-amwm" colspan="4">Frame 10</th>
+            <th class="tg-amwm">Total Score</th>
+          </tr>
+          <tr>
+            <td class="turn-1">-</td>
+            <td class="turn-2">-</td>
+            <td class="turn-3">-</td>
+            <td class="turn-4">-</td>
+            <td class="turn-5">-</td>
+            <td class="turn-6">-</td>
+            <td class="turn-7">-</td>
+            <td class="turn-8">-</td>
+            <td class="turn-9">-</td>
+            <td class="turn-10">-</td>
+            <td class="turn-11">-</td>
+            <td class="turn-12">-</td>
+            <td class="turn-13">-</td>
+            <td class="turn-14">-</td>
+            <td class="turn-15">-</td>
+            <td class="turn-16">-</td>
+            <td class="turn-17">-</td>
+            <td class="turn-18">-</td>
+            <td class="turn-19">-</td>
+            <td class="turn-20">-</td>
+            <td class="turn-21">-</td>
+            <td class="turn-22">-</td>
+            <td class="total">-</td>
+          </tr>
+          <tr>
+            <td id="f-1-score" class="score-1" colspan="2">-</td>
+            <td id="f-2-score" class="score-2" colspan="2">-</td>
+            <td id="f-3-score" class="score-3" colspan="2">-</td>
+            <td id="f-4-score" class="score-4" colspan="2">-</td>
+            <td id="f-5-score" class="score-5" colspan="2">-</td>
+            <td id="f-6-score" class="score-6" colspan="2">-</td>
+            <td id="f-7-score" class="score-7" colspan="2">-</td>
+            <td id="f-8-score" class="score-8" colspan="2">-</td>
+            <td id="f-9-score" class="score-9" colspan="2">-</td>
+            <td id="f-10-score" class="score-10" colspan="4">-</td>
+            <td class="tg-baqh">-</td>
+          </tr>
+        </table>
+      </div>
+        <!--TABLE   -->
+  </body>
+</html>

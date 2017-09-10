@@ -1,0 +1,39 @@
+body {
+    background-color: grey;
+    font-family: sans-serif;
+}
+
+h1 {
+    color: navy;
+    height: auto;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+section {
+    background-color: yellow;
+    border-style: solid;
+    border-width: 5px;
+    border-color: grey
+    height: auto;
+    width: 50%;
+    margin: auto;
+
+}
+
+#buttons {
+  height: auto;
+  width: 50%;
+  margin: auto;
+}
+
+button  {
+    background-color:#9E9E9E;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 2px;
+    height: 150%;
+    width: auto;
+    float: left
+}

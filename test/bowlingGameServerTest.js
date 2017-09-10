@@ -49,12 +49,14 @@ describe('Bowling Game', function() {
 				});
 			});
 
-			it('does not add to score if roll is illegal', function(done) {
+			it('only allows you to roll legal scores', function(done) {
 				browser.visit(url, function() {
 					browser.pressButton('[type="submit"][value="startGame"]', function() {
 						browser.pressButton('[type="submit"][value="8"]', function() {
 							expect(browser.text('body')).to.include('Last roll: 8');
 							expect(browser.text('body')).to.include('-2-');
+							expect(browser.text('body')).to.include('-1-');
+							expect(browser.text('body')).to.include('-0-');
 							expect(browser.text('body')).to.not.include('-5-');
 							done();
                         })

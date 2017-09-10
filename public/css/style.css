@@ -56,6 +56,7 @@ a {
   max-font-size: 100px;
   /*font-size: 50;*/
   text-shadow: 2px 2px 4px #000000;
+  padding: 10px;
 }
 
 .frames {
@@ -64,14 +65,57 @@ a {
 .bowling-button {
   background-color: white;
   font-size-adjust: inherit;
-  border-color: red;
+  border: 2px red;
   margin: 1% ;
   padding: 1%;
 }
 
+.bowling-button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.bowling-button:active {
+  background-color: darkred;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 .home-button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: white;
+  border: none;
+  color: black;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.home-button span {
+  cursor: pointer;
+  display: inline-block;
   position: relative;
-  bottom:   0;
-  padding: 10%;
-  margin: 1%;
+  transition: 0.5s;
+}
+
+.home-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.home-button:hover span {
+  padding-right: 25px;
+}
+
+.home-button:hover span:after {
+  opacity: 1;
+  right: 0;
 }

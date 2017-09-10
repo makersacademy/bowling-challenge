@@ -9,27 +9,20 @@
 <body>
   <h1> Bowling </h1>
 
-  <h2> Score is <span id="score"></span></h2>
 
-  <h3> Frame no: <span id="frame"></span></h3>
 
-  <h3> Roll 1:
-    <span id="roll_1"></span>
-      <select>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-      </select>
-  </h3>
-  <h3> Roll 2:
+    <fieldset>
+        <legend><h4> Frame no: <span id="frame"></span></h4></legend>
+        <label for="roll-1">Roll 1</label>
+        <input id="roll-1" name="roll-1" type="text" class="required">
+        <label for="roll-2">Rolls 2</label>
+        <input id="roll-2" name="roll-2" type="text" class="required">
+        <button id="submit">Submit</button>
+      </fieldset>
+
+
+
+  <h3> Last roll (for strikes in the 10th frame):
     <span id="roll_2"></span>
       <select>
         <option value="0">0</option>
@@ -45,6 +38,9 @@
         <option value="10">10</option>
       </select>
   </h3>
+
+  <h2> Score is: <span id="score"></span></h2>
+
 
     <script src="jquery-3.2.1.js"></script>
     <script src="./jasmine/src/Frame.js"></script>

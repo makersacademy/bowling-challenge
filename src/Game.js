@@ -1,39 +1,43 @@
-var Game = function(score = 0, frameno = 1, rollno = 1, rollscore = 0) {
+var Game = function( score = 0, frameNo = 1, rollNo = 1, scoreTable = []) {
 
   this.score = score;
-  // this.frameNo = frameno
-  // this.rollNo = rollno
-  this.rollScore = rollscore
-  this.frame1Score = framescore
+  this.allowedToRoll = true;
+  this.scoreTable = new Array(10)
+  this.rollNo = rollNo
+  this.frame = []
+  this.frameNo = frameNo
 
-  this.score = function(frame) {
-
+  this.roll = function() {
+    var rollNo1 = Math.floor(Math.random() * 11);
+    this.frame.push(rollNo1);
+    return rollNo1;
   };
 
-  this.firstRollScore = function() {
-    firstrollscore = Math.floor(Math.random() * 11)
-    return firstrollscore
-  };
+  // this.roll2 = function() {
+  //   var rollNo = Math.floor(Math.random() * 11);
+  //   this.frame.push(rollNo);
+  // };
 
-  this.secondRollScore = function() {
-    secondrollscore = Math.floor(Math.random() * (11-firstrollscore))
-    return secondrollscore
-  };
-
-  this.frameScore = function() {
-    framescore = firstrollscore + secondrollscore
-    return framescore
-  };
-
-  this.currentRunningTotal = function() {
-    runningTotal = 
-  };
-
-  this.finalScore = function() {
-    if (score == 0 && frame == 10) {
-      return 'Your total score is 0- GUTTER GAME!';
-    };
-  };
 
 };
 
+
+// var scoreTable = [];
+
+// for(var i=0; i<10; i++) {
+//   scoreTable[i] = Array.apply(null, Array(2)).map(Number.prototype.valueOf,0);
+// };
+
+
+// this.roll1 = function() {
+//     var rollNo1 = Math.floor(Math.random() * 11);
+//     return rollNo1;
+//     frame[0] = rollNo1;
+//   };
+
+
+// this.roll = function() {
+//     var rollNo = Math.floor(Math.random() * 11);
+//     return rollNo;
+//     frame[0] = rollNo;
+//   };

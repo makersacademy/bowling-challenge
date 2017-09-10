@@ -4,7 +4,14 @@ var expect = require('chai').expect,
     should = require('chai').should,
     Browser = require('zombie'),
     browser = new Browser(),
-    url = 'http://localhost:1337/';
+    url = 'http://localhost:3000/';
+
+var app = require('../app');
+var http = require('http');
+var server = http.createServer(app);
+var port = 3000;
+
+// This is just an example HTTP server. Use your own application here.
 
 var rollMany = function(rolls, pins) {
     for(i = 0; i < rolls; i++) {
@@ -22,11 +29,12 @@ describe('Bowling Game', function() {
 
     describe('/', function() {
 
-        // before(function() {
-        //     return browser.visit('/');
-        // });
+        before(function() {
+            server.listen(port);
+        });
 
         after(function() {
+            server.close()
         });
 
 

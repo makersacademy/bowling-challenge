@@ -1,0 +1,23 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Package for the Bowling Challenge",
+  "main": "js/Game.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rolandosorbelli/bowling-challenge.git"
+  },
+  "author": "Rolando Sorbelli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rolandosorbelli/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/rolandosorbelli/bowling-challenge#readme"
+}

@@ -53,13 +53,11 @@ describe('Bowling Game', function() {
 				browser.visit(url, function() {
 					browser.pressButton('[type="submit"][value="startGame"]', function() {
 						browser.pressButton('[type="submit"][value="8"]', function() {
-							browser.pressButton('[type="submit"][value="5"]', function() {
-								expect(browser.text('body')).to.include('Last roll: 8');
-								expect(browser.text('body')).to.not.include('Last roll: 5');
-								expect(browser.text('body')).to.include('Current frame: 1');
-								done();
-							});
-						});
+							expect(browser.text('body')).to.include('Last roll: 8');
+							expect(browser.text('body')).to.include('-2-');
+							expect(browser.text('body')).to.not.include('-5-');
+							done();
+                        })
 					});
 				});
 			});

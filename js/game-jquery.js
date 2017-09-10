@@ -3,8 +3,13 @@ var game = new Game();
 $(document).ready(function(){
 
 	var changeScore = function(){
-		for (var i = 0; i <= 20; i ++){
-			$('.turn-' + i).text(game.turns[i - 1]);
+		for (var i = 0; i <= 10; i++) {
+			$(".score-" + i).text(game.score());
+		};
+		for (var i = 0; i <= 20; i++) {
+
+			$(".turn-" + i).text(game.turns[i - 1]);
+			$('.total').text(game.score());
 		};
 	};
 

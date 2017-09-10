@@ -12,16 +12,16 @@ Game.prototype.score = function(){
 	var frame = this;
 
 	function spare(){
-		return frame.turns[turnNumber] + frame.turns[turnNumber + 1] == 10;
+		return frame.turns[turnNumber] + frame.turns[turnNumber + 1] === 10;
 		// <--- I removed "this" because it was referring to a different Object. So I gave it a variable called "frame". ~
 	}
 
 	function strike(){
-		return frame.turns[turnNumber] == 10;
+		return frame.turns[turnNumber] === 10;
 	}
 
 	// function strikeTenthFrame(){
-		
+
 	// }
 
 	function strikeScore(){

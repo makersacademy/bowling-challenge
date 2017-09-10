@@ -2,7 +2,12 @@
 Bowling Challenge
 =================
 
-Screenshots
+![Screenshot1](http://i.imgur.com/DJN27EI.jpg)
+![Screenshot2](http://i.imgur.com/undefined.png)
+![Screenshot3](http://i.imgur.com/undefined.png)
+![Screenshot4](http://i.imgur.com/v2H7I7V.jpg)
+![Screenshot5](http://i.imgur.com/IKe8JWd.jpg)
+![Screenshot6](http://i.imgur.com/ZVPUnpO.jpg)
 
 How to run the app
 -----------------

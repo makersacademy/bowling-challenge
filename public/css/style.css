@@ -43,6 +43,14 @@ a {
   text-shadow: 1px 1px black;
 }
 
+.lead-shadow {
+  text-shadow: 1px 1px black;
+}
+
+.lead-no-shadow {
+  text-shadow: 0.5px 0.5px black;
+}
+
 .play {
   color: white;
   max-font-size: 100px;

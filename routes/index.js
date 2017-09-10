@@ -6,7 +6,7 @@ var game;
 
 router.get('/', function(req, res) {
 	res.render('index', {
-		title: 'Bowling Game'
+		title: "Stephen's Bowling Game"
 	});
 });
 

@@ -1,0 +1,14 @@
+#!/bin/bash -ex
+
+cd ./app;
+
+# node.js
+brew install node;
+
+brew upgrade
+
+# yjs package manager
+brew install npm;
+
+# testing
+npm install;

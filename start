@@ -1,0 +1,5 @@
+#!/bin/bash -ex
+
+cd ./app;
+
+DEBUG=app:* npm start

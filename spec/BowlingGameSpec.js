@@ -5,9 +5,6 @@ describe('BowlingGame', function() {
     });
 
     describe('at start', function() {
-       it('total score is 0', function() {
-           expect(game.totalScore).toEqual(0);
-       });
     it('current frame is 1', function() {
         expect(game.currentFrame).toEqual(1);
     })
@@ -53,27 +50,41 @@ describe('BowlingGame', function() {
         it('goes straight to next frame', function() {
             expect(game.currentFrame).toEqual(2);
         });
-        it('adds next two rolls to frame score', function() {
+    });
+
+    describe('scenarios:', function() {
+        it('can roll gutter game', function() {
+            rollMany(20, 0);
+            expect(game.score()).toEqual(0);
+        });
+
+        it('can roll all ones', function() {
+            rollMany(20,1);
+            expect(game.score()).toEqual(20);
+        });
+
+        it('can roll a strike', function() {
+            game.roll(10);
             game.roll(5);
-            game.roll(4);
-            expect(game.scoreOfFrame(1)).toEqual(19);
+            game.roll(3);
+            rollMany(16,0);
+            expect(game.score()).toEqual(26);
+        });
+
+        it('can roll perfect game', function() {
+            rollMany(12,10);
+            expect(game.score()).toEqual(300)
         })
-    })
-
-    it('can roll gutter game', function() {
-        rollMany(20, 0);
-        expect(game.totalScore).toEqual(0);
-     })
-
-    it('can roll all ones', function() {
-        rollMany(20,1);
-        expect(game.totalScore).toEqual(20);
-    })
+    });
 
     var rollMany = function(rolls, pins) {
         for(i = 0; i < rolls; i++) {
             game.roll(pins);
         };
     };
-
 });
+
+// Strike idea
+// Every time there is a roll, do a loop for rolls.length and check whether a strike has occurred
+// if so, check if next two rolls have occurred
+// if so, add total and add to current frame?

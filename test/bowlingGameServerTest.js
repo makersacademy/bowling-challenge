@@ -146,7 +146,7 @@ describe('Bowling Game', function() {
                 browser.pressButton('[type="submit"][value="startGame"]', function() {
                     browser.pressButton('[type="submit"][value="10"]', function() {
                         browser.pressButton('[type="submit"][value="2"]', function() {
-                            expect(browser.text('body')).to.include('Added frames: ...');
+                            expect(browser.text('body')).to.include('Frames: ...');
                             browser.pressButton('[type="submit"][value="2"]', function() {
                                 expect(browser.text('body')).to.include('Frames: 14, 18');
                                 done()

@@ -1,3 +1,5 @@
+<% include partials/header %>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,11 +7,16 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body align="center">
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  <div class="jumbotron jumbotron-custom" style="margin: 1%; background-color: transparent">
+    <h1 class="display-3"> <strong><%= title %></strong></h1>
+    <p class="lead font-weight-bold">Welcome!</p>
+    <p class="lead">Made using ExpressJS & Javascript, tested with Mocha, Chai and Zombie.</p>
 
+  </div>
     <form action="/start" method="post">
-      <button type="submit" name="startGame" value="startGame">Start game</button>
+      <button class="btn btn-default" type="submit" name="startGame" value="startGame">Start game</button>
     </form>
   </body>
 </html>
+
+<% include partials/footer %>

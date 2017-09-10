@@ -17,6 +17,7 @@ app.use(cookieParser());
 app.use(session({secret: 'bowlingisgreat'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', index);
 
 app.use(function(req, res, next) {

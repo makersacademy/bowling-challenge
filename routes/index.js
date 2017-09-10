@@ -10,6 +10,10 @@ router.get('/', function(req, res) {
 	});
 });
 
+router.post('/home', function(req, res) {
+    res.redirect('/')
+});
+
 router.post('/start', function(req, res) {
 	game = new BowlingGame();
 	res.redirect('/play');

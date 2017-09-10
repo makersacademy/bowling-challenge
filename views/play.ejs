@@ -1,64 +1,70 @@
 <% include partials/header %>
 
 <body>
-
-<div id="totalScore" class="">
+<div>
+<div id="totalScore" >
     <% if (isNaN(game.score())) { %>
-    <h3>Minimum score: <%= game.framesTotal() %> </h3>
+    <h1 class="play">Minimum score: <span style="color: #cd0a0a"><%= game.framesTotal() %> </span></h1>
     <% } else { %>
-    <h3>Total score: <%= game.score() %> </h3>
+    <h1 class="play">Total score:<span style="color: #cd0a0a"> <%= game.score() %> </span></h1>
     <% } %>
 </div>
 
-<div id="currentFrame">
+<div id="currentFrame" class="play">
     <% if (game.currentFrame > 12) { %>
-    <h3>Game has ended!</h3>
+    <h2 class="play">Game has ended!</h2>
     <%} else if (game.currentFrame > 10) { %>
-    <h3>Current frame: Bonus frame </h3>
+    <h2 class="play">Current frame: Bonus frame </h2>
     <% } else { %>
-    <h3>Current frame: <%= game.currentFrame %> </h3>
+    <h2 class="play">Current frame: <%= game.currentFrame %> </h2>
     <% } %>
 </div>
 
-<div id="lastRoll">
-    <h3>Last roll: <%= game.lastRoll %></h3>
+<div id="lastRoll" class="play">
+    <h3 class="play">Last roll: <%= game.lastRoll %></h3>
 </div>
 
 <% if (game.currentFrame < 13) { %>
-<div id="remainingPins">
-    <h3>Remaining pins: <%= game.pinsLeft %></h3>
+<div id="remainingPins"  class="play">
+    <h3 class="play">Remaining pins: <%= game.pinsLeft %></h3>
 </div>
 <% } %>
 
-<div id="addedFrames">
-    <h3> Frames:
+<div id="addedFrames" class="play frames">
+    <h3 class="play"> Frames:
         <% result = 0 %>
         <% game.frames.forEach(function(frame, i) { %>
             <% if (isNaN(frame)) { %>
                 <% frame = '...'%>
-                <%= frame %>,
+                <%= frame %><% if (i !== game.frames.length-1) { %>, <% } %>
             <% } else { %>
                 <% result += frame %>
                 <% if (i < 10) { %>
-                    <%= result %>,
+                    <%= result %><% if (i !== game.frames.length-1 && i < 9) { %>,
+                                <% } %>
                 <% } %>
             <% } %>
         <% }) %>
     </h3>
 </div>
 
+<br>
 <% if (!(game.currentFrame >= 13)) { %>
-<form method="POST" action="/play">
+<form method="POST" action="/play"">
     <% for(i = 0; i <= 10; i++) { %>
-    <button class="btn btn-primary" type="submit" name="action" value="<%= i %>"><%= i %></button>
+    <button class="btn bowling-button" type="submit" name="action" value="<%= i %>"> -<%= i %>- </button>
     <% } %>
 </form>
 <% } %>
 
 <form method="POST" action="/start">
-    <button class="btn btn-primary" type="submit" name="action" value="restart">Restart game</button>
+    <button class="btn home-button" type="submit" name="action" value="restart">Restart game</button>
 </form>
 
+<form method="POST" action="/home">
+    <button class="btn home-button" type="submit" name="action" value="home">Home</button>
+</form>
+</div>
 </body>
 
 

@@ -31,7 +31,6 @@ BowlingGame.prototype.roll = function(pins) {
 	}
 
 	this.incrementFrames();
-
 };
 
 BowlingGame.prototype.addToTotal = function() {

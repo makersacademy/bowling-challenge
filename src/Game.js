@@ -9,20 +9,33 @@ var Game = function(frameNo = 1, rollNo = 1, firstRoll = 0, secondRoll = 0, runn
   this.runningScore = runningScore
 
   this.roll = function() {
-    if (this.rollNo === 1) {
+    if (game.scoreTable.length == 10) {
+      return "Game over! Thanks for playing!"
+    } else if (this.rollNo === 1) {
       this.firstRoll = Math.floor(Math.random() * 11);
       this.frameTable.push(this.firstRoll);
       this.rollNo += 1;
-      return this.firstRoll;
-    } else if (this.rollNo === 2) {
+      return this.firstRoll
+    } else if (this.rollNo === 2 && this.firstRoll !== 10 && this.scoreTable.length !== 10) {
       this.secondRoll = Math.floor(Math.random() * (11 - this.firstRoll));
-      this.frameTable.push(this.secondRoll);
-      this.scoreTable.push(this.frameTable);
-      this.frameTable = [];
-      this.rollNo = 1;
-      this.frameNo += 1;
+      this.reset()
       return this.secondRoll;
+    } else if (this.rollNo === 2 && this.firstRoll === 10 && this.scoreTable.length !== 10) {
+      this.secondRoll = 0
+      this.reset()
+      return "You got a strike, only 1 roll this frame"
     };
+  };
+
+  this.reset = function() {
+    this.frameTable.push(this.secondRoll);
+    this.scoreTable.push(this.frameTable);
+    this.frameTable = [];
+    this.rollNo = 1;
+    this.frameNo += 1;
+    // if (game.scoreTable.length === 10) { break; }
+    // unless (this.scoreTable.length = 10) 
+    //     return "Game over! Thanks for playing!"
   };
 
 };

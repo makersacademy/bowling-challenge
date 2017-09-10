@@ -43,21 +43,39 @@ describe ('Game', function() {
     });
 
     it('stores the second roll in the frame array', function() {
-      game.roll()
+      game.firstRoll = 5
+      game.rollNo = 2
       game.roll()
       expect(0 <= game.scoreTable.last <= 10).toBeTruthy();
     });
 
     it('frame table empties after 2 rolls', function() {
-      game.roll()
+      game.firstRoll = 5
+      game.rollNo = 2
       game.roll()
       expect(game.frameTable.length).toBe(0);
     });
 
-    it('only rolls once if roll 1 scores a strike', function() {
-      game.frame[0] = 10
-      expect(function(){game.roll2(10); }).toThrowError("You got a strike, only 1 roll this frame")
+    it('after 2 rolls, the roll scores are added to the scoreTable', function() {
+      game.firstRoll = 5
+      game.rollNo = 2
+      game.roll()
+      expect(game.scoreTable.length).toEqual(1)
     });
+
+    it('frame table empties after a strike', function() {
+      game.rollNo = 2
+      game.firstRoll = 10
+      game.roll()
+      expect(game.frameTable.length).toBe(0)
+    });
+
+    it('only rolls once if roll 1 scores a strike', function() {
+      game.firstRoll = 10
+      game.rollNo = 2
+      expect(game.roll()).toEqual("You got a strike, only 1 roll this frame")
+    });
+
 
   });
 
@@ -71,6 +89,24 @@ describe ('Game', function() {
     it('score starts at 0', function() {
       expect(game.runningScore).toBe(0)
     });
+
+    it('game ends after 10 frames', function() {
+      for(var i=0; i < 20; i++){
+        game.roll();
+      }
+      expect(game.roll()).toEqual("Game over! Thanks for playing!")
+    });
+
+    // it('game length is 10 frames', function() {
+    //   for(var i=0; i < 20; i++){
+    //     game.roll();
+    //   }
+    //   expect(game.scoreTable.length).toBe(10)
+    // });
+
+    
+
+
 
   });
   

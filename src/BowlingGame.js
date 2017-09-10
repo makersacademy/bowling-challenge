@@ -4,6 +4,7 @@ var BowlingGame = function() {
     this.currentFrameScore = 0;
     this.rollsInFrame = 0;
     this.pinsLeft = 10;
+    this.name = 'hello';
     this.frames = [];
     this.frameScores = [];
     this.rolls = [];
@@ -13,7 +14,6 @@ var BowlingGame = function() {
 BowlingGame.prototype.roll = function(pins) {
     this.lastRoll = pins;
     this.rolls.push(pins);
-
     if (pins > this.pinsLeft) {
         throw (new Error('Only ' + this.pinsLeft + ' pins left!'))
     } else if (this.currentFrame > 12) {
@@ -37,15 +37,20 @@ BowlingGame.prototype.addToTotal = function() {
     this.currentFrame += 1;
     this.totalScore += this.currentFrameScore;
     this.frames.push(this.currentFrameScore);
-    this.currentFrameScore = 0;
-    this.rollsInFrame = 0;
-    this.pinsLeft = 10;
+    this.reset();
     if (this.currentFrame === 13) {
     }
 };
 
+BowlingGame.prototype.reset = function() {
+    this.currentFrameScore = 0;
+    this.rollsInFrame = 0;
+    this.pinsLeft = 10;
+};
+
 BowlingGame.prototype.strike = function() {
     this.currentFrameScore += 10;
+    console.log('strike!');
     this.addToTotal()
 };
 
@@ -63,21 +68,21 @@ BowlingGame.prototype.score = function() {
 
     for(var frameIndex = 0; frameIndex < totalFrames; frameIndex++) {
         if (isStrike()) {
+            game.frames[frameIndex] = getStrikeScore();
             result += getStrikeScore();
-            // this.frameScores.push(getStrikeScore())
             rollIndex++;
         } else if (isSpare()) {
+            game.frames[frameIndex] = getSpareScore();
             result += getSpareScore();
-            // this.frameScores.push(getSpareScore())
             rollIndex += 2;
         } else {
             result += getNormalScore();
-            // this.frameScores.push(getNormalScore())
             rollIndex += 2;
         }
     }
     this.totalScore += result;
     return result;
+
     function isSpare() {
        return game.rolls[rollIndex] + game.rolls[rollIndex+1] === 10;
     }
@@ -85,9 +90,11 @@ BowlingGame.prototype.score = function() {
         return game.rolls[rollIndex] === 10;
     }
     function getSpareScore() {
+        console.log(game.rolls[rollIndex] + ' hello');
         return game.rolls[rollIndex] + game.rolls[rollIndex+1] + game.rolls[rollIndex+2]
     }
     function getStrikeScore() {
+        console.log(game.rolls[rollIndex] + ' hello');
         return game.rolls[rollIndex] + game.rolls[rollIndex+1] + game.rolls[rollIndex+2]
     }
     function getNormalScore() {
@@ -95,16 +102,30 @@ BowlingGame.prototype.score = function() {
     }
 };
 
-BowlingGame.prototype.framesTotal = function() {
+BowlingGame.prototype.rollsTotal = function() {
     var total = 0;
     for(var i = 0; i < this.rolls.length; i++) {
         console.log('adding ' + this.rolls[i] + ' to total of ' + total);
         total += this.rolls[i]
     }
     return total
-}
+};
+
+BowlingGame.prototype.framesTotal = function() {
+    var total = 0;
+    for(var i = 0; i < this.frames.length; i++) {
+        console.log('adding ' + this.frames[i] + ' to total of ' + total);
+        total += this.frames[i]
+    }
+    return total
+};
+
 
 // TO ADD TOTAL OF FRAME
 // CHECK IF isNaN(this.score)
 // IF YES, DON'T CALCULATE SCORE
 // IF NO, ADD SCORE TO FRAME
+
+
+
+module.exports = BowlingGame;

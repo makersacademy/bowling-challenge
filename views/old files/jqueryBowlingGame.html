@@ -71,7 +71,7 @@
         function lastBall() {
             $('#lastball').text(game.lastRoll);
             $('#currentframe').text(game.currentFrame);
-            console.log(isNaN(game.score()))
+            console.log(isNaN(game.score()));
             if (isNaN(game.score())) {
                 $('#currentscore').text('Minimum score is ' + game.framesTotal());
             } else {

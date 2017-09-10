@@ -2,9 +2,7 @@ var express = require('express');
 var router = express.Router();
 var BowlingGame = require('../src/BowlingGame');
 
-var sess;
 var game;
-var errors;
 
 router.get('/', function(req, res) {
 	res.render('index', {
@@ -18,23 +16,16 @@ router.post('/start', function(req, res) {
 });
 
 router.get('/play', function(req, res) {
-	sess = req.session;
-	sess.game = game;
-
 	if (game === undefined) {
 		game = new BowlingGame();
 	}
 
 	res.render('play', {
-		game: game,
-		errors: errors
+		game: game
 	});
 });
 
 router.post('/play', function(req, res) {
-	sess = req.session;
-	sess.game = game;
-
 	if (game === undefined) {
 		game = new BowlingGame();
 	}
@@ -51,7 +42,6 @@ router.post('/play', function(req, res) {
 			game: game
 		});
 	}
-
 });
 
 module.exports = router;

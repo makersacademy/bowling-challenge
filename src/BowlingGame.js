@@ -16,11 +16,8 @@ BowlingGame.prototype.roll = function(pins) {
 	this.rolls.push(pins);
 
 	if (pins > this.pinsLeft) {
-		console.log('Only ' + this.pinsLeft + ' pins left!');
 		this.rolls.splice(-1, 1);
 		this.lastRoll = this.rolls[this.rolls.length-1];
-	} else if (this.currentFrame > 12) {
-		console.log('No more rolls left!');
 	} else if (pins === 10) {
 		this.strike();
 	} else {
@@ -61,6 +58,7 @@ BowlingGame.prototype.score = function() {
 	var rollIndex = 0;
 	var game = this;
 	var totalFrames = 0;
+
 	if (this.currentFrame > 10) {
 		totalFrames = 10;
 	} else {
@@ -81,6 +79,7 @@ BowlingGame.prototype.score = function() {
 			rollIndex += 2;
 		}
 	}
+
 	this.totalScore += result;
 	return result;
 

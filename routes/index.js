@@ -6,12 +6,12 @@ var game;
 
 router.get('/', function(req, res) {
 	res.render('index', {
-		title: "Bowling Calculator"
+		title: 'Bowling Calculator'
 	});
 });
 
 router.post('/home', function(req, res) {
-    res.redirect('/')
+	res.redirect('/');
 });
 
 router.post('/start', function(req, res) {

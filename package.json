@@ -1,0 +1,25 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/immafirestarter/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/immafirestarter/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/immafirestarter/bowling-challenge#readme",
+  "devDependencies": {
+    "jquery": "^3.2.1"
+  }
+}

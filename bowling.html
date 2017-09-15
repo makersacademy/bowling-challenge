@@ -1,0 +1,81 @@
+<html>
+<head></head>
+<body>
+<button value="0">0</button>
+<button value="1">1</button>
+<button value="2">2</button>
+<button value="3">3</button>
+<button value="4">4</button>
+<button value="5">5</button>
+<button value="6">6</button>
+<button value="7">7</button>
+<button value="8">8</button>
+<button value="9">9</button>
+<button value="10">10</button>
+<br>
+<br>
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+<table style="width:60%">
+  <tr>
+    <th>Frame:</th>
+    <th colspan="2">1</th>
+    <th colspan="2">2</th>
+    <th colspan="2">3</th>
+    <th colspan="2">4</th>
+    <th colspan="2">5</th>
+    <th colspan="2">6</th>
+    <th colspan="2">7</th>
+    <th colspan="2">8</th>
+    <th colspan="2">9</th>
+    <th colspan="2">10</th>
+    <th colspan="4">Bonus</th>
+  </tr>
+  <tr>
+    <th>Roll:</th>
+    <th>1</th><th>2</th>
+    <th>1</th><th>2</th>
+    <th>1</th><th>2</th>
+    <th>1</th><th>2</th>
+    <th>1</th><th>2</th>
+    <th>1</th><th>2</th>
+    <th>1</th><th>2</th>
+    <th>1</th><th>2</th>
+    <th>1</th><th>2</th>
+    <th>1</th><th>2</th>
+    <th colspan="2">1</th>
+    <th colspan="2">2</th>
+  </tr>
+  <tr>
+     <th>Pins:</th>
+    <td id="1"></td><td id="2"></td>
+    <td id="3"></td><td id="4"></td>
+    <td id="5"></td><td id="6"></td>
+    <td id="7"></td><td id="8"></td>
+    <td id="9"></td><td id="10"></td>
+    <td id="11"></td><td id="12"></td>
+    <td id="13"></td><td id="14"></td>
+    <td id="15"></td><td id="16"></td>
+    <td id="17"></td><td id="18"></td>
+    <td id="19"></td><td id="20"></td>
+    <td id="21"></td><td id="22"></td>
+    <td id="23"></td><td id="24"></td>
+  </tr>
+</table>
+
+Total Score:
+<span id="totalScore"></span>
+<br>
+<br>
+<button id="resetButton">Start new game</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="bowlingJQuery.js"></script>
+<script src="src/play.js"></script>
+<script src="src/bowling.js"></script>
+<script src="src/frame.js"></script>
+<script src="src/scoreCalculator.js"></script>
+</body>

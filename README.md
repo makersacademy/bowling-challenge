@@ -1,6 +1,6 @@
-# Bowling Challenge
+# Bowling Score Card
 
-App for recording 10 pin bowling scores.
+App for recording 10-pin bowling scores.
 
 Written in Vanilla JavaScript.
 

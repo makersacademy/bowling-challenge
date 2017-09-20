@@ -1,6 +1,8 @@
 # Bowling Challenge
 
-Score ten pin bowling for one player (in JavaScript). Optionally create a nice interactive animated interface with jQuery.
+App for recording 10 pin bowling scores.
+
+Written in Vanilla JavaScript.
 
 ## 10 Pin Bowling Rules
 
@@ -23,10 +25,14 @@ Score:
 
 If get a strike or spare in final round, get 1 or 2 extra rolls respectively, but with only the bonus being scored.
 
-## Instructions
+## To Run
 
-Open bowling-challenge/index.html.
+Clone repository, then open index.html in a browser.
 
 Enter number of pins knocked down for each roll.
 
 Once all rolls recorded, refresh page to start a new game.
+
+## To Test
+
+Clone repository, then open SpecRunner.html in a browser.

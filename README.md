@@ -16,7 +16,7 @@ A strike is when all 10 pins are down first roll.
 
 A spare is when all 10 pins are down second roll.
 
-Score:
+**Score:**
 - 1 per pin
 
 - bonus 1 per pin for the 2 rolls following a strike

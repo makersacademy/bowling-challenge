@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="src/game.js"></script>
+    <link href="stylesheet.css" rel="stylesheet"></link>
+  </head>
+  <body>
+    <section>
+    <center>
+    <body >
+    <p>Frame:</p> <p id="frame"></p>
+    <p>Roll:</p> <p id="roll"></p>
+    <p>Pins:</p> <p id="pins"></p>
+    <p>Pins knocked:</p>
+    <p id="pins-knocked"></p>
+    <p> Total Score: </p> <p id="total-score"></p>
+    <button type="button" id="lets-play">Roll</button>
+  </section>
+
+  <script>
+  $(document).ready(function() {
+      var game = new Game ();
+      updateFrame();
+      updateRoll();
+      updatePins();
+      updatePinsKnocked();
+
+      function updateFrame(){
+          $('#frame').text(game.frame);
+          }
+          function updateRoll(){
+              $('#roll').text(game.roll);
+              }
+              function updatePins(){
+                  $('#pins').text(game.pins);
+                  }
+                  function updatePinsKnocked(){
+                      $('#pins-knocked').text(game.pinsKnocked);
+                      }
+        });
+  </script>
+  </center>
+  </body>
+</html>

@@ -1,4 +1,6 @@
 language: node_js
+node_js:
+  - "6"
 before_script:
   - npm install -g grunt-cli
 # these are secured environment variables encoding ALGOLIA_APPLICATION_ID=****** and ALGOLIA_API_KEY=****************

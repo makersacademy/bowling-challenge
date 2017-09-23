@@ -1,8 +1,13 @@
 language: node_js
 node_js:
-  - "6"
+    - "0.10"
+script: node_modules/karma/bin/karma start my.conf.js --single-run
+before_install:
+    - export DISPLAY=:99.0
+    - sh -e /etc/init.d/xvfb start
 before_script:
-  - npm install -g grunt-cli
+    - npm install
+
 # these are secured environment variables encoding ALGOLIA_APPLICATION_ID=****** and ALGOLIA_API_KEY=****************
 # env:
 #   global:

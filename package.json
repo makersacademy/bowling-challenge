@@ -25,5 +25,10 @@
     "express": "^4.15.4",
     "express-session": "^1.15.5",
     "express-validator": "^4.1.1"
+  },
+  "devDependencies": {
+    "karma": "^1.7.1",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0"
   }
 }

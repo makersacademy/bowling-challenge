@@ -63,13 +63,13 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: Infinity,
 
     plugins: [
   'karma-chrome-launcher',
   'karma-tap',
   'karma-sourcemap-loader',
   'karma-webpack' // *** This 'registers' the Karma webpack plugin.
-],
+]
   })
 }

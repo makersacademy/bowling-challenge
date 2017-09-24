@@ -1,0 +1,38 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "Gruntfile.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jenniferbacon01/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jenniferbacon01/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/jenniferbacon01/bowling-challenge#readme",
+  "dependencies": {
+    "body-parser": "^1.18.0",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "express-session": "^1.15.5",
+    "express-validator": "^4.1.1"
+  },
+  "devDependencies": {
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-tap": "^3.1.1",
+    "karma-webpack": "^2.0.4"
+  }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Game!</title>
+    <!-- <link rel='stylesheet' href='styles.css' /> -->
+    <script src="jquery.js"></script>
+    <script src="src/player.js"></script>
+    <script src="src/scoreCard.js"></script>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <h2>Your turn</h2>
+      Ball <span id="ballnumber"></span>
+      <p>
+        <form id="numberofpins">
+        <input type="text" name="pins">
+        <button type= "submit">Bowl</button>
+      </form>
+      </p>
+      <h2>Results</h2>
+      <table id="results" style="width:50%">
+      <tr>
+        <th>Frame</th>
+        <th>Roll</th>
+        <th>Knocked Down Pins</th>
+        <th>Total Score</th>
+      </tr>
+    </table>
+
+    </section>
+    <script src="src/interface.js"></script>
+  </body>
+</html>

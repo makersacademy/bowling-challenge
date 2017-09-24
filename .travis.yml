@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+    - "0.10"
+script: node_modules/karma/bin/karma start my.conf.js --single-run
+before_install:
+    - export DISPLAY=:99.0
+    - sh -e /etc/init.d/xvfb start
+before_script:
+    - npm install
+
+# these are secured environment variables encoding ALGOLIA_APPLICATION_ID=****** and ALGOLIA_API_KEY=****************
+# env:
+#   global:
+#   - secure: ZCrJySSbsKxDV2ps8xDlUA0HwOxPVXj/AkzJHi0oa6MznF0mac9rEtOt0MF+POPewhIrL62vwTVMGWGyHYJ6RvpyW3SVRpHsKlzHhNnDJ6TMFCqVM5yPZ8JZzR8O2+XjQXOmZVZ4P+4ahnr9UCba8gzhj5WNoAUnyQEXXRCklwc=
+#   - secure: PLRpNq5nR8mckceDUB6AqpjuD2SQLHxlwZts1ApLJzcYlyx/nkjiRonpWjKQ1XPuXAJp87cVzlkDaR++KdG5XAcxJRypGsomoxznvVZ/PWgR1RYkliaSK8iVPMmLF0sSWnnoldFNcE2sO8QOqYME4q7F38uNR8EMeqsLJxtpLik=
+# Raw

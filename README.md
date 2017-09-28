@@ -93,9 +93,13 @@ npm start
 
 Then enter `localhost:3000` in your browser to play.
 
+To use the app you click on the number of pins you score each bowl. Click on `Reset` to play again. Instructions can be ready by clicking on the `Bowling - Rules` button in the app.
+
+## Tests
+
 To run the tests: `open SpecRunner.html`. The using tests are in the `spec` folder and feature tests in the `spec/features` folder.
 
-To use the app you click on the number of pins you score each bowl. Click on `Reset` to play again. Instructions can be ready by clicking on the `Bowling - Rules` button in the app.
+![Bowling Scorecard Tests](https://i.imgur.com/y9R7afX.png)
 
 ## Code Review
 

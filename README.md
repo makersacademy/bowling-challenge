@@ -4,7 +4,7 @@ Bowling Challenge
 
 Makers Academy week 5 weekend challenge. Use the app online at [bowling-scorecard-app.herokuapp.com](https://bowling-scorecard-app.herokuapp.com/).
 
-![Bowling Scorecard App Image](public/images/bowling.png)
+![Bowling Scorecard](https://i.imgur.com/y7azhzn.png)
 
 ## The Task
 

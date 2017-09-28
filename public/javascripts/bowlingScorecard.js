@@ -8,10 +8,8 @@ BowlingScorecard.prototype.addFrame = function() {
 };
 
 BowlingScorecard.prototype.isGameComplete = function() {
-  if (this.frameNumber() === 10) {
-    return ((this.frame().isComplete() && this.frame().score() < 10) || this.frame().bonus != null);
-  }
-  return false;
+  if (this.frameNumber() < 10) return false;
+  return this.frame().isComplete();
 };
 
 BowlingScorecard.prototype.score = function() {

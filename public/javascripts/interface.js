@@ -4,7 +4,7 @@ $(document).ready(function(){
   updateDisplay();
 
  function updateDisplay() {
-    $('.display').text(display.gameInstructions(bowlingScorecard));
+    $('.display').text(display.gameInstructions(bowlingScorecard.isGameComplete()));
     $('.current-score').text(display.scoreInfo(bowlingScorecard));
     $('.frames').html(display.framesToHTMLTable(bowlingScorecard._frames));
  }

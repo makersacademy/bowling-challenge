@@ -1,8 +1,8 @@
 function Display() {
 }
 
-Display.prototype.gameInstructions = function(bowlingScorecard) {
-  return (bowlingScorecard.isGameComplete()) ?
+Display.prototype.gameInstructions = function(bool) {
+  return (bool) ?
   'Game over! Click on reset to play again.'
   : 'Click on the number of pins you knocked down.';
 };

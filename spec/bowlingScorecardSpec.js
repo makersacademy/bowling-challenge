@@ -80,7 +80,7 @@ describe ("BowlingScorecard", function(){
       expect(bowlingScorecard.isGameComplete()).toBeFalsy();
     });
     it('should be complete when all 10 frames are played', function(){
-      for (var i=0; i< 20; i++) {
+      for (var i=0; i< 21; i++) {
         bowlingScorecard.addScore(4);
       }
       expect(bowlingScorecard.isGameComplete()).toBeTruthy();

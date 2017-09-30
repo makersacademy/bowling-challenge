@@ -25,6 +25,13 @@ describe ('Bowling scorecard does the following', function() {
 
   it('skips second roll if user rolls a strike', function() {
     bowling.roll(10);
-    expect(bowling.allRolls()).toEqual([10,"-"]);
+    expect(bowling.allRolls()).toEqual([10,"X"]);
   });
+
+  it('calculates score if player roles a strike', function() {
+    bowling.roll(10);
+    bowling.roll(7);
+    bowling.roll(1);
+    expect(bowling.currentScore()).toEqual(26);
+  })
 });

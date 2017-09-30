@@ -12,26 +12,10 @@ Bowling.prototype.roll = function(number) {
   this.score += number;
   this.allScores.push(number);
   if (number === 10) {
-    this.allScores.push("-");
+    this.allScores.push("X");
   }
 };
 
 Bowling.prototype.allRolls = function() {
   return this.allScores;
 };
-
-
-  // Bowling.prototype.play = function(number, number) {
-  //   var rolls = 20
-  //
-  //   for (var i = 0; i < rolls; i++) {
-  //     self.roll();
-  //     if(number === 10){break;}
-  //   }
-  // };
-  //
-  // var obj = {};
-  // var name = "name";
-  // var val = 2;
-  // obj[name] = val;
-  // console.log(obj);​

@@ -23,9 +23,9 @@ Frame.prototype.addBonusRolls = function () {
   if(!this.isFinished()){
     return;
   } else {
-    if (this.rolls[0] === 10) {
+    if (this.isStrike()) {
       this.bonusRollsRemaining += 2;
-    } else if (this.rolls[0] + this.rolls[1] === 10) {
+    } else if (this.isSpare()) {
       this.bonusRollsRemaining +=1;
     }
   }
@@ -33,6 +33,20 @@ Frame.prototype.addBonusRolls = function () {
 
 Frame.prototype.getBonusRollsRemaining = function () {
   return this.bonusRollsRemaining;
+};
+
+Frame.prototype.isStrike = function () {
+  return this.rolls[0] === 10;
+};
+
+Frame.prototype.isSpare = function () {
+  if (!this.isFinished()) {
+    return false;
+  } else if (this.rolls[0] + this.rolls[1] === 10) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 Frame.prototype.isFinished = function () {

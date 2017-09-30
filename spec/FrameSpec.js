@@ -68,4 +68,24 @@ describe('Frame', function() {
       expect(frame.isFinished()).toBe(true);
     });
   });
+
+  describe('#addBonusFrom', function() {
+    var frame1;
+    var frame2;
+
+    beforeEach(function() {
+      frame1 = new Frame();
+      frame2 = new Frame();
+    });
+
+    it('1/9, 5/3 gives a score of 15 on first frame', function() {
+      frame1.roll(1);
+      frame1.roll(9);
+      expect(frame1.getBonusRollsRemaining()).toBe(1);
+      frame2.roll(5);
+      frame2.roll(3);
+      frame1.addBonusFrom(frame2);
+      expect(frame1.score()).toBe(15);
+    });
+  });
 });

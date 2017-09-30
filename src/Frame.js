@@ -1,9 +1,12 @@
 function Frame() {
   this.rolls = [];
+  this.bonus = 0;
 }
 
 Frame.prototype.score = function () {
-  return 0;
+  var roll_1 = this.rolls[0] ? this.rolls[0] : 0;
+  var roll_2 = this.rolls[1] ? this.rolls[1] : 0;
+  return roll_1 + roll_2 + this.bonus;
 };
 
 Frame.prototype.roll = function (pins) {

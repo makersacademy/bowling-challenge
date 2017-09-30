@@ -15,6 +15,19 @@ Frame.prototype.roll = function (pins) {
     throw new Error('Illegal roll, frame complete');
   } else {
     this.rolls.push(pins);
+    this.addBonusRolls();
+  }
+};
+
+Frame.prototype.addBonusRolls = function () {
+  if(!this.isFinished()){
+    return;
+  } else {
+    if (this.rolls[0] === 10) {
+      this.bonusRollsRemaining += 2;
+    } else if (this.rolls[0] + this.rolls[1] === 10) {
+      this.bonusRollsRemaining +=1;
+    }
   }
 };
 

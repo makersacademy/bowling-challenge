@@ -13,13 +13,18 @@ describe ('Bowling scorecard does the following', function() {
   });
 
   it('allows user to roll ball and to score points', function(){
-    bowling.roll(5);
     bowling.roll(3);
-    expect(bowling.currentScore()).toEqual(8);
+    expect(bowling.currentScore()).toEqual(3);
   });
 
-  it('allows user to play max of 2 balls per frame', function() {
-    bowling.playFrame(4,6);
-    expect(bowling.thisFrame()).toEqual(4,6);
+  it('pushes rolls to array of scores', function() {
+    bowling.roll(4);
+    bowling.roll(6);
+    expect(bowling.allRolls()).toEqual([4,6]);
+  });
+
+  it('skips second roll if user rolls a strike', function() {
+    bowling.roll(10);
+    expect(bowling.allRolls()).toEqual([10,"-"]);
   });
 });

@@ -11,9 +11,7 @@ Frame.prototype.score = function () {
 };
 
 Frame.prototype.roll = function (pins) {
-  if (this.rolls.length === 2) {
-    throw new Error('Illegal roll, frame complete');
-  } else if (this.rolls[0] === 10) {
+  if (this.isFinished()) {
     throw new Error('Illegal roll, frame complete');
   } else {
     this.rolls.push(pins);
@@ -22,4 +20,14 @@ Frame.prototype.roll = function (pins) {
 
 Frame.prototype.getBonusRollsRemaining = function () {
   return this.bonusRollsRemaining;
+};
+
+Frame.prototype.isFinished = function () {
+  if (this.rolls.length === 2) {
+    return true;
+  } else if (this.rolls[0] === 10) {
+    return true;
+  } else {
+    return false;
+  }
 };

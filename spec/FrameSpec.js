@@ -46,4 +46,26 @@ describe('Frame', function() {
       expect(frame.getBonusRollsRemaining()).toBe(1);
     });
   });
+
+  describe('#isFinished', function() {
+    it('empty frame is not finished', function() {
+      expect(frame.isFinished()).toBe(false);
+    });
+
+    it('1/ is not finished', function() {
+      frame.roll(1);
+      expect(frame.isFinished()).toBe(false);
+    });
+
+    it('1/1 is finished', function() {
+      frame.roll(1);
+      frame.roll(1);
+      expect(frame.isFinished()).toBe(true);
+    });
+
+    it('finishes on strike', function() {
+      frame.roll(10);
+      expect(frame.isFinished()).toBe(true);
+    });
+  });
 });

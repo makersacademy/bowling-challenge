@@ -9,7 +9,7 @@ describe ('Bowling scorecard does the following', function() {
   });
 
   it('starts with default score of 0', function() {
-    expect(bowling.score()).toEqual(0);
+    expect(bowling.currentScore()).toEqual(0);
   });
 
 });

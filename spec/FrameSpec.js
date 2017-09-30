@@ -29,4 +29,21 @@ describe('Frame', function() {
       expect(function() {frame.roll(1);}).toThrowError('Illegal roll, frame complete');
     });
   });
+
+  describe('#getBonusRollsRemaining', function() {
+    it('new frame has no bonus rolls', function() {
+      expect(frame.getBonusRollsRemaining()).toBe(0);
+    });
+
+    it('strike wins 2 bonus rolls', function() {
+      frame.roll(10);
+      expect(frame.getBonusRollsRemaining()).toBe(2);
+    });
+
+    it('2/8 spare wins 1 bonus roll', function() {
+      frame.roll(2);
+      frame.roll(8);
+      expect(frame.getBonusRollsRemaining()).toBe(1);
+    });
+  });
 });

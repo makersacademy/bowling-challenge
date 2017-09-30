@@ -1,6 +1,7 @@
 function Frame() {
   this.rolls = [];
   this.bonus = 0;
+  this.bonusRollsRemaining = 0;
 }
 
 Frame.prototype.score = function () {
@@ -17,5 +18,8 @@ Frame.prototype.roll = function (pins) {
   } else {
     this.rolls.push(pins);
   }
+};
 
+Frame.prototype.getBonusRollsRemaining = function () {
+  return this.bonusRollsRemaining;
 };

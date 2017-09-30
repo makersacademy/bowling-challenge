@@ -35,6 +35,24 @@ Frame.prototype.getBonusRollsRemaining = function () {
   return this.bonusRollsRemaining;
 };
 
+Frame.prototype.addBonusFrom = function (frame) {
+  if (this.getBonusRollsRemaining() <= 0) {
+    return;
+  } else if (this.getBonusRollsRemaining() === 1) {
+    this.bonus += frame.rolls[0];
+    this.bonusRollsRemaining--;
+  } else if (this.getBonusRollsRemaining() === 2) {
+    if (frame.rolls.length < 2) {
+      this.bonus += frame.rolls[0];
+      this.bonusRollsRemaining--;
+    } else if (frame.rolls.length === 2) {
+      var bonus = frame.rolls[0] + frame.rolls[1];
+      this.bonus += bonus;
+      this.bonusRollsRemaining -= 2;
+    }
+  }
+};
+
 Frame.prototype.isStrike = function () {
   return this.rolls[0] === 10;
 };

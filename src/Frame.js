@@ -9,6 +9,8 @@ Frame.prototype.score = function () {
 Frame.prototype.roll = function (pins) {
   if (this.rolls.length === 2) {
     throw new Error('Illegal roll, frame complete');
+  } else if (this.rolls[0] === 10) {
+    throw new Error('Illegal roll, frame complete');
   } else {
     this.rolls.push(pins);
   }

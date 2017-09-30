@@ -12,4 +12,8 @@ describe ('Bowling scorecard does the following', function() {
     expect(bowling.currentScore()).toEqual(0);
   });
 
+  it('allows user to roll ball and to score points', function(){
+    bowling.roll(5);
+    expect(bowling.currentScore()).toEqual(5);
+  });
 });

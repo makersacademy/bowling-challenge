@@ -12,19 +12,14 @@ describe ('Bowling scorecard does the following', function() {
     expect(bowling.currentScore()).toEqual(0);
   });
 
-  it('starts creates empty frame hash on creation',function() {
-    expect(bowling.frameScore("f1.1")).toEqual('-');
-  });
-
   it('allows user to roll ball and to score points', function(){
     bowling.roll(5);
     bowling.roll(3);
     expect(bowling.currentScore()).toEqual(8);
   });
 
-  // it('stores two rolls in a frame score'), function() {
-  //   bowling.roll(5);
-  //   bowling.roll(3);
-  //   expect()
-  // }
+  it('allows user to play max of 2 balls per frame', function() {
+    bowling.playFrame(4,6);
+    expect(bowling.thisFrame()).toEqual(4,6);
+  });
 });

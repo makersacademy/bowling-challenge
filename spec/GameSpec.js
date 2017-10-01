@@ -32,4 +32,9 @@ describe('Game', function(){
     game.roll([10,0]);
     expect(game.framesPlayed()).toEqual(3);
   });
+
+  it('keeps track of the number of frames left to play', function(){
+    game.roll([3,4]);
+    expect(game.framesLeft()).toEqual(9);
+  });
 });

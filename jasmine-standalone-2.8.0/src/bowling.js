@@ -80,7 +80,6 @@ Bowling.prototype.roll9 = function() {
   }
 };
 
-
 Bowling.prototype.rollStrike = function() {
   if(this.allScores.length < 19) {
     this.allScores.push(10, null);

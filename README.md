@@ -24,11 +24,11 @@ $ open SpecRunner.html
 
 How to Use
 ----
-####Create a new game instance:
+#### Create a new game instance:
 ```
 var game = new Game()
 ```
-####Register a roll
+#### Register a roll
 
 The roll method accepts an array as the argument. The array contains the score for the first and second roll.
 ```

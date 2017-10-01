@@ -1,6 +1,9 @@
 Bowling Challenge
 =================
-Implementation of a bowling scorecard in JavaScript
+
+[![Build Status](https://api.travis-ci.org/diaryofdiscoveries/bowling-challenge.svg?branch=master)](https://travis-ci.org/diaryofdiscoveries/bowling-challenge)
+
+- Implementation of a bowling scorecard in JavaScript
 
 Technologies used
 ----

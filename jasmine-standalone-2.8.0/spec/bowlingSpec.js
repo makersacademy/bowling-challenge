@@ -79,4 +79,29 @@ describe ('Bowling scorecard does the following', function() {
     bowling.roll1();
     expect(bowling.currentScore()).toEqual(26);
   })
+
+  it('stops player from playing too many balls', function() {
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+    bowling.roll1();
+  expect(bowling.roll1()).toThrow('Game is over - Cannot roll again');
+  });
 });

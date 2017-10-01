@@ -9,46 +9,85 @@ Bowling.prototype.currentScore = function(){
 };
 
 Bowling.prototype.roll1 = function() {
-  this.allScores.push(1);
+  if(this.allScores.length < 21) {
+    this.allScores.push(1);
+  } else {
+  throw 'Game is over - Cannot roll again';
+  }
 };
 
 Bowling.prototype.roll2 = function() {
-  this.allScores.push(2);
+  if(this.allScores.length < 20) {
+    this.allScores.push(2);
+  } else {
+  throw 'Game is over - Cannot roll again';
+  }
 };
 
 Bowling.prototype.roll3 = function() {
-  this.allScores.push(3);
+  if(this.allScores.length < 20) {
+    this.allScores.push(3);
+  } else {
+  throw 'Game is over - Cannot roll again';
+  }
 };
 
 Bowling.prototype.roll4 = function() {
-  this.allScores.push(4);
+  if(this.allScores.length < 20) {
+    this.allScores.push(4);
+  } else {
+  throw 'Game is over - Cannot roll again';
+  }
 };
 
 Bowling.prototype.roll5 = function() {
-  this.allScores.push(5);
+  if(this.allScores.length < 20) {
+    this.allScores.push(5);
+  } else {
+  throw 'Game is over - Cannot roll again';
+  }
 };
 
 Bowling.prototype.roll6 = function() {
-  this.allScores.push(6);
+  if(this.allScores.length < 20) {
+    this.allScores.push(6);
+  } else {
+  throw 'Game is over - Cannot roll again';
+  }
 };
 
 Bowling.prototype.roll7 = function() {
-  this.allScores.push(7);
+  if(this.allScores.length < 20) {
+    this.allScores.push(7);
+  } else {
+  throw 'Game is over - Cannot roll again';
+  }
 };
 
 Bowling.prototype.roll8 = function() {
-  this.allScores.push(8);
+  if(this.allScores.length < 20) {
+    this.allScores.push(8);
+  } else {
+  throw 'Game is over - Cannot roll again';
+  }
 };
 
 Bowling.prototype.roll9 = function() {
-  this.allScores.push(9);
+  if(this.allScores.length < 20) {
+    this.allScores.push(9);
+  } else {
+  throw 'Game is over - Cannot roll again';
+  }
 };
+
 
 Bowling.prototype.rollStrike = function() {
-    this.allScores.push(10,null);
+  if(this.allScores.length < 19) {
+    this.allScores.push(10, null);
+  } else {
+  throw 'Game is over - Cannot roll again';
+  }
 };
-
-
 
 Bowling.prototype.allRolls = function() {
   return this.allScores;
@@ -56,6 +95,5 @@ Bowling.prototype.allRolls = function() {
 
 Bowling.prototype.frameStore = function() {
   if (this.allScores.count === 2){
-
   }
 }

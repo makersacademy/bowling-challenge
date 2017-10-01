@@ -10,8 +10,14 @@ ScoreCard.prototype.roll = function(pins) {
 
 ScoreCard.prototype.score = function() {     //iterate through the rolls array
   var result = 0;
-  for (var i = 0; i < 20; i++) {
-    result += this.rolls[i];
+  var rollIndex = 0;                                               //rollIndex added to iterate through rolls array frame by frame
+  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+    if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] == 10) {
+        result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];  //a normal roll plus another bounus roll added for a spare
+    } else {
+        result += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+    }
+    rollIndex += 2;                                                //go throught the frames and give the 2 rolls in each frame
   }
   return result;
 };

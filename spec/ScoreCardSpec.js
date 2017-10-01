@@ -2,7 +2,7 @@
 
 describe ("Scorecard", function() {
 
-  var scoreCard;                                //high scope scoreCard variable
+  var scoreCard;                                //higher scope scoreCard variable
 
   beforeEach(function() {
     scoreCard = new ScoreCard();
@@ -22,6 +22,14 @@ describe ("Scorecard", function() {
   it("Roll all ones", function() {
     multipleRolls(1,20);                        //roll 1 pin twenty times
     expect(scoreCard.score()).toBe(20);
+  });
+
+  it("Spare", function() {
+    scoreCard.roll(6);
+    scoreCard.roll(4);
+    scoreCard.roll(7);
+    multipleRolls(0,17);                        //zero pins and 17 rolls left in the game
+    expect(scoreCard.score()).toBe(24);
   });
 
 });

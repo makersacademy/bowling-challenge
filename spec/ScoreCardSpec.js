@@ -32,4 +32,12 @@ describe ("Scorecard", function() {
     expect(scoreCard.score()).toBe(24);
   });
 
+  it("Strike", function() {
+    scoreCard.roll(10);
+    scoreCard.roll(6);
+    scoreCard.roll(7);
+    multipleRolls(0,16)
+    expect(scoreCard.score()).toBe(36);
+  })
+
 });

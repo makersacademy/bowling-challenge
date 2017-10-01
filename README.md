@@ -42,6 +42,8 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
+To Do
+----
 ### Strikes
 
 The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.

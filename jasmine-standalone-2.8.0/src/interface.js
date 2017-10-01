@@ -1,15 +1,11 @@
 $(document).ready(function(){
   var bowling = new Bowling();
 
-  function updateScore() {
-  $('#score').text(bowling.currentScore);
-  // $('#score').attr('class', thermostat.energyUsage());
-  }
-
   updateScore();
 
   $('#roll1').click(function(){
-
+    bowling.roll1();
+    updateScore();
   })
 
   $('#roll2').click(function(){
@@ -48,4 +44,9 @@ $(document).ready(function(){
 
   })
 
-})
+  function updateScore() {
+  $('#score').text(bowling.score);
+  // $('#score').attr('class', thermostat.energyUsage());
+  }
+
+});

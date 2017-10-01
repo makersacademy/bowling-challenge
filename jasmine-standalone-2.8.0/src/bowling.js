@@ -5,7 +5,8 @@ function Bowling(){
 }
 
 Bowling.prototype.currentScore = function(){
-  return this.allScores.reduce(function (a, b) {return a + b}, 0);
+  this.score = this.allScores.reduce(function (a, b) {return a + b}, 0);
+  return this.score
 };
 
 Bowling.prototype.roll1 = function() {

@@ -1,0 +1,50 @@
+.low-usage {
+    color: green;
+}
+.medium-usage {
+    color: black;
+}
+.high-usage {
+    color: red;
+}
+
+.button {
+    background-color: white; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 800%;
+    font-stretch: ultra-expanded;
+    margin-top: -20px;
+    margin-bottom: -20px;
+    color: white;
+}
+
+h2 {
+    font-size: 200%;
+}
+
+h3 {
+    font-size: 125%;
+}
+
+p {
+    font-size: 150%;
+}
+#container{
+  background-color: grey;
+  height: 345px;
+  width: 500px;
+  z-index: 5;
+  border: 2px solid;
+  border-radius: 25px;
+}

@@ -5,6 +5,9 @@ var ScoreCard = function() {
 };
 
 ScoreCard.prototype.roll = function(pins) {
+  if (this.invalidNumber(pins)) {
+    throw new Error("ERROR! Expected a number between 0 and 10");
+  }
   this.rolls.push(pins);                          //roll function, push on the array
 };
 
@@ -47,4 +50,8 @@ ScoreCard.prototype.score = function() {          //iterate through the rolls ar
   function getNormalScore() {
     return scoreCard.rolls[rollIndex] + scoreCard.rolls[rollIndex + 1];
   }
+};
+
+ScoreCard.prototype.invalidNumber = function(pins) {
+  return (isNaN(pins) || pins < 0 || pins > 10);
 };

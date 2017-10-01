@@ -1,6 +1,6 @@
 'use strict';
 
-describe ("Scorecard", function() {
+describe ("Scorecard Engine", function() {
 
   var scoreCard;                                //higher scope scoreCard variable
 
@@ -38,6 +38,26 @@ describe ("Scorecard", function() {
     scoreCard.roll(7);
     multipleRolls(0,16)
     expect(scoreCard.score()).toBe(36);
+  });
+
+  it("Perfect Game", function() {
+    multipleRolls(10,12);
+    expect(scoreCard.score()).toBe(300);
   })
+
+  describe("Invalid Number", function() {
+
+    it("does not accept NaN", function() {
+      expect(function() { scoreCard.roll("not a number"); }).toThrowError("ERROR! Expected a number between 0 and 10");
+    });
+
+    it("does not accept numbers lower than 0", function() {
+      expect(function() { scoreCard.roll(-1); }).toThrowError("ERROR! Expected a number between 0 and 10");
+    });
+
+    it("does not accept numbers higher than 10", function() {
+      expect(function() { scoreCard.roll(11); }).toThrowError("ERROR! Expected a number between 0 and 10");
+    });
+  });
 
 });

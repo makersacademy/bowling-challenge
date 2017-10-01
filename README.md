@@ -22,6 +22,19 @@ $ open SpecRunner.html
 ```
 - Refresh browser to run tests
 
+How to Use
+----
+####Create a new game instance:
+```
+var game = new Game()
+```
+####Register a roll
+
+The roll method accepts an array as the argument. The array contains the score for the first and second roll.
+```
+game.roll([5,4])
+```
+In this example the number of pins knocked were 5 for the first roll and 4 for the second roll.
 
 The Rules
 ----

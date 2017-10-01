@@ -68,6 +68,6 @@ describe('Game', function(){
     game.roll([10,0]);
     game.roll([9,0]);
     game.roll([5,3]);
-    expect(function(){ game.roll();}).toThrowError('Game is finished');
+    expect(function(){ game.roll([4,4]);}).toThrowError('Game is finished');
   });
 });

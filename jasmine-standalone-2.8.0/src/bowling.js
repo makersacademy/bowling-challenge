@@ -1,6 +1,5 @@
 function Bowling(){
-  this.DEFAULT_SCORE = 0;
-  this.score = this.DEFAULT_SCORE;
+  this.score = 0;
   this.allScores = [];
 }
 

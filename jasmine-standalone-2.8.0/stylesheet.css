@@ -40,11 +40,40 @@ h3 {
 p {
     font-size: 150%;
 }
+
+p2 {
+    font-size: 150%;
+}
 #container{
   background-color: grey;
-  height: 345px;
-  width: 500px;
+  height: 500px;
+  width: 1000px;
   z-index: 5;
   border: 2px solid;
   border-radius: 25px;
+}
+
+#framebox{
+  align-items: center;
+  background-color: white;
+  display: inline-block;
+  height: 110px;
+  width: 75px;
+  z-index: 5;
+  border: 2px solid;
+}
+
+#firstballbox{
+  align-self: flex-end;
+  background-color: pink;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  z-index: 5;
+  border: 2px solid;
+
+}
+
+#secondballbox{
+
 }

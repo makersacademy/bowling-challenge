@@ -3,7 +3,7 @@ describe('Bowling', function(){
 
   beforeEach(function(){
     game = new Game();
-    game.addFrame(1);
+    game.addFrame();
   });
 
   describe('Start new game', function(){
@@ -51,6 +51,40 @@ describe('Bowling', function(){
       game.roundScore(5);
       expect(game.currentFrame()).toEqual({frame: 1, round: 2, score: 10});
       expect(game.isSpare()).toEqual(true);
+    });
+  });
+
+  describe('Check if score', function(){
+
+    it('is a SPARE', function(){
+      // game.addFrame(1);
+      game.roundScore(5);
+      game.roundScore(5);
+      expect(game.currentFrame()).toEqual({frame: 1, round: 2, score: 10});
+      expect(game.isSpare()).toEqual(true);
+    });
+  });
+
+  describe('Check start of new frame', function(){
+
+    it('when two rounds of a frame are finished', function(){
+      // game.addFrame(1);
+      // var i = 0
+      //
+      // while (i < 3) {
+      //   game.roundScore(5);
+      //   i++
+      // };
+      console.log(game.currentFrame())
+      game.roundScore(5);
+      console.log(game.currentFrame())
+      game.roundScore(5);
+      console.log(game.currentFrame())
+      game.roundScore(5);
+      console.log(game.currentFrame())
+      console.log(game.frames)
+      expect(game.currentFrame()).toEqual({frame: 2, round: 1, score: 5});
+      expect(game.isSpare()).toEqual(false);
     });
   });
 

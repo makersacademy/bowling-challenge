@@ -4,6 +4,7 @@ function Frame(rolls){
   this._score = 0;
   this.rolls = rolls;
   this.isStrike = false;
+  this.isSpare = false;
 }
 
 Frame.prototype.firstRoll = function() {
@@ -15,8 +16,7 @@ Frame.prototype.secondRoll = function() {
 };
 
 Frame.prototype.calculateScore = function() {
-  if (this.firstRoll() == 10) {
-    this.isStrike = true;
-  }
   this._score += this.firstRoll() + this.secondRoll();
+  if (this.firstRoll() == 10) { this.isStrike = true; }
+  if (this._score == 10) {this.isSpare = true; }
 };

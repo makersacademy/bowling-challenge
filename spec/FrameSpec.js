@@ -3,7 +3,7 @@
 describe('Frame', function(){
   var frame;
 
-  describe('when not a strike', function(){
+  describe('when not a strike or a spare', function(){
     beforeEach(function(){
       frame = new Frame([4,3]);
     });
@@ -23,6 +23,14 @@ describe('Frame', function(){
       frame = new Frame([10,0]);
       frame.calculateScore();
       expect(frame.isStrike).toEqual(true);
+    });
+  });
+
+  describe('when a spare', function(){
+    it('accounts for a spare', function(){
+      frame = new Frame([7,3]);
+      frame.calculateScore();
+      expect(frame.isSpare).toEqual(true);
     });
   });
 });

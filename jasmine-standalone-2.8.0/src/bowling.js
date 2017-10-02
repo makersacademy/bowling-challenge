@@ -1,16 +1,18 @@
 function Bowling(){
   this.score = 0;
   this.allScores = [];
+  this.allFrames = {};
 }
 
 Bowling.prototype.currentScore = function(){
   this.score = this.allScores.reduce(function (a, b) {return a + b}, 0);
-  return this.score
+  return this.score;
 };
 
 Bowling.prototype.roll1 = function() {
   if(this.allScores.length < 21) {
     this.allScores.push(1);
+    self.updateScore;
   } else {
   throw 'Game is over - Cannot roll again';
   }
@@ -26,7 +28,7 @@ Bowling.prototype.roll2 = function() {
 
 Bowling.prototype.roll3 = function() {
   if(this.allScores.length < 20) {
-    this.allScores.push(3);
+    this.allScores.push(3);;
   } else {
   throw 'Game is over - Cannot roll again';
   }
@@ -92,7 +94,12 @@ Bowling.prototype.allRolls = function() {
   return this.allScores;
 };
 
-Bowling.prototype.frameStore = function() {
-  if (this.allScores.count === 2){
-  }
-}
+
+
+
+
+
+
+// Bowling.prototype.calculator = function() {
+//   this.score =
+// };

@@ -104,4 +104,10 @@ describe ('Bowling scorecard does the following', function() {
     bowling.roll1();
   expect(bowling.roll1()).toThrow('Game is over - Cannot roll again');
   });
+
+  it('stores rolls in a frame hash', function() {
+    bowling.roll1();
+    bowling.roll1();
+    expect(bowling.getFrame1()).toEqual([1,1]);
+  })
 });

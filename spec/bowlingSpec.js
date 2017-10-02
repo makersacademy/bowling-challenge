@@ -29,6 +29,7 @@ describe('Bowling', function(){
       game.roundScore(1);
       game.roundScore(1);
       expect(game.frames[0]).toEqual({frame: 1, round: 1, score: 12});
+      expect(game.strike).toEqual(false);
     });
   });
 
@@ -58,6 +59,18 @@ describe('Bowling', function(){
       expect(game.frames[0]).toEqual({frame: 1, round: 2, score: 10});
       expect(game.spare).toEqual(true);
       expect(game.strike).toEqual(false);
+    });
+  });
+
+  describe('Score a SPARE', function(){
+
+    it('in round 2 and get bonus from first roll in next frame', function(){
+      game.roundScore(5);
+      game.roundScore(5);
+      game.roundScore(1);
+      game.roundScore(1);
+      expect(game.frames[0]).toEqual({frame: 1, round: 2, score: 11});
+      expect(game.spare).toEqual(false);
     });
   });
 

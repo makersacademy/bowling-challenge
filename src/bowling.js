@@ -16,10 +16,16 @@ Game.prototype.currentFrame = function(){
 };
 
 Game.prototype.bonusFrame = function(){
+  
   if(this.currentFrame().round === 1){
+    this.spare = false;
     return this.frames[(this.frames.length - 2)]
+
   }else{
+
+    this.strike = false;
     return this.frames[(this.frames.length - 3)]
+
   };
 };
 
@@ -28,24 +34,25 @@ Game.prototype.addScore = function(){
 };
 
 Game.prototype.roundScore = function(thisScore){
-  console.log('one', this.bonusFrame())
-    this.currentFrame().score += thisScore;
-    if (this.isStrikeBonus()){
-      this.bonusFrame().score += thisScore;
-    }else{
-    console.log('one', this.bonusFrame())
-    this.addScore()
-    }
-    // console.log('two', this.currentFrame())
-  if(this.isStrike()==true){
-    this.addFrame();
-  }else{
-  // console.log('three', this.currentFrame())
-  this.isSpare();
-  // console.log('three', this.currentFrame().score)
-  this.isNewFrame();
-    // console.log('four', this.currentFrame())
 
+        this.currentFrame().score += thisScore;
+
+    if (this.strike === true){
+      this.bonusFrame().score += thisScore;
+    }else if ((this.spare === true) && (this.currentFrame().round === 1)){
+        this.bonusFrame().score += thisScore;
+    }else{
+      this.addScore()
+      }
+      this.addScore()
+
+    if(this.isStrike()==true){
+      this.addFrame();
+    }else{
+
+      this.isSpare();
+
+      this.isNewFrame();
 };
 };
 
@@ -65,15 +72,6 @@ Game.prototype.isStrike = function(){
 
   else{
     false
-  };
-};
-
-Game.prototype.isStrikeBonus = function(){
-  if(this.strike === true){
-    return true
-  }
-  else{
-    return false
   };
 };
 

@@ -13,6 +13,10 @@ Game.prototype.currentFrame = function(){
   return this.frames[(this.frames.length - 1)];
 };
 
+Game.prototype.addScore = function(){
+  this.frames.push(this.currentFrame());
+};
+
 Game.prototype.roundScore = function(thisScore){
   this.checkRound();
   this.isNewFrame();
@@ -20,6 +24,7 @@ Game.prototype.roundScore = function(thisScore){
   this.currentFrame().score += thisScore;
   this.isStrike();
   this.isSpare();
+  // this.addScore();
 };
 
 Game.prototype.checkRound = function(){

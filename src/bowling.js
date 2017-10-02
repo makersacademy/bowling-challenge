@@ -1,6 +1,5 @@
 var Game = function(){
   this.frames = [];
-  // this.currentRound = 1
   this.frame = 0
   this.strike = false
   this.spare = false
@@ -16,23 +15,36 @@ Game.prototype.currentFrame = function(){
   return this.frames[(this.frames.length - 1)];
 };
 
+Game.prototype.bonusFrame = function(){
+  if(this.currentFrame().round === 1){
+    return this.frames[(this.frames.length - 2)]
+  }else{
+    return this.frames[(this.frames.length - 3)]
+  };
+};
+
 Game.prototype.addScore = function(){
   this.frames.push(this.currentFrame());
 };
 
 Game.prototype.roundScore = function(thisScore){
-  console.log('one', this.currentFrame())
+  console.log('one', this.bonusFrame())
     this.currentFrame().score += thisScore;
-    this.addScore();
-    console.log('two', this.currentFrame())
+    if (this.isStrikeBonus()){
+      this.bonusFrame().score += thisScore;
+    }else{
+    console.log('one', this.bonusFrame())
+    this.addScore()
+    }
+    // console.log('two', this.currentFrame())
   if(this.isStrike()==true){
     this.addFrame();
   }else{
-  console.log('three', this.currentFrame())
+  // console.log('three', this.currentFrame())
   this.isSpare();
-  console.log('three', this.currentFrame().score)
+  // console.log('three', this.currentFrame().score)
   this.isNewFrame();
-    console.log('four', this.currentFrame())
+    // console.log('four', this.currentFrame())
 
 };
 };
@@ -53,6 +65,15 @@ Game.prototype.isStrike = function(){
 
   else{
     false
+  };
+};
+
+Game.prototype.isStrikeBonus = function(){
+  if(this.strike === true){
+    return true
+  }
+  else{
+    return false
   };
 };
 

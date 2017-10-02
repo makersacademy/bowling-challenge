@@ -3,6 +3,7 @@ var Game = function(){
   // this.currentRound = 1
   this.frame = 0
   this.strike = false
+  this.spare = false
 };
 
 Game.prototype.addFrame = function(){
@@ -20,52 +21,33 @@ Game.prototype.addScore = function(){
 };
 
 Game.prototype.roundScore = function(thisScore){
+  console.log('one', this.currentFrame())
     this.currentFrame().score += thisScore;
-    // console.log(this.currentFrame())
     this.addScore();
-    // console.log(this.currentFrame())
+    console.log('two', this.currentFrame())
   if(this.isStrike()==true){
-    // console.log(this.currentFrame())
     this.addFrame();
-    // this.checkRound();
-    // console.log(2)
-    // console.log(this.currentFrame())
   }else{
-  // this.checkRound();
-  console.log('one', this.currentFrame().round)
-  // console.log('two', this.currentRound)
-  this.isNewFrame();
-    console.log('three', this.currentFrame().round)
-      // console.log('four', this.currentRound)
-  // this.currentFrame().round = this.currentRound;
-  // this.currentFrame().score += thisScore;
-  // this.isStrike();
+  console.log('three', this.currentFrame())
   this.isSpare();
+  console.log('three', this.currentFrame().score)
+  this.isNewFrame();
+    console.log('four', this.currentFrame())
+
 };
-};
-
-Game.prototype.checkRound = function(){
-    if (this.currentFrame().score === null){
-      this.currentRound = 1}
-
-      else if(this.currentFrame().round === 2){
-      this.currentRound = 1}
-
-      else{
-      this.currentRound = 2};
 };
 
 Game.prototype.isNewFrame = function(){
     if (this.currentFrame().round === 2){
+
       this.addFrame();
     }else if(this.currentFrame().round === 1){
-      // this.currentRound += 1;
       this.currentFrame().round += 1;
     }
 }
 
 Game.prototype.isStrike = function(){
-  if (this.currentFrame().score === 10){
+  if ((this.currentFrame().score === 10)&&(this.currentFrame().round === 1)){
     this.strike = true
     return true}
 
@@ -75,7 +57,8 @@ Game.prototype.isStrike = function(){
 };
 
 Game.prototype.isSpare = function(){
-  if ((this.currentFrame().score === 10) && (this.currentFrame().round === 2)){
+  if (this.currentFrame().score === 10){
+    this.spare = true
     return true}
   else{
     return false

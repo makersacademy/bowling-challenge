@@ -29,9 +29,11 @@ describe('Bowling', function(){
     it('knock down 1 pin round 1', function(){
       // game.addFrame(1);
       // console.log(game.currentFrame())
+      expect(game.currentFrame()).toEqual({frame: 1, round: 1, score: null})
+
       game.roundScore(1);
       // console.log(game.currentFrame())
-      expect(game.currentFrame()).toEqual({frame: 1, round: 1, score: 1})
+      expect(game.currentFrame()).toEqual({frame: 1, round: 2, score: 1})
     });
   });
 
@@ -51,8 +53,8 @@ describe('Bowling', function(){
       // game.addFrame(1);
       game.roundScore(5);
       game.roundScore(5);
-      expect(game.currentFrame()).toEqual({frame: 1, round: 2, score: 10});
-      expect(game.isSpare()).toEqual(true);
+      expect(game.frames[0]).toEqual({frame: 1, round: 2, score: 10});
+      expect(game.spare).toEqual(true);
     });
   });
 
@@ -87,11 +89,10 @@ describe('Bowling', function(){
       game.roundScore(5);
       // console.log(game.currentFrame())
       game.roundScore(5);
-      // console.log(game.currentFrame())
+      expect(game.currentFrame()).toEqual({frame: 2, round: 1, score: null});
       game.roundScore(5);
-      // console.log(game.currentFrame())
       // console.log(game.frames)
-      expect(game.currentFrame()).toEqual({frame: 2, round: 1, score: 5});
+      expect(game.currentFrame()).toEqual({frame: 2, round: 2, score: 5});
       expect(game.isSpare()).toEqual(false);
     });
   });

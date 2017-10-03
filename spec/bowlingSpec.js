@@ -9,7 +9,7 @@ describe('Bowling', function(){
   describe('Start new game', function(){
 
     it('starts a new frame', function(){
-      expect(game.currentFrame()).toEqual({frame: 1, round: 1, score: null})
+      expect(game.currentFrame()).toEqual(new Frame(game.frame))
     });
   });
 
@@ -17,7 +17,7 @@ describe('Bowling', function(){
 
     it('in round 1', function(){
       game.roundScore(10);
-      expect(game.frames[0]).toEqual({frame: 1, round: 1, score: 10});
+      expect(game.frameRounds[0].score).toEqual(10);
       expect(game.strike).toEqual(true);
     });
   });
@@ -28,7 +28,7 @@ describe('Bowling', function(){
       game.roundScore(10);
       game.roundScore(1);
       game.roundScore(1);
-      expect(game.frames[0]).toEqual({frame: 1, round: 1, score: 12});
+      expect(game.frameRounds[0].scoreTotal).toEqual(12);
       expect(game.strike).toEqual(false);
     });
   });
@@ -36,10 +36,10 @@ describe('Bowling', function(){
   describe('Score a hit', function(){
 
     it('knock down 1 pin round 1', function(){
-      expect(game.currentFrame()).toEqual({frame: 1, round: 1, score: null})
+      expect(game.currentFrame().score).toEqual(null)
 
       game.roundScore(1);
-      expect(game.currentFrame()).toEqual({frame: 1, round: 2, score: 1})
+      expect(game.frameRounds[0].score).toEqual(1)
     });
   });
 
@@ -56,7 +56,7 @@ describe('Bowling', function(){
     it('is a SPARE', function(){
       game.roundScore(5);
       game.roundScore(5);
-      expect(game.frames[0]).toEqual({frame: 1, round: 2, score: 10});
+      expect(game.frameRounds[1].scoreTotal).toEqual(10);
       expect(game.spare).toEqual(true);
       expect(game.strike).toEqual(false);
     });
@@ -69,7 +69,7 @@ describe('Bowling', function(){
       game.roundScore(5);
       game.roundScore(1);
       game.roundScore(1);
-      expect(game.frames[0]).toEqual({frame: 1, round: 2, score: 11});
+      expect(game.frameRounds[1].scoreTotal).toEqual(11);
       expect(game.spare).toEqual(false);
     });
   });
@@ -78,7 +78,7 @@ describe('Bowling', function(){
 
     it('is a STRIKE new frame starts', function(){
       game.roundScore(10);
-      expect(game.currentFrame()).toEqual({frame: 2, round: 1, score: null});
+      expect(game.frame).toEqual(2);
     });
   });
 
@@ -92,9 +92,59 @@ describe('Bowling', function(){
         game.roundScore(5);
         i++
       };
-
-      expect(game.currentFrame()).toEqual({frame: 2, round: 2, score: 5});
+      
+      expect(game.frame).toEqual(2);
       expect(game.isSpare()).toEqual(false);
+    });
+  });
+
+  describe('Check TOTAL SCORE', function(){
+
+    it('when two frames are finished', function(){
+
+      var i = 0
+
+      while (i < 4) {
+        game.roundScore(1);
+        i++
+      };
+
+      expect(game.TOTAL_SCORE).toEqual(4);
+    });
+  });
+
+  describe('Check BONUS POINTS only added for first round of next frame', function(){
+
+    it('when a spare is scored in first round', function(){
+
+      var i = 0
+
+      while (i < 2) {
+        game.roundScore(5);
+        i++
+      };
+
+      game.roundScore(1)
+      game.roundScore(1)
+
+      expect(game.TOTAL_SCORE).toEqual(12);
+      expect(game.BONUS_POINTS).toEqual(1);
+    });
+  });
+
+  describe('Check BONUS POINTS only added for next two rounds of next frame', function(){
+
+    it('when a strike is scored in first round of a frame', function(){
+
+      game.roundScore(10);
+
+
+      game.roundScore(1)
+      game.roundScore(1)
+      game.roundScore(1)
+
+      expect(game.TOTAL_SCORE).toEqual(13);
+      expect(game.BONUS_POINTS).toEqual(2);
     });
   });
 

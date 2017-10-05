@@ -92,7 +92,7 @@ describe('Bowling', function(){
         game.roundScore(5);
         i++
       };
-      
+
       expect(game.frame).toEqual(2);
       expect(game.isSpare()).toEqual(false);
     });
@@ -147,5 +147,53 @@ describe('Bowling', function(){
       expect(game.BONUS_POINTS).toEqual(2);
     });
   });
+
+  describe('Check max frames is 10', function(){
+
+    it('and no more frames can be played', function(){
+
+      var i = 0
+
+      while (i < 20) {
+        game.roundScore(1);
+        i++
+      };
+
+      // console.log(game.frameRounds)
+      // console.log(game.TOTAL_SCORE)
+      // console.log(game.BONUS_POINTS)
+      // console.log(game.frame)
+      
+      expect(game.roundScore(1)).toEqual('GAME IS OVER');
+    });
+  });
+
+  describe('Score a STRIKE', function(){
+
+    it('and get only two more rolls which add to bonus', function(){
+
+      var i = 0
+
+      while (i < 20) {
+        game.roundScore(1);
+        i++
+      };
+
+      // game.roundScore(10);
+      // game.roundScore(1);
+      // game.roundScore(1);
+
+      // console.log(game.frameRounds)
+      // console.log(game.TOTAL_SCORE)
+      // console.log(game.BONUS_POINTS)
+      // console.log(game.frame)
+
+      expect(game.frame).toEqual(10);
+      expect(game.frameRounds[19].round).toEqual(3);
+      expect(game.TOTAL_SCORE).toEqual(30);
+      expect(game.BONUS_POINTS).toEqual(2);
+    });
+  });
+
 
 });

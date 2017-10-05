@@ -5,10 +5,22 @@ var Game = function(){
   this.spare = false
   this.TOTAL_SCORE = 0
   this.BONUS_POINTS = 0
+  this.MAX_FRAMES = 10
 };
 
 Game.prototype.addFrame = function(){
   this.frameRounds.push(new Frame(this.frame))
+ // }
+};
+
+Game.prototype.isGameOver = function(){
+  console.log('a', this.currentFrame().frameNumber)
+  console.log('g', this.frameRounds)
+  if((this.currentFrame().frameNumber === this.MAX_FRAMES) && (this.currentFrame().score != null)){
+    return true
+  }else{
+    return false
+};
 };
 
 Game.prototype.currentFrame = function(){
@@ -32,9 +44,16 @@ Game.prototype.addScore = function(){
 };
 
 Game.prototype.roundScore = function(thisScore){
+  console.log('2', this.currentFrame().frameNumber)
+  console.log('4', this.frameRounds)
+    if (this.isGameOver()){
+      return 'GAME IS OVER'
+    }else{
+
     this.currentFrame().score += thisScore;
     this.currentFrame().scoreTotal += thisScore;
     this.TOTAL_SCORE += thisScore;
+  }
 
     if (this.strike === true){
       this.bonusFrame().scoreTotal += thisScore;
@@ -61,12 +80,19 @@ Game.prototype.roundScore = function(thisScore){
 };
 
 Game.prototype.isNewFrame = function(){
+
+
     if (this.currentFrame().round === 2){
+      if(this.isGameOver()){
+        this.currentFrame().scoreTotal += (this.frameRounds[this.frameRounds.length - 2]).scoreTotal
+        return 'GAME IS OVER'}
+
       this.frame += 1
       this.currentFrame().scoreTotal += (this.frameRounds[this.frameRounds.length - 2]).scoreTotal
 
       this.isSpare();
       this.addFrame();
+
     }else if(this.currentFrame().round === 1){
 
       this.addFrame();
@@ -84,6 +110,10 @@ Game.prototype.isStrike = function(){
   };
 };
 
+Game.prototype.firstRound = function(){
+  return
+}
+
 Game.prototype.isSpare = function(){
   if (this.currentFrame().scoreTotal === 10){
     this.spare = true
@@ -92,3 +122,7 @@ Game.prototype.isSpare = function(){
     return false
   };
 };
+
+Game.prototype.finalFrame = function(){
+
+}

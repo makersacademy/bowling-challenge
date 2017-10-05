@@ -15,9 +15,21 @@ describe("Bowling", function() {
         expect(bowling.secondBowlScore).toEqual(5);
   });
 
-  it("should calculate the score for the turn based", function() {
+  it("should calculate the total score for the turn", function() {
         bowling.firstBowl(4);
         bowling.secondBowl(5);
         expect(bowling.turnTotalScore).toEqual(9);
+  });
+
+  it("should know if a strike has been struck", function() {
+        bowling.firstBowl(10);
+        expect(bowling.strike).toBe(true);
+  });
+
+  it("should know if a spare has been bowled", function() {
+        bowling.firstBowl(4);
+        bowling.secondBowl(6);
+        expect(bowling.strike).toBe(false);
+        expect(bowling.spare).toBe(true);
   });
 });

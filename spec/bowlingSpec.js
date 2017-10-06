@@ -62,8 +62,11 @@ describe('Bowling', function(){
   describe('Check if score', function(){
 
     it('is a SPARE', function(){
+      // console.log(game.frameRounds)
       game.roundScore(5);
+      // console.log(game.frameRounds)
       game.roundScore(5);
+      // console.log(game.frameRounds)
       expect(game.frameRounds[0].scoreTotal).toEqual(10);
       expect(game.spare).toEqual(true);
       expect(game.strike).toEqual(false);

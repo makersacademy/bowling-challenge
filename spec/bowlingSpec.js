@@ -26,14 +26,15 @@ describe('Bowling', function(){
 
     it('in round 1 and get bonus from next two rolls in round 2', function(){
       game.roundScore(10);
-      console.log('1', game.frameRounds)
-      console.log('2', game.strike)
+      // console.log('1', game.frameRounds)
+      // console.log('2', game.strike)
       game.roundScore(1);
-        console.log('3', game.frameRounds)
-        console.log('4', game.strike)
+        // console.log('3', game.frameRounds)
+        // console.log('4', game.strike)
       game.roundScore(1);
-        console.log('5', game.strike)
-        console.log('6', game.frameRounds)
+        // console.log('5', game.strike)
+        // console.log('6', game.frameRounds)
+        // console.log('7', game.BONUS_POINTS)
       expect(game.frameRounds[0].scoreTotal).toEqual(12);
       expect(game.strike).toEqual(false);
     });
@@ -170,9 +171,9 @@ describe('Bowling', function(){
       // console.log(game.frameRounds)
       // console.log(game.TOTAL_SCORE)
       // console.log(game.BONUS_POINTS)
-      console.log(game.frame)
-      console.log(game.currentFrame().roundTwo)
-      console.log(game.frameRounds)
+      // console.log(game.frame)
+      // console.log(game.currentFrame().roundTwo)
+      // console.log(game.frameRounds)
 
       expect(game.roundScore(1)).toEqual('GAME IS OVER');
     });

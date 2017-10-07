@@ -26,15 +26,8 @@ describe('Bowling', function(){
 
     it('in round 1 and get bonus from next two rolls in round 2', function(){
       game.roundScore(10);
-      // console.log('1', game.frameRounds)
-      // console.log('2', game.strike)
       game.roundScore(1);
-        // console.log('3', game.frameRounds)
-        // console.log('4', game.strike)
       game.roundScore(1);
-        // console.log('5', game.strike)
-        // console.log('6', game.frameRounds)
-        // console.log('7', game.BONUS_POINTS)
       expect(game.frameRounds[0].scoreTotal).toEqual(12);
       expect(game.strike).toEqual(false);
     });
@@ -62,11 +55,8 @@ describe('Bowling', function(){
   describe('Check if score', function(){
 
     it('is a SPARE', function(){
-      // console.log(game.frameRounds)
       game.roundScore(5);
-      // console.log(game.frameRounds)
       game.roundScore(5);
-      // console.log(game.frameRounds)
       expect(game.frameRounds[0].scoreTotal).toEqual(10);
       expect(game.spare).toEqual(true);
       expect(game.strike).toEqual(false);
@@ -80,7 +70,6 @@ describe('Bowling', function(){
       game.roundScore(5);
       game.roundScore(1);
       game.roundScore(1);
-      // console.log(game.frameRounds)
       expect(game.frameRounds[0].scoreTotal).toEqual(11);
       expect(game.spare).toEqual(false);
     });
@@ -171,13 +160,6 @@ describe('Bowling', function(){
         i++
       };
 
-      // console.log(game.frameRounds)
-      // console.log(game.TOTAL_SCORE)
-      // console.log(game.BONUS_POINTS)
-      // console.log(game.frame)
-      // console.log(game.currentFrame().roundTwo)
-      // console.log(game.frameRounds)
-
       expect(game.roundScore(1)).toEqual('GAME IS OVER');
     });
   });
@@ -197,15 +179,10 @@ describe('Bowling', function(){
       game.roundScore(1);
       game.roundScore(1);
 
-      // console.log(game.frameRounds)
-      // console.log(game.TOTAL_SCORE)
-      // console.log(game.BONUS_POINTS)
-      // console.log(game.frame)
-
       expect(game.frame).toEqual(10);
-      expect(game.frameRounds[19].round).toEqual(3);
       expect(game.TOTAL_SCORE).toEqual(30);
       expect(game.BONUS_POINTS).toEqual(2);
+      expect(game.roundScore(1).toEqual('GAME IS OVER'))
     });
   });
 

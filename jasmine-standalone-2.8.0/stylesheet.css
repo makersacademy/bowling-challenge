@@ -8,6 +8,10 @@
     color: red;
 }
 
+body {
+    background-image: url("https://www.google.co.uk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiomvT5xt7WAhWQZVAKHRL4ABYQjRwIBw&url=http%3A%2F%2Fweknowyourdreams.com%2Fbowling.html&psig=AOvVaw154ApBJX1kTCq93G-s4Rgs&ust=1507467163411866");
+}
+
 .button {
     background-color: white; /* Green */
     border: none;
@@ -45,7 +49,9 @@ p2 {
     font-size: 150%;
 }
 #container{
+  background-image: url("https://www.google.co.uk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiomvT5xt7WAhWQZVAKHRL4ABYQjRwIBw&url=http%3A%2F%2Fweknowyourdreams.com%2Fbowling.html&psig=AOvVaw154ApBJX1kTCq93G-s4Rgs&ust=1507467163411866");
   background-color: grey;
+  background-size: contain;
   height: 500px;
   width: 1000px;
   z-index: 5;
@@ -58,7 +64,7 @@ p2 {
   margin-left: auto;
   background-color: white;
   display: inline-block;
-  height: 110px;
+  height: 90px;
   width: 90px;
   border: 2px solid;
 }

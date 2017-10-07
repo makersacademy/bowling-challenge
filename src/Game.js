@@ -3,8 +3,8 @@
 function Game(){
   this._frames = [];
   this.score = 0;
-  this._MAX_FRAMES = 10
-  this.active = true
+  this._MAX_FRAMES = 10;
+  this.active = true;
 }
 
 Game.prototype.roll = function(rolls) {

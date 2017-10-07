@@ -1,3 +1,15 @@
+My Approach
+=================
+
+This is my attempt at building a bowling score-card program. I have use TDD principles to guide the design process.
+
+How to run
+=================
+
+To run this program, follow these steps:
+
+-
+
 
 Bowling Challenge
 =================

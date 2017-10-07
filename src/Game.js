@@ -13,7 +13,11 @@ Game.prototype.score = function(){
   var rollIndex = 0;
 
   for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    result += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+    if(this.rolls[rollIndex] + this.rolls[rollIndex + 1] == 10){
+      result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+    } else {
+      result += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+    }
     rollIndex +=2;
   }
   return result;

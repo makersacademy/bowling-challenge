@@ -2,8 +2,13 @@
 
 describe('Game', function(){
 
+  var game;
+
+  beforeEach(function(){
+    game = new Game();
+  });
+
   it('can roll gutter game', function(){
-    var game = new Game();
     for (var i = 0; i < 20; i++){
       game.roll(0);
     }
@@ -11,7 +16,6 @@ describe('Game', function(){
   });
 
   it('can roll all ones', function(){
-    var game = new Game();
     for (var i = 0; i < 20; i++){
       game.roll(1);
     }

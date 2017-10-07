@@ -15,4 +15,9 @@ describe('Bowling app does the following', function() {
     expect(game.frames).toEqual([]);
   });
 
+  it('adds a score to an array for each frame', function() {
+    game.bowl(8)
+    expect(game.frames[0]).toEqual([8]);
+    });
+
 })

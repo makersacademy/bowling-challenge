@@ -54,7 +54,7 @@ Game.prototype.addTotal = function(){
 Game.prototype.roundScore = function(thisScore){
     this.currentScore = thisScore
 
-    if (this.isGameOver()){
+    if ((this.isGameOver())||(this.currentFrame().frameTenBonusRound != null)){
       return 'GAME IS OVER'
 
     }else if((this.isStrike())&&(this.frame != this.MAX_FRAMES)){
@@ -125,7 +125,6 @@ Game.prototype.finalFrame = function(){
           this.BONUS_POINTS += this.currentScore};
   this.addTotal();
   this.isSpare()
-  // this.currentScore = 0;
 
 }else if((this.strike === true)&&(this.currentFrame().roundOne != null)&&(this.currentFrame().roundTwo != null)){
     this.currentFrame().frameTenBonusRound += this.currentScore

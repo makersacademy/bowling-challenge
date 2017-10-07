@@ -182,7 +182,7 @@ describe('Bowling', function(){
       expect(game.frame).toEqual(10);
       expect(game.TOTAL_SCORE).toEqual(30);
       expect(game.BONUS_POINTS).toEqual(2);
-      expect(game.roundScore(1).toEqual('GAME IS OVER'))
+      expect(game.roundScore(1)).toEqual('GAME IS OVER')
     });
   });
 

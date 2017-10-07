@@ -9,17 +9,19 @@ describe('Game', function(){
   });
 
   it('can roll gutter game', function(){
-    for (var i = 0; i < 20; i++){
-      game.roll(0);
-    }
+    rollMany(0, 20);
     expect(game.score()).toBe(0);
   });
 
   it('can roll all ones', function(){
-    for (var i = 0; i < 20; i++){
-      game.roll(1);
-    }
+    rollMany(1, 20);
     expect(game.score()).toBe(20);
   });
+
+  var rollMany = function(pins, rolls) {
+    for (var i = 0; i < rolls; i++){
+      game.roll(pins);
+    }
+  };
 
 });

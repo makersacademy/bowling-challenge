@@ -186,5 +186,34 @@ describe('Bowling', function(){
     });
   });
 
+  describe('Score a SPARE', function(){
+
+    it('and get only one more roll which adds to bonus', function(){
+
+      var i = 0
+
+      while (i < 18) {
+        game.roundScore(1);
+        i++
+      };
+
+      game.roundScore(5);
+      game.roundScore(5);
+      console.log('STRIKEEE', game.strike)
+      console.log('STRIKEEE2', game.spare)
+        console.log('STRIKEEE3', game.currentFrame().roundOne)
+        console.log('STRIKEEE4', game.currentFrame().roundTwo)
+          console.log('STRIKEEE5', game.frame)
+      game.roundScore(1);
+        console.log(game.frameRounds)
+
+
+      expect(game.frame).toEqual(10);
+      expect(game.TOTAL_SCORE).toEqual(29);
+      expect(game.BONUS_POINTS).toEqual(1);
+      expect(game.roundScore(1)).toEqual('GAME IS OVER')
+    });
+  });
+
 
 });

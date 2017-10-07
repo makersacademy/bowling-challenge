@@ -10,20 +10,12 @@ var Game = function(){
 };
 
 Game.prototype.addFrame = function(){
-  // if(this.frame != this.MAX_FRAMES){
   this.frame += 1;
   this.frameRounds.push(new Frame(this.frame));
-// }else{
-//   this.currentScore = 0;
-//   };
-};
-
-Game.prototype.resetScore = function(){
-  this.currentScore = 0;
 };
 
 Game.prototype.isGameOver = function(){
-  if((this.frame === this.MAX_FRAMES) && (this.currentFrame().roundTwo != null)&&(this.currentFrame().roundOne != 10)){
+  if((this.frame === this.MAX_FRAMES) && (this.currentFrame().roundTwo != null)&&(this.strike != true)&&(this.spare != true)){
     return true
   }else{
     return false
@@ -104,7 +96,7 @@ Game.prototype.isStrike = function(){
 
 Game.prototype.isSpare = function(){
   if (this.currentFrame().scoreTotal === 10){
-    this.spare = true
+    this.spare = true;
     return true}
   else{
     return false
@@ -113,26 +105,33 @@ Game.prototype.isSpare = function(){
 
 Game.prototype.finalFrame = function(){
   if (this.currentFrame().roundOne === null){
-    if (this.isStrike()) {
-        this.strike = true};
+    this.isStrike();
     this.currentFrame().roundOne += this.currentScore;
     this.addTotal();
-    this.currentScore = 0;
 
 }else if ((this.currentFrame().roundOne != null)&&(this.currentFrame().roundTwo === null)){
-  this.currentFrame().roundTwo += this.currentScore;
-      if (this.strike = true){
+
+      if (this.strike === true){
           this.BONUS_POINTS += this.currentScore};
-  this.addTotal();
-  this.isSpare()
+          this.currentFrame().roundTwo += this.currentScore;
+          this.addTotal();
+          this.isSpare();
 
 }else if((this.strike === true)&&(this.currentFrame().roundOne != null)&&(this.currentFrame().roundTwo != null)){
-    this.currentFrame().frameTenBonusRound += this.currentScore
-    this.BONUS_POINTS += this.currentScore
-    this.addTotal();
+    this.finalFrameBonus();
     this.strike = false;
-    console.log(this.frameRounds)
+
+}else if((this.spare === true)&&(this.currentFrame().roundOne != null)&&(this.currentFrame().roundTwo != null)){
+  this.finalFrameBonus();
+  this.spare = false;
+
 }else{
     return 'GAME IS OVER'
   };
+
+  Game.prototype.finalFrameBonus = function(){
+    this.currentFrame().frameTenBonusRound += this.currentScore
+    this.BONUS_POINTS += this.currentScore
+    this.addTotal();
+  }
 };

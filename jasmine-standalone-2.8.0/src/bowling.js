@@ -9,6 +9,15 @@ Bowling.prototype.currentScore = function(){
   return this.score;
 };
 
+Bowling.prototype.rollGutterBall = function() {
+  if(this.allScores.length < 20) {
+    this.allScores.push(0);
+    this.updateScore();
+  } else {
+  throw 'Game is over - Cannot roll again';
+  }
+};
+
 Bowling.prototype.roll1 = function() {
   if(this.allScores.length < 20) {
     this.allScores.push(1);
@@ -18,48 +27,6 @@ Bowling.prototype.roll1 = function() {
   throw 'Game is over - Cannot roll again';
   }
 };
-
-Bowling.prototype.updateScore = function() {
-  // checks first to see if frames are empty, if even number of balls have been rolled, and that the last frame was not spare/strike
-  var ball1 = this.allScores.slice(-2)[0];
-  var ball2 = this.allScores.slice(-1)[0];
-  var frameScore = (ball1 + ball2);
-  var lastResult = this.strikesSpares.slice(-1)[0];
-  var previousResult = this.strikesSpares.slice(-2)[0];
-
-if (this.allScores.length % 2 === 0) {
-    if ((lastResult !== 'strike') && (lastResult !== 'spare') && (frameScore !== 10)) {
-      this.score += ball1;
-      this.score += ball2;
-      this.strikesSpares.push('neither');
-    // then checks if this frame results in a spare
-    } else if ((lastResult === 'strike') && (frameScore !== 10)) {
-      this.score += ball1;
-      this.score += ball2;
-      this.score += ball1;
-      this.score += ball2;
-      this.score += 10;
-      this.allFrames.push([ball1,ball2]);
-      this.strikesSpares.push('neither');
-  // then check if the last two frames have been strikes
-    } else if ((lastResult === 'spare') && (frameScore !== 10)) {
-      this.score += 10;
-      this.score += ball1;
-      this.score += ball1;
-      this.score += ball2;
-      this.strikesSpares.push('neither');
-    }
-  }
-}
-
-Bowling.prototype.checkSpare = function() {
-  var ball1 = this.allScores.slice(-2)[0];
-  var ball2 = this.allScores.slice(-1)[0];
-  if (this.allScores.length % 2 === 0 && (ball1 + ball2 === 10)){
-    this.strikesSpares.push('spare');
-  }
-}
-
 
 Bowling.prototype.roll2 = function() {
   if(this.allScores.length < 20) {
@@ -144,7 +111,6 @@ Bowling.prototype.roll9 = function() {
 Bowling.prototype.rollStrike = function() {
   if(this.allScores.length < 19) {
     this.allScores.push(10,0);
-    this.allFrames.push([10,0]);
     this.strikesSpares.push('strike')
     this.updateScore();
   } else {
@@ -152,6 +118,46 @@ Bowling.prototype.rollStrike = function() {
   }
 };
 
+Bowling.prototype.updateScore = function() {
+  // checks first to see if frames are empty, if even number of balls have been rolled, and that the last frame was not spare/strike
+  var ball1 = this.allScores.slice(-2)[0];
+  var ball2 = this.allScores.slice(-1)[0];
+  var frameScore = (ball1 + ball2);
+  var lastResult = this.strikesSpares.slice(-1)[0];
+  var previousResult = this.strikesSpares.slice(-2)[0];
+
+if (this.allScores.length % 2 === 0) {
+    if ((lastResult !== 'strike') && (lastResult !== 'spare') && (frameScore !== 10)) {
+      this.score += ball1;
+      this.score += ball2;
+      this.strikesSpares.push('neither');
+    // then checks if this frame results in a spare
+    } else if ((lastResult === 'strike') && (frameScore !== 10)) {
+      this.score += ball1;
+      this.score += ball2;
+      this.score += ball1;
+      this.score += ball2;
+      this.score += 10;
+      this.allFrames.push([ball1,ball2]);
+      this.strikesSpares.push('neither');
+  // then check if the last two frames have been strikes
+    } else if ((lastResult === 'spare') && (frameScore !== 10)) {
+      this.score += 10;
+      this.score += ball1;
+      this.score += ball1;
+      this.score += ball2;
+      this.strikesSpares.push('neither');
+    }
+  }
+}
+
+Bowling.prototype.checkSpare = function() {
+  var ball1 = this.allScores.slice(-2)[0];
+  var ball2 = this.allScores.slice(-1)[0];
+  if (this.allScores.length % 2 === 0 && (ball1 + ball2 === 10)){
+    this.strikesSpares.push('spare');
+  }
+}
 
 
 

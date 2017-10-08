@@ -26,7 +26,7 @@ describe ('Bowling scorecard does the following', function() {
 
   it('skips second roll if user rolls a strike', function() {
     bowling.rollStrike();
-    expect(bowling.allFrames.slice(-1)[0]).toEqual([10,0]);
+    expect(bowling.allScores.slice(-2)).toEqual([10,0]);
   });
 
   it('calculates score if player roles one strike', function() {
@@ -48,6 +48,12 @@ describe ('Bowling scorecard does the following', function() {
     bowling.roll5();
     bowling.roll5();
     expect(bowling.strikesSpares.slice(-1)).toEqual(['spare']);
+  })
+
+  it('logs neither if frame is not strike or spare', function() {
+    bowling.roll5();
+    bowling.roll1();
+    expect(bowling.strikesSpares.slice(-1)).toEqual(['neither']);
   })
 
   it('only increases score when frame is over', function() {

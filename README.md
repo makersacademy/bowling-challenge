@@ -4,6 +4,7 @@ Bowling Challenge
 [![Build Status](https://api.travis-ci.org/diaryofdiscoveries/bowling-challenge.svg?branch=master)](https://travis-ci.org/diaryofdiscoveries/bowling-challenge)
 
 - Implementation of a bowling scorecard in JavaScript
+- Logic based on a solution I read this week (will find source)
 
 Technologies used
 ----

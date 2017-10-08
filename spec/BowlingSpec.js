@@ -11,7 +11,7 @@ describe('Bowling app does the following', function() {
     expect(game.score).toEqual(0);
   });
 
-  it('starts with an empty holder for frames', function(){
+  it('starts with a selection of empty frames', function(){
     expect(game.frames).toEqual({});
   });
 
@@ -36,6 +36,16 @@ function() {
 game.bowlCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6,
 7, 8, 9, 10, 1]
 expect(function() { game.bowl(6); } ).toThrow("The game is complete.");
+})
+
+it('Each bowl increase the roll count by one', function() {
+  game.bowl(1)
+  expect(game.rollCount).toEqual(1)
+})
+
+it('set isStrike to true if you roll a 10', function(){
+  game.bowl(10);
+  expect(game.isStrike).toEqual(true);
 })
 
 })

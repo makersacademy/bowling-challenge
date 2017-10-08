@@ -34,10 +34,10 @@ describe("Frame", function() {
         expect(frame.wasSpare).toBe(true);
   });
 
-  it("doesn't accept a second bowl score if there was a strike on the first bowl", function() {
-        frame.firstBowl(10);
-        expect( function(){ frame.secondBowl(5); } ).toThrow(new Error("You scored a strike on your first bowl!"));
-  });
+  // it("doesn't accept a second bowl score if there was a strike on the first bowl", function() {
+  //       frame.firstBowl(10);
+  //       expect( function(){ frame.secondBowl(5); } ).toThrow(new Error("You scored a strike on your first bowl!"));
+  // });
 
   it("checks if there was a spare on the previous bowl", function() {
         frame.firstBowl(3);
@@ -49,5 +49,19 @@ describe("Frame", function() {
         frame.firstBowl(7);
         frame.secondBowl(2);
         expect(frame.frameNumber).toEqual(2);
+  });
+
+  it("increments after each frame is complete when scoring strike", function() {
+        frame.firstBowl(10);
+        expect(frame.frameNumber).toEqual(2);
+  });
+
+  it("adds to the score after each frame", function() {
+      frame.firstBowl(6);
+      frame.secondBowl(3);
+      frame.firstBowl(6);
+      frame.secondBowl(3);
+      expect(frame.frameNumber).toEqual(3);
+      expect(frame.score).toEqual(18);
   });
 });

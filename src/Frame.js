@@ -9,15 +9,20 @@ function Frame() {
   this.wasStrike = false;
   this.wasSpare = false;
   this.frameNumber = 1;
+  this.maxFrames = 11.5;
 }
 
 Frame.prototype.turnScore = function() {
     if(this.strike === false && this.spare === false && this.wasStrike === false && this.wasSpare === false) {
       this.turnTotalScore = (this.firstBowlScore + this.secondBowlScore);
       this.endTurn();
+  } else if (this.strike === true && this.wasStrike === true){
+      this.turnTotalScore = 30;
+      this.wasStrike = true;
   } else if (this.strike === true){
       this.turnTotalScore = 10;
       this.wasStrike = true;
+      this.endTurn();
   } else if (this.spare === true){
       this.turnTotalScore = 10;
       this.wasSpare = true;
@@ -26,11 +31,13 @@ Frame.prototype.turnScore = function() {
 };
 
 Frame.prototype.firstBowl = function(score) {
+  this.firstBowlScore = score;
   this.strikeBonus();
   this.spareBonus();
-  this.firstBowlScore = score;
+  this.frameNumber += 0.5;
   if (score === 10){
   this.strike = true;
+  console.log("Strike!");
   this.turnScore();
   } else {
     this.strike = false;
@@ -38,14 +45,11 @@ Frame.prototype.firstBowl = function(score) {
 };
 
 Frame.prototype.secondBowl = function(score) {
-  if (this.strike === true) {
-    this.endTurn();
-    throw new Error("You scored a strike on your first bowl!");
-  }
-  this.spareBonus();
   this.secondBowlScore = score;
+  this.spareBonus();
   if (this.firstBowlScore + this.secondBowlScore === 10 && this.strike === false) {
     this.spare = true;
+    console.log("Spare!");
     this.turnScore();
   } else {}
   this.turnScore();
@@ -67,8 +71,8 @@ Frame.prototype.endTurn = function() {
   this.roundScore();
   this.scoreCard.push(this.turnTotalScore, [this.firstBowlScore, this.secondBowlScore]);
   if (this.frameNumber < 10) {
-    this.frameNumber++;
-  } else {
+    this.frameNumber+= 0.5;
+  } else if(this.frameNumber >= 10 && this.frame < this.maxFrames) {
     this.tensFrame();
   }
   this.strike = false;
@@ -77,7 +81,9 @@ Frame.prototype.endTurn = function() {
 
 Frame.prototype.strikeBonus = function () {
   if (this._wasStrike()) {
-  this.turnTotalScore = (this.turnTotalScore * 2);
+    this.turnTotalScore = (this.turnTotalScore * 2);
+} else if(this._wasStrike() && this.strike === true) {
+    this.turnTotalScore = 30;
   }
 };
 

@@ -2,6 +2,7 @@ function Bowling(){
   this.score = 0;
   this.allScores = [];
   this.allFrames = [];
+  this.strikesSpares = [];
 }
 
 Bowling.prototype.currentScore = function(){
@@ -19,22 +20,35 @@ Bowling.prototype.roll1 = function() {
 
 Bowling.prototype.updateScore = function() {
   // checks first to see if frames are empty, if even number of balls have been rolled, and that the last frame was not spare/strike
-  if ((this.allScores.length % 2 === 0) && ((this.allScores.slice(-2)[0] + this.allScores.slice(-1)[0]) !== 10) && this.allFrames.length === 0) {
-    this.score += this.allScores.slice(-1)[0];
-    this.score += this.allScores.slice(-2)[0];
-    this.allFrames.push([this.allScores.slice(-2)[0],this.allScores.slice(-1)[0]]);
+  var ball1 = this.allScores.slice(-2)[0];
+  var ball2 = this.allScores.slice(-1)[0];
+  var frameScore = (ball1 + ball2);
+  var lastResult = this.strikesSpares.slice(-1)[0];
+  var previousResult = this.strikesSpares.slice(-2)[0];
+
+if (this.allScores.length % 2 === 0) {
+  if ((lastResult !== 'strike') && (lastResult !== 'spare') && (frameScore !== 10)) {
+    this.score += ball1;
+    this.score += ball2;
+    this.allFrames.push([ball1,ball2]);
+    this.strikesSpares.push('neither');
     // then check if there are an even number of rolls and that the rolls from the previous,or this frame did not add up to 10
-  } else if (((this.allScores.length % 2 === 0) && (this.allScores.slice(-4)[0] + this.allScores.slice(-3)[0]) !== 10) && ((this.allScores.slice(-2)[0] + this.allScores.slice(-1)[0]) !== 10)) {
-    this.score += this.allScores.slice(-1)[0];
-    this.score += this.allScores.slice(-2)[0];
-    this.allFrames.push([this.allScores.slice(-2)[0],this.allScores.slice(-1)[0]]);
+  } else if ((lastResult === 'strike') && (frameScore !== 10)) {
+    this.score += ball1;
+    this.score += ball2;
+    this.score += ball1;
+    this.score += ball2;
+    this.score += 10;
+    this.allFrames.push([ball1,ball2]);
+    this.strikesSpares.push('neither');
 // then check if the last two frames have been strikes
-  } else if (((this.allScores.length % 2 === 0) && (this.allScores.length >= 6) && (this.allScores.slice(-6)[0] === 10) && (this.allScores.slice(-4)[0] === 10) && ((this.allScores.slice(-2)[0] + this.allScores.slice(-1)[0])) !== 10)) {
+  } else if (((this.allScores.length >= 6) && (this.allScores.slice(-6)[0] === 10) && (this.allScores.slice(-4)[0] === 10) && ((this.allScores.slice(-2)[0] + this.allScores.slice(-1)[0])) !== 10)) {
     this.score += this.allScores.slice(-6).join('+');
     this.score += this.allScores.slice(-4).join('+');
     this.score += this.allScores.slice(-2).join('+');
     this.allFrames.push([this.allScores.slice(-2)[0],this.allScores.slice(-1)[0]])
   }
+}
 }
 
 Bowling.prototype.roll2 = function() {
@@ -113,6 +127,7 @@ Bowling.prototype.rollStrike = function() {
   if(this.allScores.length < 19) {
     this.allScores.push(10,0);
     this.allFrames.push([10,0]);
+    this.strikesSpares.push('strike')
     this.updateScore();
   } else {
   throw 'Game is over - Cannot roll again';

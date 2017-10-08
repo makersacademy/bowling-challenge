@@ -74,12 +74,11 @@ describe ('Bowling scorecard does the following', function() {
     expect(bowling.allFrames.slice(-1)[0]).toEqual([10,0]);
   });
 
-  it('calculates score if player roles a strike', function() {
-    bowling.rollStrike();
+  it('calculates score if player roles one strike', function() {
     bowling.rollStrike();
     bowling.roll5();
     bowling.roll1();
-    expect(bowling.currentScore()).toEqual(47);
+    expect(bowling.currentScore()).toEqual(22);
   })
 
   it('only increases score when frame is over', function() {

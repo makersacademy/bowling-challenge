@@ -33,6 +33,7 @@ describe("Game", function() {
     game.roll(4);
     rollMany(0, 16);
     expect(game.score()).toEqual(28);
+    expect(game.strikeMessage()).toEqual("TAKE A BOW its a STRIKE")
 
   });
 
@@ -40,9 +41,11 @@ describe("Game", function() {
     rollMany(10, 21);
     expect(game.score()).toEqual(300);
   });
-  it("allows a maximum of 21 rolls a game", function() {
+
+  it("allows maximum rolls of 21 ", function() {
     rollMany(1, 21);
     expect(game.rolls.length).toEqual(21)
+    expect(game.endGameMessage()).toEqual("Congratulations! Game ended. Start a new game")
   });
 
   var rollMany = function(pins, rolls) {

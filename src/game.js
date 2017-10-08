@@ -3,11 +3,11 @@ function Game() {
 }
 
 Game.prototype.roll= function(pins) {
-//   if(this.rolls.length === 21){
-//   this.endGameMessage;
-// } else {
+  if(this.rolls.length === 21){
+  this.endGameMessage;
+} else {
   this.rolls.push(pins);
-// };
+}
 };
 
 Game.prototype.score = function () {
@@ -44,6 +44,12 @@ Game.prototype.score = function () {
     function getNormalScore() {
       return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
     }
+};
+Game.prototype.endGameMessage = function () {
+  return "Congratulations! Game ended. Start a new game"
+};
+Game.prototype.strikeMessage = function () {
+  return "TAKE A BOW its a STRIKE"
 };
 
 // Game.prototype.rollMany = function (pins, rolls) {

@@ -43,9 +43,15 @@ it('Each bowl increase the roll count by one', function() {
   expect(game.rollCount).toEqual(1)
 })
 
-it('set isStrike to true if you roll a 10', function(){
+it('sets isStrike to true if you roll a 10', function(){
   game.bowl(10);
   expect(game.isStrike).toEqual(true);
+})
+
+it('set isSpare to true if combined score of two rolls is 10', function() {
+  game.bowl(6);
+  game.bowl(4);
+  expect(game.isSpare).toEqual(true);
 })
 
 })

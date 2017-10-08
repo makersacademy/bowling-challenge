@@ -245,9 +245,7 @@ describe('Bowling', function(){
       expect(game.frameCount).toEqual(10);
       expect(game.TOTAL_SCORE).toEqual(28);
       expect(game.BONUS_POINTS).toEqual(2);
-      console.log(game.frames)
-      console.log(game.strike)
-      console.log(game.spare)
+    
       expect(game.roundScore(1)).toEqual('GAME IS OVER')
     });
   });
@@ -286,13 +284,15 @@ describe('Bowling', function(){
 
   describe('Score a SPARE', function(){
 
-    it('in round 1 and then a strike and get no bonuse from first roll in next frame', function(){
+    it('in round 1 and then a strike and get no bonus from first roll in next frame', function(){
       game.roundScore(5);
       game.roundScore(5);
       game.roundScore(10);
-      // console.log(game.strike)
-      // console.log(game.spare)
+      console.log(game.strike)
+      console.log(game.spare)
       game.roundScore(1);
+      console.log(game.strike)
+      console.log(game.spare)
       expect(game.frames[0].scoreTotal).toEqual(20);
       expect(game.spare).toEqual(false);
     });

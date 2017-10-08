@@ -77,7 +77,7 @@ Game.prototype.bonusFrame = function(){
 };
 
 Game.prototype.strikeFrameBonus = function(){
-  // this.frames[(this.frames.length - 3)].scoreTotal += this.currentScore;
+  this.frames[(this.frames.length - 3)].scoreTotal += this.currentScore;
   if(this.frames[(this.frames.length - 2)].roundOne === 10){
     this.BONUS_POINTS += this.currentScore
   };
@@ -94,7 +94,7 @@ Game.prototype.multipleStrike = function(){
 Game.prototype.bonusScore = function(){
   if ((this.strike === true)&&(this.frames[(this.frames.length - 2)].roundOne === 10)){
     this.bonusFrame().scoreTotal += this.currentScore;
-    if(this.frames.length > 2){
+    if((this.frames.length > 2)&&(this.frames[(this.frames.length - 3)].roundOne === 10)){
       this.strikeFrameBonus();
     }
     this.BONUS_POINTS += this.currentScore;
@@ -137,7 +137,7 @@ Game.prototype.finalFrame = function(){
     this.currentFrame().roundOne += this.currentScore;
     this.addTotal();
 
-}else if ((this.currentFrame().roundOne != null)&&(this.currentFrame().roundTwo === null)){
+}else if(this.currentFrame().roundTwo === null){
 
       if (this.strike === true){
           this.BONUS_POINTS += this.currentScore};
@@ -148,11 +148,11 @@ Game.prototype.finalFrame = function(){
             this.strike = false;
           }
 
-}else if((this.strike === true)&&(this.currentFrame().roundOne != null)&&(this.currentFrame().roundTwo != null)){
+}else if((this.strike === true)&&(this.currentFrame().roundTwo != null)){
     this.finalFrameBonus();
     this.strike = false;
 
-}else if((this.spare === true)&&(this.currentFrame().roundOne != null)&&(this.currentFrame().roundTwo != null)){
+}else if((this.spare === true)&&(this.currentFrame().roundTwo != null)){
   this.finalFrameBonus();
   this.spare = false;
 

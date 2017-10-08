@@ -3,6 +3,7 @@
   <head>
     <title>BOWLING</title>
     <link rel="stylesheet" href="bowling.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
   </head>
   <body>
 
@@ -14,7 +15,11 @@
 
     <!-- <div class = 'main-score-1'>
     </div> -->
+<!-- <h4 id = 'current-score'>CURRENT SCORE: </h4><h4 id = 'current-score'></h4> -->
+<h4 id = "current-score-1">CURRENT SCORE: <span id="current-score">0</span></h4>
+<h4 id = "bonus">BONUS:  <span id="current-score-2">0</span></h4>
 
+<h4 id = "final-score">FINAL SCORE:  <span id="final-score-jq">0</span></h4>
 
  <div id = "board">
 
@@ -110,41 +115,27 @@
 <div  class = "main-score" ><p id = "main-10">0</P>
  </div>
 
-<h4>CURRENT SCORE: </h4><h4 id = 'current-score'></h4>
+
 </div>
 
 <div>
 <button id="start">START</button>
 </div>
 
-<!-- <form id = 'score'>
-  Enter Score:<br>
-  <input type="text" name="firstname"><br>
-</form> -->
 
-<form>
-    <select id="score">
-        <option value="1">1 PIN</option>
-        <option value="2">2 PINS</option>
-        <option value="3">3 PINS</option>
-        <option value="5">4 PINS</option>
-        <option value="5">5 PINS</option>
-        <option value="6">6 PINS</option>
-        <option value="7">7 PINS</option>
-        <option value="8">8 PINS</option>
-        <option value="10">9 PINS</option>
-        <option value="10">STRIKE!</option>
-    </select>
-    <input type="button" value="SELECT SCORE"/>
-</form>
 
-<!-- <select id="myselect">
-    <option value="1">Mr</option>
-    <option value="2">Mrs</option>
-    <option value="3">Ms</option>
-    <option value="4">Dr</option>
-    <option value="5">Prof</option>
-</select> -->
+<div id='score-select'>
+   <a type="submit" value="1" class="bowl-score">1</a>
+   <a type="submit" value="2" class="bowl-score">2</a>
+   <a type="submit" value="3" class="bowl-score">3</a>
+   <a type="submit" value="4" class="bowl-score">4</a>
+   <a type="submit" value="5" class="bowl-score">5</a>
+   <a type="submit" value="6" class="bowl-score">6</a>
+   <a type="submit" value="7" class="bowl-score">7</a>
+   <a type="submit" value="8" class="bowl-score">8</a>
+   <a type="submit" value="9" class="bowl-score">9</a>
+   <a type="submit" value="10" class="bowl-score">X</a>
+ </div>
 
 
 

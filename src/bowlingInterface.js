@@ -2,6 +2,11 @@ $(document).ready(function(){
   var game = new Game();
   game.addFrame();
 
+  function updateScores() {
+  $('#current-score').fadeOut(1).text(game.TOTAL_SCORE).fadeIn(1000);
+  $('#current-score-2').fadeOut(1).text(game.BONUS_POINTS).fadeIn(1000);
+};
+
   $('.main-score').fadeIn(3000)
 
   $('#start').click(function(){
@@ -12,8 +17,9 @@ $(document).ready(function(){
     $('#current-score').text(game.TOTAL_SCORE)
   });
 
-  $( "#score" ).change(function() {
-  var score = parseInt($("#score option:selected").val());
+  $( ".bowl-score" ).click(function() {
+    var score = parseInt($(this).attr('value'));
+  // var score = parseInt($("#score option:selected").val());
 
   game.roundScore(score)
   console.log(game)
@@ -26,6 +32,7 @@ $(document).ready(function(){
   $('#sp-2').text(game.frames[0].roundTwo)
 };
   $('#current-score').text(game.TOTAL_SCORE)
+  $('#current-score-2').text(game.BONUS_POINTS)
   $('#main-1').text(game.frames[0].scoreTotal)
 
   if(game.frames[1].frameStrike==='X'){
@@ -36,7 +43,8 @@ $(document).ready(function(){
   $('#sp-3').text(game.frames[1].roundOne)
   $('#sp-4').text(game.frames[1].roundTwo)
 };
-  $('#current-score').text(game.TOTAL_SCORE)
+$('#current-score').text(game.TOTAL_SCORE)
+$('#current-score-2').text(game.BONUS_POINTS)
   $('#main-2').text(game.frames[1].scoreTotal)
 
   if(game.frames[2].frameStrike==='X'){
@@ -47,7 +55,8 @@ $(document).ready(function(){
   $('#sp-5').text(game.frames[2].roundOne)
   $('#sp-6').text(game.frames[2].roundTwo)
 };
-  $('#current-score').text(game.TOTAL_SCORE)
+$('#current-score').text(game.TOTAL_SCORE)
+$('#current-score-2').text(game.BONUS_POINTS)
   $('#main-3').text(game.frames[2].scoreTotal)
 
   if(game.frames[3].frameStrike==='X'){
@@ -58,7 +67,8 @@ $(document).ready(function(){
   $('#sp-7').text(game.frames[3].roundOne)
   $('#sp-8').text(game.frames[3].roundTwo)
 };
-  $('#current-score').text(game.TOTAL_SCORE)
+$('#current-score').text(game.TOTAL_SCORE)
+$('#current-score-2').text(game.BONUS_POINTS)
   $('#main-4').text(game.frames[3].scoreTotal)
 
   if(game.frames[4].frameStrike==='X'){
@@ -69,7 +79,8 @@ $(document).ready(function(){
   $('#sp-9').text(game.frames[4].roundOne)
   $('#sp-10').text(game.frames[4].roundTwo)
 };
-  $('#current-score').text(game.TOTAL_SCORE)
+$('#current-score').text(game.TOTAL_SCORE)
+$('#current-score-2').text(game.BONUS_POINTS)
   $('#main-5').text(game.frames[4].scoreTotal)
 
   if(game.frames[5].frameStrike==='X'){
@@ -80,7 +91,8 @@ $(document).ready(function(){
   $('#sp-11').text(game.frames[5].roundOne)
   $('#sp-12').text(game.frames[5].roundTwo)
 };
-  $('#current-score').text(game.TOTAL_SCORE)
+$('#current-score').text(game.TOTAL_SCORE)
+$('#current-score-2').text(game.BONUS_POINTS)
   $('#main-6').text(game.frames[5].scoreTotal)
 
   if(game.frames[6].frameStrike==='X'){
@@ -91,7 +103,8 @@ $(document).ready(function(){
   $('#sp-13').text(game.frames[6].roundOne)
   $('#sp-14').text(game.frames[6].roundTwo)
 };
-  $('#current-score').text(game.TOTAL_SCORE)
+$('#current-score').text(game.TOTAL_SCORE)
+$('#current-score-2').text(game.BONUS_POINTS)
   $('#main-7').text(game.frames[6].scoreTotal)
 
   if(game.frames[7].frameStrike==='X'){
@@ -102,7 +115,8 @@ $(document).ready(function(){
   $('#sp-15').text(game.frames[7].roundOne)
   $('#sp-16').text(game.frames[7].roundTwo)
 };
-  $('#current-score').text(game.TOTAL_SCORE)
+$('#current-score').text(game.TOTAL_SCORE)
+$('#current-score-2').text(game.BONUS_POINTS)
   $('#main-8').text(game.frames[7].scoreTotal)
 
   if(game.frames[8].frameStrike==='X'){
@@ -113,7 +127,8 @@ $(document).ready(function(){
   $('#sp-17').text(game.frames[8].roundOne)
   $('#sp-18').text(game.frames[8].roundTwo)
 };
-  $('#current-score').text(game.TOTAL_SCORE)
+$('#current-score').text(game.TOTAL_SCORE)
+$('#current-score-2').text(game.BONUS_POINTS)
   $('#main-9').text(game.frames[8].scoreTotal)
 
   if(game.frames[9].frameStrike==='X'){
@@ -124,8 +139,13 @@ $(document).ready(function(){
   $('#sp-19').text(game.frames[9].roundOne)
   $('#sp-20').text(game.frames[9].roundTwo)
 };
-  $('#current-score').text(game.TOTAL_SCORE)
+$('#current-score').text(game.TOTAL_SCORE)
+$('#current-score-2').text(game.BONUS_POINTS)
   $('#main-10').text(game.frames[9].scoreTotal)
+
+  if(game.isGameOver()===true){
+    $('#final-score-jq').text(game.finalScore()).fadeIn(1000)
+  };
   console.log(game)
 
 });

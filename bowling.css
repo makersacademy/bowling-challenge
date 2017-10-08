@@ -1,17 +1,51 @@
+body {
+  background-color: beige
+}
+
 #board { width: 1000px;
         height: 250px;
         background: grey;
         border-radius: 10px;
         margin: auto;
-        margin-top: 250px;
+        margin-top: 100px;
         padding: 20px;
+        background-color: pink;
+        box-shadow: 10px 10px 5px #888888;
 }
+
 
 #strike-spare-scores {
                       width: 1000px;
                       height: 50px;
                       margin: auto;
                       margin-top: 50px;
+}
+
+#score-select{
+              width:520px;
+              margin: auto;
+}
+
+#current-score{
+  font-family: futura;
+  font-size: 40px;
+  color: skyblue;
+}
+
+#current-score-1{
+  font-family: futura;
+  color: pink;
+  font-size: 40px;
+  margin-left: 500px;
+  margin-top: 10px;
+}
+
+#bonus{
+  font-family: futura;
+  color: pink;
+  font-size: 70px;
+  margin-left: 590px;
+  margin-top: -40px;
 
 }
 
@@ -23,12 +57,56 @@
     text-align: center;
     font-family: verdana;
     font-size: 40px;
-    margin-top: -9px
+    margin-top: -9px;
+    background-color: skyblue;
 }
 
 p { text-align: center;
 
 }
+
+   .bowl-score {
+    -moz-box-shadow:inset 0px 0px 39px 10px #000000;
+    -webkit-box-shadow:inset 0px 0px 39px 10px #000000;
+    box-shadow:inset 0px 0px 39px 10px #000000;
+    background-color:#c3e3cb;
+    -moz-border-radius:42px;
+    -webkit-border-radius:42px;
+    border-radius:50px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Verdana;
+    font-size:28px;
+    font-weight:bold;
+    padding:32px 37px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #000000;
+   }
+   .bowl-score:hover {
+    background-color:#c5d4bd;
+   }
+   .bowl-score:active {
+    position:relative;
+    top:1px;
+   }
+
+   .button-success {
+       background: rgb(28, 184, 65); /* this is a green */
+   }
+
+   .button-error {
+       background: rgb(202, 60, 60); /* this is a maroon */
+   }
+
+   .button-warning {
+       background: rgb(223, 117, 20); /* this is an orange */
+   }
+
+   .button-secondary {
+       background: rgb(66, 184, 221); /* this is a light blue */
+   }
+
 
 
 
@@ -43,6 +121,7 @@ p { text-align: center;
     font-size: 40px;
     clear: top;
     margin-top: -10px;
+    background-color: yellow;
     /*border:solid 1px #000;*/
 }
 /**/

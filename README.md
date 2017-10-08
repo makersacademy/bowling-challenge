@@ -18,11 +18,12 @@ http://jqueryui.com/demos/
 
 ## Methodology
 I am using the rolls as an array; the number of knocked pins as a value for each roll. I have calculated the score for a frame using the roll (array) index.
-I have tried to make the code quite readable. You'd need a Frame.js if there were an UI and you want to display the individual scores of each roll.
+I have tried to make the code quite readable. You'd need a Frame.js if there were an UI where you'd display the individual scores of each roll.
 
 ## Further improvements
 DRY the code further
 An UserInterface
+Further tests for edge cases
 
 ## The Task
 

@@ -1,0 +1,59 @@
+#board { width: 1000px;
+        height: 250px;
+        background: grey;
+        border-radius: 10px;
+        margin: auto;
+        margin-top: 250px;
+        padding: 20px;
+}
+
+#strike-spare-scores {
+                      width: 1000px;
+                      height: 50px;
+                      margin: auto;
+                      margin-top: 50px;
+
+}
+
+.main-score {
+    width: 100px;
+    height: 120px;
+    outline: 1px solid;
+    float: left;
+    text-align: center;
+    font-family: verdana;
+    font-size: 40px;
+    margin-top: -9px
+}
+
+p { text-align: center;
+
+}
+
+
+
+.strike-or-spare {
+    width: 50px;
+    height: 50px;
+    outline: 1px solid;
+    float: left;
+    text-align: center;
+    /*text-align: center;*/
+    font-family: verdana;
+    font-size: 40px;
+    clear: top;
+    margin-top: -10px;
+    /*border:solid 1px #000;*/
+}
+/**/
+/*button {
+        background-color: maroon;
+        border: none;
+        border-radius: 20%;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+}*/

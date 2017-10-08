@@ -45,28 +45,11 @@ Game.prototype.score = function () {
     function getNormalScore() {
       return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
     }
-
 };
-//
-// function tenthFrameScore() {
-//   if ((isSpare()) || (isStrike())) {
-//     return game.rolls[rollIndex]+ game.rolls[rollIndex + 1]+ game.rolls[rollIndex + 2];
-//   } else {
-//     return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
-//   }
-// }
+
 Game.prototype.endGameMessage = function () {
   return "Congratulations! Game ended. Start a new game"
 };
 Game.prototype.strikeMessage = function () {
-  return "TAKE A BOW its a STRIKE"
+  return "TAKE A BOW its a STRIKE!"
 };
-
-// Game.prototype.rollMany = function (pins, rolls) {
-//   for( i = 0; i<rolls; i++ ) {
-//     result += pins;
-//   }
-// };
-// Thermostat.prototype.getCurrentTemperature = function() {
-//   return this.temperature;
-// };

@@ -32,7 +32,7 @@ describe("Game", function() {
     game.roll(4);
     rollMany(0, 16);
     expect(game.score()).toEqual(28);
-    expect(game.strikeMessage()).toEqual("TAKE A BOW its a STRIKE");
+    expect(game.strikeMessage()).toEqual("TAKE A BOW its a STRIKE!");
   });
 
   it("can roll a Perfect Game", function() {
@@ -45,6 +45,7 @@ describe("Game", function() {
     expect(game.rolls.length).toEqual(21);
     expect(game.endGameMessage()).toEqual("Congratulations! Game ended. Start a new game");
   });
+
   it("can score the 10 frames", function() {
     rollMany(6,8);
     rollMany(0,8);
@@ -55,6 +56,7 @@ describe("Game", function() {
     console.log(game.score());
     expect(game.score()).toEqual(62);
   });
+
   it("can score a spare in 10th frame", function() {
     rollMany(4,6);
     rollMany(0,6);
@@ -65,6 +67,7 @@ describe("Game", function() {
     game.roll(7);
     expect(game.score()).toEqual(56);
   });
+
   it("can score a strike in 10th frame", function(){
     rollMany(7,6);
     rollMany(0,6);
@@ -75,6 +78,7 @@ describe("Game", function() {
     game.roll(7);
     expect(game.score()).toEqual(92);
   });
+
   var rollMany = function(pins, rolls) {
     for( var i = 0; i<rolls; i++ ) {
       game.roll(pins);

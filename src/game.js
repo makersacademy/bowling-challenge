@@ -28,6 +28,7 @@ Game.prototype.score = function () {
     }
   }
     return result;
+    console.log(result);
 
     function isSpare(){
       return game.rolls[rollIndex] + game.rolls[rollIndex + 1] === 10;
@@ -44,7 +45,16 @@ Game.prototype.score = function () {
     function getNormalScore() {
       return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
     }
+
 };
+//
+// function tenthFrameScore() {
+//   if ((isSpare()) || (isStrike())) {
+//     return game.rolls[rollIndex]+ game.rolls[rollIndex + 1]+ game.rolls[rollIndex + 2];
+//   } else {
+//     return game.rolls[rollIndex] + game.rolls[rollIndex + 1];
+//   }
+// }
 Game.prototype.endGameMessage = function () {
   return "Congratulations! Game ended. Start a new game"
 };

@@ -1,6 +1,6 @@
 $(document).ready(function(){
   var game = new Game();
-  game.addFrame();
+    game.addFrame();
 
   function updateScores() {
   $('#current-score').fadeOut(1).text(game.TOTAL_SCORE).fadeIn(1000);
@@ -10,19 +10,14 @@ $(document).ready(function(){
   $('.main-score').fadeIn(3000)
 
   $('#start').click(function(){
-
-    console.log(game)
-    $('#main-1').text(game.frames[0].scoreTotal)
-
-    $('#current-score').text(game.TOTAL_SCORE)
+    location.reload();
   });
 
   $( ".bowl-score" ).click(function() {
     var score = parseInt($(this).attr('value'));
-  // var score = parseInt($("#score option:selected").val());
 
   game.roundScore(score)
-  console.log(game)
+
   if(game.frames[0].frameStrike==='X'){
   $('#sp-2').text(game.frames[0].frameStrike)
 }else if(game.frames[0].frameSpare==='/'){
@@ -143,10 +138,14 @@ $('#current-score').text(game.TOTAL_SCORE)
 $('#current-score-2').text(game.BONUS_POINTS)
   $('#main-10').text(game.frames[9].scoreTotal)
 
-  if(game.isGameOver()===true){
+  if(game.isGameOver()){
     $('#final-score-jq').text(game.finalScore()).fadeIn(1000)
-  };
-  console.log(game)
+    $('#bonus-round-score-jq').text(game.currentFrame().frameTenBonusRound).fadeIn(1000)
+    $('#bonus-comment-perfect').fadeIn(1000).text('GAME OVER, HIT RESET TO PLAY AGAIN!')}
+    if(game.gutterGame()){
+      $('#bonus-comment-gutter').text('GUTTER GAME! YOU SUCK!')}
+      if(game.perfectGame()){
+        $('#bonus-comment-perfect').fadeIn(1000).text('THE PERFECT GAME, YOU ARE EVERYTHING')}
 
 });
 });

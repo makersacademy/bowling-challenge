@@ -186,13 +186,8 @@ describe('Bowling', function(){
       };
 
       game.roundScore(10);
-      // console.log(game.frames)
-      // console.log(game.BONUS_POINTS)
       game.roundScore(1);
-      // console.log(game.frames)
-      // console.log(game.BONUS_POINTS)
       game.roundScore(1);
-      // console.log(game.TOTAL_SCORE)
 
       expect(game.frameCount).toEqual(10);
       expect(game.TOTAL_SCORE).toEqual(30);
@@ -215,8 +210,6 @@ describe('Bowling', function(){
       game.roundScore(5);
       game.roundScore(5);
       game.roundScore(1);
-        // console.log(game.frames)
-
 
       expect(game.frameCount).toEqual(10);
       expect(game.TOTAL_SCORE).toEqual(29);
@@ -239,13 +232,11 @@ describe('Bowling', function(){
       game.roundScore(10);
       game.roundScore(1);
       game.roundScore(1);
-        // console.log(game.frames)
-
 
       expect(game.frameCount).toEqual(10);
       expect(game.TOTAL_SCORE).toEqual(28);
       expect(game.BONUS_POINTS).toEqual(2);
-    
+
       expect(game.roundScore(1)).toEqual('GAME IS OVER')
     });
   });
@@ -275,7 +266,6 @@ describe('Bowling', function(){
         game.roundScore(10);
         i++
       };
-      // console.log(game.frames)
 
       expect(game.perfectGame()).toEqual(true);
       expect(game.finalScore()).toEqual(300);
@@ -288,11 +278,7 @@ describe('Bowling', function(){
       game.roundScore(5);
       game.roundScore(5);
       game.roundScore(10);
-      console.log(game.strike)
-      console.log(game.spare)
       game.roundScore(1);
-      console.log(game.strike)
-      console.log(game.spare)
       expect(game.frames[0].scoreTotal).toEqual(20);
       expect(game.spare).toEqual(false);
     });

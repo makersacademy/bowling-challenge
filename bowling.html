@@ -12,14 +12,16 @@
     <script src="./src/frame.js"></script>
     <script src="./src/bowlingInterface.js"></script>
 
+<h4 id = "current-score-1">BASE SCORE: <span id="current-score">0</span></h4>
+<h4 id = "bonus">BONUS: <span id="current-score-2">0</span></h4>
 
-    <!-- <div class = 'main-score-1'>
-    </div> -->
-<!-- <h4 id = 'current-score'>CURRENT SCORE: </h4><h4 id = 'current-score'></h4> -->
-<h4 id = "current-score-1">CURRENT SCORE: <span id="current-score">0</span></h4>
-<h4 id = "bonus">BONUS:  <span id="current-score-2">0</span></h4>
+<h4 id = "final-score">FINAL SCORE: <span id="final-score-jq">0</span></h4>
+<h2 id = "bonus-round-score">FRAME TEN BONUS: <span id="bonus-round-score-jq">0</span></h2>
 
-<h4 id = "final-score">FINAL SCORE:  <span id="final-score-jq">0</span></h4>
+<h4 id = "bonus-comment-perfect"></h4>
+<h4 id = "bonus-comment-gutter"></h4>
+
+<img id = "icon" src="./public/img/Bowling.png">
 
  <div id = "board">
 
@@ -85,46 +87,46 @@
        </div>
    </div>
 
-<div  class = "main-score" ><p id = "main-1">0</P>
+<div  class = "main-score" ><p id = "main-1"></P>
 </div>
 
-<div  class = "main-score" ><p id = "main-2">0</P>
+<div  class = "main-score" ><p id = "main-2"></P>
 </div>
 
-<div  class = "main-score" ><p id = "main-3">0</P>
+<div  class = "main-score" ><p id = "main-3"></P>
 </div>
 
-<div  class = "main-score" ><p id = "main-4">0</P>
+<div  class = "main-score" ><p id = "main-4"></P>
 </div>
 
-<div  class = "main-score" ><p id = "main-5">0</P>
+<div  class = "main-score" ><p id = "main-5"></P>
 </div>
 
-<div  class = "main-score" ><p id = "main-6">0</P>
+<div  class = "main-score" ><p id = "main-6"></P>
 </div>
 
-<div  class = "main-score" ><p id = "main-7">0</P>
+<div  class = "main-score" ><p id = "main-7"></P>
 </div>
 
-<div  class = "main-score" ><p id = "main-8">0</P>
+<div  class = "main-score" ><p id = "main-8"></P>
 </div>
 
-<div  class = "main-score" ><p id = "main-9">0</P>
+<div  class = "main-score" ><p id = "main-9"></P>
 </div>
 
-<div  class = "main-score" ><p id = "main-10">0</P>
+<div  class = "main-score" ><p id = "main-10"></P>
  </div>
 
 
 </div>
 
-<div>
-<button id="start">START</button>
-</div>
+
+<a type="submit"><img id="start" src='./public/img/reload.png'></a>
 
 
 
-<div id='score-select'>
+
+<div id='score-select'><p id = "round-score">CLICK THE BOWLING BALLS TO INPUT YOUR ROUND SCORE!</P>
    <a type="submit" value="1" class="bowl-score">1</a>
    <a type="submit" value="2" class="bowl-score">2</a>
    <a type="submit" value="3" class="bowl-score">3</a>
@@ -135,6 +137,7 @@
    <a type="submit" value="8" class="bowl-score">8</a>
    <a type="submit" value="9" class="bowl-score">9</a>
    <a type="submit" value="10" class="bowl-score">X</a>
+   <a type="submit" value="0" class="bowl-score">0</a>
  </div>
 
 

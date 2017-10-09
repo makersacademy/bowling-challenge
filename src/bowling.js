@@ -9,6 +9,10 @@ var Game = function(){
   this.currentScore = 0
 };
 
+Game.prototype.reset = function (){
+  this.frames = [];
+};
+
 Game.prototype.addFrame = function(){
   this.frameCount += 1;
   this.frames.push(new Frame(this.frameCount));
@@ -21,7 +25,6 @@ Game.prototype.roundScore = function(roll){
       return 'GAME IS OVER'
 
     }else if((this.isStrike())&&(this.frameCount != this.MAX_FRAMES)){
-    // this.spare = false
     this.multipleStrike();
     this.currentFrame().roundOne += this.currentScore;
     this.addTotal();
@@ -60,7 +63,6 @@ Game.prototype.roundScore = function(roll){
 Game.prototype.isGameOver = function(){
   if((this.frameCount === this.MAX_FRAMES) && (this.currentFrame().roundTwo != null)&&(this.strike != true)&&(this.spare != true)){
     return true
-  // }else if(this.frameCount === this.MAX_FRAMES)
   }else{
     return false
   };
@@ -108,7 +110,6 @@ Game.prototype.bonusScore = function(){
 Game.prototype.isStrike = function(){
   if ((this.currentScore === 10)&&(this.currentFrame().roundTwo === null)&&(this.currentFrame().roundOne === null)){
     this.strike = true;
-    // this.spare = false;
     this.currentFrame().frameStrike = 'X'
     return true
     }
@@ -155,9 +156,6 @@ Game.prototype.finalFrame = function(){
 }else if((this.spare === true)&&(this.currentFrame().roundTwo != null)){
   this.finalFrameBonus();
   this.spare = false;
-
-// }else{
-//     return 'GAME IS OVER'
   };
 
   Game.prototype.finalFrameBonus = function(){

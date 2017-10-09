@@ -2,12 +2,52 @@ body {
   background-color: beige
 }
 
+#round-score {
+  font-size: 15px;
+  font-family: futura;
+  color: skyblue;
+  font-weight: bold;
+  margin-top: -25px;
+}
+
+#icon {
+  position: absolute;
+  margin-left: -200px;
+  margin-top: -270px;
+  height: 310px;
+}
+
+#start{
+  height: 150px;
+  position: absolute;
+  margin-left: 1200px;
+  margin-top: -500px;
+}
+
+#start:hover{
+ background-color:#c5d4bd;
+}
+
+#bonus-round-score {
+  font-family: futura;
+  color: pink;
+  font-size: 40px;
+  margin-left: 500px;
+  margin-top: -75px;
+  text-shadow: 1px 1px black;
+}
+
+/*#start:active {
+ position:relative;
+ top:1px;
+}*/
+
 #board { width: 1000px;
         height: 250px;
         background: grey;
         border-radius: 10px;
         margin: auto;
-        margin-top: 100px;
+        margin-top: 50px;
         padding: 20px;
         background-color: pink;
         box-shadow: 10px 10px 5px #888888;
@@ -22,14 +62,16 @@ body {
 }
 
 #score-select{
-              width:520px;
+              width:589px;
               margin: auto;
+              margin-top: 40px;
 }
 
 #current-score{
   font-family: futura;
   font-size: 40px;
   color: skyblue;
+  text-shadow: 1px 1px black;
 }
 
 #current-score-1{
@@ -38,15 +80,46 @@ body {
   font-size: 40px;
   margin-left: 500px;
   margin-top: 10px;
+  text-shadow: 1px 1px black;
 }
 
 #bonus{
   font-family: futura;
   color: pink;
-  font-size: 70px;
+  font-size: 50px;
   margin-left: 590px;
-  margin-top: -40px;
+  margin-top: -70px;
+  text-shadow: 1px 1px black;
+}
 
+#final-score{
+  font-family: futura;
+  color: pink;
+  font-size: 50px;
+  margin-left: 410px;
+  margin-top: -90px;
+  text-shadow: 1px 1px black;
+}
+
+#bonus-comment-perfect{
+  position: absolute;
+  margin: auto;
+  color: green;
+  font-size: 90px;
+  font-family: futura;
+  text-align: center;
+  text-shadow: 2px 2px black;
+}
+
+#bonus-comment-gutter{
+  position: absolute;
+  margin: auto;
+  margin-top: -70px;
+  color: red;
+  font-size: 70px;
+  font-family: futura;
+  text-align: center;
+  text-shadow: 2px 2px black;
 }
 
 .main-score {
@@ -59,6 +132,7 @@ body {
     font-size: 40px;
     margin-top: -9px;
     background-color: skyblue;
+
 }
 
 p { text-align: center;
@@ -89,22 +163,6 @@ p { text-align: center;
    .bowl-score:active {
     position:relative;
     top:1px;
-   }
-
-   .button-success {
-       background: rgb(28, 184, 65); /* this is a green */
-   }
-
-   .button-error {
-       background: rgb(202, 60, 60); /* this is a maroon */
-   }
-
-   .button-warning {
-       background: rgb(223, 117, 20); /* this is an orange */
-   }
-
-   .button-secondary {
-       background: rgb(66, 184, 221); /* this is a light blue */
    }
 
 

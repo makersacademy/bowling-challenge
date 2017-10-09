@@ -1,18 +1,15 @@
 'use strict';
 
 describe('Bowling app does the following', function() {
+
   var game;
 
   beforeEach(function() {
-    game =  new Game();
+    game = new Game();
   })
 
   it('starts with a score of zero', function() {
     expect(game.score).toEqual(0);
-  });
-
-  it('starts with a selection of empty frames', function(){
-    expect(game.frames).toEqual({});
   });
 
   it('adds a score to an array for each frame', function() {
@@ -39,7 +36,7 @@ expect(function() { game.bowl(6); } ).toThrow("The game is complete.");
 })
 
 it('Each bowl increase the roll count by one', function() {
-  game.bowl(1)
+  game.bowl(10)
   expect(game.rollCount).toEqual(1)
 })
 
@@ -53,5 +50,10 @@ it('set isSpare to true if combined score of two rolls is 10', function() {
   game.bowl(4);
   expect(game.isSpare).toEqual(true);
 })
+
+var autoRoller = function(rolls, pins){
+  for(var i = 0; i <rolls; i++)
+        game.bowl(pins);
+}
 
 })

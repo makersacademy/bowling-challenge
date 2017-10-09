@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BOWLING</title>
+    <link rel="stylesheet" href="bowling.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="./src/bowling.js"></script>
+    <script src="./src/frame.js"></script>
+    <script src="./src/bowlingInterface.js"></script>
+
+<h4 id = "current-score-1">BASE SCORE: <span id="current-score">0</span></h4>
+<h4 id = "bonus">BONUS: <span id="current-score-2">0</span></h4>
+
+<h4 id = "final-score">FINAL SCORE: <span id="final-score-jq">0</span></h4>
+<h2 id = "bonus-round-score">FRAME TEN BONUS: <span id="bonus-round-score-jq">0</span></h2>
+
+<h4 id = "bonus-comment-perfect"></h4>
+<h4 id = "bonus-comment-gutter"></h4>
+
+<img id = "icon" src="./public/img/Bowling.png">
+
+ <div id = "board">
+
+   <div id = "strike-spare-scores">
+       <div class = "strike-or-spare" id = "sp-1">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-2">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-3">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-4">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-5">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-6">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-7">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-8">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-9">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-10">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-11">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-12">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-13">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-14">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-15">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-16">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-17">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-18">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-19">
+       </div>
+
+       <div class = "strike-or-spare" id = "sp-20">
+       </div>
+   </div>
+
+<div  class = "main-score" ><p id = "main-1"></P>
+</div>
+
+<div  class = "main-score" ><p id = "main-2"></P>
+</div>
+
+<div  class = "main-score" ><p id = "main-3"></P>
+</div>
+
+<div  class = "main-score" ><p id = "main-4"></P>
+</div>
+
+<div  class = "main-score" ><p id = "main-5"></P>
+</div>
+
+<div  class = "main-score" ><p id = "main-6"></P>
+</div>
+
+<div  class = "main-score" ><p id = "main-7"></P>
+</div>
+
+<div  class = "main-score" ><p id = "main-8"></P>
+</div>
+
+<div  class = "main-score" ><p id = "main-9"></P>
+</div>
+
+<div  class = "main-score" ><p id = "main-10"></P>
+ </div>
+
+
+</div>
+
+
+<a type="submit"><img id="start" src='./public/img/reload.png'></a>
+
+
+
+
+<div id='score-select'><p id = "round-score">CLICK THE BOWLING BALLS TO INPUT YOUR ROUND SCORE!</P>
+   <a type="submit" value="1" class="bowl-score">1</a>
+   <a type="submit" value="2" class="bowl-score">2</a>
+   <a type="submit" value="3" class="bowl-score">3</a>
+   <a type="submit" value="4" class="bowl-score">4</a>
+   <a type="submit" value="5" class="bowl-score">5</a>
+   <a type="submit" value="6" class="bowl-score">6</a>
+   <a type="submit" value="7" class="bowl-score">7</a>
+   <a type="submit" value="8" class="bowl-score">8</a>
+   <a type="submit" value="9" class="bowl-score">9</a>
+   <a type="submit" value="10" class="bowl-score">X</a>
+   <a type="submit" value="0" class="bowl-score">0</a>
+ </div>
+
+
+
+
+  </body>
+</html>

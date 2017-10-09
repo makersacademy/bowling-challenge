@@ -14,8 +14,8 @@ To run locally:
 ```
 - clone the repo https://github.com/ckiteou/bowling-challenge
 - cd bowling-challenge  
-- run rackup
-- open index.html
+- rackup
+- localhost 9292
 - count & total scores for your bowling game!
 ```
 ### To run the tests

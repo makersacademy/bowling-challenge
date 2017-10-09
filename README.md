@@ -6,19 +6,29 @@ Bowling Challenge
 </p>
 
 
-#### How to run ####
+### How to use
+
+Heroku: https://dashboard.heroku.com/apps/bowling-score-board
+
+To run locally:
 ```
-- Clone the repo
-- Run 'rackup' in the terminal
-- Type 'localhost:9292' in your browser
-- Count & total scores for your bowling game!
+- clone the repo https://github.com/ckiteou/bowling-challenge
+- cd bowling-challenge  
+- run rackup
+- open index.html
+- count & total scores for your bowling game!
 ```
-#### How to run the tests ####
+### To run the tests
 ```
-- Type 'open SpecRunner.html' in your terminal to show the jasmine tests in your browser
+- open SpecRunner.html
 ```
-#### Authors ####
+### Technologies
+- JavaScript (ES5)
+- [Jasmine](https://jasmine.github.io/)
+- [JQuery](https://jquery.com/)
+
+### Authors ####
 - Costas Kiteou, **Makers Academy Student** - _July, 2017 Cohort_
 
-#### Acknowledgements ####
-- My beautiful wife who gave me advice on HTML & CSS styling...and cooked me breakfast
+### Acknowledgements ####
+- My beautiful wife who helped with styling...and made me coffee

@@ -1,0 +1,85 @@
+.low-usage {
+    color: green;
+}
+.medium-usage {
+    color: black;
+}
+.high-usage {
+    color: red;
+}
+
+body {
+    background-image: url("https://www.google.co.uk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiomvT5xt7WAhWQZVAKHRL4ABYQjRwIBw&url=http%3A%2F%2Fweknowyourdreams.com%2Fbowling.html&psig=AOvVaw154ApBJX1kTCq93G-s4Rgs&ust=1507467163411866");
+}
+
+.button {
+    background-color: white; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 800%;
+    font-stretch: ultra-expanded;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+h2 {
+    font-size: 200%;
+}
+
+h3 {
+    font-size: 125%;
+}
+
+p {
+    font-size: 150%;
+}
+
+p2 {
+    font-size: 150%;
+}
+#container{
+  background-image: url("https://www.google.co.uk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiomvT5xt7WAhWQZVAKHRL4ABYQjRwIBw&url=http%3A%2F%2Fweknowyourdreams.com%2Fbowling.html&psig=AOvVaw154ApBJX1kTCq93G-s4Rgs&ust=1507467163411866");
+  background-color: grey;
+  background-size: contain;
+  height: 500px;
+  width: 1000px;
+  z-index: 5;
+  border: 2px solid;
+  border-radius: 25px;
+}
+
+#framebox{
+  align-items: center;
+  margin-left: auto;
+  background-color: white;
+  display: inline-block;
+  height: 90px;
+  width: 90px;
+  border: 2px solid;
+}
+
+#firstballbox{
+  /*align-self: flex-end;*/
+  background-color: yellow;
+  display: inline-block;
+  height: 30px;
+  width: 41px;
+  z-index: 5;
+  border: 2px solid;
+
+}
+
+#secondballbox{
+
+}

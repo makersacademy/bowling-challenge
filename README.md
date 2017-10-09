@@ -1,3 +1,22 @@
+My Approach
+=================
+
+This is my attempt at building a bowling score-card program. I have use TDD principles to guide the design process. At this moment in time,
+the program is capable of recording and tracking the individual scores for each bowl. It can also ascertain whether a a strike or a spare has been scored.
+There are still a number of functions that need to be implemented:
+
+- The game still needs to be able to return a complete score.
+- A proper system for tracking frames also needs developing.
+
+How to run
+=================
+
+To see this program, follow these steps from the command line:
+
+- git clone https://github.com/Marcus-UK/bowling-challenge.git
+- cd bowling-challenge
+
+
 
 Bowling Challenge
 =================

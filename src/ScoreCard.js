@@ -2,6 +2,8 @@
 
 var ScoreCard = function() {
   this.rolls = [];                                //rolls defined as an empty array
+  this.frames = [];
+  this.currentRoll;
 };
 
 ScoreCard.prototype.roll = function(pins) {
@@ -9,6 +11,7 @@ ScoreCard.prototype.roll = function(pins) {
     throw new Error("ERROR! Expected a number between 0 and 10");
   }
   this.rolls.push(pins);                          //roll function, push on the array
+  this.currentRoll = pins;
 };
 
 ScoreCard.prototype.score = function() {          //iterate through the rolls array

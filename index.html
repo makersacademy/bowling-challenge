@@ -1,0 +1,48 @@
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+<style>
+  .blue-text {
+    color:blue;
+  }
+  .red-text {
+    color:red;
+  }
+
+  h1 {
+    font-family: Lobster;
+    font-size: 30px;
+  }
+  p {
+    font-family: monospace;
+    font-size: 16px;
+  }
+</style>
+
+<!DOCTYPE.html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling Challenge</title>
+  </head>
+  <body>
+    <section>
+      <h1 align="center" class="blue-text">Welcome to Super Bowling</h1>
+      <h3 align="center" class="red-text">Current Ball Score: <span id="currentBowl">0</span></h3>
+      <p align="center">
+        <button id="roll_gutter">Gutter ball</button>
+        <button id="roll_1">1</button>
+        <button id="roll_2">2</button>
+        <button id="roll_3">3</button>
+        <button id="roll_4">4</button>
+        <button id="roll_5">5</button>
+        <button id="roll_6">6</button>
+        <button id="roll_7">7</button>
+        <button id="roll_8">8</button>
+        <button id="roll_9">9</button>
+        <button id="roll_strike">Strike</button>
+      </p>
+    </section>
+    <script src="src/ScoreCard.js"></script>
+    <script src="jquery.js"></script>
+    <script src="interface.js"></script>
+  </body>
+</html>

@@ -24,6 +24,13 @@ describe('Bowling Challenge', function() {
       expect(game.score()).toBe(16);
     })
 
+    it('can roll a strike', function () {
+      game.roll(10);
+      game.roll(4);
+      game.roll(3);
+      rollMany(0, 16);
+      expect(game.score()).toBe(24)
+    })
 
 
 

@@ -8,7 +8,7 @@ Bowling Challenge
 
 ### How to use
 
-Heroku: https://dashboard.heroku.com/apps/bowling-score-board
+Heroku: https://bowling-score-board.herokuapp.com/
 
 To run locally:
 ```

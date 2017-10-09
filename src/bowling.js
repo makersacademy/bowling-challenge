@@ -23,11 +23,7 @@ Game.prototype.bowl = function(pins) {
 
 
 Game.prototype.updateRollCount = function() {
-  if (this.isStrike) {
     this.rollCount++;
-  } else {
-    this.rollCount += 2;
-  }
 }
 
 Game.prototype.confirmIsStrike = function() {

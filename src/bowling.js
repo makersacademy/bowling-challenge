@@ -19,20 +19,6 @@ this.updateRollCount();
   }
 };
 
-// Game.prototype.updateScore = function() {
-//   for (var i = 0; i < 10; i++) {
-//     if (this.confirmIsStrike) {
-//       this.score += this.strikeFrameScore();
-//       this.updateRollCount();
-//     } else if (this.confirmIsSpare) {
-//       this.score += this.spareFrameScore;
-//       this.updateRollCount();
-//     } else {
-//       this.score += this.normalFrameScore;
-//       this.updateRollCount();
-//     }
-//   }
-// }
 
 Game.prototype.updateRollCount = function() {
   if (this.isStrike) {
@@ -52,17 +38,3 @@ Game.prototype.confirmIsSpare = function() {
   if(this.bowlCount.slice(-1)[0] + this.bowlCount.slice(-2)[0] === 10) {
     this.isSpare = true
   }
-
-Game.prototype.strikeFrameScore = function() {
-  this.bowlcount[this.rollCount] + this.bowlCount[this.rollCount + 1] + this.bowlCount(this.rollCount + 2);
-}
-
-Game.prototype.spareFrameScore = function() {
-  this.bowlcount[this.rollCount] + this.bowlCount[this.rollCount + 1] + this.bowlCount(this.rollCount + 2);
-}
-
-Game.prototype.normalFrameScore = function() {
-  this.bowlCount[this.rollCount] + this.bowlCount[this.rollCount + 1];
-}
-
-}

@@ -1,6 +1,7 @@
 # Bowling Challenge
 
 About:
+
 This weekend I will create a bowling challenge using JavaScript, Jasmine in a TDD method. 
 
 Tasks:
@@ -14,9 +15,9 @@ After every frame the 10 pins are reset.
 
 Optional Tasks:
 Create a nice interactive animated interface with jQuery.
-Set up Travis CI to run your tests.
-Add ESLint to your codebase and make your code conform.
-You might even want to start with ESLint early on in your work — to help you learn Javascript conventions as you go along.
+Set up Travis CI to run tests.
+Add ESLint to codebase and make code conform.
+Try to start with ESLint early on in work — to help learn Javascript conventions as I go along.
 
 # Rules for 10 pin bowling:
 
@@ -50,3 +51,4 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 The Perfect Game scores 300 points.
 
 # Weekend Challenge Review:
+

@@ -6,6 +6,13 @@ describe("BowlingGame", function() {
     game = new BowlingGame();
   });
 
+  // function skipToRoundTen () {
+  //   for (var i = 1; i < 10; i++) {
+  //     game.nextRound()
+  //   };
+  // } Want to use something like this to keep the testing DRY
+  //   but not sure how to implement it
+
   describe("#frames", function() {
     it("starts on frame number 1", function() {
       expect(game._frameNumber).toEqual(1)
@@ -62,6 +69,14 @@ describe("BowlingGame", function() {
       game.secondRoll(10)
       game.thirdRoll(5)
       expect(game.isOver()).toBe(true)
-    })
+    });
+    it("ends the game if roll 2 is neither a strike nor spare", function() {
+      for (var i = 1; i < 10; i++) {
+        game.nextRound()
+      };
+      game.firstRoll(6)
+      game.secondRoll(7)
+      expect(game.isOver()).toBe(true)
+    });
   });
 });

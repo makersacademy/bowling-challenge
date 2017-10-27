@@ -23,6 +23,8 @@ BowlingGame.prototype.secondRoll = function(score) {
   if (score === 10 && this._frameNumber === 10) {
     this._rollNumber += 1
     this._frameNumber -=1
+  } else if (score !== 10 && this._frameNumber === 10) {
+    this.isOver();
   }
   this.nextRound();
 };
@@ -32,7 +34,5 @@ BowlingGame.prototype.thirdRoll = function(score) {
 };
 
 BowlingGame.prototype.isOver = function(score) {
-  if (this._frameNumber === 10 && this._rollNumber >= 3) {
     return true
-  }
 };

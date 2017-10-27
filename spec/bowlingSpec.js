@@ -23,7 +23,5 @@ describe("Bowling tests:", function() {
     });
   });
 
-  it
-
 
 });

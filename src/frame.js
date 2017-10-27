@@ -9,9 +9,7 @@ frame.prototype.firstRollScore = function(firstScore) {
 };
 
 frame.prototype.secondRollScore = function(secondScore) {
-  if(this._firstScore === 10) {
-    return this._secondScore;
-  }
+  if(this._firstScore === 10) return this._secondScore;
   this._secondScore = secondScore;
   return this._secondScore;
 };

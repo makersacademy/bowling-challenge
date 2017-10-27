@@ -31,4 +31,11 @@ describe('frame', function() {
       expect(testframe._isAStrike).toEqual(true);
     });
   });
+  describe('Spare', function() {
+    it('is a spare if the first roll is not a strike and the scores sum to 10', function() {
+      testframe.firstRollScore(5);
+      testframe.secondRollScore(5);
+      expect(testframe._isASpare).toEqual(true);
+    });
+  });
 });

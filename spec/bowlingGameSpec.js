@@ -21,4 +21,16 @@ describe("BowlingGame", function() {
       expect(function() { game.nextRound() }).toThrowError("Game Over!")
     });
   });
+
+  describe("#rolls", function() {
+    it("there are two rolls in one frame", function() {
+      game.rollFirstBall();
+      expect(game._frameNumber).toEqual(1);
+    });
+    it("after the second roll the frame number increase", function() {
+      game.rollFirstBall();
+      game.rollSecondBall();
+      expect(game._frameNumber).toEqual(2);
+    })
+  })
 });

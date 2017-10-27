@@ -50,5 +50,9 @@ Perfect Game:
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). 
 The Perfect Game scores 300 points.
 
+# Methodology
+
+In each frame, a bowler gets two chances to roll. Within each frame there is the possibility of scoring a max of 30 points. Therefore in a game, each player has the potential to achieve a maximum total of 300 points (the perfect score). 
+
 # Weekend Challenge Review:
 

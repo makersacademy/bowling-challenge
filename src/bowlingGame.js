@@ -9,9 +9,11 @@ BowlingGame.prototype.nextRound = function() {
 };
 
 BowlingGame.prototype.firstRoll = function(score) {
-  if (score === 10) {
+  if (score === 10 && this._frameNumber === 10) {
+    this._rollNumber +=1
+  } else if (score === 10) {
     this._frameNumber += 1
-  };
+  } else
   this._frameNumber
   this._rollNumber += 1
 };

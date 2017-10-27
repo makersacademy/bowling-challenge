@@ -36,5 +36,12 @@ describe("BowlingGame", function() {
       game.firstRoll(10);
       expect(game._frameNumber).toEqual(2);
     });
+    it("you can roll again if you get a strike in the 10th frame", function(){
+      for (var i = 1; i < 10; i++) {
+        game.nextRound()
+      };
+      game.firstRoll(10)
+      expect(game._frameNumber).toEqual(10);
+    })
   })
 });

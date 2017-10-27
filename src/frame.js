@@ -9,10 +9,9 @@ BONUS_SCORE = 10;
 
 frame.prototype.firstRollScore = function(firstScore) {
   this._firstScore = firstScore;
-  if(this._firstScore === BONUS_SCORE) {
+  if(this.rollIsAStrike()) {
     this._isAStrike = true;
   }
-  // should write a predicate method for the above line at some point
   return this._firstScore;
 };
 
@@ -34,4 +33,10 @@ frame.prototype.totalScore = function(nextFrameFirstScore, nextFrameSecondScore)
     return this._firstScore + this._secondScore + nextFrameFirstScore;
   }
   return this._firstScore + this._secondScore;
+};
+
+// predicate methods; would make them private in Ruby. Anything analogous here?
+
+frame.prototype.rollIsAStrike = function() {
+  return (this._firstScore === BONUS_SCORE);
 };

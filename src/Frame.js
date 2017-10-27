@@ -1,7 +1,6 @@
 function Frame() {
- this._score = [];
  this._maxScore = 10;
-
+ this._score = [];
 
 }
 
@@ -13,14 +12,18 @@ Frame.prototype.maxScore = function() {
   return this._maxScore;
 };
 
-Frame.prototype.rollOne = function() {
+Frame.prototype.roll = function(number) {
+  this._score.push(number);
+  return number;
+};
+
+Frame.prototype.total = function(number) {
 
 };
 
-Frame.prototype.rollTwo = function() {
 
-};
 
-Frame.prototype.total = function() {
- return 8;
-};
+//
+// Frame.prototype.total = function() {
+//
+// };

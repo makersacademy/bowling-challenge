@@ -1,8 +1,6 @@
 describe('Frame', function() {
   var frame;
-
   // var player;
-
 
   beforeEach(function() {
     frame = new Frame();
@@ -18,19 +16,17 @@ describe('Frame', function() {
     // expect(frame.maxScore()).toEqual([10]);
   });
 
+  it('player can knock down pins', function() {
+    // var frame = new Frame([4,4]);
+    frame.roll(4);
+    expect(frame.currentScore()).toEqual([4]);
+  });
+
   // it('adds up the total for both roles', function() {
   //   // var frame = new Frame([4,4]);
   //   frame.roll(4,4);
-  //   expect(frame.total()).toEqual(8);
+  //   expect(frame.total()).toEqual([8]);
   // });
-
-  it('adds up the total for both roles', function() {
-    // var frame = new Frame([4,4]);
-    frame.rollOne(4);
-    frame.rollTwo(4);
-    expect(frame.total()).toEqual(8);
-  });
-
 
 
 });

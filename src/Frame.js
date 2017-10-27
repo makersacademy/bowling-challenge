@@ -17,9 +17,9 @@ Frame.prototype.roll = function(number) {
   return number;
 };
 
-Frame.prototype.total = function(number) {
-
-};
+// Frame.prototype.total = function(number) {
+//   
+// };
 
 
 

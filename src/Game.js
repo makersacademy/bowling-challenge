@@ -15,3 +15,7 @@ Game.prototype.gutterBall = function() {
 Game.prototype.maxScore = function() {
   return this._maxScore;
 };
+
+// Game.prototype.roll = function() {
+//
+// }

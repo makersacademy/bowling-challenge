@@ -5,7 +5,8 @@ describe('frame', function() {
 
   beforeEach(function() {
     testFrame = new frame();
-    nextFrameScore = 5;
+    nextFrameFirstScore = 5;
+    nextFrameSecondScore = 3;
   });
 
   describe('Roll Score', function() {
@@ -43,7 +44,14 @@ describe('frame', function() {
   describe('Bonus strike points', function() {
     it('gets a bonus of total score from next roll', function() {
       testFrame.firstRollScore(10);
-      expect(testFrame.totalScore(nextFrameScore)).toEqual(15);
+      expect(testFrame.totalScore(nextFrameFirstScore, nextFrameSecondScore)).toEqual(18);
+    });
+  });
+  describe('Bonus spare points', function() {
+    it('gets a bonus of total score from next roll', function() {
+      testFrame.firstRollScore(6);
+      testFrame.secondRollScore(4);
+      expect(testFrame.totalScore(nextFrameFirstScore, nextFrameSecondScore)).toEqual(15);
     });
   });
 });

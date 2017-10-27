@@ -26,9 +26,12 @@ frame.prototype.secondRollScore = function(secondScore) {
   return this._secondScore;
 };
 
-frame.prototype.totalScore = function(nextFrameScore) {
+frame.prototype.totalScore = function(nextFrameFirstScore, nextFrameSecondScore) {
   if(this._isAStrike) {
-    return this._firstScore + this._secondScore + nextFrameScore;
+    return this._firstScore + this._secondScore + nextFrameFirstScore + nextFrameSecondScore;
+  }
+  else if(this._isASpare) {
+    return this._firstScore + this._secondScore + nextFrameFirstScore;
   }
   return this._firstScore + this._secondScore;
 };

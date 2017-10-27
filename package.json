@@ -1,0 +1,25 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ainsleybc/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ainsleybc/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/ainsleybc/bowling-challenge#readme",
+  "devDependencies": {
+    "jasmine": "^2.8.0"
+  }
+}

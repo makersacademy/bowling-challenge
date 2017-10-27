@@ -1,6 +1,8 @@
-function frame() {
+function frame(nextFrameFirstScore, nextFrameSecondScore) {
   this._firstScore = null;
   this._secondScore = null;
+  this._nextFrameFirstScore = nextFrameFirstScore;
+  this._nextFrameSecondScore = nextFrameSecondScore;
 }
 
 BONUS_SCORE = 10;
@@ -16,12 +18,12 @@ frame.prototype.secondRollScore = function(secondScore) {
   return this._secondScore;
 };
 
-frame.prototype.totalScore = function(nextFrameFirstScore, nextFrameSecondScore) {
+frame.prototype.totalScore = function() {
   if(this.rollIsAStrike()) {
-    return this._firstScore + this._secondScore + nextFrameFirstScore + nextFrameSecondScore;
+    return this.strikeDefaultScore();
   }
   else if(this.rollIsASpare()) {
-    return this._firstScore + this._secondScore + nextFrameFirstScore;
+    return this.spareDefaultScore();
   }
   return this._firstScore + this._secondScore;
 };
@@ -35,4 +37,12 @@ frame.prototype.rollIsAStrike = function() {
 frame.prototype.rollIsASpare = function() {
   if(this.rollIsAStrike()) return false;
   return (this._firstScore + this._secondScore === BONUS_SCORE);
+};
+
+frame.prototype.strikeDefaultScore = function() {
+  return (this._firstScore + this._secondScore + this._nextFrameFirstScore + this._nextFrameSecondScore);
+};
+
+frame.prototype.spareDefaultScore = function() {
+  return (this._firstScore + this._secondScore + this._nextFrameFirstScore);
 };

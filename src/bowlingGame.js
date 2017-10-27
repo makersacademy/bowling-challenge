@@ -8,11 +8,11 @@ BowlingGame.prototype.nextRound = function() {
   this._frameNumber += 1;
 }
 
-BowlingGame.prototype.rollFirstBall = function() {
+BowlingGame.prototype.firstRoll = function(score) {
   this._frameNumber
   this._rollNumber += 1
 }
 
-BowlingGame.prototype.rollSecondBall = function() {
+BowlingGame.prototype.secondRoll = function(score) {
   this.nextRound();
 }

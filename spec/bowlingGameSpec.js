@@ -24,12 +24,12 @@ describe("BowlingGame", function() {
 
   describe("#rolls", function() {
     it("there are two rolls in one frame", function() {
-      game.rollFirstBall();
+      game.firstRoll(3);
       expect(game._frameNumber).toEqual(1);
     });
     it("after the second roll the frame number increase", function() {
-      game.rollFirstBall();
-      game.rollSecondBall();
+      game.firstRoll(4);
+      game.secondRoll(2);
       expect(game._frameNumber).toEqual(2);
     })
   })

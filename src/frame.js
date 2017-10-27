@@ -33,10 +33,6 @@ frame.prototype.rollIsAStrike = function() {
 };
 
 frame.prototype.rollIsASpare = function() {
-  if(this.rollIsAStrike()) {
-    return false;
-  }
-  else {
-    return (this._firstScore + this._secondScore === BONUS_SCORE);
-  }
+  if(this.rollIsAStrike()) return false;
+  return (this._firstScore + this._secondScore === BONUS_SCORE);
 };

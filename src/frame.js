@@ -18,15 +18,15 @@ frame.prototype.secondRollScore = function(secondScore) {
   return this._secondScore;
 };
 
-frame.prototype.totalScore = function() {
-  if(this.isRollAStrike()) {
-    return this.strikeDefaultScore();
-  }
-  else if(this.isRollASpare()) {
-    return this.spareDefaultScore();
-  }
-  return this._firstScore + this._secondScore;
-};
+// frame.prototype.totalScore = function() {
+//   if(this.isRollAStrike()) {
+//     return this.strikeDefaultScore();
+//   }
+//   else if(this.isRollASpare()) {
+//     return this.spareDefaultScore();
+//   }
+//   return this._firstScore + this._secondScore;
+// };
 
 frame.prototype.strikeDefaultScore = function() {
   return (this._firstScore + this._secondScore + this._nextFrameFirstScore + this._nextFrameSecondScore);

@@ -40,15 +40,9 @@ describe("BowlingGame", function() {
       expect(game.showScoreCard()[0].rollTwo).toEqual(0);
     });
     it('awards bonus points', function() {
-      console.log(game._currentFrame);
       game.roll(10);
-      console.log(game._currentFrame);
       expect(game.score()).toEqual(10);
-      console.log(game._scoreCard[game._currentFrame - 2].rollOne === 10);
-      console.log(game._currentFrame);
       game.roll(4, 5);
-      console.log(game._currentFrame);
-      console.log(game._scoreCard[game._currentFrame - 2].rollOne === 10);
       expect(game.score()).toEqual(28);
     });
   });

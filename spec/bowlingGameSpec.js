@@ -36,12 +36,20 @@ describe("BowlingGame", function() {
       game.firstRoll(10);
       expect(game._frameNumber).toEqual(2);
     });
-    it("you can roll again if you get a strike in the 10th frame", function(){
+    it("you can roll again if 10th frame roll 1 is a strike", function(){
       for (var i = 1; i < 10; i++) {
         game.nextRound()
       };
       game.firstRoll(10)
       expect(game._frameNumber).toEqual(10);
+    });
+    it("you can roll again if 10th frame roll 2 is a strike", function() {
+      for (var i = 1; i < 10; i++) {
+        game.nextRound()
+      };
+      game.firstRoll(6)
+      game.secondRoll(10)
+      expect(game._frameNumber).toEqual(10)
     })
   })
 });

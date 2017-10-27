@@ -8,8 +8,11 @@ BowlingGame.prototype.score = function() {
   return this._totalScore;
 };
 
-BowlingGame.prototype.roll = function(number) {
-
+BowlingGame.prototype.roll = function(r1, r2) {
+  this._scoreCard.push({
+    rollOne: r1,
+    rollTwo: r2
+  });
 };
 
 BowlingGame.prototype.showScoreCard = function() {

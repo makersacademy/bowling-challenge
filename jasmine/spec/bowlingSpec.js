@@ -15,8 +15,9 @@ describe("BowlingGame", function() {
   });
 
   it('keeps score', function() {
-    game.roll(4);
-    expect(game.scoreCard[0].rollOne).toEqual(4);
+    game.roll(4, 5);
+    expect(game.showScoreCard()[0].rollOne).toEqual(4);
+    expect(game.showScoreCard()[0].rollTwo).toEqual(5);
   });
 
 });

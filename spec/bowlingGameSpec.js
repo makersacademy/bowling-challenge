@@ -36,6 +36,9 @@ describe("BowlingGame", function() {
       game.firstRoll(10);
       expect(game._frameNumber).toEqual(2);
     });
+  });
+
+  describe("10th frame", function() {
     it("you can roll again if 10th frame roll 1 is a strike", function(){
       for (var i = 1; i < 10; i++) {
         game.nextRound()
@@ -50,6 +53,15 @@ describe("BowlingGame", function() {
       game.firstRoll(6)
       game.secondRoll(10)
       expect(game._frameNumber).toEqual(10)
+    });
+    it("a maximum of three rolls may be taken", function() {
+      for (var i = 1; i < 10; i++) {
+        game.nextRound()
+      };
+      game.firstRoll(6)
+      game.secondRoll(10)
+      game.thirdRoll(5)
+      expect(game.isOver()).toBe(true)
     })
-  })
+  });
 });

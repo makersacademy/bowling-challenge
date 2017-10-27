@@ -19,9 +19,20 @@ BowlingGame.prototype.firstRoll = function(score) {
 };
 
 BowlingGame.prototype.secondRoll = function(score) {
+  this._rollNumber = 2
   if (score === 10 && this._frameNumber === 10) {
     this._rollNumber += 1
     this._frameNumber -=1
   }
   this.nextRound();
+};
+
+BowlingGame.prototype.thirdRoll = function(score) {
+  this.isOver();
+};
+
+BowlingGame.prototype.isOver = function(score) {
+  if (this._frameNumber === 10 && this._rollNumber >= 3) {
+    return true
+  }
 };

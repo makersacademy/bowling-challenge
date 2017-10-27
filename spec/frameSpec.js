@@ -31,14 +31,14 @@ describe('frame', function() {
   describe('Strike', function() {
     it('is a strike if the first roll score is 10', function() {
       testFrame.firstRollScore(10);
-      expect(testFrame._isAStrike).toEqual(true);
+      expect(testFrame.rollIsAStrike()).toEqual(true);
     });
   });
   describe('Spare', function() {
     it('is a spare if the first roll is not a strike and the scores sum to 10', function() {
       testFrame.firstRollScore(5);
       testFrame.secondRollScore(5);
-      expect(testFrame._isASpare).toEqual(true);
+      expect(testFrame.rollIsASpare()).toEqual(true);
     });
   });
   describe('Bonus strike points', function() {

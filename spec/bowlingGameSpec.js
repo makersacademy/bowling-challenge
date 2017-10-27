@@ -31,6 +31,10 @@ describe("BowlingGame", function() {
       game.firstRoll(4);
       game.secondRoll(2);
       expect(game._frameNumber).toEqual(2);
-    })
+    });
+    it("if roll 1 is a strike there is no roll 2", function() {
+      game.firstRoll(10);
+      expect(game._frameNumber).toEqual(2);
+    });
   })
 });

@@ -53,11 +53,17 @@ describe("Game", function() {
 
   it("update _frameCount when player hits strike ", function() {
     game.roll(10);
-
     game.roll(10);
-
     expect(game.frameCount()).toEqual(3)
   });
+
+  it("update _frameCount when player wins a spare after two rolls ", function() {
+    game.roll(1);
+    game.roll(9);
+    expect(game.frameCount()).toEqual(2)
+  });
+
+
 
 
 

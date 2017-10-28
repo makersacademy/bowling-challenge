@@ -137,6 +137,23 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(40)
   });
 
+  it("the Gutter Game", function(){
+    var i = 20
+    while(i>0) {
+      game.roll(0);
+      i--;
+    }
+    expect(game.getScore()).toEqual(0);
+  });
+
+  it("the Perfect Game : scoring ten 11 times", function(){
+    var i = 12
+    while(i>0) {
+      game.roll(10);
+      i--;
+    }
+    expect(game.getScore()).toEqual(300);
+  });
 
 
 });

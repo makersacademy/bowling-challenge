@@ -18,8 +18,13 @@ Game.prototype.addRoll = function(rollValue) {
 
 Game.prototype.totalScore = function() {
   var totalScore = 0;
-  this._frames.forEach(function(frame) {
+  var numberOfFrames = this.numberOfFrames();
+  var frames = this._frames;
+  frames.forEach(function(frame, index) {
     totalScore += frame.total();
+    if (frame.isSpare() && index < numberOfFrames - 1) {
+      totalScore += frames[index + 1]._firstRoll;
+    }
   })
   return totalScore;
 }

@@ -1,7 +1,7 @@
-function Frame(number, first_roll) {
+function Frame(number, firstRoll) {
   this._number = number;
-  this._first_roll = first_roll;
-  this._second_roll = 0;
+  this._firstRoll = firstRoll;
+  this._secondRoll = null;
   this._bonus = 0;
 }
 
@@ -10,13 +10,25 @@ Frame.prototype.number = function() {
 }
 
 Frame.prototype.total = function() {
-  return this._first_roll + this._second_roll + this._bonus;
+  return this._firstRoll + this._secondRoll + this._bonus;
 }
 
-Frame.prototype.add_roll = function(second_roll) {
-  this._second_roll = second_roll;
+Frame.prototype.addRoll = function(second_roll) {
+  this._secondRoll = second_roll;
 }
 
-Frame.prototype.add_bonus = function(bonus) {
+Frame.prototype.addBonus = function(bonus) {
   this._bonus = bonus;
+}
+
+Frame.prototype.isOngoing = function() {
+  return this._secondRoll === null && this._firstRoll !== 10;
+}
+
+Frame.prototype.isStrike = function() {
+  return this._firstRoll === 10;
+}
+
+Frame.prototype.isSpare = function() {
+  return this._firstRoll + this._secondRoll === 10;
 }

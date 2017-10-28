@@ -10,5 +10,10 @@ describe('BowlingGame', function() {
     expect(game.length).toEqual(0);
   });
 
+  it('allows score keeper to add number of pins knocked to a frame', function() {
+    bowlingGame.addToFrame(8);
+    expect(bowlingGame.frame()).toEqual([8]);
+  });
+
 
 });

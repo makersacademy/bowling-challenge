@@ -69,7 +69,7 @@ describe("Game", function() {
     expect(game.isSpare(1)).toEqual(true);
   });
 
-  it("shows the correct running score when no Strike or no Spare", function(){
+  it("shows the correct running score when no Strike or no Spare", function() {
     game.roll(5);
     game.roll(3);
     game.roll(6);
@@ -77,14 +77,14 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(17);
   });
 
-  it("shows the correct score when the previous shot was a strike", function(){
+  it("shows the correct score when the previous shot was a strike", function() {
     game.roll(10);
     game.roll(3);
     game.roll(6);
     expect(game.getScore()).toEqual(28);
   });
 
-  it("shows the correct score when both previous shots were strikes", function(){
+  it("shows the correct score when both previous shots were strikes", function() {
     game.roll(10);
     game.roll(10);
     game.roll(5);
@@ -92,7 +92,7 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(46)
   });
 
-  it("shows the correct score when THREE previous shots were strikes", function(){
+  it("shows the correct score when THREE previous shots were strikes", function() {
     game.roll(10);
     game.roll(10);
     game.roll(10);
@@ -101,7 +101,7 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(66)
   });
 
-  it("shows the correct score when previous roll grants a spare ", function(){
+  it("shows the correct score when previous roll grants a spare ", function() {
     game.roll(6);
     game.roll(4);
     game.roll(3);
@@ -109,7 +109,7 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(20)
   });
 
-  it("shows the correct score when several spares in a row are granted ", function(){
+  it("shows the correct score when several spares in a row are granted ", function() {
     game.roll(6);
     game.roll(4);
     game.roll(3);
@@ -119,7 +119,7 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(33)
   });
 
-  it("shows the correct score when spares and strikes are hit (in this order) consecutively", function(){
+  it("shows the correct score when spares and strikes are hit (in this order) consecutively", function() {
     game.roll(6);
     game.roll(4);
     game.roll(10);
@@ -128,7 +128,7 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(44)
   });
 
-  it("shows the correct score when strikes and spares (in this order) are hit consecutively", function(){
+  it("shows the correct score when strikes and spares (in this order) are hit consecutively", function() {
     game.roll(10);
     game.roll(6);
     game.roll(4);
@@ -137,27 +137,27 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(40)
   });
 
-  it("the Gutter Game", function(){
+  it("the Gutter Game", function() {
     var i = 20
-    while(i>0) {
+    while (i > 0) {
       game.roll(0);
       i--;
     }
     expect(game.getScore()).toEqual(0);
   });
 
-  it("the Perfect Game : scoring ten 12 times", function(){
+  it("the Perfect Game : scoring ten 12 times", function() {
     var i = 12
-    while(i>0) {
+    while (i > 0) {
       game.roll(10);
       i--;
     }
     expect(game.getScore()).toEqual(300);
   });
 
-  it("tenth Frame: STRIKES do not get usual bonus, instead: you get third roll ", function(){
+  it("tenth Frame: STRIKES do not get usual bonus, instead: you get third roll ", function() {
     var i = 18
-    while(i>0) {
+    while (i > 0) {
       game.roll(4);
       i--;
     }
@@ -168,9 +168,9 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(102);
   });
 
-  it("tenth Frame: SPARES do not get usual bonus, instead: you get third roll ", function(){
+  it("tenth Frame: SPARES do not get usual bonus, instead: you get third roll ", function() {
     var i = 18
-    while(i>0) {
+    while (i > 0) {
       game.roll(4);
       i--;
     }

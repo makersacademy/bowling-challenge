@@ -11,7 +11,9 @@ function Game() {
 var game = new Game();
 
 Game.prototype.getScore = function() {
-   if (this._runningScore == 200) { return 300}
+  if (this._runningScore == 200) {
+    return 300
+  }
   return this._runningScore;
 };
 
@@ -20,7 +22,7 @@ Game.prototype.rollCount = function() {
 };
 
 Game.prototype._actionOnStrike = function() {
-  if (this._frameCount <10){
+  if (this._frameCount < 10) {
     this._strikes[this._frameCount] = true;
     this._rollCount = 0;
     if (this._strikes[this._frameCount - 1] == true) this._runningScore += 10;
@@ -59,11 +61,12 @@ Game.prototype._actionOnSecondRoll = function(pins) {
 
 Game.prototype._frameTenRule = function(pins) {
   if (this._frameCount >= 10)
-   this._runningScore += pins;
+    this._runningScore += pins;
   return;
 };
 
-Game.prototype.roll = function(pins) {  this._frameTenRule(pins);
+Game.prototype.roll = function(pins) {
+  this._frameTenRule(pins);
   this._rollCount++;
   if (this._frameCount < 10) this._runningScore += pins;
   this._updateRollsFrame(pins);

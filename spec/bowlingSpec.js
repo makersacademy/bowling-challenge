@@ -16,8 +16,8 @@ describe('Game', function() {
   });
 
   it('increases score when points are won', function() {
-    game.scoreUpdate()
-    expect(game.getCurrentScore()).toEqual(3);
+    game.scoreUpdate(7)
+    expect(game.getCurrentScore()).toEqual(7);
   });
 
 });

@@ -36,5 +36,13 @@ describe('Game', function() {
       expect(game.getCurrentFrame()).toEqual(2);
     });
 
+    it('only allows points to be added for ten frames in one game', function () {
+      for(var i = 0; i < 14; i++) {
+        game.scoreUpdate(7);
+        game.scoreUpdate(2);
+      }
+      expect(game.getCurrentScore()).toEqual(90);
+      expect(game.getCurrentFrame()).toEqual(11);
+    });
   });
 });

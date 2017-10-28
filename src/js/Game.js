@@ -1,7 +1,8 @@
 'use strict';
 
-function Game() {
-  this._frame = new Frame();
+function Game(frameConstructor = Frame) {
+  this._frameConstructor = frameConstructor
+  this._frame = new frameConstructor();
   this._frames = [];
 };
 
@@ -48,7 +49,7 @@ Game.prototype = {
 
   _setNextFrame: function () {
     this._frames.push(this._frame);
-    if (!this.isComplete()) this._frame = new Frame();
+    if (!this.isComplete()) this._frame = new this._frameConstructor();
   },
 
   _addBonuses: function (pins) {

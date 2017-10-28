@@ -30,5 +30,5 @@ Game.prototype.isSpare = function (i) {
 };
 
 Game.prototype.isStrike = function (i) {
-  return (this._rolls[i] === 10)
+  return (this._rolls[i] === 10 && i < (this._rolls.length - 4))
 };

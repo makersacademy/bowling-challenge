@@ -3,32 +3,45 @@ function Game() {
   this._rolls = []
 };
 
-Game.prototype.returnScore = function () {
-  return this._score
-};
-
 Game.prototype.roll = function (pins) {
   this._rolls.push(pins)
 };
 
-Game.prototype.updateScore = function () {
-  for (var i = 0; i < this._rolls.length; i++) {
-    if (this.isSpare(i)) {
-      this._score += (this._rolls[i] + this._rolls[i+1])
+Game.prototype.returnScore = function () {
+  var rollIndex = 0;
+  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
+    if (this.isStrike(rollIndex)) {
+      this._score += this.strikeScore(rollIndex);
+      rollIndex ++;
     }
-    else if (this.isStrike(i)) {
-      this._score += (this._rolls[i] + this._rolls[i+2] + this._rolls[i+3])
-    }
+    else if (this.isSpare(rollIndex)) {
+      this._score += this.spareScore(rollIndex);
+      rollIndex += 2;
+    } 
     else {
-      this._score += this._rolls[i]
+      this._score += this.normalScore(rollIndex);
+      rollIndex += 2;
     }
   }
+  return this._score
 };
 
-Game.prototype.isSpare = function (i) {
-  return (i % 2 !== 0 && this._rolls[i] + this._rolls[i-1] === 10)
+Game.prototype.isSpare = function (rollIndex) {
+  return this._rolls[rollIndex] + this._rolls[rollIndex + 1] === 10
 };
 
-Game.prototype.isStrike = function (i) {
-  return (this._rolls[i] === 10 && i < (this._rolls.length - 3))
+Game.prototype.isStrike = function (rollIndex) {
+  return this._rolls[rollIndex] === 10
 };
+
+Game.prototype.spareScore = function (rollIndex) {
+  return this._rolls[rollIndex] + this._rolls[rollIndex + 1] + this._rolls[rollIndex + 2]
+} 
+
+Game.prototype.strikeScore = function (rollIndex) {
+  return this._rolls[rollIndex] + this._rolls[rollIndex + 1] + this._rolls[rollIndex + 2]
+}
+
+Game.prototype.normalScore = function (rollIndex) {
+  return this._rolls[rollIndex] + this._rolls[rollIndex + 1]
+}

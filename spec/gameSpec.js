@@ -101,5 +101,12 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(66)
   });
 
+  it("shows the correct score when previous roll grants a spare ", function(){
+    game.roll(6);
+    game.roll(4);
+    game.roll(3);
+    game.roll(4);
+    expect(game.getScore()).toEqual(20)
+  });
 
 });

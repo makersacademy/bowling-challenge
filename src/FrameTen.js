@@ -11,7 +11,7 @@ FrameTen.prototype = Object.create(Frame.prototype);
 FrameTen.prototype.addRoll = function(rollValue) {
   if (this._secondRoll === null) {
     this._secondRoll = rollValue;
-  } else if (this._firstRoll === 10 && this._thirdRoll === null) {
+  } else if ((this.isStrike() || this.isSpare()) && this._thirdRoll === null) {
     this._thirdRoll = rollValue;
   }
 }
@@ -33,17 +33,31 @@ FrameTen.prototype.total = function() {
 // }
 //
 FrameTen.prototype.isOngoing = function() {
-  if (this._firstRoll !== 10) {
-    if (this._secondRoll === null) {
-      return true;
+  console.log(this)
+  if (this._secondRoll === null) {
+    console.log(this)
+    return true;
+  } else {
+    if (this._thirdRoll === null) {
+      if (this.isStrike() || this.isSpare()) {
+        console.log(this);
+        return true;
+      }
     } else {
       return false;
     }
-  } else if (this._thirdRoll === null) {
-    return true;
-  } else {
-    return false
   }
+  // if (this._firstRoll !== 10) {
+  //   if (this._secondRoll === null) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // } else if (this._thirdRoll === null) {
+  //   return true;
+  // } else {
+  //   return false
+  // }
 }
 //
 // Frame.prototype.isStrike = function() {

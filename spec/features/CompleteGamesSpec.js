@@ -45,13 +45,33 @@ describe("The Big Lebowski", function() {
     })
   })
 
-  describe("some consecutive strikes and spares, including in frame 10)", function() {
+  describe("other example scoresheets", function() {
     it("calculates correct total", function() {
-      var rolls = [10, 7,3, 9,0, 10, 0,8, 8,2, 0,6, 10, 10, 10,8,1];
+      var rolls = [9,0, 3,5, 6,1, 3,6, 8,1, 5,3, 2,5, 8,0, 7,1,  8,1]
       rolls.forEach(function(rollValue) {
         game.addRoll(rollValue);
       })
-      expect(game.totalScore()).toEqual(167)
+      expect(game.totalScore()).toEqual(82)
+    })
+  })
+
+  describe("other example scoresheets", function() {
+    it("calculates correct total", function() {
+      var rolls = [10, 3,7, 6,1, 10, 10, 10, 2,8, 9,0, 7,3, 10,10,10]
+      rolls.forEach(function(rollValue) {
+        game.addRoll(rollValue);
+      })
+      expect(game.totalScore()).toEqual(193)
+    })
+  })
+
+  describe("other example scoresheets", function() {
+    it("calculates correct total", function() {
+      var rolls = [9,0, 3,7,  6,1, 3,7,  8,1, 5,5,  0,10,  8,0, 7,3, 8,2,8]
+      rolls.forEach(function(rollValue) {
+        game.addRoll(rollValue);
+      })
+      expect(game.totalScore()).toEqual(131)
     })
   })
 

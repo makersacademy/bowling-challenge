@@ -23,9 +23,15 @@ describe('Game', function () {
     expect(game.returnScore()).toEqual(58)
   })
 
-  it('can score a game with on spare', function () {
+  it('can score a game with one spare', function () {
     game._rolls = [1,9,3,2,4,5,3,4,2,1,4,2,4,2,4,1,5,3,4,2]
     game.updateScore();
     expect(game.returnScore()).toEqual(68)
+  })
+
+  it('can score a game with one strike', function () {
+    game._rolls = [1,9,3,2,4,10,0,4,2,1,4,2,4,2,4,1,5,3,4,2]
+    game.updateScore();
+    expect(game.returnScore()).toEqual(76)
   })
 });

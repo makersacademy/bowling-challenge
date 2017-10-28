@@ -1,4 +1,4 @@
-describe("Bowling feature tests: ", function() {
+describe("Score tests: ", function() {
   var game;
 
   beforeEach(function() {

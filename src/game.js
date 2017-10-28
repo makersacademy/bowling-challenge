@@ -2,6 +2,7 @@ function Game() {
   this._runningScore = 0;
   this._frameCount = 1;
   this._rollCount = 0;
+  this._firstThrow = {};
   this._strikes = {};
   this._spares = {};
   this._rolls = {};
@@ -19,9 +20,11 @@ Game.prototype.rollCount = function() {
 
 Game.prototype._actionOnStrike = function() {
   this._strikes[this._frameCount] = true;
-  this._frameCount++;
   this._rollCount = 0;
-};
+  if (this._strikes[this._frameCount -1] == true) this._runningScore += 10 ;
+    this._frameCount++;
+  };
+
 
 Game.prototype._saveStrike = function(pins) {
   pins == 10
@@ -32,27 +35,39 @@ Game.prototype._saveStrike = function(pins) {
 Game.prototype._updateRollsFrame = function(pins) {
   this._rolls[this._frameCount] = this._rolls[this._frameCount] || 0;
   this._rolls[this._frameCount] += pins;
+  this._firstThrow[this._frameCount] = 10 - pins;
 };
 
 Game.prototype._updateSparesHash = function() {
   this._rolls[this._frameCount] == 10
   ? this._spares[this._frameCount] = true
   : this._spares[this._frameCount] = false;
-}
+};
+
+
+
+Game.prototype._actionOnSecondRoll = function(pins){
+  if (pins != 10 && (this._rollCount % 2 == 0))
+  {
+  if (this._strikes[this._frameCount -1] == true) this._runningScore += this._rolls[this._frameCount] ;
+    this._frameCount++;
+  };
+};
+
 
 Game.prototype.roll = function(pins) {
-  this._rollCount++;
-  this._updateRollsFrame(pins);
-  this._saveStrike(pins);
-  this._updateSparesHash.apply(this);
-  if (pins != 10 && (this._rollCount % 2 == 0)) this._frameCount++;
-  this._runningScore += pins;
-};
+    this._rollCount++;
+    this._runningScore += pins;
+    this._updateRollsFrame(pins);
+    this._saveStrike(pins);
+    this._updateSparesHash.apply(this);
+    this._actionOnSecondRoll(pins);
+
+}
 
 Game.prototype.frameCount = function() {
   return this._frameCount;
 };
-
 
 Game.prototype.isStrike = function(frameNumber) {
   return this._strikes[frameNumber];

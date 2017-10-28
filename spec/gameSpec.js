@@ -69,5 +69,37 @@ describe("Game", function() {
     expect(game.isSpare(1)).toEqual(true);
   });
 
+  it("shows the correct running score when no Strike or no Spare", function(){
+    game.roll(5);
+    game.roll(3);
+    game.roll(6);
+    game.roll(3);
+    expect(game.getScore()).toEqual(17);
+  });
+
+  it("shows the correct score when the previous shot was a strike", function(){
+    game.roll(10);
+    game.roll(3);
+    game.roll(6);
+    expect(game.getScore()).toEqual(28);
+  });
+
+  it("shows the correct score when both previous shots were strikes", function(){
+    game.roll(10);
+    game.roll(10);
+    game.roll(5);
+    game.roll(3);
+    expect(game.getScore()).toEqual(46)
+  });
+
+  it("shows the correct score when THREE previous shots were strikes", function(){
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(5);
+    game.roll(3);
+    expect(game.getScore()).toEqual(66)
+  });
+
 
 });

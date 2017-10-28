@@ -40,6 +40,25 @@ describe("Game", function () {
       expect(game.scorecard[1]['frameScore']).toEqual(17)
     })
 
+    it("adds bonus points to the frame where a spare was bowled", function () {
+      spyOn(game,'bowl').and.returnValues(2, 8, 6, 3)
+      game.play()
+      game.play()
+      game.play()
+      game.play()
+      expect(game.scorecard[1]['frameScore']).toEqual(16)
+    })
+
+    it("adds bonus points to previous two frames with two consecutive strikes", function () {
+      spyOn(game,'bowl').and.returnValues(10, 10, 4, 5)
+      game.play()
+      game.play()
+      game.play()
+      game.play()
+      expect(game.scorecard[1]['frameScore']).toEqual(24)
+      expect(game.scorecard[2]['frameScore']).toEqual(19)
+    })
+
   })
 
 })

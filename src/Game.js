@@ -122,3 +122,7 @@ Game.prototype._addStrikeBonuses = function () {
     this.scorecard[this.currentFrame + 1][1]['bonus'].push(this.scorecard[this.currentFrame][2]['bonus'].pop())
   }
 }
+
+Game.prototype._addSpareBonuses = function () {
+  this.scorecard[this.currentFrame + 1][1]['bonus'].push(this.currentFrame)
+}

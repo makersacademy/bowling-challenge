@@ -12,7 +12,11 @@ Game.prototype.roll = function (pins) {
 };
 
 Game.prototype.updateScore = function () {
-  this._score = this._rolls.reduce(function (a, b) {
-    return a + b
-  });
+  for (var i = 0; i < this._rolls.length; i++) {
+    if (i % 2 !== 0 && this._rolls[i] + this._rolls[i-1] === 10) {
+      this._score += (this._rolls[i] + this._rolls[i+1])
+    } else {
+      this._score += this._rolls[i]
+    }
+  }
 };

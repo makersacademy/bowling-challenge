@@ -15,10 +15,12 @@ Game.prototype.pinsRemaining = function () {
 };
 
 Game.prototype.roll = function (pins) {
-  if (this._frames.length >= 10) throw new Error('Game has been completed');
-  this._frame.roll(pins);
+  if (this.isComplete() && !this.isAllowExtraRoll()) throw new Error('Game has been completed');
   this._addBonuses(pins);
-  this._completeRoll();
+  if (!this.isComplete()) {
+    this._frame.roll(pins);
+    this._completeRoll();
+  };
 };
 
 Game.prototype.currentRoll = function () {
@@ -29,7 +31,7 @@ Game.prototype._completeRoll = function () {
 
   if (this._frame.isComplete()) {
     this._frames.push(this._frame);
-    this._frame = new Frame();      
+    if (!this.isComplete()) this._frame = new Frame();      
   };  
 
 };
@@ -54,4 +56,12 @@ Game.prototype._addBonuses = function (pins) {
     };
   });
 
+};
+
+Game.prototype.isAllowExtraRoll = function () {
+  return this._frames[this._frames.length - 1].isPendingBonus();
+}
+
+Game.prototype.isComplete = function () {
+  return this._frames.length >= 10;
 };

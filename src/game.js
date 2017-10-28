@@ -44,26 +44,22 @@ Game.prototype._updateSparesHash = function() {
     this._spares[this._frameCount] = false;
 };
 
-
-
 Game.prototype._actionOnSecondRoll = function(pins) {
   if (pins != 10 && (this._rollCount % 2 == 0)) {
 
     if (this._strikes[this._frameCount - 1] == true) this._runningScore += this._rolls[this._frameCount];
     this._frameCount++;
   };
-
 };
-
 
 Game.prototype.roll = function(pins) {
   this._rollCount++;
-    this._runningScore += pins;
-    this._updateRollsFrame(pins);
-    this._saveStrike(pins);
-    this._updateSparesHash.apply(this);
-    this._actionOnSecondRoll(pins);
-    this._addSpareOnFirstRoll.apply(this);
+  this._runningScore += pins;
+  this._updateRollsFrame(pins);
+  this._saveStrike(pins);
+  this._updateSparesHash.apply(this);
+  this._actionOnSecondRoll(pins);
+  this._addSpareOnFirstRoll.apply(this);
 }
 
 Game.prototype._addSpareOnFirstRoll = function() {

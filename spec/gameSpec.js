@@ -109,4 +109,14 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(20)
   });
 
+  it("shows the correct score when several spares in a row are granted ", function(){
+    game.roll(6);
+    game.roll(4);
+    game.roll(3);
+    game.roll(7);
+    game.roll(3);
+    game.roll(4);
+    expect(game.getScore()).toEqual(33)
+  });
+
 });

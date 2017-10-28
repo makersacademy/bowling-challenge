@@ -63,9 +63,11 @@ describe("Game", function() {
     expect(game.frameCount()).toEqual(2)
   });
 
-
-
-
+  it("record spare when player wins a spare at a specific Frame number", function() {
+    game.roll(1);
+    game.roll(9);
+    expect(game.isSpare(1)).toEqual(true);
+  });
 
 
 

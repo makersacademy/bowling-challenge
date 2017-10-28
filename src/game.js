@@ -31,7 +31,6 @@ Game.prototype.roll = function(pins) {
   this._rollCount++;
   this._rolls[this._frameCount] = this._rolls[this._frameCount] || 0;
   this._rolls[this._frameCount] += pins;
-  //console.log(this._rolls);
   this._saveStrike(pins);
 
   if (this._rolls[this._frameCount] == 10) {
@@ -40,7 +39,7 @@ Game.prototype.roll = function(pins) {
     this._spares[this._frameCount] = false;
   };
 
-  if (pins != 10 && (this._rollCount % 2 ==0) ) this._frameCount++;
+  if (pins != 10 && (this._rollCount % 2 == 0)) this._frameCount++;
 
   this._runningScore += pins;
 };
@@ -54,6 +53,6 @@ Game.prototype.isStrike = function(frameNumber) {
   return this._strikes[frameNumber];
 }
 
-Game.prototype.isSpare = function() {
-  return this._spares[this._frameCount];
+Game.prototype.isSpare = function(frameNumber) {
+  return this._spares[frameNumber];
 }

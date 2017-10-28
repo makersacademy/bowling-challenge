@@ -5,3 +5,7 @@ function Game() {
 Game.prototype.returnScore = function () {
   return this._score
 }
+
+Game.prototype.roll = function (pins) {
+  this._score += pins
+}

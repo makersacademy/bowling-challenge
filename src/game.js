@@ -63,37 +63,21 @@ Game.prototype._frameTenRule = function(pins) {
   return;
 };
 
-Game.prototype.roll = function(pins) {
-  console.log("1", this._runningScore);
-  this._frameTenRule(pins);
-
-  console.log("2", this._runningScore);
+Game.prototype.roll = function(pins) {  this._frameTenRule(pins);
   this._rollCount++;
-
-  console.log("3", this._runningScore);
   if (this._frameCount < 10) this._runningScore += pins;
-
-  console.log("4", this._runningScore);
   this._updateRollsFrame(pins);
-
-  console.log("5", this._runningScore);
   this._saveStrike(pins);
-
-  console.log("6", this._runningScore);
   this._updateSparesHash.apply(this);
-
-  console.log("7", this._runningScore);
   this._actionOnSecondRoll(pins);
-
-  console.log("8", this._runningScore);
   this._addSpareOnFirstRoll.apply(this);
-
-  console.log("9", this._runningScore);
 }
 
 Game.prototype._addSpareOnFirstRoll = function() {
-  if (this._spares[this._frameCount - 1] && this._rollCount % 2 == 1) {
-    this._runningScore += this._rolls[this._frameCount];
+  if (this._frameCount < 10) {
+    if (this._spares[this._frameCount - 1] && this._rollCount % 2 == 1) {
+      this._runningScore += this._rolls[this._frameCount];
+    }
   }
 }
 

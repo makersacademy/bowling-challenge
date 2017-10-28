@@ -155,7 +155,7 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(300);
   });
 
-  it("tenth Frame: spare/strike do not get usual bonus, instead: you get third roll ", function(){
+  it("tenth Frame: STRIKES do not get usual bonus, instead: you get third roll ", function(){
     var i = 18
     while(i>0) {
       game.roll(4);
@@ -168,10 +168,17 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(102);
   });
 
-
-
-
-
+  it("tenth Frame: SPARES do not get usual bonus, instead: you get third roll ", function(){
+    var i = 18
+    while(i>0) {
+      game.roll(4);
+      i--;
+    }
+    game.roll(8);
+    game.roll(2);
+    game.roll(10);
+    expect(game.getScore()).toEqual(92);
+  });
 
 
 });

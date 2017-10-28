@@ -15,4 +15,9 @@ describe('Game', function() {
     expect(game.getCurrentFrame()).toEqual(1);
   });
 
+  it('increases score when points are won', function() {
+    game.scoreUpdate()
+    expect(game.getCurrentScore()).toEqual(3);
+  });
+
 });

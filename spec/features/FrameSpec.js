@@ -30,10 +30,10 @@ describe('Frame', function () {
       frame.roll(5)
       expect(frame.pinsRemaining()).toEqual(5);
     });
-    it('throws an error if number to knock down is greater than the pins remaining', function () {
+    it('wont allow to knock down more than the number of pins remaining', function () {
       expect(function () { frame.roll(11) }).toThrowError('number to knock down cannot be greater than the number of pins remaning');
     });
-    it('wont allow more tham two rolls', function () {
+    it('wont allow a roll if the frame is complete', function () {
       frame.roll(5)
       frame.roll(3)
       expect(function () { frame.roll(1) }).toThrowError('cannot roll more than twice for a frame');
@@ -65,7 +65,7 @@ describe('Frame', function () {
       frame.roll(7);
       expect(frame.isComplete()).toEqual(true);
     })
-    
+
   })
 
 });

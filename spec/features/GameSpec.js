@@ -11,7 +11,7 @@ describe('Game', function () {
   describe('frame', function () {
     
     it('starts on the first frame', function () {
-      expect(game.currentFrame()).toEqual(1);    
+      expect(game.currentFrame()).toEqual(1);
     });
     it('moves onto next frame when complete', function () {
       game.roll(7);
@@ -23,7 +23,7 @@ describe('Game', function () {
 
   describe('pinsRemaining', function () {
     
-    it('has a default of 10 pins remaining to knock down', function () {
+    it('returns the remaining to knock down', function () {
       expect(game.pinsRemaining()).toEqual(10);
     });
   
@@ -38,7 +38,12 @@ describe('Game', function () {
 
   });
 
+  describe('currentRoll', function () {
 
+    it('returns what roll the player is currently on', function () {
+      expect(game.currentRoll()).toEqual(1);
+    });
 
+  });
 
 });

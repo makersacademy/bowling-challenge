@@ -20,7 +20,7 @@ Game.prototype = {
   bowl: function (pins) {
     if (this.isComplete() && !this.isAllowExtraBowl()) throw new Error('Game has been completed');
     this._addBonuses(pins);
-    if (!this.isComplete()) this._completeBowl(pins);
+    this._completeBowl(pins);
   },
 
   currentRound: function () {
@@ -49,8 +49,8 @@ Game.prototype = {
   },
 
   _setNextFrame: function () {
-    this._frames.push(this._frame);
-    if (!this.isComplete()) this._frame = new this._frameConstructor();
+    if (!this.isComplete()) this._frames.push(this._frame);
+    this._frame = new this._frameConstructor();
   },
 
   _addBonuses: function (pins) {

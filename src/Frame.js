@@ -30,5 +30,5 @@ Frame.prototype.isStrike = function() {
 }
 
 Frame.prototype.isSpare = function() {
-  return this._firstRoll + this._secondRoll === 10;
+  return !this.isStrike() && this._firstRoll + this._secondRoll === 10;
 }

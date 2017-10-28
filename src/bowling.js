@@ -15,5 +15,8 @@ Game.prototype.getCurrentFrame = function() {
 };
 
 Game.prototype.scoreUpdate = function(pins) {
-  this._score += pins;
+  if (pins <11 && pins >= 0 ) {
+    this._score += pins;
+  }
+  return;
 };

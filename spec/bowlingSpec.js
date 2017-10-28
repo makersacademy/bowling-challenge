@@ -20,4 +20,10 @@ describe('Game', function() {
     expect(game.getCurrentScore()).toEqual(7);
   });
 
+  it('only increases score when a valid number of points are added', function() {
+    game.scoreUpdate(12);
+    game.scoreUpdate(-12);
+    expect(game.getCurrentScore()).toEqual(0);
+  });
+
 });

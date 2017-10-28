@@ -8,10 +8,14 @@ describe('Frame', function () {
     frame = new Frame();
   })
 
-  describe('score', function () {
+  describe('rolls', function () {
     
-    it('has a default value of nothing', function () {
-      expect(frame.score()).toEqual(undefined);  
+    it('has a default value of 0', function () {
+      expect(frame.rolls()).toEqual(jasmine.arrayContaining([]));  
+    });
+    it('returns the rolls counted in the frame', function () {
+      frame.roll(5)
+      expect(frame.rolls()).toEqual(jasmine.arrayContaining([5]));  
     });
 
   })

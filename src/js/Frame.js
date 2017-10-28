@@ -6,8 +6,8 @@ function Frame() {
   this._rolls = [];
 };
 
-Frame.prototype.score = function () {
-  0
+Frame.prototype.rolls = function () {
+  return this._rolls;
 };
 
 Frame.prototype.pinsRemaining = function () {

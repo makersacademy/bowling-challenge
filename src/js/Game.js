@@ -30,3 +30,15 @@ Game.prototype._completeRoll = function () {
   };  
 
 };
+
+Game.prototype.score = function () {
+  return this._frames.map(this.frameScore ,this).reduce(this._sum, 0);
+};
+
+Game.prototype.frameScore = function (frame) {
+  return frame.rolls().reduce(this._sum, 0);
+};
+
+Game.prototype._sum = function (a, b) {
+  return a + b;
+};

@@ -8,7 +8,7 @@ describe('Game', function () {
     game = new Game();
   })
   
-  describe('frame', function () {
+  describe('currentFrame', function () {
     
     it('starts on the first frame', function () {
       expect(game.currentFrame()).toEqual(1);
@@ -17,6 +17,13 @@ describe('Game', function () {
       game.bowl(7);
       game.bowl(3);
       expect(game.currentFrame()).toEqual(2);
+    });
+    it('cannot be higher than 10', function () {
+      for (var i = 0; i < 10; i++) {
+        game.bowl(10);
+      };
+      game.bowl(3);
+      expect(game.currentFrame()).toEqual(10);
     });
 
   })

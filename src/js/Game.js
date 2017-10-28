@@ -9,6 +9,7 @@ function Game(frameConstructor = Frame) {
 Game.prototype = {
   
   currentFrame: function () {
+    if (this.isComplete()) return this._frames.length;
     return this._frames.length + 1;
   },
 

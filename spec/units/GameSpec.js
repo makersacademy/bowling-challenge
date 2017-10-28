@@ -22,11 +22,8 @@ describe("Game", function() {
     })
     it("adds a second frame on the third (non-strike) roll", function() {
       game.addRoll(4);
-      console.log(game);
       game.addRoll(5);
-      console.log(game);
       game.addRoll(6);
-      console.log(game);
       expect(game.numberOfFrames()).toEqual(2);
     })
   })

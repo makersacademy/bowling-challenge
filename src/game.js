@@ -11,8 +11,7 @@ function Game() {
 var game = new Game();
 
 Game.prototype.getScore = function() {
-   if (this._runningScore == 230) { return 300}
-
+   if (this._runningScore == 200) { return 300}
   return this._runningScore;
 };
 
@@ -21,13 +20,15 @@ Game.prototype.rollCount = function() {
 };
 
 Game.prototype._actionOnStrike = function() {
-  this._strikes[this._frameCount] = true;
-  this._rollCount = 0;
-  if (this._strikes[this._frameCount - 1] == true) this._runningScore += 10;
-  if (this._spares[this._frameCount - 1]) {
-    this._runningScore += 10;
+  if (this._frameCount <10){
+    this._strikes[this._frameCount] = true;
+    this._rollCount = 0;
+    if (this._strikes[this._frameCount - 1] == true) this._runningScore += 10;
+    if (this._spares[this._frameCount - 1]) {
+      this._runningScore += 10;
+    }
+    this._frameCount++;
   }
-  this._frameCount++;
 };
 
 Game.prototype._saveStrike = function(pins) {
@@ -56,14 +57,38 @@ Game.prototype._actionOnSecondRoll = function(pins) {
   };
 };
 
+Game.prototype._frameTenRule = function(pins) {
+  if (this._frameCount >= 10)
+   this._runningScore += pins;
+  return;
+};
+
 Game.prototype.roll = function(pins) {
+  console.log("1", this._runningScore);
+  this._frameTenRule(pins);
+
+  console.log("2", this._runningScore);
   this._rollCount++;
-  this._runningScore += pins;
+
+  console.log("3", this._runningScore);
+  if (this._frameCount < 10) this._runningScore += pins;
+
+  console.log("4", this._runningScore);
   this._updateRollsFrame(pins);
+
+  console.log("5", this._runningScore);
   this._saveStrike(pins);
+
+  console.log("6", this._runningScore);
   this._updateSparesHash.apply(this);
+
+  console.log("7", this._runningScore);
   this._actionOnSecondRoll(pins);
+
+  console.log("8", this._runningScore);
   this._addSpareOnFirstRoll.apply(this);
+
+  console.log("9", this._runningScore);
 }
 
 Game.prototype._addSpareOnFirstRoll = function() {

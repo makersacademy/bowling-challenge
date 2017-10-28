@@ -1,0 +1,28 @@
+GAME
+behaviour:
+ - calculates each frame (1 - 9) isStrikeBonus: next frame, both rolls. Unless next roll is strike, in which case bonus is next frame + first roll of frame after that.
+ - calculates each frame (1 - 10) isSpareBonus: next frame, first roll
+ - calculates isGutterGame (scores no points)
+ - calculates isPerfectGame (scores 300 points)
+
+attributes:
+- 2D array: 9 instances of frame
+- array
+- total pins
+- total bonuses
+- array:  1 instance of frame 10
+- 10th frame total pins
+- 10th frame total bonuses
+- game total score
+
+FRAME:
+attributes:
+- first roll
+- second roll
+
+
+10TH FRAME (inherits from FRAME):
+attributes:
+- first roll
+- second roll
+- bonus roll

@@ -23,9 +23,13 @@ describe('Game', function() {
       expect(game.getCurrentScore()).toEqual(7);
     });
 
+    it('only allows a maximum of 10 pins to be counted per frame', function() {
+      game.scoreUpdate(7);
+      expect(function(){ game.scoreUpdate(7); }).toThrowError('Cannot knock down more than 10 pins per frame');
+      expect(game.getCurrentScore()).toEqual(7);
+    });
+
     it('only increases score when a valid number of points are entered', function() {
-      game.scoreUpdate(12);
-      expect(game.getCurrentScore()).toEqual(0);
       game.scoreUpdate(-12);
       expect(game.getCurrentScore()).toEqual(0);
     });
@@ -48,14 +52,17 @@ describe('Game', function() {
         game.scoreUpdate(7);
         game.scoreUpdate(2);
       }
-      game.scoreUpdate(8);
+      game.scoreUpdate(4);
+      game.scoreUpdate(3);
       game.scoreUpdate(2);
-      game.scoreUpdate(7);
-      expect(game.getCurrentScore()).toEqual(98);
+      expect(game.getCurrentScore()).toEqual(90);
       expect(game.getCurrentFrame()).toEqual(11);
     });
   });
 
   describe('bonus calculations', function() {
+    it('allows more than 10 pins to be counted for the 10th frame', function() {
+
+    });
   });
 });

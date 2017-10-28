@@ -45,18 +45,18 @@ describe('Frame', function () {
 
   });
 
-  describe('bowlNumber', function () {
+  describe('bowlRound', function () {
     
     describe('first bowl', function () {
       it('returns what bowl the player is currently on', function () {
-        expect(frame.bowlNumber()).toEqual(1);
+        expect(frame.bowlRound()).toEqual(1);
       });
     });
 
     describe('second bowl', function () {
       it('returns what bowl the player is currently on', function () {
         frame.bowl(5)
-        expect(frame.bowlNumber()).toEqual(2);
+        expect(frame.bowlRound()).toEqual(2);
       });
     });
 

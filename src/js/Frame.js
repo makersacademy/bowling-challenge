@@ -22,7 +22,7 @@ Frame.prototype = {
     this._bowls.push(pins);
   },
 
-  bowlNumber: function () {
+  bowlRound: function () {
     return this._bowls.length + 1;
   },
 

@@ -38,10 +38,10 @@ describe('Game', function () {
 
   });
 
-  describe('currentbowl', function () {
+  describe('currentRound', function () {
 
     it('returns what bowl the player is currently on', function () {
-      expect(game.currentBowl()).toEqual(1);
+      expect(game.currentRound()).toEqual(1);
     });
 
   });

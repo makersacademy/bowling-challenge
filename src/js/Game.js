@@ -23,8 +23,8 @@ Game.prototype.bowl = function (pins) {
   };
 };
 
-Game.prototype.currentBowl = function () {
-  return this._frame.bowlNumber();
+Game.prototype.currentRound = function () {
+  return this._frame.bowlRound();
 };
 
 Game.prototype._completeBowl = function () {

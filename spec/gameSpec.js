@@ -51,6 +51,13 @@ describe("Game", function() {
     expect(game.frameCount()).toEqual(2);
   });
 
+  it("update _frameCount when player hits strike ", function() {
+    game.roll(10);
+
+    game.roll(10);
+
+    expect(game.frameCount()).toEqual(3)
+  });
 
 
 

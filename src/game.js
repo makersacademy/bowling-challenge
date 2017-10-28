@@ -40,7 +40,7 @@ Game.prototype.roll = function(pins) {
     this._spares[this._frameCount] = false;
   };
 
-  if (this._rollCount % 2 == 0 && !this.isStrike(this._frameCount)) this._frameCount++;
+  if (pins != 10 && (this._rollCount % 2 ==0) ) this._frameCount++;
 
   this._runningScore += pins;
 };

@@ -13,6 +13,13 @@ describe('Game', function () {
     for (var i = 1; i <= 20; i++); {
       game.roll(0);
     }
+    game.updateScore();
     expect(game.returnScore()).toEqual(0)
   });
+
+  it('can score a game of rolls not including spares or strikes', function () {
+    game._rolls = [1,2,3,2,4,5,3,4,2,1,4,2,4,2,4,1,5,3,4,2];
+    game.updateScore();
+    expect(game.returnScore()).toEqual(58)
+  })
 });

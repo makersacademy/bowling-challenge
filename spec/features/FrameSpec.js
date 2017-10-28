@@ -62,14 +62,67 @@ describe('Frame', function () {
 
   });
 
-  describe('complete', function () {
+  describe('isComplete', function () {
     
-    it('returns true when the frame has been completed', function () {
+    it('returns true for a vanilla frame', function () {
       frame.roll(3);
-      frame.roll(7);
+      frame.roll(4);
       expect(frame.isComplete()).toEqual(true);
-    })
+    });
+    it('returns true for a strike', function () {
+      frame.roll(10);
+      expect(frame.isComplete()).toEqual(true);
+    });
 
   })
+
+  describe('isPendingBonus', function () {
+    
+    it('returns false for a vanilla frame', function () {
+      frame.roll(3);
+      frame.roll(4);
+      expect(frame.isPendingBonus()).toEqual(false);
+    });
+    it('returns true for spare', function () {
+      frame.roll(3);
+      frame.roll(7);
+      expect(frame.isPendingBonus()).toEqual(true);
+    });
+    it('returns false once bonus added for spare', function () {
+      frame.roll(3);
+      frame.roll(7);
+      frame.addBonus(8);
+      expect(frame.isPendingBonus()).toEqual(false);
+    });
+    it('returns false once bonus added for strike', function () {
+      frame.roll(10);
+      frame.addBonus(2);
+      frame.addBonus(8);
+      expect(frame.isPendingBonus()).toEqual(false);
+    });
+
+  });
+
+  describe('addBonus', function () {
+    
+    it('allows a bonus to be added for a spare', function () {
+      frame.roll(3);
+      frame.roll(7);
+      frame.addBonus(4);
+      expect(frame.rolls()).toEqual(jasmine.arrayContaining([3,7,4])); 
+    });
+    it('allows a bonus to be added for a strike', function () {
+      frame.roll(10);
+      frame.addBonus(4);
+      frame.addBonus(2);
+      expect(frame.rolls()).toEqual(jasmine.arrayContaining([10,4,2])); 
+    });
+    it('throws an error if a bonus is not expected', function () {
+      frame.roll(3);
+      frame.roll(4);
+      expect(function () { frame.addBonus(4) }).toThrowError('Bonus cannot be added for this frame')
+    });
+
+  });
 
 });

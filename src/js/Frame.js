@@ -28,3 +28,12 @@ Frame.prototype.rollNumber = function () {
 Frame.prototype.isComplete = function () {
   return this._rolls.length === 2 || this.pinsRemaining() === 0;
 };
+
+Frame.prototype.isPendingBonus = function () {
+  return this.pinsRemaining() === 0 && this._rolls.length < 3;
+};
+
+Frame.prototype.addBonus = function (bonus) {
+  if (!this.isPendingBonus()) throw new Error('Bonus cannot be added for this frame');
+  this._rolls.push(bonus)
+};

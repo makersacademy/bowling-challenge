@@ -3,6 +3,7 @@
 function Game() {
   this._frame = new Frame();
   this._frames = [];
+  this._pendingFrames = [];
 };
 
 Game.prototype.currentFrame = function () {
@@ -15,6 +16,7 @@ Game.prototype.pinsRemaining = function () {
 
 Game.prototype.roll = function (pins) {
   this._frame.roll(pins);
+  this._addBonuses(pins);
   this._completeRoll();
 };
 
@@ -41,4 +43,14 @@ Game.prototype.frameScore = function (frame) {
 
 Game.prototype._sum = function (a, b) {
   return a + b;
+};
+
+Game.prototype._addBonuses = function (pins) {
+
+  this._frames.forEach(function (frame) {
+    if (frame.isPendingBonus()) {
+      frame.addBonus(pins);
+    };
+  });
+
 };

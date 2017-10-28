@@ -63,6 +63,22 @@ describe('Game', function () {
           expect(game.score()).toEqual(9);
         });
       });
+      describe('after a spare', function () {
+        it('returns the correct score', function () {
+          game.roll(6);
+          game.roll(4);
+          game.roll(4);
+          expect(game.score()).toEqual(14);
+        });
+      });
+      describe('after a strike', function () {
+        it('returns the correct score', function () {
+          game.roll(10);
+          game.roll(4);
+          game.roll(4);
+          expect(game.score()).toEqual(26);
+        });
+      });
 
     });
 

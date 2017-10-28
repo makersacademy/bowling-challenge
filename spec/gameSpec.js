@@ -37,6 +37,12 @@ describe('Game', function () {
     expect(game.returnScore()).toEqual(30)
   })
 
+  it('can score a perfect game', function () {
+    manyRolls(12,10);
+    game.updateScore();
+    expect(game.returnScore()).toEqual(300)
+  })
+
   var manyRolls = function (rolls, pins) {
     for (var i = 0; i < rolls; i++) {
       game.roll(pins);

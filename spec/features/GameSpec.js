@@ -18,6 +18,14 @@ describe('Game', function () {
       game.roll(3);
       expect(game.currentFrame()).toEqual(2);
     });
+    it('allows only 10 frames to be played for a game', function () {
+      for (var i = 0; i < 10; i++) {
+        game.roll(4);
+        game.roll(3);
+        console.log(i);
+      };
+      expect(function() { game.roll(4) }).toThrowError('Game has been completed')
+    });
 
   })
 

@@ -15,6 +15,7 @@ Game.prototype.pinsRemaining = function () {
 };
 
 Game.prototype.roll = function (pins) {
+  if (this._frames.length >= 10) throw new Error('Game has been completed');
   this._frame.roll(pins);
   this._addBonuses(pins);
   this._completeRoll();
@@ -28,7 +29,7 @@ Game.prototype._completeRoll = function () {
 
   if (this._frame.isComplete()) {
     this._frames.push(this._frame);
-    this._frame = new Frame();
+    this._frame = new Frame();      
   };  
 
 };

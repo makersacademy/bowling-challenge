@@ -16,7 +16,7 @@ Game.prototype.updateScore = function () {
     if (this.isSpare(i)) {
       this._score += (this._rolls[i] + this._rolls[i+1])
     }
-    else if (this._rolls[i] === 10) {
+    else if (this.isStrike(i)) {
       this._score += (this._rolls[i] + this._rolls[i+2] + this._rolls[i+3])
     }
     else {
@@ -27,4 +27,8 @@ Game.prototype.updateScore = function () {
 
 Game.prototype.isSpare = function (i) {
   return (i % 2 !== 0 && this._rolls[i] + this._rolls[i-1] === 10)
+};
+
+Game.prototype.isStrike = function (i) {
+  return (this._rolls[i] === 10)
 };

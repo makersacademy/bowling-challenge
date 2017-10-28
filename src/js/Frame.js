@@ -18,7 +18,7 @@ Frame.prototype = {
   bowl: function (pins) {
     if (pins > this.pinsRemaining()) throw new Error('number to knock down cannot be greater than the number of pins remaning')
     if (this.isComplete()) throw new Error('cannot bowl more than twice for a frame');
-    this._pins = (this._pins - pins);
+    this._pins -= pins;
     this._bowls.push(pins);
   },
 

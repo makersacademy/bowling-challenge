@@ -3,7 +3,6 @@
 function Game() {
   this._frame = new Frame();
   this._frames = [];
-  this._pendingFrames = [];
 };
 
 Game.prototype = {
@@ -19,10 +18,7 @@ Game.prototype = {
   bowl: function (pins) {
     if (this.isComplete() && !this.isAllowExtraBowl()) throw new Error('Game has been completed');
     this._addBonuses(pins);
-    if (!this.isComplete()) {
-      this._frame.bowl(pins);
-      this._completeBowl();
-    };
+    if (!this.isComplete()) this._completeBowl(pins);
   },
 
   currentRound: function () {
@@ -45,25 +41,26 @@ Game.prototype = {
     return this._frames.length >= 10;
   },
 
-  _completeBowl: function () {
-    if (this._frame.isComplete()) {
-      this._frames.push(this._frame);
-      if (!this.isComplete()) this._frame = new Frame();
-    };
+  _completeBowl: function (pins) {
+    this._frame.bowl(pins);
+    if (this._frame.isComplete()) this._setNextFrame();
   },
 
-  _sum: function (a, b) {
-    return a + b;
+  _setNextFrame: function () {
+    this._frames.push(this._frame);
+    if (!this.isComplete()) this._frame = new Frame();
   },
 
   _addBonuses: function (pins) {
-
     this._frames.forEach(function (frame) {
       if (frame.isPendingBonus()) {
         frame.addBonus(pins);
       };
     });
-
+  },
+  
+  _sum: function (a, b) {
+    return a + b;
   }
 
 };

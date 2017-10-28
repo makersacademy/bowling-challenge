@@ -21,15 +21,23 @@ describe("Game", function () {
     })
 
     it("updates scorecard with number of remaining pins in current frame", function () {
-      spyOn(game,'bowl').and.returnValue(3)
+      spyOn(game,'bowl').and.returnValue(2)
       game.play()
-      expect(game.scorecard[1]['remainingPins']).toEqual(7)
+      expect(game.scorecard[1]['remainingPins']).toEqual(8)
     })
 
     it("updates scorecard with score for the current frame", function () {
       spyOn(game,'bowl').and.returnValue(3)
       game.play()
       expect(game.scorecard[1]['frameScore']).toEqual(3)
+    })
+
+    it("adds bonus points to the frame where a strike was bowled", function () {
+      spyOn(game,'bowl').and.returnValues(10, 3, 4)
+      game.play()
+      game.play()
+      game.play()
+      expect(game.scorecard[1]['frameScore']).toEqual(17)
     })
 
   })

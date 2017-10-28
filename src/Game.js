@@ -69,10 +69,31 @@ var Game = function () {
 Game.prototype.play = function () {
   var hitPins = this.bowl()
   this._updateScorecard(hitPins)
+  if (this._isNoPins()) this.flagBonusRolls()
+  this.setNextRoll()
 }
 
 Game.prototype.bowl = function () {
   return (Math.floor ((Math.random() * this._getRemainingPins() + 1)))
+}
+
+Game.prototype.setNextRoll = function () {
+  if ((this._isAStrike()) || (this.currentRoll === 2)) {
+    this.currentFrame++
+    this.currentRoll = 1
+  } else {
+    this.currentRoll = 2
+  }
+}
+
+Game.prototype.flagBonusRolls = function () {
+  (this.currentRoll === 1) ? this._addStrikeBonuses() : this._addSpareBonuses()
+}
+
+Game.prototype._addBonusPoints = function (hitPins) {
+  for ( frame of this.scorecard[this.currentFrame][this.currentRoll]['bonus'] ) {
+    this.scorecard[frame]['frameScore'] += hitPins
+  }
 }
 
 Game.prototype._getRemainingPins = function () {
@@ -83,4 +104,21 @@ Game.prototype._updateScorecard = function (hitPins) {
   this.scorecard[this.currentFrame][this.currentRoll]['hitPins'] = hitPins
   this.scorecard[this.currentFrame]['remainingPins'] -= hitPins
   this.scorecard[this.currentFrame]['frameScore'] += hitPins
+  if (this.currentFrame >= 2) this._addBonusPoints(hitPins)
+}
+
+Game.prototype._isAStrike = function () {
+  return ((this.currentRoll === 1) && (this._isNoPins()))
+}
+
+Game.prototype._isNoPins = function () {
+  return (this.scorecard[this.currentFrame]['remainingPins'] === 0)
+}
+
+Game.prototype._addStrikeBonuses = function () {
+  this.scorecard[this.currentFrame + 1][1]['bonus'].push(this.currentFrame)
+  this.scorecard[this.currentFrame + 1][2]['bonus'].push(this.currentFrame)
+  if (this.scorecard[this.currentFrame][2]['bonus'].length === 1) {
+    this.scorecard[this.currentFrame + 1][1]['bonus'].push(this.scorecard[this.currentFrame][2]['bonus'].pop())
+  }
 }

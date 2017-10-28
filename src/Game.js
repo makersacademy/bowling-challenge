@@ -139,15 +139,19 @@ Game.prototype._addSpareBonuses = function () {
   this.scorecard[this.currentFrame + 1][1]['bonus'].push(this.currentFrame)
 }
 
+Game.prototype._isRollOneStrike = function () {
+  return (this.scorecard[10][1]['hitPins'] === 10)
+}
+
 Game.prototype.lastFrame = function () {
   if (this._isAStrike()) this.scorecard[this.currentFrame]['remainingPins'] = 10
-  if (this.currentRoll === 1) {
-    this.currentRoll = 2
-    return
-  }
-  if (this._isASpare()) {
-    this.currentRoll = 3
-    this.scorecard[this.currentFrame]['remainingPins'] = 10 //reset for 3rd roll
-    return
-  }
+    if (this.currentRoll === 1) {
+      this.currentRoll = 2
+      return
+    }
+    if (this._isASpare() || this._isRollOneStrike()) {
+      this.currentRoll = 3
+      this.scorecard[this.currentFrame]['remainingPins'] = 10 //reset for 3rd roll
+      return
+    }
 }

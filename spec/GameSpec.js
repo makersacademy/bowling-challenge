@@ -8,4 +8,8 @@ describe("Game", function () {
     expect(game.currentFrame).toEqual(1)
   })
 
+  it("stores current roll being played", function () {
+    expect(game.currentRoll).toEqual(1)
+  })
+
 })

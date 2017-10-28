@@ -119,4 +119,15 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(33)
   });
 
+  it("shows the correct score when spares and strikes are hit consecutively", function(){
+    game.roll(6);
+    game.roll(4);
+    game.roll(10);
+    game.roll(3);
+    game.roll(4);
+    expect(game.getScore()).toEqual(44)
+  });
+
+
+
 });

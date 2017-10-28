@@ -22,8 +22,12 @@ Game.prototype._actionOnStrike = function() {
   this._strikes[this._frameCount] = true;
   this._rollCount = 0;
   if (this._strikes[this._frameCount - 1] == true) this._runningScore += 10;
+  if (this._spares[this._frameCount - 1]) {
+    this._runningScore += 10;
+  }
   this._frameCount++;
 };
+
 
 
 Game.prototype._saveStrike = function(pins) {

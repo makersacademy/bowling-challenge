@@ -44,7 +44,7 @@ Game.prototype._newFrameNeeded = function () {
 Game.prototype.addBonus = function () {
   for (var frameIndex = 0; frameIndex < this._frames.length; frameIndex++) {
     if (this._frames[frameIndex].isAStrike()) {
-      console.log('strike')
+      this._frames[frameIndex].frameBonus(this._frames[frameIndex+1].firstRollScore() + this._frames[frameIndex+1].secondRollScore())
     }
     if (this._frames[frameIndex].isASpare()) {
       console.log('spare')

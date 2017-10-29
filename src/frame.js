@@ -38,6 +38,10 @@ Frame.prototype.firstRollScore = function () {
   return this._pinsKnockedDown[0]
 }
 
+Frame.prototype.secondRollScore = function () {
+  return this._pinsKnockedDown[1]
+}
+
 Frame.prototype.isFinished = function () {
   return this._frameFinished
 }

@@ -37,9 +37,20 @@ describe('Game', function () {
 
   it('adds the next roll to a spare frame', function () {
     scoringGameWithSpare()
-    game.addBonus()
     expect(game.getScore()).toEqual(29)
   })
+
+  it('adds the next two rolls to a strike frame', function () {
+    scoringGameWithStrike()
+    expect(game.getScore()).toEqual(30)
+  })
+
+  var scoringGameWithStrike = function () {
+    game.bowl(10);
+    for (var i = 0; i < 18; i++) {
+      game.bowl(1)
+    }
+  }
 
   var scoringGameWithSpare = function () {
     game.bowl(2);

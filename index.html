@@ -1,0 +1,350 @@
+<!DOCTYPE htmli>
+<html>
+
+<head>
+  <link href="src/css/styles.css" rel="stylesheet">
+  <link href="src/css/bootstrap.css" rel="stylesheet">
+</head>
+
+
+<body>
+  <style>
+
+    body {
+
+      background: radial-gradient(circle, #bac7d8, white);
+    }
+
+    table {
+      margin-top: 50px;
+    }
+
+    #namePlayerForm {
+      margin-top: 50px;
+      float: right;
+      text-transform: uppercase;
+      color: blue;
+    }
+
+
+
+  </style>
+
+<h1 class="col-12">Bowling calculation sheet</h1>
+<div class="row">
+
+  <div class="displayName col-8 ">
+    <h1 id="namePlayerForm"></h1>
+  </div>
+
+
+
+</div>
+
+
+  <div class="container">
+
+
+    <div class="row formPlayerInput">
+      <div class="input-group col-6">
+          <input type="text" class="form-control nameSubmitted" placeholder="Player Name">
+          <span class="input-group-btn">
+  <button class="btn btn-primary submitName" type="button">Submit</button>
+          </span>
+        </div>
+    </div>
+
+
+    <div class="col-12">
+
+      <section mx-auto>
+        <table class="table table-bordered table-hover ">
+          <thead>
+            <tr>
+              <th scope="col">Roll</th>
+              <th scope="col"> Running score</th>
+              <th scope="col">Pins knocked down</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">I-1</th>
+              <td><span id="input-I1"> </span></td>
+              <td>
+
+                <div class="input-group">
+                  <input id="I1" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary go" type="button" id="go1">Go!</button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row">I-2</th>
+              <td><span id="input-I2"> </span></td>
+              <td>  <div class="input-group">
+                  <input id="I2" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="go2">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+
+
+
+
+            <tr>
+              <th scope="row">II-1</th>
+              <td><span id="input-II1"> </span></td>
+              <td>
+
+                <div class="input-group">
+                  <input id="II1" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary go" type="button" id="go3">Go!</button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+
+            <tr>
+              <th scope="row">II-2</th>
+              <td><span id="input-II2"> </span></td>
+              <td>  <div class="input-group">
+                  <input id="II2" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="go4">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+
+
+
+            <tr>
+              <th scope="row">III-1</th>
+              <td><span id="input-III1"> </span></td>
+              <td>
+
+                <div class="input-group">
+                  <input id="III1" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="go5">Go!</button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">III-2</th>
+              <td><span id="input-III2"> </span></td>
+              <td>  <div class="input-group">
+                  <input id="III2" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="go6">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+
+            <tr>
+              <th scope="row">IV-1</th>
+              <td><span id="input-IV1"> </span></td>
+              <td>
+
+                <div class="input-group">
+                  <input id="IV1" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary " type="button" id="go7">Go!</button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row">IV-2</th>
+              <td><span id="input-IV2"> </span></td>
+              <td>  <div class="input-group">
+                  <input id="IV2" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="go8">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+            <tr>
+              <th scope="row">V-1</th>
+              <td><span id="input-V1"> </span></td>
+              <td>
+
+                <div class="input-group">
+                  <input id="V1" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary go" type="button" id="go9">Go!</button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">V-2</th>
+              <td><span id="input-V2"> </span></td>
+              <td>  <div class="input-group">
+                  <input id="V2" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="go10">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+
+            <tr>
+              <th scope="row">VI-1</th>
+              <td><span id="input-VI1"> </span></td>
+              <td>
+
+                <div class="input-group">
+                  <input id="VI1" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary go" type="button" id="go11">Go!</button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">VI-2</th>
+              <td><span id="input-VI2"> </span></td>
+              <td>  <div class="input-group">
+                  <input id="VI2" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="go12">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+            <tr>
+              <th scope="row">VII-1</th>
+              <td><span id="input-VII1"> </span></td>
+              <td>
+
+                <div class="input-group">
+                  <input id="VII1" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary go" type="button" id="go13">Go!</button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">VII-2</th>
+              <td><span id="input-VII2"> </span></td>
+              <td>  <div class="input-group">
+                  <input id="VII2" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="go14">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+            <tr>
+              <th scope="row">VIII-1</th>
+              <td><span id="input-VIII1"> </span></td>
+              <td>
+
+                <div class="input-group">
+                  <input id="VIII1" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary go" type="button" id="go15">Go!</button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">VIII-2</th>
+              <td><span id="input-VIII2"> </span></td>
+              <td>  <div class="input-group">
+                  <input id="VIII2" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="go16">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+            <tr>
+              <th scope="row">IX-1</th>
+              <td><span id="input-IX1"> </span></td>
+              <td>
+
+                <div class="input-group">
+                  <input id="IX1" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary go" type="button" id="go17">Go!</button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">IX-2</th>
+              <td><span id="input-IX2"> </span></td>
+              <td>  <div class="input-group">
+                  <input id="IX2" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="go18">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+            <tr>
+              <th scope="row">X-1</th>
+              <td><span id="input-X1"> </span></td>
+              <td>
+
+                <div class="input-group">
+                  <input id="X1" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary go" type="button" id="go19">Go!</button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row">X-2</th>
+              <td><span id="input-X2"> </span></td>
+              <td>  <div class="input-group">
+                  <input id="X2" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="go20">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+
+
+            <tr>
+              <th scope="row">X-3</th>
+              <td><span id="input-X3"> </span></td>
+              <td>
+
+                <div class="input-group">
+                  <input id="X3" type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary go" type="button" id="go21">Go!</button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+
+
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+  </div>
+
+
+  <script src="src/game.js">
+  </script>
+  <script src="src/js/jquery-3.2.1.min.js">
+  </script>
+  <script src="src/interface.js">
+  </script>
+  <!-- <script src="src/js/bootstrap.js">
+  </script> -->
+</body>
+
+</html>

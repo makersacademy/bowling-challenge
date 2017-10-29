@@ -4,7 +4,11 @@ function Game() {
 };
 
 Game.prototype.getScore = function () {
-  return this._score;
+  this.addBonus()
+  for (var frameIndex = 0; frameIndex < this._frames.length; frameIndex++) {
+    this._score += this._frames[frameIndex].getScore()
+  }
+  return this._score
 }
 
 Game.prototype.bowl = function (pins) {
@@ -18,21 +22,13 @@ Game.prototype.bowl = function (pins) {
 
 Game.prototype._firstBowl = function (pins) {
   this._frame = new Frame
+  this._currentFrame = this._frame
   this._frame.firstRoll(pins)
-  this._score += pins
-  if (this._frame.isFinished()) {
-    this._nextFrame()
-  }
+  this._frames.push(this._frame)
 }
 
 Game.prototype._secondBowl = function (pins) {
   this._frame.secondRoll(pins)
-  this._score += pins
-  this._nextFrame()
-}
-
-Game.prototype._nextFrame = function () {
-  this._frames.push(this._frame._pinsKnockedDown)
 }
 
 Game.prototype._newFrameNeeded = function () {
@@ -45,6 +41,20 @@ Game.prototype._newFrameNeeded = function () {
   }
 }
 
+Game.prototype.addBonus = function () {
+  for (var frameIndex = 0; frameIndex < this._frames.length; frameIndex++) {
+    if (this._frames[frameIndex].isAStrike()) {
+      console.log('strike')
+    }
+    if (this._frames[frameIndex].isASpare()) {
+      console.log('spare')
+      this._frames[frameIndex].frameBonus(this._frames[frameIndex+1].firstRollScore())
+    } else {
+      console.log('no bonus')
+    }
+  }
+}
+
 Game.prototype.isGameOver = function () {
-  return this._frames.length === 10
+  return this._frames.length === 10 && this._currentFrame.isFinished()
 }

@@ -6,10 +6,12 @@ var Frame = function () {
   this.roll = new Roll()
   this._frameFinished = false
   this._frameScore = 0
+  this._bonus = 0
 }
 
 Frame.prototype.getScore = function () {
-  return this._frameScore = this.calculateScore()
+  console.log(this._bonus)
+  return this._frameScore = this.calculateScore() + this._bonus
 }
 
 Frame.prototype.firstRoll = function (pins) {
@@ -32,10 +34,25 @@ Frame.prototype.calculateScore = function () {
   }, 0)
 }
 
+Frame.prototype.firstRollScore = function () {
+  return this._pinsKnockedDown[0]
+}
+
 Frame.prototype.isFinished = function () {
   return this._frameFinished
 }
 
 Frame.prototype.isAStrike = function () {
   return this._pinsKnockedDown[0] === 10
+}
+
+Frame.prototype.isASpare = function () {
+  return (this._pinsKnockedDown[0] !== 10 && this._pinsKnockedDown[0] + this._pinsKnockedDown[1] === 10)
+}
+
+Frame.prototype.frameBonus = function (bonus) {
+  if (bonus) {
+    return this._bonus = bonus
+  }
+  return this._bonus
 }

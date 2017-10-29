@@ -6,7 +6,7 @@ describe('Game', function () {
   });
 
   it('starts with a score of zero', function() {
-    expect(game.getScore()).toEqual(0)
+    expect(game._score).toEqual(0)
   })
 
   it('returns the score of the current game', function () {
@@ -34,6 +34,20 @@ describe('Game', function () {
     scoringGame();
     expect(function () { game.bowl(1) } ).toThrow(new Error('You\'re out of you\'re element Donny, no bowls left!'))
   })
+
+  it('adds the next roll to a spare frame', function () {
+    scoringGameWithSpare()
+    game.addBonus()
+    expect(game.getScore()).toEqual(29)
+  })
+
+  var scoringGameWithSpare = function () {
+    game.bowl(2);
+    game.bowl(8);
+    for (var i = 0; i < 18; i++) {
+      game.bowl(1)
+    }
+  }
 
   var scoringGame = function () {
     for (var i = 0; i < 20; i++) {

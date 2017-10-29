@@ -17,7 +17,7 @@ body {
 
 #all-frames {
   width: 100vw;
-  height: 10vw;
+  /* height: 10vw; */
   margin: 0 auto;
   text-align: center;
   list-style: none;
@@ -76,7 +76,7 @@ body {
   border: none;
 }
 
-#all-frames span {
+#all-frames div span {
   display: block;
   margin: 0;
   padding: 0;
@@ -117,7 +117,21 @@ body {
 body > p {
   text-align: center;
   color: white;
+  position: relative;
 }
+
+.score {
+  text-align: right;
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+/* .score #current-score {
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%)
+} */
 
 #pin-selection {
   text-align: center;
@@ -132,10 +146,13 @@ body > p {
   height: 5vw;
   min-height: 50px;  
   border-radius: 50%;
-  margin: .5vw;
+  margin: .8vw;
   border: none;
   outline: none;
-  background-image: radial-gradient(circle at 1vw 1vw, green, blue)
+  background-color: transparent;
+  box-shadow: 0 0 1vw white;
+  font-size: 2vw;
+  color: rgb(235, 213, 108);
 }
 
 .pins:hover {

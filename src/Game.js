@@ -165,9 +165,8 @@ Game.prototype.lastFrame = function () {
     return
   }
   if (this._isThirdBall()) {
-  console.log(this._isRollOneStrike())
-    this.currentRoll = 3
     if (this._isASpare()) this.scorecard[this.currentFrame]['remainingPins'] = 10
+    this.currentRoll = 3
     return
   }
   this.finalScore = this.currentScore

@@ -1,3 +1,5 @@
+Family obligations took up my weekend.  I opted to concentrate on learning about CSS/HTML/JS/jQuery via the weekly challenge (thermostat).
+
 
 Bowling Challenge
 =================

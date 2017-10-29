@@ -14,6 +14,10 @@ $(document).ready(function() {
     game.roll(parseInt($("#I1").val()));
     var newValue = game._runningScore;
     $("#input-I1").text(newValue);
+    if (parseInt($("#I1").val()) ==10) {
+          $('#go2').hide();
+          alert("congrats!")
+    }
   });
 
   $("#go2").click(function() {
@@ -27,6 +31,10 @@ $(document).ready(function() {
     game.roll(parseInt($("#II1").val()));
     var newValue3 = game._runningScore;
     $("#input-II1").text(newValue3);
+    if (parseInt($("#I1").val()) ==10) {
+          $('#go4').hide();
+          alert("congrats!")
+    }
   });
 
   $("#go4").click(function() {
@@ -40,6 +48,10 @@ $(document).ready(function() {
     game.roll(parseInt($("#III1").val()));
     var newValue5 = game._runningScore;
     $("#input-III1").text(newValue5);
+    if (parseInt($("#I1").val()) ==10) {
+          $('#go6').hide();
+          alert("congrats!")
+    }
   });
 
   $("#go6").click(function() {
@@ -52,6 +64,10 @@ $(document).ready(function() {
     game.roll(parseInt($("#IV1").val()));
     var newValue7 = game._runningScore;
     $("#input-IV1").text(newValue7);
+    if (parseInt($("#I1").val()) ==10) {
+          $('#go8').hide();
+          alert("congrats!")
+    }
   });
 
   $("#go8").click(function() {
@@ -64,6 +80,10 @@ $(document).ready(function() {
     game.roll(parseInt($("#V1").val()));
     var newValue9 = game._runningScore;
     $("#input-V1").text(newValue9);
+    if (parseInt($("#I1").val()) ==10) {
+          $('#go10').hide();
+          alert("congrats!")
+    }
   });
 
   $("#go10").click(function() {
@@ -78,6 +98,10 @@ $(document).ready(function() {
     game.roll(parseInt($("#VI1").val()));
     var newValue11 = game._runningScore;
     $("#input-VI1").text(newValue11);
+    if (parseInt($("#I1").val()) ==10) {
+          $('#go12').hide();
+          alert("congrats!")
+    }
   });
 
   $("#go12").click(function() {
@@ -91,6 +115,10 @@ $(document).ready(function() {
     game.roll(parseInt($("#VII1").val()));
     var newValue13 = game._runningScore;
     $("#input-VII1").text(newValue13);
+    if (parseInt($("#I1").val()) ==10) {
+          $('#go14').hide();
+          alert("congrats!")
+    }
   });
 
   $("#go14").click(function() {
@@ -104,6 +132,10 @@ $(document).ready(function() {
     game.roll(parseInt($("#VIII1").val()));
     var newValue15 = game._runningScore;
     $("#input-VIII1").text(newValue15);
+    if (parseInt($("#I1").val()) ==10) {
+          $('#go16').hide();
+          alert("congrats!")
+    }
   });
 
   $("#go16").click(function() {
@@ -116,6 +148,10 @@ $(document).ready(function() {
     game.roll(parseInt($("#IX1").val()));
     var newValue17 = game._runningScore;
     $("#input-IX1").text(newValue17);
+    if (parseInt($("#I1").val()) ==10) {
+          $('#go18').hide();
+          alert("congrats!")
+    }
   });
 
   $("#go18").click(function() {
@@ -137,15 +173,11 @@ $(document).ready(function() {
     $("#input-X2").text(newValue20);
   });
 
-  $("#go20").click(function() {
-    game.roll(parseInt($("#X2").val()));
-    var newValue20 = game._runningScore;
-    $("#input-X2").text(newValue20);
-  });
+
 
   $("#go21").click(function() {
     game.roll(parseInt($("#X3").val()));
-    var newValue20 = game._runningScore;
+    var newValue20 = game.getScore();
     $("#input-X3").text(newValue20);
     alert(newValue20 + " is your final Score!!");
   });

@@ -20,14 +20,16 @@ This app is not currently hosted anywhere. To use it, you will need to clone thi
 
 ### Using the Scorecard
 
-```$ git clone git@github.com:jonsanders101/bowling-challenge.git
+```
+$ git clone git@github.com:jonsanders101/bowling-challenge.git
 $ cd bowling-challenge
 $ open index.html
 ```
 
 ### Running the Test Suite
 
-```$ git clone git@github.com:jonsanders101/bowling-challenge.git
+```
+$ git clone git@github.com:jonsanders101/bowling-challenge.git
 $ cd bowling-challenge
 $ open SpecRunner.html
 ```

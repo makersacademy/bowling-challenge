@@ -1,13 +1,10 @@
 describe('frame', function() {
 
   var testFrame;
-  var nextFrameFirstScore;
-  var nextFrameSecondScore;
 
   beforeEach(function() {
-    nextFrameFirstScore = 5;
-    nextFrameSecondScore = 3;
-    testFrame = new frame(nextFrameFirstScore, nextFrameSecondScore);
+
+    testFrame = new frame();
   });
 
   describe('Roll Score', function() {
@@ -21,25 +18,36 @@ describe('frame', function() {
       // it seems a bit funny that you give the secondRollScore
       // an argument in this case. Maybe try rearrange that
     });
+    it('allows for a possible third roll score', function() {
+      expect(testFrame.thirdRollScore(5)).toEqual(5);
+    });
+    it('allows for a possible fourth roll score', function() {
+      expect(testFrame.fourthRollScore(5)).toEqual(5);
+    });
   });
-  // describe('Total Score', function() {
-  //   it('has a total score equal to the sum of the roll scores by default', function() {
-  //     testFrame.firstRollScore(5);
-  //     testFrame.secondRollScore(3);
-  //     expect(testFrame.totalScore()).toEqual(8);
-  //   });
-  // });
+  describe('Pre Bonus Score', function() {
+    it('has a pre bonus score of 8', function() {
+      testFrame.firstRollScore(5);
+      testFrame.secondRollScore(3);
+      expect(testFrame.preBonusScore()).toEqual(8);
+    });
+    it('has a pre bonus score of 10', function() {
+      testFrame.firstRollScore(10);
+      testFrame.secondRollScore(3);
+      expect(testFrame.preBonusScore()).toEqual(10);
+    });
+  });
   describe('Strike', function() {
     it('is a strike if the first roll score is 10', function() {
       testFrame.firstRollScore(10);
-      expect(testFrame.isRollAStrike()).toEqual(true);
+      expect(testFrame.isAStrike()).toEqual(true);
     });
   });
   describe('Spare', function() {
     it('is a spare if the first roll is not a strike and the scores sum to 10', function() {
       testFrame.firstRollScore(5);
       testFrame.secondRollScore(5);
-      expect(testFrame.isRollASpare()).toEqual(true);
+      expect(testFrame.isASpare()).toEqual(true);
     });
   });
   // describe('Bonus strike points', function() {

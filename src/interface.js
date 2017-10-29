@@ -2,9 +2,15 @@ $(document).ready(function(){
 
 var game = new Game();
 
-$("#update-form-button").click(function(){
-      $("#name-player-form").text("Hello world!");
-  });
+// var playerName = $('input').val();
+//
+// console.log(playerName);
+//
+// $("#update-form-button").click(function(){
+//
+//       $("#name-player-form").text("playerName");
+//
+//   });
 
 
 });

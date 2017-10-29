@@ -16,7 +16,6 @@
 
     body {
 
-      background: url(images/bowling.png) top center no-repeat;
       background: radial-gradient(circle, #bac7d8, white);
     }
 
@@ -32,49 +31,27 @@
       margin-left: 50px;
     }
 
-    /*update-form {
-      margin-top: 50px;
-      margin-left: 50px;
-      margin-right: 50px;
-    }*/
   </style>
 
   <h1 class="mx-auto">Bowling calculation sheet</h1>
 
   <div class="container">
 
-    <div class="update-form form-group row">
 
-
-
-      <div class="form-group col-12">
-        <label class="form-control-label sr-only" for="frames">Name</label>
-        <input type="text" name="playerName" placeholder="Player Name" value="something">
-      </div>
-
-      <!-- <div class="form-group col-12">
-        <label class="form-control-label sr-only" for="frames">Frames</label>
-        <input type="text" name="frame_number" placeholder="Frame Number">
-      </div>
-
-      <div class="form-group col-12">
-        <label class="form-control-label sr-only" for="frames">Pins Down</label>
-        <input type="text" name="pins_down" placeholder="Pins Down">
-      </div> -->
-
-
-
-    </div>
     <div class="row">
-      <div class="col-4">
-        <button type="submit" id="update-form-button" class="btn btn-primary">Update</button>
-
-      </div>
-      <div class="offset-4 col-4">
+      <div class="input-group col-6">
+          <input type="text" class="form-control">
+          <span class="input-group-btn">
+  <button class="btn btn-primary" type="button">Go!</button>
+          </span>
+        </div>
+      <div class=" col-4">
         <h2 id="name-player-form"> Name of the player</h2>
       </div>
 
     </div>
+
+
 
 
     <div class="col-12">
@@ -83,16 +60,16 @@
         <table class="table table-bordered table-hover ">
           <thead>
             <tr>
-              <th scope="col">Frame</th>
               <th scope="col">Roll</th>
-              <th scope="col">Knowked down pins</th>
-              <th scope="col">Total Score</th>
+              <th scope="col">Score</th>
+              <th scope="col"> Running score</th>
+              <th scope="col">Pins knocked down</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
+              <th scope="row">I-1</th>
+              <td>Score roll</td>
               <td>input</td>
               <td>
 
@@ -107,8 +84,8 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">1</th>
-              <td>Jacob</td>
+              <th scope="row">I-2</th>
+              <td>Score roll</td>
               <td>input</td>
               <td>  <div class="input-group">
                   <input type="text" class="form-control">
@@ -118,8 +95,8 @@
                 </div></td>
             </tr>
             <tr>
-              <th scope="row">2</th>
-              <td>Larry</td>
+              <th scope="row">II-1</th>
+              <td>Score roll</td>
               <td>input</td>
               <td>  <div class="input-group">
                   <input type="text" class="form-control">
@@ -129,8 +106,8 @@
                 </div></td>
             </tr>
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
+              <th scope="row">II-2</th>
+              <td>Score roll</td>
               <td>input</td>
               <td>  <div class="input-group">
                   <input type="text" class="form-control">
@@ -140,8 +117,8 @@
                 </div></td>
             </tr>
             <tr>
-              <th scope="row">1</th>
-              <td>Jacob</td>
+              <th scope="row">III-1</th>
+              <td>Score roll</td>
               <td>input</td>
               <td>  <div class="input-group">
                   <input type="text" class="form-control">
@@ -151,8 +128,8 @@
                 </div></td>
             </tr>
             <tr>
-              <th scope="row">2</th>
-              <td>Larry</td>
+              <th scope="row">III-2</th>
+              <td>Score roll</td>
               <td>input</td>
               <td>  <div class="input-group">
                   <input type="text" class="form-control">
@@ -162,8 +139,8 @@
                 </div></td>
             </tr>
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
+              <th scope="row">IV-1</th>
+              <td>Score roll</td>
               <td>input</td>
               <td>  <div class="input-group">
                   <input type="text" class="form-control">
@@ -173,8 +150,8 @@
                 </div></td>
             </tr>
             <tr>
-              <th scope="row">1</th>
-              <td>Jacob</td>
+              <th scope="row">IV-2</th>
+              <td>Score roll</td>
               <td>input</td>
               <td>  <div class="input-group">
                   <input type="text" class="form-control">
@@ -184,8 +161,8 @@
                 </div></td>
             </tr>
             <tr>
-              <th scope="row">2</th>
-              <td>Larry</td>
+              <th scope="row">V-1</th>
+              <td>Score roll</td>
               <td>input</td>
               <td>  <div class="input-group">
                   <input type="text" class="form-control">
@@ -194,6 +171,117 @@
                   </span>
                 </div></td>
             </tr>
+            <tr>
+              <th scope="row">V-2</th>
+              <td>Score roll</td>
+              <td>input</td>
+              <td>  <div class="input-group">
+                  <input type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+            <tr>
+              <th scope="row">VI-1</th>
+              <td>Score roll</td>
+              <td>input</td>
+              <td>  <div class="input-group">
+                  <input type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+            <tr>
+              <th scope="row">VI-2</th>
+              <td>Score roll</td>
+              <td>input</td>
+              <td>  <div class="input-group">
+                  <input type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+            <tr>
+              <th scope="row">VII-1</th>
+              <td>Score roll</td>
+              <td>input</td>
+              <td>  <div class="input-group">
+                  <input type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+            <tr>
+              <th scope="row">VIII-2</th>
+              <td>Score roll</td>
+              <td>input</td>
+              <td>  <div class="input-group">
+                  <input type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+            <tr>
+              <th scope="row">IX-1</th>
+              <td>Score roll</td>
+              <td>input</td>
+              <td>  <div class="input-group">
+                  <input type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+            <tr>
+              <th scope="row">IX-2</th>
+              <td>Score roll</td>
+              <td>input</td>
+              <td>  <div class="input-group">
+                  <input type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+            <tr>
+              <th scope="row">X-1</th>
+              <td>Score roll</td>
+              <td>input</td>
+              <td>  <div class="input-group">
+                  <input type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+            <tr>
+              <th scope="row">X-2</th>
+              <td>Score roll</td>
+              <td>input</td>
+              <td>  <div class="input-group">
+                  <input type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+            <tr>
+              <th scope="row">X-3</th>
+              <td>Score roll</td>
+              <td>input</td>
+              <td>  <div class="input-group">
+                  <input type="text" class="form-control">
+                  <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Go!</button>
+                  </span>
+                </div></td>
+            </tr>
+
 
           </tbody>
         </table>
@@ -236,37 +324,19 @@
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
+            <td>Score roll</td>
             <td>input</td>
             <td>calculate running Score</td>
           </tr>
           <tr>
             <th scope="row">1</th>
-            <td>Jacob</td>
+            <td>Score roll</td>
             <td>input</td>
             <td>calculate running Score</td>
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>Larry</td>
-            <td>input</td>
-            <td>calculate running Score</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>input</td>
-            <td>calculate running Score</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Jacob</td>
-            <td>input</td>
-            <td>calculate running Score</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Larry</td>
+            <td>Score roll</td>
             <td>input</td>
             <td>calculate running Score</td>
           </tr>
@@ -278,13 +348,31 @@
           </tr>
           <tr>
             <th scope="row">1</th>
-            <td>Jacob</td>
+            <td>Score roll</td>
             <td>input</td>
             <td>calculate running Score</td>
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>Larry</td>
+            <td>Score roll</td>
+            <td>input</td>
+            <td>calculate running Score</td>
+          </tr>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>input</td>
+            <td>calculate running Score</td>
+          </tr>
+          <tr>
+            <th scope="row">1</th>
+            <td>Score roll</td>
+            <td>input</td>
+            <td>calculate running Score</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Score roll</td>
             <td>input</td>
             <td>calculate running Score</td>
           </tr>

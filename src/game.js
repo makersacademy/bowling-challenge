@@ -8,6 +8,7 @@ Game.prototype.getScore = function () {
 }
 
 Game.prototype.bowl = function (pins) {
+  if (this.isGameOver()) throw new Error('You\'re out of you\'re element Donny, no bowls left!')
   if (this._newFrameNeeded()) {
     this._firstBowl(pins)
   } else {
@@ -42,4 +43,8 @@ Game.prototype._newFrameNeeded = function () {
   } else {
     return false;
   }
+}
+
+Game.prototype.isGameOver = function () {
+  return this._frames.length === 10
 }

@@ -30,6 +30,11 @@ describe('Game', function () {
     expect(game.getScore()).toEqual(20)
   })
 
+  it('ends after 10 rounds', function () {
+    scoringGame();
+    expect(function () { game.bowl(1) } ).toThrow(new Error('You\'re out of you\'re element Donny, no bowls left!'))
+  })
+
   var scoringGame = function () {
     for (var i = 0; i < 20; i++) {
       game.bowl(1)

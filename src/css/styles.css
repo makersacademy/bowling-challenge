@@ -1,0 +1,69 @@
+html {
+  height: 100vh;
+  font-family: 'Montserrat Alternates', sans-serif;  
+}
+
+body {
+  width: 100%;
+  width: 100vw;
+  height: 90vh;
+  margin: 0 auto;
+}
+
+#all-frames {
+  width: 100vw;
+  min-width: 700px;
+  height: 10vw;
+  min-height: 70px; 
+  /* max-height: 500px; */
+  margin: 0 auto;
+  text-align: center;
+  list-style: none;
+  padding: 0;
+}
+
+.each-frame {
+  display: inline-block;
+  width: 10%;
+  height: 100%;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 3px 1.5px 3px 1.5px;
+  border-color: red;
+  margin: 0;
+}
+
+.each-frame:first-child {
+  border-left-width: 3px;
+}
+
+.each-frame:last-child {
+  border-right-width: 3px;
+}
+
+.frame-number, .frame-score {
+  float: left;
+  margin: 0;
+  width: 100%;
+  height: 20%;
+  /* line-height: 200%; */
+  box-sizing: border-box;
+  border: 3px solid black;
+}
+
+.frame-score {
+  height: 40%;
+  border: none;
+}
+
+.round-one, .round-two {
+  float: left;
+  width: 50%;
+  height: 40%;
+  margin: 0;  
+  box-sizing: border-box;
+}
+
+.round-two {
+  border: 3px solid black;
+}

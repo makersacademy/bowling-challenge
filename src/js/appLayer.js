@@ -9,12 +9,13 @@ updateRound();
 updateScoreCard()
 
 $('#pin-selection').on('click', ".pins", function () {
-  game.bowl(Number($(this).val()));
+  var pins = Number($(this).val());
+  game.bowl(pins);
   updateScore();
   updateSelection();
   updateFrame();
   updateRound();
-  updateScoreCard()
+  updateScoreCard(pins);
 });
 
 function updateFrame() {
@@ -41,14 +42,16 @@ function updateRound() {
   $('#current-round').text(game.currentRound());  
 };
 
-function updateScoreCard() {
+function updateScoreCard(pins) {
   $('#all-frames').empty();
   for (var i = 1; i <= 10; i++ ) {
     var frame = game._frames[i - 1];
     if (frame) {
-      $('#all-frames').append('<div class="each-frame"><p class="frame-number">' + i + '</p><p class="round-one">' + scoreCardLeft(frame) + '</p><p class="round-two">' + scoreCardRight(frame) + '</p><p class="frame-score"></p></div>');
+      $('#all-frames').append('<li class="each-frame"><p class="frame-number">' + i + '</p><p class="round-one">' + scoreCardLeft(frame) + '</p><p class="round-two">' + scoreCardRight(frame) + '</p><p class="frame-score">'+ frame.score() +'</p></li>');
+    } else if (i === game.currentFrame() && game.currentRound() === 2) {
+      $('#all-frames').append('<li class="each-frame"><p class="frame-number">' + i + '</p><p class="round-one">' + pins + '</p><p class="round-two"></p><p class="frame-score"></p></li>');
     } else {
-      $('#all-frames').append('<div class="each-frame"><p class="frame-number">' + i + '</p><p class="round-one"></p><p class="round-two"></p><p class="frame-score"></p></div>');
+      $('#all-frames').append('<li class="each-frame"><p class="frame-number">' + i + '</p><p class="round-one"></p><p class="round-two"></p><p class="frame-score"></p></li>');
     };  
   };
 };

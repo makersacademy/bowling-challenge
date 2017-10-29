@@ -18,10 +18,14 @@ Game.prototype.perfectGame = function(){
 };
 
 Game.prototype.playFrameRoll = function(a, b){
+  if (this.scores.length >= 10) {
+    throw new Error("Cannot exceed 10 frames");
+  } else {
   var frame = new Frame;
   frame.roll1(a)
   frame.roll2(b)
   this.scores.push(frame.score)
+  }
 };
 
 Game.prototype.playFrameStrike = function(){

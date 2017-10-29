@@ -23,17 +23,17 @@ describe('Frame', function () {
   })
 
   it('has a frame score of zero before the first roll', function () {
-    expect(frame.returnScore()).toBe(0)
+    expect(frame.getScore()).toBe(0)
   })
 
   it('can return the frame score after the first roll', function () {
     frame.firstRoll(4);
-    expect(frame.returnScore()).toBe(4)
+    expect(frame.getScore()).toBe(4)
   })
 
   it('can return the total frame score before bonuses applied', function () {
     twoRolls();
-    expect(frame.returnScore()).toBe(9)
+    expect(frame.getScore()).toBe(9)
   })
 
   it('ends the frame if both rolls have been taken', function () {

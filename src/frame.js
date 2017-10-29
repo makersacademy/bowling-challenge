@@ -5,6 +5,11 @@ var Frame = function () {
   this._pinsKnockedDown = [0, 0]
   this.roll = new Roll()
   this._frameFinished = false
+  this._frameScore = 0
+}
+
+Frame.prototype.getScore = function () {
+  return this._frameScore = this.calculateScore()
 }
 
 Frame.prototype.firstRoll = function (pins) {
@@ -21,7 +26,7 @@ Frame.prototype.secondRoll = function (pins) {
   this._frameFinished = true
 }
 
-Frame.prototype.returnScore = function () {
+Frame.prototype.calculateScore = function () {
   return this._pinsKnockedDown.reduce(function (a, b) {
     return a + b;
   }, 0)

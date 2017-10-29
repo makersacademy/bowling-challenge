@@ -14,7 +14,17 @@ describe("Game", function () {
 
   describe("play", function () {
 
-    it("updates current score", function () {
+    it("updates current score when an argument for number of hit pins is given", function () {
+      game.play(3)
+      expect(game.currentScore).toEqual(3)
+    })
+
+    it("returns string when number of pins passed exceeds reminaining pins", function () {
+      game.play(7)
+      expect(game.play(4)).toEqual('Too many pins')
+    })
+
+    it("updates current score when a random number of pins are hit", function () {
       spyOn(game,'bowl').and.returnValues(7, 2, 10, 4, 2)
       for (var i = 0; i < 5; i++) {
         game.play()
@@ -88,11 +98,11 @@ describe("Game", function () {
         expect(game.scorecard[10]['remainingPins']).toEqual(10)
       })
       it("if player rolls a strike on the first roll but not on the second, player can roll the bonus", function () {
-        spyOn(game,'bowl').and.returnValues(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 8, 3)
+        spyOn(game,'bowl').and.returnValues(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 8, 1)
         for (var i = 0; i < 21; i++) {
           game.play()
         }
-        expect(game.scorecard[10][3]['hitPins']).toEqual(3)
+        expect(game.scorecard[10][3]['hitPins']).toEqual(1)
       })
       it("if player rolls a strike on the first and second rolls, player can roll the bonus", function () {
         spyOn(game,'bowl').and.returnValues(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 10, 3)

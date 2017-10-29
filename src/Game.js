@@ -68,9 +68,10 @@ var Game = function () {
   }
 }
 
-Game.prototype.play = function () {
+Game.prototype.play = function (hitPins) {
   if (this.finalScore) return "Game over"
-  var hitPins = this.bowl()
+  if (hitPins === undefined) var hitPins = this.bowl()
+  if (hitPins > this.scorecard[this.currentFrame]['remainingPins']) return "Too many pins"
   this._updateScorecard(hitPins)
   this._updateCurrentScore()
   if (this.currentFrame === 10) {

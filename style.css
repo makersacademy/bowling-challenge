@@ -17,5 +17,21 @@ h1 {
 table, th, td {
   border: 1px solid blue;
   padding: 10px;
-  margin: 10px;
+  margin: 0 auto;
+}
+
+.pin-buttons {
+  padding: 10px;
+}
+
+.pin-row {
+  padding: 5px;
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+div[class*="-pin"] {
+  margin: 0 auto;
+  width: 300px;
 }

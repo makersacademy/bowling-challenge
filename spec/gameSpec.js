@@ -5,11 +5,11 @@ describe("game", function() {
     game = new Game();
   });
 
-  it("shows us the score of the game", function() {
+  it("shows us the score of the game", function(){
     expect(game.viewScore()).toEqual(0);
   });
 
-  it("shows us the score of a gutter game", function() {
+  it("shows us the score of a gutter game", function(){
     game.gutterGame()
     expect(game.viewScore()).toEqual(0);
   });
@@ -24,24 +24,12 @@ describe("game", function() {
       expect(game.viewScore()).toEqual(8);
   });
 
-  it("if 10 frames have already been played", function() {
+  it("error is user tries to roll more than ten frames", function(){
     expect(function() {
-      // for (i = 0; i === 10; i++){
-      //   game.playFrameRoll(3,5);
-      //   console.log(game.scores)
-      // };
+      for (i = 0; i < 10; i++){
       game.playFrameRoll(3,5);
+    };
       game.playFrameRoll(3,5);
-      game.playFrameRoll(3,5);
-      game.playFrameRoll(3,5);
-      game.playFrameRoll(3,5);
-      game.playFrameRoll(3,5);
-      game.playFrameRoll(3,5);
-      game.playFrameRoll(3,5);
-      game.playFrameRoll(3,5);
-      game.playFrameRoll(3,5);
-      game.playFrameRoll(3,5);
-      console.log(game.scores)
     }).toThrowError("Cannot exceed 10 frames");
   });
 
@@ -49,5 +37,14 @@ describe("game", function() {
   it("strikes a frame and adds the frame score to the game score ", function(){
     game.playFrameStrike()
       expect(game.viewScore()).toEqual(10);
+  });
+
+  it("error is user tries to strike more than ten frames", function(){
+    expect(function() {
+      for (i = 0; i < 10; i++){
+      game.playFrameStrike();
+    };
+      game.playFrameStrike();
+    }).toThrowError("Cannot exceed 10 frames");
   });
 });

@@ -29,7 +29,11 @@ Game.prototype.playFrameRoll = function(a, b){
 };
 
 Game.prototype.playFrameStrike = function(){
+  if (this.scores.length >= 10) {
+    throw new Error("Cannot exceed 10 frames");
+  } else {
   var frame = new Frame;
   frame.strike()
   this.scores.push(frame.score)
+  }
 };

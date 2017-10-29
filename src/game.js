@@ -19,11 +19,18 @@ Game.prototype._firstBowl = function (pins) {
   this._frame = new Frame
   this._frame.firstRoll(pins)
   this._score += pins
+  if (this._frame.isComplete) {
+    this._nextFrame()
+  }
 }
 
 Game.prototype._secondBowl = function (pins) {
   this._frame.secondRoll(pins)
   this._frame = null
   this._score += pins
+  this._nextFrame()
+}
+
+Game.prototype._nextFrame = function () {
   this._frames.push(this._frame)
 }

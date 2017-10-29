@@ -25,6 +25,17 @@ describe('Game', function () {
     expect(game.getScore()).toEqual(0)
   })
 
+  it('can score a scoring game', function() {
+    scoringGame();
+    expect(game.getScore()).toEqual(20)
+  })
+
+  var scoringGame = function () {
+    for (var i = 0; i < 20; i++) {
+      game.bowl(1)
+    }
+  }
+
   var gutterGame = function () {
     for (var i = 0; i < 20; i++) {
       game.bowl(0)

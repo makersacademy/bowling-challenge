@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bowling</title>
+  <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+  <script src="src/game.js"></script>
+  <script src="src/frame.js"></script>
+  <script src="src/interface.js"></script>
+</head>
+
+  <body>
+    <section>
+      <div>
+        <h1 id="view_score">Your current score is: <span id="current_score"></span></h1>
+      </div>
+
+      <div>
+        <h2>Play a GUTTER GAME: <button id="gutter_game" value="GO">GO</button></h2>
+      </div>
+
+      <div>
+        <h2>Roll a frame (select the number of pins you want to knock down with each roll):</h2>
+        <form id="play_frame_roll" action="bowling.html">
+          <input id="play_frame_input_1" type="text" name="play_frame_1">
+          <!-- <input type="submit" value="Play"> -->
+          <input id="play_frame_input_2" type="text" name="play_frame_2">
+          <input type="submit" value="Play">
+        </form>
+      </div>
+
+      <div>
+        <h2>Roll a strike: <button id="roll_strike" value="GO">GO</button></h2>
+      </div>
+
+      <div>
+        <h2>Play a PERFECT GAME: <button id="perfect_game" value="GO">GO</button></h2>
+      </div>
+    </section>
+  </body>
+
+</html>

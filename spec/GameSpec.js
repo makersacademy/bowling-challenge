@@ -26,6 +26,14 @@ describe("Game", function() {
     expect(game.score()).toEqual(300);
   });
 
+  it("should be able to roll a spare", function() {
+    game.roll(8);
+    game.roll(2);
+    rollMany(1, 18);
+    expect(game.score()).toEqual(29);
+  });
+
+
   function rollMany(rollScore, numberOfRolls) {
     for(var i = 0; i < numberOfRolls; i++){
       game.roll(rollScore);

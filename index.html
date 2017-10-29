@@ -19,25 +19,41 @@
       margin-top: 50px;
     }
 
+    #namePlayerForm {
+      margin-top: 50px;
+      float: right;
+      text-transform: uppercase;
+      color: blue;
+    }
+
+
+
   </style>
 
-  <h1 class="mx-auto">Bowling calculation sheet</h1>
+<h1 class="col-12">Bowling calculation sheet</h1>
+<div class="row">
+
+  <div class="displayName col-8 ">
+    <h1 id="namePlayerForm"></h1>
+  </div>
+
+
+
+</div>
+
 
   <div class="container">
 
 
-    <div class="row">
+    <div class="row formPlayerInput">
       <div class="input-group col-6">
-          <input type="text" class="form-control">
+          <input type="text" class="form-control nameSubmitted" placeholder="Player Name">
           <span class="input-group-btn">
-  <button class="btn btn-primary" type="button">Go!</button>
+  <button class="btn btn-primary submitName" type="button">Submit</button>
           </span>
         </div>
-      <div class=" col-4">
-        <h2 id="name-player-form"> Name of the player</h2>
-      </div>
-
     </div>
+
 
     <div class="col-12">
 
@@ -46,7 +62,6 @@
           <thead>
             <tr>
               <th scope="col">Roll</th>
-              <th scope="col">Score</th>
               <th scope="col"> Running score</th>
               <th scope="col">Pins knocked down</th>
             </tr>
@@ -54,7 +69,6 @@
           <tbody>
             <tr>
               <th scope="row">I-1</th>
-              <td>Score roll</td>
               <td><span id="input-I1"> </span></td>
               <td>
 
@@ -69,7 +83,6 @@
 
             <tr>
               <th scope="row">I-2</th>
-              <td>Score roll</td>
               <td><span id="input-I2"> </span></td>
               <td>  <div class="input-group">
                   <input id="I2" type="text" class="form-control">
@@ -84,7 +97,6 @@
 
             <tr>
               <th scope="row">II-1</th>
-              <td>Score roll</td>
               <td><span id="input-II1"> </span></td>
               <td>
 
@@ -100,7 +112,6 @@
 
             <tr>
               <th scope="row">II-2</th>
-              <td>Score roll</td>
               <td><span id="input-II2"> </span></td>
               <td>  <div class="input-group">
                   <input id="II2" type="text" class="form-control">
@@ -114,7 +125,6 @@
 
             <tr>
               <th scope="row">III-1</th>
-              <td>Score roll</td>
               <td><span id="input-III1"> </span></td>
               <td>
 
@@ -128,7 +138,6 @@
             </tr>
             <tr>
               <th scope="row">III-2</th>
-              <td>Score roll</td>
               <td><span id="input-III2"> </span></td>
               <td>  <div class="input-group">
                   <input id="III2" type="text" class="form-control">
@@ -140,7 +149,6 @@
 
             <tr>
               <th scope="row">IV-1</th>
-              <td>Score roll</td>
               <td><span id="input-IV1"> </span></td>
               <td>
 
@@ -155,7 +163,6 @@
 
             <tr>
               <th scope="row">IV-2</th>
-              <td>Score roll</td>
               <td><span id="input-IV2"> </span></td>
               <td>  <div class="input-group">
                   <input id="IV2" type="text" class="form-control">
@@ -166,7 +173,6 @@
             </tr>
             <tr>
               <th scope="row">V-1</th>
-              <td>Score roll</td>
               <td><span id="input-V1"> </span></td>
               <td>
 
@@ -180,7 +186,6 @@
             </tr>
             <tr>
               <th scope="row">V-2</th>
-              <td>Score roll</td>
               <td><span id="input-V2"> </span></td>
               <td>  <div class="input-group">
                   <input id="V2" type="text" class="form-control">
@@ -192,7 +197,6 @@
 
             <tr>
               <th scope="row">VI-1</th>
-              <td>Score roll</td>
               <td><span id="input-VI1"> </span></td>
               <td>
 
@@ -206,7 +210,6 @@
             </tr>
             <tr>
               <th scope="row">VI-2</th>
-              <td>Score roll</td>
               <td><span id="input-VI2"> </span></td>
               <td>  <div class="input-group">
                   <input id="VI2" type="text" class="form-control">
@@ -217,7 +220,6 @@
             </tr>
             <tr>
               <th scope="row">VII-1</th>
-              <td>Score roll</td>
               <td><span id="input-VII1"> </span></td>
               <td>
 
@@ -231,7 +233,6 @@
             </tr>
             <tr>
               <th scope="row">VII-2</th>
-              <td>Score roll</td>
               <td><span id="input-VII2"> </span></td>
               <td>  <div class="input-group">
                   <input id="VII2" type="text" class="form-control">
@@ -242,7 +243,6 @@
             </tr>
             <tr>
               <th scope="row">VIII-1</th>
-              <td>Score roll</td>
               <td><span id="input-VIII1"> </span></td>
               <td>
 
@@ -256,7 +256,6 @@
             </tr>
             <tr>
               <th scope="row">VIII-2</th>
-              <td>Score roll</td>
               <td><span id="input-VIII2"> </span></td>
               <td>  <div class="input-group">
                   <input id="VIII2" type="text" class="form-control">
@@ -267,7 +266,6 @@
             </tr>
             <tr>
               <th scope="row">IX-1</th>
-              <td>Score roll</td>
               <td><span id="input-IX1"> </span></td>
               <td>
 
@@ -281,7 +279,6 @@
             </tr>
             <tr>
               <th scope="row">IX-2</th>
-              <td>Score roll</td>
               <td><span id="input-IX2"> </span></td>
               <td>  <div class="input-group">
                   <input id="IX2" type="text" class="form-control">
@@ -292,7 +289,6 @@
             </tr>
             <tr>
               <th scope="row">X-1</th>
-              <td>Score roll</td>
               <td><span id="input-X1"> </span></td>
               <td>
 
@@ -307,7 +303,6 @@
 
             <tr>
               <th scope="row">X-2</th>
-              <td>Score roll</td>
               <td><span id="input-X2"> </span></td>
               <td>  <div class="input-group">
                   <input id="X2" type="text" class="form-control">
@@ -320,7 +315,6 @@
 
             <tr>
               <th scope="row">X-3</th>
-              <td>Score roll</td>
               <td><span id="input-X3"> </span></td>
               <td>
 

@@ -3,9 +3,15 @@ $(document).ready(function(){
 var game = new Game();
 
 
+$('.submitName').click(function(){
+  var namePlayer = $('.nameSubmitted').val();
+  $('#namePlayerForm').text(namePlayer + " is in the game!")
+  if (namePlayer.length > 0 ) $(".formPlayerInput").hide();
+});
+
+
  $('#go1').click(function(){
    game.roll(parseInt($('#I1').val()));
-   console.log(game._runningScore)
    var newValue = game._runningScore;
    $('#input-I1').text(newValue);
  });
@@ -141,6 +147,7 @@ var game = new Game();
      game.roll(parseInt($('#X3').val()));
      var newValue20 = game._runningScore;
      $('#input-X3').text(newValue20);
+     alert(newValue20 + " is your final Score!!")
    });
 
 

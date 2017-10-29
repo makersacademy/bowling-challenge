@@ -12,6 +12,14 @@ var frame = new Frame;
     expect(frame._rollTurn).toBe(1)
   })
 
+  it('records the number of pins knocked down in the first roll', function () {
+    frame.firstRoll(3);
+    expect(frame._pinsKnockedDown[0]).toBe(3)
+  })
 
+  it('records the number of pins knocked down in the second roll', function () {
+    frame.secondRoll(6);
+    expect(frame._pinsKnockedDown[1]).toBe(6)
+  })
 })
 

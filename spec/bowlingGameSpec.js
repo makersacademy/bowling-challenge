@@ -98,10 +98,12 @@ describe("BowlingGame", function() {
       expect(game._totalScore).toEqual(17)
       expect(game._frameScore).toEqual(0)
     });
-    // it("if two rolls add to 10 it is a spare", function() {
-    //   game.firstRoll(5)
-    //   game.secondRoll(5)
-    //   expect(game.isSpare()).toBe(true)
+    // it("gives you a bonus for a strike", function() {
+    //   game.firstRoll(10)
+    //   game.firstRoll(6)
+    //   game.secondRoll(3)
+    //   expect(game.calculateBonus()).toEqual(9)
+    //   expect(game._totalScore).toEqual(28)
     // })
   });
 });

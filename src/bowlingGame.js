@@ -52,10 +52,8 @@ BowlingGame.prototype.isOver = function() {
     return true
 };
 
-// BowlingGame.prototype.isStrike = function() {
-//   return this.rolls[rollIndex] === 10
-// };
-//
-// BowlingGame.prototype.isSpare = function() {
-//   return this.rolls[rollIndex] + this.rolls[rollIndex+1] === 10
-// };
+// BowlingGame.prototype.calculateBonus = function() {
+//   if this.firstRoll(10) {
+//     this._totalScore =
+//   }
+// }

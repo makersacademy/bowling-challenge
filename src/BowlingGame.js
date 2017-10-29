@@ -7,7 +7,6 @@ function BowlingGame() {
   this._strike = false;
   this._spare = false;
   this._turnExtension = 0;
-  this.totalScore = 0;
 }
 
 BowlingGame.prototype.getFrameScore = function(round){
@@ -48,13 +47,10 @@ BowlingGame.prototype.isOver = function(){
   if (this.isFinalRound() && (this._spare) && this._turnExtension < 1) {
     this._turnExtension ++;
     this._rollsCounter -=1;
-    return false;
+    
   } else if ((this._rollsCounter  == this._totalRolls - 1) && this._strike && this._turnExtension < 1) {
     this._turnExtension ++;
     this._rollsCounter -= 2;
-    
-    console.log ("turnexte", this._turnExtension);
-    console.log ("rollscounter", this._rollsCounter);
   } 
   if (this.isFinalRound() && !(this._strike || this._spare)) return true;
   return false;
@@ -62,7 +58,7 @@ BowlingGame.prototype.isOver = function(){
 
 BowlingGame.prototype._gameOver = function(){
   console.log(this.calculateScore());
-  this.updateFrameScore();
+  // this.updateFrameScore();
   throw Error("game over");
 }
 
@@ -71,9 +67,7 @@ BowlingGame.prototype.isFinalRound = function(){
 }
 
 BowlingGame.prototype.updateFrameScore = function(){
-  // this needs to be more efficient check it out later
-  // Math.floor(this._rollsCounter) / 2
-  for(let i = 0; i < 10; i++){
+  for(let i = 0; i < Math.floor(this._rollsCounter) / 2 ; i++){
     this._frameScore[i] = this._bonus[0][i] + this._bonus[1][i] + this._rolls[0][i] + this._rolls[1][i]
   }
 }
@@ -107,9 +101,10 @@ BowlingGame.prototype.addBonus = function (numberOfPins){
     
     if (!this._isFirstRoll()) this._strike = false;
   } else if (this._spare) {
-    this._bonus[this.currentRow()][this.currentColumn()-1] += numberOfPins;
-    this._spare = false;
+      this._bonus[this.currentRow()][this.currentColumn()-1] += numberOfPins;
+      this._spare = false;
   }
+  
 }
 
 BowlingGame.prototype.currentRow = function (){
@@ -127,12 +122,7 @@ BowlingGame.prototype.isDoubleStrike = function (){
 BowlingGame.prototype.calculateScore = function(){
   let sum = 0;
   for (let i = 0; i< 10; i++){
-    console.log("\n\n\n")
-    console.log(i)
-    console.log("this-framescore", this._frameScore[i]);
-    console.log("framescore", this._frameScore);
-    sum +=this._frameScore[i];
+    sum += this._frameScore[i];
   }
-  this.totalScore = sum;
-  return this.totalScore;
+  return sum;
 }

@@ -80,7 +80,7 @@ $(document).ready(function () {
   }
     
   $("button").click(function () {
-  
+    $("#error").text("");
     if (parseInt($(this).val()) === 10){
       $('#jff').html('<img class="jff" src="images/lebostrike.gif" />')
 
@@ -89,7 +89,12 @@ $(document).ready(function () {
     } else  {
       $('#jff').html('<img class="jff" src="images/lebospare.gif" />')
     }
-    game.throwBall(parseInt($(this).val()));
+    try{
+      game.throwBall(parseInt($(this).val()));
+    } catch(e) {
+      $("#error").text(e.message);
+    }
+    
     updatePage();
   });
 

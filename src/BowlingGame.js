@@ -24,8 +24,7 @@ BowlingGame.prototype.getBonus = function(roll,round){
 BowlingGame.prototype.throwBall = function(numberOfPins){
   
   if (this.isNumberOfPinsNotAcceptable(numberOfPins)){
-   
-    throw Error("Had too much White Russian? There must be a total of pins = 10 for each frame..")
+    if (this._rollsCounter != 19) throw Error("Had too much White Russian? There must be a total of pins = 10 for each frame..")
   } 
   
   this._rolls[this.currentRow()][this.currentColumn()] += numberOfPins;
@@ -44,6 +43,7 @@ BowlingGame.prototype.throwBall = function(numberOfPins){
 }
 
 BowlingGame.prototype.isOver = function(){
+  if (this._rollsCounter > 20) return true;
   if (this.isFinalRound() && (this._spare) && this._turnExtension < 1) {
     this._turnExtension ++;
     this._rollsCounter -=1;
@@ -58,8 +58,8 @@ BowlingGame.prototype.isOver = function(){
 
 BowlingGame.prototype._gameOver = function(){
   console.log(this.calculateScore());
-  // this.updateFrameScore();
-  throw Error("game over");
+
+  throw Error("Game Over Dude! Total Score: "+this.calculateScore());
 }
 
 BowlingGame.prototype.isFinalRound = function(){

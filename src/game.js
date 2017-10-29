@@ -1,21 +1,31 @@
 function Game() {
-  this.scores = [0]
+  this.scores = [];
 };
 
 
 Game.prototype.viewScore = function(){
-  var sum = this.scores.reduce(function(a, b) {return a + b;}, 0);
-  return sum
+  var flatArray = [].concat.apply([], this.scores);
+  var sum = flatArray.reduce(function(a, b) {return a + b;}, 0);
+  return sum;
 };
 
 Game.prototype.gutterGame = function(){
-  this.scores = [0]
+  this.scores = [0];
 };
 
 Game.prototype.perfectGame = function(){
-  this.scores =[300]
+  this.scores =[300];
 };
 
-Game.prototype.playFrame = function(){
+Game.prototype.playFrameRoll = function(a, b){
+  var frame = new Frame;
+  frame.roll1(a)
+  frame.roll2(b)
+  this.scores.push(frame.score)
+};
 
+Game.prototype.playFrameStrike = function(){
+  var frame = new Frame;
+  frame.strike()
+  this.scores.push(frame.score)
 };

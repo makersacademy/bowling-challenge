@@ -2,6 +2,7 @@ var Game = function () {
   this.currentFrame = 1
   this.currentRoll = 1
   this.currentScore = 0
+  this.finalScore = null
   this.scorecard = {
     1: {
       1: {hitPins: null, bonus: []},
@@ -152,15 +153,21 @@ Game.prototype._isRollOneStrike = function () {
   return (this.scorecard[10][1]['hitPins'] === 10)
 }
 
+Game.prototype._isThirdBall = function () {
+  return ((this.currentRoll === 2) && ( (this._isNoPins()) || (this._isRollOneStrike()) ))
+}
+
 Game.prototype.lastFrame = function () {
   if (this._isAStrike()) this.scorecard[this.currentFrame]['remainingPins'] = 10
   if (this.currentRoll === 1) {
     this.currentRoll = 2
     return
   }
-  if (this._isASpare() || this._isRollOneStrike()) {
+  if (this._isThirdBall()) {
+  console.log(this._isRollOneStrike())
     this.currentRoll = 3
-    this.scorecard[this.currentFrame]['remainingPins'] = 10
-    return //redundent?
+    if (this._isASpare()) this.scorecard[this.currentFrame]['remainingPins'] = 10
+    return
   }
+  this.finalScore = this.currentScore
 }

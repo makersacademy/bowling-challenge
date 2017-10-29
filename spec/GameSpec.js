@@ -101,6 +101,20 @@ describe("Game", function () {
         }
         expect(game.scorecard[10][3]['hitPins']).toEqual(3)
       })
+      it("calculates final score when game is over with no third roll", function () {
+        spyOn(game,'bowl').and.returnValues(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 2)
+        for (var i = 0; i < 20; i++) {
+          game.play()
+        }
+        expect(game.finalScore).toEqual(23)
+      })
+      it("calculates final score when game is over with a third roll", function () {
+        spyOn(game,'bowl').and.returnValues(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 2, 3)
+        for (var i = 0; i < 21; i++) {
+          game.play()
+        }
+        expect(game.finalScore).toEqual(33)
+      })
 
     })
 

@@ -12,11 +12,11 @@ FrameTen.prototype.addRoll = function(rollValue) {
   } else if ((this.isStrike() || this.isSpare()) && this.thirdRoll === null) {
     this.thirdRoll = rollValue;
   }
-}
+};
 
 FrameTen.prototype.total = function() {
   return this.firstRoll + this.secondRoll + this.thirdRoll;
-}
+};
 
 FrameTen.prototype.isOngoing = function() {
   if (this.secondRoll === null) {
@@ -28,4 +28,4 @@ FrameTen.prototype.isOngoing = function() {
   else {
     return false;
   }
-}
+};

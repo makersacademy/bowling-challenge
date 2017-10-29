@@ -8,9 +8,9 @@ ScoreCalculator.prototype.totalScore = function() {
     totalScore += frame.total();
     totalScore += this._addBonusIfSpare(frame, frameIndex);
     totalScore += this._addBonusIfStrike(frame, frameIndex);
-  }, this)
+  }, this);
   return totalScore;
-}
+};
 
 ScoreCalculator.prototype._addBonusIfSpare = function(frame, frameIndex) {
   if (frame.isSpare() && this._currentFrameIsNotTheLast(frameIndex)) {
@@ -19,7 +19,7 @@ ScoreCalculator.prototype._addBonusIfSpare = function(frame, frameIndex) {
   } else {
     return 0;
   }
-}
+};
 
 ScoreCalculator.prototype._addBonusIfStrike = function(frame, frameIndex) {
   if (frame.isStrike() && this._currentFrameIsNotTheLast(frameIndex)) {
@@ -32,20 +32,20 @@ ScoreCalculator.prototype._addBonusIfStrike = function(frame, frameIndex) {
   } else {
     return 0;
   }
-}
+};
 
 ScoreCalculator.prototype._currentFrameIsNotTheLast = function(frameIndex) {
   return frameIndex < this._frames.length - 1;
-}
+};
 
 ScoreCalculator.prototype._currentFrameIsNotEvenThePenultimate = function(frameIndex) {
   return frameIndex < this._frames.length - 2;
-}
+};
 
 ScoreCalculator.prototype._nextFrame = function(frameIndex) {
-  return this._frames[frameIndex + 1]
-}
+  return this._frames[frameIndex + 1];
+};
 
 ScoreCalculator.prototype._nextButOneFrame = function(frameIndex) {
-  return this._frames[frameIndex + 2]
-}
+  return this._frames[frameIndex + 2];
+};

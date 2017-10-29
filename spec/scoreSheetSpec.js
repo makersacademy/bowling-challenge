@@ -9,4 +9,4 @@ describe("ScoreSheet", function() {
   it("scoring begins at zero", function() {
     expect(scoresheet._currentScore).toEqual(0);
   });
-})
+});

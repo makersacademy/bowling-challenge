@@ -57,7 +57,7 @@ describe("BowlingGame", function() {
       for (var i = 1; i < 10; i++) {
         game.nextRound()
       };
-      game.firstRoll(6)
+      game.firstRoll(10)
       game.secondRoll(10)
       expect(game._frameNumber).toEqual(10)
     });
@@ -97,6 +97,11 @@ describe("BowlingGame", function() {
       game.secondRoll(9)
       expect(game._totalScore).toEqual(17)
       expect(game._frameScore).toEqual(0)
-    })
+    });
+    // it("if two rolls add to 10 it is a spare", function() {
+    //   game.firstRoll(5)
+    //   game.secondRoll(5)
+    //   expect(game.isSpare()).toBe(true)
+    // })
   });
 });

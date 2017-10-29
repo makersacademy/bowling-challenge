@@ -1,13 +1,17 @@
+'use strict';
+
 function BowlingGame() {
   this._frameNumber = 1
   this._frameScore = 0
   this._totalScore = 0
   this._rollNumber = 1
+  this.rolls = []
 }
 
 BowlingGame.prototype.nextRound = function() {
   if(this._frameNumber >= 11) throw Error("Game Over!")
   this._frameNumber += 1;
+  this._rollNumber = 1;
 };
 
 BowlingGame.prototype.nextRoll = function() {
@@ -22,6 +26,7 @@ BowlingGame.prototype.firstRoll = function(score) {
     this._frameNumber += 1
   }
   this._frameScore += score
+  this.rolls.push(score);
   this.nextRoll()
 };
 
@@ -32,6 +37,7 @@ BowlingGame.prototype.secondRoll = function(score) {
   } else if (score !== 10 && this._frameNumber === 10) {
     this.isOver();
   }
+  this.rolls.push(score);
   this._frameScore += score
   this._totalScore += this._frameScore
   this._frameScore = 0
@@ -42,6 +48,14 @@ BowlingGame.prototype.thirdRoll = function(score) {
   this.isOver();
 };
 
-BowlingGame.prototype.isOver = function(score) {
+BowlingGame.prototype.isOver = function() {
     return true
 };
+
+// BowlingGame.prototype.isStrike = function() {
+//   return this.rolls[rollIndex] === 10
+// };
+//
+// BowlingGame.prototype.isSpare = function() {
+//   return this.rolls[rollIndex] + this.rolls[rollIndex+1] === 10
+// };

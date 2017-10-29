@@ -79,4 +79,13 @@ describe("BowlingGame", function() {
       expect(game.isOver()).toBe(true)
     });
   });
+
+  describe("#scores", function() {
+    it("has a frame score function which starts on 0", function(){
+      expect(game._frameScore).toEqual(0)
+    });
+    it("has a total score which starts on 0", function(){
+      expect(game._totalScore).toEqual(0)
+    })
+  });
 });

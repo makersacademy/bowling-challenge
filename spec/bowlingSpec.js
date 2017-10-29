@@ -62,7 +62,14 @@ describe('Game', function() {
 
   describe('bonus calculations', function() {
     it('allows more than 10 pins to be counted for the 10th frame', function() {
-
+      for(var i = 0; i < 9; i++) {
+        game.scoreUpdate(7);
+        game.scoreUpdate(2);
+      }
+      game.scoreUpdate(4);
+      game.scoreUpdate(3);
+      game.scoreUpdate(4);
+      expect(game.getCurrentScore()).toEqual(92);
     });
   });
 });

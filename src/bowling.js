@@ -22,7 +22,7 @@ Game.prototype.getScoreHistory = function() {
 };
 
 Game.prototype.scoreUpdate = function(pins) {
-  if ((this._frameScore + pins) > 10) {
+  if (this._frame !== this.MAX_FRAMES && (this._frameScore + pins) > 10) {
     throw new Error('Cannot knock down more than 10 pins per frame');
   } else if (this._frame <= this.MAX_FRAMES && pins <11 && pins >= 0 ) {
     this._score += pins;

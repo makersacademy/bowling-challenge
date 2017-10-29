@@ -14,8 +14,13 @@ Game.prototype.score = function(){
   var result = 0;
   var rollIndex = 0;
   for(var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    result = this._rolls[rollIndex] + this._rolls[rollIndex + 1];
-    rollIndex += 2;
+    if(this._rolls[rollIndex] == 10) {
+      result += this._rolls[rollIndex] + this._rolls[rollIndex + 1] + this._rolls[rollIndex + 2];
+      rollIndex += 1;
+    }else{
+      result += this._rolls[rollIndex] + this._rolls[rollIndex + 1];
+      rollIndex += 2;
+    };
   }
   return result;
 };

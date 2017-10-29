@@ -6,13 +6,30 @@ describe("Game", function() {
   });
 
   it("should be able to roll a gutter game", function() {
-    for(var i = 0; i < 20; i++){
-      game.roll(0);
-    }
+    rollMany(0, 20);
     expect(game.score()).toEqual(0);
   });
 
+  it("should be able to roll all ones", function() {
+    rollMany(1, 20);
+    expect(game.score()).toEqual(20);
+  });
+
+  it("should be able to roll a strike", function() {
+    game.roll(10);
+    rollMany(1, 18);
+    expect(game.score()).toEqual(30);
+  });
+
+  function rollMany(rollScore, numberOfRolls) {
+    for(var i = 0; i < numberOfRolls; i++){
+      game.roll(rollScore);
+    }
+  }
+
 });
+
+
 
 /* describe("Player", function() {
   var player;

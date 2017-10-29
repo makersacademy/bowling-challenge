@@ -1,12 +1,17 @@
 'use strict';
 
-var game = new Game();
+var game;
 
-updateScore();
-updateSelection();
-updateFrame();
-updateRound();
-updateScoreCard()
+$('#new-game').click(function () {
+  game = new Game();
+  $('#play').show();
+  $('#home').hide();
+  updateScore();
+  updateSelection();
+  updateFrame();
+  updateRound();
+  updateScoreCard()
+});  
 
 $('#pin-selection').on('click', ".pins", function () {
   var pins = Number($(this).val());
@@ -16,6 +21,11 @@ $('#pin-selection').on('click', ".pins", function () {
   updateFrame();
   updateRound();
   updateScoreCard(pins);
+  if (game.isComplete() && !game.isAllowExtraBowl()) {
+    $('#play').hide();
+    $('#home').show();
+    $('#header').append('<div><span id="score">Score: ' + game.score() + '</span></div>');
+  };
 });
 
 function updateFrame() {

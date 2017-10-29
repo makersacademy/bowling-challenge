@@ -7,25 +7,28 @@
     <title>BowlCut</title>
   </head>
   <body>
-    <ul id="all-frames">
-        <li id="frame-1" class="each-frame"></li>
-        <li id="frame-2" class="each-frame"></li>
-        <li id="frame-3" class="each-frame"></li>
-        <li id="frame-4" class="each-frame"></li>
-        <li id="frame-5" class="each-frame"></li>
-        <li id="frame-6" class="each-frame"></li>
-        <li id="frame-7" class="each-frame"></li>
-        <li id="frame-8" class="each-frame"></li>
-        <li id="frame-9" class="each-frame"></li>
-        <li id="frame-10" class="each-frame"></li>
-    </ul>
-    <p class="score"><span>Current Score: </span><span id="current-score"></span></p>
-    <p class="frame">Frame: <span id="current-frame"></span></p>
-    <p class="round">Round: <span id="current-round"></span></p>
-    
-    
-    <div id="pin-selection"></div>
-
+    <section id="home">
+      <div id="header"><span>BowlCut.</span></div>
+      <button id="new-game">New Game</button>
+    </section>
+    <section id="play">
+      <ul id="all-frames">
+          <li id="frame-1" class="each-frame"></li>
+          <li id="frame-2" class="each-frame"></li>
+          <li id="frame-3" class="each-frame"></li>
+          <li id="frame-4" class="each-frame"></li>
+          <li id="frame-5" class="each-frame"></li>
+          <li id="frame-6" class="each-frame"></li>
+          <li id="frame-7" class="each-frame"></li>
+          <li id="frame-8" class="each-frame"></li>
+          <li id="frame-9" class="each-frame"></li>
+          <li id="frame-10" class="each-frame"></li>
+      </ul>
+      <p class="score"><span>Current Score: </span><span id="current-score"></span></p>
+      <p class="frame">Frame: <span id="current-frame"></span></p>
+      <p class="round">Round: <span id="current-round"></span></p>
+      <div id="pin-selection"></div>
+    </section>
     <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -33,6 +36,5 @@
     <script src="js/Frame.js"></script>
     <script src="js/Game.js"></script>
     <script src="js/appLayer.js"></script>
-    
   </body>
 </html>

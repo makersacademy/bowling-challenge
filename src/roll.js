@@ -11,9 +11,9 @@ Roll.prototype.takeFirstTurn = function (pins) {
   return pins
 }
 
-Roll.prototype.takeSecondTurn = function (pins, previousRoll) {
-  if (pins + previousRoll > 10) {
-    throw new Error('Sorry please select from ' + previousRoll + ' to 10 pins!')
+Roll.prototype.takeSecondTurn = function (pins, pinsRemaining) {
+  if (pins > pinsRemaining) {
+    throw new Error('Sorry please select from 0 to ' + pinsRemaining + ' pins!')
   }
   return pins
 }

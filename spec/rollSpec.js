@@ -25,8 +25,8 @@ describe('Roll', function () {
 
     it('doesn\'t allow more pins than exist to be knocked down', function () {
       expect(function () {
-        roll.takeSecondTurn(8, 3);
-      }).toThrow(new Error('Sorry please select from 3 to 10 pins!'))
+        roll.takeSecondTurn(5, 3);
+      }).toThrow(new Error('Sorry please select from 0 to 3 pins!'))
     });
   });
 })

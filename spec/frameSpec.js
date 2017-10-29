@@ -1,12 +1,12 @@
 'use strict';
 
-describe ('Frame', function () {
+describe('Frame', function () {
 
-var frame;
+  var frame;
 
-beforeEach(function () {
-  frame = new Frame();
-})
+  beforeEach(function () {
+    frame = new Frame();
+  })
 
   it('has starts 10 pins', function () {
     expect(frame._pinsRemaining).toBe(10)
@@ -22,8 +22,7 @@ beforeEach(function () {
   })
 
   it('records the number of pins knocked down in the second roll', function () {
-    frame.firstRoll(3);
-    frame.secondRoll(6);
+    twoRolls();
     expect(frame._pinsKnockedDown[1]).toBe(6)
   })
 
@@ -37,9 +36,22 @@ beforeEach(function () {
   })
 
   it('can return the total frame score before bonuses applied', function () {
-    frame.firstRoll(3);
-    frame.secondRoll(6);
+    twoRolls();
     expect(frame.returnScore()).toBe(9)
   })
-})
 
+  it('ends the frame if both rolls have been taken', function () {
+    twoRolls();
+    expect(frame.isFinished()).toBe(true)
+  })
+
+  it('ends the frame if the first roll is a strike', function () {
+    frame.firstRoll(10)
+    expect(frame.isFinished()).toBe(true)
+  })
+
+  var twoRolls = function () {
+    frame.firstRoll(3);
+    frame.secondRoll(6);
+  }
+})

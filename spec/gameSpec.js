@@ -3,13 +3,29 @@ describe('game', function() {
 });
 
   var testGame;
-  var sumOfFrameScores;
+  var testFrame;
 
   beforeEach(function() {
     testGame = new game();
-    sumOfFrameScores = 60;
+    testFrame = new frame();
   });
 
-  describe('Game Score', function() {
-    expect(testGame.gameScore(sumOfFrameScores)).toEqual(60);
+  // describe("frameDouble", function() {
+  //   var frame, firstScore
+  // })
+  // describe("A spy", function() {
+  //   var foo, bar = null;
+  //
+  //   beforeEach(function() {
+  //     foo = {
+  //       setBar: function(value) {
+  //         bar = value;
+  //       }
+
+  describe('Frame Score', function() {
+    it('expects the frame score to be the sum of each roll score by default', function() {
+      testFrame.firstRollScore(5);
+      testFrame.secondRollScore(3);
+      expect(testGame.frameScore(testFrame)).toEqual(8);
+    });
   });

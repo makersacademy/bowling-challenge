@@ -19,7 +19,9 @@ Frame.prototype.secondRoll = function (pins) {
 }
 
 Frame.prototype.returnScore = function () {
-  return this._pinsKnockedDown.reduce(function(a, b) { return a + b; }, 0)
+  return this._pinsKnockedDown.reduce(function (a, b) {
+    return a + b;
+  }, 0)
 }
 
 Frame.prototype.isFinished = function () {

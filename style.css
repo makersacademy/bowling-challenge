@@ -1,22 +1,38 @@
+@font-face {
+  font-family: 'johnnyfever';
+  src: url('http://ff.cdn.1001fonts.net/j/o/johnny-fever.regular.ttf');
+}
+
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
 body {
   padding: 0;
   margin: 0;
 }
 
 h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
   color: blue;
   padding-left: 30px;
+  margin-bottom: 0;
 }
 
 .red-stripe {
   background-color: red;
   height: 20px;
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
+table {
+  width: 900px;
+}
+
 table, th, td {
+  font-family: courier;
   border: 1px solid blue;
-  padding: 10px;
+  padding: 2px;
   margin: 0 auto;
 }
 

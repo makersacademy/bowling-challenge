@@ -137,6 +137,14 @@ describe("Game", function() {
     expect(game.getScore()).toEqual(40)
   });
 
+  it("cannot update the score on second throw if the total is over 10", function() {
+    game.roll(6);
+  ;
+    expect(game.getScore()).toEqual(6)
+    expect(function(){ game.roll(5)}).toThrowError("Cannot have more than 10 points on second throw")
+
+  });
+
   it("the Gutter Game", function() {
     var i = 20
     while (i > 0) {
@@ -179,6 +187,8 @@ describe("Game", function() {
     game.roll(10);
     expect(game.getScore()).toEqual(92);
   });
+
+
 
 
 });

@@ -54,6 +54,8 @@ Game.prototype._actionOnSecondRoll = function(pins) {
         if (this._strikes[this._frameCount - 1] == true) this._runningScore += this._rolls[this._frameCount];
         this._frameCount++;
     }
+
+
 };
 
 Game.prototype._frameTenRule = function(pins) {
@@ -70,11 +72,14 @@ Game.prototype.roll = function(pins, e) {
     }
     if (pins>10)
     {
-        alert("you cannot know down more than 10 pins");
+        alert("you cannot knock down more than 10 pins");
         e.preventDefault();
     }
 
     this._frameTenRule(pins);
+    if ((pins + this._rolls[this._frameCount]>10) && (this._frameCount <10)) {
+      throw new Error("Cannot have more than 10 points on second throw");
+    }
     this._rollCount++;
     if (this._frameCount < 10) this._runningScore += pins;
     this._updateRollsFrame(pins);

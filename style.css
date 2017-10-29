@@ -31,7 +31,7 @@ table, th, td {
   text-align: center;
 }
 
-div[class*="-pin"] {
+div[class*="-pin-select"] {
   margin: 0 auto;
   width: 300px;
 }

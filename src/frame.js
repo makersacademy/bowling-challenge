@@ -10,7 +10,6 @@ var Frame = function () {
 }
 
 Frame.prototype.getScore = function () {
-  console.log(this._bonus)
   return this._frameScore = this.calculateScore() + this._bonus
 }
 

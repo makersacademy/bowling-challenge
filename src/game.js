@@ -44,17 +44,22 @@ Game.prototype._newFrameNeeded = function () {
 Game.prototype.addBonus = function () {
   for (var frameIndex = 0; frameIndex < this._frames.length; frameIndex++) {
     if (this._frames[frameIndex].isAStrike()) {
-      this._frames[frameIndex].frameBonus(this._frames[frameIndex+1].firstRollScore() + this._frames[frameIndex+1].secondRollScore())
+      this._frames[frameIndex].frameBonus(this.strikeBonus(frameIndex))
     }
     if (this._frames[frameIndex].isASpare()) {
-      console.log('spare')
-      this._frames[frameIndex].frameBonus(this._frames[frameIndex+1].firstRollScore())
-    } else {
-      console.log('no bonus')
-    }
+      this._frames[frameIndex].frameBonus(this.spareBonus(frameIndex))
+    } 
   }
 }
 
 Game.prototype.isGameOver = function () {
   return this._frames.length === 10 && this._currentFrame.isFinished()
+}
+
+Game.prototype.strikeBonus = function (frameIndex) {
+  return this._frames[frameIndex+1].firstRollScore() + this._frames[frameIndex+1].secondRollScore()
+}
+
+Game.prototype.spareBonus = function (frameIndex) {
+  return this._frames[frameIndex+1].firstRollScore()
 }

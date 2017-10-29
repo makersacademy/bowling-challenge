@@ -14,3 +14,7 @@ Frame.prototype.firstRoll = function (pins) {
 Frame.prototype.secondRoll = function (pins) {
   this._pinsKnockedDown.push(this.roll.takeSecondTurn(pins, this._pinsKnockedDown[0]))
 }
+
+Frame.prototype.returnScore = function () {
+  return this._pinsKnockedDown.reduce(function(a, b) { return a + b; }, 0)
+}

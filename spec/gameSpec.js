@@ -19,7 +19,7 @@ describe("game", function() {
       expect(game.viewScore()).toEqual(300);
   });
 
-  it("rolls a frame and adds the frame score to the game score ", function(){
+  it("user rolls a frame and adds the frame score to the game score ", function(){
     game.playFrameRoll(3,5)
       expect(game.viewScore()).toEqual(8);
   });
@@ -33,9 +33,8 @@ describe("game", function() {
     }).toThrowError("Cannot exceed 10 frames");
   });
 
-
-  it("strikes a frame and adds the frame score to the game score ", function(){
-    game.playFrameStrike()
+  it("user strikes a frame and adds the frame score to the game score ", function(){
+    game.playFrameStrike();
       expect(game.viewScore()).toEqual(10);
   });
 

@@ -10,13 +10,13 @@ describe("frame", function() {
   });
 
   it("shows us the score of a strike frame", function() {
-    frame.strike()
+    frame.strike();
     expect(frame.viewScore()).toEqual(10);
   });
 
   it("shows us the score of two rolls which are not a spare", function() {
-    frame.roll1(3)
-    frame.roll2(5)
+    frame.roll1(3);
+    frame.roll2(5);
     expect(frame.viewScore()).toEqual(8);
   });
 

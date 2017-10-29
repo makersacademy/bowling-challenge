@@ -17,6 +17,9 @@ Game.prototype.score = function(){
     if(this._rolls[rollIndex] == 10) {
       result += this._rolls[rollIndex] + this._rolls[rollIndex + 1] + this._rolls[rollIndex + 2];
       rollIndex += 1;
+    }else if(this._rolls[rollIndex] + this._rolls[rollIndex + 1] == 10){
+      result += this._rolls[rollIndex] + this._rolls[rollIndex + 1] + this._rolls[rollIndex + 2];
+      rollIndex += 2;
     }else{
       result += this._rolls[rollIndex] + this._rolls[rollIndex + 1];
       rollIndex += 2;

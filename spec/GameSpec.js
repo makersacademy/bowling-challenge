@@ -21,6 +21,11 @@ describe("Game", function() {
     expect(game.score()).toEqual(30);
   });
 
+  it("should be able to roll a perfect game", function() {
+    rollMany(10, 12);
+    expect(game.score()).toEqual(300);
+  });
+
   function rollMany(rollScore, numberOfRolls) {
     for(var i = 0; i < numberOfRolls; i++){
       game.roll(rollScore);

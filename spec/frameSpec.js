@@ -8,7 +8,7 @@ describe('Frame', function () {
     frame = new Frame();
   })
 
-  it('has starts 10 pins', function () {
+  it('has 10 pins at the start of the frame', function () {
     expect(frame._pinsRemaining).toBe(10)
   })
 

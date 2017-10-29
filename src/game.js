@@ -8,9 +8,9 @@ Game.prototype.getScore = function () {
 }
 
 Game.prototype.bowl = function (pins) {
-  if (!this._frame) {
+  if (this._newFrameNeeded()) {
     this._firstBowl(pins)
-  } else if (this._frame) {
+  } else {
     this._secondBowl(pins)
   }
 }
@@ -26,11 +26,20 @@ Game.prototype._firstBowl = function (pins) {
 
 Game.prototype._secondBowl = function (pins) {
   this._frame.secondRoll(pins)
-  this._frame = null
   this._score += pins
   this._nextFrame()
 }
 
 Game.prototype._nextFrame = function () {
-  this._frames.push(this._frame)
+  this._frames.push(this._frame._pinsKnockedDown)
+}
+
+Game.prototype._newFrameNeeded = function () {
+  if (!this._frame) {
+    return true;
+  } else if (this._frame.isFinished()) {
+    return true;
+  } else {
+    return false;
+  }
 }

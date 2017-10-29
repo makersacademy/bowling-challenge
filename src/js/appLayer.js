@@ -45,11 +45,11 @@ function updateRound() {
 function updateScoreCard(pins) {
   $('#all-frames .each-frame').empty();
   for (var i = 1; i <= 9; i++ ) {
-    var frame = game._frames[i - 1];
+    var frame = game.frames()[i - 1];
     if (frame) {
       $('#frame-' + i).append('<p class="frame-number">' + i + '</p>');
       $('#frame-' + i).append('<p class="round-one">' + scoreCardLeft(frame) + '</p>');
-      $('#frame-' + i).append('<p class="round-two">' + scoreCardRight(frame) + '</p>');
+      $('#frame-' + i).append('<p class="round-two">' + scoreCardSpareStrike(frame) + '</p>');
       $('#frame-' + i).append('<p class="frame-score">'+ frame.score() + '</p>');
     } else if (i === game.currentFrame() && game.currentRound() === 2) {
       $('#frame-' + i).append('<p class="frame-number">' + i + '</p>');
@@ -63,12 +63,12 @@ function updateScoreCard(pins) {
       $('#frame-' + i).append('<p class="frame-score"></p>');
     };  
   };
-  frame = game._frames[i - 1]
+  var frame = game.frames()[9];
   if (frame) {
     $('#frame-' + i).append('<p class="frame-number">' + i + '</p>');
-    $('#frame-' + i).append('<p class="round-one">' + scoreCardLeft(frame) + '</p>');
-    $('#frame-' + i).append('<p class="round-two">' + scoreCardRight(frame) + '</p>');
-    $('#frame-' + i).append('<p class="round-three">' + '</p>');    
+    $('#frame-' + i).append('<p class="round-one">' + scoreCardFinalFrame(1) + '</p>');
+    $('#frame-' + i).append('<p class="round-two">' + scoreCardFinalFrame(2) + '</p>');
+    $('#frame-' + i).append('<p class="round-three">' + scoreCardFinalFrame(3) + '</p>');
     $('#frame-' + i).append('<p class="frame-score">'+ frame.score() + '</p>');
   } else if (i === game.currentFrame() && game.currentRound() === 2) {
     $('#frame-' + i).append('<p class="frame-number">' + i + '</p>');
@@ -86,19 +86,24 @@ function updateScoreCard(pins) {
 };
 
 function scoreCardLeft(frame) {
-  if (frame._bowls[0] === 10) {
+  if (frame.bowls()[0] === 10) {
     return '';
   } else {
-    return frame._bowls[0];
+    return frame.bowls()[0];
   };
 };
 
-function scoreCardRight(frame) {
-  if (frame._bowls[0] === 10) {
+function scoreCardSpareStrike(frame, final = false, turn = 2) {
+  if (final ? (frame.bowls()[turn-1] === 10) : frame.bowls()[0] === 10) {
     return 'X';
-  } else if (frame.pinsRemaining() === 0) {
+  } else if (frame.pinsRemaining() === 0 && turn === 2) {
     return '/';
   } else {
-    return frame._bowls[1];
+    return frame.bowls()[turn-1];
   };
+};
+
+function scoreCardFinalFrame(turn) {
+  var frame = game.frames()[9];  
+  return (frame.bowls()[turn - 1] ? scoreCardSpareStrike(frame, true, turn) : '');
 };

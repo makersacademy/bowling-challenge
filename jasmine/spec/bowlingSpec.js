@@ -42,29 +42,24 @@ describe("BowlingGame", function() {
   describe("Strike", function() {
     it('ends the frame; roll 2 scores 0', function() {
       game.roll(10);
-      expect(game.score()).toEqual(10);
       expect(game.showScoreCard()[0].rollTwo).toEqual(0);
     });
     it('awards bonus points - strike first roll', function() {
       game.roll(10);
-      // expect(game.score()).toEqual(10);
       game.roll(4, 5);
       expect(game.showFrame(1).score).toEqual(19);
       expect(game.score()).toEqual(28);
     });
-    // it('awards bonus points - strike not first roll', function() {
-    //   game.roll(2, 3);
-    //   expect(game.score()).toEqual(5);
-    //   game.roll(10);
-    //   game.roll(3, 4);
-    //   expect(game.showFrame(2).score).toEqual(22);
-    //   expect(game.showFrame(3).score).toEqual(29);
-    //   expect(game.score()).toEqual(29);
-    //   console.log(game._currentFrame);
-    //   console.log(game.showFrame(game._currentFrame - 1));
-    //   console.log(game.score());
-    //   expect(game.showFrame(game._currentFrame - 1)).toEqual(game.score());
-    // });
+    it('awards bonus points - strike not first roll', function() {
+      game.roll(2, 3);
+      expect(game.score()).toEqual(5);
+      game.roll(10);
+      game.roll(3, 4);
+      expect(game.showFrame(2).cumScore).toEqual(22);
+      expect(game.showFrame(3).cumScore).toEqual(29);
+      expect(game.score()).toEqual(29);
+      expect(game.showFrame(game._currentFrame - 1).cumScore).toEqual(game.score());
+    });
 
     // it("rolls two strikes in a row", function() {
     //

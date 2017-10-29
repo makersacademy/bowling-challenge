@@ -16,14 +16,17 @@ BowlingGame.prototype.roll = function(r1, r2 = 0) {
     this._scoreCard.push({ // into method
       rollOne: r1,
       rollTwo: r2,
-      score: (r1 + r2)
+      score: (r1 + r2),
+      cumScore: (r1 + r2)
     });
     this._totalScore += (r1 + r2); // into method
     this._currentFrame += 1; // into method
     this.addStrikeBonus();
     this.updateTotalScore();
+    this.updateCumScore();
   }
 };
+
 BowlingGame.prototype.showScoreCard = function() {
   return this._scoreCard;
 };
@@ -33,10 +36,32 @@ BowlingGame.prototype.showFrame = function(frame) {
   return this._scoreCard[frame - 1];
 };
 
+BowlingGame.prototype.updateTotalScore = function() {
+  this._totalScore = 0;
+  totalScore = this._totalScore;
+  this._scoreCard.forEach(function(frame) {
+    totalScore += frame.score;
+  });
+  this._totalScore = totalScore;
+};
+
+BowlingGame.prototype.updateCumScore = function() {
+  if (this._currentFrame > 2) {
+    this.showFrame(this._currentFrame - 1).cumScore =
+      this.showFrame(this._currentFrame - 1).score +
+      this.showFrame(this._currentFrame - 2).cumScore;
+  }
+};
+
 BowlingGame.prototype.addStrikeBonus = function() {
   if (this._currentFrame > 2) {
     if (this.showFrame(this._currentFrame - 2).rollOne === 10) {
       this.showFrame(this._currentFrame - 2).score +=
+        (this.showFrame(this._currentFrame - 1).rollOne +
+          this.showFrame(this._currentFrame - 1).rollTwo);
+    }
+    if (this.showFrame(this._currentFrame - 2).rollOne === 10) {
+      this.showFrame(this._currentFrame - 2).cumScore +=
         (this.showFrame(this._currentFrame - 1).rollOne +
           this.showFrame(this._currentFrame - 1).rollTwo);
     }
@@ -52,20 +77,6 @@ BowlingGame.prototype.addStrikeBonus = function() {
 // };
 // this needs to iterate through the next rolls and add together the rolls
 // > 0 and then stop after adding 1
-
-
-BowlingGame.prototype.updateTotalScore = function() {
-  this._totalScore = 0;
-  totalScore = this._totalScore;
-  this._scoreCard.forEach(function(frame) {
-    totalScore += frame.score;
-  });
-  this._totalScore = totalScore;
-};
-
-
-
-
 
 
 

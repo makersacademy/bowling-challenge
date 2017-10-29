@@ -2,67 +2,67 @@ var Game = function () {
   this.currentFrame = 1
   this.currentRoll = 1
   this.scorecard = {
-    1:  {
-          1: {hitPins: null, bonus: []},
-          2: {hitPins: null, bonus: []},
-          remainingPins: 10,
-          frameScore: 0
-        },
-    2:  {
-          1: {hitPins: null, bonus: []},
-          2: {hitPins: null, bonus: []},
-          remainingPins: 10,
-          frameScore: 0
-        },
-    3:  {
-          1: {hitPins: null, bonus: []},
-          2: {hitPins: null, bonus: []},
-          remainingPins: 10,
-          frameScore: 0
-        },
-    4:  {
-          1: {hitPins: null, bonus: []},
-          2: {hitPins: null, bonus: []},
-          remainingPins: 10,
-          frameScore: 0
-        },
-    5:  {
-          1: {hitPins: null, bonus: []},
-          2: {hitPins: null, bonus: []},
-          remainingPins: 10,
-          frameScore: 0
-        },
-    6:  {
-          1: {hitPins: null, bonus: []},
-          2: {hitPins: null, bonus: []},
-          remainingPins: 10,
-          frameScore: 0
-        },
-    7:  {
-          1: {hitPins: null, bonus: []},
-          2: {hitPins: null, bonus: []},
-          remainingPins: 10,
-          frameScore: 0
-        },
-    8:  {
-          1: {hitPins: null, bonus: []},
-          2: {hitPins: null, bonus: []},
-          remainingPins: 10,
-          frameScore: 0
-        },
-    9:  {
-          1: {hitPins: null, bonus: []},
-          2: {hitPins: null, bonus: []},
-          remainingPins: 10,
-          frameScore: 0
-        },
-    10:  {
-          1: {hitPins: null, bonus: []},
-          2: {hitPins: null, bonus: []},
-          3: {hitPins: null, bonus: []},
-          remainingPins: 10,
-          frameScore: 0
-        }
+    1: {
+      1: {hitPins: null, bonus: []},
+      2: {hitPins: null, bonus: []},
+      remainingPins: 10,
+      frameScore: 0
+    },
+    2: {
+      1: {hitPins: null, bonus: []},
+      2: {hitPins: null, bonus: []},
+      remainingPins: 10,
+      frameScore: 0
+    },
+    3: {
+      1: {hitPins: null, bonus: []},
+      2: {hitPins: null, bonus: []},
+      remainingPins: 10,
+      frameScore: 0
+    },
+    4: {
+      1: {hitPins: null, bonus: []},
+      2: {hitPins: null, bonus: []},
+      remainingPins: 10,
+      frameScore: 0
+    },
+    5: {
+      1: {hitPins: null, bonus: []},
+      2: {hitPins: null, bonus: []},
+      remainingPins: 10,
+      frameScore: 0
+    },
+    6: {
+      1: {hitPins: null, bonus: []},
+      2: {hitPins: null, bonus: []},
+      remainingPins: 10,
+      frameScore: 0
+    },
+    7: {
+      1: {hitPins: null, bonus: []},
+      2: {hitPins: null, bonus: []},
+      remainingPins: 10,
+      frameScore: 0
+    },
+    8: {
+      1: {hitPins: null, bonus: []},
+      2: {hitPins: null, bonus: []},
+      remainingPins: 10,
+      frameScore: 0
+    },
+    9: {
+      1: {hitPins: null, bonus: []},
+      2: {hitPins: null, bonus: []},
+      remainingPins: 10,
+      frameScore: 0
+    },
+    10: {
+      1: {hitPins: null, bonus: []},
+      2: {hitPins: null, bonus: []},
+      3: {hitPins: null, bonus: []},
+      remainingPins: 10,
+      frameScore: 0
+    }
   }
 }
 
@@ -78,7 +78,7 @@ Game.prototype.play = function () {
 }
 
 Game.prototype.bowl = function () {
-  return (Math.floor ((Math.random() * this._getRemainingPins() + 1)))
+  return (Math.floor((Math.random() * this._getRemainingPins() + 1)))
 }
 
 Game.prototype.setNextRoll = function () {
@@ -95,7 +95,7 @@ Game.prototype.flagBonusRolls = function () {
 }
 
 Game.prototype._addBonusPoints = function (hitPins) {
-  for ( frame of this.scorecard[this.currentFrame][this.currentRoll]['bonus'] ) {
+  for (frame of this.scorecard[this.currentFrame][this.currentRoll]['bonus']) {
     this.scorecard[frame]['frameScore'] += hitPins
   }
 }
@@ -145,13 +145,13 @@ Game.prototype._isRollOneStrike = function () {
 
 Game.prototype.lastFrame = function () {
   if (this._isAStrike()) this.scorecard[this.currentFrame]['remainingPins'] = 10
-    if (this.currentRoll === 1) {
-      this.currentRoll = 2
-      return
-    }
-    if (this._isASpare() || this._isRollOneStrike()) {
-      this.currentRoll = 3
-      this.scorecard[this.currentFrame]['remainingPins'] = 10 //reset for 3rd roll
-      return
-    }
+  if (this.currentRoll === 1) {
+    this.currentRoll = 2
+    return
+  }
+  if (this._isASpare() || this._isRollOneStrike()) {
+    this.currentRoll = 3
+    this.scorecard[this.currentFrame]['remainingPins'] = 10
+    return //redundent?
+  }
 }

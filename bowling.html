@@ -11,7 +11,29 @@
 
   <body>
     <section>
-      
+      <div>
+        <h1 id="view_score">Your current score is: <span id="current_score"></span></h1>
+      </div>
+
+      <div>
+        <h2>Play a GUTTER GAME: <button id="gutter_game" value="GO">GO</button></h2>
+      </div>
+
+      <div>
+        <h2>Roll a frame (select the number of pins you want to knock down with each roll):</h2>
+        <form id="play_frame_roll" action="bowling.html">
+          <input id="play_frame_input" type="text" name="play_frame">
+          <input type="submit" value="Play">
+        </form>
+      </div>
+
+      <div>
+        <h2>Roll a strike: <button id="roll_strike" value="GO">GO</button></h2>
+      </div>
+
+      <div>
+        <h2>Play a PERFECT GAME: <button id="perfect_game" value="GO">GO</button></h2>
+      </div>
     </section>
   </body>
 

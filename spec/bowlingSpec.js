@@ -71,5 +71,16 @@ describe('Game', function() {
       game.scoreUpdate(4);
       expect(game.getCurrentScore()).toEqual(92);
     });
+
+    it('knows if a strike is scored', function () {
+      game.scoreUpdate(10);
+      expect(game.getCurrentFrameTag()).toEqual('Strike');
+    });
+
+    it('knows if a spare is scored', function () {
+      game.scoreUpdate(8);
+      game.scoreUpdate(2);
+      expect(game.getCurrentFrameTag()).toEqual('Spare');
+    });
   });
 });

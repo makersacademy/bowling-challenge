@@ -1,4 +1,6 @@
 
+[![Build Status](https://travis-ci.org/ainsleybc/bowling-challenge.svg?branch=master)](https://travis-ci.org/ainsleybc/bowling-challenge)
+
 Bowling Challenge
 =================
 

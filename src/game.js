@@ -15,13 +15,21 @@ Game.prototype.bowl = function (pins) {
   if (this.isGameOver()) throw new Error('You\'re out of you\'re element Donny, no bowls left!')
   if (this._newFrameNeeded()) {
     this._firstBowl(pins)
-  } else {
+  } else if (this._currentFrame._bonusRollActivated) {
+    console.log('yo')
+    this._bonusBowl(pins)
+  }
+  else {
     this._secondBowl(pins)
   }
 }
 
 Game.prototype._firstBowl = function (pins) {
-  this._frame = new Frame
+  if (this.isFinalFrame()) {
+    this._frame = new FinalFrame
+  } else {
+    this._frame = new Frame
+  }
   this._currentFrame = this._frame
   this._frame.firstRoll(pins)
   this._frames.push(this._frame)
@@ -29,6 +37,11 @@ Game.prototype._firstBowl = function (pins) {
 
 Game.prototype._secondBowl = function (pins) {
   this._frame.secondRoll(pins)
+}
+
+Game.prototype._bonusBowl = function (pins) {
+  console.log('hi')
+  this._frame.bonusRoll(pins)
 }
 
 Game.prototype._newFrameNeeded = function () {
@@ -48,7 +61,7 @@ Game.prototype.addBonus = function () {
     }
     if (this._frames[frameIndex].isASpare()) {
       this._frames[frameIndex].frameBonus(this.spareBonus(frameIndex))
-    } 
+    }
   }
 }
 
@@ -57,9 +70,13 @@ Game.prototype.isGameOver = function () {
 }
 
 Game.prototype.strikeBonus = function (frameIndex) {
-  return this._frames[frameIndex+1].firstRollScore() + this._frames[frameIndex+1].secondRollScore()
+  return this._frames[frameIndex + 1].firstRollScore() + this._frames[frameIndex + 1].secondRollScore()
 }
 
 Game.prototype.spareBonus = function (frameIndex) {
-  return this._frames[frameIndex+1].firstRollScore()
+  return this._frames[frameIndex + 1].firstRollScore()
+}
+
+Game.prototype.isFinalFrame = function () {
+  return this._frames.length === 9
 }

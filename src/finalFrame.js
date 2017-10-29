@@ -22,7 +22,8 @@ FinalFrame.prototype.firstRoll = function (pins) {
 
 FinalFrame.prototype.secondRoll = function (pins) {
   this._pinsKnockedDown[1] = (this.roll.takeSecondTurn(pins, this._pinsRemaining))
-  if (!this.isAStrike() && !this.isASpare()) {
+  this._bonusRollActivated = true
+  if (this._pinsKnockedDown[0] !== 10 && this._pinsKnockedDown[0]+ this._pinsKnockedDown[1] !== 10) {
     this._frameFinished = true
   }
 }

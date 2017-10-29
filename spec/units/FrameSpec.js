@@ -3,14 +3,11 @@ describe("Frame", function() {
 
   describe("non strike", function() {
     beforeEach(function() {
-      frame = new Frame(frameNumber = 3, firstRoll = 7);
+      frame = new Frame(firstRoll = 7);
     });
 
     describe("ongoing frame", function() {
       describe("new", function() {
-        it("assigns a number", function() {
-          expect(frame.number()).toEqual(3);
-        });
         it("assigns score equal to value of inital roll", function() {
           expect(frame.total()).toEqual(7);
         });
@@ -32,13 +29,6 @@ describe("Frame", function() {
         })
       })
 
-      describe(".addBonus", function() {
-        it("adds the supplied bonus score to the total for the frame", function() {
-          frame.addBonus(bonus = 5);
-          expect(frame.total()).toEqual(14);
-        })
-      })
-
       describe(".isOngoing", function() {
         it("returns false", function() {
           expect(frame.isOngoing()).toEqual(false);
@@ -53,12 +43,9 @@ describe("Frame", function() {
     })
 
     describe("completed frame - spare", function() {
-      beforeEach(function() {
-        frame.addRoll(second_roll = 3);
-      });
-
       describe(".isSpare", function() {
         it("returns true", function() {
+          frame.addRoll(second_roll = 3);
           expect(frame.isSpare()).toEqual(true);
         })
       })
@@ -66,7 +53,7 @@ describe("Frame", function() {
   })
   describe("strike", function() {
     beforeEach(function() {
-      frame = new Frame(frameNumber = 3, firstRoll = 10);
+      frame = new Frame(firstRoll = 10);
     });
     it("frame is over", function() {
       expect(frame.isOngoing()).toEqual(false);

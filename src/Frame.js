@@ -1,34 +1,24 @@
-function Frame(number, firstRoll) {
-  this._number = number;
-  this._firstRoll = firstRoll;
-  this._secondRoll = null;
-  this._bonus = 0;
-}
-
-Frame.prototype.number = function() {
-  return this._number;
+function Frame(firstRoll) {
+  this.firstRoll = firstRoll;
+  this.secondRoll = null;
 }
 
 Frame.prototype.total = function() {
-  return this._firstRoll + this._secondRoll + this._bonus;
+  return this.firstRoll + this.secondRoll;
 }
 
 Frame.prototype.addRoll = function(second_roll) {
-  this._secondRoll = second_roll;
-}
-
-Frame.prototype.addBonus = function(bonus) {
-  this._bonus = bonus;
+  this.secondRoll = second_roll;
 }
 
 Frame.prototype.isOngoing = function() {
-  return this._secondRoll === null && this._firstRoll !== 10;
+  return this.secondRoll === null && !this.isStrike();
 }
 
 Frame.prototype.isStrike = function() {
-  return this._firstRoll === 10;
+  return this.firstRoll === 10;
 }
 
 Frame.prototype.isSpare = function() {
-  return !this.isStrike() && this._firstRoll + this._secondRoll === 10;
+  return !this.isStrike() && this.total() === 10;
 }

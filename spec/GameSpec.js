@@ -14,6 +14,14 @@ describe("Game", function () {
 
   describe("play", function () {
 
+    it("updates current score", function () {
+      spyOn(game,'bowl').and.returnValues(7, 2, 10, 4, 2)
+      for (var i = 0; i < 5; i++) {
+        game.play()
+      }
+      expect(game.currentScore).toEqual(31)
+    })
+
     it("updates scorecard with number of pins hit", function () {
       spyOn(game,'bowl').and.returnValue(3)
       game.play()

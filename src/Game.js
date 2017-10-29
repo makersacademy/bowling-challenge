@@ -1,6 +1,7 @@
 var Game = function () {
   this.currentFrame = 1
   this.currentRoll = 1
+  this.currentScore = 0
   this.scorecard = {
     1: {
       1: {hitPins: null, bonus: []},
@@ -69,12 +70,20 @@ var Game = function () {
 Game.prototype.play = function () {
   var hitPins = this.bowl()
   this._updateScorecard(hitPins)
+  this._updateCurrentScore()
   if (this.currentFrame === 10) {
     this.lastFrame()
     return
   }
   if (this._isNoPins()) this.flagBonusRolls()
   this.setNextRoll()
+}
+
+Game.prototype._updateCurrentScore = function () {
+  this.currentScore = 0
+  for (frame in this.scorecard) {
+    this.currentScore += this.scorecard[frame]['frameScore']
+  }
 }
 
 Game.prototype.bowl = function () {

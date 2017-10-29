@@ -14,14 +14,9 @@ describe("frame", function() {
     expect(frame.viewScore()).toEqual(0);
   });
 
-  it("shows us the score of a spare frame", function() {
-    frame.spare()
-    expect(frame.viewScore()).toEqual(10);
-  });
-
   it("shows us the score of a strike frame", function() {
     frame.strike()
-    expect(frame.viewScore()).toEqual(11);
+    expect(frame.viewScore()).toEqual(10);
   });
 
   it("shows us the score of two rolls which are not a spare", function() {

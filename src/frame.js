@@ -1,35 +1,33 @@
 function Frame() {
-  this.score = 0
+  this.score = []
 };
 
 Frame.prototype.viewScore = function(){
-  return this.score
+  var sum = this.score.reduce(function(a, b) {return a + b;}, 0);
+  return sum
 };
 
 Frame.prototype.gutter = function(){
-  this.score = 0
-};
-
-Frame.prototype.spare = function(){
-  this.score = 10
+  this.score = [0]
 };
 
 Frame.prototype.strike = function(){
-  this.score = 11
+  this.score = [10]
 };
 
 Frame.prototype.roll1 = function(num){
   if ( num > 9 || num < 0) {
     throw new Error("Cannot exceed 9, if you want to score 10 please use strike function");
   } else {
-  this.score += num;
+  this.score.push(num);
   }
 };
 
 Frame.prototype.roll2 = function(num){
-  if ( (this.score + num) > 10) {
+  var score = this.score[0]
+  if ( score + num > 10) {
     throw new Error("Cannot exceed 10 in two rolls");
   } else {
-  this.score += num;
+  this.score.push(num);
   }
 };

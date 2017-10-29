@@ -7,7 +7,7 @@ describe('Roll', function () {
   });
 
   describe('the first turn', function () {
-    it('returns the number of pins knocked down for the first turn turn', function () {
+    it('returns the number of pins knocked down for the first turn', function () {
       expect(roll.takeFirstTurn(4)).toEqual(4)
     });
 

@@ -2,7 +2,6 @@
 
 var Frame = function () {
   this._pinsRemaining = 10
-  this._rollTurn = 1
   this._pinsKnockedDown = []
   this.roll = new Roll()
 }

@@ -36,11 +36,13 @@ body {
   border-width: 3px 1.5px 3px 1.5px;
   border-color: rgb(235, 213, 108);
   margin: 0;
-  font-size: 10px;
 }
 
-.each-frame p {
+.each-frame div {
   float: left;
+  font-size: 1vw;
+  color: rgb(235, 213, 108);
+  position: relative;  
 }
 
 .each-frame:first-child {
@@ -74,12 +76,22 @@ body {
   border: none;
 }
 
+#all-frames span {
+  display: block;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
 .round-two {
   border-width: 0;
   border-left-width: 3px;
   border-bottom-width: 3px;  
   border-style: solid;
-  border-color: rgb(235, 213, 108);
+  border-color: rgba(235, 213, 108, .3);
 }
 
 #frame-10 > .round-one {
@@ -98,19 +110,20 @@ body {
   border-left-width: 3px;
   border-bottom-width: 3px;  
   border-style: solid;
-  border-color: rgb(235, 213, 108);
+  border-color: rgba(235, 213, 108, .3);
   box-sizing: border-box;
 }
 
 body > p {
   text-align: center;
+  color: white;
 }
 
 #pin-selection {
   text-align: center;
   width: 100vw;
-  position: fixed;
-  top: 45%;
+  /* position: fixed;
+  top: 45%; */
 }
 
 .pins {
@@ -122,6 +135,7 @@ body > p {
   margin: .5vw;
   border: none;
   outline: none;
+  background-image: radial-gradient(circle at 1vw 1vw, green, blue)
 }
 
 .pins:hover {

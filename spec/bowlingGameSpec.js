@@ -86,6 +86,10 @@ describe("BowlingGame", function() {
     });
     it("has a total score which starts on 0", function(){
       expect(game._totalScore).toEqual(0)
+    });
+    it("frame score increases after the first roll", function() {
+      game.firstRoll(8)
+      expect(game._frameScore).toEqual(8)
     })
   });
 });

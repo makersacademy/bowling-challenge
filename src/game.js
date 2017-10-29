@@ -19,7 +19,7 @@ Game.prototype._firstBowl = function (pins) {
   this._frame = new Frame
   this._frame.firstRoll(pins)
   this._score += pins
-  if (this._frame.isComplete) {
+  if (this._frame.isFinished()) {
     this._nextFrame()
   }
 }

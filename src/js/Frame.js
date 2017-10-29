@@ -15,6 +15,11 @@ Frame.prototype = {
     return this._pins;
   },
 
+  score: function () {
+    if (!this.isComplete() || this.isPendingBonus()) return '';
+    return this._bowls.reduce(this._sum, 0);
+  },
+
   bowl: function (pins) {
     if (pins > this.pinsRemaining()) throw new Error('number to knock down cannot be greater than the number of pins remaning')
     if (this.isComplete()) throw new Error('cannot bowl more than twice for a frame');
@@ -37,6 +42,10 @@ Frame.prototype = {
   addBonus: function (bonus) {
     if (!this.isPendingBonus()) throw new Error('Bonus cannot be added for this frame');
     this._bowls.push(bonus)
+  },
+
+  _sum: function (a, b) {
+    return a + b;
   }
 
 };

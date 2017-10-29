@@ -11,14 +11,28 @@ describe('Frame', function () {
   describe('bowls', function () {
     
     it('has a default value of 0', function () {
-      expect(frame.bowls()).toEqual(jasmine.arrayContaining([]));  
+      expect(frame.bowls()).toEqual(jasmine.arrayContaining([]));
     });
     it('returns the bowls counted in the frame', function () {
-      frame.bowl(5)
-      expect(frame.bowls()).toEqual(jasmine.arrayContaining([5]));  
+      frame.bowl(5);
+      expect(frame.bowls()).toEqual(jasmine.arrayContaining([5]));
     });
 
-  })
+  });
+
+  describe('score', function () {
+    
+    it('returns nothing is scoring is not complete', function () {
+      frame.bowl(5);
+      expect(frame.score()).toEqual('');
+    });
+    it('returns the frame score if scoring is complete', function () {
+      frame.bowl(5);
+      frame.bowl(4);
+      expect(frame.score()).toEqual(9);
+    });
+
+  });
 
   describe('pinsRemaining', function () {
     

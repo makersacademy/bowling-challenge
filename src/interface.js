@@ -98,7 +98,12 @@ $(document).ready(function () {
       game.throwBall(parseInt($(this).val()));
       
     } catch(e) {
-      $('#jff').html('<img class="jff" src="images/rules.gif" />');
+      if (!e.message.startsWith("Game")){
+        $('#jff').html('<img class="jff" src="images/rules.gif" />');
+      } else {
+        $('#jff').html('<img class="jff" src="images/biglebowskidream.jpg" />');
+      }
+      
       $("#error").text(e.message);
     }
     

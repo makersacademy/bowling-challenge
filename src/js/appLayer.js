@@ -43,17 +43,46 @@ function updateRound() {
 };
 
 function updateScoreCard(pins) {
-  $('#all-frames').empty();
-  for (var i = 1; i <= 10; i++ ) {
+  $('#all-frames .each-frame').empty();
+  for (var i = 1; i <= 9; i++ ) {
     var frame = game._frames[i - 1];
     if (frame) {
-      $('#all-frames').append('<li class="each-frame"><p class="frame-number">' + i + '</p><p class="round-one">' + scoreCardLeft(frame) + '</p><p class="round-two">' + scoreCardRight(frame) + '</p><p class="frame-score">'+ frame.score() +'</p></li>');
+      $('#frame-' + i).append('<p class="frame-number">' + i + '</p>');
+      $('#frame-' + i).append('<p class="round-one">' + scoreCardLeft(frame) + '</p>');
+      $('#frame-' + i).append('<p class="round-two">' + scoreCardRight(frame) + '</p>');
+      $('#frame-' + i).append('<p class="frame-score">'+ frame.score() + '</p>');
     } else if (i === game.currentFrame() && game.currentRound() === 2) {
-      $('#all-frames').append('<li class="each-frame"><p class="frame-number">' + i + '</p><p class="round-one">' + pins + '</p><p class="round-two"></p><p class="frame-score"></p></li>');
+      $('#frame-' + i).append('<p class="frame-number">' + i + '</p>');
+      $('#frame-' + i).append('<p class="round-one">' + pins + '</p>');
+      $('#frame-' + i).append('<p class="round-two"></p>');
+      $('#frame-' + i).append('<p class="frame-score"></p>');
     } else {
-      $('#all-frames').append('<li class="each-frame"><p class="frame-number">' + i + '</p><p class="round-one"></p><p class="round-two"></p><p class="frame-score"></p></li>');
+      $('#frame-' + i).append('<p class="frame-number">' + i + '</p>');
+      $('#frame-' + i).append('<p class="round-one"></p> ');
+      $('#frame-' + i).append('<p class="round-two"></p>');
+      $('#frame-' + i).append('<p class="frame-score"></p>');
     };  
   };
+  frame = game._frames[i - 1]
+  if (frame) {
+    $('#frame-' + i).append('<p class="frame-number">' + i + '</p>');
+    $('#frame-' + i).append('<p class="round-one">' + scoreCardLeft(frame) + '</p>');
+    $('#frame-' + i).append('<p class="round-two">' + scoreCardRight(frame) + '</p>');
+    $('#frame-' + i).append('<p class="round-three">' + '</p>');    
+    $('#frame-' + i).append('<p class="frame-score">'+ frame.score() + '</p>');
+  } else if (i === game.currentFrame() && game.currentRound() === 2) {
+    $('#frame-' + i).append('<p class="frame-number">' + i + '</p>');
+    $('#frame-' + i).append('<p class="round-one">' + pins + '</p>');
+    $('#frame-' + i).append('<p class="round-two"></p>');
+    $('#frame-' + i).append('<p class="round-three"></p>');    
+    $('#frame-' + i).append('<p class="frame-score"></p>');
+  } else {
+    $('#frame-' + i).append('<p class="frame-number">' + i + '</p>');
+    $('#frame-' + i).append('<p class="round-one"></p> ');
+    $('#frame-' + i).append('<p class="round-two"></p>');
+    $('#frame-' + i).append('<p class="round-three"></p>');    
+    $('#frame-' + i).append('<p class="frame-score"></p>');
+  };  
 };
 
 function scoreCardLeft(frame) {

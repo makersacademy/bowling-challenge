@@ -14,4 +14,8 @@ and then:
 game.addRoll(numberOfPinsKnockedDown);
 ```
 
-for each roll. I decided to focus this weekend on trying to make the code as robust and readable as possible, and an obvious next step would be to make it more accessible via browser-based input fields. It assumes anyone using it will enter accurate data, and so does not raise errors if, say, a bowler appears to have knocked down more than 10 pins in one frame, or if they seem to be continuing beyond 10 frames in one game, so there is room for improvement here too.
+for each roll.
+
+I decided to focus this weekend on trying to make the code as robust and readable as possible, and an obvious next step would be to make it more accessible by hooking the logic up to HTML input fields.
+
+The project assumes anyone using it will enter accurate data, and so does not raise errors if, say, a bowler appears to have knocked down more than 10 pins in one frame, or if they seem to be continuing beyond 10 frames in one game, so there is room for improvement here too.

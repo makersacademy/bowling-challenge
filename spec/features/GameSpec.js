@@ -108,7 +108,7 @@ describe('Game', function () {
         game.bowl(4);
         game.bowl(3);
       };
-      expect(function() { game.bowl(4) }).toThrowError('Game has been completed')
+      expect(function () { game.bowl(4) }).toThrowError('Game has been completed')
     });
     it('allows an extra bowl for a spare', function () {
       for (var i = 0; i < 9; i++) {
@@ -117,14 +117,14 @@ describe('Game', function () {
       };
       game.bowl(3);
       game.bowl(7);
-      expect(function() { game.bowl(4) }).not.toThrowError('Game has been completed')
+      expect(function () { game.bowl(4) }).not.toThrowError('Game has been completed')
     });
     it('allows an extra two bowls for a strike', function () {
       for (var i = 0; i < 10; i++) {
         game.bowl(10);
       };
       game.bowl(3);
-      expect(function() { game.bowl(4) }).not.toThrowError('Game has been completed')
+      expect(function () { game.bowl(4) }).not.toThrowError('Game has been completed')
     });
     it('wont count a new frame if the last bowl is a strike', function () {
       for (var i = 0; i < 10; i++) {
@@ -135,6 +135,6 @@ describe('Game', function () {
       expect(game._frames.length).toEqual(10);
     });
 
-  })
+  });
 
 });

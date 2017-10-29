@@ -28,6 +28,16 @@ describe('Game', function () {
 
   })
 
+  describe('frames', function () {
+    
+    it('returns the current frames played so far', function () {
+      game.bowl(7);
+      game.bowl(2);
+      expect(game.frames()).toEqual(jasmine.arrayContaining([Object({ _pins: 1, _bowls: [7, 2] })]));
+    })
+
+  })
+
   describe('pinsRemaining', function () {
     
     it('returns the remaining pins to knock down', function () {

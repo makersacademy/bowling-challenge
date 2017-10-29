@@ -13,6 +13,10 @@ Game.prototype = {
     return this._frames.length + 1;
   },
 
+  frames: function () {
+    return this._frames;
+  },
+
   pinsRemaining: function () {
     return this._frame.pinsRemaining();
   },

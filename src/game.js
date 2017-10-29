@@ -23,8 +23,7 @@ Game.prototype._actionOnStrike = function() {
     if (this._frameCount < 10) {
         this._strikes[this._frameCount] = true;
         this._rollCount = 0;
-        if (this._strikes[this._frameCount - 1]) this._runningScore += 10;
-        if (this._spares[this._frameCount - 1]) {
+        if (this._strikes[this._frameCount - 1] || this._spares[this._frameCount - 1]) {
             this._runningScore += 10;
         }
         this._frameCount++;
@@ -67,6 +66,11 @@ Game.prototype.roll = function(pins, e) {
     if (isNaN(pins))
     {
         alert("field cannot be empty");
+        e.preventDefault();
+    }
+    if (pins>10)
+    {
+        alert("you cannot know down more than 10 pins");
         e.preventDefault();
     }
 

@@ -7,10 +7,6 @@ Frame.prototype.viewScore = function(){
   return sum
 };
 
-Frame.prototype.gutter = function(){
-  this.score = [0]
-};
-
 Frame.prototype.strike = function(){
   this.score = [10]
 };

@@ -9,11 +9,6 @@ describe("frame", function() {
     expect(frame.viewScore()).toEqual(0);
   });
 
-  it("shows us the score of a gutter frame", function() {
-    frame.gutter()
-    expect(frame.viewScore()).toEqual(0);
-  });
-
   it("shows us the score of a strike frame", function() {
     frame.strike()
     expect(frame.viewScore()).toEqual(10);

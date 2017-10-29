@@ -12,6 +12,10 @@ Game.prototype.gutterGame = function(){
   this.scores = [0]
 };
 
-Game.prototype.perfectGame =function(){
+Game.prototype.perfectGame = function(){
   this.scores =[300]
+};
+
+Game.prototype.playFrame = function(){
+
 };

@@ -4,17 +4,23 @@ function Game() {
   this._score = 0;
   this._scoreSheet = [];
   this._frameAndGo = [1, 1];
-  this._wasStrike = false;
+  this._wasStrike = 0;
   this._wasSpare = false;
+  this._max = false;
 
   Game.prototype.frameAndGo = function() {
     return this._frameAndGo;
   };
 
   Game.prototype.go = function(go) {
-    // set the _wasSpare and _wasStrike
-    this.setup();
-    this._frameAndGo[1] === 1 ? this.firstGo(go) : this.secondGo(go);
+    this.setup(go);
+    console.log("wasStrike = " + this._wasStrike + " and wasSpare = " + this._wasSpare);
+    this.isFinalGo(go);
+    if (this._frameAndGo[1] === 1) {
+      this.firstGo(go);
+    } else {
+      this.secondGo(go);
+    }
     this.frameAndGoChange(go);
   };
 
@@ -32,10 +38,13 @@ function Game() {
   };
 
   this.firstGo = function(go) {
-    this.setup();
-    if ((this._wasStrike) || (this._wasSpare)) this.add(go);
+    console.log("Was strike : " + this._wasStrike);
+    for (i = 0; i < this._wasStrike; i++) {
+      this.add(go);
+    }
+    if (this._wasSpare) this.add(go);
     this.add(go);
-    this._scoreSheet.push([go, null]);
+    this._scoreSheet.push([go, 0]);
   };
 
   this.frameAndGoChange = function(go) {
@@ -47,40 +56,67 @@ function Game() {
     }
   };
 
-  this.secondGo = function(go) {
-    console.log("it's the second go and _wasStrike is: " + this._wasStrike + " and go is:" + go);
-    if (this._wasStrike) this.add(go);
-    if ((go + this._scoreSheet[this._scoreSheet.length - 1][0]) === 10) this._wasSpare = true;
-    this.add(go);
-    this._scoreSheet[this._scoreSheet.length - 1][1] = go;
-
-  };
-
-  this.setup = function() {
-    this.setValueConditions();
-  };
-
-  this.setValueConditions = function() {
-    this.setWasStrike();
-    this.setWasSpare();
-  };
-
-  this.setWasStrike = function() {
-    if (this._scoreSheet.length !== 0) {
-      if (this._scoreSheet[this._scoreSheet.length - 1][0] === 10) {
-        console.log("the score sheet: " + this._scoreSheet);
-        this._wasStrike = true;
-      } else {
-        this._scoreSheet.forEach(function(element) {
-          console.log("The score sheet" + element);
-
-        })
-        this._wasStrike = false;
+  this.isFinalGo = function(go) {
+    if ((this._frameAndGo[0] === 10) && (this._score === 240)) this._max = true;
+    if (this._max) {
+      if ((this._frameAndGo[0] === 10) && (go === 10)) {
+        this._wasStrike--;
+      }
+      if ((this._frameAndGo[0] === 11) && (go === 10)) {
+        this._wasStrike--;
+      }
+      if ((this._frameAndGo[0] === 12) && (go === 10)) {
+        this._wasStrike--;
       }
     }
   };
 
-  this.setWasSpare = function() {
-    // if ((this._scoreSheet[_scoreSheet.length - 1][0] !== 10))
+  this.secondGo = function(go) {
+    for (i = 0; i < this._wasStrike; i++) {
+      this.add(go);
+    }
+    this.add(go);
+    this._scoreSheet[this._scoreSheet.length - 1][1] = go;
   };
-};
+
+  this.setup = function(go) {
+    this.setValueConditions(go);
+  };
+
+  this.setValueConditions = function(go) {
+    this.setWasStrike();
+    this.setWasSpare(go);
+  };
+
+  this.setWasStrike = function() {
+    var len = this._scoreSheet.length;
+    if (len !== 0) {
+      if (this._frameAndGo[1] === 1) {
+        if (this._scoreSheet[this._scoreSheet.length - 1][0] === 10) this._wasStrike = 1;
+        if (this._scoreSheet[this._scoreSheet.length - 1][0] !== 10) this._wasStrike = 0;
+        if (len > 1) {
+          if ((this._scoreSheet[this._scoreSheet.length - 1][0] === 10) && (this._scoreSheet[this._scoreSheet.length - 2][0] === 10)) this._wasStrike = 2;
+          if ((this._scoreSheet[this._scoreSheet.length - 1][0] !== 10) && (this._scoreSheet[this._scoreSheet.length - 2][0] !== 10)) this._wasStrike = 0;
+        }
+      } else if (this._scoreSheet[this._scoreSheet.length - 2][0] === 10) {
+        this._wasStrike = 1;
+      }
+    }
+    // use this for checking which scores are in the score sheet array at any time
+    this._scoreSheet.forEach(function(element) {
+      element.forEach(function(el) {});
+    });
+  };
+
+  this.setWasSpare = function() {
+    var scores = this._scoreSheet;
+    var len = scores.length;
+    if (len !== 0) {
+      if ((this._frameAndGo[1] === 1) && ((scores[len - 1][0] + scores[len - 1][1]) === 10) && (scores[len - 1][0] !== 10)) {
+        this._wasSpare = true;
+      } else {
+        this._wasSpare = false;
+      }
+    }
+  };
+}

@@ -33,6 +33,8 @@ BowlingGame.prototype.secondRoll = function(score) {
     this.isOver();
   }
   this._frameScore += score
+  this._totalScore += this._frameScore
+  this._frameScore = 0
   this.nextRound();
 };
 

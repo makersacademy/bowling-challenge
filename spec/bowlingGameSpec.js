@@ -87,10 +87,16 @@ describe("BowlingGame", function() {
       game.firstRoll(8)
       expect(game._frameScore).toEqual(8)
     });
-    it("frame score increases after second roll", function() {
+    it("total score increases after frame is complete", function() {
       game.firstRoll(8)
       game.secondRoll(9)
-      expect(game._frameScore).toEqual(17)
+      expect(game._totalScore).toEqual(17)
+    });
+    it("frame score resets after 2 rolls", function() {
+      game.firstRoll(8)
+      game.secondRoll(9)
+      expect(game._totalScore).toEqual(17)
+      expect(game._frameScore).toEqual(0)
     })
   });
 });

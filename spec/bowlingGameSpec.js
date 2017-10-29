@@ -62,13 +62,9 @@ describe("BowlingGame", function() {
       expect(game._frameNumber).toEqual(10)
     });
     it("a maximum of three rolls may be taken", function() {
-      for (var i = 1; i < 10; i++) {
-        game.nextRound()
-      };
-      game.firstRoll(6)
-      game.secondRoll(10)
-      game.thirdRoll(5)
-      expect(game.isOver()).toBe(true)
+      game.nextRoll()
+      game.nextRoll()
+      expect(function() { game.nextRoll() }).toThrowError("Max rolls reached")
     });
     it("ends the game if roll 2 is neither a strike nor spare", function() {
       for (var i = 1; i < 10; i++) {
@@ -90,6 +86,11 @@ describe("BowlingGame", function() {
     it("frame score increases after the first roll", function() {
       game.firstRoll(8)
       expect(game._frameScore).toEqual(8)
+    });
+    it("frame score increases after second roll", function() {
+      game.firstRoll(8)
+      game.secondRoll(9)
+      expect(game._frameScore).toEqual(17)
     })
   });
 });

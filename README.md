@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-This project implements in JavaScript a way of calculating the total score for a game of 10-pin bowling. The scoring algorithm can be accessed by typing into the browser console:
+This project implements in JavaScript a way of calculating the total score for a game of 10-pin bowling. The scoring algorithm can be accessed by typing into the browser console of the index.html file:
 
 ```js
 var game = new Game();

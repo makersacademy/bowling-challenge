@@ -115,7 +115,7 @@ describe("Game", function () {
         }
         expect(game.finalScore).toEqual(33)
       })
-      it("prevents play wheh game is over", function () {
+      it("prevents play when game is over", function () {
         spyOn(game,'bowl').and.returnValues(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 2, 3)
         for (var i = 0; i < 21; i++) {
           game.play()

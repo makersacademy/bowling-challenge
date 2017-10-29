@@ -69,6 +69,7 @@ var Game = function () {
 }
 
 Game.prototype.play = function () {
+  if (this.finalScore) return "Game over"
   var hitPins = this.bowl()
   this._updateScorecard(hitPins)
   this._updateCurrentScore()

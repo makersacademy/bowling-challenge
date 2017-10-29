@@ -5,6 +5,7 @@ var game = new Game();
 
  $('#go1').click(function(){
    game.roll(parseInt($('#I1').val()));
+   console.log(game._runningScore)
    var newValue = game._runningScore;
    $('#input-I1').text(newValue);
  });
@@ -144,22 +145,3 @@ var game = new Game();
 
 
 });
-
-
-// var playerName = $('input').val();
-//
-// console.log(playerName);
-//
-// $("#update-form-button").click(function(){
-//
-//       $("#name-player-form").text("playerName");
-//
-//   });
-
-
-
-// //Get
-// var bla = $('#txt_name').val();
-//
-// //Set
-// $('#txt_name').val(bla);

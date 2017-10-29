@@ -65,7 +65,13 @@ Game.prototype._frameTenRule = function(pins) {
   return;
 };
 
-Game.prototype.roll = function(pins) {
+Game.prototype.roll = function(pins, e) {
+  if (isNaN(pins))
+  {
+    alert("field cannot be empty");
+      e.preventDefault();
+  }
+ 
   this._frameTenRule(pins);
   this._rollCount++;
   if (this._frameCount < 10) this._runningScore += pins;

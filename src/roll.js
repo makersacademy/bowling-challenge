@@ -17,3 +17,10 @@ Roll.prototype.takeSecondTurn = function (pins, pinsRemaining) {
   }
   return pins
 }
+
+Roll.prototype.bonusTurn = function (pins, pinsRemaining) {
+  if (pins > pinsRemaining) {
+    throw new Error('Sorry please select from 0 to ' + pinsRemaining + ' pins!')
+  }
+  return pins
+}

@@ -11,3 +11,7 @@ Game.prototype.viewScore = function(){
 Game.prototype.gutterGame = function(){
   this.scores = [0]
 };
+
+Game.prototype.perfectGame =function(){
+  this.scores =[300]
+};

@@ -8,14 +8,15 @@ body {
   width: 100vw;
   height: 90vh;
   margin: 0 auto;
+  background-image: linear-gradient(to bottom, rgb(102, 1, 1) -10%, rgb(235, 213, 108));
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
 }
 
 #all-frames {
   width: 100vw;
-  min-width: 700px;
   height: 10vw;
-  min-height: 70px; 
-  /* max-height: 500px; */
   margin: 0 auto;
   text-align: center;
   list-style: none;
@@ -24,12 +25,14 @@ body {
 
 .each-frame {
   display: inline-block;
-  width: 10%;
-  height: 100%;
+  width: 10vw;
+  min-width: 100px;
+  height: 10vw;
+  min-height: 100px;
   box-sizing: border-box;
   border-style: solid;
   border-width: 3px 1.5px 3px 1.5px;
-  border-color: red;
+  border-color: rgb(235, 213, 108);
   margin: 0;
 }
 
@@ -48,7 +51,10 @@ body {
   height: 20%;
   /* line-height: 200%; */
   box-sizing: border-box;
-  border: 3px solid black;
+  border-width: 0;
+  border-bottom-width: 3px;  
+  border-style: solid;
+  border-color: rgb(235, 213, 108);
 }
 
 .frame-score {
@@ -65,5 +71,9 @@ body {
 }
 
 .round-two {
-  border: 3px solid black;
+  border-width: 0;
+  border-left-width: 3px;
+  border-bottom-width: 3px;  
+  border-style: solid;
+  border-color: rgb(235, 213, 108);
 }

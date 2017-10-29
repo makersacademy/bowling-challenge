@@ -1,5 +1,11 @@
 
-
+function createButtons(number){
+  let button ;
+  for(let j=0; j<=number; j++){
+    button = $("<button name='#pins' value=" + j+ "></button>").text(j);
+    $("buttonArea").append(button); 
+  }
+}
 $(document).ready(function () {
 
 
@@ -71,27 +77,28 @@ $(document).ready(function () {
     $("#totalScore").text(game.calculateScore());
   }
   
-
-
-  var button ;
-  for(let j=0; j<=10; j++){
-    button = $("<button name='#pins' value=" + j+ "></button>").text(j);
-    $("body").append(button); 
-  }
+  createButtons(10);
+  
     
   $("button").click(function () {
     $("#error").text("");
-    if (parseInt($(this).val()) === 10){
-      $('#jff').html('<img class="jff" src="images/lebostrike.gif" />')
-
-    } else if (parseInt($(this).val()) === 0){
-      $('#jff').html('<img class="jff" src="images/lebogutter.gif" />')
-    } else  {
-      $('#jff').html('<img class="jff" src="images/lebospare.gif" />')
-    }
     try{
+      if (game.isStrike(parseInt($(this).val()))){
+        $('#jff').html('<img class="jff" src="images/lebostrike.gif" />');
+  
+      } else if (parseInt($(this).val()) === 0){
+        $('#jff').html('<img class="jff" src="images/lebogutter.gif" />');
+      } else if(game.isSpare(parseInt($(this).val()))){
+        $('#jff').html('<img class="jff" src="images/lebospare.gif" />');
+
+      }else  {
+        $('#jff').html('<img class="jff" src="images/leboplay.gif" />');
+      }
+
       game.throwBall(parseInt($(this).val()));
+      
     } catch(e) {
+      $('#jff').html('<img class="jff" src="images/rules.gif" />');
       $("#error").text(e.message);
     }
     

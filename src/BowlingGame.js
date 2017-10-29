@@ -24,7 +24,7 @@ BowlingGame.prototype.getBonus = function(roll,round){
 BowlingGame.prototype.throwBall = function(numberOfPins){
   
   if (this.isNumberOfPinsNotAcceptable(numberOfPins)){
-    if (this._rollsCounter != 19) throw Error("Had too much White Russian? There must be a total of pins = 10 for each frame..")
+    if (this._rollsCounter != 19) throw Error("Had too much White Russian? There must be a total of 10 pins for each frame..")
   } 
   
   this._rolls[this.currentRow()][this.currentColumn()] += numberOfPins;
@@ -73,12 +73,10 @@ BowlingGame.prototype.updateFrameScore = function(){
 }
 
 BowlingGame.prototype._isFirstRoll = function(){
-  // console.log("isFirstRoll returns", this._rollsCounter % 2 === 0)
   return this._rollsCounter % 2 === 0;
 }
 
 BowlingGame.prototype.isStrike = function (numberOfPins) {
-  // console.log("is strike returns", this.isFirstRoll() && numberOfPins === 10)
   return this._isFirstRoll() && numberOfPins === 10;
 }
 

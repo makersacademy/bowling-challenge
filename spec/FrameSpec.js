@@ -7,26 +7,52 @@ describe('Frame', function() {
     // player = jasmine.createSpy('player');
   });
 
-  it('the player starts with an empty socresheet', function() {
+  it('starts with an empty scoresheet', function() {
     expect(frame.currentScore()).toEqual([]);
   });
 
-  it('the player can knock down a max of 10 pins per go', function() {
+  it('can score the number of pins knocked down on first roll', function() {
+    // var frame = new Frame([4,4]);
+    frame.rollOne(4);
+    expect(frame.currentScore()).toEqual([4]);
+  });
+
+  it('can score the number of pins knocked down on second roll', function() {
+    // var frame = new Frame([4,4]);
+    frame.rollOne(4);
+    frame.rollTwo(4);
+    expect(frame.currentScore()).toEqual([8]);
+  });
+
+  it('scores a max of 10 pins per go', function() {
     expect(frame.maxScore()).toEqual(10);
     // expect(frame.maxScore()).toEqual([10]);
   });
 
-  it('player can knock down pins', function() {
-    // var frame = new Frame([4,4]);
-    frame.roll(4);
-    expect(frame.currentScore()).toEqual([4]);
+  it('scores a strike', function() {
+    expect(frame.strike()).toEqual(10);
+    // expect(frame.maxScore()).toEqual([10]);
   });
 
-  // it('adds up the total for both roles', function() {
-  //   // var frame = new Frame([4,4]);
-  //   frame.roll(4,4);
-  //   expect(frame.total()).toEqual([8]);
+
+
+
+
+
+  // it('can calculate bonus scores when making a spare', function() {
+  //   var frameOne = new Frame(4,6);
+  //   var frametwo = new Frame(2,4);
+  //   expect(frame.frameTotal()).toEqual();
   // });
+
+  // it('can score/tally a spare', function() {
+  //   frame.roll(4);
+  //   frame.roll(6);
+  //   frame.roll(4);
+  //   expect(game.score()).toBe([17]);
+  // });
+
+
 
 
 });

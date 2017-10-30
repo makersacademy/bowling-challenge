@@ -8,22 +8,23 @@ Frame.prototype.currentScore = function() {
   return this._score;
 };
 
-Frame.prototype.maxScore = function() {
-  return this._maxScore;
-};
-
-Frame.prototype.roll = function(number) {
+Frame.prototype.rollOne = function(number) {
   this._score.push(number);
   return number;
 };
 
-// Frame.prototype.total = function(number) {
-//   
-// };
+Frame.prototype.rollTwo = function(number) {
 
+};
 
+Frame.prototype.maxScore = function() {
+  return this._maxScore;
+};
 
-//
-// Frame.prototype.total = function() {
+Frame.prototype.strike = function() {
+  return this._maxScore;
+};
+
+// Frame.prototype.frameTotal = function(number) {
 //
 // };

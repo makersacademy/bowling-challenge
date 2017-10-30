@@ -75,3 +75,10 @@ describe('Frame Score', function() {
     expect(testGame.frameScoreWithBonus(frames, 10)).toEqual(16);
   });
 });
+
+describe('Game Score', function() {
+  it('calculates the game score', function() {
+    frames = [testFrameOne, testFrameTwo, testFrameThree, testFrameFour, testFrameFive, testFrameSix, testFrameSeven, testFrameEight, testFrameNine, testFrameTen];
+    expect(testGame.gameScore(frames)).toEqual(133);
+  });
+});

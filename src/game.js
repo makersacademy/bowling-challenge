@@ -25,6 +25,14 @@ game.prototype.frameScoreWithBonus = function(frames, selectedFrameNumber) {
   return finalFrameScore;
 };
 
+game.prototype.gameScore = function(frames) {
+  finalScore = 0;
+  for (i = 1; i <= frames.length; i++) {
+    finalScore += this.frameScoreWithBonus(frames, i);
+  }
+  return finalScore;
+};
+
 
 // won't work for the 10th roll
 

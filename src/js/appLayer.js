@@ -39,7 +39,7 @@ function updateScore() {
 function updateSelection() {
   $('#pin-selection').empty();
   if (isGameEnded()) return;
-  for (var i = 1; i <= game.pinsRemaining(); i++) {
+  for (var i = 0; i <= game.pinsRemaining(); i++) {
     $('#pin-selection').append('<button class="pins" value="' + i + '">' + i + '</button>');  
   };
 };

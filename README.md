@@ -2,6 +2,32 @@
 Bowling Challenge
 =================
 
+# How to view:
+
+$ git clone git@github.com: RMCollins175/bowling-challenge.git
+$ cd bowling-challenge
+$ open SpecRunner.html
+
+# Functionality
+ * the game is set up: it has max scores, gutter scores, strike scores etc
+ * you can print current score
+ * you can score a strike, score just ones etc
+
+# Challenges
+* perhaps lost sight of the premise of the game, i.e that it was about scoring and counting a bowling game as opposed to simulating a bowling game
+
+# What I would do differently
+* git commit more often
+* build up on the game tests.
+
+
+
+
+
+
+
+
+MAKERS INSTRUCTIONS BELOW
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

@@ -9,10 +9,10 @@ describe('Game', function () {
     expect(game._score).toEqual(0)
   })
 
-  // it('returns the score of the current game', function () {
-  //   game.bowl(1);
-  //   expect(game.getScore()).toEqual(1)
-  // })
+  it('returns the score of the current game', function () {
+    game.bowl(1);
+    expect(game.getScore()).toEqual(1)
+  })
 
   it('records a completed frame', function () {
     game.bowl(2);

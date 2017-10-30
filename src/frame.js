@@ -2,7 +2,7 @@ function frame() {
   this._firstScore = null;
   this._secondScore = null;
   this._thirdScore = null;
-  this._fourthScore = null;
+  // this._fourthScore = null;
 }
 
 BONUS_SCORE = 10;
@@ -23,10 +23,10 @@ frame.prototype.thirdRollScore = function(thirdScore) {
   return this._thirdScore;
 };
 
-frame.prototype.fourthRollScore = function(fourthScore) {
-  this._fourthScore = fourthScore;
-  return this._fourthScore;
-};
+// frame.prototype.fourthRollScore = function(fourthScore) {
+//   this._fourthScore = fourthScore;
+//   return this._fourthScore;
+// };
 
 
 frame.prototype.isAStrike = function() {

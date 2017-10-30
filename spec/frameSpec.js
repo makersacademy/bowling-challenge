@@ -21,9 +21,9 @@ describe('frame', function() {
     it('allows for a possible third roll score', function() {
       expect(testFrame.thirdRollScore(5)).toEqual(5);
     });
-    it('allows for a possible fourth roll score', function() {
-      expect(testFrame.fourthRollScore(5)).toEqual(5);
-    });
+    // it('allows for a possible fourth roll score', function() {
+    //   expect(testFrame.fourthRollScore(5)).toEqual(5);
+    // });
   });
   describe('Pre Bonus Score', function() {
     it('has a pre bonus score of 8', function() {

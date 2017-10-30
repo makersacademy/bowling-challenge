@@ -37,7 +37,6 @@ describe('game', function() {
     testFrameFour.firstRollScore(5);
     testFrameFour.secondRollScore(5);
     testFrameFive.firstRollScore(10);
-    testFrameFive.secondRollScore(null);
     testFrameSix.firstRollScore(0);
     testFrameSix.secondRollScore(1);
     testFrameSeven.firstRollScore(7);
@@ -45,7 +44,6 @@ describe('game', function() {
     testFrameEight.firstRollScore(6);
     testFrameEight.secondRollScore(4);
     testFrameNine.firstRollScore(10);
-    testFrameNine.secondRollScore(null);
     testFrameTen.firstRollScore(2);
     testFrameTen.secondRollScore(8);
     testFrameTen.thirdRollScore(6);
@@ -71,5 +69,9 @@ describe('Frame Score', function() {
     expect(testGame.frameScoreWithBonus(frames, 4)).toEqual(20);
     expect(testGame.frameScoreWithBonus(frames, 7)).toEqual(16);
     expect(testGame.frameScoreWithBonus(frames, 8)).toEqual(20);
+  });
+  it('calculates the post bonus score on the last roll', function() {
+    frames = [testFrameOne, testFrameTwo, testFrameThree, testFrameFour, testFrameFive, testFrameSix, testFrameSeven, testFrameEight, testFrameNine, testFrameTen];
+    expect(testGame.frameScoreWithBonus(frames, 10)).toEqual(16);
   });
 });

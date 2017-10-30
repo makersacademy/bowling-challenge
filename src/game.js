@@ -4,7 +4,13 @@ function game() {
 
 game.prototype.frameScoreWithBonus = function(frames, selectedFrameNumber) {
   finalFrameScore = 0;
-  if(selectedFrameNumber === frames.length) {
+  if(frames[selectedFrameNumber -1].isAStrike() && selectedFrameNumber === frames.length - 1) {
+    finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber]._firstScore + frames[selectedFrameNumber]._secondScore;
+  }
+  else if(frames[selectedFrameNumber -1].isASpare() && selectedFrameNumber === frames.length - 1) {
+    finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber]._firstScore;
+  }
+  else if(selectedFrameNumber === frames.length) {
     finalFrameScore += frames[selectedFrameNumber - 1].preBonusScore();
   }
   else if(frames[selectedFrameNumber -1].isAStrike()) {

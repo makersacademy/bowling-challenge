@@ -6,7 +6,6 @@ var FinalFrame = function () {
   this.roll = new Roll()
   this._frameFinished = false
   this._frameScore = 0
-  this._bonus = 0
 }
 
 FinalFrame.prototype.getScore = function () {

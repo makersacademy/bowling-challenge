@@ -9,10 +9,10 @@ describe('Game', function () {
     expect(game._score).toEqual(0)
   })
 
-  it('returns the score of the current game', function () {
-    game.bowl(1);
-    expect(game.getScore()).toEqual(1)
-  })
+  // it('returns the score of the current game', function () {
+  //   game.bowl(1);
+  //   expect(game.getScore()).toEqual(1)
+  // })
 
   it('records a completed frame', function () {
     game.bowl(2);
@@ -44,6 +44,17 @@ describe('Game', function () {
     scoringGameWithStrike()
     expect(game.getScore()).toEqual(30)
   })
+
+  it('can score a perfect game', function () {
+    perfectGame()
+    expect(game.getScore()).toEqual(300)
+  })
+
+  var perfectGame = function () {
+    for (var i = 0; i < 12; i++) {
+      game.bowl(10)
+    }
+  }
 
   var scoringGameWithStrike = function () {
     game.bowl(10);

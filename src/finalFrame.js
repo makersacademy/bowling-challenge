@@ -28,6 +28,14 @@ FinalFrame.prototype.secondRoll = function (pins) {
   }
 }
 
+FinalFrame.prototype.firstRollScore = function () {
+  return this._pinsKnockedDown[0]
+}
+
+FinalFrame.prototype.secondRollScore = function () {
+  return this._pinsKnockedDown[1]
+}
+
 FinalFrame.prototype.bonusRoll = function (pins) {
   if (this._frameFinished) {
     throw new Error ('Sorry game is over, no bonus throw')

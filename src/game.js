@@ -4,8 +4,9 @@ function Game() {
 };
 
 Game.prototype.getScore = function () {
-  this.addBonus()
   for (var frameIndex = 0; frameIndex < this._frames.length; frameIndex++) {
+    this.addBonus(frameIndex)
+    this.addBonusFrameNine(frameIndex)
     this._score += this._frames[frameIndex].getScore()
   }
   return this._score
@@ -16,10 +17,8 @@ Game.prototype.bowl = function (pins) {
   if (this._newFrameNeeded()) {
     this._firstBowl(pins)
   } else if (this._currentFrame._bonusRollActivated) {
-    console.log('yo')
     this._bonusBowl(pins)
-  }
-  else {
+  } else {
     this._secondBowl(pins)
   }
 }
@@ -40,7 +39,6 @@ Game.prototype._secondBowl = function (pins) {
 }
 
 Game.prototype._bonusBowl = function (pins) {
-  console.log('hi')
   this._frame.bonusRoll(pins)
 }
 
@@ -54,8 +52,19 @@ Game.prototype._newFrameNeeded = function () {
   }
 }
 
-Game.prototype.addBonus = function () {
-  for (var frameIndex = 0; frameIndex < this._frames.length; frameIndex++) {
+Game.prototype.addBonus = function (frameIndex) {
+  if (frameIndex < this._frames.length - 2) {
+    if (this._frames[frameIndex].isAStrike()) {
+      this._frames[frameIndex].frameBonus(this.strikeBonus(frameIndex))
+    }
+    if (this._frames[frameIndex].isASpare()) {
+      this._frames[frameIndex].frameBonus(this.spareBonus(frameIndex))
+    }
+  }
+}
+
+Game.prototype.addBonusFrameNine = function (frameIndex) {
+  if (frameIndex === this._frames.length - 2) {
     if (this._frames[frameIndex].isAStrike()) {
       this._frames[frameIndex].frameBonus(this.strikeBonus(frameIndex))
     }
@@ -70,6 +79,9 @@ Game.prototype.isGameOver = function () {
 }
 
 Game.prototype.strikeBonus = function (frameIndex) {
+  if (this._frames[frameIndex+1].isAStrike() && frameIndex < 8) {
+    return this._frames[frameIndex + 1].firstRollScore() + this._frames[frameIndex + 2].firstRollScore()
+  }
   return this._frames[frameIndex + 1].firstRollScore() + this._frames[frameIndex + 1].secondRollScore()
 }
 

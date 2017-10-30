@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling</title>
+    <script src="src/bowlingGame.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+    <script src="src/interface.js"></script>
+  </head>
+
+  <body>
+    <h1 id="title"> Bowling ! </h1>
+    <form id="first-roll">
+        <input id="first-score" type="text" placeholder="1st roll" required></input>
+        <input id="submit" type="submit"></input>
+    </form>
+    <form>
+      <input id="second-roll" type="text" placeholder="2nd roll"></input>
+      <input id="submit" type="submit"></input>
+    </form>
+    <form>
+      <input id="third-roll" type="text" placeholder="3rd roll"></input>
+      <input id="submit" type="submit"></input>
+    </form>
+    <button id="next-round">Next Frame</button>
+    <h2> Frame number: <a id="frame"></a></h2>
+    <h3> Total score: <span id="score"></span></h3>
+</body>

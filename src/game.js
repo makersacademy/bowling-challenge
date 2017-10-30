@@ -1,13 +1,26 @@
-// function game() {
-//
-// }
-//
-// game.prototype.frameScore = function(frames, selectedFrame) {
-//   finalFrameScore = 0;
-//   if(selectedFrame === frames.length) {
-//     finalFrameScore += frames[selectedFrame].preBonusScore();
-//   }
-// };
+function game() {
+
+}
+
+game.prototype.frameScoreWithBonus = function(frames, selectedFrameNumber) {
+  finalFrameScore = 0;
+  if(selectedFrameNumber === frames.length) {
+    finalFrameScore += frames[selectedFrameNumber - 1].preBonusScore();
+  }
+  else if(frames[selectedFrameNumber -1].isAStrike()) {
+    finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + this.frameScoreWithBonus(frames, selectedFrameNumber + 1);
+  }
+  else if(frames[selectedFrameNumber - 1 ].isASpare()) {
+    finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber]._firstScore;
+  }
+  else {
+    finalFrameScore += frames[selectedFrameNumber - 1].preBonusScore();
+  }
+  return finalFrameScore;
+};
+
+
+// won't work for the 10th roll
 
 // will need to deal with rolls 10 edge case later.
 // Maybe by creating a 10th frame which behaves differently
@@ -17,10 +30,6 @@
 // game.prototype.totalScore = {
 //
 // };
-
-
-
-
 
 // def frame_score(frames, selected_frame)
 //   final_frame_score = 0

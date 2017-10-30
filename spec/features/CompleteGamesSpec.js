@@ -17,6 +17,12 @@ describe("The Big Lebowski", function() {
   }
 
   checkTotal(
+    description = "gutter game",
+    rollValues = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    expectedResult = 0
+  )
+
+  checkTotal(
     description = "no strikes or spares",
     rollValues = [2,3,4,3,6,1,2,3,4,1,2,3,4,3,2,4,1,2,3,2],
     expectedResult = 55
@@ -62,6 +68,12 @@ describe("The Big Lebowski", function() {
     description = "general example scoresheet",
     rollValues = [10, 7,3,	7,2, 9,1,	10, 10, 10,	2,3, 6,4, 7,3,3],
     expectedResult = 168
+  )
+
+  checkTotal(
+    description = "perfect game",
+    rollValues = [10, 10,	10, 10,	10, 10, 10,	10, 10, 10,10,10],
+    expectedResult = 300
   )
 
 });

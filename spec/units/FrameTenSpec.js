@@ -15,4 +15,11 @@ describe("Frame ten", function() {
     expect(frameTen.total()).toEqual(14);
   })
 
+  it("returns a total of 30 points with three strikes", function() {
+    frameTen = new FrameTen(firstRoll = 10);
+    frameTen.addRoll(10);
+    frameTen.addRoll(10);
+    expect(frameTen.total()).toEqual(30);
+  })
+
 });

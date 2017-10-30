@@ -13,25 +13,22 @@ ScoreCalculator.prototype.totalScore = function() {
 };
 
 ScoreCalculator.prototype._addBonusIfSpare = function(frame, frameIndex) {
+  var bonus = 0;
   if (frame.isSpare() && this._currentFrameIsNotTheLast(frameIndex)) {
-    var bonus = this._nextFrame(frameIndex).firstRoll;
-    return bonus;
-  } else {
-    return 0;
+    bonus += this._nextFrame(frameIndex).firstRoll;
   }
+  return bonus;
 };
 
 ScoreCalculator.prototype._addBonusIfStrike = function(frame, frameIndex) {
+  var bonus = 0;
   if (frame.isStrike() && this._currentFrameIsNotTheLast(frameIndex)) {
-    var bonus = 0;
-    bonus += this._nextFrame(frameIndex).total();
+    bonus += this._nextFrame(frameIndex).firstRoll + this._nextFrame(frameIndex).secondRoll;
     if (this._nextFrame(frameIndex).isStrike() && this._currentFrameIsNotEvenThePenultimate(frameIndex)) {
       bonus += this._nextButOneFrame(frameIndex).firstRoll;
     }
-    return bonus;
-  } else {
-    return 0;
   }
+  return bonus;
 };
 
 ScoreCalculator.prototype._currentFrameIsNotTheLast = function(frameIndex) {
@@ -48,4 +45,8 @@ ScoreCalculator.prototype._nextFrame = function(frameIndex) {
 
 ScoreCalculator.prototype._nextButOneFrame = function(frameIndex) {
   return this._frames[frameIndex + 2];
+};
+
+ScoreCalculator.prototype._nextFrameIsTheTenth = function(frameIndex) {
+  return frameIndex === 8;
 };

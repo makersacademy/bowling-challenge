@@ -1,0 +1,26 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "bowling-challenge",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "bc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasasalmins/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasasalmins/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/lucasasalmins/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}

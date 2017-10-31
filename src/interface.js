@@ -3,6 +3,13 @@ $(document).ready(function() {
   var game = new game();
 
 
+$('#f1r1').click(function() {
+  frame.firstRollScore()
+})
+
+$('#Roll').click(function() {
+  frame.firstRollScore()
+})
 
 
 

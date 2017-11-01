@@ -12,12 +12,6 @@ describe('frame', function() {
       expect(testFrame.firstRollScore(5)).toEqual(5);
       expect(testFrame.secondRollScore(3)).toEqual(3);
     });
-    it('only has one roll score if the first roll score a strike', function() {
-      testFrame.firstRollScore(10);
-      expect(testFrame.secondRollScore(2)).toEqual(null);
-      // it seems a bit funny that you give the secondRollScore
-      // an argument in this case. Maybe try rearrange that
-    });
     it('allows for a possible third roll score', function() {
       expect(testFrame.thirdRollScore(5)).toEqual(5);
     });

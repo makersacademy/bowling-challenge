@@ -28,6 +28,10 @@ game.prototype.frameScoreWithBonus = function(frames, selectedFrameNumber) {
   return finalFrameScore;
 };
 
+game.prototype.isStrikeFrame = function(selectedFrameNumber) {
+  frames[selectedFrameNumber -1].isAStrike();
+};
+
 game.prototype.gameScore = function(frames) {
   finalScore = 0;
   for (i = 1; i <= frames.length; i++) {

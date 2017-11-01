@@ -46,5 +46,5 @@ frame.prototype.isASpare = function() {
 };
 
 frame.prototype.preBonusScore = function() {
-  return this._firstScore + this._secondScore + this._thirdScore;
+  return this.firstScore() + this.secondScore() + this.thirdScore();
 };

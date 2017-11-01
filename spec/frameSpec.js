@@ -15,9 +15,6 @@ describe('frame', function() {
     it('allows for a possible third roll score', function() {
       expect(testFrame.thirdRollScore(5)).toEqual(5);
     });
-    // it('allows for a possible fourth roll score', function() {
-    //   expect(testFrame.fourthRollScore(5)).toEqual(5);
-    // });
   });
   describe('Pre Bonus Score', function() {
     it('has a pre bonus score of 8', function() {
@@ -43,17 +40,4 @@ describe('frame', function() {
       expect(testFrame.isASpare()).toEqual(true);
     });
   });
-  // describe('Bonus strike points', function() {
-  //   it('gets a bonus of total score from next roll', function() {
-  //     testFrame.firstRollScore(10);
-  //     expect(testFrame.totalScore()).toEqual(18);
-  //   });
-  // });
-  // describe('Bonus spare points', function() {
-  //   it('gets a bonus of first roll score from next roll', function() {
-  //     testFrame.firstRollScore(6);
-  //     testFrame.secondRollScore(4);
-  //     expect(testFrame.totalScore()).toEqual(15);
-  //   });
-  // });
 });

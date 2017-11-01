@@ -6,18 +6,11 @@ LAST_FRAME = 10;
 
 game.prototype.frameScoreWithBonus = function(frames, selectedFrameNumber) {
   // start with last frame catch condition
-  if(selectedFrameNumber === LAST_FRAME) {
-    return this.tenthFrameScoring(frames, selectedFrameNumber);
-  }
-  else if(frames[selectedFrameNumber -1].isAStrike()) {
-    return this.strikeScoring(frames, selectedFrameNumber);
-  }
-  else if(frames[selectedFrameNumber -1].isASpare()) {
-    return this.spareScoring(frames, selectedFrameNumber);
-  }
-  else {
-    return this.basicScoring(frames, selectedFrameNumber);
-  }
+  if(selectedFrameNumber === LAST_FRAME) return this.tenthFrameScoring(frames, selectedFrameNumber);
+  if(frames[selectedFrameNumber -1].isAStrike()) return this.strikeScoring(frames, selectedFrameNumber);
+  if(frames[selectedFrameNumber -1].isASpare()) return this.spareScoring(frames, selectedFrameNumber);
+  return this.basicScoring(frames, selectedFrameNumber);
+
 };
 
 

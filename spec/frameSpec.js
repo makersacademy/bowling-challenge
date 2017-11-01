@@ -27,7 +27,6 @@ describe('frame', function() {
     });
     it('has a pre bonus score of 10', function() {
       testFrame.firstRollScore(10);
-      testFrame.secondRollScore(3);
       expect(testFrame.preBonusScore()).toEqual(10);
     });
   });

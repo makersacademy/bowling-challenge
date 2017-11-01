@@ -5,7 +5,6 @@ function game() {
 LAST_FRAME = 10;
 
 game.prototype.frameScoreWithBonus = function(frames, selectedFrameNumber) {
-  // start with last frame catch condition
   if(selectedFrameNumber === LAST_FRAME) return this.tenthFrameScoring(frames, selectedFrameNumber);
   if(frames[selectedFrameNumber -1].isAStrike()) return this.strikeScoring(frames, selectedFrameNumber);
   if(frames[selectedFrameNumber -1].isASpare()) return this.spareScoring(frames, selectedFrameNumber);
@@ -28,12 +27,6 @@ game.prototype.strikeScoring = function(frames, selectedFrameNumber) {
     finalFrameScore = 30;
   }
   return finalFrameScore;
-  // if(frames[selectedFrameNumber].isAStrike()) {
-  //   return (frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber].preBonusScore() + frames[selectedFrameNumber + 1].firstScore());
-  // }
-  // else {
-  //   return (frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber].firstScore() + frames[selectedFrameNumber].secondScore());
-  // }
 };
 
 game.prototype.spareScoring = function(frames, selectedFrameNumber) {
@@ -43,7 +36,6 @@ game.prototype.spareScoring = function(frames, selectedFrameNumber) {
 game.prototype.basicScoring = function(frames, selectedFrameNumber) {
   return frames[selectedFrameNumber - 1].preBonusScore();
 };
-
 
 game.prototype.gameScore = function(frames) {
   finalScore = 0;

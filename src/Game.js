@@ -4,13 +4,17 @@ function Game() {
 
 Game.prototype.addRoll = function(rollValue) {
   if (this._isFirstFrame() || this._lastFrameIsComplete()) {
-    if (this.numberOfFrames() === 9) {
-      this._frames.push(new FrameTen(rollValue));
-    } else {
-      this._frames.push(new Frame(rollValue));
-    }
+    this._addNewFrame(rollValue); 
   } else {
     this._lastFrame().addRoll(rollValue);
+  }
+};
+
+Game.prototype._addNewFrame = function(rollValue) {
+  if (this.numberOfFrames() === 9) {
+    this._frames.push(new FrameTen(rollValue));
+  } else {
+    this._frames.push(new Frame(rollValue));
   }
 };
 

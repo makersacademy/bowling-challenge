@@ -6,22 +6,21 @@ function frame() {
 
 BONUS_SCORE = 10;
 
+// setters
+
 frame.prototype.firstRollScore = function(firstScore) {
   this._firstScore = firstScore;
-  // return this._firstScore;
-  // should remove the returns here, leave that to the
-  // getter methods
 };
 
 frame.prototype.secondRollScore = function(secondScore) {
   this._secondScore = secondScore;
-  return this._secondScore;
 };
 
 frame.prototype.thirdRollScore = function(thirdScore) {
   this._thirdScore = thirdScore;
-  return this._thirdScore;
 };
+
+// getters
 
 frame.prototype.firstScore = function() {
   return this._firstScore;
@@ -31,9 +30,11 @@ frame.prototype.secondScore = function() {
   return this._secondScore;
 };
 
-frame.prototype.secondScore = function() {
+frame.prototype.thirdScore = function() {
   return this._thirdScore;
 };
+
+//
 
 frame.prototype.isAStrike = function() {
   return (this.firstScore() === BONUS_SCORE);

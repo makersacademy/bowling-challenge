@@ -12,10 +12,14 @@ describe('frame', function() {
       testFrame.firstRollScore(5);
       expect(testFrame.firstScore()).toEqual(5);
     });
-    // it('second roll score getter', function() {
-    //   testFrame.secondRollScore(3);
-    //   expect(testFrame.secondScore()).toEqual(3);
-    // });
+    it('second roll score getter', function() {
+      testFrame.secondRollScore(3);
+      expect(testFrame.secondScore()).toEqual(3);
+    });
+    it('third roll score getter', function() {
+      testFrame.thirdRollScore(3);
+      expect(testFrame.thirdScore()).toEqual(3);
+    });
   });
 
   describe('Pre Bonus Score', function() {

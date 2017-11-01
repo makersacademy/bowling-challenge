@@ -7,15 +7,17 @@ describe('frame', function() {
     testFrame = new frame();
   });
 
-  describe('Roll Score', function() {
-    it('has a two roll scores by default', function() {
-      expect(testFrame.firstRollScore(5)).toEqual(5);
-      expect(testFrame.secondRollScore(3)).toEqual(3);
+  describe('Getter methods', function() {
+    it('first roll score getter', function() {
+      testFrame.firstRollScore(5);
+      expect(testFrame.firstScore()).toEqual(5);
     });
-    it('allows for a possible third roll score', function() {
-      expect(testFrame.thirdRollScore(5)).toEqual(5);
-    });
+    // it('second roll score getter', function() {
+    //   testFrame.secondRollScore(3);
+    //   expect(testFrame.secondScore()).toEqual(3);
+    // });
   });
+
   describe('Pre Bonus Score', function() {
     it('has a pre bonus score of 8', function() {
       testFrame.firstRollScore(5);

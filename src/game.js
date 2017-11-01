@@ -12,7 +12,6 @@ game.prototype.frameScoreWithBonus = function(frames, selectedFrameNumber) {
   return this.basicScoring(frames, selectedFrameNumber);
 };
 
-
 game.prototype.tenthFrameScoring = function(frames, selectedFrameNumber) {
   return frames[selectedFrameNumber - 1].preBonusScore();
 };
@@ -29,6 +28,9 @@ game.prototype.strikeScoring = function(frames, selectedFrameNumber) {
     finalFrameScore = 30;
   }
   return finalFrameScore;
+  // if(frames[selectedFrameNumber].isAStrike()) {
+  //   return (frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber].preBonusScore() + frames[selectedFrameNumber + 1]._firstScore);
+  // }
 };
 
 game.prototype.spareScoring = function(frames, selectedFrameNumber) {

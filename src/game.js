@@ -30,9 +30,8 @@ game.prototype.strikeScoring = function(frames, selectedFrameNumber) {
   }
   return finalFrameScore;
 };
-//
+
 game.prototype.spareScoring = function(frames, selectedFrameNumber) {
-  if(selectedFrameNumber === frames.length - 1) return frames[selectedFrameNumber - 1].preBonusScore();
   return frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber]._firstScore;
 };
 

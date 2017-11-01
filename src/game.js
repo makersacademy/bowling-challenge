@@ -37,15 +37,16 @@ game.prototype.frameScoreWithBonus = function(frames, selectedFrameNumber) {
     finalFrameScore += frames[selectedFrameNumber - 1].preBonusScore();
   }
   else if(frames[selectedFrameNumber -1].isAStrike()) {
-    if(selectedFrameNumber === frames.length - 1) {
-      finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber]._firstScore + frames[selectedFrameNumber]._secondScore;
-    }
-    else {
-      finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + this.frameScoreWithBonus(frames, selectedFrameNumber + 1);
-    }
-    if(finalFrameScore > 30) {
-      finalFrameScore = 30;
-    }
+    // if(selectedFrameNumber === frames.length - 1) {
+    //   finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber]._firstScore + frames[selectedFrameNumber]._secondScore;
+    // }
+    // else {
+    //   finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + this.frameScoreWithBonus(frames, selectedFrameNumber + 1);
+    // }
+    // if(finalFrameScore > 30) {
+    //   finalFrameScore = 30;
+    // }
+    this.strikeScoring(frames, selectedFrameNumber);
   }
   else if(frames[selectedFrameNumber -1].isASpare()) {
     if(selectedFrameNumber === frames.length - 1) {
@@ -61,9 +62,18 @@ game.prototype.frameScoreWithBonus = function(frames, selectedFrameNumber) {
   return finalFrameScore;
 };
 //
-// game.prototype.strikeScoring = function() {
-//
-// }
+game.prototype.strikeScoring = function(frames, selectedFrameNumber) {
+  finalFrameScore = 0;
+  if(selectedFrameNumber === frames.length - 1) {
+    finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber]._firstScore + frames[selectedFrameNumber]._secondScore;
+  }
+  else {
+    finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + this.frameScoreWithBonus(frames, selectedFrameNumber + 1);
+  }
+  if(finalFrameScore > 30) {
+    finalFrameScore = 30;
+  }
+};
 //
 // game.prototype.spareScoring = function() {
 //

@@ -16,7 +16,7 @@ describe ('Unit tests: Player', function() {
   // })
 
   describe('#roll', function() {
-    it('can roll a ball', function() {
+    it('roll is defined', function() {
       expect(player.roll).not.toBeUndefined()
     });
   })

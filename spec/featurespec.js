@@ -33,7 +33,7 @@ describe ('Feature tests: Player', function() {
   // })
 
   describe("#frames", function() {
-    it("can return the points in each frame for a gutter game or a games with no spares or strikes", function() {
+    it("can return the points in each frame for a game with no spares or strikes", function() {
       player.roll(4);
       player.roll(4);
       player.roll(3);
@@ -43,7 +43,7 @@ describe ('Feature tests: Player', function() {
   })
 
   describe("#frameScores", function() {
-    it("can return the points in each frame for a gutter game or a game with no spares or strikes", function() {
+    it("can sum the points in each frame for a game with no spares or strikes", function() {
       player.roll(3);
       player.roll(2);
       player.roll(1);

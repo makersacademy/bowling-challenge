@@ -42,7 +42,7 @@ frame.prototype.isAStrike = function() {
 
 frame.prototype.isASpare = function() {
   if(this.isAStrike()) return false;
-  return (this.firstScore() + this._secondScore === BONUS_SCORE);
+  return (this.firstScore() + this.secondScore() === BONUS_SCORE);
 };
 
 frame.prototype.preBonusScore = function() {

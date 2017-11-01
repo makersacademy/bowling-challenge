@@ -19,7 +19,7 @@ game.prototype.tenthFrameScoring = function(frames, selectedFrameNumber) {
 game.prototype.strikeScoring = function(frames, selectedFrameNumber) {
   finalFrameScore = 0;
   if(selectedFrameNumber === frames.length - 1) {
-    finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber]._firstScore + frames[selectedFrameNumber]._secondScore;
+    finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber].firstScore() + frames[selectedFrameNumber].secondScore();
   }
   else {
     finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + this.frameScoreWithBonus(frames, selectedFrameNumber + 1);
@@ -29,7 +29,10 @@ game.prototype.strikeScoring = function(frames, selectedFrameNumber) {
   }
   return finalFrameScore;
   // if(frames[selectedFrameNumber].isAStrike()) {
-  //   return (frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber].preBonusScore() + frames[selectedFrameNumber + 1]._firstScore);
+  //   return (frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber].preBonusScore() + frames[selectedFrameNumber + 1].firstScore());
+  // }
+  // else {
+  //   return (frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber].firstScore() + frames[selectedFrameNumber].secondScore());
   // }
 };
 

@@ -43,7 +43,8 @@ game.prototype.frameScoreWithBonus = function(frames, selectedFrameNumber) {
     this.spareScoring(frames, selectedFrameNumber);
   }
   else {
-    finalFrameScore += frames[selectedFrameNumber - 1].preBonusScore();
+    // finalFrameScore += frames[selectedFrameNumber - 1].preBonusScore();
+    this.normalScoring(frames, selectedFrameNumber);
   }
   return finalFrameScore;
 };
@@ -69,6 +70,11 @@ game.prototype.spareScoring = function(frames, selectedFrameNumber) {
   else {
     finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber]._firstScore;
   }
+};
+
+game.prototype.normalScoring = function(frames, selectedFrameNumber) {
+  finalFrameScore = 0;
+  finalFrameScore += frames[selectedFrameNumber - 1].preBonusScore();
 };
 //
 // game.prototype.basicScoring = function() {

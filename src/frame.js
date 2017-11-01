@@ -13,7 +13,6 @@ frame.prototype.firstRollScore = function(firstScore) {
 };
 
 frame.prototype.secondRollScore = function(secondScore) {
-  if(this.isAStrike()) return this._secondScore;
   this._secondScore = secondScore;
   return this._secondScore;
 };

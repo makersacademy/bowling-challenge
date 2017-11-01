@@ -46,7 +46,3 @@ ScoreCalculator.prototype._nextFrame = function(frameIndex) {
 ScoreCalculator.prototype._nextButOneFrame = function(frameIndex) {
   return this._frames[frameIndex + 2];
 };
-
-ScoreCalculator.prototype._nextFrameIsTheTenth = function(frameIndex) {
-  return frameIndex === 8;
-};

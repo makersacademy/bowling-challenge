@@ -6,25 +6,25 @@ LAST_FRAME = 10;
 
 game.prototype.frameScoreWithBonus = function(frames, selectedFrameNumber) {
   // start with last frame catch condition
-    finalFrameScore = 0;
   if(selectedFrameNumber === LAST_FRAME) {
-    this.tenthFrameScoring(frames, selectedFrameNumber);
+    return this.tenthFrameScoring(frames, selectedFrameNumber);
   }
   else if(frames[selectedFrameNumber -1].isAStrike()) {
-    this.strikeScoring(frames, selectedFrameNumber);
+    return this.strikeScoring(frames, selectedFrameNumber);
   }
   else if(frames[selectedFrameNumber -1].isASpare()) {
-    this.spareScoring(frames, selectedFrameNumber);
+    return this.spareScoring(frames, selectedFrameNumber);
   }
   else {
-    this.basicScoring(frames, selectedFrameNumber);
+    return this.basicScoring(frames, selectedFrameNumber);
   }
-  return finalFrameScore;
 };
 
 
 game.prototype.tenthFrameScoring = function(frames, selectedFrameNumber) {
+  finalFrameScore = 0;
   finalFrameScore += frames[selectedFrameNumber - 1].preBonusScore();
+  return finalFrameScore;
 };
 
 game.prototype.strikeScoring = function(frames, selectedFrameNumber) {
@@ -38,6 +38,7 @@ game.prototype.strikeScoring = function(frames, selectedFrameNumber) {
   if(finalFrameScore > 30) {
     finalFrameScore = 30;
   }
+  return finalFrameScore;
 };
 //
 game.prototype.spareScoring = function(frames, selectedFrameNumber) {
@@ -48,11 +49,13 @@ game.prototype.spareScoring = function(frames, selectedFrameNumber) {
   else {
     finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber]._firstScore;
   }
+  return finalFrameScore;
 };
 
 game.prototype.basicScoring = function(frames, selectedFrameNumber) {
   finalFrameScore = 0;
   finalFrameScore += frames[selectedFrameNumber - 1].preBonusScore();
+  return finalFrameScore;
 };
 
 

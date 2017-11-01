@@ -15,6 +15,9 @@ game.prototype.frameScoreWithBonus = function(frames, selectedFrameNumber) {
   }
   else if(frames[selectedFrameNumber -1].isAStrike()) {
     finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + this.frameScoreWithBonus(frames, selectedFrameNumber + 1);
+    if(finalFrameScore > 30) {
+      finalFrameScore = 30;
+    }
   }
   else if(frames[selectedFrameNumber - 1 ].isASpare()) {
     finalFrameScore = frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber]._firstScore;

@@ -38,5 +38,19 @@ function chunk(arr) {
 }
 
 Player.prototype.frameScores = function() {
-  
+  var chunked = chunk(this._score);
+  console.log(chunk(this._score));
+  console.log(chunked);
+  return calcFrameScores(chunked);
+};
+
+
+function calcFrameScores(array) {
+  console.log(array)
+  return array.map(function(arr) {
+    console.log(arr);
+    return arr.reduce(function(a, b) {
+      return a + b;
+    });
+  });
 }

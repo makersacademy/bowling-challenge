@@ -16,7 +16,7 @@ $ cd bowling-challenge
 $ npm install
 $ nodemon
 ````
-You can also access the app on [my website](http://www.stephengeller.co.uk/bowling) (but beware, bugs!).  
+You can also access the app on [my website](http://www.stephengeller.co.uk/bowling).  
 
 Technologies used
 ----------------
@@ -28,7 +28,7 @@ Technologies used
 
 Approach to solving the challenge
 ---------
-This challenge was a result of two weekends of work, which was divided into Javascript (week one) and ExpressJS (week two). After struggling with bowling logic, I used [this tutorial](https://www.youtube.com/watch?v=-qA_MjNmpVU&t=37s)as a reference to drive my model creation. 
+This challenge was a result of two weekends of work, which was divided into Javascript (week one) and ExpressJS (week two). After struggling with bowling logic, I used [this tutorial](https://www.youtube.com/watch?v=-qA_MjNmpVU&t=37s) as a reference to drive my model creation. 
 
 I subsequently developed a basic UI with JQuery, but decided to re-create it using ExpressJS and EJS pages. This was because I wanted to make thorough feature tests using Zombie, Mocha and Chai, but still kept my unit tests in the file using Jasmine.
 

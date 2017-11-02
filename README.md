@@ -16,7 +16,7 @@ $ cd bowling-challenge
 $ npm install
 $ nodemon
 ````
-You can also access the app on [Heroku](http://bowlinggame-sg.herokuapp.com/) (but beware, bugs!).  
+You can also access the app on [my website](http://www.stephengeller.co.uk/bowling) (but beware, bugs!).  
 
 Technologies used
 ----------------

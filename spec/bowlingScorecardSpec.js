@@ -33,5 +33,4 @@ describe("Bowling Game", function() {
     expect(game._scores.length).toEqual(2);
   });
 
-
 });

@@ -30,7 +30,5 @@ Game.prototype.frameTotal = function(FrameNumber) {
 
 Game.prototype.addToScores = function(FrameNumber) {
   var total = this.frameTotal(FrameNumber);
-  console.log(total);
   this._scores.push(total);
-  console.log(this._scores);
 };

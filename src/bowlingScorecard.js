@@ -44,3 +44,8 @@ Game.prototype.addToScores = function(FrameNumber) {
   var total = this.frameTotal(FrameNumber);
   this._scores.push(total);
 };
+
+Game.prototype.addSpareTotal = function(FrameNumber) {
+  var bonusRoll = this._frames[FrameNumber - 1][0];
+  return bonusRoll + 10;
+};

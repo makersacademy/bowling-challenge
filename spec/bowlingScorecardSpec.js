@@ -43,4 +43,18 @@ describe("Bowling Game", function() {
     expect(game.isSpare(1)).toBe(true);
   });
 
+  it ('it can calculate the total for a frame with Spare as previous', function(){
+    game.newframe(5,5);
+    game.newframe(1,4);
+    expect(game.addSpareTotal(2)).toEqual(11);
+  });
+
+  // it ('when previous frame is spare it adds next roll to the score', function(){
+  // game.newframe(5,5);
+  // game.addToScores(1);
+  // game.newframe(1,4);
+  // game.addToScores(2);
+  // expect(game.frames[0]).toEqual(11);
+  // });
+
 });

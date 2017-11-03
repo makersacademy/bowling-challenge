@@ -12,18 +12,26 @@ describe("Bowling Game", function() {
   it('Adds the results of two rolls to a new_frame array', function(){
   game.newframe(1,4);
   expect(game.frames()).toContain([1,4]);
-  console.log(game.frames());
   });
 
   it ('Calculates the total for a frame where the score is less than 10', function()
   {
   game.newframe(1,4);
-  expect(game.frameTotal()).toEqual(5);
+  expect(game.frameTotal(1)).toEqual(5);
   });
 
   it ('Has a framecounter which counts the number of frames', function(){
   game.newframe(1,4);
   expect(game.frameCounter()).toEqual(1);
   });
+
+  it ('Has a score sheet for the frame total', function(){
+    game.newframe(1,4);
+    game.newframe(2,5);
+    game.addToScores(1);
+    game.addToScores(2);
+    expect(game._scores.length).toEqual(2);
+  });
+
 
 });

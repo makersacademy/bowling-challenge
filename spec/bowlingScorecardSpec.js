@@ -38,4 +38,9 @@ describe("Bowling Game", function() {
     expect(game.isStrike(1)).toBe(true);
   });
 
+  it ('is able to identify a spare', function() {
+    game.newframe(5,5);
+    expect(game.isSpare(1)).toBe(true);
+  });
+
 });

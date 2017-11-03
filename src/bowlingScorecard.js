@@ -23,6 +23,12 @@ Game.prototype.isStrike = function(FrameNumber) {
    return true;
 };
 
+Game.prototype.isSpare = function(FrameNumber) {
+  var frame = this._frames[FrameNumber - 1];
+  if (frame[0] + frame[1] == 10)
+  return true;
+};
+
 Game.prototype.newframe = function(roll1, roll2) {
 this._frameCounter += 1;
 this._frames.push([roll1,roll2]);

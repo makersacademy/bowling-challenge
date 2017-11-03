@@ -33,4 +33,9 @@ describe("Bowling Game", function() {
     expect(game._scores.length).toEqual(2);
   });
 
+  it ('is able to identify a strike', function() {
+    game.newframe(10,0);
+    expect(game.isStrike(1)).toBe(true);
+  });
+
 });

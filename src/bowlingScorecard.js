@@ -2,7 +2,18 @@
 function Game() {
   this._frames = [];
   this._frameCounter = 0;
-  this._scores = [];
+  this._scores = {
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: [],
+    7: [],
+    8: [],
+    9: [],
+    10: []
+  };
 }
 
 Game.prototype.frames = function() {
@@ -42,7 +53,7 @@ Game.prototype.frameTotal = function(FrameNumber) {
 
 Game.prototype.addToScores = function(FrameNumber) {
   var total = this.frameTotal(FrameNumber);
-  this._scores.push(total);
+  this._scores[FrameNumber] = total;
 };
 
 Game.prototype.addSpareTotal = function(FrameNumber) {

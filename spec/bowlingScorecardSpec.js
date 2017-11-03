@@ -30,7 +30,8 @@ describe("Bowling Game", function() {
     game.newframe(2,5);
     game.addToScores(1);
     game.addToScores(2);
-    expect(game._scores.length).toEqual(2);
+    console.log(game.scores());
+    expect(game.scores()[2]).toEqual(7);
   });
 
   it ('is able to identify a strike', function() {

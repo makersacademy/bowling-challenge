@@ -30,7 +30,7 @@ game.prototype.strikeScoring = function(frames, selectedFrameNumber) {
 };
 
 game.prototype.spareScoring = function(frames, selectedFrameNumber) {
-  return frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber]._firstScore;
+  return frames[selectedFrameNumber - 1].preBonusScore() + frames[selectedFrameNumber].firstScore();
 };
 
 game.prototype.basicScoring = function(frames, selectedFrameNumber) {

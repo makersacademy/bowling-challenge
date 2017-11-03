@@ -87,7 +87,7 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 * go() method should check for whether it was a strike or a spare in a previous go,
   returning the amount and the distance between the current length of the array and the go whose score needs adjusting
 
-#EXPLAIN: when working on how to adjust the previous scores, you need to find out which element's score must be adjusted
+##### EXPLAIN: when working on how to adjust the previous scores, you need to find out which element's score must be adjusted
 
   * it should also call a method which does the admin,
     adding scores and new totals to the scores array

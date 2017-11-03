@@ -30,7 +30,6 @@ describe("Bowling Game", function() {
     game.newframe(2,5);
     game.addToScores(1);
     game.addToScores(2);
-    console.log(game.scores());
     expect(game.scores()[2]).toEqual(7);
   });
 
@@ -50,12 +49,12 @@ describe("Bowling Game", function() {
     expect(game.addSpareTotal(2)).toEqual(11);
   });
 
-  // it ('when previous frame is spare it adds next roll to the score', function(){
-  // game.newframe(5,5);
-  // game.addToScores(1);
-  // game.newframe(1,4);
-  // game.addToScores(2);
-  // expect(game.frames[0]).toEqual(11);
-  // });
+  it ('when previous frame is spare it adds next roll to the score', function(){
+  game.newframe(5,5);
+  game.addToScores(1);
+  game.newframe(1,4);
+  game.addToScores(2);
+  expect(game.scores()[1]).toEqual(11);
+  });
 
 });

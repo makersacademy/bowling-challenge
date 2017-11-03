@@ -35,14 +35,18 @@ Game.prototype.isStrike = function(FrameNumber) {
 };
 
 Game.prototype.isSpare = function(FrameNumber) {
+  if (FrameNumber == 0) {
+    return false;
+  } else {
   var frame = this._frames[FrameNumber - 1];
   if (frame[0] + frame[1] == 10)
   return true;
+}
 };
 
 Game.prototype.newframe = function(roll1, roll2) {
 this._frameCounter += 1;
-this._frames.push([roll1,roll2]);
+this._frames.push([roll1, roll2]);
 };
 
 Game.prototype.frameTotal = function(FrameNumber) {
@@ -52,8 +56,18 @@ Game.prototype.frameTotal = function(FrameNumber) {
 };
 
 Game.prototype.addToScores = function(FrameNumber) {
-  var total = this.frameTotal(FrameNumber);
-  this._scores[FrameNumber] = total;
+    if (this.isSpare(FrameNumber - 1)) {
+    this._scores[FrameNumber - 1] = this.addSpareTotal(FrameNumber);
+      if (this.isSpare(FrameNumber)){
+      return;}
+      else {var total = this.frameTotal(FrameNumber);
+      this._scores[FrameNumber] = total;
+      }
+    }
+  else {
+    var total = this.frameTotal(FrameNumber);
+    this._scores[FrameNumber] = total;
+}
 };
 
 Game.prototype.addSpareTotal = function(FrameNumber) {

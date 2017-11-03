@@ -46,10 +46,10 @@ describe ('Feature tests: Player', function() {
 
   describe("#spareScore", function() {
     it('can return the scores for a game with spares', function() {
-      player.roll(6);
-      player.roll(4);
-      player.roll(3);
-      expect(player.spareScore()).toEqual(16);
+      player.roll(5);
+      player.roll(5);
+      player.roll(5);
+      expect(player.spareScore()).toEqual(20);
     })
   })
 

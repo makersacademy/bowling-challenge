@@ -44,6 +44,17 @@ Player.prototype.frameScores = function() {
   return calcFrameScores(chunked);
 };
 
+Player.prototype.spareScore = function() {
+
+  var runningTotal = 0;
+
+  for(var i = 0; i < this._score.length; i++) {
+    if (this._score[i] + this._score[i + 1] === 10)
+    runningTotal = this._score[i] + this._score[i + 1] + this._score[i + 2] + this._score[i + 2];
+  }
+  return runningTotal;
+
+};
 
 function calcFrameScores(array) {
   // console.log(array)
@@ -53,4 +64,5 @@ function calcFrameScores(array) {
       return a + b;
     });
   });
+
 }

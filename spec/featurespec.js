@@ -23,15 +23,6 @@ describe ('Feature tests: Player', function() {
     })
   })
 
-  // describe("#spareScore", function() {
-  //   it('can return the scores for a game with spares', function() {
-  //     player.roll(6);
-  //     player.roll(4);
-  //     player.roll(3);
-  //     expect(player.spareScore()).toEqual(16);
-  //   })
-  // })
-
   describe("#frames", function() {
     it("can return the points in each frame for a game with no spares or strikes", function() {
       player.roll(4);
@@ -53,6 +44,13 @@ describe ('Feature tests: Player', function() {
     })
   })
 
-
+  describe("#spareScore", function() {
+    it('can return the scores for a game with spares', function() {
+      player.roll(6);
+      player.roll(4);
+      player.roll(3);
+      expect(player.spareScore()).toEqual(16);
+    })
+  })
 
 });

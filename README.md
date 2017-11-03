@@ -87,10 +87,21 @@ Reviewers will potentially be using this [code review rubric](docs/review.md).  
 * go() method should check for whether it was a strike or a spare in a previous go,
   returning the amount and the distance between the current length of the array and the go whose score needs adjusting
 
-##### EXPLAIN: when working on how to adjust the previous scores, you need to find out which element's score must be adjusted
+##### EXPLAIN: when working on how to adjust the previous scores, you need to find out which element's score must be adjusted, so you've got know how far back in the array to look.
 
   * it should also call a method which does the admin,
     adding scores and new totals to the scores array
 
 * Score showing on the screen should be calculated by always summing the third elements of the scores array,
   not simply added to
+
+## User Stories, not really
+
+* As a week 6 maker,
+  I want to have a working bowling challenge without the bonuses.
+
+* As a week 6 maker,
+  I want to have a working bowling challenge with strikes giving a bonus.
+
+* As a week 6 maker,
+  I want to have a working bowling challenge with spares giving a bonus.

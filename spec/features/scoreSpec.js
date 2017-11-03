@@ -27,7 +27,6 @@ describe("Score tests: ", function() {
 
     it("a 'random' generation of XXXXXXXXXXXX", function() {
       [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10].forEach(function(i, index) {
-        console.log('BEFORE go, i: ' + i + ", score = " + game.score() + ", index: " + index);
         game.go(i);
       });
       expect(game.score()).toEqual(300);

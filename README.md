@@ -75,3 +75,22 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+## Notes:
+
+* Have three elements in the score array,
+  the third being the score.
+
+* At each go, there should be an adjustment to a previous score,
+  based on whether there was a strike or a spare.
+
+* go() method should check for whether it was a strike or a spare in a previous go,
+  returning the amount and the distance between the current length of the array and the go whose score needs adjusting
+
+#EXPLAIN: when working on how to adjust the previous scores, you need to find out which element's score must be adjusted
+
+  * it should also call a method which does the admin,
+    adding scores and new totals to the scores array
+
+* Score showing on the screen should be calculated by always summing the third elements of the scores array,
+  not simply added to

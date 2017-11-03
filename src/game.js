@@ -14,8 +14,6 @@ function Game() {
 
   Game.prototype.go = function(go) {
     this.setup(go);
-    console.log("wasStrike = " + this._wasStrike + " and wasSpare = " + this._wasSpare);
-    this.isFinalGo(go);
     if (this._frameAndGo[1] === 1) {
       this.firstGo(go);
     } else {
@@ -38,7 +36,6 @@ function Game() {
   };
 
   this.firstGo = function(go) {
-    console.log("Was strike : " + this._wasStrike);
     for (i = 0; i < this._wasStrike; i++) {
       this.add(go);
     }

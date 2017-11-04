@@ -8,7 +8,7 @@ describe('Game', function() {
     game = new Game();
 
   });
-
+  
   it('should have a player', function() {
     expect(game._player).toEqual('Ollie');
   });
@@ -59,7 +59,9 @@ describe('Game', function() {
 
   it('knows whether the frame is a spare', function() {
     game.roll(3);
+    // console.log(game._scoreSheet)
     game.roll(7);
+// console.log(game._scoreSheet)
     expect(game._wasSpare).toEqual(true);
   });
 

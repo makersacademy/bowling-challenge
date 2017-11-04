@@ -9,7 +9,7 @@ var Game = function () {
 Game.prototype.play = function (hitPins) {
   if (typeof this.finalScore === 'number') throw 'This game has ended'
   if (hitPins === undefined) var hitPins = this.bowl()
-  if (hitPins > this.scorecard.frames[this.currentFrame].frame['remainingPins']) return "Too many pins"
+  if (hitPins > this.scorecard.frames[this.currentFrame].frame['remainingPins']) throw 'Number exceeds remaining pins'
   this._updateScorecard(hitPins)
   this._updateCurrentScore()
   if (this.currentFrame === 10) {

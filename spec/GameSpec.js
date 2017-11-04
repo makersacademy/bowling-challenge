@@ -19,9 +19,9 @@ describe("Game", function () {
       expect(game.currentScore).toEqual(3)
     })
 
-    it("returns string when number of pins passed exceeds reminaining pins", function () {
+    it("raises error when number of pins passed exceeds reminaining pins", function () {
       game.play(7)
-      expect(game.play(4)).toEqual('Too many pins')
+      expect( function () { game.play(4) }).toThrow('Number exceeds remaining pins')
     })
 
     it("updates current score when a random number of pins are hit", function () {

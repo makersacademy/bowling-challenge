@@ -5,8 +5,12 @@ $(document).ready(function () {
   $(".pin, .gutter").click(function () {
     var pins = (Number($(this).val()))
     var roll = game.currentRoll()
-
-    game.bowl(pins)
+    try {
+      game.bowl(pins)
+    }
+    catch(error) {
+      alert(error)
+    }
     var frame = game._frames.length
     $('.frame' + frame + '-roll' + roll).html(game._currentFrame._pinsKnockedDown[roll-1])
     for (var i = 1; i <= frame; i++) {

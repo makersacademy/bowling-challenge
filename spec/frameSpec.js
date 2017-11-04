@@ -31,3 +31,9 @@ beforeEach(function(){
   frame.bowl(6);
   expect(frame.isSpare()).toBe(true);
   });
+
+  it ("identifies if a frame is an openframe", function() {
+    frame.bowl(1);
+    frame.bowl(2);
+    expect(frame.isOpenFrame()).toBe(true);
+  });

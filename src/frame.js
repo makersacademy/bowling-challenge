@@ -23,3 +23,7 @@ Frame.prototype.isStrike = function() {
 Frame.prototype.isSpare = function() {
   if(this.bowls()[0] != 10 && this.bowls()[0] + this.bowls()[1] == 10) return true;
 };
+
+Frame.prototype.isOpenFrame = function() {
+  if(this.bowls()[0] + this.bowls()[1] < 10) return true;
+};

@@ -19,3 +19,7 @@ Frame.prototype.bowl = function(pins) {
 Frame.prototype.isStrike = function() {
   if (this.bowls()[0] == 10) return true;
 };
+
+Frame.prototype.isSpare = function() {
+  if(this.bowls()[0] != 10 && this.bowls()[0] + this.bowls()[1] == 10) return true;
+};

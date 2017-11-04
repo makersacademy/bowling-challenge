@@ -25,3 +25,9 @@ beforeEach(function(){
   frame.bowl(10);
   expect(frame.isStrike()).toBe(true);
   });
+
+  it ("identifies if a frame is a spare", function() {
+  frame.bowl(4);
+  frame.bowl(6);
+  expect(frame.isSpare()).toBe(true);
+  });

@@ -40,7 +40,11 @@ $( document ).ready(function() {
         $('.rollThreeFrameTen p').text(String(rollValue).replace(10, 'X'));
       }
     }
-    $('.runningTotal:eq(' + frameIndex + ') p').text(game.totalScore())
+    game._frames.forEach(function(frame, frameIndex) {
+      if (frame.bonusRollsRequired() === 0 && !frame.isOngoing()) {
+        $('.runningTotal:eq(' + frameIndex + ') p').text(frame.runningTotal())
+      }
+    });
     totalScoreDisplay.text(game.totalScore());
     rollValueTextInput.val('');
     rollValueTextInput.focus();

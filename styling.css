@@ -4,23 +4,11 @@ body {
 
 h1 {
   font-family: 'Poiret One', courier, cursive;
-  font-size: 70px;
+  font-size: 60px;
   color: rgb(223, 59, 54);
   text-align: center;
   margin-bottom: 0;
   margin-top: 0
-}
-
-table {
-  width: 900px;
-}
-
-table, th, td {
-  font-family: 'Poiret One', courier, cursive;
-  border: 1px solid rgb(223, 59, 54);
-  padding: 5px;
-  margin: 0 auto;
-  border-radius: 32px
 }
 
 .pin-selection {
@@ -35,27 +23,35 @@ table, th, td {
   text-align: center;
 }
 
-.pin {
-  background:url(http://pngimg.com/uploads/bowling/bowling_PNG6.png);
+.pin, .pin-down{
+  background:url(./images/pin.png);
   background-size: cover;
-  height:90px;
-  width: 30px;
+  height: 82px;
+  width: 27px;
   outline: none;
   margin: 10px;
   margin-bottom: 0;
   margin-top: 0;
   padding-top: 15px;
   font-family: 'Poiret One', courier, cursive;
-  font-size: 18px;
+  font-size: 16px;
   border: none
 }
 
-.reset, .zero-pin {
+.pin:active {
+  transform: translateY(1px);
+}
+
+.pin-down {
+  opacity: 0.3
+}
+
+.reset, .gutter {
   font-family: 'Poiret One', courier, cursive;
   border-radius: 32px;
-  width: 80px;
+  width: 70px;
   height: 30px;
-  background-color: rgb(223, 59, 54);
+  background-color: rgb(204, 26, 23);
   color: white;
   border: none;
   outline: none;
@@ -63,12 +59,47 @@ table, th, td {
   font-size: 18px
 }
 
-.zero-pin {
-  width: 120px
+.gutter {
+  background:url(./images/bowlingBall.png);
+  background-size: cover;
+  height: 70px;
+  width: 70px;
 }
 
-.reset:hover, .zero-pin:hover {
+.reset:hover {
   background-color: white;
   color: rgb(223, 59, 54);
   border: 1px solid rgb(223, 59, 54);
+  transition: 0.3s;
+}
+
+.reset:active {
+  transform: translateY(1px);
+}
+
+.gutter:hover {
+  border: 1px solid rgb(223, 59, 54);
+}
+
+.score, #score {
+  width: 50px
+} 
+
+table, th, td {
+  font-family: 'Poiret One', courier, cursive;
+  border: 1px solid rgb(223, 59, 54);
+  padding: 5px;
+  width: 80px;
+  margin: 0 auto;
+  border-radius: 30px
+}
+
+table {
+  width: 900px;
+  table-layout: fixed;
+  font-size: 14px;
+}
+
+td.frame-empty {
+  border: none
 }

@@ -9,3 +9,7 @@ beforeEach(function(){
  it('is initialised with a frames array', function() {
   expect(game.frames.length).toEqual(0);
 });
+
+  it('is initialised with a frame object set to frame', function() {
+    expect(game.frame()).toEqual(jasmine.objectContaining({}));
+  });

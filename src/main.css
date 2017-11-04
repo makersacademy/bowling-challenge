@@ -4,6 +4,7 @@
   width: 120px;
   display: inline-block;
   margin: 0;
+  vertical-align: top;
 }
 .ten {
   width: 179px;
@@ -15,6 +16,7 @@
   margin: 0;
   display: inline-block;
   position: relative;
+  text-align: center;
 }
 
 .rollOne {
@@ -34,4 +36,15 @@
   width: 59px;
   margin: -1px;
   margin-right: -4px;
+  vertical-align: top;
+}
+
+.runningTotal {
+  height: 85px;
+  text-align: center;
+}
+
+.runningTotal p {
+  font-weight: bold;
+  margin-top: 20px;
 }

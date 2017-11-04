@@ -1,0 +1,37 @@
+.frame {
+  border: 1px solid black;
+  height: 150px;
+  width: 120px;
+  display: inline-block;
+  margin: 0;
+}
+.ten {
+  width: 179px;
+}
+
+.roll {
+  height: 60px;
+  width: 58px;
+  margin: 0;
+  display: inline-block;
+  position: relative;
+}
+
+.rollOne {
+  top: -1px;
+  left: -1px;
+}
+
+.rollTwo {
+  border: 1px solid black;
+  float: right;
+  top: -1px;
+  right: -1px;
+}
+
+.rollOneFrameTen, .rollTwoFrameTen, .rollThreeFrameTen {
+  border: 1px solid black;
+  width: 59px;
+  margin: -1px;
+  margin-right: -4px;
+}

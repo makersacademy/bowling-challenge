@@ -8,6 +8,7 @@ function Game() {
 
 Game.prototype.init = function() {
   this.setupFrames()
+  this.currentFrame = this.frames[0];
 }
 
 Game.prototype.setupFrames = function() {

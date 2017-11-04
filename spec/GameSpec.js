@@ -31,4 +31,8 @@ describe("Game", function() {
     expect(game.frames[game.frames.length-1].next).toEqual(null);
   });
 
+  it("should have currentFrame set to its first frame on initialisation", function() {
+    expect(game.currentFrame).toEqual(game.frames[0]);
+  })
+
 });

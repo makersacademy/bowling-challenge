@@ -35,19 +35,19 @@ describe("Game", function () {
     it("updates scorecard with number of pins hit", function () {
       spyOn(game,'bowl').and.returnValue(3)
       game.play()
-      expect(game.scorecard.frames[1][1]['hitPins']).toEqual(3)
+      expect(game.scorecard.frames[1].frame[1]['hitPins']).toEqual(3)
     })
 
     it("updates scorecard with number of remaining pins in current frame", function () {
       spyOn(game,'bowl').and.returnValue(2)
       game.play()
-      expect(game.scorecard.frames[1]['remainingPins']).toEqual(8)
+      expect(game.scorecard.frames[1].frame['remainingPins']).toEqual(8)
     })
 
     it("updates scorecard with score for the current frame", function () {
       spyOn(game,'bowl').and.returnValue(3)
       game.play()
-      expect(game.scorecard.frames[1]['frameScore']).toEqual(3)
+      expect(game.scorecard.frames[1].frame['frameScore']).toEqual(3)
     })
 
     it("adds bonus points to the frame where a strike was bowled", function () {
@@ -55,7 +55,7 @@ describe("Game", function () {
       for (var i = 0; i < 3; i++) {
         game.play()
       }
-      expect(game.scorecard.frames[1]['frameScore']).toEqual(17)
+      expect(game.scorecard.frames[1].frame['frameScore']).toEqual(17)
     })
 
     it("adds bonus points to the frame where a spare was bowled", function () {
@@ -63,7 +63,7 @@ describe("Game", function () {
       for (var i = 0; i < 4; i++) {
         game.play()
       }
-      expect(game.scorecard.frames[1]['frameScore']).toEqual(16)
+      expect(game.scorecard.frames[1].frame['frameScore']).toEqual(16)
     })
 
     it("adds bonus points to previous two frames with two consecutive strikes", function () {
@@ -71,11 +71,9 @@ describe("Game", function () {
       for (var i = 0; i < 4; i++) {
         game.play()
       }
-      expect(game.scorecard.frames[1]['frameScore']).toEqual(24)
-      expect(game.scorecard.frames[2]['frameScore']).toEqual(19)
+      expect(game.scorecard.frames[1].frame['frameScore']).toEqual(24)
+      expect(game.scorecard.frames[2].frame['frameScore']).toEqual(19)
     })
-
-
 
     describe("lastFrame", function () {
       it("adds points to scorecard if player strikes on first roll", function () {
@@ -83,21 +81,21 @@ describe("Game", function () {
         for (var i = 0; i < 19; i++) {
           game.play()
         }
-        expect(game.scorecard.frames[10]['frameScore']).toEqual(10)
+        expect(game.scorecard.frames[10].frame['frameScore']).toEqual(10)
       })
       it("if player rolls a strike, the pins are reset for the next roll", function () {
         spyOn(game,'bowl').and.returnValues(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10)
         for (var i = 0; i < 19; i++) {
           game.play()
         }
-        expect(game.scorecard.frames[10]['remainingPins']).toEqual(10)
+        expect(game.scorecard.frames[10].frame['remainingPins']).toEqual(10)
       })
       it("if player rolls a spare, the pins are reset for the next roll", function () {
         spyOn(game,'bowl').and.returnValues(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 8)
         for (var i = 0; i < 20; i++) {
           game.play()
         }
-        expect(game.scorecard.frames[10]['remainingPins']).toEqual(10)
+        expect(game.scorecard.frames[10].frame['remainingPins']).toEqual(10)
       })
       it("if player rolls a strike on the first roll but not on the second, player can roll the bonus", function () {
 
@@ -106,14 +104,14 @@ describe("Game", function () {
         for (var i = 0; i < 21; i++) {
           game.play()
         }
-        expect(game.scorecard.frames[10][3]['hitPins']).toEqual(1)
+        expect(game.scorecard.frames[10].frame[3]['hitPins']).toEqual(1)
       })
       it("if player rolls a strike on the first and second rolls, player can roll the bonus", function () {
         spyOn(game,'bowl').and.returnValues(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 10, 3)
         for (var i = 0; i < 21; i++) {
           game.play()
         }
-        expect(game.scorecard.frames[10][3]['hitPins']).toEqual(3)
+        expect(game.scorecard.frames[10].frame[3]['hitPins']).toEqual(3)
       })
       it("calculates final score when game is over with no third roll", function () {
         spyOn(game,'bowl').and.returnValues(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 2)

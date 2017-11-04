@@ -1,10 +1,8 @@
 describe("Game", function() {
   var game;
-  var frame;
 
   beforeEach(function() {
     game = new Game();
-
   });
 
   it("should have currentFrame set to its first frame on initialisation", function() {

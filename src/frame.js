@@ -15,3 +15,7 @@ Frame.prototype.bowl = function(pins) {
   if (this.bowls()[0] + pins > 10) throw new Error ("Two bowls can only knock down 10 pins");
   this._bowls.push(pins);
 };
+
+Frame.prototype.isStrike = function() {
+  if (this.bowls()[0] == 10) return true;
+};

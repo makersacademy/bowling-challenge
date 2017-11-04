@@ -22,3 +22,7 @@ beforeEach(function(){
  it ('has a function to check if frame is the first frame', function() {
    expect (game.isFirstFrame()).toBe(true);
  });
+
+ it ('has a function to provide the frame index', function() {
+   expect(game.FrameIndex()).toEqual(0);
+ });

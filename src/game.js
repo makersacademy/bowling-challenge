@@ -23,3 +23,7 @@ Game.prototype.FrameNo = function() {
 Game.prototype.isFirstFrame = function() {
   if (this.frames.length == 0) return true;
 };
+
+Game.prototype.FrameIndex = function() {
+  return this.frames.length;
+};

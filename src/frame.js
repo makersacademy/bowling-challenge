@@ -8,3 +8,7 @@ function Frame() {
   this.rollTwo = null;
 
 }
+
+Frame.prototype.isStrike = function() {
+  return (this.rollOne == 10);
+}

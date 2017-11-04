@@ -1,0 +1,74 @@
+body {
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Poiret One', courier, cursive;
+  font-size: 70px;
+  color: rgb(223, 59, 54);
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 0
+}
+
+table {
+  width: 900px;
+}
+
+table, th, td {
+  font-family: 'Poiret One', courier, cursive;
+  border: 1px solid rgb(223, 59, 54);
+  padding: 5px;
+  margin: 0 auto;
+  border-radius: 32px
+}
+
+.pin-selection {
+  padding: 10px;
+  text-align: center;
+}
+
+.pin-row-one, .pin-row-two, .pin-row-three, .pin-row-four {
+  padding: 5px;
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pin {
+  background:url(http://pngimg.com/uploads/bowling/bowling_PNG6.png);
+  background-size: cover;
+  height:90px;
+  width: 30px;
+  outline: none;
+  margin: 10px;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-top: 15px;
+  font-family: 'Poiret One', courier, cursive;
+  font-size: 18px;
+  border: none
+}
+
+.reset, .zero-pin {
+  font-family: 'Poiret One', courier, cursive;
+  border-radius: 32px;
+  width: 80px;
+  height: 30px;
+  background-color: rgb(223, 59, 54);
+  color: white;
+  border: none;
+  outline: none;
+  margin-top: 15px;
+  font-size: 18px
+}
+
+.zero-pin {
+  width: 120px
+}
+
+.reset:hover, .zero-pin:hover {
+  background-color: white;
+  color: rgb(223, 59, 54);
+  border: 1px solid rgb(223, 59, 54);
+}

@@ -3,75 +3,13 @@ var Game = function () {
   this.currentRoll = 1
   this.currentScore = 0
   this.finalScore = null
-  this.scorecard = {
-    1: {
-      1: {hitPins: null, bonus: []},
-      2: {hitPins: null, bonus: []},
-      remainingPins: 10,
-      frameScore: 0
-    },
-    2: {
-      1: {hitPins: null, bonus: []},
-      2: {hitPins: null, bonus: []},
-      remainingPins: 10,
-      frameScore: 0
-    },
-    3: {
-      1: {hitPins: null, bonus: []},
-      2: {hitPins: null, bonus: []},
-      remainingPins: 10,
-      frameScore: 0
-    },
-    4: {
-      1: {hitPins: null, bonus: []},
-      2: {hitPins: null, bonus: []},
-      remainingPins: 10,
-      frameScore: 0
-    },
-    5: {
-      1: {hitPins: null, bonus: []},
-      2: {hitPins: null, bonus: []},
-      remainingPins: 10,
-      frameScore: 0
-    },
-    6: {
-      1: {hitPins: null, bonus: []},
-      2: {hitPins: null, bonus: []},
-      remainingPins: 10,
-      frameScore: 0
-    },
-    7: {
-      1: {hitPins: null, bonus: []},
-      2: {hitPins: null, bonus: []},
-      remainingPins: 10,
-      frameScore: 0
-    },
-    8: {
-      1: {hitPins: null, bonus: []},
-      2: {hitPins: null, bonus: []},
-      remainingPins: 10,
-      frameScore: 0
-    },
-    9: {
-      1: {hitPins: null, bonus: []},
-      2: {hitPins: null, bonus: []},
-      remainingPins: 10,
-      frameScore: 0
-    },
-    10: {
-      1: {hitPins: null, bonus: []},
-      2: {hitPins: null, bonus: []},
-      3: {hitPins: null, bonus: []},
-      remainingPins: 10,
-      frameScore: 0
-    }
-  }
+  this.scorecard = new Scorecard()
 }
 
 Game.prototype.play = function (hitPins) {
   if (this.finalScore) return "Game over"
   if (hitPins === undefined) var hitPins = this.bowl()
-  if (hitPins > this.scorecard[this.currentFrame]['remainingPins']) return "Too many pins"
+  if (hitPins > this.scorecard.frames[this.currentFrame]['remainingPins']) return "Too many pins"
   this._updateScorecard(hitPins)
   this._updateCurrentScore()
   if (this.currentFrame === 10) {
@@ -84,8 +22,8 @@ Game.prototype.play = function (hitPins) {
 
 Game.prototype._updateCurrentScore = function () {
   this.currentScore = 0
-  for (frame in this.scorecard) {
-    this.currentScore += this.scorecard[frame]['frameScore']
+  for (frame in this.scorecard.frames) {
+    this.currentScore += this.scorecard.frames[frame]['frameScore']
   }
 }
 
@@ -107,19 +45,19 @@ Game.prototype.flagBonusRolls = function () {
 }
 
 Game.prototype._addBonusPoints = function (hitPins) {
-  for (frame of this.scorecard[this.currentFrame][this.currentRoll]['bonus']) {
-    this.scorecard[frame]['frameScore'] += hitPins
+  for (frame of this.scorecard.frames[this.currentFrame][this.currentRoll]['bonus']) {
+    this.scorecard.frames[frame]['frameScore'] += hitPins
   }
 }
 
 Game.prototype._getRemainingPins = function () {
-  return (this.scorecard[this.currentFrame]['remainingPins'])
+  return (this.scorecard.frames[this.currentFrame]['remainingPins'])
 }
 
 Game.prototype._updateScorecard = function (hitPins) {
-  this.scorecard[this.currentFrame][this.currentRoll]['hitPins'] = hitPins
-  this.scorecard[this.currentFrame]['remainingPins'] -= hitPins
-  this.scorecard[this.currentFrame]['frameScore'] += hitPins
+  this.scorecard.frames[this.currentFrame][this.currentRoll]['hitPins'] = hitPins
+  this.scorecard.frames[this.currentFrame]['remainingPins'] -= hitPins
+  this.scorecard.frames[this.currentFrame]['frameScore'] += hitPins
   if (this.currentFrame >= 2) this._addBonusPoints(hitPins)
 }
 
@@ -128,7 +66,7 @@ Game.prototype._isAStrike = function () {
 }
 
 Game.prototype._isNoPins = function () {
-  return (this.scorecard[this.currentFrame]['remainingPins'] === 0)
+  return (this.scorecard.frames[this.currentFrame]['remainingPins'] === 0)
 }
 
 Game.prototype._isASpare = function () {
@@ -136,23 +74,23 @@ Game.prototype._isASpare = function () {
 }
 
 Game.prototype._addStrikeBonuses = function () {
-  this.scorecard[this.currentFrame + 1][1]['bonus'].push(this.currentFrame)
-  this.scorecard[this.currentFrame + 1][2]['bonus'].push(this.currentFrame)
-  if (this.scorecard[this.currentFrame][2]['bonus'].length === 1) {
-    this.scorecard[this.currentFrame + 1][1]['bonus'].push(this.scorecard[this.currentFrame][2]['bonus'].pop())
+  this.scorecard.frames[this.currentFrame + 1][1]['bonus'].push(this.currentFrame)
+  this.scorecard.frames[this.currentFrame + 1][2]['bonus'].push(this.currentFrame)
+  if (this.scorecard.frames[this.currentFrame][2]['bonus'].length === 1) {
+    this.scorecard.frames[this.currentFrame + 1][1]['bonus'].push(this.scorecard.frames[this.currentFrame][2]['bonus'].pop())
   }
 }
 
 Game.prototype._addSpareBonuses = function () {
-  this.scorecard[this.currentFrame + 1][1]['bonus'].push(this.currentFrame)
+  this.scorecard.frames[this.currentFrame + 1][1]['bonus'].push(this.currentFrame)
 }
 
 Game.prototype._addSpareBonuses = function () {
-  this.scorecard[this.currentFrame + 1][1]['bonus'].push(this.currentFrame)
+  this.scorecard.frames[this.currentFrame + 1][1]['bonus'].push(this.currentFrame)
 }
 
 Game.prototype._isRollOneStrike = function () {
-  return (this.scorecard[10][1]['hitPins'] === 10)
+  return (this.scorecard.frames[10][1]['hitPins'] === 10)
 }
 
 Game.prototype._isThirdBall = function () {
@@ -160,13 +98,13 @@ Game.prototype._isThirdBall = function () {
 }
 
 Game.prototype.lastFrame = function () {
-  if (this._isAStrike()) this.scorecard[this.currentFrame]['remainingPins'] = 10
+  if (this._isAStrike()) this.scorecard.frames[this.currentFrame]['remainingPins'] = 10
   if (this.currentRoll === 1) {
     this.currentRoll = 2
     return
   }
   if (this._isThirdBall()) {
-    if (this._isASpare()) this.scorecard[this.currentFrame]['remainingPins'] = 10
+    if (this._isASpare()) this.scorecard.frames[this.currentFrame]['remainingPins'] = 10
     this.currentRoll = 3
     return
   }

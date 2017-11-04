@@ -2,7 +2,6 @@
 function Game() {
   this._frames = [];
   this._frame = new Frame();
-  console.log(this._frame);
 }
 
 //getter functions

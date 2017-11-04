@@ -11,5 +11,6 @@ Frame.prototype.bowls = function() {
 //straight forward Frame business
 
 Frame.prototype.bowl = function(pins) {
+  if (pins > 10) throw new Error ("The maximum number of pins for one roll is 10");
   this._bowls.push(pins);
 };

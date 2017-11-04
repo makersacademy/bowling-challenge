@@ -54,8 +54,8 @@ Frame.prototype.isASpare = function () {
 }
 
 Frame.prototype.frameBonus = function (bonus) {
-  if (bonus) {
-    return this._bonus = bonus
+  if (bonus > 0) {
+    this._bonus = bonus
   }
   return this._bonus
 }

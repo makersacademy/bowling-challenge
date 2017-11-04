@@ -37,3 +37,9 @@ beforeEach(function(){
     frame.bowl(2);
     expect(frame.isOpenFrame()).toBe(true);
   });
+
+  it ("has a function which states when the frame is over", function(){
+    frame.bowl(1);
+    frame.bowl(2);
+    expect(frame.isOver()).toBe(true);
+  });

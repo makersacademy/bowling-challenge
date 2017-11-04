@@ -27,3 +27,7 @@ Frame.prototype.isSpare = function() {
 Frame.prototype.isOpenFrame = function() {
   if(this.bowls()[0] + this.bowls()[1] < 10) return true;
 };
+
+Frame.prototype.isOver = function() {
+  if (this._bowls.length == 2|| this.bowls()[0] == 10) return true;
+};

@@ -23,10 +23,10 @@ h1 {
   text-align: center;
 }
 
-.pin, .pin-down{
+.pin {
   background:url(./images/pin.png);
   background-size: cover;
-  height: 82px;
+  height: 81px;
   width: 27px;
   outline: none;
   margin: 10px;
@@ -39,11 +39,7 @@ h1 {
 }
 
 .pin:active {
-  transform: translateY(1px);
-}
-
-.pin-down {
-  opacity: 0.3
+  transform: translateY(5px);
 }
 
 .reset, .gutter {
@@ -66,6 +62,11 @@ h1 {
   width: 70px;
 }
 
+.gutter:hover {
+  border: 1px solid rgb(223, 59, 54);
+}
+
+
 .reset:hover {
   background-color: white;
   color: rgb(223, 59, 54);
@@ -73,12 +74,8 @@ h1 {
   transition: 0.3s;
 }
 
-.reset:active {
-  transform: translateY(1px);
-}
-
-.gutter:hover {
-  border: 1px solid rgb(223, 59, 54);
+.reset:active, .gutter:active {
+  transform: translateY(2px);
 }
 
 .score, #score {
@@ -91,7 +88,7 @@ table, th, td {
   padding: 5px;
   width: 80px;
   margin: 0 auto;
-  border-radius: 30px
+  border-radius: 20px
 }
 
 table {

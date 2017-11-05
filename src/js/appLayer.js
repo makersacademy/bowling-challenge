@@ -57,43 +57,32 @@ function updateScoreCard(pins) {
   for (var i = 1; i <= 9; i++ ) {
     var frame = game.playedFrames()[i - 1];
     if (frame) {
-      $('#frame-' + i).append('<div class="frame-number"><span>' + i + '</span></div>');
-      $('#frame-' + i).append('<div class="round-one"><span>' + scoreCardLeft(frame) + '</span></div>');
-      $('#frame-' + i).append('<div class="round-two"><span>' + scoreCardSpareStrike(frame) + '</span></div>');
-      $('#frame-' + i).append('<div class="frame-score"><span>'+ frame.score() + '</span></div>');
-    } else if (i === game.currentFrame() && game.currentRound() === 2) {
-      $('#frame-' + i).append('<div class="frame-number"><span>' + i + '</span></div>');
-      $('#frame-' + i).append('<div class="round-one"><span>' + pins + '</span></div>');
-      $('#frame-' + i).append('<div class="round-two"><span></span></div>');
-      $('#frame-' + i).append('<div class="frame-score"><span></span></div>');
+      renderFrame(i, scoreCardLeft(frame), scoreCardSpareStrike(frame), undefined, frame.score());
+    } else if (i === (game.playedFrames().length + 1) && game.currentFrame().round() === 2) {
+      renderFrame(i, pins);      
     } else {
-      $('#frame-' + i).append('<div class="frame-number"><span>' + i + '</span></div>');
-      $('#frame-' + i).append('<div class="round-one"><span></span></div> ');
-      $('#frame-' + i).append('<div class="round-two"><span></span></div>');
-      $('#frame-' + i).append('<div class="frame-score"><span></span></div>');
+      renderFrame(i);            
     };  
   };
   var frame = game.playedFrames()[9];
   if (frame) {
-    $('#frame-' + i).append('<div class="frame-number"><span>' + i + '</span></div>');
-    $('#frame-' + i).append('<div class="round-one"><span>' + scoreCardFinalFrame(1) + '</span></div>');
-    $('#frame-' + i).append('<div class="round-two"><span>' + scoreCardFinalFrame(2) + '</span></div>');
-    $('#frame-' + i).append('<div class="round-three"><span>' + scoreCardFinalFrame(3) + '</span></div>');
-    $('#frame-' + i).append('<div class="frame-score"><span>'+ frame.score() + '</span></div>');
-  } else if (i === game.currentFrame() && game.currentFrame.round() === 2) {
-    $('#frame-' + i).append('<div class="frame-number"><span>' + i + '</span></div>');
-    $('#frame-' + i).append('<div class="round-one"><span>' + pins + '</span></div>');
-    $('#frame-' + i).append('<div class="round-two"><span></span></div>');
-    $('#frame-' + i).append('<div class="round-three"><span></span></div>');    
-    $('#frame-' + i).append('<div class="frame-score"><span></span></div>');
+    renderFrame(i, scoreCardFinalFrame(1), scoreCardFinalFrame(2), scoreCardFinalFrame(3), frame.score());
+  } else if (i === (game.playedFrames().length + 1) && game.currentFrame().round() === 2) {
+    renderFrame(i, pins);    
   } else {
-    $('#frame-' + i).append('<div class="frame-number"><span>' + i + '</span></div>');
-    $('#frame-' + i).append('<div class="round-one"><span></span></div> ');
-    $('#frame-' + i).append('<div class="round-two"><span></span></div>');
-    $('#frame-' + i).append('<div class="round-three"><span></span></div>');    
-    $('#frame-' + i).append('<div class="frame-score"><span></span></div>');
+    renderFrame(i);    
   };  
 };
+
+function renderFrame(frameNumber, roundOne = '', roundTwo = '', roundThree = '', score = '') {
+  $('#frame-' + frameNumber).append('<div class="frame-number"><span>' + frameNumber + '</span></div>');
+  $('#frame-' + frameNumber).append('<div class="round-one"><span>' + roundOne + '</span></div>');
+  $('#frame-' + frameNumber).append('<div class="round-two"><span>' + roundTwo + '</span></div>');
+  if (frameNumber === 10) {
+    $('#frame-' + frameNumber).append('<div class="round-three"><span>' + roundThree + '</span></div>');
+  };
+  $('#frame-' + frameNumber).append('<div class="frame-score"><span>' + score + '</span></div>');
+}
 
 function scoreCardLeft(frame) {
   if (frame.bowls()[0] === 10) {

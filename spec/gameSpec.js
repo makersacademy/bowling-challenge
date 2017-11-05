@@ -5,7 +5,7 @@ describe("The Bowling Game", function() {
 
 beforeEach(function(){
   game = new Game();
-  testframe = new Frame(); testframe.bowl(3) ; testframe.bowl(4);
+  testframe = new Frame(); testframe.bowl(3) ; testframe.bowl(4); testframe.saveScore();
 });
 
  it('is initialised with a frames array', function() {
@@ -34,10 +34,9 @@ beforeEach(function(){
     expect(game.frames()[0]).toEqual(jasmine.any(Frame));
   });
 
-  // it ('has a function to calculate the score of a frame', function(){
-  // var frameOne = jasmine.createSpyObj('frame', ['bowl']);
-  // frameOne.bowl(4);
-  // frameOne.bowl(5);
-  // expect(game.score(1)).toEqual(9);
-  // })
-;
+  it ('adds the score of the first frame to the scoresheet', function() {
+    game._frame = testframe;
+    console.log(game.frames());
+    game.addToScores();
+    expect(game.scores()[0]).toEqual(7);
+  });

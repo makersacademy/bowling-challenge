@@ -2,6 +2,7 @@
 function Game() {
   this._frames = [];
   this._frame = new Frame();
+  this._scores = [];
 }
 
 //getter functions
@@ -12,6 +13,10 @@ Game.prototype.frames = function() {
 
 Game.prototype.frame = function() {
   return this._frame;
+};
+
+Game.prototype.scores = function() {
+  return this._scores;
 };
 
 //functions to aid with scoring
@@ -34,7 +39,7 @@ Game.prototype.saveFrame = function() {
   this._frame = new Frame();
 };
 
-// Game.prototype.score = function(FrameNumber) {
-// var frame = game.FrameNo;
-//   if()
-// }
+Game.prototype.addToScores = function() {
+  score = this._frame.score();
+  this._scores.push(score);
+};

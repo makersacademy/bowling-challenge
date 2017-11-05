@@ -39,8 +39,6 @@ Frame.prototype.isOver = function() {
 
 //frame scoring
 
-
-
 Frame.prototype.saveScore = function() {
    if (this.isOpenFrame() == true) this._score = (this.bowls()[0] + this.bowls()[1]);
    if (this.isSpare() == true) this._score = '/';

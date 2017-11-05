@@ -54,12 +54,12 @@ Game.prototype._firstBowl = function (pins) {
 };
 
 Game.prototype._secondBowl = function (pins) {
+  this._frame.secondRoll(pins);
   if (this._frames.length === 10) {
     this._currentRoll = 3;
   } else {
     this._currentRoll = 1;
   };
-  this._frame.secondRoll(pins);
 };
 
 Game.prototype._bonusBowl = function (pins) {
@@ -67,9 +67,7 @@ Game.prototype._bonusBowl = function (pins) {
 };
 
 Game.prototype._newFrameNeeded = function () {
-  if (!this._frame) {
-    return true;
-  } else if (this._frame.isFinished()) {
+  if (!this._frame || this._frame.isFinished()) {
     return true;
   } else {
     return false;

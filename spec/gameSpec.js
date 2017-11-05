@@ -13,8 +13,4 @@ describe('Game', function() {
     expect(game.getPlayerName()).toEqual('Ollie');
   });
 
-  // it('gets the total score', function() {
-  //   expect(game.getTotalScore()).toEqual(0);
-  // });
-
 });

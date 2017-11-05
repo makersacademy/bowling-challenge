@@ -67,12 +67,14 @@ describe('Frame', function() {
     });
 
   });
-});
 
-it('adds the 10th frame\'s first roll to total score', function(){
-  game._frameAndRoll = [10, 1];
-  game.roll(7);
-  expect(game.getTotalScore()).toEqual(7);
+  it('only adds one roll strike bonus on the 10th roll', function() {
+    frame._frameAndRoll = [10, 1];
+    frame.roll(10);
+    frame.roll(10);
+    expect(frame.getTotalScore()).toEqual(30);
+
+  });
+
+
 });
-//
-// });

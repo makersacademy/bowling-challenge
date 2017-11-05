@@ -125,9 +125,9 @@ describe("Frame", function() {
           frame.ifBonusRequired(9);
           expect(previousFrame.ifBonusRequired).toHaveBeenCalledWith(9);
         })
-        it("does not reduce the number of bonus rolls needed on itself", function() {
+        it("also reduces the number of bonus rolls needed on itself", function() {
           frame.ifBonusRequired(9);
-          expect(frame.bonusRollsRequired()).toEqual(2);
+          expect(frame.bonusRollsRequired()).toEqual(1);
         })
       })
     })

@@ -1,0 +1,208 @@
+html {
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Montserrat Alternates', sans-serif;  
+}
+
+#home {
+  position: relative;
+  height: 100vh;
+}
+
+#home #header {
+  width: 100vw;
+  font-size: 10vw;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  color: transparent;
+  display: inline-block;
+}
+
+#home #header > span {
+  background-image: linear-gradient(to bottom, rgb(235, 213, 108), rgb(102, 1, 1)); 
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  display:block;
+  text-shadow: 0 0 1px ;
+}
+
+#score {
+  color: white;
+  font-size: 5vh;
+}
+
+#home button {
+  width: 10vw;
+  height: 5vw;
+  outline: none;
+  border: 2px solid white;
+  border-radius: .5vw;
+  box-shadow: 0 0 1vw white;
+  background-color: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5vw;
+  color: rgb(102, 1, 1);
+}
+
+#home button:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;  
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.play, .game-info {
+  display: none;
+}
+
+body {
+  width: 100%;
+  width: 100vw;
+  height: 90vh;
+  margin: 0 auto;
+  background-image: linear-gradient(to bottom, rgb(102, 1, 1) -10%, rgb(235, 213, 108));
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  text-align: center;
+}
+
+#all-frames {
+  width: 100vw;
+  margin: 0 auto;
+  text-align: center;
+  list-style: none;
+  padding: 0;
+  font-size: 0;
+}
+
+.each-frame {
+  display: inline-block;
+  width: 10vw;
+  min-width: 100px;
+  height: 10vw;
+  min-height: 100px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 3px 1.5px 3px 1.5px;
+  border-color: rgb(235, 213, 108);
+  margin: 0;
+}
+
+.each-frame div {
+  float: left;
+  font-size: 1vw;
+  color: rgb(235, 213, 108);
+  position: relative;  
+}
+
+.each-frame:first-child {
+  border-left-width: 3px;
+}
+
+.each-frame:last-child {
+  border-right-width: 3px;
+}
+
+.frame-number, .frame-score {
+  margin: 0;
+  width: 100%;
+  height: 20%;
+  box-sizing: border-box;
+  border-width: 0;
+  border-bottom-width: 3px;  
+  border-style: solid;
+  border-color: rgb(235, 213, 108);
+}
+
+.round-one, .round-two {
+  width: 50%;
+  height: 40%;
+  margin: 0;  
+  box-sizing: border-box;
+}
+
+.frame-score {
+  height: 40%;
+  border: none;
+}
+
+#all-frames div span {
+  display: block;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
+.round-two {
+  border-width: 0;
+  border-left-width: 3px;
+  border-bottom-width: 3px;  
+  border-style: solid;
+  border-color: rgba(235, 213, 108, .3);
+}
+
+#frame-10 > .round-one {
+  width: 34%;
+}
+
+#frame-10 > .round-two {
+  width: 33%;
+}
+
+#frame-10 .round-three {
+  width: 33%;
+  height: 40%;
+  margin: 0;
+  border-width: 0;
+  border-left-width: 3px;
+  border-bottom-width: 3px;  
+  border-style: solid;
+  border-color: rgba(235, 213, 108, .3);
+  box-sizing: border-box;
+}
+
+section > p {
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.score {
+  text-align: right;
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+#pin-selection {
+  text-align: center;
+  margin-top: 10%;
+}
+
+.pins {
+  width: 5vw;
+  min-width: 50px;
+  height: 5vw;
+  min-height: 50px;  
+  border-radius: 50%;
+  margin: .8vw;
+  border: 1px solid white;
+  outline: none;
+  background-color: transparent;
+  box-shadow: 0 0 1vw white;
+  font-size: 2vw;
+  color: rgb(235, 213, 108);
+}

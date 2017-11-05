@@ -43,9 +43,13 @@ Game.prototype._firstBowl = function (pins) {
   this._frame.firstRoll(pins);
   this._frames.push(this._frame);
   if (this._currentFrame.isAStrike()) {
-    this._currentRoll = 1
+    if (this._frames.length === 10) {
+      this._currentRoll = 2;
+    } else {
+    this._currentRoll = 1;
+    };
   } else {
-    this._currentRoll = 2
+    this._currentRoll = 2;
   };
 };
 

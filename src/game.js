@@ -2,8 +2,19 @@
 function Game() {
   this._frames = [];
   this._frame = new Frame();
-  this._scores = [];
-  this._totalScore = 0
+  this._scores = {
+      1: [],
+      2: [],
+      3: [],
+      4: [],
+      5: [],
+      6: [],
+      7: [],
+      8: [],
+      9: [],
+      10: []
+    };
+  this._totalScore = 0;
 }
 
 //getter functions
@@ -20,10 +31,14 @@ Game.prototype.scores = function() {
   return this._scores;
 };
 
+Game.prototype.totalScore = function() {
+  return this._toalScore;
+};
+
 //functions to aid with scoring
 
 Game.prototype.FrameNo = function() {
-  return this.frames.length + 1;
+  return this._frames.length + 1;
 };
 
 Game.prototype.isFirstFrame = function() {
@@ -41,15 +56,17 @@ Game.prototype.saveFrame = function() {
 };
 
 Game.prototype.addToScores = function() {
-  score = this._frame.score();
-  this._scores.push(score);
+  var score = this._frame.score();
+  var frameNumber = this.FrameNo();
+  if (this._frame.isOpenFrame() == true) this._scores[frameNumber] = score;
   this.totalScore();
 };
 
 Game.prototype.totalScore = function() {
-  this._totalScore = this._scores.reduce(this.add, 0);
+  var totals = Object.values(this._scores);
+  this._totalScore = Number(totals.reduce(this._add, 0));
 };
 
-Game.prototype.add = function (a, b) {
+Game.prototype._add = function (a, b) {
     return a + b;
 };

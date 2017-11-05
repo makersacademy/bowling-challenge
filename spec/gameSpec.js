@@ -40,16 +40,14 @@ beforeEach(function(){
 //how to create the conditions to test a function
 //which relies on the condition of another object being correct.
 
-  it ('adds the score of the first frame to the scoresheet', function() {
+  it ('adds the score of an open frame to the scoresheet', function() {
     game._frame = testframeOne;
     game.addToScores();
-    expect(game.scores()[0]).toEqual(7);
+    expect(game.scores()[1]).toEqual(7);
   });
 
 it ('has a total score for the game', function() {
-  game._frame = testframeOne;
-  game.addToScores();
-  game._frame = testframeTwo;
-  game.addToScores();
+  game._frame = testframeOne; game.addToScores(); game.saveFrame();
+  game._frame = testframeTwo; game.addToScores(); game.saveFrame();
   expect(game._totalScore).toEqual(16);
 });

@@ -29,14 +29,15 @@ Frame.prototype.getSpareBonus = function() {
 }
 
 Frame.prototype.score = function() {
-  var bonus;
-  if(this.isStrike()) {
-    bonus = this.next.getStrikeBonus();
-  } else if (this.isSpare()) {
-    bonus = this.next.getSpareBonus();
-  }  else {
-    bonus = 0;
-  }
+  return (this.rollOne + this.rollTwo + this.getBonus());
+}
 
-  return (this.rollOne + this.rollTwo + bonus);
+Frame.prototype.getBonus = function() {
+  if(this.isStrike()) {
+    return this.next.getStrikeBonus();
+  } else if (this.isSpare()) {
+    return this.next.getSpareBonus();
+  }  else {
+    return 0;
+  }
 }

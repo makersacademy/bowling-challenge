@@ -58,6 +58,19 @@ Game.prototype.saveFrame = function() {
 Game.prototype.addToScores = function() {
   var score = this._frame.score();
   var frameNumber = this.FrameNo();
+  if (frameNumber == 1)
+   {this.addFirstFrameScore();
+   }else if (this._frames[frameNumber - 2].isSpare() == true) {
+    this._scores[frameNumber - 1] = (10 + this._frame.bowls()[0]);
+   }else if (this._frame.isOpenFrame() == true) this._scores[frameNumber] = score; {
+  this.totalScore();
+}
+};
+
+Game.prototype.addFirstFrameScore = function() {
+  var score = this._frame.score();
+  console.log(score);
+  var frameNumber = this.FrameNo();
   if (this._frame.isOpenFrame() == true) this._scores[frameNumber] = score;
   this.totalScore();
 };

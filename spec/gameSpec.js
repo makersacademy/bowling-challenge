@@ -9,6 +9,7 @@ beforeEach(function(){
   game = new Game();
   testframeOne = new Frame(); testframeOne.bowl(3) ; testframeOne.bowl(4); testframeOne.saveScore();
   testframeTwo = new Frame(); testframeTwo.bowl(5) ; testframeTwo.bowl(4); testframeTwo.saveScore();
+  testSpareOne = new Frame(); testSpareOne.bowl(3) ; testSpareOne.bowl(7); testSpareOne.saveScore();
   gutterframe = new Frame(); gutterframe.bowl(0) ; gutterframe.bowl(0); gutterframe.saveScore(0);
 });
 
@@ -57,6 +58,12 @@ it ('has a total score for the game', function() {
 it ('can score a Gutter Game at zero', function() {
   gutterGame();
   expect(game._totalScore).toEqual(0);
+});
+
+it ('can pass the bonus roll to the score from Spare frame', function() {
+  game._frame = testSpareOne; game.addToScores(); game.saveFrame();
+  game._frame = testframeTwo; game.addToScores(); game.saveFrame();
+  expect(game.scores()[1]).toEqual(15);
 });
 
 var gutterGame = function () {

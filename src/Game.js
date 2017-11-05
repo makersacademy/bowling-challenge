@@ -19,8 +19,7 @@ Game.prototype._addNewFrame = function(rollValue) {
 };
 
 Game.prototype.totalScore = function() {
-  var scoreCalculator = new ScoreCalculator(this._frames);
-  return scoreCalculator.totalScore();
+  return this._lastFrame().runningTotal();
 };
 
 Game.prototype.numberOfFrames = function() {

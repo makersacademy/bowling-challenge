@@ -2,12 +2,14 @@ describe("The Bowling Game", function() {
   var game;
   var testframeOne;
   var testframeTwo;
+  var gutterframe;
 });
 
 beforeEach(function(){
   game = new Game();
   testframeOne = new Frame(); testframeOne.bowl(3) ; testframeOne.bowl(4); testframeOne.saveScore();
   testframeTwo = new Frame(); testframeTwo.bowl(5) ; testframeTwo.bowl(4); testframeTwo.saveScore();
+  gutterframe = new Frame(); gutterframe.bowl(0) ; gutterframe.bowl(0); gutterframe.saveScore(0);
 });
 
  it('is initialised with a frames array', function() {
@@ -51,3 +53,14 @@ it ('has a total score for the game', function() {
   game._frame = testframeTwo; game.addToScores(); game.saveFrame();
   expect(game._totalScore).toEqual(16);
 });
+
+it ('can score a Gutter Game at zero', function() {
+  gutterGame();
+  expect(game._totalScore).toEqual(0);
+});
+
+var gutterGame = function () {
+  for (var i = 0; i < 10; i++) {
+  game._frame = gutterframe; game.addToScores(); game.saveFrame();
+    }
+  };

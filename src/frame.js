@@ -17,13 +17,16 @@ Frame.prototype.isSpare = function() {
 }
 
 Frame.prototype.score = function() {
-  if(this.isSpare()) {
+  var bonus;
+  if(this.isStrike()) {
 
   }
-  else if (this.isStrike()) {
-
+  else if (this.isSpare()) {
+    bonus = this.next.rollOne;
   }
   else {
-    return (this.rollOne + this.rollTwo);
+    bonus = 0;
   }
+  return (this.rollOne + this.rollTwo + bonus);
+
 }

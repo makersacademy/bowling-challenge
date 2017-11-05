@@ -21,4 +21,13 @@ describe("Frame", function() {
     frame.rollTwo = 5;
     expect(frame.score()).toEqual(8);
   })
+
+  it("should, if a spare, have a bonus of rollOne from the next frame", function() {
+    frame.rollOne = 3;
+    frame.rollTwo = 7;
+    nextFrame = new Frame();
+    frame.next = nextFrame;
+    nextFrame.rollOne = 4
+    expect(frame.score()).toEqual(14);
+  })
 })

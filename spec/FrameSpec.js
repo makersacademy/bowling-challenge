@@ -10,4 +10,11 @@ describe("Frame", function() {
     expect(frame.isStrike()).toBe(true);
   });
 
+  it("should return true for isSpare if rollOne + rollTwo is 10", function() {
+    frame.rollOne = 5;
+    frame.rollTwo = 5;
+    expect(frame.isSpare()).toBe(true);
+  });
+
+
 })

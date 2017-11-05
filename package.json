@@ -1,0 +1,32 @@
+{
+  "name": "ten_pin_bowling",
+  "version": "1.0.0",
+  "description": "A JavaScript bowling game using jQuery",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {
+    "eslint": "^4.10.0"
+  },
+  "devDependencies": {
+    "eslint-config-google": "^0.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haletothewood/bowling-challenge.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "David Halewood",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haletothewood/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/haletothewood/bowling-challenge#readme"
+}

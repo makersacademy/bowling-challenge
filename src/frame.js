@@ -2,7 +2,7 @@
 
 function Frame() {
   this.next = null;
-
+  this.previous = null;
   this.rollOne = null;
   this.rollTwo = null;
 

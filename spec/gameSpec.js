@@ -1,9 +1,11 @@
 describe("The Bowling Game", function() {
   var game;
+  var testframe;
 });
 
 beforeEach(function(){
   game = new Game();
+  testframe = new Frame(); testframe.bowl(3) ; testframe.bowl(4);
 });
 
  it('is initialised with a frames array', function() {
@@ -26,3 +28,8 @@ beforeEach(function(){
  it ('has a function to provide the frame index', function() {
    expect(game.FrameIndex()).toEqual(0);
  });
+
+it ('has a function to push the frame to the frames array', function() {
+  game.saveFrame();
+  expect(game.frames()[0]).toEqual(jasmine.any(Frame));
+});

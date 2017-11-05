@@ -27,3 +27,8 @@ Game.prototype.isFirstFrame = function() {
 Game.prototype.FrameIndex = function() {
   return this.frames.length;
 };
+
+Game.prototype.saveFrame = function() {
+  if (this.frame.isOver == false) throw new Error ("Frame is not over");
+  this._frames.push(this._frame);
+};

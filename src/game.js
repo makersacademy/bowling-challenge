@@ -3,6 +3,7 @@ function Game() {
   this._frames = [];
   this._frame = new Frame();
   this._scores = [];
+  this._totalScore = 0
 }
 
 //getter functions
@@ -42,4 +43,13 @@ Game.prototype.saveFrame = function() {
 Game.prototype.addToScores = function() {
   score = this._frame.score();
   this._scores.push(score);
+  this.totalScore();
+};
+
+Game.prototype.totalScore = function() {
+  this._totalScore = this._scores.reduce(this.add, 0);
+};
+
+Game.prototype.add = function (a, b) {
+    return a + b;
 };

@@ -1,11 +1,13 @@
 describe("The Bowling Game", function() {
   var game;
-  var testframe;
+  var testframeOne;
+  var testframeTwo;
 });
 
 beforeEach(function(){
   game = new Game();
-  testframe = new Frame(); testframe.bowl(3) ; testframe.bowl(4); testframe.saveScore();
+  testframeOne = new Frame(); testframeOne.bowl(3) ; testframeOne.bowl(4); testframeOne.saveScore();
+  testframeTwo = new Frame(); testframeTwo.bowl(5) ; testframeTwo.bowl(4); testframeTwo.saveScore();
 });
 
  it('is initialised with a frames array', function() {
@@ -34,9 +36,20 @@ beforeEach(function(){
     expect(game.frames()[0]).toEqual(jasmine.any(Frame));
   });
 
+//discuss this with a coach
+//how to create the conditions to test a function
+//which relies on the condition of another object being correct.
+
   it ('adds the score of the first frame to the scoresheet', function() {
-    game._frame = testframe;
-    console.log(game.frames());
+    game._frame = testframeOne;
     game.addToScores();
     expect(game.scores()[0]).toEqual(7);
   });
+
+it ('has a total score for the game', function() {
+  game._frame = testframeOne;
+  game.addToScores();
+  game._frame = testframeTwo;
+  game.addToScores();
+  expect(game._totalScore).toEqual(16);
+});

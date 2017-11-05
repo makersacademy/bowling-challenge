@@ -19,7 +19,7 @@ Game.prototype.score = function(){
   for(var frameIndex = 0; frameIndex < 10; frameIndex++) {
     if(isStrike()) {
       getStrikeScore();
-      rollIndex += 1;
+      rollIndex ++;
     }else if(isSpare()){
       getSpareScore();
       rollIndex += 2;

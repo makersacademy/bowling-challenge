@@ -75,3 +75,63 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+## Notes:
+
+* Have three elements in the score card,
+  the third being the score.
+
+* At each go, there should be an adjustment to a previous score,
+  based on whether there was a strike or a spare.
+
+* go() method should check for whether it was a strike or a spare in a previous go,
+  returning the amplification factor and the distance between the current length of the array and the go whose score needs adjusting
+
+##### EXPLAIN: when working on how to adjust the previous scores, you need to find out which element's score must be adjusted, so you've got know how far back in the array to look.
+
+  * it should also call a method which does the admin,
+    adding scores and new totals to the scores array
+
+* Score showing on the screen should be calculated by always summing the third elements of the scores array,
+  not simply added to
+
+## User Stories, not really
+
+* As a week 6 maker,
+  I want to have a working bowling challenge without the bonuses.
+
+* As a week 6 maker,
+  I want to have a working bowling challenge with strikes giving a bonus.
+
+* As a week 6 maker,
+  I want to have a working bowling challenge with spares giving a bonus.
+
+
+## Notes on spares
+
+* needs to be:
+    turn 1,
+    if the last frame added up to 10,
+    the last frames first roll wasn't 10
+
+## Notes on strikes
+
+* needs to be:
+    turn 1 or 2,
+    if the last frame's first roll was 10,
+    or, for two times,
+    the last two shots were 10, i.e. for the last two frames, the first shot has been 10
+
+## Notes on when to end
+
+* needs to be:
+    turn 1,
+    if the last frame's total isn't 10
+    turn 2,
+    if the last frame's first roll isn't 10
+
+
+    turn 1
+    last frame was a spare or a strike
+    turn 2
+    last frame was a strike

@@ -8,6 +8,10 @@
 	line-height: 24px;
 }
 
+p {
+  font-size: 20px; 
+}
+
 .frame {
   border: 1px solid black;
   height: 150px;
@@ -43,7 +47,6 @@
 
 .rollOneFrameTen, .rollTwoFrameTen, .rollThreeFrameTen {
   border: 1px solid black;
-  /*width: 59px;*/
   margin: -1px;
   margin-right: -4px;
   left: -2px;

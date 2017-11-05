@@ -53,4 +53,14 @@ describe ('Feature tests: Player', function() {
     })
   })
 
+  describe('#strikeScore', function() {
+    it('can return the correct score for a game with strikes', function() {
+      player.roll(10);
+      player.roll(0);
+      player.roll(5);
+      player.roll(4);
+      expect(player.strikeScore()).toEqual(28);
+    })
+  })
+
 });

@@ -1,77 +1,58 @@
 
-Bowling Challenge
+Bowling Scorecard
 =================
 
+This is an implementation of a bowling scorecard with a user interface. For rules of ten-pin bowling [click here](https://en.wikipedia.org/wiki/Ten-pin_bowling#Play).
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+To see a short video demonstrating the bowling scorecard in use, [click here](https://www.youtube.com/watch?v=suvjufqDdmk&feature=youtu.be&hd=1).
 
-## The Task
+![bowling scorecard screenshot](images/screenshot.png)
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+## Technologies Used
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+* JavaScript - implementation of the scorecard
+* jQuery, HTML, CSS - user interface
+* Jasmine - testing
 
-As usual please start by
+## Instructions
 
-* Forking this repo
+This app is not currently hosted anywhere. To use it, you will need to clone this GitHub repo and open the `index.html` in a web browser.
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+### Using the Scorecard
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+```
+$ git clone git@github.com:jonsanders101/bowling-challenge.git
+$ cd bowling-challenge
+$ open index.html
+```
 
-Also, don't generate random rolls. Trust us on this one.
+### Running the Test Suite
 
-### Optional Extras
+```
+$ git clone git@github.com:jonsanders101/bowling-challenge.git
+$ cd bowling-challenge
+$ open SpecRunner.html
+```
 
-In any order you like:
+### Project Review
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+This is a non-exhaustive list of weaknesses I have identified in this project and actions to improve these.
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+## Implementation
+* The scorecard is currently implemented through one monolithic `Game` object. To improve on this design, I would extract implementation into `Scorecard` and `Frame` classes which would remove the need for the large object currently held in the `Game` object.
+* I would also add a `Match` object which could handle multiple `Game` objects, allowing the user to see total points scored over multiple games.
+* A big weakness of implementing the scorecard through this scorecard object is the long, repetitive statements used to access particular values within the object (e.g. `this.scorecard[this.currentFrame][this.currentRoll]['hitPins'] = hitPins`).
+* The use of numbers as keys within the scorecard object representing frames and rolls provided a convenient way to access particular values. This is at the expense of readability. I initially used strings as keys such as `frame7` and `roll2` and used methods to concatenate numbers, which made their meaning clearer to the user but add superfluous steps.
 
-## Bowling — how does it work?
+## User Interface
+* There is nothing to indicate which numbers of pins can't be chosen by the user because they exceed the number of pins remaining for that frame. Currently, when those buttons are pressed, nothing changes on the screen. I would use jQuery to change the appearance of the buttons reflection those options and make them unclickable.
+* There is no interaction with particular features of the bowling game such as a gutter game, a perfect game, a strike or a spare. I would add features which indicated these scenarios.
+* The table displaying the scorecard is difficult to read and requires further design work. I would make the table static when new values appear on it.
 
-### Strikes
+## Testing
+* Further attention is needed on the test suite to ensure all outcomes of the game are covered.
+* The behaviour of the random bowl is currently stubbed with a long list of return values. Many of these tests were written before the option for the user to select a certain number of pins was added, so many of these tests can be refactored using explicit values. The use of helper methods would slim the test suite further.
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+## Delivery
+* This solution is not currently implemented through a web interface. I would create one using a Sinatra framework to allow the app to be hosted.
+* There is no persistence so the user cannot access information from previous games after they have closed the browser. With a web interface, I would use HTML web storage to allow the user to store game data in localStorage for use between games.

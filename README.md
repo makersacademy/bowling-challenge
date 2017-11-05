@@ -6,7 +6,7 @@ Bowling Challenge
 ## Gameplay
 
 <p align='center'>
-<img align='center' src='https://media.giphy.com/media/l2QE0BJftbSdR8v8A/giphy.gif'>
+<img align='center' src='images/gamePlay.gif'>
 </p>
 
 ## The Brief

@@ -16,5 +16,9 @@ describe("Frame", function() {
     expect(frame.isSpare()).toBe(true);
   });
 
-
+  it("should return its score as the sum of rollOne and rollTwo (no spare/strike)", function() {
+    frame.rollOne = 3;
+    frame.rollTwo = 5;
+    expect(frame.score()).toEqual(8);
+  })
 })

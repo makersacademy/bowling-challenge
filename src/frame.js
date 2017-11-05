@@ -15,3 +15,15 @@ Frame.prototype.isStrike = function() {
 Frame.prototype.isSpare = function() {
   return (this.rollOne + this.rollTwo == 10 && !!this.rollTwo);
 }
+
+Frame.prototype.score = function() {
+  if(this.isSpare()) {
+
+  }
+  else if (this.isStrike()) {
+
+  }
+  else {
+    return (this.rollOne + this.rollTwo);
+  }
+}

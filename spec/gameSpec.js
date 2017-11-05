@@ -29,7 +29,15 @@ beforeEach(function(){
    expect(game.FrameIndex()).toEqual(0);
  });
 
-it ('has a function to push the frame to the frames array', function() {
-  game.saveFrame();
-  expect(game.frames()[0]).toEqual(jasmine.any(Frame));
-});
+  it ('has a function to push the frame to the frames array', function() {
+    game.saveFrame();
+    expect(game.frames()[0]).toEqual(jasmine.any(Frame));
+  });
+
+  // it ('has a function to calculate the score of a frame', function(){
+  // var frameOne = jasmine.createSpyObj('frame', ['bowl']);
+  // frameOne.bowl(4);
+  // frameOne.bowl(5);
+  // expect(game.score(1)).toEqual(9);
+  // })
+;

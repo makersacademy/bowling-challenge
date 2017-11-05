@@ -42,3 +42,9 @@ beforeEach(function(){
     frame.bowl(2);
     expect(frame.isOver()).toBe(true);
   });
+
+  it ("has a function to calculate the score of a frame", function() {
+    frame.bowl(1);
+    frame.bowl(2);
+    expect(frame.score()).toEqual(3);
+  });

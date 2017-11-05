@@ -31,4 +31,10 @@ Game.prototype.FrameIndex = function() {
 Game.prototype.saveFrame = function() {
   if (this.frame.isOver == false) throw new Error ("Frame is not over");
   this._frames.push(this._frame);
+  this._frame = new Frame();
 };
+
+// Game.prototype.score = function(FrameNumber) {
+// var frame = game.FrameNo;
+//   if()
+// }

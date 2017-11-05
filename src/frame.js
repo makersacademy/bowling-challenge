@@ -31,3 +31,7 @@ Frame.prototype.isOpenFrame = function() {
 Frame.prototype.isOver = function() {
   if (this._bowls.length == 2|| this.bowls()[0] == 10) return true;
 };
+
+Frame.prototype.score = function() {
+   if (this.isOpenFrame() == true) return this.bowls()[0] + this.bowls()[1];
+};

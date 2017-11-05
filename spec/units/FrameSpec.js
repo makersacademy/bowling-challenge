@@ -68,7 +68,6 @@ describe("Frame", function() {
           expect(frame.isSpare()).toEqual(true);
         })
         it("sets the number of bonus rolls required to one", function() {
-          console.log(frame)
           expect(frame.bonusRollsRequired()).toEqual(1);
         })
       })

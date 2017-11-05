@@ -3,16 +3,23 @@ $(document).ready(function () {
   var game = new Game()
 
   $(".pin, .gutter").click(function () {
-    var pins = (Number($(this).val()))
-    var roll = game.currentRoll()
+    var pins = (Number($(this).val()));
+    var roll = game.currentRoll();
     try {
-      game.bowl(pins)
+      game.bowl(pins);
     }
     catch(error) {
       alert(error)
     }
-    var frame = game._frames.length
-    $('.frame' + frame + '-roll' + roll).html(game._currentFrame._pinsKnockedDown[roll-1])
+    var frame = game._frames.length;
+    if (pins === 10) {
+      var score = 'X';
+    } else if (pins !== 10 && game._currentFrame.getScore() === 10) {
+      var score = '/';
+    } else {
+      var score = game._currentFrame._pinsKnockedDown[roll-1];
+    }
+    $('.frame' + frame + '-roll' + roll).html(score)
     for (var i = 1; i <= frame; i++) {
       $('.frame' + i + '-score').html(game._frames[i-1].getScore())
     }

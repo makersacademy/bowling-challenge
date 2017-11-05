@@ -48,3 +48,9 @@ beforeEach(function(){
     frame.bowl(2);
     expect(frame.score()).toEqual(3);
   });
+
+  it ("it's score function provides '/' for a Spare", function() {
+    frame.bowl(5);
+    frame.bowl(5);
+    expect(frame.score()).toEqual('/');
+  });

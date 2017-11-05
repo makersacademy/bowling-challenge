@@ -34,4 +34,5 @@ Frame.prototype.isOver = function() {
 
 Frame.prototype.score = function() {
    if (this.isOpenFrame() == true) return this.bowls()[0] + this.bowls()[1];
+   if (this.isSpare() == true) return '/';
 };

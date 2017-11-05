@@ -16,22 +16,22 @@ Frame.prototype = {
   },
 
   score: function () {
-    if (!this.isComplete() || this.isPendingBonus()) return '';
+    if (!this.isFrameComplete() || this.isPendingBonus()) return '';
     return this._bowls.reduce(this._sum, 0);
   },
 
   bowl: function (pins) {
     if (pins > this.pinsRemaining()) throw new Error('number to knock down cannot be greater than the number of pins remaning')
-    if (this.isComplete()) throw new Error('cannot bowl more than twice for a frame');
+    if (this.isFrameComplete()) throw new Error('cannot bowl more than twice for a frame');
     this._pins -= pins;
     this._bowls.push(pins);
   },
 
-  bowlRound: function () {
+  round: function () {
     return this._bowls.length + 1;
   },
 
-  isComplete: function () {
+  isFrameComplete: function () {
     return this._bowls.length === 2 || this.pinsRemaining() === 0;
   },
 

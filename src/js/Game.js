@@ -7,52 +7,41 @@ function Game() {
 
 Game.prototype = {
   
-  currentFrame: function () {
-    if (this.isComplete()) return this._frames.length;
-    return this._frames.length + 1;
+  bowl: function (pins) {
+    if (this.isGameComplete() && !this.isExtraBowlAllowed()) throw new Error('Game has been completed');
+    this._addBonuses(pins);
+    this._completeRound(pins);
   },
 
-  frames: function () {
+  currentFrame: function () {
+    return this._frame;
+  },
+
+  playedFrames: function () {
     return this._frames;
   },
 
-  pinsRemaining: function () {
-    return this._frame.pinsRemaining();
+  totalScore: function () {
+    return this._frames.map(function (frame) {
+      return frame.score();
+    }).reduce(this._sum, 0);
   },
 
-  bowl: function (pins) {
-    if (this.isComplete() && !this.isAllowExtraBowl()) throw new Error('Game has been completed');
-    this._addBonuses(pins);
-    this._completeBowl(pins);
-  },
-
-  currentRound: function () {
-    return this._frame.bowlRound();
-  },
-
-  score: function () {
-    return this._frames.map(this.frameScore, this).reduce(this._sum, 0);
-  },
-
-  frameScore: function (frame) {
-    return frame.bowls().reduce(this._sum, 0);
-  },
-
-  isAllowExtraBowl: function () {
+  isExtraBowlAllowed: function () {
     return this._frames[this._frames.length - 1].isPendingBonus();
   },
 
-  isComplete: function () {
+  isGameComplete: function () {
     return this._frames.length >= 10;
   },
 
-  _completeBowl: function (pins) {
+  _completeRound: function (pins) {
     this._frame.bowl(pins);
-    if (this._frame.isComplete()) this._setNextFrame();
+    if (this._frame.isFrameComplete()) this._startNextFrame();
   },
 
-  _setNextFrame: function () {
-    if (!this.isComplete()) this._frames.push(this._frame);
+  _startNextFrame: function () {
+    if (!this.isGameComplete()) this._frames.push(this._frame);
     this._frame = new Frame();
   },
 

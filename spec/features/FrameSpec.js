@@ -59,33 +59,33 @@ describe('Frame', function () {
 
   });
 
-  describe('bowlRound', function () {
+  describe('round', function () {
     
     describe('first bowl', function () {
       it('returns what bowl the player is currently on', function () {
-        expect(frame.bowlRound()).toEqual(1);
+        expect(frame.round()).toEqual(1);
       });
     });
 
     describe('second bowl', function () {
       it('returns what bowl the player is currently on', function () {
         frame.bowl(5)
-        expect(frame.bowlRound()).toEqual(2);
+        expect(frame.round()).toEqual(2);
       });
     });
 
   });
 
-  describe('isComplete', function () {
+  describe('isFrameComplete', function () {
     
     it('returns true for a vanilla frame', function () {
       frame.bowl(3);
       frame.bowl(4);
-      expect(frame.isComplete()).toEqual(true);
+      expect(frame.isFrameComplete()).toEqual(true);
     });
     it('returns true for a strike', function () {
       frame.bowl(10);
-      expect(frame.isComplete()).toEqual(true);
+      expect(frame.isFrameComplete()).toEqual(true);
     });
 
   })

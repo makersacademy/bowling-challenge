@@ -7,58 +7,22 @@ describe('Game', function () {
   beforeEach(function () {
     game = new Game();
   })
-  
-  describe('currentFrame', function () {
-    
-    it('starts on the first frame', function () {
-      expect(game.currentFrame()).toEqual(1);
-    });
-    it('moves onto next frame when complete', function () {
-      game.bowl(7);
-      game.bowl(3);
-      expect(game.currentFrame()).toEqual(2);
-    });
-    it('cannot be higher than 10', function () {
-      for (var i = 0; i < 10; i++) {
-        game.bowl(10);
-      };
-      game.bowl(3);
-      expect(game.currentFrame()).toEqual(10);
-    });
-
-  })
 
   describe('frames', function () {
     
     it('returns the current frames played so far', function () {
       game.bowl(7);
       game.bowl(2);
-      expect(game.frames()).toEqual(jasmine.arrayContaining([Object({ _pins: 1, _bowls: [7, 2] })]));
+      expect(game.playedFrames()).toEqual(jasmine.arrayContaining([Object({ _pins: 1, _bowls: [7, 2] })]));
     })
 
-  })
-
-  describe('pinsRemaining', function () {
-    
-    it('returns the remaining pins to knock down', function () {
-      expect(game.pinsRemaining()).toEqual(10);
-    });
-  
   });
 
   describe('bowl', function () {
     
     it('knocks down some pins', function () {
       game.bowl(7);
-      expect(game.pinsRemaining()).toEqual(3);
-    });
-
-  });
-
-  describe('currentRound', function () {
-
-    it('returns what bowl the player is currently on', function () {
-      expect(game.currentRound()).toEqual(1);
+      expect(game.currentFrame().pinsRemaining()).toEqual(3);
     });
 
   });
@@ -70,14 +34,14 @@ describe('Game', function () {
       describe('after the first bowl', function () {
         it('returns nothing', function () {
           game.bowl(6);
-          expect(game.score()).toEqual(0);
+          expect(game.totalScore()).toEqual(0);
         });
       });
       describe('after the second bowl', function () {
         it('returns the correct score', function () {
           game.bowl(6);
           game.bowl(3);
-          expect(game.score()).toEqual(9);
+          expect(game.totalScore()).toEqual(9);
         });
       });
       describe('after a spare', function () {
@@ -85,7 +49,7 @@ describe('Game', function () {
           game.bowl(6);
           game.bowl(4);
           game.bowl(4);
-          expect(game.score()).toEqual(14);
+          expect(game.totalScore()).toEqual(14);
         });
       });
       describe('after a strike', function () {
@@ -93,7 +57,7 @@ describe('Game', function () {
           game.bowl(10);
           game.bowl(4);
           game.bowl(4);
-          expect(game.score()).toEqual(26);
+          expect(game.totalScore()).toEqual(26);
         });
       });
 

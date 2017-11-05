@@ -1,11 +1,16 @@
 function Frame() {
   this._bowls = [];
+  this._score = 0;
 }
 
 //getters
 
 Frame.prototype.bowls = function() {
   return this._bowls;
+};
+
+Frame.prototype.score = function() {
+  return this._score;
 };
 
 //straight forward Frame business
@@ -32,8 +37,12 @@ Frame.prototype.isOver = function() {
   if (this._bowls.length == 2|| this.bowls()[0] == 10) return true;
 };
 
-Frame.prototype.score = function() {
-   if (this.isOpenFrame() == true) return this.bowls()[0] + this.bowls()[1];
-   if (this.isSpare() == true) return '/';
-   if (this.isStrike() ==true) return 'X';
+//frame scoring
+
+
+
+Frame.prototype.saveScore = function() {
+   if (this.isOpenFrame() == true) this._score = (this.bowls()[0] + this.bowls()[1]);
+   if (this.isSpare() == true) this._score = '/';
+   if (this.isStrike() ==true) this._score = 'X';
 };

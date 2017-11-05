@@ -43,20 +43,9 @@ beforeEach(function(){
     expect(frame.isOver()).toBe(true);
   });
 
-  it ("has a function to calculate the score of a frame", function() {
+  it ("its saveScore function the score to to its score property", function() {
     frame.bowl(1);
     frame.bowl(2);
+    frame.saveScore();
     expect(frame.score()).toEqual(3);
-  });
-
-  it ("it's score function provides '/' for a Spare", function() {
-    frame.bowl(5);
-    frame.bowl(5);
-    expect(frame.score()).toEqual('/');
-  });
-
-  it ("it's score function provides 'X' for a Strike", function() {
-    frame.bowl(10);
-    frame.bowl(0);
-    expect(frame.score()).toEqual('X');
   });

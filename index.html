@@ -8,7 +8,6 @@
   <script src="src/Frame.js"></script>
   <script src="src/FrameTen.js"></script>
   <script src="src/Game.js"></script>
-  <script src="src/ScoreCalculator.js"></script>
   <script src="src/interface.js"></script>
 
   <link rel="stylesheet" href="src/main.css" />
@@ -17,6 +16,7 @@
 
 <body>
   <div id="scoreCard">
+    <h1>GIGABOWL</h1>
     <div class="frame regular">
       <div class="roll rollOne">
         <p></p>
@@ -125,10 +125,12 @@
       </div>
     </div>
   </div>
-  <p>Total score: <span id="totalScore">0</span></p>
-  <form>
-    <input type="text" id="rollValue" />
-    <input type="submit" id="enterRollValue" />
-  </form>
+  <div id="formContainer">
+    <form>
+      <label for="rollValue">Enter your latest score:</label>
+      <input type="text" id="rollValue" />
+      <input type="submit" id="enterRollValue" />
+    </form>
+  </div>
 </body>
 </html>

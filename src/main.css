@@ -1,3 +1,13 @@
+#scoreCard {
+  text-align: center;
+}
+
+* {
+	font-family: Helvetica,Arial,freesans,sans-serif;
+	color: #505050;
+	line-height: 24px;
+}
+
 .frame {
   border: 1px solid black;
   height: 150px;
@@ -7,7 +17,7 @@
   vertical-align: top;
 }
 .ten {
-  width: 179px;
+  width: 176px;
 }
 
 .roll {
@@ -33,9 +43,10 @@
 
 .rollOneFrameTen, .rollTwoFrameTen, .rollThreeFrameTen {
   border: 1px solid black;
-  width: 59px;
+  /*width: 59px;*/
   margin: -1px;
   margin-right: -4px;
+  left: -2px;
   vertical-align: top;
 }
 
@@ -47,4 +58,9 @@
 .runningTotal p {
   font-weight: bold;
   margin-top: 20px;
+}
+
+#formContainer {
+  margin-top: 10px;
+  text-align: center;
 }

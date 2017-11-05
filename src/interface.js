@@ -45,7 +45,6 @@ $( document ).ready(function() {
         $('.runningTotal:eq(' + frameIndex + ') p').text(frame.runningTotal())
       }
     });
-    totalScoreDisplay.text(game.totalScore());
     rollValueTextInput.val('');
     rollValueTextInput.focus();
   })

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Bwoling in Javascript</title>
+  <title>Bowling in Javascript</title>
   <script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
@@ -39,12 +39,12 @@
         <input type=submit class="pin" value="1">
       </div>
       <div class="pin-row-zero">
-        <button class="zero-pin" value="0">Gutter Ball</button>
+        <button class="gutter" value="0">Gutter Ball</button>
       </div>
     </div>
     <table>
         <tr>
-          <th>Frames</th>
+          <th id ='score'>Frames</th>
           <th colspan="3">1</th>
           <th colspan="3">2</th>
           <th colspan="3">3</th>
@@ -55,42 +55,78 @@
           <th colspan="3">8</th>
           <th colspan="3">9</th>
           <th colspan="4">10</th>
-          <th>Score</th>
+          <th id ='score'>Score</th>
         </tr>
         <tr>
-          <td>Scores</td>
+          <td id ='score'>Scores</td>
+          <td class="frame-empty"></td>
           <td class="frame1-roll1"></td>
           <td class="frame1-roll2"></td>
-          <td class="frame1-score"></td>
+          <td class="frame-empty"></td>
           <td class="frame2-roll1"></td>
           <td class="frame2-roll2"></td>
-          <td class="frame2-score"></td>
+          <td class="frame-empty"></td>
           <td class="frame3-roll1"></td>
           <td class="frame3-roll2"></td>
-          <td class="frame3-score"></td>
+          <td class="frame-empty"></td>
           <td class="frame4-roll1"></td>
           <td class="frame4-roll2"></td>
-          <td class="frame4-score"></td>
+          <td class="frame-empty"></td>
           <td class="frame5-roll1"></td>
           <td class="frame5-roll2"></td>
-          <td class="frame5-score"></td>
+          <td class="frame-empty"></td>
           <td class="frame6-roll1"></td>
           <td class="frame6-roll2"></td>
-          <td class="frame6-score"></td>
+          <td class="frame-empty"></td>
           <td class="frame7-roll1"></td>
           <td class="frame7-roll2"></td>
-          <td class="frame7-score"></td>
+          <td class="frame-empty"></td>
           <td class="frame8-roll1"></td>
           <td class="frame8-roll2"></td>
-          <td class="frame8-score"></td>
+          <td class="frame-empty"></td>
           <td class="frame9-roll1"></td>
           <td class="frame9-roll2"></td>
-          <td class="frame9-score"></td>
+          <td class="frame-empty"></td>
           <td class="frame10-roll1"></td>
           <td class="frame10-roll2"></td>
           <td class="frame10-roll3"></td>
+          <td id ='score' class="score"></td>
+        </tr>
+          <td id ='score'>Totals</td>
+          <td class="frame-empty"></td>
+          <td class="frame-empty"></td>
+          <td class="frame1-score"></td>
+          <td class="frame-empty"></td>
+          <td class="frame-empty"></td>
+          <td class="frame2-score"></td>
+          <td class="frame-empty"></td>
+          <td class="frame-empty"></td>
+          <td class="frame3-score"></td>
+          <td class="frame-empty"></td>
+          <td class="frame-empty"></td>
+          <td class="frame4-score"></td>
+          <td class="frame-empty"></td>
+          <td class="frame-empty"></td>
+          <td class="frame5-score"></td>
+          <td class="frame-empty"></td>
+          <td class="frame-empty"></td>
+          <td class="frame6-score"></td>
+          <td class="frame-empty"></td>
+          <td class="frame-empty"></td>
+          <td class="frame7-score"></td>
+          <td class="frame-empty"></td>
+          <td class="frame-empty"></td>
+          <td class="frame8-score"></td>
+          <td class="frame-empty"></td>
+          <td class="frame-empty"></td>
+          <td class="frame9-score"></td>
+          <td class="frame-empty"></td>
+          <td class="frame-empty"></td>
+          <td class="frame-empty"></td>
           <td class="frame10-score"></td>
-          <td class="score"></td>
+          <td id ='score' class="score"></td>
+        <tr>
+
         </tr>
       </table>
       <div class="start-over">

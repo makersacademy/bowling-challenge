@@ -54,42 +54,22 @@ describe('Frame', function() {
   describe('getTotalScore', function() {
 
     it('gets the total score at any point in the game (including strike and spare bonuses)', function() {
+      // two strikes
+      frame.roll(10);
       frame.roll(10);
       frame.roll(7);
       frame.roll(2);
+      //and a spare
       frame.roll(1);
       frame.roll(9);
       frame.roll(3);
-      expect(frame.getTotalScore()).toEqual(44);
+      expect(frame.getTotalScore()).toEqual(64);
     });
 
   });
 });
 
-
-
-
-
-//       frame._scoreSheet = [1]
-//       expect(frame.getTotalScore()).toEqual(0);
-//     });
-//
-// });
-
-// it('Adds the frame\'s first roll to the total score', function() {
-//   frame.roll(9);
-//   expect(game.getTotalScore()).toEqual(9);
-// });
-
-//   it('Adds the frame\'s second roll to the total score', function() {
-//     game._totalScore = 3;
-//     game._frameAndRoll = [1, 2];
-//     game.roll(7);
-//     expect(game.getTotalScore()).toEqual(10);
-//   });
-//
-
-// // it('adds the 10th frame\'s first roll to total score', function(){
+// //it('adds the 10th frame\'s first roll to total score', function(){
 // //   game._frameAndRoll = [10, 1];
 // //   game.roll(7);
 // //   expect(game.getTotalScore()).toEqual(7);

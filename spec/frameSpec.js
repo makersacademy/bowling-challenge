@@ -54,3 +54,9 @@ beforeEach(function(){
     frame.bowl(5);
     expect(frame.score()).toEqual('/');
   });
+
+  it ("it's score function provides 'X' for a Strike", function() {
+    frame.bowl(10);
+    frame.bowl(0);
+    expect(frame.score()).toEqual('X');
+  });

@@ -3,6 +3,7 @@ describe("The Bowling Game", function() {
   var testframeOne;
   var testframeTwo;
   var gutterframe;
+  var strikeFrame;
 });
 
 beforeEach(function(){
@@ -10,6 +11,7 @@ beforeEach(function(){
   testframeOne = new Frame(); testframeOne.bowl(3) ; testframeOne.bowl(4); testframeOne.saveScore();
   testframeTwo = new Frame(); testframeTwo.bowl(5) ; testframeTwo.bowl(4); testframeTwo.saveScore();
   testSpareOne = new Frame(); testSpareOne.bowl(3) ; testSpareOne.bowl(7); testSpareOne.saveScore();
+  strikeFrame = new Frame(); strikeFrame.bowl(10); strikeFrame.bowl(0); strikeFrame.saveScore();
   gutterframe = new Frame(); gutterframe.bowl(0) ; gutterframe.bowl(0); gutterframe.saveScore(0);
 });
 
@@ -64,6 +66,12 @@ it ('can pass the bonus roll to the score from Spare frame', function() {
   game._frame = testSpareOne; game.addToScores(); game.saveFrame();
   game._frame = testframeTwo; game.addToScores(); game.saveFrame();
   expect(game.scores()[1]).toEqual(15);
+});
+
+it ('can pass the bonus roll to the score from Strike frame', function () {
+  game._frame = strikeFrame; game.addToScores(); game.saveFrame();
+  game._frame = game._frame = testframeTwo; game.addToScores(); game.saveFrame();
+  expect(game.scores()[1]).toEqual(19);
 });
 
 var gutterGame = function () {

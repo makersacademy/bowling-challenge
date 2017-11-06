@@ -62,6 +62,8 @@ Game.prototype.addToScores = function() {
    {this.addFirstFrameScore();
    }else if (this._frames[frameNumber - 2].isSpare() == true) {
     this._scores[frameNumber - 1] = (10 + this._frame.bowls()[0]);
+  }else if (this._frames[frameNumber - 2].isStrike() == true) {
+   this._scores[frameNumber - 1] = (10 + score);
    }else if (this._frame.isOpenFrame() == true) this._scores[frameNumber] = score; {
   this.totalScore();
 }

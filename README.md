@@ -9,7 +9,7 @@ Part of the game flow not including the 10th frame:
 
 My thoughts on the structure of the scorecard:
 
-![Alt text](./git-images/models.png?raw=true)
+![Alt text](./git-images/Models.png?raw=true)
 
 ## The Task
 

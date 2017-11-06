@@ -57,6 +57,9 @@ it ('has a total score for the game', function() {
   expect(game._totalScore).toEqual(16);
 });
 
+//Also discuss the use of private methods in tests. Aware this is not
+//what should be done but struggled to avoid it
+
 it ('can score a Gutter Game at zero', function() {
   gutterGame();
   expect(game._totalScore).toEqual(0);

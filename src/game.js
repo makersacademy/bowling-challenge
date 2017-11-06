@@ -55,8 +55,6 @@ Game.prototype.saveFrame = function() {
   this._frame = new Frame();
 };
 
-//refactor to get rid of / and X - they create problems
-
 Game.prototype.addToScores = function() {
   var score = this._frame.score();
   var frameNumber = this.FrameNo();
@@ -71,6 +69,8 @@ Game.prototype.addToScores = function() {
 }
 };
 
+//discuss with coach. How do you even start to refactor this??
+
 Game.prototype.addFirstFrameScore = function() {
   var score = this._frame.score();
   var frameNumber = this.FrameNo();
@@ -81,7 +81,6 @@ Game.prototype.addFirstFrameScore = function() {
 Game.prototype.totalScore = function() {
   var totals = Object.values(this._scores);
   this._totalScore = Number(totals.reduce(this._add, 0));
-  console.log(this._totalScore);
 };
 
 Game.prototype._add = function (a, b) {

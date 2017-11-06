@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling</title>
+
+    <link rel="stylesheet" type="text/css" href="./src/public/styles.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <script src="./src/Game.js"></script>
+    <script src="./src/interface.js"></script>
+  </head>
+  <body>
+    <h1>Bowling</h1>
+    <div id="buttons">
+    </div>
+    <div id="score-sheet">
+      <table class="screen" style="border: 1px solid black;">
+        <tr>
+          <script>
+            for(var frameIndex = 1; frameIndex <= 10; ++frameIndex) {
+              document.write("<th colspan='2'>" + frameIndex + "</th>")
+            }
+          </script>
+        </tr>
+        <tr>
+          <script>
+
+          var maxRoll = 20;
+          for(var rollNumber = 0; rollNumber < maxRoll; ++rollNumber) {
+              document.write("<td id='roll" + rollNumber + "' class='roll'>&nbsp;</td>")
+          }
+          </script>
+        </tr>
+        <tr>
+          <script>
+            for(var frameIndex = 0; frameIndex < 10; ++frameIndex) {
+              document.write("<td id='frame" + frameIndex + "' colspan='2'>&nbsp;</td>");
+            }
+          </script>
+        </tr>
+
+      </table>
+
+    </div>
+
+  </body>
+</html>

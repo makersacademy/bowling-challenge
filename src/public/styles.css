@@ -1,0 +1,12 @@
+.screen {
+  border: 1px solid black;
+  text-align: center;
+}
+
+th, td {
+  border: 1px solid black;
+}
+
+.roll {
+  width: 50px;
+}

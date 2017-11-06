@@ -74,8 +74,19 @@ it ('can pass the bonus roll to the score from Strike frame', function () {
   expect(game.scores()[1]).toEqual(19);
 });
 
+// it ('can score the perfect game of 10 frames of strikes plus bonuses', function() {
+//   StrikeGame();
+//   expect(game._totalScore).toEqual(0);
+// });
+
 var gutterGame = function () {
   for (var i = 0; i < 10; i++) {
   game._frame = gutterframe; game.addToScores(); game.saveFrame();
     }
   };
+
+  var StrikeGame = function () {
+    for (var i = 0; i < 10; i++) {
+    game._frame = strikeFrame; game.addToScores(); game.saveFrame();
+      }
+    };

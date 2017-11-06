@@ -55,6 +55,8 @@ Game.prototype.saveFrame = function() {
   this._frame = new Frame();
 };
 
+//refactor to get rid of / and X - they create problems
+
 Game.prototype.addToScores = function() {
   var score = this._frame.score();
   var frameNumber = this.FrameNo();
@@ -63,7 +65,7 @@ Game.prototype.addToScores = function() {
    }else if (this._frames[frameNumber - 2].isSpare() == true) {
     this._scores[frameNumber - 1] = (10 + this._frame.bowls()[0]);
   }else if (this._frames[frameNumber - 2].isStrike() == true) {
-   this._scores[frameNumber - 1] = (10 + score);
+   this._scores[frameNumber - 1] = (10 + this._frame.bowls()[0] + this._frame.bowls()[1]);
    }else if (this._frame.isOpenFrame() == true) this._scores[frameNumber] = score; {
   this.totalScore();
 }
@@ -71,7 +73,6 @@ Game.prototype.addToScores = function() {
 
 Game.prototype.addFirstFrameScore = function() {
   var score = this._frame.score();
-  console.log(score);
   var frameNumber = this.FrameNo();
   if (this._frame.isOpenFrame() == true) this._scores[frameNumber] = score;
   this.totalScore();
@@ -80,6 +81,7 @@ Game.prototype.addFirstFrameScore = function() {
 Game.prototype.totalScore = function() {
   var totals = Object.values(this._scores);
   this._totalScore = Number(totals.reduce(this._add, 0));
+  console.log(this._totalScore);
 };
 
 Game.prototype._add = function (a, b) {

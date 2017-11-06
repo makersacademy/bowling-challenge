@@ -37,10 +37,8 @@ Frame.prototype.isOver = function() {
   if (this._bowls.length == 2|| this.bowls()[0] == 10) return true;
 };
 
-//frame scoring
-
 Frame.prototype.saveScore = function() {
    if (this.isOpenFrame() == true) this._score = (this.bowls()[0] + this.bowls()[1]);
-   if (this.isSpare() == true) this._score = '/';
-   if (this.isStrike() ==true) this._score = 'X';
+   if (this.isSpare() == true) this._score = 10;
+   if (this.isStrike() ==true) this._score = 10;
 };

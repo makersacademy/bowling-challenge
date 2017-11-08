@@ -1,0 +1,19 @@
+
+
+h1 {
+  font-family: "Courier New";
+}
+
+table {
+  border-width: 1px;
+  border-color: black;
+  font-family: "Courier New"
+}
+
+.bowling-score {
+  padding: 20px;
+}
+
+#frsc {
+width: 20px;
+}

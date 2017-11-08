@@ -8,9 +8,9 @@ function Player() {
 //
 // };
 
-Player.prototype.roll = function(int) {
-  this._score.push(int);
-  return int;
+Player.prototype.roll = function(roll) {
+  this._score.push(roll);
+  return roll;
 };
 
 Player.prototype.score = function() {
@@ -39,8 +39,6 @@ function chunk(arr) {
 
 Player.prototype.frameScores = function() {
   var chunked = chunk(this._score);
-  // console.log(chunk(this._score));
-  // console.log(chunked);
   return calcFrameScores(chunked);
 };
 
@@ -50,9 +48,11 @@ Player.prototype.spareScore = function() {
   for(var i = 0; i < this._score.length; i++) {
     if (this._score[i] + this._score[i + 1] === 10)
   return runningTotal = this._score[i] + this._score[i + 1] + this._score[i + 2] + this._score[i + 2];
+  else return sumArray(this._score);
   }
   return runningTotal;
 };
+
 
 Player.prototype.strikeScore = function() {
   var runningTotal = 0;
@@ -60,9 +60,23 @@ Player.prototype.strikeScore = function() {
   for(var i = 0; i < this._score.length; i++) {
     if (this._score[i] === 10)
     return runningTotal = this._score[i] + this._score[i + 2] + this._score[i + 3] + this._score[i + 2] + this._score[i + 3]
+
   }
   return runningTotal;
 };
+
+// Player.prototype.realScore = function() {
+//   var runningTotal = 0;
+//
+//   for(var i = 0; i < this._score.length; i++) {
+//     if (this._score[i] + this._score[i + 1] === 10)
+//       return runningTotal = this._score[i] + this._score[i + 1] + this._score[i + 2] + this._score[i + 2];
+//     else if (this._score[i] === 10)
+//       return runningTotal = this._score[i] + this._score[i + 2] + this._score[i + 3] + this._score[i + 2] + this._score[i + 3];
+//     else return sumArray(this._score);
+//   }
+//   return runningTotal;
+// };
 
 function calcFrameScores(array) {
   // console.log(array)

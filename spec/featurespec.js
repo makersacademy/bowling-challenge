@@ -15,7 +15,7 @@ describe ('Feature tests: Player', function() {
   });
 
   describe("#Score", function() {
-    it('can return the score for a gutter game', function() {
+    it('can return the score for a game with no strikes or spares', function() {
       player.roll(6);
       player.roll(3);
       player.roll(2);
@@ -59,8 +59,29 @@ describe ('Feature tests: Player', function() {
       player.roll(0);
       player.roll(5);
       player.roll(4);
-      expect(player.strikeScore()).toEqual(28);
+      player.roll(5);
+      player.roll(4);
+      expect(player.strikeScore()).toEqual(37);
     })
   })
+
+  // describe('#realScore', function() {
+  //   it('can return the score for a game with strikes and spares', function() {
+  //     player.roll(10);
+  //     player.roll(0);
+  //     player.roll(5);
+  //     player.roll(5);
+  //     player.roll(10);
+  //     player.roll(0);
+  //     player.roll(4);
+  //     player.roll(6);
+  //     player.roll(4);
+  //     player.roll(3);
+  //     expect(player.realScore()).toEqual(81)
+  //   });
+  // });
+
+  [20],[20],[20],[14],[7]
+
 
 });

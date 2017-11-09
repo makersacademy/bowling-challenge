@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Bowling Scorecard</title>
+  </head>
+  <body>
+    <section>
+      <h1 id="game-score"></h1>
+      <p>
+        Frame 1
+        <button id="addf1r1">Enter Roll 1 </button>
+        <input type="text" placeholder="Record Roll 1" id="f1r1">
+        <button id="addf1r2">Enter Roll 2 </button>
+        <input type="text" placeholder="Record Roll 2" id="f1r2">
+        <br>
+        Frame 2
+        <button id="addf2r1">Enter Roll 1 </button>
+        <input type="text" placeholder="Record Roll 1" id="f2r1">
+        <button id="addf2r2">Enter Roll 2 </button>
+        <input type="text" placeholder="Record Roll 2" id="f2r2">
+        <br>
+        Frame 3
+        <button id="addf3r1">Enter Roll 1 </button>
+        <input type="text" placeholder="Record Roll 1" id="f3r1">
+        <button id="addf3r2">Enter Roll 2 </button>
+        <input type="text" placeholder="Record Roll 2" id="f3r2">
+        <br>
+        Frame 4
+        <button id="addf4r1">Enter Roll 1 </button>
+        <input type="text" placeholder="Record Roll 1" id="f4r1">
+        <button id="addf4r2">Enter Roll 2 </button>
+        <input type="text" placeholder="Record Roll 2" id="f4r2">
+        <br>
+        Frame 5
+        <button id="addf5r1">Enter Roll 1 </button>
+        <input type="text" placeholder="Record Roll 1" id="f5r1">
+        <button id="addf5r2">Enter Roll 2 </button>
+        <input type="text" placeholder="Record Roll 2" id="f5r2">
+        <br>
+        Frame 6
+        <button id="addf6r1">Enter Roll 1 </button>
+        <input type="text" placeholder="Record Roll 1" id="f6r1">
+        <button id="addf6r2">Enter Roll 2 </button>
+        <input type="text" placeholder="Record Roll 2" id="f6r2">
+        <br>
+        Frame 7
+        <button id="addf7r1">Enter Roll 1 </button>
+        <input type="text" placeholder="Record Roll 1" id="f7r1">
+        <button id="addf7r2">Enter Roll 2 </button>
+        <input type="text" placeholder="Record Roll 2" id="f7r2">
+        <br>
+        Frame 8
+        <button id="addf8r1">Enter Roll 1 </button>
+        <input type="text" placeholder="Record Roll 1" id="f8r1">
+        <button id="addf8r2">Enter Roll 2 </button>
+        <input type="text" placeholder="Record Roll 2" id="f8r2">
+        <br>
+        Frame 9
+        <button id="addf9r1">Enter Roll 1 </button>
+        <input type="text" placeholder="Record Roll 1" id="f9r1">
+        <button id="addf9r2">Enter Roll 2 </button>
+        <input type="text" placeholder="Record Roll 2" id="f9r2">
+        <br>
+        Frame 10
+        <button id="addf10r1">Enter Roll 1 </button>
+        <input type="text" placeholder="Record Roll 1" id="f10r1">
+        <button id="addf10r2">Enter Roll 2 </button>
+        <input type="text" placeholder="Record Roll 2" id="f10r2">
+        <button id="addf10r3">Enter Roll 3 </button>
+        <input type="text" placeholder="Record Roll 3" id="f10r3">
+        <br>
+        <!-- <button id="addf2">Enter Frame 2</button>
+        <input type="text" placeholder="Record Roll 1" id="f2r1">
+        <input type="text" placeholder="Record Roll 2" id="f2r2">
+        <br>
+        <button id="addf3">Enter Frame 3</button>
+        <input type="text" placeholder="Record Roll 1" id="f3r1">
+        <input type="text" placeholder="Record Roll 2" id="f3r2">
+        <br>
+        <button id="addf4">Enter Frame 4</button>
+        <input type="text" placeholder="Record Roll 1" id="f4r1">
+        <input type="text" placeholder="Record Roll 2" id="f4r2">
+        <br>
+        <button id="addf5">Enter Frame 5</button>
+        <input type="text" placeholder="Record Roll 1" id="f5r1">
+        <input type="text" placeholder="Record Roll 2" id="f5r2">
+        <br>
+        <button id="addf6">Enter Frame 6</button>
+        <input type="text" placeholder="Record Roll 1" id="f6r1">
+        <input type="text" placeholder="Record Roll 2" id="f6r2">
+        <br>
+        <button id="addf7">Enter Frame 7</button>
+        <input type="text" placeholder="Record Roll 1" id="f7r1">
+        <input type="text" placeholder="Record Roll 2" id="f7r2">
+        <br>
+        <button id="addf8">Enter Frame 8</button>
+        <input type="text" placeholder="Record Roll 1" id="f8r1">
+        <input type="text" placeholder="Record Roll 2" id="f8r2">
+        <br>
+        <button id="addf9">Enter Frame 9</button>
+        <input type="text" placeholder="Record Roll 1" id="f9r1">
+        <input type="text" placeholder="Record Roll 2" id="f9r2">
+        <br>
+        <button id="addf10">Enter Frame 10</button>
+        <input type="text" placeholder="Record Roll 1" id="f10r1">
+        <input type="text" placeholder="Record Roll 2" id="f10r2">
+        <input type="text" placeholder="Record Roll 3" id="f10r3"> -->
+      </p>
+    </section>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+  <script src="src/interface.js"></script>
+  <script src="src/frame.js"></script>
+  <script src="src/game.js"></script>
+</html>
+<!-- <h1 id="running_score"></h1>
+
+  <form>
+    <input type="submit" id="addr1f1" value="Record Roll">
+    <input type="text" id="r1f1">
+  </form>
+</html>
+
+
+
+
+
+<html>
+  <head>
+    <title>Thermostat</title>
+  </head>
+  <body>
+    <section>
+      <h1 id="temperature"></h1>
+      <p>
+        <button id="temperature-up">+</button>
+        <button id="temperature-down">-</button>
+        <button id="temperature-reset">reset</button>
+        power saving mode is <span id="power-saving-status">on</span>
+        <button id="powersaving-on">PSM on</button>
+        <button id="powersaving-off">PSM off</button>
+      </p>
+    </section>
+  </body>
+</html> -->
+
+
+
+
+
+<!-- <head>
+  <link href="css/bootstrap.css" rel="stylesheet">
+</head> -->
+
+
+  <!-- <body>
+    <style>
+      body {
+        background: radial-gradient(circle, #bac7d8, white);
+      }
+      table {
+        margin-top: 30px;
+      }
+      #namePlayerForm {
+        margin-top: 50px;
+        float: right;
+        text-transform: uppercase;
+        color: blue;
+      }
+    </style>
+
+  <h1> Bowling Scorecard </h1>
+
+  <table style="width:50%">
+  <tr>
+    <th>Frame</th>
+    <th>Roll</th>
+    <th>Knocked down pins</th>
+    <th>Total score</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>1</td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>
+</table>
+
+  <script src="src/game.js">
+  </script>
+  <script src=src="https://code.jquery.com/jquery-3.2.1.min.js">
+  </script>
+  <script src="src/interface.js">
+  </script>
+  <script src="src/frame.js">
+  </script>
+</body> -->
+<!-- <table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">Frame</th>
+      <th scope="col">Roll</th>
+      <th scope="col">Pins Knocked Down</th>
+      <th scope="col">Total Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+      <td>1</td>
+      <td>1</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>1</td>
+      <td>2</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>2</td>
+      <td>1</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>2</td>
+      <td>2</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>3</td>
+      <td>1</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>3</td>
+      <td>2</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>4</td>
+      <td>1</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>4</td>
+      <td>2</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>5</td>
+      <td>1</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>5</td>
+      <td>2</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>6</td>
+      <td>1</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>6</td>
+      <td>2</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>7</td>
+      <td>1</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>7</td>
+      <td>2</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>8</td>
+      <td>1</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>8</td>
+      <td>2</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>9</td>
+      <td>1</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>9</td>
+      <td>2</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>10</td>
+      <td>1</td>
+      <td>
+        <input id="f1r1" type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>10</td>
+      <td>2</td>
+      <td>
+        <input id="f1r2" type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+
+      <td>10</td>
+      <td>3</td>
+      <td>
+        <input type="text">
+        <input type="submit" value="Record Roll">
+      </td>
+      <td></td>
+    </tr>
+
+
+
+  </tbody>
+</table> -->

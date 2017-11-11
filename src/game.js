@@ -6,7 +6,6 @@ function Game() {
   this.init();
 }
 
-
 Game.prototype.init = function() {
   this.setupFrames()
   this.currentFrame = this.frames[0];

@@ -10,6 +10,13 @@ Count and sum the scores of a bowling game for one player (in JavaScript).
 ```
 - git clone git@github.com:jameshughes7/bowling-challenge.git
 - cd bowling-challenge
+- open index.html
+```
+
+## To run tests
+```
+- git clone git@github.com:jameshughes7/bowling-challenge.git
+- cd bowling-challenge
 - open SpecRunner.html
 ```
 

@@ -2,55 +2,55 @@
 
 var Score = function(rolls) {
     this.frames = [];
-    this._rolls = rolls;
+    this._plays(rolls);
 };
 
 Score.prototype.total = function() {
-    return this._last(this.frames).score;
+    return last(this.frames).score;
 }
 
 Score.prototype._plays = function(rolls) {
-    if (this._isLastFrame() === true) {
+    if (this._isLastFrame()) {
         return this._frame(rolls);
     }
-    if (this._isStrike()) {
-        return this._strike();
+    if (this._isStrike(rolls)) {
+        return this._strike(rolls);
     }
-    if (this._isSpare()) {
-        return this._spare();
+    if (this._isSpare(rolls)) {
+        return this._spare(rolls);
     }
-    return this._noBonus();
+    return this._noBonus(rolls);
 };
 
-Score.prototype._strike = function() {
-    this._frame(this._firstRolls(3));
-    this._removeRolls(1);
-    this._plays(this._rolls);
+Score.prototype._strike = function(rolls) {
+    this._frame(firstRolls(rolls, 3));
+    let slicedRolls = removeRolls(rolls, 1);
+    this._plays(slicedRolls);
 };
 
-Score.prototype._spare = function() {
-    this._frame(this._firstRolls(3));
-    this._removeRolls(2);
-    this._plays(this._rolls);
+Score.prototype._spare = function(rolls) {
+    this._frame(firstRolls(rolls, 3));
+    let slicedRolls = removeRolls(rolls, 2);
+    this._plays(slicedRolls);
 };
 
-Score.prototype._noBonus = function() {
-    this._frame(this._firstRolls(2));
-    this._removeRolls(2);
-    this._plays(this._rolls);
+Score.prototype._noBonus = function(rolls) {
+    this._frame(firstRolls(rolls, 2));
+    let slicedRolls = removeRolls(rolls, 2);
+    this._plays(slicedRolls);
 };
 
-Score.prototype._isStrike = function() {
-    return this._rolls[0] === 10;
+Score.prototype._isStrike = function(rolls) {
+    return rolls[0] === 10;
 };
 
-Score.prototype._isSpare = function() {
-    return this._add(this._firstRolls(2)) === 10;
+Score.prototype._isSpare = function(rolls) {
+    return add(firstRolls(rolls, 2)) === 10;
 };
 
 Score.prototype._isLastFrame = function() {
     if (this.frames.length > 0) {
-        if (this._last(this.frames).number >= 9) {
+        if (last(this.frames).number === 9) {
             return true;
         }
         return false;
@@ -68,32 +68,14 @@ Score.prototype._createFrame = function(rolls) {
 
 Score.prototype._frameScore = function(rolls) {
     if (this.frames.length === 0) {
-        return this._add(rolls);
+        return add(rolls);
     }
-    return this._last(this.frames).score + this._add(rolls);
+    return last(this.frames).score + add(rolls);
 };
 
 Score.prototype._frameNumber = function() {
    if (this.frames.length === 0) {
         return 1;
     }
-    return this._last(this.frames).number + 1;
+    return last(this.frames).number + 1;
 };
-
-//Helpers
-
-Score.prototype._firstRolls = function(n) {
-    return this._rolls.slice(0, n);
-};
-
-Score.prototype._add = function(array) {
-    return array.reduce((a, b) => a + b, 0);
-};
-
-Score.prototype._last = function(array) {
-    return array[array.length - 1];
-};
-
-Score.prototype._removeRolls = function(n) {
-    this._rolls.splice(0, n);
-}

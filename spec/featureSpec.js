@@ -16,34 +16,28 @@ describe('Feature', function() {
     describe('Feature Tests', function() {
         it('returns correct score of 74 for a', function() {
             score = new Score(a);
-            score._plays(score._rolls)
             expect(score.total()).toBe(resultA);
         });
 
         it('returns correct score of 94 for b', function() {
             score = new Score(b);
-            score._plays(score._rolls)
             expect(score.total()).toBe(resultB);
         });
 
         it('returns correct score of 217 for c', function() {
             score = new Score(c);
-            score._plays(score._rolls)
             expect(score.total()).toBe(resultC);
         });
 
         it('returns correct score of 300 for d', function() {
             score = new Score(d);
-            score._plays(score._rolls)
             expect(score.total()).toBe(resultD);
         });
 
         it('returns correct score of 0 for e', function() {
             score = new Score(e);
-            score._plays(score._rolls)
             expect(score.total()).toBe(resultE);
         });
-
     });
 });
 

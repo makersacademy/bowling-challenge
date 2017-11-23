@@ -1,6 +1,6 @@
 'use strict'
 
-describe('Score', function() {
+describe('Feature', function() {
     var score;
     var a = [0, 5, 6, 2, 8, 0, 9, 0, 8, 0, 3, 3, 9, 0, 1, 6, 5, 1, 8, 0];
     var b = [7, 2, 3, 3, 5, 5, 6, 0, 6, 1, 4, 5, 5, 3, 1, 6, 9, 1, 8, 0];
@@ -14,38 +14,33 @@ describe('Score', function() {
     var resultE = 0;
 
     describe('Feature Tests', function() {
-        it('returns correct score for a', function() {
+        it('returns correct score of 74 for a', function() {
             score = new Score(a);
             score._plays(score._rolls)
-            console.log(score.total())
             expect(score.total()).toBe(resultA);
         });
 
-        it('returns correct score for b', function() {
+        it('returns correct score of 94 for b', function() {
             score = new Score(b);
             score._plays(score._rolls)
-            console.log(score.total())
             expect(score.total()).toBe(resultB);
         });
 
-        it('returns correct score for c', function() {
+        it('returns correct score of 217 for c', function() {
             score = new Score(c);
             score._plays(score._rolls)
-            console.log(score.total())
             expect(score.total()).toBe(resultC);
         });
 
-        it('returns correct score for d', function() {
+        it('returns correct score of 300 for d', function() {
             score = new Score(d);
             score._plays(score._rolls)
-            console.log(score.total())
             expect(score.total()).toBe(resultD);
         });
 
-        it('returns correct score for e', function() {
+        it('returns correct score of 0 for e', function() {
             score = new Score(e);
             score._plays(score._rolls)
-            console.log(score.total())
             expect(score.total()).toBe(resultE);
         });
 

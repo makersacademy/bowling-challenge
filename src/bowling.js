@@ -97,12 +97,3 @@ Score.prototype._last = function(array) {
 Score.prototype._removeRolls = function(n) {
     this._rolls.splice(0, n);
 }
-
-
-
-
-var Frame = function(rolls, score, number) {
-    this.rolls = rolls;
-    this.score = score;
-    this.number = number;
-};

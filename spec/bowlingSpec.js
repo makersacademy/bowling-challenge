@@ -142,17 +142,45 @@ describe('Score', function() {
 
     });
 
-    // describe('plays', function() {
-    //     it('returns frame(rolls) if frame is the 10th', function() {
-    //         spyOn(score, '_frame');
-    //         score.frames[0] = frame;
-    //         score._plays([1, 2, 3])
-    //         expect(score._frame).toHaveBeenCalledWith([1, 2, 3]);
-    //     });
-    // });
+    describe('plays', function() {
+        it('returns frame(rolls) if frame is the 10th', function() {
+            spyOn(score, '_frame');
+            score.frames[0] = frame;
+            score._plays([1, 2, 3])
+            expect(score._frame).toHaveBeenCalledWith([1, 2, 3]);
+        });
 
-    describe('score', function() {
+        it('calls strike if first element in array is 10', function() {
+            spyOn(score, '_strike');
+            frame.number = 1;
+            score.frames[0] = frame;
+            score._plays([10, 2, 3])
+            expect(score._strike).toHaveBeenCalledWith();
+        });
+
+        it('calls spare if sum of first two elements is 10', function() {
+            spyOn(score, '_spare');
+            frame.number = 1;
+            score.frames[0] = frame;
+            score._rolls = [8, 2];
+            score._plays([8, 2, 3, 4])
+            expect(score._spare).toHaveBeenCalledWith();
+        });
+
+        it('returns noBonus if sum of first two elements <10', function() {
+            spyOn(score, '_noBonus');
+            frame.number = 1;
+            score.frames[0] = frame;
+            score._rolls = [3, 2];
+            score._plays([1, 2, 3]);
+            expect(score._noBonus).toHaveBeenCalledWith();
+        });
     });
 
-
+    describe('total', function() {
+       it('returns total from last element in frames', function() {
+            score.frames[0] = frame;
+            expect(score.total()).toBe(5);
+        }); 
+    });
 });

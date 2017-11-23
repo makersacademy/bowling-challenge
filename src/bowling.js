@@ -5,15 +5,11 @@ var Score = function(rolls) {
     this._rolls = rolls;
 };
 
-  // def plays(rolls)
-  //   return frame(rolls) if @frames[-1] && @frames[-1].number == 9
-  //   return strike(rolls) if strike?(rolls)
-  //   return spare(rolls) if spare?(rolls)
-  //   no_bonus(rolls)
-  // end
+Score.prototype.total = function() {
+    return this._last(this.frames).score;
+}
 
 Score.prototype._plays = function(rolls) {
-    console.log(this._isLastFrame());
     if (this._isLastFrame() === true) {
         return this._frame(rolls);
     }
@@ -41,8 +37,6 @@ Score.prototype._spare = function() {
 Score.prototype._noBonus = function() {
     this._frame(this._firstRolls(2));
     this._removeRolls(2);
-    console.log(this._rolls);
-    console.log(this.frames);
     this._plays(this._rolls);
 };
 
@@ -56,7 +50,6 @@ Score.prototype._isSpare = function() {
 
 Score.prototype._isLastFrame = function() {
     if (this.frames.length > 0) {
-        console.log(this._last(this.frames).number);
         if (this._last(this.frames).number >= 9) {
             return true;
         }

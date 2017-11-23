@@ -1,0 +1,51 @@
+SCORE:
+
+	#score
+
+	#plays
+
+	#strike
+
+	#spare
+
+	#no_bonus
+
+	#frame
+
+	#frame_score
+
+	#frame_number
+
+	#isStrike
+
+	#isSpare
+
+FRAME:
+
+	vars: rolls, number, score
+
+
+--------------------------------------
+
+
+ORDER:
+
+#isStrike
+
+#isSpare
+
+#strike
+
+#spare
+
+#no_bonus
+
+#frame
+
+#frame_score
+
+#frame_number
+
+#score
+
+#plays

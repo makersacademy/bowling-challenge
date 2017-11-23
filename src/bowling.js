@@ -5,6 +5,47 @@ var Score = function(rolls) {
     this._rolls = rolls;
 };
 
+  // def plays(rolls)
+  //   return frame(rolls) if @frames[-1] && @frames[-1].number == 9
+  //   return strike(rolls) if strike?(rolls)
+  //   return spare(rolls) if spare?(rolls)
+  //   no_bonus(rolls)
+  // end
+
+Score.prototype._plays = function(rolls) {
+    console.log(this._isLastFrame());
+    if (this._isLastFrame() === true) {
+        return this._frame(rolls);
+    }
+    if (this._isStrike()) {
+        return this._strike();
+    }
+    if (this._isSpare()) {
+        return this._spare();
+    }
+    return this._noBonus();
+};
+
+Score.prototype._strike = function() {
+    this._frame(this._firstRolls(3));
+    this._removeRolls(1);
+    this._plays(this._rolls);
+};
+
+Score.prototype._spare = function() {
+    this._frame(this._firstRolls(3));
+    this._removeRolls(2);
+    this._plays(this._rolls);
+};
+
+Score.prototype._noBonus = function() {
+    this._frame(this._firstRolls(2));
+    this._removeRolls(2);
+    console.log(this._rolls);
+    console.log(this.frames);
+    this._plays(this._rolls);
+};
+
 Score.prototype._isStrike = function() {
     return this._rolls[0] === 10;
 };
@@ -12,6 +53,17 @@ Score.prototype._isStrike = function() {
 Score.prototype._isSpare = function() {
     return this._add(this._firstRolls(2)) === 10;
 };
+
+Score.prototype._isLastFrame = function() {
+    if (this.frames.length > 0) {
+        console.log(this._last(this.frames).number);
+        if (this._last(this.frames).number >= 9) {
+            return true;
+        }
+        return false;
+    }
+    return false;
+}
 
 Score.prototype._frame = function(rolls) {
     this.frames.push(this._createFrame(rolls));
@@ -25,14 +77,14 @@ Score.prototype._frameScore = function(rolls) {
     if (this.frames.length === 0) {
         return this._add(rolls);
     }
-    return this.frames[this.frames.length - 1].score() + this._add(rolls);
+    return this._last(this.frames).score + this._add(rolls);
 };
 
 Score.prototype._frameNumber = function() {
-   if (this.frames.length == 0) {
+   if (this.frames.length === 0) {
         return 1;
     }
-    return this._frames[this.frames.length - 1].number;
+    return this._last(this.frames).number + 1;
 };
 
 //Helpers
@@ -43,4 +95,21 @@ Score.prototype._firstRolls = function(n) {
 
 Score.prototype._add = function(array) {
     return array.reduce((a, b) => a + b, 0);
+};
+
+Score.prototype._last = function(array) {
+    return array[array.length - 1];
+};
+
+Score.prototype._removeRolls = function(n) {
+    this._rolls.splice(0, n);
+}
+
+
+
+
+var Frame = function(rolls, score, number) {
+    this.rolls = rolls;
+    this.score = score;
+    this.number = number;
 };

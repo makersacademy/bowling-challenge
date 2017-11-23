@@ -6,10 +6,12 @@ describe('Score', function() {
 
     beforeEach(function () {
         score = new Score([10]);
-        frame = jasmine.createSpyObj('frame', ['rolls', 'score', 'number']);
-        // frame = {
-        //     property: "
-        // }
+        frame = {
+            rolls: [1, 4],
+            score: 5,
+            number: 9
+        };
+        spyOn(score, '_createFrame').and.returnValue(frame);
     });
 
     describe('isStrike', function() {
@@ -38,7 +40,6 @@ describe('Score', function() {
 
     describe('frame', function() {
         it('Stores a new frame in frames', function() {
-            spyOn(score, '_createFrame').and.returnValue(frame);
             score._frame('irrelevant');
             expect(score.frames[0]).toBe(frame);
         });
@@ -50,34 +51,108 @@ describe('Score', function() {
         });
 
         it('adds previous frame score to array sum if frames not empty', function() {
-            frame.score.and.returnValue(3);
             score.frames[0] = frame;
             score._frameScore([1, 2]);
-
-            expect(score._frameScore([1, 2])).toBe(6);
+            expect(score._frameScore([1, 2])).toBe(8);
         });
     });
 
+    describe('frameNumber', function() {
+        it('returns 1 if frames is empty', function() {
+            expect(score._frameNumber()).toBe(1);
+        });
 
+        it('return increment of last frame in frames otherwise', function() {
+            score.frames[0] = frame;
+            expect(score._frameNumber()).toBe(10);
+        });
+    });
 
     describe('strike', function() {
+        it('calls frame with first three elements of array', function() {
+            score._rolls = [10, 7, 2];
+            score.frames[0] = frame;
+            spyOn(score, '_frame');
+            score._strike();
+            expect(score._frame).toHaveBeenCalledWith([10, 7, 2]);
+        });
+
+        it('calls removesRolls with 1', function() {
+            score._rolls = [10, 7, 2];
+            spyOn(score, '_removeRolls');
+            score._strike();
+            expect(score._removeRolls).toHaveBeenCalledWith(1);
+        });
+
+        it('calls plays with array minus first element', function() {
+            score._rolls = [10, 7, 2];
+            spyOn(score, '_plays');
+            score._strike();
+            expect(score._plays).toHaveBeenCalledWith([7, 2]);
+        });
+
     });
 
     describe('spare', function() {
+       it('calls frame with first three elements of array', function() {
+            score._rolls = [10, 7, 2];
+            score.frames[0] = frame;
+            spyOn(score, '_frame');
+            score._spare();
+            expect(score._frame).toHaveBeenCalledWith([10, 7, 2]);
+        });
+
+        it('calls removesRolls with 2', function() {
+            score._rolls = [10, 7, 2];
+            spyOn(score, '_removeRolls');
+            score._spare();
+            expect(score._removeRolls).toHaveBeenCalledWith(2);
+        });
+
+        it('calls plays with array minus first two element', function() {
+            score._rolls = [10, 7, 2];
+            spyOn(score, '_plays');
+            score._spare();
+            expect(score._plays).toHaveBeenCalledWith([2]);
+        });
     });
 
     describe('noBonus', function() {
+        it('calls frame with first two elements of array', function() {
+            score._rolls = [10, 7, 2];
+            score.frames[0] = frame;
+            spyOn(score, '_frame');
+            score._noBonus();
+            expect(score._frame).toHaveBeenCalledWith([10, 7]);
+        });
+
+        it('calls removesRolls with 2', function() {
+            score._rolls = [10, 7, 2];
+            spyOn(score, '_removeRolls');
+            score._noBonus();
+            expect(score._removeRolls).toHaveBeenCalledWith(2);
+        });
+
+        it('calls plays with array minus first two element', function() {
+            score._rolls = [10, 7, 2];
+            spyOn(score, '_plays');
+            score._noBonus();
+            expect(score._plays).toHaveBeenCalledWith([2]);
+        });
+
     });
 
-    describe('frameScore', function() {
-    });
-
-    describe('frameNumber', function() {
-    });
+    // describe('plays', function() {
+    //     it('returns frame(rolls) if frame is the 10th', function() {
+    //         spyOn(score, '_frame');
+    //         score.frames[0] = frame;
+    //         score._plays([1, 2, 3])
+    //         expect(score._frame).toHaveBeenCalledWith([1, 2, 3]);
+    //     });
+    // });
 
     describe('score', function() {
     });
 
-    describe('plays', function() {
-    });
+
 });

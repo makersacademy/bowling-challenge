@@ -14,27 +14,27 @@ describe('Feature', function() {
     var resultE = 0;
 
     describe('Feature Tests', function() {
-        it('returns correct score of 74 for a', function() {
+        it('returns correct score of 74 for [' + a + ']', function() {
             score = new Score(a);
             expect(score.total()).toBe(resultA);
         });
 
-        it('returns correct score of 94 for b', function() {
+        it('returns correct score of 94 for [' + b + ']', function() {
             score = new Score(b);
             expect(score.total()).toBe(resultB);
         });
 
-        it('returns correct score of 217 for c', function() {
+        it('returns correct score of 217 for [' + c + ']', function() {
             score = new Score(c);
             expect(score.total()).toBe(resultC);
         });
 
-        it('returns correct score of 300 for d', function() {
+        it('returns correct score of 300 for [' + d + ']', function() {
             score = new Score(d);
             expect(score.total()).toBe(resultD);
         });
 
-        it('returns correct score of 0 for e', function() {
+        it('returns correct score of 0 for [' + e + ']', function() {
             score = new Score(e);
             expect(score.total()).toBe(resultE);
         });

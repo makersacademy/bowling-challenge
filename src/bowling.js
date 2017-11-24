@@ -2,11 +2,11 @@
 
 var Score = function(rolls) {
     this.frames = [];
-    this._plays(rolls)
+    this._plays(rolls);
 };
 
 Score.prototype.total = function() {
-    return last(this.frames).score;
+    return last(this.frames).accumulatedScore;
 }
 
 Score.prototype._plays = function(rolls) {
@@ -70,7 +70,7 @@ Score.prototype._frameScore = function(rolls) {
     if (this.frames.length === 0) {
         return add(rolls);
     }
-    return last(this.frames).score + add(rolls);
+    return last(this.frames).accumulatedScore + add(rolls);
 };
 
 Score.prototype._frameNumber = function() {

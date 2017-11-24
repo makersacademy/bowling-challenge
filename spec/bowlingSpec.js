@@ -8,7 +8,7 @@ describe('Score', function() {
         score = new Score([10]);
         frame = {
             rolls: [1, 4],
-            score: 5,
+            accumulatedScore: 5,
             number: 9
         };
         score.frames.push(frame);

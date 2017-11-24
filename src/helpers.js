@@ -1,21 +1,12 @@
 'use strict'
 
-function firstRolls(rolls, n) {
-    return rolls.slice(0, n);
-};
+function last(array) { return array[array.length - 1] };
 
-function removeRolls(rolls, n) {
-    rolls.splice(0, n);
-    return rolls;
-}
+function add(array) { return array.reduce((x, y) => x + y, 0) };
 
-function add(array) {
-    return array.reduce((a, b) => a + b, 0);
-};
+function firstRolls(rolls, n) { return rolls.slice(0, n) };
 
-function last(array) {
-    return array[array.length - 1];
-};
+function removeRolls(rolls, n) { rolls.splice(0, n); return rolls };
 
 
 // var last = (array) => array[array.length - 1]

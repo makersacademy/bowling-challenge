@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 describe('Score', function() {
     var score;
@@ -72,12 +72,6 @@ describe('Score', function() {
             expect(score._frame).toHaveBeenCalledWith([10, 7, 2]);
         });
 
-        it('calls removeRolls with 1', function() {
-            spyOn(window, 'removeRolls');
-            score._strike([10, 7, 2]);
-            expect(window.removeRolls).toHaveBeenCalledWith([10, 7, 2], 1);
-        });
-
         it('calls plays with array minus first element', function() {
             spyOn(score, '_plays');
             score._strike([10, 7, 2]);
@@ -87,16 +81,10 @@ describe('Score', function() {
     });
 
     describe('spare', function() {
-       it('calls frame with first three elements of array', function() {
+        it('calls frame with first three elements of array', function() {
             spyOn(score, '_frame');
             score._spare([10, 7, 2]);
             expect(score._frame).toHaveBeenCalledWith([10, 7, 2]);
-        });
-
-        it('calls removesRolls with 2', function() {
-            spyOn(window, 'removeRolls');
-            score._spare([10, 7, 2]);
-            expect(window.removeRolls).toHaveBeenCalledWith([10, 7, 2], 2);
         });
 
         it('calls plays with array minus first two element', function() {
@@ -111,12 +99,6 @@ describe('Score', function() {
             spyOn(score, '_frame');
             score._noBonus([10, 7, 2]);
             expect(score._frame).toHaveBeenCalledWith([10, 7]);
-        });
-
-        it('calls removesRolls with 2', function() {
-            spyOn(window, 'removeRolls');
-            score._noBonus([10, 7, 2]);
-            expect(window.removeRolls).toHaveBeenCalledWith([10, 7, 2], 2);
         });
 
         it('calls plays with array minus first two element', function() {
@@ -156,8 +138,8 @@ describe('Score', function() {
         });
     });
 
-    describe('total', function() {
-       it('returns total from last element in frames', function() {
+    describe('totalScore', function() {
+        it('returns accumulatedScore from last element in score.frames', function() {
             expect(score.total()).toBe(5);
         }); 
     });

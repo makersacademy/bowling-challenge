@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 var last = array => array[array.length - 1];
 var add = array => array.reduce((x, y) => x + y, 0);

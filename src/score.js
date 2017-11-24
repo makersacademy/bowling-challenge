@@ -65,10 +65,10 @@
         },
 
         _createFrame: function(rolls) {
-            return new Frame(rolls, this._frameScore(rolls), this._frameNumber());
+            return new Frame(rolls, this._accumulatedScore(rolls), this._frameNumber());
         },
 
-        _frameScore: function(rolls) {
+        _accumulatedScore: function(rolls) {
             if (this.frames.length === 0) {
                 return add(rolls);
             }

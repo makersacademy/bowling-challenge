@@ -16,42 +16,42 @@ describe('Score', function() {
     });
 
     describe('plays', function() {
-        it('breaks the cycle by calling frame(rolls) if frame==10', function() {
-            spyOn(score, '_frame');
-            score._plays([1, 2, 3])
-            expect(score._frame).toHaveBeenCalledWith([1, 2, 3]);
-        });
-
-        it('calls strike if first element in array is 10', function() {
+        it('calls strike if first roll is 10', function() {
             spyOn(score, '_strike');
             last(score.frames).number = 1;
             score._plays([10, 2, 3])
             expect(score._strike).toHaveBeenCalledWith([10, 2, 3]);
         });
 
-        it('calls spare if sum of first two elements is 10', function() {
+        it('calls spare if sum of first two rolls is 10', function() {
             spyOn(score, '_spare');
             last(score.frames).number = 1;
             score._plays([8, 2])
             expect(score._spare).toHaveBeenCalledWith([8, 2]);
         });
 
-        it('returns noBonus if sum of first two elements <10', function() {
+        it('calls noBonus if sum of first two rolls <10', function() {
             spyOn(score, '_noBonus');
             last(score.frames).number = 1;
             score._plays([1, 2]);
             expect(score._noBonus).toHaveBeenCalledWith([1, 2]);
         });
+
+         it('breaks the cycle by calling frame(rolls) if frame==10', function() {
+            spyOn(score, '_frame');
+            score._plays([1, 2, 3])
+            expect(score._frame).toHaveBeenCalledWith([1, 2, 3]);
+        });
     });
 
         describe('strike', function() {
-        it('calls frame with first three elements of array', function() {
+        it('calls frame with first three rolls', function() {
             spyOn(score, '_frame');
             score._strike([10, 7, 2]);
             expect(score._frame).toHaveBeenCalledWith([10, 7, 2]);
         });
 
-        it('goes back to plays with array minus first element', function() {
+        it('goes back to plays with rolls minus first roll', function() {
             spyOn(score, '_plays');
             score._strike([10, 7, 2]);
             expect(score._plays).toHaveBeenCalledWith([7, 2]);
@@ -60,13 +60,13 @@ describe('Score', function() {
     });
 
     describe('spare', function() {
-        it('calls frame with first three elements of array', function() {
+        it('calls frame with first three rolls', function() {
             spyOn(score, '_frame');
             score._spare([10, 7, 2]);
             expect(score._frame).toHaveBeenCalledWith([10, 7, 2]);
         });
 
-        it('goes back to plays with array minus first two element', function() {
+        it('goes back to plays with rolls minus first two rolls', function() {
             spyOn(score, '_plays');
             score._spare([10, 7, 2]);
             expect(score._plays).toHaveBeenCalledWith([2]);
@@ -74,13 +74,13 @@ describe('Score', function() {
     });
 
     describe('noBonus', function() {
-        it('calls frame with first two elements of array', function() {
+        it('calls frame with first two rolls', function() {
             spyOn(score, '_frame');
             score._noBonus([10, 7, 2]);
             expect(score._frame).toHaveBeenCalledWith([10, 7]);
         });
 
-        it('goes back to plays with array minus first two element', function() {
+        it('goes back to plays with rolls minus first two rolls', function() {
             spyOn(score, '_plays');
             score._noBonus([10, 7, 2]);
             expect(score._plays).toHaveBeenCalledWith([2]);
@@ -97,7 +97,7 @@ describe('Score', function() {
     });
 
     describe('isStrike', function() {
-        it('returns true if score at the beginning of rolls is 10', function() {
+        it('returns true if first roll is 10', function() {
             expect(score._isStrike([10])).toBe(true);
         });
 
@@ -107,7 +107,7 @@ describe('Score', function() {
     });
 
     describe('isSpare', function() {
-        it('returns true if sum of two first scores is 10', function() {
+        it('returns true if sum of two first rolls is 10', function() {
             expect(score._isSpare([7, 3])).toBe(true);
         });
 
@@ -122,7 +122,7 @@ describe('Score', function() {
             expect(score._accumulatedScore([1, 2])).toBe(3);
         });
 
-        it('adds previous frame score and scored rolls otherwise', function() {
+        it('adds previous frame score and frame\'s scored rolls otherwise', function() {
             expect(score._accumulatedScore([1, 2])).toBe(8);
         });
     });
@@ -139,7 +139,7 @@ describe('Score', function() {
     });
 
     describe('totalScore', function() {
-        it('returns accumulatedScore from last element in score.frames', function() {
+        it('returns accumulatedScore from last frame', function() {
             expect(score.total()).toBe(5);
         }); 
     });

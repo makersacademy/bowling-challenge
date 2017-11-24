@@ -18,7 +18,7 @@ describe('Frame', function() {
             expect(testFrame._processType([10, 3, 7])).toBe('Strike');
         });
 
-        it('returns Spare if frame score is 10', function() {
+        it('returns Spare if first two rolls add to 10', function() {
             testFrame.score = 10;
             expect(testFrame._processType([3, 7, 10])).toBe('Spare');
         });
@@ -30,12 +30,12 @@ describe('Frame', function() {
     });
 
     describe('processRolls', function() {
-        it('returns array with first roll only if type is strike', function() {
+        it('stores the first roll only if it\'s a strike', function() {
             testFrame.type = 'Strike'
             expect(testFrame._processRolls([10, 3, 7])).toEqual([10]);
         });
 
-        it('returns array with first two rolls otherwise', function() {
+        it('stores the first two rolls otherwise', function() {
             expect(testFrame._processRolls([3, 7, 6])).toEqual([3, 7]);
         });
     });

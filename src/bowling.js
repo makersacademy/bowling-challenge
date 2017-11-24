@@ -2,7 +2,7 @@
 
 var Score = function(rolls) {
     this.frames = [];
-    this._plays(rolls);
+    this._plays(rolls)
 };
 
 Score.prototype.total = function() {

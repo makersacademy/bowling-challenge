@@ -10,4 +10,15 @@ describe('Frame', function() {
       expect(frame.rollTally).toContain(roll);
     })
   })
+
+  describe('#totalPoints', function() {
+    it('keeps track of the total points', function() {
+      roll.pinfall = 4;
+      frame.addRollToFrame(roll);
+      roll2 = new Roll;
+      roll2.pinfall = 2;
+      frame.addRollToFrame(roll2);
+      expect(frame.totalPoints).toEqual(6);
+    })
+  })
 })

@@ -21,6 +21,7 @@
   "homepage": "https://github.com/cazwazacz/bowling-challenge#readme",
   "devDependencies": {
     "eslint": "^4.11.0",
-    "eslint-config-google": "^0.9.1"
+    "eslint-config-google": "^0.9.1",
+    "jasmine": "^2.8.0"
   }
 }

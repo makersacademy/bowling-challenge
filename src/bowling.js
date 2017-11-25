@@ -36,7 +36,7 @@ Bowling.prototype.frame = function(score){
 
 
 Bowling.prototype.game = function(score){
-  if(this._frame <= MAXFRAME) {
+  if(this._frame < MAXFRAME) {
     if(this._counter === 0 && score === 10){
       // strike
       this._total += score;
@@ -45,6 +45,7 @@ Bowling.prototype.game = function(score){
     } else if(this._counter === 1 && (this._currentscore + score === 10) ){
       //spare
       this._total += this._currentScore;
+      this._currentScore = 0;
       this._counter += 1;
       this._frame += 1;
     } else if(this._counter == 0){
@@ -55,9 +56,11 @@ Bowling.prototype.game = function(score){
       //normal second roll
       this._currentScore += score;
       this._total += this._currentScore;
+      this._currentScore = 0;
       this._counter = 0;
       this._frame += 1;
     }
+  } else {
+    return 'Cannot play more than 12 frames';
   }
-  return 'Cannot play more than 12 frames'
 }

@@ -73,10 +73,10 @@ describe('Bowling', function(){
       expect(bowling._total).toEqual(7);
     });
     it('cannot play more than 12 frames', function(){
-      for(var i = 0; i<13; i++){
-        bowling.game(5);
+      for(var i = 0; i<12; i++){
+        bowling.game(10);
       }
-      expect(bowling.game(5)).toEqual('Cannot play more than 12 frames');
+      expect(bowling.game(10)).toEqual('Cannot play more than 12 frames');
     });
   })
 

@@ -45,4 +45,12 @@ describe("Game", function(){
     });
   });
 
+  describe('spareBonus', function(){
+    it('should return pins from first bowl of following frame', function (){
+      game.bowl(2)
+      game.bowl(8)
+      game.bowl(4)
+      expect(game.spareBonus(0)).toEqual(4)
+    });
+  });
 });

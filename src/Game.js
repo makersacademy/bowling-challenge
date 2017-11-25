@@ -19,5 +19,10 @@ Game.prototype = {
 
 	isSpare: function(frame){
   	return this.bowls[frame] + this.bowls[frame + 1] === 10;
+	},
+
+	spareBonus: function(frame){
+  	return this.bowls[frame + 2];
 	}
+
 };

@@ -11,7 +11,6 @@
         },
 
         plays: function(rolls) {
-            console.log(rolls);
             if (this._isLastFrame()) {
                 return this._frame(rolls);
             }

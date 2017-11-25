@@ -38,6 +38,53 @@ describe('Bowling', function(){
       bowling.frame(10);
       expect(bowling._counter).toEqual(0);
     });
+    it('adds score if counter less than 2', function(){
+      bowling.frame(10);
+      expect(bowling._currentScore).toEqual(10);
+    });
   });
+
+  describe('game', function(){
+    it('adds 10 to total', function(){
+      bowling._counter = 0;
+      bowling.game(10);
+      expect(bowling._total).toEqual(10);
+    });
+    it('adds 1 to frame if set complete', function(){
+      bowling.game(10);
+      expect(bowling._frame).toEqual(1);
+    });
+    it('counter does not change if strike', function(){
+      bowling.game(10);
+      expect(bowling._counter).toEqual(0);
+    });
+    it('resets counter if 2 rolls',function(){
+      bowling.game(4);
+      bowling.game(3);
+      expect(bowling._counter).toEqual(0);
+    });
+    it('adds score to current score if first roll', function(){
+      bowling.game(4);
+      expect(bowling._currentScore).toEqual(4);
+    })
+    it('adds current score to total if second roll', function(){
+      bowling.game(4);
+      bowling.game(3);
+      expect(bowling._total).toEqual(7);
+    });
+    it('cannot play more than 12 frames', function(){
+      for(var i = 0; i<13; i++){
+        bowling.game(5);
+      }
+      expect(bowling.game(5)).toEqual('Cannot play more than 12 frames');
+    });
+  })
+
+  // describe('current score', function(){
+  //   it('adds score to current score', function(){
+  //     bowling.currentScore(10);
+  //     expect(bowling._currentScore).toEqual(10);
+  //   });
+  // });
 
 });

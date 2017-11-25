@@ -8,10 +8,10 @@ describe("Bowling", function() {
 
   describe("A new instance of bowling", function() {
     it ("has a total of zero", function() {
-      expect(bowling.total).toEqual(0);
+      expect(bowling.total()).toEqual(0);
     })
     it ("has an empty array of frames", function() {
-      expect(bowling.frames).toEqual([]);
+      expect(bowling.frames()).toEqual([]);
     })
   })
 
@@ -28,7 +28,7 @@ describe("Bowling", function() {
       bowling.bowl([6,4]);
       bowling.bowl([10,0]);
       bowling.bowl([2,8,6]);
-      expect(bowling.total).toEqual(133);
+      expect(bowling.total()).toEqual(133);
     })
 
     it("[[0,1],[2,3],[4,5],[6,4],[3,6],[5,4],[5,5],[3,5],[2,7],[3,7,6]] => 92", function() {
@@ -42,7 +42,7 @@ describe("Bowling", function() {
       bowling.bowl([3,5]);
       bowling.bowl([2,7]);
       bowling.bowl([3,7,6]);
-      expect(bowling.total).toEqual(92);
+      expect(bowling.total()).toEqual(92);
     })
 
     it("[[9,1],[2,4],[6,4],[6,2],[6,4],[10,0],[7,3],[0,1],[10,0],[9,1,9]] => 132", function() {
@@ -56,7 +56,7 @@ describe("Bowling", function() {
       bowling.bowl([0,1]);
       bowling.bowl([10,0]);
       bowling.bowl([9,1,9]);
-      expect(bowling.total).toEqual(132);
+      expect(bowling.total()).toEqual(132);
     })
 
     it("[[5,5],[4,6],[6,4],[4,6],[7,3],[2,8],[8,2],[2,8],[7,3],[2,8,7]] => 149", function() {
@@ -70,7 +70,7 @@ describe("Bowling", function() {
       bowling.bowl([2,8]);
       bowling.bowl([7,3]);
       bowling.bowl([2,8,7]);
-      expect(bowling.total).toEqual(149);
+      expect(bowling.total()).toEqual(149);
     })
 
     it("[[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[2,7] => 260", function() {
@@ -79,7 +79,7 @@ describe("Bowling", function() {
         bowling.bowl([10,0]);
       }
       bowling.bowl([2,7]);
-      expect(bowling.total).toEqual(260);
+      expect(bowling.total()).toEqual(260);
     })
 
     it("[[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,10,10]] => 300", function() {
@@ -88,7 +88,7 @@ describe("Bowling", function() {
         bowling.bowl([10,0]);
       }
       bowling.bowl([10,10,10]);
-      expect(bowling.total).toEqual(300);
+      expect(bowling.total()).toEqual(300);
     })
 
   })

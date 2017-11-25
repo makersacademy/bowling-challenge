@@ -28,5 +28,8 @@ function Bowling () {
 Bowling.prototype = {
   addFrame: function (frame) {
     this.frames.push(frame)
+    if (this.frames.length > 10) {
+      throw ('Max Frames Added')
+    }
   }
 }

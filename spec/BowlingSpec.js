@@ -1,15 +1,14 @@
 describe('Bowling', function () {
   var bowling
+  var frame
 
   beforeEach(function () {
     bowling = new Bowling()
   })
 
-  describe('#initialize', function () {
-    it('should start with 10 frames', function () {
-      expect(bowling.session).toEqual(100)
-    })
-
+    it('should add to the list of frames', function () {
+      bowling.addFrame(5, 5)
+      expect(bowling.frames).toContain([5, 5])
     })
   })
 })

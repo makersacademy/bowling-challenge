@@ -7,10 +7,55 @@
 }
 
 .main {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
+.score_input {
+    width: 100%;
+    border: 1px;
+}
+
+.score_output {
+}
+
+.frame_input {
+    display: inline-block;
+    width: 85px;
+    height: 100px;
+    border: 1px;
+    background-color: grey;
+}
+
+.frame_input_header {
+    float: up;
+    height: 40%;
+    width: 100%;
+    background-color: red;
+}
+
+.frame_scores {
+    display: inline-block;
+    margin-top: 40%;
+    background-color: green;
+}
+
+.frame_score {
+/*    height: 60%;
+    width: 50%;*/
+    background-color: green;
+}
+
+
+
+.frame_output {
+    display: inline-block;
+    width: 70px;
+    height: 140px;
+}
+
+
+/*
 .walter {
     width: 100%;
     border: 0;
@@ -53,3 +98,4 @@ button {
         display: inline;
     }
 }
+*/

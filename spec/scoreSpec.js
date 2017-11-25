@@ -111,7 +111,7 @@ describe('Score', function() {
             expect(score._frameNumber()).toBe(1);
         });
 
-        it('return increment frames.length otherwise', function() {
+        it('returns increment of frames.length otherwise', function() {
             fillFrames();
             expect(score._frameNumber()).toBe(10);
         });

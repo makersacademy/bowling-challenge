@@ -4,53 +4,39 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Thermostat</title>
+  <title>Bowling</title>
   <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="lib/thermostat/style.css">
+  <link rel="stylesheet" type="text/css" href="lib/bowling/style.css">
   <script type="text/javascript" src="jquery-3.2.1.js"></script>
-  <script src="src/thermostat.js"></script>
+  <script src="src/game.js"></script>
   <script src="src/interface.js"></script>
-  <h1>Walter the Thermostat</h1>
+  <h1>Bowling</h1>
 </head>
 
-<body class="main">  
+<body class="main">
 
-  <article class="thermostat">
-    <br>
-    <div><span  id="thermo_console">Temperature:  </span><span id="temperature"></span></div>
-    <p>
-      <div class="button">
-        <button id="up" type="submit">+</button>
-        <button id="down" type="submit">-</button>
-        <button id="reset" type="submit">Reset</button>
+  <section class="score_input">
+    <div class="frame_input">
+      <div class="frame_input_header"></div>
+      <div class="frame_scores">
+        <div class="frame_score"></div>
+        <div class="frame_score"></div>
       </div>
-    </p>
-    <p>
-      <div class="button">
-        <button id="power_saving" class="power_on" type="submit">Power Saving</button>
-      </div>
-    </p>
-    <br>
-    <p>
-      <div><span  id="thermo_console">Energy Usage:  </span><span id="energy_usage"></span></div>
-    </p>
-    <br>
-    <p>
-      <div>Outside temperature: <span id="outside-temperature"></span></div>
-      <form id="select-location">
-        <input id="current-location" type="text" placeholder="Enter your location"></input>
-        <input type="submit"></input>
-      </form>
-    </p>
-  </article>
-
-  <article class="about_walter">
-    <div>
-      <img src="img/walter.jpg" alt="Walter" class="walter">
     </div>
-    <p>
-      <div>Hi! My name is Walter and I am a thermostat!</div>
-    </p>
-  </article>
+    <div class="frame_input"></div>
+    <div class="frame_input"></div>
+    <div class="frame_input"></div>
+    <div class="frame_input"></div>
+    <div class="frame_input"></div>
+    <div class="frame_input"></div>
+    <div class="frame_input"></div>
+    <div class="frame_input"></div>
+    <div class="frame_input"></div>
+  </section>
+
+  <section class="score_output">
+    <div class="frame_output"></div>
+  </section>
+
 </body>
 </html>

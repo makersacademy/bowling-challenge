@@ -47,27 +47,27 @@ describe('Feature Tests', function() {
     });
 
     describe('Recognizes invalid inputs', function() {
-        it('Returns invalid input for adultered Rolls A', function() {
+        it('Returns invalid input for adultered Rolls A (one roll > 10)', function() {
             rollsA[6] = 11;
             expect(game.compute(rollsA)).toBe('Invalid input');
         });
 
-        it('Returns invalid input for adultered Rolls B', function() {
+        it('Returns invalid input for adultered Rolls B (two-roll frame > 10)', function() {
             rollsB[0] = 9;
             expect(game.compute(rollsA)).toBe('Invalid input');
         });
 
-        it('Returns invalid input for adultered Rolls C', function() {
+        it('Returns invalid input for adultered Rolls C (one roll missing)', function() {
             rollsC.pop();
             expect(game.compute(rollsC)).toBe('Invalid input');
         });
 
-        it('Returns invalid input for adultered Rolls D', function() {
+        it('Returns invalid input for adultered Rolls D (an extra roll)', function() {
             rollsD.push(10);
             expect(game.compute(rollsD)).toBe('Invalid input');
         });
 
-        it('Returns invalid input for adultered Rolls E', function() {
+        it('Returns invalid input for adultered Rolls E (one roll is a digit)', function() {
             rollsE[5] = 'k';
             expect(game.compute(rollsE)).toBe('Invalid input');
         });

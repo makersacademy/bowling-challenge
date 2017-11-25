@@ -41,28 +41,22 @@ describe('Validator', function() {
 
     describe('validateFrames', function() {
         it('calls validateSize if no more rolls', function() {
-            spyOn(validator, '_validateSize');
+            spyOn(validator, '_validateSize').and.callThrough();;
             validator._validateFrames([]);
             expect(validator._validateSize).toHaveBeenCalled();
         });
 
-        // it('asks for first frame on rolls to be identified', function() {
-        //     spyOn(validator, '_getFirstFrame');
-        //     validator._validateFrames([4, 5, 4, 2]);
-        //     expect(validator._getFirstFrame).toHaveBeenCalledWith([4, 5, 4, 2]);
-        // });
-
         it('calls validateFrame with first frame', function() {
-            spyOn(validator, '_validateFrame');
+            spyOn(validator, '_validateFrame').and.callThrough();;
             validator._validateFrames([10, 4, 5, 3]);
             expect(validator._validateFrame).toHaveBeenCalledWith([10]);
         });
 
-        // it('continues the cycle by calling validateFrames with remaining rolls', function() {
-        //     spyOn(validator, '_validateFrames');
-        //     validator._validateFrames([10, 4, 5, 3]);
-        //     expect(validator._validateFrames).toHaveBeenCalledWith([4, 5, 3]);
-        // });
+        it('continues the cycle by calling validateFrames with remaining rolls', function() {
+            spyOn(validator, '_validateFrames').and.callThrough();;
+            validator._validateFrames([10, 4, 5, 3]);
+            expect(validator._validateFrames).toHaveBeenCalledWith([4, 5, 3]);
+        });
     });
 
     describe('validateFrame', function() {
@@ -106,7 +100,7 @@ describe('Validator', function() {
 
     describe('getFirstFrame', function() {
         it('gets frame size', function() {
-            spyOn(validator, '_getFrameSize');
+            spyOn(validator, '_getFrameSize').and.callThrough();;
             validator._getFirstFrame([10, 2, 5, 4]);
             expect(validator._getFrameSize).toHaveBeenCalledWith([10, 2, 5, 4]);
         });

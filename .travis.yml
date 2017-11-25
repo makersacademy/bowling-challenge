@@ -1,0 +1,16 @@
+notifications:
+    email:
+      recipients:
+        klpdjolanta@gmail.com
+
+      on_success: change
+      on_failure: always
+
+language: node_js
+
+branches:
+  only:
+    -master
+
+  except:
+    -test

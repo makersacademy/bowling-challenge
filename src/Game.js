@@ -1,21 +1,23 @@
 function Game(){
-  this.rolls = []
-  this.currentRoll = 0;
+  this.bowls = []
+  this.currentBowl = 0;
 };
 
 Game.prototype = {
 
-
-
-	roll: function(pins){
-	  this.rolls[this.currentRoll++] = pins;
+	bowl: function(pins){
+	  this.bowls[this.currentBowl++] = pins;
 	},
 
-	sumPins: function(frameIndex){
-	  return this.rolls[frameIndex] + this.rolls[frameIndex + 1];
+	sumPins: function(frame){
+	  return this.bowls[frame] + this.bowls[frame + 1];
 	},
 
-	isStrike: function(frameIndex){
-	  return this.rolls[frameIndex] === 10;
+	isStrike: function(frame){
+	  return this.bowls[frame] === 10;
+	},
+
+	isSpare: function(frame){
+  	return this.bowls[frame] + this.bowls[frame + 1] === 10;
 	}
 };

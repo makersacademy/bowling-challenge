@@ -1,45 +1,30 @@
 'use strict';
 
 (function(exports) {
-    var Score = function(rolls) {
-        this.frames = [];
-        this._plays(rolls);
+    var Score = function() {
+        this._frames = [];
     };
 
     Score.prototype = {
-        total: function() {
-            return last(this.frames).accumulatedScore;
+        giveFrames: function() {
+            return this._frames;
         },
 
-        _plays: function(rolls) {
+        plays: function(rolls) {
+            console.log(rolls);
             if (this._isLastFrame()) {
                 return this._frame(rolls);
             }
             if (this._isStrike(rolls)) {
-                return this._strike(rolls);
+                this._frame(firstRolls(rolls, 3))
+                return this.plays(removeRolls(rolls, 1));
             }
             if (this._isSpare(rolls)) {
-                return this._spare(rolls);
+                this._frame(firstRolls(rolls, 3))
+                return this.plays(removeRolls(rolls, 2));
             }
-            return this._noBonus(rolls);
-        },
-
-        _strike: function(rolls) {
-            this._frame(firstRolls(rolls, 3));
-            let slicedRolls = removeRolls(rolls, 1);
-            this._plays(slicedRolls);
-        },
-
-        _spare: function(rolls) {
-            this._frame(firstRolls(rolls, 3));
-            let slicedRolls = removeRolls(rolls, 2);
-            this._plays(slicedRolls);
-        },
-
-        _noBonus: function(rolls) {
-            this._frame(firstRolls(rolls, 2));
-            let slicedRolls = removeRolls(rolls, 2);
-            this._plays(slicedRolls);
+            this._frame(firstRolls(rolls, 2))
+            return this.plays(removeRolls(rolls, 2));
         },
 
         _isStrike: function(rolls) {
@@ -51,35 +36,22 @@
         },
 
         _isLastFrame: function() {
-            if (this.frames.length > 0) {
-                if (last(this.frames).number === 9) {
-                    return true;
-                }
-                return false;
-            }
-            return false;
+            return this._frames.length === 9;
         },
 
         _frame: function(rolls) {
-            this.frames.push(this._createFrame(rolls));
-        },
-
-        _createFrame: function(rolls) {
-            return new Frame(rolls, this._accumulatedScore(rolls), this._frameNumber());
+            this._frames.push(new Frame(rolls, this._accumulatedScore(rolls), this._frameNumber()));
         },
 
         _accumulatedScore: function(rolls) {
-            if (this.frames.length === 0) {
+            if (this._frames.length === 0) {
                 return add(rolls);
             }
-            return last(this.frames).accumulatedScore + add(rolls);
+            return last(this._frames).accumulatedScore + add(rolls);
         },
 
         _frameNumber: function() {
-           if (this.frames.length === 0) {
-                return 1;
-            }
-            return last(this.frames).number + 1;
+           return this._frames.length + 1;
         }
     };
 

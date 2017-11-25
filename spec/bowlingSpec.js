@@ -20,6 +20,24 @@ describe('Bowling', function(){
     it('should add 10 to the total', function(){
       expect(bowling.addScore(10)).toEqual(10);
     });
+
+    it('cannot add more than 10 to score at a time', function(){
+      expect(bowling.addScore(11)).toEqual('Cannot add more than 10');
+    });
+  });
+
+  describe('frame', function(){
+    it('adds to counter if less than 2', function(){
+      bowling.frame(10);
+      bowling.frame(10);
+      expect(bowling._counter).toEqual(2);
+    });
+    it('return counter to 0 if played more than twice', function(){
+      bowling.frame(10);
+      bowling.frame(10);
+      bowling.frame(10);
+      expect(bowling._counter).toEqual(0);
+    });
   });
 
 });

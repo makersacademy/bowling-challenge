@@ -15,7 +15,7 @@ describe("Player", function() {
     expect(player).toBePlaying(song);
   });
 
-  describe("when song has been paused", function() {
+  describe("when song has been paused", function () {
     beforeEach(function() {
       player.play(song);
       player.pause();

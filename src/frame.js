@@ -1,6 +1,7 @@
 'use srict'
+const PINS = 10
 
-function Frame (first, second) {
+function Frame (first = 0, second = 0) {
   this.first = first
   this.second = second
   this.rolls = [first, second]
@@ -10,12 +11,12 @@ function Frame (first, second) {
 
 Frame.prototype = {
   isStrike: function () {
-    if (this.first === 10) {
+    if (this.first === PINS) {
       this.strike = true
     }
   },
   isSpare: function () {
-    if (this.first + this.second === 10) {
+    if (this.first + this.second === PINS) {
       this.spare = true
     }
   }

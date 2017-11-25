@@ -5,15 +5,14 @@ describe('Frame', function () {
     frame = new Frame ()
   })
   describe('#initialize', function () {
-    it('should add tolls to the frame', function () {
-      frame.addFrame(2, 3)
-      expect(frame.rolls).toContain([2, 3])
+    it('should add rolls to the frame', function () {
+      expect(frame.rolls).toEqual([0, 0])
     })
     it('should contain default strike status as false', function () {
-      expect(frame.isStrike()).toBe(false)
+      expect(frame.strike).toBe(false)
     })
     it('should contain default spare status as false', function () {
-      expect(frame.isSpare()).toBe(false)
+      expect(frame.spare).toBe(false)
     })
   })
 })

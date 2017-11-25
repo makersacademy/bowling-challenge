@@ -26,11 +26,7 @@ function Bowling () {
 }
 
 Bowling.prototype = {
-
-  addFrame: function (n, m) {
+  addFrame: function (frame) {
     this.frames.push(frame)
-  }
-  newFrame: function (n, m) {
-    newFrame
   }
 }

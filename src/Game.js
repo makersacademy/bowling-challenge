@@ -9,20 +9,23 @@ Game.prototype = {
 	  this.bowls[this.currentBowl++] = pins;
 	},
 
-	sumPins: function(frame){
-	  return this.bowls[frame] + this.bowls[frame + 1];
+	sumPins: function(frameIndex){
+	  return this.bowls[frameIndex] + this.bowls[frameIndex + 1];
 	},
 
-	isStrike: function(frame){
-	  return this.bowls[frame] === 10;
+	isStrike: function(frameIndex){
+	  return this.bowls[frameIndex] === 10;
 	},
 
-	isSpare: function(frame){
-  	return this.bowls[frame] + this.bowls[frame + 1] === 10;
+	isSpare: function(frameIndex){
+  	return this.bowls[frameIndex] + this.bowls[frameIndex + 1] === 10;
 	},
 
-	spareBonus: function(frame){
-  	return this.bowls[frame + 2];
+	strikeBonus: function(frameIndex){
+  	return this.bowls[frameIndex + 1] + this.bowls[frameIndex + 2];
+	},
+
+	spareBonus: function(frameIndex){
+  	return this.bowls[frameIndex + 2];
 	}
-
 };

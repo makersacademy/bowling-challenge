@@ -1,5 +1,7 @@
 describe("Frame", function() {
 
+  var frame;
+
   beforeEach(function() {
     rolls = jasmine.createSpy("rolls");
     frame = new Frame(rolls);

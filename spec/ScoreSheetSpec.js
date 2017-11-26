@@ -1,5 +1,7 @@
 describe("ScoreSheet", function() {
 
+  var scoresheet;
+
   beforeEach(function() {
     scoresheet = new ScoreSheet();
   });

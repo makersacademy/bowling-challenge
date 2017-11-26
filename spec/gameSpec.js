@@ -24,7 +24,11 @@ describe('Bowling Game', function() {
     game.roll(3)
     rollMany(16,0)
     expect(game.score()).toEqual(26)
-  })
+  });
+  it('roll a perfect game', function() {
+    rollMany(12,10);
+    expect(game.score()).toEqual(300);
+  });
 
   var rollMany = function (rolls, pins) {
     for (var i = 0; i < rolls; i++)  {

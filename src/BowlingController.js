@@ -5,7 +5,6 @@ $(document).ready(function() {
 
   function updateScore () {
     $("#score").html(bowling.total());
-    console.log(bowling.frames().length);
     frame = [];
   }
 
@@ -35,7 +34,6 @@ $(document).ready(function() {
       var clicked = parseInt($(this).val());
       frame.push(clicked);
       if (frame.length !== 2 && clicked !== 10) {
-        console.log('here');
         refreshButtons(10 - clicked);
       }
       if (bowling.frames().length < 9) {

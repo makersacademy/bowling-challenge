@@ -4,7 +4,7 @@ $(document).ready(function() {
 
   $('#throwBall').click(function() {
     if ( bowling.turn <= 19) {
-      bowling.throw_record(10);
+      bowling.throw_record(5);
       writePtAndScore();
       bowling.increaseActualFrame();
       bowling.increaseTurn();

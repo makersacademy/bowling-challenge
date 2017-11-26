@@ -25,9 +25,8 @@ Bowling.prototype.throw_record = function(score) {
   this.throw(score);
   this.recordInFrame(score)
   this.spareBonus();
-  this.strikeBonus();
   this.reducePins(score);
-  this.record(); 
+  this.record();
 };
 
 Bowling.prototype.reducePins = function(n) {

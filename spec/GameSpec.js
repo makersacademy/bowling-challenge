@@ -5,7 +5,7 @@ describe("Game", function(){
     game = new Game();
   });
 
-  describe('scoring', function(){
+  describe('sumPins', function(){
     it('should equal zero when game starts', function(){
       game.bowl(0)
       game.bowl(0)
@@ -19,7 +19,7 @@ describe("Game", function(){
     });
   });
 
-  describe('is strike', function(){
+  describe('isStrike', function(){
     it('should return true if stike is scored', function (){
       game.bowl(10)
       expect(game._isStrike(0)).toEqual(true)
@@ -31,7 +31,7 @@ describe("Game", function(){
     });
   });
 
-  describe('is spare', function(){
+  describe('isSpare', function(){
     it('should return true sum of pins equals 10', function (){
       game.bowl(2)
       game.bowl(8)
@@ -42,6 +42,22 @@ describe("Game", function(){
       game.bowl(4)
       game.bowl(3)
       expect(game._isSpare(0)).toEqual(false)
+    });
+  });
+
+  describe('newGame', function(){
+    it('should set currentBowl to zero', function (){
+      game.bowl(2)
+      game.bowl(7)
+      game.newGame();
+      expect(game.currentBowl).toEqual(0)
+    });
+
+    it('should set bowls to empty', function(){
+      game.bowl(4)
+      game.bowl(3)
+      game.newGame();
+      expect(game.currentBowl).toEqual(0)
     });
   });
 

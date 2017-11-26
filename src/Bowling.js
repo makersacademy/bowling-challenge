@@ -16,6 +16,11 @@ Bowling.prototype.frames = function () {
   return this._frames;
 };
 
+Bowling.prototype.reset = function() {
+  this._total = 0;
+  this._frames = [];
+}
+
 Bowling.prototype.bowl = function(roll) {
   previousFrame = this._frames.slice(-1)[0];
   frameTotal = roll.reduce(function(a, b) {return a + b;}, 0);

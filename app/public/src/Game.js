@@ -35,7 +35,9 @@ Game.prototype.endround = function(){
   this._newFrame();
 };
 
-
+Game.prototype._showtotalscore = function(){
+  return this.totalscore;
+}
 
 Game.prototype._addscore = function(){
   this._iteration(this.currentframe)
@@ -58,6 +60,9 @@ Game.prototype._spare = function(){
   };
 };
 
+Game.prototype.showcount = function(){
+  return this.count;
+}
 
 Game.prototype._StrikeBonus = function(){
     if(this._frames[(this._frames.length) - 3].length === 1){

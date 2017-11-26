@@ -19,3 +19,13 @@ Frame.prototype.setBowlTwoScore = function (score) {
 Frame.prototype.getBowlTwoScore = function () {
   return this.bowlTwo;
 };
+
+Frame.prototype.setScore = function () {
+  this.score = []
+  this.score.push(this.getBowlOneScore());
+  this.score.push(this.getBowlTwoScore());
+};
+
+Frame.prototype.getScore = function () {
+  return this.score;
+};

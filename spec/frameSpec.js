@@ -1,11 +1,6 @@
 describe("Frame", function() {
   var frame = new Frame();
 
-
-  it("Should have a score property", function() {
-    expect(frame.score).toEqual([])
-  });
-
   describe("bowlOne", function() {
 
     it("Should have a bowlOne property", function() {
@@ -38,6 +33,28 @@ describe("Frame", function() {
     it("Should return the value of bowlTwo", function() {
       frame.setBowlTwoScore(3);
       expect(frame.getBowlTwoScore()).toEqual(3)
+    });
+
+  });
+
+  describe("Score", function() {
+
+    it("Should have a score property", function() {
+      expect(frame.score).toEqual([])
+    });
+
+    it("Should set the score for the frame to [4, 5]", function() {
+      frame.setBowlOneScore(4);
+      frame.setBowlTwoScore(5);
+      frame.setScore();
+      expect(frame.score).toEqual([4, 5])
+    });
+
+    it("Should return the score for the frame", function() {
+      frame.setBowlOneScore(4);
+      frame.setBowlTwoScore(5);
+      frame.setScore();
+      expect(frame.getScore()).toEqual([4, 5])
     });
 
   });

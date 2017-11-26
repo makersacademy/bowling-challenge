@@ -16,6 +16,15 @@ describe("Game", function(){
     });
   });
 
+  describe("#frames", function(){
+    it("is an object", function(){
+      expect(game.frames).toEqual(jasmine.any(Object))
+    });
+    it("returns an instance of Frame as the first element", function(){
+      expect(game.frames[1]).toEqual(jasmine.any(Frame))
+    })
+  });
+
   describe("#getCurrentFrame", function(){
     it("returns a current frame of 1", function(){
       expect(game.getCurrentFrame()).toEqual(1)

@@ -1,0 +1,30 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "makers academy week5 weekend challenge",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {
+    "eslint": "^4.11.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tabrza/bowling-challenge.git"
+  },
+  "author": "tabish raza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tabrza/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/tabrza/bowling-challenge#readme"
+}

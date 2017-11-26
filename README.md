@@ -4,7 +4,7 @@ Bowling Challenge
 This project is live [here](https://cazwazacz.github.io/bowling-challenge/).
 ---
 
-This app sums and calculates the scores of a player for a game of bowling, taking into account all the multipliers that certain actions such as spares and strikes may entail. As of now, the app calculates correctly the outcome of a full game of bowling. However, the showing of the cumulative score while the game is progress is not correct currently and is a work in progress.
+This app sums and calculates the scores of a player for a game of bowling, taking into account all the multipliers that certain actions such as spares and strikes may entail. As of now, the app calculates correctly the outcome of a full game of bowling. However, the showing of the cumulative score while the game is in progress is not correct currently and is a work in progress.
 
 Technologies used: Javascript, HTML and CSS with Jasmine for testing.
 

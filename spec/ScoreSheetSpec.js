@@ -10,7 +10,7 @@ describe("ScoreSheet", function() {
     });
     it("includes a property count",function() {
       expect(scoresheet.getCount()).toEqual(0);
-    })
+    });
   });
 
 });

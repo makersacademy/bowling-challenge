@@ -1,7 +1,7 @@
 describe("Frame", function() {
 
   beforeEach(function() {
-    rolls = jasmine.createSpy("rolls")
+    rolls = jasmine.createSpy("rolls");
     frame = new Frame(rolls);
   });
 
@@ -11,7 +11,7 @@ describe("Frame", function() {
     });
     it("includes a property rolls",function() {
       expect(frame.getRolls()).toEqual(rolls);
-    })
+    });
   });
 
 });

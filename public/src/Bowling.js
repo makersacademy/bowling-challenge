@@ -27,7 +27,7 @@ Bowling.prototype.throw_record = function(score) {
   this.spareBonus();
   this.strikeBonus();
   this.reducePins(score);
-  this.record(); //If u pass score u don't need anymore this.last score
+  this.record(); 
 };
 
 Bowling.prototype.reducePins = function(n) {
@@ -59,18 +59,3 @@ Bowling.prototype.spareBonus = function () {
     }
   }
 };
-
-// Bowling.prototype.strikeBonus = function () {
-//   if (this.turn % 2 === 0) {
-//     if (this.frames[this.actualFrame - 1].pins === 0 && this.frames[this.actualFrame - 1].firstStrike === 10 && this.frames[this.actualFrame -1].secondStrike === 0 ) {
-//       this.lastScore += this.frames[this.actualFrame].firstStrike + this.frames[this.actualFrame].secondStrike
-//     }
-//   }
-// };
-
-// Bowling.prototype.isStrike = function () {
-//   if (this.frames[this.actualFrame].firstStrike === 10) {
-//     this.increaseTurn();
-//     this.increaseActualFrame();
-//   }
-// };

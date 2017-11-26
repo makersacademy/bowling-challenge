@@ -1,3 +1,5 @@
+// NEXT - Implement the addition of spare bonus to previous frame's bonus score.
+
 function Game(bonus){
   this.rollOne = true
   this.bonus = bonus
@@ -99,7 +101,7 @@ Game.prototype._saveRollOne = function(roll){
   this.frames[this.currentFrame].setRollOne(roll)
   this.setSpareBonusFalse()
   if (roll == 10) {
-    // think it should be here
+    // think it should be here - LINE 48
     this.addFrame()
   } else {
     this._setRollOneFalse()

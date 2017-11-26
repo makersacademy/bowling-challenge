@@ -17,7 +17,7 @@ Bonus.prototype.setStrike = function(){
   this.strike = !this.strike
 }
 
-  // NEED TO REPLACE WITH SET TRUE AND SET FALSE
+  // NEED TO REPLACE THE ABOVE WITH SET TRUE AND SET FALSE
 // Bonus.prototype.setStrikeTrue = function(){
 //   this.strike = true
 // }

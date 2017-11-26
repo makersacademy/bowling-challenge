@@ -3,6 +3,8 @@ $(document).ready(function() {
   var bowling = new Bowling();
   var frame = [];
   var divId = 1;
+  var frameId = 1;
+  var cumulation = 0;
 
   function updateScore () {
     $("#score").html(bowling.total());
@@ -48,8 +50,16 @@ $(document).ready(function() {
     })
   }
 
-  function frameScore(frame) {
-    
+  function frameScore(id) {
+    var divId = "#frame-" + id;
+    var total = frame[0] + frame[1];
+    if (total === 10) {
+
+    }
+    cumulation = cumulation + total;
+    if (frame.length == 2) {
+      $(divId).append(cumulation);
+    }
   }
 
   function emptyDivs() {
@@ -81,6 +91,8 @@ $(document).ready(function() {
         if (clicked === 10) {
           strike();
         } else if (frame.length === 2) {
+          frameScore(frameId);
+          frameId++;
           bowl(frame);
           refreshButtons(10);
         }

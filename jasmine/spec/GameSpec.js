@@ -22,7 +22,7 @@ describe('Game', function() {
   it('should add the current frame to the frames array', function(){
       game.playRound1(4);
       game.playRound2(5);
-      expect(game._frames).toEqual([[4,5]]);
+      expect(game._frames).toEqual([[0,0],[4,5]]);
     });
 
   it('should be able to count the total score', function(){
@@ -30,5 +30,13 @@ describe('Game', function() {
     game.playRound2(5);
     expect(game.totalscore).toEqual(9);
   });
+
+  it('if a spare has been thrown, the next game should add the pins twice to the total score', function(){
+    game.playRound1(1);
+    game.playRound2(9);
+    game.playRound1(5);
+    game.playRound2(3);
+    expect(game.totalscore).toEqual(26);
+  })
 
 });

@@ -1,8 +1,6 @@
-function Game(){
+function Game(bonus){
   this.rollOne = true
-  this.bonus = new Bonus()
-  this.strikeBonus = false
-  this.spareBonus = false
+  this.bonus = bonus
   this.currentFrame = 1
   this.frames = {
     1: new Frame(),
@@ -47,6 +45,7 @@ Game.prototype.addRoll = function (roll) {
         this._saveRollTwo(roll)
       }
     }
+    // This shouldnt be here as is setting strike bonus regardless of whether 10 was rolled on first or second go
     if (roll == 10) {
       this.setStrikeBonus()
     }
@@ -77,6 +76,7 @@ Game.prototype.setSpareBonusFalse = function(){
   this.bonus.setSpareFalse()
 }
 
+// need to create true and false setters before anything else
 Game.prototype.setStrikeBonus = function(){
   this.bonus.setStrike()
 }
@@ -99,6 +99,7 @@ Game.prototype._saveRollOne = function(roll){
   this.frames[this.currentFrame].setRollOne(roll)
   this.setSpareBonusFalse()
   if (roll == 10) {
+    // think it should be here
     this.addFrame()
   } else {
     this._setRollOneFalse()

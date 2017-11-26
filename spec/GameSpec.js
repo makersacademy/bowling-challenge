@@ -15,7 +15,8 @@ describe("Game", function(){
   }
 
   beforeEach(function(){
-    game = new Game();
+    bonus = jasmine.createSpyObj('new Bonus()', ['setSpareTrue', 'setSpareFalse', 'setStrike', 'isSpare', 'isStrike']);
+    game = new Game(bonus);
   });
 
   describe("#getCurrentScore", function(){
@@ -123,46 +124,48 @@ describe("Game", function(){
 
   describe("#isStrikeBonus", function(){
     it("is set to false by default", function(){
+      game.bonus.isStrike = jasmine.createSpy('strike == false').and.returnValue(false)
       expect(game.isStrikeBonus()).toEqual(false)
     });
 
     it("changes to true after rolling a 10 on your first roll", function(){
+      game.bonus.isStrike = jasmine.createSpy('strike == true').and.returnValue(true)
       game.addRoll(10)
       expect(game.isStrikeBonus()).toEqual(true)
     });
   });
 
   describe("#setStrikeBonus", function(){
-    it("changes #isSpareBonus from false to true", function(){
+    it("calls bonus.setStrike", function(){
+      game.bonus.setStrike = jasmine.createSpy('strike == true').and.returnValue(true)
       game.setStrikeBonus()
-      expect(game.isStrikeBonus()).toEqual(true)
-    });
-
-    it("changes #isStrikeBonus from true to false", function(){
-      game.setStrikeBonus()
-      game.setStrikeBonus()
-      expect(game.isStrikeBonus()).toEqual(false)
     });
   });
 
   describe("#isSpareBonus", function(){
     it("is set to false by default", function(){
+      game.bonus.isSpare = jasmine.createSpy('spare == false').and.returnValue(false)
       expect(game.isSpareBonus()).toEqual(false)
     });
 
     it("is set to true if all pins are knocked down on the second roll", function(){
+      game.bonus.isSpare = jasmine.createSpy('spare == true').and.returnValue(true)
       RollSpare()
       expect(game.isSpareBonus()).toEqual(true)
     });
 
     it("resets to false after completing bonus roll", function(){
+      game.bonus.isSpare = jasmine.createSpy('spare == true').and.returnValue(true)
       RollSpare()
+      game.bonus.isSpare = jasmine.createSpy('spare == false').and.returnValue(false)
       game.addRoll(4)
       expect(game.isSpareBonus()).toEqual(false)
     });
 
     it("resets to false after completing a bonus roll that is a strike", function(){
+      game.bonus.isSpare = jasmine.createSpy('spare == true').and.returnValue(true)
       RollSpare()
+      game.bonus.isSpare = jasmine.createSpy('spare == false').and.returnValue(false)
       RollStrike()
       expect(game.isSpareBonus()).toEqual(false)
     });

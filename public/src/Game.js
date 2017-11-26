@@ -11,7 +11,6 @@ Game.prototype = {
 
 	score: function(rollIndex){
 		var score = 0;
-
 			if (this._isStrike(rollIndex)){
 				score += 10 + this._strikeBonus(rollIndex);
 				rollIndex ++;
@@ -19,7 +18,7 @@ Game.prototype = {
 			else if (this._isSpare(rollIndex)) {
 				score += 10 + this._spareBonus(rollIndex);
 				rollIndex += 2;
-			}
+      }
 			else {
 				score += this._sumPins(rollIndex);
 				rollIndex += 2;
@@ -30,6 +29,10 @@ Game.prototype = {
   newGame: function (){
     this.currentBowl = 0;
     this.bowls = []
+  },
+
+  _nextFrame: function () {
+    this.currentFrame ++;
   },
 
 	_sumPins: function(rollIndex){

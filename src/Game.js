@@ -9,23 +9,46 @@ Game.prototype = {
 	  this.bowls[this.currentBowl++] = pins;
 	},
 
-	sumPins: function(frameIndex){
-	  return this.bowls[frameIndex] + this.bowls[frameIndex + 1];
+	score: function(rollIndex){
+		var score = 0;
+
+			if (this._isStrike(rollIndex)){
+				score += 10 + this._strikeBonus(rollIndex);
+				rollIndex ++;
+			}
+			else if (this._isSpare(rollIndex)) {
+				score += 10 + this._spareBonus(rollIndex);
+				rollIndex += 2;
+			}
+			else {
+				score += this._sumPins(rollIndex);
+				rollIndex += 2;
+			}
+			return score;
 	},
 
-	isStrike: function(frameIndex){
-	  return this.bowls[frameIndex] === 10;
+  newGame: function (){
+    this.currentBowl = 0;
+    this.bowls = []
+  },
+
+	_sumPins: function(rollIndex){
+	  return this.bowls[rollIndex] + this.bowls[rollIndex + 1];
 	},
 
-	isSpare: function(frameIndex){
-  	return this.bowls[frameIndex] + this.bowls[frameIndex + 1] === 10;
+	_isStrike: function(rollIndex){
+	  return this.bowls[rollIndex] === 10;
 	},
 
-	strikeBonus: function(frameIndex){
-  	return this.bowls[frameIndex + 1] + this.bowls[frameIndex + 2];
+	_isSpare: function(rollIndex){
+  	return this.bowls[rollIndex] + this.bowls[rollIndex + 1] === 10;
 	},
 
-	spareBonus: function(frameIndex){
-  	return this.bowls[frameIndex + 2];
+	_strikeBonus: function(rollIndex){
+  	return this.bowls[rollIndex + 1] + this.bowls[rollIndex + 2];
+	},
+
+	_spareBonus: function(rollIndex){
+  	return this.bowls[rollIndex + 2];
 	}
 };

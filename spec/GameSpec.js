@@ -8,6 +8,7 @@ describe("Game", function(){
     it("returns a current score of 0", function(){
       expect(game.getCurrentScore()).toEqual(0)
     });
+
     it("has a score of 40 after ten frames", function(){
       for (var i = 0; i < 10; i++){
         game.addRoll(4)
@@ -20,6 +21,7 @@ describe("Game", function(){
     it("is an object", function(){
       expect(game.frames).toEqual(jasmine.any(Object))
     });
+
     it("returns an instance of Frame as the first element", function(){
       expect(game.frames[1]).toEqual(jasmine.any(Frame))
     })
@@ -29,16 +31,48 @@ describe("Game", function(){
     it("returns a current frame of 1", function(){
       expect(game.getCurrentFrame()).toEqual(1)
     });
-    it("rolling once increases the current frame by 1", function(){
+
+    it("doesn't increase the frame after only one roll (below 10)", function(){
+      game.addRoll(4)
+      expect(game.getCurrentFrame()).toEqual(1)
+    });
+
+    it("rolling twice (below 5) increases the current frame by 1", function(){
+      game.addRoll(4)
       game.addRoll(4)
       expect(game.getCurrentFrame()).toEqual(2)
     });
+
     it("has a maximum of ten frames", function(){
-      for (var i = 0; i < 15; i++){
+      for (var i = 0; i < 20; i++){
         game.addRoll(4)
       }
       expect(game.getCurrentFrame()).toEqual(10)
     });
+  });
+
+  describe("#isRollOne", function(){
+    it("is set to be true by default", function(){
+      expect(game.isRollOne()).toEqual(true)
+    });
+
+    it("is set to false after taking one roll", function(){
+      game.addRoll(4)
+      expect(game.isRollOne()).toEqual(false)
+    });
+
+    it("is set to true after making two rolls (below 5)", function(){
+      game.addRoll(4)
+      game.addRoll(4)
+      expect(game.isRollOne()).toEqual(true)
+    })
+
+    it("is set to false after making three rolls (below 5)", function(){
+      game.addRoll(4)
+      game.addRoll(4)
+      game.addRoll(4)
+      expect(game.isRollOne()).toEqual(false)
+    })
   });
 
   describe("#addRoll", function(){
@@ -46,16 +80,18 @@ describe("Game", function(){
       game.addRoll(4)
       expect(game.getCurrentScore()).toEqual(4)
     });
+
     it("throws an error if the number of pins hit is > 10", function(){
       expect(function() { game.addRoll(11) }).toThrow("You can't knock down more than 10 pins")
     })
   });
 
-  describe("#_addFrame", function(){
+  describe("#addFrame", function(){
     it("adds one frame to the frame total", function(){
       game.addFrame()
       expect(game.getCurrentFrame()).toEqual(2)
     });
+
     it("doesn't add one frame when the number of frames is 10", function(){
       for (var i = 0; i <15; i++){
         game.addFrame()

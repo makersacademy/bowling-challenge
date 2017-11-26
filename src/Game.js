@@ -1,4 +1,5 @@
 function Game(){
+  this.rollOne = true
   this.currentFrame = 1
   this.frames = {
     1: new Frame(),
@@ -37,11 +38,23 @@ Game.prototype.addRoll = function (roll) {
     throw("You can't knock down more than 10 pins")
   }
     if (this.currentFrame <= 10) {
-      this.frames[this.currentFrame].setRollOne(roll)
-      this.addFrame()
+      if (this.isRollOne()) {
+        this.frames[this.currentFrame].setRollOne(roll)
+        this._setRollOneFalse()
+      } else {
+        this.frames[this.currentFrame].setRollTwo(roll)
+        this.addFrame()
+        this._setRollOneTrue()
+      }
     }
 };
 
+
+// BOOLEAN
+
+Game.prototype.isRollOne = function(){
+  return this.rollOne
+}
 // PRIVATE
 
 Game.prototype.addFrame = function() {
@@ -51,5 +64,15 @@ Game.prototype.addFrame = function() {
 }
 
 Game.prototype._sumScoresInFrame = function(key){
-  return this.frames[key].getRollOne() + this.frames[key].getRollTwo() + this.frames[key].getBonus()
+  return this.frames[key].getRollOne()
+   + this.frames[key].getRollTwo()
+    + this.frames[key].getBonus()
+}
+
+Game.prototype._setRollOneFalse = function(){
+  this.rollOne = false
+}
+
+Game.prototype._setRollOneTrue = function(){
+  this.rollOne = true
 }

@@ -2,6 +2,7 @@ $(document).ready(function() {
 
   var bowling = new Bowling();
   var frame = [];
+  var divId = 1;
 
   function updateScore () {
     $("#score").html(bowling.total());
@@ -9,8 +10,28 @@ $(document).ready(function() {
   }
 
   function createButtons(limit) {
-    for (var i=1; i<=limit; i++) {
+    for (var i=0; i<=limit; i++) {
       $('#buttons').append('<input class="bowl-button" type="button" value="' + i + '">');
+    }
+  }
+
+  function addBowlToDiv(bowl, id) {
+    var isRightCorner = $("#" + id).hasClass('right-corner');
+    var leftCornerValue = parseInt($("#" + (id-1)).html());
+    if (id < 19) {
+      if (bowl === 10) {
+        $("#" + (id + 1)).append('X');
+      } else if (isRightCorner && (leftCornerValue + bowl === 10)) {
+        $("#" + id).append('/');
+      } else {
+        $("#" + id).append(bowl);
+      }
+    } else {
+      if (bowl === 10) {
+        $("#" + id).append('X');
+      } else {
+        $("#" + id).append(bowl);
+      }
     }
   }
 
@@ -22,7 +43,19 @@ $(document).ready(function() {
       updateScore();
       $('#restart').remove();
       refreshButtons(10);
+      divId = 1;
+      emptyDivs();
     })
+  }
+
+  function frameScore(frame) {
+    
+  }
+
+  function emptyDivs() {
+    for (var i=1; i<=21; i++) {
+      $('#' + i).html('');
+    }
   }
 
   function strike() {
@@ -38,6 +71,8 @@ $(document).ready(function() {
   function addListener() {
     $('.bowl-button').click(function() {
       var clicked = parseInt($(this).val());
+      addBowlToDiv(clicked, divId);
+      bowling.frames().length < 9 && clicked === 10 ? divId += 2 : divId++ ;
       frame.push(clicked);
       if (frame.length !== 2 && clicked !== 10) {
         refreshButtons(10 - clicked);

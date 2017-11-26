@@ -55,6 +55,14 @@ BowlingScore.prototype.calculateScore = function(){
       this._currentFrame+=1;
       i+=1;
     }
-    
+    else if(arr[i]< 10 && next(i)+arr[i]< 10){
+      var score = this._rolls[i]+next(i);
+      this._score += score;
+      this._currentFrame+=1;
+      this._scores.push(score);
+      i+=1;
+    }
+
+
   }
 }

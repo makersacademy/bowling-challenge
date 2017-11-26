@@ -54,4 +54,14 @@ describe("BowlingScore", function(){
       expect(bowlingScore.scores()[0]).toEqual(12);
     })
   })
+
+  describe("normal rolls", function(){
+    it("score should be the same of the the 2 rolls in the same frame", function(){
+      bowlingScore.roll(2);
+      bowlingScore.roll(5);
+      bowlingScore.roll(2);
+      bowlingScore.calculateScore();
+      expect(bowlingScore.scores()[0]).toEqual(7);
+    })
+  })
 })

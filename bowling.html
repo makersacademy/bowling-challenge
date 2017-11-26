@@ -9,134 +9,141 @@
   <link rel="stylesheet" type="text/css" href="lib/bowling/style.css">
   <script type="text/javascript" src="jquery-3.2.1.js"></script>
   <script src="src/game.js"></script>
+  <script src="src/validator.js"></script>
+  <script src="src/frameBuilder.js"></script>
+  <script src="src/frame.js"></script>
+  <script src="src/helpers.js"></script>
   <script src="src/interface.js"></script>
   <h1>Bowling</h1>
 </head>
 
 <body class="main">
 
-  <br>
-  <br>
+  <section class="message">
+    Input your scores:
+  </section>
 
-  <section class="score" id="input">
+  <form id="scores_submission">
+    <section class="score" id="input">
+      <div class="frame_box">
+        <div class="frame_header">Frame 1:</div>
+        <input class="roll_1" type="text" id="1">
+        <input class="roll_2" type="text" id="2">
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 2:</div>
+        <input class="roll_1" type="text" id="3">
+        <input class="roll_2" type="text" id="4">
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 3:</div>
+        <input class="roll_1" type="text" id="5">
+        <input class="roll_2" type="text" id="6">
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 4:</div>
+        <input class="roll_1" type="text" id="7">
+        <input class="roll_2" type="text" id="8">
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 5:</div>
+        <input class="roll_1" type="text" id="9">
+        <input class="roll_2" type="text" id="10">
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 6:</div>
+        <input class="roll_1" type="text" id="11">
+        <input class="roll_2" type="text" id="12">
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 7:</div>
+        <input class="roll_1" type="text" id="13">
+        <input class="roll_2" type="text" id="14">
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 8:</div>
+        <input class="roll_1" type="text" id="15">
+        <input class="roll_2" type="text" id="16">
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 9:</div>
+        <input class="roll_1" type="text" id="17">
+        <input class="roll_2" type="text" id="18">
+      </div>
+      <div class="frame_box" style="width: 135px;">
+        <div class="frame_header">Frame 10:</div>
+        <input class="roll_1" type="text" id="19">
+        <input class="roll_2" type="text" id="20">
+        <input class="roll_3" type="text" id="21">
+      </div>
+    </section>
+    <section>
+      <div class="error" id="error_message"></div>
+      <div class="button">
+        <button id="submit_score" type="submit" class="submit_button">Score</button>
+      </div>
+    </section>
+  </form>
+
+  <section class="break">
+  </section>
+
+  <section class="result" id="output">
     <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
+      <div class="frame_header">Score</div>
+      <div class="frame_score" id="f1"></div>
     </div>
     <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f2"></div>
     </div>
     <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f3"></div>
     </div>
     <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f4"></div>
     </div>
     <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f5"></div>
     </div>
     <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f6""></div>
     </div>
     <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f7"></div>
     </div>
     <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f8"></div>
     </div>
     <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f9"></div>
     </div>
     <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f10"></div>
     </div>
   </section>
 
-  <br>
-  <br>
-
-  <section class="score" id="output">
-    <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
-    </div>
-    <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
-    </div>
-    <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
-    </div>
-    <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
-    </div>
-    <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
-    </div>
-    <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
-    </div>
-    <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
-    </div>
-    <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
-    </div>
-    <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
-    </div>
-    <div class="frame_box">
-      <div class="frame_header">lala</div>
-      <div class="roll_1">lala</div>
-      <div class="roll_2">lala</div>
-    </div>
+  <section class="results_message">
+    <p>
+      Total Score: <span id="total"></span>
+    </p>
+<!--     <p>
+      Your Spirit Bowler is: <span id="spirit"></span>
+    </p> -->
   </section>
 
-  <section class="result">
-    Your score: 223. Your Spirit Bowler is:
-  </section>
-
-  <section class="spirit_bowler">
-    <div class="spirit_photo">
-    </div>
-    <div class="spirit_bio">lala
-    </div>
-  </section>
+<!--   <section class="spirit_bowler">
+    <div class="spirit_photo"></div>
+    <div class="spirit_bio"></div>
+  </section> -->
 
 </body>
 </html>

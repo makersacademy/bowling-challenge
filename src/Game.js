@@ -12,53 +12,51 @@ Game.prototype.updateRolls = function (rollsList) {
   if(rollsList.length > 21){
     throw new Error('cannot have more than 21 rolls in a game')
   }
-  this._rolls = rollsList;
+  game._rolls = rollsList;
 };
 
 Game.prototype.score = function () {
   var sum = 0;
   var frameNr = 1;
   var rollsIndex = 0;
+  game._frames = [];
   for (frameNr = 1; frameNr <= 10; frameNr ++) {
-    var frame;
-    frame = new Frame(frameNr,[],0)
+    var frame = new Frame(frameNr,[],0);
+
     if(game.isStrike(rollsIndex)) {
       if (frameNr === 10) {
-        frame._rolls.push(game._rolls[rollsIndex]);
-        frame._rolls.push(game._rolls[rollsIndex+1]);
-        frame._rolls.push(game._rolls[rollsIndex+2]);
-        frame._intScore =frame._intScore + 10 + game.bonus(rollsIndex);
-
+        var a = [game._rolls[rollsIndex], game._rolls[rollsIndex+1], game._rolls[rollsIndex+2]];
+        Array.prototype.push.apply(frame._rolls, a);
+        frame._intScore = 10 + game.bonus(rollsIndex);
       }
       else {
         frame._rolls.push(game._rolls[rollsIndex]);
-        frame._intScore =frame._intScore + 10 + game.bonus(rollsIndex);
-        rollsIndex = rollsIndex +1;
+        frame._intScore = 10 + game.bonus(rollsIndex);
+        rollsIndex = rollsIndex + 1;
       }
     }
 
     else if(game.isSpare(rollsIndex)) {
       if(frameNr === 10) {
-        frame._rolls.push(game._rolls[rollsIndex]);
-        frame._rolls.push(game._rolls[(rollsIndex+1)]);
+        var b = [game._rolls[rollsIndex],game._rolls[(rollsIndex+1)]];
+        Array.prototype.push.apply(frame._rolls,b);
       }
       else {
-        frame._rolls.push(game._rolls[rollsIndex]);
-        frame._rolls.push(game._rolls[(rollsIndex+1)]);
-        frame._intScore = frame._intScore + 10 + game.bonus(rollsIndex);
+        var c = [game._rolls[rollsIndex],game._rolls[(rollsIndex+1)]];
+        Array.prototype.push.apply(frame._rolls,c);
+        frame._intScore = 10 + game.bonus(rollsIndex);
         rollsIndex = rollsIndex +2;
       }
     }
 
     else {
-      frame._rolls.push(game._rolls[rollsIndex]);
-      frame._rolls.push(game._rolls[(rollsIndex+1)]);
-      frame._intScore = frame._intScore + game._rolls[rollsIndex]+game._rolls[rollsIndex+1];
+      var d = [game._rolls[rollsIndex],game._rolls[(rollsIndex+1)]];
+      Array.prototype.push.apply(frame._rolls,d);
+      frame._intScore = game._rolls[rollsIndex]+game._rolls[rollsIndex+1];
       rollsIndex = rollsIndex +2;
     }
 
     sum = sum + frame._intScore;
-    console.log(frame);
     game._frames.push(frame);
    };
 return sum;
@@ -84,6 +82,15 @@ Game.prototype.bonus = function(rollsIndex) {
 
 Game.prototype.isGutterGame = function() {
   if ( ((game._frames).length === 10) && (game.score() === 0)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+};
+
+Game.prototype.isPerfectGame = function() {
+  if ( ((game._frames).length === 10) && (game.score() === 300)) {
     return true;
   }
   else {

@@ -1,5 +1,10 @@
 describe("Game", function(){
 
+  function Roll4Then4(){
+    game.addRoll(4)
+    game.addRoll(4)
+  }
+
   beforeEach(function(){
     game = new Game();
   });
@@ -37,9 +42,13 @@ describe("Game", function(){
       expect(game.getCurrentFrame()).toEqual(1)
     });
 
+    it("moves on to the next frame if the first roll is 10", function(){
+      game.addRoll(10)
+      expect(game.getCurrentFrame()).toEqual(2)
+    })
+
     it("rolling twice (below 5) increases the current frame by 1", function(){
-      game.addRoll(4)
-      game.addRoll(4)
+      Roll4Then4();
       expect(game.getCurrentFrame()).toEqual(2)
     });
 
@@ -62,14 +71,12 @@ describe("Game", function(){
     });
 
     it("is set to true after making two rolls (below 5)", function(){
-      game.addRoll(4)
-      game.addRoll(4)
+      Roll4Then4();
       expect(game.isRollOne()).toEqual(true)
     })
 
     it("is set to false after making three rolls (below 5)", function(){
-      game.addRoll(4)
-      game.addRoll(4)
+      Roll4Then4()
       game.addRoll(4)
       expect(game.isRollOne()).toEqual(false)
     })
@@ -102,6 +109,25 @@ describe("Game", function(){
         game.addFrame()
       }
       expect(game.getCurrentFrame()).toEqual(10)
+    });
+  });
+
+  describe("#isSpareBonus", function(){
+    it("is set to false by default", function(){
+      expect(game.isSpareBonus()).toEqual(false)
+    });
+  });
+
+  describe("#setSpareBonus", function(){
+    it("changes #isSpareBonus from false to true", function(){
+      game.setSpareBonus()
+      expect(game.isSpareBonus()).toEqual(true)
+    });
+
+    it("changes #isSpareBonus from true to false", function(){
+      game.setSpareBonus()
+      game.setSpareBonus()
+      expect(game.isSpareBonus()).toEqual(false)
     });
   });
 });

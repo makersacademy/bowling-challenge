@@ -1,5 +1,6 @@
 function Game(){
   this.rollOne = true
+  this.spareBonus = false
   this.currentFrame = 1
   this.frames = {
     1: new Frame(),
@@ -53,7 +54,15 @@ Game.prototype.isRollOne = function(){
   return this.rollOne
 }
 
+Game.prototype.isSpareBonus = function(){
+  return this.spareBonus
+}
+
 // PRIVATE
+
+Game.prototype.setSpareBonus = function(){
+  this.spareBonus = !this.spareBonus
+}
 
 Game.prototype.addFrame = function() {
   if (this.currentFrame < 10){
@@ -77,7 +86,11 @@ Game.prototype._setRollOneTrue = function(){
 
 Game.prototype._saveRollOne = function(roll){
   this.frames[this.currentFrame].setRollOne(roll)
-  this._setRollOneFalse()
+  if (roll == 10) {
+    this.addFrame()
+  } else {
+    this._setRollOneFalse()
+  }
 }
 
 Game.prototype._saveRollTwo = function(roll){

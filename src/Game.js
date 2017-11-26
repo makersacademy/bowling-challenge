@@ -68,6 +68,14 @@ Game.prototype.isSpareBonus = function () {
 
 // PRIVATE
 
+Game.prototype.setSpareBonusTrue = function(){
+  this.spareBonus = true
+}
+
+Game.prototype.setSpareBonusFalse = function(){
+  this.spareBonus = false
+}
+
 Game.prototype.setStrikeBonus = function(){
   this.strikeBonus = !this.strikeBonus
 }
@@ -94,6 +102,7 @@ Game.prototype._setRollOneTrue = function(){
 
 Game.prototype._saveRollOne = function(roll){
   this.frames[this.currentFrame].setRollOne(roll)
+  this.setSpareBonusFalse()
   if (roll == 10) {
     this.addFrame()
   } else {
@@ -104,6 +113,9 @@ Game.prototype._saveRollOne = function(roll){
 Game.prototype._saveRollTwo = function(roll){
   if (roll + this.frames[this.currentFrame].getRollOne() > 10) {
     throw "Your rolls can't sum over 10"
+  }
+  if (roll + this.frames[this.currentFrame].getRollOne() == 10) {
+    this.setSpareBonusTrue()
   }
   this.frames[this.currentFrame].setRollTwo(roll)
   this.addFrame()

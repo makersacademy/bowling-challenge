@@ -140,6 +140,26 @@ describe("Game", function(){
     it("is set to false by default", function(){
       expect(game.isSpareBonus()).toEqual(false)
     });
+
+    it("is set to true if all pins are knocked down on the second roll", function(){
+      game.addRoll(4)
+      game.addRoll(6)
+      expect(game.isSpareBonus()).toEqual(true)
+    });
+
+    it("resets to false after completing bonus roll", function(){
+      game.addRoll(4)
+      game.addRoll(6)
+      game.addRoll(4)
+      expect(game.isSpareBonus()).toEqual(false)
+    });
+
+    it("resets to false after completing a bonus roll that is a strike", function(){
+      game.addRoll(4)
+      game.addRoll(6)
+      game.addRoll(10)
+      expect(game.isSpareBonus()).toEqual(false)
+    });
   });
 
   //DO ONCE SPARE BONUS IMPLEMENTED

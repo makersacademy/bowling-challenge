@@ -1,0 +1,85 @@
+body {
+  font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  width: 1000px;
+  background-color: #E1FAFF;
+  text-align: center;
+}
+
+.playerColumn {
+  width: 20%;
+}
+
+th {
+  padding: 5px;
+  height: 15px;
+  width: 8%;
+}
+
+td {
+  height: 15px;
+  font-size: 12px;
+}
+
+.playerNames {
+  background-color: #EEEEEE;
+  font-size: 16px;
+}
+
+.firstRoll {
+  background-color: #FAE6C5;
+}
+
+.secondRoll {
+  background-color: #FFB438;
+}
+
+.pinfallDiv {
+  margin-top: 100px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.pinfallSelectionDiv {
+  margin: auto;
+  border: 2px solid black;
+  border-radius: 10px;
+  line-height: 150px;
+  width: 250px;
+  vertical-align: middle;
+}
+
+.pinfall {
+  font-size: 36px;
+  text-align: center;
+
+}
+
+.decreasePinfallButton {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  margin-right: 25px;
+  vertical-align: middle;
+}
+
+.increasePinfallButton {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  margin-left: 25px;
+  vertical-align: middle;
+}
+
+.confirmButton {
+  height: 25px;
+  width: 80px;
+  border-radius: 10%;
+}

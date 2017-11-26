@@ -1,9 +1,20 @@
 describe('Bowling Game', function() {
+  beforeEach(function() {
+    game = new BowlingGame();
+  });
+
   it('can roll a gutter game', function() {
-    var game = new BowlingGame();
-    for (var i = 0; i < 20; i++)  {
-      game.roll(0);
-    }
+    rollMany(20, 0)
     expect(game.score()).toEqual(0);
   });
+  it('roll all ones', function() {
+    rollMany(20, 1)
+    expect(game.score()).toEqual(20);
+  });
+
+  var rollMany = function (rolls, pins) {
+    for (var i = 0; i < rolls; i++)  {
+      game.roll(pins);
+    }
+  }
 });

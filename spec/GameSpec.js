@@ -5,6 +5,15 @@ describe("Game", function(){
     game.addRoll(4)
   }
 
+  function RollSpare(){
+    game.addRoll(5)
+    game.addRoll(5)
+  }
+
+  function RollStrike(){
+    game.addRoll(10)
+  }
+
   beforeEach(function(){
     game = new Game();
   });
@@ -142,22 +151,19 @@ describe("Game", function(){
     });
 
     it("is set to true if all pins are knocked down on the second roll", function(){
-      game.addRoll(4)
-      game.addRoll(6)
+      RollSpare()
       expect(game.isSpareBonus()).toEqual(true)
     });
 
     it("resets to false after completing bonus roll", function(){
-      game.addRoll(4)
-      game.addRoll(6)
+      RollSpare()
       game.addRoll(4)
       expect(game.isSpareBonus()).toEqual(false)
     });
 
     it("resets to false after completing a bonus roll that is a strike", function(){
-      game.addRoll(4)
-      game.addRoll(6)
-      game.addRoll(10)
+      RollSpare()
+      RollStrike()
       expect(game.isSpareBonus()).toEqual(false)
     });
   });

@@ -23,7 +23,7 @@ Game.prototype.getCurrentScore = function () {
   var score = 0
   for (var key in this.frames) {
     if (this.frames.hasOwnProperty(key)) {
-      score += this._sumScoresInFrame(key)
+      score += this.frames[key].sumAllRolls()
     }
   }
   return score;
@@ -84,12 +84,6 @@ Game.prototype.addFrame = function() {
   if (this.currentFrame < 10){
     this.currentFrame += 1
   }
-}
-
-Game.prototype._sumScoresInFrame = function(key){
-  return this.frames[key].getRollOne()
-   + this.frames[key].getRollTwo()
-    + this.frames[key].getBonus()
 }
 
 Game.prototype._setRollOneFalse = function(){

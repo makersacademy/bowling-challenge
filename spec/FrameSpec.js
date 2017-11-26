@@ -24,4 +24,13 @@ describe("Frame", function(){
       expect(frame.getBonus()).toEqual(7)
     });
   })
+
+  describe("#sumAllRolls", function(){
+    it("sums totals from roll 1, 2 and bonus", function(){
+      frame.setRollOne(3)
+      frame.setRollTwo(5)
+      frame.setBonus(7)
+      expect(frame.sumAllRolls()).toEqual(15)
+    });
+  });
 });

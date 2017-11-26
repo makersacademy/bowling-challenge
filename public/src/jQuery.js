@@ -3,28 +3,25 @@ $(document).ready(function() {
   bowling = new Bowling();
 
   $('#throwBall').click(function() {
-    if ( bowling.points.length < 9) {
-      bowling.throw(5) //throw e record can be in another function, saving 1 line
-      bowling.record()
-      $('#pt'+bowling.turn).html(bowling.lastScore);            //pt e score can be in another function saving another line
-      $('#score').html(bowling.points.reduce((a, b) => a + b)); //reduce method with javascript
-    } else if (bowling.points.length === 9) {
-      bowling.throw(5) //throw e record can be in another function, saving 1 line
-      bowling.record()
-      $('#pt'+bowling.turn).html(bowling.lastScore);            //pt e score can be in another function saving another line
-      $('#score').html(bowling.points.reduce((a, b) => a + b)); //reduce
+    if ( bowling.turn <= 19) {
+      bowling.throw_record(10);
+      writePtAndScore();
+      bowling.increaseActualFrame();
+      bowling.increaseTurn();
+    } else if (bowling.turn === 20) {
+      bowling.throw_record(9);
+      bowling.IsGutter();
+      writePtAndScore();
       $("#bowlingPicture").attr("src","https://preview.ibb.co/cFUBSm/Screen_Shot_2017_11_25_at_17_33_56.png");
       $('#finalScore').html(bowling.points.reduce((a, b) => a + b));
       $('#startNewGame').prop( "hidden", null );
     }
   });
 
-  $('#throwBall6').click(function() {
-    bowling.throw(6)
-    bowling.record()
+  function writePtAndScore() {
     $('#pt'+bowling.turn).html(bowling.lastScore);
     $('#score').html(bowling.points.reduce((a, b) => a + b));
-  });
+  }
 
 
   $('#startNewGame').click(function() {
@@ -32,7 +29,7 @@ $(document).ready(function() {
     bowling.resetPoint_Lscore_turn();
     $('#finalScore').html('');
     $("#bowlingPicture").attr("src","https://image.ibb.co/b9pZf6/Bowling_Start.png");
-  })
+  });
 
   function resetTable() {
     $('#pt1').html('');
@@ -45,8 +42,16 @@ $(document).ready(function() {
     $('#pt8').html('');
     $('#pt9').html('');
     $('#pt10').html('');
+    $('#pt11').html('');
+    $('#pt12').html('');
+    $('#pt13').html('');
+    $('#pt14').html('');
+    $('#pt15').html('');
+    $('#pt16').html('');
+    $('#pt17').html('');
+    $('#pt18').html('');
+    $('#pt19').html('');
+    $('#pt20').html('');
     $('#score').html('');
   }
-
-
 });

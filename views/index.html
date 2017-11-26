@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Ten-Pin Scorecard</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 </head>
 <body>
   <h1>Ten-pin bowling scorecard</h1>
@@ -44,7 +46,7 @@
 
   <h1>What was the score on your most recent bowl?</h1>
   <form>
-    <select>
+    <select id="bowl-score">
       <option value="0">0</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -57,11 +59,12 @@
       <option value="9">9</option>
       <option value="10">10</option>
     </select>
-    <button type="button" name="submit">Enter score!</button>
+    <button type="button" id="submit-score" name="submit">Enter score!</button>
   </form>
 
   <h1>Total score: <span id="total-score"></span></h1>
 
   <script src="../src/frame.js"></script>
+  <script src="../jQuery.js"></script>
 </body>
 </html>

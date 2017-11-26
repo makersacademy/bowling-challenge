@@ -5,6 +5,10 @@ Running in the console:
 - game.score();
 - expect(game.score()).toEqual(155);
 
+
+![](images/console1.png)
+![](images/console2.png)
+
 Bowling Challenge
 =================
 

@@ -19,5 +19,5 @@ $ open SpecRunner.html
 
 Things to do:
 ---
+- Fix the showing of the cumulative score - it currently does not work as a regular bowling scoreboard should even though the calculation of the total score is correct
 - Work on CSS and styling
-- Fix the showing of the cumulative score - it currently does not work as a regular bowling scoreboard should even tho the calculation of the total score is correct

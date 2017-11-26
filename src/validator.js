@@ -3,6 +3,7 @@
 (function(exports) {
     var Validator = function() {
         this._numberOfFrames = 0;
+        this.frameBuilder = new FrameBuilder();
     };
 
     Validator.prototype = {
@@ -24,10 +25,24 @@
         },
 
         _validateFrames: function(rolls) {
-            if (rolls.length === 0) {
-                return this._validateSize();
+            var firstFrame;
+
+            if (this._numberOfFrames === 9) {
+                this._buildFrame(rolls, rolls, this._numberOfFrames);
+                return this._validateLastFrame(rolls)
             }
-            var firstFrame = this._getFirstFrame(rolls);
+
+            if (this._isStrike(rolls)) {
+                firstFrame = firstRolls(rolls, 1);
+                this._buildFrame(firstFrame, firstRolls(rolls, 3));
+            } else if (this._isSpare(rolls)) {
+                firstFrame = firstRolls(rolls, 2);
+                this._buildFrame(firstFrame, firstRolls(rolls, 3));
+            } else {
+                firstFrame = firstRolls(rolls, 2);
+                this._buildFrame(firstFrame, firstRolls(rolls, 2));
+            }
+
             return this._validateFrame(firstFrame) && this._validateFrames(removeRolls(rolls, firstFrame.length));
         },
 
@@ -36,30 +51,25 @@
         },
 
         _validateFrame: function(frameRolls) {
-            this._numberOfFrames++;
-            if (frameRolls.length === 3) {
-                return this._validateLastFrame(frameRolls);
-            }
             return add(frameRolls) <= 10;
         },
 
         _validateLastFrame: function(frameRolls) {
-            return frameRolls[0] === 10 || add(firstRolls(frameRolls, 2)) === 10; 
+            return (frameRolls[0] === 10 || add(firstRolls(frameRolls, 2)) === 10 || (frameRolls.length === 2 && add(frameRolls) < 10)) && frameRolls.length < 4; 
         },
 
-        _getFirstFrame: function(rolls) {
-            var frameSize = this._getFrameSize(rolls);
-            return firstRolls(rolls, frameSize)
+        _buildFrame: function(frameRolls, scoringRolls) {
+            this._numberOfFrames++;
+            this.frameBuilder._buildFrame(frameRolls, scoringRolls, this._numberOfFrames);
+            return;
         },
 
-        _getFrameSize: function(rolls) {
-            if (rolls.length === 3) {
-                return 3;
-            }
-            if (rolls[0] === 10) {
-                return 1;
-            }
-            return 2;
+        _isStrike: function(rolls) {
+            return rolls[0] === 10;
+        },
+
+        _isSpare: function(rolls) {
+            return add(firstRolls(rolls, 2)) === 10;
         }
     }
     exports.Validator = Validator;

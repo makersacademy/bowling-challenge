@@ -40,37 +40,53 @@ describe('Validator', function() {
     });
 
     describe('validateFrames', function() {
-        it('calls validateSize if no more rolls', function() {
-            spyOn(validator, '_validateSize').and.callThrough();;
-            validator._validateFrames([]);
-            expect(validator._validateSize).toHaveBeenCalled();
+        it('directs to frame builder with first roll and three scoring rolls if strike', function() {
+            spyOn(validator, '_buildFrame').and.callThrough();
+            validator._validateFrames([10, 3, 5, 7, 2]);
+            expect(validator._buildFrame).toHaveBeenCalledWith([10], [10, 3, 5]);
         });
 
-        it('calls validateFrame with first frame', function() {
-            spyOn(validator, '_validateFrame').and.callThrough();;
-            validator._validateFrames([10, 4, 5, 3]);
-            expect(validator._validateFrame).toHaveBeenCalledWith([10]);
+        it('directs to frame builder with first two rolls and three scoring rolls if spare', function() {
+            spyOn(validator, '_buildFrame').and.callThrough();
+            validator._validateFrames([7, 3, 5, 7, 2]);
+            expect(validator._buildFrame).toHaveBeenCalledWith([7, 3], [7, 3, 5]);
         });
 
-        it('continues the cycle by calling validateFrames with remaining rolls', function() {
-            spyOn(validator, '_validateFrames').and.callThrough();;
-            validator._validateFrames([10, 4, 5, 3]);
-            expect(validator._validateFrames).toHaveBeenCalledWith([4, 5, 3]);
+        it('directs to frame builder with first two rolls and two scoring rolls otherwise', function() {
+            spyOn(validator, '_buildFrame').and.callThrough();
+            validator._validateFrames([7, 2, 5, 7, 2]);
+            expect(validator._buildFrame).toHaveBeenCalledWith([7, 2], [7, 2]);
         });
+
+        it('validates first frame', function() {
+            spyOn(validator, '_validateFrame').and.callThrough();
+            validator._validateFrames([3, 4, 5, 3]);
+            expect(validator._validateFrame).toHaveBeenCalledWith([3, 4]);
+        });
+
+        it('validates last frame if 10th', function() {
+            spyOn(validator, '_validateLastFrame').and.callThrough();
+            validator._numberOfFrames = 9;
+            validator._validateFrames([10, 4, 5]);
+            expect(validator._validateLastFrame).toHaveBeenCalledWith([10, 4, 5]);
+        });
+
+
+        it('directs to frame builder with entire rolls array if frame is 10th', function() {
+            spyOn(validator, '_buildFrame').and.callThrough();
+            validator._numberOfFrames = 9;
+            validator._validateFrames([7, 2, 5, 7, 2]);
+            expect(validator._buildFrame).toHaveBeenCalledWith([7, 2, 5, 7, 2], [7, 2, 5, 7, 2], 9);
+        });
+
+        it('breaks the cycle if frame is 10th', function() {
+            validator._numberOfFrames = 9;
+            expect(validator._validateFrames([10, 4, 5])).toBe(true);
+        });
+
     });
 
     describe('validateFrame', function() {
-        it('increments number of frames', function() {
-            validator._validateFrame([10]);
-            expect(validator._numberOfFrames).toBe(1);
-        });
-
-        it('redirects for last frame validation if frame has 3 rolls', function() {
-            spyOn(validator, '_validateLastFrame');
-            validator._validateFrame([10, 8, 9]);
-            expect(validator._validateLastFrame).toHaveBeenCalledWith([10, 8, 9]);
-        });
-
         it('returns true if sum of frame rolls <= 10', function() {
             expect(validator._validateFrame([8, 2])).toBe(true);
         });
@@ -93,34 +109,32 @@ describe('Validator', function() {
             expect(validator._validateLastFrame([2, 7, 8])).toBe(false);
         });
 
-        it('returns false if sum of first two rolls > 10', function() {
+        it('returns false if sum of first two rolls > 10 without a strike at the beginning', function() {
             expect(validator._validateLastFrame([6, 7, 8])).toBe(false);
         });
-    });
 
-    describe('getFirstFrame', function() {
-        it('gets frame size', function() {
-            spyOn(validator, '_getFrameSize').and.callThrough();;
-            validator._getFirstFrame([10, 2, 5, 4]);
-            expect(validator._getFrameSize).toHaveBeenCalledWith([10, 2, 5, 4]);
-        });
-
-        it('returns n first rolls where n is frame size', function() {
-            expect(validator._getFirstFrame([10, 2, 5, 4])).toEqual([10]);
+        it('returns false if there are more than 3 rolls', function() {
+            expect(validator._validateLastFrame([2, 7, 8, 6])).toBe(false);
         });
     });
 
-    describe('getFrameSize', function() {
-        it('returns 3 if there are only three rolls left', function() {
-            expect(validator._getFrameSize([10, 1, 3])).toBe(3);
+    describe('isStrike', function() {
+        it('returns true first roll is 10', function() {
+            expect(validator._isStrike([10, 3, 5])).toBe(true);
         });
 
-        it('then returns 1 if first roll is 10', function() {
-            expect(validator._getFrameSize([10, 1, 3, 8])).toBe(1);
+        it('returns false otherwise', function() {
+            expect(validator._isStrike([7, 3, 5])).toBe(false);
+        });
+    });
+
+    describe('isSpare', function() {
+        it('returns true sum of first two rolls is 10', function() {
+            expect(validator._isSpare([7, 3, 5])).toBe(true);
         });
 
-        it('returns 2 otherwise', function() {
-            expect(validator._getFrameSize([9, 1, 3, 8])).toBe(2);
+        it('returns false otherwise', function() {
+            expect(validator._isSpare([6, 3, 5])).toBe(false);
         });
     });
 });

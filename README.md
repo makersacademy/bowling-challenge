@@ -1,7 +1,17 @@
-
 Bowling Challenge
 =================
 
+## My approach
+To be frank, I took the warning about random rolls as something of a challenge.  My model comprised a game object that had a collection of frame objects which were a doubly-linked list
+i.e. each frame has a next and previous property pointing to another frame so that you can traverse the list in both directions
+
+On creating a game, its collection of frames would be instantiated.  My intention was to have nine regular frames and create a special tenth frame that would inherit from the regular frame, but would have the features required to handle the quirks of the tenth frame.
+
+On the web page I imagined a button to generate random scores (despite the warning) that would plug into the current frame.  Any press of the button would trigger a recalculation of the scores for each of the frames up to the current frame.
+
+The frame class contains code to handle the calculation of itself, handling the spare / strike scenarios.
+
+======================
 
 * Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own

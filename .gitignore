@@ -1,2 +1,4 @@
 /**/.DS_Store
 node_modules
+src/jquery.js
+lib/jasmine-2.8.0/**

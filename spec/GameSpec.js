@@ -129,18 +129,25 @@ describe("Game", function(){
       expect(game.isStrikeBonus()).toEqual(true)
     });
 
-    it("changes #isSpareBonus from true to false", function(){
+    it("changes #isStrikeBonus from true to false", function(){
       game.setStrikeBonus()
       game.setStrikeBonus()
       expect(game.isStrikeBonus()).toEqual(false)
     });
   });
 
-  describe("#addStrikeBonus", function(){
-    it("adds the roll to previous Frame's bonus if spareBonus is true", function(){
-      game.addRoll(10)
-      game.addRoll(4)
-
+  describe("#isSpareBonus", function(){
+    it("is set to false by default", function(){
+      expect(game.isSpareBonus()).toEqual(false)
     });
   });
+
+  //DO ONCE SPARE BONUS IMPLEMENTED
+  // describe("#addStrikeBonus", function(){
+  //   it("adds the roll to previous Frame's bonus if strikeBonus is true", function(){
+  //     game.addRoll(10)
+  //     game.addRoll(4)
+  //
+  //   });
+  // });
 });

@@ -1,6 +1,7 @@
 function Game(){
   this.rollOne = true
   this.strikeBonus = false
+  this.spareBonus = false
   this.currentFrame = 1
   this.frames = {
     1: new Frame(),
@@ -60,6 +61,10 @@ Game.prototype.isRollOne = function(){
 Game.prototype.isStrikeBonus = function(){
   return this.strikeBonus
 }
+
+Game.prototype.isSpareBonus = function () {
+  return this.spareBonus
+};
 
 // PRIVATE
 

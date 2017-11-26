@@ -1,20 +1,21 @@
 
 function BowlingScore(){
   this._pinsLeft = 10;
-  this._currentFrame = 0;
+  this._currentFrame = 1;
   this._score = 0;
+  this._scores = [];
+  this._rolls = [];
 
 }
 
 BowlingScore.prototype.roll = function(pins){
-  this._pinsLeft = 10 - pins;
-  this._currentFrame +=1;
-  this._score += pins;
+  this._scores = [];
+  this._rolls.push(pins);
 }
 
-BowlingScore.prototype.pinsLeft = function(){
-  return this._pinsLeft;
-}
+// BowlingScore.prototype.pinsLeft = function(){
+//   return this._pinsLeft;
+// }
 
 BowlingScore.prototype.currentFrame = function(){
   return this._currentFrame;
@@ -22,4 +23,29 @@ BowlingScore.prototype.currentFrame = function(){
 
 BowlingScore.prototype.score= function(){
   return this._score
+}
+
+BowlingScore.prototype.rolls = function(){
+  return this._rolls;
+}
+
+BowlingScore.prototype.scores = function(){
+  return this._scores
+}
+
+BowlingScore.prototype.calculateScore = function(){
+  var arr = this._rolls;
+  function next(i){
+    if (arr[i+1] !== undefined){return arr[i+1];}
+    else{return 0;}
+  }
+
+  for(var i = 0; i < arr.length; i++){
+    if(arr[i] === 10){
+      var score = this._rolls[i]+next(i)+next(i+1);
+      this._score += score;
+      this._scores.push(score);
+      this._currentFrame+=1;
+    }
+  }
 }

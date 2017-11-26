@@ -8,11 +8,15 @@ This app sums and calculates the scores of a player for a game of bowling, takin
 
 Technologies used: Javascript, HTML and CSS with Jasmine for testing.
 
-To view the tests, first clone this repo:
+To run locally, first clone this repo:
 ```
 $ git clone https://github.com/cazwazacz/bowling-challenge.git
 ```
 Change into the directory and then run:
+```
+$ open index.html
+```
+To view tests, run:
 ```
 $ open SpecRunner.html
 ```

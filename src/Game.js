@@ -39,12 +39,9 @@ Game.prototype.addRoll = function (roll) {
   }
     if (this.currentFrame <= 10) {
       if (this.isRollOne()) {
-        this.frames[this.currentFrame].setRollOne(roll)
-        this._setRollOneFalse()
+        this._saveRollOne(roll)
       } else {
-        this.frames[this.currentFrame].setRollTwo(roll)
-        this.addFrame()
-        this._setRollOneTrue()
+        this._saveRollTwo(roll)
       }
     }
 };
@@ -55,6 +52,7 @@ Game.prototype.addRoll = function (roll) {
 Game.prototype.isRollOne = function(){
   return this.rollOne
 }
+
 // PRIVATE
 
 Game.prototype.addFrame = function() {
@@ -75,4 +73,15 @@ Game.prototype._setRollOneFalse = function(){
 
 Game.prototype._setRollOneTrue = function(){
   this.rollOne = true
+}
+
+Game.prototype._saveRollOne = function(roll){
+  this.frames[this.currentFrame].setRollOne(roll)
+  this._setRollOneFalse()
+}
+
+Game.prototype._saveRollTwo = function(roll){
+  this.frames[this.currentFrame].setRollTwo(roll)
+  this.addFrame()
+  this._setRollOneTrue()
 }

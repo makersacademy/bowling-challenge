@@ -44,4 +44,14 @@ describe("BowlingScore", function(){
     })
 
   })
+
+  describe("spare", function(){
+    it("scores should update to include the next roll from the next frame", function(){
+      bowlingScore.roll(5);
+      bowlingScore.roll(5);
+      bowlingScore.roll(2);
+      bowlingScore.calculateScore();
+      expect(bowlingScore.scores()[0]).toEqual(12);
+    })
+  })
 })

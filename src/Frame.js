@@ -38,5 +38,7 @@ Frame.prototype.setBonus = function(num){
 // METHODS
 
 Frame.prototype.sumAllRolls = function(){
-  return this.getRollOne() + this.getRollTwo() + this.getBonus()
+  return this.getRollOne()
+   + this.getRollTwo()
+    + this.getBonus()
 }

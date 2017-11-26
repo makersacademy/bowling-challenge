@@ -112,22 +112,35 @@ describe("Game", function(){
     });
   });
 
-  describe("#isSpareBonus", function(){
+  describe("#isStrikeBonus", function(){
     it("is set to false by default", function(){
-      expect(game.isSpareBonus()).toEqual(false)
+      expect(game.isStrikeBonus()).toEqual(false)
+    });
+
+    it("changes to true after rolling a 10 on your first roll", function(){
+      game.addRoll(10)
+      expect(game.isStrikeBonus()).toEqual(true)
     });
   });
 
-  describe("#setSpareBonus", function(){
+  describe("#setStrikeBonus", function(){
     it("changes #isSpareBonus from false to true", function(){
-      game.setSpareBonus()
-      expect(game.isSpareBonus()).toEqual(true)
+      game.setStrikeBonus()
+      expect(game.isStrikeBonus()).toEqual(true)
     });
 
     it("changes #isSpareBonus from true to false", function(){
-      game.setSpareBonus()
-      game.setSpareBonus()
-      expect(game.isSpareBonus()).toEqual(false)
+      game.setStrikeBonus()
+      game.setStrikeBonus()
+      expect(game.isStrikeBonus()).toEqual(false)
+    });
+  });
+
+  describe("#addStrikeBonus", function(){
+    it("adds the roll to previous Frame's bonus if spareBonus is true", function(){
+      game.addRoll(10)
+      game.addRoll(4)
+
     });
   });
 });

@@ -1,35 +1,25 @@
 'use srict'
 
-function Frame (first, second) {
-  this.first = first
-  this.second = second
-  this.rolls = [first, second]
-}
-
-Frame.prototype = {
-  isStrike: function () {
-    if (this.first === 10) {
-      this.strike = true
-    }
-  },
-  isSpare: function () {
-    if (this.first + this.second === 10) {
-      this.spare = true
-    }
-  }
-}
+var Frame = require('../src/frame')
+var frame
 
 function Bowling () {
   this.frames = []
   this.totalPoints = 0
+  this.MAX_FRAMES = 10
 }
 
 Bowling.prototype = {
-  addFrame: function (frm) {
-    this.frames.push(frm)
-    if (this.frames.length > 10) {
+
+  error: function () {
+    if (this.frames.length > this.MAX_FRAMES) {
       throw ('Max Frames Added')
     }
+  },
+  addFrame: function (r1, r2) {
+    this.error()
+    frame = new Frame (r1, r2)
+    this.frames.push(frame)
   },
   countPoints: function () {
     this.frames.forEach(function (frame) {
@@ -39,3 +29,5 @@ Bowling.prototype = {
     })
   }
 }
+
+module.exports = Bowling

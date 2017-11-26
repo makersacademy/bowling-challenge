@@ -9,7 +9,7 @@ describe("ScoreSheet", function() {
       expect(scoresheet).toEqual(jasmine.any(ScoreSheet));
     });
     it("includes a property count",function() {
-      expect(scoresheet.get_count()).toEqual(0);
+      expect(scoresheet.getCount()).toEqual(0);
     })
   });
 

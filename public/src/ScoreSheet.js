@@ -2,6 +2,6 @@ function ScoreSheet() {
   this._count = 0
 };
 
-ScoreSheet.prototype.get_count = function() {
+ScoreSheet.prototype.getCount = function() {
   return this._count;
 };

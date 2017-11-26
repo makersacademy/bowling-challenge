@@ -20,7 +20,7 @@ Game.prototype.getCurrentScore = function () {
   var score = 0
   for (var key in this.frames) {
     if (this.frames.hasOwnProperty(key)) {
-      score += this.frames[key].getRollOne() + this.frames[key].getRollTwo() + this.frames[key].getBonus()
+      score += this._sumScoresInFrame(key)
     }
   }
   return score;
@@ -33,10 +33,13 @@ Game.prototype.getCurrentFrame = function () {
 // ADD SCORE
 
 Game.prototype.addRoll = function (roll) {
-  if (this.currentFrame <= 10) {
-    this.frames[this.currentFrame].setRollOne(roll)
-    this.addFrame()
+  if (roll > 10) {
+    throw("You can't knock down more than 10 pins")
   }
+    if (this.currentFrame <= 10) {
+      this.frames[this.currentFrame].setRollOne(roll)
+      this.addFrame()
+    }
 };
 
 // PRIVATE
@@ -45,4 +48,8 @@ Game.prototype.addFrame = function() {
   if (this.currentFrame < 10){
     this.currentFrame += 1
   }
+}
+
+Game.prototype._sumScoresInFrame = function(key){
+  return this.frames[key].getRollOne() + this.frames[key].getRollTwo() + this.frames[key].getBonus()
 }

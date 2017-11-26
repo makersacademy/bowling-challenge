@@ -46,6 +46,9 @@ describe("Game", function(){
       game.addRoll(4)
       expect(game.getCurrentScore()).toEqual(4)
     });
+    it("throws an error if the number of pins hit is > 10", function(){
+      expect(function() { game.addRoll(11) }).toThrow("You can't knock down more than 10 pins")
+    })
   });
 
   describe("#_addFrame", function(){

@@ -4,7 +4,9 @@ $(document).ready(function() {
   var frame = [];
   var divId = 1;
   var frameId = 1;
-  var cumulation = 0;
+  var strikeTracker = 0;
+  var spareTracker = 0;
+  var frameNumber = 0;
 
   function updateScore () {
     $("#score").html(bowling.total());
@@ -56,10 +58,15 @@ $(document).ready(function() {
     if (total === 10) {
 
     }
-    cumulation = cumulation + total;
     if (frame.length == 2) {
-      $(divId).append(cumulation);
+      $(divId).append(bowling.total());
     }
+  }
+
+  function frameTotal(id) {
+    var divId = "#frame-" + id;
+    var total = bowling.framesTotal(id);
+    $(divId).html(bowling.framesTotal(id));
   }
 
   function emptyDivs() {
@@ -81,6 +88,13 @@ $(document).ready(function() {
   function addListener() {
     $('.bowl-button').click(function() {
       var clicked = parseInt($(this).val());
+      if (strikeTracker >= 1) {
+        strikeTracker++;
+      }
+      if (strikeTracker === 4) {
+        frameTotal(frameNumber);
+        strikeTracker = 0;
+      }
       addBowlToDiv(clicked, divId);
       bowling.frames().length < 9 && clicked === 10 ? divId += 2 : divId++ ;
       frame.push(clicked);
@@ -90,10 +104,12 @@ $(document).ready(function() {
       if (bowling.frames().length < 9) {
         if (clicked === 10) {
           strike();
+          frameNumber = bowling.frames().length;
+          strikeTracker++;
         } else if (frame.length === 2) {
-          frameScore(frameId);
-          frameId++;
           bowl(frame);
+          var frameNo = bowling.frames().length;
+          $("#frame-" + frameNo).html(bowling.total());
           refreshButtons(10);
         }
       }

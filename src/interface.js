@@ -10,10 +10,12 @@ $(document).ready(function(){
         game = new Game();
         submission = []
         parseSubmission();
-        console.log(submission);
         game.compute(submission);
-        console.log(game.frames);
         showResults();
+    });
+
+    $("#reset").on("click", function() {
+        location.reload();
     });
 
     function parseSubmission() {
@@ -31,6 +33,10 @@ $(document).ready(function(){
     }
 
     function showResults() {
+        if (!game.frames) {
+            errorMessage();
+            return;
+        }
         for (let i = 1; i < 11; i ++) {
             $("#f" + i).text(game.frames[i - 1].accumulatedScore);
         }

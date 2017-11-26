@@ -1,12 +1,18 @@
 $(document).ready(function() {
 
   var frame = new Frame();
-  var bowlCounter = 1;
+  var bowlCount = 1;
 
   $("#submit-score").click(function() {
     var score = $("#bowl-score").val();
-    frame.setBowlOneScore(score);
-    $('td:nth-of-type('+(bowlCounter)+')').html(frame.getBowlOneScore());
-    i++;
+    if (bowlCounter % 2 != 0) {
+      frame.setBowlOneScore(score);
+      $('td:nth-of-type('+(bowlCount)+')').html(frame.getBowlOneScore());
+    } else {
+      frame.setBowlTwoScore(score);
+      $('td:nth-of-type('+(bowlCount)+')').html(frame.getBowlTwoScore());
+      var frame = new Frame();
+    }
+    bowlCount++;
   });
 });

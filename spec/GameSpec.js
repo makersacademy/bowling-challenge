@@ -84,6 +84,11 @@ describe("Game", function(){
     it("throws an error if the number of pins hit is > 10", function(){
       expect(function() { game.addRoll(11) }).toThrow("You can't knock down more than 10 pins")
     })
+
+    it("throws an error if score for roll 2 would take total for frame over 10", function(){
+      game.addRoll(4)
+      expect(function(){ game.addRoll(7) }).toThrow("Your rolls can't sum over 10")
+    });
   });
 
   describe("#addFrame", function(){

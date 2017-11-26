@@ -81,6 +81,9 @@ Game.prototype._saveRollOne = function(roll){
 }
 
 Game.prototype._saveRollTwo = function(roll){
+  if (roll + this.frames[this.currentFrame].getRollOne() > 10) {
+    throw "Your rolls can't sum over 10"
+  }
   this.frames[this.currentFrame].setRollTwo(roll)
   this.addFrame()
   this._setRollOneTrue()

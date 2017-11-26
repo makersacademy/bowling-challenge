@@ -11,49 +11,131 @@
     margin: 0 auto;
 }
 
-.score_input {
+.score {
     width: 100%;
     border: 1px;
 }
 
+.frame_box {
+    width: 85px;
+    height: 70px;
+    background-color: grey;
+    display: inline-block;
+}
+
+.frame_header {
+    width: 84px;
+    height: 35px;
+    background-color: red;
+    float: top;
+}
+
+.roll_1 {
+    width: 42px;
+    height: 50px;
+    float: left;
+    background-color: green;
+}
+
+.roll_2 {
+    width: 42px;
+    height: 50px;
+    float: right;
+    background-color: yellow;
+}
+
+.result {
+    text-align: left;
+    width: 100%;
+    height: 40px;
+    margin-top: 45px;
+}
+
+.spirit_bowler {
+    width: 100%;
+    height: 300px;
+    border: 1px;
+}
+
+.spirit_photo {
+    width: 350px;
+    height: 300px;
+    margin-left: 85px;
+    margin-right: 25px;
+    float: left;
+    background-color: blue;
+}
+
+.spirit_bio {
+    width: 350px;
+    height: 300px;
+    margin-left: 460px;
+    background-color: pink;
+}
+
+/*
 .score_output {
+    width: 100%;
+    border: 1px;
 }
 
 .frame_input {
     display: inline-block;
     width: 85px;
-    height: 100px;
+    height: 70px;
     border: 1px;
     background-color: grey;
 }
 
-.frame_input_header {
-    float: up;
-    height: 40%;
-    width: 100%;
-    background-color: red;
+.frame_output {
+    display: inline-block;
+    width: 85px;
+    height: 70px;
+    border: 1px;
+    background-color: yellow;
 }
 
-.frame_scores {
+.frame_numbers {
+    width: 100%;
+    border: 1px;
+}
+
+.frame_number {
     display: inline-block;
-    margin-top: 40%;
+    width: 85px;
+    height: 30px;
+    border: 1px;
+    background-color: red;
+}
+*/
+
+/*.frame_input_header {
+    float: up;
+    height: 25px
+    width: 100px;
+    background-color: red;
+}
+*/
+/*.frame_scores {
+    display: inline-block;
+    margin-top: 25px;
+    width: 100px;
     background-color: green;
 }
 
 .frame_score {
-/*    height: 60%;
-    width: 50%;*/
+    width: 50px;
     background-color: green;
-}
+}*/
 
-
+/*
 
 .frame_output {
     display: inline-block;
     width: 70px;
     height: 140px;
 }
-
+*/
 
 /*
 .walter {

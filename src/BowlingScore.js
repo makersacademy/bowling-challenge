@@ -1,7 +1,7 @@
 
 function BowlingScore(){
   this._pinsLeft = 10;
-  this._currentFrame = 1;
+  this._currentFrame = 0;
   this._score = 0;
   this._scores = [];
   this._rolls = [];
@@ -9,7 +9,9 @@ function BowlingScore(){
 }
 
 BowlingScore.prototype.roll = function(pins){
+  this._score = 0;
   this._scores = [];
+  this._currentFrame=0;
   this._rolls.push(pins);
 }
 

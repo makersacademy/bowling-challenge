@@ -4,8 +4,6 @@ function Frame (first, second) {
   this.first = first
   this.second = second
   this.rolls = [first, second]
-  this.strike = false
-  this.spare = false
 }
 
 Frame.prototype = {
@@ -23,13 +21,21 @@ Frame.prototype = {
 
 function Bowling () {
   this.frames = []
+  this.totalPoints = 0
 }
 
 Bowling.prototype = {
-  addFrame: function (frame) {
-    this.frames.push(frame)
+  addFrame: function (frm) {
+    this.frames.push(frm)
     if (this.frames.length > 10) {
       throw ('Max Frames Added')
     }
+  },
+  countPoints: function () {
+    this.frames.forEach(function (frame) {
+      var total = 0
+      for (var i in frame) { total += frame[i] }
+      this.totalPoints += total
+    })
   }
 }

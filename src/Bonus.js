@@ -13,13 +13,18 @@ Bonus.prototype.setSpareFalse = function(){
   this.spare = false
 }
 
-Bonus.prototype.setStrikeTrue = function(){
-  this.strike = true
+Bonus.prototype.setStrike = function(){
+  this.strike = !this.strike
 }
 
-Bonus.prototype.setStrikeFalse = function(){
-  this.strike = false
-}
+  // NEED TO REPLACE WITH SET TRUE AND SET FALSE
+// Bonus.prototype.setStrikeTrue = function(){
+//   this.strike = true
+// }
+//
+// Bonus.prototype.setStrikeFalse = function(){
+//   this.strike = false
+// }
 
 // BOOLEAN
 

@@ -1,5 +1,6 @@
 function Game(){
   this.rollOne = true
+  this.bonus = new Bonus()
   this.strikeBonus = false
   this.spareBonus = false
   this.currentFrame = 1
@@ -59,25 +60,25 @@ Game.prototype.isRollOne = function(){
 }
 
 Game.prototype.isStrikeBonus = function(){
-  return this.strikeBonus
+  return this.bonus.isStrike()
 }
 
 Game.prototype.isSpareBonus = function () {
-  return this.spareBonus
+  return this.bonus.isSpare()
 };
 
 // PRIVATE
 
 Game.prototype.setSpareBonusTrue = function(){
-  this.spareBonus = true
+  this.bonus.setSpareTrue()
 }
 
 Game.prototype.setSpareBonusFalse = function(){
-  this.spareBonus = false
+  this.bonus.setSpareFalse()
 }
 
 Game.prototype.setStrikeBonus = function(){
-  this.strikeBonus = !this.strikeBonus
+  this.bonus.setStrike()
 }
 
 Game.prototype.addFrame = function() {

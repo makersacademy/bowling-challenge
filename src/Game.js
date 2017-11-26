@@ -23,16 +23,31 @@ Game.prototype.score = function () {
     var frame;
     frame = new Frame(frameNr,[],0)
     if(game.isStrike(rollsIndex)) {
-      frame._rolls.push(game._rolls[rollsIndex]);
-      frame._intScore =frame._intScore + 10 + game.bonus(rollsIndex);
-      rollsIndex = rollsIndex +1;
+      if (frameNr === 10) {
+        frame._rolls.push(game._rolls[rollsIndex]);
+        frame._rolls.push(game._rolls[rollsIndex+1]);
+        frame._rolls.push(game._rolls[rollsIndex+2]);
+        frame._intScore =frame._intScore + 10 + game.bonus(rollsIndex);
+
+      }
+      else {
+        frame._rolls.push(game._rolls[rollsIndex]);
+        frame._intScore =frame._intScore + 10 + game.bonus(rollsIndex);
+        rollsIndex = rollsIndex +1;
+      }
     }
 
     else if(game.isSpare(rollsIndex)) {
-      frame._rolls.push(game._rolls[rollsIndex]);
-      frame._rolls.push(game._rolls[(rollsIndex+1)]);
-      frame._intScore = frame._intScore + 10 + game.bonus(rollsIndex);
-      rollsIndex = rollsIndex +2;
+      if(frameNr === 10) {
+        frame._rolls.push(game._rolls[rollsIndex]);
+        frame._rolls.push(game._rolls[(rollsIndex+1)]);
+      }
+      else {
+        frame._rolls.push(game._rolls[rollsIndex]);
+        frame._rolls.push(game._rolls[(rollsIndex+1)]);
+        frame._intScore = frame._intScore + 10 + game.bonus(rollsIndex);
+        rollsIndex = rollsIndex +2;
+      }
     }
 
     else {
@@ -44,6 +59,7 @@ Game.prototype.score = function () {
 
     sum = sum + frame._intScore;
     console.log(frame);
+    game._frames.push(frame);
    };
 return sum;
 };
@@ -63,5 +79,14 @@ Game.prototype.bonus = function(rollsIndex) {
 
   if(game.isSpare(rollsIndex)) {
     return game._rolls[(rollsIndex+2)]
+  }
+};
+
+Game.prototype.isGutterGame = function() {
+  if ( ((game._frames).length === 10) && (game.score() === 0)) {
+    return true;
+  }
+  else {
+    return false;
   }
 };

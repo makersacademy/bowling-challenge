@@ -27,6 +27,12 @@ $(document).ready(function() {
 
   function strike() {
     bowling.bowl([10, 0]);
+    updateScore();
+  }
+
+  function bowl(frame) {
+    bowling.bowl(frame);
+    updateScore();
   }
 
   function addListener() {
@@ -39,10 +45,8 @@ $(document).ready(function() {
       if (bowling.frames().length < 9) {
         if (clicked === 10) {
           strike();
-          updateScore();
         } else if (frame.length === 2) {
-          bowling.bowl(frame);
-          updateScore();
+          bowl(frame);
           refreshButtons(10);
         }
       }
@@ -51,11 +55,9 @@ $(document).ready(function() {
           refreshButtons(10);
         }
         if ((frame[0] === 10 || frame[0] + frame[1] === 10) && frame.length === 3) {
-          bowling.bowl(frame);
-          updateScore();
+          bowl(frame);
         } else if (frame.length === 2 && frame[0] !== 10 && frame[0] + frame[1] !== 10) {
-          bowling.bowl(frame);
-          updateScore();
+          bowl(frame);
         }
       }
       if (bowling.frames().length === 10) {

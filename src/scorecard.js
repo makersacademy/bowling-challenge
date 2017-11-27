@@ -1,0 +1,3 @@
+function Scorecard() {
+  this.frameResults = [];
+};

@@ -1,5 +1,5 @@
 function ScoreSheet() {
-  this._count = 0
+  this._count = 1
   this._MAX_FRAMES = 10
   this._frames = []
 };
@@ -25,7 +25,7 @@ ScoreSheet.prototype.updateFrames = function(orderedFrame) {
 };
 
 ScoreSheet.prototype.addFrame = function(frame, orderedFrame = new OrderedFrame(this.getCount())) {
-  if (this.getCount() >= this.getMaxFrames()) {
+  if (this.getCount() > this.getMaxFrames()) {
     throw("This scoresheet already has " + this._MAX_FRAMES + " frames.")
   }
   this.incrementCount();

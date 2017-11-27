@@ -13,7 +13,7 @@ describe("ScoreSheet", function() {
       expect(scoresheet).toEqual(jasmine.any(ScoreSheet));
     });
     it("includes a property count",function() {
-      expect(scoresheet.getCount()).toEqual(0);
+      expect(scoresheet.getCount()).toEqual(1);
     });
     it("includes a property max frames",function() {
       expect(scoresheet.getMaxFrames()).toEqual(10);
@@ -26,7 +26,7 @@ describe("ScoreSheet", function() {
   describe ("#addFrame", function() {
     it("increments count property", function() {
       scoresheet.addFrame(frame, orderedFrame);
-      expect(scoresheet.getCount()).toEqual(1);
+      expect(scoresheet.getCount()).toEqual(2);
     });
     it("throws error if count > 10", function() {
       for(i=0; i<11; i++) {

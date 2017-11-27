@@ -25,7 +25,7 @@ If get a strike or spare in final round, get 1 or 2 extra rolls respectively, bu
 
 ## To Run
 
-Clone repository, then open index.html in a browser.
+Open index.html.
 
 Enter number of pins knocked down for each roll.
 
@@ -33,4 +33,4 @@ Once all rolls recorded, refresh page to start a new game.
 
 ## To Test
 
-Clone repository, then open SpecRunner.html in a browser.
+Open SpecRunner.html.

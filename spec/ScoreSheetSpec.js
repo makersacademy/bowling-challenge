@@ -4,7 +4,7 @@ describe("ScoreSheet", function() {
 
   beforeEach(function() {
     scoresheet = new ScoreSheet();
-    frame = jasmine.createSpy("frame");
+    frame = jasmine.createSpyObj("frame",["getRollKnockedPins"]);
     orderedFrame = jasmine.createSpyObj("orderedFrame", ["setFrame"]);
   });
 
@@ -24,19 +24,36 @@ describe("ScoreSheet", function() {
   });
 
   describe ("#addFrame", function() {
+
     it("increments count property", function() {
       scoresheet.addFrame(frame, orderedFrame);
       expect(scoresheet.getCount()).toEqual(2);
+    });
+    it("adds frame passed as argument to frames array", function() {
+      scoresheet.addFrame(frame, orderedFrame);
+      expect(scoresheet.getFrames()).toContain(orderedFrame);
     });
     it("throws error if count > 10", function() {
       for(i=0; i<11; i++) {
         scoresheet.incrementCount();
       };
-      expect(function() {scoresheet.addFrame()}).toThrow("This scoresheet already has 10 frames.");
+      expect(function() {scoresheet.addFrame(frame)}).toThrow("This scoresheet already has 10 frames.");
     });
-    it("adds frame passed as argument to frames array", function() {
-      scoresheet.addFrame(frame, orderedFrame);
-      expect(scoresheet.getFrames()).toContain(orderedFrame);
+    it("throws error if third roll >0 when not in the final round", function() {
+      var frame2 = {
+        getRollKnockedPins: function(number) {
+          return 1
+        },
+      };
+      expect(function() {scoresheet.addFrame(frame2)}).toThrow("Cannot have three rolls before round 10");
+    });
+    it("throws error if sum of rolls > 10", function() {
+      var frame3 = {
+        getRollKnockedPins: function(number) {
+          return number+5
+        },
+      };
+      expect(function() {scoresheet.addFrame(frame3)}).toThrow("You cannot knock more than 10 pins per frame");
     });
   });
 });

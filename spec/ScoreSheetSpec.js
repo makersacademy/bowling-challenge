@@ -24,7 +24,6 @@ describe("ScoreSheet", function() {
   });
 
   describe ("#addFrame", function() {
-
     it("increments count property", function() {
       scoresheet.addFrame(frame, orderedFrame);
       expect(scoresheet.getCount()).toEqual(2);
@@ -38,14 +37,6 @@ describe("ScoreSheet", function() {
         scoresheet.incrementCount();
       };
       expect(function() {scoresheet.addFrame(frame)}).toThrow("This scoresheet already has 10 frames.");
-    });
-    it("throws error if third roll >0 when not in the final round", function() {
-      var frame2 = {
-        getRollKnockedPins: function(number) {
-          return 1
-        },
-      };
-      expect(function() {scoresheet.addFrame(frame2)}).toThrow("Cannot have three rolls before round 10");
     });
     it("throws error if sum of rolls > 10", function() {
       var frame3 = {

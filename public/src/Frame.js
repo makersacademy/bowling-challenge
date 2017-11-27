@@ -1,5 +1,5 @@
-function Frame(roll1, roll2 , roll3 = new Roll(0)) {
-  this._rolls = [roll1, roll2, roll3]
+function Frame(roll1, roll2) {
+  this._rolls = [roll1, roll2]
 };
 
 Frame.prototype.getRolls = function() {

@@ -9,7 +9,7 @@ describe("Frame", function() {
     roll1 = jasmine.createSpyObj("roll",["getKnockedPins"]);
     roll2 = jasmine.createSpyObj("roll",["getKnockedPins"]);
     roll3 = jasmine.createSpyObj("roll",["getKnockedPins"]);
-    frame = new Frame(roll1, roll2, roll3);
+    frame = new Frame(roll1, roll2);
   });
 
   describe("#new", function() {
@@ -17,7 +17,7 @@ describe("Frame", function() {
       expect(frame).toEqual(jasmine.any(Frame));
     });
     it("includes a property rolls",function() {
-      expect(frame.getRolls()).toEqual([roll1, roll2, roll3]);
+      expect(frame.getRolls()).toEqual([roll1, roll2]);
     });
   });
 

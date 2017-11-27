@@ -38,7 +38,4 @@ ScoreSheet.prototype.checkValidations = function(frame) {
   if ((frame.getRollKnockedPins(0) + (frame.getRollKnockedPins(1)) > 10)) {
     throw("You cannot knock more than 10 pins per frame")
   }
-  if (this.getCount() < this.getMaxFrames() && frame.getRollKnockedPins(2) > 0) {
-    throw("Cannot have three rolls before round 10")
-  }
 };

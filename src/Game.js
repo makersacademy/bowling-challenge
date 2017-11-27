@@ -1,4 +1,4 @@
-// NEXT - Implement the addition of spare bonus to previous frame's bonus score.
+// NEXT - Implement the addition of spare bonus to previous frame's bonus
 
 function Game(bonus){
   this.rollOne = true
@@ -48,9 +48,9 @@ Game.prototype.addRoll = function (roll) {
       }
     }
     // This shouldnt be here as is setting strike bonus regardless of whether 10 was rolled on first or second go
-    if (roll == 10) {
-      this.setStrikeBonus()
-    }
+    // if (roll == 10) {
+    //   this.setStrikeBonus()
+    // }
 };
 
 
@@ -78,9 +78,12 @@ Game.prototype.setSpareBonusFalse = function(){
   this.bonus.setSpareFalse()
 }
 
-// need to create true and false setters before anything else
-Game.prototype.setStrikeBonus = function(){
-  this.bonus.setStrike()
+Game.prototype.setStrikeBonusTrue = function(){
+  this.bonus.setStrikeTrue()
+}
+
+Game.prototype.setStrikeBonusFalse = function(){
+  this.bonus.setStrikeFalse()
 }
 
 Game.prototype.addFrame = function() {
@@ -101,6 +104,7 @@ Game.prototype._saveRollOne = function(roll){
   this.frames[this.currentFrame].setRollOne(roll)
   this.setSpareBonusFalse()
   if (roll == 10) {
+    this.setStrikeBonusTrue()
     // think it should be here - LINE 48
     this.addFrame()
   } else {

@@ -16,7 +16,7 @@ describe("Game", function(){
 
   beforeEach(function(){
     bonus = jasmine.createSpyObj('new Bonus()', ['setSpareTrue', 'setSpareFalse', 'setStrike', 'isSpare', 'isStrike']);
-    game = new Game(bonus);
+    game = new Game(new Bonus());
   });
 
   describe("#getCurrentScore", function(){
@@ -122,26 +122,6 @@ describe("Game", function(){
     });
   });
 
-  describe("#isStrikeBonus", function(){
-    it("is set to false by default", function(){
-      game.bonus.isStrike = jasmine.createSpy('strike == false').and.returnValue(false)
-      expect(game.isStrikeBonus()).toEqual(false)
-    });
-
-    it("changes to true after rolling a 10 on your first roll", function(){
-      game.bonus.isStrike = jasmine.createSpy('strike == true').and.returnValue(true)
-      game.addRoll(10)
-      expect(game.isStrikeBonus()).toEqual(true)
-    });
-  });
-
-  describe("#setStrikeBonus", function(){
-    it("calls bonus.setStrike", function(){
-      game.bonus.setStrike = jasmine.createSpy('strike == true').and.returnValue(true)
-      game.setStrikeBonus()
-    });
-  });
-
   describe("#isSpareBonus", function(){
     it("is set to false by default", function(){
       game.bonus.isSpare = jasmine.createSpy('spare == false').and.returnValue(false)
@@ -171,6 +151,12 @@ describe("Game", function(){
     });
   });
 
+  describe("#isStrikeBonus", function(){
+    it("is true if 10 is rolled on first roll", function(){
+      RollStrike()
+      expect(game.isStrikeBonus()).toEqual(true)
+    });
+  });
   //DO ONCE SPARE BONUS IMPLEMENTED
   // describe("#addStrikeBonus", function(){
   //   it("adds the roll to previous Frame's bonus if strikeBonus is true", function(){

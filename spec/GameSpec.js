@@ -151,6 +151,14 @@ describe("Game", function(){
     });
   });
 
+  describe("#addSpareToBonus", function(){
+    it("adds the value of the first roll after a spare to the previous frame's bonus slot", function(){
+      RollSpare()
+      game.addRoll(3)
+      expect(game.getCurrentScore()).toEqual(16)
+    });
+  });
+
   describe("#isStrikeBonus", function(){
     it("is true if 10 is rolled on first roll", function(){
       RollStrike()

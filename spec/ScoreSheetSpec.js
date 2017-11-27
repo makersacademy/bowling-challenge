@@ -4,7 +4,8 @@ describe("ScoreSheet", function() {
 
   beforeEach(function() {
     scoresheet = new ScoreSheet();
-    frame = jasmine.createSpy("frame")
+    frame = jasmine.createSpy("frame");
+    orderedFrame = jasmine.createSpyObj("orderedFrame", ["setFrame"]);
   });
 
   describe("#new", function() {
@@ -24,7 +25,7 @@ describe("ScoreSheet", function() {
 
   describe ("#addFrame", function() {
     it("increments count property", function() {
-      scoresheet.addFrame(frame);
+      scoresheet.addFrame(frame, orderedFrame);
       expect(scoresheet.getCount()).toEqual(1);
     });
     it("throws error if count > 10", function() {
@@ -34,8 +35,8 @@ describe("ScoreSheet", function() {
       expect(function() {scoresheet.addFrame()}).toThrow("This scoresheet already has 10 frames.");
     });
     it("adds frame passed as argument to frames array", function() {
-      scoresheet.addFrame(frame);
-      expect(scoresheet.getFrames()).toContain(frame)
+      scoresheet.addFrame(frame, orderedFrame);
+      expect(scoresheet.getFrames()).toContain(orderedFrame);
     });
   });
 });

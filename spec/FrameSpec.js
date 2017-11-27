@@ -1,6 +1,9 @@
 describe("Frame", function() {
 
   var frame;
+  var roll1;
+  var roll2;
+  var roll3;
 
   beforeEach(function() {
     roll1 = jasmine.createSpyObj("roll",["getKnockedPins"]);

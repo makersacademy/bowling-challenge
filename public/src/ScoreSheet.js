@@ -20,15 +20,15 @@ ScoreSheet.prototype.getFrames = function() {
   return this._frames;
 };
 
-ScoreSheet.prototype.updateFrames = function(frame) {
-  this._frames.push(frame)
+ScoreSheet.prototype.updateFrames = function(orderedFrame) {
+  this._frames.push(orderedFrame)
 };
 
-
-ScoreSheet.prototype.addFrame = function(frame, constructor = 0) {
+ScoreSheet.prototype.addFrame = function(frame, orderedFrame = new OrderedFrame(this.getCount())) {
   if (this.getCount() >= this.getMaxFrames()) {
     throw("This scoresheet already has " + this._MAX_FRAMES + " frames.")
   }
-  this.updateFrames(frame)
   this.incrementCount();
+  orderedFrame.setFrame(frame);
+  this.updateFrames(orderedFrame);
 };

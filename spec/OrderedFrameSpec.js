@@ -4,7 +4,7 @@ describe("OrderedFrame", function() {
 
   beforeEach(function(){
     orderedFrame = new OrderedFrame(1)
-    frame = jasmine.createSpy("frame")
+    frame = jasmine.createSpyObj("frame", ["scoreFrame"])
   });
 
   describe("#new", function() {
@@ -24,6 +24,10 @@ describe("OrderedFrame", function() {
   });
 
   describe("#calculateBaseScore", function() {
-
+    it("calls scoreFrame on the frame", function() {
+      orderedFrame.setFrame(frame)
+      orderedFrame.calculateBaseScore()
+      expect(frame.scoreFrame).toHaveBeenCalled()
+    });
   });
 });

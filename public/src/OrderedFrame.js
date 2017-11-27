@@ -14,6 +14,6 @@ OrderedFrame.prototype.getFrame = function() {
   return this._frame;
 };
 
-// OrderedFrame.prototype.calculateBaseScore = function() {
-//   this._baseScore = frame[0].getKnockedPins + frame[1].getKnockedPins;
-// };
+OrderedFrame.prototype.calculateBaseScore = function() {
+  return this.getFrame().scoreFrame()
+};

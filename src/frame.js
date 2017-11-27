@@ -20,7 +20,7 @@ Frame.prototype.getBowlTwoScore = function() {
   return this.bowlTwo;
 };
 
-Frame.prototype.setScore = function() {
+Frame.prototype.setFrameScore = function() {
   this.score = []
   this.score.push(this.getBowlOneScore());
   this.score.push(this.getBowlTwoScore());

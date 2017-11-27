@@ -46,14 +46,14 @@ describe("Frame", function() {
     it("Should set the score for the frame to [4, 5]", function() {
       frame.setBowlOneScore(4);
       frame.setBowlTwoScore(5);
-      frame.setScore();
+      frame.setFrameScore();
       expect(frame.score).toEqual([4, 5])
     });
 
     it("Should return the score for the frame", function() {
       frame.setBowlOneScore(4);
       frame.setBowlTwoScore(5);
-      frame.setScore();
+      frame.setFrameScore();
       expect(frame.getScore()).toEqual([4, 5])
     });
 

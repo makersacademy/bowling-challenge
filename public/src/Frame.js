@@ -7,9 +7,13 @@ Frame.prototype.getRolls = function() {
 };
 
 Frame.prototype.scoreFrame = function() {
-  var baseScore = 0
+  var baseScore = 0;
   for(i=0; i<2; i++) {
-    baseScore += this.getRolls()[i].getKnockedPins()
+    baseScore += this.getRollKnockedPins(i);
   }
-  return baseScore
-}
+  return baseScore;
+};
+
+Frame.prototype.getRollKnockedPins = function(index) {
+  return this.getRolls()[index].getKnockedPins();
+};

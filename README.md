@@ -1,8 +1,6 @@
 # Bowling Score Card
 
-App for recording 10-pin bowling scores.
-
-Written in Vanilla JavaScript.
+Records 10-pin bowling scores.
 
 ## 10 Pin Bowling Rules
 

@@ -1,57 +1,64 @@
 function Game(){
   this.bowls = []
   this.currentBowl = 0;
+  this.scoreCard = []
 };
 
 Game.prototype = {
 
 	bowl: function(pins){
 	  this.bowls[this.currentBowl++] = pins;
+    this.scoreCard.push(pins);
 	},
 
-	score: function(rollIndex){
+	score: function(){
 		var score = 0;
-			if (this._isStrike(rollIndex)){
-				score += 10 + this._strikeBonus(rollIndex);
-				rollIndex ++;
+    var frameIndex = 0;
+
+    for (var frame = 0; frame < 10; frame ++){
+			if (this._isStrike(frameIndex)){
+				score += 10 + this._strikeBonus(frameIndex);
+				frameIndex ++;
 			}
-			else if (this._isSpare(rollIndex)) {
-				score += 10 + this._spareBonus(rollIndex);
-				rollIndex += 2;
+			else if (this._isSpare(frameIndex)) {
+				score += 10 + this._spareBonus(frameIndex);
+				frameIndex += 2;
       }
 			else {
-				score += this._sumPins(rollIndex);
-				rollIndex += 2;
+				score += this._sumPins(frameIndex);
+				frameIndex += 2;
 			}
-			return score;
+    }
+		return score;
 	},
 
   newGame: function (){
     this.currentBowl = 0;
-    this.bowls = []
+    this.bowls = [];
+    this.scoreCard = [];
   },
 
   _nextFrame: function () {
     this.currentFrame ++;
   },
 
-	_sumPins: function(rollIndex){
-	  return this.bowls[rollIndex] + this.bowls[rollIndex + 1];
+	_sumPins: function(frameIndex){
+	  return this.bowls[frameIndex] + this.bowls[frameIndex + 1];
 	},
 
-	_isStrike: function(rollIndex){
-	  return this.bowls[rollIndex] === 10;
+	_isStrike: function(frameIndex){
+	  return this.bowls[frameIndex] === 10;
 	},
 
-	_isSpare: function(rollIndex){
-  	return this.bowls[rollIndex] + this.bowls[rollIndex + 1] === 10;
+	_isSpare: function(frameIndex){
+  	return this.bowls[frameIndex] + this.bowls[frameIndex + 1] === 10;
 	},
 
-	_strikeBonus: function(rollIndex){
-  	return this.bowls[rollIndex + 1] + this.bowls[rollIndex + 2];
+	_strikeBonus: function(frameIndex){
+  	return this.bowls[frameIndex + 1] + this.bowls[frameIndex + 2];
 	},
 
-	_spareBonus: function(rollIndex){
-  	return this.bowls[rollIndex + 2];
+	_spareBonus: function(frameIndex){
+  	return this.bowls[frameIndex + 2];
 	}
 };

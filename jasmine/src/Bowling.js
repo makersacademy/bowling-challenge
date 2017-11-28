@@ -3,5 +3,7 @@ function Bowling() {
 }
 
 Bowling.prototype = {
-  
+  addToScorecard: function(frame) {
+    this.scorecard.push(frame);
+  }
 }

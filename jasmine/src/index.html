@@ -4,6 +4,11 @@
     <meta charset="utf-8">
     <title>Bowling Challenge</title>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="Bowling.js"></script>
+    <script src="Frame.js"></script>
+    <script src="Roll.js"></script>
   </head>
   <body>
     <table>
@@ -22,16 +27,16 @@
       </tr>
       <tr>
         <td rowspan="2" class="playerNames"></td>
-        <td class="firstRoll"></td>
-        <td class="secondRoll"></td>
-        <td class="firstRoll"></td>
-        <td class="secondRoll"></td>
-        <td class="firstRoll"></td>
-        <td class="secondRoll"></td>
-        <td class="firstRoll"></td>
-        <td class="secondRoll"></td>
-        <td class="firstRoll"></td>
-        <td class="secondRoll"></td>
+        <td class="firstRoll" id="frame1roll1"></td>
+        <td class="secondRoll" id="frame1roll2"></td>
+        <td class="firstRoll" id="frame2roll1"></td>
+        <td class="secondRoll" id="frame2roll2"></td>
+        <td class="firstRoll" id="frame3roll1"></td>
+        <td class="secondRoll" id="frame3roll2"></td>
+        <td class="firstRoll" id="frame4roll1"></td>
+        <td class="secondRoll" id="frame4roll2"></td>
+        <td class="firstRoll" id="frame5roll1"></td>
+        <td class="secondRoll" id="frame5roll2"></td>
         <td class="firstRoll"></td>
         <td class="secondRoll"></td>
         <td class="firstRoll"></td>
@@ -61,15 +66,16 @@
     <div class="pinfallDiv">
       <div class="pinfallSelectionDiv">
         <div style="line-height: 50px">
-          <button type="button" class="decreasePinfallButton" name="decreasePinfall">-</button>
-          <text class="pinfall"> 8 </text>
-          <button type="button" class="increasePinfallButton" name="increasePinfall">+</button>
+          <button type="button" class="decreasePinfallButton" id="decreasePinfall">-</button>
+          <text class="pinfall" id="currentPinfall"></text>
+          <button type="button" class="increasePinfallButton" id="increasePinfall">+</button>
         </div>
         <div style="line-height: 50px">
-          <button type="button" class="confirmButton">Confirm</button>
+          <button type="button" id="confirmButton" class="confirmButton">Confirm</button>
         </div>
       </div>
     </div>
   </body>
+  <script src="jquery.js"></script>
 
 </html>

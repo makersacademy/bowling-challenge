@@ -8,6 +8,7 @@ table, th, td {
 }
 
 table {
+  margin: auto;
   width: 1000px;
   background-color: #E1FAFF;
   text-align: center;
@@ -26,6 +27,7 @@ th {
 td {
   height: 15px;
   font-size: 12px;
+  padding: none;
 }
 
 .playerNames {
@@ -59,7 +61,6 @@ td {
 .pinfall {
   font-size: 36px;
   text-align: center;
-
 }
 
 .decreasePinfallButton {

@@ -3,6 +3,9 @@
 $(document).ready(function(){
     var game;
     var submission;
+    var k = 1;
+
+    createSelector('1', 10);
 
     $("#submit_score").on("click", function() {
         event.preventDefault();
@@ -32,7 +35,17 @@ $(document).ready(function(){
         }
     }
 
+    function createSelector(id_number, limit) {
+        var roll = $("#"+id_number);
+        for (let i = 1; i <= limit; i++) {
+            roll.append(new Option(i, i));
+        roll.prop("selectedIndex", -1);        
+        }
+    }
+
     function showResults() {
+        $("#output").attr("class", "result");
+        $("#output_messages").attr("class", "results_message");
         if (!game.frames) {
             errorMessage();
             return;

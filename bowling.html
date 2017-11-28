@@ -27,54 +27,54 @@
     <section class="score" id="input">
       <div class="frame_box">
         <div class="frame_header">Frame 1:</div>
-        <input class="roll_1" type="text" id="1">
-        <input class="roll_2" type="text" id="2">
+        <select class="roll_1" id="1"></select>
+        <select class="roll_2" id="2"></select>
       </div>
       <div class="frame_box">
         <div class="frame_header">Frame 2:</div>
-        <input class="roll_1" type="text" id="3">
-        <input class="roll_2" type="text" id="4">
+        <select class="roll_1" type="text" id="3"></select>
+        <select class="roll_2" type="text" id="4"></select>
       </div>
       <div class="frame_box">
         <div class="frame_header">Frame 3:</div>
-        <input class="roll_1" type="text" id="5">
-        <input class="roll_2" type="text" id="6">
+        <select class="roll_1" type="text" id="5"></select>
+        <select class="roll_2" type="text" id="6"></select>
       </div>
       <div class="frame_box">
         <div class="frame_header">Frame 4:</div>
-        <input class="roll_1" type="text" id="7">
-        <input class="roll_2" type="text" id="8">
+        <select class="roll_1" type="text" id="7"></select>
+        <select class="roll_2" type="text" id="8"></select>
       </div>
       <div class="frame_box">
         <div class="frame_header">Frame 5:</div>
-        <input class="roll_1" type="text" id="9">
-        <input class="roll_2" type="text" id="10">
+        <select class="roll_1" type="text" id="9"></select>
+        <select class="roll_2" type="text" id="10"></select>
       </div>
       <div class="frame_box">
         <div class="frame_header">Frame 6:</div>
-        <input class="roll_1" type="text" id="11">
-        <input class="roll_2" type="text" id="12">
+        <select class="roll_1" type="text" id="11"></select>
+        <select class="roll_2" type="text" id="12"></select>
       </div>
       <div class="frame_box">
         <div class="frame_header">Frame 7:</div>
-        <input class="roll_1" type="text" id="13">
-        <input class="roll_2" type="text" id="14">
+        <select class="roll_1" type="text" id="13"></select>
+        <select class="roll_2" type="text" id="14"></select>
       </div>
       <div class="frame_box">
         <div class="frame_header">Frame 8:</div>
-        <input class="roll_1" type="text" id="15">
-        <input class="roll_2" type="text" id="16">
+        <select class="roll_1" type="text" id="15"></select>
+        <select class="roll_2" type="text" id="16"></select>
       </div>
       <div class="frame_box">
         <div class="frame_header">Frame 9:</div>
-        <input class="roll_1" type="text" id="17">
-        <input class="roll_2" type="text" id="18">
+        <select class="roll_1" type="text" id="17"></select>
+        <select class="roll_2" type="text" id="18"></select>
       </div>
       <div class="frame_box" style="width: 135px;">
         <div class="frame_header">Frame 10:</div>
-        <input class="roll_1" type="text" id="19">
-        <input class="roll_2" type="text" id="20">
-        <input class="roll_3" type="text" id="21">
+        <select class="roll_1" type="text" id="19"></select>
+        <select class="roll_2" type="text" id="20"></select>
+        <select class="roll_3" type="text" id="21"></select>
       </div>
     </section>
     <section>
@@ -91,7 +91,7 @@
   <section class="break">
   </section>
 
-  <section class="result" id="output">
+  <section class="hidden_result" id="output">
     <div class="frame_box">
       <div class="frame_header">Score:</div>
       <div class="frame_score" id="f1"></div>
@@ -134,7 +134,7 @@
     </div>
   </section>
 
-  <section class="results_message">
+  <section class="hidden_results_message" id="output_messages">
     <p>
       Total Score: <span id="total"></span>
     </p>

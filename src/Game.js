@@ -16,7 +16,7 @@ Game.prototype.addFrame = function(){
 
 Game.prototype.roll = function(points){
   this.currentpoints += points;
-  this.currentGame().score = this.currentpoints 
+  this.currentGame().score = this.currentpoints
   this.checkRounds();
   console.log(this.rounds);
 };
@@ -27,7 +27,7 @@ Game.prototype.currentGame = function(){
 
 Game.prototype.checkRounds = function(){
   if(this.currentGame().round >= 2){
-      return false
+      this.addFrame()
     } else {
       this.addRounds()
     }

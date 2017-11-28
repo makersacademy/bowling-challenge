@@ -1,5 +1,5 @@
 function ScoreSheet() {
-  this._count = 1
+  this._count = 0
   this._MAX_FRAMES = 10
   this._frames = []
 };
@@ -20,22 +20,21 @@ ScoreSheet.prototype.getFrames = function() {
   return this._frames;
 };
 
-ScoreSheet.prototype.updateFrames = function(orderedFrame) {
-  this._frames.push(orderedFrame)
+ScoreSheet.prototype.updateFrames = function(frame) {
+  this._frames.push(frame)
 };
 
-ScoreSheet.prototype.addFrame = function(frame, orderedFrame = new OrderedFrame(this.getCount())) {
-  this.checkValidations(frame)
+ScoreSheet.prototype.addFrame = function(frame) {
+  this.checkValidations(frame);
+  this.updateFrames(frame)
   this.incrementCount();
-  orderedFrame.setFrame(frame);
-  this.updateFrames(orderedFrame);
 };
 
 ScoreSheet.prototype.checkValidations = function(frame) {
   if (this.getCount() > this.getMaxFrames()) {
-    throw("This scoresheet already has " + this._MAX_FRAMES + " frames.")
+    throw("This scoresheet already has " + this._MAX_FRAMES + " frames.");
   }
   if ((frame.getRollKnockedPins(0) + (frame.getRollKnockedPins(1)) > 10)) {
-    throw("You cannot knock more than 10 pins per frame")
+    throw("You cannot knock more than 10 pins per frame");
   }
 };

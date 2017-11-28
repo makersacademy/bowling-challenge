@@ -5,7 +5,6 @@ describe("ScoreSheet", function() {
   beforeEach(function() {
     scoresheet = new ScoreSheet();
     frame = jasmine.createSpyObj("frame",["getRollKnockedPins"]);
-    orderedFrame = jasmine.createSpyObj("orderedFrame", ["setFrame"]);
   });
 
   describe("#new", function() {
@@ -13,7 +12,7 @@ describe("ScoreSheet", function() {
       expect(scoresheet).toEqual(jasmine.any(ScoreSheet));
     });
     it("includes a property count",function() {
-      expect(scoresheet.getCount()).toEqual(1);
+      expect(scoresheet.getCount()).toEqual(0);
     });
     it("includes a property max frames",function() {
       expect(scoresheet.getMaxFrames()).toEqual(10);
@@ -25,12 +24,12 @@ describe("ScoreSheet", function() {
 
   describe ("#addFrame", function() {
     it("increments count property", function() {
-      scoresheet.addFrame(frame, orderedFrame);
-      expect(scoresheet.getCount()).toEqual(2);
+      scoresheet.addFrame(frame);
+      expect(scoresheet.getCount()).toEqual(1);
     });
     it("adds frame passed as argument to frames array", function() {
-      scoresheet.addFrame(frame, orderedFrame);
-      expect(scoresheet.getFrames()).toContain(orderedFrame);
+      scoresheet.addFrame(frame);
+      expect(scoresheet.getFrames()).toContain(frame);
     });
     it("throws error if count > 10", function() {
       for(i=0; i<11; i++) {

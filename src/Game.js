@@ -16,8 +16,8 @@ Game.prototype.addFrame = function(){
 
 Game.prototype.roll = function(points){
   this.currentpoints += points;
-  this.currentGame().score += points;
-  this.addRounds();
+  this.currentGame().score = this.currentpoints 
+  this.checkRounds();
   console.log(this.rounds);
 };
 
@@ -25,10 +25,17 @@ Game.prototype.currentGame = function(){
   return this.rounds[this.frame - 1];
 };
 
+Game.prototype.checkRounds = function(){
+  if(this.currentGame().round >= 2){
+      return false
+    } else {
+      this.addRounds()
+    }
+};
+
 Game.prototype.addRounds = function(){
   if(this.currentGame().score > 0){
       this.currentGame().round += 1
-    } else {
       return false
     }
 };

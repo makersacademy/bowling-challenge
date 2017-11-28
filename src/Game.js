@@ -1,16 +1,23 @@
-function Game(){
+function Game() {
   this.rounds = [];
   this.frame = 0
-  this.current_round = 0
-  this.current_score = null
+  this.currentround = 0
+  this.currentpoints = 0
+  this.change = 0
+  this.game = {}
 };
 
-Game.prototype.startGame = function(){
+Game.prototype.addFrame = function(){
   this.frame += 1
-  this.current_round +=1
-  this.rounds.push({frame: this.frame, round: this.current_round, score: this.current_score})
-};
+  this.currentround = 1
+  this.rounds.push({frame: this.frame, round: this.currentround, score: this.currentpoints})
+}
+
+Game.prototype.roll = function(points){
+  this.currentpoints += points;
+  this.currentGame().score = points
+}
 
 Game.prototype.currentGame = function(){
-  return this.rounds.slice(-1)[0];
-};
+  return this.rounds[this.frame - 1];
+}

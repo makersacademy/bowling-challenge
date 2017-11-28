@@ -43,22 +43,53 @@ describe("Frame", function() {
 
   describe("#checkStrike", function(){
     it("expects it to be true if first roll knocks 10 pins", function() {
-      var roll6 = {
+      var roll4 = {
         getKnockedPins: function() {
           return 10
         },
       };
-      frame3 = new Frame(roll6, roll1)
-      expect(frame3.checkStrike()).toEqual(true)
+      frame2 = new Frame(roll4, roll1)
+      expect(frame2.checkStrike()).toEqual(true)
     });
-    it("expects it to be true if first roll knocks 10 pins", function() {
-      var roll6 = {
+    it("expects it to be false if first roll doesn't knocks 10 pins", function() {
+      var roll4 = {
         getKnockedPins: function() {
           return 8
         },
       };
-      frame3 = new Frame(roll6, roll1)
-      expect(frame3.checkStrike()).toEqual(false)
+      frame2 = new Frame(roll4, roll1)
+      expect(frame2.checkStrike()).toEqual(false)
+    });
+  });
+
+  describe("#checkSpare", function(){
+    it("expects it to be true if sum of rolls is 10 pins and not a strike", function() {
+      var roll4 = {
+        getKnockedPins: function() {
+          return 9
+        },
+      };
+      var roll5 = {
+        getKnockedPins: function() {
+          return 1
+        },
+      };
+      frame2 = new Frame(roll4, roll5)
+      expect(frame2.checkSpare()).toEqual(true)
+    });
+    it("expects it to be false if sum of rolls is not 10 pins", function() {
+      var roll4 = {
+        getKnockedPins: function() {
+          return 1
+        },
+      };
+      var roll5 = {
+        getKnockedPins: function() {
+          return 8
+        },
+      };
+      frame2 = new Frame(roll4, roll5)
+      expect(frame2.checkSpare()).toEqual(false)
     });
   });
 

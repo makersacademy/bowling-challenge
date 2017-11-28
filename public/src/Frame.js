@@ -23,6 +23,10 @@ Frame.prototype.checkStrike = function() {
   return this.getRollKnockedPins(0) == this.getMaxPins();
 };
 
+Frame.prototype.checkSpare = function() {
+  return this.scoreFrame() == this.getMaxPins() && this.checkStrike() == false
+};
+
 Frame.prototype.getRollKnockedPins = function(index) {
   return this.getRolls()[index].getKnockedPins();
 };

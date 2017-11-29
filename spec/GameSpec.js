@@ -42,10 +42,12 @@ describe('Bowling', function(){
     });
   });
 
-  describe('If one rolls a strike(ten), turn is skipped', function(){
-    it('a strike is rolled', function(){
-      game.roll(10);
-      expect(game.currentGame()).toEqual({frame: 2, round: 1, score: 0})
+  describe('Points of rounds is totaled up', function(){
+    it('two rounds are rolled', function(){
+      game.roll(5);
+      game.roll(4);
+      game.roll(6);
+      expect(game.totalScore()).toEqual(15)
     });
   });
 

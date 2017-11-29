@@ -19,7 +19,7 @@ Game.prototype.roll = function(points){
   this.currentGame().score = this.currentpoints
   this.check_Strike()
   this.checkRounds()
-  console.log(this.rounds);
+  // console.log(this.rounds);
 };
 
 Game.prototype.currentGame = function(){
@@ -50,4 +50,11 @@ Game.prototype.check_Strike = function(){
   } else {
     return false
   }
+};
+
+Game.prototype.totalScore = function(){
+  console.log(this.rounds.map(a => a.score))
+  var points = this.rounds.map(a => a.score)
+  var sum = points.reduce(function(a,b){return a + b;}, 0);
+  return sum 
 };

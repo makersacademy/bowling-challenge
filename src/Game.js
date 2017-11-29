@@ -17,7 +17,8 @@ Game.prototype.addFrame = function(){
 Game.prototype.roll = function(points){
   this.currentpoints += points;
   this.currentGame().score = this.currentpoints
-  this.checkRounds();
+  this.check_Strike()
+  this.checkRounds()
   console.log(this.rounds);
 };
 
@@ -26,7 +27,7 @@ Game.prototype.currentGame = function(){
 };
 
 Game.prototype.checkRounds = function(){
-  if(this.currentGame().round >= 2){
+  if(this.currentGame().round === 2){
       this.addFrame()
     } else {
       this.addRounds()
@@ -34,8 +35,19 @@ Game.prototype.checkRounds = function(){
 };
 
 Game.prototype.addRounds = function(){
-  if(this.currentGame().score > 0){
+  if(this.currentGame().score > 0 && this.currentGame().score < 11){
       this.currentGame().round += 1
-      return false
     }
+  else{
+      this.currentGame().score = 10
+      this.currentGame().round = 2
+  }
+};
+
+Game.prototype.check_Strike = function(){
+  if(this.currentGame().score === 10){
+    this.addRounds()
+  } else {
+    return false
+  }
 };

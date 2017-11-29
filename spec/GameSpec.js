@@ -20,7 +20,7 @@ describe('Bowling', function(){
   });
 
   describe('After two rounds, points are added up', function(){
-    it('rolls a five in the first round, changes the round', function(){
+    it('rolls a 3 in th second round, points are added up', function(){
       game.roll(5);
       game.roll(3);
       expect(game.rounds[0]).toEqual({frame: 1, round: 2, score: 8})
@@ -28,12 +28,25 @@ describe('Bowling', function(){
   });
 
   describe('After two rounds, a new frame should be added', function(){
-    it('after two rounds', function(){
+    it('after two rounds, a frame is added', function(){
       game.roll(5);
       game.roll(3);
       expect(game.currentGame()).toEqual({frame: 2, round: 1, score: 0})
     });
   });
 
+  describe('If one rolls a strike(ten), turn is skipped', function(){
+    it('a strike is rolled', function(){
+      game.roll(10);
+      expect(game.rounds[0]).toEqual({frame: 1, round: 2, score: 10})
+    });
+  });
+
+  describe('If one rolls a strike(ten), turn is skipped', function(){
+    it('a strike is rolled', function(){
+      game.roll(10);
+      expect(game.currentGame()).toEqual({frame: 2, round: 1, score: 0})
+    });
+  });
 
 });

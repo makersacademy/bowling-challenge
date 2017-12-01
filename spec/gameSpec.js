@@ -19,5 +19,18 @@ describe('Bowling Game', function () {
             game.scoreRoll(1, 1, 0)
             expect(game.score()).toEqual(16)
         });
+        it('can roll a spare and add bonus from next roll', function() {
+            game.scoreRoll(0, 0, 6)
+            game.scoreRoll(0, 1, 4)
+            game.scoreRoll(1, 0, 3)
+            game.scoreRoll(1, 1, 4)
+            expect(game.score()).toEqual(20)
+        });
+        it('can roll a strike, skipping second roll and add a bonus from next two rolls', function() {
+            game.scoreRoll(0, 0, 10)
+            game.scoreRoll(1, 0, 3)
+            game.scoreRoll(1, 1, 4)
+            expect(game.score()).toEqual(24)
+        })
     });
 });

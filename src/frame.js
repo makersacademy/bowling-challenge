@@ -1,8 +1,4 @@
-'use srict'
-
 function Frame (first, second) {
-  this.first = first
-  this.second = second
   this.rolls = [first, second]
   this.MAX_POINTS = 10
   this.spare = false
@@ -11,15 +7,24 @@ function Frame (first, second) {
 
 Frame.prototype = {
   isStrike: function () {
-    if (this.first === this.MAX_POINTS) {
+    if (this.firstRoll === this.MAX_POINTS) {
+      this.secondRoll = 0
       this.strike = true
     }
   },
   isSpare: function () {
-    if (this.first + this.second === this.MAX_POINTS) {
+    if (this.firstRoll + this.secondRoll === this.MAX_POINTS) {
       this.spare = true
     }
+  },
+  firstRoll: function () {
+    return this.rolls[0]
+  },
+  secondRoll: function () {
+    return this.rolls[1]
+  },
+  rollScore: function () {
+    return this.firstRoll + this.secondRoll
   }
-}
 
-module.exports = Frame
+}

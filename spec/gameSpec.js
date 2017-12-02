@@ -3,9 +3,10 @@ describe('Bowling Game', function () {
     beforeEach(function () {
         game = new Game();
     });
+
     describe('Game', function () {
-        it('has 10 frames', function () {
-            expect(game.frames.length).toEqual(10);
+        it('has 11 frames', function () {
+            expect(game.frames.length).toEqual(11);
         });
     });
     describe('Frame', function () {
@@ -13,24 +14,23 @@ describe('Bowling Game', function () {
             expect(game.frames[0]).toEqual([0, 0]);
         });
         it('player can roll twice and keep score', function () {
-            game.scoreRoll(0, 0, 3)
-            game.scoreRoll(0, 1, 4)
-            game.scoreRoll(1, 0, 9)
-            game.scoreRoll(1, 1, 0)
-            expect(game.score()).toEqual(16)
+            rollStandardFirstFrame(game);
+            rollStandardSecondFrame(game);
+            expect(game.score()).toEqual(16);
         });
-        it('can roll a spare and add bonus from next roll', function() {
-            game.scoreRoll(0, 0, 6)
-            game.scoreRoll(0, 1, 4)
-            game.scoreRoll(1, 0, 3)
-            game.scoreRoll(1, 1, 4)
-            expect(game.score()).toEqual(20)
+        it('can roll a spare and add bonus from next roll', function () {
+            rollSpare(game);
+            rollStandardSecondFrame(game);
+            expect(game.score()).toEqual(20);
         });
-        it('can roll a strike, skipping second roll and add a bonus from next two rolls', function() {
-            game.scoreRoll(0, 0, 10)
-            game.scoreRoll(1, 0, 3)
-            game.scoreRoll(1, 1, 4)
-            expect(game.score()).toEqual(24)
+        it('can roll a strike, skipping second roll and add a bonus from next two rolls', function () {
+            rollStrike(game);
+            rollStandardSecondFrame(game);
+            expect(game.score()).toEqual(24);
         })
+        xit('can handle a perfect game', function () {
+            rollPerfectGame(game);
+            expect(game.score()).toEqual(300)
+        });
     });
 });

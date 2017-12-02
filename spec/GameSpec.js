@@ -4,12 +4,31 @@ describe('Game', function(){
     game = new Game();
   });
 
+  function gutterGame(){
+    for (var i = 0; i < 20; i++){
+      game.addPins(0)
+    }
+  }
+
+  function roll150(){
+    for (var i = 0; i < 20; i++){
+      game.addPins(5)
+    }
+  }
+
   describe('#getCurrentScore', function(){
-    it('returns a current score of zero', function(){
+    it('10 bowls of 1 returns a current score of 20', function(){
       for (var i = 0; i < 20; i++){
         game.addPins(1)
       }
       expect(game.getCurrentScore()).toEqual(20)
+    });
+
+    it('gutter game returns a current score of zero', function(){
+      for (var i = 0; i < 20; i++){
+        game.addPins(0)
+      }
+      expect(game.getCurrentScore()).toEqual(0)
     });
   });
 
@@ -56,7 +75,11 @@ describe('Game', function(){
       game.addPins(9)
       game.addPins(3)
       expect(game.scores[0][2]).toEqual(3)
-      console.log(game.scores)
+    });
+
+    it('returns a total score of 150', function(){
+      roll150()
+      expect(game.getCurrentScore()).toEqual(145)
     });
   });
 

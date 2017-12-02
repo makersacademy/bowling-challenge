@@ -21,12 +21,9 @@ Game.prototype.getCurrentTurn = function(){
 
 // ADD PINS
 
+
 Game.prototype.addPins = function(pins){
-  if (this.currentFrame > 1) {
-    if (this.scores[this.currentFrame - 2][0] + this.scores[this.currentFrame - 2][1] === 10 && this.currentTurn === 1) {
-      this.scores[this.currentFrame - 2].push(pins)
-    }
-  }
+  this._addSpareBonus(pins)
   this.scores[this.currentFrame - 1].push(pins)
   this._setCurrentTurn()
 }
@@ -66,4 +63,12 @@ Game.prototype._sumGame = function(){
     total += frame
   });
   return total
+}
+
+Game.prototype._addSpareBonus = function(pins){
+  if (this.currentFrame > 1) {
+    if (this.scores[this.currentFrame - 2][0] + this.scores[this.currentFrame - 2][1] === 10 && this.currentTurn === 1) {
+      this.scores[this.currentFrame - 2].push(pins)
+    }
+  }
 }

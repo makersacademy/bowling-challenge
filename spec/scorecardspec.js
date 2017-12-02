@@ -63,8 +63,7 @@ describe("ScoreCard", function(){
       scorecard.frameInPlay.addPointsFrame()
       scorecard.frameInPlay.rollCheck()
       scorecard.frameInPlay.bonusCheck()
-      scorecard.setBonusMode()
-      expect(scorecard.bonusMode).toEqual('spare')
+      expect(scorecard.setBonusMode()).toEqual('spare')
     });
   });
 
@@ -135,8 +134,25 @@ describe("Frame", function(){
     it("returns the value of closed for roll 1", function(){
       frame.roll1.addPointsRoll(5)
       expect(frame.roll1Check()).toEqual(true)
-    })
-  })
+    });
+  });
+
+  describe("roll", function(){
+    it("adds the argument points to the relevant roll", function(){
+      frame.roll(6)
+      expect(frame.roll1.points).toEqual(6)
+    });
+  });
+
+  describe("roll", function(){
+    it("adds the argument points to the relevant roll", function(){
+      frame.roll(4)
+      console.log(frame.rollCount)
+      frame.roll(6)
+      console.log(frame.rollCount)
+      expect(frame.roll2.points).toEqual(6)
+    });
+  });
 });
 
 

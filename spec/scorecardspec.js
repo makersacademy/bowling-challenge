@@ -34,14 +34,27 @@ describe("ScoreCard", function(){
       scorecard.finishFrame()
       scorecard.newFrame()
       //debugger
-      oldFrame = scorecard.frames.pop()
-      console.log(oldFrame)
       scorecard.frameInPlay.roll1.addPointsRoll(4)
       scorecard.bonusScore()
+      oldFrame = scorecard.frames.pop()
       console.log(bonusFrame)
       expect(oldFrame.points).toEqual(14);
     });
   });
+
+  describe("adding bonus points STRIKE", function(){
+    xit("adds roll 1 and roll 2 points to previous frame if spare bonus applies", function(){
+      scorecard.frameInPlay.roll1.addPointsRoll(10)
+      scorecard.frameInPlay.addPointsFrame()
+      scorecard.finishFrame()
+      scorecard.newFrame()
+      scorecard.frameInPlay.roll1.addPointsRoll(4)
+      scorecard.frameInPlay.roll2.addPointsRoll(3)
+      scorecard.bonusScore()
+      oldFrame = scorecard.frames.pop()
+      expect(oldFrame.points).toEqual(17)
+    })
+  })
 
   describe("enter bonus mode", function(){
     it("enters spare, strike or no bonus mode for new frame based on previous frame", function(){

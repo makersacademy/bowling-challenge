@@ -16,6 +16,12 @@ describe('Game', function(){
     }
   }
 
+  function perfectGame(){
+    for  (var i = 0; i < 11; i++){
+      game.addPins(10)
+    }
+  }
+
   describe('#getCurrentScore', function(){
     it('10 bowls of 1 returns a current score of 20', function(){
       for (var i = 0; i < 20; i++){
@@ -101,8 +107,44 @@ describe('Game', function(){
       game.addPins(10)
       game.addPins(5)
       expect(game.getCurrentScore()).toEqual(45)
-      console.log(game);
     });
   });
 
+  describe('rolling a spare in the last frame', function(){
+    it('has a total of 268', function(){
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(3)
+      game.addPins(7)
+      game.addPins(5)
+      console.log(game)
+      expect(game.getCurrentScore()).toEqual(268)
+    });
+  });
+
+  describe('rolling a perfect game', function(){
+    it('has a total of 300', function(){
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      game.addPins(10)
+      console.log(game)
+      expect(game.getCurrentScore()).toEqual(300)
+    });
+  });
 });

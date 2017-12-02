@@ -9,6 +9,7 @@ function Frame() {
 Frame.prototype.setBowlOneScore = function(score) {
   this.bowlOne = score;
   if (this.bowlOne === 10) {
+    this.strike = true;
     this.setBowlTwoScore('-');
   }
 };
@@ -18,22 +19,26 @@ Frame.prototype.getBowlOneScore = function() {
 };
 
 Frame.prototype.setBowlTwoScore = function(score) {
-  this.bowlTwo = score;
+  if (this.getBowlOneScore() + score === 10) {
+    this.spare = true;
+    this.bowlTwo = '/';
+  } else {
+    this.bowlTwo = score;
+  }
 };
 
 Frame.prototype.getBowlTwoScore = function() {
-  return this.bowlTwo;
+  if (this.bowlTwo === '/') {
+    return 10 - this.getBowlOneScore();
+  } else {
+    return this.bowlTwo;
+  }
 };
 
 Frame.prototype.setFrameScore = function() {
   this.score = []
   this.score.push(this.getBowlOneScore());
   this.score.push(this.getBowlTwoScore());
-  if (this.score[0] === 10) {
-    this.strike = true;
-  } else if (this.score[0] + this.score[1] === 10) {
-    this.spare = true;
-  }
 };
 
 Frame.prototype.getScore = function() {

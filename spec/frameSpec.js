@@ -70,6 +70,12 @@ describe("Frame", function() {
       frame.setFrameScore();
       expect(frame.spare).toEqual(true)
     });
+
+    it("Sets bowlTwo to '/' if a spare has been scored", function() {
+      frame.setBowlOneScore(2);
+      frame.setBowlTwoScore(8);
+      expect(frame.bowlTwo).toEqual('/')
+    })
   });
 
   describe("Strike", function() {
@@ -84,7 +90,6 @@ describe("Frame", function() {
 
     it("Should be changed to true if the player scores ten on their first bowl", function() {
       frame.setBowlOneScore(10);
-      frame.setFrameScore();
       expect(frame.strike).toEqual(true)
     });
   });

@@ -2,17 +2,14 @@
 
 $(document).ready(function(){
     var game;
-    var submission;
-    var rollSelector = 1;
+    var roll = 1;
 
-    createSelector(rollSelector, 10);
+    createSelector(roll, 10);
 
     $("#submit_score").on("click", function() {
         event.preventDefault();
         game = new Game();
-        submission = []
-        parseSubmission();
-        game.compute(filterSubmission(submission));
+        game.compute(getScoresArray());
         showResults();
     });
 
@@ -21,21 +18,14 @@ $(document).ready(function(){
     });
 
     $(document.body).on('change', 'select', function() {
-        updateRollSelector(parseInt($(this).val()))
+        if (roll === 20) {
+            updateLastSelectors(rollScore(roll));
+        } else {
+            updateRollSelectors(rollScore(roll));
+        }
     });
 
-    function parseSubmission() {
-        for (let i = 1; i < 22; i++) {
-            var input = $("#" + i).val();
-            if (validScore(input)) {
-                submission.push(parseInt(input));
-            }
-        }
-    }
-
-    function filterSubmission(submission) {
-        return submission.filter(x => x === x);
-    }
+// Helpers -------------------------------------------- Helpers //
 
     function createSelector(id_number, limit) {
         var roll = $("#" + id_number);
@@ -45,33 +35,37 @@ $(document).ready(function(){
         }
     }
 
-    function updateRollSelector(value) {
-        $("#" + rollSelector).attr('disabled', true);
-        if (rollSelector === 21) {
-            return;
-        }
-        if (rollSelector === 20) {
-            if ( (parseInt($("#" + rollSelector).val()) + parseInt($("#" + (rollSelector - 1)).val())) >= 10) {
-                rollSelector++;
-                createSelector(rollSelector, 10);
-            }
-            return;
-        }
-        if (rollSelector % 2 === 0) {
-            rollSelector++;            
-            createSelector(rollSelector, 10);
+    function updateRollSelectors(value) {
+        $("#" + roll).attr('disabled', true);
+        roll++;
+        if (roll % 2 === 1) {
+            createSelector(roll, 10);
         } else if (value === 10) {
-            if (rollSelector < 18) {
-                rollSelector += 2;
-                createSelector(rollSelector, 10);
+            if (roll < 19) {
+                roll++;
+                createSelector(roll, 10);
             } else {
-                rollSelector++;
-                createSelector(rollSelector, 10);
+                createSelector(roll, 10);
             }
         } else {
-            rollSelector++;
-            createSelector(rollSelector, 10 - value);
+            createSelector(roll, 10 - value);
         }
+    }
+
+    function updateLastSelectors(value) {
+        $("#" + roll).attr('disabled', true);
+        if ((rollScore(roll) + rollScore(roll - 1)) >= 10) {
+            roll++;
+            createSelector(roll, 10);
+        }
+    }
+
+    function getScoresArray() {
+        let scores = []
+        for (let i = 1; i < 22; i++) {
+            scores.push(rollScore(i));
+        }
+        return scores.filter(x => x === x);
     }
 
     function showResults() {
@@ -83,8 +77,11 @@ $(document).ready(function(){
         $("#total").text(game.total);
     }
 
+    function rollScore(roll) {
+        return parseInt($("#" + roll).val());
+    }
+
     function validScore(value) {
         return value > -1 || value < 11;
     }
-
 });

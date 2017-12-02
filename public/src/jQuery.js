@@ -10,7 +10,7 @@ $(document).ready(function() {
       bowling.increaseTurn();
     } else if (bowling.turn === 20) {
       bowling.throw_record(9);
-      bowling.IsGutter();
+      bowling.isGutter();
       writePtAndScore();
       $("#bowlingPicture").attr("src","https://preview.ibb.co/cFUBSm/Screen_Shot_2017_11_25_at_17_33_56.png");
       $('#finalScore').html(bowling.points.reduce((a, b) => a + b));

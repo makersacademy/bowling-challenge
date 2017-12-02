@@ -3,3 +3,5 @@ function Frame() {
   this.firstStrike = 0
   this.secondStrike = 0
 }
+
+ 

@@ -3,9 +3,9 @@
 $(document).ready(function(){
     var game;
     var submission;
-    var k = 1;
+    var rollSelector = 1;
 
-    createSelector('1', 10);
+    createSelector(rollSelector, 10);
 
     $("#submit_score").on("click", function() {
         event.preventDefault();
@@ -13,7 +13,7 @@ $(document).ready(function(){
         game = new Game();
         submission = []
         parseSubmission();
-        game.compute(submission);
+        game.compute(filterSubmission(submission));
         showResults();
     });
 
@@ -21,25 +21,57 @@ $(document).ready(function(){
         location.reload();
     });
 
+    $(document.body).on('change', 'select', function() {
+        updateRollSelector(parseInt($(this).val()))
+    });
+
     function parseSubmission() {
         for (let i = 1; i < 22; i++) {
             var input = $("#" + i).val();
-            if (uncool(input)) {
-                errorMessage();
-                return;
+            if (validScore(input)) {
+                submission.push(parseInt(input));
             }
-            if (input === '-') {
-                continue;
-            }
-            submission.push(parseInt(input));
         }
     }
 
+    function filterSubmission(submission) {
+        return submission.filter(x => x === x);
+    }
+
     function createSelector(id_number, limit) {
-        var roll = $("#"+id_number);
-        for (let i = 1; i <= limit; i++) {
+        var roll = $("#" + id_number);
+        for (let i = 0; i <= limit; i++) {
             roll.append(new Option(i, i));
-        roll.prop("selectedIndex", -1);        
+            roll.prop("selectedIndex", -1);        
+        }
+    }
+
+    function updateRollSelector(value) {
+        $("#" + rollSelector).attr('disabled', true);
+        if (rollSelector === 21) {
+            return;
+        }
+        if (rollSelector === 20) {
+            if ( (parseInt($("#" + rollSelector).val()) + parseInt($("#" + (rollSelector - 1)).val())) >= 10) {
+                rollSelector++;
+                createSelector(rollSelector, 10);
+            }
+            return;
+        }
+        if (rollSelector % 2 === 0) {
+            rollSelector++;            
+            createSelector(rollSelector, 10);
+        } else if (value === 10) {
+            if (rollSelector < 18) {
+                rollSelector += 2;
+                createSelector(rollSelector, 10);
+            } else {
+                rollSelector++;
+                createSelector(rollSelector, 10);
+            }
+        } else {
+            rollSelector++;
+            createSelector(rollSelector, 10 - value);
         }
     }
 
@@ -56,8 +88,8 @@ $(document).ready(function(){
         $("#total").text(game.total);
     }
 
-    function uncool(value) {
-        return value < 0 || value > 10;
+    function validScore(value) {
+        return value > -1 || value < 11;
     }
 
     function errorMessage () {

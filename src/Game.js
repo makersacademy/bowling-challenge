@@ -23,10 +23,18 @@ Game.prototype.getCurrentTurn = function(){
 
 
 Game.prototype.addPins = function(pins){
-  this.scores[this.currentFrame - 1].push(pins)
-  this._addStrikeBonus(pins)
-  this._addSpareBonus(pins)
-  this._setCurrentTurn(pins)
+  if (pins > 10) {
+    throw "You can't knock down over 10 pins"
+  } else {
+    if (this.scores[this.currentFrame - 1][0] + pins > 10 && this.currentFrame < 10) {
+      throw "You can't knock down over 10 pins"
+    } else {
+      this.scores[this.currentFrame - 1].push(pins)
+      this._addStrikeBonus(pins)
+      this._addSpareBonus(pins)
+      this._setCurrentTurn(pins)
+    }
+  }
 }
 
 // MOVE TO NEXT FRAME

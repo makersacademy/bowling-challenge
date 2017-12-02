@@ -17,7 +17,7 @@ describe('Game', function(){
   }
 
   function perfectGame(){
-    for  (var i = 0; i < 11; i++){
+    for  (var i = 0; i < 12; i++){
       game.addPins(10)
     }
   }
@@ -60,6 +60,15 @@ describe('Game', function(){
     it('adds the number of pins knocked down to the current frame', function(){
       game.addPins(1)
       expect(game.scores[0]).toEqual([1])
+    });
+
+    it('throws an error if the number of pins entered is > 10', function(){
+      expect( function(){ game.addPins(20); }).toThrow("You can't knock down over 10 pins")
+    });
+
+    it('throws an error if the number of pins over two rolls is above 10', function(){
+      game.addPins(8)
+      expect( function(){ game.addPins(3); }).toThrow("You can't knock down over 10 pins")
     });
   });
 
@@ -131,18 +140,7 @@ describe('Game', function(){
 
   describe('rolling a perfect game', function(){
     it('has a total of 300', function(){
-      game.addPins(10)
-      game.addPins(10)
-      game.addPins(10)
-      game.addPins(10)
-      game.addPins(10)
-      game.addPins(10)
-      game.addPins(10)
-      game.addPins(10)
-      game.addPins(10)
-      game.addPins(10)
-      game.addPins(10)
-      game.addPins(10)
+      perfectGame()
       console.log(game)
       expect(game.getCurrentScore()).toEqual(300)
     });

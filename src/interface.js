@@ -10,7 +10,7 @@ $(document).ready(function(){
         event.preventDefault();
         game = new Game();
         game.compute(getScoresArray());
-        showResults();
+        showOutput();
     });
 
     $("#reset").on("click", function() {
@@ -68,20 +68,65 @@ $(document).ready(function(){
         return scores.filter(x => x === x);
     }
 
-    function showResults() {
-        $("#output").attr("class", "result");
-        $("#output_messages").attr("class", "results_message");
-        for (let i = 1; i < 11; i ++) {
-            $("#f" + i).text(game.frames[i - 1].accumulatedScore);
-        }
-        $("#total").text(game.total);
-    }
-
     function rollScore(roll) {
         return parseInt($("#" + roll).val());
     }
 
     function validScore(value) {
         return value > -1 || value < 11;
+    }
+
+    function showOutput() {
+        showFrameScores();
+        showTotal();
+        showSpiritBowler();
+    }
+
+    function showFrameScores() {
+        $("#output").attr("class", "result");
+        activateFrameScores();
+    }
+
+    function showTotal() {
+        $("#output_messages").attr("class", "results_message");
+        activateTotal();
+    }
+
+    function showSpiritBowler() {
+        $("#spirit_bowler").attr("class", "spirit_bowler");
+        activateSpiritBowler();
+    }
+
+    function activateFrameScores() {
+        for (let i = 1; i < 11; i ++) {
+            $("#f" + i).text(game.frames[i - 1].accumulatedScore);
+        }        
+    }
+
+    function activateTotal() {
+        $("#total").text(game.total);
+    }
+
+    function activateSpiritBowler() {
+        // $("#spirit").text(getSpiritName(game.total))
+        $("#spirit").text("Oscar Manzana");
+        // $("#spirit_face").attr("src", getSpiritFace(game.total))
+        createImage('images/0.jpg');
+        // $("#spirit_face").attr("src", "/spirit_bowlers/pictures/0.jpg")
+        // $("spirit_bio").text(getSpiritBio(game.total))
+        $("#bio").text('\nAge: 1\n\nFavourite word: fruchtzubereitung\n\nLikes: User Stories\n\nFavourite Quote: "In the struggle between yourself and the world, hold the world\'s coat."');
+    }
+
+    function createImage(source) {
+        // var img = $('<img id="fface" class="spirit_face">');
+        // img.attr('src', "images/0.jpg");
+        // img.appendTo("#face");
+        var img = $('<img />', { 
+            id: 'looks',
+            src: source,
+            class: 'spirit_face',
+            alt: 'Looks'
+        });
+        img.appendTo($('#face'));
     }
 });

@@ -58,4 +58,34 @@ describe("Frame", function() {
     });
 
   });
+
+  describe("Spare", function() {
+    it("Should have a spare property that is false by default", function() {
+      expect(frame.spare).toEqual(false)
+    });
+
+    it("Should be changed to true if the player scores ten between both bowls, but not on just the first one", function() {
+      frame.setBowlOneScore(2);
+      frame.setBowlTwoScore(8);
+      frame.setFrameScore();
+      expect(frame.spare).toEqual(true)
+    });
+  });
+
+  describe("Strike", function() {
+    it("Should have a strike property that is false by default", function() {
+      expect(frame.strike).toEqual(false)
+    });
+
+    it("Should set bowlTwo to '-' if player scores ten on bowlOne", function() {
+      frame.setBowlOneScore(10);
+      expect(frame.getBowlTwoScore()).toEqual('-')
+    });
+
+    it("Should be changed to true if the player scores ten on their first bowl", function() {
+      frame.setBowlOneScore(10);
+      frame.setFrameScore();
+      expect(frame.strike).toEqual(true)
+    });
+  });
 });

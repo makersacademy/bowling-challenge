@@ -91,44 +91,188 @@ describe("ScoreSheet", function() {
 
   describe ("calculateBonus", function() {
     it("adds the knocked pins from the next roll to the bonus when spare", function() {
-      var frame2 = new Frame(new Roll(4), new Roll(6))
-      var frame3 = new Frame(new Roll(9), new Roll(0))
+      var frame2 = {
+        getRollKnockedPins: function(number) {
+          return 0
+        },
+        checkSpare: function() {
+          return true
+        }
+      }
+      var frame3 = {
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 9
+          } else {
+            return 0
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
       scoresheet.addFrame(frame2)
       scoresheet.addFrame(frame3)
       expect(scoresheet.calculateBonus()).toEqual(9)
     });
     it("adds the knocked pins from the next rolls to the bonus when 2 spares", function() {
-      var frame2 = new Frame(new Roll(4), new Roll(6))
-      var frame3 = new Frame(new Roll(9), new Roll(1))
-      var frame4 = new Frame(new Roll(2), new Roll(1))
+      var frame2 = {
+        getRollKnockedPins: function(number) {
+          return 0
+        },
+        checkSpare: function() {
+          return true
+        }
+      }
+      var frame3 = {
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 9
+          } else {
+            return 0
+          }
+        },
+        checkSpare: function() {
+          return true
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
+      var frame4 = {
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 2
+          } else {
+            return 0
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
       scoresheet.addFrame(frame2)
       scoresheet.addFrame(frame3)
       scoresheet.addFrame(frame4)
       expect(scoresheet.calculateBonus()).toEqual(11)
     });
     it("doesn't add to the bonus until next frame is added", function() {
-      var frame2 = new Frame(new Roll(4), new Roll(6))
+      var frame2 = {
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 5
+          } else {
+            return 5
+          }
+        },
+        checkSpare: function() {
+          return true
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
       scoresheet.addFrame(frame2)
       expect(scoresheet.calculateBonus()).toEqual(0)
     });
     it("adds the knocked pins from the next 2 rolls to the bonus when strike", function() {
-      var frame2 = new Frame(new Roll(10), new Roll(0))
-      var frame3 = new Frame(new Roll(4), new Roll(3))
+      var frame2 = {
+        checkSpare: function() {
+          return false
+        },
+        getRollKnockedPins: function(number) {
+        },
+        checkStrike: function() {
+          return true
+        }
+      }
+      var frame3 = {
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 4
+          } else {
+            return 3
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
       scoresheet.addFrame(frame2)
       scoresheet.addFrame(frame3)
       expect(scoresheet.calculateBonus()).toEqual(7)
     });
     it("adds the knocked pins from the next 2 rolls to the bonus when 2 strikes", function() {
-      var frame2 = new Frame(new Roll(10), new Roll(0))
-      var frame3 = new Frame(new Roll(10), new Roll(0))
-      var frame4 = new Frame(new Roll(4), new Roll(3))
+      var frame2 = {
+        checkSpare: function() {
+          return false
+        },
+        getRollKnockedPins: function(number) {
+        },
+        checkStrike: function() {
+          return true
+        }
+      }
+      var frame3 = {
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 10
+          } else {
+            return 0
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return true
+        }
+      }
+      var frame4 = {
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 4
+          } else {
+            return 3
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
       scoresheet.addFrame(frame2)
       scoresheet.addFrame(frame3)
       scoresheet.addFrame(frame4)
       expect(scoresheet.calculateBonus()).toEqual(21)
     });
     it("correctly calculates the bonus of a perfect game", function() {
-      var frame2 = new Frame(new Roll(10), new Roll(0))
+      var frame2 = {
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 10
+          } else {
+            return 0
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return true
+        }
+      }
       for(i=0; i<12; i++) {
         scoresheet.addFrame(frame2)
       };
@@ -137,18 +281,265 @@ describe("ScoreSheet", function() {
   });
   describe ("calculateScore", function() {
     it("correctly calculates the score of a perfect game", function() {
-      var frame2 = new Frame(new Roll(10), new Roll(0))
+      var frame2 = {
+        scoreFrame: function() {
+          return 10
+        },
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 10
+          } else {
+            return 0
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return true
+        }
+      }
       for(i=0; i<12; i++) {
         scoresheet.addFrame(frame2)
       };
       expect(scoresheet.calculateScore()).toEqual(300)
     });
     it("correctly calculates the score of a zero game", function() {
+      var frame2 = {
+        scoreFrame: function() {
+          return 0
+        },
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 0
+          } else {
+            return 0
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
       var frame2 = new Frame(new Roll(0), new Roll(0))
       for(i=0; i<12; i++) {
         scoresheet.addFrame(frame2)
       };
       expect(scoresheet.calculateScore()).toEqual(0)
+    });
+    it("correctly calculates the score of any game game", function() {
+      var frame2 = {
+        scoreFrame: function() {
+          return 9
+        },
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 3
+          } else {
+            return 6
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
+      var frame3 = {
+        scoreFrame: function() {
+          return 10
+        },
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 0
+          } else {
+            return 10
+          }
+        },
+        checkSpare: function() {
+          return true
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
+      var frame4 = {
+        scoreFrame: function() {
+          return 4
+        },
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 0
+          } else {
+            return 4
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
+      var frame5 = {
+        scoreFrame: function() {
+          return 10
+        },
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 10
+          } else {
+            return 0
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return true
+        }
+      }
+      var frame6 = {
+        scoreFrame: function() {
+          return 7
+        },
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 4
+          } else {
+            return 3
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
+      var frame7 = {
+        scoreFrame: function() {
+          return 8
+        },
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 7
+          } else {
+            return 1
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
+      var frame8 = {
+        scoreFrame: function() {
+          return 6
+        },
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 3
+          } else {
+            return 3
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
+      var frame9 = {
+        scoreFrame: function() {
+          return 9
+        },
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 4
+          } else {
+            return 5
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
+      var frame10 = {
+        scoreFrame: function() {
+          return 10
+        },
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 10
+          } else {
+            return 0
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return true
+        }
+      }
+      var frame11 = {
+        scoreFrame: function() {
+          return 10
+        },
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 10
+          } else {
+            return 0
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return true
+        }
+      }
+      var frame12 = {
+        scoreFrame: function() {
+          return 9
+        },
+        getRollKnockedPins: function(number) {
+          if(number === 0) {
+            return 5
+          } else {
+            return 4
+          }
+        },
+        checkSpare: function() {
+          return false
+        },
+        checkStrike: function() {
+          return false
+        }
+      }
+      scoresheet.addFrame(frame2)
+      scoresheet.addFrame(frame3)
+      scoresheet.addFrame(frame4)
+      scoresheet.addFrame(frame5)
+      scoresheet.addFrame(frame6)
+      scoresheet.addFrame(frame7)
+      scoresheet.addFrame(frame8)
+      scoresheet.addFrame(frame9)
+      scoresheet.addFrame(frame10)
+      scoresheet.addFrame(frame11)
+      scoresheet.addFrame(frame12)
+      expect(scoresheet.calculateScore()).toEqual(114)
     });
   });
 });

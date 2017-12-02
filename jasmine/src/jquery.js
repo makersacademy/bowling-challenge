@@ -29,10 +29,9 @@ $('#decreasePinfall').click(function() {
 
 $('#confirmButton').click(function() {
   frame.addToFrame(roll);
-  frameNumber = 1;
   rollNumber = 1;
   lastPinfall = frame.rollTally[frame.rollTally.length - 1];
-  $(`#frame${frameNumber}roll${rollNumber}`).html(lastPinfall);
+  $(`roll${rollNumber}`).html(lastPinfall);
   isNewFrameNeeded();
   newRoll();
   updatePinfallCount();

@@ -1,9 +1,4 @@
-function Bowling() {
-  this.scorecard = [];
-}
-
-Bowling.prototype = {
-  addToScorecard: function(frame) {
-    this.scorecard.push(frame);
-  }
+function Bowling(scorecard = new Scorecard) {
+  this._frameTracker = 0;
+  this.scorecard = scorecard;
 }

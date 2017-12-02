@@ -1,19 +1,12 @@
 describe('Bowling', function() {
   beforeEach(function() {
-    bowling = new Bowling;
-    frame = new Frame;
+    scorecard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    bowling = new Bowling(scorecard);
   })
 
   describe('scorecard', function() {
-    it('hold an array of frames', function() {
-      expect(bowling.scorecard).toEqual([]);
-    })
-  })
-
-  describe('#addToScorecard', function() {
-    it('adds a frame to the scorecard', function() {
-      bowling.addToScorecard(frame);
-      expect(bowling.scorecard).toContain(frame);
+    it('initialized with an instance of Scorecard', function() {
+      expect(bowling.scorecard).toEqual(scorecard);
     })
   })
 

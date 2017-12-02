@@ -5,31 +5,25 @@ describe('Bowling Game', function () {
     });
 
     describe('Game', function () {
-        it('has 11 frames', function () {
-            expect(game.frames.length).toEqual(11);
+        it('can roll standard game and keep score', function () {
+            standardGame(game);
+            expect(game.score()).toEqual(60);
         });
-    });
-    describe('Frame', function () {
-        it('has 2 rolls', function () {
-            expect(game.frames[0]).toEqual([0, 0]);
+        it('can roll a gutter game and keep score', function () {
+            gutterGame(game);
+            expect(game.score()).toEqual(0);
         });
-        it('player can roll twice and keep score', function () {
-            rollStandardFirstFrame(game);
-            rollStandardSecondFrame(game);
-            expect(game.score()).toEqual(16);
-        });
-        it('can roll a spare and add bonus from next roll', function () {
+        it('can roll a spare and add a bonus from the next roll', function () {
             rollSpare(game);
-            rollStandardSecondFrame(game);
+            rollStandardFrame(game);
             expect(game.score()).toEqual(20);
         });
         it('can roll a strike, skipping second roll and add a bonus from next two rolls', function () {
             rollStrike(game);
-            rollStandardSecondFrame(game);
-            expect(game.score()).toEqual(24);
+            expect(game.score()).toEqual(30);
         })
-        xit('can handle a perfect game', function () {
-            rollPerfectGame(game);
+        it('can handle a perfect game', function () {
+            perfectGame(game);
             expect(game.score()).toEqual(300)
         });
     });

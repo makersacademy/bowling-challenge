@@ -1,44 +1,36 @@
 function Game() {
-    this.frames = [];
-
-    for (frame = 0; frame < 11; frame++) {
-        this.frames.push([0, 0]);
-    };
+    this.scoreCard = [];
 };
 
-Game.prototype.scoreRoll = function (frameNumber, rollNumber, pins) {
-    this.frames[frameNumber][rollNumber] = pins;
+Game.prototype.roll = function (numberOfPinsDown) {
+    this.scoreCard.push(numberOfPinsDown);
 };
 
 Game.prototype.score = function () {
-    var frameScore = 0,
-        firstRoll = 0,
-        secondRoll = 0;
-    nextFirstRoll = 0, nextSecondRoll = 0;
+    var overallScore = 0;
+    var rollNumber = 0
 
-    for (i = 0; i < 10; i++) {
-        firstRoll = this.frames[i][0];
-        secondRoll = this.frames[i][1];
-        frameScore += firstRoll + secondRoll;
+    for (frame = 0; frame < 10; frame++) {
 
-        if (isStrike(firstRoll)) {
-            if (isStrike(this.frames[i + 1][0])) {
-                frameScore += 10 + this.frames[i + 2][0];
+        if (this.isStrike(rollNumber)) {
+            overallScore += 10 + this.scoreCard[rollNumber + 1] + this.scoreCard[rollNumber + 2];
+            rollNumber++;
+        } else {
+            if (this.isSpare(rollNumber)) {
+                overallScore += 10 + this.scoreCard[rollNumber + 2];
             } else {
-                frameScore += this.frames[i + 1][0] + this.frames[i + 1][1];
-            };
+                overallScore += this.scoreCard[rollNumber] + this.scoreCard[rollNumber + 1];
+            }
+            rollNumber += 2;
+        }
+    }
+    return overallScore;
+};
 
-        } else if (isSpare(frameScore)) {
-            frameScore += this.frames[i + 1][0];
-        };
-    };
-    return frameScore;
+Game.prototype.isStrike = function (rollNumber) {
+    return this.scoreCard[rollNumber] === 10;
+};
 
-    function isStrike(firstRoll) {
-        return firstRoll === 10;
-    };
-
-    function isSpare(frameScore) {
-        return frameScore === 10;
-    };
+Game.prototype.isSpare = function (rollNumber) {
+    return this.scoreCard[rollNumber] + this.scoreCard[rollNumber + 1] === 10;
 };

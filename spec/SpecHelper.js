@@ -1,24 +1,33 @@
     function rollSpare(game) {
-        game.scoreRoll(0, 0, 6);
-        game.scoreRoll(0, 1, 4);
+        game.roll(6);
+        game.roll(4);
     };
 
     function rollStrike(game) {
-        game.scoreRoll(0, 0, 10);
+        game.roll(10);
+        rollHelper(18, 1, game);
     };
 
-    function rollStandardSecondFrame(game) {
-        game.scoreRoll(1, 0, 3);
-        game.scoreRoll(1, 1, 4);
+    function rollStandardFrame(game) {
+        game.roll(4);
+        game.roll(2);
+        rollHelper(18, 0, game);
     };
 
-    function rollStandardFirstFrame(game) {
-        game.scoreRoll(0, 0, 9);
-        game.scoreRoll(0, 1, 0);
+    function standardGame(game) {
+        rollHelper(20, 3, game);
     };
 
-    function rollPerfectGame(game) {
-        for (i = 0; i < 11; i++) {
-            game.scoreRoll(i, 0, 10);
+    function perfectGame(game) {
+        rollHelper(12, 10, game);
+    };
+
+    function gutterGame(game) {
+        rollHelper(20, 0, game);
+    };
+
+    function rollHelper(numberOfRolls, numberOfPins, game) {
+        for (i = 0; i < numberOfRolls; i++) {
+            game.roll(numberOfPins);
         };
     };

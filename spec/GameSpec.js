@@ -50,6 +50,7 @@ describe('Bowling', function(){
     it('a strike is rolled', function(){
       game.roll(10);
       expect(game.rounds[0]).toEqual({frame: 1, round: 2, score: 10})
+      expect(game.currentGame()).toEqual({frame: 2, round: 1, score: 20})
     });
   });
 
@@ -60,7 +61,5 @@ describe('Bowling', function(){
   //     expect(game.currentGame()).toEqual({frame: 2, round: 2, score: 22})
   //   });
   // });
-
-
 
 });

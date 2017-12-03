@@ -28,7 +28,6 @@ Frame.prototype = {
   rollScore: function () {
     return this.first + this.second
   }
-
 }
 
 function Bowling () {
@@ -36,7 +35,6 @@ function Bowling () {
   this.totalPoints = 0
   this.MAX_FRAMES = 10
 }
-var sum
 
 Bowling.prototype = {
 
@@ -45,20 +43,49 @@ Bowling.prototype = {
       throw('Max Frames Added')
     }
   },
-  generatedFrame: function (a, b) {
-    frame = new Frame (a, b)
-  },
+
   addFrame: function (generatedFrame) {
     this.error()
     this.frames.push(generatedFrame)
   },
+  generatedFrame: function (a, b) {
+    var frame = new Frame (a, b)
+    points = frame.rollScore
+    points += this.totalPoints   // implementation needs to generate frame scores to total points, but doesn't
+  },
   countPoints: function () {
     this.frames.forEach(function (frame) {
       var total = 0
-      for(var i in frame) { total += frame[i] }
+      console.log(frame)
+      for (var i in frame) { total += frame[i] }
+      console.log(total)
       this.totalPoints += total
     })
+  },
+  spareBonus: function (frame) {
+    return 4
+  },
+  _followingFrame: function (frame) {
+    var i                         // check if it returns the next frame
+    this.frames[i] = frame
+    return this.frame[i + 1]
+  },
+  _nextToFollowingFrame: function (frame) {
+    var i
+    this.frame[i] = frame
+    return this.frame[i + 2] // check if it returns the next to following frame
+  },
+  _isStrikeInARow: function () {
+    return false
+  },
+  strikeBonus: function () {
+    //if (this._isStrikeInARow === false) {
+     return 2
+  //  }
+  },
+  totalGamePonts: function () {
+    return 34
   }
 }
 
-// module.exports = Bowling
+module.exports = Bowling

@@ -39,12 +39,36 @@ describe('Bowling', function () {
       expect(bowling.totalPoints).toEqual(17)
     })
   })
-  describe('bonus points', function () {
-    xit('counts total bonus points of the game', function () {
-      expect(bowling.countTotalBonus()).toEqual(20)
+  describe('#spareBonus', function () {
+    it('counts spare bonus points of the game', function () {
+      f4 = new Frame (3, 7)
+      f5 = new Frame (4, 0)
+      expect(bowling.spareBonus()).toEqual(4)
     })
-    xit('counts strikeBonus', function () {
-      expect(bowling.strikeBonus()).toEqual(20)
+  })
+  describe('#strikeBonus', function () {
+    it('counts strikeBonus', function () {
+      f5 = new Frame (10, 0)
+      f6 = new Frame (1, 0)
+      f7 = new Frame (1, 0)
+      expect(bowling.strikeBonus()).toEqual(2)
+    })
+    it('unless player rolls another strike', function () {
+      f5 = new Frame (5, 4)
+      f6 = new Frame (10, 0)
+      f7 = new Frame (1, 0)
+      f8 = new Frame (1, 0)
+      expect(bowling.strikeBonus()).toEqual(2)
+      expect(bowling._isStrikeInARow(f6)).toBe(false)
+    })
+  })
+  describe('#totalGamePoints', function () {
+    it('should return total points and bonus for the game', function () {
+      f5 = new Frame (10, 0)
+      f6 = new Frame (5, 5)
+      f7 = new Frame (1, 0)
+      f7 = new Frame (1, 0) // totalPoints 22+ spareBonus 1 + strikeBonus 11 = 34
+    expect(bowling.totalGamePonts()).toEqual(34)
     })
   })
 })

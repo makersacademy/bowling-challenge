@@ -1,3 +1,5 @@
+'use strict'
+
 function Frame (first, second) {
   this.rolls = [first, second]
   this.MAX_POINTS = 10
@@ -7,13 +9,12 @@ function Frame (first, second) {
 
 Frame.prototype = {
   isStrike: function () {
-    if (this.firstRoll === this.MAX_POINTS) {
-      this.secondRoll = 0
+    if (this.first === this.MAX_POINTS) {
       this.strike = true
     }
   },
   isSpare: function () {
-    if (this.firstRoll + this.secondRoll === this.MAX_POINTS) {
+    if (this.first + this.second === this.MAX_POINTS) {
       this.spare = true
     }
   },
@@ -24,7 +25,8 @@ Frame.prototype = {
     return this.rolls[1]
   },
   rollScore: function () {
-    return this.firstRoll + this.secondRoll
+    return this.first + this.second
   }
-
 }
+
+module.exports = Frame

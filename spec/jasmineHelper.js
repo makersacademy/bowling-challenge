@@ -4,6 +4,5 @@ function throw_records_bonus_increaseTurnAndFrame(n) {
   bowling.reducePins(n);
   bowling.spareBonus();
   bowling.strikeBonus();
-  bowling.increaseTurn();
   bowling.increaseActualFrame();
 }

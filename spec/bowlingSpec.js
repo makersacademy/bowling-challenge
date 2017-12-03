@@ -21,49 +21,38 @@ describe('Bowling', function ()  {
     it('Reduce pins of the actual frame', function() {
       bowling.throw(5);
       bowling.reducePins(5);
-      expect(bowling.frames[bowling.turn].pins).toEqual(5)
+      expect(bowling.frames[bowling.actualFrame].pins).toEqual(5)
     });
   });
   describe('#increaseActualFrame', function () {
-    it('increase actual frame by one if turn is even', function () {
-      bowling.increaseTurn();
+    it('increase actual frame by one if framePoins.length === 2', function () {
+      bowling.recordInFrame(2)
+      bowling.recordInFrame(2)
       bowling.increaseActualFrame();
       expect(bowling.actualFrame).toEqual(2)
     });
   });
 
   describe('#recordInFrame', function () {
-    it("The score of each lunch is saved inside the Frame variable firstStrike or secondStrike", function() {
+    it("The score of the first roll is saved inside the framePoins array", function() {
       bowling.throw(5);
       bowling.recordInFrame(5);
-      expect(bowling.frames[bowling.actualFrame].firstStrike).toEqual(5)
+      expect(bowling.frames[bowling.actualFrame].framePoints[0]).toEqual(5)
     });
   });
   describe('#recordInFrame', function () {
-    it("The score the first launch is saved inside the Frame variable firstStrike", function() {
+    it("The score of the second roll is saved inside the framePoins array", function() {
       bowling.throw(5);
       bowling.recordInFrame(5);
-      expect(bowling.frames[bowling.actualFrame].firstStrike).toEqual(5)
-    });
-  });
-  describe('#recordInFrame', function () {
-    it("The score the first launch is saved inside the Frame variable secondStrike", function() {
-      bowling.turn = 2
-      bowling.throw(5);
-      bowling.recordInFrame(5);
-      expect(bowling.frames[bowling.actualFrame].secondStrike).toEqual(5)
+      bowling.throw(2);
+      bowling.recordInFrame(2);
+      expect(bowling.frames[bowling.actualFrame].framePoints[1]).toEqual(2)
     });
   });
   describe('#reducePins', function () {
     it("reduce the pins of a given frame.", function() {
       bowling.reducePins(5);
       expect(bowling.frames[bowling.actualFrame].pins).toEqual(5)
-    });
-  });
-  describe('#increaseTurn', function () {
-    it("increase by the variable turn", function() {
-      bowling.increaseTurn();
-      expect(bowling.turn).toEqual(2)
     });
   });
   describe('#isGutter', function () {
@@ -90,27 +79,22 @@ describe('Bowling', function ()  {
       bowling.recordInFrame(5);
       bowling.reducePins(5)
       bowling.increaseActualFrame();
-      bowling.increaseTurn();
       bowling.throw(5);
       bowling.recordInFrame(5);
       bowling.reducePins(5)
       bowling.increaseActualFrame();
-      bowling.increaseTurn();
       bowling.throw(5);
+      bowling.recordInFrame(5);
       bowling.spareBonus();
-      expect(bowling.frames[bowling.actualFrame - 1].secondStrike).toEqual(10)
+      expect(bowling.frames[bowling.actualFrame - 1].framePoints[1]).toEqual(10)
     });
   });
   describe('#StrikeBonus', function () {
-    it("IF you do strike, your turn increase by 2 and your frame increase by 1", function() {
+    it("IF you do strike, your frame increase immediately by 1 also if you have done only 1 roll", function() {
       bowling.throw(10);
       bowling.recordInFrame(10);
       bowling.reducePins(10)
-      bowling.increaseTurn();
       bowling.increaseActualFrame();
-
-
-      expect(bowling.turn).toEqual(3)
       expect(bowling.actualFrame).toEqual(2)
     });
   });
@@ -119,45 +103,30 @@ describe('Bowling', function ()  {
       bowling.throw(10);
       bowling.recordInFrame(10);
       bowling.reducePins(10)
-      bowling.increaseTurn();
       bowling.increaseActualFrame();
       bowling.throw(5);
       bowling.recordInFrame(5);
       bowling.reducePins(5)
       bowling.increaseActualFrame();
-      bowling.increaseTurn();
-
-
       bowling.throw(5);
       bowling.recordInFrame(5);
       bowling.reducePins(5);
       bowling.strikeBonus();
-      expect(bowling.frames[bowling.actualFrame - 1].firstStrike).toEqual(20)
+      expect(bowling.frames[bowling.actualFrame - 1].framePoints[0]).toEqual(20)
     });
   });
   describe('#StrikeBonus', function () {
-    xit("IF you do strike, strike, 3 - 2. The first strike should get a bonus score of 13 and the second one of 5", function() {
-      // bowling.throw(10);
-      // bowling.recordInFrame(10);
-      // bowling.reducePins(10)
-      // bowling.increaseTurn();
-      // bowling.increaseActualFrame();
+    it("IF you do strike, strike, 3 - 2. The first strike should get a bonus score of 13 and the second one of 5", function() {
       throw_records_bonus_increaseTurnAndFrame(10);
       throw_records_bonus_increaseTurnAndFrame(10);
-      bowling.throw(3);
-      bowling.recordInFrame(3);
-      bowling.reducePins(3);
-      bowling.strikeBonus();
-
-      bowling.increaseActualFrame();
-      bowling.increaseTurn();
-
+      throw_records_bonus_increaseTurnAndFrame(3);
       bowling.throw(2);
       bowling.recordInFrame(2);
       bowling.reducePins(2);
+      bowling.spareBonus();
       bowling.strikeBonus();
-      expect(bowling.frames[bowling.actualFrame - 2].firstStrike).toEqual(23)
-      expect(bowling.frames[bowling.actualFrame - 1].firstStrike).toEqual(15)
+      expect(bowling.frames[bowling.actualFrame - 2].framePoints[0]).toEqual(23)
+      expect(bowling.frames[bowling.actualFrame - 1].framePoints[0]).toEqual(15)
     });
   });
 });

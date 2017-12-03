@@ -2,19 +2,17 @@ function Frame() {
   this.rollTally = [];
   this._bonusPoints = [];
   this.isBonusAwarded = false;
-  this.totalScore = this.getScore();
 }
 
 Frame.prototype = {
   addToFrame: function(roll) {
-    this.rollTally.push(roll.pinfall);
-    this.totalScore = this.getScore();
+    this.rollTally.push(roll);
   },
 
   getScore: function() {
     var total = 0;
-    this.rollTally.forEach(function(points) {
-      total += points;
+    this.rollTally.forEach(function(roll) {
+      total += roll.pinfall;
     })
     this._bonusPoints.forEach(function(bonus) {
       total += bonus;
@@ -23,14 +21,16 @@ Frame.prototype = {
   },
 
   isStrike: function() {
-    return this.rollTally[0] === 10;
+    if(this.rollTally.length <= 0) return false
+    return this.rollTally[0].pinfall === 10;
   },
 
   isSpare: function() {
     return (this.isStrike() === false) && (this.getScore() === 10);
   },
 
-  awardBonusPoints: function(rollOne = 0, rollTwo = 0) {
-    this._bonusPoints.push(rollOne, rollTwo);
+  awardBonusPoint: function(points) {
+    this._bonusPoints.push(points);
+    this.isBonusAwarded = true;
   }
 }

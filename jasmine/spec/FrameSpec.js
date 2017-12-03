@@ -5,29 +5,11 @@ describe('Frame', function() {
     secondRoll  = new Roll;
   })
 
-  describe('totalScore', function() {
-    it('stores the total score for the frame', function() {
-      expect(frame.totalScore).toEqual(0);
-    })
-
-    it('updates the totalScore of the frame', function() {
-      firstRoll.pinfall = 5;
-      frame.addToFrame(firstRoll);
-      expect(frame.totalScore).toEqual(5)
-    })
-  })
-
   describe('#addToFrame', function() {
     it('adds the score of a Roll to the Frame', function() {
       firstRoll.pinfall = 4;
       frame.addToFrame(firstRoll);
-      expect(frame.rollTally[0]).toEqual(4);
-    })
-
-    it('updates the totalScore of the frame', function() {
-      firstRoll.pinfall = 5;
-      frame.addToFrame(firstRoll);
-      expect(frame.totalScore).toEqual(5)
+      expect(frame.rollTally[0]).toEqual(firstRoll);
     })
   })
 
@@ -49,14 +31,14 @@ describe('Frame', function() {
       frame.addToFrame(firstRoll);
       secondRoll.pinfall = 4;
       frame.addToFrame(secondRoll);
-      frame.awardBonusPoints(5)
+      frame.awardBonusPoint(5)
       expect(frame.getScore()).toEqual(15);
     })
   })
 
   describe('#isStrike', function() {
-    it('starts as false', function() {
-      expect(frame.isStrike()).toBe(false);
+    it('not true when initialized', function() {
+      expect(frame.isStrike()).not.toBe(true);
     })
 
     it('turns true when the first firstRoll has a pinfall of 10', function() {
@@ -67,11 +49,11 @@ describe('Frame', function() {
   })
 
   describe('#isSpare', function() {
-    it('starts as false', function() {
-      expect(frame.isSpare()).toBe(false);
+    it('not true when initialized', function() {
+      expect(frame.isSpare()).not.toBe(true);
     })
 
-    it('turns true when the after the second firstRolle and if the total is 10', function() {
+    it('turns true if the score is 10 after the second Roll', function() {
       firstRoll.pinfall = 7;
       frame.addToFrame(firstRoll);
       secondRoll.pinfall = 3;
@@ -94,15 +76,15 @@ describe('Frame', function() {
     })
   })
 
-  describe('#awardBonusPoints', function() {
+  describe('#awardBonusPoint', function() {
     it('adds points to the _bonusPoints property', function() {
-      frame.awardBonusPoints(4);
-      expect(frame._bonusPoints).toEqual([4, 0])
+      frame.awardBonusPoint(4);
+      expect(frame._bonusPoints).toEqual([4])
     })
 
-    it('can award two rolls', function() {
-      frame.awardBonusPoints(4, 5);
-      expect(frame._bonusPoints).toEqual([4, 5])
+    it('changes isBonusAwarded to true', function() {
+      frame.awardBonusPoint(4);
+      expect(frame.isBonusAwarded).toBe(true)
     })
   })
 })

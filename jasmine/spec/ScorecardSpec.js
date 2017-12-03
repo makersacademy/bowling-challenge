@@ -41,22 +41,9 @@ describe('Scorecard', function() {
     })
   })
 
-  describe('#allRolls', function() {
-    it('returns a single array of all rolls', function() {
-      scorecard.frames = [[1, 2], [3, 4]];
-      expect(scorecard.allRolls()).toEqual([1, 2, 3, 4]);
-    })
-  })
-
   describe('_frameTracker', function() {
     it('A property to keep track of the current Frame, starts at 0', function() {
       expect(scorecard._frameTracker).toEqual(0);
-    })
-  })
-
-  describe('_rollTracker', function() {
-    it('keeps track of the number of rolls', function() {
-      expect(scorecard._rollTracker).toEqual(0);
     })
   })
 

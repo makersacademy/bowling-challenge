@@ -1,15 +1,10 @@
 function Scorecard() {
   this.frames         = [];
   this._frameTracker  = 0;
-  this._rollTracker   = 0;
   this.currentFrame   = this.currentFrame || new Frame;
 }
 
 Scorecard.prototype = {
-  allRolls: function() {
-    return [].concat.apply([], this.frames);
-  },
-
   startNewFrame: function() {
     this.currentFrame = new Frame;
   },

@@ -11,6 +11,7 @@ $(document).ready(function(){
         game = new Game();
         game.compute(getScoresArray());
         showOutput();
+        $(this).prop("disabled",true);
     });
 
     $("#reset").on("click", function() {
@@ -124,11 +125,8 @@ $(document).ready(function(){
 
     function createImage(source) {
         var img = $('<img />', { 
-            id: 'looks',
             src: source,
-            class: 'spirit_face',
-            alt: 'Looks',
-            align: 'right'
+            class: 'spirit_face'
         });
         img.appendTo($('#face'));
     }

@@ -1,5 +1,5 @@
 Bowling Challenge
-=================
+-----------------
 
 Makers Academy week 5 weekend challenge - Count and sum the scores of a bowling game for one player (in JavaScript).
 
@@ -18,7 +18,7 @@ To run the app:
 > open bowling.html
 ```
 
-To run the test:
+To run the tests:
 ```
 > open SpecRunner.html
 ```

@@ -1,10 +1,12 @@
 describe("Scorecard", function() {
   var scorecard;
   var frame;
+  var frame1;
 
   beforeEach(function() {
     scorecard = new Scorecard();
     frame = new Frame();
+    frame1 = new Frame();
   });
 
   describe("frameResults", function() {
@@ -40,13 +42,24 @@ describe("Scorecard", function() {
       frame.setFrameScore();
       scorecard.addFrame(frame);
       scorecard.updateScores();
-      var frame1 = new Frame();
       frame1.setBowlOneScore(6);
       frame1.setBowlTwoScore(2);
       frame1.setFrameScore();
       scorecard.addFrame(frame1);
       scorecard.updateScores();
       expect(scorecard.frameScores[0]).toEqual(16)
+    });
+
+    it("Scoring a strike should add the score of the next two bowls onto the score", function() {
+      frame.setBowlOneScore(10);
+      frame.setFrameScore();
+      scorecard.addFrame(frame);
+      frame1.setBowlOneScore(4);
+      frame1.setBowlTwoScore(4);
+      frame1.setFrameScore();
+      scorecard.addFrame(frame1);
+      scorecard.updateScores();
+      expect(scorecard.frameScores[0]).toEqual(18)
     })
   });
 });

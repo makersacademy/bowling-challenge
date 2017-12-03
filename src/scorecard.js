@@ -17,8 +17,13 @@ Scorecard.prototype.updateScores = function () {
       var spareScore = 10 + frame.getBowlOneScore();
       this.frameScores.push(spareScore);
       this.frameScores.push(score);
+    } else if (this.frameResults.length > 1 && this.frameResults[this.frameResults.length - 2].strike === true) {
+      var strikeScore = 10 + frame.getBowlOneScore() + frame.getBowlTwoScore();
+      this.frameScores.push(strikeScore);
+      this.frameScores.push(score);
+    } else {
+      this.frameScores.push(score);
     }
-    this.frameScores.push(score);
   } else {
     return;
   }

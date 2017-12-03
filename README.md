@@ -1,7 +1,7 @@
 # Bowling Challenge Kata 
 ### Makers Academy week 5 & 6 Weekend Challenge
 
-![images/bowling-game.png]
+![](images/bowling-game.png)
 
 This weekend's challenge was spread over two weekends. After only learning JavaScript for one week we were given the task to design the infamous bowling kata using jQuery, HTML and styling with CSS.
 
@@ -18,7 +18,7 @@ I experimented with animating in jQuery for the first time, a simple binding to 
 ### If given more time...
 
 ... I would: 
-* refactor heavily
+* refactor
 * complete the jQuery logic which is at this point incomplete
 *  explore deeper into CSS and create a simple, clean but dynamic UI
 

@@ -40,7 +40,7 @@ Bowling.prototype = {
 
   error: function () {
     if (this.frames.length > this.MAX_FRAMES) {
-      throw('Max Frames Added')
+      throw ('Max Frames Added')
     }
   },
 
@@ -79,12 +79,13 @@ Bowling.prototype = {
     return false
   },
   strikeBonus: function () {
-    //if (this._isStrikeInARow === false) {
-     return 2
-  //  }
+    if (this._isStrikeInARow === false) {
+      return 2 // return normal strike bonus
+    }
   },
-  totalGamePonts: function () {
-    return 34
+  totalGamePoints: function () {
+    var points = this.countPoints + this.spareBonus + this.strikeBonus
+    return points
   }
 }
 

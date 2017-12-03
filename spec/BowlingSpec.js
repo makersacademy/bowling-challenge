@@ -64,11 +64,11 @@ describe('Bowling', function () {
   })
   describe('#totalGamePoints', function () {
     it('should return total points and bonus for the game', function () {
-      f5 = new Frame (10, 0)
-      f6 = new Frame (5, 5)
-      f7 = new Frame (1, 0)
-      f7 = new Frame (1, 0) // totalPoints 22+ spareBonus 1 + strikeBonus 11 = 34
-    expect(bowling.totalGamePonts()).toEqual(34)
+    f5 = new Frame (10, 0)
+    f6 = new Frame (5, 5)
+    f7 = new Frame (1, 0)
+    f7 = new Frame (1, 0) // totalPoints 22+ spareBonus 1 + strikeBonus 11 = 34
+    expect(bowling.totalGamePoints()).toEqual(3)
     })
   })
 })

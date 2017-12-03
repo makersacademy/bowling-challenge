@@ -3,7 +3,7 @@
         -moz-box-sizing: border-box;
             box-sizing: border-box;
     font-family: 'Droid Serif', serif;
-    background-color: FloralWhite;
+    background-color: #CCCCB2;
 }
 
 .main {
@@ -54,27 +54,31 @@
 }
 
 .roll_1 {
-    width: 45px;
+    width: 43px;
     height: 50px;
     float: left;
     font-size: 16px;
     text-align: center;
+    border-color: black;
 }
 
 .roll_2 {
-    width: 45px;
+    width: 43px;
     height: 50px;
     float: center;
     font-size: 16px;
     text-align: center;
+    border-color: black;
+    margin-left: 1px;
 }
 
 .roll_3 {
-    width: 45px;
+    width: 43px;
     height: 50px;
     float: right;
     font-size: 16px;
     text-align: center;
+    border-color: black;
 }
 
 .frame_score_header {
@@ -101,6 +105,7 @@
     width: 100%;
     height: 40px;
     margin-top: 20px;
+    margin-left: 100px;
 }
 
 .hidden_results_message {
@@ -108,6 +113,7 @@
     width: 100%;
     height: 40px;
     margin-top: 20px;
+    margin-left: 100px;
     visibility: hidden;
 }
 
@@ -130,18 +136,6 @@
     max-width: 100%;
     max-height: 100%;
     border: 0;
-}
-
-
-.error {
-    font-family: 'Droid Serif', serif;
-    font-style: italic;
-    font-size: 12px;
-    color: red;
-    background-color: FloralWhite;
-    float: left;
-    margin-top: 25px;
-    margin-left: 600px; 
 }
 
 .submit_button {

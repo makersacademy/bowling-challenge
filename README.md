@@ -5,7 +5,7 @@ Makers Academy week 5 weekend challenge - Count and sum the scores of a bowling 
 
 Business logic implented in Javascript with tests in Jasmine.
 
-A further animated interface was created with HTML, jQuery and CSS.
+A further animated interface was created using HTML, jQuery and CSS.
 
 
 Using the App

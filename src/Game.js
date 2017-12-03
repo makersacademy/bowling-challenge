@@ -2,6 +2,7 @@ function Game(){
   this.currentFrame = 1
   this.scores = [[],[],[],[],[],[],[],[],[],[]]
   this.currentTurn = 1
+  this.isEndOfGame = false
 }
 
 // GETTERS
@@ -23,6 +24,9 @@ Game.prototype.getCurrentTurn = function(){
 
 
 Game.prototype.addPins = function(pins){
+  if (this.currentTurn === 4) {
+    throw "The game is over"
+  }
   if (pins > 10) {
     throw "You can't knock down over 10 pins"
   } else {
@@ -51,6 +55,8 @@ Game.prototype._setCurrentTurn = function(pins){
       this.currentTurn = 2
     }else if (this.currentTurn === 2) {
       this.currentTurn = 3
+    }else if (this.currentTurn === 3) {
+      this.currentTurn = 4
     }
   } else {
     this.currentTurn = 1

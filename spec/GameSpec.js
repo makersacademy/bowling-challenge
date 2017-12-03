@@ -22,6 +22,13 @@ describe('Game', function(){
     }
   }
 
+  function normalGame(){
+    for (var i = 0; i < 20; i++){
+      game.addPins(4)
+    }
+
+  }
+
   describe('#getCurrentScore', function(){
     it('10 bowls of 1 returns a current score of 20', function(){
       for (var i = 0; i < 20; i++){
@@ -69,6 +76,11 @@ describe('Game', function(){
     it('throws an error if the number of pins over two rolls is above 10', function(){
       game.addPins(8)
       expect( function(){ game.addPins(3); }).toThrow("You can't knock down over 10 pins")
+    });
+
+    it('throws an error when the game is over (spare or strike)', function(){
+      perfectGame()
+      expect( function(){ game.addPins(4) }).toThrow("The game is over")
     });
   });
 

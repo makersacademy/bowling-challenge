@@ -24,7 +24,7 @@ describe("BowlingScore", function(){
 
   describe("frames", function(){
     it("should print the current frame",function(){
-      expect(bowlingScore.currentFrame()).toEqual(1);
+      expect(bowlingScore.currentFrame()).toEqual(0);
     })
   })
 

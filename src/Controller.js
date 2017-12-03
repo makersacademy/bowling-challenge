@@ -1,24 +1,13 @@
-$(document).ready(function(){
-  bowling = new BowlingScore();
-  $("#pins-btn").click(function(){
+$(function(){
+  var bowling = new BowlingScore();
+  $('.rolls li').on('click',function(){
+    var pins = $(this).html()
 
-     var pins = parseInt($('#pins').val());
-
-     update(pins)
+     bowling.roll(parseInt(pins));
+     bowling.calculateScore();
+     var index = bowling.currentFrame()
+    $('#frame'+index).html('<span>'+bowling.scores()[index-1]+'<span>')
+    $('#score'+index).html('<span>'+bowling.score()+'<span>')
+    $('.total').html('<span>'+bowling.score()+'<span>')
   })
-
-  function update(pins){
-
-    bowling.roll(pins);
-    bowling.calculateScore();
-
-
-    $('#scores').html(bowling.scores());
-
-    $('#score').html(bowling.score());
-
-    $('#frames').html(bowling.rolls());
-
-    $('#frame').html(bowling.currentFrame());
-  }
 })

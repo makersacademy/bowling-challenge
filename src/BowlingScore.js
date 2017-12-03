@@ -43,28 +43,46 @@ BowlingScore.prototype.calculateScore = function(){
   }
 
   for(var i = 0; i < arr.length; i++){
-    if(arr[i] === 10){
-      var score = this._rolls[i]+next(i)+next(i+1);
-      this._score += score;
-      this._scores.push(score);
-      this._currentFrame+=1;
+    if(this._currentFrame < 9){
+      if(arr[i] === 10){
+        var score = this._rolls[i]+next(i)+next(i+1);
+        this._score += score;
+        this._scores.push(score);
+        this._currentFrame+=1;
+      }
+
+      else if(arr[i] < 10 && arr[i] + next(i) === 10){
+        var score = this._rolls[i]+next(i)+next(i+1);
+        this._score += score;
+        this._scores.push(score);
+        this._currentFrame+=1;
+        i+=1;
+      }
+      else if(arr[i]< 10 && next(i)+arr[i]< 10){
+        var score = this._rolls[i]+next(i);
+        this._score += score;
+        this._currentFrame+=1;
+        this._scores.push(score);
+        i+=1;
+      }
     }
 
-    else if(arr[i] < 10 && arr[i] + next(i) === 10){
+    else if(this._currentFrame < 10){
+      if(arr[i] === 10){
       var score = this._rolls[i]+next(i)+next(i+1);
       this._score += score;
-      this._scores.push(score);
       this._currentFrame+=1;
+      this._scores.push(score);
       i+=1;
     }
-    else if(arr[i]< 10 && next(i)+arr[i]< 10){
+    else{
       var score = this._rolls[i]+next(i);
       this._score += score;
       this._currentFrame+=1;
       this._scores.push(score);
       i+=1;
+      }
     }
-
 
   }
 }

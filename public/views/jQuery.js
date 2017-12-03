@@ -96,7 +96,6 @@ $(document).ready(function() {
     // even
     if (outputCounter % 2 == 0) {
       if (numberChecker + number > 10) {
-        console.log('over 10')
         if (outputCounter == 20) {
           // last Strike
           $("#" + outputCounter).text(number);

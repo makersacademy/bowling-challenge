@@ -68,7 +68,7 @@ BowlingScore.prototype.calculateScore = function(){
     }
 
     else if(this._currentFrame < 10){
-      if(arr[i] === 10){
+      if(arr[i] === 10 || arr[i] + next(i) === 10){
       var score = this._rolls[i]+next(i)+next(i+1);
       this._score += score;
       this._currentFrame+=1;

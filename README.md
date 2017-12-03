@@ -2,39 +2,57 @@
 Bowling Challenge
 =================
 
-
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
 ## The Task
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+Count and sum the scores of a bowling game for one player (in JavaScript). I categorised all of this into user stories to help me understand
+what was needed for the code.
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+```
+As an individual's score board,
+I would like to initialise a game when the game starts.
 
-As usual please start by
+As an individual's score board,
+I would like to start the round and turn when its the person's turn.
 
-* Forking this repo
+As an individual's score board,
+I would like to add points of that turn when the person's turn is over.
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+As an individual's score board,
+I would like to set a round to two turns.
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+As an individual's score board,
+I would like to set a game to ten rounds.
 
-Also, don't generate random rolls. Trust us on this one.
+As an individual's score board,
+I would like to total up the points for one round after two turns
 
-### Optional Extras
+As an individual's score board,
+I would like to call Strike when a person hits all ten pins and end the turn.
 
-In any order you like:
+As an individual's score board,
+I would like to call Spare when a person hits all ten pins in two turns
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+As an individual's score board,
+I would like to add points from the second round first roll, as a bonus if the
+person has scored a spare.
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+As an individual's score board,
+I would like to give a bonus round if the person scores a strike on the last turn
+
+As an individual's score board,
+I would like print out a message "Good Game" with the total score.
+
+```
+
+### Approach
+
+I mapped it out at first and thought I knew how to do it. It took me a while to figure out whether to do it in an array of arrays, or an array of hashes. I did it in an array of hashes to keep track of the frame, round and score.
+
+My aim was to get the logic down which I was half successful at. I suffered most on the addition of the bonus points for the Strike and Spare. Although, my code only has half a strike function down, I knew how to code a spare but did not know how to add the bonus points.
+
+I am continuing this challenge and will finish this code eventually and give you a code worthy of a review. #keen.
+
+~Dania
 
 ## Bowling — how does it work?
 
@@ -67,7 +85,18 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-## Code Review
+### Optional Extras
+
+In any order you like:
+
+* Create a nice interactive animated interface with jQuery.
+* Set up [Travis CI](https://travis-ci.org) to run your tests.
+* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+
+You might even want to start with ESLint early on in your work — to help you
+learn Javascript conventions as you go along.
+
+### Code Review
 
 In code review we'll be hoping to see:
 

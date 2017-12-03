@@ -1,0 +1,44 @@
+body {
+    background-image: url(../images/bowling.jpg);
+}
+
+.header {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 70px;
+    color: purple;
+    text-shadow: black;
+}
+
+select {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 35px;
+    color: purple;
+    width: 70px
+}
+
+button {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 40px;
+    color: greenyellow;
+
+}
+
+#scoretable {
+    width: 40%    
+}
+
+label {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;
+    color: hotpink;
+
+}
+
+#ball {
+    position: relative;
+    
+}
+
+#bonus-roll {
+    display: none;
+}

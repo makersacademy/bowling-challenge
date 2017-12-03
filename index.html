@@ -1,32 +1,45 @@
-<style>
-
-  body {
-    background-color: black;
-  }
-
-  table, th, td {
-    border: 1px solid white;
-    color: #efcb7c;
-  }
-</style>
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./main.css" />
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="./src/Game.js" type="text/javascript"></script>
+<script src="./src/Interface.js" type="text/javascript"></script>
+</head>
 
 <body>
 
 <table>
   <tr>
-    <th>1</th>
-    <th>2</th>
-    <th>3</th>
-    <th>4</th>
-    <th>5</th>
-    <th>6</th>
-    <th>7</th>
-    <th>8</th>
-    <th>9</th>
-    <th>10</th>
+    <th>FRAME</th>
+    <th colspan="2">1</th>
+    <th colspan="2">2</th>
+    <th colspan="2">3</th>
+    <th colspan="2">4</th>
+    <th colspan="2">5</th>
+    <th colspan="2">6</th>
+    <th colspan="2">7</th>
+    <th colspan="2">8</th>
+    <th colspan="2">9</th>
+    <th colspan="2">10</th>
     <th>Total</th>
   </tr>
   <tr>
+    <td>Player Name</td>
+    <td id="1">-</td>
+    <td id="2">-</td>
+    <td id="3">-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
     <td>-</td>
     <td>-</td>
     <td>-</td>
@@ -38,6 +51,25 @@
     <td>-</td>
     <td>-</td>
   </tr>
+  <tr>
+    <td>Running Total</td>
+    <td colspan="2">-</td>
+    <td colspan="2">-</td>
+    <td colspan="2">-</td>
+    <td colspan="2">-</td>
+    <td colspan="2">-</td>
+    <td colspan="2">-</td>
+    <td colspan="2">-</td>
+    <td colspan="2">-</td>
+    <td colspan="2">-</td>
+    <td colspan="2">-</td>
+    <td id="total" colspan="2">-</td>
+  </tr>
 </table>
 
+  <input id="score" type="text" placeholder="Enter Score"/>
+
 </body>
+
+
+</html>

@@ -1,0 +1,18 @@
+ScoreCard.prototype.addPoints = function(points){
+  if(this.cheatGuard(points)==true){
+    return 'illegal roll'
+  } else {
+    if(this.frame.count == 0){
+    this.addPointsRegular1(points)
+    if(this.frame.bonusMode == 1){
+    this.addPointsSpare(points)
+    }
+    } else {
+    this.addPointsRegular2(points)
+    if(this.frame.bonusMode == 2){
+    this.addPointsStrike()
+    }
+    }
+      this.frame.count +=1
+  }
+  }

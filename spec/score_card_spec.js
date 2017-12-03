@@ -65,6 +65,7 @@ describe("no bonus", function(){
     scorecard.recordRoll(5)
     scorecard.recordRoll(3)
     scorecard.recordRoll(4)
+    console.log(scorecard.frames)
     expect(scorecard.bonusFrame.points).toEqual(8)
   });
 });
@@ -75,8 +76,34 @@ describe("cheat guard", function(){
     scorecard.recordRoll(5)
     console.log(scorecard.frame)
     scorecard.recordRoll(6)
-    
+
     expect(scorecard.frame.points).toEqual(5)
+  });
+});
+
+describe("total", function(){
+  it("total includes bonus points", function(){
+    scorecard.recordRoll(5)
+    scorecard.recordRoll(5)
+    scorecard.recordRoll(5)
+    expect(scorecard.total).toEqual(20)
+  });
+  it("total includes bonus points 2", function(){
+    scorecard.recordRoll(5)
+    scorecard.recordRoll(5)
+    scorecard.recordRoll(5)
+    scorecard.recordRoll(2)
+    scorecard.recordRoll(5)
+    expect(scorecard.total).toEqual(27)
+  });
+});
+
+describe("final frame", function(){
+  it("allows for only 3 rolls on final frame", function(){
+    scorecard.count = 9
+    scorecard.recordRoll(5)
+    scorecard.recordRoll(5)
+    scorecard.recordRoll(5)
   })
 })
 });

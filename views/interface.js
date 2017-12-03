@@ -5,6 +5,7 @@
     $(".button-1").click(function(){
       scorecard.recordRoll(1)
       update()
+
     })
     $(".button-2").click(function(){
       scorecard.recordRoll(2)
@@ -49,7 +50,13 @@
       $(".roll-1").text(scorecard.frame.roll1.points)
       $(".roll-2").text(scorecard.frame.roll2.points)
       $(".bonus").text(scorecard.bonusFrame.points)
+      previousFrames()
     }
 
+    previousFrames = function(){
+      console.log(scorecard.returnFrames())
+      $.each(scorecard.frames, function(i, val){
+        $(".scores").text(val.points)
+      })}
 
   });

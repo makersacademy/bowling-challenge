@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <span class="header"></span>
+    <img src="images/bowlingkata.png" height="90px" alt="">
+    <span id='score'>Score = </span>
+    <div></div>
+
+    <!-- buttons -->
+    <label for="roll1">
+        Roll 1
+    </label>
+    <select id=roll1>
+    </select>
+    <label for="roll2">
+        Roll 2
+    </label>
+    <select id=roll2>
+    </select>
+    <button type="submit" id="roll">Roll!!</button>
+    <button type="submit" id="bonus-roll">Bonus Roll!</button>
+
+    <img id="ball" src="images/ball.png" alt="" width="100" height="100">
+
+    <!-- table -->
+    <table class="table table-striped table-hover" id="scoretable">
+        <thead>
+            <td>Frame</td>
+            <td>Roll 1</td>
+            <td>Roll 2</td>
+        </thead>
+    </table>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-rotate.js"></script>
+    <script src="src/interface.js"></script>
+    <script src="src/game.js"></script>
+</body>
+
+</html>

@@ -37,9 +37,11 @@ Game.prototype.score = function () {
     }
 
     else if(game.isSpare(rollsIndex)) {
+
       if(frameNr === 10) {
-        var b = [game._rolls[rollsIndex],game._rolls[(rollsIndex+1)]];
+        var b = [game._rolls[rollsIndex], game._rolls[rollsIndex+1], game._rolls[rollsIndex+2]];
         Array.prototype.push.apply(frame._rolls,b);
+        frame._intScore = 10 + game._rolls[rollsIndex+2];
       }
       else {
         var c = [game._rolls[rollsIndex],game._rolls[(rollsIndex+1)]];
@@ -56,10 +58,12 @@ Game.prototype.score = function () {
       rollsIndex = rollsIndex +2;
     }
 
-    sum = sum + frame._intScore;
+    sum += frame._intScore || 0;
+
     game._frames.push(frame);
    };
-return sum;
+
+   return sum;
 };
 
 Game.prototype.isStrike = function(rollsIndex) {

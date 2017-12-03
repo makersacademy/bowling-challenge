@@ -11,20 +11,25 @@ $(document).ready( function(){
     if(code==9 || code==13 || e.type=="blur") {
       $inputs.each(function(){
         var roll = parseInt($(this).val());
-        if(roll)
+
+        if(roll || roll === 0)
         {
           scores.push(roll);
+
+          if(roll == 10)
+            $(this).next("input").attr("disabled", "disabled").val("/");
         }
       });
 
       game.updateRolls(scores);
-      game.score();
 
-      var total = 0;
+      $("#final").html(game.score());
+
+      var interim = 0;
 
       $totals.each(function(index){
-        total += game._frames[index]._intScore
-        $(this).html(total);
+        interim += game._frames[index]._intScore
+        $(this).html(interim);
       })
     }
   });

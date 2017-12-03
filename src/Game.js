@@ -10,7 +10,7 @@ function Game() {
 Game.prototype.addFrame = function(){
   this.frame += 1
   this.currentround = 1
-  this.currentpoints = 0
+  this.currentpoints + 0
   this.rounds.push({frame: this.frame, round: this.currentround, score: this.currentpoints})
 };
 
@@ -19,7 +19,7 @@ Game.prototype.roll = function(points){
   this.currentGame().score = this.currentpoints
   this.check_Strike()
   this.checkRounds()
-  // console.log(this.rounds);
+  console.log(this.rounds);
 };
 
 Game.prototype.currentGame = function(){
@@ -35,26 +35,28 @@ Game.prototype.checkRounds = function(){
 };
 
 Game.prototype.addRounds = function(){
-  if(this.currentGame().score > 0 && this.currentGame().score < 11){
+  if(this.currentGame().score > 0){
       this.currentGame().round += 1
     }
   else{
-      this.currentGame().score = 10
-      this.currentGame().round = 2
+      return false
   }
 };
 
 Game.prototype.check_Strike = function(){
   if(this.currentGame().score === 10){
     this.addRounds()
+    this.addFrame()
+    this.currentGame().round -= 1
+    this.currentGame().score += 10
   } else {
     return false
   }
 };
 
-Game.prototype.totalScore = function(){
-  console.log(this.rounds.map(a => a.score))
-  var points = this.rounds.map(a => a.score)
-  var sum = points.reduce(function(a,b){return a + b;}, 0);
-  return sum 
-};
+// Game.prototype.totalScore = function(){
+//   console.log(this.rounds.map(a => a.score))
+//   var points = this.rounds.map(a => a.score)
+//   var sum = points.reduce(function(a,b){return a + b;}, 0);
+//   return sum
+// };

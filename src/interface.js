@@ -29,11 +29,20 @@ $(document).ready(function(){
 // Helpers -------------------------------------------- Helpers //
 
     function createSelector(id_number, limit) {
-        var roll = $("#" + id_number);
+        let selector = $("#" + id_number);
         for (let i = 0; i <= limit; i++) {
-            roll.append(new Option(i, i));
-            roll.prop("selectedIndex", -1);        
+            selector.append(new Option(i, i));
+            selector.position({my: "center"});
+            selector.prop("selectedIndex", -1);        
         }
+    }
+
+    function strikeSelector(id_number) {
+        let selector = $("#" + id_number);
+        selector.append(new Option("X", "X"));
+        selector.position({my: "center"});
+        selector.val("X");
+        selector.attr('disabled', true);
     }
 
     function updateRollSelectors(value) {
@@ -43,6 +52,7 @@ $(document).ready(function(){
             createSelector(roll, 10);
         } else if (value === 10) {
             if (roll < 19) {
+                strikeSelector(roll);
                 roll++;
                 createSelector(roll, 10);
             } else {

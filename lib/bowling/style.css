@@ -161,6 +161,10 @@ select {
     outline: none;
 }
 
+select:disabled {
+    color: black;
+}
+
 select::-ms-expand {
     display: none;
 }

@@ -75,6 +75,7 @@ describe("cheat guard", function(){
     scorecard.recordRoll(5)
     console.log(scorecard.frame)
     scorecard.recordRoll(6)
+    
     expect(scorecard.frame.points).toEqual(5)
   })
 })

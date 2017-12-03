@@ -55,13 +55,6 @@ describe('Bowling', function ()  {
       expect(bowling.frames[bowling.actualFrame].pins).toEqual(5)
     });
   });
-  describe('#isGutter', function () {
-    it("If no score is made, you automatically get 20 points", function() {
-      bowling.isGutter();
-      finalScore = bowling.points.reduce((a, b) => a + b)
-      expect(finalScore).toEqual(20)
-    });
-  });
   describe('#resetPoint_Lscore_turn', function () {
     it("points , lastScore and turn variable are reseted", function() {
       bowling.points = 10
@@ -129,7 +122,61 @@ describe('Bowling', function ()  {
       expect(bowling.frames[bowling.actualFrame - 1].framePoints[0]).toEqual(15)
     });
   });
+  describe('PointsBonus array', function() {
+    it('The spare bonus points goes in the pointsBonus array', function() {
+      throw_records_bonus_increaseTurnAndFrame(5);
+      throw_records_bonus_increaseTurnAndFrame(5);
+      bowling.throw(2);
+      bowling.record(2);
+      bowling.recordInFrame(2);
+      bowling.reducePins(2);
+      bowling.spareBonus();
+      expect(bowling.pointsBonus.reduce((a, b) => a + b)).toEqual(2)
+    });
+    it('The strike bonus points goes in the pointsBonus array', function() {
+      throw_records_bonus_increaseTurnAndFrame(10);
+      throw_records_bonus_increaseTurnAndFrame(5);
+      bowling.throw(2);
+      bowling.record(2);
+      bowling.recordInFrame(2);
+      bowling.reducePins(2);
+      bowling.strikeBonus();
+      expect(bowling.pointsBonus.reduce((a, b) => a + b)).toEqual(7)
+    });
+    it('The strike bonus points of two strikes in a row goes in the pointsBonus array', function() {
+      throw_records_bonus_increaseTurnAndFrame(10);
+      throw_records_bonus_increaseTurnAndFrame(10);
+      throw_records_bonus_increaseTurnAndFrame(3);
+      bowling.throw(2);
+      bowling.recordInFrame(2);
+      bowling.reducePins(2);
+      bowling.spareBonus();
+      bowling.strikeBonus();
+      expect(bowling.pointsBonus.reduce((a, b) => a + b)).toEqual(18)
+    });
+  });
+  describe('Gutter game', function () {
+    it("Generate a gutter game, where the player doesn't make any points", function() {
+      for (i = 0; i < 20; i++) {
+        throw_records_bonus_increaseTurnAndFrame(0);
+      }
+      bowling._isGutter();
+      expect(bowling.points.reduce((a, b) => a + b)).toEqual(20)
+    });
+  });
+  describe('Game with one spare', function () {
+    it("Generate a spare game, where the player makes 1 spare and check if the final points are correct", function() {
+      for (i = 0; i < 14; i++) {
+        throw_records_bonus_increaseTurnAndFrame(2);
+      }
+      throw_records_bonus_increaseTurnAndFrame(5);
+      throw_records_bonus_increaseTurnAndFrame(5);
+      throw_records_bonus_increaseTurnAndFrame(8);
+      for (i = 0; i < 3; i++) {
+        throw_records_bonus_increaseTurnAndFrame(0);
+      }
+      bowling._isGutter();
+      expect(bowling.wholeGameScore()).toEqual(54)
+    });
+  });
 });
-
-
-//fix a PRECISE order of increase turn and icnrease frame. is it necessary have first and second strike? an array?

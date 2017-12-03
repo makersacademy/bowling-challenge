@@ -4,14 +4,14 @@
 ### Approach
 
 First of all I made a diagram to understand how the function had to communicate, what 'methods' they should have.
-Then following the TDD i started to create the first launch method which generate a score and then started making
-an interface using html and JQuery.
+Then following the TDD i started to create the necessary functions.
+--
+In the second week following the TDD i've implemented the strike roll and removed some unnecessary variable (like the turn system) and update the interface to let it work at least with the spare rules.
 
 ## How to use it
 
 Clone the repo
-Go in the Jquery file, and in the line 7 and 12 you can choose how much u want the score will be for each throw.
-(we where not supposed to make it random)
+Go in the main folder with your terminal
 Then run the index.html file placed in the views folder.
 Enjoy!
 
@@ -24,10 +24,12 @@ Enjoy!
 -Gutter game
 -One frame
 -Multiple frames
--Spares
+-Spares Bonus
+-Strike Bonus
+-Implemented an Interface which doesn't have yet the strike bonus implemented.
 
+### To improve if I would've had more time
 
-### To improve
-
--Insert strike bonus
--Create a final frame
+-Improve the legibility of the Spare and Strike functions
+-Add strike rules in the interface
+-Create final frame

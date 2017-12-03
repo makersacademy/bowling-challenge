@@ -1,0 +1,15 @@
+#temperature {
+  text-transform: capitalize;
+}
+
+h1 {
+  font-family: Arial;
+  font-size: 50px;
+  text-transform: capitalize;
+}
+
+button {
+  height: 50px;
+  width: 50px;
+  color: red;
+}

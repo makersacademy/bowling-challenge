@@ -143,10 +143,11 @@
 
 .submit_button {
     font-family: 'Droid Serif', serif;
-    background-color: FloralWhite;
+    background-color: #CCCCB2;
     float: right;
     margin-top: 20px;
     margin-right: 20px;
+    border-color: black;
 }
 
 .break {

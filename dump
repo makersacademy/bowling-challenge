@@ -16,3 +16,23 @@ ScoreCard.prototype.addPoints = function(points){
       this.frame.count +=1
   }
   }
+
+
+  ScoreCard.prototype.addPoints = function(points){
+      if(this.frame.count == 0){
+      this.addPointsRegular(points, 0)
+      if(this.frame.bonusMode == 1){
+      this.addPointsSpare(points)
+      }
+      if(this.frame.bonusMode == 2){
+      this.addPointsStrike()
+      }
+      } else {
+      this.addPointsRegular(points, 1)
+      if(this.frame.bonusMode == 2){
+
+      this.addPointsStrike()
+      }
+      }
+      this.frame.count +=1
+    }

@@ -1,0 +1,35 @@
+body {
+  background-color: black;
+}
+
+
+th {
+  font-weight: normal;
+  border: 1px solid white;
+  color: #efcb7c;
+}
+
+td {
+  width: 130px;
+  border: 1px solid white;
+  color: #efcb7c;
+  padding: 5px;
+}
+
+table {
+  font-family: 'VT323', monospace;
+  font-size: 30px;
+  margin: auto;
+  text-align: center;
+  border: 1px solid white;
+  color: #efcb7c;
+}
+
+form {
+  margin: auto;
+  text-align: center;
+}
+
+.second-roll {
+  color: #e25a2d;
+}

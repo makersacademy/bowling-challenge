@@ -119,7 +119,7 @@ $(document).ready(function(){
 
     function activateSpiritBowler() {
         createImage(getSpiritFace(game.total));
-        $("#bio").textWithBreaks(getSpiritBio(game.total));
+        $("#bio").textWithFormatting(getSpiritBio(game.total));
     }
 
     function createImage(source) {
@@ -128,13 +128,14 @@ $(document).ready(function(){
             src: source,
             class: 'spirit_face',
             alt: 'Looks',
-            align: 'center'
+            align: 'right'
         });
         img.appendTo($('#face'));
     }
 
-    $.fn.textWithBreaks = function(text){
+    $.fn.textWithFormatting = function(text){
         this.text(text);
+        this.html(this.html().replace(/\n[^:]+/g,'<span style="text-decoration: underline">$&</span>'));
         this.html(this.html().replace(/\n/g,'<br/>'));
         return this;
     }

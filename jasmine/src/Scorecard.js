@@ -19,10 +19,6 @@ Scorecard.prototype = {
     this._frameTracker++;
   },
 
-  _nextRoll: function() {
-    this._rollTracker++;
-  },
-
   updateStrikeScores: function() {
     if (this.frames.length >= 1) {
       var lastFrame = this.frames[(this._frameTracker - 1)]
@@ -40,6 +36,14 @@ Scorecard.prototype = {
         twoFramesAgo.awardBonusPoint(this.currentFrame.rollTally[0].pinfall)
       }
     }
+  },
 
+  updateSpareScores: function() {
+    if (this.frames.length >= 1) {
+      var lastFrame = this.frames[(this._frameTracker - 1)]
+      if (lastFrame.isSpare()) {
+        lastFrame.awardBonusPoint(this.currentFrame.rollTally[0].pinfall)
+      }
+    }
   }
 }

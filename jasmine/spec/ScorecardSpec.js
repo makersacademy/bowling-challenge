@@ -60,13 +60,6 @@ describe('Scorecard', function() {
     })
   })
 
-  describe('_nextRoll', function() {
-    it('increases the _rollTracker by 1', function() {
-      scorecard._nextRoll();
-      expect(scorecard._rollTracker).toEqual(1);
-    })
-  })
-
   describe('#updateStrikeScores', function() {
     describe('it looks back to the previous frame', function() {
       it('if it was a strike, it adds the last two roles to the total score', function() {
@@ -114,6 +107,35 @@ describe('Scorecard', function() {
         scorecard.updateStrikeScores();
         var firstFrame = scorecard.frames[0]
         expect(firstFrame.getScore()).toEqual(25);
+      })
+    })
+
+    describe('#updateSpareScores', function() {
+      it('checks last frame and awards the first roll of the current frame as a bonus if true', function() {
+        // Frame 1:
+        var roll1 = new Roll;
+        roll1.pinfall = 8;
+        scorecard.currentFrame.addToFrame(roll1);
+        var roll2 = new Roll;
+        roll2.pinfall = 2;
+        scorecard.currentFrame.addToFrame(roll2);
+        scorecard.updateSpareScores()
+        scorecard.updateStrikeScores()
+        scorecard.addFrameToCard(scorecard.currentFrame)
+        scorecard.startNewFrame()
+
+        // Frame 2:
+        var roll3 = new Roll;
+        roll3.pinfall = 5;
+        scorecard.currentFrame.addToFrame(roll3)
+        var roll4 = new Roll;
+        roll4.pinfall = 3;
+        scorecard.currentFrame.addToFrame(roll4)
+
+        scorecard.updateSpareScores()
+        scorecard.updateStrikeScores()
+        var firstFrame = scorecard.frames[0]
+        expect(firstFrame.getScore()).toEqual(15)
       })
     })
   })

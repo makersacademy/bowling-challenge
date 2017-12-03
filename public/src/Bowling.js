@@ -43,7 +43,7 @@ Bowling.prototype.increaseTurn = function () { //now turn increase by 2 if strik
 Bowling.prototype.increaseActualFrame = function () {  //now actualframe increase by 1 if strike also if is your first roll
   if (this.turn % 2 === 0) {
     this.actualFrame += 1
-  } else if (this._isStrike()) {
+  } else if (this._isStrike() && this.turn % 2 != 0) {
     this.actualFrame += 1
   }
 };
@@ -71,12 +71,18 @@ Bowling.prototype.spareBonus = function () {
 Bowling.prototype.strikeBonus = function () {
   if ( this._wasStrike1() && this.turn % 2 === 0 ) {
     this.frames[this.actualFrame - 1].firstStrike += this.frames[this.actualFrame].firstStrike + this.frames[this.actualFrame].secondStrike
+  } else  if (this.turn % 2 != 0 && this._wasStrike1() && this._wasStrike2()){
+    this.frames[this.actualFrame - 2].firstStrike += (this.frames[this.actualFrame - 1].firstStrike) + (this.frames[this.actualFrame].firstStrike)
   }
 };
 
 Bowling.prototype._wasSpare = function () {
   return this.frames[this.actualFrame - 1].pins === 0 && this.frames[this.actualFrame - 1].firstStrike != 10
 };
+//
+// Bowling.prototype.are2StrikeInRow = function () {
+//
+// };
 
 Bowling.prototype._isStrike = function () {
   return this.frames[this.actualFrame].pins === 0 && this.frames[this.actualFrame].firstStrike === 10
@@ -84,6 +90,10 @@ Bowling.prototype._isStrike = function () {
 
 Bowling.prototype._wasStrike1 = function () {
  return this.frames[this.actualFrame - 1].pins === 0 && this.frames[this.actualFrame - 1].firstStrike === 10
+};
+
+Bowling.prototype._wasStrike2 = function () {
+ return this.frames[this.actualFrame - 2].pins === 0 && this.frames[this.actualFrame - 2].firstStrike === 10
 };
 
 // if (this.frames[this.actualFrame - 1].pins === 0 && this.frames[this.actualFrame - 1].firstStrike === 10 && this.turn % 2 === 0 ) {
@@ -96,7 +106,7 @@ Bowling.prototype._wasStrike1 = function () {
 // The bonus for a spare should be showed in the previous frame.
 // add a written when the user does spare!
 // add a button to decide the score to do in the interface.
-
+// change name of the variables in the frames from first/second strike to first second roll. English wrong
 
 // Bowling.prototype.spareBonus = function () {
 //   if (this.turn % 2 != 0) {

@@ -108,6 +108,8 @@ describe('Bowling', function ()  {
       bowling.reducePins(10)
       bowling.increaseTurn();
       bowling.increaseActualFrame();
+
+
       expect(bowling.turn).toEqual(3)
       expect(bowling.actualFrame).toEqual(2)
     });
@@ -124,6 +126,8 @@ describe('Bowling', function ()  {
       bowling.reducePins(5)
       bowling.increaseActualFrame();
       bowling.increaseTurn();
+
+
       bowling.throw(5);
       bowling.recordInFrame(5);
       bowling.reducePins(5);
@@ -131,4 +135,32 @@ describe('Bowling', function ()  {
       expect(bowling.frames[bowling.actualFrame - 1].firstStrike).toEqual(20)
     });
   });
+  describe('#StrikeBonus', function () {
+    xit("IF you do strike, strike, 3 - 2. The first strike should get a bonus score of 13 and the second one of 5", function() {
+      // bowling.throw(10);
+      // bowling.recordInFrame(10);
+      // bowling.reducePins(10)
+      // bowling.increaseTurn();
+      // bowling.increaseActualFrame();
+      throw_records_bonus_increaseTurnAndFrame(10);
+      throw_records_bonus_increaseTurnAndFrame(10);
+      bowling.throw(3);
+      bowling.recordInFrame(3);
+      bowling.reducePins(3);
+      bowling.strikeBonus();
+
+      bowling.increaseActualFrame();
+      bowling.increaseTurn();
+
+      bowling.throw(2);
+      bowling.recordInFrame(2);
+      bowling.reducePins(2);
+      bowling.strikeBonus();
+      expect(bowling.frames[bowling.actualFrame - 2].firstStrike).toEqual(23)
+      expect(bowling.frames[bowling.actualFrame - 1].firstStrike).toEqual(15)
+    });
+  });
 });
+
+
+//fix a PRECISE order of increase turn and icnrease frame. is it necessary have first and second strike? an array?

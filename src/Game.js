@@ -33,7 +33,10 @@ Game.prototype.addPins = function(pins){
     if (this.scores[this.currentFrame - 1][0] + pins > 10 && this.currentFrame < 10) {
       throw "You can't knock down over 10 pins"
     } else {
-      this._addScoresAndChangeTurn(pins)
+      this.scores[this.currentFrame - 1].push(pins)
+      this._addStrikeBonus(pins)
+      this._addSpareBonus(pins)
+      this._setCurrentTurn(pins)
     }
   }
 }
@@ -41,7 +44,6 @@ Game.prototype.addPins = function(pins){
 // MOVE TO NEXT FRAME
 
 Game.prototype.moveToNextFrame = function(){
-  this.currentTurn = 1
   this.currentFrame += 1
 }
 
@@ -49,8 +51,15 @@ Game.prototype._setCurrentTurn = function(pins){
   if (this.getCurrentTurn() === 1 && pins < 10) {
     this.currentTurn = 2
   } else if (this.getCurrentFrame() === 10) {
-    game._setFrameTenTurns()
+    if (this.currentTurn === 1){
+      this.currentTurn = 2
+    }else if (this.currentTurn === 2) {
+      this.currentTurn = 3
+    }else if (this.currentTurn === 3) {
+      this.currentTurn = 4
+    }
   } else {
+    this.currentTurn = 1
     this.moveToNextFrame()
   }
 }
@@ -96,21 +105,4 @@ Game.prototype._addStrikeBonus = function(pins){
       this.scores[this.currentFrame - 3].push(pins)
     }
   }
-}
-
-Game.prototype._setFrameTenTurns = function(){
-  if (this.currentTurn === 1){
-    this.currentTurn = 2
-  }else if (this.currentTurn === 2) {
-    this.currentTurn = 3
-  }else if (this.currentTurn === 3) {
-    this.currentTurn = 4
-  }
-}
-
-Game.prototype._addScoresAndChangeTurn = function(pins){
-  this.scores[this.currentFrame - 1].push(pins)
-  this._addStrikeBonus(pins)
-  this._addSpareBonus(pins)
-  this._setCurrentTurn(pins)
 }

@@ -3,7 +3,7 @@ describe("Scorecard", function() {
   var scorecard;
 
   beforeEach (function(){
-    scorecard = new BowlingScorecard;
+    scorecard = new BowlingScorecard();
   });
 
   it('user can roll all ones', function(){
@@ -46,7 +46,7 @@ describe("Scorecard", function() {
     }
     scorecard.roll(2);
     scorecard.roll(3);
-    for (var i = 0; i < 14; i++) {
+    for (i = 0; i < 14; i++) {
       scorecard.roll(0);
     }
     expect(scorecard.total).toEqual(42);
@@ -58,7 +58,7 @@ describe("Scorecard", function() {
     }
     scorecard.roll(2);
     scorecard.roll(3);
-    for (var i = 0; i < 12; i++) {
+    for (i = 0; i < 12; i++) {
       scorecard.roll(0);
     }
     expect(scorecard.total).toEqual(72);

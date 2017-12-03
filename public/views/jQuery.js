@@ -93,11 +93,9 @@ $(document).ready(function() {
         return null
       }
     }
-    // even
     if (outputCounter % 2 == 0) {
       if (numberChecker + number > 10) {
         if (outputCounter == 20) {
-          // last Strike
           $("#" + outputCounter).text(number);
         } else {
           outputCounter -= 1;
@@ -106,12 +104,10 @@ $(document).ready(function() {
         $("#" + outputCounter).text(number);
         if (outputCounter == 20) {
           if (numberChecker != 10) {
-            // Last Spare
             numberChecker += number;
           }
         }
       }
-    // odd
     } else {
       $("#" + outputCounter).text(number);
       numberChecker = number
@@ -131,7 +127,6 @@ function isGameOver(outputCounter) {
 }
 
 function printTotal() {
-  // console.log(scorecard.printTotal[0])
   $('#total1').text(scorecard.printTotal[0]);
   $('#total2').text(scorecard.printTotal[1]);
   $('#total3').text(scorecard.printTotal[2]);

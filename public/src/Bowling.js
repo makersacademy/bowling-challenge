@@ -1,8 +1,8 @@
 function BowlingScorecard() {
-  this.ZERO = 0
+  this.ZERO = 0;
   this.total = this.ZERO;
-  this.firstRoll;
-  this.secondRoll;
+  this.firstRoll = null;
+  this.secondRoll = null;
   this.rollNumber = this.ZERO;
   this.frameNumber = this.ZERO;
   this.rolls = [];
@@ -10,14 +10,13 @@ function BowlingScorecard() {
   this.hasSpareBeenRolled = false;
   this.hasStrikeBeenRolled = false;
   this.bonusRole = false;
-  this.printTotal = [0,0,0,0,0,0,0,0,0,0]
+  this.printTotal = [0,0,0,0,0,0,0,0,0,0];
   this.printTrigger = this.ZERO;
-};
+}
 
 BowlingScorecard.prototype.roll = function(pins) {
-  console.log('----------------------')
-  this.rollNumber += 1
-  this.rolls.push(pins)
+  this.rollNumber += 1;
+  this.rolls.push(pins);
   this.frame(pins);
 };
 
@@ -42,11 +41,10 @@ BowlingScorecard.prototype.calculateFrame = function(roll) {
   }
   if ((this.firstRoll + this.secondRoll) > 10 ) {
     this.second = null;
-    console.log('Over 10, choose anouther option')
   } else {
     if (this.firstRoll != null && this.secondRoll != null) {
-      var frameTotal = (this.firstRoll + this.secondRoll)
-      var frameNumber = this.frameNumber
+      var frameTotal = (this.firstRoll + this.secondRoll);
+      var frameNumber = this.frameNumber;
       if (this.frameNumber < 11) {
         this.total += (frameTotal);
         this.printTotal[frameNumber - 1] += (frameTotal);
@@ -55,16 +53,16 @@ BowlingScorecard.prototype.calculateFrame = function(roll) {
       this.firstRoll = null;
       this.secondRoll = null;
     }
-    this.calculateStrikeBonus(roll)
-    this.hasStrikeBeenRolled = false
+    this.calculateStrikeBonus(roll);
+    this.hasStrikeBeenRolled = false;
   }
-}
+};
 
 BowlingScorecard.prototype.isSpare = function(frameTotal) {
   if (frameTotal == 10 && this.hasStrikeBeenRolled == false) {
     this.hasSpareBeenRolled = true;
   }
-}
+};
 
 BowlingScorecard.prototype.addSpareBonus = function(roll) {
   if (this.hasSpareBeenRolled == true) {
@@ -72,30 +70,30 @@ BowlingScorecard.prototype.addSpareBonus = function(roll) {
     this.printTotal[this.frameNumber - 2] += (roll);
     this.hasSpareBeenRolled = false;
   }
-}
+};
 
 BowlingScorecard.prototype.isStrike = function(roll) {
   if (roll == 10) {
     this.strikes.push(this.rollNumber);
     this.hasStrikeBeenRolled = true;
   }
-}
+};
 
 BowlingScorecard.prototype.calculateStrikeBonus = function(roll) {
-  var currentRollNumber = this.rollNumber
-  var bonuses = 0
-  var strikeBonusOne = 0
-  var strikeBonusTwo = 0
-  var currentFrame = this.frameNumber
+  var currentRollNumber = this.rollNumber;
+  var bonuses = 0;
+  var strikeBonusOne = 0;
+  var strikeBonusTwo = 0;
+  var currentFrame = this.frameNumber;
   this.strikes.forEach(function(strikeRoll) {
     if ((strikeRoll + 1) == currentRollNumber) {
-      bonuses += roll
-      strikeBonusOne += roll
+      bonuses += roll;
+      strikeBonusOne += roll;
     }
     if (currentFrame < 12) {
       if ((strikeRoll + 2) == currentRollNumber) {
-        bonuses += roll
-        strikeBonusTwo += roll
+        bonuses += roll;
+        strikeBonusTwo += roll;
       }
     }
   });
@@ -112,9 +110,9 @@ BowlingScorecard.prototype.calculateStrikeBonus = function(roll) {
       this.printTrigger += 1;
     }
   }
-  this.total += bonuses
-}
+  this.total += bonuses;
+};
 
 BowlingScorecard.prototype.printTotal = function() {
-  return this.printTotal
-}
+  return this.printTotal;
+};

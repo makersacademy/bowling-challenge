@@ -112,18 +112,26 @@
 }
 
 .spirit_photo {
-    width: 350px;
-    height: 200px;
+    width: 450px;
+    height: 300px;
     margin-left: 40px;
     margin-right: 25px;
     float: left;
 }
 
 .spirit_bio {
-    width: 350px;
-    height: 200px;
-    margin-left: 550px;
+    width: 550px;
+    height: 300px;
+    margin-left: 450px;
+    vertical-align: center;
 }
+
+.spirit_face {
+    max-width: 100%;
+    max-height: 100%;
+    border: 0;
+}
+
 
 .error {
     font-family: 'Droid Serif', serif;
@@ -144,13 +152,8 @@
     margin-right: 20px;
 }
 
-.spirit_face {
-    width: 100%;
-    border: 0;
-}
-
 .break {
-    margin: 50px;
+    margin: 40px;
 }
 
 select {

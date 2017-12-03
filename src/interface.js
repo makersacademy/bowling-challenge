@@ -108,25 +108,25 @@ $(document).ready(function(){
     }
 
     function activateSpiritBowler() {
-        // $("#spirit").text(getSpiritName(game.total))
-        $("#spirit").text("Oscar Manzana");
-        // $("#spirit_face").attr("src", getSpiritFace(game.total))
-        createImage('images/0.jpg');
-        // $("#spirit_face").attr("src", "/spirit_bowlers/pictures/0.jpg")
-        // $("spirit_bio").text(getSpiritBio(game.total))
-        $("#bio").text('\nAge: 1\n\nFavourite word: fruchtzubereitung\n\nLikes: User Stories\n\nFavourite Quote: "In the struggle between yourself and the world, hold the world\'s coat."');
+        createImage(getSpiritFace(game.total));
+        $("#bio").textWithBreaks(getSpiritBio(game.total));
     }
 
     function createImage(source) {
-        // var img = $('<img id="fface" class="spirit_face">');
-        // img.attr('src', "images/0.jpg");
-        // img.appendTo("#face");
         var img = $('<img />', { 
             id: 'looks',
             src: source,
             class: 'spirit_face',
-            alt: 'Looks'
+            alt: 'Looks',
+            align: 'center'
         });
         img.appendTo($('#face'));
     }
+
+    $.fn.textWithBreaks = function(text){
+        this.text(text);
+        this.html(this.html().replace(/\n/g,'<br/>'));
+        return this;
+    }
+
 });

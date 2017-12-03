@@ -4,7 +4,8 @@ Bowling Challenge
 
 ## The Task
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+Count and sum the scores of a bowling game for one player (in JavaScript). I categorised all of this into user stories to help me understand
+what was needed for the code.
 
 ```
 As an individual's score board,
@@ -39,13 +40,19 @@ As an individual's score board,
 I would like to give a bonus round if the person scores a strike on the last turn
 
 As an individual's score board,
-I would like print out a message "Good Game" with the total score. 
+I would like print out a message "Good Game" with the total score.
 
 ```
 
 ### Approach
 
+I mapped it out at first and thought I knew how to do it. It took me a while to figure out whether to do it in an array of arrays, or an array of hashes. I did it in an array of hashes to keep track of the frame, round and score.
 
+My aim was to get the logic down which I was half successful at. I suffered most on the addition of the bonus points for the Strike and Spare. Although, my code only has half a strike function down, I knew how to code a spare but did not know how to add the bonus points.
+
+I am continuing this challenge and will finish this code eventually and give you a code worthy of a review. #keen.
+
+~Dania
 
 ## Bowling — how does it work?
 

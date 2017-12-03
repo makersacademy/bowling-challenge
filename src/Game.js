@@ -3,13 +3,14 @@ function Game() {
   this.frame = 0
   this.currentround = 0
   this.currentpoints = 0
+  this.strikebonus = 0
   this.change = 0
   this.game = {}
 };
 
 Game.prototype.addFrame = function(){
   this.frame += 1
-  this.currentround = 1
+  this.currentround = 0
   this.rounds.push({frame: this.frame, round: this.currentround, score: this.currentpoints})
 };
 
@@ -36,7 +37,7 @@ Game.prototype.checkRounds = function(){
 };
 
 Game.prototype.addRounds = function(){
-  if(this.currentGame().score > 0){
+  if(this.currentGame().score >= 0){
       this.currentGame().round += 1
     }
   else{
@@ -45,10 +46,10 @@ Game.prototype.addRounds = function(){
 };
 
 Game.prototype.strike = function(){
-  if(this.currentpoints === 10){
-      this.addRounds()
+  if(this.currentGame().score === 10){
+      this.currentGame().round = 2
       this.addFrame()
-      this.currentGame().score += 10 
+      this.currentGame().score += 10
     }
   else{
       return false

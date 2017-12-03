@@ -15,6 +15,13 @@ Otherwise to install please follow these steps:
 4. enter: 'open public/views/index.html'.
 5. If you wish to view the tests please enter: 'open public/SpecRunner.html'.
 
+### Functionality
+- To enter a score, click the corresponding button and the score will be input into the score box.
+  - When a strike has been entered the second roll's scoring box will automatically be skipped.
+- Totals will be updated automatically.
+- Strikes and Spares will calculate automatically.
+  - This includes the additional bonus rolls at the end of the game if a spare or strike/s have been scored.
+- To reset the game please refresh the page.
 
 ## The Task
 

@@ -82,6 +82,11 @@ describe('Game', function(){
       perfectGame()
       expect( function(){ game.addPins(4) }).toThrow("The game is over")
     });
+
+    it('throws an error when the game is over (normal game)', function(){
+      normalGame()
+      expect( function(){ game.addPins(4) }).toThrow("The game is over")
+    });
   });
 
   describe('#getCurrentTurn', function(){

@@ -13,6 +13,7 @@ td {
   width: 130px;
   border: 1px solid white;
   color: #efcb7c;
+  padding: 5px;
 }
 
 table {
@@ -27,4 +28,8 @@ table {
 form {
   margin: auto;
   text-align: center;
+}
+
+.second-roll {
+  color: #e25a2d;
 }

@@ -18,8 +18,8 @@ $(document).ready(function(){
     });
 
     $(document.body).on('change', 'select', function() {
-        if (roll === 20) {
-            updateLastSelectors(rollScore(roll));
+        if (roll > 19) {
+            updateLastSelectors();
         } else {
             updateRollSelectors(rollScore(roll));
         }
@@ -52,12 +52,22 @@ $(document).ready(function(){
         }
     }
 
-    function updateLastSelectors(value) {
+    function updateLastSelectors() {
         $("#" + roll).attr('disabled', true);
+        if (roll === 21) {
+            enableScore();
+            return;
+        }
         if ((rollScore(roll) + rollScore(roll - 1)) >= 10) {
             roll++;
             createSelector(roll, 10);
+        } else {
+            enableScore();
         }
+    }
+
+    function enableScore() {
+        $("#submit_score").prop("disabled", false);
     }
 
     function getScoresArray() {

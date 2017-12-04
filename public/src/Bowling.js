@@ -33,7 +33,7 @@ Bowling.prototype.reducePins = function(n) {
 };
 
 Bowling.prototype.increaseActualFrame = function () {
-  if (this.frames[this.actualFrame].framePoints.length === 2) {
+  if (this._numberOfRollsActualFrame() === 2) {
     this.actualFrame += 1
   } else if (this._isStrike()) {
     this.actualFrame += 1
@@ -44,15 +44,8 @@ Bowling.prototype._isGutter = function() {
   if (bowling.points.reduce((a, b) => a + b) === 0 && bowling.points.length === 21) this.points.push(20);
 };
 
-Bowling.prototype.resetPoint_Lscore_turn = function() {
-  this.points = [0]
-  this.lastScore = 0
-  this.turn = 1
-  this.actualFrame = 1
-};
-
 Bowling.prototype.spareBonus = function () {
-  if (this.frames[this.actualFrame].framePoints.length === 1) {
+  if (this._numberOfRollsActualFrame() === 1) {
     if (this._wasSpare()) {
       this.frames[this.actualFrame - 1].framePoints[1] += this.lastScore
       this.pointsBonus.push(this.lastScore)
@@ -61,14 +54,22 @@ Bowling.prototype.spareBonus = function () {
 };
 
 Bowling.prototype.strikeBonus = function () {
-  if ( this._wasStrike1() && this.frames[this.actualFrame].framePoints.length === 2) {
+  if ( this._wasStrike1() && this._numberOfRollsActualFrame() === 2) {
     this.frames[this.actualFrame - 1].framePoints[0] += this.frames[this.actualFrame].framePoints[0] + this.frames[this.actualFrame].framePoints[1]
     this.pointsBonus.push(this.frames[this.actualFrame].framePoints[0] + this.frames[this.actualFrame].framePoints[1])
   }
-  if ( this.frames[this.actualFrame].framePoints.length === 1 && this._wasStrike1() && this._wasStrike2() ) {
+  if ( this._numberOfRollsActualFrame() === 1 && this._wasStrike1() && this._wasStrike2() ) {
     this.frames[this.actualFrame - 2].framePoints[0] += (this.frames[this.actualFrame - 1].framePoints[0]) + (this.frames[this.actualFrame].framePoints[0])
     this.pointsBonus.push((this.frames[this.actualFrame - 1].framePoints[0]) + (this.frames[this.actualFrame].framePoints[0]))
   }
+};
+
+Bowling.prototype.wholeGameScore = function () {
+  return bowling.points.reduce((a, b) => a + b) + bowling.pointsBonus.reduce((a, b) => a + b)
+};
+
+Bowling.prototype._numberOfRollsActualFrame = function () {
+ return this.frames[this.actualFrame].framePoints.length
 };
 
 Bowling.prototype._wasStrike1 = function () {
@@ -85,8 +86,4 @@ Bowling.prototype._wasSpare = function () {
 
 Bowling.prototype._isStrike = function () {
   return this.frames[this.actualFrame].pins === 0 && this.frames[this.actualFrame].framePoints[0] === 10
-};
-
-Bowling.prototype.wholeGameScore = function () {
-  return bowling.points.reduce((a, b) => a + b) + bowling.pointsBonus.reduce((a, b) => a + b)
 };

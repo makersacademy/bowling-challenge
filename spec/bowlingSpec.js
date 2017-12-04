@@ -55,17 +55,6 @@ describe('Bowling', function ()  {
       expect(bowling.frames[bowling.actualFrame].pins).toEqual(5)
     });
   });
-  describe('#resetPoint_Lscore_turn', function () {
-    it("points , lastScore and turn variable are reseted", function() {
-      bowling.points = 10
-      bowling.lastScore = 10
-      bowling.turn = 10
-      bowling.resetPoint_Lscore_turn();
-      expect(bowling.points).toEqual([0])
-      expect(bowling.lastScore).toEqual(0)
-      expect(bowling.turn).toEqual(1)
-    });
-  });
   describe('#spareBonus', function () {
     it("if in the previous frame you did spare, the first score of the next frame is doubled ", function() {
       bowling.throw(5);

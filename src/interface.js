@@ -45,6 +45,14 @@ $(document).ready(function(){
         selector.attr('disabled', true);
     }
 
+    function lastRollSelector() {
+        let selector = $("#21");
+        selector.append(new Option("--", "--"));
+        selector.position({my: "center"});
+        selector.val("--");
+        selector.attr('disabled', true);
+    }
+
     function updateRollSelectors(value) {
         $("#" + roll).attr('disabled', true);
         roll++;
@@ -73,6 +81,7 @@ $(document).ready(function(){
             roll++;
             createSelector(roll, 10);
         } else {
+            lastRollSelector();
             enableScore();
         }
     }

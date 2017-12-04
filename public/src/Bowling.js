@@ -82,25 +82,15 @@ BowlingScorecard.prototype.calculateStrikeBonus = function(roll) {
   var bonuses = 0;
   var currentFrame = this.frameNumber;
   this.strikes.forEach(function(strikeRoll) {
-    console.log('strikeRoll + 1');
-    console.log(strikeRoll + 1);
-    console.log(currentRollNumber);
     if ((strikeRoll + 1) == currentRollNumber) {
-      console.log('IN + 1');
       bonuses += roll;
     }
     if (currentFrame < 12) {
-      console.log('strikeRoll + 2');
-      console.log(strikeRoll + 2);
-      console.log(currentRollNumber);
       if ((strikeRoll + 2) == currentRollNumber) {
-        console.log('IN + 2');
         bonuses += roll;
       }
     }
   });
-  console.log('ADDING Bonus!');
-  console.log(this.printTotal);
   this.total += bonuses;
   this.printTotal[this.frameNumber - 2] += (bonuses);
 };

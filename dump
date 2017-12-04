@@ -17,7 +17,13 @@ ScoreCard.prototype.addPoints = function(points){
   }
   }
 
-
+  }
+  else if (this.frame.bonusMode == 2){
+    this.addBonusPoints(points, points)
+    }
+    else {
+    }
+}
   ScoreCard.prototype.addPoints = function(points){
       if(this.frame.count == 0){
       this.addPointsRegular(points, 0)

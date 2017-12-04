@@ -103,29 +103,32 @@ describe("final frame", function(){
 describe("perfect score", function(){
   it("returns 300 points for a perfect game", function(){
     scorecard.recordRoll(10)
-    console.log(scorecard.total)
+    console.log(scorecard.bonusFrame)
     scorecard.recordRoll(10)
-    console.log(scorecard.total)
+    console.log(scorecard.bonusFrame)
     scorecard.recordRoll(10)
-    console.log(scorecard.total)
+    console.log(scorecard.bonusFrame)
     scorecard.recordRoll(10)
-    console.log(scorecard.total)
+    console.log(scorecard.bonusFrame)
     scorecard.recordRoll(10)
-    console.log(scorecard.total)
+    console.log(scorecard.bonusFrame)
     scorecard.recordRoll(10)
-    console.log(scorecard.total)
+    console.log(scorecard.bonusFrame)
     scorecard.recordRoll(10)
-    console.log(scorecard.total)
+    console.log(scorecard.bonusFrame)
     scorecard.recordRoll(10)
-    console.log(scorecard.total)
+    console.log(scorecard.bonusFrame)
     scorecard.recordRoll(10)
-    console.log(scorecard.total)
+    console.log(scorecard.bonusFrame)
     scorecard.recordRoll(10)
-    console.log(scorecard.total)
+    console.log(scorecard.bonusFrame)
     scorecard.recordRoll(10)
+    console.log(scorecard.bonusFrame)
     console.log(scorecard.total)
+    console.log(scorecard.frame.points)
     scorecard.recordRoll(10)
-    console.log(scorecard.total)
+    console.log(scorecard.bonusFrame)
+
     expect(scorecard.total).toEqual(300)
   });
 });
@@ -142,6 +145,24 @@ describe("half perfect", function(){
     scorecard.recordRoll(0)
     scorecard.recordRoll(0)
     expect(scorecard.total).toEqual(190)
+  });
+});
+
+describe("almost perfect", function(){
+  it("returns 290 points for game", function(){
+    scorecard.recordRoll(10)
+    scorecard.recordRoll(10)
+    scorecard.recordRoll(10)
+    scorecard.recordRoll(10)
+    scorecard.recordRoll(10)
+    scorecard.recordRoll(10)
+    scorecard.recordRoll(10)
+    scorecard.recordRoll(10)
+    scorecard.recordRoll(10)
+    scorecard.recordRoll(1)
+    scorecard.recordRoll(9)
+    scorecard.recordRoll(10)
+    expect(scorecard.total).toEqual(290)
   });
 });
 

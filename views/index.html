@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bowling Game</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="../public/src/jQuery.js"></script>
+    <script src="../public/src/bowling.js"></script>
+    <script src="../public/src/frame.js"></script>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+    <style>
+      table  {
+          border-collapse:collapse
+      }
+      td, th {
+          border:1px solid #ddd;
+          padding:8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='header'>
+      <h1>Bowling Game</h1>
+    </div>
+
+    <img id='bowlingPicture' src="https://image.ibb.co/b9pZf6/Bowling_Start.png" alt="">
+    <h2 id='finalScore'></h2>
+
+    <select id="scoreChoosen">
+     <option value="0">0</option>
+     <option value="1">1</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5</option>
+     <option value="6">6</option>
+     <option value="7">7</option>
+     <option value="8">8</option>
+     <option value="9">9</option>
+     <option value="10">10</option>
+   </select>
+
+    <br><br>
+
+    <input type="submit" value="Throw" id='throwBall'>
+
+
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>Score</td>
+      </tr>
+      <tr>
+        <td><p>Marco</p> </td> <td><p id='fr11'></p> <p id='fr12'></p> </td> <td><p id='fr21'> </p> <p id='fr22'></p> </td>
+        <td><p id= 'fr31'></p> <p id='fr32'></p></td> <td><p id='fr41'></p> <p id='fr42'></p> </td>
+         <td> <p id='fr51'></p> <p id='fr52'></p> </td> <td> <p id='fr61'></p> <p id='fr62'></p> </td> <td><p id='fr71'></p> <p id='fr72'></p> </td>
+        <td> <p id='fr81'></p> <p id='fr82'></p> </td> <td><p id='fr91'></p><p id='fr92'></p> </td> <td> <p id='fr101'></p> <p id='fr102'></p> </td>
+        <td id='score'></td>
+      </tr>
+    </table>
+
+  </body>
+</html>

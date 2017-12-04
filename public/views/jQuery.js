@@ -12,77 +12,77 @@ $(document).ready(function() {
       printButton(0);
       printTotal();
     }
-  })
+  });
   $("#button1").on('click', function() {
     if (isGameOver(outputCounter) == false) {
       $("#button1").html(scorecard.roll(1));
       printButton(1);
       printTotal();
     }
-  })
+  });
   $("#button2").on('click', function() {
     if (isGameOver(outputCounter) == false) {
       $("#button2").html(scorecard.roll(2));
       printButton(2);
       printTotal();
     }
-  })
+  });
   $("#button3").on('click', function() {
     if (isGameOver(outputCounter) == false) {
       $("#button3").html(scorecard.roll(3));
       printButton(3);
       printTotal();
     }
-  })
+  });
   $("#button4").on('click', function() {
     if (isGameOver(outputCounter) == false) {
       $("#button4").html(scorecard.roll(4));
       printButton(4);
       printTotal();
     }
-  })
+  });
   $("#button5").on('click', function() {
     if (isGameOver(outputCounter) == false) {
       $("#button5").html(scorecard.roll(5));
       printButton(5);
       printTotal();
     }
-  })
+  });
   $("#button6").on('click', function() {
     if (isGameOver(outputCounter) == false) {
       $("#button6").html(scorecard.roll(6));
       printButton(6);
       printTotal();
     }
-  })
+  });
   $("#button7").on('click', function() {
     if (isGameOver(outputCounter) == false) {
       $("#button7").html(scorecard.roll(7));
       printButton(7);
       printTotal();
     }
-  })
+  });
   $("#button8").on('click', function() {
     if (isGameOver(outputCounter) == false) {
       $("#button8").html(scorecard.roll(8));
       printButton(8);
       printTotal();
     }
-  })
+  });
   $("#button9").on('click', function() {
     if (isGameOver(outputCounter) == false) {
       $("#button9").html(scorecard.roll(9));
       printButton(9);
       printTotal();
     }
-  })
+  });
   $("#button10").on('click', function() {
     if (isGameOver(outputCounter) == false) {
       $("#button10").html(scorecard.roll(10));
       printButton(10);
       printTotal();
     }
-  })
+  });
 
   function printButton(number) {
     outputCounter += 1;
@@ -90,7 +90,7 @@ $(document).ready(function() {
       if (numberChecker == 10) {
         $("#" + outputCounter).text(number);
       } else {
-        return null
+        return null;
       }
     }
     if (outputCounter % 2 == 0) {
@@ -110,19 +110,19 @@ $(document).ready(function() {
       }
     } else {
       $("#" + outputCounter).text(number);
-      numberChecker = number
+      numberChecker = number;
       if (number == 10 && outputCounter != 19) {
-        outputCounter += 1
+        outputCounter += 1;
       }
     }
-  };
+  }
 });
 
 function isGameOver(outputCounter) {
   if (outputCounter > 21) {
-    return true
+    return true;
   } else {
-    return false
+    return false;
   }
 }
 

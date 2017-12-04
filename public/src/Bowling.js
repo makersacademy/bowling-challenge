@@ -9,9 +9,7 @@ function BowlingScorecard() {
   this.strikes = [];
   this.hasSpareBeenRolled = false;
   this.hasStrikeBeenRolled = false;
-  this.bonusRole = false;
   this.printTotal = [0,0,0,0,0,0,0,0,0,0];
-  this.printTrigger = this.ZERO;
 }
 
 BowlingScorecard.prototype.roll = function(pins) {
@@ -82,35 +80,29 @@ BowlingScorecard.prototype.isStrike = function(roll) {
 BowlingScorecard.prototype.calculateStrikeBonus = function(roll) {
   var currentRollNumber = this.rollNumber;
   var bonuses = 0;
-  var strikeBonusOne = 0;
-  var strikeBonusTwo = 0;
   var currentFrame = this.frameNumber;
   this.strikes.forEach(function(strikeRoll) {
+    console.log('strikeRoll + 1');
+    console.log(strikeRoll + 1);
+    console.log(currentRollNumber);
     if ((strikeRoll + 1) == currentRollNumber) {
+      console.log('IN + 1');
       bonuses += roll;
-      strikeBonusOne += roll;
     }
     if (currentFrame < 12) {
+      console.log('strikeRoll + 2');
+      console.log(strikeRoll + 2);
+      console.log(currentRollNumber);
       if ((strikeRoll + 2) == currentRollNumber) {
+        console.log('IN + 2');
         bonuses += roll;
-        strikeBonusTwo += roll;
       }
     }
   });
-  if (currentFrame == 11 && this.printTrigger == 1) {
-    this.printTotal[9] += (roll);
-    this.printTrigger += 1;
-  } else if (currentFrame == 12 && this.printTrigger == 1) {
-    this.printTotal[9] += (roll);
-    this.printTrigger += 1;
-  } else {
-    this.printTotal[this.frameNumber - 2] += (strikeBonusOne);
-    this.printTotal[this.frameNumber - 3] += (strikeBonusTwo);
-    if (currentFrame == 11) {
-      this.printTrigger += 1;
-    }
-  }
+  console.log('ADDING Bonus!');
+  console.log(this.printTotal);
   this.total += bonuses;
+  this.printTotal[this.frameNumber - 2] += (bonuses);
 };
 
 BowlingScorecard.prototype.printTotal = function() {

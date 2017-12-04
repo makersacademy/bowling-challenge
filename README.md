@@ -1,77 +1,16 @@
 
 Bowling Challenge
 =================
+Business logic implementation only - the business logic is written so that the interface will only do 2 things 1 take in a points score from user input (based on eg a button click)
+2 return the points for roll, frame and total after each roll
 
+As such - all functionality is triggered by recordRoll. There are three 'objects' - the scorecard, the frame, and the roll. The scorecard holds one frame in play at any one time, that itself is initialised with two rolls.
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+Each frame is initialised with a bonusMode based on the the result of the previous frame. This bonus mode controls how (or if) bonuses are scored for this frame. This is the case for all frames, expect for bonuses on frame 10 (which are recorded as points on an 11th frame) where the program is passed to a special addBonus10 function that ensures that if there is a strike bonus on the last frame it does not add 10 extra points
 
-## The Task
+What Would I Improve?
+Given more time I would implement an interface (I did originally have one, but I took the whole business logic back to the drawing board so it no longer works)
+The addBonus method is refactored from two different bonus methods (which improved the code) but is now quite long - if I had more time I might write each of the if tests as a little function that is called on that line, for readability and cleanliness.
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
-
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-Also, don't generate random rolls. Trust us on this one.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
-
-### Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+What Am I Pleased With?
+I wanted to experiment with the ways that javascript allows you to control everything through functions. Originally my frames had two, numbered rolls each that each had a points add method. By putting the rolls in an array, I was able to refactor to one method to add points to a roll, that finds the roll based on its index in the array passed in as an argument. 

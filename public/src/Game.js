@@ -23,11 +23,12 @@ Game.prototype.playRound2 = function(pins){
   this.currentframe.push(pins);
   this.roll += pins
   this._addscore();
+  this.maxRounds();
   this.endround();
   this._StrikeBonus();
   this._spare();
-  this.count += 1;
-  this.roll = 0
+  this.roll = 0;
+  this.endGame();
 };
 
 Game.prototype.endround = function(){
@@ -37,7 +38,7 @@ Game.prototype.endround = function(){
 
 Game.prototype._showtotalscore = function(){
   return this.totalscore;
-}
+};
 
 Game.prototype._addscore = function(){
   this._iteration(this.currentframe)
@@ -60,9 +61,9 @@ Game.prototype._spare = function(){
   };
 };
 
-Game.prototype.showcount = function(){
+Game.prototype._showcount = function(){
   return this.count;
-}
+};
 
 Game.prototype._StrikeBonus = function(){
     if(this._frames[(this._frames.length) - 3].length === 1){
@@ -75,7 +76,7 @@ Game.prototype._iteration = function(array){
   for (var i = 0; i < array.length; i++ ){
     this.totalscore += array[i];
   };
-}
+};
 
 Game.prototype.addScoreLastArray = function(){
   this.sum = 0
@@ -84,3 +85,15 @@ Game.prototype.addScoreLastArray = function(){
   };
   return this.sum
 };
+
+Game.prototype.maxRounds = function(){
+  if (this.count == 10 && this.currentframe[0] !== 10){
+    this.count += 0
+  } else {
+    this.count += 1
+  }
+};
+
+Game.prototype.endGame = function(){
+  return this.count == 9 && this.currentframe[0] !== 10 || this.count === 11
+}

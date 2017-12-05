@@ -6,8 +6,14 @@ $(document).ready(function() {
   }
 
   function updateCount() {
-    $("#count").html('Round: ' + game.showcount());
+    $('#count1').html('Round: ' + game._showcount());
   }
+
+  function endgame(){
+    if(game.endGame() === true){
+      $('#end').html('The game has ended!')
+    };
+  };
 
 
   $('#submitpins').click(function(){
@@ -18,6 +24,7 @@ $(document).ready(function() {
     if(pins === 10){
       $('#pins').val('');
     }
+    endgame()
   });
 
   $('#submitpins2').click(function(){
@@ -29,9 +36,8 @@ $(document).ready(function() {
     $('#pins2').val('');
   });
 
-
-
 updateCount()
 updateTotalScore()
+endgame()
 
 });

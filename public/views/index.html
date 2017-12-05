@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bowling Scorecard</title>
+  <style>
+    #buttons {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 70%;
+    }
+    .scoreButton {
+      background-color: #b5d1ff;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    #scorecard {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    #scorecard td, #scorecard th {
+      border: 1px solid #DDD;
+      padding: 8px;
+      height: 20px;
+    }
+
+    .scoreBox {
+      border: 1px solid #ddd;
+      background-color: #f2f2f2;
+    }
+
+    .fillerBox {
+      border: 0px;
+    }
+
+    .titleRow {
+      background-color: #0061ff;
+      color: #FFF;
+    }
+
+    #scorecard th {
+      border: 1px solid #ddd;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <br>
+
+  <table id=scorecard border=1 height=50% width=50%>
+    <tr class=titleRow >
+      <td colspan=3 align=center> 1 </td><td colspan=3 align=center> 2 </td>
+      <td colspan=3 align=center> 3 </td><td colspan=3 align=center> 4 </td>
+      <td colspan=3 align=center> 5 </td><td colspan=3 align=center> 6 </td>
+      <td colspan=3 align=center> 7 </td><td colspan=3 align=center> 8 </td>
+      <td colspan=3 align=center> 9 </td><td colspan=3 align=center> 10 </td>
+      <td colspan=3 align=center> Total </td>
+    </tr>
+    <tr>
+      <td class=fillerBox align=center></td>
+      <td class=scoreBox align=center><span id=1></span></td>
+      <td class=scoreBox align=center><span id=2></span></td>
+      <td class=fillerBox align=center></td>
+      <td class=scoreBox align=center><span id=3></span></td>
+      <td class=scoreBox align=center><span id=4></span></td>
+      <td class=fillerBox align=center></td>
+      <td class=scoreBox align=center><span id=5></span></td>
+      <td class=scoreBox align=center><span id=6></span></td>
+      <td class=fillerBox align=center></td>
+      <td class=scoreBox align=center><span id=7></span></td>
+      <td class=scoreBox align=center><span id=8></span></td>
+      <td class=fillerBox align=center></td>
+      <td class=scoreBox align=center><span id=9></span></td>
+      <td class=scoreBox align=center><span id=10></span></td>
+      <td class=fillerBox align=center></td>
+      <td class=scoreBox align=center><span id=11></span></td>
+      <td class=scoreBox align=center><span id=12></span></td>
+      <td class=fillerBox align=center></td>
+      <td class=scoreBox align=center><span id=13></span></td>
+      <td class=scoreBox align=center><span id=14></span></td>
+      <td class=fillerBox align=center></td>
+      <td class=scoreBox align=center><span id=15></span></td>
+      <td class=scoreBox align=center><span id=16></span></td>
+      <td class=fillerBox align=center></td>
+      <td class=scoreBox align=center><span id=17></span></td>
+      <td class=scoreBox align=center><span id=18></span></td>
+      <td class=scoreBox align=center><span id=19></span></td>
+      <td class=scoreBox align=center><span id=20></span></td>
+      <td class=scoreBox align=center><span id=21></span></td>
+      <td colspan=3 class=fillerBox align=center></td>
+    </tr>
+
+    <tr>
+      <td colspan=3 align=center><span id=total1></span></td>
+      <td colspan=3 align=center><span id=total2></span></td>
+      <td colspan=3 align=center><span id=total3></span></td>
+      <td colspan=3 align=center><span id=total4></span></td>
+      <td colspan=3 align=center><span id=total5></span></td>
+      <td colspan=3 align=center><span id=total6></span></td>
+      <td colspan=3 align=center><span id=total7></span></td>
+      <td colspan=3 align=center><span id=total8></span></td>
+      <td colspan=3 align=center><span id=total9></span></td>
+      <td colspan=3 align=center><span id=total10></span></td>
+      <td colspan=3 align=center><span id=totalTotal></span></td>
+    </tr>
+
+  </table>
+
+  <br>
+
+  <table id=buttons align='center' height=50% width=50%>
+    <tr>
+      <td align=center><button class=scoreButton id='button0'>0</button></td>
+      <td align=center><button class=scoreButton id='button1'>1</button></td>
+      <td align=center><button class=scoreButton id='button2'>2</button></td>
+      <td align=center><button class=scoreButton id='button3'>3</button></td>
+      <td align=center><button class=scoreButton id='button4'>4</button></td>
+      <td align=center><button class=scoreButton id='button5'>5</button></td>
+      <td align=center><button class=scoreButton id='button6'>6</button></td>
+      <td align=center><button class=scoreButton id='button7'>7</button></td>
+      <td align=center><button class=scoreButton id='button8'>8</button></td>
+      <td align=center><button class=scoreButton id='button9'>9</button></td>
+      <td align=center><button class=scoreButton id='button10'>Strike</button></td>
+    </tr>
+  </table>
+
+  <script src='../src/Bowling.js' ></script>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="jQuery.js"></script>
+
+</body>
+</html>

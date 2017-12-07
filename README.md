@@ -1,3 +1,13 @@
+Running in the console:
+
+- game = new Game
+- game.updateRolls([3,0,10,10,7,3,5,3,10,8,0,6,0,3,7,10,10,10]);
+- game.score();
+- expect(game.score()).toEqual(155);
+
+
+![](images/console1.png)
+![](images/console2.png)
 
 Bowling Challenge
 =================

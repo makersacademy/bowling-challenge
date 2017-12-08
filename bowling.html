@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Bowling Contraption</title>
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="lib/bowling/style.css">
+  <script type="text/javascript" src="jquery-3.2.1.js"></script>
+  <script src="src/game.js"></script>
+  <script src="src/validator.js"></script>
+  <script src="src/frameBuilder.js"></script>
+  <script src="src/frame.js"></script>
+  <script src="src/helpers.js"></script>
+  <script src="src/interface.js"></script>
+  <script src="src/spiritBowlers.js"></script>
+  <h1>Bowling Contraption</h1>
+</head>
+
+<body class="main">
+
+  <section class="message">
+    Input your scores:
+  </section>
+
+  <form id="scores_submission">
+    <section class="score" id="input">
+      <div class="frame_box">
+        <div class="frame_header">Frame 1:</div>
+        <select class="roll_1" id="1"></select>
+        <select class="roll_2" id="2"></select>
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 2:</div>
+        <select class="roll_1" type="text" id="3"></select>
+        <select class="roll_2" type="text" id="4"></select>
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 3:</div>
+        <select class="roll_1" type="text" id="5"></select>
+        <select class="roll_2" type="text" id="6"></select>
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 4:</div>
+        <select class="roll_1" type="text" id="7"></select>
+        <select class="roll_2" type="text" id="8"></select>
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 5:</div>
+        <select class="roll_1" type="text" id="9"></select>
+        <select class="roll_2" type="text" id="10"></select>
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 6:</div>
+        <select class="roll_1" type="text" id="11"></select>
+        <select class="roll_2" type="text" id="12"></select>
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 7:</div>
+        <select class="roll_1" type="text" id="13"></select>
+        <select class="roll_2" type="text" id="14"></select>
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 8:</div>
+        <select class="roll_1" type="text" id="15"></select>
+        <select class="roll_2" type="text" id="16"></select>
+      </div>
+      <div class="frame_box">
+        <div class="frame_header">Frame 9:</div>
+        <select class="roll_1" type="text" id="17"></select>
+        <select class="roll_2" type="text" id="18"></select>
+      </div>
+      <div class="frame_box" style="width: 135px;">
+        <div class="frame_header">Frame 10:</div>
+        <select class="roll_1" type="text" id="19"></select>
+        <select class="roll_2" type="text" id="20"></select>
+        <select class="roll_3" type="text" id="21"></select>
+      </div>
+    </section>
+    <section>
+      <div class="error" id="error_message"></div>
+      <div class="button">
+        <button id="submit_score" type="submit" class="submit_button" disabled>Score</button>
+      </div>
+      <div class="button">
+        <button id="reset" type="submit" class="submit_button">Reset</button>
+      </div>
+    </section>
+  </form>
+
+  <section class="break">
+  </section>
+
+  <section class="hidden_result" id="output">
+    <div class="frame_box">
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f1"></div>
+    </div>
+    <div class="frame_box">
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f2"></div>
+    </div>
+    <div class="frame_box">
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f3"></div>
+    </div>
+    <div class="frame_box">
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f4"></div>
+    </div>
+    <div class="frame_box">
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f5"></div>
+    </div>
+    <div class="frame_box">
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f6""></div>
+    </div>
+    <div class="frame_box">
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f7"></div>
+    </div>
+    <div class="frame_box">
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f8"></div>
+    </div>
+    <div class="frame_box">
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f9"></div>
+    </div>
+    <div class="frame_box">
+      <div class="frame_header">Score:</div>
+      <div class="frame_score" id="f10"></div>
+    </div>
+  </section>
+
+  <section class="hidden_results_message" id="output_messages">
+    <p>
+      Total Score: <span id="total"></span>
+    </p>
+    <p>
+      Your Spirit Bowler:
+    </p>
+  </section>
+
+  <section id="spirit_bowler" class="hidden_spirit_bowler">
+    <div class="spirit_photo" id="face"></div>
+    <div class="spirit_bio" id="bio"></div>
+  </section>
+
+</body>
+</html>

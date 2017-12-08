@@ -1,0 +1,52 @@
+.rolls ul li{
+  list-style-type: none;
+  display: inline-block;
+  background: #999;
+  margin: 0;
+  padding: 3px 10px;
+  border-radius: 10px 10px 0 0;
+  color: #fff;
+  font-weight: 200;
+  cursor: pointer;
+}
+
+.rolls ul li:hover {
+  color: #fff;
+  background: #666;
+}
+
+.rolls{
+  position: absolute;
+  top:20%;
+  left:30%;
+
+}
+
+#scorecard{
+  position: absolute;
+  top:30%;
+
+
+}
+table.scorecard {margin: 0
+  auto; width:80%;
+  font-size:12px;
+  border:1px solid;
+   text-align: center;
+   table-layout: fixed;
+ margin-bottom: 40px;}
+
+   table.scorecard th, tr, td {
+     border:1px solid;
+     padding: 0;
+      vertical-align: middle;
+       font-family: Arial,Helvetica, sans-serif;
+        text-align: center;}
+
+   table.scorecard th {border-bottom:1px solid;
+      background-color:#7f8c8d;
+       height:30px;
+        color: #fff}
+
+        table.scorecard td {height:30px;
+           background: rgba(255, 255, 255, 0.5);}

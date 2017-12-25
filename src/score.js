@@ -7,6 +7,7 @@ Score.prototype.getFrames = function(){
 }
 
 Score.prototype.addFrame = function(frame){
+  if(this.getFrames().length === 9){ frame.setFinalFrame() }
   this.frames.push(frame);
 }
 
@@ -31,13 +32,19 @@ Score.prototype.getSpareBonus = function(i){
   return frames[i+1].getRoll(1);
 }
 
+Score.getFinalFrameScore = function(){
+  var finalFrame = this.getFrames()[this.getFrames().length - 1]
+
+}
+
 Score.prototype.getScore = function(){
   var total = 0;
   var frames = this.getFrames();
-  for(var i = 0; i < frames.length; i++){
+  for(var i = 0; i < frames.length-1; i++){
     if(frames[i].isStrike()) {  }
     if(frames[i].isSpare()){  }
     total += frames[i].total();
   }
+  // total += this.getFinalFrameScore();
   return total;
 }

@@ -42,4 +42,13 @@ describe("Frame", function(){
     frame.setRoll(2,3);
     expect(frame.total()).toEqual(8);
   });
+
+  it("Is not a final frame by default", function(){
+    expect(frame.isFinalFrame()).toBe(false);
+  });
+
+  it("Is a final frame", function(){
+    frame.setFinalFrame();
+    expect(frame.isFinalFrame()).toBe(true);
+  });
 })

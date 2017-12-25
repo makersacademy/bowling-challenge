@@ -26,6 +26,15 @@ describe("Score", function(){
       isSpare: function(){return false},
       getRoll: function(){return 10},
     };
+    finalNonStrikeFrame = {roll1: 4,
+      roll2: 3,
+      total: function(){return 7},
+      isStrike: function(){return false},
+      isSpare: function(){return false},
+      getRoll: function(){return 4},
+      setFinalFrame: function(){},
+      isFinalFrame: function(){true},
+    };
   });
 
   it("Is initialized with no recorded frames", function(){
@@ -33,7 +42,8 @@ describe("Score", function(){
   })
 
   it("Calculates total when all frames are not strikes or spares", function(){
-    for(var i = 0; i < 10; i++){ score.addFrame(nonSpareFrame); };
+    for(var i = 0; i < 9; i++){ score.addFrame(nonSpareFrame); };
+    score.addFrame(finalNonStrikeFrame);
     expect(score.getScore()).toEqual(70);
   })
 

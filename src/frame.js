@@ -1,4 +1,6 @@
-function Frame(){}
+function Frame(){
+  this.finalFrame = false;
+}
 
 Frame.prototype.setRoll = function(roll, score){
   this["roll"+roll.toString()] = score;
@@ -18,4 +20,12 @@ Frame.prototype.isStrike = function(){
 
 Frame.prototype.total = function(){
   return this.getRoll(1) + this.getRoll(2);
+}
+
+Frame.prototype.setFinalFrame = function(){
+  this.finalFrame = true;
+}
+
+Frame.prototype.isFinalFrame = function(){
+  return this.finalFrame;
 }

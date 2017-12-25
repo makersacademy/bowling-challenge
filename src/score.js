@@ -10,10 +10,29 @@ Score.prototype.addFrame = function(frame){
   this.frames.push(frame);
 }
 
+Score.prototype.getStrikeBonus = function(frame){
+  var frames = this.getFrames()
+  var total = 0
+  if(frames[i+1].isStrike()){
+    total += 10
+    if(frames[i+2].isStrike()) {
+      total += 10
+    } else {
+      total += frames[i+2].getRoll(1)
+    }
+  } else {
+    total += frames[i+1].total()
+  }
+  return total
+}
+
 Score.prototype.getScore = function(){
   var total = 0;
-  this.getFrames().forEach(function(frame){
-    total += frame.total();
-  })
+  var frames = this.getFrames();
+  for(var i = 0; i < frames.length; i++){
+    if(frames[i].isStrike()) {  }
+    if(frames[i].isSpare()){  }
+    total += frames[i].total();
+  }
   return total;
 }

@@ -1,10 +1,19 @@
 describe("Score", function(){
   var score;
   var nonSpareFrame;
+  var spareFrame;
+  var strikeFrame;
 
   beforeEach(function(){
     score = new Score();
-    nonSpareFrame = {roll1: 4, roll2: 3, total: function(){return 7}};
+    nonSpareFrame = {roll1: 4,
+      roll2: 3,
+      total: function(){return 7},
+      isStrike: function(){return false},
+      isSpare: function(){return false},
+    };
+    spareFrame = {roll1: 5, roll2: 5, total: function(){return 10}};
+    strikeFrame = {roll1: 10, total: function(){return 10}};
   });
 
   it("Is initialized with no recorded frames", function(){

@@ -1,15 +1,14 @@
 function Frame(){
   this.pins = 10;
-  this.rolls = []
+  this.roll = []
 };
 
 Frame.prototype.appendNumberPinsDown = function(pinsDown) {
-  this.rolls.push(pinsDown);
-
+  this.roll.push(pinsDown);
 };
 
 Frame.prototype.addTotalFramePoints = function(){
-  var total = this.rolls.reduce(function (acc, curr) {
+  var total = this.roll.reduce(function (acc, curr) {
     return acc + curr;
   }, 0);
   return total

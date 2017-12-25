@@ -1,5 +1,5 @@
 describe("Frame", function() {
-  var game;
+  var frame;
 
   beforeEach(function(){
     frame = new Frame();

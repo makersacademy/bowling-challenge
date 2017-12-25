@@ -5,9 +5,12 @@ function Frame(){
 
 Frame.prototype.appendNumberPinsDown = function(pinsDown) {
   this.rolls.push(pinsDown);
-  console.log(this.rolls)
+
 };
 
 Frame.prototype.addTotalFramePoints = function(){
-  return 5
+  var total = this.rolls.reduce(function (acc, curr) {
+    return acc + curr;
+  }, 0);
+  return total
 };

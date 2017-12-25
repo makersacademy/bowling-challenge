@@ -13,11 +13,18 @@ describe("Score", function(){
       isSpare: function(){return false},
       getRoll: function(i){return 4},
     };
-    spareFrame = {roll1: 5, roll2: 5, total: function(){return 10}};
+    spareFrame = {roll1: 5,
+      roll2: 5,
+      total: function(){return 10},
+      isStrike: function(){return false},
+      isSpare: function(){return true},
+      getRoll: function(i){return 5},
+    };
     strikeFrame = {roll1: 10,
       total: function(){return 10},
       isStrike: function(){return true},
       isSpare: function(){return false},
+      getRoll: function(){return 10},
     };
   });
 
@@ -45,5 +52,17 @@ describe("Score", function(){
     score.addFrame(strikeFrame);
     score.addFrame(nonSpareFrame)
     expect(score.getStrikeBonus(0)).toEqual(7);
+  });
+
+  it("Calculates spare bonus as 10 when a spare then strike", function(){
+    score.addFrame(spareFrame);
+    score.addFrame(strikeFrame);
+    expect(score.getSpareBonus(0)).toEqual(10);
+  });
+
+  it("Calculates spare bonus as 5 when a spare then another 5-5 spare", function(){
+    score.addFrame(spareFrame);
+    score.addFrame(spareFrame);
+    expect(score.getSpareBonus(0)).toEqual(5);
   });
 })

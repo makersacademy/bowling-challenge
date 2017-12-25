@@ -11,19 +11,24 @@ Score.prototype.addFrame = function(frame){
 }
 
 Score.prototype.getStrikeBonus = function(i){
-  var frames = this.getFrames()
-  var total = 0
+  var frames = this.getFrames();
+  var total = 0;
   if(frames[i+1].isStrike()){
-    total += 10
+    total += 10;
     if(frames[i+2].isStrike()) {
-      total += 10
+      total += 10;
     } else {
       total += frames[i+2].getRoll(1)
-    }
+    };
   } else {
-    total += frames[i+1].total()
+    total += frames[i+1].total();
   }
-  return total
+  return total;
+}
+
+Score.prototype.getSpareBonus = function(i){
+  var frames = this.getFrames();
+  return frames[i+1].getRoll(1);
 }
 
 Score.prototype.getScore = function(){

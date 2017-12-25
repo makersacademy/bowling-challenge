@@ -8,8 +8,9 @@ Frame.prototype.appendNumberPinsDown = function(pinsDown) {
 };
 
 Frame.prototype.addTotalFramePoints = function(){
-  var total = this.roll.reduce(function (acc, curr) {
-    return acc + curr;
-  }, 0);
-  return total
+  var total = 0;
+  for(var i = 0; i < this.roll.length; i++) {
+    total += this.roll[i];
+  }
+  return total;
 };

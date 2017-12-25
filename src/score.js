@@ -32,20 +32,13 @@ Score.prototype.getSpareBonus = function(i){
   return frames[i+1].getRoll(1);
 }
 
-Score.prototype.getFinalFrameScore = function(){
-  var finalFrame = this.getFrames()[this.getFrames().length - 1]
-  if(!finalFrame.isStrike()){ return finalFrame.total(); }
-
-}
-
 Score.prototype.getScore = function(){
   var total = 0;
   var frames = this.getFrames();
-  for(var i = 0; i < frames.length-1; i++){
+  for(var i = 0; i < frames.length; i++){
     if(frames[i].isStrike()) {  }
     if(frames[i].isSpare()){  }
     total += frames[i].total();
   }
-  total += this.getFinalFrameScore();
   return total;
 }

@@ -15,3 +15,7 @@ Frame.prototype.isSpare = function(){
 Frame.prototype.isStrike = function(){
   return this.getRoll(1) === 10
 }
+
+Frame.prototype.total = function(){
+  return this.getRoll(1) + this.getRoll(2);
+}

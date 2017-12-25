@@ -13,7 +13,11 @@ describe("Score", function(){
       isSpare: function(){return false},
     };
     spareFrame = {roll1: 5, roll2: 5, total: function(){return 10}};
-    strikeFrame = {roll1: 10, total: function(){return 10}};
+    strikeFrame = {roll1: 10,
+      total: function(){return 10},
+      isStrike: function(){return true},
+      isSpare: function(){return false},
+    };
   });
 
   it("Is initialized with no recorded frames", function(){
@@ -23,5 +27,10 @@ describe("Score", function(){
   it("Calculates total when all frames are not strikes or spares", function(){
     for(var i = 0; i < 10; i++){ score.addFrame(nonSpareFrame); };
     expect(score.getScore()).toEqual(70);
+  })
+
+  it("Calculates strikebonus when a given frame is a strike", function(){
+    for(var i = 0; i < 3; i++){ score.addFrame(strikeFrame); };
+    expect(score.getStrikeBonus(0)).toEqual(20);
   })
 })

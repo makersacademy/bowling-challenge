@@ -10,7 +10,7 @@ Score.prototype.addFrame = function(frame){
   this.frames.push(frame);
 }
 
-Score.prototype.getStrikeBonus = function(frame){
+Score.prototype.getStrikeBonus = function(i){
   var frames = this.getFrames()
   var total = 0
   if(frames[i+1].isStrike()){

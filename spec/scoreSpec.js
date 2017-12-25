@@ -45,7 +45,7 @@ describe("Score", function(){
     for(var i = 0; i < 9; i++){ score.addFrame(nonSpareFrame); };
     score.addFrame(finalNonStrikeFrame);
     expect(score.getScore()).toEqual(70);
-  })
+  });
 
   it("Calculates strikebonus as 20 when 3 strikes in a row", function(){
     for(var i = 0; i < 3; i++){ score.addFrame(strikeFrame); };

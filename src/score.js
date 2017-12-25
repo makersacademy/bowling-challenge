@@ -32,8 +32,9 @@ Score.prototype.getSpareBonus = function(i){
   return frames[i+1].getRoll(1);
 }
 
-Score.getFinalFrameScore = function(){
+Score.prototype.getFinalFrameScore = function(){
   var finalFrame = this.getFrames()[this.getFrames().length - 1]
+  if(!finalFrame.isStrike()){ return finalFrame.total(); }
 
 }
 
@@ -45,6 +46,6 @@ Score.prototype.getScore = function(){
     if(frames[i].isSpare()){  }
     total += frames[i].total();
   }
-  // total += this.getFinalFrameScore();
+  total += this.getFinalFrameScore();
   return total;
 }

@@ -12,6 +12,7 @@ describe("Score", function(){
       isStrike: function(){return false},
       isSpare: function(){return false},
       getRoll: function(i){return 4},
+      setFinalFrame: function(){},
     };
     spareFrame = {roll1: 5,
       roll2: 5,
@@ -74,5 +75,12 @@ describe("Score", function(){
     score.addFrame(spareFrame);
     score.addFrame(spareFrame);
     expect(score.getSpareBonus(0)).toEqual(5);
+  });
+
+  it("Calculates final game score as 201", function(){
+    for(var i = 0; i < 5; i++){ score.addFrame(strikeFrame); };
+    for(var j = 0; j < 4; j++){ score.addFrame(spareFrame); };
+    score.addFrame(finalNonStrikeFrame);
+    expect(score.getScore()).toEqual(201);
   });
 })

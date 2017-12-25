@@ -51,4 +51,18 @@ describe("Frame", function(){
     frame.setFinalFrame();
     expect(frame.isFinalFrame()).toBe(true);
   });
+
+  it("Returns 30 when final frame and triple strike", function(){
+    frame.setFinalFrame();
+    for(var i = 1; i < 4; i++){ frame.setRoll(i, 10); };
+    expect(frame.total()).toEqual(30);
+  });
+
+  it("Returns 14 when final frame and spare + 4", function(){
+    frame.setFinalFrame();
+    frame.setRoll(1,5);
+    frame.setRoll(2,5);
+    frame.setRoll(3,4);
+    expect(frame.total()).toEqual(14);
+  });
 })

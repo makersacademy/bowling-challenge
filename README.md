@@ -27,16 +27,6 @@ As a player,
 If I get a spare on the 10th frame,
 I expect to receive an extra roll.
 ```
-```
-As a player,
-If I have a final score of 300 points (12 strikes),
-I expect to be recognized for having bowled a Perfect Game.
-```
-```
-As a player,
-If I have a final score of 0 points,
-I expect to be recognized for having bowled a Gutter Game.
-```
 
 ## Getting started
 

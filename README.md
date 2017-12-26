@@ -1,32 +1,16 @@
 # bowling-challenge
 
-## User Stories
+## Specification
 
-```
-As a player,
-If I knock down pins in a frame,
-I expect to receive a point for each pin knocked down.
-```
-```
-As a player,
-If I knock down 10 pins on the first roll (strike),
-I expect to receive points from my next two rolls as a bonus.
-```
-```
-As a player,
-If I knock down less than 10 pins on the first roll and remaining pins on the second roll,
-I expect to receive points from my next roll as a bonus.
-```
-```
-As a player,
-If I get a strike on the 10th frame,
-I expect to receive two extra rolls.
-```
-```
-As a player,
-If I get a spare on the 10th frame,
-I expect to receive an extra roll.
-```
+* A player's score at the start of the game is 0.
+* There are 10 pins in each frame.
+* A player receives one point for each pin knocked down in a frame.
+* A player has a strike if all 10 pins are knocked down on the first roll.
+* If a player has a strike, they receive points from their next two rolls as a bonus.
+* A player has a spare if they knocked down less than 10 pins on the first roll and remaining pins on the second roll.
+* If a player has a spare, they receive points from the next roll as a bonus.
+* If a player has a strike on the 10th frame, they receive two extra rolls.
+* If a player has a spare on the 10th frame, they receive one extra roll.
 
 ## Getting started
 

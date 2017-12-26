@@ -35,10 +35,13 @@ Score.prototype.getSpareBonus = function(i){
 Score.prototype.getScore = function(){
   var total = 0;
   var frames = this.getFrames();
-  for(var i = 0; i < frames.length; i++){
-    if(frames[i].isStrike() && !frames[i].finalFrame) { total += this.getStrikeBonus(i); }
-    if(frames[i].isSpare() && !frames[i].finalFrame){ total += this.getSpareBonus(i); }
-    total += frames[i].total();
-  }
+  try{
+    for(var i = 0; i < frames.length; i++){
+      if(frames[i].isStrike() && !frames[i].finalFrame) { total += this.getStrikeBonus(i); }
+      if(frames[i].isSpare() && !frames[i].finalFrame){ total += this.getSpareBonus(i); }
+      console.log(total)
+      total += frames[i].total();
+    }
+  } catch(TypeError){ }
   return total;
 }

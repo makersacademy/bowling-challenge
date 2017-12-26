@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bowling calc</title>
+
+  <script src="src/frame.js"></script>
+  <script src="src/score.js"></script>
+  <script src="src/game.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script>
+    var game = new Game();
+    $(document).ready(function(){
+      function appendFrame(roll1, roll2, roll3){
+        var html = '<li>Roll1: ' + roll1 + '  Roll2: ' + roll2;
+        if(roll3){html += '  Roll3: ' + roll3};
+        html += '</li>';
+        $('#frameList ol').append(html);
+      };
+
+      function updateTotal(){
+        var score = game.score.getScore().toString();
+        $('#totalScore').text(score)
+      };
+
+      function resetFrameList(){
+        $('#frameList ol').empty();
+      };
+
+      $('#frameScore').submit(function(){
+        event.preventDefault();
+        var roll1 = parseInt($("#roll1Score").val());
+        var roll2 = parseInt($("#roll2Score").val());
+        var roll3 = parseInt($("#roll3Score").val());
+        game.recordFrame(roll1, roll2, roll3);
+        appendFrame(roll1, roll2, roll3);
+        updateTotal();
+      });
+
+      $('#resetGame').submit(function(){
+        event.preventDefault();
+        game.reset();
+        resetFrameList();
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <form id="frameScore">
+    Roll1:
+    <select id="roll1Score">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    Roll2:
+    <select id="roll2Score">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    Roll3:
+    <select id="roll3Score">
+      <option value=""></option>
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <input type="submit" value="Add frame">
+  </form>
+
+  <form id="resetGame">
+    <input type="submit" value="Reset Game">
+  </form>
+
+  <h3>Score: <span id="totalScore"></span></h3>
+
+  <div id="frameList">
+    <ol>
+    </ol>
+  </div>
+</body>
+</html>

@@ -2,7 +2,7 @@
 
 describe("Game", function() {
 
-  var game
+  var game = new Game();
 
   beforeEach(function() {
     game = new Game();
@@ -11,7 +11,15 @@ describe("Game", function() {
   it("should initialise with a score of zero", function() {
     expect(game.score).toEqual(0);
   })
-  // describe("next frame", function() {
-  //
-  // })
+  it("should add the score from the frame once it's complete", function() {
+    game.bowl(3)
+    game.bowl(4)
+    expect(game.score).toEqual(7)
+  })
+  it('should start a new frame on the third roll (no strike)', function() {
+    game.bowl(2)
+    game.bowl(6)
+    game.bowl(2)
+    expect(game.frameNumber).toEqual(2)
+  })
 })

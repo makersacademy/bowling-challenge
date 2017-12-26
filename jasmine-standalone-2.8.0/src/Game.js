@@ -2,4 +2,16 @@
 
 function Game() {
   this.score = 0;
+  this.frames = [];
+  this.frameNumber = 1;
+  this.currentFrame = new Frame()
+};
+
+Game.prototype.bowl = function(num) {
+  if (this.currentFrame.isFrameOver == true) {
+    this.currentFrame = new Frame();
+    this.frameNumber += 1;
+  }
+  this.currentFrame.bowl(num);
+  this.score += num;
 };

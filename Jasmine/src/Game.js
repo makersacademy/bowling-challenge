@@ -1,5 +1,7 @@
 // calculates score of all entire game
+const MINIMUM_SCORE = 0;
+
 function Game(){
-  this.score = 0;
+  this.score = MINIMUM_SCORE;
   this.frames = [];
 };

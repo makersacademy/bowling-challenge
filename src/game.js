@@ -2,16 +2,13 @@ function Game(){
   this.score = new Score();
 }
 
-Game.prototype.recordFrame = function(roll1, roll2, roll3, last=false){
+Game.prototype.recordFrame = function(roll1, roll2, roll3){
   if(this.isOver()){ throw "Game finished" }
   frame = new Frame();
-  if(last){
-    frame.setFinalFrame();
-    frame.setRoll(1, roll1);
-    frame.setRoll(2, roll2);
-    frame.setRoll(3, roll3);
-  };
-  else { frame.setRoll(1, roll1); frame.setRoll(2, roll2); }
+  if(this.score.getFrames().length === 9){ frame.setFinalFrame(); }
+  frame.setRoll(1, roll1);
+  frame.setRoll(2, roll2);
+  if(roll3){ frame.setRoll(3, roll3); };
   this.score.addFrame(frame);
 }
 

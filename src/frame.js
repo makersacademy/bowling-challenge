@@ -20,9 +20,9 @@ Frame.prototype.isStrike = function(){
 
 Frame.prototype.total = function(){
   if(this.isFinalFrame() && (this.isSpare() || this.isStrike())){
-    return this.getRoll(1) + this.getRoll(2) + this.getRoll(3);
+    return ((this.getRoll(1) || 0) + (this.getRoll(2) || 0) + (this.getRoll(3) || 0));
   };
-  return this.getRoll(1) + this.getRoll(2);
+  return ((this.getRoll(1) || 0) + (this.getRoll(2) || 0));
 }
 
 Frame.prototype.setFinalFrame = function(){

@@ -11,6 +11,8 @@
 * If a player has a spare, they receive points from the next roll as a bonus.
 * If a player has a strike on the 10th frame, they receive two extra rolls.
 * If a player has a spare on the 10th frame, they receive one extra roll.
+* If a player's final score is 300, they played a Perfect Game.
+* If a player's final score is 0, they played a Gutter Game.
 
 ## Getting started
 

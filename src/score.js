@@ -13,6 +13,7 @@ Score.prototype.addFrame = function(frame){
 Score.prototype.getStrikeBonus = function(i){
   var frames = this.getFrames();
   var total = 0;
+  if(frames[i+1].finalFrame && (frames[i+1].isStrike() || frames[i+1].isSpare())){return total += (frames[i+1].getRoll(1) + frames[i+1].getRoll(2))}
   if(frames[i+1].isStrike()){
     total += 10;
     if(frames[i+2].isStrike()) {

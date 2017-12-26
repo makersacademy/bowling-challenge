@@ -36,6 +36,17 @@ describe("Score", function(){
       setFinalFrame: function(){},
       isFinalFrame: function(){true},
     };
+    finalStrikeFrame = {roll1: 10,
+      roll2: 10,
+      roll3: 10,
+      finalFrame: true,
+      total: function(){return 30},
+      isStrike: function(){return false},
+      isSpare: function(){return false},
+      getRoll: function(){return 10},
+      setFinalFrame: function(){},
+      isFinalFrame: function(){true},
+    };
   });
 
   it("Is initialized with no recorded frames", function(){
@@ -83,4 +94,5 @@ describe("Score", function(){
     score.addFrame(finalNonStrikeFrame);
     expect(score.getScore()).toEqual(201);
   });
+
 })

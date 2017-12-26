@@ -4,7 +4,7 @@
 
 ```
 As a player,
-If I knock down any pins in a frame,
+If I knock down pins in a frame,
 I expect to receive a point for each pin knocked down.
 ```
 ```

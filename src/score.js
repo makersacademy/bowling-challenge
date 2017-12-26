@@ -7,7 +7,7 @@ Score.prototype.getFrames = function(){
 }
 
 Score.prototype.addFrame = function(frame){
-  if(this.getFrames().length === 9){ frame.setFinalFrame(); }
+  //if(this.getFrames().length === 9){ frame.setFinalFrame(); }
   this.frames.push(frame);
 }
 
@@ -36,7 +36,6 @@ Score.prototype.getScore = function(){
   var total = 0;
   var frames = this.getFrames();
   for(var i = 0; i < frames.length; i++){
-    console.log(i, total)
     if(frames[i].isStrike()) { total += this.getStrikeBonus(i); }
     if(frames[i].isSpare()){ total += this.getSpareBonus(i); }
     total += frames[i].total();

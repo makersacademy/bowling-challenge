@@ -21,5 +21,12 @@ describe("Game", function() {
     game.bowl(6)
     game.bowl(2)
     expect(game.frameNumber).toEqual(2)
+    expect(game.currentFrame.score).toEqual(2)
+  })
+  it('should start a new frame after a strike', function() {
+    game.bowl(10)
+    game.bowl(6)
+    expect(game.frameNumber).toEqual(2)
+    expect(game.currentFrame.score).toEqual(6)
   })
 })

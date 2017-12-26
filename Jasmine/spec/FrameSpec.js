@@ -1,11 +1,11 @@
-describe('Frame', function(){
+describe('Frame', function() {
   var frame;
 
-  beforeEach(function(){
+  beforeEach(function() {
     frame = new Frame();
   });
 
-  it('initializes with 0 rolls', function(){
+  it('initializes with 0 rolls', function() {
     expect(frame.rolls).toEqual(0)
   });
 });

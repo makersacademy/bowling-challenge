@@ -29,4 +29,10 @@ describe("Game", function() {
     expect(game.frameNumber).toEqual(2)
     expect(game.currentFrame.score).toEqual(6)
   })
+  it("should add the frame to the frames array once it begins", function() {
+    game.bowl(2)
+    game.bowl(6)
+    game.bowl(2)
+    expect(game.frames.length).toEqual(2)
+  })
 })

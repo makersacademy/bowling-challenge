@@ -3,6 +3,7 @@
 ## Specification
 
 * A player's score at the start of the game is 0.
+* Each game consists of 10 frames.
 * There are 10 pins in each frame.
 * A player receives one point for each pin knocked down in a frame.
 * A player has a strike if all 10 pins are knocked down on the first roll.

@@ -1,16 +1,11 @@
-describe('Frame', function() {
+describe('Frame', function(){
   var frame;
 
   beforeEach(function() {
-    frame = new Frame();
+    frame = new Frame(0);
   });
 
-  it('initializes with 0 rolls', function() {
-    expect(frame.rolls).toEqual(0);
+  it('should return frame number as 0', function() {
+    expect(frame.frameNumber).toEqual(0);
   });
-
-  it('should increase current roll from 0 to 1 after first roll', function() {
-    expect(frame.currentRoll()).toEqual(1);
-  });
-
 });

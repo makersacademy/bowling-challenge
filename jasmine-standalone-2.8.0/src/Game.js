@@ -30,8 +30,13 @@ Game.prototype.manageFrame = function() {
 Game.prototype.addBonus = function() {
   console.log("last frame is " + this.lastFrame)
   if (this.lastFrame && this.lastFrame.isStrike) {
-    console.log("adding bonus")
-    this.lastFrame.score += this.currentFrame.score
-    this.score += this.currentFrame.score
+    console.log("adding strike bonus")
+    this.lastFrame.score += this.currentFrame.score;
+    this.score += this.currentFrame.score;
+  }
+  if (this.lastFrame && this.lastFrame.isSpare) {
+    console.log("adding spare bonus")
+    this.lastFrame.score += this.currentFrame.rollOneScore;
+    this.score += this.currentFrame.rollOneScore;
   }
 }

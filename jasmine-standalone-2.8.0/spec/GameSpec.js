@@ -41,4 +41,11 @@ describe("Game", function() {
     game.bowl(3)
     expect(game.score).toEqual(28)
   })
+  it("should add the next bowled score to a frame with a spare", function() {
+    game.bowl(5)
+    game.bowl(5)
+    game.bowl(3)
+    game.bowl(2)
+    expect(game.score).toEqual(18)
+  })
 })

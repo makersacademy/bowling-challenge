@@ -1,7 +1,7 @@
 function ScoreSheet(){
-  this.frames = []
+	this.frames = [];
 }
 
 ScoreSheet.prototype.addNewFrame = function(frame){
-  this.frames.push(frame);
-}
+	this.frames.push(frame);
+};

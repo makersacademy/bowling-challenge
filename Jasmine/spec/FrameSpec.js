@@ -1,4 +1,4 @@
-describe('Frame', function(){
+describe('Frame', function() {
   var frame;
 
   beforeEach(function() {
@@ -8,4 +8,5 @@ describe('Frame', function(){
   it('should return frame number as 0', function() {
     expect(frame.frameNumber).toEqual(0);
   });
+
 });

@@ -1,6 +1,5 @@
 // calculates score of all entire game
 function Game() {
-  this.score = 0;
   this.frames = [];
   this.currentFrameIndex = 0
   for (i = 0; i <= 9; i++) {
@@ -14,4 +13,8 @@ Game.prototype.currentFrame = function() {
 
 Game.prototype.advanceFrame = function() {
   this.currentFrameIndex += 1;
+};
+
+Game.prototype.score = function() {
+  return 0;
 };

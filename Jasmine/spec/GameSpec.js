@@ -5,10 +5,6 @@ describe('Game', function() {
     game = new Game();
   });
 
-  it('initializes with a score of 0', function() {
-    expect(game.score).toEqual(0);
-  });
-
   it('initializes with an array of frames', function() {
     expect(game.frames).toEqual(jasmine.any(Array));
   });
@@ -24,6 +20,15 @@ describe('Game', function() {
   it('should advance to the next frame', function() {
     game.advanceFrame()
     expect(game.currentFrame().frameNumber).toEqual(1);
+  });
+
+  it('should have a score of 0', function() {
+    expect(game.score()).toEqual(0);
+  });
+
+  it('should update score after a roll', function() {
+    game.roll(4);
+    expect(game.score()).toEqual(4);
   });
 
 });

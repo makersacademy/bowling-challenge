@@ -35,4 +35,11 @@ describe("Game", function() {
     game.bowl(2)
     expect(game.frames.length).toEqual(2)
   })
+  it("should add the next two bowled scores to a frame with a strike", function() {
+    game.bowl(10)
+    game.bowl(6)
+    game.bowl(3)
+    game.bowl(5)
+    expect(game.score).toEqual(33)
+  })
 })

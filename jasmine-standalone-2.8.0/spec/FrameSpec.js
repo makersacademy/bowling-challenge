@@ -1,4 +1,6 @@
-describe("Frame", function(), {
+'use strict';
+
+describe("Frame", function() {
 
   var frame;
 

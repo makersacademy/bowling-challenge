@@ -11,7 +11,7 @@ describe("Game", function() {
   it("should initialise with a score of zero", function() {
     expect(game.score).toEqual(0);
   })
-  it("should add the score from the frame once it's complete", function() {
+  it("should add the score from the frame to the game score", function() {
     game.bowl(3)
     game.bowl(4)
     expect(game.score).toEqual(7)

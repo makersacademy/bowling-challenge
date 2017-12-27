@@ -9,15 +9,22 @@ function Frame() {
   this.isSpare = false
 };
 
-Frame.prototype.bowl = function(num) {
-  console.log("roll number " + this.rollNumber)
-  this.score += num;
-  if (num === 10) {this.isStrike = true}
+Frame.prototype.bowl = function(rollScore) {
+  this.score += rollScore;
+  this.checkScoreType(rollScore);
+  this.manageRoll(rollScore);
+}
+
+Frame.prototype.checkScoreType = function(rollScore) {
+  if (rollScore === 10) {this.isStrike = true}
   if (this.rollNumber === 2 && this.score === 10) {this.isSpare = true}
-  if (this.rollNumber === 2 || num === 10) {
-    this.isFrameOver = true
+}
+
+Frame.prototype.manageRoll = function(rollScore) {
+  if (this.rollNumber === 2 || rollScore === 10) {
+    this.isFrameOver = true;
   } else {
     this.rollNumber += 1;
-    this.rollOneScore = num;
+    this.rollOneScore = rollScore;
    }
 }

@@ -16,8 +16,11 @@ Frame.prototype.bowl = function(rollScore) {
 }
 
 Frame.prototype.checkScoreType = function(rollScore) {
-  if (rollScore === 10) {this.isStrike = true}
-  if (this.rollNumber === 2 && this.score === 10) {this.isSpare = true}
+  if (rollScore === 10) {
+    this.isStrike = true;
+    this.rollOneScore = 10;
+  }
+  else if (this.rollNumber === 2 && this.score === 10) {this.isSpare = true}
 }
 
 Frame.prototype.manageRoll = function(rollScore) {

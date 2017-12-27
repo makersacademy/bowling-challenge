@@ -25,10 +25,10 @@ Game.prototype.manageFrame = function() {
 };
 
 Game.prototype.createNewFrame = function() {
-  this.currentFrame = new Frame();
+  this.frameNumber ++;
+  this.currentFrame = this.frameNumber == 12 ? new Frame(true) : new Frame();
   this.frames.push(this.currentFrame);
   this.lastFrame = this.frames[this.frames.indexOf(this.currentFrame) - 1];
-  this.frameNumber ++;
   if (this.frameNumber > 2) {
     this.frameBeforeLast = this.frames[this.frames.indexOf(this.currentFrame) - 2];
   }

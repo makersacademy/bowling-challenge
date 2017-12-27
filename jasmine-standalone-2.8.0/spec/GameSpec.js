@@ -39,7 +39,6 @@ describe("Game", function() {
     game.bowl(10)
     game.bowl(6)
     game.bowl(3)
-    game.bowl(5)
-    expect(game.score).toEqual(33)
+    expect(game.score).toEqual(28)
   })
 })

@@ -10,9 +10,9 @@ function Game() {
 
 Game.prototype.bowl = function(num) {
   console.log("bowling " + num)
-  this.manageFrame()
   this.currentFrame.bowl(num);
   this.score += num;
+  this.manageFrame()
   console.log(this.frames)
   console.log("frame" + this.frameNumber)
 };

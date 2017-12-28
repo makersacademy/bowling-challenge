@@ -1,7 +1,7 @@
 function Frame() {
   this.bowls = []
   this.bowlIndex = 1
-  STRIKE = 10
+  MAX_PINS = 10
 };
 
 Frame.prototype.bowl = function(pins) {
@@ -10,5 +10,9 @@ Frame.prototype.bowl = function(pins) {
 };
 
 Frame.prototype.isAStrike = function() {
-  return this.bowls[0] === STRIKE
+  return this.bowls[0] === MAX_PINS
+}
+
+Frame.prototype.isASpare = function() {
+  return this.bowls[0] + this.bowls[1] === MAX_PINS
 }

@@ -32,4 +32,13 @@ describe("Frame", function() {
     });
   });
 
+  describe("#isASpare", function() {
+
+    it("knows when the frameis a spare", function() {
+      frame.bowl(5);
+      frame.bowl(5);
+      expect(frame.isASpare()).toEqual(true);
+    });
+  });
+
 });

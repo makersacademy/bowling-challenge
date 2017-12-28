@@ -63,15 +63,15 @@ describe("ScoreSheet", function(){
 			expect(scoreSheet.displayScore(0)).toEqual(25);
 		});
 
-		xit("should not display a score on a spare wihtout the next roll", function(){
+		it("should not display a score on a spare wihtout the next roll", function(){
 			frameRoll([5,5]);
 			expect(scoreSheet.displayScore(0)).toBe(null);
 		});
 
-		xit("should display a score of 15 on a spare after the next roll", function(){
+		it("should display a score of 11 on a spare after the next roll", function(){
 			frameRoll([5,5]);
-			frameRoll([5,3]);
-			expect(scoreSheet.displayScore(0)).toEqual(15);
+			frameRoll([1,3]);
+			expect(scoreSheet.displayScore(0)).toEqual(11);
 		});
 
 	});

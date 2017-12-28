@@ -32,46 +32,71 @@ describe("ScoreSheet", function(){
 	});
 
 	describe("Displaying score results", function(){
-		it("should not display a score on a strike wihtout the next 2 rolls completed", function(){
-			frameRoll([10]);
-			expect(scoreSheet.displayScore(0)).toBe(null);
+
+		describe("Strike logic", function(){
+			it("should not display a score on a strike wihtout the next 2 rolls completed", function(){
+				frameRoll([10]);
+				expect(scoreSheet.displayScore(0)).toBe(null);
+			});
+
+			it("should display a score of 17 with 1 strike and a 5 on next roll", function(){
+				frameRoll([10]);
+				frameRoll([5,2]);
+				expect(scoreSheet.displayScore(0)).toEqual(17);
+			});
+
+			it("BBshould not display a score with 2 strikes in a row and no next rolls", function(){
+				frameRoll([10]);
+				frameRoll([10]);
+				expect(scoreSheet.displayScore(0)).toBe(null);
+			});
+
+			it("should display a score of 30 with 3 strikes in a row", function(){
+				frameRoll([10]);
+				frameRoll([10]);
+				frameRoll([10]);
+				expect(scoreSheet.displayScore(0)).toEqual(30);
+			});
+
+			it("should display a score of 25 with 2 strikes and a 5 on next roll", function(){
+				frameRoll([10]);
+				frameRoll([10]);
+				frameRoll([5,2]);
+				expect(scoreSheet.displayScore(0)).toEqual(25);
+			});
+
+			it("should display the score for a strike then a spare", function(){
+				frameRoll([10]);
+				frameRoll([6,4]);
+				expect(scoreSheet.displayScore(0)).toEqual(20);
+			});
 		});
 
-		it("should display a score of 17 with 1 strike and a 5 on next roll", function(){
-			frameRoll([10]);
-			frameRoll([5,2]);
-			expect(scoreSheet.displayScore(0)).toEqual(17);
+		describe("Spare logic", function(){
+			it("should not display a score on a spare wihtout the next roll", function(){
+				frameRoll([5,5]);
+				expect(scoreSheet.displayScore(0)).toBe(null);
+			});
+
+			it("should display a score of 11 on a spare after the next roll", function(){
+				frameRoll([5,5]);
+				frameRoll([1,3]);
+				expect(scoreSheet.displayScore(0)).toEqual(11);
+			});
+
+			it("should display a score of 16 on a spare after another spare", function(){
+				frameRoll([5,5]);
+				frameRoll([6,4]);
+				expect(scoreSheet.displayScore(0)).toEqual(16);
+			});
 		});
 
-		it("BBshould not display a score with 2 strikes in a row and no next rolls", function(){
-			frameRoll([10]);
-			frameRoll([10]);
-			expect(scoreSheet.displayScore(0)).toBe(null);
-		});
+		describe("No bonus logic", function(){
+			it("should display a score of 9 on first frame", function(){
+				frameRoll([6,3]);
+				expect(scoreSheet.displayScore(0)).toEqual(9);
+			});
 
-		it("should display a score of 30 with 3 strikes in a row", function(){
-			frameRoll([10]);
-			frameRoll([10]);
-			frameRoll([10]);
-			expect(scoreSheet.displayScore(0)).toEqual(30);
-		});
-
-		it("should display a score of 25 with 2 strikes and a 5 on next roll", function(){
-			frameRoll([10]);
-			frameRoll([10]);
-			frameRoll([5,2]);
-			expect(scoreSheet.displayScore(0)).toEqual(25);
-		});
-
-		it("should not display a score on a spare wihtout the next roll", function(){
-			frameRoll([5,5]);
-			expect(scoreSheet.displayScore(0)).toBe(null);
-		});
-
-		it("should display a score of 11 on a spare after the next roll", function(){
-			frameRoll([5,5]);
-			frameRoll([1,3]);
-			expect(scoreSheet.displayScore(0)).toEqual(11);
 		});
 
 	});

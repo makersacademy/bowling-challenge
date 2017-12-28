@@ -4,5 +4,7 @@ function Game() {
 };
 
 Game.prototype.bowl = function(pins, bowls = 1) {
-  this.score += pins
+  for(var i = 0; i < bowls; i++) {
+    this.score += pins;
+  };
 };

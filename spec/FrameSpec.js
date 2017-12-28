@@ -20,7 +20,15 @@ describe("Frame", function() {
     });
 
     it("increases the bowl index by 1", function() {
-      expect(frame.bowlIndex).toEqual(2)
+      expect(frame.bowlIndex).toEqual(2);
+    });
+  });
+
+  describe("#isAStrike", function() {
+
+    it("knows when the frame is a strike", function() {
+      frame.bowl(10);
+      expect(frame.isAStrike()).toEqual(true);
     });
   });
 

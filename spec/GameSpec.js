@@ -47,5 +47,14 @@ describe("Game", function() {
       for(var i = 0; i < 20; i++) { game.bowl(1) };
       expect(game.score()).toEqual(20);
     });
+
+    it("calculates a spare bonus", function() {
+      for(var i = 0; i < 16; i++) { game.bowl(1) };
+      game.bowl(4);
+      game.bowl(6);
+      game.bowl(1);
+      game.bowl(1);
+      expect(game.score()).toEqual(29);
+    });
   });
 });

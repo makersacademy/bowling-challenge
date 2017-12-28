@@ -28,8 +28,16 @@ Game.prototype._pushFrame = function() {
 
 Game.prototype.score = function() {
   var score = 0;
-  for(var i = 0; i < this.frameIndex; i++) {
-    score += this.frames[i].frameScore();
-  };
+
+  for(var i = 0; i < this.frameIndex; i++)
+    if(this.frames[i].isASpare()) {
+      score += 10 + this.spareBonus(i);
+    } else {
+      score += this.frames[i].frameScore();
+    }
   return score;
+};
+
+Game.prototype.spareBonus = function(index) {
+  return this.frames[index + 1].bowls[0];
 };

@@ -3,7 +3,6 @@ function Game(currentFrame = new Frame()) {
   this.currentFrame = currentFrame;
   this.frameIndex = 1
   this._pushFrame()
-  this.score = 0;
 };
 
 Game.prototype.bowl = function(pins, bowls = 1) {
@@ -25,4 +24,12 @@ Game.prototype._nextFrame = function() {
 
 Game.prototype._pushFrame = function() {
   this.frames.push(this.currentFrame);
-}
+};
+
+Game.prototype.score = function() {
+  var score = 0;
+  for(var i = 0; i < this.frameIndex; i++) {
+    score += this.frames[i].frameScore();
+  };
+  return score;
+};

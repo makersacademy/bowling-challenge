@@ -39,6 +39,13 @@ describe("Game", function() {
       game.bowl(1);
       expect(game.frameIndex).toEqual(10);
     });
+  });
 
+  describe("#score", function() {
+
+    it("calculates the basic score with no bonuses", function() {
+      for(var i = 0; i < 20; i++) { game.bowl(1) };
+      expect(game.score()).toEqual(20);
+    });
   });
 });

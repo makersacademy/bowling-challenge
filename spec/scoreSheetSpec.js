@@ -34,11 +34,15 @@ describe("ScoreSheet", function(){
 	describe("Displaying score results", function(){
 		it("should not display a score on a strike on the 1st frame without bonus", function(){
 			frameRoll([10]);
-			expect(scoreSheet.scoreDisplay(0)).toBe(null);
+			expect(scoreSheet.displayScore(0)).toBe(null);
+		});
+
+		it("should display a score on the 1st frame when the next 2 rolls have been completed", function(){
+			frameRoll([10]);
+			frameRoll([2,3]);
+			expect(scoreSheet.displayScore(0)).toEqual(15);
 		});
 	});
-
-
 
 
 

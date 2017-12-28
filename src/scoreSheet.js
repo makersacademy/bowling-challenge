@@ -1,5 +1,6 @@
 function ScoreSheet(){
 	this.frames = [];
+	this.frameLimit = 10;
 }
 
 ScoreSheet.prototype.addNewFrame = function(frame){
@@ -10,6 +11,7 @@ ScoreSheet.prototype.displayScore = function(frameNumber){
 	if (this.frames[frameNumber]) {
 		var currentFrameFirstRoll = this.frames[frameNumber].roll[0];
 		var currentFrameSecondRoll = this.frames[frameNumber].roll[1];
+		var currentFrameLastRoll = this.frames[frameNumber].roll[2];
 	}
 
 	if(this.frames[frameNumber+1]) {
@@ -23,7 +25,9 @@ ScoreSheet.prototype.displayScore = function(frameNumber){
 
 	var currentFrameTotal = this.frames[frameNumber].addTotalFramePoints();
 
-	if (currentFrameTotal < 10) {
+	if (frameNumber+1 === this.frameLimit && currentFrameLastRoll) {
+		return currentFrameTotal;
+	} else if (currentFrameTotal < 10) {
 		return currentFrameTotal;
 	} else if (currentFrameFirstRoll === 10) {
 		if (this.frames[frameNumber+1]) {

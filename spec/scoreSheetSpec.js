@@ -104,8 +104,43 @@ describe("ScoreSheet", function(){
 				frameRoll([1,2]);
 				expect(scoreSheet.displayScore(9)).toEqual(3);
 			});
-		});
 
+			it("should not display in last frame if strike and no next 2 rolls", function(){
+				nineRolls();
+				frameRoll([10]);
+				expect(scoreSheet.displayScore(9)).toBe(null);
+			});
+
+			it("should not display in last frame if strike and only 1 roll", function(){
+				nineRolls();
+				frameRoll([10,1]);
+				expect(scoreSheet.displayScore(9)).toBe(null);
+			});
+
+			it("should display in last frame if strike and 2 rolls have been played", function(){
+				nineRolls();
+				frameRoll([10,4,5]);
+				expect(scoreSheet.displayScore(9)).toEqual(19);
+			});
+
+			it("should display 30 in last frame if 3 strikes", function(){
+				nineRolls();
+				frameRoll([10, 10, 10]);
+				expect(scoreSheet.displayScore(9)).toEqual(30);
+			});
+
+			it("should display 29 in last frame if 2 strikes and 9 roll", function(){
+				nineRolls();
+				frameRoll([10, 10, 9]);
+				expect(scoreSheet.displayScore(9)).toEqual(29);
+			});
+
+			it("should display 20 in last frame if a spare and 10 roll", function(){
+				nineRolls();
+				frameRoll([1, 9, 10]);
+				expect(scoreSheet.displayScore(9)).toEqual(20);
+			});
+		});
 	});
 
 

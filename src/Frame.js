@@ -10,9 +10,9 @@ Frame.prototype.bowl = function(pins) {
 };
 
 Frame.prototype.isAStrike = function() {
-  return this.bowls[0] === MAX_PINS
+  return(this.bowls[0] === MAX_PINS)
 }
 
 Frame.prototype.isASpare = function() {
-  return this.bowls[0] + this.bowls[1] === MAX_PINS
+  return(this.bowls[0] + this.bowls[1] === MAX_PINS)
 }

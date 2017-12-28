@@ -7,19 +7,21 @@ function Game(currentFrame = new Frame()) {
 };
 
 Game.prototype.bowl = function(pins, bowls = 1) {
-  // for(var i = 0; i < bowls; i++) {
-  //   this.score += pins;
-  // };
   this.currentFrame.bowl(pins)
-  if(this.currentFrame.isAStrike()) { this._nextFrame() }
-  if(this.currentFrame.bowlIndex > 2) { this._nextFrame() }
+  if(this.frameIndex >= 10) {
+    console.log("Game over");
+  } else if(this.currentFrame.isAStrike()) {
+    this._nextFrame();
+  } else if(this.currentFrame.bowlIndex > 2) {
+    this._nextFrame();
+  };
 };
 
 Game.prototype._nextFrame = function() {
   this.currentFrame = new Frame();
   this._pushFrame();
   this.frameIndex++;
-}
+};
 
 Game.prototype._pushFrame = function() {
   this.frames.push(this.currentFrame);

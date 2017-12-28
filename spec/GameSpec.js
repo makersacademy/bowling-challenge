@@ -7,11 +7,6 @@ describe("Game", function() {
     frame = new Frame()
     game = new Game(frame);
   });
-  //
-  // it("scores 0 for a gutter game", function() {
-  //   game.bowl(0, 20);
-  //   expect(game.score).toEqual(0);
-  // });
 
   it("starts a new game with the first frame in the frames array", function() {
     expect(game.frames[0]).toEqual(frame);
@@ -39,7 +34,11 @@ describe("Game", function() {
       expect(game.frameIndex).toEqual(2);
     });
 
-
+    it("ends the game after 10 frames", function() {
+      for(var i = 0; i < 20; i++) { game.bowl(1) };
+      game.bowl(1);
+      expect(game.frameIndex).toEqual(10);
+    });
 
   });
 });

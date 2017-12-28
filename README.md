@@ -1,3 +1,15 @@
+This is yet another Makers weekend challenge, the specifications for the challenge are
+below - briefly it is to create a bowling score calculator.
+
+User Stories
+============
+
+Want to be able to score a single frame
+
+
+
+
+
 
 Bowling Challenge
 =================

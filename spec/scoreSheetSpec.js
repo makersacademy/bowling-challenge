@@ -96,7 +96,14 @@ describe("ScoreSheet", function(){
 				frameRoll([6,3]);
 				expect(scoreSheet.displayScore(0)).toEqual(9);
 			});
+		});
 
+		describe("Last frame logic", function(){
+			it("should display in last frame if not strike or spare", function(){
+				nineRolls();
+				frameRoll([1,2]);
+				expect(scoreSheet.displayScore(9)).toEqual(3);
+			});
 		});
 
 	});
@@ -109,5 +116,11 @@ describe("ScoreSheet", function(){
 			testFrame.appendNumberPinsDown(pinsDown[i]);
 		}
 		scoreSheet.addNewFrame(testFrame);
+	};
+
+	var nineRolls = function(){
+		for(var i = 0; i < 9; i ++) {
+			frameRoll([1,1]);
+		}
 	};
 });

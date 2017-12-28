@@ -1,7 +1,6 @@
 // calculates score for a frame
 function Frame(number) {
   this.frameNumber = number;
-  this._isFinished = false;
   this._totalPinsDown = 0;
   this._rollCount = 0;
 }
@@ -11,9 +10,6 @@ Frame.prototype.roll = function(pinsDown) {
     this._totalPinsDown += pinsDown;
     this._rollCount += 1;
   }
-  if (this._rollCount === 2) {
-    this._isFinished = true;
-  }
 };
 
 Frame.prototype.calculateScore = function() {
@@ -21,5 +17,19 @@ Frame.prototype.calculateScore = function() {
 };
 
 Frame.prototype.isFinished = function() {
-  return this._isFinished;
+  if (this._rollCount === 2) {
+    return true;
+  } else if (this.isAStrike()) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+Frame.prototype.isAStrike = function() {
+  if (this._totalPinsDown === 10 && this._rollCount === 1) {
+    return true;
+  } else {
+    return false;
+  }
 };

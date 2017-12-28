@@ -9,17 +9,13 @@ describe('Frame', function() {
     expect(frame.frameNumber).toEqual(0);
   });
 
-  it('initializes frame as not being finished', function() {
-    expect(frame._isFinished).toBe(false);
+  it('should increase roll count after each roll', function() {
+    frame.roll(3);
+    expect(frame._rollCount).toEqual(1);
   });
 
   it('should return default score of 0', function() {
     expect(frame.calculateScore()).toEqual(0);
-  });
-
-  it('should increase roll count after each roll', function() {
-    frame.roll(3);
-    expect(frame._rollCount).toEqual(1);
   });
 
   it('should calculate frame score', function() {
@@ -34,4 +30,13 @@ describe('Frame', function() {
     expect(frame.isFinished()).toBe(true);
   });
 
+  it('should be a strike if player knocks down 10 pins on the first roll', function() {
+    frame.roll(10);
+    expect(frame.isAStrike()).toBe(true);
+  });
+
+  it('should skip second roll if first roll is a strike', function() {
+    frame.roll(10);
+    expect(frame.isFinished()).toBe(true);
+  });
 });

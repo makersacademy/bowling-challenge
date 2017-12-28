@@ -39,8 +39,6 @@ describe("Game", function() {
       game.bowl(1);
       expect(game.frameIndex).toEqual(10);
     });
-
-
   });
 
   describe("#score", function() {

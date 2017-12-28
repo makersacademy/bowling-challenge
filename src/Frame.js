@@ -5,4 +5,5 @@ function Frame() {
 
 Frame.prototype.bowl = function(pins) {
   this.bowls.push(pins)
+  this.bowlIndex++
 }

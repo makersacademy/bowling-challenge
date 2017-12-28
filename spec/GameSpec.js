@@ -6,9 +6,7 @@ describe("Game", function() {
   });
 
   it("scores 0 for a gutter game", function() {
-    for(var i = 0; i <= 20; i++) {
-      game.bowl(0);
-    };
+    game.bowl(0, 20);
     expect(game.score).toEqual(0)
   });
 });

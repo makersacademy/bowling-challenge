@@ -23,18 +23,12 @@ ScoreSheet.prototype.displayScore = function(frameNumber){
 
 	var currentFrameTotal = this.frames[frameNumber].addTotalFramePoints();
 
-	// console.log(currentFrameFirstRoll, currentFrameSecondRoll)
 	if (currentFrameTotal < 10) {
-		// console.log(currentFrameFirstRoll, currentFrameSecondRoll)
-		return currentFrameFirstRoll + currentFrameSecondRoll;
-	}
-
-	if (currentFrameFirstRoll === 10) {
+		return currentFrameTotal;
+	} else if (currentFrameFirstRoll === 10) {
 		if (this.frames[frameNumber+1]) {
 			if (nextFrameFirstRoll < 10) {
 				if (!nextFrameSecondRoll) return null;
-				// console.log(this.frames[frameNumber+1]);
-				// console.log(currentFrameFirstRoll, nextFrameFirstRoll, nextFrameSecondRoll);
 				return currentFrameFirstRoll + nextFrameFirstRoll + nextFrameSecondRoll;
 			} else if (nextFrameFirstRoll === 0) {
 				return null;
@@ -42,31 +36,19 @@ ScoreSheet.prototype.displayScore = function(frameNumber){
 				if (!this.frames[frameNumber+2]) return null;
 				return currentFrameFirstRoll + nextFrameFirstRoll + frameAfterNextFirstRoll;
 			}
-		}
-		else {
-			// console.log(currentFrameFirstRoll)
+		} else {
 			return null;
 		}
-	}
-
-
-
-	// console.log('a', currentFrameFirstRoll, currentFrameSecondRoll, nextFrameFirstRoll);
-	if (currentFrameTotal === 10 && currentFrameFirstRoll < 10) {
-		// console.log('first', currentFrameTotal, nextFrameFirstRoll);
-		// console.log('second', this.frames[frameNumber+1]);
+	} else if (currentFrameTotal === 10 && currentFrameFirstRoll < 10) {
 		if (this.frames[frameNumber+1]) {
-			// console.log(this.frames[frameNumber+1]);
-			// console.log('a', currentFrameFirstRoll, currentFrameSecondRoll, nextFrameFirstRoll);
-			// console.log('b', currentFrameTotal, nextFrameFirstRoll);
 			return currentFrameTotal + nextFrameFirstRoll;
 		} else {
 			return null;
 		}
 	}
 
-
-
+	// console.log(this.frames[frameNumber+1]);
+	// console.log(currentFrameFirstRoll, nextFrameFirstRoll, nextFrameSecondRoll);
 	// console.log('current1', currentFrameFirstRoll)
 	// console.log('current2', currentFrameSecondRoll)
 	// console.log('next1', nextFrameFirstRoll)

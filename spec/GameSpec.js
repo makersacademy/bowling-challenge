@@ -39,6 +39,8 @@ describe("Game", function() {
       game.bowl(1);
       expect(game.frameIndex).toEqual(10);
     });
+
+
   });
 
   describe("#score", function() {
@@ -55,6 +57,19 @@ describe("Game", function() {
       game.bowl(1);
       game.bowl(1);
       expect(game.score()).toEqual(29);
+    });
+
+    it("calculates a strike bonus", function() {
+      for(var i = 0; i < 16; i++) { game.bowl(1) };
+      game.bowl(10);
+      game.bowl(1);
+      game.bowl(1);
+      expect(game.score()).toEqual(30);
+    })
+
+    it("can return a gutter game", function() {
+      for(var i = 0; i < 20; i++) { game.bowl(0) };
+      expect(game.score()).toEqual(0);
     });
   });
 });

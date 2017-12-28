@@ -30,8 +30,10 @@ Game.prototype.score = function() {
   var score = 0;
 
   for(var i = 0; i < this.frameIndex; i++)
-    if(this.frames[i].isASpare()) {
-      score += 10 + this.spareBonus(i);
+    if(this.frames[i].isAStrike()) {
+      score += MAX_PINS + this.strikeBonus(i);
+    } else if(this.frames[i].isASpare()) {
+      score += MAX_PINS + this.spareBonus(i);
     } else {
       score += this.frames[i].frameScore();
     }
@@ -40,4 +42,12 @@ Game.prototype.score = function() {
 
 Game.prototype.spareBonus = function(index) {
   return this.frames[index + 1].bowls[0];
+};
+
+Game.prototype.strikeBonus = function(index) {
+  if(this.frames[index + 1].isAStrike()) {
+    return this.frames[index + 1].bowls[0] + this.frames[index + 2].bowls[0];
+  } else {
+    return this.frames[index + 1].bowls[0] + this.frames[index + 1].bowls[1];
+  };
 };

@@ -1,5 +1,4 @@
 function Score() {
-
 };
 
 Score.prototype.calcScore = function() {
@@ -10,3 +9,8 @@ Score.prototype.calcScore = function() {
   }
   return total;
 }
+
+Score.prototype.spareChecker = function() {
+  var index = game.framesList.length-1;
+  return game.framesList[index].isASpare();
+};

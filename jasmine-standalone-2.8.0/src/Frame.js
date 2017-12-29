@@ -48,8 +48,6 @@ Frame.prototype.endFrame = function(rollScore) {
 }
 
 Frame.prototype.finalFrame = function(rollScore) {
-  console.log("running final frame")
-  console.log("roll number " + this.rollNumber)
   if (this.rollNumber == 3 || (this.rollNumber == 2 && this.score < 10)) {
     this.isFrameOver = true;
    }

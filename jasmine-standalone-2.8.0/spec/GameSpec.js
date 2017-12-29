@@ -2,7 +2,7 @@
 
 describe("Game", function() {
 
-  var game
+  var game;
 
   beforeEach(function() {
     game = new Game();
@@ -35,66 +35,71 @@ describe("Game", function() {
     game.bowl(2)
     expect(game.frames.length).toEqual(2)
   })
-  it("should add the next two bowled scores to a frame with a strike", function() {
-    game.bowl(10)
-    game.bowl(6)
-    game.bowl(3)
-    expect(game.score).toEqual(28)
+  describe("Strikes and spares", function() {
+    it("should add the next two bowled scores to a frame with a strike", function() {
+      game.bowl(10)
+      game.bowl(6)
+      game.bowl(3)
+      expect(game.score).toEqual(28)
+    })
+    it("should add the next bowled score to a frame with a spare", function() {
+      game.bowl(5)
+      game.bowl(5)
+      game.bowl(3)
+      game.bowl(2)
+      expect(game.score).toEqual(18)
+    })
+    it("should calculate scores with consecutive strikes", function() {
+      game.bowl(10)
+      game.bowl(10)
+      game.bowl(10)
+      game.bowl(10)
+      expect(game.score).toEqual(90)
+    })
+    it("should add ten to a spare score when followed by a strike", function() {
+      game.bowl(5)
+      game.bowl(5)
+      game.bowl(10)
+      expect(game.score).toEqual(30)
+    })
+    it("should count a frame containing rolls of 0 and 10 as a spare", function() {
+      game.bowl(0)
+      game.bowl(10)
+      game.bowl(0)
+      game.bowl(2)
+      expect(game.score).toEqual(12)
+    })
+    it("should calculate a mix of spares, strikes and consecutive strikes", function() {
+      game.bowl(5)
+      game.bowl(5)
+      game.bowl(10)
+      game.bowl(10)
+      game.bowl(10)
+      game.bowl(10)
+      game.bowl(3)
+      game.bowl(2)
+      game.bowl(10)
+      game.bowl(6)
+      game.bowl(1)
+      expect(game.score).toEqual(147)
+    })
   })
-  it("should add the next bowled score to a frame with a spare", function() {
-    game.bowl(5)
-    game.bowl(5)
-    game.bowl(3)
-    game.bowl(2)
-    expect(game.score).toEqual(18)
-  })
-  it("should calculate scores with consecutive strikes", function() {
-    game.bowl(10)
-    game.bowl(10)
-    game.bowl(10)
-    game.bowl(10)
-    expect(game.score).toEqual(90)
-  })
-  it("should add ten to a spare score when followed by a strike", function() {
-    game.bowl(5)
-    game.bowl(5)
-    game.bowl(10)
-    expect(game.score).toEqual(30)
-  })
-  it("should count a frame containing rolls of 0 and 10 as a spare", function() {
-    game.bowl(0)
-    game.bowl(10)
-    game.bowl(0)
-    game.bowl(2)
-    expect(game.score).toEqual(12)
-  })
-  it("should calculate a mix of spares, strikes and consecutive strikes", function() {
-    game.bowl(5)
-    game.bowl(5)
-    game.bowl(10)
-    game.bowl(10)
-    game.bowl(10)
-    game.bowl(10)
-    game.bowl(3)
-    game.bowl(2)
-    game.bowl(10)
-    game.bowl(6)
-    game.bowl(1)
-    expect(game.score).toEqual(147)
-  })
-  it("should allow three rolls in the final frame if the first is a strike", function() {
-    game.frameNumber = 12
-    game.bowl(10)
-    game.bowl(10)
-    expect(game.currentFrame.isFrameOver).toEqual(false)
-  })
-  it("should allow three rolls in the final frame if the first is a strike", function() {
-    game.frameNumber = 9
-    game.bowl(10)
-    game.bowl(10)
-    game.bowl(10)
-    expect(game.frameNumber).toEqual(10)
-    expect(game.currentFrame.isFrameOver).toEqual(false)
+  describe("Final frame", function() {
+    it("should allow three rolls in the final frame if the first two are a spare", function() {
+      game.frameNumber = 9
+      game.bowl(10)
+      game.bowl(5)
+      game.bowl(5)
+      expect(game.currentFrame.isFrameOver).toEqual(false)
+    })
+    it("should allow three rolls in the final frame if the first is a strike", function() {
+      game.frameNumber = 9
+      game.bowl(10)
+      game.bowl(10)
+      game.bowl(10)
+      expect(game.frameNumber).toEqual(10)
+      expect(game.currentFrame.isFrameOver).toEqual(false)
+    })
   })
   it("should correctly score a perfect game", function() {
     game.bowl(10)

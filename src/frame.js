@@ -7,6 +7,10 @@ Frame.prototype.bowl = function(firstBowl, secondBowl) {
   this.score = [firstBowl, secondBowl];
 };
 
-Frame.prototype.getScore = function() {
-  return this.score;
-}
+Frame.prototype.isAStrike = function() {
+  if (this.score[0] == 10){
+    return true;
+  } else {
+    return false;
+  };
+};

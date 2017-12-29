@@ -14,22 +14,34 @@ Frame.prototype.isAStrike = function() {
 };
 
 Frame.prototype.isASpare = function() {
-  return(this.bowls[0] + this.bowls[1] === MAX_PINS);
+  return(this.standardFrameTotal() === MAX_PINS);
 };
 
-Frame.prototype.frameScore = function() {
+Frame.prototype.frameTotal = function() {
   if(!this.isAStrike()) {
-    return this.bowls[0] + this.bowls[1];
+    return this.standardFrameTotal()
   } else {
     return MAX_PINS;
   };
 };
 
-Frame.prototype.finalFrameScore = function() {
+Frame.prototype.finalFrameTotal = function() {
   if(this.bowlIndex > 3) {
-    return(this.bowls[0] + this.bowls[1] + this.bowls[2]);
+    return(this.standardFrameTotal() + this.bowls[2]);
   }
   else {
-    return this.bowls[0] + this.bowls[1];
+    return this.standardFrameTotal()
   };
 };
+
+Frame.prototype.standardFrameTotal = function() {
+  return this.bowls[0] + this.bowls[1];
+};
+
+Frame.prototype.bowlIndexTwo = function() {
+  return(this.bowlIndex > 2);
+};
+
+Frame.prototype.bowlIndexThree = function() {
+  return(this.bowlIndex > 3);
+}

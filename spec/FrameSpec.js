@@ -46,7 +46,7 @@ describe("Frame", function() {
     it("calculates the frame score", function() {
       frame.bowl(3);
       frame.bowl(5);
-      expect(frame.frameScore()).toEqual(8);
+      expect(frame.frameTotal()).toEqual(8);
     });
   });
 
@@ -55,7 +55,7 @@ describe("Frame", function() {
       frame.bowl(10);
       frame.bowl(10);
       frame.bowl(10);
-      expect(frame.finalFrameScore()).toEqual(30);
+      expect(frame.finalFrameTotal()).toEqual(30);
     });
 
   })

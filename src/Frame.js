@@ -8,5 +8,6 @@ Frame.prototype.roll1 = function(pinsHit) {
 };
 
 Frame.prototype.roll2 = function(pinsHit) {
+  if (pinsHit > this.pinCount) {throw Error ("There aren't that many pins left!!")}
   this.pinCount -= pinsHit
 };

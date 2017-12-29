@@ -16,12 +16,17 @@ describe("Frame", function() {
   it('bowls the first attempt reducing the pin count', function() {
     frame.roll1(6)
     expect(frame.pinCount).toEqual(4)
-  })
+  });
 
   it('bowls the second attempt further reducing the pin count', function() {
     frame.roll1(3)
     frame.roll2(4)
     expect(frame.pinCount).toEqual(3)
-  })
+  });
+
+  it("Raises error if pinCount drops below 0", function() {
+    frame.roll1(6)
+    expect(function() {frame.roll2(5)}).toThrowError("There aren't that many pins left!!")
+  });
 
 })

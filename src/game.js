@@ -13,12 +13,15 @@ Game.prototype.calculateScore = function(){
   var score = this.score
   var rollIndex = 0;
   for (frame = 0; frame < 10; frame++) {
-    if (this.isSpare(rollIndex)){
+    if (this.isStrike(rollIndex)){
+      score += 10 + this.strikeBonus(rollIndex);
+      rollIndex ++;
+    } else if (this.isSpare(rollIndex)){
       score += 10 + this.spareBonus(rollIndex);
-      rollIndex += 2
+      rollIndex += 2;
     } else {
-      score += this.sumofBallsInFrame(rollIndex);
-      rollIndex += 2
+      score += this.sumofRollsInFrame(rollIndex);
+      rollIndex += 2;
     }
   }
   this.score = score
@@ -30,12 +33,22 @@ Game.prototype.isSpare = function(rollIndex){
   return rolls[rollIndex] + rolls[rollIndex + 1] === 10;
 };
 
+Game.prototype.isStrike = function(rollIndex){
+  var rolls = this.rolls
+  return rolls[rollIndex] === 10;
+};
+
 Game.prototype.spareBonus = function(rollIndex){
   var rolls = this.rolls
   return rolls[rollIndex + 2];
 }
 
-Game.prototype.sumofBallsInFrame = function(rollIndex){
+Game.prototype.strikeBonus = function(rollIndex){
+  var rolls = this.rolls
+  return rolls[rollIndex + 1] + rolls[rollIndex + 2];
+}
+
+Game.prototype.sumofRollsInFrame = function(rollIndex){
   var rolls = this.rolls
   return rolls[rollIndex] + rolls[rollIndex + 1];
 }

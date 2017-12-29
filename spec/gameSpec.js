@@ -16,19 +16,48 @@ describe("Game", function(){
   });
 
   it("calculates one spare", function(){
-    game.roll(5);
-    game.roll(5);
+    rollASpare();
     game.roll(3);
     rollMany(17,0);
     expect(game.calculateScore()).toEqual(16);
   });
 
+  it("calculates one spare in the middle", function(){
+    rollMany(2, 1);
+    rollASpare();
+    game.roll(1);
+    rollMany(15,0);
+    expect(game.calculateScore()).toEqual(14);
+  });
 
+  it("calculates one strike", function(){
+    game.roll(10);
+    rollMany(2, 1);
+    rollMany(17,0);
+    expect(game.calculateScore()).toEqual(14);
+  });
+
+  it("calculates one strike in the middle", function(){
+    rollMany(2, 1);
+    rollAStrike();
+    rollMany(2, 1);
+    rollMany(15,0);
+    expect(game.calculateScore()).toEqual(16);
+  });
 
   function rollMany(rolls, pins){
     for(var i = 0; i < rolls; i++){
       game.roll(pins);
     }
   };
+
+  function rollASpare(){
+    game.roll(5);
+    game.roll(5);
+  }
+
+  function rollAStrike(){
+    game.roll(10);
+  }
 
 });

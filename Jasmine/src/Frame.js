@@ -31,6 +31,8 @@ Frame.prototype.calculateScore = function() {
 Frame.prototype.isBonusFinished = function() {
   if (this._bonusCount === 2 && this.isAStrike()) {
     return true;
+  } else if (this._bonusCount === 1 && this.isASpare()) {
+    return true;
   }
 };
 
@@ -46,6 +48,14 @@ Frame.prototype.isFinished = function() {
 
 Frame.prototype.isAStrike = function() {
   if (this._totalPinsDown >= 10 && this._rollCount === 1) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+Frame.prototype.isASpare = function() {
+  if (this._totalPinsDown >= 10 && this._rollCount === 2) {
     return true;
   } else {
     return false;

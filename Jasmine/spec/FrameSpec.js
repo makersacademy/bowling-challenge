@@ -60,4 +60,19 @@ describe('Frame', function() {
     frame.bonusRoll(5);
     expect(frame.calculateScore()).toEqual(15);
   });
+
+  it('should be a spare if player knocks down 10 pins using two rolls', function() {
+    frame.roll(5);
+    frame.roll(5);
+    expect(frame.isASpare()).toBe(true);
+  });
+
+  it('should add points from the next roll as bonus points for a spare', function() {
+    frame.roll(5);
+    frame.roll(5);
+    frame.bonusRoll(2);
+    frame.bonusRoll(3);
+    expect(frame.calculateScore()).toEqual(12);
+  });
+
 });

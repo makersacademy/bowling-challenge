@@ -45,4 +45,19 @@ describe('Frame', function() {
     frame.roll(4);
     expect(frame.calculateScore()).toEqual(10);
   });
+
+  it('should add points from next two rolls as bonus points for a strike', function() {
+    frame.roll(10);
+    frame.bonusRoll(2);
+    frame.bonusRoll(3);
+    expect(frame.calculateScore()).toEqual(15);
+  });
+
+  it('should not add points from third roll after a strike', function() {
+    frame.roll(10);
+    frame.bonusRoll(2);
+    frame.bonusRoll(3);
+    frame.bonusRoll(5);
+    expect(frame.calculateScore()).toEqual(15);
+  });
 });

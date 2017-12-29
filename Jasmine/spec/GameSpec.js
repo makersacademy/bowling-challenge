@@ -49,5 +49,5 @@ describe('Game', function() {
     game.currentMove(4);
     expect(game.currentFrameIndex).toEqual(1);
   });
-
+  
 });

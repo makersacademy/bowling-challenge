@@ -3,6 +3,7 @@ function Frame(number) {
   this.frameNumber = number;
   this._totalPinsDown = 0;
   this._rollCount = 0;
+  this._bonusCount = 0;
 }
 
 Frame.prototype.roll = function(pinsDown) {
@@ -12,8 +13,25 @@ Frame.prototype.roll = function(pinsDown) {
   }
 };
 
+Frame.prototype.bonusRoll = function(pinsDown) {
+  if (!this.isBonusFinished()) {
+    this._totalPinsDown += pinsDown;
+    this._bonusCount += 1;
+  }
+};
+
+Frame.prototype.bonusCount = function() {
+  return this._bonusCount;
+};
+
 Frame.prototype.calculateScore = function() {
   return this._totalPinsDown;
+};
+
+Frame.prototype.isBonusFinished = function() {
+  if (this._bonusCount === 2 && this.isAStrike()) {
+    return true;
+  }
 };
 
 Frame.prototype.isFinished = function() {
@@ -27,7 +45,7 @@ Frame.prototype.isFinished = function() {
 };
 
 Frame.prototype.isAStrike = function() {
-  if (this._totalPinsDown === 10 && this._rollCount === 1) {
+  if (this._totalPinsDown >= 10 && this._rollCount === 1) {
     return true;
   } else {
     return false;

@@ -7,13 +7,23 @@ describe("Game", function(){
 
   it("calculates a gutter game", function(){
     rollMany(20, 0);
-    expect(game.score()).toEqual(0);
+    expect(game.calculateScore()).toEqual(0);
   });
 
   it("calculates all ones", function(){
     rollMany(20, 1);
-    expect(game.score()).toEqual(20);
+    expect(game.calculateScore()).toEqual(20);
   });
+
+  it("calculates one spare", function(){
+    game.roll(5);
+    game.roll(5);
+    game.roll(3);
+    rollMany(17,0);
+    expect(game.calculateScore()).toEqual(16);
+  });
+
+
 
   function rollMany(rolls, pins){
     for(var i = 0; i < rolls; i++){

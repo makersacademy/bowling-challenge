@@ -54,7 +54,7 @@ describe("Game", function(){
     for(var i = 0; i < rolls; i++){
       game.roll(pins);
     }
-  };
+  }
 
   function rollASpare(){
     game.roll(5);

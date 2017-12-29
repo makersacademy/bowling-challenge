@@ -2,17 +2,16 @@ function Game(){
   this.score = 0;
   this.rolls = new Array(21).fill(0);
   this.currentRoll = 0;
-};
+}
 
 Game.prototype.roll = function(pins){
   this.rolls[this.currentRoll++] = pins;
 };
 
 Game.prototype.calculateScore = function(){
-  var rolls = this.rolls
   var score = this.score
   var rollIndex = 0;
-  for (frame = 0; frame < 10; frame++) {
+  for (var frame = 0; frame < 10; frame++) {
     if (this.isStrike(rollIndex)){
       score += 10 + this.strikeBonus(rollIndex);
       rollIndex ++;

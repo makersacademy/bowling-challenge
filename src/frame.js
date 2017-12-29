@@ -14,3 +14,12 @@ Frame.prototype.isAStrike = function() {
     return false;
   };
 };
+
+
+Frame.prototype.isASpare = function() {
+  if (this.score[0] + this.score[1] == 10){
+    return true;
+  } else {
+    return false;
+  };
+};

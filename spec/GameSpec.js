@@ -65,9 +65,14 @@ describe("Game", function() {
       expect(game.score()).toEqual(30);
     })
 
-    it("can return a gutter game", function() {
+    it("calculates a gutter game", function() {
       for(var i = 0; i < 20; i++) { game.bowl(0) };
       expect(game.score()).toEqual(0);
+    });
+
+    it("calculates a perfect game", function() {
+      for(var i = 0; i < 12; i++) { game.bowl(10) };
+      expect(game.score()).toEqual(300);
     });
   });
 });

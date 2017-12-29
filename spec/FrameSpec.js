@@ -47,7 +47,17 @@ describe("Frame", function() {
       frame.bowl(3);
       frame.bowl(5);
       expect(frame.frameScore()).toEqual(8);
-    })
+    });
+  });
+
+  describe("#finalFrameScore", function() {
+    it("calculates the final frame score", function() {
+      frame.bowl(10);
+      frame.bowl(10);
+      frame.bowl(10);
+      expect(frame.finalFrameScore()).toEqual(30);
+    });
+
   })
 
 });

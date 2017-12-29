@@ -24,3 +24,12 @@ Frame.prototype.frameScore = function() {
     return MAX_PINS;
   };
 };
+
+Frame.prototype.finalFrameScore = function() {
+  if(this.bowlIndex > 3) {
+    return(this.bowls[0] + this.bowls[1] + this.bowls[2]);
+  }
+  else {
+    return this.bowls[0] + this.bowls[1];
+  };
+};

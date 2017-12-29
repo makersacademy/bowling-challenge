@@ -48,11 +48,9 @@ Frame.prototype.endFrame = function(rollScore) {
 }
 
 Frame.prototype.finalFrame = function(rollScore) {
-  if (this.rollNumber == 3) {
+  console.log("running final frame")
+  console.log("roll number " + this.rollNumber)
+  if (this.rollNumber == 3 || (this.rollNumber == 2 && this.score < 10)) {
     this.isFrameOver = true;
-  } else if (this.rollNumber == 2 && this.score < 10) {
-    this.isFrameOver = true;
-  } else {
-    this.rollNumber += 1;
    }
 }

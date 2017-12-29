@@ -88,16 +88,12 @@ describe("Game", function() {
     game.bowl(10)
     expect(game.currentFrame.isFrameOver).toEqual(false)
   })
-  it("should set the 12th frame to be the final frame", function() {
-    game.frameNumber = 11
-    game.bowl(10)
-    expect(game.currentFrame.isFinalFrame).toEqual(true)
-  })
   it("should allow three rolls in the final frame if the first is a strike", function() {
-    game.frameNumber = 11
+    game.frameNumber = 9
     game.bowl(10)
     game.bowl(10)
     game.bowl(10)
+    expect(game.frameNumber).toEqual(10)
     expect(game.currentFrame.isFrameOver).toEqual(false)
   })
   it("should correctly score a perfect game", function() {

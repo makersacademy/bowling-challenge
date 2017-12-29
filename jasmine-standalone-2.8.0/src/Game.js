@@ -14,7 +14,12 @@ Game.prototype.bowl = function(num) {
   this.currentFrame.bowl(num);
   this.score += num;
   this.manageFrame()
-  console.log(this.score)
+  console.log("total " + this.score)
+  if (this.frameBeforeLast) {
+    console.log("frame before last " + this.frameBeforeLast.score)
+    console.log("last frame " + this.lastFrame.score)
+  }
+  console.log("this frame " + this.currentFrame.score)
 };
 
 Game.prototype.manageFrame = function() {
@@ -26,7 +31,7 @@ Game.prototype.manageFrame = function() {
 
 Game.prototype.createNewFrame = function() {
   this.frameNumber ++;
-  this.currentFrame = this.frameNumber == 12 ? new Frame(true) : new Frame();
+  this.currentFrame = this.frameNumber == 10 ? new Frame(true) : new Frame();
   this.frames.push(this.currentFrame);
   this.setPreviousFrames();
 }

@@ -6,7 +6,7 @@ function Frame(number) {
 }
 
 Frame.prototype.roll = function(pinsDown) {
-  if (this._rollCount < 2) {
+  if (!this.isFinished()) {
     this._totalPinsDown += pinsDown;
     this._rollCount += 1;
   }

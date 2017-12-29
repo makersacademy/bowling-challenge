@@ -39,4 +39,10 @@ describe('Frame', function() {
     frame.roll(10);
     expect(frame.isFinished()).toBe(true);
   });
+
+  it('should not add points to the frame\'s score after a strike', function() {
+    frame.roll(10);
+    frame.roll(4);
+    expect(frame.calculateScore()).toEqual(10);
+  });
 });

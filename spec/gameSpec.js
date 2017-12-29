@@ -6,17 +6,19 @@ describe("Game", function(){
   });
 
   it("calculates a gutter game", function(){
-    for(var i = 0; i < 20; i++){
-      game.roll(0)
-    }
+    rollMany(20, 0);
     expect(game.score()).toEqual(0);
   });
 
   it("calculates all ones", function(){
-    for(var i = 0; i < 20; i++){
-      game.roll(1)
-    }
+    rollMany(20, 1);
     expect(game.score()).toEqual(20);
   });
+
+  function rollMany(rolls, pins){
+    for(var i = 0; i < rolls; i++){
+      game.roll(pins);
+    }
+  };
 
 });

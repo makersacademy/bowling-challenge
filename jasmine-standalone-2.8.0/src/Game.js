@@ -28,10 +28,7 @@ Game.prototype.createNewFrame = function() {
   this.frameNumber ++;
   this.currentFrame = this.frameNumber == 12 ? new Frame(true) : new Frame();
   this.frames.push(this.currentFrame);
-  this.lastFrame = this.frames[this.frames.indexOf(this.currentFrame) - 1];
-  if (this.frameNumber > 2) {
-    this.frameBeforeLast = this.frames[this.frames.indexOf(this.currentFrame) - 2];
-  }
+  this.setPreviousFrames();
 }
 
 Game.prototype.addBonus = function() {
@@ -58,5 +55,12 @@ Game.prototype.consecutiveStrikesBonus = function() {
   if (this.frameBeforeLast && this.frameBeforeLast.isStrike) {
     this.frameBeforeLast.score += this.currentFrame.rollOneScore;
     this.score += this.currentFrame.rollOneScore;
+  }
+}
+
+Game.prototype.setPreviousFrames = function() {
+  this.lastFrame = this.frames[this.frames.indexOf(this.currentFrame) - 1];
+  if (this.frameNumber > 2) {
+    this.frameBeforeLast = this.frames[this.frames.indexOf(this.currentFrame) - 2];
   }
 }

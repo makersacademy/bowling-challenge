@@ -18,18 +18,20 @@ Frame.prototype.bowl = function(rollScore) {
 }
 
 Frame.prototype.checkScoreType = function(rollScore) {
-  if (rollScore === 10) {
+  if (rollScore === 10 && this.rollNumber == 1) {
     this.isStrike = true;
     this.rollOneScore = 10;
   }
   else if (this.rollNumber === 2 && this.score === 10) {
     this.isSpare = true
+    this.rollTwoScore = rollScore
   }
 }
 
 Frame.prototype.manageRoll = function(rollScore) {
   if (!this.isFinalFrame && (this.rollNumber === 2 || rollScore === 10)) {
     this.isFrameOver = true;
+    this.rollTwoScore = rollScore;
   } else if (this.isFinalFrame) {
     this.finalFrame(rollScore)
   } else {

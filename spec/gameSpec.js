@@ -45,6 +45,11 @@ describe("Game", function(){
     expect(game.calculateScore()).toEqual(16);
   });
 
+  it("calculates 12 strikes", function(){
+    rollMany(12,10);
+    expect(game.calculateScore()).toEqual(300);
+  });
+
   function rollMany(rolls, pins){
     for(var i = 0; i < rolls; i++){
       game.roll(pins);

@@ -8,18 +8,13 @@ Frame.prototype.bowl = function(firstBowl, secondBowl) {
 };
 
 Frame.prototype.isAStrike = function() {
-  if (this.score[0] == 10){
-    return true;
-  } else {
-    return false;
-  };
+  return this.score[0] === 10;
 };
 
-
 Frame.prototype.isASpare = function() {
-  if (this.score[0] + this.score[1] == 10){
-    return true;
-  } else {
-    return false;
-  };
+  return this.score[0] + this.score[1] == 10;
+};
+
+Frame.prototype.isAGutterBall = function() {
+  return this.score[0] == 0 && this.score[1] == 0;
 };

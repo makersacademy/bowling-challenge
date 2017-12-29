@@ -42,4 +42,20 @@ describe("frame", function() {
 
   });
 
+  describe("gutter ball checker", function() {
+
+    it("should return true if a gutter ball is bowled", function() {
+      var frame = new Frame(1);
+      frame.bowl(0, 0);
+      expect(frame.isAGutterBall()).toEqual(true);
+    });
+
+    it('should return false if a gutter ball is not bowled', function() {
+      var frame = new Frame(1);
+      frame.bowl(2,3);
+      expect(frame.isAGutterBall()).toEqual(false);
+    });
+
+  });
+
 });

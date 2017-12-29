@@ -32,19 +32,18 @@ Game.prototype.createNewFrame = function() {
 }
 
 Game.prototype.addBonus = function() {
-  this.strikeBonus();
-  this.spareBonus();
+  this.addStrikeBonus();
+  this.addSpareBonus();
 }
 
-Game.prototype.strikeBonus = function() {
+Game.prototype.addStrikeBonus = function() {
   if (this.lastFrame && this.lastFrame.isStrike) {
-    this.lastFrame.score += this.currentFrame.score;
-    this.score += this.currentFrame.score;
+    this.strikeBonus()
     this.consecutiveStrikesBonus()
   }
 }
 
-Game.prototype.spareBonus = function() {
+Game.prototype.addSpareBonus = function() {
   if (this.lastFrame && this.lastFrame.isSpare) {
     this.lastFrame.score += this.currentFrame.rollOneScore;
     this.score += this.currentFrame.rollOneScore;
@@ -63,4 +62,10 @@ Game.prototype.setPreviousFrames = function() {
   if (this.frameNumber > 2) {
     this.frameBeforeLast = this.frames[this.frames.indexOf(this.currentFrame) - 2];
   }
+}
+
+Game.prototype.strikeBonus = function() {
+  var bonus = this.currentFrame.rollOneScore + this.currentFrame.rollTwoScore
+  this.lastFrame.score += bonus;
+  this.score += bonus;
 }

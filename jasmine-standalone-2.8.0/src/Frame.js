@@ -29,23 +29,33 @@ Frame.prototype.checkScoreType = function(rollScore) {
 }
 
 Frame.prototype.manageRoll = function(rollScore) {
-  if (!this.isFinalFrame && (this.rollNumber === 2 || rollScore === 10)) {
-    this.isFrameOver = true;
-    this.rollTwoScore = rollScore;
-  } else if (this.isFinalFrame) {
-    this.finalFrame(rollScore)
-  } else {
+  this.endFrame(rollScore)
+  if (this.isFrameOver == false) {
     this.rollNumber += 1;
     this.rollOneScore = rollScore;
    }
 }
 
+Frame.prototype.endFrame = function(rollScore) {
+  if (!this.isFinalFrame && this.rollNumber === 2) {
+    this.isFrameOver = true;
+    this.rollTwoScore = rollScore;
+  } else if (!this.isFinalFrame && this.isStrike) {
+    this.isFrameOver = true
+  } else if (this.isFinalFrame) {
+    this.finalFrame(rollScore)
+  }
+}
+
 Frame.prototype.finalFrame = function(rollScore) {
-  if (this.rollNumber == 3 || (this.rollNumber == 2 && this.score < 10)) {
+  if (this.rollNumber == 3) {
+    this.isFrameOver = true;
+  } else if (this.rollNumber == 2 && this.score < 10) {
+    this.rollTwoScore = rollScore
     this.isFrameOver = true;
   } else {
     if (this.rollNumber == 1) {this.rollOneScore = rollScore};
-    if (this.rollNumber == 1) {this.rollTwoScore = rollScore};
+    if (this.rollNumber == 2) {this.rollTwoScore = rollScore};
     this.rollNumber += 1;
    }
 }

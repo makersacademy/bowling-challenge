@@ -27,22 +27,26 @@ describe('Game', () => {
   });
 
   it('creates new frame only if last turn is complete', () => {
-    game.takeTurn();
-    game.takeTurn();
-    game.takeTurn();
     spyOn(Math, 'random').and.returnValue(5);
+    game.takeTurn();
+    game.takeTurn();
+    game.takeTurn();
     expect(game.frames.length).toBe(2)
   });
 
 
-  it('creates new frame player gets strike', () => {
+  it('creates new frame when player gets strike', () => {
     spyOn(Math, 'random').and.returnValue(10);
     game.takeTurn();
-    expect(game.frames.length).toBe(1)
+    game.takeTurn();
+    expect(game.frames.length).toBe(2)
   });
 
-  // it('creates new frame player gets strike', () => {
-  //   spyOn(Math, 'random').and.returnValue(10);
-  //   expect(game.frames.length).toBe(0)
-  // });
+  it('has max 10 frames', () => {
+    spyOn(Math, 'random').and.returnValue(10);
+    let i = 0
+    while(i <= 10){ game.takeTurn(); i++ }
+    expect(function(){ game.takeTurn() }).toThrowError('10 frames complete start new game');
+  });
+
 });

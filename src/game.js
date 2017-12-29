@@ -23,7 +23,11 @@ Game.prototype.createFrame = function () {
 
 
 Game.prototype.getFrame = function () {
-  this.frames.push(new Frame())
+  if(this.frames.length <= 10){
+    this.frames.push(new Frame());
+  } else {
+    throw new Error("10 frames complete start new game");
+  }
 };
 
 Game.prototype.countScore = function (frame) {

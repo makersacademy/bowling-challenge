@@ -1,20 +1,19 @@
-function Frame(frameNumber) {
-  this.frameNumber = frameNumber;
-  this.score = []
+function Frame() {
+  this.bowls = []
 };
 
 Frame.prototype.bowl = function(firstBowl, secondBowl) {
-  this.score = [firstBowl, secondBowl];
+  this.bowls = [firstBowl, secondBowl];
 };
 
 Frame.prototype.isAStrike = function() {
-  return this.score[0] === 10;
+  return this.bowls[0] === 10;
 };
 
 Frame.prototype.isASpare = function() {
-  return this.score[0] + this.score[1] == 10;
+  return this.bowls[0] + this.bowls[1] == 10;
 };
 
 Frame.prototype.isAGutterBall = function() {
-  return this.score[0] == 0 && this.score[1] == 0;
+  return this.bowls[0] == 0 && this.bowls[1] == 0;
 };

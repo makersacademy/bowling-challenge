@@ -6,7 +6,9 @@ User Stories
 
 Want to be able to score a single frame
 Want to be able to check for strikes and spares in a frame
+Want to be able to check if a frame is a gutter ball frame
 Want to be able to add multiple frames to a game
+
 
 
 

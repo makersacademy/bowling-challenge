@@ -51,11 +51,4 @@ ScoreSheet.prototype.displayScore = function(frameNumber){
 		}
 	}
 
-	// console.log(this.frames[frameNumber+1]);
-	// console.log(currentFrameFirstRoll, nextFrameFirstRoll, nextFrameSecondRoll);
-	// console.log('current1', currentFrameFirstRoll)
-	// console.log('current2', currentFrameSecondRoll)
-	// console.log('next1', nextFrameFirstRoll)
-	// console.log('next2', nextFrameSecondRoll)
-	// console.log('total first', currentFrameTotal)
 };

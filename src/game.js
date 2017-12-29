@@ -2,6 +2,8 @@ NUMBER_OF_FRAMES = 10
 
 function Game() {
   this.framesList = [];
+  this.scoreList = [];
+  this.score = new Score();
 }
 
 Game.prototype.newFrame = function(firstBowl, secondBowl) {

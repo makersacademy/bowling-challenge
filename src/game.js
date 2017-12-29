@@ -2,9 +2,12 @@ function Game(){
 
 };
 
-Game.prototype.roll = function(){
-}
+var score = 0
+
+Game.prototype.roll = function(pins){
+  score += pins;
+};
 
 Game.prototype.score = function(){
-  return 0;
+  return score;
 };

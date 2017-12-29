@@ -18,6 +18,11 @@ describe("Frame", function() {
     expect(frame.pinCount).toEqual(4)
   });
 
+  it('increases the roll count after the first roll', function() {
+    frame.roll1(5)
+    expect(frame.rollCount).toEqual(1)
+  });
+
   it('bowls the second attempt further reducing the pin count', function() {
     frame.roll1(3)
     frame.roll2(4)
@@ -28,5 +33,10 @@ describe("Frame", function() {
     frame.roll1(6)
     expect(function() {frame.roll2(5)}).toThrowError("There aren't that many pins left!!")
   });
+
+  it("Scores a strike", function() {
+    frame.roll1(10)
+    expect(frame.isAStrike()).toBe(true)
+  })
 
 })

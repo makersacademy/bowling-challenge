@@ -6,16 +6,13 @@ describe("Frame", function() {
   });
 
   it('initiliazes new frames with a score of 0', function() {
-    expect(frame.frameScore).toEqual(0)
+    expect(frame.score).toEqual(0)
   });
 
-  it('initiliazes new frames with 10 pins', function() {
-    expect(frame.pinCount).toEqual(10)
-  });
 
-  it('bowls the first attempt reducing the pin count', function() {
+  it('records the score of the first attempt', function() {
     frame.roll1(6)
-    expect(frame.pinCount).toEqual(4)
+    expect(frame.score).toEqual(6)
   });
 
   it('increases the roll count after the first roll', function() {
@@ -23,10 +20,10 @@ describe("Frame", function() {
     expect(frame.rollCount).toEqual(1)
   });
 
-  it('bowls the second attempt further reducing the pin count', function() {
+  it('records the score after second attempt', function() {
     frame.roll1(3)
     frame.roll2(4)
-    expect(frame.pinCount).toEqual(3)
+    expect(frame.score).toEqual(7)
   });
 
   it("Raises error if pinCount drops below 0", function() {
@@ -37,6 +34,18 @@ describe("Frame", function() {
   it("Scores a strike", function() {
     frame.roll1(10)
     expect(frame.isAStrike()).toBe(true)
+  })
+
+  it("Scores a spare", function() {
+    frame.roll1(5)
+    frame.roll2(5)
+    expect(frame.isASpare()).toBe(true)
+  })
+
+  it("Calculates the score for the frame", function() {
+    frame.roll1(4)
+    frame.roll2(5)
+    expect(frame.frameScore()).toEqual(9)
   })
 
 })

@@ -1,4 +1,11 @@
 body {
-  background-color: aqua;
   text-align: center;
+}
+
+html {
+  background: url("https://fthmb.tqn.com/PtywDMS7QHdmq16a345yu-HZTPw=/2968x1995/filters:no_upscale():fill(FFCC00,1)/172412895-56a0b4a85f9b58eba4b2f911.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }

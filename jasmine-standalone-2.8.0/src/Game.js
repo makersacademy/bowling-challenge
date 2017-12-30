@@ -7,10 +7,10 @@ function Game() {
   this.frames = [this.currentFrame];
 };
 
-Game.prototype.bowl = function(num) {
+Game.prototype.bowl = function(rollScore) {
   if (this.gameOver()) { return }
-  this.currentFrame.bowl(num);
-  this.score += num;
+  this.currentFrame.bowl(rollScore);
+  this.score += rollScore;
   this.manageFrame();
 };
 

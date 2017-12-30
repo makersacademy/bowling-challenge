@@ -19,20 +19,21 @@ Game.prototype.checkGameOver = function(){
   };
 }
 
-Game.prototype.spareDetector = function(frame){
-  index = this.framesList.length-1;
-  return this.framesList[index].isASpare();
-}
-
 Game.prototype.calcScore = function(firstBowl, secondBowl){
-  if(this.framesList.length >= 2 && this.framesList[this.framesList.length-2].isASpare()) {
-    var bonus = this.framesList[this.framesList.length-1].bowls[0];
-    this.score += bonus;
+  if(this.framesList.length >= 2 && this.spareDetector()) {
+    this.addSpareBonus();
   }
   this.score += (firstBowl + secondBowl)
 }
 
+Game.prototype.spareDetector = function(){
+  return this.framesList[this.framesList.length-2].isASpare();
+}
 
+Game.prototype.addSpareBonus = function () {
+  var bonus = this.framesList[this.framesList.length-1].bowls[0];
+  this.score += bonus;
+};
 
 // should be refactored -- maybe redundant now
 Game.prototype.showGamesFrames = function() {

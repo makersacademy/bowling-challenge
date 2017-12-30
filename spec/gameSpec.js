@@ -49,15 +49,17 @@ describe("game", function() {
       expect(game.score).toEqual(24);
     });
 
-    it("should be able to detect if there is a spare, and tally according score", function(){
+    it("should be able to detect if there is a spare", function(){
       game = new Game;
       game.newFrame(3,7);
+      game.newFrame(3,3);
       expect(game.spareDetector()).toEqual(true);
     });
 
-    it("should be able to detect if there is not a spare, and tally according score", function(){
+    it("should be able to detect if there is not a spare", function(){
       game = new Game;
       game.newFrame(10,null);
+      game.newFrame(3,3);
       expect(game.spareDetector()).toEqual(false);
     });
 

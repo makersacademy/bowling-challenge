@@ -40,6 +40,23 @@ describe("game", function() {
       game.newFrame(2,3);
       game.newFrame(5,4);
       expect(game.score).toEqual(14)
+    });
+
+    it("should be able to accomadate for a spare bonus", function() {
+      game = new Game();
+      game.newFrame(2,8);
+      game.newFrame(1,0);
+      expect(game.score).toEqual(12)
+    })
+    it("should score the following game of spares", function(){
+      game = new Game();
+      game.newFrame(1,0);
+      game.newFrame(2,8);
+      game.newFrame(1,0);
+      game.newFrame(5,5);
+      game.newFrame(5,5);
+      game.newFrame(1,0);
+      expect(game.score).toEqual(40)
     })
   });
 });

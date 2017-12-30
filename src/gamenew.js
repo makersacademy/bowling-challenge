@@ -3,12 +3,19 @@ NUMBER_OF_FRAMES = 10
 function Game() {
   this.framesList = [];
   this.score = 0;
-  this.spareBonus = 0;
   this.strikeBonus = 0;
 }
 
 Game.prototype.getMostRecentFrame = function () {
   return this.framesList[this.framesList.length-1];
+};
+
+Game.prototype.getPreviousFrame = function () {
+  return this.framesList[this.framesList.length-2];
+};
+
+Game.prototype.getPreviousPreviousFrame = function () {
+  return this.framesList[this.framesList.length-3];
 };
 
 Game.prototype.showGamesFrames = function() {
@@ -34,7 +41,13 @@ Game.prototype.newFrame = function(firstBowl, secondBowl){
 }
 
 Game.prototype.calcScore = function() {
-  if (!this.getMostRecentFrame().isASpare() && !this.getMostRecentFrame().isAStrike()){
-      this.score += this.getMostRecentFrame().frameScore;
+  if (this.framesList.length == 1 && this.getMostRecentFrame().isASpare()) {
+    this.score += this.getMostRecentFrame().frameScore;
+  } else if (this.framesList.length >= 2 && this.getPreviousFrame().isASpare()) {
+    var spareBonus = this.getMostRecentFrame().bowls[0];
+    this.score += spareBonus;
+    this.score += this.getMostRecentFrame().frameScore;
+  } else if (!this.getMostRecentFrame().isASpare() && !this.getMostRecentFrame().isAStrike()){
+    this.score += this.getMostRecentFrame().frameScore;
   }
 }

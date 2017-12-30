@@ -33,6 +33,7 @@ describe("game", function() {
       }).toThrowError("Game has finished");
     });
   });
+
   describe("frame score", function() {
     it("should be able to score a frame that is not a strike or spare", function() {
       game = new Game();
@@ -49,7 +50,22 @@ describe("game", function() {
     });
 
     it("should be able to detect if there is a spare, and tally according score", function(){
-      
+      game = new Game;
+      game.newFrame(3,7);
+      expect(game.spareDetector()).toEqual(true);
+    });
+
+    it("should be able to detect if there is not a spare, and tally according score", function(){
+      game = new Game;
+      game.newFrame(10,null);
+      expect(game.spareDetector()).toEqual(false);
+    });
+
+    it("should be able to add the bonus of a spare", function(){
+      game = new Game;
+      game.newFrame(2,8);
+      game.newFrame(2,3);
+      expect(game.score).toEqual(17);
     })
 
   });

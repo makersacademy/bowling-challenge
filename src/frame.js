@@ -11,7 +11,7 @@ Frame.prototype.isAStrike = function() {
 };
 
 Frame.prototype.isASpare = function() {
-  return this.bowls[0] + this.bowls[1] == 10;
+  return this.bowls[0] + this.bowls[1] == 10 && !(this.isAStrike());
 };
 
 Frame.prototype.isAGutterBall = function() {

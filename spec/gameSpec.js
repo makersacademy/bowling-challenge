@@ -5,11 +5,29 @@ describe("Game", function() {
     game = new Game;
   });
 
-  it("initiliazes a new game with an empty array of frames", function() {
-    expect(game.frames.length).toEqual(0)
+  it("initiliazes a new game with an array containing the first frame", function() {
+    expect(game.frames.length).toEqual(1)
   });
 
   it("starts a new game with a score of 0", function() {
     expect(game.calculateGameScore()).toEqual(0)
   });
+
+  // it("Starts the game at frame 1", function() {
+  //   expect(game.frameNumber).toEqual(1)
+  // });
+
+  it("Adds a new frame", function() {
+    game.addNewFrame()
+    expect(game.frames.length).toEqual(2)
+  });
+
+  it("should stop new frames being added when there are 10 frames", function() {
+    for (i = 0; i <= 10; i++) {
+      game.addNewFrame();
+    };
+    game.addNewFrame()
+    expect(game.frames.length).toEqual(10)
+  });
+
 })

@@ -1,5 +1,9 @@
 function Game() {
-  this.frames = []
+
+  this.currentFrame = new Frame
+  this.frames = [this.currentFrame]
+
+
 };
 
 Game.prototype.calculateGameScore = function() {
@@ -8,4 +12,14 @@ Game.prototype.calculateGameScore = function() {
     finalScore += frame.score
   });
   return finalScore
+};
+
+Game.prototype.addNewFrame = function() {
+  if (this.gameIsOver()) { return }
+  this.frames.push(new Frame)
+  
+};
+
+Game.prototype.gameIsOver = function() {
+  return this.frames.length >= 10
 };

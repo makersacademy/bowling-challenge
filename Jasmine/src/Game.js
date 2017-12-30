@@ -24,9 +24,21 @@ Game.prototype.calculateTotalScore = function() {
 };
 
 Game.prototype.currentMove = function(pinsDown) {
-  var frame = this.currentFrame();
-  frame.roll(pinsDown);
-  if (frame.isFinished()) {
+  var currentFrame = this.currentFrame();
+  currentFrame.roll(pinsDown);
+  this.applyBonusRolls(pinsDown);
+  if (currentFrame.isFinished()) {
     this.advanceFrame();
+  }
+};
+
+Game.prototype.applyBonusRolls = function(pinsDown) {
+  if (this.currentFrameIndex > 0) {
+    var previousFrame = this.frames[this.currentFrameIndex - 1];
+    previousFrame.bonusRoll(pinsDown);
+  }
+  if (this.currentFrameIndex > 1) {
+    var frameBeforeLast = this.frames[this.currentFrameIndex - 2];
+    frameBeforeLast.bonusRoll(pinsDown);
   }
 };

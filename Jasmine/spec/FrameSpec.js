@@ -75,4 +75,12 @@ describe('Frame', function() {
     expect(frame.calculateScore()).toEqual(12);
   });
 
+  it('should not add bonus points if it is not a strike or a spare', function() {
+    frame.roll(3);
+    frame.roll(2);
+    frame.bonusRoll(2);
+    frame.bonusRoll(3);
+    expect(frame.calculateScore()).toEqual(5);
+  });
+
 });

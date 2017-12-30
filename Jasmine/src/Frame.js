@@ -13,29 +13,6 @@ Frame.prototype.roll = function(pinsDown) {
   }
 };
 
-Frame.prototype.bonusRoll = function(pinsDown) {
-  if (!this.isBonusFinished()) {
-    this._totalPinsDown += pinsDown;
-    this._bonusCount += 1;
-  }
-};
-
-Frame.prototype.bonusCount = function() {
-  return this._bonusCount;
-};
-
-Frame.prototype.calculateScore = function() {
-  return this._totalPinsDown;
-};
-
-Frame.prototype.isBonusFinished = function() {
-  if (this._bonusCount === 2 && this.isAStrike()) {
-    return true;
-  } else if (this._bonusCount === 1 && this.isASpare()) {
-    return true;
-  }
-};
-
 Frame.prototype.isFinished = function() {
   if (this._rollCount === 2) {
     return true;
@@ -44,6 +21,28 @@ Frame.prototype.isFinished = function() {
   } else {
     return false;
   }
+};
+
+Frame.prototype.bonusRoll = function(pinsDown) {
+  if (this.isBonusApplicable()) {
+    this._totalPinsDown += pinsDown;
+    this._bonusCount += 1;
+  }
+};
+
+Frame.prototype.isBonusApplicable = function() {
+  if (this.isAStrike() && this._bonusCount < 2) {
+    return true;
+  }
+  else if (this.isASpare() && this._bonusCount < 1) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+Frame.prototype.bonusCount = function() {
+  return this._bonusCount;
 };
 
 Frame.prototype.isAStrike = function() {
@@ -60,4 +59,8 @@ Frame.prototype.isASpare = function() {
   } else {
     return false;
   }
+};
+
+Frame.prototype.calculateScore = function() {
+  return this._totalPinsDown;
 };

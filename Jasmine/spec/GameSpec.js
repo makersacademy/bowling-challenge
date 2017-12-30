@@ -50,4 +50,11 @@ describe('Game', function() {
     expect(game.currentFrameIndex).toEqual(1);
   });
 
+  it('should call rollBonus on previous frame', function() {
+    var firstFrame = game.frames[0];
+    spyOn(firstFrame, 'bonusRoll');
+    game.currentMove(10);
+    game.currentMove(2);
+    expect(firstFrame.bonusRoll).toHaveBeenCalledWith(2);
+  });
 });

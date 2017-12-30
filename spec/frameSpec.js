@@ -45,7 +45,7 @@ describe("Frame", function() {
   it("Calculates the score for the frame", function() {
     frame.roll1(4)
     frame.roll2(5)
-    expect(frame.frameScore()).toEqual(9)
+    expect(frame.calculateFrameScore()).toEqual(9)
   })
 
 })

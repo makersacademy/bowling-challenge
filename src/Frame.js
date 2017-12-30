@@ -33,6 +33,6 @@ Frame.prototype.isASpare = function() {
   }
 };
 
-Frame.prototype.frameScore = function() {
+Frame.prototype.calculateFrameScore = function() {
   return(this.score)
 };

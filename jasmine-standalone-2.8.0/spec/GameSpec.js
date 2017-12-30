@@ -49,6 +49,12 @@ describe("Game", function() {
       game.bowl(2)
       expect(game.score).toEqual(18)
     })
+    it("should move to the next frame when a strike is scored", function() {
+      game.bowl(10)
+      expect(game.frameNumber).toEqual(2)
+      game.bowl(10)
+      expect(game.frameNumber).toEqual(3)
+    })
     it("should calculate scores with consecutive strikes", function() {
       game.bowl(10)
       game.bowl(10)

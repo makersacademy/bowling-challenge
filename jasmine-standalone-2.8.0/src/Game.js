@@ -70,3 +70,7 @@ Game.prototype.strikeBonus = function() {
 Game.prototype.gameIsOver = function() {
   return this.frameNumber > 10
 }
+
+Game.prototype.displayScore = function() {
+  return this.gameIsOver() ? "FINAL SCORE: " + this.score : "Score "  + this.score;
+}

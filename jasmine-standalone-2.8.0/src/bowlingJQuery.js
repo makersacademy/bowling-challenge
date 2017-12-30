@@ -3,7 +3,7 @@ $(document).ready(function() {
   var game = new Game();
 
   function updateGame() {
-    $('#current_score').text("Score: " + game.score)
+    $('#current_score').text(game.displayScore())
     $('#current_frame').text("Frame: " + game.frameNumber);
   };
 

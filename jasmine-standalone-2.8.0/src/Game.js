@@ -8,9 +8,10 @@ function Game() {
 };
 
 Game.prototype.bowl = function(num) {
+  if (this.gameOver()) { return }
   this.currentFrame.bowl(num);
   this.score += num;
-  this.manageFrame()
+  this.manageFrame();
 };
 
 Game.prototype.manageFrame = function() {
@@ -64,4 +65,8 @@ Game.prototype.strikeBonus = function() {
   var bonus = this.currentFrame.rollOneScore + this.currentFrame.rollTwoScore
   this.lastFrame.score += bonus;
   this.score += bonus;
+}
+
+Game.prototype.gameOver = function() {
+  return this.frameNumber > 10
 }

@@ -84,13 +84,19 @@ describe("game", function() {
       expect(game.score).toEqual(26);
     })
 
-    it("should be able to handle consecutive strikes", function(){
+    it("should be able to detect two consecutive strikes", function(){
       game = new Game;
       game.newFrame(10,null);
       game.newFrame(10,null);
+      expect(game.doubleStrikeDetector()).toEqual(true);
+    })
+
+    xit("should be able to handle two consecutive strikes", function(){
+      game = new Game;
+      game.newFrame(10,null);
       game.newFrame(10,null);
       game.newFrame(1,1);
-      expect(game.score).toEqual(65);
+      expect(game.score).toEqual(35);
     })
   });
 });

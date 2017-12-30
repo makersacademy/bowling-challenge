@@ -58,4 +58,12 @@ describe("frame", function() {
 
   });
 
+  describe("calcFrameScore", function(){
+    it("should add the number of pins knocked down", function(){
+      var frame = new Frame();
+      frame.bowl(2,3);
+      expect(frame.calcFrameScore()).toEqual(5);
+    })
+  })
+
 });

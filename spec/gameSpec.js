@@ -68,7 +68,20 @@ describe("game", function() {
       game.newFrame(2,8);
       game.newFrame(2,3);
       expect(game.score).toEqual(17);
-    })
+    });
 
+    it("should be able to detect if there is a strike", function(){
+      game = new Game;
+      game.newFrame(10,null);
+      game.newFrame(3,3);
+      expect(game.strikeDetector()).toEqual(true);
+    });
+
+    it("should be able to tally the score of a strike", function(){
+      game = new Game;
+      game.newFrame(10,null);
+      game.newFrame(4,4);
+      expect(game.score).toEqual(26);
+    })
   });
 });

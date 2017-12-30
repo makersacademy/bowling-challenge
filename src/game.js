@@ -22,6 +22,8 @@ Game.prototype.checkGameOver = function(){
 Game.prototype.calcScore = function(firstBowl, secondBowl){
   if(this.framesList.length >= 2 && this.spareDetector()) {
     this.addSpareBonus();
+  } else if (this.framesList.length >= 2 && this.strikeDetector()) {
+    this.addStrikeBonus();
   }
   this.score += (firstBowl + secondBowl)
 }
@@ -31,9 +33,22 @@ Game.prototype.spareDetector = function(){
 }
 
 Game.prototype.addSpareBonus = function () {
-  var bonus = this.framesList[this.framesList.length-1].bowls[0];
-  this.score += bonus;
+  var spareBonus = this.framesList[this.framesList.length-1].bowls[0];
+  this.score += spareBonus;
 };
+
+Game.prototype.strikeDetector = function () {
+  return this.framesList[this.framesList.length-2].isAStrike()
+};
+
+Game.prototype.addStrikeBonus = function () {
+  var strikeBonus = (this.framesList[this.framesList.length-1].bowls[0] +
+    this.framesList[this.framesList.length-1].bowls[1])
+  this.score += strikeBonus
+};
+
+
+
 
 // should be refactored -- maybe redundant now
 Game.prototype.showGamesFrames = function() {

@@ -1,36 +1,35 @@
 function Game() {
-  this.frames = [new Frame];
-  this.currentFrame = this.frames[this.frames.length - 1]
+  this.frames = Array.apply(null, Array(10)).map(function () {return new Frame()});
+  this.currentFrame = this.frames[this.index]
+  this.index = 0;
 }
 
 Game.prototype.takeTurn = function () {
-  this.createFrame();
+  this.getCurrentFrame();
+  this.getScore()
+  this.countScore(this.currentFrame);
+  this.getNextFrame();
+};
+
+Game.prototype.getNextFrame = function () {
+  if(this.currentFrame.turnOne === 10 ||
+     this.currentFrame.turnTwo !== null){
+    this.index += 1;
+  }
+}
+
+Game.prototype.getScore = function () {
   if (this.currentFrame.turnOne === null) {
     this.currentFrame.turnOne = Math.random();
-  } else {
+  } else if (this.currentFrame.turnTwo === null) {
     this.currentFrame.turnTwo = Math.random();
-    this.countScore(this.currentFrame)
   }
-};
-
-Game.prototype.createFrame = function () {
-  if (this.currentFrame.turnTwo !== null) {
-    this.getFrame();
-  } else if (this.currentFrame.turnOne === 10) {
-    this.getFrame();
-  }
-};
-
-
-Game.prototype.getFrame = function () {
-  if(this.frames.length <= 10){
-    this.frames.push(new Frame());
-  } else {
-    throw new Error("10 frames complete start new game");
-  }
-};
+}
 
 Game.prototype.countScore = function (frame) {
   frame.score = (frame.turnOne + frame.turnTwo);
 };
 
+Game.prototype.getCurrentFrame = function () {
+  this.currentFrame = this.frames[this.index]
+}

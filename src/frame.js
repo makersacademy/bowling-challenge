@@ -1,7 +1,7 @@
 function Frame(){
   this.turnOne = null;
   this.turnTwo = null;
-  this.turnOne = null;
+  this.turnThree = null;
   this.score = 0;
 };
 

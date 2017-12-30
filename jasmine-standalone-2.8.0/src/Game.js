@@ -74,7 +74,9 @@ Game.prototype.gameIsOver = function() {
 Game.prototype.scoreIsImpossible = function(rollScore) {
   if (!this.currentFrame.isFinalFrame) {
    return this.currentFrame.score + rollScore > 10;
- } else {
-   return this.currentFrame.score + rollScore > 30;
- }
+ } else if (this.currentFrame.rollNumber == 2 && this.currentFrame.rollOneScore != 10) {
+   return this.currentFrame.rollOneScore + rollScore > 10;
+ } else if (this.currentFrame.rollOneScore == 10 && this.currentFrame.rollTwoScore != 10 && this.currentFrame.rollNumber == 3) {
+   return (this.currentFrame.rollTwoScore + rollScore > 10)
+ } else { return false }
 }

@@ -106,6 +106,24 @@ describe("Game", function() {
       expect(game.frameNumber).toEqual(10)
       expect(game.currentFrame.isFrameOver).toEqual(false)
     })
+    it("shouldn't allow the second roll to take the first two rolls over 10 unless the first was a strike", function() {
+      game.frameNumber = 9
+      game.bowl(1)
+      game.bowl(1)
+      game.bowl(9)
+      game.bowl(2)
+      expect(game.score).toEqual(11)
+    })
+    it("shouldn't allow the second and third rolls to total more than 10 unless the second was a strike", function() {
+      game.frameNumber = 9
+      game.bowl(1)
+      game.bowl(1)
+      game.bowl(10)
+      game.bowl(9)
+      game.bowl(2)
+      expect(game.score).toEqual(21)
+      expect(game.currentFrame.isFrameOver).toEqual(false)
+    })
   })
   it("should correctly score a perfect game", function() {
     game.bowl(10)
@@ -143,4 +161,5 @@ describe("Game", function() {
     game.bowl(2)
     expect(game.score).toEqual(9)
   })
+
 })

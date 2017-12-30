@@ -8,7 +8,7 @@ function Game() {
 };
 
 Game.prototype.bowl = function(rollScore) {
-  if (this.gameOver()) { return }
+  if (this.gameIsOver() || this.scoreIsImpossible(rollScore)) { return }
   this.currentFrame.bowl(rollScore);
   this.score += rollScore;
   this.manageFrame();
@@ -67,6 +67,14 @@ Game.prototype.strikeBonus = function() {
   this.score += bonus;
 }
 
-Game.prototype.gameOver = function() {
+Game.prototype.gameIsOver = function() {
   return this.frameNumber > 10
+}
+
+Game.prototype.scoreIsImpossible = function(rollScore) {
+  if (!this.currentFrame.isFinalFrame) {
+   return this.currentFrame.score + rollScore > 10;
+ } else {
+   return this.currentFrame.score + rollScore > 30;
+ }
 }

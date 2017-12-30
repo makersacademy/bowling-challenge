@@ -138,4 +138,9 @@ describe("Game", function() {
     game.bowl(10)
     expect(game.score).toEqual(300)
   })
+  it("shouldn't allow a second roll of the frame to take the total frame score past 10", function() {
+    game.bowl(9)
+    game.bowl(2)
+    expect(game.score).toEqual(9)
+  })
 })

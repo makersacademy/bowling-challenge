@@ -83,5 +83,14 @@ describe("game", function() {
       game.newFrame(4,4);
       expect(game.score).toEqual(26);
     })
+
+    it("should be able to handle consecutive strikes", function(){
+      game = new Game;
+      game.newFrame(10,null);
+      game.newFrame(10,null);
+      game.newFrame(10,null);
+      game.newFrame(1,1);
+      expect(game.score).toEqual(65);
+    })
   });
 });

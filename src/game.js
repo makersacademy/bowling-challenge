@@ -2,7 +2,7 @@ NUMBER_OF_FRAMES = 10
 
 function Game() {
   this.framesList = [];
-  this.score = new Score();
+  this.score = 0;
 }
 
 Game.prototype.newFrame = function(firstBowl, secondBowl) {
@@ -10,19 +10,29 @@ Game.prototype.newFrame = function(firstBowl, secondBowl) {
   var frame = new Frame();
   frame.bowl(firstBowl, secondBowl);
   this.framesList.push(frame);
+  this.calcScore(firstBowl, secondBowl);
 }
 
-// should be refactored
-Game.prototype.showGamesFrames = function() {
-  var list = []
-  for(var i = 0; i<this.framesList.length; i++) {
-    list.push(this.framesList[i].bowls)
-  };
-  return list;
+Game.prototype.calcScore = function(firstBowl, secondBowl){
+  this.score += (firstBowl + secondBowl)
 }
 
 Game.prototype.checkGameOver = function() {
   if (this.framesList.length >= NUMBER_OF_FRAMES) {
     throw new Error("Game has finished");
   };
+}
+
+
+
+
+
+
+// should be refactored -- maybe redundant now
+Game.prototype.showGamesFrames = function() {
+  var list = []
+  for(var i = 0; i<this.framesList.length; i++) {
+    list.push(this.framesList[i].bowls)
+  };
+  return list;
 }

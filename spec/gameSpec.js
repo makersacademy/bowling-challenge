@@ -31,6 +31,26 @@ describe("game", function() {
       expect(function() {
         game.newFrame(2,3);
       }).toThrowError("Game has finished");
+    });
+  });
+  describe("frame score", function() {
+    it("should be able to score a frame that is not a strike or spare", function() {
+      game = new Game();
+      game.newFrame(3,2);
+      expect(game.score).toEqual(5);
+    });
+
+    it("should be able to tally scores that are not strikes or spares", function() {
+      game = new Game;
+      game.newFrame(3,5);
+      game.newFrame(4,4);
+      game.newFrame(5,3);
+      expect(game.score).toEqual(24);
+    });
+
+    it("should be able to detect if there is a spare, and tally according score", function(){
+      
     })
+
   });
 });

@@ -17,9 +17,17 @@ Game.prototype.calculateGameScore = function() {
 Game.prototype.addNewFrame = function() {
   if (this.gameIsOver()) { return }
   this.frames.push(new Frame)
-  
+
 };
 
 Game.prototype.gameIsOver = function() {
   return this.frames.length >= 10
+};
+
+Game.prototype.currentFrame = function() {
+  return this.frames[this.frames.length-1]
+};
+
+Game.prototype.previousFrame = function() {
+  return this.frames[this.frames-2]
 };

@@ -3,6 +3,7 @@ describe("Game", function() {
 
   beforeEach(function() {
     game = new Game;
+    spyOn(testFrame, "roll1(pinsHit)");
   });
 
   it("initiliazes a new game with an array containing the first frame", function() {
@@ -29,5 +30,9 @@ describe("Game", function() {
     game.addNewFrame()
     expect(game.frames.length).toEqual(10)
   });
+
+  it("scores a strike", function() {
+    
+  })
 
 })

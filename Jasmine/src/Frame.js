@@ -4,12 +4,26 @@ function Frame(number) {
   this._totalPinsDown = 0;
   this._rollCount = 0;
   this._bonusCount = 0;
+  this._framePinsDown = [];
 }
 
 Frame.prototype.roll = function(pinsDown) {
   if (!this.isFinished()) {
     this._totalPinsDown += pinsDown;
+    this._framePinsDown.push(pinsDown);
     this._rollCount += 1;
+  }
+};
+
+Frame.prototype.formattedRolls = function() {
+  var pin1 = this._framePinsDown[0] || '-';
+  var pin2 = this._framePinsDown[1] || '-';
+  if (this.isAStrike()) {
+    return 'X--';
+  } else if (this.isASpare()) {
+    return pin1 + '-/';
+  } else {
+    return pin1 + '-' + pin2;
   }
 };
 
@@ -33,8 +47,7 @@ Frame.prototype.bonusRoll = function(pinsDown) {
 Frame.prototype.isBonusApplicable = function() {
   if (this.isAStrike() && this._bonusCount < 2) {
     return true;
-  }
-  else if (this.isASpare() && this._bonusCount < 1) {
+  } else if (this.isASpare() && this._bonusCount < 1) {
     return true;
   } else {
     return false;

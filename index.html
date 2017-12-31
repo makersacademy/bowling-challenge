@@ -1,1 +1,66 @@
 <!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bowling Scorecard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>
+      Bowling Scorecard
+    </h1>
+    <form class="bowling-form">
+      <div class="form-group">
+        <label for="pinsDown">Pins</label>
+        <select name="pinsDown" class="form-control" id="pinsDown">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Roll</button>
+    </form>
+    <table class="table">
+      <tr>
+        <th>Frame 1</th>
+        <th>Frame 2</th>
+        <th>Frame 3</th>
+        <th>Frame 4</th>
+        <th>Frame 5</th>
+        <th>Frame 6</th>
+        <th>Frame 7</th>
+        <th>Frame 8</th>
+        <th>Frame 9</th>
+        <th>Frame 10</th>
+      </tr>
+      <tr>
+        <td class="frame-1"></td>
+        <td class="frame-2"></td>
+        <td class="frame-3"></td>
+        <td class="frame-4"></td>
+        <td class="frame-5"></td>
+        <td class="frame-6"></td>
+        <td class="frame-7"></td>
+        <td class="frame-8"></td>
+        <td class="frame-9"></td>
+        <td class="frame-10"></td>
+      </tr>
+    </table>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="src/frame.js"></script>
+  <script src="src/game.js"></script>
+</body>
+
+</html>

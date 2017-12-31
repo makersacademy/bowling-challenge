@@ -18,15 +18,20 @@ describe("Bowling Game", function() {
 	});
 
   it("should be able to roll a normal game (no strikes/spares)", function(){
-    manyRolls(5, 15);
+    manyRolls(3, 15);
     manyRolls(3,5);
-    expect(game.score()).toEqual(90);
+    expect(game.score()).toEqual(60);
   });
 
   it("should be able to roll a strike", function(){
     game.roll(10);
     manyRolls(1,18);
     expect(game.score()).toEqual(30);
+  });
+
+  it("should be able to roll the perfect game", function(){
+    manyRolls(10,12);
+    expect(game.score()).toEqual(300);
   });
 
 

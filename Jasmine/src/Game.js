@@ -12,7 +12,9 @@ Game.prototype.currentFrame = function() {
 };
 
 Game.prototype.advanceFrame = function() {
-  this.currentFrameIndex += 1;
+  if (this.currentFrameIndex < 9) {
+    this.currentFrameIndex += 1;
+  }
 };
 
 Game.prototype.calculateTotalScore = function() {
@@ -25,8 +27,8 @@ Game.prototype.calculateTotalScore = function() {
 
 Game.prototype.currentMove = function(pinsDown) {
   var currentFrame = this.currentFrame();
-  currentFrame.roll(pinsDown);
   this.applyBonusRolls(pinsDown);
+  currentFrame.roll(pinsDown);
   if (currentFrame.isFinished()) {
     this.advanceFrame();
   }
@@ -40,5 +42,9 @@ Game.prototype.applyBonusRolls = function(pinsDown) {
   if (this.currentFrameIndex > 1) {
     var frameBeforeLast = this.frames[this.currentFrameIndex - 2];
     frameBeforeLast.bonusRoll(pinsDown);
+  }
+  if (this.currentFrameIndex === 9 ) {
+    var finalFrame = this.frames[9];
+    finalFrame.bonusRoll(pinsDown);
   }
 };

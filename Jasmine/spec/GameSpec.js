@@ -57,4 +57,22 @@ describe('Game', function() {
     game.currentMove(2);
     expect(firstFrame.bonusRoll).toHaveBeenCalledWith(2);
   });
+
+  it('should not advance frame after the 10th frame', function() {
+    for (var i = 0; i < 20; i++) {
+      game.currentMove(10);
+    }
+    expect(game.currentFrameIndex).toEqual(9);
+  });
+
+  it('should call rollBonus on the 10th frame', function() {
+    var lastFrame = game.frames[9];
+    spyOn(lastFrame, 'bonusRoll');
+    for (var i = 0; i < 18; i++) {
+      game.currentMove(3);
+    }
+    game.currentMove(10);
+    game.currentMove(5);
+    expect(lastFrame.bonusRoll).toHaveBeenCalledWith(5);
+  });
 });

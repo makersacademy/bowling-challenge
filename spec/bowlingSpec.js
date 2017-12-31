@@ -13,9 +13,21 @@ describe("Bowling Game", function() {
 	}
 
 	it("should be able to roll a gutter game", function(){
-		manyRolls(0,20);
+		manyRolls(0, 20);
 		expect(game.score()).toEqual(0);
 	});
+
+  it("should be able to roll a normal game (no strikes/spares)", function(){
+    manyRolls(5, 15);
+    manyRolls(3,5);
+    expect(game.score()).toEqual(90);
+  });
+
+  it("should be able to roll a strike", function(){
+    game.roll(10);
+    manyRolls(1,18);
+    expect(game.score()).toEqual(30);
+  });
 
 
 });

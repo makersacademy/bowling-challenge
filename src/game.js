@@ -10,44 +10,44 @@ Game.prototype.roll = function(pins){
 
 Game.prototype.calculateScore = function(){
   var score = this.score
-  var rollIndex = 0;
+  var frameIndex = 0;
   for (var frame = 0; frame < 10; frame++) {
-    if (this.isStrike(rollIndex)){
-      score += 10 + this.strikeBonus(rollIndex);
-      rollIndex ++;
-    } else if (this.isSpare(rollIndex)){
-      score += 10 + this.spareBonus(rollIndex);
-      rollIndex += 2;
+    if (this.isStrike(frameIndex)){
+      score += 10 + this.strikeBonus(frameIndex);
+      frameIndex ++;
+    } else if (this.isSpare(frameIndex)){
+      score += 10 + this.spareBonus(frameIndex);
+      frameIndex += 2;
     } else {
-      score += this.sumofRollsInFrame(rollIndex);
-      rollIndex += 2;
+      score += this.sumofRollsInFrame(frameIndex);
+      frameIndex += 2;
     }
   }
   this.score = score
   return score
 };
 
-Game.prototype.isSpare = function(rollIndex){
+Game.prototype.isSpare = function(frameIndex){
   var rolls = this.rolls
-  return rolls[rollIndex] + rolls[rollIndex + 1] === 10;
+  return rolls[frameIndex] + rolls[frameIndex + 1] === 10;
 };
 
-Game.prototype.isStrike = function(rollIndex){
+Game.prototype.isStrike = function(frameIndex){
   var rolls = this.rolls
-  return rolls[rollIndex] === 10;
+  return rolls[frameIndex] === 10;
 };
 
-Game.prototype.spareBonus = function(rollIndex){
+Game.prototype.spareBonus = function(frameIndex){
   var rolls = this.rolls
-  return rolls[rollIndex + 2];
+  return rolls[frameIndex + 2];
 }
 
-Game.prototype.strikeBonus = function(rollIndex){
+Game.prototype.strikeBonus = function(frameIndex){
   var rolls = this.rolls
-  return rolls[rollIndex + 1] + rolls[rollIndex + 2];
+  return rolls[frameIndex + 1] + rolls[frameIndex + 2];
 }
 
-Game.prototype.sumofRollsInFrame = function(rollIndex){
+Game.prototype.sumofRollsInFrame = function(frameIndex){
   var rolls = this.rolls
-  return rolls[rollIndex] + rolls[rollIndex + 1];
+  return rolls[frameIndex] + rolls[frameIndex + 1];
 }

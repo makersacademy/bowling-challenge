@@ -1,3 +1,22 @@
+This weekend challenge was to create a 10 pin bowling game using a new language; Javascript which we had began to learn during the week. The premise seemed quite straight forward at first but it the complex logic behind bowling soon became apparent.
+I approached this challenge by firstly creating a lit of requirements for bowling (basically shortened user stories)
+
+1. A player starts with a score of 0
+2. A player scores points for each pin knocked down
+3. A player has max two rolls per frame
+4. A player rolls a strike if all the pins are knocked down in the first roll
+5. If a player rolls a strike they receive 10 points plus the points from the next 2 rolls
+6. A player rolls a spare by knocking down all the pins in two rolls
+7. If a player rolls a spare they receive 10 points and the points from the next roll
+
+
+I didn't manage to complete the challenge due to getting myself into a muddle. Although I followed my requirements I still got confused by not working through the challenge methodically and jumping from idea to idea and getting confused between the class dependencies.
+I believe the lesson to be learned from this is the importance of planning and modelling. With thorough planning I believe I wouldn't have gotten myself and the code into such a muddle. 
+I feel I am poor at these skills and must improve them if I am to become a successful developer.
+
+
+
+
 
 Bowling Challenge
 =================

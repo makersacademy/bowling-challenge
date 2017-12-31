@@ -1,5 +1,5 @@
 describe("Game", function() {
-  console.log("Here")
+  // console.log("Here")
   var game;
 
   beforeEach(function() {
@@ -15,17 +15,19 @@ describe("Game", function() {
     });
     
   });
-
+  // console.log("first test in gamespec done")
   describe("#score", function() {
-
     it("should add up the score of a whole game", function() {
-      for(i = 0; i<= 12; i++) {
-      game.roll(10);
+      for (index = 0; index < 13; index++) {
+        // debugger;
+        // console.log("for loop in gamespec test: " + index);
+        game.roll(10);
       };
+      // console.log("out of spec loop")
       expect(game.score()).toEqual(300);
     });
   });
-
+  // console.log("second test in gamespec done")
 });
 
 

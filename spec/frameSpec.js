@@ -64,6 +64,16 @@ describe("frame", function() {
       frame.bowl(2,3);
       expect(frame.calcFrameScore()).toEqual(5);
     })
+    it("should return spare if a spare is bowled", function(){
+      var frame = new Frame();
+      frame.bowl(2,8);
+      expect(frame.calcFrameScore()).toEqual("Spare")
+    })
+    it("should return strike if a strike is bowled", function(){
+      var frame = new Frame();
+      frame.bowl(10,null);
+      expect(frame.calcFrameScore()).toEqual("Strike")
+    })
   })
 
 });

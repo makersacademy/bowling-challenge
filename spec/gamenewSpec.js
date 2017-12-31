@@ -35,20 +35,46 @@ describe("game", function() {
   });
 
   describe("game score", function() {
-    it("should be able to add without bonus's to score", function() {
-      game = new Game();
-      game.newFrame(2,3);
-      game.newFrame(5,4);
-      expect(game.score).toEqual(14)
-    });
 
-    it("should be able to accomadate for a spare bonus", function() {
+    it("should be able to alter previous frame's score when spare is bowled", function(){
+      game = new Game();
+      game.newFrame(2,2);
+      game.newFrame(2,8);
+      game.newFrame(2,2);
+      expect(game.getPreviousFrame().frameScore).toEqual(12);
+    })
+
+    it("should be able to alter previous frame's score when strike is bowled", function(){
+      game = new Game();
+      game.newFrame(2,2);
+      game.newFrame(10,null);
+      game.newFrame(2,2);
+      expect(game.getPreviousFrame().frameScore).toEqual(14);
+    })
+
+    it("should be able to alter previous frame's score when double strike is bowled", function(){
+      game = new Game();
+      game.newFrame(10,null);
+      game.newFrame(10,null);
+      game.newFrame(2,2);
+      expect(game.getPreviousPreviousFrame().frameScore).toEqual(22);
+    })
+
+    it("should be able to alter previous previous frame when tripple strike is bowled", function(){
+      game = new Game();
+      game.newFrame(10,null);
+      game.newFrame(10,null);
+      game.newFrame(10,null);
+      expect(game.getPreviousPreviousFrame().frameScore).toEqual(30);
+    })
+
+    xit("should be able to accomadate for a spare bonus", function() {
       game = new Game();
       game.newFrame(2,8);
       game.newFrame(1,0);
       expect(game.score).toEqual(12)
     })
-    it("should score the following game of spares", function(){
+    xit("should score the following game of spares", function(){
       game = new Game();
       game.newFrame(1,0);
       game.newFrame(2,8);
@@ -58,5 +84,11 @@ describe("game", function() {
       game.newFrame(1,0);
       expect(game.score).toEqual(40)
     })
+    xit("should be able to add without bonus's to score", function() {
+      game = new Game();
+      game.newFrame(2,3);
+      game.newFrame(5,4);
+      expect(game.score).toEqual(14)
+    });
   });
 });

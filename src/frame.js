@@ -21,6 +21,12 @@ Frame.prototype.isAGutterBall = function() {
 };
 
 Frame.prototype.calcFrameScore = function(){
-  this.frameScore = this.bowls[0] + this.bowls[1];
-  return this.frameScore;
+  if (!this.isASpare() && !this.isAStrike()){
+    this.frameScore = this.bowls[0] + this.bowls[1];
+    return this.frameScore;
+  } else if (this.isAStrike()) {
+    return this.frameScore = "Strike";
+  } else if (this.isASpare()) {
+    return this.frameScore = "Spare";
+  }
 }

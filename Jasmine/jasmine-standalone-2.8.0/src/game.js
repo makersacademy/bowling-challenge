@@ -7,13 +7,15 @@ Game.prototype.roll = function(pins){
 };
 
 Game.prototype.score = function(){
-  var result = 0
+  var result = 0;
   var rollIndex = 0;
+  var game = this;
 
-  for (var frameIndex = 0; frameIndex < 10; frameIndex++){
+  for (var frame = 0; frame< 10; frame++){
 
     //checks if it is a spare
-    if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] == 10){
+    if (isSpare()) {
+      // add an additional roll
       result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
     } else {
       result += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
@@ -22,5 +24,9 @@ Game.prototype.score = function(){
     rollIndex += 2;
   }
     return result;
+
+    function isSpare() {
+      return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10;
+    }
 
 };

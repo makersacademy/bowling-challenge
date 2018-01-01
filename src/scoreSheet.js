@@ -8,66 +8,66 @@ ScoreSheet.prototype.addNewFrame = function(frame){
 };
 
 ScoreSheet.prototype.displayScore = function(frameNumber){
+
+	var currentFrame = this.frames[frameNumber];
+	var nextFrame = this.frames[frameNumber+1];
+	var frameAfterNext = this.frames[frameNumber+2];
+
 	if (this.frames[frameNumber]) {
-		var currentFrameFirstRoll = this.frames[frameNumber].roll[0];
-		var currentFrameSecondRoll = this.frames[frameNumber].roll[1];
-		var currentFrameLastRoll = this.frames[frameNumber].roll[2];
+		var currentFrameFirstRoll = currentFrame.roll[0];
+		var currentFrameSecondRoll = currentFrame.roll[1];
+		var currentFrameLastRoll = currentFrame.roll[2];
 	}
 
-	if(this.frames[frameNumber+1]) {
-		var nextFrameFirstRoll = this.frames[frameNumber+1].roll[0];
-		var nextFrameSecondRoll = this.frames[frameNumber+1].roll[1];
+	if(nextFrame) {
+		var nextFrameFirstRoll = nextFrame.roll[0];
+		var nextFrameSecondRoll = nextFrame.roll[1];
 	}
 
-	if (this.frames[frameNumber+2]) {
-		var frameAfterNextFirstRoll = this.frames[frameNumber+2].roll[0];
+	if (frameAfterNext) {
+		var frameAfterNextFirstRoll = frameAfterNext.roll[0];
 	}
 
-	var currentFrameTotal = this.frames[frameNumber].addTotalFramePoints();
+	var currentFrameTotal = currentFrame.addTotalFramePoints();
+	var display = null;
 
 	if (frameNumber+1 === this.frameLimit && currentFrameLastRoll) {
-		return currentFrameTotal;
-	} else if (currentFrameTotal < 10) {
-		return currentFrameTotal;
-	} else if (currentFrameFirstRoll === 10) {
-		if (this.frames[frameNumber+1]) {
-			if (nextFrameFirstRoll < 10) {
-				if (!nextFrameSecondRoll) return null;
-				return currentFrameFirstRoll + nextFrameFirstRoll + nextFrameSecondRoll;
-			} else if (nextFrameFirstRoll === 0) {
-				return null;
-			} else {
-				if (!this.frames[frameNumber+2]) return null;
-				return currentFrameFirstRoll + nextFrameFirstRoll + frameAfterNextFirstRoll;
-			}
-		} else {
-			return null;
+		display = currentFrameTotal;
+	} else if (isStrike() && nextFrame) {
+		if (nextFrameSecondRoll) {
+			display = calculateDoubleStrikePoints();
+		} else if (frameAfterNext) {
+			display = calculateTripleStrikePoints();
 		}
-	} else if (currentFrameTotal === 10 && currentFrameFirstRoll < 10) {
-		if (this.frames[frameNumber+1]) {
-			return currentFrameTotal + nextFrameFirstRoll;
-		} else {
-			return null;
-		}
+	} else if(isSpare() && nextFrame) {
+		display = calculateSparePoints();
+	} else if (isNotBonus()) {
+		display = currentFrameTotal;
 	}
 
+	return display;
 
-	// // Example complex
-	// if (variableName === true) {
-	// 	return true;
-	// } else {
-	// 	var test1 = 1;
-	// 	var test2 = 2;
-	// 	var test3 = 3;
-	// }
-  //
-	// // Example simple
-	// if (variableName === true) {
-	// 	return true;
-	// }
-	// var test1 = 1;
-	// var test2 = 2;
-	// var test3 = 3;
+	function isStrike() {
+		return currentFrameFirstRoll === 10;
+	}
 
+	function calculateDoubleStrikePoints() {
+		return currentFrameTotal + nextFrameFirstRoll + nextFrameSecondRoll;
+	}
 
+	function calculateTripleStrikePoints() {
+		return currentFrameTotal + nextFrameFirstRoll + frameAfterNextFirstRoll;
+	}
+
+	function isSpare() {
+		return currentFrameFirstRoll + currentFrameSecondRoll === 10;
+	}
+
+	function calculateSparePoints() {
+		return currentFrameTotal + nextFrameFirstRoll;
+	}
+
+	function isNotBonus() {
+		return currentFrameFirstRoll + currentFrameSecondRoll < 10;
+	}
 };

@@ -1,6 +1,16 @@
 h1 {
   text-align: center;
-  font-size: 60px;
+  font-size: 80px;
+  color: #0c4084;
+
+  font-family: 'Monofett', cursive;
+}
+
+body {
+  background-image: url("https://i.imgur.com/ZRMV3vu.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .rolls {
@@ -14,12 +24,16 @@ h1 {
   font-weight: bold;
   border-radius: 50%;
   border: 2px solid;
-  background-color: #2bce88;
+  background-color: #0f8c31;
+}
+
+.rolls button:hover {
+  background-color: #06ff06;
 }
 
 .scoresheet {
   font-size: 20px;
-  width: 80%;
+  width: 70%;
   border: 2px solid;
   border-collapse: collapse;
   text-align: center;
@@ -35,9 +49,9 @@ h1 {
 }
 
 .scoresheet th {
+  font-size: 18px;
   border-bottom: 3px solid;
   background-color: grey;
-
 }
 
 .scoresheet td {
@@ -50,10 +64,10 @@ h1 {
 }
 
 .scoresheet .pins-down td:nth-child(even) {
-  background-color: #2bce88;
+  background-color: #0f8c31;
 }
 
 .scoresheet .pins-down td:last-child {
-  background-color: #2bce88;
+  background-color: #0f8c31;
   border-bottom: 2px solid;
 }

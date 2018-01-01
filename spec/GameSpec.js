@@ -6,17 +6,28 @@ describe("Game", function() {
   })
 
   it("each game starts with 10 pins", function() {
-    expect(game.pins.length).toEqual(10)
+    expect(game.pins).toEqual(10)
   })
 
-  it(" 'knocks pins down' by removing entries from the pins array", function() {
+  it(" 'knocks pins down' by subtracting from pin count", function() {
     game.knockDown(4)
-    expect(game.pins.length).toEqual(6)
+    expect(game.pins).toEqual(6)
   })
 
-  it("resets pins array", function() {
+  it("resets pin count", function() {
     game.knockDown(4)
     game.resetPins()
-    expect(game.pins.length).toEqual(10)
+    expect(game.pins).toEqual(10)
+  })
+
+  // it("increments strike count when scoring a strike", function() {
+  //   game.knockDown(10)
+  //   expect(game.strikes).toEqual(1)
+  // })
+
+  it("plays rounds (2 bowls per round)", function() {
+    game.knockDown(4)
+    game.knockDown(4)
+    expect(game.round).toEqual(2)
   })
 })

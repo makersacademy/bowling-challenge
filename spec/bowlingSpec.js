@@ -52,5 +52,10 @@ describe("game", function() {
         game.bowl(11);
       }).toThrow(new Error("You can't bowl higher than a 10"));
     });
+    it("should skip to the next round on a strike", function() {
+      game.bowl(10);
+      expect(game.roundNumber).toEqual(2);
+      expect(game.throwNumber).toEqual(1);
+    });
   });
 });

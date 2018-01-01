@@ -9,7 +9,7 @@ describe("game", function() {
   });
 
   it("should initialise with 0/10 rounds bowled", function() {
-    expect(game.roundNumber).toEqual(0);
+    expect(game.roundNumber).toEqual(1);
   });
   it("should initialise with a score of 0", function() {
     expect(game.score).toEqual(0);
@@ -17,7 +17,7 @@ describe("game", function() {
   describe("next round", function() {
     it("should increment round number", function() {
       game.nextRound();
-      expect(game.roundNumber).toEqual(1);
+      expect(game.roundNumber).toEqual(2);
     });
     it("should start each round on throw 1", function() {
       game.throwNumber = 2;
@@ -27,9 +27,15 @@ describe("game", function() {
     it("should not progress past 10 rounds", function() {
       game.roundNumber = 10;
       expect(function() {
-        game.nextRound()
+        game.nextRound();
       }).toThrow(new Error("A game is only 10 rounds long"));
       expect(game.roundNumber).toEqual(10);
+    });
+    it("should start a new round if the throw counter goes past 2", function() {
+      game.throwNumber = 3;
+      game.bowl(1);
+      expect(game.roundNumber).toEqual(2);
+      expect(game.throwNumber).toEqual(2);
     });
   });
   describe("bowl", function() {

@@ -6,6 +6,7 @@ var Game = function(){
   this.remainingPins = 10;
   this.bonus = [0,0];
   this.multiplier = 1;
+  this.bonusThrows = 0;
 };
 
 Game.prototype.nextRound = function() {
@@ -30,20 +31,42 @@ Game.prototype.bowl = function(pins) {
       this.bonus[i] = 0;
     }
   };
-  if (pins === 10) {
-    this.nextRound();
-    this.strikeBonus();
-  } else if (pins === this.remainingPins) {
-    this.nextRound();
-    this.spareBonus();
-  } else {
-    this.remainingPins = 10 - pins;
-    this.throwNumber ++ ;
-    if (this.throwNumber >= 3) {
-      this.nextRound();
+  if (this.roundNumber === 10) {
+    if (this.throwNumber >= 4) {
+      throw new Error("Game is over");
     }
+    if (this.throwNumber >= 3 && this.bonusThrows === 0 ){
+      throw new Error("Game is over");
+    }
+    if (this.bonusThrows > 0) {
+      this.bonusThrows -- ;
+    } else if (pins === 10) {
+      this.bonusThrows = 2;
+    } else if (pins === this.remainingPins) {
+      this.bonusThrows = 1;
+      this.remainingPins = 10;
+    } else {
+      this.remainingPins = 10 - pins;
+    }
+    this.throwNumber ++ ;
+    this.score += (pins*this.multiplier);
+  } else {
+
+    if (pins === 10) {
+      this.nextRound();
+      this.strikeBonus();
+    } else if (pins === this.remainingPins) {
+      this.nextRound();
+      this.spareBonus();
+    } else {
+      this.remainingPins = 10 - pins;
+      this.throwNumber ++ ;
+      if (this.throwNumber >= 3) {
+        this.nextRound();
+      }
+    }
+    this.score += (pins*this.multiplier);
   }
-  this.score += (pins*this.multiplier);
 };
 
 Game.prototype.strikeBonus = function() {

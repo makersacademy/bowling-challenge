@@ -63,6 +63,69 @@ describe("game", function() {
       game.bowl(1);
       expect(game.score).toEqual(14);
     });
+    it("should calculate bonuses correctly for a double strike", function() {
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(1);
+      game.bowl(1);
+      game.bowl(1);
+      expect(game.score).toEqual(36);
+    });
+    it("should calculate bonuses correctly for a single spare", function() {
+      game.bowl(9);
+      game.bowl(1);
+      game.bowl(1);
+      expect(game.score).toEqual(12);
+    });
+    it("should calculate bonuses correctly for spare then a strike", function() {
+      game.bowl(9);
+      game.bowl(1);
+      game.bowl(10);
+      game.bowl(1);
+      game.bowl(1);
+      expect(game.score).toEqual(34);
+    });
+    it("should allow two bonus rolls for striking on the 10th round", function() {
+      game.roundNumber = 10;
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      expect(game.score).toEqual(30);
+      expect(function() {
+        game.bowl(1);
+      }).toThrow(new Error("Game is over"));
+    });
+    it("should allow one bonus roll for sparing on the 10th round", function() {
+      game.roundNumber = 10;
+      game.bowl(1);
+      game.bowl(9);
+      game.bowl(10);
+      expect(game.score).toEqual(20);
+      expect(function() {
+        game.bowl(1);
+      }).toThrow(new Error("Game is over"));
+    });
+    it("should allow no bonus rolls unless striking or sparing on the 10th round", function() {
+      game.roundNumber = 10;
+      game.bowl(1);
+      game.bowl(1);
+      expect(game.score).toEqual(2);
+      expect(function() {
+        game.bowl(1);
+      }).toThrow(new Error("Game is over"));
+    });
+    it("should calculate the perfect game as 300 points", function() {
+      for (var i = 0; i < 12; i++) {
+        game.bowl(10);
+      }
+      expect(game.score).toEqual(300);
+    });
+    it("should calculate a gutter game as 0 points", function() {
+      for (var i = 0; i < 20; i++) {
+        game.bowl(0);
+      }
+      expect(game.score).toEqual(0);
+    });
   });
   describe("remaining pins", function() {
     it("should know how many pins remain after a throw", function() {

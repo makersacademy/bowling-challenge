@@ -24,6 +24,13 @@ describe("game", function() {
       game.nextRound();
       expect(game.throwNumber).toEqual(1);
     });
+    it("should not progress past 10 rounds", function() {
+      game.roundNumber = 10;
+      expect(function() {
+        game.nextRound()
+      }).toThrow(new Error("A game is only 10 rounds long"));
+      expect(game.roundNumber).toEqual(10);
+    });
   });
   describe("bowl", function() {
     it("should add the correct number to the score", function() {
@@ -33,6 +40,11 @@ describe("game", function() {
     it("should increment throw number", function() {
       game.bowl(5);
       expect(game.throwNumber).toEqual(2);
+    });
+    it("should not accept bowls over 10", function() {
+      expect(function() {
+        game.bowl(11);
+      }).toThrow(new Error("You can't bowl higher than a 10"));
     });
   });
 });

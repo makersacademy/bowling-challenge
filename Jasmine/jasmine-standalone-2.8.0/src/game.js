@@ -13,15 +13,20 @@ Game.prototype.score = function(){
 
   for (var frame = 0; frame< 10; frame++){
 
-    //checks if it is a spare
-    if (isSpare()) {
+    //checks if it is a strike
+    if (isStrike()) {
+      result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+      rollIndex++;
+    //checks if it is a strike
+      } else if (isSpare()) {
       // add an additional roll
       result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+      rollIndex += 2;
+
     } else {
       result += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+      rollIndex += 2;
     }
-
-    rollIndex += 2;
   }
     return result;
 
@@ -29,4 +34,7 @@ Game.prototype.score = function(){
       return game.rolls[rollIndex] + game.rolls[rollIndex + 1] == 10;
     }
 
+    function isStrike() {
+      return game.rolls[rollIndex] == 10;
+    }
 };

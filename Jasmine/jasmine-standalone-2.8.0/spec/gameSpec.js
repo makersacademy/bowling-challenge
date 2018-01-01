@@ -31,9 +31,14 @@ describe("Game", function(){
     expect(game.score()).toEqual(16);
   });
 
-  // it("plays and add points to score", function(){
-  //   game.roll()
-  //   game.addPoints()
-  //   expect(game.score).toEqual(1)
-  // });
+  it("Rolls a strike", function(){
+    game.roll(10);
+    game.roll(4);
+    game.roll(4);
+
+    for (var i = 0; i < 16; i++){
+      game.roll(0)
+    }
+    expect(game.score()).toEqual(26);
+  });
 });

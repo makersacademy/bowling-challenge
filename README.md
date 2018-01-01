@@ -8,6 +8,7 @@ Write a javascript app to calculate the scores from a 10-pin bowling game for on
 - reload the page to reset the scores
 
 ## To add:
+- buttons for each number of pins (think like a darts score calculator)
 - an actual reset button
 - private methods
 - a summary screen at game-end

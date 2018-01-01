@@ -47,15 +47,21 @@ describe("game", function() {
       game.bowl(5);
       expect(game.throwNumber).toEqual(2);
     });
-    it("should not accept bowls over 10", function() {
+    it("should not accept bowls over the remaining pins", function() {
       expect(function() {
         game.bowl(11);
-      }).toThrow(new Error("You can't bowl higher than a 10"));
+      }).toThrow(new Error("You can't bowl higher than the remaining pins"));
     });
     it("should skip to the next round on a strike", function() {
       game.bowl(10);
       expect(game.roundNumber).toEqual(2);
       expect(game.throwNumber).toEqual(1);
+    });
+  });
+  describe("remaining pins", function() {
+    it("should know how many pins remain after a throw", function() {
+      game.bowl(4);
+      expect(game.remainingPins).toEqual(6);
     });
   });
 });

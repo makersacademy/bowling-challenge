@@ -9,6 +9,7 @@
       <h1>Your score is: <span id='score'></span></h1>
       <h2>Round: <span id='round'></span> </h2>
       <h2>Throw: <span id='throw'></span> </h2>
+      <h2>Remaining pins: <span id='remainingpins'></span> </h2>
 
       <div>
   <input id="pins" type="text" placeholder="Pins hit"/>
@@ -33,6 +34,7 @@
         updateScore();
         updateThrowNumber();
         updateRoundNumber();
+        updatePins();
         $('#pins').val('');
       });
 
@@ -48,9 +50,14 @@
         $('#throw').text(game.throwNumber);
       };
 
+      updatePins = function() {
+        $('#remainingpins').text(game.remainingPins);
+      };
+
       updateScore();
       updateThrowNumber();
       updateRoundNumber();
+      updatePins();
 
     });
 

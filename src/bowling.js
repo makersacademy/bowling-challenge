@@ -15,13 +15,12 @@ Game.prototype.nextRound = function() {
 };
 
 Game.prototype.bowl = function(pins) {
-  if (pins >= 10) {
+  if (pins > 10) {
     throw new Error("You can't bowl higher than a 10");
-  }
-  if (this.throwNumber >= 3) {
-    this.nextRound();
   }
   this.score += pins;
   this.throwNumber ++ ;
-
+  if (this.throwNumber >= 3) {
+    this.nextRound();
+  }
 };

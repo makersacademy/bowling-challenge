@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> BOWLING </title>
+  </head>
+  <body>
+
+      <h1>Your score is: <span id='score'></span></h1>
+      <h2>Round: <span id='round'></span> </h2>
+      <h2>Throw: <span id='throw'></span> </h2>
+
+      <div>
+  <input id="pins" type="text" placeholder="Pins hit" />
+  <button id="hit" type="button" name="">Score</button>
+      </div>
+
+      <script src="bowling.js"></script>
+      <script src="jquery-3.2.1.js"></script>
+  </body>
+
+  <script>
+
+    $(function() {
+      $(game = new Game);
+
+      $('#hit').click(function() {
+        game.bowl(parseInt(($('#pins').val())));
+        updateScore();
+        updateThrowNumber();
+        updateRoundNumber();
+      });
+
+      updateScore = function() {
+        $('#score').text(game.score);
+      };
+
+      updateRoundNumber = function() {
+        $('#round').text(game.roundNumber);
+      };
+
+      updateThrowNumber = function() {
+        $('#throw').text(game.throwNumber);
+      };
+
+      updateScore();
+      updateThrowNumber();
+      updateRoundNumber();
+
+    });
+
+  </script>
+
+
+</html>

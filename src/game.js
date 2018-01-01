@@ -21,36 +21,55 @@ Game.prototype.getNextFrame = function () {
 
 Game.prototype.getScore = function (score) {
   if (this.currentFrame.turnOne === null) {
-    return this.currentFrame.turnOne = score;
+    this.currentFrame.turnOne = score;
   } else if (this.currentFrame.turnTwo === null) {
-    return this.currentFrame.turnTwo = score;
+    this.currentFrame.turnTwo = score;
+  }
+  if (this.isLastFrame() && this.isStrike()) {
+    this.currentFrame.turnTwo = score;
+    this.currentFrame.turnThree = score;
   }
 }
 
 Game.prototype.countScore = function (frame) {
-  frame.score = (frame.turnOne + frame.turnTwo);
-  if (this.index > 0){
+  frame.score = (frame.turnOne + frame.turnTwo + frame.turnThree);
+
+  if (this.index > 1 && this.frames[this.index - 2].turnOne === 10) {
+    this.perfectGame(frame);
+  } else if (this.index > 0) {
     this.countSpearScore(frame);
     this.countStrikeScore(frame);
   }
-  
-  // else if(frame.turnOne === 10) {
-  //   this.countStrikeScore(frame);
-  // }
 };
 
 Game.prototype.countSpearScore = function (frame) {
   if (this.frames[this.index - 1].score === 10 &&
     this.frames[this.index - 1].turnTwo !== null) {
-      this.frames[this.index - 1].score += (frame.turnOne + frame.turnTwo)
+    this.frames[this.index - 1].score += (frame.turnOne + frame.turnTwo)
   }
 }
 
 Game.prototype.countStrikeScore = function (frame) {
   if (this.frames[this.index - 1].turnOne === 10 &&
-      frame.turnTwo !== null) {
-      this.frames[this.index - 1].score += frame.score
+    frame.turnTwo !== null) {
+    this.frames[this.index - 1].score += frame.score
   }
+}
+
+Game.prototype.perfectGame = function (frame) {
+  if (this.frames[this.index - 2].turnOne === 10 &&
+    this.frames[this.index - 1].turnOne === 10) {
+    this.frames[this.index - 2].score +=
+      this.frames[this.index - 1].score + frame.score
+  }
+}
+
+Game.prototype.isLastFrame = function () {
+  return this.index === 9
+}
+
+Game.prototype.isStrike = function () {
+  return this.frames[this.index -1].turnOne === 10;
 }
 
 Game.prototype.getCurrentFrame = function () {

@@ -3,18 +3,28 @@ h1 {
   font-size: 60px;
 }
 
-.rolls button{
+.rolls {
   text-align: center;
-  font-size: 50px;
+}
+
+.rolls button{
+  margin: 5px;
+  height: 45px;
+  width: 45px;
+  font-weight: bold;
+  border-radius: 50%;
+  border: 2px solid;
+  background-color: #2bce88;
 }
 
 .scoresheet {
   font-size: 20px;
+  width: 80%;
   border: 2px solid;
   border-collapse: collapse;
-  /*border-left: 2px solid;*/
   text-align: center;
   margin: 10px auto;
+  table-layout: fixed;
 }
 
 .scoresheet th, tr, td {
@@ -25,13 +35,25 @@ h1 {
 }
 
 .scoresheet th {
-  border-bottom: 5px solid;
+  border-bottom: 3px solid;
+  background-color: grey;
+
 }
 
 .scoresheet td {
   border-bottom: 2px solid;
+    height: 30px;
 }
 
 .scoresheet .pins-down td:nth-child(odd) {
-  background-color: green;
+  border-bottom: none;
+}
+
+.scoresheet .pins-down td:nth-child(even) {
+  background-color: #2bce88;
+}
+
+.scoresheet .pins-down td:last-child {
+  background-color: #2bce88;
+  border-bottom: 2px solid;
 }

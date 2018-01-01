@@ -51,4 +51,23 @@ ScoreSheet.prototype.displayScore = function(frameNumber){
 		}
 	}
 
+
+	// // Example complex
+	// if (variableName === true) {
+	// 	return true;
+	// } else {
+	// 	var test1 = 1;
+	// 	var test2 = 2;
+	// 	var test3 = 3;
+	// }
+  //
+	// // Example simple
+	// if (variableName === true) {
+	// 	return true;
+	// }
+	// var test1 = 1;
+	// var test2 = 2;
+	// var test3 = 3;
+
+
 };

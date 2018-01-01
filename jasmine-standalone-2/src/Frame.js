@@ -5,7 +5,7 @@ function Frame(){
 
 Frame.prototype.roll = function(number){
 	this._rollNumber++;
-	if(isRollExpected()){
+	if(this.isRollExpected()){
 		this._score += number;
 	};
 };

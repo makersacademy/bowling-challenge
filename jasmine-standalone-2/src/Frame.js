@@ -5,7 +5,7 @@ function Frame(){
 
 Frame.prototype.roll = function(number){
 	this._rollNumber++;
-	if((this._rollNumber <=3 && this._score >= 10)||(this._rollNumber <=2)){
+	if(isRollExpected()){
 		this._score += number;
 	};
 };
@@ -16,4 +16,8 @@ Frame.prototype.score = function(){
 
 Frame.prototype.isComplete = function(){
 	return (this._rollNumber >=2 || this._score >= 10);
+};
+
+Frame.prototype.isRollExpected = function(){
+	return (this._rollNumber <=3 && this._score >= 10)||(this._rollNumber <=2)
 };

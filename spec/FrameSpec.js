@@ -31,4 +31,11 @@ describe("Frame", function() {
     expect(frame.isSpare).toBeTruthy();
   })
 
+  it("calculates the total score of the two rolls", function(){
+    frame.roll1(3);
+    frame.roll2(4);
+    frame.getScoreRolls();
+    expect(frame.scoreRolls).toEqual(7);
+  })
+
 })

@@ -11,4 +11,28 @@ describe("game", function() {
   it("should initialise with 0/10 rounds bowled", function() {
     expect(game.roundNumber).toEqual(0);
   });
+  it("should initialise with a score of 0", function() {
+    expect(game.score).toEqual(0);
+  });
+  describe("next round", function() {
+    it("should increment round number", function() {
+      game.nextRound();
+      expect(game.roundNumber).toEqual(1);
+    });
+    it("should start each round on throw 1", function() {
+      game.throwNumber = 2;
+      game.nextRound();
+      expect(game.throwNumber).toEqual(1);
+    });
+  });
+  describe("bowl", function() {
+    it("should add the correct number to the score", function() {
+      game.bowl(5);
+      expect(game.score).toEqual(5);
+    });
+    it("should increment throw number", function() {
+      game.bowl(5);
+      expect(game.throwNumber).toEqual(2);
+    });
+  });
 });

@@ -4,6 +4,8 @@ var Game = function(){
   this.score = 0;
   this.throwNumber = 1;
   this.remainingPins = 10;
+  this.bonus = [0,0];
+  this.multiplier = 1;
 };
 
 Game.prototype.nextRound = function() {
@@ -20,8 +22,20 @@ Game.prototype.bowl = function(pins) {
   if (pins > this.remainingPins) {
     throw new Error("You can't bowl higher than the remaining pins");
   }
-  if (pins === this.remainingPins) {
+  this.bonusCalc();
+  for(var i = 0; i < 2; i++) {
+    if (this.bonus[i] > 0) {
+      this.bonus[i] -- ;
+    } else {
+      this.bonus[i] = 0;
+    }
+  };
+  if (pins === 10) {
     this.nextRound();
+    this.strikeBonus();
+  } else if (pins === this.remainingPins) {
+    this.nextRound();
+    this.spareBonus();
   } else {
     this.remainingPins = 10 - pins;
     this.throwNumber ++ ;
@@ -29,5 +43,30 @@ Game.prototype.bowl = function(pins) {
       this.nextRound();
     }
   }
-  this.score += pins;
+  this.score += (pins*this.multiplier);
+};
+
+Game.prototype.strikeBonus = function() {
+  if (this.bonus[0] <= 0) {
+    this.bonus[0] = 2;
+  } else {
+    this.bonus[1] = 2;
+  }
+};
+
+Game.prototype.spareBonus = function() {
+  if (this.bonus[0] <= 0) {
+    this.bonus[0] = 1;
+  } else {
+    this.bonus[1] = 1;
+  }
+};
+
+Game.prototype.bonusCalc = function() {
+  this.multiplier = 1;
+  for(var i = 0; i < 2; i++) {
+    if(this.bonus[i] > 0) {
+      this.multiplier ++;
+    }
+  };
 };

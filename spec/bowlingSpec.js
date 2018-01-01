@@ -57,11 +57,33 @@ describe("game", function() {
       expect(game.roundNumber).toEqual(2);
       expect(game.throwNumber).toEqual(1);
     });
+    it("should calculate bonuses correctly for a single strike", function() {
+      game.bowl(10);
+      game.bowl(1);
+      game.bowl(1);
+      expect(game.score).toEqual(14);
+    });
   });
   describe("remaining pins", function() {
     it("should know how many pins remain after a throw", function() {
       game.bowl(4);
       expect(game.remainingPins).toEqual(6);
+    });
+  });
+  describe("bonus", function() {
+    it("should be set to [2,0] on a strike", function() {
+      game.bowl(10);
+      expect(game.bonus).toEqual([2,0]);
+    });
+    it("should be set to [1,0] on a spare", function() {
+      game.bowl(1);
+      game.bowl(9);
+      expect(game.bonus).toEqual([1,0]);
+    });
+    it("should be set to [1,2] on a double strike", function() {
+      game.bowl(10);
+      game.bowl(10);
+      expect(game.bonus).toEqual([1,2]);
     });
   });
 });

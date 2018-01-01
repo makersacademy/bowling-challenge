@@ -10,12 +10,10 @@ describe('Scoreboard', () => {
   });
 
   it('can add score of open frames correctly', () => {
-    var currentGame = game;
-    spyOn(Math, 'random').and.returnValue(3);
     let i = 0;
-    while(i < 20){ currentGame.takeTurn(); i++ }
-    scoreboard.calculateTotalScore(currentGame);
-    expect(scoreboard.totalScore).toBe(60);
+    while(i < 20){ game.takeTurn(1); i++ }
+    scoreboard.calculateTotalScore(game);
+    expect(scoreboard.totalScore).toBe(20);
   });
 
 

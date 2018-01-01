@@ -24,10 +24,10 @@ describe('Frame', () => {
     it('frame has turn two', () => {
       expect(frame.turnTwo).toBe(null)
     });
-  });
 
-  describe('', () => {
-
+    it('frame has turn three', () => {
+      expect(frame.turnThree).toBe(null)
+    });
   });
 
 });

@@ -1,10 +1,10 @@
 function Game(){
-  this.score = 0
-};
-
-Game.prototype.roll = function(){
 
 };
-Game.prototype.addPoints = function(){
 
+Game.prototype.roll = function(pins){
+
+};
+Game.prototype.score = function(){
+  return 0
 };

@@ -1,7 +1,7 @@
 var game;
 $(document).ready(function(){
 	newGame()
-
+	$("#Roll0").click(function(){roll(0)});
 	$("#Roll1").click(function(){roll(1)});
 	$("#Roll2").click(function(){roll(2)});
 	$("#Roll3").click(function(){roll(3)});
@@ -34,8 +34,7 @@ newGameHtml = function(){
 roll = function(number){
 
   var value = game.roll(number)
-  console.log("#r" + game.frames.length + "\\." + game.frames.last().rollNumber)
-  $("#r" + game.frames.length + "\\." + game.frames.last().rollNumber).html(value)
+  $("#r" + game.frames.length + "\\." + (game.frames.last().rollNumber-1)).html(value)
   $("#p1score").html(game.score())
 
 };

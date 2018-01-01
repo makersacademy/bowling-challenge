@@ -8,6 +8,8 @@ function Game(){
 
 Game.prototype.roll = function(number){
 
+  var returnValue = this._strikeOrSpare(number)
+
   this._checkRollValid(number);
 
   if (this.frames.last().isComplete() && this.frames.length < 10) {
@@ -18,6 +20,7 @@ Game.prototype.roll = function(number){
     frame.roll(number);
   });
 
+  return returnValue
 };
 
 Game.prototype.score = function(){
@@ -36,7 +39,6 @@ Game.prototype.isFinished = function(){
 };
 
 Game.prototype._checkRollValid = function(roll){
-  console.log(this.frames.last().score() + roll)
   if(this.isFinished()){
     throw(new Error("Game Finished: can't roll"))
   } else if (typeof(roll) != 'number' || roll > 10 || roll < 0){
@@ -45,3 +47,15 @@ Game.prototype._checkRollValid = function(roll){
     throw(new Error("Invalid Roll"))
   };
 };
+
+Game.prototype._strikeOrSpare = function(number){
+  console.log(!this.frames.last().isComplete())
+  console.log((number + this.frames.last().score()) === 10)
+  if (this.frames.last().isComplete() && number === 10){
+    return "X"
+  } else if (!this.frames.last().isComplete() && (number + this.frames.last().score()) === 10){
+    return "/"
+  } else {
+    return number
+  }
+}

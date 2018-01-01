@@ -1,10 +1,10 @@
 function Frame(){
-	this._rollNumber = 0
+	this.rollNumber = 0
 	this._score = 0
 };
 
 Frame.prototype.roll = function(number){
-	this._rollNumber++;
+	this.rollNumber++;
 	if(this.isRollExpected()){
 		this._score += number;
 	};
@@ -15,9 +15,9 @@ Frame.prototype.score = function(){
 };
 
 Frame.prototype.isComplete = function(){
-	return (this._rollNumber >=2 || this._score >= 10);
+	return (this.rollNumber >=2 || this._score >= 10);
 };
 
 Frame.prototype.isRollExpected = function(){
-	return (this._rollNumber <=3 && this._score >= 10)||(this._rollNumber <=2)
+	return (this.rollNumber <=3 && this._score >= 10)||(this.rollNumber <=2)
 };

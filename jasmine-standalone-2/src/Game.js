@@ -8,7 +8,7 @@ function Game(){
 
 Game.prototype.roll = function(number){
 
-  if (this.frames.last().isComplete() && this.frames.length <10) {
+  if (this.frames.last().isComplete() && this.frames.length < 10) {
   	this.frames.push(new Frame())
   };
 
@@ -28,3 +28,7 @@ Game.prototype.score = function(){
 
   return score
 };
+
+Game.prototype.isFinished = function(){
+  return (!this.frames.last().isRollExpected()) && this.frames.length >= 10
+}

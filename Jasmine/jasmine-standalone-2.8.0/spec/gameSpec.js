@@ -10,14 +10,25 @@ describe("Game", function(){
     for (var i = 0; i < 20; i++){
       game.roll(0)
     }
-    expect(game.score()).toEqual(0)
+    expect(game.score()).toEqual(0);
   });
 
   it("Rolls only ones during the whole set of frames", function() {
     for (var i = 0; i < 20; i++){
       game.roll(1)
     }
-    expect(game.score()).toEqual(20)
+    expect(game.score()).toEqual(20);
+  });
+
+  it("Rolls a spare", function(){
+    game.roll(5);
+    game.roll(5);
+    game.roll(3);
+
+    for (var i = 0; i < 17; i++){
+      game.roll(0)
+    }
+    expect(game.score()).toEqual(16);
   });
 
   // it("plays and add points to score", function(){

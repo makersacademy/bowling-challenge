@@ -5,6 +5,7 @@ function Game() {
   this.bowlCount = 0
   this.strikes = 0
   this.spares = 0
+  this.gameOver = false
 }
 
 Game.prototype.knockDown = function(num) {
@@ -32,5 +33,18 @@ Game.prototype.updateRound = function() {
 }
 
 Game.prototype.isNewRound = function() {
-  return this.bowlCount === 2
+  if(this.round < 10) {
+    return this.bowlCount === 2
+  } else {
+    this.isGameOver()
+    return false
+  }
+}
+
+Game.prototype.isGameOver = function() {
+  if(this.bowlCount === 3) {
+    this.gameOver = true
+  } else if (this.strikes === 0 && this.spares === 0 && this.bowlCount === 2) {
+    this.gameOver = true
+  }
 }

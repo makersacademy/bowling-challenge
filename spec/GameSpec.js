@@ -36,4 +36,12 @@ describe("Game", function() {
     game.knockDown(4)
     expect(game.round).toEqual(2)
   })
+
+  it("knows when game has ended", function() {
+    game.round = 10
+    game.knockDown(4)
+    game.knockDown(4)
+    game.knockDown(1)
+    expect(game.gameOver).toBeTruthy()
+  })
 })

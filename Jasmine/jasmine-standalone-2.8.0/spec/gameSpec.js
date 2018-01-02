@@ -7,16 +7,12 @@ describe("Game", function(){
   });
 
   it("Rolls the ball in the gutter", function(){
-    for (var i = 0; i < 20; i++){
-      game.roll(0)
-    }
+    rollingMany(0,20);
     expect(game.score()).toEqual(0);
   });
 
   it("Rolls only ones during the whole set of frames", function() {
-    for (var i = 0; i < 20; i++){
-      game.roll(1)
-    }
+    rollingMany(1,20)
     expect(game.score()).toEqual(20);
   });
 
@@ -25,9 +21,7 @@ describe("Game", function(){
     game.roll(5);
     game.roll(3);
 
-    for (var i = 0; i < 17; i++){
-      game.roll(0)
-    }
+    rollingMany(0,17)
     expect(game.score()).toEqual(16);
   });
 
@@ -36,16 +30,19 @@ describe("Game", function(){
     game.roll(4);
     game.roll(4);
 
-    for (var i = 0; i < 16; i++){
-      game.roll(0)
-    }
+    rollingMany(0,16)
     expect(game.score()).toEqual(26);
   });
 
   it("Rolls only strikes during the whole set of frames", function() {
-    for (var i = 0; i < 12; i++){
-      game.roll(10)
-    }
+    rollingMany(10,12)
     expect(game.score()).toEqual(300);
   });
+
+  function rollingMany(pins, rolls){
+    for (var i = 0; i < rolls; i++){
+      game.roll(pins)
+    }
+  };
+
 });

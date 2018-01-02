@@ -72,4 +72,21 @@ describe("Game", function() {
     game.knockDown(1)
     expect(game.score).toEqual(44)
   })
+
+  it("scores a spare finish correctly in round 10", function() {
+    game.round = 10
+    game.knockDown(6)
+    game.knockDown(4)
+    game.knockDown(7)
+    expect(game.score).toEqual(17)
+  })
+
+  it("scores a strike finish correctly in round 10", function() {
+    game.round = 10
+    game.knockDown(10)
+    game.knockDown(4)
+    game.knockDown(3)
+    expect(game.score).toEqual(17)
+  })
+
 })

@@ -41,7 +41,27 @@ describe("Game", function() {
     game.round = 10
     game.knockDown(4)
     game.knockDown(4)
-    game.knockDown(1)
     expect(game.gameOver).toBeTruthy()
+  })
+
+  it("tracks the score", function() {
+    game.knockDown(4)
+    game.knockDown(4)
+    expect(game.score).toEqual(8)
+  })
+
+  it("scores spares correctly", function() {
+    game.knockDown(6)
+    game.knockDown(4)
+    game.knockDown(7)
+    game.knockDown(1)
+    expect(game.score).toEqual(25)
+  })
+
+  it("scores strikes correctly", function() {
+    game.knockDown(10)
+    game.knockDown(7)
+    game.knockDown(1)
+    expect(game.score).toEqual(26)
   })
 })

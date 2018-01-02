@@ -64,4 +64,12 @@ describe("Game", function() {
     game.knockDown(1)
     expect(game.score).toEqual(26)
   })
+
+  it("scores multiple strikes correctly", function() {
+    game.knockDown(10)
+    game.knockDown(10)
+    game.knockDown(7)
+    game.knockDown(1)
+    expect(game.score).toEqual(44)
+  })
 })

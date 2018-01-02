@@ -36,7 +36,10 @@ Game.prototype.strikeOrSpare = function() {
   } else {
     if(this.bowlCount === 1) {
       this.strikes++
-      if(this.isRoundTen()) { this.strikeInRoundTen = true }
+      if(this.isRoundTen()) {
+        this.strikeInRoundTen = true
+        this.score += 10
+      }
       this.updateRound()
     } else {
       this.spares++
@@ -63,23 +66,25 @@ Game.prototype.isNewRound = function() {
 Game.prototype.isGameOver = function() {
   if(this.spares === 1) {
     return
-  } else if(this.bowlCount === 3){
+  } else if(this.bowlCount === 3) {
     this.gameOver = true
     return
-  } else if((this.bowlCount === 2)||(this.strikes == 2)) {
+  } else if(this.bowlCount === 2) {
     this.updateScore()
     this.gameOver = true
     return
   }
 }
 
-Game.prototype.updateScore = function() {
+Game.prototype.updateScore = function(bool = !this.isStrike()) {
+  //console.log(this.score)
   score = 10 - this.pins
-  if((!this.strikeInRoundTen) || (this.isStrike())) { this.score += score }
-  if(!this.isStrike()) {
+  if(!this.strikeInRoundTen) { this.score += score }
+  if(bool) {
     this.score += (this.strikes * score)
     if(!this.strikeInRoundTen) { this.strikes = 0 }
   }
+  //console.log(this.strikes)
 }
 
 Game.prototype.scoreSpare = function() {
@@ -92,6 +97,6 @@ Game.prototype.isRoundTen = function() {
 }
 
 Game.prototype.roundTenStrikeScore = function() {
-  this.updateScore()
+  this.updateScore(true)
   this.resetPins()
 }

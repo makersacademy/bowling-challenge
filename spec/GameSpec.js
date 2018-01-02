@@ -89,4 +89,17 @@ describe("Game", function() {
     expect(game.score).toEqual(17)
   })
 
+  it("scores the perfect game properly", function() {
+    for(i=0;i<12;i++) { game.knockDown(10) }
+    expect(game.score).toEqual(300)
+  })
+
+  it("scores a double strike ending correctly", function() {
+    game.round = 10
+    game.knockDown(10)
+    game.knockDown(10)
+    game.knockDown(7)
+    expect(game.score).toEqual(27)
+  })
+
 })

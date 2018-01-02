@@ -16,8 +16,6 @@ describe("Frame", function() {
 	});
 
 	var numberPinsDown = function(pinsDown) {
-		// console.log(pinsDown)
-		// console.log(pinsDown.length)
 		for(var i = 0; i < pinsDown.length; i++) {
 			frame.appendNumberPinsDown(pinsDown[i]);
 		}

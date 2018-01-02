@@ -13,7 +13,7 @@ ScoreSheet.prototype.displayScore = function(frameNumber){
 	var nextFrame = this.frames[frameNumber+1];
 	var frameAfterNext = this.frames[frameNumber+2];
 
-	if (this.frames[frameNumber]) {
+	if (currentFrame) {
 		var currentFrameFirstRoll = currentFrame.roll[0];
 		var currentFrameSecondRoll = currentFrame.roll[1];
 		var currentFrameLastRoll = currentFrame.roll[2];

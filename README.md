@@ -12,7 +12,7 @@ Bowling Challenge
 **Future Work:**
 * Add messages/prompts in interface for the various cases (e.g. STRIKE/SPARE/PERFECT GAME/GUTTER GAME)
 * Add the ability to have more than two players playing
-* Do more extensive testing
+* Do more extensive testing (at moment only testing very main issues)
 
 # Basic Rules of Bowling
 

@@ -19,15 +19,18 @@ Frame.prototype.bowl = function(rollScore) {
 }
 
 Frame.prototype.setRollScore = function(rollScore) {
-  if (this.rollNumber == 1) {this.rollOneScore = rollScore};
-  if (this.rollNumber == 2) {this.rollTwoScore = rollScore};
+  if (this.rollNumber == 1) {
+    this.rollOneScore = rollScore
+  };
+  if (this.rollNumber == 2) {
+    this.rollTwoScore = rollScore
+  };
 }
 
 Frame.prototype.checkScoreType = function(rollScore) {
   if (rollScore === 10 && this.rollNumber == 1) {
     this.isStrike = true;
-  }
-  else if (this.rollNumber === 2 && this.score === 10) {
+  } else if (this.rollNumber === 2 && this.score === 10) {
     this.isSpare = true
   }
 }
@@ -36,7 +39,7 @@ Frame.prototype.manageRoll = function(rollScore) {
   this.endFrame(rollScore)
   if (this.isFrameOver == false) {
     this.rollNumber += 1;
-   }
+  }
 }
 
 Frame.prototype.endFrame = function(rollScore) {
@@ -50,15 +53,17 @@ Frame.prototype.endFrame = function(rollScore) {
 Frame.prototype.finalFrame = function(rollScore) {
   if (this.rollNumber == 3 || (this.rollNumber == 2 && this.score < 10)) {
     this.isFrameOver = true;
-   }
+  }
 }
 
 Frame.prototype.scoreIsImpossible = function(rollScore) {
   if (!this.isFinalFrame) {
-   return this.score + rollScore > 10;
- } else if (this.rollNumber == 2 && this.rollOneScore != 10) {
-   return this.rollOneScore + rollScore > 10;
- } else if (this.rollOneScore == 10 && this.rollTwoScore != 10 && this.rollNumber == 3) {
-   return (this.rollTwoScore + rollScore > 10)
- } else { return false }
+    return this.score + rollScore > 10;
+  } else if (this.rollNumber == 2 && this.rollOneScore != 10) {
+    return this.rollOneScore + rollScore > 10;
+  } else if (this.rollOneScore == 10 && this.rollTwoScore != 10 && this.rollNumber == 3) {
+    return (this.rollTwoScore + rollScore > 10)
+  } else {
+    return false
+  }
 }

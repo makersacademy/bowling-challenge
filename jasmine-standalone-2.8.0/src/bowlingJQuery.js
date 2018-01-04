@@ -10,7 +10,7 @@ $(document).ready(function() {
   updateGame();
 
   $("#submit_score").click(function() {
-  var rollScore = parseInt(document.getElementById("score").value);
+    var rollScore = parseInt(document.getElementById("score").value);
     game.bowl(rollScore)
     updateGame();
   });

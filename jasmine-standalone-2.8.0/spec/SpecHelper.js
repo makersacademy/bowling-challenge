@@ -1,5 +1,5 @@
-beforeEach(function () {
+beforeEach(function() {
   jasmine.addMatchers({
-    
+
   });
 });

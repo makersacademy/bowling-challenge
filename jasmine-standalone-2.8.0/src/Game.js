@@ -68,7 +68,10 @@ Game.prototype.strikeBonus = function() {
 }
 
 Game.prototype.gameIsOver = function() {
-  return this.frameNumber > 10
+  if (this.frameNumber > 10) {
+    this.frameNumber = 10
+    return true
+  } else {return false}
 }
 
 Game.prototype.displayScore = function() {

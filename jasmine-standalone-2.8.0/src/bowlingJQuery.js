@@ -12,10 +12,10 @@ $(document).ready(function() {
 
   $("#submit_score").click(function() {
     var rollScore = parseInt(document.getElementById("score").value);
-    game.bowl(rollScore)
+    audioPlayer(rollScore);
+    game.bowl(rollScore);
     updateGame();
-    console.log(game.score)
-    audioPlayer(rollScore)
+    if (game.gameIsOver()) { setTimeout(function() {completedGameAudio()}, 3000) }
   });
 
   function audioPlayer(rollScore) {
@@ -26,7 +26,6 @@ $(document).ready(function() {
     } else if (rollScore == 0) {
       $("#gutterball")[0].play();
     }
-    if (game.gameIsOver()) { setTimeout(function() {completedGameAudio()}, 3500) }
   }
 
   function completedGameAudio() {

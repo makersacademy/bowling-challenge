@@ -17,7 +17,7 @@ Game.prototype.bowl = function(rollScore) {
 };
 
 Game.prototype.manageFrame = function() {
-  if (this.currentFrame.isFrameOver) {
+  if (this.currentFrame.isFrameOver === true) {
     this.addBonus();
     if (this.frameNumber < 10) {
       this.createNewFrame();

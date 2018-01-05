@@ -61,7 +61,7 @@ Frame.prototype.scoreIsImpossible = function(rollScore) {
     return this.score + rollScore > 10;
   } else if (this.rollNumber == 2 && this.rollOneScore != 10) {
     return this.rollOneScore + rollScore > 10;
-  } else if (this.rollOneScore == 10 && this.rollTwoScore != 10 && this.rollNumber == 3) {
+  } else if (this.rollNumber == 3 && this.rollOneScore == 10 && this.rollTwoScore != 10) {
     return (this.rollTwoScore + rollScore > 10)
   } else {
     return false

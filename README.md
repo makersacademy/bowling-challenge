@@ -14,3 +14,6 @@ Write a javascript app to calculate the scores from a 10-pin bowling game for on
 - a summary screen at game-end
 - make a ui
 - multiplayer????
+
+## To fix:
+- can currently bowl 0 > 10 and have it count as a strike instead of a spare

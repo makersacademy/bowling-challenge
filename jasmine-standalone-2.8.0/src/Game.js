@@ -17,9 +17,11 @@ Game.prototype.bowl = function(rollScore) {
 };
 
 Game.prototype.manageFrame = function() {
-  if (this.currentFrame.isFrameOver === true) {
+  if (this.currentFrame.isFrameOver) {
     this.addBonus();
-    this.createNewFrame();
+    if (this.frameNumber < 10) {
+      this.createNewFrame();
+    };
   };
 };
 
@@ -70,8 +72,7 @@ Game.prototype.strikeBonus = function() {
 }
 
 Game.prototype.gameIsOver = function() {
-  if (this.frameNumber > 10) {
-    this.frameNumber = 10
+  if (this.frameNumber == 10 && this.currentFrame.isFrameOver) {
     return true
   } else {
     return false

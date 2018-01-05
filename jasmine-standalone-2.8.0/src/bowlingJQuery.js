@@ -12,15 +12,15 @@ $(document).ready(function() {
 
   $("#submit_score").click(function() {
     var rollScore = parseInt(document.getElementById("score").value);
-    if (rollScore == 10) { audio.play() }
+    audioPlayer(rollScore)
     game.bowl(rollScore)
     updateGame();
   });
 
-  // function audioPlayer() {
-  //   if (rollscore == 10) {
-  //     audio =
-  //   }
-  // }
+  function audioPlayer(rollScore) {
+    if (game.currentFrame.scoreIsImpossible(rollScore)) {
+      $("#womp")[0].play()
+    } else if (rollScore == 10) { $("#strikesound")[0].play() }
+  }
 
 });

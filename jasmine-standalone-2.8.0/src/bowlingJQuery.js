@@ -12,19 +12,28 @@ $(document).ready(function() {
 
   $("#submit_score").click(function() {
     var rollScore = parseInt(document.getElementById("score").value);
-    audioPlayer(rollScore)
     game.bowl(rollScore)
     updateGame();
+    console.log(game.score)
+    audioPlayer(rollScore)
   });
 
   function audioPlayer(rollScore) {
     if (game.currentFrame.scoreIsImpossible(rollScore) || game.gameIsOver()) {
       $("#womp")[0].play();
     } else if (rollScore == 10) {
-      $("#strikesound")[0].play();
+      $("#strike_sound")[0].play();
     } else if (rollScore == 0) {
       $("#gutterball")[0].play();
     }
+    if (game.gameIsOver()) { setTimeout(function() {completedGameAudio()}, 3500) }
   }
 
+  function completedGameAudio() {
+    if (game.score === 0) {
+        $("#iqzero")[0].play();
+      } else {
+        $("#game_over")[0].play();
+      }
+  }
 });

@@ -19,8 +19,12 @@ $(document).ready(function() {
 
   function audioPlayer(rollScore) {
     if (game.currentFrame.scoreIsImpossible(rollScore)) {
-      $("#womp")[0].play()
-    } else if (rollScore == 10) { $("#strikesound")[0].play() }
+      $("#womp")[0].play();
+    } else if (rollScore == 10) {
+      $("#strikesound")[0].play();
+    } else if (rollScore == 0) {
+      $("#gutterball")[0].play();
+    }
   }
 
 });

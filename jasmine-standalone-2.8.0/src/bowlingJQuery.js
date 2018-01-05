@@ -32,6 +32,8 @@ $(document).ready(function() {
   function completedGameAudio() {
     if (game.score === 0) {
         $("#iqzero")[0].play();
+      } else if (game.score === 300) {
+        $("#holy_cow")[0].play();
       } else {
         $("#game_over")[0].play();
       }

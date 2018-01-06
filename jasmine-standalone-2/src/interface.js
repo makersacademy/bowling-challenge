@@ -34,7 +34,21 @@ newGameHtml = function(){
 roll = function(number){
 
   var value = game.roll(number)
+  console.log(value)
+  if (value === 'X'){strike()}
   $("#r" + game.frames.length + "\\." + (game.frames.last().rollNumber-1)).html(value)
   $("#p1score").html(game.score())
 
 };
+
+strike = function(){
+	console.log("here")
+	$('#strikeimg').show();
+	$('#main').hide();
+	 setTimeout(reset, 7600);
+}
+reset = function(){
+	console.log("here also")
+	$('#strikeimg').hide()
+	$('#main').show()
+}

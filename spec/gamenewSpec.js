@@ -91,4 +91,13 @@ describe("game", function() {
       expect(game.score).toEqual(14)
     });
   });
+  describe("last frame", function(){
+    it("should say if the frame is the last frame if it is", function(){
+      game = new Game();
+      for(var i = 1; i <= 10; i++){
+        game.newFrame(4,4);
+      };
+      expect(game.framesList[9].isLastFrame).toEqual(true);
+    })
+  })
 });

@@ -1,6 +1,7 @@
-function Frame() {
+function Frame(isLastFrame = false) {
   this.bowls = [];
   this.frameScore;
+  this.isLastFrame = isLastFrame  ;
 };
 
 Frame.prototype.bowl = function(firstBowl, secondBowl) {

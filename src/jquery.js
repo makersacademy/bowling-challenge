@@ -2,22 +2,26 @@ $(document).ready(function() {
   var game = new Game();
 
   $("#bowl").click(function() {
-    pins = parseInt($("#pinScore").val());
+    var pins = parseInt($("#pinScore").val());
     updateBowlScore(pins);
+    var index = game.frameIndex;
     game.bowl(pins);
-    return false;
+    if(game.gameOver) {
+      finalTotal()
+    } else if (index < game.frameIndex) {
+      updateRunningTotal();
+    };
   });
 
   function updateBowlScore(pins) {
-    // console.log(game.gameOver)
-    if(game.gameOver) {
-      displayTotal();
-    } else {
-      $("#f" + game.frameIndex + "-" + game.currentFrame.bowlIndex).html(pins);
-    };
+    $("#f" + game.frameIndex + "-" + game.currentFrame.bowlIndex).html(pins);
   };
 
-  function displayTotal() {
+  function updateRunningTotal() {
+    $("#t" + (game.frameIndex-1)).html(game.score());
+  };
+
+  function finalTotal() {
     $("#tFinal").html(game.score());
   };
 });

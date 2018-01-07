@@ -29,6 +29,7 @@ describe("Game", function() {
     });
 
     it("move to the next frame if the current frame is complete", function() {
+      console.log(game.currentFrame.bowls)
       game.bowl(5);
       game.bowl(5);
       expect(game.frameIndex).toEqual(2);
@@ -73,6 +74,18 @@ describe("Game", function() {
     it("calculates a perfect game", function() {
       for(var i = 0; i < 12; i++) { game.bowl(10) };
       expect(game.score()).toEqual(300);
+    });
+
+    it("calculates the running total without frame totals where spare bonuses are unknown", function() {
+      game.bowl(5);
+      game.bowl(5);
+      expect(game.score()).toEqual(0);
+    });
+
+    it("calculates the running total without frame totals where strike bonuses are unknown", function() {
+      game.bowl(10);
+      game.bowl(10);
+      expect(game.score()).toEqual(0);
     });
   });
 });

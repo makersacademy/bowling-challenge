@@ -22,18 +22,13 @@ Game.prototype.bowl = function(pins) {
 Game.prototype.score = function() {
   var score = 0;
 
-  for(var index = 0; index < this.frameIndex; index++)
-    if(this.frames[index].isAStrike()) {
-      score += MAX_PINS + this._strikeBonus(index);
-    } else if(this.frames[index].isASpare()) {
-      score += MAX_PINS + this._spareBonus(index);
-    } else {
-      if(index < this.frameIndex-1) {
-        score += this.frames[index].frameTotal();
-      } else {
-        score += this.frames[index].finalFrameTotal();
-      };
-    };
+  if(this.currentFrame.finalFrame) {
+    for(var index = 0; index < this.frameIndex; index++)
+      score += this.runningTotal(index);
+  } else {
+    for(var index = 0; index < this.frameIndex-1; index++)
+      score += this.runningTotal(index);
+  };
   return score;
 };
 
@@ -93,6 +88,31 @@ Game.prototype._finalFrameStrikeBonus = function(index) {
   } else {
     return this._locateBowl(index, 0, 1) + this._locateBowl(index, 0, 2);
   };
+};
+
+Game.prototype.runningTotal = function(index) {
+  var score = 0;
+
+  if(this.frames[index].isAStrike()) {
+    if(isNaN(this._strikeBonus(index))) {
+      score += 0;
+    } else {
+      score += MAX_PINS + this._strikeBonus(index);
+    }
+  } else if(this.frames[index].isASpare()) {
+    if(isNaN(this._spareBonus(index))) {
+      score += 0;
+    } else {
+      score += MAX_PINS + this._spareBonus(index);
+    };
+  } else {
+    if(this.frames[index].finalFrame) {
+      score += this.frames[index].finalFrameTotal();
+    } else {
+      score += this.frames[index].frameTotal();
+    };
+  };
+  return score;
 };
 
 Game.prototype._gameOver = function() {

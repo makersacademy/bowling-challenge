@@ -66,7 +66,3 @@ Frame.prototype._validBowl = function(pins) {
 Frame.prototype._invalidBowl = function(){
   throw Error("This score is invalid. Roll again");
 };
-
-// Frame.prototype.isFinalFrame = function() {
-//   this._finalFrame = true;
-// }

@@ -1,0 +1,49 @@
+body {
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.title {
+  text-align: center;
+  font-family: 'Arial', cursive;
+  font-size: 25px;
+  padding-top: 10px;
+}
+
+h1 {
+  margin: 0px;
+  padding: 10px;
+}
+
+.buttons {
+  text-align: center;
+}
+
+table.scoresheet {
+  margin: 0 auto;
+  width:80%;
+  font-size:12px;
+  border:1px solid;
+  text-align: center;
+  table-layout: fixed;
+  margin-bottom: 40px;
+}
+
+table.scoresheet th, tr, td {
+  padding: 0;
+  vertical-align: middle;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+table.scoresheet th {
+  border-bottom:1px solid;
+  height:30px;
+}

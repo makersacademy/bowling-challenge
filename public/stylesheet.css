@@ -1,0 +1,52 @@
+body {
+  text-align: center;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+.buttons {
+  margin: 30px auto;
+}
+
+button {
+  border-radius: 50px;
+  font-size: 17px;
+  padding: 15px;
+}
+
+table {
+  margin: 30px auto;
+  width: 80%;
+  font-size: 12px;
+  border: 1px solid;
+  text-align: center;
+  table-layout: fixed;
+}
+
+table th, tr, td {
+  vertical-align: middle;
+}
+
+table th {
+  border-bottom: 1px solid;
+  height: 30px;
+}
+
+table th:not(:last-child) {
+  border-right: 1px solid;
+}
+
+table td {
+  height: 30px;
+  border-right: 1px solid;
+}
+
+table tr:nth-child(2) td:not(:nth-child(3n + 1)) {
+  border-bottom: 1px solid;
+}
+
+table tr:nth-child(2) td:nth-child(28) {
+  border-bottom: 1px solid;
+}

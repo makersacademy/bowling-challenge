@@ -1,7 +1,7 @@
 function Frame() {
-  this.bowls = []
-  this.bowlIndex = 1
-  MAX_PINS = 10
+  this.bowls = [];
+  this.bowlIndex = 1;
+  MAX_PINS = 10;
 };
 
 Frame.prototype.bowl = function(pins) {

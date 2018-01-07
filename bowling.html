@@ -2,26 +2,35 @@
   <head>
     <title>Lebowski Lanes</title>
     <link href="public/stylesheet.css" rel="stylesheet" type="text/css">
+    <script src="/Users/EW/Documents/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="src/Game.js"></script>
+    <script src="src/jquery.js"></script>
+
   </head>
   <body>
 
   <h1>Lebowski Lanes</h1>
 
-  <div id="pins" class="pins">
-    <label name="bowl" value="bowl">Bowl</label>
-    <select name="pins">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
-
+  <button id="newgame" >New Game</button>
+  <div>
+    <form id="pins" action"">
+      <select id="pinscore">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      <br>
+      <input id="bowl" type="submit" value="Bowl">
+    </form>
   </div>
 
   <div id="scoresheet">
@@ -39,19 +48,19 @@
         <th colspan="6">10</th>
         <th colspan="6">Total</th>
       </tr>
-      <tr id="framesScores">
-        <td colspan="2"></td><td colspan="2"></td><td colspan="2"></td>
-        <td colspan="2"></td><td colspan="2"></td><td colspan="2"></td>
-        <td colspan="2"></td><td colspan="2"></td><td colspan="2"></td>
-        <td colspan="2"></td><td colspan="2"></td><td colspan="2"></td>
-        <td colspan="2"></td><td colspan="2"></td><td colspan="2"></td>
-        <td colspan="2"></td><td colspan="2"></td><td colspan="2"></td>
-        <td colspan="2"></td><td colspan="2"></td><td colspan="2"></td>
-        <td colspan="2"></td><td colspan="2"></td><td colspan="2"></td>
-        <td colspan="2"></td><td colspan="2"></td><td colspan="2"></td>
-        <td colspan="2"></td><td colspan="2"></td><td colspan="2"></td>
+      <tr id="framesscores">
+        <td colspan="2"></td><td id="f1-1" colspan="2"></td><td id="f1-2" colspan="2"></td>
+        <td colspan="2"></td><td id="f2-1" colspan="2"></td><td id="f2-2" colspan="2"></td>
+        <td colspan="2"></td><td id="f3-1" colspan="2"></td><td id="f3-2"colspan="2"></td>
+        <td colspan="2"></td><td id="f4-1" colspan="2"></td><td id="f4-2" colspan="2"></td>
+        <td colspan="2"></td><td id="f5-1" colspan="2"></td><td id="f5-2" colspan="2"></td>
+        <td colspan="2"></td><td id="f6-1" colspan="2"></td><td id="f6-2" colspan="2"></td>
+        <td colspan="2"></td><td id="f7-1" colspan="2"></td><td id="f7-2" colspan="2"></td>
+        <td colspan="2"></td><td id="f8-1" colspan="2"></td><td id="f8-2" colspan="2"></td>
+        <td colspan="2"></td><td id="f9-1" colspan="2"></td><td id="f9-2" colspan="2"></td>
+        <td id="f10-1" colspan="2"></td><td id="f10-2" colspan="2"></td><td id="f10-3" colspan="2"></td>
       </tr>
-      <tr id="runningTotal">
+      <tr id="runningtotal">
         <td colspan="6"></td>
         <td colspan="6"></td>
         <td colspan="6"></td>
@@ -65,10 +74,6 @@
       </tr>
     </table>
   </div>
-
-  <script src="/Users/EW/Documents/node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="/src/Frame.js"></script>
-  <script src="/src/Game.js"></script>
 
   </body>
 

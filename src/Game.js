@@ -1,13 +1,13 @@
 function Game(currentFrame = new Frame()) {
   this.frames = [];
   this.currentFrame = currentFrame;
-  this.frameIndex = 1
-  this._pushFrame()
-  MAX_FRAMES = 10
+  this.frameIndex = 1;
+  this._pushFrame();
+  MAX_FRAMES = 10;
 };
 
 Game.prototype.bowl = function(pins) {
-  this.currentFrame.bowl(pins)
+  this.currentFrame.bowl(pins);
   if(this.frameIndex < MAX_FRAMES) {
     if(this.currentFrame.isAStrike() || this.currentFrame.bowlIndexTwo()) {
       this._nextFrame();

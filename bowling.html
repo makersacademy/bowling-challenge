@@ -2,20 +2,20 @@
   <head>
     <title>Lebowski Lanes</title>
     <link href="public/stylesheet.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="/Users/EW/Documents/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="src/Frame.js"></script>
     <script src="src/Game.js"></script>
     <script src="src/jquery.js"></script>
-
   </head>
   <body>
 
   <h1>Lebowski Lanes</h1>
 
-  <button id="newGame">New Game</button>
+  <input class="buttons" type="button" value="New Game" onClick="window.location.reload()">
   <div>
-    <form id="pins" action"">
-      <select id="pinScore">
+    <form action"">
+      <select id="pinScore" class="pinScore">
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -29,7 +29,7 @@
         <option value="10">10</option>
       </select>
       <br>
-      <input id="bowl" type="submit" value="Bowl">
+      <input id="bowl" class="buttons" type="button" value="Bowl">
     </form>
   </div>
 

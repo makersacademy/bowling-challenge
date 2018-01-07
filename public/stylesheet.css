@@ -1,25 +1,35 @@
 body {
   text-align: center;
+  background: url("https://i.imgur.com/3C0d8uQ.jpg");
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 70px;
+  color: white;
 }
 
 .buttons {
-  margin: 30px auto;
+  margin: 10px auto;
+  color: white;
+  background-color: rgb(142, 78, 186);
+  border: none;
+  padding: 10px;
+  font-size: 30px
 }
 
-button {
-  border-radius: 50px;
-  font-size: 17px;
-  padding: 15px;
+.pinScore {
+  border: none;
+  padding: 10px;
+  font-size: 30px
 }
 
 table {
+  background-color: white;
   margin: 30px auto;
   width: 80%;
-  font-size: 12px;
+  font-size: 18px;
   border: 1px solid;
   text-align: center;
   table-layout: fixed;
@@ -31,6 +41,8 @@ table th, tr, td {
 
 table th {
   border-bottom: 1px solid;
+  background-color: rgb(142, 78, 186);
+  color: white;
   height: 30px;
 }
 

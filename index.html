@@ -10,7 +10,21 @@
 
 <body>
   <div id='title' class='title'><h1>Bowling!</h1></div>
-  <div id='buttons' class='buttons'></div><br>
+  <div id='buttons' class='buttons'>
+    <p>Enter on your roll</p>
+    <button id="Roll0"> 0 </button>
+    <button id="Roll1"> 1 </button>
+    <button id="Roll2"> 2 </button>
+    <button id="Roll3"> 3 </button>
+    <button id="Roll4"> 4 </button>
+    <button id="Roll5"> 5 </button>
+    <button id="Roll6"> 6 </button>
+    <button id="Roll7"> 7 </button>
+    <button id="Roll8"> 8 </button>
+    <button id="Roll9"> 9 </button>
+    <button id="Roll10"> 10 </button>
+    <br>
+  </div><br>
 
   <div id='scoresheet'>
     <table id='scoresheetTable' class='scoresheet' cellpadding='1' cellspacing='0'>
@@ -27,35 +41,45 @@
         <th colspan='3'>Frame 10</th>
       </tr>
       <tr>
-       <td id='r0'>4</td><td id='r1'>4</td>
-       <td id='r2'>4</td><td id='r3'>4</td>
-       <td id='r4'>4</td><td id='r5'>4</td>
-       <td id='r6'>4</td><td id='r7'>4</td>
-       <td id='r8'>4</td><td id='r9'>4</td>
-       <td id='r10'>4</td><td id='r11'>4</td>
-       <td id='r12'>4</td><td id='r13'>4</td>
-       <td id='r14'>4</td><td id='r15'>4</td>
-       <td id='r16'>4</td><td id='r17'>4</td>
-       <td id='r18'>4</td><td id='r19'>4</td><td id='r20'>4</td>
+       <td id='r0'></td>
+       <td id='r1'></td>
+       <td id='r2'></td>
+       <td id='r3'></td>
+       <td id='r4'></td>
+       <td id='r5'></td>
+       <td id='r6'></td>
+       <td id='r7'></td>
+       <td id='r8'></td>
+       <td id='r9'></td>
+       <td id='r10'></td>
+       <td id='r11'></td>
+       <td id='r12'></td>
+       <td id='r13'></td>
+       <td id='r14'></td>
+       <td id='r15'></td>
+       <td id='r16'></td>
+       <td id='r17'></td>
+       <td id='r18'></td><td id='r19'></td><td id='r20'></td>
       </tr>
       <tr>
-        <td colspan='2'>45</td>
-        <td colspan='2'></td>
-        <td colspan='2'></td>
-        <td colspan='2'></td>
-        <td colspan='2'></td>
-        <td colspan='2'></td>
-        <td colspan='2'></td>
-        <td colspan='2'></td>
-        <td colspan='2'></td>
-        <td colspan='3'></td>
+        <td id="f0score" colspan='2'>0</td>
+        <td id="f1score" colspan='2'>0</td>
+        <td id="f2score" colspan='2'>0</td>
+        <td id="f3score" colspan='2'>0</td>
+        <td id="f4score" colspan='2'>0</td>
+        <td id="f5score" colspan='2'>0</td>
+        <td id="f6score" colspan='2'>0</td>
+        <td id="f7score" colspan='2'>0</td>
+        <td id="f8score" colspan='2'>0</td>
+        <td id="f9score" colspan='2'>0</td>
+        <td id="f10score" colspan='3'>0</td>
       </tr>
     </table>
   </div>
 
-  <div id='score'>
-    <p></p>
-  </div><br>
+
+  <div> Score: <div id= "score"></div>
+
 
   <div id='restart'>
     <button id='restart-button' type='button'>Restart Game</button>

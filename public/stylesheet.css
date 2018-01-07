@@ -38,7 +38,7 @@ table th:not(:last-child) {
   border-right: 1px solid;
 }
 
-table td {
+table td:not(:last-child) {
   height: 30px;
   border-right: 1px solid;
 }

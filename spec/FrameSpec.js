@@ -52,6 +52,7 @@ describe("Frame", function() {
 
   describe("#finalFrameScore", function() {
     it("calculates the final frame score", function() {
+      frame.finalFrame = true
       frame.bowl(10);
       frame.bowl(10);
       frame.bowl(10);

@@ -1,10 +1,23 @@
 function Frame() {
   this.bowls = [];
   this.bowlIndex = 1;
+  this.finalFrame = false
   MAX_PINS = 10;
 };
 
 Frame.prototype.bowl = function(pins) {
+  if(!this.finalFrame && this.bowlIndex > 1) {
+    if(this._validBowl(pins)) {
+      this._addBowl(pins);
+    } else {
+      this._invalidBowl();
+    };
+  } else {
+    this._addBowl(pins);
+  };
+};
+
+Frame.prototype._addBowl = function(pins) {
   this.bowls.push(pins);
   this.bowlIndex++;
 };
@@ -44,4 +57,16 @@ Frame.prototype.bowlIndexTwo = function() {
 
 Frame.prototype.bowlIndexThree = function() {
   return(this.bowlIndex > 3);
-}
+};
+
+Frame.prototype._validBowl = function(pins) {
+  return(this.bowls[0] + pins <= MAX_PINS)
+};
+
+Frame.prototype._invalidBowl = function(){
+  throw Error("This score is invalid. Roll again");
+};
+
+// Frame.prototype.isFinalFrame = function() {
+//   this._finalFrame = true;
+// }

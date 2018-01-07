@@ -3,6 +3,7 @@ function Game(currentFrame = new Frame()) {
   this.currentFrame = currentFrame;
   this.frameIndex = 1;
   this._pushFrame();
+  this.gameOver = false;
   MAX_FRAMES = 10;
 };
 
@@ -13,6 +14,7 @@ Game.prototype.bowl = function(pins) {
       this._nextFrame();
     };
   } else {
+    this.currentFrame.finalFrame = true
     this._finalFrame();
   };
 };
@@ -47,11 +49,15 @@ Game.prototype._nextFrame = function() {
 
 Game.prototype._finalFrame = function() {
   if(this.currentFrame.isAStrike()) {
-    if(this.currentFrame.bowlIndexThree()) {console.log("Game Over")};
+    if(this.currentFrame.bowlIndexThree()) {
+      this._gameOver();
+      console.log("Game Over")};
   } else if(this.currentFrame.bowlIndexTwo()) {
     if(!this.currentFrame.isASpare()) {
+      this._gameOver();
       console.log("Game Over");
     } else if(this.currentFrame.bowlIndexThree()) {
+      this._gameOver();
       console.log("Game Over");
     };
   };
@@ -59,7 +65,7 @@ Game.prototype._finalFrame = function() {
 
 Game.prototype._spareBonus = function(index) {
   if(index < this.frameIndex-1) {
-    return this.locateBowl(index, 1, 0);
+    return this._locateBowl(index, 1, 0);
   } else{
     return this._finalFrameSpareBonus(index);
   };
@@ -68,9 +74,9 @@ Game.prototype._spareBonus = function(index) {
 Game.prototype._strikeBonus = function(index) {
   if(index < this.frameIndex-2) {
     if(this.frames[index + 1].isAStrike()) {
-      return this.locateBowl(index, 1, 0) + this.locateBowl(index, 2, 0);
+      return this._locateBowl(index, 1, 0) + this._locateBowl(index, 2, 0);
     } else {
-      return this.locateBowl(index, 1, 0) + this.locateBowl(index, 1, 1);
+      return this._locateBowl(index, 1, 0) + this._locateBowl(index, 1, 1);
     };
   } else {
     return this._finalFrameStrikeBonus(index);
@@ -78,17 +84,21 @@ Game.prototype._strikeBonus = function(index) {
 };
 
 Game.prototype._finalFrameSpareBonus = function(index) {
-  return this.locateBowl(index, 0, 2);
+  return this._locateBowl(index, 0, 2);
 };
 
 Game.prototype._finalFrameStrikeBonus = function(index) {
   if(index < this.frameIndex-1) {
-    return this.locateBowl(index, 1, 0) + this.locateBowl(index, 1, 1);
+    return this._locateBowl(index, 1, 0) + this._locateBowl(index, 1, 1);
   } else {
-    return this.locateBowl(index, 0, 1) + this.locateBowl(index, 0, 2);
+    return this._locateBowl(index, 0, 1) + this._locateBowl(index, 0, 2);
   };
 };
 
-Game.prototype.locateBowl = function(index, skipForwardBy, bowlIndex) {
+Game.prototype._gameOver = function() {
+  this.gameOver = true;
+};
+
+Game.prototype._locateBowl = function(index, skipForwardBy, bowlIndex) {
   return this.frames[index + skipForwardBy].bowls[bowlIndex];
 }

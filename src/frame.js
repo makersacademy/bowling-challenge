@@ -4,8 +4,3 @@ function Frame(){
   this.turnThree = null;
   this.score = 0;
 };
-
-
-// Frame.prototype.countScore = function(frame){
-//   this.score += turn;
-// };

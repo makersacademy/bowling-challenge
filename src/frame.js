@@ -1,5 +1,6 @@
 function Frame(isLastFrame = false) {
   this.bowls = [];
+  this.bonusBowl
   this.frameScore;
   this.isLastFrame = isLastFrame  ;
 };
@@ -36,4 +37,8 @@ Frame.prototype.isAGutterBall = function() {
 
 Frame.prototype.bonusBowlChecker = function() {
   return (this.isLastFrame && (this.isAStrike() || this.isASpare()));
+};
+
+Frame.prototype.bowlBonusBowl = function (bonusBowl) {
+  this.bowls.push(bonusBowl)
 };

@@ -94,11 +94,13 @@ describe("frame", function() {
     });
   })
 
-  // describe("bowl bonus bowl", function(){
-  //   it("should be able to bowl one bowl", function(){
-  //     var frame = new Frame(true);
-  //     frame.bowl(10,null);
-  //   })
-  // })
+  describe("bowl bonus bowl", function(){
+    it("should be able to bowl one an extra bowl after a spare", function(){
+      var frame = new Frame(true);
+      frame.bowl(4,6);
+      frame.bowlBonusBowl(5)
+      expect(frame.frameScore).toEqual(15);
+    })
+  })
 
 });

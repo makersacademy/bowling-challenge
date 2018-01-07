@@ -76,4 +76,29 @@ describe("frame", function() {
     })
   })
 
+  describe("last frame checker", function(){
+    it("should return true, if player is legible for bonus bowl after strike in 10th", function(){
+      var frame = new Frame(true);
+      frame.bowl(10,null);
+      expect(frame.bonusBowlChecker()).toEqual(true);
+    });
+    it("should return true, if player is legible for bonus bowl after spare in 10th", function(){
+      var frame = new Frame(true);
+      frame.bowl(4,6);
+      expect(frame.bonusBowlChecker()).toEqual(true);
+    });
+    it("should return false otherwise", function(){
+      var frame = new Frame(true);
+      frame.bowl(5,3);
+      expect(frame.bonusBowlChecker()).toEqual(false);
+    });
+  })
+
+  // describe("bowl bonus bowl", function(){
+  //   it("should be able to bowl one bowl", function(){
+  //     var frame = new Frame(true);
+  //     frame.bowl(10,null);
+  //   })
+  // })
+
 });

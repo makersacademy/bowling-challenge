@@ -17,10 +17,6 @@ Frame.prototype.isASpare = function() {
   return this.bowls[0] + this.bowls[1] == 10 && !(this.isAStrike());
 };
 
-Frame.prototype.isAGutterBall = function() {
-  return this.bowls[0] == 0 && this.bowls[1] == 0;
-};
-
 Frame.prototype.calcFrameScore = function(){
   if (!this.isASpare() && !this.isAStrike()){
     this.frameScore = this.bowls[0] + this.bowls[1];
@@ -31,3 +27,13 @@ Frame.prototype.calcFrameScore = function(){
     return this.frameScore = "Spare";
   }
 }
+
+// don't really require this
+Frame.prototype.isAGutterBall = function() {
+  return this.bowls[0] == 0 && this.bowls[1] == 0;
+  console.log("Gutter Ball")
+};
+
+Frame.prototype.bonusBowlChecker = function() {
+  return (this.isLastFrame && (this.isAStrike() || this.isASpare()));
+};

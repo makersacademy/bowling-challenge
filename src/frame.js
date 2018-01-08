@@ -22,12 +22,14 @@ Frame.prototype.calcFrameScore = function(){
   if (!this.isASpare() && !this.isAStrike()){
     this.frameScore = this.bowls[0] + this.bowls[1];
     return this.frameScore;
+  } else if (this.isLastFrame && (this.isAStrike() || this.isASpare())){
+    this.frameScore = 10 + this.bowls[2];
   } else if (this.isAStrike()) {
     return this.frameScore = "Strike";
   } else if (this.isASpare()) {
     return this.frameScore = "Spare";
   }
-}
+};
 
 // don't really require this
 Frame.prototype.isAGutterBall = function() {

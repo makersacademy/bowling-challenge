@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Monofett" rel="stylesheet">
-    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type=text/javascript src="interface.js"></script>
+    <script type=text/javascript src="frame.js"></script>
+    <script type=text/javascript src="scoreSheet.js"></script>
     <title>Bowling Challenge</title>
   </head>
   <body>
     <h1>Bowling ScoreSheet</h1>
 
     <div class= 'rolls' id='buttons'>
-      <button>0</button>
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button>10</button>
+      <button id="bt0">0</button>
+      <button id="bt1">1</button>
+      <button id="bt2">2</button>
+      <button id="bt3">3</button>
+      <button id="bt4">4</button>
+      <button id="bt5">5</button>
+      <button id="bt6">6</button>
+      <button id="bt7">7</button>
+      <button id="bt8">8</button>
+      <button id="bt9">9</button>
+      <button id="bt10">10</button>
     </div>
 
-    <table class='scoresheet'>
+    <table id='score-table'class='scoresheet'>
 
         <tr class='frame-title'>
           <th colspan='6'>Frame 1</th>
@@ -37,7 +41,7 @@
           <th colspan='6'>Frame 9</th>
           <th colspan='6'>Frame 10</th>
         </tr>
-        <tr class='pins-down'>
+        <tr id='roll-score' class='pins-down'>
           <td colspan='3'></td><td colspan='3'></td>
           <td colspan='3'></td><td colspan='3'></td>
           <td colspan='3'></td><td colspan='3'></td>

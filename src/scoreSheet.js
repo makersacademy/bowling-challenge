@@ -19,7 +19,7 @@ ScoreSheet.prototype.displayScore = function(frameNumber){
 		var currentFrameLastRoll = currentFrame.roll[2];
 	}
 
-	if(nextFrame) {
+	if (nextFrame) {
 		var nextFrameFirstRoll = nextFrame.roll[0];
 		var nextFrameSecondRoll = nextFrame.roll[1];
 	}

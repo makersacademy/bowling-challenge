@@ -26,3 +26,7 @@ Frame.prototype.isSpare = function(){
 Frame.prototype.getScoreRolls = function(){
   return this.scoreRoll1 + this.scoreRoll2
 };
+
+Frame.prototype.isLast = function(){
+  if(this.index === 9){return true}
+}

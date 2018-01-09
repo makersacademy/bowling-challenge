@@ -25,3 +25,22 @@ $(document).ready(function() {
     $("#tFinal").html(game.score());
   };
 });
+
+// $(document).append(buildGameView(game));
+// function buildGameView(game) {
+//   $container = $("<div></div>");
+//   $container.append(buildScoreTable(game));
+//   return $container;
+// }
+// function buildScoreTable(game) {
+//   $table = $("<div></div>");
+//   return $table;
+// }
+// function buildTableHeader(game) {
+//   var frameViews = [];
+//   for (var index = 0; index < game.numberOfFrames) {
+//     frameViews.push(buildFrame(game.frames[i]));
+//   }
+// }
+// function buildRowForPlayer(player) {
+// }

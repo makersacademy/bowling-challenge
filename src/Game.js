@@ -43,17 +43,11 @@ Game.prototype._nextFrame = function() {
 };
 
 Game.prototype._finalFrame = function() {
-  if(this.currentFrame.isAStrike()) {
-    if(this.currentFrame.bowlIndexThree()) {
+  if(this.currentFrame.bowlIndexThree()) {
       this._gameOver();
-      console.log("Game Over")};
   } else if(this.currentFrame.bowlIndexTwo()) {
-    if(!this.currentFrame.isASpare()) {
+    if(!this.currentFrame.isAStrike() && !this.currentFrame.isASpare()) {
       this._gameOver();
-      console.log("Game Over");
-    } else if(this.currentFrame.bowlIndexThree()) {
-      this._gameOver();
-      console.log("Game Over");
     };
   };
 };

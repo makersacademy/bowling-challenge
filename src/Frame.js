@@ -39,7 +39,7 @@ Frame.prototype.frameTotal = function() {
 };
 
 Frame.prototype.finalFrameTotal = function() {
-  if(this.bowlIndex > 3) {
+  if(this.isAStrike() || this.isASpare()) {
     return(this.standardFrameTotal() + this.bowls[2]);
   }
   else {

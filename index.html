@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bowling</title>
+  <link href='public/css/style.css' rel='stylesheet' type='text/css'>
+  <script src='src/jquery-3.2.1.min.js'></script>
+  <script src='src/game.js'></script>
+  <script src='src/interface.js'></script>
+</head>
+
+<body>
+  <div id='title' class='title'><h1>Bowling!</h1></div>
+  <div id='buttons' class='buttons'>
+    <p>Enter on your roll</p>
+    <button class="rollScore"> 0 </button>
+    <button class="rollScore"> 1 </button>
+    <button class="rollScore"> 2 </button>
+    <button class="rollScore"> 3 </button>
+    <button class="rollScore"> 4 </button>
+    <button class="rollScore"> 5 </button>
+    <button class="rollScore"> 6 </button>
+    <button class="rollScore"> 7 </button>
+    <button class="rollScore"> 8 </button>
+    <button class="rollScore"> 9 </button>
+    <button class="rollScore"> 10 </button>
+    <br>
+  </div><br>
+
+  <div id='scoresheet'>
+    <table id='scoresheetTable' class='scoresheet' cellpadding='1' cellspacing='0'>
+      <tr>
+        <th colspan='2'>Frame 1</th>
+        <th colspan='2'>Frame 2</th>
+        <th colspan='2'>Frame 3</th>
+        <th colspan='2'>Frame 4</th>
+        <th colspan='2'>Frame 5</th>
+        <th colspan='2'>Frame 6</th>
+        <th colspan='2'>Frame 7</th>
+        <th colspan='2'>Frame 8</th>
+        <th colspan='2'>Frame 9</th>
+        <th colspan='3'>Frame 10</th>
+      </tr>
+      <tr>
+       <td id='r0'></td>
+       <td id='r1'></td>
+       <td id='r2'></td>
+       <td id='r3'></td>
+       <td id='r4'></td>
+       <td id='r5'></td>
+       <td id='r6'></td>
+       <td id='r7'></td>
+       <td id='r8'></td>
+       <td id='r9'></td>
+       <td id='r10'></td>
+       <td id='r11'></td>
+       <td id='r12'></td>
+       <td id='r13'></td>
+       <td id='r14'></td>
+       <td id='r15'></td>
+       <td id='r16'></td>
+       <td id='r17'></td>
+       <td id='r18'></td><td id='r19'></td><td id='r20'></td>
+      </tr>
+      <tr>
+        <td id="f0score" colspan='2'>0</td>
+        <td id="f1score" colspan='2'>0</td>
+        <td id="f2score" colspan='2'>0</td>
+        <td id="f3score" colspan='2'>0</td>
+        <td id="f4score" colspan='2'>0</td>
+        <td id="f5score" colspan='2'>0</td>
+        <td id="f6score" colspan='2'>0</td>
+        <td id="f7score" colspan='2'>0</td>
+        <td id="f8score" colspan='2'>0</td>
+        <td id="f9score" colspan='2'>0</td>
+        <td id="f10score" colspan='3'>0</td>
+      </tr>
+    </table>
+  </div>
+
+
+  <div> Score: <div id= "score"></div>
+
+
+  <div id='restart'>
+    <button id='restart-button' type='button'>Restart Game</button>
+  </div>
+
+</body>
+</html>

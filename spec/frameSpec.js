@@ -12,4 +12,8 @@ describe('Frame', function(){
     frame.firstBowl(10)
     expect(frame.isStrike).toEqual(true)
   })
+
+  it('Second bowl returns the score', function(){
+    expect(frame.secondBowl(7)).toEqual(7)
+  })
 })

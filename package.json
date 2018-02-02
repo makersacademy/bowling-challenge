@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/lewmoore/bowling-challenge/issues"
   },
-  "homepage": "https://github.com/lewmoore/bowling-challenge#readme"
+  "homepage": "https://github.com/lewmoore/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
 }

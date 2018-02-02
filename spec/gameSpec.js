@@ -4,7 +4,7 @@ describe('Game', function() {
 
   beforeEach(function() {
     game = new Game
-    frame = jasmine.createSpy('frame')
+    frame = jasmine.createSpyObj('frame',['score'])
   });
 
   it('starts with an empty set of frames', function(){
@@ -14,6 +14,14 @@ describe('Game', function() {
   it('can add a frame', function(){
     game.addFrame(frame)
     expect(game.getFrames()).toContain(frame)
-  })
+  });
+
+  it('can add up frame scores', function(){
+    for (let i = 0; i < 10; i++) {
+      game.addFrame(frame)
+    }
+    frame.score.and.returnValue(1);
+    expect(game.score()).toEqual(10);
+  });
 
 });

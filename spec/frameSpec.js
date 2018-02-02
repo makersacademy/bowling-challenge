@@ -1,10 +1,10 @@
-describe('Bowling', function(){
-  
+describe('Frame', function(){
+
   beforeEach(function(){
-    bowlingScore = new BowlingScore()
+    frame = new Frame()
   })
 
   it('Strike is set to false by default', function(){
-    expect(bowlingScore.isStrike).toEqual(false)
+    expect(frame).isStrike).toEqual(false)
   });
 })

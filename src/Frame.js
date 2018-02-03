@@ -10,9 +10,9 @@ Frame.prototype.roll = function(number) {
 };
 
 Frame.prototype.endFrame = function() {
-  this.scores.push(this.bowls[0] + this.bowls[1])
+  this.scores.push(this.Score())
   this.updateScore()
-  if ((this.bowls[0] + this.bowls[1]) === 10) {
+  if (this.Score() === 10) {
     this.isPreviouslySpare = true
   }
   this.bowls = []
@@ -20,6 +20,10 @@ Frame.prototype.endFrame = function() {
 
 Frame.prototype.updateScore = function() {
   this.runningTotal += this.scores[this.scores.length-1]
+};
+
+Frame.prototype.Score = function() {
+  return (this.bowls[0] + this.bowls[1])
 };
 
 

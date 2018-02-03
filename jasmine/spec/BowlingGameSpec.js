@@ -18,4 +18,13 @@ describe('BowlingGame', function (){
     });
   });
 
+  describe('After each set of rolls ', function(){
+    it('current roll number changes by 2', function() {
+      game = new BowlingGame();
+      game.roll(2,3);
+      game.roll(4,2);
+      expect(game.currentRoll).toEqual(4);
+    });
+  });
+
 });

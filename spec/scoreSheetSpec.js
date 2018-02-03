@@ -33,23 +33,33 @@ describe('Bowling Scoresheet', function () {
   });
 
 
-  describe('Strike or Spare', function () {
+  describe('Strike , Spare or None', function () {
 
     it('Player scores strike on roll 1', function () {
       scoresheet.pinsDropped(10);
+      console.log(scoresheet.scoreArray);
       expect(scoresheet.isStrike()).toBeTruthy();
     });
 
     it('Player scores a spare on roll 2, 5 pins per roll', function () {
       scoresheet.pinsDropped(5);
       scoresheet.pinsDropped(5);
+      console.log(scoresheet.scoreArray);
       expect(scoresheet.isSpare()).toBeTruthy();
     });
 
     it('Player scores a spare on roll 2, 1 pin and 9 pins in two rolls', function () {
       scoresheet.pinsDropped(1);
       scoresheet.pinsDropped(9);
+      console.log(scoresheet.scoreArray);
       expect(scoresheet.isSpare()).toBeTruthy();
+    });
+
+    it("Player doesn't score either a spare or strike", function () {
+      scoresheet.pinsDropped(4);
+      scoresheet.pinsDropped(3);
+      console.log(scoresheet.scoreArray);
+      expect(scoresheet.scoreArray).toEqual([4,3]);
     });
   });
 

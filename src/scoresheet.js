@@ -4,34 +4,46 @@ function Scoresheet() {
   this.scoreArray = [];
   this.rollCounter = 0;
   this.frameCounter = 1;
-  this.scoreAfterRolls = 0;
+  this.scoreAfterFrame = 0;
 }
 
 
 Scoresheet.prototype.pinsDropped = function (numberOfPins) {
 
   this.rollCounter += 1;
-
+  this.rollArray.push(numberOfPins);
   this.scoreArray[this.rollCounter - 1] = numberOfPins;
   this.scoreCalculated(numberOfPins);
 };
 
 Scoresheet.prototype.scoreCalculated = function (numberOfPins) {
-  this.scoreAfterRolls += numberOfPins;
-  //this.scoreArray[this.rollCounter - 1];
+  this.scoreAfterFrame += numberOfPins;
 };
 
 
 Scoresheet.prototype.isStrike = function () {
-  if (this.rollCounter % 2 != 0 && this.scoreArray[this.rollCounter-1] === 10) {
+  if (this.rollCounter === 1 && this.rollArray[0] === 10) {
+    this.scoreArray.push([10,'X']);
+    this.rollArray = [];
+    this.rollCounter = 0;
     return true;
   }
+  return false;
 };
 
 
 Scoresheet.prototype.isSpare = function () {
-  if (this.rollCounter % 2 === 0 && this.scoreAfterRolls === 10) {
-    this.scoreAfterRolls = 0;
+  if (this.rollCounter === 2 && (this.rollArray[0] + this.rollArray[1]) === 10) {
+    this.scoreArray.push([this.rollArray[0],'/']);
+    this.rollArray = [];
+    this.rollCounter = 0;
     return true;
   }
+  return false;
 };
+
+
+
+// Scoresheet.prototype.farme = function (roll1, roll2) {
+//
+// };

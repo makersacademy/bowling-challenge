@@ -2,9 +2,11 @@
 
 describe('Frame', () => {
   let frame;
+  let finalFrame;
 
   beforeEach(() => {
     frame = new Frame();
+    finalFrame = new Frame(3);
   });
 
   describe('Score', () => {
@@ -73,6 +75,31 @@ describe('Frame', () => {
       frame.roll(10);
 
       expect(frame.isFinished()).toBe(true);
+    });
+  });
+
+  describe('StrikeRound', () => {
+    describe('finished', () => {
+      it('has not finished finished after a strike', () => {
+        finalFrame.roll(10);
+
+        expect(finalFrame.isFinished()).toBe(false);
+      });
+
+      it('has not finished finished after two throws after a strike', () => {
+        finalFrame.roll(10);
+        finalFrame.roll(10);
+        expect(finalFrame.isFinished()).toBe(false);
+      });
+
+
+      it('has finished finished after three throws after a strike', () => {
+        finalFrame.roll(10);
+        finalFrame.roll(10);
+        finalFrame.roll(10);
+
+        expect(finalFrame.isFinished()).toBe(true);
+      });
     });
   });
 });

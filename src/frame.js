@@ -1,15 +1,16 @@
-const strike = 10;
-const rounds = 2;
+const STRIKE = 10;
+const STANDARD_ROUND = 2;
+const STRIKE_ROUND = 1;
 
 class Frame {
-
-  constructor() {
+  constructor(strike = STRIKE_ROUND) {
     this.rounds = [];
+    this.strikeRound = strike
   }
 
   score() {
     if (this.useThird()) { return this.add(this.rounds); }
-    return this.add(this.rounds.slice(0, rounds));
+    return this.add(this.rounds.slice(0, STANDARD_ROUND));
   }
 
   roll(value) {
@@ -17,15 +18,19 @@ class Frame {
   }
 
   isFinished() {
-    if (this.rounds[0] === strike) { return true; }
-    if (this.rounds.length === rounds) { return true; }
+    if (this.rounds[0] === STRIKE) { return this.roundsAfterStrike(); }
+    if (this.rounds.length === STANDARD_ROUND) { return true; }
     return false;
+  }
+
+  roundsAfterStrike() {
+    return this.rounds.length === this.strikeRound
   }
 
   useThird() {
     const first = this.rounds[0];
-    if (first === strike) { return true; }
-    if (first + this.rounds[1] === strike) { return true; }
+    if (first === STRIKE) { return true; }
+    if (first + this.rounds[1] === STRIKE) { return true; }
     return false;
   }
 

@@ -8,8 +8,8 @@ class Frame {
   }
 
   score() {
-    if (this.useThird()) { return this.rounds.reduce((a, b) => a + b, 0); }
-    return this.rounds.slice(0, rounds).reduce((a, b) => a + b, 0)
+    if (this.useThird()) { return this.add(this.rounds); }
+    return this.add(this.rounds.slice(0, rounds));
   }
 
   roll(value) {
@@ -21,10 +21,15 @@ class Frame {
     if (this.rounds.length === rounds) { return true; }
     return false;
   }
+
   useThird() {
     const first = this.rounds[0];
     if (first === strike) { return true; }
     if (first + this.rounds[1] === strike) { return true; }
     return false;
+  }
+
+  add(results) {
+    return results.reduce((a, b) => a + b, 0)
   }
 }

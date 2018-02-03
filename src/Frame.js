@@ -11,17 +11,23 @@ Frame.prototype.roll = function(number) {
 
 Frame.prototype.endFrame = function() {
   this.scores.push(this.Score())
-  this.updateScore()
+  if (this.isPreviouslySpare) {
+    this.scores[this.scores.length-2] += this.bowls[0]
+  }
+
   if (this.Score() === 10) {
     this.isPreviouslySpare = true
   } else {
     this.isPreviouslySpare = false
   }
+  this.updateScore()
   this.bowls = []
 };
 
 Frame.prototype.updateScore = function() {
-  this.runningTotal += this.scores[this.scores.length-1]
+  this.runningTotal = 0
+  for(var i in this.scores) { this.runningTotal += this.scores[i]; }
+  // this.runningTotal = this.scores[this.scores.length-1]
 };
 
 Frame.prototype.Score = function() {

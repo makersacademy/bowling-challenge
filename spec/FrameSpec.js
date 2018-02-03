@@ -75,6 +75,26 @@ describe("Frame", function() {
       expect(frame.isPreviouslySpare).toEqual(false)
     });
 
+    it("adds the next roll to the previous frame score", function() {
+      frame.roll(7);
+      frame.roll(3);
+      frame.endFrame();
+      frame.roll(1);
+      frame.roll(3);
+      frame.endFrame();
+      expect(frame.scores).toEqual([11,4])
+    });
+
+    it("has the correct running total", function() {
+      frame.roll(7);
+      frame.roll(3);
+      frame.endFrame();
+      frame.roll(1);
+      frame.roll(3);
+      frame.endFrame();
+      expect(frame.runningTotal).toEqual(15)
+    });
+
   });
 
   // describe("scoring when bowling a strike", function() {

@@ -5,54 +5,64 @@ describe("Frame", function() {
     frame = new Frame();
   });
 
-  // it("should be open by default", function() {
-  //   expect(frame).toBeOpen;
-  // });
-  //
-  // it("has a first roll", function() {
-  //   expect(frame)
-  // });
-
   it("is an array of rolls", function() {
-    expect(frame.rolls).toEqual([]);
+    expect(frame.bowls).toEqual([]);
   });
 
-  it("enters a first bowl into the array", function() {
-    frame.roll(3);
-    expect(frame.rolls).toEqual([3])
+  describe("enters bowl scores", function() {
+
+    it("enters a first bowl into the array", function() {
+      frame.roll(3);
+      expect(frame.bowls).toEqual([3])
+    });
+
+    it("enters the second bowl into the array", function() {
+      frame.roll(3);
+      frame.roll(4);
+      expect(frame.bowls).toEqual([3,4])
+    });
+
+    beforeEach(function() {
+      frame.roll(3);
+      frame.roll(4);
+      frame.end();
+    });
+
+    it("sums the score of two bowls", function() {
+      expect(frame.scores).toEqual([7])
+    });
+
+    it("empties the frame at the end", function() {
+      expect(frame.bowls).toEqual([]);
+    });
+
+    it("keeps score over multiple frames", function() {
+      frame.roll(1);
+      frame.roll(0);
+      frame.end();
+      expect(frame.scores).toEqual([7,1])
+    });
+
+    it("has a running total", function() {
+      frame.roll(1);
+      frame.roll(0);
+      frame.end();
+      expect(frame.runningTotal).toEqual(8)
+    });
+
   });
 
-  it("enters the second bowl into the array", function() {
-    frame.roll(3);
-    frame.roll(4);
-    expect(frame.rolls).toEqual([3,4])
-  });
-
-  it("sums the score of two bowls", function() {
-    frame.roll(3);
-    frame.roll(4);
-    frame.end();
-    expect(frame.scores).toEqual([7])
-  });
-
-  it("empties the frame at the end", function() {
-    frame.roll(3);
-    frame.roll(4);
-    frame.end();
-    expect(frame.rolls).toEqual([]);
-  });
-
-  it("keeps score over multiple frames", function() {
-    frame.roll(3);
-    frame.roll(4);
-    frame.end();
-    frame.roll(1);
-    frame.roll(0);
-    frame.end();
-    expect(frame.scores).toEqual([7,1])
+  // describe("spare", function() {
+  //   it("knows the previous turn was a spare", function() {
+  //     frame.roll(7);
+  //     frame.roll(3);
+  //     frame.end();
+  //   });
   });
 
 });
+
+
 
   //   //demonstrates use of custom matcher
   //   expect(player).toBePlaying(song);

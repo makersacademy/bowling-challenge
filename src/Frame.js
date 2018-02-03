@@ -1,17 +1,22 @@
 function Frame() {
-  this.rolls = []
+  this.bowls = []
   this.scores = []
+  this.runningTotal = 0
 }
 
 Frame.prototype.roll = function(number) {
-  this.rolls.push(number)
+  this.bowls.push(number)
 };
 
 Frame.prototype.end = function() {
-  this.scores.push(this.rolls[0] + this.rolls[1])
-  this.rolls = []
+  this.scores.push(this.bowls[0] + this.bowls[1])
+  this.updateScore()
+  this.bowls = []
 };
 
+Frame.prototype.updateScore = function() {
+  this.runningTotal += this.scores[this.scores.length-1]
+};
 
 
 //

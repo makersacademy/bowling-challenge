@@ -18,7 +18,7 @@ Frame.prototype.isStrike = function(){
 }
 
 Frame.prototype.isSpare = function(){
-  return this.score() === MAX_SCORE
+  return this.score() === MAX_SCORE && this.secondRoll !== 0
 }
 
 Frame.prototype.score = function(){

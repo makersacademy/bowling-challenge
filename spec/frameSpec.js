@@ -41,6 +41,10 @@ describe('Frame',function() {
       frame.setSecondRoll(5)
       expect(frame.isSpare()).toEqual(true)
     })
+    it('returns false if max score achieved with one roll',function(){
+      frame.setFirstRoll(10)
+      expect(frame.isSpare()).toEqual(false)
+    })
     it('returns false if firstRoll and secondRoll total are not equal to 10',function(){
       frame.setFirstRoll(4)
       frame.setSecondRoll(5)

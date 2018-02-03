@@ -18,6 +18,16 @@ describe('BowlingGame', function (){
       game = new BowlingGame();
       expect(game.finalScore()).toEqual(130);
     });
+
+    it('see they have a Gutter Game', function(){
+      game = new BowlingGame();
+      game.roll(0,0);
+      game.score();
+      current = game.scoreArray.length = 10;
+      expect(current).toEqual(10);
+      expect(game.scoreTotal).toEqual(0);
+    });
+
   });
 
   describe('After each set of rolls ', function(){

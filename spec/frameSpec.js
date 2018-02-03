@@ -2,11 +2,9 @@
 
 describe('Frame', () => {
   let frame;
-  let finalFrame;
 
   beforeEach(() => {
     frame = new Frame();
-    finalFrame = new Frame(3);
   });
 
   describe('Score', () => {
@@ -77,29 +75,55 @@ describe('Frame', () => {
       expect(frame.isFinished()).toBe(true);
     });
   });
+});
 
-  describe('StrikeRound', () => {
-    describe('finished', () => {
-      it('has not finished finished after a strike', () => {
-        finalFrame.roll(10);
+describe('StrikeRound', () => {
+  let finalFrame;
 
-        expect(finalFrame.isFinished()).toBe(false);
-      });
+  beforeEach(() => {
+   finalFrame = new Frame(3);
+  });
 
-      it('has not finished finished after two throws after a strike', () => {
-        finalFrame.roll(10);
-        finalFrame.roll(10);
-        expect(finalFrame.isFinished()).toBe(false);
-      });
+  describe('finished', () => {
+    it('has not finished finished after a strike', () => {
+      finalFrame.roll(10);
+
+      expect(finalFrame.isFinished()).toBe(false);
+    });
+
+    it('has not finished finished after two throws after a strike', () => {
+      finalFrame.roll(10);
+      finalFrame.roll(10);
+      expect(finalFrame.isFinished()).toBe(false);
+    });
 
 
-      it('has finished finished after three throws after a strike', () => {
-        finalFrame.roll(10);
-        finalFrame.roll(10);
-        finalFrame.roll(10);
+    it('has finished finished after three throws after a strike', () => {
+      finalFrame.roll(10);
+      finalFrame.roll(10);
+      finalFrame.roll(10);
 
-        expect(finalFrame.isFinished()).toBe(true);
-      });
+      expect(finalFrame.isFinished()).toBe(true);
+    });
+
+    it('has finished finished after two throws, which are not a strike', () => {
+      finalFrame.roll(8);
+      finalFrame.roll(1);
+
+      expect(finalFrame.isFinished()).toBe(true);
+    });
+
+    it('has not finished after one throw', () => {
+      finalFrame.roll(10);
+
+      expect(finalFrame.isFinished()).toBe(false);
+    });
+
+    it('has not finished after a spare', () => {
+      finalFrame.roll(7);
+      finalFrame.roll(3);
+
+      expect(finalFrame.isFinished()).toBe(false);
     });
   });
 });

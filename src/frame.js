@@ -9,32 +9,39 @@ class Frame {
   }
 
   score() {
-    if (this.useThird()) { return this.add(this.rounds); }
+    if (this.strike()) { return this.add(this.rounds); }
     return this.add(this.rounds.slice(0, STANDARD_ROUND));
   }
 
   roll(value) {
-    if (this.rounds.length < 3) { this.rounds.push(value); }
+    if (this.rounds.length <= STANDARD_ROUND) { this.rounds.push(value); }
   }
 
   isFinished() {
-    if (this.rounds[0] === STRIKE) { return this.roundsAfterStrike(); }
+    if (this.firstRoll() === STRIKE) { return this.roundsAfterStrike(); }
     if (this.rounds.length === STANDARD_ROUND) { return true; }
     return false;
   }
 
+
+  // need to make private
   roundsAfterStrike() {
     return this.rounds.length === this.strikeRound
   }
 
-  useThird() {
-    const first = this.rounds[0];
-    if (first === STRIKE) { return true; }
-    if (first + this.rounds[1] === STRIKE) { return true; }
-    return false;
+  strike() {
+    return (this.firstRoll() == STRIKE || this.firstRoll() + this.secondRoll() === STRIKE);
   }
 
   add(results) {
     return results.reduce((a, b) => a + b, 0)
+  }
+
+  firstRoll() {
+    return this.rounds[0];
+  }
+
+  secondRoll(){
+    return this.rounds[1];
   }
 }

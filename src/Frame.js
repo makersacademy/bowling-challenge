@@ -14,6 +14,8 @@ Frame.prototype.endFrame = function() {
   this.updateScore()
   if (this.Score() === 10) {
     this.isPreviouslySpare = true
+  } else {
+    this.isPreviouslySpare = false
   }
   this.bowls = []
 };

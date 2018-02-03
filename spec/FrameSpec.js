@@ -52,14 +52,38 @@ describe("Frame", function() {
 
   });
 
-  describe("spare", function() {
+  describe("scoring when bowling a spare", function() {
+
+    it("is not a spare by default", function() {
+      expect(frame.isPreviouslySpare).toEqual(false)
+    });
+
     it("knows the previous turn was a spare", function() {
       frame.roll(7);
       frame.roll(3);
       frame.endFrame();
-      expect(frame).toBePreviouslySpare
+      expect(frame.isPreviouslySpare).toEqual(true)
     });
+
+    it("knows a turn is not spare even a previous was", function() {
+      frame.roll(7);
+      frame.roll(3);
+      frame.endFrame();
+      frame.roll(1);
+      frame.roll(3);
+      frame.endFrame();
+      expect(frame.isPreviouslySpare).toEqual(false)
+    });
+
   });
+
+  // describe("scoring when bowling a strike", function() {
+  //   it("knows the previous turn was a strike", function() {
+  //     frame.roll(10);
+  //     frame.endFrame();
+  //     expect(frame).toBePreviouslyStrike
+  //   });
+  // });
 
 });
 

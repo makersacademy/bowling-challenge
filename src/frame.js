@@ -9,7 +9,7 @@ class Frame {
 
   score() {
     if (this.useThird()) { return this.rounds.reduce((a, b) => a + b, 0); }
-    return this.rounds.slice(0,rounds).reduce((a, b) => a + b, 0)
+    return this.rounds.slice(0, rounds).reduce((a, b) => a + b, 0)
   }
 
   roll(value) {

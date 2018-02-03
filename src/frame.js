@@ -1,8 +1,28 @@
+class Frame {
+  constructor() {
+    this.rounds = [];
+  }
 
-function Frame() {
-  this.score = 0;
-}
+  score() {
+    return this.rounds.reduce((a, b) => a + b, 0);
+  }
 
-Frame.prototype.roll = function(value) {
-  this.score = value;
+  roll(value) {
+    if (this.rounds.length < 2) {
+      return this.rounds.push(value);
+    }
+    if (this.rounds.length < 3 && this.score() === 10) {
+      return this.rounds.push(value);
+    }
+    if (this.rounds.length < 3 && this.rounds[0] === 10) {
+      return this.rounds.push(value);
+    }
+    return false;
+  }
+
+  isFinished() {
+    if (this.rounds[0] === 10) { return true; }
+    if (this.rounds.length === 2) { return true; }
+    return false;
+  }
 }

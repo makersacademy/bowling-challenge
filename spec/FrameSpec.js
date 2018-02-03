@@ -25,39 +25,40 @@ describe("Frame", function() {
     beforeEach(function() {
       frame.roll(3);
       frame.roll(4);
-      frame.end();
+      frame.endFrame();
     });
 
     it("sums the score of two bowls", function() {
       expect(frame.scores).toEqual([7])
     });
 
-    it("empties the frame at the end", function() {
+    it("empties the frame at the endFrame", function() {
       expect(frame.bowls).toEqual([]);
     });
 
     it("keeps score over multiple frames", function() {
       frame.roll(1);
       frame.roll(0);
-      frame.end();
+      frame.endFrame();
       expect(frame.scores).toEqual([7,1])
     });
 
     it("has a running total", function() {
       frame.roll(1);
       frame.roll(0);
-      frame.end();
+      frame.endFrame();
       expect(frame.runningTotal).toEqual(8)
     });
 
   });
 
-  // describe("spare", function() {
-  //   it("knows the previous turn was a spare", function() {
-  //     frame.roll(7);
-  //     frame.roll(3);
-  //     frame.end();
-  //   });
+  describe("spare", function() {
+    it("knows the previous turn was a spare", function() {
+      frame.roll(7);
+      frame.roll(3);
+      frame.endFrame();
+      expect(frame).toBePreviouslySpare
+    });
   });
 
 });

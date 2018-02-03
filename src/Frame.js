@@ -2,15 +2,19 @@ function Frame() {
   this.bowls = []
   this.scores = []
   this.runningTotal = 0
+  this.isPreviouslySpare = false
 }
 
 Frame.prototype.roll = function(number) {
   this.bowls.push(number)
 };
 
-Frame.prototype.end = function() {
+Frame.prototype.endFrame = function() {
   this.scores.push(this.bowls[0] + this.bowls[1])
   this.updateScore()
+  if ((this.bowls[0] + this.bowls[1]) === 10) {
+    this.isPreviouslySpare = true
+  }
   this.bowls = []
 };
 

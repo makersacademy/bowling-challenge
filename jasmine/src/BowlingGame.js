@@ -14,3 +14,11 @@ BowlingGame.prototype.score = function () {
 BowlingGame.prototype.finalScore = function () {
   return 130;
 };
+
+BowlingGame.prototype._isSpare = function () {
+
+};
+
+BowlingGame.prototype._isStrike = function () {
+
+};

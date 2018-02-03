@@ -1,28 +1,30 @@
+const strike = 10;
+const rounds = 2;
+
 class Frame {
+
   constructor() {
     this.rounds = [];
   }
 
   score() {
-    return this.rounds.reduce((a, b) => a + b, 0);
+    if (this.useThird()) { return this.rounds.reduce((a, b) => a + b, 0); }
+    return this.rounds.slice(0,rounds).reduce((a, b) => a + b, 0)
   }
 
   roll(value) {
-    if (this.rounds.length < 2) {
-      return this.rounds.push(value);
-    }
-    if (this.rounds.length < 3 && this.score() === 10) {
-      return this.rounds.push(value);
-    }
-    if (this.rounds.length < 3 && this.rounds[0] === 10) {
-      return this.rounds.push(value);
-    }
-    return false;
+    if (this.rounds.length < 3) { this.rounds.push(value); }
   }
 
   isFinished() {
-    if (this.rounds[0] === 10) { return true; }
-    if (this.rounds.length === 2) { return true; }
+    if (this.rounds[0] === strike) { return true; }
+    if (this.rounds.length === rounds) { return true; }
+    return false;
+  }
+  useThird() {
+    const first = this.rounds[0];
+    if (first === strike) { return true; }
+    if (first + this.rounds[1] === strike) { return true; }
     return false;
   }
 }

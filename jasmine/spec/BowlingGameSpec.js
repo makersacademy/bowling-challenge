@@ -23,7 +23,7 @@ describe('BowlingGame', function (){
       game = new BowlingGame();
       game.roll(2,3);
       game.roll(4,2);
-      expect(game.currentRoll).toEqual(4);
+      expect(game.currentRollNumber).toEqual(4);
     });
   });
 

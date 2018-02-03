@@ -2,14 +2,14 @@ var BowlingGame = function (){
   this.pins1 = 0;
   this.pins2 = 0;
   this.rollTotal = 0;
-  this.currentRoll = 0;
+  this.currentRollNumber = 0;
 };
 
 BowlingGame.prototype.roll = function (pins1, pins2) {
   this.pins1 = pins1;
   this.pins2 = pins2;
   this.rollTotal = pins1 + pins2;
-  this.currentRoll += 2;
+  this.currentRollNumber += 2;
 };
 
 BowlingGame.prototype.score = function () {

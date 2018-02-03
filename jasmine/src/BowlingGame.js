@@ -1,1 +1,1 @@
-
+var BowlingGame = function (){};

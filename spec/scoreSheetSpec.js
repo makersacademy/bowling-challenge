@@ -29,13 +29,13 @@ describe('Bowling Scoresheet', function () {
     });
   });
 
-  // describe('Scoresheet accept score', function () {
-  //   it('Score Given function to have been called', function () {
-  //     spyOn(scoresheet, 'pinsDropped').and.returnValue(10);
-  //     expect(scoresheet.pinsDropped(10)).toEqual(10);
-  //   });
-  // });
-
+  describe('Calculating Score', function () {
+    it('Return total score for neither a strike or a spare', function () {
+      scoresheet.calculatingScore(6);
+      scoresheet.calculatingScore(3);
+      expect(scoresheet.totalScore()).toEqual(9);
+    });
+  });
 
   describe('Strike , Spare or None', function () {
 
@@ -65,15 +65,6 @@ describe('Bowling Scoresheet', function () {
 
       expect(scoresheet.totalScore()).toEqual(6);
     });
-
-
-    //
-    // it("Player doesn't score either a spare or strike", function () {
-    //   scoresheet.pinsDropped(4);
-    //   scoresheet.pinsDropped(3);
-    //   console.log(scoresheet.scoreArray);
-    //   expect(scoresheet.scoreArray).toEqual([4,3]);
-    // });
   });
 
   // describe('Total Score so far', function () {

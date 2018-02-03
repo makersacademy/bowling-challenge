@@ -27,6 +27,13 @@ describe('BowlingGame', function (){
       game.roll(4,2);
       expect(game.currentRollNumber).toEqual(4);
     });
+
+    it('check the set of pins are added to the score array', function() {
+      game = new BowlingGame();
+      game.roll(2,3);
+      game.score();
+      expect(game.scoreArray.length).toEqual(1);
+    });
   });
 
 });

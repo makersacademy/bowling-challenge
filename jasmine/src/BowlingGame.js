@@ -4,6 +4,7 @@ var BowlingGame = function (){
   this.rollTotal = 0;
   this.currentRollNumber = 0;
   this.scoreTotal = 0;
+  this.scoreArray = [];
 };
 
 BowlingGame.prototype.roll = function (pins1, pins2) {
@@ -15,6 +16,7 @@ BowlingGame.prototype.roll = function (pins1, pins2) {
 
 BowlingGame.prototype.score = function () {
   this.scoreTotal = this.pins1 + this.pins2;
+  this.scoreArray.push([this.pins1, this.pins2]);
 };
 
 BowlingGame.prototype.finalScore = function () {

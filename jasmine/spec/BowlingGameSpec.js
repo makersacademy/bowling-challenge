@@ -11,6 +11,10 @@ describe('BowlingGame', function (){
       expect(game.score()).toEqual(5);
     });
 
+    it('see the final score', function(){
+      game = new BowlingGame();
+      expect(game.finalScore()).toEqual(130);
+    });
   });
 
 });

@@ -5,6 +5,12 @@ describe('BowlingGame', function (){
       game = new BowlingGame();
       expect(game.roll()).toBe(true);
     });
+
+    it('score when hits pins', function() {
+      game = new BowlingGame();
+      expect(game.score()).toEqual(5);
+    });
+
   });
 
 });

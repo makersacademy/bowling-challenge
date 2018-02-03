@@ -10,7 +10,7 @@ class Frame {
   }
 
   score() {
-    const validRolls = (this.strike()) ? this.rounds : this.rounds.slice(0, STANDARD_ROUND)
+    const validRolls = (this.strike()) ? this.rounds : this.rounds.slice(0, STANDARD_ROUND);
     return this.add(validRolls);
   }
 
@@ -20,14 +20,14 @@ class Frame {
 
   isFinished() {
     if (this.firstRoll() === STRIKE) { return this.roundsAfterStrike(); }
-    if (this.strike()) { return this.rounds.length >= this.spareRound }
+    if (this.strike()) { return this.rounds.length >= this.spareRound; }
     return (this.rounds.length >= STANDARD_ROUND);
   }
 
 
   // need to make private
   roundsAfterStrike() {
-    return this.rounds.length === this.strikeRound
+    return this.rounds.length === this.strikeRound;
   }
 
   strike() {
@@ -35,7 +35,7 @@ class Frame {
   }
 
   add(results) {
-    return results.reduce((a, b) => a + b, 0)
+    return results.reduce((a, b) => a + b, 0);
   }
 
   firstRoll() {

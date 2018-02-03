@@ -125,5 +125,13 @@ describe('StrikeRound', () => {
 
       expect(finalFrame.isFinished()).toBe(false);
     });
+
+    it('has finished after a spare and an extra roll', () => {
+      finalFrame.roll(7);
+      finalFrame.roll(3);
+      finalFrame.roll(10);
+
+      expect(finalFrame.isFinished()).toBe(true);
+    });
   });
 });

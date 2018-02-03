@@ -3,14 +3,15 @@ const STANDARD_ROUND = 2;
 const STRIKE_ROUND = 1;
 
 class Frame {
-  constructor(strike = STRIKE_ROUND) {
+  constructor(strikeRound = STRIKE_ROUND) {
     this.rounds = [];
-    this.strikeRound = strike
+    this.strikeRound = strikeRound;
+    this.spareRound = (STANDARD_ROUND > strikeRound) ? STANDARD_ROUND : strikeRound;
   }
 
   score() {
-    if (this.strike()) { return this.add(this.rounds); }
-    return this.add(this.rounds.slice(0, STANDARD_ROUND));
+    const validRolls = (this.strike()) ? this.rounds : this.rounds.slice(0, STANDARD_ROUND)
+    return this.add(validRolls);
   }
 
   roll(value) {
@@ -19,8 +20,8 @@ class Frame {
 
   isFinished() {
     if (this.firstRoll() === STRIKE) { return this.roundsAfterStrike(); }
-    if (this.rounds.length === STANDARD_ROUND) { return true; }
-    return false;
+    if (this.strike()) { return this.rounds.length >= this.spareRound }
+    return (this.rounds.length >= STANDARD_ROUND);
   }
 
 
@@ -30,7 +31,7 @@ class Frame {
   }
 
   strike() {
-    return (this.firstRoll() == STRIKE || this.firstRoll() + this.secondRoll() === STRIKE);
+    return (this.firstRoll() === STRIKE || this.firstRoll() + this.secondRoll() === STRIKE);
   }
 
   add(results) {
@@ -41,7 +42,7 @@ class Frame {
     return this.rounds[0];
   }
 
-  secondRoll(){
+  secondRoll() {
     return this.rounds[1];
   }
 }

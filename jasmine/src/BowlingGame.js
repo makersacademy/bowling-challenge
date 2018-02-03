@@ -1,9 +1,13 @@
 var BowlingGame = function (){
-  this.total = 0;
+  this.pins1 = 0;
+  this.pins2 = 0;
+  this.rollTotal = 0;
 };
 
-BowlingGame.prototype.roll = function () {
-  return true;
+BowlingGame.prototype.roll = function (pins1, pins2) {
+  this.pins1 = pins1;
+  this.pins2 = pins2;
+  this.rollTotal = pins1 + pins2;
 };
 
 BowlingGame.prototype.score = function () {

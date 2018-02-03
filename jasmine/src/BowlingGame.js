@@ -1,4 +1,6 @@
-var BowlingGame = function (){};
+var BowlingGame = function (){
+  this.total = 0;
+};
 
 BowlingGame.prototype.roll = function () {
   return true;

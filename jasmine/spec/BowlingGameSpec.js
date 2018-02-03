@@ -9,7 +9,9 @@ describe('BowlingGame', function (){
 
     it('score when hits pins', function() {
       game = new BowlingGame();
-      expect(game.score()).toEqual(5);
+      game.roll(2,5);
+      game.score();
+      expect(game.scoreTotal).toEqual(7);
     });
 
     it('see the final score', function(){

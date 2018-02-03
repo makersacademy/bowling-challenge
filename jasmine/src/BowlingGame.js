@@ -3,6 +3,7 @@ var BowlingGame = function (){
   this.pins2 = 0;
   this.rollTotal = 0;
   this.currentRollNumber = 0;
+  this.scoreTotal = 0;
 };
 
 BowlingGame.prototype.roll = function (pins1, pins2) {
@@ -13,8 +14,7 @@ BowlingGame.prototype.roll = function (pins1, pins2) {
 };
 
 BowlingGame.prototype.score = function () {
-  var score = 0;
-  return score + 5;
+  this.scoreTotal = this.pins1 + this.pins2;
 };
 
 BowlingGame.prototype.finalScore = function () {

@@ -1,2 +1,3 @@
 function Game(){
+  this.frames = [];
 }

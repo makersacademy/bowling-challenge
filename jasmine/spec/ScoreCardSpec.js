@@ -16,9 +16,9 @@ describe('ScoreCard', function(){
   it('starts with an empty score', function() {
     expect(scoreCard.scoreSoFar).toEqual(0);
   });
-  it('adds rollOne score to scoreCard', function() {
-    rollOne.roll(7);
-    expect(scoreCard.scoreSoFar).toEqual(7);
-  });
+  // it('adds rollOne score to scoreCard', function() {
+  //   rollOne.roll(7);
+  //   expect(scoreCard.scoreSoFar).toEqual(7);
+  // });
 
 });

@@ -22,11 +22,18 @@ FrameLog.prototype.frameCount = function(){
   return this.frames.length
 }
 
-FrameLog.prototype.isPreviousFrameStike = function(){
+FrameLog.prototype.isPreviousFrameStrike = function(){
   return this.frames[this.frames.length-2].isStrike()
 }
 FrameLog.prototype.isPreviousFrameSpare = function(){
   return this.frames[this.frames.length-2].isSpare()
+}
+
+FrameLog.prototype.isCurrentFrameStrike = function(){
+  return this.frames.slice(-1)[0].isStrike()
+}
+FrameLog.prototype.isCurrentFrameSpare = function(){
+  return this.frames.slice(-1)[0].isSpare()
 }
 
 FrameLog.prototype._addFrame = function(frame){

@@ -3,32 +3,35 @@ describe('GameLogic',function(){
   var framelog
 
   beforeEach(function(){
-    framelog = jasmine.createSpyObj('framelog',['frameCount','createFrameLog','startFrame','endFrame','isPreviousFrameStike', 'isPreviousFrameSpare'])
+    framelog = jasmine.createSpyObj('framelog',['frameCount','createFrameLog','startFrame','endFrame','isPreviousFrameStrike', 'isPreviousFrameSpare','isCurrentFrameSpare', 'isCurrentFrameStrike'])
     gamelogic = new GameLogic(framelog)
     framelog.createFrameLog.and.returnValue(framelog);
+    gamelogic.newGame()
   })
 
   describe('newGame',function(){
     it('can create with a new framelog object', function(){
-      gamelogic.newGame()
       expect(framelog.createFrameLog).toHaveBeenCalled()
     })
     it('stores a framelog', function(){
-      gamelogic.newGame()
       expect(gamelogic.currentFrameLog).toEqual(framelog)
     })
   })
 
   describe('addNextFrameScoreFirstRoll',function(){
     it('can call FrameLog to add a new frame',function(){
-      gamelogic.newGame()
       gamelogic.addNextFrameScoreFirstRoll(2)
       expect(framelog.startFrame).toHaveBeenCalled()
+    })
+    it('will not add a new frame if frameCount 10 and last frame was not a spare or strike', function(){
+      framelog.frameCount.and.returnValue(10)
+      framelog.isCurrentFrameSpare.and.returnValue(false)
+      framelog.isCurrentFrameStrike.and.returnValue(false)
+      expect(function() { gamelogic.addNextFrameScoreFirstRoll()}).toThrow("No more rolls allowed")
     })
   })
   describe('addFrameScoreSecondRoll',function(){
     it('can call FrameLog to add a new frame',function(){
-      gamelogic.newGame()
       gamelogic.FrameScoreSecondRoll(2)
       expect(framelog.endFrame).toHaveBeenCalled()
     })
@@ -36,7 +39,6 @@ describe('GameLogic',function(){
 
   describe('isTenthFrame',function(){
     beforeEach(function(){
-      gamelogic.newGame()
       framelog.frameCount.and.returnValue(10)
     })
 
@@ -49,25 +51,18 @@ describe('GameLogic',function(){
     })
   })
 
-  describe('isPreviousFrameStike',function(){
-    beforeEach(function(){
-      gamelogic.newGame()
-    })
-
+  describe('isPreviousFrameStrike',function(){
     it('calls on framelog to confirm if previous frame strike',function(){
-      gamelogic.isPreviousFrameStike()
-      expect(framelog.isPreviousFrameStike).toHaveBeenCalled()
+      gamelogic.isPreviousFrameStrike()
+      expect(framelog.isPreviousFrameStrike).toHaveBeenCalled()
     })
     it('returns outcome of framelog call ',function(){
-      framelog.isPreviousFrameStike.and.returnValue(true)
-      expect(gamelogic.isPreviousFrameStike()).toEqual(true)
+      framelog.isPreviousFrameStrike.and.returnValue(true)
+      expect(gamelogic.isPreviousFrameStrike()).toEqual(true)
     })
   })
 
   describe('isPreviousFrameSpare',function(){
-    beforeEach(function(){
-      gamelogic.newGame()
-    })
     it('calls on framelog to confirm if previous frame strike',function(){
       gamelogic.isPreviousFrameSpare()
       expect(framelog.isPreviousFrameSpare).toHaveBeenCalled()
@@ -75,6 +70,18 @@ describe('GameLogic',function(){
     it('returns outcome of framelog call ',function(){
       framelog.isPreviousFrameSpare.and.returnValue(false)
       expect(gamelogic.isPreviousFrameSpare()).toEqual(false)
+    })
+  })
+  describe('isCurrentFrameSpare',function(){
+    it('calls on framelog to confirm if current frame strike',function(){
+      gamelogic.isCurrentFrameSpare()
+      expect(framelog.isCurrentFrameSpare).toHaveBeenCalled()
+    })
+  })
+  describe('isCurrentFrameStrike',function(){
+    it('calls on framelog to confirm if current frame strike',function(){
+      gamelogic.isCurrentFrameStrike()
+      expect(framelog.isCurrentFrameStrike).toHaveBeenCalled()
     })
   })
 })

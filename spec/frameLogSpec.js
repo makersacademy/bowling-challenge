@@ -55,7 +55,7 @@ describe('FrameLog',function(){
     })
   })
 
-  describe('isPreviousFrameStike',function(){
+  describe('isPreviousFrameStrike',function(){
     beforeEach(function(){
       frame.createFrame.and.returnValue(frame)
     })
@@ -64,7 +64,7 @@ describe('FrameLog',function(){
       frame.isStrike.and.returnValue(true)
       framelog.startFrame(10)
       framelog.startFrame(0)
-      expect(framelog.isPreviousFrameStike()).toEqual(true)
+      expect(framelog.isPreviousFrameStrike()).toEqual(true)
       expect(frame.isStrike).toHaveBeenCalled()
     })
   })
@@ -78,6 +78,31 @@ describe('FrameLog',function(){
       framelog.endFrame(9)
       framelog.startFrame(0)
       expect(framelog.isPreviousFrameSpare()).toEqual(true)
+      expect(frame.isSpare).toHaveBeenCalled()
+    })
+  })
+  describe('isCurrentFrameStrike',function(){
+    beforeEach(function(){
+      frame.createFrame.and.returnValue(frame)
+    })
+
+    it('calls and returns isStrike function for current frame',function(){
+      frame.isStrike.and.returnValue(true)
+      framelog.startFrame(10)
+      expect(framelog.isCurrentFrameStrike()).toEqual(true)
+      expect(frame.isStrike).toHaveBeenCalled()
+    })
+  })
+  describe('isCurrentFrameSpare',function(){
+    beforeEach(function(){
+      frame.createFrame.and.returnValue(frame)
+    })
+
+    it('calls and returns isSpare function for current frame',function(){
+      frame.isSpare.and.returnValue(true)
+      framelog.startFrame(9)
+      framelog.endFrame(1)
+      expect(framelog.isCurrentFrameSpare()).toEqual(true)
       expect(frame.isSpare).toHaveBeenCalled()
     })
   })

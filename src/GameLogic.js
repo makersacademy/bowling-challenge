@@ -12,6 +12,7 @@ GameLogic.prototype.newGame = function(){
 }
 
 GameLogic.prototype.addNextFrameScoreFirstRoll = function(firstRollScore){
+  if(this.isTenthFrame() && !this.isCurrentFrameSpare() && !this.isCurrentFrameStrike()) throw "No more rolls allowed"
   this.currentFrameLog.startFrame(firstRollScore)
 }
 
@@ -19,9 +20,16 @@ GameLogic.prototype.FrameScoreSecondRoll = function(secondRollScore){
   this.currentFrameLog.endFrame(secondRollScore)
 }
 
-GameLogic.prototype.isPreviousFrameStike = function(){
-  return this.currentFrameLog.isPreviousFrameStike()
+GameLogic.prototype.isPreviousFrameStrike = function(){
+  return this.currentFrameLog.isPreviousFrameStrike()
 }
 GameLogic.prototype.isPreviousFrameSpare = function(){
   return this.currentFrameLog.isPreviousFrameSpare()
+}
+
+GameLogic.prototype.isCurrentFrameSpare = function(){
+  return this.currentFrameLog.isCurrentFrameSpare()
+}
+GameLogic.prototype.isCurrentFrameStrike = function(){
+  return this.currentFrameLog.isCurrentFrameStrike()
 }

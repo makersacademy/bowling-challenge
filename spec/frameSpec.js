@@ -15,6 +15,12 @@ describe('Frame', function() {
     expect(frame.rolls).toContain(5)
   });
 
+  it('can add up', function(){
+    frame.addRoll(2)
+    frame.addRoll(3)
+    expect(frame.score()).toEqual(5)
+  });
+
   it('knows it is a spare', function(){
     frame.addRoll(5)
     frame.addRoll(5)
@@ -25,5 +31,7 @@ describe('Frame', function() {
     frame.addRoll(10)
     expect(frame.isStrike).toEqual(true)
   });
+
+  
 
 });

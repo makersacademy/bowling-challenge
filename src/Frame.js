@@ -13,23 +13,34 @@ Frame.prototype.roll = function(number) {
   this.bowls.push(number)
 };
 
+Frame.prototype.finalRoll = function(number) {
+  this.finalRolls.push(number)
+};
+
 Frame.prototype.endFrame = function() {
-  this.assignsFinalFrame()
-  this.matchScores.push(this.Score())
-  this.adjustsForStrike()
-  this.adjustsForSpare()
-  this.assignsStrikeOrSpare();
-  this.recalculateTotal();
-  this.bowls = []
   if (this.lastFrame) {
-    if (this.isPreviouslySpare) {
-      return "One more roll"
-    } else if (this.isPreviouslyStrike) {
-      return "Two more rolls"
-    } else {
-      return "Game over"
+    this.adjustsForStrike()
+    this.adjustsForSpare()
+    this.assignsStrikeOrSpare();
+    this.recalculateTotal();
+  } else {
+    this.assignsFinalFrame()
+    this.matchScores.push(this.Score())
+    this.adjustsForStrike()
+    this.adjustsForSpare()
+    this.assignsStrikeOrSpare();
+    this.recalculateTotal();
+    this.bowls = []
+    if (this.lastFrame) {
+      if (this.isPreviouslySpare) {
+        return "One more roll"
+      } else if (this.isPreviouslyStrike) {
+        return "Two more rolls"
+      } else {
+        return "Game over"
+      }
     }
-  }
+  };
 };
 
 Frame.prototype.recalculateTotal = function() {
@@ -90,16 +101,6 @@ Frame.prototype.adjustsForSpare = function() {
     this.matchScores[this.matchScores.length-2] += this.bowls[0]
   }
 };
-
-// Frame.prototype.finalFrame = function() {
-//   if (this.lastFrame) {
-//     if (this.isPreviouslySpare) {
-//       return "One more roll"
-//     } else {
-//       return "Game over"
-//     }
-//   }
-// };
 
 Frame.prototype.assignsFinalFrame = function() {
   if (this.matchScores.length === 9) {

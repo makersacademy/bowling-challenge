@@ -9,60 +9,51 @@ describe("Frame", function() {
     expect(frame.bowls).toEqual([]);
   });
 
-  // describe("10th frame", function() {
-  //   it("knows it is not the last frame", function() {
-  //     expect(frame.lastFrame).toEqual(false)
-  //   });
-  //
-  //   it("knows it is the last frame", function() {
-  //     frame.matchScores = [1,2,3,4,5,6,7,8,9]
-  //     frame.roll(1);
-  //     frame.roll(0);
-  //     frame.endFrame();
-  //     expect(frame.lastFrame).toEqual(true)
-  //   });
-  //
-  //   it("ends the game after 10th frame without bonuses", function() {
-  //     frame.matchScores = [1,2,3,4,5,6,7,8,9]
-  //     frame.roll(1);
-  //     frame.roll(0);
-  //     expect(frame.endFrame()).toEqual("Game over")
-  //   });
-  //
-  //   it("does not end game if 10th frame is spare", function() {
-  //     frame.matchScores = [1,2,3,4,5,6,7,8,9]
-  //     frame.roll(9);
-  //     frame.roll(1);
-  //     expect(frame.endFrame()).not.toEqual("Game over")
-  //   });
-  //
-  //   it("allows extra roll if 10th frame is spare", function() {
-  //     frame.matchScores = [1,2,3,4,5,6,7,8,9]
-  //     frame.roll(9);
-  //     frame.roll(1);
-  //     expect(frame.endFrame()).toEqual("One more roll")
-  //   });
-  // });
+  describe("10th frame", function() {
+    it("knows it is not the last frame", function() {
+      expect(frame.lastFrame).toEqual(false)
+    });
 
-  // describe("final frame", function() {
-  //   it("it can store 3 strikes", function() {
-  //     frame.finalRoll(10);
-  //     frame.finalRoll(10);
-  //     frame.finalRoll(10);
-  //     expect(frame.bowls).toEqual([10,10,10])
-  //   });
-  // });
+    it("knows it is the last frame", function() {
+      frame.matchScores = [1,2,3,4,5,6,7,8,9]
+      frame.roll(1);
+      frame.roll(0);
+      frame.endFrame();
+      expect(frame.lastFrame).toEqual(true)
+    });
 
-    // it("counts extra roll score if 10th frame is spare", function() {
-    //   frame.matchScores = [1,2,3,4,5,6,7,8,9]
-    //   frame.roll(9);
-    //   frame.roll(1);
-    //   frame.endFrame();
-    //   frame.roll(3);
-    //   frame.endFrame();
-    //   frame.recalculateTotal();
-    //   expect(frame.runningTotal).toEqual(58)
-    // });
+    it("ends the game after 10th frame without bonuses", function() {
+      frame.matchScores = [1,2,3,4,5,6,7,8,9]
+      frame.roll(1);
+      frame.roll(0);
+      expect(frame.endFrame()).toEqual("Game over")
+    });
+
+    it("does not end game if 10th frame is spare", function() {
+      frame.matchScores = [1,2,3,4,5,6,7,8,9]
+      frame.roll(9);
+      frame.roll(1);
+      expect(frame.endFrame()).not.toEqual("Game over")
+    });
+
+    it("allows extra roll if 10th frame is spare", function() {
+      frame.matchScores = [1,2,3,4,5,6,7,8,9]
+      frame.roll(9);
+      frame.roll(1);
+      expect(frame.endFrame()).toEqual("One more roll")
+    });
+  });
+
+    it("counts extra roll score if 10th frame is spare", function() {
+      frame.matchScores = [1,2,3,4,5,6,7,8,9]
+      frame.roll(9);
+      frame.roll(1);
+      frame.endFrame();
+      frame.roll(3);
+      frame.endFrame();
+      frame.recalculateTotal();
+      expect(frame.runningTotal).toEqual(58)
+    });
 
     // it("allows counts extra roll score if 10th frame is spare", function() {
     //   frame.matchScores = [1,2,3,4,5,6,7,8,9,10]
@@ -258,8 +249,7 @@ describe("Frame", function() {
       frame.roll(8);
       frame.endFrame();
       frame.roll(6)
-      // frame.endFrame();
-      // frame 11
+      frame.endFrame();
       console.log(frame.matchScores)
       expect(frame.runningTotal).toEqual(133)
     });

@@ -32,7 +32,6 @@ describe('GameLogic',function(){
     it('will allow one extra roll if frameCount 10 and last frame was a spare or strike',function(){
       framelog.frameCount.and.returnValue(10)
       framelog.isCurrentFrameSpare.and.returnValue(true)
-      framelog.isCurrentFrameStrike.and.returnValue(false)
       gamelogic.startFrame()
       expect(framelog.startFrame).toHaveBeenCalled()
     })
@@ -65,13 +64,9 @@ describe('GameLogic',function(){
     beforeEach(function(){
       framelog.frameCount.and.returnValue(FRAME_LIMIT)
     })
-
     it('calls on framelog for frame count',function(){
       gamelogic.isFrameLimit()
       expect(framelog.frameCount).toHaveBeenCalled()
-    })
-    it('knows when game is on 10th frame', function(){
-      expect(gamelogic.isFrameLimit()).toEqual(true)
     })
   })
 
@@ -80,10 +75,6 @@ describe('GameLogic',function(){
       gamelogic.isPreviousFrameStrike()
       expect(framelog.isPreviousFrameStrike).toHaveBeenCalled()
     })
-    it('returns outcome of framelog call ',function(){
-      framelog.isPreviousFrameStrike.and.returnValue(true)
-      expect(gamelogic.isPreviousFrameStrike()).toEqual(true)
-    })
   })
 
   describe('isPreviousFrameSpare',function(){
@@ -91,17 +82,15 @@ describe('GameLogic',function(){
       gamelogic.isPreviousFrameSpare()
       expect(framelog.isPreviousFrameSpare).toHaveBeenCalled()
     })
-    it('returns outcome of framelog call ',function(){
-      framelog.isPreviousFrameSpare.and.returnValue(false)
-      expect(gamelogic.isPreviousFrameSpare()).toEqual(false)
-    })
   })
+
   describe('isCurrentFrameSpare',function(){
     it('calls on framelog to confirm if current frame strike',function(){
       gamelogic.isCurrentFrameSpare()
       expect(framelog.isCurrentFrameSpare).toHaveBeenCalled()
     })
   })
+  
   describe('isCurrentFrameStrike',function(){
     it('calls on framelog to confirm if current frame strike',function(){
       gamelogic.isCurrentFrameStrike()

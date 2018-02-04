@@ -54,6 +54,7 @@ describe('Feature Test:', function(){
     game.completeFrame(10)
     expect(game.currentFrameLog.frameCount()).toEqual(10)
     expect(game.currentFrameLog.currentFrame.secondRoll).toEqual(10)
+    expect(game.currentFrameLog.currentFrame.firstRoll).toEqual(10)
   })
   it('will allow 2 extra rolls if 10th frame was a strike',function(){
     var times = 5

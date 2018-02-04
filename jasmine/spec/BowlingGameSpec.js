@@ -16,7 +16,12 @@ describe('BowlingGame', function (){
 
     it('see the final score', function(){
       game = new BowlingGame();
-      expect(game.finalScore()).toEqual(130);
+      rollTotal = game.rollTotal = 19;
+      spare = 10;
+      game.roll(2,5);
+      game.score();
+      scoreTotal = game.scoreTotal + 50 + spare;
+      expect(scoreTotal).toEqual(67);
     });
 
     it('see they have a Gutter Game', function(){

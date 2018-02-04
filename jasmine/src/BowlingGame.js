@@ -4,6 +4,7 @@ var BowlingGame = function (){
   this.rollTotal = 0;
   this.currentRollNumber = 0;
   this.scoreTotal = 0;
+  this.finalScore = 0;
   this.scoreArray = [];
   this.scoreArrayIndexSpare = [];
 };
@@ -21,7 +22,14 @@ BowlingGame.prototype.score = function () {
 };
 
 BowlingGame.prototype.finalScore = function () {
-  return 130;
+  if (this.scoreArrayIndexSpare.length > 0) {
+    this.scoreArrayIndexSpare.forEach(function (num) {
+        this.finalScore = this.scoreTotal + this.scoreArray[num];
+    });
+  }
+  else {
+    this.finalScore = this.scoreTotal;
+  }
 };
 
 BowlingGame.prototype._isSpare = function () {

@@ -17,6 +17,7 @@ describe('FrameLog',function(){
 
   describe('startFrame',function(){
     it('creates a new frame object',function(){
+      frame.createFrame.and.returnValue(frame);
       framelog.startFrame(3)
       expect(frame.createFrame).toHaveBeenCalled()
     })
@@ -46,6 +47,7 @@ describe('FrameLog',function(){
   })
   describe('frameCount',function(){
     it('returns number of frames stored',function(){
+      frame.createFrame.and.returnValue(frame);
       framelog.startFrame(1)
       framelog.startFrame(2)
       expect(framelog.frameCount()).toEqual(2)

@@ -8,14 +8,19 @@ FrameLog.createFrameLog = function(){
   return new FrameLog()
 }
 
+FrameLog.prototype.currentFrameValue = function(){
+  return this.currentFrame
+}
+
 FrameLog.prototype.startFrame = function(firstRollScore){
-  this.currentFrame = this.frameClass.createFrame(firstRollScore)
-  this._addFrame(this.currentFrame)
+  let frame = this.frameClass.createFrame(firstRollScore)
+  this.frames.push(frame)
+  if (!frame.isStrike()) this.currentFrame = frame
 }
 
 FrameLog.prototype.endFrame = function(secondRollScore){
   this.currentFrame.setSecondRoll(secondRollScore)
-  if (this.frameCount() != FRAME_LIMIT) return this.currentFrame = null
+  this.currentFrame = null
 }
 
 FrameLog.prototype.frameCount = function(){
@@ -34,8 +39,4 @@ FrameLog.prototype.isCurrentFrameStrike = function(){
 }
 FrameLog.prototype.isCurrentFrameSpare = function(){
   return this.frames.slice(-1)[0].isSpare()
-}
-
-FrameLog.prototype._addFrame = function(frame){
-  this.frames.push(frame)
 }

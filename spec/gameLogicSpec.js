@@ -3,7 +3,7 @@ describe('GameLogic',function(){
   var framelog
 
   beforeEach(function(){
-    framelog = jasmine.createSpyObj('framelog',['frameCount','createFrameLog','startFrame','endFrame','isPreviousFrameStrike', 'isPreviousFrameSpare','isCurrentFrameSpare', 'isCurrentFrameStrike'])
+    framelog = jasmine.createSpyObj('framelog',['frameCount','createFrameLog','startFrame','endFrame','isPreviousFrameStrike', 'isPreviousFrameSpare','isCurrentFrameSpare', 'isCurrentFrameStrike', 'currentFrameValue'])
     gamelogic = new GameLogic(framelog)
     framelog.createFrameLog.and.returnValue(framelog);
     gamelogic.newGame()
@@ -14,49 +14,57 @@ describe('GameLogic',function(){
       expect(framelog.createFrameLog).toHaveBeenCalled()
     })
     it('stores a framelog', function(){
-      expect(gamelogic.currentFrameLog).toEqual(framelog)
+      expect(gamelogic.frameLog).toEqual(framelog)
     })
   })
 
-  describe('startFrame',function(){
+  describe('addRoll',function(){
     it('can call FrameLog to add a new frame',function(){
-      gamelogic.startFrame(2)
+      framelog.currentFrameValue.and.returnValue(null)
+      gamelogic.addRoll(2)
       expect(framelog.startFrame).toHaveBeenCalled()
     })
+    it('can call FrameLog to end a frame if previous roll not strike',function(){
+      framelog.isCurrentFrameStrike.and.returnValue(false)
+      gamelogic.addRoll(2)
+      gamelogic.addRoll(2)
+      expect(framelog.endFrame).toHaveBeenCalled()
+    })
+
     it('will not add a new frame if frameCount at limit and last frame was not a spare or strike', function(){
+      framelog.currentFrameValue.and.returnValue(null)
       framelog.frameCount.and.returnValue(FRAME_LIMIT)
       framelog.isCurrentFrameSpare.and.returnValue(false)
       framelog.isCurrentFrameStrike.and.returnValue(false)
-      expect(function() { gamelogic.startFrame()}).toThrow("No more rolls allowed")
+      expect(function() { gamelogic.addRoll()}).toThrow("No more rolls allowed")
     })
+
     it('will allow one extra roll if frameCount 10 and last frame was a spare or strike',function(){
-      framelog.frameCount.and.returnValue(10)
-      framelog.isCurrentFrameSpare.and.returnValue(true)
-      gamelogic.startFrame()
+      framelog.frameCount.and.returnValue(FRAME_LIMIT)
+      framelog.currentFrameValue.and.returnValue(null)
+      framelog.isCurrentFrameStrike.and.returnValue(true)
+      gamelogic.addRoll(2)
       expect(framelog.startFrame).toHaveBeenCalled()
     })
-  })
-  describe('completeFrame',function(){
-    it('can call FrameLog to end a frame',function(){
-      gamelogic.completeFrame(2)
-      expect(framelog.endFrame).toHaveBeenCalled()
-    })
-    it('will not add second score if currentFrameframe is strike, and not at framelimit and raise new frame',function(){
+
+    it('will not add second score if currentFrame is strike, and not at framelimit and raise new frame',function(){
         framelog.isCurrentFrameStrike.and.returnValue(true)
         framelog.frameCount.and.returnValue(2)
-        gamelogic.completeFrame(3)
+        gamelogic.addRoll(3)
         expect(framelog.startFrame).toHaveBeenCalled()
       })
+
       it('will add secondRollScore if currentFrame is strike and framecount === framelimit', function(){
         framelog.isCurrentFrameStrike.and.returnValue(true)
         framelog.frameCount.and.returnValue(FRAME_LIMIT)
-        gamelogic.completeFrame(3)
+        gamelogic.addRoll(3)
         expect(framelog.endFrame).toHaveBeenCalled()
       })
+
       it('will not add secondRollScore if currentFrame is strike and framecount === framelimit + 1', function(){
         framelog.isCurrentFrameStrike.and.returnValue(true)
         framelog.frameCount.and.returnValue(FRAME_LIMIT + 1)
-        expect(function() {gamelogic.completeFrame(3)}).toThrow("No more rolls allowed")
+        expect(function() {gamelogic.addRoll(3)}).toThrow("No more rolls allowed")
       })
   })
 
@@ -90,7 +98,7 @@ describe('GameLogic',function(){
       expect(framelog.isCurrentFrameSpare).toHaveBeenCalled()
     })
   })
-  
+
   describe('isCurrentFrameStrike',function(){
     it('calls on framelog to confirm if current frame strike',function(){
       gamelogic.isCurrentFrameStrike()

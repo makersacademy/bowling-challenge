@@ -1,42 +1,44 @@
 const STRIKE = 10;
 const STANDARD_ROUND = 2;
 const STRIKE_ROUND = 1;
+const STRIKE_SCORE_ROUND = 3;
+
 
 class Frame {
-  constructor(strikeRound = STRIKE_ROUND) {
+  constructor(strikeRound = STRIKE_ROUND, spareRound = STANDARD_ROUND) {
     this.rounds = [];
-    this.strikeRound = strikeRound;
-    this.spareRound = (STANDARD_ROUND > strikeRound) ? STANDARD_ROUND : strikeRound;
+    this.rules = {
+      strike: [strikeRound, STRIKE_SCORE_ROUND],
+      spare: [spareRound, STRIKE_SCORE_ROUND],
+      normal: [STANDARD_ROUND, STANDARD_ROUND]
+    };
   }
 
   score() {
-    const validRolls = (this.strike()) ? this.rounds : this.rounds.slice(0, STANDARD_ROUND);
+    console.log(this.rounds)
+    const validRolls = this.rounds.slice(0, this.rules[this.result()][1]);
     return this.add(validRolls);
   }
 
   roll(value) {
-    if (this.rounds.length <= STANDARD_ROUND) { this.rounds.push(value); }
+    if (this.rounds.length < STRIKE_SCORE_ROUND) { this.rounds.push(value); }
   }
 
   isFinished() {
-    if (this.firstRoll() === STRIKE) { return this.roundsAfterStrike(); }
-    if (this.strike()) { return this.rounds.length >= this.spareRound; }
-    return (this.rounds.length >= STANDARD_ROUND);
+    return this.rounds.length >= this.rules[this.result()][0]
   }
-
 
   // need to make private
-  roundsAfterStrike() {
-    return this.rounds.length === this.strikeRound;
-  }
-
-  strike() {
-    return (this.firstRoll() === STRIKE || this.firstRoll() + this.secondRoll() === STRIKE);
+   result() {
+    if (this.firstRoll() === STRIKE) { return 'strike'; }
+    if (this.firstRoll() + this.secondRoll() === STRIKE ) { return 'spare'; }
+    return 'normal';
   }
 
   add(results) {
-    return results.reduce((a, b) => a + b, 0);
+    return results.reduce((a, b) => a + b, 0)
   }
+
 
   firstRoll() {
     return this.rounds[0];

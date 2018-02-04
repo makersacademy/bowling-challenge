@@ -24,7 +24,8 @@ describe('Frame', () => {
     it('still has a score of nine, after three rolls of 7, 2, 4', () => {
       frame.roll(7);
       frame.roll(2);
-      frame.roll(2);
+      frame.roll(4);
+      frame.roll(4);
 
       expect(frame.score()).toEqual(9);
     });
@@ -81,7 +82,7 @@ describe('StrikeRound', () => {
   let finalFrame;
 
   beforeEach(() => {
-   finalFrame = new Frame(3);
+    finalFrame = new Frame(3,3);
   });
 
   describe('finished', () => {

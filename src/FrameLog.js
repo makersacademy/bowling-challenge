@@ -22,10 +22,13 @@ FrameLog.prototype.frameCount = function(){
   return this.frames.length
 }
 
-FrameLog.prototype._addFrame = function(frame){
-  this.frames.push(frame)
-}
-
 FrameLog.prototype.isPreviousFrameStike = function(){
   return this.frames[this.frames.length-2].isStrike()
+}
+FrameLog.prototype.isPreviousFrameSpare = function(){
+  return this.frames[this.frames.length-2].isSpare()
+}
+
+FrameLog.prototype._addFrame = function(frame){
+  this.frames.push(frame)
 }

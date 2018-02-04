@@ -3,7 +3,7 @@ describe('FrameLog',function(){
   var frame
 
   beforeEach(function(){
-    frame =  jasmine.createSpyObj('frame',['firstRoll','createFrame','setSecondRoll','isStrike'])
+    frame =  jasmine.createSpyObj('frame',['firstRoll','createFrame','setSecondRoll','isStrike','isSpare'])
     framelog = new FrameLog(frame)
   })
 
@@ -54,21 +54,31 @@ describe('FrameLog',function(){
       expect(framelog.frameCount()).toEqual(2)
     })
   })
+
   describe('isPreviousFrameStike',function(){
     beforeEach(function(){
       frame.createFrame.and.returnValue(frame)
     })
-    it('returns true if previous frame was a strike',function(){
+
+    it('calls and returns isStrike function for previous frame',function(){
       frame.isStrike.and.returnValue(true)
       framelog.startFrame(10)
       framelog.startFrame(0)
       expect(framelog.isPreviousFrameStike()).toEqual(true)
+      expect(frame.isStrike).toHaveBeenCalled()
     })
-    it('returns false if previous frame was a strike',function(){
-      frame.isStrike.and.returnValue(false)
+  })
+  describe('isPreviousFrameSpare',function(){
+    beforeEach(function(){
+      frame.createFrame.and.returnValue(frame)
+    })
+    it('call and returns isSpare function for previous frame',function(){
+      frame.isSpare.and.returnValue(true)
+      framelog.startFrame(1)
+      framelog.endFrame(9)
       framelog.startFrame(0)
-      framelog.startFrame(10)
-      expect(framelog.isPreviousFrameStike()).toEqual(false)
+      expect(framelog.isPreviousFrameSpare()).toEqual(true)
+      expect(frame.isSpare).toHaveBeenCalled()
     })
   })
 })

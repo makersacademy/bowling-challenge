@@ -7,12 +7,12 @@ describe("Game", function() {
 
 	beforeEach(function() {
 		game =  new Game();
-		frame = jasmine.createSpy("frame");
+		frame = new Frame();
 	});
 
 	describe("When a game starts", function() {
 		it("should start with a score of 0", function() {
-			expect(game.calculateScore()).toEqual(0);
+			expect(game.score).toEqual(0);
 		});
 
 		it("should start with a tally of 0 frames", function() {
@@ -42,6 +42,13 @@ describe("Game", function() {
 			game.frametally = 9;
 			game.score = "100";
 			expect(game.recordFrame(frame)).toEqual("Game is now concluded. Your final score is: 100");
+		});
+	});
+
+	describe("When a prior frame is a strike or a spare", function() {
+		it("should expose whether a previous frame is a strike or a spare", function() {
+			game.submittedframes = [frame];
+			expect(game.onStrike()).toEqual(false);
 		});
 	});
 });

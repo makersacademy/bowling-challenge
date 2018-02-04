@@ -15,12 +15,15 @@ class Game {
     let board = this.board
     rolls.forEach(function(roll) {
     board[start].roll(roll);
-    if (board[start].isFinished()) { start += 1; console.log(roll)}
-
+    let previous = board.slice(0, start)
+    previous.forEach(function(frame) {
+      frame.roll(roll);
+    })
+    if (board[start].isFinished()) { start += 1;}
     });
   }
 
   score() {
-   return this.board.reduce((a, b) => a + b.score() , 0)
+   return this.board.reduce((a, b) => a + b.score(), 0)
   }
 }

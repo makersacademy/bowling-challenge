@@ -1,5 +1,3 @@
-'use strict';
-
 function Frame() {
     this.rolls = [];
     this.nextFrame = null;

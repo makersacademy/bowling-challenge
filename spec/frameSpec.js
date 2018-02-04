@@ -1,6 +1,5 @@
-"use strict";
-
 describe ("Frame", function() {
+    
     var frame; 
 
     beforeEach(function() {
@@ -42,4 +41,5 @@ describe ("Frame", function() {
         frame.addRoll(2);
         expect(frame.rollValues()).toEqual([7,2]);
     });
+    
 });

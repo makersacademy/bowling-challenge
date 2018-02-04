@@ -1,5 +1,3 @@
-'use strict';
-
 function Bowling() {
     this.frames = [];
     this.frame = new Frame();

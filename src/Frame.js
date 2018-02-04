@@ -6,7 +6,6 @@ function Frame() {
   this.isPreviouslyStrike = false
   this.doubleStrikeBonus = false
   this.lastFrame = false
-  this.finalRolls = []
 };
 
 Frame.prototype.roll = function(number) {
@@ -19,33 +18,27 @@ Frame.prototype.finalRoll = function(number) {
 
 Frame.prototype.endFrame = function() {
   if (this.lastFrame) {
-    this.adjustsForStrike()
-    this.adjustsForSpare()
-    this.assignsStrikeOrSpare();
-    this.recalculateTotal();
+    this.updatesScoring();
   } else {
-    this.assignsFinalFrame()
-    this.matchScores.push(this.Score())
-    this.adjustsForStrike()
-    this.adjustsForSpare()
-    this.assignsStrikeOrSpare();
-    this.recalculateTotal();
-    this.bowls = []
-    if (this.lastFrame) {
-      if (this.isPreviouslySpare) {
-        return "One more roll"
-      } else if (this.isPreviouslyStrike) {
-        return "Two more rolls"
-      } else {
-        return "Game over"
-      }
-    }
+    this.notFinalFrame()
   };
+  return (this.finalFrameAlerts())
+};
+
+Frame.prototype.notFinalFrame = function() {
+  this.assignsFinalFrame()
+  this.matchScores.push(this.Score())
+  this.updatesScoring()
+  this.emptyFrame()
 };
 
 Frame.prototype.recalculateTotal = function() {
   this.runningTotal = 0
   for(var i in this.matchScores) { this.runningTotal += this.matchScores[i]; }
+};
+
+Frame.prototype.emptyFrame = function() {
+  this.bowls = []
 };
 
 Frame.prototype.Score = function() {
@@ -105,5 +98,24 @@ Frame.prototype.adjustsForSpare = function() {
 Frame.prototype.assignsFinalFrame = function() {
   if (this.matchScores.length === 9) {
     this.lastFrame = true
+  }
+};
+
+Frame.prototype.updatesScoring = function() {
+  this.adjustsForStrike()
+  this.adjustsForSpare()
+  this.assignsStrikeOrSpare();
+  this.recalculateTotal();
+};
+
+Frame.prototype.finalFrameAlerts = function() {
+  if (this.lastFrame) {
+    if (this.isPreviouslySpare) {
+      return "One more roll"
+    } else if (this.isPreviouslyStrike) {
+      return "Two more rolls"
+    } else {
+      return "Game over"
+    }
   }
 };

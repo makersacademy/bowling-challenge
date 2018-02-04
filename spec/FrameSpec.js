@@ -250,8 +250,9 @@ describe("Frame", function() {
       frame.endFrame();
       frame.roll(6)
       frame.endFrame();
-      console.log(frame.matchScores)
       expect(frame.runningTotal).toEqual(133)
     });
+
   });
+  
 });

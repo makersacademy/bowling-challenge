@@ -9,6 +9,14 @@ function Frame(lastFrame = false) {
   this._ballInPlay = 0
 };
 
+Frame.prototype.lastFrame = function() {
+  return this._lastFrame;
+};
+
+Frame.prototype.score = function() {
+  return this._score;
+};
+
 Frame.prototype.isComplete = function() {
   return ( this._ballsRemaining === 0 ? true : false ) ;
 };

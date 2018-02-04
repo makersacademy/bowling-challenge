@@ -1,8 +1,12 @@
 const MAX_SCORE = 10;
 
-function Frame (){
-  this.firstRoll = 0
+function Frame (firstRollScore = 0){
+  this.firstRoll = firstRollScore
   this.secondRoll = 0
+}
+
+Frame.createFrame = function(firstRollScore) {
+  return new Frame(firstRollScore)
 }
 
 Frame.prototype.setFirstRoll = function(pins){

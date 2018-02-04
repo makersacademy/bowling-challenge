@@ -13,6 +13,11 @@ describe('Frame',function() {
     expect(frame.firstRoll).toEqual(0)
   })
 
+  it('sets firstRollScore when passed as an arg',function(){
+      frame = new Frame(9)
+      expect(frame.firstRoll).toEqual(9)
+    })
+
   describe('setFirstRoll', function(){
     it('sets firstRoll to equal amount of pins knocked down',function(){
       frame.setFirstRoll(4)

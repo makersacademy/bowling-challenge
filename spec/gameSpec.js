@@ -30,13 +30,15 @@ describe('Game', function(){
   describe('checkPinSum', function() {
 
     it('disallows a throw over ten', function() {
-    expect(function() { game.checkPinSum(11) }).toThrow("You must enter a throw of ten or less");
+    expect(function() { game.checkPinSumValid(11) }).toThrow("You must enter a throw of ten or less");
     });
 
   //   it('disallows a pin total over ten', function() {
   //     game.throw(5);
   //     game.throw(8);
-  //     expect(function() { game.checkPinSum() }).toThrow("There are not that many pins remaining!");
+  //     expect(function() { game.checkPinSumValid() }).toThrow("There are not that many pins remaining!");
   //   });
+
+
   });
 });

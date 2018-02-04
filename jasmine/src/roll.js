@@ -1,14 +1,15 @@
 function Roll(){}
-  var score, scoreCard;
+  var score, scoreCard, strikeStatus;
 
-  // scoreCard = new ScoreCard();
+  strikeStatus = false;
 
   Roll.prototype.roll = function(score) {
     this.score(score);
+    if(score == 10) {
+      this.strikeStatus = true;
+    }
   };
 
   Roll.prototype.score = function (score) {
-    // scoreCard.rollOneScore(score);
     this.score = score;
-
   };

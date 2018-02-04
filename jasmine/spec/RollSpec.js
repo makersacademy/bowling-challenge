@@ -7,12 +7,22 @@ describe('Roll', function() {
   });
 
   it('returns my score', function() {
-    roll.roll(7);
-    expect(roll.score).toEqual(7);
+    roll.rollOne(7);
+    expect(roll.frameScore).toEqual(7);
   });
-  it('bowls a strike (10 points in one roll)', function(){
-    roll.roll(10);
+  it('bowls a STRIKE (10 points in 1 ball)', function(){
+    roll.rollOne(10);
     expect(roll.strikeStatus).toEqual(true);
+  });
+  it('bowls a SPARE (10 points in 2 balls)', function(){
+    roll.rollOne(4);
+    roll.rollTwo(6);
+    expect(roll.spareStatus).toEqual(true);
+  });
+  it('bowls two balls that add up to less than 10', function(){
+    roll.rollOne(1);
+    roll.rollTwo(8);
+    expect(roll.frameScore).toEqual(9);
   });
 
 });

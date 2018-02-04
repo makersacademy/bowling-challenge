@@ -3,7 +3,7 @@ describe('FrameLog',function(){
   var frame
 
   beforeEach(function(){
-    frame =  jasmine.createSpyObj('frame',['firstRoll','createFrame','setSecondRoll'])
+    frame =  jasmine.createSpyObj('frame',['firstRoll','createFrame','setSecondRoll','isStrike'])
     framelog = new FrameLog(frame)
   })
 
@@ -17,25 +17,27 @@ describe('FrameLog',function(){
 
   describe('startFrame',function(){
     it('creates a new frame object',function(){
-      framelog.startFrame()
+      framelog.startFrame(3)
       expect(frame.createFrame).toHaveBeenCalled()
-    })
-    it('stores a frame',function(){
-      framelog.startFrame(frame)
-      expect(framelog.frames.length).toEqual(1)
     })
     it('sets currentFrame to new frame object', function(){
       frame.createFrame.and.returnValue(frame);
-      framelog.startFrame(frame)
+      framelog.startFrame(2)
       expect(framelog.currentFrame).toEqual(frame)
     })
+    it('stores the currentFrame',function(){
+      frame.createFrame.and.returnValue(frame);
+      framelog.startFrame(2)
+      expect(framelog.frames).toEqual([frame])
+    })
   })
+
   describe('endFrame',function(){
 
     beforeEach(function(){
       frame.createFrame.and.returnValue(frame)
-      framelog.startFrame(frame)
-      framelog.endFrame()
+      framelog.startFrame(2)
+      framelog.endFrame(3)
     })
 
     it('adds second roll score to frame',function(){
@@ -47,9 +49,26 @@ describe('FrameLog',function(){
   })
   describe('frameCount',function(){
     it('returns number of frames stored',function(){
-      framelog.startFrame(frame)
-      framelog.startFrame(frame)
+      framelog.startFrame(1)
+      framelog.startFrame(2)
       expect(framelog.frameCount()).toEqual(2)
+    })
+  })
+  describe('isPreviousFrameStike',function(){
+    beforeEach(function(){
+      frame.createFrame.and.returnValue(frame)
+    })
+    it('returns true if previous frame was a strike',function(){
+      frame.isStrike.and.returnValue(true)
+      framelog.startFrame(10)
+      framelog.startFrame(0)
+      expect(framelog.isPreviousFrameStike()).toEqual(true)
+    })
+    it('returns false if previous frame was a strike',function(){
+      frame.isStrike.and.returnValue(false)
+      framelog.startFrame(0)
+      framelog.startFrame(10)
+      expect(framelog.isPreviousFrameStike()).toEqual(false)
     })
   })
 })

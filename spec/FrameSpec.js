@@ -152,4 +152,34 @@ describe("Frame", function() {
       expect(frame._ball2).toEqual(6);
     });
   });
+
+  describe("Validation", function() {
+
+    beforeEach(function() {
+      frame = new Frame();
+    });
+
+    it("should not allow 11", function() {
+      expect(function() {frame.play(11);}).toThrow(new Error('Invalid score: 11'));
+    });
+    it("should not allow *", function() {;
+      expect(function() {frame.play("*");}).toThrow(new Error('Invalid score: *'));
+    });
+    it("should allow -", function() {
+      expect(function() {frame.play("-");}).not.toThrow(new Error('Invalid score: -'));
+    });
+    it("should allow /", function() {
+      expect(function() {frame.play("/");}).not.toThrow();;
+    });
+    it("should allow X", function() {
+      expect(function() {frame.play("X");}).not.toThrow();;
+    });
+    it("should allow 0 - 10 ", function() {
+      for (i = 0; i < 11; i++) {
+        expect(function() {frame.play(i);}).not.toThrow();;
+      }
+    });
+
+  });
+
 });

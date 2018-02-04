@@ -29,7 +29,7 @@ describe("Frame", function() {
     });
 
     it("sums the score of two bowls", function() {
-      expect(frame.scores).toEqual([7])
+      expect(frame.matchScores).toEqual([7])
     });
 
     it("empties the frame at the endFrame", function() {
@@ -40,7 +40,7 @@ describe("Frame", function() {
       frame.roll(1);
       frame.roll(0);
       frame.endFrame();
-      expect(frame.scores).toEqual([7,1])
+      expect(frame.matchScores).toEqual([7,1])
     });
 
     it("has a running total", function() {
@@ -82,7 +82,7 @@ describe("Frame", function() {
       frame.roll(1);
       frame.roll(3);
       frame.endFrame();
-      expect(frame.scores).toEqual([11,4])
+      expect(frame.matchScores).toEqual([11,4])
     });
 
     it("has the correct running total", function() {
@@ -117,14 +117,14 @@ describe("Frame", function() {
       expect(frame.isPreviouslyStrike).toEqual(false)
     });
 
-    // it("adds the next two rolls to the previous frame score", function() {
-    //   frame.roll(10);
-    //   frame.endFrame();
-    //   frame.roll(1);
-    //   frame.roll(3);
-    //   frame.endFrame();
-    //   expect(frame.scores).toEqual([14,4])
-    // });
+    it("adds the next two rolls to the previous frame score", function() {
+      frame.roll(10);
+      frame.endFrame();
+      frame.roll(1);
+      frame.roll(3);
+      frame.endFrame();
+      expect(frame.matchScores).toEqual([14,4])
+    });
   });
 
 

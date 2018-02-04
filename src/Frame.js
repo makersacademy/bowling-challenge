@@ -1,22 +1,22 @@
 function Frame() {
   this.bowls = []
-  this.scores = []
+  this.matchScores = []
   this.runningTotal = 0
   this.isPreviouslySpare = false
   this.isPreviouslyStrike = false
-}
+};
 
 Frame.prototype.roll = function(number) {
   this.bowls.push(number)
 };
 
 Frame.prototype.endFrame = function() {
-  this.scores.push(this.Score())
+  this.matchScores.push(this.Score())
   if (this.isPreviouslyStrike) {
-    this.scores[this.scores.length-2] += this.Score()
+    this.matchScores[this.matchScores.length-2] += this.Score()
   }
   if (this.isPreviouslySpare) {
-    this.scores[this.scores.length-2] += this.bowls[0]
+    this.matchScores[this.matchScores.length-2] += this.bowls[0]
   }
   if (this.bowls[0] === 10) {
     this.isPreviouslyStrike = true

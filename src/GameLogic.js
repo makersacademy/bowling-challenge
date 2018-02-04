@@ -1,7 +1,12 @@
 function GameLogic (frameLogClass){
-  this.framelog = frameLogClass.createGameLog
+  this.frameLogClass = frameLogClass
+  this.currentFrameLog = null
 }
 
 GameLogic.prototype.isTenthFrame = function(){
-  return this.framelog.frameCount() === 10
+  return this.currentFrameLog.frameCount() === 10
+}
+
+GameLogic.prototype.newGame = function(){
+  this.currentFrameLog = this.frameLogClass.createFrameLog()
 }

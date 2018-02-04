@@ -43,9 +43,6 @@ describe('FrameLog',function(){
     it('adds second roll score to frame',function(){
       expect(frame.setSecondRoll).toHaveBeenCalled()
     })
-    it('clears currentFrame',function(){
-      expect(framelog.currentFrame).toEqual(null)
-    })
   })
   describe('frameCount',function(){
     it('returns number of frames stored',function(){

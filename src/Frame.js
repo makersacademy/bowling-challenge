@@ -65,10 +65,12 @@ Frame.prototype._scoreType = function() {
   if ( this.isSpare() ) {return "Spare"};
   return "default";
 }
+
 Frame.prototype._validate = function(pins){
   valid_scores = ["-","/","X",0,1,2,3,4,5,6,7,8,9,10];
   if (!valid_scores.includes(pins)) {throw new Error('Invalid score: ' + pins)};
 };
+
 Frame.prototype.play = function(pins = "-") {
   this._validate(pins);
   this._ballInPlay += 1;

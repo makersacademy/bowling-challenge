@@ -4,7 +4,7 @@ describe('ScoreCard', function(){
 
   beforeEach(function(){
     scoreCard = new ScoreCard();
-    rollOne = new RollOne();
+    rollOne = new Roll();
 
     rollOne = {
       roll: function() {

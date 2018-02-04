@@ -1,37 +1,26 @@
-function Roll(){}
-  var frameScore, score, scoreCard, strikeStatus, spareStatus;
+function Roll(){
+    this.frameScore = [];
+    this.isStrike = false;
+    this.isSpare = false;
+}
 
-  strikeStatus = false;
-  spareStatus = false;
-  frameScore = 0;
+var score;
 
-  Roll.prototype.rollOne = function(score) {
-    this.score(score);
-    // if Strike then no need for extra bowl in this frame
-    if(score == 10) {
-      return this.strikeStatus = true;
-    }
-    // if not Strike then need to store score and bowl again
-    else if (score < 10){
-      this.frameScore = score;
-      return this.spareStatus = true;
-    }
-    this.rollTwo();
-  };
+Roll.prototype.rollOne = function(score1) {
+  this.score1 = score1;
 
-  Roll.prototype.rollTwo = function(score) {
-    if(strikeStatus == true) {
-      this.score = 0;
-    } else {
-      this.score = score; // gets score from rollTwo
-    }
-    // if rolls 1 & 2 add up to 10 = Spare
-    if(score + frameScore == 10){
-      this.spareStatus = true;
-    }
-    return this.frameScore += score;
-  };
+  if (score1 == 10) {
+    this.isStrike = true;
+  }
+  this.addScore(score1, this.isStrike);
+};
 
-  Roll.prototype.score = function (score) {
-    this.score = score;
-  };
+Roll.prototype.rollTwo = function(score2) {
+  this.score2 = score2; // gets score from rollTwo
+  if (score2 + this.frameScore[0] == 10){ this.isSpare = true}
+  this.addScore(score2, this.isSpare);
+};
+
+Roll.prototype.addScore = function (score, status) {
+  this.frameScore.push(score, status);
+};

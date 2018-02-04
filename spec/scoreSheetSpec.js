@@ -16,24 +16,12 @@ describe('Bowling Scoresheet', function () {
       expect(scoresheet.rollCounter).toEqual(0);
     });
 
-    it('Array roll should be empty', function () {
-      expect(scoresheet.rollArray).toEqual([]);
-    });
-
     it('Array score should be empty', function () {
       expect(scoresheet.scoreArray).toEqual([[]]);
     });
 
     it('Frame counter should be 1', function () {
-      expect(scoresheet.frameCounter).toEqual(1);
-    });
-  });
-
-  describe('Calculating Score', function () {
-    it('Return total score for neither a strike or a spare', function () {
-      scoresheet.calculatingScore(6);
-      scoresheet.calculatingScore(3);
-      expect(scoresheet.totalScore()).toEqual(9);
+      expect(scoresheet.frameCounter).toEqual(0);
     });
   });
 
@@ -61,32 +49,35 @@ describe('Bowling Scoresheet', function () {
 
     it('Player scores neither a spare or strike; 3 pins per roll', function () {
       scoresheet.calculatingScore(3);
-      scoresheet.calculatingScore(3);
+      scoresheet.calculatingScore(5);
 
-      expect(scoresheet.totalScore()).toEqual(6);
+      expect(scoresheet.totalScore()).toEqual(8);
     });
   });
 
-  // describe('Total Score so far', function () {
-  //   it('Should print provide total score after one frame', function () {
-  //     scoresheet.pinsDropped(4);
-  //     scoresheet.pinsDropped(5);
-  //
-  //     console.log(scoresheet.scoreArray);
-  //     expect(scoresheet.scoreCalculated).toEqual(9);
-  //   });
-  //
-  //   it('Should print total score after each frame', function () {
-  //     scoresheet.pinsDropped(10);
-  //
-  //     scoresheet.pinsDropped(1);
-  //     scoresheet.pinsDropped(9);
-  //
-  //     scoresheet.pinsDropped(5);
-  //     scoresheet.pinsDropped(1);
-  //     console.log(scoresheet.scoreArray);
-  //     //expect(scoresheet.scoreCalculated).toEqual(41);
-  //   });
-  // });
+  describe('Calculating Score', function () {
+    it('Return total score for neither a strike or a spare', function () {
+      scoresheet.calculatingScore(6);
+      scoresheet.calculatingScore(3);
+      expect(scoresheet.totalScore()).toEqual(9);
+    });
+
+    it('Return total score for 4 rolls', function () {
+      scoresheet.calculatingScore(10);
+      scoresheet.calculatingScore(10);
+      scoresheet.calculatingScore(10);
+      scoresheet.calculatingScore(6);
+      scoresheet.calculatingScore(4);
+      scoresheet.calculatingScore(4);
+      scoresheet.calculatingScore(3);
+
+
+      console.log(scoresheet.cumulativeScore);
+      console.log(scoresheet.scoreArray);
+      console.log(scoresheet.finalFrameResult);
+
+      expect(scoresheet.totalScore()).toEqual(9);
+    });
+  });
 
 });

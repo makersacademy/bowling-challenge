@@ -15,6 +15,7 @@ FrameLog.prototype.startFrame = function(firstRollScore){
 
 FrameLog.prototype.endFrame = function(secondRollScore){
   this.currentFrame.setSecondRoll(secondRollScore)
+  if (this.frameCount() != FRAME_LIMIT) return this.currentFrame = null
 }
 
 FrameLog.prototype.frameCount = function(){

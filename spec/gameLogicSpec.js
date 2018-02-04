@@ -18,46 +18,46 @@ describe('GameLogic',function(){
     })
   })
 
-  describe('addNextFrameScoreFirstRoll',function(){
+  describe('startFrame',function(){
     it('can call FrameLog to add a new frame',function(){
-      gamelogic.addNextFrameScoreFirstRoll(2)
+      gamelogic.startFrame(2)
       expect(framelog.startFrame).toHaveBeenCalled()
     })
     it('will not add a new frame if frameCount at limit and last frame was not a spare or strike', function(){
       framelog.frameCount.and.returnValue(FRAME_LIMIT)
       framelog.isCurrentFrameSpare.and.returnValue(false)
       framelog.isCurrentFrameStrike.and.returnValue(false)
-      expect(function() { gamelogic.addNextFrameScoreFirstRoll()}).toThrow("No more rolls allowed")
+      expect(function() { gamelogic.startFrame()}).toThrow("No more rolls allowed")
     })
     it('will allow one extra roll if frameCount 10 and last frame was a spare or strike',function(){
       framelog.frameCount.and.returnValue(10)
       framelog.isCurrentFrameSpare.and.returnValue(true)
       framelog.isCurrentFrameStrike.and.returnValue(false)
-      gamelogic.addNextFrameScoreFirstRoll()
+      gamelogic.startFrame()
       expect(framelog.startFrame).toHaveBeenCalled()
     })
   })
-  describe('addFrameScoreSecondRoll',function(){
-    it('can call FrameLog to add a new frame',function(){
-      gamelogic.FrameScoreSecondRoll(2)
+  describe('completeFrame',function(){
+    it('can call FrameLog to end a frame',function(){
+      gamelogic.completeFrame(2)
       expect(framelog.endFrame).toHaveBeenCalled()
     })
     it('will not add second score if currentFrameframe is strike, and not at framelimit and raise new frame',function(){
         framelog.isCurrentFrameStrike.and.returnValue(true)
         framelog.frameCount.and.returnValue(2)
-        gamelogic.FrameScoreSecondRoll(3)
+        gamelogic.completeFrame(3)
         expect(framelog.startFrame).toHaveBeenCalled()
       })
       it('will add secondRollScore if currentFrame is strike and framecount === framelimit', function(){
         framelog.isCurrentFrameStrike.and.returnValue(true)
         framelog.frameCount.and.returnValue(FRAME_LIMIT)
-        gamelogic.FrameScoreSecondRoll(3)
+        gamelogic.completeFrame(3)
         expect(framelog.endFrame).toHaveBeenCalled()
       })
       it('will not add secondRollScore if currentFrame is strike and framecount === framelimit + 1', function(){
         framelog.isCurrentFrameStrike.and.returnValue(true)
         framelog.frameCount.and.returnValue(FRAME_LIMIT + 1)
-        expect(function() {gamelogic.FrameScoreSecondRoll(3)}).toThrow("No more rolls allowed")
+        expect(function() {gamelogic.completeFrame(3)}).toThrow("No more rolls allowed")
       })
   })
 

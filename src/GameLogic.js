@@ -13,15 +13,15 @@ GameLogic.prototype.newGame = function(){
   this.currentFrameLog = this.frameLogClass.createFrameLog()
 }
 
-GameLogic.prototype.addNextFrameScoreFirstRoll = function(RollScore){
+GameLogic.prototype.startFrame = function(RollScore){
   if (this.currentFrameLog.frameCount() === (FRAME_LIMIT + 1)) throw "No more rolls allowed"
   if(this.isFrameLimit() && !this.isCurrentFrameSpare() && !this.isCurrentFrameStrike()) throw "No more rolls allowed"
   this.currentFrameLog.startFrame(RollScore)
 }
 
-GameLogic.prototype.FrameScoreSecondRoll = function(RollScore){
-  if (this.currentFrameLog.frameCount() === (FRAME_LIMIT + 1)) throw "No more rolls allowed"
-  if (this.isCurrentFrameStrike() && !this.isFrameLimit()) return this.addNextFrameScoreFirstRoll(RollScore)
+GameLogic.prototype.completeFrame = function(RollScore){
+  if (this.isCurrentFrameStrike() && !this.isFrameLimit()) return this.startFrame(RollScore)
+  if(this.currentFrameLog.frameCount() === 11) return this.startFrame(RollScore)
   this.currentFrameLog.endFrame(RollScore)
 }
 

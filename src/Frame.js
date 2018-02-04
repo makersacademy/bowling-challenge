@@ -29,18 +29,22 @@ Frame.prototype.endFrame = function() {
     }
   }
 
-  this.updateScore()
+  this.updateTotal()
   this.bowls = []
 };
 
-Frame.prototype.updateScore = function() {
+Frame.prototype.updateTotal = function() {
   this.runningTotal = 0
-  for(var i in this.scores) { this.runningTotal += this.scores[i]; }
+  for(var i in this.matchScores) { this.runningTotal += this.matchScores[i]; }
   // this.runningTotal = this.scores[this.scores.length-1]
 };
 
 Frame.prototype.Score = function() {
-  return (this.bowls[0] + this.bowls[1])
+  if (this.bowls.length === 1) {
+    return (this.bowls[0])
+  } else {
+    return (this.bowls[0] + this.bowls[1])
+  }
 };
 
 

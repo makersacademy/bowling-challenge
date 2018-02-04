@@ -4,7 +4,7 @@ describe('Game', function() {
 
   beforeEach(function() {
     game = new Game
-    frame = jasmine.createSpyObj('frame',['score'])
+    spyframe = jasmine.createSpyObj('spyframe',['score'])
   });
 
   it('starts with an empty set of frames', function(){
@@ -12,16 +12,21 @@ describe('Game', function() {
   });
 
   it('can add a frame', function(){
-    game.addFrame(frame)
-    expect(game.getFrames()).toContain(frame)
+    game.addFrame(spyframe)
+    expect(game.getFrames()).toContain(spyframe)
   });
 
-  it('can add up frame scores', function(){
+  it('a 10-frame game is scored correctly', function(){
     for (let i = 0; i < 10; i++) {
-      game.addFrame(frame)
+      game.addFrame(new Frame([3,4]))
     }
-    frame.score.and.returnValue(1);
-    expect(game.score()).toEqual(10);
+    expect(game.score()).toEqual(70);
   });
 
+  it('a spare has bonus points added correctly', function(){
+    game.addFrame(new Frame([3,7]))
+    game.addFrame(new Frame([3,4]))
+    expect(game.score()).toEqual(20);
+    // should equal 10 + 3 + 7
+  });
 });

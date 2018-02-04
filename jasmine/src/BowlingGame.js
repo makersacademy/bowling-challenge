@@ -5,6 +5,7 @@ var BowlingGame = function (){
   this.currentRollNumber = 0;
   this.scoreTotal = 0;
   this.scoreArray = [];
+  this.scoreArrayIndexSpare = [];
 };
 
 BowlingGame.prototype.roll = function (pins1, pins2) {
@@ -24,7 +25,9 @@ BowlingGame.prototype.finalScore = function () {
 };
 
 BowlingGame.prototype._isSpare = function () {
-
+  if (this.rollTotal === 10) {
+    this.scoreArrayIndexSpare.push(this.currentRollNumber)
+  };
 };
 
 BowlingGame.prototype._isStrike = function () {

@@ -4,6 +4,9 @@ function Frame() {
   this.runningTotal = 0
   this.isPreviouslySpare = false
   this.isPreviouslyStrike = false
+  this.doubleStrikeBonus = false
+  this.lastFrame = false
+  this.finalRolls = []
 };
 
 Frame.prototype.roll = function(number) {
@@ -11,32 +14,27 @@ Frame.prototype.roll = function(number) {
 };
 
 Frame.prototype.endFrame = function() {
+  this.assignsFinalFrame()
   this.matchScores.push(this.Score())
-  if (this.isPreviouslyStrike) {
-    this.matchScores[this.matchScores.length-2] += this.Score()
-  }
-  if (this.isPreviouslySpare) {
-    this.matchScores[this.matchScores.length-2] += this.bowls[0]
-  }
-  if (this.bowls[0] === 10) {
-    this.isPreviouslyStrike = true
-  } else {
-    this.isPreviouslyStrike = false
-    if (this.Score() === 10) {
-      this.isPreviouslySpare = true
+  this.adjustsForStrike()
+  this.adjustsForSpare()
+  this.assignsStrikeOrSpare();
+  this.recalculateTotal();
+  this.bowls = []
+  if (this.lastFrame) {
+    if (this.isPreviouslySpare) {
+      return "One more roll"
+    } else if (this.isPreviouslyStrike) {
+      return "Two more rolls"
     } else {
-      this.isPreviouslySpare = false
+      return "Game over"
     }
   }
-
-  this.updateTotal()
-  this.bowls = []
 };
 
-Frame.prototype.updateTotal = function() {
+Frame.prototype.recalculateTotal = function() {
   this.runningTotal = 0
   for(var i in this.matchScores) { this.runningTotal += this.matchScores[i]; }
-  // this.runningTotal = this.scores[this.scores.length-1]
 };
 
 Frame.prototype.Score = function() {
@@ -47,27 +45,64 @@ Frame.prototype.Score = function() {
   }
 };
 
+Frame.prototype.assignsDoubleStrikeBonus = function() {
+  if (this.bowls[0] === 10) {
+    this.doubleStrikeBonus = true
+  } else {
+    this.doubleStrikeBonus = false
+  }
+};
 
-//
-// function Player() {
-// }
-// Player.prototype.play = function(song) {
-//   this.currentlyPlayingSong = song;
-//   this.isPlaying = true;
-// };
-//
-// Player.prototype.pause = function() {
-//   this.isPlaying = false;
-// };
-//
-// Player.prototype.resume = function() {
-//   if (this.isPlaying) {
-//     throw new Error("song is already playing");
+Frame.prototype.assignsSpare = function() {
+  if (this.Score() === 10) {
+    this.isPreviouslySpare = true
+  } else {
+    this.isPreviouslySpare = false
+  }
+};
+
+Frame.prototype.assignsStrikeOrSpare = function() {
+  if (this.bowls[0] === 10) {
+    this.isPreviouslyStrike = true
+    this.isPreviouslySpare = false;
+  } else {
+    this.isPreviouslyStrike = false
+    this.assignsSpare();
+  }
+};
+
+Frame.prototype.adjustsForStrike = function() {
+  if (this.isPreviouslyStrike) {
+    this.matchScores[this.matchScores.length-2] += this.Score()
+    this.adjustsForDoubleStrike()
+    this.assignsDoubleStrikeBonus();
+  }
+};
+
+Frame.prototype.adjustsForDoubleStrike = function() {
+  if (this.doubleStrikeBonus) {
+    this.matchScores[this.matchScores.length-3] += this.bowls[0]
+  }
+};
+
+Frame.prototype.adjustsForSpare = function() {
+  if (this.isPreviouslySpare) {
+    this.matchScores[this.matchScores.length-2] += this.bowls[0]
+  }
+};
+
+// Frame.prototype.finalFrame = function() {
+//   if (this.lastFrame) {
+//     if (this.isPreviouslySpare) {
+//       return "One more roll"
+//     } else {
+//       return "Game over"
+//     }
 //   }
-//
-//   this.isPlaying = true;
 // };
-//
-// Player.prototype.makeFavorite = function() {
-//   this.currentlyPlayingSong.persistFavoriteStatus(true);
-// };
+
+Frame.prototype.assignsFinalFrame = function() {
+  if (this.matchScores.length === 9) {
+    this.lastFrame = true
+  }
+};

@@ -9,6 +9,86 @@ describe("Frame", function() {
     expect(frame.bowls).toEqual([]);
   });
 
+  // describe("10th frame", function() {
+  //   it("knows it is not the last frame", function() {
+  //     expect(frame.lastFrame).toEqual(false)
+  //   });
+  //
+  //   it("knows it is the last frame", function() {
+  //     frame.matchScores = [1,2,3,4,5,6,7,8,9]
+  //     frame.roll(1);
+  //     frame.roll(0);
+  //     frame.endFrame();
+  //     expect(frame.lastFrame).toEqual(true)
+  //   });
+  //
+  //   it("ends the game after 10th frame without bonuses", function() {
+  //     frame.matchScores = [1,2,3,4,5,6,7,8,9]
+  //     frame.roll(1);
+  //     frame.roll(0);
+  //     expect(frame.endFrame()).toEqual("Game over")
+  //   });
+  //
+  //   it("does not end game if 10th frame is spare", function() {
+  //     frame.matchScores = [1,2,3,4,5,6,7,8,9]
+  //     frame.roll(9);
+  //     frame.roll(1);
+  //     expect(frame.endFrame()).not.toEqual("Game over")
+  //   });
+  //
+  //   it("allows extra roll if 10th frame is spare", function() {
+  //     frame.matchScores = [1,2,3,4,5,6,7,8,9]
+  //     frame.roll(9);
+  //     frame.roll(1);
+  //     expect(frame.endFrame()).toEqual("One more roll")
+  //   });
+  // });
+
+  // describe("final frame", function() {
+  //   it("it can store 3 strikes", function() {
+  //     frame.finalRoll(10);
+  //     frame.finalRoll(10);
+  //     frame.finalRoll(10);
+  //     expect(frame.bowls).toEqual([10,10,10])
+  //   });
+  // });
+
+    // it("counts extra roll score if 10th frame is spare", function() {
+    //   frame.matchScores = [1,2,3,4,5,6,7,8,9]
+    //   frame.roll(9);
+    //   frame.roll(1);
+    //   frame.endFrame();
+    //   frame.roll(3);
+    //   frame.endFrame();
+    //   frame.recalculateTotal();
+    //   expect(frame.runningTotal).toEqual(58)
+    // });
+
+    // it("allows counts extra roll score if 10th frame is spare", function() {
+    //   frame.matchScores = [1,2,3,4,5,6,7,8,9,10]
+    //   frame.roll(3);
+    //   frame.endFrame();
+    //   frame.recalculateTotal()
+    //   expect(frame.runningTotal).toEqual(58)
+    // });
+    //
+    // it("allows 2 extra rolls if 10th frame is strike", function() {
+    //   frame.matchScores = [1,2,3,4,5,6,7,8,9]
+    //   frame.roll(10);
+    //   expect(frame.endFrame()).toEqual("Two more rolls")
+    // });
+
+    // it("allows 2 extra rolls if 10th frame is strike", function() {
+    //   frame.matchScores = [1,2,3,4,5,6,7,8,9]
+    //   frame.roll(10);
+    //   frame.endFrame()
+    //   frame.roll(3);
+    //   frame.roll(4);
+    //   frame.recalculateTotal()
+    //   expect(frame.runningTotal).toEqual(62)
+    // });
+  // });
+
   describe("enters bowl scores", function() {
 
     it("enters a first bowl into the array", function() {
@@ -125,56 +205,63 @@ describe("Frame", function() {
       frame.endFrame();
       expect(frame.matchScores).toEqual([14,4])
     });
+
+    it("adds the next two rolls if the first of them is strike", function() {
+      frame.roll(10);
+      frame.endFrame();
+      frame.roll(10);
+      frame.endFrame();
+      frame.roll(3);
+      frame.roll(5);
+      frame.endFrame();
+      expect(frame.matchScores).toEqual([23,18,8])
+    });
+
+    it("has the correct running total after 2 strikes", function() {
+      frame.roll(10);
+      frame.endFrame();
+      frame.roll(10);
+      frame.endFrame();
+      frame.roll(3);
+      frame.roll(5);
+      frame.endFrame();
+      expect(frame.runningTotal).toEqual(49)
+    });
+
+    it("gives the correct total for the example README game", function() {
+      frame.roll(1);
+      frame.roll(4);
+      frame.endFrame();
+      frame.roll(4);
+      frame.roll(5);
+      frame.endFrame();
+      frame.roll(6);
+      frame.roll(4);
+      frame.endFrame();
+      frame.roll(5);
+      frame.roll(5);
+      frame.endFrame();
+      frame.roll(10);
+      frame.endFrame();
+      frame.roll(0);
+      frame.roll(1);
+      frame.endFrame();
+      frame.roll(7);
+      frame.roll(3);
+      frame.endFrame();
+      frame.roll(6);
+      frame.roll(4);
+      frame.endFrame();
+      frame.roll(10);
+      frame.endFrame();
+      frame.roll(2);
+      frame.roll(8);
+      frame.endFrame();
+      frame.roll(6)
+      // frame.endFrame();
+      // frame 11
+      console.log(frame.matchScores)
+      expect(frame.runningTotal).toEqual(133)
+    });
   });
-
-
-
 });
-
-
-
-  //   //demonstrates use of custom matcher
-  //   expect(player).toBePlaying(song);
-  // });
-
-//   describe("when song has been paused", function() {
-//     beforeEach(function() {
-//       player.play(song);
-//       player.pause();
-//     });
-//
-//     it("should indicate that the song is currently paused", function() {
-//       expect(player.isPlaying).toBeFalsy();
-//
-//       // demonstrates use of 'not' with a custom matcher
-//       expect(player).not.toBePlaying(song);
-//     });
-//
-//     it("should be possible to resume", function() {
-//       player.resume();
-//       expect(player.isPlaying).toBeTruthy();
-//       expect(player.currentlyPlayingSong).toEqual(song);
-//     });
-//   });
-//
-//   // demonstrates use of spies to intercept and test method calls
-//   it("tells the current song if the user has made it a favorite", function() {
-//     spyOn(song, 'persistFavoriteStatus');
-//
-//     player.play(song);
-//     player.makeFavorite();
-//
-//     expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
-//   });
-//
-//   //demonstrates use of expected exceptions
-//   describe("#resume", function() {
-//     it("should throw an exception if song is already playing", function() {
-//       player.play(song);
-//
-//       expect(function() {
-//         player.resume();
-//       }).toThrowError("song is already playing");
-//     });
-//   });
-// });

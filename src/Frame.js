@@ -3,6 +3,7 @@ function Frame() {
   this.scores = []
   this.runningTotal = 0
   this.isPreviouslySpare = false
+  this.isPreviouslyStrike = false
 }
 
 Frame.prototype.roll = function(number) {
@@ -11,15 +12,23 @@ Frame.prototype.roll = function(number) {
 
 Frame.prototype.endFrame = function() {
   this.scores.push(this.Score())
+  if (this.isPreviouslyStrike) {
+    this.scores[this.scores.length-2] += this.Score()
+  }
   if (this.isPreviouslySpare) {
     this.scores[this.scores.length-2] += this.bowls[0]
   }
-
-  if (this.Score() === 10) {
-    this.isPreviouslySpare = true
+  if (this.bowls[0] === 10) {
+    this.isPreviouslyStrike = true
   } else {
-    this.isPreviouslySpare = false
+    this.isPreviouslyStrike = false
+    if (this.Score() === 10) {
+      this.isPreviouslySpare = true
+    } else {
+      this.isPreviouslySpare = false
+    }
   }
+
   this.updateScore()
   this.bowls = []
 };

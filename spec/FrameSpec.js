@@ -97,13 +97,37 @@ describe("Frame", function() {
 
   });
 
-  // describe("scoring when bowling a strike", function() {
-  //   it("knows the previous turn was a strike", function() {
-  //     frame.roll(10);
-  //     frame.endFrame();
-  //     expect(frame).toBePreviouslyStrike
-  //   });
-  // });
+  describe("scoring when bowling a strike", function() {
+    it("is not a spare by default", function() {
+      expect(frame.isPreviouslyStrike).toEqual(false)
+    });
+
+    it("knows the previous turn was a stike", function() {
+      frame.roll(10);
+      frame.endFrame();
+      expect(frame.isPreviouslyStrike).toEqual(true)
+    });
+
+    it("knows a turn is not strike even a previous was", function() {
+      frame.roll(10);
+      frame.endFrame();
+      frame.roll(1);
+      frame.roll(3);
+      frame.endFrame();
+      expect(frame.isPreviouslyStrike).toEqual(false)
+    });
+
+    // it("adds the next two rolls to the previous frame score", function() {
+    //   frame.roll(10);
+    //   frame.endFrame();
+    //   frame.roll(1);
+    //   frame.roll(3);
+    //   frame.endFrame();
+    //   expect(frame.scores).toEqual([14,4])
+    // });
+  });
+
+
 
 });
 

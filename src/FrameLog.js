@@ -19,7 +19,7 @@ FrameLog.prototype.startFrame = function(firstRollScore){
 }
 
 FrameLog.prototype.endFrame = function(secondRollScore){
-  this.currentFrame.setSecondRoll(secondRollScore)
+  this.currentFrame.addRoll(secondRollScore)
   this.currentFrame = null
 }
 
@@ -32,11 +32,4 @@ FrameLog.prototype.isPreviousFrameStrike = function(){
 }
 FrameLog.prototype.isPreviousFrameSpare = function(){
   return this.frames[this.frames.length-2].isSpare()
-}
-
-FrameLog.prototype.isCurrentFrameStrike = function(){
-  return this.frames.slice(-1)[0].isStrike()
-}
-FrameLog.prototype.isCurrentFrameSpare = function(){
-  return this.frames.slice(-1)[0].isSpare()
 }

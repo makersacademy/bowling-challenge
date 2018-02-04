@@ -1,30 +1,27 @@
 const MAX_SCORE = 10;
 
-function Frame (firstRollScore = 0){
-  this.firstRoll = firstRollScore
-  this.secondRoll = 0
+function Frame (){
+  this.rolls = []
 }
 
 Frame.createFrame = function(firstRollScore) {
-  return new Frame(firstRollScore)
+  var frame = new Frame()
+  frame.addRoll(firstRollScore)
+  return frame
 }
 
-Frame.prototype.setFirstRoll = function(pins){
-  this.firstRoll = pins
-}
-
-Frame.prototype.setSecondRoll = function(pins){
-  this.secondRoll = pins
+Frame.prototype.addRoll = function(pins){
+  this.rolls.push(pins)
 }
 
 Frame.prototype.isStrike = function(){
-  return this.firstRoll === MAX_SCORE
+  return this.rolls[0] === MAX_SCORE
 }
 
 Frame.prototype.isSpare = function(){
-  return this.score() === MAX_SCORE && this.secondRoll !== 0
+  return this.score() === MAX_SCORE && this.rolls[0] !== 10
 }
 
 Frame.prototype.score = function(){
-  return this.firstRoll + this.secondRoll
+  return this.rolls.reduce((total, roll) => total + roll)
 }

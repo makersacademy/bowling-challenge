@@ -12,26 +12,24 @@ describe('Feature Test:', function(){
   it('allows player to add a score for frame', function(){
     game.addRoll(10)
     expect(game.frameLog.frames[0]).toEqual(jasmine.any(Frame))
-    expect(game.frameLog.frames[0].firstRoll).toEqual(10)
+    expect(game.frameLog.frames[0].rolls[0]).toEqual(10)
   })
   it('creates a new frame if previous frame was a strike', function(){
     game.addRoll(10)
     game.addRoll(10)
     expect(game.frameLog.frameCount()).toEqual(2)
     expect(game.isPreviousFrameStrike()).toEqual(true)
-    expect(game.frameLog.frames[0].secondRoll).toEqual(0)
-    expect(game.frameLog.frames[1].firstRoll).toEqual(10)
+    expect(game.frameLog.frames[0].score()).toEqual(10)
+    expect(game.frameLog.frames[1].score()).toEqual(10)
   })
   it('knows if current and previous move was a spare', function(){
     game.addRoll(5)
     game.addRoll(5)
-    expect(game.isCurrentFrameSpare()).toEqual(true)
     game.addRoll(10)
     expect(game.isPreviousFrameSpare()).toEqual(true)
   })
-  it('knows if current move and previous was a strike', function(){
+  it('knows if previous roll was a strike', function(){
     game.addRoll(10)
-    expect(game.isCurrentFrameStrike()).toEqual(true)
     game.addRoll(10)
     expect(game.isPreviousFrameStrike()).toEqual(true)
   })

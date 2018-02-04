@@ -3,7 +3,7 @@ describe('FrameLog',function(){
   var frame
 
   beforeEach(function(){
-    frame =  jasmine.createSpyObj('frame',['firstRoll','createFrame','setSecondRoll','isStrike','isSpare'])
+    frame =  jasmine.createSpyObj('frame',['createFrame','addRoll','isStrike','isSpare'])
     framelog = new FrameLog(frame)
   })
 
@@ -26,10 +26,16 @@ describe('FrameLog',function(){
       framelog.startFrame(2)
       expect(framelog.currentFrame).toEqual(frame)
     })
-    it('stores the currentFrame',function(){
+    it('stores the currentFrame if not a strike',function(){
       frame.createFrame.and.returnValue(frame);
       framelog.startFrame(2)
       expect(framelog.frames).toEqual([frame])
+    })
+    it('sets the currentFrame to null if frame strike',function(){
+      frame.createFrame.and.returnValue(frame);
+      frame.isStrike.and.returnValue(true)
+      framelog.startFrame(10)
+      expect(framelog.currentFrameValue()).toEqual(null)
     })
   })
 
@@ -42,7 +48,7 @@ describe('FrameLog',function(){
     })
 
     it('adds second roll score to frame',function(){
-      expect(frame.setSecondRoll).toHaveBeenCalled()
+      expect(frame.addRoll).toHaveBeenCalled()
     })
   })
   describe('frameCount',function(){
@@ -77,31 +83,6 @@ describe('FrameLog',function(){
       framelog.endFrame(9)
       framelog.startFrame(0)
       expect(framelog.isPreviousFrameSpare()).toEqual(true)
-      expect(frame.isSpare).toHaveBeenCalled()
-    })
-  })
-  describe('isCurrentFrameStrike',function(){
-    beforeEach(function(){
-      frame.createFrame.and.returnValue(frame)
-    })
-
-    it('calls and returns isStrike function for current frame',function(){
-      frame.isStrike.and.returnValue(true)
-      framelog.startFrame(10)
-      expect(framelog.isCurrentFrameStrike()).toEqual(true)
-      expect(frame.isStrike).toHaveBeenCalled()
-    })
-  })
-  describe('isCurrentFrameSpare',function(){
-    beforeEach(function(){
-      frame.createFrame.and.returnValue(frame)
-    })
-
-    it('calls and returns isSpare function for current frame',function(){
-      frame.isSpare.and.returnValue(true)
-      framelog.startFrame(9)
-      framelog.endFrame(1)
-      expect(framelog.isCurrentFrameSpare()).toEqual(true)
       expect(frame.isSpare).toHaveBeenCalled()
     })
   })

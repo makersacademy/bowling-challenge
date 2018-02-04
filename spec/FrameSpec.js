@@ -191,15 +191,26 @@ describe("Frame", function() {
     });
   });
 
-  describe("Validation - score values", function() {
+  describe("Validation - score values whole frame", function() {
 
     beforeEach(function() {
       frame = new Frame();
+      lastFrame = new Frame(true);
     });
 
     it("should not allow scores over 10", function() {
       frame.play(1)
       expect(function() {frame.play(10);}).toThrow(new Error('Score for this game should not exceed 10'));
+    });
+
+    it("should allow scores up to 20 after second ball on last frame", function() {
+      lastFrame.play(10)
+      expect(function() {lastFrame.play(10);}).not.toThrow(new Error('Score for this game should not exceed 20'));
+    });
+    it("should allow scores up to 30 after third ball on last frame", function() {
+      lastFrame.play(10)
+      lastFrame.play(10)
+      expect(function() {lastFrame.play(10);}).not.toThrow(new Error('Score for this game should not exceed 30'));
     });
   });
 

@@ -46,10 +46,10 @@ Frame.prototype._addBallScore = function(pins) {
 Frame.prototype._validateFrameScore = function(pins){
   if ( !this.lastFrame() && this._ballInPlay <= 2 && this._score + this._decode(pins) > 10){
     throw new Error('Score for this game should not exceed 10')
-  };
+  } else
   if ( this.lastFrame() && this._ballInPlay === 2 && this._score + this._decode(pins) > 20){
     throw new Error('Score for this game should not exceed 20')
-  };
+  } else
   if ( this.lastFrame() && this._ballInPlay === 3 && this._score + this._decode(pins) > 30){
     throw new Error('Score for this game should not exceed 30')
   };

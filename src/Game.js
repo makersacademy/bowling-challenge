@@ -20,5 +20,5 @@ Game.prototype.recordFrame = function(frame) {
 };
 
 Game.prototype.onStrike = function() {
-	return this.submittedframes[this.submittedframes.length - 1].strike;
+	return (this.submittedframes[this.submittedframes.length - 1]).isAstrike();
 };

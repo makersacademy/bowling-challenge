@@ -5,3 +5,11 @@ function Frame() {
 	this.strike = false;
 	this.spare = false;
 }
+
+Frame.prototype.isAstrike = function() {
+	return this.strike;
+};
+
+Frame.prototype.isAspare = function() {
+	return this.spare;
+};

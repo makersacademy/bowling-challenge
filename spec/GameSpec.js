@@ -7,7 +7,10 @@ describe("Game", function() {
 
 	beforeEach(function() {
 		game =  new Game();
-		frame = new Frame();
+		frame = jasmine.createSpyObj('frame', {
+			'isAstrike': false,
+			'isAspare': false,
+		})
 	});
 
 	describe("When a game starts", function() {

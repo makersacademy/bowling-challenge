@@ -18,11 +18,18 @@ describe('Game', function(){
 
   describe('storeFrame', function() {
 
-    it('stores individual frames in an array', function() {
+    it('stores complete frames in an array', function() {
+      spyOn(frameOver()).andReturn(true)
       game.storeFrame([1, 5]);
       game.storeFrame([3, 6]);
-      console.log(game._frames)
       expect(game._frames).toEqual([[1,5],[3,6]]);
+    });
+  });
+  describe('checkPinSum', function() {
+    it('disallows a pin total over ten', function() {
+      game.throw(5);
+      game.throw(8);
+      expect(game.checkPinSum).toThrowError ("There are not that many pins remaining!");
     });
   });
 });

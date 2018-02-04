@@ -7,6 +7,7 @@ var BowlingGame = function (){
   this.scoreArray = [];
   this.scoreArrayIndexSpare = [];
   this.scoreArrayIndexStrike = [];
+  this.frameNumber = 0;
 };
 
 BowlingGame.prototype.roll = function (pins1, pins2) {
@@ -14,6 +15,7 @@ BowlingGame.prototype.roll = function (pins1, pins2) {
   this.pins2 = pins2;
   total = pins1 + pins2;
   this.currentRollNumber += 2;
+  this.frameNumber += 1;
   if (total === 10 && pins2 !== 0) {
     return this._isSpare();
   }
@@ -62,6 +64,10 @@ sumStrikes += num;
 
 
 this.scoreFinal = this.scoreTotal + sum + sumStrikes;
+
+if (this.frameNumber === 11) {
+  this.scoreFinal -= (this.pins1 + this.pins2);
+}
 console.log(sum);
 console.log(sumStrikes);
 

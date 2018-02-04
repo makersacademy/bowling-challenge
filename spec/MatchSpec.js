@@ -62,4 +62,10 @@ describe("Match", function() {
     match.play("4"); // 10  4  0 140
     expect(match.score()).toEqual(140);
   });
+  it("should score a gutter game properly", function() {
+    for (i = 1; i <= 20; i++) {
+      match.play("-");
+    }
+    expect(match.score()).toEqual(0);
+  });
 });

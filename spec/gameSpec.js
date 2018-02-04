@@ -16,14 +16,16 @@ describe('Game', function () {
       'score': 10,
       'isStrike': false,
       'isSpare': true,
-      'firstRoll': 3
+      'firstRoll': 3,
+      'lastFrameBonusRoll': 5
     })
     strikeFrame = jasmine.createSpyObj('strikeFrame', {
       // rolls [10,-]
       'score': 10,
       'isStrike': true,
       'isSpare': false,
-      'firstRoll': 10
+      'firstRoll': 10,
+      'lastFrameBonusRoll': 5
     })
   });
 
@@ -72,6 +74,27 @@ describe('Game', function () {
       expect(game.score()).toEqual(44); 
     });
   });
+
+  describe('special 10th frame', function() {
+    it('bonus still added for strike 10th frame', function () {
+      for (let i = 0; i < 9; i++) {
+        game.addFrame(frame)
+      }
+      game.addFrame(strikeFrame)
+      expect(game.score()).toEqual(70);
+    });
+  
+
+    it('bonus still added for strike 10th frame', function () {
+      for (let i = 0; i < 9; i++) {
+        game.addFrame(frame) // 63
+      }
+      game.addFrame(spareFrame) 
+      expect(game.score()).toEqual(70);
+    });
+  
+  });
+
 
 
 });

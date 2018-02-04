@@ -30,7 +30,6 @@ describe('Frame', function() {
   it('knows it is a strike', function(){
     frame.addRoll(10)
     expect(frame.isStrike()).toEqual(true)
-    expect(frame.secondRoll()).toEqual(0)
   });
 
 });

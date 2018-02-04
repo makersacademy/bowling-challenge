@@ -1,10 +1,11 @@
 describe('BowlingGame', function (){
 
   describe('The Player can ', function(){
-    it('have a total when rolls twice', function() {
+    it('have a total when rolls', function() {
       game = new BowlingGame();
       game.roll(2,3);
-      expect(game.rollTotal).toEqual(5);
+      game.score();
+      expect(game.scoreTotal).toEqual(5);
     });
 
     it('score when hits pins', function() {
@@ -16,12 +17,18 @@ describe('BowlingGame', function (){
 
     it('see the final score', function(){
       game = new BowlingGame();
-      rollTotal = game.rollTotal = 19;
-      spare = 10;
+      game.roll(5,5);
+      game.score();
+      game.roll(1,2);
+      game.score();
+      game.roll(5,5);
+      game.score();
+      game.roll(3,4);
+      game.score();
       game.roll(2,5);
       game.score();
-      scoreTotal = game.scoreTotal + 50 + spare;
-      expect(scoreTotal).toEqual(67);
+      game.finalScore();
+      expect(game.scoreFinal).toEqual(41);
     });
 
     it('see they have a Gutter Game', function(){
@@ -47,7 +54,7 @@ describe('BowlingGame', function (){
       game = new BowlingGame();
       game.roll(2,3);
       game.score();
-      expect(game.scoreArray.length).toEqual(1);
+      expect(game.scoreArray.length).toEqual(2);
     });
   });
 

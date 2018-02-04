@@ -211,13 +211,13 @@ describe("Frame", function() {
 
   describe("Validation - score values", function() {
 
-      beforeEach(function() {
-        frame = new Frame();
-      });
+    beforeEach(function() {
+      frame = new Frame();
+    });
 
-      it("should not allow 11", function() {
-        expect(function() {frame.play(11);}).toThrow(new Error('Invalid score: 11'));
-      });
+    it("should not allow 11", function() {
+      expect(function() {frame.play(11);}).toThrow(new Error('Invalid score: 11'));
+    });
     it("should not allow *", function() {;
       expect(function() {frame.play("*");}).toThrow(new Error('Invalid score: *'));
     });

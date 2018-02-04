@@ -43,7 +43,20 @@ Frame.prototype._addBallScore = function(pins) {
   if (this._ballInPlay === 3) {this._ball3 = pins};
 };
 
+Frame.prototype._validateFrameScore = function(pins){
+  if ( !this.lastFrame() && this._ballInPlay <= 2 && this._score + this._decode(pins) > 10){
+    throw new Error('Score for this game should not exceed 10')
+  };
+  if ( this.lastFrame() && this._ballInPlay === 2 && this._score + this._decode(pins) > 20){
+    throw new Error('Score for this game should not exceed 20')
+  };
+  if ( this.lastFrame() && this._ballInPlay === 3 && this._score + this._decode(pins) > 30){
+    throw new Error('Score for this game should not exceed 30')
+  };
+};
+
 Frame.prototype.addScore = function(pins) {
+  this._validateFrameScore(pins)
   this._addBallScore(pins);
   this._score += this._decode(pins);
 };
@@ -66,13 +79,16 @@ Frame.prototype._scoreType = function() {
   return "default";
 }
 
-Frame.prototype._validate = function(pins){
+Frame.prototype._validatePlay = function(pins){
+
+  if (this.isComplete()) {throw new Error('This game is complete')};
+
   valid_scores = ["-","/","X",0,1,2,3,4,5,6,7,8,9,10];
-  if (!valid_scores.includes(pins)) {throw new Error('Invalid score: ' + pins)};
+  if (!valid_scores.includes(this._decode(pins))) {throw new Error('Invalid score: ' + pins)};
 };
 
 Frame.prototype.play = function(pins = "-") {
-  this._validate(pins);
+  this._validatePlay(pins);
   this._ballInPlay += 1;
   this.addScore(pins);
   switch (this._scoreType()) {

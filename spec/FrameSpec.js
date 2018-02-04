@@ -153,15 +153,65 @@ describe("Frame", function() {
     });
   });
 
-  describe("Validation", function() {
+  describe("Validation - game complete", function() {
+
+    it("should not allow three balls", function() {
+      frame = new Frame();
+      frame.play("-");
+      frame.play("-");
+      expect(function() {frame.play(10);}).toThrow(new Error('This game is complete'));
+    });
+
+    it("shouldn\'t allow three balls on last frame unless strike or spare", function() {
+      lastFrame = new Frame(true);
+      lastFrame.play("-");
+      lastFrame.play("-");
+      expect(function() {lastFrame.play(10);}).toThrow(new Error('This game is complete'));
+    });
+
+    it("should allow three balls on last frame if a strike", function() {
+      lastFrame = new Frame(true);
+      lastFrame.play("X");
+      lastFrame.play("-");
+      expect(function() {lastFrame.play(0);}).not.toThrow(new Error('This game is complete'));
+    });
+
+    it("should allow three balls on last frame if a spare", function() {
+      lastFrame = new Frame(true);
+      lastFrame.play("3");
+      lastFrame.play("7");
+      expect(function() {lastFrame.play("X");}).not.toThrow(new Error('This game is complete'));
+    });
+
+    it("should allow three strikes on last frame", function() {
+      lastFrame = new Frame(true);
+      lastFrame.play("X");
+      lastFrame.play("X");
+      expect(function() {lastFrame.play("X");}).not.toThrow(new Error('This game is complete'));
+    });
+  });
+
+  describe("Validation - score values", function() {
 
     beforeEach(function() {
       frame = new Frame();
     });
 
-    it("should not allow 11", function() {
-      expect(function() {frame.play(11);}).toThrow(new Error('Invalid score: 11'));
+    it("should not allow scores over 10", function() {
+      frame.play(1)
+      expect(function() {frame.play(10);}).toThrow(new Error('Score for this game should not exceed 10'));
     });
+  });
+
+  describe("Validation - score values", function() {
+
+      beforeEach(function() {
+        frame = new Frame();
+      });
+
+      it("should not allow 11", function() {
+        expect(function() {frame.play(11);}).toThrow(new Error('Invalid score: 11'));
+      });
     it("should not allow *", function() {;
       expect(function() {frame.play("*");}).toThrow(new Error('Invalid score: *'));
     });
@@ -176,7 +226,7 @@ describe("Frame", function() {
     });
     it("should allow 0 - 10 ", function() {
       for (i = 0; i < 11; i++) {
-        expect(function() {frame.play(i);}).not.toThrow();;
+        expect(function() {frame.play(i);}).not.toThrow(new Error('Invalid score: ' + i));;
       }
     });
 

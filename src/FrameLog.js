@@ -1,7 +1,11 @@
-function FrameLog (frameClass) {
+function FrameLog (frameClass = Frame) {
   this.frames = []
   this.frameClass = frameClass
   this.currentFrame = null
+}
+
+FrameLog.createFrameLog = function(){
+  return new FrameLog()
 }
 
 FrameLog.prototype.startFrame = function(firstRollScore){

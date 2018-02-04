@@ -6,6 +6,7 @@ var BowlingGame = function (){
   this.scoreFinal = 0;
   this.scoreArray = [];
   this.scoreArrayIndexSpare = [];
+  this.scoreArrayIndexStrike = [];
 };
 
 BowlingGame.prototype.roll = function (pins1, pins2) {
@@ -13,8 +14,12 @@ BowlingGame.prototype.roll = function (pins1, pins2) {
   this.pins2 = pins2;
   total = pins1 + pins2;
   this.currentRollNumber += 2;
-  if (total === 10) {
+  if (total === 10 && pins2 !== 0) {
     return this._isSpare();
+  }
+
+  if (pins1 === 10 && pins2 === 0) {
+    return this._isStrike();
   }
 };
 
@@ -24,12 +29,12 @@ BowlingGame.prototype.score = function () {
 };
 
 BowlingGame.prototype.finalScore = function () {
-  var ind = this.scoreArrayIndexSpare;
+  var indexSpare = this.scoreArrayIndexSpare;
   var array = this.scoreArray;
   var total = [];
   var sum = 0;
 
-  ind.forEach(function(index){
+  indexSpare.forEach(function(index){
     var totalSpareArray = [];
     totalSpareArray.push(array[index]);
     total.push(totalSpareArray[0]);
@@ -38,8 +43,27 @@ BowlingGame.prototype.finalScore = function () {
 total.forEach(function(num){
   sum += num;
 });
-this.scoreFinal = this.scoreTotal + sum;
+
+
+var indexStrike = this.scoreArrayIndexStrike;
+var totalStrikes = [];
+var sumStrikes = 0;
+
+indexStrike.forEach(function(index){
+  var totalStrikeArray = [];
+  totalStrikeArray.push(array[index]);
+  totalStrikes.push(totalStrikeArray[0]);
+
+});
+totalStrikes.forEach(function(num){
+sumStrikes += num;
+});
+
+
+
+this.scoreFinal = this.scoreTotal + sum + sumStrikes;
 console.log(sum);
+console.log(sumStrikes);
 
 };
 
@@ -48,5 +72,5 @@ BowlingGame.prototype._isSpare = function () {
 };
 
 BowlingGame.prototype._isStrike = function () {
-
+    this.scoreArrayIndexStrike.push(this.currentRollNumber, (this.currentRollNumber + 1));
 };

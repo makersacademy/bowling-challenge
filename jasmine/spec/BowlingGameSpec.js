@@ -15,7 +15,7 @@ describe('BowlingGame', function (){
       expect(game.scoreTotal).toEqual(7);
     });
 
-    it('see the final score', function(){
+    it('see the final score with spare', function(){
       game = new BowlingGame();
       game.roll(5,5);
       game.score();
@@ -29,6 +29,22 @@ describe('BowlingGame', function (){
       game.score();
       game.finalScore();
       expect(game.scoreFinal).toEqual(41);
+    });
+
+    it('see the final score with spare and strike', function(){
+      game = new BowlingGame();
+      game.roll(5,5);
+      game.score();
+      game.roll(1,2);
+      game.score();
+      game.roll(10,0);
+      game.score();
+      game.roll(3,4);
+      game.score();
+      game.roll(2,5);
+      game.score();
+      game.finalScore();
+      expect(game.scoreFinal).toEqual(45);
     });
 
     it('see they have a Gutter Game', function(){

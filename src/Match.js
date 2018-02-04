@@ -35,9 +35,19 @@ Match.prototype.score = function() {
   return score;
 }
 
+Match.prototype._addBonus = function(pins) {
+  if (this.currentFrame > 0) {
+    this._frames[this.currentFrame-1].addBonus(pins);
+  }
+  if (this.currentFrame > 1) {
+    this._frames[this.currentFrame-2].addBonus(pins);
+  }
+}
+
 Match.prototype.play = function(pins) {
   this._validate();
   this._newFrame();
-  this._frames[this.currentFrame].play(pins);
+  currentBall = this._frames[this.currentFrame].play(pins);
+  this._addBonus(currentBall);
   this._setMatchComplete()
 }

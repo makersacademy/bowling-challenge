@@ -28,12 +28,38 @@ describe("Match", function() {
     expect(match._matchComplete).toEqual(true);
     expect(function(){match.play("X");}).toThrow(new Error('Invalid play - this match is complete'));
   });
+
   it("should be able to get the score", function() {
     for (i = 1; i <= 12; i++) {
       match.play("X");
     }
-    console.log(match);
-    expect(match.score()).toEqual(120);
+    expect(match.score()).toEqual(300);
   });
 
+  it("should add bonus to previous game", function() {
+    match.play("X");
+    match.play("X");
+    expect(match.score()).toEqual(30);
+  });
+  it("should score a typical match properly", function() {
+    match.play("X"); // 1  10  9 19
+    match.play("3"); // 2
+    match.play("6"); // 2   9  0 28
+    match.play("4"); // 3
+    match.play("4"); // 3   8  0 36
+    match.play("X"); // 4  10 10 56
+    match.play("3"); // 5
+    match.play("/"); // 5  10  3 69
+    match.play("3"); // 6
+    match.play("2"); // 6   5  0 74
+    match.play("-"); // 7
+    match.play("X"); // 7  10  4 88
+    match.play("4"); // 8
+    match.play("4"); // 8   8  0 96
+    match.play("X"); // 9  10 15 121
+    match.play("X"); // 10 10  0 131
+    match.play("5"); // 10  5  0 136
+    match.play("4"); // 10  4  0 140
+    expect(match.score()).toEqual(140);
+  });
 });

@@ -7,6 +7,7 @@ function Frame(lastFrame = false) {
   this._bonusBalls = 0
   this._score = 0
   this._ballInPlay = 0
+  this._currentBall = 0
 };
 
 Frame.prototype.lastFrame = function() {
@@ -17,6 +18,13 @@ Frame.prototype.score = function() {
   return this._score;
 };
 
+Frame.prototype.addBonus = function(pins) {
+  if (this._bonusBalls > 0) {
+    this._score += this._decode(pins);
+    this._bonusBalls -= 1;
+  }
+}
+
 Frame.prototype.isComplete = function() {
   return ( this._ballsRemaining === 0 ? true : false ) ;
 };
@@ -24,16 +32,16 @@ Frame.prototype.isComplete = function() {
 Frame.prototype._decode = function(pins) {
   switch (pins) {
       case "X": return 10; break;
-      case "/": return 10; break;
+      case "/": return (10  - this._ball1); break;
       case "-": return 0; break;
       default: return parseInt(pins)
   }
 };
 
 Frame.prototype._addBallScore = function(pins) {
-  if (this._ballInPlay === 1) {this._ball1 = pins};
-  if (this._ballInPlay === 2) {this._ball2 = pins};
-  if (this._ballInPlay === 3) {this._ball3 = pins};
+  if (this._ballInPlay === 1) {this._ball1 = this._decode(pins)};
+  if (this._ballInPlay === 2) {this._ball2 = this._decode(pins)};
+  if (this._ballInPlay === 3) {this._ball3 = this._decode(pins)};
 };
 
 Frame.prototype._validateFrameScore = function(pins){
@@ -51,6 +59,7 @@ Frame.prototype._validateFrameScore = function(pins){
 Frame.prototype.addScore = function(pins) {
   this._validateFrameScore(pins)
   this._addBallScore(pins);
+  this._currentBall = this._decode(pins);
   this._score += this._decode(pins);
 };
 
@@ -97,4 +106,5 @@ Frame.prototype.play = function(pins = "-") {
       this._bonusBalls = 0;
       this._ballsRemaining -= 1;
   }
+  return this._currentBall;
 };

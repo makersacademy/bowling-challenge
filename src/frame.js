@@ -1,6 +1,5 @@
 function Frame() {
     this.rolls = [];
-    this.nextFrame = null;
 }
 
 Frame.prototype.rollValues = function() {
@@ -17,15 +16,28 @@ Frame.prototype.isStrike = function() {
 };
 
 Frame.prototype.isSpare = function() {
-    return this.frameScore() === 10;
+    return ((this.rolls.length === 2) && (this.frameScore() === 10));
 };
 
 Frame.prototype.addRoll = function(pins) {
-    // TODO: Add error handling to throw exception when trying to add to a completed
-    // frame
+    this._validateRoll(pins);
     this.rolls.push(pins);
+};
+
+Frame.prototype.firstRoll = function() {
+    var roll = this.rolls[0];
+    return (typeof roll === "undefined" ? 0 : roll);
 };
 
 Frame.prototype.isDone = function() {
     return this.isStrike() || this.isSpare() || (this.rolls.length === 2);
+};
+
+Frame.prototype._validateRoll = function(pins) {
+    if (typeof (pins) !== 'number') { 
+        throw Error("Not a valid pin");
+    }
+    if ((pins > 10) || (pins < 0)) {
+        throw Error("Pins should be between 0 and 10 (both inclusive); got " + pins + " pins");
+    }   
 };

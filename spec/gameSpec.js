@@ -19,17 +19,24 @@ describe('Game', function(){
   describe('storeFrame', function() {
 
     it('stores complete frames in an array', function() {
-      spyOn(frameOver()).andReturn(true)
-      game.storeFrame([1, 5]);
-      game.storeFrame([3, 6]);
+      game.throw(1)
+      game.throw(5)
+      game.throw(3)
+      game.throw(6)
       expect(game._frames).toEqual([[1,5],[3,6]]);
     });
   });
+
   describe('checkPinSum', function() {
-    it('disallows a pin total over ten', function() {
-      game.throw(5);
-      game.throw(8);
-      expect(game.checkPinSum).toThrowError ("There are not that many pins remaining!");
+
+    it('disallows a throw over ten', function() {
+    expect(function() { game.checkPinSum(11) }).toThrow("You must enter a throw of ten or less");
     });
+
+  //   it('disallows a pin total over ten', function() {
+  //     game.throw(5);
+  //     game.throw(8);
+  //     expect(function() { game.checkPinSum() }).toThrow("There are not that many pins remaining!");
+  //   });
   });
 });

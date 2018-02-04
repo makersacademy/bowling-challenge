@@ -16,4 +16,10 @@ describe('Frame', function(){
   it('Second bowl returns the score', function(){
     expect(frame.secondBowl(7)).toEqual(7)
   })
+
+  it('Frame knows the frames score', function(){
+    frame.firstBowl(3)
+    frame.secondBowl(4)
+    expect(frame.frameScore().length).toEqual(2)
+  })
 })

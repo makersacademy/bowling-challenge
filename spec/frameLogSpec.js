@@ -42,6 +42,24 @@ describe('FrameLog',function(){
       framelog.addRoll(6)
       expect(framelog.frames.length).toEqual(1)
     })
+    it('adds true parameter when creating 10th frame', function(){
+      frame.createFrame.and.returnValue(frame);
+      frame.isComplete.and.returnValue(true);
+      var times = FRAME_LIMIT
+      for(var i=0; i < times; i++){
+        framelog.addRoll(10)
+      }
+      expect(frame.createFrame).toHaveBeenCalledWith(true)
+    })
+    it('will not add another frame / roll if FrameLog is complete', function(){
+      frame.isComplete.and.returnValue(true);
+      frame.createFrame.and.returnValue(frame)
+      var times = FRAME_LIMIT
+      for(var i=0; i < times; i++){
+        framelog.addRoll(10)
+      }
+      expect(function(){ framelog.addRoll(1)}).toThrow("Frame set is complete - no more roll's allowed")
+    })
   })
 
   describe('isPreviousFrameStrike',function(){
@@ -70,6 +88,18 @@ describe('FrameLog',function(){
       framelog.addRoll(0)
       expect(framelog.isPreviousFrameSpare()).toEqual(true)
       expect(frame.isSpare).toHaveBeenCalled()
+    })
+  })
+  describe('isFramelogComplete',function(){
+    it('returns true if frame count 10 and currentFrame is complete', function (){
+      frame.isComplete.and.returnValue(true);
+      frame.createFrame.and.returnValue(frame)
+      var times = FRAME_LIMIT
+      for(var i=0; i < times; i++){
+        framelog.addRoll(10)
+      }
+      expect(framelog.isFramelogComplete()).toEqual(true)
+      expect(frame.isComplete).toHaveBeenCalled()
     })
   })
 })

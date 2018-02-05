@@ -12,12 +12,9 @@ FrameLog.prototype.currentFrame = function(){
 }
 
 FrameLog.prototype.addRoll = function(rollScore){
-  if(this.frameCount() === 0){
-    let frame = this.frameClass.createFrame()
-    frame.addRoll(rollScore)
-    this.frames.push(frame)
-  } else if (this.currentFrame().isComplete()) {
-    let frame = this.frameClass.createFrame()
+  if(this.isFramelogComplete()) throw "Frame set is complete - no more roll's allowed"
+  if(this.frameCount() === 0 || this.currentFrame().isComplete()){
+    let frame = this.frameClass.createFrame(this._isFinalFrame())
     frame.addRoll(rollScore)
     this.frames.push(frame)
   } else{
@@ -34,4 +31,12 @@ FrameLog.prototype.isPreviousFrameStrike = function(){
 }
 FrameLog.prototype.isPreviousFrameSpare = function(){
   return this.frames[this.frames.length-2].isSpare()
+}
+
+FrameLog.prototype._isFinalFrame = function(){
+  return this.frameCount() === 9
+}
+
+FrameLog.prototype.isFramelogComplete = function(){
+  return this.frameCount() === 10 && this.currentFrame().isComplete()
 }

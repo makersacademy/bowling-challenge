@@ -6,8 +6,8 @@ function Frame (finalFrame = false){
 
 }
 
-Frame.createFrame = function(firstRollScore) {
-  var frame = new Frame()
+Frame.createFrame = function(finalFrame) {
+  var frame = new Frame(finalFrame)
   return frame
 }
 
@@ -28,5 +28,17 @@ Frame.prototype.score = function(){
 }
 
 Frame.prototype.isComplete = function(){
+  if(this.isFinalFrame){
+    if(this.rolls.length === 3){
+      return true
+    } else if (this.isSpare() || this.isStrike() || this.rolls.length === 1){
+      return false
+    } else if (this.score === 20) {
+      return false
+    } else {
+      return true
+    }
+  } else {
   return this.isStrike() || this.rolls.length === 2
+  }
 }

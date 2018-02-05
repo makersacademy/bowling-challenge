@@ -1,0 +1,31 @@
+{
+  "name": "y",
+  "version": "5.6.0",
+  "description": "bowling challenge project",
+  "main": "y",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tagrand/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tagrand/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/Tagrand/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jasmine": "^2.9.1"
+  },
+  "dependencies": {
+    "eslint-config-airbnb": "^16.1.0"
+  }
+}

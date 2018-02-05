@@ -28,13 +28,10 @@ Frame.prototype.notFinalFrame = function() {
   this.emptyFrame()
 };
 
-Frame.prototype.recalculateTotal = function() {
-  this.runningTotal = 0
-  for(var i in this.matchScores) { this.runningTotal += this.matchScores[i]; }
-};
-
-Frame.prototype.emptyFrame = function() {
-  this.bowls = []
+Frame.prototype.assignsFinalFrame = function() {
+  if (this.matchScores.length === 9) {
+    this.isLastFrame = true
+  }
 };
 
 Frame.prototype.Score = function() {
@@ -43,6 +40,10 @@ Frame.prototype.Score = function() {
   } else {
     return (this.bowls[0] + this.bowls[1])
   }
+};
+
+Frame.prototype.emptyFrame = function() {
+  this.bowls = []
 };
 
 Frame.prototype.assignsDoubleStrikeBonus = function() {

@@ -32,5 +32,10 @@ Frame.prototype = {
     return this._firstRoll() + this._secondRoll() === MAX_PINS;
   },
 
+  isValid: function() {
+    return (this._firstRoll() <= MAX_PINS) &&
+    (this._firstRoll() + this._secondRoll() <= MAX_PINS);
+  },
+
 
 }

@@ -42,4 +42,18 @@ describe('Frame', function(){
     });
   });
 
+  describe('isValid', function() {
+
+    it('checks if the first roll is valid', function() {
+      frame.roll(12)
+      expect(frame.isValid()).toBe(false)
+    });
+
+    it('checks if the sum of both rolls are valid', function() {
+      frame.roll(5)
+      frame.roll(7)
+      expect(frame.isValid()).toBe(false)
+    });
+  });
+
 });

@@ -5,6 +5,30 @@ describe('Frame',function() {
     frame = new Frame();
   });
 
+  it('knows if it is the final frame - default set to no', function(){
+    expect(frame.isFinalFrame).toEqual(false)
+  })
+  it('can be created as finalFrame',function(){
+    finalFrame = new Frame(true)
+    expect(finalFrame.isFinalFrame).toEqual(true)
+  })
+
+  describe('isComplete when not finalFrame',function(){
+    it('confirms true if roll is a strike', function(){
+      frame.addRoll(MAX_SCORE)
+      expect(frame.isComplete()).toEqual(true)
+    })
+    it('confirms true if first roll is not a strike and two rolls added', function(){
+      frame.addRoll(5)
+      frame.addRoll(5)
+      expect(frame.isComplete()).toEqual(true)
+    })
+    it('confirms false when only one roll added, and roll was not a strike', function(){
+      frame.addRoll(5)
+      expect(frame.isComplete()).toEqual(false)
+    })
+  })
+
   describe('addRoll', function(){
     it('sets firstRoll to equal amount of pins knocked down',function(){
       frame.addRoll(4)

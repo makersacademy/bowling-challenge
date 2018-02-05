@@ -1,12 +1,13 @@
 const MAX_SCORE = 10;
 
-function Frame (){
+function Frame (finalFrame = false){
   this.rolls = []
+  this.isFinalFrame = finalFrame
+
 }
 
 Frame.createFrame = function(firstRollScore) {
   var frame = new Frame()
-  frame.addRoll(firstRollScore)
   return frame
 }
 
@@ -19,9 +20,13 @@ Frame.prototype.isStrike = function(){
 }
 
 Frame.prototype.isSpare = function(){
-  return this.score() === MAX_SCORE && this.rolls[0] !== 10
+  return this.score() === MAX_SCORE && this.rolls[0] !== MAX_SCORE
 }
 
 Frame.prototype.score = function(){
   return this.rolls.reduce((total, roll) => total + roll)
+}
+
+Frame.prototype.isComplete = function(){
+  return this.isStrike() || this.rolls.length === 2
 }

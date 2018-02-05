@@ -25,4 +25,12 @@ describe('Frame', function(){
     });
   });
 
+  describe('isAStrike', function() {
+
+    it('knows if frame is a strike', function() {
+      frame.roll(10);
+      expect(frame.isAStrike()).toBe(true)
+    });
+  });
+
 });

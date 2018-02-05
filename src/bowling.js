@@ -10,7 +10,6 @@ Bowling.prototype.gameScore = function() {
         var nextFrame = this.frames[i+1];
         var nextToNextFrame = this.frames[i+2];
         var windowTotal = this._windowScore(currentFrame, nextFrame, nextToNextFrame)
-        
         total += windowTotal;
     }
     return total;
@@ -44,15 +43,7 @@ Bowling.prototype.framesArray = function() {
     return this.frames;
 };
 
-Bowling.prototype.strikeBonus = function() {
-    var strikeTotal = 10 + this.roll(pins);
-    return strikeTotal;
-};
-
 Bowling.prototype.roll = function(pins) {
-    if (this.frames.length === 10) {
-        throw Error("Can't roll when game is complete");
-    }
     this.frame.addRoll(pins);
     if (this.frame.isDone()) {
         this.frames.push(this.frame);

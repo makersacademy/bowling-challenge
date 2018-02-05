@@ -51,4 +51,25 @@ describe ('Bowling', function() {
         expect(bowling.gameScore()).toEqual(44);
     });
 
+    it("gutter game when player never hits a pin",function() {
+        for (var i = 0; i < 20;i++) {
+            bowling.roll(0);
+        }
+        expect(bowling.gameScore()).toEqual(0);
+    });
+
+    it("gutter game when player never hits a pin",function() {
+        for (var i = 0; i < 20;i++) {
+            bowling.roll(0);
+        }
+        expect(bowling.gameScore()).toEqual(0);
+    });
+
+    it("should give correct score for a no-strike and no-spare game", function() {
+        for (var i = 0; i < 20; i++) {
+            bowling.roll(1);
+        }
+        expect(bowling.gameScore()).toEqual(20);
+    });
+
 });

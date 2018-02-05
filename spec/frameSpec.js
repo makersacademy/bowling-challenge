@@ -33,4 +33,13 @@ describe('Frame', function(){
     });
   });
 
+  describe('isASpare', function() {
+
+    it('knows if frame is a spare', function() {
+      frame.roll(7);
+      frame.roll(3);
+      expect(frame.isASpare()).toBe(true)
+    });
+  });
+
 });

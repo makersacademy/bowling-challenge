@@ -21,12 +21,15 @@ Frame.prototype = {
   },
 
   score: function() {
-    return (this._firstRoll() + this._secondRoll())
+    return (this._firstRoll() + this._secondRoll());
   },
 
   isAStrike: function() {
-    console.log(this._firstRoll())
-    return this._firstRoll() === MAX_PINS
+    return this._firstRoll() === MAX_PINS;
+  },
+
+  isASpare: function() {
+    return this._firstRoll() + this._secondRoll() === MAX_PINS;
   },
 
 

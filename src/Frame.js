@@ -5,19 +5,15 @@ function Frame() {
   this.isPreviouslySpare = false
   this.isPreviouslyStrike = false
   this.doubleStrikeBonus = false
-  this.lastFrame = false
+  this.isLastFrame = false
 };
-
+// frame
 Frame.prototype.roll = function(number) {
   this.bowls.push(number)
 };
 
-Frame.prototype.finalRoll = function(number) {
-  this.finalRolls.push(number)
-};
-
-Frame.prototype.endFrame = function() {
-  if (this.lastFrame) {
+Frame.prototype.closeFrame = function() {
+  if (this.isLastFrame) {
     this.updatesScoring();
   } else {
     this.notFinalFrame()
@@ -65,6 +61,27 @@ Frame.prototype.assignsSpare = function() {
   }
 };
 
+Frame.prototype.updatesScoring = function() {
+  this.adjustsForStrike();
+  this.adjustsForSpare();
+  this.assignsStrikeOrSpare();
+  this.recalculateTotal();
+};
+
+Frame.prototype.adjustsForStrike = function() {
+  if (this.isPreviouslyStrike) {
+    this.matchScores[this.matchScores.length-2] += this.Score()
+    this.adjustsForDoubleStrike();
+    this.assignsDoubleStrikeBonus();
+  }
+};
+
+Frame.prototype.adjustsForSpare = function() {
+  if (this.isPreviouslySpare) {
+    this.matchScores[this.matchScores.length-2] += this.bowls[0]
+  }
+};
+
 Frame.prototype.assignsStrikeOrSpare = function() {
   if (this.bowls[0] === 10) {
     this.isPreviouslyStrike = true
@@ -75,41 +92,19 @@ Frame.prototype.assignsStrikeOrSpare = function() {
   }
 };
 
-Frame.prototype.adjustsForStrike = function() {
-  if (this.isPreviouslyStrike) {
-    this.matchScores[this.matchScores.length-2] += this.Score()
-    this.adjustsForDoubleStrike()
-    this.assignsDoubleStrikeBonus();
-  }
-};
-
 Frame.prototype.adjustsForDoubleStrike = function() {
   if (this.doubleStrikeBonus) {
     this.matchScores[this.matchScores.length-3] += this.bowls[0]
   }
 };
 
-Frame.prototype.adjustsForSpare = function() {
-  if (this.isPreviouslySpare) {
-    this.matchScores[this.matchScores.length-2] += this.bowls[0]
-  }
-};
-
-Frame.prototype.assignsFinalFrame = function() {
-  if (this.matchScores.length === 9) {
-    this.lastFrame = true
-  }
-};
-
-Frame.prototype.updatesScoring = function() {
-  this.adjustsForStrike()
-  this.adjustsForSpare()
-  this.assignsStrikeOrSpare();
-  this.recalculateTotal();
+Frame.prototype.recalculateTotal = function() {
+  this.runningTotal = 0
+  for(var i in this.matchScores) { this.runningTotal += this.matchScores[i]; }
 };
 
 Frame.prototype.finalFrameAlerts = function() {
-  if (this.lastFrame) {
+  if (this.isLastFrame) {
     if (this.isPreviouslySpare) {
       return "One more roll"
     } else if (this.isPreviouslyStrike) {

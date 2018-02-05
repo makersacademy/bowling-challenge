@@ -24,28 +24,28 @@ describe("Frame", function() {
     beforeEach(function() {
       frame.roll(3);
       frame.roll(4);
-      frame.endFrame();
+      frame.closeFrame();
     });
 
     it("sums the score of two bowls", function() {
       expect(frame.matchScores).toEqual([7])
     });
 
-    it("empties the frame at the endFrame", function() {
+    it("empties the frame at the closeFrame", function() {
       expect(frame.bowls).toEqual([]);
     });
 
     it("keeps score over multiple frames", function() {
       frame.roll(1);
       frame.roll(0);
-      frame.endFrame();
+      frame.closeFrame();
       expect(frame.matchScores).toEqual([7,1])
     });
 
     it("has a running total", function() {
       frame.roll(1);
       frame.roll(0);
-      frame.endFrame();
+      frame.closeFrame();
       expect(frame.runningTotal).toEqual(8)
     });
 
@@ -60,37 +60,37 @@ describe("Frame", function() {
     it("knows the previous turn was a spare", function() {
       frame.roll(7);
       frame.roll(3);
-      frame.endFrame();
+      frame.closeFrame();
       expect(frame.isPreviouslySpare).toEqual(true)
     });
 
     it("knows a turn is not spare even a previous was", function() {
       frame.roll(7);
       frame.roll(3);
-      frame.endFrame();
+      frame.closeFrame();
       frame.roll(1);
       frame.roll(3);
-      frame.endFrame();
+      frame.closeFrame();
       expect(frame.isPreviouslySpare).toEqual(false)
     });
 
     it("adds the next roll to the previous frame score", function() {
       frame.roll(7);
       frame.roll(3);
-      frame.endFrame();
+      frame.closeFrame();
       frame.roll(1);
       frame.roll(3);
-      frame.endFrame();
+      frame.closeFrame();
       expect(frame.matchScores).toEqual([11,4])
     });
 
     it("has the correct running total", function() {
       frame.roll(7);
       frame.roll(3);
-      frame.endFrame();
+      frame.closeFrame();
       frame.roll(1);
       frame.roll(3);
-      frame.endFrame();
+      frame.closeFrame();
       expect(frame.runningTotal).toEqual(15)
     });
 

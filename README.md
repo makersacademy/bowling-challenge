@@ -1,3 +1,8 @@
+Unfortunately I wasn't able to dedicate much time to the challenege this weekend and as a result I was only able to make a small start
+to the project.
+I've started an implementation of the frame class which allows users to take one or two shots per frame. Moving forward, I was then
+going to implement a scoring system within game that calculates the score and takes in to account the strikes and spares. The strikes and spares would have both been properties set by the frame methods. 
+
 
 Bowling Challenge
 =================

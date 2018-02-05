@@ -4,7 +4,7 @@ function Frame() {
   this.runningTotal = 0
   this.isPreviouslySpare = false
   this.isPreviouslyStrike = false
-  this.doubleStrikeBonus = false
+  this.isDoubleStrikeBonus = false
   this.isLastFrame = false
 };
 // frame
@@ -48,9 +48,9 @@ Frame.prototype.emptyFrame = function() {
 
 Frame.prototype.assignsDoubleStrikeBonus = function() {
   if (this.bowls[0] === 10) {
-    this.doubleStrikeBonus = true
+    this.isDoubleStrikeBonus = true
   } else {
-    this.doubleStrikeBonus = false
+    this.isDoubleStrikeBonus = false
   }
 };
 
@@ -94,7 +94,7 @@ Frame.prototype.assignsStrikeOrSpare = function() {
 };
 
 Frame.prototype.adjustsForDoubleStrike = function() {
-  if (this.doubleStrikeBonus) {
+  if (this.isDoubleStrikeBonus) {
     this.matchScores[this.matchScores.length-3] += this.bowls[0]
   }
 };

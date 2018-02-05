@@ -10,9 +10,4 @@ Game.prototype = {
     this.frames.push(frame);
   },
 
-  viewFrames: function() {
-    return this.frames
-  }
-
-
 }

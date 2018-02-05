@@ -1,7 +1,7 @@
 function Frame(rolls = []) {
 
   this.rolls = rolls
-  
+
 };
 
 Frame.prototype = {

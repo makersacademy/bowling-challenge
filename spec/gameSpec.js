@@ -12,7 +12,7 @@ describe('Game', function(){
 
     it('stores complete frames in an array', function() {
       game.storeFrame([1,5])
-      expect(game.viewFrames()).toContain([1,5]);
+      expect(game.frames).toContain([1,5]);
     });
-  });
+  });  
 });

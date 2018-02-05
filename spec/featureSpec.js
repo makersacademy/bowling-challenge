@@ -7,5 +7,4 @@ describe('Feature Test:', function(){
     game = new Game();
 
   });
-
 });

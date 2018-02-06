@@ -12,7 +12,7 @@ class Frame {
       spare: { length: spareRound, scoreLength: STRIKE_SCORE_ROUND },
       normal: { length: STANDARD_ROUND, scoreLength: STANDARD_ROUND },
     };
-    this.round = this.rules.normal
+    this.round = this.rules.normal;
   }
 
   score() {

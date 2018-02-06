@@ -13,9 +13,7 @@ class Game {
   play(rolls) {
     let index = 0
     const board = this.board
-
     rolls.forEach(function(roll) {
-
     board[index].roll(roll);
     if (index > 0) {board[index-1].roll(roll); }
     if (index > 1) { board[index-2].roll(roll); }

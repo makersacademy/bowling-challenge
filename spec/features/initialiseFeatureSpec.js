@@ -22,7 +22,7 @@ describe('Game feature', () => {
     it('returns 90 when give 7, 2 10 times', () => {
       let rolls = []
       for(let i = 0; i < 10; i += 1) {rolls.push(7,2)}
-      game.results(rolls);
+      game.play(rolls);
 
       expect(game.score()).toEqual(90);
     })
@@ -31,7 +31,7 @@ describe('Game feature', () => {
       let rolls = []
       for(let i = 0; i < 9; i += 1) {rolls.push(7,2)}
       rolls.push(8,2,3)
-      game.results(rolls);
+      game.play(rolls);
 
       expect(game.score()).toEqual(94);
     })
@@ -40,7 +40,7 @@ describe('Game feature', () => {
       let rolls = []
       for(let i = 0; i < 9; i += 1) {rolls.push(7,2)}
       rolls.push(10,10,10)
-      game.results(rolls);
+      game.play(rolls);
 
       expect(game.score()).toEqual(111);
     })
@@ -50,7 +50,7 @@ describe('Game feature', () => {
       rolls.push(10);
       for(let i = 0; i < 9; i += 1) {rolls.push(7,2)}
 
-      game.results(rolls);
+      game.play(rolls);
 
       expect(game.score()).toEqual(100);
     })
@@ -58,7 +58,7 @@ describe('Game feature', () => {
     it('returns 300 when you play a perfect game', () => {
       let rolls = []
       for(let i = 0; i < 12; i += 1) {rolls.push(10)}
-      game.results(rolls);
+      game.play(rolls);
       expect(game.score()).toEqual(300);
     })
 
@@ -66,7 +66,7 @@ describe('Game feature', () => {
       let rolls = []
       for(let i = 0; i < 10; i += 1) {rolls.push(10)}
       rolls.push(0,0)
-      game.results(rolls);
+      game.play(rolls);
       expect(game.score()).toEqual(270);
     })
 

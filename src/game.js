@@ -10,21 +10,21 @@ class Game {
     this.board.push(new Frame(FINAL_GAME_STRIKE, FINAL_GAME_STRIKE));
   }
 
-  results(rolls) {
-    let start = 0
+  play(rolls) {
+    let index = 0
     let board = this.board
     rolls.forEach(function(roll) {
-    board[start].roll(roll);
-    let previous = board.slice(0, start)
+    board[index].roll(roll);
+    let previous = board.slice(0, index)
     previous.forEach(function(frame) {
       frame.roll(roll);
     })
-    if (board[start].isFinished()) { start += 1;}
+    if (board[index].isFinished()) { index += 1;}
     });
   }
 
   score() {
-   return this.board.reduce((a, b) => a + b.score(), 0)
+    return this.board.reduce((a, b) => a + b.score(), 0);
   }
 
 

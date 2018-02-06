@@ -12,14 +12,14 @@ class Game {
 
   play(rolls) {
     let index = 0
-    let board = this.board
+    const board = this.board
+
     rolls.forEach(function(roll) {
+
     board[index].roll(roll);
-    let previous = board.slice(0, index)
-    previous.forEach(function(frame) {
-      frame.roll(roll);
-    })
-    if (board[index].isFinished()) { index += 1;}
+    if (index > 0) {board[index-1].roll(roll); }
+    if (index > 1) { board[index-2].roll(roll); }
+    if (board[index].isFinished()) { index += 1;} //next round when finished
     });
   }
 

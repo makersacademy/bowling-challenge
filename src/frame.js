@@ -8,30 +8,33 @@ class Frame {
   constructor(strikeRound = STRIKE_ROUND, spareRound = STANDARD_ROUND) {
     this.rounds = [];
     this.rules = {
-      strike: [strikeRound, STRIKE_SCORE_ROUND], // note, this will become a class in the future
-      spare: [spareRound, STRIKE_SCORE_ROUND],
-      normal: [STANDARD_ROUND, STANDARD_ROUND],
+      strike: { length: strikeRound, scoreLength: STRIKE_SCORE_ROUND },
+      spare: { length: spareRound, scoreLength: STRIKE_SCORE_ROUND },
+      normal: { length: STANDARD_ROUND, scoreLength: STANDARD_ROUND },
     };
+    this.round = this.rules.normal
   }
 
   score() {
-    const validRolls = this.rounds.slice(0, this.rules[this.result()][1]);
+    const validRolls = this.rounds.slice(0, this.round.scoreLength);
     return this.add(validRolls);
   }
 
   roll(value) {
     if (this.rounds.length < STRIKE_SCORE_ROUND) { this.rounds.push(value); }
+    this.result();
   }
 
   isFinished() {
-    return this.rounds.length >= this.rules[this.result()][0];
+    return this.rounds.length >= this.round.length;
   }
 
   // need to make private
   result() {
-    if (this.firstRoll() === STRIKE) { return 'strike'; }
-    if (this.firstRoll() + this.secondRoll() === STRIKE) { return 'spare'; }
-    return 'normal';
+    let type = 'normal'
+    if (this.firstRoll() === STRIKE) { type = 'strike'; }
+    if (this.firstRoll() + this.secondRoll() === STRIKE) { type = 'spare'; }
+    this.round = this.rules[type];
   }
 
   add(results) {

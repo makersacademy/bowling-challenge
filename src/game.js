@@ -26,6 +26,8 @@ class Game {
   score() {
    return this.board.reduce((a, b) => a + b.score(), 0)
   }
+
+
 }
 
 module.exports = Game;

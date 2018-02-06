@@ -96,6 +96,7 @@ describe('StrikeRound', () => {
     it('has not finished finished after two throws after a strike', () => {
       finalFrame.roll(10);
       finalFrame.roll(10);
+
       expect(finalFrame.isFinished()).toBe(false);
     });
 

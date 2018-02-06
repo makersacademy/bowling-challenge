@@ -67,26 +67,26 @@ Scoresheet.prototype.isStrike = function () {
   }
 };
 
-Scoresheet.prototype.bonusStrike = function () {
+Scoresheet.prototype.bonusStrike = function (boolean) {
+  var strike = boolean;
 
-  for (var i = 0; i < this.scoreArray.length - 1; i++) {
+  if (strike) {
+    //if (this.scoreArray[i][1] === 'X') {
+    for (var i = 0; i < scoreArray.length; i++) {
 
-    if (this.scoreArray[i][1] === 'X') {
-      if (this.scoreArray[i+1][1] === 'X') {
+      if (this.scoreArray[i+1][1] === 'X' && this.scoreArray[i+1][1] !== void index ) {
         var number = i + 2 ;
-        console.log(this.cumulativeScore[number]);
         var resu = 20 + this.cumulativeScore[number];
-        this.finalFrameResult.push(resu);
-        console.log(this.finalFrameResult);
+        this.cumulativeScore[i] =
+        strike = false;
+      } else if (this.scoreArray[i+1][1] !== void index) {
+
       }
 
     }
 
-
-
-
+    //}
   }
-
 };
 
 Scoresheet.prototype.isSpare = function () {

@@ -74,7 +74,7 @@ describe('Bowling Scoresheet', function () {
 
       console.log(scoresheet.cumulativeScore);
       console.log(scoresheet.scoreArray);
-      console.log(scoresheet.finalFrameResult);
+    //  console.log(scoresheet.finalFrameResult);
 
       expect(scoresheet.totalScore()).toEqual(9);
     });

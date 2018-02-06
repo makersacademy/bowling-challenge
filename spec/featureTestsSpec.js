@@ -18,7 +18,6 @@ describe('Feature Test:', function(){
     game.addRoll(10)
     game.addRoll(10)
     expect(game.frameLog.frameCount()).toEqual(2)
-    expect(game.isPreviousFrameStrike()).toEqual(true)
     expect(game.frameLog.frames[0].score()).toEqual(10)
     expect(game.frameLog.frames[1].score()).toEqual(10)
   })
@@ -39,52 +38,43 @@ describe('Feature Test:', function(){
       game.addRoll(4)
       game.addRoll(4)
     }
-    expect(function(){game.addRoll(3)}).toThrow("No more rolls allowed")
+    expect(function(){game.addRoll(3)}).toThrow("Frame set is complete - no more roll's allowed")
     expect(game.frameLog.frameCount()).toEqual(10)
   })
 
-  // it('will allow extra frame if first roll on 10th frame is strike', function(){
-  //   var times = 10
-  //   //creates 10 frames of strikes
-  //   for(var i=0; i< times; i++){
-  //     game.addRoll(10)
-  //   }
-  //   game.addRoll(10)
-  //   expect(game.frameLog.frameCount()).toEqual(11)
-  //   expect(game.frameLog.frames[10].firstRoll).toEqual(10)
-  // })
-  // it('will allow 2 extra rolls if 10th frame was a strike',function(){
-  //   var times = 10
-  //   //creates 10 frames of strikes
-  //   for(var i=0; i< times; i++){
-  //     game.addRoll(10)
-  //   }
-  //   game.addRoll(10)
-  //   game.addRoll(3)
-  //   expect(function(){game.addRoll(3)}).toThrow("No more rolls allowed")
-  //   expect(game.frameLog.frameCount()).toEqual(11)
-  // })
-  // it('will allow an extra roll if 10th frame was a spare',function(){
-  //   var times = FRAME_LIMIT
-  //   //creates 10 frames of spares
-  //   for(var i=0; i< times; i++){
-  //     game.addRoll(5)
-  //     game.addRoll(5)
-  //   }
-  //   game.addRoll(3)
-  //   expect(game.frameLog.frameCount()).toEqual(11)
-  //   // expect(function(){game.addRoll(3)}).toThrow("No more rolls allowed")
-  // })
-  // it('will allow only allow one roll for 11th frame',function(){
-  //   var times = FRAME_LIMIT
-  //   //creates 10 frames of spares
-  //   for(var i=0; i< times; i++){
-  //     game.addRoll(5)
-  //     game.addRoll(5)
-  //   }
-  //   game.addRoll(3)
-  //   expect(function(){game.addRoll(3)}).toThrow("No more rolls allowed")
-  //   expect(game.frameLog.frameCount()).toEqual(11)
-  //   expect(game.frameLog.currentFrame.secondRoll).toEqual(0)
-  // })
+  it('will allow extra roll if first roll on 10th frame is strike', function(){
+    var times = 10
+    //creates 10 frames of strikes
+    for(var i=0; i< times; i++){
+      game.addRoll(10)
+    }
+    game.addRoll(10)
+    expect(game.frameLog.frames[9].rolls.length).toEqual(2)
+    expect(game.frameLog.frames[9].score()).toEqual(20)
+  })
+
+  it('will allow no more than 2 extra rolls if 10th frame was two strikes',function(){
+    var times = FRAME_LIMIT
+    //creates 10 frames of strikes
+    for(var i=0; i< times; i++){
+      game.addRoll(10)
+    }
+    game.addRoll(10)
+    game.addRoll(3)
+    expect(function(){game.addRoll(3)}).toThrow("Frame set is complete - no more roll's allowed")
+    expect(game.frameLog.frames[9].rolls.length).toEqual(3)
+  })
+  
+  it('will allow an extra roll if 10th frame was a spare',function(){
+    var times = FRAME_LIMIT
+    //creates 10 frames of spares
+    for(var i=0; i< times; i++){
+      game.addRoll(5)
+      game.addRoll(5)
+    }
+    game.addRoll(3)
+    expect(game.frameLog.frames[9].rolls.length).toEqual(3)
+    expect(game.frameLog.frames[9].score()).toEqual(13)
+    expect(function(){game.addRoll(3)}).toThrow("Frame set is complete - no more roll's allowed")
+  })
 })

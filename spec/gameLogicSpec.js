@@ -3,7 +3,7 @@ describe('GameLogic',function(){
   var framelog
 
   beforeEach(function(){
-    framelog = jasmine.createSpyObj('framelog',['frameCount','createFrameLog','startFrame','endFrame', 'currentFrameValue'])
+    framelog = jasmine.createSpyObj('framelog',['addRoll','createFrameLog'])
     gamelogic = new GameLogic(framelog)
     framelog.createFrameLog.and.returnValue(framelog);
     gamelogic.newGame()
@@ -19,30 +19,10 @@ describe('GameLogic',function(){
   })
 
   describe('addRoll',function(){
-    it('can call FrameLog to add a new frame',function(){
-      framelog.currentFrameValue.and.returnValue(null)
+    it('calls on framelog to addRoll',function(){
       gamelogic.addRoll(2)
-      expect(framelog.startFrame).toHaveBeenCalled()
+      expect(framelog.addRoll).toHaveBeenCalled()
     })
-    it('can call FrameLog to end a frame if previous roll not strike',function(){
-      gamelogic.addRoll(2)
-      gamelogic.addRoll(2)
-      expect(framelog.endFrame).toHaveBeenCalled()
-    })
+  })
 
-    it('will not add a new frame if frameCount at limit', function(){
-      framelog.currentFrameValue.and.returnValue(null)
-      framelog.frameCount.and.returnValue(FRAME_LIMIT)
-      expect(function() { gamelogic.addRoll()}).toThrow("No more rolls allowed")
-    })
-  })
-  describe('isFrameLimit',function(){
-    beforeEach(function(){
-      framelog.frameCount.and.returnValue(FRAME_LIMIT)
-    })
-    it('calls on framelog for frame count',function(){
-      gamelogic.isFrameLimit()
-      expect(framelog.frameCount).toHaveBeenCalled()
-    })
-  })
 })

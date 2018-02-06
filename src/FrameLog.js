@@ -1,3 +1,5 @@
+const FRAME_LIMIT = 10;
+
 function FrameLog (frameClass = Frame) {
   this.frames = []
   this.frameClass = frameClass
@@ -34,9 +36,9 @@ FrameLog.prototype.isPreviousFrameSpare = function(){
 }
 
 FrameLog.prototype._isFinalFrame = function(){
-  return this.frameCount() === 9
+  return this.frameCount() === FRAME_LIMIT - 1
 }
 
 FrameLog.prototype.isFramelogComplete = function(){
-  return this.frameCount() === 10 && this.currentFrame().isComplete()
+  return this.frameCount() === FRAME_LIMIT && this.currentFrame().isComplete()
 }

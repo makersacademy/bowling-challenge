@@ -16,8 +16,7 @@ class Frame {
   }
 
   score() {
-    const rollsForScores = this.rounds.slice(0, this.rulesToFollow.scoreLength);
-    return this.add(rollsForScores);
+    return this.rollsForScores().reduce((a, b) => a + b, 0);
   }
 
   roll(value) {
@@ -37,10 +36,9 @@ class Frame {
     this.rulesToFollow = this.rules[type];
   }
 
-  add(results) {
-    return results.reduce((a, b) => a + b, 0);
+  rollsForScores() {
+    return this.rounds.slice(0, this.rulesToFollow.scoreLength);
   }
-
 
   firstRoll() {
     return this.rounds[0];

@@ -1,4 +1,5 @@
 /* eslint-env jasmine */
+const Frame = require('../src/frame')
 
 describe('Frame', () => {
   let frame;

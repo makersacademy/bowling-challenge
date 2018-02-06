@@ -1,5 +1,8 @@
 /* eslint-env jasmine */
 
+const Frame = require('../../src/frame')
+const Game = require('../../src/game')
+
 describe('Game feature', () => {
   let game;
   let frame;

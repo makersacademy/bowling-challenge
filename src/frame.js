@@ -47,3 +47,5 @@ class Frame {
     return this.rounds[1];
   }
 }
+
+module.exports = Frame;

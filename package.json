@@ -4,10 +4,11 @@
   "description": "bowling challenge project",
   "main": "y",
   "directories": {
-    "doc": "docs"
+    "doc": "docs",
+    "lib": "lib"
   },
   "scripts": {
-    "test": "test"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "eslint-plugin-jasmine": "^2.9.1"
   },
   "dependencies": {
-    "eslint-config-airbnb": "^16.1.0"
+    "eslint-config-airbnb": "^16.1.0",
+    "jasmine": "^2.9.0"
   }
 }

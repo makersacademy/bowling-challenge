@@ -5,7 +5,7 @@ describe("Frame", function() {
     frame = new Frame();
   });
 
-  describe("Add", function() {
+  describe("#Add", function() {
     it("Scores are added to the rolls array", function() {
       frame.add(3, 4);
       expect(frame.rolls).toEqual([3, 4])
@@ -21,7 +21,7 @@ describe("Frame", function() {
     });
   });
 
-  describe("Add: Error Messages", function() {
+  describe("#Add: Error Messages", function() {
     it("Raises an error if total is above 10", function() {
       expect(function() {frame.add(10, 1)}).toThrow(new Error("Impossible frame with arguments provided"))
     });
@@ -31,21 +31,21 @@ describe("Frame", function() {
     });
   });
 
-  describe("Total", function() {
+  describe("#Total", function() {
     it("Returns the total of the two rolls", function() {
       frame.add(3,4);
       expect(frame.total()).toEqual(7)
     });
   });
 
-  describe("Check Strike", function() {
+  describe("#Check Strike", function() {
     it("Changes _isStrike to true if first roll was a strike", function() {
       frame.add(10);
       expect(frame.strike).toEqual(true);
     });
   });
 
-  describe("Check Spare", function() {
+  describe("#Check Spare", function() {
     it("Changes _isSpare to true if both rolls equal 10", function() {
       frame.add(6, 4);
       expect(frame.spare).toEqual(true);

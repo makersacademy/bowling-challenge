@@ -4,7 +4,7 @@ const FINAL_GAME_STRIKE = 3;
 class Game {
   constructor(frame) {
     this.board = [];
-    this.Frames = frame
+    this.Frames = frame;
     for (let i = 0; i < GAME_LENGTH - 1; i += 1) {
       this.board.push(new this.Frames());
     }
@@ -13,20 +13,25 @@ class Game {
 
   play(rolls) {
     let index = 0;
-    const board = this.board;
     rolls.forEach((roll) => {
-      board[index].roll(roll);
-      if (index > 0) { board[index - 1].roll(roll); }
-      if (index > 1) { board[index - 2].roll(roll); }
-      if (board[index].isFinished()) { index += 1; }
+      this.addRoll(index, roll)
+      if (index > 0) { this.addRoll(index - 1, roll); }
+      if (index > 1) { this.addRoll(index - 2, roll); }
+      if (this.frameFinished(index)) { index += 1; }
     });
+  }
+
+  addRoll(index, roll) {
+    this.board[index].roll(roll);
+  }
+
+  frameFinished(index) {
+    return this.board[index].isFinished();
   }
 
   score() {
     return this.board.reduce((a, b) => a + b.score(), 0);
   }
-
-
 }
 
 module.exports = Game;

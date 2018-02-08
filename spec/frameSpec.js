@@ -80,6 +80,12 @@ describe('StrikeRound', () => {
     finalFrame = new Frame(3,3);
   });
 
+  function chainOfRolls(...rolls) {
+    rolls.forEach((roll) => {
+      finalFrame.roll(roll);
+    });
+  }
+
   describe('finished', () => {
     it('has not finished finished after a strike', () => {
       finalFrame.roll(10);
@@ -88,24 +94,20 @@ describe('StrikeRound', () => {
     });
 
     it('has not finished finished after two throws after a strike', () => {
-      finalFrame.roll(10);
-      finalFrame.roll(10);
+      chainOfRolls(10, 10);
 
       expect(finalFrame.isFinished()).toBe(false);
     });
 
 
     it('has finished finished after three throws after a strike', () => {
-      finalFrame.roll(10);
-      finalFrame.roll(10);
-      finalFrame.roll(10);
+      chainOfRolls(10, 10, 10);
 
       expect(finalFrame.isFinished()).toBe(true);
     });
 
     it('has finished finished after two throws, which are not a strike', () => {
-      finalFrame.roll(8);
-      finalFrame.roll(1);
+      chainOfRolls(8, 1);
 
       expect(finalFrame.isFinished()).toBe(true);
     });
@@ -117,16 +119,13 @@ describe('StrikeRound', () => {
     });
 
     it('has not finished after a spare', () => {
-      finalFrame.roll(7);
-      finalFrame.roll(3);
+      chainOfRolls(7, 3);
 
       expect(finalFrame.isFinished()).toBe(false);
     });
 
     it('has finished after a spare and an extra roll', () => {
-      finalFrame.roll(7);
-      finalFrame.roll(3);
-      finalFrame.roll(10);
+      chainOfRolls(7, 3, 2);
 
       expect(finalFrame.isFinished()).toBe(true);
     });

@@ -11,22 +11,24 @@ class Game {
     this.board.push(new this.Frames(FINAL_GAME_STRIKE, FINAL_GAME_STRIKE));
   }
 
-  play(rolls) {
+  play(roll) {
+    const runningFrame = this.currentFrame();
+    this.addRoll(runningFrame, roll);
+    if (runningFrame > 0) { this.addRoll(runningFrame - 1, roll); }
+    if (runningFrame > 1) { this.addRoll(runningFrame - 2, roll); }
+  }
+
+  currentFrame() {
     let index = 0;
-    rolls.forEach((roll) => {
-      this.addRoll(index, roll)
-      if (index > 0) { this.addRoll(index - 1, roll); }
-      if (index > 1) { this.addRoll(index - 2, roll); }
-      if (this.frameFinished(index)) { index += 1; }
+    this.board.forEach((frame) => {
+      if (!frame.isFinished()) { return index; }
+      index += 1;
     });
+    return index;
   }
 
   addRoll(index, roll) {
     this.board[index].roll(roll);
-  }
-
-  frameFinished(index) {
-    return this.board[index].isFinished();
   }
 
   score() {

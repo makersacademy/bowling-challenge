@@ -130,6 +130,13 @@ describe("Game", function() {
       expect(game.runningTotal).toEqual(78)
     });
 
+    it("does not allow more than 10 pins when 1st bowl of 10th frame is a strike", function() {
+      frame1 = new Frame();
+      frame1.bowls = [10,8]
+      game.frames.push(frame1);
+      expect( function() { game.roll(10,3,8); } ).toThrow('not enough pins!');
+    });
+
     it("counts 2 extra rolls if 10th frame is strike", function() {
       frame1 = new Frame();
       frame1.bowls = [10]

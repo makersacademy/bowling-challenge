@@ -121,30 +121,30 @@ describe("Frame", function() {
 
     it("should set ball1 to X after strike", function() {
       frame.play("X");
-      expect(frame._ball1).toEqual(10);
+      expect(frame.ball1).toEqual(10);
     });
     it("should set ball1 to - after first play", function() {
       frame.play("-");
-      expect(frame._ball1).toEqual(0);
+      expect(frame.ball1).toEqual(0);
     });
     it("should set ball1 to 7 after first play", function() {
       frame.play(7);
-      expect(frame._ball1).toEqual(7);
+      expect(frame.ball1).toEqual(7);
     });
     it("should set ball2 to 10 after spare", function() {
       frame.play("-");
       frame.play("/");
-      expect(frame._ball2).toEqual(10);
+      expect(frame.ball2).toEqual(10);
     });
     it("should set ball2 to 7 after spare 3&7", function() {
       frame.play(3);
       frame.play(7);
-      expect(frame._ball2).toEqual(7);
+      expect(frame.ball2).toEqual(7);
     });
     it("should set ball2 to 6 after second play", function() {
       frame.play(3);
       frame.play(6);
-      expect(frame._ball2).toEqual(6);
+      expect(frame.ball2).toEqual(6);
     });
   });
 

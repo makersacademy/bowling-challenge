@@ -68,4 +68,28 @@ describe("Match", function() {
     }
     expect(match.score()).toEqual(0);
   });
+
+  it("should retrieve the scores for the current game", function() {
+    match.play("-");
+    expect(match.currentFrame().ball1).toEqual(0);
+    expect(match.currentFrame().ball2).toEqual(0);
+    expect(match.currentFrame().score()).toEqual(0);
+  });
+
+  it("should retrieve the scores for the current game", function() {
+    match.play("X");
+    expect(match.currentFrame().ball1).toEqual(10);
+    expect(match.currentFrame().ball2).toEqual(0);
+    expect(match.currentFrame().score()).toEqual(10);
+  });
+  
+  it("should retrieve the scores for the current game", function() {
+    match.play("5");
+    match.play("5");
+    expect(match.currentFrame().ball1).toEqual(5);
+    expect(match.currentFrame().ball2).toEqual(5);
+    expect(match.currentFrame().score()).toEqual(10);
+  });
+
+
 });

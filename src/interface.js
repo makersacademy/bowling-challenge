@@ -1,56 +1,61 @@
 $(document).ready(function(){
   var game = new FrameLog()
-  updateTotalScore()
+  updateScores()
 
   $("#new-game").click(function(event){
     game =  new FrameLog()
-    updateTotalScore()
+    $("#totalScore").text(0)
+    for(var i = 0; i < FRAME_LIMIT; i ++){
+      $(`#f${i+1}`).text(0)
+    }
   })
 
-  function updateTotalScore(){
-    console.log(game.calculateScore())
+  function updateScores(){
     $("#totalScore").text(game.calculateScore())
+      for(var i = 0; i < game.frameCount(); i ++){
+        $(`#f${i+1}`).text(game.frames[i].score())
+      }
   }
 
   $("#1-pin").click(function(event){
     game.addRoll(1)
-    updateTotalScore()
-    console.log(game)
+    updateScores()
   })
+
   $("#2-pin").click(function(event){
     game.addRoll(2)
-    updateTotalScore()
+    updateScores()
   })
   $("#3-pin").click(function(event){
     game.addRoll(3)
-    updateTotalScore()
+    updateScores()
   })
   $("#4-pin").click(function(event){
     game.addRoll(4)
-    updateTotalScore()
+    updateScores()
   })
   $("#5-pin").click(function(event){
     game.addRoll(5)
-    updateTotalScore()
+    updateScores()
   })
   $("#6-pin").click(function(event){
     game.addRoll(6)
-    updateTotalScore()
+    updateScores()
   })
   $("#7-pin").click(function(event){
     game.addRoll(7)
-    updateTotalScore()
+    updateScores()
   })
   $("#8-pin").click(function(event){
     game.addRoll(8)
-    updateTotalScore()
+    updateScores()
   })
   $("#9-pin").click(function(event){
     game.addRoll(9)
-    updateTotalScore()
+    updateScores()
   })
   $("#10-pin").click(function(event){
     game.addRoll(10)
-    updateTotalScore()
+    updateScores()
   })
 })

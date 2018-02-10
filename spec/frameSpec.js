@@ -76,11 +76,11 @@ describe('Frame', () => {
     });
   });
 
-  describe('card', () => {
+  describe('view', () => {
     it('should show the first two rolls of a non-spare/strike set', () => {
       chainOfRolls(2, 7);
 
-      expect(frame.card()).toEqual([2, 7]);
+      expect(frame.view()).toEqual([2, 7]);
     });
   });
 });

@@ -20,16 +20,20 @@ class Frame {
 
   roll(value) {
     if (this.rounds.length < STRIKE_SCORE_ROUND) { this.rounds.push(value); }
-    this.resultType()
+    this.resultType();
   }
 
   isFinished() {
     return this.rounds.length >= this.rulesToFollow.length;
   }
 
+  view() {
+    return this.rounds;
+  }
+
   // need to make private
   resultType() {
-    let type = 'normal'
+    let type = 'normal';
     if (this.firstRoll() === STRIKE) { type = 'strike'; }
     if (this.firstRoll() + this.secondRoll() === STRIKE) { type = 'spare'; }
     this.rulesToFollow = this.rules[type];

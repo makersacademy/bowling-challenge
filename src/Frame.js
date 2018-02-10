@@ -6,12 +6,26 @@ class Frame {
   }
 
   bowl(pins) {
-    if (this.bowlAttempts >= this.maxFrameLength) {
+    if (this.cannotBowl()) {
       throw Error(`Cannot have more than ${this.maxFrameLength}`);
     } else {
-      this.bowlAttempts += 1;
-      this.rolls[this.bowlAttempts] = pins;
+      this.recordTurn();
+      this.recordRoll(pins);
     }
+  }
+
+  // Start of helper methods
+
+  cannotBowl() {
+    return this.bowlAttempts >= this.maxFrameLength;
+  }
+
+  recordTurn() {
+    this.bowlAttempts += 1;
+  }
+
+  recordRoll(pins) {
+    this.rolls[this.bowlAttempts] = pins;
   }
 }
 

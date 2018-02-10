@@ -30,13 +30,17 @@ class Frame {
   }
 
   recordRoll(pins) {
-    this.rolls[this.bowlAttempts] = pins;
+    if (this.isAStrikeFrame) {
+      throw Error('Cannot have second go after a strike');
+    } else {
+      this.rolls[this.bowlAttempts] = pins;
+    }
   }
 
   recordScore() {
     this.baseScore = this.calculateScore();
-    this.wasSpare = this.isSpare();
-    this.wasStrike = this.isStrike();
+    this.isASpareFrame = this.isSpare();
+    this.isAStrikeFrame = this.isStrike();
   }
 
   calculateScore() {

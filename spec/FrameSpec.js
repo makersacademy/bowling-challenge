@@ -42,15 +42,21 @@ describe('Frame', () => {
         frame.bowl(5);
         frame.bowl(5);
 
-        expect(frame.wasSpare).toBe(true);
+        expect(frame.isASpareFrame).toBe(true);
       });
     });
 
     describe('scoring a strike', () => {
-      it('it records a strike', () => {
+      beforeEach(() => {
         frame.bowl(10);
+      });
 
-        expect(frame.wasStrike).toBe(true);
+      it('it records a strike', () => {
+        expect(frame.isAStrikeFrame).toBe(true);
+      });
+
+      it('does not let you roll again after a strike', () => {
+        expect(() => { frame.bowl(0); }).toThrowError('Cannot have second go after a strike');
       });
     });
   });

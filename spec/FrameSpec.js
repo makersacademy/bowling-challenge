@@ -8,6 +8,16 @@ describe('Frame', () => {
   });
 
   describe('#bowl', () => {
+    describe('guard conditions for rules', () => {
+      it('cannot record more bowls than the max frame length', () => {
+        for (let i = 0; i < frame.maxFrameLength; i += 1) {
+          frame.bowl(0);
+        }
+
+        expect(() => { frame.bowl(0); }).toThrowError(`Cannot have more than ${frame.maxFrameLength}`);
+      });
+    });
+
     describe('basic scoring', () => {
       beforeEach(() => {
         frame.bowl(5);
@@ -20,10 +30,6 @@ describe('Frame', () => {
 
       it('knows how many bowl attempts have been made', () => {
         expect(frame.bowlAttempts).toEqual(2);
-      });
-
-      it('cannot record more bowls than the max frame length', () => {
-        expect(() => { frame.bowl(1); }).toThrowError(`Cannot have more than ${frame.maxFrameLength}`);
       });
     });
 

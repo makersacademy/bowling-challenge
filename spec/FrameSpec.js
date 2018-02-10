@@ -7,11 +7,12 @@ describe('Frame', () => {
     frame = new Frame();
   });
 
-  describe('#recordRoll', () => {
-    it('records a single roll', () => {
-      frame.recordRoll(5);
+  describe('#bowl', () => {
+    it('records two rolls', () => {
+      frame.bowl(5);
+      frame.bowl(4);
 
-      expect(frame.rolls).toEqual(5);
+      expect(frame.rolls).toEqual({ 1: 5, 2: 4 });
     });
   });
 });

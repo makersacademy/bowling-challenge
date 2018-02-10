@@ -17,7 +17,9 @@ Game.prototype.roll = function(frame, roll, pins) {
     if (frame != 2 && this.frames[frame-3].isStrike === true && roll === 1) {
       this.frames[frame-3].total += pins
     }
-    this.frames[frame-2].total += pins
+    if (roll!=3) {
+      this.frames[frame-2].total += pins
+    }
   } else if (frame != 1 && this.frames[frame-2].isSpare === true && roll === 1) {
     this.frames[frame-2].total += pins
   }

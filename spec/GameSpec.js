@@ -93,5 +93,110 @@ describe("Game", function() {
     });
   });
 
+  describe("10th frame", function() {
 
+    beforeEach(function() {
+      game = new Game();
+      frame = new Frame();
+      frame.bowls = [2,5]
+      for(var i=0; i < 9; i++){
+        game.frames.push(frame);
+        game.frames[i].sumTotal();
+      }
+    });
+
+    it("ends the game after 10th frame without bonuses", function() {
+      frame1 = new Frame();
+      frame1.bowls = [2,5]
+      game.frames.push(frame1);
+      game.frames[9].sumTotal();
+      game.calculateTotal();
+      expect(game.runningTotal).toEqual(70);
+    });
+
+    it("counts extra roll score if 10th frame is spare", function() {
+      frame1 = new Frame();
+      frame1.bowls = [5,5]
+      game.frames.push(frame1);
+      game.roll(10,3,5)
+      game.frames[9].sumTotal();
+      game.calculateTotal();
+      expect(game.runningTotal).toEqual(78)
+    });
+
+    it("counts 2 extra rolls if 10th frame is strike", function() {
+      frame1 = new Frame();
+      frame1.bowls = [10]
+      game.frames.push(frame1);
+      game.roll(10,2,10);
+      game.roll(10,3,4);
+      game.frames[9].sumTotal();
+      game.calculateTotal();
+      expect(game.runningTotal).toEqual(87)
+    });
+  });
+
+  describe("special cases", function() {
+
+    beforeEach(function() {
+      game = new Game();
+    });
+
+    describe("perfect game", function() {
+      it("has a score of 300", function() {
+        frame = new Frame();
+        frame.bowls = [10]
+        for(var i=0; i < 10; i++){
+          game.frames.push(frame);
+          game.frames[i].sumTotal();
+        }
+        game.roll(10,2,10);
+        game.roll(10,3,10);
+        game.frames[9].sumTotal();
+        game.calculateTotal();
+        expect(game.runningTotal).toEqual(300)
+      });
+    });
+
+    describe("gutter game", function() {
+      it("has a score of 0", function() {
+        frame = new Frame();
+        frame.bowls = [0]
+        for(var i=0; i < 10; i++){
+          game.frames.push(frame);
+          game.frames[i].sumTotal();
+        }
+        game.roll(10,2,0);
+        game.frames[9].sumTotal();
+        game.calculateTotal();
+        expect(game.runningTotal).toEqual(0)
+      });
+    });
+
+    it("gives the correct total for the example README game", function() {
+      game.start(10);
+      game.roll(1,1,1);
+      game.roll(1,2,4);
+      game.roll(2,1,4);
+      game.roll(2,2,5);
+      game.roll(3,1,6);
+      game.roll(3,2,4);
+      game.roll(4,1,5);
+      game.roll(4,2,5);
+      game.roll(5,1,10);
+      game.roll(6,1,0);
+      game.roll(6,2,1);
+      game.roll(7,1,7);
+      game.roll(7,2,3);
+      game.roll(8,1,6);
+      game.roll(8,2,4);
+      game.roll(9,1,10);
+      game.roll(10,1,2);
+      game.roll(10,2,8);
+      game.roll(10,3,6);
+      console.log(game.frames[9].total)
+      game.calculateTotal();
+      expect(game.runningTotal).toEqual(133)
+    });
+  });
 });

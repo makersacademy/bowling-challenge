@@ -11,6 +11,9 @@ class Frame {
     } else {
       this.recordTurn();
       this.recordRoll(pins);
+      if (this.rolls[1] + this.rolls[2] === 10) {
+        this.wasSpare = true;
+      }
     }
   }
 

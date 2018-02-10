@@ -26,5 +26,14 @@ describe('Frame', () => {
         expect(() => { frame.bowl(1); }).toThrowError(`Cannot have more than ${frame.maxFrameLength}`);
       });
     });
+
+    describe('scoring a spare', () => {
+      it('it records a spare', () => {
+        frame.bowl(5);
+        frame.bowl(5);
+
+        expect(frame.wasSpare).toBe(true);
+      });
+    });
   });
 });

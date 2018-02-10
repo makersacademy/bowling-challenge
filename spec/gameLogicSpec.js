@@ -9,6 +9,10 @@ describe('GameLogic',function(){
     gamelogic.newGame()
   })
 
+  it('initializes with empty array of scores', function(){
+    expect(gamelogic.scores).toEqual([])
+  })
+
   describe('newGame',function(){
     it('can create with a new framelog object', function(){
       expect(framelog.createFrameLog).toHaveBeenCalled()

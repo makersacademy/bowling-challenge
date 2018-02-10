@@ -2,6 +2,7 @@
 function GameLogic (frameLogClass = FrameLog){
   this.frameLogClass = frameLogClass
   this.frameLog = null
+  this.scores = []
 }
 
 GameLogic.prototype.newGame = function(){
@@ -11,10 +12,10 @@ GameLogic.prototype.newGame = function(){
 GameLogic.prototype.addRoll = function(rollScore){
   this.frameLog.addRoll(rollScore)
 }
-
-GameLogic.prototype.isPreviousFrameStrike = function(){
-  return this.frameLog.isPreviousFrameStrike()
-}
-GameLogic.prototype.isPreviousFrameSpare = function(){
-  return this.frameLog.isPreviousFrameSpare()
-}
+// 
+// GameLogic.prototype.isPreviousFrameStrike = function(){
+//   return this.frameLog.isPreviousFrameStrike()
+// }
+// GameLogic.prototype.isPreviousFrameSpare = function(){
+//   return this.frameLog.isPreviousFrameSpare()
+// }

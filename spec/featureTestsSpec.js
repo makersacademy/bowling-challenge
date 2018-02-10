@@ -21,17 +21,17 @@ describe('Feature Test:', function(){
     expect(game.frameLog.frames[0].score()).toEqual(10)
     expect(game.frameLog.frames[1].score()).toEqual(10)
   })
-  it('knows if current and previous move was a spare', function(){
-    game.addRoll(5)
-    game.addRoll(5)
-    game.addRoll(10)
-    expect(game.isPreviousFrameSpare()).toEqual(true)
-  })
-  it('knows if previous roll was a strike', function(){
-    game.addRoll(10)
-    game.addRoll(10)
-    expect(game.isPreviousFrameStrike()).toEqual(true)
-  })
+  // it('knows if current and previous move was a spare', function(){
+  //   game.addRoll(5)
+  //   game.addRoll(5)
+  //   game.addRoll(10)
+  //   expect(game.isPreviousFrameSpare()).toEqual(true)
+  // })
+  // it('knows if previous roll was a strike', function(){
+  //   game.addRoll(10)
+  //   game.addRoll(10)
+  //   expect(game.isPreviousFrameStrike()).toEqual(true)
+  // })
   it('only allows ten frames if last frame is not a strike or spare', function(){
     var times = FRAME_LIMIT
     for(var i=0; i < times; i++){
@@ -64,7 +64,7 @@ describe('Feature Test:', function(){
     expect(function(){game.addRoll(3)}).toThrow("Frame set is complete - no more roll's allowed")
     expect(game.frameLog.frames[9].rolls.length).toEqual(3)
   })
-  
+
   it('will allow an extra roll if 10th frame was a spare',function(){
     var times = FRAME_LIMIT
     //creates 10 frames of spares

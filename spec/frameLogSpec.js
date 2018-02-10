@@ -3,8 +3,9 @@ describe('FrameLog',function(){
   var frame
 
   beforeEach(function(){
-    frame =  jasmine.createSpyObj('frame',['createFrame','addRoll','isComplete','isStrike','isSpare'])
+    frame =  jasmine.createSpyObj('frame',['createFrame','addRoll','isComplete','isStrike','isSpare','score'])
     framelog = new FrameLog(frame)
+      frame.createFrame.and.returnValue(frame)
   })
 
   it('has no frames by default',function(){
@@ -30,12 +31,10 @@ describe('FrameLog',function(){
       expect(frame.createFrame).toHaveBeenCalled()
     })
     it('it stores a frame',function(){
-      frame.createFrame.and.returnValue(frame);
       framelog.addRoll(10)
       expect(framelog.frames).toEqual([frame])
     })
     it('will not create a new frame if call is isComplete returns false',function(){
-      frame.createFrame.and.returnValue(frame);
       frame.isComplete.and.returnValue(true);
       framelog.addRoll(2)
       frame.isComplete.and.returnValue(false);
@@ -43,7 +42,6 @@ describe('FrameLog',function(){
       expect(framelog.frames.length).toEqual(1)
     })
     it('adds true parameter when creating 10th frame', function(){
-      frame.createFrame.and.returnValue(frame);
       frame.isComplete.and.returnValue(true);
       var times = FRAME_LIMIT
       for(var i=0; i < times; i++){
@@ -53,7 +51,6 @@ describe('FrameLog',function(){
     })
     it('will not add another frame / roll if FrameLog is complete', function(){
       frame.isComplete.and.returnValue(true);
-      frame.createFrame.and.returnValue(frame)
       var times = FRAME_LIMIT
       for(var i=0; i < times; i++){
         framelog.addRoll(10)
@@ -66,40 +63,47 @@ describe('FrameLog',function(){
     beforeEach(function(){
       frame.createFrame.and.returnValue(frame)
     })
-
-    it('calls and returns isStrike function for previous frame',function(){
-      frame.isStrike.and.returnValue(true)
-      framelog.addRoll(10)
-      frame.isComplete.and.returnValue(true);
-      framelog.addRoll(0)
-      expect(framelog.isPreviousFrameStrike()).toEqual(true)
-      expect(frame.isStrike).toHaveBeenCalled()
-    })
-  })
-  describe('isPreviousFrameSpare',function(){
-    beforeEach(function(){
-      frame.createFrame.and.returnValue(frame)
-    })
-    it('call and returns isSpare function for previous frame',function(){
-      frame.isSpare.and.returnValue(true)
-      framelog.addRoll(1)
-      framelog.addRoll(9)
-      frame.isComplete.and.returnValue(true);
-      framelog.addRoll(0)
-      expect(framelog.isPreviousFrameSpare()).toEqual(true)
-      expect(frame.isSpare).toHaveBeenCalled()
-    })
-  })
+  // 
+  //   it('calls and returns isStrike function for previous frame',function(){
+  //     frame.isStrike.and.returnValue(true)
+  //     framelog.addRoll(10)
+  //     frame.isComplete.and.returnValue(true);
+  //     framelog.addRoll(0)
+  //     expect(framelog.isPreviousFrameStrike()).toEqual(true)
+  //     expect(frame.isStrike).toHaveBeenCalled()
+  //   })
+  // })
+  // describe('isPreviousFrameSpare',function(){
+  //   beforeEach(function(){
+  //     frame.createFrame.and.returnValue(frame)
+  //   })
+  //   it('call and returns isSpare function for previous frame',function(){
+  //     frame.isSpare.and.returnValue(true)
+  //     framelog.addRoll(1)
+  //     framelog.addRoll(9)
+  //     frame.isComplete.and.returnValue(true);
+  //     framelog.addRoll(0)
+  //     expect(framelog.isPreviousFrameSpare()).toEqual(true)
+  //     expect(frame.isSpare).toHaveBeenCalled()
+  //   })
+  // })
   describe('isFramelogComplete',function(){
     it('returns true if frame count 10 and currentFrame is complete', function (){
       frame.isComplete.and.returnValue(true);
-      frame.createFrame.and.returnValue(frame)
       var times = FRAME_LIMIT
       for(var i=0; i < times; i++){
         framelog.addRoll(10)
       }
       expect(framelog.isFramelogComplete()).toEqual(true)
       expect(frame.isComplete).toHaveBeenCalled()
+    })
+  })
+
+  describe('calculateScore()', function(){
+    it('returns score for all frames when no strikes of spares', function (){
+      framelog.addRoll(2)
+      frame.score.and.returnValue(2)
+      expect(framelog.calculateScore()).toEqual(2)
     })
   })
 })

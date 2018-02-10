@@ -9,7 +9,7 @@ class Frame {
     try {
       this.recordTurn();
       this.recordRoll(pins);
-      this.recordSpecial();
+      this.recordScore();
     } catch (error) {
       throw error;
     }
@@ -33,19 +33,22 @@ class Frame {
     this.rolls[this.bowlAttempts] = pins;
   }
 
-  recordSpecial() {
-    if (this.spare()) {
-      this.wasSpare = true;
-    } else if (this.strike()) {
-      this.wasStrike = true;
-    }
+  recordScore() {
+    this.baseScore = this.calculateScore();
+    this.wasSpare = this.isSpare();
+    this.wasStrike = this.isStrike();
   }
 
-  spare() {
+  calculateScore() {
+    const rolls = Object.values(this.rolls);
+    return rolls.reduce((a, b) => a + b);
+  }
+
+  isSpare() {
     return this.rolls[1] + this.rolls[2] === 10;
   }
 
-  strike() {
+  isStrike() {
     return this.rolls[1] === 10;
   }
 }

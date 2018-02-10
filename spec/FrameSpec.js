@@ -28,6 +28,10 @@ describe('Frame', () => {
         expect(frame.rolls).toEqual({ 1: 5, 2: 4 });
       });
 
+      it('adds the rolls together', () => {
+        expect(frame.baseScore).toEqual(9);
+      });
+
       it('knows how many bowl attempts have been made', () => {
         expect(frame.bowlAttempts).toEqual(2);
       });

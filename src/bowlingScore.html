@@ -11,19 +11,32 @@
       setScore = function() {
       document.getElementById('currentScore').innerHTML = game.score()
       }
-        roll = function(value) { game.play(value); setScore(); };
-      createButtons = function(){
+        roll = function(value) { game.play(value); setScore(); showScores(); };
+
+        createButtons = function(){
         for(let i =10; i >= 0; i -= 1) {
           let btn = document.createElement('button');
           btn.id = i
           btn.onclick = function() {roll(i)};
           let t = document.createTextNode(i);
           btn.appendChild(t)
-          document.getElementById('scores').appendChild(btn);
+          document.getElementById('changeScores').appendChild(btn);
         }
       }
+        showScores = function(){
+        let scores = '';
+        console.log(game.runningScores());
+        game.runningScores().forEach((score) => {
+          scores += score + " ";
+          console.log(score);
+        });
+        console.log(scores);
+        document.getElementById('eachScore').innerHTML = scores;
+        }
+
       setScore();
       createButtons();
+      showScores();
 
 
     });
@@ -31,7 +44,11 @@
 
   </head>
   <body>
-   <div id='scores'> <div>
+   <div id='changeScores'> </div>
    <p> Current Score: <span id = 'currentScore'> Testing</span> </p>
+   <table>
+     <p id ='eachScore'> </p>
+   </table>
+
   </body>
 </html>

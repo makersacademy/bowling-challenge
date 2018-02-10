@@ -1,12 +1,17 @@
 class Frame {
   constructor() {
+    this.maxFrameLength = 2;
     this.bowlAttempts = 0;
-    this.rolls = { 1: null, 2: null };
+    this.rolls = {};
   }
 
   bowl(pins) {
-    this.bowlAttempts += 1;
-    this.rolls[this.bowlAttempts] = pins;
+    if (this.bowlAttempts >= this.maxFrameLength) {
+      throw Error(`Cannot have more than ${this.maxFrameLength}`);
+    } else {
+      this.bowlAttempts += 1;
+      this.rolls[this.bowlAttempts] = pins;
+    }
   }
 }
 

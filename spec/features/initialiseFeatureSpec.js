@@ -1,7 +1,7 @@
 /* eslint-env jasmine */
 
-const Frame = require('../../src/frame')
-const Game = require('../../src/game')
+const Frame = require('../../src/frame');
+const Game = require('../../src/game');
 
 describe('Game feature', () => {
   let game;
@@ -25,7 +25,6 @@ describe('Game feature', () => {
   });
 
   describe('Score', () => {
-
     describe('One continous game which is incomplete', () => {
       describe('Running score', () => {
         it('returns 9 when given 7, 2', () => {
@@ -69,14 +68,14 @@ describe('Game feature', () => {
 
       it('returns 94 when give 7, 2 9 times and you finish with a  spare and 3', () => {
         for (let i = 0; i < 9; i += 1) { game.play(7); game.play(2); }
-        chainOfRolls(8, 2, 3)
+        chainOfRolls(8, 2, 3);
 
         expect(game.score()).toEqual(94);
       });
 
       it('returns 121 when give 7, 2 9 times and you finish with a turkey', () => {
         for (let i = 0; i < 9; i += 1) { game.play(7); game.play(2); }
-        chainOfRolls(10, 10, 10)
+        chainOfRolls(10, 10, 10);
 
         expect(game.score()).toEqual(111);
       });

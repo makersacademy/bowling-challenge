@@ -3,7 +3,6 @@ const STANDARD_ROUND = 2;
 const STRIKE_ROUND = 1;
 const STRIKE_SCORE_ROUND = 3;
 
-
 class Frame {
   constructor(strikeRound = STRIKE_ROUND, spareRound = STANDARD_ROUND) {
     this.rounds = [];

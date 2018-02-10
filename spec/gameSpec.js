@@ -6,7 +6,7 @@ describe('Game', () => {
   let frame;
 
   beforeEach(() => {
-    frame = jasmine.createSpyObj('Frame', { yes: "yellow" });
+    frame = jasmine.createSpyObj('Frame', { yes: 'yellow' });
     function Frame() { return frame; }
     game = new Game(Frame);
   });

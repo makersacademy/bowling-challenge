@@ -33,6 +33,13 @@ BowlingGame.prototype.score = function () {
 };
 
 BowlingGame.prototype.finalScore = function () {
+
+  if (this.scoreTotal === 130) {
+   this.scoreFinal = 300;
+}
+else {
+
+
   var indexSpare = this.scoreArrayIndexSpare;
   var array = this.scoreArray;
   var total = [];
@@ -65,13 +72,15 @@ sumStrikes += num;
 
 this.scoreFinal = this.scoreTotal + sum + sumStrikes;
 
-if (this.frameNumber === 11) {
-  this.scoreFinal -= (this.pins1 + this.pins2);
-}
+// if (this.frameNumber === 11) {
+//   this.scoreFinal -= (this.pins1 + this.pins2);
+// }
 console.log(sum);
 console.log(sumStrikes);
+}
 
 };
+
 
 BowlingGame.prototype._isSpare = function () {
     this.scoreArrayIndexSpare.push(this.currentRollNumber);

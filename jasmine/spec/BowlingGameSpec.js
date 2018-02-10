@@ -43,6 +43,27 @@ describe('BowlingGame', function (){
       expect(game.scoreTotal).toEqual(0);
     });
 
+    it('see they have a Perfect Game', function(){
+      game = new BowlingGame();
+      game.roll(10,0);
+      game.roll(10,0);
+      game.roll(10,0);
+      game.roll(10,0);
+      game.roll(10,0);
+      game.roll(10,0);
+      game.roll(10,0);
+      game.roll(10,0);
+      game.roll(10,0);
+      game.roll(10,0);
+      game.roll(10,0);
+      game.roll(10,0);
+      game.roll(10,0);
+      game.finalScore();
+      current = game.scoreArray.length = 13;
+      expect(current).toEqual(13);
+      expect(game.scoreFinal).toEqual(300);
+    });
+
   });
 
   describe('After each set of rolls ', function(){

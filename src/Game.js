@@ -9,6 +9,9 @@ Game.prototype.start = function(length) {
 };
 
 Game.prototype.roll = function(frame, roll, pins) {
+  if (roll===2 && frame<10 && (10-this.frames[frame-1].bowls[0])<pins) {
+    throw 'not enough pins!'
+  }
   (this.frames[frame-1]).enterRoll(pins)
   this.bonusPoints(frame,roll,pins)
 };

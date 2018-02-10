@@ -17,6 +17,12 @@ describe("Game", function() {
       game.calculateTotal();
       expect(game.runningTotal).toEqual(7)
     });
+
+    it("cannot add a roll if it takes the total over 10", function() {
+      game.roll(1,1,3);
+      // console.log(game.frames[0].bowls)
+      expect( function() { game.roll(1,2,9) } ).toThrow('not enough pins!');
+    });
   });
 
   describe("enters bowl scores", function() {
@@ -137,7 +143,6 @@ describe("Game", function() {
   });
 
   describe("special cases", function() {
-
     beforeEach(function() {
       game = new Game();
     });
@@ -194,7 +199,6 @@ describe("Game", function() {
       game.roll(10,1,2);
       game.roll(10,2,8);
       game.roll(10,3,6);
-      console.log(game.frames[9].total)
       game.calculateTotal();
       expect(game.runningTotal).toEqual(133)
     });

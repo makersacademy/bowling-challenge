@@ -15,6 +15,10 @@ describe('Frame', () => {
   }
 
   describe('Score', () => {
+    it('starts with a score of 0', () => {
+      expect(frame.score()).toEqual(0);
+    });
+
     it('has a score of 7 after one roll of seven', () => {
       frame.roll(7);
 
@@ -72,6 +76,11 @@ describe('Frame', () => {
     });
   });
 });
+
+
+
+
+
 
 describe('StrikeRound', () => {
   let finalFrame;

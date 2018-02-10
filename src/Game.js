@@ -11,9 +11,7 @@ Game.prototype.start = function(length) {
 Game.prototype.roll = function(frame, roll, pins) {
   (this.frames[frame-1]).enterRoll(pins)
   if (frame != 1 && this.frames[frame-2].isStrike === true) {
-    if (frame != 2 && this.frames[frame-3].isStrike === true && roll === 1) {
-      this.frames[frame-3].total += pins
-    }
+    this.secondStrikePoints(frame,roll,pins)
     if (roll!=3) {
       this.frames[frame-2].total += pins
     }
@@ -28,5 +26,11 @@ Game.prototype.calculateTotal = function() {
     if (this.frames[i].total) {
       this.runningTotal += this.frames[i].total;
     }
+  }
+};
+
+Game.prototype.secondStrikePoints = function(frame,roll,pins){
+  if (frame != 2 && this.frames[frame-3].isStrike === true && roll === 1) {
+    this.frames[frame-3].total += pins
   }
 };

@@ -1,8 +1,5 @@
 function Game() {
   this.frames = []
-  // this.scores = []
-  // this.frameScores = []
-  // this.runningTotal =
 };
 
 Game.prototype.start = function(length) {

@@ -103,4 +103,68 @@ describe('Game feature', () => {
       });
     });
   });
+
+  describe('running scores', () => {
+    describe('Incomplete games', () => {
+      it('returns 9, 0,0,0,0,0,0,0,0, 0 when given 7, 2', () => {
+        chainOfRolls(7, 2);
+
+        expect(game.runningScores()).toEqual([9, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+      });
+
+      it('returns 9,6,0,0,0,0,0,0,0, 0 after 1.5 frames with no strikes or spares', () => {
+        chainOfRolls(7, 2, 6);
+
+        expect(game.runningScores()).toEqual([9, 6, 0, 0, 0, 0, 0, 0, 0, 0]);
+      });
+
+      it('returns 8, 3, 1, 7, 8, 2, 0, 0, 0, 0 after 6 frames with two gutter balls ', () => {
+        chainOfRolls(3, 5, 1, 2, 1, 0, 3, 4, 0, 8, 1, 1);
+
+        expect(game.runningScores()).toEqual([8, 3, 1, 7, 8, 2, 0, 0, 0, 0]);
+      });
+
+      it('returns 18, 8, 3, 1, 7, 8, 2, 0, 0, 0, 0 after 7 frames with a strike at the start', () => {
+        chainOfRolls(10, 3, 5, 1, 2, 1, 0, 3, 4, 0, 8, 1, 1);
+
+        expect(game.score()).toEqual(47);
+      });
+
+      it('returns 13, 8, 3, 1, 7, 8, 2, 0, 0, 0, 0 after 7 frames with and a spare at the start', () => {
+        chainOfRolls(7, 3, 3, 5, 1, 2, 1, 0, 3, 4, 0, 8, 1, 1);
+
+        expect(game.runningScores()).toEqual([13, 8, 3, 1, 7, 8, 2, 0, 0, 0]);
+      });
+    });
+
+    describe('Full game running scores', () => {
+      it('returns 9, 9, 9, 9, 9, 9, 9, 9, 9, 13 when give 7, 2 9 times and you finish with a spare and 3', () => {
+        for (let i = 0; i < 9; i += 1) { game.play(7); game.play(2); }
+        chainOfRolls(8, 2, 3);
+
+        expect(game.runningScores()).toEqual([9, 9, 9, 9, 9, 9, 9, 9, 9, 13]);
+      });
+
+      it('returns  9, 9, 9, 9, 9, 9, 9, 9, 9, 30 when give 7, 2 9 times and you finish with a turkey', () => {
+        for (let i = 0; i < 9; i += 1) { game.play(7); game.play(2); }
+        chainOfRolls(10, 10, 10);
+
+        expect(game.runningScores()).toEqual([9, 9, 9, 9, 9, 9, 9, 9, 9, 30]);
+      });
+
+      it('returns  30, 30, 30, 30, 30, 30, 30, 30, 30, 30 when you play a perfect game', () => {
+        for (let i = 0; i < 12; i += 1) { game.play(10); }
+
+        expect(game.runningScores()).toEqual([30, 30, 30, 30, 30, 30, 30, 30, 30, 30]);
+      });
+
+      it('returns 30, 30, 30, 30, 30, 30, 30, 30, 20, 10 when you play a perfect game, but gutter the last two', () => {
+        for (let i = 0; i < 10; i += 1) { game.play(10); }
+        game.play(0);
+        game.play(0);
+
+        expect(game.runningScores()).toEqual([30, 30, 30, 30, 30, 30, 30, 30, 20, 10]);
+      });
+    });
+  });
 });

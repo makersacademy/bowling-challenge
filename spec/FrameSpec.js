@@ -41,5 +41,13 @@ describe('Frame', () => {
         expect(frame.wasSpare).toBe(true);
       });
     });
+
+    describe('scoring a strike', () => {
+      it('it records a strike', () => {
+        frame.bowl(10);
+
+        expect(frame.wasStrike).toBe(true);
+      });
+    });
   });
 });

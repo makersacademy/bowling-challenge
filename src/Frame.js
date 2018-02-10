@@ -13,6 +13,8 @@ class Frame {
       this.recordRoll(pins);
       if (this.rolls[1] + this.rolls[2] === 10) {
         this.wasSpare = true;
+      } else if (this.rolls[1] === 10) {
+        this.wasStrike = true;
       }
     }
   }

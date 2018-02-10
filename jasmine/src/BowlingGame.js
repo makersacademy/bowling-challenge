@@ -46,8 +46,8 @@ BowlingGame.prototype.finalScore = function () {
 });
 total.forEach(function(num){
   sum += num;
-});
 
+});
 
 var indexStrike = this.scoreArrayIndexStrike;
 var totalStrikes = [];
@@ -62,8 +62,6 @@ indexStrike.forEach(function(index){
 totalStrikes.forEach(function(num){
 sumStrikes += num;
 });
-
-
 
 this.scoreFinal = this.scoreTotal + sum + sumStrikes;
 

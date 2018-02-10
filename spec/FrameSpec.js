@@ -14,5 +14,11 @@ describe('Frame', () => {
 
       expect(frame.rolls).toEqual({ 1: 5, 2: 4 });
     });
+
+    it('knows how many bowl attempts have been made', () => {
+      frame.bowl(5);
+
+      expect(frame.bowlAttempts).toEqual(1);
+    });
   });
 });

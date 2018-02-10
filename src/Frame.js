@@ -1,12 +1,12 @@
 class Frame {
   constructor() {
-    this.attempt = 1;
+    this.bowlAttempts = 0;
     this.rolls = { 1: null, 2: null };
   }
 
   bowl(pins) {
-    this.rolls[this.attempt] = pins;
-    this.attempt += 1;
+    this.bowlAttempts += 1;
+    this.rolls[this.bowlAttempts] = pins;
   }
 }
 

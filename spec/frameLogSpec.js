@@ -58,12 +58,12 @@ describe('FrameLog',function(){
       expect(function(){ framelog.addRoll(1)}).toThrow("Frame set is complete - no more roll's allowed")
     })
   })
-
-  describe('isPreviousFrameStrike',function(){
-    beforeEach(function(){
-      frame.createFrame.and.returnValue(frame)
-    })
   // 
+  // describe('isPreviousFrameStrike',function(){
+  //   beforeEach(function(){
+  //     frame.createFrame.and.returnValue(frame)
+  //   })
+  //
   //   it('calls and returns isStrike function for previous frame',function(){
   //     frame.isStrike.and.returnValue(true)
   //     framelog.addRoll(10)

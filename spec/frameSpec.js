@@ -57,14 +57,18 @@ describe('Frame',function() {
   })
 
   describe('addRoll', function(){
+    it('will throw error and not add roll if equal more than MAX_SCORE, unless final frame', function(){
+      frame.addRoll(MAX_SCORE)
+      expect(function(){ frame.addRoll(MAX_SCORE)}).toThrow("Roll exceeds max pins")
+    })
     it('sets firstRoll to equal amount of pins knocked down',function(){
       frame.addRoll(4)
       expect(frame.rolls[0]).toEqual(4)
     })
     it('sets secondRoll to equal amount of pins knocked down',function(){
       frame.addRoll(6)
-      frame.addRoll(6)
-      expect(frame.rolls[1]).toEqual(6)
+      frame.addRoll(4)
+      expect(frame.rolls[1]).toEqual(4)
     })
   })
   describe('isStrike',function(){

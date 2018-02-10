@@ -27,7 +27,7 @@ FrameLog.prototype.addRoll = function(rollScore){
 FrameLog.prototype.frameCount = function(){
   return this.frames.length
 }
-// 
+//
 // FrameLog.prototype.isPreviousFrameStrike = function(){
 //   return this.frames[this.frames.length-2].isStrike()
 // }
@@ -52,8 +52,7 @@ FrameLog.prototype._frameScores = function(){
 }
 
 FrameLog.prototype.calculateScore = function(){
-  if(this.frameCount() === 0) return 0
-  return this._frameScores().reduce((total,amount) => total + amount)
+  return this._frameScores().reduce((total,amount) => total + amount,0)
 }
 
 // each frame holds three rolls for scoring then can add logic to work out if need all three

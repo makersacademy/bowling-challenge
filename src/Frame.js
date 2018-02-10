@@ -12,6 +12,7 @@ Frame.createFrame = function(finalFrame) {
 }
 
 Frame.prototype.addRoll = function(pins){
+  if(this._isAboveMaxScore(pins) && !this.isFinalFrame ) throw "Roll exceeds max pins"
   this.rolls.push(pins)
 }
 
@@ -24,7 +25,11 @@ Frame.prototype.isSpare = function(){
 }
 
 Frame.prototype.score = function(){
-  return this.rolls.reduce((total, roll) => total + roll)
+  return this.rolls.reduce((total, roll) => total + roll,0)
+}
+
+Frame.prototype._isAboveMaxScore = function(pins){
+  return this.score() + pins > MAX_SCORE
 }
 
 Frame.prototype.isComplete = function(){

@@ -1,23 +1,30 @@
 describe("Game", function() {
   var game;
 
-  beforeEach(function() {
-    game = new Game();
-    game.start(10);
-  });
+  describe("general game behaviour", function() {
+    beforeEach(function() {
+      game = new Game();
+      game.start(10);
+    });
 
-  it("has 10 empty frames when the game starts", function() {
-    expect(game.frames.length).toEqual(10);
-  });
+    it("has 10 empty frames when the game starts", function() {
+      expect(game.frames.length).toEqual(10);
+    });
 
-  it("has a running total", function() {
-    game.roll(1,1,3);
-    game.roll(1,2,4);
-    game.calculateTotal();
-    expect(game.runningTotal).toEqual(7)
+    it("has a running total", function() {
+      game.roll(1,1,3);
+      game.roll(1,2,4);
+      game.calculateTotal();
+      expect(game.runningTotal).toEqual(7)
+    });
   });
 
   describe("enters bowl scores", function() {
+    beforeEach(function() {
+      game = new Game();
+      game.start(10);
+    });
+
     it("enters a first bowl into a frame", function() {
       game.roll(1,1,3);
       expect(game.frames[0].bowls).toEqual([3])
@@ -31,6 +38,11 @@ describe("Game", function() {
   });
 
   describe("spare", function() {
+    beforeEach(function() {
+      game = new Game();
+      game.start(10);
+    });
+
     it("adds the next roll to the previous frame score", function() {
       game.roll(1,1,7);
       game.roll(1,2,3);
@@ -50,6 +62,11 @@ describe("Game", function() {
   });
 
   describe("strike", function() {
+    beforeEach(function() {
+      game = new Game();
+      game.start(10);
+    });
+
     it("adds the next two rolls to the previous frame score", function() {
       game.roll(1,1,10);
       game.roll(2,1,1);

@@ -8,67 +8,112 @@ describe('Game feature', () => {
   let frame;
 
   beforeEach(() => {
-    frame = Frame
+    frame = Frame;
     game = new Game(frame);
   });
+
+  function chainOfRolls(...rolls) {
+    rolls.forEach((roll) => {
+      game.play(roll);
+    });
+  }
 
   describe('Initialise', () => {
     it('initialises with 10 frames', () => {
       expect(game.board.length).toEqual(10);
     });
-  })
+  });
 
   describe('Score', () => {
-    it('returns 90 when give 7, 2 10 times', () => {
-      let rolls = []
-      for(let i = 0; i < 10; i += 1) {rolls.push(7,2)}
-      game.play(rolls);
 
-      expect(game.score()).toEqual(90);
-    })
+    describe('One continous game which is incomplete', () => {
+      describe('Running score', () => {
+        it('returns 9 when given 7, 2', () => {
+          chainOfRolls(7, 2);
 
-    it('returns 94 when give 7, 2 9 times and you finish with a  spare and 3', () => {
-      let rolls = []
-      for(let i = 0; i < 9; i += 1) {rolls.push(7,2)}
-      rolls.push(8,2,3)
-      game.play(rolls);
+          expect(game.score()).toEqual(9);
+        });
 
-      expect(game.score()).toEqual(94);
-    })
+        it('returns 14 after 1.5 frames with no strikes or spares', () => {
+          chainOfRolls(7, 2, 6);
 
-    it('returns 121 when give 7, 2 9 times and you finish with a turkey', () => {
-      let rolls = []
-      for(let i = 0; i < 9; i += 1) {rolls.push(7,2)}
-      rolls.push(10,10,10)
-      game.play(rolls);
+          expect(game.score()).toEqual(15);
+        });
 
-      expect(game.score()).toEqual(111);
-    })
+        it('returns 19 after 6 frames with two gutter balls ', () => {
+          const rolls = [3, 5, 1, 2, 1, 0, 3, 4, 0, 8, 1, 1];
+          game.play(rolls);
 
-    it('returns 100 when get a  strike, then 7, 2', () => {
-      let rolls = []
-      rolls.push(10);
-      for(let i = 0; i < 9; i += 1) {rolls.push(7,2)}
+          expect(game.score()).toEqual(29);
+        });
 
-      game.play(rolls);
+        it('returns 47 after 7 frames with a strike at the start', () => {
+          const rolls = [10, 3, 5, 1, 2, 1, 0, 3, 4, 0, 8, 1, 1];
+          game.play(rolls);
 
-      expect(game.score()).toEqual(100);
-    })
+          expect(game.score()).toEqual(47);
+        });
 
-    it('returns 300 when you play a perfect game', () => {
-      let rolls = []
-      for(let i = 0; i < 12; i += 1) {rolls.push(10)}
-      game.play(rolls);
-      expect(game.score()).toEqual(300);
-    })
+        it('returns 42 after 7 frames with a spare at the start', () => {
+          const rolls = [7, 3, 3, 5, 1, 2, 1, 0, 3, 4, 0, 8, 1, 1];
+          game.play(rolls);
 
-    it('returns 270 when you play a perfect game, but gutter the last two', () => {
-      let rolls = []
-      for(let i = 0; i < 10; i += 1) {rolls.push(10)}
-      rolls.push(0,0)
-      game.play(rolls);
-      expect(game.score()).toEqual(270);
-    })
+          expect(game.score()).toEqual(42);
+        });
+      });
+    });
 
-  })
-});
+    describe('Full game works', () => {
+      it('returns 90 when give 7, 2 10 times', () => {
+        const rolls = [];
+        for(let i = 0; i < 10; i += 1) {game.play(7,2)}
+
+        expect(game.score()).toEqual(90);
+      })
+
+      it('returns 94 when give 7, 2 9 times and you finish with a  spare and 3', () => {
+        const rolls = []
+        for(let i = 0; i < 9; i += 1) {rolls.push(7,2)}
+        rolls.push(8,2,3)
+        game.play(rolls);
+
+        expect(game.score()).toEqual(94);
+      })
+
+      it('returns 121 when give 7, 2 9 times and you finish with a turkey', () => {
+        const rolls = []
+        for(let i = 0; i < 9; i += 1) {rolls.push(7,2)}
+        rolls.push(10,10,10)
+        game.play(rolls);
+
+        expect(game.score()).toEqual(111);
+      })
+
+      it('returns 100 when get a  strike, then 7, 2', () => {
+        const rolls = []
+        rolls.push(10);
+        for(let i = 0; i < 9; i += 1) {rolls.push(7,2)}
+
+        game.play(rolls);
+
+        expect(game.score()).toEqual(100);
+      })
+
+      it('returns 300 when you play a perfect game', () => {
+        const rolls = []
+        for(let i = 0; i < 12; i += 1) {rolls.push(10)}
+        game.play(rolls);
+
+        expect(game.score()).toEqual(300);
+      })
+
+      it('returns 270 when you play a perfect game, but gutter the last two', () => {
+        const rolls = []
+        for(let i = 0; i < 10; i += 1) {rolls.push(10)}
+        rolls.push(0,0)
+        game.play(rolls);
+
+        expect(game.score()).toEqual(270);})
+        });
+    });
+  });

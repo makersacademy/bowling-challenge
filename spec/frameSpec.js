@@ -75,12 +75,15 @@ describe('Frame', () => {
       expect(frame.isFinished()).toBe(true);
     });
   });
+
+  describe('card', () => {
+    it('should show the first two rolls of a non-spare/strike set', () => {
+      chainOfRolls(2, 7);
+
+      expect(frame.card()).toEqual([2, 7]);
+    });
+  });
 });
-
-
-
-
-
 
 describe('StrikeRound', () => {
   let finalFrame;

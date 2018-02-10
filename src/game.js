@@ -34,6 +34,12 @@ class Game {
   score() {
     return this.board.reduce((a, b) => a + b.score(), 0);
   }
+
+  runningScores() {
+    const results = [];
+    this.board.forEach((frame) => { results.push(frame.score()); });
+    return results;
+  }
 }
 
 module.exports = Game;

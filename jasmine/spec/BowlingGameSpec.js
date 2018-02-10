@@ -4,29 +4,22 @@ describe('BowlingGame', function (){
     it('have a total when rolls', function() {
       game = new BowlingGame();
       game.roll(2,3);
-      game.score();
       expect(game.scoreTotal).toEqual(5);
     });
 
     it('score when hits pins', function() {
       game = new BowlingGame();
       game.roll(2,5);
-      game.score();
       expect(game.scoreTotal).toEqual(7);
     });
 
     it('see the final score with spare', function(){
       game = new BowlingGame();
       game.roll(5,5);
-      game.score();
       game.roll(1,2);
-      game.score();
       game.roll(5,5);
-      game.score();
       game.roll(3,4);
-      game.score();
       game.roll(2,5);
-      game.score();
       game.finalScore();
       expect(game.scoreFinal).toEqual(41);
     });
@@ -34,15 +27,10 @@ describe('BowlingGame', function (){
     it('see the final score with spare and strike', function(){
       game = new BowlingGame();
       game.roll(5,5);
-      game.score();
       game.roll(1,2);
-      game.score();
       game.roll(10,0);
-      game.score();
       game.roll(3,4);
-      game.score();
       game.roll(2,5);
-      game.score();
       game.finalScore();
       expect(game.scoreFinal).toEqual(45);
     });
@@ -50,7 +38,6 @@ describe('BowlingGame', function (){
     it('see they have a Gutter Game', function(){
       game = new BowlingGame();
       game.roll(0,0);
-      game.score();
       current = game.scoreArray.length = 10;
       expect(current).toEqual(10);
       expect(game.scoreTotal).toEqual(0);
@@ -69,7 +56,6 @@ describe('BowlingGame', function (){
     it('check the set of pins are added to the score array', function() {
       game = new BowlingGame();
       game.roll(2,3);
-      game.score();
       expect(game.scoreArray.length).toEqual(2);
     });
   });

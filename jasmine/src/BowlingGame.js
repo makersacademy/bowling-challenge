@@ -16,6 +16,8 @@ BowlingGame.prototype.roll = function (pins1, pins2) {
   total = pins1 + pins2;
   this.currentRollNumber += 2;
   this.frameNumber += 1;
+  this.score();
+
   if (total === 10 && pins2 !== 0) {
     return this._isSpare();
   }

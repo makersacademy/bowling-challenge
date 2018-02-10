@@ -7,7 +7,7 @@ $(document).ready(function(){
     $("#totalScore").text(0)
     for(var i = 0; i < FRAME_LIMIT; i ++){
       $(`#f${i+1}`).text(0)
-    }
+    };
   })
 
   function updateScores(){
@@ -15,8 +15,18 @@ $(document).ready(function(){
       for(var i = 0; i < game.frameCount(); i ++){
         $(`#f${i+1}`).text(game.frames[i].score())
       }
-  }
+      updateRolls()
+    }
+    function updateRolls(){
+      for(var i = 0; i < game.frameCount(); i ++){
+        $(`#f${i+1}rolls`).text(game.frames[i].rolls.toString())
+      }
+    }
 
+  $("#0-pin").click(function(event){
+    game.addRoll(0)
+    updateScores()
+  })
   $("#1-pin").click(function(event){
     game.addRoll(1)
     updateScores()

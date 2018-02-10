@@ -1,0 +1,76 @@
+html {
+  background: linear-gradient(#00CCFF, #0099FF) no-repeat fixed;
+  background-image: url(https://static.pexels.com/photos/4192/sport-alley-ball-game.jpg);
+  background-repeat: center;
+  background-attachment: fixed;
+  background-size: cover;
+  text-shadow: 1px 1px #000000;
+  font-family: Palatino, Arial;
+  color: white;
+}
+
+h1{
+  font-size: 65px;
+  text-align: center;
+  text-shadow: 3px 3px black;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+h1#score{
+  font-size: 55px;
+}
+table, th, td {
+    border: 1px solid white;
+    background: rgba(255, 255, 255, 0.5);
+    font-size: 20px;
+}
+
+table {
+  border-spacing: 5px;
+}
+th#framescore{
+  font-size: 25px;
+  letter-spacing: 20px;
+  font-weight: 900;
+  text-shadow: 2px 2px #000000;
+}
+th,td {
+  padding: 20px;
+  text-align: center;
+}
+
+th{
+  background-color: red;
+}
+
+td{
+  color: red;
+  font-size: 25px;
+}
+
+button {
+      background-image: url(https://i.imgur.com/uErl6XS.png);
+      background-repeat: no-repeat;
+      background-size: 127%;
+      background-position: 90% 60%;
+      padding: 30px;
+      font-weight: bold;
+      border: 1px solid black;
+      border-radius: 50%;
+      font-size: 20px;
+      display: inline-block;
+      margin: 4px 25px;
+    }
+button#new-game{
+      background-image: url(http://weknowyourdreams.com/images/bowling/bowling-07.jpg);
+      width: 278px;
+      height: 111px;
+      background-size: 45%;
+      background-position: 50% 20%;
+      letter-spacing: 5px;
+      color: red;
+      text-shadow: 2px 2px #000000;
+      font-size: 30px;
+      margin-left: 40%;
+      margin-right: 40%
+}

@@ -1,6 +1,9 @@
 $(document).ready(function() {
-  var match = new Match(Frame);
+  var match;
 
+  new_match();
+
+  $('#score0').on('click', function() { play(0); })
   $('#score1').on('click', function() { play(1); })
   $('#score2').on('click', function() { play(2); })
   $('#score3').on('click', function() { play(3); })
@@ -11,9 +14,44 @@ $(document).ready(function() {
   $('#score8').on('click', function() { play(8); })
   $('#score9').on('click', function() { play(9); })
   $('#score10').on('click', function() { play(10); })
+  $('#newGame').on('click', function() {new_match()})
+
+  function hide_buttons() {
+    for ( i=1; i<=10; i++ ) {
+      if (i <= match.pinsRemaining() || match.currentFrame().isComplete()) {
+        $('#score' + i).fadeIn();
+      } else {
+        $('#score' + i).fadeOut();
+      }
+    }
+  }
+
+  function match_over() {
+    for ( i=0; i<=10; i++ ) { $('#score' + i).hide(); }
+    $('#message').text("Match over!");
+    $('#newGame').show();
+  }
+
+  function clear_scores() {
+    for ( i=1; i<=10; i++) {
+      $('#game' + i + ' #ball1').text('')
+      $('#game' + i + ' #ball2').text('')
+      if ( i == 10 ) { $('#game' + i + ' #ball3').text('')}
+      $('#game' + i + ' #score').text('')
+    }
+  }
+
+  function new_match() {
+    for ( i=0; i<=10; i++ ) {$('#score' + i).fadeIn();}
+    match = new Match(Frame);
+    $('#message').text("");
+    $('#newGame').hide();
+    clear_scores();
+  }
 
   function play(score) {
     match.play(score);
+    hide_buttons();
     $('#match_score').text(match.score());
     current_frame = match.currentFrameNumber();
 
@@ -31,8 +69,8 @@ $(document).ready(function() {
     if ( current_frame == 10 ) {
       $('#game10 #ball3').text(match.thirdBall())
     }
-
-
+    if (match.matchComplete()) {
+      match_over()
+    }
   }
-
 })

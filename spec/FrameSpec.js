@@ -148,6 +148,64 @@ describe("Frame", function() {
     });
   });
 
+  describe("Pins remaining", function() {
+
+    beforeEach(function() {
+      frame = new Frame();
+    });
+
+    it("should be 10 before play starts", function() {
+      expect(frame.pinsRemaining()).toEqual(10);
+    });
+
+    it("should be 5 if 5 already down", function() {
+      frame.play(5);
+      expect(frame.pinsRemaining()).toEqual(5);
+    });
+
+    it("should be 0 for a spare", function() {
+      frame.play(5);
+      frame.play(5);
+      expect(frame.pinsRemaining()).toEqual(0);
+    });
+
+    it("should be 0 for a strike", function() {
+      frame.play(10);
+      expect(frame.pinsRemaining()).toEqual(0);
+    });
+
+    it("should be 10 remaining on each ball in last frame if 3 strikes", function() {
+      lastFrame = new Frame(true);
+      expect(lastFrame.pinsRemaining()).toEqual(10);
+      lastFrame.play(10);
+      expect(lastFrame.pinsRemaining()).toEqual(10);
+      lastFrame.play(10);
+      expect(lastFrame.pinsRemaining()).toEqual(10);
+      lastFrame.play(10);
+      expect(lastFrame.pinsRemaining()).toEqual(0);
+    });
+
+    it("should be calculate remaining on each ball in last frame if a spare", function() {
+      lastFrame = new Frame(true);
+      expect(lastFrame.pinsRemaining()).toEqual(10);
+      lastFrame.play(5);
+      expect(lastFrame.pinsRemaining()).toEqual(5);
+      lastFrame.play(5);
+      expect(lastFrame.pinsRemaining()).toEqual(10);
+      lastFrame.play(5);
+      expect(lastFrame.pinsRemaining()).toEqual(0);
+    });
+
+    it("should be calculate remaining on each ball in last frame if 10 don't go down", function() {
+      lastFrame = new Frame(true);
+      expect(lastFrame.pinsRemaining()).toEqual(10);
+      lastFrame.play(5);
+      expect(lastFrame.pinsRemaining()).toEqual(5);
+      lastFrame.play(4);
+      expect(lastFrame.pinsRemaining()).toEqual(0);
+    });
+  });
+
   describe("Validation - game complete", function() {
 
     it("should not allow three balls", function() {

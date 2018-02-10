@@ -19,9 +19,16 @@ Frame.prototype.thirdBall = function() {
   }
 };
 
+Frame.prototype.pinsRemaining = function() {
+  if      (this.isComplete() )        { return  0; }
+  else if (this._thirdball )          { return 10; }
+  else if (this._ballsRemaining == 2) { return 10; }
+  else if (this._ballsRemaining == 1) { return 10 - this.ball1; }
+};
+
 Frame.prototype.lastFrame = function() {
   return this._lastFrame;
-};
+}
 
 Frame.prototype.score = function() {
   return this._score;

@@ -7,6 +7,14 @@ function Match(frameClass) {
   this._matchComplete = false
 };
 
+Match.prototype.matchComplete = function() {
+  return this._matchComplete;
+}
+
+Match.prototype.pinsRemaining = function() {
+  return this._frames[this._currentFrame].pinsRemaining();
+}
+
 Match.prototype._lastFrame = function() {
   return (this._currentFrame+1 >= this._NOOFFRAMES ? true : false );
 }

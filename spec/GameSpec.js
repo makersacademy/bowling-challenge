@@ -24,7 +24,7 @@ describe('Game', () => {
     it('starts a new frame', () => {
       game.startFrame();
 
-      expect(game.currentFrame).toEqual(new Frame(new Rules()));
+      expect(game.currentFrame).toEqual(new Frame(Rules));
     });
 
     it('increments frame counter', () => {
@@ -43,11 +43,20 @@ describe('Game', () => {
   describe('#finishFrame', () => {
     beforeEach(() => {
       game.startFrame();
-      game.finishFrame();
     });
 
     it('finishes a frame', () => {
+      game.finishFrame();
+
       expect(game.history.size).toEqual(1);
+    });
+
+    it('updates the running total', () => {
+      game.currentFrame.bowl(5);
+      game.currentFrame.bowl(5);
+      game.finishFrame();
+
+      expect(game.runningTotal).toEqual(10);
     });
   });
 });

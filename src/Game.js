@@ -4,7 +4,8 @@ class Game {
     this.frameNumber = 0;
     this.history = new FrameHistory();
     this.FrameObject = Frame;
-    this.RulesObject = new Rules();
+    this.RulesObject = Rules;
+    this.runningTotal = 0;
   }
 
   startFrame() {
@@ -18,6 +19,11 @@ class Game {
 
   finishFrame() {
     this.history.add(this.currentFrame);
+    this.computeRunningTotal();
+  }
+
+  computeRunningTotal() {
+    this.runningTotal += this.currentFrame.baseScore;
   }
 }
 

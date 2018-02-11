@@ -40,6 +40,12 @@ class Game {
     this.board.forEach((frame) => { results.push(frame.score()); });
     return results;
   }
+
+  view() {
+    const views = [];
+    this.board.forEach((frame) => { views.push(frame.view()); });
+    return views;
+  }
 }
 
 module.exports = Game;

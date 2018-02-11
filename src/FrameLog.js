@@ -6,10 +6,6 @@ function FrameLog (frameClass = Frame) {
   this.bonusRoll = 0
 }
 
-FrameLog.createFrameLog = function(){
-  return new FrameLog()
-}
-
 FrameLog.prototype.currentFrame = function(){
   return this.frames.slice(-1)[0]
 }

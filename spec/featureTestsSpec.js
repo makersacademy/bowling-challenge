@@ -16,6 +16,7 @@ describe('Feature Test:', function(){
     expect(game.frameCount()).toEqual(2)
     expect(game.frames[1].score()).toEqual(10)
   })
+  
   it('will not allow a player to add more than max score for frame', function(){
     game.addRoll(8)
     expect(function(){game.addRoll(3)}).toThrow("Roll exceeds max pins")

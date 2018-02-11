@@ -2,6 +2,10 @@ function Frame() {
     this.rolls = [];
 }
 
+Frame.prototype.toString = function() {
+    return "[" + this.rolls.toString() + "]";
+};
+
 Frame.prototype.rollValues = function() {
     return this.rolls;
 };

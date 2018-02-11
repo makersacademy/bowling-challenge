@@ -15,6 +15,10 @@ Bowling.prototype.gameScore = function() {
     return total;
 };
 
+Bowling.prototype.toString = function() {
+    return this.frames.join(" , ");
+};
+
 Bowling.prototype._windowScore = function(currentFrame, nextFrame, nextToNextFrame) {
     var total = currentFrame.frameScore();
 
@@ -43,10 +47,22 @@ Bowling.prototype.framesArray = function() {
     return this.frames;
 };
 
+/**
+ * Update the bowling game with the number of pins rolled. Return true if
+ * the pins were added successfully else return false.
+ * 
+ * @param {Number} pins The number of pins rolled
+ */
 Bowling.prototype.roll = function(pins) {
+    if (this.frames.length === 10 && this.frame.isDone()) {
+        return false;
+    }
     this.frame.addRoll(pins);
     if (this.frame.isDone()) {
         this.frames.push(this.frame);
-        this.frame = new Frame();
+        if (this.frames.length !== 10) {
+            this.frame = new Frame();
+        }
     }
+    return true;
 };

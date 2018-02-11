@@ -7,7 +7,7 @@ describe('Game', () => {
   let game;
 
   beforeEach(() => {
-    game = new Game(FrameHistory);
+    game = new Game(FrameHistory, Frame, Rules);
   });
 
   describe('initially', () => {
@@ -17,6 +17,14 @@ describe('Game', () => {
 
     it('has an empty game history', () => {
       expect(game.history).toEqual(new FrameHistory());
+    });
+  });
+
+  describe('#startFrame', () => {
+    it('starts a new frame', () => {
+      game.startFrame();
+
+      expect(game.currentFrame).toEqual(new Frame(new Rules()));
     });
   });
 });

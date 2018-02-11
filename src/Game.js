@@ -2,8 +2,12 @@ class Game {
   constructor(FrameHistory, Frame, Rules) {
     this.maxFrames = 10;
     this.history = new FrameHistory();
-    this.frameObject = Frame;
-    this.rulesObject = Rules;
+    this.FrameObject = Frame;
+    this.RulesObject = new Rules();
+  }
+
+  startFrame() {
+    this.currentFrame = new this.FrameObject(this.RulesObject);
   }
 }
 

@@ -4,17 +4,23 @@ describe('Frame', () => {
   let frame;
 
   beforeEach(() => {
-    frame = new Frame();
+    const rules = jasmine.createSpyObj('rules', {
+      maxFrameLength: 2,
+      isSpare: false,
+      isStrike: false,
+    });
+    frame = new Frame(rules);
   });
 
   describe('#bowl', () => {
     describe('guard conditions for rules', () => {
       it('cannot record more bowls than the max frame length', () => {
-        for (let i = 0; i < frame.maxFrameLength; i += 1) {
+        const maxRolls = frame.rules.maxFrameLength();
+        for (let i = 0; i < maxRolls; i += 1) {
           frame.bowl(0);
         }
 
-        expect(() => { frame.bowl(0); }).toThrowError(`Cannot have more than ${frame.maxFrameLength}`);
+        expect(() => { frame.bowl(0); }).toThrowError(`Cannot have more than ${maxRolls} rolls`);
       });
     });
 
@@ -38,11 +44,11 @@ describe('Frame', () => {
     });
 
     describe('scoring a spare', () => {
-      it('it records a spare', () => {
+      it('knows if the frame had a spare', () => {
         frame.bowl(5);
         frame.bowl(5);
 
-        expect(frame.isASpareFrame).toBe(true);
+        expect(frame.isASpareFrame).toBeBoolean();
       });
     });
 
@@ -51,11 +57,13 @@ describe('Frame', () => {
         frame.bowl(10);
       });
 
-      it('it records a strike', () => {
-        expect(frame.isAStrikeFrame).toBe(true);
+      it('knows if the frame had a strike', () => {
+        expect(frame.isAStrikeFrame).toBeBoolean();
       });
 
       it('does not let you roll again after a strike', () => {
+        frame.isAStrikeFrame = true;
+
         expect(() => { frame.bowl(0); }).toThrowError('Cannot have second go after a strike');
       });
     });

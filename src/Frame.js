@@ -1,6 +1,6 @@
 class Frame {
-  constructor() {
-    this.maxFrameLength = 2;
+  constructor(rulesObject) {
+    this.rules = rulesObject;
     this.bowlAttempts = 0;
     this.rolls = {};
   }
@@ -19,14 +19,14 @@ class Frame {
 
   recordTurn() {
     if (this.exceedsTurns()) {
-      throw Error(`Cannot have more than ${this.maxFrameLength}`);
+      throw Error(`Cannot have more than ${this.rules.maxFrameLength()} rolls`);
     } else {
       this.bowlAttempts += 1;
     }
   }
 
   exceedsTurns() {
-    return this.bowlAttempts >= this.maxFrameLength;
+    return this.bowlAttempts >= this.rules.maxFrameLength();
   }
 
   recordRoll(pins) {
@@ -39,8 +39,8 @@ class Frame {
 
   recordScore() {
     this.baseScore = this.calculateScore();
-    this.isASpareFrame = this.isSpare();
-    this.isAStrikeFrame = this.isStrike();
+    this.isASpareFrame = this.rules.isSpare(this.rolls);
+    this.isAStrikeFrame = this.rules.isStrike(this.rolls);
   }
 
   calculateScore() {
@@ -48,12 +48,8 @@ class Frame {
     return rolls.reduce((a, b) => a + b);
   }
 
-  isSpare() {
-    return this.rolls[1] + this.rolls[2] === 10;
-  }
-
-  isStrike() {
-    return this.rolls[1] === 10;
+  roll(number) {
+    return this.rolls[number];
   }
 }
 

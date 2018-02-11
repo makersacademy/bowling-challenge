@@ -1,5 +1,6 @@
 function Frame() {
   this.bowls = []
+  this.isRoll = 1
   this.isSpare = false
   this.isStrike = false
 };
@@ -11,6 +12,9 @@ Frame.prototype.enterRoll = function(pins) {
     this.isStrike = true
   } else if (this.total === 10) {
     this.isSpare = true
+  }
+  if (this.isRoll === 1) {
+    this.isRoll = 2
   }
 };
 

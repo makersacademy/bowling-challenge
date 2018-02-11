@@ -11,6 +11,16 @@ describe("Game", function() {
       expect(game.frames.length).toEqual(10);
     });
 
+    // it("knows to enter into first frame", function() {
+    //   game.roll(1,1,3);
+    //   expect(game.frames[0].bowls[0]).toEqual(3);
+    // });
+
+    // it("knows it is the first roll", function() {
+    //   game.roll(1,1,3);
+    //   expect(game.frames[0].isFirstRoll).toEqual(true);
+    // });
+
     it("has a running total", function() {
       game.roll(1,1,3);
       game.roll(1,2,4);
@@ -20,7 +30,6 @@ describe("Game", function() {
 
     it("cannot add a roll if it takes the total over 10", function() {
       game.roll(1,1,3);
-      // console.log(game.frames[0].bowls)
       expect( function() { game.roll(1,2,9) } ).toThrow('not enough pins!');
     });
   });

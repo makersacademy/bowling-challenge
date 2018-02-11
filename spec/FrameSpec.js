@@ -5,6 +5,15 @@ describe("Frame", function() {
     frame = new Frame();
   });
 
+  it("knows it is the first roll", function() {
+    expect(frame.isRoll).toEqual(1);
+  });
+
+  it("knows it is the second roll", function() {
+    frame.enterRoll(3);
+    expect(frame.isRoll).toEqual(2);
+  });
+
   describe("enters bowl scores", function() {
     it("enters a first bowl into a frame", function() {
       frame.enterRoll(3);

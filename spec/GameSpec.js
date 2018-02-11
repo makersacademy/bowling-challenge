@@ -26,6 +26,12 @@ describe('Game', () => {
 
       expect(game.currentFrame).toEqual(new Frame(new Rules()));
     });
+
+    it('will not start a new frame if it is final frame', () => {
+      game.frameNumber = game.maxFrames - 1;
+
+      expect(() => { game.startFrame(); }).toThrowError('Need to start final frame');
+    });
   });
 
   describe('#finishFrame', () => {

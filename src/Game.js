@@ -8,8 +8,12 @@ class Game {
   }
 
   startFrame() {
-    this.currentFrame = new this.FrameObject(this.RulesObject);
-    this.frameNumber += 1;
+    if (this.maxFrames - 1 === this.frameNumber) {
+      throw Error('Need to start final frame');
+    } else {
+      this.currentFrame = new this.FrameObject(this.RulesObject);
+      this.frameNumber += 1;
+    }
   }
 
   finishFrame() {

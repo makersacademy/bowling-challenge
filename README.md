@@ -19,7 +19,7 @@ Some of the front end design for the table has been inspired by another repo. I 
 
 ## How to use this app
 
-* git clone this repository in your terminal like this;
+* git clone this repository in your terminal like so;
 
 ```
 $ git clone https://github.com/bpourian/bowling-challenge.git

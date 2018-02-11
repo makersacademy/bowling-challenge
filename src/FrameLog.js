@@ -20,15 +20,19 @@ FrameLog.prototype.addRoll = function(rollScore){
     let frame = this.frameClass.createFrame(this._isFinalFrame())
     frame.addRoll(rollScore)
     this.frames.push(frame)
-    this._addBonusScores(rollScore)
   } else {
     this.currentFrame().addRoll(rollScore)
-    this._addBonusScores(rollScore)
   }
+  this._addBonusScores(rollScore)
+  if (this.frameCount() === FRAME_LIMIT) this.bonusRoll++
 }
 
 FrameLog.prototype.frameCount = function(){
   return this.frames.length
+}
+
+FrameLog.prototype._previousFrame = function(){
+  return this.frames[this.frames.length-2]
 }
 
 FrameLog.prototype.isPreviousFrameStrike = function(){
@@ -57,19 +61,28 @@ FrameLog.prototype._frameScores = function(){
 
 FrameLog.prototype._addBonusScores = function(rollScore){
   if(this.frameCount() > 1){
-    if(this.currentFrame().isComplete() && this.isPreviousFrameStrike() && !this.currentFrame().isStrike()){
-      this.frames[this.frames.length-2].addBonusRolls(this.currentFrame().rolls[1])
-    } else if(this.isPreviousFrameSpare() || this.isPreviousFrameStrike() && this.bonusRoll < 3) {
-      if (this.frameCount() === FRAME_LIMIT)
-      this.bonusRoll++
-      this.frames[this.frames.length-2].addBonusRolls(this.currentFrame().rolls[0])
-      if (this.frameCount() === FRAME_LIMIT && this.bonusRoll > 1){
-          this.bonusRoll++
-        } else if (this.frameCount() >= 3 && this.isPreviousFrameStrike() && this.frames.slice(-3)[0].isStrike()){
+    if(this._shouldAddSecondRoll()){
+      this._previousFrame().addBonusRolls(this.currentFrame().rolls[1])
+    } else if(this._shouldAddFirstRoll()) {
+        this._previousFrame().addBonusRolls(this.currentFrame().rolls[0])
+    }
+    if (this._shouldAddConsecutiveStrikeRoll()){
         this.frames.slice(-3)[0].addBonusRolls(rollScore)
-      }
     }
   }
+}
+
+
+FrameLog.prototype._shouldAddSecondRoll = function(){
+  return this.currentFrame().isComplete() && this.isPreviousFrameStrike() && !this.currentFrame().isStrike()
+}
+
+FrameLog.prototype._shouldAddFirstRoll = function(){
+  return this.isPreviousFrameSpare() || this.isPreviousFrameStrike() && this.bonusRoll < 2
+}
+
+FrameLog.prototype._shouldAddConsecutiveStrikeRoll = function(){
+  return this.frameCount() >= 3 && this.isPreviousFrameStrike() && this.frames.slice(-3)[0].isStrike() && this.bonusRoll < 1
 }
 
 FrameLog.prototype.calculateScore = function(){

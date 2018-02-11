@@ -11,6 +11,12 @@ Game.prototype.start = function(length) {
 };
 
 Game.prototype.roll = function(pins) {
+  if (this.currentFrame===10 && this.frames[this.currentFrame-1].isRoll===3 && this.frames[this.currentFrame-1].total<10) {
+    throw "Game over!"
+  }
+  if (this.currentFrame===10 && this.frames[this.currentFrame-1].bowls.length ===3) {
+    throw "Game over!"
+  }
   if (this.frames[this.currentFrame-1].isRoll===2 && this.currentFrame<10 && (10-this.frames[this.currentFrame-1].bowls[0])<pins) {
     throw 'not enough pins!'
   }

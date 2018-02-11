@@ -33,9 +33,9 @@ describe('Game', () => {
 
   beforeEach(() => {
     boardMock = [];
-    frame = jasmine.createSpyObj('Frame', { score: 10 });
-    frameTwo = jasmine.createSpyObj('Frame', { score: 9 });
-    frameThree = jasmine.createSpyObj('Frame', { score: 0 });
+    frame = jasmine.createSpyObj('Frame', { score: 10, view: [10] });
+    frameTwo = jasmine.createSpyObj('Frame', { score: 9, view: [4, 5] });
+    frameThree = jasmine.createSpyObj('Frame', { score: 0, view: [] });
     for (let i = 0; i < 10; i += 1) { boardMock.push(frame); }
   });
 
@@ -111,8 +111,57 @@ describe('Game', () => {
       let expectedResult = [10, 9, 0, 10, 9, 0, 10, 9, 0, 10]
 
       expect(game.runningScores()).toEqual(expectedResult);
+    });
+
+    it('should return array with 5 values when there are 5 frames', () => {
+      boardMock = [];
+      boardMock.push(frame, frameTwo, frameThree, frame, frame);
+      spyOn(Game.prototype, 'setUpBoard').and.returnValue(boardMock);
+      game = new Game();
+      let expectedResult = [10, 9, 0, 10, 10];
+
+      expect(game.runningScores()).toEqual(expectedResult);
+    });
+  });
+
+  describe('views', () => {
+    it('checks the view of a frame when views is called', () => {
+      spyOn(Game.prototype, 'setUpBoard').and.returnValue(boardMock);
+      game = new Game();
+      game.view();
+
+      expect(frame.view).toHaveBeenCalledWith();
+    });
+
+    it('should return array with all the views of the frames in it', () => {
+      spyOn(Game.prototype, 'setUpBoard').and.returnValue(boardMock);
+      game = new Game();
+      let expectedResult = [[10], [10], [10], [10], [10], [10], [10], [10], [10], [10]]
+
+      expect(game.view()).toEqual(expectedResult);
     })
 
+    it('should return array with different views lengths for each frame', () => {
+      boardMock = [];
+      for (let i = 0; i < 3; i += 1) { boardMock.push(frame, frameTwo, frameThree); }
+      boardMock.push(frame);
+      spyOn(Game.prototype, 'setUpBoard').and.returnValue(boardMock);
+      game = new Game();
+      let expectedResult = [[10], [4, 5], [], [10], [4, 5], [], [10], [4, 5], [], [10]]
 
-  })
+      expect(game.view()).toEqual(expectedResult);
+    });
+
+    it('should return array with 5 views when there are 5 frames', () => {
+      boardMock = [];
+      boardMock.push(frame, frameTwo, frameThree, frame, frame);
+      spyOn(Game.prototype, 'setUpBoard').and.returnValue(boardMock);
+      game = new Game();
+      let expectedResult = [[10], [4, 5], [], [10], [10]];
+
+      expect(game.view()).toEqual(expectedResult);
+    });
+  });
+
+
 });

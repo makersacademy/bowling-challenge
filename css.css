@@ -1,0 +1,85 @@
+
+body {
+  font-size: 30px;
+  text-align: center;
+  width: 60%;
+  margin: 225px auto;
+  font-family: 'Open Sans', sans-serif;
+  background-image: url("http://www.bowlarenatenpinlounge.com/bowling-pro-shop/images/strike.png");
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+button{
+  font-size: 24px;
+}
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+
+.btn-group button {
+    background-color: black; /* #4CAF50; Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    border-radius: 36px;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.score_group {
+  width: 100%;
+  clear: both;
+  margins: auto;
+  border-collapse: separate;
+  border-spacing: 0px 0px;
+}
+.game {
+  height: 50px;
+  font-size: 18px;
+  width: 10%;
+  max-width: 10%;
+  border: 1px solid green; /* Green border */
+  float: left;
+}
+.balls {
+  clear: both;
+  border: none; */
+}
+.ball {
+  border: none; /* Green border */
+  height: 100px%;
+  margin: 0px;
+}
+.game_score {
+  border: none;
+  width: 10%;
+}
+.match_score {
+  float: left;
+}
+
+/* <p class="match_control">
+<span class="message" id="message"></span>
+<button id="newGame">New Game</button>
+<section>
+<p class="btn-group">
+<button id="score0">0</button>
+<p class="score-group">
+<div class="game" id="game10">
+<span class="ball" id="ball1"></span>
+<span class="game_score" id="score"></span>
+<h1>Score: <span id="match_score"></span></h1> */

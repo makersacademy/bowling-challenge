@@ -17,10 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const showRolls = () => {
     let collumn = 1
     game.view().forEach((result) => {
-      const view = result.map((value) => {
-        return (value === 10) ? 'x' : value
-      });
-        document.getElementById(`views${collumn}`).innerHTML = `${view.join('')}`;
+      const view = result.map(value => (value === 10) ? 'x' : value);
+      if (view[0] + view[1] === 10) { view[1] = '/'; }
+      document.getElementById(`views${collumn}`).innerHTML = `${view.join('')}`;
       collumn += 1;
     });
   };

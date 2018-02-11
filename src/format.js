@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     game.view().forEach((result) => {
       const view = result.map(value => (value === STRIKE) ? 'x' : value);
       if (view[0] + view[1] === STRIKE) { view[1] = '/'; }
+      if (view[1] + view[2] === STRIKE) { view[2] = '/'; }
       document.getElementById(`views${collumn}`).innerHTML = `${view.join('')}`;
       collumn += 1;
     });

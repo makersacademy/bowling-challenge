@@ -18,10 +18,6 @@ describe('Initialise game', () => {
   it('it stores frames in the board', () => {
     expect(game.board).toContain(frame);
   });
-
-  // it('sets the final frames max length to three', () => {
-  //   expect(game.board).toContain(frame);
-  // });  Need to test this
 });
 
 describe('Game', () => {
@@ -168,18 +164,4 @@ describe('Game', () => {
       expect(game.view()).toEqual(expectedResult);
     });
   });
-
-  // describe('play', () => {
-  //
-  //   it('should call rolls on the first frame if it is unfinished', () => {
-  //     spyOn(Game.prototype, 'setUpBoard').and.returnValue(boardMock);
-  //     game = new Game();
-  //     game.play(5)
-  //
-  //     expect(frame.roll()).toHaveBeenCalledWith();
-  //   })
-  //
-  // })
-
-
 });

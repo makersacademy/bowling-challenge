@@ -84,4 +84,23 @@ describe('Game', () => {
       expect(game.score()).toEqual(19);
     });
   });
+
+  describe('runningScores', () => {
+    it('checks the score of a frame when runningScores is called', () => {
+      spyOn(Game.prototype, 'setUpBoard').and.returnValue(boardMock);
+      game = new Game();
+      game.runningScores();
+
+      expect(frame.score).toHaveBeenCalledWith();
+    });
+
+    it('should return array with all the scores of each frame', () => {
+      spyOn(Game.prototype, 'setUpBoard').and.returnValue(boardMock);
+      game = new Game();
+      let expectedResult = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+
+      expect(game.runningScores()).toEqual(expectedResult);
+    })
+
+  })
 });

@@ -1,0 +1,39 @@
+
+body {
+  background-color: black;
+  color: red;
+}
+
+th {
+  background-color: black;
+}
+
+tr:nth-child(even) {
+    background-color: black;
+}
+
+tr:nth-child(odd) {
+   background-color: black;
+}
+
+table, th, td {
+    border: 4px solid white;
+    border-collapse: collapse;
+}
+
+table {
+  margin: 10% 10% 10% 10%;
+}
+
+th, td {
+    padding: 10px;
+}
+
+caption {
+  font-size: 20px;
+}
+
+#score {
+  margin: 0 0 0 37%;
+  font-size: 40px;
+}

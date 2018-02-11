@@ -6,6 +6,7 @@ class FrameHistory {
 
   add(frameObject) {
     if (this.size === 0) {
+      this.size = 1;
       this.first = frameObject;
     }
   }

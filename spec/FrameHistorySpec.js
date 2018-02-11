@@ -21,10 +21,16 @@ describe('FrameHistory', () => {
 
   describe('#add', () => {
     describe('when the history is empty', () => {
-      it('sets the first object to whatever is passed in', () => {
+      beforeEach(() => {
         frameHistory.add(frameObject);
+      });
 
+      it('sets the first object to whatever is passed in', () => {
         expect(frameHistory.first).toEqual(frameObject);
+      });
+
+      it('increments the size', () => {
+        expect(frameHistory.size).toEqual(1);
       });
     });
   });

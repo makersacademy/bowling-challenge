@@ -2,12 +2,90 @@
 <html>
 
 <head>
-  <title >Bowling</title>
+  <title>Bowling</title>
+  <link rel='stylesheet' type='text/css' href="public/style.css">
 </head>
 
 <body>
+  <main role="main" class="container">
+    <h2>Welcome to bowling!</h2>
+    <p>Current score: <span id="current-score"></span></p>
+    <p>How many pins hit:</p>
+    <button class='hit-pins' id="hit1">1</button>
+    <button class='hit-pins' id="hit2">2</button>
+    <button class='hit-pins' id="hit3">3</button>
+    <button class='hit-pins' id="hit4">4</button>
+    <button class='hit-pins' id="hit5">5</button>
+    <button class='hit-pins' id="hit6">6</button>
+    <button class='hit-pins' id="hit7">7</button>
+    <button class='hit-pins' id="hit8">8</button>
+    <button class='hit-pins' id="hit9">9</button>
+    <button class='hit-pins' id="hit10">10</button>
+    <br/><br/>
+
+    <table>
+
+      <tr id="frameNumber">
+        <td>Frame</td>
+        <td colspan="2">1</td>
+        <td colspan="2">2</td>
+        <td colspan="2">3</td>
+        <td colspan="2">4</td>
+        <td colspan="2">5</td>
+        <td colspan="2">6</td>
+        <td colspan="2">7</td>
+        <td colspan="2">8</td>
+        <td colspan="2">9</td>
+        <td colspan="3">10</td>
+      </tr>
+
+      <tr id="rolls">
+        <td>Rolls</td>
+        <td id="roll1"></td>
+        <td id="roll2"></td>
+        <td id="roll3"></td>
+        <td id="roll4"></td>
+        <td id="roll5"></td>
+        <td id="roll6"></td>
+        <td id="roll7"></td>
+        <td id="roll8"></td>
+        <td id="roll9"></td>
+        <td id="roll10"></td>
+        <td id="roll11"></td>
+        <td id="roll12"></td>
+        <td id="roll13"></td>
+        <td id="roll14"></td>
+        <td id="roll15"></td>
+        <td id="roll16"></td>
+        <td id="roll17"></td>
+        <td id="roll18"></td>
+        <td id="roll19"></td>
+        <td id="roll20"></td>
+        <td id="roll21"></td>
+      </tr>
+
+      <tr id="frameScore">
+        <td>Score</td>
+        <td colspan="2" id="frameScore1"></td>
+        <td colspan="2" id="frameScore2"></td>
+        <td colspan="2" id="frameScore3"></td>
+        <td colspan="2" id="frameScore4"></td>
+        <td colspan="2" id="frameScore5"></td>
+        <td colspan="2" id="frameScore6"></td>
+        <td colspan="2" id="frameScore7"></td>
+        <td colspan="2" id="frameScore8"></td>
+        <td colspan="2" id="frameScore9"></td>
+        <td colspan="3" id="frameScore10"></td>
+      </tr>
+
+    </table>
+  </main>
+
   <script src="lib/game.js"></script>
   <script src="lib/frame.js"></script>
+  <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="lib/interface.js"></script>
+
 </body>
 
 </html>

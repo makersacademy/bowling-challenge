@@ -27,4 +27,13 @@ describe('Game', () => {
       expect(game.currentFrame).toEqual(new Frame(new Rules()));
     });
   });
+
+  describe('#finishFrame', () => {
+    it('finishes a frame', () => {
+      game.startFrame();
+      game.finishFrame();
+
+      expect(game.history.size).toEqual(1);
+    });
+  });
 });

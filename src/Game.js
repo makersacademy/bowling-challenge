@@ -9,6 +9,10 @@ class Game {
   startFrame() {
     this.currentFrame = new this.FrameObject(this.RulesObject);
   }
+
+  finishFrame() {
+    this.history.add(this.currentFrame);
+  }
 }
 
 module.exports = Game;

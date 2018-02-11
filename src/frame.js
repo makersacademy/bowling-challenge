@@ -28,7 +28,7 @@ class Frame {
   }
 
   view() {
-    return this.rounds;
+    return this.rounds.slice(0, this.rulesToFollow.length);
   }
 
   // need to make private

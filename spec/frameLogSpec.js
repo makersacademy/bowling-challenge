@@ -3,7 +3,7 @@ describe('FrameLog',function(){
   var frame
 
   beforeEach(function(){
-    frame =  jasmine.createSpyObj('frame',['createFrame','addRoll','isComplete','isStrike','isSpare','score'])
+    frame =  jasmine.createSpyObj('frame',['createFrame','addRoll','isComplete','isStrike','isSpare','score','rolls','addBonusRolls'])
     framelog = new FrameLog(frame)
       frame.createFrame.and.returnValue(frame)
   })
@@ -57,36 +57,29 @@ describe('FrameLog',function(){
       }
       expect(function(){ framelog.addRoll(1)}).toThrow("Frame set is complete - no more roll's allowed")
     })
+    beforeEach(function(){
+        frame.createFrame.and.returnValue(frame)
+        frame.isComplete.and.returnValue(true);
+      })
+    it('checks if previous frame is strike and adds bonus scores if needed', function(){
+      framelog.addRoll(10)
+      framelog.addRoll(10)
+      expect(frame.isStrike).toHaveBeenCalled()
+    })
+    it('checks if previous frame is spare and adds bonus scores if needed', function(){
+      framelog.addRoll(10)
+      framelog.addRoll(10)
+      expect(frame.isSpare).toHaveBeenCalled()
+    })
+    it('adds bonus roll is isStrike or isSpare is true', function(){
+      frame.isStrike.and.returnValue(true);
+      frame.rolls.and.returnValue([10]);
+      framelog.addRoll(10)
+      framelog.addRoll(10)
+      expect(frame.addBonusRolls).toHaveBeenCalled()
+    })
   })
-  // 
-  // describe('isPreviousFrameStrike',function(){
-  //   beforeEach(function(){
-  //     frame.createFrame.and.returnValue(frame)
-  //   })
-  //
-  //   it('calls and returns isStrike function for previous frame',function(){
-  //     frame.isStrike.and.returnValue(true)
-  //     framelog.addRoll(10)
-  //     frame.isComplete.and.returnValue(true);
-  //     framelog.addRoll(0)
-  //     expect(framelog.isPreviousFrameStrike()).toEqual(true)
-  //     expect(frame.isStrike).toHaveBeenCalled()
-  //   })
-  // })
-  // describe('isPreviousFrameSpare',function(){
-  //   beforeEach(function(){
-  //     frame.createFrame.and.returnValue(frame)
-  //   })
-  //   it('call and returns isSpare function for previous frame',function(){
-  //     frame.isSpare.and.returnValue(true)
-  //     framelog.addRoll(1)
-  //     framelog.addRoll(9)
-  //     frame.isComplete.and.returnValue(true);
-  //     framelog.addRoll(0)
-  //     expect(framelog.isPreviousFrameSpare()).toEqual(true)
-  //     expect(frame.isSpare).toHaveBeenCalled()
-  //   })
-  // })
+  
   describe('isFramelogComplete',function(){
     it('returns true if frame count 10 and currentFrame is complete', function (){
       frame.isComplete.and.returnValue(true);

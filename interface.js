@@ -33,17 +33,17 @@ $(document).ready(function() {
 
   function clear_scores() {
     for ( i=1; i<=10; i++) {
-      $('#game' + i + ' #ball1').text('')
-      $('#game' + i + ' #ball2').text('')
+      $('#game' + i + ' #ball1').text('');
+      $('#game' + i + ' #ball2').text('');
       if ( i == 10 ) { $('#game' + i + ' #ball3').text('')}
-      $('#game' + i + ' #score').text('')
+      $('#game' + i + ' #score').text('');
     }
+    $('#match_score').text('');
   }
 
   function new_match() {
     for ( i=0; i<=10; i++ ) {$('#score' + i).fadeIn();}
     match = new Match(Frame);
-    $('#message').text("");
     $('#newGame').hide();
     clear_scores();
   }

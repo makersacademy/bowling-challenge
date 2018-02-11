@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const game = new Game(Frame);
+  var turn = 0;
 
   const setScore = () => {
     document.getElementById('currentScore').innerHTML = game.score();
@@ -13,7 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  const roll = (value) => { game.play(value); setScore(); showScores(); };
+  const showRolls = () => {
+    let collumn = 1
+    game.view().forEach((result) => {
+      const view = result.map((value) => {
+        return (value === 10) ? 'x' : value
+      });
+        document.getElementById(`views${collumn}`).innerHTML = `${view.join('')}`;
+      collumn += 1;
+    });
+  };
+
+  const roll = (value) => { game.play(value); setScore(); showScores(); showRolls(); };
 
   const createButtons = () => {
     for (let i = 10; i >= 0; i -= 1) {
@@ -33,18 +45,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const title = document.createElement('td');
       const frame = document.createTextNode(`frame ${i}`);
       const scoreBox = document.createElement('td');
+      const frameRolls = document.createElement('td');
       scoreBox.id = `scoreFrame${i}`;
+      frameRolls.id = `views${i}`;
       const filler = 'waiting for score';
       title.appendChild(frame);
       scoreBox.innerHTML = filler;
+      frameRolls.innerHTML = 'hi';
       document.getElementById('scorecardLabels').appendChild(title);
       document.getElementById('scoreCardScores').appendChild(scoreBox);
+      document.getElementById('frameResults').appendChild(frameRolls);
     }
   };
+
+
 
 
   setScore();
   createButtons();
   createScoreCard();
   showScores();
+  showRolls();
 });

@@ -47,6 +47,7 @@ describe('Game feature', () => {
       chainOfRolls(10, 3, 5, 1, 2, 1, 0, 3, 4, 0, 8, 1, 1);
 
       expect(game.score()).toEqual(47);
+      expect(game.runningScores()).toEqual([18, 8, 3, 1, 7, 8, 2, 0, 0, 0]);
       expect(game.view()).toEqual([[10], [3, 5], [1, 2], [1, 0], [3, 4], [0, 8], [1, 1], [], [], []]);
     });
 
@@ -61,32 +62,47 @@ describe('Game feature', () => {
 
   describe('Full game works', () => {
     it('returns 90 when give 7, 2 10 times', () => {
-      for (let i = 0; i < 10; i += 1) { game.play(7); game.play(2); }
+      let views = [];
+      let scores = [];
+      for (let i = 0; i < 10; i += 1) { game.play(7); game.play(2); views.push([7, 2]); scores.push(7 + 2); }
 
       expect(game.score()).toEqual(90);
+      expect(game.runningScores()).toEqual(scores);
+      expect(game.view()).toEqual(views);
     });
 
     it('returns 94 when give 7, 2 9 times and you finish with a  spare and 3', () => {
-      for (let i = 0; i < 9; i += 1) { game.play(7); game.play(2); }
+      let views = [];
+      for (let i = 0; i < 9; i += 1) { game.play(7); game.play(2); views.push([7, 2]);}
       chainOfRolls(8, 2, 3);
+      views.push([8, 2, 3]);
 
       expect(game.score()).toEqual(94);
       expect(game.runningScores()).toEqual([9, 9, 9, 9, 9, 9, 9, 9, 9, 13]);
+      expect(game.view()).toEqual(views);
     });
 
     it('returns 121 when give 7, 2 9 times and you finish with a turkey', () => {
-      for (let i = 0; i < 9; i += 1) { game.play(7); game.play(2); }
+      let views = [];
+      let scores = [];
+      for (let i = 0; i < 9; i += 1) { game.play(7); game.play(2); views.push([7, 2]); }
       chainOfRolls(10, 10, 10);
+      views.push([10, 10, 10]);
 
       expect(game.score()).toEqual(111);
       expect(game.runningScores()).toEqual([9, 9, 9, 9, 9, 9, 9, 9, 9, 30]);
+      expect(game.view()).toEqual(views);
     });
 
     it('returns 100 when get a  strike, then 7, 2', () => {
+      let views = [[10]];
+      let scores = [19];
       game.play(10);
-      for (let i = 0; i < 9; i += 1) { game.play(7); game.play(2); }
+      for (let i = 0; i < 9; i += 1) { game.play(7); game.play(2); views.push([7, 2]); scores.push(7 + 2); }
 
+      expect(game.runningScores()).toEqual(scores);
       expect(game.score()).toEqual(100);
+      expect(game.view()).toEqual(views);
     });
 
     it('returns 300 when you play a perfect game', () => {

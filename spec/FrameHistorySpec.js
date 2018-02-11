@@ -26,7 +26,11 @@ describe('FrameHistory', () => {
       });
 
       it('sets the first object to whatever is passed in', () => {
-        expect(frameHistory.first).toEqual(frameObject);
+        expect(frameHistory.first.frameObject).toEqual(frameObject);
+      });
+
+      it('sets the last item to be null', () => {
+        expect(frameHistory.first.next).toBe(null);
       });
 
       it('increments the size', () => {

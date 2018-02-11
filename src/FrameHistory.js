@@ -5,9 +5,14 @@ class FrameHistory {
   }
 
   add(frameObject) {
+    const template = {
+      frameObject,
+      next: null,
+    };
+
     if (this.size === 0) {
       this.size = 1;
-      this.first = frameObject;
+      this.first = template;
     }
   }
 }

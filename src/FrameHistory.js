@@ -1,7 +1,13 @@
 class FrameHistory {
   constructor() {
     this.size = 0;
-    this.head = null;
+    this.first = null;
+  }
+
+  add(frameObject) {
+    if (this.size === 0) {
+      this.first = frameObject;
+    }
   }
 }
 

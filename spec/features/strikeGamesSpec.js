@@ -52,21 +52,4 @@ describe('Full game works', () => {
     expect(game.runningScores()).toEqual([30, 30, 30, 30, 30, 30, 30, 30, 20, 10]);
     expect(game.view()).toEqual([[10], [10], [10], [10], [10], [10], [10], [10], [10], [10, 0, 0]]);
   });
-
-
-      it('returns 100 when get a  strike, then 7, 2', () => {
-        let views = [[10]];
-        let scores = [19];
-        game.play(10);
-        for (let i = 0; i < 9; i += 1) {
-          game.play(7);
-          game.play(2);
-          views.push([7, 2]);
-          scores.push(7 + 2); }
-
-        expect(game.runningScores()).toEqual(scores);
-        expect(game.score()).toEqual(100);
-        expect(game.view()).toEqual(views);
-      });
-
 });

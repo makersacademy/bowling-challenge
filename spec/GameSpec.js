@@ -29,11 +29,17 @@ describe('Game', () => {
   });
 
   describe('#finishFrame', () => {
-    it('finishes a frame', () => {
+    beforeEach(() => {
       game.startFrame();
       game.finishFrame();
+    });
 
+    it('finishes a frame', () => {
       expect(game.history.size).toEqual(1);
+    });
+
+    it('increments frame counter', () => {
+      expect(game.frameNumber).toEqual(1);
     });
   });
 });

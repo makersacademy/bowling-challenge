@@ -13,6 +13,7 @@ class FrameHistory {
     if (this.size === 0) {
       this.size = 1;
       this.first = template;
+      return;
     }
 
     let current = this.first;
@@ -21,7 +22,8 @@ class FrameHistory {
       current = current.next;
     }
 
-    return current.frameObject;
+    current.next = template;
+    this.size += 1;
   }
 }
 

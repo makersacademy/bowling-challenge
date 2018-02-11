@@ -32,13 +32,9 @@ describe('FrameHistory', () => {
       });
 
       it('increments the size', () => {
-        expect(frameHistory.size).toEqual(1);
-      });
-    });
+        frameHistory.add('frame2');
 
-    describe('when several objects are put stored', () => {
-      it('initially cycles through to the last object added', () => {
-        expect(frameHistory.add('frame1')).toEqual('frame1');
+        expect(frameHistory.size).toEqual(2);
       });
     });
   });

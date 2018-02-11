@@ -93,8 +93,38 @@ describe('game', function () {
       game.startGame(2);
       game.startGame(4);
       game.startGame(1);
-      
+
       expect(game.finalScore).toEqual(49);
+    });
+
+    it('Return total score for 10 frames without a tenth frame bonus', function () {
+      game.startGame(0);
+      game.startGame(10);
+
+      game.startGame(10);
+
+      game.startGame(7);
+      game.startGame(2);
+
+      game.startGame(9);
+      game.startGame(0);
+
+      game.startGame(10);
+
+      game.startGame(7);
+      game.startGame(2);
+
+      game.startGame(10);
+
+      game.startGame(10);
+
+      game.startGame(7);
+      game.startGame(1);
+
+      game.startGame(8);
+      game.startGame(0);
+
+      expect(game.finalScore).toEqual(146);
     });
   });
 

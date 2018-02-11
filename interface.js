@@ -28,7 +28,6 @@ $(document).ready(function() {
 
   function match_over() {
     for ( i=0; i<=10; i++ ) { $('#score' + i).hide(); }
-    $('#message').text("Match over!");
     $('#newGame').show();
   }
 

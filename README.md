@@ -15,7 +15,7 @@ After spending a few days grappling with the logic of the scoring I finally mana
 
 One important lesson which I have learnt from completing this challenge is to diagram and take small steps. I spent many hours on trying to get the strike and spare logic working and failing to pay attention to the initial scoring. I finally completed the challenge by creating a new git branch and starting all over with better diagrams
 
-Some of the front end design for the table has been duplicated across from another repo. I have used google fonts for the lobster family font and used [colorhunt.co](http://colorhunt.co/) for the various colour codes.
+Some of the front end design for the table has been inspired by another repo. I have used google fonts for the lobster family font and used [colorhunt.co](http://colorhunt.co/) for the various colour codes.
 
 ## How to use this app
 

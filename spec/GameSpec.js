@@ -180,6 +180,19 @@ describe("Game", function() {
       game.calculateTotal();
       expect(game.runningTotal).toEqual(87)
     });
+
+    it("knows the game is over", function(){
+      frame = new Frame();
+      frame.bowls = [0,0]
+      for(var i=0; i < 10; i++){
+        game.frames.push(frame);
+        game.frames[i].sumTotal();
+      }
+      game.roll(7);
+      game.frames[9].sumTotal();
+      game.calculateTotal();
+      expect(game.runningTotal).toEqual(0)
+    });
   });
 
   describe("special cases", function() {
@@ -242,5 +255,6 @@ describe("Game", function() {
       game.calculateTotal();
       expect(game.runningTotal).toEqual(133)
     });
+
   });
 });

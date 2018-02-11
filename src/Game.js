@@ -26,9 +26,9 @@ Game.prototype.roll = function(pins) {
   }
 };
 
-Game.prototype.calculateTotal = function() {
+Game.prototype.calculateTotal = function(length = this.frames.length) {
   this.runningTotal = 0
-  for(var i in this.frames) {
+  for(var i=0; i < length; i++) {
     if (this.frames[i].total) {
       this.runningTotal += this.frames[i].total;
     }

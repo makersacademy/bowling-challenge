@@ -1,23 +1,23 @@
 html {
-    background: url("https://thetangerinebowl.com/wp-content/uploads/2014/08/light-wood-BK1.png");
-    background-size: contain;
+    background-image: url(https://vientianebackpackershostel.com/wp-content/uploads/2016/03/Bowling_945.jpg);
+    background-repeat: center;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    clear: left;
+    font-size: 20px;
+    text-align: center;
 }
-
-/* https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPf6fmNB1ntkOcM1YMheH3yC2BZza9u8aejFa5hBMIMMllfi0h */
-
-/* https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU1OQSlN-Ik-tL6KqPsfAbawp3b9-6_Z45KhNc7iJOpKmN4xr2PQ */
-
-/* http://worldartsme.com/images/free-bowling-pin-clipart-1.jpg */
 
 div {
     position: absolute;
     top: 100px;
     left: 500px;
-    margin: 90px auto;
-    font-family:sans-serif;
+    margin: 290px auto;
+    font-family: sans-serif;
 }
 
-header {
+/* header {
     padding: 1em;
     color: rgb(216, 29, 29);
     background-color: rgba(137, 11, 187, 0.5);
@@ -25,11 +25,13 @@ header {
     clear: left;
     font-size: 25px;
     text-align: center;
-}
+    border-radius: 70%;
+} */
+
 .control-buttons {
-    background-color: rgba(137, 11, 187, 0.5);
+    background-color:rgba(168, 11, 230, 0.938);
     border: none;
-    color: rgba(255, 255, 255, 0.486);
+    color: rgba(255, 255, 255, 0.945);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -40,4 +42,11 @@ header {
 .control-buttons:hover {
     background-color: rgba(41, 13, 199, 0.336);
     color: rgba(224, 8, 8, 0.822);
+}
+
+p {
+    background-color: rgba(168, 11, 230, 0.938);
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.945);
+    height: 40px;
 }

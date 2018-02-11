@@ -20,7 +20,7 @@ $(document).ready(function() {
   $("#roll").click(function(event) {
     var pin = pinGenerator(10 - prev_pin);
     if (bowling.roll(pin) === false) {
-      alert("Game over, start a new one");
+      alert("Game over, click 'Reset Game' ");
       return;
     }
     if (bowling.frame.isDone()) {

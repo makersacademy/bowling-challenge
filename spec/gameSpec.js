@@ -128,6 +128,14 @@ describe('game', function () {
       expect(game.finalScore).toEqual(146);
     });
 
+    it('Total score 0 if player hits none', function () {
+
+      for (var i = 0; i < 20; i++) {
+        game.startGame(0);
+      }
+      expect(game.finalScore).toEqual(0);
+    });
+
     it('Return total score for 10 frames with 10 strikes', function () {
       game.startGame(10);
       game.startGame(10);

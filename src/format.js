@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const showScores = () => {
-    let scores = '';
+    let collumn = 1;
     game.runningScores().forEach((score) => {
-      scores += `${score} `;
+      document.getElementById(`scoreFrame${collumn}`).innerHTML = `${score}`;
+      collumn += 1;
     });
-    document.getElementById('eachScore').innerHTML = scores;
   };
 
   const roll = (value) => { game.play(value); setScore(); showScores(); };
@@ -27,7 +27,24 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 
+// wow look how long this method is...
+  const createScoreCard = () => {
+    for (let i = 1; i <= 10; i += 1) {
+      const title = document.createElement('td');
+      const frame = document.createTextNode(`frame ${i}`);
+      const scoreBox = document.createElement('td');
+      scoreBox.id = `scoreFrame${i}`;
+      const filler = 'waiting for score';
+      title.appendChild(frame);
+      scoreBox.innerHTML = filler;
+      document.getElementById('scorecardLabels').appendChild(title);
+      document.getElementById('scoreCardScores').appendChild(scoreBox);
+    }
+  };
+
+
   setScore();
   createButtons();
+  createScoreCard();
   showScores();
 });

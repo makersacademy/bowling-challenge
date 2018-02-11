@@ -33,6 +33,13 @@ I would also take more time to ensure the code meets conventions.
 ![alt text](https://i.imgur.com/BSnNiYG.jpg)
 ![alt text](https://i.imgur.com/YzpQsRY.jpg)
 
+## Technologies used
+* JavaScript
+* Jasmine
+* html
+* CSS
+* Jquery
+
 ## Bowling — how does it work?
 
 ### Strikes

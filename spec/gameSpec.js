@@ -33,9 +33,15 @@ describe('Game', () => {
 
   beforeEach(() => {
     boardMock = [];
-    frame = jasmine.createSpyObj('Frame', { score: 10, view: [10] });
-    frameTwo = jasmine.createSpyObj('Frame', { score: 9, view: [4, 5] });
-    frameThree = jasmine.createSpyObj('Frame', { score: 0, view: [] });
+    frame = jasmine.createSpyObj('Frame', {
+      score: 10, view: [10], isFinished: false,
+    });
+    frameTwo = jasmine.createSpyObj('Frame', {
+      score: 9, view: [4, 5], isFinished: true,
+    });
+    frameThree = jasmine.createSpyObj('Frame', {
+      score: 0, view: [], isFinished: false,
+    });
     for (let i = 0; i < 10; i += 1) { boardMock.push(frame); }
   });
 
@@ -162,6 +168,18 @@ describe('Game', () => {
       expect(game.view()).toEqual(expectedResult);
     });
   });
+
+  // describe('play', () => {
+  //
+  //   it('should call rolls on the first frame if it is unfinished', () => {
+  //     spyOn(Game.prototype, 'setUpBoard').and.returnValue(boardMock);
+  //     game = new Game();
+  //     game.play(5)
+  //
+  //     expect(frame.roll()).toHaveBeenCalledWith();
+  //   })
+  //
+  // })
 
 
 });

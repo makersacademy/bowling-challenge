@@ -3,7 +3,7 @@ const MAX_SCORE = 10;
 function Frame (finalFrame = false){
   this.rolls = []
   this.isFinalFrame = finalFrame
-
+  this.bonusRolls = []
 }
 
 Frame.createFrame = function(finalFrame) {
@@ -25,11 +25,15 @@ Frame.prototype.isSpare = function(){
 }
 
 Frame.prototype.score = function(){
-  return this.rolls.reduce((total, roll) => total + roll,0)
+  return this.rolls.reduce((total, roll) => total + roll,0) + this.bonusRolls.reduce((total, roll) => total + roll,0)
 }
 
 Frame.prototype._isAboveMaxScore = function(pins){
   return this.score() + pins > MAX_SCORE
+}
+
+Frame.prototype.addBonusRolls =  function(pins){
+  return this.bonusRolls.push(pins)
 }
 
 Frame.prototype.isComplete = function(){

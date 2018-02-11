@@ -3,6 +3,7 @@ const FRAME_LIMIT = 10;
 function FrameLog (frameClass = Frame) {
   this.frames = []
   this.frameClass = frameClass
+  this.bonusRoll = 0
 }
 
 FrameLog.createFrameLog = function(){
@@ -19,21 +20,24 @@ FrameLog.prototype.addRoll = function(rollScore){
     let frame = this.frameClass.createFrame(this._isFinalFrame())
     frame.addRoll(rollScore)
     this.frames.push(frame)
-  } else{
+    this._addBonusScores(rollScore)
+  } else {
     this.currentFrame().addRoll(rollScore)
+    this._addBonusScores(rollScore)
   }
 }
 
 FrameLog.prototype.frameCount = function(){
   return this.frames.length
 }
-//
-// FrameLog.prototype.isPreviousFrameStrike = function(){
-//   return this.frames[this.frames.length-2].isStrike()
-// }
-// FrameLog.prototype.isPreviousFrameSpare = function(){
-//   return this.frames[this.frames.length-2].isSpare()
-// }
+
+FrameLog.prototype.isPreviousFrameStrike = function(){
+  return this.frames[this.frames.length-2].isStrike()
+}
+
+FrameLog.prototype.isPreviousFrameSpare = function(){
+  return this.frames[this.frames.length-2].isSpare()
+}
 
 FrameLog.prototype._isFinalFrame = function(){
   return this.frameCount() === FRAME_LIMIT - 1
@@ -51,14 +55,23 @@ FrameLog.prototype._frameScores = function(){
   return scores
 }
 
+FrameLog.prototype._addBonusScores = function(rollScore){
+  if(this.frameCount() > 1){
+    if(this.currentFrame().isComplete() && this.isPreviousFrameStrike() && !this.currentFrame().isStrike()){
+      this.frames[this.frames.length-2].addBonusRolls(this.currentFrame().rolls[1])
+    } else if(this.isPreviousFrameSpare() || this.isPreviousFrameStrike() && this.bonusRoll < 3) {
+      if (this.frameCount() === FRAME_LIMIT)
+      this.bonusRoll++
+      this.frames[this.frames.length-2].addBonusRolls(this.currentFrame().rolls[0])
+      if (this.frameCount() === FRAME_LIMIT && this.bonusRoll > 1){
+          this.bonusRoll++
+        } else if (this.frameCount() >= 3 && this.isPreviousFrameStrike() && this.frames.slice(-3)[0].isStrike()){
+        this.frames.slice(-3)[0].addBonusRolls(rollScore)
+      }
+    }
+  }
+}
+
 FrameLog.prototype.calculateScore = function(){
   return this._frameScores().reduce((total,amount) => total + amount,0)
 }
-
-// each frame holds three rolls for scoring then can add logic to work out if need all three
-// but also each frame tholds own rollScore
-// some repeated information
-// some condition only in strike adds next two rolls to frame rules method will all rules in frame
-// for how to calculate score
-
-// after strike logic could be added to add rolls to a bonus array and frame ?

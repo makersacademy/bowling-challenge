@@ -102,5 +102,17 @@ describe('Game', () => {
       expect(game.runningScores()).toEqual(expectedResult);
     })
 
+    it('should return array with different scores for each frame', () => {
+      boardMock = [];
+      for (let i = 0; i < 3; i += 1) { boardMock.push(frame, frameTwo, frameThree); }
+      boardMock.push(frame);
+      spyOn(Game.prototype, 'setUpBoard').and.returnValue(boardMock);
+      game = new Game();
+      let expectedResult = [10, 9, 0, 10, 9, 0, 10, 9, 0, 10]
+
+      expect(game.runningScores()).toEqual(expectedResult);
+    })
+
+
   })
 });

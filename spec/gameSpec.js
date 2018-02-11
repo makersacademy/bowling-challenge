@@ -124,7 +124,59 @@ describe('game', function () {
       game.startGame(8);
       game.startGame(0);
 
+
       expect(game.finalScore).toEqual(146);
+    });
+
+    it('Return total score for 10 frames with 10 strikes', function () {
+      game.startGame(10);
+      game.startGame(10);
+      game.startGame(10);
+      game.startGame(10);
+      game.startGame(10);
+
+      game.startGame(10);
+      game.startGame(10);
+      game.startGame(10);
+      game.startGame(10);
+
+      game.startGame(10);
+      game.startGame(10);
+      game.startGame(10);
+
+
+      expect(game.finalScore).toEqual(300);
+    });
+
+    it('Return total score for 10 frames with a spare and strike on tenth frame', function () {
+      game.startGame(0);
+      game.startGame(10);
+
+      game.startGame(10);
+
+      game.startGame(7);
+      game.startGame(2);
+
+      game.startGame(9);
+      game.startGame(0);
+
+      game.startGame(10);
+
+      game.startGame(7);
+      game.startGame(2);
+
+      game.startGame(10);
+
+      game.startGame(10);
+
+      game.startGame(7);
+      game.startGame(1);
+
+      game.startGame(8);
+      game.startGame(2);
+      game.startGame(10);
+
+      expect(game.finalScore).toEqual(158);
     });
   });
 

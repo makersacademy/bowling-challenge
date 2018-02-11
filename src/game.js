@@ -10,11 +10,15 @@ function Game() {
 Game.prototype.startGame = function (pinsdropped) {
   var self = this;
 
-  self.pinsDroppedEachRoll(pinsdropped);
+  if (self.scoreArray.length < 21) {
+    self.pinsDroppedEachRoll(pinsdropped);
 
-  for (var i = 1; i < 11; i++) {
-    self.scoreTotal(i);
+    for (var i = 1; i < 11; i++) {
+      self.scoreTotal(i);
+    }
   }
+
+  return;
 };
 
 Game.prototype.scoreTotal = function (frame) {
@@ -44,13 +48,11 @@ Game.prototype.pinsDroppedEachRoll = function (pinsdropped) {
 
   if (self.isStrike(pinsdropped)) {
 
-    self.scoreArray.push(10);
-    self.scoreArray.push(0);
-    self.frameCounter += 1;
+
 
   } else if (self.isSpare(pinsdropped)) {
 
-    self.scoreArray.push(pinsdropped);
+
 
   } else {
 
@@ -68,32 +70,34 @@ Game.prototype.pinsDroppedEachRoll = function (pinsdropped) {
 Game.prototype.isStrike = function (pinsdropped) {
   var self = this;
 
-  if ( pinsdropped === 10 && self.frameCounter % 2 === 0 ) {
-    console.log('---------------->   STRIKE');
+  if (self.tenthFrame()) {
 
-    self.displayResult(0);
-    self.displayResult('X');
-    return true;
-  }
-};
+    if ( pinsdropped === 10) {
+      console.log('---------------->   STRIKE - tenthFrame');
 
-Game.prototype.strikeBonus = function (index) {
-  var self = this;
-
-  if (self.screenArray[index + 3] === 'X' && self.screenArray[index + 5] === 'X') {
-
-    return 20;
-
-  } else if (self.screenArray[index + 3] === 'X') {
-
-    return (10 + self.scoreArray[index + 4]) || 0;
+      self.displayResult('X');
+      self.scoreArray.push(10);
+      return true;
+    }
 
   } else {
 
-    return self.scoreArray[index + 2] + self.scoreArray[index + 3] || 0;
+    if ( pinsdropped === 10 && self.frameCounter % 2 === 0 ) {
+      console.log('---------------->   STRIKE');
+
+      self.displayResult(0);
+      self.displayResult('X');
+
+      self.scoreArray.push(10);
+      self.scoreArray.push(0);
+      self.frameCounter += 1;
+      return true;
+    }
   }
 
+
 };
+
 
 Game.prototype.isSpare = function (pinsdropped) {
   var self = this;
@@ -104,9 +108,49 @@ Game.prototype.isSpare = function (pinsdropped) {
       console.log('---------------->   SPARE');
 
       self.displayResult('/');
+      self.scoreArray.push(pinsdropped);
       return true;
     }
   }
+};
+
+Game.prototype.strikeBonus = function (index) {
+  var self = this;
+
+  if (self.tenthFrame() && self.screenArray[index] === 'X') {
+    console.log('Tenth frame *********************');
+
+    if (self.screenArray[index + 1] === 'X' && self.screenArray[index + 2] === 'X') {
+
+      return 20;
+
+    } else if (self.screenArray[index + 1] === 'X') {
+
+      return (10 + self.scoreArray[index + 2]) || 0;
+
+    } else {
+
+      return self.scoreArray[index + 1] + self.scoreArray[index + 2] || 0;
+    }
+
+
+  } else {
+
+    if (self.screenArray[index + 3] === 'X' && self.screenArray[index + 5] === 'X') {
+
+      return 20;
+
+    } else if (self.screenArray[index + 3] === 'X') {
+
+      return (10 + self.scoreArray[index + 4]) || 0;
+
+    } else {
+
+      return self.scoreArray[index + 2] + self.scoreArray[index + 3] || 0;
+    }
+
+  }
+
 };
 
 Game.prototype.spareBonus = function (index) {
@@ -124,7 +168,7 @@ Game.prototype.displayResult = function (displayresult) {
 
 
 Game.prototype.tenthFrame = function () {
-  return this.frameCounter > 18;
+  return this.frameCounter >= 18;
 };
 
 

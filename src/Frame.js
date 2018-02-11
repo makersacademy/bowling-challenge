@@ -13,11 +13,16 @@ Frame.prototype.enterRoll = function(pins) {
   } else if (this.total === 10) {
     this.isSpare = true
   }
-  if (this.isRoll === 1) {
-    this.isRoll = 2
-  }
 };
 
 Frame.prototype.sumTotal = function() {
   this.total = this.bowls.reduce(function(a, b) { return a + b; }, 0);
+};
+
+Frame.prototype.changeRoll = function () {
+  if (this.isRoll === 1) {
+    this.isRoll = 2
+  } else if (this.isRoll === 2) {
+    this.isRoll = 3
+  }
 };

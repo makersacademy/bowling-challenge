@@ -11,7 +11,16 @@ describe("Frame", function() {
 
   it("knows it is the second roll", function() {
     frame.enterRoll(3);
+    frame.changeRoll();
     expect(frame.isRoll).toEqual(2);
+  });
+
+  it("knows it is the third roll on 10th frame", function() {
+    frame.enterRoll(3);
+    frame.changeRoll();
+    frame.enterRoll(7);
+    frame.changeRoll();
+    expect(frame.isRoll).toEqual(3);
   });
 
   describe("enters bowl scores", function() {

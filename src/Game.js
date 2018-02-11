@@ -1,22 +1,26 @@
 function Game() {
   this.frames = []
+  // this.currentFrame = this.frames[frame-1]
 };
 
 Game.prototype.start = function(length) {
   for(var i=0; i < length; i++){
     this.frames.push(new Frame());
   }
+    // this.frames.push(new FinalFrame());
 };
 
-Game.prototype.roll = function(frame, roll, pins) {
-  if (roll===2 && frame<10 && (10-this.frames[frame-1].bowls[0])<pins) {
+Game.prototype.roll = function(frame, pins) {
+  if (this.frames[frame-1].isRoll===2 && frame<10 && (10-this.frames[frame-1].bowls[0])<pins) {
     throw 'not enough pins!'
   }
-  if (roll===3 && this.frames[frame-1].bowls[1]!=10 && (10-this.frames[frame-1].bowls[0])<pins) {
+  if (this.frames[frame-1].isRoll===3 && this.frames[frame-1].bowls[1]!=10 && (10-this.frames[frame-1].bowls[0])<pins) {
     throw 'not enough pins!'
   };
+  // this.checksPins(frame,pins)
   (this.frames[frame-1]).enterRoll(pins)
-  this.bonusPoints(frame,roll,pins)
+  this.bonusPoints(frame,pins)
+  this.frames[frame-1].changeRoll();
 };
 
 Game.prototype.calculateTotal = function() {
@@ -28,24 +32,34 @@ Game.prototype.calculateTotal = function() {
   }
 };
 
-Game.prototype.bonusPoints = function(frame,roll,pins) {
+Game.prototype.checksPins = function(frame,pins) {
+  if (this.frames[frame-1].isRoll===2 && frame<10 && (10-this.frames[frame-1].bowls[0])<pins) {
+    throw 'not enough pins!'
+  }
+  if (this.frames[frame-1].isRoll===3 && this.frames[frame-1].bowls[1]!=10 && (10-this.frames[frame-1].bowls[0])<pins) {
+    throw 'not enough pins!'
+  }
+};
+
+
+Game.prototype.bonusPoints = function(frame,pins) {
   if (frame != 1 && this.frames[frame-2].isStrike === true) {
-    this.twoStrikesPoints(frame,roll,pins)
-    this.oneStrikePoints(frame,roll,pins)
+    this.twoStrikesPoints(frame,pins)
+    this.oneStrikePoints(frame,pins)
   } else
-  if (frame != 1 && this.frames[frame-2].isSpare === true && roll === 1) {
+  if (frame != 1 && this.frames[frame-2].isSpare === true && this.frames[frame-1].isRoll===1) {
     this.frames[frame-2].total += pins
   }
 };
 
-Game.prototype.oneStrikePoints = function(frame,roll,pins) {
-  if (roll!=3) {
+Game.prototype.oneStrikePoints = function(frame,pins) {
+  if (this.frames[frame-1].isRoll!=3) {
     this.frames[frame-2].total += pins
   }
 };
 
-Game.prototype.twoStrikesPoints = function(frame,roll,pins) {
-  if (frame != 2 && this.frames[frame-3].isStrike === true && roll === 1) {
+Game.prototype.twoStrikesPoints = function(frame,pins) {
+  if (frame != 2 && this.frames[frame-3].isStrike === true && this.frames[frame-1].isRoll===1) {
     this.frames[frame-3].total += pins
   }
 };

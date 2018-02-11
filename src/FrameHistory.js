@@ -14,6 +14,14 @@ class FrameHistory {
       this.size = 1;
       this.first = template;
     }
+
+    let current = this.first;
+
+    while (current.next !== null) {
+      current = current.next;
+    }
+
+    return current.frameObject;
   }
 }
 

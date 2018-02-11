@@ -2,11 +2,9 @@ const FrameHistory = require('../src/FrameHistory');
 
 describe('FrameHistory', () => {
   let frameHistory;
-  let frameObject;
 
   beforeEach(() => {
     frameHistory = new FrameHistory();
-    frameObject = 'frame';
   });
 
   describe('initially', () => {
@@ -22,11 +20,11 @@ describe('FrameHistory', () => {
   describe('#add', () => {
     describe('when the history is empty', () => {
       beforeEach(() => {
-        frameHistory.add(frameObject);
+        frameHistory.add('item1');
       });
 
       it('sets the first object to whatever is passed in', () => {
-        expect(frameHistory.first.frameObject).toEqual(frameObject);
+        expect(frameHistory.first.frameObject).toEqual('item1');
       });
 
       it('sets the last item to be null', () => {
@@ -35,6 +33,12 @@ describe('FrameHistory', () => {
 
       it('increments the size', () => {
         expect(frameHistory.size).toEqual(1);
+      });
+    });
+
+    describe('when several objects are put stored', () => {
+      it('initially cycles through to the last object added', () => {
+        expect(frameHistory.add('frame1')).toEqual('frame1');
       });
     });
   });

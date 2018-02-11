@@ -4,7 +4,7 @@ Bowling Challenge
 
 How to play the game:
 
-1. Open command line and change directory to your you want the game to be cloned.
+1. Open command line and change directory to a folder where you want the game to be cloned.
 2. Download the url from the Github and the type ```git clone url```
 3. Run ```bundle```
 4. Type ```open index.html```

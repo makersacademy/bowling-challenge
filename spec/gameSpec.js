@@ -1,20 +1,19 @@
-'use strict';
+describe('Game', function () {
 
-describe('Game', function(){
-  var game
+  var game;
 
-
-  beforeEach(function(){
-    game = new Game();
-    var basicFrame = jasmine.createSpyObj('basicFrame', {
-      '_firstRoll': 4,
-      '_secondRoll': 4,
+  beforeEach(function () {
+    game = new Game
+    basicFrame = jasmine.createSpyObj('frame', {
       'score': 8,
-      'isAStrike': false,
-      'isASpare': false,
-      'isValid': true
-    });
+      'isStrike': false,
+      'isSpare': false,
+      '_firstRoll': 2,
+      '_secondRoll': 6,
+      '_isValid': true
+    })
   });
+
 
   describe('storeFrame', function() {
 

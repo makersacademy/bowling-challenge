@@ -188,5 +188,13 @@ describe('game', function () {
     });
   });
 
+  describe('Throw an Alert', function () {
+    it('Should throw an alert if given score of 7 and 9 for frame 1', function () {
+      spyOn(game, "alert").and.returnValue("Incorrect Score");
+      game.startGame(7);
+      game.startGame(10);
 
+      expect(game.alert()).toEqual("Incorrect Score");
+    });
+  });
 });

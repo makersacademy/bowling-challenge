@@ -41,15 +41,19 @@ Game.prototype.scoreTotal = function (frame) {
 Game.prototype.pinsDroppedEachRoll = function (pinsdropped) {
   var self = this;
 
-  if (self.isStrike(pinsdropped)) {
-
-  } else if (self.isSpare(pinsdropped)) {
-
+  if (self.isIncorrectScore(pinsdropped)) {
+    self.alert();
   } else {
-    self.scoreArray.push(pinsdropped);
-    self.displayResult(pinsdropped);
-  }
-  self.frameCounter += 1;
+    if (self.isStrike(pinsdropped)) {
+
+    } else if (self.isSpare(pinsdropped)) {
+
+    } else {
+      self.scoreArray.push(pinsdropped);
+      self.displayResult(pinsdropped);
+    }
+    self.frameCounter += 1;
+}
 };
 
 
@@ -140,4 +144,19 @@ Game.prototype.tenthFrame = function () {
 
 Game.prototype.frameTotal = function (index) {
   return this.scoreArray[index] + this.scoreArray[index + 1] || 0;
+};
+
+Game.prototype.alert = function () {
+  alert("Incorrect Score");
+};
+
+Game.prototype.isIncorrectScore = function (pinsdropped) {
+  var self = this;
+
+  if (self.tenthFrame()) {
+    return self.frameCounter % 2 !== 0 && (pinsdropped + self.scoreArray[self.frameCounter - 1] > 30);
+  } else {
+    return self.frameCounter % 2 !== 0 && (pinsdropped + self.scoreArray[self.frameCounter - 1] > 10);
+  }
+
 };

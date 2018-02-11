@@ -11,7 +11,7 @@ How to play the game:
 5. This will open the application in a web browser.
 6. Play and enjoy!
 
-![alt tag]('./public/photo.jpg')
+![alt tag](https://github.com/AlexandraGF/bowling-challenge/blob/master/public/photo.jpg)
 
 ## The Task
 

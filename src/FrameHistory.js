@@ -13,17 +13,14 @@ class FrameHistory {
     if (this.size === 0) {
       this.size = 1;
       this.first = template;
-      return;
+    } else {
+      let current = this.first;
+      while (current.next !== null) {
+        current = current.next;
+      }
+      current.next = template;
+      this.size += 1;
     }
-
-    let current = this.first;
-
-    while (current.next !== null) {
-      current = current.next;
-    }
-
-    current.next = template;
-    this.size += 1;
   }
 }
 

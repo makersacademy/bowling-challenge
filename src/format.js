@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const STRIKE = 10;
   const game = new Game(Frame);
   var turn = 0;
 
@@ -17,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const showRolls = () => {
     let collumn = 1
     game.view().forEach((result) => {
-      const view = result.map(value => (value === 10) ? 'x' : value);
-      if (view[0] + view[1] === 10) { view[1] = '/'; }
+      const view = result.map(value => (value === STRIKE) ? 'x' : value);
+      if (view[0] + view[1] === STRIKE) { view[1] = '/'; }
       document.getElementById(`views${collumn}`).innerHTML = `${view.join('')}`;
       collumn += 1;
     });
@@ -26,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const roll = (value) => { game.play(value); setScore(); showScores(); showRolls(); };
 
-  const createButtons = () => {
-    for (let i = 10; i >= 0; i -= 1) {
+  const createButtons = (max = STRIKE) => {
+    for (let i = 0; i <= max; i += 1) {
       const btn = document.createElement('button');
       btn.id = i;
       btn.onclick = () => { roll(i); };
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // wow look how long this method is...
   const createScoreCard = () => {
-    for (let i = 1; i <= 10; i += 1) {
+    for (let i = 1; i <= STRIKE; i += 1) {
       const title = document.createElement('td');
       const frame = document.createTextNode(`frame ${i}`);
       const scoreBox = document.createElement('td');
@@ -56,8 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('frameResults').appendChild(frameRolls);
     }
   };
-
-
 
 
   setScore();

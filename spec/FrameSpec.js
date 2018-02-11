@@ -38,9 +38,10 @@ describe("Frame", function() {
     });
   });
 
+
   describe("#Check Strike", function() {
     it("Changes _isStrike to true if first roll was a strike", function() {
-      frame.add(10);
+      frame.add(10, 0);
       expect(frame.strike).toEqual(true);
     });
   });

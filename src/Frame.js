@@ -11,7 +11,7 @@ const NO_POINTS = 0
 
 Frame.prototype.add = function(roll1, roll2) {
   this._checkForErrors(roll1, roll2)
-  if (this._isStrike(roll1)) {
+  if (this._isStrike(roll1, roll2)) {
     this.strike = true;
   }
   if (this._isSpare(roll1, roll2)) {
@@ -43,10 +43,10 @@ Frame.prototype._isImpossibleFrame = function(roll1, roll2) {
   return (roll1 + roll2 > STRIKE) || (roll1 + roll2 < NO_POINTS)
 }
 
-Frame.prototype._isStrike = function(roll1) {
-  return (roll1 === STRIKE)
+Frame.prototype._isStrike = function(roll1, roll2) {
+  return (roll1 === STRIKE) && (roll2 === 0)
 };
 
 Frame.prototype._isSpare = function(roll1, roll2) {
-  return (roll1 + roll2 === SPARE)
+  return (roll2 !== 0) && (roll1 + roll2 === SPARE) 
 };

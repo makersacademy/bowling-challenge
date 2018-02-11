@@ -8,22 +8,22 @@ class Game {
   }
 
   play(roll) {
-    const runningFrame = this.currentFrame();
+    let runningFrame = this.currentFrameIndex();
     this.addRoll(runningFrame, roll);
     if (runningFrame > 0) { this.addRoll(runningFrame - 1, roll); }
     if (runningFrame > 1) { this.addRoll(runningFrame - 2, roll); }
   }
 
   setUpBoard() {
-    const board = [];
+    let board = [];
     for (let i = 0; i < GAME_LENGTH - 1; i += 1) {
       board.push(new this.Frames());
     }
     board.push(new this.Frames(FINAL_GAME_STRIKE, FINAL_GAME_STRIKE));
     return board;
-  }
+  };
 
-  currentFrame() {
+  currentFrameIndex() {
     let index = 0;
     this.board.forEach((frame) => {
       if (!frame.isFinished()) { return index; }
@@ -37,17 +37,17 @@ class Game {
   }
 
   score() {
-    return this.board.reduce((a, b) => a + b.score(), 0);
+    return this.board.reduce((acc, frame) => acc + frame.score(), 0);
   }
 
   runningScores() {
-    const results = [];
+    let results = [];
     this.board.forEach((frame) => { results.push(frame.score()); });
     return results;
   }
 
   view() {
-    const views = [];
+    let views = [];
     this.board.forEach((frame) => { views.push(frame.view()); });
     return views;
   }

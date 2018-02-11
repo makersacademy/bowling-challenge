@@ -1,11 +1,12 @@
 const Game = require('../src/Game');
+const FrameHistory = require('../src/FrameHistory');
+const Frame = require('../src/Frame');
+const Rules = require('../src/Rules');
 
 describe('Game', () => {
   let game;
-  let FrameHistory;
 
   beforeEach(() => {
-    FrameHistory = jasmine.createSpy('FrameHistory');
     game = new Game(FrameHistory);
   });
 
@@ -15,7 +16,7 @@ describe('Game', () => {
     });
 
     it('has an empty game history', () => {
-      expect(game.history).toBe(FrameHistory);
+      expect(game.history).toEqual(new FrameHistory());
     });
   });
 });

@@ -1,7 +1,9 @@
 class Game {
-  constructor(FrameHistory) {
+  constructor(FrameHistory, Frame, Rules) {
     this.maxFrames = 10;
-    this.history = FrameHistory;
+    this.history = new FrameHistory();
+    this.frameObject = Frame;
+    this.rulesObject = Rules;
   }
 }
 

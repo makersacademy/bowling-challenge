@@ -31,7 +31,7 @@ I would also take more time to ensure the code meets conventions.
 ## What does it look like?
 
 ![alt text](https://i.imgur.com/BSnNiYG.jpg)
-![alt text](https://i.imgur.com/undefined.png)
+![alt text](https://i.imgur.com/YzpQsRY.jpg)
 
 ## Bowling — how does it work?
 

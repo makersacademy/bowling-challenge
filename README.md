@@ -10,7 +10,7 @@ I attempted to complete this challenge in a test driven environment.
 
 Given more time I would have worked to clean up the code. I would have separated game logic from the framelog and given further consideration to the single responsibility principle.
 
-I would spend more time refactoring the code to reduce the need for complex conditionals within the code.
+I would spend more time refactoring the code to reduce the need for complex conditionals within the code. I would also review unit tests, whilst some elements have comprehensive testing, score calculation outcomes relies heavily on feature testing presently. 
 
 I would also take more time to ensure the code meets conventions.
 

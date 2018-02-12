@@ -19,13 +19,16 @@ $( document ).ready(function() {
       var roll = (game.frames[arrayFrame].isRoll)
       game.roll(0)
       var firstRoll = game.frames[arrayFrame].bowls[roll-1]
-      console.log(game.frames[arrayFrame].bowls[roll-1])
       $( "#r" + frame + roll ).text(game.frames[arrayFrame].bowls[roll-1]);
-      displaysScore(roll,frame)
-      if (roll === 1) {
-        for (var i = 10; i > (10-firstRoll); i--)
-        $("#b" + i).hide();
-      }
+        displaysScore(roll,frame)
+        if (roll === 1) {
+          for (var i = 10; i > (10-firstRoll); i--)
+          $("#b" + i).hide();
+        }
+        if (roll != 1) {
+          for (var i = 10; i >= 0; i--)
+          $("#b" + i).show();
+        }
     });
 
   $( "#b1" ).click(function() {
@@ -35,11 +38,15 @@ $( document ).ready(function() {
       game.roll(1)
       var firstRoll = game.frames[arrayFrame].bowls[roll-1]
       $( "#r" + frame + roll ).text(game.frames[arrayFrame].bowls[roll-1]);
-      displaysScore(roll,frame)
-      if (roll === 1) {
-        for (var i = 10; i > (10-firstRoll); i--)
-        $("#b" + i).hide();
-      }
+        displaysScore(roll,frame)
+        if (roll === 1) {
+          for (var i = 10; i > (10-firstRoll); i--)
+          $("#b" + i).hide();
+        }
+        if (roll != 1) {
+          for (var i = 10; i >= 0; i--)
+          $("#b" + i).show();
+        }
     });
 
   $( "#b2" ).click(function() {
@@ -50,7 +57,14 @@ $( document ).ready(function() {
       var firstRoll = game.frames[arrayFrame].bowls[roll-1]
       $( "#r" + frame + roll ).text(game.frames[arrayFrame].bowls[roll-1]);
         displaysScore(roll,frame)
-        hidePins(roll,firstRoll)
+        if (roll === 1) {
+          for (var i = 10; i > (10-firstRoll); i--)
+          $("#b" + i).hide();
+        }
+        if (roll != 1) {
+          for (var i = 10; i >= 0; i--)
+          $("#b" + i).show();
+        }
     });
 
   $( "#b3" ).click(function() {
@@ -61,7 +75,14 @@ $( document ).ready(function() {
       var firstRoll = game.frames[arrayFrame].bowls[roll-1]
       $( "#r" + frame + roll ).text(game.frames[arrayFrame].bowls[roll-1]);
         displaysScore(roll,frame)
-        hidePins(roll,firstRoll)
+        if (roll === 1) {
+          for (var i = 10; i > (10-firstRoll); i--)
+          $("#b" + i).hide();
+        }
+        if (roll != 1) {
+          for (var i = 10; i >= 0; i--)
+          $("#b" + i).show();
+        }
     });
 
   $( "#b4" ).click(function() {
@@ -72,7 +93,14 @@ $( document ).ready(function() {
       var firstRoll = game.frames[arrayFrame].bowls[roll-1]
       $( "#r" + frame + roll ).text(game.frames[arrayFrame].bowls[roll-1]);
         displaysScore(roll,frame)
-        hidePins(roll,firstRoll)
+        if (roll === 1) {
+          for (var i = 10; i > (10-firstRoll); i--)
+          $("#b" + i).hide();
+        }
+        if (roll != 1) {
+          for (var i = 10; i >= 0; i--)
+          $("#b" + i).show();
+        }
     });
 
   $( "#b5" ).click(function() {
@@ -82,8 +110,15 @@ $( document ).ready(function() {
       game.roll(5)
       var firstRoll = game.frames[arrayFrame].bowls[roll-1]
       $( "#r" + frame + roll ).text(game.frames[arrayFrame].bowls[roll-1]);
-        displaysScore(roll,frame)
-        hidePins(roll,firstRoll)
+      displaysScore(roll,frame)
+        if (roll === 1) {
+          for (var i = 10; i > (10-firstRoll); i--)
+          $("#b" + i).hide();
+        }
+        if (roll != 1) {
+          for (var i = 10; i >= 0; i--)
+          $("#b" + i).show();
+        }
     });
 
   $( "#b6" ).click(function() {
@@ -94,7 +129,15 @@ $( document ).ready(function() {
       var firstRoll = game.frames[arrayFrame].bowls[roll-1]
       $( "#r" + frame + roll ).text(game.frames[arrayFrame].bowls[roll-1]);
         displaysScore(roll,frame)
-        hidePins(roll,firstRoll)    });
+        if (roll === 1) {
+          for (var i = 10; i > (10-firstRoll); i--)
+          $("#b" + i).hide();
+        }
+        if (roll != 1) {
+          for (var i = 10; i >= 0; i--)
+          $("#b" + i).show();
+        }
+      });
 
   $( "#b7" ).click(function() {
       var frame = game.currentFrame
@@ -104,7 +147,14 @@ $( document ).ready(function() {
       var firstRoll = game.frames[arrayFrame].bowls[roll-1]
       $( "#r" + frame + roll ).text(game.frames[arrayFrame].bowls[roll-1]);
         displaysScore(roll,frame)
-        hidePins(roll,firstRoll)
+        if (roll === 1) {
+          for (var i = 10; i > (10-firstRoll); i--)
+          $("#b" + i).hide();
+        }
+        if (roll != 1) {
+          for (var i = 10; i >= 0; i--)
+          $("#b" + i).show();
+        }
   });
 
   $( "#b8" ).click(function() {
@@ -115,7 +165,14 @@ $( document ).ready(function() {
       var firstRoll = game.frames[arrayFrame].bowls[roll-1]
       $( "#r" + frame + roll ).text(game.frames[arrayFrame].bowls[roll-1]);
         displaysScore(roll,frame)
-        hidePins(roll,firstRoll)
+        if (roll === 1) {
+          for (var i = 10; i > (10-firstRoll); i--)
+          $("#b" + i).hide();
+        }
+        if (roll != 1) {
+          for (var i = 10; i >= 0; i--)
+          $("#b" + i).show();
+        }
   });
 
   $( "#b9" ).click(function() {
@@ -126,7 +183,14 @@ $( document ).ready(function() {
       var firstRoll = game.frames[arrayFrame].bowls[roll-1]
       $( "#r" + frame + roll ).text(game.frames[arrayFrame].bowls[roll-1]);
         displaysScore(roll,frame)
-        hidePins(roll,firstRoll)
+        if (roll === 1) {
+          for (var i = 10; i > (10-firstRoll); i--)
+          $("#b" + i).hide();
+        }
+        if (roll != 1) {
+          for (var i = 10; i >= 0; i--)
+          $("#b" + i).show();
+        }
   });
 
   $( "#b10" ).click(function() {
@@ -175,6 +239,11 @@ $( document ).ready(function() {
           afterFrame(frame);
         }
       };
+
+      if (roll === 1) {
+        for (var i = 10; i > (10-firstRoll); i--)
+        $("#b" + i).hide();
+      }
 
       function hidePins(roll,firstRoll) {
         if (roll === 1) {

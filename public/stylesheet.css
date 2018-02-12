@@ -1,8 +1,13 @@
+h1, h2, h3 {
+  font-family: sans-serif;
+}
+
 table, th, td {
-  font-family: cursive;
+  font-family: sans-serif;
   width: 20px;
   border: 1px solid black;
   border-collapse: collapse;
+  margin-bottom: 60px;
 }
 th, td {
   height: 20px;
@@ -10,3 +15,60 @@ th, td {
   max-height: 20px;
   max-width: 100px;
   text-align: center;
+}
+.bowling-form button {
+    border-radius: 50%;
+    background: red;
+    padding: 20px;
+    width: 50px;
+    height: 50px;
+    text-align:center
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border: 0.5px solid black;
+}
+
+.bowling-form button:hover {
+    background-color: white; /* Green */
+    color: red;
+}
+
+#newgame {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: black;
+  border: none;
+  color: #FFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 300px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#newgame span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#newgame span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#newgame:hover span {
+  padding-right: 25px;
+}
+
+#newgame:hover span:after {
+  opacity: 1;
+  right: 0;
+}

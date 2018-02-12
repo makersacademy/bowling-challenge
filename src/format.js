@@ -25,6 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
    return "rgb(" + a + ", " + b + ", " + c + ")"
 }
 
+function colours() {
+  document.getElementById('scorecardLabels').style.backgroundColor = colourGen();
+  document.getElementById('scoreCardScores').style.backgroundColor = colourGen();
+  document.getElementById('frameResults').style.backgroundColor = colourGen();
+  document.body.style.backgroundColor = colourGen();
+  document.body.style.color = colourGen();
+}
+
   // this logic should be in model not in the formatting page...
 
   let strikeConverter = rolls => rolls.map(roll => (roll === STRIKE ? STRIKE_SYMBOL : roll));
@@ -52,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  let roll = (value) => { game.play(value); setTotal(); individualScores(); showRolls(); };
+  let roll = (value) => { game.play(value); setTotal(); individualScores(); showRolls(); colours();};
 
   let rollButton = (pins) => {
     const btn = document.createElement('button');
@@ -88,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-
+  colours();
   setTotal();
   showScoreButtons();
   createScoreCard();

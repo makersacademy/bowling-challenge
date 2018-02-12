@@ -52,4 +52,4 @@ To-do
 -------
 
 1. Refactor bonusPoints()
-2. Disable buttons according to the number of pins left in each framr
+2. Better tests

@@ -52,5 +52,4 @@ To-do
 -------
 
 1. Refactor bonusPoints()
-2. Refactor one method per button in interface.js into a single method which takes arguments (currentTarget.innerHTML)
-3. Disable buttons according to the number of pins left in each framr
+2. Disable buttons according to the number of pins left in each framr

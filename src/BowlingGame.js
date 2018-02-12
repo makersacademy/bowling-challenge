@@ -65,11 +65,11 @@ BowlingGame.prototype.changeFrame = function() {
 };
 
 BowlingGame.prototype.updatingPlayerScore = function(pinsDown) {
-	this.player.score += pinsDown * this.bonus.pop().valueOf()
+	this.player.score += pinsDown + this.bonus.pop().valueOf()
 };
 
-BowlingGame.prototype.assignBonus = function() {
-	if( this.isStrike() && consecutiveStrikes < 3) {
+BowlingGame.prototype.assignBonus = function(consecutiveStrikes) {
+	if( this.isStrike() && this.consecutiveStrikes < 3) {
 		consecutiveStrikes += 1
 		return this.bonus = [2,2]
 	}

@@ -4,12 +4,31 @@ describe("Game", function() {
 	var game;
 	var frame;
 	var next_frame;
+	var final_frame;
 
 	beforeEach(function() {
 		game =  new Game();
 		frame = jasmine.createSpyObj('frame', {
 			'isScore': 5,
 			'isAstrike': true,
+			'isAspare': true,
+			'recBonus': 5
+		});
+		final_frame = jasmine.createSpyObj('final_frame', {
+			'isScore': 10,
+			'isAstrike': true,
+			'isAspare': false,
+			'recBonus': 5
+		});
+		final_frame2 = jasmine.createSpyObj('final_frame2', {
+			'isScore': 10,
+			'isAstrike': false,
+			'isAspare': false,
+			'recBonus': 5
+		});
+		final_frame3 = jasmine.createSpyObj('final_frame3', {
+			'isScore': 10,
+			'isAstrike': false,
 			'isAspare': true,
 			'recBonus': 5
 		});
@@ -44,24 +63,70 @@ describe("Game", function() {
 		});
 
 		it("should update the current score to the sum of all submitted frames", function() {
-			debugger;
-			game.score = 50
-			debugger;
+			game.submittedframes = [frame];
 			game.recordFrame(frame);
-			debugger;
-			expect(game.score).toEqual(55);
+			expect(game.score).toEqual(10);
 		});
 
-		it("should calculate the score when a frame is submitted", function() {
-			game.frametally = 8;
-			game.score = 100;
-			expect(game.recordFrame(frame)).toEqual("Frame " + game.frametally + " of 10 complete. Your current score is 100");
+		it("should calculate a sum of all submitted/completed frames", function(){
+			game.submittedframes = [frame, frame, frame];
+			game.recordFrame(frame);
+			expect(game.score).toEqual(20);
 		});
+    //
+		// it("should calculate the score of an ongoing game", function() {
+		// 	game.submittedframes = [frame, frame, frame];
+		// 	game.frametally = 3;
+		// 	game.recordFrame(frame);
+		// 	expect(game.calculateScore()).toEqual("Frame " + game.frametally + " of 10 complete. Your current score is 20");
+		// });
 
-		it("should calculate the final score when the frame tally reaches 10", function() {
+		it("should calculate a final score when the frame tally reaches 10", function() {
+			game.submittedframes = [frame, frame, frame, frame, frame, frame, frame, frame, frame];
 			game.frametally = 9;
-			game.score = "100";
-			expect(game.recordFrame(frame)).toEqual("Game is now concluded. Your final score is: 100");
+			game.recordFrame(final_frame2);
+			expect(game.calculateScore()).toEqual("Game is now concluded. Your final score is: 55");
+		});
+
+		it("should prompt the player to roll twice again if they hit a strike in the final frame", function(){
+			game.submittedframes = [frame, frame, frame, frame, frame, frame, frame, frame, frame];
+			game.frametally = 9;
+			game.recordFrame(final_frame);
+			expect(game.calculateScore()).toEqual("You have hit a strike in the final frame, you have 2 bonus rolls remaining. Please roll again.");
+		});
+
+		it("should prompt the player to roll once again if they hit a spare in the final frame", function(){
+			game.submittedframes = [frame, frame, frame, frame, frame, frame, frame, frame, frame];
+			game.frametally = 9;
+			game.recordFrame(final_frame3);
+			game.bonus_tenth_rolls = 1;
+			expect(game.calculateScore()).toEqual("You have hit a spare in the final frame, you have " + game.bonus_tenth_rolls + " bonus rolls remaining. Please roll again.");
+		});
+
+		it("should evaluate a strike in the final frame", function() {
+			game.submittedframes = [frame, frame, frame, frame, frame, frame, frame, frame, frame];
+			game.frametally = 10;
+			game.isTenthFrameStrike(frame);
+			expect(game.tennerstrike).toEqual(true);
+		});
+
+		it("should evaluate a spare in the final frame", function() {
+			game.submittedframes = [frame, frame, frame, frame, frame, frame, frame, frame, frame];
+			game.frametally = 10;
+			game.isTenthFrameSpare(final_frame3);
+			expect(game.tennerspare).toEqual(true);
+		});
+
+		it("should note if a player records a Gutter Game", function() {
+			game.frametally = 10;
+			game.score = 0;
+			expect(game.calculateScore()).toEqual("You have hit a Gutter Game!!! Boo-effing-hoo!!! You score nul points.");
+		});
+
+		it("should note if a player records a Perfect Game", function() {
+			game.tennerstrike = true;
+			game.score = 300;
+			expect(game.calculateScore()).toEqual("You have hit a Perfect Score!!! Bowling heaven!!! Respect!!!");
 		});
 	});
 
@@ -71,7 +136,7 @@ describe("Game", function() {
 			expect(game.onStrike()).toEqual(true);
 		});
 
-		it("should expose whether a previous frame is a strike", function() {
+		it("should expose whether a previous frame is a spare", function() {
 			game.submittedframes = [frame];
 			expect(game.onSpare()).toEqual(true);
 		});

@@ -28,10 +28,6 @@ $ git clone https://github.com/bpourian/bowling-challenge.git
 ```
 $ cd bowling-challenge
 ```
-* important to run bundle
-```
-$ bundle
-```
 * finally type in the following command and enjoy the app
 ```
 $ open index.html

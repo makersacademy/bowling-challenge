@@ -1,0 +1,78 @@
+.textbox {
+ font-size: 50px !important;
+ width: auto;
+ position: relative;
+ color: #fff;
+ text-align: center;
+ padding: 1em 1em;
+ margin: 1em auto 0.5em;
+}
+
+body {
+  font-family: 'Lobster', cursive;
+  background-color: #BDBDD7;
+}
+
+.panel-body {
+  font-size: 30px;
+  color: #63A5C7;
+  padding-bottom: 40px;
+  height: 50px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.btn {
+  padding: 10px;
+  color: black;
+  width: 37px;
+  height: 37px;
+  border-radius: 20px;
+}
+
+.btn:hover {
+  color: #333333;
+  background-color: #829db6;
+}
+
+table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 0.5em;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #E8D2AE;
+    color: white;
+}
+
+tbody {
+    background-color: lightgrey;
+    font-weight: thin;
+}
+
+tfoot {
+    background-color: lightblue;
+}
+
+th, td {
+    border: 5px solid white;
+    text-align: center;
+    padding: 8px;
+}
+
+#newgame {
+  font-family: 'Lobster', cursive;
+  font-size: 20px;
+  color: #F23557;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+  padding: 5px;
+  border-radius: 20px;
+}

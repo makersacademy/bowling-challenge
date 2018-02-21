@@ -5,7 +5,7 @@ body {
 }
 
 th {
-  background-color: black;
+  background-color: grey;
 }
 
 tr:nth-child(even) {

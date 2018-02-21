@@ -1,77 +1,67 @@
-
-Bowling Challenge
-=================
+[Scenario](#scenario) | [Approach](#approach) | [Extention](#extention) | [Setup](#Setup)| [Play](#Play) | [Technologies](#Technologies)
 
 
-* Challenge time: rest of the day and weekend.
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+# Bowling
 
-## The Task
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+## Scenario <a name= "scenario"></a>
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+You've set up some pins and want to play a casual game of bowling on your own. You like to be laid back and casual, but at the same time obcessively following the rules to the letter. How will you keep score?!
 
-As usual please start by
+Great news, there's a website that you can input your score, and it will add up and calculate how much you've got. Following traditional bowling rules. It will never cease to amaze! 
 
-* Forking this repo
+## Approach <a name= "approach"></a>
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+I set myself 4 targets starting this challenge 
+  
+   - No Jquery (because, why not make things harder?)
+   - Use the class formatting from ES6 so I could get used to that. 
+   - After passing tests, make sure they also fail for the **right reasons** 
+   - Focus on extendability in design.
+   
+As usual I tried to follow test first, build later. And worked on planning and designing my system. Before building the programme I designed 3 different structures, chose the simplest one and worked on that. Had I found time, I would like to try out the other two designs. Which I will try and put on here at some point.
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+One thing I would do building this again, is instead of building all the backend and all the front end seperately, is add one feature at a time. I feel this would have helped me get less stuck at points but also kept the user at the forefront of my mind when building. By doing all the backend first I noticed a few integration issues with the fronted, which led to some messy code...
 
-Also, don't generate random rolls. Trust us on this one.
+## Extention <a name= "extention"></a>
 
-### Optional Extras
+If I'd have had more time, then I would have done 3 things 
+1) Created a rulebook class/game log class to extract out responsibility
+2) Styled it nicer - bit more time on the css
+3) Refactor my tests more and make sure there's no repetition
+4) Moved my format.js into two files, a controller and a views section (or something similar)
 
-In any order you like:
+I would also be interested to see what building the game, and just putting all the rolls in an array would be like. 
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+## Setup <a name= "Setup"></a>
+-------
+ 
+1) Clone this repo [https://github.com/Tagrand/bowling-challenge.git](https://github.com/Tagrand/bowling-challenge.git)
+2) Open the index page
+3) Enjoy!
 
-## Bowling — how does it work?
+(For extra fun go to format.js:
 
-### Strikes
+```
+1) Uncomment the colour code
+2) Add colour() to the bottom of the file where the other methods are
+3) For even more fun, add colour(); to the end of the rolls.
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+```
+Then play again! 
 
-### Spares
+## How to play <a name= "Play"></a>
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+### Basic Rules
 
-### 10th frame
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+## Technologies used  <a name= "Technologies"></a>
+  - Javascript 
+  - Jasmine
+  - HTML
+  - CSS
+  
+## Acknowledgements
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+ Thanks to @MakersAcademy for providing the challenge, and as always, google, for continuing to listen to all my many questions. 

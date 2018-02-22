@@ -40,9 +40,8 @@ Requirements
 Instructions
 -------
 
-#### Running locally:
+The app is available at https://ealitten.github.io/bowling-challenge/
 
-- Open index.html
 - Click on a numbered button to input how many pins you knock down
 - The game will automatically move onto the next frame once one is full
 - Your total score is shown at the top, and running totals for each frame in the scorecard below

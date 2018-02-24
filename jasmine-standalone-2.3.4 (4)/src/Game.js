@@ -35,3 +35,14 @@ Game.prototype.spares = function () {
   }
   return spares;
 }
+
+Game.prototype.strikes = function () {
+  var strikes = 0;
+  for (i = 0; i < this.pairs.length; i++) {
+    if (parseInt(Object.values(this.pairs[i])) === 10) {
+      strikes += parseInt(Object.values(this.pairs[i+1]));
+      strikes += parseInt(Object.values(this.pairs[i+2]));
+    }
+  }
+  return strikes;
+}

@@ -62,6 +62,13 @@ describe("Game", function() {
       player.roll(2);
       expect(game.spares()).toEqual(7);
     });
+
+    it("calculates strikes", function() {
+      player.roll(10);
+      player.roll(7);
+      player.roll(2);
+      expect(game.strikes()).toEqual(9);
+    });
   });
 
 });

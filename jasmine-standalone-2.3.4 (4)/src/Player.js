@@ -23,7 +23,7 @@ Player.prototype._addToPairs = function(number) {
     hash[this.currentGame._currentFrame().toString()] = number;
     this.currentGame.pairs.push(hash);
     var hash2 = {};
-    hash2[this.currentGame._currentFrame().toString()];
+    hash2[this.currentGame._currentFrame().toString()] = undefined;
     this.currentGame.pairs.push(hash2);
   } else {
     var hash = {};

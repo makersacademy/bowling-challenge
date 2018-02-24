@@ -76,7 +76,7 @@ Game.prototype.generalScore = function() {
 }
 
 Game.prototype.isNotNull = function(stuff) {
-  if (Object.values(stuff).length !== 0) {
+  if (Object.values(stuff)[0] !== undefined) {
     return true;
   } else {
     return false;

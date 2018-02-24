@@ -1,5 +1,9 @@
-var Game = function() {};
+var Game = function(frameOne = new BowlingFrame()) {
+  this.frameOne = frameOne;
+};
 
-Game.prototype.readScore = function(bowlingFrame) {
-  return bowlingFrame.total();
+Game.prototype = {
+  readScore: function(frame) {
+    return frame.total();
+  }
 };

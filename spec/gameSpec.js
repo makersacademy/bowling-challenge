@@ -3,12 +3,12 @@ describe('Game', function() {
   var bowlingFrame;
 
   beforeEach(function() {
-    game = new Game();
     bowlingFrame = {
       total: function() {
         return 8;
       }
     };
+    game = new Game(bowlingFrame);
   });
 
   describe('.readScore', function() {

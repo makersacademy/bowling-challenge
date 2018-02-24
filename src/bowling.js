@@ -1,7 +1,7 @@
 var BowlingFrame = function() {
   this.firstRollScore;
   this.secondRollScore;
-  this.total;
+  this.totalScore;
 };
 
 BowlingFrame.prototype.firstRoll = function() {

@@ -5,7 +5,7 @@ My approach
 ------
 Pre-code:
 * I read through the Getting Started section of ESLint in order to ensure consistency and code quality throughout the project. Following some recommendations, I decided the use the AirBnB style guide for JS. More information about ESLint can be found here: https://eslint.org/docs/user-guide/getting-started
-* Next, due to the complexity of the project, I spent quite a good amount of time on diagramming and design, in order to optimise my workflow later on and have a clear picture on how different features and app bits relate with the rest.
+* Next, due to the complexity of the project, I spent quite a good amount of time on diagramming and designing the app, in order to optimise my workflow later on and have a clear picture on how different features and app bits are linked.
 
 
 Bowling Challenge

@@ -8,7 +8,7 @@ Player.prototype.newGame = function(game) {
 
 Player.prototype.roll = function(number) {
   this.currentGame._addFrame();
-  this.currentGame.scores.push(number);
+  this.currentGame.rolls.push(number);
   this._addToPairs(number);
 }
 

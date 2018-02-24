@@ -11,7 +11,7 @@ describe("Game", function() {
   describe("beginning of the game", function() {
 
     it("has an empty array of rolls at the beginning", function() {
-      expect(game.scores).toEqual([]);
+      expect(game.rolls).toEqual([]);
     });
 
     it("has empty array of frames at the beginning", function() {
@@ -19,7 +19,7 @@ describe("Game", function() {
     });
   });
 
-  describe("many-rolls game", function() {
+  describe("many-rolls game - scores, ", function() {
 
     beforeEach(function() {
       player.roll(5);
@@ -29,7 +29,7 @@ describe("Game", function() {
     });
 
     it("adds rolls to rolls", function() {
-      expect(game.scores).toEqual([5, 6, 7, 8]);
+      expect(game.rolls).toEqual([5, 6, 7, 8]);
     });
 
     it("adds frames to frames", function() {

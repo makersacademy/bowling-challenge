@@ -1,5 +1,5 @@
 function Game() {
-  this.scores = [];
+  this.rolls = [];
   this.frames = [];
   this.pairs = [];
 }

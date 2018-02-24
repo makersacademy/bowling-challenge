@@ -19,4 +19,13 @@ describe('Bowling', function() {
       expect(bowling.secondRoll()).toBe(2);
     });
   });
+
+  describe('.total', function() {
+    it('returns the total score from the two rolls', function() {
+      spyOn(Math, 'random').and.returnValue(0.4);
+      bowling.firstRoll();
+      bowling.secondRoll();
+      expect(bowling.total()).toBe(6);
+    });
+  });
 });

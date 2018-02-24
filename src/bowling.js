@@ -1,5 +1,7 @@
 var Bowling = function() {
   this.firstRollScore;
+  this.secondRollScore;
+  this.total;
 };
 
 Bowling.prototype.firstRoll = function() {
@@ -9,5 +11,9 @@ Bowling.prototype.firstRoll = function() {
 
 Bowling.prototype.secondRoll = function() {
   var roll = Math.floor(Math.random() * (11 - this.firstRollScore));
-  return roll;
+  return (this.secondRollScore = roll);
+};
+
+Bowling.prototype.total = function() {
+  return (this.total = this.firstRollScore + this.secondRollScore);
 };

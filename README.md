@@ -8,7 +8,7 @@ A one-player game of bowling.
 
 1) Test drive a hypothetical gutter game where every roll is a 0.
 2) Build on this logic to test drive a hypothetical game where every roll is a 1.
-3) Test drive a hypothetical game where player bowls a spare and then zeros for their remaining bowls.
+3) Test drive a hypothetical game where player bowls a spare or a strike and then zeros for their remaining bowls.
 
 ### Screenshot
 

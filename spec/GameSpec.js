@@ -32,4 +32,12 @@ describe('Game', function() {
     expect(game.score()).toBe(16);
   });
 
+  it('can roll a strike', function() {
+    game.roll(10);
+    game.roll(5);
+    game.roll(3);
+    rollMany(0, 16);
+    expect(game.score()).toBe(26);
+  });
+
 });

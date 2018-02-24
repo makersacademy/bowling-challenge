@@ -1,34 +1,52 @@
 'use strict';
 
 var Bowling = function() {
-  this.frameScores = [];
+  this.allFrames = [];
   this.frame = 0;
 };
 
-Bowling.prototype.score = function(balls) {
-  var total = 0;
+Bowling.prototype = {
+  score: function(balls) {
+    this.createAllFramesArray(balls);
+    return this.calculateTotal();
+  },
 
-  while (this.frameScores.length < 9) {
-    if (balls[0] === 10) {
-      this.frame = balls.splice(0, 1);
-      this.frame.push(balls[0], balls[1]);
-    } else if (balls[0] + balls[1] === 10){
-      this.frame = balls.splice(0,2);
-      this.frame.push(balls[0]);
-    } else {
-      this.frame = balls.splice(0,2);
+  createAllFramesArray: function(balls) {
+    while (this.allFrames.length < 10) {
+      if (balls[0] === 10) {
+        this.calculateStrike(balls);
+      } else if (balls[0] + balls[1] === 10){
+        this.calculateSpare(balls);
+      } else {
+        this.frame = balls.splice(0,2);
+      }
+      this.addFrameToAllFramesArray();
     }
-    this.frameScores.push(this.frame);
+  },
+
+  calculateStrike: function(balls) {
+    this.frame = balls.splice(0, 1);
+    this.frame.push(balls[0], balls[1]);
+  },
+
+  calculateSpare: function(balls) {
+    this.frame = balls.splice(0,2);
+    this.frame.push(balls[0]);
+  },
+
+  addFrameToAllFramesArray: function() {
+    this.allFrames.push(this.frame);
     this.frame = 0;
-  }
+  },
 
-  this.frameScores.push(balls);
-  this.frameScores.forEach(function(frame) {
-    frame = frame.reduce(function (acc, curr) {
-      return acc + curr;
+  calculateTotal: function() {
+    var total = 0;
+    this.allFrames.forEach(function(frame) {
+      frame = frame.reduce(function (acc, curr) {
+        return acc + curr;
+      });
+      total += frame;
     });
-    total += frame;
-  });
-
-  return total;
-};
+    return total;
+  }
+}

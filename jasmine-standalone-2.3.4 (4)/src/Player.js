@@ -1,22 +1,13 @@
 function Player() {
+  this.score = 0;
 }
-Player.prototype.play = function(song) {
-  this.currentlyPlayingSong = song;
-  this.isPlaying = true;
-};
 
-Player.prototype.pause = function() {
-  this.isPlaying = false;
-};
+Player.prototype.play = function(game) {
+  this.currentGame = game;
+}
 
-Player.prototype.resume = function() {
-  if (this.isPlaying) {
-    throw new Error("song is already playing");
-  }
-
-  this.isPlaying = true;
-};
-
-Player.prototype.makeFavorite = function() {
-  this.currentlyPlayingSong.persistFavoriteStatus(true);
-};
+Player.prototype.roll = function(number) {
+  this.currentRoll = number;
+  this.currentGame.rolls.push(number);
+  this.score = this.currentGame.sum();
+}

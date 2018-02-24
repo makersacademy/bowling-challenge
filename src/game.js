@@ -9,6 +9,8 @@ console.log(this.currentScore);
 Game.prototype.calculateScore = function() {
   score2 = 0;
   for( var frame of this.allFrames) {
-    this.currentScore += frame;
+    for( var roll of frame) {
+      this.currentScore += roll;
+    }
   }
 };

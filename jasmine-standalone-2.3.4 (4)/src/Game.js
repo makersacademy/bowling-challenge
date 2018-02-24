@@ -33,8 +33,10 @@ Game.prototype.basicScore = function () {
 Game.prototype.spares = function() {
   var spares = 0;
   for (i = 0; i < this.pairs.length; i+=2) {
-    if ((parseInt(Object.values(this.pairs[i])) + parseInt(Object.values(this.pairs[i+1]))) === 10) {
-      spares += parseInt(Object.values(this.pairs[i+2]));
+    if ( this.isNotNull(this.pairs[i+1]) ) {
+      if (parseInt(Object.values(this.pairs[i])) + parseInt(Object.values(this.pairs[i+1])) === 10) {
+      spares += parseInt(Object.values(this.pairs[i+2])[0]);
+      }
     }
   }
   return spares;
@@ -70,4 +72,10 @@ Game.prototype.generalScore = function() {
   whole += this.spares();
   whole += this.strikes();
   return whole
+}
+
+Game.prototype.isNotNull = function(stuff) {
+  if (stuff !== null) {
+    return true;
+  }
 }

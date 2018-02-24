@@ -2,7 +2,6 @@ function Game() {
   this.rolls = [];
   this.frames = [];
   this.pairs = [];
-  // this.score = 0;
 }
 
 Game.prototype._addFrame = function() {
@@ -25,4 +24,14 @@ Game.prototype.basicScore = function () {
     counter += roll
   })
   return counter;
+}
+
+Game.prototype.spares = function () {
+  var spares = 0;
+  for (i = 0; i < this.pairs.length; i+=2) {
+    if ((parseInt(Object.values(this.pairs[i])) + parseInt(Object.values(this.pairs[i+1]))) === 10) {
+      spares += parseInt(Object.values(this.pairs[i+2]));
+    }
+  }
+  return spares;
 }

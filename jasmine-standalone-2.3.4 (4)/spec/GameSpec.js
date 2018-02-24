@@ -54,6 +54,14 @@ describe("Game", function() {
       player.roll(2);
       expect(game.basicScore()).toEqual(15);
     });
+
+    it("calculates spares", function() {
+      player.roll(5);
+      player.roll(5);
+      player.roll(7);
+      player.roll(2);
+      expect(game.spares()).toEqual(7);
+    });
   });
 
 });

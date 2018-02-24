@@ -25,7 +25,7 @@ Bowling.prototype.score = function(balls) {
   this.frameScores.push(balls);
   this.frameScores.forEach(function(frame) {
     frame = frame.reduce(function (acc, curr) {
-       return acc + curr;
+      return acc + curr;
     });
     total += frame;
   });

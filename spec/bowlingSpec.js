@@ -2,12 +2,12 @@
 
 describe('Bowling', function() {
   var bowling;
-  var gutterGame = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-  var noTensGame = [7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2]
-  var perfectGame = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
-  var awkwardGame = [10, 10, 10, 9, 1, 10, 10, 10, 9, 1, 10, 10, 10, 10]
-  var awkwardGameTwo = [10, 5, 5, 4, 3, 7, 3, 10, 8, 1, 7, 2, 4, 3, 10, 7, 3, 7]
-  var awkwardGameThree = [10, 10, 7, 3, 10, 10, 8, 2, 10, 10, 9, 1, 5, 0]
+  var gutterGame = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  var noTensGame = [7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2, 7, 2];
+  var perfectGame = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+  var awkwardGame = [10, 10, 10, 9, 1, 10, 10, 10, 9, 1, 10, 10, 10, 10];
+  var awkwardGameTwo = [10, 5, 5, 4, 3, 7, 3, 10, 8, 1, 7, 2, 4, 3, 10, 7, 3, 7];
+  var awkwardGameThree = [10, 10, 7, 3, 10, 10, 8, 2, 10, 10, 9, 1, 5, 0];
 
   beforeEach(function(){
     bowling = new Bowling();

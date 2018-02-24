@@ -2,12 +2,14 @@ function Player() {
   this.score = 0;
 }
 
-Player.prototype.play = function(game) {
+Player.prototype.newGame = function(game) {
   this.currentGame = game;
 }
 
 Player.prototype.roll = function(number) {
-  this.currentRoll = number;
-  this.currentGame.rolls.push(number);
-  this.score = this.currentGame.sum();
+  this.currentGame.addFrame();
+  this.currentGame.scores.push(number);
+  var hash = {};
+  hash[this.currentGame.currentFrame().toString()] = number;
+  this.currentGame.hashes.push(hash);
 }

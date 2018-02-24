@@ -12,7 +12,7 @@ describe("Player", function() {
   });
 
   it("plays a game", function() {
-    player.play(game);
+    player.newGame(game);
     expect(player.currentGame).toEqual(game);
   });
 

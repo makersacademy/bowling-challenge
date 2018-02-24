@@ -5,22 +5,16 @@
     <title>Bowling Challenge</title>
   </head>
   <body>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
     <article class="scoreboard">
+      <h2 id="player"></h2>
       <h3>Scoreboard</h3>
-      <table>
+      <table id="scoreboard">
         <tr>
-          <th>Player</th>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-          <th>6</th>
-          <th>7</th>
-          <th>8</th>
-          <th>9</th>
-          <th>10</th>
-          <th>Total</th>
+          <th>Frame</th>
+          <th>Roll</th>
+          <th>Knocked down pins</th>
+          <th>Total score</th>
         </tr>
       </table>
     </article>
@@ -33,5 +27,11 @@
 
       <button id="bowl-button" type="button" name="button">Bowl</button>
     </article>
+
+
+    <script type="text/javascript" src="src/game.js"></script>
+    <script type="text/javascript" src="src/bowling.js"></script>
+    <script type="text/javascript" src="src/scoreboard.js"></script>
+    <script type="text/javascript" src="src/interface.js"></script>
   </body>
 </html>

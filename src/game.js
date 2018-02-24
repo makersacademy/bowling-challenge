@@ -1,5 +1,9 @@
-var Game = function(frameOne = new BowlingFrame()) {
+var Game = function(
+  frameOne = new BowlingFrame(),
+  scoreboard = new Scoreboard()
+) {
   this.frameOne = frameOne;
+  this.scoreboard = scoreboard;
 };
 
 Game.prototype = {

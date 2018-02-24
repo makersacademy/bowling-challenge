@@ -38,9 +38,6 @@ describe('Game', function() {
   });
 
   describe('.strikeTracker', function() {
-    var game;
-    var bowlingFrame;
-
     beforeEach(function() {
       bowlingFrame = {
         firstRoll: function() {
@@ -58,6 +55,21 @@ describe('Game', function() {
     it('auto populates secondRollScore with 0 if it was a strike', function() {
       game.strikeTracker(game.frameOne);
       expect(game.frameOne.secondRollScore).toBe(0);
+    });
+  });
+
+  describe('.spareTracker', function() {
+    beforeEach(function() {
+      bowlingFrame = {
+        total: function() {
+          return 10;
+        }
+      };
+      game = new Game(bowlingFrame);
+    });
+
+    it('returns true if it was a spare', function() {
+      expect(game.spareTracker(game.frameOne)).toBe(true);
     });
   });
 });

@@ -7,6 +7,14 @@ Pre-code:
 * I read through the Getting Started section of ESLint in order to ensure consistency and code quality throughout the project. Following some recommendations, I decided the use the AirBnB style guide for JS. More information about ESLint can be found here: https://eslint.org/docs/user-guide/getting-started
 * Next, due to the complexity of the project, I spent quite a good amount of time on diagramming and designing the app, in order to optimise my workflow later on and have a clear picture on how different features and app bits are linked.
 
+Regarding the development process, I tried to stick by this flow as much as possible:
+* Unit Tests (Frame and Class)
+* Implementation
+* Feature Tests (visually) on the browser, running the debugger when necessary
+* Refactoring
+
+One note on refactoring: ESLint was extremely helpful in this process. Also, I do not regret having spent some time on setting up the Jasmine plugin. I loaded the AirBnB style guide within ESLint by default, I find it extremely solid and coherent.
+
 
 Bowling Challenge
 =================

@@ -10,4 +10,10 @@ describe('Frame', () => {
       expect(frame.pins.length).toEqual(10);
     });
   });
+
+  describe('#roll', () => {
+    it('it does a roll and the returned value is the number of pins knocked', () => {
+      expect(frame.roll(6)).toEqual(6);
+    });
+  });
 });

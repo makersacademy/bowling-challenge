@@ -3,5 +3,9 @@
 // But needed for jQuery I believe...
 
 function Frame() {
-  this.pins = [1,2, 3, 4, 5, 6, 7, 8, 9, 10];
+  this.pins = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 }
+
+Frame.prototype.roll = function (pinsKnocked) {
+  return pinsKnocked;
+};

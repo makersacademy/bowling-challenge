@@ -1,6 +1,8 @@
 {
     "extends": "airbnb-base",
-    "extends": "plugin:jasmine/recommended",
+
+    /// This one prevents ESLint from running in JS files within src directory
+    // "extends": "plugin:jasmine/recommended",
 
     "plugins": [
         "jasmine"

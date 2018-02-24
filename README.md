@@ -1,5 +1,21 @@
+# Bowling Challenge
 
-Bowling Challenge
+### Description
+
+A one-player game of bowling.
+
+### Development Process
+
+1) Start with a Game class that keeps track of the score.
+
+### Screenshot
+
+TBC
+
+### Author
+
+Terence Allitt
+
 =================
 
 

@@ -1,11 +1,7 @@
 'use strict';
 
 function Game() {
-  this.rolls = [];
-};
 
-Game.prototype.roll = function (pins) {
-  this.rolls.push(pins)
 };
 
 Game.prototype.score = function () {
@@ -26,14 +22,6 @@ Game.prototype.score = function () {
     }
   }
   return result;
-
-  function isSpare() {
-    return game.rolls[rollIndex] + game.rolls[rollIndex + 1] === 10;
-  }
-
-  function isStrike() {
-    return game.rolls[rollIndex] === 10;
-  }
 
   function getSpareScore() {
     return game.rolls[rollIndex] + game.rolls[rollIndex + 1] + game.rolls[rollIndex + 2];

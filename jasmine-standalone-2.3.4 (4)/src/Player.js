@@ -8,14 +8,26 @@ Player.prototype.newGame = function(game) {
 
 Player.prototype.roll = function(number) {
   if (this.currentGame.isInProgress) {
-    this.currentGame._addFrame();
     this.currentGame.rolls.push(number);
+    this.currentGame._addFrame();
+    if (number === 10 ){
+      this.currentGame._addFrame();
+    }
     this._addToPairs(number);
   }
 }
 
 Player.prototype._addToPairs = function(number) {
-  var hash = {};
-  hash[this.currentGame._currentFrame().toString()] = number;
-  this.currentGame.pairs.push(hash);
+  if (number === 10 ) {
+    var hash = {};
+    hash[this.currentGame._currentFrame().toString()] = number;
+    this.currentGame.pairs.push(hash);
+    var hash2 = {};
+    hash2[this.currentGame._currentFrame().toString()] = "x";
+    this.currentGame.pairs.push(hash2);
+  } else {
+    var hash = {};
+    hash[this.currentGame._currentFrame().toString()] = number;
+    this.currentGame.pairs.push(hash);
+  }
 }

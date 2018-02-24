@@ -26,7 +26,8 @@ Game.prototype.calculateSpareScore = function() {
     var currentFrame = this.allFrames[frameIndex];
     var currentFrameScore = this.frameScore(currentFrame);
     var firstRollScore = this.firstRollScore(currentFrame);
-      if ((firstRollScore < 10) && (currentFrameScore === 10 )) {
+      if ((frameIndex + 1) === len) {continue;}
+      else if ((firstRollScore < 10) && (currentFrameScore === 10 ) && (frameIndex < 9)) {
         this.spareScore += this.allFrames[frameIndex+1][0];
       }
   }
@@ -34,19 +35,22 @@ Game.prototype.calculateSpareScore = function() {
 
 Game.prototype.calculateStrikeScore = function() {
   for( var frameIndex = 0, len = this.allFrames.length; frameIndex < len; frameIndex++) {
-    var currentFrame = this.allFrames[frameIndex];
-    var nextFrame = this.allFrames[frameIndex + 1];
-    var firstRollScore = this.firstRollScore(currentFrame);
-      if (firstRollScore === 10) {
-        var nextRollScore = this.firstRollScore(nextFrame);
-        if (nextRollScore === 10) {
-          var frameAfterNext = this.allFrames[frameIndex + 2];
-          this.strikeScore += (nextRollScore + (this.firstRollScore(frameAfterNext)));
+    if ((frameIndex + 1) === len) {continue;}
+    else {
+      var currentFrame = this.allFrames[frameIndex];
+      var nextFrame = this.allFrames[frameIndex + 1];
+      var firstRollScore = this.firstRollScore(currentFrame);
+        if (firstRollScore === 10 && frameIndex != 9) {
+          var nextRollScore = this.firstRollScore(nextFrame);
+          if (nextRollScore === 10 && frameIndex < 8) {
+            var frameAfterNext = this.allFrames[frameIndex + 2];
+            this.strikeScore += (nextRollScore + (this.firstRollScore(frameAfterNext)));
+          }
+          else {
+            this.strikeScore += (this.frameScore(nextFrame));
+          }
         }
-        else {
-          this.strikeScore += (this.frameScore(nextFrame));
-        }
-      }
+    }
   }
 };
 

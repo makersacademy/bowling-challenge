@@ -37,7 +37,7 @@ describe("Game", function() {
     player.roll(5);
     player.roll(6);
     player.roll(7);
-    expect(game.hashes).toEqual([{1:5}, {1:6}, {2:7}])
+    expect(game.pairs).toEqual([{1:5}, {1:6}, {2:7}])
   });
 
   it("returns last frame", function() {
@@ -47,7 +47,7 @@ describe("Game", function() {
     player.roll(7);
     player.roll(7);
     player.roll(7);
-    expect(game.currentFrame()).toEqual(3);
+    expect(game._currentFrame()).toEqual(3);
   });
 
 });

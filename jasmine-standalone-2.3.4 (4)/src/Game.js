@@ -1,10 +1,10 @@
 function Game() {
   this.scores = [];
   this.frames = [];
-  this.hashes = [];
+  this.pairs = [];
 }
 
-Game.prototype.addFrame = function() {
+Game.prototype._addFrame = function() {
   if (this.frames.length === 0 || this.frames.length === 1 ) {
     this.frames.push(1);
   } else if (this.frames[this.frames.length-1] !== this.frames[this.frames.length-2]) {
@@ -14,6 +14,6 @@ Game.prototype.addFrame = function() {
   }
 }
 
-Game.prototype.currentFrame = function() {
+Game.prototype._currentFrame = function() {
   return this.frames[this.frames.length-1];
 }

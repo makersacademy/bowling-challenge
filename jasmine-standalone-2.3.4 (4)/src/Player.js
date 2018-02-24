@@ -7,9 +7,13 @@ Player.prototype.newGame = function(game) {
 }
 
 Player.prototype.roll = function(number) {
-  this.currentGame.addFrame();
+  this.currentGame._addFrame();
   this.currentGame.scores.push(number);
+  this._addToPairs(number);
+}
+
+Player.prototype._addToPairs = function(number) {
   var hash = {};
-  hash[this.currentGame.currentFrame().toString()] = number;
-  this.currentGame.hashes.push(hash);
+  hash[this.currentGame._currentFrame().toString()] = number;
+  this.currentGame.pairs.push(hash);
 }

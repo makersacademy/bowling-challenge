@@ -5,7 +5,7 @@ function Game() {
 }
 
 Game.prototype.isInProgress = function() {
-  if ((this.frames.length < 20) || (this.frames.length === 20 && this.rolls[this.rolls.length-1] === 10) || (this.frames.length === 20 && (this.rolls[this.rolls.length-1] + this.rolls[this.rolls.length-2]) === 10) ) {
+  if (this._lessThan20() || this._endGameStrike() ||  this._endGameSpare()) {
     return true;
   } else {
     return false;
@@ -76,6 +76,30 @@ Game.prototype.generalScore = function() {
 
 Game.prototype.isNotNull = function(stuff) {
   if (Object.values(stuff)[0] !== undefined) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+Game.prototype._lessThan20 = function() {
+  if (this.frames.length < 20) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+Game.prototype._endGameStrike = function() {
+  if (this.frames.length === 20 && this.rolls[this.rolls.length-1] === 10) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+Game.prototype._endGameSpare = function() {
+  if (this.frames.length === 20 && (this.rolls[this.rolls.length-1] + this.rolls[this.rolls.length-2]) === 10) {
     return true;
   } else {
     return false;

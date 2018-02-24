@@ -19,7 +19,7 @@ Game.prototype._currentFrame = function() {
   return this.frames[this.frames.length-1];
 }
 
-Game.prototype.score = function () {
+Game.prototype.basicScore = function () {
   var counter = 0;
   this.rolls.map(function(roll) {
     counter += roll

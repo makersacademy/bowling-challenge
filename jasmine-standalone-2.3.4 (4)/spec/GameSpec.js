@@ -52,7 +52,7 @@ describe("Game", function() {
       player.roll(1);
       player.roll(7);
       player.roll(2);
-      expect(game.score()).toEqual(15);
+      expect(game.basicScore()).toEqual(15);
     });
   });
 

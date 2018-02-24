@@ -23,7 +23,9 @@ Game.prototype._currentFrame = function() {
 Game.prototype.basicScore = function () {
   var counter = 0;
   this.rolls.map(function(roll) {
-    counter += roll
+    if (roll !== null) {
+      counter += roll
+    }
   })
   return counter;
 }
@@ -55,7 +57,7 @@ Game.prototype.strikes = function() {
 }
 
 Game.prototype.isInProgress = function() {
-  if (this.frames[this.frames.length-1] === 10 && this.frames[this.frames.length-2] === 10 && this.frames[this.frames.length-3] === 10 ) {
+  if ((this.frames.length == 20 && this.frames[this.frames.length-1] !== 10) || (this.frames.length == 20 && (this.rolls[this.rolls.length-1] + this.rolls[this.rolls.length-2]) !== 10)) {
     return false;
   } else {
     return true;

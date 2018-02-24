@@ -42,8 +42,13 @@ Game.prototype.strikes = function() {
   var strikes = 0;
   for (i = 0; i < this.pairs.length; i++) {
     if (Object.values(this.pairs[i])[0] !== null && Object.values(this.pairs[i])[0] === 10) {
+      if (parseInt(Object.values(this.pairs[i+2])[0]) !== 10) {
       strikes += parseInt(Object.values(this.pairs[i+2])[0]);
       strikes += parseInt(Object.values(this.pairs[i+3])[0]);
+      } else {
+      strikes += parseInt(Object.values(this.pairs[i+2])[0]);
+      strikes += parseInt(Object.values(this.pairs[i+4])[0]);
+      }
     }
   }
   return strikes;

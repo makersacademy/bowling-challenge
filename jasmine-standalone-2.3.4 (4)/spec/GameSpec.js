@@ -19,7 +19,7 @@ describe("Game", function() {
     });
   });
 
-  describe("many-rolls game - scores, ", function() {
+  describe("many-rolls game - rolls, frames and pairs", function() {
 
     beforeEach(function() {
       player.roll(5);
@@ -42,6 +42,17 @@ describe("Game", function() {
 
     it("returns last frame", function() {
       expect(game._currentFrame()).toEqual(2);
+    });
+  });
+
+  describe("many-rolls game - counting score", function() {
+
+    it("calculates normal scores", function() {
+      player.roll(5);
+      player.roll(1);
+      player.roll(7);
+      player.roll(2);
+      expect(game.score()).toEqual(15);
     });
   });
 

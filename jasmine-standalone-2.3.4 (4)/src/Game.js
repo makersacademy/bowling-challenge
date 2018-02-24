@@ -2,6 +2,7 @@ function Game() {
   this.rolls = [];
   this.frames = [];
   this.pairs = [];
+  // this.score = 0;
 }
 
 Game.prototype._addFrame = function() {
@@ -16,4 +17,12 @@ Game.prototype._addFrame = function() {
 
 Game.prototype._currentFrame = function() {
   return this.frames[this.frames.length-1];
+}
+
+Game.prototype.score = function () {
+  var counter = 0;
+  this.rolls.map(function(roll) {
+    counter += roll
+  })
+  return counter;
 }

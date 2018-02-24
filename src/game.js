@@ -9,7 +9,8 @@ var Game = function() {
 Game.prototype.calculateTotalScore = function() {
   this.calculateBaseScore();
   this.calculateSpareScore();
-  this.totalScore = this.baseScore + this.spareScore;
+  this.calculateStrikeScore();
+  this.totalScore = this.baseScore + this.spareScore + this.strikeScore;
 };
 
 Game.prototype.calculateBaseScore = function() {

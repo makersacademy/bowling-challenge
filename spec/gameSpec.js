@@ -12,7 +12,7 @@ describe('Game', function(){
     game4 = new Game();
     game4.allFrames = [[5,3],[10,0],[4,3],[3,5]];
     game5 = new Game();
-    game5.allFrames = [[10,0],[10,0],[4,3],[3,5]];
+    game5.allFrames = [[10,0],[10,0],[4,6],[3,5]];
   });
 
   describe('#calculateBaseScore', function(){
@@ -34,13 +34,6 @@ describe('Game', function(){
     });
   });
 
-  describe('#calculateTotalScore', function(){
-    it('can add up the basic and spare score of game', function() {
-      game3.calculateTotalScore();
-      expect(game3.totalScore).toEqual(45);
-    });
-  });
-
   describe('#calculateStrikeScore', function(){
     it('can calculate a strike score where next roll is not another strike', function() {
       game4.calculateStrikeScore();
@@ -53,8 +46,22 @@ describe('Game', function(){
       game5.calculateStrikeScore();
       console.log(game5);
       console.log(game5.strikeScore);
-      expect(game5.strikeScore).toEqual(21);
+      expect(game5.strikeScore).toEqual(24);
     });
   });
+
+    describe('#calculateTotalScore', function(){
+      it('can add up the basic and spare score of game', function() {
+        game3.calculateTotalScore();
+        expect(game3.totalScore).toEqual(45);
+      });
+    });
+
+    describe('#calculateTotalScore', function(){
+      it('can add up the basic, spare and strike score of game', function() {
+        game5.calculateTotalScore();
+        expect(game5.totalScore).toEqual(65);
+      });
+    });
 
 });

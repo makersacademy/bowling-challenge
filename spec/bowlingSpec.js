@@ -8,7 +8,15 @@ describe('Bowling', function() {
   describe('.firstRoll', function() {
     it('Generates a random number from 1 to 10', function() {
       spyOn(Math, 'random').and.returnValue(0.6);
-      expect(bowling.firstRoll()).toBe(7);
+      expect(bowling.firstRoll()).toBe(6);
+    });
+  });
+
+  describe('.secondRoll', function() {
+    it('Generates a random number between 1 and 10, minus the first roll', function() {
+      spyOn(Math, 'random').and.returnValue(0.8);
+      bowling.firstRoll();
+      expect(bowling.secondRoll()).toBe(2);
     });
   });
 });

@@ -4,6 +4,14 @@ function Game() {
   this.pairs = [];
 }
 
+Game.prototype.isInProgress = function() {
+  if ((this.frames.length < 20) || (this.frames.length === 20 && this.rolls[this.rolls.length-1] === 10) || (this.frames.length === 20 && (this.rolls[this.rolls.length-1] + this.rolls[this.rolls.length-2]) === 10) ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 Game.prototype._addFrame = function() {
   if (this.frames.length === 20) {
       this.frames.push(10);
@@ -32,7 +40,7 @@ Game.prototype.basicScore = function () {
 
 Game.prototype.spares = function() {
   var spares = 0;
-  for (i = 0; i < this.pairs.length; i+=2) {
+  for (i = 0; i < this.pairs.length; i+=2) { //ustaw warunek, ze testowanie do 9 frame wlacznie
     if ( this.isNotNull(this.pairs[i+1]) ) {
       if (Object.values(this.pairs[i])[0] + Object.values(this.pairs[i+1])[0] === 10) {
         spares += Object.values(this.pairs[i+2])[0];
@@ -44,9 +52,8 @@ Game.prototype.spares = function() {
 
 Game.prototype.strikes = function() {
   var strikes = 0;
-  for (i = 0; i < this.pairs.length; i++) {
+  for (i = 0; i < this.pairs.length; i++) { //ustaw warunek, ze testowanie do 9 frame wlacznie
     if (Object.values(this.pairs[i])[0] === 10) {
-      // sprawdzic czy te pozniejsze istnieja
       if (Object.values(this.pairs[i+2])[0] !== 10) {
       strikes += Object.values(this.pairs[i+2])[0];
       strikes += Object.values(this.pairs[i+3])[0];
@@ -57,14 +64,6 @@ Game.prototype.strikes = function() {
     }
   }
   return strikes;
-}
-
-Game.prototype.isInProgress = function() {
-  if ((this.frames.length == 20 && this.frames[this.frames.length-1] !== 10) || (this.frames.length == 20 && (this.rolls[this.rolls.length-1] + this.rolls[this.rolls.length-2]) !== 10)) {
-    return false;
-  } else {
-    return true;
-  }
 }
 
 Game.prototype.generalScore = function() {

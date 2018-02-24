@@ -36,4 +36,28 @@ describe('Game', function() {
       });
     });
   });
+
+  describe('.strikeTracker', function() {
+    var game;
+    var bowlingFrame;
+
+    beforeEach(function() {
+      bowlingFrame = {
+        firstRoll: function() {
+          return 10;
+        },
+        firstRollScore: 10
+      };
+      game = new Game(bowlingFrame);
+    });
+
+    it('reads if the firstRoll was a strike', function() {
+      expect(game.strikeTracker(game.frameOne)).toBe(true);
+    });
+
+    it('auto populates secondRollScore with 0 if it was a strike', function() {
+      game.strikeTracker(game.frameOne);
+      expect(game.frameOne.secondRollScore).toBe(0);
+    });
+  });
 });

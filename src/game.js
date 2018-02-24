@@ -12,5 +12,13 @@ Game.prototype = {
       return frame.secondRoll();
     }
     return frame.firstRoll();
+  },
+
+  strikeTracker: function(frame) {
+    if (frame.firstRollScore === 10) {
+      frame.secondRollScore = 0;
+      return true;
+    }
+    return false;
   }
 };

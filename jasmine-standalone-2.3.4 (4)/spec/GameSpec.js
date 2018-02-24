@@ -47,28 +47,29 @@ describe("Game", function() {
 
   describe("many-rolls game - counting score", function() {
 
-    it("calculates normal scores", function() {
+    beforeEach(function() {
       player.roll(5);
       player.roll(1);
       player.roll(7);
+      player.roll(3);
+      player.roll(10);
+      player.roll(1);
       player.roll(2);
-      expect(game.basicScore()).toEqual(15);
+      player.roll(3);
+    });
+
+    it("calculates normal scores", function() {
+      expect(game.basicScore()).toEqual(32);
     });
 
     it("calculates spares", function() {
-      player.roll(5);
-      player.roll(5);
-      player.roll(7);
-      player.roll(2);
-      expect(game.spares()).toEqual(7);
+      expect(game.spares()).toEqual(10);
     });
 
     it("calculates strikes", function() {
-      player.roll(10);
-      player.roll(7);
-      player.roll(2);
-      expect(game.strikes()).toEqual(9);
+      expect(game.strikes()).toEqual(3);
     });
+
   });
 
 });

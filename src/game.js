@@ -5,5 +5,12 @@ var Game = function(frameOne = new BowlingFrame()) {
 Game.prototype = {
   readScore: function(frame) {
     return frame.total();
+  },
+
+  bowl: function(frame) {
+    if (typeof frame.firstRollScore == 'number') {
+      return frame.secondRoll();
+    }
+    return frame.firstRoll();
   }
 };

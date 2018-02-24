@@ -6,7 +6,8 @@ A one-player game of bowling.
 
 ### Development Process
 
-1) Start with a Game class that keeps track of the score.
+1) Test drive a hypothetical gutter game where every roll is a 0.
+2) Build on this logic to test drive a hypothetical game where every roll is a 1.
 
 ### Screenshot
 

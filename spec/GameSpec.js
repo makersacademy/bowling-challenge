@@ -8,15 +8,20 @@ describe('Game', function() {
     game = new Game();
   });
 
-  it('score starts at zero', function() {
-    expect(game.score).toEqual(0);
+  var rollMany = function (pins, rolls) {
+    for (var i = 0; i < rolls; i++) {
+      game.roll(pins);
+    }
+  };
+
+  it('can roll a gutter game', function() {
+    rollMany(0, 20);
+    expect(game.score()).toBe(0);
   });
 
-  describe('bowl', function() {
-    it('adds 1 bowl of pins to score', function() {
-      game.bowl(7);
-      expect(game.score).toEqual(7);
-    });
+  it('can roll a game of ones', function() {
+    rollMany(1, 20);
+    expect(game.score()).toBe(20);
   });
 
 });

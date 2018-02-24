@@ -43,8 +43,11 @@ Game.prototype.calculateStrikeScore = function() {
         if (firstRollScore === 10 && frameIndex != 9) {
           var nextRollScore = this.firstRollScore(nextFrame);
           if (nextRollScore === 10 && frameIndex < 8) {
-            var frameAfterNext = this.allFrames[frameIndex + 2];
-            this.strikeScore += (nextRollScore + (this.firstRollScore(frameAfterNext)));
+            if ((frameIndex + 2) === len) {continue;}
+            else {
+              var frameAfterNext = this.allFrames[frameIndex + 2];
+              this.strikeScore += (nextRollScore + (this.firstRollScore(frameAfterNext)));
+            }
           }
           else {
             this.strikeScore += (this.frameScore(nextFrame));

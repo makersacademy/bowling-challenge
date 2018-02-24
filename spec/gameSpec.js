@@ -73,7 +73,7 @@ describe('Game', function(){
 
     it('can handle scoring a 2 * strike when turn after next not happened yet', function() {
       game13.calculateStrikeScore();
-      expect(game13.strikeScore).toEqual(1);
+      expect(game13.strikeScore).toEqual(10);
     });
   });
 

@@ -28,7 +28,7 @@ Game.prototype.basicScore = function () {
   return counter;
 }
 
-Game.prototype.spares = function () {
+Game.prototype.spares = function() {
   var spares = 0;
   for (i = 0; i < this.pairs.length; i+=2) {
     if ((parseInt(Object.values(this.pairs[i])) + parseInt(Object.values(this.pairs[i+1]))) === 10) {
@@ -38,7 +38,7 @@ Game.prototype.spares = function () {
   return spares;
 }
 
-Game.prototype.strikes = function () {
+Game.prototype.strikes = function() {
   var strikes = 0;
   for (i = 0; i < this.pairs.length; i++) {
     if (parseInt(Object.values(this.pairs[i])) === 10) {
@@ -47,4 +47,20 @@ Game.prototype.strikes = function () {
     }
   }
   return strikes;
+}
+
+Game.prototype.isInProgress = function() {
+  if (this.frames[this.frames.length-1] === 10 && this.frames[this.frames.length-2] === 10 && this.frames[this.frames.length-3] === 10 ) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+Game.prototype.generalScore = function() {
+  var whole = 0
+  whole += this.basicScore();
+  whole += this.spares();
+  whole += this.strikes();
+  return whole
 }

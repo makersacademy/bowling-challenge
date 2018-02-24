@@ -70,6 +70,45 @@ describe("Game", function() {
       expect(game.strikes()).toEqual(3);
     });
 
+    it("calculates general score", function() {
+      expect(game.generalScore()).toEqual(45);
+    });
+
+  });
+
+  describe("tell about progress", function() {
+
+    it("tells the game is in progress", function() {
+      player.roll(5);
+      player.roll(1);
+      expect(game.isInProgress()).toEqual(true);
+    });
+
+    it("tells the game is not in progress", function() {
+      player.roll(1);
+      player.roll(1); // round 1
+      player.roll(1);
+      player.roll(1); // round 2
+      player.roll(1);
+      player.roll(1); // round 3
+      player.roll(1);
+      player.roll(1); // round 4
+      player.roll(1);
+      player.roll(1); // round 5
+      player.roll(1);
+      player.roll(1); // round 6
+      player.roll(1);
+      player.roll(1); // round 7
+      player.roll(1);
+      player.roll(1); // round 8
+      player.roll(1);
+      player.roll(1); // round 9
+      player.roll(1);
+      player.roll(1); // round 10
+      player.roll(1);
+      expect(game.isInProgress()).toEqual(false);
+    });
+
   });
 
 });

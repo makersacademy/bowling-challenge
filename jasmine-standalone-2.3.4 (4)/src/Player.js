@@ -7,9 +7,11 @@ Player.prototype.newGame = function(game) {
 }
 
 Player.prototype.roll = function(number) {
-  this.currentGame._addFrame();
-  this.currentGame.rolls.push(number);
-  this._addToPairs(number);
+  if (this.currentGame.isInProgress) {
+    this.currentGame._addFrame();
+    this.currentGame.rolls.push(number);
+    this._addToPairs(number);
+  }
 }
 
 Player.prototype._addToPairs = function(number) {

@@ -48,7 +48,6 @@ describe("Game", function() {
   describe("many-rolls game - counting score", function() {
 
     beforeEach(function() {
-      player.roll(1);
       player.roll(4); //1
       player.roll(4);
       player.roll(5); //2
@@ -64,13 +63,13 @@ describe("Game", function() {
       player.roll(6);
       player.roll(4); //8
       player.roll(10); //9
-      player.roll(2);
-      player.roll(8);
+      player.roll(3);
+      player.roll(3);
       player.roll(6); //10
     });
 
     it("calculates normal scores", function() {
-      expect(game.basicScore()).toEqual(91);
+      expect(game.basicScore()).toEqual(86);
     });
 
     it("calculates spares", function() {
@@ -78,7 +77,7 @@ describe("Game", function() {
     });
 
     it("calculates strikes", function() {
-      expect(game.strikes()).toEqual(11);
+      expect(game.strikes()).toEqual(7);
     });
 
     it("calculates general score", function() {

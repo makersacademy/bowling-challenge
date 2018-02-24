@@ -34,8 +34,8 @@ Game.prototype.spares = function() {
   var spares = 0;
   for (i = 0; i < this.pairs.length; i+=2) {
     if ( this.isNotNull(this.pairs[i+1]) ) {
-      if (parseInt(Object.values(this.pairs[i])) + parseInt(Object.values(this.pairs[i+1])) === 10) {
-      spares += parseInt(Object.values(this.pairs[i+2]));
+      if (Object.values(this.pairs[i])[0] + Object.values(this.pairs[i+1])[0] === 10) {
+        spares += Object.values(this.pairs[i+2])[0];
       }
     }
   }
@@ -45,13 +45,14 @@ Game.prototype.spares = function() {
 Game.prototype.strikes = function() {
   var strikes = 0;
   for (i = 0; i < this.pairs.length; i++) {
-    if (Object.values(this.pairs[i])[0] !== null && Object.values(this.pairs[i])[0] === 10) {
-      if (parseInt(Object.values(this.pairs[i+2])[0]) !== 10) {
-      strikes += parseInt(Object.values(this.pairs[i+2])[0]);
-      strikes += parseInt(Object.values(this.pairs[i+3])[0]);
+    if (Object.values(this.pairs[i])[0] === 10) {
+      // sprawdzic czy te pozniejsze istnieja
+      if (Object.values(this.pairs[i+2])[0] !== 10) {
+      strikes += Object.values(this.pairs[i+2])[0];
+      strikes += Object.values(this.pairs[i+3])[0];
       } else {
-      strikes += parseInt(Object.values(this.pairs[i+2])[0]);
-      strikes += parseInt(Object.values(this.pairs[i+4])[0]);
+      strikes += Object.values(this.pairs[i+2])[0];
+      strikes += Object.values(this.pairs[i+4])[0];
       }
     }
   }
@@ -75,8 +76,9 @@ Game.prototype.generalScore = function() {
 }
 
 Game.prototype.isNotNull = function(stuff) {
-  for ( var prop in stuff ) {
+  if (Object.values(stuff).length !== 0) {
     return true;
+  } else {
+    return false;
   }
-  return false;
 }

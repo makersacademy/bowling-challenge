@@ -1,19 +1,19 @@
-var Bowling = function() {
+var BowlingFrame = function() {
   this.firstRollScore;
   this.secondRollScore;
   this.total;
 };
 
-Bowling.prototype.firstRoll = function() {
+BowlingFrame.prototype.firstRoll = function() {
   var roll = Math.floor(Math.random() * 11);
   return (this.firstRollScore = roll);
 };
 
-Bowling.prototype.secondRoll = function() {
+BowlingFrame.prototype.secondRoll = function() {
   var roll = Math.floor(Math.random() * (11 - this.firstRollScore));
   return (this.secondRollScore = roll);
 };
 
-Bowling.prototype.total = function() {
+BowlingFrame.prototype.total = function() {
   return (this.total = this.firstRollScore + this.secondRollScore);
 };

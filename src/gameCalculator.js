@@ -5,18 +5,21 @@ var Bowling = function() {
   this.frame = 0;
 };
 
+// TODO: ADD UNIT TESTING FOR ALL FUNCTIONS!!!!
+
 Bowling.prototype = {
   score: function(scores) {
     this.createAllFramesArray(scores);
-    return this.total(this.allFrames);
+    return this.sum(this.allFrames);
   },
 
   createAllFramesArray: function(scores) {
+    console.log(scores);
     while (this.allFrames.length < 10) {
       if (scores[0] === 10) {
-        this.getStrike(scores);
+        this.buildStrikeFrame(scores);
       } else if (scores[0] + scores[1] === 10){
-        this.getSpare(scores);
+        this.buildSpareFrame(scores);
       } else {
         this.frame = scores.splice(0,2);
       }
@@ -24,22 +27,23 @@ Bowling.prototype = {
     }
   },
 
-  getStrike: function(scores) {
+  buildStrikeFrame: function(scores) {
     this.frame = scores.splice(0, 1);
     this.frame.push(scores[0], scores[1]);
   },
 
-  getSpare: function(scores) {
+  buildSpareFrame: function(scores) {
     this.frame = scores.splice(0,2);
     this.frame.push(scores[0]);
   },
 
   addFrameToAllFramesArray: function() {
-    this.allFrames.push(this.total(this.frame));
+    this.allFrames.push(this.sum(this.frame));
     this.frame = 0;
   },
 
-  total: function(arr) {
+  sum: function(arr) {
+    console.log(arr);
     arr = arr.reduce(function (acc, curr) {
       return acc + curr;
     });

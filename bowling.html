@@ -10,6 +10,8 @@
   <body>
     <h1>Either enter a full game (scores separated by commas)</h1>
     <input type="text" placeholder="e.g. 9, 1, 5, 6...">
+    <button type="button" id="score">Calculate score</button>
+    <div id="final-score"></div>
     <h1>Or use the buttons to fill in the scorecard</h1>
     <button id="1" type="button">1</button>
     <button id="2" type="button">2</button>
@@ -22,17 +24,22 @@
     <button id="9" type="button">9</button>
     <button id="10" type="button">10</button>
     <div class="scorecard">
-      <div class="frame"><div class="inner"></div></div>
-      <div class="frame"><div class="inner"></div></div>
-      <div class="frame"><div class="inner"></div></div>
-      <div class="frame"><div class="inner"></div></div>
-      <div class="frame"><div class="inner"></div></div>
-      <div class="frame"><div class="inner"></div></div>
-      <div class="frame"><div class="inner"></div></div>
-      <div class="frame"><div class="inner"></div></div>
-      <div class="frame"><div class="inner"></div></div>
-      <div class="frame"><div class="inner"></div></div>
-      <div class="frame"><div class="inner"></div></div>
+      <div class="frame" id="f1"><div class="inner"></div></div>
+      <div class="frame" id="f2"><div class="inner"></div></div>
+      <div class="frame" id="f3"><div class="inner"></div></div>
+      <div class="frame" id="f4"><div class="inner"></div></div>
+      <div class="frame" id="f5"><div class="inner"></div></div>
+      <div class="frame" id="f6"><div class="inner"></div></div>
+      <div class="frame" id="f7"><div class="inner"></div></div>
+      <div class="frame" id="f8"><div class="inner"></div></div>
+      <div class="frame" id="f9"><div class="inner"></div></div>
+      <div class="frame" id="f10"><div class="inner"></div></div>
+      <div class="frame" id="total"><div class="inner"></div></div>
     </div>
+
+    <script type="text/javascript" src="lib/jquery-3.3.1.min.js">
+    </script>
+    <script type="text/javascript" src="src/interface.js">
+    </script>
   </body>
 </html>

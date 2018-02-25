@@ -13,13 +13,16 @@ Bowling.prototype = {
 
   score: function(){
     for (var i = 0; i < this.rolls.length; i ++){
-      if (this.isSpare(i)){
+
+      if (this.isStrike(i)){
+        this.points += 10 + this.rolls[i+1] + this.rolls[i+2];
+        } else if (this.isSpare(i)){
         this.points += 10 + this.rolls[i+2];
         i++;
-      } else {
+        } else {
         this.points += this.rolls[i];
+        }
       }
-    }
     return this.points;
   },
 

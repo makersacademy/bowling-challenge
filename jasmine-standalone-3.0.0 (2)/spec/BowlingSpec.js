@@ -44,7 +44,12 @@ describe('Bowling game', function (){
     expect(game.isStrike(0)).toBe(true);
     });
 
-    it()
+    it("scores 26 when strike in first roll and hit 5 and 3 in next frame", function(){
+    game.roll(10);
+    game.roll(5);
+    game.roll(3);
+    expect(game.score()).toEqual(26);
+    });
 
   });
 

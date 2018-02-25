@@ -3,7 +3,14 @@ body {
 }
 
 
+.scorecard {
+
+}
+
 .scorecard-box {
+  margin: 5px 0px;
+  vertical-align: top;
+  position:inherit;
   display: inline-block;
   height: 100px;
   width: 100px;
@@ -11,6 +18,7 @@ body {
 }
 
 .inner {
+  text-align: center;
   height: 50px;
   width: 50px;
   border-left: 1px solid black;
@@ -18,4 +26,8 @@ body {
   position: relative;
   top: 0px;
   left: 50px;
+}
+
+#final-score {
+  height: 70px;
 }

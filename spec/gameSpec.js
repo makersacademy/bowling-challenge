@@ -5,12 +5,6 @@ describe('Game', () => {
   beforeEach(() => {
     game = new Game();
     frame = jasmine.createSpyObj('frame', ['rolls']);
-
-    // frame.rolls([{ roll: 3 }, { roll: 3 }]);
-
-    frame.rolls.and.callFake(() => {
-      return [{ roll: 3 }, { roll: 3 }];
-    });
   });
 
   describe('#initialize', () => {
@@ -20,14 +14,16 @@ describe('Game', () => {
   });
 
   describe('#addFrame', () => {
-    it('it stores a Frame object in the Game instance', () => {
-      game.addFrame(frame);
+    // This is not the whole object... just the rolls of the object
+    // This is like passing frame.rolls though, but 'expected' behaviour
+    it('it stores Frame rolls in the Game instance', () => {
+      frame.rolls.and.callFake(() => {
+        return ([{ roll: 3 }, { roll: 3 }]);
+      });
+
+      game.addFrame(frame.rolls());
 
       expect(game.frames).toEqual([[{ roll: 3 }, { roll: 3 }]]);
     });
-
-    // it('tracks that the frame spy receives correct argument', () => {
-    //   expect(frame.rolls).toHaveBeenCalledWith([{ roll: 3 }, { roll: 3 }]);
-    // });
   });
 });

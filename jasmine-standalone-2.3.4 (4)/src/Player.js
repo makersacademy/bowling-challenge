@@ -22,13 +22,13 @@ Player.prototype.roll = function(number) {
 
 Player.prototype._addToPairs = function(number) {
   if (number === 10 )  {
-    var hash = {};
-    hash[this.currentGame._currentFrame().toString()] = number;
-    this.currentGame.pairs.push(hash);
+    var pair = {};
+    pair[this.currentGame._currentFrame().toString()] = number;
+    this.currentGame.pairs.push(pair);
     if (this.currentGame.pairs.length < 18 ) {
-      var hash2 = {};
-      hash2[this.currentGame._currentFrame().toString()] = undefined;
-      this.currentGame.pairs.push(hash2);
+      var emptyPair = {};
+      emptyPair[this.currentGame._currentFrame().toString()] = undefined;
+      this.currentGame.pairs.push(emptyPair);
     }
   } else {
     var hash = {};

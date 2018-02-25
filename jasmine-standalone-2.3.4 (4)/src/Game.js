@@ -15,6 +15,10 @@ Game.prototype._currentFrame = function() {
   return this.frames[this.frames.length-1];
 }
 
+Game.prototype._numberOfPairs = function() {
+  return this.pairs.length;
+}
+
 Game.prototype._addFrame = function() {
   let framesNum = this.frames.length;
     if (framesNum === 0 || framesNum === 1 ) {

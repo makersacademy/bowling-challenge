@@ -3,7 +3,8 @@
 function Frame() {
   this.bowls = [];
   this.bowlIndex = 1;
-  this.finalFrame = 0;
+  this.finalFrame = false;
+  this.MAX_PINS = 10;
 };
 
 Frame.prototype.bowl = function (pins) {
@@ -12,18 +13,18 @@ Frame.prototype.bowl = function (pins) {
 };
 
 Frame.prototype.isStrike = function () {
-  return(this.bowls[0] === 10);
+  return(this.bowls[0] === this.MAX_PINS);
 };
 
 Frame.prototype.isSpare = function () {
-  return(this.normalFrameScore() === 10);
+  return(this.normalFrameScore() === this.MAX_PINS);
 };
 
 Frame.prototype.FrameScore = function () {
   if (!this.isStrike()) {
     return this.normalFrameScore();
   } else {
-    return 10;
+    return this.MAX_PINS;
   };
 };
 

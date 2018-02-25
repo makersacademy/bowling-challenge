@@ -5,11 +5,12 @@ function Game(currentFrame = new Frame()) {
   this.currentFrame = currentFrame;
   this.frameIndex = 1;
   this.addFrame();
+  this.MAX_FRAMES = 10;
 };
 
 Game.prototype.bowl = function (pins) {
   this.currentFrame.bowl(pins);
-  if (this.frameIndex < 10) {
+  if (this.frameIndex < this.MAX_FRAMES) {
     if (this.currentFrame.isStrike() || this.currentFrame.bowlIndex > 2) {
       this.nextFrame();
     };
@@ -47,13 +48,13 @@ Game.prototype.frameScore = function (index) {
     if (isNaN(this._strikeScore(index))) {
       score += 0;
     } else {
-      score += 10 + this._strikeScore(index);
+      score += this.currentFrame.MAX_PINS + this._strikeScore(index);
     };
   } else if (this.frames[index].isSpare()) {
     if (isNaN(this._spareScore(index))) {
       score += 0;
     } else {
-      score += 10 + this._spareScore(index);
+      score += this.currentFrame.MAX_PINS + this._spareScore(index);
     };
   } else {
     if (this.frames[index].finalFrame) {

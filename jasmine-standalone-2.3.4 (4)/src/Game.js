@@ -48,13 +48,13 @@ Game.prototype.spares = function() {
   var spares = 0;
   for (i = 0; i < 17; i+=2) {
     if ( this.isNotNull(this.pairs[i+1]) ) {
-      if (Object.values(this.pairs[i])[0] + Object.values(this.pairs[i+1])[0] === 10) {
-        spares += Object.values(this.pairs[i+2])[0];
+      if (this._valueOfPair(i) + this._valueOfPair(i+1) === 10) {
+        spares += this._valueOfPair(i+2);
       }
     }
   }
-  if (Object.values(this.pairs[18])[0] + Object.values(this.pairs[19])[0] === 10) {
-    spares += Object.values(this.pairs[20])[0];
+  if (this._valueOfPair(18) + this._valueOfPair(19) === 10) {
+    spares += this._valueOfPair(20)
   }
   return spares;
 }
@@ -62,25 +62,29 @@ Game.prototype.spares = function() {
 Game.prototype.strikes = function() {
   var strikes = 0;
   for (i = 0; i <= 14; i++) {
-    if (Object.values(this.pairs[i])[0] === 10) {
-      if (Object.values(this.pairs[i+2])[0] !== 10) {
-      strikes += Object.values(this.pairs[i+2])[0];
-      strikes += Object.values(this.pairs[i+3])[0];
+    if (this._valueOfPair(i) === 10) {
+      if (this._valueOfPair(i+2) !== 10) {
+      strikes += this._valueOfPair(i+2);
+      strikes += this._valueOfPair(i+3);
       } else {
-      strikes += Object.values(this.pairs[i+2])[0];
-      strikes += Object.values(this.pairs[i+4])[0];
+        strikes += this._valueOfPair(i+2);
+        strikes += this._valueOfPair(i+4);
       }
     }
   }
-  if (Object.values(this.pairs[16])[0] === 10) {
-    strikes += Object.values(this.pairs[18])[0];
-    strikes += Object.values(this.pairs[19])[0];
+  if (this._valueOfPair(16) === 10) {
+    strikes += this._valueOfPair(18);
+    strikes += this._valueOfPair(19);
   }
-  if (Object.values(this.pairs[18])[0] === 10) {
-    strikes += Object.values(this.pairs[19])[0];
-    strikes += Object.values(this.pairs[20])[0];
+  if (this._valueOfPair(18) === 10) {
+    strikes += this._valueOfPair(19);
+    strikes += this._valueOfPair(20);
   }
   return strikes;
+}
+
+Game.prototype._valueOfPair = function(i) {
+  return Object.values(this.pairs[i])[0];
 }
 
 Game.prototype.generalScore = function() {
@@ -91,8 +95,8 @@ Game.prototype.generalScore = function() {
   return whole
 }
 
-Game.prototype.isNotNull = function(stuff) {
-  if (Object.values(stuff)[0] !== undefined) {
+Game.prototype.isNotNull = function(object) {
+  if (Object.values(object)[0] !== undefined) {
     return true;
   } else {
     return false;

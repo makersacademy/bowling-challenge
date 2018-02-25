@@ -22,7 +22,7 @@ Player.prototype._addToPairs = function(number) {
   var pair = {};
   pair[this.currentGame._currentFrame()] = number;
   this.currentGame.pairs.push(pair);
-  if (number === 10  && this.currentGame.pairs.length < 18)  {
+  if (number === 10  && this.currentGame._numberOfPairs() < 18)  {
     var emptyPair = {};
     emptyPair[this.currentGame._currentFrame()] = undefined;
     this.currentGame.pairs.push(emptyPair);

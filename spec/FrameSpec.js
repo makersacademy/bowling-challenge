@@ -15,7 +15,14 @@ describe('Frame', function() {
     });
   });
 
-  
+  describe('score', function() {
+
+    it("returns the score for the frame", function() {
+      frame.roll(3);
+      frame.roll(2);
+      expect(frame.score()).toEqual(5);
+    });
+  });
 
 
 

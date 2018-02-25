@@ -18,5 +18,8 @@ Frame.prototype = {
     return this.rolls[1];
   },
 
+  score: function() {
+    return (this.firstRoll() + this.secondRoll());
+  },
 
 };

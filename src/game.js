@@ -35,6 +35,7 @@ Game.prototype.calculateSpareScore = function() {
     var previousFirstRollScore = this.firstRollScore(previousFrame);
       if ((previousFirstRollScore < 10) && (previousFrameScore === 10 )) {
         this.spareScore += this.allFrames[frameIndex][0];
+        this.frameScores[frameIndex - 1] += this.allFrames[frameIndex][0];
       }
   }
 };
@@ -48,9 +49,11 @@ Game.prototype.calculateSingleStrikeScore = function() {
       var previousFirstRollScore = this.firstRollScore(previousFrame);
         if (previousFirstRollScore === 10 && firstRollScore != 10) {
             this.singleStrikeScore += (this.frameScore(currentFrame));
+            this.frameScores[frameIndex - 1] += (this.frameScore(currentFrame));
         }
         else if (previousFirstRollScore === 10 && frameIndex === 9) {
             this.singleStrikeScore += (this.frameScore(currentFrame));
+            this.frameScores[frameIndex - 1] += (this.frameScore(currentFrame));
         }
     }
 };
@@ -66,6 +69,7 @@ Game.prototype.calculateDoubleStrikeScore = function() {
       var previous2FirstRollScore = this.firstRollScore(previous2Frame);
         if (previousFirstRollScore === 10 && previous2FirstRollScore === 10) {
               this.doubleStrikeScore += (previousFirstRollScore + currentFirstRollScore);
+              this.frameScores[frameIndex - 2] +=(previousFirstRollScore + currentFirstRollScore);
         }
     }
 };

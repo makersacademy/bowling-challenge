@@ -157,7 +157,25 @@ describe('Game', function(){
         game4.prepareFrameScoring();
         game4.calculateBaseScore();
         expect(game4.frameScores[2]).toEqual(7);
+      });
 
+      it('adds spare score to correct frame', function() {
+        game3.prepareFrameScoring();
+        game3.calculateSpareScore();
+        expect(game3.frameScores[0]).toEqual(5);
+        expect(game3.frameScores[2]).toEqual(3);
+      });
+
+      it('adds single strike score to correct frame', function() {
+        game4.prepareFrameScoring();
+        game4.calculateSingleStrikeScore();
+        expect(game4.frameScores[1]).toEqual(7);
+      });
+
+      it('adds double strike score to correct frame', function() {
+        game5.prepareFrameScoring();
+        game5.calculateDoubleStrikeScore();
+        expect(game5.frameScores[0]).toEqual(14);
       });
     });
 

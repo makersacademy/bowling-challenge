@@ -1,5 +1,4 @@
 function Game() {
-  this.rolls = [];
   this.frames = [];
   this.pairs = [];
 }
@@ -95,7 +94,7 @@ Game.prototype._lessThan20 = function() {
 }
 
 Game.prototype._endGameStrike = function() {
-  if (this.frames.length === 20 && (this.rolls[this.rolls.length-1]) === 10) {
+  if (this.frames.length === 20 && this._lastPairValue() === 10) {
     return true;
   } else {
     return false;
@@ -103,7 +102,7 @@ Game.prototype._endGameStrike = function() {
 }
 
 Game.prototype._endGameSpare = function() {
-  if (this.frames.length === 20 && (this.rolls[this.rolls.length-1] + this.rolls[this.rolls.length-2]) === 10) {
+  if (this.frames.length === 20 && (this._lastPairValue() + this._secondLastPairValue()) === 10) {
     return true;
   } else {
     return false;
@@ -111,5 +110,9 @@ Game.prototype._endGameSpare = function() {
 }
 
 Game.prototype._lastPairValue = function() {
+  return Object.values(this.pairs[this.pairs.length-1])[0];
+}
 
+Game.prototype._secondLastPairValue = function() {
+  return Object.values(this.pairs[this.pairs.length-2])[0];
 }

@@ -8,7 +8,6 @@ Player.prototype.newGame = function(game) {
 
 Player.prototype.roll = function(number) {
   if (this.currentGame.isInProgress) {
-    this.currentGame.rolls.push(number);
     this.currentGame._addFrame();
     if (number === 10 ){
       this.currentGame._addFrame(); // chyba ze jestesmy w 10 frame

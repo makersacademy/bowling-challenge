@@ -10,10 +10,6 @@ describe("Game", function() {
 
   describe("beginning of the game", function() {
 
-    it("has an empty array of rolls at the beginning", function() {
-      expect(game.rolls).toEqual([]);
-    });
-
     it("has empty array of frames at the beginning", function() {
       expect(game.frames).toEqual([]);
     });
@@ -26,10 +22,6 @@ describe("Game", function() {
       player.roll(6);
       player.roll(7);
       player.roll(8);
-    });
-
-    it("adds rolls to rolls", function() {
-      expect(game.rolls).toEqual([5, 6, 7, 8]);
     });
 
     it("adds frames to frames", function() {

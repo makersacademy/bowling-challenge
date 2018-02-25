@@ -4,8 +4,8 @@ var ScoreCalculator = function() {
   this.totalScore = 0;
 };
 
-ScoreCalculator.prototype.calculateTotalScore = function() {
-  this.prepareFrameScoring();
+ScoreCalculator.prototype.calculateTotalScore = function(allFrames) {
+  this.prepareFrameScoring(allFrames);
   this.calculateBaseScore();
   this.calculateSpareScore();
   this.calculateSingleStrikeScore();
@@ -74,7 +74,8 @@ ScoreCalculator.prototype.firstRollScore = function(frame) {
   return frame[0];
 };
 
-ScoreCalculator.prototype.prepareFrameScoring = function() {
+ScoreCalculator.prototype.prepareFrameScoring = function(allFrames) {
+  this.allFrames = allFrames;
   for( var frame of this.allFrames) {
     this.frameScores.push(0)
   }

@@ -4,12 +4,92 @@ describe('Game', function(){
 
   beforeEach(function(){
     game = new Game();
-
   });
 
-  describe('#calculateBaseScore', function(){
-    it('can add up the basic score of a 2, 2 roll frames', function() {
+  describe('#rollBall', function(){
+
+    describe('#readScore', function(){
+      it('reads the frame using frame count and roll count', function() {
+        game.rollBall(5);
+        game.rollBall(3);
+        frame = 1;
+        roll = 2;
+        expect(game.readScore(frame, roll)).toEqual(3);
+      });
+    });
+
+    describe('#isStrike', function(){
+      it('returns true if it is a strike', function() {
+        expect(game.isStrike(10)).toBe(true);
+      });
+
+      it('returns false if it is NOT a strike', function() {
+        expect(game.isStrike(5)).toBe(false);
+      });
+    });
+
+    describe('#_isSecondRollOfFrame', function(){
+      it('reads the frame using frame count and roll count', function() {
+        game.rollBall(5);
+        expect(game._isSecondRollOfFrame()).toBe(true);
+      });
+
+      it('reads the frame using frame count and roll count', function() {
+        game.rollBall(5);
+        game.rollBall(5);
+        expect(game._isSecondRollOfFrame()).toBe(false);
+      });
+    });
+
+    describe('#rollBall', function(){
+
+      it('adds the first roll of a game to allFrames in an array', function() {
+        game.rollBall(5);
+        expect(game.readScore(1,1)).toEqual(5);
+      });
+
+      it('adds the second roll of a game to allFrames in an array', function() {
+        game.rollBall(5);
+        game.rollBall(3);
+        expect(game.readScore(1,2)).toEqual(3);
+      });
+
+      it('if a strike, skip to next frame', function() {
+        game.rollBall(10);
+        game.rollBall(3);
+        expect(game.readScore(2,1)).toEqual(3);
+      });
+
+      it('10th frame: stores the first score', function(){
+        game.allFrames = [[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1]];
+        game.rollBall(3);
+        expect(game.readScore(10,1)).toEqual(3);
+      });
+
+      it('10th frame: on second score - game over if not a spare/stike', function(){
+        game.allFrames = [[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1]];
+        game.rollBall(3);
+        game.rollBall(3);
+        expect(game.gameOver).toBe(true);
+      });
+
+      it('10th frame: if a strike = bonus ball', function(){
+        game.allFrames = [[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1]];
+        game.rollBall(10);
+        game.rollBall(3);
+        game.rollBall(3);
+        expect(game.readScore(10,3)).toEqual(3);
+      });
+
+      it('10th frame: if a spare = bonus ball', function(){
+        game.allFrames = [[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1]];
+        game.rollBall(4);
+        game.rollBall(6);
+        game.rollBall(3);
+        expect(game.readScore(10,3)).toEqual(3);
+      });
 
     });
+
   });
 });

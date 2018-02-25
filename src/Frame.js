@@ -24,6 +24,10 @@ Frame.prototype = {
 
   strike: function() {
     return this.firstRoll() === 10;
-  }
+  },
+
+  spare: function() {
+    return (this.score() === 10) && (!this.strike());
+  },
 
 };

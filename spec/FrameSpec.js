@@ -22,16 +22,20 @@ describe('Frame', function() {
     });
   });
 
-  describe("Strike", function() {
-    it("returns strike when 10 pins are knocked down on first roll", function () {
+  describe("strike", function() {
+    it("returns strike when 10 pins are knocked down on first roll", function() {
       frame.roll(10);
       expect(frame.strike()).toBeTruthy();
     });
-
   });
 
-
-
+  describe("spare", function() {
+    it("returns spare when 10 pins are knocked down by first and second rolls", function() {
+      frame.roll(5);
+      frame.roll(5);
+      expect(frame.spare()).toBeTruthy();
+    });
+  });
 
 
 

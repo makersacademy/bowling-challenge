@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>Bowling App</title>
-    <script type="text/javascript" src="src/bowling.js">
+    <script type="text/javascript" src="src/gameCalculator.js">
     </script>
-    <link rel="stylesheet" href="/css/bowling.css">
+    <link rel="stylesheet" href="css/bowling.css">
   </head>
   <body>
     <h1>Either enter a full game (scores separated by commas)</h1>
-    <input type="text" placeholder="e.g. 9, 1, 5, 6...">
+    <input id="full-game" type="text" placeholder="e.g. 9, 1, 5, 6...">
     <button type="button" id="score">Calculate score</button>
-    <div id="final-score"></div>
+    <h1 id="final-score">.</h1>
     <h1>Or use the buttons to fill in the scorecard</h1>
     <button id="1" type="button">1</button>
     <button id="2" type="button">2</button>

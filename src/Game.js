@@ -13,7 +13,22 @@ Game.prototype.bowl = function (pins) {
     if (this.currentFrame.isStrike() || this.currentFrame.bowlIndex > 2) {
       this.nextFrame();
     };
+  } else {
+    this.currentFrame.finalFrame = true
   };
+};
+
+Game.prototype.score = function () {
+  var score = 0;
+
+  if (this.currentFrame.finalFrame) {
+    for (var index = 0; index < this.frameIndex; index++)
+      score += this.frames[index].FrameScore();
+  } else {
+    for (var index = 0; index < this.frameIndex-1; index++)
+      score += this.frames[index].FrameScore();
+  };
+  return score;
 };
 
 Game.prototype.addFrame = function () {

@@ -3,6 +3,7 @@
 function Frame() {
   this.bowls = [];
   this.bowlIndex = 1;
+  this.finalFrame = 0;
 };
 
 Frame.prototype.bowl = function (pins) {

@@ -12,7 +12,7 @@ A one-player game of bowling.
 4) Use functionality of scoring a strike to test drive a perfect game.
 5) Extract functionality for keeping track of single frame scores into a separate frame class.
 6) Modify game class to create new instances of frames and push each frame into a frames array.
-7) 
+7) Contain amount of frames per game to 10 and allow frame index to increment after 1 strike or 2 bowls.
 
 ### Screenshot
 

@@ -79,10 +79,6 @@ describe('Game', function(){
       it('can add up a 10th frame score with a stike in the 9th and 10th frame', function() {
         game8.calculateTotalScore();
         expect(game8.totalScore).toEqual(53);
-        console.log(game8.baseScore);
-        console.log(game8.spareScore);
-        console.log(game8.singleStrikeScore);
-        console.log(game8.doubleStrikeScore);
       });
       it('can add up a 10th frame score with a spare in the 10th frame', function() {
         game9.calculateTotalScore();
@@ -177,6 +173,13 @@ describe('Game', function(){
         game5.calculateDoubleStrikeScore();
         expect(game5.frameScores[0]).toEqual(14);
       });
+
+      it('can total the score from the frameScores', function() {
+        game5.prepareFrameScoring();
+        game5.calculateTotalScoreFromFrames();
+        expect(game5.totalScore).toEqual(65);
+      });
+
     });
 
 });

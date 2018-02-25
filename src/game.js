@@ -9,11 +9,13 @@ var Game = function() {
 };
 
 Game.prototype.calculateTotalScore = function() {
+  this.prepareFrameScoring();
   this.calculateBaseScore();
   this.calculateSpareScore();
   this.calculateSingleStrikeScore();
   this.calculateDoubleStrikeScore();
-  this.totalScore = this.baseScore + this.spareScore + this.singleStrikeScore + this.doubleStrikeScore;
+  this.calculateTotalScoreFromFrames();
+  // this.totalScore = this.baseScore + this.spareScore + this.singleStrikeScore + this.doubleStrikeScore;
 };
 
 //Adds to current frame
@@ -85,5 +87,12 @@ Game.prototype.firstRollScore = function(frame) {
 Game.prototype.prepareFrameScoring = function() {
   for( var frame of this.allFrames) {
     this.frameScores.push(0)
+  }
+};
+
+Game.prototype.calculateTotalScoreFromFrames = function() {
+  this.totalScore = this.frameScores.reduce(add, 0);
+  function add(a, b) {
+      return a + b;
   }
 };

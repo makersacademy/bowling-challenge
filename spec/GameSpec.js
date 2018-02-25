@@ -75,22 +75,22 @@ describe('Game', function() {
     });
 
     it('player can roll a spare', function() {
-      game.roll(5);
-      game.roll(5);
-      game.roll(3);
+      game.bowl(5);
+      game.bowl(5);
+      game.bowl(3);
       rollMany(0, 17);
       expect(game.score()).toBe(16);
     });
 
-    it('player can roll a strike', function() {
-      game.roll(10);
-      game.roll(5);
-      game.roll(3);
+    it('player can bowl a strike', function() {
+      game.bowl(10);
+      game.bowl(5);
+      game.bowl(3);
       rollMany(0, 16);
       expect(game.score()).toBe(26);
     });
 
-    it('player can roll a perfect game', function() {
+    it('player can bowl a perfect game', function() {
       rollMany(10, 12);
       expect(game.score()).toBe(300);
     });

@@ -23,10 +23,10 @@ Game.prototype.score = function () {
 
   if (this.currentFrame.finalFrame) {
     for (var index = 0; index < this.frameIndex; index++)
-      score += this.frames[index].FrameScore();
+      score += this.frameScore(index);
   } else {
     for (var index = 0; index < this.frameIndex-1; index++)
-      score += this.frames[index].FrameScore();
+      score += this.frameScore(index);
   };
   return score;
 };
@@ -39,4 +39,40 @@ Game.prototype.nextFrame = function () {
   this.currentFrame = new Frame();
   this.addFrame();
   this.frameIndex++;
+};
+
+Game.prototype.frameScore = function (index) {
+  var score = 0;
+  if (this.frames[index].isStrike()) {
+    if (isNaN(this._strikeScore(index))) {
+      score += 0;
+    } else {
+      score += 10 + this._strikeScore(index);
+    }
+  }
+  return score;
+};
+
+Game.prototype._strikeScore = function (index) {
+  if (index < this.frameIndex-2) {
+    if (this.frames[index + 1].isStrike()) {
+      return this._targetBowl(index, 1, 0) + this._targetBowl(index, 2, 0);
+    } else {
+      return this._targetBowl(index, 1, 0) + this._targetBowl(index, 1, 1);
+    };
+  } else {
+    return this.finalFrameStrikeScore(index);
+  };
+};
+
+Game.prototype.finalFrameStrikeScore = function (index) {
+  if (index < this.frameIndex-1) {
+    return this._targetBowl(index, 1, 0) + this._targetBowl(index, 1, 1);
+  } else {
+    return this._targetBowl(index, 0, 1) + this._targetBowl(index, 0, 2);
+  };
+};
+
+Game.prototype._targetBowl = function (index, skipBy, bowlIndex) {
+  return this.frames[index + skipBy].bowls[bowlIndex];
 };

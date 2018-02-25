@@ -18,6 +18,23 @@ describe('Game', function(){
       });
     });
 
+    describe('#rollCheck', function(){
+      it('raises an error if roll value of first roll is too great', function() {
+        expect(function() {game.rollBall(11);}).toThrow('Roll count is too high, input a legal value');
+      });
+
+      it('raises an error if roll value of second roll is too great', function() {
+        game.rollBall(5);
+        expect(function() {game.rollBall(6);}).toThrow('Roll count is too high, input a legal value');
+      });
+
+      it('correctly lets someone have a 3rd roll in 10th round', function() {
+        game.allFrames = [[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[5,5]];
+        expect(function() {game.rollBall(5);}).not.toThrow('Roll count is too high, input a legal value');
+      });
+
+    });
+
     describe('#isStrike', function(){
       it('returns true if it is a strike', function() {
         expect(game.isStrike(10)).toBe(true);

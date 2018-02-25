@@ -7,6 +7,7 @@ var Game = function() {
 };
 
 Game.prototype.rollBall = function(rollScore) {
+  this.rollCheck(rollScore);
   if (this._isTenthFrame()) {
     this._tenthFrame(rollScore);
   } else if (this._isSecondRollOfFrame()) {
@@ -16,6 +17,10 @@ Game.prototype.rollBall = function(rollScore) {
   }
   this.rollCount += 1;
   this.scoreCalculator.calculateTotalScore(this.allFrames);
+};
+
+Game.prototype.rollCheck = function(rollScore) {
+  return rollScore === 10;
 };
 
 Game.prototype.readScore = function(frame, roll) {

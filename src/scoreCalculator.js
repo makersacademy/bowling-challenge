@@ -75,6 +75,7 @@ ScoreCalculator.prototype.firstRollScore = function(frame) {
 };
 
 ScoreCalculator.prototype.prepareFrameScoring = function(allFrames) {
+  this.frameScores =[];
   this.allFrames = allFrames;
   for( var frame of this.allFrames) {
     this.frameScores.push(0)

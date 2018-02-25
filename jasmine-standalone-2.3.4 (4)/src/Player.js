@@ -10,7 +10,7 @@ Player.prototype.roll = function(number) {
   if (this.currentGame.isInProgress) {
     this.currentGame._addFrame();
     if (number === 10 ){
-      this.currentGame._addFrame(); // chyba ze jestesmy w 10 frame
+      this.currentGame._addFrame();
     }
     this._addToPairs(number);
   } else {
@@ -24,7 +24,7 @@ Player.prototype._addToPairs = function(number) {
     hash[this.currentGame._currentFrame().toString()] = number;
     this.currentGame.pairs.push(hash);
     var hash2 = {};
-    hash2[this.currentGame._currentFrame().toString()] = undefined; //chyba ze w 10 frame
+    hash2[this.currentGame._currentFrame().toString()] = undefined;
     this.currentGame.pairs.push(hash2);
   } else {
     var hash = {};

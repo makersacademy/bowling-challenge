@@ -4,7 +4,7 @@ function Game() {
 }
 
 Game.prototype.isInProgress = function() {
-  if (this._lessThan20() || this._endGameStrike() ||  this._endGameSpare()) {
+  if ( this._endGameStrike() ||  this._endGameSpare() || this._lessThan20() ) {
     return true;
   } else {
     return false;
@@ -94,7 +94,9 @@ Game.prototype._lessThan20 = function() {
 }
 
 Game.prototype._endGameStrike = function() {
-  if (this.frames.length === 20 && this._lastPairValue() === 10) {
+  if (this.frames.length === 20 && this._secondLastPairValue() === 10) {
+    return true;
+  } else if (this.frames.length === 22 && this._secondLastPairValue() === 10) {
     return true;
   } else {
     return false;

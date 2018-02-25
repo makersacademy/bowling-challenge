@@ -55,67 +55,74 @@ describe('Game', function(){
     });
   });
 
-  describe('#calculateStrikeScore', function(){
-    it('can calculate a strike score where next roll is not another strike', function() {
-      game4.calculateStrikeScore();
-      expect(game4.strikeScore).toEqual(7);
-    });
+  // describe('#calculateStrikeScore', function(){
+  //   it('can calculate a strike score where next roll is not another strike', function() {
+  //     game4.calculateStrikeScore();
+  //     expect(game4.strikeScore).toEqual(7);
+  //   });
+  //
+  //   it('can add up the strike score when next roll is also a strike', function() {
+  //     game5.calculateStrikeScore();
+  //     expect(game5.strikeScore).toEqual(24);
+  //   });
+  //
+  //   it('can handle scoring a strike when next turn as not happened yet', function() {
+  //     game12.calculateStrikeScore();
+  //     expect(game12.strikeScore).toEqual(10);
+  //   });
+  //
+  //   it('can handle scoring a 2 * strike when turn after next not happened yet', function() {
+  //     game13.calculateStrikeScore();
+  //     expect(game13.strikeScore).toEqual(10);
+  //   });
+  // });
+  //
+  //   describe('#calculateTotalScore', function(){
+  //     it('can add up the basic and spare score of game', function() {
+  //       game3.calculateTotalScore();
+  //       expect(game3.totalScore).toEqual(45);
+  //     });
+  //
+  //     it('can add up the basic, spare and strike score of game', function() {
+  //       game5.calculateTotalScore();
+  //       expect(game5.totalScore).toEqual(65);
+  //     });
+  //   });
+  //
+  //   describe('#calculates 10 frame game correctly - no bonus scoring for 10th frame', function(){
+  //     it('can add up a 10th frame score with no spare or strike', function() {
+  //       game6.calculateTotalScore();
+  //       expect(game6.totalScore).toEqual(20);
+  //     });
+  //     it('can add up a 10th frame score with a strike in the 9th frame', function() {
+  //       game7.calculateTotalScore();
+  //       expect(game7.totalScore).toEqual(30);
+  //     });
+  //     it('can add up a 10th frame score with a stike in the 9th and 10th frame', function() {
+  //       game8.calculateTotalScore();
+  //       expect(game8.totalScore).toEqual(53);
+  //     });
+  //     it('can add up a 10th frame score with a spare in the 10th frame', function() {
+  //       game9.calculateTotalScore();
+  //       expect(game9.totalScore).toEqual(33);
+  //     });
+  //     it('can add up a 10th frame score with a strike in the 10th frame only', function() {
+  //       game10.calculateTotalScore();
+  //       expect(game10.totalScore).toEqual(33);
+  //     });
+  //   });
 
-    it('can add up the strike score when next roll is also a strike', function() {
-      game5.calculateStrikeScore();
-      expect(game5.strikeScore).toEqual(24);
-    });
-
-    it('can handle scoring a strike when next turn as not happened yet', function() {
-      game12.calculateStrikeScore();
-      expect(game12.strikeScore).toEqual(10);
-    });
-
-    it('can handle scoring a 2 * strike when turn after next not happened yet', function() {
-      game13.calculateStrikeScore();
-      expect(game13.strikeScore).toEqual(10);
-    });
-  });
-
-    describe('#calculateTotalScore', function(){
-      it('can add up the basic and spare score of game', function() {
-        game3.calculateTotalScore();
-        expect(game3.totalScore).toEqual(45);
-      });
-
-      it('can add up the basic, spare and strike score of game', function() {
-        game5.calculateTotalScore();
-        expect(game5.totalScore).toEqual(65);
-      });
-    });
-
-    describe('#calculates 10 frame game correctly - no bonus scoring for 10th frame', function(){
-      it('can add up a 10th frame score with no spare or strike', function() {
-        game6.calculateTotalScore();
-        expect(game6.totalScore).toEqual(20);
-      });
-      it('can add up a 10th frame score with a strike in the 9th frame', function() {
-        game7.calculateTotalScore();
-        expect(game7.totalScore).toEqual(30);
-      });
-      it('can add up a 10th frame score with a stike in the 9th and 10th frame', function() {
-        game8.calculateTotalScore();
-        expect(game8.totalScore).toEqual(53);
-      });
-      it('can add up a 10th frame score with a spare in the 10th frame', function() {
-        game9.calculateTotalScore();
-        expect(game9.totalScore).toEqual(33);
-      });
-      it('can add up a 10th frame score with a strike in the 10th frame only', function() {
-        game10.calculateTotalScore();
-        expect(game10.totalScore).toEqual(33);
-      });
-    });
-
-    describe('#calculateFrameSpareScore', function() {
+    describe('#calculateDoubleStrikeScore', function() {
       it('can calculate the bonus score of spare for previous frame', function() {
-        game2.calculateFrameSpareScore();
-        expect(game2.spareScore).toEqual(3);
+        game5.calculateDoubleStrikeScore();
+        expect(game5.doubleStrikeScore).toEqual(14);
+      });
+    });
+
+    describe('#calculateSingleStrikeScore', function() {
+      it('can calculate the bonus score of spare for previous frame', function() {
+        game4.calculateSingleStrikeScore();
+        expect(game4.singleStrikeScore).toEqual(7);
       });
     });
 

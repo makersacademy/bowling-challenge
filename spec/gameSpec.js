@@ -7,7 +7,7 @@ describe('Game', function() {
     game = new Game();
   });
 
-  describe('test', function(){
+  describe('test', function() {
     it('initial spec test', function() {
       expect(game.test).not.toBe(undefined);
     });

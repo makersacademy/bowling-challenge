@@ -27,16 +27,15 @@ describe('Bowling', function() {
       expect(bowling.score(perfectGame)).toEqual(300);
     });
 
-    it('can score awkward games', function() {
+    it('can score an awkward games', function() {
       expect(bowling.score(awkwardGame)).toEqual(258);
-    });
-
-    it('can score other awkward games', function() {
       expect(bowling.score(awkwardGameTwo)).toEqual(142);
+      expect(bowling.score(awkwardGameThree)).toEqual(204);
     });
 
-    it('can score more awkward games', function() {
-      expect(bowling.score(awkwardGameThree)).toEqual(204);
+    it('resets allFrames to an empty array', function(){
+      bowling.score(perfectGame);
+      expect(bowling.allFrames).toEqual([]);
     });
   });
 

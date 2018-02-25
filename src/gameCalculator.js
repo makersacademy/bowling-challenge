@@ -10,11 +10,12 @@ var Bowling = function() {
 Bowling.prototype = {
   score: function(scores) {
     this.createAllFramesArray(scores);
-    return this.sum(this.allFrames);
+    var total = this.sum(this.allFrames);
+    this.allFrames = [];
+    return total;
   },
 
   createAllFramesArray: function(scores) {
-    console.log(scores);
     while (this.allFrames.length < 10) {
       if (scores[0] === 10) {
         this.buildStrikeFrame(scores);
@@ -43,7 +44,6 @@ Bowling.prototype = {
   },
 
   sum: function(arr) {
-    console.log(arr);
     arr = arr.reduce(function (acc, curr) {
       return acc + curr;
     });

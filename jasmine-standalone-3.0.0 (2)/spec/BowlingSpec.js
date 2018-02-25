@@ -23,25 +23,30 @@ describe('Bowling game', function (){
     });
   });
 
-  // describe("is spare when hit 10 pins in two rolls", function(){
-  //   it("should score 10 plus score in next roll", function(){
-  //     game.roll(5);
-  //     game.roll(5);
-  //     game.roll(5);
-  //     expect(game.score()).toEqual(15);
-  //   });
-  //
-  // });
-
-  describe("is spare", function(){
-    it('is spare when scores 10 in two rolls', function(){
-      expect(game.isSpare()).toBe(true);
+  describe("game is spare", function(){
+    it("should score 10 plus score in next roll", function(){
+      game.roll(6);
+      game.roll(4);
+      game.roll(5);
+      expect(game.score()).toEqual(20);
     });
 
+    it('is spare when scores 10 in two rolls', function(){
+      game.roll(5);
+      game.roll(5);
+      expect(game.isSpare(0)).toBe(true);
+    });
   });
 
+  describe("game is strike ", function(){
+    it("is strike when hits all the pins in one roll", function(){
+    game.roll(10);
+    expect(game.isStrike(0)).toBe(true);
+    });
 
+    it()
 
+  });
 
 
 

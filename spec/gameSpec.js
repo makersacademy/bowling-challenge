@@ -55,28 +55,6 @@ describe('Game', function(){
     });
   });
 
-  // describe('#calculateStrikeScore', function(){
-  //   it('can calculate a strike score where next roll is not another strike', function() {
-  //     game4.calculateStrikeScore();
-  //     expect(game4.strikeScore).toEqual(7);
-  //   });
-  //
-  //   it('can add up the strike score when next roll is also a strike', function() {
-  //     game5.calculateStrikeScore();
-  //     expect(game5.strikeScore).toEqual(24);
-  //   });
-  //
-  //   it('can handle scoring a strike when next turn as not happened yet', function() {
-  //     game12.calculateStrikeScore();
-  //     expect(game12.strikeScore).toEqual(10);
-  //   });
-  //
-  //   it('can handle scoring a 2 * strike when turn after next not happened yet', function() {
-  //     game13.calculateStrikeScore();
-  //     expect(game13.strikeScore).toEqual(10);
-  //   });
-  // });
-  //
     describe('#calculateTotalScore', function(){
       it('can add up the basic and spare score of game', function() {
         game3.calculateTotalScore();
@@ -116,17 +94,63 @@ describe('Game', function(){
       });
     });
 
-    describe('#calculateDoubleStrikeScore', function() {
-      it('can calculate the bonus score of spare for previous frame', function() {
-        game5.calculateDoubleStrikeScore();
-        expect(game5.doubleStrikeScore).toEqual(14);
+    describe('Strike scoring', function(){
+
+
+      describe('#calculateDoubleStrikeScore', function() {
+        it('can calculate the bonus score of spare for previous frame', function() {
+          game5.calculateDoubleStrikeScore();
+          expect(game5.doubleStrikeScore).toEqual(14);
+        });
+      });
+
+      describe('#calculateSingleStrikeScore', function() {
+        it('can calculate the bonus score of spare for previous frame', function() {
+          game4.calculateSingleStrikeScore();
+          expect(game4.singleStrikeScore).toEqual(7);
+        });
+      });
+
+      describe('Stike scoring with no double counting', function() {
+
+        it('can calculate a strike score where next roll is not another strike', function() {
+          game4.calculateSingleStrikeScore();
+          game4.calculateDoubleStrikeScore();
+          strikeScore = game4.singleStrikeScore + game4.doubleStrikeScore;
+          expect(strikeScore).toEqual(7);
+        });
+
+        it('can add up the strike score when next roll is also a strike', function() {
+          game5.calculateSingleStrikeScore();
+          game5.calculateDoubleStrikeScore();
+          strikeScore = game5.singleStrikeScore + game5.doubleStrikeScore;
+          expect(strikeScore).toEqual(24);
+        });
+
+        it('can handle scoring a strike when next turn as not happened yet', function() {
+          game12.calculateSingleStrikeScore();
+          game12.calculateDoubleStrikeScore();
+          strikeScore = game12.singleStrikeScore + game12.doubleStrikeScore;
+          expect(strikeScore).toEqual(10);
+        });
+
+        it('can handle scoring a 2 * strike when turn after next not happened yet', function() {
+          game13.calculateSingleStrikeScore();
+          game13.calculateDoubleStrikeScore();
+          strikeScore = game13.singleStrikeScore + game13.doubleStrikeScore;
+          expect(strikeScore).toEqual(10);
+        });
       });
     });
 
-    describe('#calculateSingleStrikeScore', function() {
-      it('can calculate the bonus score of spare for previous frame', function() {
-        game4.calculateSingleStrikeScore();
-        expect(game4.singleStrikeScore).toEqual(7);
+    describe('Scoring individual frames', function() {
+      it('sets up the frame scoring data structure', function() {
+        game4.prepareFrameScoring();
+        expect(game4.frameScores.length).toEqual(4);
+        expect(game4.frameScores[0]).toEqual(0);
+        expect(game4.frameScores[1]).toEqual(0);
+        expect(game4.frameScores[2]).toEqual(0);
+        expect(game4.frameScores[3]).toEqual(0);
       });
     });
 

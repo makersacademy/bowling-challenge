@@ -86,6 +86,58 @@ describe("Game", function() {
 
   });
 
+  describe("strike in the 9th and 10th frame calculated properly", function() {
+    it("calculates strikes", function() {
+      player.roll(4);
+      player.roll(4); //
+      player.roll(5);
+      player.roll(3); //
+      player.roll(4);
+      player.roll(5); //
+      player.roll(5);
+      player.roll(5); //
+      player.roll(10); //
+      player.roll(0);
+      player.roll(1); //
+      player.roll(7);
+      player.roll(3); //
+      player.roll(6);
+      player.roll(2);
+      player.roll(10);
+      player.roll(10);
+      player.roll(10);
+      player.roll(2); //
+      expect(game.strikes()).toEqual(33);
+    });
+  });
+
+  describe("spare in endgame calculated properly", function() {
+    it("calculates spares", function() {
+      player.roll(0);
+      player.roll(0); //
+      player.roll(0);
+      player.roll(0); //
+      player.roll(0);
+      player.roll(0); //
+      player.roll(0);
+      player.roll(0); //
+      player.roll(0);
+      player.roll(0); //
+      player.roll(0);
+      player.roll(0); //
+      player.roll(0);
+      player.roll(0); //
+      player.roll(0);
+      player.roll(0); //
+      player.roll(0);
+      player.roll(0); //
+      player.roll(8);
+      player.roll(2); //
+      player.roll(1); //
+      expect(game.spares()).toEqual(1);
+    });
+  });
+
   describe("tell about progress", function() {
 
     it("tells the game is in progress", function() {

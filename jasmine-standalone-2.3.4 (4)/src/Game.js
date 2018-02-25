@@ -41,19 +41,22 @@ Game.prototype.basicScore = function () {
 
 Game.prototype.spares = function() {
   var spares = 0;
-  for (i = 0; i < this.pairs.length; i+=2) { //ustaw warunek, ze testowanie do 9 frame wlacznie
+  for (i = 0; i < 17; i+=2) { 
     if ( this.isNotNull(this.pairs[i+1]) ) {
       if (Object.values(this.pairs[i])[0] + Object.values(this.pairs[i+1])[0] === 10) {
         spares += Object.values(this.pairs[i+2])[0];
       }
     }
   }
+  if (Object.values(this.pairs[18])[0] + Object.values(this.pairs[19])[0] === 10) {
+    spares += Object.values(this.pairs[20])[0];
+  }
   return spares;
 }
 
 Game.prototype.strikes = function() {
   var strikes = 0;
-  for (i = 0; i < this.pairs.length; i++) { //ustaw warunek, ze testowanie do 9 frame wlacznie
+  for (i = 0; i <= 19; i++) {
     if (Object.values(this.pairs[i])[0] === 10) {
       if (Object.values(this.pairs[i+2])[0] !== 10) {
       strikes += Object.values(this.pairs[i+2])[0];

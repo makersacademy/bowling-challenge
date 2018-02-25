@@ -11,6 +11,10 @@ Game.prototype.isInProgress = function() {
   }
 }
 
+Game.prototype._currentFrame = function() {
+  return this.frames[this.frames.length-1];
+}
+
 Game.prototype._addFrame = function() {
   let framesNum = this.frames.length;
     if (framesNum === 0 || framesNum === 1 ) {
@@ -24,10 +28,6 @@ Game.prototype._addFrame = function() {
         this.frames.push(this.frames[framesNum-1]+1);
       }
     }
-}
-
-Game.prototype._currentFrame = function() {
-  return this.frames[this.frames.length-1];
 }
 
 Game.prototype.basicScore = function () {

@@ -7,7 +7,7 @@ Player.prototype.newGame = function(game) {
 }
 
 Player.prototype.roll = function(number) {
-  if (this.currentGame.isInProgress) {
+  if (this.currentGame.isInProgress()) {
     this.currentGame._addFrame();
     if (number === 10 && this.currentGame.pairs.length < 18 ){
       this.currentGame._addFrame();

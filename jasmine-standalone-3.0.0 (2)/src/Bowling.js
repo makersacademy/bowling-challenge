@@ -1,6 +1,5 @@
 'use strict'
 
-
 var Bowling = function (){
   this.rolls = [];
   this.current = 0;
@@ -12,10 +11,18 @@ Bowling.prototype = {
     this.rolls[this.current++] = pins;
   },
 
-   score: function(){
-     for (var i = 0; i < this.rolls.length; i ++){
-       this.points += this.rolls[i];
+  score: function(){
+    for (var i = 0; i < this.rolls.length; i ++){
+      this.points += this.rolls[i];
      }
-     return this.points;
-   },
+    return this.points;
+  },
+
+  isSpare: function(roll){
+   return this.roll(roll) + this.roll(roll + 1) === 10;
+
+
+  },
+
+
 }

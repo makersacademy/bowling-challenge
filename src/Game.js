@@ -27,7 +27,7 @@ Game.prototype.score = function () {
   } else {
     for (var index = 0; index < this.frameIndex-1; index++)
       score += this.frameScore(index);
-  };
+    };
   return score;
 };
 
@@ -48,6 +48,18 @@ Game.prototype.frameScore = function (index) {
       score += 0;
     } else {
       score += 10 + this._strikeScore(index);
+    };
+  } else if (this.frames[index].isSpare()) {
+    if (isNaN(this._spareScore(index))) {
+      score += 0;
+    } else {
+      score += 10 + this._spareScore(index);
+    };
+  } else {
+    if (this.frames[index].finalFrame) {
+      score += this.frames[index].finalFrameScore();
+    } else {
+      score += this.frames[index].FrameScore();
     }
   }
   return score;
@@ -65,12 +77,24 @@ Game.prototype._strikeScore = function (index) {
   };
 };
 
+Game.prototype._spareScore = function (index) {
+  if (index < this.frameIndex-1) {
+    return this._targetBowl(index, 1, 0);
+  } else {
+    return this.finalFrameSpareScore(index);
+  };
+};
+
 Game.prototype.finalFrameStrikeScore = function (index) {
   if (index < this.frameIndex-1) {
     return this._targetBowl(index, 1, 0) + this._targetBowl(index, 1, 1);
   } else {
     return this._targetBowl(index, 0, 1) + this._targetBowl(index, 0, 2);
   };
+};
+
+Game.prototype.finalFrameSpareScore = function (index) {
+  return this._targetBowl(index, 0, 2);
 };
 
 Game.prototype._targetBowl = function (index, skipBy, bowlIndex) {

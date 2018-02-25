@@ -94,6 +94,23 @@ describe('Game', function() {
       rollMany(10, 12);
       expect(game.score()).toBe(300);
     });
+
+    it('player can bowl a game of spares', function() {
+      rollMany(5, 21);
+      expect(game.score()).toBe(150);
+    });
+
+    it('calculates a spare bonus', function() {
+      rollMany(0, 16);
+      rollMany(5, 5);
+      expect(game.score()).toBe(30);
+    });
+
+    it('calculates a strike bonus', function() {
+      rollMany(0, 16);
+      rollMany(10, 4);
+      expect(game.score()).toBe(60);
+    });
   });
 
 });

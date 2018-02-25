@@ -7,7 +7,6 @@ var Bowling = function (){
   this.points = 0;
 };
 
-
 Bowling.prototype = {
   roll: function(pins){
     this.rolls[this.current++] = pins;

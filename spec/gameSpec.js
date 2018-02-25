@@ -1,9 +1,15 @@
 "use strict";
 
-describe("Thermostat", function() {
-    var game;
+describe('Game', function() {
+  var game;
 
-    beforeEach(function() {
-        game = new Game();
+  beforeEach(function() {
+    game = new Game();
+  });
+
+  describe('test', function(){
+    it('initial spec test', function() {
+      expect(game.test).not.toBe(undefined);
     });
+  });
 });

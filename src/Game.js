@@ -1,7 +1,9 @@
 'use strict';
 
-function Game() {
-
+function Game(currentFrame = new Frame()) {
+  this.frames = [];
+  this.currentFrame = currentFrame;
+  this.addFrame();
 };
 
 Game.prototype.score = function () {
@@ -21,4 +23,8 @@ Game.prototype.score = function () {
     }
   }
   return result;
+};
+
+Game.prototype.addFrame = function () {
+  this.frames.push(this.currentFrame);
 };

@@ -3,9 +3,15 @@
 describe('Game', function() {
 
   var game;
+  var frame
 
   beforeEach(function() {
     game = new Game();
+    frame = new Frame();
+  });
+
+  it('begins a game with a first frame stored in the frames array', function() {
+    expect(game.frames[0]).toEqual(frame);
   });
 
   describe('score', function() {

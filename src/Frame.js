@@ -22,4 +22,8 @@ Frame.prototype = {
     return (this.firstRoll() + this.secondRoll());
   },
 
+  strike: function() {
+    return this.firstRoll() === 10;
+  }
+
 };

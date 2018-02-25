@@ -37,7 +37,7 @@ describe("Game", function() {
     });
 
     it("returns last frame", function() {
-      expect(game._currentFrame()).toEqual(2);
+      expect(game._lastFrame()).toEqual(2);
     });
   });
 

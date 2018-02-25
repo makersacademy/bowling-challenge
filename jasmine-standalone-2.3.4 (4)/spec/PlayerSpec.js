@@ -43,4 +43,28 @@ describe("Player", function() {
     expect(window.alert).toHaveBeenCalledWith("Game is over")
   });
 
+  it("has a final score", function() {
+    player.newGame(game);
+    player.roll(4);
+    player.roll(4); //
+    player.roll(5);
+    player.roll(3); //
+    player.roll(4);
+    player.roll(5); //
+    player.roll(5);
+    player.roll(5); //
+    player.roll(10); //
+    player.roll(0);
+    player.roll(1); //
+    player.roll(7);
+    player.roll(3); //
+    player.roll(6);
+    player.roll(4); //
+    player.roll(10); //
+    player.roll(3);
+    player.roll(3); //
+    player.countScore();
+    expect(player.score).toEqual(115);
+  });
+
 });

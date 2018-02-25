@@ -9,7 +9,7 @@ Player.prototype.newGame = function(game) {
 Player.prototype.roll = function(number) {
   if (this.currentGame.isInProgress()) {
     this.currentGame._addFrame();
-    if (number === 10 && this.currentGame._numberOfPairs() < 18 ){
+    if (number === 10 && this.currentGame._numberOfPairs() < 18) {
       this.currentGame._addFrame();
     }
     this._addToPairs(number);
@@ -20,11 +20,15 @@ Player.prototype.roll = function(number) {
 
 Player.prototype._addToPairs = function(number) {
   var pair = {};
-  pair[this.currentGame._currentFrame()] = number;
+  pair[this.currentGame._lastFrame()] = number;
   this.currentGame.pairs.push(pair);
-  if (number === 10  && this.currentGame._numberOfPairs() < 18)  {
+  if (number === 10 && this.currentGame._numberOfPairs() < 18) {
     var emptyPair = {};
-    emptyPair[this.currentGame._currentFrame()] = undefined;
+    emptyPair[this.currentGame._lastFrame()] = undefined;
     this.currentGame.pairs.push(emptyPair);
   }
+}
+
+Player.prototype.countScore = function() {
+  this.score = this.currentGame.generalScore();
 }

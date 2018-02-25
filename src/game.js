@@ -11,8 +11,9 @@ var Game = function() {
 Game.prototype.calculateTotalScore = function() {
   this.calculateBaseScore();
   this.calculateSpareScore();
-  this.calculateStrikeScore();
-  this.totalScore = this.baseScore + this.spareScore + this.strikeScore;
+  this.calculateSingleStrikeScore();
+  this.calculateDoubleStrikeScore();
+  this.totalScore = this.baseScore + this.spareScore + this.singleStrikeScore + this.doubleStrikeScore;
 };
 
 Game.prototype.calculateBaseScore = function() {
@@ -43,6 +44,9 @@ Game.prototype.calculateSingleStrikeScore = function() {
       var previousFrame = this.allFrames[frameIndex - 1];
       var previousFirstRollScore = this.firstRollScore(previousFrame);
         if (previousFirstRollScore === 10 && firstRollScore != 10) {
+            this.singleStrikeScore += (this.frameScore(currentFrame));
+        }
+        else if (previousFirstRollScore === 10 && frameIndex === 9) {
             this.singleStrikeScore += (this.frameScore(currentFrame));
         }
     }

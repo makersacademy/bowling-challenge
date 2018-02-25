@@ -20,7 +20,13 @@ Game.prototype.rollBall = function(rollScore) {
 };
 
 Game.prototype.rollCheck = function(rollScore) {
-  return rollScore === 10;
+  if (this.gameOver) throw 'Game is over!';
+  else if (rollScore > 10) throw 'Roll count is too high, input a legal value';
+  else if (this._isSecondRollOfFrame() && !this._isTenthFrame()) {
+    var currentFrame = (this.allFrames[(this.allFrames.length)-1]);
+    var firstRollCurrentFrame = this.scoreCalculator.firstRollScore(currentFrame);
+    if ((firstRollCurrentFrame + rollScore) > 10) throw 'Roll count over the two roles in this frame is too high, input a legal value';
+  }
 };
 
 Game.prototype.readScore = function(frame, roll) {
@@ -72,7 +78,6 @@ Game.prototype._tenthFrame = function(rollScore) {
 Game.prototype._isGameOver = function() {
   if ((this.scoreCalculator.frameScore(this.allFrames[9]) < 10)) {
     this.gameOver = true;
-    //TODO - Work out how to end game here -> managed by interface change
   }
   else {this.bonusRoll = true;}
 };

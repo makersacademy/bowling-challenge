@@ -25,12 +25,27 @@ describe('Game', function(){
 
       it('raises an error if roll value of second roll is too great', function() {
         game.rollBall(5);
-        expect(function() {game.rollBall(6);}).toThrow('Roll count is too high, input a legal value');
+        expect(function() {game.rollBall(6);}).toThrow('Roll count over the two roles in this frame is too high, input a legal value');
       });
 
       it('correctly lets someone have a 3rd roll in 10th round', function() {
         game.allFrames = [[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[5,5]];
         expect(function() {game.rollBall(5);}).not.toThrow('Roll count is too high, input a legal value');
+      });
+
+      it('if game is over and no bonus throw, throw error', function() {
+        game.allFrames = [[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1]];
+        game.rollBall(5);
+        game.rollBall(4);
+        expect(function() {game.rollBall(5);}).toThrow('Game is over!');
+      });
+
+      it('if game is over with bonus throw, throw error', function() {
+        game.allFrames = [[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1]];
+        game.rollBall(5);
+        game.rollBall(5);
+        game.rollBall(5);
+        expect(function() {game.rollBall(5);}).toThrow('Game is over!');
       });
 
     });

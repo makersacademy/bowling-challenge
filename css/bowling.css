@@ -1,3 +1,21 @@
 body {
   background-color: purple;
 }
+
+
+.scorecard-box {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+}
+
+.inner {
+  height: 50px;
+  width: 50px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  position: relative;
+  top: 0px;
+  left: 50px;
+}

@@ -152,6 +152,13 @@ describe('Game', function(){
         expect(game4.frameScores[2]).toEqual(0);
         expect(game4.frameScores[3]).toEqual(0);
       });
+
+      it('adds base score to correct frame', function() {
+        game4.prepareFrameScoring();
+        game4.calculateBaseScore();
+        expect(game4.frameScores[2]).toEqual(7);
+
+      });
     });
 
 });

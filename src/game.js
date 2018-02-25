@@ -18,9 +18,11 @@ Game.prototype.calculateTotalScore = function() {
 
 //Adds to current frame
 Game.prototype.calculateBaseScore = function() {
-  for( var frame of this.allFrames) {
+  for( var frameIndex = 0, len = this.allFrames.length; frameIndex < len; frameIndex++) {
+    var frame = this.allFrames[frameIndex];
     for( var roll of frame) {
       this.baseScore += roll;
+      this.frameScores[frameIndex] += roll;
     }
   }
 };

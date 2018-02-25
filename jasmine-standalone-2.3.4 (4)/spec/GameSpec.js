@@ -10,12 +10,16 @@ describe("Game", function() {
 
   describe("beginning of the game", function() {
 
-    it("has empty array of frames at the beginning", function() {
+    it("has empty array of frames", function() {
       expect(game.frames).toEqual([]);
+    });
+
+    it("has empty array of pairs", function() {
+      expect(game.pairs).toEqual([]);
     });
   });
 
-  describe("many-rolls game - rolls, frames and pairs", function() {
+  describe("many-rolls basic game", function() {
 
     beforeEach(function() {
       player.roll(5);
@@ -28,7 +32,7 @@ describe("Game", function() {
       expect(game.frames).toEqual([1, 1, 2, 2]);
     });
 
-    it("adds hashes to hashes", function() {
+    it("adds objects to pairs", function() {
       expect(game.pairs).toEqual([{1:5}, {1:6}, {2:7}, {2:8}])
     });
 
@@ -60,7 +64,7 @@ describe("Game", function() {
       player.roll(3); //
     });
 
-    it("calculates normal scores", function() {
+    it("calculates basic scores", function() {
       expect(game.basicScore()).toEqual(82);
     });
 
@@ -78,7 +82,7 @@ describe("Game", function() {
 
   });
 
-  describe("strike in the 9th and 10th frame calculated properly", function() {
+  describe("strike in the endgame calculated properly", function() {
     it("calculates strikes", function() {
       player.roll(4);
       player.roll(4); //
@@ -103,7 +107,7 @@ describe("Game", function() {
     });
   });
 
-  describe("spare in endgame calculated properly", function() {
+  describe("spares in the endgame calculated properly", function() {
     it("calculates spares", function() {
       player.roll(0);
       player.roll(0); //
@@ -132,13 +136,13 @@ describe("Game", function() {
 
   describe("tell about progress", function() {
 
-    it("tells the game is in progress", function() {
+    it("tells the game is in progress - normal case", function() {
       player.roll(5);
       player.roll(1);
       expect(game.isInProgress()).toEqual(true);
     });
 
-    it("tells the game is not in progress", function() {
+    it("tells the game is not in progress - normal case", function() {
       player.roll(1);
       player.roll(1); // round 1
       player.roll(1);
@@ -162,7 +166,7 @@ describe("Game", function() {
       expect(game.isInProgress()).toEqual(false);
     });
 
-    it("tells the game is in progress - exceptional case spare", function() {
+    it("tells the game is in progress - edge spare case", function() {
       player.roll(1);
       player.roll(1); // round 1
       player.roll(1);
@@ -186,7 +190,7 @@ describe("Game", function() {
       expect(game.isInProgress()).toEqual(true);
     });
 
-    it("tells the game is in progress - exceptional case strike", function() {
+    it("tells the game is in progress - edge strike case", function() {
       player.roll(1);
       player.roll(1); // round 1
       player.roll(1);

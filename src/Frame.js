@@ -9,47 +9,52 @@ function Frame() {
   this.rolls = [];
   this.strike = false;
 
+  // Not sure if currentScore is part of Frame's responsibility...
   this.currentScore = 0;
   this.spare = false;
 }
 
-Frame.prototype.roll = function (pinsKnocked) {
-  this._isRollLegit();
-  this._isStrike(pinsKnocked);
+Frame.prototype.roll = function roll(pinsKnocked) {
+  this.isRollLegit();
+  this.isStrike(pinsKnocked);
 
   if (this.strike !== true) {
-    this.rolls.push({ roll: parseInt(`${pinsKnocked}`) });
-    this._calculateScore(pinsKnocked);
-    this._isSpare();
+    this.rolls.push({ roll: parseInt(`${pinsKnocked}`, 10) });
+    this.calculateScore(pinsKnocked);
+    this.isSpare();
   }
 
   return pinsKnocked;
 };
 
-Frame.prototype._isRollLegit = function () {
-  this.rollCounter += 1;
+// PRIVATE METHODS
+
+Frame.prototype.isRollLegit = function isRollLegit() {
+  const newCounter = this.rollCounter + 1;
 
   if (this.strike === true) {
-    throw 'You scored a strike. Start next frame!';
-  } else if (this.rollCounter >= 3) {
-    throw 'You cannot roll again. Start next frame!';
+    throw new Error('You scored a strike. Start next frame!');
+  } else if (newCounter >= 3) {
+    throw new Error('You cannot roll again. Start next frame!');
   }
+
+  this.rollCounter += 1;
 };
 
-Frame.prototype._isStrike = function (pinsKnocked) {
+Frame.prototype.isStrike = function isStrike(pinsKnocked) {
   if (pinsKnocked === 10) {
     this.strike = true;
-    this._calculateScore(pinsKnocked);
-    this.rolls.push({ roll: parseInt(`${pinsKnocked}`) });
+    this.calculateScore(pinsKnocked);
+    this.rolls.push({ roll: parseInt(`${pinsKnocked}`, 10) });
   }
 };
 
-Frame.prototype._calculateScore = function (pinsKnocked) {
+Frame.prototype.calculateScore = function calculateScore(pinsKnocked) {
   this.currentScore += pinsKnocked;
-}
+};
 
-Frame.prototype._isSpare = function () {
+Frame.prototype.isSpare = function isSpare() {
   if (this.currentScore === 10) {
     this.spare = true;
   }
-}
+};

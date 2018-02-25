@@ -20,7 +20,7 @@ describe('Frame', () => {
       frame.roll(4);
       frame.roll(3);
 
-      expect(() => { frame.roll(6); }).toThrow('You cannot roll again. Start next frame!');
+      expect(() => { frame.roll(6); }).toThrowError('You cannot roll again. Start next frame!');
     });
 
     it('it checks if both rolls are stored for the current frame', () => {
@@ -30,15 +30,15 @@ describe('Frame', () => {
       expect(frame.rolls).toEqual([{ roll: 4 }, { roll: 3 }]);
     });
 
-    describe('#_isStrike', () => {
+    describe('#isStrike', () => {
       it('it prevents player from rolling again if strike is scored', () => {
         frame.roll(10);
 
-        expect(() => { frame.roll(3); }).toThrow('You scored a strike. Start next frame!');
+        expect(() => { frame.roll(3); }).toThrowError('You scored a strike. Start next frame!');
       });
     });
 
-    describe('#_calculateScore', () => {
+    describe('#calculateScore', () => {
       it('it sums the current score to calculate spare', () => {
         frame.roll(6);
         frame.roll(4);
@@ -47,7 +47,7 @@ describe('Frame', () => {
       });
     });
 
-    describe('#_isSpare', () => {
+    describe('#isSpare', () => {
       it('it sets the spare attribute to true if player scores a Spare', () => {
         frame.roll(6);
         frame.roll(4);

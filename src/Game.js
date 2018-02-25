@@ -3,6 +3,7 @@
 function Game(currentFrame = new Frame()) {
   this.frames = [];
   this.currentFrame = currentFrame;
+  this.frameIndex = 1;
   this.addFrame();
 };
 
@@ -27,4 +28,10 @@ Game.prototype.score = function () {
 
 Game.prototype.addFrame = function () {
   this.frames.push(this.currentFrame);
+};
+
+Game.prototype.nextFrame = function () {
+  this.currentFrame = new Frame();
+  this.addFrame();
+  this.frameIndex++;
 };

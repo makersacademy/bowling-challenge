@@ -10,6 +10,8 @@ A one-player game of bowling.
 2) Build on this logic to test drive a hypothetical game where every roll is a 1.
 3) Test drive a hypothetical game where player bowls a spare or a strike and then zeros for their remaining bowls.
 4) Use functionality of scoring a strike to test drive a perfect game.
+5) Extract functionality for keeping track of single frame scores into a separate frame class.
+6) Modify game class to create new instances of frames and push each frame into a frames array.
 
 ### Screenshot
 

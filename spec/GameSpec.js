@@ -10,8 +10,27 @@ describe('Game', function() {
     frame = new Frame();
   });
 
-  it('begins a game with a first frame stored in the frames array', function() {
+  it('begins with a frame index of 1', function() {
+    expect(game.frameIndex).toEqual(1);
+  });
+
+  it('begins with first frame already stored in the frames array', function() {
     expect(game.frames[0]).toEqual(frame);
+  });
+
+  describe('nextFrame', function() {
+
+    beforeEach(function() {
+      game.nextFrame();
+    });
+
+    it('adds next frame to the frames array', function() {
+      expect(game.frames[1]).toEqual(frame);
+    });
+
+    it('increases the frameIndex by 1', function() {
+      expect(game.frameIndex).toEqual(2);
+    });
   });
 
   describe('score', function() {

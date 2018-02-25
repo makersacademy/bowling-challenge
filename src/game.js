@@ -5,11 +5,15 @@ function Game() {
 };
 
 Game.prototype.roll = function(pins) {
-  if (pins === 10) {
-    this.rolls.push(pins)
-    this.rolls.push(null)
+  if (this.isGameOver()) {
+    return "Game over"
   } else {
-    this.rolls.push(pins)
+    if (pins === 10) {
+      this.rolls.push(pins)
+      this.rolls.push(null)
+    } else {
+      this.rolls.push(pins)
+    }
   }
 };
 
@@ -32,4 +36,18 @@ Game.prototype.score = function() {
     rollNumber += 2;
   }
   return total
+};
+
+Game.prototype.isGameOver = function() {
+  if (this.rolls.length === 21) {
+    return true
+  } else if (this.rolls.length === 20) {
+    if (this.rolls.slice(-1)[0] === 10 || this.rolls.slice(-1)[0] + this.rolls.slice(-2)[0] === 10) {
+      return false
+    } else {
+      return true
+    }
+  } else {
+    return false
+  }
 };

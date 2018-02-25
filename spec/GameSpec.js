@@ -9,6 +9,7 @@ describe("Game", function() {
   var gameWithStrikes = [10,null,10,null,10,null,10,null,1,1,1,1,1,1,1,1,1,1,1,1]
   var gameWithStrikesAndSpares = [10,null,5,5,10,null,6,4,10,null,5,5,1,1,1,1,1,1,1,1]
   var perfectGame = [10,null,10,null,10,null,10,null,10,null,10,null,10,null,10,null,10,null,10,null,10,null,10,null]
+  var gameEndingWithSpare = [10,null,5,5,10,null,6,4,10,null,5,5,1,1,1,1,1,1,1,9,4]
 
   beforeEach(function() {
     game = new Game();
@@ -26,6 +27,22 @@ describe("Game", function() {
       game.roll(2)
       game.roll(0)
       expect(game.rolls).toEqual([4, 8, 2, 0]);
+    });
+
+    it("ends the game after 20 rolls if bonus roll not achieved", function(){
+      for (var i = 0; i < 20; i++){
+        game.roll(3)
+      }
+      expect(game.roll(3)).toEqual("Game over")
+    });
+
+    it("ends the game after 21 rolls if bonus roll achieved", function(){
+      for (var i = 0; i < 19; i++){
+        game.roll(3)
+      }
+      game.roll(7)
+      expect(game.roll(3)).not.toEqual("Game over")
+      expect(game.roll(5)).toEqual("Game over")
     });
 
   });
@@ -60,6 +77,11 @@ describe("Game", function() {
     it("perfect game", function(){
       game.rolls = perfectGame
       expect(game.score()).toEqual(300)
+    });
+
+    it("game ending with spare gets a bonus roll", function(){
+      game.rolls = gameEndingWithSpare
+      expect(game.score()).toEqual(131)
     });
 
   });

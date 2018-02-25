@@ -4,6 +4,8 @@ function Game() {
 }
 
 Game.prototype.addFrame = function addFrame(frame) {
+  // Check no more than 10 frames
+  // Check 10th frame special case
   this.frames.push(frame);
 };
 
@@ -24,3 +26,4 @@ Game.prototype.finalScore = function finalScore() {
 };
 
 // PRIVATE METHODS
+// Define Strike and Spare methods here... finalScore method is massive

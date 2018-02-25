@@ -11,9 +11,9 @@ describe('Game', () => {
     spareFrame = jasmine.createSpyObj('strikeFrame', ['rolls', 'spare']);
 
     frame.rolls = [{ roll: 3 }, { roll: 3 }];
-
     strikeFrame.rolls = [{ roll: 0 }, { roll: 10 }];
     spareFrame.rolls = [{ roll: 5 }, { roll: 5 }];
+    
     strikeFrame.strike = true;
     spareFrame.spare = true;
   });

@@ -15,6 +15,13 @@ Regarding the development process, I tried to stick by this flow as much as poss
 
 One note on refactoring: ESLint was extremely helpful in this process. Also, I do not regret having spent some time on setting up the Jasmine plugin. I loaded the AirBnB style guide within ESLint by default, I find it extremely solid and coherent.
 
+For this challenge, I decided to implement functionalities one at a time. To sum it up, this was the process I followed for the business logic:
+- Created Frame Class that takes up to 2 rolls
+- Pass the Frame object to the Game Class (<i>frames</i> array with 10 objects, one per game frame)
+- Sum them to calculate total score
+
+* Notice that no bonuses from Strikes or Spares are taken into account for now.
+
 
 Bowling Challenge
 =================

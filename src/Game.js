@@ -7,23 +7,13 @@ function Game(currentFrame = new Frame()) {
   this.addFrame();
 };
 
-Game.prototype.score = function () {
-  var result = 0;
-  var rollIndex = 0;
-
-  for (var frameIndex = 0; frameIndex < 10; frameIndex++) {
-    if (isStrike()) {
-      result += getStrikeScore();
-      rollIndex++;
-    } else if (isSpare()) {
-      result += getSpareScore();
-      rollIndex += 2;
-    } else {
-      result += getNormalGame();
-      rollIndex += 2;
-    }
-  }
-  return result;
+Game.prototype.bowl = function (pins) {
+  this.currentFrame.bowl(pins);
+  if (this.frameIndex < 10) {
+    if (this.currentFrame.isStrike() || this.currentFrame.bowlIndex > 2) {
+      this.nextFrame();
+    };
+  };
 };
 
 Game.prototype.addFrame = function () {

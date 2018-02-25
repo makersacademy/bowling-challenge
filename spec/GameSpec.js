@@ -33,6 +33,30 @@ describe('Game', function() {
     });
   });
 
+  describe('bowl', function() {
+    it('bowls in the current frame', function() {
+      game.bowl(7);
+      expect(game.frameIndex).toEqual(1);
+    });
+
+    it('moves the frameIndex by 1 if bowl is a strike', function() {
+      game.bowl(10);
+      expect(game.frameIndex).toEqual(2);
+    });
+
+    it('moves to the next frame if player has bowled two normal scores', function() {
+      game.bowl(3);
+      game.bowl(6);
+      expect(game.frameIndex).toEqual(2);
+    });
+
+    it('ends the game after 10 frames', function() {
+      for (var i = 0; i < 20; i++) { game.bowl(2); }
+      game.bowl(2);
+      expect(game.frameIndex).toEqual(10);
+    });
+  });
+
   describe('score', function() {
     var rollMany = function (pins, rolls) {
       for (var i = 0; i < rolls; i++) {

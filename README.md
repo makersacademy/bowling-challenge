@@ -29,6 +29,7 @@ After making sure the basic business logic and functionalities are working, it w
 - This was probably the hardest part of the app. The biggest struggle was getting to organise my ideas regarding which class was responsible for each app behaviour, as there are many different factors when bonuses need to be applied to the previous frame.
 
 Other important functionality aspects were added too:
+[TBC]
 
 PART 3:
 [TBC]

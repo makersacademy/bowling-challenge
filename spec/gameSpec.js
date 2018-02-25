@@ -1,11 +1,21 @@
 describe('Game', () => {
   let game;
   let frame;
+  let strikeFrame;
+  let spareFrame;
 
   beforeEach(() => {
     game = new Game();
     frame = jasmine.createSpyObj('frame', ['rolls']);
+    strikeFrame = jasmine.createSpyObj('strikeFrame', ['rolls', 'strike']);
+    spareFrame = jasmine.createSpyObj('strikeFrame', ['rolls', 'spare']);
+
     frame.rolls = [{ roll: 3 }, { roll: 3 }];
+
+    strikeFrame.rolls = [{ roll: 0 }, { roll: 10 }];
+    spareFrame.rolls = [{ roll: 5 }, { roll: 5 }];
+    strikeFrame.strike = true;
+    spareFrame.spare = true;
   });
 
   describe('#initialize', () => {
@@ -15,8 +25,6 @@ describe('Game', () => {
   });
 
   describe('#addFrame', () => {
-    // This is not the whole object... just the rolls of the object
-    // This is like passing frame.rolls though, but 'expected' behaviour
     it('it stores Frame rolls in the Game instance', () => {
       game.addFrame(frame);
 
@@ -31,6 +39,20 @@ describe('Game', () => {
       }
 
       expect(game.finalScore()).toEqual(60);
+    });
+
+    it('it adds the right bonus to previous frame after strike is scored', () => {
+      game.addFrame(strikeFrame);
+      game.addFrame(frame);
+
+      expect(game.finalScore()).toEqual(22);
+    });
+
+    it('it adds the right bonus to previous frame after spare is scored', () => {
+      game.addFrame(spareFrame);
+      game.addFrame(frame);
+
+      expect(game.finalScore()).toEqual(19);
     });
   });
 });

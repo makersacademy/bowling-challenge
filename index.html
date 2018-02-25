@@ -9,5 +9,20 @@
 <body>
     <script src="src/Frame.js"></script>
     <script src="src/Game.js"></script>
+    <script>
+        let frame = new Frame();
+        let frame2 = new Frame();
+        let game = new Game();
+
+        frame.roll(3);
+        frame.roll(3);
+        frame2.roll(4);
+        frame2.roll(4);
+
+        game.addFrame(frame);
+        game.addFrame(frame2);
+
+        game.finalScore();
+    </script>
 </body>
 </html>

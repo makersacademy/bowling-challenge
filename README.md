@@ -15,13 +15,52 @@ Regarding the development process, I tried to stick by this flow as much as poss
 
 One note on refactoring: ESLint was extremely helpful in this process. Also, I do not regret having spent some time on setting up the Jasmine plugin. I loaded the AirBnB style guide within ESLint by default, I find it extremely solid and coherent.
 
-For this challenge, I decided to implement functionalities one at a time. To sum it up, this was the process I followed for the business logic:
+For this challenge, I decided to implement functionalities one at a time.
+To sum it up, this was the process I followed for the business logic, dividing it into three main parts:
+
+PART 1:
 - Created Frame Class that takes up to 2 rolls
 - Pass the Frame object to the Game Class (<i>frames</i> array with 10 objects, one per game frame)
 - Sum them to calculate total score
+<i>Notice that no bonuses from Strikes or Spares are taken into account for now.</i>
 
-* Notice that no bonuses from Strikes or Spares are taken into account for now.
+PART 2:
+After making sure the basic business logic and functionalities are working, it was time to work on the bonuses applied due to Strikes and Spares.
+- This was probably the hardest part of the app. The biggest struggle was getting to organise my ideas regarding which class was responsible for each app behaviour, as there are many different factors when bonuses need to be applied to the previous frame.
 
+Other important functionality aspects were added too:
+
+PART 3:
+[TBC]
+
+Next focus
+------
+[TBC]
+
+Personal code review
+------
+[TBC]
+
+Technologies used
+------
+
+* Chrome DevTools
+* CSS
+* ESLint
+* Jasmine
+* Javascript
+* Visual Studio Code
+
+Installation Instructions
+------
+[TBC]
+
+How to run the tests
+------
+[TBC]
+
+Screenshot
+------
 
 Bowling Challenge
 =================

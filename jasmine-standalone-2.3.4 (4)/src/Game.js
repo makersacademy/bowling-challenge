@@ -31,9 +31,9 @@ Game.prototype._currentFrame = function() {
 
 Game.prototype.basicScore = function () {
   var counter = 0;
-  this.rolls.map(function(roll) {
-    if (roll !== null) {
-      counter += roll
+  this.pairs.map(function(pair) {
+    if (Object.values(pair)[0] !== undefined) {
+      counter += Object.values(pair)[0]
     }
   })
   return counter;
@@ -41,7 +41,7 @@ Game.prototype.basicScore = function () {
 
 Game.prototype.spares = function() {
   var spares = 0;
-  for (i = 0; i < 17; i+=2) { 
+  for (i = 0; i < 17; i+=2) {
     if ( this.isNotNull(this.pairs[i+1]) ) {
       if (Object.values(this.pairs[i])[0] + Object.values(this.pairs[i+1])[0] === 10) {
         spares += Object.values(this.pairs[i+2])[0];
@@ -95,7 +95,7 @@ Game.prototype._lessThan20 = function() {
 }
 
 Game.prototype._endGameStrike = function() {
-  if (this.frames.length === 20 && this.rolls[this.rolls.length-1] === 10) {
+  if (this.frames.length === 20 && (this.rolls[this.rolls.length-1]) === 10) {
     return true;
   } else {
     return false;
@@ -108,4 +108,8 @@ Game.prototype._endGameSpare = function() {
   } else {
     return false;
   }
+}
+
+Game.prototype._lastPairValue = function() {
+
 }

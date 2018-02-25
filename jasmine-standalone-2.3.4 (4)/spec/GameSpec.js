@@ -213,7 +213,8 @@ describe("Game", function() {
       player.roll(1); // round 8
       player.roll(1);
       player.roll(1); // round 9
-      player.roll(10); //
+      player.roll(10);
+      player.roll(2); // round 10
       expect(game.isInProgress()).toEqual(true);
     });
 

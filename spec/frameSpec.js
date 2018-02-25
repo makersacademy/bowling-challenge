@@ -20,7 +20,7 @@ describe('Frame', () => {
       frame.roll(4);
       frame.roll(3);
 
-      expect(() => { frame.roll(6); }).toThrow('You already rolled twice. Start next frame!');
+      expect(() => { frame.roll(6); }).toThrow('You cannot roll again. Start next frame!');
     });
 
     it('it checks if both rolls are stored for the current frame', () => {
@@ -28,6 +28,14 @@ describe('Frame', () => {
       frame.roll(3);
 
       expect(frame.rolls).toEqual([{ roll: 4 }, { roll: 3 }]);
+    });
+
+    ///
+
+    it('it prevents player from rolling again if strike is scored', () => {
+      frame.roll(10);
+
+      expect(() => { frame.roll(3); }).toThrow('You scored a strike. Start next frame!');
     });
   });
 });

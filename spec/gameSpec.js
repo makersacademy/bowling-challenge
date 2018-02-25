@@ -112,4 +112,11 @@ describe('Game', function(){
       });
     });
 
+    describe('#calculateFrameSpareScore', function() {
+      it('can calculate the bonus score of spare for previous frame', function() {
+        game2.calculateFrameSpareScore();
+        expect(game2.spareScore).toEqual(3);
+      });
+    });
+
 });

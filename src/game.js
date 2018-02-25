@@ -21,14 +21,39 @@ Game.prototype.calculateBaseScore = function() {
   }
 };
 
-Game.prototype.calculateSpareScore = function() {
-  for( var frameIndex = 0, len = this.allFrames.length; frameIndex < len; frameIndex++) {
+Game.prototype.calculateFrameSpareScore = function() {
+  for( var frameIndex = 1, len = this.allFrames.length; frameIndex < len; frameIndex++) {
     var currentFrame = this.allFrames[frameIndex];
     var currentFrameScore = this.frameScore(currentFrame);
-    var firstRollScore = this.firstRollScore(currentFrame);
-      if ((frameIndex + 1) === len) {continue;}
-      else if ((firstRollScore < 10) && (currentFrameScore === 10 ) && (frameIndex < 9)) {
-        this.spareScore += this.allFrames[frameIndex+1][0];
+    var previousFrame = this.allFrames[frameIndex - 1];
+    var previousFrameScore = this.frameScore(previousFrame);
+    var firstRollScore = this.firstRollScore(previousFrame);
+      // if ((frameIndex + 1) === len) {continue;}
+      if ((firstRollScore < 10) && (previousFrameScore === 10 ) && (frameIndex < 9)) {
+        this.spareScore += this.allFrames[frameIndex][0];
+      }
+  }
+};
+
+// Game.prototype.calculateSpareScore = function() {
+//   for( var frameIndex = 0, len = this.allFrames.length; frameIndex < len; frameIndex++) {
+//     var currentFrame = this.allFrames[frameIndex];
+//     var currentFrameScore = this.frameScore(currentFrame);
+//     var firstRollScore = this.firstRollScore(currentFrame);
+//       if ((frameIndex + 1) === len) {continue;}
+//       else if ((firstRollScore < 10) && (currentFrameScore === 10 ) && (frameIndex < 9)) {
+//         this.spareScore += this.allFrames[frameIndex+1][0];
+//       }
+//   }
+// };
+
+Game.prototype.calculateSpareScore = function() {
+  for( var frameIndex = 1, len = this.allFrames.length; frameIndex < len; frameIndex++) {
+    var previousFrame = this.allFrames[frameIndex - 1];
+    var previousFrameScore = this.frameScore(previousFrame);
+    var firstRollScore = this.firstRollScore(previousFrame);
+      if ((firstRollScore < 10) && (previousFrameScore === 10 )) {
+        this.spareScore += this.allFrames[frameIndex][0];
       }
   }
 };

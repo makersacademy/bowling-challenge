@@ -20,19 +20,25 @@ Game.prototype._numberOfPairs = function() {
 }
 
 Game.prototype._addFrame = function() {
-  let framesNum = this.frames.length;
-    if (framesNum === 0 || framesNum === 1 ) {
-      this.frames.push(1);
-    } else if (this.frames[framesNum-1] !== this.frames[framesNum-2]) {
-      this.frames.push(this.frames[framesNum-1]);
-    } else if (this.frames[framesNum-1] === this.frames[framesNum-2]) {
-      if (this.frames[framesNum-1] === 10) {
-        this.frames.push(10);
-      } else {
-        this.frames.push(this.frames[framesNum-1]+1);
-      }
+  let framesCount = this.frames.length;
+  let lastFrame = this.frames[framesCount-1];
+  let secondLastFrame = this.frames[framesCount-2];
+
+  if (framesCount === 0 || framesCount === 1 ) {
+    this.frames.push(1);
+  } else if (lastFrame !== secondLastFrame) {
+    this.frames.push(lastFrame);
+  } else if (lastFrame === secondLastFrame) {
+    if (lastFrame === 10) {
+      this.frames.push(10);
+    } else {
+      this.frames.push(lastFrame+1);
     }
+  }
+
 }
+
+// COUNTING METHODS
 
 Game.prototype.basicScore = function () {
   var counter = 0;
@@ -102,6 +108,8 @@ Game.prototype.isNotNull = function(object) {
     return false;
   }
 }
+
+// GAME IN PROGRESS METHODS BELOW
 
 Game.prototype._lessThan20 = function() {
   if (this.frames.length < 20) {

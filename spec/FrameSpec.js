@@ -42,4 +42,21 @@ describe('Frame', function() {
     });
   });
 
+  describe('FrameScore', function() {
+    it('confirms regular frame score with no strike or spare', function() {
+      frame.bowl(2);
+      frame.bowl(6);
+      expect(frame.FrameScore()).toEqual(8);
+    });
+  });
+
+  describe('finalFrameScore', function() {
+    it('confirms final frame score inc. strike or spare', function() {
+      frame.bowl(10);
+      frame.bowl(5);
+      frame.bowl(3);
+      expect(frame.finalFrameScore()).toBe(18);
+    });
+  });
+
 });

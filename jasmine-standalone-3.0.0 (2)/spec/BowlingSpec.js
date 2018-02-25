@@ -2,7 +2,6 @@ describe('Bowling game', function (){
 
   beforeEach(function(){
     game = new Bowling ();
-
   });
 
   describe('gutter game', function(){
@@ -50,9 +49,25 @@ describe('Bowling game', function (){
     game.roll(3);
     expect(game.score()).toEqual(26);
     });
-
   });
 
+  describe("perfect game", function(){
+    it("scores 300 points when hits all the pins in 12 rolls", function(){
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      game.roll(10);
+      expect(game.score()).toEqual(300);
+    });
 
+  })
 
 });

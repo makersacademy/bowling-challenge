@@ -24,10 +24,11 @@ $(document).ready(function() {
       if (frameCount < 9) {
         if (!scoresArray[frameCount]) {
           scoresArray[frameCount] = [score];
-        } else {
+        } else if (scoresArray[frameCount][0] + score <= 10){
           scoresArray[frameCount].push(score);
         }
         if (scoresArray[frameCount][0] === 10 || scoresArray[frameCount].length ===2) {
+          $(`#f${frameCount + 1} > .inner`).text(scoresArray[frameCount]);
           frameCount ++;
         }
         console.log(scoresArray);
@@ -53,8 +54,10 @@ $(document).ready(function() {
       bowling.createAllFramesArray(flatScoresArray);
       var frameTotals = bowling.allFrames;
       console.log(frameTotals);
+      var runningTotal = 0
       for (var i = 0; i < frameTotals.length; i ++) {
-        $(`#f${i + 1}`).text(frameTotals[i]);
+        $(`#f${i + 1}`).text(frameTotals[i] + runningTotal);
+        runningTotal += frameTotals[i];
       }
       var finalScore = bowling.score(flatScoresArray);
       console.log(finalScore);

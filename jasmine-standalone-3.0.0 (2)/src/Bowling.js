@@ -3,7 +3,6 @@
 var Bowling = function (){
   this.rolls = [];
   this.current = 0;
-  this.points = 0;
 };
 
 Bowling.prototype = {
@@ -12,20 +11,18 @@ Bowling.prototype = {
   },
 
   score: function(){
-    var hasBonusRoll = this.hasBonus;
-    var scoring = (hasBonusRoll) ? hasBonusRoll +1 : this.rolls.length;
+    var points = 0;
 
-    for (var i = 0; i < scoring; i ++){
-      if (this.isStrike(i)){
-        this.points += 10 + this.rolls[i+1] + this.rolls[i+2];
-        } else if (this.isSpare(i)){
-        this.points += 10 + this.rolls[i+2];
-        i++;
-        } else {
-        this.points += this.rolls[i];
-        }
+    for (var i = 0; i < this.rolls.length; i ++) {
+      if (this.isStrike(i)) {
+        points += 10 + this.rolls[i+1] + this.rolls[i+2];
+      } else if (this.isSpare(i)) {
+        points += 10 + this.rolls[i+2];
+        i++; } else {
+        points += this.rolls[i];
       }
-    return this.points;
+    }
+    return points;
   },
 
   isSpare: function(roll) {
@@ -34,14 +31,6 @@ Bowling.prototype = {
 
   isStrike: function(roll){
     return this.rolls[roll] === 10;
-  },
-
-  hasBonus: function(){
-    var tenFrame = this.rolls.length -3;
-    var bonus = (this.isStrike(tenFrame)) || (this.isSpare(tenFrame));
-
-    return (bonus)? tenFrame : null;
-
   },
 
 }

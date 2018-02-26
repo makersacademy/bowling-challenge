@@ -6,28 +6,25 @@ describe('Bowling game', function (){
 
   describe('gutter game', function(){
     it('should score 0 if player never hits a pin', function(){
-      for (var i = 0; i < 20; i++) {
-        game.roll(0);
-      }
+      rollTimes(0, 20);
       expect(game.score()).toEqual(0);
     });
   });
 
   describe("When in all rolls only hits 1 pin", function(){
     it('should score 20 if player only hits a pin per roll', function(){
-      for (var i = 0; i < 20; i++) {
-        game.roll(1);
-      }
+      rollTimes(1, 20)
       expect(game.score()).toEqual(20);
     });
   });
 
   describe("game is spare", function(){
     it("should score 10 plus score in next roll", function(){
-      game.roll(6);
-      game.roll(4);
       game.roll(5);
-      expect(game.score()).toEqual(20);
+      game.roll(5);
+      game.roll(3);
+      rollTimes(0, 17)
+      expect(game.score()).toEqual(16);
     });
 
     it('is spare when scores 10 in two rolls', function(){
@@ -45,29 +42,24 @@ describe('Bowling game', function (){
 
     it("scores 26 when strike in first roll and hit 5 and 3 in next frame", function(){
     game.roll(10);
-    game.roll(5);
+    game.roll(4);
     game.roll(3);
-    expect(game.score()).toEqual(26);
+    rollTimes(0, 16);
+    expect(game.score()).toEqual(24);
     });
   });
 
-  describe("perfect game", function(){
-    it("scores 300 points when hits all the pins in 12 rolls", function(){
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      game.roll(10);
-      expect(game.score()).toEqual(300);
-    });
+  // describe("perfect game", function(){
+  //   it("scores 300 points when hits all the pins in 12 rolls", function(){
+  //   rollTimes(10, 12);
+  //     expect(game.score()).toEqual(300);
+  //   });
+  // })
 
-  })
+  var rollTimes = function(pins, rolls){
+    for (var i = 0; i < rolls; i ++){
+      game.roll(pins);
+    }
+  };
 
 });

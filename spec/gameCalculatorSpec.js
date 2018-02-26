@@ -10,7 +10,7 @@ describe('Bowling', function() {
     perfectGame = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
     awkwardGame = [10, 10, 10, 9, 1, 10, 10, 10, 9, 1, 10, 10, 10, 10];
     awkwardGameTwo = [10, 5, 5, 4, 3, 7, 3, 10, 8, 1, 7, 2, 4, 3, 10, 7, 3, 7];
-    awkwardGameThree = [10, 10, 7, 3, 10, 10, 8, 2, 10, 10, 9, 1, 5, 0];
+    awkwardGameThree = [9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 10];
     strikeFirst = [10, 5, 3, 10, 10, 10];
     spareFirst = [8, 2, 8, 10, 10, 10];
   });
@@ -30,7 +30,7 @@ describe('Bowling', function() {
     it('can score an awkward games', function() {
       expect(bowling.score(awkwardGame)).toEqual(258);
       expect(bowling.score(awkwardGameTwo)).toEqual(142);
-      expect(bowling.score(awkwardGameThree)).toEqual(204);
+      expect(bowling.score(awkwardGameThree)).toEqual(191);
     });
 
     it('resets allFrames to an empty array', function(){

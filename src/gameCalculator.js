@@ -39,7 +39,6 @@ Bowling.prototype = {
   },
 
   addFrameToAllFramesArray: function() {
-    console.log(this.frame);
     this.allFrames.push(this.sum(this.frame));
     this.frame = 0;
   },

@@ -5,7 +5,8 @@ var Bowling = function() {
   this.frame = 0;
 };
 
-// TODO: ADD UNIT TESTING FOR ALL FUNCTIONS!!!!
+// TODO: Make frame checker to run before framCount ++ checks previous two frames
+// if frame[0] is ten (-2) or total is ten (-1) and add self to it accordingly
 
 Bowling.prototype = {
   score: function(scores) {
@@ -49,4 +50,20 @@ Bowling.prototype = {
     });
     return arr;
   },
+
+  // scorecard functions
+
+  frameChecker(arr) {
+    var l = arr.length
+    if (l > 2 && arr[l-3][0] === 10 && !arr[l-3][2] && arr[l-2][0] === 10) {
+      arr[l-3].push(arr[l-1][0]);
+      arr[l-1][1] ? arr[l-2].push(arr[l-1][0], arr[l-1][1]) : arr[l-2].push(arr[l-1][0]);
+    } else if (l > 1 && arr[l - 2][0] === 10 && arr[l-1].length < 3) {
+      console.log("why have you forsaken me?")
+      arr[l - 1][1] && arr[l-1][1] !== 10 ? arr[l-2].push(arr[l-1][0], arr[l-1][1]) : arr[l-2].push(arr[l-1][0]);
+    } else if (l > 1 && !arr[l-2][2] && this.sum(arr[l-2]) === 10) {
+      arr[l-2].push(arr[l-1][0]);
+    }
+    return arr;
+  }
 }

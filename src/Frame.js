@@ -39,7 +39,7 @@ Frame.prototype.isRollLegit = function isRollLegit() {
 };
 
 Frame.prototype.isStrike = function isStrike(pinsKnocked) {
-  if (pinsKnocked === 10 && this.rollCounter === 0) {
+  if (pinsKnocked === 10 && this.rollCounter === 1) {
     this.strike = true;
     this.calculateScore(pinsKnocked);
     this.rolls.push({ roll: parseInt(`${pinsKnocked}`, 10) });

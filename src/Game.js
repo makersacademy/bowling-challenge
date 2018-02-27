@@ -12,7 +12,7 @@ Game.prototype.addFrame = function addFrame(frame) {
 Game.prototype.finalScore = function finalScore() {
   this.frames.forEach((frame, index, frames) => {
     if (frame.strike === true) {
-      this.totalScore += frame.rolls[0].roll + frame.rolls[1].roll;
+      this.totalScore += frame.rolls[0].roll;
       this.totalScore += frames[index + 1].rolls[0].roll + frames[index + 1].rolls[1].roll;
     } else if (frame.spare === true) {
       this.totalScore += frame.rolls[0].roll + frame.rolls[1].roll;

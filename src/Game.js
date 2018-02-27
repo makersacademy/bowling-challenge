@@ -26,4 +26,4 @@ Game.prototype.finalScore = function finalScore() {
 };
 
 // PRIVATE METHODS
-// Define Strike and Spare methods here... finalScore method is massive
+// Define strikeBonus, spareBonus & noBonus methods

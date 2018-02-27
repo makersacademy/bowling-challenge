@@ -1,5 +1,5 @@
 var Frame = function() {
-  this._score = null;
+  this.score = null;
   this.ball1 = null;
   this.ball2 = null;
   this.strike = false;

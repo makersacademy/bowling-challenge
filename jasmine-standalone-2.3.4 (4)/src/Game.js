@@ -6,11 +6,7 @@ function Game() {
  // GENERAL METHODS
 
 Game.prototype.isInProgress = function() {
-  if (this._endGameStrike() || this._endGameSpare() || this._lessThan20()) {
-    return true;
-  } else {
-    return false;
-  }
+  return (this._endGameStrike() || this._endGameSpare() || this._lessThan20());
 }
 
 Game.prototype._lastFrame = function() {
@@ -120,9 +116,7 @@ Game.prototype.isNotStrike = function(object) {
 // GAME IN PROGRESS METHODS BELOW
 
 Game.prototype._lessThan20 = function() {
-  if (this.frames.length < 20) {
-    return true;
-  }
+  return this.frames.length < 20
 }
 
 Game.prototype._endGameStrike = function() {

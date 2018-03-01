@@ -11,8 +11,8 @@ function Frame() {
   this.spare = false;
 }
 
-Frame.prototype.roll = function roll(pinsKnocked) {
-  this.isRollLegit();
+Frame.prototype.roll = function roll(pinsKnocked, lastFrame) {
+  this.isRollLegit(lastFrame);
   this.isStrike(pinsKnocked);
 
   if (this.strike !== true) {
@@ -26,12 +26,12 @@ Frame.prototype.roll = function roll(pinsKnocked) {
 
 // PRIVATE METHODS
 
-Frame.prototype.isRollLegit = function isRollLegit() {
+Frame.prototype.isRollLegit = function isRollLegit(lastFrame) {
   const newCounter = this.rollCounter + 1;
 
-  if (this.strike === true) {
+  if (this.strike === true && lastFrame === undefined) {
     throw new Error('You scored a strike. Start next frame!');
-  } else if (newCounter >= 3) {
+  } else if (newCounter >= 3 && lastFrame === undefined) {
     throw new Error('You cannot roll again. Start next frame!');
   }
 

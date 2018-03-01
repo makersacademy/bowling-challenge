@@ -30,6 +30,22 @@ describe('Frame', () => {
       expect(frame.rolls).toEqual([{ roll: 4 }, { roll: 3 }]);
     });
 
+    it('it checks if player can roll a 3rd ball in last frame after scoring spare', () => {
+      frame.roll(5, true);
+      frame.roll(5, true);
+      frame.roll(5, true);
+
+      expect(frame.rolls).toEqual([{ roll: 5 }, { roll: 5 }, { roll: 5 }]);
+    });
+
+    it('it checks if player can roll a 3rd ball in last frame after scoring strike', () => {
+      frame.roll(10, true);
+      frame.roll(10, true);
+      frame.roll(10, true);
+
+      expect(frame.rolls).toEqual([{ roll: 10 }, { roll: 10 }, { roll: 10 }]);
+    });
+
     describe('#isStrike', () => {
       it('it prevents player from rolling again if strike is scored', () => {
         frame.roll(10);
@@ -45,6 +61,18 @@ describe('Frame', () => {
 
         expect(frame.currentScore).toEqual(10);
       });
+
+      it('it sums the correct score in last frame if spare is scored', () => {
+        frame.roll(5, true);
+        frame.roll(5, true);
+        frame.roll(5, true);
+
+        expect(frame.currentScore).toEqual(15);
+      });
+
+      // it('it sums the correct score in last frame if strike is scored', () => {
+
+      // });
     });
 
     describe('#isSpare', () => {

@@ -1,8 +1,10 @@
 describe('Frame', () => {
   let frame;
+  let lastFrame;
 
   beforeEach(() => {
     frame = new Frame();
+    lastFrame = new Frame(10);
   });
 
   describe('#initialize', () => {
@@ -31,34 +33,34 @@ describe('Frame', () => {
     });
 
     it('it checks if player can roll a 3rd ball in last frame after scoring spare', () => {
-      frame.roll(5, true);
-      frame.roll(5, true);
-      frame.roll(5, true);
+      lastFrame.roll(5);
+      lastFrame.roll(5);
+      lastFrame.roll(5);
 
-      expect(frame.rolls).toEqual([{ roll: 5 }, { roll: 5 }, { roll: 5 }]);
+      expect(lastFrame.rolls).toEqual([{ roll: 5 }, { roll: 5 }, { roll: 5 }]);
     });
 
     it('it checks if player can roll a 3rd ball in last frame after scoring strike', () => {
-      frame.roll(10, true);
-      frame.roll(10, true);
-      frame.roll(10, true);
+      lastFrame.roll(10);
+      lastFrame.roll(10);
+      lastFrame.roll(10);
 
-      expect(frame.rolls).toEqual([{ roll: 10 }, { roll: 10 }, { roll: 10 }]);
+      expect(lastFrame.rolls).toEqual([{ roll: 10 }, { roll: 10 }, { roll: 10 }]);
     });
 
     it('it prevents the player from rolling a 3rd ball in last frame if not strike or spare', () => {
-      frame.roll(2, true);
-      frame.roll(3, true);
+      lastFrame.roll(2);
+      lastFrame.roll(3);
 
-      expect(() => { frame.roll(10, true); }).toThrowError("You can't roll an additional ball. Click on 'Final Score' to see your points!");
+      expect(() => { lastFrame.roll(10); }).toThrowError("You can't roll an additional ball. Click on 'Final Score' to see your points!");
     });
 
     it('it prevents player from rolling a 4th ball in last frame if strike or spare', () => {
-      frame.roll(10, true);
-      frame.roll(5, true);
-      frame.roll(5, true);
+      lastFrame.roll(10);
+      lastFrame.roll(5);
+      lastFrame.roll(5);
 
-      expect(() => { frame.roll(10, true); }).toThrowError("You can't roll an additional ball. Click on 'Final Score' to see your points!");
+      expect(() => { lastFrame.roll(10); }).toThrowError("You can't roll an additional ball. Click on 'Final Score' to see your points!");
     });
 
     describe('#isStrike', () => {
@@ -78,19 +80,19 @@ describe('Frame', () => {
       });
 
       it('it sums the correct score in last frame if spare is scored', () => {
-        frame.roll(5, true);
-        frame.roll(5, true);
-        frame.roll(5, true);
+        lastFrame.roll(5);
+        lastFrame.roll(5);
+        lastFrame.roll(5);
 
-        expect(frame.currentScore).toEqual(15);
+        expect(lastFrame.currentScore).toEqual(15);
       });
 
       it('it sums the correct score in last frame if strike is scored', () => {
-        frame.roll(10, true);
-        frame.roll(10, true);
-        frame.roll(10, true);
+        lastFrame.roll(10);
+        lastFrame.roll(10);
+        lastFrame.roll(10);
 
-        expect(frame.currentScore).toEqual(30);
+        expect(lastFrame.currentScore).toEqual(30);
       });
     });
 

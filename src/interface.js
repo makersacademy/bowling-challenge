@@ -1,12 +1,8 @@
 $(document).ready(function() {
   var bowling = new Bowling();
-  var frameCount = 0;
+  var completedFrames = 0;
   var scoresArray = [];
-  var scoreText;
   var score;
-  var frameScore;
-  var currentTotal = 0;
-
 
   $('#score').click(function(){
     var gameArr = $('#full-game').val().replace(/\s/,'').split(',').map(Number);
@@ -16,119 +12,77 @@ $(document).ready(function() {
     $('#final-score').text('Total score for that game: ' + bowling.score(gameArr));
   });
 
-
   $('.insert-score').click(function(){
-    for (var i = 0; i < scoresArray.length; i ++) {
-      // TODO something like span text = scores array.splice.flatten.sum
-      $(`#f${i + 1} > span`).text(bowling.sum(scoresArray[i]));
+    // for each frame that exists
+    for (var i = 1; i <= scoresArray.length; i ++) {
+      // flatten that frame and the ones before it
+      var totalArr = scoresArray.slice(0, i).reduce(
+          function(a, b) {
+            return a.concat(b);
+          }, [] );
+        // sum all the scores
+      var sumTotal = bowling.sum(totalArr);
+      // display the score in the relevant box
+      $(`#f${i} > span`).text(sumTotal);
     }
+    // get the integer of the button pressed
     score = parseInt(this.id);
-    if (frameCount < 10) {
-      if (frameCount < 9) {
-        if (!scoresArray[frameCount]) {
-          scoresArray[frameCount] = [score];
-          $(`#f${frameCount + 1} > .inner`).text(scoresArray[frameCount]);
-        } else if (scoresArray[frameCount][0] + score <= 10){
-          scoresArray[frameCount].push(score);
-          $(`#f${frameCount + 1} > .inner`).text(scoresArray[frameCount]);
+    if (completedFrames < 10) {
+      // for frames 1 - 9
+      if (completedFrames < 9) {
+        // check if the frame already has an array (first roll)
+        if (!scoresArray[completedFrames]) {
+          // if NOT add the score to it
+          scoresArray[completedFrames] = [score];
+          // and display the score in the inner box
+          $(`#f${completedFrames + 1} > .inner`).text(scoresArray[completedFrames]);
+          // Otherwise check that the button clicked is  possible (less than ten) (second roll)
+        } else if (scoresArray[completedFrames][0] + score <= 10) {
+          // and add the second roll to the array
+          scoresArray[completedFrames].push(score);
+          // and display both rolls in the inner box
+          $(`#f${completedFrames + 1} > .inner`).text(scoresArray[completedFrames]);
         }
-        if (scoresArray[frameCount][0] === 10 || scoresArray[frameCount].length === 2) {
-
-          frameCount ++;
+        // if the frame is complete (is a strike or has two rolls)
+        if (scoresArray[completedFrames][0] === 10 || scoresArray[completedFrames].length === 2) {
+          // check if the rolls should be added to previous strikes or spares
           scoresArray = bowling.frameChecker(scoresArray);
+          // move to the next frame
+          completedFrames ++;
         }
         console.log(scoresArray);
-      } else {
-        if (!scoresArray[frameCount]) {
-          scoresArray[frameCount] = [score];
-          $(`#f${frameCount + 1} > .inner`).text(scoresArray[frameCount]);
-      } else {
-        scoresArray[frameCount].push(score);
-        $(`#f${frameCount + 1} > .inner`).text(scoresArray[frameCount]);
-      }
-     if (scoresArray[frameCount].length === 3 || scoresArray[frameCount][0] + scoresArray[frameCount][1] < 10)
-      frameCount ++;
-      scoresArray = bowling.frameChecker(scoresArray);
-      console.log(scoresArray);
-      $(`#f${frameCount + 1} > .inner`).text(scoresArray[frameCount]);
+        // for frame 10
+    } else {
+        // check if the frame already has an array (first roll)
+        if (!scoresArray[completedFrames]) {
+          // if not create first roll
+          scoresArray[completedFrames] = [score];
+          // and show it in the inner box
+          $(`#f${completedFrames + 1} > .inner`).text(scoresArray[completedFrames]);
+          // Otherwise push the second OR THIRD roll and display it
+        } else {
+            scoresArray[completedFrames].push(score);
+            $(`#f${completedFrames + 1} > .inner`).text(scoresArray[completedFrames]);
+        }
+        // check if any frame 10 rolls need to be added to previous frames
+        scoresArray = bowling.frameChecker(scoresArray);
+        console.log(scoresArray);
+        // Display third roll if there is one in frame 10 box
+        $(`#f${completedFrames + 1} > .inner`).text(scoresArray[completedFrames]);
+        // On the final roll of frame 10
+        if (scoresArray[completedFrames].length === 3 || scoresArray[completedFrames][0] + scoresArray[completedFrames][1] < 10) {
+         // End frame 10
+          completedFrames ++;
+          var totalArr = scoresArray.reduce(
+                        function(a, b) {
+                          return a.concat(b);
+                        }, []);
+            // calculate the final total and display it
+          var sumTotal = bowling.sum(totalArr);
+          $(`#f${completedFrames} > span`).text(sumTotal);
+          console.log(completedFrames);
+        }
       }
     }
-    //else {
-    //   // calculate scores
-      // var flatScoresArray = scoresArray.reduce(
-      //   function(a, b) {
-      //     return a.concat(b);
-      //   },
-      //   []
-      // );
-    //   // console.log(flatScoresArray);
-    //   bowling.createAllFramesArray(flatScoresArray);
-    //   var frameTotals = bowling.allFrames;
-    //   // console.log(frameTotals);
-    //   var runningTotal = 0
-    //   for (var i = 0; i < frameTotals.length; i ++) {
-    //     $(`#f${i + 1}`).text(frameTotals[i] + runningTotal);
-    //     runningTotal += frameTotals[i];
-    //   }
-    //   var finalScore = bowling.score(flatScoresArray);
-    //   // console.log(finalScore);
-    //   $('#total').text(finalScore);
-    // }
   });
-  // $('.insert-score').click(function(){
-  //   scoreText = `#f${frameCount + 1} > .inner`
-  //   score = parseInt(this.id);
-  //   if (frameCount < 9) {
-  //     if(this.id === '10') {
-  //       $(scoreText).text('X');
-  //       scoresArray.push(score);
-  //       frameCount ++;
-  //     } else {
-  //       if ($(scoreText).text() === '') {
-  //         $(scoreText).text(score);
-  //         scoresArray.push(score);
-  //       } else if ($(scoreText).text() !== 'X'
-  //           && parseInt($(scoreText).text()) + score <= 10) {
-  //         $(scoreText).text($(scoreText).text() + ' ' + score);
-  //         scoresArray.push(score);
-  //         frameCount ++;
-  //       }
-  //     }
-  //     console.log(scoresArray);
-  //   } else if (frameCount < 10) {
-  //     if(this.id === '10') {
-  //       if ($(scoreText).text() === '') {
-  //         $(scoreText).text('X');
-  //         scoresArray.push(score);
-  //       } else if ($(scoreText).text() === 'X') {
-  //         $(scoreText).text($(scoreText).text() + 'X');
-  //         scoresArray.push(score);
-  //       } else if ($(scoreText).text() === 'XX') {
-  //         $(scoreText).text($(scoreText).text() + 'X');
-  //         scoresArray.push(score);
-  //         frameCount ++;
-  //       } else if (scoresArray[scoresArray.length -1]
-  //                 + scoresArray[scoresArray.length -2] === 10) {
-  //         $(scoreText).text($(scoreText).text() + 'X');
-  //         scoresArray.push(score);
-  //         frameCount ++;
-  //       }
-  //     } else if ($(scoreText).text() === '') {
-  //       $(scoreText).text(score);
-  //       scoresArray.push(score);
-  //     } else if ($(scoreText).text() !== 'XXX'
-  //         && $(scoreText).text().split('').length !== 2
-  //         && parseInt($(scoreText).text()) + score <= 10) {
-  //       $(scoreText).text($(scoreText).text() + score);
-  //       scoresArray.push(score);
-  //       frameCount ++;
-  //     } else if ($(scoreText).text().split('').length === 2
-  //               && scoresArray[scoresArray.length -1]
-  //               + scoresArray[scoresArray.length -2] === 10) {
-  //       $(scoreText).text($(scoreText).text() + score);
-  //       scoresArray.push(score);
-  //       frameCount ++;
-  //     }
-  //   }
-  // });
 });

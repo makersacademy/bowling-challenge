@@ -3,16 +3,19 @@ describe('Game', () => {
   let frame;
   let strikeFrame;
   let spareFrame;
+  let lastFrame;
 
   beforeEach(() => {
     game = new Game();
     frame = jasmine.createSpyObj('frame', ['rolls']);
     strikeFrame = jasmine.createSpyObj('strikeFrame', ['rolls', 'strike']);
     spareFrame = jasmine.createSpyObj('spareFrame', ['rolls', 'spare']);
+    lastFrame = jasmine.createSpyObj('lastFrame', ['rolls']);
 
     frame.rolls = [{ roll: 3 }, { roll: 3 }];
     strikeFrame.rolls = [{ roll: 10 }];
     spareFrame.rolls = [{ roll: 5 }, { roll: 5 }];
+    lastFrame.rolls = [{ roll: 10 }, { roll: 10 }, { roll: 10 }];
 
     strikeFrame.strike = true;
     spareFrame.spare = true;
@@ -53,6 +56,12 @@ describe('Game', () => {
       game.addFrame(frame);
 
       expect(game.finalScore()).toEqual(19);
+    });
+
+    it('it adds the bonus of 3rd roll in 10th frame', () => {
+      game.addFrame(lastFrame);
+
+      expect(game.finalScore()).toEqual(30);
     });
   });
 });

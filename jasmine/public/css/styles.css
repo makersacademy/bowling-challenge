@@ -1,0 +1,25 @@
+body {
+
+  background-color: lightgrey;
+  width: 400 px;
+
+}
+
+h1 {
+  color: black;
+  font-size: 100 px;
+  padding: 50px 30px 30px;
+  text-align: center;
+  width: 300 px;
+  font-family: Orbitron;
+  border-bottom: 4px solid black;
+}
+
+h2 {
+  width: 200px;
+  height: 70px;
+  overflow: hidden;
+  border-bottom: 3px solid;
+  text-align: center;
+
+}

@@ -13,7 +13,7 @@ Bowling.prototype = {
   score: function(){
     var points = 0;
 
-    for (var i = 0; i < this.rolls.length; i ++) {
+    for (var i = 0; i < this.rolls.length; i++) {
       if (this.isStrike(i)) {
         points += 10 + this.rolls[i+1] + this.rolls[i+2];
       } else if (this.isSpare(i)) {

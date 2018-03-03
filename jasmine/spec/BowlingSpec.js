@@ -52,6 +52,7 @@ describe('Bowling game', function (){
   describe("perfect game", function(){
     it("scores 300 points when hits all the pins in 12 rolls", function(){
     rollTimes(10, 12);
+    console.log(game.rolls)
       expect(game.score()).toEqual(300);
     });
   })

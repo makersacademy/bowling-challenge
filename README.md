@@ -28,8 +28,9 @@ PART 2:
 After making sure the basic business logic and functionalities are working, it was time to work on the bonuses applied due to Strikes and Spares.
 - This was probably the hardest part of the app. The biggest struggle was getting to organise my ideas regarding which class was responsible for each app behaviour, as there are many different factors when bonuses need to be applied to the previous frame.
 
-Other important functionality aspects were added too:
-[TBC]
+Other key functionality aspects were added too:
+* The 10th frame
+- I had to split this feature into two parts: 1) Make sure a third roll is pushed to the rolls hash in the Frame class for the last frame, and; 2) Make sure the right bonuses are added.
 
 PART 3:
 [TBC]

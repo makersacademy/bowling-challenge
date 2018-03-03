@@ -70,9 +70,13 @@ describe('Frame', () => {
         expect(frame.currentScore).toEqual(15);
       });
 
-      // it('it sums the correct score in last frame if strike is scored', () => {
+      it('it sums the correct score in last frame if strike is scored', () => {
+        frame.roll(10, true);
+        frame.roll(10, true);
+        frame.roll(10, true);
 
-      // });
+        expect(frame.currentScore).toEqual(30);
+      });
     });
 
     describe('#isSpare', () => {

@@ -13,9 +13,9 @@ function Frame() {
 
 Frame.prototype.roll = function roll(pinsKnocked, lastFrame) {
   this.isRollLegit(lastFrame);
-  this.isStrike(pinsKnocked);
+  this.isStrike(pinsKnocked, lastFrame);
 
-  if (this.strike !== true) {
+  if (this.strike !== true || lastFrame === true) {
     this.rolls.push({ roll: parseInt(`${pinsKnocked}`, 10) });
     this.calculateScore(pinsKnocked);
     this.isSpare();
@@ -38,8 +38,9 @@ Frame.prototype.isRollLegit = function isRollLegit(lastFrame) {
   this.rollCounter += 1;
 };
 
-Frame.prototype.isStrike = function isStrike(pinsKnocked) {
-  if (pinsKnocked === 10 && this.rollCounter === 1) {
+Frame.prototype.isStrike = function isStrike(pinsKnocked, lastFrame) {
+  // Puedo meter que si es 10th frame pues que se vuelva a setear el strike a false...
+  if (pinsKnocked === 10 && this.rollCounter === 1 && lastFrame === undefined) {
     this.strike = true;
     this.calculateScore(pinsKnocked);
     this.rolls.push({ roll: parseInt(`${pinsKnocked}`, 10) });

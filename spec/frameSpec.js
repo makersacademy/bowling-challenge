@@ -46,6 +46,21 @@ describe('Frame', () => {
       expect(frame.rolls).toEqual([{ roll: 10 }, { roll: 10 }, { roll: 10 }]);
     });
 
+    it('it prevents the player from rolling a 3rd ball in last frame if not strike or spare', () => {
+      frame.roll(2, true);
+      frame.roll(3, true);
+
+      expect(() => { frame.roll(10, true); }).toThrowError("You can't roll an additional ball. Click on 'Final Score' to see your points!");
+    });
+
+    it('it prevents player from rolling a 4th ball in last frame if strike or spare', () => {
+      frame.roll(10, true);
+      frame.roll(5, true);
+      frame.roll(5, true);
+
+      expect(() => { frame.roll(10, true); }).toThrowError("You can't roll an additional ball. Click on 'Final Score' to see your points!");
+    });
+
     describe('#isStrike', () => {
       it('it prevents player from rolling again if strike is scored', () => {
         frame.roll(10);

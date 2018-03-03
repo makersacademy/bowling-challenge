@@ -29,7 +29,11 @@ Frame.prototype.roll = function roll(pinsKnocked, lastFrame) {
 Frame.prototype.isRollLegit = function isRollLegit(lastFrame) {
   const newCounter = this.rollCounter + 1;
 
-  if (this.strike === true && lastFrame === undefined) {
+  if (this.strike === false && this.spare === false && lastFrame === true && newCounter === 3) {
+    throw new Error("You can't roll an additional ball. Click on 'Final Score' to see your points!");
+  } else if ((this.strike || this.spare) === true && lastFrame === true && newCounter === 4) {
+    throw new Error("You can't roll an additional ball. Click on 'Final Score' to see your points!");
+  } else if (this.strike === true && lastFrame === undefined) {
     throw new Error('You scored a strike. Start next frame!');
   } else if (newCounter >= 3 && lastFrame === undefined) {
     throw new Error('You cannot roll again. Start next frame!');
@@ -39,7 +43,6 @@ Frame.prototype.isRollLegit = function isRollLegit(lastFrame) {
 };
 
 Frame.prototype.isStrike = function isStrike(pinsKnocked, lastFrame) {
-  // Puedo meter que si es 10th frame pues que se vuelva a setear el strike a false...
   if (pinsKnocked === 10 && this.rollCounter === 1 && lastFrame === undefined) {
     this.strike = true;
     this.calculateScore(pinsKnocked);

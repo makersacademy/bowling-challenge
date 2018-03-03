@@ -31,45 +31,49 @@
 
         frame1.roll(3);
         frame1.roll(3);
+        game.addFrame(frame1);
 
         frame2.roll(10);
+        game.addFrame(frame2);
 
         frame3.roll(5);
         frame3.roll(4);
+        game.addFrame(frame3);
 
         frame4.roll(6);
         frame4.roll(4);
+        game.addFrame(frame4);
 
         frame5.roll(0);
         frame5.roll(10);
+        game.addFrame(frame5);
 
         frame6.roll(8);
         frame6.roll(2);
+        game.addFrame(frame6);
 
         frame7.roll(9);
         frame7.roll(0);
+        game.addFrame(frame7);
 
         frame8.roll(10);
-
-        frame9.roll(5);
-        frame9.roll(5);
-
-        // frame10.roll(2);
-        // frame10.roll(3);
-
-        frame10.roll(10, true);
-        frame10.roll(10, true);
-        frame10.roll(10, true);
-
-        game.addFrame(frame1);
-        game.addFrame(frame2);
-        game.addFrame(frame3);
-        game.addFrame(frame4);
-        game.addFrame(frame5);
-        game.addFrame(frame6);
-        game.addFrame(frame7);
         game.addFrame(frame8);
+
+        frame9.roll(5);
+        frame9.roll(5);
         game.addFrame(frame9);
+
+        frame10.roll(10, true);
+        frame10.roll(5, true);
+        frame10.roll(5, true);
+
+        try {
+            frame10.roll(10, true);
+        }
+        catch(e) {
+            // console.log(e);
+        }
+
         game.addFrame(frame10);
 
         game.finalScore();

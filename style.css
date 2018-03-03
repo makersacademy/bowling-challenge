@@ -7,15 +7,9 @@ html {
     clear: left;
     font-size: 20px;
     text-align: center;
+    align-content: center;
 }
 
-div {
-    position: absolute;
-    top: 100px;
-    left: 500px;
-    margin: 290px auto;
-    font-family: sans-serif;
-}
 
 /* header {
     padding: 1em;
@@ -37,16 +31,53 @@ div {
     text-decoration: none;
     display: inline-block;
     font-size: 25px;
+    
 }
 
 .control-buttons:hover {
     background-color: rgba(41, 13, 199, 0.336);
     color: rgba(224, 8, 8, 0.822);
 }
+/* #1st_div {
+   margin-top: 290px;
+   font-family: sans-serif;
+   padding-top: 206px;
+   margin-left: 38‒;
+   padding-left: 73px;
+   margin-top: 190px;
+} */
 
-p {
+.sec2{
     background-color: rgba(168, 11, 230, 0.938);
     font-weight: bold;
     color: rgba(255, 255, 255, 0.945);
     height: 40px;
+    width: 15%;
+    text-align: left;
+    margin-top: 275px;
+    margin-left: 360px;
+
+}
+
+.sec1{
+  position: absolute;
+    background-color: rgba(168, 11, 230, 0.938);
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.945);
+    height: 40px;
+    width: 17%;
+    text-align: left;
+    margin-top: 320px;
+    margin-left: 100px;
+
+}
+
+
+.pin_history {
+    width: 65%;
+    background-color: rgba(168, 11, 230, 0.938);
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.945);
+    height: 40px;
+    text-align: left;
 }

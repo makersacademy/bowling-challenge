@@ -30,7 +30,7 @@ describe ('Bowling', function() {
         var error = "Pins should be between 0 and 10 (both inclusive); got 11 pins";
         expect(function() { bowling.roll(11); }).toThrow(Error(error));
     });
-    
+
     it("throws an error if pin passed is not a valid pin", function() {
         expect(function() { bowling.roll("&"); }).toThrow(Error("Not a valid pin"));
     });

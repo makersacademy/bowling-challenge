@@ -1,46 +1,8 @@
-/* .roll_score {
-  visibility: hidden;
-}
-
-.visible_form {
-  visibility: visibile;
-  background-color: #e9dad4;
-  margin-top: 1em;
-  margin-bottom: 3em;
-  padding-left: 1em;
-} */
-
-/* * {
-    box-sizing: border-box;
-} */
-/* .row::after {
-    content: "";
-    clear: both;
-    display: table;
-} */
-
 [id*="frame"] {
   border-left:1px solid;
   border-bottom:1px solid;
 }
 
-/* [class*="col-"] {
-    float: left;
-    padding: 15px;
-} */
-/* .col-space-1 {width: 7.7%;}
-.col-table-1 {width: 15%;}
-.col-table-2 {width: 7.7%;}
-.col-table-3 {width: 7.7%;}
-.col-table-4 {width: 7.7%;}
-.col-table-5 {width: 7.7%;}
-.col-table-6 {width: 7.7%;}
-.col-table-7 {width: 7.7%;}
-.col-table-8 {width: 7.7%;}
-.col-table-9 {width: 7.7%;}
-.col-table-10 {width: 7.7%;}
-.col-table-11 {width: 7.7%;}
-.col-space-2 {width: 7.7%;} */
 html {
     font-family: "Lucida Sans", sans-serif;
 }
@@ -49,46 +11,7 @@ header {
     color: #ffffff;
     padding: 15px;
 }
-/* .menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-.menu li {
-    padding: 8px;
-    margin-bottom: 7px;
-    background-color: #33b5e5;
-    color: #ffffff;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-} */
-.menu li:hover {
-    background-color: #0099cc;
-}
 
-.border {
-    border-style: solid;
-    border-width: 1px;
-}
-
-body{
-
-}
-.title{
-  text-align: center;
-}
-.buttons{
-  text-align: center;
-  margin: 30px;
-}
-.notice{
-  text-align: center;
-  color: #d3313a;
-}
-.final-score{
-  text-align: center;
-  color: green;
-  padding-bottom: 10px;
-}
 
 input#bowlingBall{
   height: 50px;
@@ -120,5 +43,3 @@ table.scorecard th {border-bottom:1px solid; background-color:#d3313a; height:30
 table.scorecard th:not(:last-child) {border-right:1px solid;}
 table.scorecard td {height:30px; background: rgba(255, 255, 255, 0.5);}
 table.scorecard tr td:not(:last-child) {border-right:1px solid;}
-/* table.scorecard tr:nth-child(2) td:nth-child(even) {border-bottom:1px solid;}
-table.scorecard tr:nth-child(2) td:last-child {border-bottom:1px solid;} */

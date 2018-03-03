@@ -17,7 +17,7 @@ Frame.prototype.roll = function roll(pinsKnocked) {
   this.isRollLegit();
   this.isStrike(pinsKnocked);
 
-  if (this.strike !== true || this.frameNum === true) {
+  if (this.strike !== true) {
     this.rolls.push({ roll: parseInt(`${pinsKnocked}`, 10) });
     this.calculateScore(pinsKnocked);
     this.isSpare();

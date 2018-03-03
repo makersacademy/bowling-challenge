@@ -16,7 +16,7 @@ Regarding the development process, I tried to stick by this flow as much as poss
 One note on refactoring: ESLint was extremely helpful in this process. Also, I do not regret having spent some time on setting up the Jasmine plugin. I loaded the AirBnB style guide within ESLint by default, I find it extremely solid and coherent.
 
 For this challenge, I decided to implement functionalities one at a time.
-To sum it up, this was the process I followed for the business logic, dividing it into three main parts:
+To sum it up, this was the process I followed for the business logic, dividing it into four main parts:
 
 PART 1:
 - Created Frame Class that takes up to 2 rolls
@@ -33,6 +33,10 @@ Other key functionality aspects were added too:
 - I had to split this feature into two parts: 1) Make sure a third roll is pushed to the rolls hash in the Frame class for the last frame, and; 2) Make sure the right bonuses are added.
 
 PART 3:
+* Design
+- Before moving on to refactoring to make my code more elegant, I decided to start designing the view layer, in case I realised some logic changes were necessary.
+
+PART 4:
 [TBC]
 
 Next focus

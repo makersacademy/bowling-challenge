@@ -5,13 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bowling!</title>
+
+    <link rel="stylesheet" href="./public/css/style.css">
 </head>
 <body>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <article>
-        <section id="pins"></section>
+        <section id="frame-1">Hi</section>
+        <section id="frame-2" hidden>No hi</section>
+        <section id="frame-3" hidden></section>
+        <section id="frame-4" hidden></section>
+        <section id="frame-5" hidden></section>
+        <section id="frame-6" hidden></section>
+        <section id="frame-7" hidden></section>
+        <section id="frame-8" hidden></section>
+        <section id="frame-9" hidden></section>
+        <section id="frame-10" hidden></section>
     </article>
+
+    <button id="next-frame"></button>
 
     <script src="src/Frame.js"></script>
     <script src="src/Game.js"></script>
@@ -25,42 +38,35 @@
         let frame7 = new Frame();
         let frame8 = new Frame();
         let frame9 = new Frame();
-        let frame10 = new Frame();
+        let frame10 = new Frame(10);
 
         let game = new Game();
 
-        frame1.roll(3);
-        frame1.roll(3);
+        frame1.roll(10);
         game.addFrame(frame1);
 
         frame2.roll(10);
         game.addFrame(frame2);
 
-        frame3.roll(5);
-        frame3.roll(4);
+        frame3.roll(10);
         game.addFrame(frame3);
 
-        frame4.roll(6);
-        frame4.roll(4);
+        frame4.roll(10);
         game.addFrame(frame4);
 
-        frame5.roll(0);
         frame5.roll(10);
         game.addFrame(frame5);
 
-        frame6.roll(8);
-        frame6.roll(2);
+        frame6.roll(10);
         game.addFrame(frame6);
 
-        frame7.roll(9);
-        frame7.roll(0);
+        frame7.roll(10);
         game.addFrame(frame7);
 
         frame8.roll(10);
         game.addFrame(frame8);
 
-        frame9.roll(5);
-        frame9.roll(5);
+        frame9.roll(10);
         game.addFrame(frame9);
 
         // frame10.roll(2, true);
@@ -73,9 +79,9 @@
         //     // console.log(e);
         // }
 
-        frame10.roll(10, true);
-        frame10.roll(10, true);
-        frame10.roll(10, true);
+        frame10.roll(10);
+        frame10.roll(10);
+        frame10.roll(10);
 
         game.addFrame(frame10);
 

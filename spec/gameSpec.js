@@ -4,6 +4,7 @@ describe('Game', () => {
   let strikeFrame;
   let spareFrame;
   let lastFrame;
+  let gutterFrame;
 
   beforeEach(() => {
     game = new Game();
@@ -11,11 +12,13 @@ describe('Game', () => {
     strikeFrame = jasmine.createSpyObj('strikeFrame', ['rolls', 'strike']);
     spareFrame = jasmine.createSpyObj('spareFrame', ['rolls', 'spare']);
     lastFrame = jasmine.createSpyObj('lastFrame', ['rolls']);
+    gutterFrame = jasmine.createSpyObj('gutterFrame', ['rolls']);
 
     frame.rolls = [{ roll: 3 }, { roll: 3 }];
     strikeFrame.rolls = [{ roll: 10 }];
     spareFrame.rolls = [{ roll: 5 }, { roll: 5 }];
     lastFrame.rolls = [{ roll: 10 }, { roll: 10 }, { roll: 10 }];
+    gutterFrame.rolls = [{ roll: 0 }, { roll: 0 }];
 
     strikeFrame.strike = true;
     spareFrame.spare = true;
@@ -36,7 +39,7 @@ describe('Game', () => {
   });
 
   describe('#finalScore', () => {
-    it('it calculates the total scores of the game', () => {
+    it('it calculates the total scores of the game with no bonuses', () => {
       for (let i = 0; i < 10; i++) {
         game.addFrame(frame);
       }
@@ -62,6 +65,23 @@ describe('Game', () => {
       game.addFrame(lastFrame);
 
       expect(game.finalScore()).toEqual(30);
+    });
+
+    it('it calculates the score of a perfect game', () => {
+      for (let i = 0; i < 9; i++) {
+        game.addFrame(strikeFrame);
+      }
+      game.addFrame(lastFrame);
+
+      expect(game.finalScore()).toEqual(300);
+    });
+
+    it('it calculates the score of a gutter game', () => {
+      for (let i = 0; i < 10; i++) {
+        game.addFrame(gutterFrame);
+      }
+
+      expect(game.finalScore()).toEqual(0);
     });
   });
 });

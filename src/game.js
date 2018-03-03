@@ -4,16 +4,9 @@ var Game = function() {};
 
 Game.prototype = {
 
-  sum: function(arr) {
-    arr = arr.reduce(function (acc, curr) {
-      return acc + curr;
-    });
-    return arr;
-  },
-
-  frameChecker(arr) {
-    var l = arr.length;
-    var [antepenult, penult, ult] = [arr[l - 3], arr[l - 2], arr[l -1]];
+  bonusChecker(frames) {
+    var l = frames.length;
+    var [antepenult, penult, ult] = [frames[l - 3], frames[l - 2], frames[l -1]];
     if (l > 2 && this.isStrike(antepenult) && !this.hasBonus(antepenult) && this.isStrike(penult)) {
       antepenult.push(ult[0]);
       ult[1] ? penult.push(ult[0], ult[1]) : penult.push(ult[0]);
@@ -22,50 +15,54 @@ Game.prototype = {
     } else if (l > 1 && !this.hasBonus(penult) && this.isSpare(penult)) {
       penult.push(ult[0]);
     }
-    return arr;
+    return frames;
   },
 
-  flattenAndSum(arr) {
-    return this.sum(arr.reduce(function(acc, curr) {
+  flattenAndSum(array) {
+    array = array.reduce(function(acc, curr) {
       return acc.concat(curr);
-    }, []));
+    }, []);
+
+    return array = array.reduce(function (acc, curr) {
+      return acc + curr;
+    });
   },
 
-  addRollToFrame(arr, index, score) {
-    if (arr.length < 10 && !arr[index]) {
-      arr[index] = [score];
-    } else if (arr.length < 10 && arr[index][0] + score <= 10) {
-      arr[index].push(score);
+  addRollToFrame(frames, count, roll) {
+    if (frames.length < 10 && !frames[count]) {
+      frames[count] = [roll];
+    } else if (frames.length < 10 && frames[count][0] + roll <= 10) {
+      frames[count].push(roll);
     } else {
-      arr[index] ? arr[index].push(score) : arr[index] = [score];
+      frames[count] ? frames[count].push(roll) : frames[count] = [roll];
     }
-    return arr;
+    return frames;
   },
 
-  completeFrameCheck(arr, index) {
-    if (arr[index][0] === 10 || arr[index].length === 2) {
-      arr = this.frameChecker(arr);
-      index ++;
+  completeFrameCheck(frames, count) {
+    if (frames[count][0] === 10 || frames[count].length === 2) {
+      frames = this.bonusChecker(frames);
+      count ++;
     }
-    return index;
+    return count;
   },
 
-  frameTenCheck(arr, index) {
-    if (arr[index].length === 3 || arr[index][0] + arr[index][1] < 10) {
+  frameTenCheck(frames, count) {
+    if (frames[index].length === 3 || frames[index][0] + frames[index][1] < 10) {
     index ++;
     }
     return index;
   },
 
-  isStrike(arr) {
-    return arr[0] === 10 ? true : false;
+  isStrike(frames) {
+    return frames[0] === 10 ? true : false;
   },
 
-  isSpare(arr) {
-    return arr[0] + arr[1] === 10 ? true : false;
+  isSpare(frames) {
+    return frames[0] + frames[1] === 10 ? true : false;
   },
 
-  hasBonus(arr) {
-    return arr.length === 3;
+  hasBonus(frames) {
+    return frames.length === 3;
   }
 }

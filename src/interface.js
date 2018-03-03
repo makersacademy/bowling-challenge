@@ -1,8 +1,8 @@
 $(document).ready(function() {
   var game = new Game();
   var calculator = new GameCalculator();
-  var completedFrames = 0;
-  var scoresArray = [];
+  var frameCount = 0;
+  var frames = [];
   var score;
 
   $('#score').click(function(){
@@ -18,24 +18,24 @@ $(document).ready(function() {
   });
 
   $('.insert-score').click(function(){
-    for (var i = 1; i <= scoresArray.length; i ++) {
-      $(`#f${i} > span`).text(game.flattenAndSum(scoresArray.slice(0, i)));
+    for (var i = 1; i <= frames.length; i ++) {
+      $(`#f${i} > span`).text(game.flattenAndSum(frames.slice(0, i)));
     }
     score = parseInt(this.id);
 
-    if (completedFrames < 9) {
-      game.addRollToFrame(scoresArray, completedFrames, score);
-      $(`#f${completedFrames + 1} > .inner`).text(scoresArray[completedFrames]);
-      completedFrames = game.completeFrameCheck(scoresArray, completedFrames);
+    if (frameCount < 9) {
+      game.addRollToFrame(frames, frameCount, score);
+      $(`#f${frameCount + 1} > .inner`).text(frames[frameCount]);
+      frameCount = game.completeFrameCheck(frames, frameCount);
     } else {
-      game.addRollToFrame(scoresArray, completedFrames, score)
-      $(`#f${completedFrames + 1} > .inner`).text(scoresArray[completedFrames]);
-      scoresArray = game.frameChecker(scoresArray);
-      completedFrames = game.frameTenCheck(scoresArray, completedFrames);
-      $(`#f${completedFrames} > span`).text(game.flattenAndSum(scoresArray));
+      game.addRollToFrame(frames, frameCount, score)
+      $(`#f${frameCount + 1} > .inner`).text(frames[frameCount]);
+      frames = game.frameChecker(frames);
+      frameCount = game.frameTenCheck(frames, frameCount);
+      $(`#f${frameCount} > span`).text(game.flattenAndSum(frames));
     }
 
-    if (completedFrames === 10) {
+    if (frameCount === 10) {
       $('.insert-score').css('display', 'none');
     }
   });

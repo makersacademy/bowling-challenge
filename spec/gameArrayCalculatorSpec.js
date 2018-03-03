@@ -73,4 +73,9 @@ describe('fullGameCalculator', function() {
     });
   });
 
+  describe('The .sum function', function() {
+    it('returns the sum of an array', function() {
+      expect(game.sum(perfectGame)).toEqual(120);
+    });
+  });
 });

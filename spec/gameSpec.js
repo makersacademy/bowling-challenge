@@ -11,20 +11,13 @@ describe('Game', function() {
     strikeFrame = [[10], [8,2]];
   });
 
-
-  describe('The .sum function', function() {
-    it('returns the sum of an array', function() {
-      expect(game.sum(perfectGame)).toEqual(120);
-    });
-  });
-
-  describe('The .frameChecker function', function() {
+  describe('The .bonusChecker function', function() {
     it('adds bonuses to strikeFrames', function() {
-      expect(game.frameChecker(strikeFrames)).toEqual([[10, 10, 10], [10, 10], [10]]);
+      expect(game.bonusChecker(strikeFrames)).toEqual([[10, 10, 10], [10, 10], [10]]);
     });
 
     it('adds bonuses to spareFrames', function() {
-      expect(game.frameChecker(spareFrame)).toEqual([[8, 2, 5], [5, 2]]);
+      expect(game.bonusChecker(spareFrame)).toEqual([[8, 2, 5], [5, 2]]);
     });
   });
 
@@ -50,25 +43,25 @@ describe('Game', function() {
   });
 
   describe('The completeFrameCheck function', function() {
-    it('increments completedFrames if the frame is complete', function() {
+    it('increments frameCount if the frame is complete', function() {
       expect(game.completeFrameCheck([[10]], 0)).toEqual(1);
     });
 
-    it('won\'t increment completedFrames if the frame is not complete', function() {
+    it('won\'t increment frameCount if the frame is not complete', function() {
       expect(game.completeFrameCheck([[8]], 0)).toEqual(0);
     });
   });
 
   describe('The frameTenCheck function', function() {
-    it('increments completedFrames if the strike frame is complete', function() {
+    it('increments frameCount if the strike frame is complete', function() {
       expect(game.completeFrameCheck([[10, 8, 2]], 0)).toEqual(1);
     });
 
-    it('increments completedFrames if the no strike frame is complete', function() {
+    it('increments frameCount if the no strike frame is complete', function() {
       expect(game.completeFrameCheck([[8, 1]], 0)).toEqual(1);
     });
 
-    it('won\'t increment completedFrames if the frame is not complete', function() {
+    it('won\'t increment frameCount if the frame is not complete', function() {
       expect(game.completeFrameCheck([[8]], 0)).toEqual(0);
     });
   });

@@ -65,5 +65,29 @@ Bowling.prototype = {
       arr[l-2].push(arr[l-1][0]);
     }
     return arr;
-  }
+  },
+
+  flattenAndSum(arr) {
+    return this.sum(arr.reduce(function(a, b) {
+      return a.concat(b);
+    }, []));
+  },
+
+  addRollToFrame(arr, index, score) {
+    if (!arr[index]) {
+      arr[index] = [score];
+    } else if (arr[index][0] + score <= 10) {
+      arr[index].push(score);
+    }
+    return arr;
+  },
+
+  addRollToFrameTen(arr, index, score) {
+    if (!arr[index]) {
+      arr[index] = [score];
+    } else {
+      arr[index].push(score);
+    }
+    return arr;
+  },
 }

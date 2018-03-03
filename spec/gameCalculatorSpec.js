@@ -46,7 +46,8 @@ describe('Bowling', function() {
   describe('The .createAllFramesArray function', function() {
     it('returns a frame scores array when given a full game array', function(){
       bowling.createAllFramesArray(perfectGame);
-      expect(bowling.allFrames).toEqual([30, 30, 30, 30, 30, 30, 30, 30, 30, 30]);
+      expect(bowling.allFrames)
+      .toEqual([30, 30, 30, 30, 30, 30, 30, 30, 30, 30]);
     });
   });
 
@@ -76,17 +77,47 @@ describe('Bowling', function() {
   });
 
   describe('The .sum function', function() {
-    it('returns the sum of an array', function(){
+    it('returns the sum of an array', function() {
       expect(bowling.sum(perfectGame)).toEqual(120);
       expect(bowling.sum(spareFirst)).toEqual(48);
     });
   });
 
-  describe('The .frameChecker function', function(){
+  describe('The .frameChecker function', function() {
     it('checks if its rolls need to be added to previous frames', function() {
       // expect(bowling.frameChecker(strikeFrames)).toEqual([[10, 10, 10], [10, 10], [10]]);
       // expect(bowling.frameChecker(spareFrame)).toEqual([[8, 2, 5], [5, 2]]);
       expect(bowling.frameChecker(strikeFrame)).toEqual([[10, 8, 2], [8, 2]]);
+    });
+  });
+
+  describe('The flattenAndSum function', function() {
+    it('flattens an array and returns the sum', function() {
+      expect(bowling.flattenAndSum(strikeFrames)).toEqual(40);
+    });
+  });
+
+  describe('The addRollToFrame function', function() {
+    it('creates an array for the current frame', function() {
+      expect(bowling.addRollToFrame([], 0, 2)).toEqual([[2]]);
+    });
+
+    it('adds the second roll to a frame', function() {
+      expect(bowling.addRollToFrame([[2]], 0, 2)).toEqual([[2, 2]]);
+    });
+  });
+
+  describe('The addRollToFrameTen function', function() {
+    it('creates an array for the current frame', function() {
+      expect(bowling.addRollToFrameTen([], 0, 2)).toEqual([[2]]);
+    });
+
+    it('adds the second roll to a frame', function() {
+      expect(bowling.addRollToFrameTen([[2]], 0, 2)).toEqual([[2, 2]]);
+    });
+
+    it('adds a third roll to a frame', function(){
+      expect(bowling.addRollToFrameTen([[2, 2]], 0, 2)).toEqual([[2, 2, 2]]);
     });
   });
 

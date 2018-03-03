@@ -12,14 +12,27 @@ header {
     padding: 15px;
 }
 
+.record_roll {
+  height: 100px;
+  text-align: center;
+}
 
 input#bowlingBall{
   height: 50px;
   width: 50px;
 }
 
-input#bowlingBall:hover {
-    background-color: #0099cc;
+input#bowlingBall:hover{
+    box-shadow: 0px 0px 150px #000000;
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.2);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.2);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.2);
+    transition: all 200ms ease-in;
+    transform: scale(1.5);
 }
 
 input#pins {
@@ -28,14 +41,13 @@ input#pins {
   text-align: center; font-size:15px;
 }
 
-.record_roll {
-  height: 100px;
-  text-align: center;
-}
-
 label#record_text {
   font-weight: bold;
 }
+
+
+
+
 
 table.scorecard {margin: 3% auto; width:80%; font-size:12px; border:1px solid; text-align: center; table-layout: fixed; margin-bottom: 40px;}
 table.scorecard th, tr, td {padding: 0; vertical-align: middle; font-family: Arial, Helvetica, sans-serif; text-align: center;}

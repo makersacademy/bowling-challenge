@@ -48,10 +48,10 @@ Game.prototype = {
   },
 
   frameTenCheck(frames, count) {
-    if (frames[index].length === 3 || frames[index][0] + frames[index][1] < 10) {
-    index ++;
+    if (frames[count].length === 3 || frames[count][0] + frames[count][1] < 10) {
+    count ++;
     }
-    return index;
+    return count;
   },
 
   isStrike(frames) {

@@ -5,6 +5,11 @@ Bowling Challenge
 ## How it looks
 ![bowling](images/bowling.png)
 
+## How to play
+* Clone it
+* Run following (open index.html) from terminal
+* Play by clicking on 'Roll Pins'(It will randomly generate knocked out pins)
+
 ## Bowling — how does it work?
 
 ### Strikes

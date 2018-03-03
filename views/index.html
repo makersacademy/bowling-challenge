@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title> Jasmine spec runner </title>
+    <title>Bowling Score Sheet</title>
 <script src="../jquery.js"></script>
 <link rel="stylesheet" href="../public/index.css">
 <script src="../src/game.js"></script>
@@ -10,24 +10,45 @@
 <script src="../src/scoreCalculator.js"></script>
   </head>
   <body>
-    <p id="demo"></p>
+    <h1> Bowling Scoresheet: <h1>
 
-    <script>
-    var game = new Game();
-    document.getElementById("demo").innerHTML = game.gameOver;
-    </script>
+    <div class="scoresheet">
 
-    <script>
+    </div>
 
-    window.alert('hello')
-    </script>
-
-
-    Hello
-
-    <div class="test">
-      <button id="temperature-up" name="button"> + </button>
+    <div class="record_roll">
+    <form class="record_roll" >
+      <label for="name">Record your roll score:</label>
+      <input type="number" id="name" name="user_name" min="0" max="10">
+      <input type="image" id='bowlingBall' src="http://www.pvhc.net/img181/kyohgdwupunmjygynfkc.gif" />
+    </form>
 
     </div>
   </body>
 </html>
+
+
+<div class="roll_score" >
+  Roll scored!
+</div>
+
+<!--
+<p id="demo"></p>
+
+<script>
+var game = new Game();
+document.getElementById("demo").innerHTML = game.gameOver;
+</script>
+
+<script>
+
+window.alert('hello')
+</script>
+
+
+Hello
+
+<div class="test">
+  <button id="temperature-up" name="button"> + </button>
+
+</div> -->

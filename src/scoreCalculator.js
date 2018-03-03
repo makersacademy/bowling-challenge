@@ -13,11 +13,30 @@ ScoreCalculator.prototype.calculateTotalScore = function(allFrames) {
   this.calculateTotalScoreFromFrames();
 };
 
+ScoreCalculator.prototype.declareVariablesPrevious2Frame = function(frameIndex) {
+  this.previous2Frame = this.allFrames[frameIndex - 2];
+  this.previous2FirstRollScore = this.firstRollScore(previous2Frame);
+  this.declareVariablesPreviousFrame();
+};
+
+ScoreCalculator.prototype.declareVariablesPreviousFrame = function(frameIndex) {
+  this.previousFrame = this.allFrames[frameIndex - 1];
+  this.previousFrameScore = this.frameScore(previousFrame);
+  this.previousFirstRollScore = this.firstRollScore(previousFrame);
+  this.declareVariablesCurrentFrame();
+};
+
+ScoreCalculator.prototype.declareVariablesCurrentFrame = function(frameIndex) {
+  this.currentFrame = this.allFrames[frameIndex];
+  this.currentFirstRollScore = this.firstRollScore(currentFrame);
+};
+
 //Adds to current frame
 ScoreCalculator.prototype.calculateBaseScore = function() {
   for( var frameIndex = 0, len = this.allFrames.length; frameIndex < len; frameIndex++) {
-    var frame = this.allFrames[frameIndex];
-    for( var roll of frame) {
+    this.declareVariables(frameIndex);
+    // var frame = this.allFrames[frameIndex];
+    for( var roll of this.currentFrame) {
       this.frameScores[frameIndex] += roll;
     }
   }
@@ -39,10 +58,10 @@ ScoreCalculator.prototype.calculateSpareScore = function() {
 ScoreCalculator.prototype.calculateSingleStrikeScore = function() {
   for( var frameIndex = 1, len = this.allFrames.length; frameIndex < len; frameIndex++) {
       var currentFrame = this.allFrames[frameIndex];
-      var firstRollScore = this.firstRollScore(currentFrame);
+      var currentFirstRollScore = this.firstRollScore(currentFrame);
       var previousFrame = this.allFrames[frameIndex - 1];
       var previousFirstRollScore = this.firstRollScore(previousFrame);
-        if (previousFirstRollScore === 10 && firstRollScore !== 10) {
+        if (previousFirstRollScore === 10 && currentFirstRollScore !== 10) {
             this.frameScores[frameIndex - 1] += (this.frameScore(currentFrame));
         }
         else if (previousFirstRollScore === 10 && frameIndex === 9) {

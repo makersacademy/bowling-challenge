@@ -15,20 +15,20 @@ ScoreCalculator.prototype.calculateTotalScore = function(allFrames) {
 
 ScoreCalculator.prototype.declareVariablesPrevious2Frame = function(frameIndex) {
   this.previous2Frame = this.allFrames[frameIndex - 2];
-  this.previous2FirstRollScore = this.firstRollScore(previous2Frame);
-  this.declareVariablesPreviousFrame();
+  this.previous2FirstRollScore = this.firstRollScore(this.previous2Frame);
+  this.declareVariablesPreviousFrame(frameIndex);
 };
 
 ScoreCalculator.prototype.declareVariablesPreviousFrame = function(frameIndex) {
   this.previousFrame = this.allFrames[frameIndex - 1];
-  this.previousFrameScore = this.frameScore(previousFrame);
-  this.previousFirstRollScore = this.firstRollScore(previousFrame);
-  this.declareVariablesCurrentFrame();
+  this.previousFrameScore = this.frameScore(this.previousFrame);
+  this.previousFirstRollScore = this.firstRollScore(this.previousFrame);
+  this.declareVariablesCurrentFrame(frameIndex);
 };
 
 ScoreCalculator.prototype.declareVariablesCurrentFrame = function(frameIndex) {
   this.currentFrame = this.allFrames[frameIndex];
-  this.currentFirstRollScore = this.firstRollScore(currentFrame);
+  this.currentFirstRollScore = this.firstRollScore(this.currentFrame);
 };
 
 //Adds to current frame

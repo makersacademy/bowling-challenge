@@ -1,13 +1,19 @@
 $(document).ready(function (){
-  var game = new Game();
-  // $('header').text("Bowling game is ready");
-  $( '#bowlingBall' ).click(function() {
 
+  var game = new Game();
+
+  // if (game.rollCount === 1)
+    {$('#frame1_roll1').text(game.rollCount);}
+
+  $( '#bowlingBall' ).click(function() {
+    game.rollBall(5);
   });
 
 });
 
 
+
+// $('header').text("Bowling game is ready");
 
 //   roll_score.visible = false;
   // var show = false;

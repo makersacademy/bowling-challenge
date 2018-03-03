@@ -1,6 +1,6 @@
 $(document).ready(function (){
   var game = new Game();
-  $('.scoresheet').text("Bowling game is ready");
+  // $('header').text("Bowling game is ready");
   $( '#bowlingBall' ).click(function() {
 
   });

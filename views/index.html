@@ -10,27 +10,97 @@
 <script src="../src/scoreCalculator.js"></script>
   </head>
   <body>
-    <h1> Bowling Scoresheet: <h1>
+    <header>
+      <h1> Bowling Scoresheet: <h1>
+    </header>
 
-    <div class="scoresheet">
+    <div class="row">
 
-    </div>
-
+    <div id='scorecard'>
+  <table id='scorecardTable' class='scorecard' cellpadding='1' cellspacing='0'>
+    <tr>
+      <th colspan='6'>Frame 1</th>
+      <th colspan='6'>Frame 2</th>
+      <th colspan='6'>Frame 3</th>
+      <th colspan='6'>Frame 4</th>
+      <th colspan='6'>Frame 5</th>
+      <th colspan='6'>Frame 6</th>
+      <th colspan='6'>Frame 7</th>
+      <th colspan='6'>Frame 8</th>
+      <th colspan='6'>Frame 9</th>
+      <th colspan='6'>Frame 10</th>
+    </tr>
+    <tr>
+      <td colspan='2'></td><td id="frame1_roll1"colspan='2'></td><td id="frame1_roll2"colspan='2'></td>
+      <td colspan='2'></td><td id="frame2_roll1" colspan='2'></td><td id="frame2_roll2" colspan='2'></td>
+      <td colspan='2'></td><td id="frame3_roll1" colspan='2'></td><td id="frame3_roll2" colspan='2'></td>
+      <td colspan='2'></td><td id="frame4_roll1" colspan='2'></td><td id="frame4_roll2" colspan='2'></td>
+      <td colspan='2'></td><td id="frame5_roll1" colspan='2'></td><td id="frame5_roll2" colspan='2'></td>
+      <td colspan='2'></td><td id="frame6_roll1" colspan='2'></td><td id="frame6_roll2" colspan='2'></td>
+      <td colspan='2'></td><td id="frame7_roll1" colspan='2'></td><td id="frame7_roll2" colspan='2'></td>
+      <td colspan='2'></td><td id="frame8_roll1" colspan='2'></td><td id="frame8_roll2" colspan='2'></td>
+      <td colspan='2'></td><td id="frame9_roll1" colspan='2'></td><td id="frame9_roll2" colspan='2'></td>
+      <td colspan='2'></td><td id="frame10_roll1" colspan='2'></td><td id="frame10_roll2" colspan='2'></td>
+    </tr>
+    <tr>
+      <td colspan='6'id="marker0"></td>
+      <td colspan='6'id="marker1"></td>
+      <td colspan='6'id="marker2"></td>
+      <td colspan='6'id="marker3"></td>
+      <td colspan='6'id="marker4"></td>
+      <td colspan='6'id="marker5"></td>
+      <td colspan='6'id="marker6"></td>
+      <td colspan='6'id="marker7"></td>
+      <td colspan='6'id="marker8"></td>
+      <td colspan='6'id="marker9"></td>
+    </tr>
+  </table>
+</div>
+</div>
+  <div class="row">
     <div class="record_roll">
     <form class="record_roll" >
-      <label for="name">Record your roll score:</label>
-      <input type="number" id="name" name="user_name" min="0" max="10">
-      <input type="image" id='bowlingBall' src="http://www.pvhc.net/img181/kyohgdwupunmjygynfkc.gif" />
+      <label id='record_text' for="name">Record your roll score:</label>
+      <input type="number" id="pins" name="user_name" min="0" max="10">
+      <input type="image" id='bowlingBall' src="../public/cartoon-bowling-5.gif" />
     </form>
-
     </div>
+  </div>
   </body>
 </html>
 
 
+<!--
+      <div class="row">
+      <div class="col-table-1 menu">
+        <ul>
+          <li>Frame #</li>
+          <li>Roll Score</li>
+          <li>Frame score</li>
+        </ul>
+      </div>
+
+      <div class="col-table-2 menu">
+        <ul>
+          <table class='scoresheet'>
+              <tr>
+                <th>Frame 1</th>
+                <th>Frame 2</th>
+                <th>Frame 3</th>
+                <th>Frame 4</th>
+                <th>Frame 5</th>
+              </tr>
+          </table>
+        </ul>
+      </div>
+
+      </div>
+ -->
+
+<!--
 <div class="roll_score" >
   Roll scored!
-</div>
+</div> -->
 
 <!--
 <p id="demo"></p>

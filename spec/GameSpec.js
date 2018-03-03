@@ -57,7 +57,7 @@ describe('Game', function() {
     });
   });
 
-  describe('score', function() {
+  describe('totalScore', function() {
     var rollMany = function (pins, rolls) {
       for (var i = 0; i < rolls; i++) {
         game.bowl(pins);
@@ -66,12 +66,12 @@ describe('Game', function() {
 
     it('calculates total when there are no strikes or spares', function() {
       rollMany(1, 20);
-      expect(game.score()).toBe(20);
+      expect(game.totalScore()).toBe(20);
     });
 
     it('player can roll a gutter game', function() {
       rollMany(0, 20);
-      expect(game.score()).toBe(0);
+      expect(game.totalScore()).toBe(0);
     });
 
     it('player can roll a spare', function() {
@@ -79,7 +79,7 @@ describe('Game', function() {
       game.bowl(5);
       game.bowl(3);
       rollMany(0, 17);
-      expect(game.score()).toBe(16);
+      expect(game.totalScore()).toBe(16);
     });
 
     it('player can bowl a strike', function() {
@@ -87,29 +87,29 @@ describe('Game', function() {
       game.bowl(5);
       game.bowl(3);
       rollMany(0, 16);
-      expect(game.score()).toBe(26);
+      expect(game.totalScore()).toBe(26);
     });
 
     it('player can bowl a perfect game', function() {
       rollMany(10, 12);
-      expect(game.score()).toBe(300);
+      expect(game.totalScore()).toBe(300);
     });
 
     it('player can bowl a game of spares', function() {
       rollMany(5, 21);
-      expect(game.score()).toBe(150);
+      expect(game.totalScore()).toBe(150);
     });
 
     it('calculates a spare bonus', function() {
       rollMany(0, 16);
       rollMany(5, 5);
-      expect(game.score()).toBe(30);
+      expect(game.totalScore()).toBe(30);
     });
 
     it('calculates a strike bonus', function() {
       rollMany(0, 16);
       rollMany(10, 4);
-      expect(game.score()).toBe(60);
+      expect(game.totalScore()).toBe(60);
     });
   });
 

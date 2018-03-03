@@ -19,15 +19,15 @@ Game.prototype.bowl = function (pins) {
   };
 };
 
-Game.prototype.score = function () {
+Game.prototype.totalScore = function () {
   var score = 0;
 
   if (this.currentFrame.finalFrame) {
     for (var index = 0; index < this.frameIndex; index++)
-      score += this.frameScore(index);
+      score += this.bowlScore(index);
   } else {
     for (var index = 0; index < this.frameIndex-1; index++)
-      score += this.frameScore(index);
+      score += this.bowlScore(index);
     };
   return score;
 };
@@ -42,8 +42,9 @@ Game.prototype.nextFrame = function () {
   this.frameIndex++;
 };
 
-Game.prototype.frameScore = function (index) {
+Game.prototype.bowlScore = function (index) {
   var score = 0;
+
   if (this.frames[index].isStrike()) {
     if (isNaN(this._strikeScore(index))) {
       score += 0;

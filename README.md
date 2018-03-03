@@ -1,8 +1,24 @@
 # Bowling Challenge
 
-### Description
-
 A one-player game of bowling.
+
+### Installation
+
+TBC
+
+### Usage
+
+TBC
+
+### Running Tests
+
+Test Suite is Jasmine.
+
+Run `SpecRunner.html` in a web browser
+
+### Screenshot
+
+TBC
 
 ### Development Process
 
@@ -15,10 +31,6 @@ A one-player game of bowling.
 7) Contain amount of frames per game to 10 and allow frame index to increment after 1 strike or 2 bowls.
 8) Redesign score method in game class to play gutter game or a basic game of no strikes or spares.
 9) Carefully plan out logic for strikes and spares in separate function that tracks each frame score.
-
-### Screenshot
-
-TBC
 
 ### Author
 

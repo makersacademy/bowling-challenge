@@ -42,7 +42,7 @@ ScoreCalculator.prototype.calculateSingleStrikeScore = function() {
       var firstRollScore = this.firstRollScore(currentFrame);
       var previousFrame = this.allFrames[frameIndex - 1];
       var previousFirstRollScore = this.firstRollScore(previousFrame);
-        if (previousFirstRollScore === 10 && firstRollScore != 10) {
+        if (previousFirstRollScore === 10 && firstRollScore !== 10) {
             this.frameScores[frameIndex - 1] += (this.frameScore(currentFrame));
         }
         else if (previousFirstRollScore === 10 && frameIndex === 9) {

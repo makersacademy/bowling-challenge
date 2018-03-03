@@ -20,11 +20,11 @@ describe('Game', function(){
 
     describe('#rollCheck', function(){
       it('raises an error if roll value is not a number from 1 to 10', function() {
-        expect(function() {game.rollBall('a');}).toThrow('Roll value is not legal, input a value from 1 to 10');
+        expect(function() {game.rollBall('a');}).toThrow('Roll value is not legal, input a value from 0 to 10');
       });
 
       it('raises an error if roll value of first roll is too great', function() {
-        expect(function() {game.rollBall(11);}).toThrow('Roll value is not legal, input a value from 1 to 10');
+        expect(function() {game.rollBall(11);}).toThrow('Roll value is not legal, input a value from 0 to 10');
       });
 
       it('raises an error if roll value of second roll is too great', function() {

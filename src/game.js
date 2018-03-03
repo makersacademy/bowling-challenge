@@ -22,7 +22,7 @@ Game.prototype.rollBall = function(rollScore) {
 
 Game.prototype.rollCheck = function(rollScore) {
   if (this.gameOver) throw 'Game is over!';
-  else if (this._isNotLegalInput(rollScore)) throw 'Roll value is not legal, input a value from 1 to 10';
+  else if (this._isNotLegalInput(rollScore)) throw 'Roll value is not legal, input a value from 0 to 10';
   else if (this._isSecondRollOfFrame() && !this._isTenthFrame()) {
     var currentFrame = (this.allFrames[(this.allFrames.length)-1]);
     var firstRollCurrentFrame = this.scoreCalculator.firstRollScore(currentFrame);

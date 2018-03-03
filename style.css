@@ -1,3 +1,4 @@
+
 html {
     background-image: url(https://vientianebackpackershostel.com/wp-content/uploads/2016/03/Bowling_945.jpg);
     background-repeat: center;
@@ -8,76 +9,70 @@ html {
     font-size: 20px;
     text-align: center;
     align-content: center;
+    margin: 0 auto;
 }
 
-
-/* header {
+h1 {
     padding: 1em;
-    color: rgb(216, 29, 29);
-    background-color: rgba(137, 11, 187, 0.5);
+    color: red;
+    font-weight: bold;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     clear: left;
     font-size: 25px;
     text-align: center;
-    border-radius: 70%;
-} */
+}
 
 .control-buttons {
-    background-color:rgba(168, 11, 230, 0.938);
-    border: none;
+    background-color: red;
     color: rgba(255, 255, 255, 0.945);
-    padding: 15px 32px;
     text-align: center;
+    font-weight: bold;
+    height: 7%;
+    width: 18%;
     text-decoration: none;
-    display: inline-block;
     font-size: 25px;
-    
+    border-width: 5px;
+    border-style: outset;
 }
 
 .control-buttons:hover {
-    background-color: rgba(41, 13, 199, 0.336);
+    background-color: #ff6666;
     color: rgba(224, 8, 8, 0.822);
 }
-/* #1st_div {
-   margin-top: 290px;
-   font-family: sans-serif;
-   padding-top: 206px;
-   margin-left: 38‒;
-   padding-left: 73px;
-   margin-top: 190px;
-} */
 
 .sec2{
-    background-color: rgba(168, 11, 230, 0.938);
+    background-color: red;
     font-weight: bold;
     color: rgba(255, 255, 255, 0.945);
-    height: 40px;
-    width: 15%;
+    display: block;
+    height: 7%;
+    width: 18%;
     text-align: left;
-    margin-top: 275px;
-    margin-left: 360px;
-
+    margin-top: 25%;
+    margin-left: 50%;
+    border-style:
 }
 
 .sec1{
   position: absolute;
-    background-color: rgba(168, 11, 230, 0.938);
+    background-color: red;
     font-weight: bold;
     color: rgba(255, 255, 255, 0.945);
-    height: 40px;
-    width: 17%;
+    display: block;
+    height: 7%;
+    width: 18%;
     text-align: left;
-    margin-top: 320px;
-    margin-left: 100px;
-
+    margin-top: 28%;
+    margin-left: 31%;
 }
 
-
 .pin_history {
-    width: 65%;
-    background-color: rgba(168, 11, 230, 0.938);
+    width: 63%;
+    background-color: red;
     font-weight: bold;
     color: rgba(255, 255, 255, 0.945);
-    height: 40px;
+    display: block;
+    height: 7%;
     text-align: left;
+    margin-left: 20%;
 }

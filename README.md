@@ -36,37 +36,67 @@ PART 3:
 * Design
 - Before moving on to refactoring to make my code more elegant, I decided to start designing the view layer, in case I realised some logic changes were necessary.
 
-PART 4:
-[TBC]
-
 Next focus
 ------
-[TBC]
+This is where PART 4 from the previous section comes into play. I would divide this section in different parts:
+
+1. Business logic:
+* Definitely the <i>finalScore</i> method in Game.js needs refactoring. This is a top priority for the next focus. Some private methods can be added to make the Game class more elegant and readable.
+* I am aware that there is a short way of writing prototype pattern methods for a class, I would look into that as well, even though I am aware that is not really a priority.
+
+* Functionality / Edge cases:
+- Because of the view layer (when I intentionally hid buttons when a roll is not possible), not all the logic needs to be perfect, but it should be. For example, I am aware that two 9's could be potentially rolled in the same frame without the view layer. Also a method needs to be added to check if the player tries to add more than 10 frames to an instance of Game.
+The strike is not correctly set in the 10th frame, and it's not crucial because there's no 11th frame, but it is definitely an issue that needs to be fixed.
+I would have liked to make the Game class responsible for all sort of calculations, even those running within a frame (currentScore), I would look into that too, but that is not a priority.
+
+2. Tests:
+* Some unit tests can be also refactored, especially these in the frameSpec.js file. Some before blocks could come in handy to have a better experience when running and working on more tests.
 
 Personal code review
 ------
-[TBC]
 
+Overall, I am very happy with my approach and skills used for this project.
+
+1. Things I learned:
+* Parameters are not compulsory in JS, contrary to Ruby (one of the many issues raised by RSpec). Realising about that was really helpful
+* Adding a comma after that last data in a JSON file breaks everything!
+* It is not possible to use arrows as callback functions in jQuery if we are using the keyword <i>This</i> because of some binding issues. I used the arrow instead of the keyword <i>function</i> in the logic though, following the recommendation by AirBnB.
+* As I used ESLint with different plugins (Jasmine, jQuery...) I learned a lot about npm and package.json files, and, also, about .lock.json files.
+
+2. Things I did well:
+* Making assumptions is the most serious mistake that could be made to develop this app, I am glad I realised soon enough and used ```console.log``` a lot.
+* I was led by TDD at all times in this project, I am becoming much more confident with it and aware of its multiple benefits.
+
+3. Things I wish I had done better:
+* A better use of **debugger** would have saved me a lot of time, as I mainly used **console.log**, which is not ideal for all the situations.
+* I think I spent a lot of time on diagramming and, even though that saved me a lot of time later on, I could have thought a bit more on edge cases and maybe prevented them from happening in my app, as I described in the previous section.
+* Perhaps the interface.js file could be also refactored to make it clearer, even though it seems to follow a logical order for me, but maybe not for other coders reading through my files.
+ 
 Technologies used
 ------
-
-* Chrome DevTools
-* CSS
+* CSS Flexbox
 * ESLint
 * Jasmine
 * Javascript
+* jQuery
 * Visual Studio Code
 
 Installation Instructions
 ------
-[TBC]
+You do not need to install anything to run this app. Just open ```index.html``` in your browser.
 
 How to run the tests
 ------
-[TBC]
+Everything required to run Jasmine is within the <i>lib</i> folder. You just need to open ```SpecRunner.html``` in your browser to run the tests.
 
-Screenshot
+Screenshots
 ------
+![Frames](/images/sc-1.png?raw=true)
+![Perfect Game](/images/sc-2.png?raw=true)
+![Gutter Game](/images/sc-3.png?raw=true)
+
+=================
+=================
 
 Bowling Challenge
 =================

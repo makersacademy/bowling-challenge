@@ -24,12 +24,6 @@ describe('Game', () => {
     spareFrame.spare = true;
   });
 
-  describe('#initialize', () => {
-    it('it initializes a game with no frames', () => {
-      expect(game.frames).toEqual([]);
-    });
-  });
-
   describe('#addFrame', () => {
     it('it stores Frame rolls in the Game instance', () => {
       game.addFrame(frame);

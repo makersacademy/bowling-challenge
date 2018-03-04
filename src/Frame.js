@@ -1,8 +1,4 @@
 function Frame(frameNum) {
-  // Maybe this should be in Game...
-  // Need 0 somewhere in the rolls to show in the view...
-  this.pins = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
   this.rollCounter = 0;
   this.rolls = [];
 

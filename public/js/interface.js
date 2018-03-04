@@ -91,7 +91,7 @@ $(document).ready(() => {
           $('.perfect-game').removeClass('hidden');
         }
         count = 0;
-      } else if (id === 10) {
+      } else if (id === 10 || frame.currentScore === 10) {
         $('.pins .pin-button').removeClass('hidden');
       }
     }

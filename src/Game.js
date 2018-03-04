@@ -4,7 +4,6 @@ function Game() {
 }
 
 Game.prototype.addFrame = function addFrame(frame) {
-  // Check no more than 10 frames
   this.frames.push(frame);
 };
 
@@ -41,6 +40,3 @@ Game.prototype.finalScore = function finalScore() {
 
   return this.totalScore;
 };
-
-// PRIVATE METHODS
-// Define a lastFrameCalculations method to make finalScore more elegant

@@ -1,7 +1,7 @@
 function Frame() {
 
   this.rolls = []
-  var index = 0;
+  this.result = 0;
 
 };
 
@@ -10,15 +10,6 @@ Frame.prototype = {
   roll: function(pins) {
     this.rolls.push(pins);
   },
-
-  // firstRoll: function() {
-  //   return this.rolls[0];
-  // },
-  //
-  // secondRoll: function() {
-  //   return this.rolls[1];
-  // },
-
 
   score: function() {
     var index = 0;
@@ -38,5 +29,7 @@ Frame.prototype = {
     var index = 0;
     return (this.rolls[index] + this.rolls[index + 1] + this.rolls[index + 2]);
   },
+
+  
 
 };

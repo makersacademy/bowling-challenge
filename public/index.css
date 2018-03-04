@@ -17,6 +17,7 @@ h2 {
     line-height: 24px;
     text-align: left;
     color: #00FF00;
+    padding: 20px;
 }
 
 p {
@@ -34,6 +35,7 @@ p {
     border: solid 4px; 
     color: #00FF00;
     padding: 20px 20px;
+    margin: 6px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -49,11 +51,31 @@ p {
     border-color: #00FF00;
 }
 
+/* .button:active {
+    background-color: #00FF00;
+    color: #0033CC;
+    border-color: #00FF00;
+    border: solid 4px;
+}
+
+.button:focus {
+    background-color: #00FF00;
+    color: #0033CC;
+    border-color: white;
+    border: solid 8px;
+} */
+
 .score {
     font-family: 'Press Start 2P', sans-serif;
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 48px;
+    line-height: 48px;
     text-transform: uppercase;
     text-align: center;
     color: #00FF00; 
+}
+
+div.pins {
+    max-width: 768px;
+    margin: auto;
+    border: none;
 }

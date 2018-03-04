@@ -1,7 +1,7 @@
 $( document ).ready(function() {
 
-  var player = new Player;
-  var game;
+  const player = new Player;
+  let game;
 
   for (i = 1; i < 10; i++) {
     $('.table').append(
@@ -11,7 +11,7 @@ $( document ).ready(function() {
 
   for (i = 0; i < 11; i++) {
     $('.buttons').append(
-      '<button type="button" class="bowl">' + i + '</button>'
+      '<button type="button" class="bowl" id="b' + i + '">' + i + '</button>'
     )
   }
 
@@ -27,6 +27,19 @@ $( document ).ready(function() {
       $('.table').find('div:empty:first').append("X");
     }
     $('.score').text(player.displayBasicScore());
+    showHideButtons();
+  }
+
+  function showHideButtons() {
+    let subtractor = player.currentGame._valueOfPair(player.currentGame._numberOfPairs()-1)
+    if (player.currentGame.frames.length % 2 === 0 || subtractor === 10) {
+      $('.bowl').show();
+    } else {
+      let minnumber = 10-subtractor
+      for (i = 10; i > minnumber; i--) {
+        $('#b' + i).hide();
+      }
+    }
   }
 
   $('.new_game').click(function() {

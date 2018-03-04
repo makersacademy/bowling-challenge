@@ -63,5 +63,21 @@ describe('Frame', function() {
       expect(frame.spare).toEqual(true);
     });
   });
+  describe('.complete', function() {
+    it('checks whether frame is complete', function() {
+      expect(frame.isComplete()).toEqual(false);
+    });
+    it('returns true when frame is complete', function() {
+      frame.setBall1(7);
+      frame.setBall2(2)
+      expect(frame.isComplete()).toEqual(true);
+    });
+    it('knows frame is incomplete when strike is true and score is 10',
+    function() {
+      frame.setBall1(10);
+      expect(frame.isComplete()).toEqual(false); 
+    });
+  });
+
 
 });

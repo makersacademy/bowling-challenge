@@ -1,6 +1,7 @@
 describe('Game', function() {
   var game;
   var frame;
+  var currentFrame;
 
   beforeEach(function() {
     game = new Game();
@@ -8,10 +9,8 @@ describe('Game', function() {
     frame = jasmine.createSpyObj('frame', ['score','strike','spare',
                                            'ball1',
                                            'ball2', 'getScore']);
-    // frame.score = null;
     frame.ball1 = 3;
     frame.ball2 = 4
-    console.log(frame.score);
   });
 
   describe('.addFrame', function() {
@@ -24,13 +23,44 @@ describe('Game', function() {
   describe('.frameTotal', function() {
     it('returns score if neither strike nor spare', function() {
       game.addFrame(frame);
-      console.log(frame);
-
       expect(game.frameTotal(0, frame.ball1, frame.ball2)).toBe(7);
+    });
+    it('returns strike if ball1 is strike', function() {
+      frame.ball1 = 'strike';
+      expect(game.frameTotal(0, frame.ball1, frame.ball2)).toBe('strike');
+    });
+    it('returns spare if ball2 is spare', function() {
+      frame.ball2 = 'spare';
+      expect(game.frameTotal(0, frame.ball1, frame.ball2)).toBe('spare');
     });
   });
 
+  describe('.strike', function() {
+    it('returns total score for a frame when strike', function() {
+      expect(game.strike(0, 4, 4)).toBe(18);
+    });
+  });
 
+  describe('.spare', function() {
+    it('returns total score for a frame when spare', function() {
+      expect(game.spare(0, 7)).toBe(17);
+    });
+  });
+
+  describe('.getFrame', function() {
+    it('returns a frame when given array pos as param', function() {
+      game.addFrame(frame);
+      var frame1 = new Object();
+      game.addFrame(frame1);
+
+      expect(game.getFrame(1)).toBe(frame1)
+    })
+  });
+  // describe('.frameComplete', function() {
+  //   it('checks whether frame is complete', function() {
+  //     expect(game.frameComplete(0))
+  //   })
+  // })
 });
 
 

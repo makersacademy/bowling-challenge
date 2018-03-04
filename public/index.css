@@ -13,7 +13,7 @@ header {
     text-align: center;
 }
 
-.record_roll, .roll_scored, .strike2 {
+.record_roll, .roll_scored, .strike2, .gameOver {
   height: 100px;
   text-align: center;
   font-weight: bold;
@@ -72,7 +72,7 @@ right: 20em;
 display: none;
 }
 
-.strike2 {
+.strike2, .gameOver {
 display: none;
 font-size: 30px
 }

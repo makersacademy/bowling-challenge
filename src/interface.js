@@ -2,24 +2,24 @@ $(document).ready(function (){
   var game = new Game();
 
   $( '#bowlingBall' ).click(function() {
-    console.log(game);
     var rollScore =  parseInt(document.getElementById('rollScore').value);
     rollCheck(game, rollScore);
-
     game.rollBall(rollScore);
-
     {$('.roll_scored').text('You rolled a: ' + rollScore);}
-
-    if (game.isStrike(rollScore)) {
-      $(".strike").show();
-      setTimeout(function() { $(".strike").hide(); }, 2000);
-      $(".strike2").show();
-      setTimeout(function() { $(".strike2").hide(); }, 5000);
-    }
-
+    strikeAnimation(game, rollScore);
     printScores(game);
+    if (game.gameOver) {$('.gameOver').show();}
   });
 });
+
+var strikeAnimation = function(game, rollScore) {
+  if (game.isStrike(rollScore)) {
+    $(".strike").show();
+    setTimeout(function() { $(".strike").hide(); }, 2000);
+    $(".strike2").show();
+    setTimeout(function() { $(".strike2").hide(); }, 5000);
+  }
+}
 
 var printScores = function(game) {
   for( var frameIndex = 0, len = game.allFrames.length; frameIndex < len; frameIndex++) {

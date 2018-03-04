@@ -48,6 +48,22 @@ label#record_text {
   font-weight: bold;
 }
 
+[id*="marker"] {
+  font-weight: bold;
+}
+
+#totalScoreTitle {
+  background-color: black;
+}
+
+#totalScore {
+  text-align: center;
+  vertical-align: middle;
+  border-left:2px solid;
+  border-bottom:2px solid;
+  border-right:2px solid;
+}
+
 table.scorecard {margin: 3% auto; width:80%; font-size:12px; border:1px solid; text-align: center; table-layout: fixed; margin-bottom: 40px;}
 table.scorecard th, tr, td {padding: 0; vertical-align: middle; font-family: Arial, Helvetica, sans-serif; text-align: center;}
 table.scorecard th {border-bottom:1px solid; background-color:#d3313a; height:30px; color: #fff}

@@ -2,6 +2,25 @@
   background-color: yellow;
 }
 
+.headers {
+  height: 3em;
+  display: flex;
+  flex-direction: row;
+  background-color: green;
+}
+
+.one_header {
+  width: 8%;
+  background-color: yellow;
+  text-align: center;
+  margin-right: 1.3em;
+}
+
+.ten_header {
+  width: 14%;
+  margin-right: 0.4em !important;
+}
+
 .table {
   height: 3em;
   display: flex;
@@ -10,7 +29,7 @@
 }
 
 .one_frame {
-  width: 2em;
+  width: 5%;
   background-color: blue;
   margin-right: 0.5em;
 }

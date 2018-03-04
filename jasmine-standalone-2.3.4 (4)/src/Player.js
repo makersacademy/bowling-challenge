@@ -36,3 +36,7 @@ Player.prototype.countScore = function() {
 Player.prototype.countbasicScore = function() {
   this.currentGame.basicScore();
 }
+
+Player.prototype.displayBasicScore = function() {
+  return (this.currentGame.basicScore())
+}

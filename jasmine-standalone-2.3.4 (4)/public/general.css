@@ -1,0 +1,129 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.messages {
+  text-align: center;
+  margin-top: 0.2em;
+  font-family: Work Sans;
+  background-color: #fd5b3447;
+}
+
+p2 {
+  margin-left: 0.2em;
+}
+
+.pick_number {
+  margin-top: 2em;
+  text-align: center;
+  font-family: Work Sans;
+  margin-bottom: 0.3em;
+}
+
+.buttons {
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+  margin-bottom: 2em;
+}
+
+.bowl {
+  margin: 0.4em;
+  height: 3em;
+  width: 3em;
+}
+
+.bowl:hover {
+  background-color: #f8cbbc;
+  color: #7d1c11 !important;
+}
+
+.headers {
+  height: 3em;
+  display: flex;
+  flex-direction: row;
+  background-color: green;
+}
+
+.one_header {
+  font-family: Work Sans;
+  margin-bottom: 0.2em;
+  text-align: center;
+  width: 100%;
+}
+
+.ten_header {
+}
+
+.table {
+  height: 5em;
+  display: flex;  /* puts content in one line - row by default*/
+  background-color: #aed5d93d;
+  font-family: Work Sans;
+  text-align: center;
+}
+
+.three {
+  width: 100%;
+  display: block; /* puts children in separate rows - one above the other*/
+}
+
+.frames {
+  width: 100%;
+  height: 100%;
+  display: flex;  /* puts content in one line - row by default*/
+}
+
+.one_frame {
+  width: 45%;
+  height: 50%;
+  background-color: #aed5d9;
+  margin-right: 5%;
+}
+
+.numeric {
+  margin-top: 0.65em;
+}
+
+.basic {
+  margin-top: 1em;
+  margin-bottom: 0.3em;
+  text-align: center;
+  font-family: Work Sans;
+  margin-bottom: 0.3em;
+}
+
+.scorecontainer {
+  background-color: #f8cbbc;
+  display: block;
+  margin-top: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 40em;
+  height: 3em;
+  width: 3em;
+}
+
+.score {
+  margin-top: -1.9em;
+}
+.count_final_score {
+  margin-top: 2.5em;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  font-family: Work Sans;
+  margin-bottom: 0.3em;
+  font-size: 1em;
+}
+
+.final_score {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: block;
+  font-size: 2em;
+  font-family: Work Sans;
+}

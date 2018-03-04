@@ -1,0 +1,38 @@
+.header {
+  background-color: #388a9259;
+  height: 70px;
+}
+
+.bowlball {
+  height: 3.8em;
+}
+
+.title {
+  margin-top: -3em;
+  margin-left: 6.3em;
+}
+
+p1 {
+  font-family: Work Sans;
+  font-size: 1.8em;
+  color: #ed4630e6;
+  font-weight: 800;
+}
+
+.head_button {
+  float: right;
+  margin-top: -1.8em;
+  margin-right: 2em;
+  font-size: 0.9em;
+  font-family: Work Sans;
+  border-radius: 0.8em;
+}
+
+.head_button:hover {
+  background-color: #f8cbbc;
+  color: #7d1c11 !important;
+}
+
+.new_game {
+  margin-right: 8em;
+}

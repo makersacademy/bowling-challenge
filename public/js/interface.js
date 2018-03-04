@@ -1,12 +1,12 @@
 const game = new Game();
-const frame = new Frame();
+let frame = new Frame();
 let i = 0;
 
 $(document).ready(() => {
-  const nextFrame = $('#next-frame');
+  const next = $('.next-frame');
   const pins = $('.pins');
 
-  $('.begin button').click(() => {
+  $('.begin button').click(function jQuery() {
     $(this).parent().addClass('hidden');
     $('.game').removeClass('hidden');
   });
@@ -20,8 +20,9 @@ $(document).ready(() => {
   }
 
   let count = 0;
-  $('.pin-button'.click(() => {
-    count += 1
+  $('.pin-button').click(function jQuery() {
+    count += 1;
+
     const id = $(this).data('id');
 
     for (i; i < id; i++) {
@@ -29,5 +30,50 @@ $(document).ready(() => {
     }
 
     frame.roll(id);
+
+    if (game.frames.length < 9) {
+      if (id === 10) {
+        $(pins).addClass('hidden');
+        $(next).removeClass('hidden');
+
+        game.addFrame(frame);
+        game.finalScore();
+        $('.score span').html(game.totalScore);
+        count = 0;
+      }
+
+      if (count === 2) {
+        $(pins).addClass('hidden');
+        $(next).removeClass('hidden');
+
+        game.addFrame(frame);
+        game.finalScore();
+        $('.score span').html(game.totalScore);
+        count = 0;
+      }
+    } else if (game.frames.length === 9) {
+      if (count === 3) {
+        $(pins).addClass('hidden');
+
+        game.addFrame(frame);
+        game.finalScore();
+        $('.score span').html(game.totalScore);
+        count = 0;
+      } else if (id === 10) {
+        $('.pins .pin-button').removeClass('hidden');
+      }
+    }
+  });
+
+  $(next).click(function jQuery() {
+    if (game.frames.length === 9) {
+      frame = new Frame(10);
+    } else {
+      frame = new Frame();
+    }
+
+    $(pins).removeClass('hidden');
+    $(this).addClass('hidden');
+    $('.pins .pin-button').removeClass('hidden');
   });
 });

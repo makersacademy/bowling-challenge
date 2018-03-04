@@ -1,6 +1,6 @@
 var BowlingFrame = function() {
-  this.firstRollScore;
-  this.secondRollScore;
+  this.firstRollScore = 0;
+  this.secondRollScore = 0;
   this.totalScore;
   this.rollNumber = 1;
 };

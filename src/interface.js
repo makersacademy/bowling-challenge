@@ -28,7 +28,6 @@ $(document).ready(function() {
   $('.buttons')
     .children()
     .click(function(e) {
-      console.log(e.target.attributes.id.nodeValue);
       if (game.currentFrame.rollNumber === 1) {
         var $score = game.currentFrame.firstRoll(
           parseInt(e.target.attributes.id.nodeValue)
@@ -37,6 +36,25 @@ $(document).ready(function() {
           `<tr id="${frameNumber}"><td>${frameNumber}</td><td>${game
             .currentFrame.rollNumber - 1}</td><td>${$score}</td></tr>`
         );
+        var nextScore = 10 - parseInt(e.target.attributes.id.nodeValue);
+        if (nextScore === 0) {
+          $('#scoreboard').append(
+            `<tr id"${frameNumber}"><td>${frameNumber}</td><td>2</td><td>0</td><td>${game.scoreboard.score(
+              game.currentFrame
+            )}</td></tr>`
+          );
+          frameNumber += 1;
+          game.createNewFrame();
+        } else {
+          $(this)
+            .siblings()
+            .addBack()
+            .each(function() {
+              if ($(this).attr('id') > nextScore) {
+                $(this).hide();
+              }
+            });
+        }
       } else {
         var $score = game.currentFrame.secondRoll(
           parseInt(e.target.attributes.id.nodeValue)
@@ -50,6 +68,9 @@ $(document).ready(function() {
         );
         frameNumber += 1;
         game.createNewFrame();
+        $(this)
+          .siblings()
+          .show();
       }
     });
 });

@@ -17,7 +17,8 @@ describe('Game', function() {
 
   describe('The .bonusChecker function', function() {
     it('adds bonuses to strikeFrames', function() {
-      expect(game.bonusChecker(strikeFrames)).toEqual([[10, 10, 10], [10, 10], [10]]);
+      expect(game.bonusChecker(strikeFrames))
+        .toEqual([[10, 10, 10], [10, 10], [10]]);
     });
 
     it('adds bonuses to spareFrames', function() {

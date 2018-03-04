@@ -3,7 +3,6 @@ $(document).ready(function() {
   var calculator = new GameCalculator();
   var frameCount = 0;
   var frames = [];
-
   var roll;
   var remainingPins;
 
@@ -18,17 +17,15 @@ $(document).ready(function() {
   });
 
   $('.roll-score').click(function(){
-
     roll = parseInt(this.value);
     console.log(frames);
-
     if (frameCount < 9) {
       game.addRollToFrame(frames, frameCount, roll);
       if (game.isStrike(frames[frameCount])) {
         $(`#f${frameCount + 1} > .inner2`).text('X');
       } else if (game.isSpare(frames[frameCount])) {
         $(`#f${frameCount + 1} > .inner1`).text(frames[frameCount][0]);
-        $(`#f${frameCount + 1} > .inner2`).text('/');
+        $(`#f${frameCount + 1} > .inner2`).html('<strong><em>/</em></strong>');
       } else {
         $(`#f${frameCount + 1} > .inner1`).text(frames[frameCount][0]);
         $(`#f${frameCount + 1} > .inner2`).text(frames[frameCount][1]);
@@ -50,8 +47,6 @@ $(document).ready(function() {
       frameCount = game.frameTenCheck(frames, frameCount);
       $(`#f${frameCount} > #final-scorecard-score > span`)
         .text(game.flattenAndSum(frames));
-
-      console.log(frameCount);
     }
 
 

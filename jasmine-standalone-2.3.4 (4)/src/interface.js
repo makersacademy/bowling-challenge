@@ -1,91 +1,45 @@
 $( document ).ready(function() {
 
   var player = new Player;
-  var game = new Game;
+  var game;
 
-  $('.new_game').click(function() {
-    player.newGame(game);
-    $('.messages').text('A new game has started!')
-  });
+  for (i = 1; i < 10; i++) {
+    $('.table').append(
+      '<div class="three"><div class="one_header">' + i + '. round</div><div class="frames"><div class="one_frame"></div><div class="one_frame"></div></div></div>'
+    )
+  }
 
-  $('.0_bowl').click(function() {
-    player.roll(0);
-    $('.messages').text('You rolled 0')
-    $('.table').find('div:empty:first').append(0);
-    $('.score').text(player.displayBasicScore());
-  });
+  for (i = 0; i < 11; i++) {
+    $('.buttons').append(
+      '<button type="button" class="bowl">' + i + '</button>'
+    )
+  }
 
-  $('.1_bowl').click(function() {
-    player.roll(1);
-    $('.messages').text('You rolled 1')
-    $('.table').find('div:empty:first').append(1);
-    $('.score').text(player.displayBasicScore());
-  });
+  $('.table').append(
+    '<div class="three"><div class="one_header ten_header">10. round</div><div class="frames"><div class="one_frame"/><div class="one_frame"/><div class="one_frame"/></div></div>'
+  )
 
-  $('.2_bowl').click(function() {
-    player.roll(2);
-    $('.messages').text('You rolled 2')
-    $('.table').find('div:empty:first').append(2);
-    $('.score').text(player.displayBasicScore());
-  });
-
-  $('.3_bowl').click(function() {
-    player.roll(3);
-    $('.messages').text('You rolled 3')
-    $('.table').find('div:empty:first').append(3);
-    $('.score').text(player.displayBasicScore());
-  });
-
-  $('.4_bowl').click(function() {
-    player.roll(4);
-    $('.messages').text('You rolled 4')
-    $('.table').find('div:empty:first').append(4);
-    $('.score').text(player.displayBasicScore());
-  });
-
-  $('.5_bowl').click(function() {
-    player.roll(5);
-    $('.messages').text('You rolled 5')
-    $('.table').find('div:empty:first').append(5);
-    $('.score').text(player.displayBasicScore());
-  });
-
-  $('.6_bowl').click(function() {
-    player.roll(6);
-    $('.messages').text('You rolled 6')
-    $('.table').find('div:empty:first').append(6);
-    $('.score').text(player.displayBasicScore());
-  });
-
-  $('.7_bowl').click(function() {
-    player.roll(7);
-    $('.messages').text('You rolled 7')
-    $('.table').find('div:empty:first').append(7);
-    $('.score').text(player.displayBasicScore());
-  });
-
-  $('.8_bowl').click(function() {
-    player.roll(8);
-    $('.messages').text('You rolled 8')
-    $('.table').find('div:empty:first').append(8);
-    $('.score').text(player.displayBasicScore());
-  });
-
-  $('.9_bowl').click(function() {
-    player.roll(9);
-    $('.messages').text('You rolled 9')
-    $('.table').find('div:empty:first').append(9);
-    $('.score').text(player.displayBasicScore());
-  });
-
-  $('.10_bowl').click(function() {
-    player.roll(10);
-    $('.messages').text('You rolled 10')
-    $('.table').find('div:empty:first').append(10);
+  function roll(number) {
+    player.roll(number);
+    $('.messages').text('You rolled ' + number)
+    $('.table').find('div:empty:first').append(number);
     if (player.currentGame._valueOfPair(player.currentGame._numberOfPairs()-1) === undefined ) {
       $('.table').find('div:empty:first').append("X");
     }
     $('.score').text(player.displayBasicScore());
+  }
+
+  $('.new_game').click(function() {
+    $( ".score" ).empty();
+    $( ".final_score" ).empty();
+    $( ".one_frame" ).empty(); // all off the one_frame kind.
+    game = new Game;
+    player.newGame(game);
+    $('.messages').text('A new game has started!')
+  });
+
+  $('.bowl').click(function(e) {
+    roll(parseInt(e.target.textContent));
   });
 
   $('.count_final_score').click(function() {

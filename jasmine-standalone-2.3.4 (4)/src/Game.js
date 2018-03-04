@@ -90,10 +90,6 @@ Game.prototype.strikes = function() {
     strikes += this._valueOfPair(18);
     strikes += this._valueOfPair(19);
   }
-  if (this._valueOfPair(18) === 10) {
-    strikes += this._valueOfPair(19);
-    strikes += this._valueOfPair(20);
-  }
   return strikes;
 }
 

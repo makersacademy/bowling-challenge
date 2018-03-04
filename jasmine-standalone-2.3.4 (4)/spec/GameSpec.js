@@ -103,7 +103,7 @@ describe("Game", function() {
       player.roll(10);
       player.roll(10);
       player.roll(2); //
-      expect(game.strikes()).toEqual(33);
+      expect(game.strikes()).toEqual(21);
     });
   });
 

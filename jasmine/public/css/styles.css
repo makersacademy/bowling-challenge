@@ -32,5 +32,20 @@ h2 {
   font-family: Orbitron;
   color: black;
   text-align: center;
+  margin: 20px 30px 40px 40px;
+}
 
+table, tr, th{
+  border: 2px solid;
+  align-items: center;
+  margin: 50px 40px 40px 40px;
+  width: 300px;
+  height: 100px;
+  background-color: lightgreen;
+}
+
+.frames{
+  font-family: Orbitron;
+  text-align: center;
+  text-decoration: line-through;
 }

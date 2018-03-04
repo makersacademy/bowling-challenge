@@ -4,27 +4,38 @@
     <meta charset="utf-8">
     <title>Bowling game</title>
     <link rel="stylesheet" href="./jasmine/public/css/styles.css">
+    <script src="./jasmine/src/Bowling.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="./jasmine/src/interface.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css' >
+
   </head>
   <body>
-    <header>
-      <h1>PIN BOWLING GAME</h1>
-    </header>
+    <div class="title">
+      <header>
+        <h1>PIN BOWLING GAME</h1>
+      </header>
+    </div>
 
-    <h2>  Pins to throw:</h2>
+    <div class="trhow">
+        <h2> Pins to throw:</h2>
+    </div>
 
     <div class="pin" id="pin">
       <form class="rollpin">
-        <input type="text" name="pins to roll" placeholder="enter pins to roll" class="pinroll">
+        <input type="text" name="pins to roll" placeholder="enter pins to roll" class="enterpin">
         <input type="submit"  value="roll" class="pin1">
       </form>
-    <table class="table">
-      <tr>
-        <th>FRAME 1</th>
-        <th>FRAME 2</th>
-      </tr>
+    </div>
 
-    </table>
+    <div class="frametable">
+      <table class="table">
+        <tr class="frames">
+          <th colspan="2">Frame 1
+          <th colspan="2">SCORE
+        <tr><th class="roll1"> 3 <th class="roll2"> 2 <th class="score"> 5
+      </table>
+    </div>
 
   </body>
 </html>

@@ -1,0 +1,16 @@
+.messages {
+  background-color: yellow;
+}
+
+.table {
+  height: 3em;
+  display: flex;
+  flex-direction: row;
+  background-color: lightgrey;
+}
+
+.one_frame {
+  width: 2em;
+  background-color: blue;
+  margin-right: 0.5em;
+}

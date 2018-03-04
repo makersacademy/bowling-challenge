@@ -32,3 +32,7 @@ Player.prototype._addToPairs = function(number) {
 Player.prototype.countScore = function() {
   this.score = this.currentGame.generalScore();
 }
+
+Player.prototype.countbasicScore = function() {
+  this.currentGame.basicScore();
+}

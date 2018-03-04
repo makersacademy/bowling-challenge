@@ -13,7 +13,7 @@ header {
     text-align: center;
 }
 
-.record_roll, .roll_scored {
+.record_roll, .roll_scored, .strike2 {
   height: 100px;
   text-align: center;
   font-weight: bold;
@@ -64,6 +64,17 @@ label#record_text {
   border-right:2px solid;
   font-size: 18px;
   font-weight: bold;
+}
+
+.strike {
+position: absolute;
+right: 20em;
+display: none;
+}
+
+.strike2 {
+display: none;
+font-size: 30px
 }
 
 table.scorecard {margin: 3% auto; width:80%; font-size:12px; border:1px solid; text-align: center; table-layout: fixed; margin-bottom: 40px;}

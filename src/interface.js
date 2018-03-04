@@ -8,9 +8,16 @@ $(document).ready(function (){
 
     game.rollBall(rollScore);
 
-  {$('.roll_scored').text('You rolled a: ' + rollScore);}
+    {$('.roll_scored').text('You rolled a: ' + rollScore);}
 
-  printScores(game);
+    if (game.isStrike(rollScore)) {
+      $(".strike").show();
+      setTimeout(function() { $(".strike").hide(); }, 2000);
+      $(".strike2").show();
+      setTimeout(function() { $(".strike2").hide(); }, 5000);
+    }
+
+    printScores(game);
   });
 });
 

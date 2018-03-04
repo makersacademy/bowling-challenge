@@ -11,25 +11,53 @@ $(document).ready( function() {
   };
 
   $('.pin1').click( function (){
-    var roll_button1 = $(this).val();
-    console.log(roll_button1);
-    bowling.roll(roll_button1);
+    bowling.roll(1);
     afteroll();
-
-    $('.roll1').text(roll_button1);
-
   })
 
   $('.pin2').click( function (){
-    var roll_button2 = $(this).val();
-    console.log(roll_button2);
-    bowling.roll(roll_button2);
+    bowling.roll(2);
     afteroll();
-    console.log(bowling.rolls);
-
-    $('.roll2').text(roll_button2);
   })
 
+  $('.pin3').click( function (){
+    bowling.roll(3);
+    afteroll();
+  })
+
+  $('.pin4').click( function (){
+    bowling.roll(4);
+    afteroll();
+  })
+  $('.pin5').click( function (){
+    bowling.roll(5);
+    afteroll();
+  })
+
+  $('.pin6').click( function (){
+    bowling.roll(6);
+    afteroll();
+  })
+
+  $('.pin7').click( function (){
+    bowling.roll(7);
+    afteroll();
+  })
+
+  $('.pin8').click( function (){
+    bowling.roll(8);
+    afteroll();
+  })
+
+  $('.pin9').click( function(){
+    bowling.roll(9):
+    afteroll();
+  })
+
+  $('.pin10').click( function(){
+    bowling.roll(10);
+    afteroll;
+  })
 
 
 })

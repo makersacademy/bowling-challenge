@@ -3,10 +3,12 @@ $(document).ready(function (){
 
   $( '#bowlingBall' ).click(function() {
     console.log(game);
-    var pins =  parseInt(document.getElementById('pins').value);
-    game.rollBall(pins);
+    var rollScore =  parseInt(document.getElementById('rollScore').value);
+    rollCheck(game, rollScore);
 
-  {$('.roll_scored').text('You rolled a: ' + pins);}
+    game.rollBall(rollScore);
+
+  {$('.roll_scored').text('You rolled a: ' + rollScore);}
 
   printScores(game);
   });
@@ -21,4 +23,14 @@ var printScores = function(game) {
     {$('#marker' + (frameIndex)).text(game.scoreCalculator.frameScores[frameIndex]);}
   }
   {$('#totalScore').text(game.scoreCalculator.totalScore);}
+};
+
+var rollCheck = function(game, rollScore) {
+  if (game.gameOver) alert('Game is over!');
+  else if (game._isNotLegalInput(rollScore)) alert('Roll value is not legal, input a value from 0 to 10');
+  else if (game._isSecondRollOfFrame() && !game._isTenthFrame()) {
+    var currentFrame = (game.allFrames[game._currentFrameNumber()]);
+    var firstRollCurrentFrame = game.scoreCalculator.firstRollScore(currentFrame);
+    if ((firstRollCurrentFrame + rollScore) > 10) alert('Roll count over the two roles in this frame is too high, input a legal value');
+  }
 };

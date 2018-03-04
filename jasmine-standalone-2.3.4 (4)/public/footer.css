@@ -1,0 +1,28 @@
+.footer {
+  background-color: #aed5d9;
+  width: 100%;
+  height: 2em;
+  display: inline-block;
+  margin: auto;
+  margin-bottom: 0.2em;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow:hidden;
+}
+p6 {
+  font-family: Work Sans;
+  display: block;
+  font-size: 1em;
+  text-align: center;
+  color: #ed4630e6;
+  margin-top: 0.3em;
+}
+
+a:hover {
+  text-decoration: overline;
+}
+
+a {
+  text-decoration: none;
+}

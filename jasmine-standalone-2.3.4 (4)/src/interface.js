@@ -21,13 +21,23 @@ $( document ).ready(function() {
 
   function roll(number) {
     player.roll(number);
-    $('.messages').text('You rolled ' + number)
-    $('.table').find('div:empty:first').append(number);
+    $('.table').find('div:empty:first').append("<div class='numeric'>" + number + "</div>");
     if (player.currentGame._valueOfPair(player.currentGame._numberOfPairs()-1) === undefined ) {
-      $('.table').find('div:empty:first').append("X");
+      $('.table').find('div:empty:first').append("<div class='numeric'>X</div>");
     }
     $('.score').text(player.displayBasicScore());
+    showMessage(number)
     showHideButtons();
+  }
+
+  function showMessage(number) {
+    if (player.currentGame._lastPairValue() === undefined ) {
+      $('.messages').text('You rolled ' + number + '! It\'s a strike!');
+    } else if (player.currentGame.frames.length > 1 && player.currentGame._lastPairValue() + player.currentGame._secondLastPairValue() === 10 ) {
+      $('.messages').text('Congratulations! It\'s a spare!');
+    } else {
+      $('.messages').text('You rolled ' + number);
+    }
   }
 
   function showHideButtons() {
@@ -41,6 +51,10 @@ $( document ).ready(function() {
       }
     }
   }
+
+  $('.about').click(function() {
+    alert("This app allows you to calculate a score of a classic 10-pins bowling game based upon your input.\n\n   * Click --New game-- to start counting;\n   * Click --Count final score-- to get the final result.\n\nThe basic score (ie. the number of pins knocked down) will be refreshed automatically each time you enter the number.\n\nMind the fact that the final score (basic score + bonuses for strikes and spares) will be available once the game is finished.\n\n ************************\n\nCopyright\n   * The whole code was written by me.\n   * The illustration in the header was been released on a CC licence by Mohamed Hassan\n\n************************\n\nErrors\nIf you find any errors on this website, please do not hesitate to contact me on Github - contact details in the footer.")
+  });
 
   $('.new_game').click(function() {
     $( ".score" ).empty();

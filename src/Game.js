@@ -1,14 +1,20 @@
 function Game(){
-  this.frames = []
+  this.frames = [];
 };
 
-Game.prototype.addFrame = function(frame){
+Game.prototype._addFrame = function(frame){
   this.frames.push(frame)
 };
 
 Game.prototype.roll = function(roll_one, roll_two){
-  frame = new Frame();
-  frame.roll_one = roll_one;
-  frame.roll_two = roll_two;
-  this.addFrame(frame)
-}
+  frame = new Frame(roll_one, roll_two);
+  this._addFrame(frame)
+};
+
+Game.prototype.calculateScore = function(){
+  var score = 0
+  this.frames.forEach( function(frame){
+    score += frame.score
+  })
+  return score
+};

@@ -38,7 +38,7 @@ ScoreCalculator.prototype.calculateSingleStrikeScore = function() {
   for( var frameIndex = 1, len = this.allFrames.length; frameIndex < len; frameIndex++) {
     this.declareVariablesPreviousFrame(frameIndex);
     if (this.previousFirstRollScore === 10 && this.currentFirstRollScore !== 10) {
-        this.frameScores[frameIndex - 1] += (this.frameScore(this.currentFrame));
+      this.addSingleStrikeScore(frameIndex);
     }
     else if (this.previousFirstRollScore === 10 && frameIndex === 9) {
         this.frameScores[frameIndex - 1] += (this.frameScore(this.currentFrame));
@@ -76,6 +76,15 @@ ScoreCalculator.prototype.calculateTotalScoreFromFrames = function() {
   this.totalScore = this.frameScores.reduce(add, 0);
   function add(a, b) {
       return a + b;
+  }
+};
+
+ScoreCalculator.prototype.addSingleStrikeScore = function(frameIndex) {
+  if (this.currentFrame.length === 2) {
+    this.frameScores[frameIndex - 1] += (this.frameScore(this.currentFrame));
+  }
+  else {
+    this.frameScores[frameIndex - 1] += (this.firstRollScore(this.currentFrame));
   }
 };
 

@@ -5,14 +5,15 @@ $(document).ready(function (){
     var rollScore =  parseInt(document.getElementById('rollScore').value);
     rollCheck(game, rollScore);
     game.rollBall(rollScore);
+    console.log(game);
     {$('.roll_scored').text('You rolled a: ' + rollScore);}
-    strikeAnimation(game, rollScore);
+    isStrikeAnimation(game, rollScore);
     printScores(game);
     if (game.gameOver) {$('.gameOver').show();}
   });
 });
 
-var strikeAnimation = function(game, rollScore) {
+var isStrikeAnimation = function(game, rollScore) {
   if (game.isStrike(rollScore)) {
     $(".strike").show();
     setTimeout(function() { $(".strike").hide(); }, 2000);

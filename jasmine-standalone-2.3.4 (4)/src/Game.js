@@ -61,7 +61,7 @@ Game.prototype.basicScore = function() {
 Game.prototype.spares = function() {
   var spares = 0;
   for (i = 0; i < 17; i += 2) {
-    if (this.isNotStrike(this.pairs[i])) {
+    if (!this.isStrike(this._valueOfPair(i))) { // if strike - cannot be spare
       if (this._valueOfPair(i) + this._valueOfPair(i + 1) === 10) {
         spares += this._valueOfPair(i + 2);
       }
@@ -75,7 +75,7 @@ Game.prototype.spares = function() {
 
 Game.prototype.strikes = function() {
   var strikes = 0;
-  for (i = 0; i <= 14; i++) {
+  for (i = 0; i <= 14; i += 2) {
     if (this._valueOfPair(i) === 10) {
       if (this._valueOfPair(i + 2) !== 10) {
         strikes += this._valueOfPair(i + 2);
@@ -105,8 +105,8 @@ Game.prototype.generalScore = function() {
   return whole
 }
 
-Game.prototype.isNotStrike = function(object) {
-  if (Object.values(object)[0] !== 10) {
+Game.prototype.isStrike = function(number) {
+  if ((this.frames.length %2 !== 0) && number === 10) {
     return true;
   } else {
     return false;

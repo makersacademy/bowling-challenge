@@ -216,4 +216,28 @@ describe("Game", function() {
 
   });
 
+  describe("0-10 spare", function() {
+
+    it("calculates 0-10 spare", function() {
+      player.roll(0);
+      player.roll(10); //
+      player.roll(5);
+      player.roll(3); //
+      player.roll(4);
+      player.roll(5); //
+      player.roll(5);
+      player.roll(5); //
+      player.roll(10); //
+      player.roll(0);
+      player.roll(1); //
+      player.roll(7);
+      player.roll(3); //
+      player.roll(6);
+      player.roll(4); //
+      player.roll(10); //
+      player.roll(3);
+      player.roll(3); //
+      expect(game.generalScore()).toEqual(122);
+    });
+  });
 });

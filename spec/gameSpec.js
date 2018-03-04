@@ -72,4 +72,16 @@ describe('Game', function() {
       expect(game.spareTracker(game.frameOne)).toBe(true);
     });
   });
+
+  describe('.createNewFrame', function() {
+    it('creates a new bowlingFrame to replace the old one', function() {
+      game.createNewFrame();
+      expect(game.frameTwo).toEqual(jasmine.any(BowlingFrame));
+    });
+
+    it('changes currentFrame to the newly created frame', function() {
+      game.createNewFrame();
+      expect(game.currentFrame).toEqual(game.frameTwo);
+    });
+  });
 });

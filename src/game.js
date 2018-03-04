@@ -4,6 +4,7 @@ var Game = function(
 ) {
   this.frameOne = frameOne;
   this.scoreboard = scoreboard;
+  this.currentFrame = this.frameOne;
 };
 
 Game.prototype = {
@@ -33,5 +34,10 @@ Game.prototype = {
       return true;
     }
     return false;
+  },
+
+  createNewFrame: function() {
+    this.frameTwo = new BowlingFrame();
+    this.currentFrame = this.frameTwo;
   }
 };

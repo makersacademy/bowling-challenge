@@ -8,20 +8,22 @@ $(document).ready(function() {
   });
 
   $('#bowl-button').click(function() {
-    if (game.frameOne.rollNumber === 2) {
-      var $score = game.bowl(game.frameOne);
+    if (game.currentFrame.rollNumber === 2) {
+      var $score = game.bowl(game.currentFrame);
       $('#scoreboard').append(
         `<tr id="${frameNumber}"><td>${frameNumber}</td><td>${
-          game.frameOne.rollNumber
+          game.currentFrame.rollNumber
         }</td><td>${$score}</td><td>${game.scoreboard.score(
-          game.frameOne
+          game.currentFrame
         )}</td></tr>`
       );
+      frameNumber += 1;
+      game.createNewFrame();
     } else {
       console.log('first');
-      var $score = game.bowl(game.frameOne);
+      var $score = game.bowl(game.currentFrame);
       $('#scoreboard').append(
-        `<tr id="${frameNumber}"><td>${frameNumber}</td><td>${game.frameOne
+        `<tr id="${frameNumber}"><td>${frameNumber}</td><td>${game.currentFrame
           .rollNumber - 1}</td><td>${$score}</td></tr>`
       );
     }

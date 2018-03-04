@@ -3,7 +3,7 @@ $(document).ready(function(){
   updateResult();
 
   function updateResult() {
-    $('#score').text(game.result);
+    $('#score').text(game.currentScore);
   };
 
   $('#one').click(function() {

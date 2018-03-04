@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-##Analysis of Approach
+## Analysis of Approach
 
 In order to undertand the logic of the scoring in bowling, I spent time researching how other's had solved bowling kata. After deconstructing their methods, I started from scratch, using TDD to drive the development of the game. 
 However, I ran into issues as my logic seems to only work with a "complete game". This led to problems with my user interface, as clicking the button to knock pins down "didn't do anything" (it may or may not have added the pins to the rolls array, but as I wanted to update the score each time I rolled, it ended the game. Since there was only one number in the array, the score was not updated as it needed at least two rolls to return the result.)
@@ -12,7 +12,7 @@ I have chosen to submit a pull request with both solutions, "game.js" includes t
 
 Having spoken with other members of my cohort, many of them have used a "frame" class, which given more time and a chance to discuss ideas with a coach, I may have employed too.  I think I could have eventually solved my problems without a frame class, but I can see the benefit of employing the single responsibity principle even in small applications as good practice for the future. 
 
-##Questions
+## Questions
 
 How to approach a challenge when the logic seems baffling - there are certain elements in this challenge that I simply couldn't have solved without looking at the solutions of others and breaking it down first. During this course, we are "learning to learn" and breaking down correct answers into easily understandable chunks before applying them is a vital learning tool. However, this is not always going to be available, its just by chance that bowling kata are so well documented. 
 

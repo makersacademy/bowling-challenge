@@ -74,8 +74,7 @@ $(document).ready(() => {
         $('.final-score').html(`${game.totalScore}`);
 
         if (game.totalScore === 0) {
-          $('.score-img').prepend('<img src="./public/img/gutter_game.png">');
-          $('.score-img').html('You got a gutter game, you need to practise more!');
+          $('.gutter-game').removeClass('hidden');
         }
       } else if (count === 3) {
         $(pins).addClass('hidden');
@@ -89,8 +88,7 @@ $(document).ready(() => {
         $('.final-score').html(`${game.totalScore}`);
 
         if (game.totalScore === 300) {
-          $('.score-img').prepend('<img src="./public/img/bowling_trophy.jpg">');
-          $('.score-img').html('Congratulations! You got a perfect game!');
+          $('.perfect-game').removeClass('hidden');
         }
         count = 0;
       } else if (id === 10) {

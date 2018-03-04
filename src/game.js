@@ -1,18 +1,23 @@
 'use strict';
 
-var Game = function() {};
+var frame;
+
+var Game = function() {
+  frame = new Frame();
+};
+
 
 Game.prototype = {
 
   bonusChecker(frames) {
     var l = frames.length;
     var [antepenult, penult, ult] = [frames[l - 3], frames[l - 2], frames[l -1]];
-    if (l > 2 && this.isStrike(antepenult) && !this.hasBonus(antepenult) && this.isStrike(penult)) {
+    if (l > 2 && this.frame.isStrike(antepenult) && !this.frame.hasBonus(antepenult) && this.frame.isStrike(penult)) {
       antepenult.push(ult[0]);
       ult[1] ? penult.push(ult[0], ult[1]) : penult.push(ult[0]);
-    } else if (l > 1 && this.isStrike(penult) && !this.hasBonus(ult)) {
+    } else if (l > 1 && this.frame.isStrike(penult) && !this.frame.hasBonus(ult)) {
       ult[1] && ult[1] !== 10 ? penult.push(ult[0], ult[1]) : penult.push(ult[0]);
-    } else if (l > 1 && !this.hasBonus(penult) && this.isSpare(penult)) {
+    } else if (l > 1 && !this.frame.hasBonus(penult) && this.frame.isSpare(penult)) {
       penult.push(ult[0]);
     }
     return frames;
@@ -53,20 +58,4 @@ Game.prototype = {
     }
     return count;
   },
-
-  isStrike(frame) {
-    return frame[0] === 10 ? true : false;
-  },
-
-  isSpare(frame) {
-    return frame[0] + frame[1] === 10 ? true : false;
-  },
-
-  hasBonus(frame) {
-    return frame.length === 3;
-  },
-
-  remainingPins(frame) {
-    return !frame[1] && frame[0] < 10 ? 10 - frame[0] : 10;
-  }
 }

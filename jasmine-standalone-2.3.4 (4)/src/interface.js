@@ -82,11 +82,14 @@ $( document ).ready(function() {
     player.roll(10);
     $('.messages').text('You rolled 10')
     $('.table').find('div:empty:first').append(10);
-    // if ... frames mniej niz...
-    $('.table').find('div:empty:first').append("X");
-    // ...
+    if (player.currentGame._numberOfPairs() < 19) {
+      $('.table').find('div:empty:first').append("X");
+    }
     $('.score').text(player.displayBasicScore());
   });
+
+  // if !(game.isInProgress)
+  // $('.final_score2').text(player.score);
 
   $('.count_final_score').click(function() {
     player.countScore()

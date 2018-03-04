@@ -20,4 +20,10 @@ describe('Frame', function () {
       expect(spareFrame.isSpare()).toEqual(true);
     });
   });
+
+  describe('frameScore', function() {
+    it('returns the correct amount for strikes', function() {
+      expect(strikeFrame.frameScore).toEqual(10);
+    });
+  });
 });

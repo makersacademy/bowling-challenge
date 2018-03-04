@@ -20,4 +20,5 @@ var printScores = function(game) {
     }
     {$('#marker' + (frameIndex)).text(game.scoreCalculator.frameScores[frameIndex]);}
   }
+  {$('#totalScore').text(game.scoreCalculator.totalScore);}
 };

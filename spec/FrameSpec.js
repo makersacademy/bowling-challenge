@@ -6,6 +6,8 @@ describe('Frame', function() {
     frame = new Frame();
   });
 
+
+
   describe("roll", function() {
     it("Records the number of pins knocked down", function() {
       frame.roll(6);
@@ -21,14 +23,14 @@ describe('Frame', function() {
       expect(frame.score()).toEqual(5);
     });
   });
-
+  //
   describe("strike", function() {
     it("returns strike when 10 pins are knocked down on first roll", function() {
       frame.roll(10);
       expect(frame.strike()).toBeTruthy();
     });
   });
-
+  //
   describe("spare", function() {
     it("returns spare when 10 pins are knocked down by first and second rolls", function() {
       frame.roll(5);
@@ -36,6 +38,22 @@ describe('Frame', function() {
       expect(frame.spare()).toBeTruthy();
     });
   });
+
+  describe("strike score", function() {
+    it("strike plus next frame results equal 24", function() {
+      frame.roll(10);
+      frame.roll(4);
+      frame.roll(3);
+      rollMany(0, 16);
+      expect(frame.strikeScore()).toEqual(24);
+    });
+  });
+
+  var rollMany = function(pins, rolls){
+    for (var i = 0; i < rolls; i++) {
+      frame.roll(pins);
+    }
+  };
 
 
 

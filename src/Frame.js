@@ -1,6 +1,7 @@
 function Frame() {
 
   this.rolls = []
+  var index = 0;
 
 };
 
@@ -10,24 +11,32 @@ Frame.prototype = {
     this.rolls.push(pins);
   },
 
-  firstRoll: function() {
-    return this.rolls[0];
-  },
+  // firstRoll: function() {
+  //   return this.rolls[0];
+  // },
+  //
+  // secondRoll: function() {
+  //   return this.rolls[1];
+  // },
 
-  secondRoll: function() {
-    return this.rolls[1];
-  },
 
   score: function() {
-    return (this.firstRoll() + this.secondRoll());
+    var index = 0;
+    return this.rolls[index] + this.rolls[index + 1];
   },
 
   strike: function() {
-    return this.firstRoll() === 10;
+    var index = 0;
+    return this.rolls[index] === 10;
   },
 
   spare: function() {
     return (this.score() === 10) && (!this.strike());
+  },
+
+  strikeScore: function() {
+    var index = 0;
+    return (this.rolls[index] + this.rolls[index + 1] + this.rolls[index + 2]);
   },
 
 };

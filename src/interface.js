@@ -1,6 +1,5 @@
 $(document).ready(function() {
   var game = new Game();
-  var frame = new Frame();
   var calculator = new GameCalculator();
   var frameCount = 0;
   var frames = [];
@@ -25,9 +24,9 @@ $(document).ready(function() {
 
     if (frameCount < 9) {
       game.addRollToFrame(frames, frameCount, roll);
-      if (frame.isStrike(frames[frameCount])) {
+      if (game.isStrike(frames[frameCount])) {
         $(`#f${frameCount + 1} > .inner2`).text('X');
-      } else if (frame.isSpare(frames[frameCount])) {
+      } else if (game.isSpare(frames[frameCount])) {
         $(`#f${frameCount + 1} > .inner1`).text(frames[frameCount][0]);
         $(`#f${frameCount + 1} > .inner2`).text('/');
       } else {
@@ -43,7 +42,7 @@ $(document).ready(function() {
         } else {
           $(`#f${frameCount + 1} > #f10-inner${i + 1}`).text(frames[frameCount][i]);
         }
-        if (frame.isSpare(frames[frameCount])) {
+        if (game.isSpare(frames[frameCount])) {
           $(`#f${frameCount + 1} > #f10-inner2`).text('/');
         }
       }
@@ -55,8 +54,9 @@ $(document).ready(function() {
       console.log(frameCount);
     }
 
+
     if (frames[frameCount]) {
-      remainingPins = frame.remainingPins(frames[frameCount]);
+      remainingPins = game.remainingPins(frames[frameCount]);
     } else {
       remainingPins = 10;
     }
@@ -64,6 +64,10 @@ $(document).ready(function() {
     for (var i = 10; i > 0; i--) {
       $(`#roll${i}`).removeClass('hide');
       $(`#roll${i+remainingPins}`).addClass('hide');
+    }
+
+    if (frameCount === 10) {
+      $('.roll-score').addClass('hide');
     }
 
     if (frameCount === 10) {

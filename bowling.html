@@ -3,12 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>Bowling App</title>
-
+    <script type="text/javascript" src="src/game.js"></script>
+    <script type="text/javascript" src="src/gameArrayCalculator.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Satisfy|Courgette"
+      rel="stylesheet">
     <link rel="stylesheet" href="css/bowling.css">
   </head>
   <body>
     <div class="cover">
-      <h1>Either enter a full game (scores separated by commas)</h1>
+      <h1>Either enter a full game of scores separated by commas</h1>
       <input id="full-game" type="text" placeholder="e.g. 9, 1, 5, 2...">
       <button type="button" id="score">Calculate score</button>
       <h1 id="final-score"></h1>
@@ -107,7 +110,7 @@
 
     <script type="text/javascript" src="lib/jquery-3.3.1.min.js">
     </script>
-    <script type="text/javascript" src="src/frame.js"></script>
+
 
     <script type="text/javascript" src="src/game.js"></script>
     <script type="text/javascript" src="src/gameArrayCalculator.js"></script>

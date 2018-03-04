@@ -1,24 +1,29 @@
 'use strict';
 
-var frame;
+const STRIKE = 10,
+      SPARE = 10,
+      ALL_PINS = 10,
+      MAX_ROLLS = 3,
+      MAX_FRAMES = 10;
+var   roll1 = 0,
+      roll2 = 1;
 
-var Game = function() {
-  frame = new Frame();
-};
 
+var Game = function() {};
 
 Game.prototype = {
 
   bonusChecker(frames) {
     var l = frames.length;
     var [antepenult, penult, ult] = [frames[l - 3], frames[l - 2], frames[l -1]];
-    if (l > 2 && this.frame.isStrike(antepenult) && !this.frame.hasBonus(antepenult) && this.frame.isStrike(penult)) {
-      antepenult.push(ult[0]);
-      ult[1] ? penult.push(ult[0], ult[1]) : penult.push(ult[0]);
-    } else if (l > 1 && this.frame.isStrike(penult) && !this.frame.hasBonus(ult)) {
-      ult[1] && ult[1] !== 10 ? penult.push(ult[0], ult[1]) : penult.push(ult[0]);
-    } else if (l > 1 && !this.frame.hasBonus(penult) && this.frame.isSpare(penult)) {
-      penult.push(ult[0]);
+    if (l > 2 && this.isStrike(antepenult) && !this.hasBonus(antepenult) && this.isStrike(penult)) {
+      antepenult.push(ult[roll1]);
+      ult[roll2] ? penult.push(ult[roll1], ult[roll2]) : penult.push(ult[roll1]);
+    } else if (l > 1 && this.isStrike(penult) && !this.hasBonus(ult)) {
+      ult[roll2] && ult[roll2] !== 10 ?
+      penult.push(ult[roll1], ult[rol2]) : penult.push(ult[roll1]);
+    } else if (l > 1 && !this.hasBonus(penult) && this.isSpare(penult)) {
+      penult.push(ult[roll1]);
     }
     return frames;
   },
@@ -34,18 +39,18 @@ Game.prototype = {
   },
 
   addRollToFrame(frames, count, roll) {
-    if (count < 9 && !frames[count]) {
+    if (frames.length < MAX_FRAMES && !frames[count]) {
       frames[count] = [roll];
-    } else if (count < 9) {
+    } else if (frames.length < MAX_FRAMES) {
       frames[count].push(roll);
-    } else if (count === 9) {
+    } else {
       frames[count] ? frames[count].push(roll) : frames[count] = [roll];
     }
     return frames;
   },
 
   completeFrameCheck(frames, count) {
-    if (frames[count][0] === 10 || frames[count].length === 2) {
+    if (frames[count][roll1] === STRIKE || frames[count].length === 2) {
       frames = this.bonusChecker(frames);
       count ++;
     }
@@ -53,9 +58,27 @@ Game.prototype = {
   },
 
   frameTenCheck(frames, count) {
-    if (frames[count].length === 3 || frames[count][0] + frames[count][1] < 10) {
+    if (frames[count].length === MAX_ROLLS
+      || frames[count][roll1] + frames[count][roll2] < SPARE) {
     count ++;
     }
     return count;
   },
+
+  isStrike(frame) {
+    return frame[roll1] === STRIKE ? true : false;
+  },
+
+  isSpare(frame) {
+    return frame[roll1] + frame[roll2] === SPARE ? true : false;
+  },
+
+  hasBonus(frame) {
+    return frame.length === MAX_ROLLS;
+  },
+
+  remainingPins(frame) {
+    return !frame[roll2] && frame[roll1] < STRIKE ?
+      ALL_PINS - frame[roll1] : ALL_PINS;
+  }
 }

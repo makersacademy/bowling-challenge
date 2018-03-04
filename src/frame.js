@@ -1,11 +1,6 @@
 'use strict';
 
-const STRIKE = 10;
-const SPARE = 10;
-const ALL_PINS = 10;
-const MAX_ROLLS = 3;
-const roll1 = 0;
-const roll2 = 1;
+
 
 var Frame = function() {
 

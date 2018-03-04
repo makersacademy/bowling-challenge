@@ -5,13 +5,16 @@ $(document).ready(function (){
     var rollScore =  parseInt(document.getElementById('rollScore').value);
     rollCheck(game, rollScore);
     game.rollBall(rollScore);
-    console.log(game);
     {$('.roll_scored').text('You rolled a: ' + rollScore);}
     isStrikeAnimation(game, rollScore);
     printScores(game);
-    if (game.gameOver) {$('.gameOver').show();}
+    gameOverCheck(game);
   });
 });
+
+var gameOverCheck = function(game) {
+  if (game.gameOver) {$('.gameOver').show();}
+};
 
 var isStrikeAnimation = function(game, rollScore) {
   if (game.isStrike(rollScore)) {
@@ -20,7 +23,7 @@ var isStrikeAnimation = function(game, rollScore) {
     $(".strike2").show();
     setTimeout(function() { $(".strike2").hide(); }, 5000);
   }
-}
+};
 
 var printScores = function(game) {
   for( var frameIndex = 0, len = game.allFrames.length; frameIndex < len; frameIndex++) {

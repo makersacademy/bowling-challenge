@@ -1,13 +1,28 @@
 $(document).ready(function (){
-
   var game = new Game();
 
-  // if (game.rollCount === 1)
-    {$('#frame1_roll1').text(game.rollCount);}
-
   $( '#bowlingBall' ).click(function() {
-    game.rollBall(5);
+    console.log(game);
+    var pins =  parseInt(document.getElementById('pins').value);
+    game.rollBall(pins);
+
+  {$('.roll_scored').text('You rolled a: ' + pins);}
+
+  for( var frameIndex = 0, len = game.allFrames.length; frameIndex < len; frameIndex++) {
+    var currentFrame = game.allFrames[frameIndex];
+    for( var rollNumber = 1, rollLen = (currentFrame.length + 1); rollNumber < rollLen; rollNumber++) {
+      {$('#frame' + (frameIndex + 1) +'_roll'+ rollNumber).text(game.rollCount);}
+    }
+  }
+
+  // if (game.rollCount === 2)
+  //   {$('#frame1_roll'+ '1').text(game.rollCount);}
   });
+
+//   $( '#temperature-up' ).click(function() {
+//   thermostat.upTempOne();
+//   $('#12345').text("Current temperature is: " + thermostat.temperature);
+// });
 
 });
 

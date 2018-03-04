@@ -6,8 +6,8 @@
 <script src="../jquery.js"></script>
 <link rel="stylesheet" href="../public/index.css">
 <script src="../src/game.js"></script>
-<script src="../src/interface.js"></script>
 <script src="../src/scoreCalculator.js"></script>
+<script src="../src/interface.js"></script>
   </head>
   <body>
     <header>
@@ -26,7 +26,7 @@
       <th colspan='6'>Frame 7</th>
       <th colspan='6'>Frame 8</th>
       <th colspan='6'>Frame 9</th>
-      <th colspan='6'>Frame 10</th>
+      <th colspan='8'>Frame 10</th>
     </tr>
     <tr>
       <td colspan='2'></td><td id="frame1_roll1"colspan='2'></td><td id="frame1_roll2"colspan='2'></td>
@@ -38,7 +38,8 @@
       <td colspan='2'></td><td id="frame7_roll1" colspan='2'></td><td id="frame7_roll2" colspan='2'></td>
       <td colspan='2'></td><td id="frame8_roll1" colspan='2'></td><td id="frame8_roll2" colspan='2'></td>
       <td colspan='2'></td><td id="frame9_roll1" colspan='2'></td><td id="frame9_roll2" colspan='2'></td>
-      <td colspan='2'></td><td id="frame10_roll1" colspan='2'></td><td id="frame10_roll2" colspan='2'></td>
+      <td colspan='2'></td><td id="frame10_roll1" colspan='2'></td><td id="frame10_roll2" colspan='2'></td><td id="frame10_roll3" colspan='2'></td>
+
     </tr>
     <tr>
       <td colspan='6'id="marker0"></td>
@@ -54,10 +55,18 @@
     </tr>
   </table>
 </div>
+<div class="record_roll">
+<label id='record_text' for="name">Record your roll score:</label>
+<input type="number" id="pins" name="user_name" min="0" max="10">
+<input type="image" id='bowlingBall' src="../public/cartoon-bowling-5.gif" />
+</div>
+
+    <div class="roll_scored">
+      
+    </div>
+
+
     <form class="record_roll" >
-      <label id='record_text' for="name">Record your roll score:</label>
-      <input type="number" id="pins" name="user_name" min="0" max="10">
-      <input type="image" id='bowlingBall' src="../public/cartoon-bowling-5.gif" />
     </form>
   </body>
 </html>

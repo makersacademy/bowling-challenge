@@ -24,11 +24,20 @@ Game.prototype.rollCheck = function(rollScore) {
   if (this.gameOver) throw 'Game is over!';
   else if (this._isNotLegalInput(rollScore)) throw 'Roll value is not legal, input a value from 0 to 10';
   else if (this._isSecondRollOfFrame() && !this._isTenthFrame()) {
-    var currentFrame = (this.allFrames[(this.allFrames.length)-1]);
+    var currentFrame = (this.allFrames[this._currentFrameNumber()]);
     var firstRollCurrentFrame = this.scoreCalculator.firstRollScore(currentFrame);
     if ((firstRollCurrentFrame + rollScore) > 10) throw 'Roll count over the two roles in this frame is too high, input a legal value';
   }
 };
+
+Game.prototype._currentFrameNumber = function() {
+  return ((this.allFrames.length)-1);
+};
+
+// Game.prototype._currentRoll = function() {
+//   if (this._isSecondRollOfFrame()) {return 2;}
+//   else {return 1;}
+// };
 
 Game.prototype._isNotLegalInput = function(rollScore) {
   return ($.inArray(rollScore, this.legalScores) === -1);
@@ -63,7 +72,7 @@ Game.prototype._addFirstRollOfFrame = function(rollScore) {
 };
 
 Game.prototype._addSecondRollOfFrame = function(rollScore) {
-  this.allFrames[(this.allFrames.length)-1].push(rollScore);
+  this.allFrames[this._currentFrameNumber()].push(rollScore);
 };
 
 Game.prototype._tenthFrame = function(rollScore) {

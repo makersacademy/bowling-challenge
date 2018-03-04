@@ -13,17 +13,19 @@ header {
     text-align: center;
 }
 
-.record_roll {
+.record_roll, .roll_scored {
   height: 100px;
   text-align: center;
+  font-weight: bold;
 }
 
-input#bowlingBall{
+#bowlingBall{
+  background-image: url(../public/cartoon-bowling-5.gif);
   height: 50px;
   width: 50px;
 }
 
-input#bowlingBall:hover{
+#bowlingBall:hover{
     box-shadow: 0px 0px 150px #000000;
     z-index: 2;
     -webkit-transition: all 200ms ease-in;

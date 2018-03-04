@@ -9,19 +9,21 @@ $(document).ready(() => {
   $('.begin button').click(function jQuery() {
     $(this).parent().addClass('hidden');
     $('.game').removeClass('hidden');
+    $(next).addClass('hidden');
   });
 
   for (i; i <= 10; i++) {
     if (i === 0) {
       pins.append($(`<span data-id="${i}" class="pin-button">0</span>`));
     } else {
-      pins.append($(`<span data-id="${i}" class="pin-button flaticon-bowling-pin"></span>`));
+      pins.append($(`<span data-id="${i}" class="pin-button flaticon-bowling-pin" title="${i}"></span>`));
     }
   }
 
   let count = 0;
   $('.pin-button').click(function jQuery() {
     count += 1;
+    let i = 0;
 
     const id = $(this).data('id');
 

@@ -1,9 +1,13 @@
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+html { 
+  background: url(../img/transparent-bowling-pins.svg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-.hidden {
-    display: none;
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .begin {
@@ -11,7 +15,7 @@ body {
     border: none;
 }
 
-article {
+.game {
     margin: 0px 60px 0px 60px;
     display: flex;
     /* justify-content: space-around; */
@@ -19,32 +23,31 @@ article {
     flex-wrap: wrap;
 }
 
-article, section {
-    flex-direction: row;
-    height: 250px;
-    /* border-style: solid;
-    border-color: black; */
-    padding: 15px;
+.frames {
+    width: 100%;
 }
 
 .pins {
     flex-direction: row;
-    justify-content: center;
+    align-items: center;
     margin-top: 10px;
+    width: 100%;
+    text-align: center;
 }
 
 .pins .pin-button:hover {
     cursor: pointer;
+    color: red;
 }
 
 .pins .pin-button:before {
     font-size: 2em;
 }
 
-.frames {
-    width: 100%;
+.next-frame {
+    margin-top: 50px;
 }
 
-.frame-box h4 {
-    margin-top: 0px;
+.hidden {
+    display: none;
 }

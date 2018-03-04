@@ -5,15 +5,13 @@ var BowlingFrame = function() {
   this.rollNumber = 1;
 };
 
-BowlingFrame.prototype.firstRoll = function() {
-  var roll = Math.floor(Math.random() * 11);
+BowlingFrame.prototype.firstRoll = function(number) {
   this.rollNumber += 1;
-  return (this.firstRollScore = roll);
+  return (this.firstRollScore = number);
 };
 
-BowlingFrame.prototype.secondRoll = function() {
-  var roll = Math.floor(Math.random() * (11 - this.firstRollScore));
-  return (this.secondRollScore = roll);
+BowlingFrame.prototype.secondRoll = function(number) {
+  return (this.secondRollScore = number);
 };
 
 BowlingFrame.prototype.total = function() {

@@ -1,7 +1,6 @@
 var Game = function() {
   this.scoreCard = [];
-  this.frame = [];
-  this.result = 0;
+  this.result = 0
 };
 
 Game.prototype = {
@@ -12,18 +11,40 @@ Game.prototype = {
 
   score: function() {
     var rollNumber = 0;
-    // Iterate through 10 frames and add one to frame number
     for (var frameNumber = 0; frameNumber < 10; frameNumber++){
-      // If 10 points scored in roll 1 + roll 2 (a spare), the score is going to be 10 + the result of the first roll of the next frame
-      if (this.scoreCard[rollNumber] + this.scoreCard[rollNumber +1] === 10) {
-        this.result += this.scoreCard[rollNumber] + this.scoreCard[rollNumber +1] + this.scoreCard[rollNumber +2];
-      // If the result of roll 1 + 2 is less than 10, then simply add the two together
+      if (isAStrike()){
+        this.result += calculateSpareAndStrikeScore();
+        rollNumber ++; 
+        console.log(this.result)
+      } else if (isASpare()) {
+        this.result += calculateSpareAndStrikeScore();
+        rollNumber += 2;
       } else {
-      this.result += this.scoreCard[rollNumber] + this.scoreCard[rollNumber +1];
+        this.result += calculateNormalScore();
+        rollNumber += 2;
+        }
+      }
+    return this.result;  
+    
+    function isASpare() {
+      return (game.scoreCard[rollNumber] + game.scoreCard[rollNumber +1] === 10);
     }
-    rollNumber += 2;
-  }
-  return this.result;  
-}
+
+    function isAStrike() {
+      return (game.scoreCard[rollNumber] === 10);
+    }
+
+    function calculateSpareAndStrikeScore() {
+      return game.scoreCard[rollNumber] + game.scoreCard[rollNumber +1] + game.scoreCard[rollNumber +2];
+    }
+
+    function calculateNormalScore() {
+      return game.scoreCard[rollNumber] + game.scoreCard[rollNumber +1];
+    }
+  },
 };
+
+
+
+
 

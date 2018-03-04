@@ -15,7 +15,6 @@ describe("game", function() {
   });
 
   describe("calculates score for", function(){
-
     it( "a gutter game", function() {
         rollMany(0, 20);
       expect(game.score()).toEqual(0); 
@@ -34,12 +33,30 @@ describe("game", function() {
       expect(game.score()).toEqual(16);
     });
 
+    it("a strike", function(){
+      game.roll(10);
+      game.roll(1);
+      game.roll(2);
+      rollMany(0, 16);
+      expect(game.score()).toEqual(16);
+    });
+
+    it("a perfect game", function(){
+      rollMany(10,12);
+      expect(game.score()).toEqual(300); 
+    });
+
   });
 
-// helper method
+
+
+// helper 
   var rollMany = function(pins, rolls) {
     for (var i = 0; i < 20; i++) {
       game.roll(pins);
     }
-  };
+  }
+  
+  
+  ;
 });

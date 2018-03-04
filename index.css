@@ -1,0 +1,29 @@
+body {
+  font-family: Georgia;
+  text-align: center;
+  padding: 30px;
+}
+
+.frames {
+  text-align: center;
+  background-color: lightgrey;
+  width: 40px;
+  height: 40px;
+  border: 2px solid green;
+  padding: 25px;
+  margin: 25px;
+  float: left;
+  margin-right: 5px;
+}
+
+input{
+  font-size: 20px;
+  color: green;
+  margin: 5px;
+}
+
+li{
+  list-style-type: none; /*Removes bullet points*/
+  float:left; /*Moves div to next row if the window is too narrow*/
+  background:red; border:2px #000 solid; /*For demo*/
+}

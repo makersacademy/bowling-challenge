@@ -16,10 +16,21 @@ h1 {
 }
 
 h2 {
-  width: 200px;
-  height: 70px;
-  overflow: hidden;
-  border-bottom: 3px solid;
+  font-family: Orbitron;
+  font-size: 80 px;
+  padding-left: 20px;
+
+}
+
+.pin1 {
+  color: green;
+}
+
+.pinroll {
+
+  width: 300 px;
+  font-family: Orbitron;
+  color: black;
   text-align: center;
 
 }

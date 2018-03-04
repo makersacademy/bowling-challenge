@@ -21,10 +21,12 @@ Mini personal code review: My appraisal of my attempt at the weekend challenge
 * I think the real key to finding what could be a hard challenge fun and easy was thinking through my understanding of the code, diagramming extensively and most importantly sticking to the coding processes that I am refining e.g. TDD, Debugging process, algorithmic thinking, simplest step to MVP first
 * I also set up extensive tests for the back end model, which I found made it easy to refactor the code and ensure I was covering all scenarios. This was the first time I really felt myself letting the tests LEAD development
 * Taking the time to properly refactor was also essential to improving the quality of my code. I extracted a lot of logic and changed the scoring logic to be backward looking rather than forward looking, which vastly simplified my code
+* I enjoyed learning a new language in JS, a new testing framework in Jasmine, CSS, HTML and the extension jQuery in completing this exercise
+* I also spent the extra time it took to deepen my understanding of JS to answer some of the elements I got stuck on, including researching how scope and hoisting works for JS so that I could effectively refactor and extract coding logic
 
 Learnings/Things I would do better next time
 ---------
-* One of the lessons I really learned was prioritising tasks to take on the essential first. For example, I got stuck on making a button a bowling ball, but jQuery had an issue with this being in a form. If I made the button work first, then moved it to a form, I would have known it was the form causing the issue
+* One of the lessons I really learned was prioritising tasks to take on the essential functionality first, before any styling or additional features. For example, I got stuck on making a button a bowling ball, but jQuery had an issue with this being in a form. If I made the button work first, then moved it to a form, I would have known it was the form causing the issue.
 * At a couple of points I could have committed my code more often. This would have made it easier to go back and see changes if I got stuck.
 
 Elements I would like to improve in the codebase:
@@ -34,7 +36,10 @@ Elements I would like to improve in the codebase:
 
 Outstanding questions from the exercise:
 ---------
-*
+* Transcending scopes discussion: attaching data to objects and using dependancy injection (I used both here - dependency injection in the interface, attaching data to objects in the score calculator)
+* What are the implications of function expression vs declaration, other than hoisting
+* Check my understanding of hoisting, global, local and local nested scope
+* I also had a set of questions after the first weekend of completing logic that I answered, including: How to raise error messages using jQuery, checking the logical approach I had taken to take to run the game (I chose rolls that run game rather than game that runs roll), checking where I could refactor the code and how JS works with undefined errors
 
 
 Bowling Challenge

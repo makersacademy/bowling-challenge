@@ -24,5 +24,5 @@ I also could not figure out how to score strikes and spares properly, and ran ou
 
 ## Key questions
 
-How do I go about planning building this type of application? How do I break it down?
+How do I go about planning building this type of application? How do I break it down? How do I visualise it?
 How much of the logic in my jQuery could be moved back to the javascript models?

@@ -1,7 +1,11 @@
 {
+    "parserOptions": {
+      "ecmaVersion": 6
+    },
     "env": {
         "browser": true,
-        "jasmine": true
+        "jasmine": true,
+        "jquery": true
     },
     "extends": ["eslint:recommended", "plugin:jasmine/recommended"],
     "plugins": ["jasmine"],

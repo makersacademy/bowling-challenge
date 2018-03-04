@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <script type="text/javascript" src="src/frame.js"></script>
+  <script type="text/javascript" src="src/game.js"></script>
+  <script type="text/javascript" src="src/frontEnd.js"></script>
+</head>
+
+<body>
+  <div class="title-container">
+    <h1 class="title">BOWLING SCORECARD</h1>
+  </div>
+
+  <div class="button-container">
+    <table class="button-table">
+      <th colspan="10">Number of pins</th>
+      <tr>
+        <td class="button-cell">
+          <button type="button" class="roll-button" name="0">0</button>
+        </td>
+        <td class="button-cell">
+          <button type="button" class="roll-button" name="1">1</button>
+        </td>
+        <td class="button-cell">
+          <button type="button" class="roll-button" name="2">2</button>
+        </td>
+        <td class="button-cell">
+          <button type="button" class="roll-button" name="3">3</button>
+        </td>
+        <td class="button-cell">
+          <button type="button" class="roll-button" name="4">4</button>
+        </td>
+        <td class="button-cell">
+          <button type="button" class="roll-button" name="5">5</button>
+        </td>
+        <td class="button-cell">
+          <button type="button" class="roll-button" name="6">6</button>
+        </td>
+        <td class="button-cell">
+          <button type="button" class="roll-button" name="7">7</button>
+        </td>
+        <td class="button-cell">
+          <button type="button" class="roll-button" name="8">8</button>
+        </td>
+        <td class="button-cell">
+          <button type="button" class="roll-button" name="9">9</button>
+        </td>
+        <td class="button-cell">
+          <button type="button" class="roll-button" name="10">10</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <article class="scorecard-container">
+    <div class="player-name">
+    </div>
+    <div class="frame-container" id="1">
+      <div class="frame-number">
+        1
+      </div>
+      <div class="roll first-roll"></div>
+      <div class="roll second-roll"></div>
+      <div class="frame-score"></div>
+    </div>
+    <div class="frame-container" id="2">
+      <div class="frame-number">
+        2
+      </div>
+      <div class="roll first-roll"></div>
+      <div class="roll subsequent-roll second-roll"></div>
+      <div class="frame-score"></div>
+    </div>
+    <div class="frame-container" id="3">
+      <div class="frame-number">
+        3
+      </div>
+      <div class="roll first-roll"></div>
+      <div class="roll subsequent-roll second-roll"></div>
+      <div class="frame-score"></div>
+    </div>
+    <div class="frame-container" id="4">
+      <div class="frame-number">
+        4
+      </div>
+      <div class="roll first-roll"></div>
+      <div class="roll subsequent-roll second-roll"></div>
+      <div class="frame-score"></div>
+    </div>
+    <div class="frame-container" id="5">
+      <div class="frame-number">
+        5
+      </div>
+      <div class="roll first-roll"></div>
+      <div class="roll subsequent-roll second-roll"></div>
+      <div class="frame-score"></div>
+    </div>
+    <div class="frame-container" id="6">
+      <div class="frame-number">
+        6
+      </div>
+      <div class="roll first-roll"></div>
+      <div class="roll subsequent-roll second-roll"></div>
+      <div class="frame-score"></div>
+    </div>
+    <div class="frame-container" id="7">
+      <div class="frame-number">
+        7
+      </div>
+      <div class="roll first-roll"></div>
+      <div class="roll subsequent-roll second-roll"></div>
+      <div class="frame-score"></div>
+    </div>
+    <div class="frame-container" id="8">
+      <div class="frame-number">
+        8
+      </div>
+      <div class="roll first-roll"></div>
+      <div class="roll subsequent-roll second-roll"></div>
+      <div class="frame-score"></div>
+    </div>
+    <div class="frame-container" id="9">
+      <div class="frame-number">
+        9
+      </div>
+      <div class="roll first-roll"></div>
+      <div class="roll subsequent-roll second-roll"></div>
+      <div class="frame-score"></div>
+    </div>
+    <div class="frame-container final-frame" id="10">
+      <div class="frame-number final-frame-number">
+        10
+      </div>
+      <div class="roll first-roll"></div>
+      <div class="roll subsequent-roll second-roll"></div>
+      <div class="roll subsequent-roll third-roll"></div>
+      <div class="frame-score"></div>
+    </div>
+    <div class="total-score">
+
+    </div>
+  </article>
+  <form>
+    <input type="text" name="player-name-input" value="" placeholder="Player name" id="player-name"></input>
+    <button type="submit" name="start-game" id="start-game">Start Game</button>
+  </form>
+  <button type="button" name="exit-game" id="exit-game">Exit game</button>
+</body>

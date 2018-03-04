@@ -1,0 +1,103 @@
+body {
+  background-image: url(../images/bamboo-wood-flooring-texture.jpg);
+}
+
+.title-container {
+  border: 4px 3px 30px 3px;
+  border-color: black;
+  border-style: double groove;
+  padding: 10px;
+  margin: 5px 150px;
+}
+
+.title {
+  text-align: center;
+}
+
+.button-table {
+  width: 300px;
+}
+
+.button-cell {
+  width: 10px;
+}
+
+.scorecard-container {
+  margin: 50px 10px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.player-name {
+  text-align: center;
+  border-width: 3px 1px 3px 3px;
+  border: solid black;
+  background-color: #cccdce;
+  line-height: 120px;
+}
+
+.frame-container {
+  border: solid black;
+  border-width: 3px 1px;
+  background-color: #fc9220;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 30px 1fr 1fr;
+  height: 120px;
+}
+
+.final-frame {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.frame-number {
+  grid-row: 1 / 2;
+  grid-column: 1 / 3;
+  border-bottom: 1px solid black;
+  background-color: #e3e4e5;
+  line-height: 30px;
+}
+
+.final-frame-number {
+  grid-column: 1 / 4;
+}
+
+.roll {
+  background-color: inherit;
+  line-height: 37px;
+  grid-row: 2 / 3;
+}
+
+.subsequent-roll {
+  border-left: 1px dotted black;
+  border-bottom: 1px dotted black;
+}
+
+.first-roll {
+  grid-column: : 1 / 2;
+}
+
+.second-roll {
+  grid-column: 2 / 2;
+}
+
+.third-roll {
+  grid-column: 3 / 3;
+}
+
+.frame-score {
+  border: 3px red;
+  background-color: inherit;
+  grid-column: 1 / 3;
+  grid-row: : 3 / 3;
+  line-height: 35px;
+}
+
+.total-score {
+  text-align: center;
+  border-width: 3px 3px 3px 1px;
+  border: solid black;
+  background-color: #cccdce;
+  line-height: 120px;
+}

@@ -34,6 +34,29 @@ describe('Game', function(){
       game.roll(9, 1)
       expect(game.calculateScore()).toEqual(19)
     });
+
+    it('calulates bonuses for a strike', function(){
+      game.roll(10,0)
+      game.roll(6,2)
+      expect(game.calculateScore()).toEqual(26)
+    })
+
+    it('calculates bonuses for 2 strikes in a row', function(){
+      game.roll(10,0)
+      game.roll(10,0)
+      game.roll(6,2)
+      expect(game.calculateScore()).toEqual(52)
+    })
+
+    it('calculates bonuses for more than 2 strikes in a row', function(){
+      game.roll(6,2)
+      game.roll(10,0)
+      game.roll(10,0)
+      game.roll(10,0)
+      game.roll(6,2)
+      expect(game.calculateScore()).toEqual(90)
+    })
+
   });
 
 });

@@ -48,6 +48,7 @@ describe('Frame', () => {
 
   describe('finalFrameScore', () => {
     it('confirms final frame score inc. strike or spare', () => {
+      frame.finalFrame = true;
       frame.bowl(10);
       frame.bowl(5);
       frame.bowl(3);

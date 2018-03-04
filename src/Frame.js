@@ -6,6 +6,18 @@ function Frame() {
 }
 
 Frame.prototype.bowl = function (pins) {
+  if (!this.finalFrame && this.bowlIndex > 1) {
+    if (this._validBowl(pins)) {
+      this.addBowl(pins);
+    } else {
+      this._invalidBowl();
+    }
+  } else {
+    this.addBowl(pins);
+  }
+};
+
+Frame.prototype.addBowl = function (pins) {
   this.bowls.push(pins);
   this.bowlIndex++;
 };
@@ -34,4 +46,12 @@ Frame.prototype.finalFrameScore = function () {
 
 Frame.prototype.normalFrameScore = function () {
   return this.bowls[0] + this.bowls[1];
+};
+
+Frame.prototype._validBowl = function (pins) {
+  return (this.bowls[0] + pins <= this.MAX_PINS);
+};
+
+Frame.prototype._invalidBowl = function () {
+  throw Error("You can't knock down more than 10 pins! Try again.");
 };

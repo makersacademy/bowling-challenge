@@ -3,6 +3,7 @@ function Game(currentFrame = new Frame()) {
   this.currentFrame = currentFrame;
   this.frameIndex = 1;
   this.addFrame();
+  this.gameOver = false;
   this.MAX_FRAMES = 10;
 }
 
@@ -14,6 +15,7 @@ Game.prototype.bowl = function (pins) {
     }
   } else {
     this.currentFrame.finalFrame = true;
+    this.finalFrame();
   }
 };
 
@@ -36,6 +38,16 @@ Game.prototype.nextFrame = function () {
   this.currentFrame = new Frame();
   this.addFrame();
   this.frameIndex++;
+};
+
+Game.prototype.finalFrame = function () {
+  if (this.currentFrame.bowlIndex > 3) {
+    this._gameOver();
+  } else if (this.currentFrame.bowlIndex > 2) {
+    if (!this.currentFrame.isStrike() && !this.currentFrame.isSpare()) {
+      this._gameOver();
+    }
+  }
 };
 
 Game.prototype.bowlScore = function (index) {
@@ -91,4 +103,8 @@ Game.prototype.finalFrameSpareScore = function (index) {
 
 Game.prototype._targetBowl = function (index, skipBy, bowlIndex) {
   return this.frames[index + skipBy].bowls[bowlIndex];
+};
+
+Game.prototype._gameOver = function () {
+  this.gameOver = true;
 };

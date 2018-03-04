@@ -12,17 +12,28 @@ $(document).ready(function() {
   function createCallback( numberOfPins ){
     return function(){
       var currentFrame = game.getFrame(id);
+      var previousFrame = game.getFrame(id - 1);
+      console.log(previousFrame);
       scoreList.push(numberOfPins);
+      console.log(scoreList);
       if (currentFrame.ball1 === null) {
         currentFrame.setBall1(numberOfPins);
+        console.log(currentFrame);
       } else if (frame.ball2 === null) {
         currentFrame.setBall2(numberOfPins);
+        console.log(currentFrame);
+      };
+      console.log(scoreList.length);
+      if (previousFrame != null && previousFrame.strike) {
+        previousFrame.score = previousFrame.score + currentFrame.score;
+      };
+      console.log('current frame ball1:' + currentFrame.ball1);
+      if (currentFrame.ball1 === 10) {
+        var secondStrike = previousFrame;
       }
       if (currentFrame.isComplete()) {
-        console.log(currentFrame.isComplete());
         id += 1;
         console.log(game);
-
       };
     };
   };

@@ -10,6 +10,7 @@ var Frame = function(id) {
 
 Frame.prototype.setBall1 = function(numberOfPins) {
   this.ball1 = numberOfPins;
+  this.score = this.ball1;
   if (this.ball1 === 10) {
     this.strike = true;
   };
@@ -17,7 +18,7 @@ Frame.prototype.setBall1 = function(numberOfPins) {
 
 Frame.prototype.setBall2 = function(numberOfPins) {
   this.ball2 = numberOfPins;
-  this.score = this.ball1 + this.ball2;
+  this.score = this.score + this.ball2;
   if (this.score === 10) {
     this.spare = true;
   };
